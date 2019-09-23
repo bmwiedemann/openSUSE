@@ -248,4 +248,12 @@
     <comment>- Add missing builddep on setuptools</comment>
     <requestid>717008</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>00d57262cf94ce869b9a443b903e312c</srcmd5>
+    <version>4.7.0</version>
+    <time>1569233226</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test_large_stdout_stream as it randomly fails</comment>
+    <requestid>730119</requestid>
+  </revision>
 </revisionlist>

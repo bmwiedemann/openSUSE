@@ -153,4 +153,13 @@
     <comment></comment>
     <requestid>703807</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bd7b8676e8ce5595b98a132728633358</srcmd5>
+    <version>1.24</version>
+    <time>1569233323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.24:
+  * test with python 3.8</comment>
+    <requestid>730151</requestid>
+  </revision>
 </revisionlist>

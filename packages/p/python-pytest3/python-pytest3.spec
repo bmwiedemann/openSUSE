@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest
+# spec file for package python-pytest3
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #

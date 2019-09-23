@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 12:26:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip 2 more gettext tests that are fixed in master but not worth
+  backporting to older Sphinx
+
+-------------------------------------------------------------------
 Mon Aug 12 15:38:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use direct names for %files calls

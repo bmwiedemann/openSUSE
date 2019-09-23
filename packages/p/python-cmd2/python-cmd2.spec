@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        0.9.15
+Version:        0.9.16
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -35,11 +35,11 @@ Requires:       python-attrs >= 16.3.0
 Requires:       python-colorama >= 0.3.7
 Requires:       python-pyperclip >= 1.6
 Requires:       python-wcwidth >= 0.1.7
-%if %python3_version_nodots < 35
+BuildArch:      noarch
+%if %{python3_version_nodots} < 35
 Requires:       python-contextlib2
 Requires:       python-typing
 %endif
-BuildArch:      noarch
 # SECTION Test requirements
 BuildRequires:  %{python_module attrs >= 16.3.0}
 BuildRequires:  %{python_module colorama >= 0.3.7}

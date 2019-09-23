@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 11 13:02:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4.2:
+  * Included a pyproject.toml to allow users install the sdist with old
+    python/setuptools, as the setuptools-scm dep will be fetched by pip
+    instead of setuptools. Fixes #30.
+
+-------------------------------------------------------------------
 Thu Jun 20 12:53:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.1

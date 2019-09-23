@@ -35,4 +35,13 @@
 - Switch to github tarball to include tests</comment>
     <requestid>717856</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>201ec4125a0ed0cf679f2c72d0da7931</srcmd5>
+    <version>1.5.1</version>
+    <time>1569233168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * no upstream changelog</comment>
+    <requestid>729892</requestid>
+  </revision>
 </revisionlist>

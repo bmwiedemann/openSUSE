@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 11 13:09:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.6.4:
+  - Use importlib-metadata instead of pkg_resources for better performance
+  - Allow users to switch URLs while omitting the resource identifier (#1032)
+  - Don't stop receiving tasks on 503 SQS error. (#1064) 
+  - Fix maybe declare (#1066)
+  - Revert "Revert "Use SIMEMBERS instead of SMEMBERS to check for queue (Redis Broker)
+  - Fix MongoDB backend to work properly with TTL (#1076)
+  - Make sure that max_retries=0 is treated differently than None (#1080)
+  - Bump py-amqp to 2.5.1
+- Add patch to fix build with py 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 10:45:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not depend on pytest-sugar, it is just pretty-formatter

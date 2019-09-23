@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coverage
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0

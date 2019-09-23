@@ -67,7 +67,9 @@ rm -Rf jedi/third_party
 export PYTHONDONTWRITEBYTECODE=1
 export LANG="en_US.UTF-8"
 # in OBS venv isn't working and builtin completion tests dont work with unbundled typeshed
-%pytest -k "not test_venv_and_pths and not test_completion and not test_builtin_details"
+# test_static_analysis is flaky
+# test_os_path_join is time based
+%pytest -k "not (test_venv_and_pths or test_completion or test_builtin_details or test_static_analysis or test_os_path_join)"
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst

@@ -344,4 +344,13 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
 - Run fdupes</comment>
     <requestid>687617</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fa2c1f23c131970f65900eb0bc9c8376</srcmd5>
+    <version>4.5.4</version>
+    <time>1569233367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.4:
+  * Multiprocessing support in Python 3.8 was broken, but is now fixed</comment>
+    <requestid>730674</requestid>
+  </revision>
 </revisionlist>

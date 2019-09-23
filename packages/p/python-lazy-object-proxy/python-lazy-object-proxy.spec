@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
@@ -36,6 +36,7 @@ URL:            https://github.com/ionelmc/python-lazy-object-proxy
 Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy-object-proxy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools_scm >= 3.3.1}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module lazy-object-proxy = %{version}}
@@ -70,6 +71,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %if !%{with test}
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %if %{with test}

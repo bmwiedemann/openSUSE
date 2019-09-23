@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-cachetools
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT
@@ -47,10 +46,8 @@ function decorator.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %python_exec setup.py test
-%endif
 
 %files %{python_files}
 %license LICENSE

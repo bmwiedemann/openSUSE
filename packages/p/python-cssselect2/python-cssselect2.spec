@@ -19,23 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-cssselect2
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        CSS selectors for Python ElementTree
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/Kozea/cssselect2/
+URL:            https://github.com/Kozea/cssselect2/
 Source:         https://files.pythonhosted.org/packages/source/c/cssselect2/cssselect2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-tinycss2
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tinycss2}
 # /SECTION
-Requires:       python-tinycss2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -60,7 +59,7 @@ sed -i '/addopts/d' setup.cfg
 
 %check
 export LANG=en_US.UTF-8
-%python_exec -m pytest cssselect2/tests
+%pytest cssselect2/tests
 
 %files %{python_files}
 %doc CHANGES README.rst

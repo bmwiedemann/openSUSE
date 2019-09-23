@@ -50,4 +50,13 @@
   * Add pytest trove classifier</comment>
     <requestid>680463</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b85ab63e0b2fa5c0196c9275996aeccd</srcmd5>
+    <version>1.5</version>
+    <time>1569233424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Refresh project metadata.</comment>
+    <requestid>730688</requestid>
+  </revision>
 </revisionlist>

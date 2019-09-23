@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:19:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6.1.0:
+  - Logging max memory reached at INFO rather than WARNING (#255)
+  - Pass arguments when wrapping sys.exit (#275) 
+  - Remove win32/py2k special (#276) 
+  - Ensure READY messages sent out by exiting worker are consumed prior to it actually existing.
+  - Pass max_memory_per_child to child worker process (#251)
+  - Fix compatibility with Python 2.7 on Windows (#283) 
+
+-------------------------------------------------------------------
 Sun Jun  2 06:57:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust description grammar. Drop filler wording.

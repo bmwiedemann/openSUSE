@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:57:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.16:
+  * Fixed inconsistent parsing/tab completion behavio
+  * Create directory for the persistent history file if it does not already exist
+  * Aliases and macros can no longer have the same name as a command
+
+-------------------------------------------------------------------
 Thu Aug  1 11:29:12 UTC 2019 - pgajdos@suse.com
 
 - fix pyperclip version in BuildRequires

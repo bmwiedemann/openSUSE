@@ -21,7 +21,7 @@
 %define skip_python3 1
 %endif
 Name:           python-importlib-metadata
-Version:        0.19
+Version:        0.21
 Release:        0
 Summary:        Tool to read metadata from Python packages
 License:        Apache-2.0

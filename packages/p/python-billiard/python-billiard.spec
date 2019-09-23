@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-billiard
-Version:        3.6.0.0
+Version:        3.6.1.0
 Release:        0
 Summary:        Python multiprocessing fork
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ URL:            https://github.com/celery/billiard
 Source:         https://files.pythonhosted.org/packages/source/b/billiard/billiard-%{version}.tar.gz
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

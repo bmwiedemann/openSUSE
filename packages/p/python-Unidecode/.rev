@@ -73,4 +73,13 @@
     <comment></comment>
     <requestid>710078</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bcec79e4f5635baa9207827669bb2831</srcmd5>
+    <version>1.1.1</version>
+    <time>1569233255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * no upstream changelog</comment>
+    <requestid>730130</requestid>
+  </revision>
 </revisionlist>

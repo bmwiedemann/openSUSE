@@ -15,4 +15,13 @@
     <comment>- Use direct names for %files calls</comment>
     <requestid>722838</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b4e1d3661a0d663f4de814c54ffeffd5</srcmd5>
+    <version>1.8.5</version>
+    <time>1569233243</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip 2 more gettext tests that are fixed in master but not worth
+  backporting to older Sphinx</comment>
+    <requestid>730128</requestid>
+  </revision>
 </revisionlist>

@@ -17,11 +17,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# inline the 37 with the Version (so with 3.8.x it should be 38, ...)
-%if %{python3_version_nodots} >= 37
+# inline the 38 with the Version (based on which python the config module is from)
+%if %{python3_version_nodots} >= 38
 %define skip_python3 1
 %endif
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -31,23 +31,25 @@
 %bcond_with test
 %endif
 Name:           python-configparser%{psuffix}
-Version:        3.7.4
+Version:        4.0.2
 Release:        0
 Summary:        Backport of the enhanced config parser introduced in Python 3.x
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://docs.python.org/3/library/configparser.html
+URL:            https://docs.python.org/3/library/configparser.html
 Source:         https://files.pythonhosted.org/packages/source/c/configparser/configparser-%{version}.tar.gz
 BuildRequires:  %{python_module backports}
+BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-unittest2
 Requires:       python-backports
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module configparser >= %{version}}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  python-devel
+BuildRequires:  python-pathlib2
 BuildRequires:  python3-testsuite
 %endif
 %python_subpackages

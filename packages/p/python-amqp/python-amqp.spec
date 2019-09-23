@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-amqp
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Low-level AMQP client for Python (fork of amqplib)
 License:        LGPL-2.1-or-later

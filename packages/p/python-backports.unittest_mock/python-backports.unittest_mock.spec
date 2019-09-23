@@ -21,7 +21,7 @@
 %define skip_python3 1
 %endif
 Name:           python-backports.unittest_mock
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Backports of unittest_mock
 License:        MIT

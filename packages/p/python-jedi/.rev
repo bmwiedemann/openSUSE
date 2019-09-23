@@ -128,4 +128,14 @@
     <comment></comment>
     <requestid>727460</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b228b293f686837d9833402f0b89e013</srcmd5>
+    <version>0.15.1</version>
+    <time>1569233355</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip another time based test test_os_path_join
+
+- Skip flaky test test_static_analysis</comment>
+    <requestid>730454</requestid>
+  </revision>
 </revisionlist>

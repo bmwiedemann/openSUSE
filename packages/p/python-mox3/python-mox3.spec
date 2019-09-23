@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mox3
-Version:        0.27.0
+Version:        0.28.0
 Release:        0
 Summary:        An unofficial port of the Google mox framework to Python 3
 License:        Apache-2.0

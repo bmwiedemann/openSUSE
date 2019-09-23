@@ -61,7 +61,8 @@ find examples -type f -name "*.cgi" -exec sed -i "s|##!%{_bindir}/env python|##!
 %check
 export LANG=en_US.UTF-8
 # test_bash https://github.com/pexpect/pexpect/issues/568
-%pytest -k 'not test_bash'
+# test_large_stdout_stream - random
+%pytest -k 'not test_bash and not test_large_stdout_stream'
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:02:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.39:
+  * You can now use check-manifest as a pre-commit hook (#100).
+
+-------------------------------------------------------------------
 Wed May 15 18:07:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

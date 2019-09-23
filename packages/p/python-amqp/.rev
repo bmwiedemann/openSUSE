@@ -251,4 +251,16 @@
     <comment>- Do not depend on pytest-sugar, it is just pretty-formatter</comment>
     <requestid>717023</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6f8e9ecf57c5ca87c09b5023685799a9</srcmd5>
+    <version>2.5.1</version>
+    <time>1569233300</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  - Ignore all methods except Close and Close-OK when channel/connection is closing
+  - Fix faulty ssl sni intiation parameters (#283) 
+  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Improved tests and testing environments</comment>
+    <requestid>730145</requestid>
+  </revision>
 </revisionlist>

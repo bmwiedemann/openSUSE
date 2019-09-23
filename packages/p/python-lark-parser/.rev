@@ -46,4 +46,17 @@
     to documentation</comment>
     <requestid>726282</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa7d88031bc6a1e2bd0fe2ea129ce254</srcmd5>
+    <version>0.7.5</version>
+    <time>1569233290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.5:
+  * Lark transformers can now visit tokens as wel
+  * Fixed long-standing non-determinism and prioritization bugs in Earley.
+  * Serialize tool now supports multiple start symbols
+  * iter_subtrees, find_data and find_pred methods are now included in standalone parser
+  * Bugfixes for the transformer interface, for the custom lexer, for grammar imports, and many more</comment>
+    <requestid>730144</requestid>
+  </revision>
 </revisionlist>

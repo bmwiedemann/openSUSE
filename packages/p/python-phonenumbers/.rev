@@ -54,4 +54,13 @@
   * updates to metadata informations</comment>
     <requestid>717868</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>87ce36c869d7a7a39bcedef72ab45ccf</srcmd5>
+    <version>8.10.18</version>
+    <time>1569233183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.10.18:
+  * metadata updates</comment>
+    <requestid>729893</requestid>
+  </revision>
 </revisionlist>

@@ -24,4 +24,14 @@
   * Various fixes</comment>
     <requestid>713399</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6df7a2b6e021ababd10a13d282d5e7e</srcmd5>
+    <version>0.8.0</version>
+    <time>1569233188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * absltest.expectedFailureIf: a variant of unittest.expectedFailure that allows a condition to be given.
+  * few bugfixes</comment>
+    <requestid>729894</requestid>
+  </revision>
 </revisionlist>

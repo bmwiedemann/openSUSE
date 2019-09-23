@@ -74,4 +74,13 @@
  * Add a version constraint on the backport configparser package</comment>
     <requestid>721543</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d41bde7186776801bdb3c1eae3a24ab5</srcmd5>
+    <version>0.21</version>
+    <time>1569233330</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21:
+  * various minor fixes</comment>
+    <requestid>730194</requestid>
+  </revision>
 </revisionlist>

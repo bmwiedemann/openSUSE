@@ -60,4 +60,16 @@
     <comment></comment>
     <requestid>720879</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b1da79bd594417b7eca281d32d0d483</srcmd5>
+    <version>0.13</version>
+    <time>1569233342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13:
+  * Fix missing escaping of backslashes, e.g. in labels
+  * Add basic debug logging via the stdlib ``logging`` module.
+  * Add ``escape()`` function (resembling ``re.escape()``)
+  * Add explicit support for layout engine escape sequences</comment>
+    <requestid>730352</requestid>
+  </revision>
 </revisionlist>

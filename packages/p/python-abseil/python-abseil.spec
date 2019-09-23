@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-abseil
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Abseil Python Common Libraries
 License:        Apache-2.0

@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-portalocker
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Locking library for Python
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/portalocker
 Source:         https://github.com/WoLpH/portalocker/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx >= 1.7.1}
 BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes

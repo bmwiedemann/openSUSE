@@ -18,16 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lxml
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Languages/Python
-URL:            http://lxml.de/
+URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-%{version}.pdf
-# https://github.com/lxml/lxml/pull/284
-Source2:        https://raw.githubusercontent.com/lxml/lxml/master/src/lxml/tests/c14n-20/world.txt
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -85,7 +83,6 @@ export CFLAGS="%{optflags}"
 %python_build --with-cython
 
 %check
-cp %{SOURCE2} src/lxml/tests/c14n-20
 # The tests fail on SLE 11 due to broken incremental parsing in libxml2
 export CFLAGS="%{optflags}"
 export LANG=en_US.UTF-8

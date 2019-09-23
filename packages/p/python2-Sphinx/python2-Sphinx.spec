@@ -304,7 +304,7 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 %if %{with test}
 export LC_ALL="C.utf8"
 %{python_expand export PYTHONPATH=$PYTHONPATH:%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix} --ignore=_build.python3 --ignore=_build.python2 -k 'not (linkcheck or test_latex_images or test_correct_year)' -v tests
+py.test-%{$python_bin_suffix} --ignore=_build.python3 --ignore=_build.python2 -k 'not (linkcheck or test_latex_images or test_correct_year or test_gettext_definition_terms or test_text_definition_terms)' -v tests
 # $python -mpytest --ignore=_build.python3 --ignore=_build.python2 -k 'not linkcheck' -v tests
 }
 %endif

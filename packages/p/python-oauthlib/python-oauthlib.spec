@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oauthlib
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        A Generic Implementation of the OAuth Request-Signing Logic
 License:        BSD-3-Clause

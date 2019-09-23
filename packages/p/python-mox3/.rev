@@ -110,4 +110,15 @@
   * Use template for lower-constraints</comment>
     <requestid>684989</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c1abc23da666616389c90c4d02395b7b</srcmd5>
+    <version>0.28.0</version>
+    <time>1569233211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.28.0:
+  * Remove flake8 from the test-requirements
+  * Add Python 3 Train unit tests
+  * Replace git.openstack.org URLs with opendev.org URLs</comment>
+    <requestid>730107</requestid>
+  </revision>
 </revisionlist>

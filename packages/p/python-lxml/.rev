@@ -674,4 +674,14 @@ See LICENSES.TXT - test.py is GPL licensed (aggregation) (forwarded request 8071
     <comment></comment>
     <requestid>720221</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>1066854bf6fc341305c1f78943552b8e</srcmd5>
+    <version>4.4.1</version>
+    <time>1569233272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.1:
+  * LP#1838252: The order of an OrderedDict was lost in 4.4.0 when passing it as attrib mapping during element creation.
+  * LP#1838521: The package metadata now lists the supported Python versions.</comment>
+    <requestid>730139</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-mock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
+Patch0:         mock3.patch
 Patch1:         fix_tests.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 36}

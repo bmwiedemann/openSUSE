@@ -56,4 +56,14 @@
   - Add support for ``maxsize=None`` in ``cachetools.func`` decorators.</comment>
     <requestid>679937</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cb3c0291c5ce0f1c1f798efca0dcb0a6</srcmd5>
+    <version>3.1.1</version>
+    <time>1569233405</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Document how to use shared caches with @cachedmethod.
+  * Fix pickling/unpickling of cache keys</comment>
+    <requestid>730683</requestid>
+  </revision>
 </revisionlist>

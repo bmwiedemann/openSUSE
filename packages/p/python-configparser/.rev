@@ -92,4 +92,13 @@
     <comment>- Explain for what is the skip_python3 and make it build on SLE12</comment>
     <requestid>714200</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f353d6b5a9392b27fd6cf56fb68efd22</srcmd5>
+    <version>4.0.2</version>
+    <time>1569233374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * sync with upstream ptyhon releases</comment>
+    <requestid>730675</requestid>
+  </revision>
 </revisionlist>

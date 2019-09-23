@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:39:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.5.4:
+  * Multiprocessing support in Python 3.8 was broken, but is now fixed
+
+-------------------------------------------------------------------
 Mon Mar 11 10:03:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.5.3:

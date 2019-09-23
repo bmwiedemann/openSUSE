@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lark-parser
-Version:        0.7.3
+Version:        0.7.5
 Release:        0
 Summary:        A parsing library for Python
 License:        MIT

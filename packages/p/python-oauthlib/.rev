@@ -215,4 +215,15 @@
     <comment></comment>
     <requestid>717381</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>712579e7fbc079e83df0d8079b6560e4</srcmd5>
+    <version>3.1.0</version>
+    <time>1569233205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * OAuth2.0 Provider - Features * #660: OIDC add support of nonce, c_hash, at_hash fields
+  * #677: OIDC add UserInfo endpoint - New RequestValidator.get_userinfo_claims method
+  * #666: Disabling query parameters for POST requests</comment>
+    <requestid>730100</requestid>
+  </revision>
 </revisionlist>

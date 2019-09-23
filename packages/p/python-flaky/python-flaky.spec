@@ -26,13 +26,17 @@
 %bcond_with test
 %endif
 Name:           python-flaky
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Plugin for nose or py.test that automatically reruns flaky tests
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/box/flaky
 Source:         https://files.pythonhosted.org/packages/source/f/flaky/flaky-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module flaky >= %{version}}
 BuildRequires:  %{python_module genty}
@@ -40,10 +44,6 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 %endif
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description

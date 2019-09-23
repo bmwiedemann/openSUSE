@@ -18,19 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kombu
-Version:        4.6.3
+Version:        4.6.4
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/celery/kombu
 Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{version}.tar.gz
-# Test requirements:
+Patch0:         python38.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pyro4}
-BuildRequires:  %{python_module amqp >= 2.5.0}
-BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module amqp >= 2.5.1}
+BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module case >= 1.5.2}
+BuildRequires:  %{python_module importlib-metadata >= 0.18}
 BuildRequires:  %{python_module msgpack > 0.5.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -38,7 +39,8 @@ BuildRequires:  %{python_module redis >= 3.2.0}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-amqp >= 2.5.0
+Requires:       python-amqp >= 2.5.1
+Requires:       python-importlib-metadata >= 0.18
 Requires:       python-setuptools
 Obsoletes:      python-carrot
 BuildArch:      noarch
@@ -64,6 +66,7 @@ provide proven and tested solutions to common messaging problems.
 
 %prep
 %setup -q -n kombu-%{version}
+%patch0 -p1
 
 %build
 %python_build

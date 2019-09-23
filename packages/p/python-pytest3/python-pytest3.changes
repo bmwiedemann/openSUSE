@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 11:19:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update importlib-metadata.patch to not pull in the importlib
+  on python 3.8+
+
+-------------------------------------------------------------------
 Tue Jun 11 07:02:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missing quotes to the test call

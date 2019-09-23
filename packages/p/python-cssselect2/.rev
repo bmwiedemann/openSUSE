@@ -35,4 +35,13 @@
     <comment></comment>
     <requestid>699149</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f875669d532da66c211d89cfa8833fb1</srcmd5>
+    <version>0.2.2</version>
+    <time>1569233360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2:
+  * Optimize lang attribute selectors</comment>
+    <requestid>730669</requestid>
+  </revision>
 </revisionlist>

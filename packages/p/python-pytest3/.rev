@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>713063</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a8f5e4e0fa2014c4370613a09d73596</srcmd5>
+    <version>3.10.1</version>
+    <time>1569233216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update importlib-metadata.patch to not pull in the importlib
+  on python 3.8+</comment>
+    <requestid>730108</requestid>
+  </revision>
 </revisionlist>

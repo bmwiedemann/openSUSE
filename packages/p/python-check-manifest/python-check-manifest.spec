@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-check-manifest
-Version:        0.38
+Version:        0.39
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/mgedmin/check-manifest
+URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
@@ -34,13 +34,13 @@ BuildRequires:  git-core
 BuildRequires:  mercurial
 BuildRequires:  python-rpm-macros
 BuildRequires:  subversion
+Requires:       python-setuptools
 Requires:       python-toml
 Suggests:       bzr
 Suggests:       git-core
 Suggests:       mercurial
 Suggests:       subversion
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,7 +49,7 @@ and missing files in MANIFEST.
 
 %prep
 %setup -q -n check-manifest-%{version}
-sed -i '1{\,^#!/usr/bin/env python,d}' check_manifest.py
+sed -i '1{\,^#!%{_bindir}/env python,d}' check_manifest.py
 chmod -x check_manifest.py
 
 %build

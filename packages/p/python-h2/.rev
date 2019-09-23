@@ -45,4 +45,14 @@
 - Use pytest4 for now, link upstream ticket</comment>
     <requestid>718812</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0fe28b213a029dd93e24d593e4ebdf58</srcmd5>
+    <version>3.1.1</version>
+    <time>1569233335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Ignore WINDOW_UPDATE and RST_STREAM frames received after stream closure.
+- Drop patch pytest5.patch</comment>
+    <requestid>730347</requestid>
+  </revision>
 </revisionlist>

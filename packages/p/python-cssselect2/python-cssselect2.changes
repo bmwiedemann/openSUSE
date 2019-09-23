@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:29:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.2:
+  * Optimize lang attribute selectors
+
+-------------------------------------------------------------------
 Fri Apr 26 07:31:02 UTC 2019 - pgajdos@suse.com
 
 - python3 package only as python-tinycss2 become too

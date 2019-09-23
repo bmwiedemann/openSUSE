@@ -339,4 +339,15 @@
     <comment></comment>
     <requestid>720196</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>766a7eb95ae1c609b6c428ce0a94a0a8</srcmd5>
+    <version>0.9.16</version>
+    <time>1569233381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.16:
+  * Fixed inconsistent parsing/tab completion behavio
+  * Create directory for the persistent history file if it does not already exist
+  * Aliases and macros can no longer have the same name as a command</comment>
+    <requestid>730677</requestid>
+  </revision>
 </revisionlist>

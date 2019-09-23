@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:27:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.0:
+  * absltest.expectedFailureIf: a variant of unittest.expectedFailure that allows a condition to be given.
+  * few bugfixes
+
+-------------------------------------------------------------------
 Thu Jul  4 12:26:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.1:

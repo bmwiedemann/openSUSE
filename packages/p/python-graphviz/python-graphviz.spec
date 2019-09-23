@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-graphviz
-Version:        0.11.1
+Version:        0.13
 Release:        0
 Summary:        Python interface for Graphviz
 License:        MIT

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpatch
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Python - JSON-Patches
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://github.com/stefankoegl/python-json-patch
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonpatch-%{version}.tar.gz
 BuildRequires:  %{python_module jsonpointer >= 1.9}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonpointer >= 1.9
 Requires(post): update-alternatives
@@ -45,6 +46,7 @@ Python module to apply JSON-Patches (according to RFC 6902).
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Prepare for update-alternatives usage
 %python_clone -a %{buildroot}%{_bindir}/jsonpatch

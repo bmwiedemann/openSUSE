@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-h2
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
-Patch0:         pytest5.patch
 BuildRequires:  %{python_module hpack >= 2.3}
 BuildRequires:  %{python_module hyperframe >= 5.2.0}
 BuildRequires:  %{python_module hypothesis}
@@ -51,7 +50,6 @@ your programming paradigm.
 
 %prep
 %setup -q -n h2-%{version}
-%patch0 -p1
 
 %build
 %python_build
