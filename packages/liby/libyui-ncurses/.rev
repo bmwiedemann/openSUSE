@@ -379,4 +379,12 @@
     <comment>submit new version 2.52.0</comment>
     <requestid>713066</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>03d2e80189c5840a90c6ca13c6f9d924</srcmd5>
+    <version>2.52.1</version>
+    <time>1569237368</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.52.1</comment>
+    <requestid>730776</requestid>
+  </revision>
 </revisionlist>

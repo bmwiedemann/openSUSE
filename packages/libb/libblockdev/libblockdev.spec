@@ -17,7 +17,6 @@
 
 
 %define         bcachetools_version 1.0.8
-%define         lvm2_clvm_version   2.02.156
 %define         somajor             2
 %define         libname             %{name}%{somajor}
 %bcond_with     python2
@@ -284,7 +283,7 @@ with the libbd_lvm plugin/library.
 Summary:        The LVM plugin for the LibBlockDev library
 Group:          System/Libraries
 Requires:       libbd_utils%{somajor} >= %{version}
-Requires:       lvm2-clvm >= %{lvm2_clvm_version}
+Requires:       lvm2
 # For thin_metadata_size.
 Requires:       thin-provisioning-tools
 Provides:       libblockdev-lvm-dbus = %{version}

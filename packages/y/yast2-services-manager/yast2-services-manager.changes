@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  6 14:28:55 CEST 2019 - schubi@suse.de
+
+- Set BaseTargets::GRAPHICAL and Target::GRAPHICAL if package "xdm"
+  will be installed (instead of xorg-x11-server) (bsc#1140735).
+- 4.2.5
+
+-------------------------------------------------------------------
 Tue Aug 27 18:33:52 CEST 2019 - schubi@suse.de
 
 - Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).

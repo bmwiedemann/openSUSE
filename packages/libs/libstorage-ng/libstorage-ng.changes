@@ -1,4 +1,88 @@
 --------------------------------------------------------------------
+Tue Sep 10 12:04:57 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+- 4.2.11
+
+--------------------------------------------------------------------
+Mon Sep 9 09:44:22 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#671
+- added integration test
+- 4.2.10
+
+--------------------------------------------------------------------
+Fri Sep 6 10:09:55 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#670
+- added notes
+- 4.2.9
+
+--------------------------------------------------------------------
+Thu Sep 5 07:35:12 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#668
+- removed unneeded code
+- cleanup integration tests
+- code cleanup
+- 4.2.8
+
+--------------------------------------------------------------------
+Wed Sep 4 22:22:17 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese)
+- 4.2.7
+
+--------------------------------------------------------------------
+Wed Sep 4 13:37:54 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak)
+- 4.2.6
+
+--------------------------------------------------------------------
+Wed Sep 4 13:37:53 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil))
+
+--------------------------------------------------------------------
+Wed Sep 4 13:08:37 UTC 2019 - freek@opensuse.org
+
+- Translated using Weblate (Dutch)
+
+--------------------------------------------------------------------
+Wed Sep 4 12:32:35 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech)
+
+--------------------------------------------------------------------
+Wed Sep 4 12:23:45 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#667
+- update pot and po files
+- 4.2.5
+
+--------------------------------------------------------------------
+Wed Sep 4 10:42:29 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#666
+- added note
+- use dev_t to save major and minor numbers
+- improved unit test
+- coding style
+- consistent function name
+- added support for plain encryption (bsc#1088641)
+- added unit test
+- added integration tests
+- 4.2.4
+
+--------------------------------------------------------------------
+Mon Sep 2 13:05:38 UTC 2019 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#665
+- extended documentation
+- 4.2.3
+
+--------------------------------------------------------------------
 Sun Aug 25 03:11:26 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Chinese (China))

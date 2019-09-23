@@ -17,11 +17,15 @@
 
 
 Name:           yast2-control-center
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
+Url:            https://github.com/yast/yast-control-center
+Summary:        YaST2 - Control Center
+License:        GPL-2.0-only
+Group:          System/YaST
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        yast2-control-center-%{version}.tar.bz2
+
 BuildRequires:  cmake
 BuildRequires:  libdrm-devel
 BuildRequires:  libjpeg-devel
@@ -31,11 +35,6 @@ BuildRequires:  yast2-devtools >= 3.1.10
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
-
-# control-center-gnome is dropped and this one should be used instead
-Obsoletes:      yast2-control-center-gnome < %{version}
-Provides:       yast2-control-center-gnome = %{version}
-
 %if 0%{?force_gcc_46}
 BuildRequires:  gcc46
 BuildRequires:  gcc46-c++
@@ -43,12 +42,12 @@ BuildRequires:  gcc46-c++
 BuildRequires:  gcc-c++ >= 4.6
 %endif
 
-Url:            https://github.com/yast/yast-control-center
-Summary:        YaST2 - Control Center
-License:        GPL-2.0-only
-Group:          System/YaST
 Requires:       yast2
 Requires:       yast2-control-center-binary
+
+# control-center-gnome is dropped and this one should be used instead
+Obsoletes:      yast2-control-center-gnome < %{version}
+Provides:       yast2-control-center-gnome = %{version}
 
 %description
 This package contains the menu selection component for YaST2.
@@ -56,24 +55,23 @@ This package contains the menu selection component for YaST2.
 %package qt
 Summary:        YaST2 - Control Center (Qt Version)
 Group:          System/YaST
-Requires:       yast2-control-center
-Provides:       yast2-control-center-binary
-Provides:       yast2-control-center:%{_prefix}/lib/YaST2/bin/y2controlcenter
-Requires:       libyui-qt
 
+Requires:       libyui-qt
+Requires:       yast2-control-center
 # bsc#1130700: Need Qt SVG support for icons
 Requires:       libQt5Svg5
 
-Supplements:    kdebase3
-Supplements:    kdebase4-session
-Supplements:    plasma5-session
+Provides:       yast2-control-center-binary
+Provides:       yast2-control-center:%{_prefix}/lib/YaST2/bin/y2controlcenter
+
+Supplements:    (yast2 and plasma5-session)
 
 %description qt
 This package contains the menu selection component for YaST2 using the
 Qt toolkit.
 
 %prep
-%setup
+%setup -q
 
 %build
 mkdir build
@@ -94,20 +92,16 @@ make %{?jobs:-j %jobs} VERBOSE=1
 
 %install
 cd build
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=%{buildroot}
 cd ..
 
-%suse_update_desktop_file -G "Administrator Settings"  %{buildroot}%{_datadir}/applications/org.openSUSE.YaST.desktop Core-System X-SuSE-ControlCenter-System X-GNOME-SystemSettings
-%suse_update_desktop_file %{buildroot}%{_datadir}/kde4/services/YaST-systemsettings.desktop 
-
-%clean
-rm -rf "$RPM_BUILD_ROOT"
+%suse_update_desktop_file -G "Administrator Settings"  %{buildroot}%{_datadir}/applications/org.opensuse.YaST.desktop Core-System X-SuSE-ControlCenter-System X-GNOME-SystemSettings
+%suse_update_desktop_file %{buildroot}%{_datadir}/kde4/services/YaST-systemsettings.desktop
 
 %files
-%defattr(-,root,root)
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.openSUSE.YaST.appdata.xml
-%{_datadir}/applications/org.openSUSE.YaST.desktop
+%{_datadir}/metainfo/org.opensuse.YaST.appdata.xml
+%{_datadir}/applications/org.opensuse.YaST.desktop
 %dir %{_datadir}/kde4/
 %dir %{_datadir}/kde4/services
 %{_datadir}/kde4/services/YaST-systemsettings.desktop
@@ -116,8 +110,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %{yast_icondir}
 
 %files qt
-%defattr(-,root,root)
-%{_prefix}/lib/YaST2/bin/y2controlcenter
+%{_libexecdir}/YaST2/bin/y2controlcenter
 %license COPYING.GPL2
 
 %changelog

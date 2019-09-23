@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep  9 12:00:00 UTC 2019 - heming.zhao@suse.com
+
+- Update lvm2.spec: make baselibs.conf to a common source.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:00:25 UTC 2019 - ghe@suse.com
+
+- Avoid creation of mixed-blocksize PV on LVM volume groups (bsc#1149408)
+  + bug-1149408_Fix-rounding-writes-up-to-sector-size.patch
+  + bug-1149408_vgcreate-vgextend-restrict-PVs-with-mixed-block-size.patch
+- Update lvm.conf files
+  - add devices/allow_mixed_block_sizes item
+
+-------------------------------------------------------------------
+Mon Sep 02 11:21:03 UTC 2019 - heming.zhao@suse.com
+
+- Update to LVM2.2.03.05
+  - To drop lvm2-clvm and lvm2-cmirrord rpms (jsc#PM-1324)
+  - Fix Out of date package (bsc#1111734)
+  - Fix occasional slow shutdowns with kernel 5.0.0 and up (bsc#1137648)
+  - Remove clvmd
+  - Remove lvmlib (api)
+  - Remove lvmetad
+- Drop patches that have been merged into upstream
+  - bug-1114113_metadata-prevent-writing-beyond-metadata-area.patch
+  - bug-1137296_pvremove-vgextend-fix-using-device-aliases-with-lvmetad.patch
+  - bug-1135984_cache-support-no_discard_passdown.patch
+- Drop patches that have been nonexist/unsupport in upstream
+  - bsc1080299-detect-clvm-properly.patch
+  - bug-998893_make_pvscan_service_after_multipathd.patch
+  - bug-978055_clvmd-try-to-refresh-device-cache-on-the-first-failu.patch
+  - bug-950089_test-fix-lvm2-testsuite-build-error.patch
+  - bug-1072624_test-lvmetad_dump-always-timed-out-when-using-nc.patch
+  - tests-specify-python3-as-the-script-interpreter.patch
+- Update spec files
+  - merge device-mapper, lvm2-lockd, lvm2 into one spec file
+  - clvmd/lvmlib (api)/lvmetad had been removed, so delete related context in spec file
+- Update lvm.conf files
+  - remove all lvmetad lines/keywords
+  - add event_activation
+  - remove fallback_to_lvm1 & related items
+  - remove locking_type/fallback_to_clustered_locking/fallback_to_local_locking items
+  - remove locking_library item
+  - remove all special filter rules
+
+-------------------------------------------------------------------
 Tue Jul  9 10:00:05 UTC 2019 - ghe@suse.com
 
 - Fix unknown feature in status message (bsc#1135984)

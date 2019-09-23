@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.2.12
+Version:        4.2.14
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -36,10 +36,10 @@ BuildRequires:  yast2-ruby-bindings >= 4.0.6
 BuildRequires:  yast2-xml
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
-# Yast::Execute.stdout
-BuildRequires:  yast2 >= 4.1.42
-# Y2Packager::KnownRepositories
-BuildRequires:  yast2-packager >= 4.1.27
+# Y2Packager::ProductControlProduct
+BuildRequires:  yast2 >= 4.2.22
+# Y2Packager::MediumType
+BuildRequires:  yast2-packager >= 4.2.27
 # Y2Storage::Inhibitors including systemd masking
 BuildRequires:  yast2-storage-ng >= 4.0.194
 ## y2remote based version
@@ -67,8 +67,8 @@ Requires:       yast2-storage-ng >= 4.0.175
 Requires:       yast2-country-data >= 2.16.11
 # Pkg::ProvidePackage
 Requires:       yast2-pkg-bindings >= 3.1.33
-# Y2Packager::KnownRepositories
-Requires:       yast2-packager >= 4.1.27
+# Y2Packager::MediumType
+Requires:       yast2-packager >= 4.2.22
 # use in startup scripts
 Requires:       initviocons
 # Proxy settings for 2nd stage (bnc#764951)
@@ -76,8 +76,8 @@ Requires:       yast2-proxy
 # Systemd default target and services. This version supports
 # writing settings in the first installation stage.
 Requires:       yast2-services-manager >= 3.2.1
-# Y2Packager::Product.forced_base_product
-Requires:       yast2 >= 4.2.17
+# Y2Packager::ProductControlProduct
+Requires:       yast2 >= 4.2.22
 Requires:       yast2-network >= 4.0.13
 # for AbortException and handle direct abort
 Requires:       yast2-ruby-bindings >= 4.0.6

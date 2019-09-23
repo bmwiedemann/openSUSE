@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 10:48:00 UTC 2019 - Heming Zhao <heming.zhao@suse.com>
+
+- lvm2-clvm doesn't exist in lvm2-2.03, so change SPEC file
+  libbd_lvm-dbus requires from lvm2-clvm to lvm2
+
+-------------------------------------------------------------------
 Thu Jun 13 18:10:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.22:

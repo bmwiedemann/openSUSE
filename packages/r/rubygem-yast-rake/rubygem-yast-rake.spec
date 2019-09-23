@@ -17,14 +17,14 @@
 
 
 Name:           rubygem-yast-rake
-Version:        0.2.34
+Version:        0.2.36
 Release:        0
 %define mod_name yast-rake
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:gem2rpm)
 Url:            http://github.org/openSUSE/yast-rake
 Source:         http://rubygems.org/gems/%{mod_full_name}.gem
 Summary:        Rake tasks providing basic work-flow for Yast development
