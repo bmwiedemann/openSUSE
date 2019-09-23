@@ -126,4 +126,30 @@ release expected in about a week.
   of upstream revision r274849. (forwarded request 725555 from marxin)</comment>
     <requestid>725566</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6875b9380b9164305c79fe334f08b0aa</srcmd5>
+    <version>9.2.1+r275327</version>
+    <time>1569232897</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc9-pr91772.patch and gcc9-pr91763.patch to fix fallout
+  of gcc9-autodetect-g-at-lto-link.patch.
+
+- Add gcc9-autodetect-g-at-lto-link.patch.  [bsc#1149995]
+
+- Reorder things in cross.spec.in so the Version define comes before
+  the first use of %version.
+- Revert removal of defattr, it breaks building on SLES12.
+
+- Update to gcc-9-branch head (r275327).
+  * Pulls fix for POWER9 DARN miscompilation.
+    (bsc#1149145, CVE-2019-15847)
+
+- Rework shared spec file parts to allow custom Summary and
+  Description for cross compilers.  Clarify their Summary
+  and Description.  [bsc#1148517]
+
+- Replace old $RPM_* shell vars by macros (where possible).
+- Drop defattr and BuildRoot.</comment>
+    <requestid>731720</requestid>
+  </revision>
 </revisionlist>

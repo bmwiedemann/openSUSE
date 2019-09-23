@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-text-unidecode
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        The most basic Text::Unidecode port
-License:        Artistic-1.0
+License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/kmike/text-unidecode/
 Source:         https://files.pythonhosted.org/packages/source/t/text-unidecode/text-unidecode-%{version}.tar.gz
@@ -53,7 +53,7 @@ This port is licensed under Artistic License and supports both Python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %license LICENSE

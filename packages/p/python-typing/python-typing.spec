@@ -16,26 +16,25 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if %{python3_version_nodots} > 34
 %define skip_python3 1
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-typing
-Version:        3.7.4
+Version:        3.7.4.1
 Release:        0
 Summary:        Type Hints for Python
 License:        Python-2.0
 Group:          Development/Languages/Python
-Url:            https://docs.python.org/3.5/library/typing.html
+URL:            https://docs.python.org/3.5/library/typing.html
 Source:         https://files.pythonhosted.org/packages/source/t/typing/typing-%{version}.tar.gz
-Patch0:         test-sys-executable.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %if 0%{?suse_version} > 1320
 BuildRequires:  python3-testsuite
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,7 +42,6 @@ Backport of the standard library typing module for Python versions older than 3.
 
 %prep
 %setup -q -n typing-%{version}
-%patch0 -p0
 ln -s python2 python_%{python2_bin_suffix}
 ln -s src python_%{python3_bin_suffix}
 

@@ -208,4 +208,13 @@
     <user>dimstar_suse</user>
     <comment>No idea why staging accept deleted this</comment>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>21f343caab80acf7d86be2c0f84323cb</srcmd5>
+    <version>0.2.6</version>
+    <time>1569233148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6:
+  * variour RFC enhancements, see CHANGES.txt</comment>
+    <requestid>729885</requestid>
+  </revision>
 </revisionlist>

@@ -354,4 +354,14 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.13.1</comment>
     <requestid>729210</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>6fb6ea76b9666a5a67d02530582f3056</srcmd5>
+    <version>5.13.1</version>
+    <time>1569232718</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file cleanup
+  - remove GStreamer 0.10 support
+  - remove defattr, use license</comment>
+    <requestid>730215</requestid>
+  </revision>
 </revisionlist>

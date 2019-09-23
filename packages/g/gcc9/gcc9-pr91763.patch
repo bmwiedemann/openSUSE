@@ -1,0 +1,62 @@
+2019-09-18  Richard Biener  <rguenther@suse.de>
+
+	PR lto/91763
+	* lto-streamer-in.c (input_eh_regions): Move EH init to
+	lto_materialize_function.
+	* tree-streamer-in.c (lto_input_ts_function_decl_tree_pointers):
+	Likewise.
+
+	lto/
+	* lto.c (lto_materialize_function): Initialize EH by looking
+	at the function personality and flag_exceptions setting.
+
+Index: gcc/lto-streamer-in.c
+===================================================================
+--- gcc/lto-streamer-in.c	(revision 275800)
++++ gcc/lto-streamer-in.c	(working copy)
+@@ -615,11 +615,6 @@ input_eh_regions (struct lto_input_block
+ 
+   lto_tag_check_range (tag, LTO_eh_table, LTO_eh_table);
+ 
+-  /* If the file contains EH regions, then it was compiled with
+-     -fexceptions.  In that case, initialize the backend EH
+-     machinery.  */
+-  lto_init_eh ();
+-
+   gcc_assert (fn->eh);
+ 
+   root_region = streamer_read_hwi (ib);
+Index: gcc/tree-streamer-in.c
+===================================================================
+--- gcc/tree-streamer-in.c	(revision 275800)
++++ gcc/tree-streamer-in.c	(working copy)
+@@ -800,12 +800,6 @@ lto_input_ts_function_decl_tree_pointers
+       }
+   }
+ #endif
+-
+-  /* If the file contains a function with an EH personality set,
+-     then it was compiled with -fexceptions.  In that case, initialize
+-     the backend EH machinery.  */
+-  if (DECL_FUNCTION_PERSONALITY (expr))
+-    lto_init_eh ();
+ }
+ 
+ 
+Index: gcc/lto/lto.c
+===================================================================
+--- gcc/lto/lto.c	(revision 275800)
++++ gcc/lto/lto.c	(working copy)
+@@ -218,6 +218,12 @@ lto_materialize_function (struct cgraph_
+ 	return;
+       if (DECL_FUNCTION_PERSONALITY (decl) && !first_personality_decl)
+ 	first_personality_decl = DECL_FUNCTION_PERSONALITY (decl);
++      /* If the file contains a function with a language specific EH
++	 personality set or with EH enabled initialize the backend EH
++	 machinery.  */
++      if (DECL_FUNCTION_PERSONALITY (decl)
++	  || opt_for_fn (decl, flag_exceptions))
++	lto_init_eh ();
+     }
+ 
+   /* Let the middle end know about the function.  */

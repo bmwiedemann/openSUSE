@@ -1,7 +1,7 @@
 #
 # spec file for package latex2html
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,19 @@
 
 %define share_dir %{_datadir}/latex2html
 Name:           latex2html
-Version:        2018
+Version:        2019.2
 Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Utilities
 Url:            http://www.ctan.org/tex-archive/support/latex2html
-Source0:        http://mirrors.ctan.org/support/latex2html/latex2html-%{version}.tar.gz
+Source0:        https://github.com/latex2html/latex2html/archive/v%{version}.tar.gz
 Source1:        latex2html-manual.tar.bz2
-Source2:        latex2html-README.SUSE
-Source3:        testfile.tex
-Source4:        local.pm
-Source5:        latex2html.1
 Patch0:         latex2html-share-dir.diff
 Patch1:         latex2html-perl-bindir.diff
 Patch2:         latex2html-dest-dir.diff
 Patch3:         latex2html-binmode.diff
 Patch4:         latex2html-backref-workaround.diff
-Patch5:         latex2html-perl526.patch
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
@@ -43,6 +38,7 @@ BuildRequires:  netpbm
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-kpathsea
 BuildRequires:  texlive-latex
+BuildRequires:  texlive-preview
 Requires:       ghostscript_any
 Requires:       latex2html-pngicons
 Requires:       netpbm
@@ -80,9 +76,6 @@ This subpackage contains the documentation for the Latex2HTML converter.
 %patch2
 %patch3
 %patch4
-%patch5 -p1
-cp %{SOURCE2} README.SUSE
-cp %{SOURCE4} .
 
 %build
 # Not autotools based configure
@@ -92,16 +85,16 @@ make %{?_smp_mflags}
 %install
 %make_install
 mkdir -p %{buildroot}/%{_mandir}/man1
-install -m 644 %{SOURCE5} %{buildroot}/%{_mandir}/man1
+install -m 644 latex2html.1 %{buildroot}/%{_mandir}/man1
 rm -r %{buildroot}%{share_dir}/{docs,example,dot.latex2html-init}
 chmod 755 %{buildroot}%{_datadir}/%{name}/{cweb2html/makemake.pl,cweb2html/cweb2html,makemap,makeseg/makeseg}
 %fdupes -s %{buildroot}
 
 %check
-LATEX2HTMLDIR=%{buildroot}/%{share_dir} ./latex2html --test_mode %{SOURCE3}
+make %{?_smp_mflags} test
 
 %files
-%doc README.SUSE Changes FAQ README.md TODO dot.latex2html-init
+%doc Changes FAQ README.md TODO dot.latex2html-init
 %{_prefix}/lib/latex2html
 %dir %{share_dir}
 %{share_dir}/*.pm

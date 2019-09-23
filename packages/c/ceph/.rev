@@ -405,4 +405,12 @@
     <comment>bsc#1145093, bsc#1137189 (forwarded request 727038 from smithfarm)</comment>
     <requestid>727039</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9f2fed91ebbf3d7ab16c2e7ba241046f</srcmd5>
+    <version>14.2.4.352+g2060e25d1c</version>
+    <time>1569232871</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream v14.2.4 release (forwarded request 731651 from smithfarm)</comment>
+    <requestid>731652</requestid>
+  </revision>
 </revisionlist>

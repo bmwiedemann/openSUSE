@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:15:19 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Add gcc9-pr91772.patch and gcc9-pr91763.patch to fix fallout
+  of gcc9-autodetect-g-at-lto-link.patch.
+
+-------------------------------------------------------------------
+Wed Sep 11 11:22:02 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Add gcc9-autodetect-g-at-lto-link.patch.  [bsc#1149995]
+
+-------------------------------------------------------------------
+Mon Sep  9 07:25:31 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Reorder things in cross.spec.in so the Version define comes before
+  the first use of %version.
+- Revert removal of defattr, it breaks building on SLES12.
+
+-------------------------------------------------------------------
+Tue Sep  3 08:01:01 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-9-branch head (r275327).
+  * Pulls fix for POWER9 DARN miscompilation.
+    (bsc#1149145, CVE-2019-15847)
+
+-------------------------------------------------------------------
+Wed Aug 28 13:21:47 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Rework shared spec file parts to allow custom Summary and
+  Description for cross compilers.  Clarify their Summary
+  and Description.  [bsc#1148517]
+
+-------------------------------------------------------------------
+Tue Aug 27 07:54:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old $RPM_* shell vars by macros (where possible).
+- Drop defattr and BuildRoot.
+
+-------------------------------------------------------------------
 Fri Aug 23 11:36:20 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Update gcc9-add-flto=auto.patch by adding backport
@@ -15,7 +53,7 @@ Tue Aug 20 13:21:09 UTC 2019 - Richard Biener <rguenther@suse.com>
 Mon Aug 12 12:55:48 UTC 2019 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-9-branch head (r274311).
-  * Includes GCC 9.2 release.  [jsc#SLE-6536, jsc#SLE-6533]
+  * Includes GCC 9.2 release.  [jsc#SLE-6536, jsc#SLE-6533, jsc#ECO-368]
 - Update nvptx-newlib.tar.xz to official newlib-3.1.0.tar.xz
   since nvptx support is now upstream.
 

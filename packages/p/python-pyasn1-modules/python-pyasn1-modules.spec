@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyasn1-modules
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Collection of protocols modules written in ASN.1 language
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/etingof/pyasn1-modules
 Source:         https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1-modules-%{version}.tar.gz
-BuildRequires:  %{python_module pyasn1 >= 0.3.4}
+BuildRequires:  %{python_module pyasn1 >= 0.4.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyasn1 >= 0.3.4
+Requires:       python-pyasn1 >= 0.4.7
 BuildArch:      noarch
 %python_subpackages
 

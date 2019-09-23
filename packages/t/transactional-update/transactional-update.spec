@@ -17,7 +17,7 @@
 
 
 Name:           transactional-update
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later
@@ -31,15 +31,14 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  libzypp
 BuildRequires:  pkgconfig
-BuildRequires:  python-lxml
+BuildRequires:  python3-lxml
 BuildRequires:  rpm-devel
 BuildRequires:  suse-module-tools
 Requires:       attr
+Requires:       bc
 Requires:       logrotate
 Requires:       lsof
-Requires:       perl-HTML-Parser
 # psmisc is needed because of fuser
-Requires:       bc
 Requires:       psmisc
 Requires:       rsync
 Recommends:     rebootmgr

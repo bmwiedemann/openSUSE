@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 17 09:56:09 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.4-352-g2060e25d1c:
+  + rebase on top of upstream Nautilus v14.2.4 release, SHA1 75f4de193b3ea58512f204623e6c5a16e6c1e1ba
+    for details, see https://ceph.io/releases/v14-2-4-nautilus-released/
+
+-------------------------------------------------------------------
+Thu Sep  5 16:01:28 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 14.2.3-349-g7b1552ea82:
+  + rebase on top of upstream Nautilus v14.2.3 release, SHA1 0f776cf838a1ae3130b2b73dc26be9c95c6ccc39
+    for details, see https://ceph.io/releases/v14-2-3-nautilus-released/
+    * ceph-volume: prints errors to stdout with --format json (bsc#1132767)
+    * mgr/dashboard: Changing rgw-api-host does not get effective without
+      disable/enable dashboard mgr module (bsc#1137503)
+    * mgr/dashboard: Silence Alertmanager alerts (bsc#1141174)
+    * mgr/dashboard: Fix e2e failures caused by webdriver version (bsc#1145759) 
+  + librbd: always try to acquire exclusive lock when removing image (bsc#1149093)
+
+-------------------------------------------------------------------
 Thu Aug 29 14:17:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 14.2.2-354-g8878cf2360: 

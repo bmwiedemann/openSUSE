@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redis
-Version:        3.3.6
+Version:        3.3.8
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/andymccurdy/redis-py
+URL:            https://github.com/andymccurdy/redis-py
 Source:         https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 2.7.0}
@@ -32,8 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
-Recommends:     python-hiredis >= 0.1.3
 Requires:       redis
+Recommends:     python-hiredis >= 0.1.3
 BuildArch:      noarch
 %python_subpackages
 

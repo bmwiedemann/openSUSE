@@ -176,8 +176,10 @@ BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  perl
 BuildRequires:  zlib-devel
+%if %{suse_version} >= 1500
 # for SDT markers in the C++ unwinder and gdb breakpoints on exceptions
 BuildRequires:  systemtap-headers
+%endif
 %if %{suse_version} >= 1230
 BuildRequires:  isl-devel
 %endif
@@ -244,7 +246,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        9.2.1+r274709
+Version:        9.2.1+r275327
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -284,7 +286,6 @@ Requires:       libvtv%{libvtv_sover} >= %{version}-%{release}
 Suggests:       gcc9-info gcc9-locale
 %endif
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
 Source2:        gcc9-rpmlintrc
@@ -303,6 +304,9 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc9-value-prof.patch
 Patch19:        gcc9-add-flto=auto.patch
 Patch20:        gcc9-pr91307.patch
+Patch21:        gcc9-autodetect-g-at-lto-link.patch
+Patch22:        gcc9-pr91772.patch
+Patch23:        gcc9-pr91763.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -440,7 +444,7 @@ This package contains the GNU compiler for C++.
 
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel
 Requires:       libstdc++%{libstdcxx_sover} >= %{version}-%{release}
@@ -457,7 +461,7 @@ This package contains all the headers and libraries of the standard C++
 library. It is needed for compiling C++ code.
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel-32bit
 Requires:       libstdc++%{libstdcxx_sover}-32bit >= %{version}-%{release}
@@ -474,7 +478,7 @@ This package contains all the headers and libraries of the standard C++
 library. It is needed for compiling C++ code.
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel-64bit
 Requires:       libstdc++%{libstdcxx_sover}-64bit >= %{version}-%{release}
@@ -536,7 +540,7 @@ from GDB.
 
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}
 Summary:        C compiler runtime library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Base
 Provides:       libgcc_s%{libgcc_s} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -551,7 +555,7 @@ Libgcc is needed for dynamically linked C programs.
 %postun -n libgcc_s%{libgcc_s}%{libgcc_s_suffix} -p /sbin/ldconfig
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit
 Summary:        C compiler runtime library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Base
 Provides:       libgcc_s%{libgcc_s}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -566,7 +570,7 @@ Libgcc is needed for dynamically linked C programs.
 %postun -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit -p /sbin/ldconfig
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-64bit
 Summary:        C compiler runtime library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Base
 Provides:       libgcc_s%{libgcc_s}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -582,7 +586,7 @@ Libgcc is needed for dynamically linked C programs.
 
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}
 Summary:        The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Base
 Provides:       libgomp%{libgomp_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -601,7 +605,7 @@ option.
 %postun -n libgomp%{libgomp_sover}%{libgomp_suffix} -p /sbin/ldconfig
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit
 Summary:        The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Base
 Provides:       libgomp%{libgomp_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -620,7 +624,7 @@ option.
 %postun -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit -p /sbin/ldconfig
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}-64bit
 Summary:        The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Base
 Provides:       libgomp%{libgomp_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -640,7 +644,7 @@ option.
 
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}
 Summary:        The standard C++ shared library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover} = %{version}-%{release}
@@ -657,7 +661,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 %postun -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix} -p /sbin/ldconfig
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit
 Summary:        The standard C++ shared library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover}-32bit = %{version}-%{release}
@@ -674,7 +678,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 %postun -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit -p /sbin/ldconfig
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-64bit
 Summary:        The standard C++ shared library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover}-64bit = %{version}-%{release}
@@ -692,7 +696,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-locale
 Summary:        Standard C++ Library Locales
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Provides:       libstdc++%{libstdcxx_sover}-locale = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -756,7 +760,7 @@ Nextstep OS. The source code is available in the gcc package.
 
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}
 Summary:        Library for the GNU Objective C Compiler
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -771,7 +775,7 @@ The library for the GNU Objective C compiler.
 %postun -n libobjc%{libobjc_sover}%{libobjc_suffix} -p /sbin/ldconfig
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit
 Summary:        Library for the GNU Objective C Compiler
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -786,7 +790,7 @@ The library for the GNU Objective C compiler.
 %postun -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit -p /sbin/ldconfig
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}-64bit
 Summary:        Library for the GNU Objective C Compiler
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -884,7 +888,7 @@ tools based on the GNU GCC technology.
 
 %package -n libada9
 Summary:        GNU Ada Runtime Libraries
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Provides:       libgnarl-9 = %{version}-%{release}
 Conflicts:      %selfconflict libgnarl-9
@@ -904,7 +908,7 @@ implementation of Distributed Systems Programming (GLADE) and the Posix
 %postun -n libada9 -p /sbin/ldconfig
 %package -n libada9-32bit
 Summary:        GNU Ada Runtime Libraries
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Provides:       libgnarl-9-32bit = %{version}-%{release}
 Conflicts:      %selfconflict libgnarl-9-32bit
@@ -924,7 +928,7 @@ implementation of Distributed Systems Programming (GLADE) and the Posix
 %postun -n libada9-32bit -p /sbin/ldconfig
 %package -n libada9-64bit
 Summary:        GNU Ada Runtime Libraries
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          System/Libraries
 Provides:       libgnarl-9-64bit = %{version}-%{release}
 Conflicts:      %selfconflict libgnarl-9-64bit
@@ -985,7 +989,7 @@ This is the Fortran compiler of the GNU Compiler Collection (GCC).
 
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}
 Summary:        The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
@@ -1004,7 +1008,7 @@ of the GNU Compiler Collection (GCC).
 %postun -n libgfortran%{libgfortran_sover}%{libgfortran_suffix} -p /sbin/ldconfig
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit
 Summary:        The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
@@ -1023,7 +1027,7 @@ of the GNU Compiler Collection (GCC).
 %postun -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit -p /sbin/ldconfig
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-64bit
 Summary:        The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
@@ -1242,7 +1246,7 @@ The runtime library needed to run programs compiled with the
 
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}
 Summary:        The GNU Compiler Atomic Operations Runtime Library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -1257,7 +1261,7 @@ The runtime library for atomic operations of the GNU Compiler Collection (GCC).
 %postun -n libatomic%{libatomic_sover}%{libatomic_suffix} -p /sbin/ldconfig
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit
 Summary:        The GNU Compiler Atomic Operations Runtime Library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -1272,7 +1276,7 @@ The runtime library for atomic operations of the GNU Compiler Collection (GCC).
 %postun -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit -p /sbin/ldconfig
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}-64bit
 Summary:        The GNU Compiler Atomic Operations Runtime Library
-License:        GPL-3.0-or-later WITH GCC-exception-3.1
+License:        GPL-3.0-with-GCC-exception
 Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -1778,6 +1782,9 @@ ln -s newlib-3.1.0/newlib .
 %patch18 -p1
 %patch19 -p1
 %patch20
+%patch21
+%patch22
+%patch23
 %patch51
 %patch60
 %patch61
@@ -2113,14 +2120,14 @@ export NO_BRP_CHECK_BYTECODE_VERSION=true
 cd obj-%{GCCDIST}
 # Work around tail/head -1 changes
 export _POSIX2_VERSION=199209
-export LIBRARY_PATH=$RPM_BUILD_ROOT%{libsubdir}:$RPM_BUILD_ROOT%{mainlibdirbi}
-make install DESTDIR=$RPM_BUILD_ROOT
+export LIBRARY_PATH=%{buildroot}/%{libsubdir}:%{buildroot}/%{mainlibdirbi}
+%make_install
 
 # verify libasan really ended up with libstdc++ as NEEDED.
 %ifarch %asan_arch
-  readelf -d $RPM_BUILD_ROOT%{versmainlibdir}/libasan.so.%{libasan_sover}* | grep 'NEEDED.*libstdc++' || exit 1
+  readelf -d %{buildroot}/%{versmainlibdir}/libasan.so.%{libasan_sover}* | grep 'NEEDED.*libstdc++' || exit 1
 %if %{biarch}
-  readelf -d $RPM_BUILD_ROOT%{versmainlibdirbi}/libasan.so.%{libasan_sover}* | grep 'NEEDED.*libstdc++' || exit 1
+  readelf -d %{buildroot}/%{versmainlibdirbi}/libasan.so.%{libasan_sover}* | grep 'NEEDED.*libstdc++' || exit 1
 %endif
 %endif
 
@@ -2129,18 +2136,18 @@ for lib in libobjc libgfortran libquadmath libcaf_single \
     libgomp libgomp-plugin-hsa libstdc++ libsupc++ libgo \
     libasan libatomic libitm libtsan liblsan libubsan libvtv \
     libstdc++fs libgomp-plugin-nvptx libgdruntime libgphobos; do
-  rm -f $RPM_BUILD_ROOT%{versmainlibdir}/$lib.la
+  rm -f %{buildroot}/%{versmainlibdir}/$lib.la
 %if %{biarch}
-  rm -f $RPM_BUILD_ROOT%{versmainlibdirbi}/$lib.la
+  rm -f %{buildroot}/%{versmainlibdirbi}/$lib.la
 %endif
 done
 
-mkdir -p $RPM_BUILD_ROOT%{_libdir}
+mkdir -p %{buildroot}/%{_libdir}
 %if %{biarch}
 %if %{build_primary_64bit}
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib
+mkdir -p %{buildroot}/%{_prefix}/lib
 %else
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib64
+mkdir -p %{buildroot}/%{_prefix}/lib64
 %endif
 %endif
 
@@ -2170,7 +2177,7 @@ for i in `find %{GCCDIST}/[36]*/libstdc++-v3/include -name c++config.h 2>/dev/nu
       exit 1
     fi
 
-    cat > $RPM_BUILD_ROOT%{_prefix}/include/c++/%{gcc_dir_version}/%{GCCDIST}/bits/c++config.h <<EOF
+    cat > %{buildroot}/%{_prefix}/include/c++/%{gcc_dir_version}/%{GCCDIST}/bits/c++config.h <<EOF
 #ifndef _CPP_CPPCONFIG_WRAPPER
 #define _CPP_CPPCONFIG_WRAPPER 1
 #include <bits/wordsize.h>
@@ -2184,9 +2191,9 @@ EOF
     break
   fi
 done
-rm -rf $RPM_BUILD_ROOT%{_prefix}/include/c++/%{gcc_dir_version}/%{GCCDIST}/[36]*
+rm -rf %{buildroot}/%{_prefix}/include/c++/%{gcc_dir_version}/%{GCCDIST}/[36]*
 if ! test -z "$dir_ml"; then
-  ln -s . $RPM_BUILD_ROOT%{_prefix}/include/c++/%{gcc_dir_version}/%{GCCDIST}/$dir_ml
+  ln -s . %{buildroot}/%{_prefix}/include/c++/%{gcc_dir_version}/%{GCCDIST}/$dir_ml
 fi
 %endif
 
@@ -2240,21 +2247,21 @@ for libname in \
   libvtv \
 %endif
     ; do
-  for lib in `find $RPM_BUILD_ROOT%{versmainlibdir} -maxdepth 1 -name $libname.so.*`; do
-    mv $lib $RPM_BUILD_ROOT%{mainlibdir}/
+  for lib in `find %{buildroot}/%{versmainlibdir} -maxdepth 1 -name $libname.so.*`; do
+    mv $lib %{buildroot}/%{mainlibdir}/
   done
-  if test -L $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so; then
-    ln -sf %{mainlibdir}/`readlink $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
-         $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so
+  if test -L %{buildroot}/%{versmainlibdir}/$libname.so; then
+    ln -sf %{mainlibdir}/`readlink %{buildroot}/%{versmainlibdir}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
+         %{buildroot}/%{versmainlibdir}/$libname.so
   fi
 %if %{biarch}
-  if test -d $RPM_BUILD_ROOT%{versmainlibdirbi}; then
-    for lib in `find $RPM_BUILD_ROOT%{versmainlibdirbi} -maxdepth 1 -name "$libname.so.*"`; do
-      mv $lib $RPM_BUILD_ROOT%{mainlibdirbi}/
+  if test -d %{buildroot}/%{versmainlibdirbi}; then
+    for lib in `find %{buildroot}/%{versmainlibdirbi} -maxdepth 1 -name "$libname.so.*"`; do
+      mv $lib %{buildroot}/%{mainlibdirbi}/
     done
-    if test -L $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so; then
-      ln -sf %{mainlibdirbi}/`readlink $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
-         $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so
+    if test -L %{buildroot}/%{versmainlibdirbi}/$libname.so; then
+      ln -sf %{mainlibdirbi}/`readlink %{buildroot}/%{versmainlibdirbi}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
+         %{buildroot}/%{versmainlibdirbi}/$libname.so
     fi
   fi
 %endif
@@ -2262,66 +2269,66 @@ done
 %if %{build_cp}
 # And we want to move the shlib gdb pretty printers to a more sane
 # place so ldconfig does not complain
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{mainlibdir}
-mv $RPM_BUILD_ROOT%{mainlibdir}/libstdc++.so.*-gdb.py $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{mainlibdir}/
-sed -i -e '/^libdir/s/\/gcc\/%{GCCDIST}\/%{gcc_dir_version}//g' $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{mainlibdir}/libstdc++.so.*-gdb.py
+mkdir -p %{buildroot}/%{_datadir}/gdb/auto-load%{mainlibdir}
+mv %{buildroot}/%{mainlibdir}/libstdc++.so.*-gdb.py %{buildroot}/%{_datadir}/gdb/auto-load%{mainlibdir}/
+sed -i -e '/^libdir/s/\/gcc\/%{GCCDIST}\/%{gcc_dir_version}//g' %{buildroot}/%{_datadir}/gdb/auto-load%{mainlibdir}/libstdc++.so.*-gdb.py
 %if %{biarch}
-  if test -d $RPM_BUILD_ROOT%{versmainlibdirbi}; then
-    mkdir -p $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{mainlibdirbi}
-    mv $RPM_BUILD_ROOT%{mainlibdirbi}/libstdc++.so.*-gdb.py $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{mainlibdirbi}/
-    sed -i -e '/^libdir/s/\/gcc\/%{GCCDIST}\/%{gcc_dir_version}//g' $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load%{mainlibdirbi}/libstdc++.so.*-gdb.py
+  if test -d %{buildroot}/%{versmainlibdirbi}; then
+    mkdir -p %{buildroot}/%{_datadir}/gdb/auto-load%{mainlibdirbi}
+    mv %{buildroot}/%{mainlibdirbi}/libstdc++.so.*-gdb.py %{buildroot}/%{_datadir}/gdb/auto-load%{mainlibdirbi}/
+    sed -i -e '/^libdir/s/\/gcc\/%{GCCDIST}\/%{gcc_dir_version}//g' %{buildroot}/%{_datadir}/gdb/auto-load%{mainlibdirbi}/libstdc++.so.*-gdb.py
   fi
 %endif
 %endif
 
 # Move libgcc_s around
-if test -L $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so; then
-  rm -f $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so
-  ln -sf /%{_lib}/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdir}/libgcc_s.so
+if test -L %{buildroot}/%{_lib}/libgcc_s.so; then
+  rm -f %{buildroot}/%{_lib}/libgcc_s.so
+  ln -sf /%{_lib}/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdir}/libgcc_s.so
 else
-  mv $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdir}/
+  mv %{buildroot}/%{_lib}/libgcc_s.so %{buildroot}/%{versmainlibdir}/
 fi
-chmod a+x $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so.%{libgcc_s}
+chmod a+x %{buildroot}/%{_lib}/libgcc_s.so.%{libgcc_s}
 %if %{biarch}
 %if %{build_primary_64bit}
-if test -L $RPM_BUILD_ROOT/lib/libgcc_s.so; then
-  rm -f $RPM_BUILD_ROOT/lib/libgcc_s.so
-  ln -sf /lib/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s.so
+if test -L %{buildroot}/lib/libgcc_s.so; then
+  rm -f %{buildroot}/lib/libgcc_s.so
+  ln -sf /lib/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi32}/libgcc_s.so
 else
-  mv $RPM_BUILD_ROOT/lib/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi32}/
+  mv %{buildroot}/lib/libgcc_s.so %{buildroot}/%{versmainlibdirbi32}/
 fi
-ln -sf %{versmainlibdirbi32}/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s_32.so
-chmod a+x $RPM_BUILD_ROOT/lib/libgcc_s.so.%{libgcc_s}
+ln -sf %{versmainlibdirbi32}/libgcc_s.so %{buildroot}/%{versmainlibdirbi32}/libgcc_s_32.so
+chmod a+x %{buildroot}/lib/libgcc_s.so.%{libgcc_s}
 %else
 # 32-bit biarch systems
-if test -L $RPM_BUILD_ROOT/lib64/libgcc_s.so; then
-  rm -f $RPM_BUILD_ROOT/lib64/libgcc_s.so
-  ln -sf /lib64/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s.so
+if test -L %{buildroot}/lib64/libgcc_s.so; then
+  rm -f %{buildroot}/lib64/libgcc_s.so
+  ln -sf /lib64/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi64}/libgcc_s.so
 else
-  mv $RPM_BUILD_ROOT/lib64/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi64}/
+  mv %{buildroot}/lib64/libgcc_s.so %{buildroot}/%{versmainlibdirbi64}/
 fi
-ln -sf %{versmainlibdirbi64}/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s_64.so
-chmod a+x $RPM_BUILD_ROOT/lib64/libgcc_s.so.%{libgcc_s}
+ln -sf %{versmainlibdirbi64}/libgcc_s.so %{buildroot}/%{versmainlibdirbi64}/libgcc_s_64.so
+chmod a+x %{buildroot}/lib64/libgcc_s.so.%{libgcc_s}
 %endif
 %endif
 
 %if %{build_ada}
-mv $RPM_BUILD_ROOT%{libsubdir}/adalib/lib*-*.so $RPM_BUILD_ROOT%{_libdir}
-ln -sf %{_libdir}/libgnarl%{binsuffix}.so $RPM_BUILD_ROOT%{libsubdir}/adalib/libgnarl.so
-ln -sf %{_libdir}/libgnat%{binsuffix}.so $RPM_BUILD_ROOT%{libsubdir}/adalib/libgnat.so
-chmod a+x $RPM_BUILD_ROOT%{_libdir}/libgna*-*.so
+mv %{buildroot}/%{libsubdir}/adalib/lib*-*.so %{buildroot}/%{_libdir}
+ln -sf %{_libdir}/libgnarl%{binsuffix}.so %{buildroot}/%{libsubdir}/adalib/libgnarl.so
+ln -sf %{_libdir}/libgnat%{binsuffix}.so %{buildroot}/%{libsubdir}/adalib/libgnat.so
+chmod a+x %{buildroot}/%{_libdir}/libgna*-*.so
 %if %{biarch}
-mv $RPM_BUILD_ROOT%{versmainlibdirbi}/adalib/lib*-*.so $RPM_BUILD_ROOT%{mainlibdirbi}/
-ln -sf %{mainlibdirbi}/libgnarl%{binsuffix}.so $RPM_BUILD_ROOT%{versmainlibdirbi}/adalib/libgnarl.so
-ln -sf %{mainlibdirbi}/libgnat%{binsuffix}.so $RPM_BUILD_ROOT%{versmainlibdirbi}/adalib/libgnarl.so
-chmod a+x $RPM_BUILD_ROOT%{mainlibdirbi}/libgna*-*.so
+mv %{buildroot}/%{versmainlibdirbi}/adalib/lib*-*.so %{buildroot}/%{mainlibdirbi}/
+ln -sf %{mainlibdirbi}/libgnarl%{binsuffix}.so %{buildroot}/%{versmainlibdirbi}/adalib/libgnarl.so
+ln -sf %{mainlibdirbi}/libgnat%{binsuffix}.so %{buildroot}/%{versmainlibdirbi}/adalib/libgnarl.so
+chmod a+x %{buildroot}/%{mainlibdirbi}/libgna*-*.so
 %endif
 %endif
 
-rm -f $RPM_BUILD_ROOT%{_prefix}/bin/c++%{binsuffix}
+rm -f %{buildroot}/%{_prefix}/bin/c++%{binsuffix}
 
 # Remove some crap from the .la files:
-for l in `find $RPM_BUILD_ROOT -name '*.la'`; do
+for l in `find %{buildroot} -name '*.la'`; do
   echo "changing $l"
   sed -e '/^dependency_libs/s| -L%{_builddir}/[^ ]*||g' \
       -e '/^dependency_libs/s| -L/usr/%{GCCDIST}/bin||g' \
@@ -2345,57 +2352,57 @@ cp `find . -name "*.log"  \! -name "config.log" | grep -v 'acats.\?/tests' | gre
 chmod 644 ../testresults/*
 %endif
 # Remove files that we do not need to clean up filelist
-rm -f $RPM_BUILD_ROOT%{_prefix}/bin/%{GCCDIST}-*
-rm -rf $RPM_BUILD_ROOT%{libsubdir}/install-tools
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/zutil.h
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/linux/a.out.h
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/linux/vt.h
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/asm-generic/socket.h
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/mathdef.h
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/ucontext.h
-rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/statx.h
+rm -f %{buildroot}/%{_prefix}/bin/%{GCCDIST}-*
+rm -rf %{buildroot}/%{libsubdir}/install-tools
+rm -f %{buildroot}/%{libsubdir}/include-fixed/zutil.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/a.out.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/vt.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/asm-generic/socket.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/mathdef.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 %if !%{enable_plugins}
 # no plugins
-rm -rf $RPM_BUILD_ROOT%{libsubdir}/plugin
+rm -rf %{buildroot}/%{libsubdir}/plugin
 %endif
-rm -f  $RPM_BUILD_ROOT%{_infodir}/dir
+rm -f  %{buildroot}/%{_infodir}/dir
 
-rm -f $RPM_BUILD_ROOT%{_mandir}/man7/fsf-funding.7
-rm -f $RPM_BUILD_ROOT%{_mandir}/man7/gfdl.7
-rm -f $RPM_BUILD_ROOT%{_mandir}/man7/gpl.7
-rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
+rm -f %{buildroot}/%{_mandir}/man7/fsf-funding.7
+rm -f %{buildroot}/%{_mandir}/man7/gfdl.7
+rm -f %{buildroot}/%{_mandir}/man7/gpl.7
+rm -f %{buildroot}/%{_libdir}/libiberty.a
 %if %{biarch}
 %if %{build_primary_64bit}
-rm -f $RPM_BUILD_ROOT%{_prefix}/lib/libiberty.a
+rm -f %{buildroot}/%{_prefix}/lib/libiberty.a
 %else
-rm -f $RPM_BUILD_ROOT%{_prefix}/lib64/libiberty.a
+rm -f %{buildroot}/%{_prefix}/lib64/libiberty.a
 %endif
 %endif
-rm -f $RPM_BUILD_ROOT%{libsubdir}/liblto_plugin.a
-rm -f $RPM_BUILD_ROOT%{libsubdir}/liblto_plugin.la
+rm -f %{buildroot}/%{libsubdir}/liblto_plugin.a
+rm -f %{buildroot}/%{libsubdir}/liblto_plugin.la
 %if %{build_go}
 # gccgo.info isn't properly versioned
-rm $RPM_BUILD_ROOT%{_infodir}/gccgo.info*
-rm -f $RPM_BUILD_ROOT%{libsubdir}/buildid
-rm -f $RPM_BUILD_ROOT%{libsubdir}/test2json
-rm -f $RPM_BUILD_ROOT%{libsubdir}/vet
+rm %{buildroot}/%{_infodir}/gccgo.info*
+rm -f %{buildroot}/%{libsubdir}/buildid
+rm -f %{buildroot}/%{libsubdir}/test2json
+rm -f %{buildroot}/%{libsubdir}/vet
 %endif
 
 # For regular build, some info files do not get renamed properly.
 # Do so here.
-mv $RPM_BUILD_ROOT%{_infodir}/libgomp.info $RPM_BUILD_ROOT%{_infodir}/libgomp%{binsuffix}.info
+mv %{buildroot}/%{_infodir}/libgomp.info %{buildroot}/%{_infodir}/libgomp%{binsuffix}.info
 %ifarch %itm_arch
-mv $RPM_BUILD_ROOT%{_infodir}/libitm.info $RPM_BUILD_ROOT%{_infodir}/libitm%{binsuffix}.info
+mv %{buildroot}/%{_infodir}/libitm.info %{buildroot}/%{_infodir}/libitm%{binsuffix}.info
 %endif
 %if %{build_fortran} 
 %ifarch %quadmath_arch
-mv $RPM_BUILD_ROOT%{_infodir}/libquadmath.info $RPM_BUILD_ROOT%{_infodir}/libquadmath%{binsuffix}.info
+mv %{buildroot}/%{_infodir}/libquadmath.info %{buildroot}/%{_infodir}/libquadmath%{binsuffix}.info
 %endif
 %endif
 %if %{build_ada}
-mv $RPM_BUILD_ROOT%{_infodir}/gnat-style.info $RPM_BUILD_ROOT%{_infodir}/gnat-style%{binsuffix}.info
-mv $RPM_BUILD_ROOT%{_infodir}/gnat_rm.info $RPM_BUILD_ROOT%{_infodir}/gnat_rm%{binsuffix}.info
-mv $RPM_BUILD_ROOT%{_infodir}/gnat_ugn.info $RPM_BUILD_ROOT%{_infodir}/gnat_ugn%{binsuffix}.info
+mv %{buildroot}/%{_infodir}/gnat-style.info %{buildroot}/%{_infodir}/gnat-style%{binsuffix}.info
+mv %{buildroot}/%{_infodir}/gnat_rm.info %{buildroot}/%{_infodir}/gnat_rm%{binsuffix}.info
+mv %{buildroot}/%{_infodir}/gnat_ugn.info %{buildroot}/%{_infodir}/gnat_ugn%{binsuffix}.info
 %endif
 
 cd ..

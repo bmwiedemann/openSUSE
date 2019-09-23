@@ -1,10 +1,10 @@
-diff --git a/ld/emulparams/elf_s390.sh b/ld/emulparams/elf_s390.sh
-index 39c746c866..6e25a01e70 100644
---- ld/emulparams/elf_s390.sh
-+++ ld/emulparams/elf_s390.sh
-@@ -13,3 +13,18 @@ GENERATE_PIE_SCRIPT=yes
+Index: ld/emulparams/elf_s390.sh
+===================================================================
+--- ld/emulparams/elf_s390.sh.orig	2019-09-09 18:48:59.000000000 +0200
++++ ld/emulparams/elf_s390.sh	2019-09-09 18:49:02.000000000 +0200
+@@ -12,3 +12,18 @@ GENERATE_SHLIB_SCRIPT=yes
+ GENERATE_PIE_SCRIPT=yes
  NO_SMALL_DATA=yes
- SEPARATE_GOTPLT=12
  IREL_IN_PLT=
 +
 +# Treat a host that matches the target with the possible exception of "x"

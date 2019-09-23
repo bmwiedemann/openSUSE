@@ -18,20 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-snowballstemmer
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        16 stemmer algorithms
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/shibukawa/snowball_py
-Source:         https://pypi.python.org/packages/source/s/snowballstemmer/snowballstemmer-%{version}.tar.gz
-# https://github.com/snowballstem/snowball/issues/102
-Source1:        https://raw.githubusercontent.com/snowballstem/snowball/master/COPYING
-BuildRequires:  %{python_module base}
+URL:            https://github.com/shibukawa/snowball_py
+Source:         https://files.pythonhosted.org/packages/source/s/snowballstemmer/snowballstemmer-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -43,12 +40,10 @@ Romanian, Russian, Spanish, Swedish, Turkish. This is a pure Python
 stemming library. If PyStemmer is available, this module uses it to
 accelerate.
 
-
 %prep
 %setup -q -n snowballstemmer-%{version}
 
 %build
-cp %{SOURCE1} .
 %python_build
 
 %install

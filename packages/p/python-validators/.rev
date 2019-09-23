@@ -50,4 +50,13 @@
   * Added new validator: es_doi, es_nif, es_cif, es_nie (#121, pull request courtesy kingbuzzman)</comment>
     <requestid>705296</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e31bc000bd0ceeaa16fafd7d4b9a011a</srcmd5>
+    <version>0.14.0</version>
+    <time>1569232998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Added new validators ipv4_cidr, ipv6_cidr</comment>
+    <requestid>729736</requestid>
+  </revision>
 </revisionlist>

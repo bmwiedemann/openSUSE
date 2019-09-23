@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 10:11:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.2:
+  * FIX: [attr!=value] pattern was mistakenly using :not([attr|=value]) logic instead of :not([attr=value]).
+  * FIX: Remove undocumented _QUIRKS mode flag
+
+-------------------------------------------------------------------
 Mon Jul 22 12:54:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.9.2:

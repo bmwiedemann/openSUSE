@@ -27,6 +27,8 @@ Group:          System/GUI/KDE
 URL:            https://phonon.kde.org/
 Source:         https://download.kde.org/stable/%{rname}/%{version}/%{rname}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-phonon-from-the-include-directory.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 5.60.0
 BuildRequires:  fdupes
@@ -97,6 +99,7 @@ used.
 
 %prep
 %setup -q -n %{rname}-%{version}
+%patch0 -p1
 
 %build
   %cmake_kf5 -d build

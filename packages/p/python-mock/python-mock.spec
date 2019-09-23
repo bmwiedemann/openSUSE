@@ -1,7 +1,7 @@
 #
 # spec file for package python-mock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define oldpython python
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %bcond_without python2
-Name:           python-mock
-Version:        2.0.0
+Name:           python-mock%{psuffix}
+Version:        3.0.5
 Release:        0
 Summary:        A Python Mocking and Patching Library for Testing
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://www.voidspace.org.uk/python/mock/
-Source:         https://files.pythonhosted.org/packages/source/m/mock/mock-%{version}.tar.gz
-Patch0:         remove_unittest2.patch
-BuildRequires:  %{python_module pbr}
+# no tests in sdis
+# Source:         https://files.pythonhosted.org/packages/source/m/mock/mock-%{version}.tar.gz
+Source:         https://github.com/testing-cabal/mock/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pbr
 Requires:       python-six >= 1.9
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-funcsigs
@@ -52,23 +63,26 @@ needed attributes in the normal way.
 
 %prep
 %setup -q -n mock-%{version}
-# remove test runner which causes test failure all by itself
-rm mock/tests/__main__.py
-%patch0 -p1
 
 %build
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-%python_exec setup.py test
+%if %{with test}
+%pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.rst CHANGELOG.rst
 %{python_sitelib}/*
+%endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:25:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.14.0:
+  * Added new validators ipv4_cidr, ipv6_cidr
+
+-------------------------------------------------------------------
 Fri May 24 19:11:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.13.0:

@@ -17,7 +17,7 @@
 
 
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.36
+Version:        7.38
 Release:        0
 %define cpan_name ExtUtils-MakeMaker
 Summary:        Create a module Makefile
@@ -71,7 +71,7 @@ export BUILDING_AS_PACKAGE=1
 %{__perl} Makefile.PL INSTALLDIRS=vendor
 %{__make} %{?_smp_mflags}
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

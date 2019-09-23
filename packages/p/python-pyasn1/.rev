@@ -336,4 +336,13 @@
     <comment></comment>
     <requestid>669378</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f859a8a4cce1027764f1b11bc4b6e548</srcmd5>
+    <version>0.4.7</version>
+    <time>1569233142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.7:
+  * Many bugfixes all around, see CHANGES.rst</comment>
+    <requestid>729878</requestid>
+  </revision>
 </revisionlist>

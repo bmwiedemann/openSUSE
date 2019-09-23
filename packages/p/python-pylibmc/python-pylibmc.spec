@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylibmc
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        memcached client for Python
 License:        BSD-3-Clause

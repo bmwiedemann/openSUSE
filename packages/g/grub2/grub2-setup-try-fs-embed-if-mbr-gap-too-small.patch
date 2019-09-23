@@ -1,8 +1,8 @@
-Index: grub-2.02~beta2/util/setup.c
+Index: grub-2.02/util/setup.c
 ===================================================================
---- grub-2.02~beta2.orig/util/setup.c
-+++ grub-2.02~beta2/util/setup.c
-@@ -501,8 +501,42 @@ SETUP (const char *dir,
+--- grub-2.02.orig/util/setup.c
++++ grub-2.02/util/setup.c
+@@ -511,8 +511,42 @@ SETUP (const char *dir,
        err = grub_util_ldm_embed (dest_dev->disk, &nsec, maxsec,
  				 GRUB_EMBED_PCBIOS, &sectors);
      else if (ctx.dest_partmap)
@@ -12,7 +12,7 @@ Index: grub-2.02~beta2/util/setup.c
 +        err = ctx.dest_partmap->embed (dest_dev->disk, &nsec, maxsec,
 +				       GRUB_EMBED_PCBIOS, &sectors);
 +#ifdef GRUB_SETUP_BIOS
-+        if (err == GRUB_ERR_OUT_OF_RANGE
++        if ((err == GRUB_ERR_OUT_OF_RANGE || err == GRUB_ERR_FILE_NOT_FOUND)
 +            && dest_dev->disk->id == root_dev->disk->id
 +            && dest_dev->disk->dev->id == root_dev->disk->dev->id)
 +          {
@@ -47,7 +47,7 @@ Index: grub-2.02~beta2/util/setup.c
      else
        err = fs->embed (dest_dev, &nsec, maxsec,
  		       GRUB_EMBED_PCBIOS, &sectors);
-@@ -584,7 +618,7 @@ SETUP (const char *dir,
+@@ -594,7 +628,7 @@ SETUP (const char *dir,
  
      /* Write the core image onto the disk.  */
      for (i = 0; i < nsec; i++)

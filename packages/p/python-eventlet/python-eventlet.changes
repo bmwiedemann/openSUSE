@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 10:40:09 UTC 2019 - Ralf Haferkamp <rhafer@suse.de>
+
+- Update to 0.25.1:
+  * wsgi (tests): Stop using deprecated cgi.parse_qs() to support Python 3.8; Thanks to Miro Hrončok
+  * os: Add workaround to `open` for pathlib on py 3.7; Thanks to David Szotten
+
+-------------------------------------------------------------------
 Fri Jun 21 12:35:13 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - we don't want to obsolete python-doc: rather python-eventlet-doc,

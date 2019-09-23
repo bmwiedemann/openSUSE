@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Sep  9 14:11:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.1.2:
+  * #2270: Fixed self reference in function-scoped fixtures defined plugin classes: previously self would be a reference to a test class, not the plugin class.
+  * #570: Fixed long standing issue where fixture scope was not respected when indirect fixtures were used during parametrization.
+  * #5782: Fix decoding error when printing an error response from --pastebin.
+  * #5786: Chained exceptions in test and collection reports are now correctly serialized, allowing plugins like pytest-xdist to display them properly.
+
+-------------------------------------------------------------------
+Fri Aug 23 12:58:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 5.1.1
+ * Removed:
+   + Request.getfuncargvalue: use Request.getfixturevalue instead.
+   + pytest.raises and pytest.warns no longer support strings as the second argument.
+   + message parameter of pytest.raises.
+   + pytest.raises, pytest.warns and ParameterSet.param now use native keyword-only
+     syntax. This might change the exception message from previous versions, but
+     they still raise TypeError on unknown keyword arguments as before.
+   + pytest.config global variable.
+   + tmpdir_factory.ensuretemp method.
+   + pytest_logwarning hook.
+   + RemovedInPytest4Warning warning type.
+   + request is now a reserved name for fixtures.
+   + Removed unused support code for unittest2.
+   + pytest.fail, pytest.xfail and pytest.skip no longer support bytes
+     for the message argument.
+ * New Config.invocation_args attribute containing the unchanged arguments passed to pytest.main().
+ * New NUMBER option for doctests to ignore irrelevant differences in floating-point numbers
+ * JUnit XML now includes a timestamp and hostname in the testsuite tag.
+ * Fix RuntimeError/StopIteration when trying to collect package with “__init__.py” only.
+ * Warnings issued during pytest_configure are explicitly not treated as errors,
+    even if configured as such, because it otherwise completely breaks pytest.
+ * The XML file produced by --junitxml now correctly contain a <testsuites> root element.
+ * Fixed using multiple short options together in the command-line (for example -vs) in Python 3.8+.
+ * Fix issue where tmp_path and tmpdir would not remove directories containing
+    files marked as read-only, which could lead to pytest crashing when executed
+    a second time with the --basetemp option.
+ * Replace importlib_metadata backport with importlib.metadata from the standard
+    library on Python 3.8+.
+ * Improve type checking for some exception-raising functions (pytest.xfail,
+    pytest.skip, etc) so they provide better error messages when users meant
+    to use marks (for example @pytest.xfail instead of @pytest.mark.xfail).
+ * Fixed internal error when test functions were patched with objects that cannot
+    be compared for truth values against others, like numpy arrays.
+ * pytest.exit is now correctly handled in unittest cases. This makes unittest
+    cases handle quit from pytest’s pdb correctly.
+ * Improved output when parsing an ini configuration file fails.
+ * Fix collection of staticmethod objects defined with functools.partial.
+ * Skip async generator test functions, and update the warning message to refer
+    to async def functions.
+
+-------------------------------------------------------------------
 Fri Jul 19 10:16:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add setuptools requires as we still use entrypoints

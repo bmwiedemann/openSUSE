@@ -1,8 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep  9 17:19:56 UTC 2019 - matz@suse.com
+
+- Update to current 2.32 branch @7b468db3 adding
+  binutils-2.32-branch.diff.gz [jsc#ECO-368].
+- Includes fixes for these CVEs:
+  bsc#1109412 aka CVE-2018-17358 aka PR23686 
+  bsc#1109413 aka CVE-2018-17359 aka PR23686 
+  bsc#1109414 aka CVE-2018-17360 aka PR23685 
+  bsc#1111996 aka CVE-2018-18309 aka PR23770 
+  bsc#1112534 aka CVE-2018-18484 aka GCC PR87636
+  bsc#1112535 aka CVE-2018-18483 aka PR23767
+  bsc#1113247 aka CVE-2018-18607 aka PR23805 
+  bsc#1113252 aka CVE-2018-18606 aka PR23806 
+  bsc#1113255 aka CVE-2018-18605 aka PR23804 
+  bsc#1116827 aka CVE-2018-17985 aka GCC PR87335 
+  bsc#1118830 aka CVE-2018-19932 aka PR23932 
+  bsc#1118831 aka CVE-2018-19931 aka PR23942 
+  bsc#1120640 aka CVE-2018-1000876 aka PR23994
+  bsc#1121034 aka CVE-2018-20651 aka PR24041
+  bsc#1121035 aka CVE-2018-20623 aka PR24049 
+  bsc#1121056 aka CVE-2018-20671 aka PR24005
+  bsc#1142772 aka CVE-2019-1010180 aka PR23657
+- Refresh s390-biarch.diff and
+  binutils-revert-plt32-in-branches.diff .
+- For the SLE12 package this also removes patches
+  binutils-z13-1.diff, binutils-z13-2.diff,
+  binutils-z13-3.diff, binutils-z13-4.diff and binutils-z13-5.diff .
+
+-------------------------------------------------------------------
+Sat Aug 31 14:50:57 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- enable xtensa architecture (Tensilica lc6 and related)
+- Fix SUSE typo in README package name
+
+-------------------------------------------------------------------
 Mon Jul 22 10:41:14 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use -ffat-lto-objects in order to provide assembly for static libs
   (boo#1141913).
+
+-------------------------------------------------------------------
+Mon Jun  3 14:20:07 UTC 2019 - matz@suse.com
+
+Fake entry for SLE12 package variant only:
+- Add support for new z13 instructions. [fate#327074, jsc#SLE-6206,
+  bsc#1137271]
+  Adds patches binutils-z13-1.diff, binutils-z13-2.diff,
+  binutils-z13-3.diff, binutils-z13-4.diff and binutils-z13-5.diff .
 
 -------------------------------------------------------------------
 Mon Apr 29 11:10:11 UTC 2019 - Martin Liška <mliska@suse.cz>

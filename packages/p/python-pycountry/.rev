@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>723944</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3c99032c1513ca6098d942957967857</srcmd5>
+    <version>19.8.18</version>
+    <time>1569233130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.8.18:
+  * Various country fixes
+- Remove merged patch pycountry-19.7.15-fix-reading-description.patch</comment>
+    <requestid>729875</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-twine
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/t/twine/twine-%{v
 BuildRequires:  %{python_module pkginfo >= 1.4.2}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module readme_renderer >= 24.0}
+BuildRequires:  %{python_module readme_renderer >= 21.0}
 BuildRequires:  %{python_module requests >= 2.17.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.8.0}
 BuildRequires:  %{python_module setuptools >= 0.7.0}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module tqdm >= 4.14}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pkginfo >= 1.4.2
-Requires:       python-readme_renderer >= 24.0
+Requires:       python-readme_renderer >= 21.0
 Requires:       python-requests >= 2.17.0
 Requires:       python-requests-toolbelt >= 0.8.0
 Requires:       python-setuptools >= 0.7.0
@@ -71,7 +71,7 @@ sed -i '1s/^#!.*//' twine/__main__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %post
 %python_install_alternative twine

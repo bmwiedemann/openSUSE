@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:53:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.9.0:
+  * Update to sync with mongodb 4.2
+
+-------------------------------------------------------------------
 Mon May 27 09:15:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix test run on 32bit:

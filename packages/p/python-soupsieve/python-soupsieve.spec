@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-soupsieve%{psuffix}
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT
@@ -48,6 +48,7 @@ Requires:       python-backports.functools_lru_cache
 %python_subpackages
 
 %description
+A modern CSS selector implementation for BeautifulSoup
 
 %prep
 %setup -q -n soupsieve-%{version}

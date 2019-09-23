@@ -19,15 +19,13 @@
 %define real_name pycountry
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pycountry
-Version:        19.7.15
+Version:        19.8.18
 Release:        0
 Summary:        Databases for ISO standards 639 3166 3166-2 4217 15924
 License:        LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/pycountry/
 Source:         https://pypi.io/packages/source/p/%{real_name}/%{real_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pycountry-19.7.15-fix-reading-description.patch buschmann23@opensuse.org -- fix wrong enconding
-Patch0:         pycountry-19.7.15-fix-reading-description.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +45,6 @@ Translation files for the various strings are included as well.
 
 %prep
 %setup -q -n %{real_name}-%{version}
-%patch0 -p1
 
 %build
 %python_build

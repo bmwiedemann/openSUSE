@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 18:11:30 UTC 2019 - federico@suse.com
+
+- Use gcc7 on all of SLE12, since the embedded LLVM wants at least gcc 5.1.
+
+- Add rust-61206-assume-tarball-llvm-is-fresh.patch - Upstream fix to make
+  LLVM not be rebuilt during the installation phase.
+
+-------------------------------------------------------------------
 Wed Aug 28 01:00:37 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Update to version 1.37.0

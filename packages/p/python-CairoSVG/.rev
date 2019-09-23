@@ -58,4 +58,15 @@
   * Follow aspect and position hints when using forced output size</comment>
     <requestid>707611</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a1bf7a4e3b20a4f70c9f9400a84fe83</srcmd5>
+    <version>2.4.1</version>
+    <time>1569232959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Fix the scale parameter
+  * Allow href attributes with no namespace
+  * Fix the tree root detection</comment>
+    <requestid>729372</requestid>
+  </revision>
 </revisionlist>

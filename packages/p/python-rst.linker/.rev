@@ -25,4 +25,14 @@
   variant anymore</comment>
     <requestid>708342</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e993cf6ad3838bd581d21da7f741e862</srcmd5>
+    <version>1.11</version>
+    <time>1569233066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11:
+  * Now supply the version of the package during Sphinx setup.
+  * Also supply &quot;parallel_read_safe=True&quot;</comment>
+    <requestid>729786</requestid>
+  </revision>
 </revisionlist>

@@ -116,4 +116,17 @@
     <comment></comment>
     <requestid>706523</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e44e7c873939870260ff76faa79593d3</srcmd5>
+    <version>3.9.0</version>
+    <time>1569233122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.0:
+  * Add support for loading PEM files encrypted with AES256-CBC.
+  * Add support for XChaCha20 and XChaCha20-Poly1305 ciphers.
+  * Add support for bcrypt key derivation function (Crypto.Protocol.KDF.bcrypt).
+  * Add support for left multiplication of an EC point by a scalar.
+  * Add support for importing ECC and RSA keys in the new OpenSSH format.</comment>
+    <requestid>729873</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-trollius
-Version:        2.2
+Version:        2.2.post1
 Release:        0
 Summary:        Port of the Tulip project (asyncio module, PEP 3156) on Python 2
 License:        Apache-2.0
@@ -56,7 +56,7 @@ sed -e '1c#!python2' -i examples/tcp_echo.py examples/udp_echo.py
 %fdupes %{buildroot}%{python2_sitelib}
 
 %check
-python2 setup.py test
+python2 runtests.py
 
 %files
 %license COPYING

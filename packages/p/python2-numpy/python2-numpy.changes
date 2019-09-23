@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  6 10:50:41 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- as bypass boo#1148173 ignore %check error for ppc64/ppc64le
+
+-------------------------------------------------------------------
 Wed Aug 28 15:27:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.16.5

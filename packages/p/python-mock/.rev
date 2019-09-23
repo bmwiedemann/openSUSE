@@ -216,4 +216,14 @@
   Remove unnecessary now unittest2-fallback.patch</comment>
     <requestid>628988</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b933f93445875375f9d8a73fbe7721e</srcmd5>
+    <version>3.0.5</version>
+    <time>1569232936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.5
+- drop remove_unittest2.patch
+ * more in CHANGELOG.rst</comment>
+    <requestid>703239</requestid>
+  </revision>
 </revisionlist>

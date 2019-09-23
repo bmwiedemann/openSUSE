@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -58,13 +58,13 @@ Release:        0
 %if %{run_tests}
 %define	make_check_handling	false
 %endif
-# handle all binary object formats supported by SuSE (and a few more)
+# handle all binary object formats supported by SUSE (and a few more)
 %ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le s390 s390x x86_64
 %define build_multitarget 1
 %else
 %define build_multitarget 0
 %endif
-%define target_list aarch64 alpha armv5l armv6l armv7l armv8l hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 s390 s390x sh4 sparc sparc64 x86_64
+%define target_list aarch64 alpha armv5l armv6l armv7l armv8l hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 s390 s390x sh4 sparc sparc64 x86_64 xtensa
 #
 #
 #
@@ -82,8 +82,9 @@ Source:         binutils-%{version}.tar.bz2
 Source4:        binutils-%{version}.tar.bz2.sig
 Source5:        binutils.keyring
 Source1:        pre_checkin.sh
-Source2:        README.First-for.SuSE.packagers
+Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
+Patch1:         binutils-2.32-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -147,7 +148,7 @@ binutils.
 %define HOST %{_target_cpu}-suse-linux-gnueabi
 %else
 %define HOST %(echo %{_target_cpu} | sed -e "s/parisc/hppa/" -e "s/i.86/i586/" -e "s/ppc/powerpc/" -e "s/sparc64v.*/sparc64/" -e "s/sparcv.*/sparc/")-suse-linux
-%endif 
+%endif
 %define DIST %(echo '%distribution' | sed 's/ (.*)//')
 
 %prep
@@ -155,6 +156,7 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %setup -q -n binutils-%{version}
 # Patch is outside test_vanilla because it's supposed to be the
 # patch bringing the tarball to the newest upstream version
+%patch1 -p1
 %if !%{test_vanilla}
 %patch3
 %patch4
@@ -186,11 +188,14 @@ cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 
 %build
 sed -i -e '/BFD_VERSION_DATE/s/$/-%(echo %release | sed 's/\.[0-9]*$//')/' bfd/version.h
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error -ffat-lto-objects"
+RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error"
+%if 0%{suse_version} > 1110
+RPM_OPT_FLAGS="$RPM_OPT_FLAGS -ffat-lto-objects"
+%endif
 
 %if 0%{!?cross:1}
 # Building native binutils
-echo "Building native binutils." 
+echo "Building native binutils."
 %if %build_multitarget
 EXTRA_TARGETS="%(printf ,%%s-suse-linux %target_list)"
 EXTRA_TARGETS="$EXTRA_TARGETS,powerpc-macos,powerpc-macos10,spu-elf,x86_64-pep"
@@ -266,7 +271,7 @@ make %{?_smp_mflags}
 
 %else
 # building cross-TARGET-binutils
-echo "Building cross binutils." 
+echo "Building cross binutils."
 mkdir build-dir
 cd build-dir
 EXTRA_TARGETS=

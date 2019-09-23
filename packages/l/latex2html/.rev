@@ -282,4 +282,41 @@ A    latex2html-share-dir.diff</comment>
   % latex2html-perl526.patch</comment>
     <requestid>662190</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>abc990e94e42f8c8e8071730f4ba2c9d</srcmd5>
+    <version>2019.2</version>
+    <time>1569232858</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2019.2
+  * format author block consistently
+    https://bugs.debian.org/223565
+  * simplify build of manual
+    https://bugs.debian.org/639708
+  * convert -- to &amp;ndash; and --- to &amp;mdash;
+    If you want &quot;--&quot;, use &quot;-{}-&quot;, even inside \texttt{}
+    Behavior of \textt{--} in latex depends on font encoding.
+    https://bugs.debian.org/75416
+  * fix unicode in -html_version 5.0,math
+  * fix -notop_navigation (had no effect)
+  * remove obsolete &quot;table&quot; option
+    https://bugs.debian.org/276037
+  * fix &quot;make test&quot;
+  * ppmtopng syntax works with all versions of ppmtopng
+  * respect ./configure --with-perl=/bin/perl
+  * fallback for unknown column types, such as those
+    introduced by \newcolumntype.
+    https://bugs.debian.org/899306
+  * fix \sffamily
+    https://bugs.debian.org/111441
+  * produce svg images using pdftocairo
+  * use latex preview package to produce cropped images.pdf
+  * pdflatex by default
+  * dvipng by default
+  * html 5
+  * unicode input and output by default
+  * Support for packages luainputenc and polyglossia
+  * Support for picture generation via pdflatex, lualatex
+    or dvilualatex (options -use_pdftex, -use_luatex,</comment>
+    <requestid>730496</requestid>
+  </revision>
 </revisionlist>

@@ -18,22 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pygments-pytest
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A pygments lexer for pytest output
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/asottile/pygments-pytest
 Source:         https://github.com/asottile/pygments-pytest/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module py > 1.7.1}
+BuildRequires:  %{python_module pygments-ansi-color >= 0.0.3}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module py > 1.7.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pygments-ansi-color}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest
 Requires:       python-pygments
+Requires:       python-pytest
 BuildArch:      noarch
 %python_subpackages
 

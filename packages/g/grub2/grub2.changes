@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 04:51:16 UTC 2019 - Michael Chang <mchang@suse.com>
+
+- Fix fallback embed doesn't work when no post mbr gap at all (boo#1142229)
+  * Refresh grub2-setup-try-fs-embed-if-mbr-gap-too-small.patch
+
+-------------------------------------------------------------------
 Thu Jul 18 09:54:14 UTC 2019 - mchang@suse.com
 
 - Revert grub2-ieee1275-FCP-methods-for-WWPN-and-LUNs.patch until merged by

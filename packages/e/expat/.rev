@@ -465,4 +465,12 @@
 - Removed expat-2.2.6-fix-make-clean.patch</comment>
     <requestid>713395</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9068fae7f75ec99615a85bd9637a9a48</srcmd5>
+    <version>2.2.8</version>
+    <time>1569232864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731224</requestid>
+  </revision>
 </revisionlist>

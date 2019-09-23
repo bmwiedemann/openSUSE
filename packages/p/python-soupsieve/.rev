@@ -42,4 +42,14 @@
   * FIX: A top level tag is not a :root tag if it has sibling text nodes or tag nodes. This is an issue that mostly manifests when using html.parser as the parser will allow multiple root nodes.</comment>
     <requestid>717581</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>42af7ac0a3f7c8786df64d340d7a972a</srcmd5>
+    <version>1.9.3</version>
+    <time>1569233044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * FIX: [attr!=value] pattern was mistakenly using :not([attr|=value]) logic instead of :not([attr=value]).
+  * FIX: Remove undocumented _QUIRKS mode flag</comment>
+    <requestid>729764</requestid>
+  </revision>
 </revisionlist>

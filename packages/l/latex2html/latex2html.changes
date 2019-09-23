@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Sep 11 18:49:17 UTC 2019 - pgajdos@suse.com
+
+- version update to 2019.2
+  * format author block consistently
+    https://bugs.debian.org/223565
+  * simplify build of manual
+    https://bugs.debian.org/639708
+  * convert -- to &ndash; and --- to &mdash;
+    If you want "--", use "-{}-", even inside \texttt{}
+    Behavior of \textt{--} in latex depends on font encoding.
+    https://bugs.debian.org/75416
+  * fix unicode in -html_version 5.0,math
+  * fix -notop_navigation (had no effect)
+  * remove obsolete "table" option
+    https://bugs.debian.org/276037
+  * fix "make test"
+  * ppmtopng syntax works with all versions of ppmtopng
+  * respect ./configure --with-perl=/bin/perl
+  * fallback for unknown column types, such as those
+    introduced by \newcolumntype.
+    https://bugs.debian.org/899306
+  * fix \sffamily
+    https://bugs.debian.org/111441
+  * produce svg images using pdftocairo
+  * use latex preview package to produce cropped images.pdf
+  * pdflatex by default
+  * dvipng by default
+  * html 5
+  * unicode input and output by default
+  * Support for packages luainputenc and polyglossia
+  * Support for picture generation via pdflatex, lualatex
+    or dvilualatex (options -use_pdftex, -use_luatex,
+    *use_luadvi correspondingly)
+  * perl 5.26: unescaped brace
+  * polski.perl: no translation until \prefixing command 
+- use native `make test`
+- use latex2html.1 from tarball
+- deleted patches
+  - latex2html-perl526.patch (upstreamed)
+- deleted sources
+  - latex2html-README.SUSE (not needed)
+  - local.pm (not needed)
+  - testfile.tex (not needed)
+- added required texlive-preview
+
+-------------------------------------------------------------------
 Mon Dec 31 07:58:03 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
 
 - updated to 2018

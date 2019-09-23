@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 07:01:00 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2019c (bsc#1150451)
+  * Fiji observes DST from 2019-11-10 to 2020-01-12.
+  * Norfolk Island starts observing Australian-style DST.
+
+-------------------------------------------------------------------
 Tue Jul  2 07:53:08 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone update 2019b (bsc#1140016):

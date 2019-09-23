@@ -111,6 +111,75 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{pkgname}
+%define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
+
+URL:            https://gcc.gnu.org/
+Version:        9.2.1+r275327
+Release:        0
+%define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
+%define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
+%define binsuffix -9
+Source:         gcc-%{version}.tar.xz
+Source1:        change_spec
+Source2:        gcc9-rpmlintrc
+Source3:        gcc9-testresults-rpmlintrc
+Source4:        README.First-for.SuSE.packagers
+Source5:        newlib-3.1.0.tar.xz
+Patch2:         gcc-add-defaultsspec.diff
+Patch5:         tls-no-direct.diff
+Patch6:         gcc43-no-unwind-tables.diff
+Patch7:         gcc48-libstdc++-api-reference.patch
+Patch9:         gcc48-remove-mpfr-2.4.0-requirement.patch
+Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
+Patch15:        gcc7-avoid-fixinc-error.diff
+Patch16:        gcc9-reproducible-builds.patch
+Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
+Patch18:        gcc9-value-prof.patch
+Patch19:        gcc9-add-flto=auto.patch
+Patch20:        gcc9-pr91307.patch
+Patch21:        gcc9-autodetect-g-at-lto-link.patch
+Patch22:        gcc9-pr91772.patch
+Patch23:        gcc9-pr91763.patch
+# A set of patches from the RH srpm
+Patch51:        gcc41-ppc32-retaddr.patch
+# Some patches taken from Debian
+Patch60:        gcc44-textdomain.patch
+Patch61:        gcc44-rename-info-files.patch
+
+# Define the canonical target and host architecture
+#   %%gcc_target_arch  is supposed to be the full target triple
+#   %%cross_arch       is supposed to be the rpm target variant arch
+#   %%TARGET_ARCH      will be the canonicalized target CPU part
+#   %%HOST_ARCH        will be the canonicalized host CPU part
+%if 0%{?gcc_target_arch:1}
+%define TARGET_ARCH %(echo %{cross_arch} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
+%else
+%define TARGET_ARCH %(echo %{_target_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
+%endif
+%if 0%{?disable_32bit:1}
+%define biarch 0
+%else
+%define biarch %(case " %{biarch_targets} " in (*" %{TARGET_ARCH} "*) echo 1;; (*) echo 0;; esac)
+%endif
+
+%define HOST_ARCH %(echo %{_host_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
+%ifarch ppc
+%define GCCDIST powerpc64-suse-linux
+%else
+%ifarch %sparc
+%define GCCDIST sparc64-suse-linux
+%else
+%ifarch %arm
+%define GCCDIST %{HOST_ARCH}-suse-linux-gnueabi
+%else
+%define GCCDIST %{HOST_ARCH}-suse-linux
+%endif
+%endif
+%endif
+
+%define libsubdir %{_libdir}/gcc/%{GCCDIST}/%{gcc_dir_version}
+%define gxxinclude %{_prefix}/include/c++/%{gcc_dir_version}
+
 %if "%{cross_arch}" != "nvptx"
 BuildRequires:  cross-%{binutils_target}-binutils
 Requires:       cross-%{binutils_target}-binutils
@@ -176,87 +245,20 @@ Conflicts:      cross-%{cross_arch}-gcc9
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-
-%define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
-
-URL:            https://gcc.gnu.org/
-Version:        9.2.1+r274709
-Release:        0
-%define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
-%define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
-%define binsuffix -9
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         gcc-%{version}.tar.xz
-Source1:        change_spec
-Source2:        gcc9-rpmlintrc
-Source3:        gcc9-testresults-rpmlintrc
-Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-3.1.0.tar.xz
-Patch2:         gcc-add-defaultsspec.diff
-Patch5:         tls-no-direct.diff
-Patch6:         gcc43-no-unwind-tables.diff
-Patch7:         gcc48-libstdc++-api-reference.patch
-Patch9:         gcc48-remove-mpfr-2.4.0-requirement.patch
-Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
-Patch15:        gcc7-avoid-fixinc-error.diff
-Patch16:        gcc9-reproducible-builds.patch
-Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
-Patch18:        gcc9-value-prof.patch
-Patch19:        gcc9-add-flto=auto.patch
-Patch20:        gcc9-pr91307.patch
-# A set of patches from the RH srpm
-Patch51:        gcc41-ppc32-retaddr.patch
-# Some patches taken from Debian
-Patch60:        gcc44-textdomain.patch
-Patch61:        gcc44-rename-info-files.patch
-
-Summary:        The GNU C Compiler and Support Files
+Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 
 %description
-Core package for the GNU Compiler Collection, including the C language
-frontend.
-
-Language frontends other than C are split to different sub-packages,
-namely gcc-ada, gcc-c++, gcc-fortran, gcc-obj, gcc-obj-c++ and gcc-go.
-
-
-
-
-# Define the canonical target and host architecture
-#   %%gcc_target_arch  is supposed to be the full target triple
-#   %%cross_arch       is supposed to be the rpm target variant arch
-#   %%TARGET_ARCH      will be the canonicalized target CPU part
-#   %%HOST_ARCH        will be the canonicalized host CPU part
-%if 0%{?gcc_target_arch:1}
-%define TARGET_ARCH %(echo %{cross_arch} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
-%else
-%define TARGET_ARCH %(echo %{_target_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
+The GNU Compiler Collection as a cross-compiler targeting %{cross_arch}.
+%if 0%{?gcc_icecream:1}
+Note this is only useful for building freestanding things like the
+kernel since it fails to include target libraries and headers.
 %endif
-%if 0%{?disable_32bit:1}
-%define biarch 0
-%else
-%define biarch %(case " %{biarch_targets} " in (*" %{TARGET_ARCH} "*) echo 1;; (*) echo 0;; esac)
+%if 0%{?gcc_libc_bootstrap:1}
+This is a package that is necessary for bootstrapping another package
+only, it is not intended for any other use.
 %endif
-
-%define HOST_ARCH %(echo %{_host_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
-%ifarch ppc
-%define GCCDIST powerpc64-suse-linux
-%else
-%ifarch %sparc
-%define GCCDIST sparc64-suse-linux
-%else
-%ifarch %arm
-%define GCCDIST %{HOST_ARCH}-suse-linux-gnueabi
-%else
-%define GCCDIST %{HOST_ARCH}-suse-linux
-%endif
-%endif
-%endif
-
-%define libsubdir %{_libdir}/gcc/%{GCCDIST}/%{gcc_dir_version}
-%define gxxinclude %{_prefix}/include/c++/%{gcc_dir_version}
 
 %prep
 %if 0%{?nvptx_newlib:1}
@@ -282,6 +284,9 @@ ln -s newlib-3.1.0/newlib .
 %patch18 -p1
 %patch19 -p1
 %patch20
+%patch21
+%patch22
+%patch23
 %patch51
 %patch60
 %patch61

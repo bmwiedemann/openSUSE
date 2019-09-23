@@ -218,4 +218,14 @@
     <comment></comment>
     <requestid>722638</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>372d319538feb2a5ffdbcd95afa72dad</srcmd5>
+    <version>3.3.8</version>
+    <time>1569233078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.8:
+  * Fixed MONITOR parsing to properly parse IPv6 client addresses
+  * Fixed a regression introduced in 3.3.0</comment>
+    <requestid>729802</requestid>
+  </revision>
 </revisionlist>

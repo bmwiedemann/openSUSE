@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyasn1
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-pyasn1
-Version:        0.4.5
+Version:        0.4.7
 Release:        0
 Summary:        ASN.1 types and codecs
 License:        BSD-2-Clause

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymongo
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
+%if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Suggests:       mongodb
 %endif
 %python_subpackages

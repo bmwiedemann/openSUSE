@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 27 17:49:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add versioned dependency on timezone database to ensure the
+  correct data is installed
+- Remove system_zoneinfo.patch, and instead add a symlink to the
+  system timezone database
+- Replace unnecessary pytest, adding a missing __init__.py in the
+  tests to allow the test suite to work on Python 2.7 without pytest
+
+-------------------------------------------------------------------
 Fri Aug  9 13:22:52 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2019.2

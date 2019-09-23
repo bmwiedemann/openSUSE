@@ -80,4 +80,14 @@
 - Use pytest for tests because of an upstream bug.</comment>
     <requestid>719533</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c0beaccdad000c8043d93820b6556e98</srcmd5>
+    <version>3.7.4.1</version>
+    <time>1569233011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.4.1:
+  * No upstream changelog
+- Remove merged patch test-sys-executable.patch</comment>
+    <requestid>729746</requestid>
+  </revision>
 </revisionlist>

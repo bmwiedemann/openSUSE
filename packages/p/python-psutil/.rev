@@ -436,4 +436,31 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>687163</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f99878c3525e00f8e5bb316f875c95ac</srcmd5>
+    <version>5.6.3</version>
+    <time>1569233153</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to skip more tests that won't work in OBS:
+  * skip-obs.patch
+
+- Update to 5.6.3:
+  * 1494: [AIX] added support for Process.environ(). (patch by Arnon Yaari)
+  * 1276: [AIX] can't get whole cmdline(). (patch by Arnon Yaari)
+  * 1501_: [Windows] Process cmdline() and exe() raise unhandled &quot;WinError 1168 element not found&quot; exceptions for &quot;Registry&quot; and &quot;Memory Compression&quot; psuedo processes on Windows 10.
+  * 1526_: [NetBSD] process cmdline() could raise MemoryError. (patch by Kamil Rytarowski)
+
+- Update to 5.6.2:
+  * 1404: [Linux] cpu_count(logical=False) uses a second method (read from /sys/devices/system/cpu/cpu[0-9]/topology/core_id) in order to determine the number of physical CPUs in case /proc/cpuinfo does not provide this info.
+  * 1458: provide coloured test output. Also show failures on KeyboardInterrupt.
+  * 1464: various docfixes (always point to python3 doc, fix links, etc.).
+  * 1478: add make command to re-run tests failed on last run.
+  * 1456: [Linux] cpu_freq() returns None instead of 0.0 when min/max not available (patch by Alex Manuskin)
+  * 1462: [Linux] (tests) make tests invariant to LANG setting (patch by Benjamin Drung)
+  * 1463: cpu_distribution.py script was broken.
+  * 1470: [Linux] disk_partitions(): fix corner case when /etc/mtab doesn't exist. (patch by Cedric Lamoriniere)
+  * 1472: [Linux] cpu_freq() does not return all CPUs on Rasbperry-pi 3.
+  * 1493: [Linux] cpu_freq(): handle the case where /sys/devices/system/cpu/cpufreq/ exists but is empty.</comment>
+    <requestid>729891</requestid>
+  </revision>
 </revisionlist>

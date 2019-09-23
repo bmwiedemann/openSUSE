@@ -194,8 +194,10 @@ BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  perl
 BuildRequires:  zlib-devel
+%if %{suse_version} >= 1500
 # for SDT markers in the C++ unwinder and gdb breakpoints on exceptions
 BuildRequires:  systemtap-headers
+%endif
 %if %{suse_version} >= 1230
 BuildRequires:  isl-devel
 %endif
@@ -262,7 +264,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        9.2.1+r274709
+Version:        9.2.1+r275327
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -302,7 +304,6 @@ Requires:       libvtv%{libvtv_sover} >= %{version}-%{release}
 Suggests:       gcc9-info gcc9-locale
 %endif
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
 Source2:        gcc9-rpmlintrc
@@ -321,6 +322,9 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc9-value-prof.patch
 Patch19:        gcc9-add-flto=auto.patch
 Patch20:        gcc9-pr91307.patch
+Patch21:        gcc9-autodetect-g-at-lto-link.patch
+Patch22:        gcc9-pr91772.patch
+Patch23:        gcc9-pr91763.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -451,6 +455,9 @@ ln -s newlib-3.1.0/newlib .
 %patch18 -p1
 %patch19 -p1
 %patch20
+%patch21
+%patch22
+%patch23
 %patch51
 %patch60
 %patch61

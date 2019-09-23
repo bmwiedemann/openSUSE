@@ -155,4 +155,14 @@
 - Remove merged patch pyyaml5.patch</comment>
     <requestid>717577</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e253e49778d141de1814424812a9809d</srcmd5>
+    <version>2.5.1</version>
+    <time>1569233037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  * documentation updates
+  * various bugfixes</comment>
+    <requestid>729756</requestid>
+  </revision>
 </revisionlist>

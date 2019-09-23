@@ -40,6 +40,8 @@ Recommends:     cron-32bit
 Recommends:     cronie-32bit
 Recommends:     glibc-locale-32bit
 Recommends:     systemd-sysvinit-32bit
+# workaround for boo#1151148
+Recommends:     snapper-32bit
 Recommends:     branding-openSUSE-32bit
 Recommends:     branding-SLE-32bit
 Recommends:     lshw-32bit

@@ -90,6 +90,8 @@ ExclusiveArch: do-not-build
 %endif
 
 Name:         %{pkgname}
+# SRC-COMMON-BEGIN
+# SRC-COMMON-END
 %if "%{cross_arch}" != "nvptx"
 BuildRequires: cross-%{binutils_target}-binutils
 Requires: cross-%{binutils_target}-binutils
@@ -155,10 +157,23 @@ Conflicts: cross-%{cross_arch}-gcc@base_ver@
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Summary:	The GNU Compiler Collection targeting %{cross_arch}
+License:	GPL-3.0-or-later
 
-# COMMON-BEGIN
-# COMMON-END
+%description
+The GNU Compiler Collection as a cross-compiler targeting %{cross_arch}.
+%if 0%{?gcc_icecream:1}
+Note this is only useful for building freestanding things like the
+kernel since it fails to include target libraries and headers.
+%endif
+%if 0%{?gcc_libc_bootstrap:1}
+This is a package that is necessary for bootstrapping another package
+only, it is not intended for any other use.
+%endif
 
+
+# BUILD-COMMON-BEGIN
+# BUILD-COMMON-END
 %if 0%{!?gcc_icecream:1} && 0%{!?gcc_libc_bootstrap:1}
 make %{?_smp_mflags}
 %else

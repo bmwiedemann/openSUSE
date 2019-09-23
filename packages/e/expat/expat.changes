@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep 16 08:21:52 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 2.2.8
+  * Security fixes: (CVE-2019-15903, bsc#1149429)
+    - CVE-2019-15903 -- Fix heap overflow triggered by XML_GetCurrentLineNumber
+      (or XML_GetCurrentColumnNumber), and deny internal entities closing the doctype;
+  * Bug fixes:
+    - Fix cases where XML_StopParser did not have any effect
+      when called from inside of an end element handler
+    - xmlwf: Fix exit code for operation without "-d DIRECTORY";
+      previously, only "-d DIRECTORY" would give you a proper exit code:
+      Now both cases return exit code 2.
+  * Other changes:
+    - examples: Improve elements.c
+    - Autotools: Add argument --enable-xml-attr-info
+    - Autotools: Add arguments --with-getrandom --without-getrandom --with-sys-getrandom --without-sys-getrandom
+    - Autotools: Fix linking issues with "./configure LD=clang"
+    - Autotools: Fix "make run-xmltest" for out-of-source builds
+    - CMake: Pull all options from Expat <=2.2.7 into namespace
+    - CMake: Add argument -DEXPAT_ATTR_INFO=(ON|OFF), default OFF
+    - CMake: Add argument -DEXPAT_LARGE_SIZE=(ON|OFF), default OFF
+    - CMake: Add argument -DEXPAT_MIN_SIZE=(ON|OFF), default OFF
+    - CMake: Add arguments -DEXPAT_WITH_GETRANDOM=(ON|OFF|AUTO), default AUTO
+    - CMake: Add arguments -DEXPAT_WITH_SYS_GETRANDOM=(ON|OFF|AUTO), default AUTO
+    - CMake: Install expat_config.h to include directory
+    - CMake: Generate and install configuration files for future find_package(expat [..] CONFIG [..])
+    - CMake: Now produces a summary of applied configuration
+    - CMake: Require C++ compiler only when tests are enabled
+    - CMake: Fix compilation for 16bit character types, i.e. ex -DXML_UNICODE=ON (and ex -DXML_UNICODE_WCHAR_T=ON)
+    - CMake: Port "make run-xmltest" from GNU Autotools to CMake
+    - CMake: Integrate OSS-Fuzz fuzzers, option -DEXPAT_BUILD_FUZZERS=(ON|OFF), default OFF
+- Removed patches fixed in the update:
+  * expat-CVE-2019-15903.patch
+  * expat-CVE-2019-15903-tests.patch
+
+-------------------------------------------------------------------
+Wed Sep  4 17:11:38 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix (CVE-2019-15903, bsc#1149429)
+  * Crafted XML input results in heap-based buffer over-read by fooling
+    the parser into changing from DTD parsing to document parsing
+  * Added patches:
+    - expat-CVE-2019-15903.patch
+    - expat-CVE-2019-15903-tests.patch
+
+-------------------------------------------------------------------
 Tue Jul  2 10:33:51 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Version update to 2.2.7 (CVE-2018-20843, bsc#1139937)

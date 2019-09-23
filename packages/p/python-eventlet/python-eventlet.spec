@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-eventlet
-Version:        0.25.0
+Version:        0.25.1
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT

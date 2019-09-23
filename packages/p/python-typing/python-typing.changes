@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:39:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.7.4.1:
+  * No upstream changelog
+- Remove merged patch test-sys-executable.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 08:59:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in pytest, causes circular deps

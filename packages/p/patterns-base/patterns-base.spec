@@ -142,6 +142,8 @@ Recommends:     cron
 Recommends:     cronie
 Recommends:     glibc-locale
 Recommends:     systemd-sysvinit
+# workaround for boo#1151148
+Recommends:     snapper
 
 %if 0%{?is_opensuse}
 # get it branded

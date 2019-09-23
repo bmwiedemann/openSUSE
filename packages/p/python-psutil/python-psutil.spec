@@ -16,14 +16,14 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch x86_64 %{ix86}
 %bcond_without  test
 %else
 %bcond_with     test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-psutil
-Version:        5.6.1
+Version:        5.6.3
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%
 Patch0:         pr_1364.patch
 Patch1:         skip-test-missing-warnings.patch
 Patch2:         skip-flaky-i586.patch
+Patch3:         skip-obs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -58,6 +59,7 @@ A graphical interface that lets you easily analyze and introspect unaltered runn
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # Remove shebangs
 sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.py,_psposix.py,_pssunos.py,_pswindows.py}
@@ -71,7 +73,6 @@ sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.p
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-psutil
 cp -r scripts %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 find %{buildroot}%{_docdir}/%{$python_prefix}-psutil/scripts/ -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python|#!%__$python|" {} \;
-find %{buildroot}%{$python_sitearch}/psutil/tests/ -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python|#!%__$python|" {} \;
 rm -r %{buildroot}%{$python_sitearch}/psutil/tests/
 %fdupes %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 %fdupes %{buildroot}%{$python_sitearch}

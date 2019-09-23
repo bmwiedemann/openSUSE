@@ -673,4 +673,41 @@
   * sphinx2.0.patch</comment>
     <requestid>717009</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3b73afb3cb06fb8c6319edd1b694220e</srcmd5>
+    <version>5.1.2</version>
+    <time>1569232991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.2:
+  * #2270: Fixed self reference in function-scoped fixtures defined plugin classes: previously self would be a reference to a test class, not the plugin class.
+  * #570: Fixed long standing issue where fixture scope was not respected when indirect fixtures were used during parametrization.
+  * #5782: Fix decoding error when printing an error response from --pastebin.
+  * #5786: Chained exceptions in test and collection reports are now correctly serialized, allowing plugins like pytest-xdist to display them properly.
+
+- Update to 5.1.1
+ * Removed:
+   + Request.getfuncargvalue: use Request.getfixturevalue instead.
+   + pytest.raises and pytest.warns no longer support strings as the second argument.
+   + message parameter of pytest.raises.
+   + pytest.raises, pytest.warns and ParameterSet.param now use native keyword-only
+     syntax. This might change the exception message from previous versions, but
+     they still raise TypeError on unknown keyword arguments as before.
+   + pytest.config global variable.
+   + tmpdir_factory.ensuretemp method.
+   + pytest_logwarning hook.
+   + RemovedInPytest4Warning warning type.
+   + request is now a reserved name for fixtures.
+   + Removed unused support code for unittest2.
+   + pytest.fail, pytest.xfail and pytest.skip no longer support bytes
+     for the message argument.
+ * New Config.invocation_args attribute containing the unchanged arguments passed to pytest.main().
+ * New NUMBER option for doctests to ignore irrelevant differences in floating-point numbers
+ * JUnit XML now includes a timestamp and hostname in the testsuite tag.
+ * Fix RuntimeError/StopIteration when trying to collect package with “__init__.py” only.
+ * Warnings issued during pytest_configure are explicitly not treated as errors,
+    even if configured as such, because it otherwise completely breaks pytest.
+ * The XML file produced by --junitxml now correctly contain a &lt;testsuites&gt; root element.
+ * Fixed using multiple short options together in the command-line (for example -vs) in Python 3.8+.</comment>
+    <requestid>729497</requestid>
+  </revision>
 </revisionlist>

@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>693689</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b9389bda62331cfa384d0109131a278</srcmd5>
+    <version>2.5.2</version>
+    <time>1569233005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2:
+  * python 3.8 support</comment>
+    <requestid>729744</requestid>
+  </revision>
 </revisionlist>

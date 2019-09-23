@@ -23,7 +23,7 @@ Group:          System/Base
 Url:            http://www.iana.org/time-zones
 PreReq:         filesystem, coreutils
 # COMMON-BEGIN
-Version:        2019b
+Version:        2019c
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz

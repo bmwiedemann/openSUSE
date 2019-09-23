@@ -82,8 +82,23 @@
 %define codegen_units --set rust.codegen-units=0
 %define debug_info --enable-debuginfo --disable-debuginfo-only-std --enable-debuginfo-tools --disable-debuginfo-lines
 %endif
-# Use hardening ldflags.
+
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
+# Use hardening ldflags, plus link path for gcc7's libstdc++
+%global gcc_arch %{_arch}
+%ifarch %{ix86}
+# This is where gcc7 puts things in 32-bit x86.
+%global gcc_arch i586
+%endif
+%ifarch ppc64le
+# This is where gcc7 puts things in ppc64le.
+%global gcc_arch powerpc64le
+%endif
+%global rustflags -Clink-arg=-Wl,-z,relro,-z,now -L%{_libdir}/gcc/%{gcc_arch}-suse-linux/7
+%else
+# Use hardening ldflags
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
+%endif
 
 # Exclude implicitly-scanned Provides, especially the libLLVM.so ones:
 %global __provides_exclude_from ^%{rustlibdir}/.*$
@@ -107,6 +122,8 @@ Source107:      %{dl_url}/rust-%{version_bootstrap}-s390x-unknown-linux-gnu.tar.
 Source108:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.tar.xz
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
+# PATCH-FIX-UPSTREAM: Fix bug with timestamps which caused LLVM to rebuild - https://github.com/rust-lang/rust/issues/61206
+Patch1:         rust-61206-assume-tarball-llvm-is-fresh.patch
 BuildRequires:  ccache
 # Leap 42 to 42.3, SLE12 SP1, SP2
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200
@@ -118,7 +135,13 @@ BuildRequires:  cmake
 %endif
 BuildRequires:  curl
 BuildRequires:  fdupes
+# In all of SLE12, the default gcc is 4.8.  Rust's LLVM wants 5.1 at least.
+# So, we'll just use gcc7.
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
+BuildRequires:  gcc7-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  procps
@@ -127,7 +150,7 @@ BuildRequires:  pkgconfig(libcurl)
 # The following requires must mirror:
 # LIBGIT2_SYS_USE_PKG_CONFIG &&
 # LIBSSH2_SYS_USE_PKG_CONFIG
-%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120400
+%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
 BuildRequires:  pkgconfig(libgit2) >= 0.23
 BuildRequires:  pkgconfig(libssh2) >= 1.4.3
 %endif
@@ -352,6 +375,7 @@ This package includes HTML documentation for Cargo.
 %setup -q -n rustc-%{version}-src
 
 %patch0 -p1
+%patch1 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py
@@ -427,14 +451,19 @@ fi
 # If the environments between build and install and different,
 # everything will be rebuilt during installation!
 export RUSTFLAGS="%{rustflags}"
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
+export CC=gcc-7
+export CXX=g++-7
+%endif
 # Cargo use system libs if not bootstrapping
 # restircted only to libgit due to version changes causing with cargo rpm deps
-%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120400
+%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
 export LIBGIT2_SYS_USE_PKG_CONFIG=1
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
 # eliminate complain from RPMlint
 export CPPFLAGS="%{optflags}"
+export DESTDIR=%{buildroot}
 # END EXPORTS
 
 ./x.py build -v
@@ -448,18 +477,23 @@ export CPPFLAGS="%{optflags}"
 # If the environments between build and install and different,
 # everything will be rebuilt during installation!
 export RUSTFLAGS="%{rustflags}"
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
+export CC=gcc-7
+export CXX=g++-7
+%endif
 # Cargo use system libs if not bootstrapping
 # restircted only to libgit due to version changes causing with cargo rpm deps
-%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120400
+%if !%with rust_bootstrap || 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
 export LIBGIT2_SYS_USE_PKG_CONFIG=1
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
 # eliminate complain from RPMlint
 export CPPFLAGS="%{optflags}"
+export DESTDIR=%{buildroot}
 # END EXPORTS
 
-DESTDIR=%{buildroot} ./x.py install
-DESTDIR=%{buildroot} ./x.py install src
+./x.py install
+./x.py install src
 
 # Remove executable permission from HTML documentation
 # to prevent RPMLINT errors.
@@ -500,6 +534,9 @@ ln -sT ../rust/html/cargo/ %{buildroot}%{_docdir}/cargo/html
 install -D %{buildroot}%{_sysconfdir}/bash_completion.d/cargo %{buildroot}%{_datadir}/bash-completion/completions/cargo
 # There should be nothing here at all
 rm -rf %{buildroot}%{_sysconfdir}
+
+# Remove llvm installation
+rm -rf %{buildroot}/home
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

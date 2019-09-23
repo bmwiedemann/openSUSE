@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>680764</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1cfacf6c0d61dbdf782cafe355a73e4e</srcmd5>
+    <version>1.14.0</version>
+    <time>1569233017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0:
+  * Better error handling and gpg2 fallback if gpg not available.
+  * Fixes for python 3.8</comment>
+    <requestid>729748</requestid>
+  </revision>
 </revisionlist>

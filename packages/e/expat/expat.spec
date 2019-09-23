@@ -16,14 +16,14 @@
 #
 
 
-%global unversion 2_2_7
+%global unversion 2_2_8
 Name:           expat
-Version:        2.2.7
+Version:        2.2.8
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://libexpat.github.io
+URL:            https://libexpat.github.io
 Source0:        https://github.com/libexpat/libexpat/releases/download/R_%{unversion}/expat-%{version}.tar.xz
 Source1:        %{name}faq.html
 Source2:        baselibs.conf
@@ -83,6 +83,8 @@ rm -f examples/*.dsp
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+# Fix permissions error: spurious-executable-perm
+chmod 0644 examples/elements.c
 
 %check
 make %{?_smp_mflags} check

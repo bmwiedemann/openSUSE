@@ -16,6 +16,10 @@
 #
 
 
+# Ensure you update the tzdata_version for any minor version increase
+# otherwise the update python library has the incorrect timezone data.
+%define tzdata_version 2019b
+
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytz
@@ -30,20 +34,14 @@ Source2:        https://files.pythonhosted.org/packages/source/p/pytz/pytz-%{ver
 Source90:       %{name}.keyring
 # PATCH-FIX-UPSTREAM fix-tests.patch -- Remote tests which are known to be broken
 Patch0:         fix-tests.patch
-# PATCH-FEATURE-OPENSUSE -- Use system tz database (Olson database)
-Patch1:         system_zoneinfo.patch
 # PATCH-FIX-UPSTREAM 0001-Fix-tests-for-older-timezone-versions.patch -- https://code.launchpad.net/~toabctl/pytz/+git/pytz/+merge/326419
 Patch2:         0001-Fix-tests-for-older-timezone-versions.patch
 BuildRequires:  %{python_module setuptools}
-# pytest is required only because of 2.7 stdlib test runner, python3
-# unittest runner is sufficient.
-BuildRequires:  %{python_module pytest}
-# Test requirements
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  timezone
+BuildRequires:  timezone >= %{tzdata_version}
 Requires:       python-base
-Requires:       timezone
+Requires:       timezone >= %{tzdata_version}
 BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-tz = %{version}
@@ -68,16 +66,22 @@ Amost all of the Olson timezones are supported.
 # For rpmlint warning: remove shebang from python library:
 sed -i '/^#!/d' ./pytz/tzfile.py
 
+# Help Python 2.7 unittest
+touch pytz/tests/__init__.py
+
 %build
 %python_build
 
 %install
 %python_install
-%python_expand rm -fr %{buildroot}%{$python_sitelib}/pytz/zoneinfo
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Replace custom data with symlink to /usr/share/zoneinfo
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/pytz/zoneinfo
+ln -s /usr/share/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
-%python_expand PYTHONPATH=. py.test-%{$python_bin_suffix} -v pytz/tests
+%python_exec setup.py test
 
 %files %{python_files}
 %license LICENSE.txt

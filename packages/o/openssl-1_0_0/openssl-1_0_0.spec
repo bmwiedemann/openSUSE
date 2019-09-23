@@ -91,6 +91,9 @@ Patch77:        openssl-fips-run_selftests_only_when_module_is_complete.patch
 Patch78:        0001-Set-FIPS-thread-id-callback.patch
 Patch79:        openssl-CVE-2018-0737-fips.patch
 Patch80:        openssl-One_and_Done.patch
+# OpenSSL Security Advisory [10 September 2019]
+Patch81:        openssl-CVE-2019-1547.patch
+Patch82:        openssl-CVE-2019-1563.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 BuildRequires:  bc
@@ -231,6 +234,8 @@ testing framework and utilities.
 %patch78 -R -p1
 %patch79 -p1
 %patch80 -p1
+%patch81 -p1
+%patch82 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete

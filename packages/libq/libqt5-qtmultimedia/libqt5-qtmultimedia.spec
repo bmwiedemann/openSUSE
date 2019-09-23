@@ -40,15 +40,6 @@ Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}
 Source1:        baselibs.conf
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1315
-BuildRequires:  pkgconfig(gstreamer-0.10)
-BuildRequires:  pkgconfig(gstreamer-app-0.10)
-BuildRequires:  pkgconfig(gstreamer-base-0.10)
-BuildRequires:  pkgconfig(gstreamer-interfaces-0.10)
-BuildRequires:  pkgconfig(gstreamer-pbutils-0.10)
-BuildRequires:  pkgconfig(gstreamer-plugins-base-0.10)
-BuildRequires:  pkgconfig(gstreamer-video-0.10)
-%else
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
@@ -56,7 +47,6 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-%endif
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
 BuildRequires:  libpulse-devel
@@ -138,16 +128,11 @@ Examples for the libqt5-qtmultimedia module.
 %postun -n %libname -p /sbin/ldconfig
 
 %build
-%if 0%{?suse_version} >= 1315
-GST="1.0"
-%else
-GST="0.10"
-%endif
 %if %qt5_snapshot
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
-%qmake5 GST_VERSION=$GST
+%qmake5 GST_VERSION=1.0
 %make_jobs
 
 %install
@@ -160,8 +145,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %fdupes -s %{buildroot}/%{_libqt5_includedir}
 
 %files -n %libname
-%defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_libdir}/libQt5*.so.*
 %{_libqt5_plugindir}/mediaservice
 %{_libqt5_plugindir}/playlistformats
@@ -172,13 +156,11 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %{_libqt5_archdatadir}/qml/Qt*
 
 %files private-headers-devel
-%defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_includedir}/Qt*/%{so_version}
 
 %files devel
-%defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %exclude %{_libqt5_includedir}/Qt*/%{so_version}
 %{_libqt5_includedir}/Qt*
 %{_libqt5_libdir}/cmake/Qt5*
@@ -188,8 +170,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %{_libqt5_archdatadir}/mkspecs/modules/qt_lib_*.pri
 
 %files examples
-%defattr(-,root,root,755)
-%doc LICENSE.*
+%license LICENSE.*
 %{_libqt5_examplesdir}/
 
 %changelog
