@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tap.py
-Version:        2.5
+Version:        2.6.1
 Release:        0
 Summary:        Test Anything Protocol (TAP) tools
 License:        BSD-2-Clause

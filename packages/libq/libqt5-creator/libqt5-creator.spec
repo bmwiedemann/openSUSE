@@ -135,7 +135,7 @@ cp -a doc/qtcreator/* %{buildroot}%{_datadir}/doc/packages/qt5/qtcreator/
 
 # plugin development files
 mkdir %{buildroot}%{_datadir}/qtcreator-devel
-cp qtcreator.pri %{buildroot}%{_datadir}/qtcreator-devel
+cp *.pri %{buildroot}%{_datadir}/qtcreator-devel
 find src \( \
    -name '*.h' -o -name '*.hpp' -o -name '*.pri' -o -iname 'license*.txt' -o \
    -name 'QtConcurrentTools' \

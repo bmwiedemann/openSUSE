@@ -1,0 +1,22 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: 2019-09-18 09:23:00 +0200
+Subject: fix type error
+Upstream: merged (https://github.com/aio-libs/aiohttp/pull/4057)
+
+At least multidict 4.5 is now required.
+
+---
+ setup.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/setup.py	2019-09-06 14:54:33.000000000 +0200
++++ b/setup.py	2019-09-18 09:19:56.227118006 +0200
+@@ -71,7 +71,7 @@
+ install_requires = [
+     'attrs>=17.3.0',
+     'chardet>=2.0,<4.0',
+-    'multidict>=4.0,<5.0',
++    'multidict>=4.5,<5.0',
+     'async_timeout>=3.0,<4.0',
+     'yarl>=1.0,<2.0',
+     'idna-ssl>=1.0; python_version<"3.7"',

@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Use hardening ldflags.
 %define cargo_home cargo-home
@@ -21,7 +22,7 @@
 Name:           firecracker
 Version:        0.17.0
 Release:        0
-Summary:        Secure and fast microVMs for serverless computing
+Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://firecracker-microvm.github.io/
@@ -36,9 +37,8 @@ BuildRequires:  libfdt-devel
 ExclusiveArch:  x86_64 aarch64
 
 %description
-Firecracker is an open source virtualization technology that is purpose-built
-for creating and managing secure, multi-tenant container and function-based
-services.
+Firecracker is a virtualization technology for creating and managing
+multi-tenant container and function-based services.
 
 %prep
 %setup -q -a1

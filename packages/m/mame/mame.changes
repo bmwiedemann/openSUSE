@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 19 11:56:56 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add LTO flags to LDFLAGS, avoids failing builds due to timeouts
+  during linking.
+
+-------------------------------------------------------------------
+Thu Aug 22 19:20:55 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove conditionals for EOLed distro versions
+- Adjust _constraints and limits to fix failing builds
+
+-------------------------------------------------------------------
+Fri Jul  5 06:35:25 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.211
+  See http://mamedev.org/releases/whatsnew_0211.txt for details
+
+-------------------------------------------------------------------
+Thu May 30 18:13:17 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.210
+  See http://mamedev.org/releases/whatsnew_0210.txt for details
+- Add BuildRequires "pkgconfig(xi)"
+
+-------------------------------------------------------------------
 Wed Apr 24 18:21:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.209

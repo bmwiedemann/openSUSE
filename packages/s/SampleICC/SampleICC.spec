@@ -1,7 +1,7 @@
 #
 # spec file for package SampleICC
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2011-2014 Kai-Uwe Behrmann
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,21 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           SampleICC
-Url:            http://sourceforge.net/projects/sampleicc/
 Version:        1.6.8
 Release:        0
-Source:         %{name}-%{version}.tar.gz
 Summary:        Color Management System
 License:        BSD-3-Clause
 Group:          Development/Libraries/Other
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+URL:            https://sourceforge.net/projects/sampleicc/
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
@@ -50,7 +47,6 @@ Requires:       lib%{name}1 = %{version}
 %description
 SampleICC provides an open source platform independent C++ library for reading, writing, manipulating, and applying ICC profiles along with applications that make use of this library.
 
-
 %description -n lib%{name}1
 SampleICC provides an open source platform independent C++ library for reading, writing, manipulating, and applying ICC profiles along with applications that make use of this library.
 
@@ -58,36 +54,35 @@ SampleICC provides an open source platform independent C++ library for reading, 
 Header files, libraries and documentation for development of Color Management
 applications.
 
-
 %prep
-%setup -n %{name}-%{version}
+%setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
 
 %install
-make %{_smp_mflags}
-make DESTDIR=%{buildroot} install
-rm  %{buildroot}/%{_libdir}/lib*.la
+make  %{?_smp_mflags}
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n lib%{name}1 -p /sbin/ldconfig
-
 %postun -n lib%{name}1 -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/*
 
 %files -n lib%{name}1
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_libdir}/lib%{name}.so.*
 %{_libdir}/libICC_utils.so.*
 
 %files -n lib%{name}-devel
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_libdir}/lib%{name}.so
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*.h

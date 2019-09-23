@@ -1,0 +1,12 @@
+diff -Naur drbd-utils-9.6.0.orig/scripts/crm-fence-peer.9.sh drbd-utils-9.6.0/scripts/crm-fence-peer.9.sh
+--- drbd-utils-9.6.0.orig/scripts/crm-fence-peer.9.sh	2019-09-03 14:13:56.861585246 +0800
++++ drbd-utils-9.6.0/scripts/crm-fence-peer.9.sh	2019-09-03 14:17:42.478881632 +0800
+@@ -146,7 +146,7 @@
+ 			break
+ 			;;
+ 
+-		205)	: "205 aka pcmk_err_old_data ==> going to retry in a bit"
++		103)	: "103 CRM_EX_OLD, aka 205 pcmk_err_old_data in cib_apply_diff ==> going to retry in a bit"
+ 			(( $SECONDS >= $timeout )) && break
+ 			sleep 1
+ 			continue

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Sep 22 07:28:50 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update utox.keyring
+- update to 0.17.1
+  * Add --allow-root option: Now you can't run uTox as root by accident (1b491cd)
+  * Add right click menu to Xlib (5f5f570)
+  *  Add support for loading groupchats (049ca56)
+  * More *BSD support! (FreeBSD, NetBSD, OpenBSD, DragonFlyBSD) (@mazocomp)
+  * Groupchat creation screen implemented
+  * Fix a crash when changing to a video input device that fails to init (e36e475)
+  * Fix: a friendlist bug related to the Tox profile having no friends and
+    groups (d81d276)
+  * Don't flip video preview button status if preview fails (8f73ee2)
+  * Xlib: Clean up zombies if xdg-open is not installed (dfc5f50)
+  * Add border to QR code to make it actually readable to QR code scanners
+    (3643744)
+  * Fix file transfer text (72b7347)
+  * Prevent a crash related to having too many friends (1e41307)
+  * Fix crash related to dropdowns (b0b3167)
+  * Fix ignoring friend requests (ed55880)
+  * Close dropdowns on changing tabs (4dd4ae0)
+  * Fix crash on startup related to QR code (@ColumPaget) (41c5044)
+  * Fix group settings layout
+  * Fix a crash related to Tox savedata being too large (363e486)
+  * Fix two possible memory leaks (a549f11 168eb78)
+  * Fix a crash related to text undo in message input field (@cyisfor) (e1371e4)
+  * Fix a crash related to the password input field (8891616)
+  * Fix crash related to FPS value input field (d297e0d)
+  * Fix selection bug: Selection on double-click doesn't leak into neighbouring
+    line anymore (06f85ab)
+  * Fix HOME key (3833c13)
+  * Fix END key and make ctrl+shift+end work (6fa9df6)
+  * Sort languages enum by their native names alphabetically (b8d33d4)
+  * Move Language setting from "Profile" to "User Interface" tab (234f027)
+  * Updated translations: German (d96d309 4328777 9757f05),  English (e2901e8),
+    Polish (96f7c02 542b19a), Swedish (@jony0008) (eda5a41 38e4ae7), Hungarian
+    (@baloo79) (9d9f24b)
+
+-------------------------------------------------------------------
 Wed Sep 26 17:34:20 UTC 2018 - Andrey Karepin <egdfree@opensuse.org>
 
 - initial

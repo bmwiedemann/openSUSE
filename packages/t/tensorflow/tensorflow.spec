@@ -479,7 +479,9 @@ popd
 %endif
 
 %build
-%limit_build -m 4000
+%if !%{is_lite}
+%limit_build -m 6000
+%endif
 
 %if %{is_lite}
 make %{?_smp_mflags} -f tensorflow/lite/tools/make/Makefile \

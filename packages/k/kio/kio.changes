@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Sep 17 05:35:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.1
+  * Fixed interaction with DOS/Windows executables in KRun::runUrl
+
+-------------------------------------------------------------------
+Sat Sep  7 20:36:52 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * [CopyJob] Use resolved URL in copyingDone so undo can rename back using local file (kde#391606)
+  * FileUndoManager: improve debugging facilities
+  * kio_trash: split up copyOrMove, for a better error than "should never happen"
+  * FileUndoManager: clearer assert when forgetting to record
+  * Fix exit and crash in kio_file when put() fails in readData.
+  * autotests: use QVERIFY2 to print the job error if exec() fails
+  * [CopyJob] Fix crash when copying an already existing dir and pressing "Skip" (kde#408350)
+  * [KUrlNavigator] Add MIME types supported by krarc to isCompressedPath (kde#386448)
+  * Added dialog to set execute permission for executable file when trying to run it.
+  * [KPropertiesDialog] Always check mount point being null (kde#411517)
+  * [KRun] Check mime type for isExecutableFile first
+  * Add an icon for the trash root and a proper label
+  * Add support for handling QNAM SSL errors to KSslErrorUiData
+  * Making FileJob behave consistently.
+  * assert slave command finality
+  * [KFilePlacesView] Use asynchronous KIO::FileSystemFreeSpaceJob
+  * rename internal 'kioslave' helper executable to 'kioslave5' (kde#386859)
+  * [KDirOperator] Middle-elide labels that are too long to fit
+  * [KDirOperator] Add follow new directories options
+  * KDirOperator: Only enable "Create New" menu if the selected item is a directory
+  * KIO FTP: Fix file copy hanging when copying to existing file
+  * KIO: port to non-deprecated KWindowSystem::setMainWindow
+  * KRun: fix runtime warning when widget is null
+  * KRun: remove KProcessRunner dependency on QtWidgets
+  * Port KIO::Job documentation to Qt5-style connect syntax
+  * Make file bookmark names consistent
+  * Remove unused includes
+  * Add option to build Qt Designer plugin (BUILD_DESIGNERPLUGIN, default ON)
+  * [KDirOperator] Use more human-readable sort order descriptions
+  * Fix build by removing obsolete qrc file for newly-removed images
+  * [Permissions editor] Port icons to use QIcon::fromTheme() (kde#407662)
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:31 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

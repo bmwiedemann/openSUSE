@@ -1,0 +1,5 @@
+<package name="python-pydantic" project="openSUSE:Factory">
+  <title>python-pydantic</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-pydantic"/>
+</package>

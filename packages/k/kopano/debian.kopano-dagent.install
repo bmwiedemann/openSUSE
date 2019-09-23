@@ -1,17 +1,7 @@
-usr/sbin/kopano-autorespond
 usr/sbin/kopano-dagent
-usr/sbin/kopano-mr-accept
-usr/sbin/kopano-mr-process
 usr/share/doc/kopano/example-config/apparmor.d/usr.sbin.kopano-dagent
 usr/share/doc/kopano/example-config/autorespond
-usr/share/doc/kopano/example-config/autorespond.cfg
 usr/share/doc/kopano/example-config/dagent.cfg
-usr/share/kopano-dagent/python/
-usr/share/kopano-dagent/python/plugins/
 usr/share/man/man5/kopano-dagent.cfg.5
-usr/share/man/man8/kopano-autorespond.8
 usr/share/man/man8/kopano-dagent.8
-usr/share/man/man8/kopano-mr-accept.8
-usr/share/man/man8/kopano-mr-process.8
 var/lib/kopano/autorespond/
-var/lib/kopano/dagent/plugins/

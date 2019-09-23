@@ -1,10 +1,4 @@
 usr/sbin/kopano-archiver
-usr/sbin/kopano-archiver-aclset
-usr/sbin/kopano-archiver-aclsync
-usr/sbin/kopano-archiver-restore
 usr/share/doc/kopano/example-config/archiver.cfg
 usr/share/man/man5/kopano-archiver.cfg.5
 usr/share/man/man8/kopano-archiver.8
-usr/share/man/man8/kopano-archiver-aclset.8
-usr/share/man/man8/kopano-archiver-aclsync.8
-usr/share/man/man8/kopano-archiver-restore.8

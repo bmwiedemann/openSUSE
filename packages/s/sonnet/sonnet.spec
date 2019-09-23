@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sonnet
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -129,7 +129,8 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 %license COPYING*
 %doc README*
 %{_kf5_debugdir}/sonnet.categories
-%{_kf5_plugindir}/
+%dir %{_kf5_plugindir}/kf5
+%{_kf5_plugindir}/kf5/sonnet/
 %{_kf5_datadir}/sonnet/
 
 %files -n libKF5SonnetCore%{sonum}
@@ -141,12 +142,14 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 %{_kf5_libdir}/libKF5SonnetUi.so.*
 
 %files devel
-%{_kf5_bindir}/parsetrigrams
+%dir %{_kf5_plugindir}/designer
 %{_kf5_bindir}/gentrigrams
+%{_kf5_bindir}/parsetrigrams
+%{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5Sonnet/
 %{_kf5_libdir}/libKF5SonnetCore.so
 %{_kf5_libdir}/libKF5SonnetUi.so
-%{_kf5_libdir}/cmake/KF5Sonnet/
-%{_kf5_includedir}/
 %{_kf5_mkspecsdir}/qt_Sonnet*.pri
+%{_kf5_plugindir}/designer/sonnetui5widgets.so
 
 %changelog

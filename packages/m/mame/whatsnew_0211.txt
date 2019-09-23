@@ -1,0 +1,853 @@
+0.211 2019-06-26
+----------------
+
+
+MAMETesters Bugs Fixed
+----------------------
+- 06264: [Interface] UI: Fatal error when losing focus in full-screen mode. (hap)
+- 07333: [Gameplay] (bbusters.cpp) bbusters and clones: Attract mode player AI behaves strangely. (Dirk Best)
+- 07343: [Gameplay] (carpolo.cpp) carpolo: Player inputs and collision detection not working. (hap)
+- 07345: [Graphics] (dec0.cpp) birdtry: Issues with large sprites on title screen and during gameplay. (cam900)
+- 07347: [Flip Screen/Cocktail] (galaxian.cpp) skybase: Upright and cocktail settings are reversed. (MetalGod)
+- 07351: [DIP/Input] (subsino2.cpp) ptrain: Payout button does not work. (Dirk Best)
+- 07353: [Interface] alphatro, fc100: System hangs when saving to cassette. (Robbbert)
+- 07354: [Flip Screen/Cocktail] (taitosj.cpp) spacecr: Cabinet type and flip screen DIP switches are reversed. (MetalGod)
+- 07360: [Interface] (vtech1.cpp) vz200: Unable to load a cassette image that was created by MAME. (Robbbert)
+- 07361: [Sound] (coco12.cpp) coco: Speech/Sound Cartridge music plays too fast. (Tim Lindner)
+
+
+New working machines
+--------------------
+Game & Watch: Ball [Travis Goodspeed, algestam, hap, Mr. Do, Ryan Holtz, Sean Riddle]
+Game & Watch: Donkey Kong Jr. (panorama screen) [algestam]
+Gemcrush (Japan)
+  [ShouTime, anonymous donor from Italy, ANY, Scott Moor, Russell Howard, Evan Korzon, Henrique Areias Pontes, Sean Sutton,
+  Mr Goodwraith, Christopher Brownlee, Smitdogg, The Dumping Union, Angelo Salese]
+Pro Stepper Tele Cardioline (Salter Fitness Stepper V.1.0, Checksum F208) [ClawGrip, David Haywood, Recreativas.org]
+Shaanxi Province Computer Factory China Education Computer 2000 [zzemu]
+Shaanxi Province Computer Factory China Education Computer E [zzemu]
+Shaanxi Province Computer Factory China Education Computer G [zzemu]
+Shaanxi Province Computer Factory China Education Computer M [zzemu]
+Silicon Graphics Inc Indy (R4600, 100MHz) [Ryan Holtz]
+VRT VT SDK 'Pink Jelly' (VT03 Demo) [ClawGrip]
+VRT VT SDK 'VT03 Sound Test' (Sound Generator FMDemo) [ClawGrip]
+
+
+New working clones
+------------------
+Huanle Liuhe Yi (Happy 6-in-1) (M68K ver. V100HK, ARM ver. V100HK) [GC8TECH]
+Photo Y2K / Chaoji Bi Yi Bi / Dajia Lai Zhao Cha / Real and Fake (ver. 103, Japanese Board) [GC8TECH]
+Puzz Loop 2 (Japan 010226 Phoenix Edition) (bootleg) [Anonymous]
+Qume QVT-102A [Dirk Best]
+Super Invasion (Electromar, Spanish) [ARPA, Recreativas.org]
+Thunder & Lightning (bootleg with Tetris sound, set 2) [Bliep]
+
+
+Machines promoted to working
+----------------------------
+Bikkuri Pro Wrestling (Japan 881221, Ver 1.05) [Angelo Salese]
+Game & Watch: Chef [Sean Riddle, Mr. Do]
+MIPS RC2030 [Patrick Mackinlay]
+MIPS RS2030 [Patrick Mackinlay]
+Ohio Scientific Superboard II Model 600 (Rev. B) [Robbbert]
+Pro Cycle Tele Cardioline (Salter Fitness Bike V.1.0, Checksum 02AB) [David Haywood]
+
+
+Clones promoted to working
+--------------------------
+Compukit UK101 [Robbbert]
+Ohio Scientific Challenger 1P Series 2 [Robbbert]
+RyuKyu (Japan) (FD1094 317-5023) [Recreativas.org, The Dumping Union]
+Silicon Graphics Inc Indy (R4600, 133MHz) [Ryan Holtz]
+
+
+New machines marked as NOT_WORKING
+----------------------------------
+Fuusen Pentai [R. Belmont, SpinalFeyd, The Dumping Union]
+Goldart (Spain)
+  [Morten Shearman Kirkegaard, Peter Wilhelmsen, David Haywood, jordigahan, ClawGrip, Roberto Fresca, Ryan Holtz, David Torres,
+  ArcadeHacker, Anarkade, ElSemi, Rafa Martinez, Ricky2001, Jonathan Valls, Lluis Mora, ElArcadio, Game Museum Team,
+  Javier Martinez, Kaiser77, Pilar Bermudez, StrPinball, Eduardo Molina, Juanan Laguna, Angel Diaz, Recreativas.org]
+Korokoro Pensuke [R. Belmont, SpinalFeyd, The Dumping Union]
+Magic Bomb [Cristiano-MDQ]
+ManilaMatic Master [Stefan Fettes]
+Memorex Telex Telex 1192 [Bitsavers]
+Mindset Corporation Mindset Video Production System [O. Galibert, Al Kossow, Bitsavers]
+Olympic Darts (K7) [jordigahan, ClawGrip, Roberto Fresca]
+Quantel DPB-7000 [Ryan Holtz, Mark Nias]
+Queen Bee Bingo [Cristiano-MDQ]
+Rhythm Nation (v01.00.04) [R. Belmont, ClawGrip, Arcade Vintage, Recreativas.org, The Dumping Union]
+Super Train (Ver. 1.9) [Cristiano-MDQ]
+Synertek Systems KTM-3 [Bitsavers]
+Systel Computers System 100 [Al Kossow, Bitsavers]
+Tasc ChessSystem R30 [hap]
+Taiko no Tatsujin 6 (Japan, TK61 Ver.A) [Bill D, The Dumping Union, defor, twistedsymphony]
+Telex Computer Products Telex 277-D Display Terminal (Model 2) [Robbbert]
+Texas Instruments Electronic Digital Thermostat [hap, Sean Riddle]
+Treasure Bonus (American Alpha, Ver. 1.6) [Cristiano-MDQ]
+Treasure City (Ver. 208) [Cristiano-MDQ]
+Treasure Mary [Cristiano-MDQ]
+VRT VT SDK 'Boxing' (Demo for VT03 Pic32) [ClawGrip]
+VRT VT SDK 'Pinball' (C-Compiler Demo Program 2) [ClawGrip]
+
+
+New clones marked as NOT_WORKING
+--------------------------------
+Big Karnak (Modular System) [Recreativas.org, ArcadeHacker, ClawGrip, David Haywood]
+Captain Zodiac (World) [Berty]
+Corvette (PX3 Prototype) [PinMAME]
+Champion Poker (v101) [Cristiano-MDQ]
+Champion Poker (v201F) [Cristiano-MDQ]
+Champion Poker (v210KS) [Cristiano-MDQ]
+Champion Poker (v300US) [Cristiano-MDQ]
+Cyber Troopers Virtual-On Relay (Japan) [ShouTime, defor]
+Epson CM6127 [Colin McDougall]
+Gals Panic (Modular System bootleg) [Juan Romero, Recreativas.org, ClawGrip, David Haywood]
+Goldart (Portugal)
+  [Morten Shearman Kirkegaard, Peter Wilhelmsen, David Haywood, jordigahan, ClawGrip, Roberto Fresca, Ryan Holtz, David Torres,
+  ArcadeHacker, Anarkade, ElSemi, Rafa Martinez, Ricky2001, Jonathan Valls, Lluis Mora, ElArcadio, Game Museum Team,
+  Javier Martinez, Kaiser77, Pilar Bermudez, StrPinball, Eduardo Molina, Juanan Laguna, Angel Diaz, Recreativas.org]
+Mushiking The King Of Beetle (2K3 2ND Ver. 1.002-, World) [f205v]
+Toki (Modular System) [Juan Romero, Recreativas.org, ClawGrip]
+Treasure City (Ver. 202) [Cristiano-MDQ]
+
+
+New working software list additions
+-----------------------------------
+apple2_flop_clcracked:
+  Bingo Bugglebee Presents: Find the Rhyme (cleanly cracked), Early Games: Piece of Cake (cleanly cracked),
+  Early Games: Piece of Cake Math (cleanly cracked), EasySearch - Sixty Countries Around The World (cleanly cracked),
+  Electric Bill (cleanly cracked), Electric Chalkboard (cleanly cracked), Elementary Math (cleanly cracked),
+  Elements of Music - Key-Signatures Drill (cleanly cracked), Elite (cleanly cracked),
+  Empire II - Interstellar Sharks (Version 1.2) (cleanly cracked), Enchanter (Revision 10 / 830810) (cleanly cracked),
+  Enchanter (Revision 16 / 831118) (cleanly cracked), Encyclopedia Trivia (cleanly cracked), End Punctuation (cleanly cracked),
+  Energy Conversions (cleanly cracked), English Achievement I (cleanly cracked), English Achievement II (cleanly cracked),
+  English Achievement III (cleanly cracked), English Achievement IV (cleanly cracked), English Achievement V (cleanly cracked),
+  English Challenge (cleanly cracked), Epidemic (cleanly cracked), Epoch (cleanly cracked), Ernie's Quiz (cleanly cracked),
+  Escape from Arcturus (cleanly cracked), Escape from Rungistan (cleanly cracked), Essential Grammar (cleanly cracked),
+  Essential Punctuation (cleanly cracked), Eureka - Following Directions Level B (cleanly cracked),
+  Expedition Amazon (cleanly cracked), Explorations in Science (cleanly cracked), Extra Extra (Milton Bradley) (cleanly cracked),
+  Extra Extra (cleanly cracked), Facemaker Golden Edition (cleanly cracked), Fact or Opinion (cleanly cracked),
+  Factors (cleanly cracked), Fahrenheit 451 (Revision 2) (cleanly cracked), Fahrenheit 451 (cleanly cracked),
+  Far Star (cleanly cracked), FasTrack Quizzer (cleanly cracked), Fat City (cleanly cracked), Fay's Word Rally (cleanly cracked),
+  Feed The Frog (cleanly cracked), Felony (Thunder Mountain release) (cleanly cracked), Field of Fire (cleanly cracked),
+  Fifty Mission Crush (Verion 1.1) (cleanly cracked), Fifty Mission Crush (Version 1.2) (cleanly cracked),
+  Fighter Command (cleanly cracked), Finance Manager (cleanly cracked), Financial Cookbook (cleanly cracked),
+  First Math Adventures - Understanding Word Problems (cleanly cracked), First Start Writing Program (cleanly cracked),
+  First Steps to Reading - Phonics One (cleanly cracked), First Steps to Reading - Phonics Two (cleanly cracked),
+  First Verbs (cleanly cracked), First Words (cleanly cracked), Five in a Row - Addition and Subtraction (cleanly cracked),
+  Five in a Row - Division (cleanly cracked), FixIt (cleanly cracked), Flights Into Fiction - Modern Stories (cleanly cracked),
+  Flip Out (cleanly cracked), The Flockland Island Crisis (cleanly cracked),
+  Following Directions - One and Two Level Commands - Directional Terms (cleanly cracked),
+  Following Directions - One and Two Level Commands - Spatial Relations (cleanly cracked), Food Group Puzzles (cleanly cracked),
+  Formula 1 Racer (cleanly cracked), FourWord and WordLift (cleanly cracked), Fraction Action (cleanly cracked),
+  Fraction Equivalence Partially Shaded Regions (cleanly cracked), Fraction Factory (cleanly cracked),
+  Fraction Fever (Revision 0) (cleanly cracked), Fractional Parts of a Region (cleanly cracked),
+  Fractions - A Review Course (cleanly cracked), Fractions - Addition and Subtraction (Version 1.6) (cleanly cracked),
+  Fractions - Multiplication and Division (Version 2.1.6) (cleanly cracked), Fractions Practice (cleanly cracked),
+  Frenzy and Flip Flop (cleanly cracked), Friendly Filer (cleanly cracked),
+  Frogs, Dogs, Kittens, and Kids 2 (Version 10.18.88) (cleanly cracked), From ABC to XYZ (cleanly cracked),
+  Fun with Directions (cleanly cracked), Function Pictures (cleanly cracked),
+  Fundamental Spelling in Context Level 2 (cleanly cracked), Fundamental Spelling in Context Level 4 (cleanly cracked),
+  G.I. Joe (cleanly cracked), Galactic Adventures (cleanly cracked), Galaxy Gates (cleanly cracked), Galaxy Math (cleanly cracked),
+  Galaxy Math - Decimals (cleanly cracked), Galaxy Math - Fractions (cleanly cracked), Game Frame One (cleanly cracked),
+  Game Frame Two (cleanly cracked), Gamma Force (cleanly cracked), Garfield Double Dares (cleanly cracked),
+  Garry Kitchen's GameMaker (cleanly cracked), GBA Championship Basketball (cleanly cracked), Gelfling Adventure (cleanly cracked),
+  Gemstone Warrior (cleanly cracked), GeoWhiz (cleanly cracked), Geography Adventure USA (cleanly cracked),
+  Geometric Figures - Angles and Right Angles (cleanly cracked), Geometric Figures - Circles, Radius, Diameter (cleanly cracked),
+  Geometry - Simple Closed Curves (cleanly cracked), Geometry Alive - Areas of Triangles and Quadrilaterials (cleanly cracked),
+  Geometry Alive - Circles (cleanly cracked), Geometry Alive - Fundamentals of Geometry (cleanly cracked),
+  Geometry and Measurement volume 1 (cleanly cracked), Geometry and Measurement volume 2 (cleanly cracked),
+  Geopolitique 1990 (cleanly cracked), German Vocabulary Games (cleanly cracked),
+  Gertrude's Puzzles (Version 1.0) (cleanly cracked), Gertrude's Puzzles (Version 1.2) (cleanly cracked),
+  Gertrude's Secrets (Version 1.0) (cleanly cracked), Gertrude's Secrets (Version 1.3) (cleanly cracked),
+  Get to the Point (cleanly cracked), Getting Ready to Read and Add (cleanly cracked),
+  Gettysburg - The Turning Point (cleanly cracked), GFL Championship Football (cleanly cracked),
+  Gin Rummy (cleanly cracked), Gnee or Not Gnee (cleanly cracked), Go (Hayden) (cleanly cracked),
+  Go To The Head Of The Class (1989 Version) (cleanly cracked), Go To The Head Of The Class (cleanly cracked),
+  Goldfinger (cleanly cracked), Grammar Baseball (cleanly cracked), Grammar Lab 1 - Basic Sentence Structure (cleanly cracked),
+  Grammar Lab 2 - Singular and Plural Nouns (cleanly cracked), Grammar Mechanics Level 1 (cleanly cracked),
+  Grand Prix - Basic Facts Heat (cleanly cracked), Grand Prix - Fractions Heat 1 (cleanly cracked),
+  Grand Prix - Place Value Heat (cleanly cracked), Granny Applebee's Cookie Factory (cleanly cracked),
+  Graph Maker (cleanly cracked), GraphMaster (cleanly cracked), Graphics Converter (cleanly cracked),
+  Graphs and Mean, Median, and Mode (cleanly cracked), Grasshopper Dissection (1990 rerelease) (cleanly cracked),
+  Great America - Presidents (cleanly cracked), Guadalcanal Campaign (Version 1.0) (cleanly cracked),
+  Guadalcanal Campaign (Version 1.1) (cleanly cracked), Guderian (cleanly cracked), Guitar Wizard (cleanly cracked),
+  Gulp and Frenzy (cleanly cracked), H.E.R.O. (cleanly cracked), Hacker (cleanly cracked), Hacker II (cleanly cracked),
+  Hands on BASIC Programming (cleanly cracked), Handy Dandy (cleanly cracked), Health Watch (cleanly cracked),
+  Heat Energy (cleanly cracked), Heavy Barrel (cleanly cracked), Hebrew Phrasebook (cleanly cracked),
+  Hi-Res Computer Golf (cleanly cracked), High Rise (cleanly cracked), High School Math Competency Series Part I (cleanly cracked),
+  High School Math Competency Series Part II (cleanly cracked), High Seas (cleanly cracked), High Stakes (cleanly cracked),
+  High Wire Logic (cleanly cracked), Home Row (cleanly cracked), Homeworker (Version 2.1) (cleanly cracked),
+  Homonyms (cleanly cracked), Homonyms 2 (cleanly cracked), Homonyms I (Milliken) (cleanly cracked),
+  Homonyms II and Confusing Pairs (Milliken) (cleanly cracked), Horses (cleanly cracked), How To Do Research (cleanly cracked),
+  How to Weigh An Elephant (cleanly cracked), I Can Carry and Borrow (cleanly cracked), I Can Count (cleanly cracked),
+  I, Damiano (cleanly cracked), Ice Demons (cleanly cracked), Identifying Affixes (cleanly cracked),
+  Identifying Compound Words (cleanly cracked), Identifying Matching Letters (cleanly cracked),
+  Identifying Vowel Sounds (cleanly cracked), Ikari Warriors (cleanly cracked), Imperium Galactum (cleanly cracked),
+  Improper Fractions (cleanly cracked), In Search of The Most Amazing Thing (cleanly cracked),
+  In Search of the Most Amazing Thing (Revision 2) (cleanly cracked), Indiana Jones in Revenge of the Ancients (cleanly cracked),
+  Indians (cleanly cracked), Infidel (Revision 22 / 830916) (cleanly cracked), InforMaster (cleanly cracked),
+  Inside Outside Shapes (cleanly cracked), Instant Zoo (cleanly cracked), Interpreting Graphs (cleanly cracked),
+  Introduction to Counting (cleanly cracked), Investigating Chemical Reactions (cleanly cracked),
+  Investigating Plant Growth (cleanly cracked), Islands of Beta (cleanly cracked), It's About Time (Micrograms) (cleanly cracked),
+  It's About Time (cleanly cracked), Jawbreaker (cleanly cracked),
+  Journey to the Age of Dinosaurs - Europe and Asia (cleanly cracked),
+  Journey to the Age of Dinosaurs - North America (cleanly cracked), Juggles' Rainbow (Early Version) (cleanly cracked),
+  Juggles' Rainbow (Version 1.4) (cleanly cracked), Jumble Jet (cleanly cracked), Jumbled Jungle (cleanly cracked),
+  Jumblezzz (cleanly cracked), Jungle Rescue - Blue Level (cleanly cracked), Kamikaze (cleanly cracked),
+  Kampfgruppe (Version 1.1) (cleanly cracked), Karate Champ (cleanly cracked), Key Lingo (cleanly cracked),
+  Keyworks - First Keyboarding Skills (cleanly cracked), Kid Niki (cleanly cracked), Kid-Leidoscope (cleanly cracked),
+  KidWriter (Version 1.0) (cleanly cracked), Kinder Koncepts (cleanly cracked), Kindercomp (Revision 0) (cleanly cracked),
+  King Cribbage (cleanly cracked), King's Quest, King's Quest II (cleanly cracked), King's Quest III (cleanly cracked),
+  Kittens, Kids, and a Frog (Version 01.31.87) (cleanly cracked),
+  Kittens, Kids, and a Frog - Building Comprehension I (1989 Version) (cleanly cracked),
+  Knights of the Desert (Version 1.1) (cleanly cracked), Know Your Apple (cleanly cracked), Know Your Apple IIe (cleanly cracked),
+  Knowledge Master - Building Trades (cleanly cracked), Knowledge Master - General Math (cleanly cracked),
+  Knowledge Master - Geometry (cleanly cracked), Knowledge Master - Utilities (cleanly cracked),
+  Koala Grams Spelling I (cleanly cracked), Koronis Rift (cleanly cracked),
+  Krell's College Board SAT Preparation Series (cleanly cracked), Krell's Logo (Revision 0) (4am crack),
+  Kung Fu Master (cleanly cracked), L.A. Crackdown (cleanly cracked), La Triviata (cleanly crack), Lane Mastodon (cleanly cracked),
+  Language Carnival 1 (cleanly cracked), Lantern of D'Gamma (cleanly cracked), Laser Bounce (cleanly cracked),
+  Lazy Jack (cleanly cracked), Learn About Words In Reading 2 (cleanly cracked), Learning To Tell Time (cleanly cracked),
+  Learning to Read - Letters, Words, and Sentences volume 1 (cleanly cracked),
+  Learning to Read - Letters, Words, and Sentences volume 2 (cleanly cracked),
+  Learning to Read - Letters, Words, and Sentences volume 3 (cleanly cracked),
+  Learning with Fuzzywomp (cleanly cracked), Learning with Leeper (cleanly cracked), Legendary Conflict (cleanly cracked),
+  Leisure Suit Larry in Land of the Lounge Lizards (cleanly cracked), Let's Eat (cleanly cracked),
+  Let's Explore BASIC (cleanly cracked), Let's Go Fishing (cleanly cracked),
+  Let's Go There - Beginning Map and Geography Skills (cleanly cracked), Let's Learn About Geography - USA (cleanly cracked),
+  Let's Learn About Money (cleanly cracked), Letter Man (cleanly cracked), Letter Recognition (Version 01.27.88) (cleanly cracked),
+  Letter Recognition (cleanly cracked), Letters For You (cleanly cracked), Library Magic (cleanly cracked),
+  Library Skills - Let's Learn about the Library (cleanly cracked), Library and Media Skills (cleanly cracked),
+  Little Computer People (cleanly cracked), Little People's Puzzles (cleanly cracked), Little Riddles (cleanly cracked),
+  Lock 'n Chase (cleanly cracked), Locksmith (Version 5.0 Revision C) (cleanly cracked),
+  Locksmith (Version 5.0 Revision F) (cleanly cracked), Lode Runner (cleanly cracked), Logic Levels (cleanly cracked),
+  Logic Tools (cleanly cracked), Long Division (cleanly cracked), Lordlings of Yore (cleanly cracked),
+  Lords of Conquest (cleanly cracked), Lucifer's Realm (cleanly cracked), Lucky 7 Spelling Games - Elementary (cleanly cracked),
+  M-ss-ng L-nks (cleanly cracked), M-ss-ng L-nks - Classics Old and New (cleanly cracked),
+  M-ss-ng L-nks MicroEncyclopedia (1987 Revised Edition) (cleanly cracked),
+  M-ss-ng L-nks Young People's Literature (1983 Version) (cleanly cracked),
+  M-ss-ng L-nks Young People's Literature (cleanly cracked), Mad Libs Writer - Adjective-Adverb Writer (cleanly cracked),
+  Mad Libs Writer - Verb Writer (cleanly cracked), Mad Venture (cleanly cracked), Magic Castle (cleanly cracked),
+  Magic Slate 20 (Version 1.3) (cleanly cracked), Magic Slate 20 (Version 1.4) (cleanly cracked),
+  Magic Slate 20/40 (Version 1.0) (cleanly cracked), Magic Slate 20/40 (Version 1.02) (cleanly cracked),
+  Magic Slate 20/40 (Version 1.12) (cleanly cracked), Magic Slate 20/40 (Version 1.22) (cleanly cracked),
+  Magic Slate 20/40 (Version 1.23) (cleanly cracked), Magic Slate 40 (Version 1.3) (cleanly cracked),
+  Magic Slate 40 (Version 1.4) (cleanly cracked), Magic Slate 80 (Version 1.12) (cleanly cracked),
+  Magic Slate 80 (Version 1.22) (cleanly cracked), Magic Slate 80 (Version 1.23) (cleanly cracked),
+  Magic Slate 80 (Version 1.4) (cleanly cracked), Magic Slate II 20 (Version 1.0a) (cleanly cracked),
+  Magic Slate II 40 (Version 1.0a) (cleanly cracked), Magic Slate II 80 (Version 1.0a) (cleanly cracked),
+  Magic Spells (1981) (cleanly cracked), Magic Spells (Version 2.1) (cleanly cracked), Magical Myths (cleanly cracked),
+  Make A Face (cleanly cracked), Managing for Success - Personal Development (cleanly cracked), Maniac Mansion (cleanly cracked),
+  Map Skills (cleanly cracked), Maps and Globes - Latitude and Longitude (cleanly cracked), Marauder (cleanly cracked),
+  Marble Madness (4am and san inc crack) side A, Marianas Turkey Shoot (cleanly cracked), Mars Cars (cleanly cracked),
+  Marty's Family Reader, Mask Parade (cleanly cracked), Master Match (cleanly cracked), MasterType (cleanly cracked),
+  MasterType and Training Ground (Version 2.1) (cleanly cracked), MasterType's Figures + Formulas (cleanly cracked),
+  Mastering Consonants (cleanly cracked), Mastering Vowels (cleanly cracked), Match It (cleanly cracked),
+  MatchMaker Demo Disk (cleanly cracked), MatchMaker Dictionary (cleanly cracked), Matching Letters and Words (cleanly cracked),
+  Math Blaster (cleanly cracked), Math Blaster Mystery (Version 1.3) (cleanly cracked), Math Blaster Mystery (cleanly cracked),
+  Math Blaster Plus (cleanly cracked), Math Class Level 5 (cleanly cracked), Math Concepts I (cleanly cracked),
+  Math Football (cleanly cracked), Math For Everyday Living (cleanly cracked), Math Item Banks 1-13 (cleanly cracked),
+  Math Leap Frog (cleanly cracked), Math Level 1 - I Can Add And Subtract (cleanly cracked),
+  Math Level 3 - I Can Multiply and Divide (cleanly cracked), Math Level 4 - Advanced Addition and Subtraction (cleanly cracked),
+  Math Level 6 - Ratio, Proportion, and Percent (cleanly cracked), Math Magic (cleanly cracked), Math Man (cleanly cracked),
+  Math Marvels (cleanly cracked), Math Masters (cleanly cracked), Math Maze (cleanly cracked),
+  Math Rabbit (Version 1.1) (cleanly cracked), Math Rabbit (cleanly cracked),
+  Math Sequences - Addition (1984 Version) (cleanly cracked), Math Sequences - Addition (cleanly cracked),
+  Math Sequences - Decimals (cleanly cracked), Math Sequences - Division (cleanly cracked),
+  Math Sequences - Equations (cleanly cracked), Math Sequences - Fractions (cleanly cracked),
+  Math Sequences - Integers (cleanly cracked), Math Sequences - Laws of Arithmetic (cleanly cracked),
+  Math Sequences - Management Utilities (cleanly cracked), Math Sequences - Measurement Formulas (cleanly cracked),
+  Math Sequences - Multiplication (1980 Version) (cleanly cracked), Math Sequences - Multiplication (cleanly cracked),
+  Math Sequences - Number Readiness (1980 Version) (cleanly cracked), Math Sequences - Number Readiness (cleanly cracked),
+  Math Sequences - Percents (cleanly cracked), Math Sequences - Pre- and Post Tests I (cleanly cracked),
+  Math Sequences - Pre- and Post-Tests II (cleanly cracked), Math Sequences - Subtraction (cleanly cracked),
+  Math Sequences - Worksheet Generator (cleanly cracked), Math Sequences - Worksheet Generator II (cleanly cracked),
+  Math Shop (1986-10-27 Version) (cleanly cracked), Math Shop (cleanly cracked), Math Tutor - Addition (cleanly cracked),
+  Math Tutor - Decimals (cleanly cracked), Math Tutor - Division (cleanly cracked), Math Tutor - Fractions Part I (cleanly cracked),
+  Math Tutor - Multiplication (cleanly cracked), Math Tutor: Subtraction, Math Word Problems Grade 2 (cleanly cracked),
+  Math and Me (cleanly cracked), Math and Your Personal Finances (cleanly cracked), Math in a Nutshell (cleanly cracked),
+  Mathematics Activities Courseware Level 4 (cleanly cracked), Mathematics Activities Courseware Level 6 (cleanly cracked),
+  Mathematics Problem Solving Software Level 1 (cleanly cracked), Mathematics Problem Solving Software Level 2 (cleanly cracked),
+  Mathematics Problem Solving Software Level 3 (cleanly cracked), Mathematics Skills Software Level 2 (cleanly cracked),
+  Mathematics Today (cleanly cracked), Mathematics Word Problems Grade 3 (cleanly cracked),
+  Maths Invaders - Special Products and Algebraic Factors (cleanly cracked), Max Command (cleanly cracked),
+  Max Dublin's Treasure (cleanly cracked), Maxwell Manor (cleanly cracked),
+  MECC-A114 Writing an Opinion Paper (Version 1.1) (cleanly cracked), MECC-A116 Puzzles and Posters (Version 1.2) (cleanly cracked),
+  MECC-A126 Study Guide (Version 1.4) (cleanly cracked), MECC-A132 MECC Writer (Version 1.1a) (cleanly cracked),
+  MECC-A136 MECC Graphing Primer (Version 1.1) (cleanly cracked),
+  MECC-A140 MECC Dataquest - The Presidents (Version 1.2) (cleanly cracked),
+  MECC-A141 MECC Information Manager (Version 1.0) (cleanly cracked),
+  MECC-A141 MECC Information Manager (Version 1.1) (cleanly cracked),
+  MECC-A149 Mastering Math Diagnostic System (Version 1.2) (cleanly cracked),
+  MECC-A153 Word Munchers (Version 1.1) (cleanly cracked), MECC-A157 Oregon Trail (Version 1.1) (cleanly cracked),
+  MECC-A172 MECC Dataquest Composer (Version 1.1) (cleanly cracked), MECC-A173 Dataquest Sampler (Version 1.0) (cleanly cracked),
+  MECC-A197 MECC Dataquest - The World Community (Version 1.0) (cleanly cracked),
+  MECC-A197 MECC Dataquest - The World Community (Version 1.1) (cleanly cracked),
+  MECC-A202 Fraction Concepts, Inc. (Version 1.1) (cleanly cracked),
+  MECC-A203 Fraction Practice Unlimited (Version 1.2) (cleanly cracked), MECC-A211 Mystery Objects (Version 1.1) (cleanly cracked),
+  MECC-A227 Patterns (Version 1.1) (cleanly cracked), MECC-A232 Spelling Press (Version 1.1) (cleanly cracked),
+  MECC-A234 Spelling Puzzles and Tests (Version 1.0) (cleanly cracked),
+  MECC-A242 Teacher Option Organizer (Version 1.1) (cleanly cracked),
+  MECC-A242 Teacher Option Organizer (Version 1.3) (cleanly cracked),
+  MECC-A243 MECC Dataquest - Latin America (Version 1.0) (cleanly cracked), MECC-A248 CommuniKeys (Version 1.0) (cleanly cracked),
+  MECC-A253 MECC Dataquest - Europe and Soviet Union (Version 1.0) (cleanly cracked),
+  MECC-A277 Time Navigator Around The World (Version 1.0) (cleanly cracked),
+  MECC-A313 History Makers (Version 1.0) (cleanly cracked), MECC-A314 Dr. Livingstone, I Presume (Version 1.0) (cleanly cracked),
+  MECC-A316 Exploring Chaos (Version 1.0) (cleanly cracked), MECC-A702 Elementary Vol. 1 (Version 3.5) (cleanly cracked),
+  MECC-A703 Elementary Vol. 2 (Version 3.2) (cleanly cracked), MECC-A704 Elementary Vol. 3 (Version 4.8) (cleanly cracked),
+  MECC-A704 Elementary Vol. 3 Science (Version 4.5) (cleanly cracked), MECC-A704 Elementary vol. 3 (Version 4.7) (cleanly cracked),
+  MECC-A708 Science Vol. 1 (Version 2.2) (cleanly cracked), MECC-A712 Music Theory Vol. 1 (Version 2.2) (cleanly cracked),
+  MECC-A714 Business vol. 1 - Utilities (Version 4.5) (cleanly cracked), MECC-A721 Business vol. 3 (Version 1.5) (cleanly cracked),
+  MECC-A725 Elementary Vol. 6 (Version 1.3) (cleanly cracked), MECC-A726 Spelling Vol. 1 (Version 3.0) (cleanly cracked),
+  MECC-A738 Mathematics Vol. 3 (Version 1.2) (cleanly cracked), MECC-A744 Mathematics vol. 4 (Version 1.3) (cleanly cracked),
+  MECC-A746 English Vol. 1 (Version 1.2) (cleanly cracked), MECC-A753 Nutrition vol. 2 (Version 1.2) (cleanly cracked),
+  MECC-A756 Food Facts (Version 1.0) (cleanly cracked), MECC-A756 Food Facts (Version 1.2) (cleanly cracked),
+  MECC-A758 Computer Generated Mathematics Materials Problem Solving Vol. 2 (Version 1.0) (cleanly cracked),
+  MECC-A761 Health Immunization (Version 1.1) (cleanly cracked),
+  MECC-A774 Adventures with Fractions (Version 1.0) (cleanly cracked),
+  MECC-A779 The Friendly Computer (Version 1.0) (cleanly cracked),
+  MECC-A785 Writing A Character Sketch (Version 1.0) (cleanly cracked),
+  MECC-A787 Guide de l'Enseignant (Version 1.4) (cleanly cracked), MECC-A788 Early Addition (Version 1.0) (cleanly cracked),
+  MECC-A811 The Three R's of Microcomputing (Version 1.1) (cleanly cracked), MECC-A817 Graphing (Version 1.2) (cleanly cracked),
+  MECC-A819 Number Systems (Version 1.1) (cleanly cracked), MECC-A821 Probability (Version 1.0) (cleanly cracked),
+  MECC-A822 Nutrition and Food Groups (Version 1.2) (cleanly cracked), MECC-A824 Classification (Version 1.1) (cleanly cracked),
+  MECC-H111A Spare Moments Solitaire (cleanly cracked), MECC-H111B Spare Moments with a Friend (cleanly cracked),
+  Mech Brigade (Version 1.2) (cleanly cracked), Medalist Series - States (cleanly cracked),
+  Meet The Presidents (cleanly cracked), Megabots (cleanly cracked), Memory Building Blocks (1989 Version) (cleanly cracked),
+  Memory Building Blocks (cleanly cracked), Memory Castle (1983 Version) (cleanly cracked),
+  Memory Match (Version 01.24.86) (cleanly cracked), Memory Minder (cleanly cracked), Meteor Mission (cleanly cracked),
+  Meteor Multiplication (Revision 2) (cleanly cracked), Meteor Multiplication (cleanly cracked), Micro Addition (cleanly cracked),
+  Micro Division (cleanly cracked), Micro Habitats (cleanly cracked), Micro League Baseball (cleanly cracked),
+  Micro Multiplication (cleanly cracked), Micro-LADS 1 Plurals and Noun-Verb Agreement (cleanly cracked),
+  Micro-LADS 2 Verb Forms (cleanly cracked), Micro-LADS 3 Prepositions (cleanly cracked), Micro-LADS 4 Pronouns (cleanly cracked),
+  Micro-LADS 5 Negatives (cleanly cracked), Micro-LADS 6 Deictic Expressions, Passive, and WH-questions (cleanly cracked),
+  Micro-LADS 7 Prepositions II (cleanly cracked), Microbe (Revision 3) (cleanly cracked),
+  Microbe (supports Mockingboard) (cleanly cracked), Microscopic Journey (cleanly cracked), Microzine 1 (cleanly cracked),
+  Microzine 11 (cleanly cracked), Microzine 12 (cleanly cracked), Microzine 13 (cleanly cracked), Microzine 14 (cleanly cracked),
+  Microzine 15 (cleanly cracked), Microzine 16 (cleanly cracked), Microzine 17 (cleanly cracked), Microzine 18 (cleanly cracked),
+  Microzine 19 (cleanly cracked), Microzine 2 (cleanly cracked), Microzine 20 (cleanly cracked), Microzine 21 (cleanly cracked),
+  Microzine 22 (cleanly cracked), Microzine 23 (cleanly cracked), Microzine 24 (cleanly cracked), Microzine 25 (cleanly cracked),
+  Microzine 26 (cleanly cracked), Microzine 27 (cleanly cracked), Microzine 3 (cleanly cracked), Microzine 4 (cleanly cracked),
+  Microzine 5 (cleanly cracked), Microzine 6 (cleanly cracked), Microzine 7 (cleanly cracked), Microzine 8 (cleanly cracked),
+  Microzine 9 (cleanly cracked), Might and Magic: Book One - Secret of the Inner Sanctum, Mind Over Matter (cleanly cracked),
+  Moptown Parade (Version 1.2) (cleanly cracked), Multiplication and Division (cleanly cracked),
+  Mystery Master: Murder by the Dozen (cleanly cracked), Number Bowling: Decimals and Fractions (cleanly cracked),
+  Numeration 1 - Under The Big Top (cleanly cracked), Odd One Out (26-AUG-1990 Version) (cleanly cracked),
+  Odd One Out (cleanly cracked), Pitfall II: Lost Caverns (cleanly cracked), Pitstop II (cleanly cracked),
+  Planetfall (Release 20 / 830708) (cleanly cracked), Planetfall (Release 26 / 831014) (cleanly cracked),
+  Plasmania (cleanly cracked), Professor Davensteev's Fantasy Land (Blue Level) (cleanly cracked), Quations (cleanly cracked),
+  Rabbits, Robots, and a Monkey 1 (cleanly cracked), Race Car 'Rithmetic (cleanly cracked), Rad Warrior (cleanly cracked),
+  Richard J. Dixson's Essential Idioms (cleanly cracked), Spanish Grammar Review: Por vs. Para (cleanly cracked) [4am, Firehawke]
+apple2_flop_misc:
+  Anti-M (version 1.4), Anti-M (version 1.5) [4am, Firehawke]
+  AppleWorks (Version 1.2, USA), AppleWorks (Version 1.3, USA), AppleWorks (Version 2.0, USA) [Firehawke]
+apple2_flop_orig:
+  AIRSIM 1, Alcazar: The Forgotten Fortress, Championship Baseball, Laf Pak, Mr. Cool, OGRE, Pensate, Pentapus, Pipe Dream,
+  Renegade, Rumpelstiltskin, Ski Crazed (Version 28701), Starcross (Revision 17 / 821021), Station 5, Sub Mission,
+  The Caverns of Freitag, The Queen of Phobos, The Wizard of Oz, Theatre Europe, Thief, Ultima I: The Beginning [4am, Firehawke]
+bbc_rom:
+  PMS Genie Junior 1.1u [Derek Mathieson]
+  Acorn TFS 1.00, Acorn TFS 1.02, Acorn TFS 1.03, Advanced Disc Investigator 1.21 S/N:43318, ATS+ 1.00, ATS+ 2.00,
+  BBC Teletext 2.38, BBC Teletext 2.50, BeebAid 1.05, BeebEd 1.04, CMS Link 2.00, DMON A1.03, General Utilities 3.22,
+  HyperDriver 1.11, The Informant, Instat C00144, Logotron LOGO (Cymru), Microbrush Injector 1.00, Open LOGO, Printer Server 0.9A,
+  QFS 1.01, Romit 1.00, Sciways 2.03, StarBASE 2.11, STL Clock & Desk 1.10, Style 1.3, SupaStore 1.5, Super-Forth 1.5, Swift 2.2,
+  Techno-Font, TRXROM 2.00, ViewSheet 1.0, Wapping Support 1.21, Wordwise Plus 2.04, WYSIWYG Plus 1.22 [Nigel Barnes]
+cd32: Battle Chess [FakeShemp]
+cecflop:
+  Apple DOS 3.3 System Master, Chaoji Hanzi Wenzhang Bianji, Chenglong, Diannao Suanming, Diinzi Xianlu Jisuanji Fuzhu Sheji,
+  Feifu Shentong, Fu'ermosi, Gen Wo Xue 6502 Huibian, Gupiao Zixun Xitong, Jisuanji Zixan Fuwu, Ruanjian Mulu Bianyin Gongju V2.2,
+  Shengwuzhong Quxian Ji Xingge Zixun, Tongyong Shujuku Guanli Xitong, Xiaoxue Yuwen, Yinyue Heiban, Zhonghuaji Dayin He,
+  Zhonghuaji Xitongpan CEC-DOS [zzemu, R. Belmont, Vas Crabb, xinyingho]
+dragon_flop: Dunjunz [Nigel Barnes]
+fm7_cass: The Stars [Elroy van Tamelen]
+ibm5150:
+  The ChessMachine (v2.1, Gideon v2.1), The ChessMachine (v2.3, Gideon v2.1) [hap]
+  The ChessMachine (RISC engines), The ChessMachine (v2.1, Gideon v1.7), The ChessMachine (v3.1, The King v2.20) [hap, fhub]
+  The Final ChessCard (v1.9) [hap, voelkx]
+ibm5170:
+  Mission (Traditional Chinese) [Justin Kerk]
+  America Online 3.0 for Windows, McAfee Software Emergency Boot Diskette [Justin Kerk, Jason Scott]
+  KLM's Screensaver [Justin Kerk, Misty De Meo]
+jb3000_flop: MS-DOS v1.25 [Edstrom]
+mt65_snap:
+  Adventure 1: The Sceptre of Hamloth, Astro Fighter, Berzerk, Defender, Games Pack 1: Hangman, Games Pack 1: Lunar Lander,
+  Games Pack 1: Othello, Hell's Bells, Moon Cresta, Moon Rescue, Slot Machine, Space Invasion, Space Rocks, The Gobbler
+  [Geoff Macdonald]
+mtx_cass:
+  Comic Bakery (MSX Conversion), Old Mac Farmer (MSX Conversion), Power Pac (Sord M5 Conversion), SASA (MSX Conversion),
+  Sloopy's Christmas, Spectron (Coleco Conversion), Telebunny (MSX Conversion) [MTXworld]
+pc98:
+  Bishoujo Daizukan, D.O. Doki Doki Disk Vol. 08, Daijuutai, Dark Seraphim, Datenshi Kyouko Part I, Dead Force,
+  Delicious Lunch Pack, Dennou Garou, Desire - Haitoku no Rasen, Diadrum, Dires - Giger Loop, DiskX II, Diver's,
+  Doki Doki Pretty League Dai-1-wa - Pink Angels Kiki Ippatsu no Maki, Doki Doki Pretty League Dai-2-wa - Mou Hitotsu no Rival,
+  Doki Doki Pretty League Dai-3-wa - Minami no Umi no Kai no Maki, Doki Doki Pretty League Dai-4-wa - Nanase no Himitsu no Maki,
+  Doki Doki Pretty League Dai-5-wa - Saraba Pink Angels-tachi, Doom II, Doop, Dora Dora Emotion - Seihaiden, DR2 Night Janki,
+  Dragon Master Silk - Ryuu Shoukan Musume - Episode II, Dragon Master Silk - Ryuu Shoukan Musume - Episode II (Alt Disk 1),
+  Dream Theater, Dream Theater (Alt), Dual Soul, Duel - Kawanakajima Scenario, Duel Succession, Dungeon Hack (newer, 16/256 colors),
+  Dungeon Hack (older, 256 colors, requires DOS 5.0), New 3D Golf Simulation Ver. 2.0, Paracelsus no Maken,
+  Z's Triphony - Digital Craft [Neo Kobe Collection]
+pc98_cd: Dragon Lore [Neo Kobe Collection]
+spectrum_cass:
+  3D Starfighter, 750cc Grand Prix, A-Maze, Advanced Pinball Simulator, Advanced Pinball Simulator (EDOS), Alpha-Beth,
+  Alpha-Beth (demo), Amaze (Bytesize), Aqua Plane, Aquaplane (ZX Data), Arcade Flight Simulator,
+  Army Moves (English, set 2, Summit), Army Moves (Spanish, set 1, Alternate Cover / Medium Case),
+  Army Moves (Spanish, set 2, Small Black Case), Army Moves (Spanish, set 3, Small Orange Case), Army Moves (set 1, Imagine),
+  Astro Blaster (English), Astro Blaster (Spanish, Investronica), Astro Blaster (Spanish, Microbyte), ATV Simulator, Ballbreaker,
+  Ballbreaker (DRO Soft, set 1), Ballbreaker (DRO Soft, set 2), Ballbreaker II, Battle Field, Battlecars (set 1),
+  Battlecars (set 2, Summit), Battlecars (set 3), Battlefield Germany, Bigfoot, Bigfoot (EDOS), Bignose's American Adventure,
+  Bignose's American Adventure (EDOS), Biology 'O' Level, Biology 'O' Level (Paxman), Biology - O'Level & CSE, Black Beard,
+  Black Beard (Kixx), Blade Warrior, Blade Warrior (EDOS), BMX Freestyle, BMX Freestyle (EDOS), BMX Simulator,
+  BMX Simulator 2 - Dirt Biking, BMX Simulator 2 - Quarry Racing, Bombscare (Dollarsoft), Bombscare (Jeffery Bond), Brainache,
+  Bubble Dizzy, Captain Drexx, Captain Dynamo, Castle Master, Castle Master (The Hit Squad), Castlemaze Adventure (set 1),
+  Castlemaze Adventure (set 2), Championship Jet Ski Simulator - Easy, Championship Jet Ski Simulator - Hard,
+  Chess Master - Computer Tape - Side A, CJ In The USA, CJ's Elephant Antics, Cobra's Arc (medium case), Cobra's Arc (small case),
+  Con-Quest, Conquest, Conquestador, Conquestador (Erbe), D-Day (set 1), D-Day (set 2), D-Day (set 3, EDOS), D-Day (set 4, Summit),
+  De-Fusion, De-Fusion & Worms, Death Stalker, Dizzy - The Ultimate Cartoon Adventure (set 3), Dizzy Down The Rapids (set 2),
+  Dizzy II - Treasure Island Dizzy (EDOS), Dizzy IV - Magicland Dizzy (set 2), Dizzy V - Spellbound Dizzy (set 2),
+  Dizzy VI - Prince Of The Yolkfolk (set 2), Dizzy VII - Crystal Kingdom Dizzy (set 5),
+  Dizzy VII - Crystal Kingdom Dizzy (set 6, v1.1), Dizzy VII - Crystal Kingdom Dizzy (set 7, v1.5), DJ Puff's Volcanic Erruption,
+  Dr Doom's Revenge! (The Amazing Spider-Man and Captain America in) (Proein) (Spanish),
+  Dr. Doom's Revenge! (The Amazing Spider-Man and Captain America in), Dragon Slayer (Martin Freemantle, 128k),
+  Dragon Slayer (Martin Freemantle, 48k, double sided), Dragon Slayer (Martin Freemantle, 48k, single sided),
+  Dragon Slayer (Steven Pilgrim, set 1, Pocket Money Software), Dragon Slayer (Steven Pilgrim, set 2), F-16 Combat Pilot (set 2),
+  F-16 Combat Pilot (set 3, Action Sixteen, double sided), F16 - Combat Pilot (set 1, System 4), First Division Manager,
+  Frankenstein Jnr, Fruit Machine Simulator, Fruit Machine Simulator 2, Game Over (Imagine) - Side 1,
+  Game Over (Spanish, Black Small Cassette / Black Case), Game Over (Spanish, Small Orange Case), Game Over (Summit), Gauntlet,
+  Gauntlet (Kixx), Gauntlet (Small Case, Erbe), Ghost Hunt, Ghost Hunt (Kryptronic), Ghost Hunters, Golden Axe, Golden Axe (Tronix),
+  Golden Axe - Side 1 (Erbe / MCM), Grand Prix II, Grand Prix Simulator, Grell And Falla, Guardian Angel, Gulpman (Aackosoft),
+  Gulpman (Campbell Systems), Gulpman (Micromega), Gulpman (Profisoft), Gun Boat (Alternative), Gun Boat (System 4),
+  Gun Law (Aackosoft), Gunboat (Dro Soft), Hyper Sports (set 1), Hyper Sports (set 2, The Hit Squad), Hyper Sports (set 3),
+  Hyper Sports (set 4, Erbe), International Rugby Simulator (Erbe), International Rugby Simulator (set 1),
+  International Rugby Simulator (set 2), Italian Supercar, Jet Bike Simulator, Jet Set Willy, Jet Set Willy (Pre Production),
+  Jet Set Willy (Spain, Ventamatic), Jet Set Willy (bugfix, 2015), Jet Set Willy (bugfix, PCG), Jet Set Willy (cracked, set 1),
+  Jet Set Willy (cracked, set 2), Jet Set Willy (cracked, set 3), Jet Set Willy (cracked, set 4, OAV),
+  Jet Set Willy (cracked, set 5), Jet Set Willy 2, Jet Set Willy 2 (128k version), Jet Set Willy 2 (Ricochet),
+  Kamikaze (A & F Software), Kamikaze (Codemasters), Kamikaze (Eyrolles), Kamikaze (JK Greye), Kamikaze Collector, KGB Super Spy,
+  KGB Super Spy (Erbe), Kick Boxing (Firebird, set 1), Kick Boxing (Firebird, set 2), Kick Boxing (Firebird, set 3), Life-Line,
+  Lifeline, Little Puff In Dragon Land, Mad Balls (Erbe), Madballs, Miami Chase, Micro Drivin', Microprose Soccer (Erbe),
+  Microprose Soccer (Kixx), Microprose Soccer (Release 1), Microprose Soccer (Release 2 - 128k),
+  Microprose Soccer (Release 2 - 48k), Mig-29 Soviet Fighter, Mig-29 Soviet Fighter (Erbe), Mission Jupiter, Monte Carlo Casino,
+  Moon Buggy (Visions Software), Moonbuggy (Anirog), Moto Cross Simulator, Mountain Bike Simulator, Murray Mouse Super Cop,
+  Ninja Massacre, Nonamed (English), Nonamed (Spanish, Medium Case), Nonamed (Spanish, Small Orange Case), North & South,
+  North & South (Erbe), North Star, North Star (Byte-Back), North Star (Erbe), Olli & Lissa 3 - The Candlelight Adventure,
+  Operation Gunship, Operation Gunship (EDOS), Operation Gunship (Erbe), Panic Dizzy (set 3), Paris To Dakar,
+  Phantomas (English, Codemasters re-release), Phantomas (Spanish), Phantomas (Spanish, Small Orange Case),
+  Phantomas 2 (Spanish, Medium Case), Phantomas 2 (Spanish, Small Black Case), Phantomas 2 (Spanish, Small Orange Case),
+  Phantomas Tales #1 - Marsport, Pheenix (set 1, Alternative Software), Pheenix (set 2), Pheenix (set 3), Pheenix (set 4),
+  Prehistoric Adventure, Prince Clumsy, Prince Clumsy (EDOS), Pro Boxing Simulator, Pro Golf Simulator, Pro Power Boat Simulator,
+  Pro Skateboard Simulator - Extended Mix, Pro Ski Simulator, Pro Snooker Simulator, Pro Tennis Simulator,
+  Professional BMX Simulator, Professional Footballer (Code Masters Plus), Pub Trivia, Race Against Time, Rally Cross,
+  Rally Cross (System 4 - Serie Leyenda), Rally Cross (Top Shots), Rally Cross Simulator, Rally Simulator, Rally Simulator (EDOS),
+  Rock Star Ate My Hamster, Rock'n Roller, SAS Combat Simulator, Sergeant Seymour Robotcop, Seymour Goes To Hollywood, Short's Fuse,
+  Sky High Stuntman, Slightly Magic, Snare (set 2), Soccer Pinball, Spike In Transylvania, Star Firebirds, Star Runner,
+  Steg The Slug, Street Gang Football, Stryker - In The Crypts Of Trogan, Stuntman Seymour, Super Bike Trans-Am,
+  Super Dragon Slayer, Super G-Man, Super Hero, Super Robin Hood, Super Seymour Saves The Planet, Super Stunt Man,
+  Super Tank Simulator, Supertrux, Supertrux {Portuguese}, Tarzan Goes Ape, Terra Cognita, The Amazing Adevntures of Robin Hood,
+  The Bounty Hunter (Codemasters), The Chessmaster 2000 (Dro Soft), The Haunting, The Haunting (Northern Underground),
+  The Hit Squad, The Hit Squad (EDOS), The Hit Squad (Erbe), The Hunt For Red October - Based On The Book,
+  The Hunt For Red October - Based On The Book (Unique), The Hunt For Red October - Based On The Book (Zafiro),
+  The Hunt For Red October - Based On The Movie, The Open - Carnoustie (set 1), The Open - Carnoustie (set 2),
+  The Trap Door (Polish, Krajowe Wydawnictwo Czasopism, set 1), The Trap Door (Polish, Krajowe Wydawnictwo Czasopism, set 2),
+  The Trap Door (set 1, Alternative), The Trap Door (set 2, EDOS), The Trap Door (set 3), The Trapdoor (set 4, System 4),
+  The Trapdoor (set 5, Zafiro), The Trapdoor (set 6), Tilt, Titanic (Yes Software), Tornado ECR, Transformers, Transmuter,
+  Turbo The Tortoise (set 1, Hi-Tec), Twin Turbo V8, Twin Turbo V8 (EDOS), Vampire, Wacky Darts, White Heat, Wild West Seymour,
+  Wizard Willy, Wonder Boy (The Hit Squad), Wrestling Superstars [TZX Vault, SPA2]
+vgmplay:
+  Animorphs (Nintendo Game Boy Color), Babel no Tou (Sharp X68000), Big Karnak (Arcade), Bionic Commando (ZX Spectrum 128),
+  Chopper I (SNK Triple Z80), Cobra-Command (Arcade), Die Hard (PC Engine), Fighting Run (PC Engine),
+  Garfield no Isshuukan - A Week of Garfield (Family Computer), Grobda (NEC PC-8801), Herzog (Sharp X1 Turbo, OPM),
+  Herzog (Sharp X1 Turbo, PSG), Kart Fighter (Dendy), LEGO Stunt Rally (Nintendo Game Boy Color), Last Mission (Arcade),
+  Looney Tunes Collector - Alert! (Nintendo Game Boy Color), M&M's Minis Madness (Nintendo Game Boy Color),
+  Pictionary - The Game of Video Quick Draw (NES), Plus Alpha (Mega System 1),
+  Pro Yakyuu Family Stadium - Home Run Contest (MSX2, OPLL), Pro Yakyuu Family Stadium - Home Run Contest (MSX2, PSG),
+  Project S-11 (Nintendo Game Boy Color), SimCity (NES), Sky Shark (NES), Soccer Brawl (SNK Neo Geo),
+  Space Harrier (Fujitsu FM77AV), Space Harrier (NEC PC-8801), Stadium Hero (Arcade),
+  Stuart Little - The Journey Home (Nintendo Game Boy Color), Super Boy 3 (MSX), Super Contra 7 (Dendy),
+  Super Mario Land 2 - 6 Golden Coins (Nintendo Game Boy), Terra Cresta II - Mandler no Gyakushuu (PC Engine),
+  The Adventures of Tom Sawyer (NES), Toy Pop (Sharp X1 Turbo), WEC Le Mans 24 (Arcade) [Tafoid]
+z88_cart:
+  Code Count, EP-Copy, Event Control System, PC-Link II, Stop Watch, Toll Tracker v2.0 (Demo), Z88 Data Organiser [Nigel Barnes]
+
+
+Software list items promoted to working
+---------------------------------------
+bbc_rom: AMX Design [Nigel Barnes]
+cd32: Beneath a Steel Sky, Roadkill (Alt) [FakeShemp]
+mtx_cass:
+  3D Tachyon Fighter, 3D Turbo, Agrovator, Alice in Wonderland, Arcazions, Astro-Pac, Astromilon, Backgammon, Blobbo,
+  Contract Bridge II, Contract Bridge II (Alt), Cosmic Raiders, Demonstration Tape, Goldmine, Hawk Wars, Kilopede, Knuckles,
+  Knuckles (Alt), Little Devils, Micro Canvas, Mission Alphatron, Mission Alphatron (Alt), Mission Omega, MTX Chess, MTX Draughts,
+  Nemo, Obloids, Phaid, Phaid (Alt), Qogo, Quazzia, Space Invasion (Coleco Conversion), Star Command, Super Minefield,
+  Surface Scanner, Tapeworm, Target Zone, Toado, Vernon and the Vampires [Nigel Barnes]
+pc98:
+  Cybernetic Hi-School / Dennou Gakuen III - Top wo Nerae!, D.P.S. - Dream Program System (Alt),
+  D.P.S. SG 2 - Dream Program System SG Set 2, Daikairei - Dainippon Teikoku Kaigun no Kiseki, Dalk,
+  Daraku no Kuni no Angie - Kyoukai no Mesu Dorei-tachi, Deja Vu~2994., Dengeki Nurse, Denza, Devil Chain 98, Diamond Players,
+  Disc Station 98 #03, Disc Station 98 #11 (Alt Format), DNA, Doki Doki Vacation - Kirameku Kisetsu no Naka de, DOR, DOR Part 2,
+  DOR Part 3, Dori Dor Qizu 7 (Bad Sectors), Dori Dor Qizu 8, Doujin Soft Shuusaku Game Collection Vol. 1 (5.25" Disks),
+  Dragon Knight 4, Dragon Princess - Ryuu no Densetsu, Dungeon Buster, Yume Utsutsu - Dreamy [Carl, r09]
+pc98_cd: Duel Succession Plus Kit [Carl, r09]
+
+
+New NOT_WORKING software list additions
+---------------------------------------
+bbc_rom:
+  Barry-Box, BeebScan, CUBE BeebFlex, Eprom Programmer 1.03, Eprom Programmer 1.06, Eprom Programmer V2 2.01,
+  Eprom Programmer V2 2.02, Eprom Programmer V2 2.03, EURO-Beeb Terminal 1, EURO-Beeb Terminal 4.13, FIT Test Station,
+  Hobbit OS 1.8, PMS Genie 1.01, Prestel 1.0, Ramamp Video 2.40, Ramamp Video 2.50 [Nigel Barnes]
+ibm5170: WinBook XL Audio, WinBook XL Boot Disk [Justin Kerk]
+leapfrog_leappad_cart:
+  The Amazing Spider-Man (UK), Disney's Bounce, Tigger, Bounce (UK), Leap 1 - Reading - Disney/Pixar Finding Nemo (UK),
+  Leap 2 - Reading - Disney/Pixar Monsters, Inc. (UK), Leap Start - Pre Reading Storybook - Disney's The Lion King (UK),
+  Leap-Start - Pre Reading - Tutter's Tiny Trip (UK), Phonics Programme - Lesson 3 - Short Vowels o and e - A Day at Moss Lake (UK)
+  [TeamEurope]
+mtx_cass: Caves of Orb, Pac-Man (MSX Conversion), Zombie Near [MTXworld]
+pc98: Dam Busters, Dangerous Toys, Desert Dragoon - Sabaku no Ryuukihei, Director Monogatari [Neo Kobe Collection]
+pce_tourvision: Paranoia (TourVision PCE bootleg), Racing Damashii (TourVision PCE bootleg) [system11]
+spectrum_cass:
+  Army Moves (Spanish, set 1), Astroblasters, CD Loader Software, F-16 - Fighting Falcon (EDOS), Rock Star Ate My Hamster (EDOS),
+  Seymour - Take 1 (Minigame / Demo), Supertrux (Encore), Turbo The Tortoise (set 2, Codemasters), Wonder Boy (set 1),
+  Wonder Boy (set 2) [TZX Vault, SPA2]
+
+
+Source Changes
+--------------
+-mc68340 timer improvements: [AJR]
+ * Fixed pre-scaler calculation.
+ * Handle various reset behaviors.
+ * Record TOUT changes in status register.
+ * Improved handling of COM flag and compare register being zero.
+ * Wait for cycle after reaching zero to reload.
+
+-pk8020.cpp: Added printer port. [AJR]
+
+-ds1386: Fixed initialization of RTC registers from system time, and made default command register value more useful. [AJR]
+
+-Implemented accurate byte-smearing for writes on 32-bit M68k family CPUs. [AJR]
+
+-i8275: Improved and simplified handling of field attributes. [AJR]
+
+-Implemented Apple II game I/O port as a slot device, and hooked it up to the Apple II and Sanyo MBC-550 family machines. [AJR]
+
+-applix: Fixed video addressing, added colored border area, and added SCC and RS-232 serial ports. [AJR]
+
+-Fixed fatal error when attempting to set a watchpoint straddling unaligned portions of two adjacent native words. [AJR]
+
+-Added MM5307 Baud Rate Generator device. [AJR]
+
+-tk2000: Added printer interface. [AJR]
+
+-x68000: Overhauled interrupt handling, and added second expansion slot. [AJR]
+
+-Added preliminary disassembler and skeleton CPU device for the Elan RISC II architecture. [AJR]
+
+-unidasm: Corrected address shifts for u'nSP and uPD7725. [AJR]
+
+-a2vidtrm, a2vtc2: Merged devices and ROM sets. [AJR]
+
+-Corrected VGA/SVGA display parameters. [AJR]
+
+-Added disassembler and skeleton device for the DP8344 Biphase Communications Processor. [AJR]
+
+-cntsteer.cpp: Fix sprite colors and magnification feature. [Angelo Salese]
+
+-deco32.cpp: Provided gun Y minimum/maximum values for Locked N Loaded, making it possible to calibrate. [Angelo Salese]
+
+-balsente.cpp: Fixed reversed joystick inputs for players 3 and 4. [Angelo Salese]
+
+-sh2.cpp updates: [Angelo Salese]
+ * Started refactoring SH7604 system-on-a-chip.
+ * Fixed condition for clearing divider unit overflow flag.
+ * Fixed division unit overflow flag clearance;
+
+-mega32x.cpp: Improved member names, and converted read/write handlers to 16-bit space. [Angelo Salese]
+
+-exedexes.cpp: Converted to priority drawing, simplified graphics decoding and cleaned up code. [cam900]
+
+-cpu/jaguar: Implemented version bits in control register, eliminated register_postload, and cleaned up code. [cam900]
+
+-jaguar.cpp: Fixed clock crystal frequencies, and improved metadata. [cam900]
+
+-1943.cpp: Fixed drawing priorities, reduced runtime tag map lookups, simplified graphics decoding, and cleaned up code. [cam900]
+
+-decmxc06.cpp: Fixed graphical regressions and corrected comments. [cam900]
+
+-jedi.cpp updates: [cam900]
+ * Added graphics decoding for debugging (disabled by default), and converted palette handling to use palette device.
+ * Reduced runtime tag map lookups and cleaned up code.
+
+-ddenlovr.cpp: Corrected CPU type. [cam900]
+
+-drawgfx.cpp: Added functionality for drawing bitmaps and scan lines with priority, and exposed additive blending function. [cam900]
+ * Converted hng64.cpp, realbrk.cpp and stvvdp2.cpp to use new common functionality.
+
+-tigeroad_spr.cpp: Moved graphics decoding from the drivers into the device, and cleaned up code. [cam900]
+
+-aquarium.cpp, asuka.cpp, bionicc.cpp, tigeroad.cpp, supduck.cpp: Simplified graphics decoding and cleaned up code. [cam900]
+
+-fuukifg.cpp updates: [cam900]
+ * Moved sprite RAM to drivers, and added callbacks for colour/priority/banking behavior.
+ * Moved graphics decoding into the device, and cleaned up code.
+
+-fuukifg2.cpp, fuukifg3.cpp, gcpinbal.cpp: Cleaned up code. [cam900]
+
+-excellent_spr.cpp: Moved graphics decoding into the device, added callback for priority behavior, and cleaned up code. [cam900]
+
+-video/generic.cpp: Added packed 4-bit and raw graphics layouts. [cam900]
+ * Now used in 2mindril.cpp, ashnojoe.cpp, asuka.cpp, f1gp.cpp, pgm2.cpp, powerins.cpp, psikyosh.cpp, and undrfire.cpp.
+
+-epic12.cpp: Added a video RAM viewer for debugging (disabled by default), and cleaned up code. [cam900]
+
+-ninjaw.cpp cleanup: [cam900]
+ * Cleaned up sprite priority behavior, and split graphics layouts for each TC0100SCN chip.
+ * Eliminated register_postload, simplified graphics decoding and cleaned up code.
+
+-warriorb.cpp: Derive clocks from crystals on PCB, simplified graphics decoding, and cleaned up code. [cam900]
+
+-othunder.cpp, topspeed.cpp: Reduced runtime tag map lookups, simplified graphics decoding, and cleaned up code. [cam900]
+
+-taito_z.cpp: Reduced use of MCFG_MACHINE_START and MCFG_MACHINE_RESET macros, and cleaned up code. [cam900]
+
+-wgp.cpp updates: [cam900]
+ * Implemented masked drawing priorities, and simplified graphics decoding.
+ * Eliminated register_postload, reduced redundancy, cleaned up code, and added notes.
+
+-tc0280grd.cpp: Moved graphics decoding from the drivers to the device, and added support for masked drawing priorities. [cam900]
+
+-taito_f2.cpp: Implemented masked priority for ROZ layer, fixed finalb 6-bit graphics decoding, and cleaned up code. [cam900]
+
+-galastrm.cpp: Simplified graphics decoding. [cam900]
+
+-groundfx.cpp, undrfire.cpp: Fixed 6-bit graphics decoding and cleaned up code. [cam900]
+
+-tc0100scn.cpp: Allow graphics granularity to be updated after configuration. [cam900]
+
+-2mindril.cpp: Improved notes and metadata for 2mindril. [cam900]
+
+-taito_f3.cpp, 2mindril.cpp updates: [cam900]
+ * Improved graphics decoding and ROM loading.
+ * Defer allocation of video RAM to start time, reduced runtime tag map lookups, reduced redundancy, and cleaned up code.
+
+-ashnojoe.cpp: Corrected number of tilemaps, reduced runtime tag map lookups, reduced redundancy, and cleaned up code. [cam900]
+
+-gp9001.cpp: Added callback for bank switching, suppress read side effects for debugger, and cleaned up code. [cam900]
+
+-toaplan2.cpp: Cleaned up code. [cam900]
+
+-seta.cpp: Suppress read side effects for debugger, simplified graphics decoding, and cleaned up code. [cam900]
+
+-rohga.cpp, segas32.cpp: Added links to reference videos. [cam900]
+
+-darius.cpp updates: [cam900]
+ * Simplified graphics decoding, and cleaned up sprite priority behavior.
+ * Eliminated register_postload, reduced runtime tag map lookups, reduced redundancy, and cleaned up code.
+
+-pc090oj.cpp updates: [cam900]
+ * Moved graphics decoding from drivers into device, added a callback for color bank/priority behavior, and cleaned up code.
+ * Simplified graphics decoding and reduced trampolines in drivers using this device.
+
+-tc0480scp.cpp updates: [cam900]
+ * Moved graphics decoding from drivers into device, and fixed text layer graphics decoding for bootleg boards.
+ * Improved graphics decoding and cleaned up code in drivers using this device.
+
+-tc0100scn.cpp: Moved graphics decoding from drivers to device, made color base configurable, and added TC0620SCC variant. [cam900]
+
+-metro.cpp: Fixed vertical blanking interrupt routing for bangball. [cam900]
+
+-igs017_igs031.cpp: Avoid creating temporary graphics elements to improve performance. [cam900]
+
+-boogwing.cpp, dblewing.cpp, deco156.cpp, deco32.cpp, dietgo.cpp, mirage.cpp, supbtime.cpp: Simplified graphics decoding. [cam900]
+
+-cninja.cpp: Simplified graphics decoding, and improved ROM region names. [cam900]
+
+-toaplan2.cpp: Reduced runtime tag map lookups, reduced redundancy, improved sound mixing levels, and cleaned up code. [cam900]
+
+-cbuster.cpp: Simplified graphics decoding, changed palette to use a format handler, and cleaned up code. [cam900]
+
+-huc6230.cpp, huc6272.cpp: Added links to relevant patents. [cam900]
+
+-tc009xlvc.cpp updates: [cam900]
+ * Moved on-chip functionality from driver to device, including bank switching, graphics, interrupts, palette, and video registers.
+ * Converted banking to use address_map_bank_device, and cleaned up code and added notes.
+
+-lastbank.cpp: Corrected audio CPU program ROM region size. [cam900]
+
+-xavix.cpp: Store code bank in a private stack when on long calls (fixes crash on rad_hnt2 calibration screen). [David Haywood]
+
+-tzx_cas.cpp: Revert changes to pause insertion that cause Speedlock loaders to fail. [David Haywood]
+
+-Moved Tomy Prin-C to its own source file. [David Haywood]
+
+-redclash.cpp: Re-parented Red Clash sets, as it appears to be a Kaneko game. [David Haywood]
+
+-Added uPD7004 analog to digital converter device. [Dirk Best]
+
+-bbusters: Refactored to use uPD7004 device and adjusted gun limits to better match factory defaults (MT07333). [Dirk Best]
+
+-subsino2.cpp: Added hopper/ticket dispenser and fixed key-out and payout inputs for xtrain and ptrain (MT07351). [Dirk Best]
+
+-argus.cpp: Added notes about the ROM checksum tests. [Dirk Best]
+
+-qvt102.cpp updates: [Dirk Best]
+ * Added low-level keyboard emulation, including beeper.
+ * Fixed some graphical issues, corrected blink frequency, and added support for full-screen reverse.
+ * Added support for German and UK character sets.
+ * Hooked up CTC properly, added RS-232 auxiliary port, and added configuration jumpers for RS-232 control signals.
+ * Added save state support.
+
+-qvt6800.cpp: Renamed to qvt190.cpp, added graphics decoding, and implemented basic text rendering. [Dirk Best]
+
+-qvt103.cpp, qvt201.cpp: Added graphics decoding. [Dirk Best]
+
+-qvt70.cpp: Started to flesh out the skeleton driver. [Dirk Best]
+
+-sms.cpp: Route NMI through video display processor. [Enik Land]
+
+-z80sio.cpp: Improved synchronous mode emulation using HP98406 tests for guidance. [F.Ulivi]
+
+-hp9845: Added support for the HP98046 serial I/O module. [F.Ulivi]
+
+-Fixed Visual Studio clang/llvm build configuration. [feos]
+
+-vectrex: Select bank 1 on reset for 64 KiB cartridges. [Ford Seidel]
+
+-by35.cpp updates: [hackbar]
+ * Added Bally Squawk & Talk sound boards, and switched video games over to new implementation.
+ * Added audio output filters.
+ * Added sound LED to layouts.
+
+-tms5220.cpp: Adjusted delay between /RS being activated and /READY being asserted. [hackbar]
+
+-6821pia.cpp: Made reading port A when it's in output mode more flexible. [hackbar]
+
+-Changed auto-fire plugin to store configuration in the plugin home path directory. [Jack Li]
+
+-Added X11 XInput development library package to Travis build configuration. [Kiall Mac Innes]
+
+-toypop.cpp: Fixed rendering of withered flowers in liblrabl. [kunikuni]
+
+-Default save/load search path to an empty string if it's null. [Nathan Woods]
+
+-Added a -version verb that prints the build version. [Nathan Woods]
+
+-microtan: Randomize video RAM at startup, and fixed setting stack pointer when loading a snapshot. [Nigel Barnes]
+
+-ef9365.cpp: Fixed vertical characters, and use configured palette. [Nigel Barnes]
+
+-Fixed a subtle memory subsystem bug in unit mask handling. [O. Galibert]
+
+-mindset.cpp: Added preliminary Mindset Video Production System emulation, including graphics coprocessor and keyboard.
+ [O. Galibert, Al Kossow]
+
+-bus/pc_kbd: Added high-level emulation of PS/2 mouse. [Patrick Mackinlay]
+
+-Fixed M6805 issue causing PC/AT 101 keyboard to fail to receive commands. [Patrick Mackinlay]
+
+-SGI IOC2: Switched to using emulated PS/2 keyboard/mouse controller - fixes inability to type numerous characters.
+ [Patrick Mackinlay, Ryan Holtz]
+
+-myb3k.cpp: Added support for the FDC4712 8" floppy drive controller card. [protosphere]
+
+-audio/bally.cpp: Fixed AS2888 sound board playing incorrect tones, and changed sound test switch assignment to avoid conflicts.
+ [Quench]
+
+-mc68340: Corrected Baud rate calculation. [R. Belmont]
+
+-esqmr.cpp: Improved RAM, ROM and device mapping (programs run further, but don't boot yet). [R. Belmont]
+
+-konmedal updates: [R. Belmont]
+ * Corrected K52109 mapping and tile banking for shuriboy and fuusenpn.
+ * Fixed visible area, colors and priorities for shuriboy.
+
+-konmedal68k.cpp: Added address map for koropens, allowing it to pass its self-test. [R. Belmont]
+
+-esq1.cpp: Improved emulation of sq80 allowing it to boot and play. [R. Belmont, Jariseon, R. Buchty]
+
+-SGI Newport graphics updates: [Ryan Holtz]
+ * Added Display Control Bus timeout - prevents Presenter board from being erroneously detected.
+ * Fixed COLORI shift when cross-initialized by COLORRED, RGB vs. CI fast-clear handling, and octant calculation for lines.
+ * Fixed handling of COLORI register alternate access, and added support for RAMDAC gamma LUT.
+ * Fixed source buffer shift when blending is enabled.
+ * Fixed line drawing to not cause a hang in certain cases.
+ * Fixed color iterator reload behavior, and color iterator clamping behavior.
+ * Fixed per-pixel alpha.
+ * Added support for endian swapping on host data port writes, and added double-buffer shift support for non-RGB/CI planes.
+ * Fixed Packed Color Fractions register handling.
+ * Fixed store shift for overlay planes - fixes cursor outlines in Barco ColorTone.
+
+-sgi_mc: Fixed VDMA TLB which caused corrupt bitmap transfers. [Ryan Holtz]
+
+-SGI HAL2 audio updates: [Ryan Holtz]
+ * Added handling for different frequency rates and fixed stereo DAC playback.
+ * Moved DAC devices into HAL2 from HPC3.
+ * Implemented DAC parameter read-back.
+
+-indy_indigo2.cpp: Improved set names, converted to use BIOS options, and added B4 stepping of Indy boot PROM. [Ryan Holtz]
+
+-Started emulating the Quantel DPB-7000 paintbox: [Ryan Holtz, Mark Nias]
+ * Hooked up CSR, control bus, and system control registers.
+ * Hooked up Auto-Start switch and both banks of configuration switches.
+ * Hooked up CRT controller character generator (using the bw12 character generator ROM until a proper dump is available).
+ * Added preliminary Disk Sequencer Card emulation.
+ * Added TV field timer.
+ * Fixed screen size and visible area, and fixed field in/out timers.
+ * Began adding FDC support.
+ * Added a skeleton device for the Combiner Card, and hooked up clocked logic and screen device.
+ * Added a skeleton device for the Brush Processor Card.
+ * Added a skeleton device for the Store Address Card.
+
+-am2910: Added a preliminary, largely-untested Am2910 Microprogram Controller device. [Ryan Holtz]
+
+-tdc1008: Emulated the TRW TDC1008 Multiplier-Accumulator. [Ryan Holtz]
+
+-tmc208k: Added device for the TRW TMC208K/TMC28KU 8x8-bit Parallel Multiplier. [Ryan Holtz]
+
+-am25s55x: Added initial implementation for Am25S557 and 25S558 Combinatorial Multiplier chips. [Ryan Holtz]
+
+-74381: Added untested 74S381 ALU/Function Generator device. [Ryan Holtz]
+
+-Renamed SGI GIO bus implementation to GIO64 (it's not the same as the earlier 32-bit GIO bus). [tyfighter]
+
+-ap2_dsk.cpp: Added support for 40-track disk images used by Chinese clones. [zzemu, R. Belmont]
+
+-Konami System 573 MP3 playback fixes: [Windy Fairy]
+ * Fixed addressing issues that could cause crashes, failure to boot, or bad graphics.
+ * Fixed playback flag handling, added volume control, and fixed the way playback time is reported.
+ * Fixed transitioning between MP3 files.
+
+-chanbara.cpp: Added DIP switch locations for chanbara. [Corrado Tomaselli, The Dumping Union]
+
+-aristmk6.cpp: Added Queensland 25012805 BIOS. [Dam0, Heihachi_73]
+
+-megatech.cpp, megatech.xml: Fixed ROM labels and sizes for Arnold Palmer Tour Golf, Bonanza Bros. and Wrestle War. [f205v]
+
+-cd32.xml: Sorted entries by name. [FakeShemp]
+
+-aristmk5.cpp: Dumped USA set chips v1.0, v4.03.07 and v4.04.05. [Gaby, Roberto Fresca]
+
+-gticlub.cpp, hornet.cpp: Expanded notes about I/O boards. [Hydreigon]
+
+-bagman.cpp: Changed pickin to use an 8-way joystick, and corrected DIP switch locations. [Mark Spaeth, Tafoid]
+
+-segaxbd.cpp, pce_tourvision.xml: Fixed stray spaces in descriptions. [MASH]
+
+-m72.cpp: Dumped GAL at IC3 for lohtb. [parramon, ClawGrip]
+
+-toki_ms.cpp: Re-dumped "5_tk_514.ic25" ROM for tokims. [parramon, ClawGrip]
+
+-pc98.xml updates: [r09]
+ * Re-tested software with latest MAME.
+ * Re-labeled disk images with their actual names, and added usage notes for software that requires DOS.
+ * Removed user disks from games that required the user to create them, and removed duplicates that only differ in save data.
+
+-pc98_cd.xml: Re-ordered some disks so they automatically mount in a more logical way, and corrected metadata. [r09]
+
+-o2.cpp: Added notes after decapping the O2 Keyboard microcontroller (Zilog RT101+228A). [Sean Riddle]
+
+-apple2: Added the //e version of the AE Vulcan IDE card. [SPK, R. Belmont]
+
+-konmedal.cpp: Dumped PROMs for shuriboy. [TeamEurope, Rod_Wod, The Dumping Union]
+
+-megadriv.cpp: dumped MegaCD Japan BIOS revision 1.00C. [tmee]

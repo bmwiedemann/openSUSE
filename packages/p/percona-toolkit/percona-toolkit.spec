@@ -17,7 +17,7 @@
 
 
 Name:           percona-toolkit
-Version:        3.0.12
+Version:        3.1.0
 Release:        0
 Summary:        Advanced MySQL and system command-line tools
 License:        GPL-2.0-only

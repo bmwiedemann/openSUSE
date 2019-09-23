@@ -1,6 +1,7 @@
 #
 # spec file for package doh
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +18,14 @@
 
 
 Name:           doh
-Version:        0.0.0+git.20190908
+Version:        0.1
 Release:        0
 Summary:        Simple DoH (DNS-over-HTTPS) client
 License:        MIT
 Group:          Productivity/Networking/DNS/Utilities
 URL:            https://github.com/curl/doh
 #Git-Clone:     https://github.com/curl/doh.git
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/curl/%{name}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 
@@ -34,7 +35,7 @@ DNS-over-HTTPS (DOH).
 This code uses POST requests unconditionally for this.
 
 %prep
-%setup -q
+%setup -q -n doh-doh-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -42,10 +43,12 @@ make %{?_smp_mflags}
 
 %install
 install -Dm 0755 doh %{buildroot}%{_bindir}/doh
+install -Dm 0644 doh.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/doh
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

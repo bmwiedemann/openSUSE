@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pango
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,50 +12,42 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%bcond_with Gtk2
 
 Name:           perl-Pango
-Version:        1.226
+Version:        1.227
 Release:        0
 %define cpan_name Pango
-Summary:        Pango Perl module
-License:        LGPL-2.1+
+Summary:        Layout and render international text
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Pango/
-Source:         http://www.cpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-pangocairo_libs.patch https://rt.cpan.org/Public/Bug/Display.html?id=111117
-Patch0:         fix-pangocairo_libs.patch
-#
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  update-desktop-files
+BuildRequires:  perl(Cairo) >= 1.000
+BuildRequires:  perl(ExtUtils::Depends) >= 0.300
+BuildRequires:  perl(ExtUtils::PkgConfig) >= 1.030000
+BuildRequires:  perl(Glib) >= 1.220
+Requires:       perl(Cairo) >= 1.000
+Requires:       perl(ExtUtils::Depends) >= 0.300
+Requires:       perl(ExtUtils::PkgConfig) >= 1.030000
+Requires:       perl(Glib) >= 1.220
+%{perl_requires}
+# MANUAL BEGIN
 BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xorg-x11-server
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pango)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{perl_requires}
 %if %{with Gtk2}
 BuildRequires:  perl(Gtk2) >= 1.220
 %endif
-#
-BuildRequires:  perl(Cairo) >= 1.000
-BuildRequires:  perl(ExtUtils::Depends) >= 0.300
-BuildRequires:  perl(ExtUtils::MakeMaker)
-#BuildRequires:  perl(ExtUtils::PkgConfig) >= 1.030
-BuildRequires:  perl(ExtUtils::PkgConfig) >= 1.03
-BuildRequires:  perl(Glib) >= 1.220
-#
-Requires:       perl(Cairo) >= 1.000
-Requires:       perl(ExtUtils::Depends) >= 0.300
-#Requires:       perl(ExtUtils::PkgConfig) >= 1.030
-Requires:       perl(ExtUtils::PkgConfig) >= 1.03
-Requires:       perl(Glib) >= 1.220
+# MANUAL END
 
 %description
 Pango is a library for laying out and rendering text, with an emphasis on
@@ -76,7 +68,6 @@ and routines to assist in editing internationalized text.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -103,11 +94,9 @@ make test
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog.pre-git doctypes LICENSE maps-1.0 maps-1.10 maps-1.16 maps-1.18 maps-1.4 maps-1.6 maps-1.8 NEWS pango.exports pango.typemap README xs_files-1.0 xs_files-1.10 xs_files-1.16 xs_files-1.6
+%defattr(-,root,root,755)
+%doc AUTHORS ChangeLog.pre-git doctypes examples maps-1.0 maps-1.10 maps-1.16 maps-1.18 maps-1.4 maps-1.6 maps-1.8 NEWS pango.exports pango.typemap perl-Pango.doap README xs_files-1.0 xs_files-1.10 xs_files-1.16 xs_files-1.6
+%license LICENSE
 
 %changelog

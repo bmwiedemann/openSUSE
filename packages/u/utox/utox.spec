@@ -1,7 +1,7 @@
 #
 # spec file for package utox
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define realname uTox
 Name:           utox
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        The lightweight Tox client
 License:        MIT
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://utox.org/
 Source:         https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz
-Source1:        https://github.com/uTox/uTox/releases/download/v0.17.0/uTox-0.17.0-full.tar.gz.asc
+Source1:        https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz.asc
 Source2:        uTox.keyring
 BuildRequires:  c-toxcore-devel
 BuildRequires:  cmake >= 3.2
@@ -55,7 +55,10 @@ Lightweight Tox client.
 
 %build
 %cmake \
-      -DENABLE_ASAN=OFF
+      -DENABLE_ASAN=OFF \
+      -DENABLE_TESTS=OFF \
+      -DENABLE_AUTOUPDATE=OFF \
+      -DENABLE_LTO=ON
 %make_jobs V=1
 
 %install

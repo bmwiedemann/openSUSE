@@ -1,7 +1,7 @@
 #
 # spec file for package coreboot-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           coreboot-utils
-Version:        4.9
+Version:        4.10
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://coreboot.org/
 Source0:        https://www.coreboot.org/releases/coreboot-%{version}.tar.xz
 Source1:        https://www.coreboot.org/releases/coreboot-%{version}.tar.xz.sig
-#http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x269C04E1#/%%{name}.keyring
 Source3:        %{name}.keyring
 Patch1:         no-pie.patch
 Patch2:         k8resdump.diff

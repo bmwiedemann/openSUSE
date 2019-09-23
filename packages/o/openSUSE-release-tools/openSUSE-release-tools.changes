@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:05:25 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190920.155606e3:
+  * factory-package-news: fixes for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Sep 19 07:51:10 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190919.8df44507:
+  * gocd/monitors: *.OriginManagerUpdate: set timeout to 10 minutes.
+
+-------------------------------------------------------------------
+Thu Sep 19 01:32:31 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190918.c185be8c:
+  * ReviewBot: add_review(): handle 403 as expected when superseded/rovoked.
+
+-------------------------------------------------------------------
+Thu Sep 19 00:54:16 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190918.abb40adc:
+  * ReviewBot: _set_review(): handle review being revoked or superseded.
+
+-------------------------------------------------------------------
+Thu Sep 19 00:39:15 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190918.abd6f65f:
+  * osclib/core: request_create_delete(): utilize pusedo osc.core function.
+  * osclib/core: provide create_delete_request().
+
+-------------------------------------------------------------------
+Wed Sep 18 22:21:43 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190918.d0e2b71e:
+  * osclib/origin_listener: skip patchinfo packages.
+
+-------------------------------------------------------------------
 Wed Sep 18 22:06:20 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190918.1d4c6836:

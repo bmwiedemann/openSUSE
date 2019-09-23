@@ -27,11 +27,11 @@
 %bcond_without tests
 %endif
 
-%if (0%{?suse_version} && 0%{?suse_version} < 1500) || (0%{?is_opensuse} == 0 && 0%{?suse_version} == 1500)
-# Disable zstd for SLE 15 and older
-%bcond_with zstd
-%else
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# Enable zstd when not SLE 15.1 and older
 %bcond_without zstd
+%else
+%bcond_with zstd
 %endif
 
 Name:           drpm

@@ -23,7 +23,7 @@ Release:        0
 Summary:        Semi-empirical quantum mechanics suite
 License:        SUSE-Public-Domain
 Group:          Productivity/Scientific/Chemistry
-Url:            http://sourceforge.net/projects/mopac7/
+URL:            https://sourceforge.net/projects/mopac7/
 Source0:        http://www.bioinformatics.org/ghemical/download/current/%{name}-%{version}.tar.gz
 Patch1:         mopac7-1.14-random_data.patch
 Patch2:         mopac7-1.14-libdir.patch
@@ -67,10 +67,7 @@ of MOPAC7 to other programs.
 This package contains development files.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -78,7 +75,7 @@ autoreconf -fiv
 export FFLAGS="%{optflags} -std=legacy -fno-automatic"
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -92,22 +89,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README tests
-%if 0%{?suse_version} >= 01500
-%license COPYING
-%else
-%doc COPYING
-%endif
 %attr(755,root,root) %{_bindir}/run_mopac7
 %{_bindir}/%{name}
 
 %files -n %{libname}
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/libmopac7.so.*
 
 %files -n %{libname}-devel
-%defattr(-,root,root)
 %{_includedir}/%{name}
 %{_libdir}/libmopac7.so
 %{_libdir}/pkgconfig/libmopac7.pc

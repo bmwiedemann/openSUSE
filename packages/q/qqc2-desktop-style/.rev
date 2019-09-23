@@ -200,4 +200,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>Update to 5.61</comment>
     <requestid>722509</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>50e65cd7be797408302b3e4a97c41ebf</srcmd5>
+    <version>5.62.0</version>
+    <time>1569234466</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.62</comment>
+    <requestid>730971</requestid>
+  </revision>
 </revisionlist>

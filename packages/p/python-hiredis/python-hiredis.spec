@@ -28,6 +28,7 @@ Source:         https://github.com/redis/hiredis-py/archive/v%{version}.tar.gz
 Patch0:         0001-Use-system-libhiredis.patch
 Patch1:         fix_build_dir_in_tests.patch
 Patch2:         drop-vendor-sources.patch
+Patch3:         0002-Fix-README.md-has-unicode.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,0 +1,13 @@
+usr/sbin/kopano-autorespond
+usr/sbin/kopano-mr-accept
+usr/sbin/kopano-mr-process
+usr/share/doc/kopano/example-config/autorespond.cfg
+usr/share/man/man8/kopano-autorespond.8
+usr/share/man/man8/kopano-mr-accept.8
+usr/share/man/man8/kopano-mr-process.8
+usr/share/kopano-dagent/python/
+usr/share/kopano-dagent/python/plugins/
+usr/share/kopano-spooler/python/
+usr/share/kopano-spooler/python/plugins/
+var/lib/kopano/dagent/plugins/
+var/lib/kopano/spooler/plugins/

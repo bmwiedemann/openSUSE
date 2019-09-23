@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-qt5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,6 +27,7 @@ Source:         https://download.fcitx-im.org/%{name}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM: fix compilation with Qt 5.11 (missing include)
 Patch0:         fix-compilation-with-qt-5.11.patch
+Patch1:         fix-remove-paths-warnings.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx-devel >= 4.2.9.1
@@ -71,7 +72,7 @@ make %{?_smp_mflags}
 
 %files -f fcitx-qt5.lang
 %defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %dir %{_libdir}/fcitx/qt
 %{_libdir}/fcitx/libexec/fcitx-qt5-gui-wrapper
 %{_libdir}/libFcitxQt5*Addons.so.1

@@ -146,4 +146,12 @@
     <comment>- Update to 8.7.0 stable git HEAD</comment>
     <requestid>686797</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1733224d80e56de42acaa7a096319fb6</srcmd5>
+    <version>8.7.83</version>
+    <time>1569234564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream snapshot 8.7.83</comment>
+    <requestid>730477</requestid>
+  </revision>
 </revisionlist>

@@ -104,6 +104,7 @@ Patch24:        chromium-77.0.3865.75-certificate-transparency.patch
 #  (default on) compared to the PR
 Patch100:       chromium-vaapi.patch
 Patch101:       old-libva.patch
+Patch102:       chromium-vaapi-fix.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel

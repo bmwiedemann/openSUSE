@@ -1,0 +1,142 @@
+Source: kopano-python-services
+Section: mail
+Priority: optional
+Maintainer: Kopano Development <development@kopano.io>
+# You need to update both .dsc and debian.control (*sigh* - Debian)
+Build-Depends:
+ autoconf (>= 2.59),
+ automake (>= 1:1.10) | automake1.10,
+ autotools-dev,
+ binutils (>= 2.20),
+ debhelper (>= 9),
+ devscripts,
+ dh-systemd (>= 1.5),
+ fakeroot,
+ g++ (>= 4.8),
+ gettext,
+ libtool (>= 1.5),
+ libtool-bin | libtool,
+ lsb-release,
+ m4,
+ openssl,
+ pkg-config (>= 0.18),
+ python3-dev,
+ python3-setuptools,
+ systemd
+Standards-Version: 3.7.3
+
+Package: kopano-backup
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends},
+ python3-bsddb3, python3-kopano, kopano-common
+Breaks: kopano-server (<< 8.6.80.621)
+Description: Utility to back up and restore Kopano stores
+ kopano-backup is a MAPI-level backup/restore tool. It can sync
+ complete users/stores to disk using ICS to incrementally sync the
+ respective MAPI items, and can process stores in parallel.
+
+Package: kopano-dagent-pytils
+Architecture: any
+Breaks: kopano-dagent (<< 8.7.80.943)
+Description: Additional message handlers for kopano-dagent
+ Dagent can execute external scripts for certain message types.
+ Included here is a handler that will process meeting request and
+ response messages and edit the participants' calendars accordingly.
+
+Package: kopano-migration-pst
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends}, python3-kopano, kopano-common
+Breaks: kopano-server (<< 8.6.80.621)
+Description: Utility to import PST files
+ kopano-migration-pst is a utility to import PST files into Kopano. As PST
+ files are basically MAPI dumps, and Kopano also uses MAPI internally, there
+ should be practically no data loss, even including calendar data.
+
+Package: kopano-presence
+Architecture: any
+Depends: ${shlibs:Depends}, kopano-common, python3-kopano-presence (= ${binary:Version})
+Breaks: kopano-server (<< 8.6.80.621)
+Description: kopano presence daemon
+ A daemon for collecting and exporting user presence information
+ across multiple protocols in a unified way. Supports XMPP and Spreed.
+ Clients can both query the daemon with presence information (for
+ example, the user is 'available' for XMPP and 'away' for Spreed) and
+ update presence information (for example, make a user 'available' on
+ Spreed). Queries and updates are performed with simple GET and PUT
+ requests, respectively, using a simple (and identical) JSON format.
+
+Package: kopano-python-utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends}, kopano-client,
+ python3-bsddb3, python3-kopano
+Description: Additional Python-based command-line utils for Kopano Core
+ Command-line clients to manipulate mailboxes (stores) in various ways.
+Replaces: kopano-server (<< 8.7.81.165)
+Breaks: kopano-server (<< 8.7.81.165)
+
+Package: kopano-search
+Architecture: any
+Depends: ${shlibs:Depends}, python3-kopano-search (= ${binary:Version}) | python-kopano-search (= ${binary:Version}),
+ lsb-base, coreutils (>= 5.93), bash (>= 3.0), gawk, w3m,
+ xsltproc, poppler-utils, unzip, file, catdoc, xapian-tools
+Breaks: kopano-server (<< 8.6.80.621)
+Description: Indexed search engine for Kopano Core
+ kopano-search creates indexes for messages and attachments per user.
+ When this service is running, search queries on the server will use
+ this index to quickly find messages and contents of attached
+ documents, enhancing the search performance of kopano-server.
+
+Package: kopano-spamd
+Architecture: any
+Depends: ${shlibs:Depends}, ${python3:Depends},
+ python3-bsddb3, python3-kopano
+Description: ICS-driven spam learning daemon for Kopano/SpamAssassin
+ A program which can teach SpamAssassin about spam based upon
+ the mails a user has moved to his Kopano junk folder.
+
+Package: python3-kopano
+Architecture: all
+Section: python
+Depends: ${shlibs:Depends}, python3-mapi, python3-dateutil, python3-tz, python3-tzlocal, python3-daemon
+Recommends: python3-pil
+Description: High-level Python 3 bindings for Kopano
+ Object-Oriented Python 3 bindings for Kopano. Uses python3-mapi to
+ do the low level work. Can be used for many common system
+ administration tasks.
+
+Package: python3-kopano-utils
+Architecture: all
+Section: python
+Depends: ${shlibs:Depends},
+ python3-kopano (= ${binary:Version}),
+ python3-bsddb3,
+ python3-mapi
+Replaces: kopano-dagent (<< 8.6.81.496)
+Breaks: kopano-dagent (<< 8.6.81.496)
+Description: Kopano utils modules for Python 3
+ Python 3 utility helpers for Kopano Groupware Core.
+
+Package: python3-kopano-presence
+Architecture: all
+Section: python
+Depends: ${shlibs:Depends},
+ python3-kopano (= ${binary:Version})
+Suggests: python3-sleekxmpp
+Replaces: kopano-presence (<< 8.6.81.496)
+Breaks: kopano-presence (<< 8.6.81.496)
+Description: Kopano presence module for Python 3
+ Python 3 module for Kopano Presence.
+
+Package: python3-kopano-search
+Architecture: all
+Section: python
+Depends: ${shlibs:Depends},
+ ${python3:Depends},
+ python3-kopano (= ${binary:Version}),
+ python3-xapian,
+ python3-bsddb3,
+ python3-magic
+Replaces: kopano-search (<< 8.6.90.110)
+Breaks: kopano-search (<< 8.6.90.110)
+Description: Kopano search module for Python 3
+ Python 3 module for Kopano Search.

@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define pkgver %(v=%version; echo -n "${v//\./_}")
 %define libname libosdCPU%{pkgver}
@@ -30,16 +31,16 @@ Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v3_4_0.
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glfw3)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xxf86vm)
-BuildRequires:  cmake(TBB)
 
 %description
 %{name} is a set of libraries that implement subdivision surface

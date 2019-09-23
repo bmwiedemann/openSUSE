@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 21 15:38:37 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add upstream patch fix-remove-paths-warnings.patch
+- Change COPYING from %doc to %license 
+
+-------------------------------------------------------------------
 Sat Apr 28 06:50:53 UTC 2018 - lbeltrame@kde.org
 
 - Add upstream patch fix-compilation-with-qt-5.11.patch:

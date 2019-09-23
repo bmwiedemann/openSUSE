@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Sat Sep 21 14:38:08 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.5
+  Fix CVE-2019-11779:
+  * In Eclipse Mosquitto 1.5.0 to 1.6.5 inclusive, if a malicious MQTT
+    client sends a SUBSCRIBE packet containing a topic that consists
+    of approximately 65400 or more '/' characters, i.e. the topic
+    hierarchy separator, then a stack overflow will occur.
+  Broker:
+  * Fix v5 DISCONNECT packets with remaining length == 2 being
+    treated as a protocol error.
+  * Fix support for libwebsockets 3.x.
+  * Fix slow websockets performance when sending large messages.
+  * Fix clients authorised using `use_identity_as_username` or
+    `use_subject_as_username` being disconnected on SIGHUP.
+  * Improve error messages in some situations when clients disconnect.
+    Reduces the number of "Socket error on client X, disconnecting"
+    messages.
+  * Fix Will for v5 clients not being sent if will delay interval was
+    greater than the session expiry interval.
+  * Fix CRL file not being reloaded on HUP.
+  Client library:
+  * Fix reconnect backoff for the situation where connections are
+    dropped rather than refused.
+  * Fix missing locks on `mosq->state`.
+
+- Update to version 1.6.4
+  Fix CVE-2019-11778:
+  * If an MQTT v5 client connects to Eclipse Mosquitto versions 1.6.0
+    to 1.6.4 inclusive, sets a last will and testament, sets a will
+    delay interval, sets a session expiry interval, and the will delay
+    interval is set longer than the session expiry interval, then a
+    use after free error occurs, which has the potential to cause a
+    crash in some situations.
+  Broker:
+  * Fix incoming QoS 2 messages being blocked when
+    `max_inflight_messages` was set to 1.
+  * Fix incoming messages not being removed for a client if the topic
+    being published to does not have any subscribers.
+  Client library:
+  * Fix MQTT v5 subscription options being incorrectly set for
+    MQTT v3 subscriptions.
+  * Make behaviour of `mosquitto_connect_async()` consistent with
+    `mosquitto_connect()` when connecting to a non-existent server.
+  * `mosquitto_string_option(mosq, MOSQ_OPT_TLS_KEYFORM, ...)` was
+    incorrectly returning `MOSQ_ERR_INVAL` with valid input. This has
+    been fixed.
+  * on_connect callback is now called with the correct v5 reason code
+    if a v5 client connects to a v3.x broker and is sent a CONNACK with
+    the "unacceptable protocol version" connack reason code.
+  * Fix memory leak when setting v5 properties in mosquitto_connect_v5().
+  * Fix properties not being sent on QoS>0 PUBLISH messages.
+  Clients:
+  * mosquitto_pub: fix error codes not being returned when
+    mosquitto_pub exits.
+  * All clients: improve error messages when connecting to a v3.x broker
+    when in v5 mode.
+  Other:
+  - Various documentation fixes.
+
+- Update to version 1.6.3
+  Broker:
+  * Fix detection of incoming v3.1/v3.1.1 bridges.
+  * Fix default max_topic_alias listener config not being copied to
+    the in-use listener when compiled without TLS support.
+  * Fix random number generation if compiling using `WITH_TLS=no` and
+    on Linux with glibc >= 2.25. Without this fix, no random numbers
+    would be generated for e.g. on broker client id generation, and so
+    clients connecting expecting this feature would be unable to connect.
+  * Fix compilation problem related to `getrandom()` on non-glibc systems.
+  * Fix Will message for a persistent client incorrectly being sent when the
+    client reconnects after a clean disconnect.
+  - Fix Will message for a persistent client not being sent on disconnect.
+  * Improve documentation around the upgrading of persistence files.
+  * Add 'extern "C"' on mosquitto_broker.h and mosquitto_plugin.h for
+    C++ plugin writing.
+  * Fix persistent Websockets clients not receiving messages after they
+    reconnect, having sent DISCONNECT on a previous session
+  * Disable TLS renegotiation. Client initiated renegotiation is considered to
+    be a potential attack vector against servers.
+  * Fix incorrect shared subscription topic '$shared'.
+  * Fix zero length client ids being rejected for MQTT v5 clients with clean
+    start set to true.
+  * Fix MQTT v5 overlapping subscription behaviour. Clients now receive message
+    from all matching subscriptions rather than the first one encountered, which
+    ensures the maximum QoS requirement is met.
+  * Fix incoming/outgoing quota problems for QoS>0.
+  * Remove obsolete `store_clean_interval` from documentation.
+  * Fix v4 authentication plugin never calling psk_key_get.
+  Clients:
+  * Fix -L url parsing when `/topic` part is missing.
+  * Stop some error messages being printed even when `--quiet` was used.
+  * Fix mosquitto_pub exiting with error code 0 when an error occurred.
+  * Fix mosquitto_pub not using the `-c` option.
+  * Fix MQTT v5 clients not being able to specify a password without a
+    username.
+  * Fix `mosquitto_pub -l` not handling network failures.
+  * Fix `mosquitto_pub -l` not handling zero length input.
+  * Fix double free on exit in mosquitto_pub.
+
+- Update to version 1.6.2
+  Broker:
+  * Fix memory access after free, leading to possible crash, when v5
+    client with Will message disconnects, where the Will message has
+    as its first property one of `content-type`, `correlation-data`,
+    `payload-format-indicator`, or `response-topic`.
+  * Fix Will message not allowing user-property properties.
+  * Fix broker originated messages (e.g. $SYS/broker/version) not being
+    published when `check_retain_source` set to true.
+  * Fix $SYS/broker/version being incorrectly expired after 60 seconds.
+  Library:
+  * Fix crash after client has been unable to connect to a broker. This
+    occurs when the client is exiting and is part of the final library
+    cleanup routine.
+  Clients:
+  - Fix -L url parsing.
+
+- Update to version 1.6.1
+  Broker:
+  * Document `memory_limit` option.
+  Clients:
+  * Fix compilation on non glibc systems due to missing sys/time.h
+    header.
+
+- Add patch:
+  * mosquitto-fix-pkgconf-path.patch
+
+-------------------------------------------------------------------
 Thu Jul 11 05:41:41 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove SuSEfirewall2 service since SuSEfirewall2 has been

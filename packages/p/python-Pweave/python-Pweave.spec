@@ -81,7 +81,8 @@ with e.g. Sphinx or rest2web.
 
 %check
 # tests.test_readers.test_url - online
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v -e test_url
+# testFIR_FilterExampleTex - contains warning from matplotlib that changes the output
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v -e '(test_url|testFIR_FilterExampleTex)'
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst

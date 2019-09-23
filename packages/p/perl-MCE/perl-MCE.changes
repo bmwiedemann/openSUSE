@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 20 08:28:49 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.862
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.862 Wed Sep 18 22:00:00 EST 2019
+  
+    * Hotfix for 1.861.
+
+-------------------------------------------------------------------
+Thu Sep 19 07:55:03 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.861
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.861 Wed Sep 18 08:30:00 EST 2019
+  
+    * Hotfix for 1.849-1.860. The edge cases regarding signal handling have
+      been finally resolved for MCE::Child. Thank you, Richard Kelsch for the
+      use case involving ctrl-c. See mce-examples/framebuffer on GitHub.
+
+-------------------------------------------------------------------
 Mon Sep 16 12:16:33 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.860

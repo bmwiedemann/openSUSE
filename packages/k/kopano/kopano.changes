@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Sep 12 18:23:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream snapshot 8.7.83
+  * libserver: fix "withholding" of properties from clients [KC-1547]
+  * dagent, spooler: threaded more is enabled by default now [KC-1475]
+  * ldapplugin: 22% speedup in retriving the entire user list [KC-1399]
+  * client: enable write-caching for properties on stores and folders;
+    improves e.g. store creation time by 17% [KC-1585]
+  * Dropped Python2 and PHP5 support
+
+-------------------------------------------------------------------
+Tue May 28 12:00:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 8.7.3
+  * Fixes:
+  * dagent: standard casing for RFC 5322 headers [KF-2100]
+  * daemons: do not fail startup on IPv4-only systems [KC-1400]
+  * Feed HTML through libtidy before using it for the to-plaintext
+    conversion stage [KS-40722]
+  * server: fix crash on shutdown [KF-2179]
+  * server: address a potential crash due to type mismatch [KF-2151]
+  * server: use utf8mb3 with mysql 5.1 [KC-1423]
+  * server: avoid entering truncated tproperties data into the
+    cache [KC-1417]
+  * server: avoid using OpenLDAP-specific filters that 389-ds
+    does not know about [KC-1402]
+  * server: fixed TLS negotiation errors with openSSL 1.1.1 [KC-1439]
+  * spooler: avoid unnecessary QP encoding in header fields [KC-1430]
+  * spooler: fix hang on process termination [KC-1449]
+  * srvadm: do not complain about default_store_locale [KC-1416]
+  * dbadm: some long-running statements can now be run in parallel
+    with the new -j option [KS-42617]
+  * pyko: expand stubbed messages when dumping [KC-1159,KC-1168]
+  * pyko: don't mix str/int busy statuses [KC-1433]
+  * oof: fix erroneous -u parsing [KC-1425]
+  * oof: make --message option set the right property [KC-1435]
+  * server: complete utf8mb4->utf8 fallback for RHEL6 [KC-1423]
+  * inetmapi: modified appointments need to produce a new
+    Message-ID [KC-1458]
+  * dagent: set Bcc/RecipMe flags appropriately [KC-319]
+  * inetmapi: restore FQDN in Message-IDs [KC-1393]
+  * inetmapi: parse fake "From:" header better to hinder
+    proliferation of impersonations [KC-1350]
+  * stats: print "PR_..." instead of proptag numbers [KC-1495]
+  * server: no more unbounded thread number increase [KC-1446]
+  * php: fix crash in zif_mapi_getprops [KC-1507]
+  * Enhancements:
+  * backup: do record outofoffice settings
+  * php-ext: performance measurement log now contains a
+    timestamp, thread identifier, and global monotonic counter.
+    This can be used for estimating the achieved command rate.
+
+-------------------------------------------------------------------
 Tue Mar 12 11:58:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 8.7.0 stable git HEAD

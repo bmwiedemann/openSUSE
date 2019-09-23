@@ -6,9 +6,5 @@ model using a modern C++ approach.</description>
   <devel project="devel:libraries:c_c++" package="asio"/>
   <debuginfo>
     <disable/>
-    <disable/>
-    <disable/>
-    <disable/>
-    <disable/>
   </debuginfo>
 </package>

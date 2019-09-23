@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smbprotocol
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
@@ -26,7 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/smbprotocol
 #Source:         https://files.pythonhosted.org/packages/source/s/smbprotocol/smbprotocol-%%{version}.tar.gz
 Source:         https://github.com/jborean93/smbprotocol/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module cryptography >= 2.0}
+BuildRequires:  %{python_module ntlm-auth}
+BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.0
@@ -36,11 +41,6 @@ Requires:       python-six
 Suggests:       python-gssapi >= 1.4.1
 Suggests:       python-ordereddict
 BuildArch:      noarch
-BuildRequires:  %{python_module cryptography >= 2.0}
-BuildRequires:  %{python_module ntlm-auth}
-BuildRequires:  %{python_module pyasn1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 %python_subpackages
 
 %description
@@ -71,7 +71,7 @@ Features
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %license LICENSE

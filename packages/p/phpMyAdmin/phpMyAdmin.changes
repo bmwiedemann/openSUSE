@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 21 19:16:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- phpMyAdmin 4.9.1:
+  * CVE-2019-12922: hardening against CSRF (boo#1150914)
+  * Editing columns with CURRENT_TIMESTAMP for MySQL versions 8.0.13
+    and newer
+  * Compatibility issues with PHP 8
+  * Export of GIS visualization
+  * Enhanced descriptions for several collation types
+  * Creating a user with a single quote in the password string
+  * Unexpected quotes during import and export on text fields
+  * Improvements to adding new tables to Designer
+  * Fix an issue where an authenticated user could trigger heavy
+    traffic between the database server and web server
+  * Fix a weakness where an attacker, under certain conditions,
+    working at the same time as an administrator is using the setup
+    script, could delete a server from the setup script
+
+-------------------------------------------------------------------
 Sun Jun 30 13:05:23 UTC 2019 - chris@computersalat.de
 
 - fix changelog

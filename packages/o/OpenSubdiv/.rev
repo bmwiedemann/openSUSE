@@ -7,4 +7,12 @@
     <comment>Take three of OpenSubdiv, an important library, that the current blender will depend upon. It doesn't make much sense to build blender 2.80 without it.</comment>
     <requestid>725697</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7c6832d28e96a5621651b802a104a6c</srcmd5>
+    <version>3.4.0</version>
+    <time>1569235171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732499</requestid>
+  </revision>
 </revisionlist>

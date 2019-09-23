@@ -2,7 +2,7 @@
 # spec file for package kopano
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2016 Kopano B.V.
+# Copyright (c) 2019 Kopano B.V.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,44 +17,41 @@
 #
 
 
-%define version_unconverted 8.7.0.110
+%define version_unconverted 8.7.83
 
 Name:           kopano
-Version:        8.7.0.110
+Version:        8.7.83
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
 Group:          Productivity/Networking/Email/Servers
-Url:            https://kopano.io/
+URL:            https://kopano.io/
 Source:         kopanocore-%version.tar.xz
 Source3:        %name-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gcc-c++ >= 4.8
+BuildRequires:  gcc-c++ >= 5
 BuildRequires:  gettext-devel
 BuildRequires:  gperftools-devel
-BuildRequires:  gsoap-devel >= 2.8.49
+BuildRequires:  gsoap-devel >= 2.8.73
 BuildRequires:  krb5-devel
 BuildRequires:  libcom_err-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  libdb-4_8-devel
 BuildRequires:  libical-devel >= 0.42
 BuildRequires:  libicu-devel
 BuildRequires:  libs3-devel >= 4.1
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
-BuildRequires:  libvmime-devel >= 0.9.2
+BuildRequires:  libvmime-devel >= 0.9.2.85
 BuildRequires:  libxml2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  php7-devel
 BuildRequires:  pkg-config
-#%%define with_python2 0
-#BuildRequires:  python-devel >= 2.4
-#BuildRequires:  python-setuptools
-%if 0%{?suse_version}
-%define with_python3 1
-%define prefer_python3 1
-BuildRequires:  python3-devel
+%if !0%{?kc_without_python}
+BuildRequires:  python3 >= 3.6
+BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-setuptools
 %endif
 BuildRequires:  libtidy-devel
@@ -64,26 +61,11 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4
 BuildRequires:  pkgconfig(libHX) >= 1.10
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(librrd)
 BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(xapian-core)
 %if 0%{?suse_version}
 BuildRequires:  fdupes
-%endif
-%if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
-BuildRequires:  elinks
-%else
-BuildRequires:  w3m
-%endif
-%if 0%{?fedora_version} && 0%{?fedora_version} >= 16
-BuildRequires:  xapian-core-libs
-%else
-BuildRequires:  python-xapian
-%endif
-%if 0%{?suse_version}
-BuildRequires:  python-xml
-%else
-BuildRequires:  libxml2-python
 %endif
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version}
 BuildRequires:  mysql-devel >= 4.1
@@ -105,12 +87,12 @@ BuildRequires:  pwdutils
 
 %description
 Kopano provides email storage on the server side and brings its own
-Ajax-based mail client called WebAccess. Kopano is designed to
-integrate with Kopano WebApp, Push clients and other mail services as an
-alternative to Microsoft Exchange and other comparable mail servers.
-Personal address book, calendar, notes and tasks, "Public Folders" and shared
-calendar functionalities (inviting internal and external users,
-resource management) can be handled by the software as well.
+Web-based mail client called WebApp. Kopano integrates with WebApp,
+Push clients and other mail services as an alternative to Microsoft
+Exchange and other comparable mail servers. Personal address book,
+calendar, notes and tasks, "Public Folders" and shared calendar
+functionalities (inviting internal and external users, resource
+management) can be handled by the software as well.
 
 %package archiver
 Summary:        Hierarchial Storage Management for the Kopano Core platform
@@ -125,22 +107,6 @@ To decrease the database size of your production Kopano server, the
 Kopano Archiver copies or moves messages to a secondary Kopano
 server. Clients will still be able to open the message from the
 secondary Kopano server directly.
-
-%package backup
-Summary:        Utility to back up and restore Kopano stores
-Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
-%if 0%{?prefer_python3}
-Requires:       python3-bsddb3
-Requires:       python3-kopano = %version
-%else
-Requires:       python2-kopano = %version
-%endif
-
-%description backup
-kopano-backup is a MAPI-level backup/restore tool. It can sync
-complete users/stores to disk using ICS to incrementally sync the
-respective MAPI items, and can process stores in parallel.
 
 %package bash-completion
 Summary:        bash TAB completion for Kopano Core command-line utilities
@@ -208,11 +174,12 @@ and adds the contents transparently into the MAPI addrbook.
 Summary:        E-Mail Delivery Agent for the Kopano platform
 Group:          Productivity/Networking/Email/Servers
 Requires:       kopano-common
+Requires:       kopano-dagent-pytils >= 8.7.80.997
 Requires:       kopano-lang = %version
-# kcpyplug is dlopened
-Requires:       libkcpyplug0 = %version
-Requires:       php
-Requires:       php-mapi
+%if 0%{?suse_version} || 0%{?fedora_version}
+# kcpyplug is dlopened / RedHat7 has no Recommends
+Recommends:     libkcpyplug0 = %version
+%endif
 
 %description dagent
 Delivers incoming e-mail from your SMTP server to stores in the
@@ -257,6 +224,15 @@ Requires:       kopano-common
 The iCal/CalDAV gateway enables users to retrieve their calendar
 using iCalendar compliant clients. The iCal/CalDAV gateway can be
 configured to listen for HTTP and HTTPS requests.
+
+%package indexer
+Summary:        Fulltext indexer service for Kopano Core
+Group:          Productivity/Networking/Email/Servers
+
+%description indexer
+kopano-indexd offers the fulltext indexing of libkcindex over the
+network. kopano-server can make use of this service or the libkcindex
+library to offload search queries from the SQL database.
 
 %package lang
 # More or less a copy of /usr/lib/rpm/suse_macros %%lang_package
@@ -305,21 +281,6 @@ Requires:       perl(warnings)
 kopano-migration-imap provides a utility based on imapsync to migrate
 between IMAP mailboxes (including Kopano).
 
-%package migration-pst
-Summary:        Utility to import PST files
-Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
-%if 0%{?prefer_python3}
-Requires:       python3-kopano = %version
-%else
-Requires:       python2-kopano = %version
-%endif
-
-%description migration-pst
-kopano-migration-pst is a utility to import PST files into Kopano. As PST
-files are basically MAPI dumps, and Kopano also uses MAPI internally, there
-should be practically no data loss, even including calendar data.
-
 %package monitor
 Summary:        Quota monitor for Kopano Core
 Group:          Productivity/Networking/Email/Servers
@@ -328,66 +289,6 @@ Requires:       kopano-common
 %description monitor
 Regularly checks stores for total usage. If a quota limit has been
 exceeded, an e-mail will be internally sent to this account.
-
-%package presence
-Summary:        Kopano Core Presence Daemon
-Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common >= %version
-%if 0%{?prefer_python3}
-Requires:       python3-Flask
-Requires:       python3-kopano = %version
-Requires:       python3-sleekxmpp
-%else
-Requires:       python-Flask
-Requires:       python-sleekxmpp
-Requires:       python2-kopano = %version
-%endif
-
-%description presence
-A daemon for collecting and exporting user presence information
-across multiple protocols in a unified way. Supports XMPP and Spreed.
-Clients can both query the daemon with presence information (for
-example, the user is 'available' for XMPP and 'away' for Spreed) and
-update presence information (for example, make a user 'available' on
-Spreed). Queries and updates are performed with simple GET and PUT
-requests, respectively, using a simple (and identical) JSON format.
-
-%package python-utils
-Summary:        Additional Python-based command-line utils for Kopano Core
-Group:          Productivity/Networking/Email/Servers
-%if 0%{?prefer_python3}
-Requires:       python3-bsddb3
-Requires:       python3-kopano = %version
-%else
-Requires:       python2-kopano = %version
-%endif
-
-%description python-utils
-Command-line clients to manipulate mailboxes (stores) in various ways.
-
-%package search
-Summary:        Indexed search engine for Kopano Core
-Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-common
-%if 0%{?prefer_python3}
-Requires:       python3-bsddb3
-Requires:       python3-kopano = %version
-Requires:       python3-xapian
-%else
-Requires:       python-xapian
-Requires:       python2-kopano = %version
-%endif
-%if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version}
-Requires:       elinks
-%endif
-Requires:       poppler-utils
-Requires:       xapian-core
-
-%description search
-kopano-search creates indexes for messages and attachments per user.
-When this service is running, search queries on the server will use
-this index to quickly find messages and contents of attached
-documents, enhancing the search performance of kopano-server.
 
 %package server
 Summary:        Server component for Kopano Core
@@ -403,45 +304,16 @@ This package provides the key component of Kopano Core, providing the
 server to which Kopano clients connect. The server requires a MySQL
 server to use for storage.
 
-%package server-packages
-Summary:        Metapackage to install the entire Kopano Core stack
-Group:          Productivity/Networking/Email/Servers
-Requires:       kopano-backup = %version
-Requires:       kopano-dagent = %version
-Requires:       kopano-gateway = %version
-Requires:       kopano-ical = %version
-Requires:       kopano-monitor = %version
-Requires:       kopano-python-utils = %version
-Requires:       kopano-search = %version
-Requires:       kopano-server = %version
-Requires:       kopano-spooler = %version
-Requires:       kopano-utils = %version
-
-%description server-packages
-This package is merely meant to cause pulling in all the Kopano
-server components.
-
-%package spamd
-Summary:        ICS-driven spam learning daemon for Kopano/SpamAssassin
-Group:          Productivity/Networking/Email/Servers
-%if 0%{?prefer_python3}
-Requires:       python3-bsddb3
-Requires:       python3-kopano = %version
-%else
-Requires:       python2-kopano = %version
-%endif
-
-%description spamd
-A program which can teach SpamAssassin about spam based upon
-the mails a user has moved to his Kopano junk folder.
-
 %package spooler
 Summary:        E-mail Spooler for Kopano Core
 Group:          Productivity/Networking/Email/Servers
 Requires:       kopano-common
+Requires:       kopano-dagent-pytils >= 8.7.80.997
 Requires:       kopano-lang = %version
+%if 0%{?suse_version} || 0%{?fedora_version}
 # kcpyplug is dlopened
 Requires:       libkcpyplug0 = %version
+%endif
 
 %description spooler
 The outgoing e-mail spooler. This service makes sure that e-mails
@@ -492,6 +364,17 @@ Group:          System/Libraries
 
 %description -n libkcicalmapi0
 Provides an interface between iCal and MAPI.
+
+%package -n libkcindex0
+Summary:        Fulltext indexing API for Kopano Core
+Group:          System/Libraries
+
+%description -n libkcindex0
+This library implements a Xapian-based fulltext search index for
+messages and attachments. kopano-server can load this library into
+its memory space to access this indexer API through shared memory,
+saving the round-trip latency between kopano-server and a separate
+kopano-indexd instance.
 
 %package -n libkcinetmapi0
 Summary:        Internet e-mail interface for MAPI
@@ -573,49 +456,6 @@ Provides:       php5-mapi
 Using this module, you can create PHP programs which use MAPI calls
 to interact with Kopano.
 
-%package -n python2-kopano
-Summary:        High-level Python bindings for Kopano
-Group:          Development/Languages/Python
-Obsoletes:      python-kopano < %version-%release
-Provides:       python-kopano = %version-%release
-Requires:       python-dateutil
-Requires:       python-pytz
-Requires:       python2-mapi
-
-%description -n python2-kopano
-Object-Oriented Python bindings for Kopano. Uses python-mapi to do
-the low level work. Can be used for many common system administration
-tasks.
-
-%package -n python3-kopano
-Summary:        High-level Python bindings for Kopano
-Group:          Development/Languages/Python
-Requires:       python3-dateutil
-Requires:       python3-mapi
-Requires:       python3-pytz
-
-%description -n python3-kopano
-Object-Oriented Python bindings for Kopano. Uses python-mapi to do
-the low level work. Can be used for many common system administration
-tasks.
-
-%package -n python2-mapi
-Summary:        Python bindings for MAPI
-Group:          Development/Languages/Python
-Requires:       kopano-client = %version
-Obsoletes:      python-mapi < %version-%release
-Provides:       python-mapi = %version-%release
-Obsoletes:      libkcpyconv0
-Obsoletes:      libkcpydirector0
-%if 0%{?suse_version}
-%py_requires
-%endif
-
-%description -n python2-mapi
-Low-level (SWIG-generated) Python bindings for MAPI. Using this
-module, you can create Python programs which use MAPI calls to
-interact with Kopano.
-
 %package -n python3-mapi
 Summary:        Python3 bindings for MAPI
 Group:          Development/Languages/Python
@@ -625,24 +465,6 @@ Requires:       kopano-client = %version
 Low-level (SWIG-generated) Python 3 bindings for MAPI. Using this
 module, you can create Python programs which use MAPI calls to
 interact with Kopano.
-
-%package -n python2-zarafa
-Summary:        Old module name support for Kopano
-Group:          Development/Languages
-Obsoletes:      kopano-compat
-Provides:       kopano-compat = %version-%release
-
-%description -n python2-zarafa
-Provides some files under old module names.
-
-%package -n python3-zarafa
-Summary:        Old module name support for Kopano
-Group:          Development/Languages
-Obsoletes:      kopano-compat
-Provides:       kopano-compat = %version-%release
-
-%description -n python3-zarafa
-Provides some files under old module names.
 
 %prep
 %setup -qn kopanocore-%version
@@ -655,70 +477,40 @@ export CXX="%__cxx"
 export CFLAGS="%optflags"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z -Wl,relro"
-%if 0%{?centos_version} == 600
-# CO6's ncurses-config is messed up
-export LIBS="-ltinfo"
-%endif
 echo "kc_phpconfig=%kc_phpconfig"
 
-for pyint in %{?with_python3:python3} %{?with_python2:python2}; do
-%if 0%{?rhel_version} == 600 || 0%{?centos_version} == 600
-PYTHON_CFLAGS=$(python-config --cflags)
-PYTHON_LIBS=$(python-config --libs)
+%if !0%{?kc_without_python}
+cpy_flags="--disable-python --enable-pybind"
+PYTHON_CFLAGS=$(pkg-config python3 --cflags)
+PYTHON_LIBS=$(pkg-config python3 --libs)
 %else
-PYTHON_CFLAGS=$(pkg-config "$pyint" --cflags)
-PYTHON_LIBS=$(pkg-config "$pyint" --libs)
+cpy_flags="--disable-python --disable-pybind"
 %endif
 
-mkdir "obj-$pyint"
-pushd "obj-$pyint/"
+mkdir obj
+pushd obj/
 %define _configure ../configure
 
 %configure \
 	--docdir="%_docdir/%name" \
 	--with-quotatemplate-prefix="%_sysconfdir/kopano/quotamail" \
 	--with-php-config="%kc_phpconfig" --enable-release \
-	PYTHON="$(which $pyint)" PYTHON_CFLAGS="$PYTHON_CFLAGS" PYTHON_LIBS="$PYTHON_LIBS"
+	$cpy_flags PYTHON="$(which python3)" \
+	PYTHON_CFLAGS="$PYTHON_CFLAGS" PYTHON_LIBS="$PYTHON_LIBS"
 
 echo "%version" >version
 make V=1 %{?_smp_mflags}
 popd
 
-done # for pyint
-
 %install
 b="%buildroot"
-for pyint in %{?with_python3:python3} %{?with_python2:python2}; do
-	%make_install -C "obj-$pyint/"
-done
-
-rm -Rf "$b/%_prefix/lib/kopano/kopano-mfr.py" \
-	"$b/%_unitdir/kopano-grapi.service" \
-	"$b/%_sbindir/kopano-grapi" \
-	"$b/%_docdir/kopano/example-config/grapi.cfg" \
-	"$b/%python3_sitelib"/kopano_rest*
-
-cp -a RELNOTES.txt "$b/%_docdir/kopano/"
+%make_install -C obj/
 find "$b" -type f -name "*.la" -print -delete
+cp -a RELNOTES.txt "$b/%_docdir/kopano/"
 # dlopened or no headers
 rm -Rfv "$b/%_libdir/libkcpyconv.so" "$b/%_libdir/libkcpydirector.so" "$b/%_libdir/libkcpyplug.so"
-%if 0%{?prefer_python3}
-for i in kopano_backup kopano_cli kopano_migration_pst kopano_presence \
-    kopano_search kopano_spamd kopano_utils; do
-	rm -Rf "$b/%python_sitelib/$i"*
-done
-%else
-for i in kopano_backup kopano_cli kopano_migration_pst kopano_presence \
-    kopano_search kopano_spamd kopano_utils; do
-	rm -Rf "$b/%python3_sitelib/$i"*
-done
-%endif
+rm -Rfv "$b/%_libdir/libkcindex.so"
 
-%if 0%{?centos_version} == 600
-for i in dagent gateway ical monitor presence search server spamd spooler; do
-	install -Dpm0755 "installer/linux/kopano-$i.init.rhel" "%buildroot/%_initddir/kopano-$i"
-done
-%endif
 %if "%_repository" == "RHEL_7_PHP_56"
 mkdir -p "$b/%_prefix/lib/systemd/system/kopano-dagent.service.d"
 cat >"$b/%_prefix/lib/systemd/system/kopano-dagent.service.d/scl.conf" <<-EOF
@@ -752,7 +544,7 @@ EOF
 %endif
 
 # some default dirs
-mkdir -p "$b/%_defaultdocdir" "$b/var/lib/kopano/autorespond" "$b/var/lib/kopano/spamd/spam"
+mkdir -p "$b/%_defaultdocdir" "$b/var/lib/kopano/autorespond"
 mkdir -p "$b/%_localstatedir/log/kopano"
 chmod 750 "$b/%_localstatedir/log/kopano"
 %find_lang kopano
@@ -766,18 +558,6 @@ if [ ! -e "%_sysconfdir/kopano/archiver.cfg" -a \
 		"%_sysconfdir/kopano/archiver.cfg"
 fi
 
-%post backup
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-
-%triggerpostun backup -- kopano-backup
-if [ "$1" -ne 2 ]; then exit 0; fi
-# putback previously existing cfgs after they get untracked once
-if [ ! -e "%_sysconfdir/kopano/backup.cfg" -a \
-     -e "%_sysconfdir/kopano/backup.cfg.rpmsave" ]; then
-	mv -v "%_sysconfdir/kopano/backup.cfg.rpmsave" \
-		"%_sysconfdir/kopano/backup.cfg"
-fi
-
 %post   client -p /sbin/ldconfig
 %postun client -p /sbin/ldconfig
 
@@ -786,7 +566,7 @@ fi
 	%_sbindir/groupadd -r kopano
 %_bindir/getent passwd kopano >/dev/null || \
 	%_sbindir/useradd -c "Kopano unprivileged account" \
-	-g kopano -r kopano -s /sbin/nologin
+		-g kopano -r kopano -s /sbin/nologin
 
 %post common
 chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
@@ -911,18 +691,6 @@ fi
 %{!?_unitdir:%insserv_cleanup}
 %{!?_unitdir:%restart_on_update kopano-ical}
 
-%post migration-pst
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-
-%triggerpostun migration-pst -- kopano-migration-pst
-if [ "$1" -ne 2 ]; then exit 0; fi
-# putback previously existing cfgs after they get untracked once
-if [ ! -e "%_sysconfdir/kopano/migration-pst.cfg" -a \
-     -e "%_sysconfdir/kopano/migration-pst.cfg.rpmsave" ]; then
-	mv -v "%_sysconfdir/kopano/migration-pst.cfg.rpmsave" \
-		"%_sysconfdir/kopano/migration-pst.cfg"
-fi
-
 %pre monitor
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-monitor.service}}
 
@@ -954,70 +722,6 @@ fi
 %{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-monitor.service}}
 %{!?_unitdir:%insserv_cleanup}
 %{!?_unitdir:%restart_on_update kopano-monitor}
-
-%pre presence
-%{?_unitdir:%{?suse_version:%service_add_pre kopano-presence.service}}
-
-%post presence
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-%{?_unitdir:%{?suse_version:%service_add_post kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_post kopano-presence.service}}
-
-%preun presence
-%{?_unitdir:%{?suse_version:%service_del_preun kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_preun kopano-presence.service}}
-%{!?_unitdir:%stop_on_removal kopano-presence}
-
-%postun presence
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-presence.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-presence}
-
-%triggerpostun presence -- kopano-presence
-if [ "$1" -ne 2 ]; then exit 0; fi
-# putback previously existing cfgs after they get untracked once
-if [ ! -e "%_sysconfdir/kopano/presence.cfg" -a \
-     -e "%_sysconfdir/kopano/presence.cfg.rpmsave" ]; then
-	mv -v "%_sysconfdir/kopano/presence.cfg.rpmsave" \
-		"%_sysconfdir/kopano/presence.cfg"
-fi
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-presence.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-presence}
-
-%pre search
-%{?_unitdir:%{?suse_version:%service_add_pre kopano-search.service}}
-
-%post search
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-%{?_unitdir:%{?suse_version:%service_add_post kopano-search.service}}
-%{?_unitdir:%{!?suse_version:%systemd_post kopano-search.service}}
-
-%preun search
-%{?_unitdir:%{?suse_version:%service_del_preun kopano-search.service}}
-%{?_unitdir:%{!?suse_version:%systemd_preun kopano-search.service}}
-%{!?_unitdir:%stop_on_removal kopano-search}
-
-%postun search
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-search.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-search.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-search}
-
-%triggerpostun search -- kopano-search
-if [ "$1" -ne 2 ]; then exit 0; fi
-# putback previously existing cfgs after they get untracked once
-if [ ! -e "%_sysconfdir/kopano/search.cfg" -a \
-     -e "%_sysconfdir/kopano/search.cfg.rpmsave" ]; then
-	mv -v "%_sysconfdir/kopano/search.cfg.rpmsave" \
-		"%_sysconfdir/kopano/search.cfg"
-fi
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-search.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-search.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-search}
 
 %pre server
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-server.service}}
@@ -1066,26 +770,6 @@ fi
 %{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-server.service}}
 %{!?_unitdir:%insserv_cleanup}
 %{!?_unitdir:%restart_on_update kopano-server}
-
-%pre spamd
-%{?_unitdir:%{?suse_version:%service_add_pre kopano-spamd.service}}
-
-%post spamd
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-chown kopano:kopano /var/lib/kopano/spamd 2>/dev/null || :
-%{?_unitdir:%{?suse_version:%service_add_post kopano-spamd.service}}
-%{?_unitdir:%{!?suse_version:%systemd_post kopano-spamd.service}}
-
-%preun spamd
-%{?_unitdir:%{?suse_version:%service_del_preun kopano-spamd.service}}
-%{?_unitdir:%{!?suse_version:%systemd_preun kopano-spamd.service}}
-%{!?_unitdir:%stop_on_removal kopano-spamd}
-
-%postun spamd
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-spamd.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-spamd.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-spamd}
 
 %pre spooler
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-spooler.service}}
@@ -1161,22 +845,6 @@ chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %post   -n libmapi1 -p /sbin/ldconfig
 %postun -n libmapi1 -p /sbin/ldconfig
 
-%post -n python2-mapi
-/sbin/ldconfig
-%if 0%{?_unitdir:1}
-if systemctl is-active kopano-dagent >/dev/null; then
-	systemctl try-restart kopano-dagent
-fi
-if systemctl is-active kopano-spooler >/dev/null; then
-	systemctl try-restart kopano-spooler
-fi
-%else
-%restart_on_update kopano-dagent
-%restart_on_update kopano-spooler
-%endif
-
-%postun -n python2-mapi -p /sbin/ldconfig
-
 %post -n python3-mapi
 /sbin/ldconfig
 %if 0%{?_unitdir:1}
@@ -1195,27 +863,12 @@ fi
 
 %files archiver
 %defattr(-,root,root)
-%_sbindir/kopano-archiver*
-%_mandir/man*/kopano-archiver*
+%_sbindir/kopano-archiver
+%_mandir/man5/kopano-archiver.cfg.5*
+%_mandir/man8/kopano-archiver.8*
 %dir %_docdir/kopano
 %dir %_docdir/kopano/example-config
 %_docdir/kopano/example-config/archiver.cfg
-
-%files backup
-%defattr(-,root,root)
-%_sbindir/kopano-backup
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/backup.cfg
-%_mandir/man*/kopano-backup.*
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_backup/
-%python3_sitelib/kopano_backup-*.egg-info
-%else
-%python_sitelib/kopano_backup/
-%python_sitelib/kopano_backup-*.egg-info
-%endif
 
 %files bash-completion
 %defattr(-,root,root)
@@ -1258,41 +911,21 @@ fi
 
 %files dagent
 %defattr(-,root,root)
-%if 0%{?centos_version} == 600
-%_initddir/kopano-dagent
-%endif
-%_sbindir/kopano-autorespond
-%_sbindir/kopano-autorespond.py
 %_sbindir/kopano-dagent
-%_sbindir/kopano-mr-accept
-%_sbindir/kopano-mr-process
 %_prefix/lib/systemd/system/kopano-dagent.service
 %if "%_repository" == "RHEL_7_PHP_56" || "%_repository" == "RHEL_7_PHP_70" || "%_repository" == "RHEL_7_PHP_71"
 %_prefix/lib/systemd/system/kopano-dagent.service.d/
 %endif
-%_datadir/kopano-dagent/
-%_mandir/man*/kopano-autorespond.*
-%_mandir/man*/kopano-mr-accept.*
-%_mandir/man*/kopano-mr-process.*
 %_mandir/man*/kopano-dagent.*
 %attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
 %attr(0750,kopano,kopano) %_localstatedir/lib/kopano/autorespond/
-%attr(0750,kopano,kopano) %_localstatedir/lib/kopano/dagent/
 %attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
 %dir %_docdir/kopano
 %dir %_docdir/kopano/example-config
 %_docdir/kopano/example-config/autorespond
-%_docdir/kopano/example-config/autorespond.cfg
 %_docdir/kopano/example-config/dagent.cfg
 %dir %_docdir/kopano/example-config/apparmor.d/
 %_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-dagent
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_utils/
-%python3_sitelib/kopano_utils-*.egg-info
-%else
-%python_sitelib/kopano_utils/
-%python_sitelib/kopano_utils-*.egg-info
-%endif
 
 %files devel
 %defattr(-,root,root)
@@ -1312,9 +945,6 @@ fi
 
 %files gateway
 %defattr(-,root,root)
-%if 0%{?centos_version} == 600
-%_initddir/kopano-gateway
-%endif
 %_sbindir/kopano-gateway
 %_prefix/lib/systemd/system/kopano-gateway.service
 %_mandir/man*/kopano-gateway.*
@@ -1322,14 +952,9 @@ fi
 %dir %_docdir/kopano
 %dir %_docdir/kopano/example-config
 %_docdir/kopano/example-config/gateway.cfg
-%dir %_docdir/kopano-gateway
-%_docdir/kopano-gateway/optimize-imap.*
 
 %files ical
 %defattr(-,root,root)
-%if 0%{?centos_version} == 600
-%_initddir/kopano-ical
-%endif
 %_sbindir/kopano-ical
 %_prefix/lib/systemd/system/kopano-ical.service
 %_mandir/man*/kopano-ical.*
@@ -1338,6 +963,12 @@ fi
 %dir %_docdir/kopano/example-config
 %_docdir/kopano/example-config/ical.cfg
 
+%files indexer
+%defattr(-,root,root)
+%dir %_libexecdir/kopano
+%_libexecdir/kopano/kopano-indexd
+%_mandir/man8/kopano-indexd.8*
+
 %files lang -f kopano.lang
 %defattr(-,root,root)
 
@@ -1345,29 +976,10 @@ fi
 %defattr(-,root,root)
 %_bindir/kopano-migration-imap
 
-%files migration-pst
-%defattr(-,root,root)
-%_sbindir/kopano-migration-pst
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/migration-pst.cfg
-%_mandir/man*/kopano-migration-pst.*
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_migration_pst/
-%python3_sitelib/kopano_migration_pst-*.egg-info
-%else
-%python_sitelib/kopano_migration_pst/
-%python_sitelib/kopano_migration_pst-*.egg-info
-%endif
-
 %files monitor
 %defattr(-,root,root)
 %dir %_sysconfdir/kopano
 %config %_sysconfdir/kopano/quotamail
-%if 0%{?centos_version} == 600
-%_initddir/kopano-monitor
-%endif
 %_sbindir/kopano-monitor
 %_prefix/lib/systemd/system/kopano-monitor.service
 %_mandir/man*/kopano-monitor.*
@@ -1376,89 +988,10 @@ fi
 %dir %_docdir/kopano/example-config
 %_docdir/kopano/example-config/monitor.cfg
 
-%files presence
-%defattr(-,root,root)
-%if 0%{?centos_version} == 600
-%_initddir/kopano-presence
-%endif
-%_sbindir/kopano-presence
-%dir %_prefix/lib/systemd
-%dir %_prefix/lib/systemd/system
-%_prefix/lib/systemd/system/kopano-presence.service
-%dir %_datadir/kopano
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/presence.cfg
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_presence/
-%python3_sitelib/kopano_presence-*.egg-info
-%else
-%python_sitelib/kopano_presence/
-%python_sitelib/kopano_presence-*.egg-info
-%endif
-
-%files python-utils
-%defattr(-,root,root)
-%_bindir/kopano-set-oof
-%_sbindir/kopano-cachestat
-%_sbindir/kopano-cli
-%_sbindir/kopano-fix-ipm-subtree
-%_sbindir/kopano-localize-folders
-%_sbindir/kopano-mailbox-permissions
-%_sbindir/kopano-recreate-systemfolders
-%_sbindir/kopano-rules
-%_sbindir/kopano-search-upgrade-findroots.py
-%_mandir/man*/kopano-cachestat.*
-%_mandir/man*/kopano-cli.*
-%_mandir/man*/kopano-mailbox-permissions.*
-%_mandir/man*/kopano-set-oof.*
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_cli/
-%python3_sitelib/kopano_cli*.egg-info
-%else
-%python_sitelib/kopano_cli/
-%python_sitelib/kopano_cli*.egg-info
-%endif
-
-%files search
-%defattr(-,root,root)
-%dir %_sysconfdir/kopano
-%dir %_sysconfdir/kopano/searchscripts
-%config(noreplace) %attr(0640,root,kopano) %_sysconfdir/kopano/searchscripts/*.db
-%config(noreplace) %attr(-,root,kopano) %_sysconfdir/kopano/searchscripts/*.xslt
-%config(noreplace) %attr(-,root,kopano) %_sysconfdir/kopano/searchscripts/attachments_parser
-%config(noreplace) %attr(-,root,kopano) %_sysconfdir/kopano/searchscripts/zmktemp
-%if 0%{?centos_version} == 600
-%_initddir/kopano-search
-%endif
-%_sbindir/kopano-search
-%_sbindir/kopano-search-xapian-compact.py
-%_prefix/lib/systemd/system/kopano-search.service
-%_mandir/man*/kopano-search.*
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/search/
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/search.cfg
-%dir %_docdir/kopano/example-config/apparmor.d/
-%_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-search
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_search/
-%python3_sitelib/kopano_search-*.egg-info
-%else
-%python_sitelib/kopano_search/
-%python_sitelib/kopano_search-*.egg-info
-%endif
-
 %files server
 %defattr(-,root,root)
 %dir %_prefix/lib/kopano/
 %_prefix/lib/kopano/userscripts/
-%if 0%{?centos_version} == 600
-%_initddir/kopano-server
-%endif
 %_sbindir/kopano-server
 %dir %_libdir/kopano
 %_libdir/kopano/libkcserver-[a-z]*.so
@@ -1484,49 +1017,17 @@ fi
 %_docdir/kopano/example-config/unix.cfg
 %_docdir/kopano/ldap-switch-sendas.pl
 %_docdir/kopano/ssl-certificates.sh
-%_docdir/kopano/update-resource-recipients
 %_docdir/kopano/kopano.ldif
 %_docdir/kopano/kopano.schema
 %dir %_docdir/kopano/example-config/apparmor.d/
 %_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-server
 
-%files server-packages
-%defattr(-,root,root)
-# We want it to be rather empty; but rpmlint does not like it empty.
-%dir %_docdir/kopano
-
-%files spamd
-%defattr(-,root,root)
-%if 0%{?centos_version} == 600
-%_initddir/kopano-spamd
-%endif
-%_sbindir/kopano-spamd
-%_prefix/lib/systemd/system/kopano-spamd.service
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
-%attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/spamd/
-%_mandir/man*/kopano-spamd.*
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/spamd.cfg
-%if 0%{?prefer_python3}
-%python3_sitelib/kopano_spamd/
-%python3_sitelib/kopano_spamd*.egg-info
-%else
-%python_sitelib/kopano_spamd/
-%python_sitelib/kopano_spamd*.egg-info
-%endif
-
 %files spooler
 %defattr(-,root,root)
-%if 0%{?centos_version} == 600
-%_initddir/kopano-spooler
-%endif
 %_sbindir/kopano-spooler
 %_prefix/lib/systemd/system/kopano-spooler.service
 %_mandir/man*/kopano-spooler.*
-%_datadir/kopano-spooler
 %attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
-%attr(0750,kopano,kopano) %_localstatedir/lib/kopano/spooler/
 %attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
 %dir %_docdir/kopano
 %dir %_docdir/kopano/example-config
@@ -1585,13 +1086,19 @@ fi
 %defattr(-,root,root)
 %_libdir/libkcicalmapi.so.0*
 
+%files -n libkcindex0
+%defattr(-,root,root)
+%_libdir/libkcindex.so.0*
+
 %files -n libkcinetmapi0
 %defattr(-,root,root)
 %_libdir/libkcinetmapi.so.0*
 
+%if !0%{?kc_without_python}
 %files -n libkcpyplug0
 %defattr(-,root,root)
 %_libdir/libkcpyplug.so.0*
+%endif
 
 %files -n libkcrosie0
 %defattr(-,root,root)
@@ -1647,40 +1154,8 @@ fi
 %endif
 %phpextdir/mapi*
 %dir %_datadir/kopano/
-%_datadir/kopano/php/
 
-%if 0%{?with_python2}
-%files -n python2-kopano
-%defattr(-,root,root)
-%python_sitelib/%name/
-%python_sitelib/%name-*.egg-info
-%endif
-
-%if 0%{?with_python3}
-%files -n python3-kopano
-%defattr(-,root,root)
-%python3_sitelib/%name/
-%python3_sitelib/%name-*.egg-info
-%endif
-
-%if 0%{?with_python2}
-%files -n python2-mapi
-%defattr(-,root,root)
-%_libdir/libkcpyconv-2*.so
-%_libdir/libkcpydirector-2*.so
-%python_sitelib/MAPI/
-%python_sitelib/MAPI-*.egg-info
-%python_sitelib/MAPICore.*
-%python_sitelib/icalmapi.*
-%python_sitelib/inetmapi.*
-%python_sitelib/*libfreebusy.*
-%python_sitearch/*MAPICore.*
-%python_sitearch/*icalmapi.*
-%python_sitearch/*inetmapi.*
-%python_sitearch/*libfreebusy.*
-%endif
-
-%if 0%{?with_python3}
+%if !0%{?kc_without_python}
 %files -n python3-mapi
 %defattr(-,root,root)
 %_libdir/libkcpyconv-3*.so
@@ -1696,25 +1171,11 @@ fi
 %python3_sitearch/*inetmapi.*
 %python3_sitearch/*libfreebusy.*
 %if 0%{?fedora_version}
-%python3_sitelib/__pycache__/MAPICore*
-%python3_sitelib/__pycache__/icalmapi*
-%python3_sitelib/__pycache__/inetmapi*
-%python3_sitelib/__pycache__/libfreebusy*
+%python3_sitelib/__*/MAPICore.*
+%python3_sitelib/__*/icalmapi.*
+%python3_sitelib/__*/inetmapi.*
+%python3_sitelib/__*/libfreebusy.*
 %endif
-%endif
-
-%if 0%{?with_python2}
-%files -n python2-zarafa
-%defattr(-,root,root)
-%python_sitelib/zarafa/
-%python_sitelib/zarafa-*.egg-info
-%endif
-
-%if 0%{?with_python3}
-%files -n python3-zarafa
-%defattr(-,root,root)
-%python3_sitelib/zarafa/
-%python3_sitelib/zarafa-*.egg-info
 %endif
 
 %changelog

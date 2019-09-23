@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.61.0
+Version:        5.62.1
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -40,38 +40,39 @@ Patch0:         kio_help-fallback-to-kde4-docs.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  karchive-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kbookmarks-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcompletion-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kconfigwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcrash-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kdbusaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kdoctools-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kguiaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kiconthemes-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kitemviews-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kjobwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  knotifications-devel >= %{_kf5_bugfix_version}
 BuildRequires:  krb5-devel
-BuildRequires:  kservice-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ktextwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwallet-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwidgetsaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwindowsystem-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kxmlgui-devel >= %{_kf5_bugfix_version}
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  solid-devel >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5JobWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Wallet) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5DBus) >= 5.6.0
 BuildRequires:  cmake(Qt5Network) >= 5.6.0
 BuildRequires:  cmake(Qt5Script) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.6.0
 BuildRequires:  cmake(Qt5Xml) >= 5.6.0
@@ -108,15 +109,15 @@ Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       %{name}-core = %{version}
 Requires:       extra-cmake-modules
-Requires:       kbookmarks-devel >= %{_kf5_bugfix_version}
-Requires:       kcompletion-devel >= %{_kf5_bugfix_version}
-Requires:       kconfig-devel >= %{_kf5_bugfix_version}
-Requires:       kcoreaddons-devel >= %{_kf5_bugfix_version}
-Requires:       kitemviews-devel >= %{_kf5_bugfix_version}
-Requires:       kjobwidgets-devel >= %{_kf5_bugfix_version}
-Requires:       kservice-devel >= %{_kf5_bugfix_version}
-Requires:       kxmlgui-devel >= %{_kf5_bugfix_version}
-Requires:       solid-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Completion) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5JobWidgets) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Solid) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5Concurrent) >= 5.6.0
 Requires:       cmake(Qt5DBus) >= 5.6.0
 Requires:       cmake(Qt5Network) >= 5.6.0
@@ -158,66 +159,69 @@ Development files.
 %files core
 %doc README*
 %license COPYING*
-%{_kf5_libdir}/libKF5KIOCore.so.*
-%{_kf5_configdir}/accept-languages.codes
-%{_kf5_libdir}/libKF5KIONTLM.so.*
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kio
+%dir %{_kf5_plugindir}/kf5/kiod
+%dir %{_kf5_sharedir}/kconf_update/
+%{_kf5_applicationsdir}/ktelnetservice5.desktop
+%{_kf5_bindir}/ktelnetservice5
+%{_kf5_bindir}/ktrash5
+%{_kf5_configdir}/accept-languages.codes
+%{_kf5_debugdir}/kio.categories
+%{_kf5_libdir}/libKF5KIOCore.so.*
+%{_kf5_libdir}/libKF5KIONTLM.so.*
+%{_kf5_libexecdir}/kio_http_cache_cleaner
+%{_kf5_libexecdir}/kiod5
+%{_kf5_plugindir}/kcm_trash.so
 %{_kf5_plugindir}/kf5/kio/file.so
 %{_kf5_plugindir}/kf5/kio/ftp.so
-%{_kf5_plugindir}/kf5/kio/help.so
 %{_kf5_plugindir}/kf5/kio/ghelp.so
-%{_kf5_libexecdir}/kio_http_cache_cleaner
+%{_kf5_plugindir}/kf5/kio/help.so
 %{_kf5_plugindir}/kf5/kio/http.so
-%{_kf5_servicesdir}/http_cache_cleaner.desktop
+%{_kf5_plugindir}/kf5/kio/trash.so
+%{_kf5_plugindir}/kf5/kiod/kssld.so
 %{_kf5_servicesdir}/data.protocol
-%{_kf5_servicesdir}/rtsp.protocol
+%{_kf5_servicesdir}/http_cache_cleaner.desktop
+%{_kf5_servicesdir}/kcmtrash.desktop
 %{_kf5_servicesdir}/mms.protocol
 %{_kf5_servicesdir}/mmst.protocol
 %{_kf5_servicesdir}/mmsu.protocol
 %{_kf5_servicesdir}/pnm.protocol
+%{_kf5_servicesdir}/rtsp.protocol
 %{_kf5_servicesdir}/rtspt.protocol
 %{_kf5_servicesdir}/rtspu.protocol
-%{_kf5_bindir}/ktelnetservice5
-%{_kf5_applicationsdir}/ktelnetservice5.desktop
-%{_kf5_plugindir}/kf5/kio/trash.so
-%{_kf5_bindir}/ktrash5
-%{_kf5_plugindir}/kcm_trash.so
-%{_kf5_servicesdir}/kcmtrash.desktop
-%{_kf5_libexecdir}/kiod5
 %{_kf5_sharedir}/dbus-1/services/org.kde.kiod5.service
-%dir %{_kf5_plugindir}/kf5/kiod
-%{_kf5_plugindir}/kf5/kiod/kssld.so
-%{_kf5_sharedir}/dbus-1/services/org.kde.kssld5.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.kioexecd.service
-%dir %{_kf5_sharedir}/kconf_update/
+%{_kf5_sharedir}/dbus-1/services/org.kde.kssld5.service
 %{_kf5_sharedir}/kconf_update/filepicker.upd
-%{_kf5_debugdir}/kio.categories
 
 %files
 %doc README*
 %license COPYING*
+%dir %{_kf5_htmldir}
+%dir %{_kf5_htmldir}/en
+%dir %{_kf5_plugindir}/kf5/kded
+%doc %lang(en) %{_kf5_htmldir}/en/*/
+%doc %lang(en) %{_kf5_mandir}/*/kcookiejar5.*
+%{_kf5_bindir}/kcookiejar5
+%{_kf5_configdir}/kshorturifilterrc
+%{_kf5_datadir}/kcookiejar/
+%{_kf5_libdir}/libKF5KIOFileWidgets.so.*
 %{_kf5_libdir}/libKF5KIOGui.so.*
 %{_kf5_libdir}/libKF5KIOWidgets.so.*
-%{_kf5_libdir}/libKF5KIOFileWidgets.so.*
-%{_kf5_configdir}/kshorturifilterrc
-%{_kf5_servicetypesdir}/
-%{_kf5_bindir}/kcookiejar5
-%{_kf5_datadir}/kcookiejar/
-%{_kf5_libexecdir}/kpac_dhcp_helper
-%{_kf5_libexecdir}/kioslave
 %{_kf5_libexecdir}/kioexec
+%{_kf5_libexecdir}/kioslave5
+%{_kf5_libexecdir}/kpac_dhcp_helper
 %{_kf5_notifydir}/proxyscout.notifyrc
 %{_kf5_plugindir}/kcm_kio.so
 %{_kf5_plugindir}/kcm_webshortcuts.so
-%dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/kcookiejar.so
 %{_kf5_plugindir}/kf5/kded/proxyscout.so
 %{_kf5_plugindir}/kf5/kded/remotenotifier.so
-%{_kf5_plugindir}/kf5/kiod/kpasswdserver.so
-%{_kf5_plugindir}/kf5/kiod/kioexecd.so
-%{_kf5_plugindir}/kf5/urifilters/
 %{_kf5_plugindir}/kf5/kio/remote.so
+%{_kf5_plugindir}/kf5/kiod/kioexecd.so
+%{_kf5_plugindir}/kf5/kiod/kpasswdserver.so
+%{_kf5_plugindir}/kf5/urifilters/
 %{_kf5_servicesdir}/cache.desktop
 %{_kf5_servicesdir}/cookies.desktop
 %{_kf5_servicesdir}/netpref.desktop
@@ -227,31 +231,30 @@ Development files.
 %{_kf5_servicesdir}/useragent.desktop
 %{_kf5_servicesdir}/useragentstrings/
 %{_kf5_servicesdir}/webshortcuts.desktop
-%{_kf5_sharedir}/dbus-1/services/org.kde.kpasswdserver.service
+%{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kcookiejar5.service
-%doc %lang(en) %{_kf5_mandir}/*/kcookiejar5.*
-%dir %{_kf5_htmldir}/en
-%dir %{_kf5_htmldir}
-%doc %lang(en) %{_kf5_htmldir}/en/*/
+%{_kf5_sharedir}/dbus-1/services/org.kde.kpasswdserver.service
 
 %files devel
+%dir %{_kf5_plugindir}/designer
 %{_kf5_bindir}/protocoltojson
-%{_kf5_libdir}/libKF5KIOCore.so
-%{_kf5_libdir}/libKF5KIOGui.so
-%{_kf5_libdir}/libKF5KIOWidgets.so
-%{_kf5_libdir}/libKF5KIOFileWidgets.so
-%{_kf5_libdir}/libKF5KIONTLM.so
-%{_kf5_libdir}/cmake/KF5KIO/
-%{_kf5_includedir}/
+%{_kf5_dbusinterfacesdir}/kf5_org.kde.KCookieServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KDirNotify.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KPasswdServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KSlaveLauncher.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.kio.FileUndoManager.xml
-%{_kf5_dbusinterfacesdir}/kf5_org.kde.KCookieServer.xml
+%{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5KIO/
+%{_kf5_libdir}/libKF5KIOCore.so
+%{_kf5_libdir}/libKF5KIOFileWidgets.so
+%{_kf5_libdir}/libKF5KIOGui.so
+%{_kf5_libdir}/libKF5KIONTLM.so
+%{_kf5_libdir}/libKF5KIOWidgets.so
 %{_kf5_mkspecsdir}/qt_KIOCore.pri
-%{_kf5_mkspecsdir}/qt_KIOGui.pri
 %{_kf5_mkspecsdir}/qt_KIOFileWidgets.pri
-%{_kf5_mkspecsdir}/qt_KNTLM.pri
+%{_kf5_mkspecsdir}/qt_KIOGui.pri
 %{_kf5_mkspecsdir}/qt_KIOWidgets.pri
+%{_kf5_mkspecsdir}/qt_KNTLM.pri
+%{_kf5_plugindir}/designer/kio5widgets.so
 
 %changelog

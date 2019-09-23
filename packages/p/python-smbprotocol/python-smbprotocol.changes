@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 19 18:50:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.0
+  * Fix issue where timeout was not being applied to the new
+    connection
+  * Fix various deprecated regex escape patterns
+  * Simplified the fallback NTLM context object
+
+-------------------------------------------------------------------
 Thu Jan  3 01:57:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

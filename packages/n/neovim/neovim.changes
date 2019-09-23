@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 19 12:25:08 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.4.2. There is toooooo many changes to list
+  it there. Also fixes boo#1151203.
+- Reapplied patches:
+  - neovim-0.1.7-bitop.patch
+  - neovim-0.2.0-gcc-prototype.patch
+  - neovim.patch
+
+-------------------------------------------------------------------
+Thu Sep 19 07:02:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Remove neovim-0.2.0-gcc-prototype.patch patch.
+- Add run-time dependency to lua51-luv.
+
+-------------------------------------------------------------------
 Mon Jul  8 08:31:03 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.3.8:

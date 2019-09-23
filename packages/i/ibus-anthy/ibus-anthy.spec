@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-anthy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ibus-anthy
+BuildRequires:  anthy-devel
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -24,14 +25,13 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject2-devel
 BuildRequires:  swig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(anthy)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
 Version:        1.5.10
 Release:        0
 Summary:        The Anthy engine for IBus input platform
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Japanese
 Url:            https://github.com/ibus/ibus-anthy
 Source:         https://github.com/ibus/ibus-anthy/releases/download/%{version}/%{name}-%{version}.tar.gz
@@ -86,7 +86,8 @@ find %{buildroot} -name "*.la" -type f -delete -print
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README
+%doc AUTHORS README
+%license COPYING
 %{_libexecdir}/ibus-*
 %{_datadir}/ibus-anthy
 %{_datadir}/ibus

@@ -76,7 +76,7 @@ drawing mathematical figures and including them in other documents.
 %setup -q
 
 %build
-  %cmake_kf5 -d build
+  %cmake_kf5 -d build -- -DBoost_NO_BOOST_CMAKE=ON
   %make_jobs
 
 %install

@@ -2,7 +2,9 @@
 
 set -e
 
-if [ -d /etc/php/7.2 ]; then
+if [ -d /etc/php/7.3 ]; then
+	BASE="/etc/php/7.3"
+elif [ -d /etc/php/7.2 ]; then
 	BASE="/etc/php/7.2"
 elif [ -d /etc/php/7.0 ]; then
 	BASE="/etc/php/7.0"

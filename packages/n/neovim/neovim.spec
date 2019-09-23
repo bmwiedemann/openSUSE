@@ -17,7 +17,7 @@
 
 
 Name:           neovim
-Version:        0.3.8
+Version:        0.4.2
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -32,38 +32,48 @@ Source99:       neovim-rpmlintrc
 Patch0:         neovim.patch
 # PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
 Patch1:         neovim-0.1.7-bitop.patch
-# fix build issue on ppc64
-Patch2:         neovim-0.2.0-gcc-prototype.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  gperf
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libnsl-devel
+BuildRequires:  libtermkey-devel
 BuildRequires:  libtool
+BuildRequires:  libuv-devel
+BuildRequires:  libvterm-devel >= 0.1
+BuildRequires:  lua-macros
 BuildRequires:  lua51-LPeg
 BuildRequires:  lua51-bit32
 BuildRequires:  lua51-luajit-devel
 BuildRequires:  lua51-luarocks
+BuildRequires:  lua51-luv-devel
 BuildRequires:  lua51-mpack
 BuildRequires:  make
 BuildRequires:  msgpack-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  unibilium-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(jemalloc)
-BuildRequires:  pkgconfig(libnsl)
-BuildRequires:  pkgconfig(libuv)
-BuildRequires:  pkgconfig(termkey) >= 0.20
-BuildRequires:  pkgconfig(unibilium)
-BuildRequires:  pkgconfig(vterm)
 Requires:       gperf
+Requires:       libvterm0 >= 0.1
+Requires:       lua51-bit32
+Requires:       lua51-luv
+Requires:       python3-neovim
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 Recommends:     xsel
+# gh#neovim/neovim#7879
+%ifarch aarch64 ppc64
+BuildRequires:  lua51-devel
+%else
+BuildRequires:  lua51-luajit-devel
+%endif
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools
@@ -88,7 +98,6 @@ parts of Vim, without compromise, and more.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -100,12 +109,22 @@ sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
 # set vars to make build reproducible in spite of config/CMakeLists.txt
 HOSTNAME=OBS
 USERNAME=OBS
-%cmake \
-  -DUSE_BUNDLED=OFF        \
-  -DLUAJIT_USE_BUNDLED=OFF \
-  -DENABLE_JEMALLOC=ON \
-  -Wno-dev
-%make_jobs
+mkdir -p build
+pushd build
+%{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+%ifarch aarch64 ppc64
+       -DPREFER_LUA=ON \
+%endif
+       -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
+       -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
+       -DCMAKE_COLOR_MAKEFILE=OFF \
+       -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
+       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+       -DLIBLUV_LIBRARY=%{lua_archdir}/luv.so \
+       -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
+make %{?_smp_mflags} VERBOSE=1
+
+popd
 
 %install
 %cmake_install
@@ -127,6 +146,10 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 
 %fdupes %{buildroot}%{_datadir}/
 %find_lang nvim
+
+# We have to have rpath
+# https://en.opensuse.org/openSUSE:Packaging_checks
+export NO_BRP_CHECK_RPATH=true
 
 %if 0%{?suse_version} < 1330
 %post

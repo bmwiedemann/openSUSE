@@ -26,7 +26,7 @@
 %endif
 %bcond_without  websockets
 Name:           mosquitto
-Version:        1.6.0
+Version:        1.6.5
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
@@ -40,6 +40,7 @@ Source4:        README-conf-d
 Source5:        README-ca_certificates
 Source6:        README-certs
 Patch0:         mosquitto-1.4.1_apparmor.patch
+Patch1:         mosquitto-fix-pkgconf-path.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcares-devel
@@ -121,10 +122,12 @@ Client for Mosquitto.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 find misc -type f -exec chmod a-x "{}" "+"
 
 %build
 %cmake \
+  -DCMAKE_INSTALL_SYSCONFDIR=/etc \
   %if %{with websockets}
   -DWITH_WEBSOCKETS=ON \
   %endif

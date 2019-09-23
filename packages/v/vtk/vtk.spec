@@ -351,6 +351,7 @@ languages.
 grep -rl '\.\./\.\./\.\./\.\./VTKData' . | xargs -r perl -pi -e's,\.\./\.\./\.\./\.\./VTKData,%{_datadir}/vtkdata,g'
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %if %{with mpi}
 source %{mpiprefix}/bin/mpivars.sh
 export CC=mpicc

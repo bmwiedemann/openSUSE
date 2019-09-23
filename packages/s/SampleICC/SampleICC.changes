@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:01:56 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Sep 03 12:00:01 UTC 2014 - ku.b@gmx.de
 
 - update to 1.6.8

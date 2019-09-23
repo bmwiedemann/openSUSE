@@ -17,7 +17,7 @@
 
 
 Name:           platformsh-cli
-Version:        3.47.0
+Version:        3.48.0
 Release:        0
 Summary:        Tool for managing Platform.sh services from the command line
 # See licenses.txt for dependency licenses.
@@ -47,6 +47,7 @@ locally for development purposes.
 
 %build
 find . -name ".travis.yml" -delete
+sed -i 's/@version-placeholder@/%{version}/' config.yaml
 
 %install
 # install drush source

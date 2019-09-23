@@ -1,7 +1,7 @@
 #
 # spec file for package synnefo
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013-2016 Kai-Uwe Behrmann <ku.b@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,30 +13,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define desktopdir      %{_datadir}/applications
+Name:           synnefo
 Version:        1.1.0
 Release:        0
-Name:           synnefo
-Url:            http://www.oyranos.org/synnefo
-Source:         synnefo_%{version}.orig.tar.bz2
-%define desktopdir      /usr/share/applications
-
 Summary:        Color Management Settings GUI
 License:        BSD-2-Clause
 Group:          System/GUI/Other
-
-BuildRequires:  liboyranos-devel
-# we need the oyranos_logo.png icon
-Requires:       oyranos
+URL:            https://www.oyranos.org/synnefo
+Source:         synnefo_%{version}.orig.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
+BuildRequires:  liboyranos-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# we need the oyranos_logo.png icon
+Requires:       oyranos
 
 %package      -n libOyranosSynnefo1
 Summary:        Oyranos Settings GUI
@@ -44,7 +42,7 @@ Group:          System/Libraries
 
 %package      -n libOyranosSynnefo-devel
 Summary:        Headers, configuration and documentation for synnefo
-Group:          Development/Libraries/C++
+Group:          Development/Languages/C and C++
 Requires:       libOyranosSynnefo1 = %{version}
 Requires:       liboyranos-devel
 
@@ -71,8 +69,9 @@ Contains the static libraries for developing with synnefo.
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %cmake
-make VERBOSE=1 %{_smp_mflags}
+make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %if 0%{?suse_version} > 0
@@ -81,11 +80,9 @@ echo 'X-SuSE-translate=true' >> src/app/extras/oyranos-config-%{name}.desktop
 %cmake_install
 
 %post -n libOyranosSynnefo1 -p /sbin/ldconfig
-
 %postun -n libOyranosSynnefo1 -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %doc README.md
 %{_bindir}/*%{name}
 %{_mandir}/man1/*%{name}*
@@ -93,12 +90,10 @@ echo 'X-SuSE-translate=true' >> src/app/extras/oyranos-config-%{name}.desktop
 %{desktopdir}/*%{name}.desktop
 
 %files -n libOyranosSynnefo1
-%defattr(-, root, root)
 %doc README.md
 %{_libdir}/libOyranosSynnefo*.so.*
 
 %files -n libOyranosSynnefo-devel
-%defattr(-, root, root)
 %doc README.md
 %dir %{_includedir}/synnefo/
 %{_includedir}/synnefo/*
@@ -108,7 +103,6 @@ echo 'X-SuSE-translate=true' >> src/app/extras/oyranos-config-%{name}.desktop
 %{_libdir}/libOyranosSynnefo*.so
 
 %files -n libOyranosSynnefo-devel-static
-%defattr(-,root,root)
 %{_libdir}/libOyranosSynnefo*-static.a
 
 %changelog

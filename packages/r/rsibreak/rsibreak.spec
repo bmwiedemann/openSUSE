@@ -18,7 +18,7 @@
 
 %define base_ver 0.12
 Name:           rsibreak
-Version:        0.12.10
+Version:        0.12.11
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later
@@ -27,25 +27,22 @@ URL:            https://userbase.kde.org/RSIBreak
 Source0:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kidletime-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.3.0
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5IdleTime)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5DBus) >= 5.6.0
+BuildRequires:  cmake(Qt5Test) >= 5.6.0
 Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 Obsoletes:      %{name}-doc < %{version}

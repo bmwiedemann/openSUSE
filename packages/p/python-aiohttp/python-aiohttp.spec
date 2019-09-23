@@ -26,12 +26,14 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM aiohttp-3.6.0-fix-typeerror.patch
+Patch0:         aiohttp-3.6.0-fix-typeerror.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout >= 3.0}
 BuildRequires:  %{python_module attrs >= 17.3.0}
 BuildRequires:  %{python_module chardet >= 2.0}
 BuildRequires:  %{python_module devel >= 3.5.3}
-BuildRequires:  %{python_module multidict >= 4.0}
+BuildRequires:  %{python_module multidict >= 4.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +43,7 @@ Requires:       python-attrs >= 17.3.0
 Requires:       python-brotlipy
 Requires:       python-chardet >= 2.0
 Requires:       python-gunicorn
-Requires:       python-multidict >= 4.0
+Requires:       python-multidict >= 4.5
 Requires:       python-yarl >= 1.0
 Recommends:     python-aiodns
 Recommends:     python-cChardet
@@ -93,6 +95,7 @@ HTML documentation on the API and examples for %{name}.
 
 %prep
 %setup -q -n aiohttp-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"

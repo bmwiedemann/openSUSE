@@ -25,17 +25,17 @@ Group:          Productivity/Scientific/Other
 Url:            http://xiphos.org/
 Source0:        https://github.com/crosswire/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
+Patch0:         xiphos-build-without-scrollkeeper.patch
+Patch1:         xiphos-remove-gconf-2.0.patch
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  scrollkeeper
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(biblesync) >= 1.1.2
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -53,6 +53,10 @@ Recommends:     sword-commentary
 Provides:       sword-frontend
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} < 1550
+BuildRequires:  scrollkeeper
+BuildRequires:  pkgconfig(gconf-2.0)
+%endif
 
 %description
 Bible Study Software for the Linux community. Lookup and search Bible texts and
@@ -66,6 +70,9 @@ by Crosswire Bible Society through the SWORD Project.
 
 %prep
 %setup -q
+%if 0%{?suse_version} >= 1550
+%autopatch -p1
+%endif
 
 %build
 export CFLAGS="%{optflags}"
@@ -78,8 +85,12 @@ export CXXFLAGS="%{optflags}"
 
 %install
 ./waf install --destdir=%{buildroot}
+%if 0%{?suse_version} < 1550
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file -n %{buildroot}%{_datadir}/applications/%{name}.desktop
+%else
+%suse_update_desktop_file %{name} Education Spirituality
+%endif
 # package docs with macro
 rm -frv %{buildroot}/%{_datadir}/doc/%{name}
 install -Dm644 xiphos.1 %{buildroot}%{_mandir}/man1/xiphos.1
@@ -87,11 +98,13 @@ install -Dm644 xiphos-nav.1 %{buildroot}%{_mandir}/man1/xiphos-nav.1
 %fdupes -s %{buildroot}/%{_datadir}
 %find_lang %{name}
 
+%if 0%{?suse_version} < 1330
 %post
 %icon_theme_cache_post
 
 %postun
 %icon_theme_cache_postun
+%endif
 
 %files
 %defattr(-,root,root)
@@ -104,7 +117,9 @@ install -Dm644 xiphos-nav.1 %{buildroot}%{_mandir}/man1/xiphos-nav.1
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/xiphos.appdata.xml
 %{_mandir}/man1/*
+%if 0%{?suse_version} < 1550
 %dir %{_datadir}/omf
+%endif
 
 %files lang -f %{name}.lang
 %defattr(-, root, root)

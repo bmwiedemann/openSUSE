@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Sep 23 06:59:02 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 3.5
+- Usability, bells and whistles
+* Auto-completion for filenames can now be disabled.  This speeds up
+  revision completion when working in large repositories with many files.
+  https://github.com/git-cola/git-cola/pull/981
+* The Stash dialog now shows the stash date as a tooltip when hovering
+  over a stashed change.
+  https://github.com/git-cola/git-cola/pull/982>
+* Qt HiDPI settings are overriden by the `git cola` HiDPI appearance settings.
+  These overrides can now be disabled by selecting the "Disable" mode.
+  This allows users to control Qt's HiDPI settings through environment
+  variables.  Additionally, the "Auto" mode now detects the presence of
+  the Qt HiDPI variables and no longer overrides them when the user has
+  configured their environment explicitly.
+  https://github.com/git-cola/git-cola/issues/963
+* Confirmation dialogs can now focus buttons using the Tab key.
+  Previously, the "Y" and "N" keys could be used to confirm or deny
+  using the keyboard, but "Tab" is more familiar.
+  https://github.com/git-cola/git-cola/issues/965
+* Error dialogs (for example, when a commit hook fails) will now always
+  show the details.  The details were previously hidden behind a toggle.
+  https://github.com/git-cola/git-cola/issues/968
+- Translations
+* Updated Japanese translation.
+  https://github.com/git-cola/git-cola/pull/973
+  https://github.com/git-cola/git-cola/pull/974
+* Updated Simplified Chinese translation.
+  https://github.com/git-cola/git-cola/pull/950
+- Fixes
+* The filesystem monitor no longer logs that it has been enabled after the
+  inotify watch limit is reached on Linux.
+  https://github.com/git-cola/git-cola/pull/984
+* Better unicode robustness.
+  https://github.com/git-cola/git-cola/issues/990
+  https://github.com/git-cola/git-cola/issues/991
+* The "Branches" widget did not always update itself when deleting branches
+  (for example, when inotify is disabled or unavailable).
+  https://github.com/git-cola/git-cola/issues/978
+* Non-ascii unicode byte strings are more robustly handled by the log widget.
+  https://github.com/git-cola/git-cola/issues/977
+* Non-unicode results from the `gettext` library are more robustly handled.
+  https://github.com/git-cola/git-cola/issues/969
+* Launching `git cola` from within a directory that has since been deleted
+  would previously result in a traceback, and is now robustly handled.
+  https://github.com/git-cola/git-cola/issues/961
+
+-------------------------------------------------------------------
 Tue Jul 23 20:50:59 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Fixed Send2Trash names

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 21 02:31:40 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Rework zstd enablement conditional and simplify it
+
+-------------------------------------------------------------------
+Sat Sep 21 02:27:26 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix the conditional for disabling zstd for Leap 15.1 and lower
+
+-------------------------------------------------------------------
+Fri Sep 13 18:04:04 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Disable zstd for Leap 15.1 and lower due to broken zstd
+
+-------------------------------------------------------------------
 Wed Sep 11 12:11:00 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.4.1

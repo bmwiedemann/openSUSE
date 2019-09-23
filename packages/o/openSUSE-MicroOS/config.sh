@@ -140,11 +140,10 @@ if [ "${kiwi_btrfs_root_is_snapshot-false}" = 'true' ]; then
 	sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
 fi
 
-# Hack: Use the legacy fstab.sys for now to work around https://github.com/SUSE/kiwi/issues/945
-cat << EOF >> /etc/fstab.sys
-LABEL=ROOT /var btrfs defaults,subvol=@/var 0 0
-overlay /etc overlay defaults,lowerdir=/sysroot/etc,upperdir=/sysroot/var/lib/overlay/1/etc,workdir=/sysroot/var/lib/overlay/work-etc 0 0
-EOF
+# The %post script can't edit /etc/fstab sys due to https://github.com/OSInside/kiwi/issues/945
+# so use the kiwi custom hack
+
+cp /usr/sbin/setup-fstab-for-overlayfs /etc/fstab.script
 
 #======================================
 # Configure Pine64 specifics

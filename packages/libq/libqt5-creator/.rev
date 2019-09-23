@@ -637,4 +637,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>729918</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>620fbe387afdf8819b9e6e2c3c7b880a</srcmd5>
+    <version>4.10.0</version>
+    <time>1569235070</time>
+    <user>dimstar_suse</user>
+    <comment>Add new pri files to plugin-devel subpackage, which are neccessary for build 3rd part plugins. (forwarded request 732098 from hgraeber)</comment>
+    <requestid>732111</requestid>
+  </revision>
 </revisionlist>

@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>729388</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>291e923520d0ffcfee4df70d1a17e73e</srcmd5>
+    <version>1.12.0</version>
+    <time>1569235119</time>
+    <user>dimstar_suse</user>
+    <comment>Was trying to give them benefit of the doubt, but if you insist.
+
+- Trim future goals from description, it is not in the scope
+  of openSUSE package descriptions. (forwarded request 729707 from jengelh)</comment>
+    <requestid>732254</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           jupyter-jupyterlab_templates
-Version:        0.0.8
+Version:        0.2.0
 Release:        0
 Summary:        Templates for notebooks in JupyterLab
 License:        Apache-2.0
@@ -27,13 +27,13 @@ Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_temp
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       jupyter-jupyterlab
+Requires:       jupyter-jupyterlab >= 1.0.0
 Provides:       python3-jupyter_jupyterlab_templates = %{version}
 Obsoletes:      python3-jupyter_jupyterlab_templates < %{version}
 Provides:       python3-jupyterlab_templates = %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  jupyter-jupyterlab
+BuildRequires:  jupyter-jupyterlab >= 1.0.0
 # /SECTION
 
 %description

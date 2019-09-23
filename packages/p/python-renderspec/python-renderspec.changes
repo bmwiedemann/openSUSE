@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Sep 20 07:49:13 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- add conflict for the impossible to workaround staging failures
+
+-------------------------------------------------------------------
+Thu Jul 11 17:22:15 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.12.0
+  - Add contextfunctions 'py2' and 'py3'
+
+-------------------------------------------------------------------
+Wed Jun 26 15:37:43 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only package
+
+-------------------------------------------------------------------
+Mon Jun 17 10:07:53 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.11.1
+  - Switch to TOX_CONSTRAINTS_FILE
+  - Update flake8 version to latest release
+  - Switch to openstackdocstheme
+  - OpenDev Migration Patch
+  - Preserve list order in _pymod2pkg_translate
+  - Fix _pymod2pkg_translate when skip_pyversion is None
+  - Follow opendev rebranding
+
+-------------------------------------------------------------------
+Thu Apr 25 08:41:10 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.10.0
+  - fix tox python3 overrides
+  - Update home-page
+  - Update links in README
+  - Switch to stestr
+  - Change openstack-dev to openstack-discuss
+  - Move linter dependencies out of test-requirements
+  - Removed older version of python added 3.5
+  - Avoid tox_install.sh for constraints support
+  - switch documentation job to new PTI
+  - Update to a somewhat recent flake8 version
+  - add python 3.6 unit test job
+  - Updated from global requirements
+  - import zuul job settings from project-config
+- convert to singlespec
+
+-------------------------------------------------------------------
+Wed Apr 10 10:48:02 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- refresh spec file from master
+
+-------------------------------------------------------------------
 Wed Oct 11 05:28:36 UTC 2017 - cloud-devel@suse.de
 
 - update to version 1.9.1

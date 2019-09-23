@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:35:41 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Override description in cpanspec
+
+-------------------------------------------------------------------
+Fri Sep  6 21:01:49 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove fix-pangocairo_libs.patch (not needed anymore)
+   Add custom dependencies and test to cpanspec.yml
+
+-------------------------------------------------------------------
+Wed Apr  3 07:21:56 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.227
+   see /usr/share/doc/packages/perl-Pango/ChangeLog.pre-git
+
+-------------------------------------------------------------------
 Tue Jan 12 08:40:50 UTC 2016 - bwiedemann@suse.com
 
 - Add fix-pangocairo_libs.patch to fix compilation on Tumbleweed-2016-01

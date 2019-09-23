@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 20 06:18:33 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1145296, fix the wrong return code with cib_apply_diff
+  Add patch cibadmin-return-code-convert.patch
+
+-------------------------------------------------------------------
 Mon Sep  6 08:57:04 UTC 2019 - nwang@suse.com
 
 - Support Kernel 5.2, bsc#1149945 and bsc#1144702

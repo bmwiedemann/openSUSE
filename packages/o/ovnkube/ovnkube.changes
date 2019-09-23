@@ -1,0 +1,342 @@
+-------------------------------------------------------------------
+Tue Sep 17 17:30:46 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Install files (scripts and templates) for generating DaemonSet
+  manifests.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:18:31 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version v0.3.11+20190912:
+  * do not copy over loopback CNI plugin from the onvkube-node container
+  * OVN: make db ports configurable
+  * revendor containernetworking cni and plugins to latest release
+  * cluster: decouple CleanupClusterNode() from the cluster controller
+  * gateway: Generate iptables rules for services in a separate function
+  * ovnkube.sh: add OVNKUBE_SH_VERBOSE for 'set -x' debugging
+  * [daemonset] enable support for non-default CNI directories
+  * ovn: add an iptables rule to fix hostports
+  * util: make default IPTablesHelper overridable
+  * ovn: split CreateManagementPort code into separate linux and windows files
+  * util: unify Windows port MAC address lookup special case
+  * gateway-init.go: Read chassis ID from OVS, not SBDB.
+  * disable privileged mode for OVN containers
+  * remove incorrect default value for OVN_NORTHD_OPTS
+  * OVN NB and SB DB should log to their default logfiles
+  * ovnkube-node container in a panic-loop in the local gateway mode
+  * remove the stale ovn-northd control files
+  * rename ovn-node container to ovnkube-node for consistent naming
+  * optionally run OVN NB DB as non-root user if needed
+  * remove the unused function start_ovn in ovnkube.sh
+  * remove logical static route on node deletion
+  * Dockerfiles: verify that packages are installed
+  * enable port security on the pod's logical switch port
+  * Get git info from git commands
+  * remove unnecessary volume mounts in ovnkube-master pod containers
+  * remove unnecessary volume mounts in ovnkube-node pod containers
+  * update various .gitignore files with runtime artifacts
+  * add missing iptables package to fedora dockerfile
+  * cluster.go: Allow GENEVE port to be set via ovs-vsctl Allow the port used for a GENEVE tunnel to be set to a value other than the default.
+  * remove TEMP HACK - WORKAROUND verbiage from ovnkube.sh
+  * OVN ovnkube.sh remove version 1,2 support
+  * ovn-nbctl daemon mode until we get golang OVSDB bindings
+  * Revert "gateway/local: stop double-NAT-ing"
+  * Adding Girish Moodalbail (girishmg) as approver
+  * ovnkube-master and ovnkube-db pods shouldn't have hostPID set to true
+  * remove other-config:exclude_ips key once that IP address is allocated
+  * ovnkube.sh: optionally run as non-root user
+  * Add OVS Offload Doc
+  * ovnkube support for ovs offload
+  * config: add '-cluster-subnets' CLI and 'cluster-subnets' config file options
+  * cluster/config: move subnet parsing to utils
+  * config: move CNI flags to a separate section
+  * master: don't block waiting for gateway load balancer creation
+  * increment retry counter that is currently missing
+  * use ovs-appctl to check for process readiness and health
+  * ovn: add testcase for startup pod reconciliation
+  * travis.yml: Fix syntax.
+  * vendor: add Mellanox/sriovnet
+  * vendor: add go.uuid
+  * cluster: add testcase for existing node hostsubnet annotations
+  * testing: set gomega's TruncatedDiff to false
+  * cluster/master: don't re-set host subnet annotation
+  * OVN NB/SB DB HA using Corosync/Pacemaker
+  * images/Dockerfile.fedora: switch to 'ovn' packages and cleanups
+  * travis: CI test image builds
+  * gateway/local: stop double-NAT-ing
+  * clarify daemonset vs deployment in the README
+  * fix vagrant and README for gateway-mode changes
+  * windows: fix build after gateway cleanup changes
+  * vendor: update the packages for the LB services healthcheck
+  * hack: don't try to run "go test" in dirs with no tests
+  * cluster: Do health checking for LoadBalancer services
+  * Fix up handling of LoadBalancer services
+  * gateway_localnet: Add nodeport rule to -t nat -A OUTPUT
+  * remove the -net-controller option
+  * cleanup OVS resources on k8s node upon ovnkube-node pod deletion
+  * vendor: rebase to k8s 1.14.3
+  * config: allow NodeportEnable option for masters
+  * config: add --gateway-mode=[shared|spare|local] and deprecate other gateway options
+  * cluster: use pkg/config gateway options
+  * config: add Gateway options to config
+  * cluster: remove unused variable
+  * config: simpify test config file writing
+  * Change debian source repository's IP address.
+  * remove the experimental --ha option from ovn-k8s
+  * Remove the installation of containernetwork-cni
+  * provide a way to specify gateway options for ovnkube-node daemonset
+  * yaml: cleanup onvkube-db POD template
+  * yaml: ovnkube-db and ovnkbue-master need not be on the same k8s node
+  * Change the value for selecting the master node
+  * gateway: pick the first IP address from the interface
+  * gateway: split local vswitch and OVN operations
+  * cluster: ensure Chassis ID record matches node name (not hostname)
+  * pkg/ovs: add infrastructure for ovn-sbctl
+  * testing: be more helpful when binary name doesn't match
+  * Bump to Go v1.11.4
+  * dist: simplification of kubernetes.repo and Dockerfile interaction
+  * Add arm64 support for daemonset image build
+  * add support for multiple ipBlock fields in a single ingress/egress rule
+  * node processes should get their connections via a Service
+  * README.md: Add information for Windows.
+  * OVN: Stop putting the token on the cmdline
+  * [v2] Allocate gateway router port addresses dynamically
+  * [contrib] Fix kube-apiserver service ip argument
+  * Update LB VIPs for nodeport service on adding new node
+  * Build fedora29 image with ovs 2.10.1 and ovn 2.11.0
+  * On centos use ovs 2.10.1
+  * README.md: Document dkms dependency.
+  * Remove stale files.
+  * README.md: Documentation for daemonsets.
+  * Copy README.md to README_MANUAL.md.
+  * testing: simplify FakeExec and fake command generation
+  * load balancer entries are not getting cleaned up on node deletion, this commit fixes it.
+  * [contrib] Set init_gateway to false by default on Ubuntu 18.04 nodes
+  * Rename repository
+  * cluster/ovn: use config.Kubernetes.ServiceCIDR
+  * config: add and require --k8s-service-cidr config option and deprecate --service-cluster-ip-range
+  * race between LogicalPort creation of management port and first pod
+  * [contrib] Change order when installing debs
+  * [contrib] Linux add new dependency needed to compile OVS
+  * [contrib] Bump OVS installer to 2.10 on Windows
+  * [contrib] Add 18.04 to the supported list and deprecate 14.04
+  * [contrib] Bump OVS linux version to 2.10
+  * [ansible] Switch to ovn-org links
+  * Allow running in namespaces other than 'ovn-kubernetes'
+  * install_ovn.sh: remove leftover script
+  * config: consolidate OvnDBAuth, OvnAuthConfig, and rawOvnAuthConfig
+  * ssl: update SSL documentation to not to do self-signed certificates
+  * ssl: add documentation on how to configure ovn-northd to speak SSL
+  * add iptable rules to support NodePort service for local gateway type
+  * iptables: issues with usage of append() and iptable rules ordering
+  * wait on logical switch creation before creating the management port
+  * vagrant: cleanup hostname mapping to 127.0.0.1
+  * vagrant: change the default memory to 3192MB for vagrant instances
+  * vagrant: do not create 99loopback.conf file
+  * ubuntu based image as the default for ovn-k8s daemonsets
+  * let ovs-vswitchd/ovsdb-server run as root when built without libcapng
+  * daemonset: parameterize daemonset.sh to generate custom yaml
+  * dockerfile: ubuntu image needs setpriv package to run OVS daemons
+  * daemonset: fix logic error in pid_ready and pid_health
+  * Don't overwrite cni file if exist
+  * dockerfile: remove copying non-existent binary (ovn-k8s-overlay)
+  * vagrant: configure server side SSL/TCP settings
+  * config: server side configuration must be handled outside of ovnkube
+  * tmpfile.d file that clears the cni config on boot
+  * pods with static ip need to have same metadata has dynamic ip pods
+  * gateway: br-localnet really should be br-local
+  * daemonset: wait for ovs to be ready before starting ovnkube-master
+  * vagrant: Use dkms kernel module for daemonsets too.
+  * vagrant: reflect the new ovnkube-db pods
+  * framework for providing high availability for OVN DBs
+  * vagrant: Use OVS 2.10.x series.
+  * update vagrant to reflect recent changes to yaml files
+  * loadbalancer: do not handle external IP for service type LoadBalancer
+  * [Ansible] Move local cache ansible_tmp_dir create
+  * Ansible: replace fetch with synchronize
+  * loadbalancer: create OVN LB rules for ClusterIP for UDP protocol
+  * [Ansible] Fix certs directory creation for K8s master
+  * [Ansible] Small bash script cleanup
+  * call out the protocol to be TCP for north-south load-balancer
+  * ovnkube: cleanup help output
+  * cluster: src-ip based routes take precedence and breaks NodePort
+  * PODs on K8s nodes access to host IP when using Shared Gateway Interface
+  * OVN NB, SB, and Northd processes need not wait for OVS daemons
+  * [Ansible][contrib] Add workaround for lineinfile concurrency issues
+  * [Ansible][contrib] Fix ansible gateway interface for subsequent runs
+  * factory: move u64 to head of struct for 32-bit atomic requirements
+  * factory/test: add Shutdown() function to clean up handlers
+  * ovn: make node switch allow-from-node ACL work with OVN 2.8
+  * ovn: wait until node switch appears before starting pods on that node
+  * node: remove the 'remove-node' option
+  * cluster: sync nodes on startup to remove dead nodes from OVN database
+  * ovn/service: handle headless service in Add/Delete Endpoints
+  * cluster/ovn: move node logical switch creation to master
+  * master: cache load balancer UUIDs
+  * master: remove redundant addNode() calls
+  * cmd: ovn-k8s-cni-overlay doesn't need any arguments
+  * gateway: add access to tagged external network
+  * cluster: move join switch IPAM to 100.64.0.0/16 to support > 253 nodes
+  * ovnkube.log and ovnkube-master.log shouldn’t be in /var/log/openvswitch
+  * gateway: use localnet ports on external logical switch
+  * Provide LICENSE file
+  * Move iptable port 664[12] open to ovnkube.sh
+  * Add k8s_apiserver to ovn-config configmap
+  * When OVN cmd fails - add the actual command to the error
+  * daemonset: miscellaneous fixes to get daemonset to work
+  * ovnkube: ovn-controller log and ovnkube gateway options support
+  * Install the latest kubectl binary in CentOS image
+  * Gateway: do not require the interface name to be in bridge name
+  * Fix minor details
+  * Update tasks.md with new meeting location
+  * Update tasks.md to reflect new meeting location
+  * Simplify OVN install
+  * [Ansible][contrib] Bump golang version
+  * Revert "Merge pull request #503 from dcbw/join-dynamic-addresses"
+  * log: enclose ovn-northd log options in quotes
+  * pidfile handling should be done only for the ovnkube daemons
+  * refactor the pidfile handling code into its own function
+  * Dockerfile: failing to build ubuntu based daemonset images
+  * Ansible: Validate healthy minions in K8s API
+  * Ansible: Refactor kube-system pods validation
+  * cluster: bump join switch IPAM to /16 (allow > 253 nodes)
+  * util/ovs: better debug printing of executed sub-processes
+  * pods: use GetPortAddress()
+  * gateway: allocate gateway router port addresses dynamically
+  * remove init-gateway command from ovn-kube-util(1) CLI
+  * RunOVNNbctlHA() makes an incorrect assumption on which scheme to use
+  * Adding Girish Moodalbail (girishmg) as reviewer
+  * do not make the assumption that OVN DBs are locally available
+  * adding support for using both namespace selector and pod selector in egress for ovs versions less then 2.10
+  * adding support for using both namespace selector and pod selector in egress for ovs versions greater than 2.10
+  * add namespace selector and pod selector functionality to network policy
+  * add namespace selector and pod selector functionality to network policy
+  * Ansible: Add common role for kubectl tool
+  * Ansible: Add common role for K8s client certs
+  * Ansible: Update the task that modifies minion's /etc/hosts
+  * Ansible: Add common playbooks role for Linux
+  * Ansible: Fix retry logic
+  * Ansible: Cleanup the K8s Linux certs setup
+  * Ansible: Disable realtime protection for testing clusters
+  * Ansible: Add retries when needed
+  * Ansible: Add validation for the K8s CoreDNS pods
+  * Ansible: Fix the CoreDNS pods
+  * Ansible: Add post-deployment validation roles
+  * Rename ovn-k8s-watcher to ovn-kubernetes-master
+  * Rename ovnkube-gateway-helper to ovn-kubernetes-node
+  * Ansible: Fix Linux minions without gateway flags
+  * cluster: don't set external-ids in master codepaths
+  * Ansible: Update `init_gateway` boolean flag
+  * Ansible: Add missing error checking to shell commands
+  * Add '--wait' and '--ignore-not-found' parameters to cleanup commands
+  * Remove unnecessary jq pkg install
+  * Remove unnecessary tags set
+  * Ansible: Small cleanup for 'with_items' loops
+  * Ansible: Cleanup the OVS build debs task
+  * Remove extra spaces
+  * Ansible: Remove unused flag from kube-controller-manager service
+  * Fix sdn_preferred_nic_name for multi-node deployments
+  * Ansible: Remove OVS workaround
+  * windows: Fixes MAC fetching during gateway-init
+  * Added OWNERS file
+  * Update ansible docs
+  * Update ansible docs with used ports
+  * Update ansible README to include 2019 and 1809
+  * Add support for Windows 2019 RTM
+  * OVN start containers properly, improve logs
+  * Rename the distributed router to ovn_cluster_router
+  * add source debug build options
+  * Download binaries only if missing
+  * gateway: enable NodePort for localnet gateway
+  * ovn/service: ignore headless ClusterIP services
+  * govet fixes
+  * Fix cache inconsistency that occurs upon node deletion
+  * Make ovn-debug.sh script runnable
+  * Dockerfile.centos - multi arch changes
+  * Update README
+  * Update ovn-kubernetes-cluster.yml playbook file
+  * Improve the windows/kubernetes role
+  * Improve windows/kubernetes/run_minion_init.yml task
+  * Improve windows/kubernetes/start_kubelet.yml task
+  * Improve windows/kubernetes/set_ip_facts.yml task
+  * Improve windows/kubernetes/setup_ovs_docker.yml task
+  * Improve setup_sdn.yml task
+  * Update kubernetes/tasks/get_ovn_subnet.yml task
+  * Remove servicewrapper fetch from windows/ovn-kubernetes role
+  * Update windows/openvswitch role
+  * Improve the windows/docker role
+  * Add fetch_utils task to the requirements role
+  * Remove tags set
+  * ovn version 3 ovnkube.sh and daemonsets
+  * Fix creation of the subnet allocated map on master startup
+  * Disable IPv6 for Windows agents
+  * dockerfile: add the missing package gawk to ubuntu dockerfile
+  * ansible: Init gateway on Windows by default
+  * windows: Add gateway support
+  * Return proper exit code for make check
+  * Ansible: Reduce the duplicates of chassis in SB database
+  * OVN ansible uninstall changes
+  * vagrant: Run 'make daemonsetyaml' for yaml creation.
+  * vagrant: Don't need to annotate minions for daemonsets.
+  * factory: defer handler removal to a goroutine
+  * ovn: tolerate all taints
+  * ansible: Enable CoreDNS via the playbooks
+  * ansible: Add service-cluster-ip-range to minion nodes
+  * Not all OVN resources cleaned up on deletion of K8s nodes
+  * ansible: Update ansible README.md
+  * add ansible uninstall and image config
+  * cniserver: Improve CNI performance on Windows
+  * Use daemonsets for vagrant.
+  * Dockerfile.ubuntu: Use debian packages from 18.191.116.101.
+  * contrib: Update services versions
+  * contrib: Run the startup script via psexec
+  * contrib: Create HNS network via powershell cmdlets
+  * contrib: Install OVS Cloudbase beta MSI by default
+  * contrib: Set unrestricted execution policy for startup script
+  * contrib: Generate automatically test yamls for Windows
+  * Change to kubectl command in ovn-setup.sh
+  * vagrant: Use kubeadm to start k8s components.
+  * vagrant: Add a rbac for ovnkube.
+  * pkg/cluster: fix lint error in node.go
+  * pkg/cluster: split gateway options into separate Go files
+  * pkg/cluster: unit-test gateway functionality
+  * pkg/cluster: add a suite test file and remove unused code
+  * ovn 4.0 cleanups
+  * ovn-policy.yaml: Get rid of ClusterRoleBinding "ovn-cluster-reader".
+  * remove unused parameters
+  * Add ubuntu image build
+  * run node on linux hosts only
+  * [4.0]Refactor ovnkube.sh and daemonset files
+  * Changed how to get apiserver
+  * OVN add iptables rule for traffic from pod to external
+  * ovn-policy.yaml: Get rid of userNames and groupNames.
+  * ovn-policy: Add apiGroup to roleRef.
+  * 'panic' should error with a useful object (string) and not just the func to error string. Just so we do not see errors like: panic: (func() string) (0x113cce0,0xc4204d4660)
+  * ansible install of OVN
+  * ovn-setup.sh changes
+  * Add READMEquay.md
+  * Fix race in ovs startup
+  * added docs
+  * add parameter -t for host cmd to get the correct host_ip
+  * multiple CIDR and configurable hostsubnetlength support for the ovn-kubernetes plugin
+  * Fix errors in dev preview doc
+  * add kind for clusterRoleBinding
+  * Add "linux" selector to daemonsets
+  * OVN provisioning changes
+  * Add os.kubernetes.io='linux' label to daemonsets
+  * Ovn-kube community container image
+  * handle externalIP type services in syncServices as well as deleteServices
+  * support for external IPs
+  * README.md: Add -gateway-localnet for master node.
+  * vagrant: Clarify instructions.
+  * config: Modify inactivity-probe for DB server and client.
+  * remove unnecessary go-routines around policy watches
+  * Instructions for setting up ovn on the cluster
+  * Add timeout variable for CLI commands
+  * ansible: Add minion hostnames in master hosts file
+  * Temp minor change to README.md (for testing)
+
+-------------------------------------------------------------------
+Thu Sep  5 22:20:48 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Initial release.

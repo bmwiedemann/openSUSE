@@ -386,4 +386,12 @@
     <comment></comment>
     <requestid>694090</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>9be75f41efa31cf3629bb7c698a85423</srcmd5>
+    <version>8.2.0</version>
+    <time>1569234978</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build</comment>
+    <requestid>732075</requestid>
+  </revision>
 </revisionlist>

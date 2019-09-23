@@ -45,14 +45,11 @@ BuildRequires:  cairo
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
-BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  libXt-devel
 BuildRequires:  libXtst-devel
-BuildRequires:  libgnome-devel
-BuildRequires:  libgnomeui-devel
 BuildRequires:  make
 BuildRequires:  mozilla-nspr-devel
 BuildRequires:  pkgconfig

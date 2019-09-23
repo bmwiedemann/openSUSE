@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:37:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Prevent dragging QQC2 ComboBox contents outside menu
+  * metainfo.yaml: set fancy name, auto-name from cmake project() is not nice
+  * metainfo.yaml: remove bogus note about library to link to
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:58 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

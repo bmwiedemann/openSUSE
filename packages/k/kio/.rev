@@ -727,4 +727,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment>Update to 5.61</comment>
     <requestid>722472</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9628895530a78ccf87f5920f57b1f57d</srcmd5>
+    <version>5.62.1</version>
+    <time>1569234513</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.62.1</comment>
+    <requestid>731382</requestid>
+  </revision>
 </revisionlist>

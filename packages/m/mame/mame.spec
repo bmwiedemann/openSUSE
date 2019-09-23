@@ -16,7 +16,7 @@
 #
 
 
-%define fver    209
+%define fver    211
 
 # Build mame-mess by default, and use system libraries
 %bcond_without  mess
@@ -54,14 +54,11 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
-%if 0%{?suse_version} <= 1315
-BuildRequires:  gcc7-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 %if %{with systemlibs}
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg8-devel
@@ -102,7 +99,6 @@ Obsoletes:      mess-tools < %{version}
 %description tools
 Tools for use with MAME/MESS roms and images.
 
-%if %{with mess}
 %package mess
 Summary:        Multi Emulator Super System
 Group:          System/Emulators/Other
@@ -120,7 +116,6 @@ This is the MESS only build of MAME; it has been compiled without Arcade built i
 MESS is an emulator for many game consoles and computer systems, based on
 the MAME core and now a part of MAME. MESS emulates portable and console
 gaming systems, computer platforms, and calculators.
-%endif
 
 %package data
 Summary:        Data files required by all builds of MAME
@@ -159,35 +154,27 @@ sed -i "s@-Wall -Wextra -Os@%{myoptflags}@" 3rdparty/genie/build/gmake.linux/gen
 sed -i "s@\. -s@\. %{myoptflags}@" 3rdparty/genie/build/gmake.linux/genie.make
 
 %build
-%limit_build -m 1600
+%limit_build -m 1800
 # Memory mapped files occupy the limited 32bit address space
 %ifarch %ix86 %arm
-export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold -Wl,--no-keep-files-mapped -Wl,--no-map-whole-files -Wl,--no-mmap-output-file"
+export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold -Wl,--no-keep-files-mapped -Wl,--no-map-whole-files -Wl,--no-mmap-output-file %{?_lto_cflags}"
 %else
-export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold"
+export LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold %{?_lto_cflags}"
 %endif
 
-%if 0%{?suse_version} > 1320
 export CFLAGS=$(pkg-config --cflags lua)
-%endif
 
 COMMON_FLAGS="\
     NOWERROR=1 \
     VERBOSE=1 \
     OPTIMIZE=3 \
-    %if 0%{?suse_version} <= 1315
-    OVERRIDE_CC=gcc-7 \
-    OVERRIDE_CXX=g++-7 \
-    %endif
     %if %{with systemlibs}
     USE_SYSTEM_LIB_EXPAT=1 \
     USE_SYSTEM_LIB_ZLIB=1 \
     USE_SYSTEM_LIB_JPEG=1 \
     USE_SYSTEM_LIB_FLAC=1 \
-    %if 0%{?suse_version} > 1320
     USE_SYSTEM_LIB_LUA=1 \
     USE_SYSTEM_LIB_UV=1 \
-    %endif
     USE_SYSTEM_LIB_SQLITE3=1 \
     USE_SYSTEM_LIB_PORTMIDI=1 \
     USE_SYSTEM_LIB_PORTAUDIO=1 \
@@ -340,8 +327,8 @@ install -Dpm 0644 %{SOURCE104}  %{buildroot}%{_datadir}/appdata/mame-mess.appdat
 %{_mandir}/man1/ldverify.1%{ext_man}
 %{_mandir}/man1/romcmp.1%{ext_man}
 
-%if %{with mess}
 %files mess
+%if %{with mess}
 %doc README.md whatsnew-%{version}.txt
 %license docs/LICENSE LICENSE.md
 %{_bindir}/mame-mess

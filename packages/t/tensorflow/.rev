@@ -47,4 +47,12 @@
     <comment>- added additonal dependencies (forwarded request 719605 from mslacken)</comment>
     <requestid>719606</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e52160941dcd66d203c20aeffed279ba</srcmd5>
+    <version>1.13.1</version>
+    <time>1569234738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731647</requestid>
+  </revision>
 </revisionlist>

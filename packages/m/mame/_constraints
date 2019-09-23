@@ -1,14 +1,27 @@
 <constraints>
   <hardware>
     <processors>4</processors>
-      <disk>
-        <size unit="G">42</size>
-      </disk>
-      <physicalmemory>
-        <size unit="G">8</size>
-      </physicalmemory>
-      <memory>
-        <size unit="G">11</size>
-      </memory>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+    <disk>
+      <size unit="G">8</size>
+    </disk>
   </hardware>
+    
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>x86_64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">12</size>
+      </disk>
+      <memory>
+        <size unit="M">13500</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>

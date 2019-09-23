@@ -2021,4 +2021,12 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
     <comment>automatic update</comment>
     <requestid>731811</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>8f38b6d0f31d1454f59fb40ba0a11a33</srcmd5>
+    <version>20190920.155606e3</version>
+    <time>1569235132</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>732304</requestid>
+  </revision>
 </revisionlist>

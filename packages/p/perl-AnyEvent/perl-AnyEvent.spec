@@ -17,7 +17,7 @@
 
 
 Name:           perl-AnyEvent
-Version:        7.16
+Version:        7.17
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name AnyEvent

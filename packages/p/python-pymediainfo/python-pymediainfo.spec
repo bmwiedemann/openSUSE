@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymediainfo
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT

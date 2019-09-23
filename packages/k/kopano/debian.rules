@@ -6,19 +6,24 @@ export DH_VERBOSE=1
 export DH_OPTIONS
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+DEB_RELEASE_CODE    ?= $(shell lsb_release -cs)
 CONFFLAGS = \
 	--prefix=/usr --localstatedir=/var --sysconfdir=/etc --enable-release \
+	--disable-python --enable-pybind \
 	TCMALLOC_CFLAGS=" " TCMALLOC_LIBS="-ltcmalloc_minimal"
 INSTDIR = debian/tmp
 
 override_dh_auto_configure:
 	autoreconf -fi
-	dh_auto_configure -Bpy2 -- ${CONFFLAGS} PYTHON="$$(which python2)" PYTHON_CFLAGS="$$(pkg-config python2 --cflags)" PYTHON_LIBS="$$(pkg-config python2 --libs)"
 	dh_auto_configure -Bpy3 -- ${CONFFLAGS} PYTHON="$$(which python3)" PYTHON_CFLAGS="$$(pkg-config python3 --cflags)" PYTHON_LIBS="$$(pkg-config python3 --libs)"
 
 override_dh_auto_build:
-	dh_auto_build -Bpy2 -- V=1
 	dh_auto_build -Bpy3 -- V=1
+
+override_dh_systemd_start:
+	# Restart services, after they have upgraded to minify downtime while
+	# upgrading and to ensure all services actually are restarted on upgrade.
+	dh_systemd_start --restart-after-upgrade
 
 override_dh_systemd_enable:
 	# Move systemd service files into debian folder so they can be correctly
@@ -27,7 +32,6 @@ override_dh_systemd_enable:
 	dh_systemd_enable
 
 override_dh_auto_install:
-	dh_auto_install -Bpy2 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
 	dh_auto_install -Bpy3 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
 	mkdir -p ${INSTDIR}/var/lib/kopano/autorespond
 	mkdir -p ${INSTDIR}/var/lib/kopano/rrd
@@ -51,9 +55,11 @@ override_dh_auto_install:
 	mkdir -p ${INSTDIR}/usr/share/doc/kopano-common
 	gzip -c <RELNOTES.txt >${INSTDIR}/usr/share/doc/kopano-common/changelog.gz
 
-	# Update paths in grapi bin script.
-	sed -i "s|EXE=.*|EXE=/usr/lib/${DEB_BUILD_GNU_TYPE}/kopano/kopano-mfr.py|" ${INSTDIR}/usr/sbin/kopano-grapi
-	sed -i "s|EXTRA_PYTHONPATH=.*|EXTRA_PYTHONPATH=$(shell PYTHONUSERBASE=/usr/lib/kopano/python3-extras python3 -m site --user-site)|" ${INSTDIR}/usr/sbin/kopano-grapi
+    # Kopano Search needs to run with Python 2 on Debian 8 because of non-existing python3-xapian.
+	if [ "${DEB_RELEASE_CODE}" = "jessie" ]; then \
+		sed -i "1 c #!/usr/bin/python" ${INSTDIR}/usr/sbin/kopano-search; \
+		sed -i "1 c #!/usr/bin/python" ${INSTDIR}/usr/sbin/kopano-search-xapian-compact.py; \
+	fi
 
 %:
 	dh $@ --parallel --with python3,systemd

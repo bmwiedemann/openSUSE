@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:37:16 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Make notification icons use outline style
+  * Skip test on wayland
+  * Port trivial connects to the new style
+  * make the sizing of the toolbuttons more coherent
+  * make button icons follow a reasonable size and layout (kde#399952)
+  * Allow applets/containments/wallpaper to defer UIReadyConstraint
+  * Make notification icons look like bells
+  * Fix incorrect initial tabs position for vertical tab bars (kde#395390)
+  * Add missing include
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

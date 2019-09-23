@@ -25,7 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
 Source0:        https://files.pythonhosted.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  openstack-tempest
 BuildRequires:  python-PrettyTable >= 0.7.2
 BuildRequires:  python-PyYAML >= 3.12
 BuildRequires:  python-cliff >= 2.11.0
@@ -34,6 +33,7 @@ BuildRequires:  python-keystoneauth1 >= 3.4.0
 BuildRequires:  python-mock
 BuildRequires:  python-osc-lib >= 1.10.0
 BuildRequires:  python-oslo.i18n >= 3.20.0
+BuildRequires:  python-oslo.serialization
 BuildRequires:  python-oslo.utils >= 3.36.0
 BuildRequires:  python-oslotest
 BuildRequires:  python-pbr >= 3.1.1

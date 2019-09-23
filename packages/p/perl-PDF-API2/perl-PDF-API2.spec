@@ -17,7 +17,7 @@
 
 
 Name:           perl-PDF-API2
-Version:        2.035
+Version:        2.036
 Release:        0
 %define cpan_name PDF-API2
 Summary:        Facilitates the creation and modification of PDF files

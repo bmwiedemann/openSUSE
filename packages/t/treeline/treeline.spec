@@ -1,7 +1,7 @@
 #
 # spec file for package treeline
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           treeline
-Version:        2.0.2
+Version:        3.1.1
 Release:        0
 Summary:        Versatile Tree-Style Outliner for Defining Custom Data Schemas
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
-Url:            http://treeline.bellz.org
-Source0:        http://sourceforge.net/projects/treeline/files/%{version}/treeline-%{version}.tar.gz
-Source1:        %{name}.desktop
-Source2:        x-%{name}.desktop
-Source3:        x-%{name}-gz.desktop
-Source4:        x-treepad.desktop
-Source5:        treeline.png
+URL:            https://treeline.bellz.org
+Source0:        https://github.com/doug-101/TreeLine/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        x-%{name}.desktop
+Source2:        x-%{name}-gz.desktop
+Source3:        x-treepad.desktop
 Source99:       treeline-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
-Requires:       python3-qt4
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python3-qt5
 BuildArch:      noarch
 
 %description
@@ -60,7 +57,7 @@ toolkit, which makes it very portable.
 %prep
 %setup -q -n TreeLine
 for i in source/*.py; do
-	sed -i "s|#!%{_bindir}/env python|#!%{_bindir}/python|g" "$i"
+  sed -i "s|#!%{_bindir}/env python|#!%{_bindir}/python|g" "$i"
 done
 
 find source/ -type f -name '*.py' | while read f; do
@@ -75,6 +72,7 @@ done
 %install
 python3 install.py -x \
    -p "%{_prefix}" \
+   -i "%{_datadir}/%{name}/icons" \
    -d "%{_docdir}/%{name}" \
    -b %{buildroot}
 
@@ -84,31 +82,34 @@ popd
 
 install -d "%{buildroot}%{_datadir}/mimelnk/application"
 install -m0644 \
+    "%{SOURCE1}" \
     "%{SOURCE2}" \
     "%{SOURCE3}" \
-    "%{SOURCE4}" \
     "%{buildroot}%{_datadir}/mimelnk/application/"
-
-install -D -m0644 "%{SOURCE5}" "%{buildroot}%{_datadir}/pixmaps/treeline.png"
 
 %suse_update_desktop_file -i treeline Office ProjectManagement
 
 %fdupes -s "%{buildroot}%{_datadir}"
 
-find %{buildroot}%{_docdir} -type f -name "INSTALL" -print -delete
+rm -f %{buildroot}%{_docdir}/%{name}/{INSTALL,LICENSE}
 
 %files
-%defattr(-,root,root,-)
-%doc %{_docdir}/%{name}
-%{_bindir}/treeline
-%{_datadir}/treeline/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/treeline.png
-%{_datadir}/icons/treeline
+%license doc/LICENSE
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/mimelnk
 %dir %{_datadir}/mimelnk/application
+%doc %{_docdir}/%{name}
+%{_bindir}/treeline
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/48x48/apps/treeline-icon.png
+%{_datadir}/icons/hicolor/scalable/apps/treeline-icon.svg
 %{_datadir}/mimelnk/application/x-treeline-gz.desktop
 %{_datadir}/mimelnk/application/x-treeline.desktop
 %{_datadir}/mimelnk/application/x-treepad.desktop
+%{_datadir}/treeline/
 
 %changelog

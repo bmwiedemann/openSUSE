@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           purpose
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -39,24 +39,24 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 1.7.0
 BuildRequires:  intltool
-BuildRequires:  kaccounts-integration-devel
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kio-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kirigami2-devel >= %{_kf5_bugfix_version}
-BuildRequires:  knotifications-devel >= %{_kf5_bugfix_version}
 BuildRequires:  libaccounts-glib-devel
-BuildRequires:  libaccounts-qt5-devel
 BuildRequires:  libsignon-qt5-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(AccountsQt5)
+BuildRequires:  cmake(KAccounts)
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(Qt5Core) >= 5.2.0
+BuildRequires:  cmake(Qt5Gui) >= 5.2.0
+BuildRequires:  cmake(Qt5Network) >= 5.2.0
+BuildRequires:  cmake(Qt5Qml) >= 5.2.0
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Requires:       kdeclarative-components >= %{_kf5_bugfix_version}
 Requires:       libKF5QuickAddons5 >= %{_kf5_bugfix_version}
 Requires:       libqt5-qtquickcontrols2
@@ -104,8 +104,8 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kcoreaddons-devel >= %{_kf5_bugfix_version}
 Requires:       libKF5PurposeWidgets5 = %{version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 
 %description devel
 This package contains development files needed to build applications which rely on the purpose framework.

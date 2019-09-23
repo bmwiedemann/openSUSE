@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 17 21:08:12 UTC 2019 - guillaume.gardet@opensuse.org
+
+- Ajust %limit_build to avoid OOM errors
+- Do not use %limit_build for lite flavor
+
+-------------------------------------------------------------------
 Mon Jul 29 13:51:16 UTC 2019 - Christian Goll <cgoll@suse.com>
 
 - added additonal dependencies

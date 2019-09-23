@@ -27,4 +27,12 @@
   - import zuul job settings from project-config</comment>
     <requestid>692883</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bbc5b710ddeb31fcac788aaaf2cf6204</srcmd5>
+    <version>2.2.0</version>
+    <time>1569235062</time>
+    <user>dimstar_suse</user>
+    <comment>- update requires to be able to drop tempest</comment>
+    <requestid>732097</requestid>
+  </revision>
 </revisionlist>

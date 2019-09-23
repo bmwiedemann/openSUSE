@@ -46,9 +46,6 @@ Patch0:         0001-Generic-SQL-output-plugin-for-Telegraf.patch
 %description
 Telegraf is an agent written in Go for collecting, processing, aggregating, and writing metrics.
 
-Design goals are to have a minimal memory footprint with a plugin system so that developers in the community can
-easily add support for collecting metrics from local or remote services.
-
 %prep
 mkdir -p %{_influxdata_dir}
 tar -C %{_influxdata_dir} -xzf %{SOURCE0}
@@ -100,7 +97,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %license src/github.com/influxdata/%{name}/LICENSE
 %doc src/github.com/influxdata/%{name}/README.md
 %dir %{_config_dir}
-%config %{_config_dir}/%{name}.conf
+%config(noreplace) %{_config_dir}/%{name}.conf
 %{_bindir}/%{name}
 
 %changelog

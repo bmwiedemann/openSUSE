@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:37:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Improve API documentation for Definition::setKeywordList()
+  * C & ISO C++: add digraphs (folding & preprocessor) (kde#411508)
+  * Markdown, TypeScript & Logcat: some fixes
+  * Format class: add functions to know if XML files set style attributes
+  * update matlab test refs
+  * combine test.m stuff into existing highlight.m
+  * Support for native Matlab strings
+  * Gettext: Add "Translated String" style and spellChecking attribute (kde#392612)
+  * reST: handle some more corner cases, add an actual test file
+  * Set the OpenSCAD indenter to C-style instead of none.
+  * Possiblity to change Definition data after loading
+  * Highlighting indexer: check kateversion
+  * Markdown: multiple improvements and fixes (kde#390309)
+  * JSP: support of <script> and <style> ; use IncludeRule ##Java
+  * LESS: import CSS keywords, new highlighting and some improvements
+  * JavaScript: remove unnecessary "Conditional Expression" context
+  * New syntax: SASS. Some fixes for CSS and SCSS (kde#149313)
+  * Use CMake find_dependency in CMake config file instead of find_package
+  * SCSS: fix interpolation (#{...}) and add the Interpolation color
+  * fix additionalDeliminator attribute (kde#399348)
+  * C++: contracts are not in C++20
+  * Gettext: fix "previous untranslated string" and other improvements/fixes
+  * Jam: Fix local with variable without initilisation and highlight SubRule
+  * Remove unused includes
+  * implicit fallthough if there is fallthoughContext
+  * restore right file paths
+  * Add common GLSL file extensions (.vs, .gs, .fs)
+  * Latex: several fixes (math mode, nested verbatim, ...) (kde#320303)
+  * Lua: fix color of end with several levels of condition and function nesting
+  * Highlighting indexer: all warnings are fatal
+  * Include KDE* cmake macros first
+
+-------------------------------------------------------------------
 Wed Aug  7 17:52:01 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

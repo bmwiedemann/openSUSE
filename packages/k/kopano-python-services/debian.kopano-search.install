@@ -1,0 +1,6 @@
+usr/sbin/kopano-search
+usr/sbin/kopano-search-xapian-compact.py
+usr/share/doc/kopano/example-config/apparmor.d/usr.sbin.kopano-search
+usr/share/doc/kopano/example-config/search.cfg
+usr/share/man/man5/kopano-search.cfg.5
+usr/share/man/man8/kopano-search.8

@@ -2,7 +2,7 @@
   <service mode="disabled" name="renderspec">
     <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/master/openstack/renderspec/renderspec.spec.j2</param>
     <param name="output-name">python-renderspec.spec</param>
-    <param name="requirements">https://raw.githubusercontent.com/openstack/rpm-packaging/master/global-requirements.txt</param>
+    <param name="requirements">https://raw.githubusercontent.com/openstack/renderspec/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,renderspec</param>
   </service>

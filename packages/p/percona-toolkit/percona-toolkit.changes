@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 22 12:10:47 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to Percona Toolkit 3.1.0:
+ * the new pt-pg-summary tool supports PostgreSQL data collection
+   in a way similar to other PT summary tools
+ * Add options to pt-stalk that allow limiting the disk space use
+ * pt-online-schema-change will not run under MySQL 8.0.14...17
+   if the table has foreign keys to avoid triggering a bug  
+- includes changes from 3.0.13:
+  * MariaDB 10+ compatibility fixes
+  * various bug fixes in multiple tools
+  
+-------------------------------------------------------------------
 Fri Nov 23 12:49:32 UTC 2018 - astieger@suse.com
 
 - update to Percona Toolkit 3.0.12:

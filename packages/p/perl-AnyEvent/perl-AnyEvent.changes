@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:14:03 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 7.17
+   see /usr/share/doc/packages/perl-AnyEvent/Changes
+
+  TODO: document TCP_*** constants
+  TODO: add debug/trace logging to some modules
+  TODO: use the eval-with-cb-call trick also to speed up JSON?
+  TODO: FAQ: common pitfalls? invoke-before-return
+  TODO: FAQ: scope-ids? hosts file order?
+  TODO: AnyEvent::Handle with AnyEvent::IO?
+  TODO: invalid. and localhost. specialcasing inside AEDNS and not AESocket (rfc6761)
+  TODO: maybe implement env variable to give hosts precedence
+  TODO: more formats for parse_ipv6 (single ipv6 address without port, ...p80, ...#80)
+  TODO: inet_aton maybe pack C4? no, add a comment why not
+  TODO: socket prepare callbacks, can they easily signal failure as well?
+  TODO: Олег Г <verdrehung@gmail.com>, empty A record response causes
+  AnyEvent::resolve_sockaddr to eventually call pack_sockaddr with undef -
+  broken dns server, but maybe improve the response.
+  
+  7.17 Wed Sep 18 03:04:49 CEST 2019
+  	- work around antique openssl version in RHEL 7  by formatting
+            dh parameters differently (reported by several people).
+  	- add t/13_weaken.t.
+
+-------------------------------------------------------------------
 Sun Jul 21 11:05:52 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 7.16

@@ -219,4 +219,12 @@ Fix build for openSUSE Tumbleweed and 11.4</comment>
     <comment>Use the corresponding eclipse version (technically it is a downgrade)</comment>
     <requestid>667727</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e980831115e09ea9b323ea8c667250aa</srcmd5>
+    <version>4.3.1</version>
+    <time>1569234841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731724</requestid>
+  </revision>
 </revisionlist>

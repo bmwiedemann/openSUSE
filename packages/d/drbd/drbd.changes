@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 20 08:22:12 UTC 2019 - nick wang <nwang@suse.com>
+
+- bsc#1151579, fix collinelle default path and always trigger in obs
+  Add patch suse-coccinelle.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 04:31:08 UTC 2019 - nwang@suse.com
+
+- bsc#1146117, disallow dual primaries when not configured.
+  Modify patch rely-on-sb-handles.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 07:45:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Restore higher summary specifity.

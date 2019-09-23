@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:19:06 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.036
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.036     2019-09-17
+  
+      - Eliminate another uninitialized value warning in BaseFont.pm.
+
+-------------------------------------------------------------------
 Sat Aug 10 05:21:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.035

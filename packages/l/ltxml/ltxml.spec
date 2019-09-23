@@ -31,7 +31,7 @@ BuildRequires:  zlib-devel
 Requires:       python
 
 %description
-LT XML is an integrated set of XML tools and a developers' tool kit,
+LT XML is an integrated set of XML tools and a developer's tool kit,
 including a C-based API.
 
 The LT XML tool kit includes stand-alone tools for a wide range of
@@ -52,14 +52,13 @@ querying language, which allows the user to quickly and easily select
 those parts of an XML document which are of interest.
 
 %package devel
-Summary:        Include Files and Libraries mandatory for Development
+Summary:        Header files for ltxml
 Group:          Development/Libraries/C and C++
 Requires:       ltxml
-#Provides:
 
 %description devel
 This package contains all necessary include files and libraries needed
-to develop applications that require these.
+to develop applications that want to make use of ltxml.
 
 %define INSTALL install -m755 -s
 %define INSTALL_SCRIPT install -m755
@@ -89,9 +88,6 @@ cd build
 make %{?_smp_mflags} test CFLAGS="%{optflags}"
 
 %install
-if [ ! "x" = "x$RPM_BUILD_ROOT" ] ; then
-   %{INSTALL_DIR} %{buildroot}
-fi
 pushd build
 make install CFLAGS="%{optflags}" \
              prefix=%{buildroot}%{_prefix} \

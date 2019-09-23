@@ -122,4 +122,12 @@
 - Drop merged patch pytest5.patch</comment>
     <requestid>730699</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d142a1c24fc18bed2d4e0cbfbcd02888</srcmd5>
+    <version>3.6.0</version>
+    <time>1569234790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731668</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,6 @@
 %define buildrt 1
 %endif
 %endif
-
 Name:           drbd
 Version:        9.0.19~1+git.8e93a5d9
 Release:        0
@@ -37,11 +36,12 @@ Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
 Patch2:         rely-on-sb-handlers.patch
+Patch3:         suse-coccinelle.patch
+#https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
+BuildRequires:  coccinelle
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
-#https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
-BuildRequires:  coccinelle
 BuildRequires:  modutils
 Requires:       drbd-utils >= 9.2.0
 Supplements:    drbd-utils >= 9.2.0
@@ -61,7 +61,7 @@ raid 1. It is a building block for setting up clusters.
 %package KMP
 Summary:        Kernel driver
 Group:          Productivity/Clustering/HA
-Url:            http://drbd.linbit.com/
+URL:            http://drbd.linbit.com/
 
 %description KMP
 This module is the kernel-dependent driver for DRBD. This is split out so
@@ -72,6 +72,7 @@ installed kernel.
 %setup -q -n drbd-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 mkdir source
 cp -a drbd/. source/. || :
@@ -85,13 +86,14 @@ ln -s ../scripts obj/
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
 export CONFIG_BLK_DEV_DRBD=m
 export EXTRA_CFLAGS='-DVERSION=\"%{version}\"'
+export ALWAYS_WANT_SPATCH='yes'
 
 for flavor in %{flavors_to_build}; do
     rm -rf $flavor
     cp -r source $flavor
     cp %{_sourcedir}/Module.supported $flavor
     export DRBDSRC="$PWD/obj/$flavor"
-    make -C %{kernel_source $flavor} modules M=$PWD/$flavor
+    make %{?_smp_mflags} -C %{kernel_source $flavor} modules M=$PWD/$flavor
 
     #Check the compat result
     cat $PWD/$flavor/compat.h
@@ -109,7 +111,7 @@ ln -s -f %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 rm -f drbd.conf
 
 %files
-%doc COPYING
+%license COPYING
 %doc ChangeLog
 %{_sbindir}/rc%{name}
 

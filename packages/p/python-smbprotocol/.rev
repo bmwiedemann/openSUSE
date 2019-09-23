@@ -24,4 +24,16 @@
     <comment></comment>
     <requestid>662603</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a9c15763c7d4523afe107308cc0fefa1</srcmd5>
+    <version>0.2.0</version>
+    <time>1569235074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0
+  * Fix issue where timeout was not being applied to the new
+    connection
+  * Fix various deprecated regex escape patterns
+  * Simplified the fallback NTLM context object</comment>
+    <requestid>732117</requestid>
+  </revision>
 </revisionlist>
