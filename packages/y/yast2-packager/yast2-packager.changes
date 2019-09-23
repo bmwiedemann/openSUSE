@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:28:23 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support for the online installation medium (jsc#SLE-7214)
+- 4.2.27
+
+-------------------------------------------------------------------
+Wed Sep 18 06:40:17 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Properly initialize the used base product name at upgrade
+  (bsc#1150856)
+- 4.2.26
+
+-------------------------------------------------------------------
+Wed Sep  4 14:32:20 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added Y2Packager::MediumType class for detecting the installation
+  medium type (related to jsc#SLE-7214)
+- 4.2.25
+
+-------------------------------------------------------------------
 Wed Aug 28 12:59:14 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - Avoid error when generating some warnings (bsc#1148536).

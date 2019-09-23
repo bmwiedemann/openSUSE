@@ -292,4 +292,12 @@
     <comment>Needed for Qt 5.13 testing</comment>
     <requestid>700338</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a61b9f1481bef0ba3bca500b5bb4a541</srcmd5>
+    <version>2.49.1</version>
+    <time>1569237311</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.49.1</comment>
+    <requestid>728988</requestid>
+  </revision>
 </revisionlist>

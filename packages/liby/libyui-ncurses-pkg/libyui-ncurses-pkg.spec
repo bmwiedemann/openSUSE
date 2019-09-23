@@ -17,7 +17,7 @@
 
 
 Name:           libyui-ncurses-pkg
-Version:        2.49.0
+Version:        2.49.1
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
@@ -56,6 +56,10 @@ Provides:       %{name} = %{version}
 
 Provides:       yast2-ncurses-pkg = 2.42.0
 Obsoletes:      yast2-ncurses-pkg < 2.42.0
+
+# force removal of all previous library versions (bsc#1148622),
+# expands to: libyui-ncurses-pkg1 libyui-ncurses-pkg2 ... libyui-ncurses-pkg{so_version - 1}
+Obsoletes:      %(echo `seq -s " " -f "libyui-ncurses-pkg%.f" $(expr %{so_version} - 1)`)
 
 Provides:       libyui_pkg
 Supplements:    packageand(libyui-ncurses:yast2-packager)

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 10:22:29 CEST 2019 - schubi@suse.de
+
+- AY: Supporting user defined permission files like
+  "/etc/permissions.ultra". (bsc#1147173)
+- 4.2.2
+
+-------------------------------------------------------------------
 Thu Aug 22 15:52:45 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to

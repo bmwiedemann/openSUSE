@@ -1,7 +1,0 @@
-<package name="lvm2-clvm" project="openSUSE:Factory">
-  <title>LVM2 Tools</title>
-  <description>Programs and man pages for configuring and using the LVM2 Logical
-Volume Manager.</description>
-  <devel project="openSUSE:Factory" package="lvm2"/>
-  <bcntsynctag>lvm2</bcntsynctag>
-</package>

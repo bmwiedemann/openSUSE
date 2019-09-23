@@ -980,4 +980,46 @@
     <comment></comment>
     <requestid>714367</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>a8042bb41a8d4af0c2a19dcb0a530e6f</srcmd5>
+    <version>2.03.05</version>
+    <time>1569237340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update lvm2.spec: make baselibs.conf to a common source.
+- Avoid creation of mixed-blocksize PV on LVM volume groups (bsc#1149408)
+  + bug-1149408_Fix-rounding-writes-up-to-sector-size.patch
+  + bug-1149408_vgcreate-vgextend-restrict-PVs-with-mixed-block-size.patch
+- Update lvm.conf files
+  - add devices/allow_mixed_block_sizes item
+- Update to LVM2.2.03.05
+  - To drop lvm2-clvm and lvm2-cmirrord rpms (jsc#PM-1324)
+  - Fix Out of date package (bsc#1111734)
+  - Fix occasional slow shutdowns with kernel 5.0.0 and up (bsc#1137648)
+  - Remove clvmd
+  - Remove lvmlib (api)
+  - Remove lvmetad
+- Drop patches that have been merged into upstream
+  - bug-1114113_metadata-prevent-writing-beyond-metadata-area.patch
+  - bug-1137296_pvremove-vgextend-fix-using-device-aliases-with-lvmetad.patch
+  - bug-1135984_cache-support-no_discard_passdown.patch
+- Drop patches that have been nonexist/unsupport in upstream
+  - bsc1080299-detect-clvm-properly.patch
+  - bug-998893_make_pvscan_service_after_multipathd.patch
+  - bug-978055_clvmd-try-to-refresh-device-cache-on-the-first-failu.patch
+  - bug-950089_test-fix-lvm2-testsuite-build-error.patch
+  - bug-1072624_test-lvmetad_dump-always-timed-out-when-using-nc.patch
+  - tests-specify-python3-as-the-script-interpreter.patch
+- Update spec files
+  - merge device-mapper, lvm2-lockd, lvm2 into one spec file
+  - clvmd/lvmlib (api)/lvmetad had been removed, so delete related context in spec file
+- Update lvm.conf files
+  - remove all lvmetad lines/keywords
+  - add event_activation
+  - remove fallback_to_lvm1 &amp; related items
+  - remove locking_type/fallback_to_clustered_locking/fallback_to_local_locking items
+  - remove locking_library item
+  - remove all special filter rules
+</comment>
+    <requestid>730344</requestid>
+  </revision>
 </revisionlist>

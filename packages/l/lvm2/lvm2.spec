@@ -17,75 +17,94 @@
 
 
 %define _unpackaged_files_terminate_build 0
+%define libname libdevmapper1_03
+%define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
-%define applib liblvm2app2_2
-%define cmdlib liblvm2cmd2_02
-
-### COMMON-DEF-BEGIN ###
-%define lvm2_version              2.02.180
-%define device_mapper_version     1.02.149
+%define cmdlib liblvm2cmd2_03
+%define lvm2_version              2.03.05
+%define device_mapper_version     1.02.163
 %define thin_provisioning_version 0.7.0
-### COMMON-DEF-END ###
-
-Name:           lvm2
+%define _supportsanlock 0
+%define dlm_version     4.0
+%if 0%{_supportsanlock} == 1
+%define sanlock_version 3.3.0
+%endif
+%global flavor @BUILD_FLAVOR@%{nil}
+%define psuffix %{nil}
+%if "%{flavor}" == "devicemapper"
+%define psuffix -device-mapper
+%bcond_without devicemapper
+%else
+%bcond_with devicemapper
+%endif
+%if "%{flavor}" == "lockd"
+%define psuffix -lvmlockd
+%bcond_without lockd
+%else
+%bcond_with lockd
+%endif
+Name:           lvm2%{psuffix}
 Version:        %{lvm2_version}
 Release:        0
 Summary:        Logical Volume Manager Tools
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
-Url:            http://www.sourceware.org/lvm2/
+URL:            https://www.sourceware.org/lvm2/
 Source:         ftp://sources.redhat.com/pub/lvm2/LVM2.%{version}.tgz
 Source1:        lvm.conf
 Source42:       ftp://sources.redhat.com/pub/lvm2/LVM2.%{version}.tgz.asc
-BuildRequires:  gcc-c++
-BuildRequires:  libaio-devel
-BuildRequires:  libcorosync-devel
-BuildRequires:  libselinux-devel
-# To detect modprobe during build
-BuildRequires:  kmod-compat
-BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
-BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
-BuildRequires:  pkgconfig(blkid)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(udev)
-Requires:       device-mapper >= %{device_mapper_version}
-Requires:       modutils
-Requires(post): coreutils
-Requires(postun): coreutils
-Provides:       lvm = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
-
-### COMMON-PATCH-BEGIN ###
+Source99:       baselibs.conf
 # Upstream patches
-Patch0001:      bug-1114113_metadata-prevent-writing-beyond-metadata-area.patch
-Patch0002:      bug-1122666_devices-drop-open-error-message.patch
-Patch0003:      bug-1137296_pvremove-vgextend-fix-using-device-aliases-with-lvmetad.patch
-Patch0004:      bug-1135984_cache-support-no_discard_passdown.patch
-
+Patch0001:      bug-1122666_devices-drop-open-error-message.patch
+Patch0002:      bug-1149408_Fix-rounding-writes-up-to-sector-size.patch
+Patch0003:      bug-1149408_vgcreate-vgextend-restrict-PVs-with-mixed-block-size.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
 Patch1003:      fate-31841_fsadm-add-support-for-btrfs.patch
 Patch1004:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
-Patch1005:      bsc1080299-detect-clvm-properly.patch
-Patch1006:      bug-998893_make_pvscan_service_after_multipathd.patch
-
 #SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
-### COMMON-PATCH-END ###
-
 # 3000+ for test code
-Patch3001:      bug-950089_test-fix-lvm2-testsuite-build-error.patch
-Patch3002:      bug-1043040_test-fix-read-ahead-issues-in-test-scripts.patch
-Patch3003:      bug-1072624_test-lvmetad_dump-always-timed-out-when-using-nc.patch
-Patch3004:      tests-specify-python3-as-the-script-interpreter.patch
-
+Patch3001:      bug-1043040_test-fix-read-ahead-issues-in-test-scripts.patch
 # patches specif for lvm2.spec
 Patch4001:      bug-1037309_Makefile-skip-compliling-daemons-lvmlockd-directory.patch
+# To detect modprobe during build
+BuildRequires:  kmod-compat
+BuildRequires:  libaio-devel
+BuildRequires:  pkgconfig
+BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
+BuildRequires:  pkgconfig(libudev)
+Requires:       device-mapper >= %{device_mapper_version}
+Requires:       modutils
+Requires(post): coreutils
+Requires(postun): coreutils
+Provides:       lvm = %{version}
+Obsoletes:      lvm2-cmirrord
+%{?systemd_requires}
+%if %{with devicemapper}
+BuildRequires:  gcc-c++
+BuildRequires:  suse-module-tools
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(libsepol)
+BuildRequires:  pkgconfig(systemd)
+%else
+BuildRequires:  libcorosync-devel
+BuildRequires:  pkgconfig(blkid)
+%if %{with lockd}
+BuildRequires:  libdlm-devel
+%if 0%{_supportsanlock} == 1
+BuildRequires:  sanlock-devel >= %{sanlock_version}
+%endif
+%else
+BuildRequires:  gcc-c++
+BuildRequires:  libselinux-devel
+BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
+%endif
+%endif
 
 %description
 Programs and man pages for configuring and using the LVM2 Logical
@@ -93,32 +112,24 @@ Volume Manager.
 
 %prep
 %setup -q -n LVM2.%{version}
-### COMMON-PREP-BEGIN ###
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
-%patch0004 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
 %patch2001 -p1
-### COMMON-PREP-END ###
 
 %patch3001 -p1
-%patch3002 -p1
-%patch3003 -p1
-%patch3004 -p1
+%if !%{with lockd}
 %patch4001 -p1
+%endif
 
 %build
+%if !%{with devicemapper} && !%{with lockd}
 extra_opts="
-    --enable-applib
     --enable-blkid_wiping
-    --enable-cmdlib
-    --enable-lvmetad
     --enable-lvmpolld
     --enable-realtime
     --with-cache=internal
@@ -126,10 +137,32 @@ extra_opts="
     --with-default-pid-dir=/run
     --with-default-run-dir=/run/lvm
     --enable-cmirrord
+    --enable-fsadm
+    --disable-silent-rules
+    --enable-write_install
+    --with-vdo=internal
+    --with-vdo-format=%{_bindir}/vdoformat
 "
+%endif
+%if %{with lockd}
+extra_opts="
+    --enable-blkid_wiping
+    --enable-lvmpolld
+    --enable-realtime
+    --with-default-locking-dir=/run/lock/lvm
+    --with-default-pid-dir=/run
+    --with-default-run-dir=/run/lvm
+    --with-cluster=internal
+    --enable-lvmlockd-dlm
+%if 0%{_supportsanlock} == 1
+    --enable-lvmlockd-sanlock
+%endif
+    --disable-silent-rules
+"
+%endif
 
 ### COMMON-CONFIG-BEGIN ###
-export PATH=$PATH:/sbin:%{_prefix}/sbin
+export PATH=$PATH:/sbin:%{_sbindir}
 # Why this messy fix here? someone released a wrong version...
 sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
 %configure \
@@ -155,9 +188,60 @@ sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
     $extra_opts
 ### COMMON-CONFIG-END ###
 
+%if %{with devicemapper}
+%make_build device-mapper
+%else
 %make_build
+%endif
 
 %install
+%if %{with devicemapper}
+make DESTDIR=%{buildroot} \
+    install_device-mapper \
+    install_systemd_units
+
+ln -s service %{buildroot}/%{_sbindir}/rcdm-event
+
+# provide 1.02 compat links for the shared libraries
+# this is needed for various binary packages
+ln -s libdevmapper.so.1.03 %{buildroot}/%{_libdir}/libdevmapper.so.1.02
+ln -s libdevmapper-event.so.1.03 %{buildroot}/%{_libdir}/libdevmapper-event.so.1.02
+
+# remove blkd, will be in lvm2 proper
+# without force on purpose to detect changes and fail if it happens
+rm %{buildroot}%{_sbindir}/blkdeactivate
+rm %{buildroot}%{_unitdir}/blk-availability.service
+rm %{buildroot}%{_unitdir}/lvm2-monitor.service
+rm %{buildroot}%{_mandir}/man8/blkdeactivate.8
+
+# compat symlinks in /sbin remove with Leap 43
+mkdir -p %{buildroot}/sbin
+ln -s %{_sbindir}/dmsetup %{buildroot}/sbin/dmsetup
+%else
+%if %{with lockd}
+make DESTDIR=%{buildroot} \
+    install_systemd_units install_systemd_generators
+make DESTDIR=%{buildroot} install -C daemons/lvmlockd
+
+# lvmlockd does not have separate target install the mans by hand for now
+install -m0644 -D man/lvmlockd.8 %{buildroot}%{_mandir}/man8/lvmlockd.8
+install -m0644 -D man/lvmlockctl.8 %{buildroot}%{_mandir}/man8/lvmlockctl.8
+
+# rc services symlinks
+ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlockd
+ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlocking
+
+# remove files from lvm2 split due to systemd_generators picking them up
+rm %{buildroot}%{_unitdir}/blk-availability.service
+rm %{buildroot}%{_unitdir}/dm-event.service
+rm %{buildroot}%{_unitdir}/dm-event.socket
+rm %{buildroot}%{_unitdir}/lvm2-monitor.service
+rm %{buildroot}%{_mandir}/man8/lvm2-activation-generator.8
+rm %{buildroot}%{_libexecdir}/systemd/system-generators/lvm2-activation-generator
+rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.service
+rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
+rm %{buildroot}%{_unitdir}/lvm2-pvscan@.service
+%else
 %make_install
 make install_system_dirs DESTDIR=%{buildroot}
 make install_systemd_units DESTDIR=%{buildroot}
@@ -169,17 +253,15 @@ install -m 644 %{SOURCE1} "%{buildroot}/%{_sysconfdir}/lvm/"
 make -C test install DESTDIR=%{buildroot}
 
 pushd "%{buildroot}/%{_libdir}"
-ln -sf liblvm2cmd.so.2.02 liblvm2cmd.so
-ln -sf liblvm2app.so.2.2 liblvm2app.so
+ln -sf liblvm2cmd.so.2.03 liblvm2cmd.so
 for i in libdevmapper-event-lvm2{mirror,raid,snapshot,thin}; do
     ln -sf "device-mapper/$i.so" "$i.so"
-    ln -sf "device-mapper/$i.so" "$i.so.2.02"
+    ln -sf "device-mapper/$i.so" "$i.so.2.03"
 done
 popd
 
 #rc compat symlinks
 ln -s service %{buildroot}%{_sbindir}/rcblk-availability
-ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmetad
 ln -s service %{buildroot}%{_sbindir}/rclvm2-monitor
 ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmpolld
 
@@ -193,8 +275,8 @@ rm %{buildroot}%{_udevrulesdir}/95-dm-notify.rules
 rm %{buildroot}%{_unitdir}/dm-event.socket
 rm %{buildroot}%{_unitdir}/dm-event.service
 # See bsc#1037309 for more info
-rm %{buildroot}%{_unitdir}/lvm2-lvmlockd.service
-rm %{buildroot}%{_unitdir}/lvm2-lvmlocking.service
+rm %{buildroot}%{_unitdir}/lvmlockd.service
+rm %{buildroot}%{_unitdir}/lvmlocks.service
 rm %{buildroot}%{_includedir}/libdevmapper*.h
 rm %{buildroot}%{_libdir}/libdevmapper.so.*
 rm %{buildroot}%{_libdir}/libdevmapper-event.so.*
@@ -214,14 +296,169 @@ for i in {vg,pv,lv}*; do
     ln -s %{_sbindir}/$i %{buildroot}/sbin/$i
 done
 popd
+%endif
+%endif
 
+%if %{with devicemapper}
+%package -n device-mapper
+Version:        %{device_mapper_version}
+Release:        0
+Summary:        Device Mapper Tools
+Group:          System/Base
+Requires:       thin-provisioning-tools >= %{thin_provisioning_version}
+Requires(post): coreutils
+
+%description -n device-mapper
+Programs and man pages for configuring and using the device mapper.
+
+%pre -n device-mapper
+%service_add_pre dm-event.service dm-event.socket
+
+%post -n device-mapper
+%service_add_post dm-event.service dm-event.socket
+%{?regenerate_initrd_post}
+
+%posttrans -n device-mapper
+%{?regenerate_initrd_posttrans}
+
+%preun -n device-mapper
+%service_del_preun dm-event.service dm-event.socket
+
+%postun -n device-mapper
+%service_del_postun dm-event.service dm-event.socket
+%{?regenerate_initrd_post}
+
+%files -n device-mapper
+%license COPYING COPYING.LIB
+%doc README
+%doc udev/12-dm-permissions.rules
+/sbin/dmsetup
+%{_sbindir}/dmsetup
+%{_sbindir}/dmeventd
+%{_sbindir}/dmstats
+%{_mandir}/man8/dmstats.8%{?ext_man}
+%{_mandir}/man8/dmsetup.8%{?ext_man}
+%{_mandir}/man8/dmeventd.8%{?ext_man}
+%{_udevrulesdir}/10-dm.rules
+%{_udevrulesdir}/13-dm-disk.rules
+%{_udevrulesdir}/95-dm-notify.rules
+%{_unitdir}/dm-event.socket
+%{_sbindir}/rcdm-event
+%{_unitdir}/dm-event.service
+
+%package -n %{libname}
+Version:        %{device_mapper_version}
+Release:        0
+Summary:        Library for device-mapper
+Group:          System/Libraries
+Conflicts:      %{name} < %{version}
+
+%description -n %{libname}
+Device mapper main shared library
+
+%files -n %{libname}
+%{_libdir}/libdevmapper.so.1.03
+%{_libdir}/libdevmapper.so.1.02
+
+%post   -n %{libname}
+if [ -f /%{_lib}/libdevmapper.so.1.03 ]; then
+  # Special migration - the library is now in %{_libdir}, but up to the point where
+  # zypp removes the 'old' device-mapper package, the old library 'wins' the ldloader race
+  # resulting in binaries asking for the newer version still getting the old one.
+  # This in turn results in funny bugs like boo#1045396
+  # Remove /%{_lib}/libdevmapper.so.1.02 - and the run ldconfig
+  rm /%{_lib}/libdevmapper.so.1.03
+fi
+ /sbin/ldconfig
+
+%postun -n %{libname} -p /sbin/ldconfig
+
+%package -n %{libname_event}
+Version:        %{device_mapper_version}
+Release:        0
+Summary:        Event library for device-mapper
+Group:          System/Libraries
+Conflicts:      %{name} < %{version}
+
+%description -n %{libname_event}
+Device mapper event daemon shared library
+
+%files -n %{libname_event}
+%{_libdir}/libdevmapper-event.so.1.03
+%{_libdir}/libdevmapper-event.so.1.02
+
+%post -n %{libname_event} -p /sbin/ldconfig
+%postun -n %{libname_event} -p /sbin/ldconfig
+
+%package -n device-mapper-devel
+Version:        %{device_mapper_version}
+Release:        0
+Summary:        Development package for the device mapper
+Group:          Development/Libraries/C and C++
+Requires:       %{libname_event} = %{device_mapper_version}
+Requires:       %{libname} = %{device_mapper_version}
+Requires:       device-mapper = %{device_mapper_version}
+
+%description -n device-mapper-devel
+Files needed for software development using the device mapper
+
+%files -n device-mapper-devel
+%{_libdir}/libdevmapper.so
+%{_libdir}/libdevmapper-event.so
+%{_includedir}/libdevmapper.h
+%{_includedir}/libdevmapper-event.h
+%{_libdir}/pkgconfig/devmapper.pc
+%{_libdir}/pkgconfig/devmapper-event.pc
+
+%else
+%if %{with lockd}
+%package -n lvm2-lockd
+Summary:        LVM locking daemon
+Group:          System/Base
+Requires:       corosync
+Requires:       device-mapper >= %{device_mapper_version}
+Requires:       lvm2 = %{version}
+Recommends:     libdlm >= %{dlm_version}
+Obsoletes:      lvm2-clvm
+%{?systemd_requires}
+%if 0%{_supportsanlock} == 1
+Requires:       sanlock >= %{sanlock_version}
+%endif
+
+%description -n lvm2-lockd
+LVM commands use lvmlockd to coordinate access to shared storage.
+
+%pre -n lvm2-lockd
+%service_add_pre lvmlockd.service lvmlocks.service
+
+%post -n lvm2-lockd
+%service_add_post lvmlockd.service lvmlocks.service
+
+%preun -n lvm2-lockd
+%service_del_preun lvmlockd.service lvmlocks.service
+
+%postun -n lvm2-lockd
+%service_del_postun lvmlockd.service lvmlocks.service
+
+%files -n lvm2-lockd
+%defattr(-,root,root,)
+%{_sbindir}/lvmlockd
+%{_sbindir}/lvmlockctl
+%{_mandir}/man8/lvmlockd.8%{?ext_man}
+%{_mandir}/man8/lvmlockctl.8%{?ext_man}
+%{_unitdir}/lvmlockd.service
+%{_unitdir}/lvmlocks.service
+%{_sbindir}/rclvm2-lvmlockd
+%{_sbindir}/rclvm2-lvmlocking
+
+%else
 %pre
-%service_add_pre blk-availability.service lvm2-monitor.service lvm2-lvmetad.socket lvm2-lvmetad.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
+%service_add_pre blk-availability.service lvm2-monitor.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
 
 %post
 /sbin/ldconfig
 %{?regenerate_initrd_post}
-%service_add_post blk-availability.service lvm2-monitor.service lvm2-lvmetad.socket lvm2-lvmetad.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
+%service_add_post blk-availability.service lvm2-monitor.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
 # Use %%tmpfiles_create when 13.2 is oldest in support scope
 %{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/lvm2.conf || :
 
@@ -229,25 +466,24 @@ popd
 %{?regenerate_initrd_posttrans}
 
 %preun
-%service_del_preun blk-availability.service lvm2-monitor.service lvm2-lvmetad.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
+%service_del_preun blk-availability.service lvm2-monitor.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
 
 %postun
 /sbin/ldconfig
 %{?regenerate_initrd_post}
-%service_del_postun blk-availability.service lvm2-monitor.service lvm2-lvmetad.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
+%service_del_postun blk-availability.service lvm2-monitor.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
 
 %files
-%defattr(-,root,root)
+%license COPYING COPYING.LIB
 %doc README VERSION WHATS_NEW
 %doc doc/lvm_fault_handling.txt
+
 # Main binaries
 %{_sbindir}/blkdeactivate
 %{_sbindir}/fsadm
 %{_sbindir}/lvm
-%{_sbindir}/lvmconf
 %{_sbindir}/lvmconfig
 %{_sbindir}/lvmdump
-%{_sbindir}/lvmetad
 %{_sbindir}/lvmpolld
 # Other files
 %{_sbindir}/lvchange
@@ -293,15 +529,12 @@ popd
 %{_sbindir}/vgscan
 %{_sbindir}/vgsplit
 %{_sbindir}/rcblk-availability
-%{_sbindir}/rclvm2-lvmetad
 %{_sbindir}/rclvm2-lvmpolld
 %{_sbindir}/rclvm2-monitor
 # compat symlinks in /sbin
 /sbin/lvm
-/sbin/lvmconf
 /sbin/lvmconfig
 /sbin/lvmdump
-/sbin/lvmetad
 /sbin/lvmpolld
 /sbin/lvchange
 /sbin/lvconvert
@@ -345,67 +578,66 @@ popd
 /sbin/vgs
 /sbin/vgscan
 /sbin/vgsplit
-%{_mandir}/man5/lvm.conf.5%{ext_man}
-%{_mandir}/man7/lvmcache.7%{ext_man}
-%{_mandir}/man7/lvmraid.7%{ext_man}
-%{_mandir}/man7/lvmreport.7%{ext_man}
-%{_mandir}/man7/lvmthin.7%{ext_man}
-%{_mandir}/man7/lvmsystemid.7%{ext_man}
-%{_mandir}/man8/fsadm.8%{ext_man}
-%{_mandir}/man8/lvchange.8%{ext_man}
-%{_mandir}/man8/lvconvert.8%{ext_man}
-%{_mandir}/man8/lvcreate.8%{ext_man}
-%{_mandir}/man8/lvdisplay.8%{ext_man}
-%{_mandir}/man8/lvextend.8%{ext_man}
-%{_mandir}/man8/lvm.8%{ext_man}
-%{_mandir}/man8/lvm2-activation-generator.8%{ext_man}
-%{_mandir}/man8/lvm-config.8%{ext_man}
-%{_mandir}/man8/lvmconfig.8%{ext_man}
-%{_mandir}/man8/lvm-dumpconfig.8%{ext_man}
-%{_mandir}/man8/lvmconf.8%{ext_man}
-%{_mandir}/man8/lvmdiskscan.8%{ext_man}
-%{_mandir}/man8/lvmdump.8%{ext_man}
-%{_mandir}/man8/lvm-fullreport.8%{ext_man}
-%{_mandir}/man8/lvmsadc.8%{ext_man}
-%{_mandir}/man8/lvmsar.8%{ext_man}
-%{_mandir}/man8/lvreduce.8%{ext_man}
-%{_mandir}/man8/lvremove.8%{ext_man}
-%{_mandir}/man8/lvrename.8%{ext_man}
-%{_mandir}/man8/lvresize.8%{ext_man}
-%{_mandir}/man8/lvs.8%{ext_man}
-%{_mandir}/man8/lvscan.8%{ext_man}
-%{_mandir}/man8/pvchange.8%{ext_man}
-%{_mandir}/man8/pvck.8%{ext_man}
-%{_mandir}/man8/pvcreate.8%{ext_man}
-%{_mandir}/man8/pvdisplay.8%{ext_man}
-%{_mandir}/man8/pvmove.8%{ext_man}
-%{_mandir}/man8/pvremove.8%{ext_man}
-%{_mandir}/man8/pvresize.8%{ext_man}
-%{_mandir}/man8/pvs.8%{ext_man}
-%{_mandir}/man8/pvscan.8%{ext_man}
-%{_mandir}/man8/vgcfgbackup.8%{ext_man}
-%{_mandir}/man8/vgcfgrestore.8%{ext_man}
-%{_mandir}/man8/vgchange.8%{ext_man}
-%{_mandir}/man8/vgck.8%{ext_man}
-%{_mandir}/man8/vgconvert.8%{ext_man}
-%{_mandir}/man8/vgcreate.8%{ext_man}
-%{_mandir}/man8/vgdisplay.8%{ext_man}
-%{_mandir}/man8/vgexport.8%{ext_man}
-%{_mandir}/man8/vgextend.8%{ext_man}
-%{_mandir}/man8/vgimport.8%{ext_man}
-%{_mandir}/man8/vgimportclone.8%{ext_man}
-%{_mandir}/man8/vgmerge.8%{ext_man}
-%{_mandir}/man8/vgmknodes.8%{ext_man}
-%{_mandir}/man8/vgreduce.8%{ext_man}
-%{_mandir}/man8/vgremove.8%{ext_man}
-%{_mandir}/man8/vgrename.8%{ext_man}
-%{_mandir}/man8/vgs.8%{ext_man}
-%{_mandir}/man8/vgscan.8%{ext_man}
-%{_mandir}/man8/vgsplit.8%{ext_man}
-%{_mandir}/man8/lvmetad.8%{ext_man}
-%{_mandir}/man8/blkdeactivate.8%{ext_man}
-%{_mandir}/man8/lvmpolld.8%{ext_man}
-%{_mandir}/man8/lvm-lvpoll.8%{ext_man}
+%{_mandir}/man5/lvm.conf.5%{?ext_man}
+%{_mandir}/man7/lvmcache.7%{?ext_man}
+%{_mandir}/man7/lvmraid.7%{?ext_man}
+%{_mandir}/man7/lvmreport.7%{?ext_man}
+%{_mandir}/man7/lvmthin.7%{?ext_man}
+%{_mandir}/man7/lvmsystemid.7%{?ext_man}
+%{_mandir}/man7/lvmvdo.7%{?ext_man}
+%{_mandir}/man8/fsadm.8%{?ext_man}
+%{_mandir}/man8/lvchange.8%{?ext_man}
+%{_mandir}/man8/lvconvert.8%{?ext_man}
+%{_mandir}/man8/lvcreate.8%{?ext_man}
+%{_mandir}/man8/lvdisplay.8%{?ext_man}
+%{_mandir}/man8/lvextend.8%{?ext_man}
+%{_mandir}/man8/lvm.8%{?ext_man}
+%{_mandir}/man8/lvm2-activation-generator.8%{?ext_man}
+%{_mandir}/man8/lvm-config.8%{?ext_man}
+%{_mandir}/man8/lvmconfig.8%{?ext_man}
+%{_mandir}/man8/lvm-dumpconfig.8%{?ext_man}
+%{_mandir}/man8/lvmdiskscan.8%{?ext_man}
+%{_mandir}/man8/lvmdump.8%{?ext_man}
+%{_mandir}/man8/lvm-fullreport.8%{?ext_man}
+%{_mandir}/man8/lvmsadc.8%{?ext_man}
+%{_mandir}/man8/lvmsar.8%{?ext_man}
+%{_mandir}/man8/lvreduce.8%{?ext_man}
+%{_mandir}/man8/lvremove.8%{?ext_man}
+%{_mandir}/man8/lvrename.8%{?ext_man}
+%{_mandir}/man8/lvresize.8%{?ext_man}
+%{_mandir}/man8/lvs.8%{?ext_man}
+%{_mandir}/man8/lvscan.8%{?ext_man}
+%{_mandir}/man8/pvchange.8%{?ext_man}
+%{_mandir}/man8/pvck.8%{?ext_man}
+%{_mandir}/man8/pvcreate.8%{?ext_man}
+%{_mandir}/man8/pvdisplay.8%{?ext_man}
+%{_mandir}/man8/pvmove.8%{?ext_man}
+%{_mandir}/man8/pvremove.8%{?ext_man}
+%{_mandir}/man8/pvresize.8%{?ext_man}
+%{_mandir}/man8/pvs.8%{?ext_man}
+%{_mandir}/man8/pvscan.8%{?ext_man}
+%{_mandir}/man8/vgcfgbackup.8%{?ext_man}
+%{_mandir}/man8/vgcfgrestore.8%{?ext_man}
+%{_mandir}/man8/vgchange.8%{?ext_man}
+%{_mandir}/man8/vgck.8%{?ext_man}
+%{_mandir}/man8/vgconvert.8%{?ext_man}
+%{_mandir}/man8/vgcreate.8%{?ext_man}
+%{_mandir}/man8/vgdisplay.8%{?ext_man}
+%{_mandir}/man8/vgexport.8%{?ext_man}
+%{_mandir}/man8/vgextend.8%{?ext_man}
+%{_mandir}/man8/vgimport.8%{?ext_man}
+%{_mandir}/man8/vgimportclone.8%{?ext_man}
+%{_mandir}/man8/vgmerge.8%{?ext_man}
+%{_mandir}/man8/vgmknodes.8%{?ext_man}
+%{_mandir}/man8/vgreduce.8%{?ext_man}
+%{_mandir}/man8/vgremove.8%{?ext_man}
+%{_mandir}/man8/vgrename.8%{?ext_man}
+%{_mandir}/man8/vgs.8%{?ext_man}
+%{_mandir}/man8/vgscan.8%{?ext_man}
+%{_mandir}/man8/vgsplit.8%{?ext_man}
+%{_mandir}/man8/blkdeactivate.8%{?ext_man}
+%{_mandir}/man8/lvmpolld.8%{?ext_man}
+%{_mandir}/man8/lvm-lvpoll.8%{?ext_man}
 %{_udevdir}/rules.d/11-dm-lvm.rules
 %{_udevdir}/rules.d/69-dm-lvm-metad.rules
 %dir %{_sysconfdir}/lvm
@@ -419,6 +651,7 @@ popd
 %{_sysconfdir}/lvm/profile/cache-mq.profile
 %{_sysconfdir}/lvm/profile/cache-smq.profile
 %{_sysconfdir}/lvm/profile/lvmdbusd.profile
+%{_sysconfdir}/lvm/profile/vdo-small.profile
 %dir %{_sysconfdir}/lvm/cache
 %ghost %{_sysconfdir}/lvm/cache/.cache
 %dir %{_sysconfdir}/lvm/archive
@@ -426,8 +659,6 @@ popd
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/blk-availability.service
 %{_unitdir}/lvm2-monitor.service
-%{_unitdir}/lvm2-lvmetad.socket
-%{_unitdir}/lvm2-lvmetad.service
 %{_unitdir}/lvm2-pvscan@.service
 %{_unitdir}/lvm2-lvmpolld.socket
 %{_unitdir}/lvm2-lvmpolld.service
@@ -435,27 +666,14 @@ popd
 %dir %{_libdir}/device-mapper
 %{_libdir}/device-mapper/libdevmapper-event-lvm2*.so
 %{_libdir}/libdevmapper-event-lvm2*.so
-%{_libdir}/libdevmapper-event-lvm2*.so.2.02
-
-%package -n %{applib}
-Summary:        LVM2 application api library
-Group:          System/Libraries
-Conflicts:      %{name} < %{version}
-
-%description -n %{applib}
-LVM library for applications api
-
-%post -n %{applib} -p /sbin/ldconfig
-%postun -n %{applib} -p /sbin/ldconfig
-
-%files -n %{applib}
-%defattr(-,root,root)
-%{_libdir}/liblvm2app.so.*
+%{_libdir}/libdevmapper-event-lvm2*.so.2.03
 
 %package -n %{cmdlib}
 Summary:        LVM2 command line library
 Group:          System/Libraries
 Conflicts:      %{name} < %{version}
+Obsoletes:      liblvm2app2_2
+Obsoletes:      liblvm2cmd2_02
 
 %description -n %{cmdlib}
 The lvm2 command line library allows building programs that manage
@@ -465,13 +683,11 @@ lvm devices without invoking a separate program.
 %postun -n %{cmdlib} -p /sbin/ldconfig
 
 %files -n %{cmdlib}
-%defattr(-,root,root)
 %{_libdir}/liblvm2cmd.so.*
 
 %package devel
 Summary:        Development files for LVM2
 Group:          Development/Libraries/C and C++
-Requires:       %{applib} = %{version}
 Requires:       %{cmdlib} = %{version}
 Requires:       device-mapper-devel
 Requires:       lvm2 = %{version}
@@ -480,17 +696,12 @@ Requires:       lvm2 = %{version}
 This package provides development files for the LVM2 Logical Volume Manager.
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/lvm2cmd.h
-%{_includedir}/lvm2app.h
-%{_libdir}/pkgconfig/lvm2app.pc
-%{_libdir}/liblvm2app.so
 %{_libdir}/liblvm2cmd.so
 
 %package testsuite
 Summary:        LVM2 Testsuite
 Group:          Development/Libraries/C and C++
-Requires:       %{applib} = %{version}
 Requires:       %{cmdlib} = %{version}
 Requires:       lvm2 = %{version}
 
@@ -498,9 +709,11 @@ Requires:       lvm2 = %{version}
 An extensive functional testsuite for the LVM2 Logical Volume Manager.
 
 %files testsuite
-%defattr(-,root,root)
 %{_datarootdir}/lvm2-testsuite/
 %{_libexecdir}/lvm2-testsuite/
 %{_bindir}/lvm2-testsuite
+
+%endif
+%endif
 
 %changelog

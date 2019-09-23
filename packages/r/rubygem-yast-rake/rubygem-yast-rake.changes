@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep  6 10:44:43 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Submit the SLE12-SP5 packages to Updates (not to GA) (bsc#1149771)
+- Added the SLE15-SP2 target
+- 0.2.36
+
+-------------------------------------------------------------------
+Thu Aug 22 10:35:10 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 0.2.35
+
+-------------------------------------------------------------------
 Thu Jun 27 12:10:33 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - support proper rubocop version in rake check:rubocop
