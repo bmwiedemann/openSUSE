@@ -1,5 +1,0 @@
-<package name="fly" project="openSUSE:Factory">
-  <title>A Script to Create PNGs</title>
-  <description>Fly allows you to create images with script statements. It uses gdlib.</description>
-  <devel project="graphics" package="fly"/>
-</package>

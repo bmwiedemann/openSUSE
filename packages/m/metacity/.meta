@@ -1,6 +1,0 @@
-<package name="metacity" project="openSUSE:Factory">
-  <title>Window Manager for the MATE and GNOME Flashback desktops</title>
-  <description>Metacity is a small window manager, using GTK+ to do everything.
-It is developed mainly for the MATE and GNOME Flashback desktops.</description>
-  <devel project="X11:MATE:Factory" package="metacity"/>
-</package>

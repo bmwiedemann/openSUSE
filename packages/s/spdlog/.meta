@@ -1,5 +1,0 @@
-<package name="spdlog" project="openSUSE:Factory">
-  <title>spdlog</title>
-  <description>spdlog c++ header files</description>
-  <devel project="devel:libraries:c_c++" package="spdlog"/>
-</package>

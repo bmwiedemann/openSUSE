@@ -1,8 +1,0 @@
-<package name="perl-PPI" project="openSUSE:Factory">
-  <title>Parse, Analyze and Manipulate Perl (without perl)</title>
-  <description>This is the PPI manual. It describes its reason for existing, its
-general structure, its use, an overview of the API, and provides a few
-implementation samples.</description>
-  <devel project="devel:languages:perl" package="perl-PPI"/>
-  <url>http://search.cpan.org/dist/PPI/</url>
-</package>

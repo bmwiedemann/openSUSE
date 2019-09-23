@@ -1,7 +1,0 @@
-<package name="python-fanficfare" project="openSUSE:Factory">
-  <title>FanFicFare is a tool for making eBooks from stories on fanfiction and other web sites</title>
-  <description>FanFicFare is the rename and move of the previous FanFictionDownLoader (AKA FFDL, AKA fanficdownloader) project.
-
-This program is available as a calibre plugin, a command-line interface, and a web service.</description>
-  <devel project="devel:languages:python" package="python-fanficfare"/>
-</package>

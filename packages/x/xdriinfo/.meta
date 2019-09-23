@@ -1,5 +1,0 @@
-<package name="xdriinfo" project="openSUSE:Factory">
-  <title>Query configuration information of DRI drivers</title>
-  <description>Driinfo can be used to query configuration information of direct rendering drivers (DRI).</description>
-  <devel project="X11:XOrg" package="xdriinfo"/>
-</package>

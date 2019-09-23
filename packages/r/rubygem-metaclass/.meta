@@ -1,8 +1,0 @@
-<package name="rubygem-metaclass" project="openSUSE:Factory">
-  <title>rubygem-metaclass</title>
-  <description>
-    Adds a metaclass method to all Ruby objects
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-metaclass"/>
-  <url>http://github.com/floehopper/metaclass</url>
-</package>

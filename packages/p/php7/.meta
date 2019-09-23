@@ -1,5 +1,0 @@
-<package name="php7" project="openSUSE:Factory">
-  <title>php7</title>
-  <description>php version 7</description>
-  <devel project="devel:languages:php" package="php7"/>
-</package>

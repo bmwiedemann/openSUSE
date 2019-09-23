@@ -1,5 +1,0 @@
-<package name="python-neutronclient" project="openSUSE:Factory">
-  <title>Openstack Network (Quantum) API Client</title>
-  <description>This is a client for the OpenStack Quantum API. There's a Python API (the quantumclient module), and a command-line tool (quantum).</description>
-  <devel project="Cloud:OpenStack:Factory" package="python-neutronclient"/>
-</package>

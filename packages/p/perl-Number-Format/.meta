@@ -1,9 +1,0 @@
-<package name="perl-Number-Format" project="openSUSE:Factory">
-  <title>Perl extension for formatting numbers</title>
-  <description>These functions provide an easy means of formatting numbers in a
-manner suitable for displaying to the user.
-
-</description>
-  <devel project="devel:languages:perl" package="perl-Number-Format"/>
-  <url>http://search.cpan.org/dist/Number-Format</url>
-</package>

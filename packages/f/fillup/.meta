@@ -1,8 +1,0 @@
-<package name="fillup" project="openSUSE:Factory">
-  <title>Tool for Merging Config Files</title>
-  <description>fillup merges files that hold variables.  A variable is defined by an
-entity composed of a preceding comment, a variable name, an assignment
-delimiter, and a related variable value.  A variable is determined by
-its variable name.</description>
-  <devel project="Base:System" package="fillup"/>
-</package>

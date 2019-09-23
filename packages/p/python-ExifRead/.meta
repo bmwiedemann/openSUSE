@@ -1,5 +1,0 @@
-<package name="python-ExifRead" project="openSUSE:Factory">
-  <title></title>
-  <description>Read Exif metadata from tiff and jpeg files</description>
-  <devel project="devel:languages:python" package="python-ExifRead"/>
-</package>

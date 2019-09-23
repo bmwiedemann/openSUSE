@@ -1,6 +1,0 @@
-<package name="ca-certificates-mozilla" project="openSUSE:Factory">
-  <title>CA certificates for OpenSSL</title>
-  <description>This package contains some CA root certificates for OpenSSL extracted
-from MozillaFirefox</description>
-  <devel project="Base:System" package="ca-certificates-mozilla"/>
-</package>

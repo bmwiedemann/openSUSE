@@ -1,7 +1,0 @@
-<package name="python-unittest2" project="openSUSE:Factory">
-  <title>The new features in unittest for Python 2.7 backported to Python 2.3+</title>
-  <description>unittest2 is a backport of the new features added to the unittest testing
-framework in Python 2.7. It is tested to run on Python 2.4 - 2.7.</description>
-  <devel project="devel:languages:python" package="python-unittest2"/>
-  <url>http://pypi.python.org/pypi/unittest2/</url>
-</package>

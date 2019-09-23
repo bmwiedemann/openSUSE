@@ -1,6 +1,0 @@
-<package name="libreadline-java" project="openSUSE:Factory">
-  <title>Java Wrapper for the GNU Readline Library</title>
-  <description>Java-Readline is a port of GNU Readline for Java.  To be more precise,
-it is a JNI wrapper for Readline. It is distributed under the LGPL.</description>
-  <devel project="Java:packages" package="libreadline-java"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="solarus" project="openSUSE:Factory">
-  <title>An open-source Zelda-like game engine</title>
-  <description>Solarus is an open-source Zelda-like game engine written in C++.</description>
-  <devel project="games" package="solarus"/>
-</package>

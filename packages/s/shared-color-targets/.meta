@@ -1,6 +1,0 @@
-<package name="shared-color-targets" project="openSUSE:Factory">
-  <title>Color targets for creating color profiles</title>
-  <description>The shared-color-targets package contains various targets which are
-useful for programs that create ICC profiles.</description>
-  <devel project="X11:common:Factory" package="shared-color-targets"/>
-</package>

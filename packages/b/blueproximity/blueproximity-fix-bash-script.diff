@@ -1,9 +1,0 @@
---- start_proximity.sh	2008-02-10 20:42:31.000000000 -0200
-+++ script	2008-02-14 19:36:08.000000000 -0200
-@@ -1,5 +1,5 @@
- #!/bin/bash
- PRG="$0"
--P=`dirname $PRG`
-+P="/usr/share/blueproximity/"
- cd $P
- python proximity.py

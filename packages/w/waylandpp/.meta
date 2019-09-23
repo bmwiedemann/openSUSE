@@ -1,8 +1,0 @@
-<package name="waylandpp" project="openSUSE:Factory">
-  <title>Wayland C++ bindings</title>
-  <description>Wayland C++ bindings
-
-</description>
-  <devel project="X11:Wayland" package="waylandpp"/>
-  <url>https://github.com/NilsBrause/waylandpp</url>
-</package>

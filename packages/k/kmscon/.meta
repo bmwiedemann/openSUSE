@@ -1,7 +1,0 @@
-<package name="kmscon" project="openSUSE:Factory">
-  <title>Linux KMS/DRM based virtual Console Emulator</title>
-  <description>Kmscon is a simple terminal emulator based on linux kernel mode setting (KMS).
-It is an attempt to replace the in-kernel VT implementation with a userspace console.</description>
-  <devel project="X11:terminals" package="kmscon"/>
-  <url>https://github.com/dvdhrm/kmscon</url>
-</package>

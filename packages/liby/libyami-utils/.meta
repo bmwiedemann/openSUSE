@@ -1,5 +1,0 @@
-<package name="libyami-utils" project="openSUSE:Factory">
-  <title>Utilities for use with the media library libyami</title>
-  <description>https://github.com/01org/libyami-utils/</description>
-  <devel project="multimedia:apps" package="libyami-utils"/>
-</package>

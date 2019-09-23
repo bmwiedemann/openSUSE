@@ -1,7 +1,0 @@
-<package name="hp2xx" project="openSUSE:Factory">
-  <title>Converts HP-GL Plotter Language into a Variety of Formats</title>
-  <description>The hp2xx program is a versatile tool for converting vector graphics
-data given in Hewlett-Packard's HP-GL plotter language into a variety
-of popular graphics formats, both vector and raster.</description>
-  <devel project="graphics" package="hp2xx"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="zile" project="openSUSE:Factory">
-  <title>Lightweight Emacs Clone</title>
-  <description>Zile is another Emacs-clone.  Zile is a customizable, self-documenting real-time, open-source display editor.  Zile was written to be as similar as possible to Emacs; every Emacs user should feel at home with Zile.</description>
-  <devel project="editors" package="zile"/>
-  <url>http://zile.sourceforge.net</url>
-</package>

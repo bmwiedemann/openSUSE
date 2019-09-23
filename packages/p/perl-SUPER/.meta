@@ -1,8 +1,0 @@
-<package name="perl-SUPER" project="openSUSE:Factory">
-  <title>Control superclass method dispatch</title>
-  <description>When subclassing a class, you occasionally want to dispatch control to the
-superclass -- at least conditionally and temporarily. The Perl syntax for
-calling your superclass is ugly and unwieldy:</description>
-  <devel project="devel:languages:perl" package="perl-SUPER"/>
-  <url>http://search.cpan.org/dist/SUPER/</url>
-</package>

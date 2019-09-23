@@ -1,7 +1,0 @@
-<package name="python-azure-common" project="openSUSE:Factory">
-  <title>Microsoft Azure common code</title>
-  <description>This is the Microsoft Azure common code.
-
-This package provides shared code by the Azure packages.</description>
-  <devel project="devel:languages:python:azure" package="python-azure-common"/>
-</package>

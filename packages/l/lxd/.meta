@@ -1,5 +1,0 @@
-<package name="lxd" project="openSUSE:Factory">
-  <title>LXD</title>
-  <description>LXD is a next generation system container manager. It offers a user experience similar to virtual machines but using Linux containers instead.</description>
-  <devel project="Virtualization:containers" package="lxd"/>
-</package>

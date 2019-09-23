@@ -1,6 +1,0 @@
-<package name="octave-forge-tsa" project="openSUSE:Factory">
-  <title></title>
-  <description>Stochastic concepts and maximum entropy methods for time series analysis.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-tsa"/>
-</package>

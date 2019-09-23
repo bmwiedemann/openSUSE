@@ -1,5 +1,0 @@
-<package name="docbook2x" project="openSUSE:Factory">
-  <title>DocBook-to-Texinfo Converter</title>
-  <description>A new tool based on Perl modules.</description>
-  <devel project="Publishing" package="docbook2x"/>
-</package>

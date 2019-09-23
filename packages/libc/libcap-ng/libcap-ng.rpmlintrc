@@ -1,4 +1,0 @@
-addFilter("libcap-ng-utils.*: W: shlib-policy-missing-lib")
-addFilter("libcap-ng-utils.*: W: shlib-policy-nonversioned-dir .*")
-addFilter("python-capng..*: W: files-duplicate /usr/lib.*/python.*/site-packages/.*")
-addFilter("libcap-ng-devel..*: W: no-dependency-on libcap-ng/libcap-ng-libs/liblibcap-ng")

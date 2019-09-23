@@ -1,8 +1,0 @@
-<package name="rubygem-net-scp" project="openSUSE:Factory">
-  <title>A pure Ruby implementation of the SCP client protocol</title>
-  <description>A pure Ruby implementation of the SCP client protocol.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-net-scp"/>
-  <url>http://net-ssh.rubyforge.org/scp</url>
-</package>

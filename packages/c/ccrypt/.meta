@@ -1,6 +1,0 @@
-<package name="ccrypt" project="openSUSE:Factory">
-  <title>cccrypt</title>
-  <description>ccrypt is a utility for encrypting and decrypting files and streams
-  </description>
-  <devel project="security" package="ccrypt"/>
-</package>

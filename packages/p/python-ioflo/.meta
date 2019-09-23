@@ -1,7 +1,0 @@
-<package name="python-ioflo" project="openSUSE:Factory">
-  <title>python-ioflo</title>
-  <description>IoFlo is a magically powerful open interoperable software framework that enables non experts can intelligently automate their own programmable world. IoFlo has its roots in the research and development of autonomous underwater vehicles, autonomic ships, and automated buildings. These are cool applications that can be scarily complex. That complexity was the prime motivation for IoFlo and its ancestors, to make programming autonomous/autonomic systems easy even for people without PhDs.
-
-http://ioflo.com/</description>
-  <devel project="devel:languages:python" package="python-ioflo"/>
-</package>

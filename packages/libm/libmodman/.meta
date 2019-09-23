@@ -1,6 +1,0 @@
-<package name="libmodman" project="openSUSE:Factory">
-  <title>A Module Management Library</title>
-  <description>The Module Loading library offers the choice to use prelinked libraries
-from your application out of a pool.</description>
-  <devel project="GNOME:Factory" package="libmodman"/>
-</package>

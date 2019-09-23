@@ -1,5 +1,0 @@
-<package name="katacontainers" project="openSUSE:Factory">
-  <title>The main katacontainers package</title>
-  <description></description>
-  <devel project="devel:kubic" package="katacontainers"/>
-</package>

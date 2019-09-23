@@ -1,3 +1,0 @@
-from Config import *
-
-addFilter("arch-dependent-file-in-usr-share")

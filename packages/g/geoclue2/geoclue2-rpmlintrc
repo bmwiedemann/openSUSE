@@ -1,8 +1,0 @@
-# note: do not use systemd macros for geoclue2.service, they are not meant for dbus unit files.
-addFilter("W: systemd-service-without-service_del_preun")
-addFilter("W: systemd-service-without-service_del_postun")
-addFilter("W: systemd-service-without-service_add_pre")
-addFilter("W: systemd-service-without-service_add_post")
-addFilter("W: non-standard-uid /var/lib/srvGeoClue srvGeoClue")
-# This is a dbus activated service, no human should ever call it.
-addFilter("W: suse-missing-rclink geoclue")

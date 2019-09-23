@@ -1,5 +1,0 @@
-<package name="python-junit-xml" project="openSUSE:Factory">
-  <title>python-junit-xml</title>
-  <description>Creates JUnit XML test result documents that can be read by tools such as Jenkins.</description>
-  <devel project="devel:languages:python" package="python-junit-xml"/>
-</package>

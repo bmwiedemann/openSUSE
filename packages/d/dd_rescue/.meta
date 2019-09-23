@@ -1,8 +1,0 @@
-<package name="dd_rescue" project="openSUSE:Factory">
-  <title>Data Copying in the Presence of I/O Errors</title>
-  <description>dd_rescue helps when nothing else can: your disk has crashed and you
-try to copy it over to another one. While standard Unix tools like cp,
-cat, and dd wail &quot;abort&quot; on every I/O error, dd_rescue does not.</description>
-  <devel project="Base:System" package="dd_rescue"/>
-  <url>http://www.garloff.de/kurt/linux/ddrescue/</url>
-</package>

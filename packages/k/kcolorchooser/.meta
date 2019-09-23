@@ -1,5 +1,0 @@
-<package name="kcolorchooser" project="openSUSE:Factory">
-  <title>Color Chooser</title>
-  <description>This is an color chooser application for KDE.</description>
-  <devel project="KDE:Applications" package="kcolorchooser"/>
-</package>

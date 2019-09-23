@@ -1,2 +1,0 @@
-# Silence rpmlint about libnotify-tools.x86_64: W: shlib-policy-missing-lib
-addFilter("libnotify-tools.* shlib-policy-missing-lib");

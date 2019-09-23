@@ -1,8 +1,0 @@
-<package name="jsr-305" project="openSUSE:Factory">
-  <title>JSR 305: Annotations for Software Defect Detection in Java</title>
-  <description>This project contains reference implementations, test cases, and other
-documents under source code control for Java Specification Request 305:
-Annotations for Software Defect Detection. More information at the Google
-group: http://groups.google.com/group/jsr-305.</description>
-  <devel project="Java:packages" package="jsr-305"/>
-</package>

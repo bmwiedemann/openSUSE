@@ -1,5 +1,0 @@
-<package name="papirus-icon-theme" project="openSUSE:Factory">
-  <title>papirus-icon-theme</title>
-  <description>Papirus is a free and open source SVG icon theme for Linux, based on Paper Icon Set with a lot of new icons and a few extras, like Hardcode-Tray support, KDE colorscheme support, Folder Color support, and others.</description>
-  <devel project="X11:common:Factory" package="papirus-icon-theme"/>
-</package>

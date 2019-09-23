@@ -1,5 +1,0 @@
-<package name="python-rst.linker" project="openSUSE:Factory">
-  <title>Changelog link and timestamp adding Sphinx plugin</title>
-  <description>rst.linker is a Sphinx plugin to add links and timestamps to the changelog.</description>
-  <devel project="devel:languages:python" package="python-rst.linker"/>
-</package>

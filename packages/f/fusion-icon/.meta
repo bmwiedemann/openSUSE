@@ -1,5 +1,0 @@
-<package name="fusion-icon" project="openSUSE:Factory">
-  <title>Tray icon to manage Compiz</title>
-  <description>This package provides a tray icon that allows you to easily enable, disable and restart Compiz, and change the currently used window manager and/or window decorator.</description>
-  <devel project="X11:Compiz" package="fusion-icon"/>
-</package>

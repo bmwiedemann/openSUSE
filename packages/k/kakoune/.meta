@@ -1,6 +1,0 @@
-<package name="kakoune" project="openSUSE:Factory">
-  <title>Kakoune</title>
-  <description>Kakoune is a code editor heavily inspired by Vim.
-It's faster as in less keystrokes, supports multiple selections and uses orthogonal design.</description>
-  <devel project="editors" package="kakoune"/>
-</package>

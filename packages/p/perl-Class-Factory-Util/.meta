@@ -1,6 +1,0 @@
-<package name="perl-Class-Factory-Util" project="openSUSE:Factory">
-  <title>Provide utility methods for factory classes</title>
-  <description>This module exports a method that is useful for factory classes.</description>
-  <devel project="devel:languages:perl" package="perl-Class-Factory-Util"/>
-  <url>http://search.cpan.org/perldoc?Class::Factory::Util</url>
-</package>

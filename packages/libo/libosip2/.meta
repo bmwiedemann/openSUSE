@@ -1,8 +1,0 @@
-<package name="libosip2" project="openSUSE:Factory">
-  <title>Implementation of SIP--RFC 3261</title>
-  <description>This is the GNU oSIP library. It has been designed to provide the
-Internet community with a simple way to support the Session Initiation
-Protocol. SIP is described in the RFC 3261, which is available at
-http://www.ietf.org/rfc/rfc3261.txt.</description>
-  <devel project="network:telephony" package="libosip2"/>
-</package>

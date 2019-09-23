@@ -1,5 +1,0 @@
-<package name="kronometer" project="openSUSE:Factory">
-  <title>Kronometer</title>
-  <description>Stopwatch application for KDE</description>
-  <devel project="KDE:Extra" package="kronometer"/>
-</package>

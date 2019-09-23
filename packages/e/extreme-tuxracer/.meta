@@ -1,6 +1,0 @@
-<package name="extreme-tuxracer" project="openSUSE:Factory">
-  <title>Open source racing game featuring Tux the Linux Penguin</title>
-  <description>Extreme Tux Racer is an open source racing game featuring Tux the Linux
-Penguin. ETRacer continues in the tracks of Tux Racer and its forks.</description>
-  <devel project="games" package="extreme-tuxracer"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="knotifyconfig" project="openSUSE:Factory">
-  <title>knotifyconfig</title>
-  <description>KNotifyConfig</description>
-  <devel project="KDE:Frameworks5" package="knotifyconfig"/>
-</package>

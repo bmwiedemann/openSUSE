@@ -1,8 +1,0 @@
-<package name="osc-plugin-collab" project="openSUSE:Factory">
-  <title>osc plugin that makes your life easier</title>
-  <description>
-osc plugin that makes your life easier, especially for the collaboration inside a team
-  </description>
-  <devel project="openSUSE:Tools" package="osc-plugin-collab"/>
-  <url>http://en.opensuse.org/OscCollab</url>
-</package>

@@ -1,7 +1,0 @@
-<services>
-  <service name="download_url" mode="disabled">
-    <param name="protocol">https</param>
-    <param name="host">reproducible-builds.org</param>
-    <param name="path">/_lfs/releases/strip-nondeterminism/strip-nondeterminism-1.0.0.tar.bz2</param>
-  </service>
-</services>

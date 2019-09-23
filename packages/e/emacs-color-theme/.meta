@@ -1,5 +1,0 @@
-<package name="emacs-color-theme" project="openSUSE:Factory">
-  <title>Emacs color theme</title>
-  <description>Adds color theme support for Emacs</description>
-  <devel project="editors" package="emacs-color-theme"/>
-</package>

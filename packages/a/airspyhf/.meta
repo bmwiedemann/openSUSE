@@ -1,9 +1,0 @@
-<package name="airspyhf" project="openSUSE:Factory">
-  <title>Support programs for Airspy HF+ SDR</title>
-  <description>Host software for Airspy HF+, a high performance software defined radio
-for the HF and VHF bands.
-
-</description>
-  <devel project="hardware:sdr" package="airspyhf"/>
-  <url>http://www.airspy.com/airspy-hf-plus</url>
-</package>

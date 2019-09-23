@@ -1,2 +1,0 @@
-addFilter("W: systemd-service-without-service_del_preun")
-addFilter("W: systemd-service-without-service_del_postun")

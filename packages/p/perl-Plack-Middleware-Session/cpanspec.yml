@@ -1,5 +1,0 @@
----
-custom_test: |-
-  # put . back into @INC for tests
-  export PERL5LIB=$PWD
-  ./Build test

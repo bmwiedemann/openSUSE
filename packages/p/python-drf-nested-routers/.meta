@@ -1,5 +1,0 @@
-<package name="python-drf-nested-routers" project="openSUSE:Factory">
-  <title>Nested resources for the Django Rest Framework</title>
-  <description>Nested resources for the Django Rest Framework.</description>
-  <devel project="devel:languages:python:django" package="python-drf-nested-routers"/>
-</package>

@@ -1,5 +1,0 @@
-addFilter("incoherent-init-script-name quasselcore")
-addFilter("incoherent-logrotate-file /etc/logrotate.d/quasselcore")
-addFilter("explicit-lib-dependency libqt5_sql_backend")
-addFilter("non-standard-uid /var/log/quassel quasslecore")
-addFilter("non-standard-uid /var/lib/quasselcore quasslecore")

@@ -1,6 +1,0 @@
-<package name="pcb" project="openSUSE:Factory">
-  <title>CAD Program for the Design of Printed Circuit Boards</title>
-  <description>Pcb is a CAD (computer aided design) program for the physicaldesign of printed circuit boards. It has an autorouter, a trace optimizer a design rule checker and many more features. It can create RS-274-X (Gerber), Postscript and EPS output.
-</description>
-  <devel project="electronics" package="pcb"/>
-</package>

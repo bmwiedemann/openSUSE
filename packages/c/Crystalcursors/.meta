@@ -1,7 +1,0 @@
-<package name="Crystalcursors" project="openSUSE:Factory">
-  <title>Mouse Cursors in Crystal Icon Style</title>
-  <description>Four different mouse cursor icon sets in the KDE CrystalSVG style. In
-white, gray, blue, and green versions. They can be selected from KDE
-Control Center, in the mouse configuration.</description>
-  <devel project="X11:common:Factory" package="Crystalcursors"/>
-</package>

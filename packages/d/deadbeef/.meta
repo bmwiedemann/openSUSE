@@ -1,8 +1,0 @@
-<package name="deadbeef" project="openSUSE:Factory">
-  <title>GTK+ audio player</title>
-  <description>DeaDBeeF is an audio player using GTK+. Through use of the ffmpeg libraries, it supports many formats.
-It also supports cuesheets, chiptune formats with subtunes, song-length databases.
-It can be extended using plugins (DSP, GUI, output, input, etc.).
-The GUI looks similar to Foobar2000.</description>
-  <devel project="multimedia:apps" package="deadbeef"/>
-</package>

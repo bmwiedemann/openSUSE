@@ -1,5 +1,0 @@
-<package name="kdewebkit" project="openSUSE:Factory">
-  <title>kdewebkit</title>
-  <description>KDE Webkit</description>
-  <devel project="KDE:Frameworks5" package="kdewebkit"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="R-magrittr" project="openSUSE:Factory">
-  <title></title>
-  <description>A Forward-Pipe Operator for R</description>
-  <devel project="devel:languages:R:released" package="R-magrittr"/>
-</package>

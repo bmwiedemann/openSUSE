@@ -1,8 +1,0 @@
-<package name="rubygem-mysql2" project="openSUSE:Factory">
-  <title>A simple, fast Mysql library for Ruby, binding to libmysql</title>
-  <description>A simple, fast Mysql library for Ruby, binding to libmysql
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-mysql2"/>
-  <url>http://github.com/brianmario/mysql2</url>
-</package>

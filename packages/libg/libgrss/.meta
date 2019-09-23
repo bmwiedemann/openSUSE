@@ -1,5 +1,0 @@
-<package name="libgrss" project="openSUSE:Factory">
-  <title>Library for easy management of RSS/Atom/Pie feeds</title>
-  <description>LibGRSS is a library for easy management of RSS/Atom/Pie feeds.</description>
-  <devel project="GNOME:Factory" package="libgrss"/>
-</package>

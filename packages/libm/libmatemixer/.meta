@@ -1,7 +1,0 @@
-<package name="libmatemixer" project="openSUSE:Factory">
-  <title>Mixer library for MATE Desktop</title>
-  <description>libmatemixer is a mixer library for MATE desktop.
-
-It provides an abstract API allowing access to mixer functionality available in the PulseAudio, ALSA and OSS sound systems.</description>
-  <devel project="X11:MATE:Factory" package="libmatemixer"/>
-</package>

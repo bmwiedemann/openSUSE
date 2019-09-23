@@ -1,5 +1,0 @@
-<package name="testdisk" project="openSUSE:Factory">
-  <title>photorec</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="filesystems" package="testdisk"/>
-</package>

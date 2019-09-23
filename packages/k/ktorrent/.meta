@@ -1,8 +1,0 @@
-<package name="ktorrent" project="openSUSE:Factory">
-  <title>KDE BitTorrent Client</title>
-  <description>KTorrent is a bittorrent application for KDE which allows you to download files
-using the BitTorrent protocol. It enables you to run multiple torrents at the
-same time and comes with extended features to make it a full-featured client
-for BitTorrent.</description>
-  <devel project="KDE:Extra" package="ktorrent"/>
-</package>

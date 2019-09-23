@@ -1,9 +1,0 @@
-<package name="osc" project="openSUSE:Factory">
-  <title>openSUSE Build Service Commander</title>
-  <description>Commandline client for the openSUSE Build Service.
-
-See http://en.opensuse.org/openSUSE:OSC , as well as
-http://en.opensuse.org/openSUSE:Build_Service_Tutorial for a general
-introduction.</description>
-  <devel project="openSUSE:Tools" package="osc"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="xmlunit" project="openSUSE:Factory">
-  <title>Provides classes to do asserts on XML</title>
-  <description>XMLUnit extends JUnit to simplify unit testing of XML. It compares a control
-XML document to a test document or the result of a transformation, validates
-documents against a DTD, and (from v0.5) compares the results of XPath
-expressions.</description>
-  <devel project="Java:packages" package="xmlunit"/>
-  <url>http://xmlunit.sourceforge.net/</url>
-</package>

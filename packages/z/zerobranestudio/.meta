@@ -1,6 +1,0 @@
-<package name="zerobranestudio" project="openSUSE:Factory">
-  <title>ZeroBrane Studio</title>
-  <description>Lightweight Lua-based IDE for Lua with code completion, syntax highlighting, live coding, remote debugger, and code analyzer; supports Lua 5.1, 5.2, 5.3, LuaJIT and other Lua interpreters.</description>
-  <devel project="devel:languages:lua" package="zerobranestudio"/>
-  <url>http://studio.zerobrane.com/</url>
-</package>

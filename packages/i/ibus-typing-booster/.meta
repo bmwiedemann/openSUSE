@@ -1,5 +1,0 @@
-<package name="ibus-typing-booster" project="openSUSE:Factory">
-  <title>ibus-typing-booster</title>
-  <description>Ibus-typing-booster is a completion input method to speedup typing.</description>
-  <devel project="M17N" package="ibus-typing-booster"/>
-</package>

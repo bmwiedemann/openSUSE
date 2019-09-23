@@ -1,5 +1,0 @@
-<package name="hbci4java" project="openSUSE:Factory">
-  <title>HBCI4Java</title>
-  <description>Fork of HBCI4Java for Hibiscus, that contains support for chipTAN, smsTAN, HHD, SEPA and other fixes/enhancements.</description>
-  <devel project="Java:packages" package="hbci4java"/>
-</package>

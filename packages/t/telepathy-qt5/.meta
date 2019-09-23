@@ -1,5 +1,0 @@
-<package name="telepathy-qt5" project="openSUSE:Factory">
-  <title>telepathy-qt5</title>
-  <description></description>
-  <devel project="KDE:Qt5" package="telepathy-qt5"/>
-</package>

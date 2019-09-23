@@ -1,9 +1,0 @@
-<package name="perl-Digest-SHA1" project="openSUSE:Factory">
-  <title>Perl Interface to the SHA-1 Algorithm</title>
-  <description>The Digest::SHA1 module allows the use of the NIST SHA-1 message digest
-algorithm from within Perl programs. The algorithm takes a message of
-arbitrary length as input and produces a 160-bit fingerprint or message
-digest of the input as output.
-</description>
-  <devel project="devel:languages:perl" package="perl-Digest-SHA1"/>
-</package>

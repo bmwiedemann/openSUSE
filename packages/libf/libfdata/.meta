@@ -1,5 +1,0 @@
-<package name="libfdata" project="openSUSE:Factory">
-  <title>Library to provide generic file data functions</title>
-  <description>Library to provide generic file data functions for the libyal family of libraries.</description>
-  <devel project="security:forensics" package="libfdata"/>
-</package>

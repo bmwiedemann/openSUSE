@@ -1,5 +1,0 @@
-<package name="roccat-tools" project="openSUSE:Factory">
-  <title>Roccat Tools</title>
-  <description>Roccat Tools consists of a shared library and extensive configuration tools for mouse and keyboard products by Roccat. The Open Source project has official blessing by the vendor.</description>
-  <devel project="hardware" package="roccat-tools"/>
-</package>

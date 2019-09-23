@@ -1,6 +1,0 @@
-<package name="octave-forge-ltfat" project="openSUSE:Factory">
-  <title></title>
-  <description>The Large Time/Frequency Analysis Toolbox (LTFAT) is a Matlab/Octave toolbox for working with time-frequency analysis, wavelets and signal processing. It is intended both as an educational and a computational tool. The toolbox provides a large number of linear transforms including Gabor and wavelet transforms along with routines for constructing windows (filter prototypes) and routines for manipulating coefficients.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-ltfat"/>
-</package>

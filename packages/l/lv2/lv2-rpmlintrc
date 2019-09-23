@@ -1,2 +1,0 @@
-# The documentation explictly says to not split bundles. So even if I don't know what these .c/.h files do I prefer to leave them in the main package
-addFilter("lv2.*: E: devel-file-in-non-devel-package .* /usr/lib(64)?/lv2/.*/.*\.[ch]")

@@ -1,6 +1,0 @@
-<package name="OpenLP" project="openSUSE:Factory">
-  <title>OpenLP</title>
-  <description>Open source Church presentation and lyrics projection application</description>
-  <devel project="multimedia:apps" package="OpenLP"/>
-  <url>http://openlp.org</url>
-</package>

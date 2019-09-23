@@ -1,7 +1,0 @@
-<package name="shorewall" project="openSUSE:Factory">
-  <title>Shoreline Firewall is an iptables-based firewall for Linux systems</title>
-  <description>The Shoreline Firewall, more commonly known as &quot;Shorewall&quot;, is a Netfilter
-(iptables) based firewall that can be used on a dedicated firewall system,
-a multi-function gateway/ router/server or on a standalone GNU/Linux system.</description>
-  <devel project="security:netfilter" package="shorewall"/>
-</package>

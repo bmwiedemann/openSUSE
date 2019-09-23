@@ -1,5 +1,0 @@
-<package name="voxelands" project="openSUSE:Factory">
-  <title>Voxelands</title>
-  <description>Voxelands was originally forked from the Minetest-C55 0.3.x codebase to focus on making a game rather than a generic engine.</description>
-  <devel project="games" package="voxelands"/>
-</package>

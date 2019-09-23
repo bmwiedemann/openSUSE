@@ -1,8 +1,0 @@
-<package name="osmo-bsc" project="openSUSE:Factory">
-  <title>OsmoBSC: Osmocom's Base Station Controller for 2G CS mobile networks</title>
-  <description>OsmoBSC: Osmocom's Base Station Controller for 2G circuit-switched mobile networks.
-
-</description>
-  <devel project="network:telephony" package="osmo-bsc"/>
-  <url>https://osmocom.org/projects/openbsc/wiki/Osmo-bsc</url>
-</package>

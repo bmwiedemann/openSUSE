@@ -1,7 +1,0 @@
-<package name="gnome-keyring-sharp" project="openSUSE:Factory">
-  <title>Managed Implementation of libgnome-keyring</title>
-  <description>When the gnome-keyring-daemon is running, you can use this to
-retrieve/store confidential information such as passwords, notes or
-network services user information.</description>
-  <devel project="Mono:Factory" package="gnome-keyring-sharp"/>
-</package>

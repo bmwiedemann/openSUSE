@@ -1,8 +1,0 @@
-<package name="deepin-screenshot" project="openSUSE:Factory">
-  <title>Deepin Screenshot</title>
-  <description>Provide a quite easy-to-use screenshot tool. Features:
-  * Global hotkey to triggle screenshot tool
-  * Take screenshot of a selected area
-  * Easy to add text and line drawings onto the screenshot</description>
-  <devel project="X11:Deepin" package="deepin-screenshot"/>
-</package>

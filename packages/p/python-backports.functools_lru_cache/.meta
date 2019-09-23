@@ -1,5 +1,0 @@
-<package name="python-backports.functools_lru_cache" project="openSUSE:Factory">
-  <title>Backported functools.lru_cache</title>
-  <description>Backport of functools.lru_cache from Python 3.3 as published at ActiveState.</description>
-  <devel project="devel:languages:python" package="python-backports.functools_lru_cache"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="xdg-user-dirs-gtk" project="openSUSE:Factory">
-  <title>xdg-user-dir support for Gnome and Gtk+ applications</title>
-  <description>A companion to xdg-user-dirs that integrates it into the Gnome desktop
-and Gtk+ applications.	Presents a dialog when a user changes locales
-to help move they standard user directories to the correct names.</description>
-  <devel project="GNOME:Factory" package="xdg-user-dirs-gtk"/>
-</package>

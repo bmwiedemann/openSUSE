@@ -1,9 +1,0 @@
-<package name="perl-Net-LibIDN" project="openSUSE:Factory">
-  <title>Net::LibIDN Perl module</title>
-  <description>This module provides Perl bindings for GNU Libidn by Simon Josefsson
-(http://www.gnu.org/software/libidn/) in way that was heavily inspired by
-PHP bindings for the same library done by Turbo Fredriksson (http://php-
-idn.bayour.com/).</description>
-  <devel project="devel:languages:perl" package="perl-Net-LibIDN"/>
-  <url>http://search.cpan.org/dist/Net-LibIDN/</url>
-</package>

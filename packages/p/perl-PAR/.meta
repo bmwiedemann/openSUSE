@@ -1,9 +1,0 @@
-<package name="perl-PAR" project="openSUSE:Factory">
-  <title>Perl Archive Toolkit</title>
-  <description>
-This module lets you use special zip files, called Perl Archives, as
-libraries from which Perl modules can be loaded.
-  </description>
-  <devel project="devel:languages:perl" package="perl-PAR"/>
-  <url>http://search.cpan.org/dist/PAR</url>
-</package>

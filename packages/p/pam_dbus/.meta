@@ -1,6 +1,0 @@
-<package name="pam_dbus" project="openSUSE:Factory">
-  <title>PAM module asking the logged in user for confirmation</title>
-  <description>This simple pam module will, when being used to authenticate a (typically remote) user, use D-Bus to ask any currently logged in (typically local) user if that is ok.
-</description>
-  <devel project="Linux-PAM" package="pam_dbus"/>
-</package>

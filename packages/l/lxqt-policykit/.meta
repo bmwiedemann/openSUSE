@@ -1,5 +1,0 @@
-<package name="lxqt-policykit" project="openSUSE:Factory">
-  <title>Policykit authentication agent</title>
-  <description>Policykit authentication agent</description>
-  <devel project="X11:LXQt" package="lxqt-policykit"/>
-</package>

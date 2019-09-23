@@ -1,2 +1,0 @@
-# systemd template services are not to be handled by the macros
-addFilter("systemd-service-without-service.*configure-printer@.service");

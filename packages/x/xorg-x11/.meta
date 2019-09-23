@@ -1,5 +1,0 @@
-<package name="xorg-x11" project="openSUSE:Factory">
-  <title>X.Org core and sample applications</title>
-  <description>This package contains the X.Org core and sample applications.</description>
-  <devel project="X11:XOrg" package="xorg-x11"/>
-</package>

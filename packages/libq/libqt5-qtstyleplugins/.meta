@@ -1,7 +1,0 @@
-<package name="libqt5-qtstyleplugins" project="openSUSE:Factory">
-  <title>Qt 5 Style Plugins</title>
-  <description>Qt is a set of libraries for developing applications.
-
-This package contains additional style plugins.</description>
-  <devel project="KDE:Qt5" package="libqt5-qtstyleplugins"/>
-</package>

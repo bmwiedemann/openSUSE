@@ -1,7 +1,0 @@
-<package name="tree" project="openSUSE:Factory">
-  <title>File listing as a tree</title>
-  <description>A tree-like directory listing program with dircolors support
-
-  </description>
-  <devel project="Base:System" package="tree"/>
-</package>

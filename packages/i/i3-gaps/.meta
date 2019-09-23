@@ -1,6 +1,0 @@
-<package name="i3-gaps" project="openSUSE:Factory">
-  <title>i3-gaps</title>
-  <description>fork of i3, a tiling window manager
-</description>
-  <devel project="X11:windowmanagers" package="i3-gaps"/>
-</package>

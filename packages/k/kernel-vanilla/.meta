@@ -1,6 +1,0 @@
-<package name="kernel-vanilla" project="openSUSE:Factory">
-  <title>The Standard Kernel - without any SUSE patches</title>
-  <description>The standard kernel - without any SUSE patches</description>
-  <devel project="openSUSE:Factory" package="kernel-source"/>
-  <bcntsynctag>kernel-source</bcntsynctag>
-</package>

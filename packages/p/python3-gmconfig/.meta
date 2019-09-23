@@ -1,6 +1,0 @@
-<package name="python3-gmconfig" project="openSUSE:Factory">
-  <title>python3-gmconfig</title>
-  <description>JSON based configuration file manager for Python</description>
-  <devel project="devel:languages:python" package="python3-gmconfig"/>
-  <url>https://gitlab.com/gabmus/python-gmconfig</url>
-</package>

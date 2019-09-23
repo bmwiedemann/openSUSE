@@ -1,5 +1,0 @@
-<package name="cri-o" project="openSUSE:Factory">
-  <title>OCI-based implementation of Kubernetes Container Runtime Interface</title>
-  <description>CRI-O is meant to provide an integration path between OCI conformant runtimes and the kubelet. Specifically, it implements the Kubelet Container Runtime Interface (CRI) using OCI conformant runtimes. The scope of CRI-O is tied to the scope of the CRI.</description>
-  <devel project="devel:kubic" package="cri-o"/>
-</package>

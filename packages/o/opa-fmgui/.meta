@@ -1,6 +1,0 @@
-<package name="opa-fmgui" project="openSUSE:Factory">
-  <title>Fabric Manager Graphical User Interface</title>
-  <description>FMGUI is the Fabric Manager Graphical User Interface.  It can be run by invoking the Bash
-script fmgui.</description>
-  <devel project="science:HPC" package="opa-fmgui"/>
-</package>

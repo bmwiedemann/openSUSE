@@ -1,5 +1,0 @@
-<package name="perl-MailTools" project="openSUSE:Factory">
-  <title>Set of perl modules related to mail applications</title>
-  <description>a set of perl modules related to mail applications</description>
-  <devel project="devel:languages:perl" package="perl-MailTools"/>
-</package>

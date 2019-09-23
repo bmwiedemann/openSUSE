@@ -1,5 +1,0 @@
-<package name="unrar_wrapper" project="openSUSE:Factory">
-  <title>Backwards compatibility between unar and unrar</title>
-  <description>Wrapper python script that transforms the basic UnRAR commands to unar and lsar calls in order to provide a backwards compatibility.</description>
-  <devel project="Archiving" package="unrar_wrapper"/>
-</package>

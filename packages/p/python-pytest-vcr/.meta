@@ -1,5 +1,0 @@
-<package name="python-pytest-vcr" project="openSUSE:Factory">
-  <title>python-pytest-vcr</title>
-  <description>Plugin for managing VCR.py cassettes</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-vcr"/>
-</package>

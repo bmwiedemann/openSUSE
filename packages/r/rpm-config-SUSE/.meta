@@ -1,7 +1,0 @@
-<package name="rpm-config-SUSE" project="openSUSE:Factory">
-  <title>SUSE specific RPM configuration files</title>
-  <description>This package contains the RPM configuration data for the SUSE Linux
-distribution family.
-</description>
-  <devel project="Base:System" package="rpm-config-SUSE"/>
-</package>

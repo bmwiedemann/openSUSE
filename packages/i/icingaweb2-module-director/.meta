@@ -1,7 +1,0 @@
-<package name="icingaweb2-module-director" project="openSUSE:Factory">
-  <title></title>
-  <description>Director is an config module for icingaweb2
-</description>
-  <devel project="server:monitoring" package="icingaweb2-module-director"/>
-  <url>https://github.com/Icinga/icingaweb2-module-director</url>
-</package>

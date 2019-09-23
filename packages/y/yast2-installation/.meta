@@ -1,5 +1,0 @@
-<package name="yast2-installation" project="openSUSE:Factory">
-  <title>YaST2 - Installation Parts</title>
-  <description>System installation code as present on installation media.</description>
-  <devel project="YaST:Head" package="yast2-installation"/>
-</package>

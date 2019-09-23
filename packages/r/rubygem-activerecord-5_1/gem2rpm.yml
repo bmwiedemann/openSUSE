@@ -1,9 +1,0 @@
----
-:disable_docs: true
-:version_suffix: '-5_1'
-
-:preamble: |-
-    %if 0%{?suse_version} && 0%{?suse_version} < 1330
-    %define rb_build_versions ruby22 ruby23 ruby24
-    %define rb_default_ruby_abi ruby:2.2.0 ruby:2.3.0 ruby:2.4.0
-    %endif

@@ -1,9 +1,0 @@
-<package name="zhu3d" project="openSUSE:Factory">
-  <title></title>
-  <description>With Zhu3D you can view, animate and solve up to three functions in 3D-space in a interactive manner. In addition, you further can observe an independent parametric system. The OpenGL-viewer supports zooming, scaling, rotating, translating as
- well as filed lightning, transparency or surface-properties.
-
-You have up to 8 independent lights or spotlights, background settings, miscellaneous wire-modes or global illumination models. Pictures are rendered as png or jpg and can have an arbitrary size. Numerical solutions of an equation-system are found with a quite fast and reliable adaptive random search</description>
-  <devel project="science" package="zhu3d"/>
-  <url>http://sourceforge.net/projects/zhu3d/</url>
-</package>

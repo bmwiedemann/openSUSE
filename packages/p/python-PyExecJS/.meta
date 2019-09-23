@@ -1,5 +1,0 @@
-<package name="python-PyExecJS" project="openSUSE:Factory">
-  <title>Run JavaScript code from Python</title>
-  <description>PyExecJS is a port of ExecJS for Ruby. It allows running JavaScript code from Python.</description>
-  <devel project="devel:languages:python" package="python-PyExecJS"/>
-</package>

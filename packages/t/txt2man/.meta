@@ -1,9 +1,0 @@
-<package name="txt2man" project="openSUSE:Factory">
-  <title>Convert Flat ASCII Text to man Page Format</title>
-  <description>
-Txt2man converts flat ASCII text to man page format. It is a shell
-script using gnu awk, that should run on any Unix like system.
-</description>
-  <devel project="devel:tools" package="txt2man"/>
-  <url>http://mvertes.free.fr/</url>
-</package>

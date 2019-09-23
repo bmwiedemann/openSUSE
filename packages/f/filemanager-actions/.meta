@@ -1,5 +1,0 @@
-<package name="filemanager-actions" project="openSUSE:Factory">
-  <title>File manager extensions to launch arbitrary applications on files</title>
-  <description>These extensions provide an easy way to configure applications to be launched on files selected in file manager interfaces.</description>
-  <devel project="X11:MATE:Factory" package="filemanager-actions"/>
-</package>

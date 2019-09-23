@@ -1,5 +1,0 @@
-<package name="ioping" project="openSUSE:Factory">
-  <title>Simple disk I/0 latency measuring tool</title>
-  <description>This tool lets you monitor I/O latency in real time. It shows disk latency in the same way as ping shows network latency.</description>
-  <devel project="benchmark" package="ioping"/>
-</package>

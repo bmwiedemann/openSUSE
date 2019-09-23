@@ -1,5 +1,0 @@
-<package name="mono-nat" project="openSUSE:Factory">
-  <title>A C sharp torrent library</title>
-  <description>A .NET library for automatic port forwarding using either uPnP or nat-pmp</description>
-  <devel project="Mono:Factory" package="mono-nat"/>
-</package>

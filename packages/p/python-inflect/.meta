@@ -1,5 +1,0 @@
-<package name="python-inflect" project="openSUSE:Factory">
-  <title>Correctly generate plurals, singular nouns, ordinals, indefinite articles; convert numbers to words</title>
-  <description>Correctly generate plurals, singular nouns, ordinals, indefinite articles; convert numbers to words.</description>
-  <devel project="devel:languages:python" package="python-inflect"/>
-</package>

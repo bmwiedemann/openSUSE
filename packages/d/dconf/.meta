@@ -1,7 +1,0 @@
-<package name="dconf" project="openSUSE:Factory">
-  <title>Simple key-based configuration system</title>
-  <description>dconf is a low-level configuration system. Its main purpose is to
-provide a backend to GSettings on platforms that don't already
-have configuration storage systems.</description>
-  <devel project="GNOME:Factory" package="dconf"/>
-</package>

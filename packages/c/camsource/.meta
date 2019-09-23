@@ -1,7 +1,0 @@
-<package name="camsource" project="openSUSE:Factory">
-  <title>Camsource Grabs Images from a Video4Linux Device</title>
-  <description>Camsource grabs images from a video4linux device (webcam or TV card).
-It is modular and has several plug-ins for modifying the image before
-displaying it via HTTP or FTP upload.</description>
-  <devel project="graphics" package="camsource"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="fifechan" project="openSUSE:Factory">
-  <title>Fifechan</title>
-  <description>Fifechan is a C++ GUI library designed for games.
-It comes with a standard set of 'widgets' and can use several different objects for displaying graphics and capturing user input.</description>
-  <devel project="games" package="fifechan"/>
-</package>

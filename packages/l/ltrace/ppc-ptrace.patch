@@ -1,9 +1,0 @@
-Index: ltrace-0.7.91/sysdeps/linux-gnu/ppc/ptrace.h
-===================================================================
---- ltrace-0.7.91.orig/sysdeps/linux-gnu/ppc/ptrace.h
-+++ ltrace-0.7.91/sysdeps/linux-gnu/ppc/ptrace.h
-@@ -19,3 +19,4 @@
-  */
- 
- #include <sys/ptrace.h>
-+#include <asm/ptrace.h>

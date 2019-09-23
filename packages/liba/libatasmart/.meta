@@ -1,6 +1,0 @@
-<package name="libatasmart" project="openSUSE:Factory">
-  <title>ATA S.M.A.R.T. Disk Health Monitoring Library</title>
-  <description>A small and lightweight parser library for ATA S.M.A.R.T. hard disk
-health monitoring.</description>
-  <devel project="Base:System" package="libatasmart"/>
-</package>

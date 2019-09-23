@@ -1,9 +1,0 @@
-<package name="dump1090" project="openSUSE:Factory">
-  <title>An ADS-B Mode S decoder for RTLSDR devices (MalcolmRobb's fork)</title>
-  <description>An ADS-B Mode S decoder specifically designed for RTLSDR devices.
-MalcolmRobb's fork
-
-</description>
-  <devel project="hardware:sdr" package="dump1090"/>
-  <url>https://github.com/MalcolmRobb/dump1090</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="dpdk-thunderx" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="dpdk"/>
-  <bcntsynctag>dpdk</bcntsynctag>
-</package>

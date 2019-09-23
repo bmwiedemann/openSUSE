@@ -1,5 +1,0 @@
-<package name="perl-App-Dochazka-Common" project="openSUSE:Factory">
-  <title>Dochazka common components</title>
-  <description></description>
-  <devel project="Application:Dochazka" package="perl-App-Dochazka-Common"/>
-</package>

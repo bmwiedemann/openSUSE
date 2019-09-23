@@ -1,7 +1,0 @@
-<package name="obs-service-download_files" project="openSUSE:Factory">
-  <title>An OBS source service: download files</title>
-  <description>This is a source service for openSUSE Build Service.
-
-This service is parsing all spec files and downloads all Source files which are specified via a http, https or ftp url.</description>
-  <devel project="openSUSE:Tools" package="obs-service-download_files"/>
-</package>

@@ -1,4 +1,0 @@
-# we package gems as it would have been installed via gem. so we also ship the source code
-addFilter("devel-file-in-non-devel-package")
-# using fdupes on gems breaks the debuginfo package
-addFilter("files-duplicated-waste")

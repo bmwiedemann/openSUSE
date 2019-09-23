@@ -1,7 +1,0 @@
---- /dev/null
-+++ b/tests/__init__.py
-@@ -0,0 +1,4 @@
-+import locale
-+enc = locale.getpreferredencoding()
-+assert enc is not None and enc.lower() != "ansi_x3.4-1968", \
-+    "Tests don't work with locale encoding set to {}".format(enc)

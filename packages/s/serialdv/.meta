@@ -1,9 +1,0 @@
-<package name="serialdv" project="openSUSE:Factory">
-  <title>Library for audio de-/encoding with ABME3000 based devices</title>
-  <description>A library that provides an interface for audio encoding and decoding with
-AMBE3000 based devices in packet mode over a serial link.
-
-</description>
-  <devel project="hardware:sdr" package="serialdv"/>
-  <url>https://github.com/f4exb/serialDV</url>
-</package>

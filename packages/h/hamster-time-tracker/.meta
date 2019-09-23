@@ -1,8 +1,0 @@
-<package name="hamster-time-tracker" project="openSUSE:Factory">
-  <title>A GNOME panel applet that allows you to track where you spend your time</title>
-  <description>Project Hamster is time tracking for masses. It helps you to keep track
-on how much time you have spent during the day on activities you have
-set up.
-</description>
-  <devel project="devel:openSUSE:Factory:Apps" package="hamster-time-tracker"/>
-</package>

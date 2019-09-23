@@ -1,6 +1,0 @@
-<package name="tini" project="openSUSE:Factory">
-  <title>tini</title>
-  <description>A tiny but valid `init` for containers
-</description>
-  <devel project="Virtualization:containers" package="tini"/>
-</package>

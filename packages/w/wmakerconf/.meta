@@ -1,5 +1,0 @@
-<package name="wmakerconf" project="openSUSE:Factory">
-  <title>Configuration tool for Window Maker</title>
-  <description>Wmakerconf is a GTK+ based configuration tool for Window Maker.</description>
-  <devel project="X11:windowmanagers" package="wmakerconf"/>
-</package>

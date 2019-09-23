@@ -1,3 +1,0 @@
-addFilter("W: hidden-file-or-dir /usr/lib/python3.*/site-packages/openlp/.version")
-addFilter("W: python-naming-policy-not-applied")
-addFilter("W: suse-branding-unversioned-requires")

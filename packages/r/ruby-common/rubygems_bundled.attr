@@ -1,3 +1,0 @@
-%__rubygems_bundled_provides    %{_rpmconfigdir}/rubygemsdeps.rb --provides --bundled
-%__rubygems_bundled_path        .*/vendor/bundle/.*/specifications/.*\.gemspec$
-

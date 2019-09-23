@@ -1,6 +1,0 @@
-<package name="ipcalc" project="openSUSE:Factory">
-  <title>IPv4 subnet calculator</title>
-  <description>ipcalc takes an IP address and netmask and calculates the resulting broadcast, network, Cisco wildcard mask, and host range. By giving a second netmask, you can design subnets and supernets. It is also intended to be a teaching tool and presents the subnetting results as easy-to-understand binary values.
-  </description>
-  <devel project="network:utilities" package="ipcalc"/>
-</package>

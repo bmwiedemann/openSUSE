@@ -1,6 +1,0 @@
-#include <tunables/global>
-/usr/lib/nagios/plugins/check_swap {
-  #include <abstractions/base> 
-  #include <abstractions/consoles>
-  /usr/lib/nagios/plugins/check_swap rm,
-}

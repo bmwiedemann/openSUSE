@@ -1,8 +1,0 @@
-<package name="syslinux" project="openSUSE:Factory">
-  <title>Boot Loader for Linux</title>
-  <description>SYSLINUX is a boot loader for the Linux operating system which operates
-off an MS-DOS or Windows FAT file system. It is intended to simplify
-first-time installation of Linux and for creation of rescue and other
-special purpose boot disks.</description>
-  <devel project="system:install:head" package="syslinux"/>
-</package>

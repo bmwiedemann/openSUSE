@@ -1,7 +1,0 @@
-<package name="gettext-java" project="openSUSE:Factory">
-  <title>Java Support for Native Language Support (NLS)</title>
-  <description>This package includes the tools needed to support message catalogs in
-Java applications. It also includes example code for java, java+awt and
-java+swing.</description>
-  <devel project="openSUSE:Factory" package="gettext-runtime"/>
-</package>

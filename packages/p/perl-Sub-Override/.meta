@@ -1,9 +1,0 @@
-<package name="perl-Sub-Override" project="openSUSE:Factory">
-  <title>Perl extension for easily overriding subroutines</title>
-  <description>Sometimes subroutines need to be overridden. In fact, your author does
-this constantly for tests. Particularly when testing, using a
-Mock Object can be overkill when all you want to do is override
-one tiny, little function.</description>
-  <devel project="devel:languages:perl" package="perl-Sub-Override"/>
-  <url>http://search.cpan.org/dist/Sub-Override/</url>
-</package>

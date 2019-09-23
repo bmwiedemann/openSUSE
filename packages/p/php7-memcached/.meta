@@ -1,6 +1,0 @@
-<package name="php7-memcached" project="openSUSE:Factory">
-  <title>PHP MemcacheD client Extension</title>
-  <description>This extension uses libmemcached library to provide API for communicating with memcached servers.</description>
-  <devel project="server:php:extensions:php7" package="php7-memcached"/>
-  <url>http://pecl.php.net/package/memcached</url>
-</package>

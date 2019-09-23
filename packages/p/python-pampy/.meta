@@ -1,5 +1,0 @@
-<package name="python-pampy" project="openSUSE:Factory">
-  <title>The Pattern Matching for Python you always dreamed of</title>
-  <description>Pampy is pretty small (150 lines), reasonably fast, and often makes your code more readable and hence easier to reason about.</description>
-  <devel project="devel:languages:python" package="python-pampy"/>
-</package>

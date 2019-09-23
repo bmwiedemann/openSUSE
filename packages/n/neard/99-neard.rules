@@ -1,5 +1,0 @@
-#  This file is part of neard
-
-# run a command on remove events
-ACTION=="add", SUBSYSTEM=="nfc", TAG+="systemd", ENV{SYSTEMD_WANTS}+="neard.service"
-

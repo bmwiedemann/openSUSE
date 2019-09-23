@@ -1,6 +1,0 @@
-<package name="xplayer" project="openSUSE:Factory">
-  <title>Generic media player</title>
-  <description>xplayer is a media player based on GStreamer for the Cinnamon desktop and others.
-It features a playlist, a full-screen mode, seek and volume controls, and complete keyboard navigation.</description>
-  <devel project="X11:Cinnamon:Factory" package="xplayer"/>
-</package>

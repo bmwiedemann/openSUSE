@@ -1,7 +1,0 @@
-<package name="dosfstools" project="openSUSE:Factory">
-  <title>Utilities for Making and Checking MS-DOS FAT File Systems on Linux</title>
-  <description>The dosfstools package includes the mkdosfs and dosfsck utilities,
-which respectively make and check MS-DOS FAT file systems on hard
-drives or on floppies.</description>
-  <devel project="Base:System" package="dosfstools"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-astor" project="openSUSE:Factory">
-  <title>python-astor</title>
-  <description>astor is designed to allow easy manipulation of Python source via the AST.</description>
-  <devel project="devel:languages:python" package="python-astor"/>
-</package>

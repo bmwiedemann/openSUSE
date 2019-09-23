@@ -1,6 +1,0 @@
-<package name="cmpi-provider-register" project="openSUSE:Factory">
-  <title>CIMOM neutral provider registration utility</title>
-  <description>A utility allowing CMPI provider packages to register with whatever
-CIMOM(s) happens to be present on the system.</description>
-  <devel project="systemsmanagement:wbem" package="cmpi-provider-register"/>
-</package>

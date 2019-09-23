@@ -1,9 +1,0 @@
-[Unit]
-Description=Run %p@%i every 22 minutes
-
-[Timer]
-OnBootSec=2min
-OnUnitActiveSec=22min
-
-[Install]
-WantedBy=default.target

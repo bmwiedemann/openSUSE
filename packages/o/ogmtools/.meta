@@ -1,7 +1,0 @@
-<package name="ogmtools" project="openSUSE:Factory">
-  <title>Tools for OGG Media Streams</title>
-  <description>These tools allow information about (ogminfo), extraction from
-(ogmdemux), creation of (ogmmerge), or the division of (ogmsplit) OGG
-media streams.	OGM stands for OGG media streams.</description>
-  <devel project="multimedia:apps" package="ogmtools"/>
-</package>

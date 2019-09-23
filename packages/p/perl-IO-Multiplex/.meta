@@ -1,6 +1,0 @@
-<package name="perl-IO-Multiplex" project="openSUSE:Factory">
-  <title>Manage IO on many file handles</title>
-  <description>&quot;IO::Multiplex&quot; reduces the effort of managing multiple file handles.
-It is a fancy front end to the &quot;select&quot; system call.</description>
-  <devel project="devel:languages:perl" package="perl-IO-Multiplex"/>
-</package>

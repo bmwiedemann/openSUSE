@@ -1,5 +1,0 @@
-<package name="pyzy" project="openSUSE:Factory">
-  <title>pyzy</title>
-  <description>The Chinese PinYin and Bopomofo conversion library.</description>
-  <devel project="M17N" package="pyzy"/>
-</package>

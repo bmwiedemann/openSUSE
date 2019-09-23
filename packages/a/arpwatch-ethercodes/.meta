@@ -1,5 +1,0 @@
-<package name="arpwatch-ethercodes" project="openSUSE:Factory">
-  <title>Ethercodes Data for arpwatch</title>
-  <description>OUI and company ID data as fetched from IEEE.org prepared for arpwatch.</description>
-  <devel project="devel:openSUSE:Factory" package="arpwatch-ethercodes"/>
-</package>

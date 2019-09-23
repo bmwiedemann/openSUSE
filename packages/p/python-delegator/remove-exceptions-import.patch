@@ -1,7 +1,0 @@
---- delegator-0.0.3-orig/delegator/delegator.py	2014-03-13 05:18:34.000000000 +0700
-+++ delegator-0.0.3/delegator/delegator.py	2019-03-07 12:29:48.457009471 +0700
-@@ -1,4 +1,3 @@
--from exceptions import NotImplementedError, AttributeError
- 
- 
- class Delegator(object):

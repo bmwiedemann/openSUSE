@@ -1,9 +1,0 @@
-<package name="hostname" project="openSUSE:Factory">
-  <title>Utility to Set/Show the Host Name or Domain Name</title>
-  <description>This package provides commands which can be used to display the system's DNS
-name, and to display or set its hostname or NIS domain name.
-
-Replacement of some commands from net-tools, see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</description>
-  <devel project="network:utilities" package="hostname"/>
-  <url>https://tracker.debian.org/pkg/hostname</url>
-</package>

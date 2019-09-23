@@ -1,5 +1,0 @@
-<package name="alsa-firmware" project="openSUSE:Factory">
-  <title>Firmware Data Files for ALSA</title>
-  <description>Various firmware data files for ALSA drivers.</description>
-  <devel project="multimedia:libs" package="alsa-firmware"/>
-</package>

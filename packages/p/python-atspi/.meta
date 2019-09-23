@@ -1,8 +1,0 @@
-<package name="python-atspi" project="openSUSE:Factory">
-  <title>Assistive Technology Service Provider Interface - Python bindings</title>
-  <description>AT-SPI is a general interface for applications to make use of the
-accessibility toolkit. This version is based on dbus.
-
-This package contains the python bindings for AT-SPI.</description>
-  <devel project="GNOME:Factory" package="python-atspi"/>
-</package>

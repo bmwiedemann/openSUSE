@@ -1,6 +1,0 @@
-<package name="hdparm" project="openSUSE:Factory">
-  <title>A Program to get and set hard disk parameters</title>
-  <description>A shell utility to access and tune the ioctl features of the Linux IDE
-driver and IDE drives.</description>
-  <devel project="Base:System" package="hdparm"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="wallpapers-openSUSE-extra" project="openSUSE:Factory">
-  <title>Extra Wallpapers for openSUSE </title>
-  <description>Wallpapers gathered from openSUSE Community</description>
-  <devel project="X11:common:Factory" package="wallpapers-openSUSE-extra"/>
-</package>

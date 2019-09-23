@@ -1,5 +1,0 @@
-<package name="yast2-snapper" project="openSUSE:Factory">
-  <title>YaST - file system snapshots review</title>
-  <description>YaST module for accessing and managing btrfs system snapshots</description>
-  <devel project="YaST:Head" package="yast2-snapper"/>
-</package>

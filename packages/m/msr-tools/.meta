@@ -1,6 +1,0 @@
-<package name="msr-tools" project="openSUSE:Factory">
-  <title>Tool for reading and writing MSRs (model specific register)</title>
-  <description>Tool to read and write MSRs (model specific registers). You have to
-load the &quot;msr&quot; module manually (&quot;modprobe msr&quot;).</description>
-  <devel project="Base:System" package="msr-tools"/>
-</package>

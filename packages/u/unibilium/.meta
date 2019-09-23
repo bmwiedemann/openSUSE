@@ -1,5 +1,0 @@
-<package name="unibilium" project="openSUSE:Factory">
-  <title>A terminfo parsing library</title>
-  <description>Unibilium is a very basic terminfo library. It doesn't depend on curses or any other library. It also doesn't use global variables, so it should be thread-safe.</description>
-  <devel project="devel:libraries:c_c++" package="unibilium"/>
-</package>

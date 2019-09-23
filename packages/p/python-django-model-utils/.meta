@@ -1,8 +1,0 @@
-<package name="python-django-model-utils" project="openSUSE:Factory">
-  <title>Django model mixins and utilities</title>
-  <description>Django model mixins and utilities.
-
-
-</description>
-  <devel project="devel:languages:python:django" package="python-django-model-utils"/>
-</package>

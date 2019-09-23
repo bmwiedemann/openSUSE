@@ -1,7 +1,0 @@
-#include <tunables/global>
-/usr/lib/nagios/plugins/check_ssh flags=(complain) {
-    #include <abstractions/base>
-    #include <abstractions/nameservice>
-
-    /etc/monitoring-plugins/* r,
-}

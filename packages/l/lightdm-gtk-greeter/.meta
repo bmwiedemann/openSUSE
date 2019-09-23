@@ -1,5 +1,0 @@
-<package name="lightdm-gtk-greeter" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="X11:Utilities" package="lightdm-gtk-greeter"/>
-</package>

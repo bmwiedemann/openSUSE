@@ -1,7 +1,0 @@
-<package name="ipa-ex-fonts" project="openSUSE:Factory">
-  <title>IPA ex-Gothic and Mincho fonts</title>
-  <description>
-This contains packages for IPA ex-Gothic and Mincho TrueType fonts.
-  </description>
-  <devel project="M17N:fonts" package="ipa-ex-fonts"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="mozjs60" project="openSUSE:Factory">
-  <title>JavaScript interpreter and libraries</title>
-  <description>JavaScript is the Netscape-developed object scripting language used in millions
-of web pages and server applications worldwide. Netscape's JavaScript is a
-superset of the ECMA-262 Edition 3 (ECMAScript) standard scripting language,
-with only mild differences from the published standard.</description>
-  <devel project="mozilla:Factory" package="mozjs60"/>
-</package>

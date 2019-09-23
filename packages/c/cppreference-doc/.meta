@@ -1,8 +1,0 @@
-<package name="cppreference-doc" project="openSUSE:Factory">
-  <title>Cppreference documentation for offline reading</title>
-  <description>Cppreference is a complete online reference for the C and C++ languages and standard libraries, i.e. a more convenient version of the C and C++ standards. This package provides an offline mirror of the reference.
-
-</description>
-  <devel project="Documentation" package="cppreference-doc"/>
-  <url>http://en.cppreference.com/w/</url>
-</package>

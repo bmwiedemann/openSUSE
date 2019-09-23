@@ -1,8 +1,0 @@
-<package name="ghc-regex-base" project="openSUSE:Factory">
-  <title>regex-base: Replaces/Enhances Text.Regex</title>
-  <description>
-    Interface API for regex-posix,pcre,parsec,tdfa,dfa
-  </description>
-  <devel project="devel:languages:haskell" package="ghc-regex-base"/>
-  <url>http://hackage.haskell.org/cgi-bin/hackage-scripts/package/regex-base</url>
-</package>

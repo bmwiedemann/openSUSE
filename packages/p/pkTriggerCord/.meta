@@ -1,5 +1,0 @@
-<package name="pkTriggerCord" project="openSUSE:Factory">
-  <title>pkTriggerCord</title>
-  <description>A program for tethered shooting with Pentax DSLR cameras. Currently supported: K-x, K10D, K20D, *ist DS, K200D, K-7, K-5, K-r. Version 0.77.00</description>
-  <devel project="graphics" package="pkTriggerCord"/>
-</package>

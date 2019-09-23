@@ -1,8 +1,0 @@
-<package name="rmt-server" project="openSUSE:Factory">
-  <title>Repository Mirroring Tool</title>
-  <description>This tool allows you to mirror RPM repositories in your own private network.
-Organization (mirroring) credentials are required to mirror SUSE repositories.
-
-See https://github.com/SUSE/rmt for more information.</description>
-  <devel project="systemsmanagement:SCC:RMT" package="rmt-server"/>
-</package>

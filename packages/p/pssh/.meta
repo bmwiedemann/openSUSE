@@ -1,9 +1,0 @@
-<package name="pssh" project="openSUSE:Factory">
-  <title>Parallel SSH to control large numbers of Machines simultaneously</title>
-  <description>pssh provides parallel versions of the OpenSSH tools that are useful for
-controlling large numbers of machines simultaneously. It includes parallel
-versions of ssh, scp, and rsync, as well as a parallel kill command.
-</description>
-  <devel project="network:ha-clustering:Factory" package="pssh"/>
-  <url>http://code.google.com/p/parallel-ssh/</url>
-</package>

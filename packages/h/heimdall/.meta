@@ -1,9 +1,0 @@
-<package name="heimdall" project="openSUSE:Factory">
-  <title>Samsung Galaxy S Device Firmware Flasher</title>
-  <description>Heimdall is a cross-platform open-source tool suite used to flash firmware (aka
-ROMs) onto Samsung Galaxy S devices.
-
-</description>
-  <devel project="hardware" package="heimdall"/>
-  <url>https://github.com/Benjamin-Dobell/Heimdall/tree/master/Linux</url>
-</package>

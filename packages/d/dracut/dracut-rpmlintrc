@@ -1,4 +1,0 @@
-addFilter("suse-missing-rclink")
-addFilter("explicit-lib-dependency")
-addFilter("systemd-service-without-service_*_*")
-addFilter("devel-file-in-non-devel-package .* /usr/share/pkgconfig/dracut.pc")

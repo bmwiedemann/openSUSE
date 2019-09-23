@@ -1,6 +1,0 @@
-<package name="dvd+rw-tools" project="openSUSE:Factory">
-  <title>Collection of Tools for Mastering Blu-ray and DVD+-RW/+-R Media</title>
-  <description>The dvd+rw-tools collection of tools makes it possible to burn images to
-Blu-ray and DVD+-RW/+-R media.</description>
-  <devel project="multimedia:apps" package="dvd+rw-tools"/>
-</package>

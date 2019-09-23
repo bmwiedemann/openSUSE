@@ -1,9 +1,0 @@
-<package name="tkimg" project="openSUSE:Factory">
-  <title>More Image Formats for Tk</title>
-  <description>This package contains a collection of image format handlers for the Tk
-photo image type, and a new image type, pixmaps.
-
-The provided format handlers include bmp, gif, ico, jpeg, pcx, png,
-ppm, ps, sgi, sun, tga, tiff, xbm, and xpm.</description>
-  <devel project="devel:languages:tcl" package="tkimg"/>
-</package>

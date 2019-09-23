@@ -1,6 +1,0 @@
-<package name="libmypaint" project="openSUSE:Factory">
-  <title>libmypaint - A brushstroke making library</title>
-  <description>libmypaint, a.k.a. &quot;brushlib&quot;, is a library for making brushstrokes which is used by MyPaint and other projects. </description>
-  <devel project="graphics" package="libmypaint"/>
-  <url>http://mypaint.org</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="slick-greeter-branding-openSUSE" project="openSUSE:Factory">
-  <title>openSUSE branding of slick-greeter</title>
-  <description>This package provides the openSUSE look and feel for slick-greeter.</description>
-  <devel project="X11:Cinnamon:Factory" package="slick-greeter-branding-openSUSE"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="octave-forge-nurbs" project="openSUSE:Factory">
-  <title></title>
-  <description>Collection of routines for the creation, and manipulation of Non-Uniform Rational B-Splines (NURBS).
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-nurbs"/>
-</package>

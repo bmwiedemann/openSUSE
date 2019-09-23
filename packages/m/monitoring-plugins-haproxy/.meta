@@ -1,8 +1,0 @@
-<package name="monitoring-plugins-haproxy" project="openSUSE:Factory">
-  <title>Plugin to check HAProxy (csv) stats url</title>
-  <description>The plugin checks HAProxy statistic url (csv) and gets UP and DOWN services.
-
-</description>
-  <devel project="server:monitoring" package="monitoring-plugins-haproxy"/>
-  <url>http://cvs.orion.education.fr/viewvc/viewvc.cgi/nagios-plugins-perl/trunk/plugins/</url>
-</package>

@@ -1,7 +1,0 @@
---- a/bctoolbox.pc.in
-+++ b/bctoolbox.pc.in
-@@ -8,3 +8,4 @@ Version: @PROJECT_VERSION@
- Libs: -L@CMAKE_INSTALL_FULL_LIBDIR@ -lbctoolbox
- Libs.private: @LIBS_PRIVATE@
- Cflags: -I@CMAKE_INSTALL_FULL_INCLUDEDIR@
-+Requires.private: bcunit zlib

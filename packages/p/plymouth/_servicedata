@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">git://anongit.freedesktop.org/plymouth</param>
-              <param name="changesrevision">6e9e95dc0fe89a3c52f50e44ff0096a6e65e46a6</param></service><service name="tar_scm">
-                <param name="url">https://gitlab.freedesktop.org/plymouth/plymouth.git</param>
-              <param name="changesrevision">9ed2a0c55be8ee9919953efbacedc079a7428358</param></service></servicedata>

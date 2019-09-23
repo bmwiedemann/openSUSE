@@ -1,5 +1,0 @@
-<package name="python-nss" project="openSUSE:Factory">
-  <title>python-nss</title>
-  <description>python-nss is a Python binding for NSS (Network Security Services) and NSPR (Netscape Portable Runtime).</description>
-  <devel project="devel:languages:python" package="python-nss"/>
-</package>

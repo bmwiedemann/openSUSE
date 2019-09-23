@@ -1,6 +1,0 @@
-<package name="fatsort" project="openSUSE:Factory">
-  <title>FAT Filesystem Sorting Utility</title>
-  <description>FATsort sorts directory structures of FAT filesystems.
-Many MP3 hardware players don't sort files automatically but play them in the order they were transmitted to the device. FATSort can help here.</description>
-  <devel project="filesystems" package="fatsort"/>
-</package>

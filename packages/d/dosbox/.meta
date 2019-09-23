@@ -1,8 +1,0 @@
-<package name="dosbox" project="openSUSE:Factory">
-  <title>DOS Emulator Well-Suited for Playing Games</title>
-  <description>dosbox is a DOS emulator that, thanks to its good graphics and sound
-emulation, is exceptionally well-suited for playing games. dosbox
-features a built-in DOS operating system and transparent access to the
-Linux file system and is therefore very easy to use.</description>
-  <devel project="Emulators" package="dosbox"/>
-</package>

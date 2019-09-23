@@ -1,7 +1,0 @@
-<package name="xbsql" project="openSUSE:Factory">
-  <title>SQL Wrapper for the XBase Library</title>
-  <description>XBase DBMS is a C++ library that supports access to XBase type data
-files and indexes (.dbf and related files, for example). It provides
-record level access to these files.</description>
-  <devel project="server:database" package="xbsql"/>
-</package>

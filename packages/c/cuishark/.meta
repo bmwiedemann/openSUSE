@@ -1,9 +1,0 @@
-<package name="cuishark" project="openSUSE:Factory">
-  <title>A protocol analyzer like a wireshark on CUI</title>
-  <description>A console based wireshark like protocol analyzer.
-It is using libwireshark for the protocol dissection.
-
-</description>
-  <devel project="network:utilities" package="cuishark"/>
-  <url>https://github.com/slankdev/cuishark</url>
-</package>

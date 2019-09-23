@@ -1,8 +1,0 @@
-<package name="sblim-indication_helper" project="openSUSE:Factory">
-  <title>Toolkit for CMPI Indication Providers</title>
-  <description>This package contains a developer library for helping out when writing
-CMPI providers. This library polls the registered functions for data
-and, if it changes, a CMPI indication is set with the values of the
-indication class properties (also set by the developer).</description>
-  <devel project="systemsmanagement:wbem" package="sblim-indication_helper"/>
-</package>

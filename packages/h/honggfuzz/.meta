@@ -1,5 +1,0 @@
-<package name="honggfuzz" project="openSUSE:Factory">
-  <title>honggfuzz</title>
-  <description>Security oriented fuzzer with powerful analysis options. Supports evolutionary, feedback-driven fuzzing based on code coverage (sw and hw).</description>
-  <devel project="devel:tools" package="honggfuzz"/>
-</package>

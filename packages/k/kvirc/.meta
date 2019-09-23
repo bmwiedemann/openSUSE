@@ -1,7 +1,0 @@
-<package name="kvirc" project="openSUSE:Factory">
-  <title>Graphical Front-End for IRC</title>
-  <description>IRC (Internet Relay Chat) client with an MDI interface; scripting,
-pop-up, alias, and event editor; DCC (SEND CHAT VOICE and RESUME);
-SOCKSV4 &amp; V5 support; and more.</description>
-  <devel project="KDE:Extra" package="kvirc"/>
-</package>

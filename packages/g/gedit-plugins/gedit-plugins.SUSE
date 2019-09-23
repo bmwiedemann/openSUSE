@@ -1,6 +1,0 @@
-on openSUSE, the gedit-plugins are all split in a package of their own,
-which allows GNOME Software to offer individual installation/removal and list them
-properly as addons to gedit
-
-This mainpackage does not contain any plugins, but recommends the installation of all
-plugins, in order to get you quickly started.

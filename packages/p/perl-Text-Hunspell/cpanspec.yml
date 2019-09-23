@@ -1,4 +1,0 @@
----
-preamble: |-
- BuildRequires:  gcc-c++
- BuildRequires:  hunspell-devel

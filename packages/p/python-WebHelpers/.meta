@@ -1,9 +1,0 @@
-<package name="python-WebHelpers" project="openSUSE:Factory">
-  <title></title>
-  <description>Web Helpers is a library of helper functions intended to make writing
-web applications easier. It's the standard function library for
-Pylons and TurboGears 2, but can be used with any web framework.  It also
-contains a large number of functions not specific to the web, including text
-processing, number formatting, date calculations, container objects, etc.</description>
-  <devel project="devel:languages:python" package="python-WebHelpers"/>
-</package>

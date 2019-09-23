@@ -1,5 +1,0 @@
-Starting with version 11.4 of openSUSE, udev no longer provides static
-/dev nodes and relies on packages to provide them if needed.
-
-When data is first sent to the parallel port, loading the kernel module "lp"
-is triggered.

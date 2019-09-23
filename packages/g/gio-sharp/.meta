@@ -1,5 +1,0 @@
-<package name="gio-sharp" project="openSUSE:Factory">
-  <title>.NET/C# Bindings for GIO</title>
-  <description>C#/CLI bindings for GIO</description>
-  <devel project="Mono:Factory" package="gio-sharp"/>
-</package>

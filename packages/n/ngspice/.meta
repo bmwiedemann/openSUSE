@@ -1,5 +1,0 @@
-<package name="ngspice" project="openSUSE:Factory">
-  <title>Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5</title>
-  <description>Ngspice is a mixed-level/mixed-signal circuit simulator. Its code is based on three open source software packages: Spice3f5, Cider1b1 and Xspice.</description>
-  <devel project="electronics" package="ngspice"/>
-</package>

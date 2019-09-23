@@ -1,8 +1,0 @@
---- src/Makefile.am
-+++ src/Makefile.am
-@@ -9,4 +9,4 @@
- noinst_HEADERS = isofs.h
- 
- AM_CFLAGS = -D_FILE_OFFSET_BITS=64 `pkg-config --cflags fuse glib-2.0` -Wall
--AM_LDFLAGS = `pkg-config --libs fuse glib-2.0` -lz
-+LIBS =  `pkg-config --libs fuse glib-2.0` -lz

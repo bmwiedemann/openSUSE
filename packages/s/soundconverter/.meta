@@ -1,5 +1,0 @@
-<package name="soundconverter" project="openSUSE:Factory">
-  <title>SoundConverter</title>
-  <description>Simple Sound Converter Application for the GNOME Desktop</description>
-  <devel project="multimedia:apps" package="soundconverter"/>
-</package>

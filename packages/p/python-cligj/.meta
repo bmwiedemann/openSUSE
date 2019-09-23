@@ -1,5 +1,0 @@
-<package name="python-cligj" project="openSUSE:Factory">
-  <title>python-cligj</title>
-  <description>Common arguments and options for GeoJSON processing commands, using Click</description>
-  <devel project="Application:Geo" package="python-cligj"/>
-</package>

@@ -1,2 +1,0 @@
-# render html mail with w3m
-text/html; w3m -I %{charset} -T text/html -dump %s; copiousoutput

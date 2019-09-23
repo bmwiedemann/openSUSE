@@ -1,7 +1,0 @@
-<package name="mozilla-jss" project="openSUSE:Factory">
-  <title>Java Security Services (JSS)</title>
-  <description>Java Security Services (JSS) is a java native interface which provides a bridge for java-based applications to use native Network Security Services (NSS). This only works with gcj. Other JREs require that JCE providers be signed.
-</description>
-  <devel project="mozilla:Factory" package="mozilla-jss"/>
-  <url>http://www.mozilla.org/projects/security/pki/jss/</url>
-</package>

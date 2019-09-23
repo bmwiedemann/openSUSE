@@ -1,8 +1,0 @@
---- usbutils-010/lsusb.py.in	2019/03/20 12:52:09	1.1
-+++ usbutils-010/lsusb.py.in	2019/03/20 12:52:14
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- # SPDX-License-Identifier: GPL-2.0 OR GPL-3.0
- #
- # lsusb-VERSION.py

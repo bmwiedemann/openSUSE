@@ -1,7 +1,0 @@
-<package name="findbugs" project="openSUSE:Factory">
-  <title>Bug Pattern Detector for Java</title>
-  <description>FindBugs is a program to find bugs in Java programs. It looks for 
-instances of ``bug patterns''---code instances that are likely to be 
-errors.</description>
-  <devel project="Java:packages" package="findbugs"/>
-</package>

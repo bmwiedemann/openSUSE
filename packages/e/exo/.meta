@@ -1,6 +1,0 @@
-<package name="exo" project="openSUSE:Factory">
-  <title>Application Development Library for Xfce</title>
-  <description>Exo is an extension library to Xfce which is targeted at application
-development.</description>
-  <devel project="X11:xfce" package="exo"/>
-</package>

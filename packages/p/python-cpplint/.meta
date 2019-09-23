@@ -1,5 +1,0 @@
-<package name="python-cpplint" project="openSUSE:Factory">
-  <title></title>
-  <description>An automated checker to make sure a C++ file follows Google's C++ style guide</description>
-  <devel project="devel:languages:python" package="python-cpplint"/>
-</package>

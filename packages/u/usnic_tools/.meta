@@ -1,5 +1,0 @@
-<package name="usnic_tools" project="openSUSE:Factory">
-  <title>Various tools that work with USNIC</title>
-  <description></description>
-  <devel project="science:HPC" package="usnic_tools"/>
-</package>

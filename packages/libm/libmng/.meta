@@ -1,6 +1,0 @@
-<package name="libmng" project="openSUSE:Factory">
-  <title>Library for Support of MNG and JNG Formats</title>
-  <description>This library can handle MNG and JNG formats that contain animated
-pictures. These formats should replace the GIF format.</description>
-  <devel project="graphics" package="libmng"/>
-</package>

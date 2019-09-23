@@ -1,9 +1,0 @@
-<package name="beust-jcommander" project="openSUSE:Factory">
-  <title>Java framework for parsing command line parameters</title>
-  <description>JCommander is a Java framework that allows parsing command line
-parameters (with annotations).
-
-</description>
-  <devel project="Java:packages" package="beust-jcommander"/>
-  <url>http://jcommander.org/</url>
-</package>

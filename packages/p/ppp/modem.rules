@@ -1,1 +1,0 @@
-KERNEL=="ttyACM[0-9]*", TAG+="systemd", ENV{SYSTEMD_WANTS}="modem@%n.service"

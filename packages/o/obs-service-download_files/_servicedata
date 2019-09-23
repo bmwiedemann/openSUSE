@@ -1,8 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git@github.com:openSUSE/obs-service-download_files.git</param>
-    <param name="changesrevision">ee0f9031af61452ab4255aa7ec30713ac6ec0b87</param>
-  </service>
-<service name="tar_scm">
-                <param name="url">https://github.com/M0ses/obs-service-download_files.git</param>
-              <param name="changesrevision">88b8b293a897b384a98cdbc13a667f2baa4bb3a6</param></service></servicedata>

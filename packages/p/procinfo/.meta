@@ -1,6 +1,0 @@
-<package name="procinfo" project="openSUSE:Factory">
-  <title>Display System Status Gathered from /proc</title>
-  <description>The &quot;procinfo&quot; command gathers some system data from the /proc
-directory and prints it nicely formatted on the standard output device.</description>
-  <devel project="Base:System" package="procinfo"/>
-</package>

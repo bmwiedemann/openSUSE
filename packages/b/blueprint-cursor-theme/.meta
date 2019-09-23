@@ -1,5 +1,0 @@
-<package name="blueprint-cursor-theme" project="openSUSE:Factory">
-  <title>X Window System Cursors for the Blue Print Theme</title>
-  <description>A nice mouse cursor theme for the X Window System.</description>
-  <devel project="X11:common:Factory" package="blueprint-cursor-theme"/>
-</package>

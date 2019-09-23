@@ -1,5 +1,0 @@
-<package name="bumblebee" project="openSUSE:Factory">
-  <title>bumblebee</title>
-  <description>Bumblebee daemon is a rewrite of the original Bumblebee service, providing an elegant and stable means of managing Optimus hybrid graphics chipsets. A primary goal of this project is to not only enable use of the discrete GPU for rendering, but also to enable smart power management of the dGPU when it's not in use.</description>
-  <devel project="X11:Bumblebee" package="bumblebee"/>
-</package>

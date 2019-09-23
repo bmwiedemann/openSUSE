@@ -1,7 +1,0 @@
-<package name="quiterss" project="openSUSE:Factory">
-  <title>QuiteRSS</title>
-  <description>QuiteRSS is an open-source cross-platform RSS/Atom news feeds reader
-</description>
-  <devel project="X11:Utilities" package="quiterss"/>
-  <url>https://www.quiterss.org</url>
-</package>

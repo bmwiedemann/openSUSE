@@ -1,9 +1,0 @@
-<package name="perl-Parse-Method-Signatures" project="openSUSE:Factory">
-  <title>Perl6 like method signature parser</title>
-  <description>Inspired by Perl6::Signature but streamlined to just support the subset
-deemed useful for TryCatch and MooseX::Method::Signatures.
-
-</description>
-  <devel project="devel:languages:perl" package="perl-Parse-Method-Signatures"/>
-  <url>http://search.cpan.org/dist/Parse-Method-Signatures</url>
-</package>

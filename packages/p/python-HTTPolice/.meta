@@ -1,7 +1,0 @@
-<package name="python-HTTPolice" project="openSUSE:Factory">
-  <title></title>
-  <description>HTTPolice is a validator or “linter” for HTTP requests and responses.
-
-It can spot bad header syntax, inappropriate status codes, and other potential problems in your HTTP server or client.</description>
-  <devel project="devel:languages:python" package="python-HTTPolice"/>
-</package>

@@ -1,3 +1,0 @@
-auth	required	pam_env.so
-auth	required	pam_pkcs11.so
-auth	required	pam_unix2.so use_first_pass

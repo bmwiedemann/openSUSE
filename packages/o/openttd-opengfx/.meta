@@ -1,6 +1,0 @@
-<package name="openttd-opengfx" project="openSUSE:Factory">
-  <title>OpenGFX</title>
-  <description>OpenGFX is a free replacement for original data files of Transport Tycoon Deluxe.</description>
-  <devel project="games" package="openttd-opengfx"/>
-  <url>http://dev.openttdcoop.org/projects/opengfx</url>
-</package>

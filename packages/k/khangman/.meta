@@ -1,5 +1,0 @@
-<package name="khangman" project="openSUSE:Factory">
-  <title>Hangman Game</title>
-  <description>Classical hangman game for KDE</description>
-  <devel project="KDE:Applications" package="khangman"/>
-</package>

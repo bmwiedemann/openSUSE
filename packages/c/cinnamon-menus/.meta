@@ -1,6 +1,0 @@
-<package name="cinnamon-menus" project="openSUSE:Factory">
-  <title>A menu system for the Cinnamon Desktop</title>
-  <description>cinnamon-menus is an implementation of the draft &quot;Desktop Menu Specification&quot; from freedesktop.org.
-This package also contains the Cinnamon menu layout configuration files, .directory files and assorted menu related utility programs, Python bindings, and a simple menu editor.</description>
-  <devel project="X11:Cinnamon:Factory" package="cinnamon-menus"/>
-</package>

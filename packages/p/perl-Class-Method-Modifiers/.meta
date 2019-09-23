@@ -1,6 +1,0 @@
-<package name="perl-Class-Method-Modifiers" project="openSUSE:Factory">
-  <title>Provides Moose-like method modifiers</title>
-  <description>Method modifiers are a powerful feature from the CLOS (Common Lisp Object
-System) world.</description>
-  <devel project="devel:languages:perl" package="perl-Class-Method-Modifiers"/>
-</package>

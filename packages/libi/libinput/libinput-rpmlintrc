@@ -1,3 +1,0 @@
-addFilter("shlib-policy-nonversioned-dir .*/usr/lib/libinput");
-addFilter("shlib-policy-nonversioned-dir .*/usr/lib/udev");
-addFilter("shlib-policy-missing-lib");

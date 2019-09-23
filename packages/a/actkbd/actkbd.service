@@ -1,9 +1,0 @@
-[Unit]
-Description=Actkbd: Daemon for X-independent shortcuts
-
-[Service]
-EnvironmentFile=-/etc/sysconfig/actkbd
-ExecStart=/usr/sbin/actkbd -q -x -l -d ${ACTKBD_DEVICE} -c ${ACTKBD_CONFIG}
-
-[Install]
-WantedBy=multi-user.target

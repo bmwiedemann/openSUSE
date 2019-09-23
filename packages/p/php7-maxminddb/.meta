@@ -1,7 +1,0 @@
-<package name="php7-maxminddb" project="openSUSE:Factory">
-  <title>PHP extension providing access to maxminddb databases</title>
-  <description>This extension provides access to maxminddb databases and is a drop-in replacement for MaxMind\Db\Reader.
-  </description>
-  <devel project="server:php:extensions:php7" package="php7-maxminddb"/>
-  <url>https://github.com/maxmind/MaxMind-DB-Reader-php</url>
-</package>

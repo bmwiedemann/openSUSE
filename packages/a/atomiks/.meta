@@ -1,5 +1,0 @@
-<package name="atomiks" project="openSUSE:Factory">
-  <title>Atomiks</title>
-  <description>Atomiks is a faithful remake of, and a tribute to, Atomix, a classic puzzle game created by Softtouch &amp; RoSt and published in 1990 by the Thalion Software company. Atomiks is free software, and shares no code with the original Atomix game.</description>
-  <devel project="games" package="atomiks"/>
-</package>

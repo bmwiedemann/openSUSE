@@ -1,6 +1,0 @@
-<package name="python-keyring" project="openSUSE:Factory">
-  <title></title>
-  <description>The Python keyring lib provides a easy way to access the system keyring service
-from python. It can be used in any application that needs safe password storage.</description>
-  <devel project="devel:languages:python" package="python-keyring"/>
-</package>

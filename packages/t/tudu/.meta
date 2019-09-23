@@ -1,6 +1,0 @@
-<package name="tudu" project="openSUSE:Factory">
-  <title>Tudu</title>
-  <description>A command line interface to manage hierarchical todo lists.
-http://code.meskio.net/tudu</description>
-  <devel project="X11:Utilities" package="tudu"/>
-</package>

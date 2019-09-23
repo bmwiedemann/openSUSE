@@ -1,6 +1,0 @@
-<package name="createrepo" project="openSUSE:Factory">
-  <title>Creates a Common Metadata Repository</title>
-  <description>This utility generates a common metadata repository from a directory of
-RPM packages.</description>
-  <devel project="system:packagemanager" package="createrepo"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="reiserfs" project="openSUSE:Factory">
-  <title>Reiser File System utilities</title>
-  <description>This package includes utilities for making the file system
-(mkreiserfs), checking for consistency (reiserfsck), and resizing
-(resize_reiserfs).</description>
-  <devel project="filesystems" package="reiserfs"/>
-</package>

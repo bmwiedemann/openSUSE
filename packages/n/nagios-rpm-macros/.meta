@@ -1,7 +1,0 @@
-<package name="nagios-rpm-macros" project="openSUSE:Factory">
-  <title>foo</title>
-  <description>
-
-  </description>
-  <devel project="server:monitoring" package="nagios-rpm-macros"/>
-</package>

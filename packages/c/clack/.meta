@@ -1,5 +1,0 @@
-<package name="clack" project="openSUSE:Factory">
-  <title>Clack</title>
-  <description>Simple text viewer</description>
-  <devel project="X11:Pantheon:Apps" package="clack"/>
-</package>

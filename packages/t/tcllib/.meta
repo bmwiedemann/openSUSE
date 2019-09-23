@@ -1,7 +1,0 @@
-<package name="tcllib" project="openSUSE:Factory">
-  <title>Tcl Standard Library</title>
-  <description>This package is intended to be a collection of Tcl packages that
-provide utility functions useful to a large collection of Tcl
-programmers.</description>
-  <devel project="devel:languages:tcl" package="tcllib"/>
-</package>

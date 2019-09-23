@@ -1,5 +1,0 @@
-<package name="plasma-nm5" project="openSUSE:Factory">
-  <title>plasma-nm-kf5</title>
-  <description></description>
-  <devel project="KDE:Frameworks5" package="plasma-nm5"/>
-</package>

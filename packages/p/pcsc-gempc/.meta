@@ -1,9 +1,0 @@
-<package name="pcsc-gempc" project="openSUSE:Factory">
-  <title>PCSC driver for the Gemplus GemPC 410/430 smartcard readers</title>
-  <description>This package contains a driver for the GemPC 410 and GemPC 430 smart
-card readers produced by Gemplus.
-
-This driver is meant to be used with the PCSC-Lite daemon from the
-pcsc-lite package.</description>
-  <devel project="security:chipcard" package="pcsc-gempc"/>
-</package>

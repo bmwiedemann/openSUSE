@@ -1,5 +1,0 @@
-<package name="ladspa-blepvco" project="openSUSE:Factory">
-  <title>LADSPA blepvco plugin</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-blepvco"/>
-</package>

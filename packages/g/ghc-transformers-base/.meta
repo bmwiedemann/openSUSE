@@ -1,8 +1,0 @@
-<package name="ghc-transformers-base" project="openSUSE:Factory">
-  <title>Lift computations from the bottom of a transformer stack</title>
-  <description>
-    This package provides a straightforward port of monadLib's BaseM typeclass
-    to transformers.
-  </description>
-  <devel project="devel:languages:haskell" package="ghc-transformers-base"/>
-</package>

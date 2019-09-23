@@ -1,8 +1,0 @@
-<package name="perl-DBI" project="openSUSE:Factory">
-  <title>Database independent interface for Perl</title>
-  <description>The DBI is a database access module for the Perl programming language.
-It defines a set of methods, variables, and conventions that provide a
-consistent database interface, independent of the actual database
-being used.</description>
-  <devel project="devel:languages:perl" package="perl-DBI"/>
-</package>

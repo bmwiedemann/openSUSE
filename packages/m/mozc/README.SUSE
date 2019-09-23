@@ -1,9 +1,0 @@
-How to use mozc.el:
--------------------
-After Mozc is installed, "mozc.el" is not enabled automatically since almost
-people input Japanese characters through a GTK IM module or XIM.
-
-If you want to use "mozc.el", please describe the following lines in your "~/.emacs":
-
-(require 'mozc)
-(setq default-input-method 'japanese-mozc)

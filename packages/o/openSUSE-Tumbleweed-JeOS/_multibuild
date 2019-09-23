@@ -1,8 +1,0 @@
-<multibuild>
-  <flavor>kvm-and-xen</flavor>
-  <flavor>XEN</flavor>
-  <flavor>VMware</flavor>
-  <flavor>MS-HyperV</flavor>
-  <flavor>OpenStack-Cloud</flavor>
-  <flavor>RaspberryPi</flavor>
-</multibuild>

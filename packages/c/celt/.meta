@@ -1,6 +1,0 @@
-<package name="celt" project="openSUSE:Factory">
-  <title>Ultra-Low Delay Audio Codec</title>
-  <description>The CELT codec is an experimental audio codec for use in low-delay
-speech and audio communication.</description>
-  <devel project="multimedia:libs" package="celt"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="ark" project="openSUSE:Factory">
-  <title>Base Package of KDE Utility Programs</title>
-  <description>This package suggest all KDE utility programs which are created from
-this module.
-</description>
-  <devel project="KDE:Applications" package="ark"/>
-</package>

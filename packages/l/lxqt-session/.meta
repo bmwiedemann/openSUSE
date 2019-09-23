@@ -1,5 +1,0 @@
-<package name="lxqt-session" project="openSUSE:Factory">
-  <title>LXDE-Qt Session Manager</title>
-  <description>LXDE-Qt Session Manager</description>
-  <devel project="X11:LXQt" package="lxqt-session"/>
-</package>

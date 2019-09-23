@@ -1,7 +1,0 @@
-<package name="libfwevt" project="openSUSE:Factory">
-  <title>Library for Windows XML Event Log (EVTX) data types</title>
-  <description>Library for Windows XML Event Log (EVTX) data types
-
-libfwevt is part of the libyal family of libraries.</description>
-  <devel project="security:forensics" package="libfwevt"/>
-</package>

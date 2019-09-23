@@ -1,7 +1,0 @@
-<package name="urfkill" project="openSUSE:Factory">
-  <title>A daemon to control radio killswitches</title>
-  <description>Urfkill is a daemon to control radio killswitches through /dev/rfkill
-and supports PolicyKit authorization mechanism.</description>
-  <devel project="Base:System" package="urfkill"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>

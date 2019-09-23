@@ -1,5 +1,0 @@
-<package name="data-partition-service" project="openSUSE:Factory">
-  <title>Data Partition Creation Service</title>
-  <description>A service to create an additional gpt data partition if there is free unpartitioned space on the disk.</description>
-  <devel project="system:install:head" package="data-partition-service"/>
-</package>

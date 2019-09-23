@@ -1,6 +1,0 @@
-<package name="linssid" project="openSUSE:Factory">
-  <title>Graphical wireless scanning for Linux </title>
-  <description>LinSSID is graphically and functionally similar to iwscanner (Linux) and Inssider (Microsoft™ Windows®). It is written entirely in C++ using Linux wireless tools, Qt5, and Qwt.
-</description>
-  <devel project="network:utilities" package="linssid"/>
-</package>

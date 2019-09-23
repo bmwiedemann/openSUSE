@@ -1,8 +1,0 @@
-<package name="felix-osgi-compendium" project="openSUSE:Factory">
-  <title>Felix OSGi R4 Compendium Bundle</title>
-  <description>OSGi Service Platform Release 4 Compendium Interfaces and Classes.
-
-</description>
-  <devel project="Java:packages" package="felix-osgi-compendium"/>
-  <url>http://felix.apache.org</url>
-</package>

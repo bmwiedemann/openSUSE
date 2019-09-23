@@ -1,4 +1,0 @@
-<service name="kiwi_label_helper">
-	<summary>Allows automatic duplication of labels with a custom prefix.</summary>
-	<description>Implements the suse_label_helper:add_prefix element useful for building containers.</description>
-</service>

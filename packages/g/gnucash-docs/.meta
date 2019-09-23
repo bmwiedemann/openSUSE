@@ -1,9 +1,0 @@
-<package name="gnucash-docs" project="openSUSE:Factory">
-  <title>Documentation Module for GnuCash</title>
-  <description>GnuCash is a personal finance manager. A check-book likeregister GUI
-allows you to enter and track bank accounts, stocks, income and even
-currency trades. The interface is designed to be simple and easy to
-use, but is backed with double-entry accounting principles to ensure
-balanced books. This is the documentation module for GnuCash.</description>
-  <devel project="GNOME:Apps" package="gnucash-docs"/>
-</package>

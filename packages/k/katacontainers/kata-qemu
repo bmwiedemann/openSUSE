@@ -1,2 +1,0 @@
-#!/bin/bash
-/usr/bin/kata-runtime --kata-config "/usr/share/defaults/kata-containers/configuration-qemu.toml" $@ 

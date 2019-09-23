@@ -1,3 +1,0 @@
-# libcloudproviders is the upstream name, and not the shared library package
-addFilter("libcloudproviders\..*W: shlib-policy-nonversioned-dir");
-addFilter("libcloudproviders\..*W: shlib-policy-missing-lib");

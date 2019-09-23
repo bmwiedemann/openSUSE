@@ -1,6 +1,0 @@
-<package name="ladspa-swh-plugins" project="openSUSE:Factory">
-  <title>LADSPA swh plugins</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-swh-plugins"/>
-  <url>http://plugin.org.uk/</url>
-</package>

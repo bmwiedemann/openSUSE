@@ -1,8 +1,0 @@
-<package name="rrdtool" project="openSUSE:Factory">
-  <title>A tool for data logging and analysis</title>
-  <description>A tool to log and analyze data gathered from all kinds of data sources.
-The data analysis part of RRDtool is based on the ability to quickly
-generate graphical representations of the data values collected over a
-definable time period.</description>
-  <devel project="devel:languages:python" package="rrdtool"/>
-</package>

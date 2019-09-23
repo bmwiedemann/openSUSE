@@ -1,8 +1,0 @@
-<package name="python-py2pack" project="openSUSE:Factory">
-  <title>Generate distribution packages from Python packages on PyPI</title>
-  <description>This script allows to generate RPM spec or DEB dsc files from Python modules.
-It allows to list Python modules or search for them on the Python Package Index
-(PyPI). Conveniently, it can fetch tarballs and changelogs making it an
-universal tool to package Python modules.</description>
-  <devel project="devel:languages:python" package="python-py2pack"/>
-</package>

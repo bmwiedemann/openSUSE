@@ -1,8 +1,0 @@
-<package name="i4l-base" project="openSUSE:Factory">
-  <title>ISDN for Linux Basic Utilities</title>
-  <description>These utilities are needed for configuring and using ISDN devices. This
-package includes special tools for network connections via ISDN. Other
-tools for setup of various ISDN cards and for monitoring ISDN
-connections are also included.</description>
-  <devel project="network:telephony" package="i4l-base"/>
-</package>

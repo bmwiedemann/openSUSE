@@ -1,7 +1,0 @@
-<package name="libgpod" project="openSUSE:Factory">
-  <title>Library to Manipulate Songs and Playlists Stored on an iPod</title>
-  <description>libgpod is a library meant to abstract access to iPod content. It
-provides an easy-to-use API to retrieve the list of files and
-playlists stored on an iPod, modify them, and save them back to the iPod.</description>
-  <devel project="multimedia:libs" package="libgpod"/>
-</package>

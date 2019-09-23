@@ -1,6 +1,0 @@
-<package name="perl-BSD-Resource" project="openSUSE:Factory">
-  <title>BSD::Resource Perl Module</title>
-  <description>BSD::Resource is a class implementing access to process resource limit
-and priority functions (e.g. getrusage, setrlimit, etc).</description>
-  <devel project="devel:languages:perl" package="perl-BSD-Resource"/>
-</package>

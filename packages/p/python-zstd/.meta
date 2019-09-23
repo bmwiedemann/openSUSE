@@ -1,5 +1,0 @@
-<package name="python-zstd" project="openSUSE:Factory">
-  <title></title>
-  <description>ZSTD Bindings for Python</description>
-  <devel project="devel:languages:python" package="python-zstd"/>
-</package>

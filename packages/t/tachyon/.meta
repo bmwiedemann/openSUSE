@@ -1,8 +1,0 @@
-<package name="tachyon" project="openSUSE:Factory">
-  <title>Parallel ray tracing system</title>
-  <description>A high performance parallel ray tracing system supporting MPI and multithreaded implementations.
-
-Tachyon implements all of the basic geometric primitives such as triangles, planes, spheres, cylinders, etc. Some of the goals in developing Tachyon were to make it fast and for it to parallelize well. These are what set it apart from more full-featured programs like POV-Ray, Rayshade, and others. Tachyon supports enough features to be an excellent alternative to slower programs for demanding animation and scientific visualization tasks.
-  </description>
-  <devel project="science" package="tachyon"/>
-</package>

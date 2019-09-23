@@ -1,8 +1,0 @@
---- cachefilesd.conf.orig
-+++ cachefilesd.conf
-@@ -21,4 +21,4 @@ fstop 3%
- 
- # Assuming you're using SELinux with the default security policy included in
- # this package
--secctx system_u:system_r:cachefiles_kernel_t:s0
-+#secctx system_u:system_r:cachefiles_kernel_t:s0

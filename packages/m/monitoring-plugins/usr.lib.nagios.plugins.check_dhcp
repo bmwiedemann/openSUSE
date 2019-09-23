@@ -1,8 +1,0 @@
-#include <tunables/global>
-/usr/lib/nagios/plugins/check_dhcp {
-    #include <abstractions/base>
-    #include <abstractions/nameservice>
-    capability net_raw,
-
-    /etc/monitoring-plugins/* r,
-}

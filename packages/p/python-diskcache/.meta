@@ -1,5 +1,0 @@
-<package name="python-diskcache" project="openSUSE:Factory">
-  <title>Python disk backed cache</title>
-  <description>DiskCache is an Apache2 licensed disk and file backed cache library, written in pure-Python, and compatible with Django.</description>
-  <devel project="devel:languages:python" package="python-diskcache"/>
-</package>

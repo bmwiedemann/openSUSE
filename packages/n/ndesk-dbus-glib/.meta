@@ -1,5 +1,0 @@
-<package name="ndesk-dbus-glib" project="openSUSE:Factory">
-  <title>Ndesk-dbus-glib provides glib integration for NDesk.DBus</title>
-  <description>Ndesk-dbus-glibl provides glib integration for NDesk.DBus</description>
-  <devel project="Mono:Factory" package="ndesk-dbus-glib"/>
-</package>

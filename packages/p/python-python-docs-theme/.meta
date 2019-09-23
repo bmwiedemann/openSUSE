@@ -1,5 +1,0 @@
-<package name="python-python-docs-theme" project="openSUSE:Factory">
-  <title>The Sphinx theme for the CPython docs and related projects</title>
-  <description></description>
-  <devel project="devel:languages:python" package="python-python-docs-theme"/>
-</package>

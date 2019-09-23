@@ -1,7 +1,0 @@
-<package name="lxterminal" project="openSUSE:Factory">
-  <title>Lightweight LXDE Terminal</title>
-  <description>LXTerminal is a lightweight Terminal Emulator.
-This package even if DE independent is part
-of the LXDE project.</description>
-  <devel project="X11:lxde" package="lxterminal"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="talk" project="openSUSE:Factory">
-  <title>Talk Client for Chatting with Another User</title>
-  <description>This package contains the talk client, which allows you to chat with
-another user on a different system. Talk is a communication program
-which copies lines from one terminal to that of another user.</description>
-  <devel project="network" package="talk"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="limesuite" project="openSUSE:Factory">
-  <title>Lime Suite</title>
-  <description>Lime Suite application software.
-
-</description>
-  <devel project="hardware:sdr" package="limesuite"/>
-  <url>https://myriadrf.org/projects/lime-suite/</url>
-</package>

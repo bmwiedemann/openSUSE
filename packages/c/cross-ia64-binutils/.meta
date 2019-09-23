@@ -1,7 +1,0 @@
-<package name="cross-ia64-binutils" project="openSUSE:Factory">
-  <title>GNU Binutils</title>
-  <description>C compiler utilities: ar, as, gprof, ld, nm, objcopy, objdump, ranlib,
-size, strings, and strip. These utilities are needed whenever you want
-to compile a program or kernel.</description>
-  <devel project="openSUSE:Factory" package="binutils"/>
-</package>

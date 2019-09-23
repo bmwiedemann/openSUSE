@@ -1,3 +1,0 @@
-d /var/yp 0755 - - -
-L /var/yp/Makefile - - - - ../../usr/lib/yp/ypMakefile
-L /var/yp/securenets - - - - ../../usr/lib/yp/securenets.example

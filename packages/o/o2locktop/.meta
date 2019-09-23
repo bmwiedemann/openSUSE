@@ -1,8 +1,0 @@
-<package name="o2locktop" project="openSUSE:Factory">
-  <title>o2locktop is a top-like OCFS2 DLM lock monitor</title>
-  <description>o2locktop is a top-like OCFS2 DLM lock monitor. It displays DLM lock usages via querying OCFS2 file system statistics from the specified nodes. It detects the hot files/directories, whose DLM locks are frequently referenced among the cluster. 
-
-Example, the maximal wait time per DLM lock could helps administrators identify which hot files/directories should be decoupled for improving file access performance.
-</description>
-  <devel project="network:ha-clustering:Factory" package="o2locktop"/>
-</package>

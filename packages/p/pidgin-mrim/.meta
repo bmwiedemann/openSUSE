@@ -1,7 +1,0 @@
-<package name="pidgin-mrim" project="openSUSE:Factory">
-  <title>Pidgin plugin for Mail.ru</title>
-  <description>This is a Mail.ru plugin for Pidgin.
-
-It provides support for the MPP/MrIM protocol, popular in Russia.</description>
-  <devel project="network:pidgin" package="pidgin-mrim"/>
-</package>

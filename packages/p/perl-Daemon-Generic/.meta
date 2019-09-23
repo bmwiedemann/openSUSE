@@ -1,5 +1,0 @@
-<package name="perl-Daemon-Generic" project="openSUSE:Factory">
-  <title> Daemon::Generic - framework to provide start/stop/reload for a daemon</title>
-  <description> Daemon::Generic - framework to provide start/stop/reload for a daemon</description>
-  <devel project="devel:languages:perl" package="perl-Daemon-Generic"/>
-</package>

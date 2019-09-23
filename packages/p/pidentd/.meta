@@ -1,7 +1,0 @@
-<package name="pidentd" project="openSUSE:Factory">
-  <title>An Implementation of the RFC1413 Identification Server</title>
-  <description>This package contains identd, which implements a RFC1413 identification
-server.  Identd looks up specific TCP/IP connections and returns the
-user name and other information about the connection.</description>
-  <devel project="network:utilities" package="pidentd"/>
-</package>

@@ -1,9 +1,0 @@
-Index: telepathy-logger-0.8.2/extensions/tpl-extensions.pc.in
-===================================================================
---- telepathy-logger-0.8.2.orig/extensions/tpl-extensions.pc.in
-+++ telepathy-logger-0.8.2/extensions/tpl-extensions.pc.in
-@@ -8,4 +8,3 @@ Description: Telepathy Logger GLib conve
- Version: @VERSION@
- Libs: -L${libdir} -ltpl-extensions
- Cflags: -I${includedir}
--Requires: @LIBTPL_MODULES@

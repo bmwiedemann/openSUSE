@@ -1,6 +1,0 @@
-<package name="python-yara" project="openSUSE:Factory">
-  <title>Python Bindings for YARA (from Virus Total)</title>
-  <description>python bindings for libyara.  YARA is a tool to identify and classify malware samples.
-</description>
-  <devel project="security:forensics" package="python-yara"/>
-</package>

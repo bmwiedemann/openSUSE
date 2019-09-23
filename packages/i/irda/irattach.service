@@ -1,8 +1,0 @@
-[Unit]
-Description=Initialize hardware Infrared devices
-
-[Service]
-ExecStart=/usr/sbin/irattach -b
-
-[Install]
-WantedBy=multi-user.target

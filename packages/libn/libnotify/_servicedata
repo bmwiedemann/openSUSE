@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">git://git.gnome.org/libnotify</param>
-              <param name="changesrevision">43aac613f1c2a56aa672c36c157c9b8eb193ac25</param></service><service name="tar_scm">
-                <param name="url">https://gitlab.gnome.org/GNOME/libnotify.git</param>
-              <param name="changesrevision">44f92222124b12987406d0768e760ecf9f7e27f8</param></service></servicedata>

@@ -1,5 +1,0 @@
-<package name="thrift" project="openSUSE:Factory">
-  <title>Framework for scalable cross-language services development in C++, Java, Python, PHP, and Ruby</title>
-  <description>Thrift is a software framework for scalable cross-language services development. It combines a powerful software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, C#, Python, Ruby, Perl, PHP, Objective C/Cocoa, Smalltalk, Erlang, Objective Caml, and Haskell.</description>
-  <devel project="devel:tools" package="thrift"/>
-</package>

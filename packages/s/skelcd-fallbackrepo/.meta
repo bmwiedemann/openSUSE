@@ -1,5 +1,0 @@
-<package name="skelcd-fallbackrepo" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="system:install:head" package="skelcd-fallbackrepo"/>
-</package>

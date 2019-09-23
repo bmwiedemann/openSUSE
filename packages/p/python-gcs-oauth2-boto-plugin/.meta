@@ -1,7 +1,0 @@
-<package name="python-gcs-oauth2-boto-plugin" project="openSUSE:Factory">
-  <title>GCE Storage Authentication Plugin</title>
-  <description>gcs-oauth2-boto-plugin is a Python application whose purpose is to behave as an auth plugin for the boto auth plugin framework for use with OAuth 2.0 credentials for the Google Cloud Platform. This plugin is compatible with both user accounts and service accounts, and its functionality is essentially a wrapper around the oauth2client package of google-api-python-client with the addition of automatically caching tokens for the machine in a thread- and process-safe fashion.
-
-For more information about how to use this plugin to access Google Cloud Storage via boto in your application, see the GCS documentation.</description>
-  <devel project="Cloud:Tools" package="python-gcs-oauth2-boto-plugin"/>
-</package>

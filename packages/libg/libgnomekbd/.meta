@@ -1,5 +1,0 @@
-<package name="libgnomekbd" project="openSUSE:Factory">
-  <title>GNOME Keyboard Library</title>
-  <description>GNOME keyboard library, utility and applet.</description>
-  <devel project="GNOME:Factory" package="libgnomekbd"/>
-</package>

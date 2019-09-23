@@ -1,5 +1,0 @@
-<package name="python-awpa" project="openSUSE:Factory">
-  <title>python-awpa</title>
-  <description>A Working Python AST</description>
-  <devel project="devel:languages:python" package="python-awpa"/>
-</package>

@@ -1,9 +1,0 @@
-brise is deprecated since plum comes out.
-
-the standard [plum](https://github.com/rime/plum) is developed in bash. openSUSE uses [rime-plum-go](https://github.com/marguerite/rime-plum-go).
-
-brise in openSUSE is just a checkout of :all
-
-    mkdir brise-0.38
-    go build rime-plum-go/plum.go
-    rime-plum-go/plum -d brise -b -r :all

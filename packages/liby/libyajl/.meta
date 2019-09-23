@@ -1,6 +1,0 @@
-<package name="libyajl" project="openSUSE:Factory">
-  <title>Yet Another JSON Library </title>
-  <description>YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a
-small validating JSON generator.</description>
-  <devel project="devel:libraries:c_c++" package="libyajl"/>
-</package>

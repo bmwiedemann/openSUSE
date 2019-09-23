@@ -1,5 +1,0 @@
-<package name="purple-libsteam" project="openSUSE:Factory">
-  <title>Steam plugin for Pidgin/libpurple</title>
-  <description>A plugin to connect to Steam Friends/Steam IM for libpurple/Pidgin.</description>
-  <devel project="network:pidgin" package="purple-libsteam"/>
-</package>

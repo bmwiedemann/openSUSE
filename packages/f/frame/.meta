@@ -1,5 +1,0 @@
-<package name="frame" project="openSUSE:Factory">
-  <title>Open Input Framework Frame Library</title>
-  <description>Frame handles the buildup and synchronisation of a set of simultaneous touches.</description>
-  <devel project="X11:Unity" package="frame"/>
-</package>

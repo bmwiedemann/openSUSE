@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-            <param name="url">git://git.gnome.org/vte</param>
-          <param name="changesrevision">961927a8115c82f35deafe09c1d68689ff069905</param></service><service name="tar_scm">
-                <param name="url">https://gitlab.gnome.org/GNOME/vte.git</param>
-              <param name="changesrevision">14fac9f56d923cbb23b0c114ddf630fe36c5163c</param></service></servicedata>

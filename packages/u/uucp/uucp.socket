@@ -1,9 +1,0 @@
-[Unit]
-Description=UUCP Tcp Server Activation Socket
-
-[Socket]
-ListenStream=540
-Accept=true
-
-[Install]
-WantedBy=sockets.target

@@ -1,8 +1,0 @@
----
-:version_suffix: '-1_7'
-
-:post_install: |-
-  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version} -name .gitignore -delete
-  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version} -name .cvsignore -delete
-
-  rm -rf %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/examples

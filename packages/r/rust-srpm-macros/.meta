@@ -1,7 +1,0 @@
-<package name="rust-srpm-macros" project="openSUSE:Factory">
-  <title>RPM tools and macros for building Rust packages</title>
-  <description>This package provides the tools and macros for building projects in Rust
-on various architectures.</description>
-  <devel project="openSUSE:Factory" package="rust-packaging"/>
-  <bcntsynctag>rust-packaging</bcntsynctag>
-</package>

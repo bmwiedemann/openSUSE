@@ -1,8 +1,0 @@
-<package name="sord" project="openSUSE:Factory">
-  <title>A lightweight C library for storing RDF data in memory</title>
-  <description>A lightweight C library for storing RDF data in memory.
-
-</description>
-  <devel project="multimedia:libs" package="sord"/>
-  <url>http://drobilla.net/software/sord/</url>
-</package>

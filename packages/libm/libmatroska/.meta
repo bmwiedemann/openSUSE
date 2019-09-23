@@ -1,7 +1,0 @@
-<package name="libmatroska" project="openSUSE:Factory">
-  <title>Library to Deal with Matroska Files</title>
-  <description>Libmatroska is a C++ library to parse Matroska files (.mkv and .mka).
-It depends on libebml to work. You only need this package to compile
-your own applications.</description>
-  <devel project="multimedia:libs" package="libmatroska"/>
-</package>

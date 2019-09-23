@@ -1,5 +1,0 @@
-<package name="rcm" project="openSUSE:Factory">
-  <title>The rcm suite of tools is for managing dotfiles directories.</title>
-  <description>https://thoughtbot.github.io/rcm/</description>
-  <devel project="utilities" package="rcm"/>
-</package>

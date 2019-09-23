@@ -1,6 +1,0 @@
-<package name="memtest86+" project="openSUSE:Factory">
-  <title>Memory Testing Image for x86 Architecture</title>
-  <description>Memtest86 is an image that can be booted instead of a real OS. Once
-booted, it can be used to test the computer's memory.</description>
-  <devel project="Base:System" package="memtest86+"/>
-</package>

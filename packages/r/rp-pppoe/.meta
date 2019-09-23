@@ -1,7 +1,0 @@
-<package name="rp-pppoe" project="openSUSE:Factory">
-  <title>A PPP Over Ethernet Redirector for PPPD</title>
-  <description>rp-pppoe is a user-space redirector which permits the use of PPPoE
-(Point-to-Point Protocol Over Ethernet) with Linux. PPPoE is used by
-many ADSL service providers.</description>
-  <devel project="network" package="rp-pppoe"/>
-</package>

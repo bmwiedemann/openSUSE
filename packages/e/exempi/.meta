@@ -1,5 +1,0 @@
-<package name="exempi" project="openSUSE:Factory">
-  <title>XMP support library</title>
-  <description>XMP parsing and IO library</description>
-  <devel project="multimedia:libs" package="exempi"/>
-</package>

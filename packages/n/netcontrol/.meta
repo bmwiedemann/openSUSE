@@ -1,6 +1,0 @@
-<package name="netcontrol" project="openSUSE:Factory">
-  <title>A network configuration library</title>
-  <description>A interim network configuration library, currently implementing the
-libnetcf interface for libvirt.</description>
-  <devel project="network:utilities" package="netcontrol"/>
-</package>

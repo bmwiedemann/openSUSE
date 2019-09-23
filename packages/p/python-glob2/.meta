@@ -1,5 +1,0 @@
-<package name="python-glob2" project="openSUSE:Factory">
-  <title></title>
-  <description>Glob module recursive wildcards support</description>
-  <devel project="devel:languages:python" package="python-glob2"/>
-</package>

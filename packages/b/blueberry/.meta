@@ -1,5 +1,0 @@
-<package name="blueberry" project="openSUSE:Factory">
-  <title>A configuration tool for Bluetooth</title>
-  <description>Utility for Bluetooth devices graphical configuration.</description>
-  <devel project="X11:Utilities" package="blueberry"/>
-</package>

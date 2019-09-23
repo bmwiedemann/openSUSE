@@ -1,5 +1,0 @@
-<package name="libebur128" project="openSUSE:Factory">
-  <title>A library implementing the EBU R128 loudness standard</title>
-  <description></description>
-  <devel project="multimedia:libs" package="libebur128"/>
-</package>

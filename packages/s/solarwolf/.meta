@@ -1,7 +1,0 @@
-<package name="solarwolf" project="openSUSE:Factory">
-  <title>An Action/Arcade Game</title>
-  <description>The point of this game is to scramble through 48 levels of patterns,
-collecting all the boxes. The part that makes it tricky is avoiding the
-relentless hailstorm of fire coming at you from all directions.</description>
-  <devel project="games" package="solarwolf"/>
-</package>

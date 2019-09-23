@@ -1,2 +1,0 @@
-# because it's called libGLEW*
-addFilter("no-dependency-on glew.*/glew-libs/libglew.*")

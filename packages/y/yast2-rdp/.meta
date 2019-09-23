@@ -1,5 +1,0 @@
-<package name="yast2-rdp" project="openSUSE:Factory">
-  <title>yast2-rdp</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="YaST:Head" package="yast2-rdp"/>
-</package>

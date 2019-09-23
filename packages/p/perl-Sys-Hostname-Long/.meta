@@ -1,6 +1,0 @@
-<package name="perl-Sys-Hostname-Long" project="openSUSE:Factory">
-  <title>Try every conceivable way to get full hostname</title>
-  <description>How to get the host full name in perl on multiple operating systems
-(mac, windows, unix* etc)</description>
-  <devel project="devel:languages:perl" package="perl-Sys-Hostname-Long"/>
-</package>

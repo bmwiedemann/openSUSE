@@ -1,5 +1,0 @@
-<package name="python-kerberos" project="openSUSE:Factory">
-  <title>python-kerberos</title>
-  <description>A high-level wrapper for Kerberos (GSSAPI) operations.</description>
-  <devel project="devel:languages:python" package="python-kerberos"/>
-</package>

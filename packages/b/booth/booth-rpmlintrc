@@ -1,3 +1,0 @@
-addFilter("incoherent-init-script-name")
-addFilter("init-script-without-%insserv_cleanup-postun")
-addFilter("init-script-without-%stop_on_removal-preun")

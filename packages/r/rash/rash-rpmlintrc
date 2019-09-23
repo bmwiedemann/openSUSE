@@ -1,5 +1,0 @@
-addFilter(".*files-duplicate.*")
-addFilter(".*zero-length.*")
-addFilter(".*files-duplicated-waste.*")
-addFilter(".*explicit-lib-dependency.*libedit0.*")
-addFilter(".*explicit-lib-dependency.*libsqlite3-0.*")

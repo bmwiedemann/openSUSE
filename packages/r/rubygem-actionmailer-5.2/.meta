@@ -1,5 +1,0 @@
-<package name="rubygem-actionmailer-5.2" project="openSUSE:Factory">
-  <title>rubygem-actionmailer-5.2</title>
-  <description>Email on Rails. Compose, deliver, receive, and test emails using the familiar controller/view pattern. First-class support for multipart email and attachments.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-actionmailer-5.2"/>
-</package>

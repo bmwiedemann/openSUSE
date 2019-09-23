@@ -1,6 +1,0 @@
-<package name="golang-github-prometheus-promu" project="openSUSE:Factory">
-  <title> Prometheus Utility Tool</title>
-  <description>The Prometheus Utility Tool is used by the Prometheus project to build other components.
-</description>
-  <devel project="server:monitoring" package="golang-github-prometheus-promu"/>
-</package>

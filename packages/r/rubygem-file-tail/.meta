@@ -1,6 +1,0 @@
-<package name="rubygem-file-tail" project="openSUSE:Factory">
-  <title>File::Tail for Ruby</title>
-  <description>Library to tail files in Ruby</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-file-tail"/>
-  <url>http://flori.github.com/file-tail</url>
-</package>

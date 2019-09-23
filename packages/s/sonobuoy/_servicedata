@@ -1,6 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">https://github.com/heptio/sonobuoy.git</param>
-    <param name="changesrevision">7b18c13d8140cab28dde7b57fd5c0119fe4fa74e</param>
-  </service>
-</servicedata>

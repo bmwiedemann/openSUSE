@@ -1,8 +1,0 @@
-<package name="perl-Digest-CRC" project="openSUSE:Factory">
-  <title>Generic CRC functions for Perl</title>
-  <description>The Digest::CRC module calculates CRC sums of all sorts.  It contains
-wrapper functions with the correct parameters for CRC-CCITT, CRC-16,
-CRC-32 and CRC-64.</description>
-  <devel project="devel:languages:perl" package="perl-Digest-CRC"/>
-  <url>http://search.cpan.org/dist/Digest-CRC/</url>
-</package>

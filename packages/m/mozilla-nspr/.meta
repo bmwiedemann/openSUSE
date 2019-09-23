@@ -1,8 +1,0 @@
-<package name="mozilla-nspr" project="openSUSE:Factory">
-  <title>Netscape Portable Runtime</title>
-  <description>NSPR provides platform independence for non-GUI operating system
-facilities. These facilities include threads, thread synchronization,
-normal file and network I/O, interval timing and calendar time, basic
-memory management (malloc and free), and shared library linking.</description>
-  <devel project="mozilla:Factory" package="mozilla-nspr"/>
-</package>

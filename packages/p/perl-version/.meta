@@ -1,9 +1,0 @@
-<package name="perl-version" project="openSUSE:Factory">
-  <title>Perl extension for Version Objects</title>
-  <description>Version objects were added to Perl in 5.10. This module implements version objects for older version of Perl and provides the version object API for all versions of Perl. All previous releases before 0.74 are deprecated and should not be used due to incompatible API changes. Version 0.77 introduces the new 'parse' and 'declare' methods to standardize usage. You are
-strongly urged to set 0.77 as a minimum in your code, e.g.
-
-</description>
-  <devel project="devel:languages:perl" package="perl-version"/>
-  <url>http://search.cpan.org/dist/version/</url>
-</package>

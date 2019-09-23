@@ -1,5 +1,0 @@
-<package name="nudoku" project="openSUSE:Factory">
-  <title>nudoku</title>
-  <description>nudoku is a ncurses based sudoku game</description>
-  <devel project="games" package="nudoku"/>
-</package>

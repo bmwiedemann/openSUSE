@@ -1,9 +1,0 @@
-<package name="python-azure-mgmt-nspkg" project="openSUSE:Factory">
-  <title>Microsoft Azure Management namespace package</title>
-  <description>This is the Microsoft Azure Management namespace package.
-
-This package is not intended to be installed directly by the end user.
-
-It provides the necessary files for other packages to extend the azure.mgmt namespace.</description>
-  <devel project="devel:languages:python:azure" package="python-azure-mgmt-nspkg"/>
-</package>

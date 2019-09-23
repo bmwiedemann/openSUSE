@@ -1,5 +1,0 @@
-<package name="noto-coloremoji-fonts" project="openSUSE:Factory">
-  <title>Noto Color Emoji fonts</title>
-  <description>Noto Color Emoji fonts</description>
-  <devel project="M17N:fonts" package="noto-coloremoji-fonts"/>
-</package>

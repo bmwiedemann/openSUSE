@@ -1,9 +1,0 @@
-<package name="jdepend" project="openSUSE:Factory">
-  <title>Java Design Quality Metrics</title>
-  <description>JDepend traverses a set of Java class and source file directories and
-generates design quality metrics for each Java package. JDepend allows
-you to automatically measure the quality of a design in terms of its
-extensibility, reusability, and maintainability to effectively manage
-and control package dependencies.</description>
-  <devel project="Java:packages" package="jdepend"/>
-</package>

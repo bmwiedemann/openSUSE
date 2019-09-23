@@ -1,6 +1,0 @@
-<package name="ladspa-preamp" project="openSUSE:Factory">
-  <title>LADSPA preamp plugin</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-preamp"/>
-  <url>http://quitte.de/dsp/</url>
-</package>

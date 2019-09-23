@@ -1,7 +1,0 @@
-<package name="kernel-firmware" project="openSUSE:Factory">
-  <title>Linux kernel firmware files</title>
-  <description>This package contains the firmware for in-kernel drivers that was
-previously included in the kernel. It is shared by all kernels &gt;=
-2.6.27-rc1.</description>
-  <devel project="Kernel:HEAD" package="kernel-firmware"/>
-</package>

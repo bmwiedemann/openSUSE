@@ -1,5 +1,0 @@
-<package name="hiredis" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="server:database" package="hiredis"/>
-</package>

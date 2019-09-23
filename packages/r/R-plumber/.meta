@@ -1,5 +1,0 @@
-<package name="R-plumber" project="openSUSE:Factory">
-  <title></title>
-  <description>API Generator for R</description>
-  <devel project="devel:languages:R:released" package="R-plumber"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="aspell-dictionaries" project="openSUSE:Factory">
-  <title>The Source Package for Official Aspell Dictionaries</title>
-  <description>This source package contains dictionaries from http://aspell.net/ that
-are distributable under the GPL license.</description>
-  <devel project="devel:libraries:c_c++" package="aspell-dictionaries"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="dssi" project="openSUSE:Factory">
-  <title>Disposable Soft Synth Interface</title>
-  <description>Disposable Soft Synth Interface (DSSI, pronounced &quot;dizzy&quot;) is a
-proposal for a plug-in API for software instruments (soft synths) with
-user interfaces, permitting them to be hosted in-process by Linux audio
-applications. Think of it as LADSPA-for-instruments or something
-comparable to a simpler version of VSTi.</description>
-  <devel project="multimedia:libs" package="dssi"/>
-</package>

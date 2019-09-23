@@ -1,7 +1,0 @@
-<package name="libfole" project="openSUSE:Factory">
-  <title>Library for Object Linking and Embedding (OLE) data types</title>
-  <description>libfole is a library for Object Linking and Embedding (OLE) data types.
-
-Part of the libyal family of libraries.</description>
-  <devel project="security:forensics" package="libfole"/>
-</package>

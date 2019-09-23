@@ -1,7 +1,0 @@
-<package name="yelp" project="openSUSE:Factory">
-  <title>Help Browser for the GNOME Desktop</title>
-  <description>Yelp is the default help browser for the GNOME desktop. Yelp provides a
-simple graphical interface for viewing DocBook, HTML, man, and info
-formatted documentation.</description>
-  <devel project="GNOME:Factory" package="yelp"/>
-</package>

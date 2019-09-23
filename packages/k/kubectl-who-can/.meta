@@ -1,5 +1,0 @@
-<package name="kubectl-who-can" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:kubic" package="kubectl-who-can"/>
-</package>

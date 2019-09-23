@@ -1,7 +1,0 @@
-<package name="xvkbd" project="openSUSE:Factory">
-  <title>Virtual Keyboard for the X Window System</title>
-  <description>Xvkbd is a virtual (graphical) keyboard program for the X Window System
-which provides a facility to enter characters onto other clients
-(software) by clicking on an on-screen keyboard.</description>
-  <devel project="X11:Utilities" package="xvkbd"/>
-</package>

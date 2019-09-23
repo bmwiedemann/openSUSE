@@ -1,5 +1,0 @@
-<package name="xorg-x11-driver-input" project="openSUSE:Factory">
-  <title>X.Org input drivers</title>
-  <description>This package contains X.Org input drivers.</description>
-  <devel project="X11:XOrg" package="xorg-x11-driver-input"/>
-</package>

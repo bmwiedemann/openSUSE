@@ -1,7 +1,0 @@
-<package name="include-what-you-use" project="openSUSE:Factory">
-  <title>A tool to analyze #includes in C and C++ source files</title>
-  <description>&quot;Include what you use&quot; means this: for every symbol (type, function, variable, or macro) that you use in foo.cc (or foo.cpp), either foo.cc or foo.h should include a .h file that exports the declaration of that symbol. The include-what-you-use program is a tool to analyze includes of source files to find include-what-you-use violations, and suggest fixes for them.
-
-The main goal of include-what-you-use is to remove superfluous includes. It does this both by figuring out what includes are not actually needed for this file (for both .cc and .h files), and replacing includes with forward declarations when possible.</description>
-  <devel project="devel:tools:compiler" package="include-what-you-use"/>
-</package>

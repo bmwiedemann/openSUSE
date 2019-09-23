@@ -1,8 +1,0 @@
-<package name="python-PyWebDAV3-GNUHealth" project="openSUSE:Factory">
-  <title>Python3-based WebDAV server </title>
-  <description>Python WebDAV implementation (level 1 and 2) that features a library that enables you to integrate WebDAV server capabilities to your application.
-A fully working example on how to use the library is included. You can find a server in the DAVServer package. This server is fully functional and can even be run as daemon.
-If you search an easy to use WebDAV server that supports most clients (cadaver, Mac OS X Finder, Windows Explorer, ...) then try out PyWebDAV. 
-This Version is patched to work with GNU Health 3.2. Temporary solution until PyWebDAV maintainer has applied the changes</description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="python-PyWebDAV3-GNUHealth"/>
-</package>

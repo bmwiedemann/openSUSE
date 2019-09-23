@@ -1,9 +1,0 @@
-<package name="dssim" project="openSUSE:Factory">
-  <title>This tool computes (dis)similarity between two (or more) PNG images</title>
-  <description>This tool computes (dis)similarity between two PNG images using 
-(my approximation of) algorithms approximating human vision.
-
-</description>
-  <devel project="graphics" package="dssim"/>
-  <url>https://kornel.ski/dssim</url>
-</package>

@@ -1,4 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("bzip2 explicit-lib-dependency libbz2-1")

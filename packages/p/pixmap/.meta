@@ -1,7 +1,0 @@
-<package name="pixmap" project="openSUSE:Factory">
-  <title>XPM Pixel Editor for the X Window System</title>
-  <description>Pixmap is a program which enables you to edit XPM-files (colour
-bitmaps). You can use them with every commonly used iconmanager and
-even incorporate them in your own desktop environment.</description>
-  <devel project="graphics" package="pixmap"/>
-</package>

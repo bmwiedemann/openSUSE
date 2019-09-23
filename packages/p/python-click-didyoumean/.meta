@@ -1,5 +1,0 @@
-<package name="python-click-didyoumean" project="openSUSE:Factory">
-  <title></title>
-  <description>Enable git-like did-you-mean feature in click</description>
-  <devel project="devel:languages:python" package="python-click-didyoumean"/>
-</package>

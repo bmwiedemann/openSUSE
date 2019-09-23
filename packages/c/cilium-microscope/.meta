@@ -1,6 +1,0 @@
-<package name="cilium-microscope" project="openSUSE:Factory">
-  <title>cilium-microscope</title>
-  <description>Gather monitor data data from all cilium nodes in your cluster</description>
-  <devel project="devel:kubic" package="cilium-microscope"/>
-  <url>https://github.com/cilium/microscope</url>
-</package>

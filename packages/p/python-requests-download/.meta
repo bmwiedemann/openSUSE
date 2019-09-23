@@ -1,5 +1,0 @@
-<package name="python-requests-download" project="openSUSE:Factory">
-  <title>python-requests-download</title>
-  <description>Download files using requests and save them to a target path</description>
-  <devel project="devel:languages:python" package="python-requests-download"/>
-</package>

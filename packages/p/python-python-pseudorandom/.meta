@@ -1,5 +1,0 @@
-<package name="python-python-pseudorandom" project="openSUSE:Factory">
-  <title></title>
-  <description>A Python library for generating pseudorandom condition</description>
-  <devel project="devel:languages:python:numeric" package="python-python-pseudorandom"/>
-</package>

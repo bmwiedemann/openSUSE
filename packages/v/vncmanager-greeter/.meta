@@ -1,5 +1,0 @@
-<package name="vncmanager-greeter" project="openSUSE:Factory">
-  <title>VNC Manager Greeter</title>
-  <description>This is graphical greeter that appears when VNC client connects to VNC manager.</description>
-  <devel project="X11:XOrg" package="vncmanager-greeter"/>
-</package>

@@ -1,6 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("no-manual-page-for-binary fi_.*")
-addFilter("no-manual-page-for-binary runfabtests.sh")
-addFilter("no-manual-page-for-binary rft_yaml_to_junit_xml")

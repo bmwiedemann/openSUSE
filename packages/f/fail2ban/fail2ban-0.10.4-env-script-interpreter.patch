@@ -1,9 +1,0 @@
-diff -ur fail2ban-0.10.4-orig/config/filter.d/ignorecommands/apache-fakegooglebot fail2ban-0.10.4/config/filter.d/ignorecommands/apache-fakegooglebot
---- fail2ban-0.10.4-orig/config/filter.d/ignorecommands/apache-fakegooglebot	2018-10-04 11:26:22.000000000 +0200
-+++ fail2ban-0.10.4/config/filter.d/ignorecommands/apache-fakegooglebot	2019-08-12 10:46:05.067842214 +0200
-@@ -1,4 +1,4 @@
--#!/usr/bin/env fail2ban-python
-+#!/usr/bin/python
- # Inspired by https://isc.sans.edu/forums/diary/When+Google+isnt+Google/15968/
- #
- # Written in Python to reuse built-in Python batteries and not depend on

@@ -1,2 +1,0 @@
-addFilter("zero-length .*/notebook/bundler/tests/resources/subdir/subsubdir/.gitkeep")
-addFilter("hidden-file-or-dir .*/notebook/bundler/tests/resources/subdir/subsubdir/.gitkeep")

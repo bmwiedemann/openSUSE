@@ -1,5 +1,0 @@
-<package name="libnsl" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="network:NIS" package="libnsl"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="libgnome" project="openSUSE:Factory">
-  <title>The GNOME 2.x Desktop Base Libraries</title>
-  <description>This package contains the basic libraries for the GNOME 2.x Desktop
-platform. GNOME has no specific window manager. You are totally free in
-your choice. Many GNOME users like Sawfish, Enlightenment, or IceWM as
-a window manager for GNOME (see those packages).</description>
-  <devel project="GNOME:Factory" package="libgnome"/>
-</package>

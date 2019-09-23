@@ -1,2 +1,0 @@
-# Load ppdev after parport
-install parport /sbin/modprobe -i parport && /sbin/modprobe ppdev

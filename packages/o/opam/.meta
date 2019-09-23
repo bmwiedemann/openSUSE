@@ -1,6 +1,0 @@
-<package name="opam" project="openSUSE:Factory">
-  <title></title>
-  <description>OPAM is a source-based package manager for OCaml. It supports multiple simultaneous compiler installations, flexible package constraints, and a Git-friendly development workflow.</description>
-  <devel project="devel:languages:ocaml" package="opam"/>
-  <url>https://opam.ocaml.org/</url>
-</package>

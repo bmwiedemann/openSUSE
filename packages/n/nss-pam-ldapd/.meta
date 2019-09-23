@@ -1,7 +1,0 @@
-<package name="nss-pam-ldapd" project="openSUSE:Factory">
-  <title>NSS module and daemon for using LDAP as a naming service</title>
-  <description> This is nss-pam-ldapd which provides a Name Service Switch (NSS) module that allows your LDAP server to provide user account, group, host name, alias, netgroup, and basically any other information that you would normally get from /etc flat files or NIS. It also provides a Pluggable Authentication Module (PAM) to do authentication to an LDAP server.
-
-This is implemented using thin NSS and PAM modules which delegate to a dedicated service (nslcd) that queries the LDAP server with persistent connections, authentication, attribute translation, etc. </description>
-  <devel project="network:ldap" package="nss-pam-ldapd"/>
-</package>

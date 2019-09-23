@@ -1,5 +1,0 @@
-[uwsgi]
-inherit = base
-plugin_dir = @@LIBDIR@@/uwsgi
-embedded_plugins = null
-plugins = @@PLUGINS@@

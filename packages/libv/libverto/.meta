@@ -1,5 +1,0 @@
-<package name="libverto" project="openSUSE:Factory">
-  <title>libverto</title>
-  <description>Main loop abstraction library.</description>
-  <devel project="network" package="libverto"/>
-</package>

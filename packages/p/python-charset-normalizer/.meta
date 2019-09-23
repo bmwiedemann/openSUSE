@@ -1,5 +1,0 @@
-<package name="python-charset-normalizer" project="openSUSE:Factory">
-  <title>python-charset-normalizer</title>
-  <description>Python Universal Charset Detector</description>
-  <devel project="devel:languages:python" package="python-charset-normalizer"/>
-</package>

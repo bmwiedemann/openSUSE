@@ -1,6 +1,0 @@
-<package name="discover" project="openSUSE:Factory">
-  <title>Discover</title>
-  <description>KDE Software Installer</description>
-  <devel project="KDE:Frameworks5" package="discover"/>
-  <url>https://quickgit.kde.org/?p=discover.git</url>
-</package>

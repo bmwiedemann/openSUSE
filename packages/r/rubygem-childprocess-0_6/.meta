@@ -1,8 +1,0 @@
-<package name="rubygem-childprocess-0_6" project="openSUSE:Factory">
-  <title>rubygem-childprocess</title>
-  <description>
-This gem aims at being a simple and reliable solution for controlling external programs running in the background on any Ruby / OS combination.
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-childprocess-0_6"/>
-  <url>https://github.com/jarib/childprocess</url>
-</package>

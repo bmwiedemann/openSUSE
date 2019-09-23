@@ -1,9 +1,0 @@
-<package name="python-marshmallow" project="openSUSE:Factory">
-  <title>Converting complex datatypes to and from native Python datatypes</title>
-  <description>marshmallow is an ORM/ODM/framework-agnostic library for converting complex
-datatypes, such as objects, to and from native Python datatypes.
-
-</description>
-  <devel project="devel:languages:python" package="python-marshmallow"/>
-  <url>http://marshmallow.readthedocs.io/</url>
-</package>

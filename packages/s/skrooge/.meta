@@ -1,9 +1,0 @@
-<package name="skrooge" project="openSUSE:Factory">
-  <title>Personal Finance Management Tool</title>
-  <description>Skrooge is a personal finances manager. It permits entering, following and
-analyzing expenses.
-It can also import data from other finance applications using the ofx, qif and
-csv file formats.</description>
-  <devel project="KDE:Extra" package="skrooge"/>
-  <url>https://skrooge.org</url>
-</package>

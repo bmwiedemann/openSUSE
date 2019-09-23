@@ -1,6 +1,0 @@
-<package name="mISDNuser" project="openSUSE:Factory">
-  <title>Tools and library for mISDN</title>
-  <description>This package contains libmisdn and some tools to use the mISDN driver.
-mISDN is the new modular ISDN driver for Linux.</description>
-  <devel project="hardware" package="mISDNuser"/>
-</package>

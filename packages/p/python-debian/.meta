@@ -1,5 +1,0 @@
-<package name="python-debian" project="openSUSE:Factory">
-  <title>python-debian</title>
-  <description></description>
-  <devel project="devel:languages:python" package="python-debian"/>
-</package>

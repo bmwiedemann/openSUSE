@@ -1,5 +1,0 @@
-<package name="python-dragonmapper" project="openSUSE:Factory">
-  <title>python-dragonmapper</title>
-  <description>Identification and conversion functions for Chinese text processing</description>
-  <devel project="devel:languages:python" package="python-dragonmapper"/>
-</package>

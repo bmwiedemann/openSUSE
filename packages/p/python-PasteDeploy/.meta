@@ -1,7 +1,0 @@
-<package name="python-PasteDeploy" project="openSUSE:Factory">
-  <title></title>
-  <description>This tool provides code to load WSGI applications and servers from URIs; these
-URIs can refer to Python Eggs for INI-style configuration files. Paste Script
-provides commands to serve applications based on this configuration file.</description>
-  <devel project="devel:languages:python" package="python-PasteDeploy"/>
-</package>

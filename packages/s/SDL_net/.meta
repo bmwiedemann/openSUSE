@@ -1,5 +1,0 @@
-<package name="SDL_net" project="openSUSE:Factory">
-  <title>Simple DirectMedia Layer - Networking Library</title>
-  <description>This is a small cross-platform networking library for use with SDL.</description>
-  <devel project="games" package="SDL_net"/>
-</package>

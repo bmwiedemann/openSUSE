@@ -1,5 +1,0 @@
-<package name="a2ps-h" project="openSUSE:Factory">
-  <title>a2ps Support for Korean PostScript Filter (Python Version)</title>
-  <description>a2ps support for Korean PostScript filter (Python version).</description>
-  <devel project="Publishing" package="a2ps-h"/>
-</package>

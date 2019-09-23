@@ -1,7 +1,0 @@
-<package name="gtkimageview" project="openSUSE:Factory">
-  <title>Library providing an advanced widget for GdkPixbuf</title>
-  <description>GtkImageView is a widget that provides a zoomable and panable view of a
-GdkPixbuf. It is intended to be usable in most types of image viewing
-applications.</description>
-  <devel project="GNOME:Factory" package="gtkimageview"/>
-</package>

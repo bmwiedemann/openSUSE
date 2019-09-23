@@ -1,5 +1,0 @@
-<package name="perl-XML-Simple" project="openSUSE:Factory">
-  <title>Easy API to read/write XML (Perl module)</title>
-  <description>XML::Simple - Easy API to read/write XML (esp config files)</description>
-  <devel project="devel:languages:perl" package="perl-XML-Simple"/>
-</package>

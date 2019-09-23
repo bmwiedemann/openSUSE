@@ -1,6 +1,0 @@
-<package name="rubygem-oauth" project="openSUSE:Factory">
-  <title>Oauth</title>
-  <description>This is a RubyGem for implementing both OAuth clients and servers in Ruby applications.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-oauth"/>
-  <url>http://oauth.rubyforge.org/</url>
-</package>

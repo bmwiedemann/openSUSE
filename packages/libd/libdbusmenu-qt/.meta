@@ -1,8 +1,0 @@
-<package name="libdbusmenu-qt" project="openSUSE:Factory">
-  <title>A Qt implementation of the DBusMenu protocol</title>
-  <description>This library provides a Qt implementation of the DBusMenu protocol.
-
-The DBusMenu protocol makes it possible for applications to export and import
-their menus over DBus.</description>
-  <devel project="KDE:Qt" package="libdbusmenu-qt"/>
-</package>

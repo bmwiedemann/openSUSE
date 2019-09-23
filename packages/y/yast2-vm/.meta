@@ -1,5 +1,0 @@
-<package name="yast2-vm" project="openSUSE:Factory">
-  <title>YaST2 - Virtual Machine Installer</title>
-  <description>This YaST module configures and installs a virtual machine.</description>
-  <devel project="YaST:Head" package="yast2-vm"/>
-</package>

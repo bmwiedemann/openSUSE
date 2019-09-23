@@ -1,8 +1,0 @@
-<package name="asl" project="openSUSE:Factory">
-  <title>Macro Assembler AS</title>
-  <description>AS is a portable macro cross-assembler for a variety of microprocessors
-and controllers. Although it is mainly targeted at embedded processors
-and single-board computers, you also find CPU families that are used in
-workstations and PCs in the target list.</description>
-  <devel project="devel:tools:compiler" package="asl"/>
-</package>

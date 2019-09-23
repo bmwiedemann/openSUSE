@@ -1,5 +1,0 @@
-<package name="python-modernize" project="openSUSE:Factory">
-  <title></title>
-  <description>A tool for modernizing Python code using lib2to3</description>
-  <devel project="devel:languages:python" package="python-modernize"/>
-</package>

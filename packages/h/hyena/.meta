@@ -1,5 +1,0 @@
-<package name="hyena" project="openSUSE:Factory">
-  <title>Library for .NET applications</title>
-  <description>Hyena is a .NET library that powers Banshee and PDF Mod, among others.</description>
-  <devel project="GNOME:Apps" package="hyena"/>
-</package>

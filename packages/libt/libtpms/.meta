@@ -1,8 +1,0 @@
-<package name="libtpms" project="openSUSE:Factory">
-  <title>software libtpm stack</title>
-  <description>
-  A library providing TPM functionality for VMs. Targeted for integration
-  into Qemu.
-  </description>
-  <devel project="security" package="libtpms"/>
-</package>

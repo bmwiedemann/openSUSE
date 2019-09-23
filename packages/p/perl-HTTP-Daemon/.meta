@@ -1,9 +1,0 @@
-<package name="perl-HTTP-Daemon" project="openSUSE:Factory">
-  <title>a simple http server class</title>
-  <description>Instances of the 'HTTP::Daemon' class are HTTP/1.1 servers that listen on a
-socket for incoming requests. The 'HTTP::Daemon' is a subclass of
-'IO::Socket::INET', so you can perform socket operations directly on it
-too.</description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Daemon"/>
-  <url>http://search.cpan.org/dist/HTTP-Daemon/</url>
-</package>

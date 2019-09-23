@@ -1,6 +1,0 @@
-<package name="moe" project="openSUSE:Factory">
-  <title>Powerful and User-friendly Text Editor</title>
-  <description>GNU Moe is a powerful, 8-bit clean text editor for ISO-8859 and ASCII character encodings. It has a modeless, user-friendly interface, online help, multiple windows, unlimited undo/redo capability, unlimited line length, global search/replace (on all buffers at once), block operations, automatic indentation, word wrapping, filename completion, a directory browser, duplicate removal from prompt histories, and delimiter matching.</description>
-  <devel project="editors" package="moe"/>
-  <url>http://www.gnu.org/software/moe/moe.html</url>
-</package>

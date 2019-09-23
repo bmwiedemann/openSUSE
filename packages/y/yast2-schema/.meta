@@ -1,5 +1,0 @@
-<package name="yast2-schema" project="openSUSE:Factory">
-  <title>YaST2 - AutoYaST Schema</title>
-  <description>AutoYaST Syntax Schema</description>
-  <devel project="YaST:Head" package="yast2-schema"/>
-</package>

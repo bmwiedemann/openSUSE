@@ -1,7 +1,0 @@
-<package name="biblesync" project="openSUSE:Factory">
-  <title>BibleSync</title>
-  <description>BibleSync is a multicast protocol to support Bible software shared conavigation. It uses LAN multicast in either a personal/small team mutual navigation motif or in a classroom environment where there are Speakers plus the Audience. It provides a complete yet minimal public interface to support mode setting, setup for packet reception, transmit on local navigation, and handling of incoming packets.
-
-This library is not specific to any particular Bible software framework, completely agnostic as to structure of layers above BibleSync.</description>
-  <devel project="Education" package="biblesync"/>
-</package>

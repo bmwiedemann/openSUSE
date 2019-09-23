@@ -1,9 +1,0 @@
-<package name="id3v2" project="openSUSE:Factory">
-  <title>A Command Line Editor for ID3 V2 tags</title>
-  <description>ID3 tags are found in MP3 files. They can store information about what
-band recorded the song, the song name, and more.
-ID3-V1 tags are seriously deficient as to the kind of and length of
-information that they can store. This is a tool for editing ID3-V2 tags
-in Linux.</description>
-  <devel project="multimedia:apps" package="id3v2"/>
-</package>

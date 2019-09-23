@@ -1,7 +1,0 @@
-<package name="hourglass" project="openSUSE:Factory">
-  <title>Timer.</title>
-  <description>A simple clock application that is designed to fit perfectly into elementary's
-design scheme.
-  </description>
-  <devel project="X11:Pantheon:Apps" package="hourglass"/>
-</package>

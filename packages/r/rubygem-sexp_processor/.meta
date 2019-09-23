@@ -1,5 +1,0 @@
-<package name="rubygem-sexp_processor" project="openSUSE:Factory">
-  <title></title>
-  <description>sexp_processor branches from ParseTree bringing all the generic sexp processing tools with it. Sexp, SexpProcessor, Environment, etc... all for your language processing pleasure.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-sexp_processor"/>
-</package>

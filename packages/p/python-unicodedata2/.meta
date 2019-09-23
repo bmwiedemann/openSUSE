@@ -1,5 +1,0 @@
-<package name="python-unicodedata2" project="openSUSE:Factory">
-  <title>python-unicodedata2</title>
-  <description>Python unicodedata backport</description>
-  <devel project="devel:languages:python" package="python-unicodedata2"/>
-</package>

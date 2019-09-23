@@ -1,7 +1,0 @@
-<package name="cantor" project="openSUSE:Factory">
-  <title>Worksheet GUI for mathematical software</title>
-  <description>a frontend to several existing mathematical software such as R, Sage
-and Maxima: Cantor. Cantor offers a worksheet as a nice GUI for all
-those backends and is not targeted to kids but to scientists</description>
-  <devel project="KDE:Applications" package="cantor"/>
-</package>

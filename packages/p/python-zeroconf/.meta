@@ -1,9 +1,0 @@
-<package name="python-zeroconf" project="openSUSE:Factory">
-  <title>python-zeroconf</title>
-  <description>This is a fork of pyzeroconf, a Multicast DNS Service Discovery for Python.
-It is compatible with Bonjour and Avahi.
-Compared to some other Zeroconf/Bonjour/Avahi Python packages, python-zeroconf
-is not tied to Bonjour or Avahi, does not use D-Bus and does not force you to
-use a particular event loop or python-twisted.</description>
-  <devel project="devel:languages:python" package="python-zeroconf"/>
-</package>

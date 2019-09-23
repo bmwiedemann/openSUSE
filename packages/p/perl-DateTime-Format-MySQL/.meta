@@ -1,9 +1,0 @@
-<package name="perl-DateTime-Format-MySQL" project="openSUSE:Factory">
-  <title>Parse and format MySQL dates and times</title>
-  <description>This module understands the formats used by MySQL for its DATE, DATETIME,
-TIME, and TIMESTAMP data types. It can be used to parse these formats in
-order to create DateTime objects, and it can take a DateTime object and
-produce a string representing it in the MySQL format.</description>
-  <devel project="devel:languages:perl" package="perl-DateTime-Format-MySQL"/>
-  <url>http://search.cpan.org/perldoc?DateTime::Format::MySQL</url>
-</package>

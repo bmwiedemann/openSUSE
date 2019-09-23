@@ -1,7 +1,0 @@
-<package name="target-isns" project="openSUSE:Factory">
-  <title>iSNS support for Linux kernel-based target</title>
-  <description>Target-isns is an Internet Storage Name Service (iSNS) client for the Linux LIO iSCSI target. It allows to register LIO iSCSI targets to an iSNS server.
-
-The iSNS protocol is specified in RFC 4171 and its purpose is to make easier to discover, manage, and configure iSCSI devices. With iSNS, iSCSI targets can be registered to a central iSNS server and initiators can be configured to discover the targets by asking the iSNS server.</description>
-  <devel project="Base:System" package="target-isns"/>
-</package>

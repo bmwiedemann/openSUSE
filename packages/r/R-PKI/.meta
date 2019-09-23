@@ -1,5 +1,0 @@
-<package name="R-PKI" project="openSUSE:Factory">
-  <title></title>
-  <description>Public Key Infrastucture for R Based on the X.509 Standard</description>
-  <devel project="devel:languages:R:released" package="R-PKI"/>
-</package>

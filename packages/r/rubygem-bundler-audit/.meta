@@ -1,8 +1,0 @@
-<package name="rubygem-bundler-audit" project="openSUSE:Factory">
-  <title>Patch-level verification for Bundler</title>
-  <description>bundler-audit provides patch-level verification for Bundled apps.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-bundler-audit"/>
-  <url>https://github.com/rubysec/bundler-audit#readme</url>
-</package>

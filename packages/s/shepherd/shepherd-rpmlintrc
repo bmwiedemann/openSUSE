@@ -1,3 +1,0 @@
-# Guiles .go files are special
-addFilter("W: missing-PT_GNU_STACK-section /usr/lib64/guile/2.[02]/site-ccache/shepherd*")
-addFilter("W: shared-lib-without-dependency-information /usr/lib64/guile/2.[02]/site-ccache/shepherd*")

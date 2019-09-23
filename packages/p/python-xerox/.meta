@@ -1,5 +1,0 @@
-<package name="python-xerox" project="openSUSE:Factory">
-  <title>python-xerox</title>
-  <description>Simple copy and paste in Python</description>
-  <devel project="devel:languages:python" package="python-xerox"/>
-</package>

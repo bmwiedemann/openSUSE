@@ -1,9 +1,0 @@
-<package name="gamin" project="openSUSE:Factory">
-  <title>Library providing the FAM File Alteration Monitor API</title>
-  <description>This C library provides an API and ABI compatible file alteration
-monitor mechanism compatible with FAM but not dependent on a system wide
-daemon.
-</description>
-  <devel project="devel:libraries:c_c++" package="gamin"/>
-  <url>http://www.gnome.org/~veillard/gamin/</url>
-</package>

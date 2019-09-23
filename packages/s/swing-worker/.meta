@@ -1,8 +1,0 @@
-<package name="swing-worker" project="openSUSE:Factory">
-  <title>UI updates support for long running tasks</title>
-  <description>SwingWorker is designed for situations where you need to have a long
-running task run in a background thread and provide updates to the UI
-either when done, or while processing. This project is a backport of
-SwingWorker included into Java 1.6.</description>
-  <devel project="Java:packages" package="swing-worker"/>
-</package>

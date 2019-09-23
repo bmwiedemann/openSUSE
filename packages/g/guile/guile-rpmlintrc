@@ -1,3 +1,0 @@
-# guile's .go files are special
-addFilter("W: shared-lib-without-dependency-information /usr/lib64/guile*")
-addFilter("W: missing-PT_GNU_STACK-section /usr/lib64/guile*")

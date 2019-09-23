@@ -1,7 +1,0 @@
-<package name="wdm" project="openSUSE:Factory">
-  <title>WINGs Display Manager</title>
-  <description>WDM is a modification and enhancement of X11's XDM that provides a more
-flexible login panel while maintaining the basic XDM code to interface
-with pam and other packages.</description>
-  <devel project="X11:Utilities" package="wdm"/>
-</package>

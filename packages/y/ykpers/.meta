@@ -1,5 +1,0 @@
-<package name="ykpers" project="openSUSE:Factory">
-  <title>Provides a reference implementation for configuration of YubiKey's. </title>
-  <description>Yubico's YubiKey can be re-programmed. This project's purpose is to provide a reference implementation for configuration of YubiKey's. </description>
-  <devel project="security" package="ykpers"/>
-</package>

@@ -1,9 +1,0 @@
-# If user did not specify libdir, guess the correct target:
-# Use lib64 for 64 bit bi-arch targets, keep the default for the rest.
-if test "$libdir" = '${exec_prefix}/lib' ; then
-
-	ac_config_site_64bit_host=NONE
-
-	case "$host" in
-	"" )
-		# User did not specify host target.

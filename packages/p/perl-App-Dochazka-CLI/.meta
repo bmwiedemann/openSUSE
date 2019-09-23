@@ -1,5 +1,0 @@
-<package name="perl-App-Dochazka-CLI" project="openSUSE:Factory">
-  <title>Dochazka ATT System command line client</title>
-  <description>Command line client for the Dochazka Attendance and Time Tracking system</description>
-  <devel project="Application:Dochazka" package="perl-App-Dochazka-CLI"/>
-</package>

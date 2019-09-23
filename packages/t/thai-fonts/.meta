@@ -1,7 +1,0 @@
-<package name="thai-fonts" project="openSUSE:Factory">
-  <title>A Collection of Thai TrueType Fonts</title>
-  <description>The Thai TrueType fonts included here are Norasi and Garuda from the
-National Font project.
-</description>
-  <devel project="M17N:fonts" package="thai-fonts"/>
-</package>

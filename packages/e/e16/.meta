@@ -1,5 +1,0 @@
-<package name="e16" project="openSUSE:Factory">
-  <title>e16</title>
-  <description>Enlightenment e16 the lightweight X window manager and predecessor to Enlightenment e17 and e18.</description>
-  <devel project="X11:Enlightenment:Factory" package="e16"/>
-</package>

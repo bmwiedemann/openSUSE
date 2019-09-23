@@ -1,5 +1,0 @@
-<package name="yast2-theme" project="openSUSE:Factory">
-  <title>YaST2 - Theme</title>
-  <description>Contains the SuSE Linux theme for YaST2.</description>
-  <devel project="YaST:Head" package="yast2-theme"/>
-</package>

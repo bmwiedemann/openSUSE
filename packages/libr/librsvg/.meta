@@ -1,7 +1,0 @@
-<package name="librsvg" project="openSUSE:Factory">
-  <title>A Library for Rendering SVG Data</title>
-  <description>This package contains a library to render SVG (scalable vector
-graphics) data. This format has been specified by the W3C (see
-http://www.w3c.org).</description>
-  <devel project="GNOME:Factory" package="librsvg"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="xpp3" project="openSUSE:Factory">
-  <title>XML Pull Parser</title>
-  <description>Xml Pull Parser 3rd Edition (XPP3) MXP1 is a new XmlPull parsing engine
-that is based on ideas from XPP and in particular XPP2 but completely
-revised and rewritten to take best advantage of latest JIT JVMs such as
-Hotspot in JDK 1.4.</description>
-  <devel project="Java:packages" package="xpp3"/>
-</package>

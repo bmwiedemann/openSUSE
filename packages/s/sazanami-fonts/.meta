@@ -1,5 +1,0 @@
-<package name="sazanami-fonts" project="openSUSE:Factory">
-  <title>Japanese &quot;Sazanami&quot; TrueType Fonts</title>
-  <description>Japanese &quot;Sazanami&quot; TrueType Fonts</description>
-  <devel project="M17N:fonts" package="sazanami-fonts"/>
-</package>

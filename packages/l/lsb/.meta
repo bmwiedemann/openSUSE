@@ -1,6 +1,0 @@
-<package name="lsb" project="openSUSE:Factory">
-  <title>Linux Standard Base Core</title>
-  <description>Necessary files and dependencies for the Linux Standard Base (LSB)
-Core.</description>
-  <devel project="Base:System" package="lsb"/>
-</package>

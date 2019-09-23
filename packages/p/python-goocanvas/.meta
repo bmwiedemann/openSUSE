@@ -1,5 +1,0 @@
-<package name="python-goocanvas" project="openSUSE:Factory">
-  <title>Python bindings for goocanvas</title>
-  <description>Python bindings for goocanvas.</description>
-  <devel project="devel:languages:python" package="python-goocanvas"/>
-</package>

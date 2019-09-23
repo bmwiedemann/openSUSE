@@ -1,7 +1,0 @@
-<package name="yast2-tftp-server" project="openSUSE:Factory">
-  <title>YaST2 - TFTP Server Configuration</title>
-  <description>The YaST2 component for configuring a TFTP server. TFTP stands for
-Trivial File Transfer Protocol. It is used for booting over the
-network.</description>
-  <devel project="YaST:Head" package="yast2-tftp-server"/>
-</package>

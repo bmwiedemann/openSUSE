@@ -1,5 +1,0 @@
-<package name="libinstpatch" project="openSUSE:Factory">
-  <title>libinstpatch</title>
-  <description>libinstpatch is a library which allows you read or write soundfont samples.</description>
-  <devel project="multimedia:libs" package="libinstpatch"/>
-</package>

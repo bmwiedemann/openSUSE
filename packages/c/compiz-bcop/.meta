@@ -1,5 +1,0 @@
-<package name="compiz-bcop" project="openSUSE:Factory">
-  <title>Beryl/Compiz Option parser required to build compiz-fusion</title>
-  <description>Option parser for compiz-fusion plugins</description>
-  <devel project="X11:Compiz" package="compiz-bcop"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="lightdm-gtk-greeter-settings" project="openSUSE:Factory">
-  <title>Settings editor for LightDM GTK+ Greeter</title>
-  <description>Just a small dialog to make it easier for users to modify the settings of lightdm-gtk-greeter.</description>
-  <devel project="X11:Utilities" package="lightdm-gtk-greeter-settings"/>
-</package>

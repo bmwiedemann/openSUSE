@@ -1,6 +1,0 @@
-<package name="librubberband" project="openSUSE:Factory">
-  <title>Audio time-stretching and pitch-shifting library</title>
-  <description>Rubber Band is a library and utility program that permits you to change the
-tempo and pitch of an audio recording independently of one another.</description>
-  <devel project="multimedia:libs" package="librubberband"/>
-</package>

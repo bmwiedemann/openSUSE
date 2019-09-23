@@ -1,8 +1,0 @@
-<package name="libksi" project="openSUSE:Factory">
-  <title>GuardTime KSI API</title>
-  <description>LibKSI - Keyless Signature Infrastructure GuardTime client library
-
-</description>
-  <devel project="devel:libraries:c_c++" package="libksi"/>
-  <url>http://www.rsyslog.com/</url>
-</package>

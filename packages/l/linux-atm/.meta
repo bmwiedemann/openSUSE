@@ -1,5 +1,0 @@
-<package name="linux-atm" project="openSUSE:Factory">
-  <title>Tools for ATM</title>
-  <description>Tools to support ATM (Asynchronous Transfer Mode) networking.</description>
-  <devel project="Base:System" package="linux-atm"/>
-</package>

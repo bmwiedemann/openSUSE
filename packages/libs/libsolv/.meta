@@ -1,6 +1,0 @@
-<package name="libsolv" project="openSUSE:Factory">
-  <title>A new approach to package dependency solving</title>
-  <description>A new approach to package dependency solving.
-  </description>
-  <devel project="zypp:Head" package="libsolv"/>
-</package>

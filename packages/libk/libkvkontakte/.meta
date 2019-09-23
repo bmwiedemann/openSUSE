@@ -1,9 +1,0 @@
-<package name="libkvkontakte" project="openSUSE:Factory">
-  <title>Library for asynchronous interaction with vkontakte.ru social network</title>
-  <description>
-libkvkontakte is a KDE C++ library for asynchronous interaction with
-vkontakte.ru social network via its open API.
-  </description>
-  <devel project="KDE:Extra" package="libkvkontakte"/>
-  <url>https://projects.kde.org/projects/extragear/libs/libkvkontakte/</url>
-</package>

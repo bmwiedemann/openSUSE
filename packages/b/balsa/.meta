@@ -1,5 +1,0 @@
-<package name="balsa" project="openSUSE:Factory">
-  <title>The GNOME Mail Program</title>
-  <description>Nice GUI program to manage e-mail.</description>
-  <devel project="server:mail" package="balsa"/>
-</package>

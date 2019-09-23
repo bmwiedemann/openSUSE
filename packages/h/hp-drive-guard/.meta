@@ -1,6 +1,0 @@
-<package name="hp-drive-guard" project="openSUSE:Factory">
-  <title>HP DriveGuard for SuSE</title>
-  <description>HP DriveGuard for SuSE. Can protect hard disks on HP laptops by
-spinning them down when shaking or free-fall is detected.</description>
-  <devel project="hardware" package="hp-drive-guard"/>
-</package>

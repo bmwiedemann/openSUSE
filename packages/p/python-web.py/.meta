@@ -1,5 +1,0 @@
-<package name="python-web.py" project="openSUSE:Factory">
-  <title></title>
-  <description>Think about the ideal way to write a web app. Write the code to make it happen.</description>
-  <devel project="devel:languages:python" package="python-web.py"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="libpt2" project="openSUSE:Factory">
-  <title>Portable Windows Library from Equivalence Pty. Ltd. version 2</title>
-  <description>This is a moderately large class library that was created many years
-ago as a method to produce applications that run on both Microsoft
-Windows and the X Window System.</description>
-  <devel project="network:telephony" package="libpt2"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="solarfighter" project="openSUSE:Factory">
-  <title>Action/arcade game originally based of Solarwolf</title>
-  <description>SolarFighter. Are you ready for the hardest fights in this solar system?
-You are not sure? Well, then try this great game and find out!
-SolarFighter is our new arcade style space shooter. In contrast to other
-games of this genre, it features highly intelligent opponents and realistic
-physics. This work is based on Solarwolf 1.5 written by Pete Shinners.</description>
-  <devel project="games" package="solarfighter"/>
-</package>

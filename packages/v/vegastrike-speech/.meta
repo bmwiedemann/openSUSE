@@ -1,8 +1,0 @@
-<package name="vegastrike-speech" project="openSUSE:Factory">
-  <title>Speech files for Vega Strike</title>
-  <description>Optional speech files, so you can hear characters speak, for Vega Strike, a GPL 3D OpenGL Action RPG space sim that allows a player to trade and bounty hunt.
-
-This package is not required to play Vega Strike.
-</description>
-  <devel project="games" package="vegastrike-speech"/>
-</package>

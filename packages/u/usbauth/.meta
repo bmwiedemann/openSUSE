@@ -1,7 +1,0 @@
-<package name="usbauth" project="openSUSE:Factory">
-  <title>usbauth</title>
-  <description>usbauth: USB firewall against BadUSB attacks
-
-It is a firewall against BadUSB attacks. A config file descibes in which way USB interfaces would be accepted or denied.</description>
-  <devel project="security" package="usbauth"/>
-</package>

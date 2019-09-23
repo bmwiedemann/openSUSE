@@ -1,5 +1,0 @@
-<package name="flameshot" project="openSUSE:Factory">
-  <title>Powerful yet simple to use screenshot software.</title>
-  <description></description>
-  <devel project="X11:Utilities" package="flameshot"/>
-</package>

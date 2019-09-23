@@ -1,5 +1,0 @@
-<package name="bamf" project="openSUSE:Factory">
-  <title>Window matching library</title>
-  <description>bamf matches application windows to desktop files.</description>
-  <devel project="X11:Unity" package="bamf"/>
-</package>

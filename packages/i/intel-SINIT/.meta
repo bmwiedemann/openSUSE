@@ -1,9 +1,0 @@
-<package name="intel-SINIT" project="openSUSE:Factory">
-  <title>Intel(R) SINIT AC modules</title>
-  <description>Trusted Boot (tboot) is an open source, pre-kernel/VMM module that uses
-Intel(R) Trusted Execution Technology (Intel(R) TXT) to perform a measured
-and verified launch of an OS kernel/VMM.
-
-This package contains the binary SINIT AC Modules that are used for measuring.</description>
-  <devel project="security" package="intel-SINIT"/>
-</package>

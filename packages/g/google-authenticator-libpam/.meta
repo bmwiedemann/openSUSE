@@ -1,8 +1,0 @@
-<package name="google-authenticator-libpam" project="openSUSE:Factory">
-  <title>Google Authenticator PAM module</title>
-  <description>Integrate GOOGLE Authenticator into your login process for full 2FA.
-
-</description>
-  <devel project="security" package="google-authenticator-libpam"/>
-  <url>https://github.com/google/google-authenticator-libpam</url>
-</package>

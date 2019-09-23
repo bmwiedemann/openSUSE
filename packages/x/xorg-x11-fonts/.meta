@@ -1,5 +1,0 @@
-<package name="xorg-x11-fonts" project="openSUSE:Factory">
-  <title>X.Org fonts</title>
-  <description>This package contains fonts maintained and shipped with X.Org.</description>
-  <devel project="X11:XOrg" package="xorg-x11-fonts"/>
-</package>

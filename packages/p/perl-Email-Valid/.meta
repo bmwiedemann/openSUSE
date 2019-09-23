@@ -1,9 +1,0 @@
-<package name="perl-Email-Valid" project="openSUSE:Factory">
-  <title>Check validity of Internet email addresses</title>
-  <description>This module determines whether an email address is well-formed, and
-optionally, whether a mail host exists for the domain.
-
-Please note that there is no way to determine whether an address is
-deliverable without attempting delivery (for details, see perlfaq 9).</description>
-  <devel project="devel:languages:perl" package="perl-Email-Valid"/>
-</package>

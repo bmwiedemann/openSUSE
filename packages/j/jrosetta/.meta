@@ -1,9 +1,0 @@
-<package name="jrosetta" project="openSUSE:Factory">
-  <title>JRosetta provides a common base for graphical component</title>
-  <description>JRosetta provides a common base for graphical component that could be used
-to build a graphical console in Swing with the latest requirements, such as
-command history, completion and so on for instance for scripting language
-or command line.</description>
-  <devel project="Java:packages" package="jrosetta"/>
-  <url>http://dev.artenum.com/projects/JRosetta/</url>
-</package>

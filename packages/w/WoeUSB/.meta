@@ -1,9 +1,0 @@
-<package name="WoeUSB" project="openSUSE:Factory">
-  <title>Windows USB installation media creator</title>
-  <description>A utility that enables you to create your own bootable Windows installation
-USB storage device from an existing Windows Installation disc or disk image.
-
-</description>
-  <devel project="X11:Utilities" package="WoeUSB"/>
-  <url>https://github.com/slacka/WoeUSB</url>
-</package>

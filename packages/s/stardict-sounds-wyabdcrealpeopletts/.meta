@@ -1,7 +1,0 @@
-<package name="stardict-sounds-wyabdcrealpeopletts" project="openSUSE:Factory">
-  <title>Wyabdc RealPeople TTS audio collection of english words</title>
-  <description>This package contains many wav files which can be used by StarDict to pronounce
-english words. Files originally come from wyabdc, http://www.zhimajie.net,
-thanks xiaozima.</description>
-  <devel project="Education" package="stardict-sounds-wyabdcrealpeopletts"/>
-</package>

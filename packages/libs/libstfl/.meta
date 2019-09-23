@@ -1,6 +1,0 @@
-<package name="libstfl" project="openSUSE:Factory">
-  <title>Structured Terminal Forms Library</title>
-  <description>.............................................................................</description>
-  <devel project="devel:libraries:c_c++" package="libstfl"/>
-  <url>http://www.clifford.at/stfl/</url>
-</package>

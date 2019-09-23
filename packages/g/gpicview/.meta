@@ -1,6 +1,0 @@
-<package name="gpicview" project="openSUSE:Factory">
-  <title>LXDE Photo Viewer</title>
-  <description>An extremly fast, lightweight, yet feature-rich photo viewer
-This software is part of the LXDE Desktop Enviroment</description>
-  <devel project="X11:lxde" package="gpicview"/>
-</package>

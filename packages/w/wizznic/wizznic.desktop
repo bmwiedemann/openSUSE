@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Wizznic!
-GenericName=Puzznic
-Comment=Implementation of the arcade classic Puzznic
-Type=Application
-Exec=wizznic -z
-Icon=wizznic
-Categories=Game;LogicGame;
-StartupNotify=false

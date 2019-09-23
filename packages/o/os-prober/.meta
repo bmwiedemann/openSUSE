@@ -1,7 +1,0 @@
-<package name="os-prober" project="openSUSE:Factory">
-  <title>Probes disks on the system for installed operating systems</title>
-  <description>This package detects other OSes available on a system and outputs the results
-in a generic machine-readable format. Support for new OSes and Linux
-distributions can be added easily.</description>
-  <devel project="Base:System" package="os-prober"/>
-</package>

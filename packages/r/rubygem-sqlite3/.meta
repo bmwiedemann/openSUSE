@@ -1,9 +1,0 @@
-<package name="rubygem-sqlite3" project="openSUSE:Factory">
-  <title>A Ruby interface for the SQLite3 database engine</title>
-  <description>This module allows Ruby programs to interface with the SQLite3
-database engine (http://www.sqlite.org).  You must have the
-SQLite engine installed in order to build this module.
-
-Note that this module is NOT compatible with SQLite 2.x.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-sqlite3"/>
-</package>

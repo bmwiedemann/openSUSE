@@ -1,5 +1,0 @@
-<package name="par2cmdline" project="openSUSE:Factory">
-  <title>par2cmdline</title>
-  <description>A PAR 2.0 compatible file creation, verification, and repair tool</description>
-  <devel project="Archiving" package="par2cmdline"/>
-</package>

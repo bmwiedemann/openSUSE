@@ -1,8 +1,0 @@
-<package name="rubygem-sass-rails" project="openSUSE:Factory">
-  <title>rubygem-sass-rails</title>
-  <description>
-    Sass adapter for the Rails asset pipeline.
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-sass-rails"/>
-  <url>https://github.com/rails/sass-rails</url>
-</package>

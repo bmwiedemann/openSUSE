@@ -1,5 +1,0 @@
-<package name="imageburner" project="openSUSE:Factory">
-  <title>Imageburner</title>
-  <description>Simple image burner</description>
-  <devel project="X11:Pantheon:Apps" package="imageburner"/>
-</package>

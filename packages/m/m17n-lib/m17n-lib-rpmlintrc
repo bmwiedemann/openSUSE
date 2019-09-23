@@ -1,2 +1,0 @@
-addFilter(".*devel-file-in-non-devel-package.*so")
-addFilter(".*shlib-policy-missing-suffix")

@@ -1,5 +1,0 @@
-<package name="libdvdnav" project="openSUSE:Factory">
-  <title>A DVD Navigation Library</title>
-  <description>This library contains functions to display DVD video menus.</description>
-  <devel project="multimedia:libs" package="libdvdnav"/>
-</package>

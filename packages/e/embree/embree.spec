@@ -19,10 +19,10 @@
 Name:           embree
 Version:        3.5.2
 Release:        0
-Summary:        High Performance Ray Tracing Kernels
+Summary:        Ray Tracing Kernels
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/embree/embree
+URL:            https://github.com/embree/embree
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
@@ -34,16 +34,16 @@ BuildRequires:  tbb-devel
 ExclusiveArch:  x86_64
 
 %description
-Intel Embree is a collection of high-performance ray tracing kernels, developed
+Intel Embree is a collection of ray tracing kernels originally developed
 at Intel. The target users of Intel Embree are graphics application engineers
 who want to improve the performance of their photo-realistic rendering
-application by leveraging Embree's performance-optimized ray tracing kernels.
+application by leveraging Embree's ray tracing kernels.
 
 Note:
 This version is specifically dedicated to Blender Cycles, as it is using the
-build options, that are required for it. In order to reduce the risk of
-incompatibilities, it is build as static libraries, which is also enforced by
-the Blender Cycles build for the time being..
+build options that are required for it. In order to reduce the risk of
+incompatibilities, it is built as static libraries, which is also enforced by
+the Blender Cycles build for the time being.
 
 %package	devel-static
 Summary:        Development files for embree
@@ -88,4 +88,3 @@ rm -r %{buildroot}/usr/share/doc
 %{_libdir}/*.a
 
 %changelog
-

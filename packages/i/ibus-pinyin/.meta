@@ -1,6 +1,0 @@
-<package name="ibus-pinyin" project="openSUSE:Factory">
-  <title>The PinYin engine for IBus platform</title>
-  <description>PinYin engine for IBus platform. It provides a Chinese PinYin input method.
-拼音输入法</description>
-  <devel project="M17N" package="ibus-pinyin"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="freeipmi" project="openSUSE:Factory">
-  <title>freeipmi</title>
-  <description>set of utilities and libraries for ipmi query and configuration</description>
-  <devel project="systemsmanagement" package="freeipmi"/>
-</package>

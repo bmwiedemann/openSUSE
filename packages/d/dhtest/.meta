@@ -1,5 +1,0 @@
-<package name="dhtest" project="openSUSE:Factory">
-  <title>dhtest</title>
-  <description></description>
-  <devel project="network:utilities" package="dhtest"/>
-</package>

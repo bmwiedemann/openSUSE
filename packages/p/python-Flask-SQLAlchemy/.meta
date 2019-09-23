@@ -1,5 +1,0 @@
-<package name="python-Flask-SQLAlchemy" project="openSUSE:Factory">
-  <title></title>
-  <description>Adds SQLAlchemy support to your Flask application.</description>
-  <devel project="devel:languages:python:flask" package="python-Flask-SQLAlchemy"/>
-</package>

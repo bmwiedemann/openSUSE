@@ -1,5 +1,0 @@
-<package name="yast2-gpmc" project="openSUSE:Factory">
-  <title>YaST Group Policy Management Console</title>
-  <description>The Group Policy Management console for YaST provides tools for creating and modifying Group Policy Objects in Active Directory.</description>
-  <devel project="YaST:Head" package="yast2-gpmc"/>
-</package>

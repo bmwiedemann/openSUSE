@@ -1,8 +1,0 @@
-<package name="docbook-css-stylesheets" project="openSUSE:Factory">
-  <title>DocBook CSS Stylesheets</title>
-  <description>These cascading stylesheets allow you to view a DocBook XML document in
-software that supports XML styled with CSS2, for example, a recent
-Mozilla or Firefox browser. For more complex modifications of your XML
-document use the DocBook XSL stylesheets.</description>
-  <devel project="Publishing" package="docbook-css-stylesheets"/>
-</package>

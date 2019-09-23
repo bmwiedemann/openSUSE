@@ -1,6 +1,0 @@
-# ---
-:summary: HTML sanitization to Rails applications (part of Rails)
-:preamble: |-
-  %if 0%{?suse_version} == 1110
-  %define rb_build_versions ruby21
-  %endif

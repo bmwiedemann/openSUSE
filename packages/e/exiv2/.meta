@@ -1,6 +1,0 @@
-<package name="exiv2" project="openSUSE:Factory">
-  <title>Tool to access image Exif metadata</title>
-  <description>Exiv2 is a command line utility to access image metadata from tags like
-Exif.</description>
-  <devel project="X11:common:Factory" package="exiv2"/>
-</package>

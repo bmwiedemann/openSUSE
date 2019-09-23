@@ -1,5 +1,0 @@
-<package name="samba-krb-printing" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="network:samba:STABLE" package="samba-krb-printing"/>
-</package>

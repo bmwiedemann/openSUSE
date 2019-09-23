@@ -1,5 +1,0 @@
-<package name="tkfont" project="openSUSE:Factory">
-  <title>Tool to select fonts</title>
-  <description>It is a program similar to xfontsel.</description>
-  <devel project="devel:openSUSE:Factory" package="tkfont"/>
-</package>

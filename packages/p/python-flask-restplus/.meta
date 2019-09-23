@@ -1,5 +1,0 @@
-<package name="python-flask-restplus" project="openSUSE:Factory">
-  <title>Flask RestPlus</title>
-  <description>Flask-RESTPlus is an extension for Flask that adds support for quickly building REST APIs. It encourages best practices with minimal setup. If you are familiar with Flask, Flask-RESTPlus should be easy to pick up. It provides a coherent collection of decorators and tools to describe your API and expose its documentation properly using Swagger.</description>
-  <devel project="devel:languages:python:flask" package="python-flask-restplus"/>
-</package>

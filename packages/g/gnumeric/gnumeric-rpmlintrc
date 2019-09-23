@@ -1,7 +1,0 @@
-# Filter the following hidden-file warnings as the files in questin are meant to be hidden:
-addFilter("gnumeric.* hidden-file-or-dir /usr/share/gnumeric/.*/autoformat-templates/.*/.category")
-# Filter shared library policy missing suffix as we don't want to split the package at the moment:
-addFilter("gnumeric.* shlib-policy-missing-suffix")
-# Filter script-without-shebang warnings for python scripts as they are not meant to be used in
-# command line:
-addFilter("gnumeric.* script-without-shebang /usr/(lib|lib64)/gnumeric/.*/plugins/.*/.*\.py")

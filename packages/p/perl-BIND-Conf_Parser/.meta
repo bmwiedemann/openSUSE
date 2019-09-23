@@ -1,6 +1,0 @@
-<package name="perl-BIND-Conf_Parser" project="openSUSE:Factory">
-  <title>Parser class for BIND configuration files</title>
-  <description>This module implements a virtual base class for parsing BIND server
-version 8 configuration files (named.conf).</description>
-  <devel project="devel:languages:perl" package="perl-BIND-Conf_Parser"/>
-</package>

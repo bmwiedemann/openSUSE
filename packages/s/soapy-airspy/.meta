@@ -1,9 +1,0 @@
-<package name="soapy-airspy" project="openSUSE:Factory">
-  <title>SoapySDR Airspy module</title>
-  <description>Soapy Airspy - Airspy device support for Soapy SDR.
-A Soapy module that supports Airspy devices within the Soapy API.
-
-</description>
-  <devel project="hardware:sdr" package="soapy-airspy"/>
-  <url>https://github.com/pothosware/SoapyAirspy/wiki</url>
-</package>

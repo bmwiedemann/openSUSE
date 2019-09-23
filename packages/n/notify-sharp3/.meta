@@ -1,5 +1,0 @@
-<package name="notify-sharp3" project="openSUSE:Factory">
-  <title></title>
-  <description>Gtk3 version</description>
-  <devel project="Mono:Factory" package="notify-sharp3"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="tasque" project="openSUSE:Factory">
-  <title>A simple task management app (TODO list) for the Linux Desktop</title>
-  <description>Tasky is a simple task management app (TODO list) for the Linux
-Desktop.</description>
-  <devel project="GNOME:Apps" package="tasque"/>
-</package>

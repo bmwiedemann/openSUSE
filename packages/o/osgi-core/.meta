@@ -1,8 +1,0 @@
-<package name="osgi-core" project="openSUSE:Factory">
-  <title>OSGi Core API</title>
-  <description>OSGi Core Release 6, Interfaces and Classes for use in compiling bundles.
-
-</description>
-  <devel project="Java:packages" package="osgi-core"/>
-  <url>https://www.osgi.org</url>
-</package>

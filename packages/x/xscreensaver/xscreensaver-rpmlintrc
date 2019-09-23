@@ -1,2 +1,0 @@
-addFilter('desktopfile-without-binary')
-addFilter('binary-or-shlib-calls-gethostbyname')

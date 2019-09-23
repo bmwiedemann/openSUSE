@@ -1,7 +1,0 @@
-<package name="csindex" project="openSUSE:Factory">
-  <title>Utility for creating Czech or Slovak Sorted LaTeX Index Files</title>
-  <description>This program creates Czech and Slovak sorted index files for LaTeX.
-Usage: csindex -z il2 file.idx Creates file.ind - a sorted index file.
-Uses the ISO 8859-2 encoding.</description>
-  <devel project="Publishing" package="csindex"/>
-</package>

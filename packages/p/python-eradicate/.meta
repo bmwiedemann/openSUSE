@@ -1,5 +1,0 @@
-<package name="python-eradicate" project="openSUSE:Factory">
-  <title></title>
-  <description>Removes commented-out code</description>
-  <devel project="devel:languages:python" package="python-eradicate"/>
-</package>

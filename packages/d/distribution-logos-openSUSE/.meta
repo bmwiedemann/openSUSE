@@ -1,5 +1,0 @@
-<package name="distribution-logos-openSUSE" project="openSUSE:Factory">
-  <title>Distribution Logos</title>
-  <description>Logos for various openSUSE Distributions</description>
-  <devel project="Base:System" package="distribution-logos-openSUSE"/>
-</package>

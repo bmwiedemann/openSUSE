@@ -1,6 +1,0 @@
-<package name="python-Paver" project="openSUSE:Factory">
-  <title>python-paver</title>
-  <description></description>
-  <devel project="devel:languages:python" package="python-Paver"/>
-  <url>http://pypi.python.org/Paver</url>
-</package>

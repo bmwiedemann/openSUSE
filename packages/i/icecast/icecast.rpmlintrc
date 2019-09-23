@@ -1,2 +1,0 @@
-addFilter("non-etc-or-var-file-marked-as-conffile /usr/lib/systemd/system/icecast.service")
-addFilter("suse-logrotate-user-writable-log-dir /var/log/icecast icecast:icecast 0750")

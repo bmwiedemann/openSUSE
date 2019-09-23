@@ -1,6 +1,0 @@
-<package name="python-Babel-doc" project="openSUSE:Factory">
-  <title>Internationalization utilities</title>
-  <description>A collection of tools for internationalizing Python applications.</description>
-  <devel project="openSUSE:Factory" package="python-Babel"/>
-  <bcntsynctag>python-Babel</bcntsynctag>
-</package>

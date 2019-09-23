@@ -1,5 +1,0 @@
-<package name="kubernetes-node-image-pause" project="openSUSE:Factory">
-  <title>Kubernetes pause image files</title>
-  <description>This package contains the files needed for building the pause Docker image used by a Kubernetes cluster.</description>
-  <devel project="devel:CaaSP:Head:ControllerNode" package="kubernetes-node-image-pause"/>
-</package>

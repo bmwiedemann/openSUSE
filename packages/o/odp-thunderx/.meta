@@ -1,5 +1,0 @@
-<package name="odp-thunderx" project="openSUSE:Factory">
-  <title>OpenDataPlane</title>
-  <description>The ODP project has been established to produce an open-source, cross-platform set of application programming interfaces (APIs) for the networking data plane.</description>
-  <devel project="network" package="odp-thunderx"/>
-</package>

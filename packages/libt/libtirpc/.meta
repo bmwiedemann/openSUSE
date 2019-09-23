@@ -1,8 +1,0 @@
-<package name="libtirpc" project="openSUSE:Factory">
-  <title>Transport Independent RPC Library</title>
-  <description>The Transport Independent RPC library (TI-RPC) is a replacement for the
-standard SunRPC library in glibc which does not support IPv6 addresses.
-This implementation allows the support of other transports than UDP and
-TCP over IPv4</description>
-  <devel project="Base:System" package="libtirpc"/>
-</package>

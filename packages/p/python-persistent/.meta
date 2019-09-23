@@ -1,7 +1,0 @@
-<package name="python-persistent" project="openSUSE:Factory">
-  <title>Translucent persistent objects</title>
-  <description>This package contains a generic persistence implementation for Python. It forms the core protocol for making objects interact &quot;transparently&quot; with a database such as the ZODB.
-
-Please see the Sphinx documentation (docs/index.rst) for further information.</description>
-  <devel project="devel:languages:python" package="python-persistent"/>
-</package>

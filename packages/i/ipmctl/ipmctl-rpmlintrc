@@ -1,3 +1,0 @@
-# See <https://en.opensuse.org/openSUSE:Package_dependencies>:
-# -- Replace a package by another with the same functionality
-addFilter(".*obsolete-not-provided ")

@@ -1,5 +1,0 @@
-<package name="zramcfg" project="openSUSE:Factory">
-  <title>ZRAM configuration</title>
-  <description>Configure ZRAM devices</description>
-  <devel project="Base:System" package="zramcfg"/>
-</package>

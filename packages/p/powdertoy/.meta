@@ -1,5 +1,0 @@
-<package name="powdertoy" project="openSUSE:Factory">
-  <title>Powder Toy</title>
-  <description>A physical simulator which allows to construct objects using different materials.</description>
-  <devel project="games" package="powdertoy"/>
-</package>

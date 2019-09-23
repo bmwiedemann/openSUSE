@@ -1,7 +1,0 @@
-<package name="libnfs" project="openSUSE:Factory">
-  <title>libnfs</title>
-  <description>A client library for accessing NFS shares over a network
-
-</description>
-  <devel project="network" package="libnfs"/>
-</package>

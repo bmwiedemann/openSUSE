@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>NBD</short>
-  <description>The Network Block Device is a Linux-originated lightweight block access protocol that allows one to export a block device to a client.</description>
-  <port protocol="tcp" port="10809"/>
-</service>

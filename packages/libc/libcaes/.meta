@@ -1,6 +1,0 @@
-<package name="libcaes" project="openSUSE:Factory">
-  <title>Library for cross-platform AES encryption</title>
-  <description>libcaes is a library for cross-platform AES encryption.
-</description>
-  <devel project="security:forensics" package="libcaes"/>
-</package>

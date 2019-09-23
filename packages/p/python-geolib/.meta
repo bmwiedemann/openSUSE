@@ -1,8 +1,0 @@
-<package name="python-geolib" project="openSUSE:Factory">
-  <title>A library for geohash encoding, decoding and associated functions</title>
-  <description>A python library for geohash encoding, decoding and finding neighbour cells. This is a python port of [Chris Veness' javascript implementation](https://www.movable-type.co.uk/scripts/geohash.html).
-
-</description>
-  <devel project="devel:languages:python" package="python-geolib"/>
-  <url>https://geolib.readthedocs.io/en/latest/</url>
-</package>

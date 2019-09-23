@@ -1,2 +1,0 @@
-# rpmlint is not aware, that this package is a translation package.
-addFilter("package-with-huge-translation")

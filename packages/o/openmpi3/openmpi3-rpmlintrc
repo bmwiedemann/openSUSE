@@ -1,5 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("openmpi3-libs.* rpath-in-buildconfig")
-addFilter("openmpi3-devel.* shared-lib-calls-exit")

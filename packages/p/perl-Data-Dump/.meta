@@ -1,8 +1,0 @@
-<package name="perl-Data-Dump" project="openSUSE:Factory">
-  <title>Pretty printing of data structures</title>
-  <description>This module provide a single function called dump() that takes a list of
-values as argument and produce a string as result. The string contains perl
-code that when evaled will produce a deep copy of the original arguments. The
-string is formatted for easy reading.</description>
-  <devel project="devel:languages:perl" package="perl-Data-Dump"/>
-</package>

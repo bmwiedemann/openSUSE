@@ -1,7 +1,0 @@
-<package name="python-pybluez" project="openSUSE:Factory">
-  <title>A Python Bluetooth wrapper</title>
-  <description>PyBluez is an effort to create python wrappers around system Bluetooth
-resources to allow Python developers to easily and quickly create
-Bluetooth applications.</description>
-  <devel project="devel:languages:python" package="python-pybluez"/>
-</package>

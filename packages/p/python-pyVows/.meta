@@ -1,9 +1,0 @@
-<package name="python-pyVows" project="openSUSE:Factory">
-  <title>BDD Test Engine Based on Vows.js &lt;http://vowsjs.org&gt;</title>
-  <description>pyVows is a test engine based on Vows.js. It features topic-based testing,
-fast parallel running of tests, code coverage reports, test profiling, and
-more. See http://pyvows.org
-
-</description>
-  <devel project="devel:languages:python" package="python-pyVows"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="libqjson" project="openSUSE:Factory">
-  <title>QJson is a qt-based library that maps JSON data to QVariant objects</title>
-  <description>JSON (JavaScript Object Notation) is a lightweight data-interchange format.
-It can represent integer, real number, string, an ordered sequence of value,
-and a collection of name/value pairs. QJson is a qt-based library that maps
-JSON data to QVariant objects. JSON arrays will be mapped to QVariantList
-instances, while JSON's objects will be mapped to QVariantMap.</description>
-  <devel project="KDE:Qt" package="libqjson"/>
-</package>

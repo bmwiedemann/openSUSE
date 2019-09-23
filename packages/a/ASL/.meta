@@ -1,5 +1,0 @@
-<package name="ASL" project="openSUSE:Factory">
-  <title>Advanced Simulation Library</title>
-  <description>Advanced Simulation Library is a free and open source multiphysics simulation software package and a tool for solving Partial Differential Equations. It has significant user base across many areas of engineering and science, from both industrial and academic organizations. ASL utilizes only the methods that allow efficient parallelization: Lattice Boltzmann Methods, Explicit Finite Difference, Matrix Free Finite Elements, etc. and exploits all available hardware resources, such as SIMD, local cache, etc.. Once written, an ASL-based application can be deployed on a variety of architectures, such as CPU, GPU, FPGA, DSP, clusters and supercomputers, sometimes even without recompilation.</description>
-  <devel project="science" package="ASL"/>
-</package>

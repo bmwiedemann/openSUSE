@@ -1,5 +1,0 @@
-<package name="fflas-ffpack" project="openSUSE:Factory">
-  <title></title>
-  <description>The FFLAS-FFPACK library provides functionalities for dense linear algebra over word size prime finite field.</description>
-  <devel project="science" package="fflas-ffpack"/>
-</package>

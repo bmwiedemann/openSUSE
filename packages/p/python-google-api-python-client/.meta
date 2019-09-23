@@ -1,5 +1,0 @@
-<package name="python-google-api-python-client" project="openSUSE:Factory">
-  <title>Google API Python client</title>
-  <description>Google APIs Client Library for Python</description>
-  <devel project="devel:languages:python" package="python-google-api-python-client"/>
-</package>

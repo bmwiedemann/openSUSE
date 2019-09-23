@@ -1,6 +1,0 @@
-<package name="yast2-nis-client" project="openSUSE:Factory">
-  <title>YaST2 - Network Information Services (NIS, YP) Configuration</title>
-  <description>The YaST2 component for NIS configuration. NIS is a service similar to
-yellow pages.</description>
-  <devel project="YaST:Head" package="yast2-nis-client"/>
-</package>

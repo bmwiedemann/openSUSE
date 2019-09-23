@@ -1,6 +1,0 @@
-<package name="libmemcache" project="openSUSE:Factory">
-  <title>A client library for memcached</title>
-  <description>libmemcache implements a client for the superior memcached from Danga
-Interactive.</description>
-  <devel project="devel:libraries:c_c++" package="libmemcache"/>
-</package>

@@ -1,3 +1,0 @@
-addFilter("devel-file-in-non-devel-package.*/usr/lib/R/library/Rcpp/.*")
-addFilter("devel-file-in-non-devel-package.*/usr/lib64/R/library/Rcpp/.*")
-

@@ -1,6 +1,0 @@
-<package name="remmina" project="openSUSE:Factory">
-  <title></title>
-  <description>This package was branched from openSUSE:Factory:Contrib in order to ...
-move devel to X11:RemoteDesktop</description>
-  <devel project="X11:RemoteDesktop" package="remmina"/>
-</package>

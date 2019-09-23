@@ -1,7 +1,0 @@
-<package name="texlive-specs-p" project="openSUSE:Factory">
-  <title>One spec file for all TeX Live packages</title>
-  <description>Here one rpm spec file `texlive-specs.spec' is used for repackaging the several texmf/texmf-dist tarballs of TeX Live into their own rpms.  This is done with the help of more than 2200 spec files generate by the
-`generate' perl script of the package `Meta' in the same project and packed in the tarball `texlive-specs.tar.xz'.
-</description>
-  <devel project="Publishing:TeXLive" package="texlive-specs-p"/>
-</package>

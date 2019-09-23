@@ -1,7 +1,0 @@
-<package name="i2c-tools" project="openSUSE:Factory">
-  <title>A heterogeneous set of I2C tools for Linux</title>
-  <description>This package contains a heterogeneous set of I2C tools for Linux: a bus
-probing tool, a chip dumper, register-level access helpers, EEPROM
-decoding scripts, and more.</description>
-  <devel project="Base:System" package="i2c-tools"/>
-</package>

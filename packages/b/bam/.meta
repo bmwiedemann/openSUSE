@@ -1,5 +1,0 @@
-<package name="bam" project="openSUSE:Factory">
-  <title>Bam</title>
-  <description>Fast and flexible build system that uses Lua to describe the build process.</description>
-  <devel project="devel:tools:building" package="bam"/>
-</package>

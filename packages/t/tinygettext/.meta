@@ -1,5 +1,0 @@
-<package name="tinygettext" project="openSUSE:Factory">
-  <title>tinygettext</title>
-  <description>Temporary branch until package lands in correct devel project.</description>
-  <devel project="games" package="tinygettext"/>
-</package>

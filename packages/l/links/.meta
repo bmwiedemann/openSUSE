@@ -1,8 +1,0 @@
-<package name="links" project="openSUSE:Factory">
-  <title>Text-Based WWW Browser</title>
-  <description>Links is like Lynx--an easy-to-use browser for HTML documents and other
-Internet services, like FTP, telnet, and news. Links provides a
-graphical interface besides the text interface. It has good support for
-frames, supports ssl, and has a little bit of JavaScript support.</description>
-  <devel project="network" package="links"/>
-</package>

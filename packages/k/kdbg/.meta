@@ -1,7 +1,0 @@
-<package name="kdbg" project="openSUSE:Factory">
-  <title>Graphical User Interface for GDB</title>
-  <description>KDbg is a graphical user interface for GDB, the GNU debugger. It
-provides an intuitive interface for setting breakpoints, inspecting
-variables, and stepping through code.</description>
-  <devel project="KDE:Extra" package="kdbg"/>
-</package>

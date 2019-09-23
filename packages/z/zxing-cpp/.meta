@@ -1,5 +1,0 @@
-<package name="zxing-cpp" project="openSUSE:Factory">
-  <title>C++ port of ZXing</title>
-  <description>ZXing (&quot;zebra crossing&quot;) is an open-source, multi-format 1D/2D barcode image processing library. This package is provides a C++ port of the library.</description>
-  <devel project="devel:libraries:c_c++" package="zxing-cpp"/>
-</package>

@@ -1,3 +1,0 @@
-addFilter("shlib-policy-name-error")
-addFilter("missing-dependency-to-logrotate for logrotate script /etc/logrotate.d/libvirtd.(qemu|lxc|uml|libxl)")
-addFilter("incoherent-logrotate-file")

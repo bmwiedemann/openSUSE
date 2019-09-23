@@ -1,8 +1,0 @@
-# Defaults for apt-cacher-ng
-# sourced by /usr/lib/systemd/system/apt-cacher-ng.service and the cron job script
-
-# Additional options that are passed to the Daemon.
-DAEMON_OPTS=" -c /etc/apt-cacher-ng "
-
-# variable can be set to disable the daily cron job
-# NO_CRON_RUN=

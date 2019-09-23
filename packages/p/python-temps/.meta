@@ -1,5 +1,0 @@
-<package name="python-temps" project="openSUSE:Factory">
-  <title>python-temps</title>
-  <description>Context managers for creating and cleaning up temporary directories and files.</description>
-  <devel project="devel:languages:python" package="python-temps"/>
-</package>

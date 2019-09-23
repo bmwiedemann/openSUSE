@@ -1,9 +1,0 @@
-<package name="inst-source-utils" project="openSUSE:Factory">
-  <title>Utilities for creating customized installation sources</title>
-  <description>Utilities supporting autoinstallation and creation of customized
-installation  sources.
-
-Have a look at http://en.opensuse.org/Inst-source-utils for a detailed
-description of each script.</description>
-  <devel project="openSUSE:Tools" package="inst-source-utils"/>
-</package>

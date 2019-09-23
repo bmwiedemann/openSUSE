@@ -1,9 +1,0 @@
-# icinga2 is a meta package and it doesn't make sense to rename
-# the logrotate script with a prefix
-addFilter("incoherent-logrotate-file")
-# since icinga2 is just a meta package and can't work without its
-# binary requirements there is no point in marking it noarch
-addFilter("no-binary")
-# This check seems to trigger a false positive.
-# https://github.com/Icinga/icinga-packaging/pull/54#issuecomment-345628721
-addFilter("devel-file-in-non-devel-package")

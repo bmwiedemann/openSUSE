@@ -1,5 +1,0 @@
-<package name="apache-portlet-1_0-api" project="openSUSE:Factory">
-  <title>Portlet API 1.0 from Jetspeed2</title>
-  <description>Java Standard Portlet API accoring to JSR-168, from Jetspeed-2 .</description>
-  <devel project="Java:packages" package="apache-portlet-1_0-api"/>
-</package>

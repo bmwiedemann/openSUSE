@@ -1,7 +1,0 @@
-<package name="ModemManager" project="openSUSE:Factory">
-  <title>DBus interface for modem handling</title>
-  <description>DBus interface for modem handling. Provides a standard abstracted API
-(over DBus) to communicate with all sorts of modems (landline, GSM,
-CDMA).</description>
-  <devel project="GNOME:Factory" package="ModemManager"/>
-</package>

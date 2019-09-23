@@ -1,8 +1,0 @@
-<package name="apache2-mod_wsgi-python3" project="openSUSE:Factory">
-  <title>Python WSGI adapter module for Apache</title>
-  <description>The aim of mod_wsgi is to implement a simple to use Apache module which can
-host any Python application which supports the Python WSGI interface. 
-</description>
-  <devel project="openSUSE:Factory" package="apache2-mod_wsgi"/>
-  <bcntsynctag>apache2-mod_wsgi</bcntsynctag>
-</package>

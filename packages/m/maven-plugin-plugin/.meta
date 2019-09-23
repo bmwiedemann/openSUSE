@@ -1,6 +1,0 @@
-<package name="maven-plugin-plugin" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="maven-plugin-tools"/>
-  <bcntsynctag>maven-plugin-tools</bcntsynctag>
-</package>

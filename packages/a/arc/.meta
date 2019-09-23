@@ -1,8 +1,0 @@
-<package name="arc" project="openSUSE:Factory">
-  <title>Archiving tool for arc achives</title>
-  <description>This package allows you to unpack *.arc file
-
-</description>
-  <devel project="Archiving" package="arc"/>
-  <url>https://sourceforge.net/projects/arc</url>
-</package>

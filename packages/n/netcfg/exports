@@ -1,6 +1,0 @@
-# See the exports(5) manpage for a description of the syntax of this file.
-# This file contains a list of all directories that are to be exported to 
-# other computers via NFS (Network File System).
-# This file used by rpc.nfsd and rpc.mountd. See their manpages for details
-# on how make changes in this file effective.
-

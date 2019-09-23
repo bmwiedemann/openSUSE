@@ -1,5 +1,0 @@
-<package name="gli" project="openSUSE:Factory">
-  <title>OpenGL Image (GLI) is a header only C++ image library for graphics software</title>
-  <description>OpenGL Image (GLI) is a header only C++ image library for graphics software. *GLI* provides classes and functions to load image files (KTX and (DDS), facilitate graphics APIs texture creation, compare textures, access texture texels, sample textures, convert textures, generate mipmaps, etc. </description>
-  <devel project="science" package="gli"/>
-</package>

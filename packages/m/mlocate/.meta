@@ -1,5 +1,0 @@
-<package name="mlocate" project="openSUSE:Factory">
-  <title>mlocate</title>
-  <description>&quot;Merging&quot; locate command with serious speed improvements over the others</description>
-  <devel project="server:search" package="mlocate"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="docbook_4" project="openSUSE:Factory">
-  <title>DocBook DTD Version 4.x</title>
-  <description>DocBook is a schema. It is particularly well-suited to books and papers
-about computer hardware and software (though it is not limited to these
-applications at all). This package has SGML- and XML-DTD versions
-included. Some versions of DocBook contain also a RELAX NG and W3C
-Schema.</description>
-  <devel project="Publishing" package="docbook_4"/>
-</package>

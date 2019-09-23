@@ -1,5 +1,0 @@
-addFilter("shlib-policy-nonversioned-dir")
-addFilter("shlib-policy-missing-lib")
-# This script is supposed to be run from within the appliance only
-addFilter("non-executable-script /usr/share/virt-p2v/launch-virt-p2v")
-addFilter("non-standard-group Development/Languages")

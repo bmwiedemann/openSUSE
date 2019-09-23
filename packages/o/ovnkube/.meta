@@ -1,0 +1,5 @@
+<package name="ovnkube" project="openSUSE:Factory">
+  <title>ovnkube</title>
+  <description>Kubernetes integration for Open Virtual Network (OVN)</description>
+  <devel project="devel:kubic" package="ovnkube"/>
+</package>

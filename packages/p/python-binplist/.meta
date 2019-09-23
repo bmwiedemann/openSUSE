@@ -1,5 +1,0 @@
-<package name="python-binplist" project="openSUSE:Factory">
-  <title>Binary property list (plist) parser module written in python</title>
-  <description></description>
-  <devel project="security:forensics" package="python-binplist"/>
-</package>

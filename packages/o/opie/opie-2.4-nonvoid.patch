@@ -1,8 +1,0 @@
---- opiepasswd.c
-+++ opiepasswd.c
-@@ -432,4 +432,5 @@
-       }
-     }
-   }
-+  return 0;
- }

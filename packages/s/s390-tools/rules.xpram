@@ -1,2 +1,0 @@
-# Rules to add xpram* nodes to maintain SLES11-SP1 backward compatibility
-KERNEL=="sl*[0-9]", SYMLINK+="xpram%n"

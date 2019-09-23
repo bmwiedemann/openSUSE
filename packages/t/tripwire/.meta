@@ -1,8 +1,0 @@
-<package name="tripwire" project="openSUSE:Factory">
-  <title>IDS (Intrusion Detection System)</title>
-  <description>Tripwire is a very valuable security tool for Linux systems, if it is installed to a clean system. Tripwire should be installed right after the OS installation, and before you have connected your system to a network (i.e., before any possibility exists that someone could alter files on your system).
-
-When Tripwire is initially set up, it creates a database that records certain file information. Then when it is run, it compares a designated set of files and directories to the information stored in the database. Added or deleted files are flagged and reported, as are any files that have changed from their previously recorded state in the database. When Tripwire is run against system files on a regular basis, any file changes will be spotted when Tripwire is run. Tripwire will report the changes, which will give system administrators a clue that they need to enact damage control measures immediately if certain files have been altered.   </description>
-  <devel project="security" package="tripwire"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>

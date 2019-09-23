@@ -1,9 +1,0 @@
-<package name="gwenhywfar" project="openSUSE:Factory">
-  <title>Multiplatform Helper Library for Other Libraries</title>
-  <description>Gwenhywfar is a base library used to provide OS abstraction functions
-for Linux, FreeBSD, OpenBSD, NetBSD, and Windows. It also includes some
-often needed functions (for example, handling and parsing of
-configuration files, reading and writingof XML files, and interprocess
-communication).</description>
-  <devel project="Office" package="gwenhywfar"/>
-</package>

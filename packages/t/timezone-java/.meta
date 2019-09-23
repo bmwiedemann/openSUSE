@@ -1,6 +1,0 @@
-<package name="timezone-java" project="openSUSE:Factory">
-  <title>Timezone Descriptions</title>
-  <description>These are configuration files that describe available time zones - this
-package is intended for Java Virtual Machine based on OpenJDK.</description>
-  <devel project="openSUSE:Factory" package="timezone"/>
-</package>

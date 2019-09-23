@@ -1,5 +1,0 @@
-<package name="cowsay" project="openSUSE:Factory">
-  <title>Configurable talking cow (and some other creatures)</title>
-  <description>cowsay is a configurable talking cow, written in Perl.  It operates much as the figlet program does, and it written in the same spirit of silliness.</description>
-  <devel project="shells" package="cowsay"/>
-</package>

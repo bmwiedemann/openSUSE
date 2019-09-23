@@ -1,8 +1,0 @@
-<package name="vkmark" project="openSUSE:Factory">
-  <title>Vulkan benchmark utility</title>
-  <description>An extensible Vulkan benchmarking suite with targeted, configurable scenes.
-
-</description>
-  <devel project="benchmark" package="vkmark"/>
-  <url>https://github.com/vkmark/vkmark</url>
-</package>

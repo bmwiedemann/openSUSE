@@ -1,6 +1,0 @@
-# the init script is called like the original one...
-addFilter("W: incoherent-init-script-name nrpe")
-# RPM doesn't allow to package the -doc package as noarch
-addFilter("W: no-binary")
-# better PreRequire grep as we need it for /etc/services...
-addFilter("W: useless-explicit-requires grep")

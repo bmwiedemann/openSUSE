@@ -1,6 +1,0 @@
-<package name="adapta-gtk-theme" project="openSUSE:Factory">
-  <title>An adaptive Gtk+ theme based on Material Design Guidelines</title>
-  <description>Adapta is a GTK+ theme based on Material Design Guidelines that was
-created based on Flat-Plat theme.</description>
-  <devel project="X11:common:Factory" package="adapta-gtk-theme"/>
-</package>

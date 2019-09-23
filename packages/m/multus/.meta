@@ -1,6 +1,0 @@
-<package name="multus" project="openSUSE:Factory">
-  <title>multus</title>
-  <description>CNI plugin providing multiple interfaces in containers</description>
-  <devel project="devel:kubic" package="multus"/>
-  <url>https://github.com/intel/multus-cni</url>
-</package>

@@ -1,8 +1,0 @@
-To update the package:
-
-- run update-tarball.sh to create a new tarball
-- update the changes file
-- osc commit
-
-The update-tarball.sh script requires a go installation, the go dependency tool
-dep and git to run.

@@ -1,5 +1,0 @@
-<package name="pavucontrol-qt" project="openSUSE:Factory">
-  <title>pavucontrol-qt</title>
-  <description></description>
-  <devel project="X11:LXQt" package="pavucontrol-qt"/>
-</package>

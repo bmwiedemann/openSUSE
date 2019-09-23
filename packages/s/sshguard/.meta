@@ -1,8 +1,0 @@
-<package name="sshguard" project="openSUSE:Factory">
-  <title>Protect hosts from brute force attacks against ssh</title>
-  <description>Sshguard protects networked hosts from brute force attacks
-against ssh servers. It detects such attacks and blocks the
-attacker's address with a firewall rule.</description>
-  <devel project="security" package="sshguard"/>
-  <url>http://www.sshguard.net/</url>
-</package>

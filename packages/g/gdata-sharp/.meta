@@ -1,5 +1,0 @@
-<package name="gdata-sharp" project="openSUSE:Factory">
-  <title>Google GData .NET Client Library</title>
-  <description>The GData .NET Client Library provides a library and source code that make it easy to access data through Google Data APIs.</description>
-  <devel project="Mono:Factory" package="gdata-sharp"/>
-</package>

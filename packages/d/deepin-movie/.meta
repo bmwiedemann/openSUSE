@@ -1,6 +1,0 @@
-<package name="deepin-movie" project="openSUSE:Factory">
-  <title>Deepin Video Players</title>
-  <description>The default media player for Deepin. QML is used to build its
-graphical interface, combined with QtAV as its multimedia backend.</description>
-  <devel project="X11:Deepin" package="deepin-movie"/>
-</package>

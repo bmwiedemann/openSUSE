@@ -1,7 +1,0 @@
-<package name="strace" project="openSUSE:Factory">
-  <title>A utility to trace the system calls of a program</title>
-  <description>With strace, you can trace the activity of a program.  Information
-about any system calls the program makes and the signals it receives
-and processes can be seen.  Child processes can also be tracked.</description>
-  <devel project="devel:tools" package="strace"/>
-</package>

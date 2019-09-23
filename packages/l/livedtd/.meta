@@ -1,8 +1,0 @@
-<package name="livedtd" project="openSUSE:Factory">
-  <title>DTD Visualizing Tool</title>
-  <description>The package comes with a Perl script (livedtd.pl) that converts an SGML
-or XML DTD (Document Type Definition) into an HTML document.  The HTML
-document is exactly the same text as the DTD but with &quot;live&quot; links that
-let you navigate through the DTD.</description>
-  <devel project="Publishing" package="livedtd"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-openapi-core" project="openSUSE:Factory">
-  <title>Python openapi-core</title>
-  <description>Openapi-core is a Python library that adds client-side and server-side support for the OpenAPI Specification v3.0.0.</description>
-  <devel project="devel:languages:python" package="python-openapi-core"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="dpic" project="openSUSE:Factory">
-  <title>Pic language processor</title>
-  <description>Pic language processor for LaTeX documents or web sites.</description>
-  <devel project="Publishing" package="dpic"/>
-</package>

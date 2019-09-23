@@ -1,5 +1,0 @@
-<package name="libsndfile-progs" project="openSUSE:Factory">
-  <title>Example Programs for libsndfile</title>
-  <description>This package includes the example programs for libsndfile.</description>
-  <devel project="openSUSE:Factory" package="libsndfile"/>
-</package>

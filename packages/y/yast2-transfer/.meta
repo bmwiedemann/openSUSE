@@ -1,5 +1,0 @@
-<package name="yast2-transfer" project="openSUSE:Factory">
-  <title>YaST2 - Agent for Various Transfer Protocols</title>
-  <description>A YaST2 Agent for various Transfer Protocols: FTP, HTTP, and TFTP.</description>
-  <devel project="YaST:Head" package="yast2-transfer"/>
-</package>

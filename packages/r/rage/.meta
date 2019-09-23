@@ -1,7 +1,0 @@
-<package name="rage" project="openSUSE:Factory">
-  <title>rage</title>
-  <description>Rage is a video and audio player written with Enlightenment Foundation Libraries with some extra bells and whistles.
-
-It is a simple video and audio player intended to be slick yet simplistic, much like Mplayer. You can provide 1 or more files to play on the command-line or just DND files onto the rage window to insert them into the playlist. You can get a visual representation of everything on the playlist by hitting the / key, or just hovering your mouse over the right side of the window. Mouse back over the left side of the window ti dismiss it or press the key again. It has a full complement of key controls if you see the README for the full list. It will automatically search for album art for music files, if not already cached, and display that. It even generates thumbnails for the timeline of a video and allows you to preview the position on mouseover of the position bar at the bottom of the window</description>
-  <devel project="X11:Enlightenment:Factory" package="rage"/>
-</package>

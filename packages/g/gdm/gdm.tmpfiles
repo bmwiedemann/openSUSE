@@ -1,4 +1,0 @@
-d /var/lib/gdm/ 0750 gdm gdm -
-d /var/log/gdm/ 0711 root gdm -
-d /var/cache/gdm/ 1755 root root -
-

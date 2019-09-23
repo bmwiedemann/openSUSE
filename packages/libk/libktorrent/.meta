@@ -1,5 +1,0 @@
-<package name="libktorrent" project="openSUSE:Factory">
-  <title>Torrent Downloading Library</title>
-  <description>libktorrent is a torrent downloading library.</description>
-  <devel project="KDE:Extra" package="libktorrent"/>
-</package>

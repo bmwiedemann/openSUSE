@@ -1,6 +1,0 @@
-<package name="buzztrax" project="openSUSE:Factory">
-  <title>A music production environment</title>
-  <description>Buzztrax (formerly known as Buzztard) is a music production environment, based on a very modular approach taking many concepts from trackers a step further. It runs under Linux and is compatible to the windows only and close source software Buzz. The backend is using GStreamer as a multimedia framework. It can use Alsa, Jack, PulseAudio and other audio interfaces.</description>
-  <devel project="multimedia:apps" package="buzztrax"/>
-  <url>http://buzztrax.org</url>
-</package>

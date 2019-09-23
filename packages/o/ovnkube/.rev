@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4186697d91d244a905e1917826b1b44</srcmd5>
+    <version>v0.3.11+20190912</version>
+    <time>1569234820</time>
+    <user>dimstar_suse</user>
+    <comment>Yet another CNI plugin. I want to experiment with ovnkube on kubic as an alternative for cilium or flannel, mostly because of the recent activity in OvS/OVN to enable native support for BPF and XDP.
+
+If you want to read more about that:
+http://vger.kernel.org/lpc_net2018_talks/ovs-ebpf-afxdp.pdf
+
+We (network team + cloud team) are thinking about using OVN as the technology which will make networking of Kubernetes and OpenStack consistent. OVN has both CNI and Neutron plugin. So it should be possible to connect both Kubernetes and OpenStack workloads.
+
+ovnkube, OvS and OVN are all written in Go and C and they use normal build systems. So I don't expect so much pain as we have with Envoy and Bazel...</comment>
+    <requestid>731690</requestid>
+  </revision>
+</revisionlist>

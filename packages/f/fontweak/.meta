@@ -1,5 +1,0 @@
-<package name="fontweak" project="openSUSE:Factory">
-  <title>Fontweak</title>
-  <description>Fontweak is a fontconfig GUI front-end. It is written in Java, use Swing GUI library. Release under GNU GPL version 3, visit https://github.com/guoyunhe/fontweak</description>
-  <devel project="M17N" package="fontweak"/>
-</package>

@@ -1,4 +1,0 @@
-# We have not split these out on purpose, see spec comment
-addFilter("shlib-policy-missing-suffix")
-# Following the above, there is no need for a devel package as there is no comsumers.
-addFilter("devel-file-in-non-devel-package")

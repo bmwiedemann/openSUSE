@@ -1,6 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-# libOpenSceneGraph55.i586: W: shlib-policy-missing-lib  :)
-addFilter("package-with-huge-docs")
-

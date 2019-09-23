@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>Icecream scheduler</short>
-  <description>Icecream is a distributed compiler daemon. Enable this option if this host runs the scheduler.</description>
-  <port protocol="tcp" port="8765"/>
-  <port protocol="tcp" port="8766"/><!-- Telnet interface -->
-  <port protocol="udp" port="8765"/><!-- Broadcast/discovery port -->
-</service>

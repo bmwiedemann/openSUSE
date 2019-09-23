@@ -1,6 +1,0 @@
-<package name="ocaml-gen" project="openSUSE:Factory">
-  <title>Simple, efficient iterators for OCaml</title>
-  <description>Iterators for OCaml, both restartable and consumable.
-The implementation keeps a good balance between simplicity and performance.</description>
-  <devel project="devel:languages:ocaml" package="ocaml-gen"/>
-</package>

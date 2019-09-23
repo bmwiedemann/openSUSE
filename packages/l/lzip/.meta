@@ -1,6 +1,0 @@
-<package name="lzip" project="openSUSE:Factory">
-  <title>Lossless Data Compressor based on the LZMA Algorithm</title>
-  <description>Lzip is a lossless data compressor based on the LZMA algorithm, with very safe integrity checking and a user interface almost identical to the one of bzip2. Lzip is only a data compressor, not an archiver. It has no facilities for multiple files, encryption, or archive-splitting, but, in the Unix tradition, relies instead on separate external utilities such as GNU Tar for these tasks.</description>
-  <devel project="Archiving" package="lzip"/>
-  <url>http://es.geocities.com/ant_diaz2001/lzip.html</url>
-</package>

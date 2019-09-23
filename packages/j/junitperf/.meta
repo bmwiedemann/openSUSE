@@ -1,7 +1,0 @@
-<package name="junitperf" project="openSUSE:Factory">
-  <title>JUnit extension for performance and scalability testing</title>
-  <description>JUnitPerf is a collection of JUnit test decorators used to measure the
-performance and scalability of functionality contained within existing
-JUnit tests.</description>
-  <devel project="Java:packages" package="junitperf"/>
-</package>

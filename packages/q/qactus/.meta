@@ -1,5 +1,0 @@
-<package name="qactus" project="openSUSE:Factory">
-  <title>OBS notifier</title>
-  <description>A Qt-based OBS notifier application</description>
-  <devel project="KDE:Extra" package="qactus"/>
-</package>

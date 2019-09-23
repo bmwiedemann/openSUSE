@@ -1,6 +1,0 @@
-<package name="yast2-aduc" project="openSUSE:Factory">
-  <title>Active Directory Users and Computers for YaST</title>
-  <description>The Active Directory Users and Computers for YaST module provides tools for creating and modifying Users, Groups, and Computer objects in Active Directory.
-</description>
-  <devel project="YaST:Head" package="yast2-aduc"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="qview" project="openSUSE:Factory">
-  <title>Practical and minimal image viewer</title>
-  <description>qView is an image viewer designed with minimalism and usability in mind. No cluttered interface, just your image and a titlebar.</description>
-  <devel project="graphics" package="qview"/>
-</package>

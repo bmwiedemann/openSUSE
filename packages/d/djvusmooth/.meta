@@ -1,8 +1,0 @@
-<package name="djvusmooth" project="openSUSE:Factory">
-  <title>Graphical Editor for DjVu</title>
-  <description>DjVuSmooth is a graphical editor for DjVu documents.
-
-</description>
-  <devel project="Publishing" package="djvusmooth"/>
-  <url>http://jwilk.net/software/djvusmooth</url>
-</package>

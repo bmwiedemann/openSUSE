@@ -1,5 +1,0 @@
-<package name="libxklavier" project="openSUSE:Factory">
-  <title>Library with X keyboard related functions</title>
-  <description>This library allows you to simplify XKB-related development.</description>
-  <devel project="GNOME:Factory" package="libxklavier"/>
-</package>

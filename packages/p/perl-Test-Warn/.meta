@@ -1,6 +1,0 @@
-<package name="perl-Test-Warn" project="openSUSE:Factory">
-  <title>Perl extension to test methods for warnings</title>
-  <description>This module provides a few convenience methods for testing warning
-based code.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Warn"/>
-</package>

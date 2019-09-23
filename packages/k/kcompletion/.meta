@@ -1,5 +1,0 @@
-<package name="kcompletion" project="openSUSE:Factory">
-  <title>kcompletion</title>
-  <description>KCompletion</description>
-  <devel project="KDE:Frameworks5" package="kcompletion"/>
-</package>

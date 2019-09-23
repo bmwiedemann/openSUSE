@@ -1,6 +1,0 @@
-<package name="python-pyudev" project="openSUSE:Factory">
-  <title>Udev bindings for Python</title>
-  <description>A Python binding to libudev, the hardware management library and service found
-in modern linux systems.</description>
-  <devel project="devel:languages:python" package="python-pyudev"/>
-</package>

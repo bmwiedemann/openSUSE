@@ -1,8 +1,0 @@
-<package name="rubygem-rack-protection" project="openSUSE:Factory">
-  <title>rubygem-rack-protection</title>
-  <description>
-    You should use protection!
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-rack-protection"/>
-  <url>http://rubygems.org/gems/rack-protection</url>
-</package>

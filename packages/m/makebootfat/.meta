@@ -1,5 +1,0 @@
-<package name="makebootfat" project="openSUSE:Factory">
-  <title>Create Bootable FAT File Systems</title>
-  <description>Create bootable FAT file systems, mainly for USB disks.</description>
-  <devel project="Base:System" package="makebootfat"/>
-</package>

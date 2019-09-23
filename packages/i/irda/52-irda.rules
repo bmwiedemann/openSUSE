@@ -1,5 +1,0 @@
-# udev rules for IrDA usb dongles
-#
-# check if SYSFS product description contains IrDA and restart irda
-# atm we don't have a useable rule for stopping rcirda on device removal
-SUBSYSTEM=="usb", ATTR{product}=="*IrDA*", ACTION=="add", IMPORT{builtin}="kmod load ircomm-tty", TAG+="systemd", ENV{SYSTEMD_WANTS}+="irattach.service"

@@ -1,7 +1,0 @@
-<package name="yast2-nfs-server" project="openSUSE:Factory">
-  <title>YaST2 - NFS Server Configuration</title>
-  <description>The YaST2 component for configuration of an NFS server. NFS stands for
-network file system access. It allows access to files on remote
-machines.</description>
-  <devel project="YaST:Head" package="yast2-nfs-server"/>
-</package>

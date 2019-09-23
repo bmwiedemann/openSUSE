@@ -1,6 +1,0 @@
-<package name="python-blessings" project="openSUSE:Factory">
-  <title>Blessings</title>
-  <description>A thin, practical wrapper around terminal coloring, styling, and positioning</description>
-  <devel project="devel:languages:python" package="python-blessings"/>
-  <url>https://pypi.python.org/pypi/blessings/1.6</url>
-</package>

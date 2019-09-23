@@ -1,9 +1,0 @@
-<package name="stgit" project="openSUSE:Factory">
-  <title>Stacked GIT - Source Code Management Tool</title>
-  <description>StGIT is a Python application providing similar functionality to Quilt
-(i.e. pushing/popping patches to/from a stack) on top of GIT. These
-operations are performed using GIT commands and the patches are stored
-as GIT commit objects, allowing easy merging of the StGIT patches into
-other repositories using standard GIT functionality.</description>
-  <devel project="devel:tools:scm" package="stgit"/>
-</package>

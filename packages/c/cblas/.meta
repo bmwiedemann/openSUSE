@@ -1,5 +1,0 @@
-<package name="cblas" project="openSUSE:Factory">
-  <title>A standard C language APIs for BLAS</title>
-  <description>This library provides a native C interface to BLAS routines available at www.netlib.org/blas to facilitate usage of BLAS functionality for C programmers.</description>
-  <devel project="science" package="cblas"/>
-</package>

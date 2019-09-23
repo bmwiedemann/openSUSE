@@ -1,8 +1,0 @@
-<package name="eperiodique" project="openSUSE:Factory">
-  <title>Graphical application that display the periodic table of the elements</title>
-  <description>graphical application that display the periodic table of the
-  elements. It shows basic data for each element, pictures, Bohr models and
-  lattice structures.</description>
-  <devel project="X11:Enlightenment:Factory" package="eperiodique"/>
-  <url>http://eperiodique.sourceforge.net/</url>
-</package>

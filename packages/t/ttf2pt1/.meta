@@ -1,7 +1,0 @@
-<package name="ttf2pt1" project="openSUSE:Factory">
-  <title>True Type Font to PostScript Type 1 font converter</title>
-  <description>This is a collection of tools and scripts that allow to convert True
-Type Fonts (as used by MS Wind*ws) to be converted to Postscript Type 1
-fonts, so they can be used in X11 and Ghostscript.</description>
-  <devel project="Publishing" package="ttf2pt1"/>
-</package>

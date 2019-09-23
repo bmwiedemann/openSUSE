@@ -1,6 +1,0 @@
-<package name="crystalhd-libs" project="openSUSE:Factory">
-  <title>Broadcom Crystal HD device interface library</title>
-  <description>This package contains the library to support the hardware decoding of
-H.264 video stream with Broadcom Crystal HD chips.</description>
-  <devel project="hardware" package="crystalhd-libs"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="mono-uia" project="openSUSE:Factory">
-  <title>Implementations of members and interfaces based on MS UIA API</title>
-  <description>User Interface Automation (UIA) is a new accessibility standard</description>
-  <devel project="Mono:Factory" package="mono-uia"/>
-</package>

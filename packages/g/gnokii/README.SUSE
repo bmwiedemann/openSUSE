@@ -1,8 +1,0 @@
-to avoid need for suid bit, serial ports are opened by resmgr
-
-suppose your user name is "joesix" all you need to do is to issue the  
-following two commands: 
-# echo "allow modem user=joesix" > /etc/resmgr.conf.d/60-joesix.conf  
-# rcresmgr restart
-
-see /usr/share/doc/packages/resmgr/ for more information

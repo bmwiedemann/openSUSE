@@ -1,5 +1,0 @@
-<package name="bazel-rules-cc" project="openSUSE:Factory">
-  <title>bazel-rules-cc</title>
-  <description>C++ rules for Bazel</description>
-  <devel project="devel:tools:building" package="bazel-rules-cc"/>
-</package>

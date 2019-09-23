@@ -1,9 +1,0 @@
-<package name="soapy-rtlsdr" project="openSUSE:Factory">
-  <title>SoapySDR RTL-SDR support module</title>
-  <description>Soapy RTL-SDR - RTL-SDR device support for Soapy SDR.
-A Soapy module that supports RTL-SDR devices within the Soapy API.
-
-</description>
-  <devel project="hardware:sdr" package="soapy-rtlsdr"/>
-  <url>https://github.com/pothosware/SoapyRTLSDR/wiki</url>
-</package>

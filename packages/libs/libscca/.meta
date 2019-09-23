@@ -1,8 +1,0 @@
-<package name="libscca" project="openSUSE:Factory">
-  <title>Library and tools to access the Windows Prefetch File (PF) format</title>
-  <description>Library and tools to access the Windows Prefetch File (PF) format.
-
-Note that this project currently only focuses on the analysis of the format.
-</description>
-  <devel project="security:forensics" package="libscca"/>
-</package>

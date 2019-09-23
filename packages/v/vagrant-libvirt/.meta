@@ -1,5 +1,0 @@
-<package name="vagrant-libvirt" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="Virtualization:vagrant" package="vagrant-libvirt"/>
-</package>

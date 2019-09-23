@@ -1,5 +1,0 @@
-addFilter("devel-file-in-non-devel-package")
-addFilter("file-contains-buildroot")
-addFilter("script-without-shebang")
-addFilter("zero-length")
-addFilter("hidden-file-or-dir")

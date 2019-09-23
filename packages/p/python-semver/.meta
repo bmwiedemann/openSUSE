@@ -1,9 +1,0 @@
-<package name="python-semver" project="openSUSE:Factory">
-  <title>Python helper for Semantic Versioning</title>
-  <description>A Python module for semantic versioning. Simplifies comparing versions.
-See also http://semver.org/
-
-</description>
-  <devel project="devel:languages:python" package="python-semver"/>
-  <url>https://github.com/k-bx/python-semver</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="rubygem-nio4r" project="openSUSE:Factory">
-  <title>nio4r</title>
-  <description>New IO for Ruby</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-nio4r"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="gnu-free-fonts" project="openSUSE:Factory">
-  <title>Free UCS Outline Fonts</title>
-  <description>A set of free outline (OpenType, for example) fonts covering the ISO
-10646/Unicode UCS (Universal Character Set). The set consists of three
-typefaces: one monospaced and two proportional (one with uniform and
-one with modulated stroke.
-</description>
-  <devel project="M17N:fonts" package="gnu-free-fonts"/>
-</package>

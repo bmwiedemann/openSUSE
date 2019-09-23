@@ -1,7 +1,0 @@
-<package name="mac-robber" project="openSUSE:Factory">
-  <title>Tool to create a timeline of file activity for mounted file systems</title>
-  <description>mac-robber is a digital forensics and incident response tool that can be used
-with The Sleuth Kit to create a timeline of file activity for mounted
-file systems.</description>
-  <devel project="security:forensics" package="mac-robber"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="scanmem" project="openSUSE:Factory">
-  <title>Scanmem</title>
-  <description>Scanmem is a simple interactive debugging utility for linux, used to locate the address of a variable in an executing process. This can be used for the analysis or modification of a hostile process on a compromised machine, reverse engineering, or as a &quot;pokefinder&quot; to cheat at video games.
-
-Since version 0.8, scanmem includes a GUI called GameConqueror. But the GUI is not provided on SUSE distributions due to security reasons (requires pkexec, contains most bugs).</description>
-  <devel project="devel:tools" package="scanmem"/>
-</package>

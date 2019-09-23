@@ -1,6 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git://github.com/drush-ops/drush.git</param>
-    <param name="changesrevision">59454e59b1139d3c0264504e42359397d828d459</param>
-  </service>
-</servicedata>

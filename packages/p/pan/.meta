@@ -1,7 +1,0 @@
-<package name="pan" project="openSUSE:Factory">
-  <title>A Powerful Newsreader for GNOME</title>
-  <description>PAN is a very powerful newsreader. Its user interface is loosely based
-on other popular newsreaders.
-</description>
-  <devel project="network" package="pan"/>
-</package>

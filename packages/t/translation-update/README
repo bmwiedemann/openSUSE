@@ -1,5 +1,0 @@
-This is a set of translation updates that are installed into the
-preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
-
-Applications that use gettext correctly can then pick up overridden or
-updated translations from this location.

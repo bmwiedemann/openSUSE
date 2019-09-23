@@ -1,8 +1,0 @@
-<package name="giblib" project="openSUSE:Factory">
-  <title>Giblib is a utility library.</title>
-  <description>giblib is a utility library. It incorporates doubly linked lists, some string
-functions, and a wrapper for imlib2.
-</description>
-  <devel project="X11:Utilities" package="giblib"/>
-  <url>http://linuxbrit.co.uk/giblib/</url>
-</package>

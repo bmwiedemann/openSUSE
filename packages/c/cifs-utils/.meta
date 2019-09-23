@@ -1,6 +1,0 @@
-<package name="cifs-utils" project="openSUSE:Factory">
-  <title>Utilities for doing and managing mounts of the Linux CIFS filesystem</title>
-  <description>The cifs-utils package consist of utilities for doing and managing mounts of
-the Linux CIFS filesystem.</description>
-  <devel project="network:samba:STABLE" package="cifs-utils"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="capi4hylafax" project="openSUSE:Factory">
-  <title>Adds a faxcapi modem for hylafax</title>
-  <description>capi4hylafax adds a faxcapi modem to the hylafax environment. It allows
-you to send and receive FAX documents with CAPI 2.0 fax controllers via
-a hylafax server.</description>
-  <devel project="network:telephony" package="capi4hylafax"/>
-</package>

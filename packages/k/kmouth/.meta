@@ -1,7 +1,0 @@
-<package name="kmouth" project="openSUSE:Factory">
-  <title>kdeaccessibility Base Package</title>
-  <description>This package suggests the packages which are built from the
-kdeaccessibility module.
-</description>
-  <devel project="KDE:Applications" package="kmouth"/>
-</package>

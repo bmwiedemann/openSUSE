@@ -1,5 +1,0 @@
-<package name="apache2-icons-oxygen" project="openSUSE:Factory">
-  <title>Oxygen icons for Apache 2 </title>
-  <description>KDE/Oxygen icons for Apache 2.</description>
-  <devel project="Apache" package="apache2-icons-oxygen"/>
-</package>

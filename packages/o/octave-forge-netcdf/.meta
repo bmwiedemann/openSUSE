@@ -1,6 +1,0 @@
-<package name="octave-forge-netcdf" project="openSUSE:Factory">
-  <title></title>
-  <description>A MATLAB compatible NetCDF interface for Octave.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-netcdf"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="suse-hpc" project="openSUSE:Factory">
-  <title>SUSE HPC Scripts and Macros</title>
-  <description>Macros and scripts for the SUSE HPC packages</description>
-  <devel project="science:HPC" package="suse-hpc"/>
-</package>

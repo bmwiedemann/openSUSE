@@ -1,3 +1,0 @@
-# the library tries to be smart with the libre prefix
-addFilter("shlib-policy-missing-lib.*")
-addFilter("shlib-policy-name-error .*libredwg0")

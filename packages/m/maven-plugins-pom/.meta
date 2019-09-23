@@ -1,9 +1,0 @@
-<package name="maven-plugins-pom" project="openSUSE:Factory">
-  <title>Maven Plugins POM</title>
-  <description>This package provides Maven Plugins parent POM used by different
-Apache Maven plugins.
-
-</description>
-  <devel project="Java:packages" package="maven-plugins-pom"/>
-  <url>http://maven.apache.org/plugins/</url>
-</package>

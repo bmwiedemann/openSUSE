@@ -1,7 +1,0 @@
-#
-# The PAM configuration file for uucpd logins
-#
-
-auth	include	common-auth
-account	include	common-account
-session	include	common-session

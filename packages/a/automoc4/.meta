@@ -1,6 +1,0 @@
-<package name="automoc4" project="openSUSE:Factory">
-  <title>CMake automatic MOC Generation</title>
-  <description>automoc4 is a tool to add rules for generating Qt moc files
-automatically to projects that use CMake as the buildsystem.</description>
-  <devel project="KDE:Distro:Factory" package="automoc4"/>
-</package>

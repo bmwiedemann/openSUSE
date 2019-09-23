@@ -1,6 +1,0 @@
-<package name="libgsf" project="openSUSE:Factory">
-  <title>GNOME Structured File Library</title>
-  <description>A library for reading and writing structured files (MS OLE and Zip, for
-example).</description>
-  <devel project="GNOME:Factory" package="libgsf"/>
-</package>

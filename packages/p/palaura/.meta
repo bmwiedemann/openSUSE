@@ -1,5 +1,0 @@
-<package name="palaura" project="openSUSE:Factory">
-  <title>Palaura</title>
-  <description>Dictionary using the Oxford API for definitions and lookups</description>
-  <devel project="X11:Pantheon:Apps" package="palaura"/>
-</package>

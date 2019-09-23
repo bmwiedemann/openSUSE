@@ -1,9 +1,0 @@
-<package name="lcab" project="openSUSE:Factory">
-  <title>Create cabinet (.cab) files</title>
-  <description>LCAB is a small program for linux that creates an uncompressed MS Cabinet
-File from a set of input files.
-
-</description>
-  <devel project="Archiving" package="lcab"/>
-  <url>http://freecode.com/projects/lcab</url>
-</package>

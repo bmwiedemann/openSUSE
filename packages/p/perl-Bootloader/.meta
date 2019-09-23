@@ -1,5 +1,0 @@
-<package name="perl-Bootloader" project="openSUSE:Factory">
-  <title>Library for Configuring Boot Loaders</title>
-  <description>Perl modules for configuring various boot loaders.</description>
-  <devel project="Base:System" package="perl-Bootloader"/>
-</package>

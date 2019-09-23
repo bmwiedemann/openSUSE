@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/xroche/fastlzlib.git</param>
-              <param name="changesrevision">9d4b3ecb1d43e3724fa3d06abb56fa71b097917c</param></service><service name="tar_scm">
-                <param name="url">https://github.com/bareos/fastlzlib</param>
-              <param name="changesrevision">35ffa7b1f6ba11f5bda6930acc4200c45aa30662</param></service></servicedata>

@@ -1,7 +1,0 @@
-<package name="python-django-contrib-comments" project="openSUSE:Factory">
-  <title>python-django-contrib-comments</title>
-  <description>This framework can be used to attach comments to any model, so you can use it for comments on blog entries, photos, book chapters, or anything else.
-
-Django used to include a comments framework; since Django 1.6 it’s been separated to a separate project. This is that project.</description>
-  <devel project="devel:languages:python:django" package="python-django-contrib-comments"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="opentracing-cpp" project="openSUSE:Factory">
-  <title>opentracing-cpp</title>
-  <description>OpenTracing API for C++</description>
-  <devel project="server:http" package="opentracing-cpp"/>
-  <url>http://opentracing.io/</url>
-</package>

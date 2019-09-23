@@ -1,8 +1,0 @@
-<package name="perl-Net-Dropbox-API" project="openSUSE:Factory">
-  <title>A dropbox API interface</title>
-  <description>The Dropbox API is a OAuth based API.
-
-</description>
-  <devel project="devel:languages:perl" package="perl-Net-Dropbox-API"/>
-  <url>http://search.cpan.org/dist/Net-Dropbox-API</url>
-</package>

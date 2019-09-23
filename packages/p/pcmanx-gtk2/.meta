@@ -1,7 +1,0 @@
-<package name="pcmanx-gtk2" project="openSUSE:Factory">
-  <title>pcmanx-gtk2</title>
-  <description>User-friendly telnet client mainly targets BBS users
-	
-</description>
-  <devel project="network" package="pcmanx-gtk2"/>
-</package>

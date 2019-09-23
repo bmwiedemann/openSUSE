@@ -1,6 +1,0 @@
-# This is a source package and /usr/src is a correct path to install files.
-addFilter("lightstep-tracer-cpp-source.* suse-filelist-forbidden-fhs23")
-# This is a source package, it's fine to have empty files.
-addFilter("lightstep-tracer-cpp-source.* zero-length")
-# This is a source package, it's fine to have hidden files.
-addFilter("lightstep-tracer-cpp-source.* hidden-file-or-dir")

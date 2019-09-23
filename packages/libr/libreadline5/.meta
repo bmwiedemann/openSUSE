@@ -1,7 +1,0 @@
-<package name="libreadline5" project="openSUSE:Factory">
-  <title>The Readline Library</title>
-  <description>The readline library is used by the Bourne Again Shell (bash, the
-standard command interpreter) for easy editing of command lines.  This
-includes history and search functionality.</description>
-  <devel project="Base:System" package="libreadline5"/>
-</package>

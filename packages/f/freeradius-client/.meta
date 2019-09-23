@@ -1,7 +1,0 @@
-<package name="freeradius-client" project="openSUSE:Factory">
-  <title>FreeRADIUS Client Software</title>
-  <description>A portable, easy-to-use and standard compliant library suitable for
-developing free and commercial software that need support for a RADIUS
-protocol (RFCs 2128 and 2139).</description>
-  <devel project="network" package="freeradius-client"/>
-</package>

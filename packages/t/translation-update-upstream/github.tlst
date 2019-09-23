@@ -1,6 +1,0 @@
-# Note: Single file download using GitHub web is not yet implemented. Use full git snapshot instead.
-# package                   domain                  method repository                                                   dir                 branch
-ibus                        ibus10                     git  https://github.com/ibus/ibus.git                            ibus/po
-eiciel                      eiciel                     git  https://github.com/rofirrim/eiciel.git                      eiciel/po
-libgnomesu                  libgnomesu-1.0             git  https://github.com/openSUSE/libgnomesu.git                  libgnomesu/po
-virt-manager                virt-manager               git  https://github.com/virt-manager/virt-manager.git            virt-manager/po

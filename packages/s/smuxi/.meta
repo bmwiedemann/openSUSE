@@ -1,7 +1,0 @@
-<package name="smuxi" project="openSUSE:Factory">
-  <title>Smart MUltipleXed Irc</title>
-  <description>Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
-IRC client for advanced users, targeting the GNOME desktop.</description>
-  <devel project="GNOME:Apps" package="smuxi"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="dnf" project="openSUSE:Factory">
-  <title>dnf - Package manager forked from Yum, using libsolv as a dependency resolver</title>
-  <description>Dandified Yum (DNF) is the next upcoming major version of Yum. It does package management using RPM, libsolv and libdnf libraries. For metadata handling and package downloads it utilizes librepo. To process and effectively handle the comps data it uses libcomps.</description>
-  <devel project="system:packagemanager:dnf" package="dnf"/>
-</package>

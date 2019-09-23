@@ -1,6 +1,0 @@
-<package name="leveldb" project="openSUSE:Factory">
-  <title>LevelDB</title>
-  <description>LevelDB is a fast key-value storage library that provides an ordered mapping from string keys to string values.
-</description>
-  <devel project="devel:libraries:c_c++" package="leveldb"/>
-</package>

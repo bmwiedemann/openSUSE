@@ -1,5 +1,0 @@
-<package name="perl-CPAN-Uploader" project="openSUSE:Factory">
-  <title>upload things to the CPAN</title>
-  <description>upload things to the CPAN</description>
-  <devel project="devel:languages:perl" package="perl-CPAN-Uploader"/>
-</package>

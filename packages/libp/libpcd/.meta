@@ -1,9 +1,0 @@
-<package name="libpcd" project="openSUSE:Factory">
-  <title>Library for Reading PhotoCD Images</title>
-  <description>Library for reading PhotoCD images.
-
-Authors
-Gerd Knorr &lt;kraxel@suse.de&gt;</description>
-  <devel project="graphics" package="libpcd"/>
-  <url>http://bytesex.org/libpcd.html</url>
-</package>

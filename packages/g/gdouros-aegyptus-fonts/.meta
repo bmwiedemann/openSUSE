@@ -1,5 +1,0 @@
-<package name="gdouros-aegyptus-fonts" project="openSUSE:Factory">
-  <title>Fonts with support for ancient Egyptian Hieroglyphs</title>
-  <description>Aegyptus allocates Egyptian Hieroglyphs, in Plane 15 of the UCS. The main sources of glyphs are «Hieroglyphica», PIREI, 2000 and the work of Alan Gardiner. The font also covers Basic Latin, Egyptian Transliteration characters, the Hieratic alphabet, Coptic, Meroitic, the Gardiner set supported by Unicode, et al. The Gardiner set (redesigned with a thicker line) is also available in the small font Gardiner.</description>
-  <devel project="M17N:fonts" package="gdouros-aegyptus-fonts"/>
-</package>

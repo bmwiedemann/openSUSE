@@ -1,6 +1,0 @@
-<package name="igerman98" project="openSUSE:Factory">
-  <title>German Spell Check Dictionaries</title>
-  <description>A meta package for German, Swiss, and Austrian dictionaries for the ispell, 
-aspell and myspell spell checkers.</description>
-  <devel project="Base:System" package="igerman98"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="pwgen" project="openSUSE:Factory">
-  <title>Password generator</title>
-  <description>pwgen generates random, meaningless but pronounceable and thus easy to
-remember passwords. The also contained makepasswd gives even more
-options which are more aimed at security.</description>
-  <devel project="Base:System" package="pwgen"/>
-</package>

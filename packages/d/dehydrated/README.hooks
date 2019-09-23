@@ -1,4 +1,0 @@
-Dehydrated's hooks only run as user dehydrated. To circumvent this limitation,
-i.e. when services need to be restarted, all executable files in this directory
-will be executed as root after the certificate update has run.
-

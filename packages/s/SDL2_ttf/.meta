@@ -1,9 +1,0 @@
-<package name="SDL2_ttf" project="openSUSE:Factory">
-  <title>Simple DirectMedia Layer - Truetype Library</title>
-  <description>This is a sample library that allows you to use TrueType fonts in your
-SDL applications.
-
-</description>
-  <devel project="games" package="SDL2_ttf"/>
-  <url>http://www.libsdl.org/projects/SDL_ttf/</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="kwidgetsaddons" project="openSUSE:Factory">
-  <title>kwidgetsaddons</title>
-  <description>KWidgetsAddons</description>
-  <devel project="KDE:Frameworks5" package="kwidgetsaddons"/>
-</package>

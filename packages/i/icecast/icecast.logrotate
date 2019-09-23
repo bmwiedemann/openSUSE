@@ -1,8 +1,0 @@
-/var/log/icecast/*log {
-	missingok
-	notifempty
-	sharedscripts
-	postrotate
-	/sbin/service icecast reload > /dev/null 2>&1 || true
-	endscript
-}

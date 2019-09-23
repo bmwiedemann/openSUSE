@@ -1,9 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-# See spec file for the reason(s)
-addFilter("libfftw3.* devel-file-in-non-devel-package")
-addFilter("libfftw3.* hidden-file-or-dir")
-addFilter('shlib-fixed-dependency')
-addFilter('libfftw3.* shlib-policy-nonversioned-dir /usr/lib/hpc')
-addFilter('libfftw3.* shlib-policy-nonversioned-dir /usr/share/lmod')

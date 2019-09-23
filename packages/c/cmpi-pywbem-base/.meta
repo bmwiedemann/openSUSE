@@ -1,5 +1,0 @@
-<package name="cmpi-pywbem-base" project="openSUSE:Factory">
-  <title>Base System Providers</title>
-  <description>Base System CIM Providers</description>
-  <devel project="systemsmanagement:wbem" package="cmpi-pywbem-base"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="python-magic" project="openSUSE:Factory">
-  <title>Python module to use libmagic</title>
-  <description>This package contains the python binding that require the magic &quot;file&quot;
-interface.</description>
-  <devel project="openSUSE:Factory" package="file"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="octave-forge-control" project="openSUSE:Factory">
-  <title></title>
-  <description>Computer-Aided Control System Design (CACSD) Tools for GNU Octave, based on the proven SLICOT Library.
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-control"/>
-</package>

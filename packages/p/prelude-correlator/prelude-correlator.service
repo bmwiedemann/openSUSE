@@ -1,9 +1,0 @@
-[Unit]
-Description=Correlator of events received by Prelude
-After=remode_fs.target prelude-manager.service
-
-[Service]
-ExecStart=/usr/bin/prelude-correlator
-
-[Install]
-WantedBy=multi-user.target

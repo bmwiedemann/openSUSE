@@ -1,8 +1,0 @@
-<package name="ocaml-curses" project="openSUSE:Factory">
-  <title>OCaml bindings for ncurses</title>
-  <description>OCaml bindings for ncurses.
-
-</description>
-  <devel project="devel:languages:ocaml" package="ocaml-curses"/>
-  <url>http://savannah.nongnu.org/projects/ocaml-tmk/</url>
-</package>

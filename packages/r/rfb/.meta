@@ -1,9 +1,0 @@
-<package name="rfb" project="openSUSE:Factory">
-  <title>heXoNet RFB (remote control for the X Window System)</title>
-  <description>The heXoNet RFB Software package includes many different projects. The
-goal of this package is to provide a comprehensive collection of
-rfb-enabled tools and applications. One application, x0rfbserver, was,
-and maybe still is, the only complete remote control solution for the X
-Window System.</description>
-  <devel project="X11:Utilities" package="rfb"/>
-</package>

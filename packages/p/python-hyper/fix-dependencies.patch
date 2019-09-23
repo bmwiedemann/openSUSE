@@ -1,7 +1,0 @@
---- a/setup.py
-+++ b/setup.py
-@@ -79,3 +79,3 @@
-     install_requires=[
--        'h2>=2.4,<3.0,!=2.5.0', 'hyperframe>=3.2,<4.0', 'rfc3986>=1.1.0,<2.0', 'brotlipy>=0.7.0,<1.0'
-+        'h2>=2.4,!=2.5.0', 'hyperframe>=3.2', 'rfc3986>=1.1.0', 'brotlipy>=0.7.0'
-     ],

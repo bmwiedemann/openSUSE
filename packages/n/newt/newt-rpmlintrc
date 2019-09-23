@@ -1,4 +1,0 @@
-# newt-devel just needs the lib package
-addFilter("no-dependency-on newt")
-# newt-devel should require python-devel
-addFilter("useless-explicit-requires python")

@@ -1,9 +1,0 @@
-[Unit]
-Description=Proxy that allows tcp connections to serial ports
-After=network.target
-
-[Service]
-ExecStart=/usr/sbin/ser2net -n
-
-[Install]
-WantedBy=multi-user.target

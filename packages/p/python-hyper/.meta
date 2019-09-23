@@ -1,5 +1,0 @@
-<package name="python-hyper" project="openSUSE:Factory">
-  <title></title>
-  <description>HTTP/2 Client for Python</description>
-  <devel project="devel:languages:python" package="python-hyper"/>
-</package>

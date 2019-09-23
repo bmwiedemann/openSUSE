@@ -1,6 +1,0 @@
-<package name="meson" project="openSUSE:Factory">
-  <title>High productivity build system</title>
-  <description>Meson is a build system designed to optimize programmer productivity.
-It aims to do this by providing simple, out-of-the-box support for modern software development tools and practices, such as unit tests, coverage reports, Valgrind, CCache and the like.</description>
-  <devel project="devel:tools:building" package="meson"/>
-</package>

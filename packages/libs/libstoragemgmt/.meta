@@ -1,5 +1,0 @@
-<package name="libstoragemgmt" project="openSUSE:Factory">
-  <title>libstoragemgmt</title>
-  <description>libstoragemgmt in OBS.</description>
-  <devel project="Base:System" package="libstoragemgmt"/>
-</package>

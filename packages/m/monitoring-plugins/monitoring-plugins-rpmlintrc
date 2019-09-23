@@ -1,5 +1,0 @@
-# the virtual dbi-{mysql,pgsql,sqlite3} packages are there to require 
-# the needed library for the generic dbi package.
-addFilter("explicit-lib-dependency.*libdbi-drivers-dbd-mysql");
-addFilter("explicit-lib-dependency.*libdbi-drivers-dbd-sqlite3");
-addFilter("explicit-lib-dependency.*libdbi-drivers-dbd-pgsql");

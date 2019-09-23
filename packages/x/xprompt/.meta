@@ -1,6 +1,0 @@
-<package name="xprompt" project="openSUSE:Factory">
-  <title>Small tool for prompting users</title>
-  <description>Small tool to ask the user for one or more responses (e.g., from batch
-files).</description>
-  <devel project="X11:Utilities" package="xprompt"/>
-</package>

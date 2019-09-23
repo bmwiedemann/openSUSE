@@ -1,7 +1,0 @@
-<package name="garlic" project="openSUSE:Factory">
-  <title>Molecular Graphics Visualization Tool</title>
-  <description>Garlic is an X Window System tool intended for the molecular
-visualization of protein structure, DNA structure, and biological
-macromolecules. It reads Brookhaven Protein Database (PDB) files.</description>
-  <devel project="Education" package="garlic"/>
-</package>

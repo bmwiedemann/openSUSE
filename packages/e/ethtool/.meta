@@ -1,6 +1,0 @@
-<package name="ethtool" project="openSUSE:Factory">
-  <title>Examine and Tune Ethernet-Based Network Interfaces</title>
-  <description>Ethtool is a small utility for examining and tuning ethernet-based
-network interfaces.  See the man page for more details.</description>
-  <devel project="network:utilities" package="ethtool"/>
-</package>

@@ -1,4 +1,0 @@
-addFilter("non-etc-or-var-file-marked-as-conffile")
-
-# upstream provides no man page
-addFilter("no-manual-page-for-binary")

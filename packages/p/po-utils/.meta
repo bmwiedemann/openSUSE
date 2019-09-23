@@ -1,5 +1,0 @@
-<package name="po-utils" project="openSUSE:Factory">
-  <title>Free PO Utilities</title>
-  <description>A collection of tools for handling PO files.</description>
-  <devel project="devel:tools" package="po-utils"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="pam_ccreds" project="openSUSE:Factory">
-  <title>Pam module to cache login credentials</title>
-  <description>The pam_ccreds module provides the means for Linux workstations to
-locally authenticate using an enterprise identity when the network is
-unavailable. Used in conjunction with the nss_updatedb utility, it
-provides a mechanism for disconnected use of network directories.</description>
-  <devel project="Linux-PAM" package="pam_ccreds"/>
-</package>

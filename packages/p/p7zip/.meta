@@ -1,8 +1,0 @@
-<package name="p7zip" project="openSUSE:Factory">
-  <title>7-zip file compression program</title>
-  <description>p7zip is a quick port of 7z.exe and 7za.exe (command line version of
-7zip, see www.7-zip.org) for Unix. 7-Zip is a file archiver with
-highest compression ratio. Since 4.10, p7zip (like 7-zip) supports
-little-endian and big-endian machines.</description>
-  <devel project="Archiving" package="p7zip"/>
-</package>

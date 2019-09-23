@@ -1,7 +1,0 @@
-<package name="polkit" project="openSUSE:Factory">
-  <title>PolicyKit Authorization Framework</title>
-  <description>PolicyKit is a toolkit for defining and handling authorizations.
-It is used for allowing unprivileged processes to speak to privileged
-processes.</description>
-  <devel project="Base:System" package="polkit"/>
-</package>

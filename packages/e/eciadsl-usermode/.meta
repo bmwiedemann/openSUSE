@@ -1,8 +1,0 @@
-<package name="eciadsl-usermode" project="openSUSE:Factory">
-  <title>A Beta-Quality Usermode Driver for the ECI ADSL USB Modem</title>
-  <description>This package contains the driver for the ECI Hi-Focus ADSL USB modem.
-It also supports many USB ADSL modems based on the Globespan chipset.
-It is not a kernel module. It is a user-mode program that handles the
-modem. A kernel module is under development.</description>
-  <devel project="hardware" package="eciadsl-usermode"/>
-</package>

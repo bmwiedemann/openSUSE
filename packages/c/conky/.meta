@@ -1,5 +1,0 @@
-<package name="conky" project="openSUSE:Factory">
-  <title>Lightweight System Monitor for X</title>
-  <description>Conky is an advanced, highly configurable system monitor for X.</description>
-  <devel project="server:monitoring" package="conky"/>
-</package>

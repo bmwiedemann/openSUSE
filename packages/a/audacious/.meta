@@ -1,7 +1,0 @@
-<package name="audacious" project="openSUSE:Factory">
-  <title>Advanced audio player</title>
-  <description>Audacious is an advanced audio player. It is free, lightweight, based on GTK+, runs on GNU/Linux and many other UNIX-like platforms, and is focused on audio quality and supporting a wide range of audio codecs.
-It still features an alternative skinned user interface (based on Winamp 2.x skins).
-Historically, it started as a fork of a fork of XMMS.</description>
-  <devel project="multimedia:apps" package="audacious"/>
-</package>

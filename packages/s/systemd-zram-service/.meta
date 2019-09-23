@@ -1,5 +1,0 @@
-<package name="systemd-zram-service" project="openSUSE:Factory">
-  <title>systemd-zram-service</title>
-  <description></description>
-  <devel project="filesystems" package="systemd-zram-service"/>
-</package>

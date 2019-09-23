@@ -1,9 +1,0 @@
-<package name="translation-update" project="openSUSE:Factory">
-  <title>Translation Updates</title>
-  <description>This is a set of translation updates that are installed into the
-preferred directory, /usr/share/locale-langpack/&lt;locale&gt;/LC_MESSAGES/.
-
-Applications that use gettext correctly can then pick up overridden or
-updated translations from this location.</description>
-  <devel project="X11:common:Factory" package="translation-update"/>
-</package>

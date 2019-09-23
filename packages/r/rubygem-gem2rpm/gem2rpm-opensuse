@@ -1,3 +1,0 @@
-#!/bin/sh
-echo "obsolete, gem2rpm knows it's running on opensuse" >&2
-exec gem2rpm -t opensuse $1

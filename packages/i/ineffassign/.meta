@@ -1,5 +1,0 @@
-<package name="ineffassign" project="openSUSE:Factory">
-  <title>ineffassign</title>
-  <description>Detect ineffectual assignments in Go code</description>
-  <devel project="devel:languages:go" package="ineffassign"/>
-</package>

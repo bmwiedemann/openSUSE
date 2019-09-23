@@ -1,7 +1,0 @@
-<package name="nini" project="openSUSE:Factory">
-  <title>An uncommonly powerful .NET configuration library</title>
-  <description>Nini is an uncommonly powerful .NET configuration library designed to
-help build highly configurable applications quickly.</description>
-  <devel project="GNOME:Apps" package="nini"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>

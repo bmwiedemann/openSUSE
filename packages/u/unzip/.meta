@@ -1,9 +1,0 @@
-<package name="unzip" project="openSUSE:Factory">
-  <title>A program to unpack compressed files</title>
-  <description>UnZip is an extraction utility for archives compressed in .zip format
-(known as &quot;zip files&quot;).  Although highly compatible both with PKWARE's
-PKZIP(tm) and PKUNZIP utilities for MS-DOS and with Info-ZIP's own Zip
-program, our primary objectives have been portability and non-MS-DOS
-functionality. This version can also extract encrypted archives.</description>
-  <devel project="Archiving" package="unzip"/>
-</package>

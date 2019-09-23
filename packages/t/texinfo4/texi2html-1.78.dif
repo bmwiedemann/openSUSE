@@ -1,8 +1,0 @@
---- doc/texi2html.1.in
-+++ doc/texi2html.1.in	2005-01-27 15:17:29.000000000 +0100
-@@ -1,4 +1,4 @@
--.TH TEXI2HTML 1 "@PACKAGE_DATE@"
-+.TH Texi2html 1 "@PACKAGE_DATE@" 1.76
- .AT 3
- .SH NAME
- texi2html \- a Texinfo to HTML converter

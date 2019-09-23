@@ -1,5 +1,0 @@
-<package name="parley" project="openSUSE:Factory">
-  <title>Vocabulary Trainer</title>
-  <description>Parley is a vocabulary trainer for KDE.</description>
-  <devel project="KDE:Applications" package="parley"/>
-</package>

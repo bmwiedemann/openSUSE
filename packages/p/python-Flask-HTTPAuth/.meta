@@ -1,5 +1,0 @@
-<package name="python-Flask-HTTPAuth" project="openSUSE:Factory">
-  <title>Basic and Digest HTTP authentication for Flask routes</title>
-  <description></description>
-  <devel project="devel:languages:python:flask" package="python-Flask-HTTPAuth"/>
-</package>

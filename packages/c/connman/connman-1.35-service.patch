@@ -1,8 +1,0 @@
-diff -ruN connman-1.35.orig/src/connman.service.in connman-1.35/src/connman.service.in
---- connman-1.35.orig/src/connman.service.in	2017-04-27 14:46:41.000000000 +0300
-+++ connman-1.35/src/connman.service.in	2017-12-26 15:17:11.743397882 +0300
-@@ -19,3 +19,4 @@
- 
- [Install]
- WantedBy=multi-user.target
-+Alias=network.service

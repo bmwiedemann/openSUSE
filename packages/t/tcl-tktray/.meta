@@ -1,9 +1,0 @@
-<package name="tcl-tktray" project="openSUSE:Factory">
-  <title>System Tray Icon Support for Tk on X11</title>
-  <description>Tktray is a Tk extension that is able to create system tray icons. It
-follows http://www.freedesktop.org specifications when looking up the system
-tray manager.  This protocol is supported by modern versions of KDE and
-Gnome panels, and by some other panel-like application.</description>
-  <devel project="network" package="tcl-tktray"/>
-  <url>http://sw4me.com/wiki/Tktray</url>
-</package>

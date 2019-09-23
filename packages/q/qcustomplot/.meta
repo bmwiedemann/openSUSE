@@ -1,5 +1,0 @@
-<package name="qcustomplot" project="openSUSE:Factory">
-  <title>QCustomPlot</title>
-  <description>Qt C++ widget for plotting and data visualization.</description>
-  <devel project="science" package="qcustomplot"/>
-</package>

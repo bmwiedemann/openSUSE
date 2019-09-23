@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/intel/ipmctl.git</param>
-              <param name="changesrevision">0320099f3792e9ab11ecc531c734d0048989f85b</param></service><service name="tar_scm">
-            <param name="url">https://github.com/rurban/safeclib</param>
-          <param name="changesrevision">59eba324c20c07f7ca8190238dd415525f4925dc</param></service></servicedata>

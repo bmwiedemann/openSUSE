@@ -1,7 +1,0 @@
-addFilter("statically-linked-binary")
-
-addFilter("devel-file-in-non-devel-package .*/fpc/.*/units/.*-linux/.*.a")
-addFilter("devel-file-in-non-devel-package .*/fpcsrc/.*/.*.a")
-addFilter("devel-file-in-non-devel-package .*/fpcsrc/.*/.*.c")
-addFilter("devel-file-in-non-devel-package .*/fpcsrc/.*/.*.cpp")
-addFilter("devel-file-in-non-devel-package .*/fpcsrc/.*/.*.h")

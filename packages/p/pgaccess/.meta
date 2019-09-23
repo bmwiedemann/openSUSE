@@ -1,6 +1,0 @@
-<package name="pgaccess" project="openSUSE:Factory">
-  <title>Database Management Tool for PostgreSQL</title>
-  <description>PgAccess is a graphical interface and application building environment
-for PostgreSQL.</description>
-  <devel project="server:database:postgresql" package="pgaccess"/>
-</package>

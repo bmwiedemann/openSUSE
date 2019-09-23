@@ -1,5 +1,0 @@
-<package name="entangle" project="openSUSE:Factory">
-  <title>Entangle</title>
-  <description>Photobooth like application supporting libgphoto2 cameras. (for webcams look at cheese)</description>
-  <devel project="graphics" package="entangle"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="nvme-cli" project="openSUSE:Factory">
-  <title>nvme-cli</title>
-  <description>NVMe management command line interface.</description>
-  <devel project="Base:System" package="nvme-cli"/>
-  <url>https://github.com/linux-nvme/nvme-cli</url>
-</package>

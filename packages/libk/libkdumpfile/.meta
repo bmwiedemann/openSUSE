@@ -1,6 +1,0 @@
-<package name="libkdumpfile" project="openSUSE:Factory">
-  <title>Kernel dumpfile access library</title>
-  <description>A library that provides an abstraction layer for reading kernel dump core files.
-It supports different kernel dump core formats, virtual to physical translation, Xen mappings and more.</description>
-  <devel project="Kernel:kdump" package="libkdumpfile"/>
-</package>

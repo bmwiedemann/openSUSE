@@ -1,6 +1,0 @@
-<package name="lxqt-globalkeys" project="openSUSE:Factory">
-  <title>Daemon and library for global keyboard shortcuts registration</title>
-  <description>Daemon and library for global keyboard shortcuts registration
-</description>
-  <devel project="X11:LXQt" package="lxqt-globalkeys"/>
-</package>

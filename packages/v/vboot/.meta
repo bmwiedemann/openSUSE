@@ -1,5 +1,0 @@
-<package name="vboot" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="hardware:boot" package="vboot"/>
-</package>

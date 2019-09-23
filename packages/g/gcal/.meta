@@ -1,8 +1,0 @@
-<package name="gcal" project="openSUSE:Factory">
-  <title>A Program for Printing Calendars</title>
-  <description>Gcal is a program for printing calendars.  Gcal displays a calendar for
-a month or a year, eternal holiday lists, and fixed date lists.  The
-program correctly omits the dates that were skipped when the current
-Gregorian calendar replaced the earlier Julian calendar.</description>
-  <devel project="Base:System" package="gcal"/>
-</package>

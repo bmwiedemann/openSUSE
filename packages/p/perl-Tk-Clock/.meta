@@ -1,9 +1,0 @@
-<package name="perl-Tk-Clock" project="openSUSE:Factory">
-  <title>Clock widget with analog and digital display</title>
-  <description>This module implements a Canvas-based clock widget for perl-Tk with lots of
-options to change the appearance.
-
-Both analog and digital clocks are implemented.</description>
-  <devel project="devel:languages:perl" package="perl-Tk-Clock"/>
-  <url>http://search.cpan.org/dist/Tk-Clock/</url>
-</package>

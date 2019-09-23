@@ -1,5 +1,0 @@
-<package name="rubygem-debug_inspector" project="openSUSE:Factory">
-  <title>debug_inspector</title>
-  <description>A Ruby wrapper for the MRI 2.0 debug_inspector API</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-debug_inspector"/>
-</package>

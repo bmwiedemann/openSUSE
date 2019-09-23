@@ -1,8 +1,0 @@
-<package name="rubygem-jquery-rails" project="openSUSE:Factory">
-  <title>Use jQuery with Rails 3</title>
-  <description>This gem provides jQuery and the jQuery-ujs driver for your Rails 3 application.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-jquery-rails"/>
-  <url>http://rubygems.org/gems/jquery-rails</url>
-</package>

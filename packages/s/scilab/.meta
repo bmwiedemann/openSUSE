@@ -1,6 +1,0 @@
-<package name="scilab" project="openSUSE:Factory">
-  <title>High Level Programming Language/Numerical Analysis Software</title>
-  <description>Scilab is a scientific software package for numerical computations providing a powerful open computing environment for engineering and scientific applications which includes hundreds of mathematical functions with the possibility to add interactively programs from various languages (C, C++, Fortran...). It has sophisticated data structures (including lists, polynomials, rational functions, linear systems...), an interpreter and a high level programming language. Matlab and Maple files can be converted.</description>
-  <devel project="science" package="scilab"/>
-  <url>http://www.scilab.org</url>
-</package>

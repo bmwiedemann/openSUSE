@@ -1,6 +1,0 @@
-<package name="octave-forge-stk" project="openSUSE:Factory">
-  <title></title>
-  <description>The STK is a (not so) Small Toolbox for Kriging. Its primary focus in on the interpolation/regression technique known as kriging, which is very closely related to Splines and Radial Basis Functions, and can be interpreted as a non-parametric Bayesian method using a Gaussian Process (GP) prior. The STK also provides tools for the sequential and non-sequential design of experiments. Even though it is, currently, mostly geared towards the Design and Analysis of Computer Experiments (DACE), the STK can be useful for other applications areas (such as Geostatistics, Machine Learning, Non-parametric Regression, etc.).
-This is part of Octave-Forge project.</description>
-  <devel project="science" package="octave-forge-stk"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="qputty-qt5" project="openSUSE:Factory">
-  <title>A QT5 port of putty, the free telnet/ssh client.</title>
-  <description>A QT5 port of putty, the free telnet/ssh client.
-Fork of the abandoned Qt4 qputty.
-
-</description>
-  <devel project="X11:Utilities" package="qputty-qt5"/>
-  <url>https://github.com/dsmorozov/qputty-qt5</url>
-</package>

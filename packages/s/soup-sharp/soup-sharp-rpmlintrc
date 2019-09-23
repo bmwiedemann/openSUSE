@@ -1,2 +1,0 @@
-# This is a private library only used by the mono bindings - having them parall installed is useless
-addFilter("shlib-policy-name-error.*libsoupsharpglue-2_42_2");

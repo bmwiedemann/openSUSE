@@ -1,5 +1,0 @@
-<package name="perl-Convert-UUlib" project="openSUSE:Factory">
-  <title>Perl interface to the uulib library</title>
-  <description>A Perl interface to the uulib library</description>
-  <devel project="devel:languages:perl" package="perl-Convert-UUlib"/>
-</package>

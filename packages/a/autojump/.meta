@@ -1,8 +1,0 @@
-<package name="autojump" project="openSUSE:Factory">
-  <title>A faster way to navigate the filesystem from a shell</title>
-  <description>autojump is a faster way to navigate one's filesystem.
-It works by maintaining a database of the directories one uses the most from the command line.
-
-Directories must be visited first before they can be jumped to.</description>
-  <devel project="utilities" package="autojump"/>
-</package>

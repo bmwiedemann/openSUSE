@@ -1,3 +1,0 @@
-Enhances:	kernel-%1
-Requires:	kernel-%1
-Supplements:	packageand(kernel-%1:ipset)

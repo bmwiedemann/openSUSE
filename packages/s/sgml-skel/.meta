@@ -1,5 +1,0 @@
-<package name="sgml-skel" project="openSUSE:Factory">
-  <title>Helper Scripts for the SGML System</title>
-  <description>These scripts will help prepare and maintain parts of an SGML system.</description>
-  <devel project="Publishing" package="sgml-skel"/>
-</package>

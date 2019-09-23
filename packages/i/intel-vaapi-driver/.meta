@@ -1,5 +1,0 @@
-<package name="intel-vaapi-driver" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="X11:XOrg" package="intel-vaapi-driver"/>
-</package>

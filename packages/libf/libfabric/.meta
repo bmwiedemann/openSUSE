@@ -1,8 +1,0 @@
-<package name="libfabric" project="openSUSE:Factory">
-  <title>User-space RDMA Fabric Interfaces</title>
-  <description>
-libfabric provides a user-space API to access high-performance fabric
-services, such as RDMA.
-  </description>
-  <devel project="science:HPC" package="libfabric"/>
-</package>

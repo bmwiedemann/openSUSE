@@ -1,6 +1,0 @@
-<package name="libvisual" project="openSUSE:Factory">
-  <title>Sound Visualization Library</title>
-  <description>Libvisual is a library that acts as a middle layer between applications
-that need audio visualization and audio visualization plug-ins.</description>
-  <devel project="KDE:KDE3" package="libvisual"/>
-</package>

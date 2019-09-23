@@ -1,5 +1,0 @@
-<package name="desktopfolder" project="openSUSE:Factory">
-  <title>Desktop Folder</title>
-  <description>Organize your desktop with panels that hold your things</description>
-  <devel project="X11:Pantheon:Apps" package="desktopfolder"/>
-</package>

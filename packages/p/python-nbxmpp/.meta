@@ -1,5 +1,0 @@
-<package name="python-nbxmpp" project="openSUSE:Factory">
-  <title>XMPP library by Gajim team</title>
-  <description>Python-nbxmpp is a Python library that provides a way for Python applications to use Jabber/XMPP networks in a non-blocking way. This library is initialy a fork of xmpppy one, but using non-blocking sockets.</description>
-  <devel project="devel:languages:python" package="python-nbxmpp"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="fluidsynth-dssi" project="openSUSE:Factory">
-  <title>Fluidsynth Plug-In for Disposable Soft Synth Interface</title>
-  <description>FluidSynth-DSSI is the plug-in implementation of fluidsynth on DSSI
-(Disposable Soft Synth Interface) with a GTK+ GUI.</description>
-  <devel project="multimedia:libs" package="fluidsynth-dssi"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="kanagram" project="openSUSE:Factory">
-  <title>Anagram Game</title>
-  <description>Kanagram is a letter order game.</description>
-  <devel project="KDE:Applications" package="kanagram"/>
-</package>

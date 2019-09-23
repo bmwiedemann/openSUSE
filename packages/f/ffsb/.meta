@@ -1,5 +1,0 @@
-<package name="ffsb" project="openSUSE:Factory">
-  <title>The Flexible Filesystem Benchmark</title>
-  <description>The Flexible Filesystem Benchmark (FFSB) is a filesystem performance measurement tool.  It uses customizable profiles to measure of different workloads, and it supports multiple groups of threads across multiple filesystems.</description>
-  <devel project="benchmark" package="ffsb"/>
-</package>

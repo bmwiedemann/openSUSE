@@ -1,6 +1,0 @@
-<package name="nanopb" project="openSUSE:Factory">
-  <title>nanopb</title>
-  <description>Protocol buffers with small code size</description>
-  <devel project="devel:libraries:c_c++" package="nanopb"/>
-  <url>https://jpa.kapsi.fi/nanopb/</url>
-</package>

@@ -1,9 +1,0 @@
-<package name="icoutils" project="openSUSE:Factory">
-  <title>Extracting and Converting Microsoft Icon and Cursor Files</title>
-  <description>The icoutils are a set of programs for extracting and converting images
-in Microsoft Windows icon and cursor files. These files usually have the
-extension .ico or .cur, but they can also be embedded in executables or
-libraries (.dll-files).</description>
-  <devel project="graphics" package="icoutils"/>
-  <url>http://www.nongnu.org/icoutils/</url>
-</package>

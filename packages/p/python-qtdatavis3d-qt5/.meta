@@ -1,6 +1,0 @@
-<package name="python-qtdatavis3d-qt5" project="openSUSE:Factory">
-  <title>Python bindings for Qt5 3D Data Visualization</title>
-  <description>This package provides python bindings to Qt5 3D Data Visualization module.
-</description>
-  <devel project="KDE:Qt5" package="python-qtdatavis3d-qt5"/>
-</package>

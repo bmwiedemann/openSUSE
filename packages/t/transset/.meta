@@ -1,6 +1,0 @@
-<package name="transset" project="openSUSE:Factory">
-  <title>simple program to make windows transparent</title>
-  <description>transset manipulates the _NET_WM_WINDOW_OPACITY property to make
-windows transparent.</description>
-  <devel project="X11:Utilities" package="transset"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="Supybot" project="openSUSE:Factory">
-  <title>IRC Bot</title>
-  <description>Supybot is a robust, user and programmer friendly IRC bot written in
-Python. It aims to be an adequate replacement for most existing IRC
-bots. It includes a very flexible and powerful ACL system for
-controlling access to commands, as well as more than 50 builtin plugins
-providing around 400 actual commands.</description>
-  <devel project="network" package="Supybot"/>
-</package>

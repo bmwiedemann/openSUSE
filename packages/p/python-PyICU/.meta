@@ -1,9 +1,0 @@
-<package name="python-PyICU" project="openSUSE:Factory">
-  <title>Python Extension Wrapping the ICU C++ API</title>
-  <description>Python extension wrapping IBM's International Components for Unicode C++
-library (ICU).
-
-</description>
-  <devel project="devel:languages:python" package="python-PyICU"/>
-  <url>http://pyicu.osafoundation.org/</url>
-</package>

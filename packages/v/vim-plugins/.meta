@@ -1,6 +1,0 @@
-<package name="vim-plugins" project="openSUSE:Factory">
-  <title>Plug-ins pack for Vim</title>
-  <description>Subpackages of this packages contains some plugins for Vi iMproved text editor.</description>
-  <devel project="editors" package="vim-plugins"/>
-  <url>http://www.vim.org/</url>
-</package>

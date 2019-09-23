@@ -1,7 +1,0 @@
-<package name="pasystray" project="openSUSE:Factory">
-  <title>PulseAudio system tray</title>
-  <description>A replacement for the deprecated padevchooser
-
-Pasystray allows setting the default PulseAudio source/sink and moving streams on the fly between sources/sinks without restarting the client applications.</description>
-  <devel project="X11:Utilities" package="pasystray"/>
-</package>

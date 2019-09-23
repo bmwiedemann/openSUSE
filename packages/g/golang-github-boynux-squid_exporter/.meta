@@ -1,5 +1,0 @@
-<package name="golang-github-boynux-squid_exporter" project="openSUSE:Factory">
-  <title>Squid Prometheus Exporter </title>
-  <description>Exports squid metrics in Prometheus format</description>
-  <devel project="server:monitoring" package="golang-github-boynux-squid_exporter"/>
-</package>

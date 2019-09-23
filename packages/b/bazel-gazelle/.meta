@@ -1,6 +1,0 @@
-<package name="bazel-gazelle" project="openSUSE:Factory">
-  <title>bazel-gazelle</title>
-  <description>Generator of Bazel build files for Go projects</description>
-  <devel project="devel:tools:building" package="bazel-gazelle"/>
-  <url>https://github.com/bazelbuild/bazel-gazelle</url>
-</package>

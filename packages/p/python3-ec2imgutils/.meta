@@ -1,5 +1,0 @@
-<package name="python3-ec2imgutils" project="openSUSE:Factory">
-  <title>AWS EC2 Image management tools</title>
-  <description>Provides a set of tools that help with image management for AWS EC2 images</description>
-  <devel project="Cloud:Tools" package="python3-ec2imgutils"/>
-</package>

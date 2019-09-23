@@ -1,8 +1,0 @@
-<package name="rdma-core" project="openSUSE:Factory">
-  <title>RDMA core userspace libraries and daemons</title>
-  <description>RDMA core userspace infrastructure and documentation, including initialization
-scripts, kernel driver-specific modprobe override configs, IPoIB network
-scripts, dracut rules, and the rdma-ndd utility.
-</description>
-  <devel project="science:HPC" package="rdma-core"/>
-</package>

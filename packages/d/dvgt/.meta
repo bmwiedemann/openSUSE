@@ -1,7 +1,0 @@
-<package name="dvgt" project="openSUSE:Factory">
-  <title>A DVI Previewer</title>
-  <description>Dvgt is a DVI previewer for console, terminals, and graphical terminals
-like Tektronics or the good old XTerm. dvgt tries to fit the conditions
-of the DVI files, therefore output on text terminals is not legible.</description>
-  <devel project="Publishing" package="dvgt"/>
-</package>

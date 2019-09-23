@@ -1,5 +1,0 @@
-# RPM macros are not configuration:
-addFilter("non-conffile-in-etc /etc/rpm/macros.kde4")
-# Even though the package contains no arch-dependant files, it owns 
-# /usr/lib64/kde4 and sub-directories, thus:
-addFilter("no-binary")

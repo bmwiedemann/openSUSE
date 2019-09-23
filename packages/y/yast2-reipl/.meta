@@ -1,5 +1,0 @@
-<package name="yast2-reipl" project="openSUSE:Factory">
-  <title>YaST2 - IPL loader</title>
-  <description>Module for loading IPL from running system on S/390</description>
-  <devel project="YaST:Head" package="yast2-reipl"/>
-</package>

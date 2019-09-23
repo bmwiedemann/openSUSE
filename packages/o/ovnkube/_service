@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/ovn-org/ovn-kubernetes</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">ovnkube</param>
+    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="revision">16e7c5d6a0ee97fa3da47fa0f33949934b2de72b</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

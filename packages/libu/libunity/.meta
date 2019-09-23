@@ -1,6 +1,0 @@
-<package name="libunity" project="openSUSE:Factory">
-  <title>Library for the Unity shell</title>
-  <description>LibUnity is library for instrumenting- and integrating with all aspects of the Unity shell.
-This is not a library used in the implementation of the Unity shell itself, but a library to be consumed by clients that wants to do deep integration with the Unity shell.</description>
-  <devel project="X11:Unity" package="libunity"/>
-</package>

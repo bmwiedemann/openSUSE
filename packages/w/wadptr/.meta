@@ -1,8 +1,0 @@
-<package name="wadptr" project="openSUSE:Factory">
-  <title>Redundancy compressor for Doom WAD files</title>
-  <description>WADptr is a utility for reducing the size of Doom WAD files. The
-&quot;compressed&quot; WADs will still work the same as the originals. The
-program works by exploiting the WAD file format to combine repeated /
-redundant material.</description>
-  <devel project="games:tools" package="wadptr"/>
-</package>

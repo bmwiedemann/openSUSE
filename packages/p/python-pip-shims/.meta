@@ -1,5 +1,0 @@
-<package name="python-pip-shims" project="openSUSE:Factory">
-  <title></title>
-  <description>Compatibility shims for pip versions 8 thru current</description>
-  <devel project="devel:languages:python" package="python-pip-shims"/>
-</package>

@@ -1,9 +1,0 @@
-# to be used as a last resort
-addFilter("shlib-fixed-dependency")
-addFilter("ceph-base.*devel-file-in-non-devel-package.*erasure-code")
-addFilter("ceph-base.*devel-file-in-non-devel-package.*compressor")
-addFilter("ceph-base.*devel-file-in-non-devel-package.*rados-classes")
-addFilter("ceph-base.*devel-file-in-non-devel-package.*libceph_crypto")
-addFilter("ceph-base.*devel-file-in-non-devel-package.*libos_tp")
-addFilter("ceph-base.*devel-file-in-non-devel-package.*libosd_tp")
-addFilter("librados2.*devel-file-in-non-devel-package.*libceph-common")

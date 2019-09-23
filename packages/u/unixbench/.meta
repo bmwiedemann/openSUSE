@@ -1,8 +1,0 @@
-<package name="unixbench" project="openSUSE:Factory">
-  <title>A byte Unix benchmarks</title>
-  <description>The design flaw was that the benchmarks timed a fixed number of loops;
-if there were too few loops, the times were too small to be reliable.
-Perhaps we could have increased the number of loops and been safe for
-another few years (months?).</description>
-  <devel project="benchmark" package="unixbench"/>
-</package>

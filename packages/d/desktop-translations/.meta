@@ -1,5 +1,0 @@
-<package name="desktop-translations" project="openSUSE:Factory">
-  <title>Desktop Files Translation updates</title>
-  <description>This package provides translations for installed desktop files.</description>
-  <devel project="X11:common:Factory" package="desktop-translations"/>
-</package>

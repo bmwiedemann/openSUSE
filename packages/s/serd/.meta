@@ -1,8 +1,0 @@
-<package name="serd" project="openSUSE:Factory">
-  <title>A lightweight C library for RDF syntax</title>
-  <description>A lightweight C library for RDF syntax  which supports reading and writing Turtle and NTriples.
-
-</description>
-  <devel project="multimedia:libs" package="serd"/>
-  <url>http://drobilla.net/software/serd/</url>
-</package>

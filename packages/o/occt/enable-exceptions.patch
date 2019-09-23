@@ -1,8 +1,0 @@
---- adm/cmake/occt_defs_flags.cmake.orig	2019-02-07 10:41:53.526909609 +0100
-+++ adm/cmake/occt_defs_flags.cmake	2019-02-07 10:42:03.855179250 +0100
-@@ -138,5 +138,3 @@
-   set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
- endif()
- 
--set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNo_Exception")
--set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DNo_Exception")

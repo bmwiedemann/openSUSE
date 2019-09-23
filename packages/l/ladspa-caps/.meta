@@ -1,6 +1,0 @@
-<package name="ladspa-caps" project="openSUSE:Factory">
-  <title>LADSPA caps plugins</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-caps"/>
-  <url>http://quitte.de/dsp/</url>
-</package>

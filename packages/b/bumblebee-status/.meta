@@ -1,6 +1,0 @@
-<package name="bumblebee-status" project="openSUSE:Factory">
-  <title>bumblebee-status: custom status bar for i3</title>
-  <description>bumblebee-status is a modular, theme-able status line generator for the i3 window manager
-</description>
-  <devel project="X11:windowmanagers" package="bumblebee-status"/>
-</package>

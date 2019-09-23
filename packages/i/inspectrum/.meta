@@ -1,8 +1,0 @@
-<package name="inspectrum" project="openSUSE:Factory">
-  <title>A tool for analysing captured signals from SDRs</title>
-  <description>A tool for analysing captured signals, primarily from software-defined radio receivers
-
-</description>
-  <devel project="hardware:sdr" package="inspectrum"/>
-  <url>https://github.com/miek/inspectrum</url>
-</package>

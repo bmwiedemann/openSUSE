@@ -1,5 +1,0 @@
-<package name="python-bandit" project="openSUSE:Factory">
-  <title></title>
-  <description>Security oriented static analyser for Python code</description>
-  <devel project="devel:languages:python" package="python-bandit"/>
-</package>

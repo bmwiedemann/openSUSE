@@ -1,5 +1,0 @@
-<package name="bat" project="openSUSE:Factory">
-  <title>bat</title>
-  <description>A cat(1) clone with syntax highlighting and Git integration</description>
-  <devel project="utilities" package="bat"/>
-</package>

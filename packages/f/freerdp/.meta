@@ -1,9 +1,0 @@
-<package name="freerdp" project="openSUSE:Factory">
-  <title>Remote Desktop Viewer</title>
-  <description>FreeRDP is a fork of the rdesktop project that intends to rapidly start
-moving forward and implement features that rdesktop lacks the most.
-
-</description>
-  <devel project="X11:RemoteDesktop" package="freerdp"/>
-  <url>http://freerdp.sourceforge.net/</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="rook-ceph-image" project="openSUSE:Factory">
-  <title>rook container image</title>
-  <description></description>
-  <devel project="filesystems:ceph" package="rook-ceph-image"/>
-</package>

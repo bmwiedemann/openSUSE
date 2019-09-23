@@ -1,5 +1,0 @@
-<package name="ghc-mime-types" project="openSUSE:Factory">
-  <title>Basic mime-type handling types and functions</title>
-  <description></description>
-  <devel project="devel:languages:haskell" package="ghc-mime-types"/>
-</package>

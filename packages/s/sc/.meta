@@ -1,7 +1,0 @@
-<package name="sc" project="openSUSE:Factory">
-  <title>Spreadsheet Calculator</title>
-  <description>sc is a free curses-based spreadsheet program that uses key bindings similar to
-vi and less.</description>
-  <devel project="devel:openSUSE:Factory" package="sc"/>
-  <url>http://ibiblio.org/pub/Linux/apps/financial/spreadsheet/</url>
-</package>

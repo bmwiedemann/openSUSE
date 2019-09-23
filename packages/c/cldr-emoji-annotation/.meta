@@ -1,6 +1,0 @@
-<package name="cldr-emoji-annotation" project="openSUSE:Factory">
-  <title>Emoji annotation files in CLDR</title>
-  <description>This package contains the pkg-config files for development
-when building programs that use cldr-annotations.</description>
-  <devel project="M17N" package="cldr-emoji-annotation"/>
-</package>

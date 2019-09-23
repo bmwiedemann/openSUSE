@@ -1,5 +1,0 @@
-<package name="mate-user-guide" project="openSUSE:Factory">
-  <title>User guide for the MATE desktop</title>
-  <description>This package contains documentation targeted for end-users of MATE Desktop Environment with general MATE applicability.</description>
-  <devel project="X11:MATE:Factory" package="mate-user-guide"/>
-</package>

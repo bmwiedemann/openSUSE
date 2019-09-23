@@ -1,6 +1,0 @@
-<package name="godot-rpm-macros" project="openSUSE:Factory">
-  <title>godot-rpm-macros</title>
-  <description>Provides RPM macros that will allow for easier packaging of games made with 
-the Godot engine.</description>
-  <devel project="games" package="godot-rpm-macros"/>
-</package>

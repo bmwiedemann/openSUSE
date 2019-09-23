@@ -1,7 +1,0 @@
-# ignore reports about files in /usr/share/doc/packages/sword/examples/ for now
-addFilter("wrong-file-end-of-line-encoding.*/usr/share/doc/packages/sword/examples/.*");
-addFilter("suse-filelist-forbidden.*/usr/share/doc/packages/sword/examples/cmdline/.*");
-addFilter("hidden-file-or-dir.*/usr/share/doc/packages/sword/examples/cmdline/.*");
-addFilter("libtool-wrapper-in-package.*/usr/share/doc/packages/sword/examples/.*");
-addFilter("doc-file-dependency.*/usr/share/doc/packages/sword/examples/.*");
-addFilter("arch-dependent-file-in-usr-share.*/usr/share/doc/packages/sword/examples/.*");

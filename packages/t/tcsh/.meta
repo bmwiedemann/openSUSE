@@ -1,9 +1,0 @@
-<package name="tcsh" project="openSUSE:Factory">
-  <title>The C SHell</title>
-  <description>Tcsh is an enhanced, but completely compatible, version of the Berkeley
-UNIX C shell, csh(1). It is a command language interpreter usable as an
-interactive login shell and a shell script command processor. It
-includes a command-line editor, programmable word completion, spelling
-correction, a history mechanism, job control, and a C-like syntax.</description>
-  <devel project="shells" package="tcsh"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="gnome-control-center" project="openSUSE:Factory">
-  <title>The GNOME Control Center</title>
-  <description>The control center is GNOME's main interface for configuration of
-various aspects of your desktop.</description>
-  <devel project="GNOME:Factory" package="gnome-control-center"/>
-</package>

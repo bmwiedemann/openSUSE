@@ -1,5 +1,0 @@
-<package name="scim-anthy" project="openSUSE:Factory">
-  <title>Anthy Input Method Engine for SCIM</title>
-  <description>Anthy Input Method Engine for SCIM</description>
-  <devel project="M17N" package="scim-anthy"/>
-</package>

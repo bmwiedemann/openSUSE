@@ -1,5 +1,0 @@
-<package name="orion" project="openSUSE:Factory">
-  <title>Twitch Client</title>
-  <description>Twitch stream client using QT</description>
-  <devel project="games:tools" package="orion"/>
-</package>

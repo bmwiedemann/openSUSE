@@ -1,9 +1,0 @@
-<package name="fusesmb" project="openSUSE:Factory">
-  <title>SMB for FUSE</title>
-  <description>SMB for fuse (FUSE) is a filesystem which allows to mount a full
-Network Neighborhood with samba (Samba) and other SMB shares. It works
-like smbfs, but instead of accessing one share at a time, all computers
-and workgroups are accessible at once from a single filesystem mount,
-making network browsing just as easy as it is on Windows.</description>
-  <devel project="filesystems" package="fusesmb"/>
-</package>

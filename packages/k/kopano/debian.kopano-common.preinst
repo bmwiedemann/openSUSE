@@ -1,8 +1,0 @@
-getent group kopano >/dev/null || \
-groupadd -r kopano
-
-getent passwd kopano >/dev/null || \
-useradd -r -c 'Kopano Groupware Suite' -g kopano -d /dev/null \
-	-s /sbin/nologin kopano
-
-passwd -l kopano >/dev/null

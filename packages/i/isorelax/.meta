@@ -1,7 +1,0 @@
-<package name="isorelax" project="openSUSE:Factory">
-  <title>Public interfaces useful for applications to support RELAX Core</title>
-  <description>The ISO RELAX project is started to host the public interfaces useful
-for applications to support RELAX Core. But nowadays some of the stuff
-we have is schema language neutral.</description>
-  <devel project="Java:packages" package="isorelax"/>
-</package>

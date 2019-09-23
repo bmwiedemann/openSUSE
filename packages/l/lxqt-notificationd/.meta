@@ -1,5 +1,0 @@
-<package name="lxqt-notificationd" project="openSUSE:Factory">
-  <title>Notification daemon</title>
-  <description>Notification daemon</description>
-  <devel project="X11:LXQt" package="lxqt-notificationd"/>
-</package>

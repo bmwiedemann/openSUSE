@@ -1,5 +1,0 @@
-<package name="python-libnacl" project="openSUSE:Factory">
-  <title>python-libnacl</title>
-  <description>Python bindings for libsodium/tweetnacl based on ctypes</description>
-  <devel project="devel:languages:python" package="python-libnacl"/>
-</package>

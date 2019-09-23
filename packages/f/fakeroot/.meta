@@ -1,5 +1,0 @@
-<package name="fakeroot" project="openSUSE:Factory">
-  <title></title>
-  <description>This package was branched from Base:install, needed.</description>
-  <devel project="devel:tools" package="fakeroot"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="graphviz-addons" project="openSUSE:Factory">
-  <title>Graph Visualization Tools</title>
-  <description>A collection of tools and tcl packages for the manipulation and layout
-of graphs (as in nodes and edges, not as in bar charts).</description>
-  <devel project="openSUSE:Factory" package="graphviz"/>
-  <bcntsynctag>graphviz</bcntsynctag>
-</package>

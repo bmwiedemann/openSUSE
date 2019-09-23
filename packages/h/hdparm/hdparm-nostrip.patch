@@ -1,6 +1,0 @@
---- ./Makefile
-+++ ./Makefile
-@@ -14 +13,0 @@ CC ?= gcc
--STRIP ?= strip
-@@ -31 +29,0 @@ hdparm: hdparm.h sgio.h $(OBJS)
--	$(STRIP) hdparm

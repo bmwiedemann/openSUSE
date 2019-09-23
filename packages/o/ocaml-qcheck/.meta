@@ -1,7 +1,0 @@
-<package name="ocaml-qcheck" project="openSUSE:Factory">
-  <title>QuickCheck inspired property-based testing for OCaml</title>
-  <description>This module allows to check invariants (properties of some types) over
-randomly generated instances of the type. It provides combinators for
-generating instances and printing them.</description>
-  <devel project="devel:languages:ocaml" package="ocaml-qcheck"/>
-</package>

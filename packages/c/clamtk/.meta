@@ -1,7 +1,0 @@
-<package name="clamtk" project="openSUSE:Factory">
-  <title>Graphical Frontend to the ClamAV Anti Virus</title>
-  <description>ClamTk is a GUI front-end for ClamAV using Gtk2-perl.
-It is designed to be an easy-to-use, point and click virus scanner.</description>
-  <devel project="security" package="clamtk"/>
-  <url>http://clamtk.sourceforge.net/</url>
-</package>

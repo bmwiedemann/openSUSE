@@ -1,6 +1,0 @@
-<package name="dcmtk" project="openSUSE:Factory">
-  <title>DICOM Toolkit</title>
-  <description>DCMTK is a collection of libraries and applications implementing large
-parts the DICOM standard.</description>
-  <devel project="KDE:Extra" package="dcmtk"/>
-</package>

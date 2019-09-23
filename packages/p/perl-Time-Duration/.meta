@@ -1,6 +1,0 @@
-<package name="perl-Time-Duration" project="openSUSE:Factory">
-  <title>Rounded or exact English expression of durations</title>
-  <description>This module provides functions for expressing durations in rounded or
-exact terms.</description>
-  <devel project="devel:languages:perl" package="perl-Time-Duration"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="fftw3" project="openSUSE:Factory">
-  <title>Discrete Fourier Transform (DFT) C Subroutine Library</title>
-  <description>FFTW is a C subroutine library for computing the Discrete Fourier
-Transform (DFT) in one or more dimensions, of both real and complex
-data, and of arbitrary input size.</description>
-  <devel project="multimedia:libs" package="fftw3"/>
-</package>

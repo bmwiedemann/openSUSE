@@ -1,7 +1,0 @@
-<package name="gimp-gap" project="openSUSE:Factory">
-  <title>GIMP Animation Package</title>
-  <description>The GIMP-GAP (GIMP Animation Package) is a collection of Plug-Ins to
-extend the GIMP with capabilities to edit and create animations as
-sequences of single frames.</description>
-  <devel project="graphics" package="gimp-gap"/>
-</package>

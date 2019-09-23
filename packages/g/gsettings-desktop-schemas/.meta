@@ -1,6 +1,0 @@
-<package name="gsettings-desktop-schemas" project="openSUSE:Factory">
-  <title>Shared GSettings Schemas for the Desktop</title>
-  <description>A collection of GSettings schemas for settings shared by various
-components of a desktop.</description>
-  <devel project="GNOME:Factory" package="gsettings-desktop-schemas"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="conmon" project="openSUSE:Factory">
-  <title>An OCI container runtime monitor</title>
-  <description></description>
-  <devel project="devel:kubic" package="conmon"/>
-</package>

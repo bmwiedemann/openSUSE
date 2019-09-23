@@ -1,5 +1,0 @@
-<package name="evemu" project="openSUSE:Factory">
-  <title>Input Event Device Emulation Library</title>
-  <description>The evemu library and tools are used to describe devices, record data, create emulation devices and replay data from kernel evdev (input event) devices.</description>
-  <devel project="X11:Unity" package="evemu"/>
-</package>

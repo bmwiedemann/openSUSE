@@ -1,4 +1,0 @@
-yaz-client -m list z3950.loc.gov:7090/voyager
-
-find @attr 1=4 goethe
-show 1+10

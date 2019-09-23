@@ -1,6 +1,0 @@
-<package name="rubygem-xmlhash" project="openSUSE:Factory">
-  <title>Title of New Package</title>
-  <description>
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-xmlhash"/>
-</package>

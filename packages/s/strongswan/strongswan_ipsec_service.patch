@@ -1,9 +1,0 @@
-Index: strongswan-5.6.2/init/systemd/strongswan.service.in
-===================================================================
---- strongswan-5.6.2.orig/init/systemd/strongswan.service.in	2017-02-07 08:04:04.000000000 +0100
-+++ strongswan-5.6.2/init/systemd/strongswan.service.in	2018-04-17 16:53:57.546334751 +0200
-@@ -9,3 +9,4 @@ Restart=on-abnormal
- 
- [Install]
- WantedBy=multi-user.target
-+Alias=ipsec.service

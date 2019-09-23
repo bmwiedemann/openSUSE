@@ -1,4 +1,0 @@
-addFilter('devel-file-in-non-devel-package .*/wcs/.*')
-addFilter('hidden-file-or-dir .*/tests/data/.*')
-addFilter('zero-length .*/tests/data/.*')
-addFilter('zero-length .*/index\.html')

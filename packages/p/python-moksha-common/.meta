@@ -1,8 +1,0 @@
-<package name="python-moksha-common" project="openSUSE:Factory">
-  <title>Common components for Moksha</title>
-  <description>Common components for Moksha.
-
-</description>
-  <devel project="devel:languages:python" package="python-moksha-common"/>
-  <url>https://mokshaproject.net</url>
-</package>

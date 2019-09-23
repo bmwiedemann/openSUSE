@@ -1,6 +1,0 @@
-<package name="osinfo-db-tools" project="openSUSE:Factory">
-  <title>Tools for managing the osinfo database</title>
-  <description>This package provides tools for managing the osinfo database of
-information about operating systems for use with virtualization</description>
-  <devel project="Virtualization" package="osinfo-db-tools"/>
-</package>

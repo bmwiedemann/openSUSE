@@ -1,8 +1,0 @@
-[uwsgi]
-master = true
-autoload = true
-processes = 2
-module = trac.web.main:dispatch_request
-env = TRAC_ENV=/srv/project001
-socket = 127.0.0.1:3032
-

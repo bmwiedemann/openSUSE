@@ -1,6 +1,0 @@
-<package name="dbus-1-x11" project="openSUSE:Factory">
-  <title>D-Bus Message Bus System</title>
-  <description>D-Bus contains some tools that require Xlib to be installed, those are
-in this separate package so server systems need not install X.</description>
-  <devel project="openSUSE:Factory" package="dbus-1"/>
-</package>

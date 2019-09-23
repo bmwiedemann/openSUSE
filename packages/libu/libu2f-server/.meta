@@ -1,5 +1,0 @@
-<package name="libu2f-server" project="openSUSE:Factory">
-  <title>Yubico Universal 2nd Factor (U2F) Server C Library</title>
-  <description>This is a C library that implements the server-side of the U2F protocol. More precisely, it provides an API for generating the JSON blobs required by U2F devices to perform the U2F Registration and U2F Authentication operations, and functionality for verifying the cryptographic operations.</description>
-  <devel project="security" package="libu2f-server"/>
-</package>

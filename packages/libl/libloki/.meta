@@ -1,5 +1,0 @@
-<package name="libloki" project="openSUSE:Factory">
-  <title>C++ library of designs, containing flexible implementations of common design patterns and idioms.</title>
-  <description>Loki is the name of a C++ software library written by Andrei Alexandrescu as part of his book Modern C++ Design. [http://loki-lib.sourceforge.net/]</description>
-  <devel project="devel:libraries:c_c++" package="libloki"/>
-</package>

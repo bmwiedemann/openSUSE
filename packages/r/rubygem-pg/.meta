@@ -1,6 +1,0 @@
-<package name="rubygem-pg" project="openSUSE:Factory">
-  <title>A Ruby interface to the PostgreSQL RDBMS</title>
-  <description>This is the extension library to access a PostgreSQL database from Ruby.
-This library works with PostgreSQL 7.4 and later.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-pg"/>
-</package>

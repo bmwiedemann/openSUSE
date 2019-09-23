@@ -1,6 +1,0 @@
-<package name="ghostview" project="openSUSE:Factory">
-  <title>Ghostview</title>
-  <description>Ghostview offers an X11 GUI for viewing PostScript files. This is an
-X11 interface to ghostscript.</description>
-  <devel project="Publishing" package="ghostview"/>
-</package>

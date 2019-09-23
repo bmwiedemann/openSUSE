@@ -1,5 +1,0 @@
-<package name="gos-wallpapers" project="openSUSE:Factory">
-  <title>Good Old SUSE Wallpapers</title>
-  <description>This package contains wallpapers from older SUSE releases.</description>
-  <devel project="X11:common:Factory" package="gos-wallpapers"/>
-</package>

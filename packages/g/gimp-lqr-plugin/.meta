@@ -1,8 +1,0 @@
-<package name="gimp-lqr-plugin" project="openSUSE:Factory">
-  <title>Content-aware resizing plug-in for GIMP</title>
-  <description>This GIMP plug-in implements the content-aware resizing algorithm
-described in the paper &quot;Seam Carving for Content-Aware Image Resizing&quot;
-by Shai Avidan and Ariel Shamir.</description>
-  <devel project="graphics" package="gimp-lqr-plugin"/>
-  <url>http://liquidrescale.wikidot.com/</url>
-</package>

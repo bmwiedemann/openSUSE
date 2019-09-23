@@ -1,5 +1,0 @@
-<package name="xorg-x11-driver-video" project="openSUSE:Factory">
-  <title>X.Org video drivers</title>
-  <description>This package contains X.Org video drivers.</description>
-  <devel project="X11:XOrg" package="xorg-x11-driver-video"/>
-</package>

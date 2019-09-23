@@ -1,8 +1,0 @@
-<package name="scdl" project="openSUSE:Factory">
-  <title>Download Music from Souncloud</title>
-  <description>Download Music from Souncloud.
-
-</description>
-  <devel project="utilities" package="scdl"/>
-  <url>https://github.com/flyingrub/scdl</url>
-</package>

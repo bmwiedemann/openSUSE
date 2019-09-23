@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 03 15:39:31 UTC 2019 - kgronlund@suse.com
+
+- Update to version 4.1.0+git.1567524903.fff07b88:
+  * Doc: ui_resource: resolve maintenance vs is-managed conflict
+  * Test: ui_resource: resolve maintenance vs is-managed conflict
+  * Dev: ui_resource: resolve maintenance vs is-managed conflict
+
+-------------------------------------------------------------------
+Tue Aug 27 13:41:08 UTC 2019 - kgronlund@suse.com
+
+- Update to version 4.1.0+git.1566912937.ad2608af:
+  * Test: ui_resource: maintenance: stop using crm_resource
+  * Dev: ui_resource: maintenance: stop using crm_resource
+
+-------------------------------------------------------------------
+Thu Aug 22 08:36:44 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.1.0+git.1566462738.45748f84:
+  * Revert "dev: Suggestion: Try to centralized command options in one file"
+
+-------------------------------------------------------------------
 Mon Aug 19 12:43:55 UTC 2019 - dakechi@suse.com
 
 - Update to version 4.1.0+git.1566218232.dbdf060c:

@@ -1,8 +1,0 @@
-<package name="dbench" project="openSUSE:Factory">
-  <title>File System Benchmark Similar to Netbench</title>
-  <description>Dbench is a file system benchmark that generates load patterns similar
-to those of the commercial Netbench benchmark, but without requiring a
-lab of Windows load generators to run. It is now considered a de facto
-standard for generating load on the Linux VFS.</description>
-  <devel project="benchmark" package="dbench"/>
-</package>

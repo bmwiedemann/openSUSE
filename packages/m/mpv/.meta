@@ -1,6 +1,0 @@
-<package name="mpv" project="openSUSE:Factory">
-  <title>a free, open source, and cross-platform media player</title>
-  <description>mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
-of video file formats, audio and video codecs, and subtitle types.</description>
-  <devel project="multimedia:apps" package="mpv"/>
-</package>

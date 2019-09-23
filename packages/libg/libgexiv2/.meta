@@ -1,6 +1,0 @@
-<package name="libgexiv2" project="openSUSE:Factory">
-  <title>A GObject-based Exiv2 wrapper</title>
-  <description>gexiv2 is a GObject-based wrapper around the Exiv2 library. It makes the
-basic features of Exiv2 available to GNOME applications.</description>
-  <devel project="GNOME:Apps" package="libgexiv2"/>
-</package>

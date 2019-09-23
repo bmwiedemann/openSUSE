@@ -1,9 +1,0 @@
-<package name="ncftp" project="openSUSE:Factory">
-  <title>A Comfortable FTP Program</title>
-  <description>This program has been in service on UNIX systems since 1991 and is a
-popular alternative to the standard FTP program, /usr/bin/ftp. NcFTP
-offers many ease-of-use and performance enhancements over the stock FTP
-client and runs on a wide variety of UNIX platforms as well as
-operating systems like Microsoft Windows and Apple Mac OS X.</description>
-  <devel project="network" package="ncftp"/>
-</package>

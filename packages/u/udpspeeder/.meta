@@ -1,5 +1,0 @@
-<package name="udpspeeder" project="openSUSE:Factory">
-  <title>udpspeeder</title>
-  <description></description>
-  <devel project="network:utilities" package="udpspeeder"/>
-</package>

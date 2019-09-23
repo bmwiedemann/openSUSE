@@ -1,5 +1,0 @@
-<package name="rubygem-activejob-5.2" project="openSUSE:Factory">
-  <title>rubygem-activejob-5.2</title>
-  <description>Declare job classes that can be run by a variety of queueing backends.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-activejob-5.2"/>
-</package>

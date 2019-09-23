@@ -1,2 +1,0 @@
-# rpm cannot find the libcontainers-common dependency
-addFilter ("^skopeo.* W: explicit-lib-dependency libcontainers-common")

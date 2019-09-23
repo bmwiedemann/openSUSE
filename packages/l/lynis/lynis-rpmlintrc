@@ -1,4 +1,0 @@
-# lynis demands 640 on these scripts
-addFilter("non-executable-script /usr/share/lynis/include/[^ ]+ 0?640L? /bin/(ba|)sh")
-# identical translations
-addFilter("files-duplicate /usr/share/lynis/db/languages/(en|nl|pt|br)")

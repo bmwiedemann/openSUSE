@@ -1,2 +1,0 @@
-addFilter('wrong-file-end-of-line-encoding .*/examples/errorfiles/.*\.http$')
-addFilter('file-contains-current-date /usr/share/doc/packages/haproxy/examples/haproxy.spec')

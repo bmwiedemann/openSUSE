@@ -1,6 +1,0 @@
-<package name="dbus-sharp2" project="openSUSE:Factory">
-  <title></title>
-  <description>2.0 API version</description>
-  <devel project="Mono:Factory" package="dbus-sharp2"/>
-  <url>http://mono.github.com/dbus-sharp/</url>
-</package>

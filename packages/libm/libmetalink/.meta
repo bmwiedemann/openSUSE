@@ -1,9 +1,0 @@
-<package name="libmetalink" project="openSUSE:Factory">
-  <title>Metalink Library</title>
-  <description>Libmetalink is a Metalink library written in C language. It is intended to
-provide the programs written in C to add Metalink functionality such as parsing
-Metalink XML files.
-</description>
-  <devel project="network:utilities" package="libmetalink"/>
-  <url>https://launchpad.net/libmetalink</url>
-</package>

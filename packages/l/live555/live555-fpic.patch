@@ -1,9 +1,0 @@
-diff -burNE live_orig/config.linux live/config.linux
---- live_orig/config.linux	2018-11-06 10:49:08.113052527 +0100
-+++ live/config.linux	2018-11-06 10:49:29.184596791 +0100
-@@ -1,4 +1,4 @@
--COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
-+COMPILE_OPTS =		$(INCLUDES) -I. -O2 -fPIC -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
- C =			c
- C_COMPILER =		cc
- C_FLAGS =		$(COMPILE_OPTS) $(CPPFLAGS) $(CFLAGS)

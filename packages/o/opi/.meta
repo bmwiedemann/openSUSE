@@ -1,5 +1,0 @@
-<package name="opi" project="openSUSE:Factory">
-  <title>OBS Package Installer</title>
-  <description>OBS Package Installer</description>
-  <devel project="utilities" package="opi"/>
-</package>

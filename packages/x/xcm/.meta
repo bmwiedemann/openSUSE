@@ -1,8 +1,0 @@
-<package name="xcm" project="openSUSE:Factory">
-  <title>Xcm</title>
-  <description>X Color Management tools
-
-The Xcm tools are colour management helpers for Xorg.
-A EDID parser and a colour management events observer are included.</description>
-  <devel project="multimedia:color_management" package="xcm"/>
-</package>

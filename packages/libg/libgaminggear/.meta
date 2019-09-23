@@ -1,5 +1,0 @@
-<package name="libgaminggear" project="openSUSE:Factory">
-  <title>libgaminggear</title>
-  <description>Provides functionality for gaming input devices</description>
-  <devel project="hardware" package="libgaminggear"/>
-</package>

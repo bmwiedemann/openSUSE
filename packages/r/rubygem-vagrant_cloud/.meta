@@ -1,6 +1,0 @@
-<package name="rubygem-vagrant_cloud" project="openSUSE:Factory">
-  <title>rubygem-vagrant_cloud</title>
-  <description>Ruby library for the HashiCorp Vagrant Cloud API</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-vagrant_cloud"/>
-  <url>https://github.com/hashicorp/vagrant_cloud</url>
-</package>

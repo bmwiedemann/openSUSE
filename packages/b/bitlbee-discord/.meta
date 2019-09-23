@@ -1,6 +1,0 @@
-<package name="bitlbee-discord" project="openSUSE:Factory">
-  <title>Bitlbee plugin for Discord</title>
-  <description></description>
-  <devel project="server:irc" package="bitlbee-discord"/>
-  <url>https://github.com/sm00th/bitlbee-discord</url>
-</package>

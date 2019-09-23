@@ -1,6 +1,0 @@
-<package name="bcg729" project="openSUSE:Factory">
-  <title>Encoder and decoder of the ITU G.729 Annex A/B speech codec</title>
-  <description>Bcg729 is an implementation of both encoder and decoder of the ITU G.729 Annex A/B speech codec.
-It supports concurrent channels encoding/decoding for multi call application such as conferencing.</description>
-  <devel project="network:telephony" package="bcg729"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="usbutils" project="openSUSE:Factory">
-  <title>Tools and libraries for USB devices</title>
-  <description>This package contains a utility for inspecting devices connected to USB
-ports.</description>
-  <devel project="Base:System" package="usbutils"/>
-</package>

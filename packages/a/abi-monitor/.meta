@@ -1,9 +1,0 @@
-<package name="abi-monitor" project="openSUSE:Factory">
-  <title>A tool to monitor and build new versions of a software library</title>
-  <description>Monitor new versions of a software library, try to build them
-and create profiles for abi-tracker
-
-</description>
-  <devel project="devel:tools" package="abi-monitor"/>
-  <url>https://github.com/lvc/abi-monitor</url>
-</package>

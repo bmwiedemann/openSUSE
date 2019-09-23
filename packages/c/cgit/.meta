@@ -1,6 +1,0 @@
-<package name="cgit" project="openSUSE:Factory">
-  <title>A web frontend for git repositories</title>
-  <description>This is an attempt to create a fast web interface for the git scm, using a
-builtin cache to decrease server io-pressure.</description>
-  <devel project="devel:tools:scm" package="cgit"/>
-</package>

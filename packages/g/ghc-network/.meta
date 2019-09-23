@@ -1,5 +1,0 @@
-<package name="ghc-network" project="openSUSE:Factory">
-  <title>Haskell networking library</title>
-  <description>Low-level networking interface</description>
-  <devel project="devel:languages:haskell" package="ghc-network"/>
-</package>

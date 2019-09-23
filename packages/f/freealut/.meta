@@ -1,5 +1,0 @@
-<package name="freealut" project="openSUSE:Factory">
-  <title>freealut is a free implementation of OpenAL's ALUT standard</title>
-  <description>freealut is a free implementation of OpenAL's ALUT standard.</description>
-  <devel project="multimedia:libs" package="freealut"/>
-</package>

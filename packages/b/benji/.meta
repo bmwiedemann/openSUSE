@@ -1,5 +1,0 @@
-<package name="benji" project="openSUSE:Factory">
-  <title>benji</title>
-  <description>Deduplicating block based backup software for ceph/rbd, image files and devices.</description>
-  <devel project="Archiving:Backup" package="benji"/>
-</package>

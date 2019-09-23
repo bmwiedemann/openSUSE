@@ -1,5 +1,0 @@
-<package name="wine-gecko" project="openSUSE:Factory">
-  <title>The Wine specific Gecko HTML rendering engine</title>
-  <description>This package contains the prepackaged Win32 Gecko rendering engine for use by Wine.</description>
-  <devel project="Emulators:Wine" package="wine-gecko"/>
-</package>

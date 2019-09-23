@@ -1,5 +1,0 @@
-<package name="dbus-broker" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="Base:System" package="dbus-broker"/>
-</package>

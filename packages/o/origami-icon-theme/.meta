@@ -1,5 +1,0 @@
-<package name="origami-icon-theme" project="openSUSE:Factory">
-  <title>Origami Icon Theme</title>
-  <description>Origami Icon Theme is an icon theme created for Geeko, Geeko-Darker and Geeko-Dark GTK themes. Based on an older branch of Papirus, offers flat recognizable icons for more than 3000 packages in YaST.</description>
-  <devel project="X11:common:Factory" package="origami-icon-theme"/>
-</package>

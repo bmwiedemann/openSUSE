@@ -1,5 +1,0 @@
-<package name="libfvalue" project="openSUSE:Factory">
-  <title> Library to provide generic file value functions</title>
-  <description>Library to provide generic file value functions for the libyal family of libraries.</description>
-  <devel project="security:forensics" package="libfvalue"/>
-</package>

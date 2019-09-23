@@ -1,9 +1,0 @@
-<package name="python-hankel" project="openSUSE:Factory">
-  <title>Hankel Transformations in Python</title>
-  <description>Hankel is a Python library to perform simple and accurate Hankel
-transformations using the method of Ogata 2005.
-
-</description>
-  <devel project="devel:languages:python" package="python-hankel"/>
-  <url>https://github.com/steven-murray/hankel</url>
-</package>

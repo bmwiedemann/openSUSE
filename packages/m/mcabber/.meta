@@ -1,5 +1,0 @@
-<package name="mcabber" project="openSUSE:Factory">
-  <title>Modular XMPP client on ncurses</title>
-  <description>mcabber is a small XMPP console client on ncurses. It features SSL support, history logging, external actions, OTR support, conferences (MUC) support.</description>
-  <devel project="network" package="mcabber"/>
-</package>

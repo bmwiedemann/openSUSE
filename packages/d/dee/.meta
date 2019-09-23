@@ -1,6 +1,0 @@
-<package name="dee" project="openSUSE:Factory">
-  <title>A library that uses D-Bus to provide objects</title>
-  <description>libdee is a library that uses D-Bus to provide objects allowing one to create Model-View-Controller type applications across D-Bus.
-It also consists of utility objects which extend D-Bus allowing peer-to-peer discoverability of known objects without needing a central registrar.</description>
-  <devel project="X11:Unity" package="dee"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="fastlzlib" project="openSUSE:Factory">
-  <title>Zlib-like interface to fast block compression libraries</title>
-  <description>Zlib-like interface to fast block compression (LZ4 or FastLZ) libraries.
-
-</description>
-  <devel project="Archiving" package="fastlzlib"/>
-  <url>https://github.com/bareos/fastlzlib</url>
-</package>

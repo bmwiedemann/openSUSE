@@ -1,7 +1,0 @@
-<package name="xmoto" project="openSUSE:Factory">
-  <title>X-Moto</title>
-  <description>X-Moto is a challenging 2D motocross platform game, where physics play an all important role in the gameplay. You need to control your bike to its limit, if you want to have a chance finishing the more difficult of the challenges. First you'll try just to complete the levels, while later you'll compete with yourself and others, racing against the clock.
-</description>
-  <devel project="games" package="xmoto"/>
-  <url>http://xmoto.tuxfamily.org/</url>
-</package>

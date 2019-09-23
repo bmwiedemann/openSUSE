@@ -1,5 +1,0 @@
-<package name="yakuake" project="openSUSE:Factory">
-  <title>Terminal for KDE</title>
-  <description>Yakuake is a retractable KDE Terminal Emulator.</description>
-  <devel project="KDE:Applications" package="yakuake"/>
-</package>

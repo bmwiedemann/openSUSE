@@ -1,8 +1,0 @@
-<package name="python-pydbus" project="openSUSE:Factory">
-  <title>Pythonic DBus library</title>
-  <description>A dbus library for Python.
-
-</description>
-  <devel project="devel:languages:python" package="python-pydbus"/>
-  <url>https://github.com/LEW21/pydbus</url>
-</package>

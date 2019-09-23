@@ -1,5 +1,0 @@
-<package name="shutdownscheduler" project="openSUSE:Factory">
-  <title>Shutdown Scheduler</title>
-  <description>simple shutdown scheduler</description>
-  <devel project="X11:Pantheon:Apps" package="shutdownscheduler"/>
-</package>

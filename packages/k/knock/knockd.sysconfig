@@ -1,5 +1,0 @@
-## Path:        Network/Security/Knockd
-## Description: Basic configuration of knockd
-## Type:        string
-## Default:     ""
-KNOCKD_OPTIONS="-d"

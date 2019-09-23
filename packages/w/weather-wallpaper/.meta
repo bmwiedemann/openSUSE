@@ -1,7 +1,0 @@
-<package name="weather-wallpaper" project="openSUSE:Factory">
-  <title>weather-wallpaper</title>
-  <description>Weather wallpaper is a program which connects to NOAA each hour to get the
-current weather at the specified location and creates and sets a wallpaper
-with the data retrieved.</description>
-  <devel project="GNOME:Apps" package="weather-wallpaper"/>
-</package>

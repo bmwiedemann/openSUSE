@@ -1,6 +1,0 @@
-<package name="twinkle" project="openSUSE:Factory">
-  <title>A SIP Soft Phone</title>
-  <description>Twinkle is a SIP-based soft phone for making telephone calls over IP
-networks.</description>
-  <devel project="network:telephony" package="twinkle"/>
-</package>

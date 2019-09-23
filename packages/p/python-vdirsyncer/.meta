@@ -1,8 +1,0 @@
-<package name="python-vdirsyncer" project="openSUSE:Factory">
-  <title>Synchronize CalDAV and CardDAV</title>
-  <description>Vdirsyncer synchronizes your calendars and addressbooks between two storages. The supported storages are CalDAV, CardDAV, arbitrary HTTP resources, vdir and some more.
-It aims to be for CalDAV and CardDAV what OfflineIMAP is for IMAP.
-
-</description>
-  <devel project="devel:languages:python" package="python-vdirsyncer"/>
-</package>

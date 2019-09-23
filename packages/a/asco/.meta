@@ -1,8 +1,0 @@
-<package name="asco" project="openSUSE:Factory">
-  <title></title>
-  <description>ASCO project aims to bring circuit optimization capabilities to existing SPICE
-simulators using a high-performance parallel differential evolution (DE) optimization
-algorithm. Currently out-of-the-box support for Eldo (TM), HSPICE (R), LTspice (TM),
-Spectre (R), Qucs and ngspice exist. </description>
-  <devel project="electronics" package="asco"/>
-</package>

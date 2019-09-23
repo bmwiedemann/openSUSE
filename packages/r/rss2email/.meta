@@ -1,5 +1,0 @@
-<package name="rss2email" project="openSUSE:Factory">
-  <title>converts RSS/Atom newsfeeds to email</title>
-  <description>a free, open-source tool for Windows, Mac OS and UNIX for getting news from RSS feeds in email</description>
-  <devel project="server:mail" package="rss2email"/>
-</package>

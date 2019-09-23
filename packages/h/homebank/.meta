@@ -1,9 +1,0 @@
-<package name="homebank" project="openSUSE:Factory">
-  <title>Free, easy, personal accounting application</title>
-  <description>HomeBank is free software. Use it to manage
-your personal accounts. It is designed to
-easy to use. Analyse your finances in detail
-using powerful filtering tools and graphs.</description>
-  <devel project="GNOME:Apps" package="homebank"/>
-  <url>http://homebank.free.fr/</url>
-</package>

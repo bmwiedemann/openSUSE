@@ -1,5 +1,0 @@
---- a/test/test_hyper.py
-+++ b/test/test_hyper.py
-@@ -11,1 +11,1 @@
--from hpack.hpack_compat import Encoder
-+from hpack import Encoder

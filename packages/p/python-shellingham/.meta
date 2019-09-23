@@ -1,5 +1,0 @@
-<package name="python-shellingham" project="openSUSE:Factory">
-  <title></title>
-  <description>Python library to detect surrounding shell</description>
-  <devel project="devel:languages:python" package="python-shellingham"/>
-</package>

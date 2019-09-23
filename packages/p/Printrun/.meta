@@ -1,8 +1,0 @@
-<package name="Printrun" project="openSUSE:Factory">
-  <title>printrun</title>
-  <description>http://www.lulzbot.com
-based on Fedora 19 src package
-copied from home:kdupke:3d  printrun
-see README for building/packaging details</description>
-  <devel project="science" package="Printrun"/>
-</package>

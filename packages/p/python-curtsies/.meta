@@ -1,6 +1,0 @@
-<package name="python-curtsies" project="openSUSE:Factory">
-  <title>Curtsies</title>
-  <description>Curses-like terminal wrapper, with colored strings!</description>
-  <devel project="devel:languages:python" package="python-curtsies"/>
-  <url>https://github.com/thomasballinger/curtsies</url>
-</package>

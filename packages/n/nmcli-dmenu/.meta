@@ -1,5 +1,0 @@
-<package name="nmcli-dmenu" project="openSUSE:Factory">
-  <title>Control NetworkManager via dmenu</title>
-  <description>Small script to manage NetworkManager connections with dmenu instead of nm-applet. It can connect to existing NetworkManager wifi or wired connections, connect to new wifi connections (requests passphrase if required), connect to existing VPN connections, enable/disable networking, launch nm-connection-editor GUI.</description>
-  <devel project="network:utilities" package="nmcli-dmenu"/>
-</package>

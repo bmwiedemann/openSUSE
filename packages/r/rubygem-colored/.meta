@@ -1,9 +1,0 @@
-<package name="rubygem-colored" project="openSUSE:Factory">
-  <title>Title of New Package</title>
-  <description>
-LONG DESCRIPTION
-HERE
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-colored"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>

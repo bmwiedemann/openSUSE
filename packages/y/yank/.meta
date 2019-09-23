@@ -1,5 +1,0 @@
-<package name="yank" project="openSUSE:Factory">
-  <title>yank</title>
-  <description>Tool for selecting and copying text from stdin without a mouse</description>
-  <devel project="utilities" package="yank"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-django-environ" project="openSUSE:Factory">
-  <title></title>
-  <description>Django-environ uses environment variables to configure Django applications</description>
-  <devel project="devel:languages:python:django" package="python-django-environ"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="gnome-icon-theme" project="openSUSE:Factory">
-  <title>GNOME Icon Theme</title>
-  <description>The default GNOME icon theme.</description>
-  <devel project="GNOME:Factory" package="gnome-icon-theme"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="lxqt-config" project="openSUSE:Factory">
-  <title>Control Center for lxqt</title>
-  <description>Control Center for lxqt
-</description>
-  <devel project="X11:LXQt" package="lxqt-config"/>
-</package>

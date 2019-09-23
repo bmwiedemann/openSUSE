@@ -1,7 +1,0 @@
-<package name="python-pyghmi" project="openSUSE:Factory">
-  <title>Python General Hardware Management Initiative (IPMI and others)</title>
-  <description>
-      This is a pure python implementation of IPMI protocol.
-  </description>
-  <devel project="Cloud:OpenStack:Factory" package="python-pyghmi"/>
-</package>

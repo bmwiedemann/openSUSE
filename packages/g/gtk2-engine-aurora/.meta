@@ -1,8 +1,0 @@
-<package name="gtk2-engine-aurora" project="openSUSE:Factory">
-  <title>Another GTK2 engine theme</title>
-  <description>The Aurora Gtk Engine themes all common Gtk widgets
-to provide an attractive, complete and consistent
-look for Gtk applications.</description>
-  <devel project="X11:lxde" package="gtk2-engine-aurora"/>
-  <url>http://gnome-look.org/content/show.php/Aurora+GTK+Engine?content=56438</url>
-</package>

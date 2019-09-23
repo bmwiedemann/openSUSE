@@ -1,7 +1,0 @@
-<package name="libsoc" project="openSUSE:Factory">
-  <title>C library for interfacing with common SoC peripherals through generic kernel interfaces</title>
-  <description>libsoc is a C library to interface with common peripherals found in System on Chips (SoC) through generic Linux Kernel interfaces.
-
-It is aimed at new Linux users, and intends to be a stepping stone to enable a user to get started quickly. It is optimised for reliability rather than speed. While the library should be fast, no guarantees are made on it's determinism and it should not be used in time critical routines.</description>
-  <devel project="hardware" package="libsoc"/>
-</package>

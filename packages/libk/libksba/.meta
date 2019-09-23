@@ -1,6 +1,0 @@
-<package name="libksba" project="openSUSE:Factory">
-  <title>A X.509 Library</title>
-  <description>KSBA is a library to simplify the task of working with X.509
-certificates, CMS data, and related data.</description>
-  <devel project="Base:System" package="libksba"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="diff-pdf" project="openSUSE:Factory">
-  <title>diff-pdf</title>
-  <description>A simple PDF comparison tool.</description>
-  <devel project="Publishing" package="diff-pdf"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-pybeam" project="openSUSE:Factory">
-  <title>python-pybeam</title>
-  <description>Python module to parse Erlang BEAM files.</description>
-  <devel project="devel:languages:python" package="python-pybeam"/>
-</package>

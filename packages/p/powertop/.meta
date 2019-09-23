@@ -1,7 +1,0 @@
-<package name="powertop" project="openSUSE:Factory">
-  <title>A Linux Tool to Find out What is Using Power on a Laptop</title>
-  <description>PowerTOP is a program that collects the various pieces of information
-from your system and presents an overview of how well your laptop is
-doing in terms of power savings.</description>
-  <devel project="Base:System" package="powertop"/>
-</package>

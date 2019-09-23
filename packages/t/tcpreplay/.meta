@@ -1,5 +1,0 @@
-<package name="tcpreplay" project="openSUSE:Factory">
-  <title>tcpreplay</title>
-  <description>A set of utilities to replay or edit previously captured network traffic.</description>
-  <devel project="network:utilities" package="tcpreplay"/>
-</package>

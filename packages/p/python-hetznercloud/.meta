@@ -1,8 +1,0 @@
-<package name="python-hetznercloud" project="openSUSE:Factory">
-  <title>Hetzner Cloud SDK</title>
-  <description>A Python 3 SDK for the new Hetzner cloud service.
-
-</description>
-  <devel project="devel:languages:python" package="python-hetznercloud"/>
-  <url>https://github.com/elsyms/hetznercloud-py</url>
-</package>

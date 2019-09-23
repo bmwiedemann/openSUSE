@@ -1,7 +1,0 @@
-<package name="uisp" project="openSUSE:Factory">
-  <title>An upload tool for AVR microcontrollers</title>
-  <description>Uisp is a tool for avr microcontrollers and drives many hardware
-in-system programmers. Uisp allows you to programm your microcontroller
-through the parallel port of your computer.</description>
-  <devel project="CrossToolchain:avr" package="uisp"/>
-</package>

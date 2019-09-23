@@ -1,6 +1,0 @@
-<package name="txt2tags" project="openSUSE:Factory">
-  <title>Txt2tags is a document generator.</title>
-  <description>Txt2tags is a document generator. It reads a text file with minimal markup such as **bold** and //italic// and converts it to the multiple formats.
-</description>
-  <devel project="Education" package="txt2tags"/>
-</package>

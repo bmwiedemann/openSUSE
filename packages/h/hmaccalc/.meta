@@ -1,9 +1,0 @@
-<package name="hmaccalc" project="openSUSE:Factory">
-  <title>Tools for computing and checking HMAC values for files</title>
-  <description>
-The hmaccalc package contains tools which can calculate HMAC (hash-based
-message authentication code) values for files.  The names and interfaces are
-meant to mimic the sha*sum tools provided by the coreutils package.
-</description>
-  <devel project="security" package="hmaccalc"/>
-</package>

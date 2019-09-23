@@ -1,4 +1,0 @@
-addFilter("no-dependency-on libyajl/libyajl-libs/liblibyajl")
-addFilter("libyajl-devel-static..*: W: shlib-policy-missing-lib")
-addFilter("no-manual-page-for-binary .*")
-addFilter("macro-in-comment .*")

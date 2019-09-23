@@ -1,8 +1,0 @@
-<package name="qmmp-plugin-pack" project="openSUSE:Factory">
-  <title>Extra plugins for Qmmp</title>
-  <description>This package contains extra plugins for Qmmp.
-
-</description>
-  <devel project="multimedia:apps" package="qmmp-plugin-pack"/>
-  <url>http://qmmp.ylsoftware.com/plugins.php</url>
-</package>

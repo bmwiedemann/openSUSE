@@ -1,7 +1,0 @@
-<package name="perl-File-Tail" project="openSUSE:Factory">
-  <title>Reading files which are continuously appended</title>
-  <description>The File::Tail module is designed for reading files which are
-continously appended to (the name comes from the tail -f directive).
-Usually such files are logfiles of some description.</description>
-  <devel project="devel:languages:perl" package="perl-File-Tail"/>
-</package>

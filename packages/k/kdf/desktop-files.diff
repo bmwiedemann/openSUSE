@@ -1,9 +1,0 @@
-Index: desktop/org.kde.kwikdisk.desktop
-===================================================================
---- desktop/org.kde.kwikdisk.desktop.orig
-+++ desktop/org.kde.kwikdisk.desktop
-@@ -177,3 +177,4 @@ Comment[zh_CN]=挂载和卸载磁盘的�
- Comment[zh_TW]=一個面板圖示用於掛載與解除掛載磁碟
- Terminal=false
- Categories=Qt;KDE;System;
-+OnlyShowIn=KDE;

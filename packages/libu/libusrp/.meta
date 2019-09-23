@@ -1,8 +1,0 @@
-<package name="libusrp" project="openSUSE:Factory">
-  <title>Stand-alone libusrp for USRP1 from old gnuradio.git</title>
-  <description>Stand-alone libusrp for USRP1 from old gnuradio.git.
-
-</description>
-  <devel project="hardware:sdr" package="libusrp"/>
-  <url>https://git.osmocom.org/libusrp</url>
-</package>

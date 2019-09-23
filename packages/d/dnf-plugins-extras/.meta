@@ -1,5 +1,0 @@
-<package name="dnf-plugins-extras" project="openSUSE:Factory">
-  <title>dnf-plugins-extras - Extras Plugins for DNF</title>
-  <description>This package contains extra community plugins for use with the DNF package manager.</description>
-  <devel project="system:packagemanager:dnf" package="dnf-plugins-extras"/>
-</package>

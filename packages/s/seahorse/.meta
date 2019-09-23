@@ -1,5 +1,0 @@
-<package name="seahorse" project="openSUSE:Factory">
-  <title>GNOME interface for gnupg</title>
-  <description>Seahorse is a GNOME interface for gnupg. It uses gpgme as the backend.</description>
-  <devel project="GNOME:Factory" package="seahorse"/>
-</package>

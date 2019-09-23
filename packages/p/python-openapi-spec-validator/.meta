@@ -1,5 +1,0 @@
-<package name="python-openapi-spec-validator" project="openSUSE:Factory">
-  <title>Python openapi-spec-validator</title>
-  <description>OpenAPI Spec Validator is a Python library that validates OpenAPI Specs against the OpenAPI 2.0 (aka Swagger) and OpenAPI 3.0.0 specification. The validator aims to check for full compliance with the Specification.</description>
-  <devel project="devel:languages:python" package="python-openapi-spec-validator"/>
-</package>

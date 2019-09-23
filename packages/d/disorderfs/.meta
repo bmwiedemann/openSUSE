@@ -1,5 +1,0 @@
-<package name="disorderfs" project="openSUSE:Factory">
-  <title>FUSE filesystem that introduces non-determinism</title>
-  <description>disorderfs is an overlay FUSE filesystem that introduces non-determinism into filesystem metadata. For example, it can randomize the order in which directory entries are read. This is useful for detecting non-determinism in the build process. </description>
-  <devel project="filesystems" package="disorderfs"/>
-</package>

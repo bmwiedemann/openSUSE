@@ -1,8 +1,0 @@
-<package name="clinfo" project="openSUSE:Factory">
-  <title>It reports status information for all installed OpenCL ICDs</title>
-  <description>A simple OpenCL application that enumerates all possible platform and device properties. Inspired by AMD's program of the same name, it iscoded in pure C99 and it tries to output all possible information, including that provided by platform-specific extensions, and not to crash on platform-unsupported properties (e.g. 1.2 properties on 1.1 platforms).
-
-</description>
-  <devel project="science" package="clinfo"/>
-  <url>https://github.com/Oblomov/clinfo/</url>
-</package>

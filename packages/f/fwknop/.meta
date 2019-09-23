@@ -1,5 +1,0 @@
-<package name="fwknop" project="openSUSE:Factory">
-  <title>The Firewall Knock Operator</title>
-  <description>fwknop stands for the &quot;FireWall KNock OPerator&quot;, and implements an authorization scheme called Single Packet Authorization (SPA).</description>
-  <devel project="network" package="fwknop"/>
-</package>

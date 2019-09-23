@@ -1,3 +1,0 @@
-# This rule doesn't really apply to gui binary which need X
-# or have zero interest on command line
-addFilter("W: no-manual-page-for-binary gcompris-qt")

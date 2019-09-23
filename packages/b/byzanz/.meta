@@ -1,7 +1,0 @@
-<package name="byzanz" project="openSUSE:Factory">
-  <title>Tool to record a running X desktop to an animated GIF file</title>
-  <description>Byzanz is a simple tool to record a running X desktop to an animated GIF file.
-It is implemented as a GNOME applet. A command line tool for testing purposes
-is also available.</description>
-  <devel project="GNOME:Apps" package="byzanz"/>
-</package>

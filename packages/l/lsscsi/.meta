@@ -1,5 +1,0 @@
-<package name="lsscsi" project="openSUSE:Factory">
-  <title>List all SCSI devices in the system</title>
-  <description>The lsscsi command lists information about SCSI devices in Linux.</description>
-  <devel project="Base:System" package="lsscsi"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="libdmtx" project="openSUSE:Factory">
-  <title>Software for reading and writing Data Matrix barcodes</title>
-  <description>libdmtx is open source software for reading and writing Data Matrix barcodes.
-At its core libdmtx is a native shared library, allowing C/C++ programs to use
-its capabilities without extra restrictions or overhead.</description>
-  <devel project="KDE:Distro:Factory" package="libdmtx"/>
-</package>

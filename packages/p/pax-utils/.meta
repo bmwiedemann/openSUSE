@@ -1,6 +1,0 @@
-<package name="pax-utils" project="openSUSE:Factory">
-  <title>Tools to Check ELF Files for Security Relevant Properties</title>
-  <description>Tools to check ELF files for security relevant properties such as
-non-executable stack.</description>
-  <devel project="security" package="pax-utils"/>
-</package>

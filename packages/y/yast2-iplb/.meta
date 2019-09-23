@@ -1,5 +1,0 @@
-<package name="yast2-iplb" project="openSUSE:Factory">
-  <title>ip load balancer configuration</title>
-  <description></description>
-  <devel project="YaST:Head" package="yast2-iplb"/>
-</package>

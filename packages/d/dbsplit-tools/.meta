@@ -1,5 +1,0 @@
-<package name="dbsplit-tools" project="openSUSE:Factory">
-  <title>DocBook Splitting tools</title>
-  <description>Tools for splitting and merging DocBook documents,</description>
-  <devel project="Publishing" package="dbsplit-tools"/>
-</package>

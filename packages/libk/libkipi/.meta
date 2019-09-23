@@ -1,7 +1,0 @@
-<package name="libkipi" project="openSUSE:Factory">
-  <title>KDE Image Plugin Interface</title>
-  <description>This package provides a generic KDE Image Plug-in Interface used by
-some KDE image applications. Plug-ins for this interface are in the
-kipi-plugins package.</description>
-  <devel project="KDE:Applications" package="libkipi"/>
-</package>

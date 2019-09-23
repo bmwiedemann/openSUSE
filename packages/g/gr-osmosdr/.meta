@@ -1,9 +1,0 @@
-<package name="gr-osmosdr" project="openSUSE:Factory">
-  <title>Gnuradio Source for OsmoSDR</title>
-  <description>OsmoSDR Gnuradio Source supports the OsmoSDR hardware, but it also offers a
-wrapper functionality for FunCube Dongle, Ettus UHD and rtl-sdr radios.
-
-</description>
-  <devel project="hardware:sdr" package="gr-osmosdr"/>
-  <url>http://sdr.osmocom.org/trac/wiki/GrOsmoSDR</url>
-</package>

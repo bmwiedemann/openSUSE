@@ -1,5 +1,0 @@
-<package name="kconfig" project="openSUSE:Factory">
-  <title>kconfig</title>
-  <description>KConfig</description>
-  <devel project="KDE:Frameworks5" package="kconfig"/>
-</package>

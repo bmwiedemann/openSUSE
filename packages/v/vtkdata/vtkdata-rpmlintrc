@@ -1,2 +1,0 @@
-addFilter("vtkdata.* hidden-file-or-dir .*/.ExternalData")
-addFilter("vtkdata.* zero-length .*/.ExternalData/MD5/.*")

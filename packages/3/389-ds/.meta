@@ -1,5 +1,0 @@
-<package name="389-ds" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="network:ldap" package="389-ds"/>
-</package>

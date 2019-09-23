@@ -1,9 +1,0 @@
-<package name="ldapfuse" project="openSUSE:Factory">
-  <title>Browse LDAP trees via filesystem</title>
-  <description>A virtual filesystem for FUSE that allows to navigate an LDAP tree.
-
-Author:
--------
-	Jan Engelhardt</description>
-  <devel project="filesystems" package="ldapfuse"/>
-</package>

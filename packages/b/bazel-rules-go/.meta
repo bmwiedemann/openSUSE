@@ -1,6 +1,0 @@
-<package name="bazel-rules-go" project="openSUSE:Factory">
-  <title>bazel-rules-go</title>
-  <description>Go rules for Bazel</description>
-  <devel project="devel:tools:building" package="bazel-rules-go"/>
-  <url>https://github.com/bazelbuild/rules_go</url>
-</package>

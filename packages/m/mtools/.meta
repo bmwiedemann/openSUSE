@@ -1,9 +1,0 @@
-<package name="mtools" project="openSUSE:Factory">
-  <title>Access Files on an MS-DOS File System</title>
-  <description>Mtools allows uncomplicated access to an MS-DOS file system on disk
-without mounting it. It includes commands for working with MS-DOS
-files: mdir, mcd, mcopy, and mformat.
-
-XDF support for OS/2 is also provided.</description>
-  <devel project="Base:System" package="mtools"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="sgmltools-lite" project="openSUSE:Factory">
-  <title>SGML Converter Suite</title>
-  <description>SGML Converter Suite written in Python.</description>
-  <devel project="Publishing" package="sgmltools-lite"/>
-</package>

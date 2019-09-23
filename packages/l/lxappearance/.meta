@@ -1,6 +1,0 @@
-<package name="lxappearance" project="openSUSE:Factory">
-  <title>It's a desktop-independent theme switcher for GTK+</title>
-  <description>LXAppearance is part of LXDE project.
-It's a desktop-independent theme switcher for GTK+.</description>
-  <devel project="X11:lxde" package="lxappearance"/>
-</package>

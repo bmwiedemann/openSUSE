@@ -1,6 +1,0 @@
-<package name="audit-visualize" project="openSUSE:Factory">
-  <title>Visualization tools for the audit subsystem</title>
-  <description>The audit-visualize package contains scripts to produce flow graphs and
-bar charts from audit data.</description>
-  <devel project="security" package="audit-visualize"/>
-</package>

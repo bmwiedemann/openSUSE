@@ -1,9 +1,0 @@
-<package name="docbook-toys" project="openSUSE:Factory">
-  <title>DocBook Tools</title>
-  <description>A shell script to convert SGML documents based on the DocBook DTD.
-
-For usage information read:
-
-/usr/share/doc/packages/docbook-toys/README</description>
-  <devel project="Publishing" package="docbook-toys"/>
-</package>

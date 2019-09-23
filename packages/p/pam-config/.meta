@@ -1,9 +1,0 @@
-<package name="pam-config" project="openSUSE:Factory">
-  <title>Modify common PAM configuration files</title>
-  <description>pam-config is a command line utility to maintain the common PAM
-configuration files included by most PAM application configuration
-files. It can be used to configure a system for different network or
-hardware based authentication schemes. pam-config can also
-add/adjust/remove other PAM modules and their options.</description>
-  <devel project="Linux-PAM" package="pam-config"/>
-</package>

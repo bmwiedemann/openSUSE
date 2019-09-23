@@ -1,5 +1,0 @@
-<package name="filesystem-media" project="openSUSE:Factory">
-  <title>Polyinstantiated /media Directory</title>
-  <description>Filesystem Hierarchy Standard defines /media as a directory for removable media. This package provides udisks compatible /media.</description>
-  <devel project="Base:System" package="filesystem-media"/>
-</package>

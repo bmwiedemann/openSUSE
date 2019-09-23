@@ -1,5 +1,0 @@
-addFilter("shlib-policy-name-error")
-addFilter("shlib-policy-missing-lib")
-addFilter("shlib-policy-missing-suffix")
-addFilter("shlib-unversioned-lib")
-addFilter("shlib-fixed-dependency")

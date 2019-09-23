@@ -1,6 +1,0 @@
-<package name="ipvsadm" project="openSUSE:Factory">
-  <title>A Utility for Administering the Linux Virtual Server</title>
-  <description>ipvsadm is a utility for administering the IP virtual server services
-offered by the Linux kernel with Linux Virtual Server support.</description>
-  <devel project="network:utilities" package="ipvsadm"/>
-</package>

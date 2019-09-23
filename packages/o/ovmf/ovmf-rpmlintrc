@@ -1,4 +1,0 @@
-addFilter("unstripped-binary-or-object /usr/lib/debug/*")
-addFilter("statically-linked-binary /usr/lib/debug/*")
-addFilter("executable-stack /usr/lib/debug/*")
-addFilter("position-independent-executable-suggested /usr/lib/debug/*")

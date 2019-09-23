@@ -1,5 +1,0 @@
-<package name="karchive" project="openSUSE:Factory">
-  <title>karchive</title>
-  <description>Qt 5 addon providing access to numerous types of archives</description>
-  <devel project="KDE:Frameworks5" package="karchive"/>
-</package>

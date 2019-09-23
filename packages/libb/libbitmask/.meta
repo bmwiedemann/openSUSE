@@ -1,8 +1,0 @@
-<package name="libbitmask" project="openSUSE:Factory">
-  <title>Multi-word bitmask abstract data type (used by cpusets)</title>
-  <description>The Cpuset System is a processor and memory placement mechanism that
-The libbitmask package provides an abstract data type for arbitrary
-length bit masks, with a variety of operators.	The cpuset package
-depends on libbitmask.</description>
-  <devel project="devel:libraries:c_c++" package="libbitmask"/>
-</package>

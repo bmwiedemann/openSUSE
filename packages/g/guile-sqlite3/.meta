@@ -1,5 +1,0 @@
-<package name="guile-sqlite3" project="openSUSE:Factory">
-  <title>guile-sqlite3</title>
-  <description>Access SQLite databases from Guile</description>
-  <devel project="devel:languages:misc" package="guile-sqlite3"/>
-</package>

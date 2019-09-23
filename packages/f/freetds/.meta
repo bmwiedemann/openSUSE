@@ -1,8 +1,0 @@
-<package name="freetds" project="openSUSE:Factory">
-  <title>A free re-implementation of the TDS (Tabular DataStream) protocol</title>
-  <description>FreeTDS is a project to document and implement the TDS (Tabular DataStream)
-protocol. TDS is used by Sybase and Microsoft for client to database server
-communications. FreeTDS includes call level interfaces for DB-Lib, CT-Lib,
-and ODBC.</description>
-  <devel project="devel:libraries:c_c++" package="freetds"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="python-sphinxcontrib-blockdiag" project="openSUSE:Factory">
-  <title></title>
-  <description>
-A sphinx extension for embedding block diagram using blockdiag.
-  </description>
-  <devel project="devel:languages:python" package="python-sphinxcontrib-blockdiag"/>
-</package>

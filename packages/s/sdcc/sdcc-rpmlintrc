@@ -1,5 +1,0 @@
-# Those files are for target microcontroller
-addFilter("arch-dependent-file-in-usr-share.*/usr/share/sdcc/.*")
-addFilter("devel-file-in-non-devel-package.*/usr/share/sdcc/.*")
-addFilter("binaryinfo-readelf-failed.*/usr/share/sdcc/.*")
-addFilter("files-duplicated-waste")

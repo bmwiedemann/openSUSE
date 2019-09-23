@@ -1,6 +1,0 @@
-<package name="libcircllhist" project="openSUSE:Factory">
-  <title>libcircllhist</title>
-  <description>A C implementation of Circonus log-linear histograms</description>
-  <devel project="devel:libraries:c_c++" package="libcircllhist"/>
-  <url>https://github.com/circonus-labs/libcircllhist</url>
-</package>

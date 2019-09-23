@@ -1,6 +1,0 @@
-<package name="perl-Linux-Inotify2" project="openSUSE:Factory">
-  <title>scalable directory/file change notification</title>
-  <description>This module implements an interface to the Linux 2.6.13 and later
-Inotify file/directory change notification sytem.</description>
-  <devel project="devel:languages:perl" package="perl-Linux-Inotify2"/>
-</package>

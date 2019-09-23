@@ -1,6 +1,0 @@
-<package name="ipa-bolditalic-fonts" project="openSUSE:Factory">
-  <title>Italic/Bold variant fonts for IPA Gothic/P-Gothic</title>
-  <description>Contains italic (oblique) / bold variants of IPAGothic/IPAPGothic.
-these are (already) processed with fontforge. </description>
-  <devel project="M17N:fonts" package="ipa-bolditalic-fonts"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="python-doc" project="openSUSE:Factory">
-  <title>Additional Package Documentation for Python.</title>
-  <description>Tutorial, Global Module Index, Language Reference, Library Reference,
-Extending and Embedding Reference, Python/C API Reference, Documenting
-Python, and Macintosh Module Reference in HTML format.</description>
-  <devel project="openSUSE:Factory" package="python"/>
-</package>

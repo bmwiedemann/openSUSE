@@ -1,5 +1,0 @@
-<package name="python-pytest-repeat" project="openSUSE:Factory">
-  <title></title>
-  <description>Pytest plugin for repeating tests</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-repeat"/>
-</package>

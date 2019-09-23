@@ -1,8 +1,0 @@
-<package name="rubygem-rubyntlm" project="openSUSE:Factory">
-  <title>Ruby/NTLM library</title>
-  <description>Ruby/NTLM provides message creator and parser for the NTLM authentication.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-rubyntlm"/>
-  <url>http://rubyforge.org/projects/rubyntlm</url>
-</package>

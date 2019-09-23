@@ -1,6 +1,0 @@
-<package name="python-ravello-sdk" project="openSUSE:Factory">
-  <title>Python Ravello SDK</title>
-  <description>This is a micro-SDK for accessing the Ravello API in Python. It also contains
-a few useful utility scripts.</description>
-  <devel project="devel:languages:python" package="python-ravello-sdk"/>
-</package>

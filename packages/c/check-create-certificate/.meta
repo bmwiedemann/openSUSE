@@ -1,6 +1,0 @@
-<package name="check-create-certificate" project="openSUSE:Factory">
-  <title>A non-interactive script that creates an SSL certificate if it does not exist</title>
-  <description>A script that checks for the existance of an SSL certificate or creates a new self signed one.
-It runs non-interactively and uses either predefined values or automatically guesses the best values.</description>
-  <devel project="devel:openSUSE:Factory" package="check-create-certificate"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="bookworm" project="openSUSE:Factory">
-  <title>Bookworm</title>
-  <description>A simple, focused eBook reader</description>
-  <devel project="X11:Pantheon:Apps" package="bookworm"/>
-</package>

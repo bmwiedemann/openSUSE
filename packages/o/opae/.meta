@@ -1,9 +1,0 @@
-<package name="opae" project="openSUSE:Factory">
-  <title>Open Programmable Acceleration Engine</title>
-  <description>OPAE is the Open Programmable Acceleration Engine, a software framework for
-managing and accessing programmable accelerators (FPGAs).
-
-The OPAE SDK is a collection of libraries and tools to facilitate the
-development of software applications and accelerators using OPAE.</description>
-  <devel project="science:HPC" package="opae"/>
-</package>

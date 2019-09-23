@@ -1,6 +1,0 @@
-<package name="libmpeg2" project="openSUSE:Factory">
-  <title>libmpeg2</title>
-  <description>libmpeg2 is a free library for decoding mpeg-2 and mpeg-1 video streams. It is
-released under the terms of the GPL license.</description>
-  <devel project="multimedia:libs" package="libmpeg2"/>
-</package>

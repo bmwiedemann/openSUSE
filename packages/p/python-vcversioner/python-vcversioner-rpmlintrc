@@ -1,2 +1,0 @@
-# rpmlint cannot distinguish so-called proper nouns
-addFilter("summary-not-capitalized")

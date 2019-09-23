@@ -1,9 +1,0 @@
-<package name="python-djvulibre" project="openSUSE:Factory">
-  <title>Python Support for the DjVu Image Format</title>
-  <description>python-djvulibre is a set of Python bindings for the DjVuLibre library, an open
-source implementation of DjVu.
-
-</description>
-  <devel project="devel:languages:python" package="python-djvulibre"/>
-  <url>http://jwilk.net/software/python-djvulibre</url>
-</package>

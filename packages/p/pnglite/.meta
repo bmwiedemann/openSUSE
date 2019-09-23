@@ -1,5 +1,0 @@
-<package name="pnglite" project="openSUSE:Factory">
-  <title></title>
-  <description>A lightweight C library for loading PNG images</description>
-  <devel project="devel:libraries:c_c++" package="pnglite"/>
-</package>

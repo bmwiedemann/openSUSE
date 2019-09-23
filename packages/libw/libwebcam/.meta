@@ -1,5 +1,0 @@
-<package name="libwebcam" project="openSUSE:Factory">
-  <title></title>
-  <description>Libwebcam provides a user-space library for interaction with the uvcvideo kernel driver. One could use this library to manipulate settings for one or many UVC-type webcams found attached on a single computer.</description>
-  <devel project="multimedia:libs" package="libwebcam"/>
-</package>

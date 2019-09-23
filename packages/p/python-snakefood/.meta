@@ -1,9 +1,0 @@
-<package name="python-snakefood" project="openSUSE:Factory">
-  <title>Dependency Graphing for Python</title>
-  <description>Generate dependencies from Python code, filter, cluster and generate graphs
-from the dependency list.
-
-</description>
-  <devel project="devel:languages:python" package="python-snakefood"/>
-  <url>http://furius.ca/snakefood</url>
-</package>

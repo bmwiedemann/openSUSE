@@ -1,5 +1,0 @@
-<package name="attica" project="openSUSE:Factory">
-  <title>Open Collaboration Service client library</title>
-  <description>Attica is a library to access Open Collaboration Service servers.</description>
-  <devel project="KDE:Distro:Factory" package="attica"/>
-</package>

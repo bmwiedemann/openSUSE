@@ -1,5 +1,0 @@
-<package name="lsb-release" project="openSUSE:Factory">
-  <title>Linux Standard Base Release Tools</title>
-  <description>Tools from the Linux Standard Base project to determine the used distribution</description>
-  <devel project="Base:System" package="lsb-release"/>
-</package>

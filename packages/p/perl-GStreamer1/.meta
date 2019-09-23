@@ -1,7 +1,0 @@
-<package name="perl-GStreamer1" project="openSUSE:Factory">
-  <title>Perl interface to the GStreamer library</title>
-  <description>This package provides perl bindings for GStreamer 1.x.
-GStreamer is a library for constructing graphs of media-handling components. The applications it supports range from simple
-OGG Vorbis playback, audio/video streaming to complex audio (mixing) and video (non-linear editing) processing.</description>
-  <devel project="devel:languages:perl" package="perl-GStreamer1"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="libexe" project="openSUSE:Factory">
-  <title>Library to access the executable (EXE) format.</title>
-  <description>libexe is a library and related tools to access the executable (EXE) format.
-
-At the moment the goal of this project is to provide functionality to parse EXE (PE/COFF) and the resources stored in them using libwrc. This functionality is used in libevt and libevx to parse EventLog messages from PE/COFF message files.
-
-Part of the libyal family of libraries.</description>
-  <devel project="security:forensics" package="libexe"/>
-</package>

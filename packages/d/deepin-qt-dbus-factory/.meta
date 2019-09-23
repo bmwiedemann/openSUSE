@@ -1,5 +1,0 @@
-<package name="deepin-qt-dbus-factory" project="openSUSE:Factory">
-  <title>A repository stores auto-generated Qt5 dbus code</title>
-  <description></description>
-  <devel project="X11:Deepin" package="deepin-qt-dbus-factory"/>
-</package>

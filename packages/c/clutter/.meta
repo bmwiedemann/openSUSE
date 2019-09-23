@@ -1,6 +1,0 @@
-<package name="clutter" project="openSUSE:Factory">
-  <title>The clutter library</title>
-  <description>Clutter is an open source software library for creating fast, visually
-rich and animated graphical user interfaces.</description>
-  <devel project="GNOME:Factory" package="clutter"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="unity-gtk-module" project="openSUSE:Factory">
-  <title>GTK+ module for exporting old-style menus as GMenuModels</title>
-  <description>Many applications implement menus as GtkMenuShells and GtkMenuItems and aren't looking to migrate to the newer GMenuModel API.
-This GTK+ module watches for these types of menus and exports the appropriate GMenuModel implementation.</description>
-  <devel project="X11:Unity" package="unity-gtk-module"/>
-</package>

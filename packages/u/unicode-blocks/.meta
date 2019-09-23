@@ -1,8 +1,0 @@
-<package name="unicode-blocks" project="openSUSE:Factory">
-  <title>Unicode Blocks Chart</title>
-  <description>Blocks from the Unicode Character Database.
-
-</description>
-  <devel project="Publishing" package="unicode-blocks"/>
-  <url>http://www.unicode.org/</url>
-</package>

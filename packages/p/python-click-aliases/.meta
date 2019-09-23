@@ -1,5 +1,0 @@
-<package name="python-click-aliases" project="openSUSE:Factory">
-  <title>python-click-aliases</title>
-  <description>Command aliases for Click.</description>
-  <devel project="devel:languages:python" package="python-click-aliases"/>
-</package>

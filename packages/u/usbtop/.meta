@@ -1,8 +1,0 @@
-<package name="usbtop" project="openSUSE:Factory">
-  <title>Shows an estimated instantaneous bandwidth on USB buses and devices</title>
-  <description>A top-like utility that shows an estimated instantaneous bandwidth on USB buses and devices.
-
-</description>
-  <devel project="utilities" package="usbtop"/>
-  <url>https://github.com/aguinet/usbtop</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="geoclue2" project="openSUSE:Factory">
-  <title>GeoClue 2</title>
-  <description>GeoClue is a software framework which can be used to enable geospatial awareness in applications. GeoClue uses the D-Bus inter-process communication mechanism to provide location information
-</description>
-  <devel project="Application:Geo" package="geoclue2"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="kernel-default" project="openSUSE:Factory">
-  <title>The Standard Kernel</title>
-  <description>The standard kernel for both uniprocessor and multiprocessor systems.</description>
-  <devel project="openSUSE:Factory" package="kernel-source"/>
-  <bcntsynctag>kernel-source</bcntsynctag>
-</package>

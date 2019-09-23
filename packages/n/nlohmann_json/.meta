@@ -1,8 +1,0 @@
-<package name="nlohmann_json" project="openSUSE:Factory">
-  <title>JSON for Modern C++, a C++11 header-only JSON class</title>
-  <description>JSON for Modern C++, a C++11 header-only JSON class.
-
-</description>
-  <devel project="devel:libraries:c_c++" package="nlohmann_json"/>
-  <url>https://nlohmann.github.io/json/</url>
-</package>

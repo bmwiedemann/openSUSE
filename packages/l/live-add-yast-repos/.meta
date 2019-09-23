@@ -1,5 +1,0 @@
-<package name="live-add-yast-repos" project="openSUSE:Factory">
-  <title>Files that make the net installer available on the live media</title>
-  <description></description>
-  <devel project="system:install:head" package="live-add-yast-repos"/>
-</package>

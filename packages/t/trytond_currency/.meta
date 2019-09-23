@@ -1,5 +1,0 @@
-<package name="trytond_currency" project="openSUSE:Factory">
-  <title>The currency module of the Tryton application platform.</title>
-  <description></description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="trytond_currency"/>
-</package>

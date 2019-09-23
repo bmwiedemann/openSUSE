@@ -1,5 +1,0 @@
-<package name="cppunit" project="openSUSE:Factory">
-  <title>cppunit</title>
-  <description>CppUnit is a C++ unit testing framework. It started its life as a port of JUnit to C++ by Michael Feathers.</description>
-  <devel project="devel:libraries:c_c++" package="cppunit"/>
-</package>

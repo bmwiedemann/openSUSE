@@ -1,5 +1,0 @@
-<package name="python-WTForms" project="openSUSE:Factory">
-  <title></title>
-  <description>WTForms is a forms validation and rendering library for Python web development.</description>
-  <devel project="devel:languages:python" package="python-WTForms"/>
-</package>

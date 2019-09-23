@@ -1,6 +1,0 @@
-<package name="php7-ice" project="openSUSE:Factory">
-  <title>PHP7 Extension Module</title>
-  <description>Simple and fast PHP framework delivered as C-extension. You don't need learn or use the C language, since the functionality is exposed as PHP classes ready for you to use.</description>
-  <devel project="server:php:extensions:php7" package="php7-ice"/>
-  <url>http://www.iceframework.org</url>
-</package>

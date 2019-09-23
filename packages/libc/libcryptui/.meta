@@ -1,6 +1,0 @@
-<package name="libcryptui" project="openSUSE:Factory">
-  <title>GNOME2 interface for gnupg</title>
-  <description>Seahorse is a gnome2 interface for gnupg. It uses gpgme as the backend.
-</description>
-  <devel project="GNOME:Factory" package="libcryptui"/>
-</package>

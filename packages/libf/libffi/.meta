@@ -1,9 +1,0 @@
-<package name="libffi" project="openSUSE:Factory">
-  <title>Foregin Function Interface Library</title>
-  <description>The libffi library provides a portable, high level programming
-      interface to various calling conventions.  This allows a programmer to
-      call any function specified by a call interface description at run
-  time.</description>
-  <devel project="devel:libraries:c_c++" package="libffi"/>
-  <url>https://github.com/libffi/</url>
-</package>

@@ -1,2 +1,0 @@
-addFilter ("^kubernetes-node-image-pause.x86_64: W: statically-linked-binary")
-addFilter ("^kubernetes-node-image-pause.x86_64: E: arch-dependent-file-in-usr-share")

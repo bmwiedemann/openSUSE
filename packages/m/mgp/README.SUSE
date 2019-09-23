@@ -1,8 +1,0 @@
-XFT2 SUPPORT AND BACKWARD COMPATIBILITY
-=======================================
-
-In the current version of magicpoint (1.10a), XFT2 mode is selected as
-default.  When you show old mgp files with freetype support, pass -xxft
-option to suppress the XFT2 support.  Otherwise it might not display
-fonts correctly.  Most of sample mgp files in sample directory need
-this option.

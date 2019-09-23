@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">git://git.gnome.org/jhbuild</param>
-              <param name="changesrevision">b98e993f89c4cd0527e7b91fd27fb1871be385d6</param></service><service name="tar_scm">
-                <param name="url">https://gitlab.gnome.org/GNOME/jhbuild.git</param>
-              <param name="changesrevision">00ce5fb34d61480e7b6c967a3609c312ff55eacf</param></service></servicedata>

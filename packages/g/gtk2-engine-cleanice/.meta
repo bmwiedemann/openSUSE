@@ -1,5 +1,0 @@
-<package name="gtk2-engine-cleanice" project="openSUSE:Factory">
-  <title>CleanIce GTK Theme Engine</title>
-  <description>Simple, clean theme engine for GTK2.</description>
-  <devel project="GNOME:Apps" package="gtk2-engine-cleanice"/>
-</package>

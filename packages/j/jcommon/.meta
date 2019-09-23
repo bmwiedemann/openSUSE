@@ -1,6 +1,0 @@
-<package name="jcommon" project="openSUSE:Factory">
-  <title>Common library</title>
-  <description>Collection of classes used by Object Refinery Projects, for example
-jfreechart</description>
-  <devel project="Java:packages" package="jcommon"/>
-</package>

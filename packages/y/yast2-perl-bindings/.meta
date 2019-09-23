@@ -1,7 +1,0 @@
-<package name="yast2-perl-bindings" project="openSUSE:Factory">
-  <title>YaST2 - Perl Bindings</title>
-  <description>This adds an embedded Perl interpreter to YaST2 as a plug-in (in other
-words it will be loaded only if required). This is a very efficient way
-of calling Perl from within YaST2 YCP scripts.</description>
-  <devel project="YaST:Head" package="yast2-perl-bindings"/>
-</package>

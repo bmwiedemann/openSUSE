@@ -1,5 +1,0 @@
-<package name="deluge" project="openSUSE:Factory">
-  <title>BitTorrent Client</title>
-  <description>Deluge is a Free Software, cross-platform BitTorrent client on Python and Gtk2 with multiple user interfaces in client/server model.</description>
-  <devel project="network" package="deluge"/>
-</package>

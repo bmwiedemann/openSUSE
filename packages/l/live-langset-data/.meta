@@ -1,5 +1,0 @@
-<package name="live-langset-data" project="openSUSE:Factory">
-  <title>Files that make the net installer available on the live media</title>
-  <description></description>
-  <devel project="system:install:head" package="live-langset-data"/>
-</package>

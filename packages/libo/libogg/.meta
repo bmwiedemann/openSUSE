@@ -1,9 +1,0 @@
-<package name="libogg" project="openSUSE:Factory">
-  <title>Ogg Bitstream Library</title>
-  <description>Libogg is a library for manipulating ogg bitstreams.  It handles both
-making ogg bitstreams and getting packets from ogg bitstreams.
-
-Ogg is the native bitstream format of the libvorbis (Ogg Vorbis audio
-codec ) and the libtheora (Theora video codec)</description>
-  <devel project="multimedia:libs" package="libogg"/>
-</package>

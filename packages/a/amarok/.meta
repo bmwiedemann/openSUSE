@@ -1,7 +1,0 @@
-<package name="amarok" project="openSUSE:Factory">
-  <title>Media Player for KDE</title>
-  <description>Amarok is a media player for all kinds of media. This includes MP3, Ogg
-Vorbis, audio CDs, podcasts and streams. Play lists can be stored in
-.m3u or .pls files.</description>
-  <devel project="KDE:Extra" package="amarok"/>
-</package>

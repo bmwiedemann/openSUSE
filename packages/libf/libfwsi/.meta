@@ -1,7 +1,0 @@
-<package name="libfwsi" project="openSUSE:Factory">
-  <title>Library to access the Windows Shell Item format</title>
-  <description>Library to access the Windows Shell Item format for the libyal family of libraries.
-libyal is typically used in digital forensic tools.
-</description>
-  <devel project="security:forensics" package="libfwsi"/>
-</package>

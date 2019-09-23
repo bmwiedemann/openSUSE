@@ -1,5 +1,0 @@
-<package name="freecell-solver" project="openSUSE:Factory">
-  <title>Freecell Solver</title>
-  <description>Command line utilities and library usable to solve Freecell and other card games.</description>
-  <devel project="devel:libraries:c_c++" package="freecell-solver"/>
-</package>

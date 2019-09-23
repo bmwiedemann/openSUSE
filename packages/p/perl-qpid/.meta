@@ -1,6 +1,0 @@
-<package name="perl-qpid" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="qpid-cpp"/>
-  <bcntsynctag>qpid-cpp</bcntsynctag>
-</package>

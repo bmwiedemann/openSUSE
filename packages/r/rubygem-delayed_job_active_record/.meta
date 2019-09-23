@@ -1,8 +1,0 @@
-<package name="rubygem-delayed_job_active_record" project="openSUSE:Factory">
-  <title>ActiveRecord backend for DelayedJob</title>
-  <description>ActiveRecord backend for DelayedJob, originally authored by Tobias Luetke
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-delayed_job_active_record"/>
-  <url>http://github.com/collectiveidea/delayed_job_active_record</url>
-</package>

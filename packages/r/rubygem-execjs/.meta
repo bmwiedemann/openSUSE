@@ -1,8 +1,0 @@
-<package name="rubygem-execjs" project="openSUSE:Factory">
-  <title>execjs</title>
-  <description>
-ExecJS lets you run JavaScript code from Ruby.
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-execjs"/>
-  <url>https://github.com/sstephenson/execjs</url>
-</package>

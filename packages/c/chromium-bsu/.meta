@@ -1,7 +1,0 @@
-<package name="chromium-bsu" project="openSUSE:Factory">
-  <title>Vertical Scrolling Space Shooter Game</title>
-  <description>Chromium B.S.U. is a fast-paced, arcade-style, top-scrolling space
-shooter.
-</description>
-  <devel project="games" package="chromium-bsu"/>
-</package>

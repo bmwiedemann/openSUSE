@@ -1,7 +1,0 @@
-<package name="istio-proxy" project="openSUSE:Factory">
-  <title>envoy-proxy</title>
-  <description>L7 proxy and communication bus</description>
-  <devel project="openSUSE:Factory" package="envoy-proxy"/>
-  <url>https://www.envoyproxy.io/</url>
-  <bcntsynctag>envoy-proxy</bcntsynctag>
-</package>

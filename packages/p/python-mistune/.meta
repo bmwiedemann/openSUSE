@@ -1,5 +1,0 @@
-<package name="python-mistune" project="openSUSE:Factory">
-  <title>python-mistune</title>
-  <description>The fastest markdown parser in pure Python</description>
-  <devel project="devel:languages:python" package="python-mistune"/>
-</package>

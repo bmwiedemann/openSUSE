@@ -1,8 +1,0 @@
-<package name="rtags" project="openSUSE:Factory">
-  <title>Clang based source code indexer</title>
-  <description>Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
-
-</description>
-  <devel project="devel:tools" package="rtags"/>
-  <url>https://github.com/Andersbakken/rtags</url>
-</package>

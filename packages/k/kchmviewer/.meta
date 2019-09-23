@@ -1,7 +1,0 @@
-<package name="kchmviewer" project="openSUSE:Factory">
-  <title>KDE chm Viewer (MS Windows Compressed HTML Documents)</title>
-  <description>This is a viewer for the chm files known from the MS Windows world. It
-supports complex searching for large books and has various viewing
-features.</description>
-  <devel project="KDE:Extra" package="kchmviewer"/>
-</package>

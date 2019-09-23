@@ -1,5 +1,0 @@
-<package name="dfu-programmer" project="openSUSE:Factory">
-  <title>A Device Firmware Update based USB programmer for Atmel chips</title>
-  <description>dfu-programmer is an implementation of the Device Firmware Upgrade class USB driver that enables firmware upgrades for various USB enabled (with the correct bootloader) Atmel chips.  This program was created because the Atmel &quot;FLIP&quot; program for flashing devices does not support flashing via USB on Linux, and because standard DFU loaders do not work for Atmel's chips.</description>
-  <devel project="electronics" package="dfu-programmer"/>
-</package>

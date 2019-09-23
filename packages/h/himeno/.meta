@@ -1,7 +1,0 @@
-<package name="himeno" project="openSUSE:Factory">
-  <title>Benchmark to evaluate the performance of incompressible fluid analysis code</title>
-  <description>Benchmark to evaluate the performance of incompressible fluid analysis
-code. This benchmark program measures the speed of major loops to solve
-Poisson's equation folution using Jacobi iteration method.</description>
-  <devel project="benchmark" package="himeno"/>
-</package>

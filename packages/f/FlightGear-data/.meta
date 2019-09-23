@@ -1,9 +1,0 @@
-<package name="FlightGear-data" project="openSUSE:Factory">
-  <title>FlightGear base scenery and data files</title>
-  <description>This package contains the base scenery for FlightGear and must be
-installed
-
-</description>
-  <devel project="games" package="FlightGear-data"/>
-  <url>http://www.flightgear.org/</url>
-</package>

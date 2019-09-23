@@ -1,8 +1,0 @@
-<package name="python-nose-timer" project="openSUSE:Factory">
-  <title>A timer plugin for nosetests</title>
-  <description>A timer plugin for nosetests that answers the question:
-how much time does every test take?
-
-</description>
-  <devel project="devel:languages:python" package="python-nose-timer"/>
-</package>

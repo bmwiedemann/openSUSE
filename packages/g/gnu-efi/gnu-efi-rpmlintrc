@@ -1,4 +1,0 @@
-addFilter(".*devel-file-in-non-devel-package.*")
-addFilter(".*static-library-without-debuginfo.*")
-addFilter(".*source-or-patch-not-compressed.*")
-addFilter(".*source-or-patch-not-bzipped.*")

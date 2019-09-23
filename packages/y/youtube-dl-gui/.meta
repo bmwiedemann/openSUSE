@@ -1,7 +1,0 @@
-<package name="youtube-dl-gui" project="openSUSE:Factory">
-  <title>GUI for youtube-dl</title>
-  <description>A cross platform front-end GUI of the popular youtube-dl written in wxPython.
-
-</description>
-  <devel project="network:utilities" package="youtube-dl-gui"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="tuxcursors" project="openSUSE:Factory">
-  <title>Tux Cursors!</title>
-  <description>A cursor set that has nice animated penguins.</description>
-  <devel project="X11:Utilities" package="tuxcursors"/>
-</package>

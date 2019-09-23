@@ -1,6 +1,0 @@
-<package name="libxml++26" project="openSUSE:Factory">
-  <title>libxml++26</title>
-  <description>libxml++26 is a compatability package for libxml++
-Needed for packages depending on libxml++-2.6</description>
-  <devel project="GNOME:Factory" package="libxml++26"/>
-</package>

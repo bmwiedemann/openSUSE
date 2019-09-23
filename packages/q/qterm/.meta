@@ -1,5 +1,0 @@
-<package name="qterm" project="openSUSE:Factory">
-  <title>QTerm is BBS client</title>
-  <description>QTerm is a full featured BBS client written in Qt.</description>
-  <devel project="X11:Utilities" package="qterm"/>
-</package>

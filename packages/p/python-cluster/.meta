@@ -1,5 +1,0 @@
-<package name="python-cluster" project="openSUSE:Factory">
-  <title>Allows to create several groups (clusters) of objects from a list</title>
-  <description>This is a &quot;simple&quot; package that allows to create several groups (clusters) of objects from a list.</description>
-  <devel project="devel:languages:python:numeric" package="python-cluster"/>
-</package>

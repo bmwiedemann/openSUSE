@@ -1,5 +1,0 @@
-<package name="heapster" project="openSUSE:Factory">
-  <title>Heapster</title>
-  <description>Monitoring agent for Kubernetes</description>
-  <devel project="devel:CaaSP:Head:ControllerNode" package="heapster"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="geekodoc" project="openSUSE:Factory">
-  <title>GeekoDoc</title>
-  <description>Schema (DTD and RELAX NG) files for SUSE documentation.</description>
-  <devel project="Documentation:Tools" package="geekodoc"/>
-</package>

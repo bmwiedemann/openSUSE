@@ -1,5 +1,0 @@
-<package name="nemesis" project="openSUSE:Factory">
-  <title>nemesis</title>
-  <description></description>
-  <devel project="network:utilities" package="nemesis"/>
-</package>

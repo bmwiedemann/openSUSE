@@ -1,9 +1,0 @@
---- a/share/applications/caffeine.desktop.orig	2014-01-31 00:24:20.000000000 +0100
-+++ b/share/applications/caffeine.desktop	2014-12-25 15:42:07.322502449 +0100
-@@ -25,5 +25,5 @@
- Terminal=false
- Type=Application
- Categories=Utility;
--Keywords=Screensaver,Power,Saving,Blank
-+Keywords=Screensaver,Power,Saving,Blank;
- StartupNotify=false

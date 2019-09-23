@@ -1,9 +1,0 @@
-## Path:        Hardware/Webcam
-## Description: Configuration of motion capture
-## ServiceRestart: motion
-## Type:        string
-## Default:     ""
-#
-# Command line options for motion. See 'man motion' for further info.
-#
-MOTION_OPTIONS=""

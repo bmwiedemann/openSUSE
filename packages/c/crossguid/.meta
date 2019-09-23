@@ -1,8 +1,0 @@
-<package name="crossguid" project="openSUSE:Factory">
-  <title>Cross platform C++ GUID/UUID library</title>
-  <description>Lightweight cross platform C++ GUID/UUID library
-
-</description>
-  <devel project="devel:libraries:c_c++" package="crossguid"/>
-  <url>https://github.com/graeme-hill/crossguid</url>
-</package>

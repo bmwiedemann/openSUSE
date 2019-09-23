@@ -1,8 +1,0 @@
--------------------------------------------------------------------
-Thu Nov 29 16:41:51 UTC 2018 - Todd R <toddrme2178@gmail.com>
-
-- Initial version
-- Add no_vendored_requests.patch
-  use system requests since we remove the vendored version
-  from: https://github.com/pynamodb/PynamoDB/pull/566
-

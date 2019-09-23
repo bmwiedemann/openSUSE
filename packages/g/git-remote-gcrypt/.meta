@@ -1,5 +1,0 @@
-<package name="git-remote-gcrypt" project="openSUSE:Factory">
-  <title>git-remote-gcrypt</title>
-  <description></description>
-  <devel project="devel:tools:scm" package="git-remote-gcrypt"/>
-</package>

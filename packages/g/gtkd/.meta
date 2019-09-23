@@ -1,5 +1,0 @@
-<package name="gtkd" project="openSUSE:Factory">
-  <title>GtkD</title>
-  <description>D binding and OO wrapper of GTK+</description>
-  <devel project="devel:languages:D" package="gtkd"/>
-</package>

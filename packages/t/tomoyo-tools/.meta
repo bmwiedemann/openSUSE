@@ -1,5 +1,0 @@
-<package name="tomoyo-tools" project="openSUSE:Factory">
-  <title>A Friendly Greeting Program</title>
-  <description>TOMOYO userland utilities.</description>
-  <devel project="security" package="tomoyo-tools"/>
-</package>

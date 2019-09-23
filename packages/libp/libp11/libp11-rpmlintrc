@@ -1,2 +1,0 @@
-# Check is poorly written, it apparently depends on libp11-1.
-addFilter("no-dependency-on")

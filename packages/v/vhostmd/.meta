@@ -1,7 +1,0 @@
-<package name="vhostmd" project="openSUSE:Factory">
-  <title>Virtual Host Metrics Daemon (vhostmd)</title>
-  <description>vhostmd provides a &quot;metrics communication channel&quot; between a host and
-its hosted virtual machines, allowing limited introspection of host
-resource usage from within virtual machines</description>
-  <devel project="Virtualization" package="vhostmd"/>
-</package>

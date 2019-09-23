@@ -1,8 +1,0 @@
-<package name="ocaml-dune" project="openSUSE:Factory">
-  <title>A composable build system for OCaml</title>
-  <description>A composable build system for OCaml
-
-</description>
-  <devel project="devel:languages:ocaml" package="ocaml-dune"/>
-  <url>https://github.com/ocaml/dune</url>
-</package>

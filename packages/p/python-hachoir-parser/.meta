@@ -1,6 +1,0 @@
-<package name="python-hachoir-parser" project="openSUSE:Factory">
-  <title>Part of a library to manipulate a binary stream field-by-field</title>
-  <description>Hachoir is a Python library that allows to view and edit a binary stream field by field. In other words, Hachoir allows you to &quot;browse&quot; any binary stream just like you browse directories and files. A file is split in a tree of fields, where the smallest field is just one bit.
-</description>
-  <devel project="devel:languages:python" package="python-hachoir-parser"/>
-</package>

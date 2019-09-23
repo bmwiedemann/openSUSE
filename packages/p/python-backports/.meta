@@ -1,9 +1,0 @@
-<package name="python-backports" project="openSUSE:Factory">
-  <title>Backport of the enhanced config parser introduced in Python 3.x</title>
-  <description>The ancient ConfigParser module available in the standard library 2.x has
-seen a major update in Python 3.x. This is a backport of those changes so
-that they can be used directly in Python 2.7.
-
-</description>
-  <devel project="devel:languages:python" package="python-backports"/>
-</package>

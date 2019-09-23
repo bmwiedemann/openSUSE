@@ -1,5 +1,0 @@
-<package name="paperwork" project="openSUSE:Factory">
-  <title>Paperwork</title>
-  <description>Using scanners and OCR to grep paper documents the easy way</description>
-  <devel project="Publishing" package="paperwork"/>
-</package>

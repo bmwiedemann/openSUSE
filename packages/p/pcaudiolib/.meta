@@ -1,8 +1,0 @@
-<package name="pcaudiolib" project="openSUSE:Factory">
-  <title>Portable C Audio Library</title>
-  <description>The Portable C Audio Library (pcaudiolib) provides a C API to different audio devices.
-It supports many different platforms, including ones on Linux, MacOS and Windows.
-
-</description>
-  <devel project="multimedia:libs" package="pcaudiolib"/>
-</package>

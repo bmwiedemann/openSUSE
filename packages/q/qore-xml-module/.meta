@@ -1,5 +1,0 @@
-<package name="qore-xml-module" project="openSUSE:Factory">
-  <title>Qore XML Module</title>
-  <description>XML, XPath, XML-RPC, etc functionality for Qore, split from the main library as of Qore v0.8.1</description>
-  <devel project="devel:languages:misc" package="qore-xml-module"/>
-</package>

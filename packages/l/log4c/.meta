@@ -1,8 +1,0 @@
-<package name="log4c" project="openSUSE:Factory">
-  <title>A library of C for flexible logging to files, syslog and other destinations</title>
-  <description>Log4c is a library of C for flexible logging to files, syslog and other
-destinations. It is modeled after the Log for Java library
-(http://jakarta.apache.org/log4j/), staying as close to their API as is
-reasonable.</description>
-  <devel project="devel:libraries:c_c++" package="log4c"/>
-</package>

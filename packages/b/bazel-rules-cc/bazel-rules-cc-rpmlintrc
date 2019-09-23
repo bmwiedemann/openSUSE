@@ -1,5 +1,0 @@
-# This is a source package and /usr/src is a correct path to install files.
-addFilter("bazel-rules-cc-source.* suse-filelist-forbidden-fhs23")
-# fdupes should get rid of all duplicates, for some reason it didn't, but...
-# it's a source package, so it's not a big problem
-addFilter("bazel-rules-cc-source.* files-duplicate")

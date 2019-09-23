@@ -1,7 +1,0 @@
-<package name="obs-service-verify_file" project="openSUSE:Factory">
-  <title></title>
-  <description>This is a source service for openSUSE Build Service.
-
-It allows to verify a file with a given sha256sum</description>
-  <devel project="openSUSE:Tools" package="obs-service-verify_file"/>
-</package>

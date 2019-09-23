@@ -1,5 +1,0 @@
-<package name="flannel" project="openSUSE:Factory">
-  <title></title>
-  <description>flannel is an etcd backed network fabric for containers</description>
-  <devel project="devel:kubic" package="flannel"/>
-</package>

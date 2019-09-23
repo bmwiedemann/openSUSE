@@ -1,5 +1,0 @@
-<package name="grim" project="openSUSE:Factory">
-  <title>grim</title>
-  <description>Grab images from a Wayland compositor</description>
-  <devel project="X11:Wayland" package="grim"/>
-</package>

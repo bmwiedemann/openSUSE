@@ -1,5 +1,0 @@
-<package name="libfakekey" project="openSUSE:Factory">
-  <title>libfakekey</title>
-  <description></description>
-  <devel project="X11:MATE:Factory" package="libfakekey"/>
-</package>

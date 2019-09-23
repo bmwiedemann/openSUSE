@@ -1,8 +1,0 @@
-<package name="perl-XML-NamespaceSupport" project="openSUSE:Factory">
-  <title>A simple generic namespace support class</title>
-  <description>This module offers a simple way to process namespaced XML names
-(unames) from within any application that may need them. It also helps
-maintain a prefix to namespace URI map, and provides a number of basic
-checks.</description>
-  <devel project="devel:languages:perl" package="perl-XML-NamespaceSupport"/>
-</package>

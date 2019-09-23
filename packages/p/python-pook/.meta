@@ -1,0 +1,5 @@
+<package name="python-pook" project="openSUSE:Factory">
+  <title>python-pook</title>
+  <description>HTTP traffic mocking and expectations</description>
+  <devel project="devel:languages:python" package="python-pook"/>
+</package>

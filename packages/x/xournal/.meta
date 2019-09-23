@@ -1,9 +1,0 @@
-<package name="xournal" project="openSUSE:Factory">
-  <title>An application for notetaking, sketching, and keeping a journal using a stylus</title>
-  <description>Xournal is an application for notetaking, sketching, keeping a journal
-using a stylus. It is free software (GNU GPL) and runs on Linux (recent
-distributions) and other GTK+/Gnome platforms. It is similar to
-Microsoft Windows Journal or to other alternatives such as Jarnal and
-Gournal.</description>
-  <devel project="X11:Utilities" package="xournal"/>
-</package>

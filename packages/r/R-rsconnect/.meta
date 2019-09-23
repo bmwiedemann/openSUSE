@@ -1,5 +1,0 @@
-<package name="R-rsconnect" project="openSUSE:Factory">
-  <title></title>
-  <description>Deployment Interface for R Markdown Documents and Shiny Applications</description>
-  <devel project="devel:languages:R:released" package="R-rsconnect"/>
-</package>

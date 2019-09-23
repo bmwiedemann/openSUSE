@@ -1,8 +1,0 @@
-<package name="perl-Net-Patricia" project="openSUSE:Factory">
-  <title>Patricia Trie perl module for fast IP address lookups</title>
-  <description>This module uses a Patricia Trie data structure to quickly perform IP address prefix matching for applications such as IP subnet, network or routing table lookups. The data structure is based on a radix tree using a radix of two, so sometimes you see patricia implementations called &quot;radix&quot; as well. The term &quot;Trie&quot; is derived from the word &quot;retrieval&quot; but is pronounced like &quot;try&quot;. Patricia stands for &quot;Practical Algorithm to Retrieve Information Coded as Alphanumeric&quot;, and was first suggested for routing table lookups by Van Jacobsen. Patricia Trie performance characteristics are well-known as it has been employed for routing table lookups within the BSD kernel since the 4.3 Reno release.
-
-The BSD radix code is thoroughly described in &quot;TCP/IP Illustrated, Volume 2&quot; by Wright and Stevens and in the paper ``A Tree-Based Packet Routing Table for Berkeley Unix'' by Keith Sklower.</description>
-  <devel project="devel:languages:perl" package="perl-Net-Patricia"/>
-  <url>http://search.cpan.org/dist/IO-Socket-INET6/</url>
-</package>

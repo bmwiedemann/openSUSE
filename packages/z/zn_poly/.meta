@@ -1,6 +1,0 @@
-<package name="zn_poly" project="openSUSE:Factory">
-  <title>Library for polynomial arithmetic in Z/nZ[x]</title>
-  <description>zn_poly is a C library for polynomial arithmetic in Z/nZ[x], where n is any modulus that fits into an unsigned long.
-  </description>
-  <devel project="science" package="zn_poly"/>
-</package>

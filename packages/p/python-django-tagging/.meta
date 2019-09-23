@@ -1,8 +1,0 @@
-<package name="python-django-tagging" project="openSUSE:Factory">
-  <title>A generic tagging application for Django projects</title>
-  <description>A generic tagging application for Django projects, which allows association of a number of tags with any Model instance and makes retrieval of tags simple.
-    
-</description>
-  <devel project="devel:languages:python:django" package="python-django-tagging"/>
-  <url>https://django-tagging.readthedocs.io/</url>
-</package>

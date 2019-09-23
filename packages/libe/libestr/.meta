@@ -1,9 +1,0 @@
-<package name="libestr" project="openSUSE:Factory">
-  <title>String handling essentials library</title>
-  <description>This package compiles the string handling essentials library
-used by the rsyslog daemon.
-
-</description>
-  <devel project="devel:libraries:c_c++" package="libestr"/>
-  <url>http://libestr.adiscon.com/</url>
-</package>

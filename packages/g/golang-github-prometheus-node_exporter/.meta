@@ -1,5 +1,0 @@
-<package name="golang-github-prometheus-node_exporter" project="openSUSE:Factory">
-  <title>Prometheus exporter for machine metrics</title>
-  <description>Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.</description>
-  <devel project="server:monitoring" package="golang-github-prometheus-node_exporter"/>
-</package>

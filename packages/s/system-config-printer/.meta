@@ -1,6 +1,0 @@
-<package name="system-config-printer" project="openSUSE:Factory">
-  <title>A printer administration tool</title>
-  <description>system-config-printer is a graphical user interface that allows the
-user to configure a CUPS print server.</description>
-  <devel project="GNOME:Factory" package="system-config-printer"/>
-</package>

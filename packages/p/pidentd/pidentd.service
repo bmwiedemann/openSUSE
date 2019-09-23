@@ -1,9 +1,0 @@
-[Unit]
-Description=The identd server provides a means to determine user identity for TCP connection
-After=network.target
-
-[Service]
-ExecStart=/usr/sbin/identd -i -e -I
-
-[Install]
-WantedBy=multi-user.target

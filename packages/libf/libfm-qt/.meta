@@ -1,5 +1,0 @@
-<package name="libfm-qt" project="openSUSE:Factory">
-  <title>libfm-qt</title>
-  <description></description>
-  <devel project="X11:LXQt" package="libfm-qt"/>
-</package>

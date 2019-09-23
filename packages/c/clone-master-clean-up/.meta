@@ -1,6 +1,0 @@
-<package name="clone-master-clean-up" project="openSUSE:Factory">
-  <title>clone-master-clean-up</title>
-  <description>clone-master-clean-up</description>
-  <devel project="systemsmanagement" package="clone-master-clean-up"/>
-  <url>https://github.com/SUSE/clone-master-clean-up</url>
-</package>

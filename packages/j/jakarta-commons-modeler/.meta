@@ -1,8 +1,0 @@
-<package name="jakarta-commons-modeler" project="openSUSE:Factory">
-  <title>Jakarta Commons Modeler Package</title>
-  <description>The Modeler project creates and maintains a set of Java classes to
-provide a number of facilities for Model MBeans plus unit tests and
-small examples of using these facilities to instrument Java classes
-with Model MBean support.</description>
-  <devel project="Java:packages" package="jakarta-commons-modeler"/>
-</package>

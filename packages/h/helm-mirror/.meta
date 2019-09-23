@@ -1,5 +1,0 @@
-<package name="helm-mirror" project="openSUSE:Factory">
-  <title>helm-mirror</title>
-  <description>Mirrors Helm repositories</description>
-  <devel project="Virtualization:containers" package="helm-mirror"/>
-</package>

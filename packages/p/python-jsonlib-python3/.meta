@@ -1,5 +1,0 @@
-<package name="python-jsonlib-python3" project="openSUSE:Factory">
-  <title></title>
-  <description>JSON library for Python 3</description>
-  <devel project="devel:languages:python" package="python-jsonlib-python3"/>
-</package>

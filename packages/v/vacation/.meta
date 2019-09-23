@@ -1,7 +1,0 @@
-<package name="vacation" project="openSUSE:Factory">
-  <title>A way to automatically reply to incoming e-mail</title>
-  <description>This program answers your e-mail when you are lying on the beach.
-
-Documentation: man vacation</description>
-  <devel project="server:mail" package="vacation"/>
-</package>

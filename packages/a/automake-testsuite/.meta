@@ -1,8 +1,0 @@
-<package name="automake-testsuite" project="openSUSE:Factory">
-  <title>A Program for Automatically Generating GNU-Style Makefile.in Files</title>
-  <description>Automake is a tool for automatically generating &quot;Makefile.in&quot; files
-from &quot;Makefile.am&quot; files.  &quot;Makefile.am&quot; is a series of &quot;make&quot; macro
-definitions (with rules occasionally thrown in).  The generated
-&quot;Makefile.in&quot; files are compatible with the GNU Makefile standards.</description>
-  <devel project="openSUSE:Factory" package="automake"/>
-</package>

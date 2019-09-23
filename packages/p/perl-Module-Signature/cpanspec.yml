@@ -1,8 +1,0 @@
----
-preamble: |-
- BuildRequires:  gpg
- Requires:       gpg
-license: CC0-1.0 and (GPL-1.0+ or Artistic-1.0)
-post_prep:
- sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
-

@@ -1,5 +1,0 @@
-<package name="obs-service-download_url" project="openSUSE:Factory">
-  <title>OBS file download source service</title>
-  <description>OBS file download source service</description>
-  <devel project="openSUSE:Tools" package="obs-service-download_url"/>
-</package>
