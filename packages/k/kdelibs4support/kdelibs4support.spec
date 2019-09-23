@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KDELibs4Support5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdelibs4support
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
@@ -40,33 +40,33 @@ BuildRequires:  NetworkManager-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kbookmarks-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcompletion-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kconfigwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcrash-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kdbusaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kded-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kdesignerplugin-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kdoctools-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kemoticons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kguiaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kiconthemes-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kio-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kitemviews-devel >= %{_kf5_bugfix_version}
-BuildRequires:  knotifications-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kparts-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kservice-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ktextwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kunitconversion-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwidgetsaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwindowsystem-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kxmlgui-devel >= %{_kf5_bugfix_version}
 BuildRequires:  perl-URI
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KDED) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5DesignerPlugin) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Emoticons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Parts) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5UnitConversion) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5DBus) >= 5.6.0
@@ -150,24 +150,24 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
-Requires:       karchive-devel >= %{_kf5_bugfix_version}
-Requires:       kauth-devel >= %{_kf5_bugfix_version}
-Requires:       kconfigwidgets-devel >= %{_kf5_bugfix_version}
-Requires:       kcoreaddons-devel >= %{_kf5_bugfix_version}
-Requires:       kcrash-devel >= %{_kf5_bugfix_version}
-Requires:       kdbusaddons-devel >= %{_kf5_bugfix_version}
-Requires:       kdesignerplugin-devel >= %{_kf5_bugfix_version}
-Requires:       kdoctools-devel >= %{_kf5_bugfix_version}
-Requires:       kemoticons-devel >= %{_kf5_bugfix_version}
-Requires:       kguiaddons-devel >= %{_kf5_bugfix_version}
-Requires:       kiconthemes-devel >= %{_kf5_bugfix_version}
-Requires:       kinit-devel >= %{_kf5_bugfix_version}
-Requires:       kitemmodels-devel >= %{_kf5_bugfix_version}
-Requires:       knotifications-devel >= %{_kf5_bugfix_version}
-Requires:       kparts-devel >= %{_kf5_bugfix_version}
-Requires:       ktextwidgets-devel >= %{_kf5_bugfix_version}
-Requires:       kunitconversion-devel >= %{_kf5_bugfix_version}
-Requires:       kwindowsystem-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Archive) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Auth) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Crash) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5DesignerPlugin) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5DocTools) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Emoticons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Init) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5ItemModels) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Notifications) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Parts) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5UnitConversion) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5Core) >= 5.6.0
 Requires:       cmake(Qt5DBus) >= 5.6.0
 Requires:       cmake(Qt5PrintSupport) >= 5.6.0

@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Plotting5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kplotting
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        KDE Data plotting library
 License:        LGPL-2.1-or-later
@@ -42,8 +42,7 @@ BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
-# uncomment after 5.61
-# BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 
 %description
@@ -97,8 +96,8 @@ that provides a virtual base class for data plotting.
 %files devel
 %{_kf5_libdir}/libKF5Plotting.so
 %{_kf5_libdir}/cmake/KF5Plotting/
-# %dir %{_kf5_plugindir}/designer
-# %{_kf5_plugindir}/designer/kplotting5widgets.so
+%dir %{_kf5_plugindir}/designer
+%{_kf5_plugindir}/designer/kplotting5widgets.so
 %{_kf5_includedir}/
 %{_kf5_mkspecsdir}/qt_KPlotting.pri
 

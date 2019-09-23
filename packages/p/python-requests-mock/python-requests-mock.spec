@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-mock
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
-Summary:        Mock out responses from the requests package
+Summary:        Module to mock out responses from the requests package
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://requests-mock.readthedocs.org/
+URL:            https://github.com/jamielennox/requests-mock
 Source:         https://files.pythonhosted.org/packages/source/r/requests-mock/requests-mock-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3}

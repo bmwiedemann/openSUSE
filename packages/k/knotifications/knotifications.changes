@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:36:59 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Remove duplicate description and URL from canberra's feature properties
+  * Fix build on the CI
+  * Resolve whether there's dbus before processing src/
+  * avoid duplicate notifications from showing up on Windows and remove whitespaces
+  * have 1024x1024 app icon as fallback icon in Snore
+  * add `-pid` parameter to Snore backend calls
+  * Remove unused DBus XML file
+  * Remove double check for DBus
+  * add snoretoast backend for KNotifications on Windows
+  * Add QVector include
+  * Remove unused includes
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:38 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

@@ -610,4 +610,16 @@
   * Fixed a regression in Django 2.2 where auto-reloader crashes if a translation directory cannot be resolved (#30647).</comment>
     <requestid>720189</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>240bd5c2cbc30b6ae1750a9431c5ec3f</srcmd5>
+    <version>2.2.5</version>
+    <time>1569233882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+  * Relaxed the system check added in Django 2.2 for models to reallow use of the same db_table by multiple models when database routers are installed (#30673).
+  * Fixed crash of KeyTransform() for JSONField and HStoreField when using on expressions with params (#30672).
+  * Fixed a regression in Django 2.2 where ModelAdmin.list_filter choices to foreign objects don’t respect a model’s Meta.ordering (#30449).
+  * Fixed a race condition in loading URLconf module that could cause a crash of auto-reloader on Python 3.5 and below (#30500).</comment>
+    <requestid>731244</requestid>
+  </revision>
 </revisionlist>

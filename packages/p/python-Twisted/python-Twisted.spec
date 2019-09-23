@@ -20,7 +20,7 @@
 %define oldpython python
 %define modname Twisted
 Name:           python-Twisted
-Version:        19.2.1
+Version:        19.7.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -30,7 +30,6 @@ Source:         https://files.pythonhosted.org/packages/source/T/Twisted/%{modna
 Patch1:         skip_MultiCast.patch
 Patch2:         no-pygtkcompat.patch
 Patch3:         test-mktime-invalid-tm_isdst.patch
-Patch4:         hyperlink.patch
 BuildRequires:  %{python_module Automat >= 0.3.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
@@ -138,6 +137,10 @@ done
 %python_clone %{buildroot}%{_bindir}/mailmail
 %python_clone %{buildroot}%{_mandir}/man1/mailmail.1
 %endif
+%if ! 0%{?have_python2} || 0%{?skip_python2}
+rm %{buildroot}%{_bindir}/mailmail %{buildroot}%{_mandir}/man1/mailmail.1
+%endif
+
 # no manpage for twist yet:
 %python_clone %{buildroot}%{_bindir}/twist
 

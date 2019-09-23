@@ -6,4 +6,7 @@
     is a requirement for all the other modules in the repository.
   </description>
   <devel project="devel:languages:python" package="python-kaa-base"/>
+  <build>
+    <disable/>
+  </build>
 </package>

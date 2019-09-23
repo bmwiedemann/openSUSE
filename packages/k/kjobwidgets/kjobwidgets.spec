@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5JobWidgets5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kjobwidgets
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Widgets for showing progress of asynchronous jobs
 License:        LGPL-2.1-or-later
@@ -39,10 +39,10 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kwidgetsaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5DBus) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
@@ -68,7 +68,7 @@ Summary:        Widgets for showing progress of asynchronous jobs
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kcoreaddons-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5Widgets) >= 5.6.0
 
 %description devel

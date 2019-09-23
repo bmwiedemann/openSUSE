@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           oxygen5-icon-theme
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
@@ -57,8 +57,8 @@ Provides:       oxygen-icon-theme = 15.08
 Obsoletes:      oxygen-icon-theme < 15.08
 BuildArch:      noarch
 %if %{with autotests}
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
 %endif
 
 %description

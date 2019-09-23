@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Werkzeug
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
@@ -28,21 +28,20 @@ URL:            http://werkzeug.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkzeug-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM 0001_create_a_thread_to_reap_death_process.patch bsc#954591
 Patch0:         0001_create_a_thread_to_reap_death_process.patch
-%if 0%{?suse_version} < 1500
-BuildRequires:  python
-%endif
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Recommends:     python-termcolor
 Recommends:     python-watchdog
 Obsoletes:      python-Werkzeug-doc < %{version}
 Provides:       python-Werkzeug-doc = %{version}
-
+BuildArch:      noarch
+%if 0%{?suse_version} < 1500
+BuildRequires:  python
+%endif
 %ifpython2
 Provides:       %{oldpython}-werkzeug = %{version}
 Obsoletes:      %{oldpython}-werkzeug < %{version}

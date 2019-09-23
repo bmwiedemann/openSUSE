@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-arrow
-Version:        0.14.4
+Version:        0.15.2
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/crsmithdev/arrow
 Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{version}.tar.gz
 BuildRequires:  %{python_module chai}
+BuildRequires:  %{python_module dateparser}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
@@ -36,10 +38,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 BuildArch:      noarch
 %if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache
+BuildRequires:  python-backports.functools_lru_cache >= 1.2.1
 %endif
 %ifpython2
-Requires:       python-backports.functools_lru_cache
+Requires:       python-backports.functools_lru_cache >= 1.2.1
 %endif
 %python_subpackages
 
@@ -70,7 +72,7 @@ rm -rf arrow.egg-info
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst HISTORY.md
+%doc README.rst
 %dir %{python_sitelib}/arrow
 %{python_sitelib}/arrow/*
 %dir %{python_sitelib}/arrow-%{version}-py*.egg-info

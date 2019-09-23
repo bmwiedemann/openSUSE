@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Runner5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           krunner
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        LGPL-2.1-or-later
@@ -40,16 +40,16 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kio-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kservice-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwindowsystem-devel >= %{_kf5_bugfix_version}
-BuildRequires:  plasma-framework-devel >= %{_kf5_bugfix_version}
-BuildRequires:  solid-devel >= %{_kf5_bugfix_version}
-BuildRequires:  threadweaver-devel >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Plasma) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ThreadWeaver) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Gui) >= 5.6.0
 BuildRequires:  cmake(Qt5Quick) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
@@ -77,7 +77,7 @@ Summary:        Plugins responsible for better integration of Qt applications in
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       plasma-framework-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Plasma) >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5Core) >= 5.6.0
 Conflicts:      kapptemplate <= 16.03.80
 

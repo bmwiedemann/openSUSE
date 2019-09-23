@@ -20,10 +20,10 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.61
+%define _tar_path 5.62
 %bcond_without lang
 Name:           ktexteditor
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
@@ -40,18 +40,18 @@ Patch1:         0001-Disable-KAuth-integration.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  karchive-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kguiaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kiconthemes-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kio-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kparts-devel >= %{_kf5_bugfix_version}
 BuildRequires:  libeditorconfig-devel
 BuildRequires:  libgit2-devel
-BuildRequires:  sonnet-devel >= %{_kf5_bugfix_version}
-BuildRequires:  syntax-highlighting-devel >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Parts) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5SyntaxHighlighting) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5PrintSupport) >= 5.6.0
 BuildRequires:  cmake(Qt5Qml) >= 5.6.0
@@ -72,7 +72,7 @@ Summary:        Header files for ktexteditor, an embeddable text editor componen
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kparts-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Parts) >= %{_kf5_bugfix_version}
 
 %description devel
 KTextEditor provides a text editor component that can be embedded in

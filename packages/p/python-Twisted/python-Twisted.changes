@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:29:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove mailmail when only building Python 3 flavour
+
+-------------------------------------------------------------------
+Fri Sep 13 13:09:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.7.0:
+  * The callable argument to twisted.internet.task.deferLater() is no longer required. (#9577)
+  * twisted.internet.utils.getProcessOutputAndValue now accepts stdinBytes to write to the child process's standard input. (#9607)
+  * Add new twisted.logger.capturedLogs context manager for capturing observed log events in tests. (#9617)
+  * twisted.internet.base.PluggableResolverMixin, which implements the pluggable resolver interfaces for easier re-use in other reactors, has been factored out of ReactorBase. (#9632)
+  * The PyPI page for Twisted has been enhanced to include more information and useful links. (#9648)
+- Refresh patch:
+  * skip_MultiCast.patch
+- Remove merged patch hyperlink.patch
+
+-------------------------------------------------------------------
 Wed Jun 12 05:55:44 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to 19.2.1 (bsc#1137825, CVE-2019-12387):

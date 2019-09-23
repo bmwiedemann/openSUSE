@@ -4,5 +4,8 @@
 
 </description>
   <devel project="devel:languages:python" package="python-Quandl"/>
+  <build>
+    <disable/>
+  </build>
   <url>https://github.com/quandl/quandl-python</url>
 </package>

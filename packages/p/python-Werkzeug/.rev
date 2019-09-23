@@ -275,4 +275,15 @@
     <comment>- update to 0.15.4 (bsc#1145383, CVE-2019-14806)</comment>
     <requestid>723279</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fd6c6aff501197087234f82963148519</srcmd5>
+    <version>0.15.6</version>
+    <time>1569233813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.6:
+  * Work around a bug in pip that caused the reloader to fail on Windows when
+    the script was an entry point.
+  * ProxyFix trusts the X-Forwarded-Proto header by default. :issue:`1630`</comment>
+    <requestid>730725</requestid>
+  </revision>
 </revisionlist>

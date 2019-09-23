@@ -572,4 +572,12 @@
     <comment>Update to 5.61</comment>
     <requestid>722470</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>42048a5cab5a7cf19a8ccb2a78dca548</srcmd5>
+    <version>5.62.0</version>
+    <time>1569234237</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.62</comment>
+    <requestid>730935</requestid>
+  </revision>
 </revisionlist>

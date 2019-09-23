@@ -86,4 +86,17 @@
     <comment>- Remove superfluous devel dependency for noarch package</comment>
     <requestid>655721</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f6530c320d6ed8467819cdb89b722d34</srcmd5>
+    <version>1.1.0</version>
+    <time>1569233989</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid build cycle with lxml
+
+- Update to 1.1.0:
+  * Support for the :scope selector, which allows to access immediate children of a selector.
+  * Support for the |E syntax for type selectors without a namespace.
+  * A new selector method, canonical, returns the CSS expression of the selector, as a string.</comment>
+    <requestid>732109</requestid>
+  </revision>
 </revisionlist>

@@ -74,4 +74,18 @@
     <comment></comment>
     <requestid>720894</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd7a35714adde883c80f5ba5f1397be6</srcmd5>
+    <version>0.15.2</version>
+    <time>1569233932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.2:
+  * [NEW] Added humanize week granularity translations for Portuguese and Brazilian Portuguese.
+  * [NEW] Embedded changelog within docs and added release dates to versions.
+  * [FIX] Fixed a bug that caused test failures on Windows only, see #668 for details.
+
+- Update to 0.15.1:
+  * Too many changes to enumerate, see CHANGELOG.rst</comment>
+    <requestid>731449</requestid>
+  </revision>
 </revisionlist>

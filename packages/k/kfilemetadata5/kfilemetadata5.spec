@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 %bcond_without ffmpeg
 %bcond_without lang
 Name:           kfilemetadata5
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -37,16 +37,15 @@ Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
-BuildRequires:  karchive-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
 BuildRequires:  libattr-devel
 BuildRequires:  libepub-devel
 BuildRequires:  libexiv2-devel >= 0.21
 BuildRequires:  pkgconfig
 BuildRequires:  taglib-devel >= 1.9
-BuildRequires:  cmake(Qt5Multimedia) >= 5.6.0
+BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 BuildRequires:  cmake(Qt5Xml) >= 5.6.0
 BuildRequires:  pkgconfig(poppler-qt5)

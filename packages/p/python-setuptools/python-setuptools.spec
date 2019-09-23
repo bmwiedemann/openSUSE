@@ -110,6 +110,7 @@ sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
 
 %check
 %if %{with test}
+export LANG=en_US.UTF-8
 %pytest
 %endif
 

@@ -28,6 +28,7 @@ URL:            http://freedesktop.org/wiki/Software/pyxdg
 Source:         https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-%{version}.tar.gz
 Patch0:         resource_leak.patch
 BuildRequires:  %{python_module nose}
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  shared-mime-info
@@ -60,10 +61,15 @@ PyXDG is a python library to access freedesktop.org standards. Currently support
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{python_sitelib}
 
 %check
+# https://gitlab.freedesktop.org/xdg/pyxdg/issues/15
 # test_get_type{,2} both fail but come from s-m-i package for data
-%python_expand nosetests-%{$python_bin_suffix} -e test_get_type*
+# https://gitlab.freedesktop.org/xdg/pyxdg/merge_requests/4
+%{python_expand sed -i "s/Exec=python.*$/Exec=$python/" test/resources.py
+nosetests-%{$python_bin_suffix} -e test_get_type*
+}
 
 %files %{python_files}
 %license COPYING

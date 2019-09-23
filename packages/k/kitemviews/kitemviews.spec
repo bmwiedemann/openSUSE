@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5ItemViews5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kitemviews
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Set of item views extending the Qt model-view framework
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -41,8 +41,7 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
-# uncomment after 5.61
-# BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 %if %{with lang}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.6.0
@@ -109,8 +108,8 @@ hierarchical lists. Development files.
 %files devel
 %{_kf5_libdir}/libKF5ItemViews.so
 %{_kf5_libdir}/cmake/KF5ItemViews/
-# %dir %{_kf5_plugindir}/designer
-# %{_kf5_plugindir}/designer/kitemviews5widgets.so
+%dir %{_kf5_plugindir}/designer
+%{_kf5_plugindir}/designer/kitemviews5widgets.so
 %{_kf5_includedir}/
 %{_kf5_mkspecsdir}/qt_KItemViews.pri
 

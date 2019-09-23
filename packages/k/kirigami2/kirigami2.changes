@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:36:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Replace the custom overflow button with PrivateActionToolButton in ActionToolBar
+  * If a submenu action has an icon set, make sure to also display it
+  * [Separator] Match Breeze borders' color
+  * Add Kirigami ListSectionHeader component
+  * Fix context menu button for pages not showing up
+  * Fix PrivateActionToolButton with menu not clearing checked state properly
+  * Use QLatin1String + QString::remove operates on the same object, no need to reassign
+  * Fix supported OS attributes for api.kde.org
+  * remove references from the icon qrc to missing icons.
+  * allow to set custom icon for the left drawer handle
+  * Rework the visibleActions logic in SwipeListItem
+  * Allow usage of QQC2 actions on Kirigami components and now make K.Action based on QQC2.Action
+  * bump import
+  * Add handle icons
+  * Kirigami.Icon: Fix loading bigger images when source is a URL (kde#407409)
+  * Add icon used by Kirigami.AboutPage
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

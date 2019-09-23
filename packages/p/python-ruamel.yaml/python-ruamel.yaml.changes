@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 15:36:08 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace => with >= in BuildRequires
+
+-------------------------------------------------------------------
 Fri Sep  6 06:54:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.16.5

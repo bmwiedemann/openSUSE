@@ -621,4 +621,12 @@
 - Add package to SLE 12 SDK (FATE#318137, bnc#913229)</comment>
     <requestid>725049</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8c281b8a44e62361c74d9a0c581a185b</srcmd5>
+    <version>41.2.0</version>
+    <time>1569233894</time>
+    <user>dimstar_suse</user>
+    <comment>- Define LANG in %check to fix openSUSE/SLE 15 testsuite</comment>
+    <requestid>731303</requestid>
+  </revision>
 </revisionlist>

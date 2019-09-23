@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Pty5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpty
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Primitives to interface with pseudo terminal devices
 License:        LGPL-2.1-or-later
@@ -39,10 +39,10 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
-BuildRequires:  kcoreaddons-devel >= %{_tar_path}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{_tar_path}
 BuildRequires:  utempter-devel
+BuildRequires:  cmake(KF5CoreAddons) >= %{_tar_path}
+BuildRequires:  cmake(KF5I18n) >= %{_tar_path}
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 
@@ -68,7 +68,7 @@ Summary:        Development files for kpty, a pseudo terminal device interface
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kcoreaddons-devel >= %{_tar_path}
+Requires:       cmake(KF5CoreAddons) >= %{_tar_path}
 Requires:       cmake(Qt5Core) >= 5.6.0
 
 %description devel

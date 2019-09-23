@@ -329,4 +329,20 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>705207</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>405f0bd6bcf121cbddccc4cb3e2456b7</srcmd5>
+    <version>3.14.0</version>
+    <time>1569233889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.0:
+  * Fix PythonSpec detection of python3.10
+  * Fix regression failing to detect future and past py## factors
+  * Fix current_tox_py for pypy / pypy3
+  * Add support for minor versions with multiple digits
+  * Remove dependence on md5 hashing algorithm
+  * on venv cleanup: add explicit check for pypy venv to make it possible to recreate it 
+  * Fix isolated build double-requirement
+  * Replace pkg_resources with importlib_metadata for speed</comment>
+    <requestid>731289</requestid>
+  </revision>
 </revisionlist>

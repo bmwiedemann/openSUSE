@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docutils%{psuffix}
-Version:        0.14
+Version:        0.15.2
 Release:        0
 Summary:        Python Documentation Utilities
 License:        Python-2.0 AND BSD-2-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
@@ -34,11 +34,7 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
-%if %{with test}
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module roman}
-%endif
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,6 +45,11 @@ Recommends:     python-Pillow
 Recommends:     python-Pygments
 Recommends:     python-roman
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module roman}
+%endif
 %ifpython3
 Provides:       docutils = %{version}
 Obsoletes:      docutils < %{version}
@@ -75,13 +76,17 @@ sed -i -e "1d" "docutils/writers/xetex/__init__.py" "docutils/writers/_html_base
 %python_build
 
 # test3 is generated from test during build
+%if 0%{?have_python2} && ! 0%{?skip_python2}
 mv test test%{python2_bin_suffix}
+%endif
+%if 0%{?have_python3} && ! 0%{?skip_python3}
 mv test3 test%{python3_bin_suffix}
+%endif
 
 %install
 %if !%{with test}
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # To avoid conflicts with the rst2html4 package
 mv %{buildroot}%{_bindir}/rst2html4 %{buildroot}%{_bindir}/rst2html4-docutils

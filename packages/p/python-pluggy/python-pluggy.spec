@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pluggy%{psuffix}
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Plugin registration and hook calling mechanisms for Python
 License:        MIT

@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5XmlGui5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kxmlgui
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -36,21 +36,21 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  attica-qt5-devel >= %{_kf5_bugfix_version}
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kconfigwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kiconthemes-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kitemviews-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ktextwidgets-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwidgetsaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwindowsystem-devel >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Attica) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 # Now requires private headers
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  pkgconfig
@@ -59,6 +59,7 @@ BuildRequires:  cmake(Qt5DBus) >= 5.6.0
 BuildRequires:  cmake(Qt5Network) >= 5.6.0
 BuildRequires:  cmake(Qt5PrintSupport) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5Xml) >= 5.6.0
 BuildRequires:  pkgconfig(x11)
@@ -88,8 +89,8 @@ Summary:        Framework for managing menu and toolbar actions
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kconfig-devel >= %{_kf5_bugfix_version}
-Requires:       kconfigwidgets-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5DBus) >= 5.6.0
 Requires:       cmake(Qt5Widgets) >= 5.6.0
 Requires:       cmake(Qt5Xml) >= 5.6.0
@@ -142,5 +143,7 @@ description for example for integrating actions from plugins. Development files.
 %dir %{_kf5_includedir}/*/
 %{_kf5_includedir}/*/
 %{_kf5_mkspecsdir}/qt_KXmlGui.pri
+%dir %{_kf5_plugindir}/designer
+%{_kf5_plugindir}/designer/kxmlgui5widgets.so
 
 %changelog

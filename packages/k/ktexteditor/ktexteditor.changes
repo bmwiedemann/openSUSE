@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:37:07 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Allow to customize attributes for KSyntaxHighligting themes
+  * More port away from Qt's foreach all loops over method-local containers
+  * Port away from Qt's foreach all loops over rvalue container objects
+  * Port away from Qt's foreach all loops over method-local containers
+  * Fix for all themes: allow turn off attributes in XML highlighting files
+  * play in unit test with better searchText implementation
+  * fix build when using Qt 5.11
+  * simplify isAcceptableInput + allow all stuff for input methods
+  * simplify typeChars, no need for return code without filtering
+  * Mimic QInputControl::isAcceptableInput() when filtering typed characters (kde#396764)
+  * try to sanitize line endings on paste (kde#410951)
+  * Fix: allow turn off attributes in XML highlighting files
+  * improve word completion to use highlighting to detect word boundaries (kde#360340)
+  * More porting from QRegExp to QRegularExpression
+  * properly check if diff command can be started for swap file diffing (kde#389639)
+  * KTextEditor: Fix left border flicker when switching between documents
+  * Migrate some more QRegExps to QRegularExpression
+  * Add .clangd to .gitignore list
+  * fix vi mode unit test
+  * Allow 0 in line ranges in vim mode.
+  * Use CMake find_dependency instead of find_package in CMake config file template.
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:46 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

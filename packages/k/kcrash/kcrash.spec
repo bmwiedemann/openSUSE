@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Crash5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kcrash
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        An application crash handler
 License:        LGPL-2.1-or-later
@@ -40,10 +40,10 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kwindowsystem-devel >= %{_kf5_bugfix_version}
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.6.0

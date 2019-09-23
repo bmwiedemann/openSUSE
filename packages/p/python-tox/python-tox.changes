@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:06:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.14.0:
+  * Fix PythonSpec detection of python3.10
+  * Fix regression failing to detect future and past py## factors
+  * Fix current_tox_py for pypy / pypy3
+  * Add support for minor versions with multiple digits
+  * Remove dependence on md5 hashing algorithm
+  * on venv cleanup: add explicit check for pypy venv to make it possible to recreate it 
+  * Fix isolated build double-requirement
+  * Replace pkg_resources with importlib_metadata for speed
+
+-------------------------------------------------------------------
 Fri May 24 11:40:04 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.12.1:

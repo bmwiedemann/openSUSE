@@ -34,4 +34,13 @@
     <comment></comment>
     <requestid>701546</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1ac5bc6bed2306c81ed966cc36fa6f64</srcmd5>
+    <version>7.7.1</version>
+    <time>1569233949</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one test that relies on the number of errors found by
+  linters that differ based on the release we got</comment>
+    <requestid>731468</requestid>
+  </revision>
 </revisionlist>

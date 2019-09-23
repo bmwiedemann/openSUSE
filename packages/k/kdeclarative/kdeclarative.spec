@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Declarative5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdeclarative
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -39,18 +39,18 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kcoreaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kguiaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kiconthemes-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kio-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kpackage-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwidgetsaddons-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwindowsystem-devel >= %{_kf5_bugfix_version}
 BuildRequires:  libepoxy-devel
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Package) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Core) >= 5.6.0
 BuildRequires:  cmake(Qt5Gui) >= 5.6.0
 BuildRequires:  cmake(Qt5Qml) >= 5.6.0
@@ -108,11 +108,11 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name}-components = %{version}
 Requires:       extra-cmake-modules
-Requires:       kconfig-devel >= %{_kf5_bugfix_version}
-Requires:       kcoreaddons-devel >= %{_kf5_bugfix_version}
-Requires:       kpackage-devel >= %{_kf5_bugfix_version}
 Requires:       libKF5CalendarEvents5 = %{version}
 Requires:       libKF5QuickAddons5 = %{version}
+Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5Package) >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5Qml) >= 5.6.0
 
 %description devel

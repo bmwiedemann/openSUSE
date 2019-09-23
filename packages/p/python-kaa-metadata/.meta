@@ -5,4 +5,7 @@
     This module extracts metadata from media files.
   </description>
   <devel project="devel:languages:python" package="python-kaa-metadata"/>
+  <build>
+    <disable/>
+  </build>
 </package>

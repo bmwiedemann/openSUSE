@@ -26,13 +26,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 Name:           python-urllib3%{psuffix}
 Version:        1.25.3
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://urllib3.readthedocs.org/
+URL:            https://urllib3.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-%{version}.tar.gz
 # Wrapper for ssl to unbundle ssl_match_hostname
 Source1:        ssl_match_hostname_py3.py
@@ -41,17 +42,13 @@ Source1:        ssl_match_hostname_py3.py
 Patch0:         urllib3-ssl-default-context.patch
 # PATCH-FIX-UPSTREAM python-urllib3-recent-date.patch gh#shazow/urllib3#1303, boo#1074247 dimstar@opensuse.org -- Fix test suite, use correct date
 Patch1:         python-urllib3-recent-date.patch
-# for SSL module on older distros
-BuildRequires:  %{oldpython}
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module rfc3986}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-backports.ssl_match_hostname
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-ipaddress
 #!BuildIgnore:  python-requests
 Requires:       ca-certificates-mozilla
 Requires:       python-cryptography
@@ -60,6 +57,14 @@ Requires:       python-pyOpenSSL
 Requires:       python-rfc3986
 Requires:       python-six
 BuildArch:      noarch
+# for SSL module on older distros
+%if 0%{?suse_version} < 1500
+BuildRequires:  %{oldpython}
+%endif
+%if %{with python2}
+BuildRequires:  python-backports.ssl_match_hostname
+BuildRequires:  python-ipaddress
+%endif
 %ifpython2
 Requires:       python-backports.ssl_match_hostname
 %endif
@@ -121,6 +126,7 @@ $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/urlli
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/urllib3/
 }
 
+%if 0%{?have_python2} && ! 0%{?skip_python2}
 # Unbundle the Python 2 build
 rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/six.py*
 rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname/
@@ -134,6 +140,9 @@ ln -s %{python2_sitelib}/backports/ssl_match_hostname \
       %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname
 ln -s %{python2_sitelib}/rfc3986/ \
       %{buildroot}/%{python2_sitelib}/urllib3/packages/rfc3986
+%endif
+
+%if 0%{?have_python3} && ! 0%{?skip_python3}
 # Unbundle the Python 3 build
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/six.py*
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/six*
@@ -149,11 +158,12 @@ ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc \
       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
 ln -s %{python3_sitelib}/rfc3986/ \
       %{buildroot}/%{python3_sitelib}/urllib3/packages/rfc3986
+%endif
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
-%if ! %{with test}
+%if ! %{with test} && "%{python_flavor}" == "python2"
 %pre -n python2-urllib3
   SITELIB=%{python2_sitelib}
   CONFLICTED="${SITELIB}/urllib3/packages/ssl_match_hostname"

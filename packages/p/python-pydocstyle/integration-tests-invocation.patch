@@ -1,44 +1,39 @@
---- pydocstyle-3.0.0-orig/src/tests/test_integration.py	2018-10-14 17:54:04.000000000 +0700
-+++ pydocstyle-3.0.0/src/tests/test_integration.py	2019-02-22 03:23:27.301363601 +0700
-@@ -80,8 +80,9 @@
+From 9379ef5b73a8a07a6e8c95185db33b849a9d015f Mon Sep 17 00:00:00 2001
+From: John Vandenberg <jayvdb@gmail.com>
+Date: Sun, 15 Sep 2019 14:13:44 +0700
+Subject: [PATCH] test_integration: Use sys.executable
+
+Literal `python` is often `python2` and may not be present at all.
+
+Closes https://github.com/PyCQA/pydocstyle/issues/177
+---
+ src/tests/test_integration.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/tests/test_integration.py b/src/tests/test_integration.py
+index d4ee72b..1f9507f 100644
+--- a/src/tests/test_integration.py
++++ b/src/tests/test_integration.py
+@@ -80,9 +80,10 @@ def invoke(self, args="", target=None):
          run_target = self.tempdir if target is None else \
              os.path.join(self.tempdir, target)
  
 -        cmd = shlex.split("{} {} {}"
 -                          .format(self.script_name, run_target, args),
-+        cmd = shlex.split("{} -m {} {} {}"
-+                          .format(sys.executable, self.script_name,
-+                                  run_target, args),
-                           posix=False)
+-                          posix=False)
++        cmd = shlex.split(
++            ('"{}" -m {} {} {}' if sys.platform == "nt" else '{} -m {} {} {}')
++            .format(sys.executable, self.script_name, run_target, args),
++            posix=False)
          p = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
-@@ -102,19 +103,6 @@
-         pass
- 
- 
--@pytest.yield_fixture(scope="module")
--def install_package(request):
--    """Install the package in development mode for the tests.
--
--    This is so we can run the integration tests on the installed console
--    script.
--    """
--    cwd = os.path.join(os.path.dirname(__file__), '..', '..')
--    subprocess.check_call(shlex.split("pip install -e ."), cwd=cwd)
--    yield
--    subprocess.check_call(shlex.split("pip uninstall -y pydocstyle"), cwd=cwd)
--
--
- @pytest.yield_fixture(scope="function")
- def env(request):
-     """Add a testing environment to a test method."""
-@@ -122,9 +110,6 @@
-         yield test_env
- 
- 
--pytestmark = pytest.mark.usefixtures("install_package")
--
--
- def parse_errors(err):
-     """Parse `err` to a dictionary of {filename: error_codes}.
- 
+                              stderr=subprocess.PIPE)
+@@ -203,7 +204,7 @@ def test_run_as_named_module():
+         return
+     # Add --match='' so that no files are actually checked (to make sure that
+     # the return code is 0 and to reduce execution time).
+-    cmd = shlex.split("python -m pydocstyle --match=''")
++    cmd = shlex.split("\"{}\" -m pydocstyle --match=''".format(sys.executable))
+     p = subprocess.Popen(cmd,
+                          stdout=subprocess.PIPE,
+                          stderr=subprocess.PIPE)

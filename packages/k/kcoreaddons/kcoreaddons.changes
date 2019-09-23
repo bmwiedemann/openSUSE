@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:36:35 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * autotests: split up kprocesstest to fix compilation with Qt 5.14
+  * Use QLatin1String here
+  * Q_UNUSED doesn't need a ; after it.
+  * [KProcessList] Split command line and process name
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

@@ -59,9 +59,15 @@ Limitations:
 
 %prep
 %setup -q -n EasyProcess-%{version}
+# https://github.com/ponty/EasyProcess/issues/18
+sed -i "s/from easyprocess import EasyProcess/from easyprocess import EasyProcess;import sys/" easyprocess/examples/*.py
+sed -i "s/'python /sys.executable + ' /" easyprocess/examples/*.py
+sed -i "s/'python'/sys.executable/" easyprocess/examples/*.py
+
 # requires pyvirtualdisplay which is mostly dead package
 rm -f tests/coverage/fast/test_deadlock.py
 2to3 -w easyprocess/examples/log.py
+
 
 %build
 %python_build

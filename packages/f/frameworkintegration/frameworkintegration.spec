@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Style5
-%define _tar_path 5.61
+%define _tar_path 5.62
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           frameworkintegration
-Version:        5.61.0
+Version:        5.62.0
 Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        LGPL-2.1-or-later
@@ -40,17 +40,17 @@ Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
-BuildRequires:  kconfig-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kconfigwidgets-devel >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kiconthemes-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kio-devel >= %{_kf5_bugfix_version}
-BuildRequires:  knotifications-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kpackage-devel >= %{_kf5_bugfix_version}
-BuildRequires:  kwidgetsaddons-devel >= %{_kf5_bugfix_version}
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Package) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5DBus) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.6.0
@@ -100,8 +100,8 @@ Summary:        Plugins responsible for better integration of Qt applications in
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kconfigwidgets-devel >= %{_kf5_bugfix_version}
-Requires:       kiconthemes-devel >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
+Requires:       cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
 
 %description devel
 Framework Integration is a set of plugins responsible for better

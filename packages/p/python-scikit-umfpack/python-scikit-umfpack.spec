@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-umfpack
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@ Release:        0
 Summary:        Python interface to UMFPACK sparse direct solver
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/scikit-umfpack/scikit-umfpack
+URL:            https://github.com/scikit-umfpack/scikit-umfpack
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-umfpack/scikit-umfpack-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.14.3}
-BuildRequires:  %{python_module scikits.example}
 BuildRequires:  %{python_module scipy >= 1.0.0rc1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -38,18 +37,16 @@ BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  suitesparse-devel
 BuildRequires:  swig
+Requires:       python-numpy >= 1.14.3
+Requires:       python-scipy >= 1.0.0rc1
+ExcludeArch:    aarch64 ppc64 ppc64le
 # SECTION test requirements
 BuildRequires:  %{python_module nose}
 # /SECTION
-ExcludeArch:    aarch64 ppc64 ppc64le
-Requires:       python-numpy >= 1.14.3
-Requires:       python-scikits.example
-Requires:       python-scipy >= 1.0.0rc1
 %ifpython2
 Provides:       %{oldpython}-scikits-umfpack = %{version}
 Obsoletes:      %{oldpython}-scikits-umfpack < %{version}
 %endif
-
 %python_subpackages
 
 %description
@@ -58,7 +55,7 @@ The scikit-umfpack package provides wrapper of UMFPACK sparse direct solver to S
 %prep
 %setup -q -n scikit-umfpack-%{version}
 sed -i -e '/^#!\//, 1d' scikits/umfpack/setup.py
-sed -i -e '/^#!\//, 1d' scikits/umfpack/tests/try_umfpack.py 
+sed -i -e '/^#!\//, 1d' scikits/umfpack/tests/try_umfpack.py
 
 %build
 export LANG=en_US.UTF-8

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:36:27 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Add Term::Type::files() and Term::Type::directories() to filter only directories or excluding them
+  * Add @since 5.62 for newly added setters
+  * Add proper logging using ECMQtDeclareLoggingCategory
+  * Add setter to Type, Activity, Agent and UrlFilter query fields
+  * Use special values constants in terms.cpp
+  * Allow date range filtering of resource events using Date Term
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:05 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-webcolors
-Version:        1.9.1
+Version:        1.10
 Release:        0
 Summary:        Support for color names and value formats defined by the HTML
 License:        BSD-3-Clause

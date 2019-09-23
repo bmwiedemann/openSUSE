@@ -17,19 +17,33 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-virtualenv
-Version:        16.1.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-virtualenv%{psuffix}
+Version:        16.7.5
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
+%if %{with test}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pypiserver}
+BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module virtualenv >= %{version}}
+%endif
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -65,14 +79,21 @@ libraries either).
 %python_build
 
 %install
+%if !%{with test}
 %python_install
+%python_expand fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
+%endif
 
 %check
-export PYTHONPATH=src
-# test broken upstream https://github.com/pypa/virtualenv/issues/530
-%python_expand py.test-%{$python_bin_suffix} -k 'not test_always_copy_option' -vv
+%if %{with test}
+# test_bootstrap is tied to python2 command calls, skip it
+# test_always_copy_option does not handle system install dirs in /usr/lib64
+# test_wheel_invocation_dash_p or test_use_from_wheel or test_wheel_contains or test_wheel_basic_invocation; online tests
+%pytest -k 'not (test_always_copy_option or test_bootstrap or test_use_from_wheel or test_wheel_contains or test_wheel_basic_invocation or test_wheel_invocation_dash_p)'
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative virtualenv
 
@@ -85,5 +106,6 @@ export PYTHONPATH=src
 %{python_sitelib}/virtualenv*
 %python_alternative %{_bindir}/virtualenv
 %pycache_only %{python_sitelib}/__pycache__
+%endif
 
 %changelog

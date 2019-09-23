@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml/rua
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ruamel.yaml.clib => 0.1.2
+Requires:       python-ruamel.yaml.clib >= 0.1.2
 BuildArch:      noarch
 %ifpython2
 Requires:       python-ruamel.ordereddict

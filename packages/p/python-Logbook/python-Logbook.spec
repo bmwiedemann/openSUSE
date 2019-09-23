@@ -60,11 +60,10 @@ sed -i 's/\r$//' LICENSE
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-cython-%{python2_version} logbook/_speedups.pyx
-%python2_build
+%{python_expand cython-%{$python_version} logbook/_speedups.pyx
+%{$python_build}
 rm logbook/_speedups.c
-cython-%{python3_version} logbook/_speedups.pyx
-%python3_build
+}
 
 %install
 %python_install

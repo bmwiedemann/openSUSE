@@ -1185,4 +1185,14 @@
   * Just security fixes</comment>
     <requestid>720190</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6ad29edd405ce02b9f9fe31a3503c605</srcmd5>
+    <version>1.11.24</version>
+    <time>1569233872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.24:
+  * Fixed crash of KeyTransform() for JSONField and HStoreField when using
+    on expressions with params (#30672).</comment>
+    <requestid>731238</requestid>
+  </revision>
 </revisionlist>

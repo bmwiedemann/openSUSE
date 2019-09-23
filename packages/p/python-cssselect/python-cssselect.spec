@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssselect
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-cssselect
-Version:        1.0.3
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-cssselect%{psuffix}
+Version:        1.1.0
 Release:        0
 Summary:        CSS3 selectors for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://packages.python.org/cssselect/
-Source:         https://pypi.io/packages/source/c/cssselect/cssselect-%{version}.tar.gz
+URL:            https://github.com/scrapy/cssselect
+Source:         https://github.com/scrapy/cssselect/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
+%if %{with test}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -47,11 +58,21 @@ extracted as a stand-alone project.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
-%files %python_files
-%defattr(-,root,root,-)
+%check
+%if %{with test}
+%pytest
+%endif
+
+%if !%{with test}
+%files %{python_files}
 %{python_sitelib}/*
-%doc README.rst LICENSE CHANGES AUTHORS
+%license LICENSE
+%doc README.rst CHANGES AUTHORS
+%endif
 
 %changelog

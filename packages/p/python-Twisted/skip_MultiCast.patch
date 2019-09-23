@@ -1,7 +1,9 @@
---- a/src/twisted/test/test_udp.py
-+++ b/src/twisted/test/test_udp.py
-@@ -503,6 +503,7 @@ class ReactorShutdownInteractionTests(un
- class MulticastTests(unittest.TestCase):
+Index: Twisted-19.7.0/src/twisted/test/test_udp.py
+===================================================================
+--- Twisted-19.7.0.orig/src/twisted/test/test_udp.py
++++ Twisted-19.7.0/src/twisted/test/test_udp.py
+@@ -514,6 +514,7 @@ class MulticastTests(unittest.TestCase):
+         skip = "Does not work on Azure Pipelines"
  
      def setUp(self):
 +        raise unittest.SkipTest("Multicast networking doesn't work with OBS")

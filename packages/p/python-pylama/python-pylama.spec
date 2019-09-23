@@ -77,7 +77,8 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-%python_expand py.test-%{$python_bin_suffix} -v tests/
+# test_ignore_select - relies on number of errors reported by pyflakes/etc.
+%pytest -k 'not test_ignore_select'
 
 %post
 %python_install_alternative pylama

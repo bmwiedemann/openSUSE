@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  7 20:36:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Fix memory leak in KConfigWatcher
+  * Add a logging category for logs warnings
+  * Disable KCONFIG_USE_DBUS on Android
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:12 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

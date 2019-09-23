@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Sep  7 21:01:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Fix *-loading-symbolic icon symlinks
+  * Add new activities and virtual desktops icons
+  * Make small recent documents icons look like documents and improve clock emblems
+  * Create new "Recent folders" icon (kde#411635)
+  * Add "preferences-desktop-navigation" icon (kde#402910)
+  * Add 22px dialog-scripts, change script actions/places icons to match it
+  * Improve "user-trash" icon
+  * Use empty/filled style for monochrome empty/full trash
+  * Make notification icons use outline style
+  * Make user-trash icons look like trashcans
+  * Add breeze icons for ROOT cern files
+  * Remove applets/22/computer (kde#410854)
+  * Add view-barcode-qr icons
+  * Krita has split from Calligra and now uses Krita name instead of calligrakrita
+  * Add battery-ups icons
+  * Make "monitor" a link to "computer" icon
+  * Add FictionBook 2 icons
+  * Add icon for kuiviewer, needs updating -> bug 407527
+  * Symlink "port" to "anchor", which displays more appropriate iconography
+  * Change radio to device icon, add more sizes
+  * Make `pin` icon point to an icon that looks like a pin, not something unrelated
+  * Fix missing digit and pixel-perfect alignment of depth action icons (kde#406502)
+  * Make 16px folder-activites look more like larger sizes
+  * add icon for clazy, should be remade in svg
+  * add latte-dock icon from latte dock repo for kde.org/applications
+  * icon for kdesrc-build used by kde.org/applications to be redrawn.
+  * Rename media-show-active-track-amarok to media-track-show-active
+
+-------------------------------------------------------------------
 Wed Aug  7 17:51:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.61.0

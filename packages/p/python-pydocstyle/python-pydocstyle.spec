@@ -17,15 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pydocstyle
-Version:        3.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Python docstring style checker
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/PyCQA/pydocstyle/
+URL:            https://github.com/PyCQA/pydocstyle/
 Source:         https://github.com/PyCQA/pydocstyle/archive/%{version}.tar.gz#/pydocstyle-%{version}.tar.gz
 # Tests invoke pip and pycodestyle directly, when they should use sys.executable.
+# https://github.com/PyCQA/pydocstyle/pull/403
 Patch0:         integration-tests-invocation.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pathlib}
@@ -37,17 +39,12 @@ BuildRequires:  %{python_module six > 1.10.0}
 BuildRequires:  %{python_module snowballstemmer}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  python-configparser
 BuildRequires:  python-rpm-macros
 Requires:       python-six > 1.10.0
 Requires:       python-snowballstemmer
-%ifpython2
-Requires:       python-configparser
-%endif
 Provides:       python-pep257 = %{version}
 Obsoletes:      python-pep257 < %{version}
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -66,6 +63,9 @@ conventions.
 %patch0 -p1
 dos2unix README.rst
 
+# Disable pip fixture
+sed -i /^pytestmark/d src/tests/test_integration.py
+
 %build
 %python_build
 
@@ -74,12 +74,12 @@ dos2unix README.rst
 %{python_expand  #
 sed -i -e '/^#! \//, 1d' %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
 dos2unix %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
+%fdupes %{buildroot}%{$python_sitelib}
 }
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONPATH=$(pwd)/src
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst

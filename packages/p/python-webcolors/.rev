@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>709953</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c8a790fccbef65fd7cecc6eb3835611</srcmd5>
+    <version>1.10</version>
+    <time>1569233877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10:
+ *  Similar to the change in version 1.9 which normalized conversions to named
+    colors</comment>
+    <requestid>731241</requestid>
+  </revision>
 </revisionlist>

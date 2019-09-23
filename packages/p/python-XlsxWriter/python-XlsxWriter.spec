@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 Url:            https://xlsxwriter.readthedocs.org/
 Source:         https://github.com/jmcnamara/XlsxWriter/archive/RELEASE_%{version}.tar.gz#/XlsxWriter-RELEASE_%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -72,7 +73,7 @@ supports features such as formatting and many more.
 %python_uninstall_alternative vba_extract
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc Changes README.rst

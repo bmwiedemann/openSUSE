@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:10:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11.24:
+  * Fixed crash of KeyTransform() for JSONField and HStoreField when using
+    on expressions with params (#30672).
+
+-------------------------------------------------------------------
 Thu Aug  1 11:15:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.11.23:

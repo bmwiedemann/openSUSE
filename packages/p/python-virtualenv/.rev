@@ -351,4 +351,41 @@
 - Add requires: python-setuptools (bsc#1127328)</comment>
     <requestid>680531</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0f9b265e07ae141a59eee84854a9f08a</srcmd5>
+    <version>16.7.5</version>
+    <time>1569233973</time>
+    <user>dimstar_suse</user>
+    <comment>- Use multibuild to avoid cycles with pytest
+
+- Update to 16.7.5:
+  * fix powershell activation when sourced (#1398)
+  * fix regression - sh activation script not working under sh (only bash) (#1396)
+  * activate.ps1 syntax and style updated to follow PSStyleAnalyzer rules (#1371)
+  * Allow creating virtual environments for 3.xy. (#1385)
+  * Report error when running activate scripts directly
+  * Extend the LICENSE search paths list by lib64/pythonX.Y to support Linux vendors who install their Python to /usr/lib64/pythonX.Y
+  * Raise an error if the target path contains the operating systems path separator (using this would break our activation scripts)
+  * Drop Jython support
+  * Add tests covering prompt manipulation during activation/deactivation, and harmonize behavior of all supported shells
+
+- Update to 16.4.3:
+  * Revert the symlink fix, causing debian packaging issues. (#1390)
+  * Fix license() builtin by copying the LICENSE file into the virtualenv - by asottile. (#1317)
+  * fixes the scenario where the python base install is symlinked with relative symlinks (#490)
+  * Use importlib over imp in virtualenv.py for python &gt;= 3.4 - by Anthony Sottile (#1293)
+  * Copy or link PyPy header files instead of include directory itself (#1302)
+  * Allow virtualenv creation with older pip not having config command correspondingly disabling configuration related features (such as pip cert setting) in this case. (#1303)
+  * Use importlib over deprecated imp` in ``distutils/__init__.py for python 3 - by Anthony Sottile (#955)
+  * Preserve cert option defined in pip.conf or environment variable. (#1273)
+  * fixed a ResourceWarning: unclosed file in call_subprocess() - by Mickaël Schoentgen (#1277)
+  * pre-import some built-in modules in site.py on PyPy according to PyPy's site.py - by microdog (#1281)
+  * Copy files from sys.exec_prefix only if it is really different path than used prefix, bugfix for #1270 (#1282)
+  * copyfile handles relative symlinks and symlinks to symlinks, avoiding problems when Python was installed using stow or homebrew. (#268)
+  * Fix preserving of original path when using fish and a subshell. (#904)
+  * Drop the source layout of the project, going back to how the source was laid out before 16.1.0. (#1241)
+  * Fix bootstrap script generation broken with 16.0.0. Support now both CPython, pypy, jython. (#1244)
+  * lib64 symlink is again relative (as was with &lt; 16.1.0). (#1248)</comment>
+    <requestid>731579</requestid>
+  </revision>
 </revisionlist>
