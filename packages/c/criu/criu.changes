@@ -1,0 +1,1154 @@
+-------------------------------------------------------------------
+Wed Sep  4 19:27:24 UTC 2019 - antoine.belvire@opensuse.org
+
+- Fix build on Tumbleweed: Add -ffat-lto-objects to lto cflags.
+
+-------------------------------------------------------------------
+Mon May  6 20:13:44 CEST 2019 - tiwai@suse.de
+
+- Update to criu 3.12:
+  New features:
+  * build CRIU with Android NDK
+  * C/R of IP RAW sockets
+  * lsm: dump and restore any SELinux process label
+  * support restoring ghost files on readonly mounts
+  Bugfixes:
+  * Do not lock network if running in the host network namespace
+  * Fix RPC configuration file handling
+  * util: don't leak file descriprots to third-party tools
+  * small fixes here and there
+  Improvements:
+  * travis: switch to the Ubuntu Xenial
+  * travis-ci: Enable ia32 tests
+  * Many improvements and bug fixes in the libcriu
+  * Changes in the API and ABI (SONAME increased from 1 to 2)
+- Updated to libcriu2 subpackage to follow SONAME 2
+- Dropped obsoleted patch:
+  criu-asciidoctor.patch
+
+-------------------------------------------------------------------
+Mon Nov 19 17:46:08 CET 2018 - tiwai@suse.de
+
+- Update to criu 3.10:
+  New features:
+  * Support Python3 in ZDTM and CRIT
+  * Keep names for UNIX sockets, that are unlinked from the FS
+  * IPVv6 support for page server
+  * Set page server socket fd via CLI
+  * Large pages support for aarch64/ppc64
+  * C/R of Per-thread seccomp chains
+  Bugfixes:
+  * Failed non-container restore could kill random task on the host
+  * Failure to dump namespaces was erroneously ignored
+  * CRIT didn't show cpuinfo image file
+  * Tasks that got PID-reuse couldn't be dumped iteratively because
+    previous images were missing
+
+- Update to criu 3.11:
+  New features:
+  * cpuinfo: Detect compact frames and handle noxsaves
+  * Add support for configuration files
+  * Add support for external net namespaces
+  * Punch holes in input files when restoring anonymous non-shared
+    memory ( --auto-dedup )
+  * C/R of
+    + epoll: Add support for duped targets
+    + tun: Add support for multiple net ns
+    + x86: Support extendable fpu frames
+  Bugfixes:
+  * mount: Better handling of mount points propagation
+  * nmk: Make collect-deps to be more precise about targets
+  * lazy-pages: Don't mark current stack page as lazy
+  * x86: CPU -- Rework feature testing
+  * files: Fix O(n^2) restore in terms of the number of fds
+  * fdstore: Unlimit fdstore queue on start
+  * mount: Fix regression where open_mountpoint failed on readonly fs
+  * page server: Handle partial splicing
+  * ... lots of small fixes here and there
+  Improvements:
+  * Remove all magic of service descriptors when it isn't required
+
+- Switch to python3
+
+- Use asciidoctor instead of asciidoc for formatting manuals:
+  criu-asciidoctor.patch
+
+-------------------------------------------------------------------
+Mon May 28 21:15:10 UTC 2018 - avindra@opensuse.org
+
+- update to criu 3.9:
+  New features
+    - C/R of
+      + Tun-Tap devices in sub-netns
+      + File descriptors which were opened with O_TMPFILE
+  Improvements
+    - Restore of inotify watchers
+    - Restore unix sockets in proper mount namespaces
+    - Print CRIU and kernel version also in RPC mode
+  Bugfixes
+    - Random memory corruptions during lazy restore
+    - Workaround the iptables issue
+    - Don't use standard descriptors when tar is running to dump
+      tmpfs mounts
+    - Fail dump if dump_one_file() fails
+    - Fill kerndat with zero-s before reading it from cache
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr  5 12:30:17 CEST 2018 - tiwai@suse.de
+
+- update to criu 3.8.1: a bug-fix release
+  FDstore was initialized twice (re-initialized) causing e.g.
+  --shell-job restore to fail 
+
+-------------------------------------------------------------------
+Tue Mar 20 22:50:51 CET 2018 - tiwai@suse.de
+
+- Add python-devel to BuildReq explicitly, as a preparation for
+  fallback to asciidoctor (bsc#1075764)
+
+-------------------------------------------------------------------
+Tue Mar 13 16:21:20 UTC 2018 - avindra@opensuse.org
+
+- update to criu 3.8:
+  New features
+  * C/R of
+    - Multiple network namespaces
+    - Overmounted tmpfs mounts
+    - Unix sockets and epoll descriptors in SCM messages
+  Improvements
+  * Rework service descriptors not to cause fdtable enormous grows
+  Bugfixes
+  * FP state wasn't reported on Skylake due to a kernel bug
+  * gcc 8 warning fixes
+  * Resource leaked on error paths
+  * Attributes of sit devices with value 0 were not saved into
+    images (and were restored into default values)
+  * Tasks with pgid of a zombie hung the resture
+  * Ghost files on RO bind-mounts of an RW mount couldn't be
+    restored
+  * Random memory corruptions during lazy restore
+- cleanup with spec-cleaner
+- switch to https urls
+- list binaries and man pages explicitly
+- remove rest of static libs to fix rpm lint errors
+
+-------------------------------------------------------------------
+Fri Dec 22 23:57:01 UTC 2017 - avindra@opensuse.org
+
+- update to criu 3.7:
+  New features
+  * Pipes usage statistics
+  * Run page server as non-daemon via RPC
+  * C/R of
+    - SO_REUSEPORT option
+    - IPv4-mapped inet sockets
+    - Net_prio CGroups
+    - Overmounted shared mountpoints
+    - Non-broken and breaking leases
+  Improvements
+  * Show criu and kernel versions in logs
+  * CRIT decodes socket families, protocols and types
+  * Much less pipes is needed for pre-dump, which is especially
+    useful for big mem migration
+  Bugfixes
+  * Files in /proc/pid/map_file could be opened by non-exiting
+    name (with 0x prefix) and it was fixed in kernel
+  * CRIU log levels were used to configure logging for libsoccr
+    thus breaking its logs
+  * Overflow in various IDs caused bad image names
+  * Compat (32bit) syscalls lost signedness in compel
+  * Corked sockets lost cork flag
+  * Preadv() syscall was declared with error which resulted in
+    dump errors on 32-bit processors
+  * Musl compilation failed
+  * Ghost files in / dump failed
+  * Crash when releasing context for ghost files, due to free()-ing
+    shmalloc()-ed area
+  * Lazy restore could receive partial page and crashed
+  * Erroneous closing of lazy pages connection caused restore to
+    hang
+  * Lazy memory fetch restore could start before tasks are restored
+- Remove 0001-images.py-remove-shebang.patch
+  * upstreamed in 8e45ce4905d186abafb7c20abb3b00207fefdb53
+
+-------------------------------------------------------------------
+Sun Nov 12 01:05:43 UTC 2017 - aavindraa@gmail.com
+
+- add 0001-images.py-remove-shebang.patch
+  * fixes a lint warning about a non-executable python file being
+    executable due to a superfluous shebang
+  * upstream: https://lists.openvz.org/pipermail/criu/2017-November/039907.html
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Nov  4 22:41:24 UTC 2017 - aavindraa@gmail.com
+
+- update to criu 3.6:
+  New features
+  * C/R for files (except for unix sockets, ttys and epolls) sent
+    over unix sockets
+  * C/R for threads with different creds
+  * Ipv6 over ipv4 tunnel (SIT device)
+  Bugfixes
+  * Some s390x registers were not restored by native sigrestore way
+  * Overflow when parsing autofs info from /proc file
+  * Dumps of anon shared memory with sysvipc one raced with each
+    other clashing and corrupting image file names
+  * The "dumpable" flag was not restore on shmem regions
+  * Trash bits leaked into image when dumping fsnotify on some
+    kernels
+  * Lock/unlock of iptables from different criu processes raced with
+    each other
+  * Closed TCP connection with non-empty send queue blocked the dump
+  * When --empty-ns for netns was set on dump only, the restore
+    failed (Docker case)
+- includes changes from 3.5:
+  see https://criu.org/Download/criu/3.5 for details
+
+-------------------------------------------------------------------
+Tue Aug 22 17:21:54 CEST 2017 - tiwai@suse.de
+
+- update to criu 3.4:
+  New features:
+  * Support for s390x architecture
+  Improvements:
+  * Unexpected death of restored tasks is reported with more
+    details in logs
+  * Merged many images containing info about files into one big
+    files.img
+  * When helper utility fails (ip, iptables, tar) its name is
+    printed in logs
+  Bugfixes:
+  * Compilation failed on newer glibcs (ucontext_t)
+  * Dying helper task could deadlock the restore process
+  * Install-related makefile variables weren't configurable for
+    distro build
+  * SIT (ipv6-to-v4 tunnel) presence on host blocked dump of any
+    containers
+  * Potential NULL dereference when dumping net namespace
+  * Dump via page server might not work across different criu
+    versions
+  * Failure to restore a subtask could be ignored by the restore
+    command
+  * EOF on page-server socket wasn't handled
+- Dropped obsoleted patch:
+  criu-correct-ppc64-AT_VECTOR_SIZE_ARCH.patch
+- Add s390x to exclusivearch
+
+-------------------------------------------------------------------
+Wed Jul 19 11:16:42 UTC 2017 - bwiedemann@suse.com
+
+- update to criu 3.3
+  * Add --tcp-close option to help migration of Docker containers
+  * Allow to override build time to fix build-compare (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Jun 30 11:33:54 CEST 2017 - tiwai@suse.de
+
+- update to criu 3.2.1: bug fix release,
+  * Restoring a stack fails on recent kernels due to kernel changes
+  * Restoring on a host with LSM profiles failed
+
+-------------------------------------------------------------------
+Tue Jun 20 12:26:00 CEST 2017 - tiwai@suse.de
+
+- update to criu 3.1:
+  New features:
+  * Each boolean option now has the --no-$option pair
+  * RSS explorer in CRIT
+  * Multiple plugins in compel
+  * Run-time check of 32-mmap BUG on x86
+  * C/R of 32-bit futex robust list on x86
+  Optimizations/improvements:
+  * Start time is improved significantly with kerndat cache
+  * Sigaction image is merged into Core
+  * Unneeded stages are skipped during restore
+  * Restore w/o namespaces uses host /proc
+  * Restore w/o namespaces doesn't parse host mounts (not needed)
+  * Single-threaded tasks do not parse /proc/pid/task/ in vain
+  * BFD engine is used for more /proc files
+  * More verbosity in libsoccr
+  * Fsnotify dump w/o namespaces doesn't walk mounts tree
+  Bugfixes:
+  * Python bindings left zombie in self-dump mode
+  * The last_pid sys-control was reset by restore
+  * Threads caps were compared with mistake
+  * make install put crit/pycriu to wrong place if DESTDIR was not set
+  * Fsnotifies C/R w/o namespaces restored with errors
+  * Inherited control terminal restore was failed (but dump succeeded)
+
+- update to criu 3.2:
+  Optimizations/improvements:
+  * Invisible files restore is de-serialized
+  * VMAs restore performance is improved significantly
+   - Mappings of the same file re-use the descriptor, not re-open it
+     every time
+   - Not-COW-ed mappings are restored in-place and are not mremmap()ed
+   - Empty RO mappings are mmap()ed as such and thus not re-mprotect()ed
+     at the end
+  * More verbosity in case TCP locking fails (#292)
+  * More verbosity in case VDSO magic mismatch
+  * Restore or legacy epoll target descriptors and fsnotify marks is
+    unified with common case
+  Bugfixes:
+  * Restoring fanotify marks from old images (<1.3) dropped the mark
+  * Binfmt_misc mount could be mounted into wrong place
+  * Compilation failed with gcc 6.3.0 (#315)
+  * Waiting helpers could race with sigchild handler and would result
+    in restore failure
+  * Missing VVAR page in 32bit tasks wasn't skipped and resulted in
+    restore failure
+  * After restore consumption of files is increased (was fixed as
+    side effect of mmap optimization)
+  Deprecation/Removal:
+  * Deprecated separate images for fsnotify marks
+
+- Fix the installation of python stuff:
+  criu-py-install-fix.diff
+- Fix the build for ppc64:
+  criu-correct-ppc64-AT_VECTOR_SIZE_ARCH.patch
+
+-------------------------------------------------------------------
+Mon Apr 24 22:31:21 CEST 2017 - tiwai@suse.de
+
+- update to criu 3.0:
+  New features:
+  * Compel library
+  * Support for x86 32-bit arch
+  * Version check via RPC
+  * ASAN support
+  * Force VDSO trampolines via fault injection
+  * C/R of shutdown-ed UDP sockets
+  * C/R of bind-mounts made from external mounts
+  Optimizations/improvements:
+  * SysVIPC shmem segments are now dumped as any other shmem
+    (taking holes into account and sitting in common memory dumps)
+  * CRIT show decodes socket's states and types and task's states
+    into strings
+  * CRIT show prints unix sockets names in more human-readable form
+  Bugfixes:
+  * Unix sockets' names appeared in logs with mistakes
+  * Contents of SysVIPC shmem segments was dumped twice
+  * Dumping of any memory segment more than 4Gigs failed
+  * Migration of unaligned SysvSHM segment on Armv7 failed
+  Deprecation/removal:
+  * Exec action is removed, use compel instead
+- Create libcompel1 sub-package
+
+-------------------------------------------------------------------
+Fri Mar 31 14:49:05 CEST 2017 - tiwai@suse.de
+
+- update to criu 2.12.1:
+  Fixes:
+  * Content for external bind mounts was erroneously dumped, which
+    could lead to dump failures or huuuge images
+  * Unneeded collection of host mounts on restore could cause
+    restore to fail
+
+-------------------------------------------------------------------
+Tue Mar 21 12:06:28 CET 2017 - tiwai@suse.de
+
+- update to criu 2.12:
+  New features:
+  * C/R of external TTYs (for Docker C/R)
+  Optimizations/improvements:
+  * Sanitized the way the -v works
+  Fixes:
+  * Checking features via RPC crashed
+  * Resting pipes in user-namespaces could fail on modern kernels
+  * Shutdown state for UNIX sockets could be lost on restore
+  * Dump of huge (over 2Gb) SysV shmem segments didn't work
+
+-------------------------------------------------------------------
+Tue Feb 28 15:35:27 CET 2017 - tiwai@suse.de
+
+- Update to criu 2.11:
+  New features:
+  * Added "pre-resume" to action scripts
+  * New --status-fd option for better control of page server
+  * C/R OFD file locks, RO root mount for mount namespaces
+  Optimizations/improvements:
+  * More strict checks for extra CLI options
+  * Report errors when probing locks
+  * Restorer logs now contain timestamps
+  Fixes:
+  * Regression: v2.10 was broken on ARM
+  * Use-after-free when restoring ghost directory
+  * Array out-of-bound access when restoring VETH device
+  * Page server exit code could be screwed up
+  * Clang over-optimized string.h routines resulting in random
+    crashes
+  * Parasite failed to send FDs via socket on Alpine Linux
+  * Restore of huge file tables could get stuck
+  * Restore of epoll in epoll could fail
+  * Errno value could be lost when reporting failure to restore
+    invisible files
+  * Dump of sched params didn't work on Alpine
+  * Restore of huge memory dumps (over 2G) failed
+  * Installation guessed /lib vs /lib64 with errors
+  * Migration between xsave and noxsave didn't work for wrong cpu
+    feature being checked
+- Update to criu 2.11.1:
+  Fixes:
+  * Page server start via RPC was broken
+  * Fedora build didn't work
+  * Ppc64LE restorer switch crashed
+
+-------------------------------------------------------------------
+Wed Jan 25 07:52:51 CET 2017 - tiwai@suse.de
+
+- Update to criu 2.10:
+  New features:
+  * C/R of SOCK_PACKET sockets
+  * Libsoccr -- library for C/R of TCP sockets
+  Optimizations/improvements:
+  * Logs cleaned up (removed bunch of useless, fixed '\n' in
+    perrors)
+  * Action scripts errors are printed in logs
+  * Removed several iovec-s copying over the pagemap code
+  * Restore degraded linearly on Xen guests. Breakpoints disabled
+    until solution
+  Fixes:
+  * Py bindings fault on restore error delivery
+  * Fd leaked on file restore error path
+  * Fd leaked when restoring invisible files (gets closed with criu
+    exit though)
+  * Link remap restore could fail on kernels 4.8 and higher
+  * Impossible to restore after restore error with link remap file
+    in images
+  * When going daemon a descriptor could be leaked
+  * Custom setting of mmap_min_addr could make restore to fail
+  * Sending pages over UNIX socket could race and fail with EAGAIN
+  * Error getting ID of /proc/pid/ns/foo link not propagated and
+    could result in bogus NS ID generated
+- Add libnet-devel to buildreq for dependency
+
+-------------------------------------------------------------------
+Mon Dec 12 22:59:04 CET 2016 - tiwai@suse.de
+
+- Update to criu 2.9:
+  New features:
+  * CRIU can now be built with clang on all supported architectures
+  * Ignore missing sysctls on restore with --weak-sysctl
+    C/R overmounted mountpoints
+  Optimizations/improvements:
+  * Batch restore of memory contents from pages.img files
+  * Link-remap type for invisible files is explicit in images
+    Man page for CRIT
+  Fixes:
+  * C/R with --empty-ns still handled iptables configuration
+  * SCM messages inside UNIX socket got lost after C/R (now dump
+    aborted)
+  * Empty unixsk.img file appeared when dumping tasks without unix
+    sockets
+  * Install procedure wasn't PEP-394 compliant
+  * CRIU blocking netfilter rules were added at the tail of the
+    chain resulting in unlocked TCP connections
+  * Dump/Restore spurious failures when open() returned 0 descriptor
+  * When dumping shmem lots of zero pages were written into image
+    files
+  * Ghost directory with more than zero ghost parents caused
+    restore to fail
+  * Shared mount could escape to different group on restore
+
+-------------------------------------------------------------------
+Mon Nov 14 16:28:06 CET 2016 - tiwai@suse.de
+
+- Update to criu 2.8:
+  New features:
+  * Ability to configure CRIU build
+  * Show statistics on the screen with --display-stats
+  * C/R of Mac-Vlan devices
+  Optimizations/improvements:
+  * x86 can now be built with clang
+  * When dumping files useless garbage was sent with descriptors from
+    parasite
+  * The clear_tid_address and regs are printed in hex with CRIT
+  * Big code rework for compel (part 1)
+  * Removed duplicate error messages from opening /proc files
+  Fixes:
+  * Restoring cgroup NS could use old path prefix
+  * criu check crashed on btrfs mounts
+  * RO external mounts in userns couldn't be restored
+  * Unmounted on host binfmt_misc could cause dump to fail
+  * Off-by-one could cause criu crash when dumping shared / bind-mount
+  * Mount namespace' roots could have flags changed on restore
+  * Dying tasks could erroneously be tried to dump
+  * Swapped shared memory pages were not dumped
+  * Errno value can be sometimes spoiled by RPC
+  * Restore of netns with newer iproute2 tool could fail
+  Deprecated:
+  * --ext-unix-sk, --veth-pair and --ext-mount-map, by --external
+- Set BINFMT_MISC_VIRTUALIZED config to build
+
+-------------------------------------------------------------------
+Tue Oct 18 17:40:14 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.7:
+  New features:
+  * Option --cgroup-root now makes sense on dump too
+  * CLOCK_BOOTTIME timer supported
+  Optimizations/improvements:
+  * Output of iptables command leaked into logs for no use
+  * Helper dev environment installation script for Debian
+  * Man-page updated and prettified :)
+  Fixes:
+  * Unmounted binfmt_misc with rules wasn't dumped at all
+  * Malloc() error could result in crash
+  * Device cgroup restore could fail restoring empty record
+  * Some entries in device cgroups were restored twice
+  * Potential crash when dumping cgroup bindmounts
+  * Sign error caused dump to fail on btrfs partitions
+  * Shared mounts with the same mount path failed the dump
+  * Threads were restored with unshared FS (cwd and root)
+  * Shared memory changes tracking disabled (regression found)
+  * Restore of autofs can hang
+  * LSM profile propagation could be lost
+  * Mountpoint with lots of options blocked the dump (too small
+    buffer for parsing)
+  * External slave mount (with external master) blocked the dump
+  * Mounts with STRICTATIME restored with others flags dropped
+  Deprecated:
+  * No reg-file entry for TTYs
+
+-------------------------------------------------------------------
+Thu Sep 15 22:36:21 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.6:
+  New features:
+  * Ability to leave process stopped after restore
+  * Memory changes tracking for anonymous shared memory
+  * Deprecation option/environment
+  * First error message is reported back via RPC
+  * C/R of More IPCNS sysctls, xIDs of PTYs, TMEM on PPC64LE
+  Optimizations/improvements:
+  * Use service FD for transport sockets on restore
+  * Ability to turn pagemap-cache off (some kernels are buggy)
+  * The criu --help text has become better
+  Fixes:
+  * R/O-mounted root could block the dump
+  * Restore of cgroup.mm.oom_control could fail
+  * Cgroup fs bind mounts were detected with error
+  * Unaligned futex-es in parasite could cause dump to crash
+  * When compiled with gcc-4.9 parasite code crashed
+  * Failure to freeze cgroup didn't result in aborting of dump
+  * Wrong ns list was parsed when dumping userns (invisible
+    since nesting works only for mntns)
+  * Non-inheritable non-tty as stdin caused shell-job restore
+    to erroneously fail Error path in criu dedup could crash
+  Deprecated:
+  * Per-pid rlimit, itimers and posix-timers
+  * Separate image for epoll tfds (target file descriptors)
+
+-------------------------------------------------------------------
+Tue Aug 23 17:00:30 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.5:
+  New features:
+  * C/R of fs.mqueue.msg*_default sysctls, Unix sockets with
+    overwritten paths, and  Link-remap files in removed directories
+  Optimizations/improvements:
+  * Micro-optimization on namespace ID evaluation
+  * Restoring shared files uses one socket instead of per-fd ones
+  * More verbosity when refusing to dump a file descriptor
+  Fixes:
+  * Restore could fail on openat() with ENXIO when multiple mnt
+    namespaces get restored
+  * The criu exec action got broken
+  * Link-remap and ghost files remained on FS after restore failure
+  * TCP window could remain clamped after restore resulting in
+    connection lockup/slowdown
+  * Dump could stuck when injecting a parasite
+  * The --timeout option wasn't taken into account when freezing
+    tasks using freezecg
+  * Race in freezeing/seizing could result in lost tasks
+  * Memory leaks here and there on error paths
+  * Double free in xvstrcat (crash)
+  * VDSO length was mis-calculated
+  * Symlink on --root path could make restore erroneously fail
+  * Potential memory corruption on reading mntns images
+  * When restoring on systems with low pid_max limit restore could
+    fail
+  * RO-protected SysV shmem segments could be restored with
+    PROT_EXEC
+  * File mode of mapped file was evaluated with errors
+  * Restore of cgroups' mem.swappines and ..use_hierarchy blocked
+    sub-groups creation
+  * Impossible to restore cgoup mem.swappines default value
+  * Zombies living in orphan sessions/groups failed the restore
+
+-------------------------------------------------------------------
+Tue Jul 12 12:10:20 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.4:
+  New features:
+  * Generate core from images
+  * Ability to forcibly drop half-open TCP connections on C/R
+  * Ability to specify cgroup ctls to dump via API
+    Opened/mapped files' mode is compared between dump and restore
+    times
+  * AutoFS mountpoints
+  * New cgroups (perf_event, net_cls, net_prio and pids)
+  * Memcgroup optional properties
+  * Devices cgroup
+  Optimizations/improvements:
+  * Pagemap image entries are cached in memory
+  Fixes:
+  * Configured kmem cgroup limit restore failed
+  * Mem cgroup oom_control
+  * Cgroup's pids.max was not C/R-ed
+  * Failure to write cgroup property was ignored
+  * No init PID in pre-dump action script
+  * Sigactions inheritance didn't work on ARM
+  * Opened "/proc" dir blocked the dump
+  * Working with iptables was racy
+  * Sibling mounts detection error on dump
+  * Devconf accept_redirects devconf could be restored with errors
+  * "All" devconfs could be overridden by "Default"
+  * Name-less unix sockets got auto-bound
+  * Mode was lost for PTY device file on restore
+  * Newer protobuf compilers didn't recognize PB files
+  * External mounts could be remounted with MS_PRIVATE
+  * Build fail on Alpine Linux
+  Deprecated/removed:
+  * Per-pid file locks images
+  * Per-pid fdinfo images
+  * Ancient pagemap/pages images
+- Enable builds on 32bit ARM
+
+-------------------------------------------------------------------
+Wed Jun 15 08:19:40 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.3:
+  New features
+  * Ability not to show payload for some objects in CRIT
+  * Pidfile is written at the end of restore
+  * Ability to join existing namespaces on restore
+  * C/R of Data sitting in TTYs, Partially write-protected SysVIPC
+    segments, Debugfs and tracefs mounts, Overmounted tmpfs, IPv6
+    devconf sysctls, External block devices, Unix sockets with
+    mismatched shutdown state
+  Optimizations/improvements:
+  * Relaxed calculation of AIO ring size
+  * Tree-based search of tasks by real pid
+  * Less mem-to-mem copies on restore
+  * Saner devconf image format
+  * More verbose explanation of why task cannot be seized
+  * PID is printed in PIE logs
+  Fixes:
+  * Too many mmap-ed files blocked the dump
+  * Potential memory corruption when working with IPv6 sockets
+  * Overmounted bind mounts could cause restore to fail
+  * Overmounted bind mounts could result in badly restored mount tree
+  * Incomplete restoration of RO bind mounts options
+  Deprecated/removed:
+  * Greedy mode of pagemap (non-root) caused dump to fail (disabled)
+
+-------------------------------------------------------------------
+Tue May 17 14:03:06 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.2: mostly bugfixes
+  New features:
+  * "Post-resume" added to action scripts
+  * Root task's PID in environment for action scripts
+  * Devconfs drop_gratuitous_arp and drop_unicast_in_l2_multicast
+  * Serial ttys
+  Optimizations/improvements
+  * Lighter link-remaps restore on newer kernels
+  Fixes:
+  * Race when restoring userns vs setting ns' maps
+  * Tasks with zero fds failed the dump
+  * Restore of TCP recv queue could fail due to kernel mem alloc
+    constraints
+  * No errors were written to logs when launching helper
+    (tar/iptables) app in userns restore
+  * User-mode dumped no memory pages sometimes
+  * Bind mounts considered not as bind sometimes
+  * Two mounts in the same directory blocked the dump
+  * Off-by in on /dev/tty{1,63} dumping
+  * Forking of cgroupns task was done with screwed clone flags
+  Deprecated/removed:
+  * Greedy mode of pagemap dumping (on some kernels we do not
+    support user-mode)
+  * Removed the --namespaces option
+
+-------------------------------------------------------------------
+Tue Apr 12 16:35:06 CEST 2016 - tiwai@suse.de
+
+- Update to criu 2.1:
+  New features:
+  * Checking now classifies features to important/extra/experimental
+  * Ability to bring some disk files into images.
+  * C/R of Completed AIO requests and fallback gre and gretap net
+    devices
+  Optimizations/improvements:
+  * Code coverage collecting now works
+  * Use native rtnl library for netlink messages processing
+  * Using --output - now results in stdout as log, not a file with
+    the name "-"
+  * Signals are printed by names in logs
+  Fixes:
+  * Make tar generated tarbal with bad name
+  * CG restore code lacked rollback in some places
+  * Error code from raw syscalls was treated with errors resulting
+    in wrong criu check reports
+  * Dumping task with HUGE amount of file descriptors failed
+  * Task could be stopped after pre-dump if respective option was used
+  * A /proc/pid directory from dead process conflicting with a new
+    alive one could cause dump to fail
+  * Zombie from alien session/process group caused restore to fail
+  * CGroup fs was wrongly mounted in CGNS on restore
+  * Irmap scan was mis-checking devices numbers
+  * Use-after-free in irmap scan
+  * Btrfs bindmounts detection was mistaken due to 'subvol=' options
+    met
+  * Propagation of mountpoint's shared groups was lost for
+    propagated mounts
+  * Unaligned allocations of restore shared memory could result in
+    codedumps when used by futexes
+  * Temporary mountpoints could result in spurious propagations
+  * When aborting the dump criu could crash on use-after-free objects
+  * Locking the network could stuck doing the DNS resolve
+  * Several build fixes
+  Deprecated/removed
+  * The images from criu prior to 0.4 are deprecated
+  * The --namespaces option makes no sense and is also deprecated
+  * The --ms option for check action is deprecated
+
+-------------------------------------------------------------------
+Wed Mar  9 20:43:04 CET 2016 - tiwai@suse.de
+
+- Update to criu 2.0:
+  New features:
+  * New code layout for sub-projects (e.g. Compel)
+  * Unprivileged dump
+  * Dump/check cpuinfo support for PPC
+  * Explorers for CRIT
+  * Added "post-setup-namespaces" to action scripts
+  * Added timeout for dump procedure (5 sec by default)
+  * Ability to override LSM profile on restore with CLI/RPC option
+  * External bind mounts can be fs-root mounts too
+  * Skip netns' internals on dump and restore (for Docker integration)
+  * Advanced support for external files
+  * More C/R supports
+  Optimizations/improvements:
+  * Align parasite stack on 16 bits for correctness
+  * Compilation with native libc syscall wrappers and helpers
+  * Parasite code injection done via memfd system call
+  * Make vaddr to pfn conversion with one less syscall
+  * CRIT shows device numbers in "maj:min" manner
+  * CRIT shows mmap's status in verbose
+  * Docker files for builds on all supported arches
+  Fixes:
+  * Absent readlink syscall on ARM (use readlinkat instead) could cause dump to fail
+  * Wrong argument to timer_create system call could cause restore to crash
+  * Extra tasks in freeze cgroup caused dump to fail/hand/crash
+  * Unaligned restore-time object allocations caused lock operations to fail
+  * Opened /proc/pid dir of dead task failed the dump
+  * Unaligned stacks caused criu to fail on aarch64
+  * Changed device numbers on restore side could cause random failures
+  * Fixes in mount points sharing/slavery/propagation restore
+  * Race between mntns creation and fds closing in different tasks could cause restore to fail
+  * Hard kernel limit on TCP repair recv queue restore could cause big queue restore to fail
+  * Unconnected dgram UNIX socket with data lost packets on restore
+  * CRIT didn't show IPC objects
+  * CRIT didn't convert IP addresses in images
+  * Logs from PIE code contained corrupted addresses and sizes
+  * Not loaded netfilter modules could cause dump/restore to stuck on dumping netlink socket
+  * Shared external mounts were restored with error
+  Security:
+  * When checking for namespaces' CRIU entered userns with host creds
+  * Deprecated/removed:
+  * Completely removed 'show' action. Use CRIT instead.
+
+-------------------------------------------------------------------
+Tue Dec  8 12:01:05 CET 2015 - tiwai@suse.de
+
+- Update to criu 1.8:
+  * Ability to check CRIU features via RPC
+  * Pre-dump and pre-restore action scripts
+  * The "info" action in CRIT showing stats about image file
+  * Python API
+  * C/R of read-only bind mounts, IPv6 routes and iptables rules,
+    ip rules (it ip tool supports such), ignore_routes_with_linkdown
+    netns devconf, empty bridges in netns, FILTER mode of seccomp,
+    and IP_FREEBIND socket option
+  * Lots of fixes, two security fixes
+    Service run as root could allow users to violate ptrace policies
+    Service run as root could give users access to privileged files
+    and directories
+- Remove superfluous dependencies
+- Clean up spec file, as systemd and logrotate supports have been
+  officially dropped
+
+-------------------------------------------------------------------
+Thu Nov 19 16:10:29 CET 2015 - tiwai@suse.de
+
+- update to criu 1.7.1:
+  Fixes in mounts, notifies and userns found while testing openvz
+- update to criu 1.7.2:
+  Fixes for IPC in userns, venet C/R, socket buffers overflow and
+  unix sockets name off-by-one
+- Add the package dependency on python-protobuf
+
+-------------------------------------------------------------------
+Fri Sep 11 16:06:30 CEST 2015 - tiwai@suse.de
+
+- Disable systemd service as a temporary workaround for possibile
+  security issues (CVE-2015-5228, CVE-2015-5231, bsc#943105)
+- Update to criu 1.7:
+  * Improved cgroups management
+  * Support for seccomp strict mode
+  * Support for stream unix sockets inheritance
+  * Support uid/gid-restricted mounts in userns
+  * Support deleted bind-mounts
+  * Ability to specify maximum ghost file size
+  * OverlayFS support
+  * Support relative unix sockets' bind paths
+  * Altivec and PSX support for PPC
+  * Small PIE loader
+  * Temporary proc mountpoint is mounted with nosuid, noexec and nodev
+  * Less memory copies when preparing restorer binary
+  * CRIT action "show" for less keystrokes on common use-case
+  * Fsnotify log messages now use hex everywhere :)
+  * CRIT output doesn't mix fields any more
+  * Many fixes
+- Drop obsoleted patches:
+  crit-install-prefix.diff
+  lsm-prototype-fix.diff
+  4c5b23e5-criu.pc.diff
+
+-------------------------------------------------------------------
+Fri Jul 31 07:47:22 UTC 2015 - cbosdonnat@suse.com
+
+- Fix version in criu.pc file.
+  4c5b23e5-criu.pc.diff
+
+-------------------------------------------------------------------
+Mon Jun  1 15:26:56 CEST 2015 - tiwai@suse.de
+
+- update to version 1.6:
+  * PowerPC 64bit LE support
+  * Makefile.local for 3-rd party build rules
+  * Ability to "enable" filesystem on dump (--enable-fs)
+  * Ability to skip mountpoint on dump (--skip-mnt)
+  * Prepare to deprecate "criu show" command
+  * External mounts auto-detection
+  * /dev/tty (current terminal) support
+  * Netdev and netns (all/default) confs C/R
+  * Images v1.1 with extra magic at head
+  * Support fusectl (only ctl) mountpoint
+  * Sub-version format is now as of git-describe
+  * Apparamor labels C/R support
+- Fix library path for aarch64 and ppc64le
+- Fix the prototype for lsm.c (to fix build errors):
+  lsm-prototype-fix.diff
+- Refreshed crit-install-prefix.diff
+
+-------------------------------------------------------------------
+Tue Apr 28 11:54:14 CEST 2015 - tiwai@suse.de
+
+- update to version 1.5.2:
+  * fix error in mutli-threaded tasks restore with --restore-sibling
+    (Docker and LXC cases)
+  * fix too big RPC messages error for service (and swrk)
+
+-------------------------------------------------------------------
+Tue Apr  7 15:52:47 CEST 2015 - tiwai@suse.de
+
+- Fix build failure on FACTORY due to comment-in-comment in
+  google/protobuf/descriptor.proto
+- update to version 1.5.1:
+  * fix crash with 4.0 kernel
+  * legalize swrk API and add the ability for inheriting fds via it
+  * cgroup yard destruction and properties restore
+
+-------------------------------------------------------------------
+Fri Mar 13 10:10:07 CET 2015 - tiwai@suse.de
+
+- update to version 1.5: New features
+  * CRIT tool
+  * ability to request CPU compatibility on instructions level only
+  * C/R of empty AIO rings
+  * more detailed errno report via RPC
+  * per-feature "criu check"
+  * inheriting FDs on restore
+  * ability to automatically move veth device to host-side bridge
+    on netns restore
+  * VT terminals support
+  * more user namespaces C/R stuff
+  See more details at http://criu.org/Releases#v._1.5
+- fix installation of crit:
+  crit-install-prefix.diff
+
+-------------------------------------------------------------------
+Mon Dec  1 18:17:51 CET 2014 - tiwai@suse.de
+
+- update to version 1.4: New features:
+  * Dump and check cpuinfo
+  * Initial support for user namespaces
+  * The docker_cr.sh script for Docker
+  * New API for writing plugins (old one is still possible)
+  * Service workers change their title to better look in ps output
+  * Ability to feed socket for pre-dump and page-server in swrk mode
+  * Page-server can auto-bind its port
+  * Ability to perform several actions during one connection to RPC service
+  * C/R of opened /proc/$pid/foo files of dead tasks
+  * C/R of /dev/console
+  * C/R of virtualized devtmpfs (openvz and future upstream kernels)
+  * C/R of empty mqueue fs (posix message queues)
+  * C/R of shared bind-mounts 
+  See more details at http://criu.org/Releases#v._1.4
+
+-------------------------------------------------------------------
+Mon Sep 15 13:43:00 CEST 2014 - tiwai@suse.de
+
+- update to version 1.3.1, a stable releasing fixing below:
+  * Sibling restore mode didn't set up CRIU signals properly
+  * Unpredictable sibling/child root task restore. Fixed with
+    explicit CLI option
+  * Validation for leaf mount points was skipped
+  * Mount options were corrupted on dump, which resulted in errors
+    bind mounts detection 
+
+-------------------------------------------------------------------
+Tue Sep  2 07:33:29 CEST 2014 - tiwai@suse.de
+
+- update to version 1.3:
+  * Docker and LXC support, lots of bug fixes
+- cleanup spec file, fix rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Jun 18 16:59:16 CEST 2014 - tiwai@suse.de
+
+- Update to version 1.3-rc2:
+  * external bind mounts and tasks-to-cgroups bindings
+  * many bugfixes in memory restore and mounpoints dump
+
+-------------------------------------------------------------------
+Tue May  6 11:48:37 CEST 2014 - tiwai@suse.de
+
+- Update to version 1.3-rc1:
+  New features:
+  * AArch64
+  * Multiple mount namespaces
+  * FPU state restore control
+        Restore old FPU state on newer CPUs
+        Ability to ignore FPU restoration 
+  * Support stopped multi-threaded tasks
+  * CRIU now can execv() other binary right after restore is complete
+  * Inode-revese mapping can be enforced to allow live-migration with FS copying
+  * Gold linker can now be used to compile CRIU
+  * "Berserker" test to check CRIU scalability
+  * Punch pages from mem images on restore (optimizes live-migration) 
+ Optimizations:
+  * Batched deduplication of memory images
+  * Packed rlimits into core image
+  * Packed timers into core image 
+ Fixes:
+  * Bad checks for kcmp() ret codes resulted in errors in file sharing detection
+  * Multiple mmap-s of same files with different flags blocked the restore
+  * Integer overflow in huge mapping restore caused restoration failure
+  * Devpts's newinstance option was lost during dump
+  * Subsequent dump could try to find old mem dump for newly forked task
+  * Bad detection of overmounted mountpoints on fsnotify restore
+  * Page-server could read partial message and failed
+  * Errors in dumping of two subsequent anon vmas in some cases
+  * Irmap mis-compared devices for disk FS-s
+  * TMPFS handles always change during dump/restore
+  * Pre-dump sometimes hangs on FIFO-s
+  * Post-restore script fails too late (if does it) 
+
+-------------------------------------------------------------------
+Sat Mar  1 09:39:03 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner, nothing more than that.
+
+-------------------------------------------------------------------
+Wed Feb 26 17:15:26 CET 2014 - tiwai@suse.de
+
+- Update to version 1.2:
+  New features:
+  * Performance improvements
+  * Library versioning
+  * RPC API got closer to CLI
+  * New "post-restore" call in action scripts
+  * Logrotate rules file
+  * Default log file for service when starting via systemd 
+  Bug fixes:
+  * A lot for ARM cross-compile
+  * Fsnotifies dumping didn't work on NFS
+  * Images auto-deduplication only worked one level up
+  * Packet socket ID was treated as file-descriptor and close()-d
+  * Badly counted pages stats on restore
+  * Linked remap name conflict when dump and restore on NFS
+  * Sporadic failures in memory draining due to huge pipes used
+  * Broken criu show of repeated fields
+  * Failure to open mountpoint in foreign pid namespace
+  * Unlinked bound unix socket dump error
+  * Small memory leak when writing to incremental image(s)
+  * Restoring fsnotify for links results in ELOOP
+  * Host's PATH is not suitable when execv-ing tar/ip/iptable to restore namespace (workaround, proper fix will be in 1.3)
+  * Using subdirs in log file name via RPC breaks security 
+- New subpackages: libcriu1 and criu-devel
+- Remove obsoleted always-define-ptrace_peeksiginfo_args.diff
+
+-------------------------------------------------------------------
+Tue Jan 28 12:42:34 CET 2014 - tiwai@suse.de
+
+- Update to version 1.1: BUGs fixed,
+  * Errors from memory dumping are not handled resulting in
+    corrupted dumps
+  * EOF detection in stacked images is done with error
+  * Stacked images don't work on non-shared FS (missing pagemap-s) 
+
+-------------------------------------------------------------------
+Tue Jan 21 12:23:27 CET 2014 - tiwai@suse.de
+
+- Update to version 1.1-rc2: Bugs fixed,
+  * Crash in criu check
+  * RPC check always fail on 3.11 kernel
+  * Failed fork() didn't abort restore
+  * Dump fail not reported via RPC
+  * RPC client disconnect wasn't handled
+  * Page server could connect to self for writing images
+  * Hang on pre-dumping task livig in net-namespace
+  * VDSO page mis-handle on pre-dump
+  * FPU state loss on pre-dump
+  * Memory tracking turns ON w/o request
+  * Various fixes (and improvements) in build system 
+- Fix missing struct ptrace_peeksiginfo_args on FACTORY:
+  always-define-ptrace_peeksiginfo_args.diff
+
+-------------------------------------------------------------------
+Wed Jan  8 16:40:12 CET 2014 - tiwai@suse.de
+
+- Update to version 1.1-rc1:
+  New features:
+   * libcriu.so -- wrapper library for RPC clients
+   * new plugins: external unix sockets, external bind mounts,
+     external net devices and unknown file types 
+   * Images deduplication in incremental dumps
+   * Integration with systemd
+   * Filtering of criu show output 
+  Bug fixes:
+   * Errors in unlinked files/sockets detection on BTRFS
+   * NFS silly-rename files are not treated as unlinked
+   * Freezer fail to seize quickly forking/pthread_create-ing tasks
+   * Extra stop signal queued for stopped tasks after pre-dump
+   * Wrong dying task state detection
+   * Lost RPC dump response
+   * Crash when reporting restore error via RPC
+   * Negative return code into shell
+   * Tasks left in wrong states after failed dump
+   * A little bit more verbose check action
+   * Coverity checks fail here and there 
+
+- Drop obsoleted criu-fix-PTRACE_LISTEN-define.diff
+
+-------------------------------------------------------------------
+Wed Nov 27 14:29:51 CET 2013 - tiwai@suse.de
+
+- Fix rpm group tag to System/Console
+
+-------------------------------------------------------------------
+Mon Nov 25 18:09:55 CET 2013 - tiwai@suse.de
+
+- updated to version 1.0
+  * New features:
+    -W option to specify working dir
+    CHECK request in RPC
+    Optimized headers
+    More info in logs about undumpable files
+    More comments about tricky dump/restore places
+    Generic memory allocation for restorer 
+  * Bugfixes
+    After --leave-running linked remaps were not cleaned
+    TCP was left locked after --leave-running
+    Weak criteria in memory COW detection
+    Private mapping's premmapped address overwrote file ID
+    Restorer memory could overlap with timers/signals arrays
+    RPC worker reused options from service task
+    Suboptimal memory utilization by restorer arguments
+    TCP unsent/unacked data boundary was lost
+    Wrong dev_t decoding on 64 bit
+    Unpredictable daemons (service and page-service) working dir
+    Parasite stack could be corrupted by its arguments
+    Error from exe link restore was ignored
+    Artificial small limit on the number of shared memory segments
+    to restore
+    Bug in ARM VFP restore
+    VDSO proxy was unmapped at the very end of restore 
+
+-------------------------------------------------------------------
+Sun Oct 20 09:41:15 CEST 2013 - tiwai@suse.de
+
+- updated to version 0.8:
+  * New features:
+    RPC service
+    Ability to work from non-root user (via +s bit)
+    Handle stopped tasks
+    Restore tasks' root path
+    Dump and restore net ns iptables configuration (w/o conntracks)
+    Support for external net devices in netns (e.g. openvz venet)
+    Support CORK and NODELAY TCP options
+    SEQPACKET unix sockets support 
+  * Fixes and improvements
+    Unload restorer blob after restore
+    Fixes and enhancements in criu show
+    Fix in unsorted inotify wd restoring
+    Fixed trimmed messages in parasite transport
+    Fine-grained pgrps restore
+    Fix in large TCP buffers restore
+    Fixed buffer overflow in IPC ns dumping
+    Fix in early page server connection close on pre-dump
+    Fixed race in handling aborted parasite blob
+    Fixed lost unmapped criu vmas in restore
+    Fixes in parsing devices in /proc/pid/maps and /proc/locks
+    Fixed snd/rcv buf sockoptions restore
+    Enhanced logging in parasite 
+
+-------------------------------------------------------------------
+Fri Sep  6 09:08:02 CEST 2013 - tiwai@suse.de
+
+- updated to version 0.7:
+  * TUN devices support (requires patched kernel)
+  * Alternative stack (sigaltstack) C/R
+  * Shared and master/slave mounts support
+  * Restore statistics
+  * Net device address C/R
+  * Safer and simpler asynchronous parasite
+  * Fixes in:
+    - Stack guard page dump/restore
+    - Page server communications
+    - COW mappings restore
+    - Zombies restore
+    - Aborting failed restore
+    - TCP connection restore (some require patched kernel)
+    - Semi-closed Unix sockets with data dump/restore
+- Fix build error on FACTORY due to redefinition of PTRACE_LISTEN:
+  criu-fix-PTRACE_LISTEN-define.diff
+
+-------------------------------------------------------------------
+Mon Jul  8 12:35:16 CEST 2013 - tiwai@suse.de
+
+- updated to version 0.6:
+  * Cross-compiling support
+  * Ready to accept images from OpenVZ RHEL6-based kernel
+  * Posix CPU timers C/R
+  * Asynchronous parasite
+  * Memory changes tracking (requires patched kernel)
+  * Dump statistics
+  * Return-arg for remote syscalls execution
+  * Improved "show" output
+  * Opened /proc/PID/ns/* files C/R
+  * Daemon mode for page-server
+  * Build-time features test (makes it possible to build on
+    different distros) 
+
+-------------------------------------------------------------------
+Wed May 29 09:42:17 CEST 2013 - tiwai@suse.de
+
+- initial version: 0.5
+

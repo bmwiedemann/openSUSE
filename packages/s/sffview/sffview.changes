@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Thu Feb  2 12:46:30 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Fri Jan 27 18:31:50 UTC 2017 - keil@b1-systems.de
+
+- use wxWidgets-3_0
+- import man page from debian project
+- delete sffview-gcc43.diff since it is included in the new version
+- delete not longer applying  sffview-0.4.diff patch
+- add sffview-0.5.diff patch to use RPM_OPT_FLAGS and unicode
+
+-------------------------------------------------------------------
+Fri Jan 27 15:53:03 UTC 2017 - keil@b1-systems.de
+
+- Update to version 0.5
+
+-------------------------------------------------------------------
+Fri Aug 12 20:47:27 UTC 2016 - jengelh@inai.de
+
+- Remove archaic specfile contraptions.
+  Fix rpmlint "spurious-executable-permissions" warning.
+
+-------------------------------------------------------------------
+Fri Jan 21 13:52:17 CET 2011 - sbrabec@suse.cz
+
+- Fixed build for older distributions.
+
+-------------------------------------------------------------------
+Wed Dec 29 15:04:12 CET 2010 - sbrabec@suse.cz
+
+- Compile with wxWidgets (STL variant).
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Thu Feb 26 19:02:42 CET 2009 - crrodriguez@suse.de
+
+- extend GCC 4.3 patch to cover GC 4.4 too 
+
+-------------------------------------------------------------------
+Thu Oct 11 14:37:11 CEST 2007 - kkeil@suse.de
+
+- fixes for GCC 4.3
+
+-------------------------------------------------------------------
+Tue Mar  6 00:58:44 CET 2007 - kkeil@suse.de
+
+- fix string type issue for gcc42
+
+-------------------------------------------------------------------
+Mon Oct 30 18:05:43 CET 2006 - kkeil@suse.de
+
+- update to 0.4
+   * include all our fixes
+   * print support
+
+-------------------------------------------------------------------
+Mon Oct 16 09:05:59 CEST 2006 - kkeil@suse.de
+
+- compile with RPM_OPT_FLAGS
+- compile with unicode support (Thanks Andreas Hanke, #212502)
+
+-------------------------------------------------------------------
+Fri Jan 27 11:41:27 CET 2006 - kkeil@suse.de
+
+- add gcc-c++ to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 22:15:16 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Apr 15 14:50:40 CEST 2005 - mcihar@suse.de
+
+- add SDL-devel-packages because of wxGTK
+
+-------------------------------------------------------------------
+Sat Apr  9 23:33:16 CEST 2005 - kkeil@suse.de
+
+- GCC4 fixes
+
+-------------------------------------------------------------------
+Wed Mar 30 17:35:03 CEST 2005 - kkeil@suse.de
+
+- a dword is always 32 bit, also on 64 bit OS (#75254)
+
+-------------------------------------------------------------------
+Mon Nov 22 17:32:49 CET 2004 - ro@suse.de
+
+- fix build with new wxGTK
+
+-------------------------------------------------------------------
+Wed Sep 15 12:50:29 CEST 2004 - kkeil@suse.de
+
+- move to version 0.3 (#44574)
+
+-------------------------------------------------------------------
+Fri Aug 20 14:42:33 CEST 2004 - ro@suse.de
+
+- added wxGTK-compat to neededforbuild
+
+-------------------------------------------------------------------
+Wed Apr 21 17:37:19 CEST 2004 - kkeil@suse.de
+
+- fix package for new wxGTK with UNICODE enabled
+
+-------------------------------------------------------------------
+Wed Jan 14 01:44:35 CET 2004 - ro@suse.de
+
+- use gtk2 
+
+-------------------------------------------------------------------
+Thu Jun 12 19:45:17 CEST 2003 - kkeil@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Sun Feb 23 13:05:05 CET 2003 - ghillie@suse.de
+
+- use g++ instead of gcc 
+
+-------------------------------------------------------------------
+Mon Jan 20 15:30:11 CET 2003 - ghillie@suse.de
+
+- removed arch=i486 from Makefile (see gcc-3.2 patch)
+- added glib and gtk to neededforbuild 
+
+-------------------------------------------------------------------
+Mon Dec 16 17:54:00 MET 2002 - gernot@hillier.de
+
+- first package
+-------------------------------------------------------------------

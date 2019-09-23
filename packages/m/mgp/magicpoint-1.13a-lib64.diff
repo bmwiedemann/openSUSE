@@ -1,0 +1,113 @@
+_lib is set to "lib" or "lib64" in the spec file
+================================================================================
+Index: configure.in
+===================================================================
+--- configure.in.orig
++++ configure.in
+@@ -29,6 +29,7 @@ OPTFLAGS=
+ AC_SUBST(OPTFLAGS)
+ DEPLIBS=
+ AC_SUBST(DEPLIBS)
++test -z "$_lib" && _lib=lib
+ 
+ dnl AS_15_01_2005: Added Variable SHLIBEXT which contains extensions of shared libaries
+ SHLIBEXT=so
+@@ -110,15 +111,15 @@ if test "$mgp_use_freetype" = "yes"; the
+  	for dir in $SEARCHPATH /usr/local/freetype /usr/local /opt/freetype /usr/pkg /usr /usr/include/freetype1 /sw; do
+  		ac_cv_ft_lib=no
+  		ac_cv_ft_include=no
+-		shlib=`echo $dir/lib/libttf.$SHLIBEXT* | head -n 1 | sed -e 's/.*\///'`
++		shlib=`echo $dir/$_lib/libttf.$SHLIBEXT* | head -n 1 | sed -e 's/.*\///'`
+ 		if test x$shlib = x; then
+ 			shlib=no
+ 		fi
+-		if test -d $dir/lib -a -f $dir/lib/$shlib; then
+- 			ac_cv_ft_lib="$dir/lib"
++		if test -d $dir/$_lib -a -f $dir/$_lib/$shlib; then
++ 			ac_cv_ft_lib="$dir/$_lib"
+  			ac_cv_ft_libpath="$shlib"
+- 		elif test -d $dir/lib -a -f $dir/lib/libttf.a; then
+- 			ac_cv_ft_lib="$dir/lib"
++ 		elif test -d $dir/lib -a -f $dir/$_lib/libttf.a; then
++ 			ac_cv_ft_lib="$dir/$_lib"
+  			ac_cv_ft_libpath="libttf.a"
+  		fi
+  		if test -d $dir/include -a -f $dir/include/freetype.h; then
+@@ -172,27 +173,27 @@ if test "$mgp_use_vflib" = "yes"; then
+ 		ac_cv_vf_libname=VFlib
+ 		ac_cv_vf_libdir=no
+ 		ac_cv_vf_hdrdir=no
+-		shlib1=`echo $dir/lib/libVFlib.so* | head -n 1 | sed -e 's/.*\///'`
+-		shlib2=`echo $dir/lib/libVFlib2.so* | head -n 1 | sed -e 's/.*\///'`
++		shlib1=`echo $dir/$_lib/libVFlib.so* | head -n 1 | sed -e 's/.*\///'`
++		shlib2=`echo $dir/$_lib/libVFlib2.so* | head -n 1 | sed -e 's/.*\///'`
+ 		if test x$shlib1 = x; then
+ 			$shlib1=no
+ 		fi
+ 		if test x$shlib2 = x; then
+ 			$shlib2=no
+ 		fi
+-		if test -d $dir/lib -a -f $dir/lib/$shlib1; then
+-			ac_cv_vf_libdir="$dir/lib"
++		if test -d $dir/$_lib -a -f $dir/$_lib/$shlib1; then
++			ac_cv_vf_libdir="$dir/$_lib"
+  			ac_cv_vf_libpath=$shlib1
+-		elif test -d $dir/lib -a -f $dir/lib/libVFlib.a; then
+-			ac_cv_vf_libdir="$dir/lib"
++		elif test -d $dir/$_lib -a -f $dir/$_lib/libVFlib.a; then
++			ac_cv_vf_libdir="$dir/$_lib"
+ 			ac_cv_vf_libpath="libVFlib.a"
+-		elif test -d $dir/lib -a -f $dir/lib/$shlib2; then
++		elif test -d $dir/$_lib -a -f $dir/$_lib/$shlib2; then
+ 			ac_cv_vf_libname=VFlib2
+-			ac_cv_vf_libdir="$dir/lib"
++			ac_cv_vf_libdir="$dir/$_lib"
+  			ac_cv_vf_libpath=$shlib2
+-		elif test -d $dir/lib -a -f $dir/lib/libVFlib2.a; then
++		elif test -d $dir/$_lib -a -f $dir/$_lib/libVFlib2.a; then
+ 			ac_cv_vf_libname=VFlib2
+-			ac_cv_vf_libdir="$dir/lib"
++			ac_cv_vf_libdir="$dir/$_lib"
+ 			ac_cv_vf_libpath="libVFlib2.a"
+ 		fi
+ 		if test -d $dir/include -a -f $dir/include/VF.h; then
+@@ -279,14 +280,14 @@ fi
+ if test "$use_libpng" = ""; then
+ for i in $SEARCHPATH /usr/pkg /usr/local /usr; do
+ 	if test -f $i/include/png.h; then 
+-		if test -f $i/lib/libpng.a ; then
+-			DEPLIBS="$DEPLIBS $i/lib/libpng.a"
+-		elif test -f $i/lib/libpng.so ; then
+-			DEPLIBS="$DEPLIBS $i/lib/libpng.so"
++		if test -f $i/$_lib/libpng.a ; then
++			DEPLIBS="$DEPLIBS $i/$_lib/libpng.a"
++		elif test -f $i/$_lib/libpng.so ; then
++			DEPLIBS="$DEPLIBS $i/$_lib/libpng.so"
+ 		else
+ 			break;
+ 		fi
+-		LIBS="$LIBS -L$i/lib"
++		LIBS="$LIBS -L$i/$_lib"
+ 		OPTFLAGS="$OPTFLAGS -I$i/include"
+ 		AC_CHECK_LIB(png, png_read_image, 
+ 			[LIBS="$LIBS -lpng"
+@@ -302,14 +303,14 @@ fi
+ 
+ for i in /usr/pkg /usr/local /usr; do
+ 	if test -f $i/include/libmng.h; then 
+-		if test -f $i/lib/libmng.a ; then
+-			DEPLIBS="$DEPLIBS $i/lib/libmng.a"
+-		elif test -f $i/lib/libmng.so ; then
+-			DEPLIBS="$DEPLIBS $i/lib/libmng.so"
++		if test -f $i/$_lib/libmng.a ; then
++			DEPLIBS="$DEPLIBS $i/$_lib/libmng.a"
++		elif test -f $i/$_lib/libmng.so ; then
++			DEPLIBS="$DEPLIBS $i/$_lib/libmng.so"
+ 		else
+ 			break;
+ 		fi
+-		LIBS="$LIBS -L$i/lib"
++		LIBS="$LIBS -L$i/$_lib"
+ 		OPTFLAGS="$OPTFLAGS -I$i/include"
+ 		AC_CHECK_LIB(mng, mng_initialize, 
+ 			[LIBS="$LIBS -lmng"

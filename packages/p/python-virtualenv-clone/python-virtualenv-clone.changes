@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri Apr 12 06:28:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.5.3
+  0.5.?
+  * Fixed incorrect Python version value.
+  * Added support for Python 3.7.
+  0.4.0
+  * Dropped support for EOL Python versions that no longer 
+    receive any updates from the core CPython team.
+  0.3.0
+  * Added support for Python 3.
+  * Fixed a bug with writing unicode in .pth files incorrectly.
+  * Fixed support for paths involving symbolic links.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:50 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Apr 19 15:38:16 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Mon Feb 29 12:14:12 UTC 2016 - someuniquename@gmail.com
+
+- Update to version 2.6
+  * Fix symlinks that point to the old virtual env
+
+-------------------------------------------------------------------
+Tue Dec  9 15:41:42 UTC 2014 - toddrme2178@gmail.com
+
+- Fix update-alternatives as requested.
+
+-------------------------------------------------------------------
+Mon Dec  1 12:34:42 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 2.5
+  * Speed clone_virtualenv up slightly by removing duplicate calls 
+    to spawn process
+  * Improve windows compatibility
+  * Ship LICENSE along with the source distribution to pypi.
+  * Added verbose mode with logging. 
+  * Bugfixes
+- Implement update alternatives to allow co-install with python 3
+  version.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:45 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu Aug  2 02:53:07 UTC 2012 - alexandre@exatati.com.br
+
+- Initial package (0.2.4) for openSUSE.

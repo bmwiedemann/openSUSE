@@ -12,9 +12,9 @@
       <arch>aarch64</arch>
     </conditions>
     <hardware>
-      <physicalmemory>
+      <memory>
         <size unit="G">8</size>
-      </physicalmemory>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>

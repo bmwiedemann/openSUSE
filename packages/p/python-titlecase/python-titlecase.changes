@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:55:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May 15 19:57:54 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.12.0
+  * Use unicode_literals for Py2 compatibility
+  * Handle case of `str` in python 2.
+  * More robust against unicode chars
+  * Mark strings written by callbacks as immutable
+  * Add various dash types
+  * cmd: fix check for no additional parameters 
+  * add small_first_last option
+  * allow titlecase to be a command line utility
+  * tests for hyphenated McName-Names
+  * improve MAC_MC match handling
+  * Support for hyphen and em dash delimited sub-phrases.
+  * Fix APOS_SECOND possessive noun 
+  * Add function for customizing small-word list
+  * Defer lowering all caps until recursion is done 
+  * More restrictive regex for 'Mc' 
+  * Handle `/`'s with recursion so all logic applies 
+  * Handle single letter + apostrophe better 
+  * Allow numbers in 'ALL_CAPS' strings
+  * Fix MAC/emcee/MacHine casing; add test cases 
+- Complete rewrite of spec file
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Wed Jun 29 17:42:51 UTC 2011 - hvogel@novell.com
+
+- Initial package, version 0.5.1
+

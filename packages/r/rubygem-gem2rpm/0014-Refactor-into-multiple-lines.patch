@@ -1,0 +1,58 @@
+From 5bb494a7d6911754e485f6b729861771181bf2a0 Mon Sep 17 00:00:00 2001
+From: Dirk Mueller <dmueller@suse.com>
+Date: Mon, 12 Jan 2015 15:51:08 +0100
+Subject: [PATCH 14/32] Refactor into multiple lines
+
+Makes this easier to extend/read imho.
+---
+ templates/gem_packages.spec.erb | 11 ++++++++++-
+ templates/opensuse.spec.erb     | 11 ++++++++++-
+ 2 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
+index 15500a0..d3a43fd 100644
+--- a/templates/gem_packages.spec.erb
++++ b/templates/gem_packages.spec.erb
+@@ -120,7 +120,16 @@ Usually in RDoc and RI formats.
+      %w(test spec).each { |framework|
+        test_frameworks[framework] = 1 if path.index(framework + "/") == 0
+      }
+-     %w(changes copying history legal license license-mit mit-license changelog readme).each { |file|
++     %w(changes
++        copying
++        history
++        legal
++        license
++        license-mit
++        mit-license
++        changelog
++        readme
++       ).each { |file|
+       bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
+       #$stderr.puts "PATH #{path} #{bpath} #{file}"
+       docdirfiles << path if bpath == file
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index 8eb7fee..88e7356 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -110,7 +110,16 @@ PreReq:         update-alternatives
+      %w(test spec).each { |framework|
+        test_frameworks[framework] = 1 if path.index(framework + "/") == 0
+      }
+-     %w(changes copying history legal license license-mit mit-license changelog readme).each { |file|
++     %w(changes
++        copying
++        history
++        legal
++        license
++        license-mit
++        mit-license
++        changelog
++        readme
++       ).each { |file|
+       bpath = path.downcase.gsub(%r{\.rdoc$}, '').gsub(%r{\.txt$}, '').gsub(%r{\.md$}, '')
+       #$stderr.puts "PATH #{path} #{bpath} #{file}"
+       docdirfiles << path if bpath == file
+-- 
+2.20.1
+

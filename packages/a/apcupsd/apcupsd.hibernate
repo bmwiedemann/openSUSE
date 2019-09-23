@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+# Always stop apcupsd before sleep, but do not initiate powerdown for hybrid-sleep.
+if [ "$1" = pre ] && ( [ "$2" = hibernate ] || [ "$2" = hybrid-sleep ] ) ; then
+	/sbin/service apcupsd.service stop
+fi
+if [ "$1" = pre ] && [ "$2" = hibernate ] ; then
+	# FIXME: All hibernate quirks are called in parallel. To be on a safest side, we should initiate powerdown grace period when they terminate.
+	sleep 5
+	/etc/apcupsd/apccontrol killpower
+fi
+if [ "$1" = post ] && ( [ "$2" = hibernate ] || [ "$2" = hybrid-sleep ] ) ; then
+	/sbin/service apcupsd.service start
+fi

@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Mon Oct 13 11:38:02 NOVT 2014 - salsergey@gmail.com
+
+- Upgraded to version 2.9.19
+  * There are new Tpy and Tpr parameters
+  * Added Hammer output projection
+  * Updated PSD functions to write PSB (large file) format too
+  * Various bugs have been fixed in these projections: triplane output,
+architectural output, orthographic output and Thoby input.
+  * Other bugfixes
+
+-------------------------------------------------------------------
+Tue Jan 10 02:17:36 UTC 2012 - crrodriguez@opensuse.org
+
+- Add explicit BuildRequires on libjpeg-devel and zlib-devel 
+- libpano-devel should not require libtiff-devel, libjpeg-devel
+  or libtiff-devel as they are not needed for building or linking.
+  This may break packages with wrong buildrequires.
+- Remove "la" files
+- run spec cleaner
+
+-------------------------------------------------------------------
+Sun Nov 20 06:18:17 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue May 31 16:29:13 CEST 2011 - sbrabec@suse.cz
+
+- Upgraded to version 2.9.18:
+  * fix build with libpng-1.5
+  * minor fixes
+
+-------------------------------------------------------------------
+Wed Apr 27 15:21:47 CEST 2011 - sbrabec@suse.cz
+
+- Upgraded to version 2.9.17:
+  * minor fixes and improvements
+  * support for pkg-config
+  * new soname
+
+-------------------------------------------------------------------
+Mon Mar 21 16:51:05 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Thu Aug  6 17:27:55 CEST 2009 - sbrabec@suse.cz
+
+- Updated to branch libpano13, version 2.9.14:
+  * ABI has changed since 2.9.12, new soname
+  * number of new input and output projections
+  * new command-line tool
+  * documentation, cleanups and bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 13 16:10:33 CEST 2008 - sbrabec@suse.cz
+
+- Fixed implicit declarations, invalid use of write() and invalid
+  format specification.
+
+-------------------------------------------------------------------
+Mon Sep  8 14:33:48 CEST 2008 - sbrabec@suse.cz
+
+- Updated to branch libpano13, version 2.9.12:
+  * many new functions and improvements, see ChangeLog for more
+  * new utility PTmender, replacement of binary-only PTStitcher
+  * new branch does not support binary-only 1.2 applications
+
+-------------------------------------------------------------------
+Wed Jul 25 17:07:54 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.8.6:
+  * Bug fixes.
+- Split package according to shared library packaging policy.
+
+-------------------------------------------------------------------
+Wed Nov  8 14:37:31 CET 2006 - prusnak@suse.cz
+
+- fixed subscript out of range [#204092]
+
+-------------------------------------------------------------------
+Thu Aug 17 20:41:43 CEST 2006 - postadal@suse.cz
+
+- updated to version 2.8.4
+  * a lot of new lenstypes, panotypes, filters and fixes see ChangeLog
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 10 17:26:41 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.7.0.14.
+
+-------------------------------------------------------------------
+Wed Jul 20 15:23:50 CEST 2005 - nadvornik@suse.cz
+
+- updated to 2.7.0.10
+- added devel subpackage
+- installed commandline tools
+
+-------------------------------------------------------------------
+Thu Apr 14 17:22:27 CEST 2005 - mcihar@suse.cz
+
+- update to 2.7.0.9
+- fix compilation
+
+-------------------------------------------------------------------
+Sun Feb 27 23:58:46 CET 2005 - ro@suse.de
+
+- next try to fix compilation
+
+-------------------------------------------------------------------
+Sun Feb 20 11:28:18 CET 2005 - ro@suse.de
+
+- temporary workaround to fix build 
+
+-------------------------------------------------------------------
+Tue Dec 21 17:36:50 CET 2004 - mcihar@suse.cz
+
+- update to 2.7.0.8
+
+-------------------------------------------------------------------
+Tue Aug 10 00:56:31 CEST 2004 - ro@suse.de
+
+- java is still in /usr/lib even on lib64 platforms
+
+-------------------------------------------------------------------
+Fri Jul 30 17:43:52 CEST 2004 - mcihar@suse.cz
+
+- compile with -fPIC
+
+-------------------------------------------------------------------
+Fri Jul 30 10:53:00 CEST 2004 - mcihar@suse.cz
+
+- initial packaging
+

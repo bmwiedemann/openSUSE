@@ -1,0 +1,9 @@
+<package name="perl-Text-Template" project="openSUSE:Factory">
+  <title>Expand template text with embedded Perl</title>
+  <description>This is a library for generating form letters, building HTML pages, or
+filling in templates generally. A `template' is a piece of text that
+has little Perl programs embedded in it here and there. When you `fill
+in' a template, you evaluate the little programs and replace them with
+their values.</description>
+  <devel project="devel:languages:perl" package="perl-Text-Template"/>
+</package>

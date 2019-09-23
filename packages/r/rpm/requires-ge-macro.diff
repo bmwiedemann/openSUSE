@@ -1,0 +1,12 @@
+--- ./macros.in.orig	2011-05-11 15:36:05.000000000 +0000
++++ ./macros.in	2011-05-11 15:38:44.000000000 +0000
+@@ -1027,7 +1027,8 @@ done \
+ #	%{perl_sitearch}/Image
+ #	%dir %{perl_sitearch}/auto/Image
+ #
+-%requires_eq()	%(LC_ALL="C" echo '%*' | xargs -r rpm -q --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
++%requires_eq()	%(echo '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
++%requires_ge()	%(echo '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+ %perl_sitearch	%(eval "`%{__perl} -V:installsitearch`"; echo $installsitearch)
+ %perl_sitelib	%(eval "`%{__perl} -V:installsitelib`"; echo $installsitelib)
+ %perl_vendorarch %(eval "`%{__perl} -V:installvendorarch`"; echo $installvendorarch)

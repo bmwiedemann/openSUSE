@@ -1,0 +1,21 @@
+---
+ rc/ftyperc |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+Index: rc/ftyperc
+===================================================================
+--- rc/ftyperc.orig
++++ rc/ftyperc
+@@ -647,6 +647,12 @@
+ -syntax joerc
+ -highlighter_context
+ 
++*.spec
++-syntax spec
++
++*.spec.in
++-syntax spec
++
+  Markdown
+ [markdown]
+ *.md

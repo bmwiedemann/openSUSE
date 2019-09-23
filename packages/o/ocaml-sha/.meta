@@ -1,0 +1,5 @@
+<package name="ocaml-sha" project="openSUSE:Factory">
+  <title>ocaml-sha</title>
+  <description>Binding to the SHA cryptographic functions</description>
+  <devel project="devel:languages:ocaml" package="ocaml-sha"/>
+</package>

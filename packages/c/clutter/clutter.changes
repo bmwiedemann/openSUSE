@@ -1,0 +1,2398 @@
+-------------------------------------------------------------------
+Wed Apr 24 09:38:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133118).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:15 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Sep 14 12:11:07 UTC 2017 - fezhang@suse.com
+
+- Drop the SLE12 / Leap42 build_wayland_backend conditional.
+
+-------------------------------------------------------------------
+Fri Sep  8 13:05:01 UTC 2017 - jengelh@inai.de
+
+- Update descriptions, RPM groups and old macros.
+
+-------------------------------------------------------------------
+Fri May 12 10:41:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.26.2:
+  + Accept upper case 'A' when selecting all content in a Text
+    actor. This is similar to what GTK+ allows, and makes it easier
+    to select text with Caps Lock enabled.
+  + Use GDK API when using Wayland sub-surfaces. The GDK backend on
+    Wayland uses sub-surfaces to allow Cogl to manage the rendering
+    surface; now that GDK exposes the necessary API, we can avoid
+    using the Wayland API directly, and instead let GDK manage the
+    surface for us.
+  + Documentation fixes.
+  + Bugs fixed: bgo#766326, bgo#768243, bgo#768734, bgo#781975,
+    bgo#759085, bgo#774546, bgo#762888, bgo#772412, bgo#770288,
+    bgo#768898.
+  + Updated translations.
+- Drop clutter-text-bind-ctrl-A.patch and
+  clutter-Warn-on-adding-removing.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jun 20 22:37:24 UTC 2016 - zaitor@opensuse.org
+
+- Add clutter-text-bind-ctrl-A.patch: text: Bind <ctrl>A in
+  addition to <ctrl>a (bgo#766326).
+
+-------------------------------------------------------------------
+Wed Apr 13 08:46:15 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Remove upstream patches: clutter-bgo725722-set-size.patch
+  clutter-bgo724788.patch
+
+-------------------------------------------------------------------
+Tue Apr  5 14:33:12 UTC 2016 - zaitor@opensuse.org
+
+- Add clutter-Warn-on-adding-removing.patch: ClutterActor should
+  warn if a user tries to add or remove an actor to, and from,
+  itself on the scene graph. Patch from upstream git.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:21:31 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.26.0:
+  + Avoid spamming accessibility state changes in clones.
+  + Ignore GDK deprecation compiler warnings.
+  + Resync build configuration for Windows.
+  + Bugs fixed: bgo#756371.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  4 14:13:34 UTC 2016 - fcrozat@suse.com
+
+- Remove obsolete --disable-conformance configure flag.
+- Only BuildRequires: pkgconfig(libinput) when building wayland
+  support.
+
+-------------------------------------------------------------------
+Thu Feb 18 18:57:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.25.6:
+  + Enable swap throttling for fullscreen windows with GDK. Avoids
+    performance penalties with the GDK backend on constrained
+    devices running full screen Clutter and Clutter-GTK
+    applications.
+  + Add platform-specific data for the libinput input backend. This
+    allows implementing high level functionality when writing
+    Wayland compositors based on Clutter.
+  + Bugs fixed: bgo#752752, bgo#755849.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 12 15:02:38 UTC 2016 - fcrozat@suse.com
+
+- Resync BuildRequires with the ones from configure.ac:
+  + pkgconfig(gdk-3.0) >= 3.16.0 (needed when building X11 and
+    libinput).
+  + pkgconfig(libinput) >= 0.19.0.
+  + pkgconfig(gobject-2.0) >= 2.44.0.
+
+-------------------------------------------------------------------
+Fri Jan 22 08:30:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.25.4:
+  + Add more scrolling information inside ClutterScrollEvent
+  + Bugs fixed: bgo#757026.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 17 21:57:56 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 1.25.2:
+  + Set event code on button and key events in the evdev input
+    backend.
+  + Take scaling factor into account on Wayland with GDK.
+  + Decouple selectability from editability in ClutterText.
+  + Allow overriding the Cogl driver used by Clutter.
+  + Rework the windowing system backend selection.
+  + Bugs fixed: bgo#758238, bgo#755245, bgo#757470, bgo#752752,
+    bgo#759074, bgo#759191, bgo#742678.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 21:57:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.24.2:
+  + Emulate discrete scrolling on evdev.
+  + Improve animation smoothness under the GDK backend.
+  + Bugs fixed: bgo#755357, bgo#745517, bgo#756284.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:26:44 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.24.0:
+  + Fix ClutterGridLayout's preferred size computation.
+  + Improve embeddability of Clutter in foreign toolkits.
+  + Bugs fixed: bgo#754134, bgo#754671, bgo#754697, bgo#754766,
+    bgo#754889, bgo#754890, bgo#754938, bgo#754993, bgo#755014.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 21 18:06:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.6:
+  + Require Cogl 1.21.2.
+  + Prefer the OpenGL 3.x Cogl driver. The GL3 driver drops legacy
+    API, and should bring a slight performance improvement, as well
+    as lower memory overhead. If GL3 is not supported, Clutter
+    falls back to the older GL driver transparently.
+  + Bugs fixed: bgo#742678, bgo#746279, bgo#753895.
+  + Updated translations.
+- Add pkgconfig(gio-2.0) BuildRequires: This is now an explicit
+  dependency.
+
+-------------------------------------------------------------------
+Thu Jul 23 12:15:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.4:
+  + Add functions for binding a GListModel to a ClutterActor. The
+    bind_model() and bind_model_with_propertis() methods on
+    ClutterActor allow binding objects inside a GListModel
+    implementation to children or an actor.
+  + Add event types for touchpad gestures. Currently, the libinput
+    input backend is the only one that will generate the touchpad
+    events for swipe and pinch/zoom/rotate, but support for other
+    backends is planned in the future.
+  + Documentation fixes.
+  + Bugs fixed: bgo#752272, bgo#752056, bgo#752104, bgo#751472.
+
+-------------------------------------------------------------------
+Tue Jun 30 13:24:04 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.2:
+  + Add accessor functions for ClutterActor state. Currently, actor
+    state is accessible only via GObject properties and via
+    pre-processor macros; the former are not very friendly for C
+    developers, while the latter are not usable from language
+    bindings. New functions have been added to fill in the gap; the
+    macros have a "soft" deprecation, since compiler warnings
+    cannot be used to detect their use.
+  + Merge the Cally API reference into Clutter's. The Cally API is
+    part of the Clutter shared library; it makes sense to have the
+    API references merged.
+  + Improve visual handling with the GDK backend running on X11.
+    Cogl has its own visual, based on its preferred GLXFBConfig;
+    this means that Clutter should use and expose the correct
+    GdkVisual instance when creating the GdkWindow used for drawing
+    the contents of the stage.
+  + Improve input device handling in the GDK backend. Properly
+    detect touchpad devices; translate touch events.
+  + Bugs fixed: bgo#707982, bgo#750496, bgo#747489, bgo#747951,
+    bgo#749739, bgo#749482.
+- Drop clutter-fix-touchpad-detection.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 30 13:18:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.22.4:
+  + Fixes in the input handling of the X11 and GDK backends.
+  + Bugs fixed: bgo#750496, bgo#747489, bgo#749739, bgo#749482,
+    bgo#751472.
+- Drop clutter-fix-touchpad-detection.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue May 19 08:34:43 UTC 2015 - zaitor@opensuse.org
+
+- Add clutter-fix-touchpad-detection.patch: Fix X11 touchpad
+  detection, previous commit had a typo (bgo#749482).
+
+-------------------------------------------------------------------
+Tue May 12 17:51:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.22.2:
+  + Improve touchpad detection in the X11 backend. The X11 backend
+    now uses the same heuristics as GDK.
+  + Fix handling of SwapBuffersWithDamage on EGL. Use the correct
+    arguments for the Cogl API, which is mapped on the
+    corresponding EGL extension.
+  + Fix ClutterStage:use-alpha. Painting the stage with the
+    use-alpha property is now working on all backends.
+  + Fix detection of an ARGB visual in the GDK backend.
+  + Bugs fixed: bgo#749256, bgo#747436.
+
+-------------------------------------------------------------------
+Mon Mar 23 11:57:59 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.22.0:
+  + Improve pointer tracking in the evdev input backend.
+  + Fix handling of multiple stages with the GDK backend.
+  + Bugs fixed: bgo#746328, bgo#746575.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:03:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.21.8:
+  + Documentation updates.
+  + Update the MSVC build files.
+  + Bugs fixed: bgo#745512.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 17:46:21 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.21.6:
+  + Support quad-buffer stereo displays on X11/GLX.
+  + Add a Mir windowing system backend.
+  + Depend on Cogl >= 1.19 and Cairo >= 1.12.
+  + Improvements in the evdev input backend.
+  + Use the GdkFrameClock to drive the ClutterMasterClock.
+  + Bugs fixed: bgo#732706, bgo#743355, bgo#743615, bgo#743865,
+    bgo#744058, bgo#744604, bgo#744668.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 23 21:31:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.21.4:
+  + Use the GDK backend by default when possible.
+  + Use libinput 0.8.
+  + Allow access to vendor and product ID for input devices.
+  + Allow ClutterConstraint implementations to change the preferred
+    size ClutterConstraint classes can now update an actor's
+    preferred size, along with its allocation.
+  + Improve the GDK backend: Properly support high DPI displays, as
+    well as Wayland.
+  + Bugs fixed: bgo#730815, bgo#740759, bgo#734587, bgo#742829.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec 18 02:23:38 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.21.2:
+  + Improve input device handling. Both on the evdev input backend,
+    and the XInput2 backend for X11.
+  + Allow content implementations to drive actors preferred size.
+    If a ClutterActor is only used to paint a ClutterContent
+    implementation, it should be possible to allow the actor to
+    have the same preferred size of its content. We use a
+    ClutterRequestMode to specify this behaviour.
+  + Documentation fixes.
+  + Bugs fixed: bgo#738520, bgo#739050, bgo#741350, bgo#740997,
+    bgo#676326, bgo#711182, bgo#709252, bgo#669743, bgo#719962,
+    bgo#681300, bgo#729462.
+
+-------------------------------------------------------------------
+Fri Dec 12 15:38:02 UTC 2014 - fcrozat@suse.com
+
+- Disable wayland on SLE12.
+
+-------------------------------------------------------------------
+Mon Sep 22 11:12:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.20.0:
+  + clutter_text_set_font_name invalid example using "pt"
+    (bgo#736826).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 14:52:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.19.10:
+  + Honour the desktop window scaling factor in the GDK backend.
+  + Ensure accessibility support is correctly initialized.
+  + Improve default paint volume computation.
+  + Improve input handling on Wayland and X11.
+  + Bugs fixed: bgo#736682, bgo#736413, bgo#734480, bgo#734115,
+    bgo#735388, bgo#735244.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 21 15:09:12 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.19.8:
+  + Improve the GDK backend.
+  + Fix drawing transparent Canvas content inside transparent
+    actors.
+  + Bugs fixed: bgo#733202, bgo#734934, bgo#734935, bgo#734761.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 13 22:17:54 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.19.6:
+  + Add a signal for the end of the frame on ClutterStage.
+  + Improvements in the reliability of the evdev input backend.
+  + Improvements in the GestureAction implementation.
+  + Bugs fixed: bgo#732342, bgo#732907, bgo#733062, bgo#733300,
+    bgo#733561, bgo#733562, bgo#733560.
+- Changes from version 1.19.4:
+  + Bugs fixed: bgo#731268, bgo#731178, bgo#731254, bgo#731536,
+    bgo#732234, bgo#732235.
+- Changes from version 1.19.2:
+  + Improve event handling on evdev input backend.
+  + Bugs fixed: bgo#723560, bgo#730577, bgo#728968, bgo#728967,
+    bgo#730215.
+
+-------------------------------------------------------------------
+Wed Aug 13 18:58:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.18.4:
+  + Improve touch events handling on X11
+  + Fix opacity issues with canvas contents
+  + Documentation updates.
+  + Bugs fixed: bgo#728521, bgo#729144, bgo#730577, bgo#731268,
+    bgo#732143, bgo#732235, bgo#732234, bgo#733385, bgo#733560,
+    bgo#733300, bgo#733062, bgo#732907.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 15 17:15:38 UTC 2014 - dimstar@opensuse.org
+
+- Build wayland backend: switch build_wayland_backend to 1.
+- Add pkgconfig(gudev-1.0) and pkgconfig(wayland-server)
+  BuildRequires: enable clutter-wayland-compositor support.
+- Pass --enable-evdev-input and --enable-egl-backend to configure.
+
+-------------------------------------------------------------------
+Tue Apr 15 05:32:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.18.2:
+  + Fix the list of dependencies. Clutter 1.18 depends on Cogl
+    1.17.5 when building the EGL/KMS backend.
+  + Fixes for the Visual Studio build files. Use the new symbol
+    visibility annotations when building with MSVC.
+  + Fix event handling on Windows. An optimization led to a crash
+    on the Windows backend when delivering events without an
+    associated ClutterStage.
+  + Ensure that set_child_above/below work on the Stage
+    ClutterStage should respect the paint order when using the
+    Actor API.
+  + Skip conformance test suite on X11 when DISPLAY is unset.
+    Instead of bailing out when initializing the test suite we
+    should just tell the test suite API to skip the units. This
+    allows the TAP driver to catch the skipped tests and avoid
+    warnings.
+  + Bugs fixed: bgo#728177, bgo#727020, bgo#711645, bgo#726762,
+    bgo#726703.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 27 21:14:00 UTC 2014 - mgorse@suse.com
+
+- Add clutter-bgo725722-set-size.patch: Fix setting size of an
+  actor in some cases.
+
+-------------------------------------------------------------------
+Tue Mar 18 15:45:13 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.18.0:
+  + Update build environment for Visual Studio.
+  + Improve the API for implementing Wayland compositors.
+  + Port the documentation to MarkDown.
+  + Use symbol annotations to ensure the public ABI.
+  + Bugs fixed: bgo#725716, bgo#725873, bgo#725722, bgo#726199,
+    bgo#726341, bgo#726315, bgo#726313, bgo#726198, bgo#708781,
+    bgo#711857.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 01:17:06 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.17.6:
+  + Use libinput instead of libevdev.
+  + Improvements in the X11 input handling.
+  + Improve RTL handling in ClutterText.
+  + Bugs fixed: bgo#724788, bgo#724971, bgo#720566, bgo#725102,
+    bgo#725103, bgo#705779, bgo#725561.
+  + Updated translations.
+- Follow upstreams switch to libinput:
+  + Drop pkgconfig(libevdev) BuildRequires.
+  + Add pkgconfig(libinput) and pkgconfig(libudev) BuildRequires.
+- Drop clutter-bgo724788.patch: fixed upstream.
+- Disable make check run: clutter requires access to a $DISPLAY
+  for the test suite to succeed.
+
+-------------------------------------------------------------------
+Wed Mar  5 01:17:04 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.17.4:
+  + Add per-gesture thresholds. It is possible to give horizontal
+    and vertical thresholds to each ClutterGestureAction instance;
+    if unset, the default is to use the dnd threshold from
+    ClutterSettings.
+  + Allow negative factors in ClutterActor scale properties. The
+    functions already accepted these values, but the properties
+    did not.
+  + Depend on Cogl 1.17.3
+  + Bugs fixed: bgo#711540, bgo#662818, bgo#710232, bgo#706311,
+    bgo#724242.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  5 01:17:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.17.2:
+  + Allow ClutterScript definitions for Interval and Transition
+    classes.
+  + Add generic API for event filtering.
+  + Deprecated ClutterTableLayout.
+  + Allow GestureAction subclasses to change the trigger edge.
+  + Use the window scaling factor when creating Cairo surfaces.
+  + Detect window scaling factor automatically on X11.
+  + Support ClutterStage cursor visibility in the Wayland backend.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 18:16:00 UTC 2014 - idonmez@suse.com
+
+- Add clutter-bgo724788.patch: Fix rendering problems with recent
+  (stable) nvidia drivers (bgo#724788).
+
+-------------------------------------------------------------------
+Tue Jan 28 20:26:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.16.4 (bnc#860916):
+  + Performance improvements, avoid using hardware picking as much
+    as possible; do not queue redraws when not needed, and rely on
+    clipped redraws more.
+  + Accessibility fixes.
+  + Bugs fixed: bgo#710227, bgo#719747, bgo#712563, bgo#722220,
+    bgo#722188, bgo#719901, bgo#719563, bgo#719367, bgo#719368.
+
+-------------------------------------------------------------------
+Tue Nov 19 18:17:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.16.2:
+  + Allow creating intervals and transitions from ClutterScript
+    ClutterInterval now implements ClutterScriptable.
+  + X11 backend improvements: Update the device coordinate
+    handling; remove the dependency on the XFixes extension.
+  + Wayland backend improvements: Implement the
+    ClutterStage:cursor-visible property.
+  + Apply the correct opacity when painting ClutterImage.
+  + Throttle touch update events.
+  + Fix preferred size of TableLayout: Take account of the
+    visibility of the children when computing the preferred size of
+    a ClutterActor using a ClutterTableLayout as its layout
+    manager.
+  + Documentation fixes.
+  + Bugs fixed: bgo#707071, bgo#709762, bgo#709590, bgo#709761,
+    bgo#709620, bgo#708922, bgo#709434, bgo#708850.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 07:45:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.16.0:
+  + Fix a division by zero in the X11 backend.
+  + Bugs fixed: bgo#707033.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 20 11:55:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.96:
+  + Fix a crasher bug happening on X11.
+  + bgo#708439: clutter-xi2: don't access the stage if we don't
+    have one.
+
+-------------------------------------------------------------------
+Fri Sep 20 07:24:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.94:
+  + Improve the evdev input backend.
+  + Allow scaling windowing surfaces.
+  + Bugs fixed: bgo#706652, bgo#706543, bgo#706494, bgo#707377,
+    bgo#707808, bgo#707774, bgo#707869, bgo#708079, bgo#708383.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:37:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.92:
+  + Fix regression in BoxLayout for RTL text direction.
+  + Update Visual Studio build files.
+  + Bugs fixed: bgo#706450.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 07:04:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.90:
+  + Update the Wayland backend.
+  + Drop support for XInput 1.x.
+  + Fix event and device handling when using evdev.
+  + Allow using ClutterContent on a ClutterStage.
+  + Fixes for the Windows backend.
+  + Documentation fixes.
+  + Bugs fixed: bgo#703809, bgo#704625, bgo#698836, bgo#705739,
+    bgo#705710, bgo#704269, bgo#704457, bgo#699578, bgo#704279,
+    bgo#703336, bgo#701356, bgo#703969, bgo#703878, bgo#703608,
+    bgo#703877.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 10 16:25:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.2:
+  + Improve state tracking and short circuiting.
+  + Wayland backend improvements and updates.
+  + Documentation updates.
+  + Allow installation of conformance tests.
+  + Add ClutterFlowLayout:snap-to-grid.
+  + Improve gesture recognizers.
+  + Various deprecations.
+  + Bugs fixed: bgo#682789, bgo#698669, bgo#698766, bgo#648873,
+    bgo#699675, bgo#692706, bgo#701974, bgo#696813, bgo#701208,
+    bgo#700980, bgo#702016, bgo#702610, bgo#702941, bgo#702202,
+    bgo#703188, bgo#703476, bgo#703566, bgo#697285, bgo#703882,
+    rh#975171.
+
+-------------------------------------------------------------------
+Wed May 15 07:23:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.14.4:
+  + Fix GestureAction handling of multi-touch gestures.
+  + Add a paint callback for Stage updates.
+  + Improve scaling behaviour in ZoomAction.
+  + Documentation fixes.
+  + Bugs fixed: bgo#698668, bgo#698671, bgo#698674, bgo#698783.
+
+-------------------------------------------------------------------
+Wed Apr 17 18:03:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.14.2:
+  + Ensure a redraw when making the stage visible under Wayland.
+  + Fix build with debug messages enabled.
+  + Documentation fixes.
+  + Bugs fixed: bgo#696791.
+
+-------------------------------------------------------------------
+Thu Mar 28 23:16:35 UTC 2013 - zaitor@opensuse.org
+
+- Add build_wayland_backend define and set it to 0, as we do not
+  want to build wayland support yet. Pass conditional
+  --enable-wayland-backend to configure.
+- Add conditional pkgconfig(wayland-client, wayland-cursor and
+  xkbcommon) BuildRequires, needed for wayland backend building.
+
+-------------------------------------------------------------------
+Mon Mar 25 20:33:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 09:19:53 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.13.10:
+  + Fix a typo in the ClutterTimeline::stopped signal declaration
+  + Use the XKB groups state when computing key modifiers on X11
+  + Fixes for the Visual Studio build
+  + Documentation and introspection fixes
+  + Add a function to disable accessibility
+  + Performance improvements
+  + Bugs fixed: bgo#695158, bgo#695260, bgo#695188, bgo#691468,
+    bgo#695838, bgo#695870, bgo#695982.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:17:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.13.8:
+  + Use ClutterActor:child-transform with ClutterScrollActor.
+  + Add progress-based marker API to ClutterTimeline.
+  + Allow building Wayland compositor and client support together.
+  + Documentation fixes.
+  + Bugs fixed: bgo#686225, bgo#692851, bgo#694267, bgo#694319,
+    bgo#695119, bgo#695158.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 06:52:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.13.6:
+  + Perform the picking in a separate buffer.
+  + Add experimental API for changing the draw timing.
+  + Always request XInput 2.3 on the X11 backend.
+  + Bugs fixed: bgo#692466, bgo#692971, bgo#669122, bgo#693348,
+    bgo#692901, bgo#693696, bgo#693767, bgo#694187, bgo#693741,
+    bgo#694229, bgo#687652, bgo#694237.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:49:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.13.4:
+  + Fix for the fullscreen support of the ClutterStage on Windows.
+  + Documentation fixes.
+  + Use XFixes to show and hide the cursor on X11 backends.
+  + Allow setting Pango attributes on editable ClutterText actors.
+  + Bugs fixed: bgo#690735, bgo#691651, bgo#686477, bgo#690836,
+    bgo#690835, bgo#690833, bgo#691114, bgo#690664, bgo#690497.
+- Changes from version 1.13.2:
+  + Add ClutterTapAction, a gesture recogniser for single touch
+    taps.
+  + Add ClutterSwipeAction::swipe.
+  + Enable XInput 2.x support by default.
+  + Documentation fixes.
+  + Bugs fixed: bgo#685589, bgo#685028, bgo#685221, bgo#683948,
+    bgo#685737, bgo#686776, bgo#689073, bgo#685186, bgo#689258,
+    bgo#689061, bgo#689316, bgo#689399, bgo#689496, bgo#690214,
+    bgo#673838, bgo#686692, bgo#685982, bgo#688457, bgo#689392.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 17 11:34:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.12.2:
+  + Updates for the Wayland backend.
+  + Build environment fixes for Visual Studio.
+  + Ensure that the Clutter lock is acquired before releasing it.
+  + Bugs fixed: bgo#679439, bgo#685554.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 16:54:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.12.0:
+  + Fix the device tracking for core X11 pointers
+  + Respect text direction in BinLayout
+  + Bugs fixed: bgo#684214, bgo#684552, bgo#684530, bgo#684509.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 22:33:41 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.11.16:
+  + Fixes for gesture-based actions
+  + Ensure modified Enter keys do not end up in the Text buffer for
+    single-line ClutterText actors.
+  + Add touch event support to ClutterClickAction
+  + Bugs fixed: bgo#683301, bgo#683431, bgo#683471, bgo#682161,
+    bgo#623344, bgo#683869, bgo#683870, bgo#683936, bgo#683937.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 06:53:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.14:
+  + Fixes for the touch sequence handling
+  + Add interpolation for matrices
+  + Add ClutterPanAction
+  + Add more accessors to GestureAction for its subclasses
+  + Fix ClutterTableLayout.pack() with negative row/column
+  + Fix press coordinates when using ClutterDragAction with a drag
+    handle
+  + Documentation and annotation fixes
+  + Deprecate the ClutterActor::pick signal
+  + Bugs fixed: bgo#682795, bgo#682754, bgo#681746, bgo#679990,
+    bgo#681648, bgo#683219, bgo#683066, bgo#683090, bgo#683126,
+    bgo#682362, bgo#683113, bgo#680255
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 20:20:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.12:
+  + ClutterBinLayout honours the fixed-position of actors
+  + Soft-deprecation of ClutterGeometry
+  + Deprecate the ClutterActor::paint signal
+  + Ensure we associate input devices to the stage on touch events
+  + Allow constraining a DragAction to an area
+  + Do not handle events on ClutterText if :selectable is FALSE
+  + Add ClutterActor:child-transform
+  + Fix height-for-width policy in ClutterBinLayout
+  + Add ClutterZoomAction
+  + Documentation fixes
+  + Bugs fixed: bgo#678427, bgo#679483, bgo#681074, bgo#681168,
+    bgo#681584, bgo#681814, bgo#682070, bgo#682265
+  + Updated translations.
+
+
+-------------------------------------------------------------------
+Tue Aug  7 10:30:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.10:
+  + Add support for multiple touch points in GestureAction
+  + Add a RotateAction
+  + Generate crossing events for touch devices
+  + Respect ClutterStage.set_motion_events_enabled() for touch
+    events
+  + Fix a regression in discrete scroll events emission
+  + Add progress functions defined in CSS3-Transitions
+  + Add ClutterActor::transition-stopped
+  + Add ClutterActor.transform
+  + Documentation and build fixes
+  + Bugs fixed: bgo#678586, bgo#680088, bgo#678587, bgo#679797,
+    bgo#680174, bgo#680751, bgo#680752
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 17 20:51:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.8:
+  + Bump the dependency of ATK
+  + Ensure validity of iterators
+  + Rounding error fixes for allocations
+  + Updates for the VisualStudio build files
+  + Add ClutterDragAction::drag-progress
+  + Add ClutterActor:pivot-point
+  + Removal of the experimental ClutterLayoutManager easing state
+    API
+  + Several API deprecations.
+  + Bugs fixed: bgo#679451, bgo#679457, bgo#679465, bgo#677853.
+
+-------------------------------------------------------------------
+Tue Jun 26 08:48:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.6:
+  + Accessibility fixes
+  + Ensure that ClutterBinLayout honours the fixed positioning
+  + Improvements in GridLayout
+  + Improve debugging messages
+  + Add ClutterActor:content-repeat
+  + Explicit animation API improvements
+  + Switch to lcov for test coverage
+  + Remove an extra reference on ClutterStage
+  + Improve touch event support
+  + Bugs fixed: bgo#677659, bgo#677778, bgo#677921, bgo#675183
+    bgo#678391, bgo#678423, bgo#678439, bgo#678264, bgo#677221
+    bgo#678047, bgo#678049, bgo#678279, bgo#678278.
+- Drop clutter-brpfix.patch: unneeded now.
+
+-------------------------------------------------------------------
+Wed Jun 20 17:51:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.4:
+  + Multi-touch support fixes
+  + Add ClutterDropAction::drop-cancel signal
+  + Add examples in the repository
+  + Allow disabling the tests and examples when building Clutter
+  + Fix the preferred size to always include the actor's margin
+  + Fix picking of the ClutterScrollActor
+  + Add implicit animations for the color properties of ClutterText
+  + Layout managers should respect the child expand and align
+    properties
+  + Make all layout managers respect the child easing state when
+    allocating
+  + Add ClutterTimeline::stopped signal
+  + Add ClutterGridLayout
+  + Fixes for ClutterKeyframeTransition
+  + Documentation fixes
+  + Fixes for building Clutter with Visual Studio
+  + Fixes for the Mac backend
+  + Bugs fixed: bgo#674365, bgo#675336, bgo#675371, bgo#675396,
+    bgo#675890, bgo#675998, bgo#676031, bgo#676032, bgo#676068,
+    bgo#676088, bgo#676158, bgo#676334, bgo#676367, bgo#676827,
+    bgo#676854, bgo#676963, bgo#677039, bgo#677085, bgo#677086,
+    bgo#677098, bgo#677283, bgo#677284, bgo#677372, bgo#677384,
+    bgo#677390.
+- Remove workaround in %build to create test-unit-names.h to avoid
+  races in build: fixed now.
+
+-------------------------------------------------------------------
+Tue Jun 19 19:40:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.11.2:
+  + Add ClutterScrollActor
+  + Make clutter_actor_allocate() respect the easing state of the
+    actor
+  + Add automatic expansion flags for ClutterActor
+  + Add ClutterTransitionGroup and ClutterKeyframeTransition
+  + Provide more C convenience API to ClutterTransition
+  + Provide base geometric types: point, size, rectangle, along
+    with commodity API
+  + New round of deprecations
+  + Return a valid default PaintVolume in more cases
+  + Report distance as an axis on X11 with XInput 2 support enabled
+  + Documentation fixes
+  + Bugs fixed: bgo#672994.
+
+-------------------------------------------------------------------
+Tue Jun 19 09:18:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.10.8:
+  + Fix touch event delivery and implementation
+  + Introspection fixes
+  + Bugs fixed: bgo#677778, bgo#677921
+- Add clutter-brpfix.patch: Fix brp check errors.
+
+-------------------------------------------------------------------
+Tue May 29 18:26:04 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.10.6:
+  + Fix assertions and segfaults with touch events.
+  + Drop usage of GL types in Clutter: C, GLib, and Cogl provide
+    the same exact types, and we also get to drop the dependency on
+    the GL header.
+  + Update Visual Studio project files and build rules.
+  + Fix assertion error in ClutterFlowLayout.
+  + Re-allow passing NULL in clutter_text_set_text(). The switch to
+    ClutterTextBuffer introduced a regression.
+  + Add missing annotations in ClutterText.
+  + Bug fixes: bgo#675371, bgo#676150, bgo#676068, bgo#675890,
+    bgo#675396.
+- Drop BuildRequires: pkgconfig(gl), no longer needed.
+
+-------------------------------------------------------------------
+Mon May 14 13:10:14 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.10.4:
+  + Fixes for XInput 2 event handling
+  + Fix an overflow when calculating the distance of very long
+    paths
+  + Ensure that we don't change actor visibility when restacking
+  + Bugs fixed: bgo#652521, bgo#673644, bgo#674510.
+
+-------------------------------------------------------------------
+Thu Apr 19 13:01:17 UTC 2012 - vuntz@opensuse.org
+
+- Work around broken build in some cases because of something racy:
+  build test-unit-names.h before the real make. This is temporary
+  until bgo#674365 gets fixed. Thanks to Dominique Leuenberger
+  <dimstar@opensuse.org> for the workaround.
+
+-------------------------------------------------------------------
+Tue Apr 17 10:34:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.10.2:
+  + Fix expansion of actors inside a TableLayout.
+  + Fix text length passed to ClutterTextBuffer.
+  + Clean up handling of in-flight changes during implicit
+    transitions.
+  + Bugs fixed: bgo#672853, bgo#672890, bgo#672945, bgo#673783,
+    bgo#674105.
+
+-------------------------------------------------------------------
+Thu Mar 22 18:50:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.10.0:
+  + Fix ClutterTimeline:current-repeat accessor
+  + Improve the memory management of Transitions
+  + Remove the Animatable argument for PropertyTransition
+    constructor
+  + Clean up documentation and examples
+  + Fix TableLayout policy for actors spanning multiple rows or
+    columns
+  + Build fixes for the Wayland backend.
+  + Updated VisualStudio project files.
+  + Bugs fixed: bgo#672557.
+
+-------------------------------------------------------------------
+Mon Mar 19 18:23:50 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.9.16:
+  + Support implicit animatable properties.
+  + Introduce paint nodes.
+  + Support Content delegates.
+  + ClutterText improvements.
+  + Support for the XInput 2.2 extension.
+  + Bugs fixed: bgo#655491, bgo#656156, bgo#668801, bgo#671736,
+    bgo#671779, bgo#672316.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 08:21:51 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.14:
+  + Support custom versioning boundaries for the API
+  + Add version information to deprecations
+  + Move all deprecated symbols to separate header files
+  + Documentation and annotation fixes.
+  + Accessibility fixes in Cally
+  + Updates to the Wayland compositor and client support
+  + Bugs fixed: bgo#670680.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 12:45:52 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.12:
+  + Add ClutterTimeline:repeat-count and deprecate :loop
+  + Add a progress mode for ClutterTimeline
+  + Fix ClutterBoxLayout allocation
+  + Improve the performance of the shader-based effect in Clutter
+  + Update the internal usage of Cogl API
+  + Allow accessing Wayland input devices
+  + Add a convenience CLUTTER_BIND_ALL enumeration
+  + Cally updates
+  + Visual Studio project updates
+  + Add clutter_text_coords_to_position()
+  + Documentation updates.
+  + Introspection annotation fixes.
+  + Bugs fixed: bgo#669730, bgo#669291, bgo#667540, bgo#670433,
+    bgo#670402, bco#2515.
+- Add pkgconfig(gdk-3.0) BuildRequires so that we also build the
+  GDK backend.
+
+-------------------------------------------------------------------
+Tue Feb  7 07:46:03 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.10:
+  + Provide symbolic names for pointer buttons
+  + Add ClutterActorIter
+  + Fix regression introduced by the default FixedLayout layout
+    manager
+  + Documentation fixes
+  + Updates to the Wayland backend
+  + Bugs fixed: bgo#668692, bgo#668669, bgo#667840, bgo#669360,
+    bgo#668951.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Tue Jan 24 18:53:53 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.8:
+  + Fix regressions in users of deprecated API. Also, allow to mix
+    the new Actor API with the old Container API without breaking.
+  + Add GResource support in ClutterScript
+  + Update the Wayland client backend
+
+-------------------------------------------------------------------
+Thu Jan 19 14:33:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.6:
+  + Deprecate clutter_actor_show_all() and clutter_actor_hide_all()
+  + Gracefully handle existing code
+  + Fix build with binutils-gold
+  + Allow tracking of an actor's first and last child
+  + Bugs fixed: bgo#668137.
+
+-------------------------------------------------------------------
+Tue Jan 17 15:20:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.9.4:
+  + New scene graph API in ClutterActor
+  + Layout management updates
+  + Add ClutterTextBuffer
+  + Several deprecations (see NEWS for details)
+  + ClutterTimeline can parse markers from ClutterScript
+  + Add a diagnostic mode
+  + Wayland backend updates
+  + Bugs fixed: bgo#665040, bgo#665052, bgo#664996, bgo#664336,
+    bgo#664252, bgo#664582, bgo#660997.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Tue Jan 10 14:14:04 UTC 2012 - vuntz@opensuse.org
+
+- Add a libclutter-glx-1_0-0 Obsoletes to libclutter-1_0-0: it is
+  technically wrong, but without it, typelib-1_0-Clutter-1_0 will
+  not get installed and many things will crash because they will
+  use an old version of clutter by accident.
+
+-------------------------------------------------------------------
+Tue Dec  6 10:50:15 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-Clutter-1_0 subpackage.
+- Add typelib-1_0-Clutter-1_0. Requires to devel subpackage.
+- Move the libclutter-glx-1_0-0 Conflicts to the new
+  typelib-1_0-Clutter-1_0 subpackage.
+
+-------------------------------------------------------------------
+Tue Dec  6 08:41:58 UTC 2011 - dimstar@opensuse.org
+
+- Add conflicts between libclutter-1_0-0 and the older
+  libclutter-glx-1_0-0; Obsoletes/Provides is technically wrong.
+
+-------------------------------------------------------------------
+Tue Nov 22 14:31:11 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.9.2:
+  + Major changes:
+    - Multi-backend build, and run-time backend selection
+    - GDK windowing system backend
+    - Show a hint when ClutterText is in password mode
+    - Improve Windows build support
+    - Remove the requirement for using clutter_threads_init()
+    - Deprecate the default ClutterStage
+    - Move the deprecated headers into their own directory
+    - Change deprecation policy
+  + Bugs fixed: bgo#652588, bgo#659625, bgo#659601, bgo#659928,
+    bgo#659893, bgo#656663, bgo#660354, bgo#660471, bgo#660512,
+    bgo#660623, bgo#660985, bgo#661015, bgo#660786, bgo#661887,
+    bgo#657434, bgo#663332, bgo#663594, bgo#663733, bgo#651718,
+    bgo#663999, bgo#663720, bgo#663636
+  + Updated translations.
+- Rename subpackage libclutter-glx-1_0-0 to libclutter-1_0-0,
+  following the upstream changes.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:39:13 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.8.2:
+  + Plug memory leaks in ClutterBoxLayout
+  + Fix the handling of out-of-stage actors in OffscreenEffect
+  + Do not complete a PaintVolume multiple times
+  + Update the MingW cross-compilation script
+  + Bugs fixed: bgo#659625, bgo#659893, bgo#659601, bgo#660985,
+    bgo#661022.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 17:30:25 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.8.0:
+  + Add debug options to catch out-of-band transformations
+  + Implicitly clip to the stage viewport
+  + Paint editable Text actors even when empty
+  + Do not fall back to the text color for the selection color
+  + Add a fall back to wildcard source durations in ClutterState
+  + Updated translations.
+  + Bugs fixed: bgo#659069, bgo#659116, bgo#659200, bgo#659501.
+
+-------------------------------------------------------------------
+Sat Sep 17 23:09:34 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Sep 13 07:56:01 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.7.90:
+  + Make sure that setting :use-markup does not depend on the order
+  + Protect against multiple unrealize call on ClutterStage
+  + Fortify ATK event listener
+  + Documentation fixes
+  + Bugs fixed: bgo#651940, bgo#658721, bco#2629.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 05:50:29 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.7.14:
+  + Use newer version of ATK
+  + Allow using Layout Managers with generic containers
+  + Cookbook updates
+  + Improve examples in the API reference
+  + Ensure thread safety of the repaint functions add/removal
+  + Make the ClutterText:line-wrap property work again
+  + Disable redirection to offscreen buffer by default
+  + Bugs fixed: bgo#657681, bco#2339.
+- Pass --enable-docs to configure so we can ship the cookbook.
+- Merge doc subpackage in devel subpackage, and add appropriate
+  Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Wed Aug 31 10:57:52 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.7.12:
+  + Reload the font caches on X11 when the user installs a new font
+  + Allow using "font-description" as a ClutterScript alias for
+    "font-name"
+  + Make sure that LayoutManager subclasses take the allocation
+    origin into account when allocating the children
+  + Build fixes: always link against libm.
+  + Documentation fixes
+  + Bugs fixed: bgo#657529.
+- Add pkgconfig(pangoft2) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue Aug 16 04:02:13 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.7.10:
+  + Do not update the last paint volume when picking
+  + Fix building the tests
+  + Bugs fixed: bgo#656588.
+
+-------------------------------------------------------------------
+Mon Aug 15 17:15:06 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.7.8:
+  + Various fixes in Cally
+  + Add ClutterCairoTexture:auto-resize
+  + Add ClutterAnimatable.interpolate_value()
+  + Allow using Animatable implementations with ClutterState
+  + Improve ClutterModel's implementation
+  + Improve ClutterStage behaviour on OS X
+  + Bugs fixed: bgo#655387, bgo#655306, bgo#655311, bgo#655307,
+    bgo#648633.
+- Enable make check in %check.
+
+-------------------------------------------------------------------
+Wed Jul 27 12:10:46 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.7.6:
+  + Accessibility fixes in Cally
+  + Depend on the new Cogl windowing system API.
+  + Add functions for retrieving the clip boundaries on the Stage
+  + Auto-detect the default flavour when building
+  + Mark the OSX backend as non-experimental
+  + Make sure that Gestures are cancelled when missing release
+    events
+  + Correct the rounding for paint volumes
+  + Do not clobber XI2 events data
+  + Fix ClutterSnapConstraint's right edge snapping
+  + Some API deprecations.
+  + Bugs fixed: bgo#653959, bgo#654361, bgo#654363, bgo#654103,
+    bgo#654656, bgo#654024, bgo#654066, bgo#654718, bgo#654726,
+    bgo#654727, bgo#655342, bco#1733, bco#2421.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Jul  5 08:28:05 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.7.4:
+  + Unify the GLX and EGL backends to be a single code base
+  + Restore a wider range of Z values for actors
+  + Bump up the dependency of Cogl
+  + Add ClutterDropAction
+  + Add a performance test suite
+  + Documentation and annotation fixes
+  + Build fixes
+  + Bugs fixed: bgo#650329, bgo#652566, bgo#651784, bgo#652842,
+    bgo#653066, bgo#653307, bgo#653607, bgo#651079, bgo#650675,
+    bco#2625.
+- Drop clutter-fix-cogl-1.7.2.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  4 09:56:07 CEST 2011 - vuntz@opensuse.org
+
+- Add clutter-fix-cogl-1.7.2.patch to fix build with cogl 1.7.2.
+  Patch taken from git.
+
+-------------------------------------------------------------------
+Tue Jun 14 10:05:03 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.7.2:
+  + Cogl has been moved out of tree
+  + Correctly composite non fully opaque children
+  + Allow connecting signals to ClutterState states in
+    ClutterScript
+  + Long-press handling in ClutterClickAction
+  + Added ClutterGestureAction and ClutterSwipeAction
+  + Allow Effects to influence picking
+  + Bugs fixed: bco#2257, bco#2447, bco#2482, bco#2484, bco#2553,
+    bco#2555, bco#2562, bco#2585, bco#2588, bco#2595, bco#2597,
+    bco#2599, bco#2602, bco#2610, bco#2619, bco#2620, bco#2621,
+    bco#2631, bco#2632, bco#2633, bco#2640, bco#2644, bco#2652,
+    bco#2655, bco#2656, bco#2667, bgo#650665, bgo#647875,
+    bgo#647876, bgo#650487, bgo#650597, bgo#650650, bgo#651700,
+    bgo#652129.
+- Add pkgconfig(cogl-1.0) and pkgconfig(libdrm) BuildRequires.
+- Remove now unneeded pkgconfig(gdk-pixbuf-2.0) BuildRequires.
+- Drop unneeded debug_package_requires define (as we only build
+  subpackages).
+
+-------------------------------------------------------------------
+Wed Apr  6 08:08:39 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.6.14:
+  - bco#2588: Assertion failure in
+    _cogl_pipeline_set_layer_texture_target.
+
+-------------------------------------------------------------------
+Tue Apr  5 09:07:55 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.6.12:
+  + Add safeties to avoid warning when generating paint volumes
+    for actors with a zero-sized allocations.
+  + Fix vertical aligned actors using ClutterAlignConstraint.
+  + bco#2562: Crush upon running Clutter-based programs
+  + bco#2602: Expose events ignore when doing clipped redraws
+  + bco#2610: Add recipe about implementing a ClutterEffect
+  + bco#2620: _cogl_offscreen_new_to_texture_full() leaks reference
+    when failing.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:31:38 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.6.10:
+  + Fix the event handling for the Windows backend, and prevent a
+    segmentation fault.
+  + Use the 'nearest' filter when painting the texture target for
+    ClutterOffscreenEffect.
+  + Correctly request the precision fo generated GLSL shaders on
+    GLES 2.0.
+  + Provide an implementation for ClutterStage:accept-focus, so
+    that setting and getting the property using the GObject API
+    works.
+  + Fix accessing the ClutterCrossingEvent:device field through the
+    ClutterEvent device accessors.
+  + Fix the paint volume reported by ClutterBox.
+  + Documentation fixes.
+  + bco#2600: ClutterBox implements the wrong paint volume.
+
+-------------------------------------------------------------------
+Mon Mar  7 15:03:59 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.6.8:
+  + Documentation fixes.
+  + Let ClutterBox report its paint volume.
+  + Add an "Effects" chapter to the Clutter Cookbook.
+  + Queue a redraw and/or a relayout whenever a ClutterActorMeta
+    that changes the appearances or the allocation of an actor is
+    enabled or disabled.
+  + Fix the error reporting of the initialization sequence; this
+    change makes Clutter abort early and with a meaningful message
+    on backend initialization errors, instead going ahead and
+    printing less than useful error messages.
+  + Disable blending when using a texture render during a blit.
+  + Fix handling of opacity when using an OffscreenEffect.
+  + Tune the point-in-poly checks for the software-based picking.
+  + List of bugs fixed since Clutter 1.6.6
+    - bco#2541: ClutterOffscreenEffect will multiply the actor's
+      opacity twice.
+    - bco#2589: clutter-box does not set default paint volume
+    - bco#2598: clutter_init() return value useless
+
+-------------------------------------------------------------------
+Tue Feb 22 10:50:03 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.6.6:
+  + Add four mechanisms for migrating textures inside a Cogl
+    atlas; it is possible to change the default by using the
+    environment variable COGL_ATLAS_DEFAULT_BLIT_MODE.
+  + Use the offscreen buffer size to compute the vertices of
+    ClutterDeformEffect.
+  + Make the FPS counter displayed using CLUTTER_SHOW_FPS
+    per-stage.
+  + Documentation fixes.
+  + Annotation fixes for introspection.
+  + Bugs fixed: bco#2538, bco#2558, bco#2561, bco#2571.
+- Changes from version 1.6.4:
+  + Fix handling of opacity in ClutterOffscreenEffect.
+  + Fix partially off-stage actors in ClutterOffscreenEffect.
+  + Add a recipe in the Cookbook for animating an actor on a path.
+  + Refresh key mapping when notified by X11.
+  + Clean up the ClutterStageWindow redraw implementations.
+  + Update the Wayland backend to match upstream API changes:
+    - allow using shared buffers if DRM fails;
+    - improve checks for the required extensions.
+  + Documentation fixes.
+  + Introspection annotations fixes.
+  + Fix setting the matrix for a pipeline layer.
+  + Fix flushing the framebuffer when switching to it.
+  + Make sure to call glFlush when blitting a stage region to the
+    front buffer, to avoid the driver batching the command for an
+    undefined amount of time.
+  + Fix the location of the shared objects in the Cally pkg-config
+    file.
+  + Bugs fixed: bco#1024, bco#1025, bco#1028, bco#1029, bco#1358,
+    bco#2373, bco#2525, bco#2541, bco#2546, bco#2549, bco#2550,
+    bco#2551, bco#2554, bco#2555, bco#2558, bco#2559.
+- Changes from version 1.6.2:
+  + Fix building the Clutter Cookbook from the released tarballs.
+  + Set the input device field in ClutterEvent even when they
+    have been allocated by Clutter.
+  + Fix the color comparison when setting the layer combine
+    constant.
+  + Fix memory corruption when removing the last reference on a
+    Cogl vertex buffer object.
+  + Bugs fixed: bco#2540, bco#2544, bco#2545, bco#2549.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:33:59 UTC 2011 - dimstar@opensuse.org
+
+- Update to 1.6.0:
+  + Remove more private symbols from the X11 backend.
+  + Add CLUTTER_BIND_POSITION and CLUTTER_BIND_SIZE values to the
+    ClutterBindCoordinate enumeration.
+  + Clean up in the X11 backend to reduce indirection.
+  + Small clean ups in the Win32 backend.
+  + Make Shift+Backspace behave like Backspace in ClutterText.
+  + Emit the ::new-frame signal even on the first frame of
+    ClutterTimeline, to allow setting up the initial state of an
+    animation.
+  + Fix an invalid memory access in ClutterAnimator.
+  + Flush the per-framebuffer journal when switching between
+    framebuffers.
+  + Generalize updating GLES2 uniforms.
+  + Add debug code for tracing clipping in Cogl.
+  + Improve the OSX event loop, re-using the same implementation
+    as GDK. Also, provide simple, core-like device support.
+  + Bugs fixed: fdo#2490, fdo#2530, fdo#2534
+
+-------------------------------------------------------------------
+Thu Jan 27 09:54:44 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.5.14:
+  + Allow getting the state modifiers from a ClutterClickAction.
+  + Fix ClutterDragAction to never leave the event delivery in an
+    unwanted state.
+  + Optimize state changes for texture and data states.
+  + Enable VBO support in Cogl for GLES2.
+  + Fix compilation on GLES1.1.
+  + Documentation fixes.
+  + ClutterGLXTexturePixmap has been deprecated; its parent class
+    ClutterX11TexturePixmap and the low level CoglTexturePixmapX11
+    API provide access to the same features.
+  + Be more resilient against timelines controlling the state of
+    other timelines during the clock tick.
+  + Provide defines for the windowing platforms, to allow portable
+    applications to include the correct header and select the
+    correct API depending on the target.
+  + Introduce a fast path for cogl_read_pixels() that uses the
+    journal to determine the position of a single pixel on the
+    stage
+  + Support XInput axis data on valuator devices, and introduce
+    XInput2 support for event translation and device hotplugging.
+  + Clean up the unintentionally leaked internal symbols in the X11
+    and GLX backends.
+  + Allow defining the contents of the rows of a ListModel using
+    ClutterScript. This completes the ability to fully define a
+    ClutterListModel inside a UI definition file.
+  + Bugs fixed: fdo#1422, fdo#1456, fdo#1721, fdo#2268, fdo#2400,
+    fdo#2497, fdo#2512, fdo#2513, fdo#2516, fdo#2518, fdo#2520,
+    fdo#2522, fdo#2524, fdo#2526, fdo#2527, fdo#2528.
+
+-------------------------------------------------------------------
+Thu Jan 13 17:38:55 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.5.12:
+  + Allow disabling the focus when showing a ClutterStage; this
+    also makes Clutter more compliant to the X11 window manager
+    specifications.
+  + Avoid state corruption in relayout cycles.
+  + Do not crash when destroying actors during CLUTTER_LEAVE
+    events.
+  + Remove signal handlers when disposing constraints.
+  + Keep the pixel alignment for ClutterAlignConstraint.
+  + Do not release compiled ClutterShader during their finalization
+    to avoid a warning.
+  + Revert an ABI break on the ClutterContainer pre-requisites.
+  + Fix the name of the cogl_normal_in attribute.
+  + Do not assume CoglBitmaps are allocated to height * rowstride.
+  + Fix the core device list creation on X11.
+  + Avoid enabling blending in the Cogl journal, if possible.
+  + Documentation fixes.
+  + Build fixes for mixed autotools version environment.
+  + Improve the performance of getting the number of rows of a
+    ClutterListModel.
+  + Don't use obsolete API internally.
+  + Build fix for compiling EGL backend with OpenGL under X11.
+  + Parse GType object properties in ClutterScript.
+
+-------------------------------------------------------------------
+Sun Dec 19 17:10:06 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.5.10:
+  + Add an evdev input backend; this adds support for input devices
+    on Linux when using the EGL-based backends.
+  + Update the build scripts for compiling the Windows backend.
+  + Updates for the Cookbook and the API references.
+  + Fix ClutterModel::get_iter_at_row() for filtered
+    ClutterListModels.
+  + Scores of fixes to the pipeline state object for GLES2.
+  + Add code that tries to perform manual clipping to avoid
+    breaking up batches of primitives.
+  + Keep a cache of ARBfp programs indexed by the pipeline state
+    that led to their generation.
+  + Accept G_TYPE_DOUBLE values in ClutterShaderEffect uniforms.
+  + Update the Wayland client backend.
+  + Update the build for Windows.
+  + Rename the ClutterTimeline:reverse property introduced in
+    Clutter 1.5.6 to ClutterTimeline:auto-reverse.
+  + Clean up the interactive tests suite.
+
+-------------------------------------------------------------------
+Thu Dec 16 12:15:47 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.5.8:
+  + Add a migration guide for code using Behaviours.
+  + Allow parsing rgb(), rgba(), hls() and hlsa() color
+    definitions.
+  + Performance improvements for the ClutterX11TexturePixmap.
+  + For caching purposes, do not discard the Material or the
+    compiled shaders for Offscreen and Shader effects.
+  + Fix image height in 3D Cogl textures.
+  + Create a GLSL generation backend for materials, similar to the
+    ARBfp one; this backend is the default for GLES2.
+  + Use FBOs and cogl_read_pixels() to efficiently read back
+    partial texture data.
+  + Various fixes in paint volumes computation and caching.
+  + Use the internal scene graph walk API to remove the map/unmap
+    implementation requirement for composite actors and for
+    containers with internal children.
+  + Simplify the backend notification of layer changes.
+  + Queue clipped redraws for Expose events on X11.
+  + Plug leaks.
+  + Include a porting guide from Behaviours.
+  + Add a recipe on scaling animations in the Cookbook.
+- Changes from version 1.5.6:
+  + Deprecate ClutterBehaviour and its sub-classes: the same
+    functionality is available using the animation framework.
+  + Add ClutterSnapConstraint, a constraint implementation that
+    snaps together the edges of two actors.
+  + Add ClutterPathConstraint::node-reached.
+  + Deprecate ClutterTimeoutPool and ClutterFrameSource: this API
+    is not used internally any more, and since it's not integrated
+    with the master clock it's of relative use.
+  + Add a named, global color palette.
+  + Add the ClutterTimeline:reverse property, for automatically
+    reversing the direction of a timeline after the emission of the
+    ::completed signal.
+  + Performance improvements in the clip stack.
+  + Do not use pointer grabs in ClutterClickAction.
+  + Improve the internally used Cogl API for primitives, paths and
+    buffers; this is the first step towards Cogl 2.0.
+  + Allow using the COGL_DEBUG environment variable to disable the
+    NPOTs support.
+  + Plug a nasty infinite loop in the XSETTINGS implementation.
+  + Internally rename CoglMaterial to CoglPipeline; this should
+    make it clearer that the API refers to the state of the GPU
+    pipeline.
+  + Add support for clipped redraws on EGL using the
+    NOK_swap_region extension.
+  + Build fixes.
+  + Use the monotonic clock API if compiling against GLib ≥ 2.27.3.
+  + Update examples in the Cookbook.
+  + Add a Cookbook recipe for looping animations.
+  + Add more documentation on Constraints.
+  + Documentation fixes.
+  + Updated translations.
+- Changes from version 1.5.4:
+  + Add a backend for Wayland.
+  + Do not generate the conformance tests list using the
+    test-conformance binary.
+  + Implement interval progress functions for ActorBox, Vertex,
+    Geometry, Color and Units.
+  + Allow overriding the surface creation in Clutter.CairoTexture.
+  + Add interpolate() method to Clutter.Color.
+  + Add ClutterPathConstraint, a simple constraint that sets the
+    origin of an actor's allocation to follow a ClutterPath.
+  + Plug some memory leaks.
+  + Fix build of the CEx100 and EGL backends.
+  + Fixes for the OSX backend.
+  + Documentation consistency and spell checking fixes.
+  + Build fixes.
+  + Updated translations.
+- Changes from version 1.5.2:
+  + Add API to ClutterActor to allow any actor to define its 3D
+    paint volume and its stage-relative 2D bounding box; the paint
+    volume is the 3D space occupied by an actor during the paint
+    sequence.
+  + Remove the internal copy of JSON-GLib.
+  + Use g_object_install_properties() with GLib 2.26.
+  + Implement ClutterContainer::child-notify, which slipped through
+    the cracks of many development cycles without anyone noticing.
+  + Document and test clutter_actor_contains(), especially the
+    corner cases.
+  + Plug memory leaks.
+  + Trap glXDestroyPixmap() in CoglTexturePixmapX11 to avoid
+    BadDrawable errors when the GLX pixmap is destroyed behind
+    Cogl's back.
+  + Rework the build system to be as non-recursive as possible.
+
+-------------------------------------------------------------------
+Tue Dec  7 11:32:32 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.4.2:
+  + Optimize ClutterText's preferred height computations when in
+    single line mode.
+  + Fix build for CEx100 backend.
+  + Fix the example code in the Cookbook recipes to be C90
+    compliant.
+  + Add optimizations in ClutterActor for show, hide and
+    queue_relayou().
+  + Build fixes for introspection data.
+  + Trap glXDestroyPixmap() to avoid an ordering issue when freeing
+    pixmaps.
+  + Fix segfaults with empty XSettings and font names.
+  + Do not use exclusive pointer grabs in ClickAction.
+  + Fixes for the win32 backend.
+  + Do not destroy materials and shaders when not needed.
+  + Leaks fixed.
+- Drop clutter-fix-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct  1 13:35:06 CEST 2010 - vuntz@opensuse.org
+
+- Add clutter-fix-build.patch to fix build with
+  gobject-introspection 0.9.10.
+
+-------------------------------------------------------------------
+Fri Sep 24 15:21:10 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Add support for describing ClutterState states using
+    ClutterAnimators in ClutterScript.
+  + Build fixes
+  + Include ClutterConstraints into the allocation phase, to avoid
+    layout cycles and improve the performance.
+  + Add new recipes to the Cookbook to illustrate constraints-based
+    layouts.
+  + Fix the request mode of ClutterBoxLayout.
+  + Fix the handling of transformations in ClutterOffscreenEffect.
+  + Documentation and introspection fixes.
+- Drop clutter-fix-gir-generation.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep 19 22:31:33 UTC 2010 - dimstar@opensuse.org
+
+- Add clutter-fix-gir-generation.patch: Fix the creation of the
+  .gir file by passing CLUTTER_CFLAGS to g-ir-scanner.
+
+-------------------------------------------------------------------
+Wed Sep 15 18:19:04 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.3.14:
+  + Fix applying layout properties from ClutterScript definitions
+    in case of multiple children.
+  + Add a Clutter EGL backend for Intel CEx100 platforms.
+  + Add new recipes in the Cookbook:
+    - texture cross-fading
+    - ClutterScript definitions
+    - event handling
+    - ClutterAnimator
+    - reusing complex animations
+  + Add methods to retrieve the clicked button and to force a
+    release in ClickAction.
+  + Documentation fixes in the API reference.
+  + Cache a full pick buffer and re-use it in case the scene does
+    not change between events.
+  + Fix a Valgrind report of memory corruption in
+    ClutterState.remove_key().
+  + Allow detaching animations created with
+    clutter_actor_animate().
+  + Depend on GObject-Introspection >= 0.9.5.
+  + Provide introspection data for the X11-specific API, like
+    ClutterX11TexturePixmap
+  + Use a template material for ClutterTexture to minimize the
+    creation of new materials.
+  + Split ClutterDragAction:drag-threshold into two, per-axis
+    properties: :x-drag-threshold and :y-drag-threshold.
+  + Allow disabling the -Bsymbolic flag when linking.
+  + Use gettext >= 0.17 to handle the localization.
+  + Flush the framebuffer earlier when drawing the vertex buffers,
+    to fix a crash when dealing with clip stacks.
+  + Make sure ClutterX11TexturePixmap removes the Cogl texture
+    handle before freeing the X11 Pixmap to avoid an error.
+  + Avoid regenerating the CoglMaterial programs too many times.
+- Pass --disable-conformance to configure: we don't want to run the
+  test suite.
+
+-------------------------------------------------------------------
+Tue Aug 17 10:10:52 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.3.12:
+  + New recipes in the Cookbook:
+    - create and animate sub-textures
+    - layout managers
+    - scroll events
+  + Set the ClutterTexture:filename property to also be readable.
+  + Avoid layout cycles when creating ClutterLayoutMeta objects
+    during the ::allocate implementation
+  + Add a ClutterTableLayout, a layout manager for tabular layouts.
+  + Capture ENTER and LEAVE events on the stage within the
+    DragAction.
+  + Plug memory leaks.
+  + Use g_object_notify_by_pspec(), if available, to speed up the
+    emission of the ::notify signal on property changes.
+  + Re-use the Cogl texture atlas for the CoglPango glyphs cache,
+    and improve the performance with large font sizes.
+  + Various fixes in the Materials comparison and inheritance.
+  + Add the ability to associate a user program to a material.
+
+-------------------------------------------------------------------
+Fri Aug  6 03:43:48 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.3.10:
+  + Fix a locale-dependent conversion from double to string when
+    generating ARBfp programs for the materials.
+  + Use the XKB extension on X11 platforms to convert between
+    hardware keys to key symbols.
+  + Documentation fixes in the API reference.
+  + More recipes, with videos and full examples, in the Cookbook.
+  + Add localization support and initial translations of error
+    messages that might be visualized in a user interface.
+  + Improve debugging output.
+  + Fix build of the GLX backend on OSX.
+  + Multiple fixes to the native OSX backend.
+  + Add support for 3D textures in Cogl.
+  + Fix shader-related issues and leaks in the new Material code.
+  + Unify GLSL support in the GL and GLES 2.0 drivers.
+  + Allow specifying an hint to disable clearing the stage before
+    each paint cycle.
+- Drop clutter-buildgir.patch: fixed upstream.
+- Create a lang package, that is recommended by
+  libclutter-glx-1_0-0 (and make libclutter-glx-1_0-0 provide
+  clutter, so that the lang package is installable).
+
+-------------------------------------------------------------------
+Wed Jul 28 11:25:25 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 1.3.8:
+  + Merge Cally, the Clutter Accessibility Library, in the Clutter
+    tree.
+  + Take into consideration the source actor's position in the
+    AlignConstraint logic.
+  + Update the internal COGL tesselator with the latest GLU code.
+  + Fix CoglTexture data readback.
+  + Use GL_MAX_TEXTURE_SIZE on GLES when checking the supported
+    texture size.
+  + Add missing public functions from COGL headers.
+  + Fix GLES build after the Cogl material changes.
+  + Rename the experimental CoglPixelBuffer API to CoglPixelArray.
+  + Split the clutter_state_change() method into two:
+    clutter_state_set_state(), for animated state changes; and
+    clutter_state_warp_to_state() for immediate state changes.
+  + Updated translations.
+- Add clutter-buildgir.patch to fix gir generation, taken from
+  upstream git.
+
+-------------------------------------------------------------------
+Wed Jul 21 18:07:53 CEST 2010 - vuntz@opensuse.org
+
+- Clean up update to 1.3.6.
+- Change explicit Mesa-devel, glib2-devel,
+  gobject-introspection-devel, gtk2-devel, pango-devel,
+  xorg-x11-devel, xorg-x11-libXfixes-devel BuildRequires to
+  pkgconfig() BuildRequires: atk, cairo, gdk-pixbuf-2.0, gl,
+  gobject-2.0, gobject-introspection-1.0, pangocairo, x11,
+  xcomposite, xdamage, xext, xfixes.
+- Add pkgconfig(json-glib-1.0) BuildRequires to not use the
+  internal copy of json-glib.
+- Add pkgconfig(xi) BuildRequires for xinput support and pass
+  --enable-xinput to configure.
+- Remove explicit Mesa-devel, cairo-devel, glib2-devel, gtk2-devel,
+  pango-devel, xorg-x11-devel, xorg-x11-libX11-devel,
+  xorg-x11-libXext-devel, xorg-x11-libXfixes-devel Requires of
+  devel package: they're replaced with automatically added
+  pkgconfig() Requires.
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Thu Jul  8 22:21:19 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.3.6:
+  + Provide a fallback on GLX if the MESA_copy_sub_buffer extension
+    is not available, by using EXT_framebuffer_blit. Both
+    mechanisms are also throttled to avoid taking all resources
+    when using them in a compositor like Mutter.
+  + Use (and cache) fragment shaders instead of texture combiners
+    inside Cogl materials. Cogl will automatically fall back from
+    GLSL to ARBfp to fixed functions depending on the level of
+    support of the underlying GL implementation.
+  + Implement a new design for materials; this allows scaling up
+    the number of materials in a scene, and also makes copying
+    materials less expensive.
+  + Make Cogl materials responsible for depth testing, and add new
+    experimental API.
+  + Use the (modified) GLU tesselator to draw paths to a vertex
+    buffer object instead of using the stencil buffer, or the
+    scanline rasterizer on platforms without a stencil buffer.
+  + Add ClutterDeformEffect, a base class for effects that deform
+    an actor's geometry when painting it; ClutterPageTurnEffect is
+    an implementation of a "page curl" deformation using the
+    DeformEffect API.
+  + Always use scissoring when clipping, to reduce the amount of
+    buffer that has to be cleared.
+  + Allow ClutterShaderEffect sub-classes to use vertex shaders by
+    setting a constructor property; the default remains fragment
+    shader.
+  + Remove the button of the press event from the
+    DragAction::drag-begin and DragAction::drag-end signals.
+  + Do not promote clipped redraws to full redraws.
+  + Improve the consistency of the default state name in
+    ClutterState, both in the API and in the serialization format.
+  + Fix a rounding error with the Text layout size.
+  + Add utility functions for CoglMatrix and CoglColor.
+  + Avoid a re-allocation cycle warning when resizing the surface
+    of a CairoTexture actor from within the allocate()
+    implementation.
+  + Do not add the GL libraries for the EGL X11 backend.
+  + Add more checks for size of data passed to the shader types
+    GValue functions.
+  + Add width and height to the BindConstraint.
+  + Parse actions, constraints and effects inside an actor
+    definition for ClutterScript.
+  + Merge the code of native and x11 backends for EGL into a single
+    backend; also allow creating GL context with the EGL backend.
+  + Use XSETTINGS to set up the backend configuration options, like
+    the font name, resolution, font options and double click
+    options, on X11; this also allows ClutterText actors created
+    using the default font name to be updated when the font name
+    and options change; similarly, this allows ClutterUnits to be
+    updated when the screen resolution changes.
+  + Implement the texture_from_pixmap extension support inside Cogl
+    itself, and unify ClutterX11TexturePixmap and
+    ClutterGLXTexturePixmap.
+  + Documentation improvements in the API reference and in the
+    cookbook.
+  + Use the -Bsymbolic-functions linker option on supported
+    platforms to avoid intra-library PLT jumps.
+  + Fix painting transparent stages on X11 using the :use-alpha
+    property of ClutterStage.
+  + Fix emission of scroll events on Windows.
+- Changes from version 1.3.2:
+  + Add ClutterEffect, a ClutterActorMeta sub-class that affects
+    the way an actor paints itself.
+  + Add ClutterClickAction, an action that provides "button-like"
+    semantics for any ClutterActor.
+  + ClutterDragAction now moves the actor to which it has been
+    applied by default, using a class handler for the ::drag-motion
+    signal.
+  + Add the :pick-with-alpha property to ClutterTexture; this
+    property allows using the alpha channel of a texture when
+    picking it.
+  + Regenerate the mipmaps on COGL textures when a texture is
+    modified.
+  + Documentation and build fixes.
+- Changes from version 1.3.2:
+  + Add ActorMeta, a class for run-time composition of actions
+    and constraints on a ClutterActor:
+    - Add ClutterAction, a class for implementing business logic
+      related to event handling.
+    - Add ClutterConstraint, a class for implementing business
+      logic related to sizing and positioning.
+    - ClutterDragAction is an Action sub-class that implements
+      signals and properties for dragging actors.
+    - ClutterAlignConstraint and ClutterBindConstraint are two
+      Constraint sub-classes that allow relative positioning with
+      fixed layout managers.
+  + Add ClutterState, an object for defining state transitions.
+  + Add ClutterBoxLayout:homogeneous property.
+  + Implement retained clip stacks.
+  + Support retained paths.
+  + Add an experimental vector3 API.
+  + Make ClutterActor implement AtkImplementor, and allow
+    retrieving an AtkObject from a ClutterActor.
+  + Improve ClutterText's Pango layout caching mechanism.
+  + Fix set up of the GLX_SGI_swap_control extension.
+  + Fix EGLX backend.
+  + Documentation fixes for Clutter and COGL.
+  + Fix the conformance test suite by executing every test unit in
+    a separate process.
+  + Add platform-dependent defines for Cogl.
+  + Update the MingW cross-compilation script.
+  + New recipe in the Cookbook.
+- Move the make check properly to the %check section, but disable
+  it for the moment. Development went a bit ahead the test suite
+  and it does not even start.
+
+-------------------------------------------------------------------
+Mon May 10 15:57:36 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.8:
+  + Ignore unexpected GLX_BufferSwapComplete coming from Mesa
+  + Use the correct function for the GL_OES_framebuffer_object
+    extension
+  + Fix the chaining up of the GLX backend when dealing with
+    redirected event handling (e.g. by Mutter)
+  + Do not attempt to use GL to convert formats under GLES
+  + Improve the robustness of the checks dealing with the maximum
+    amount of layers in a CoglMaterial
+  + Fix cogl_read_pixels() on GLES
+  + Do not try to union sub paths
+  + Fix the clip stack
+  + Fix clutter_event_get_coords() for ENTER and LEAVE events.
+  + Documentation fixes in the Cogl path API
+  + Fix typos in the introspection annotations.
+
+-------------------------------------------------------------------
+Thu Apr 29 19:48:23 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.6:
+  + Check if the TexturePixmap actor have an allocation before
+    asking for its allocation box, to avoid a costly re-layout.
+  + Handle spurious GLX_BufferSwapComplete events more gracefully
+    than an assertion failure.
+  + Fix a memory leak in the atlas.
+  + Use the right constant when calling GetClassLongPtr() in the
+    win32 event handling code; this fixes a compilation issue on
+    win64.
+  + Check the size of the Pango layouts in the cache to avoid
+    blowing cache slots.
+  + Remove the need for using a function introduced by GLib 2.18,
+    to keep our current requirements.
+  + Documentation fixes in Clutter and COGL.
+
+-------------------------------------------------------------------
+Mon Mar 22 23:22:44 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.4:
+  + Add more error reporting in case the GLX context creation
+    failed
+  + Fix cogl_texture_get_data() returning garbage
+  + Fix the computation of the stage bounding rectangle when
+    submitting clipped redraw requests
+  + Switch texture units before setting the Cogl texture filters
+  + Make sure that GLX_SGI_swap_control is set up correctly
+
+-------------------------------------------------------------------
+Mon Mar 15 22:19:52 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.2:
+  + Fix introspection annotations for ClutterBox
+  + Compilation fixes for the EGL native backend
+  + Fix ClutterX11TexturePixmap ::queue-damage-redraw default
+    handler registration to avoid a run-time warning
+  + Handle TEXTURE_RECTANGLE_ARB in the 2D sliced textures, and add
+    a test case for that extension to avoid regressions
+  + Improve the strictness of the JSON parser in the internal copy
+    of JSON-GLib to which we fall back in the absence of the system
+    one
+  + Fix a crasher on NVidia drivers when enabling the ARGB visuals
+    by default on GLX.
+
+-------------------------------------------------------------------
+Wed Mar  3 09:56:06 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + Improve the Animator API for consistency, and the
+    implementation to match the intended behaviour, as documented
+  + Add initial (and internal) support for queueing clipped region
+    updates and let the GLX texture-from-pixmap actor take
+    advantage of it
+  + Support any pixel format in cogl_read_pixels()
+  + Conditionally use G_VALUE_COLLECT_INIT() in functions using
+    variadic arguments lists
+  + Consistently use :min-width and :min-height inside the Stage to
+    define the minimum size of the Stage window
+  + Implement the Scriptable interface for ClutterModel
+    sub-classes; this allows setting ClutterModel columns (both
+    types and names) in ClutterScript definitions
+  + Add support for unsigned integer indices in the VertexBuffer
+    API
+  + Documentation fixes for Clutter: the coverage is now 100%
+  + Fixes for the EGL native backend
+  + Require libtool >= 2.2.6
+  + Improve tests coverage
+
+-------------------------------------------------------------------
+Thu Feb 25 21:55:32 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.1.14:
+  + Fix interaction between user resizable Stages and fullscreen on
+    X11
+  + Define the semantics of ENTER and LEAVE events when actors are
+    on the border of the Stage window
+  + Take the InputDevice of an event into consideration when
+    throttling MOTION events
+  + Round the coordinates when clipping to a rectangle in window
+    coordinates
+  + Always trust the user-provided coordinates when creating a
+    CoglTexture from a foreign GL texture
+  + Split Clutter's debug annotations from the pick and paint mode
+    behavioural modifiers
+  + Improve the usage of the CLUTTER_ACTOR_NO_LAYOUT flag so that
+    every actor using a ClutterFixedLayout manager will
+    automatically benefit from it
+  + Fix the packing order of ClutterBox so that the convention of
+    first-in-first-painted is maintained
+  + Documentation fixes
+
+-------------------------------------------------------------------
+Wed Feb 17 09:42:53 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.1.12:
+  + Added ClutterAnimator, a class that allows defining complex
+    implicit animations involving multiple actors and states
+  + New experimental COGL API to expose “hardware” buffers such as
+    PBOs or libdrm surfaces
+  + Fixed the issues with resizable stages getting a 1×1 window
+    with the X11 backends
+  + Expose input devices for every event; by default, X11 and
+    Windows backends expose the core devices only
+  + Add the ClutterStage:key-focus property, for key focus tracking
+  + Allow setting transformable value types in ClutterAnimation
+    when calling clutter_animation_bind() and
+    clutter_animation_update()
+  + Delay the creation of the default Stage until
+    clutter_stage_get_default() is actually called; this reduces
+    the work of clutter_init()
+  + Implement Ctrl+Delete and Ctrl+Backspace in ClutterText
+  + Improve the extendability of CoglTexture with internal backends
+  + Add implicit texture atlasing; Cogl will try to put every
+    texture inside the same texture atlas by default, to avoid
+    state changes in the driver and (hopefully) improve performance
+  + Fix notification of the cursor and selection changes in
+    ClutterText; this improves the usage of Clutter from A11Y
+    toolkits
+  + Do not wait for a frame if the system clock goes backwards
+  + Fix the dirtying of the clip state; this unbreaks
+    cogl_path_fill()
+  + Documentation and build fixes: COGL is now 100% documented
+  + Fixed compilation with the Sun C compiler
+  + Use SSE2 instructions to premultiply RGBA images, if available
+  + Improve readability of ClutterActor::raise/::lower warnings
+  + Add sanity checks for _clutter_do_pick() to avoid invoking it
+    on stages in their destruction phase
+  + Avoid multiple type checks in clutter_actor_get_paint_opacity()
+  + Fix some race conditions in the resizing of the Stage on the
+    X11 backends
+  + Optimize taking sub-textures of sub-textures
+  + Add support for getting event notification after a non-blocking
+    glXSwapBuffers() by using the INTEL_GFX_swap_events extension
+    that has been added to Mesa 7.8
+  + Improve ClutterBox and ClutterGroup
+- Drop clutter-cogl-buffer.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 10 14:24:25 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.1.10:
+  + Fixed a regression in textures that caused all the textures to
+    be drawn as white rectangles
+  + Fixed compilation with the Sun C compiler
+  + Use SSE2 instructions to premultiply RGBA images, if available
+  + Improve readability of ClutterActor::raise/::lower warnings
+- Changes from version 1.1.8:
+  + Added ClutterAnimator, a class that allows defining complex
+    implicit animations involving multiple actors and states
+  + New experimental COGL API to expose "hardware" buffers such as
+    PBOs or drm surfaces
+  + Fixed the issues with resizable stages getting a 1x1 window
+    with the x11 backends
+  + Expose input devices for every event; by default, X11 and
+    Windows backends expose the core devices only
+  + Add the ClutterStage:key-focus property, for key focus tracking
+  + Allow setting transformable value types in ClutterAnimation
+    when calling clutter_animation_bind() and
+    clutter_animation_update()
+  + Delay the creation of the default Stage until
+    clutter_stage_get_default() is actually called
+  + Implement Ctrl+Delete and Ctrl+Backspace in ClutterText
+  + Improve the extendability of CoglTexture with internal backends
+  + Add implicit texture atlasing
+  + Fix notification of the cursor and selection changes in
+    ClutterText
+  + Do not wait for a frame if the system clock goes backwards
+  + Fix the dirtying of the clip state; this unbreaks
+    cogl_path_fill()
+  + Documentation and build fixes
+- Fix build by adding clutter-cogl-buffer.patch from upstream.
+
+-------------------------------------------------------------------
+Thu Jan 21 00:55:57 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.1.6:
+  + Some fixes for the Win32 backend
+  + Profiling support via the UProf library
+  + Improved conformance tests with coverage reports via gcov
+  + ClutterTexture no longer tres to read back texture data into
+    g_malloc'd memory on unrealize
+  + The CGL_* defines from cogf-defines.h have been removed
+  + Added a delete-event signal to the stage
+  + Fix for using cogl_rectangle with different texture coordinates
+    for multiple layers
+  + Fix for using stencil and depth buffers in FBOs on Intel
+    drivers in Mesa
+  + Support for subtitles in ClutterMedia
+  + ClutterGLX will now use an RGB visual by default
+  + Fix ClutterText to allow using Pango markup and attributes in
+    the same actor.
+
+-------------------------------------------------------------------
+Mon Jan  4 15:28:27 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.1.4:
+  + Update the ClutterScript parser to be more resilient, and
+    support constructor and ChildMeta properties. The parser also
+    respects the order of the properties in the UI definitions when
+    applying them, and will apply the properties of an Actor after
+    building the scene graph.
+  + Simplified the implementation of LayoutManager sub-classes, and
+    added support for animating a layout manager.
+  + Allow short-circuiting some layout operations by setting a
+    specific flag on ClutterActor.
+  + Improve caching of the preferred size of a ClutterActor.
+  + Allow declaring "internal children" for a ClutterContainer
+    implementation: the memory management of these actors will be
+    deferred entirely to the Container.
+  + Let the ClutterStage honour the :opacity property and the alpha
+    component of the stage color. This requires support in the
+    Clutter backend used.
+  + Improve Windows and OSX backends.
+  + Simplify the feature detection code for OpenGL; this also
+    reduced the required OpenGL version to 1.2.
+  + Improve the matrix stack handling code. The matrices can be
+    debugged by using the COGL_DEBUG environment variable, assuming
+    that Clutter was compiled with the right configure-time switch.
+  + Improve COGL API for draw buffers, and for offscreen buffer
+    support.
+  + Add support for text direction to ClutterActor.
+  + Documentation, introspection and build fixes.
+
+-------------------------------------------------------------------
+Sat Nov 14 15:11:46 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.1.2:
+  + Add ClutterLayoutManager, an abstract proxy class for easily
+    writing layout management policies; also add ClutterLayoutMeta,
+    a class for storing layout properties.
+  + Add ClutterBox, a generic container actor that relies on a
+    ClutterLayoutManager instance to manage the layout of its
+    children.
+  + Add the following layout managers:
+    - ClutterFixedLayout - a layout manager implementing the policy
+      used by ClutterGroup
+    - ClutterBinLayout - a layout manager for packing actors as
+      layers inside the same area, with per-actor alignment
+    - ClutterFlowLayout - a layout manager arranging actors as a
+      reflowing grid
+    - ClutterBoxLayout - a layout manager arranging actors as a
+      single line
+  + Remove the requirement for the backend-specific implementation
+    of ClutterStage to be a ClutterActor: a Stage implementation
+    must only implement the ClutterStageWindow interface. This
+    cleans up the backend code.
+  + COGL source tree clean up and rationalization; COGL now knows
+    the platform, and not only the driver (GL or GLES) so we can
+    migrate part of the low-level backend code from Clutter to COGL
+    where it makes sense.
+  + Remove code duplication across whole COGL.
+  + The GLES 2.0 driver for COGL, and the EGLX backend for Clutter
+    have been fixed and confirmed working.
+  + Add "dump-pick-buffer" to CLUTTER_DEBUG: this debug options
+    dumps the contents of each pick() buffer into a PNG file, for
+    debugging purposes.
+  + Allow interpolating intervals of ClutterUnits for animating
+    unit-based properties.
+  + Increase strictness and correctness of the ClutterUnits grammar
+    parser.
+  + Add GValue transformation functions for ClutterPath to and from
+    a string.
+  + Fix word movement in ClutterText; implement GObject getter for
+    :use-markup; emit notification for :position; decouple the
+    :text property from the :use-markup property.
+  + Do not queue redraws or relayouts on actors currently being
+    destroyed.
+  + Support #rrggbb and #rgb notations for ClutterColor.
+  + Multiple bug fixes.
+  + Provide _NET_WM_PID on the X11 stage implementation.
+  + Documentation and Introspection annotation fixes.
+  + Add test units for the ClutterActor size requesition.
+  + Build fixes.
+  + Use AM_SILENT_RULES if Automake 1.11 is detected, and fall back
+    to Shave on older Automake versions.
+
+-------------------------------------------------------------------
+Mon Sep 28 11:21:16 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 1.0.6:
+  + A couple of new unit tests
+  + Fix ClutterGroup depth sorting
+  + Fix double to float type conversions in ClutterScript and
+    update test-script.json
+  + Do not attempt to free empty ClutterModel column names
+  + Fix the BlendString parser
+  +  Fix the parsing of special "signal-" property names available
+  + Adds a "use-markup" property getter for ClutterText
+  + Account for clock roll backs between frames
+  + Disable mipmap filters before checking framebuffer object
+    completeness
+  + Fix cogl_clear so the alpha component isn't ignored
+  + Fix for the GLES 2.0 Cogl backend and the eglx Clutter backend
+  + Updated documentations and translations.
+
+-------------------------------------------------------------------
+Thu Aug 27 09:16:10 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 1.0.4:
+  + Fix the warnings for Animation::update_interval()
+  + [cogl-texture] Set GL_PACK_ROW_LENGTH when downloading texture
+    data
+  + [glx] Perform more checks before calling glXMakeCurrent
+  + Check timeline direction when forcing final state
+  + [cogl-material] Fix some brackets in
+    _layer_flush_gl_sampler_state
+  + [pango-display-list] Don't premultiply the colour twice
+  + [text] move_word_backward/forward fixes
+  + [text] Don't interpret the unicode value when the control
+    modifier is on
+  + Set LD_LIBRARY_PATH when running g-ir-compiler
+  + Update Clutter to use G-I 0.6.4
+  + [units] Do not be locale-dependant on string conversion
+  + Add new Atom atom_NET_WM_PID to set pid info
+  + Add (allow-none) for clutter_stage_set_key_focus()
+  + [x11] Do not ask to destroy an empty Window
+  + [actor] Add missing return_if_fail()
+  + [x11] Destroy the Window we own when setting a foreign one
+  + [actor] Be more explicit when warning about invariants
+  + [cogl] Expose cogl_is_vertex_buffer()
+  + tests/interactive/Makefile.am
+  + [actor] Use the right vertex
+  + [x11] Force a redraw before mapping the stage
+  + Documentation fixes
+  + Build fixes
+- Remove gir-repository from BuildRequires
+
+-------------------------------------------------------------------
+Sat Aug 15 10:24:04 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 1.0.2:
+  + Documentation fixes
+  + Build fixes
+  + Update the MingW script for building Clutter on Windows
+  + Update the build instructions for OS X
+  + On X11, make sure to destroy the stage Window when switching to
+    a foreign one
+  + Fix a bug where clutter_actor_apply_relative_transform() was no
+    using the right vertex to perform the transformation
+
+-------------------------------------------------------------------
+Fri Jul 31 20:29:43 CEST 2009 - vuntz@novell.com
+
+- Remove Obsoletes for libclutter-glx-0_9-0.
+- Drop clutter-rpmlintrc as it's not needed anymore.
+
+-------------------------------------------------------------------
+Wed Jul 29 15:03:25 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.0.0:
+  + Allow per-stage disabling of motion event throttling; this
+    should allow platforms or applications that require all the
+    motion events not for drawing purposes to get them exactly like
+    Clutter gets them from the windowing system.
+  + Various documentation fixes.
+  + Add per-word key navigation inside ClutterText.
+  + Fix the RGB<->HLS conversion.
+  + Various fixes for the OSX backend.
+  + Various build-related fixes.
+- Drop clutter-build-fix.patch: fixed upstream. Remove autoreconf
+  call.
+- Rename libclutter-glx-0_9-0 to libclutter-glx-1_0-0 and make it
+  obsolete the old package.
+- Add clutter-rpmlintrc.
+
+-------------------------------------------------------------------
+Mon Jul 20 00:26:17 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.9.8:
+  + Add more introspection annotations for language bindings.
+  + Fix a bug in clutter_animation_set_alpha(), which also broke
+    the clutter_actor_animate_with_alpha() function.
+  + Check if the stage requires a relayout before showing it; this
+    fixes a bug in the X11-based backends, especially under
+    compositing window managers, where a 640x480 window would
+    flicker before the default stage was shown for the first time.
+  + Performance fixes for Cogl.
+  + Sliced textures were broken by the COGL journalling.
+  + Use the redraw cycle when asynchronously loading textures from
+    files.
+  + Miscellaneous compilation fixes for the OS X and Windows
+    backends.
+  + Allow querying from within the paint function of an Actor
+    whether the actor is currently being directly painted or by a
+    Clone actor.
+  + In the GLX backend, when using the non-implicit sync-to-vblank
+    inside glXSwapBuffers(), call glFinish() to avoid potential
+    tearing.
+- Changes from version 0.9.6:
+  + Allow the manipulation of the actor's transformation matrix, so
+    that is is possible to apply additional transformations in a
+    way that is compatible with the transformations already applied
+    by the scene graph.
+  + Fix a race in the X11 backend that happened between resizing
+    the stage drawable and the call to glViewport().
+  + Merge the cogl-journal-batching branch; this branch implements
+    batching the geometry of the elements of the scene graph before
+    sending it to OpenGL, thus minimizing the number of state
+    changes and improving the overall performance of Clutter-based
+    applications.
+  + Add more debugging states for Clutter and COGL, which allow the
+    developer to track the state of the journal; to check the VBO
+    fallback paths; to disable picking for reliable profiling; to
+    disable software-side matrix transformations in favour of the
+    driver/GPU ones.
+  + Improve the ability to "break out" of COGL by using
+    gl_begin/gl_end semantics; applications that drop into raw GL
+    are, though, ignoring all the caching performed by COGL and
+    might incur in performance issues.
+  + Fixed the :load-async and :load-data-async properties of
+    Texture by removing the unneeded G_PARAM_CONSTRUCT flag.
+  + Added an initial migration guide that shows the porting process
+    from older releases of Clutter to the 1.0 API; the first
+    chapter deals with the migration from ClutterEffect to the new
+    implicit animations API.
+  + Fixed MT-safety for the master clock.
+- Add clutter-build-fix.patch to fix build, and call autoreconf for
+  it.
+- Add xorg-x11-libXext-devel Requires in the devel package.
+
+-------------------------------------------------------------------
+Mon Jun 22 14:29:33 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.9.4:
+  + Set the layout height in ClutterText, so that wrapping and
+    ellipsization work correctly to fill all the allocated area.
+  + Remove all the units-based API, and migrate all the positional
+    and dimensional accessors to use floating point values when
+    dealing with pixels. All the properties dealing with pixels now
+    that a floating point value as well.
+  + Add the ability to track wether an actor is going to be painted
+    or not, using the "mapped" flag. This also allows Clutter to be
+    more strict in the handling of the scenegraph, ensuring
+    correctness and avoiding wasting resources on nodes that won't
+    be painted.
+  + Add debugging facilities for COGL, similar to those of Clutter;
+    through them is also possible to have an on screen debugging
+    mode that shows the boundaries of each rectangle sent to the
+    GPU.
+  + Rework "units" into real logical distance units that can be
+    converted between millimeters, typographic points and ems into
+    pixels.
+  + Simplify the Animation class to avoid redundancy and the
+    possibility of it going out of sync with the Timeline and Alpha
+    instances it uses.
+  + Move every operation into a single "master clock" source that
+    advances the timelines, dispatches events and redraws the
+    stages in a predictable sequence, thus avoiding unneeded
+    redraws. The default is to follow the sync-to-vblank cycle, if
+    it is supported by the drivers.
+  + Cache the glyphs geometry into a vertex buffer object to avoid
+    resubmitting too much information to the GPU.
+  + Rework the behaviour of ClutterModel when a filter is applied.
+  + Allow submitting premultiplied texture data; this removes the
+    need for unpremultiplying data in CairoTexture.
+  + Add a simple API for submitting blending and texture combining
+    modes through a string description.
+  + Move Timelines to pure time-based objects.
+  + Lots of performance improvements.
+  + Removal of all the deprecated API.
+  + Removal of all the fixed point entry points.
+  + Lots of documentation fixes - the coverage is now 99% of the
+    exported 1600 symbols for Clutter and 80%+ of the 300 exported
+    symbols for COGL.
+  + Generate the GObject Introspection data for both Clutter and
+    COGL at build time.
+  + Build environment fixes.
+
+-------------------------------------------------------------------
+Mon May  4 03:49:55 CEST 2009 - vuntz@novell.com
+
+- Do not pass --enable-gtk-doc to configure, which enables to not
+  BuildRequires gtk-doc.
+
+-------------------------------------------------------------------
+Mon May  4 00:32:56 CEST 2009 - vuntz@novell.com
+
+- Add gir-repository and gobject-introspection-devel BuildRequires.
+- Add missing Requires in devel package.
+
+-------------------------------------------------------------------
+Fri May  1 08:10:15 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.9.2:
+  + Way too many changes to list.
+  + This version is parallel-installable with clutter 0.8.
+
+-------------------------------------------------------------------
+Thu Apr 30 02:18:56 CEST 2009 - vuntz@novell.com
+
+- Pass --disable-static to configure and remove .la files.
+- Use makeinstall.
+- Remove checks for old versions of openSUSE.
+
+-------------------------------------------------------------------
+Sat Feb 21 22:32:50 CET 2009 - vuntz@novell.com
+
+- Update to version 0.8.8:
+  + Fix: ClutterEntry doesn't get the cursor when it should
+  + [behaviour-path] Bail out if we don't have knots
+  + [behaviour] Do not notify empty behaviours
+  + [backport] Update the viewport when updating the GL context
+  + [backport] Remove backwards timelines check in get_progress
+  + [backport] Set the SYNC_MATRICES flag when a stage is first
+    realized
+  + Fix properties that have X11 types to be 'long'
+  + Change default tile-waste from 64 to 63
+  + Fixed handling of enter and leave events in
+    clutter_x11_handle_event()
+  + Fix clutter_x11_texture_pixmap_get/set_property() following
+    change of PROP_WINDOW type.
+
+-------------------------------------------------------------------
+Thu Jan 15 14:06:21 EST 2009 - hfiguiere@suse.de
+
+- Update to version 0.8.6:
+   + Improve performance of the text layout by drawing multiple
+     glyphs in a single GL call
+   + Use a RGB texture for 24bpp pixmaps with the GLX texture-from-pixmap
+     actor
+   + Fix a race condition in the X11 backend when resizing the stage
+   + Fix an off-by-one error in clutter_stage_read_pixels()
+   + Use ARB_texture_rectangle inside the GLX texture-from-pixmap actor,
+     if the GL implementation does not provide NPOT textures
+   + Improved ocumentation and parameters checks
+   + cp#1305 - NPOT textures unaligned to a pixel sometimes have border
+     artifacts
+   + cp#1303 - clutter_glx_texture_pixmap_using_extenstion doesn't check
+     if fallbacks are being used
+   + cp#1297 - Bring back support for GL_ARB_texture_rectangle
+   + cp#1309 - ClutterBehaviourDepth conflicts with orher behaviours
+   + cp#1351 - Extra ; in clutter-behaviour-ellipse.c
+   + cp#1392 - behaviour_set_alpha set same alpha twice lead to warning
+     and destroy the input alpha
+   + cp#1289 - Draw multiple glyphs at once
+
+-------------------------------------------------------------------
+Sat Dec 20 09:14:17 EST 2008 - mboman@suse.de
+
+- Update to version 0.8.4:
+  + Documentation improvements
+  + Add clutter_actor_get_paint_visibility(), for checking the visibility
+    of an actor taking into account the visibility of its parents
+  + Texture-from-pixmap actor improvements
+  + Add support for ClutterColor-based properties
+  + Remove a stray dependency on gdk-pixbuf-xlib-2.0
+  + ClutterGroup will queue a repaint when raising/lowering children
+  + Add constructor-only properties for the :container and :actor
+    properties of ClutterChildMeta
+  + Resync the Clutter keysyms with X.org ones.
+  + Documentation fixes and improvements
+  + Allow defining ClutterColor as an object or an array inside
+    ClutterScript UI definitions
+  + Added the missing :perspective property to ClutterStage
+  + Fixed the upper and lower boundaries for ClutterUnit and
+    ClutterFixed properties
+  + Fix a bug that prevented disabling sorting on ClutterModel
+  + Fix a bug in clutter_timeline_list_markers()
+  + Queue a redraw when the clip is changed
+  + Optimize calls to push and pop the matrix when painting
+  + Add a variable to the pkgconfig file for extracting the
+    COGL backend, for configure-time checks
+  + Fix a typo in cogl_path_rel_curve_to()
+  + Fix showing the cursor after it being hidden once
+  + Add a function for obtaining Clutter's option group without
+    initializing Clutter
+  + Bugs fixed: cp#1043, cp#1057, cp#1074, cp#1195, cp#1196, cp#1197,
+    cp#1200, cp#1201, cp#1206, cp#1207, cp#1230, cp#1237, cp#1238, cp#1265,
+    cp#1280, cp#1291, cp#1299, cp#856, cp#945, cp#1010, cp#1020, cp#1033,
+    cp#1034, cp#1038, cp#1044, cp#1047, cp#1048, cp#1062, cp#1069, cp#1071,
+    cp#1075, cp#1080, cp#1082, cp#1085, cp#1090, cp#1091, cp#1099, cp#1100,
+    cp#1103, cp#1121, cp#1124, cp#1125, cp#1130, cp#1137, cp#1145, cp#1154
+- Remove clutter-fixed.diff. Fixed upstream
+- Remove clutter-raise_rename.diff. Fixed upstream
+
+-------------------------------------------------------------------
+Thu Nov 27 15:22:00 EST 2008 - hfiguiere@suse.de
+
+- patch tag for clutter-raise_rename.diff
+
+-------------------------------------------------------------------
+Mon Oct 27 12:40:28 CET 2008 - ro@suse.de
+
+- fix compilation of testsuite by renaming "raise" to "raise_c"
+
+-------------------------------------------------------------------
+Wed Oct 22 10:24:07 CDT 2008 - maw@suse.de
+
+- Make debug packages require a specific %{version}-%{release}.
+
+-------------------------------------------------------------------
+Fri Aug  1 17:20:24 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Wed Jul 16 08:34:10 EDT 2008 - hfiguiere@suse.de
+
+- Upgrade to 0.8.0
+ * Large parts rewritten
+ * API changes.
+
+-------------------------------------------------------------------
+Fri Jul  4 09:52:08 EDT 2008 - hfiguiere@suse.de
+
+- Initial package
+

@@ -1,0 +1,13 @@
+Index: qtwebengine-everywhere-src-5.11.0-alpha/src/3rdparty/chromium/third_party/ffmpeg/chromium/config/Chromium/linux/arm/config.h
+===================================================================
+--- qtwebengine-everywhere-src-5.11.0-alpha.orig/src/3rdparty/chromium/third_party/ffmpeg/chromium/config/Chromium/linux/arm/config.h
++++ qtwebengine-everywhere-src-5.11.0-alpha/src/3rdparty/chromium/third_party/ffmpeg/chromium/config/Chromium/linux/arm/config.h
+@@ -566,7 +566,7 @@
+ #define CONFIG_NEON_CLOBBER_TEST 0
+ #define CONFIG_OSSFUZZ 0
+ #define CONFIG_PIC 1
+-#define CONFIG_THUMB 1
++#define CONFIG_THUMB 0
+ #define CONFIG_VALGRIND_BACKTRACE 0
+ #define CONFIG_XMM_CLOBBER_TEST 0
+ #define CONFIG_BSFS 1

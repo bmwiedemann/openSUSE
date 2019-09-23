@@ -1,0 +1,275 @@
+-------------------------------------------------------------------
+Sat Nov 11 05:01:16 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.1.0
+  * Enhancements:
+    + OpenGL 4.6 support added
+    + Improved cmake build support
+    + Improved Mac OSX build support
+  * Bug fixes:
+    + Resovled crash when glXGetCurrentDisplay() is NULL
+    + CMake: only install PDB files with MSVC
+    + wglGetProcAddress crash with NOGDI defined
+    + Mac: using -Os rather than -O2
+  * 33 new extensions
+- move to github
+- new so_ver
+
+-------------------------------------------------------------------
+Wed Jul 12 11:15:21 UTC 2017 - jengelh@inai.de
+
+- RPM group fix.
+
+-------------------------------------------------------------------
+Wed Jul 12 09:01:07 UTC 2017 - tchvatal@suse.com
+
+- Version update to 2.0 release:
+  * EGL support added
+  * Bunch of new GL extensions
+  * Forward context support added
+  * OSMesa support added
+
+-------------------------------------------------------------------
+Tue Sep 22 18:47:35 UTC 2015 - jengelh@inai.de
+
+- Drop "glew" from baselibs.conf; there is nothing in this
+  subpackage that would be baselibbed by default.
+
+-------------------------------------------------------------------
+Wed Sep  2 12:09:50 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.13.0
+  * Enhancements:
+    + glxewInit, wglewInit
+    + glewinfo adds support for -version, -profile 
+      core|compatibility and -flag debug|forward parameters
+    + Improved cmake build support
+  * New extensions:
+    + GL_ARB_ES3_2_compatibility
+    + GL_ARB_fragment_shader_interlock
+    + GL_ARB_gpu_shader_int64
+    + GL_ARB_parallel_shader_compile
+    + GL_ARB_post_depth_coverage
+    + GL_ARB_sample_locations
+    + GL_ARB_shader_atomic_counter_ops
+    + GL_ARB_shader_ballot
+    + GL_ARB_shader_clock
+    + GL_ARB_shader_viewport_layer_array
+    + GL_ARB_sparse_texture2
+    + GL_ARB_sparse_texture_clamp
+    + GL_ARB_texture_filter_minmax
+    + GL_INTEL_framebuffer_CMAA
+    + GL_KHR_no_error
+    + GL_NV_conservative_raster_dilate
+    + GL_OVR_multiview
+    + GL_OVR_multiview2
+  * Bug fixes
+
+-------------------------------------------------------------------
+Sun Apr 12 18:58:12 UTC 2015 - mpluskal@suse.com
+
+- Remove devel package from baselibs.conf (discussed in boo#894331)
+
+-------------------------------------------------------------------
+Wed Jan 28 13:32:21 UTC 2015 - mimi.vx@gmail.com
+
+- update of baselibs.conf 
+
+-------------------------------------------------------------------
+Wed Jan 28 10:59:03 UTC 2015 - mimi.vx@gmail.com
+
+- Version bump to 1.12.0
+  * support for new extensions
+  *bugixes:
+    .pc -I flags inconsistent with *.h includes
+    Missing defines: GL_COPY_{READ|WRITE}_BUFFER_BINDING
+    multiple const GLchar *const* errors
+    PFNGLSHADERSOURCEPROC incorrect in 1.11.x
+    GL_GEOMETRY_SHADER & GL_FRAGMENT_SHADER
+
+-------------------------------------------------------------------
+Fri Dec  5 08:33:45 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.11.0:
+  * support for OpenGL 4.5
+- Removed patches no longer needed:
+  * glew-1.10.0-destdir.patch
+
+-------------------------------------------------------------------
+Sun Sep 28 09:27:59 UTC 2014 - jengelh@inai.de
+
+- glew-devel-32bit failed to pull in libGLEW1_10-32bit
+- own /usr/include/GL
+
+-------------------------------------------------------------------
+Mon Sep  1 13:34:02 CEST 2014 - sbrabec@suse.cz
+
+- Fix baselibs.conf (bnc#894331).
+
+-------------------------------------------------------------------
+Mon May 26 19:44:23 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream 1.10.0
+- New patch:
+  * glew-1.10.0-destdir.patch: Sanitize Makefile
+    - Add DESTDIR option to avoid buildroot in .pc files
+
+-------------------------------------------------------------------
+Wed Oct 24 22:38:00 UTC 2012 - thorstenb@flightgear.org
+
+- Fixed dependencies for openSUSE <= 12.1
+
+-------------------------------------------------------------------
+Mon Sep 24 22:46:35 UTC 2012 - adam@mizerski.pl
+
+- update to latest stable 1.9.0
+  - removed 0001-Add-glew.c-glewinfo.c-and-includes.patch.bz2.
+    These files are included in tarball.
+- Changed explicit glu dependency, to recommendation. There is
+  GLEW_NO_GLU option.
+- added glew-devel to baselibs.conf
+- spec cleanup
+
+-------------------------------------------------------------------
+Tue Sep 18 13:40:47 UTC 2012 - idonmez@suse.com
+
+- Add explicit glu dependency 
+
+-------------------------------------------------------------------
+Tue Feb 21 18:38:08 UTC 2012 - johannesobermayr@gmx.de
+
+- Update to latest git version
+- Remove obsolete dont-strip.diff
+
+-------------------------------------------------------------------
+Mon Feb 20 17:28:12 CET 2012 - meissner@suse.de
+
+- buildrequire Xi and Xmu libs
+
+-------------------------------------------------------------------
+Wed Dec 28 17:51:57 UTC 2011 - johannesobermayr@gmx.de
+
+- Do not merge es branch for now
+  * Fixes bnc #732438, #738519
+  * Issue reported upstream
+
+-------------------------------------------------------------------
+Sun Nov 13 14:16:19 UTC 2011 - johannesobermayr@gmx.de
+
+- Update to 1.7.0 and latest git
+- Merge es branch
+
+-------------------------------------------------------------------
+Thu Sep 29 13:20:07 UTC 2011 - coolo@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug 18 17:52:07 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not obsolete old library 
+
+-------------------------------------------------------------------
+Sat Aug 13 15:19:54 UTC 2011 - johannesobermayr@gmx.de
+
+- Update to 1.6.0 with two further commits
+- Don't strip libraries
+
+-------------------------------------------------------------------
+Fri May 27 13:30:13 UTC 2011 - coolo@novell.com
+
+- remove sublicenses
+
+-------------------------------------------------------------------
+Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
+  
+- Add 32bit compatibility libraries
+  
+-------------------------------------------------------------------
+Sat Feb  5 01:32:40 UTC 2011 - davejplater@gmail.com
+
+- Update to version 1.5.8
+- Upstream changes:
+ *The latest release contains support for OpenGL 3.3, OpenGL 4.1
+  and the following extensions:
+  OpenGL extensions, WGL extensions and GLX extensions.
+ *fixes minor bugs and adds two new extensions.
+ *Version 1.5.7 fixes minor bugs and adds one new extension.
+  
+-------------------------------------------------------------------
+Thu Sep  9 17:54:40 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.5.6:
+  + Support for OpenGL 4.1
+  + Support many new extensions.
+- Changes from version 1.5.5:
+  + Support new extensions
+  + Bug fixes:
+    - Compilation issue with GLX_SGI_video_sync
+    - OpenGL 4.0 double-precision uniform functions added
+    - Constness of glPointParameterfvARB and glPointParameterfvEXT
+    - Added glVertexAttribDivisor
+    - Compilation issue with Nvidia GLX headers
+- Changes from version 1.5.4:
+  + Support for OpenGL 3.3 and 4.0
+  + Support new extensions
+  + Bug fixes:
+    - Parameter constness fix for glPointParameteriv and
+      glPointParameterfv
+- Changes from version 1.5.3:
+  + New extensions:
+    - GLX_INTEL_swap_event, GL_AMD_seamless_cubemap_per_texture &
+      GL_AMD_shader_stencil_export
+  + Bug fixes:
+    - Correct version detection for GL 3.1 and 3.2
+    - Missing 3.1 enumerants
+    - Add glew.pc
+- Changes from version 1.5.2:
+  + Support for OpenGL 3.1 and 3.2
+  + Many new extensions
+  + Bug fixes:
+    - DOS line endings for windows .zip archives only.
+    - glTransformFeedbackVaryings arguments.
+    - Resource leak in glewinfo and visualinfo tools.
+    - WIN32_LEAN_AND_MEAN preprocessor pollution.
+    - Fixed version detection for GLEW_VERSION_2_1 and
+      GLEW_VERSION_3_0.
+    - MesaGLUT glut.h GLAPIENTRY dependency.
+    - glFramebufferTextureLayer correction.
+    - OSX compiler warnings resolved.
+    - Cygwin linking to opengl32 by default, rather than X11 OpenGL
+    - SnowLeopard (OSX 10.6) gl.h detection.
+    - Use $(STRIP) consistently.
++ Add pkg-config BuildRequires.
+
+-------------------------------------------------------------------
+Wed Aug  5 18:03:04 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.5.1:
+  * support for OpenGL 3.0
+  * support for many new extensions
+  * bug fixes
+
+-------------------------------------------------------------------
+Wed Feb 25 00:51:46 CET 2009 - crrodriguez@suse.de
+
+- static libraries are not usable and now removed. 
+
+-------------------------------------------------------------------
+Thu Mar 20 19:20:54 CET 2008 - sbrabec@suse.cz
+
+- Removed bad dependencies from libGLEW1_5 (bnc#372722).
+
+-------------------------------------------------------------------
+Mon Jan 14 17:06:33 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 1.5.0:
+  * less restrictive license
+  * minor fixes
+- Split package according to the shared library packaging policy.
+
+-------------------------------------------------------------------
+Thu Jul 12 17:35:17 CEST 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 1.4.0.
+

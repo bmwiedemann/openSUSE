@@ -1,0 +1,35 @@
+From 0ee72a15887b838d967c3b05070d5ad86f0d729a Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Fri, 25 Jan 2019 10:29:16 -0700
+Subject: [PATCH] [build] Disable gcc address of packed member warning
+
+GCC 9.0 introduces a new warning for using pointers to packed
+structure and union members. ipxe code is replete with this usage,
+partly because the architectures it is designed for handle unaligned
+accesses. Therefore this warning is not very helpful and since the
+default build considers warnings to be errors, needs to be disabled.
+
+[BR: BSC#1121464]
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+--- a/src/Makefile.housekeeping
++++ b/src/Makefile.housekeeping
+@@ -187,6 +187,19 @@ WNST_FLAGS := $(shell $(WNST_TEST) && $(
+ WORKAROUND_CFLAGS += $(WNST_FLAGS)
+ endif
+ 
++# GCC 9.0 introduces a new warning for using pointers to packed
++# structure and union members. ipxe code is replete with this usage,
++# partly because the architectures it is designed for handle unaligned
++# accesses. Therefore this warning is not very helpful and since the 
++# default build considers warnings to be errors, needs to be disabled.
++#
++ifeq ($(CCTYPE),gcc)
++WNAOPM_TEST = $(CC) -Waddress-of-packed-member -x c -c /dev/null -o /dev/null \
++		  >/dev/null 2>&1
++WNAOPM_FLAGS := $(shell $(WNAOPM_TEST) && $(ECHO) '-Wno-address-of-packed-member')
++WORKAROUND_CFLAGS += $(WNAOPM_FLAGS)
++endif
++
+ # Some versions of gas choke on division operators, treating them as
+ # comment markers.  Specifying --divide will work around this problem,
+ # but isn't available on older gas versions.

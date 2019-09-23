@@ -1,0 +1,236 @@
+-------------------------------------------------------------------
+Tue Feb  5 18:55:20 UTC 2019 - marix@marix.org
+
+- Recommend, instead of requiring, python3-enet as it is only
+  required for multiplayer and currently not available in openSUSE.
+- Fix broken requirement declaration towards python3-PyYAML.
+
+-------------------------------------------------------------------
+Sun Feb  3 21:36:15 UTC 2019 - marix@marix.org
+
+- Add missing Atlas data files to fix the game crashing on startup.
+
+-------------------------------------------------------------------
+Wed Jan 23 00:34:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description.
+
+-------------------------------------------------------------------
+Tue Jan 15 12:23:54 UTC 2019 - mvetter@suse.com
+
+- Update to 2019.1
+- Update BuildRequires, use python3
+- Add unknown-horizons-encoding.patch: to fix warning
+
+-------------------------------------------------------------------
+Tue Feb 28 16:40:30 UTC 2017 - rpm@fthiessen.de
+
+- Update to 2017.2
+- Dropped unknown-horizons-2014.1-405c514.patch
+- Some spec file refactoring
+
+-------------------------------------------------------------------
+Wed Apr  1 05:15:17 CET 2015 - gryffus@hkfree.org
+
+- Removed broken map in UH release tarball - fixes UH bug 2319
+
+-------------------------------------------------------------------
+Wed Jan 14 15:11:54 UTC 2015 - manuel-uh@mausz.at
+
+- Add upstream hotfix
+
+-------------------------------------------------------------------
+Sun Jan 11 17:11:00 UTC 2015 - mailaender@opensuse.org
+
+- Use en.opensuse.org/SourceUrls
+- Updated to version 2014.1
+  * Only expand settlement range for certain buildings
+  * Color overlays (if running with FIFE 0.3.6 or newer)
+  * Armory producing weapons
+  * Button to fill lumberjack range with trees
+  * Fixed some bad bugs causing the game to crash completely
+  * Lots of other improvements
+
+-------------------------------------------------------------------
+Wed Dec 18 23:52:53 CET 2013 - manuel-uh@mausz.at
+
+- Updated to version 2013.3
+  + See 'CHANGELOG.md' in documentation for full list of changes.
+
+-------------------------------------------------------------------
+Wed Dec 18 08:30:58 UTC 2013 - stefan@fam-elser.de
+
+- Updated to version 2013.2
+  + See 'CHANGELOG' in documentation for full list of changes.
+
+-------------------------------------------------------------------
+Sun Apr 21 20:52:47 UTC 2013 - joop.boonen@opensuse.org
+
+- Adapted the License according to the spdx standard
+
+-------------------------------------------------------------------
+Mon Apr  8 17:19:03 UTC 2013 - gryffus@hkfree.org
+
+- Changed category from Simulation to StrategyGame
+
+-------------------------------------------------------------------
+Tue Mar 12 14:45:48 UTC 2013 - gryffus@hkfree.org
+
+- Updated to version 2013.1b
+  + See 'CHANGELOG' in documentation for a full list of changes.
+- Fixed RPM group for both Fedora and openSUSE
+- Fixed requires (UH 2013.1 requires Fife >= 0.3.4)
+
+-------------------------------------------------------------------
+Wed Mar  6 14:35:52 UTC 2013 - gryffus@hkfree.org
+
+- Update to version 2013.1
+  + See 'CHANGELOG' in documentation for a full list of changes.
+
+-------------------------------------------------------------------
+Sat Sep 22 21:46:49 UTC 2012 - nmo.marques@gmail.com
+
+- rework python-Cython dependencies for openSUSE/Fedora
+
+-------------------------------------------------------------------
+Wed Apr 25 20:58:41 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 2012.1a
+  + See 'CHANGELOG' in documentation for a full list of changes. 
+- Add UMing fonts to dependencies
+
+-------------------------------------------------------------------
+Sun Nov 20 22:23:00 UTC 2011 - nmarques@opensuse.org
+
+- Hopefully a few optimizations for the future
+
+-------------------------------------------------------------------
+Sat Nov 19 20:01:12 UTC 2011 - nmarques@opensuse.org
+
+- Improve integration with Fedora: spec fixes (tested and working)
+- Updated upstream source.
+
+-------------------------------------------------------------------
+Mon Nov 14 00:56:39 UTC 2011 - nmarques@opensuse.org
+
+- Initial changes on the spec file to support Fedora builds, more
+  changes are expected so we can land safely.
+
+-------------------------------------------------------------------
+Sat Nov 12 16:19:29 UTC 2011 - nmarques@opensuse.org
+
+- Update to version 2011.3:
+  + Complete settlement AI
+  + Combat and diplomacy system
+  + Improved FIFE performance
+  + Support for internationalized voices (right now available: de,
+    en, fr)
+  + Nine new buildings, one new ship
+  + Usability and interface improvements
+  + New statistic widgets
+  + Random map parameters, new maps
+
+-------------------------------------------------------------------
+Mon Nov  7 20:15:54 UTC 2011 - nmarques@opensuse.org
+
+- Update to version to 2011.3rc4:
+  + Bug fix release.
+
+-------------------------------------------------------------------
+Sun Nov  6 20:13:05 UTC 2011 - nmarques@opensuse.org
+
+- Updated rpmlint
+- Merged sub-package %{name}-data with %{name} and used proper
+  Obsoletes/Provides for smooth updates
+- Packages are now noarch - we don't ship enet.so, instead we have
+  a python-enet Requires.
+
+-------------------------------------------------------------------
+Sun Oct 16 16:47:57 UTC 2011 - nmarques@opensuse.org
+
+- Update to 2011.3rc3+git7622eb74ec
+  + Several hotfixes
+
+-------------------------------------------------------------------
+Tue Oct 11 17:53:30 UTC 2011 - nmarques@opensuse.org
+
+- Update to 2011.3 RC3
+  + Requires fife >= 0.3.3
+
+-------------------------------------------------------------------
+Tue Oct 11 00:21:01 UTC 2011 - nmarques@opensuse.org
+
+- Now requires fife >= 0.3.3
+- Remove all fedora specific stuff
+- Add python-enet to BuildRequires, we provide this now.
+- Alphabetical order on Requires.
+
+-------------------------------------------------------------------
+Wed Sep 28 23:43:14 UTC 2011 - nmarques@opensuse.org
+
+- Moved source to .xz (previous bz2)
+- Split lang package: unknow-horizons-lang
+- Spec changes:
+  + Improved descriptions, licensing, summaries and other texts
+  + Removed all Fedora stuff
+  + Minor improvements
+
+-------------------------------------------------------------------
+Fri Jul  1 11:29:04 UTC 2011 - nmarques@opensuse.org
+
+- Update to version 2011.2
+  + Remove uh-20110517-language-updates.patch.bz2: translations
+    are updated on source now.
+  + Removed hacks from previous version. Icon file now provided
+    in sources.
+  + Add to rpmlintrc: file-not-in-%lang
+
+-------------------------------------------------------------------
+Tue May 17 01:38:18 UTC 2011 - nmarques@opensuse.org
+
+- Spec changes: improved comments, changed pkgconfig BR, minor
+  improvements.
+- Add uh-20110517-language-updates.patch.bz2: this patch updates
+  all languages to git 20110517.
+
+-------------------------------------------------------------------
+Thu May 12 23:54:02 UTC 2011 - nmarques@opensuse.org
+
+- Spec changes:
+  + changed categories in .desktop through update-desktop-files;
+  + Added build section for i18l;
+  + Replaced .xpm icon with a .svg icon provided by upstream: next
+    version will ship with a .svg;
+  + Added libxslt for building manpage (broken);
+  + Fixed 'Requires' for Fedora (python-yaml > PyYAML);
+  + Moved arch independent files to %{name}-data;
+  + Fixed typo in %description;
+  + Removed unwanted Provides/Requires (irrelevant for *SUSE);
+  + Updated Licenses and respective documentation;
+  + Added xslt and docbook stylesheets BR's to build manpage.
+- Added unknown-horizons-opensuse.patch - Desktop entry gets full
+  path for icon, fixes issue on KDE. Default settings changes.
+
+-------------------------------------------------------------------
+Wed May 11 14:56:10 UTC 2011 - nmarques@opensuse.org
+
+- Update to version 2011.1a:
+  + Official stable release;
+  + Many, many, many, many fixes;
+  + New contents.
+
+-------------------------------------------------------------------
+Tue May 10 00:30:43 UTC 2011 - nmarques@opensuse.org
+
+- Spec changes: added minor changes to enable Fedora builds.
+  + '%py_requires' faces banishment;
+  + '%fdupes' macro - seems to require implementation on Fedora;
+  + Merged lang files into main package (Fedora build motivated);
+  + Added missing BR 'build-mkbaselibs' for Fedora;
+  + Minor tweaks.
+
+-------------------------------------------------------------------
+Mon May  9 18:13:57 UTC 2011 - nmarques@opensuse.org
+
+- Initial package from source 2011.1a (git d6b46c9).
+

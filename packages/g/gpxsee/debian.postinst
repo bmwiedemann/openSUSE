@@ -1,0 +1,22 @@
+#!/bin/sh
+
+case "$1" in
+	configure)
+		if [ -x /usr/bin/update-mime-database ]; then
+			/usr/bin/update-mime-database /usr/share/mime > /dev/null
+		fi
+		if [ -x /usr/bin/update-desktop-database ]; then
+			/usr/bin/update-desktop-database > /dev/null
+		fi
+		;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+		;;
+
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+		;;
+esac
+
+#DEBHELPER#

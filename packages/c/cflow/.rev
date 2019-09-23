@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>017c6a52eeaf8fa362c348dd4f725776</srcmd5>
+    <version>1.5</version>
+    <time>1465481135</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull and actively developed tool</comment>
+    <requestid>396675</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00bd0ae2e4991f364eae11f0d2c40995</srcmd5>
+    <version>1.6</version>
+    <time>1560971629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license information
+
+- Modernise spec file with spec-cleaner
+
+- Update to version 1.6:
+  * New option --all (-A)
+  * New option --no-main</comment>
+    <requestid>710854</requestid>
+  </revision>
+</revisionlist>

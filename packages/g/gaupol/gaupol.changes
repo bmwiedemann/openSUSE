@@ -1,0 +1,491 @@
+-------------------------------------------------------------------
+Sun Aug  4 18:21:55 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.7:
+  * New app icon, as full-color and symbolic SVGs
+    (gh#otsaloma/gaupol#119).
+  * Better initial preview experience (gh#otsaloma/gaupol#136).
+  * Disable loading of problematic gstreamer-vaapi
+    (gh#otsaloma/gaupol#79).
+  * Use gspell for spell-check instead of PyEnchant and GtkSpell
+    (gh#otsaloma/gaupol#12).
+  * Use the reverse domain name "io.otsaloma.gaupol" for desktop
+    file, appdata file and icons.
+- Changes from version 1.6:
+  * Add text correction pattern to unpack ligatures.
+  * Don't show video files in recent file menus
+    (gh#otsaloma/gaupol#130).
+  * Update translations.
+- Rebase desktop category patch:
+  * Remove gaupol-1.5-desktop.patch.
+  * Add gaupol-1.7-desktop.patch.
+- Remove dependency on PyEnchant and GtkSpell as mentioned in
+  version 1.7 release notes.
+- Add build dependency on gobject-introspection in order to
+  automatically generate runtime dependencies on typelibs.
+
+-------------------------------------------------------------------
+Sun Feb  3 09:39:03 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.5:
+  * Add support for building a Flatpak.
+  * Highlight changed parts in "Correct Texts"
+    (gh#otsaloma/gaupol#34).
+  * Add keybinding Ctrl+I for toggling italic
+    (gh#otsaloma/gaupol#118).
+  * Change keybinding for Invert Selection to Ctrl+J.
+  * When opening multiple files, skip ones already open.
+  * Adapt to various GTK+ deprecations.
+  * Add 64x64 and 128x128 icons.
+  * Update AppData XML file.
+  * Bump iso-codes dependency to >= 3.67.
+  * Update translations.
+- Rebase patch for desktop file categories:
+  * Remove gaupol-0.17.1-desktop.patch.
+  * Add gaupol-1.5-desktop.patch.
+
+-------------------------------------------------------------------
+Sun Jul  8 07:38:12 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.1:
+  * Fix TypeErrors due to video player pipeline queries failing
+    (gh#otsaloma/gaupol#78).
+  * Make setup.py --record include compiled extensions as well
+    (gh#otsaloma/gaupol#91).
+
+-------------------------------------------------------------------
+Sun May 13 10:19:41 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.4:
+  * Update the --video-file argument to not just select the video
+    file, but also load it in the internal video player (#75).
+  * Fix subtitles with special characters not being displayed by
+    the internal video player (#74).
+  * Fix seeking to selection start if at less than one second
+    (#76).
+  * Fix pasting texts from outside Gaupol, e.g. from a text
+    editor.
+  * Update checks for required GStreamer elements (#73).
+  * Update translations.
+- Remove call to obsolete %suse_update_desktop_file, remove
+  dependency on update-desktop-files.
+- Add %check section.
+- Ran spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Dec  7 19:41:39 UTC 2017 - antoine.belvire@opensuse.org
+
+- Update to 1.3.1:
+  * Fix pattern file syntax to not be corrupted by msgfmt (#70)
+- Changes from 1.3:
+  * Use gtksink instead of autovideosink with the integrated video
+    player, making it work on Wayland too (#60)
+  * Add a hidden preference to disable autoplay (#57)
+  * Allow loading video by drag-and-drop (#59)
+  * Fix missing icon in GNOME shell on Wayland (#62)
+  * Fix unhandled exception when adding recent menu items
+  * Fix video player actions being sensitive when playback
+    initialization fails (#52)
+  * Fix Gaupol freezing after changing audio track (#58)
+  * Fix error quitting if a file is still being loaded (#54)
+  * Fix duplicate tags when decoding MPL2 (devcompl, #68)
+  * Install appdata XML file under /usr/share/metainfo
+  * Prefer iso-codes JSON files over XML files (#10)
+  * Bump GStreamer dependency ≥ 1.6
+  * Drop build dependency on intltool (use gettext instead, #13)
+  * Add donate button to about dialog
+  * Update translations
+- Rebase gaupol-0.17.1-desktop.patch.
+
+-------------------------------------------------------------------
+Fri Jun 16 20:45:57 UTC 2017 - elchevive@opensuse.org
+
+- updated to 1.2
+ * Add support for the WebVTT file format (#46)
+ * Add support for the LRC file format (#39)
+
+- updated to 1.1
+ * Fix error when using the Save All As dialog to save all time-based
+  format documents as frame-based or vice versa
+ * Fix unhandled exception when trying to write non-numeric data into
+  integer or float cells
+
+- updated to 1.0
+ * Fix size of custom font with GTK+ 3.22 (#40)
+ * Show an error dialog if the integrated video player fails
+  to initialize playback due to e.g. missing codecs
+ * Fix error trying to undo more actions than exist when holding down
+  Ctrl+Z (#38)
+
+- updated to 0.92
+ * Fix error saving document from a time-based format to a
+  frame-based or vice versa ([#28][])
+ * Fix error clicking undo or redo button dropdown arrow when no
+  document is yet open ([#29][])
+ * Fix action states after subtitle cell editing cancelled ([#30][])
+ * Fix recent file menu states to update correctly ([#31][])
+ * Fix save as dialog to always add filename extension ([#32][])
+ * Update AppData file
+
+- updated to 0.91
+ * Use header bars for dialogs
+ * Migrate from deprecated `Gtk.UIManager`, `Gtk.Action` etc.
+  to `Gtk.Application`, `Gio.Action` etc.
+ * Add mpv for preview with precise seek (`--hr-seek=yes`)
+ * Make mpv the default preview video player on non-Windows systems
+  and set the default preview offset to one second
+ * Make seek length configurable in the preferences dialog
+ * Add find and replace to the toolbar
+ * Have both Ctrl+F and Ctrl+H open the find and replace dialog
+ * Have both Ctrl++, Ctrl+- and numpad equivalents control volume
+ * Remove external video player output window (if you want to see
+  that output, start Gaupol from a terminal)
+ * Use a monospace editing font by default
+ * Add support for IBM273, IBM1125, KOI8-T and KZ1048 character
+  encodings (whether these are actually available depends on your
+  version of Python)
+ * Drop the bookmarks extension
+ * Fix Cancel button behaviour when quitting Gaupol by closing the
+  main window and having unsaved changes ([#14][])
+ * Fix line length measure em to be narrower ([#763589][])
+ * Have the text view right-click spell-check language menu
+  set the language permanently
+ * Don't show the "Use Shift+Return for line-break" help message
+  if it's likely to overlap with the text being edited
+ * Only force theme variant if `dark_theme` in config file is
+  `true`, thus respecting any global settings ([#753315][])
+ * Make `GTK_THEME=Adwaita:dark gaupol` work correctly
+ -rebase patch gaupol-0.17.1-destokp.patch 
+
+-------------------------------------------------------------------
+Mon May 18 12:40:06 UTC 2015 - elchevive@opensuse.org
+
+- updated to 0.28.2
+ * Fix text view size in spell check dialog
+
+-------------------------------------------------------------------
+Mon May 11 12:10:46 UTC 2015 - elchevive@opensuse.org
+
+- updated to 0.28.1
+ * Have the spell-check dialog remember its size
+ * Work around a destructive override in gst-python that broke
+   Gaupol's built-in video player (bgo#748813)
+ * Update Hungarian translation (AndrÃ¡ssy LÃ¡szlÃ³)
+ * Update French translation (RyDroid)
+ * Update Brazilian Portuguese translation (Rafael Ferreira, Felipe Braga)
+ * Update Czech translation (Pavel Fric)
+
+-------------------------------------------------------------------
+Tue Dec  9 19:27:33 UTC 2014 - elchevive@opensuse.org
+
+- updated to 0.28
+ * Add target in the position shift dialog to shift subtitles
+   from selection to end (bgo#734198)
+ * Center tab labels
+ * Fix mouse use in the cell text editor to not cause losing focus
+   and thus cancelling editing
+ * Fix bookmarks not being cleared when a file with bookmarks
+   is closed (bgo#740481)
+ * Remove buggy `text-shadow` use from CSS (bgo#740527)
+ * Use markdown for documentation files (`README` etc.)
+ * Update Spanish translation (Carlos Mella)
+
+-------------------------------------------------------------------
+Tue Oct 28 12:57:05 UTC 2014 - elchevive@opensuse.org
+
+- updated to 0.27
+ * Hide tabs when only one tab is open
+ * Expand tabs to fill window width, use 24 characters at minimum
+ * Fix dialog paddings with GTK+ 3.14
+ * Fix text view line length display with GTK+ 3.14
+ * Pack video player toolbar and seekbar horizontally
+ * Avoid column resizing upon opening file
+ * Fix "IndexError: list index out of range" when undoing or redoing
+   by holding Ctrl+(Shift)+Z pressed
+ * Remove use of deprecated stock items, Gtk.Alignment,
+   gi.types.Boxed.__init__ and non-transient dialogs
+ * Update Spanish translation (Carlos Mella)
+
+-------------------------------------------------------------------
+Wed Jul  2 11:55:03 UTC 2014 - elchevive@opensuse.org
+
+- updated to 0.26
+- rebase patch gaupol-0.17.1-desktop.patch
+ * Update file selection dialogs to work better with GTK+ 3.12
+ * Default toolbar style to icons only (due to gtk-toolbar-style
+   being deprecated since GTK+ 3.10)
+ * Allow using the dark GTK+ theme variant (you need to edit
+   ~/.config/gaupol/gaupol.conf to enable this)
+ * Fix errors and lack of updates in multiline text cells and their
+   line length calculation and display (bgo#728575)
+ * Fix initially incorrect row heights after opening a file
+ * Fix updating subtitle numbers when inserting or removing subtitles
+ * Fix overlapping column header right-click menus
+ * Fix saving enumeration values to configuration file
+ * Use Gtk.render_layout instead of deprecated Gtk.paint_layout to
+   render line length margin in text views
+ * Remove header editing dialog
+ * Remove non-functional speech recognition menu item
+   (see http://www.mail-archive.com/gaupol-list@gna.org/msg00069.html)
+ * Drop support for the MPsub format
+ * Add GTK+ (3.2 or greater) to list of dependencies in the README
+   file (GTK+ has always been a dependency, its explicit mention was
+   just forgotten when migrating from PyGTK to PyGObject)
+ * Update Brazilian Portuguese translation (Rafael Ferreira)
+ * Update Czech translation (Pavel Fric)
+
+-------------------------------------------------------------------
+Tue Feb 11 12:05:14 UTC 2014 - elchevive@opensuse.org
+
+- updated to 0.25
+ * Depend on GtkSpell 3.0.0 or later instead of pygtkspellcheck
+   for inline spell-check
+ * Clarify GStreamer dependency as "at least the core,
+   gst-plugins-base and gst-plugins-good; and for good container and
+   codec support preferrably each of gst-plugins-bad, gst-plugins-ugly
+   and gst-libav" (bgo#710138)
+ * Check that required GStreamer elements can be found and
+   print error messages if not (bgo#710138)
+ * Filter open recent menu items by mimetype
+ * Fix search dialog "Ignore case" option
+ * Fix text correction assistant layout with GTK+ 3.10
+ * Update Spanish translation (Carlos Mella)
+
+-------------------------------------------------------------------
+Mon Oct  7 14:15:00 UTC 2013 - elchevive@opensuse.org
+
+- updated to 0.24.3
+ * Fix preferences dialog subtitle and time overlay connections
+ * Make AppData file translatable
+ * Fix broken string formatting in the French translation that caused
+   KeyErrors handling encoding names (bgo#709335)
+
+-------------------------------------------------------------------
+Mon Sep 23 15:27:54 UTC 2013 - elchevive@opensuse.org
+
+- updated to 0.24.1
+ * Possibly fix floating status label colors on non-Adwaita themes
+ * Add an AppData XML file
+   - http://people.freedesktop.org/~hughsient/appdata/
+ * Add French translation (RyDroid)
+ * Update Czech translation (Pavel Fric)
+
+-------------------------------------------------------------------
+Mon Jul 22 20:17:18 UTC 2013 - elchevive@opensuse.org
+
+- updated to 0.24
+ * Add action to set the end time from video position
+  * Use a floating label for the statusbar
+ * Show search dialog messages in a floating label
+   in the search dialog
+ * Use inline toolbars in the preferences dialog
+  * Apply GNOME Goal: Add keywords to application desktop files
+ * Hide translation text column by default and show only when a
+   translation file is opened or the column is explicitly selected
+   to be shown
+ * Remove video toolbar (video file and framerate selectors)
+ * Add a framerate selector to save dialogs (shown only when
+   converting from a time-based file format to a frame-based
+   or vice versa)
+ * Change a couple keybindings
+ * Move "Select Video" from the file menu to the tools menu (below
+   "Preview") to clarify that it relates to the external preview
+ * Add Galician translation (Leandro Regueiro)
+ * Update Spanish translation (Carlos Mella)
+
+-------------------------------------------------------------------
+Wed Jun 26 01:36:02 UTC 2013 - elchevive@opensuse.org
+
+- updated to 0.23
+ * Add a built-in GStreamer-based video player
+ * Add a not-required, but recommended dependency on PT fonts
+   (PT Sans Caption and PT Mono) used by default for video player's
+   subtitle and timecode overlays
+ * Bump PyGObject dependency to version 3.6.0 or later
+ * Fix KeyError tearing down extension on quit (bgo#702518)
+ * Update Spanish translation (Carlos Mella)
+
+-------------------------------------------------------------------
+Tue Apr  9 21:44:03 UTC 2013 - elchevive@opensuse.org
+
+- updated to 0.22
+*  Restore drop-down arrows on undo and redo toolbar buttons for those
+    using PyGObject 3.7.90 or greater (bgo#686608)
+ *  Restore almost proper keeping track of recent files for those using
+    PyGObject 3.7.4 or greater (bgo#678401, bgo#695970)
+ *  Restore zebra-stripes, which were previously discarded by some
+    GTK+ themes
+ *  Mostly fix cell rendering speed issues with GTK+ 3.6 and later
+ *  Add Czech translation (Pavel Fric)
+
+-------------------------------------------------------------------
+Mon Feb 25 18:10:40 UTC 2013 - elchevive@opensuse.org
+
+- update dependencies (python3 mainly)
+- updated to 0.21.1
+* Fix error disconnecting text view's line length margin handler
+   (AttributeError: 'TextView' object has no attribute
+   'gaupol_ruler_handler_id')
+ * Fix atomic file writing in weird cases where the subtitle file to
+   be written and its backup in the same directory would be on
+   different filesystems (Florian Léger, Osmo Salomaa)
+ * Fix speed issues updating subtitle list selection (e.g. when doing
+   a search-and-replace-all with a alot of matches)
+ * Speed up action sensitivity updates
+ * Restore inline spell-check, replace the previous GtkSpell
+   dependency with a dependency on pygtkspellcheck
+   - http://koehlma.github.com/projects/pygtkspellcheck.html
+ * Add partial support for fancy Unicode dashes, ellipses and
+   quotation marks in text correction patterns and "Toggle dialogue
+   dashes" action
+ * Fix search dialog mnemonics
+ * Apply GNOME Goal: Remove markup in translatable messages
+
+-------------------------------------------------------------------
+Fri Nov 23 18:14:01 UTC 2012 - prusnak@opensuse.org
+
+- updated to 0.20.1
+ * Fix crash on startup on newer versions of PyGObject and/or GTK+
+   resulting from setting tool item types (#686608)
+ * Fix side pane header menu (#686312)
+ * Disable 'Join or Split Words' task in the text correction assistant
+   if no spell-check dictionaries are available (#686340)
+ * Use a stock GTK+ close icon for tab close buttons if
+   'window-close-symbolic' is not found
+ * Fix behaviour of spell-check dialog's 'Replace with' entry
+
+- updated to 0.20
+ * Migrate to Python 3, GTK+ 3, GStreamer 1.0, PyGI and GNOME 3
+ * Bump Python dependency to 3.2 or greater
+ * Replace PyGTK dependency with PyGObject 3.0.0 or greater
+ * Bump optional GStreamer dependency to 1.0 or greater
+ * Disable inline spell-checking while waiting for introspection
+   support to be added to GtkSpell
+   - https://bugzilla.redhat.com/show_bug.cgi?id=675504
+ * Disable speech recognition while waiting for pocketsphinx to be
+   ported to GStreamer 1.0
+   - https://sourceforge.net/projects/cmusphinx/forums/forum/5471/topic/5497616
+ * Rewrite line-breaking algorithm to use a Knuth-Plass-style flexible
+   system of penalties and a versatile measure of goodness
+ * Write subtitle files in a proper atomic manner (on Windows this
+   is fully atomic only with Python 3.3 or later)
+ * Ellipsize tab labels in the middle (#686099)
+ * Remove -c/--config-file option (you're better off setting XDG_*
+   environment variables if you're doing something weird)
+ * Add 48x48 and 256x256 pixel PNG icons and remove SVG icon
+ * Fix bug in saving a temporary file for preview (#685706)
+ * Fix signatures of decorated functions in API documentation
+ * Use filename extension '.extension' for extension metadata files
+   (instead of previous '.gaupol-extension')
+ * Use filename extension '.bookmarks' for bookmark files written by
+   the bookmarks extension (instead of previous '.gaupol-bookmarks)
+ * Release source tarballs only compressed as tar.xz (instead
+   of the previous tar.gz and tar.bz2)
+ * Update Brazilian Portuguese translation
+   (Átila Camurça, Darlildo Lima)
+ * Update Hungarian translation (Andrássy László)
+ * Update Spanish translation (Carlos Mella)
+
+-------------------------------------------------------------------
+Sun Feb 26 15:49:47 UTC 2012 - elchevive@opensuse.org
+
+- Add ifelse to python-pyenchant (new name for > 12.1)
+
+-------------------------------------------------------------------
+Tue Jan 31 11:04:15 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  No indication of GPL-3.0 files (i.e. GPLv3 only) in the package
+
+-------------------------------------------------------------------
+Fri Jan 27 13:23:50 UTC 2012 - elchevive@opensuse.org
+
+- update license tag to new format and some cleanup
+
+-------------------------------------------------------------------
+Thu Dec 06 18:03:00 UTC 2011 - elchevive@opensuse.org
+
+- split python-aeidon package
+- updated to 0.19.2
+
+ * Allow preview of unsaved documents (#661242)
+ * Use subtitles from selected range if applicable in the Transform
+   Positions dialog (#663158)
+ * Fix mplayer preview command to work if gaupol was started as a
+   background process (with &) from a terminal window (#660035)
+ * Fix TypeError when speech recognition stopped in the middle of a
+   subtitle
+ * Fix IndexError when speech recognition finished with no speech
+   detected (#659411)
+ * Fix UnicodeDecodeError when reading configuration file (#661123)
+ * Rename manifest directory in source tarball to avoid clashes with
+   MANIFEST file on case-insensitive filesystems
+
+ changes in 0.19.1
+
+ * Fix gettext initialization in aeidon package to not make global
+   changes (Olivier Aubert, Osmo Salomaa, Debian bug #639668)
+ * Fix speech recognition advance length handling so that subtitles
+   don't start too early
+ * Update Russian translation (Alexandre Prokoudine)
+
+ changes in 0.19
+
+ * Add speech recognition to allow generating subtitles from video
+   http://live.gnome.org/Gaupol/SpeechRecognition
+ * Fix installation of custom-framerates extension
+ * Add optional dependency on gst-python (this also implies a
+   dependency on one or more of gst-plugins-base, gst-plugins-good,
+   gst-plugins-ugly, gst-plugins-bad, gst-ffmpeg depending on what
+   video and audio formats are being used)
+   http://gstreamer.freedesktop.org/
+ * Add optional dependency on pocketsphinx
+   http://cmusphinx.sourceforge.net/
+ * Add gaupol-i18n mailing list for translators
+ * Update Spanish translation (Carlos Mella)
+ * Update Hungarian translation (Andrssy Lszl)
+
+changes in 0.18
+
+ * Add extension that allows use of custom framerates (#637503)
+ * Add "Get more extensions" button to the preferences dialog
+ * Relax SubRip file parsing in unambiguous cases (#634129)
+ * Fix saving of last used directory in file dialogs with "paths that
+   cannot be represented as a local filename" (#649347)
+ * Add Brazilian Portuguese translation (tila Camura,
+   Darlildo Souza)
+ * Update German translation (Chris Leick)
+
+-------------------------------------------------------------------
+Fri May 27 15:04:35 UTC 2011 - prusnak@opensuse.org
+
+- updated to 0.17.2
+
+-------------------------------------------------------------------
+Tue Dec 28 14:02:00 GMT 2010 - elchevive@opensuse.org
+
+- Updated to version 0.17.1
+- Move changes to .changes file
+- Build package as noarch
+- Updated and put version number on .patch
+
+-------------------------------------------------------------------
+Mon Aug 17 00:00:00 GMT 2009 - prusnak@suse.cz
+
+- fixed build
+
+-------------------------------------------------------------------
+Wed Aug 05 00:00:00 GMT 2009 - prusnak@suse.cz
+
+- updated to version 0.15
+
+-------------------------------------------------------------------
+Mon Jun 15 00:00:00 GMT 2009 - prusnak@suse.cz
+
+- add patch comments
+
+-------------------------------------------------------------------
+Fri Sep 12 00:00:00 GMT 2008 - jreidinger@suse.cz
+
+- initial build, version 0.13.1
+

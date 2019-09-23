@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:47:23 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri May 19 16:01:08 UTC 2017 - dimstar@opensuse.org
+
+- Don't hide errors while creating users, and do not mask failures:
+  if there is a problem creating the user there is no reason to
+  believe the application would work afterwards.
+- Add group(nogroup) to Requires(pre): the user to be created joins
+  that group.
+
+-------------------------------------------------------------------
+Thu Mar 24 08:58:57 UTC 2016 - mpluskal@suse.com
+
+- Correct typo in changelog
+- Fixed boo#914157
+
+-------------------------------------------------------------------
+Wed Mar  2 12:11:26 UTC 2016 - mpluskal@suse.com
+
+- Revert to state without conflicts
+
+-------------------------------------------------------------------
+Sun Apr 26 11:22:30 UTC 2015 - mpluskal@suse.com
+
+- Fix url
+
+-------------------------------------------------------------------
+Sun Apr 12 20:03:45 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Correct unit file permissions, scriplet and rcservice
+  symlink
+
+-------------------------------------------------------------------
+Fri Mar 21 22:54:17 UTC 2014 - xrigou@otenet.gr
+
+- Fix systemd-tmpfiles-clean.service failure because of 
+  wrong temporary directory gid.
+
+-------------------------------------------------------------------
+Sat Oct 26 15:10:39 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.92.3
+  + No changelog available
+- Improve systemd support for openSUSE >= 12.3
+- Add some forgotten stuff for sysvinit support
+- Little specfile cleanup
+- Drop obsolete by upstream changes patchs
+  * cntlm-0.35.1-config.patch
+  * cntlm-0.35.1-Makefile.patch
+- Add patchs
+  + cntlm-0.92.3-HTTP-1.1-persistent-connections-with-HTTP-1.0-clients.patch
+    cntlm doesn't handle correctly requests when use HTTP protocol
+
+-------------------------------------------------------------------
+Sat Sep 17 23:17:22 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug 18 06:22:40 UTC 2011 - cfarrell@novell.com
+
+- license update: GPLv2+
+  The package is GPL 2 "or later". See
+  http://svn.awk.cz/cntlm/trunk/COPYRIGHT.
+  No GPL-2.0 "only" files in the package
+
+-------------------------------------------------------------------
+Wed Aug 17 17:00:28 UTC 2011 - chris@computersalat.de
+
+- fix bnc#710275
+  * /var/run/cntlm -> tmpfs (created by init script)
+- spec cleanup
+- set defaults in sysconfig
+
+-------------------------------------------------------------------
+Thu Aug  4 15:10:10 UTC 2011 - coolo@novell.com
+
+- revert to 0.35.1
+
+-------------------------------------------------------------------
+Wed Jan  5 10:36:36 UTC 2011 - chris@computersalat.de
+
+- update to 0.91rc6 (0.90.99.06)
+- rework config patch
+- remove obsolete Makefile patch
+- some mods to sysconfig/init file
+
+-------------------------------------------------------------------
+Thu Aug 27 21:30:59 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  o replace check for existing user with getent
+
+-------------------------------------------------------------------
+Sat Aug 22 12:58:32 CEST 2009 - chris@computersalat.de
+
+- cleanup spec
+  o removed ^#-----
+
+-------------------------------------------------------------------
+Mon Jul  6 14:55:07 CEST 2009 - chris@computersalat.de
+
+- added missing rclink
+
+-------------------------------------------------------------------
+Wed May  6 18:37:10 CEST 2009 - chris@computersalat.de
+
+- initial build for Version 0.35.1 
+

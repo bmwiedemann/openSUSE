@@ -1,0 +1,747 @@
+-------------------------------------------------------------------
+Tue Mar  5 15:11:25 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.14.02:
+  * Fix crash due to multiple errors or warnings during the code generation pass if a list file is specified.
+  * Create all system-defined macros defore processing command-line given preprocessing directives (-p, -d, -u, --pragma, --before).
+  * If debugging is enabled, define a __DEBUG_FORMAT__ predefined macro. See section 4.11.7.
+  * Fix an assert for the case in the obj format when a SEG operator refers to an EXTERN symbol declared further down in the code.
+  * Fix a corner case in the floating-point code where a binary, octal or hexadecimal floating-point having at least 32, 11, or 8 mantissa digits could produce slightly incorrect results under very specific conditions.
+  * Support -MD without a filename, for gcc compatibility. -MF can be used to set the dependencies output filename. See section 2.1.7.
+  * Fix -E in combination with -MD. See section 2.1.21.
+  * Fix missing errors on redefined labels; would cause convergence failure instead which is very slow and not easy to debug.
+  * Duplicate definitions of the same label with the same value is now explicitly permitted (2.14 would allow it in some circumstances.)
+  * Add the option --no-line to ignore %line directives in the source. See section 2.1.33 and section 4.10.1.
+  * Changed -I option semantics by adding a trailing path separator unconditionally.
+  * Fixed null dereference in corrupted invalid single line macros.
+  * Fixed division by zero which may happen if source code is malformed.
+  * Fixed out of bound access in processing of malformed segment override.
+  * Fixed out of bound access in certain EQU parsing.
+  * Fixed buffer underflow in float parsing.
+  * Added SGX (Intel Software Guard Extensions) instructions.
+  * Added +n syntax for multiple contiguous registers.
+  * Fixed subsections_via_symbols for macho object format.
+  * Added the --gprefix, --gpostfix, --lprefix, and --lpostfix command line options, to allow command line base symbol renaming. See section 2.1.28.
+  * Allow label renaming to be specified by %pragma in addition to from the command line. See section 6.9.
+  * Supported generic %pragma namespaces, output and debug. See section 6.10.
+  * Added the --pragma command line option to inject a %pragma directive. See section 2.1.29.
+  * Added the --before command line option to accept preprocess statement before input. See section 2.1.30.
+  * Added AVX512 VBMI2 (Additional Bit Manipulation), VNNI (Vector Neural Network), BITALG (Bit Algorithm), and GFNI (Galois Field New Instruction) instructions.
+  * Added the STATIC directive for local symbols that should be renamed using global-symbol rules. See section 6.8.
+  * Allow a symbol to be defined as EXTERN and then later overridden as GLOBAL or COMMON. Furthermore, a symbol declared EXTERN and then defined will be treated as GLOBAL. See section 6.5.
+  * The GLOBAL directive no longer is required to precede the definition of the symbol.
+  * Support private_extern as macho specific extension to the GLOBAL directive. See section 7.8.5.
+  * Updated UD0 encoding to match with the specification
+  * Added the --limit-X command line option to set execution limits. See section 2.1.31.
+  * Updated the Codeview version number to be aligned with MASM.
+  * Added the --keep-all command line option to preserve output files. See section 2.1.32.
+  * Added the --include command line option, an alias to -P (section 2.1.18).
+  * Added the --help command line option as an alias to -h (section 3.1).
+  * Added -W, -D, and -Q suffix aliases for RET instructions so the operand sizes of these instructions can be encoded without using o16, o32 or o64.
+- Drop no longer needed 9f45a77f4.patch
+- Enable LTO
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Thu Mar 15 09:06:17 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 15 06:49:13 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 2.13.03:
+  * Add flags:
+    AES, VAES, VPCLMULQDQ
+  * Add VPCLMULQDQ instruction
+  * elf: Add missing dwarf loc section
+  * documentation updates
+- 9f45a77f4.patch: fixes compilation with gcc8 (bsc#1084631)
+
+-------------------------------------------------------------------
+Wed Jan 24 13:09:39 UTC 2018 - adam.majer@suse.de
+
+- New upstream version 2.13.02:
+  * Fix generation of PEXTRW instruction.
+  * Fix smartalign package which could trigger an error during
+  optimization if the alignment code expanded too much due to
+  optimization of the previous code.
+  * Fix a case where negative value in TIMES directive causes
+  panic instead of an error.
+  * Fix the incorrect generation of VEX-encoded instruction
+  when static mode decorators are specified on scalar instructions,
+  losing the decorators as they require EVEX encoding.
+  * Fix generation of dependency lists.
+  * Fixes macro calls that have the wrong number of arguments
+    (bsc#1073796, CVE-2017-17810)
+  * Fixes Heap-based buffer overflow allows related to a strcpy
+    in paste_tokens (bsc#1073798, CVE-2017-17811)
+  * Fixes Heap-based buffer over-read in the function detoken()
+    (bsc#1073799, CVE-2017-17812)
+  * Fixes Use-after-free in the pp_list_one_macro function
+    (bsc#1073803, CVE-2017-17813)
+  * Fixes Use-after-free in do_directive
+    (bsc#1073808, CVE-2017-17814)
+  * Fixes Illegal address access in is_mmacro()
+    (bsc#1073818, CVE-2017-17815)
+  * Fixes Use-after-free in pp_getline
+    (bsc#1073823, CVE-2017-17816)
+  * Fixes Use-after-free in pp_verror
+    (bsc#1073829, CVE-2017-17817)
+  * Fixes Heap-based buffer over-read related to a while loop in
+    paste_tokens (bsc#1073830, CVE-2017-17818)
+  * Fixes Illegal address access in the function find_cc
+    (bsc#1073832, CVE-2017-17819)
+  * Fixes Use-after-free in pp_list_one_macro
+    (bsc#1073846, CVE-2017-17820)
+  * Fixes illegal address access in thefunction paste_tokens()
+    (bsc#1058013, CVE-2017-14228)
+- memory_fixes.patch: changes upstreamed and removed.
+
+-------------------------------------------------------------------
+Tue Jul 25 11:00:30 UTC 2017 - adam.majer@suse.de
+
+- memory_fixes.patch: Fix usage-after-free and buffer overflow
+  bugs (bsc#1047925, bsc#1047936, CVE-2017-11111, CVE-2017-10686)
+- Restrict %fdupes to manpage directory
+- Enable unit tests in %check target
+
+-------------------------------------------------------------------
+Tue May 23 11:14:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.13.01:
+  * Fix incorrect output for some types of FAR or SEG references in
+    the obj output format, and possibly other 16-bit output formats.
+  * Fix the address in the list file for an instruction containing
+    a TIMES directive.
+  * Fix error with TIMES used together with an instruction which
+    can vary in size, e.g. JMP.
+  * Fix breakage on some uses of the DZ pseudo-op.
+- Changes for 2.13.00:
+  * Support the official forms of the UD0 and UD1 instructions.
+  * Allow self-segment-relative expressions in immediates and
+    displacements
+  * Handle a 64-bit origin in NDISASM.
+  * NASM can now generate sparse output files for relevant output
+    formats, if the underlying operating system supports them.
+  * Fix a number of bugs related to AVX-512 decorators.
+  * Fix the {z} decorator on AVX-512 VMOVDQ* instructions.
+  * Add new warnings for certain dangerous constructs which never
+    ought to have been allowed.
+  * Fix the EVEX (AVX-512) versions of the VPBROADCAST, VPEXTR, and
+    VPINSR instructions.
+  * Support contracted forms of additional instructions.
+  * Fix Codeview malformed compiler version record.
+  * Add the CLWB and PCOMMIT instructions.
+  * Add the %pragma preprocessor directive for soft-error
+    directives.
+  * Add the RDPID instruction.
+- Drop doc subpackage
+
+-------------------------------------------------------------------
+Fri Jul  8 08:45:29 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.12.02:
+  * Fix preprocessor errors, especially %error and %warning, inside 
+    if statements.
+  * Fix relative relocations in 32-bit Mach-O.
+  * More Codeview debug format fixes.
+  * If the MASM PTR keyword is encountered, issue a warning. This 
+    is much more likely to indicate a MASM-ism encountered in NASM 
+    than it is a valid label.
+  * This warning can be suppressed with -w-ptr, the [warning] 
+    directive (see section 2.1.24) or by the macro definition 
+    %idefine ptr %??.
+  * When an error or a warning comes from the expansion of a 
+    multi-line macro, display the file and line numbers for the 
+    expanded macros.
+  * Macros defined with .nolist do not get displayed.
+  * Add macros ilog2fw() and ilog2cw() to the ifunc macro package. 
+    See section 5.4.1.
+- Changes for version 2.12.01:
+  * Portability fixes for some platforms.
+  * Fix error when not specifying a list file.
+  * Correct the handling of macro-local labels in the Codeview 
+    debugging format.
+  * Add CLZERO, MONITORX and MWAITX instructions.
+- Drop no longer needed nasm_change_unused.patch
+
+-------------------------------------------------------------------
+Wed Mar  2 11:36:33 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new nasm_change_unused.patch to avoid PowerPC build error
+
+-------------------------------------------------------------------
+Tue Mar  1 07:48:37 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.12
+  * Major fixes to the macho backend (section 7.8); earlier 
+    versions would produce invalid symbols and relocations on a 
+    regular basis.
+  * Support for thread-local storage in Mach-O.
+  * Support for arbitrary sections in Mach-O.
+  * Fix wrong negative size treated as a big positive value passed 
+    into backend causing NASM to crash.
+  * Fix handling of zero-extending unsigned relocations, we have 
+    been printing wrong message and forgot to assign segment with 
+    predefined value before passing it into output format.
+  * Fix potential write of oversized (with size greater than 
+    allowed in output format) relative relocations.
+  * Portability fixes for building NASM with LLVM compiler.
+  * Add support of Codeview version 8 (cv8) debug format for win32 
+    and win64 formats in the COFF backend, see section 7.5.3.
+  * Allow 64-bit outputs in 16/32-bit only backends. Unsigned 
+    64-bit relocations are zero-extended from 32-bits with a 
+    warning (suppressible via -w-zext-reloc); signed 64-bit 
+    relocations are an arror.
+  * Line numbers in list files now correspond to the lines in the 
+    source files, instead of simply being sequential.
+  * There is now an official 64-bit (x64 a.k.a. x86-64) build for 
+    Windows.
+- Changes for 2.11.09
+  * Fix potential stack overwrite in macho32 backend.
+  * Fix relocation records in macho64 backend.
+  * Fix symbol lookup computation in macho64 backend.
+  * Adjust .symtab and .rela.text sections alignments to 8 bytes 
+    in elf64 backed.
+  * Fix section length computation in bin backend which leaded in 
+    incorrect relocation records.
+- Update build dependencies
+
+-------------------------------------------------------------------
+Tue Feb 24 08:36:37 UTC 2015 - mpluskal@suse.com
+
+- Build doc package as noarch
+- Use fdupes to remove duplicates
+- Update to 2.11.08
+  * Fix section length computation in bin backend which leaded in 
+    incorrect relocation records.
+  * Add a warning for numeric preprocessor definitions passed via 
+    command line which might have unexpected results otherwise.
+  * Add ability to specify a module name record in rdoff linker 
+    with -mn option.
+  * Increase label length capacity up to 256 bytes in rdoff 
+    backend for FreePascal sake, which tends to generate very 
+    long labels for procedures.
+  * Fix segmentation failure when rip addressing is used in macho64 
+    backend.
+  * Fix access on out of memory when handling strings with a 
+    single grave. We have sixed similar problem in previous 
+    release but not all cases were covered.
+  * Fix NULL dereference in disassembled on BND instruction.
+- Changes for 2.11.07
+  * Fix 256 bit VMOVNTPS instruction.
+  * Fix -MD option handling, which was rather broken in previous 
+    release changing command line api.
+  * Fix access to unitialized space when handling strings with 
+    a single grave.
+  * Fix nil dereference in handling memory reference parsing.
+
+-------------------------------------------------------------------
+Sat Feb 21 14:54:41 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update project url
+- Switch to .xz source
+- Update to 2.11.06:
+  * Add support for the Intel AVX-512 instruction set:
+  * 16 new, 512-bit SIMD registers. Total 32 (ZMM0 ~ ZMM31)
+  * 8 new opmask registers (K0 ~ K7). One of 7 registers (K1 ~ K7) 
+    can be used as an opmask for conditional execution.
+  * A new EVEX encoding prefix. EVEX is based on VEX and provides 
+    more capabilities: opmasks, broadcasting, embedded rounding and 
+    compressed displacements.
+  * Add support for ZWORD (512 bits), DZ and RESZ.
+  * Add support for the MPX and SHA instruction sets.
+  * Better handling of section redefinition.
+  * Generate manpages when running 'make dist'.
+  * Handle all token chains in mmacro params range.
+  * Support split [base,index] effective address:
+  * for more details see http://www.nasm.us/doc/nasmdocc.html
+
+-------------------------------------------------------------------
+Fri Jul 26 07:03:58 UTC 2013 - crrodriguez@opensuse.org
+
+- version 2.10.09 
+* Add support for the Intel AVX2 instruction set.
+* Add support for Bit Manipulation Instructions 1 and 2.
+* Add support for Intel Transactional Synchronization Extensions (TSX).
+* Add support for x32 ELF
+* Add the ifunc macro package with integer functions, 
+  currently only integer logarithms.
+* Add support for RDSEED
+* Support of AMD SVM instructions in 32 bit mode
+* Add a bunch of AMD TBM instructions.
+* 2 years of bugfixes 
+
+-------------------------------------------------------------------
+Mon Apr 15 13:46:25 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Sat Sep  8 11:22:45 UTC 2012 - idonmez@suse.com
+
+- Add explicit build dependency on makeinfo 
+
+-------------------------------------------------------------------
+Tue Jun 16 17:13:54 CET 2011 - per@computer.org
+
+upgrade to 2.09.08. Lots of changes & fixes since version 2.07:
+
+C.1.1 Version 2.09.08
+
+    * Fix __OUTPUT_FORMAT__ assignment when output driver alias is used. For example when -f elf
+      is used __OUTPUT_FORMAT__ must be set to elf, if -f elf32 is used __OUTPUT_FORMAT__ must be
+      assigned accordingly, i.e. to elf32. The rule applies to all output driver aliases. See 
+      section 4.11.6. 
+
+C.1.2 Version 2.09.07
+
+    * Fix attempts to close same file several times when -a option is used.
+    * Fixes for VEXTRACTF128, VMASKMOVPS encoding. 
+
+C.1.3 Version 2.09.06
+
+    * Fix missed section attribute initialization in bin output target. 
+
+C.1.4 Version 2.09.05
+
+    * Fix arguments encoding for VPEXTRW instruction.
+    * Remove invalid form of VPEXTRW instruction.
+    * Add VLDDQU as alias for VLDQQU to match specification. 
+
+C.1.5 Version 2.09.04
+
+    * Fix incorrect labels offset for VEX intructions.
+    * Eliminate bogus warning on implicit operand size override.
+    * %if term could not handle 64 bit numbers.
+    * The COFF backend was limiting relocations number to 16 bits even if in real there were a way
+      more relocations. 
+
+C.1.6 Version 2.09.03
+
+    * Print %macro name inside %rep blocks on error.
+    * Fix preprocessor expansion behaviour. It happened sometime too early and sometime simply
+      wrong. Move behaviour back to the origins (down to NASM 2.05.01).
+    * Fix unitialized data dereference on OMF output format.
+    * Issue warning on unterminated %{ construct.
+    * Fix for documentation typo. 
+
+C.1.7 Version 2.09.02
+
+    * Fix reversed tokens when %deftok produces more than one output token.
+    * Fix segmentation fault on disassembling some VEX instructions.
+    * Missing %endif did not always cause error.
+    * Fix typo in documentation.
+    * Compound context local preprocessor single line macro identifiers were not expanded
+      early enough and as result lead to unresolved symbols. 
+
+C.1.8 Version 2.09.01
+
+    * Fix NULL dereference on missed %deftok second parameter.
+    * Fix NULL dereference on invalid %substr parameters. 
+
+C.1.9 Version 2.09
+
+    * Fixed assignment the magnitude of %rep counter. It is limited to 62 bits now.
+    * Fixed NULL dereference if argument of %strlen resolves to whitespace. For example if
+      nonexistent macro parameter is used.
+    * %ifenv, %elifenv, %ifnenv, and %elifnenv directives introduced. See section 4.4.9.
+    * Fixed NULL dereference if environment variable is missed.
+    * Updates of new AVX v7 Intel instructions.
+    * PUSH imm32 is now officially documented.
+    * Fix for encoding the LFS, LGS and LSS in 64-bit mode.
+    * Fixes for compatibility with OpenWatcom compiler and DOS 8.3 file format limitation.
+    * Macros parameters range expansion introduced. See section 4.3.4.
+    * Backward compatibility on expanging of local sigle macros restored.
+    * 8 bit relocations for elf and bin output formats are introduced.
+    * Short intersegment jumps are permitted now.
+    * An alignment more than 64 bytes are allowed for win32, win64 output formats.
+    * SECTALIGN directive introduced. See section 4.11.13.
+    * nojmp option introduced in smartalign package. See section 5.2.
+    * Short aliases win, elf and macho for output formats are introduced. Each stands for
+      win32, elf32 and macho32 accordingly.
+    * Faster handling of missing directives implemented.
+    * Various small improvements in documentation.
+    * No hang anymore if unable to open malloc.log file.
+    * The environments without vsnprintf function are able to build nasm again.
+    * AMD LWP instructions updated.
+    * Tighten EA checks. We warn a user if there overflow in EA addressing.
+    * Make -Ox the default optimization level. For the legacy behavior, specify -O0 explicitly.
+      See section 2.1.22.
+    * Environment variables read with %! or tested with %ifenv can now contain non-identifier
+      characters if surrounded by quotes. See section 4.10.2.
+    * Add a new standard macro package %use fp for floating-point convenience macros. See
+      section 5.3. 
+
+C.1.10 Version 2.08.02
+
+    * Fix crash under certain circumstances when using the %+ operator. 
+
+C.1.11 Version 2.08.01
+
+    * Fix the %use statement, which was broken in 2.08. 
+
+C.1.12 Version 2.08
+
+    * A number of enhancements/fixes in macros area.
+    * Support for converting strings to tokens. See section 4.1.9.
+    * Fuzzy operand size logic introduced.
+    * Fix COFF stack overrun on too long export identifiers.
+    * Fix Macho-O alignment bug.
+    * Fix crashes with -fwin32 on file with many exports.
+    * Fix stack overrun for too long [DEBUG id].
+    * Fix incorrect sbyte usage in IMUL (hit only if optimization flag passed).
+    * Append ending token for .stabs records in the ELF output format.
+    * New NSIS script which uses ModernUI and MultiUser approach.
+    * Visual Studio 2008 NASM integration (rules file).
+    * Warn a user if a constant is too long (and as result will be stripped).
+    * The obsoleted pre-XOP AMD SSE5 instruction set which was never actualized was removed.
+    * Fix stack overrun on too long error file name passed from the command line.
+    * Bind symbols to the .text section by default (ie in case if SECTION directive was omitted) in
+      the ELF output format.
+    * Fix sync points array index wrapping.
+    * A few fixes for FMA4 and XOP instruction templates.
+    * Add AMD Lightweight Profiling (LWP) instructions.
+    * Fix the offset for %arg in 64-bit mode.
+    * An undefined local macro (%$) no longer matches a global macro with the same name.
+    * Fix NULL dereference on too long local labels. 
+
+-------------------------------------------------------------------
+Fri Dec 17 10:50:19 CET 2010 - pgajdos@suse.cz
+
+- don't include pdf in documentation, remove ghostscript from
+  build requires to break dependency cycle (jpeg-turbo needs
+  nasm for build)
+
+-------------------------------------------------------------------
+Mon Aug 30 22:49:25 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- use __TIMESTAMP__ instead of __DATE__ to make build-compare
+  happy. 
+
+-------------------------------------------------------------------
+Mon Mar  1 15:29:01 CET 2010 - ro@suse.de
+
+- update to 2.07
+  * NASM is now under the 2-clause BSD license.  See legal.
+  * Fix the section type for the .strtab section in the elf64
+  output format.
+  * Fix the handling of COMMON directives in the obj output format.
+  * New ith and srec output formats; these are variants of the
+  bin output format which output Intel hex and Motorola S-records,
+  respectively.  See ithfmt and srecfmt.
+  * rdf2ihx replaced with an enhanced rdf2bin, which can output
+  binary, COM, Intel hex or Motorola S-records.
+  * The Windows installer now puts the NASM directory first in the
+  PATH of the "NASM Shell".
+  * Revert the early expansion behavior of %+ to pre-2.06 behavior:
+  %+ is only expanded late.
+  * Yet another Mach-O alignment fix.
+  * Don't delete the list file on errors.  Also, include error and
+  warning information in the list file.
+  * Support for 64-bit Mach-O output, see machofmt.
+  * Fix assert failure on certain operations that involve strings with
+  high-bit bytes.
+
+-------------------------------------------------------------------
+Fri Dec 18 13:36:36 CET 2009 - jengelh@medozas.de
+
+- Enable parallel building
+
+-------------------------------------------------------------------
+Wed Jan 14 18:51:42 CET 2009 - pth@suse.de
+
+- Update to 2.06rc2. Changes since 2.04.rc1:
+      2.06:
+
+       * Support for indirect macro expansion ('%[...]').
+       * %pop' can now take an argument.
+       * The argument to %use' is no longer macro-expanded. Use '%[...]'
+         if macro expansion is desired.
+       * Support for thread-local storage in ELF32 and ELF64.
+       * Fix crash on '%ifmacro' without an argument.
+       * Correct the arguments to the 'POPCNT' instruction.
+
+       2.05.01:
+
+       * Fix the -w'/-W' option parsing, which was broken in NASM 2.05.
+
+       2.05:
+
+       * Fix redundant REX.W prefix on MP reg64'.
+       * Make the behaviour of -O0' match NASM 0.98 legacy behavior.
+       * -w-user' can be used to suppress the output of %warning'
+         directives.
+       * Fix bug where LIGN' would issue a full alignment datum instead
+         of zero bytes.
+       * Fix offsets in list files.
+       * Fix '%include' inside multi-line macros or loops.
+       * Fix error where NASM would generate a spurious warning on valid
+         optimizations of immediate values.
+       * Fix arguments to a number of the 'CVT' SSE instructions.
+       * Fix RIP-relative offsets when the instruction carries an
+         immediate.
+       * Massive overhaul of the ELF64 backend for spec compliance.
+       * Fix the Geode 'PFRCPV' and 'PFRSQRTV' instruction.
+       * Fix the SSE 4.2 'CRC32' instruction.
+
+-------------------------------------------------------------------
+Tue Sep  9 12:50:14 CEST 2008 - pth@suse.de
+
+- Update to 2.04rc1. Changes since 2.03:
+  
+   2.04.rc1:
+   * Sanitize macro handing in the %error directive.
+   * New %warning directive to issue user-controlled warnings.
+   * __utf16__ and __utf32__ operators to generate UTF-16 and UTF-32
+     strings.
+   * Correct the handling of nested %reps.
+   * Support for x87 packed BCD constants.
+   * New %strcat directive to join quoted strings together.
+   * Correct the LTR instruction in 64-bit mode.
+   * Fix unnecessary REX.W prefix on indirect jumps in 64-bit mode.
+   * New %use macro directive to support standard macro directives.
+   * Excess default parameters to %macro now issues a warning by default.
+   * Numerous bug fixes, especially to the AES, AVX and VTX instructions.
+   
+   2.03.01:
+
+   * Fix buffer overflow in the listing module.
+   * Fix the handling of hexadecimal escape codes in `...` strings.
+   * The -F option now implies -g.
+
+-------------------------------------------------------------------
+Thu Jun 12 12:39:18 CEST 2008 - pth@suse.de
+
+- Update to 2.03:
+    * Add support for Intel AVX, CLMUL and FMA instructions,
+      including YMM registers.
+    * "dy", "resy" and "yword" for 32-byte operands.
+    * Fix some SSE5 instructions.
+    * Intel INVEPT, INVVPID and MOVBE instructions.
+    * Fix checking for critical expressions when the optimizer is enabled.
+    * Support the DWARF debugging format for ELF targets.
+    * Fix optimizations of signed bytes.
+    * Fix operation on bigendian machines.
+    * Fix buffer overflow in the preprocessor.
+    * SAFESEH support for Win32, IMAGEREL for Win64 (SEH).
+    * %? and %?? to refer to the name of a macro itself.  In particular,
+      "%idefine keyword $%?" can be used to make a keyword "disappear".
+    * New options for dependency generation: -MD, -MF, -MP, -MT, -MQ.
+    * New preprocessor directives %pathsearch and %depend; INCBIN
+      reimplemented as a macro.
+    * %include now resolves macros in a sane manner.
+    * %substr can now be used to get other than one-character substrings.
+    * New type of character/string constants, using backquotes (`...`),
+      which support C-style escape sequences.
+    * %defstr and %idefstr to stringize macro definitions before creation.
+    * Fix forward references used in EQU statements.
+
+- remove nasm-fix-crash.diff as its obsoleted by this version.
+
+-------------------------------------------------------------------
+Tue Apr 15 08:59:00 CEST 2008 - coolo@suse.de
+
+- fix crash in syslinux
+
+-------------------------------------------------------------------
+Mon Apr  7 16:44:14 CEST 2008 - pth@suse.de
+
+- Update to 2.02:
+  * Additional fixes for MMX operands with explicit "qword", as well as
+    (hopefully) SSE operands with "oword".
+  * Fix handling of truncated strings with DO.
+  * Fix segfaults due to memory overwrites when floating-point constants
+    were used.
+  * Fix segfaults due to missing include files.
+  * Add autogenerated instruction list back into the documentation.
+  * ELF: Fix segfault when generating stabs, and no symbols have been
+    defined.
+  * ELF: Experimental support for DWARF debugging information.
+  * New compile date and time standard macros.
+  * %ifnum now returns true for negative numbers.
+  * Add support for the XSAVE instruction group.
+  * Fix issue with some warnings getting emitted way too many times.
+  * Autogenerated instruction list added to the documentation.
+- Split off -doc subpackage
+
+-------------------------------------------------------------------
+Tue Jan 22 11:56:31 CET 2008 - pth@suse.de
+
+- Update to 2.01 final.
+
+-------------------------------------------------------------------
+Thu Jan 10 19:16:21 CET 2008 - pth@suse.de
+
+- Update to 2.01rc2:
+  2.01
+  ----
+  * Fix the handling of MMX registers with explicit "qword" tags on
+    memory (broken in 2.00 due to 64-bit changes.)
+  * Fix the PREFETCH instructions.
+  * Fix the documentation.
+  * Fix debugging info when using "-f elf" (backwards alias for "-f
+    elf32").
+  * Man pages for rdoff tools (from the Debian project.)
+
+  2.00
+  ----
+  * Added c99 data-type compliance.
+  * Added general x86-64 support.
+  * Added win64 (x86-64 COFF) output format.
+  * Added __BITS__ standard macro.
+  * Renamed the elf output format to elf32 for clarity.
+  * Added elf64 and macho (MacOS X) output formats.
+  * Added Numeric constants in DQ directive.
+  * Added oword, do and reso pseudo operands.
+  * Allow underscores in numbers.
+  * Added 8-, 16- and 128-bit floating-point formats.
+  * Added binary, octal and hexadecimal floating-point.
+  * Correct the generation of floating-point constants.
+  * Added Floating-point option control.
+  * Added Infinity and NaN floating point support.
+  * Added ELF Symbol Visibility support.
+  * Added Setting OSABI value in ELF header directive.
+  * Added Generate Makefile Dependencies option.
+  * Added Unlimited Optimization Passes option.
+  * Added %IFN and %ELIFN support.
+  * Added Logical Negation Operator.
+  * Enhanced Stack Relative Preprocessor Directives.
+  * Enhanced ELF Debug Formats.
+  * Enhanced Send Errors to a File option.
+  * Added SSSE3, SSE4.1, SSE4.2, SSE5 support.
+  * Added a large number of additional instructions.
+  * Significant performance improvements.
+- Fix array sized to low.
+- Fix pointer->int cast.
+
+-------------------------------------------------------------------
+Fri Jan 26 13:16:42 CET 2007 - ro@suse.de
+
+- replace ghostscript-mini by ghostscript_any in BuildReq (#119914)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 22 11:28:29 CEST 2005 - uli@suse.de
+
+- update -> 0.98.39 (includes secfix and no longer builds with
+  -ansi, among other things)
+
+-------------------------------------------------------------------
+Tue Dec 21 10:35:02 CET 2004 - sf@suse.de
+
+- use vsnprintf to avoid buffer overflow (#49336) 
+
+-------------------------------------------------------------------
+Wed Feb 25 17:10:23 CET 2004 - stepan@suse.de
+
+- update to 0.98.38
+- use -fno-strict-aliasing
+- add rdx tools
+
+-------------------------------------------------------------------
+Sat Jan 10 19:19:31 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Feb 10 22:58:30 CET 2003 - mmj@suse.de
+
+- Use %install_info macro [#23442]
+- Use BuildRoot:
+
+-------------------------------------------------------------------
+Wed Nov 20 17:39:13 CET 2002 - ro@suse.de
+
+- use ghostscript-mini-packages 
+
+-------------------------------------------------------------------
+Wed Sep 18 18:35:38 CEST 2002 - uli@suse.de
+
+- update -> 0.98.35 (adds -X option to specify error reporting
+  format, drops use of tmpnam() in rdoff)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Sun Aug 18 11:14:27 CEST 2002 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Sun Aug 18 02:31:35 CEST 2002 - ro@suse.de
+
+- added ghostscript-x11-packages to neededforbuild (for gs)
+
+-------------------------------------------------------------------
+Wed Jul 31 15:16:39 CEST 2002 - uli@suse.de
+
+- update -> 0.98.34 (need SSE2 support)
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu May  3 10:00:08 CEST 2001 - uli@suse.de
+
+- schwab fixed the fixed fix, and now it works! No, really, it
+  works!
+
+-------------------------------------------------------------------
+Wed May  2 16:29:58 CEST 2001 - uli@suse.de
+
+- ditched the fix, it breaks zsnes 1.20 and God knows what else...
+
+-------------------------------------------------------------------
+Fri Apr 27 10:39:13 CEST 2001 - uli@suse.de
+
+- added a new and improved fix by H.J. Lu...
+
+-------------------------------------------------------------------
+Thu Apr 26 10:25:25 CEST 2001 - uli@suse.de
+
+- some versions of ld don't eat the ELF binaries created by
+  nasm 0.98, added fix by H.J. Lu
+
+-------------------------------------------------------------------
+Thu Nov  9 15:37:04 CET 2000 - uli@suse.de
+
+- added missing docs
+
+-------------------------------------------------------------------
+Fri Jun  2 11:47:29 CEST 2000 - kukuk@suse.de
+
+- Use doc macro
+
+-------------------------------------------------------------------
+Thu Mar  2 12:36:49 CET 2000 - kukuk@suse.de
+
+- Use _mandir macro
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Jun  4 16:29:47 MEST 1999 - uli@suse.de
+
+- update -> 0.98
+
+-------------------------------------------------------------------
+Thu Dec 17 18:52:35 MET 1998 - uli@suse.de
+
+- new package, version 0.97
+

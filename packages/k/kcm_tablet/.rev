@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dea759414b01512b2e2af5cd66149539</srcmd5>
+    <version>2.9.82</version>
+    <time>1515505910</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Implement-hotplugging-on-Xlib.patch to make hotplugging work
+  with Xlib too, without libxcb-xinput which we don't have yet
+  (kde#361743)
+- Update to version 2.9.82 (3.0.0 beta 2)
+  * ported to KF5
+  * This version has a few multi-screen fixes and couple of new device IDs.
+    It also should no longer crash kded under wayland (however there's no
+    actual wayland support yet).
+    There are still two somewhat major issues: hotplug detection is not
+    supported if libxcb doesn't have xinput support enabled (most likely
+    affects Debian and Ubuntu), and screen rotation of non-mapped screens is
+    not handled properly. Barring these, this beta should be stable enough
+    for use in static setups and should be good enough to package.
+- Moved english documentation into the main package
+- Update to version 2.1.0
+* Add support for Cintiq 22HD 18 buttons
+* Add image for the Cintiq 13HD layout
+* Update Wacom Intuos PT S Finger touch device db entry
+* Update Intuous button layout
+* Update Wacom INTUOS Pen Small CTH-480 db entry (030E)
+* Add Wacom Intuos Pro L PTH-851 to db (0316)
+* Allow to setup Stylus/Eraser Tip Mosue button (Left-Handed Mode)
+* Update database. Add HUION, add Waltop again, install missing vendors
+* Implement support for multible tablets at once
+* Add simple dialog app to ease tablet detection and databse adding
+* Add global shortcut for profile rotation
+* Add status LED support for profile rotation (Intous/Chintiq)
+* Fix profile not found error on tablet connect
+- v2.0.2
+* Fix compile error on older Qt versions (remove iconset=&quot;theme&quot; stuff)
+* Add Raw Sample and Suppress to ui
+- v2.0.1
+* More translations
+* Add Wacom Intuos Pro S / PTH-451/S
+* Add WacomIntuos Pen Small / CTL-480S tablet
+* Add definition of Wacom Intuos PT S / CTH-680S-RUPL
+* Add Wacom Intuos PT M / CTH-680S-ENES
+* Add support for Wacom Intuos Pro M / PTH-651
+* cmake: remove extra kio linking
+* adjusted control point and draw below curve area colors to be less websafe looking
+* Added Wacom Cintiq 13HD
+* Added Samsung Series 7 Slate
+- Minor spec cleanups
+- Update to version 2.0
+ Changes since 1.3:
+  * Support for many new tablets.
+  * Support for more global shortcuts.
+  * Improved KCM GUI
+  * Improved express button shortcut configuration.
+  * Improved rotation handling.
+  * Improved monitor and screen area mapping.
+  * Improved backend.
+  * Many bugfixes.
+- Droped build_fix.diff, not needed.
+- Added pkgconfig(xorg-wacom) BuildRequires
+- lang package is built
+- Small spec cleanup
+- Adjusted license
+- Update to version 1.2.5
+  * really small fix with the TwinView horizontal/vertical selection
+- Update to version 1.2.4
+  * fixed detection of the CTL-460
+  * changed usage of button settings. Should work with new
+    xsetwacom driver and thus get rid of the tablet drag and draw error
+- Update to version 1.2.3b
+  * fixed a small bug that crashes the kded
+- Update to version 1.2.3
+  * detection of the tablets completely changed, instead of solid
+    and cmd parsing the detection is now based on XInput libs
+  * several bugfixes
+  * some smaller changes in the plasma applet
+  * included .po files for some languages
+  * added support for the Lenovo X201 tablet
+- Update to version 1.2.2
+  * several bugfixes
+- Update to version 1.2.1
+  * added support for Wacom BambooFun 2FG 4x5 and Wacom Intuos4 4x6
+  * Fix mem leak
+- Update to version 1.2
+  * splitted module into kcmodule, kded deamon and a plasma applet
+  * daemon now supports hotplug support and applies profiles on startup 
+   without the need to open the kcmodule
+  * applet allows to switch profiles easily
+  * changed keyshortcut selection
+  * added german translation
+  * some smaller bugfixes
+- Initial release, version 1.1.3
+</comment>
+    <requestid>561325</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e03fdd5722719ccbcaa99c4f49423cb</srcmd5>
+    <version>2.9.82</version>
+    <time>1516222670</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Supplements: packageand(plasma5-workspace:xf86-input-wacom)
+- Run spec-cleaner</comment>
+    <requestid>566403</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a730cf4a34d455f58b3e3b3647a18699</srcmd5>
+    <version>3.0.0</version>
+    <time>1522935219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593530</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f4ec5597e88b3085ef616abec1bd893</srcmd5>
+    <version>3.1.0</version>
+    <time>1530087666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618921</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7d2fd82c3ce5895fe6e6a02d97c51c2b</srcmd5>
+    <version>3.1.1</version>
+    <time>1547540136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660851</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e8de9bc15f95eadce49b4eb44ab60690</srcmd5>
+    <version>3.1.1</version>
+    <time>1559029375</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC 9:
+  * 0001-Supposedly-fix-building-with-gcc9.patch</comment>
+    <requestid>705635</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cae0c2a0ad05e0afb5c0c07164a4a6ae</srcmd5>
+    <version>3.1.1</version>
+    <time>1562591486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713732</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7e5631bb8382918ff0ce51457a93f881</srcmd5>
+    <version>3.2.0</version>
+    <time>1564414273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719466</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="purple-facebook" project="openSUSE:Factory">
+  <title>Facebook protocol plugin for libpurple</title>
+  <description>Purple Facebook implements the Facebook Messenger protocol into pidgin, finch, and libpurple.
+While the primary implementation is for libpurple3, this plugin is backported for libpurple2.</description>
+  <devel project="network:pidgin" package="purple-facebook"/>
+</package>

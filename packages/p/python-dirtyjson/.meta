@@ -1,0 +1,5 @@
+<package name="python-dirtyjson" project="openSUSE:Factory">
+  <title></title>
+  <description>JSON decoder for Python that can extract data from the muck.</description>
+  <devel project="devel:languages:python" package="python-dirtyjson"/>
+</package>

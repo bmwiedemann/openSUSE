@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Mon May 13 05:29:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Time-Duration-Parse/Changes
+
+  0.15 2019-05-12 NEILB
+      - Added support for fractional parts of seconds in hh:mm:ss.ssss
+      - Added L<> links to Time::Duration and duration_exact in that module.
+      - Fixed grammar in doc
+
+-------------------------------------------------------------------
+Sat Jun 30 06:07:49 UTC 2018 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Time-Duration-Parse/Changes
+
+  0.14 2018-06-29 NEILB
+      - Added "hrs" as another form for "hours". Thanks to Stig for the PR.
+
+-------------------------------------------------------------------
+Tue Oct 27 10:37:36 UTC 2015 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Time-Duration-Parse/Changes
+
+  0.13 2015-10-25 NEILB
+      - Added additional abbrevations for 'months': 'mo', 'mon', 'mons'.
+        Thanks to PERLANCAR.
+      - Rewrote the main testsuite to be data driven, to make it easy to
+        add test cases, as for the above change.
+      - Updated github repo URL after changing my github username
+
+-------------------------------------------------------------------
+Sat Jul  4 08:57:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Time-Duration-Parse/Changes
+
+  0.12 2015-07-02 NEILB
+      - Added [MetaJSON] to dist.ini, so the dist will get a META.json file.
+        RT#105627 from ETHER.
+
+-------------------------------------------------------------------
+Fri Sep 19 12:15:44 UTC 2014 - coolo@suse.com
+
+- updated to 0.11
+     - Min perl version now set to 5.6.0
+     - Added description of DateTime::Format::Duration to SEE ALSO
+ 
+ 0.10 2014-03-24
+     - Switched to Dist::Zilla. The Module::Install Makefile.PL was resulting
+       in dependency problems and CPAN Testers fails, and I'm not familiar with
+       it. Easier to switch. Thanks to ZEFRAM for pointing out the problem.
+ 
+ 0.09 2014-03-23
+     - Test::More and Time::Duration were listed as build_requires;
+       changed them to test_requires, with versions. Wonder if this was
+       the cause of the small number of CPAN Testers fails?
+     - Added more more modules to the SEE ALSO section in the pod.
+ 
+ 0.08 2014-03-23
+     - Can now have a leading '+', as in '+2h'.
+       Suggested by MSCHWERN in RT#66572
+     - Added github repo to metadata (thanks dsteinbrunner)
+     - Added github repo to pod
+     - Added Time::Duration::Parse::More to SEE ALSO
+ 
+ 0.07 2014-03-21
+     - Added 'use warnings'
+     - Specified min perl version as 5.6.0 in Makefile.PL
+     - Fixed pod error reported in RT#86904
+     - Added license type 'perl' to metadata via Makefile.PL
+     - Reformatted this file as per CPAN::Changes::Spec
+
+-------------------------------------------------------------------
+Thu Jul 14 08:15:18 UTC 2011 - coolo@novell.com
+
+- use original tarball
+
+-------------------------------------------------------------------
+Fri Jan 14 11:36:35 UTC 2011 - coolo@novell.com
+
+- initial package 0.06
+  * created by cpanspec 1.78.03
+

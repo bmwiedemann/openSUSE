@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50d24d9d8f9bca67305195584e2d252c</srcmd5>
+    <version>1.100600</version>
+    <time>1306414565</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66765</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e6381be50d892ba7e99b7c846bc41787</srcmd5>
+    <version>1.100600</version>
+    <time>1306414574</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66765
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>633e7c47cac82f1d57a2a61ef3ec0c95</srcmd5>
+    <version>1.100600</version>
+    <time>1308567649</time>
+    <user>saschpe</user>
+    <comment>- regenerate with newer cpanspec</comment>
+    <requestid>74160</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5f70655db0f9a59789d7ab6f212dfba5</srcmd5>
+    <version>1.100600</version>
+    <time>1308567661</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74160
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5f70655db0f9a59789d7ab6f212dfba5</srcmd5>
+    <version>1.100600</version>
+    <time>1319182306</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c0308b83987d892016d8ef7de3cb8028</srcmd5>
+    <version>1.100600</version>
+    <time>1329242731</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104452 from coolo)</comment>
+    <requestid>104639</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c0308b83987d892016d8ef7de3cb8028</srcmd5>
+    <version>1.100600</version>
+    <time>1340183919</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>c0308b83987d892016d8ef7de3cb8028</srcmd5>
+    <version>1.100600</version>
+    <time>1359109798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>c0308b83987d892016d8ef7de3cb8028</srcmd5>
+    <version>1.100600</version>
+    <time>1379663844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c988a23e8e87cea284634849eaaec5a2</srcmd5>
+    <version>1.100601</version>
+    <time>1386065036</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.100601
+  update bugtracker and repo metadata</comment>
+    <requestid>208444</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c988a23e8e87cea284634849eaaec5a2</srcmd5>
+    <version>1.100601</version>
+    <time>1409302486</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a370fa992768080818c10839c6eac290</srcmd5>
+    <version>1.100602</version>
+    <time>1410967544</time>
+    <user>coolo</user>
+    <comment>- updated to 1.100602
+  typo fixes (thanks, David Steinbrunner)</comment>
+    <requestid>249349</requestid>
+  </revision>
+</revisionlist>

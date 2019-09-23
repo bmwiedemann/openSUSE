@@ -1,0 +1,50 @@
+From 78e64f0edb4f3271a6ddbcdf9cba05138597bfca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Li=C5=A1ka?= <mliska@suse.cz>
+Date: Tue, 30 Apr 2019 10:44:44 +0200
+Subject: [PATCH] Fix build with gcc9.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: I8a0d7a0b51b5c537dbcfa8fdd34e816605b1f32e
+Reviewed-on: https://gerrit.libreoffice.org/71573
+Reviewed-by: Tomáš Chvátal <tchvatal@suse.cz>
+Tested-by: Tomáš Chvátal <tchvatal@suse.cz>
+---
+ examples/cppunittest/OrthodoxTest.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/examples/cppunittest/OrthodoxTest.h b/examples/cppunittest/OrthodoxTest.h
+index 8fc2a08..a2bc678 100644
+--- a/examples/cppunittest/OrthodoxTest.h
++++ b/examples/cppunittest/OrthodoxTest.h
+@@ -38,6 +38,8 @@ private:
+   public:
+     Value( int value =0 ) : m_value( value ) {}
+ 
++    Value( const Value & ) = default;
++
+     Value& operator= ( const Value& v )
+     {
+       m_value = v.m_value;
+@@ -143,6 +145,8 @@ private:
+     {
+       return ValueBadCall( -1 - m_value );
+     }
++
++    ValueBadCall &operator =( const ValueBadCall & ) = default;
+   };
+ 
+ 
+@@ -161,6 +165,8 @@ private:
+       ++m_value;
+       return *this;
+     }
++
++    ValueBadAssignment( const ValueBadAssignment & ) = default;
+   };
+ 
+ 
+-- 
+2.21.0
+

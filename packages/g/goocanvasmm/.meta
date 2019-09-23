@@ -1,0 +1,10 @@
+<package name="goocanvasmm" project="openSUSE:Factory">
+  <title>C++ interface for goocanvas</title>
+  <description>This package provides a C++ interface for goocanvas. It is a
+subpackage of the gtkmm project. The interface provides a convenient
+interface for C++ programmers to create Gnome GUIs with GTK+'s
+flexible object-oriented framework.
+
+</description>
+  <devel project="GNOME:Factory" package="goocanvasmm"/>
+</package>

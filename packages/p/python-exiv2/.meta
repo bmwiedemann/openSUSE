@@ -1,0 +1,15 @@
+<package name="python-exiv2" project="openSUSE:Factory">
+  <title>Python3 bindings for the exiv2 library</title>
+  <description>python3-exiv2 is a Python 3 binding to exiv2, the C++ library for manipulation
+of EXIF, IPTC and XMP image metadata. It is a python 3 module that allows your
+scripts to read and write metadata (EXIF, IPTC, XMP, thumbnails) embedded in
+image files (JPEG, TIFF, ...).
+
+It is designed as a high-level interface to the functionalities offered by
+libexiv2. Using python’s built-in data types and standard modules, it provides
+easy manipulation of image metadata.
+
+</description>
+  <devel project="devel:languages:python" package="python-exiv2"/>
+  <url>https://launchpad.net/py3exiv2</url>
+</package>

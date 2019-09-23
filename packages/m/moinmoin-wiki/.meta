@@ -1,0 +1,10 @@
+<package name="moinmoin-wiki" project="openSUSE:Factory">
+  <title>MoinMoin</title>
+  <description>MoinMoin is an advanced, easy to use and extensible wiki engine with a large community of users. Said in a few words, it is about collaboration on easily editable web pages. All wiki data is stored in plain files - no database is required.
+
+MoinMoin is implemented in Python.
+
+This package configures MoinMoin to serve wiki pages via the Apache web server.
+</description>
+  <devel project="devel:languages:python" package="moinmoin-wiki"/>
+</package>

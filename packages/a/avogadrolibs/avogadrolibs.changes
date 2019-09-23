@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sun Jun  3 18:02:51 UTC 2018 - christophe@krop.fr
+
+- Add Fix-build-with-Qt-511.patch to fix build with Qt 5.11.
+
+-------------------------------------------------------------------
+Mon Oct 30 07:17:57 UTC 2017 - fstrba@suse.com
+
+- Remove the dependency on java-1_8_0-openjdk-devel, since Java is
+  apparently not used during the build at all
+- Run spec cleaner
+
+-------------------------------------------------------------------
+Sat Mar 11 04:10:59 UTC 2017 - wbauer@tmo.at
+
+- Disable building the GPL-licensed plugins
+
+-------------------------------------------------------------------
+Mon Feb  6 12:17:34 UTC 2017 - jengelh@inai.de
+
+- Choose an *unambiguous* SONAME for shared library as per
+  guidelines
+
+-------------------------------------------------------------------
+Tue Nov 29 21:13:09 UTC 2016 - wbauer@tmo.at
+
+- disable molequeue support
+- add missing pkgconfig(Qt5Network) BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 28 09:00:40 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to 0.9.0
+  No Changelog available
+
+
+-------------------------------------------------------------------
+Mon Dec 22 17:36:40 UTC 2014 - alinm.elena@gmail.com
+
+- initial commit 
+

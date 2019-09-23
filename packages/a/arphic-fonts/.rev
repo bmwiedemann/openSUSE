@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="766">
+    <srcmd5>4abe3697431b94a85dbcd508ef26eb00</srcmd5>
+    <version>20001125</version>
+    <time>1334818102</time>
+    <user>coolo</user>
+    <comment>Moving M17N/ttf-arphic to M17N:fonts/arphic-fonts.</comment>
+    <requestid>112159</requestid>
+  </revision>
+  <revision rev="2" vrev="767">
+    <srcmd5>5e3590b5057f3f5044273d73bbb41cb6</srcmd5>
+    <version>20001125</version>
+    <time>1338016891</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122110</requestid>
+  </revision>
+  <revision rev="3" vrev="769">
+    <srcmd5>5e3590b5057f3f5044273d73bbb41cb6</srcmd5>
+    <version>20001125</version>
+    <time>1340183180</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="770">
+    <srcmd5>9a7e2068ee062af0da22e58d66dad6de</srcmd5>
+    <version>20001125</version>
+    <time>1347617594</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133916</requestid>
+  </revision>
+  <revision rev="5" vrev="771">
+    <srcmd5>d9160c2a6b161b9d2a871403613416e5</srcmd5>
+    <version>20001125</version>
+    <time>1358889592</time>
+    <user>coolo</user>
+    <comment>- remove Provides: locale(*) and Provides: scalable-font-*, 
+  no more need these fonts in these locale,
+  these fonts can be replaced by arphic-uming(-ukai). (forwarded request 149291 from swyear)</comment>
+    <requestid>149368</requestid>
+  </revision>
+  <revision rev="6" vrev="773">
+    <srcmd5>d9160c2a6b161b9d2a871403613416e5</srcmd5>
+    <version>20001125</version>
+    <time>1359108665</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="775">
+    <srcmd5>d9160c2a6b161b9d2a871403613416e5</srcmd5>
+    <version>20001125</version>
+    <time>1379661987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="777">
+    <srcmd5>d9160c2a6b161b9d2a871403613416e5</srcmd5>
+    <version>20001125</version>
+    <time>1409300512</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,182 @@
+diff -urN x026-1.2/x026.c.old x026-1.2/x026.c
+--- x026-1.2/x026.c.old	2014-09-24 11:58:03.376699486 +0200
++++ x026-1.2/x026.c	2014-09-24 12:06:35.460699425 +0200
+@@ -419,34 +419,34 @@
+ };
+ 
+ /* Xt actions. */
+-static void data(Widget, XEvent *, String *, Cardinal *);
+-static void multi_punch_data(Widget, XEvent *, String *, Cardinal *);
+-static void delete_window(Widget, XEvent *, String *, Cardinal *);
+-static void home(Widget, XEvent *, String *, Cardinal *);
+-static void left(Widget, XEvent *, String *, Cardinal *);
+-static void next(Widget, XEvent *, String *, Cardinal *);
+-static void redraw(Widget, XEvent *, String *, Cardinal *);
+-static void right(Widget, XEvent *, String *, Cardinal *);
+-static void tab(Widget, XEvent *, String *, Cardinal *);
+-static void insert_selection(Widget, XEvent *, String *, Cardinal *);
+-static void confirm(Widget, XEvent *, String *, Cardinal *);
++static void x026_data(Widget, XEvent *, String *, Cardinal *);
++static void x026_multi_punch_data(Widget, XEvent *, String *, Cardinal *);
++static void x026_delete_window(Widget, XEvent *, String *, Cardinal *);
++static void x026_home(Widget, XEvent *, String *, Cardinal *);
++static void x026_left(Widget, XEvent *, String *, Cardinal *);
++static void x026_next(Widget, XEvent *, String *, Cardinal *);
++static void x026_redraw(Widget, XEvent *, String *, Cardinal *);
++static void x026_right(Widget, XEvent *, String *, Cardinal *);
++static void x026_tab(Widget, XEvent *, String *, Cardinal *);
++static void x026_insert_selection(Widget, XEvent *, String *, Cardinal *);
++static void x026_confirm(Widget, XEvent *, String *, Cardinal *);
+ 
+ /* Xt callbacks. */
+-static void discard(Widget, XtPointer, XtPointer);
++static void x026_discard(Widget, XtPointer, XtPointer);
+ 
+ /* Actions. */
+ XtActionsRec actions[] = {
+-	{ "Data",	data },
+-	{ "MultiPunchData", multi_punch_data },
+-	{ "DeleteWindow", delete_window },
+-	{ "Home",	home },
+-	{ "Left",	left },
+-	{ "Next",	next },
+-	{ "Redraw",	redraw },
+-	{ "Right",	right },
+-	{ "Tab",	tab },
+-	{ "insert-selection", insert_selection },
+-	{ "confirm",	confirm }
++	{ "Data",	x026_data },
++	{ "MultiPunchData", x026_multi_punch_data },
++	{ "DeleteWindow", x026_delete_window },
++	{ "Home",	x026_home },
++	{ "Left",	x026_left },
++	{ "Next",	x026_next },
++	{ "Redraw",	x026_redraw },
++	{ "Right",	x026_right },
++	{ "Tab",	x026_tab },
++	{ "insert-selection", x026_insert_selection },
++	{ "confirm",	x026_confirm }
+ };
+ int actioncount = XtNumber(actions);
+ 
+@@ -788,7 +788,7 @@
+ 	    XtNborderWidth, BUTTON_BW,
+ 	    XtNborderColor, appres.background,
+ 	    NULL);
+-	XtAddCallback(ww, XtNcallback, discard, NULL);
++	XtAddCallback(ww, XtNcallback, x026_discard, NULL);
+ 
+ 	/* Create graphics contexts for drawing. */
+ 	xgcv.foreground = appres.foreground;
+@@ -955,7 +955,7 @@
+ 
+ /* Redraw the entire card image. */
+ static void
+-redraw(Widget wid, XEvent  *event, String  *params, Cardinal *num_params)
++x026_redraw(Widget wid, XEvent  *event, String  *params, Cardinal *num_params)
+ {
+ 	int i;
+ 	Dimension x, y, w, h;
+@@ -1027,7 +1027,7 @@
+ 
+ /* Exit. */
+ static void
+-delete_window(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_delete_window(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	exit(0);
+ }
+@@ -1082,6 +1082,7 @@
+ #if defined(SOUND) /*[*/
+ 		loud_click();
+ #endif /*]*/
++		do_right(0);
+ 	}
+ }
+ 
+@@ -1222,7 +1223,7 @@
+  */
+ 
+ static void
+-data(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_data(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	XKeyEvent *kevent = (XKeyEvent *)event;
+ 	char buf[10];
+@@ -1236,7 +1237,7 @@
+ }
+ 
+ static void
+-multi_punch_data(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_multi_punch_data(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	XKeyEvent *kevent = (XKeyEvent *)event;
+ 	char buf[10];
+@@ -1250,19 +1251,19 @@
+ }
+ 
+ static void
+-left(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_left(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	enq_event(LEFT, 0, !appres.typeahead, SLOW);
+ }
+ 
+ static void
+-right(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_right(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	enq_event(RIGHT, 1, !appres.typeahead, SLOW);
+ }
+ 
+ static void
+-home(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_home(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	int i;
+ 
+@@ -1274,7 +1275,7 @@
+ }
+ 
+ static void
+-next(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_next(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	if (ccard->next) {
+ 		ccard = ccard->next;
+@@ -1284,7 +1285,7 @@
+ }
+ 
+ static void
+-tab(Widget wid, XEvent *event, String *params, Cardinal *num_params)
++x026_tab(Widget wid, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	int i;
+ 
+@@ -1297,7 +1298,7 @@
+ 
+ /* Throw away this card. */
+ static void
+-discard(Widget w, XtPointer client_data, XtPointer call_data)
++x026_discard(Widget w, XtPointer client_data, XtPointer call_data)
+ {
+ 	int i;
+ 
+@@ -1386,7 +1387,7 @@
+ }
+ 
+ static void
+-insert_selection(Widget w, XEvent *event, String *params, Cardinal *num_params)
++x026_insert_selection(Widget w, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	int	i;
+ 	Atom	a;
+@@ -1562,7 +1563,7 @@
+ }
+ 
+ static void
+-confirm(Widget w, XEvent *event, String *params, Cardinal *num_params)
++x026_confirm(Widget w, XEvent *event, String *params, Cardinal *num_params)
+ {
+ 	save_file_ascii();
+ }

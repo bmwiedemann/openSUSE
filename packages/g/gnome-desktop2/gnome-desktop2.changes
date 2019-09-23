@@ -1,0 +1,1328 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:27:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep 21 14:48:15 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+
+-------------------------------------------------------------------
+Wed Mar 27 10:47:35 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Mar  1 12:43:03 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Tue Jul 26 15:19:23 CEST 2011 - vuntz@opensuse.org
+
+- Drop gnome-desktop2-X-KDE-SubstituteUID.patch: now that
+  bnc#540627 is fixed, we do not care about X-KDE-SubstituteUID
+  anymore, so we don't need the patch anymore.
+- Drop gnome-desktop2-desktop.patch: we do not build gnome-about
+  anymore, so it's not needed. And it was wrong in the first place
+  since "Learn more about GNOME" is really not a GenericName.
+- Rebase gnome-desktop2-fate300461-desktop-gettext.patch after
+  removal of gnome-desktop2-X-KDE-SubstituteUID.patch.
+
+-------------------------------------------------------------------
+Fri Apr 22 10:52:25 CEST 2011 - vuntz@opensuse.org
+
+- Set IS_DEFAULT_GNOME_DESKTOP to 0 as we move to GNOME 3.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:23:20 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Feb  9 13:17:03 CET 2011 - vuntz@opensuse.org
+
+- Add gnome-desktop2-one-slide-slideshow.patch to correctly handle
+  one-slide slideshows: we don't want to handle pseudo-transitions
+  there, since there's only one slide. This is useful since our new
+  default background is now a slideshow with only one slide, to
+  better handle different monitor sizes.
+
+-------------------------------------------------------------------
+Sun Dec 12 10:58:29 UTC 2010 - dimstar@opensuse.org
+
+- Own /usr/share/gnome and /usr/share/gnome/help to fix build.
+
+-------------------------------------------------------------------
+Wed Nov 17 13:56:18 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + libgnome-desktop:
+    - GnomeRR: Don't read past the end of a string
+    - GnomeRR: Fix possible double-free when destroying private
+      windows
+  + gnome-about:
+    - Fix translations which do not respect python variable names
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 11 18:03:43 CEST 2010 - vuntz@opensuse.org
+
+- Update baselibs.conf to ignore gnome-desktop: there is no library
+  there.
+
+-------------------------------------------------------------------
+Mon Sep 27 13:48:36 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + libgnome-desktop
+    - Thumbnail: Look up mimetypes properly
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 15:50:12 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + libgnome-desktop
+    - GnomeRR: Force a refresh of timestamps so other clients won't
+      think this is a server-generated event
+    - Do not use deprecated gdk_display
+  + Misc
+    - Make --disable-gnome-about configure flag work completely
+    - Add --disable-desktop-docs configure flag
+    - Update information in README and other files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  8 21:16:38 CEST 2010 - vuntz@opensuse.org
+
+- Rename gnome-desktop source package to gnome-desktop2, to have
+  gnome-desktop be the GNOME 3 version.
+- There is a IS_DEFAULT_GNOME_DESKTOP default to make it easy to
+  choose which gnome-desktop version will be the default. This is
+  important since some files like gnome-about and the documentation
+  are conflicting between the two versions.
+- Change old-style BuildRequires to pkgconfig() style
+  BuildRequires:
+  + old-style: gconf2-devel, gtk2-devel,
+    startup-notification-devel.
+  + new-style: gconf-2.0, gdk-pixbuf-2.0, glib-2.0, gtk+-2.0,
+    libstartup-notification-1.0, x11, xrandr.
+- Rename X-KDE-SubstituteUID.dif to
+  gnome-desktop2-X-KDE-SubstituteUID.patch.
+- Change Requires of lang subpackage to Recommends.
+- Provides/Obsoletes gnome-desktop if %IS_DEFAULT_GNOME_DESKTOP is
+  set, since the main package is now named gnome-desktop2.
+- Create a gnome-about subpackage, that gets built if
+  %IS_DEFAULT_GNOME_DESKTOP is set. Add gnome-about Recommends to
+  %the main package, to make sure it gets installed.
+- Rename devel subpackage to libgnome-desktop-2-devel, and make it
+  Provides/Obsoletes gnome-desktop-devel if
+  %IS_DEFAULT_GNOME_DESKTOP is set.
+- If %IS_DEFAULT_GNOME_DESKTOP is not set, pass
+  --disable-gnome-about and --disable-desktop-docs to configure, do
+  not look for the help files.
+- Update description of packages.
+
+-------------------------------------------------------------------
+Wed Aug 18 18:41:35 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + GnomeBG: Be sure to unreference the file_monitor object during
+    dispose
+  + Add --disable-gnome-about configure flag
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 11:21:30 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Don't use deprecated Gdk drawing APIs
+  + Updated translations.
+- Changes from version 2.31.2:
+  + GnomeRR: Improve errors from the CRTC assignment process
+  + GnomeBG: Fix a case of width-for-height confusion that could
+    lead to huge memory consumption on multi-monitor systems
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 31 01:21:33 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + GnomeRR:
+    - Fix build failure with GTK 2.19+
+    - Fix build with -DGSEAL_ENABLE
+    - Ignore errors when setting the monitor size fails
+  + GnomeBG:
+    - Fix crash in gradient handling code
+  + Misc
+    - Really fix build without randr
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 18:35:29 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + libgnome-desktop:
+    - GnomeRR: Add new API gnome_rr_output_get_connector_type() and
+      gnome_rr_output_is_laptop()
+    - GnomeRR: fix leak
+    - GnomeRR: build fix
+    - GnomeBG: Drop pixbuf cache before switching slides
+  + Misc:
+    - Make xrandr an optional dependency
+    - Add main category to gnome-about desktop file
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 21:33:24 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + GnomeBG:
+    - Fix a memory leak
+    - Add a picture option to make the background span monitors
+  + GnomeDesktopItem:
+    - Improve error string
+  + Add translator comments
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 16:07:41 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 27 17:16:25 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 13 06:13:01 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + Bump library soname since ABI was broken in 2.29.4
+- Rename libgnome-desktop-2-11 subpackage to libgnome-desktop-2-17,
+  following soname change.
+- Update the way we remove the ig locale on old versions of
+  openSUSE.
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec 23 10:22:42 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.4:
+  + GnomeBG:
+    - Per-monitor background support
+    - Memory leak fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  2 11:33:44 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + Build improvement
+- Changes from version 2.29.2:
+  + GnomeRR:
+    - Allow rotation if the virtual size has the correct number of
+      pixels
+    - Add gamma API
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 14 21:12:37 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Updated translations.
+- Respin gnome-desktop-fate300461-desktop-gettext.patch and
+  gnome-desktop-recently-used-apps.patch to apply without fuzz.
+
+-------------------------------------------------------------------
+Tue Sep 22 13:53:10 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 05:00:00 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 26 13:02:43 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.91:
+  + GnomeRR:
+    - add support for primary monitor
+    - in clone mode, don't label each output
+  + GnomeBG:
+    - add gnome_bg_changes_with_time() API
+    - gnome_bg_create_frame_thumbnail() API
+  + Build fixes.
+  + gnome-about
+    - Remove deprecated Encoding key from desktop file
+  + Updated translations.
+- Respin gnome-desktop-desktop.patch.
+- Use spec-cleaner to reorder lines in preamble and split
+  BuildRequires/Requires line on separate lines.
+
+-------------------------------------------------------------------
+Thu Jul 30 08:37:32 CEST 2009 - vuntz@novell.com
+
+- Change Requires from gnome-desktop to libgnome-desktop-2-11 in
+  devel package.
+
+-------------------------------------------------------------------
+Wed Jul 29 05:19:17 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + Thumbnail:
+    - Fix thumbnailer thread-safety
+  + GnomeRR:
+    - Get monitor vendor name from pnp.ids
+  + gnome-about:
+    - Remove libgnome usage
+  + Updated translations.
+- Do not package omf files twice.
+- Ship COPYING.LIB in libgnome-desktop-2-11.
+- Remove Requires on libgnome-desktop-2-11 in the main package:
+  it's not true.
+- Remove Requires on the main package in libgnome-desktop-2-11:
+  it's not true either.
+
+-------------------------------------------------------------------
+Mon Jul 20 11:47:30 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + GnomeRR:
+    - Adapt to RANDR 1.3's name for the EDID property
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 16 18:15:10 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + GnomeRR:
+    - Only select for RRScreenChangeNotifyMask, not for the more
+      detailed RANDR 1.2 events
+    - Don't ask for RANDR events if the caller doesn't specify a
+      callback
+    - Add _with_time() versions to the GnomeRR and GnomeRRConfig
+      functions that change the RANDR configuration
+    - Add gnome_rr_screen_get_timestamps() to query the XRR
+      timestamps
+    - Don't force a reprobe of the RANDR outputs on every RANDR
+      event
+    - First update screen resources, then update the screen size
+      range
+    - Add debug dialog to show the RANDR timestamps
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 20 22:27:05 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.2:
+  + libgnome-desktop
+    - Thumbnail: Preload /gnome/desktop/thumbnails in thumbnail
+      factory for performance
+    - GnomeRR: Fill out ScreenInfo structs sufficiently without
+      reprobing
+    - GnomeRR: Fix display name heuristics to result less in
+      'Unknown'
+    - Thumbnail: Code improvements
+    - GnomeRR: Don't append a newline to monitor vendor names
+    - GnomeRR: Make GnomeRRLabeler's labels explicitly black
+  + Misc build system changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 15:30:42 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + libgnome-desktop
+    - GnomeBG: handle X errors when the root properties point to
+      something wrong when getting the root pixmap
+    - GnomeRR: use XRRGetScreenResourcesCurrent() from RANDR 1.3
+      when possible, when we only need to fetch the current RANDR
+      status
+  + gnome-about
+    - Make parsing of gnome-version.xml more tolerant against
+      missing fields
+  + Misc
+    - Add a --disable-date-in-gnome-version configure option to
+      remove the build date from gnome-version.xml
+    - Remove unused --with-kde-datadir configure option
+- Drop gnome-desktop-no-date-in-version.patch: fixed upstream. Also
+  disable autoreconf and remove gnome-common BuildRequires (that
+  were added for this patch).
+
+-------------------------------------------------------------------
+Fri Mar 27 20:35:44 CET 2009 - vuntz@novell.com
+
+- Add gnome-desktop-no-date-in-version.patch to be more
+  build-compare-friendly, and use new
+  --disable-date-in-gnome-version configure option.
+- Enable autoreconf for the patch, and add gnome-common
+  BuildRequires.
+- Remove -fno-strict-aliasing from CFLAGS.
+
+-------------------------------------------------------------------
+Tue Mar 17 01:12:40 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + GnomeRR: grab the X server while tweaking the RANDR
+    configuration.
+  + Remove scrollkeeper check, since it belongs to gnome-doc-utils
+  + Updated translations.
+- Remove scrollkeeper BuildRequires again.
+
+-------------------------------------------------------------------
+Mon Mar  9 03:39:55 CET 2009 - vuntz@novell.com
+
+- Add scrollkeeper BuildRequires to fix build.
+
+-------------------------------------------------------------------
+Fri Mar  6 02:04:37 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + GnomeBG: Allow apps to ignore a pending change so they can
+    avoid updating their background twice
+  + GnomeBG: Blow all expensive caches if we're not gonna update
+    the background again in one minute
+  + GnomeBG: Do slightly less steps in slide transitions to avoid
+    using to much resources on things that are not visible
+	+ GnomeBG: Remove outstanding transitions on finalize
+	+ GnomeRR: Use g_new0() instead of calloc() for consistency
+	+ GnomeRR: Fix leak
+	+ GnomeRR: Code cleanup
+  + GnomeRR: Revert the change to use
+    XRRGetScreenResourcesCurrent(), it's not needed anymore and it
+    broke the "Detect Monitors" button
+  + General: Make sure that the translation system is initiliazed
+    so that translations can be used
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 11:44:12 CET 2009 - mboman@suse.de
+
+- Add Obsoletes/Provides for merged -doc package
+
+-------------------------------------------------------------------
+Tue Feb 17 09:59:01 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.91:
+  + Translation updates
+- Merge -doc into -devel since it only contained gtk-doc
+- Remove gnome-common, gtk-doc and scrollkeeper from BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Feb  5 14:08:29 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.90:
+  + GnomeRR: Create a backup file of the configuration when saving
+  + GnomeRR: Add public API to get to
+    $(XDG_CONFIG_HOME)/monitors.xml and a backup of that file
+  + GnomeRR: Add gnome_rr_config_apply_from_filename()
+  + GnomeRR: Deprecate gnome_rr_config_apply_stored()
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Feb  1 15:46:02 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + GnomeBG: use gdk_color_equal() instead of custom function
+  + GnomeRR: use XRRGetScreenResourcesCurrent instead of
+    XRRGetScreenResources when available (xrandr 1.3) because it's
+    cheaper
+  + GnomeBG: emit "transitioned" signal instead of "changed" signal for
+    new frames in a slideshow background
+  + GnomeBG: reorganize code a bit
+  + GnomeBG: add fading API to support fading between two backgrounds
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Feb  1 02:10:51 CET 2009 - vuntz@novell.com
+
+- Update gnome-desktop-fate300461-desktop-gettext.patch: the inline
+  translations were ignored if they were not matching the first
+  language returned by g_get_language_names(), and gettext was
+  used. This was not the intended behavior, and made it impossible
+  to customize the name/comment of a launcher, eg.
+
+-------------------------------------------------------------------
+Fri Jan 23 16:56:13 CET 2009 - vuntz@novell.com
+
+- Remove static libraries.
+- Remove part of gnome-desktop-desktop.patch that is already
+  handled with %suse_update_desktop_file
+- Sanitize BuildRequires and Requires.
+- Minor tweaks.
+
+-------------------------------------------------------------------
+Fri Jan 23 04:10:09 CET 2009 - vuntz@novell.com
+
+- Really drop gnome-desktop-foreign-for-screen.patch, fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Jan 17 02:59:53 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files, baby step to clean up all references
+  to libavahi-*.la
+
+-------------------------------------------------------------------
+Sat Jan 10 13:54:07 CST 2009 - mboman@suse.de
+
+- Remove gnome-desktop-randr-gerror.diff. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Jan  9 13:54:07 CST 2009 - federico@novell.com
+
+- Added gnome-desktop-randr-gerror.diff.  This adds GError reporting
+  to the GnomeRR API, which in turn lets gnome-settings-daemon and
+  gnome-control-center provide good error messages when something
+  fails in multihead configuration.
+- Removed gnome-desktop-randr-cloned-outputs.diff, as it is already
+  part of the patch above.
+
+-------------------------------------------------------------------
+Tue Jan  6 13:25:52 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.4:
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Dec 20 10:08:21 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.3:
+  + libgnome-desktop
+    - GnomeRR: plug leaks
+    - GnomeRR: add API-breaking error reporting API
+    - GnomeBG: fix potential crash with some empty slideshow
+    - Build fixes
+  + Translation updates
+
+-------------------------------------------------------------------
+Sun Dec 14 11:03:00 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.2:
+  + libgnome-desktop
+    - GnomeDesktopThumbnail: reenable check for preview::icon
+    - GnomeRR: add Lenovo display name
+    - GnomeBG: plug a leak
+    - GnomeDesktopThumbnail: fix potential crash when a temporary file
+      cannot be created
+  + Misc
+    - Require glib 2.19.1
+    - Update a bit API documentation
+    - Require GTK+ 2.14.0
+  + Translation updates 
+- Remove icon-search-path.dif. Not valid due to API/ABI changes
+- Remove gnome-desktop-randr-cloned-outputs.diff. Fixed upstream
+
+-------------------------------------------------------------------
+Tue Nov 11 11:03:18 CET 2008 - rodrigo@novell.com
+
+- Add upstream patch for bgo#555701
+
+-------------------------------------------------------------------
+Wed Oct 22 15:42:23 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct  4 08:59:29 WST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + GnomeRR: don't try and set the screen size if turning off any of the
+    CRTC's failed
+  + GnomeDesktopItem: compute the length of the string passed to
+    gnome_desktop_item_new_from_string if the len is not specified
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Sep 15 09:05:45 EST 2008 - mboman@novell.com
+
+- Update to version 2.23.92:
+  + GnomeRR: fix compilation on Solaris
+  + Misc: Fix compilation with old Xorg with no pkg-config files
+  + Translation updates 
+
+-------------------------------------------------------------------
+Fri Sep 12 18:40:43 CEST 2008 - vuntz@novell.com
+
+- Update gnome-desktop-fate300461-desktop-gettext.patch to make it
+  able to load translations from the desktop-translations package.
+  This is part of fate#300461 again.
+
+-------------------------------------------------------------------
+Wed Sep 10 17:45:01 CDT 2008 - federico@novell.com
+
+- Added gnome-desktop-randr-cloned-outputs.diff to provide
+  infrastructure needed to support switching display output modes on
+  laptops with the Fn-F7 (XF86Display) hotkey.  The actual handling of
+  the hotkey happens in the gnome-settings-daemon package.
+
+-------------------------------------------------------------------
+Wed Sep 03 17:45:10 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Fix leak
+  + GnomeRR: allow E-EDID blocks
+  + Fix compilation with old Xorg with no pkg-config files
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Aug 29 17:45:10 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.90:
+  + Add support for randr monitor labling (so drop
+    gnome-desktop-randr-monitor-labeling.diff, which previously 
+    implemented this but now is upstream)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 15 18:16:06 CEST 2008 - federico@novell.com
+
+- Added gnome-desktop-randr-monitor-labeling.diff.  This implements an
+  API to label physical monitors while their RANDR options are being
+  configured.
+
+-------------------------------------------------------------------
+Tue Aug  5 18:43:47 CEST 2008 - rodrigo@suse.de
+
+- Update to version 2.23.6:
+  + Fix build with gcc 2.x (Jens Granseuer)
+  + GnomeBG: fix handling of empty filenames (Soren Sandmann)
+  + GnomeBG: word around non-atomic gconf for emitting changed signals
+    only once (Soren Sandmann)
+- Remove upstreamed randr1.2 patch
+
+-------------------------------------------------------------------
+Mon Jul 28 23:56:29 CEST 2008 - vuntz@novell.com
+
+- Add gnome-desktop-fate300461-desktop-gettext.patch to support
+  translation of desktop entries via gettext. This is part of
+  fate#300461
+
+-------------------------------------------------------------------
+Mon Jul  7 15:41:10 CEST 2008 - ro@suse.de
+
+- update baselibs.conf
+  (it is called libgnome-desktop-2-7 by now) 
+
+-------------------------------------------------------------------
+Thu Jul  3 19:52:49 CEST 2008 - aj@suse.de
+
+- Revert last change, it's needed for gnome-panel.
+
+-------------------------------------------------------------------
+Mon Jun 30 12:13:46 CEST 2008 - aj@suse.de
+
+- Remove gnome-desktop from baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Jun 20 19:06:36 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.4:
+  + Require intltool 0.40.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 16 20:20:29 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.3:
+  + libgnome-desktop:
+    * Do not force the top-left corner of the image to fit in
+      the screen, so that zoomed image appears to be zoomed from
+      the center of the screen
+    * Add gnome_bg_load_from_preferences(), so applications don't
+      have to rely on libbackground
+    * GnomeBG: Fix some logic errors wrt to caching of slideshows
+      that may cause nautilus crashes
+    * GnomeBG: Support multi-resolution backgrounds
+    * GnomeBG: Falls back to the default image if the user's
+      background doesn't exist
+    * GnomeBG: Prevent loops caused by setting URI
+    * GnomeBG: Fix leak
+    * GnomeBG: Get rid of URIs and only use paths
+    * GnomeBG: Make sure tiles are at least 24 pixels wide
+    * GnomeBG: Some tweaks to the tile scaling heuristic
+    * GnomeBG: Small fixes
+    * GnomeBG: Add getters for the various properties
+    * GnomeBG: Monitor the image file
+  + gnome-about:
+    * Don't skip the last description from gnome-version.xml (Matt Keenan)
+    * Convert the strftime() output to UTF-8 (Takao Fujiwara)
+  + Updated translations
+- Rename the libgnome-desktop shared library subpackage.
+
+-------------------------------------------------------------------
+Thu May 29 20:38:11 CEST 2008 - federico@novell.com
+
+- Updated gnome-desktop-randr-1.2.diff with the latest fixes from upstream.
+
+-------------------------------------------------------------------
+Sun May 11 11:50:55 CEST 2008 - coolo@suse.de
+
+- fix renames of xxbit packages
+
+-------------------------------------------------------------------
+Wed May  7 23:23:17 CEST 2008 - federico@novell.com
+
+- Updated gnome-desktop-randr-1.2.diff with bugfixes from Fedora and Ubuntu.
+
+-------------------------------------------------------------------
+Tue Apr 29 17:41:00 CEST 2008 - cthiel@suse.de
+
+- obsolete gnome-desktop-<arch> via baselibs.conf 
+
+-------------------------------------------------------------------
+Fri Apr 25 18:41:10 CEST 2008 - federico@novell.com
+
+- Added gnome-desktop-randr-1.2.diff to integrate the new
+  functionality to configure RandR 1.2.
+
+-------------------------------------------------------------------
+Mon Apr 21 12:32:58 CEST 2008 - vuntz@suse.de
+
+- Rewrite gnome-desktop-recently-used-apps.patch so that it
+  applies. 
+
+-------------------------------------------------------------------
+Fri Apr 11 00:46:15 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Fix some compiler warnings
+  + Handle start time in the future correctly in GnomeBG
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Apr  1 19:48:28 CEST 2008 - vuntz@suse.de
+
+- Remove uz@cyrillic workaround (see bnc#372941) 
+
+-------------------------------------------------------------------
+Fri Mar 14 04:53:15 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 23:42:16 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + libgnome-desktop:
+    * Fix crash in GnomeBG
+    * Fix GnomeBG gio port
+  + gnome-about:
+    * Fix translator comment not available in po files
+    * Fix TypeError crasher in a print statement
+  + Misc:
+    * Use gvfs-copy instead of gnomevfs-copy in autogen.sh
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 20:40:22 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + libgnome-desktop:
+    * Fix invalid read
+    * Fix compilation issue caused by some headers
+    * Port to gio
+    * Fix crash in GnomeBG when file is empty
+  + gnome-about:
+    * Add back a --version option
+  + Require gio, and get rid of gnome-vfs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  1 19:49:14 CET 2008 - maw@suse.de
+
+- Update to version 2.21.90:
+  + Add GNOME_DESKTOP_USE_UNSTABLE_API API guard
+  + Updated translations
+- Build with -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Thu Jan 24 23:04:20 CET 2008 - rodrigo@suse.de
+
+- Updated to GNOME 2.21.5 version:
+  * gnome-about: Don't keep the window centered
+  * gnome-about: Fix problem when the color of the logo is wrong
+    when changing theme
+  * gnome-about: Cleanups
+  * gnome-about: Slow down a bit the animation for the description
+    so people can actually read it
+  * Add check for X11 libraries
+  * Translations update
+
+-------------------------------------------------------------------
+Tue Sep 18 17:57:25 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * gnome-about: Display the list of Foundation members too
+  * Remove gnome-vfs dependency for gnome-about
+  * Remove spec file
+  * Translations update
+
+-------------------------------------------------------------------
+Mon Sep 10 19:36:19 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.92: 
+  + Updated translations. 
+  + Updated README
+
+-------------------------------------------------------------------
+Fri Aug 31 00:34:14 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 14 15:32:15 CEST 2007 - maw@suse.de
+
+- Rename the uz@cyrillic locale directory to uz@Cyrl to avoid
+  unowned directories.
+
+-------------------------------------------------------------------
+Wed Aug  8 01:12:54 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Fri Aug  3 00:05:26 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.6
+- Dependencies fixes. 
+
+-------------------------------------------------------------------
+Fri Jul  6 18:50:07 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.4
+- Updated translations
+- Some tangoified icons
+- Requires newer versions of glib2 and gtk2.
+
+-------------------------------------------------------------------
+Fri Jun 22 23:44:19 CEST 2007 - maw@suse.de
+
+- Require libopenssl-devel in the -devel subpackage
+- Let the automagic requirements stuff do all the work.
+
+-------------------------------------------------------------------
+Thu Jun  7 14:33:45 CEST 2007 - sbrabec@suse.cz
+
+- Removed invalid desktop Category "Application" (#254654).
+
+-------------------------------------------------------------------
+Fri Apr 27 12:32:12 CEST 2007 - sbrabec@suse.cz
+
+- Do not call meinproc (#227624).
+
+-------------------------------------------------------------------
+Wed Apr 11 18:09:29 CDT 2007 - maw@suse.de
+
+- Update to version 2.18.1
+- Minor fixes
+- Updated translations for both the documentation (ar and ca)
+  and the software itself (dz, es, eu, gl, ku, and lv).
+
+-------------------------------------------------------------------
+Fri Mar 23 13:42:41 CST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Few, minor changes.
+
+-------------------------------------------------------------------
+Mon Feb 19 10:34:22 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:37:59 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Sun Jan  7 23:37:13 CET 2007 - sbrabec@suse.cz
+
+- Splitted gnome-desktop-doc from gnome-desktop.
+
+-------------------------------------------------------------------
+Thu Dec 14 13:24:10 CST 2006 - maw@suse.de
+
+- Move to /usr
+- Some specfile cleanup.
+
+-------------------------------------------------------------------
+Tue Nov 21 16:20:50 CET 2006 - sbrabec@suse.cz
+
+- Do not explicitly require mDNSResponder-lib blocking avahi compat
+  package.
+
+-------------------------------------------------------------------
+Wed Nov 15 22:46:58 CET 2006 - jimmyk@suse.de
+
+- Updated recently-used-apps.patch to be compatible with new recently-used 
+  format, BNC #221392.
+
+-------------------------------------------------------------------
+Fri Oct 13 01:03:08 CEST 2006 - ro@suse.de
+
+- added gnome-doc-utils-devel to buildreq 
+
+-------------------------------------------------------------------
+Mon Oct  2 22:50:30 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- updated translations 
+
+-------------------------------------------------------------------
+Thu Sep 14 00:50:46 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- updated translations 
+
+-------------------------------------------------------------------
+Tue Sep 12 20:04:35 CEST 2006 - danw@suse.de
+
+- update X-KDE-SubstituteUID.dif for 2.15 and re-enable it. #202076
+
+-------------------------------------------------------------------
+Wed Aug 30 18:11:34 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.92
+- Remove gnome-workspace icon
+- Doc Translations 
+
+-------------------------------------------------------------------
+Fri Aug 18 16:17:19 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.91
+- Use a useful icon theme in gnome_desktop_item_find_icon() when no
+  icon theme is passed as argument so we get results 
+
+-------------------------------------------------------------------
+Fri Aug 11 17:53:16 CEST 2006 - jhargadon@suse.de
+
+- updated to version 2.15.90
+- Set GNOME_PARAM_APP_DATADIR in test application
+- Save some memory in gnome-about
+- Make URI canonical before using them
+- Remember the added locales in GnomeDitemEdit
+- Sort locales list in GnomeDitemEdit
+- Use gdk_x11_display_get_user_time() to get the launch time
+- Don't crash when launching a desktop file without specifying a 
+  screen 
+
+-------------------------------------------------------------------
+Mon May  8 23:11:10 CEST 2006 - jimmyk@suse.de
+
+- Fix recently-used-apps patch, colliding libegg symbols (BNC #158106).
+
+-------------------------------------------------------------------
+Mon Mar 20 23:36:26 CET 2006 - danw@suse.de
+
+- Fix the error message mentioned in #156801 (though not the dialog
+  box, which turns out to be a separate bug).
+
+-------------------------------------------------------------------
+Tue Feb 28 23:24:48 CET 2006 - jimmyk@suse.de
+
+- Added .recently-used-apps support (BNC #152405)
+
+-------------------------------------------------------------------
+Tue Feb 28 15:25:33 CET 2006 - sbrabec@suse.cz
+
+- Use kdelibs3-doc in BuildRequires for meinproc (#153635#c14).
+
+-------------------------------------------------------------------
+Mon Feb 27 23:56:04 CET 2006 - ro@suse.de
+
+- added kdelibs3-devel-doc to BuildRequires 
+
+-------------------------------------------------------------------
+Sat Feb  4 13:23:53 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 22:17:32 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.2
+
+-------------------------------------------------------------------
+Wed Nov 16 14:51:51 CET 2005 - sbrabec@suse.cz
+
+- Fixed X-KDE-SubstituteUID patch for commands with arguments
+  (#133942).
+
+-------------------------------------------------------------------
+Thu Oct 13 00:17:32 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.1
+
+-------------------------------------------------------------------
+Mon Sep  5 12:01:16 CEST 2005 - rodrigo@suse.de
+
+- Update to version 2.12.0
+
+-------------------------------------------------------------------
+Tue Aug 23 00:19:11 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.92 
+
+-------------------------------------------------------------------
+Tue Aug  2 16:36:50 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.90 
+
+-------------------------------------------------------------------
+Fri Jul 22 17:43:06 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.5 
+
+-------------------------------------------------------------------
+Fri Jun 17 17:16:42 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.3 
+
+-------------------------------------------------------------------
+Wed Jun  1 18:15:17 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Mon May 23 14:24:53 CEST 2005 - sbrabec@suse.cz
+
+- Require libgnomesu instead of kdebase.
+
+-------------------------------------------------------------------
+Fri May 13 17:41:36 CEST 2005 - sbrabec@suse.cz
+
+- Call gnomesu for root-only binaries.
+
+-------------------------------------------------------------------
+Tue Mar 22 17:44:31 CET 2005 - sbrabec@suse.cz
+
+- Typo fix in desktop file (#72816).
+
+-------------------------------------------------------------------
+Wed Mar 16 16:17:24 CET 2005 - clahey@suse.de
+
+- Add an icon (gnome-about-logo-transparent).
+
+-------------------------------------------------------------------
+Thu Mar 10 09:40:53 CET 2005 - adrian@suse.de
+
+- kick build check workaround and apply translations to desktop file
+- show gnome about dialog only in gnome
+
+-------------------------------------------------------------------
+Wed Mar  9 19:37:31 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Thu Mar  3 18:24:28 CET 2005 - gekker@suse.de
+
+- update to version 2.9.92 
+
+-------------------------------------------------------------------
+Thu Feb 10 22:40:54 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.91 
+
+-------------------------------------------------------------------
+Tue Feb  8 13:52:35 CET 2005 - sbrabec@suse.cz
+
+- Changed Categories for gnome-about (#50440).
+
+-------------------------------------------------------------------
+Sun Feb  6 00:10:38 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.90.1 
+
+-------------------------------------------------------------------
+Sat Jan 22 14:45:30 CET 2005 - gekker@suse.de
+
+- Fixing the broken build 
+
+-------------------------------------------------------------------
+Fri Jan 21 01:26:15 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.4 
+
+-------------------------------------------------------------------
+Tue Nov  2 17:13:04 CET 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Mon Oct 04 16:58:40 CEST 2004 - sbrabec@suse.cz
+
+- Updated Czech translation (#46621),
+
+-------------------------------------------------------------------
+Wed Sep 29 12:22:00 CEST 2004 - hhetter@suse.de
+
+- change distributor to SUSE
+
+-------------------------------------------------------------------
+Mon Sep 20 14:40:56 CEST 2004 - shprasad@suse.de
+
+- Fixes bug #65062 (Fix given by svasista@novell.com)
+  Fixes a crash when menu item is deleted.
+
+-------------------------------------------------------------------
+Wed Aug 25 21:26:54 CEST 2004 - clahey@suse.de
+
+- Cache gnome-desktop help files.
+
+-------------------------------------------------------------------
+Thu Aug 19 21:06:47 CEST 2004 - rml@novell.com
+
+- Fix bug #62316: Use kdesu not gnomesu
+
+-------------------------------------------------------------------
+Tue Aug 17 13:57:13 CEST 2004 - sbrabec@suse.cz
+
+- Added gnomesu needed by X-KDE-SubstituteUID.dif to requires (#43867).
+
+-------------------------------------------------------------------
+Wed Jul 28 20:02:52 CEST 2004 - clahey@suse.de
+
+- Change distributor from GNOME Project to Novell, Inc.
+
+-------------------------------------------------------------------
+Tue May  4 17:28:20 CEST 2004 - clahey@suse.de
+
+- Updated to version 2.6.0.1.
+- Updated X-KDE-SubstituteUID based on changes in base package.
+- Added patch to provide .directory files for new GNOME menu layout.
+
+-------------------------------------------------------------------
+Wed Mar 31 12:41:22 CEST 2004 - hhetter@suse.de
+
+- added X-KDE-RootOnly Interpretation (#37660) 
+
+-------------------------------------------------------------------
+Wed Mar 17 13:07:32 CET 2004 - hhetter@suse.de
+
+- fix gnomesu call in X-KDE-SubstituteUID 
+
+-------------------------------------------------------------------
+Mon Mar 15 14:36:21 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Wed Mar 10 10:35:57 CET 2004 - sbrabec@suse.cz
+
+- Fixed %doc attributes (#33163).
+
+-------------------------------------------------------------------
+Sat Jan 10 16:39:26 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Oct 27 12:31:30 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.1.1.
+
+-------------------------------------------------------------------
+Fri Oct 17 12:46:44 CEST 2003 - ro@suse.de
+
+- fix build on x86_64 running all autotools 
+
+-------------------------------------------------------------------
+Tue Oct 07 14:26:48 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Mon Sep 22 10:34:14 CEST 2003 - sbrabec@suse.cz
+
+- Obsolete gnome-core (bug #31480),
+
+-------------------------------------------------------------------
+Mon Sep 15 14:59:29 CEST 2003 - hhetter@suse.de
+
+- expand iconpath for KDE crystalsvg stuff in all sizes 
+
+-------------------------------------------------------------------
+Fri Sep 12 11:45:48 CEST 2003 - hhetter@suse.de
+
+- enable X-KDE-SubstituteUID 
+- fix kdedir setting
+
+-------------------------------------------------------------------
+Mon Jul 14 16:17:53 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jun 24 18:34:36 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.2.
+- Use %find_lang.
+- Fixed filelist.
+- Compressed man pages.
+- Standard docs moved away from gnome-core2.
+
+-------------------------------------------------------------------
+Tue Mar  4 12:43:33 CET 2003 - hhetter@suse.de
+
+- provide links for susewm icons in first place, making
+  the GNOME susewm menu more consistent 
+
+-------------------------------------------------------------------
+Mon Feb 10 16:08:09 CET 2003 - hhetter@suse.de
+
+- updated to version 2.2.0.1 [GNOME 2.2.0] 
+
+-------------------------------------------------------------------
+Tue Jan 28 13:36:34 CET 2003 - hhetter@suse.de
+
+- updated to version 2.2.0 
+
+-------------------------------------------------------------------
+Thu Jan 16 16:28:09 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 2.1.90.
+- Updated %files and license.
+
+-------------------------------------------------------------------
+Thu Jan 16 10:11:46 CET 2003 - sbrabec@suse.cz
+
+- Added libjpeg to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Nov 29 12:58:20 CET 2002 - hhetter@suse.de
+
+- add suse paths to the icon loader 
+
+-------------------------------------------------------------------
+Thu Nov 28 13:29:23 CET 2002 - hhetter@suse.de
+
+- updated to version 2.0.10 [GNOME 2.0.3]
+- removed hu-translation because translations have been updated 
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xf86 xdevel> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Tue Sep 24 16:42:18 CEST 2002 - sbrabec@suse.cz
+
+- Added alsa-devel to neededforbuild, because esound-devel can require it.
+
+-------------------------------------------------------------------
+Thu Sep 19 10:56:19 CEST 2002 - sbrabec@suse.cz
+
+- Added alsa to neededforbuild, because esound can depend on it.
+
+-------------------------------------------------------------------
+Tue Sep 17 14:13:06 CEST 2002 - hhetter@suse.de
+
+- added corrected hu po-files 
+
+-------------------------------------------------------------------
+Tue Aug 13 10:18:46 CEST 2002 - hhetter@suse.de
+
+- fix neededforbuild 
+
+-------------------------------------------------------------------
+Thu Aug  8 15:44:09 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.6
+        * Don't stat all icons on startup 
+        * Fix #89245, picking an .xpm over a .png 
+        * Also read icons from our installed prefix 
+        * Fix GConfClient leaks 
+
+-------------------------------------------------------------------
+Mon Aug  5 15:32:31 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.5
+	* fix bogus file reference 
+
+-------------------------------------------------------------------
+Tue Jul 30 15:22:01 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.4
+        * Truncate .desktop file after opening 
+        * Remove numeric canonization 
+        * Add APPEND_PATHS flag 
+        * Sort out libtool versioning 
+	* Translation updates
+ 
+
+-------------------------------------------------------------------
+Tue Jul 23 10:28:57 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.3, req. for Nautilus 2.0.1 
+
+-------------------------------------------------------------------
+Thu Jun 27 08:52:00 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.2 (gnome 2.0 final) 
+
+-------------------------------------------------------------------
+Thu Jun 20 17:32:30 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.1 
+
+-------------------------------------------------------------------
+Mon Jun 10 15:44:23 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.0
+	- many translation updates
+
+-------------------------------------------------------------------
+Tue Jun  4 17:54:19 CEST 2002 - hhetter@suse.de
+
+- updated to frozen source version 1.5.22 
+
+-------------------------------------------------------------------
+Wed May 15 18:13:05 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Wed Apr 10 12:00:06 CEST 2002 - hhetter@suse.de
+
+- initial release for GNOME 2.0 platform 
+

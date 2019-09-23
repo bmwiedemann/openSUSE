@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Wed Feb 27 07:38:46 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Update to version 4.2
+  * Support for Malaga dictionary format removed
+  * hfst-ospell dependency updated
+  * Java, Python, Javascript wrapper improvements
+- Drop libvoikko-hfst-namespace.patch
+
+-------------------------------------------------------------------
+Mon Apr 23 13:27:51 UTC 2018 - tchvatal@suse.com
+
+- Add patch to build with new hfst-ospell:
+  * libvoikko-hfst-namespace.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 11:18:38 UTC 2017 - jengelh@inai.de
+
+- Stop mixing %buildroot and $RPM_BUILD_ROOT.
+- Drop --with-pic which is a no-op with --disable-static.
+
+-------------------------------------------------------------------
+Wed Oct  4 07:54:42 UTC 2017 - tuukka.pasanen@ilmi.fi
+
+- Added python3 interface package libvoikko which is needed
+  by LibreOffice 
+
+-------------------------------------------------------------------
+Tue Apr 25 13:17:13 UTC 2017 - tchvatal@suse.com
+
+- Version update to 4.1.1:
+  * Various upstream fixes. See ChangeLog
+  * Should fix boo#1031331
+  * Switch to python3
+
+-------------------------------------------------------------------
+Tue Nov 24 16:25:36 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.8
+  * Add support for specifying multiple default dictionary locations.
+  * Search for dictionares from $HOME/Library/Spelling/voikko on OS X.
+  * Tri-licensed the HFST backend
+  * Initial support for BCP 47 script subtag.
+  * Add support for weighted VFST transducers.
+  * Add spelling suggestions to simple VFST spellers by using
+	weighted VFST transducers.
+  * Autocorrect data is read from VFST transducer in format 5
+	dictionaries.
+
+-------------------------------------------------------------------
+Wed Aug  5 08:45:10 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Thu Nov 13 12:25:52 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 3.7.1:
+  * New dictionary format 5 for VFST.
+
+-------------------------------------------------------------------
+Sun Jan 26 09:35:23 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 3.7:
+  * Many bugfixes. See ChangeLog
+  * Upstream moved location so update accordingly.
+
+-------------------------------------------------------------------
+Tue Feb 28 21:28:47 CET 2012 - sbrabec@suse.cz
+
+- Upgrade to version 3.4.1:
+  * Many new features, improvements and bug fixes. See ChangeLog
+    for details.
+  * Handle embedded null input characters in Python and Java
+    interfaces. (bnc#699707)
+
+-------------------------------------------------------------------
+Mon Jan 30 13:08:16 UTC 2012 - jengelh@medozas.de
+
+- Ensure pkgconfig symbols are present
+
+-------------------------------------------------------------------
+Mon Jan 30 12:56:36 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Tue Dec 27 13:10:08 UTC 2011 - idonmez@suse.com
+
+- Fix wrong size parameter in memset call 
+ 
+-------------------------------------------------------------------
+Wed Nov 23 22:00:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Wed Nov 23 21:11:20 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Feb 22 15:23:59 CET 2011 - vuntz@opensuse.org
+
+- Add missing baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Jun 22 14:40:48 CEST 2009 - pmladek@suse.cz
+
+- Updated to version 2.1:
+  * Add option for accepting unfinished paragraphs.
+  * Add option VOIKKO_OPT_HYPHENATE_UNKNOWN_WORDS.
+  * Add option VOIKKO_OPT_ACCEPT_BULLETED_LISTS_IN_GC.
+  * Add support for environment variable VOIKKO_DICTIONARY.
+  * Disable character case checks completely within quotations.
+  * Disable character case checks if sentence contains a tab character.
+  * Disable checks for paragraphs that contain only an URL or some other
+    non-standard text.
+  * Read replacement suggestions from data/autocorrect/fi_FI.xml.
+  * Do not try to check character case for sentences that have been written
+    fully in upper case.
+  * Allow sentences to start with a digit.
+  * Refactoring and porting to C++.
+- Added gcc-c++ python python-xml into BuildRequires
+- Added libvoikko-2.1-ac-macro-dir.diff, fixed autoreconf to run (sf#2810258)
+
+-------------------------------------------------------------------
+Tue Feb  3 16:10:54 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files 
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:29 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Mon Sep  8 17:36:24 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.0:
+  * New API for identifying sentences from text paragraphs.
+  * New API for paragraph based grammar checking.
+  * New test program voikkogc for testing grammar checker and
+    related functionality.
+  * Option VOIKKO_OPT_ENCODING has been deprecated.
+
+-------------------------------------------------------------------
+Mon Aug  4 12:04:29 CEST 2008 - ro@suse.de
+
+- do not require non-existent base package in voikkospell 
+
+-------------------------------------------------------------------
+Fri Aug  1 17:32:31 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Fri Jul 25 12:22:09 CEST 2008 - sbrabec@suse.cz
+
+- New SuSE package based on spec file from Sami Vento (bnc#394355).
+

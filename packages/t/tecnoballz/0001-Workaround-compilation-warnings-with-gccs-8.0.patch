@@ -1,0 +1,26 @@
+From cd5192c8da6eadf55bb9564cfba74678d0325c2b Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Sat, 27 Jul 2019 22:29:23 +0200
+Subject: [PATCH] Workaround compilation warnings with gccs (>=8.0)
+
+Build with "-Wno-error=stringop-truncation"
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 67c7ec1..04f17e9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,7 +65,7 @@ if test "x${enable_devel}" = "xyes"; then
+   AC_DEFINE(UNDER_DEVELOPMENT,  1, Define to enable development version)
+   CXXFLAGS="-Werror -O2 -Wall -pedantic -Wextra -std=gnu++98 -g"
+ else
+-  CXXFLAGS="-O2 -Werror -Wall -pedantic -Wextra -std=gnu++98"
++  CXXFLAGS="-O2 -Werror -Wall -Wno-error=stringop-truncation -pedantic -Wextra -std=gnu++98"
+ fi
+ 
+ AC_OUTPUT(
+-- 
+2.16.4
+

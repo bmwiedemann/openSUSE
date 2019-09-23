@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53cbd5f342c8613dc2f11df8ba5faa38</srcmd5>
+    <version>3.0.3</version>
+    <time>1492714155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>482367</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0859005e27126bd63df56d730485207c</srcmd5>
+    <version>3.0.3</version>
+    <time>1502629091</time>
+    <user>maxlin_factory</user>
+    <comment>Add some refs for SLE bots</comment>
+    <requestid>515874</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d7c960a3efbfce9d050f2e5373476c08</srcmd5>
+    <version>3.0.3</version>
+    <time>1521716873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589808</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>653aaec84ee28acd9e10ad2097320af7</srcmd5>
+    <version>3.0.4</version>
+    <time>1525343691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603555</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6820755a67e669cfb2cdd29d44bad329</srcmd5>
+    <version>3.1.2</version>
+    <time>1545648502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660867</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a98858ce0f813b6f9808c0d0dfa25959</srcmd5>
+    <version>3.1.3</version>
+    <time>1546535218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662205</requestid>
+  </revision>
+</revisionlist>

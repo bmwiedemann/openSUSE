@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Sep 18 08:55:59 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Disable _service for Factory submit
+
+-------------------------------------------------------------------
+Tue Sep 17 11:23:53 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to git version f51f1b3
+- Change branch to master because it is more reliable than stable
+
+-------------------------------------------------------------------
+Tue Sep  4 08:03:26 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to git version d5dde4c
+
+-------------------------------------------------------------------
+Mon Aug 21 06:58:04 UTC 2017 - asn@cryptomilk.org
+
+- Update to git version ee5ebf6:
+  * Make "fail quietly" flag in DeferredLog a little more quiet
+  * Stabilize sort order for Remarkup block rules
+  * In Remarkup, prevent "%%%" on a line from self-terminating the literal block
+  * Don't fatal when encountering [[ <bad URI > | ... ]]
+  * Modernize editor selector
+  * Make empty Remarkup table rows have more intuitive behavior
+  * If the overseer can't update the PID file, just move on
+  * Don't warn about use of "Throwable" under PHP5
+  * Consolidate binary (hg, git, svn) analysis code into one place
+  * Increase strictness of URI parsing, rejecting URIs in the form "ssh://-flag"
+
+-------------------------------------------------------------------
+Mon Jun 19 07:26:41 UTC 2017 - asn@cryptomilk.org
+
+- Use the system cacert bundle
+
+-------------------------------------------------------------------
+Wed Jun 14 15:45:44 UTC 2017 - asn@cryptomilk.org
+
+- Initial package 

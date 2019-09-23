@@ -1,0 +1,11 @@
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs -x Makefile -x Makefile.in ../orig-cimple-2.0.24/src/cimple/FileSystem.cpp ./src/cimple/FileSystem.cpp
+--- ../orig-cimple-2.0.24/src/cimple/FileSystem.cpp	2011-11-07 22:00:07.000000000 +0100
++++ ./src/cimple/FileSystem.cpp	2012-11-05 16:29:49.009183611 +0100
+@@ -30,6 +30,7 @@
+ 
+ #include <cassert>
+ #include <cstdlib>
++#include <unistd.h>
+ #include <sys/stat.h>
+ #include <fstream>
+ #include "FileSystem.h"

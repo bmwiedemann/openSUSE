@@ -1,0 +1,92 @@
+From: Petr Tesarik <ptesarik@suse.cz>
+Subject: Unquote parameters written to Xen EFI config file
+References: bsc#900418
+Patch-mainline: not yet
+
+The GRUB_CMDLINE_* value is copied verbatim to grub.conf, so it is first
+parsed by GRUB2 before being passed down to the kernel. OTOH Xen EFI loader
+takes the config file options verbatim. This means that any special GRUB2
+syntax must be evaluated when generating that file.
+
+Of course, some things are not even possible (e.g. substituting GRUB runtime
+variables), but let's call them known limitations.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
+
+---
+ util/grub.d/20_linux_xen.in |   54 ++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 52 insertions(+), 2 deletions(-)
+
+Index: grub-2.02~rc1/util/grub.d/20_linux_xen.in
+===================================================================
+--- grub-2.02~rc1.orig/util/grub.d/20_linux_xen.in
++++ grub-2.02~rc1/util/grub.d/20_linux_xen.in
+@@ -122,6 +122,52 @@ else
+   is_efi=false
+ fi
+ 
++grub2_unquote ()
++{
++  awk '
++    BEGIN   {
++      bare = "[^{}|&$;<> \t\n'\''\"\\\\]+"
++      esc = "\\\\."
++      id = "[[:alpha:]_][[:alnum:]_]*|[[:digit:]]+|[?#*@]"
++      var = "\\$("id")|\\$\\{("id")\\}"
++      dqesc = "\\\\[$\"\\\\]"
++      dqstr = "\\$?\"([^\"]|"var"|"dqesc")*\""
++      sqstr = "'\''[^'\'']*'\''"
++      pat = bare"|"esc"|"var"|"dqstr"|"sqstr
++      ORS = ""
++    }
++    {
++      patsplit($0, words, pat, sep)
++      print sep[0]
++      for (i in words) {
++        w = words[i]
++        if (w ~ /^\$?\"/) {
++          # Double-quoted string
++          patsplit(w, segs, var"|"dqesc, ssep)
++          print ssep[0]
++          for (j in segs) {
++            if (segs[j] ~ /^\\/)
++              print substr(segs[j], 2)
++            print ssep[j]
++          }
++        } else if (w ~ /^'\''/) {
++          # Single-quoted string
++          print substr(w, 2, length(w)-2)
++        } else if (w ~ /^\\/) {
++          # Escape sequence
++          print substr(w, 2)
++        } else if (w ~ /^\$/) {
++          # Variable expansion
++        } else {
++          # Bare word
++          print w
++        }
++        print sep[i]
++      }
++      print "\n"
++    }'
++}
++
+ linux_entry ()
+ {
+   os="$1"
+@@ -174,11 +220,13 @@ linux_entry ()
+     else
+       section="failsafe.$section_count"
+     fi
++    xen_args_unq=$(echo $xen_args | grub2_unquote)
++    args_unq=$(echo $args | grub2_unquote)
+     cat <<-EOF >> $grub_dir/$xen_cfg
+ 
+ 	[$section]
+-	options=${xen_args}
+-	kernel=${basename} root=${linux_root_device_thisversion} ${args}
++	options=${xen_args_unq}
++	kernel=${basename} root=${linux_root_device_thisversion} ${args_unq}
+ 	ramdisk=${initrd}
+ 	EOF
+     message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"

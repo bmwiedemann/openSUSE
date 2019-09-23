@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=X Calc
+GenericName=Calculator
+Exec=xcalc
+Icon=xcalc
+Type=Application
+Terminal=false
+X-KDE-StartupNotify=true

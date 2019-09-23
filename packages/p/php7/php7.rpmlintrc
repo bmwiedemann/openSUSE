@@ -1,0 +1,10 @@
+# Non-versioned shared library, php-embed requires
+# exact version of main package, parallel installation
+# not wanted
+addFilter("php.-embed.* shlib-policy-name-error")
+# PHP5 is obsolete, replaced by PHP7
+addFilter("obsolete-not-provided php5-*")
+# Channel files in metadata_dir
+addFilter("hidden-file-or-dir /usr/share/php7/PEAR/.")
+# Forgot to add category?
+addFilter("non-standard-group Development/Libraries/PHP")

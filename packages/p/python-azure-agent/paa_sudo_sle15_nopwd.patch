@@ -1,0 +1,11 @@
+--- azurelinuxagent/common/osutil/default.py.orig
++++ azurelinuxagent/common/osutil/default.py
+@@ -307,7 +307,7 @@ class DefaultOSUtil(object):
+             if nopasswd:
+                 sudoer = "{0} ALL=(ALL) NOPASSWD: ALL".format(username)
+             else:
+-                sudoer = "{0} ALL=(ALL) ALL".format(username)
++                sudoer = "{0} ALL=(ALL) NOPASSWD: ALL".format(username)
+             if not os.path.isfile(sudoers_wagent) or \
+                     fileutil.findstr_in_file(sudoers_wagent, sudoer) is False:
+                 fileutil.append_file(sudoers_wagent, "{0}\n".format(sudoer))

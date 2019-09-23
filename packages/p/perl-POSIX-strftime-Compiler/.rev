@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec8d88673ba1d3dc34258659e5a5c2aa</srcmd5>
+    <version>0.31</version>
+    <time>1394386969</time>
+    <user>coolo</user>
+    <comment>needed for apache-log</comment>
+    <requestid>224966</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ec8d88673ba1d3dc34258659e5a5c2aa</srcmd5>
+    <version>0.31</version>
+    <time>1409302440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>727b31c7a36abef46b083464459ae281</srcmd5>
+    <version>0.40</version>
+    <time>1410204541</time>
+    <user>coolo</user>
+    <comment>- updated to 0.40
+    - fix test. accept ACST as Australia/Darwin's timezone
+      Because Australian eastern time zone abbr changed in tzdata 2014f
+      ref http://mm.icann.org/pipermail/tz-announce/2014-August/000023.html
+ 
+ 0.32 2014-06-09T01:53:19Z
+ 
+     - change perl version requirements to 5.8.1</comment>
+    <requestid>247968</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>402ed2b0fcbc84d849085b5a5be4ecff</srcmd5>
+    <version>0.41</version>
+    <time>1423392159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>284639</requestid>
+  </revision>
+</revisionlist>

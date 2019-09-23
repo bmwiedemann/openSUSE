@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa89e8bcf1da397c55252d9d63d08d82</srcmd5>
+    <version>3.13.0</version>
+    <time>1557916472</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>702961</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ae3edef287b45654afe797651ba3e9a2</srcmd5>
+    <version>3.13.0</version>
+    <time>1559580931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707055</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b7f9e5d196f8e9399ebda2a74b9b79a</srcmd5>
+    <version>3.14.1</version>
+    <time>1568720347</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 3.14.1:
+  * More tes fixes
+  * Deprecate ujson support
+  * Fixed various deprecation warnings</comment>
+    <requestid>731291</requestid>
+  </revision>
+</revisionlist>

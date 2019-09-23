@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Thu Feb 22 10:23:35 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Wed Feb 21 21:25:03 UTC 2018 - aloisio@gmx.com
+
+- Added sqliteman-1.2.2-qt5.patch and switched build to Qt5
+
+- Dropped sqliteman-fix-qscintilla-find.patch (no longer
+   necessary)
+
+-------------------------------------------------------------------
+Sun May  7 14:52:58 UTC 2017 - tchvatal@suse.com
+
+- Add fix to build under latest qscintilla split for qt4 and qt5:
+  * sqliteman-fix-qscintilla-find.patch
+
+-------------------------------------------------------------------
+Tue Mar 17 17:33:19 UTC 2015 - tchvatal@suse.com
+
+- Install COPYING and other basic docs
+
+-------------------------------------------------------------------
+Mon Mar 16 10:28:31 UTC 2015 - tchvatal@suse.com
+
+- Update licenses
+
+-------------------------------------------------------------------
+Fri Mar 13 14:49:52 UTC 2015 - tchvatal@suse.com
+
+- Fix download url
+
+-------------------------------------------------------------------
+Fri Mar 13 14:40:57 UTC 2015 - tchvatal@suse.com
+
+- Update homepage
+
+-------------------------------------------------------------------
+Wed May  7 19:00:37 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner so it is acceptable for SUSE standards.
+
+-------------------------------------------------------------------
+Mon Jul 19 00:00:00 UTC 2010 - petr@scribus.info
+
+- version bump. Version 1.2.2
+
+-------------------------------------------------------------------
+Sun Apr  4 00:00:00 UTC 2010 - petr@scribus.info
+
+- fixed rpm group to fit opensuse categories.
+
+-------------------------------------------------------------------
+Tue Jun 12 00:00:00 UTC 2007 - petr@scribus.info
+
+- merging FC and Suse specs into one. Opensuse Build service works
+
+-------------------------------------------------------------------
+Wed Apr 11 00:00:00 UTC 2007 - ti.eugene@gmail.com
+
+- initial build for FC6
+
+-------------------------------------------------------------------
+Tue Feb 20 00:00:00 UTC 2007 - petr@scribus.info
+
+- initial package
+

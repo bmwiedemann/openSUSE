@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9744d13efc1f7c8ca91446eb0d6ddf74</srcmd5>
+    <version>1.2.5</version>
+    <time>1532774434</time>
+    <user>dimstar_suse</user>
+    <comment>New revision (post spec-cleaner). Original submission text:
+
+This is a new package and I would be  be happy to maintain it in Factory and
+beyond. I already maintain it upstream.
+
+Short summary: mailprocessing is a mail filter configured by user provided
+Python scripts - a Turing complete mail filter if you will. It is a
+fork/continuation of Joel Rosdahl's maildirproc
+(http://joel.rosdahl.net/maildirproc/ ). It consists of the maildirproc utility
+(which filters email in local maildirs) and the imapproc utility (which filters
+email in remote IMAP folders).
+
+In terms of packaging, maintenance overhead should be fairly low. Joel made
+sure to implement maildirproc using just the Python 3 standard library and I
+continued that tradition.</comment>
+    <requestid>624242</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e009a2816987f1805b8d476ad9127ec</srcmd5>
+    <version>1.2.6</version>
+    <time>1561732602</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch back to tarball from Github (used to be the setup.py generated one)
+
+- Update to mailprocessing-1.2.6
+  * Added example logrotate configurations
+  * Added SIGHUP handler for reopening log files (useful for
+    log rotation)
+  * Use locking for PID and log files. You need to specify
+    dedicated PID and lock files if you want to run multiple
+    concurrent imapproc processes.
+  * Write PID file
+  * Improve signal handling and cleanup after receiving fatal
+    signals. Continuous mode in particular is a lot more
+    reliable and predictable now.
+  * Download message headers in a batched manner
+  * Download message flags in a batched manner
+  * Various documentation and release engineering fixes/cleanups</comment>
+    <requestid>712271</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+[Unit]
+Description=GoVPN tunneling daemon instance using /etc/govpn.d/%i.json
+After=network.target
+PartOf=govpn.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/govpn.conf
+EnvironmentFile=-/etc/govpn.d/%i.conf
+ExecStart=/usr/bin/govpn-server -conf /etc/govpn.d/%i.json $GLOBAL_OPTS $INSTANCE_OPTS
+
+[Install]
+WantedBy=multi-user.target govpn.target

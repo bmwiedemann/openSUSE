@@ -1,0 +1,472 @@
+<revisionlist>
+  <revision rev="1" vrev="83">
+    <srcmd5>192f22feacf778324150a9e3eb9837b3</srcmd5>
+    <version>4.0.2</version>
+    <time>1166111596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="94">
+    <srcmd5>1ea18fb35bc58fc69649e53c881f38d6</srcmd5>
+    <version>4.0.2</version>
+    <time>1175185679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="162">
+    <srcmd5>d617a240751530c371713b0ad38dc886</srcmd5>
+    <version>4.0.2</version>
+    <time>1210942562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="189">
+    <srcmd5>d617a240751530c371713b0ad38dc886</srcmd5>
+    <version>4.0.2</version>
+    <time>1210942562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="190">
+    <srcmd5>ccecc245672bbb87635b65a3feadfcb4</srcmd5>
+    <version>4.0.2</version>
+    <time>1243475147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="191">
+    <srcmd5>4c135843954672cfea89673ca43653b6</srcmd5>
+    <version>4.0.2</version>
+    <time>1251413095</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/screen based on submit request 18959 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="193">
+    <srcmd5>4c135843954672cfea89673ca43653b6</srcmd5>
+    <version>4.0.2</version>
+    <time>1251413095</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/screen based on submit request 18959 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="194">
+    <srcmd5>4ad85ea97ee175a548197a95bf70967f</srcmd5>
+    <version>4.0.2</version>
+    <time>1263224532</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/screen based on submit request 29084 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23cfd1276ae6ed146a6e0970fda0072e</srcmd5>
+    <version>4.0.3</version>
+    <time>1266508616</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/screen based on submit request 32647 from user prusnak
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ea8c5910c004998d4343535f00d930f0</srcmd5>
+    <version>4.0.3</version>
+    <time>1268926106</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>fc6c25e795a89503e99d59da5dc94a79</srcmd5>
+    <version>4.0.3</version>
+    <time>1272966702</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/screen based on submit request 39344 from user prusnak
+</comment>
+    <requestid>39344</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>fc6c25e795a89503e99d59da5dc94a79</srcmd5>
+    <version>4.0.3</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>fc6c25e795a89503e99d59da5dc94a79</srcmd5>
+    <version>4.0.3</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>1370448b8ab956190332cc4a022ec10b</srcmd5>
+    <version>unknown</version>
+    <time>1284124542</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/screen based on submit request 47668 from user coolo
+</comment>
+    <requestid>47668</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>83bcd1ca62f0b4346fa735df47cb1ce4</srcmd5>
+    <version>4.0.3</version>
+    <time>1288966105</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52122 from user elvigia
+</comment>
+    <requestid>52122</requestid>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>1f25890159be9607364226957c0398c4</srcmd5>
+    <version>4.0.3</version>
+    <time>1288966111</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52122
+</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>b1eefefc628ddef9c04985f8b6b221fc</srcmd5>
+    <version>4.0.3</version>
+    <time>1292012232</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55613 from user darix
+</comment>
+    <requestid>55613</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>66b7583fac2469307dff93115a7a69d3</srcmd5>
+    <version>4.0.3</version>
+    <time>1292012239</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55613
+</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>bd167265d396ea34b87ddc99c91df5a1</srcmd5>
+    <version>4.0.3</version>
+    <time>1296607525</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59566 from user elvigia
+</comment>
+    <requestid>59566</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>0fa89aebf8ea23ce0c60b9dc7081f990</srcmd5>
+    <version>4.0.3</version>
+    <time>1296607531</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59566
+</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>0fa89aebf8ea23ce0c60b9dc7081f990</srcmd5>
+    <version>4.0.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>ee96bc90885f2b3b67299c6be7afdcd6</srcmd5>
+    <version>4.0.3</version>
+    <time>1310041618</time>
+    <user>saschpe</user>
+    <comment>Use /usr/lib/tmpfiles.d instead of /etc/tmpfiles.d. (forwarded request 75493 from a_jaeger)</comment>
+    <requestid>75576</requestid>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>2899a65b8def4abf929852087cd23cb9</srcmd5>
+    <version>4.0.3</version>
+    <time>1310041636</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75576
+</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>4c432e5f39e8b1a72aa04f5dfb975c73</srcmd5>
+    <version>4.0.3</version>
+    <time>1316506188</time>
+    <user>lrupp</user>
+    <comment>- Add sort command
+- convert maxwin99bug.patch into a patch format quilt understands (forwarded request 83586 from trenn)</comment>
+    <requestid>83675</requestid>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>c427776ae0c1aa0588fe9ef7857d4c16</srcmd5>
+    <version>4.0.3</version>
+    <time>1316506196</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 83675
+</comment>
+  </revision>
+  <revision rev="26" vrev="22">
+    <srcmd5>c427776ae0c1aa0588fe9ef7857d4c16</srcmd5>
+    <version>4.0.3</version>
+    <time>1319182458</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="23">
+    <srcmd5>9d46b7e1b0fa0e85992b688a3d9bf7da</srcmd5>
+    <version>4.0.3</version>
+    <time>1321980572</time>
+    <user>coolo</user>
+    <comment>- fix build with latest ncurses (split tinfo)
+
+- mkdir /var/run/*screen both immediatly and via systemd.</comment>
+    <requestid>92883</requestid>
+  </revision>
+  <revision rev="28" vrev="24">
+    <srcmd5>673dce0bbc1bf663864753dae7c9f6cf</srcmd5>
+    <version>4.0.3</version>
+    <time>1323194564</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>80ed5be3e2c89a9ce6e6f08f65f8eab6</srcmd5>
+    <version>4.0.4</version>
+    <time>1339531176</time>
+    <user>coolo</user>
+    <comment>- update to screen-4.0.4devel</comment>
+    <requestid>124596</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>80ed5be3e2c89a9ce6e6f08f65f8eab6</srcmd5>
+    <version>4.0.4</version>
+    <time>1340184203</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>61ea61826d30483688d5446e19bba50b</srcmd5>
+    <version>4.0.4</version>
+    <time>1344455869</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>130433</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>3ad21d9198fa51b38b17cca8644b9ff3</srcmd5>
+    <version>4.0.4</version>
+    <time>1347347995</time>
+    <user>coolo</user>
+    <comment>- Add build dependency on makeinfo (forwarded request 133354 from namtrac)</comment>
+    <requestid>133404</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>c8d4cc3cc37c82d58e1eaaf516ead29a</srcmd5>
+    <version>4.0.4</version>
+    <time>1348563973</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135537</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>3ebfa118011ef923ec60d57f2f041a84</srcmd5>
+    <version>4.0.4</version>
+    <time>1349853670</time>
+    <user>coolo</user>
+    <comment>The currently used &quot;--enable-locale&quot; is not correct, it should be &quot;--enable-use-locale&quot; instead, as the configure code is testing: 
+-------- 
+if test &quot;$enable_use_locale&quot; = &quot;yes&quot;; then 
+... 
+-------- 
+Hence, using &quot;--enable-locale&quot; will result in a warning about an unknown option.
+
+Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/index.php?37528 (forwarded request 137554 from lnt-sysadmin)</comment>
+    <requestid>137608</requestid>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>bfb43501630290fa5ae545d53b981c4d</srcmd5>
+    <version>4.0.4</version>
+    <time>1351874487</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139917</requestid>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>bfb43501630290fa5ae545d53b981c4d</srcmd5>
+    <version>4.0.4</version>
+    <time>1359110389</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>aa6470ffafde269b906b1ba35b916594</srcmd5>
+    <version>4.0.4</version>
+    <time>1362736792</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157662</requestid>
+  </revision>
+  <revision rev="38" vrev="12">
+    <srcmd5>add0af538757b83dd0d3fba9d030d737</srcmd5>
+    <version>4.0.4</version>
+    <time>1362984677</time>
+    <user>coolo</user>
+    <comment>Amend the changelog with a hint about changed %w behaviour (bnc#808565) (forwarded request 158192 from seife)</comment>
+    <requestid>158193</requestid>
+  </revision>
+  <revision rev="39" vrev="13">
+    <srcmd5>da89c559c9b88e50ea75a8f962144168</srcmd5>
+    <version>4.0.4</version>
+    <time>1364901155</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161921</requestid>
+  </revision>
+  <revision rev="40" vrev="14">
+    <srcmd5>0b3a6490b4766633c083d700d5b07a58</srcmd5>
+    <version>4.0.4</version>
+    <time>1379178550</time>
+    <user>scarabeus_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>198965</requestid>
+  </revision>
+  <revision rev="41" vrev="16">
+    <srcmd5>0b3a6490b4766633c083d700d5b07a58</srcmd5>
+    <version>4.0.4</version>
+    <time>1379664638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="17">
+    <srcmd5>5292e5147d381a22436b7b8a82f9828e</srcmd5>
+    <version>4.0.4</version>
+    <time>1398144921</time>
+    <user>coolo</user>
+    <comment>Fix comment (forwarded request 230211 from a_jaeger)</comment>
+    <requestid>230214</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>18118a82d912929860861cf9063155f8</srcmd5>
+    <version>4.2.0</version>
+    <time>1398862839</time>
+    <user>coolo</user>
+    <comment>- Update to 4.2.0 as released on screen-devel@gnu.org yesterday.
+  Thank you Amadeusz!
+  * keep libtinfo.diff (from coolo 2011, why exactly?)
+  * keep global_screenrc.patch (renamed from screen-4.0.2.dif)
+  * keep screen-man-loginshell.diff (to be upstreamed)
+  * dropped screen-__P.diff (not needed)
+  * keep term_too_long.diff (savannah#30880, to be upstreamed)
+  * keep use_locale.diff (from lnt-sysadmin@lists.lrz.de 2012, check?)
+  * keep screen-4.0.3-ipv6.patch (builtin telnet, to be upstreamed)
+  * keep screen_enhance_windows_list.patch (to be upstreamed)
+  * keep screen-poll-zombies.patch (to be upstreamed)
+  * keep xX_string_escape.patch (renamed from show_all_active.patch, to be upstreamed)
+  * keep sort_command.patch (from trenn 2011, to be upstreamed)
+  * added msg_version_3.patch (ouch, incompatible protocol, to be upstreamed)
+- added %rundir with /var/run for 1310 and before; but /run afterwards.
+  aj advocates /run for Factory; for 1310 it was banned by
+  suse-filelist-forbidden-fhs23 (forwarded request 230477 from jnweiger)</comment>
+    <requestid>231107</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>195bbad3fdd5f42be14e125f80a098d6</srcmd5>
+    <version>4.2.1</version>
+    <time>1400783851</time>
+    <user>coolo</user>
+    <comment>GNU screen 4.2.1 (forwarded request 232488 from AndreasStieger)</comment>
+    <requestid>232907</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>195bbad3fdd5f42be14e125f80a098d6</srcmd5>
+    <version>4.2.1</version>
+    <time>1409303339</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b6270335eabe17f9651408964c222018</srcmd5>
+    <version>4.3.1</version>
+    <time>1437477803</time>
+    <user>coolo</user>
+    <comment>- Add license file as documentation
+
+- GNU screen 4.3.1
+ * This is a bug fix release. 
+ * Visible content get messed up after window resize 
+
+- GNU screen 4.3.0:
+ * Introduce Xx string escape showing the executed command of a window
+ * Implement dead/zombie window polling, allowing for auto reconnecting
+ * Allow setting hardstatus on first line
+ * 'sort' command sorting windows by title
+ * 'bumpleft', 'bumpright' - manually move windows on window list
+ * 'collapse' removing numbering 'gaps' between windows, by renumbering
+ * 'windows' command now accepts arguments for use with querying
+- packaging changes:
+ * move screen-poll-zombies.patch to savannah git
+ * move screen-4.0.3-ipv6.patch to savannah git
+ * move sort_command.patch to savannah git
+ * move xX_string_escape.patch to savannah git
+ * move screen_enhance_windows_list.patch to savannah git</comment>
+    <requestid>314668</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>64d9a2b5e0996dbc8d4e04f3a01433e9</srcmd5>
+    <version>4.3.1</version>
+    <time>1442638324</time>
+    <user>coolo</user>
+    <comment>- enable pam support, so screenlocking uses the password of the
+  current user. (forwarded request 324204 from msmeissn)</comment>
+    <requestid>324217</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a181d479237003842d1ba806cb7f5f69</srcmd5>
+    <version>4.4.0</version>
+    <time>1472111356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419743</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>43eef06713755c6608fd681e96423e1e</srcmd5>
+    <version>4.5.0</version>
+    <time>1486552281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453045</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>49dd619a43e720956cfc7f6b9f7c326b</srcmd5>
+    <version>4.5.1</version>
+    <time>1489536349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460505</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>fdfe40a601da51add51316bbb43d0bdf</srcmd5>
+    <version>4.5.1</version>
+    <time>1495283327</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure /usr/share/terminfo/s/screen is present when screen is
+  [boo#812067]. (forwarded request 494691 from jengelh)</comment>
+    <requestid>494692</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fe00412a1dc7a2a371720514fcddf2f9</srcmd5>
+    <version>4.6.1</version>
+    <time>1499880651</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509460</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>026b7dba0358d4c25f673ea79226cb10</srcmd5>
+    <version>4.6.2</version>
+    <time>1509036052</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536002</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>cc6b3b742708afbaaa1933d4754f8f32</srcmd5>
+    <version>4.6.2</version>
+    <time>1514027441</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>559096</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>68b414593f47564b010e930b24236b8e</srcmd5>
+    <version>4.6.2</version>
+    <time>1523029401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593313</requestid>
+  </revision>
+</revisionlist>

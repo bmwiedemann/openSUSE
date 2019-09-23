@@ -1,0 +1,7 @@
+<package name="cpanspec" project="openSUSE:Factory">
+  <title>Generate a SUSE spec file for a CPAN module</title>
+  <description>*cpanspec* will generate a spec file to build a rpm from a CPAN-style Perl
+module distribution.</description>
+  <devel project="devel:languages:perl" package="cpanspec"/>
+  <url>http://sourceforge.net/projects/cpanspec/</url>
+</package>

@@ -1,0 +1,98 @@
+%package -n %{-n*}-kmp-%1
+%define _this_kmp_kernel_version k%(echo %2 | sed -r 'y/-/_/; s/^(2\.6\.[0-9]+)_/\\1.0_/; # use 2.6.x.0 for mainline kernels')
+%define _this_kmp_version %{-v*}_%_this_kmp_kernel_version
+Version: %_this_kmp_version
+Release: %{-r*}
+%(
+for spec in {%_sourcedir,%_specdir}/%name.spec /dev/null; do
+    [ -e $spec ] && break
+done
+awk '
+BEGIN		{ tags["summary"] = "Summary: %summary"
+		  tags["group"] = "Group: %group" }
+/^%%/		{ in_pkg_header = \
+		  ($0 ~ /^%%package[ \t]+KMP[ \t]*$/ ||
+		   $0 ~ /^%%package[ \t]+-n[ \t]*%name-KMP[ \t]*$/)
+		  next }
+in_pkg_header && /^(Summary|Group):[ \t]*/ \
+		{ tag = tolower($1) ; sub(/:$/, "", tag)
+		  tags[tag] = $0 }
+END		{ print tags["summary"]
+		  print tags["group"] }
+' $spec
+)
+Provides: %{-n*}-kmp = %_this_kmp_version
+Provides: %{-n*}-kmp = %{-v*}
+Provides: multiversion(kernel)
+Provides: %{-n*}-kmp-%1-%_this_kmp_kernel_version
+Requires: coreutils grep
+%{-c:Requires: %{-n*}-ueficert}
+Enhances: kernel-%1
+Supplements: packageand(kernel-%1:%{-n*})
+Conflicts: %{-n*}-kmp-%1-%_this_kmp_kernel_version
+%if "%1" == "default"
+Obsoletes: %{-n*}-kmp-trace
+%ifarch %ix86
+Obsoletes: %{-n*}-kmp-vmi
+%endif
+%ifarch x86_64
+Obsoletes: %{-n*}-kmp-desktop
+%endif
+%ifarch %ix86 x86_64
+Obsoletes: %{-n*}-kmp-xen
+%endif
+%endif
+%if "%1" == "pae"
+Obsoletes: %{-n*}-kmp-desktop
+%endif
+AutoReqProv: on
+%{-p:%{expand:%(cd %_sourcedir; cat %{-p*})}}
+%description -n %{-n*}-kmp-%1
+%(
+for spec in {%_sourcedir,%_specdir}/%name.spec /dev/null; do
+    [ -e $spec ] && break
+done
+awk '
+/^%%/		{ in_desc = \
+		  ($0 ~ /^%%description[ \t]+KMP[ \t]*$/ ||
+		   $0 ~ /^%%description[ \t]+-n[ \t]*%name-KMP[ \t]*$/)
+		  next }
+in_desc		{ print; good = 1 }
+END		{ exit(! good) }
+' $spec || \
+awk '
+/^%%/		{ in_desc = \
+		  ($0 ~ /^%%description[ \t]*$/ ||
+		   $0 ~ /^%%description[ \t]+-n[ \t]*%name[ \t]*$/)
+		  next }
+in_desc		{ print; good = 1 }
+END		{ exit(! good) }
+' $spec
+)
+%post -n %{-n*}-kmp-%1
+nvr=%{-n*}-kmp-%1-%_this_kmp_version-%{-r*}
+wm2=/usr/lib/module-init-tools/weak-modules2
+if [ -x $wm2 ]; then
+    %{-b:KMP_NEEDS_MKINITRD=1} INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} $wm2 --add-kmp $nvr
+fi
+%posttrans -n %{-n*}-kmp-%1
+%{?regenerate_initrd_posttrans}
+%preun -n %{-n*}-kmp-%1
+nvr=%{-n*}-kmp-%1-%_this_kmp_version-%{-r*}
+rpm -ql $nvr | sed -n '/\.ko\(\.xz\)\?$/p' > /var/run/rpm-$nvr-modules
+%postun -n %{-n*}-kmp-%1
+nvr=%{-n*}-kmp-%1-%_this_kmp_version-%{-r*}
+modules=( $(cat /var/run/rpm-$nvr-modules) )
+rm -f /var/run/rpm-$nvr-modules
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+wm2=/usr/lib/module-init-tools/weak-modules2
+if [ -x $wm2 ]; then
+    printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} $wm2 --remove-kmp $nvr
+fi
+%files -n %{-n*}-kmp-%1
+%{-f:%{expand:%(cd %_sourcedir; cat %{-f*})}}
+%{!-f:%defattr (-,root,root)}
+%{!-f:/lib/modules/%2-%1}

@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Fri Sep  6 08:54:25 UTC 2019 - mchang@suse.com
+
+- Use %autosetup to automate patch application
+  * trustedgrub2.spec
+
+-------------------------------------------------------------------
+Fri Sep  6 08:18:53 UTC 2019 - mchang@suse.com
+
+- Fix GCC 9 build failure (bsc#1121208)
+  * 0001-cpio-Disable-gcc9-Waddress-of-packed-member.patch
+  * 0002-jfs-Disable-gcc9-Waddress-of-packed-member.patch
+  * 0003-hfs-Fix-gcc9-error-Waddress-of-packed-member.patch
+  * 0004-hfsplus-Fix-gcc9-error-with-Waddress-of-packed-membe.patch
+  * 0005-acpi-Fix-gcc9-error-Waddress-of-packed-member.patch
+  * 0006-usbtest-Disable-gcc9-Waddress-of-packed-member.patch
+  * 0007-chainloader-Fix-gcc9-error-Waddress-of-packed-member.patch
+  * 0008-efi-Fix-gcc9-error-Waddress-of-packed-member.patch
+
+-------------------------------------------------------------------
+Tue Jul 17 07:53:10 UTC 2018 - mchang@suse.com
+
+- Fix "no symbol table" error on new binutil, backport patches (bsc#1100984)
+  * 0001-Verify-modules-on-build-time-rather-than-failing-in-.patch
+  * 0002-module-verifier-Check-range-limited-relative-relocat.patch
+  * 0003-support-modules-without-symbol-table.patch
+
+-------------------------------------------------------------------
+Fri Jun 22 09:08:22 UTC 2018 - mchang@suse.com
+
+- Fix packed-not-aligned error on GCC 8 (bsc#1084632)
+  * 0001-Fix-packed-not-aligned-error-on-GCC-8.patch
+
+-------------------------------------------------------------------
+Mon Oct 30 08:35:42 UTC 2017 - mchang@suse.com
+
+- Allow to execute menuentry unrestricted as default (fate#318574) (bsc#1052420)
+  * added grub2-menu-unrestricted.patch 
+
+-------------------------------------------------------------------
+Thu Jul 27 04:05:27 UTC 2017 - mchang@suse.com
+
+- Fix build against flex-2.6.4
+  * grub2-fix-build-with-flex-2.6.4.patch 
+
+-------------------------------------------------------------------
+Mon Jun  5 09:37:34 UTC 2017 - mchang@suse.com
+
+- Fix build aginst gcc-7
+  * 0001-btrfs-avoid-used-uninitialized-error-with-GCC7.patch
+  * 0002-i386-x86_64-ppc-fix-switch-fallthrough-cases-with-GC.patch
+  * 0003-Add-gnulib-fix-gcc7-fallthrough.diff.patch
+
+-------------------------------------------------------------------
+Tue Apr  4 05:42:34 UTC 2017 - meissner@suse.com
+
+- disable PIE building, does not make sense for bootloader.
+  * trustedgrub2-no-pie.patch
+  * trustedgrub2-no-pie2.patch
+
+-------------------------------------------------------------------
+Sun Feb 19 05:59:19 UTC 2017 - mchang@suse.com
+
+- Fix build aginst glibc 2.25+
+ * 0001-build-Use-AC_HEADER_MAJOR-to-find-device-macros.patch 
+ * 0002-configure-fix-check-for-sys-sysmacros.h-under-glibc-.patch
+
+-------------------------------------------------------------------
+Tue Mar 22 10:50:15 UTC 2016 - mchang@suse.com
+
+- Add COPYING to %doc
+
+-------------------------------------------------------------------
+Fri Mar 18 08:24:06 UTC 2016 - mchang@suse.com
+
+- New package trustedgrub2 (FATE#316553)
+

@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Mon Nov 19 13:00:25 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.3
+- Cherry-pick upstream patch to fix testsuite
+  + add-missing-conftest.patch
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
+Thu Aug  9 10:18:35 UTC 2018 - tchvatal@suse.com
+
+- Remove devel dependency
+- Use %license macro
+
+-------------------------------------------------------------------
+Sat Aug 12 22:10:43 UTC 2017 - jengelh@inai.de
+
+- Specify RPM group more exactly
+
+-------------------------------------------------------------------
+Sat Apr 22 18:19:08 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Split docs into separate package
+
+-------------------------------------------------------------------
+Fri Mar 11 09:29:58 UTC 2016 - freitag@opensuse.org
+
+- Update to version 0.8.3
+  * Event emitters are no longer started on schedule if Observer is
+    not already running.
+  Changes from 0.8.0:
+  * DirectorySnapshot: methods returning internal stat info replaced
+    by mtime, inode and path methods.
+  * DirectorySnapshot: walker_callback parameter deprecated.
+  no more changelog available upstream
+- Fix py compile mtime issue
+- use record filelist feature of setup.py to gather proper filelist
+
+-------------------------------------------------------------------
+Mon Jan 14 15:48:45 UTC 2013 - p.drouand@gmail.com
+
+- Update to 0.6.0 version:
+  * No changelog or NEWS file provided
+
+-------------------------------------------------------------------
+Tue Jan 31 12:21:19 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

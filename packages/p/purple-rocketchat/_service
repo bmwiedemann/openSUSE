@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">hg</param>
+    <param name="url">https://bitbucket.org/EionRobb/purple-rocketchat</param>
+    <param name="filename">purple-rocketchat</param>
+    <param name="versionformat">0.0+hg{date|localdate|shortdate}</param>
+    <param name="revision">cb171c8e78b92d71a738460dbc21ec4555d26f21</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

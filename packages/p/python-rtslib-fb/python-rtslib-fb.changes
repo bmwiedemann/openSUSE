@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Mon Sep 16 18:14:18 UTC 2019 - lduncan@suse.com
+
+- Update to version v2.1.70:
+  * version 2.1.70
+  * restoreconfig: add ability to restore/reload single target or storage_object
+  * rtslib: fix __version__
+  * saveconfig: add hw_block_size support in control string
+  * remove extra semicolons in _get_saveconf
+  * Add 'readable' param to Group list_*() methods
+  * Handle write-only parameters like attributes
+  * save_to_file() function breaks symbolic link when saving configuration
+  * Handle write-only attributes.
+  * Allow bs_cache to be bypassed
+  * report the correct size for partitions
+  * restoreconfig: support restore when list is non-empty
+  Replacing python-rtslib-fb-2.1.69.tar.xz with python-rtslib-fb-v2.1.70.tar.xz,
+  and removing patches:
+  * 0001-Handle-write-only-attributes.patch
+  * 0002-Handle-write-only-parameters-like-attributes.patch
+  * 0003-Add-readable-param-to-Group-list_-methods.patch
+
+-------------------------------------------------------------------
+Mon Feb 18 17:56:57 UTC 2019 - lduncan@suse.com
+
+- Added 3 patches subbmitted and accepted upstream, to deal with
+  possibly-write-only sysfs attributes (bsc#1123933), adding:
+  * 0001-Handle-write-only-attributes.patch
+  * 0002-Handle-write-only-parameters-like-attributes.patch
+  * 0003-Add-readable-param-to-Group-list_-methods.patch
+
+-------------------------------------------------------------------
+Fri Dec  7 09:29:54 UTC 2018 - ddiss@suse.com
+
+- Enable RBD support for SLE/Leap 15+ (bsc#1118516)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:00 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Oct 18 23:27:42 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 2.1.69:
+  * version 2.1.fb69
+  * fix compiler warning
+  * version 2.1.fb68
+  * Fix typo
+  * - remove underscore in hostname
+  * tcm: allow to enable asynchronous I/O for file backing stores
+  * saveconfig: way for block-level save with delete command
+  * saveconfig: fix missing import
+  * saveconfig: handle no attr exception in _parse_info()
+  * saveconfig: fix failure in absence of save file
+  * saveconfig: dump control string containing control=value tuples
+  * restoreconfig: fix alua tpg config setup
+  * tcmu: add control constructor arg
+  * save_to_file: support saveconfig at storage object level
+  * Allow creating more than 256 LUNs per target
+  * Ship a systemd service file
+ Which replaces python-rtslib-fb-2.1.67.tar.xz with
+ python-rtslib-fb-2.1.69.tar.xz, and updates the SPEC file as well.
+
+-------------------------------------------------------------------
+Tue Apr 10 16:03:33 UTC 2018 - ddiss@suse.com
+
+- Merge RBD support from non-fb version (bsc#1079329)
+  + rbd-support.patch (SLE/Leap only, due to LIO kernel dependency)
+  + Add explicit Provides for "python-rtslib-rbd"
+
+-------------------------------------------------------------------
+Tue Apr 10 12:41:16 UTC 2018 - ddiss@suse.com
+
+- Automatically generate version string from upstream tag
+  + Retain current fb-removed version format used
+  + Rename rtslib-fb-2.1.fb67.tar.xz to python-rtslib-fb-2.1.67.tar.xz and
+    cleanup hardcoded duplicate name/version values in spec
+
+-------------------------------------------------------------------
+Mon Apr 09 21:41:01 UTC 2018 - lduncan@suse.com
+
+- Update to version 2.1.fb67:
+  * Add missing dependency on six in setup.py
+  * Display a more meaningful error when targetcli cannot change "dbroot"
+  * Raise an error about failing to change the dbroot value only if the directory does not exist
+  * More compatibility syntax for legacy distros
+  * Remove hba-only directories in clear_existing()
+  * Correct name for Xen pvscsi
+  * version 2.1.fb65
+  * Fix unqualified reference to pyudev.Device
+  * version 2.1.fb66
+  * create: remove stale hba-only dir
+  * version 2.1.fb67
+- This replaced rtslib-fb-2.1.fb64.tar.xz with
+  rtslib-fb-2.1.fb67.tar.xz, and it also removed
+  the patch correct-name-for-xen-pvscsi.patch,
+  since it is already in the updated tarball
+
+-------------------------------------------------------------------
+Sun Feb 25 08:09:45 UTC 2018 - olaf@aepfle.de
+
+- Fix upgrade path by provide/obsolete python-rtslib (bsc#1082693)
+
+-------------------------------------------------------------------
+Wed Jan 24 18:43:43 UTC 2018 - lduncan@suse.com
+
+- Fix incorrect naming for XEN (bsc#1076455), adding patch:
+  * correct-name-for-xen-pvscsi.patch
+
+-------------------------------------------------------------------
+Tue Jan  9 14:37:15 UTC 2018 - tchvatal@suse.com
+
+- Fix the conflict to the rtslib properly
+
+-------------------------------------------------------------------
+Wed Jan  3 16:13:57 UTC 2018 - tchvatal@suse.com
+
+- Drop the epydoc dependency/documentation generating from the package
+  to allow building in py3 only enviroment
+
+-------------------------------------------------------------------
+Sun Dec 10 21:14:08 UTC 2017 - lduncan@suse.com
+
+- Converting RPM SPEC file to singlespec format (bsc#1045332),
+  updating SPEC file only.
+- ran 'spec-cleaner' on SPEC file to clean it up.
+- Converted from manually-added rtslib-fb-2.1.fb64.tar.gz to
+  tar_scm service-retrieved rtslib-fb-2.1.fb64.tar.xz
+
+-------------------------------------------------------------------
+Thu Aug 17 08:03:10 UTC 2017 - lszhu@suse.com
+
+- Update to version 2.1.fb64
+  *Improve ALUA and TCMU support, as well as moving the default 
+   directory for APTPL files from /var/target to /etc/target
+   for better FHS compliance.
+  *Remove patch Switch-target-driver-DB-root-dir-to-etc-target.patch
+   from the spec file because upstream already has this change.
+
+-------------------------------------------------------------------
+Thu Jun  8 21:37:20 UTC 2017 - lduncan@suse.com
+
+- Enable Persistent Reservations (bsc#1042944):
+  * Add patch Switch-target-driver-DB-root-dir-to-etc-target.patch
+  * Add /etc/target/pr and /etc/target/alua to SPEC file
+
+-------------------------------------------------------------------
+Thu Apr 13 07:11:02 UTC 2017 - hare@suse.com
+
+- Update to version 2.1.63 (bsc#1032833):
+  * Get/Set LUN's ALUA group
+  * Add ALUA restore support
+  * Delete ALUA groups with its storage object
+  * version 2.1.fb62
+  * Do not set alua_tg_pt_gp if not supported
+  * Add ability to invalidate caches
+  * Add ALUA supported method
+  * Don't raise exception when getting/setting a LUNs ALUA group
+  * update to 2.1.fb63
+
+-------------------------------------------------------------------
+Fri Jun 24 23:12:29 UTC 2016 - lduncan@suse.com
+
+- Updated spec file: Removed Provides/Obsoletes for python-rtslib,
+  and added Conflicts for same (bsc#986475)
+
+-------------------------------------------------------------------
+Tue Jun 14 17:12:34 UTC 2016 - lduncan@suse.com
+
+- Fixing build issue: removed 'noarch' from main package
+
+-------------------------------------------------------------------
+Tue Jun 14 17:12:33 UTC 2016 - lduncan@suse.com
+
+- Updated SPEC file:
+  * added Requires for pyudev (bsc#984563)
+  * removed BuildRequires of pyudev for doc sub-package
+
+-------------------------------------------------------------------
+Wed Apr 20 16:17:30 UTC 2016 - lduncan@suse.com
+
+- Update to version 2.1.fb60
+  * no changelog available, but git log shows 59 changes,
+    some trivial
+
+-------------------------------------------------------------------
+Tue May 12 14:58:13 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.1.51:
+  * no changelog available
+
+-------------------------------------------------------------------
+Wed Sep  3 12:01:09 UTC 2014 - dmueller@suse.com
+
+- update to 2.1.49:
+  * Improve error message when NetworkPortal restore fails
+  * Python 3.x porting fixes
+  * targetctl: A missing restore file is not an error 
+  * Add a message if no configfile is found
+  * Add StorageObjectFactory
+  * Convert all exceptions in set_parameter/attribute to RTSLibError
+  * Change set_parameters/attributes to take an err_func
+  * Fix missing err_func parameter to set_attributes 
+  * '!' allowed character in block and partition names 
+  * Don't add to cache if cfs create fails 
+  * Don't lower-case return values from _parse_info functions 
+
+-------------------------------------------------------------------
+Tue Jan 14 14:57:28 UTC 2014 - speilicke@suse.com
+
+- Conflict with python-rtslib
+
+-------------------------------------------------------------------
+Mon Jan 13 13:25:15 UTC 2014 - dmueller@suse.com
+
+- update to 2.1.43: 
+  * various bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 28 12:21:13 UTC 2013 - dmueller@suse.com
+
+- Initial package (2.1.40) 
+

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fac537702af0b10395eb1bc7264005b8</srcmd5>
+    <version>0.58</version>
+    <time>1461335069</time>
+    <user>dimstar_suse</user>
+    <comment>needed by openQA</comment>
+    <requestid>389463</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9588cd2fab85ed5596adda64a06fd28</srcmd5>
+    <version>0.60</version>
+    <time>1464595074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398552</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>117be9e3bb4e39e808819db81a65630d</srcmd5>
+    <version>0.62</version>
+    <time>1466326089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401462</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>941937591a51eb35dd22168c9f9c887f</srcmd5>
+    <version>0.63</version>
+    <time>1476997801</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436490</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>adf8b3ca2982b13c1d7d5e437396e767</srcmd5>
+    <version>0.65</version>
+    <time>1498046229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504922</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7ef17fa269f57f4daa3472b33105bb4</srcmd5>
+    <version>0.66</version>
+    <time>1502366616</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512159</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f18f09b719b790a85593713cda60596d</srcmd5>
+    <version>0.66</version>
+    <time>1507065530</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530698</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>690f53001474392cd9286aac3dba7ff2</srcmd5>
+    <version>0.68</version>
+    <time>1515505866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556879</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79482cf93de36e88872dec999a5a8202</srcmd5>
+    <version>0.69</version>
+    <time>1520021410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580612</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>020c786a2afcbf0ac190aed7560572c0</srcmd5>
+    <version>0.70</version>
+    <time>1554115174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690164</requestid>
+  </revision>
+</revisionlist>

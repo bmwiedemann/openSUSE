@@ -1,0 +1,13 @@
+<package name="perl-XML-DOM-XPath" project="openSUSE:Factory">
+  <title>Perl extension to add XPath support to XML::DOM, using XML::XPath engine</title>
+  <description>XML::DOM::XPath allows you to use XML::XPath methods to query a DOM. This
+is often much easier than relying only on getElementsByTagName.
+
+Authors:
+--------
+    Michel Rodriguez &lt;mirod@cpan.org&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-XML-DOM-XPath"/>
+  <url>http://search.cpan.org/dist/XML-DOM-XPath/</url>
+</package>

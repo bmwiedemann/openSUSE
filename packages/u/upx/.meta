@@ -1,0 +1,12 @@
+<package name="upx" project="openSUSE:Factory">
+  <title>The Ultimate Packer for eXecutables</title>
+  <description>UPX is a free, portable, extendable, high-performance executable packer
+for several different executable formats. It achieves an excellent
+compression ratio and offers very fast decompression. Your executables
+suffer no memory overhead or other drawbacks.
+
+Authors
+Markus F.X.J. Oberhumer &lt;markus@oberhumer.com&gt;</description>
+  <devel project="Archiving" package="upx"/>
+  <url>http://upx.sourceforge.net/</url>
+</package>

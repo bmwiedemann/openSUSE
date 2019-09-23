@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5896fef255f95fb24e07b5f8dc55841</srcmd5>
+    <version>0.51.0</version>
+    <time>1518596847</time>
+    <user>dimstar_suse</user>
+    <comment>- python-psutil is now a hard requirement
+- update to version 0.51.0
+ * update argument parser to use argparse
+- remove test conditionals from specfile
+- use license macro for license file
+- initial package
+</comment>
+    <requestid>571392</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d533e6472a316162b68affff5b7cb288</srcmd5>
+    <version>0.52.0</version>
+    <time>1519041717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.52.0:
+ * no upstream changelog available
+</comment>
+    <requestid>577772</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7d62a1611367e7e5a73fe83576fa96cb</srcmd5>
+    <version>0.52.0</version>
+    <time>1545647978</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659492</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4cb9fd3b1360ea3b5cf81abb09d1f6c8</srcmd5>
+    <version>0.55.0</version>
+    <time>1554749604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.55.0:
+  * no upstream changelog available</comment>
+    <requestid>691807</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>224e647a1630fe8256602558df500399</srcmd5>
+    <version>0.55.0</version>
+    <time>1556107058</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697268</requestid>
+  </revision>
+</revisionlist>

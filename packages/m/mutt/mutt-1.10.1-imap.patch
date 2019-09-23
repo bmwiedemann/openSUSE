@@ -1,0 +1,16 @@
+--- browser.c
++++ browser.c	2018-08-10 11:15:47.527515218 +0200
+@@ -893,6 +893,13 @@ void _mutt_select_file (char *f, size_t
+ 	{
+ 	  strfcpy (f, state.entry[menu->current].name, flen);
+ 	  mutt_expand_path (f, flen);
++#ifdef USE_IMAP
++	  if (mx_is_imap(f))
++	  {
++	    strfcpy (LastDir, f, sizeof (LastDir));
++	    state.imap_browse = 1;
++	  }
++#endif
+ 	}
+ #ifdef USE_IMAP
+ 	else if (state.imap_browse)

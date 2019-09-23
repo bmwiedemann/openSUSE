@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Batik Squiggle
+Comment=SVG browser
+Comment[fi]=SVG-selain
+Exec=xmlgraphics-batik-squiggle
+Terminal=false
+Type=Application
+Icon=squiggle
+Categories=Graphics;VectorGraphics;Java;X-JPackage;
+MimeType=image/svg+xml;

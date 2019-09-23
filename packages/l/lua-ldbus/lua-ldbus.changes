@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Oct 31 21:08:41 CET 2018 - mcepl@suse.com
+
+- Make package building even on SLE-12/Leap 42
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Fri Aug 18 15:35:41 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0+git20161023.e277e22:
+  * rockspec: Add library to external_dependencies
+  * .gitignore: add .rock files
+  * Add binding to dbus_bus_get_private
+  * Mention get_private in README
+  * src/: Fix segfault when callback registered from a thread which gets collected
+  * README: Fix formatting in table
+  * rockspec: Formatting
+  * rockspec: Only claim compat up to 5.3
+  * rockspec: Add libdir for dbus
+  * Allow overriding the pkg-config executable
+
+-------------------------------------------------------------------
+Fri Aug 18 15:31:07 UTC 2017 - alarrosa@suse.com
+
+- Initial release 

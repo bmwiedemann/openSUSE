@@ -1,0 +1,2 @@
+addFilter ("^localkube.*: W: statically-linked-binary")
+addFilter ("^minikube.*: W: statically-linked-binary")

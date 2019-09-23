@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Jun 27 15:28:20 UTC 2019 - Johannes Grassler <johannes.grassler@suse.com>
+
+- Switch back to tarball from Github (used to be the setup.py generated one)
+
+-------------------------------------------------------------------
+Thu Jun 27 12:57:26 UTC 2019 - Johannes Grassler <johannes.grassler@suse.com>
+
+- Update to mailprocessing-1.2.6
+  * Added example logrotate configurations
+  * Added SIGHUP handler for reopening log files (useful for
+    log rotation)
+  * Use locking for PID and log files. You need to specify
+    dedicated PID and lock files if you want to run multiple
+    concurrent imapproc processes.
+  * Write PID file
+  * Improve signal handling and cleanup after receiving fatal
+    signals. Continuous mode in particular is a lot more
+    reliable and predictable now.
+  * Download message headers in a batched manner
+  * Download message flags in a batched manner
+  * Various documentation and release engineering fixes/cleanups
+
+-------------------------------------------------------------------
+Tue Jul 10 16:55:16 UTC 2018 - johannes.grassler@suse.com
+
+- Initial package 

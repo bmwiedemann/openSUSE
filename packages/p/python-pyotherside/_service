@@ -1,0 +1,15 @@
+<services>
+  <service mode="localonly" name="obs_scm">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/thp/pyotherside.git</param>
+    <param name="versionprefix">1.5.4.git</param>
+    <param name="filename">pyotherside</param>
+    <param name="revision">ebe2845</param>
+  </service>
+  <service mode="localonly" name="tar" />
+  <service mode="localonly" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="localonly" name="set_version"/>
+</services>

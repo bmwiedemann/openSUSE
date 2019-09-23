@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2cb51afbc4ec0b877c5c993a6a61289</srcmd5>
+    <version>0.2.0</version>
+    <time>1555053314</time>
+    <user>dimstar_suse</user>
+    <comment>I believe inwee could be useful to other Weechat users, this is why I want to maintain it in Factory.
+
+With inwee, conveniently send text and commands from file or standard input to WeeChat with this wrapper around WeeChat's FIFO pipe.</comment>
+    <requestid>692279</requestid>
+  </revision>
+</revisionlist>

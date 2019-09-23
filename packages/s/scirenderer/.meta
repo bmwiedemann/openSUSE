@@ -1,0 +1,5 @@
+<package name="scirenderer" project="openSUSE:Factory">
+  <title></title>
+  <description>SciRenderer is a rendering library based on JoGL. This Java API allows 2-D or 3-D plotting from simple 2-D graph to complex scenes. Independent library, SciRender is used within Scilab software but is available for other application and developments.</description>
+  <devel project="Java:packages" package="scirenderer"/>
+</package>

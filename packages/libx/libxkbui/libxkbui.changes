@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Apr 16 07:15:32 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Tue Sep 25 08:54:18 UTC 2012 - sndirsch@suse.com
+
+- specfile cleanup 
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages

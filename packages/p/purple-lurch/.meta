@@ -1,0 +1,5 @@
+<package name="purple-lurch" project="openSUSE:Factory">
+  <title>OMEMO for libpurple</title>
+  <description>This plugin brings Axolotl, by now renamed to double ratchet, to libpurple applications such as Pidgin by implementing OMEMO.</description>
+  <devel project="network:pidgin" package="purple-lurch"/>
+</package>

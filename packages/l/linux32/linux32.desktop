@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Exec=xterm -e "linux32 \\$SHELL"
+Icon=konsole-linux32
+Terminal=false
+X-KDE-StartupNotify=true
+
+Name=Linux 32-bit Terminal
+GenericName=32-bit Terminal Program
+Categories=System;TerminalEmulator;
+X-DCOP-ServiceType=Multi
+X-KDE-AuthorizeAction=shell_access
+
+

@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Feb 19 20:31:37 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel buildRequires 
+
+-------------------------------------------------------------------
+Thu Jul  5 15:58:39 CEST 2007 - coolo@suse.de
+
+- put the desktop file into the package
+
+-------------------------------------------------------------------
+Wed Aug  2 20:37:39 CEST 2006 - aj@suse.de
+
+- Fix paths for X11R7.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 10:32:26 CET 2006 - dmueller@suse.de
+
+- add workaround because update-desktop-files didn't make it
+  into beta2 
+
+-------------------------------------------------------------------
+Mon Jan 23 00:43:56 CET 2006 - dmueller@suse.de
+
+- fix file list 
+
+-------------------------------------------------------------------
+Wed Sep 28 23:42:39 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Sat Aug 16 14:55:46 CEST 2003 - adrian@suse.de
+
+- install desktop file from kappfinder
+
+-------------------------------------------------------------------
+Thu May 22 16:00:23 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Oct 31 16:47:23 CET 2000 - ma@suse.de
+
+- removed group unsorted
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Oct 21 17:04:53 MEST 1997 - ma@suse.de
+
+- prepared for autobuild
+

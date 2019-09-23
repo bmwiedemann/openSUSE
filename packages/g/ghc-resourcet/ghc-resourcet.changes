@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Wed Oct 10 19:23:56 UTC 2018 - psimons@suse.com
+
+- Update resourcet to version 1.2.2.
+  ## 1.2.2
+
+  * Add `MonadFail` instance for `ResourceT`.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:39 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update resourcet to version 1.2.1.
+  * Support `exceptions-0.10`.
+  * Drop `monad-control` and `mmorph` dependencies
+  * Change behavior of `runResourceT` to match `runResourceTChecked`
+  * `runResourceTChecked`, which checks if any of the cleanup actions
+    threw exceptions and, if so, rethrows them. __NOTE__ This is
+    probably a much better choice of function than `runResourceT`, and
+    in the next major version release, will become the new behavior of
+    `runResourceT`.
+  * Added `MonadUnliftIO` instances and `UnliftIO.Resource`
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Jan  9 06:36:40 UTC 2017 - psimons@suse.com
+
+- Update to version 1.1.9 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Nov 14 09:30:03 UTC 2016 - psimons@suse.com
+
+- Update to version 1.1.8.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Oct 17 15:37:45 UTC 2016 - psimons@suse.com
+
+- Update to version 1.1.8 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Aug 17 18:35:27 UTC 2016 - psimons@suse.com
+
+- Update to version 1.1.7.5 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:27:03 UTC 2016 - psimons@suse.com
+
+- Update to version 1.1.7.4 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sat May  7 06:27:14 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.1.7.4
+* Make test suite slightly more robust
+
+-------------------------------------------------------------------
+Tue Mar  8 09:11:14 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.1.7.3
+
+-------------------------------------------------------------------
+Mon Feb 22 11:22:04 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.1.7.2
+* Remove upper bound on transformers
+
+-------------------------------------------------------------------
+Wed Jan 27 22:53:47 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.1.7.1
+* transformers-compat 0.5
+
+-------------------------------------------------------------------
+Mon Dec  7 11:25:07 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.1.7
+* Canonicalise Monad instances
+
+-------------------------------------------------------------------
+Tue Aug  4 06:04:36 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.1.6
+* Safe/Trustworthy for resourcet
+
+-------------------------------------------------------------------
+Tue May 26 08:54:43 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.1.5
+* Add pass-through instances for Alternative and MonadPlus
+
+-------------------------------------------------------------------
+Tue Apr 21 19:53:42 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.1.4.1
+* Add `MonadResource ExceptT` instance
+
+-------------------------------------------------------------------
+Sun Feb  1 18:21:18 UTC 2015 - mpluskal@suse.com
+
+- Add dependency on ghc-exceptions which is now required
+- Update to 1.1.3.3:
+  + monad-control-1.0 support
+  + Provide the `withEx` function to interact nicely with the
+    exceptions package.
+
+-------------------------------------------------------------------
+Sun Oct  6 22:09:31 UTC 2013 - sbahling@suse.com
+
+- Initial package - version 0.4.8

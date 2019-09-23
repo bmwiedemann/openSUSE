@@ -1,0 +1,13 @@
+Index: Django-2.2/tests/sites_tests/tests.py
+===================================================================
+--- Django-2.2.orig/tests/sites_tests/tests.py
++++ Django-2.2/tests/sites_tests/tests.py
+@@ -162,7 +162,7 @@ class SitesFrameworkTests(TestCase):
+         self.assertEqual(models.SITE_CACHE, {})
+         get_current_site(request)
+         expected_cache = {self.site.id: self.site}
+-        self.assertEqual(models.SITE_CACHE, expected_cache)
++        self.assertCountEqual(models.SITE_CACHE, expected_cache)
+ 
+         with self.settings(SITE_ID=''):
+             get_current_site(request)

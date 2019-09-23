@@ -1,0 +1,4606 @@
+-------------------------------------------------------------------
+Fri Aug  2 20:08:18 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
+Wed Jun 19 14:03:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Signal connector rather than output ID for OSDs.
+  + Media-keys: Fix MPRIS issues with disconnecting clients.
+  + Color: Allow night light to be always on.
+  + Power: Only disable Suspend/Hibernate actions inside VM.
+  + Smartcard: Fix cancellation issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr 28 01:15:09 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
+
+- Add gnome-settings-daemon-round-xft_dpi-to-integer.patch: Round
+  the Xft.dpi setting to an integer (bsc#1086789,
+  glgo#GNOME#gnome-settings-daemon!99).
+
+-------------------------------------------------------------------
+Wed Mar 20 02:43:38 UTC 2019 - xwang@suse.com
+
+- Drop gnome-settings-daemon-touch-screen-switch.patch:
+  The function has been moved to mutter(commit d30301c0).
+
+-------------------------------------------------------------------
+Tue Mar 12 06:25:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Stable release version bump.
+
+-------------------------------------------------------------------
+Wed Mar  6 18:49:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Power: Only test backlight on linux.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 09:31:09 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Media-keys: Ignore key repeat on certain shortcuts (Needs
+    up-to-date mutter and gnome-shell).
+  + Housekeeping: Fix overflow.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 15 19:11:43 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Remove libXtst as a dependency.
+  + Keyboard: Enable ibus for OSK purposes on X11.
+  + Power:
+    - Add x-gnome-privacy-scope hints to power notifications.
+    - Define brightness to be -1 if builtin display is disabled.
+  + Smartcard:
+    - Wait until smartcards are inspected before locking screen.
+    - Handle a smartcard getting removed very shortly after login.
+- Drop pkgconfig(xtst) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Wed Jan  9 17:31:32 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.2:
+  + Color: Add DBus API to preview Night Light for a few seconds.
+  + Media-keys: Default to interactive shutdown action for power
+    button if the action is not supported.
+  + Power:
+    - Avoid setting GError twice.
+    - Speed up tests by splitting into chunks.
+  + Print-notification: Ignore Server* messages from CUPS not meant
+    to us.
+  + Rfkill: Use GUdev to monitor rfkill device pressence.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  9 17:31:31 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + Xsettings: Always use mutter-computed UI scaling value.
+  + Wacom: Drop tablet/touchscreen mapping to outputs. Mutter now
+    handles this entirely.
+  + Updated translations.
+- Disable gnome-settings-daemon-touch-screen-switch.patch: Needs
+  rebase.
+
+-------------------------------------------------------------------
+Wed Jan  9 17:08:30 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fixes for build tests.
+  + Media-keys:
+    - Default to interactive shutdown action for power button if
+      the action is not supported.
+    - Increase GSD_REENABLE_POWER_BUTTON_DELAY to 3 seconds.
+    - Add mapping for Ctrl + media-key for some media-keys.
+  + Rfkill: Fix GIOChannel encoding.
+  + Color: Correct temperature interpolation corner cases.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  5 12:13:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1.2:
+  + This release by default *removes* the new feature that was
+    added in 3.29.0 to use SuspendAndHibernate when available. You
+    can re-enable the feature using the
+    "experimental_suspend_then_hibernate" meson option again.
+
+-------------------------------------------------------------------
+Thu Sep 27 12:27:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1.1:
+  + Color: Do not leak GSource.
+
+-------------------------------------------------------------------
+Wed Sep 26 17:08:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Power: Guard against events from the wrong device type.
+  + Color: Fix check for timerfd.
+  + General:
+    - Use set10 consistently in build.
+    - Fix build with wayland disabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  6 00:37:00 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Changes from version 3.29.92:
+  + Media-keys: Escape custom command for execution.
+  + Rfkill: Create nested cancellable for rfkill setting.
+  + Updated translations.
+- Add pkgconfig(gio-unix-2.0) BuildRequires to avoid implicit
+  dependencies.
+
+-------------------------------------------------------------------
+Fri Aug  3 21:40:23 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90.1:
+  + Allow volume above 100%
+- Changes from version 3.29.90:
+  + Housekeeping: Fix improper notify_notification_close() usage.
+  + Power: Make power test more robust.
+  + General: Update test suite to python3.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 24 16:38:10 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass "po %{name}" to the call.
+
+-------------------------------------------------------------------
+Fri Jun 22 00:24:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.0:
+  + Media-keys:
+    - Make mic mute key configurable;
+    - Handle Ctrl+Shift+TouchpadToggle.
+  + Datetime: Debugging improvements.
+  + Color:
+    - Cancel smooth transitions on color temperature changes;
+    - Define "disabled until tomorrow" as moving past sunrise.
+
+-------------------------------------------------------------------
+Sat Jun  2 21:13:06 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(gconf-2.0) BuildRequires: No longer needed, nor
+  used.
+
+-------------------------------------------------------------------
+Thu Apr 26 00:34:58 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.1:
+  + Datetime: Debugging improvements.
+  + Media-keys: Wait forever for GrabAccelerators() to succeed.
+  + Updated translations.
+- Add LGPL-2.1-only to the License tag to comply with due
+  copyrights as part of media-keys plugin uses it.
+- Drop:
+  + gnome-settings-daemon-timeout-grabbing-keys.patch: fixed
+    upstream.
+  + update-desktop-files BuildRequires: this is no longer used.
+
+-------------------------------------------------------------------
+Wed Apr 25 09:19:24 UTC 2018 - xwang@suse.com
+
+- Update gnome-settings-daemon-touch-screen-switch.patch
+  (bsc#1086496, glgo#GNOME/gnome-settings-daemon#29).
+
+-------------------------------------------------------------------
+Fri Apr 13 08:54:24 UTC 2018 - xwang@suse.com
+
+- Add gnome-settings-daemon-touch-screen-switch.patch: Add touch
+  screen input switch, user can enable touch screen input when
+  screen is off (bsc#1086496, glgo#GNOME/gnome-settings-daemon#29).
+
+-------------------------------------------------------------------
+Sun Apr  8 06:39:20 UTC 2018 - fezhang@suse.com
+
+- Drop gnome-settings-daemon-bring-back-updates-plugin.patch:
+  Deprecated on SLE15 / Leap15.0.
+- Disable gnome-settings-daemon-more-power-button-actions.patch on
+  Leap.
+
+-------------------------------------------------------------------
+Tue Apr  3 07:58:37 UTC 2018 - fezhang@suse.com
+
+- Add gnome-settings-daemon-timeout-grabbing-keys.patch: Retry
+  grabbing media-key accelerators when timed out (bgo#792353).
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:20:36 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 12 16:04:30 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 18:32:31 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Build: Don't remove assertions in code.
+  + Print-notifications: Notify user about need for authentication.
+  + Power:
+    - Fix divide by zero when there is no keyboard brightness to
+      control.
+    - When the the sleep timeout is too short, don't throw errors.
+  + XSettings:
+    - Hardcode GTK+ 3.x deprecated settings.
+    - Expose monitored settings through D-Bus.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:29:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 21 16:44:32 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Fix error when doing non-debug builds.
+  + Fix runtime linkage to libgsd and libcommon.
+  + Apply a workaround for D-Bus code generation.
+- Drop gnome-settings-daemon-fix-nondebug-build.patch and
+  gnome-settings-daemon-libcommon.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb  7 12:44:33 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Remove a11y-keyboard plugin, the functionality was merged into
+    mutter.
+  + Port to meson.
+  + Clipboard: Fix memory leak.
+  + Media-keys:
+    - Suppress power-button presses during suspend.
+    - Prefer MPRIS clients to g-s-d ones.
+  + Power:
+    - Don't react to light changes if not at console.
+    - Many regression test suite fixes.
+    - Default to suspend after 20 minutes of inactivity
+      (bgo#681869).
+  + Rfkill: Fix property notification warning for
+    rfkill-input-inhibited.
+  + Wacom:
+    - Ensure screen integrated devices get remapped on hotplug.
+    - Fix screen mapping for Cintiqs and others.
+  + Updated translations.
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Drop intltool BuildRequires: no longer in use.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install macros.
+- Add pkgconfig(udev) BuildRequires: new dependency.
+- Drop gnome-settings-daemon-nb-translations.patch: fixed upstream.
+- Add gnome-settings-daemon-fix-nondebug-build.patch: Fix build for
+  non-debug targets.
+- Add gnome-settings-daemon-bgo793253.patch: Fix
+  no-return-in-nonvoid-function (bgo#793253).
+- Add gnome-settings-daemon-libcommon.patch: install libcommon,
+  which is linked by the other plugins, as a private library.
+
+-------------------------------------------------------------------
+Thu Dec 28 19:22:40 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-settings-daemon-nb-translations.patch: Update Norwegian
+  Bokmål translations.
+
+-------------------------------------------------------------------
+Wed Nov  8 08:39:19 UTC 2017 - jengelh@inai.de
+
+- Avoid running fdupes across hardlink boundaries.
+- Fix an error in the description.
+
+-------------------------------------------------------------------
+Thu Nov  2 15:48:05 UTC 2017 - fezhang@suse.com
+
+- Update to version 3.26.2:
+  + Housekeeping:
+    - Ignore more virtual file systems (bgo#788879).
+    - Fix the Empty Trash button in Settings not working
+      (bgo#737624).
+  + Media-keys: Fix custom binding command changes not getting
+    applied (bgo#789782).
+  + Minor cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct 28 03:30:30 CEST 2017 - hpj@opensuse.org
+
+- Remove gnome-settings-daemon-revert-libinput-mandatory.patch,
+  since it isn't being applied and it's no longer useful to keep
+  it around.
+
+-------------------------------------------------------------------
+Mon Oct 23 08:22:08 UTC 2017 - sckang@suse.com
+
+- Modify gnome-settings-daemon-bring-back-updates-plugin.patch: Fix
+  update notification not showing when conflicts exist
+  (bsc#1063826).
+
+-------------------------------------------------------------------
+Wed Oct  4 09:36:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1:
+  + Wacom:
+    - Ensure builtin touchscreens are properly mapped to outputs.
+    - Fix spotty touchscreen detection with those touchscreens
+      that have a capacitive menu/windows button.
+    - Fix touchscreen vs display orientation mismatch under gdm.
+  + XSettings: Reload the scale factor when mutter starts up.
+  + Updated translations.
+- Drop gnome-settings-daemon-wacom-tablet-rotation.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Sep 25 11:39:28 UTC 2017 - badshah400@gmail.com
+
+- Add gnome-settings-daemon-wacom-tablet-rotation.patch: wacom:
+  Add both tablet and touchscreen devices on initial iteration,
+  and use GTK+ skeleton to make sure input coordinates are
+  properly transformed upon screen rotation; patch taken from
+  upstream git (bgo#787884).
+
+-------------------------------------------------------------------
+Thu Sep 14 15:10:00 CEST 2017 - fcrozat@suse.com
+
+- Rebase gnome-settings-daemon-more-power-button-actions.patch,
+  part of the patch have been merged upstream.
+
+-------------------------------------------------------------------
+Thu Sep 14 11:41:17 UTC 2017 - fcrozat@suse.com
+
+- Rebase gnome-settings-daemon-bring-back-updates-plugin.patch,
+  gnome-settings-daemon-initial-keyboard.patch and
+  gnome-settings-daemon-notify-idle-resumed.patch for SLE build.
+
+-------------------------------------------------------------------
+Tue Sep 12 14:45:19 UTC 2017 - mgorse@suse.com
+
+- Rebase gnome-settings-daemon-more-power-button-actions.patch and
+  enable for SLE 15 (bsc#1057770).
+
+-------------------------------------------------------------------
+Tue Sep 12 09:17:07 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 2 09:19:41 UTC 2017 - qzhao@suse.com
+
+- Add gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch:
+  Switch new user's default input engine from "anthy" to "mozc" in
+  gnome-desktop with Japanese language and ibus input frame-work
+  (bnc#1029083, boo#1056289).
+
+-------------------------------------------------------------------
+Fri Sep  1 12:27:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.92:
+  + Ensure translatable strings are actually translated.
+  + Housekeeping: Ignore the Retrode's low-space.
+  + Sharing: Add gnome-remote-desktop as available service.
+  + Updated translations.
+- Drop obsolete clean section, glib2_gsettings_schema_requires
+  and post(un) handling of following macros:
+  + glib2_gsettings_schema_post(un).
+  + icon_theme_cache_post(un).
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Tue Aug 22 18:04:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Color: Prevent a potential crash on an uninitialized variable.
+  + Power:
+    - Fix automatic brightness adjustment being done inactive
+      sessions.
+    - Don't use undefined ambient light readings.
+  + XSettings:
+    - Use the new mutter API exclusively.
+    - Drop the gnome-desktop requirement.
+- Keep pkgconfig(gnome-desktop-3.0) BuildRequires: Configure still
+  checks for it, no matter what upstream changes says.
+
+-------------------------------------------------------------------
+Wed Aug  9 09:11:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Color:
+    - Honor location enabled setting.
+    - Request location updates with a larger time granularity.
+  + Date & Time: Honor location enabled setting.
+  + Media-keys: Restore interactive option for power button.
+  + Wacom: Exclude non-display attached devices from remapping.
+  + XSettings: Fix fontconfig cache updates causing desktop
+    freezes.
+
+-------------------------------------------------------------------
+Tue Aug  8 13:55:19 CEST 2017 - ro@suse.de
+
+- Run autoreconf if running update-translations and add the
+  missing BuildRequires.
+- Don't apply gnome-settings-daemon-revert-libinput-mandatory.patch
+  on sle15.
+
+-------------------------------------------------------------------
+Tue Aug 01 03:25:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Fix GConf->GSettings convert script.
+  + Color: Fix smearing out of Night Light effect.
+  + Keyboard: Only add the "us" layout if the system config cannot
+    be determined.
+  + Media-keys:
+    - Add a precise volume change shortcut.
+    - Moved video-out and rotate-video bindings to mutter.
+    - Fix grabbing of previously disabled shortcuts.
+  + Orientation: Removed - functionality migrated to mutter.
+  + Wacom: Fix touchscreens being assigned the wrong output.
+  + XRandR: Removed - functionality migrated to mutter.
+  + XSettings: Calculate window scale from configuration state.
+
+-------------------------------------------------------------------
+Tue Aug 01 03:25:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.2:
+  + Avoid initializing gtk+ on plugins that don't need it.
+  + Avoid loading gtk+ css theme since we don't have UI.
+  + Several correctness fixes pointed by Coverity.
+  + Fix for no plugins getting loaded under GDM.
+  + Mark forgotten strings in gschema files for translation.
+  + Housekeeping: Ignore GPFS and rootfs mounts.
+  + Media-keys:
+    - Make calculator key work again.
+    - Fix a few memory leaks.
+    - Changed MediaKeys D-Bus API to match API docs.
+    - Add support for new XF86RFKill keysym.
+    - Show OSD on hardware keyboard brightness changes.
+  + Power:
+    - Choose correct backlight device on laptops with hybrid
+      graphics.
+    - Handle hardware keyboard brightness changes.
+  + RFKill: Disable the kernel's handling of rfkill events when the
+    session is active.
+  + Updated translations.
+- Disable gnome-settings-daemon-initial-keyboard.patch, needs
+  rebase or removal.
+
+-------------------------------------------------------------------
+Mon Jul 31 11:19:54 UTC 2017 - fezhang@suse.com
+
+- Rebase gnome-settings-daemon-initial-keyboard.patch (bsc#1050812)
+
+-------------------------------------------------------------------
+Sat Jul 22 17:03:30 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.3:
+  + Color: Fix smearing out of Night Light effect.
+  + Keyboard: Only add the "us" layout if the system config cannot
+    be determined.
+  + Media-keys: Fix grabbing of previously disabled shortcuts.
+  + Wacom:
+    - Fix touchscreens being assigned the wrong output.
+    - Exclude non-display attached devices from remapping.
+- Disable gnome-settings-daemon-initial-keyboard.patch: Needs
+  rebase.
+
+-------------------------------------------------------------------
+Thu Jul 13 08:06:33 UTC 2017 - fezhang@suse.com
+
+- Update SLE patches:
+  + gnome-settings-daemon-bnc873545-hide-warnings.patch
+  + gnome-settings-daemon-bring-back-updates-plugin.patch
+  + gnome-settings-daemon-revert-libinput-mandatory.patch
+-  Cleanup specfile.
+
+-------------------------------------------------------------------
+Thu May 25 19:21:55 UTC 2017 - zaitor@opensuse.org
+
+- Apply gnome-settings-daemon-more-power-button-actions.patch for
+  SLE and Leap 42.x only (bgo#1040245).
+
+-------------------------------------------------------------------
+Wed May 24 08:58:55 UTC 2017 - gunreben@t-online.de
+
+- Delete /etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+  for when no wacom support is present via conditional.
+
+-------------------------------------------------------------------
+Wed May 10 13:03:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Fix plugins not getting started under gdm.
+  + Fix mmkeys D-Bus API to match API docs.
+  + Disable rfkill keys handling.
+  + Choose correct backlight device on laptops with hybrid
+    graphics.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 24 11:19:54 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Fix Calculator media key.
+  + Fix sunrise calcs for fractional timezone offsets.
+  + Fix possible division by zero in clipboard handling.
+
+-------------------------------------------------------------------
+Mon Apr 17 01:14:05 UTC 2017 - xwang@suse.com
+
+- Update gnome-settings-daemon-sle-configure-timeout-blank.patch:
+  Fix mouse cursor on black screen (bsc#1029637).
+
+-------------------------------------------------------------------
+Mon Mar 20 12:27:09 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Work-around possible deadlocks on startup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 15 12:45:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.92:
+  + Smooth the transition between different temperature values.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 08:34:18 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Color: Add interface to support "Night Light" functionality.
+  + Media-keys: Fix a number of race conditions in shortcuts
+    grabbing.
+  + Power:
+    - Free leaked UPower keyboard backlight.
+    - Fix keyboard backlight problems on some systems.
+  + Rfkill: Fix a number of possible race conditions and crashes
+    with slow rfkill devices.
+  + Smartcard: Fix a possible crash in smartcard plugin.
+  + Wacom: Move most of the Wacom support to mutter, including the
+    OSD.
+- Drop pkgconfig(xorg-wacom) BuildRequires: no longer needed.
+- Drop gnome-settings-daemon-fix-keyboard-slider.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:04:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.3:
+  + Plugins:
+    - Fix crash when X is not available.
+    - Fix compilation failure on some setups.
+    - Fix warnings on exit.
+  + Media-keys: Fix shutdown dialog delay when using kbd shortcut.
+  + XSettings:
+    - Make Gtk/EnablePrimaryPaste configurable through GSettings.
+    - Fix large fonts being scanned before they're fully copied.
+- Add explicit pkgconfig(gio-2.0) BuildRequires: configure now
+  checks for it.
+- Drop gnome-settings-daemon-shutdown-dialog-delay.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:03:14 UTC 2017 - sckang@suse.com
+
+- Modify gnome-settings-daemon-bring-back-updates-plugin.patch:
+  Change updates plugin to a separate daemon.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:02:14 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + This update requires gnome-session 3.23.2. It splits up
+    gnome-settings-daemon into separate helper daemons, making it
+    easier to root cause possible problems, and paving the way to
+    using systemd to handle the session.
+  + Remove localeexec wrapper now that gnome-session implements
+    that work-around.
+  + Loads of build fixes.
+  + Color: Require lcms2 2.2.
+  + Power: Make power plugin "mock" support a run-time check.
+  + Sound: Rename the sound plugin for PulseAudio.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:01:14 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-settings-daemon-fix-keyboard-slider.patch: Make
+  keyboard backlight slider work like intended, patch from
+  bugzilla (bgo#725655).
+
+-------------------------------------------------------------------
+Fri Jan 13 21:41:44 UTC 2017 - zaitor@opensuse.org
+
+- Apply gnome-settings-daemon-initial-keyboard.patch also for
+  openSUSE, this fix is also needed there (boo#1009515).
+
+-------------------------------------------------------------------
+Fri Jan 13 21:41:43 UTC 2017 - dimstar@opensuse.org
+
+- Also apply gnome-settings-daemon-more-power-button-actions.patch
+  on openSUSE.
+- Fixup gnome-settings-daemon-bring-back-updates-plugin.patch: also
+  backport pk-clear-offline-update from PackageKit into this patch.
+
+-------------------------------------------------------------------
+Wed Nov 16 01:12:33 UTC 2016 - xwang@suse.com
+
+- Add gnome-settings-daemon-shutdown-dialog-delay.patch: Fix
+  'Shutdown dialog delay 1 to 2 seconds' (bsc#979257, bgo#774452).
+
+-------------------------------------------------------------------
+Thu Oct 13 10:46:18 UTC 2016 - sckang@suse.com
+
+- Modify gnome-settings-daemon-bring-back-updates-plugin.patch: Fix
+  updates notification not popping up in openSUSE (bsc#1004343).
+
+-------------------------------------------------------------------
+Tue Oct 11 11:46:37 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Power: Ensure we blank the screen when locked.
+  + Sharing: Fix crash on exit.
+  + Wacom: Avoid warnings when switching VTs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 27 17:50:39 UTC 2016 - zaitor@opensuse.org
+
+- Add iio-sensor-proxy Recommends for openSUSE.
+
+-------------------------------------------------------------------
+Tue Sep 20 16:10:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Fix possible problem with battery and mains timeouts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 13:38:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92.1:
+  + Fix a build problem in the smartcard plugin.
+
+-------------------------------------------------------------------
+Tue Sep 13 21:06:34 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Use systemd to track running services in the Sharing plugin.
+  + Updated translations.
+- Only apply gnome-settings-daemon-shutdown-with-power-button.patch
+  on SLE and Leap. Following this, conditionally BuildRequires
+  gnome-common for SLE and Leap only.
+- Add gtk-doc BuildRequires: gnome-common was pulling it in before.
+- Rename sle-configure-timeout-blank.patch to
+  gnome-settings-daemon-sle-configure-timeout-blank.patch, align
+  patchname with our standard.
+- Stop passing V=1 to make, we do debugging locally.
+
+-------------------------------------------------------------------
+Mon Sep 12 11:19:11 UTC 2016 - fezhang@suse.com
+
+- Rebase gnome-settings-daemon-revert-libinput-mandatory.patch
+  for version 3.21.90.
+
+-------------------------------------------------------------------
+Mon Sep 12 10:07:53 UTC 2016 - fezhang@suse.com
+
+- Rename gnome-settings-daemon-shutdown-with-power-button.patch to
+  gnome-settings-daemon-more-power-button-actions.patch:
+  Also add back the "interactive" power button action for
+  consistency with SLES11 behavior (bsc#996342).
+
+-------------------------------------------------------------------
+Thu Sep  8 12:39:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Color: Ignore fake VNC devices.
+  + Housekeeping: Code cleanups.
+  + Media keys:
+    - Add Super+F1 as a hardcoded shortcut for launching Help.
+    - Update gvc to fix a crash setting a headset (bsc#1045780).
+  + Power: Don't claim the light sensor if we're not active.
+  + Smartcard:
+    - Complete activation task right away if no drivers.
+    - Fix crash on startup.
+  + Wacom:
+    - Fix hot(un)plug related crashes.
+    - Fix memory leaks.
+  + XSettings: Fix keynav-use-caret setting not working.
+
+-------------------------------------------------------------------
+Thu Sep  8 11:49:13 UTC 2016 - dimstar@opensuse.org
+
+- Also apply gnome-settings-daemon-shutdown-with-power-button.patch
+  on openSUSE (boo#993381).
+
+-------------------------------------------------------------------
+Wed Sep  7 12:44:12 UTC 2016 - fezhang@suse.com
+
+- Add gnome-settings-daemon-shutdown-with-power-button.patch:
+  Bring back "shutdown" as a configurable choice for power button.
+  Even though upstream removed it due to "too destructive" and
+  recommends using a custom shortcut, we still need it for bare
+  metal servers without keyboards attched (bsc#996342).
+  Check bgo#753713, bgo#755953 to learn why upstream removed the
+  power button actions.
+
+-------------------------------------------------------------------
+Fri Aug 26 11:55:29 UTC 2016 - dimstar@opensuse.org
+
+- Call autoreconf on SLE12 and Leap 42.x:
+  gnome-settings-daemon-bring-back-updates-plugin.patch is also
+  applied on Leap, hence autoreconf needs to run there too.
+
+-------------------------------------------------------------------
+Fri Aug 10 02:24:44 UTC 2016 - sckang@suse.com
+
+- Add gnome-settings-daemon-bring-back-updates-plugin.patch:
+  Revert upstream commits fc22a8100fa40533fddfb4338160a20188e46c6b
+  and e3e961c52419df5f2544b24957e71cf3a4c5ef85 to bring back the
+  updates plugin.(bsc#991024)
+
+-------------------------------------------------------------------
+Fri Aug  5 03:38:22 UTC 2016 - mgorse@suse.com
+
+- Only require udev on SLE. Only needed for older filesystem
+  package.
+- Re-enable gnome-patch-translation on SLE. We don't have any
+  non-rebased patches now, so probably safe.
+- Drop gnome-settings-daemon-housekeeping-ignore-boot-efi.patch:
+  now handled in branding.
+
+-------------------------------------------------------------------
+Fri Jun 17 16:52:33 UTC 2016 - fezhang@suse.com
+
+- Add gnome-settings-daemon-housekeeping-ignore-boot-efi.patch
+  (bsc#919217). Prevent popup warnings about /boot/efi on a default
+  UEFI installation.
+
+-------------------------------------------------------------------
+Wed Jun  8 23:59:29 UTC 2016 - sreeves@suse.com
+
+- Remove gnome-settings-daemon-bnc877552.patch - fixed upstream
+
+-------------------------------------------------------------------
+Mon Jun  6 09:44:23 UTC 2016 - dimstar@opensuse.org
+
+- Add explicit pkgconfig(libgeoclue-2.0) BuildRequires: configure
+  checks for it and it allows us to specify the minimum version
+  required.
+
+-------------------------------------------------------------------
+Mon May 16 21:06:18 CDT 2016 - federico@suse.com
+
+- Added back an updated version of
+  gnome-settings-daemon-initial-keyboard.patch for bsc#979051.
+  Suse works differently from GNOME; we set the default keyboard
+  from xkb, and GNOME likes to do it itself.  This makes sure
+  there is no keyboard selector icon if there is a single default
+  keyboard defined.
+
+-------------------------------------------------------------------
+Mon Apr 18 11:19:11 CDT 2016 - federico@suse.com
+
+- Removed
+  gsettings-do-not-store-autodetected-keyboard-settings.patch.
+  Equivalent code is now upstream.
+
+-------------------------------------------------------------------
+Mon Apr 18 11:16:19 CDT 2016 - federico@suse.com
+
+- Removed gnome-settings-daemon-initial-keyboard.patch.  Upstream's
+  behavior is fine, as the default keyboard layout needs to be
+  available for the screen lock.
+
+-------------------------------------------------------------------
+Mon Apr 18 08:33:57 UTC 2016 - alarrosa@suse.com
+
+- Update to GNOME 3.20.1  Fate#318572
+- Rebased gnome-settings-daemon-notify-idle-resumed.patch.
+- Drop SLE patch:
+  gnome-settings-daemon-bnc862603-remove-battery-recall-code.patch:
+  fixed upstream.
+- Drop SLE patch:
+  updates-dont-use-changed-signal-on-UpClient.patch:
+  Removed code upstream.
+- Drop SLE patch:
+  gnome-settings-daemon-bnc872820-gtk-decoration-layout.patch:
+  fixed upstream.
+- Drop SLE patch: gnome-settings-daemon-icewm-cursor.patch:
+  Removed code upstream.
+- Drop SLE patch:
+  gnome-settings-daemon-no-lockscreen-screenshot.patch:
+  fixed upstream.
+- Drop SLE patch:
+  gnome-settings-daemon-bsc945348-disappearing-cursor.patch:
+  Removed code upstream.
+- Rebased SLE patch: sle-configure-timeout-blank.patch .
+- Rebased SLE patch: gnome-settings-daemon-initial-keyboard.patch .
+- Rebased SLE patch:
+  gsettings-do-not-store-autodetected-keyboard-settings.patch .
+- Rebased SLE patch: gnome-settings-daemon-bnc877552.patch .
+- Rebased patch
+  gnome-settings-daemon-bnc873545-hide-warnings.patch .
+
+-------------------------------------------------------------------
+Thu Apr 14 11:09:20 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Fix build warnings.
+  + Fix brightness changes happening on inactive sessions when
+    "Automatic Brightness" is enabled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 15:09:07 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Fix cancellation handling and possible crashes in all plugins.
+
+-------------------------------------------------------------------
+Thu Mar 17 09:53:38 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + XSettings: Export Gtk/KeynavUseCaret accessibility setting.
+  + Remote display: Remove Spice special-casing now that it can do
+    accelerated rendering.
+
+-------------------------------------------------------------------
+Fri Mar  4 12:57:15 UTC 2016 - fcrozat@suse.com
+
+- Add gnome-settings-daemon-revert-libinput-mandatory.patch: do not
+  force libinput driver on SLE.
+- Re-add "hotplug-command" helper when building for SLE.
+
+-------------------------------------------------------------------
+Thu Mar  3 21:57:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Media keys:
+    - Fix a typo in the "Airplane" string.
+    - Fix a number of possible crashers when plugging in audio
+      devices on some machines.
+    - Add debug output to a number of custom shortcuts related
+      functions.
+  + Housekeeping: Don't remove X11 sockets, breaking sandboxed X11
+    applications.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  2 14:33:56 UTC 2016 - fcrozat@suse.com
+
+- Add BuildRequires pkgconfig(alsa) and --enable-alsa to configure
+  to ensure audio device selection feature is properly enabled.
+
+-------------------------------------------------------------------
+Tue Feb 16 20:35:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Fixed a few leaks, crashes and endless loops.
+  + Media keys:
+    - Fix orientation keybindings/keys not working.
+    - Added support to ask users which kind of headset was plugged
+      in.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 14 23:05:02 UTC 2016 - zaitor@opensuse.org
+
+- Add xf86-input-libinput Recommends and apply conditionally on
+  openSUSE: gnome-settings-daemon only support configuration of
+  libinput based pointer drivers since version 3.19.5.
+
+-------------------------------------------------------------------
+Fri Feb 12 15:07:00 UTC 2016 - zaitor@opensuse.org
+
+- Change gnome-settings-daemon-notify-idle-resumed.patch to
+  PATCH-FEATURE-SLE, and only apply it and run autoreconf when
+  building for SLE. It is not needed in openSUSE.
+- Drop gnome-settings-daemon-bnc462640-mute-action.patch: People
+  expect mute to always toogle now, so drop this patch.
+- No longer obsolete resapplet, not been in use since before 2008.
+
+-------------------------------------------------------------------
+Wed Jan 20 15:13:46 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.5:
+  + Remove "hotplug-command" helper
+  + Media keys:
+    - Add support for Killswitch media keys
+    - Add labels for the rfkill OSD
+  + Mouse: Remove support for non-libinput mouse configurations.
+  + Power: Don't try to automatically set brightness on inactive
+    sessions.
+  + Rfkill: Fix a problem when the system has a platform rfkill
+    device for Bluetooth and the Bluetooth adapter's rfkill support
+    somehow got blocked.
+  + Sharing: Port to the new libnm NetworkManager library; required
+    NM version bumped to 1.0.
+  + Updated translations.
+- Replace pkgconfig(libnm-glib) and pkgconfig(libnm-util)
+  BuildRequires with pkgconfig(libnm): following upstreams changes.
+
+-------------------------------------------------------------------
+Tue Jan 05 14:48:41 CST 2016 - cxiong@suse.com
+
+- Add gsettings-do-not-store-autodetected-keyboard-settings.patch
+  (bnc#931527). Do not store auto-detected values to allow
+  system-wide changes take effect.
+
+-------------------------------------------------------------------
+Sun Dec 20 12:04:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.4:
+  + Mouse:
+    - Force 2-finger scroll by default if available.
+    - Migrate scroll-method key to new edge-scrolling-enabled key.
+- Changes from version 3.19.3:
+  + Export the cursor theme through XSettings.
+  + Use the convenience Geoclue library for the automatic timezone
+    setting.
+  + Don't overwrite existing XIM configurations.
+  + Fix application of left-handed mode, keep-aspect and area
+    settings for Wacom tablets.
+  + Change default font hinting to slight (see git log for
+    details).
+  + Re-add a way to configure the power button for desktops and
+    laptops (tablets and VMs have hard-coded defaults).
+  + Always expand power notifications.
+- Drop gnome-settings-daemon-dont-override-xim-presets.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Nov 17 23:42:02 CET 2015 - hpj@suse.com
+
+- Add gnome-settings-daemon-bsc945348-disappearing-cursor.patch
+  (bsc#945348). The cursor would disappear on mutter restart.
+
+-------------------------------------------------------------------
+Tue Nov 10 16:00:08 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Media keys: Re-add configuration for the power button, except
+    for tablets and virtual machines which have hard-coded
+    defaults.
+  + Wacom: Fix application of left-handed mode and keep-aspect
+    setting.
+  + XSettings:
+    - Export cursor theme.
+    - Fix possible crasher when disabling the plugin.
+  + Updated translations.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Thu Nov  5 18:15:11 UTC 2015 - mgorse@suse.com
+
+- Modify gnome-settings-daemon-initial-keyboard.patch to add
+  English keyboard layout when using ibus (bsc#899530).
+
+-------------------------------------------------------------------
+Thu Oct 22 21:40:19 CEST 2015 - tiwai@suse.de
+
+- Add gnome-settings-daemon-dont-override-xim-presets.patch: Don't
+  override QT_IM_MODULE and XMODIFIERS if already set (boo#947576,
+  bgo#757013).
+
+-------------------------------------------------------------------
+Mon Oct 12 13:16:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix cursor-size changes being ignored.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 15:34:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:43:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Plug a number of memory leaks.
+  + Media keys: Remove "button-*" configurations, they work as
+    labelled.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 18:32:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Date & Time: Fix auto-timezone changes not getting applied
+    after changed.
+  + Orientation: Fix screen lock not getting applied.
+  + Print notifications: Fix setting of page size.
+  + Wacom: Fix some settings not getting applied after changed.
+  + XSettings: Fix some settings not getting applied after changed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:17:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Make device type presence checks work on libinput and wayland
+  + Fix orientation setting on startup.
+
+-------------------------------------------------------------------
+Thu Jul 23 07:17:36 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.2:
+  + Orientation: Get accelerometer information from
+    iio-sensor-proxy.
+  + Power:
+    - Add automatic screen brightness support, using
+      iio-sensor-proxy.
+    - Remove critical-battery-action key as it's not used anymore
+      with UPower 1.0.
+    - Fix a crash when reading invalid backlight values.
+  + Print notifications: Don't show error for job in progress.
+  + Wacom:
+    - Fix possible crash when Bamboo tablet is plugged at login
+      time.
+    - Fix possible double-frees.
+  + Updated translations.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Tue Jul 21 20:13:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.3:
+  + Make device type presence checks work on libinput and wayland.
+  + Power: Fix a crash when reading invalid backlight values.
+  + Print notifications: Don't show error for job in progress.
+  + Wacom: Fix possible crash when Wacom tablet is plugged in.
+
+-------------------------------------------------------------------
+Mon Jun 22 13:10:53 UTC 2015 - dimstar@opensuse.org
+
+- Add conditional pkgconfig(wayland-client) BuildRequires, based
+  on bcond wayland.
+
+-------------------------------------------------------------------
+Tue May 12 18:34:15 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Media keys: Don't crash when toggling the touchpad enabled
+    button.
+  + Mouse:
+    - Fix scroll methods settings for multiple devices.
+    - Enable tap to click on devices without hw buttons.
+    - Don't disable soft buttons when disabling the touchpad on
+      devices without hw buttons.
+  + Power:
+    - Avoid screen being left ON indefinitely after waking from
+      sleep if there's a notification when we wake up.
+    - Fix backlight adjustment not working under gdm in some
+      configurations.
+  + Print Notifications: Do not block because of authentication.
+  + Wacom: Remove calibration notification.
+  + XSettings:
+    - Export cursor size to X resources.
+    - Update fonts immediately as they are added/removed/changed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 22:17:37 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Housekeeping: Remove support for notification servers without
+    action support.
+  + Media keys: Fix a logic error that caused the power key not to
+    work.
+  + Print Notifications:
+    - Fix HTTP connection leaks.
+    - Don't show printer-deleted notifications.
+  + Wacom:
+    - Add support with stylii without an eraser, as used in some
+      Huion tablets.
+    - Fix possible crashes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 26 15:23:44 UTC 2015 - dimstar@opensuse.org
+
+- Drop systemd build condition and pkgconfig(libsystemd-login)
+  BuildRequires: this hasn't been a dependency since version 3.8.
+
+-------------------------------------------------------------------
+Thu Mar 26 15:17:53 UTC 2015 - dimstar@opensuse.org
+
+- Change RPM group of -devel package to
+  "Development/Languages/C and C++".
+
+-------------------------------------------------------------------
+Thu Mar 26 15:06:02 UTC 2015 - dimstar@opensuse.org
+
+- No longer pass --enable-systemd, --enable-gconf-bridge and
+  --with-pnpids to configure: those parameters are not available
+  anymore.
+
+-------------------------------------------------------------------
+Thu Mar 26 13:53:51 UTC 2015 - dimstar@opensuse.org
+
+- Change from simple %defines to %bcond_with/without, as this
+  allows to be set in prjconf without the need to patch the .spec
+  files.
+  + with_systemd, with_wacom, with_wayland, with_smartcard have
+    been replaced with their equivalent %bcond_with, resp.
+    %bcond_without, based on the value that was originally set,
+    resulting in no change for the build.
+
+-------------------------------------------------------------------
+Mon Mar 23 11:50:51 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Fix a problem when hot-plugging Wacom devices.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:06:34 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Cursor: Plugin removed, its functionality was moved to mutter.
+  + Keyboard: Remove the special handling of settings under GDM.
+  + Power: Make sure to set an error when GDBus set_property fails.
+  + Wacom:
+    - Remove use of removed "display" settings key.
+    - Remove handling of moved "display" key.
+    - Add fake Huion H610 Pro for tests.
+  + Updated translations.
+- Drop pkgconfig(xfixes) BuildRequires: no longer needed after the
+  removal of the cursor plugin.
+
+-------------------------------------------------------------------
+Wed Mar  4 08:44:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.91:
+  + Fix build with some build systems.
+  + Use proper quotes in Housekeeping plugin.
+  + Fix possible crashes in the Wacom plugin.
+  + Fix a regression in XSettings caused by recent glib changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 14:24:01 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + When disabling the backlight, also suspend on tablets.
+  + Don't use colons in screenshot filenames.
+  + Fix multiple Settings button being added to notifications.
+  + Fix text wrapping in housekeeping dialogues.
+  + Use the backlight helper on Linux unconditionally.
+  + Avoid turning off the backlight altogether on some Linux
+    systems.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+- Toggle with_wayland to 1: enable building the wayland backend.
+
+-------------------------------------------------------------------
+Wed Feb 11 11:25:27 UTC 2015 - cxiong@suse.com
+
+- Add gnome-settings-daemon-no-lockscreen-screenshot.patch:
+  + media-keys: Disallow screenshots when locked (bnc#900031,
+    bgo#737456, CVE-2014-7300).
+
+-------------------------------------------------------------------
+Sat Jan 24 07:15:31 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Added GsdDeviceManager with X11 and udev (for native wayland
+    sessions) backends.
+  + Most keyboard, mouse, touchpad and wacom settings schemas
+    moved to gsettings-desktop-schemas. User settings migration
+    is done automatically at startup.
+  + The moved settings are now applied by mutter >= 3.15.4.
+  + Media-keys:
+    - Adjust to ShellKeyGrabber changes (requires
+      gnome-shell >= 3.15.4 at run time).
+    - Make power-actions non-interactive based on mode.
+  +  XSettings: Export the session bus ID as an xsetting.
+- Disable wayland backend by passing --disable-wayland flag
+  to configure; enabling wayland backend causes builds to
+  fail.
+
+-------------------------------------------------------------------
+Mon Jan  5 15:39:06 UTC 2015 - dliang@suse.com
+
+- Add gnome-settings-daemon-icewm-cursor.patch (bnc#905158)
+  Do not hide the cursor while there was no mutter running.
+
+-------------------------------------------------------------------
+Thu Dec 18 02:09:55 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Add scroll wheel emulation in trackballs.
+  + Disable touchscreens when the screen is turned off.
+  + Show backlight OSD on the monitor which it affects.
+
+-------------------------------------------------------------------
+Thu Nov 13 18:29:23 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Media-keys: Fixed a few minor leaks.
+  + Power: Disable touchscreens when turning off its screen.
+  + Smartcard: Fixed a locking issue.
+  + Wacom:
+    - Fix possible crash in GsdDeviceMapper.
+    - Make sure that display-less tablets can be set back to
+      mapping to the full desktop extent.
+    - Make sure that the output is looked up again from settings
+      when the connected outputs change.
+  + XSettings: Don't check for hi-dpi on monitors with broken EDID.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 14 16:39:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Cursor: Disable if running under a wayland session.
+  + Keyboard: Add back the gtk+ IM module handling.
+  + Media-keys: Disallow screenshots when locked.
+  + XSettings:
+    - Translate titlebar action settings (for CSD gtk+ windows).
+    - Misc cleanups.
+
+-------------------------------------------------------------------
+Sun Oct  5 13:24:21 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-settings-daemon-system-proxy-configuration.diff: it
+  has been disabled for 3 years with nobody even noticing it to be
+  gone or caring to fix it.
+
+-------------------------------------------------------------------
+Thu Sep 25 20:59:09 CDT 2014 - federico@suse.com
+
+- Updated
+  gnome-settings-daemon-bnc872820-gtk-decoration-layout.patch. Now
+  we pick up the correct dconf key names for Classic and default
+  modes, in order to set the window manager's button layout.
+
+-------------------------------------------------------------------
+Mon Sep 22 17:01:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + XSettings: Fix swapping out of WM settings schemas.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 20:15:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Keyboard: Remove input sources handling: this was moved to
+    mutter/gnome-shell and removes g-s-d's build dependency on
+    IBus.
+  + Power: '0' keyboard backlight is a valid value.
+  + Rfkill: Add a property to determine whether to show airplane
+    mode.
+- Drop pkgconfig(ibus-1.0) BuildRequires, and clean up spec from
+  define with ibus.
+
+-------------------------------------------------------------------
+Tue Sep  2 17:45:58 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Media-keys: Postpone initialisation of libcanberra to avoid
+    blocking on it at startup.
+  + Wacom: Fix OLEDs never actually working due to a missing single
+    line.
+
+-------------------------------------------------------------------
+Mon Aug 18 11:54:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Media keys: Don't show Orientation lock popup if not supported.
+  + Sharing: Fix crash when run against older NM.
+  + Wacom: Add support for LEDs API in newer kernels.
+
+-------------------------------------------------------------------
+Fri Aug 15 15:23:53 CDT 2014 - federico@suse.com
+
+- Added gnome-settings-daemon-bnc872820-gtk-decoration-layout.patch
+  for bnc#872820.  This makes the XSettings plugin propagate the
+  Gtk/DecorationLayout setting so GTK+ can use it.
+
+-------------------------------------------------------------------
+Wed Jul 23 16:12:57 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + General:
+    - Fix crash when a plugin failed to start.
+    - Several code cleanups.
+  + A11Y Keyboard: Make sticky and slow keys notifications more
+    difficult to miss.
+  + Housekeeping: Fix regular files not getting deleted from the
+    Trash.
+  + Media-keys: Set the keyring environment variables on all
+    processes that we launch.
+  + Orientation: Fix plugin on MS Surface devices.
+  + Power: Fix crash when logind isn't available.
+  + Sharing: Fix compilation without NetworkManager.
+  + Wacom: Handle "cursor" tablet devices so that they get properly
+    mapped for different orientations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 18 19:18:39 UTC 2014 - sreeves@suse.com
+
+- Add gnome-settings-daemon-bnc877552.patch
+    gdm respond to power button.
+
+-------------------------------------------------------------------
+Sat Jul 12 19:56:04 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Plenty of Sharing plugin bug fixes.
+- Changes from version 3.13.2:
+  + Add new sharing plugin.
+  + General:
+    - Implement size matching for touchscreens.
+    - Fix warnings in the display to input device mapper.
+    - Remove multiple screens support.
+  + Power:
+    - Fix wakeup not working with some keymaps.
+    - Fix restarting of the lid inhibitor check timer.
+    - Fix suspend happening again when resuming from suspend.
+    - Discretize the set backlight value fixing problems.
+      on some harwdare with limited number of backlight settings.
+    - Fix initial backlight state in gnome-shell.
+    - Add sound notification on power plug/unplug.
+  + Wacom:
+    - Add Bluetooth OLED handling for Intuos4 WL.
+    - Fix OLED application for wired Intuos4.
+    - Make OSD always appear on a single monitor.
+  + XSettings:
+    - Honor changes to the enable-animations setting.
+    - Better support for GTK+ CSD titlebar button layout.
+  + Housekeeping: Fix a possible data loss when symlinks are
+    created from /tmp.
+  + Media-keys: Fix possible crash disabling media-keys plugin.
+- Changes from version 3.13.1:
+  + Color: Fix 13 byte long EDID description text parsing.
+  + Common:
+    - Improve hotplug scripts exit status checking and correct the
+      documentation.
+    - Fix possible crasher in device-mapper.
+  + Cursor: Remove multi-screen support.
+  + Power:
+    - Remove unused session presence proxy.
+    - Emit change notification for brightness.
+    - Fix display not blanking after gnome-shell wake up.
+    - Don't warn when Kdb backlight D-Bus is called.
+    - Lower the lid safety timeout to 8 seconds.
+  + Update: Remove the updates plugin. The functionality now lives
+    on in the gnome-software session service.
+  + Updated translations.
+- Add pkgconfig(libnm-glib) and pkgconfig(libnm-util)
+  BuildRequires: dependencies to the new sharing plugin.
+- Remove pkgconfig(packagekit-glib2) BuildRequires: the Update
+  plugin is no longer available.
+- Drop gnome-settings-daemon-stop-reload-proxy-settings.patch: it
+  fixed behaviour of the update plugin, which in turn no longer
+  exists.
+
+-------------------------------------------------------------------
+Mon Jun 30 14:31:43 UTC 2014 - fcrozat@suse.com
+
+- Add gnome-settings-daemon-initial-keyboard.patch: do not add
+  english keyboard layout by default, causing keyboard selector to
+  be always visible.
+
+-------------------------------------------------------------------
+Wed May 21 21:47:07 UTC 2014 - mgorse@suse.com
+
+- Fix a crash when notifying after resuming from a suspend entered
+  as a result of the system being idle.
+  Modified patch: gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Wed May 21 20:57:44 UTC 2014 - mgorse@suse.com
+
+- Rebased gnome-settings-daemon-notify-idle-resumed.patch.
+  Also fixed a crash.
+
+-------------------------------------------------------------------
+Wed May  7 18:59:57 CEST 2014 - sbrabec@suse.cz
+
+- Added support for gnome-patch-translation (5 strings).
+
+-------------------------------------------------------------------
+Tue May  6 09:14:32 UTC 2014 - fezhang@suse.com
+
+- Add gnome-settings-daemon-bnc873545-hide-warnings.patch:
+  Hide the warnings when failed to find a colord instance
+  (bnc873545).
+
+-------------------------------------------------------------------
+Mon May  5 15:15:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Fix crasher when plugging in an external display into a laptop
+    with a touchscreen.
+  + Power:
+    - Fix brightness sliders and OSD starting at zero when first
+      used.
+    - Fix display not blanking after gnome-shell wake up.
+    - Fix wake up not working in some cases.
+    - Fix laptop sometimes not suspending when unplugging from a
+      dock.
+    - Fix double-suspend when suspending after a timeout.
+    - Fix erratic back-light behaviour when the machine has a
+      limited number of back-light settings.
+
+-------------------------------------------------------------------
+Fri May  2 19:20:04 UTC 2014 - mgorse@suse.com
+
+- Add updates-dont-use-changed-signal-on-UpClient.patch: Changed
+  signal no longer exists in upower 0.99. From upstream.
+
+-------------------------------------------------------------------
+Wed Apr 16 13:05:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Date & Time: Make the geolocation marker in gnome-shell's
+    status area go away after turning Automatic Time Zone off.
+  + Keyboard: Fix consecutive xkb grp: options not being stripped.
+  + Updates: Let gnome-software handle update checking.
+
+-------------------------------------------------------------------
+Thu Mar 27 03:50:34 UTC 2014 - cxiong@suse.com
+
+- The default blank timeout is too short, set it longer,
+  see bnc#869685
+  NOTE: this is actually the delay between screensaver is shown
+  (from blank) and return to blank, more precisely, blank and
+  monitor off. The instant blanking (not monitor off) when user
+  locks the screen, is controlled by GNOME Shell screenShield, not
+  a power management feature. Also this patch is meant for Beta4,
+  the delay is fixed at 5 min. Later, a "gsetting" option might be
+  created.
+
+-------------------------------------------------------------------
+Thu Mar 27 03:24:20 UTC 2014 - cxiong@suse.com
+
+- Fix malformed parts of
+  gnome-settings-daemon-bnc862603-remove-battery-recall-code.patch
+  The main removed part is actually patching a backup file, which
+  was created by Patch 19 in spec. Tools like "quilt" would fail
+  to apply this patch, for these tools use
+  "--no-backup-if-mismatch" flag for "patch" and thus Patch 19
+  would not create a backup file. "rpmbuild" don't use this
+  "--no-backup-if-mismatch" flag and thus didn't catch this error
+  (maybe this is a good time to think whether this flag should be
+  included.)
+  There are also some other minor clean up.
+
+-------------------------------------------------------------------
+Wed Mar 26 19:51:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0.1:
+  + Fix a long delay on session logout (bgo#727049).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 15:38:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Common: Fix initialization of GsdDeviceMapper.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 18 14:28:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Common: Avoid GsdDeviceMapper blocking on startup.
+  + Power: Fix idle time being reset when notifications come in.
+  + XSettings:
+    - Avoid Hi-DPI getting setup for:
+      . non-primary screens.
+      . HDMI outputs (except 4K monitors).
+      . low resolutions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 19:38:57 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Mouse, Common: Hardening for BadDevice errors.
+
+-------------------------------------------------------------------
+Thu Feb 20 21:38:49 UTC 2014 - mgorse@suse.com
+
+- Remove battery recall code (bnc#862603). The recall dialog is
+  reportedly being displayed erroneously, and it has been removed
+  upstream, since the last recalls date from 2006, so let's
+  remove it.
+- Added patches:
+  * gnome-settings-daemon-bnc862603-remove-battery-recall-code.patch
+
+-------------------------------------------------------------------
+Tue Feb 18 22:35:44 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Date & Time: Require a newer Geoclue.
+  + Keyboard: Move X11 specific code from gnome-desktop to here.
+  + Wacom, XRandR:
+    - Add explicit input device to display output mapping and apply
+      rotation and mapping to the input devices when the display
+      output changes.
+    - Use "input-tablet" icon for notifications.
+  + Rfkill: Avoid spurious warning on startup.
+  + Updates: Update for UPower API changes.
+  + Smartcard:
+    - Detect explicit cancellation.
+    - Filter out spurious errors.
+  + Wacom: Add OLED handling over Bluetooth.
+
+-------------------------------------------------------------------
+Fri Feb  7 03:11:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + We no longer quit when gnome-session tells all registered
+    clients to stop so that applications still running don't lose
+    their theme and icons briefly before the session ends.
+  + Date & Time:
+    - Specify the accuracy level for geoclue.
+    - Provide desktop id to geoclue so that authorization works.
+  + Media-keys:
+    - Remove the default shortcut to toggle the screen reader since
+      it conflicts with the "panel main menu" shortcut.
+  + Wacom:
+    - Check for calibration state on startup/device-added.
+
+-------------------------------------------------------------------
+Fri Feb  7 03:11:03 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Media-keys: Fix "show battery" key handling.
+  + Rfkill:
+    - Apply permissions for rfkill devices to the local user.
+    - Add Bluetooth killswitch support.
+    - Don't autostart ModemManager.
+  + Wacom:
+    - Skip GSD_WACOM_SET_ALL_MONITORS on the switch monitor pad
+      action.
+    - Rotate OLED labels on left-handed setups.
+    - Show OSD when remapping device to a monitor through the pad
+      bindings.
+    - Maintain per-device calibration notifications.
+
+-------------------------------------------------------------------
+Fri Feb  7 03:11:02 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Media keys:
+    - All Power key in more places.
+    - Fix interaction with multiple MPRIS clients.
+    - Make Pause key work for MPRIS clients.
+  + Remote display:
+    - Don't disable animations unless we are on a remote display.
+  + XSettings:
+    - Fix a possible crash on exit.
+    - Export a GtkShellShowsDesktop setting.
+- Drop
+  gnome-settings-daemon-export-Gtk_ShellShowsDesktop-setting.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb  7 03:11:01 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Power:
+    - Remove battery recall support code.
+    - Update for new UPower API.
+    - Remove org.gnome.SettingsDaemon.Power D-Bus interface
+      (deprecated by the new UPower).
+    - Fix brightness keys when there's less than 20 brightness
+      steps.
+  + Remote display:
+    - Merge plugin functionality into the XSettings plugin; we
+      shouldn't modify GSettings on startup.
+  + RFKill:
+    - Handle rfkill for WWAN modems.
+- Disable gnome-settings-daemon-notify-idle-resumed.patch for now:
+  needs rebase.
+- Drop gnome-settings-daemon-upower-backport.patch: fixed upstream.
+- Drop gnome-settings-daemon-upower-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb  6 15:03:34 UTC 2014 - lpechacek@suse.cz
+
+- Add gnome-settings-daemon-upower-fix.patch: avoid immediate
+  hibernation/poweroff caused by GSD power plugin not being able to
+  determine battery charge (bnc#861365).
+
+-------------------------------------------------------------------
+Fri Dec 20 00:16:59 UTC 2013 - mgorse@suse.com
+
+- Add gnome-settings-daemon-upower-backport.patch -- from upstream;
+  support upower 0.99.
+- Up upower-glib dependency.
+
+-------------------------------------------------------------------
+Sat Dec 14 21:42:59 UTC 2013 - zaitor@opensuse.org
+
+- Add
+  gnome-settings-daemon-export-Gtk_ShellShowsDesktop-setting.patch,
+  stop showing desktop folder in nautilus sidepane when using
+  gnome-shell (bgo#712302).
+
+-------------------------------------------------------------------
+Tue Nov 12 19:38:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.2 (bnc#849913):
+  + Media-keys:
+    - Fix 2nd MPRIS client never being used.
+    - Make "Pause" work for MPRIS clients.
+    - Make the "shutdown" action not be interactive.
+    - Allow the power key in more places.
+  + Power:
+    - Fix time to empty with multiple batteries.
+  + XRandR:
+    - Prevent possible overflows handling timestamps.
+  + XSettings:
+    - Unwatch dbus before destroying xsettings managers.
+
+-------------------------------------------------------------------
+Wed Oct 16 06:48:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Several small cleanups and memory leak fixes.
+  + Housekeeping: Do not scan the cache directories if not needed.
+  + Keyboard: Don't set the XKB group switching option when not
+    needed.
+  + Media-keys: Use a gsettings key for the maximum screencast
+    length.
+  + Mouse: Enable edge scrolling if two-finger scroll is
+    unavailable (this time for good) (bnc#845641).
+  + Power:
+    - Add test case for lack of warning on startup.
+    - Fix notifications not showing on critical battery.
+    - Fix warning when keyboard backlight isn't available.
+    - Never show a mouse as the status icon.
+  + Updates:
+    - Add a 'Not Now' button to the distribution upgrade
+      notification.
+    - Do not show multiple notifications when updates are
+      available.
+    - Raise PackageKit dependency to 0.8.1 to avoid complexity.
+  + Wacom:
+    - Fix a couple of crashes.
+    - Fix default area ordering.
+    - Fix failure to get area with the cursor device.
+    - Implement resetting the tablet area to default.
+    - Make OSD work again.
+    - Remove Tablet PC setting as we don't have UI for it.
+  + XRandR: Don't save the temporary configurations generated by
+    rotate buttons or FN+F7.
+- Rebase gnome-settings-daemon-bnc462640-mute-action.patch.
+
+-------------------------------------------------------------------
+Fri Sep 27 09:58:04 UTC 2013 - dimstar@opensuse.org
+
+- Drop gnome-packagekit-BNC383261.patch: patch has been disabled
+  for more than 2 years and nobody missed the feature (bnc#689592).
+
+-------------------------------------------------------------------
+Tue Sep 24 12:10:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Date & Time:
+    - Fix possible crasher due to clash between json-c and
+      json-glib.
+  + Mouse:
+    - Fix critical warning with touchpad settings.
+  + Power:
+    - Fix laptop suspend when lid is closed even if external
+      monitor is present.
+    - Test fixes, add test with a failing device battery.
+  + Smartcard:
+    - Fix run-time warning.
+
+-------------------------------------------------------------------
+Thu Sep 19 13:20:55 UTC 2013 - idonmez@suse.com
+
+- Introduce with_wacom defines, set to 0 on s390{x}, otherwise 1:
+  + Disable wacom support on s390{x}, those machines have no
+    viable input ports.
+  + Have pkgconfig(libwacom) and pkgconfig(xorg-wacom)
+    BuildRequries depend on with_wacom.
+
+-------------------------------------------------------------------
+Tue Sep 17 21:02:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Several fixes to the test suite.
+  + Color:
+    - Correct the transposed bits in the EDID parser.
+  + Datetime:
+    - Set geoclue distance threshold.
+  + Power:
+    - Fix a crash when hibernating on low power.
+    - Ignore battery devices that aren't present.
+    - Update the composite device on startup.
+    - Default to the keyboard backlight being unavailable.
+  + Updates:
+    - Fix a crash.
+    - Use gnome-software if it is installed.
+    - Do not clear the offline-update if rebooting succeeded.
+  + Wacom:
+    - Fix a crash.
+
+-------------------------------------------------------------------
+Fri Sep  6 17:56:00 UTC 2013 - dimstar@opensuse.org
+
+- Drop gnome-packagekit-fate302445.patch (was marked for rebase):
+  since smolt was dropped from openSUSE back in October 2012, there
+  is no need to ever revive this patch.
+- Drop gnome-settings-daemon-apport-monitor.patch (was marked for
+  rebase): the patch was disable prior to GNOME 3.0 back in 2010
+  and nobody cared.
+- Drop gnome-settings-daemon-add-layout-switcher.patch (was marked
+  for rebase): Has not been applied since version 3.0.0 and the
+  upstream bug is marked as fixed.
+
+-------------------------------------------------------------------
+Wed Sep  4 07:13:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91.1:
+  + Datetime:
+    - Adapt to geoclue 1.99.3 api changes.
+  + Screensaver:
+    - Support KDE variant of interface.
+    - Fix a crash.
+- Add pkgconfig(geoclue-2.0) BuildRequires: needed to identify the
+  geoclue 1.99.3 API presence.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:42:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Datetime:
+    - Avoid popping up polkit password prompts.
+    - Display notifications on timezone changes.
+    - Use reverse geocoding fror country detection.
+    - Use libgweather timezone info too.
+  + Power:
+    - Fix error handling in dbus API, avoiding assertions.
+  + Printer:
+    - Allow building against cups 1.5.
+  + Remote display:
+    - Disable animations in more situations.
+  + Rfkill:
+    - Fix a crash.
+  + Smartcard:
+    - Ignore softtoken.
+  + Updates:
+    - Add a test application.
+    - Notify about available offline updates.
+  + XSettings:
+    - Keep middle-click paste enabled for now.
+- Add pkgconfig(geocode-glib-1.0), pkgconfig(gweather-3.0) and
+  pkgconfig(polkit-gobject-1.0) BuildRequires: dependencies for
+  the datetime panel updates.
+- Drop gnome-settings-daemon-cups-1.5.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Aug 20 19:28:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Consolidate access to common bus proxies like session and
+    screensaver.
+  + Housekeeping:
+    - Fixed a bug that would prevent files in the Trash from being
+      purged.
+  + Media-keys:
+    - Add a way to watch DBus namespaces.
+    - Use an MPRIS interface to handle Play, Pause, etc. keys in
+      case we don't have a native client registered for our
+      media-keys API.
+    - Add a binding to take a short screencast of the screen.
+    - Add a shortcut to toggle the screen reader.
+  + Mouse:
+    - Enable edge scrolling if two-finger scroll is unavailable.
+  + Power:
+    - Add Brightness property for keyboard backlights.
+    - Use logind to discover critical action availability.
+  + Printers:
+    - Code cleanup.
+    - Do more things asynchronously.
+    - Poll remote CUPS servers for notifications.
+  + RFKill:
+    - Add a property to determine whether we can toggle airplane
+      mode.
+  + XRandR:
+    - Stop handling monitors.xml and the initial modeset for the
+      session, as well as monitor hotplug and lid switches. All
+      that is implemented in mutter now.
+  + XSettings:
+    - Disable middle-click paste by default. Can be enabled in
+      gnome-tweak-tool.
+    - Add support to detect and set a scale factor on high DPI
+      displays.
+- Add gnome-settings-daemon-cups-1.5.patch: Allow building against
+  cups 1.5.
+
+-------------------------------------------------------------------
+Tue Jul 30 16:26:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.5:
+  + Add RFKill support for Linux systems.
+  + Smartcard plugin rewrite.
+  + Build:
+    - Don't create empty directories in /etc.
+    - Remove some GTK+ includes that we do not use.
+  + Color:
+    - Update for new functionality in colord.
+    - Disable X11 specific color management when running on
+      Wayland.
+  + Cursor:
+    - Request the OSK when the cursor is disabled (requires
+      gnome-shell changes).
+  + Media-keys:
+    - Fix launched apps not getting focused.
+  + Power:
+    - Use a property for the screen brightness, instead of custom
+      API.
+  + Housekeeping:
+    - Create ~/.local/share/applications so that gnome-shell can
+      monitor it.
+  + Printers:
+    - Translate printer warnings.
+  + Wacom:
+    - Use the OSD window to edit button shortcuts.
+    - Fix the ring not showing up in the OSD in some cases.
+    - Prevent the OSD flashing on the primary screen.
+    - Make the highlight duration of buttons in the OSD longer fade
+      in/out.
+    - Add support for custom OLEDs.
+    - Make sure we only ignore the touch device when turning it
+      off.
+    - Fix UI problems with the OSD.
+  + XRandR:
+    - Use the transformation matrix to rotate touchscreens.
+    - Simplify layout of adjacent screens, fixing bugs on some
+      changing systems.
+    - Don't ever show a dialog for xrandr failures.
+  + XSettings:
+   - Hardcode deprecated GTK+ XSettings.
+- Change with_smartcard defines to 1: smartcard support has been
+  rewritten and is available again.
+
+-------------------------------------------------------------------
+Fri Jul 12 21:41:21 CST 2013 - hillwood@linuxfans.org
+
+- Enable ibus intergration (define with_ibus 1), as Factory is now
+  shipping a recent enough version again.
+
+-------------------------------------------------------------------
+Fri Jun 28 14:03:19 UTC 2013 - dimstar@opensuse.org
+
+- Drop rpmlintrc, as the polkit privileges were approved for
+  Factory (final security review pending).
+
+-------------------------------------------------------------------
+Fri Jun 21 19:23:51 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Color:
+    - Bump colord dependency.
+  + Daemon:
+    - Fix possible crash on start when calling setenv() after
+      starting threads.
+  + Keyboard:
+    - Don't show on the bus before we're fully initialised.
+  + Power:
+    - Fix non-transient notifications sticking around.
+    - Simplify composite battery as advertised in the D-Bus API.
+  + Updates:
+    - Make sure only one notification appears.
+  + Wacom:
+    - Fix calling for calibration from the notification.
+    - Add configure button to the OSD window.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+- Drop gnome-settings-daemon-disabled-ibus.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu May 30 07:09:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.2:
+  + Color:
+    - Simplify code by using new libcolord feature.
+    - Fix warning with some screens.
+    - Fix possible CPU burn loop.
+  + Cursor:
+    - Disable plugin if the X version is too old.
+  + Housekeeping:
+    - Use GSettings features to clamp options.
+    - Fix incorrect handling of ignore_paths.
+  + Keyboard:
+    - Get layouts and variants from localed.
+    - Get XKB options from localed.
+    - Always try to activate the ibus daemon.
+    - Use the gtk+ ibus module if there's at least one ibus source.
+    - Make sure the XKB group in use is always what we want.
+    - Without settings or under GDM, make sure to add the US
+      layout.
+    - Add SetInputSource DBus method.
+    - Remove the input source switcher helper.
+    - Convert the XKB group switch option from libgnomekbd.
+    - Stop adding locale based input sources from a hardcoded list.
+  + Media-keys:
+    - Handle key grabbing and volume OSDs in gnome-shell.
+    - Remove unused multi-head support.
+    - Remove label for analog-output ports.
+    - Avoid leaking DESKTOP_AUTOSTART_ID to children.
+    - Fix possible crash when changing the volume.
+    - Add Rotation lock support.
+    - Change default 'Lock screen' keybinding to be Super+L.
+    - Show Shell's search when pressing the search button.
+    - Add support for XF86AudioMicMute key.
+  + Mouse:
+    - Enable two-finger scrolling by default.
+  + Plugins:
+    - Fix priority handling.
+    - Update for gnome-desktop API change.
+  + Power:
+    - Handle the shell coming back with a different screensaver
+      state.
+    - Don't change active state variable in VM.
+    - Don't look for screens if we don't have a lid.
+    - Don't poll for external monitors.
+    - Remove pre-dim brightness hack.
+    - Make "Screen when inactive" button in Settings work.
+  + Sound:
+    - Fix creation of sound theme directories.
+  + Updates:
+    - Fix a number of possible crashers, especially on exit.
+  + Wacom:
+    - Warn when screen has changed and calibration is needed.
+    - Add OLED support for Intuos4 tablets.
+    - Warn when tablet is not supported in GNOME.
+  + XSettings:
+    - Drop toolbar-style workaround.
+- Add pkgconfig(pango) BuildRequires: new dependency of the wacom
+  module.
+- Add gnome-settings-daemon-disabled-ibus.patch: Fix build with
+  configure --disable-ibus.
+- Add rpmlintrc to not hard block on the missing polkit privileges.
+
+-------------------------------------------------------------------
+Tue May 14 11:34:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Color:
+    - Remove warning for some laptop docks.
+    - Don't try to parse temporary files we generate.
+  + Media-keys:
+    - Don't show a label for "analog-output" ports.
+  + Power:
+    - Fix brightness not being restored on resume on some systems.
+    - Make "Turn off screen when inactive" switch work.
+
+-------------------------------------------------------------------
+Tue Apr 16 11:17:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Cursor:
+    - Fix possible crashes on older versions of X.org.
+  + Keyboard:
+    - Cancel outstanding D-Bus operations when stopping.
+    - Enforce the XKB group when changing layouts.
+    - Make sure to add the XKB US layout in GDM on empty
+      configurations.
+  + Media-keys:
+    - Fix race condition with gnome-shell on startup.
+    - Fix broken startup notifications.
+    - Fix possible crash when changing the volume.
+    - Fix crash when the shell vanishes and reappears.
+  + Mouse:
+    - Enable two-finger scrolling by default.
+  + Power:
+    - Don't change the active state when running in a VM.
+    - Fix compilation on non-Linux platforms.
+  + Printers:
+    - Fix deprecation compile-time warnings.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:15:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Color:
+    - Set the default profile locale to be en_US, not EN_us.
+  + Cursor:
+    - Fix crash with X.org prior to 1.14, requires a matching
+      gnome-desktop release as well.
+  + Power:
+    - Fix state problems if gnome-shell crashes or is killed within
+      the screensaver.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 21:40:18 UTC 2013 - dimstar@opensuse.org
+
+- Fix gnome-settings-daemon-bnc462640-mute-action.patch: At some
+  point the schema changed and even though the patch applied, it
+  was at the wrong point in the schema.
+
+-------------------------------------------------------------------
+Tue Mar 19 20:07:51 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Font:
+    - Remove reference to font schema.
+  + Keyboard:
+    - Fix extra layouts being forgotten on GDM's second launch.
+    - Fix dead keys and similar features being broken in legacy
+      applications.
+    - Avoid delay switch to IBus input source the first time
+      around.
+  + Media keys:
+    - Remove obsolete check for XInput2.
+    - Use the shell's D-Bus interface to show OSDs.
+    - Fix warnings on startup trying to call gnome-shell.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 14:43:49 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Cursor:
+    - Disable code to make it popup the On-Screen Keyboard on
+      touchscreens.
+  + Media keys:
+    - Key grabbing is now done in gnome-shell, which fixes problems
+      with keybindings not working in certain conditions.
+  + Sound:
+    - Fix possible crashes when starting in a clean home directory.
+
+-------------------------------------------------------------------
+Tue Feb 19 19:01:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Set locale and IBus envvars on startup for our children.
+  + Remove background plugin, as background handling is now done in
+    gnome-shell.
+  + A11y settings:
+    - Import GIO instead of GTK+/GDK.
+    - Do enable toolkit accessibility, even if we don't need it,
+      for the benefit of third-party/legacy toolkits and apps.
+  + Cursor:
+    - Enable the on-screen keyboard when touch is used.
+  + Keyboard:
+    - Adapt to gnome-xkb-info API change.
+  + Media keys:
+    - Add other bindings to the whitelist.
+  + Power:
+    - Make blanking timeouts match.
+    - Show notifications when about to suspend from idle.
+    - Wake up the display when about to logout.
+    - Adapt to new GnomeIdleMonitor API.
+    - Don't change the brightness on inactive sessions.
+  + Remote Display:
+    - Disable animations on Xvnc as well.
+    - Re-enable animations if Vino is gone.
+  + Sound:
+    - Avoid polling non-existent directories.
+  + Updates:
+    - Fix crasher when firmware updates is disabled.
+  + XSettings:
+    - propagate the remember-recent-files GSetting to XSettings.
+  + Wacom:
+    - Bump req for GDK_FULLSCREEN_ON_ALL_MONITORS.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:05:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5.1:
+  + Fix keyboard shortcut handling with XI 2.3.
+
+-------------------------------------------------------------------
+Tue Feb  5 19:12:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.5:
+  + A11Y Keyboard:
+    - Disable everything on exit if no settings changed.
+    - Remove GTK+ fallback dialogues.
+  + Color:
+    - Set the correct metadata on the auto-created EDID profile.
+    - Switching to a new account shouldn't warn.
+  + Daemon:
+    - Also apply LC_PAPER.
+  + Media Keys:
+    - Use D-Bus API to lock the screen.
+    - Use F20 for the temporary mic mute key.
+  + Power:
+    - Add way to disable the backlight helper.
+    - Avoid dead-locking with gnome-shell on startup.
+    - Avoid possible crash when shutting down quickly or at
+      startup.
+    - Drop explicit screen locking on suspend.
+    - Fix incorrect backlight level on restore.
+    - Handle dim idle the same way as other idles.
+    - Lots of test additions.
+    - Wake up the display when unplugging the AC too.
+  + Remote DIsplay:
+    - Detect SPICE sessions as well.
+    - Monitor Vino's Connected status.
+  + Screenshot:
+    - Save to GtkRecentManager on success.
+    - Lots of test additions.
+  + Updates:
+    - Allow the shell time to initialize before checking for
+      offline update failures.
+  + Wacom:
+    - Use regular fullscreen window for OSD.
+  + Updated translations.
+- Rebase gnome-settings-daemon-notify-idle-resumed.patch.
+
+-------------------------------------------------------------------
+Mon Jan 21 03:43:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Color:
+    - Addition to implement new mockups in gnome-control-center
+  + Housekeeping:
+    - Fix purging not working
+  + Keyboard:
+    - Don't migrate ibus xkb engines
+  + Media-keys:
+    - Save screenshots without using gnome-screenshot
+    - Updated design for the on-screen OSD
+    - Show output device when changing the volume
+    - Add OSD support for the "Battery" key on certain laptops
+    - Add support for the microphone mute key on certain keyboards
+    - Move sound initialisation out of the critical startup path
+  + Power:
+    - Add test suite
+    - Fix Power settings panel not picking up the updated
+      brightness
+    - Fix dimming of the screen not working, and don't dim when
+      inhibited
+    - Fix timeouts being longer than configured in some cases
+    - Aggressively blank the screen when the shield is down
+    - Update idle configuration when plugging or unplugging the
+      mains
+    - Really turn off the screen on suspend for MacBook laptops
+    - Allow overriding VM detection with the gnome.is_vm=[01]
+      kernel command-line parameter
+  + Updates:
+    - Support notification filtering
+  + Wacom:
+    - Fix problems resetting touch buttons on 64-bit systems
+    - Allow switching modes while OSD is active
+  + XRandR:
+    - use default-monitors-setup for autoconfiguration even after
+      boot
+  + Updated translations.
+- Drop gnome-settings-daemon-double-suspend.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 21 02:49:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.3:
+  + Add implementation for Freedesktop.org ScreenSaver inhibition
+    API
+  + Disable animations on slow links (VNC for example)
+  + Remove fallback mode handling code
+  + Disable the smartcard plugin for now
+  + Cursor:
+    - Only show the cursor when the mouse gets used
+  + Daemon:
+    - Many plugins ordering bug fixes
+    - Use gnome-session properties instead of libsystemd-login
+    - Allow whitelisting plugins, to make it easier for gdm to
+      catch up
+    - Install all the schemas, even the ones for which the plugins
+      aren't installed
+    - Add a way to replace the daemon
+    - exit gracefully if the session name is already taken
+  + Housekeeping:
+    - Implement automatic purging of trash, along with a D-Bus
+      interface for it
+  + Keyboard:
+    - Fix build without IBus
+    - Fix potential infinite loop due to num-lock handling
+    - Don't print warnings when calls are cancelled
+    - Handle keyboard shortcuts with Caps Lock for switching inputs
+  + Media-keys:
+    - Use the shared libgnome-volume-control code
+    - Support launching gnome-calculator instead of gcalctool
+    - Add default shortcuts for the magnifier
+    - Add repeat to the brightness keys
+  + Mouse:
+    - Fix natural horizontal scroll
+  + Power:
+    - Remove unused settings keys
+    - Do not attempt to suspend, dim or blank if running inside a
+      VM
+    - Port to GnomeIdleMonitor from gnome-desktop
+    - Adjust sleep timer to blank timer in some cases
+    - Check if action is available before taking action
+    - Hide critical battery warning when power is plugged
+    - Fix possible race with gnome-shell on startup
+  + Print-notifications:
+    - Don't show strange notifications when printing
+  + Sound:
+    - Fix sound plugin never working properly
+  + Updates:
+    - Fix warning on startup with PackageKit < 0.8.1
+  + Wacom:
+    - Avoid infinite recursion with a non-Wacom display
+    - Fix handling of Cintiq 24HD mode-switch buttons
+    - Mode switch LED fixes for some tablets
+    - Add OSD help window (see gnome-control-center for how to
+      launch it)
+  + XRandR:
+    - Add new follow-lid behavior and tie gsd-power lid-close to
+      XRandR
+    - Avoid crasher if XRandR calls fail on startup
+    - Fix the "rotate" button not working
+    - Swap axes for some (non-Wacom) tablets as well
+- Add pkgconfig(librsvg-2.0) BuildRequires: new dependency for the
+  wacom plugin.
+- Drop gnome-settings-daemon-build-without-ibus.patch: fixed
+  upstream.
+- Rebase gnome-settings-daemon-bnc462640-mute-action.patch.
+- Define with_smartcard, set to 0, to conditionally package the
+  smartcard plugin. Currently disabled, as it's broken.
+
+-------------------------------------------------------------------
+Mon Jan 21 01:31:29 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-settings-daemon-build-without-ibus.patch: Fix build
+  without IBUS.
+- Clean up the BUILD_FROM_VCS conditions.
+
+-------------------------------------------------------------------
+Mon Jan 21 00:50:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.1:
+  + Daemon:
+    - Provide a singleton SessionManager proxy object
+    - Ensure session registration happens before other idles
+    - Use logind for suspending and rebooting the system
+    - Require logind for session tracking
+  + Input:
+    - Clarify hotplug command exit value handling
+    - Add trackball detection
+  + Keyboard:
+    - Add default ibus engine for Indic locales
+    - Don't apply global settings for every keyboard
+  + Mouse:
+    - Re-enable touchpad when mouse isn't present
+  + Power:
+    - Fix "no devices" error path in gsd-backlight-helper
+    - Add a watchdog to keep X's builtin screen saver disabled
+    - Fix a number of possible crashers
+  + Wacom:
+    - Add support for touchstrips and touchrings without a
+      modeswitch
+  + XSettings:
+    - Optimise xsettings changes.
+- Change with_systemd defines to 1 in order to enable systemd.
+
+-------------------------------------------------------------------
+Sun Jan 20 11:38:01 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-settings-daemon-double-suspend.patch: Fix double
+  suspend: if GNOME is configured to suspend on lid close, the
+  system goes directly back in sleep upon a wakeup call. Only the
+  2nd wake up is successful and persistent. This issue comes from
+  systemd and gnome both executing suspend.
+
+-------------------------------------------------------------------
+Sun Jan 13 18:48:52 UTC 2013 - zaitor@opensuse.org
+
+- Add gnome-settings-daemon-notify-idle-resumed.patch, notify user
+  about auto suspend when returning from sleep (bnc#708182).
+
+-------------------------------------------------------------------
+Thu Nov 15 19:23:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.3:
+  + Keyboard: Add keyboard shortcuts including CapsLock to switch
+    input sources..
+  + Mouse: Fix horizontal natural scrolling.
+  + Power: Fix a warning on startup.
+
+-------------------------------------------------------------------
+Thu Nov  8 18:37:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Make test applications work when libnotify was used.
+  + Keyboard:
+    - Add default ibus engine for Indic locales.
+    - Prevent 100% CPU usage related to remembering Num-Lock state.
+    - Don't print warning messages when resuming from suspend.
+  + Power:
+    - Fix screen dimming and power saving even when inhibited.
+    - Don't suspend, dim or blank when running in virtual machines.
+    - Fix warning output in the Brightness & Lock panel.
+    - Fix possible crash when the backlight fails to be turned off
+      for example.
+  + Sound:
+    - Fix alert sound changes requiring a log out/login to apply.
+  + Updates:
+    - Don't require the user to click OK to clear the message for
+      successful offline updates.
+  + Wacom:
+    - Fix touchstrips and touchrings without a modeswitch.
+  + XSettings:
+    - Make startup smoother by batching settings updates together.
+- Change with_systemd defines to 1 in order to enable systemd.
+
+-------------------------------------------------------------------
+Wed Oct 10 06:29:11 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Color:
+    - Fix possible crashers on exit
+  + Keyboard:
+    - Allow grabbing the Menu key
+    - Apply XKB variants and options for each IBus engine
+    - Don't setup legacy toolkits if IBus is missing
+    - Add default setup for some particular languages
+    - Convert old libgnomekbd and IBus configurations
+    - Add support for more modifiers only combinations
+    - Fix input switching eating the modifiers keys in some cases
+  + Mouse:
+    - Fix "Locate Pointer" eating the Ctrl key
+    - Fix "Locate Pointer" animation showing when the Ctrl key has
+      been used
+  + Updates:
+    - Never show the user a message about cancelled transactions
+  + Wacom:
+    - Fix LEDs switching for some tablet models
+  + Housekeeping:
+    - Fix possible crashers on exit.
+
+-------------------------------------------------------------------
+Tue Oct  2 16:59:37 UTC 2012 - dimstar@opensuse.org
+
+- Add with_ibus condition (currently set to 0), as we do not have
+  a recent enough version of IBus in Factory at this moment.
+  + when with_ibus is set to 1; pkconfig(ibus) BuildRequires will
+    be used and --enable-ibus is being passed to configure
+  + when with_ibus is set to 0, pkgconfigu(ibus) is being ignored
+    and --disable-ibus is being passed to configure.
+
+-------------------------------------------------------------------
+Tue Sep 25 14:34:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Create sources from the X layouts if the configuration is empty
+  + Always do that in GDM, so system-wide layouts work
+  + Add modifiers-only shortcuts to switch input sources.
+
+-------------------------------------------------------------------
+Mon Sep 17 22:28:14 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Keyboard:
+    - Don't block getting the IBus global engine.
+    - Don't touch the XKB layout if no input sources were
+      configured.
+    - Fix gtk+ IM module getting set to IBus for XKB sources.
+  + Media keys:
+    - Make "toggle brightness" work.
+  + Color:
+    - Don't warn about non-existent DMI file.
+  + Power:
+    - Fix some instances where an external screen would turn off.
+  + Wacom:
+    - Require wacom 0.6 to fix bugs with some tablets.
+
+-------------------------------------------------------------------
+Sat Sep  8 08:16:37 UTC 2012 - vuntz@opensuse.org
+
+- Drop gnome-settings-daemon-bnc461755-randr-rotate-wacom.diff:
+  this needed to be rebased for a long time, and there's a rocking
+  support for wacom tablets upstream now. So this is most likely
+  not needed anymore.
+
+-------------------------------------------------------------------
+Sat Sep  8 07:29:13 UTC 2012 - vuntz@opensuse.org
+
+- Add explicit pkgconfig(libpulse-mainloop-glib) BuildRequires:
+  we forgot to add it when adding pkgconfig(libpulse).
+- Add pkgconfig(xext) BuildRequires: new explicit dependency in
+  3.5.5 for the power plugin that needs the XSync API.
+
+-------------------------------------------------------------------
+Tue Sep  4 21:09:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Keyboard:
+    - Don't handle IBus for fallback, it will use the same UI it
+      always did.
+    - Hook IBus support for legacy applications.
+  + Mouse:
+    - Fix natural-scroll not working until switched off and on
+      again.
+  + Power:
+    - Do not attempt to change the brightness of an output that was
+      disabled.
+    - Fix idle blank and sleep timeout.
+
+-------------------------------------------------------------------
+Tue Aug 21 20:43:37 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Keyboard:
+    - Apply XKB options
+  + Mouse:
+    - Add support for natural scroll for touchpads
+  + Power:
+    - Fix D-Bus path of the screensaver
+  + Wacom:
+    - Implement the "switch monitor" combination
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  8 18:05:32 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.6:
+  + Build:
+    - Add optional man page.
+    - List plugin schemas as children of the main schema.
+  + Keyboard:
+    - Require ibus 1.4.99 for ibus support.
+  + Mouse:
+    - If one device was ignored, we would ignore all the devices.
+  + Smartcard:
+    - Don't try to use smartcard drivers that didn't load.
+  + Updates:
+    - Remove unused code.
+    - Avoid compilation warnings due to PackageKit API changes.
+  + Wacom:
+    - Avoid a warning at login.
+- Add xsltproc BuildRequires: needed to build the man pages.
+
+-------------------------------------------------------------------
+Tue Jul 17 20:10:49 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Add test applications for a number of plugins
+  + Color:
+    - Fix notification-related memory leaks
+  + Housekeeping:
+    - Fix notification-related memory leaks
+  + Keyboard:
+    - Add support for switching to IBus input methods
+  + Updates:
+    - Remove unused settings
+    - Remove a number of unused notifications
+    - Don't ever live-update packages in the session
+    - Fix a number of memory leaks
+    - Prevent crash if a device that requires a firmware is removed
+      before the firmware search completes
+  + Wacom:
+    - Fix crasher related to screen tablets
+    - Do not rotate "pad" devices
+    - Apply display rotation to device that's mapped to it
+    - Make shortcuts that require Shift work as expected
+    - Re-apply calibration and aspect-ratio when the screen changes
+      but don't apply it to touch devices.
+- Add pkgconfig(ibus-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Jun 27 08:17:19 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Printers:
+    - Don't block the session with unreachable printers
+  + Wacom:
+    - Fix crasher related to screen matching
+
+-------------------------------------------------------------------
+Mon Jun 25 19:28:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Housekeeping:
+    - Support new XDG thumbnail directory locations
+  + Keyboard A11y:
+    - Don't crash when changing large print in fallback mode
+    - Link to an existing help page
+  + Keyboard:
+    - Don't crash if LANG is empty
+  + Media-keys:
+    - Make <Super> keyboard shortcuts work again
+    - Use systemd to shutdown or suspend if available
+  + Mouse:
+    - Only inhibits mouse clicks and scrolls with syndaemon
+  + Power:
+    - End the lid-close safety timer when the lid gets opened
+    - Update fallback status icon on icon state change
+    - Don't leak notifications
+    - Avoid duplicate translations
+    - Use systemd to shutdown or suspend if available
+    - Don't enable backlight helper if GUdev is not available
+  + Updates:
+    - Adapt to new upstream property name
+    - Add a notification for offline updates
+  + Wacom:
+    - Update display mapping on monitor changes
+    - Flag unknown devices created from fallback
+    - Add keep aspect ratio option
+    - Use GnomeRROutput instead of GnomeRROutputInfo
+    - Match built-in monitor
+  + XRandr:
+    - Explicitly set clone state variable when generating monitor
+      configs.
+- Drop gnome-settings-daemon-only-inhibit-touchpad-tapping.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jun  9 17:08:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.2:
+  + Remove ability to D-Bus activate
+  + Media keys:
+    - Get proper gnome-keyring environment
+    - Simplify the OSD code
+    - Add keybindings to switch input sources
+  + Mouse:
+    - Fix applying settings to newly added touchpads
+    - Reduce default touchpad deactivation to 1s
+  + Housekeeping:
+    - Split out 'ignore unix mount' code
+  + Keyboard:
+    - Always apply xmodmap
+    - Lots of cleanups
+    - Apply XKB layouts ourselfs and stop relying on libgnomekbd
+  + Power:
+    - Disconnect from upower signals when needed
+    - Add org.gnome.settings-daemon.plugins.power.lid-close-
+      suspend-with-extrnal-monitors
+      key to allow forcing suspend on lid close
+  + Print:
+    - Fix setting of default media size
+    - Don't create an unused proxy object
+    - Speed up initialization
+  + Updates:
+    - Automatically download updates rather than installing them
+  + Wacom:
+    - Disable wacom support on s390
+    - Disable wacom support on non-linux
+    - Don't put touchscreens in relative mode
+    - Make tablet configuration per-machine
+  + Color:
+    - Be quiet about unloadable profiles
+  + Updated translations.
+- Drop pkgconfig(libxklavier), pkgconfig(libgnomekbd) and
+  pkgconfig(libgnomekbdui) BuildRequires.
+- Add pkgconfig(xkbfile) BuildRequires: add upstream after
+  libgnomekbd dependency got dropped.
+- Drop gnome-settings-daemon-reduce-tap-delay.patch: fixed upstream
+- Rebase gnome-settings-daemon-bnc462640-mute-action.patch.
+
+-------------------------------------------------------------------
+Wed Jun  6 21:05:32 UTC 2012 - badshah400@gmail.com
+
+- Add gnome-settings-daemon-reduce-tap-delay.patch to reduce the
+  delay between the last keystroke and the first touchpad tap when
+  the option "Disable touchpad when typing" is enabled in mouse
+  options in gnome-control-center (bgo#590783)
+- Add gnome-settings-daemon-only-inhibit-touchpad-tapping.patch to
+  inhibit only tapping and not affect pointer motion or scrolling
+  using the touchpad when the option "Disable touchpad when
+  typing" is enabled in mouse options in gnome-control-center
+  (bgo#673055)
+- Pass --libexecdir option to ./configure to change the
+  installation dir of program executables to
+  %{_libexecdir}/gnome-settings-daemon-3.0; fixes bnc#758592.
+
+-------------------------------------------------------------------
+Tue May 15 13:58:09 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.2:
+  + General:
+    - Fix memory leaks
+  + Media-keys:
+    - Fix applications launching through keyboard shortcuts not
+      using the session's ssh agent, or keyrings
+  + Mouse:
+    - Fix arguments passed to the custom command
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:40:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Mouse:
+    - Fix applying settings to touchpads
+  + Printers:
+    - Use PrinterAddOption method to set media size
+  + Updates:
+    - Fix possible crashes when exiting
+  + Wacom:
+    - Don't put touchscreens in relative mode, just touch tablets
+      (such as the Bamboo Touch)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 17:36:27 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Wacom:
+    - Check if the "last-stylus" property has been set
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 20:15:40 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.92:
+  + Color:
+    - Apply the color profile even if the device has an invalid
+      EDID.
+    - Create a color device even if the device has an invalid EDID.
+    - Don't use the username in the profile ID, it's optional and
+      not-required.
+  + Common:
+    - Add hint on how to set the script path.
+    - Fix library linkage on Mageia.
+    - Support explicitly setting G_MESSAGES_DEBUG.
+  + Media Keys:
+    - Avoid hard-coded shortcuts not working.
+    - Call Shutdown for the logout action.
+  + Mouse:
+    - Stop syndaemon when settings-daemon dies.
+  + Power:
+    - Do not emit DBus interface change signals when doing the idle
+      dim.
+    - Don't print a message when no backlights are detected.
+    - Failing to clear DPMS timeouts should not be fatal.
+    - Fix broken abs_to_percentage() logic.
+    - Lazily connect to gnome-screensaver.
+    - Lock the screensaver if the lid is closed and lock is
+      enabled.
+    - Make the idle dim time 90 seconds to match OSX.
+  + Print Notifications:
+    - Add test tool.
+    - Don't unref floating GVariant.
+  + Wacom:
+    - Add README about configuration storage.
+  + XRandR:
+    - Fix the rotate display button not working.
+    - List external display only before internal only.
+  + XSettings:
+    - Add README.xsettings about overrides.
+    - Add test-xsettings program.
+    - Add xsettings_setting_get() accessor.
+    - Add XSETTINGS_VARIANT_TYPE_COLOR macro.
+    - Always call xsettings_setting_set().
+    - Don't return XSettingsResult codes.
+    - Introduce 'tiers' of XSettings.
+    - Load overrides on startup.
+    - Remove global 'settings' list.
+    - Switch manager to GLib memory functions.
+    - Switch to GVariant for value storage.
+    - Use GHashTable in the xsettings manager.
+    - Wire overrides into GSettings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 21:45:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.91:
+  + Color:
+    - Fix warning with non-present devices
+    - Make displays without EDID data use the correct device ID
+    - Create the correct device ID for EDIDs with no text data
+    - Fix EDID checksum generation
+  + Media-keys:
+    - Make Alt+Print appear as Alt+Print not Alt+SysRq
+  + Power:
+    - Emit a Changed() signal when the backlight changes
+    - Don't overflow when pressing the keyboard brightness button
+  + Wacom:
+    - Add support for mode switch buttons, touchrings, touchstrips,
+      and light up the LEDs appropriately
+    - Add support for current tool ID from Wacom driver
+    - Fix possible crasher setting pressure curve or display area
+    - Force touchpads to use relative mode and ignore mode changes
+    - Fix double-event generation
+    - Fix installation problems with libexecdir == libdir
+    - Make monitor == -1 reset the display configuration
+- Drop gnome-settings-daemon-fix-install.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 23 16:50:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.90.1:
+  + Fix build with --enable-systemd
+- Changes from version 3.3.90:
+  + Build:
+    - Remove last requirement for dbus-glib
+    - Remove use of deprecated g_thread_init()
+    - Fix linking with -Bsymbolic
+  + Color:
+    - Set _ICC_PROFILE correctly when there is no primary device
+      specified
+  + Keyboard:
+    - Fix blinking num-lock in some circumstances
+  + Power:
+    - Fix possible crasher in backlight helper on error
+  + Wacom:
+    - Add tablet button listing and settings
+    - Add display mapping
+- Add pkgconfig(xorg-wacom) and pkgconfig(xtst) BuildRequires: new
+  dependencies for the wacom plugin.
+- Stop using %{_libexecdir}/gnome-settings-daemon-3.0 as
+  libexecdir: we were only doing this to avoid migration issues
+  from <= 11.4 (where %{_libexecdir}/gnome-settings-daemon/ was
+  used as libexecdir).
+- Add gnome-settings-daemon-fix-install.patch: fix installation
+  issue that is exhibited when libdir = libexecdir, where the
+  gnome-settings-daemon binary would not be where it should.
+
+-------------------------------------------------------------------
+Tue Feb  7 19:11:41 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.5:
+  + Build:
+    - Remove unused date & time mechanism. gnome-control-center
+      uses a different API, provided by systemd on some systems.
+  + A11y keyboard:
+    - Reduce the number of settings updates on startup
+  + Automounter:
+    - Optionally use systemd to check for active seat
+  + Color:
+    - Set the brightness of the display if it was saved as
+      metadata in the color profile
+  + Keyboard:
+    - Don't save num-lock state when caps-lock changes
+  + Media keys:
+    - Add screenshot keyboard shortcuts
+  + Power:
+    - Require a newer upower
+    - Optionally use systemd to shutdown when power is low
+    - Use GDBusProxy-compatible PropertiesChanged signal
+    - Fix "<br>" appearing in notification popups
+  + Printers:
+    - Also notify for unknown error reasons
+    - Unify printer name usage
+  + Wacom:
+    - Add a way to get/set the screen associated with a tablet
+    - Don't crash when using a generic tablet
+    - Add support for the puck and touch device types
+    - Add support for enumerating tablet buttons
+  + Media keys, XSettings, Updates:
+    - Fix possible crashes on exit
+  + Housekeeping, Wacom, XSettings:
+    - Fix memory leaks
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Remove pkgconfig(dbus-glib-1), pkgconfig(polkit-gobject-1)
+  BuildRequires: not needed anymore.
+- Remove polkit-datetime subpackage: this polkit mechanism is gone
+  upstream.
+- Get ready for full-switch to systemd:
+  + Add a with_systemd macro, currently set to 0 as the systemd
+    support implies no support for ConsoleKit, which we want to
+    keep until sysvinit is not supported anymore.
+  + Add pkgconfig(libsystemd-login) BuildRequires and pass
+    --enable-systemd to configure if we build systemd support.
+
+-------------------------------------------------------------------
+Tue Jan 17 16:09:49 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Build:
+    - Fix distribution of a pre-processed desktop file
+  + Daemon:
+    - Fix --debug not working
+    - Remove gnome_settings_session_get_screen() and
+      gnome_settings_session_get_upower_client(), as the underlying
+      functions return singletons
+  + Color:
+    - Fix some screen setups not being color corrected
+  + Wacom:
+    - Fix loading of the plugin
+    - Fix GSettings read/write for per-tablet/per-styli configs
+    - Export more tablet and stylus metadata
+  + XRandR:
+    - Better handling of docking stations and plugging of external
+      monitors (for suspend, and turning off monitors to work as
+      designed)
+- Drop hack removing data/gnome-settings-daemon.desktop.in in
+  %setup: the issue is fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan  5 14:42:14 UTC 2012 - vuntz@opensuse.org
+
+- Remove data/gnome-settings-daemon.desktop.in from tarball before
+  building since we need to generate it with the proper libexec
+  directory, else gnome-settings-daemon will never start properly.
+  See bgo#666772.
+
+-------------------------------------------------------------------
+Thu Jan  5 08:03:19 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.3.1:
+  + Wacom:
+    - Fix referenced module name
+- Changes from version 3.3.3:
+  + Common:
+    - Remove unused X key event code
+  + Wacom:
+    - Lots of infrastructure buildup that I can't really summarize
+      here
+    - Rename plugin to avoid name clash with libwacom
+    - Use libwacom to get tablet metadata
+    - Implement per-device and per-stylus settings
+  + Power:
+    - Add the vendor name to the battery recall warning
+      (bgo#664418)
+    - Add automatic dimming of keyboard backlight
+  + Print:
+    - Prevent crashes when cups sends malformed D-Bus signals
+      (bgo#665689)
+  + XSettings:
+    - Set GtkShellShowsAppMenu xsetting when the shell is running
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Add pkgconfig(libwacom) BuildRequires: new dependency upstream.
+
+-------------------------------------------------------------------
+Mon Nov 21 18:38:24 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Common:
+    - Remove left-over debug (bgo#660073)
+    - Fix handling of <Primary>
+    - Update required gnome-desktop version
+    - Return opcode when detecting XInput2
+    - Add helper to get the input device node
+    - Use XInput2 to capture and match keys
+    - Use GTK+ functions instead of own impl (bgo#663343)
+    - Fix small memleak
+    - Allow to grab 'Print' without modifiers (bgo#663623)
+    - Require gsettings-desktop-schemas 3.3.0
+  + A11y keyboard:
+    - Port to GSettings (bgo#631502)
+  + Automount:
+    - Call bind_textdomain_codeset()
+  + Color:
+    - Do not load all the color devices twice at startup
+    - Don't assign the same device more than once at startup
+    - Fix a crash if ~/.local is deleted at runtime (bgo#660664)
+    - Simplify gcm_profile_store_mkdir_with_parents()
+    - Cancel any in-progress directory searching on plugin unload
+    - Do not check for directory presence sync
+    - Fix critical warning if the user disables the internal LCD
+      screen
+    - Reset the gamma tables when the screen configuration changes
+      (bgo#660164)
+    - Unbreak loading profiles at startup (bgo#660790)
+    - Do not prefix the EDID profile title with 'Default'
+    - Set model and vendor to 'unknown' if not specified or
+      unavailable
+  + Daemon:
+    - Create reference to a GnomePnpIds object to speed up loading
+  + Datetime:
+    - Fix build requirements
+  + Media keys:
+    - Use a GCancellable for g_bus_get calls so that they can be
+      cancelled
+    - Don't assert if the user sets the 'button-power' action to
+      'shutdown'
+    - Don't assert if the user sets the 'button-power' action to
+      'nothing'
+    - Only ever send signals to specific apps
+    - Document the MediaPlayerKeyPressed signal
+    - Add some D-Bus API documentation
+    - Fix OSD touchpad icon names (bgo#661179)
+    - Fix suspend button not locking the screen (bgo#660267)
+    - Fix the suspend key not working (bgo#660267)
+    - Remove unused allowed-keys entry
+    - Cache the volume change event sound
+    - Update for GVC API
+    - Print warning for real errors
+    - Apply volume on the device the key came from (bgo#340720)
+    - Add custom shortcut type
+    - Implement GConf keyboard shortcuts (bgo#625228)
+    - Redraw volume OSD when not composited (bgo#660990)
+    - Update for gsd-keygrab API change (bgo#663343)
+    - Move some metacity shortcuts into g-s-d (bgo#663623)
+    - Port custom keybindings to GSettings (bgo#631502)
+  + Power:
+    - Use a GCancellable for g_bus_get calls so that they can be
+      cancelled
+    - Do not revert to the pre-idle brightness if idle dimming is
+      disabled (bgo#660434)
+    - Remove some unused schema for enabling the sleep-inactive
+      actions (bgo#660395)
+    - Clarify what a value of 0 is for sleep-inactive-x-timeout
+    - Do not sleep-on-idle by default
+    - Simplify hiding/showing the status icon
+    - Ensure the DPMS state is 'on' at startup (bgo#660482)
+    - Close low-battery notification when plugged in (bgo#660942)
+    - Remove the window filter when the plugin is unloaded
+    - Don't crash when setting the dim timeout when using NX
+      (bgo#661000)
+    - Call XSyncInitialize() in case GTK+ wasn't compiled with
+      XSync support
+    - Emit 'Changed' signal to all listeners
+    - Fix "undefined symbol: WEXITSTATUS" error (bgo#662020)
+    - Make non-urgent notifications transient (bgo#662711)
+  + Printers:
+    - Fix build on systems without LC_PAPER (bgo#660626)
+    - Call setlocale() (bgo#660632)
+    - Exit gsd-printer when session ends (bgo#660158)
+    - Correct signature when calling PrinterAddOptionDefault
+    - Don't show "Not connected?" when not needed
+    - Unown name on the system bus when session goes idle
+      (bgo#660158)
+    - Set requesting-user-name when getting job info
+    - Show printer-state-reasons only when printing my jobs
+    - Don't allow "/" in printer name (bgo#661774)
+    - Make notifications resident
+    - Fix a leak
+  + Xrandr:
+    - Use a GCancellable for g_bus_get calls so that they can be
+      cancelled
+  + Xsettings:
+    - Remove workaround to deal with g-s-d not exiting correctly
+    - Plug mem leaks (bgo#663239)
+  + Wacom:
+    - Fix possible crasher (bgo#661170)
+    - Set cursor devices to be in relative mode by default
+      (bgo#662977)
+    - Add classes to manage settings and properties
+  + Updated translations.
+- Rebase gnome-settings-daemon-bnc462640-mute-action.patch.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:37:55 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.2:
+  + Fix a number of memory leaks and static analysis bugs
+  + Media keys:
+    - Fix suspend key not working
+    - Fix newly captured keybindings with GTK+ 3.2.1 not working
+      ('<Primary>' key)
+    - Fix OSD display problem in fallback mode
+    - Allow grabbing the Print key without a modifier
+  + Power:
+    - Fix possible undefined symbol
+  + Printers:
+    - Fix crash on start when registering a D-Bus service
+    - Fix problems getting ownership information for print jobs
+    - Only show errors when the print job triggering it is ours
+    - Make error notifications resident, and dismiss them when
+      the problem is resolved
+  + Wacom:
+    - Set cursor devices to be in relative mode by default
+- Drop gnome-settings-daemon-upower-system-bus.patch: fixed
+  upstream.
+- Drop gnome-settings-daemon-fix-missing-wexitstatus.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Nov 2 15:50:48 UTC 2011 - rbrownccb@opensuse.org
+
+- Add gnome-settings-daemon-upower-system-bus.patch to fix
+  suspend and hibernate keyboard buttons [bgo#660267]
+
+-------------------------------------------------------------------
+Mon Oct 17 21:37:35 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add gnome-settings-daemon-fix-missing-wexitstatus.patch: add
+  missing include that can cause issues at runtime, especially
+  on 11.4 (bgo#662020).
+
+-------------------------------------------------------------------
+Mon Oct 17 18:21:59 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Common:
+    - Remove left-over debug (bgo#660073)
+  + Color:
+    - Fix a crash if ~/.local is deleted at runtime (bgo#660664)
+    - Do not load all the color devices twice at startup
+    - Don't assign the same device more than once at startup
+    - Fix critical warning if the user disables the internal LCD
+      screen
+    - Reset the gamma tables when the screen configuration changes
+      (bgo#660164)
+    - Fix 'make check' by including -lm for powf()
+  + Media keys:
+    - Use a GCancellable for g_bus_get calls so that they can be
+      cancelled
+    - Don't assert if the user sets the 'button-power' action to
+      'shutdown' or 'nothing'
+    - Fix OSD touchpad icon names (bgo#661179)
+    - Fix suspend button not locking the screen (bgo#660267)
+  + Power:
+    - Don't restore the brightness if it's never been set
+    - Fix two small reference leaks when using the D-Bus interface
+    - Use a GCancellable for g_bus_get calls so that they can be
+      cancelled
+    - Do not sleep-on-idle by default (bgo#660395)
+    - Do not revert to the pre-idle brightness if idle dimming is
+      disabled (bgo#660434)
+    - Ensure the DPMS state is 'on' at startup (bgo#660482)
+    - Close low-battery notification when plugged in (bgo#660942)
+    - Don't crash when setting the dim timeout when using NX
+      (bgo#661000)
+    - Call XSyncInitialize() in case GTK+ wasn't compiled with
+      XSync support
+    - Emit 'Changed' signal to all listeners (bgo#659908)
+  + Printers:
+    - Fix build on systems without LC_PAPER (bog#660626)
+    - Call setlocale() (bgo#660632)
+    - Exit gsd-printer when session ends (bgo#660158)
+    - Correct signature when calling PrinterAddOptionDefault
+    - Don't show "Not connected?" when not needed
+    - Unown name on the system bus when session goes idle
+  + Wacom:
+    - Fix possible crasher (bgo#661170)
+  + Xrandr:
+    - Use a GCancellable for g_bus_get calls so that they can be
+      cancelled
+  + Updated translations.
+- Drop gnome-settings-daemon-emit-power-signal-to-listeners.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct 14 08:08:06 UTC 2011 - glin@suse.com
+
+- Add gnome-settings-daemon-emit-power-signal-to-listeners.patch
+  to emit 'Changed' signal to all power plugin listeners. This
+  fixes the power indicator not working in gnome-shell (bnc#717814,
+  bgo#659908).
+
+-------------------------------------------------------------------
+Mon Sep 26 16:39:28 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Power:
+    - Correctly put the screen and computer to sleep when idle
+      (bgo#659066)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 08:18:06 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + A11Y keyboard:
+    - Show the a11y dialogue on right-click (bgo#564171)
+  + Color:
+    - Be less chatty when creating duplicate profiles
+    - Do not segfault when doing fast-user-switching into a new
+      account (bgo#736846)
+    - Use a username suffix on the profile ID (bgo#736846)
+    - Do not show a warning when switching to a new user account
+    - Use the correct profiles when fast user switching
+    - Fix linking (bgo#659086)
+  + Common:
+    - Add helper to list disabled devices
+    - Clean up X11 library dependencies (bgo#657178)
+    - Bump colord dependency
+  + Datetime:
+    - Allow chrony to be used on Fedora (bgo#655119)
+    - Add NTP support for SUSE variants (bgo#654970)
+  + GConf:
+    - Plug some memory leaks
+    - Disconnect callbacks when cleaning up
+  + Keyboard:
+    - Remember and apply NumLock status (bgo#631989)
+  + Media keys:
+    - Don't show a level when muted (bgo#644537)
+    - Fix keyboard brightness (bgo#658689)
+    - Use the same "Music" mime-type as g-c-c
+    - There's no Beagle anymore
+    - Use gtk_show_uri() to launch nautilus
+    - Clean up app launching (bgo#141379)
+    - Clean up upower req
+    - Remove unused empty LIBS linkage
+    - Fix compile-time warning
+    - Move keyboard brightness icon here
+    - Remove OSD icons
+  + Mouse:
+    - Add more debug for "touchpad disabled"
+    - Try harder to re-enable devices (bgo#656397)
+  + Power:
+    - Make ABS_TO_PERCENTAGE warn on invalid input (bgo#657364)
+    - Correctly check for helper exit status
+    - Avoid warnings without backlights
+    - Do not connect to signals if we failed to connect
+    - Don't crash if we try to calculate the idle state before
+      connected to gnome-session (bgo#657917)
+    - Be less chatty when optional hardware is not attached
+      (bgo#658613)
+    - Fix a critical warning when getting the session inhibit state
+    - Do not handle the idle state transaction when the session is
+      not active (bgo#658568)
+    - Don't fall through the switch statement when shutting down
+      (bgo#659202)
+    - Do not leak the icon when getting device status (bgo#659213)
+    - Protect against a potential SIGFE (bgo#659205)
+    - Do not emit multiple 'Changed' signals when recalculating
+      (bgo#659204)
+    - Do not use G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES when we
+      want to read properties (bgo#659066)
+    - Fix compilation without libcanberra-gtk
+  + Printers:
+    - Use the best PPD for new printer (bgo#658544)
+    - Style fixes
+  + Updates:
+    - Ignore virtual mountpoints when looking for external media
+      (bgo#658282)
+    - Use the correct icons in the notifications
+  + Updated translations.
+- Add pkgconfig() BuildRequires: kbproto, x11. Those are new
+  explicit dependencies.
+- Drop gnome-settings-daemon-ntp-support.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Sep  8 06:59:13 UTC 2011 - vuntz@opensuse.org
+
+- Disable gnome-settings-daemon-system-proxy-configuration.diff for
+  now: we really need to fix it the proper way, which likely
+  involves libproxy, as mentioned in
+  http://code.google.com/p/libproxy/issues/detail?id=165 (tracked
+  in bnc#690493).
+- Also note that gnome-packagekit-fate302445.patch is not enabled
+  right now (tracked in bnc#689592).
+
+-------------------------------------------------------------------
+Mon Sep  5 15:51:46 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.91:
+  + Common:
+    - Don't list XINPUT_LIBS twice, move X11_LIBS from LDFLAGS to
+      LIBADD
+  + Color:
+    - Ensure the 'Recalibration required' notification has a custom
+      app name
+    - Fix a critical warning on startup
+    - Do not notify to recalibrate on every startup
+  + Daemon:
+    - Fix possible double-free outside gnome-session
+  + Gconf:
+    - Double check stuff we add to the hash table (bgo#658055)
+  + Housekeeping:
+    - NULL-terminate the ignore-paths array (bgo#657849)
+  + Power:
+    - Do not exit gnome-settings-daemon if upower fails to load
+    - Fix impossible to hit error paths (bgo#657364)
+    - Fix BRIGHTESS_STEP_AMOUNT calculation macro
+    - Do most of the work in _start () (bgo#657924)
+    - Never idle-dim the display to a higher brightness level
+      (bgo#658144)
+  + Printers:
+    - Remove redundant code
+  + Xsettings:
+    - Handle rgba-order key (bgo#657525)
+    - Don't poke at an empty hashtable (bgo#657464)
+    - Fix a stray brace
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  1 14:28:30 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + A11Y-keyboard:
+    - Use GIO's DBus API instead of dbus-glib's
+  + Color:
+    - Don't use uninitialized GErrors
+    - Do not set an age for display and printer profiles
+    - Remove the ability to disable notifications
+    - Do not search user-icc directories if they do not exist
+      (bgo#657484)
+  + Daemon:
+    - Add Unity to OnlyShowIn value for autostart desktop file
+      (bgo#654919)
+  + Media keys:
+    - Don't go up to 11 (bgo#649411)
+  + Mouse:
+    - Be more careful to avoid segfaults (bgo#657462)
+  + Power:
+    - Ensure the critical battery beep is stopped when the AC is
+      inserted
+    - Ensure we lock the screen before suspending on lid close
+      (bgo#655924)
+    - Add mention of bgo#652183
+  + Smartcard:
+    - Use GIO's DBus API instead of dbus-glib's
+  + Updates:
+    - Do not log a warning if the firmware-missing file does not
+      exist
+    - Do not log a warning at startup if getting the upgrade list
+      is not supported (bgo#657483)
+  + Updated translations.
+- Rebase gnome-settings-daemon-bnc462640-mute-action.patch.
+- Add polkit Requires: the power plugin uses pkexec.
+
+-------------------------------------------------------------------
+Thu Aug 18 08:58:07 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5:
+  + A11y-keyboard:
+    - Enable plugin by default (bgo#656287)
+  + Automount:
+    - Link against the private profiler library
+    - Add some missing includes
+    - Don't ship the .in file, just the .in.in one
+    - Silence two trivial -Wformat-security warnings
+  + Color:
+    - Do not show multiple warnings if colord is not available at
+      runtime
+    - Fix a potential crash when unloading the color plugin
+    - Fix a potential crash if creating the per-user ICC directory
+      fails
+    - Make lcms2 a hard dependency
+  + Housekeeping:
+    - Use g_format_size() instead of g_format_size_for_display()
+  + Media keys:
+    - Don't preserve the path after filling
+    - Remove the half pixel offset from the progressbar fill
+    - Always round the render coordinates for media icons
+  + Power:
+    - Add the idle actions
+    - Show a status icon when in fallback mode
+    - Respect the idle-dim-ac and idle-dim-battery configuration
+      keys
+    - Add a backlight helper, as xbacklight isn't always present
+    - Fall back to the backlight helper if xbacklight is not
+      available
+    - Fix a potential crash when unloading the power plugin
+    - Ensure we return the new percentage when changing the
+      brightness
+  + Updates:
+    - Do not use deprecated PackageKit #defines
+  + Wacom:
+    - Invert TPCButton setting (bgo#656372)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 29 04:19:01 UTC 2011 - glin@suse.com
+
+- Rebase gnome-settings-daemon-system-proxy-configuration.diff and
+  gnome-settings-daemon-bnc462640-mute-action.patch, and re-enable
+  the the call to autoreconf.
+- Add gnome-settings-daemon-stop-reload-proxy-settings.patch to
+  stop the g-s-d packagekit plugin from popping up an
+  authentication window when reloading the proxy settings
+  (bnc#689592#c1 for bnc#538353)
+- Port gnome-packagekit-fate302445.patch to gnome-settings-daemon
+  and GSettings.
+
+-------------------------------------------------------------------
+Mon Jul 25 12:54:49 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + A11y-keyboard:
+    - Do proper cleanup when the plugin is stopped
+  + Automount:
+    - Turn the automount plugin in a separate binary (bgo#653521)
+    - Fix distcheck of .desktop.in.in file
+  + Common:
+    - Fix grabbing of multimedia keys
+  + Daemon:
+    - Set locale environment on gnome-session as early as possible
+      (bgo#654182)
+    - Plug memory leak
+  + Datetime:
+    - Use friendlier wording for date & time policykit prompt
+      (bgo#645951)
+  + Media keys:
+    - Add button handling code from gnome-power-manager
+  + Power:
+    - Add power plugin to replace g-p-m
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 20 15:48:10 CEST 2011 - vuntz@opensuse.org
+
+- Add gnome-settings-daemon-ntp-support.patch: add SUSE support for
+  datetime polkit helper, to setup NTP. Fix bnc#675969.
+
+-------------------------------------------------------------------
+Mon Jul  4 14:56:35 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Common:
+    - Use defines instead of variables for ranges
+    - Fix function keys not being grabbed (bgo#649222)
+    - Allow the "Pause" key to be used (bgo#653524)
+  + Clipboard:
+    - Fix incremental sending from the clipboard manager
+      (bgo#652609)
+  + Color:
+    - Fix a potential buffer-overflow when converting to wide text
+  + Keyboard:
+    - Use the same kbd layout menu labels as Gnome Shell
+      (bgo#652836)
+    - Add missing "Settings" to the string
+    - Fix menu items actions
+  + Media keys:
+    - Use constant for icon size in OSD
+    - Remove progress bar borders (bgo#652321)
+  + Mouse:
+    - Check device is a touchpad before enabling/disabling it
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 16 16:09:10 CEST 2011 - vuntz@opensuse.org
+
+- Add pkgconfig(xfixes) BuildRequires, needed for the new cursor
+  plugin.
+
+-------------------------------------------------------------------
+Tue Jun 14 09:40:28 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.2:
+  + Common:
+    - Don't try to convert show-keyboard-leds-indicator in
+      gnome-settings-daemon.convert
+    - Add touchscreen detection
+    - Add X property setting helper
+    - Add code to detect accelerometers
+    - Add better error reporting for egg key parsing
+    - Add code to allow disabling input devices
+  + Color:
+    - Add new color plugin
+  + Cursor:
+    - Hide cursor on tablets with only a touchscreen [bgo#650604]
+    - Show the cursor again on exit
+    - Fix XFixes version checking
+    - Ignore PS/2 mice as well
+    - Fix checking for extension pointer
+  + Datetime:
+    - Fix ntp logic on Debian to include ntpdate as well as ntpd
+      [bgo#644821]
+  + GConf:
+    - bgo#652200: Add missing schema for
+      org.gnome.settings-daemon.plugins.gconf
+  + Keybindings:
+    - Complete update to egg key parsing change
+  + Media keys:
+    - Only start D-Bus when _start() is called
+    - Simplify touchpad OSD
+    - Hardcode the "toggle touchpad" button
+    - Remove old-style OSD
+    - Always use the primary monitor for display [bgo#650159]
+    - Make sound changes quiet with Alt [bgo#651704]
+  + Mouse:
+    - Use new disable/enable device code
+  + Orientation:
+    - Add orientation plugin
+  + Updates:
+    - Fix a string that is hard to translate [bgo#645749]
+  + Wacom:
+    - Enable wacom touch key by default
+    - Use property settings helper in common/
+    - Typedef the Wacom device types
+  + Xrandr:
+    - Switch touchscreen rotation as well
+    - Fix small memory leak on shutdown
+    - Remove the functionality to call gcm-apply when outputs
+      change
+    - Remove rotation handling for wacom tablets
+  + Updated translations.
+- Add pkgconfig(colord) and pkgconfig(lcms2) BuildRequires.
+- Pass --with-pnpids=%{_datadir}/libgnome-desktop-3.0/pnp.ids to
+  configure: the color plugin needs to have access to the pnp.ids
+  file. This comes with the gnome-desktop library; as
+  gnome-settings-daemon already depend on this library, we know the
+  file will be available at runtime.
+
+-------------------------------------------------------------------
+Tue May 17 18:31:10 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.1:
+  + Common:
+    - Add input-helper test application
+    - bgo#648885: Fix syndaemon never getting started
+    - bgo#648911: Add meaningful app names to notifications from
+      plugins
+  + Datetime:
+    - Simplify NTP handling for distros
+    - Fix setting NTP on Fedora 15
+  + Media keys:
+    - Show a popup when no media player is running
+    - bgo#649523: Use symbolic icon for Eject action
+  + Mouse:
+    - Clean up error handling
+    - bgo#649539: Don't crash if mouse has no FeedbackStates
+  + Updates:
+    - Fix the interface name
+    - Deal with absence of gnome-session gracefully
+  + Xrandr:
+    - bgo#648303: Never use a notification for errors
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  2 16:40:38 CEST 2011 - vuntz@opensuse.org
+
+- Drop temporary rpmlintrc as bnc#690496 got fixed.
+
+-------------------------------------------------------------------
+Thu Apr 28 09:49:09 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.1:
+  + Media-keys: Fix possible crash when sound device is removed.
+  + Updates: Fix firmware auto-installation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 28 11:06:18 CEST 2011 - vuntz@opensuse.org
+
+- Pass --enable-gconf-bridge to build the gconf bridge (that
+  mirrors settings between gsettings and gconf).
+- Add nautilus Recommends, as the housekeeping plugin uses a dbus
+  service provided by nautilus to empty the trash. This is
+  optional at runtime, though, so don't make it a Requires.
+
+-------------------------------------------------------------------
+Wed Apr  6 13:16:57 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0.1:
+  + Keyboard: Fix crash showing the keyboard layout in fallback
+    mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr  6 09:31:43 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Common:
+    - Change default inactive sleep on battery to suspend.
+  + Keyboard:
+    - Clarify actual units used for repeat rate (bgo#646241)
+  + Printers:
+    - Cancel CUPS' subscription policy
+    - Make CUPS' subscriptions expirable
+    - Remove old subscriptions
+  + XSettings:
+    - Try a few times to start the xsettings manager (bgo#634988)
+  + Updated translations.
+- Changes from version 2.91.92:
+  + Common:
+    - Update priority of a few plugins
+    - gdk_display_get_device_manager() retval handling
+      (bgo#685020).
+    - Improve CUPS detection (bgo#644063)
+    - Make sure G_LOG_DOMAIN is set to the plugin name for each
+      plugin.
+    - Make sure we mop up stray idle handlers.
+    - Simplify input helper.
+    - Launch a custom script on input devices (bgo#635486)
+  + Daemon:
+    - Fix possible crasher on exit (bgo#639347)
+  + Media keys:
+    - Update gvc copy/paste from control-center
+    - Make volume go up to 11 (bgo#631030)
+    - Simplify volume keys handling (bgo#640963)
+  + Mouse:
+    - Fix possible memory leak
+    - Implement touchpad motion settings (bgo#642474)
+    - Fix shape handling in locate-pointer (bgo#645092)
+    - Handle touchpad handedness changing
+    - Don't apply any settings if XInput isn't present
+    - Separate device dependent calls
+    - Remove duplicated calls on start
+    - Remove unused supports_xinput_devices() call
+    - Make sure syndaemon is killed when touchpad disappears
+    - Hook up input device customisation script
+    - Fix double-free when handling one-button touchpad
+    - Fix crash in GHashTable usage
+  + Power:
+    - Set the default display off time to be same as session idle
+      time.
+  + Updates:
+    - g_get_real_time() returns microseconds, not seconds since the
+      epoch.
+    - Ensure te user gets the updates notification if it's never
+      been shown.
+    - Ensure the user gets notified of normal updates at the
+      correct interval.
+- Changes from version 2.91.91:
+  + Automount:
+    - Fix crash when unlocking the screen saver
+    - Don't queue volumes when session is inactive
+  + Housekeeping:
+    - Use nautilus's D-Bus API to empty the trash
+  + Media keys:
+    - Add magnifier in/out keybindings
+    - Fix larger text/smaller text keybindings
+  + Mouse:
+    - Make locate pointer feature work with GTK+ 3
+  + Printers:
+    - Use new CUPS D-Bus API
+  + Updates:
+    - Use auto-download updates when possible
+  + XSettings:
+    - Also accept .gtk-module for GTK+ modules
+    - Don't set Xft.lcdfilter, it's broken
+    - Use "text-scaling-factor" key instead of DPI
+- Changes from version 2.91.90:
+  + A11Y Settings:
+    - Add new plugin
+  + Automount:
+    - Look if the session is active before automounting
+      new volumes
+    - Disable automounting while screen is locked
+  + Background:
+    - Stop pending fades if new ones initiated
+  + Date & Time:
+    - Add Debian support to NTP service activation (bgo#641598)
+    - Fix gsd_datetime_check_tz_name() never working (bgo#674999)
+  + Keyboard:
+    - Update for new libgnomekbd API
+    - Match shell behaviour for visibility
+    - Explicitly calling gtk_widget_show_all for kbd layout
+  + Media keys:
+    - Fix crash when keybindings change
+    - Add more Universal Access keybindings (bgo#641279)
+  + Mouse:
+    - Use event driven mode for syndaemon (bgo#639623)
+    - Use syndaemon -K to ignore Ctrl+C and other combos
+      (bgo#639487)
+  + Print notification:
+    - Go back to using name in notifications
+    - Check that cups is recent enough
+  + Updates:
+    - Add an updates plugin to integrate with PackageKit
+  + XSettings:
+    - Fix memleak, using wrong unref function
+  + Updated translations
+- Changes from version 2.91.9:
+  + Date & Time:
+    - Use a single polkit action for this
+  + Housekeeping:
+    - Fix an untranslatable string
+  + Keybindings:
+    - Rename Accessibility keybindings to 'Universal Access'
+    - Mark Accessibility keybindings as system
+  + Keyboard:
+    - Don't create kbd indicators in the shell
+    - Remove $GDM_KEYBOARD_LAYOUT handling
+    - Fix control-center invocation
+  + Media keys:
+    - Prevent volume underflow
+    - Use symbolic icons for OSD
+  + Print notification:
+    - New plugin for print notifications
+    - Appearance and wording tweaks
+  + XSettings:
+    - Initialize gtk-modules setting
+    - Support GTK/AutoMnemonics setting
+  + Updated translations
+- Changes from version 2.91.8:
+  + Connect to the right GnomeRRScreen signal
+- Changes from version 2.91.7:
+  + Adapt to new gnome-desktop API
+  + Remove unused macros
+  + Updated translations
+- Changes from version 2.91.6.2:
+  + Fix a crasher with GTK+ 2.91.7
+- Changes from version 2.91.6.1:
+  + Suppress warnings due to gdk_error_trap_pop
+  + Fix build with GTK+ 2.91.7
+- Drop gnome-settings-daemon-bnc427745-force-dpi.patch: fixed
+  upstream as the DPI from the X server is not used anymore.
+- Disable gnome-settings-daemon-add-layout-switcher.patch: this
+  needs to be rebased.
+- Move gnome-packagekit-BNC383261.patch and
+  gnome-packagekit-fate302445.patch from gnome-packagekit to here,
+  since the code moved to the update plugin. They need to be
+  rebased, though.
+- Add BuildRequires : cups-devel, pkgconfig(gudev-1.0),
+  pkgconfig(packagekit-glib2), pkgconfig(upower-glib).
+- Set libexecdir to %_libexecdir/gnome-settings-daemon-3.0 to
+  ensure upgrade from g-s-d 2.x works fine.
+- Update temporary rpmlintrc since the action is now named
+  configure instead of configurentp.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common BuildRequires.
+  + Add call to ./autogen.sh.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:15:25 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Remove ldconfig in %post/%postun: there is no library here.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Thu Dec 23 15:52:50 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.6:
+  + Port to GtkStyleContext
+  + Suspend by default on battery power
+  + Timezone and NTP improvements
+  + Port to GtkAppChooserButton
+  + Port background code to GDBus
+  + Support multiple smartcard drivers
+  + Background plugin misc fixes
+- Add a temporary rpmlintrc file to ignore the
+  polkit-unauthorized-privilege error for
+  org.gnome.settingsdaemon.datetimemechanism.configurentp.
+
+-------------------------------------------------------------------
+Sun Dec 19 17:23:04 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.91.5.1:
+  + Handle rename of org.gnome.media-handling
+- Changes from version: 2.91.5:
+  + Add automount plugin
+  + Don't pass NULL strings to g_variant_new()
+  + Properly handle gnome-session EndSession signals
+- Changes from version: 2.91.4:
+  + Add Wacom configuration plugin
+  + Add support for the XF86TouchpadOn/Off keys
+  + Move some gnome-power-manager settings, so it can be used in
+    the control center
+  + Only ever call g_bus_own_name() once for the main D-Bus name
+  + Register with gnome-session to avoid timeouts, and transition
+    problems on login
+  + Fix possible warnings or crashers when _stop() is called
+    without _start() having been completed
+- Changes from version: 2.91.3:
+  + Remove xrdb plugin
+  + Remove outdated GConf schemas
+  + Handle a11y toggle shortcut keys in media-keys
+  + Make volume down work when muted
+  + Fix logout key shortcut not asking for a confirmation
+  + Fix crashes in media-keys
+  + Export the "cursor-blink-timeout" XSetting
+  + Use a notification for the low space warning in housekeeping
+  + Don't warn about low space when over 1GB is free
+  + Port daemon and xrandr plugin to GDBus
+  + Fix possible warnings in keyboard plugin
+- Changes from version: 2.91.2.1:
+  + Require a newer gnome-desktop with GSettings support for the
+    background plugin
+- Changes from version: 2.91.2:
+  + Migration to GSettings
+  + Use MIME types for URL handlers
+  + Remove typing break plugin
+  + Remove outdated font plugin
+  + Add GConf<->GSettings bridge plugin
+  + Don't choke if there are old plugins laying around
+  + Set priority for plugins based on settings
+  + Never daemonise the "daemon"
+  + Port to GDBus
+  + Add support for more multimedia keys
+  + Keyboard plugin improvements
+  + Remove status icon for monitors (bgo#631995)
+  + More network filesystems not to monitor (bgo#606421)
+  + Don't access free'd memory if a volume is unmounted whilst the
+    dialog is running
+  + Fix loading plugins information (bgo#631933)
+  + For media key, use the default application for audio/ogg
+  + Make the "log out" key really do that
+  + Handle video out keys in media-keys (bgo#623223)
+  + Use virtual modifier <Super> for the Windows key
+  + Remove horrible xmodmap fallback code (bgo#150542)
+  + Show a touchpad-disabled if no touchpad
+  + Use Gdk to get events about input devices being added
+  + Add middle-button-enabled key (bgo#633863)
+  + Add gnome-settings-daemon man page (bgo#588716)
+  + Export Xft.lcdfilter for OO.o's benefit (bgo#631924)
+  + If the stored configuration fails at startup, use the fallback
+    configurations
+  + Use $(sysconfigdir) for .ad files, since they are settings
+  + Don't display the gnome-settings-daemon autostart in the
+    startup applications list
+  + Add settings key for disabling boot time configuration
+    (bgo#631388)
+  + Other bug fixes: bgo#631963, bgo#631931, bgo#631866,
+    bgo#591798, bgo#612024, bgo#582703, bgo#632122, bgo#579021,
+    bgo#630535, bgo#632569, bgo#623223, bgo#634092, bgo#633320.
+  + Build system changes.
+  + Updated translations.
+- Changes from version: 2.91.0:
+  + Give a name to the keyboard status icon (bgo#610319)
+  + Fix include directory to match API version
+  + Add daemon path to pkg-config files
+  + Don't switch mouse buttons for XTest devices (bgo#627084)
+  + Use gdk-pixbuf header (bgo#630975)
+  + Use cairo regions to set input shape
+  + Use an empty region to ignore events
+  + Adapt to GTK+ 3.0, gnome-desktop 3.0, libgnomekbd API changes.
+  + Updated translations.
+- Changes from version: 2.90.1:
+  + Apply keyboard a11y settings for newly plugged keyboards
+  + Loads of compilation fixes for GTK3
+  + Fix crasher when certain items are copied to the clipboard
+  + Silent build by default
+  + Display:
+    - Don't try to activate display configurations where all the
+      outputs are off
+    - Don't cycle through custom display configurations on
+      XF86Display button press
+    - Add logging infrastructure
+- Change gnome-desktop-2.0, gtk+-2.0, libcanberra-gtk pkgconfig()
+  BuildRequires to gnome-desktop-3.0, gtk+-3.0, libcanberra-gtk3.
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires and
+  gsettings-desktop-schemas Requires.
+- Rebase gnome-settings-daemon-bnc427745-force-dpi.patch.
+- Rewrite gnome-settings-daemon-add-layout-switcher.patch,
+  following the move to GSettings.
+- Disable gnome-settings-daemon-system-proxy-configuration.diff,
+  gnome-settings-daemon-apport-monitor.patch,
+  gnome-settings-daemon-bnc462640-mute-action.patch: those patches
+  need to be rebased. Because of this, we also comment out the
+  support for gnome-patch-translation and the call to autoreconf.
+- Remove dbus-1-devel, dbus-1-glib-devel, glib2-devel,
+  gnome-desktop-devel, gnome-menus-devel, gtk2-devel Requires of
+  devel package: the ones really needed will be automatically added
+  the pkgconfig() way.
+- Do not pass --libexecdir=%{_prefix}/lib/gnome-settings-daemon to
+  configure: there is no reason to do so.
+- Remove all the gconf schema handling (%gconf_schemas_prereq,
+  %find_gconf_schemas and scriptlets).
+- Handle gsettings schemas: add %glib2_gsettings_schema_requires
+  and %glib2_gsettings_schema_post(un) in the scriptlets.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:27:00 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + Revert calling g-c-c 3.0's display configuration tool
+  + Use the fallback configurations if the stored configuration
+    fails at startup
+  + Don't access free'd memory if a volume is unmounted whilst
+    the dialog is displayed
+  + bgo#631388: Add gconf key for disabling boot time configuration
+  + Use Xorg monitor settings by default
+  + Updated translations.
+- Drop gnome-settings-daemon-display-tool.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep 27 16:35:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Check whether XGetWindowProperty returns no items, and return
+    if so
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 10:27:04 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Don't use the Stored/custom configuration type in the
+    XF86Display cycle
+  + Basic infrastructure for RANDR logging
+  + Log when handling RANDR events (bgo#615804)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  8 01:11:10 CEST 2010 - vuntz@opensuse.org
+
+- Change old-style BuildRequires to pkgconfig() style
+  BuildRequires:
+  + old-style: gnome-desktop-devel, libcanberra-devel,
+    libgnomekbd-devel, libnotify-devel, libpulse-devel,
+    mozilla-nss-devel, polkit-devel, xorg-x11.
+  + new-style: dbus-glib-1, fontconfig, gconf-2.0, glib-2.0,
+    gnome-desktop-2.0, gtk+-2.0, libcanberra-gtk, libgnomekbd,
+    libgnomekbdui, libnotify, libpulse, libxklavier, nss,
+    polkit-gobject-1, xi.
+- This will make it easier to switch to GNOME 3 libraries.
+
+-------------------------------------------------------------------
+Sat Sep  4 22:41:36 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-settings-daemon-display-tool.patch to fix the display
+  notification area to use the right tool to configure display. The
+  patch reverts a commit that is GNOME 3-only. Fix bnc#636849.
+
+-------------------------------------------------------------------
+Tue Aug 31 15:03:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + bgo#628056: Don't try to activate configurations without any
+    'on' outputs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:58:06 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since the data there
+  is not mandatory at runtime.
+
+-------------------------------------------------------------------
+Fri Aug  6 11:31:50 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Apply keyboard a11y settings for new keyboards
+  + Require gnome-2.32 modules, not 3.0
+  + Updated translations.
+- Changes from version 2.31.5.1:
+  + Include fixes from 2.31.4.2
+  + Updated translations.
+- Changes from version 2.31.5:
+  + Depend on gnome-desktop-3.0
+  + Updated translations.
+- Changes from version 2.31.4.2:
+  + Fix the binary name in the datetime DBus .service file
+  + Updated translations.
+- Changes from version 2.31.4.1:
+  + Fix the datetime DBus .service file
+- Changes from version 2.31.4:
+  + Fix build for --disable-smartcard-support (bgo#617748)
+  + Use gtk+-3.0
+  + Fix launching the display configuration tool
+  + Move clock service from gnome-panel
+  + Define plugindir in .pc file
+  + Updated translations.
+- Changes from version 2.31.3:
+  + Fixed icon names, prefixed with kbd-
+  + Use "show layout" dialog from libgnomekbd
+  + Updated translations.
+- Changes from version 2.31.2:
+  + Fix installation of the xrandr helper binary (bgo#617782)
+  + Always dist smartcard.gnome-settings-plugin (bgo#617748)
+  + Adjust XF86Display timestamps if they are out of order with RANDR
+    timestamps (bgo#610482)
+  + Don't install template files into the icon theme
+  + Fix loading OSD icons when there's no SVG version (bgo#618023)
+  + Only check for baobob if we're about to show a dialog
+  + Updated translations.
+- Changes from version 2.31.1:
+  + Create the directory for the system's RANDR configuration
+  + Add the logic needed for the "Make Default" button in
+    gnome-display-properties
+  + Use $sysconfdir for /etc installation
+  + Replace deprecated GTK_WIDGET_STATE
+  + Compile with -DGSEAL_ENABLE (bgo#612588)
+  + Use Layouts instead of Groups (bgo#553108)
+  + Add smartcard plugin to lock screen/log out when a card is
+    removed
+  + Software LED indicators (bgo#616380)
+  + Use LED icons instead of files
+  + Updated translations.
+- Rebase gnome-settings-daemon-system-proxy-configuration.diff.
+- Update gnome-settings-daemon-apport-monitor.patch to apply
+  without fuzz.
+- Update gnome-settings-daemon-add-layout-switcher.patch to use new
+  API from libgnomekbd that helps remove some code.
+- Add mozilla-nss-devel and polkit-devel BuildRequires for
+  smartcard support and datetime PolicyKit helper.
+- Create a gnome-settings-daemon-polkit-datetime subpackage because
+  this polkit helper can be useful to other users that might not
+  want to depend on gnome-settings-daemon. The main package
+  requires it.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:03:23 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Thu Apr 29 14:28:51 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + bgo#613666: Fix keyboard indicator displaying
+  + Default to system settings for handling multiple keyboard
+    layouts
+  + bgo#612240: Introduce gconf key that allows hiding the
+    indicator
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 29 17:38:21 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Protect XInput code by ifdefs if XInput isn't available
+    (bgo#611670)
+  + Don't play a sound when the volume doesn't change (bgo#610001)
+  + Fix linking with pedantic linkers (bgo#610244)
+  + Remove unused do_sleep_action function
+  + Apply all keyboard settings to new keyboards (bgo#610245)
+  + Ensure the window is realized before we invalidate it
+    (bgo#604918)
+  + Replace "eject" spawn with GIO code (bgo#580779)
+  + Don't spawn xrdb (bgo#586276)
+  + Add translator hint (bgo#613647)
+  + Disable font plugin by default (bgo#613604)
+  + Updated translations.
+- Rebase gnome-settings-daemon-bnc462640-mute-action.patch.
+
+-------------------------------------------------------------------
+Fri Mar 26 22:58:04 UTC 2010 - sreeves@novell.com
+
+- Fix gnome-settings-daemon-add-layout-switcher.patch
+  + call maybe_add_layout_switcher method at the right level
+
+-------------------------------------------------------------------
+Mon Mar  8 15:02:14 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 26 14:28:56 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91.1:
+  + bgo#594831: Fn-F8 should disable/enable touch points
+  + Always set the position of outputs, even if they are already
+    turned on
+  + bgo#610245: Apply keyboard settings to newly plugged in devices
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 16:26:53 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + Add gthread-2.0 to required modules for the daemon (bgo#608217)
+  + Centralize the use of gnome_rr_config_apply_with_time
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 27 13:07:00 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  + Don't allow left-handed setting for single-button touchpads
+  + Don't die on X servers without XKB (bgo#604651)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 15 15:53:10 CET 2010 - vuntz@opensuse.org
+
+- Do not package en@shaw locale on openSUSE 11.2 and earlier.
+
+-------------------------------------------------------------------
+Wed Jan 13 06:22:25 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + Fix variant handling in $GDM_KEYBOARD_LAYOUT (bgo#596897)
+  + Tighten check for XInput
+  + Fix bluriness in level bar, and popup (bgo#567249)
+  + Remove unused variable (bgo#599904)
+  + Honour libexecdir when spawning gsd-locate-pointer
+    (bgo#599209)
+  + Allow left-handed setting for touchpads
+  + Use a rounded instead of curved rectangle
+  + Improve the media keys overlay design (bgo#596136)
+  + Add brightness to the media-keys popup (bgo#599677)
+  + Fix for GSEAL goal (bgo#599861)
+  + Avoid volumes going over 100% (bgo#600770)
+  + Make OSD display more generic (bgo#600951)
+  + Support loading -rtl and -ltr variants of icons (bgo#600984)
+  + Relicense gsd-media-keys-window.[ch] to LGPL (bgo#600986)
+  + Hide the status icon before unreffing it (bgo#601696)
+  + Make eject behave better on OpenBSD (bgo#598573)
+  + Export libexecdir in .pc file (bgo#596388)
+  + Run gnome-color-manager apply program when the outputs change
+  + Factor out function to get keycodes from keysym names
+  + Handle the XF86RotateWindows hotkey by rotating a laptop's
+    display
+  + Respond to monitor configuration changes when in charge
+    (bgo#601203)
+  + Filter invalid layouts before looking for the index of one
+    passed by gdm (bgo#585868)
+  + Add linsysfs to list of virtual filesystems (bgo#604396)
+  + Remove sleep keybindings (bgo#170175)
+  + Start an on-screen-display window (OSD)
+  + Split the composited and non-composited code for the
+    expose-event handler
+  + Use a hand-drawn frame instead of a GtkBuilder frame
+  + Using GkbdStatus for the automatic notification icon
+  + Implement popup menu for the notification icon
+  + Add extra API required by GsdMediaKeysWindow
+  + Add timed exit option
+  + Fixes for new libxklavier
+  + Translation updates
+- Remove gnome-settings-daemon-activate-xkb-with-broken.patch.
+  Fixed upstream
+- Remove gnome-settings-daemon-gdm-layout-variant.patch. Fixed
+  upstream
+- Update the following patches to apply with fuzz=0:
+  gnome-settings-daemon-add-layout-switcher.patch,
+  gnome-settings-daemon-apport-monitor.patch,
+  gnome-settings-daemon-bnc427745-force-dpi.patch,
+  gnome-settings-daemon-bnc462640-mute-action.patch,
+  gnome-settings-daemon-system-proxy-configuration.diff
+
+-------------------------------------------------------------------
+Wed Dec  2 16:44:02 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Try harder to use the keyboard layout passed by gdm.
+  + Updated translations.
+- Drop gnome-settings-daemon-try-harder-gdm-layout.patch: part of
+  it is upstream, the other part is in a new patch.
+- Add gnome-settings-daemon-add-layout-switcher.patch, which is the
+  part that was in the old patch.
+- Add gnome-settings-daemon-gdm-layout-variant.patch to fix some
+  bug in the GDM keyboard layout handling.
+
+-------------------------------------------------------------------
+Thu Oct 22 09:54:35 CEST 2009 - mxwu@novell.com
+
+- Update spec file to add the missing BuildRequire of
+  libcanberra-devel. Fix bnc#547565.
+
+-------------------------------------------------------------------
+Tue Sep 22 14:25:48 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Fix incomplete function declaration
+  + bgo#578538 - Don't install the dummy plugin whilst keeping the
+    Makefile.am almost intact for copy/paste
+  + bgo#594617 - Fix Touchpad left-handed issues
+  + bgo#404683 - Add sound effect to volume key handling
+  + Remove useless custom eject icon
+  + bgo#594821 - Validate xsettings GConf keys read from the
+    configuration
+  + Fix compiler warnings
+  + Updated translations.
+- Drop gnome-settings-daemon-build-warning.patch, upstreamed.
+
+-------------------------------------------------------------------
+Wed Sep  9 05:02:42 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + Make 'Locate Pointer a separate process (bgo#524499)
+  + Skip button mappings only for core devices
+  + Updated translations.
+- Add gnome-settings-daemon-build-warning.patch to fix build.
+
+-------------------------------------------------------------------
+Tue Aug 25 14:05:49 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.91:
+  + Update gnome-volume-control code
+  + Update cut'n'paste from gnome-media
+  + Update volume control code for new API
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 14 16:24:02 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.90:
+  + Update gnome-volume-control from gnome-media (bgo#589825)
+  + Fix crash in gvc_mixer_stream_is_running() (bgo#590073)
+  + Add '-k' option to syndaemon call for 'Disable touchpad while
+    typing' (bgo#590588)
+  + Low disk space warning bug-fixes (bgo#591153)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 28 18:02:32 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.5:
+  + Only use applicable configurations for switching with the
+    XF86Display hotkey
+  + Only use applicable configurations when auto-configuring
+    outputs during hotplug
+  + Really lay out displays from left to right when using the
+    XF86Display hotkey
+  + For the XF86Display hotkey, preserve the cycle order when
+    sanitizing the configurations
+  + Remove last libglade dependency
+  + Improved low disk space warning (bgo#573980)
+  + Fix compiler warnings
+  + Translation updates.
+- Remove libglade2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 20 12:50:35 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + Remove screensaver plugin, it's autostarted now
+  + Don't take too long in RANDR D-Bus method implementation
+  + Add support for Synaptics touchpads
+  + Don't spawn more than one syncdaemon
+  + Depend on gnome-desktop >= 2.26.3
+  + Update gnome-volume-control code from master
+  + Fix order of arguments to strstr
+  + Depend on libxklavier 4.0
+  + Remove libglade dependency from media-keys and keyboard plugins
+  + Updated translations.
+- Respin gnome-settings-daemon-system-proxy-configuration.diff.
+- Update gnome-settings-daemon-try-harder-gdm-layout.patch for
+  libxklavier API change.
+
+-------------------------------------------------------------------
+Mon Jun 15 18:45:21 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + Make the RANDR tray icon's per-monitor labels explicitly black
+    (bgo#556050)
+  + Include config.h so that the notifications code in housekeeping
+    plugin can actually be built (bgo#584217)
+  + Use "screen reader" instead of "screenreader" in schema
+    (bgo#572911)
+  + Lots of RANDR fixes and improvements
+  + Nicer handling of broken XKB configuration in gconf
+    (bgo#585259)
+  + Make 'locate pointer' deal with wm/cm changes (bgo#585209)
+  + Be more careful when comparing two key structs (bgo#580616)
+  + Updated translations.
+- Drop gnome-settings-daemon-filter-invalid-xkb.patch: fixed
+  upstream.
+- Add gnome-settings-daemon-activate-xkb-with-broken.patch to fix a
+  minor bug in xkb handling on login, with broken config.
+- Update gnome-settings-daemon-try-harder-gdm-layout.patch to also
+  make sure a keybinding to switch layouts is available, and to not
+  add the gdm layout if we already have a variant for the layout.
+- Comment out
+  gnome-settings-daemon-bnc461755-randr-rotate-wacom.diff: it needs
+  to be rebased.
+
+-------------------------------------------------------------------
+Thu Jun 11 15:30:37 CEST 2009 - vuntz@novell.com
+
+- Add gnome-settings-daemon-filter-invalid-xkb.patch: when the xkb
+  config from gconf can't be used, try to remove invalid xkb
+  layouts first before showing an error dialog. The old gdm used to
+  have invalid layouts.
+
+-------------------------------------------------------------------
+Wed Jun 10 00:02:37 CEST 2009 - vuntz@novell.com
+
+- Add gnome-settings-daemon-try-harder-gdm-layout.patch: try harder
+  to use the keyboard layout passed from GDM.
+
+-------------------------------------------------------------------
+Mon May 25 13:36:28 CDT 2009 - federico@novell.com
+
+- Added gnome-settings-daemon-bnc461755-randr-rotate-wacom.diff to fix
+  bnc#461755 - Add the option of rotating Wacom tablets when the
+  display is rotated.
+
+-------------------------------------------------------------------
+Tue May  5 17:04:51 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + Use ngettext for the reset dialog (bgo#575409)
+  + Replace deprecated gtk_status_icon_set_tooltip (bgo#578480)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 14 23:49:18 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Fix crash when closing the lid on some laptops (bgo#576875)
+  + Fix crash when closing a11y notification bubble (bgo#576535)
+  + Fix problems with saving/restoring screen setup
+  + Make the screen resolution confirmation dialog always appear in
+    front of the settings window (bgo#576006)
+  + Increase confirmation timeout to 30 seconds to give slower
+    devices (like projectors) time to adjust
+  + Avoid some GConf roundtrips (bgo#578539, bgo#578542)
+  + Build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 18:15:22 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Make build work with -Wl,-z,defs (bgo#574452)
+  + Updated translations.
+- Remove -fno-strict-aliasing from CFLAGS.
+- Remove AutoReqProv: it's default now.
+- Remove BuildRequires on gnome-control-center and own directories
+  instead, to avoid a build loop.
+
+-------------------------------------------------------------------
+Tue Mar 10 21:53:17 CET 2009 - vuntz@novell.com
+
+- Drop gnome-settings-daemon-bnc369263-broken-xkb-layout.patch: we
+  now have a recent enough X server. Fix bnc#483651.
+
+-------------------------------------------------------------------
+Fri Mar  6 13:49:34 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.92:
+  + don't print warnings for disabled custom shortcuts
+  + revert screen resolution change if the user closes the
+    confirmation window using the close icon or by pressing escape
+    (bgo#571492)
+  + add missing keys for a11y shortcut keys to GConf schemas
+    (bgo#572807)
+  + install gnome-settings-daemon-plugin.h for custom plugin
+    developement (bgo#573610)
+  + Updated translations.
+- Drop gnome-settings-daemon-bnc473980-unknown-media-key.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 19 04:20:38 CET 2009 - vuntz@novell.com
+
+- Add gnome-settings-daemon-bnc462640-mute-button-always-mute.patch
+  to make it possible to always mute sound instead of toggling mute
+  status. Part of bnc#462640. The other part is in gconf2-branding,
+  to set the gconf key to actually do that.
+  Patch by Holger Macht.
+
+-------------------------------------------------------------------
+Wed Feb 11 20:34:31 CET 2009 - vuntz@novell.com
+
+- Add gnome-settings-daemon-bnc473980-unknown-media-key.patch to
+  fix crasher in media keys with unknown keys. Fix bnc#473980.
+
+-------------------------------------------------------------------
+Thu Feb  5 11:22:50 CET 2009 - vuntz@novell.com
+
+- Add libnotify-devel and libpulse-devel BuildRequires to get all
+  the features.
+- Remove gstreamer-0_10-plugins-base-devel BuildRequires: it's not
+  needed anymore (replaced by use of libpulse).
+
+-------------------------------------------------------------------
+Thu Feb  5 04:08:06 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.90:
+  + Initialize thread system (bgo#565515)
+  + Better support for Eject and Sleep actions on BSD (bgo#565472)
+  + Spawn screensaver after a 30 second timeout instead of when
+    idle so that it  doesn't compete with other processes when the
+    session starts (bgo#564059)
+  + Add low diskspace notification (bgo#557647)
+  + Support hotkeys for a11y tools (bgo#565310)
+  + Quiet xrdb when there are duplicate rules in the .ad files
+    (bgo#566610)
+  + Add debugging output when de/registering media players
+    (bgo#564433)
+  + Add a new sound plugin that tells PulseAudio to drop its
+    sample cache when the sound theme changes (bgo#545386)
+  + Don't pop up an error message when there's no randr
+    configuration file
+  + Ungrab keys when key-related plugins are disabled (bgo#567867)
+  + Use PulseAudio directly to change the volume (bgo#567177)
+  + Don't draw_background immediately when nautilus is disabled,
+    GnomeBG will send a signal
+  + Add crossfade transition when switching backgrounds
+    (bgo#552857)
+  + Use XF86Explorer to launch the file manager
+  + Fix possible crash when pressing Fn-F7  (bgo#568713)
+  + Delay drawing the background until SessionRunning
+  + Ask for confirmation with a timeout after changing the randr
+    configuration (bgo#545115)
+  + Plug leaks
+  + Build fixes
+  + Translation updates
+- Remove gnome-settings-daemon-low-disk-space.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Jan 23 15:58:19 CET 2009 - vuntz@novell.com
+
+- Re-enable gnome-settings-daemon-apport-monitor.patch, after
+  fixing some #include in the patch.
+
+-------------------------------------------------------------------
+Wed Jan 14 19:46:53 CST 2009 - federico@novell.com
+
+- Updated gnome-settings-daemon-randr-gerror.diff to fix bnc#465968 -
+  The RANDR plugin was displaying a confusing error message during
+  GDM's startup.
+
+-------------------------------------------------------------------
+Sat Jan 10 14:03:11 CST 2009 - mboman@suse.de
+
+- Remove gnome-settings-daemon-randr-gerror.diff. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Jan  9 14:03:11 CST 2009 - federico@novell.com
+
+- Added gnome-settings-daemon-randr-gerror.diff.  This makes the RANDR
+  plugin for gnome-settings-daemon process GError arguments from the
+  GnomeRR API, so that it can give good error reporting.
+- Removed gnome-settings-daemon-randr-fnf7.diff as it is already contained
+  within the patch above.
+
+-------------------------------------------------------------------
+Fri Jan  2 08:06:51 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.3:
+  + Bugs fixed: bgo#562977, bgo#563543, bgo#563796, bgo#559346, bgo#559482,
+    bgo#559564, bgo#559550, bgo#559562, bgo#559558, bgo#559639, bgo#559827,
+    bgo#559695, bgo#553434, bgo#560618, bgo#559797, bgo#522673, bgo#561275,
+    bgo#554951, bgo#555009, bgo#555873, bgo#555553, bgo#556307, bgo#556797,
+    bgo#552383, bgo#557307, bgo#557806, bgo#557808, bgo#549267, bgo#558503,
+    bgo#557807, bgo#559162, bgo#559163, bgo#559164, bgo#559165, bgo#559166,
+    bgo#559167, bgo#559168
+  + Add support for fn-f7 type keys (Søren Sandmann)
+  + Use D-Bus instead of an X client mesage in the xrandr plugin, so
+    the front-end can get error messages as well
+  + Shut the daemon down properly when the SIGTERM signal is received or the
+    D-Bus bus goes away
+  + Restore AccessX bits to original values on exit, fixes sticky keys
+    coming on when gnome-settings-daemon has exited
+  + Add some performance annotations around libxklavier calls
+  + Reshufle plugin priorities a bit
+  + Listen for DeviceEnabled instead of DeviceAdded to be sure the mouse has
+  + Add debugging output for volume_step
+  + Fix --no-daemon
+  + Depend on libxklavier 3.8
+  + Fix checks for various X libraries
+  + Fix check for xklavier device discovery
+  + Ignore the 'activate' signal for deselected items so that the rotation
+  + Spawn screensaver process in idle callback
+  + Don't close stderr to not lose warnings
+  + Use a pipe to communicate between children and parent process instead
+    of a signal
+  + Translation updates
+- Remove gnome-settings-daemon-randr-fnf7.diff. Fixed upstream
+
+-------------------------------------------------------------------
+Mon Dec  8 16:13:26 CST 2008 - federico@novell.com
+
+- Updated gnome-settings-daemon-system-proxy-configuration.diff to fix
+  https://bugzilla.novell.com/show_bug.cgi?id=456131 - the system's
+  proxy configuration was not being set in GNOME's proxy
+  configuration.
+
+-------------------------------------------------------------------
+Mon Oct 27 10:06:22 CET 2008 - jblunck@suse.de
+
+- Add gnome-settings-daemon-apport-monitor.patch, to launching apport-gtk in
+  case a new crash report is available (bnc#439203)
+
+-------------------------------------------------------------------
+Thu Oct 23 20:09:12 CEST 2008 - vuntz@novell.com
+
+- Add gnome-settings-daemon-low-disk-space.patch, to help drop
+  gnome-volume-manager.
+
+-------------------------------------------------------------------
+Sat Oct  4 08:46:10 WST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  - Fix the fix for read-only home directories (bgo#530975)
+  - Make the volume popup not crash when invoking it on any screen but
+    the first when using a compositing manager (bgo#551677)
+  - Add GPLv2 copyright notice explicitly so that newer versions of
+    autotools don't declare us GPLv3 (bgo#551956)
+  - Specify GTK modules to load in a GConf directory instead of the
+    single /desktop/gnome/gtk-modules key (bgo#539840)
+  - Also allow linking the module state to other boolean keys by using
+    a string value that is the name of the key to use
+  - Made the housekeeping plugin less aggressive by default (bgo#552680)
+  - Updated translations
+
+-------------------------------------------------------------------
+Fri Sep 26 14:46:58 CEST 2008 - vuntz@novell.com
+
+- Add gnome-settings-daemon-bnc427745-force-dpi.patch to force the
+  DPI to 96. This fixes huge fonts on login on recent laptops.
+  Fixes bnc#427745.
+
+-------------------------------------------------------------------
+Thu Sep 18 13:34:48 CEST 2008 - rodrigo@novell.com
+
+- Update to 2.23.92:
+  + Try harder to use the keyboard layout passed by GDM (bgo#551062)
+  + Updated translations
+
+-------------------------------------------------------------------
+Wed Sep 10 17:49:29 CDT 2008 - federico@novell.com
+
+- Added gnome-settings-daemon-randr-fnf7.diff to support switching
+  between display output modes on laptop by using the Fn-F7 hotkey
+  (i.e. XF86Display).
+
+-------------------------------------------------------------------
+Tue Sep  9 13:27:14 CDT 2008 - federico@novell.com
+- Made gnome-settings-daemon obsolete resapplet, since g-s-d now provides
+  the tray icon to set display settings.
+
+-------------------------------------------------------------------
+Mon Sep  1 16:42:32 CEST 2008 - rodrigo@suse.de
+
+- Update to version 2.23.91:
+  - Removed translatable property on stock gtk-close (Claude Paroz)
+  - Fix a constness warning (Jens Granseuer)
+  - Fix a crash due to an incorrect signal handler definition (William Jon
+    McCann)
+  - Use a scale factor instead of a fixed DPI (William Jon McCann)
+  - Use g_warning instead of g_error when setup fails so we don't abort
+    (Jens Granseuer) (bgo#549483)
+  - Updated translations
+
+-------------------------------------------------------------------
+Mon Sep  1 11:54:25 CEST 2008 - rodrigo@suse.de
+
+- Actually remove upstreamed patch from package.
+
+-------------------------------------------------------------------
+Tue Aug 26 16:40:30 CEST 2008 - rodrigo@suse.de
+
+- Update to version 2.23.90:
+  - PulseAudio check to not ouput "no" twice (Jens Granseuer)
+  - Add status icon when a11y hotkeys are enabled, and display Universal
+    Access preferences when it is clicked (William Jon McCann) (bgo#526070)
+  - Simplify libnotify check, fix fontconfig result output (Jens Granseuer)
+  - Put the Glade file where all the others are (jens Granseuer)
+  - Remove some unnecessary boilerplate (Jens Granseuer)
+  - Use g_file_monitor instead of g_file_monitor_file/_directory (Jens
+    Granseuer) (bgo#546372)
+  - Remove warning that isn't (Jens Granseuer)
+  - Fixed crash in randr startup (Jens Granseuer)
+  - Fail xrandr initialization if we couldn't start xrandr (Matthias Clasen)
+    (bgo#546446)
+  - Try harder to clean up xrandr in _stop  so we can enable/disable the plugin
+    on the fly (Jens Granseuer)
+  - For LIBSOUNDS, check for libgnomeui, not just libgnome (Federico Mena Quintero)
+  - Add sexy labels when setting up dual monitors (Federico Mena Quintero)
+  - Add a separator to the menu before "Configure display settings" (Federico Mena
+    Quintero)
+  - Use GDK to get DPI (William Jon McCann)
+  - Updated translations
+- Remove upstreamed patch
+
+-------------------------------------------------------------------
+Mon Aug 18 16:25:20 CEST 2008 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Fri Aug 15 18:23:25 CEST 2008 - federico@novell.com
+
+- Updated to gnome-settings-daemon-2.23.6.
+  + Bugs fixed: bgo#544347, bgo#544737, bgo#544733, bgo#165343, bgo#539786,
+  bgo#543289, bgo#543095, bgo#542275, bgo#538699, bgo#533198
+- Added gnome-settings-daemon-monitor-labeling.diff to implement
+  labeling of monitors in the tray icon, and monitor rotation support
+  as well.
+
+-------------------------------------------------------------------
+Fri Jun 20 17:51:33 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.4:
+  + Bugs fixed: bgo#523743, bgo#523159, bgo#507386, bgo#525042,
+    bgo#524425, bgo#525426, bgo#530356, bgo#531487, bgo#531589,
+    bgo#530975, bgo#531861, bgo#531862, bgo#522017, bgo#531665,
+    bgo#536177, bgo#490374, bgo#536581, and bgo#531868
+  + Updated translations
+- Drop obsolete patches: gnome-settings-daemon-randr-1.2.diff
+
+-------------------------------------------------------------------
+Thu May 29 20:39:30 CEST 2008 - federico@novell.com
+
+- Updated gnome-settings-daemon-randr-1.2.diff with the latest fixes from upstream.
+
+-------------------------------------------------------------------
+Mon May 26 17:10:43 CEST 2008 - vuntz@suse.de
+
+- Add gnome-settings-daemon-bnc369263-broken-xkb-layout.patch to
+  unbreak corrupted keymaps on automatic login. This is only a
+  workaround for openSUSE 11.0, unfortunately, since nobody found
+  the right fix yet. Fix bnc#369263.
+
+-------------------------------------------------------------------
+Tue May  6 12:59:34 CEST 2008 - rodrigo@suse.de
+
+- Updated gnome-settings-daemon-system-proxy-configuration.patch
+  to add a missing return in non-void function
+
+-------------------------------------------------------------------
+Wed Apr 30 19:51:08 CEST 2008 - rodrigo@suse.de
+
+- Updated gnome-settings-daemon-system-proxy-configuration.patch
+  to make it apply again
+
+-------------------------------------------------------------------
+Fri Apr 25 18:44:45 CEST 2008 - federico@novell.com
+
+- Added gnome-settings-daemon-randr-1.2.diff to integrate the new
+  functionality to configure RandR 1.2.
+
+-------------------------------------------------------------------
+Fri Apr 11 16:07:14 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Fix segfault when shutting down the typing break monitor (Jens Granseuer)
+  (bgo#521786)
+  + Set window type hint on the volume popup (bgo#522232)
+  + Remove unused properties from actions GUI
+  + Reset opacity when removing the timeout (bgo#522499)
+  + Fix handling of child process
+  + Add a tool to test media keys
+  + Add some profiling code
+  + Fix compiler warnings
+  + Fix leaks (bgo#524183)
+  + Add more stuff to the configuration summary
+  + Don't eat key events (bgo#523676)
+  + Apply keyboard settings on startup (bgo#525440)
+  + Make "Home" keybinding work again
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 14 05:41:13 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Actually link against libXi when building with XInput support
+   (bgo#519488)
+  + Disable debug by default
+  + Don't pass GErrorss if we're not going to use them
+  + Remove obsolete settings for the removed default editor plugin
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Tue Feb 19 23:28:50 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Use a flat directory instead of a hierarchy to install plugins
+    into (bgo#513246)
+  + Don't scan the plugins directory recursively (bgo#513246)
+  + Install the settings plugin to a versioned directory to fix install
+    with libdir == libexecdir (bgo#504203)
+  + Review short and long descriptions for GConf keys (bgo#514047)
+  + Don't crash when running the screensaver fails (bgo#514385)
+  + Rename src folder to gnome-settings-daemon (bgo#511820)
+  + Add uninstalled.pc file for building against an uninstalled copy of
+    g-s-d (bgo#511820)
+  + Add separate checks for libbackground and use external copy
+  + Use gnome_settings_daemon for the GConf path (bgo#514411)
+  + Release the Glade XML ASAP and keep track of the 2 widgets we need
+  + Make sure we return a GError if initialization fails (bgo#514926)
+  + Load the XKB settings initially (bgo#511771)
+  + Fix leaks
+  + Unref the GConfClient only after done with it
+  + Check for xinput (bgo#514942)
+  + Fix copy'n'paste error (bgo#515426)
+  + Declare variables at the beginning of a block to make older compilers
+    happy
+  + Add back support for defining plugin start order
+  + Assign return value from g_slist_sort to the plugins list variable
+    (bgo#515340)
+  + Replace gnome_vfs usage with GIO (bgo#513990).
+
+-------------------------------------------------------------------
+Fri Feb  1 12:57:52 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.21.90.2:
+  * Use correct binary path in DBus service file
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Jan 25 14:37:20 CET 2008 - rodrigo@suse.de
+
+- Added missing unpackaged files
+- Depend on gstreamer-0_10-plugins-base-devel for the sound module
+
+-------------------------------------------------------------------
+Wed Jan 16 17:44:05 CET 2008 - rodrigo@suse.de
+
+- Disabled patches that need rebase.
+- No need for gnome-patch-translation
+- Updated BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 16 14:24:29 CET 2008 - rodrigo@suse.de
+
+- First version of new gnome-settings-daemon package.

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Nov  7 16:07:52 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Add return-in-nonvoid.diff to fix rpmlint aborting due to bad
+  code. [boo#1115061]
+
+-------------------------------------------------------------------
+Fri Apr  7 19:13:12 UTC 2017 - meissner@suse.com
+
+- own /var/games as filesystem no longer owns it
+
+-------------------------------------------------------------------
+Mon Jun 15 22:01:17 UTC 2015 - nemysis@gmx.ch
+
+- Initial package creation
+

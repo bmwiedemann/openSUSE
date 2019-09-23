@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bfddd2783939b5acf27827bcbaf1c00</srcmd5>
+    <version>4.99.10</version>
+    <time>1306921049</time>
+    <user>saschpe</user>
+    <comment>please include this package to factory, I will drop it from Contrib</comment>
+    <requestid>68051</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df3858031d599293294d1fd80bfa65eb</srcmd5>
+    <version>4.99.10</version>
+    <time>1306921061</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68051
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>df3858031d599293294d1fd80bfa65eb</srcmd5>
+    <version>4.99.10</version>
+    <time>1319182201</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e449049b79a7d627f7518bac80c27256</srcmd5>
+    <version>4.99.10</version>
+    <time>1323705486</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 95962 from coolo)</comment>
+    <requestid>96012</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e449049b79a7d627f7518bac80c27256</srcmd5>
+    <version>4.99.10</version>
+    <time>1340183733</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e449049b79a7d627f7518bac80c27256</srcmd5>
+    <version>4.99.10</version>
+    <time>1359109506</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>e449049b79a7d627f7518bac80c27256</srcmd5>
+    <version>4.99.10</version>
+    <time>1379663371</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>e449049b79a7d627f7518bac80c27256</srcmd5>
+    <version>4.99.10</version>
+    <time>1409301981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7116c0021cbb9999bc7535560d5f0b7a</srcmd5>
+    <version>4.99.11</version>
+    <time>1520853114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585362</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>55655704a65c82738d75f9abc4961694</srcmd5>
+    <version>4.99.11</version>
+    <time>1551025246</time>
+    <user>coolo</user>
+    <comment>add nfswatch-4.99.11-sysmacros.patch to build with current glibc (forwarded request 678404 from seife)</comment>
+    <requestid>678405</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+--- argcomplete-1.9.2.orig/setup.py	2017-08-24 00:37:12.000000000 +0700
++++ argcomplete-1.9.2/setup.py	2019-02-10 21:22:50.518878293 +0700
+@@ -4,7 +4,7 @@
+ from setuptools import setup, find_packages
+ 
+ install_requires = []
+-tests_require = ["coverage", "flake8", "pexpect", "wheel"]
++tests_require = ["pexpect"]
+ 
+ setup(
+     name='argcomplete',

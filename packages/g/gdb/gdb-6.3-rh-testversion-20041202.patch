@@ -1,0 +1,26 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Elena Zannoni <ezannoni@redhat.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.3-rh-testversion-20041202.patch
+
+;; Match the Fedora's version info.
+;;=fedora
+
+2003-02-24  Elena Zannoni  <ezannoni@redhat.com>
+
+        * gdb.gdb/selftest.exp: Add matching on specific Red Hat only version
+        string.
+
+diff --git a/gdb/testsuite/gdb.gdb/selftest.exp b/gdb/testsuite/gdb.gdb/selftest.exp
+--- a/gdb/testsuite/gdb.gdb/selftest.exp
++++ b/gdb/testsuite/gdb.gdb/selftest.exp
+@@ -53,6 +53,9 @@ proc test_with_self { } {
+ 	-re ".\[0-9\]+ = +.+ +0x.*\[0-9.\]+.*$gdb_prompt $" {
+ 	    pass "printed version with cast"
+ 	}
++	-re ".\[0-9\]+ = .(Fedora|Red Hat Enterprise Linux) \[\\(\\)0-9.a-z\\-\]+.*$gdb_prompt $" {
++	    pass "printed version Fedora or Red Hat Enterprise Linux only"
++	}
+     }
+ 
+     # start the "xgdb" process

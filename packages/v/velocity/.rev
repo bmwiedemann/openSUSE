@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64263a30930d86c68c43cbdc932502aa</srcmd5>
+    <version>1.5</version>
+    <time>1248145523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>64263a30930d86c68c43cbdc932502aa</srcmd5>
+    <version>1.5</version>
+    <time>1248145523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d010125ac49de7c2518fc684f81102b1</srcmd5>
+    <version>1.5</version>
+    <time>1268926450</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>d010125ac49de7c2518fc684f81102b1</srcmd5>
+    <version>1.5</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d010125ac49de7c2518fc684f81102b1</srcmd5>
+    <version>1.5</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>d010125ac49de7c2518fc684f81102b1</srcmd5>
+    <version>1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>d010125ac49de7c2518fc684f81102b1</srcmd5>
+    <version>1.5</version>
+    <time>1319182550</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>9da9e35779dc49e9815fb010d4c3be38</srcmd5>
+    <version>1.5</version>
+    <time>1323195098</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>9da9e35779dc49e9815fb010d4c3be38</srcmd5>
+    <version>1.5</version>
+    <time>1340184311</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>9192e0f866c87829512d3abbf5bf440c</srcmd5>
+    <version>1.5</version>
+    <time>1355920505</time>
+    <user>coolo</user>
+    <comment>- require avalon-logkit
+  * drop excalibur from Factory</comment>
+    <requestid>145643</requestid>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>9192e0f866c87829512d3abbf5bf440c</srcmd5>
+    <version>1.5</version>
+    <time>1359110543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>c96cdbf670be700bb7677397609a920b</srcmd5>
+    <version>1.5</version>
+    <time>1378985196</time>
+    <user>scarabeus_factory</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198439</requestid>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>c96cdbf670be700bb7677397609a920b</srcmd5>
+    <version>1.5</version>
+    <time>1379664920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>4a4e89d2571bcc69d3dbde64c94aac2c</srcmd5>
+    <version>1.5</version>
+    <time>1404161417</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238912</requestid>
+  </revision>
+  <revision rev="15" vrev="24">
+    <srcmd5>4a4e89d2571bcc69d3dbde64c94aac2c</srcmd5>
+    <version>1.5</version>
+    <time>1409303605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>58a0c114b1161fefabd3cb8bfa0c2991</srcmd5>
+    <version>1.7</version>
+    <time>1418112855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7
+  + No changelog available
+- Add requirement to commons-logging; new dependency
+- Remove java-devel &gt;= 1.6.0 requirement; not needed anymore
+- Do not copy convert folder; doesn't exist anymore</comment>
+    <requestid>264397</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9615872816b6fb807d389e8956fcfa56</srcmd5>
+    <version>1.7</version>
+    <time>1427983151</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292644</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>db88d6c91c3743da096af21e681b54bb</srcmd5>
+    <version>1.7</version>
+    <time>1495442874</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded deps
+
+- New build dependency: javapackages-local</comment>
+    <requestid>496818</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>a903a5db9849f0d54a86ef51c2f061e2</srcmd5>
+    <version>1.7</version>
+    <time>1505920244</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527245</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>6d5be9c6592c7ac8d6d829dfe51db787</srcmd5>
+    <version>1.7</version>
+    <time>1543953369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653653</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>d7a418a20ed806f1056864cc12b8efa7</srcmd5>
+    <version>1.7</version>
+    <time>1551687708</time>
+    <user>dimstar_suse</user>
+    <comment>Build against plexus-classworlds</comment>
+    <requestid>680352</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>fa1a59dd7180c266fb59785497cc304d</srcmd5>
+    <version>1.7</version>
+    <time>1554977993</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on the apache-parent, since we are not building
+  using Maven.
+</comment>
+    <requestid>693104</requestid>
+  </revision>
+</revisionlist>

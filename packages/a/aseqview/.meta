@@ -1,0 +1,8 @@
+<package name="aseqview" project="openSUSE:Factory">
+  <title>ALSA Sequencer Event Viewer</title>
+  <description>ASeqView is an ALSA sequencer user client that works as an event viewer
+and event filter.  It visualizes received events, such as note on and
+off, controls, and pitch wheels, using bar graphs as seen in many
+sequencer applications.</description>
+  <devel project="multimedia:apps" package="aseqview"/>
+</package>

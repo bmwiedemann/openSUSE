@@ -1,0 +1,669 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8073d9be3067fd050e17328a68a29d6</srcmd5>
+    <version>1.1.2</version>
+    <time>1306767023</time>
+    <user>darix</user>
+    <comment>Forwarding Python packages to Factory (only accept after anyjson and amqplib please)...</comment>
+    <requestid>67549</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b5963478e4b6b945cd96f78aadc54eb</srcmd5>
+    <version>1.1.2</version>
+    <time>1306767032</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67549
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>293183a1e8f3d705a72b4eaa5fe90481</srcmd5>
+    <version>1.1.6</version>
+    <time>1311173001</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>74900</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>642293433eab1a7e658e2bb42c7488d9</srcmd5>
+    <version>1.1.6</version>
+    <time>1311173016</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74900
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e890e151d5e87a096535b99e3701c83</srcmd5>
+    <version>1.2.1</version>
+    <time>1315234949</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80622</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6648f41f879d8139b173ed03aadbe41e</srcmd5>
+    <version>1.2.1</version>
+    <time>1315234958</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80622
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>435982b9bbd6752c30fc335e961ce63f</srcmd5>
+    <version>1.3.5</version>
+    <time>1316618398</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83894</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>435982b9bbd6752c30fc335e961ce63f</srcmd5>
+    <version>1.3.5</version>
+    <time>1319182394</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>865e2770d041075e456515f1da14b531</srcmd5>
+    <version>1.4.3</version>
+    <time>1322215994</time>
+    <user>coolo</user>
+    <comment>plz</comment>
+    <requestid>93425</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>17b6aae121b1a1aa8381a2af44d5498d</srcmd5>
+    <version>2.1.0</version>
+    <time>1329476928</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103931</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f1f6cc3a19c97d0e228b46d79b4bc0af</srcmd5>
+    <version>2.1.1</version>
+    <time>1332239610</time>
+    <user>coolo</user>
+    <comment> </comment>
+    <requestid>108737</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b1f31c6a551dd13987a9323f2758bcb0</srcmd5>
+    <version>2.1.5</version>
+    <time>1334927981</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114451</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>973ce727db51b78799c1d4fa9c9df3db</srcmd5>
+    <version>2.1.8</version>
+    <time>1337578227</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121280</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>973ce727db51b78799c1d4fa9c9df3db</srcmd5>
+    <version>2.1.8</version>
+    <time>1340184064</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ec0793a865b8a41580776f3f9e499829</srcmd5>
+    <version>2.2.6</version>
+    <time>1342083102</time>
+    <user>namtrac</user>
+    <comment>- Re-enable testsuite and add it's build-time dependencies
+
+- Update to 2.2.6:
+  - Adds ``messaging.entry_to_queue`` for compat with previous versions.
+
+- Update to 2.2.5:
+  - Pidbox: Now sets queue expire at 10 seconds for reply queues.
+  - EventIO: Now ignores ``ValueError`` raised by epoll unregister.
+  - MongoDB: Fixes Issue #142
+    Fix by Flavio Percoco Premoli
+
+- Update to 2.2.4:
+  - Support for msgpack-python 0.2.0 (Issue #143)
+    The latest msgpack version no longer supports Python 2.5, so if you're
+    still using that you need to depend on an earlier msgpack-python version.
+    Fix contributed by Sebastian Insua
+  - kombu.common.maybe_declare no longer caches entities with the
+    auto_delete flag set.
+  - New experimental filesystem transport.
+    Contributed by Bobby Beever.
+  - Virtual Transports: Now support anonymous queues and exchanges.
+
+- Update to 2.2.3:
+  - BrokerConnection now renamed to Connection.
+    The name Connection has been an alias for a very long time,
+    but now the rename is official in the documentation as well.
+    The Connection alias has been available since version 1.1.3,
+    and BrokerConnection will still work and is not deprecated.
+  - Connection.clone() now works for the sqlalchemy transport.
+  - kombu.common.eventloop, kombu.utils.uuid,</comment>
+    <requestid>127657</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>61598d2fba930b36c28161a16be1931e</srcmd5>
+    <version>2.4.6</version>
+    <time>1347838166</time>
+    <user>namtrac</user>
+    <comment>Needed for python-celery package.</comment>
+    <requestid>134271</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9bda22189c453ca6eefc1ea8bda9ff31</srcmd5>
+    <version>2.4.7</version>
+    <time>1349632775</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137361</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1d7aa2c42b7a67027884b1ee4fba206e</srcmd5>
+    <version>2.4.8</version>
+    <time>1352716620</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140792</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4cd3ba34b34a2c16716730593d3edc47</srcmd5>
+    <version>2.4.10</version>
+    <time>1354530414</time>
+    <user>coolo</user>
+    <comment>- Only require python-importlib for SLE.  It is not needed for any distro running python &gt;= 2.7, and is not being built for those distros. (forwarded request 143779 from TheBlackCat)</comment>
+    <requestid>143780</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>55fa50711b2dcc1a12837a9a11b0538b</srcmd5>
+    <version>2.5.3</version>
+    <time>1355145995</time>
+    <user>coolo</user>
+    <comment>- Add requirements on Python-2.6 compat modules Python-2.6 for SLES:
+  + python-importlib and python-ordereddict
+
+- Update to 2.5.3:
+  - Pidbox: Fixed compatibility with Python 2.6
+- Aditional changes from 2.5.2:
+  - [Redis] Fixed connection leak and added a new 'max_connections'
+    transport option.
+- Aditional changes from 2.5.1
+  - Fixed bug where return value of Queue.as_dict could not be
+    serialized with JSON (Issue #177).
+- Aditional changes from 2.5.0
+  - py-amqp is now the new default transport, replacing amqplib.
+    The new py-amqp library is a fork of amqplib started with the
+    following goals:
+        - Uses AMQP 0.9.1 instead of 0.8
+        - Support for heartbeats (Issue #79 + Issue #131)
+        - Automatically revives channels on channel errors.
+        - Support for all RabbitMQ extensions
+            - Consumer Cancel Notifications (Issue #131)
+            - Publisher Confirms (Issue #131).
+            - Exchange-to-exchange bindings: exchange_bind /
+              exchange_unbind.
+        - API compatible with librabbitmq so that it can be used
+          as a pure-python replacement in environments where rabbitmq-c
+          cannot be compiled. librabbitmq will be updated to support
+          all the same features as py-amqp.
+  - Support for using multiple connection URL's for failover.
+    The first argument to kombu.Connection can now be a list of connection
+    URLs:</comment>
+    <requestid>144413</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e2d5a2e0fc3b30a012f7064e979de405</srcmd5>
+    <version>2.5.4</version>
+    <time>1355919303</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145691</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>df79d545581900f2f6a124db5291248d</srcmd5>
+    <version>2.5.4</version>
+    <time>1358432377</time>
+    <user>coolo</user>
+    <comment>Done necessary fix for Factory.</comment>
+    <requestid>148781</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>df79d545581900f2f6a124db5291248d</srcmd5>
+    <version>2.5.4</version>
+    <time>1359110062</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d3c0925fd321568a76f789258f1280d5</srcmd5>
+    <version>2.5.6</version>
+    <time>1360753821</time>
+    <user>coolo</user>
+    <comment>- Add accept-newer-amqp-versions.diff:
+  * Also accept amqp versions &amp;gt;= 1.1.0 (forwarded request 155216 from dirkmueller)</comment>
+    <requestid>155267</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b20d82f9856744664ef1735567dc7d2d</srcmd5>
+    <version>2.5.7</version>
+    <time>1363587052</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>159590</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c94cdb31e72c892b2b8658bfc17264e</srcmd5>
+    <version>2.5.8</version>
+    <time>1364899974</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161684</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>750bd6de3434debed1370a47620f093a</srcmd5>
+    <version>2.5.10</version>
+    <time>1365928705</time>
+    <user>coolo</user>
+    <comment>- Change suggests to recommends since suggests are not well supported
+- Disable simplejson on openSUSE &lt;= 12.2 since it is not supported
+- Update to 2.5.10</comment>
+    <requestid>163911</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e12fb5085063cd34d94352cadb904df6</srcmd5>
+    <version>2.5.10</version>
+    <time>1366233425</time>
+    <user>coolo</user>
+    <comment>Resubmit</comment>
+    <requestid>171304</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>ee6e81505fe80827570a1b286f55ccfb</srcmd5>
+    <version>2.5.10</version>
+    <time>1371654178</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179876</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6dc8c8558dac208cefe034cdd6cc5ce9</srcmd5>
+    <version>2.5.12</version>
+    <time>1376392910</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.0.12:
+  * Redis: Ignore errors about keys missing in the round-robin cycle.
+  * Fixed test suite errors on Python 3.
+  * Fixed msgpack test failures.
+  * librabbitmq: Fixed a cyclic reference at connection close.
+  * Now depends on amqp 1.0.12 (Py3 compatibility issues). (forwarded request 186471 from dirkmueller)</comment>
+    <requestid>186537</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ecc3fbbb68113eaf96172e161b295975</srcmd5>
+    <version>2.5.14</version>
+    <time>1378238605</time>
+    <user>coolo</user>
+    <comment>- update to 2.5.14: 
+  * safe_str did not work properly resulting in UnicodeDecodeError
+  * Now depends on amqp 1.0.13
+  * Fixed typo in Django functional tests.
+  * Tests no longer depends on distribute, which was deprecated
+  and merged back into setuptools.
+
+- update to 2.5.12: (forwarded request 197222 from dirkmueller)</comment>
+    <requestid>197225</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>ecc3fbbb68113eaf96172e161b295975</srcmd5>
+    <version>2.5.14</version>
+    <time>1379664207</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>a70f0332207f2f7cf5e260b68760606d</srcmd5>
+    <version>2.5.14</version>
+    <time>1380297728</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200748</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>98288eecebf76595f93190ebad51d437</srcmd5>
+    <version>3.0.6</version>
+    <time>1385974400</time>
+    <user>coolo</user>
+    <comment>Update to 3.0.6 (forwarded request 209063 from appleonkel)</comment>
+    <requestid>209110</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>fe16fec4b772b530844d8ee9a4d9396f</srcmd5>
+    <version>3.0.6</version>
+    <time>1386693927</time>
+    <user>coolo</user>
+    <comment>- Fixup amqp dependency version check</comment>
+    <requestid>209994</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>35620f949b83e065795180effe5824a8</srcmd5>
+    <version>3.0.8</version>
+    <time>1389799613</time>
+    <user>coolo</user>
+    <comment>- update to 3.0.8:
+  - Redis: Would attempt to read from the wrong connection if a select/epoll/kqueue
+  exception event happened.
+  - Redis: Disabling ack emulation now works properly.
+  - Redis: :exc:`IOError` and :exc:`OSError` are now treated as recoverable
+  connection errors.
+  - SQS: Improved performance by reading messages in bulk.
+  - Connection Pool: Attempting to acquire from a closed pool will now
+- Changes from 3.0.7:
+  - Fixes Python 2.6 compatibility.
+  - Redis: Fixes 'bad file descriptor' issue. (forwarded request 213834 from dirkmueller)</comment>
+    <requestid>213839</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>deae9d478cbce612bf520ea0bfb9bb01</srcmd5>
+    <version>3.0.10</version>
+    <time>1390381131</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 3.0.10:
+  * Now depends on amqp 1.4.1.
+  * maybe_declare now raises a “recoverable connection error” 
+  if the channel is disconnected
+  * Redis: Consumer.cancel() is now thread safe.
+  * Fixed “unhashable type” error on Python 3
+  * Do not attempt to unregister operations on an already closed
+  poller instance
+
+- update to 3.0.9:
+  - Now depends on :mod:`amqp` 1.4.0.
+  - Redis: Basic cancel for fanout based queues now sends a corresponding
+    ``UNSUBSCRIBE`` command to the server.
+  - MongoDB: Improved connection string and options handling
+    (Issue #266 + Issue #120).
+  - SQS: Limit the number of messages when receiving in batch to 10.
+  - ConsumerMixin: ``consume`` now checks heartbeat every time the
+    socket times out.
+  - Retry Policy: A max retries of 0 did not retry forever.
+  - Simple: If passing a Queue object the simple utils will now take
+    default routing key from that queue.
+  - Redis: The map of Redis error classes are now exposed at the module level
+    using the :func:`kombu.transport.redis.get_redis_error_classes` function.
+  - Async: ``Hub.close`` now sets ``.poller`` to None. (forwarded request 214588 from dirkmueller)</comment>
+    <requestid>214649</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>60a8229b91f98adec06689f985cd1b9e</srcmd5>
+    <version>3.0.10</version>
+    <time>1392873735</time>
+    <user>coolo</user>
+    <comment>- Demote recommends back to suggests, it is really sufficent to document
+  the possible backend options. But we want to avoid they're installed
+  accidentally.</comment>
+    <requestid>223085</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>458a52c57c46b65f754cd8261e3622c7</srcmd5>
+    <version>3.0.16</version>
+    <time>1401899961</time>
+    <user>coolo</user>
+    <comment>- update to 3.0.16:
+  - ``kombu[librabbitmq]`` now depends on librabbitmq 1.5.1.
+  - Tests: Some unit tests accidentally required the `redis-py` library.
+  - librabbitmq: Would crash when using an older version of :mod:`librabbitmq`,
+    now emits warning instead.
+- remove kombu-fix-redis-tests.patch: Fixed differently upstream
+
+- add kombu-fix-redis-tests.patch
+  * Add skip_if_no_module decorator
+
+- update to 3.0.15:
+  * Now depends on :mod:`amqp` 1.4.5.
+  * RabbitMQ 3.3 changes QoS semantics (Issue #339).
+  * Users of :mod:`librabbitmq` is encouraged to upgrade to librabbitmq 1.5.0.
+  * Pools: Now takes transport options into account when comparing connections
+    (Issue #333).
+  * MongoDB: Fixes Python 3 compatibility.
+  * Async: select: Ignore socket errors when attempting to unregister handles
+    from the loop.
+  * Pidbox: Can now be configured to use a serializer other than json,
+    but specifying a serializer argument to :class:`~kombu.pidbox.Mailbox`.
+  * Message decompression now works with Python 3.
+- update to 3.0.14:
+  * **MongoDB**: Now endures a connection failover (Issue #123).
+  * **MongoDB**: Fixed ``KeyError`` when a replica set member is removed.
+  * **MongoDB**: Fixed MongoDB broadcast cursor re-initialization bug.
+  * **Async**: Fixed bug in lax semaphore implementation where in
+    some usage patterns the limit was not honored correctly.
+  * **Redis**: Fixed problem with fanout when using Python 3 (Issue #324).
+  * **Redis**: Fixed ``AttributeError`` from attempting to close a non-existing (forwarded request 235453 from dirkmueller)</comment>
+    <requestid>236013</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>43e7dde12c318d4eab2c2eeb5fd440ae</srcmd5>
+    <version>3.0.21</version>
+    <time>1408196277</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244828</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>43e7dde12c318d4eab2c2eeb5fd440ae</srcmd5>
+    <version>3.0.21</version>
+    <time>1409302904</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7c85d9d08e908b8df400e8a753fcb068</srcmd5>
+    <version>3.0.23</version>
+    <time>1411127762</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249294</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9469c19ca10edb72144186ccd55b047f</srcmd5>
+    <version>3.0.24</version>
+    <time>1416823731</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262479</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5a79fcb31fcc822a6f6c52426d18850e</srcmd5>
+    <version>3.0.25</version>
+    <time>1429769098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298604</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bb081207b05626e6c58e664fd7a9b91d</srcmd5>
+    <version>3.0.26</version>
+    <time>1431247601</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305759</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>62045408ebce96e14fc532e1744bc923</srcmd5>
+    <version>3.0.26</version>
+    <time>1443684534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331677</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a3ced7ad6a78efe4621069fe72cc5aba</srcmd5>
+    <version>3.0.33</version>
+    <time>1453799681</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353805</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>52af142b159d1a2e8c73fee0389e1de1</srcmd5>
+    <version>3.0.35</version>
+    <time>1480018982</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441230</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7e0ce0a3e8b46bf0dfaa1fc716018501</srcmd5>
+    <version>4.0.2</version>
+    <time>1492073109</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>482376</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>4ba3150cbe3e6cc25ed1d4515d680347</srcmd5>
+    <version>4.0.2</version>
+    <time>1499292099</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507395</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d1bcb39e1f62175bd0b42ab52161bbfc</srcmd5>
+    <version>4.1.0</version>
+    <time>1518596647</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  -  RabbitMQ: Ensured safer encoding of queue arguments.
+  - Added fallback to :func:``uuid.uuid5`` in :func:``generate_oid`` if
+  - Added Python 3.6 to CI testing
+  - Fixed bug around modifying dictionary size while iterating over it</comment>
+    <requestid>571051</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>6b9c2616cce01ea1aa201581f5d3efb1</srcmd5>
+    <version>4.1.0</version>
+    <time>1527583331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611736</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>38d2c40fc1f6bd65d7f3856c82fa5a3d</srcmd5>
+    <version>4.2.1</version>
+    <time>1534543487</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 4.2.1
+    * The 4.2.0 release contained remains of the ``async`` module by accident.
+      This is now fixed.
+    * Handle librabbitmq fileno raising a ValueError when socket is not
+      connected.
+    *  Now passing ``max_retries``, ``interval_start``,
+       ``interval_step``, ``interval_max`` parameters from broker
+       ``transport_options`` to
+       :meth:`~kombu.Connection.ensure_connection` when returning
+       :meth:`~kombu.Connection.default_connection` (Issue #765).
+    * Qpid: messages are now durable by default
+    *  Kombu now requires version 2.10.4 or greater of the redis
+       library, in line with Celery
+    *  Fixed ImportError in some environments with outdated simplejson
+    *  MongoDB: fixed failure on MongoDB versions with an &quot;-rc&quot; tag
+    *  Ensure periodic polling frequency does not exceed timeout in
+       virtual transport
+    *  Fixed string handling when using python-future module
+    *  Replaced &quot;async&quot; with &quot;asynchronous&quot; in preparation for Python
+       3.7
+    *  Allow removing pool size limit when in use
+    *  Codebase improvements and fixes
+    *  Documentation improvements
+- added python as requirement for ssl module is needed by amqp</comment>
+    <requestid>629552</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b4ea0f5dcb6c6e25f18d92dc1e281fe9</srcmd5>
+    <version>4.2.2.post1</version>
+    <time>1549140571</time>
+    <user>coolo</user>
+    <comment>- Updated to 4.2.2.post1:
+    - Support both Redis client version 2.x and version 3.x.
+</comment>
+    <requestid>670390</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f316aec5cb741cb1bd2a3b18f545d57a</srcmd5>
+    <version>4.3.0</version>
+    <time>1550573877</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676527</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>db21b3b80655ea03dc09392a41f12b7d</srcmd5>
+    <version>4.3.0</version>
+    <time>1552491745</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>684649</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1ef79e1187988d75a13ad2062df16785</srcmd5>
+    <version>4.4.0</version>
+    <time>1553809801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689365</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a221fb19dc3ac18ca9365542f26a76ca</srcmd5>
+    <version>4.5.0</version>
+    <time>1554833850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691750</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>31784ed4d613bd7cc529cb307b92b646</srcmd5>
+    <version>4.5.0</version>
+    <time>1556311338</time>
+    <user>maxlin_factory</user>
+    <comment>- Add redis version for BuildRequires. The tests fail with a
+  lower version so detect that early</comment>
+    <requestid>697114</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4b31b77912c57b89f1baca01ec855976</srcmd5>
+    <version>4.6.3</version>
+    <time>1561643556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710886</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>8884bc5bc276cda47cb0ca07240bf53b</srcmd5>
+    <version>4.6.3</version>
+    <time>1564484551</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on pytest-sugar, it is just pretty-formatter</comment>
+    <requestid>717022</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d6cc1b46af7ed9b1ea1fb9022735f688</srcmd5>
+    <version>4.6.4</version>
+    <time>1569233314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.4:
+  - Use importlib-metadata instead of pkg_resources for better performance
+  - Allow users to switch URLs while omitting the resource identifier (#1032)
+  - Don't stop receiving tasks on 503 SQS error. (#1064) 
+  - Fix maybe declare (#1066)
+  - Revert &quot;Revert &quot;Use SIMEMBERS instead of SMEMBERS to check for queue (Redis Broker)
+  - Fix MongoDB backend to work properly with TTL (#1076)
+  - Make sure that max_retries=0 is treated differently than None (#1080)
+  - Bump py-amqp to 2.5.1
+- Add patch to fix build with py 3.8:
+  * python38.patch</comment>
+    <requestid>730150</requestid>
+  </revision>
+</revisionlist>

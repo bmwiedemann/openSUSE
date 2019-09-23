@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Jun 29 15:32:48 UTC 2016 - mpluskal@suse.com
+
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Thu Mar 24 09:24:32 UTC 2016 - jengelh@inai.de
+
+- RPM group reclassification
+- Do not build static archives if you delete them afterwards anyway
+
+-------------------------------------------------------------------
+Fri Mar  4 22:45:22 UTC 2016 - mpluskal@suse.com
+
+- Build on all arm architectures
+
+-------------------------------------------------------------------
+Sat Feb 13 10:44:23 UTC 2016 - mpluskal@suse.com
+
+- Update _service
+- Update to 0.0.0+git20131231
+- Drop no longer needed fix-build-i2c.patch
+
+-------------------------------------------------------------------
+Sun Feb  7 15:57:48 UTC 2016 - mpluskal@suse.com
+
+- Update summary
+- Fix typo in changelog
+
+-------------------------------------------------------------------
+Sat Feb  6 15:51:37 UTC 2016 - mpluskal@suse.com
+
+- Rename devel package accordingly
+- Do not ship .so.0 library in devel package
+- Make building more verbose
+- Use optflags when building
+- Small spec file cleanup by spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  5 14:49:00 UTC 2016 - afaerber@suse.de
+
+- Run format_spec_file
+* Filled in package name in header
+* Updated copyright year and company name
+* Expanded/reordered [Build]Requires
+- Drop .la and .a files
+- Limit to ARMv6 (Raspberry Pi 1) and ARMv7 (Raspberry Pi 2)
+
+-------------------------------------------------------------------
+Thu Jul  2 13:50:39 UTC 2015 - guillaume@opensuse.org
+
+- Fix build with new libtool
+
+-------------------------------------------------------------------
+Fri Jul 19 16:19:00 UTC 2013 - matwey.kornilov@gmail.com
+
+- Initial version
+

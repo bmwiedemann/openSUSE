@@ -1,0 +1,27 @@
+diff -Naur a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2014-01-11 15:43:18.000000000 +0800
++++ b/Makefile.am	2017-02-17 10:13:23.052545165 +0800
+@@ -47,19 +47,19 @@
+ 
+ src/cangjie/_core.c: src/cangjie/_core.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/_core.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/_core.pyx
+ 
+ src/cangjie/errors.c: src/cangjie/errors.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/errors.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/errors.pyx
+ 
+ src/cangjie/filters.c: src/cangjie/filters.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/filters.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/filters.pyx
+ 
+ src/cangjie/versions.c: src/cangjie/versions.pyx src/cangjie/_core.pxd
+ 	$(MKDIR_P) src/cangjie
+-	$(CYTHON) -3 --verbose -o $@ $(srcdir)/src/cangjie/versions.pyx
++	$(CYTHON) -3 --verbose -o $@ -I $(srcdir)/src/cangjie $(srcdir)/src/cangjie/versions.pyx
+ 
+ # -- Testing -------------------------
+ TESTS = tests/run_tests

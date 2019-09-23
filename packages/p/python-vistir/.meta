@@ -1,0 +1,5 @@
+<package name="python-vistir" project="openSUSE:Factory">
+  <title></title>
+  <description>Utilities for filesystems, paths, projects, subprocesses, and more</description>
+  <devel project="devel:languages:python" package="python-vistir"/>
+</package>

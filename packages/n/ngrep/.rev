@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>103a31f687aeb10c480a8361ed56b6ac</srcmd5>
+    <version>1.45</version>
+    <time>1359712833</time>
+    <user>coolo</user>
+    <comment>Useful tool for grepping network connections.
+If possible please copy to 12.3 too</comment>
+    <requestid>150581</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>103a31f687aeb10c480a8361ed56b6ac</srcmd5>
+    <version>1.45</version>
+    <time>1379663372</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7bc02ba0258a2ecda9374cd7d7c46b2b</srcmd5>
+    <version>1.45</version>
+    <time>1406146029</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241952</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7bc02ba0258a2ecda9374cd7d7c46b2b</srcmd5>
+    <version>1.45</version>
+    <time>1409301982</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97fd833722b326b38e224081b9842c5b</srcmd5>
+    <version>1.46.1</version>
+    <time>1449686994</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347195</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e562c44005f85e7b807ed7cfe29592b7</srcmd5>
+    <version>1.46.1</version>
+    <time>1490707344</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482328</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f88fcbf529aea34621982ec041105b76</srcmd5>
+    <version>1.47</version>
+    <time>1551284899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676659</requestid>
+  </revision>
+</revisionlist>

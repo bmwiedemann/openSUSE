@@ -1,0 +1,47 @@
+diff -ru qemacs-0.3.1.orig/charset.c qemacs-0.3.1/charset.c
+--- qemacs-0.3.1.orig/charset.c	2003-04-22 00:01:42.000000000 +0200
++++ qemacs-0.3.1/charset.c	2005-04-12 19:00:13.000000000 +0200
+@@ -20,7 +20,7 @@
+ 
+ QECharset *first_charset = NULL;
+ 
+-extern QECharset charset_7bit;
++static QECharset charset_7bit;
+ 
+ /* specific tables */
+ static unsigned short table_idem[256];
+diff -ru qemacs-0.3.1.orig/tty.c qemacs-0.3.1/tty.c
+--- qemacs-0.3.1.orig/tty.c	2003-04-22 00:01:42.000000000 +0200
++++ qemacs-0.3.1/tty.c	2005-04-12 19:05:58.000000000 +0200
+@@ -70,7 +70,7 @@
+     return 1;
+ }
+ 
+-extern QEDisplay tty_dpy;
++static QEDisplay tty_dpy;
+ 
+ static int term_init(QEditScreen *s, int w, int h)
+ {
+diff -ru qemacs-0.3.1.orig/unicode_join.c qemacs-0.3.1/unicode_join.c
+--- qemacs-0.3.1.orig/unicode_join.c	2003-04-22 00:01:42.000000000 +0200
++++ qemacs-0.3.1/unicode_join.c	2005-04-12 19:04:48.000000000 +0200
+@@ -182,6 +182,7 @@
+             *q++ = l1;
+             i++;
+         found:
++	    ;
+         }
+     }
+     return q - buf_out;
+diff -ru qemacs-0.3.1.orig/x11.c qemacs-0.3.1/x11.c
+--- qemacs-0.3.1.orig/x11.c	2003-04-22 00:01:42.000000000 +0200
++++ qemacs-0.3.1/x11.c	2005-04-12 19:07:21.000000000 +0200
+@@ -76,7 +76,7 @@
+ static CSSRect update_rects[UPDATE_MAX_REGIONS];
+ #endif
+ 
+-extern QEDisplay x11_dpy;
++static QEDisplay x11_dpy;
+ static int visual_depth;
+ 
+ static int force_tty = 0;

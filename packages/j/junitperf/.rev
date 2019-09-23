@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>f0822a300a6e34396ee58d59c9fff11d</srcmd5>
+    <version>1.9.1</version>
+    <time>1243478310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>06f81ac9408af5a5d5583cd898ac9786</srcmd5>
+    <version>1.9.1</version>
+    <time>1244903600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>06f81ac9408af5a5d5583cd898ac9786</srcmd5>
+    <version>1.9.1</version>
+    <time>1244903600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>13280e1bb953ae659b3ecd86068ae116</srcmd5>
+    <version>1.9.1</version>
+    <time>1268924156</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>13280e1bb953ae659b3ecd86068ae116</srcmd5>
+    <version>1.9.1</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>13280e1bb953ae659b3ecd86068ae116</srcmd5>
+    <version>1.9.1</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>13280e1bb953ae659b3ecd86068ae116</srcmd5>
+    <version>1.9.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>13280e1bb953ae659b3ecd86068ae116</srcmd5>
+    <version>1.9.1</version>
+    <time>1319182019</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>22526de0100b8c2ed3dfa7ceff47f8ff</srcmd5>
+    <version>1.9.1</version>
+    <time>1323192058</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>22526de0100b8c2ed3dfa7ceff47f8ff</srcmd5>
+    <version>1.9.1</version>
+    <time>1340183494</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>22526de0100b8c2ed3dfa7ceff47f8ff</srcmd5>
+    <version>1.9.1</version>
+    <time>1359109133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>f2d3fa81aa5254be4aabbaa51e6c41d8</srcmd5>
+    <version>1.9.1</version>
+    <time>1378998278</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198696</requestid>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>f2d3fa81aa5254be4aabbaa51e6c41d8</srcmd5>
+    <version>1.9.1</version>
+    <time>1379662728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>f2d3fa81aa5254be4aabbaa51e6c41d8</srcmd5>
+    <version>1.9.1</version>
+    <time>1409301296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>dc20bd91f8194552ea5cf7521357cca8</srcmd5>
+    <version>1.9.1</version>
+    <time>1505334063</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522261</requestid>
+  </revision>
+</revisionlist>

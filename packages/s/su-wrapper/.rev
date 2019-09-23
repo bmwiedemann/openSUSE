@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="350">
+    <srcmd5>88dc9308f08b0b0c5652d025618ad288</srcmd5>
+    <version>1.2.0</version>
+    <time>1168904290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="473">
+    <srcmd5>88dc9308f08b0b0c5652d025618ad288</srcmd5>
+    <version>1.2.0</version>
+    <time>1168904290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="474">
+    <srcmd5>d8e3e744cc50e5f82032ff6fbfba8b00</srcmd5>
+    <version>1.2.0</version>
+    <time>1223484049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="476">
+    <srcmd5>d8e3e744cc50e5f82032ff6fbfba8b00</srcmd5>
+    <version>1.2.0</version>
+    <time>1223484049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="477">
+    <srcmd5>4f8f22dcbcb97bfb1970a73008b2a7a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1268926244</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="479">
+    <srcmd5>4f8f22dcbcb97bfb1970a73008b2a7a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="480">
+    <srcmd5>4f8f22dcbcb97bfb1970a73008b2a7a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="483">
+    <srcmd5>4f8f22dcbcb97bfb1970a73008b2a7a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="485">
+    <srcmd5>4f8f22dcbcb97bfb1970a73008b2a7a7</srcmd5>
+    <version>1.2.0</version>
+    <time>1319182493</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="486">
+    <srcmd5>0a746b59e70a685f978c048292cd47b4</srcmd5>
+    <version>1.2.0</version>
+    <time>1323194796</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="487">
+    <srcmd5>d2a310e8cf64714cfee699b52bd53072</srcmd5>
+    <version>1.2.0</version>
+    <time>1327500163</time>
+    <user>coolo</user>
+    <comment>- Build with -fpie and full RELRO (forwarded request 101138 from elvigia)</comment>
+    <requestid>101140</requestid>
+  </revision>
+  <revision rev="12" vrev="488">
+    <srcmd5>d90c9cd382e9b6d6d13b847d734ae892</srcmd5>
+    <version>1.2.0</version>
+    <time>1338017360</time>
+    <user>coolo</user>
+    <comment>- Job creation scheme (bnc#764105)</comment>
+    <requestid>122419</requestid>
+  </revision>
+  <revision rev="13" vrev="490">
+    <srcmd5>d90c9cd382e9b6d6d13b847d734ae892</srcmd5>
+    <version>1.2.0</version>
+    <time>1340184243</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="491">
+    <srcmd5>7f0d630bb13d67142020eb5033de88b6</srcmd5>
+    <version>1.2.0</version>
+    <time>1355925066</time>
+    <user>coolo</user>
+    <comment>- Add su-wrapper-1.2.0-term.dif (bnc#795063)</comment>
+    <requestid>145861</requestid>
+  </revision>
+  <revision rev="15" vrev="493">
+    <srcmd5>7f0d630bb13d67142020eb5033de88b6</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="495">
+    <srcmd5>7f0d630bb13d67142020eb5033de88b6</srcmd5>
+    <version>1.2.0</version>
+    <time>1379664740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="497">
+    <srcmd5>7f0d630bb13d67142020eb5033de88b6</srcmd5>
+    <version>1.2.0</version>
+    <time>1409303423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="498">
+    <srcmd5>4762f0b45886567c05a3c8e7ca0d6eeb</srcmd5>
+    <version>1.2.0</version>
+    <time>1531947249</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622270</requestid>
+  </revision>
+</revisionlist>

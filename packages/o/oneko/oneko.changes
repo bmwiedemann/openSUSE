@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Thu Mar  1 19:27:10 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from buildrequires. 
+
+-------------------------------------------------------------------
+Wed Oct  8 15:56:53 UTC 2014 - jengelh@inai.de
+
+- Use source URLs, enable parallel build, remove old specfile
+  tags and sections.
+
+-------------------------------------------------------------------
+Sun Aug  6 15:20:57 CEST 2006 - cthiel@suse.de
+
+- fix build with X.org 7.1
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 26 17:18:47 CEST 2004 - werner@suse.de
+
+- Avoid compiler warnings
+
+-------------------------------------------------------------------
+Sun Jan 11 11:43:46 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Jun  3 10:30:56 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Jan 14 16:32:57 CET 2003 - pmladek@suse.cz
+
+- fixed comments prefix in the Imakefile from "/**/#" to "XCOMM"
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Feb 20 12:55:39 CET 2001 - uli@suse.de
+
+- fixed for new glibc
+
+-------------------------------------------------------------------
+Thu Dec 14 17:05:41 CET 2000 - werner@suse.de
+
+- Group tag
+
+-------------------------------------------------------------------
+Wed Jun  7 15:57:22 CEST 2000 - ro@suse.de
+
+- doc relocation 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Tue Dec 16 23:16:14 MET 1997 - werner@suse.de
+
+	- New package
+	- Some small changes in source and manual page.

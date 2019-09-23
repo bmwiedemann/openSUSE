@@ -1,0 +1,61 @@
+Index: flexdock-1.2.4/build.xml
+===================================================================
+--- flexdock-1.2.4.orig/build.xml
++++ flexdock-1.2.4/build.xml
+@@ -49,7 +49,6 @@
+    </path>
+    <path id="javac.classpath.demo">
+       <path refid="javac.classpath" />
+-      <pathelement location="${lib.dir}/jmf/lib/jmf.jar" />
+       <pathelement location="${lib.dir}/looks-2.1.1.jar" />
+    </path>
+    <path id="javac.classpath.test">
+@@ -62,7 +61,6 @@
+    </path>
+    <path id="rt.classpath.demo">
+       <pathelement location="${bin.dir.demo}"/>
+-      <pathelement location="${lib.dir}/jmf.jar"/><!-- needed only for JMF demo -->
+       <pathelement location="${bin.dir}"/>
+    </path>
+    <path id="rt.classpath.test">
+@@ -303,10 +301,6 @@
+       <java.demo classname="org.flexdock.demos.raw.elegant.ElegantDemo" />
+    </target>
+ 
+-   <target name="demo.jmf" depends="resources,compile" description="Run org.flexdock.demos.raw.jmf.JMFDemo">
+-      <java.demo classname="org.flexdock.demos.raw.jmf.JMFDemo" />
+-   </target>
+-
+    <target name="demo.simple" depends="resources,compile" description="Run org.flexdock.demos.raw.SimpleDemo">
+       <java.demo classname="org.flexdock.demos.raw.SimpleDemo" />
+    </target>
+@@ -412,7 +406,6 @@ The signing.properties file must specify
+             <filter token="VERSION" value="${version}"/>
+             <filter token="DEMO_JAR_NAME" value="${dist.demo.jar.name}"/>
+             <filter token="FRAMEWORK_JAR_NAME" value="${dist.jar.name}"/>
+-            <filter token="JMF_JAR_NAME" value="jmf.jar"/>
+             <filter token="LOOKS" value="looks-2.1.1.jar"/>
+             <filter token="SKIN_LF" value="skinlf.jar"/>
+          </filterset>
+@@ -423,9 +416,6 @@ The signing.properties file must specify
+       <mysignjar
+           jarname="${build.dir}/${dist.demo.jar.name}"
+           sjarname="${bin.dir.webstart}/${dist.demo.jar.name}"/>
+-      <mysignjar
+-          jarname="${build.dir}/lib/jmf/lib/jmf.jar"
+-          sjarname="${bin.dir.webstart}/jmf.jar"/>
+     <mysignjar
+         jarname="${build.dir}/lib/looks-2.1.1.jar"
+         sjarname="${bin.dir.webstart}/looks-2.1.1.jar"/>
+Index: flexdock-1.2.4/src/java/demo/org/flexdock/demos/AllDemos.java
+===================================================================
+--- flexdock-1.2.4.orig/src/java/demo/org/flexdock/demos/AllDemos.java
++++ flexdock-1.2.4/src/java/demo/org/flexdock/demos/AllDemos.java
+@@ -32,7 +32,6 @@ public class AllDemos extends JFrame {
+         "org.flexdock.demos.raw.border.BorderDemo",
+         "org.flexdock.demos.raw.CompoundDemo",
+         "org.flexdock.demos.raw.elegant.ElegantDemo",
+-        "org.flexdock.demos.raw.jmf.JMFDemo",
+         "org.flexdock.demos.raw.SimpleDemo",
+         "org.flexdock.demos.raw.SplitPaneDemo",
+         "org.flexdock.demos.raw.TabbedPaneDemo",

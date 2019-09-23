@@ -1,0 +1,168 @@
+-------------------------------------------------------------------
+Mon May 27 08:13:02 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to 2.0+git.1542296533.b974921:
+  * Convert documentation to asciidoc
+  * Add error handling for out-of-memory while parsing config file
+  * create_key: use all random bits; add some error handling
+
+- Update patches
+  * Add 0001-Add-COPYING-as-docfile.patch
+  * Add 0002-Patch-sonames.patch
+  * Add 0003-Set-AC_PROG_CPP-in-configure.ac.patch
+  * Remove add-COPYING.patch
+  * Remove add-ac_prog_cpp.patch
+  * Remove fix-sonames.patch
+
+-------------------------------------------------------------------
+Mon May 27 08:13:02 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update patches
+  * Add 0001-Add-COPYING-as-docfile.patch
+  * Add 0002-Patch-sonames.patch
+  * Add 0003-Set-AC_PROG_CPP-in-configure.ac.patch
+  * Remove add-COPYING.patch
+  * Remove add-ac_prog_cpp.patch
+  * Remove fix-sonames.patch
+
+-------------------------------------------------------------------
+Wed Aug 15 14:20:12 UTC 2018 - kgronlund@suse.com
+
+- comparison of peer names provided via command line should not be case sensitive (bsc#1082576)
+- fix for inetd stderr >& stdout
+- fix log message when generating backup files, demote log level
+- document -l and -N switches
+ 
+-------------------------------------------------------------------
+Tue Aug 14 14:10:16 UTC 2018 - kgronlund@suse.com
+
+- Avoid systemd service removal errors when uninstalling (bsc#1093165)
+
+-------------------------------------------------------------------
+Thu Jul 19 13:46:24 UTC 2017 - tchvatal@suse.com
+
+- Remove systemd dep in favor of systemd-rpm-macros
+- Format a bit with spec-cleaner
+- Add proper dependency over openssl
+- Remove all the tex deps as we now reduce from 300 to 160 buildrequires
+- Remove xinetd service and use only socket activation to keep
+  only one tool for the job
+  * Also remove patch csync2-fix-xinetd.patch
+
+-------------------------------------------------------------------
+Thu Jul 13 11:24:17 UTC 2017 - olaf@aepfle.de
+
+- Requires(post) hostname|openssl
+
+-------------------------------------------------------------------
+Fri May  6 21:13:01 UTC 2016 - jengelh@inai.de
+
+- Avoid runtime dependency on systemd, the macros can all deal with
+  its absence.
+- Ensure csync@.service template instances are disabled on package
+  removal.
+
+-------------------------------------------------------------------
+Wed Apr 27 09:49:11 UTC 2016 - kgronlund@suse.com
+
+- Update to csync2-2.0-6-g10636a4:
+  - Document the -N flag to bind csync2 to a specific ip address.
+  - fix diff mode truncation to first 512 byte
+  - fix diff mode prefix substitution
+
+- Drop merged patches:
+  - Remove csync2-librsync-1.0.0.patch
+  - Remove fix-csync2_ssl_cert-filename.patch
+
+-------------------------------------------------------------------
+Thu Mar 26 11:25:01 UTC 2015 - dimstar@opensuse.org
+
+- Add csync2-librsync-1.0.0.patch: Fix build with librsync 1.0.0.
+
+-------------------------------------------------------------------
+Thu Sep 26 09:07:40 UTC 2013 - tserong@suse.com
+
+- Ensure COPYING file is included in package
+  + Added add-COPYING.patch
+
+-------------------------------------------------------------------
+Wed Sep 11 05:12:22 UTC 2013 - tserong@suse.com
+
+- Update to upstream version 2.0-rc2.  Changes since 1.34 too numerous
+  to list, but include:
+  + Database abstraction layer (default build uses sqlite3)
+  + IPv6 support
+  + Native GnuTLS support
+  + tempdir and lock-timeout config options
+  + do-local-only config option for actions
+- Reworked patches and extra source being carried in openSUSE:
+  + Added csync2.socket and csync2@.service for use via systemd
+  + Added add-ac_prog_cpp.patch
+  + Added fix-csync2_ssl_cert-filename.patch
+  + Added fix-sonames.patch
+  + Updated csync2-fix-xinetd.patch
+  + Updated README.quickstart
+  + Removed fix-missing-sentinels.diff (upstream)
+  + Removed csync2-1.34-pure-gnutls-r2.patch (obsolete)
+  + Removed force-debug-stderr-off-inetd.patch (obsolete)
+  + Removed bind-to-local-hostname.patch (obsolete)
+
+-------------------------------------------------------------------
+Fri May 10 12:56:38 UTC 2013 - tserong@suse.com
+
+- Try to bind to "local" IP explicitly to avoid "identification failed"
+  errors with multiple IPs on same subnet (bnc#757327)
+  + Added bind-to-local-hostname.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 06:00:00 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Jun  4 08:56:27 UTC 2012 - tserong@suse.com
+
+- Drop requirement on libgnutls-extra-devel (unnecessary on openSUSE)
+
+-------------------------------------------------------------------
+Mon Mar 19 12:51:03 UTC 2012 - tserong@suse.com
+
+- Force debug output off completely when running under xinetd (fixes
+  protocol breakage when target directories don't exist; bnc#752563)
+
+-------------------------------------------------------------------
+Mon Feb 20 19:10:40 UTC 2012 - coolo@suse.com
+
+- factory has librsync split into devel package
+
+-------------------------------------------------------------------
+Wed Oct 26 09:19:16 UTC 2011 - tserong@suse.com
+
+- Remove explicit lib dependencies from spec file
+
+-------------------------------------------------------------------
+Tue Sep 20 12:41:40 UTC 2011 - tserong@suse.com
+
+- Add csync2-rm-ssl-cert helper script (bnc#709811)
+
+-------------------------------------------------------------------
+Sun Sep 18 00:06:31 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Jun  8 00:59:40 UTC 2010 - tserong@novell.com
+
+- Fix build against gnutls 2.8 in factory (integrated patch from
+  http://bugs.gentoo.org/show_bug.cgi?id=274213)
+
+-------------------------------------------------------------------
+Mon Dec 14 16:57:21 CET 2009 - ro@suse.de
+
+- fix build against current openssl 
+
+-------------------------------------------------------------------
+Fri Dec  4 09:58:35 UTC 2009 - jshi@novell.com
+
+- Init import of csync2 for DRBD configuration file sync (fate#307419) 
+

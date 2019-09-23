@@ -1,0 +1,282 @@
+-------------------------------------------------------------------
+Tue May 14 20:34:45 UTC 2019 - Jonathan <jharker@suse.com>
+
+- Skip broken test 
+
+-------------------------------------------------------------------
+Wed Apr 24 11:01:35 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Rebuild for jsc#SLE-5706 to be sent to SUSE:SLE-12-SP5:GA.
+
+-------------------------------------------------------------------
+Thu Mar 21 18:40:39 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing GPL license file
+- Add README to %doc
+- Drop extra 'doc' subdirectory under %doc
+- Remove docutils from installed egg-info
+
+-------------------------------------------------------------------
+Thu Mar 21 14:39:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary dependency on python-devel
+- Remove unnecessary runtime dependency on docutils
+- Update URL to https://pagure.io/python-daemon/
+- Update to v2.2.3
+  * Use custom fake file type for testing `fileno` behaviour.
+    This works around an incompatibility in Python 2.7 `file` type that
+    caused test cases to fail.
+  * Promote the warning for `runner` module to a `DeprecationWarning`.
+    This has been an unofficial example module from the beginning, and
+    it will be removed in a future version.
+- from v2.2.2
+  * Remove from the build system specification a white space character
+    not permitted in TOML format.
+  * Implement test suite automation in virtualenvs, using Tox.
+- from v2.2.1
+  * Add a :PEP:`518` conformant build system specification (the
+    ``pyproject.toml`` file).
+- from v2.2.0
+  * Correct the description of the return value for
+    `daemon.is_detach_process_context_required`.
+  * Set a sensible default for `Distribution.script_name`.
+    This works around a bug in Setuptools which calls commands before
+    the `Distribution` is initialised.
+  * The test suite now relies on the test discovery feature in
+    ‘unittest’. This feature is in Python version 2.7 and later.
+  * Improve performance of `daemon.close_all_open_files`.
+
+-------------------------------------------------------------------
+Mon Aug 13 13:30:40 UTC 2018 - mcepl@suse.com
+
+- Remove dependency on unittest2
+
+-------------------------------------------------------------------
+Tue Oct 10 13:18:27 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+- update requirements
+- use pytest as test runner
+- update to 2.1.2
+  * Ensure custom types are part of the Python type hierarchy.
+  * Raise a warning that the ‘runner’ module is pending deprecation.
+    This has been an unofficial example module from the beginning, and
+    it will be removed in a future version.
+
+-------------------------------------------------------------------
+Mon Feb  1 10:41:01 UTC 2016 - michael@stroeder.com
+
+- update to 2.1.1
+  * Default ‘initgroups’ option to False. Using ‘os.initgroups’ requires
+    permission to set process GID, so this now needs to be explicitly
+    requested.
+
+-------------------------------------------------------------------
+Mon Dec  7 22:37:30 UTC 2015 - tbechtold@suse.com
+
+- update to 2.1.0:
+  * Add a DaemonContext option, ‘initgroups’, which specifies whether to
+    set the daemon process's supplementary groups.
+  * Set the process groups using ‘os.initgroups’.
+    Thanks to Malcolm Purvis for contributing an implementation of this
+    feature.
+
+-------------------------------------------------------------------
+Thu Sep  3 14:17:06 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 2.0.6
+  * Lower dependency for unittest2, we can work with an earlier version.
+  * Specify development status Production/Stable in Trove classifiers.
+  * Migrate to mock version 1.3 with corresponding API changes.
+  * Use current Python concept of basestring to test for an attribute name.
+  
+-------------------------------------------------------------------
+Tue May 26 12:22:44 UTC 2015 - jkeil@suse.com
+
+- Fix License issue
+
+-------------------------------------------------------------------
+Tue May 12 11:38:14 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.0.5:
+  * Refine compatibility of exceptions for file operations.
+  * Specify the text encoding when opening the changelog file.
+- additional changes from version 2.0.4
+  * Record version info via Setuptools commands.
+  * Remove the custom Setuptools entry points. This closes Alioth
+    bug#314948.
+- additional changes from version 2.0.3
+  * Break circular import dependency for ‘setup.py’.
+  * Refactor all initial metadata functionality to
+    ‘daemon._metadata’.
+  * Distribute ‘version’ (and its tests) only in source, not
+    install.
+  * Build a “universal” (Python 2 and Python 3) wheel.
+- additional changes from version 2.0.2
+  * Declare test-time dependency on recent ‘unittest2’.
+  * Declare packaging-time dependency on ‘docutils’ library.
+  * Include unit tests for ‘version’ module with source
+    distribution.
+  * Record version info consistent with distribution metadata.
+- additional changes from version 2.0.1
+  * Include the ‘version’ module with source distribution.
+- additional changes from version 2.0
+  * Support both Python 3 (version 3.2 or later) and Python 2
+    (version 2.7 or later).
+  * Document the API of all functions comprehensively in docstrings.
+  * Add a hacking guide for developers.
+  * Add explicit credit for contributors.
+  * Document the security impact of the default umask.
+  * Specify explicit text or binary mode when opening files.
+  * Preserve exception context in custom exceptions.
+  * Declare compatibility with current Python versions.
+  * Depend on Python 3 compatible libraries.
+  * Update package homepage to Alioth hosted project page.
+  * Use ‘pydoc.splitdoc’ to get package description text.
+  * Remove ASCII translation of package description, not needed now
+    the docstring is a proper Unicode text value.
+  * Include test suite with source distribution.
+  * Move package metadata to ‘daemon/_metadata.py’.
+  * Migrate to JSON (instead of Python) for serialised version info.
+  * Add unit tests for metadata.
+  * Store and retrieve version info in Setuptools metadata.
+  * Migrate to ‘str.format’ for interpolation of values into text.
+  * Migrate to ‘mock’ library for mock objects in tests.
+  * Migrate to ‘testscenarios’ library for unit test scenarios.
+  * Migrate to ‘unittest2’ library for back-ported improvements.
+    Remove custom test suite creation.
+  * Discriminate Python 2-and-3 compatible usage of dict methods.
+  * Discriminate Python 2-and-3 compatible bytes versus text.
+  * Declare explicit absolute and relative imports.
+  * Discriminate between different ‘fileno’ method behaviours. In
+    Python 3, ‘StringIO.fileno’ is callable but raises an exception.
+  * Migrate to built-in ‘next’ function.
+  * Wrap the ‘fromlist’ parameter of ‘__import__’ for Python 3
+    compatibility.
+  * Wrap function introspection for Python 3 compatibility.
+  * Wrap standard library imports where names changed in Python 3.
+- additional changes from version 1.6.1
+  * Use unambiguous “except FooType as foo” syntax. This is to ease
+    the port to Python 3, where the ambiguous comma usage is an
+    error.
+  * Ensure a ‘basestring’ name bound to the base type for strings.
+    This is to allow checks to work on Python 2 and 3.
+  * Specify versions of Python supported, as trove classifiers.
+  * Update copyright notices.
+  * Add editor hints for most files.
+  * Distinguish continuation-line indentation versus block
+    indentation.
+  * Use unicode literals by default, specifying bytes where
+    necessary. This is to ease the port to Python 3, where the
+    default string type is unicode.
+  * Update copyright notices.
+  * Update the GPL license file to version 3, as declared in our
+    copyright notices.
+  * Change license of library code to Apache License 2.0.
+- additional changes from version 1.6
+  * Use absolute imports to disambiguate provenance of names.
+  * setup.py: Require ‘lockfile >=0.9’.
+  * daemon/pidfile.py: Renamed from ‘daemon/pidlockfile.py’. Change
+    references elsewhere to use this new name.
+  * test/test_pidfile.py: Renamed from ‘test/test_pidlockfile.py’.
+    Change references elsewhere to use this new name.
+  * daemon/pidfile.py: Remove functionality now migrated to
+    ‘lockfile’ library.
+  * FAQ: Add some entries and re-structure the document.
+  * Use ‘unicode’ data type for all text values.
+  * Prepare for Python 3 upgrade by tweaking some names and imports.
+  * MANIFEST.in: Include the documentation in the distribution.
+- update package license: changed upstream to apache-2.0
+- point the source URL to pypi
+- set a minimum version for python-devel
+- remove python-MiniMock from build dependencies
+- add python-docutils, python-mock, python-testscenarios,
+  python-testtools, python-unittest2 as test dependencies
+- set a minimum version for python-lockfile
+- remove sed call to fix non-executable script: fixed upstream
+- run the test during build
+- add LICENSE.ASF-2 and doc to package documentation
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:38 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Nov 23 14:03:24 UTC 2012 - saschpe@suse.de
+
+- Correctly provide/obsolete python-daemon
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Apr 18 09:00:59 UTC 2012 - bwiedemann@suse.com
+
+- BuildRequire lowercase python-minimock 
+- to also work with the existing 11.4 package
+
+-------------------------------------------------------------------
+Thu Jan  5 13:25:37 UTC 2012 - jmatejek@suse.com
+
+- reverted to 1.5.5 (per bnc#731071 and Debian bug #585404,
+  upstream has retracted version 1.6 due to brokenness)
+- updated license header
+
+-------------------------------------------------------------------
+Thu Nov 24 13:21:10 UTC 2011 - idoenmez@suse.de
+
+- Add Provides for the old python-daemon name 
+
+-------------------------------------------------------------------
+Tue Sep 20 14:54:32 UTC 2011 - saschpe@suse.de
+
+- Changed BuildRequires python-minimock to python-MiniMock
+- Removed %clean section and some other useless stuff
+
+-------------------------------------------------------------------
+Mon May 30 15:34:01 UTC 2011 - alexandre@exatati.com.br
+
+- Copypac from python-daemon to python-python-daemon.
+
+-------------------------------------------------------------------
+Fri Apr 15 23:49:04 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec filw with py2pack;
+- Bzip2 source file;
+- Add ChangeLog file as documentation.
+
+-------------------------------------------------------------------
+Tue May 11 00:37:27 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.6;
+- Spec file cleaned with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Mar  2 16:56:49 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.5.5.
+
+-------------------------------------------------------------------
+Sat Feb 27 20:45:03 UTC 2010 - alexandre@exatati.com.br
+
+- Update to 1.5.4.
+
+-------------------------------------------------------------------
+Mon Oct 26 09:58:12 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.5.2.
+
+-------------------------------------------------------------------
+Sat Sep 26 17:54:11 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 1.5.1.
+
+-------------------------------------------------------------------
+Thu Sep 24 14:35:04 UTC 2009 - alexandre@exatati.com.br
+
+- Moved to the correct python-daemon module.
+
+-------------------------------------------------------------------
+Tue Sep 22 14:19:09 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (1.0.1) for openSUSE.
+

@@ -1,0 +1,59 @@
+--- a/bin/list_lists
++++ b/bin/list_lists
+@@ -37,6 +37,13 @@ Where:
+     -b / --bare
+         Displays only the list name, with no description.
+ 
++    -r / --private-archives
++        Displays only those lists with private archives.
++
++    -u / --public-archives
++        Displays only those lists with public archives.
++        (compatibility spelling for -p / --public-archive)
++
+     -h / --help
+         Print this text and exit.
+ 
+@@ -69,8 +76,10 @@ def usage(code, msg=''):
+ 
+ def main():
+     try:
+-        opts, args = getopt.getopt(sys.argv[1:], 'apbV:h',
++        opts, args = getopt.getopt(sys.argv[1:], 'apbruV:h',
+                                    ['advertised', 'public-archive', 'bare',
++				    'private-archives',
++				    'public-archives',
+                                     'virtual-host-overview=',
+                                     'help'])
+     except getopt.error, msg:
+@@ -80,17 +89,20 @@ def main():
+     public = 0
+     vhost = None
+     bare = 0
++    private_archives = 0
+     for opt, arg in opts:
+         if opt in ('-h', '--help'):
+             usage(0)
+         elif opt in ('-a', '--advertised'):
+             advertised = 1
+-        elif opt in ('-p', '--public-archive'):
++        elif opt in ('-p', '--public-archive', '-u', '--public-archives'):
+             public = 1
+         elif opt in ('-V', '--virtual-host-overview'):
+             vhost = arg
+         elif opt in ('-b', '--bare'):
+             bare = 1
++	elif opt in ('-r', '--private-archives'):
++	    private_archives = 1
+ 
+     names = Utils.list_names()
+     names.sort()
+@@ -107,6 +119,8 @@ def main():
+             continue
+         if public and mlist.archive_private:
+             continue
++	if private_archives and not mlist.archive_private:
++	    continue
+         if (vhost and mm_cfg.VIRTUAL_HOST_OVERVIEW and
+                not re.search('://%s/' % re.escape(vhost),
+                    mlist.web_page_url,

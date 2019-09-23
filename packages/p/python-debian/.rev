@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c1d65e740e61793c0ecb1d2886b2baf</srcmd5>
+    <version>0.1.31</version>
+    <time>1513762834</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see &lt;https://lists.opensuse.org/opensuse-factory/2017-12/msg00273.html&gt;.</comment>
+    <requestid>558595</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c755a33bd0eb91cb578468d7e4827e63</srcmd5>
+    <version>0.1.31</version>
+    <time>1544817203</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653692</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c6bd4942ab060e9616b3293dd074f10</srcmd5>
+    <version>0.1.36</version>
+    <time>1567850021</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to new upstream version 0.1.36</comment>
+    <requestid>728711</requestid>
+  </revision>
+</revisionlist>

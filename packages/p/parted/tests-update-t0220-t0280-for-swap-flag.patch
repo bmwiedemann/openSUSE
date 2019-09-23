@@ -1,0 +1,45 @@
+From: "Brian C. Lane" <bcl@redhat.com>
+Date: Thu, 22 Dec 2016 16:59:27 -0800
+Subject: tests: Update t0220 and t0280 for the swap flag.
+For: libparted-set-swap-flag-on-GPT-partitions.patch
+For: parted-mkpart-set-a-swap-flag-if-available.patch
+For: libparted-dasd-add-swap-flag-handling-for-DASD-CDL.patch
+Patch-mainline: v3.3
+Git-commit: 5a9a49776ee98ca86cfe123b79bbee2279f93961
+
+Acked-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ tests/t0220-gpt-msftres.sh | 6 +++++-
+ tests/t0280-gpt-corrupt.sh | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/t0220-gpt-msftres.sh b/tests/t0220-gpt-msftres.sh
+index 79518ae6b342..6721a470b111 100755
+--- a/tests/t0220-gpt-msftres.sh
++++ b/tests/t0220-gpt-msftres.sh
+@@ -56,7 +56,11 @@ printf "BYT;\n$dev:${n_sectors}s:file:$ss:$ss:gpt::;\n" > exp
+ i=1
+ for type in $fs_types; do
+   end=$(expr $start + $part_size - 1)
+-  case $type in fat*|NTFS) flag=msftdata;; *) flag=;; esac
++  case $type in
++     fat*|NTFS) flag=msftdata;;
++     linux-swap) flag=swap;;
++     *) flag=;;
++  esac
+   echo "$i:${start}s:${end}s:${part_size}s::$type:$flag;" >> exp || fail=1
+   parted -s $dev mkpart p-name $type ${start}s ${end}s > err 2>&1 || fail=1
+   compare /dev/null err || fail=1
+diff --git a/tests/t0280-gpt-corrupt.sh b/tests/t0280-gpt-corrupt.sh
+index a7c8d82291e5..1b4d86b094ea 100755
+--- a/tests/t0280-gpt-corrupt.sh
++++ b/tests/t0280-gpt-corrupt.sh
+@@ -89,7 +89,7 @@ compare exp err || fail=1
+ parted -m -s $dev u s print > out 2>&1 || fail=1
+ 
+ # check for expected output
+-printf "BYT;\nfile\n1:2048s:4095s:2048s::foo:;\n" > exp || fail=1
++printf "BYT;\nfile\n1:2048s:4095s:2048s::foo:swap;\n" > exp || fail=1
+ sed "s/.*gpt::;/file/" out > k && mv k out || fail=1
+ compare exp out || fail=1
+ 

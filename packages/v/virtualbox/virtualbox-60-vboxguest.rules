@@ -1,0 +1,2 @@
+KERNEL=="vboxguest", NAME="vboxguest", OWNER="root", MODE="0660" ENV{ID_INPUT}="1", ENV{ID_INPUT_MOUSE}="1"
+KERNEL=="vboxuser", NAME="vboxuser", OWNER="root", GROUP="users", MODE="0660"

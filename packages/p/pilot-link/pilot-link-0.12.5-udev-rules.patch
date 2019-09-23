@@ -1,0 +1,28 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: [PATCH] Fix libpisock udev rule
+
+udev goes on with rules evaluation as long as tests succeed. Thus
+"A!=x, B!=y, goto end" will only jump to end if A!=x AND B!=y. In other
+words the jump is skipped (and thus the following rules are processed)
+if A==x OR B==y. This is clearly not the intent here, as we only want
+to act on USB devices being added.
+
+Additionally, we can check SUBSYSTEM instead of SUBSYSTEMS, it is
+slightly faster. As far as I know only USB devices have the idVendor
+and idProduct attributes so it makes no sense to check for these if we
+aren't a USB device ourselves.
+
+Index: doc/60-libpisock.rules
+===================================================================
+--- doc/60-libpisock.rules.orig
++++ doc/60-libpisock.rules
+@@ -2,7 +2,8 @@
+ #
+ # udev rules file for pilot-link's libpisock library, enabled for libusb
+ #
+-SUBSYSTEMS!="usb", ACTION!="add", GOTO="libpisock_rules_end"
++SUBSYSTEM!="usb", GOTO="libpisock_rules_end"
++ACTION!="add", GOTO="libpisock_rules_end"
+
+ # Sony handheld devices
+ ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0038", GROUP="dialout", MODE="0664"

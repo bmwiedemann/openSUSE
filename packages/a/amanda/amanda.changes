@@ -1,0 +1,694 @@
+-------------------------------------------------------------------
+Mon Mar 26 12:21:30 UTC 2018 - dimstar@opensuse.org
+
+- Own %{_sysconfdir}/xinetd.d: filesystem won't own this directory
+  much longer (boo#1084457).
+
+-------------------------------------------------------------------
+Wed Mar 21 15:28:16 UTC 2018 - crrodriguez@opensuse.org
+
+- Buildrequire curl and libcrypto (enables amazon s3 module) 
+- amanda-libnsl.patch: libnsl is gone, replaced by tirpc
+  fix configure checks.
+- Buildrequire libtirpc
+
+-------------------------------------------------------------------
+Wed Dec 13 15:23:06 UTC 2017 - kstreitova@suse.com
+
+- update to 3.5.1
+  * do not check all 'r' bit on suid binary
+  * fix parsing of configuration override (-o)
+    * can unset some setting
+  * client code will not fail if shared memory is not available
+  * amreport
+    * lot of improvement
+  * allow '*' for a datestamp wildcard
+  * amgetconf
+    * print an empty string if a parameter is not set instead of 
+     'no such parameter'
+  * amdump
+    * new --no-dump, --no-flush and --no-vault argument
+  * amstatus fix
+  * lock holding disk to protect multiple parallel access
+
+-------------------------------------------------------------------
+Fri Oct 13 14:53:33 UTC 2017 - kstreitova@suse.com
+
+- update to 3.5
+  * see ReleaseNotes for more information
+  * refresh
+    amanda-2.6.1p1-shellbang.patch
+    amanda-2.6.1p1-return_val.patch
+    amanda-timestamp.patch
+  * remove (applied upstream)
+    amanda-automake_add_missing.patch
+    amanda-3.3.3-noundefbool.patch
+    amanda-2.6.1p1-fix-perl-format.patch
+  * remove chg-* scripts from the filelist
+  * pack new files 
+- add amanda-3.5-no_return_in_nonvoid_fnc.patch to fix
+  no-return-in-nonvoid-function rpmlint error
+- add url for source
+- remove SLE11 specific stuff from specfile
+- SuSE -> SUSE
+  * amanda-SuSE.tar.bz2 is now amanda-SUSE.tar.bz2
+  * README.SuSE is now README.SUSE
+- tweak description
+- run make check
+- use %configure macro
+- renumber patches
+- create a symlink for amoldrecover manpage
+
+-------------------------------------------------------------------
+Thu Mar 23 15:14:01 UTC 2017 - kstreitova@suse.com
+
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Mar  8 21:46:27 UTC 2017 - sfalken@opensuse.org
+
+- Added lines to %files to clear unpackaged files error in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Fri Jan 27 16:32:46 UTC 2017 - kstreitova@suse.com
+
+- add openssh to BuildRequires to support ssh [bsc#1022028]
+
+-------------------------------------------------------------------
+Sat Apr 16 02:08:54 UTC 2016 - zaitor@opensuse.org
+
+- Replace libsmbclient and libsmbclient-devel for
+  pkgconfig(smbclient) BuildRequires: Following samba changes.
+
+-------------------------------------------------------------------
+Fri Mar  4 18:04:29 UTC 2016 - olaf@aepfle.de
+
+- Remove timestamp from binary
+  amanda-timestamp.patch
+
+-------------------------------------------------------------------
+Thu Nov 27 08:20:00 UTC 2014 - mpluskal@suse.com
+
+- Fix for boo#907361 -- amanda-2.6.1p1-fix-perl-format.patch
+- Clean spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Sep 16 20:21:58 UTC 2014 - darin@darins.net
+
+- wrap %post permissions routines in conditionals for SLES
+
+-------------------------------------------------------------------
+Mon Sep 15 16:15:42 UTC 2014 - darin@darins.net
+
+- update to 3.3.6 
+    * ambsdtar
+        new application that use BSD tar to do the backup.
+
+  3.3.5 release notes
+    * faster 'verify' command.
+        fix parsing of config override arguments.
+    * amsamba
+        Add REGEX-MATCH property.
+    * amvault
+        Print progress status.
+    * ndmp device
+        INDIRECT property default to yes.
+
+  3.3.4 release notes
+    * amreport
+        new --format argument
+        new 'json' and 'json_raw' format.
+    * amanda.conf
+        new REPORT-FORMAT option.
+    * amtape
+        new 'verify' command.
+    * amadmin
+        new 'force-level-1' command.
+    * ampgsql
+        Add VERBOSE property.
+    * S3 device
+        handle DURABLE_REDUCED_AVAILABILITY for google storage.
+
+  See ChangeLog for a full listing of changes:
+    /usr/share/doc/packages/amanda/ChangeLog    
+
+- removed amanda-gets.patch, applied upstream
+
+-------------------------------------------------------------------
+Mon Jul 21 16:39:22 CEST 2014 - mls@suse.de
+
+- comment out all 'undef bool' lines, as they break the build
+  with modern perl versions
+  added patch: amanda-3.3.3-noundefbool.patch
+
+-------------------------------------------------------------------
+Fri Apr 26 08:36:36 UTC 2013 - mmeister@suse.com
+
+- Added automake --add-missing option to fix build with new automake
+
+-------------------------------------------------------------------
+Fri Jan 11 14:39:23 UTC 2013 - vdziewiecki@suse.com
+
+-Update to 3.3.3
+    * amdump.X log files use timestamp instead of number, amdump and amdump.1
+      are maintained as symlink.
+    * chg-disk
+        o Use the changerfile for the statefile.
+    * s3 device
+        o support CASTOR storage
+    * amanda.conf
+        o New REPORT-USE-MEDIA and REPORT-NEXT-MEDIA.
+    * amfetchdump
+        o new --extract, --directory, --data-path and --application-property
+          arguments. It allow to do the extraction on the server.
+    * --exact-match argument to many command, and '=' prefix to expression.
+        o It diable use of expression for host, disk, level and datestamp on
+          command line argument.
+    * All changer scripts.
+        o Add LOCK-TIMEOUT property.
+    * Many bug fix
+
+-Fixed bnc#784375 - Clarify licensing of amanda. Zmanda changed its
+licensing from GPL-2.0 to GPL-2.0+ and LGPLv2 to LGPLv2+.
+
+-------------------------------------------------------------------
+Fri Oct  5 14:00:29 UTC 2012 - jmatejek@suse.com
+
+- fixed some functions without return values
+
+-------------------------------------------------------------------
+Wed Oct  3 15:26:08 UTC 2012 - vdziewiecki@suse.com
+
+-Update to 3.3.2 (see NEWS)
+-Remove queue patch (fixed upstream, see ChangeLog)
+-Replaced %run_permissions with %set_permissions (bnc#764124)
+
+-------------------------------------------------------------------
+Mon Jul 30 07:51:49 UTC 2012 - aj@suse.de
+
+- Fix build with missing gets declaration (glibc 2.16)
+
+-------------------------------------------------------------------
+Tue Feb  7 17:41:09 UTC 2012 - jmatejek@suse.com
+
+- removed custom definition of g_queue_free_full which was
+  conflicting with a function newly added to glib2
+
+-------------------------------------------------------------------
+Fri Dec  2 06:23:18 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 11:00:42 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Aug 10 15:45:35 UTC 2011 - jmatejek@novell.com
+
+- explicit permissions for docdir (fixes failure on SLE11)
+- %pre script can now handle a situation where user doesn't exist
+
+-------------------------------------------------------------------
+Thu Jun 23 16:56:05 UTC 2011 - jmatejek@novell.com
+
+- update to version 3.3.0
+    * the following changers were dropped:
+        chg-chio, chg-chs, chg-iomega, chg-juke, chg-mcutil, chg-mtx,
+        chg-null, chg-rait, chg-rth, chg-scsi-chio, chg-scsi
+    - see amanda-changers(7) for replacements
+    * deprecated configuration keywords:
+        label_new_tapes, tapebufs, file-pad, amrecover_do_fsf,
+        amrecover_check_label
+    * amidxtaped now requires CONFIG parameter, meaning that
+      amrecover < 2.4.3 will be unable to recover from new servers
+    * need to specify a changer device explicitly
+    * default auth is now "bsdtcp"
+    * amtape behavior was changed, see amtape manpage for details
+    * better cmdline interface for amreport (just "amreport $config")
+    * multiple simultaneous writes - can write to all drives in parallel
+    * many new features and bugfixes, see NEWS file for details
+
+- -pie and -fPIE are now part of global CFLAGS/LDFLAGS
+
+-------------------------------------------------------------------
+Sat Apr 30 15:22:11 UTC 2011 - coolo@opensuse.org
+
+- amanda-2.6.1p1-avoid-perl-provides.patch:
+  patch perl code not to trigger bogus perl provides
+
+-------------------------------------------------------------------
+Thu Feb 10 00:39:46 CET 2011 - ro@suse.de
+
+- amanda-2.6.1p1-newer_glib.patch:
+  at least glib-2.27 brings g_list_free_full and g_slist_free_full
+  with own definitions, prefix local variant with my_
+
+-------------------------------------------------------------------
+Mon Aug 30 16:56:56 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Do not hardcode build date in binaries 
+
+-------------------------------------------------------------------
+Wed Nov 25 21:56:44 CET 2009 - meissner@suse.de
+
+- rediffed patches
+
+-------------------------------------------------------------------
+Mon Aug 31 15:05:32 CEST 2009 - ro@suse.de
+
+- fix archive compression 
+
+-------------------------------------------------------------------
+Wed Jul 29 09:58:42 CEST 2009 - mseben@suse.cz
+
+- updated to version 2.6.1p1
+ - amplot: better output
+ - don't include genversion.h in distribution tarballs.
+ - many bugs fixed :S3 device driver,rait device driver
+   amstatus, configure, application-api, others small bug
+
+-------------------------------------------------------------------
+Fri Jun  12 15:39:45 CET 2009 - mseben@suse.cz
+
+- update to version 2.6.1
+ - four new programs implementing application-api:
+   amgtar, amstar, amsamba, amzfs-sendrecv
+ - swithching from the program "GNUTAR" to the application "amgtar"
+ - two new scripts implementing script-api : amzfs-snapshot, script-email
+ - added new program amarchiver to manipulate file in amanda archive format
+ - added new perl modules:
+  * Application (perl utility functions for Applications)
+  * Archive (Perl access to the  amanda archive library)
+  * Constants (perl access to build-time configuration values)
+  * MainLoop (Perl interface to the Glib MainLoop)
+  * Process (interface to process), used by amcleanup.
+  * Script (perl utility functions for Scripts)
+  * Tapelist (Manipulate the Amanda tapelist)
+  * Xfer (Xfer-api)
+- obsolete *-no_chown.patch,*-chg-multi.patch,*-gnulib.patch
+- added *-return_val.patch to fix NULL return value
+- added *-amxfer_version.patch to fix libamxfer version name
+- updated amanda-how-to-collection.pdf
+- amanda user has now primary group amanda (created in %pre phase) 
+  and supplementary group tape (see also bnc#523006)
+
+-------------------------------------------------------------------
+Mon Feb 16 01:12:23 CET 2009 - ro@suse.de
+
+- drop lprng in buildreq 
+
+-------------------------------------------------------------------
+Mon Aug 18 17:30:11 CEST 2008 - lmichnovic@suse.cz
+
+- fixed missing exclude.gtar file [bnc#412636]
+- fixed .amandahosts permission [bnc#412636] 
+
+-------------------------------------------------------------------
+Wed Jul 16 14:59:14 CEST 2008 - lmichnovic@suse.cz
+
+- removed unnecessary Requires on glibc-devel ncurses-devel
+
+-------------------------------------------------------------------
+Fri Jun 27 11:46:56 CEST 2008 - schwab@suse.de
+
+- Fix gnulib macros.
+
+-------------------------------------------------------------------
+Fri Apr 11 16:31:44 CEST 2008 - schwab@suse.de
+
+- Remove broken libtool macros.
+
+-------------------------------------------------------------------
+Fri Feb  1 15:08:13 CET 2008 - lmichnovic@suse.cz
+
+- compiling with option --with-maxtapeblocksize=256 [bnc#353239] 
+
+-------------------------------------------------------------------
+Fri Nov  9 17:06:04 CET 2007 - lmichnovic@suse.cz
+
+- installing only *.txt documentation files 
+- no need for executable perms for file /usr/lib/amanda/suidlist
+
+-------------------------------------------------------------------
+Thu Jul 12 18:23:38 CEST 2007 - lmichnovic@suse.cz
+
+- added upstream chg-multi.patch
+- fixed missing shellbang (shellbang.patch)
+
+-------------------------------------------------------------------
+Fri Jun  8 16:40:28 CEST 2007 - lmichnovic@suse.cz
+
+- update 2.5.2p1
+  * Many IPv6 bugs fixed:
+   + missing sockaddr_storage
+   + missing AI_V4MAPPED and AI_ALL
+   + compare of IPv4 and IPv6 v4mapped address.
+   + (bsd/bsdudp): server use two sockets, 
+     one for IPv4 and one for IPv6
+  * amflush/autoflush
+  * chown/chmod
+  * amstatus
+  * compilation on some platform
+
+
+-------------------------------------------------------------------
+Thu May 17 12:09:02 CEST 2007 - lmichnovic@suse.cz
+
+- adjusted *no_chown.patch
+
+-------------------------------------------------------------------
+Thu May 17 11:47:55 CEST 2007 - lmichnovic@suse.cz
+
+- update to version 2.5.2 final
+  * some more bug fixes against beta
+
+-------------------------------------------------------------------
+Tue Apr 24 14:17:07 CEST 2007 - lmichnovic@suse.cz
+
+- update to version 2.5.2 beta 1
+   * Many bugs fixed and code cleanup
+   * krb5 auth is working 
+   * Works with IPv6 address
+   * Amanda configuration file changes
+    o amanda.conf changes
+    + debugging is enabled in the config file 
+      see all debug_* config option  
+    + tapetype 'readblocksize', if maxtapeblocksize is set too
+      larger for your hardware
+- installing HOWTO-collection.pdf as doc
+- excluding static libs
+
+-------------------------------------------------------------------
+Tue Feb 13 17:47:28 CET 2007 - lmichnovic@suse.cz
+
+- update to version 2.5.1p3 
+  * Many bugs fixed
+  * amrecover improve handling of not ascii filename in index.
+  * Works with tar-1.16 and exit status of 1.
+  * Can define a LASTSLOT in a chg-disk config file.
+  - obsoletes *overflow.patch
+
+-------------------------------------------------------------------
+Fri Feb  9 01:35:12 CET 2007 - ro@suse.de
+
+- allow build as non-root 
+
+-------------------------------------------------------------------
+Mon Jan 22 14:49:56 CET 2007 - lmichnovic@suse.cz
+
+- added libxslt into BuildRequires
+- fixed possible overflow (overflow.patch)
+
+-------------------------------------------------------------------
+Mon Jan 22 13:29:43 CET 2007 - lmichnovic@suse.cz
+
+- updated to 2.5.1p2 
+  * Many bugs fixed                                                            
+  * amoverview is working                                                      
+  * dumptype starttime is working                                              
+  Amanda command changes                                                     
+   - amtape accept the -o arguments                                       
+   - amgetconf --list to list all tapetype, dumptype, holdingdisk         
+     or interface                                                         
+   - amgetconf can return a value of a specific tapetype, dumptype,       
+     holdingdisk or interface
+
+-------------------------------------------------------------------
+Thu Oct 19 16:54:42 CEST 2006 - lmichnovic@suse.cz
+
+- changed version to 2.5.1.1
+- compiling with fPIC - fixes failing build on some archs
+
+-------------------------------------------------------------------
+Tue Oct  3 15:08:32 CEST 2006 - pnemec@suse.cz
+
+- updated to 2.5.1p1 which not contain license problem 
+  affected files #196765
+  - many bugfixes see NEWS
+- minor cleaning in specfile
+
+-------------------------------------------------------------------
+Mon Aug 28 10:35:00 CEST 2006 - pnemec@suse.cz
+
+- removed examples with license problems 
+  from source tarball #196765
+
+-------------------------------------------------------------------
+Fri Jul  7 16:27:13 CEST 2006 - pnemec@suse.cz
+
+- updated to 2.5.0p2
+  added many new features in 2.5.0 (Auto tape labelling, 
+	  security comunication ...)
+  fixed many minors bug (in p1) and major bug (in p2)
+- added pdf document with actualized howtos 
+
+-------------------------------------------------------------------
+Thu Apr  6 16:11:56 CEST 2006 - pnemec@suse.cz
+
+- some other fix for bug #137128 SIGSEGV in amadmin
+
+-------------------------------------------------------------------
+Fri Feb 10 15:34:53 CET 2006 - pnemec@suse.cz
+
+- aded *-srv.patch to fix bug #137128
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 21:11:14 CEST 2005 - mjancar@suse.cz
+
+- update to 2.4.5
+- add glibc-devel and ncurses-devel to Requires
+
+-------------------------------------------------------------------
+Mon Jun 20 17:12:53 CEST 2005 - ro@suse.de
+
+- added pie patch from FC
+- use fPIC for libs needed when building binaries with fpie
+
+-------------------------------------------------------------------
+Thu Nov 18 15:48:57 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages 
+
+-------------------------------------------------------------------
+Tue Aug 10 19:55:10 CEST 2004 - tcrhak@suse.cz
+
+- update to 2.4.4p3
+
+-------------------------------------------------------------------
+Fri Feb 20 11:44:50 CET 2004 - tcrhak@suse.cz
+
+- update to version 2.4.4p2
+
+-------------------------------------------------------------------
+Wed Oct 29 01:31:27 CET 2003 - ro@suse.de
+
+- package according to permissions.secure and add run_permissions 
+
+-------------------------------------------------------------------
+Thu Sep 18 18:33:38 CEST 2003 - tcrhak@suse.cz
+
+- added quotes around "grep -E" in an assignment in
+  chg-manual; patch manual
+- fixed script chg-zd-mtx: parse vars from config correctly,
+  fixed output when mtx is not found
+
+-------------------------------------------------------------------
+Wed Jul 30 17:28:41 CEST 2003 - stepan@suse.de
+
+- change samba-client dependency to /usr/bin/smbclient
+  to make it operable with samba tng
+
+-------------------------------------------------------------------
+Wed Jul 30 11:24:53 CEST 2003 - aj@suse.de
+
+- Fix chown arguments.
+
+-------------------------------------------------------------------
+Mon Jul 28 14:40:01 CEST 2003 - tcrhak@suse.cz
+
+- fixed script chg-zd-mtx
+
+-------------------------------------------------------------------
+Fri Jul 25 15:13:21 CEST 2003 - tcrhak@suse.cz
+
+- update to version 2.4.4p1
+
+-------------------------------------------------------------------
+Thu Jun 12 09:49:08 CEST 2003 - kukuk@suse.de
+
+- added directory to filelist
+
+-------------------------------------------------------------------
+Fri Jun  6 12:18:16 CEST 2003 - mmj@suse.de
+
+- Package forgotten files
+- Remove files from buildroot installed elsewhere
+
+-------------------------------------------------------------------
+Mon Mar 03 15:21:20 CET 2003 - tcrhak@suse.cz
+
+- added amanda libraries to filelist
+
+-------------------------------------------------------------------
+Fri Feb 28 18:00:58 CET 2003 - tcrhak@suse.cz
+
+- update to version 2.4.4, that fixes many memory leaks
+- added xinetd config files
+
+-------------------------------------------------------------------
+Fri Feb 14 11:43:07 CET 2003 - tcrhak@suse.cz
+
+- update to version 2.4.3
+- applied changes proposed for the tape changer script
+  [bug #20086] - patch mtx
+
+-------------------------------------------------------------------
+Tue Oct 29 12:37:33 CET 2002 - ro@suse.de
+
+- remove (old) libtool macros from acinclude.m4
+
+-------------------------------------------------------------------
+Fri Aug 30 17:15:32 CEST 2002 - tcrhak@suse.cz
+
+- fixed neededforbuild so that smbclient is identified by configure,
+  added samba-client to Requires (bug #15818)
+
+-------------------------------------------------------------------
+Mon Jul  8 14:42:23 CEST 2002 - mmj@suse.de
+
+- Using useradd in the package itself.
+
+-------------------------------------------------------------------
+Wed Apr  3 12:53:55 CEST 2002 - tcrhak@suse.cz
+
+- build with new automake/autoconf
+
+-------------------------------------------------------------------
+Sat Mar  9 14:17:16 CET 2002 - ro@suse.de
+
+- replaced lprold by lprng in neededforbuild 
+
+-------------------------------------------------------------------
+Thu Nov 22 17:30:43 CEST 2001 - tcrhak@suse.cz
+
+- Added ps label templates (bugzilla #12270)
+- Added README.SuSE
+
+-------------------------------------------------------------------
+Mon Nov 12 11:37:35 CET 2001 - schwab@suse.de
+
+- Fix for automake 1.5 and autoconf 2.52.
+
+-------------------------------------------------------------------
+Mon Aug 20 14:45:29 CEST 2001 - dan@suse.cz
+
+- update to 2.4.2p2
+
+-------------------------------------------------------------------
+Fri May  4 14:10:25 CEST 2001 - pblaha@suse.cz
+
+- fix permisions 644 for .bashrc  .amandahosts and .profile 
+- in amanda home /var/lib/amanda/
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Thu Jan 11 11:54:16 CET 2001 - sf@suse.de
+
+- added './' and 'config' to %{suse_update_config} to make 
+  it build on IA64 
+
+-------------------------------------------------------------------
+Fri Jan  5 14:21:56 CET 2001 - smid@suse.cz
+
+- file permission changes
+- default configuration changes
+
+-------------------------------------------------------------------
+Sun Dec  3 16:24:46 CET 2000 - smid@suse.cz
+
+- new version 2.4.2
+
+-------------------------------------------------------------------
+Tue Nov 21 18:28:57 CET 2000 - uli@suse.de
+
+- fixed to build on PPC 
+
+-------------------------------------------------------------------
+Mon Sep 25 14:03:05 CEST 2000 - smid@suse.cz
+
+- binaries moved to /usr/sbin
+
+-------------------------------------------------------------------
+Mon Sep 18 10:51:20 CEST 2000 - smid@suse.cz
+
+- Y2K bugfix
+
+-------------------------------------------------------------------
+Tue Jun 20 15:39:09 CEST 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Thu May 25 11:50:20 CEST 2000 - smid@suse.cz
+
+- /usr/doc/packages => %{_defaultdocdir}
+
+-------------------------------------------------------------------
+Fri Apr  7 13:54:59 CEST 2000 - smid@suse.cz
+
+- url added
+
+-------------------------------------------------------------------
+Thu Jan 20 15:00:52 CET 2000 - kukuk@suse.de
+
+- /usr/man -> /usr/share/man
+- clean up configuration and spec file
+
+-------------------------------------------------------------------
+Thu Oct  7 17:19:29 MEST 1999 - kukuk@suse.de
+
+- Add needed tools to needforbuild
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Fri Jun 25 10:46:53 MEST 1999 - kukuk@suse.de
+
+- Update to 2.4.1p1 from jurix
+- add glibc 2.1 patch
+
+-------------------------------------------------------------------
+Sat Dec  5 01:42:08 MET 1998 - ro@suse.de
+
+- disabled setresuid/setresgid (while some are still using 2.0)
+
+----------------------------------------------------------------------------
+Thu Feb  5 13:11:20 MET 1998 - florian@suse.de
+
+- first rpm-package of amanda for SuSE
+
+
+----------------------------------------------------------------------------
+Sat Nov  2 17:35:11 CET 1996 - florian@suse.de
+
+
+- first S.u.S.E.-version of amanda 2.3.0
+
+- not really supported yet...   :-)
+

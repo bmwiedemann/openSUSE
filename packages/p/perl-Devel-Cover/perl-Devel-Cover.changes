@@ -1,0 +1,442 @@
+-------------------------------------------------------------------
+Wed Sep  4 23:02:57 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Explicitly require perl-B-Debug because B::Debug was in core and is
+   deprecated since perl 5.28 and will generate a warning
+
+-------------------------------------------------------------------
+Mon May  6 05:05:33 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.33 - 26 April 2019
+   - Fix pod error (Mohammad S Anwar) (github 240)
+   - Work with cperl where class is a keyword (Reini Urban) (github 238)
+   - Restore correct behaviour on merging DBs (Daniel Egeberg) (github 232)
+   - Fix gcov output being on incorrect lines
+   - Fix cover -test with Build.PL (Dagfinn Ilmari Mannsåker) (github 241)
+
+-------------------------------------------------------------------
+Fri Apr 26 05:07:42 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.32 - 25 April 2019
+   - Test up to 5.26.3, 5.28.3 and  5.29.10
+   - Get dev environment working on MacOS
+   - Fix up tests with recent Math::BigInt versions (Ed J) (github 219)
+   - Add progress text when processing coverage (Christian Walde) (github 221)
+   - Optionally use Term::Size (Paul "LeoNerd" Evans) (github 228)
+   - Fix indentation in pod (Graham Knop) (github 229)
+   - Fix warn precedence (Alexandr Evstigneev) (github 231)
+
+-------------------------------------------------------------------
+Thu Dec 20 08:45:19 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- Buildrequire perl-B-Debug as B::Debug spits out a warning if used
+  from perl core
+
+-------------------------------------------------------------------
+Sat Sep 22 05:16:02 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+-------------------------------------------------------------------
+Sun Jul 15 05:19:45 UTC 2018 - coolo@suse.com
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.30 - 14 July 2018
+   - Fix incorrect merging of structure (Emiliya Boyadjieva) (github 199)
+   - Fix up compiler warnings (Jens Rehsack) (github 211)
+   - Test against 5.28.0, 5.29.0 and some other versions
+   - Compress and then delete old cpancover data
+   - Clarify some docs around ignore (Olaf Alders) (github 207)
+   - Run coverage on cpp and hpp files (Jacques Germishuys) (github 203)
+   - Add docs for coverage of modules on command line (Slaven Rezić) (github 204)
+   - Ignore .AppleDouble files (David Cantrell) (github 200)
+
+-------------------------------------------------------------------
+Tue Oct 17 05:16:09 UTC 2017 - coolo@suse.com
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.29 - 15 October 2017
+   - Lock using read and append mode (Stephan Loyd) (github 196)
+   - Clean up lock files when running cover command
+
+-------------------------------------------------------------------
+Sun Oct  8 08:04:21 UTC 2017 - coolo@suse.com
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.28 - 5 October 2017
+   - Fix typo in docs (Gregor Herrmann) (github 195)
+   - Fix up options to cover program (github 194)
+
+-------------------------------------------------------------------
+Thu Sep 21 05:20:14 UTC 2017 - coolo@suse.com
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.27 - 20 September 2017
+   - Test against 5.27.3
+   - Add dependency on B::Debug (Ryan Voots) (github 189)
+   - Remove obsolete dev and cpancover code
+   - Manage multiple ignore and select options (Sullivan Beck) (github 163)
+   - Write top-level html last for better sorting (Christian Walde) (github 158)
+   - Restore XS coverage in cpancover (H.Merijn Brand) (github 188)
+   - Allow cpancover to run fully from local directory
+   - Handle missing start times in runs (Chad Granum) (github 190)
+   - Add test for string eval (Sebastian Paaske Tørholm) (github 145)
+   - Improve uncoverable tests and docs (Kevin Brannen) (github 167)
+   - The cover program accepts multiple reports (Eden Hochbaum) (github 172)
+   - Add -prefer_lib option to cover script (Kent Fredric) (github 91)
+   - Fix low-level file locking (Graham Knop) (github 90)
+
+-------------------------------------------------------------------
+Tue Jul 25 05:22:07 UTC 2017 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.26 - 24 July 2017
+   - Untaint $DEVEL_COVER_OPTIONS (Alexey Sokolov) (github 187).
+   - Add loose_perms option (Todd Rinaldo) (github 185).
+   - Set EXTENDED_TESTING during cpancover runs.
+   - Improve version parsing for cpancover (Helmut Wollmersdorfer) (github 124).
+   - Improve cpancover code and documentation
+
+-------------------------------------------------------------------
+Fri May 12 05:32:21 UTC 2017 - coolo@suse.com
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.25 - 11 May 2017
+   - Fix C code to work with MSVC (Marc-Philip) (github 177).
+   - Fix cover command using Module::Build on Win32 (sago35) (github 160).
+   - Add file and line info to keep ops unique (Niko Tyni) (github 143).
+   - Report coverage for all declarations (Heinz Knutzen) (github 166).
+   - Fix spelling mistakes (Gregor Herrmann) (github 171).
+   - Fix condition coverage for complex conditions (Heinz Knutzen) (github 165).
+   - Use JSON::MaybeXS for sppen and flexibility (Olivier Mengué) (github 139).
+   - Add CONTRIBUTING file (Gabor Szabó) (github 100).
+
+-------------------------------------------------------------------
+Wed Apr 19 05:29:38 UTC 2017 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.24 - 18 April 2017
+   - Work with 5.25.x (op_sibling) (Dan Collins, Matthew Horsfall) (github 162).
+   - Perl versions below 5.10.0 are now unsupported.
+
+-------------------------------------------------------------------
+Thu May  5 09:06:47 UTC 2016 - coolo@suse.com
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.23 - 24 April 2016
+   - Enhance html coverage popups (Haydn Newport) (guthub 156).
+   - Add cpamcover about page (Guillermo O. Freschi) (github 146).
+   - Perl versions below 5.8.1 are now unsupported.
+
+-------------------------------------------------------------------
+Tue Apr 12 13:28:29 UTC 2016 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.22 - 9 April 2016
+   - Test against 5.20.3, 5.21.1 - 5.21.9, 5.22.1.
+   - Improve uncoverable docs (Alex Balhatchet) (github 148).
+   - Improve cpancover.
+
+-------------------------------------------------------------------
+Sun Sep 20 08:46:44 UTC 2015 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.21 - 20 September 2015
+   - Test more versions on travis.
+   - Fix things up with cpancover for new docker release.
+   - Fix problem under 5.22 (Dick Franks) (github 140).
+
+-------------------------------------------------------------------
+Sat Aug 29 09:36:31 UTC 2015 - i@marguerite.su
+
+- update version 1.20
+  * Document setting PerlSwitches for mod_perl
+- changes in 1.19
+  * Get things working with 5.22.0.
+  * Test against 5.23.0.
+  * Remove dependency on Test::Warn.
+- golang-org-x-tools has no cover/vet now, manpage does not conflict,
+  remove the update-alternatives stuff.
+
+-------------------------------------------------------------------
+Tue Jun  9 15:08:11 UTC 2015 - i@marguerite.su
+
+- adjust cpanspec.yml accordingly.
+
+-------------------------------------------------------------------
+Sat May 30 16:22:56 UTC 2015 - i@marguerite.su
+
+- use update-alternatives to avoid conflict w/ go-tools.
+
+-------------------------------------------------------------------
+Thu Apr 16 19:29:26 UTC 2015 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  Release 1.18 - 6 April 2015
+   - Remove dependency on CGI (use HTML::Entities instead) (Lee Johnson).
+   - Fix a use of the wrong type of null constant (Zefram) (RT #103102).
+   - Link to next uncovered statement in html_basic (H.Merijn Brand) (github 112).
+   - Add "provides" to metadata (Ivan Wills) (github 119).
+
+-------------------------------------------------------------------
+Sun Feb 15 17:29:48 UTC 2015 - coolo@suse.com
+
+- updated to 1.17
+  - Get cpancover to release quality.
+  - Add IRC link to META.
+  - Test against 5.20.1, 5.21.1, 5.21.2, 5.21,3 and 5.21.4.
+  - Officially support 5.20.1.
+ 
+ Release 1.16 - 17 August 2014
+  - Fix segfault in 5.20.0.
+  - Improvements to cpancover.
+  - Fix vim report to work with recent versions (cono) (github 94).
+  - Ignore vim swap files in git (Gábor Szabó) (github 95).
+  - Improve help for cover command (Gábor Szabó) (github 96).
+ 
+ Release 1.15 - 1 June 2014
+  - Allow -coverage default,-pod option to cover (David Cantrell) (github 89).
+  - Get cpancover coverage in docker containers.
+  - Add CGI.pm as a prerequisite.
+  - Test against 5.20.0 and 5.21.0.
+  - Add longer delay in tests to try to appease *BSD.
+ 
+ Release 1.14 - 2 May 2014
+  - Fix test failures on OpenBSD, NetBSD and Windows.
+ 
+ Release 1.13 - 28 April 2014
+  - Test against 5.19.11.
+  - Fix "use 5.xyz;" on pre 5.10 perls (github 87).
+  - Round percentages down in summary and reports (also fixes Windows tests).
+ 
+ Release 1.12 - 17 April 2014
+  - Fix test failure on OSX, FreeBSD and HPUX (thanks H.Merijn Brand).
+ 
+ Release 1.11 - 13 April 2014
+  - Tests should pass when all run in parallel (Kent Fredric) (github 69).
+  - Fix problems with using Sereal as DB format.
+ 
+ Release 1.10 - 6 April 2014
+  - Test against 5.19.10.
+  - Add Sereal backend and use it if available.
+
+-------------------------------------------------------------------
+Mon Mar 17 08:29:34 UTC 2014 - coolo@suse.com
+
+- updated to 1.09
+ - Add Contributors file.
+ - Test against 5.19.4 - 5.19.9.
+ - Officially support 5.18.2.
+ - Fix shortcircuiting conditional operators for blead changes
+   (Matthew Horsfall) (rt 90591) (github 75, 80).
+ - Fix tab expansion in HTML report (H.Merijn Brand) (github 83).
+
+-------------------------------------------------------------------
+Thu Sep 12 08:18:04 UTC 2013 - pgajdos@suse.com
+
+- updated to 1.08
+ - Don't test against 5.17.x development releases.
+ - Don't test against 5.19.2 and 5.19.3 which have a bug which causes tests to
+   fail.
+ - Perl 5.18 is more picky about POD encodings (Gregor Herrmann) (rt 88027).
+ - Numerous typo fixes (David Steinbrunner) (github 67).
+ - Improve -coverage options, fix -ignore_re for .gcov files (Steve Sanbeg)
+   (github 53).
+ - Work around B::CV::GV regression in 5.18.1.
+ - Officially support 5.18.1.
+ - Test against 5.19.1, 5.19.2 and 5.19.3.
+
+-------------------------------------------------------------------
+Wed Jul 24 07:27:57 UTC 2013 - coolo@suse.com
+
+- updated to 1.06
+  - More DEVEL_COVER_NO_TESTS changes for p5cover.
+ 
+ Release 1.05 - 17 July 2013
+  - Quieten some deparse warnings.
+  - Fix errors in write_csv (Jim Keenan) (github 64).
+  - Fix error in -inc/+inc docs and pod formatting (Olaf Alders) (github 65).
+  - Add DEVEL_COVER_NO_TESTS option to not run any tests during p5cover.
+
+-------------------------------------------------------------------
+Tue Jun  4 08:18:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.04
+  - Fix return code from cover (Kan Fushihara) (guthub 61).
+  - Fix pod coverage for multiple packages in a file. (rt 34888).
+  - Speed improvements.
+ 
+ Release 1.03 - 20 May 2013
+  - Fixes for correct operation with 5.17.11, 5.18.0 and 5.19.0.
+ 
+ Release 1.02 - 28 April 2013
+  - Make -silent even quieter (Sergiy Borodych) (guthub 49).
+  - mod_perl2 on Debian sets $^X to apache2 (Lasse Makholm) (github 47).
+  - Add csv file for use with metacpan (Dinis Rebolo) (github 56).
+  - cover -test exists with the staus of the underlying test run (Kan Fushihara)
+    (github 57, 58).
+  - Quieten a warning (Jim Keenan) (github 59).
+ 
+ Release 1.01 - 30 March 2013
+  - Test against 5.14.4, 5.16.3, 5.17.8, 5.17.9 and 5.17.10.
+  - Ignore PERL5OPT during tests.  And other make targets. (rt 43833).
+  - &&=, ||= and //= operators now require RHS to be true and false.
+  - Fix some "uninitialized value" warnings.
+ 
+ Release 1.00 - 10 February 2013
+  - Fix segv in constant folding of xor ops (github 40).
+  - Fix various problems running Devel::Cover under tainting (github 41).
+  - Add JavaScript to filter results in html_basic (David Cantrell) (github 42).
+    Use -norestrict option to keep previous behaviour.
+  - Document ability to mark code as uncoverable (github 45).
+ 
+ Release 0.99 - 31 December 2012
+  - Improve documentation (Olaf Alders) (github 34).
+  - Thank Bytemark for the cpancover server.
+  - Test against 5.17.7.
+  - Provide coverage for subs removed from the symbol table (rt 13207).
+ 
+ Release 0.98 - 25 November 2012
+  - Fix links on html_basic report.
+  - Fix setting Inc under taint mode (Guillaume Aubert) (guthub 26, 33).
+  - Test against 5.17.6.
+  - Improve warnings from Devel::Cover and reduce duplicates.
+  - Make cover -test -nodelete work.
+  - Run cpancover with 5.16.2.
+  - Prefer bugs on github rather than RT.
+ 
+ Release 0.97 - 10 November 2012
+  - Filter paths contained in CWD out of @Inc (Christian Walde) (github 32).
+  - Test against 5.12.5, 5.14.3, 5.16.2, and 5.17.5.
+  - Improve parallelism for cpancover.
+ 
+ Release 0.96 - 24 September 2012
+  - JSON:PP should have been JSON::PP (Paul Hirst) (github 28).
+  - Correct when some new tests should be skipped.
+  - Quieten some debugging output.
+  - Fix infinite loop during global destruction (github 29).
+ 
+ Release 0.95 - 22 September 2012
+  - Fix loss of condition coverage data when first operand calls into ignored
+    file (Celogeek, Christian Walde) (rt 63090) (github 15, 20).
+  - Fix similar problem with branch coverage (Robert Freimuth) (rt 72027).
+  - More similar problems (Brian Cassidy, Florian Ragwitz, Heikki J Laaksonen)
+
+-------------------------------------------------------------------
+Wed May 30 11:42:39 UTC 2012 - coolo@suse.com
+
+- updated to 0.87
+ - Major documentation overhaul (Pau Amma).
+ - Cleanup Data::Dumper usage (localise settings) (Olivier Mengué) (rt 76531).
+ - Ignore more generated filenames - Moose and Template Toolkit.
+ - Improve results for chained logical operators.
+ - Officially support 5.16.0.
+
+ - Add all coverage criteria to the Vim report.
+
+ - Add customisable thresholds to HTML reports (Xavier Caron).
+ - Improve Vim report.
+
+ - Add Vim report (based on discussion with Tatsuhiko Miyagawa).
+
+ - Prefer JSON::XS for faster operation (Audrey Tang (唐鳳)).
+ - Rework testing framework (Xavier Caron).
+
+ - Do not distribute MYMETA.json (Olivier Mengué) (rt 75883).
+
+ - Fix up dzil release process.
+
+ - Don't be so noisy with Moose code.
+ - Move to Dist:Zilla (Christian Walde).
+ - Test against 5.14.2 and 5.15.2 - 5.15.8.
+ - Select gcov2perl from the same directory as cover.
+ - Print warnings to STDERR so $SIG{__WARN__} isn't called (Christian Walde).
+ - Manage coverage reporting errors before an exec (Daisuke Maki).
+ - Don't run fork tests on Windows (Christian Walde).
+ - Add more documentation about cover --test (Kirk Kimmel).
+ - Remove race conditions around mkdir.
+ - Add travis config file.
+ - Add word "Warning" to MD5 digest message.
+
+-------------------------------------------------------------------
+Wed Dec 28 20:47:20 UTC 2011 - coolo@suse.com
+
+- update to 0.79
+  - Test against 5.12.4, 5.14.1, 5.15.0 and 5.15.1.
+  - Fix inc_sub test failures dependant on whether JSON:PP was installed.
+
+-------------------------------------------------------------------
+Tue May 31 14:34:40 UTC 2011 - coolo@novell.com
+
+- updated to 0.78
+ - Fix up test quoting to work with Windows too.
+ - Fix cover -test covering all the test files (Larry Leszczynski) (rt 65920).
+ - Add DEVEL_COVER_IO_OPTIONS environment variable.
+ - Sort runs by start time.
+ - Add digests to DB.
+ - Add cover -make option (Olivier Mengué) (rt 44906).
+ - Add digests to DB.
+   This should fix some problems related to losing coverage data when there are
+   duplicate files.  This happens most usually when modules are sometimes loaded
+   from lib and sometimes from blib. (rt 14192, 32465, 45737).
+ - Add branch coverage for gcov (rt 30365).
+
+-------------------------------------------------------------------
+Fri Apr 22 07:21:51 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.76
+ - Move CHANGES file into root for search.cpan.org (rt 67541).
+ - Add top level version subroutine (requested by H.Merijn Brand).
+ - Add DEVEL_COVER_DB_FORMAT environment variable.
+ - Add advisory locking to database IO operations.
+ - Explain what to do if regexp_eval.t ever fails again (Florian Ragwitz).
+ - Remove leftovers from PERL_OBJECT (Florian Ragwitz).
+ - Recommend 5.8.8 and above - 5.8.7 is crashing so skip some tests there.
+
+-------------------------------------------------------------------
+Mon Apr 18 09:47:06 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.75
+   - Write database as JSON if JSON::PP is available.
+   - Test against 5.12.3 and code frozen 5.14.0 (unreleased).
+   - Fix tests to work with all releases of 5.13.x (rt 60901).
+   - Avoid race condition writing DB structure files (Nicholas Clark).
+   - Add debuglog method to Devel::Cover::DB::Structure (Nicholas Clark).
+   - Be more careful deleting DB structure files (Nicholas Clark).
+   - Get cover -test to honour the db passed in.
+
+-------------------------------------------------------------------
+Mon Jan 17 15:54:11 UTC 2011 - coolo@novell.com
+
+- initial package 0.73
+  * created by cpanspec 1.78.03
+

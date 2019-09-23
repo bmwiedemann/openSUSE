@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Tue Sep 10 11:58:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.2:
+  * Fix long_description string in Python packaging.
+  * Fix flags when setting multiple differently-typed values at once.
+  * Use setup.cfg metadata instead setup.py config to generate package.
+  * Add default_noreply parameter to HashClient.
+  * Add encoding parameter to Client constructors (defaults to ascii).
+  * Add flags parameter to write operation methods.
+  * Handle unicode key values in MockMemcacheClient correctly.
+  * Improve ASCII encoding failure exception.
+  * Fix setup.py dependency on six already being installed.
+
+-------------------------------------------------------------------
+Mon Mar 18 18:19:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions.
+
+-------------------------------------------------------------------
+Wed Feb 27 15:51:01 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.1.0:
+  * Check reStructuredText along with flake8
+  * Hotfix broken path
+  * fix result
+  * Update changelog
+  * Fix syntax errors
+  * Use byte strings after serializing with serde
+  * correct spelling mistake
+  * Remove deprecated Python version.
+  * Add tests for serde module
+  * Kill python 2.6
+  * Add optional support for unicode keys
+  * Update README to mention tox
+  * Fix support newbytes from future
+  * Final touches for 1.3.7
+  * Make tuple once, instead of on every call
+  * Use only the highest, premium quality picklers available at runtime.
+  * Enforce version for sphinx
+  * Don't Raise Generic Exception (#164)
+  * DocString: `gets` returns values, not keys
+  * Always send command keys in their original order
+  * Bump version to 1.4.3
+  * Bump version to 1.4.2
+  * Bump version to 1.4.1
+  * Bump version to 1.4.0
+  * Import Classes, Function into package level
+  * new Patch version for minor change
+  * trevor sucks
+  * Remove docs from being run when you're running tests
+  * Add integration environment to tox
+  * Remove py26 detritus from .travis.yml (#181)
+  * We only need to import cPickle explicitly if Python 2
+  * Add test for subclasses of builtin types
+  * Added default parameter support for "get" and "gets" methods in Client
+  * Always close the existing socket on _connect() (#208)
+  * Add support for stats cachedump
+  * Add test coverage for the 'cache_memlimit' command
+  * Comparing ord(character) so its compatible with python 2 and 3
+  * Introduce some missing .set() assertions
+  * Add Code of Conduct and Contributing guides
+  * Finish preparing the 2.1.0 release
+  * Make serde use BytesIO for Python 3 compat
+  * fixed markdown syntax to rst link format (#205)
+  * Test against py35 and py36
+  * Update ChangeLog.rst
+  * Release 1.3.7
+  * Return default value instead of False when all clients are down
+  * Make pickle version for python_memcache_serializer adjustable
+  * Add virtualenv env/ and .cache/ to gitignore
+  * remove suggestion to use python-clandestined
+  * add delete and delete_multi benchmarks
+  * Fix typo in doc
+  * Bump version
+  * split benchmarks by method and include get_multi and set_multi
+  * Fixed a small typo in the doc string of the pooled client
+  * Add Nicholas Charriere to contributors :D
+  * Remove 'sudo: false' from Travis configuration (#204)
+  * Update release notes for version 2.0.0
+  * fix return object
+  * ensure that client 'if not self.sock: self._connect()' behavior is tested
+  * minor tweaks for an extra 7.5% gain
+  * Prevent pytest-warning on pytest 3.0+
+  * Add CODEOWNERS listing global project reviewers (#203)
+  * Bump docs' the copyright year to 2018
+  * Improve MemcacheIllegalInputError messages
+  * add validation code with NOT_STORED
+  * Start a list of project adopters
+  * Improve syntax
+  * Bumpversion
+  * allow friendly imports
+  * removed apidoc directory from repo
+  * update comparison to pylibmc
+  * Raising MemcacheIllegalInputError when a key contains null byte, new line, or carriage return
+  * Fixed docs
+  * fix ChangeLog.rst
+  * Clean up some changelog links
+  * Use simpler Travis pip caching syntax
+  * refactor BaseClient._store_cmd() to handle multiple key-value pairs so set_many can work as desired
+  * Use a bytes string
+  * Add gevent to test-requirements
+  * Simplify README for running tests. Only tox
+  * Use cPickle for six.moves
+  * test for default_noreply for both clients
+  * Added changelog
+  * gevent 1.3 is required for Python 3.7 support
+  * Switch to is bytes for bytes comparision
+  * Improve the cache_memlimit documentation
+  * Renaming byte to character
+  * Improve serde
+  * typo: alwais -> always
+  * Update getting_started.rst
+  * gevent 1.3.6 has some additional Python 3.7 fixes
+  * Refactor _delete_many() to batch its keys
+  * Fixes tox six pkg ImportError #198 (#199)
+  * Switch to an SVG Travis-CI build badge (#207)
+  *     added OK as acceptable response
+  * Test for expected flags with serde tests
+  * Bump version to 2.0.0
+  * Add UNIX domain socket support (#206)
+  * Changelog for 1.4.2
+  * Add gets_many to HashClient.
+  * Iterating over characters in key once
+  * Using bytearray
+  * Add that we're hiring on README
+  * Use cPickle as pickle if available
+  * Add cPickle change to Changelog
+  * Exclude well-known non-code paths from flake8
+  * Imports the right path in doc building step
+  * Make restriction wider to avoid breaking client
+  * Fix #117, illegal unicode character in middle of key (or value now)
+  * add apidoc to .gitignore
+  * Lint with Python 3.4 too
+  * Bump version to 1.3.8
+  * Doc about keys
+  * Fix flake8 issues
+  * Added Python 3.5 and 3.6 to the build.
+  * Make line length reqs explicit
+  * Fixed stats evictions conversion
+  * Reverse backwards compatible change
+  * Add more serde unit tests for bytes/unicode
+  * Add a few more serde integration tests
+  * Fix #99 unsanitized input
+  * fix failed keys
+  * fix pep8
+  * Ensure serde integration tests return the same type
+  * Try fix import error six
+  * Fix flake8 and cleanup build
+  * Update documentation to cover serde module
+  * Add changelog for 1.4.1
+  * Updating exception message
+  * Preparing for release 1.3.6: adding bumpversion config and changelog
+  * fix comment for set_many
+  * Run full benchmark test in travis
+  * Automate doc building
+  * refactor
+  * Fix the MockMemcacheClient implementation
+  * Add pypy3 to travis test matrix
+  * Changelog changes for 1.4.3
+  * Add default_noreply property to PooledClient
+  * Add FLAG_BYTES
+  * Moving test cases
+  * Assert bytes string
+  * Add failing test of MockMemcacheClient serializer/deserializer
+  * Omit test/* code from the coverage report
+  * Have MockMemcacheClient support non-ascii strings (#169)
+  * Start preparing the 2.1.0 release (#202)
+  * Use is type for type comparisons
+  * fix implementation HashClient
+  * Make serde import on Python 3
+  * Close client socket if it fails to connect (#165)
+  * Add official Python 3.7 support
+  * Adding test case for null character
+  * Fix encode/decode wrong way around
+  * Add integration test for serde serialization
+  * Improve stats parsing
+  * Parse version directly from pymemcache/__init__.py
+  * Fix an issue in Travis where the build breaks because of a gevent bump
+  * Mention the `no_delay` connection flag
+  * PooledClient now use default_noreply arg set on init
+  * Convert readthedocs link for their .org -> .io migration for hosted projects
+  * simplify and speed up _check_key() performance
+  * fix test
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Tue Nov 21 12:31:19 UTC 2017 - dmueller@suse.com
+
+- update to 1.2.9:
+  * Introduced PooledClient a thread-safe pool of clients
+
+-------------------------------------------------------------------
+Sun Mar 13 21:44:20 UTC 2016 - dmueller@suse.com
+
+- add LICENSE.txt
+
+-------------------------------------------------------------------
+Tue Feb 24 14:42:54 UTC 2015 - tbechtold@suse.com
+
+- update to 1.2.8:
+   * Increasing version number for pypi
+   * Merge pull request #30 from methane/patch-1
+   * Move nose to tests_requires
+   * Bumping version to fix upload issues with pypi
+   * Adding James Socol to contributors and bumping version for pypi
+   * Merge pull request #27 from jsocol/connect-error
+   * Include _connect in ignore_exc try/except block
+   * Adding the LICENSE.txt file to the distribution
+
+-------------------------------------------------------------------
+Fri Jun  6 08:31:19 UTC 2014 - thomasbechtold@jpberlin.de
+
+- Initial version.
+

@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Fri Jul  6 07:22:31 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- update to 3.6
+  * A new --extra-data option can be used to fill in a user-defined
+    string field that appears in JSON output.
+  * A new --repeating-payload option makes iperf3 use a payload pattern
+    similar to that used by iperf2, which could help in recreating
+    results that might be affected by payload entropy (for example,
+    compression).
+  * -B now works properly with SCTP tests.
+  * A compile fix for Solaris 10 was added.
+  * Some minor bug fixes for JSON output.  In particular, warnings for
+    debug and/or verbose modes with --json output and a fix for
+    JSON output on CentOS 6 
+
+-------------------------------------------------------------------
+Mon Mar 12 14:49:17 UTC 2018 - msvec@suse.com
+
+- update to 3.5
+  * Bug fixes mostly
+
+-------------------------------------------------------------------
+Tue Nov  7 09:53:45 UTC 2017 - msvec@suse.com
+
+- update to 3.3
+  * Bug fixes
+
+-------------------------------------------------------------------
+Fri Sep 22 08:35:05 UTC 2017 - msvec@suse.com
+
+- update to 3.2
+  * Authentication mechanism added
+  * New --dscp option allows specifying the DSCP value
+  * Details: https://github.com/esnet/iperf/blob/master/RELEASE_NOTES
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Aug 11 14:07:45 UTC 2016 - aj@ajaissle.de
+
+- update to version 3.1.3
+  * fixes [boo#984453] [CVE-2016-4303] JSON parsing vulnerability
+
+  * also includes support for fair-queueing, per-socket based
+    pacing of tests on platforms that support it (currently recent
+    Linux distributions), as well as several other fixes.
+
+-------------------------------------------------------------------
+Mon Feb  8 16:30:00 UTC 2016 - msvec@suse.com
+
+- update to version 3.1.2
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Feb  8 15:26:43 UTC 2016 - plinnell@opensuse.org
+
+- Fix url so OBS is happy.
+
+-------------------------------------------------------------------
+Mon Dec 14 10:10:42 UTC 2015 - msvec@suse.com
+
+- update to version 3.1.1
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Mon Nov 30 21:11:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.1
+  * SCTP support has been added (with the --sctp flag), on Linux,
+    FreeBSD, and Solaris (issue #131).
+  * Setting CPU affinity now works on FreeBSD.
+  * Selection of TCP congestion now works on FreeBSD, and is now
+    called --congestion (the old --linux-congestion option works
+    but is now deprecated).
+  * A new -I option for the server causes it to write a PID file,
+    mostly useful for daemon mode (issue #120).
+  * A --logfile argument can now force all output to go to a file,
+    rather than to a file.  This is especially useful when running an
+    iperf3 server in daemon mode (issue #119).
+  * Various compatibility fixes for Android (issue #184, issue #185),
+    iOS (issue #288), NetBSD (issue #248), Solaris (issue #175, issue
+    #178, issue #180, issue #211), vxWorks (issue #268).
+  * A --udp-counters-64bit flag has been added to support very
+    long-running UDP tests, which could cause a counter to overflow
+    (issue #191).
+  * A --cport option to specify the client-side port has been added
+    (issue #207, issue #209, issue #239).
+  * Some calculation errors with the -O feature have been fixed (issue
+    #236).
+  * A potential crash in the iperf3 server has been fixed (issue #257,
+    issue #258).
+  * Many miscellaneous bug fixes.
+  * Consumers of libiperf can now get the JSON output for a
+    just-completed test (issue #147).
+  * Detection of various optional features has been improved to check
+    for the presence or absence of platform functionality, not the name
+    of platforms.
+  * Out-of-tree builds now work (issue #265).
+- Do not provide static library
+- Update iperf-3.0.5_disable-profiling.patch > iperf-disable-profiling.patch
+
+-------------------------------------------------------------------
+Sun Apr  5 21:17:52 UTC 2015 - aj@ajaissle.de
+
+- iperf 3.0.11
+  * This maintenance release adds a -1 flag to make the iperf3 
+    execute a single test and exit, needed for an upcoming bwctl 
+    release. A few other bugs are also fixed.
+
+-------------------------------------------------------------------
+Thu Jan  8 12:57:18 UTC 2015 - seife+obs@b1-systems.com
+
+- iperf 3.0.10, user-visible changes:
+  * UDP tests now honor the -w option for setting the socket buffer
+    sizes (issue #219).
+
+-------------------------------------------------------------------
+Fri Dec 26 16:14:38 UTC 2014 - schwab@linux-m68k.org
+
+- Apply profiling patch whenever %optflags includes -fomit-frame-pointer
+
+-------------------------------------------------------------------
+Thu Jul 17 20:12:49 UTC 2014 - msvec@suse.com
+
+- iperf 3.0.9
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Jul 17 20:12:49 UTC 2014 - msvec@suse.com
+
+- iperf 3.0.5
+  * A timing issue which caused measurement intervals to be wrong
+    with TCP tests on lossy networks has been fixed
+  * It is now possible to get (most of) the server-side output at
+    the client by using the --get-server-output flag
+  * A number of bugs with --json output have been fixed
+- rebased iperf-3.0.2_disable-profiling.patch on 3.0.5 code
+  (now is iperf-3.0.5_disable-profiling.patch)
+
+-------------------------------------------------------------------
+Wed Mar 26 19:30:51 UTC 2014 - andreas.stieger@gmx.de
+
+- iperf 3.0.3
+  * Summary structures in the JSON output are now included, even if
+    there is only one stream. 
+  * A possible buffer overflow in iperf_error.c has been fixed
+    (replaced iperf-3.0.2_strncat_bufferoverflow.patch)
+  * Example programs now build correctly
+- clean spec
+
+-------------------------------------------------------------------
+Tue Mar 25 11:24:38 UTC 2014 - aj@ajaissle.de
+
+- iperf project moved from SourceForge to Google Code and now to GitHub.
+  License changed from NCSA to BDS-3-Clause
+
+- Update to 3.0.2
+This version, sometimes referred to as iperf3, is a redesign of an original
+version developed at NLANR/DAST. iperf3 is a new implementation from scratch, 
+with the goal of a smaller, simpler code base, and a library version of the 
+functionality that can be used in other programs. iperf3 also a number of 
+features found in other tools such as nuttcp and netperf, but were missing 
+from the original iperf. These include, for example, a zero-copy mode and 
+optional JSON output.
+
+Note that iperf3 is NOT backwards compatible with the original iperf.
+
+- Added iperf-3.0.2_strncat_bufferoverflow.patch:
+  * Prevent buffer overflow in strncat
+
+- Added iperf-3.0.2_disable-profiling.patch:
+  * Disable profiling on x86 (option '-pg' is incompatible with invoked
+    option '-fomit-frame-pointer')
+
+- Changes in 3.0.2
+  * iperf3 now builds on Linux systems that do not support
+    TCP_CONGESTION.  Most notably this allows iperf3 to work on CentOS
+    5.
+  * An abort on MacOS 10.9 has been fixed (issue #135).
+  * Added -I flag for the server to write a PID file, mostly useful for
+    daemon mode (issue #120).
+  * A bug that could break some TCP tests on FreeBSD has been fixed.
+  * TCP snd_cwnd output is now printed by default on Linux (issue #99).
+  * In JSON output, the --title string no longer has a colon and two
+    spaces appended (issue #139).
+  * A buffer for holding formatted numeric values is now
+    properly-sized so that output is not truncated (issue #142).
+  * Some memory leaks have been fixed.
+  * A -d flag enables debugging output.
+  * libtoolize is now invoked correctly from the bootstrap.sh script.
+  * The test unit format can now be set from the API (issue #144).
+  * libiperf is now built as both shared and static libraries.
+
+- Changes in 3.0.1
+  * Added the following new flags
+     -D, --daemon	       run server as a daemon
+     -L, --flowlabel           set IPv6 flow label (Linux only)
+     -C, --linux-congestion    set congestion control algorithm (Linux only)
+     -k, --blockcount #[KMG]   number of blocks (packets) to transmit
+     	 	      	       (instead of -t or -n)
+  * Bug fixes
+
+- Changes in 3.0-RC5
+  * Added the following new flags
+     -F, --file name           xmit/recv the specified file
+     -A, --affinity n/n,m      set CPU affinity (Linux only)
+     -J, --json                output in JSON format
+     -Z, --zerocopy            use a 'zero copy' method of sending data
+     -O, --omit N              omit the first n seconds
+     -T, --title str           prefix every output line with this string
+  * more useful information in 'verbose' mode
+  * Many bug fixes
+
+- Changes in 3.0b4
+  * Added support for binding to a specific interface (-B)
+  * Added support for IPv6 mode (-6)
+  * Setting TCP window size (-w) is now supported
+  * Updates to iperf_error
+      * Added new errors
+      * Should generate more relavent messages
+  * Stream list now managed by queue.h macros
+  * Test structures are now kept intact after a test is run (for API users)
+  * Improved interval timer granularity
+      * Support for decimal values
+  * Many bug fixes
+
+- Changes in 3.0b3
+  * Better error handling
+      * All errors now handled with iperf_error()
+      * All functions that can return errors return NULL or -1 on error and set i_errno appropriately
+  * Iperf API intruduced
+      * Support for adding new protocols
+      * Added support for callback functions
+          * on_connect - executes after a connection is made to the server
+          * on_new_stream - executes after a new stream is created
+          * on_test_start - executes right before the test begins
+          * on_test_finish - executes after the test is finished
+  * Added early support for verbose mode (-V)
+
+- Changes in 3.0b2
+  * UDP mode now supported
+      * Support for setting bandwidth (-b)
+      * Parallel UDP stream support
+      * Reverse mode UDP support
+  * Support for setting TCP_NODELAY (-N), disabling Nagle's Algorithm
+  * Support for setting TCP MSS (-M)
+      * Note: This feature is still in development. It is still very buggy.
+
+- Changes in 3.0b1
+  * TCP control socket now manages messages between client and server
+  * Dynamic server (gets test parameters from client)
+      * Server can now set test options dynamically without having to restart.
+          * Currently supported options: -l, -t, -n, -P, -R
+          * Future options: -u, -b, -w, -M, -N, -I, -T, -Z, -6
+  * Results exchange
+      * Client can now see server results (and vice versa)
+  * Reverse mode (-R)
+      * Server sends, client receives
+
+-------------------------------------------------------------------
+Fri Jun 22 13:59:52 UTC 2012 - coolo@suse.com
+
+- disable _service file for factory update
+- update license to be spdx.org conform
+
+-------------------------------------------------------------------
+Fri Aug 27 18:18:45 UTC 2010 - reddwarf@opensuse.org
+
+- Update to 2.0.5
+  * bumped default TCP send/recv buffer to 128K (this is not the
+    kernel buffer that controls the window, but rather the Iperf
+    internal buffer)
+  * honor -i flag when for a server (-s) when using TCP
+  * Exit rather than warn on connection failure
+  * Reduce CPU usage
+  * "neater" output for some units, eg Kbps, Mbps, Gbps
+  * addresses some typos
+  * prevent underflow when the amount of data to be
+    transmitted (-n) is not a multiple of the buffer size (-l)
+  * print report headers only once
+  * use appropriate report header for UDP tests
+- Cleaned with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Mar 30 13:03:23 UTC 2010 - poletti.marco@gmail.com
+
+- Initial package, version 2.0.4
+

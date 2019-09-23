@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>b9722a61e6dd9aa6a4e47c3c6cff1a6c</srcmd5>
+    <version>0.92</version>
+    <time>1234495777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0a51c9499e4392ede3a0c5210a20f94</srcmd5>
+    <version>0.93</version>
+    <time>1234825736</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e2214943ceaef6f411e028fa04f44599</srcmd5>
+    <version>0.93</version>
+    <time>1235167675</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1fd72dbfb4e32fc28210ba221a7fb9d1</srcmd5>
+    <version>0.94</version>
+    <time>1242942978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c6110d6380551cacb8813e226117af9</srcmd5>
+    <version>0.95</version>
+    <time>1249679608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1c6110d6380551cacb8813e226117af9</srcmd5>
+    <version>0.95</version>
+    <time>1249679608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>665a599f157abcba3c1ce6166b25afd3</srcmd5>
+    <version>0.95</version>
+    <time>1268923269</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>665a599f157abcba3c1ce6166b25afd3</srcmd5>
+    <version>0.95</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>665a599f157abcba3c1ce6166b25afd3</srcmd5>
+    <version>0.95</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9fb75811e3cb80c5f80f38b97bd67e03</srcmd5>
+    <version>0.98</version>
+    <time>1295287882</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58464 from user coolo
+</comment>
+    <requestid>58464</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cf8eab9eaa98d2f8385e38d63d9b3a4e</srcmd5>
+    <version>0.98</version>
+    <time>1295287893</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58464
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>cf8eab9eaa98d2f8385e38d63d9b3a4e</srcmd5>
+    <version>0.98</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>88e5d974cd8715b68d074c2c353f3839</srcmd5>
+    <version>0.98</version>
+    <time>1304347618</time>
+    <user>saschpe</user>
+    <comment>Fix compilation with gcc 4.6 (forwarded request 68506 from namtrac)</comment>
+    <requestid>69202</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>3f69ff11a58b485e50aa4d953b3f9a9c</srcmd5>
+    <version>0.98</version>
+    <time>1304347628</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69202
+</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>3f69ff11a58b485e50aa4d953b3f9a9c</srcmd5>
+    <version>0.98</version>
+    <time>1319181837</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>de5b7d91c31635304e4ccf70e80e0bbf</srcmd5>
+    <version>0.98</version>
+    <time>1329750472</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause
+No BSD-4-Clause licenses in the packages (forwarded request 105427 from babelworx)</comment>
+    <requestid>105768</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>de5b7d91c31635304e4ccf70e80e0bbf</srcmd5>
+    <version>0.98</version>
+    <time>1340183265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b778976ebca09fa1948f2e8ddf91d1dc</srcmd5>
+    <version>2.2</version>
+    <time>1347882785</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134113</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b778976ebca09fa1948f2e8ddf91d1dc</srcmd5>
+    <version>2.2</version>
+    <time>1359108789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>b778976ebca09fa1948f2e8ddf91d1dc</srcmd5>
+    <version>2.2</version>
+    <time>1379662190</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7dc5bcc38b0bf7a9a7edfd87459a0132</srcmd5>
+    <version>2.3</version>
+    <time>1401108051</time>
+    <user>coolo</user>
+    <comment>- update to upstream version 2.3
+  * Fixed some more C++11 issues. 
+  * Removed deprecated Template::SetEscapedValueAndShowSection() 
+    and Template::ReloadIfChanged(). (forwarded request 234448 from ocfreitag)</comment>
+    <requestid>235271</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>7dc5bcc38b0bf7a9a7edfd87459a0132</srcmd5>
+    <version>2.3</version>
+    <time>1409300724</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>0096e9f209dc9bc84c04b7d1e898fcad</srcmd5>
+    <version>2.3</version>
+    <time>1416824088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262565</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>dd9f3914ae4ba3189e7e91051c74c1e1</srcmd5>
+    <version>2.3</version>
+    <time>1429769047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298397</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>7abdd8df822e4f9c0a1ffcfb11d8163f</srcmd5>
+    <version>2.3</version>
+    <time>1484561756</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450426</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>68ffe1e0e480b6146858f60b9efbe14e</srcmd5>
+    <version>2.3</version>
+    <time>1487149573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456498</requestid>
+  </revision>
+</revisionlist>

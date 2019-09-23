@@ -1,0 +1,17 @@
+--- libhfs/os/unix.c.~1~	2002-11-18 00:36:52.000000000 +0100
++++ libhfs/os/unix.c	2002-11-18 00:40:35.000000000 +0100
+@@ -147,12 +147,12 @@ unsigned long os_seek(void **priv, unsig
+   if (offset == (unsigned long) -1)
+     result = lseek(fd, 0, SEEK_END);
+   else
+-    result = lseek(fd, offset << HFS_BLOCKSZ_BITS, SEEK_SET);
++    result = lseek(fd, (off_t) offset << HFS_BLOCKSZ_BITS, SEEK_SET);
+ 
+   if (result == -1)
+     ERROR(errno, "error seeking medium");
+ 
+-  return (unsigned long) result >> HFS_BLOCKSZ_BITS;
++  return (unsigned long) (result >> HFS_BLOCKSZ_BITS);
+ 
+ fail:
+   return -1;

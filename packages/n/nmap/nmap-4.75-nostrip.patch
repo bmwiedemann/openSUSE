@@ -1,0 +1,14 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2012-09-13 01:17:42.000000000 +0100
++++ Makefile.in	2012-12-02 11:47:22.000000000 +0000
+@@ -253,9 +253,6 @@ my_distclean:
+ install-nmap: $(TARGET)
+ 	$(INSTALL) -d $(DESTDIR)$(bindir) $(DESTDIR)$(mandir)/man1 $(DESTDIR)$(nmapdatadir)
+ 	$(INSTALL) -c -m 755 nmap $(DESTDIR)$(bindir)/nmap
+-# Use strip -x to avoid stripping dynamically loaded NSE functions. See
+-# http://seclists.org/nmap-dev/2007/q4/0272.html.
+-	$(STRIP) -x $(DESTDIR)$(bindir)/nmap
+ 	$(INSTALL) -c -m 644 docs/$(TARGET).1 $(DESTDIR)$(mandir)/man1/
+ 	if [ "$(USE_NLS)" = "yes" ]; then \
+ 	  for ll in $(filter $(ALL_LINGUAS),$(LINGUAS)); do \

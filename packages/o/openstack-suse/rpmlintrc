@@ -1,0 +1,12 @@
+# RPM macros are not configuration:
+addFilter("non-conffile-in-etc /etc/rpm/macros.openstack")
+# The skeleton init script is just a skeleton, thus:
+addFilter("non-conffile-in-etc /etc/init.d/openstack-skeleton")
+addFilter("incoherent-init-script-name openstack-skeleton")
+addFilter("suse-missing-rclink openstack-skeleton")
+addFilter("init-script-without-%stop_on_removal-preun /etc/init.d/openstack-skeleton")
+addFilter("init-script-without-%restart_on_update-postun /etc/init.d/openstack-skeleton")
+addFilter("init-script-without-%insserv_cleanup-postun /etc/init.d/openstack-skeleton")
+# NOTE(saschpe): Let's have an empty base package for now. We
+#                reserve that as the chef-based openstack-quickstart replacement:
+addFilter("openstack-suse-sudo.noarch: W: suse-filelist-empty")

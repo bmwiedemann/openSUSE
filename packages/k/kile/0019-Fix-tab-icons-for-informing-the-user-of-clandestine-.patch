@@ -1,0 +1,31 @@
+From 0a71b32f508fb9a6bf9bc98cefb84875a6579954 Mon Sep 17 00:00:00 2001
+From: Michel Ludwig <michel.ludwig@kdemail.net>
+Date: Sun, 28 Oct 2018 18:11:18 +0100
+Subject: [PATCH 19/35] Fix tab icons for informing the user of clandestine
+ file modifications
+
+---
+ src/kileviewmanager.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/kileviewmanager.cpp b/src/kileviewmanager.cpp
+index 74e52506..c0b82541 100644
+--- a/src/kileviewmanager.cpp
++++ b/src/kileviewmanager.cpp
+@@ -792,11 +792,11 @@ void Manager::reflectDocumentModificationStatus(KTextEditor::Document *doc,
+     }
+     else if(reason == KTextEditor::ModificationInterface::OnDiskModified
+             || reason == KTextEditor::ModificationInterface::OnDiskCreated) { //dirty file
+-        icon = QIcon::fromTheme("modonhd"); // This icon is taken from Kate. Therefore
++        icon = QIcon::fromTheme("emblem-warning"); // This icon is taken from Kate. Therefore
+         // our thanks go to the authors of Kate.
+     }
+     else if(reason == KTextEditor::ModificationInterface::OnDiskDeleted) { //file deleted
+-        icon = QIcon::fromTheme("process-stop");
++        icon = QIcon::fromTheme("emblem-warning");
+     }
+     else if(m_ki->extensions()->isScriptFile(doc->url())) {
+         icon = QIcon::fromTheme("js");
+-- 
+2.20.1
+

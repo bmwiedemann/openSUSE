@@ -1,0 +1,68 @@
+From 1f136a4453877d4e04e6bbe0bc8672564c857dbe Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Sun, 2 Feb 2014 16:48:38 +0100
+Subject: [PATCH 08/12] etc: add systemd service file
+
+Signed-off-by: David Disseldorp <ddiss@suse.de>
+---
+ etc/Makefile.in      | 12 ++++++++----
+ etc/istgt.service.in | 14 ++++++++++++++
+ 2 files changed, 22 insertions(+), 4 deletions(-)
+ create mode 100644 etc/istgt.service.in
+
+diff --git etc/Makefile.in etc/Makefile.in
+index 057356b..ef76f71 100644
+--- etc/Makefile.in
++++ etc/Makefile.in
+@@ -25,10 +25,11 @@ header   =
+ document = 
+ sample   = auth.conf istgtcontrol.conf \
+ 	istgt.large.conf.in istgt.conf.in \
+-	istgt.sh.in istgt_netbsd.sh.in istgt_linux.sh.in
++	istgt.sh.in istgt_netbsd.sh.in istgt_linux.sh.in \
++	istgt.service.in
+ rctemplate = @rctemplate@
+ rcdir    = @rcdir@
+-rcfile   = $(rctemplate:.sh.in=.sh)
++rcfile   = $(rctemplate:.in=)
+ 
+ DISTDIR = $(top_srcdir)/`cat $(top_srcdir)/distdir`
+ DISTFILES = Makefile.in \
+@@ -70,9 +71,12 @@ install: install-dirs
+ 	$(INSTALL) -m 0600 auth.conf $(DESTDIR)$(sysconfdir)/istgt/auth.conf.sample
+ 	$(INSTALL) -m 0600 istgtcontrol.conf \
+ 		$(DESTDIR)$(sysconfdir)/istgt/istgtcontrol.conf.sample
+-#	$(INSTALL) -m 0555 istgt.sh $(DESTDIR)$(sysconfdir)/rc.d/istgt
+ 	if [ "x$(rcfile)" != "x" -a -f "$(rcfile)" ]; then \
+-	    $(INSTALL) -m 0555 $(rcfile) $(DESTDIR)$(rcdir)/istgt; \
++	    if  [ "x$(rcfile)" == "xistgt.service" ]; then \
++		$(INSTALL) -m 0644 $(rcfile) $(DESTDIR)$(rcdir)/istgt.service; \
++	    else \
++		$(INSTALL) -m 0555 $(rcfile) $(DESTDIR)$(rcdir)/istgt; \
++	    fi \
+ 	fi
+ 
+ install-dirs:
+diff --git etc/istgt.service.in etc/istgt.service.in
+new file mode 100644
+index 0000000..41adeb6
+--- /dev/null
++++ etc/istgt.service.in
+@@ -0,0 +1,14 @@
++[Unit]
++Description=istgt iSCSI Daemon
++After=syslog.target network.target
++
++[Service]
++Type=forking
++PIDFile=/var/run/istgt.pid
++ExecStart=%%BINDIR%%/istgt -c %%SYSCONFDIR%%/istgt.conf
++Restart=on-abort
++ExecReload=%%BINDIR%%/kill -HUP $MAINPID
++LimitNOFILE=16384
++
++[Install]
++WantedBy=multi-user.target
+-- 
+2.1.2
+

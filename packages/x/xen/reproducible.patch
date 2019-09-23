@@ -1,0 +1,44 @@
+commit e4c8f21e198e739e279b274c17e9246ea9a6d8e5
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed Oct 24 09:50:26 2018 +0200
+
+    x86/efi: Do not insert timestamps in efi files
+    
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good.
+    
+    We only add the option, if ld understands it.
+    
+    Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+Index: xen-4.12.0-testing/Config.mk
+===================================================================
+--- xen-4.12.0-testing.orig/Config.mk
++++ xen-4.12.0-testing/Config.mk
+@@ -151,6 +151,14 @@ export XEN_HAS_BUILD_ID=y
+ build_id_linker := --build-id=sha1
+ endif
+ 
++ld-ver-timestamp = $(shell $(1) -mi386pep --no-insert-timestamp 2>&1 | \
++				grep -q no-insert-timestamp && echo n || echo y)
++ifeq ($(call ld-ver-timestamp,$(LD)),n)
++ld_no_insert_timestamp :=
++else
++ld_no_insert_timestamp := --no-insert-timestamp
++endif
++
+ ifndef XEN_HAS_CHECKPOLICY
+     CHECKPOLICY ?= checkpolicy
+     XEN_HAS_CHECKPOLICY := $(shell $(CHECKPOLICY) -h 2>&1 | grep -q xen && echo y || echo n)
+Index: xen-4.12.0-testing/xen/arch/x86/Makefile
+===================================================================
+--- xen-4.12.0-testing.orig/xen/arch/x86/Makefile
++++ xen-4.12.0-testing/xen/arch/x86/Makefile
+@@ -155,6 +155,7 @@ note.o: $(TARGET)-syms
+ 
+ EFI_LDFLAGS = $(patsubst -m%,-mi386pep,$(LDFLAGS)) --subsystem=10
+ EFI_LDFLAGS += --image-base=$(1) --stack=0,0 --heap=0,0 --strip-debug
++EFI_LDFLAGS += $(ld_no_insert_timestamp)
+ EFI_LDFLAGS += --section-alignment=0x200000 --file-alignment=0x20
+ EFI_LDFLAGS += --major-image-version=$(XEN_VERSION)
+ EFI_LDFLAGS += --minor-image-version=$(XEN_SUBVERSION)

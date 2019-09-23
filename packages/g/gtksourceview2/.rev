@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09e3c0f337860d7144e35ce2c8a61597</srcmd5>
+    <version>2.10.5</version>
+    <time>1304589494</time>
+    <user>saschpe</user>
+    <comment>New package (mostly a copy, though): gtk2 branch of gtksourceview2, as gtksourceview will now track gtk3 (see sr#69095)</comment>
+    <requestid>69186</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44e266120602ab547c5684623060b42a</srcmd5>
+    <version>2.10.5</version>
+    <time>1304589511</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69186
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>44e266120602ab547c5684623060b42a</srcmd5>
+    <version>2.10.5</version>
+    <time>1319181956</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>691f8388cbbabb2cc44bd87697a5bcb9</srcmd5>
+    <version>2.10.5</version>
+    <time>1323191843</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>c0a4704df04083b48dce983936853362</srcmd5>
+    <version>2.10.5</version>
+    <time>1327484236</time>
+    <user>coolo</user>
+    <comment>Pushing bits of G:F that are fine (mostly update to 3.3.4)</comment>
+    <requestid>101178</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>28b023e6eb72a907d3520ae3e7ae32cd</srcmd5>
+    <version>2.10.5</version>
+    <time>1337577900</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>121339</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>28b023e6eb72a907d3520ae3e7ae32cd</srcmd5>
+    <version>2.10.5</version>
+    <time>1340183425</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>28b023e6eb72a907d3520ae3e7ae32cd</srcmd5>
+    <version>2.10.5</version>
+    <time>1359109028</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>28b023e6eb72a907d3520ae3e7ae32cd</srcmd5>
+    <version>2.10.5</version>
+    <time>1379662588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>28b023e6eb72a907d3520ae3e7ae32cd</srcmd5>
+    <version>2.10.5</version>
+    <time>1409301135</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>2adc7f1f5c3bc6e4937f08e45042e0b6</srcmd5>
+    <version>2.10.5</version>
+    <time>1444140665</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>330250</requestid>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>7ac393d39381c5e3b55c4cad758b1768</srcmd5>
+    <version>2.10.5</version>
+    <time>1496327632</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500146</requestid>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>7ceaea43c37109dcb4f4d51adce660cc</srcmd5>
+    <version>2.10.5</version>
+    <time>1520588477</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581399 from dimstar)</comment>
+    <requestid>582890</requestid>
+  </revision>
+</revisionlist>

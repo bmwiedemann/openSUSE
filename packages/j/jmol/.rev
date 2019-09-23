@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>593e2141e577be9d01fb4d17afae708a</srcmd5>
+    <version>14.27.2</version>
+    <time>1516634310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567819</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c51a0d7e1594ac8be1b455244a6ec09</srcmd5>
+    <version>14.29.26</version>
+    <time>1540200349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 14.29.26</comment>
+    <requestid>643500</requestid>
+  </revision>
+</revisionlist>

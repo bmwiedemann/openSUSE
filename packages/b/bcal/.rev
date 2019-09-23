@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f65889eb17c2be0f763819629a66197</srcmd5>
+    <version>2.1</version>
+    <time>1555237408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1
+    * Support for C bitwise operators (|, ^, &amp;)
+    * Support floating point in unit conversion
+    * Support hex in expressions
+    * Persistent readline history
+    * Static-analysis (clang-tidy and coverity) integration
+- Update to version 2.0  
+    * bc mode for general purpose calculations
+    * Bitwise shift (&lt;&lt; and &gt;&gt;) operations
+    * Base conversion in interactive mode
+    * Prompt help
+- First realease v1.9 
+</comment>
+    <requestid>693895</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f74ed83038eea14af36a0c064157ec7c</srcmd5>
+    <version>2.1</version>
+    <time>1555488537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694667</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b0f4d36409a1562b1010ee7ef0a1e8eb</srcmd5>
+    <version>2.1</version>
+    <time>1559727982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707649</requestid>
+  </revision>
+</revisionlist>

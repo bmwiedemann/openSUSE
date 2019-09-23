@@ -1,0 +1,9 @@
+#
+# cron for matomo Auto-Archiving of Your Reports
+#
+
+# without CLI
+#5 * * * * wwwrun /usr/bin/php @ap_serverroot@/matomo/misc/cron/archive.php --url=http://localhost/matomo/ > /var/log/matomo/matomo-archive.log
+
+# with CLI
+5 * * * * wwwrun /usr/bin/php @ap_serverroot@/matomo/console core:archive --url=http://localhost/matomo/ > /var/log/matomo/matomo-archive.log

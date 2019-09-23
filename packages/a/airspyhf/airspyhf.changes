@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sun Jan 27 22:57:09 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fix build for Leap 42.3
+
+-------------------------------------------------------------------
+Sat Jan 19 13:23:28 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.1.5
+  * Fixed the Linux build
+  * Updated the IQ correction algorithm;
+  * Updated the version number and copyright dates
+  * Better handling of weak signals in the IQ correction algorithm.
+
+-------------------------------------------------------------------
+Sun Feb 25 10:44:46 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.1.0+git.20180217:
+  * Updated the version number to 1.1.0
+  * Added LNA, ATT, AGC and Threshold settings for the HF tuner.
+  * Improved the convergence of the IQ balancer - again.
+  * New heuristic for faster convergence in the IQ correction algorithm.
+  * Bugfix airspyhf_open_device() with given serial for device identification
+  * allow static compilation with definition of 'STATIC_AIRSPYHFPLUS'
+  * airspyhf_list_devices accepts NULL as serials pointer to only get the number of devices
+  * remove a compile warning under Linux
+  * Improved the image rejection algorithm for the Airspy HF+
+
+-------------------------------------------------------------------
+Sat Oct 21 11:29:42 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20170930:
+  * Fixed enum prefix
+  * Added API for user application output pins
+  * Added APIs for getting library and firmware version
+  * Added API for enumerating multiple devices
+
+-------------------------------------------------------------------
+Mon Jul 24 23:07:25 UTC 2017 - jengelh@inai.de
+
+- Trim description
+
+-------------------------------------------------------------------
+Tue Jul 18 07:05:50 UTC 2017 - mardnh@gmx.de
+
+- Fix license
+- Update to version 0.0.0+git.20170718:
+  * Changed the fallback sample rate to 768 ksps
+  * Added a license file
+
+-------------------------------------------------------------------
+Mon Jul 17 19:09:58 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 0.0.0+git.20170716

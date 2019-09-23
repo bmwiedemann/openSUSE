@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8dc9310e01e646087c049c40e23c467f</srcmd5>
+    <version>20120413</version>
+    <time>1365425054</time>
+    <user>coolo</user>
+    <comment>Once again, this time with GPL-3.0+</comment>
+    <requestid>162766</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8dc9310e01e646087c049c40e23c467f</srcmd5>
+    <version>20120413</version>
+    <time>1379662450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8dc9310e01e646087c049c40e23c467f</srcmd5>
+    <version>20120413</version>
+    <time>1409300988</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>efc168eced7147d2d7e6ca88f09677d4</srcmd5>
+    <version>20120413</version>
+    <time>1413382806</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256557</requestid>
+  </revision>
+</revisionlist>

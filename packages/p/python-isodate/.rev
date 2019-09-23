@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ebd33b9f7f18ea0619ec299fc65b836</srcmd5>
+    <version>0.4.8</version>
+    <time>1339531165</time>
+    <user>coolo</user>
+    <comment>Emergency addon: this is required by python-rdflib</comment>
+    <requestid>124411</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9ebd33b9f7f18ea0619ec299fc65b836</srcmd5>
+    <version>0.4.8</version>
+    <time>1340184063</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46928e073a1c55b8ea30822ed161dd6b</srcmd5>
+    <version>0.4.9</version>
+    <time>1353847253</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.9:
+  + support pickling FixedOffset instances
+  + make sure parsed fractional seconds are in microseconds
+  + add leading zeros when formattig microseconds (Jarom Loveridge)
+- Spec file cleanup</comment>
+    <requestid>142569</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>859e1f2f2d901dacc0319ff0f2b8ae11</srcmd5>
+    <version>0.4.9</version>
+    <time>1358413321</time>
+    <user>coolo</user>
+    <comment>Made required changes (forwarded request 148430 from posophe)</comment>
+    <requestid>148572</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>859e1f2f2d901dacc0319ff0f2b8ae11</srcmd5>
+    <version>0.4.9</version>
+    <time>1359110057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>df327bfc456e1d0786dbd25dca9f0fac</srcmd5>
+    <version>0.4.9</version>
+    <time>1366233419</time>
+    <user>coolo</user>
+    <comment>Re-add python-2to3.  It is needed for OpenSUSE &lt;= 12.2 (forwarded request 171301 from TheBlackCat)</comment>
+    <requestid>171302</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>7c4e0293a89b2be8b7dd76aec90b7a95</srcmd5>
+    <version>0.4.9</version>
+    <time>1371652727</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179867</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7c4e0293a89b2be8b7dd76aec90b7a95</srcmd5>
+    <version>0.4.9</version>
+    <time>1379664201</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>ce7cfd9856beb85ef2dad057cb12068e</srcmd5>
+    <version>0.4.9</version>
+    <time>1382692779</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204581</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>ce7cfd9856beb85ef2dad057cb12068e</srcmd5>
+    <version>0.4.9</version>
+    <time>1409302895</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ae48011280f6ef73bff8daa8c5c2d84b</srcmd5>
+    <version>0.5.1</version>
+    <time>1431247448</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305752</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>551a6f08cb83219cbb416be14c654576</srcmd5>
+    <version>0.5.4</version>
+    <time>1485862216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453396</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d34b81bf9562e25ec4c03e5f7bfd770a</srcmd5>
+    <version>0.5.4</version>
+    <time>1494937789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493456</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>42d6f7a74d6eb9d006cf99e2e87566bb</srcmd5>
+    <version>0.6.0</version>
+    <time>1525425967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603117</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a0d179521e3f4a4059788bac159a812d</srcmd5>
+    <version>0.6.0</version>
+    <time>1545866814</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659446</requestid>
+  </revision>
+</revisionlist>

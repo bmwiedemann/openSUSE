@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Mon Sep 10 12:07:53 CEST 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Revert removal of the code fixing egginfo (boo#1107798)
+- Actually we don't need remove-setuptools-dependency.patch,
+  when we don't run python setup.py test anymore. So, remove it.
+
+-------------------------------------------------------------------
+Tue Sep  4 15:23:26 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Clean SPEC and remove circular dependency on python-setuptools
+  (Add remove-setuptools-dependency.patch patch to do this)
+
+-------------------------------------------------------------------
+Fri Aug 17 13:47:34 UTC 2018 - tchvatal@suse.com
+
+- Use setuptools normally
+- Run tests
+
+-------------------------------------------------------------------
+Tue Aug 14 10:13:51 UTC 2018 - ms@suse.com
+
+- Submission to SUSE:SLE-12-SP3:Update:PubClouds
+    
+  This commit tracks the submission for fate#326575
+  and bsc#1103542
+
+-------------------------------------------------------------------
+Tue Aug  8 06:11:57 UTC 2017 - tbechtold@suse.com
+
+- update to 1.4.3:
+  - [PR #76] Python 3.6 invalid escape sequence deprecation fixes
+  - Fix for Python 3.6 support
+  - [PR #84] Allow installing without setuptools
+  - [PR #86] Fix string delimiters in setup.py description
+  - Add Python 3.6 support
+- drop desetuptoolize.patch . no longer needed.
+
+-------------------------------------------------------------------
+Thu Feb 23 11:45:52 UTC 2017 - jmatejek@suse.com
+
+- update for single-spec
+- desetuptoolize.patch : switch from setuptools to distutils.core
+  for installation, as this is now a setuptools dependency
+- ensure egg-info is a directory (distutils would install it as file)
+- update to 1.4.1
+  * [issue 55] make appname optional
+
+-------------------------------------------------------------------
+Wed Jun  3 14:17:22 UTC 2015 - tbechtold@suse.com
+
+- update to 1.4.0:
+  - [PR #42] AppAuthor is now optional on Windows
+  - [issue 41] Support Jython on Windows, Mac, and Unix-like platforms. Windows
+    support requires `JNA <https://github.com/twall/jna>`_.
+  - [PR #44] Fix incorrect behaviour of the site_config_dir method
+  - [Unix, issue 16] Conform to XDG standard, instead of breaking it for
+    everybody
+  - [Unix] Removes gratuitous case mangling of the case, since \*nix-es are
+    usually case sensitive, so mangling is not wise
+  - [Unix] Fixes the uterly wrong behaviour in ``site_data_dir``, return result
+    based on XDG_DATA_DIRS and make room for respecting the standard which
+    specifies XDG_DATA_DIRS is a multiple-value variable
+  - [Issue 6] Add ``*_config_dir`` which are distinct on nix-es, according to
+    XDG specs; on Windows and Mac return the corresponding ``*_data_dir``
+- Remove unzip as BuildRequires. tar.gz file now provided and used
+
+-------------------------------------------------------------------
+Mon Mar 24 13:08:43 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

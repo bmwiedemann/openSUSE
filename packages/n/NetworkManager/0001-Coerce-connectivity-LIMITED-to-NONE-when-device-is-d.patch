@@ -1,0 +1,31 @@
+From 3e53521b50b7150118fbb729def0a2a1364c5aae Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Thu, 21 Mar 2019 11:08:36 +0100
+Subject: [PATCH] Coerce connectivity "LIMITED" to "NONE" when device is
+ disconnected
+
+If the device is disconnected it can't have any connectivity, so we can
+set it to NONE instead of LIMITED.
+
+Fixes #138
+---
+ src/devices/nm-device.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/devices/nm-device.c b/src/devices/nm-device.c
+index 7514fa784..48279c4ec 100644
+--- a/src/devices/nm-device.c
++++ b/src/devices/nm-device.c
+@@ -2821,7 +2821,8 @@ concheck_update_state (NMDevice *self, int addr_family,
+ 				state = NM_CONNECTIVITY_LIMITED;
+ 		} else
+ 			state = NM_CONNECTIVITY_NONE;
+-	}
++	} else if (state == NM_CONNECTIVITY_LIMITED && priv->state <= NM_DEVICE_STATE_DISCONNECTED)
++		state = NM_CONNECTIVITY_NONE;
+ 
+ 	if (priv->concheck_x[IS_IPv4].state == state) {
+ 		/* we got a connectivty update, but the state didn't change. If we were probing,
+-- 
+2.21.0
+

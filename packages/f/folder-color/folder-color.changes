@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sat May 28 15:43:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.0.79:
+  * Fix shell injection while using icon themes.
+- Rename folder-color-caja package to caja-extension-folder-color
+  and folder-color-nautilus to nautilus-extension-folder-color.
+
+-------------------------------------------------------------------
+Wed May  6 11:34:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.0.78:
+  * Orange colour changed to Humanity.
+  * Dark recent inside.
+
+-------------------------------------------------------------------
+Sun Mar 29 13:06:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.0.70:
+  * Fix no transparency in custom colours.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Mar 18 06:15:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.0.62:
+  * Fix network and recent directories.
+  * Allow to hide donation.
+  * Fix layout in Global colour.
+
+-------------------------------------------------------------------
+Wed Mar 18 06:15:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.0.61 (changes since 0.0.51):
+  * Default global colour in the system.
+  * Allow local themes in user directory.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Mar  9 08:43:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial build.

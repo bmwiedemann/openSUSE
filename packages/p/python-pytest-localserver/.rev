@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbd9d99c678a85097a0c47787b8f2655</srcmd5>
+    <version>0.4.1</version>
+    <time>1519683865</time>
+    <user>dimstar_suse</user>
+    <comment>python-pytest-localserver , new dependency of python-responses</comment>
+    <requestid>579213</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aeeef87b14f8ceedf523847993db8941</srcmd5>
+    <version>0.5.0</version>
+    <time>1551113657</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678288</requestid>
+  </revision>
+</revisionlist>

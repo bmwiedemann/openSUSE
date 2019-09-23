@@ -1,0 +1,275 @@
+-------------------------------------------------------------------
+Wed Aug 21 09:20:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.120
+  * layers: Add VK_KHR_uniform_buffer_standard_layout.
+  * layers: Split record/validation of Pipeline/Shaders.
+  * layers: Add accel structure tracking and validation.
+  * layers: Add validation for
+    VK_EXT_shader_demote_to_helper_invocation,
+    VK_EXT_texel_buffer_alignment,
+    VK_KHR_pipeline_executable_properties,
+    VK_EXT_line_rasterization, VkGeometryNV,
+    VkCommandBufferInheritanceInfo.
+  * layers: Added vu checks for imageless framebuffer.
+- Drop 0001-layers-Use-correct-apiversion-for-properties-check.patch
+
+-------------------------------------------------------------------
+Fri Jul 12 02:56:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-layers-Use-correct-apiversion-for-properties-check.patch
+  [boo#1140976]
+
+-------------------------------------------------------------------
+Fri Jun 28 08:07:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.112
+  * layers: Validate VK_NV_shader_subgroup_partitioned,
+    VK_NV_compute_shader_derivatives,
+    VK_NV_fragment_shader_barycentric,
+    VK_NV_shader_image_footprint
+  * corechecks: Add some BufferImageCopy VUs
+  * corechecks: Add VU checks for CUBE_COMPAT images
+  * chassis: Make chassis report device extensions
+  * layers: Add subgroup validation
+  * layers: Validate bind image and swapchain
+
+-------------------------------------------------------------------
+Tue Jun  4 10:22:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 1.1.107.g31
+  * Fix use-after-free bug for push descriptor sets.
+  * Add validation for VK_EXT_host_query_reset, QueryIndexedEXT,
+    VK_KHR_shader_float_controls, VK_EXT_ycbcr_image_arrays.
+  * Create khronos validation layer.
+
+-------------------------------------------------------------------
+Sun Mar 17 13:37:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.102
+  * Update various helper functions
+  * Fixed some unspecified unexpected errors
+  * layers: Fix null handle derefs on Destroy
+
+-------------------------------------------------------------------
+Tue Feb 19 09:37:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.100
+  * layers: Add VU check for sampled image descriptors
+
+-------------------------------------------------------------------
+Thu Jan 24 10:38:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.97.0
+  * layers: raytracing and descriptor indexing fixes
+  * layers: Add VO get function to chassis
+  * layers: Add bailout for CreateDevice validation
+  * layers: Move parameter validation to layer chassis
+  * layers: Added VK_NV_viewport_swizzle,
+    VK_KHR_depth_stencil_resolve
+  * layers: Support VK_EXT_memory_priority,
+    VK_EXT_buffer_device_address
+  * layers: Add checks for vtx_attrib_divisor extension
+
+-------------------------------------------------------------------
+Tue Dec 18 13:12:10 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 1.1.96
+  * Added VK_NV_fragment_coverage_to_color
+  * Add validation for VK_KHR_shader_float16_int8
+  * Add validation for VK_KHR_swapchain_mutable_format
+
+-------------------------------------------------------------------
+Fri Dec 14 23:27:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 1.1.95
+  * layers: Add stub functions for DebugUtils functions
+  * layers: Remove unique objects standalone layer
+  * layers: Add layer chassis dispatch generator
+
+-------------------------------------------------------------------
+Tue Dec  4 09:55:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 1.1.91 (899ae294)
+  * Support vulkan-headers-1.1.95
+  * layers: update AHB validation to v1.1.92 definitions
+
+-------------------------------------------------------------------
+Mon Nov 12 15:14:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Split vulkan SRPM -> vulkan-validationlayers SRPM following a
+  repository split upstream.
+- Update to new snapshot 1.1.91
+  * Add validation for VK_KHR_draw_indirect_count.
+  * Add core validation for VK_KHR_get_display_properties2.
+  * Validate descriptor required component type against
+    VkImageView format.
+  * Implement missing VU for VUID-VkCoarseSampleOrderCustomNV-
+    -sampleLocationCount.
+  * Add NVX_raytracing support to validation.
+
+-------------------------------------------------------------------
+Sat Aug 25 17:16:08 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 1.1.73
+  * layers: Removed obsolete (and duplicate) VUIDs
+  * layers: Make unique_objects ID map global
+  * layers: Add VUIDs for VK_KHR_incremental_present
+  * layers: Add canonical/unique ID to pipeline layout
+  * layers: Add support for StorageBuffer storage class
+  * loader: Add new core 1.1 entry points
+  * loader: Update loader for Vulkan 1.1
+  * vulkaninfo: Add core 1.1 extensions
+
+-------------------------------------------------------------------
+Fri Mar  9 20:19:15 UTC 2018 - crrodriguez@opensuse.org
+
+- Skip building tests that are neither packaged nor ran.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:49:50 UTC 2018 - crrodriguez@opensuse.org
+
+- vulkan-devel has missing dependencies, this causes further
+  confusion down the dependency chain, fix it by adding
+  the required X and wayland components
+
+-------------------------------------------------------------------
+Wed Mar  7 23:59:37 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 1.1.70
+  * Support for Vulkan 1.1 (Subgroup operations)
+
+-------------------------------------------------------------------
+Wed Feb  7 23:19:20 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 1.0.68
+  * layers: add image layout validation to vkCmdBlitImage()
+  * layers: Add VK_EXT_validation_cache implementation for shaders
+  * layers: Add layer metadata for EXT_validation_cache extension
+  * layers: Add descriptor limit checks to vkCreatePipelineLayout()
+  * layers: Create instance & device extension lists
+- Add no-git.diff
+
+-------------------------------------------------------------------
+Wed Jan 10 14:18:49 UTC 2018 - jengelh@inai.de
+
+- Drop ImageMagick build-time requirement
+
+-------------------------------------------------------------------
+Thu Nov 16 11:49:28 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 1.0.65
+  * The VK_EXT_global_priority extension extends the concept of
+    device-scope queue priorities to now be a system-wide scope.
+    The global/system-wide priority level takes priority over the
+    per-process queue priorities.
+  * New extension VK_KHR_bind_memory2: This extension allows
+    vkBindBufferMemory and vkBindImageMemory to support multiple
+    bindings to be performed at once while also being more
+    extensible.
+  * New extension VK_KHR_image_format_list: Provides a list of
+    all formats that can be used with a Vulkan image when it is
+    created.
+  * New extension VK_KHR_maintenance2: Adds in various changes
+    that were left out of Vulkan previously. These maintenance
+    updates allow implementations to express clipping behavior of
+    points, creating images with usage flags that may not be
+    supported for the base image's format, creating uncompressed
+    image views of compressed images, two new image layouts for
+    depth stencil images, and other minor changes.
+  * New extension VK_KHR_sampler_ycbcr_conversion: Support to
+    perform specified color space conversions during texture
+    sampling operations.
+- Drop 0001-cmake-GH1444-add-wayland-include-dir-to-cmake.patch
+  (included upstream)
+
+-------------------------------------------------------------------
+Sat Aug 12 07:32:07 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.57.0
+  * loader: Do not enumerate extensions from disabled implicit
+    layers
+  * layers:Handle ALL_*_BIT pipe stage barrier validation
+  * LVL: Add validation check for CreateImageView
+  * loader: Remove executable stack from libvulkan.so
+  * layers: Fix mismatched new[] / delete
+  * layers: Add new PV ranged enum validation function
+  * layers: Don't do bogus transitions in invalidateCommandBuffers
+
+
+-------------------------------------------------------------------
+Mon Aug  7 17:11:42 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.54
+  * Fix a few potential overruns
+  * Configurable fallback search paths
+  * Validate device features: imageCubeArray, dualSrcBlend,
+    multiDrawIndirect, depthClamp, depthBounds, alphaToOne,
+    samplerAnisotropy.
+  * Add compressed texture query utils
+  * Add feature checks for textureCompressionETC2,
+    textureCompressionASTC_LDR, textureCompressionBC,
+    sparseBinding device, sparseResidencyBuffer,
+    sparseResidencyAliased, depthBiasClamp.
+  * Remove deprecated KHX extension from OT/PV
+  * Support CapabilityGeometryShaderPassThroughNV and
+    CapabilitySampleMaskOverrideCoverage.
+  * Support the viewport_array2, shader_subgroup_ballot and
+    shader_subgroup_vote ext shader caps.
+  * Change size of X8_D24_UNORM_PACK32 and D32_SFLOAT_S8_UINT
+- Add 0001-cmake-GH1444-add-wayland-include-dir-to-cmake.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 15:06:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.41
+  * layers: Move image struct into cv_types header
+  * layers: Move CreateImage validation into core_val
+  * layers: Move DestroyImage code into buffer module
+  * layers: Move CreateRenderPass format check to PV
+  * layers: Rename misleading renderpass structure var
+  * layers:Move gfx pipe check to create time
+  * layers: Move image validation support to buffer_val
+  * layers: Add enable for NV_GLSL_SHADER extension
+- Add baselibs.conf [needed by libgtk-4-0]
+
+-------------------------------------------------------------------
+Mon Jan 30 19:48:33 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.39.1
+  * layers: Add tracking for VK_KHR_display extension in PV
+  * layers: Add null checks to RetireWorkOnQueue
+  * vulkaninfo: fix segfault when DISPLAY is not set
+  * layers: Complete support for VK_KHR_Display ext
+
+-------------------------------------------------------------------
+Mon Oct 31 22:42:42 UTC 2016 - jengelh@inai.de
+
+- Update to 1.0.32.g28
+* vkjson: Rename VkJsonAllProperties to VkJsonDevice
+* loader: Fix json output of escape chars
+* loader: Fix segfault in vulkaninfo
+* Add vulkan C++ header
+- Remove 0001-layers-Install-to-CMAKE_INSTALL_LIBDIR.patch,
+  0001-loader-Add-install-rule.patch,
+  0001-vkjson-don-t-clobber-cflags-or-you-ll-lose-fPIC.patch
+  (upstreamed).
+
+-------------------------------------------------------------------
+Mon Jun 13 12:27:45 UTC 2016 - jengelh@inai.de
+
+- Update to new snapshot 1.0.3.g5493
+* Added helpers: getSwapchainNode(), getSwapchainFromImage(),
+  getImageNode(), getImageViewData(), getSamplerNode(),
+  getBufferViewInfo(), getBufferNode().
+- Resolve build failure stemming from new glslang version
+- Add 0001-layers-Install-to-CMAKE_INSTALL_LIBDIR.patch,
+  0001-loader-Add-install-rule.patch,
+  0001-vkjson-don-t-clobber-cflags-or-you-ll-lose-fPIC.patch.
+  These were in a prior tarball made from a Fedora git,
+  but we since switched to the upstream git.
+
+-------------------------------------------------------------------
+Wed Feb 17 16:22:36 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 1.0.3.g19) for build.opensuse.org

@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93b2bbd4a417cb47649975da62b7d8fe</srcmd5>
+    <version>0.8.3</version>
+    <time>1513014980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554658</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11abab8ae71de75865eca52536d29563</srcmd5>
+    <version>0.8.4</version>
+    <time>1530304581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4
+  * Explicit dependency on python-tornado 4.5.3 -- Future versions
+    of pydle will use asyncio instead, hence no effort is being
+    made to support newer versions of Tornado.
+  * Normalize everything related to whois/whowas
+  * Fix typo where self.channels was using the self.users dict
+  * Fix reconnecting
+</comment>
+    <requestid>619655</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>72e5271300fd7fb6326c2b8627300c70</srcmd5>
+    <version>0.8.4</version>
+    <time>1545648106</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659581</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bef2fd98ce112686f1f26c5c80010ad</srcmd5>
+    <version>0.8.5</version>
+    <time>1545867005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5
+  * Python 3.7 support
+  * Removal of pydle.async entirely
+    - pydle.coroutine and pydle.Future are now just
+      forward-references to asyncio.coroutine and asyncio.Future
+</comment>
+    <requestid>661240</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2ce1dee23f62a2125a615e0370ce3400</srcmd5>
+    <version>0.9.1</version>
+    <time>1551216025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1
+  Breaking:
+  * pydle.async library removed in its entirety.
+    replaced by asyncio components where appropriate.
+  Major:
+  * Pydle now uses Asyncio as its async framework.
+    Tornado is no longer a dependency nor is it supported.
+  * All pydle event callbacks are proper coroutines,
+    and must be awaited.
+  * Minimum Python version increased to 3.5
+  Features:
+  * Python 3.7 support
+  * Added IRCv3.2 account-tag , message-tag echo_message and
+    invite-notify support.
+  * added IRCv3.3 message-tags support
+  * added SASL-External authentication
+  * raw irc messages are now logged at level logging.DEBUG
+  Fixes:
+  * Fixed various reconnection issues
+  * Fixed any tornado-related issues by removing the tornado
+    from the house.
+  * Pydle will once again connect to password-protected servers.
+  * Resolve deadlock issues relating to .whois and other blocking
+    IRC methods
+</comment>
+    <requestid>679036</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51b1f1af2b03869004302c93d1896722</srcmd5>
+    <version>0.9.2</version>
+    <time>1564994570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2
+  Bug fixes:
+  * Resolved some missing await calls in registration
+  * Resolved some issues in the CTCP implementation
+  * Resolved incompatibility with non-compliant hostmasks.</comment>
+    <requestid>720921</requestid>
+  </revision>
+</revisionlist>

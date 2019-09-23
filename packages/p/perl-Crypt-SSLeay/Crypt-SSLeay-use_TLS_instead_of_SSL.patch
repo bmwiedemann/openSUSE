@@ -1,0 +1,44 @@
+Index: Crypt-SSLeay-0.72/SSLeay.xs
+===================================================================
+--- Crypt-SSLeay-0.72.orig/SSLeay.xs	2014-04-24 00:36:24.000000000 +0200
++++ Crypt-SSLeay-0.72/SSLeay.xs	2017-11-13 14:41:30.924182704 +0100
+@@ -45,12 +45,7 @@ extern "C" {
+ }
+ #endif
+ 
+-
+-#if SSLEAY_VERSION_NUMBER >= 0x0900
+-#define CRYPT_SSL_CLIENT_METHOD SSLv3_client_method()
+-#else
+-#define CRYPT_SSL_CLIENT_METHOD SSLv2_client_method()
+-#endif
++#define CRYPT_SSL_CLIENT_METHOD SSLv23_client_method()
+ 
+ static void InfoCallback(const SSL *s,int where,int ret)
+     {
+@@ -145,23 +140,9 @@ SSL_CTX_new(packname, ssl_version)
+             RAND_seed(buf, CRYPT_SSLEAY_RAND_BUFSIZE);
+         }
+ 
+-        if(ssl_version == 23) {
+-            ctx = SSL_CTX_new(SSLv23_client_method());
+-        }
+-        else if(ssl_version == 3) {
+-            ctx = SSL_CTX_new(SSLv3_client_method());
+-        }
+-        else {
+-#ifndef OPENSSL_NO_SSL2
+-            /* v2 is the default */
+-            ctx = SSL_CTX_new(SSLv2_client_method());
+-#else
+-            /* v3 is the default */
+-            ctx = SSL_CTX_new(SSLv3_client_method());
+-#endif
+-        }
++        ctx = SSL_CTX_new(CRYPT_SSL_CLIENT_METHOD);
+ 
+-        SSL_CTX_set_options(ctx,SSL_OP_ALL|0);
++        SSL_CTX_set_options(ctx,SSL_OP_ALL | SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3);
+         SSL_CTX_set_default_verify_paths(ctx);
+         SSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
+         RETVAL = ctx;

@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:48:30 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Dec 13 07:56:02 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove installed tests from sitelib
+
+-------------------------------------------------------------------
+Tue Aug 15 20:28:37 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

@@ -1,0 +1,5 @@
+<package name="yast2-cio" project="openSUSE:Factory">
+  <title>YaST2 - cio</title>
+  <description>Management of Input/Ouput channels</description>
+  <devel project="YaST:Head" package="yast2-cio"/>
+</package>

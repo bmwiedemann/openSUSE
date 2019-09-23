@@ -1,0 +1,566 @@
+-------------------------------------------------------------------
+Fri Mar 29 09:07:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop pre-openSUSE 13.1 support.
+
+-------------------------------------------------------------------
+Wed Mar 27 17:35:19 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce scriptlet's hard dependency on systemd.
+- Combine %service_* calls to reduce generated boilerplate.
+- Request cflags from speech-dispatcher.pc.
+- Use a better Summary field.
+
+-------------------------------------------------------------------
+Sat Dec  2 10:41:38 UTC 2017 - dimstar@opensuse.org
+
+- Migrate orca plugin to python3: orca has been a python3
+  application since version 3.7, released in 2013:
+  + Add python3-base BuildRequires.
+  + Add sbl-orca-python3.patch: convert brlapi.py and
+    python/Makefile to python3.
+
+-------------------------------------------------------------------
+Fri Dec  9 13:22:43 UTC 2016 - fbui@suse.com
+
+- Drop (build) requirement on libsystemd-daemon
+
+  There's no usage of systemd libraries in this package however build
+  require the systemd rpm macros instead as they're used in the spec
+  file.
+
+-------------------------------------------------------------------
+Sat Jun 13 11:49:56 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clener
+- Apply sbl-sppkdev.patch
+- Update rcservice symlinks
+
+-------------------------------------------------------------------
+Wed Jun 10 07:48:22 UTC 2015 - mpluskal@suse.com
+
+- Update changelog to mention new patch (sbl-install_perms.patch)
+
+-------------------------------------------------------------------
+Fri May 15 14:02:26 UTC 2015 - lmuelle@suse.com
+
+- Use sppkdev instead of spkdev in the documentation too.
+  + sbl-sppkdev.patch
+- Add --nodaemon option to ExecStart of the brld.service and set Type=forking
+  of the sbl.service both in the service section; (bsc#931036).
+
+-------------------------------------------------------------------
+Wed May 13 23:19:16 UTC 2015 - lmuelle@suse.com
+
+- Install missing brld init script and rc sym link.
+  + sbl-init-scripts.patch
+- Conditionally patch LIBDIR location to satisfy bi-arch requirements.
+  + sbl-libdir.patch
+- Create git7a75bc29 snaptshot tar ball.
+
+-------------------------------------------------------------------
+Thu Sep 11 13:53:54 CEST 2014 - ro@suse.de
+
+- install binaries with mode 0755 not 0744 (bnc#851625)
+  * sbl-install_perms.patch
+
+-------------------------------------------------------------------
+Fri Sep  5 14:46:52 CEST 2014 - ro@suse.de
+
+- add systemd support (bnc#865857)
+
+-------------------------------------------------------------------
+Thu Aug 14 08:24:34 UTC 2014 - tyang@suse.com
+
+- Get rid of files using the old SUSE spelling (bnc#889007).
+
+-------------------------------------------------------------------
+Fri May 31 08:32:58 UTC 2013 - mhrusecky@suse.com
+
+- adjusted include path and claimed orca dir to fix build
+
+-------------------------------------------------------------------
+Sun Mar 24 16:01:37 UTC 2013 - schwab@linux-m68k.org
+
+- sbl-nostrip.patch: don't strip binaries
+
+-------------------------------------------------------------------
+Fri Mar  1 06:38:43 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Thu Dec  8 11:11:52 UTC 2011 - coolo@suse.com
+
+- the license seems to be GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Oct  7 20:18:16 UTC 2009 - aj@suse.de
+
+- Fix build on x86-64.
+- Use proper python macros.
+
+--------------------------------------------------------------------
+Tue Sep 29 12:44:43 CEST 2009 - marco@suse.de
+
+- updated to correct changelog
+
+--------------------------------------------------------------------
+Thu Sep 3 10:08:01 CEST 2009 - marco@suse.de
+
+- fixed problem with alvausb
+
+--------------------------------------------------------------------
+Wed Aug 19 00:59:02 CEST 2009 - marco@suse.de
+
+- sbl.spec - added correct python path
+
+--------------------------------------------------------------------
+Tue Aug 18 23:20:12 CEST 2009 - marco@suse.de
+
+- updated to version 3.5.0
+- added sbl-orca package for orca braille support
+  with brld
+
+-------------------------------------------------------------------
+Fri Nov 28 16:39:07 CET 2008 - ro@suse.de
+
+- use -fPIC also in CFLAGS to fix build on x86_64
+
+-------------------------------------------------------------------
+Tue Nov 18 13:36:30 CET 2008 - marco@suse.de
+
+- added new orca settings
+- fixed the brlwav driver problem
+
+-------------------------------------------------------------------
+Thu Oct 23 06:52:04 CEST 2008 - marco@suse.de
+
+- fixed an error in the a11y init script (braille=1 not set) bug#437723
+- using -z instead of comparing the strings
+
+-------------------------------------------------------------------
+Mon Oct 20 16:39:35 CEST 2008 - marco@suse.de
+
+- fixed possible buffer overflow in brld
+- use localhost only in brld
+- removed mknod from brld/sbl init scripts
+
+-------------------------------------------------------------------
+Mon Oct 13 19:45:48 CEST 2008 - marco@suse.de
+
+- changed default orca settings
+- default synth is espeak
+
+-------------------------------------------------------------------
+Wed Oct  8 17:11:00 CEST 2008 - marco@suse.de
+
+-  added a11y script temporarily - will make an own package "a11y" later
+
+-------------------------------------------------------------------
+Mon Sep 29 14:01:50 CEST 2008 - ro@suse.de
+
+- drop manual requires for libusb
+
+-------------------------------------------------------------------
+Mon Sep 29 14:00:24 CEST 2008 - marco@suse.de
+
+- fix typo in brld.c
+
+--------------------------------------------------------------------
+Fri Sep 26 17:00:57 CEST 2008 - marco@suse.de
+
+- change suse-init-scripts brld and sbl
+- brld will only start if brlname is not none
+- sbl will only start if brlname is not none and/or spkname is not none
+
+--------------------------------------------------------------------
+Thu Sep 11 04:29:07 CEST 2008 - marco@suse.de
+
+- added further speech-cursor functions
+  spkwordlft, spkwordrgt, spkstop
+- spkcsrxy added TTY number
+- brld and drivers
+  added experimental USB support
+- added experimental alvausb support for alva sat540 (brlname=alvausb)
+- added some errorhandling (brld)
+- added handling for unknown characters for the iconv stuff (brld)
+
+--------------------------------------------------------------------
+Thu Aug 14 09:22:32 CEST 2008 - marco@suse.de
+
+- removed orca_sbl
+- added orca-patch (orca-brld-patch.diff
+
+--------------------------------------------------------------------
+Thu Aug 14 09:01:16 CEST 2008 - marco@suse.de
+
+- added speech-cursor
+  now you can navigate over the screen with a speech-cursor
+  there are three additional functions
+  spkcsrlft, spkcsrrgt, spkxy
+- fixed possible segfault in ht-driver (thanks to Klaus Knopper)
+- added the new functions to the keymaps
+- brld - added attribute-underline for orca
+- some code cleanup
+- brld - fixed a possible iconv problem (orca)
+
+--------------------------------------------------------------------
+Sat Apr 26 14:32:40 CEST 2008 - marco@suse.de
+
+- added brl-driver patch and brld patch from Klaus Knopper
+  the patch added the missing init stuff for brl.x and brl.y
+  it also removes some mutex lock/unlock in brld
+- improved the key-handling for some fhp-serial  displays
+
+--------------------------------------------------------------------
+Sun Apr 6 22:55:08 CEST 2008 - marco@suse.de
+
+- added some checks to the brl-drivers
+  check the return value of "write" to detect a disconnect
+- new init-sequence for fhp el-usb-displays
+- Fhp_usb/Fhp driver - use "select" in readbrl to wait for incoming data
+- fixed a possible memory-lack in Fhp_usb and Fhp
+- clear and reload the keymaps after sbl has reconnected to brld
+- some code cleanup in sbl
+- added some brl_fd checks to brld
+- brld - added mutexes to brl_ok to protect brl_dev and keybuf
+
+--------------------------------------------------------------------
+Mon Mar 24 21:30:00 CET 2008 - Klaus Knopper knoppix@knopper.net
+
+- make brld start with a configured but disconnected braille device
+- auto-reconnect in brld
+- change device drivers in order to always get geometry regardless
+  of device open
+
+--------------------------------------------------------------------
+Mon Mar 17 10:25:08 CET 2008 - marco@suse.de
+
+- added suppot for kbdsniffd to sbl
+- added config variables to suse-blinux.conf
+- kbd_key and kbd_port
+- removed config variable brld_host (using only localhost)
+- keymaps - only kbdsniffon1 is used to enable sniffing mode
+- kbdsniffon2 and kbdsniffoff are not longer used
+- fixed a possilbe bug during brld reconnect
+- brld is now listening only on localhost not on all devices
+- using libbrld.so.1 instead of libbrld.so
+- using libspeechd.so.2 instead of libspeechd.so
+- sbl does not longer require brld at start-time
+
+--------------------------------------------------------------------
+Tue Feb 19 14:19:57 CET 2008 - marco@suse.de
+
+- fixed a possible segfault in brld
+- use select instead of usleep to wait for a brlkey-event in the brl-thread
+  of brld
+- changed behavior of event_mode in brld
+  to avoid timeout problems with orca
+- sigpipe is now ignored in sbl to avoid a crash if sbl uses speechd and speechd crashed
+
+--------------------------------------------------------------------
+Tue Jan 29 17:10:13 CET 2008 - marco@suse.de
+
+- added "NOCONNECT" handlig in libbrld
+- modified/updated the brlstar80 keymap
+- added reconnect in sbl if libbrld reports "NOCONNECT"
+- renamed /etc/init.d/suse-blinux to /etc/init.d/sbl
+
+--------------------------------------------------------------------
+Sat Nov 3 21:32:03 CET 2007 - marco@suse.de
+
+- improved process-detection
+- the foreground-process is now detected even if the
+- current process has not the highest PID
+
+--------------------------------------------------------------------
+Wed Oct 24 13:48:45 CEST 2007 - marco@suse.de
+
+- added support for handytech evolution 88 and 64
+
+--------------------------------------------------------------------
+Mon Jul 23 12:40:32 CEST 2007 - marco@suse.de
+
+- changed default value for brlname to none in suse-blinux.conf
+- fixed build-problems for x86_64
+  do make LIBINSTPATH=/usr/lib64 for x86_64 architectures
+
+--------------------------------------------------------------------
+Tue Jul 17 15:49:24 CEST 2007 - marco@suse.de
+
+- first release of brld
+
+--------------------------------------------------------------------
+Sat Jul 14 21:24:35 CEST 2007 - marco@suse.de
+
+- version 3.0
+- sbl now connects to brld (part of the sbl package)
+- added speechdispatcher support (thanks to Halim Sahin)
+- added some patches to the HT driver to improve
+  the handling of disconnects if Bt is used via rfcomm (thanks to Klaus  Knopper)
+- if sbl is used with the kbd_sniffer-kernel-patch keyboard.map is used by default
+  keyboardsettings in <brlname>.map will overwrite the settings in
+  keyboard.map (thanks to Klaus Knopper)
+- impoved the fhp_usb driver - handling of incoming keyevents is now more
+  stable
+
+-------------------------------------------------------------------
+Fri Mar  2 13:06:32 CET 2007 - marco@suse.de
+
+- added patch from ssommer@suse.de
+- changed screen device from /dev/vcsa0 to /dev/vcsa
+
+-------------------------------------------------------------------
+Mon Jan 22 12:19:49 CET 2007 - ssommer@suse.de
+
+- fixed invalid operation error and deobfuscated the code a bit
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 20:16:26 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+- Always use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Jun 17 14:15:39 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Sat May 28 08:46:03 CEST 2005 - olh@suse.de
+
+- cast to avoid build failure
+
+-------------------------------------------------------------------
+Wed Jun 16 01:18:01 CEST 2004 - ro@suse.de
+
+- cast to avoid gcc warning
+
+-------------------------------------------------------------------
+Fri Mar 26 08:56:11 CET 2004 - kukuk@suse.de
+
+- don't apply removed patch
+- build as user
+
+-------------------------------------------------------------------
+Wed Mar 24 12:49:20 CET 2004 - marco@suse.de
+
+- added portability patch from schwab@suse.de
+
+-------------------------------------------------------------------
+Wed Mar 17 10:42:33 CET 2004 - schwab@suse.de
+
+- Remove bogus use of sa_restorer.
+- Fix portability bugs.
+
+-------------------------------------------------------------------
+Mon Mar 15 19:48:32 CET 2004 - marco@suse.de
+
+- fixed ia64 errors in softspeech_server.c
+
+-------------------------------------------------------------------
+Mon Mar 15 10:36:44 CET 2004 - marco@suse.de
+
+- fixed FB bug resolutions > 800x600 now OK
+- disabled mbrdico support for this version (2.2)
+- added new softspeech-lib
+
+-------------------------------------------------------------------
+Tue Mar  9 17:40:32 CET 2004 - marco@suse.de
+
+- added brlstar80 support
+- improved softspeech support
+- improve speech-only navigation (kernel patch needed)
+- added brllino support (experimental)
+
+-------------------------------------------------------------------
+Sun Mar  7 23:00:30 CET 2004 - ro@suse.de
+
+- create pipes with mode 644
+
+-------------------------------------------------------------------
+Mon Aug 11 13:41:32 CEST 2003 - marco@suse.de
+
+- add power-braille-support (experimental)
+- add mbrdico support in softspeech_server
+
+-------------------------------------------------------------------
+Thu Jun  5 14:15:11 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+- move rc* link to /usr/sbin
+- replaced invalid rpath
+
+-------------------------------------------------------------------
+Thu Sep 12 23:44:23 CEST 2002 - marco@suse.de
+
+- removed lib-mn and lib-blazi
+
+-------------------------------------------------------------------
+Tue Sep 10 17:17:37 CEST 2002 - marco@suse.de
+
+- added profiles y2base and y2menu
+- removed include of rc.config in suse-blinux script
+
+-------------------------------------------------------------------
+Tue Aug 20 11:11:56 CEST 2002 - ro@suse.de
+
+- added prereq (#17984)
+
+-------------------------------------------------------------------
+Thu Jul 25 17:54:38 CEST 2002 - marco@suse.de
+
+- add brlwave features
+- fixed bug in startscript
+- modified spkfilter for multi-language-support
+
+-------------------------------------------------------------------
+Fri Jun 14 00:07:15 CEST 2002 - ro@suse.de
+
+- always use macros when calling insserv
+
+-------------------------------------------------------------------
+Thu Mar 21 15:42:28 MET 2002 - mmj@suse.de
+
+- Fixed typo (Bug #14709)
+
+-------------------------------------------------------------------
+Sun Feb 10 19:49:52 CET 2002 - marco@suse.de
+
+- add brlstar40-support
+
+-------------------------------------------------------------------
+Thu Jan 31 15:03:19 CET 2002 - marco@suse.de
+
+- cleaned up the profile and keymap directory
+- fixed the lnrgt bug
+
+-------------------------------------------------------------------
+Tue Jan 29 19:15:38 CET 2002 - marco@suse.de
+
+- add patch from schwab@suse.de
+- add string-compression for speech
+- add a new handling of screen-memory (for frame-buffer)
+
+-------------------------------------------------------------------
+Wed Jan 23 16:57:11 CET 2002 - schwab@suse.de
+
+- Fix to compile.
+
+-------------------------------------------------------------------
+Tue Jan 15 09:47:21 CET 2002 - marco@suse.de
+
+- moved fifos from /tmp to /var/run
+- using a new version of softspeech.so
+
+-------------------------------------------------------------------
+Mon Sep 17 14:31:15 CEST 2001 - marco@suse.de
+
+- fixed bug in startup-script (status)
+
+-------------------------------------------------------------------
+Thu Sep  6 16:44:30 CEST 2001 - marco@suse.de
+
+- add check before using fifos
+
+-------------------------------------------------------------------
+Wed Aug 15 15:32:00 CEST 2001 - marco@suse.de
+
+- add patch from ro@suse.de (use g++ instead of gcc for linking)
+
+-------------------------------------------------------------------
+Mon Aug 13 19:57:03 CEST 2001 - marco@suse.de
+
+- add patch from schwab@suse.de
+- add new documentation
+
+-------------------------------------------------------------------
+Mon Aug 13 17:20:36 CEST 2001 - schwab@suse.de
+
+- Remove references to sa_restorer.
+- Don't call linker directly.
+
+-------------------------------------------------------------------
+Mon Aug 13 14:53:28 CEST 2001 - marco@suse.de
+
+- add combibraille-support (25,40,80)
+- fix tiny bug
+- fix handytech bug (statuscells)
+- add debug functions
+- add kbd_sniff-support using kernel-patch 2.2.x
+- improve softspeech-interface
+- modify yast2-profile
+- fix start-script suse-blinux
+- insert the changes from schwab@suse.de
+- add baum vario support
+
+-------------------------------------------------------------------
+Sun Jun 17 20:17:12 CEST 2001 - schwab@suse.de
+
+- Fix buiding of shared libraries.
+- Fix missing declarations.
+- Remove useless inline.
+
+-------------------------------------------------------------------
+Sat May  5 23:26:45 CEST 2001 - schwab@suse.de
+
+- Fix building on non ia32 platforms.
+
+-------------------------------------------------------------------
+Mon Apr 30 14:46:41 CEST 2001 - marco@suse.de
+
+- update to 1.2
+
+-------------------------------------------------------------------
+Tue Dec 12 17:50:13 CET 2000 - marco@suse.de
+
+- integrated patches
+
+-------------------------------------------------------------------
+Thu Nov 30 00:05:47 CET 2000 - ro@suse.de
+
+- fixed start-script to install in /etc/init.d
+- use doc macro in specfile
+
+-------------------------------------------------------------------
+Wed Nov 29 23:58:37 CET 2000 - ro@suse.de
+
+- re-added patch from schwab@suse.de
+
+-------------------------------------------------------------------
+Sat Nov 18 18:23:17 CET 2000 - marco@suse.de
+
+- update to 1.1
+
+-------------------------------------------------------------------
+Thu Jun 29 11:04:06 CEST 2000 - marco@suse.de
+
+- suse-blinux.conf - profile2 is now y2bignfat (for yast2 textmode inst)
+: keymaps - prof1,prof2
+
+-------------------------------------------------------------------
+Wed Jun 28 19:28:18 CEST 2000 - marco@suse.de
+
+- change yast2-profile (frame-buffer)
+
+-------------------------------------------------------------------
+Wed Jun 28 08:47:15 CEST 2000 - marco@suse.de
+
+- bug-fix in profile-directory
+
+-------------------------------------------------------------------
+Wed Jun 28 00:07:21 CEST 2000 - marco@suse.de
+
+- new profile for yast2
+
+-------------------------------------------------------------------
+Tue Jun 27 16:47:54 CEST 2000 - marco@suse.de
+
+- dynamic linking
+- build shared-libs

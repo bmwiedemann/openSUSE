@@ -1,0 +1,34 @@
+From b4231d69028adc8123801a7552b40a15ea928d1b Mon Sep 17 00:00:00 2001
+From: Aaron Plattner <aplattner@nvidia.com>
+Date: Tue, 21 May 2019 10:50:42 -0700
+Subject: [PATCH] GLX: Set GlxServerExports::{major,minor}Version
+
+Commit 56c0a71fdd94a008e5d746261f70a713c4767f93 incremented the
+GLXSERVER_VENDOR_ABI_MINOR_VERSION define, but this define was not actually
+being used to set glxServer.minorVersion.
+
+Update the initializer for glxServer to use the correct version numbers.
+
+Signed-off-by: Aaron Plattner <aplattner@nvidia.com>
+---
+ glx/vndext.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/glx/vndext.c b/glx/vndext.c
+index 582e60b6e..0513733b6 100644
+--- a/glx/vndext.c
++++ b/glx/vndext.c
+@@ -304,8 +304,8 @@ GlxFreeServerImports(GlxServerImports *imports)
+ }
+ 
+ _X_EXPORT const GlxServerExports glxServer = {
+-    .majorVersion = 0,
+-    .minorVersion = 0,
++    .majorVersion = GLXSERVER_VENDOR_ABI_MAJOR_VERSION,
++    .minorVersion = GLXSERVER_VENDOR_ABI_MINOR_VERSION,
+ 
+     .extensionInitCallback = &vndInitCallbackListPtr,
+ 
+-- 
+2.16.4
+

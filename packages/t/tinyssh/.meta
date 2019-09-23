@@ -1,0 +1,5 @@
+<package name="tinyssh" project="openSUSE:Factory">
+  <title>tinyssh</title>
+  <description>A minimalistic SSH server which implements only a subset of SSHv2 features</description>
+  <devel project="network" package="tinyssh"/>
+</package>

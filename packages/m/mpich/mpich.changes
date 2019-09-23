@@ -1,0 +1,438 @@
+-------------------------------------------------------------------
+Fri May  3 09:40:25 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 3.3
+  - See CHANGES for a list of changes
+
+-------------------------------------------------------------------
+Thu Mar 21 07:20:25 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Add patch to remove obsolete GCC check (bnc#1129421). It also patches
+  autogen.sh to get the autotools working in SLE12SP4.
+  * 0001-Drop-GCC-check.patch
+- Force to re-run autotools to generate properly the files after 
+  patching src/binding/cxx/buildiface 
+
+-------------------------------------------------------------------
+Sun Nov 18 14:20:30 UTC 2018 - eich@suse.com
+
+- Add macro _hpc_mpich_modules for modules support (bsc#1116458).
+
+-------------------------------------------------------------------
+Mon Sep 10 12:14:13 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Remove bashism in postun scriptlet
+
+-------------------------------------------------------------------
+Wed Sep  5 06:53:58 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Fix handling of mpi-selector during updates (bsc#1098653)
+
+-------------------------------------------------------------------
+Sun Aug 19 09:20:19 UTC 2018 - eich@suse.com
+
+- macros.hpc-mpich:
+  replace %%compiler_family by %%hpc_compiler_family
+
+-------------------------------------------------------------------
+Sun Apr 22 11:14:28 UTC 2018 - eich@suse.com
+
+- Remove 'BuildRequires: Modules' for HPC builds: it conflicts
+  with lmod (boo#1089970).
+
+-------------------------------------------------------------------
+Fri Feb  9 14:16:30 UTC 2018 - cgoll@suse.com
+
+- Fix summary in module files (bnc#1080259)
+
+-------------------------------------------------------------------
+Tue Jan 30 20:05:19 UTC 2018 - eich@suse.com
+
+- Use macro in mpivars.(c)sh to be independent of changes to the module
+  setup for the compiler (boo#1078364).
+
+-------------------------------------------------------------------
+Fri Jan 19 08:39:00 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to mpich 3.2.1
+  - Bug fixes
+  - No release notes available
+
+-------------------------------------------------------------------
+Fri Jan  5 18:37:08 UTC 2018 - eich@suse.com
+
+- Add gcc7 as additional compiler flavor for HPC on SLES.
+- Fix library package requires - use HPC macro (boo#1074890).
+- Fix mpich HPC installation path in spec file.
+- Fix hpc macros: add %mpich_requires.
+
+-------------------------------------------------------------------
+Thu Oct 26 09:21:56 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add HPC specific build targets using environment modules (Fate#323977).
+
+-------------------------------------------------------------------
+Tue Sep 12 09:22:39 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Drop unnecessary dependency to xorg-x11-devel
+
+-------------------------------------------------------------------
+Thu Jul 13 14:59:53 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add LD_LIBRARY_PATH to mpivars.sh and mpivars.csh
+
+-------------------------------------------------------------------
+Thu Jul 13 07:44:46 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Disable rpath in pkgconfig files
+
+-------------------------------------------------------------------
+Wed Jul  5 12:42:06 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Register mpich package to mpi-selector
+- Remove redondant configure options already passed by %configure
+
+-------------------------------------------------------------------
+Mon Jul  3 08:38:32 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Fix compilation for aarch64
+- Build multiple flavour of mpich (psm, psm2, tessuite)
+- Update to mpich 3.2
+  * see CHANGES file for all details, some pertinent changes are:
+    - Added support for MPI-3.1 features including nonblocking collective I/O,
+      address manipulation routines, thread-safety for MPI initialization,
+      pre-init functionality, and new MPI_T routines to look up variables
+      by name.
+    - Fortran 2008 bindings are enabled by default and fully supported.
+    - Completely revamped RMA infrastructure including several
+      scalability improvements, performance improvements, and bug fixes.
+    - Added experimental support for Open Fabrics Interfaces (OFI) version 1.0.0.
+    https://github.com/ofiwg/libfabric (thanks to Intel for code contribution)
+
+
+-------------------------------------------------------------------
+Thu Jan  8 10:10:48 UTC 2015 - kkhere.geo@gmail.com
+
+- Update to 3.1.3
+  * see CHANGES file for all details, some pertinent changes are:
+    - [3.1.2] MPI-3 support for Blue Gene/Q and ppc64le support.
+    - [3.1.2] Fixes and testcases for Fortran 2008 bindings.
+    - [3.1.1] Removal of the mpd process manager.
+    - [3.1] MPICH now supports operations on very large datatypes (those that
+      describe more than 32 bits of data).
+
+-------------------------------------------------------------------
+Fri Oct  4 11:28:21 UTC 2013 - mvyskocil@suse.com
+
+- Update to 3.0.4
+  * too many changes to list, see CHANGES file
+- Dropped pointless patches:
+  * alog-bufferoverflow.patch
+  * gcc4.dif
+  * gfortran.patch
+  * mpeinstall.patch
+  * mpich-1.2.6.dif
+  * mpich-1.2.6_implicit_declarations.diff
+  * mpich-1.2.6-limits.patch
+  * mpich-1.2.7_bsendutil2.c_uninitialized_variables.patch
+  * mpich-1.2.7p1-iostream.dif
+  * mpich-fix_headers.diff
+  * mpich-hostent.patch
+  * mpich-mpiman.patch
+- Add mpich-modules.patch (from Fedora)
+- Add package autoload installs mpich's profiles
+- Moved documentation to doc subpackage
+- Call make check during build
+
+-------------------------------------------------------------------
+Mon Mar  5 07:57:10 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Permissive
+  Use a license from http://is.gd/CIdCM7 - if there is no corresponding
+  entry on spdx.org/licenses use the proprietary SUSE- prefix until the
+  license is accepted upstream
+
+-------------------------------------------------------------------
+Wed Nov 23 15:16:23 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Wed Nov 23 09:28:55 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov 24 02:07:18 CET 2010 - ro@suse.de
+
+- compress manpages ourselves
+  (Check is gone and brp-compress does not look under /opt) 
+
+-------------------------------------------------------------------
+Thu Mar  4 13:55:05 UTC 2010 - coolo@novell.com
+
+- extend bufferoverflow patch to fix also clog
+
+-------------------------------------------------------------------
+Fri Jan 22 11:31:31 UTC 2010 - coolo@novell.com
+
+- use gnu extensions to fix implicit declarations
+
+-------------------------------------------------------------------
+Fri Jul 31 10:40:14 CEST 2009 - aj@suse.de
+
+- Cleanup some rpmlint warnings in spec file.
+
+-------------------------------------------------------------------
+Fri Jul 31 09:44:23 CEST 2009 - aj@suse.de
+
+- Fix compilation with current glibc (mpich-hostent.patch)
+
+-------------------------------------------------------------------
+Tue Jan 29 21:08:01 CET 2008 - aj@suse.de
+
+- Fix c++ compilation.
+
+-------------------------------------------------------------------
+Thu May 24 10:44:39 CEST 2007 - stbinner@suse.de
+
+- add missing %run_ldconfig calls
+- use %fdupes
+
+-------------------------------------------------------------------
+Sat Mar 31 15:18:32 CEST 2007 - aj@suse.de
+
+- Remove unnneeded BuildRequires.
+
+-------------------------------------------------------------------
+Wed Mar  8 04:56:28 CET 2006 - mrueckert@suse.de
+
+- move the man pages for the compilers into the devel package
+  aswell (#132558)
+
+-------------------------------------------------------------------
+Fri Jan 27 02:13:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 15:02:44 CET 2006 - rguenther@suse.de
+
+- make configury work with gfortran.
+- re-enable fortran support and update packaged files.
+
+-------------------------------------------------------------------
+Mon Jan 16 19:29:36 CET 2006 - mrueckert@suse.de
+
+- update to version 1.2.7p1
+- added mpich-1.2.7_bsendutil2.c_uninitialized_variables.patch
+
+-------------------------------------------------------------------
+Wed Dec 21 01:43:45 CET 2005 - ro@suse.de
+
+- addded library .so symlinks to filelist 
+
+-------------------------------------------------------------------
+Mon Sep 19 17:42:16 CEST 2005 - mrueckert@suse.de
+
+- Fixed compiler warnings about implicit declarations.
+- fixed patches to apply cleanly against 1.2.7
+
+-------------------------------------------------------------------
+Fri Aug 19 14:57:42 CEST 2005 - mrueckert@suse.de
+
+- mpiman now defaults to "man" instead of "xman"
+  now it works without passing any parameter too.
+
+-------------------------------------------------------------------
+Mon Jul  4 15:11:23 CEST 2005 - mrueckert@suse.de
+
+- Updated to version 1.2.7
+- Added small patch against a buffer overflow in the log handler.
+- Compile with -fno-strict-aliasing
+- Use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Sun Apr 24 10:12:29 CEST 2005 - aj@suse.de
+
+- Compile with GCC4, disable g77.
+
+-------------------------------------------------------------------
+Mon Aug 16 01:41:04 CEST 2004 - nashif@suse.de
+
+- Update to 1.2.6
+
+-------------------------------------------------------------------
+Sat Jan 10 11:21:25 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Jan  5 06:31:23 CET 2004 - nashif@suse.de
+
+- update to 1.5.2.2
+- fixed bug #33381:  unnecessary s bit on mpdcon
+
+-------------------------------------------------------------------
+Fri Jun 13 11:20:31 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Thu May 29 01:23:37 CEST 2003 - nashif@suse.de
+
+- Compile ch_p4mpd in addition to default ch_p4
+- Reworked file list
+
+-------------------------------------------------------------------
+Thu Jan  9 00:09:43 CET 2003 - nashif@suse.de
+
+- Update to 1.2.5
+
+-------------------------------------------------------------------
+Wed Nov 20 14:47:22 CET 2002 - ro@suse.de
+
+- use java2
+
+-------------------------------------------------------------------
+Sun Aug  4 19:34:17 CEST 2002 - nashif@suse.de
+
+- Update to 1.2.4
+- Move to /opt to avoid path problems with lib64
+- re-added module file 
+
+-------------------------------------------------------------------
+Mon Jun 24 00:40:41 CEST 2002 - ro@suse.de
+
+- fix permissions for doc directories 
+
+-------------------------------------------------------------------
+Tue Jun 18 14:43:00 MEST 2002 - mls@suse.de
+
+- delete bogus config.* files in examples directory
+
+-------------------------------------------------------------------
+Thu May 16 17:24:07 CEST 2002 - meissner@suse.de
+
+- Another fix for lib64 (or we include %buildroot paths in mpicc)
+
+-------------------------------------------------------------------
+Tue May 14 00:20:10 CEST 2002 - ro@suse.de
+
+- fix for lib64 
+
+-------------------------------------------------------------------
+Sat Feb  9 20:51:46 CET 2002 - nashif@suse.de
+
+- -doc provides and obsoletes -manpages
+
+-------------------------------------------------------------------
+Thu Feb  7 05:46:52 PST 2002 - nashif@suse.de
+
+- Use RPM_BUILD_ROOT variable instead of actual value
+
+-------------------------------------------------------------------
+Sat Feb  2 18:59:54 CET 2002 - nashif@suse.de
+
+- Removed rpm_build_root references from scripts
+
+-------------------------------------------------------------------
+Fri Feb  1 17:47:34 CET 2002 - nashif@suse.de
+
+- Update to version 1.2.3
+- splitted package to devel and doc
+
+-------------------------------------------------------------------
+Thu Apr 12 16:16:28 CEST 2001 - nashif@suse.de
+
+- Applied cummulative patches upto bug #5906
+
+-------------------------------------------------------------------
+Wed Mar  7 22:32:31 CET 2001 - nashif@suse.de
+
+- Fixed order of patches in spec file 
+- Fixed script in spec to link binaries in /usr/bin
+
+-------------------------------------------------------------------
+Tue Mar  6 22:02:15 MET 2001 - nashif@suse.de
+
+- Update with latest patches (patch.all)
+- removed all mpi* from /usr/bin (Conflicts with other MPIs)
+- Added mpich module configuration file for (module load mpich), which
+  requires environment-modules package.
+- Fixed shared lib path in mpif77,90
+
+-------------------------------------------------------------------
+Tue Mar  6 11:04:31 CET 2001 - schwab@suse.de
+
+- Build with --enable-sharedlib to get something that can be linked
+  into a shared library.
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Sat Feb 17 20:32:16 CET 2001 - nashif@suse.de
+
+- Fixed va_arg arguments
+- Update to latest patchlevel
+
+-------------------------------------------------------------------
+Fri Nov 17 18:09:04 MET 2000 - nashif@suse.de
+
+- Added mpe support
+
+-------------------------------------------------------------------
+Thu Nov 16 05:34:21 MET 2000 - nashif@suse.de
+
+- Applied latest cummulative patch
+- Changed sub-package name: mpichman -> mpich-manpages
+
+-------------------------------------------------------------------
+Sun Oct 29 20:15:49 MET 2000 - nashif@suse.de
+
+- Update to version 1.2.1
+
+-------------------------------------------------------------------
+Fri Mar 31 10:58:14 CEST 2000 - nadvornik@suse.cz
+
+- removed directories owned by aaa_dir
+
+-------------------------------------------------------------------
+Tue Jan 25 02:25:03 CET 2000 - nashif@suse.de
+
+- Applied patches 4992 and 4997
+
+-------------------------------------------------------------------
+Mon Jan 17 08:27:48 CET 2000 - nashif@suse.de
+
+- Updated to 1.2.0
+- moved manpages to /usr/share
+
+-------------------------------------------------------------------
+Sun Nov  7 18:00:23 CET 1999 - nashif@suse.de
+
+-   Organised spec file
+-   fixed spec file
+
+-------------------------------------------------------------------
+Thu Oct  7 11:31:19 CEST 1999 - nashif@suse.de
+
+-   Minor link fixes and directory reloacation
+
+-------------------------------------------------------------------
+Thu Sep 30 17:33:44 CEST 1999 - nashif@suse.de
+
+-  Added mpichman: a new subpackage for the manual pages to avoid 
+   conflict with LAM
+-  moved configuration files to /etc/mpich
+-  Now it should work side by side with LAM
+
+-------------------------------------------------------------------
+Tue Sep 28 12:29:08 CEST 1999 - nashif@suse.de
+
+-  Removed MPE from package: using old tk
+
+-------------------------------------------------------------------
+Mon Sep 27 17:56:35 CEST 1999 - nashif@suse.de
+
+-  MPICH - Message Passing Interface Implementation 1.1.2
+

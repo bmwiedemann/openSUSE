@@ -1,0 +1,11 @@
+--- server/Imakefile
++++ server/Imakefile
+@@ -6,7 +6,7 @@
+ #ifdef __EMX__
+          INSTFLAGS = $(INSTUGIDFLAGS)
+ #else
+-         INSTFLAGS = -s $(INSTUGIDFLAGS)
++         INSTFLAGS = $(INSTUGIDFLAGS)
+ #endif
+            DEFINES = $(CANNASERVER_DEFINES) $(SIGNAL_DEFINES) ConnectionFlags
+           INCLUDES = -I$(CANNAROOT)/include

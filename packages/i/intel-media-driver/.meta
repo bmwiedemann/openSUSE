@@ -1,0 +1,5 @@
+<package name="intel-media-driver" project="openSUSE:Factory">
+  <title>intel media driver</title>
+  <description></description>
+  <devel project="X11:XOrg" package="intel-media-driver"/>
+</package>

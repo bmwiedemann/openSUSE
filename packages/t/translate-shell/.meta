@@ -1,0 +1,6 @@
+<package name="translate-shell" project="openSUSE:Factory">
+  <title>Google Translate to serve as a command-line tool</title>
+  <description>Translate Shell is a command-line translator powered by Google Translate.
+It gives you easy access to Google Translate in your terminal.</description>
+  <devel project="network" package="translate-shell"/>
+</package>

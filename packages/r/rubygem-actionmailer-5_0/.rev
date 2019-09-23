@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b4d5e2baa66f57761f5ee305ef3ade87</srcmd5>
+    <version>5.0.0</version>
+    <time>1469080543</time>
+    <user>dimstar_suse</user>
+    <comment>rails 5.0</comment>
+    <requestid>406304</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>939a525efb86b8494309248d2d3ca07f</srcmd5>
+    <version>5.0.0.1</version>
+    <time>1472111683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418896</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9c6d1c7a92ec0e32d756653810c6bbe</srcmd5>
+    <version>5.0.1</version>
+    <time>1483048081</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447258</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7535412558e5480c0565e23e76e4c6c3</srcmd5>
+    <version>5.0.2</version>
+    <time>1490132991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479660</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0acf51a75c402674c2bb166905fa5b76</srcmd5>
+    <version>5.0.3</version>
+    <time>1496926759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497662</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>984597689abe1f36f8fbea5b888b11b1</srcmd5>
+    <version>5.0.4</version>
+    <time>1499677638</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505391</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93c59e68c6dbc9bf78bce7afe88ff07c</srcmd5>
+    <version>5.0.6</version>
+    <time>1506453285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523566</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>80fc53a062a57bbef0650088d9861051</srcmd5>
+    <version>5.0.7</version>
+    <time>1531946867</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620972</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5cacd7c2d900f81e2dd4e602d8ea098c</srcmd5>
+    <version>5.0.7.1</version>
+    <time>1548062861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656410</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7b9bfd2fd0e570af3f8dc9e3d59c595</srcmd5>
+    <version>5.0.7.2</version>
+    <time>1553699932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685153</requestid>
+  </revision>
+</revisionlist>

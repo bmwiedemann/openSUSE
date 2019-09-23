@@ -1,0 +1,15 @@
+<package name="perl-XML-SAX-ExpatXS" project="openSUSE:Factory">
+  <title>Perl SAX 2 XS extension to Expat parser</title>
+  <description>XML::SAX::ExpatXS is a direct XS extension to Expat XML parser. It implements
+ Perl SAX 2.1 interface. See http://perl-xml.sourceforge.net/perl-sax/ for
+ Perl SAX API description. Any deviations from the Perl SAX 2.1 specification
+ are considered as bugs.
+
+  Author:		Matt Sergeant &lt;matt@sergeant.org&gt;
+
+  Maintained by: 	Petr Cimprich &lt;petr@gingerall.org&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-XML-SAX-ExpatXS"/>
+  <url>http://www.cpan.org/dist/XML-SAX-ExpatXS</url>
+</package>

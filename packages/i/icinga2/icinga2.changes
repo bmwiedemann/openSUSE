@@ -1,0 +1,1535 @@
+-------------------------------------------------------------------
+Thu Sep 19 12:37:55 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.11.0
+  * Core
+    - Rewrite Network Stack (cluster, REST API) based on Boost Asio, Beast, Coroutines
+      - Technical concept: #7041
+      - Requires package updates: Boost >1.66 (either from packages.icinga.com, EPEL or backports). SLES11 & Ubuntu 14 are EOL.
+      - Require TLS 1.2 and harden default cipher list
+    - Improved Reload Handling (umbrella process, now 3 processes at runtime)
+      - Support running Icinga 2 in (Docker) containers natively in foreground
+    - Quality: Use Modern JSON for C++ library instead of YAJL (dead project)
+    - Quality: Improve handling of invalid UTF8 strings
+  * API
+    - Fix crashes on Linux, Unix and Windows from Nessus scans #7431
+    - Locks and stalled waits are fixed with the core rewrite in #7071
+    - schedule-downtime action supports all_services for host downtimes
+    - Improve storage handling for runtime created objects in the _api package
+  * Cluster
+    - HA aware features & improvements for failover handling #2941 #7062
+    - Improve cluster config sync with staging #6716
+    - Fixed that same downtime/comment objects would be synced again in a cluster loop #7198
+  * Checks & Notifications
+    - Ensure that notifications during a restart are sent
+    - Immediately notify about a problem after leaving a downtime and still NOT-OK
+    - Improve reload handling and wait for features/metrics
+    - Store notification command results and sync them in HA enabled zones #6722
+  * DSL/Configuration
+    - Add getenv() function
+    - Fix TimePeriod range support over midnight
+    - concurrent_checks in the Checker feature has no effect, use the global MaxConcurrentChecks constant instead
+  * CLI
+    - Permissions: node wizard/setup, feature, api setup now run in the Icinga user context, not root
+    - ca list shows pending CSRs by default, ca remove/restore allow to delete signing requests
+  * ITL
+    - Add new commands and missing attributes
+  * Windows
+    - Update bundled NSClient++ to 0.5.2.39
+    - Refine agent setup wizard & update requirements to .NET 4.6
+  * Documentation
+    - Service Monitoring: How to create plugins by example, check commands and a modern version of the supported plugin API with best practices
+    - Features: Better structure on metrics, and supported features
+    - Technical Concepts: TLS Network IO, Cluster Feature HA, Cluster Config Sync
+    - Development: Rewritten for better debugging and development experience for contributors including a style guide. Add nightly build setup instructions.
+    - Packaging: INSTALL.md was integrated into the Development chapter, being available at https://icinga.com/docs too.
+
+-------------------------------------------------------------------
+Tue Jul 30 22:43:16 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.10.6
+  * Bugfixes
+    - Fix el7 not loading ECDHE cipher suites #7247
+
+-------------------------------------------------------------------
+Thu May 23 20:23:57 UTC 2019 - ecsos@opensuse.org
+
+- update to 2.10.5
+  * Core
+    - Fix crashes with logrotate signals #6737 (thanks Elias Ohm)
+  * API
+    - Fix crashes and problems with permission filters from recent 
+      Namespace introduction #6785 (thanks Elias Ohm) #6874 (backported from 2.11)
+    - Reduce log spam with locked connections (real fix is the network stack rewrite in 2.11) #6877
+  * Cluster
+    - Fix problems with replay log rotation and storage #6932 (thanks Peter Eckel)
+  * IDO DB
+    - Fix that reload shutdown deactivates hosts and hostgroups (introduced in 2.9) #7157
+  * Documentation
+    - Improve the REST API chapter: Unix timestamp handling, filters, unify POST requests with filters in the body
+    - Better layout for the features chapter, specifically metrics and events
+    - Split object types into monitoring, runtime, features
+    - Add technical concepts for cluster messages
+
+-------------------------------------------------------------------
+Wed Mar 20 19:14:39 UTC 2019 - ecsos@opensuse.org
+
+- update to 2.10.4
+  * Bugfixes:
+    - Fix TLS connections in Influxdb/Elasticsearch features leaking file descriptors (#6989 #7018 ref/IP/12219)
+    - Fixes for delayed and one-time notifications (#5561 #6757)
+    - Improve performance for downtimes/comments added in HA clusters (#6885 ref/IP/9235)
+    - check_perfmon supports non-localized performance counter names (#5546 #6418)
+
+  Detail see: https://github.com/Icinga/icinga2/blob/master/CHANGELOG.md#2104-2019-03-19
+  
+-------------------------------------------------------------------
+Tue Feb 26 10:08:07 UTC 2019 - ecsos@opensuse.org
+
+- update to 2.10.3
+  * Bugfixes:
+    - Stalled TLS connections on reload/Director deployments (#6816 #6898 ref/NC/588119)
+    - 'Connection: close' header leading to unstable instance, affects Ruby clients (#6799)
+    - Server time in the future breaks check result processing (#6797 ref/NC/595861)
+    - ScheduledDowntimes: Generate downtime objects only on one HA endpoint (#2844 ref/IC/9673 ref/NC/590167 ref/NC/591721)
+    - Improve activation & syncing for downtime objects generated from ScheduledDowntimes (#6826 ref/IC/9673 ref/NC/585559)
+    - Generate a runtime downtime object from already running ScheduledDowntime objects (#6704)
+    - DB IDO: Don't enqueue queries when the feature is paused in HA zones (#5876)
+    - Crashes with localtime_r errors (#6887)
+  * Documentation updates:
+    - Ephemeral port range blocking on Windows agents (ref/NC/597307)
+    - Technical concepts for the check scheduler (#6775)
+    - DB IDO cleanup (#6791)
+    - Unified development docs (#6819)
+
+  Details see: https://github.com/Icinga/icinga2/blob/master/CHANGELOG.md#2103-2019-02-26
+
+-------------------------------------------------------------------
+Wed Nov 14 09:53:40 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.10.2
+  * Bug
+    - #6770 (PR): Fix deadlock in GraphiteWriter
+    - #6769 (Cluster): Hanging TLS connections
+    - #6759 (Log, PR): Fix possible double free in StreamLogger::BindStream()
+    - #6753: Icinga2.service state is reloading in systemd after safe-reload until systemd time-out
+    - #6740 (DB IDO, PR): DB IDO: Don't enqueue queries when the feature is paused (HA)
+    - #6738 (API, Cluster, PR): Ensure that API/JSON-RPC messages in the same session are processed and not stalled
+    - #6736 (Crash): Stability issues with Icinga 2.10.x
+    - #6717 (API, PR): Improve error handling for invalid child_options for API downtime actions
+    - #6712 (API): Downtime name not returned when error occurs
+    - #6711 (API, Cluster): Slow API (TLS-Handshake)
+    - #6709 (PR): Fix the Icinga2 version check for versions with more than 5 characters
+    - #6707 (Compat, PR): Fix regression for wrong objects.cache path overwriting icinga2.debug file
+    - #6705 (CLI, Compat, Configuration): Crash "icinga2 object list" command with 2.10.1-1 on CentOS 7
+    - #6703: Check command 'icinga' breaks when vars.icinga_min_version is defined (2.10.x)
+    - #6635 (API): API TLS session connection closed after 2 requests
+    - #5876 (DB IDO): IDO Work queue on the inactive node growing when switching connection between redundant master servers
+  * Documentation
+    - #6714 (Documentation, PR): Docs: Add package related changes to the upgrading docs
+  * Support
+    - #6773 (Installation, Packages, PR): Initialize ICINGA2_ERROR_LOG inside the systemd environment
+    - #6771 (Tests, PR): Implement unit tests for Dictionary initializers
+    - #6760 (Packages, Tests, PR): armhf: Apply workaround for timer tests with std::bind callbacks
+    - #6710 (Packages): Crash when upgrading from 2.10.0 to 2.10.1 (SELinux related)
+
+-------------------------------------------------------------------
+Thu Oct 18 12:33:27 UTC 2018 - liedke@rz.uni-mannheim.de
+
+- update to 2.10.1
+  * Bug
+    - #6696 (PR): Remove default environment, regression from e678fa1aa5
+    - #6694: v2.10.0 sets a default environment "production" in SNI
+    - #6691 (PR): Add missing shutdown/program state dumps for SIGUSR2
+      reload handler
+    - #6689: State file not updated on reload
+    - #6685 (API, PR): Fix regression with API permission filters and
+      namespaces in v2.10
+    - #6682 (API): API process-check-result fails in 2.10.0
+    - #6679 (Windows, PR): Initialize Configuration::InitRunDir for
+      Windows and writing the PID file
+    - #6624 (Check Execution): Master Reload Causes Passive Check State Change
+    - #6592: Reloads seem to reset the check atempt count. Also notifications
+      go missing shortly after a reload.
+  * Documentation
+    - #6701 (Documentation, PR): Add GitHub release tag to README
+    - #6700 (Documentation, PR): Enhance the addon chapter in the docs
+    - #6699 (Documentation, PR): Update to https://icinga.com/
+    - #6692 (Documentation, PR): Update release docs for Chocolatey
+    - #6690 (Documentation, PR): Extend 09-object-types.md with argument array
+    - #6674 (Documentation, PR): Add a note to the docs on >2 endpoints in
+      a zone
+    - #6673 (Documentation, PR): Update RELEASE docs
+    - #6672 (Documentation, PR): Extend upgrade docs
+    - #6671 (Documentation): Zone requirements changed in 2.10 -
+      Undocumented Change
+  * Support
+    - #6681 (code-quality, PR): Fix spelling errors.
+    - #6677 (Packages, Windows): icinga does not start after Update to 2.10
+
+-------------------------------------------------------------------
+Fri Oct 12 10:32:47 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.10.0
+  * Notes
+    - Support for namespaces, details in this blogpost
+    - Only send acknowledgement notification to users notified about a problem before, thanks for sponsoring to the Max-Planck-Institut for Marine Mikrobiologie
+    - More child options for scheduled downtimes
+    - Performance improvements and fixes for the TLS connections inside cluster/REST API
+    - Better logging for HTTP requests and less verbose object creation (e.g. downtimes via Icinga Web 2 & REST API)
+    - New configuration path constants, e.g. ConfigDir
+    - Fixed problem with dependencies rescheduling parent checks too fast
+    - Fixed problem with logging in systemd and syslog
+    - Improved vim syntax highlighting
+    - Technical concepts docs update with config compiler and TLS network IO
+  * Enhancement
+    - #6663 (API, Log, PR): Silence config compiler logging for runtime created objects
+    - #6657 (API, Log, PR): Enable the HTTP request body debug log entry for release builds
+    - #6655 (API, Log, PR): Improve logging for disconnected HTTP clients
+    - #6651 (Plugins, PR): Add 'used' feature to check_swap
+    - #6633 (API, Cluster, PR): Use a dynamic thread pool for API connections
+    - #6632 (Cluster, PR): Increase the cluster reconnect frequency to 10s
+    - #6616 (API, Cluster, PR): Add ApiListener#tls_handshake_timeout option
+    - #6611 (Notifications): Allow types = [ Recovery ] to always send recovery notifications
+    - #6595 (API, Cluster, PR): Allow to configure anonymous clients limit inside the ApiListener object
+    - #6532 (Configuration, PR): Add child_options to ScheduledDowntime
+    - #6531 (API, PR): Expose Zone#all_parents via API
+    - #6527 (Notifications, PR): Acknowledgment notifications should only be send if problem notification has been send
+    - #6521 (Configuration, PR): Implement references
+    - #6512 (Cluster, PR): Refactor environment for API connections
+    - #6511 (Cluster, PR): ApiListener: Add support for dynamic port handling
+    - #6509 (Configuration, PR): Implement support for namespaces
+    - #6508 (Configuration, PR): Implement the Dictionary#clear script function
+    - #6506 (PR): Improve path handling in cmake and daemon
+    - #6460 (Log, help wanted): Feature suggestion: Do not log warnings when env elements are undefined in CheckCommand objects
+    - #6455 (Log, PR): Log something when the Filelogger has been started
+    - #6379 (Configuration, PR): Throw config error when using global zones as parent
+    - #6356 (Log, PR): Fix logging under systemd
+    - #6339 (Log, help wanted): On systemd, icinga2 floods the system log, and this cannot simply be opted out of
+    - #6110 (Configuration, PR): Implement support for optionally specifying the 'var' keyword in 'for' loops
+    - #6047 (Notifications): Acknowledgment notifications should only be sent if the user already received a problem notification
+    - #4282 (API, Log): Icinga should log HTTP bodies for API requests
+  * Bug
+    - #6658 (API, PR): Ensure that HTTP/1.0 or 'Connection: close' headers are properly disconnecting the client
+    - #6652 (Plugins, PR): Fix check_memory thresholds in 'used' mode
+    - #6647 (CLI, PR): node setup: always respect --accept-config and --accept-commands
+    - #6643 (Check Execution, Notifications, PR): Fix that check_timeout was used for Event/Notification commands too
+    - #6639 (Windows, PR): Ensure to _unlink before renaming replay log on Windows
+    - #6622 (DB IDO, PR): Ensure to use UTC timestamps for IDO PgSQL cleanup queries
+    - #6603 (Check Execution, Cluster): CheckCommand 'icinga' seems to ignore retry interval via command_endpoint
+    - #6575: LTO builds fail on Linux
+    - #6566 (Cluster): Master disconnects during signing process
+    - #6546 (API, CLI, PR): Overridden path constants not passed to config validation in /v1/config/stages API call
+    - #6530 (DB IDO, PR): IDO/MySQL: avoid empty queries
+    - #6519 (CLI, PR): Reset terminal on erroneous console exit
+    - #6517 (Cluster): Not all Endpoints can't reconnect due to "Client TLS handshake failed" error after "reload or restart"
+    - #6514 (API): API using "Connection: close" header results in infinite threads
+    - #6507 (Cluster): Variable name conflict in constants.conf / Problem with TLS verification, CN and Environment variable
+    - #6503 (Log, PR): Reduce the log level for missing env macros to debug
+    - #6485 (Log): Icinga logs discarding messages still as warning and not as notice
+    - #6475 (Compat, PR): lib->compat->statusdatawriter: fix notifications_enabled
+    - #6430 (Log, PR): Fix negative 'empty in' value in WorkQueue log message
+    - #6427 (Configuration, Crash, PR): Improve error message for serializing objects with recursive references
+    - #6409 (Configuration, Crash): Assigning vars.x = vars causes Icinga 2 segfaults
+    - #6408 (PR): ObjectLock#Unlock(): don't reset m_Object->m_LockOwner too early
+    - #6386 (Configuration, PR): Fix that TimePeriod segments are not cleared on restart
+    - #6382 (CLI, help wanted): icinga2 console breaks the terminal on errors
+    - #6313 (Plugins, Windows, PR): Fix wrong calculation of check_swap windows plugin
+    - #6304 (Configuration, Notifications): Timeout defined in NotificationCommand is ignored and uses check_timeout
+    - #5815 (Plugins, Windows): swap-windows check delivers wrong result
+    - #5375 (Check Execution, PR): Parents who are non-active should not be rescheduled
+    - #5052 (Cluster, Windows): Replay log not working with Windows client
+    - #5022 (Check Execution): Dependencies may reschedule passive checks, triggering freshness checks
+  * ITL
+    - #6646 (ITL, PR): Update ITL and Docs for memory-windows - show used
+    - #6640 (ITL): Update ITL and Docs for memory-windows - show used
+    - #6563 (ITL, PR): [Feature] Cloudera service health CheckCommand
+    - #6561 (ITL, PR): [Feature] Ceph health CheckCommand
+    - #6504 (ITL, PR): squashfs ignored
+    - #6491 (ITL, PR): Feature/itl vmware health
+    - #6481 (ITL): command-plugins.conf check_disk exclude squashfs
+  * Documentation
+    - #6670 (Documentation, PR): Add technical concepts for the config compiler and daemon CLI command
+    - #6665 (Documentation, PR): Make the two modes of check_http more obvious.
+    - #6615 (Documentation, PR): Update distributed monitoring docs for 2.10
+    - #6610 (Documentation, PR): Add "TLS Network IO" into technical concepts docs
+    - #6607 (Documentation, PR): Enhance development docs with GDB backtrace and thread list
+    - #6606 (Documentation, PR): Enhance contributing docs
+    - #6598 (Documentation, PR): doc/09-object-types: states filter ignored for Acknowledgements
+    - #6597 (Documentation, PR): Add Fedora to development docs for debuginfo packages
+    - #6593 (Documentation, help wanted): Include CA Proxy in 3rd scenario in Distributed Monitoring docs
+    - #6573 (Documentation, PR): Fix operator precedence table
+    - #6528 (Documentation, PR): Document default of User#enable_notifications
+    - #6502 (Documentation, PR): Update 17-language-reference.md
+    - #6501 (Documentation, PR): Update 03-monitoring-basics.md
+    - #6488 (Documentation, ITL, PR): Fix typo with the CheckCommand cert
+  * Support
+    - #6669 (PR): Don't throw an error when namespace indexers don't find a valid key
+    - #6668 (Installation, PR): Enhance vim syntax highlighting for 2.10
+    - #6661 (API, Log, code-quality, PR): Cache the peer address in the HTTP server
+    - #6642 (PR): Allow to override MaxConcurrentChecks constant
+    - #6621 (code-quality, PR): Remove unused timestamp function in DB IDO
+    - #6618 (PR): Silence compiler warning for nice()
+    - #6591 (PR): Fix static initializer priority for namespaces in LTO builds
+    - #6588 (PR): Fix using full path in prepare-dirs/safe-reload scripts
+    - #6586 (PR): Fix non-unity builds on CentOS 7 with std::shared_ptr
+    - #6583 (Documentation, Installation, PR): Update PostgreSQL library path variable in INSTALL.md
+    - #6574 (PR): Move new downtime constants into the Icinga namespace
+    - #6570 (Cluster, PR): Increase limit for simultaneously connected anonymous TLS clients
+    - #6567 (PR): ApiListener: Dump the state file port detail as number
+    - #6556 (Installation, Windows, PR): windows: Allow suppression of extra actions in the MSI package
+    - #6544 (code-quality, PR): Remove #include for deprecated header file
+    - #6539 (PR): Build fix for CentOS 7 and non-unity builds
+    - #6526 (code-quality, PR): icinga::PackObject(): shorten conversion to string
+    - #6510 (Tests, Windows, PR): Update windows build scripts
+    - #6494 (Tests, PR): Test PackObject
+    - #6489 (code-quality, PR): Implement object packer for consistent hashing
+    - #6484 (Packages): Packages from https://packages.icinga.com are not Systemd Type=notify enabled?
+    - #6469 (Installation, Windows, PR): Fix Windows Agent resize behavior
+    - #6458 (code-quality, PR): Fix debug build log entry for ConfigItem activation priority
+    - #6456 (code-quality, PR): Keep notes for immediately log flushing
+    - #6440 (code-quality, PR): Fix typo
+    - #6410 (code-quality, PR): Remove unused code
+    - #4959 (Installation, Windows): Windows Agent Wizard Window resizes with screen, hiding buttons
+
+-------------------------------------------------------------------
+Wed Sep 26 10:01:29 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.9.2
+  * Enhancement
+    - #6602 (API, Cluster, PR): Improve TLS handshake exception logging
+    - #6568 (Configuration, PR): Ensure that config object types are committed in dependent load order
+    - #6497 (Configuration, PR): Improve error logging for match/regex/cidr_match functions and unsupported 
+      dictionary usage
+  * Bug
+    - #6596 (Crash, PR): Fix crash on API queries with Fedora 28 hardening and GCC 8
+    - #6581 (Configuration, PR): Shuffle items before config validation
+    - #6569 (DB IDO): Custom Vars not updated after upgrade
+    - #6533 (Crash): Icinga2 crashes after using some api-commands on Fedora 28
+    - #6505 (Cluster, PR): Fix clusterzonecheck if not connected
+    - #6498 (Configuration, PR): Fix regression with MatchAny false conditions on match/regex/cidr_match
+    - #6496 (Configuration): error with match and type matchany
+  * Documentation
+    - #6590 (DB IDO, Documentation, PR): Update workaround for custom vars
+    - #6572 (Documentation, PR): Add note about workaround for broken custom vars
+  * Support
+    - #6540 (Configuration): Evaluate a fixed config compiler commit order
+    - #6486 (Configuration): Configuration validation w/ ScheduledDowntimes performance decreased in 2.9
+    - #6442 (Configuration): Error while evaluating "assign where match" expression: std::bad_cast
+- Add icinga2-graphite.patch to have all tags as descriped in 
+  upstream icingaweb2-module-graphite docs.
+
+-------------------------------------------------------------------
+Tue Sep 11 10:26:13 UTC 2018 - ecsos@opensuse.org
+
+- remove rpmlint warnings:
+  - missing-dependency-to-logrotate
+  - obsolete-not-provided icinga2-libs
+  - permissions-missing-requires
+
+-------------------------------------------------------------------
+Tue Sep 11 08:02:30 UTC 2018 - markus@lazyfrosch.de
+
+- Incorporating upstream changes
+  * Handle licensing different between SUSE and RedHat
+  * Remove obsolete libs package
+  * Move service and config from common to main package
+  * Ensure consistent handling of fillupdir
+    Also see https://github.com/Icinga/rpm-icinga2/pull/5
+
+-------------------------------------------------------------------
+Sat Jul 28 22:12:45 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.9.1
+  * Bug
+    - #6457 (PR): Ensure that timer thread is initialized after Daemonize()
+    - #6449: icinga r2.9.0-1 init.d script overrides PATH variable
+    - #6445: Problem with daemonize (init scripts, -d) on Debian 8 / CentOS 6 / Ubuntu 14 / SLES 11 in 2.9
+    - #6444 (PR): SELinux: allow systemd notify
+    - #6443: selinux and 2.9
+  * Support
+    - #6470 (code-quality, PR): Fix spelling errors.
+    - #6467 (Tests, PR): Start and stop the timer thread lazily
+    - #6461 (Tests): Broken tests with fix from #6457
+    - #6451 (Packages, PR): Fix initscripts
+    - #6450 (Packages): init script helpers - source: not found
+
+-------------------------------------------------------------------
+Sat Jul 28 14:09:14 UTC 2018 - uhaider.msee15seecs@seecs.edu.pk
+
+- Fixed the "No valid ELF RPATH or RUNPATH entry exists in the file" 
+  error. (boo#1102980)
+
+-------------------------------------------------------------------
+Wed Jul 18 16:58:14 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.9.0
+  * Notes
+    - Elasticsearch 6 Support
+    - icinga health check supports minimum version parameter, ido thresholds for query rate, dummy check is executed 
+      in-memory, avoids plugin call
+    - ApplicationVersion constant in the configuration
+    - Setup wizards: global zone, disable conf.d inclusion, unified parameter handling
+    - TTL support for check results, pretty formatting for REST API queries
+    - TLS support for IDO PostgreSQL
+    - Improvements for check scheduling, concurrent checks with command endpoints, downtime notification handling,
+      scheduled downtimes and memory handling with many API requests
+  * Enhancement
+    - #6400 (Plugins, Windows, PR): Enhance debug logging for check_nscp_api
+    - #6321 (Log, PR): Update log message for skipped certificate renewal
+    - #6305 (PR): Introduce the 'Environment' variable
+    - #6299 (Check Execution, Log, PR): Change log level for failed event command execution
+    - #6285 (CLI, Log, PR): Add support for config validation log timestamps
+    - #6270 (Configuration, PR): Add activation priority for config object types
+    - #6236 (DB IDO, PR): Add TLS support for DB IDO PostgreSQL feature
+    - #6219 (Elasticsearch, PR): Add support for Elasticsearch 6
+    - #6211 (DB IDO): IDO pgsql with TLS support
+    - #6209 (CLI, PR): Unify zone name settings in node setup/wizard; add connection-less mode for node setup
+    - #6208 (CLI): Add connection-less support for node setup CLI command
+    - #6206 (Configuration, PR): Add ApplicationVersion built-in constant
+    - #6205 (API, PR): API: Unify verbose error messages
+    - #6194 (Elasticsearch, Graylog, PR): Elasticsearch/GELF: Add metric unit to performance data fields
+    - #6170 (Configuration, Windows, PR): Add option to windows installer to add global zones
+    - #6158 (API, Log): Review API debugging: verboseErrors and diagnostic information
+    - #6136 (Check Execution, PR): Add counter for current concurrent checks to Icinga check
+    - #6131 (Log, PR): Log which ticket was invalid on the master
+    - #6109 (Plugins, PR): Add 'used' feature to check_memory
+    - #6090 (Notifications, PR): Fixed URL encoding for HOSTNAME and SERVICENAME in mail notification
+    - #6078 (Check Execution, PR): Add more metrics and details to built-in 'random' check
+    - #6039 (Configuration, PR): Improve location info for some error messages
+    - #6033 (Compat): Deprecate StatusDataWriter
+    - #6032 (Compat): Deprecate CompatLogger
+    - #6010 (Cluster, PR): Move the endpoint list into a new line for the 'cluster' check
+    - #5996 (PR): Add systemd watchdog and adjust reload behaviour
+    - #5985 (DB IDO, PR): Add query thresholds for the 'ido' check: Rate and pending queries
+    - #5979 (CLI, PR): Add quit, exit and help
+    - #5973 (API, Check Execution, PR): Add 'ttl' support for check result freshness via REST API
+    - #5959 (API, PR): API: Add 'pretty' parameter for beautified JSON response bodies
+    - #5905 (Elasticsearch): Add support for Elasticsearch 6
+    - #5888 (DB IDO, PR): FindMySQL: Support mariadbclient implementation
+    - #5877 (API): Add pretty format to REST API parameters (for debugging)
+    - #5811 (CLI, PR): Update NodeName/ZoneName constants with 'api setup'
+    - #5767 (CLI, PR): Implement ability to make global zones configurable during node wizard/setup
+    - #5733 (Plugins, Windows, PR): Make --perf-syntax also change short message
+    - #5729 (CLI, Cluster, PR): Correct node wizard output formatting
+    - #5675 (InfluxDB, PR): Add pdv unit to influxdbwriter if not empty + doc
+    - #5627 (InfluxDB, Metrics): InfluxDBWriter: Send metric unit (perfdata)
+    - #5605 (CLI, Cluster, Configuration): Disable conf.d inclusion in node setup wizards
+    - #5509 (Cluster, wishlist): Add metrics about communication between endpoints
+    - #5444 (Cluster): Display endpoints in the second line of the ClusterCheckTask output
+    - #5426 (CLI, Configuration, PR): Add the ability to disable the conf.d inclusion through the node wizard
+    - #5418 (Plugins, Windows): Feature request: check_perfmon.exe - Change name of counter in output
+    - #4966 (CLI, Cluster): Unify setting of master zones name
+    - #4508 (CLI): node wizard/setup: allow to disable conf.d inclusion
+    - #3455 (API, Log): startup.log in stage dir has no timestamps
+    - #3245 (CLI, help wanted, wishlist): Add option to Windows installer to add global zone during setup
+    - #2287 (help wanted, wishlist): Please support systemd startup notification
+  * Bug
+    - #6429 (PR): Make HttpServerConnection#m_DataHandlerMutex a boost::recursive_mutex
+    - #6428 (API): Director kickstart wizard querying the API results in TLS stream disconnected infinite loop
+    - #6411 (Plugins, Windows, PR): Windows: Conform to the Plugin API spec for performance label quoting
+    - #6407 (Windows, PR): Fix wrong UOM in check_uptime windows plugin
+    - #6405 (Windows, PR): TcpSocket#Bind(): reuse socket addresses on Windows, too
+    - #6403 (API, PR): Conform to RFC for CRLF in HTTP requests
+    - #6401 (Elasticsearch, InfluxDB, PR): Fix connection error handling in Elasticsearch and InfluxDB features
+    - #6397 (Plugins, Windows, PR): TlsStream#IsEof(): fix false positive EOF indicator
+    - #6394 (Crash, Elasticsearch): Icinga will throw an exception, if ElasticSearch is not reachable
+    - #6393 (API, Elasticsearch, PR): Stream#ReadLine(): fix false positive buffer underflow indicator
+    - #6387 (Configuration, Crash, Windows, PR): Remove ApiUser password_hash functionality
+    - #6383 (API, CLI, PR): HttpRequest#ParseBody(): indicate success on complete body
+    - #6378 (Windows): Analyze Windows reload behaviour
+    - #6371 (API, Cluster, PR): ApiListener#NewClientHandlerInternal(): Explicitly close the TLS stream on any failure
+    - #6368 (CLI, PR): Fix program option parsing
+    - #6365 (CLI): Different behavior between icinga2 -V and icinga2 --version
+    - #6355 (API): HTTP header size too low: Long URLs and session cookies cause bad requests
+    - #6354 (Elasticsearch): ElasticsearchWriter not writing to ES
+    - #6336 (Log, PR): Fix unnecessary blank in log message
+    - #6324 (Crash, PR): Ensure that password hash generation from OpenSSL is atomic
+    - #6319 (Windows): Windows service restart fails and config validate runs forever
+    - #6297 (Cluster, PR): Execute event commands only on actively checked host/service objects in an HA zone
+    - #6294 (API, Configuration, PR): Ensure that group memberships on API object creation are unique
+    - #6292 (Notifications, PR): Fix problem with reminder notifications if the checkable is flapping
+    - #6290 (OpenTSDB, PR): Fixed opentsdb metric name with colon chars
+    - #6282 (Configuration): Issue when using excludes in TimePeriod Objects
+    - #6279 (Crash): segfault with sha1_block_data_order_avx of libcrypto
+    - #6255 (Configuration): On debian based systems /etc/default/icinga2 is not read/used
+    - #6242 (Plugins, Windows): Sporadic check_nscp_api timeouts
+    - #6239 (Plugins, Windows, PR): Fix Windows check_memory rounding
+    - #6231 (Notifications): icinga2.8 - Notifications are sent even in downtime
+    - #6218 (PR): attempt to fix issue #5277
+    - #6217 (Check Execution, PR): Fix check behavior on restart
+    - #6204 (API, PR): API: Check if objects exists and return proper error message
+    - #6195 (API, Crash, PR): Fix crash in remote api console
+    - #6193 (Crash, Graylog, PR): GelfWriter: Fix crash on invalid performance data metrics
+    - #6184 (API): debug console with API connection sometimes hangs since 2.8.2
+    - #6125 (Configuration, PR): Fix description of the NotificationComponent in notification.conf
+    - #6077 (API, PR): Allow to pass raw performance data in 'process-check-result' API action
+    - #6057 (Notifications): Icinga2 sends notifications without logging about it and despite having a downtime
+    - #6020 (CLI, PR): Fix crash when running 'icinga2 console' without HOME environment variable
+    - #6019: icinga2 console -r crashes when run without a HOME environment variable
+    - #6016 (Notifications, PR): Check notification state filters for problems only, not for Custom, etc.
+    - #5988 (Check Execution, Cluster, PR): Fix concurrent checks limit while using command_endpoint
+    - #5964 (Metrics, OpenTSDB, PR): OpenTSDB writer - Fix function for escaping host tag chars.
+    - #5963 (Metrics, OpenTSDB): OpenTSDB writer is escaping wrong chars for host names.
+    - #5952 (Notifications): Custom notifications are filtered by object state
+    - #5940 (PR): Remove deprecated Chocolatey functions
+    - #5928 (PR): Fix build problem with MSVC
+    - #5908 (Windows): Icinga2 fails to build on Windows
+    - #5901 (PR): Do not replace colons in plugin output
+    - #5885 (PR): Workaround for GCC bug 61321
+    - #5884: Icinga2 fails to build
+    - #5872 (PR): Replace incorrect fclose() call with pclose()
+    - #5863 (PR): Fix glob error handling
+    - #5861 (PR): Fix incorrect memory access
+    - #5860 (PR): Fix memory leaks in the unit tests
+    - #5853 (Plugins, Windows, PR): Fix missing space in check_service output
+    - #5840 (Elasticsearch, PR): Fix newline terminator for bulk requests in ElasticsearchWriter
+    - #5796 (CLI, PR): Fix error reporting for 'icinga2 console -r'
+    - #5795 (Elasticsearch): ElasticsearchWriter gives "Unexpected response code 400" with Elasticsearch 6.x
+    - #5763 (API): "icinga2 api setup" should explicitly set the NodeName constant in constants.conf
+    - #5753 (API, Cluster, Metrics, PR): Fix that RingBuffer does not get updated 
+      and add metrics about communication between endpoints
+    - #5718 (API, PR): API: Fix http status codes
+    - #5550 (API): Verify error codes and returned log messages in API actions
+    - #5277 (Notifications): Flexible downtime is expired at end_time, not trigger_time+duration
+    - #5095 (API): Wrong HTTP status code when API request fails
+    - #5083 (Check Execution): Initial checks are not executed immediately
+    - #4786 (API): API: Command process-check-result fails if it contains performance data
+    - #4785 (Compat): Semicolons in plugin output are converted to colon
+    - #4732 (API, Configuration): Duplicate groups allowed when creating host
+    - #4436 (Check Execution): New objects not scheduled to check immediately
+    - #4272 (Cluster, Configuration): Duplicating downtime from ScheduledDowntime object on each restart
+    - #3431 (Cluster): Eventhandler trigger on all endpoints in high available zone
+  * ITL
+    - #6389 (ITL, PR): New ITL command nscp-local-tasksched
+    - #6348 (ITL, PR): Fix for catalogued locally databases. Fixes #6338
+    - #6338 (ITL): db2_health not working with catalogued databases, as --hostname is always used
+    - #6308 (ITL, PR): Update lsi-raid ITL command
+    - #6263 (ITL, PR): ITL: Add default thresholds to windows check commands
+    - #6139 (ITL, PR): itl/disk: Ignore overlay and netfs filesystems
+    - #6045 (ITL, PR): Move the "passive" check command to command-icinga.conf
+    - #6043 (ITL): ITL "plugins" has an implicit dependency on "itl"
+    - #6034 (ITL, PR): ITL by_ssh add -E parameter
+    - #5958 (ITL, PR): Add minimum version check to the built-in icinga command
+    - #5954 (ITL, PR): ITL: Add mongodb --authdb parameter support
+    - #5951 (ITL, PR): itl: Add command parameters for snmp-memory
+    - #5921 (ITL, PR): Add icingacli-director check to ITL
+    - #5920 (ITL): Add Check for Director Jobs to ITL
+    - #5914 (ITL, PR): Fix for wrong attribute in ITL mongodb CheckCommand
+    - #5906 (ITL, PR): Add check_openmanage command to ITL.
+    - #5902 (ITL, PR): Add parameter --octetlength to snmp-storage command.
+    - #5817 (ITL): mongodb_address vs mongodb_host
+    - #5812 (ITL): Better way to check required parameters in notification scripts
+    - #5805 (ITL, PR): Add support for LD_LIBRARY_PATH env variable in oracle_health ITL CheckCommand
+    - #5792 (ITL, PR): ITL: Add check_rpc
+    - #5787 (Check Execution, ITL): random check should provide performance data metrics
+    - #5744 (Check Execution, ITL, PR): Implement DummyCheckTask and move dummy into embedded in-memory checks
+    - #5717 (ITL, PR): add order tags to disk check
+    - #5714 (ITL): disk check in icinga2/itl/command-plugins.conf lacks order tags
+    - #5260 (ITL): CheckCommand mongodb does not expose authdb option
+  * Documentation
+    - #6436 (Documentation, PR): Update tested Elasticsearch version
+    - #6435 (Documentation, PR): Add note on sysconfig shell variables for Systemd to the Upgrading docs
+    - #6433 (Documentation, PR): Docs: Fix typos in 03-monitoring-basics.md
+    - #6426 (Documentation, PR): Update 'Upgrading to 2.9' docs
+    - #6413 (Documentation, PR): Fix table in Livestatus Filters
+    - #6391 (Documentation, PR): Docs: Fix icinga.com link
+    - #6390 (Documentation, Windows, PR): Docs: Update Windows wizard images
+    - #6375 (Documentation, PR): some minor fixes in the flapping documentation
+    - #6374 (Documentation, PR): Docs: Add an additional note for VMWare timeouts on Ubuntu 16.04 LTS
+    - #6373 (Documentation, PR): Drop command template imports for versions < 2.6 in the docs
+    - #6372 (Documentation, PR): Remove the import of 'legacy-timeperiod' in the docs
+    - #6350 (Documentation, PR): clarify the permision system of the api in the docs
+    - #6344 (Documentation, PR): README: Fix broken community link
+    - #6330 (Documentation, PR): Fix $ipaddress6$ attribute name typo in the docs
+    - #6317 (Documentation, PR): Add a note on Windows NSClient++ CPU checks to the docs
+    - #6289 (Documentation, PR): Update release documentation with git tag signing key configuration
+    - #6286 (Documentation): Update Windows wizard screenshots in the docs
+    - #6283 (Documentation, PR): edit Icinga license info so that GitHub recognizes it
+    - #6271 (Documentation, PR): Enhance advanced topics with (scheduled) downtimes
+    - #6267 (Documentation, PR): Update docs to reflect required user* attributes for notification objects
+    - #6265 (Documentation): Notifications user/user_groups required
+    - #6264 (Documentation, PR): Enhance "Getting Started" chapter
+    - #6262 (Documentation, PR): Enhance the environment variables chapter
+    - #6254 (Documentation, PR): Enhance release documentation
+    - #6253 (Documentation, PR): Doc: Add note for not fully supported Plugin collections
+    - #6243 (Documentation, PR): Update PostgreSQL documentation
+    - #6226 (Documentation, PR): Fix broken SELinux anchor in the documentation
+    - #6224 (Documentation, PR): Update volatile docs
+    - #6216 (Documentation): Volatile service explanation
+    - #6180 (Documentation, PR): Doc: fixed wrong information about defaulting
+    - #6128 (Documentation, PR): Adding documentation for configurable global zones during setup
+    - #6067 (Documentation, Windows, PR): Improve Windows builds and testing
+    - #6022 (Configuration, Documentation, PR): Update default config and documentation for the "library" keyword
+    - #6018 (Documentation): Move init configuration from getting-started
+    - #6000 (Documentation, PR): Add newline to COPYING to fix Github license detection
+    - #5948 (Documentation, PR): doc: Improve INSTALL documentation
+    - #4958 (Check Execution, Documentation): How to set the HOME environment variable
+  * Support
+    - #6439 (PR): Revert "Fix obsolete parameter in Systemd script"
+    - #6423 (PR): Fix missing next check update causing the scheduler to execute checks too often
+    - #6421 (Check Execution): High CPU load due to seemingly ignored check_interval
+    - #6412 (Plugins, Windows, PR): Fix output formatting in windows plugins
+    - #6402 (Cluster, code-quality, PR): Use SSL_pending() for remaining TLS stream data
+    - #6384 (PR): Remove leftover for sysconfig file parsing
+    - #6381 (Packages, PR): Fix sysconfig not being handled correctly by sysvinit
+    - #6377 (code-quality, PR): Fix missing name for workqueue while creating runtime objects via API
+    - #6364 (code-quality): lib/base/workqueue.cpp:212: assertion failed: !m_Name.IsEmpty()
+    - #6361 (API, Cluster): Analyse socket IO handling with HTTP/JSON-RPC
+    - #6359 (Configuration, PR): Fix ScheduledDowntimes replicating on restart
+    - #6357 (API, PR): Increase header size to 8KB for HTTP requests
+    - #6347 (Packages, PR): SELinux: Allow notification plugins to read local users
+    - #6343 (Check Execution, Cluster, PR): Fix that checks with command_endpoint don't return any check results
+    - #6337: Checks via command_endpoint are not executed (snapshot packages only)
+    - #6328 (Installation, Packages, PR): Rework sysconfig file/startup environment
+    - #6320 (PR): Ensure that icinga_min_version parameter is optional
+    - #6309 (PR): Fix compiler warning in checkercomponent.ti
+    - #6306 (code-quality, PR): Adjust message for CheckResultReader deprecation
+    - #6301 (Documentation, code-quality, PR): Adjust deprecation removal for compat features
+    - #6295 (Compat, PR): Deprecate compatlog feature
+    - #6238 (Notifications, PR): Implement better way to check parameters in notification scripts
+    - #6233 (Check Execution): Verify next check execution on daemon reload
+    - #6229 (Packages, PR): Don't use shell variables in sysconfig
+    - #6214 (Packages): Reload-internal with unresolved shell variable
+    - #6201 (Windows, PR): Handle exceptions from X509Certificate2
+    - #6199 (API, PR): Return 500 when no api action is successful
+    - #6198 (Compat, PR): Deprecate Statusdatawriter
+    - #6187 (code-quality, PR): Remove Icinga Studio Screenshots
+    - #6181 (Tests, PR): tests: Ensure IcingaApplication is initialized before adding config
+    - #6174 (API, PR): Fix crash without CORS setting
+    - #6173 (API, Crash): Using the API crashes Icinga2 in v2.8.1-537-g064fc80
+    - #6171 (code-quality, PR): Update copyright of the Windows Agent to 2018
+    - #6163 (PR): Fix reload handling by updating the PID file before process overtake
+    - #6160 (code-quality, PR): Replace std::vector:push_back calls with initializer list
+    - #6126 (PR): Require systemd headers
+    - #6113 (Tests, PR): appveyor: Disable artifacts until we use them
+    - #6107 (code-quality, PR): Allow MYSQL_LIB to be specified by ENV variable
+    - #6105 (Tests): Snapshot builds fail on livestatus tests
+    - #6098 (API, code-quality, PR): Clean up CORS implementation
+    - #6085 (Cluster, Crash, PR): Fix crash with anonymous clients on certificate signing request and storing sent bytes
+    - #6083 (Log, code-quality, PR): Fix wrong type logging in ConfigItem::Commit
+    - #6082 (Installation, Packages): PID file removed after reload
+    - #6063 (Compat, PR): Deprecate CheckResultReader
+    - #6062 (code-quality, PR): Remove the obsolete 'make-agent-config.py' script
+    - #6061 (code-quality, PR): Remove jenkins test scripts
+    - #6060 (code-quality, PR): Remove Icinga development docker scripts
+    - #6059 (code-quality, PR): Remove Icinga Studio
+    - #6058 (code-quality, PR): Clean up the Icinga plugins a bit
+    - #6055 (Check Execution, Windows, code-quality, PR): methods: Remove unused clrchecktask feature
+    - #6054 (Check Execution, Windows, code-quality): Remove unused clrchecktask
+    - #6051 (code-quality, PR): Set FOLDER cmake property for the icingaloader target
+    - #6050 (code-quality, PR): Replace boost::algorithm::split calls with String::Split
+    - #6044 (code-quality, PR): Implement support for frozen arrays and dictionaries
+    - #6038 (PR): Fix missing include for boost::split
+    - #6037 (PR): Fix build error on Windows
+    - #6029 (code-quality, PR): Remove duplicate semicolons
+    - #6028 (Packages): python notification not running when icinga ran as a service
+    - #6026 (Check Execution, Windows, PR): Fix flapping support for Windows
+    - #6025 (Windows): Implement Flapping on Windows
+    - #6023: Icinga should check whether the libsystemd library is available
+    - #6017 (PR): Remove build breaking include
+    - #6015 (code-quality, PR): Fix whitespaces in CMakeLists files
+    - #6009 (PR): Build fix for ancient versions of GCC
+    - #6008 (PR): Fix compatibility with CMake < 3.1
+    - #6007 (PR): Fix missing include
+    - #6005 (PR): Fix incorrect dependencies for mkunity targets
+    - #5999 (PR): Build fix
+    - #5998 (code-quality, PR): Build all remaining libraries as object libraries
+    - #5997 (PR): Use gcc-ar and gcc-ranlib when building with -flto
+    - #5994 (InfluxDB, PR): InfluxDBWriter: Fix macro in template
+    - #5993 (code-quality, PR): Use CMake object libraries for our libs
+    - #5992 (code-quality, PR): Remove unused includes
+    - #5984 (DB IDO, PR): Fix missing static libraries for DB IDO
+    - #5983 (code-quality, PR): Use initializer lists for arrays and dictionaries
+    - #5980 (code-quality, PR): Explicitly pass 1 or 0 for notification filters in DB IDO
+    - #5974 (PR): Fix non-unity builds with the icinga check
+    - #5971 (code-quality, PR): Remove libdemo and libhello
+    - #5970 (code-quality, PR): Allocate ConfigItemBuilder objects on the stack
+    - #5969 (code-quality, PR): Remove the WorkQueue::m_StatsMutex instance variable
+    - #5968 (code-quality, PR): Update the RingBuffer class to use a regular mutex instead of ObjectLock
+    - #5967 (code-quality, PR): Avoid accessing attributes for validators where not necessary
+    - #5965 (code-quality, PR): Avoid unnecessary casts in the JSON encoder
+    - #5961 (PR): Fix macro warning from the icinga check
+    - #5960: Macro warning from the icinga check
+    - #5957 (code-quality, PR): Change a bunch more copyright headers for 2018
+    - #5955 (Configuration, code-quality, PR): Avoid mutex contention in the config parser
+    - #5946 (code-quality, PR): Use clang-tidy to add some more C++11 features
+    - #5945 (code-quality, PR): Fix incorrect indentation for code generated by mkclass
+    - #5944 (code-quality, PR): Add the final keyword to classes
+    - #5939 (PR): Build fix for Debian wheezy
+    - #5937 (code-quality, PR): Remove inline methods and use explicit template instantiation 
+      to minimize the number of weak symbols
+    - #5936 (code-quality, PR): Clean up source lists in the CMakeLists.txt files
+    - #5935 (code-quality, PR): Implement support for precompiled headers
+    - #5934 (code-quality, PR): Add more include/library paths for MySQL and PostgreSQL
+    - #5933 (code-quality, PR): Change copyright headers for 2018
+    - #5932 (code-quality, PR): Fix copyright header in cli/troubleshootcommand.hpp
+    - #5931 (code-quality, PR): Improve detection for linker flags
+    - #5930 (code-quality, PR): Replace boost::function with std::function
+    - #5929 (code-quality, PR): Get rid of boost::assign::list_of in mkclass
+    - #5927 (code-quality, PR): Build libraries as static libraries
+    - #5909 (code-quality, PR): WIP: Improve build times
+    - #5903 (code-quality, PR): Cleanup CompatUtility class and features
+    - #5897 (code-quality, PR): Remove unnecessary inline statements
+    - #5894 (code-quality, PR): Remove string_iless
+    - #5891 (code-quality, PR): Update .gitignore
+    - #5889 (code-quality, PR): execvpe: Fixup indention for readability
+    - #5887 (PR): Windows build fix
+    - #5886 (code-quality): Remove unnecessary 'inline' keyword
+    - #5882 (code-quality, PR): Avoid unnecessary allocations
+    - #5871 (code-quality, PR): Unit tests for the LegacyTimePeriod class
+    - #5868 (Configuration, code-quality, PR): Use std::unique_ptr for Expression objects
+    - #5865 (code-quality, PR): Add missing initializer in Utility::NewUniqueID()
+    - #5862 (code-quality, PR): Replace a few more NULLs with nullptr
+    - #5858 (Tests, code-quality, PR): Travis: Add support for Coverity
+    - #5857 (code-quality, PR): Fix compiler warnings
+    - #5855 (PR): Fix build problems with Visual Studio 2017
+    - #5848 (code-quality, PR): Fix COPYING format
+    - #5846 (code-quality, PR): Fix compiler warnings
+    - #5831 (Check Execution, Configuration): No checks were launched on snapshot version 2.8.0.71 (RHEL6)
+    - #5827 (code-quality, PR): Replace StatsFunction with Function
+    - #5825 (code-quality, PR): Replace boost::assign::list_of with initializer lists
+    - #5824 (code-quality, PR): Replace a few Boost features with equivalent C++11 features
+    - #5821 (Packages, Windows): check_disk build error
+    - #5819 (code-quality, PR): Avoid unnecessary allocations in the FunctionCallExpression class
+    - #5816 (code-quality, PR): Re-implement WrapFunction() using C++11 features
+    - #5809 (Documentation, Installation, PR): Raise required OpenSSL version to 1.0.1
+    - #5758 (Documentation, Packages): Completely remove the spec file from the icinga2 repository
+    - #5743 (CLI, Configuration, Installation): node setup: Deprecate --master_host and use --parent_host instead
+    - #5725 (code-quality, PR): Use real UUIDs for Utility::NewUniqueID
+    - #5388 (Packages, PR): Handle mis-detection with clang on RHEL/CentOS 7
+    - #3246 (Installation): Add option to windows installer to disable inclusion of conf.d directory
+
+-------------------------------------------------------------------
+Thu May 24 08:52:47 UTC 2018 - thardeck@suse.com
+
+- allow build hostname to be overwritten by the variable _buildhost
+
+-------------------------------------------------------------------
+Fri Apr 27 12:47:12 UTC 2018 - thardeck@suse.com
+
+- update to version 2.8.4
+  * fix plugins crash when run from icinga2-2.8.3
+  * Fix InfluxDB backslash escaping
+  * Fix Elasticsearch crash on invalid performance data
+  * Sysconfig file settings are taken into account
+  * Support multiple parameters for check_nscp_api
+  * Documentation enhancements and fixes
+- remove obsolete patch icinga2-2.8.2-boost.patch
+
+-------------------------------------------------------------------
+Tue Apr 17 12:08:37 UTC 2018 - thardeck@suse.com
+
+- fix bsc#1089808 by back porting the upstream patch icinga2-2.8.2-boost.patch 
+
+-------------------------------------------------------------------
+Mon Apr  9 18:00:26 CEST 2018 - ro@suse.de
+
+- fix _fillupdir usage 
+
+-------------------------------------------------------------------
+Fri Mar 23 10:09:11 UTC 2018 - thardeck@suse.com
+
+- update to version 2.8.2 (fixes CVE-2017-16933 - bsc#1086676, CVE-2018-6532 - bsc#1086672, CVE-2018-6533 - bsc#1086673,
+  CVE-2018-6534 - bsc#1086674, CVE-2018-6535 - bsc#1086675, CVE-2018-6536)
+  * [#5715](https://github.com/icinga/icinga2/issues/5715) (API, PR): Hash API password and comparison
+  * [#6153](https://github.com/icinga/icinga2/issues/6153) (API, PR): Improve error handling for empty packages in /v1/config/packages
+  * [#6147](https://github.com/icinga/icinga2/issues/6147) (PR): Fix incorrect argument type for JsonRpc::SendMessage
+  * [#6146](https://github.com/icinga/icinga2/issues/6146) (PR): Ensure that SetCorked\(\) works properly
+  * [#6134](https://github.com/icinga/icinga2/issues/6134) (PR): Fix incorrect HTTP content length limits
+  * [#6133](https://github.com/icinga/icinga2/issues/6133) (PR): Limit the number of HTTP/JSON-RPC requests we read in parallel
+  * [#6132](https://github.com/icinga/icinga2/issues/6132) (PR): Fix HTTP parser crash/hang
+  * [#6129](https://github.com/icinga/icinga2/issues/6129): api/packages not created by prepare-dir/daemon
+  * [#5995](https://github.com/icinga/icinga2/issues/5995) (InfluxDB, PR): Fix InfluxDB requests
+  * [#5991](https://github.com/icinga/icinga2/issues/5991): Partial privilege escalation via PID file manipulation
+  * [#5987](https://github.com/icinga/icinga2/issues/5987) (Elasticsearch, InfluxDB, Metrics): InfluxDBWriter and ElasticsearchWriter stop writing to HTTP API
+  * [#5943](https://github.com/icinga/icinga2/issues/5943) (PR): Fix incorrect ::Start call
+  * [#5793](https://github.com/icinga/icinga2/issues/5793): CVE-2017-16933: root privilege escalation via prepare-dirs \(init script and systemd service file\)
+  * [#5760](https://github.com/icinga/icinga2/issues/5760) (Crash, PR): Fix incorrect socket handling for the HTTP client
+  * [#6148](https://github.com/icinga/icinga2/issues/6148) (PR): Fix ApiUser unit test
+  * [#6135](https://github.com/icinga/icinga2/issues/6135) (API, Cluster, PR): Limit JSON RPC message size
+  * [#6115](https://github.com/icinga/icinga2/issues/6115) (PR): Fix incorrect size of request limits
+  * [#6114](https://github.com/icinga/icinga2/issues/6114) (PR): Fix typo in prepare-dirs
+  * [#6104](https://github.com/icinga/icinga2/issues/6104) (PR): Fix nullptr dereferences
+  * [#6103](https://github.com/icinga/icinga2/issues/6103) (PR): HTTP Security fixes
+  * [#5982](https://github.com/icinga/icinga2/issues/5982) (Packages, PR): SELinux: Allows icinga2\_t to send sigkill to all domains it transitions to
+  * [#5916](https://github.com/icinga/icinga2/issues/5916) (Packages): Unable to kill process group after check timeout if SElinux is enabled
+  * [#5850](https://github.com/icinga/icinga2/issues/5850) (Installation, PR): init script security fixes
+  * [#5764](https://github.com/icinga/icinga2/issues/5764) (InfluxDB, code-quality, PR): Improve InfluxdbWriter performance
+  * [#5759](https://github.com/icinga/icinga2/issues/5759) (code-quality, PR): Make default getters and setters non-virtual
+- install limits.conf to systemd directory instead of etc
+
+-------------------------------------------------------------------
+Mon Mar 12 15:47:30 UTC 2018 - bwiedemann@suse.com
+
+- override ICINGA2_BUILD_HOST_NAME to make builds reproducible (boo#1084909)
+
+-------------------------------------------------------------------
+Mon Feb 19 18:08:27 UTC 2018 - thardeck@suse.com
+
+- incorporate spec changes from upstream
+
+-------------------------------------------------------------------
+Sun Feb  4 22:15:37 UTC 2018 - ecsos@opensuse.org
+
+- fix build error for 15.0, Tumbleweed and Factory
+
+-------------------------------------------------------------------
+Wed Jan 17 12:30:06 UTC 2018 - thardeck@suse.com
+
+- update to upstream version 2.8.1
+  * [#5856](https://github.com/Icinga/icinga2/issues/5856) (PR): Implement AppLocal deployment support for UCRT
+  * [#5986](https://github.com/Icinga/icinga2/issues/5986) (DB IDO, PR): Fix wrong schema constraint for fresh 2.8.0 installations
+  * [#5947](https://github.com/Icinga/icinga2/issues/5947) (DB IDO): Duplicate entry constraint violations in 2.8
+  * [#5907](https://github.com/Icinga/icinga2/issues/5907) (PR): Windows plugin check\_swap build fix
+  * [#5808](https://github.com/Icinga/icinga2/issues/5808) (Crash, PR): Fix missing variable name which can lead to segfaults
+  * [#5807](https://github.com/Icinga/icinga2/issues/5807) (Crash): icinga v2.8.0 crashes frequently with "segmentation fault" on Debian 8.9
+  * [#5804](https://github.com/Icinga/icinga2/issues/5804) (Log, PR): Silence UpdateRepository message errors
+  * [#5776](https://github.com/Icinga/icinga2/issues/5776) (Cluster, Log): 2.8.0: warning/JsonRpcConnection: Call to non-existent function 'event::UpdateRepository'
+  * [#5746](https://github.com/Icinga/icinga2/issues/5746) (Livestatus, PR): livestatus: custom variables return empty arrays instead of strings
+  * [#5716](https://github.com/Icinga/icinga2/issues/5716) (Livestatus, PR): add bogus zero reply in livestatus when aggregate and non matching filter
+  * [#5626](https://github.com/Icinga/icinga2/issues/5626) (Livestatus, help wanted): Empty result set with non-matching filters in Livestatus stats query
+  * [#5785](https://github.com/Icinga/icinga2/issues/5785) (ITL, PR): ITL: Drop ssl\_sni default setting
+  * [#5775](https://github.com/Icinga/icinga2/issues/5775) (ITL): Default usage of ssl\_sni in check\_tcp
+
+-------------------------------------------------------------------
+Wed Dec 13 12:16:03 UTC 2017 - thardeck@suse.com
+
+- add logrotate as BuildRequires for the setup to recognize the version and
+  enable the su usage accordingly
+
+-------------------------------------------------------------------
+Tue Dec 12 17:01:54 UTC 2017 - thardeck@suse.com
+
+- fix libboost devel dependencies for Tumbleweed 
+
+-------------------------------------------------------------------
+Mon Nov 27 13:10:42 UTC 2017 - thardeck@suse.com
+
+- add user and group provides 
+
+-------------------------------------------------------------------
+Mon Nov 27 09:08:17 UTC 2017 - thardeck@suse.com
+
+- remove icinga2.service.limits.conf from package source and use the one from
+  the tarball instead
+
+-------------------------------------------------------------------
+Fri Nov 17 16:43:48 UTC 2017 - thardeck@suse.com
+
+- update to upstream version 2.8.0
+  * Certificate path changed to /var/lib/icinga2/certs - check the upgrading docs!
+  * DB IDO 2.8.0 schema upgrade
+  * Cluster/Clients: Forward certificate signing requests over multiple levels
+  * Cluster/Clients: Support on-demand signing next to ticket based certificate request signing
+  * New flapping detection algorithm
+  * Add ElasticsearchWriter feature with HTTP proxy support
+  * Add CORS support for the REST API
+  * Deprecate `flapping_threshold` config option
+  * Remove client configuration mode "bottom up"
+  * Remove classicui meta configuration package
+  * Remove deprecated `enable_legacy_mode` in Graphite feature
+  * Spec file was moved to https://github.com/icinga/icinga-packaging
+  * ITL CheckCommand definition updates
+  * Documentation updates
+
+-------------------------------------------------------------------
+Wed Nov 14 18:02:16 UTC 2017 - jengelh@inai.de
+
+- Documentation should not hard-require the program, as it is
+  technically "usable" without it.
+- Rectify RPM groups, fix odd grammar in descriptions.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Mon Nov 13 10:47:20 UTC 2017 - thardeck@suse.com
+
+- add icinga2.service.limits.conf on Tumbleweed too
+
+-------------------------------------------------------------------
+Fri Nov 10 11:10:16 UTC 2017 - thardeck@suse.com
+
+- update to upstream version 2.7.2
+  * Fixed invalid attribute names in the systemd unit file
+  * Improve documentation and systemd config on TaskMax
+  * Fixed incorrect unique constraint for IDO DB
+  * Moved spec file to the icinga-packaging Git repository
+  * Documentation updates
+
+-------------------------------------------------------------------
+Thu Sep 21 15:45:32 UTC 2017 - thardeck@suse.com
+
+- update to upstream version 2.7.1
+  * Fixes and upgrade documentation for notificatication scripts introduced in 2.7.0
+  * InfluxdbWriter attribute socket_timeout introduced in 2.7.0 was deprecated (will be removed in 2.8.0). Details in #5469 and #5460
+  * Livestatus bygroup table stats fixes for NagVis
+  * DB IDO: Fixes for downtime/comment history queries not correctly updating the end time
+  * check_nscp_api allows white spaces in arguments
+
+-------------------------------------------------------------------
+Tue Sep  5 11:07:52 UTC 2017 - thardeck@suse.com
+
+- adapt spec to latest upstream changes 
+
+-------------------------------------------------------------------
+Fri Aug 25 12:29:27 UTC 2017 - thardeck@suse.com
+
+- fix SLES and Factory building issues 
+
+-------------------------------------------------------------------
+Thu Aug 24 09:28:59 UTC 2017 - thardeck@suse.com
+
+- take upstream icinga2.spec as base again (fixes bnc#1055032)
+- fix wrong position of classicui sed statement
+- fix faulty systemd cleanup statement on suse systems
+
+-------------------------------------------------------------------
+Thu Aug  3 13:09:48 UTC 2017 - ecsos@opensuse.org
+
+- update to upstream version 2.7.0
+  Too many changes to write. 
+  See https://github.com/Icinga/icinga2/milestone/59?closed=1 or
+  in changelog.
+
+-------------------------------------------------------------------
+Wed Apr 05 02:12:18 UTC 2017 - adamradovits12@hotmail.com
+
+- update to upstream version 2.6.3
+  * This is a bugfix release which addresses a number of bugs we've found since
+    2.6.2 was released. It also contains a number of improvements for the Icinga
+    documentation.
+
+-------------------------------------------------------------------
+Sat Mar 18 02:12:18 UTC 2017 - aj@ajaissle.de
+
+- Fix typo in %postun's use_systemd conditional
+
+-------------------------------------------------------------------
+Mon Feb 13 13:36:32 UTC 2017 - thardeck@suse.com
+
+- update to upstream version 2.6.2
+  * This is a bugfix release which addresses a crash that can occur when removing configuration files for objects which have been deleted via the API.
+
+-------------------------------------------------------------------
+Wed Feb  1 11:21:54 UTC 2017 - thardeck@suse.com
+
+- update to upstream version 2.6.1
+  * This release addresses a number of bugs we have identified in version 2.6.0.
+  * The documentation changes
+  * reflect our recent move to GitHub.
+- Increase libstdc++-devel requirement to 48
+
+-------------------------------------------------------------------
+Tue Dec 13 15:51:09 UTC 2016 - thardeck@suse.com
+
+- update to upstream version 2.6.0
+  * Client/Satellite setup
+   * The "bottom up" client configuration mode has been deprecated. Check [#13255](https://dev.icinga.org/issues/13255) for additional details and migration.
+  * Linux/Unix daemon
+   * Ensure that Icinga 2 does not leak file descriptors to executed commands.
+   * There are 2 processes started instead of previously just one process.
+  * Cluster and API
+   * Provide location information for objects and templates in the API
+   * Improve log message for ignored config updates
+   * Fix cluster resync problem with API created objects (hosts, downtimes, etc.)
+   * Fix that API-created objects in a global zone are not synced to child endpoints
+  * Notifications
+   * Several bugfixes for downtime, custom and flapping notifications
+  * New ITL CheckCommands: logstash, glusterfs, iostats
+  * Package builds require a compiler which supports C++11 features (gcc-c++ >= 4.7, clang++)
+  * DB IDO
+   * Schema upgrade required (2.6.0.sql)
+   * This update fixes timestamp columns required by Icinga Web 2 and might take a while. Please ensure to schedule a maintenance task for your database upgrade.
+
+Tue Aug 30 13:54:28 UTC 2016 - thardeck@suse.com
+
+- update to upstream version 2.5.4
+  * InfluxdbWriter feature
+  * API
+      * New endpoints: /v1/variables and /v1/templates (GET requests), /v1/action/generate-ticket (POST request)
+      * State/type filters for notifications/users are now string values (PUT, POST, GET requests)
+  * Configuration
+      * TimePeriod excludes/includes attributes
+      * DateTime object for formatting time strings
+      * New prototype methods: Array#filter, Array#unique, Array#map, Array#reduce
+      * icinga2.conf now includes plugins-contrib, manubulon, windows-plugins, nscp by default (ITL CheckCommand definitions)
+      * Performance improvements (config compiler and validation)
+  * CLI
+      * 'icinga2 object list' formats state/type filters as string values
+      * Compiled config files are now visible with "notice" debug level (hidden by default)
+      * CA serial file now uses a hash value (HA cluster w/ 2 CA directories)
+  * Cluster
+      * There is a known issue with >2 endpoints inside a zone. Icinga 2 will now log a warning.
+      * Support for accepted ciphers and minimum TLS version
+      * Connection and error logging has been improved.
+  * DB IDO
+      * Schema upgrade required (2.5.0.sql)
+      * Incremental config dump (performance boost)
+      * `categories` attribute is now an array. Previous method is deprecated and to be removed.
+      * DbCatLog is not enabled by default anymore.
+      * SSL support for MySQL
+  * New packages
+      * vim-icinga2 for syntax highlighting
+      * libicinga2 (Debian), icinga2-libs (RPM) for Icinga Studio packages
+
+Sat Jun 25 14:00:24 UTC 2016 - ecsos@opensuse.org
+
+- update to upstream version 2.4.10
+  * Bugfixes
+    * Bug 11812 (Checker): Checker component doesn't execute any checks for command_endpoint
+- change from 2.4.9
+   * Bugfixes
+     * Bug 11801 (Perfdata): Error: Function call 'rename' for file '/var/spool/icinga2/tmp/service-perfdata' failed with error code 2, 'No such file or directory'
+     * Bug 11804 (Configuration): Segfault when trying to start 2.4.8
+     * Bug 11807 (Compat): Command Pipe thread 100% CPU Usage
+- changes from 2.4.8
+  * Changes
+    * Bugfixes
+    * Support for limiting the maximum number of concurrent checks (new configuration option)
+    * HA-aware features now wait for connected cluster nodes in the same zone (e.g. DB IDO)
+    * The 'icinga' check now alerts on failed reloads
+  * Feature
+    * Feature 8137 (Checker): Maximum concurrent service checks
+    * Feature 9236 (Perfdata): PerfdataWriter: Better failure handling for file renames across file systems
+    * Feature 9997 (libmethods): "icinga" check should have state WARNING when the last reload failed
+    * Feature 10581 (ITL): Provide icingacli in the ITL
+    * Feature 11556 (libbase): Add support for subjectAltName in SSL certificates
+    * Feature 11651 (CLI): Implement SNI support for the CLI commands
+    * Feature 11720 (ITL): 'disk' CheckCommand: Exclude 'cgroup' and 'tracefs' by default
+    * Feature 11748 (Cluster): Remove unused cluster commands
+    * Feature 11765 (Cluster): Only activate HARunOnce objects once there's a cluster connection
+    * Feature 11768 (Documentation): Add the category to the generated changelog
+  * Bugfixes
+    * Bug 9989 (Configuration): Service apply without name possible
+    * Bug 10426 (libicinga): Icinga crashes with a segfault on receiving a lot of check results for nonexisting hosts/services
+    * Bug 10717 (Configuration): Comments and downtimes of deleted checkable objects are not deleted
+    * Bug 11046 (Cluster): Icinga2 agent gets stuck after disconnect and won't relay messages
+    * Bug 11112 (Compat): Empty author/text attribute for comment/downtimes external commands causing crash
+    * Bug 11147 (libicinga): "day -X" time specifications are parsed incorrectly
+    * Bug 11158 (libicinga): Crash with empty ScheduledDowntime 'ranges' attribute
+    * Bug 11374 (API): Icinga2 API: deleting service with cascade=1 does not delete dependant notification
+    * Bug 11390 (Compat): Command pipe overloaded: Can't send external Icinga command to the local command file
+    * Bug 11396 (API): inconsistent API /v1/objects/* response for PUT requests
+    * Bug 11589 (libicinga): notification sent out during flexible downtime
+    * Bug 11645 (Documentation): Incorrect chapter headings for Object#to_string and Object#type
+    * Bug 11646 (Configuration): Wrong log severity causes segfault
+    * Bug 11686 (API): Icinga Crash with the workflow Create_Host-> Downtime for the Host ->  Delete Downtime -> Remove Host
+    * Bug 11711 (libicinga): Expired downtimes are not removed
+    * Bug 11714 (libbase): Crash in UnameHelper
+    * Bug 11742 (Documentation): Missing documentation for event commands w/ execution bridge
+    * Bug 11757 (API): API: Missing error handling for invalid JSON request body
+    * Bug 11767 (DB IDO): Ensure that program status updates are immediately updated in DB IDO
+    * Bug 11779 (API): Incorrect variable names for joined fields in filters
+
+-------------------------------------------------------------------
+>>>>>>> ./icinga2.changes.r55
+Wed Apr 27 17:38:08 UTC 2016 - ecsos@opensuse.org
+
+- update to upstream version 2.4.7
+  * Bugfixes
+    * Bug 11639: Crash in IdoMysqlConnection::ExecuteMultipleQueries
+- changes from 2.4.6
+  * Feature
+    * Feature 11638: Update RELEASE.md
+  * Bugfixes
+    * Bug 11628: Docs: Zone attribute 'endpoints' is an array
+    * Bug 11634: Icinga 2 fails to build on Ubuntu Xenial
+    * Bug 11635: Failed assertion in IdoPgsqlConnection::FieldToEscapedString
+
+-------------------------------------------------------------------
+Wed Apr 20 13:27:45 UTC 2016 - thardeck@suse.com
+
+- update to upstream version 2.4.5
+  * New configuration attribute for hosts and services: check_timeout (overrides the CheckCommand's timeout when set)
+  * ITL updates
+  * Lots of bugfixes
+
+-------------------------------------------------------------------
+Wed Mar 16 13:24:39 UTC 2016 - thardeck@suse.com
+
+- update to upstream version 2.4.4
+  * Allow to enforce specific SSL versions using the http check command
+  * Add "query" option to check_postgres command.
+  * Lots and lots of various other bugfixes
+- gcc48-c++ is now required
+
+-------------------------------------------------------------------
+Wed Feb 24 08:34:39 UTC 2016 - thardeck@suse.com
+
+- update to upstream version 2.4.2
+  * ITL
+      Additional arguments for check_disk
+      Fix incorrect path for the check_hpasm plugin
+      New command: check_iostat
+      Fix incorrect variable names for the check_impi plugin
+  * Cluster
+      Improve cluster performance
+      Fix connection handling problems (multiple connections for the same endpoint)
+  * Performance improvements for the DB IDO modules
+  * Lots and lots of various other bugfixes
+  * Documentation updates
+
+-------------------------------------------------------------------
+Thu Nov 26 15:45:58 UTC 2015 - thardeck@suse.com
+
+-  update to upstream version 2.4.1
+  * ITL
+      * Add running_kernel_use_sudo option for the running_kernel check
+  * Configuration
+      * Add global constants: `PlatformName`. `PlatformVersion`, `PlatformKernel` and `PlatformKernelVersion`
+  * CLI
+      * Use NodeName and ZoneName constants for 'node setup' and 'node wizard'
+
+-------------------------------------------------------------------
+Mon Nov 16 16:06:37 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.4.0
+  * API
+    * RESTful API with basic auth or client certificates
+    * Filters, types, permissions
+    * configuration package management
+    * query/create/modify/delete config objects at runtime
+    * status queries for global stats
+    * actions (e.g. acknowledge all service problems)
+    * event streams
+  * ITL and Plugin Check Command definitions
+    * The 'running_kernel' check command was moved to the plugins-contrib section. You have to update your config to include 'plugins-contrib'
+  * Configuration
+    * The global constants Enable* and Vars have been removed. Use the IcingaApplication object attributes instead.
+  * Features
+    * New Graphite tree. Please check the documentation how enable the legacy schema.
+    * IcingaStatusWriter feature has been deprecated and will be removed in future versions.
+    * Modified attributes are not exposed as bit mask to external interfaces anymore (api related changes). External commands like CHANGE_*_MODATTR have been removed.
+
+-------------------------------------------------------------------
+Tue Oct 20 11:44:19 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.11
+  * Function for performing CIDR matches: cidr_match()
+  * New methods: String#reverse and Array#reverse
+  * New ITL command definitions: nwc_health, hpasm, squid, pgsql
+  * Additional arguments for ITL command definitions: by_ssh, dig, pop, spop, imap, simap
+  * Documentation updates
+  * Various bugfixes
+
+-------------------------------------------------------------------
+Mon Sep  7 13:54:27 UTC 2015 - thardeck@suse.com
+
+- add icinga2-rpmlintrc as source to spec file
+
+-------------------------------------------------------------------
+Mon Sep  7 06:54:31 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.10
+  * Use the command_endpoint name as check_source value if defined
+  * Various other bugfixes
+
+-------------------------------------------------------------------
+Mon Aug 31 09:56:37 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.9
+  * Fix that the first SOFT state is recognized as second SOFT state
+  * Implemented reload functionality for Windows
+  * New ITL check commands
+  * Documentation updates
+  * Various other bugfixes
+
+-------------------------------------------------------------------
+Tue Jul 21 08:13:58 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.8
+  * Bugfixes
+
+-------------------------------------------------------------------
+Wed Jul 15 11:53:40 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.7
+  * Bugfixes
+  * Feature 9610: Enhance troubleshooting ssl errors & cluster replay log
+
+-------------------------------------------------------------------
+Wed Jul  8 12:12:10 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.6
+  * Require openssl1 on sles11sp3 from Security Module repository
+    * Bug in SLES 11's OpenSSL version 0.9.8j preventing verification of generated certificates.
+    * Re-create these certificates with 2.3.6 linking against openssl1 (cli command or CSR auto-signing).
+  * ITL: Add ldap, ntp_peer, mongodb and elasticsearch CheckCommand definitions
+  * Bugfixes
+
+-------------------------------------------------------------------
+Thu Jun 18 16:27:25 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.5
+  * NSClient++ is now bundled with the Windows setup wizard and can optionally be installed
+  * Windows Wizard: "include <nscp>" is set by default
+  * Windows Wizard: Add update mode
+  * Plugins: Add check_perfmon plugin for Windows
+  * ITL: Add CheckCommand objects for Windows plugins ("include <windows-plugins>")
+  * ITL: Add CheckCommand definitions for "mongodb", "iftraffic", "disk_smb"
+  * ITL: Add arguments to CheckCommands "dns", "ftp", "tcp", "nscp"
+
+-------------------------------------------------------------------
+Wed Apr 22 16:00:21 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.4
+  * Bugfixes
+  * ITL: Check commands for various databases
+  * Improve validation messages for time periods
+  * Update max_check_attempts in generic-{host,service} templates
+  * Update logrotate configuration
+
+-------------------------------------------------------------------
+Mon Mar 30 16:38:49 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.3
+  * Feature 8685: Show state/type filter names in notice/debug log
+  * Feature 8686: Update documentation for "apply for" rules
+  * Feature 8693: New function: parse_performance_data
+  * Feature 8740: Add "access objects at runtime" examples to advanced section
+  * Feature 8761: Include more details in --version
+  * Feature 8816: Add "random" CheckCommand for test and demo purposes
+  * Feature 8827: Move release info in INSTALL.md into a separate file
+  * Bug 8660: Update syntax highlighting for 2.3 features
+  * Bug 8677: Re-order the object types in alphabetical order
+  * Bug 8724: Missing config validator for command arguments 'set_if'
+  * Bug 8734: startup.log broken when the DB schema needs an update
+  * Bug 8736: Don't update custom vars for each status update
+  * Bug 8748: Don't ignore extraneous arguments for functions
+  * Bug 8749: Build warnings with CMake 3.1.3
+  * Bug 8750: Flex version check does not reject unsupported versions
+  * Bug 8753: Fix a typo in the documentation of ICINGA2_WITH_MYSQL and ICINGA2_WITH_PGSQL
+  * Bug 8755: Fix VIM syntax highlighting for comments
+  * Bug 8757: Add missing keywords in the syntax highlighting files
+  * Bug 8762: Plugin "check_http" is missing in Windows environments
+  * Bug 8763: Typo in doc library-reference
+  * Bug 8764: Revamp migration documentation
+  * Bug 8765: Explain processing logic/order of apply rules with for loops
+  * Bug 8766: Remove prompt to create a TicketSalt from the wizard
+  * Bug 8767: Typo and invalid example in the runtime macro documentation
+  * Bug 8769: Improve error message for invalid field access
+  * Bug 8770: object Notification + apply Service fails with error "...refers to service which doesn't exist"
+  * Bug 8771: Correct HA documentation
+  * Bug 8829: Figure out why command validators are not triggered
+  * Bug 8834: Return doesn't work inside loops
+  * Bug 8844: Segmentation fault when executing "icinga2 pki new-cert"
+  * Bug 8862: wrong 'dns_lookup' custom attribute default in command-plugins.conf
+  * Bug 8866: Fix incorrect perfdata templates in the documentation
+  * Bug 8869: Array in command arguments doesn't work
+  * Bug 8721: Log message for cli commands breaks the init script
+
+-------------------------------------------------------------------
+Thu Mar 12 14:45:26 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.1
+  * Feature 8659: Implement String#contains
+  * Bug 8540: Kill signal sent only to check process, not whole process group
+  * Bug 8657: Missing program name in 'icinga2 --version'
+  * Bug 8658: Fix check_disk thresholds: make sure partitions are the last arguments
+  * Bug 8672: Api heartbeat message response time problem
+  * Bug 8673: Fix check_disk default thresholds and document the change of unit
+  * Bug 8679: Config validation fail because of unexpected new-line
+  * Bug 8680: Update documentation for DB IDO HA Run-Once
+  * Bug 8683: Make sure that the /var/log/icinga2/crash directory exists
+  * Bug 8684: Fix formatting for the GDB stacktrace
+  * Bug 8687: Crash in Dependency::Stop
+  * Bug 8691: Debian packages do not create /var/log/icinga2/crash
+
+-------------------------------------------------------------------
+Tue Mar 10 11:46:21 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.3.0
+  * Feature 3446: Add troubleshooting collect cli command
+  * Feature 6109: Don't spawn threads for network connections
+  * Feature 6570: Disallow side-effect-free r-value expressions in expression lists
+  * Feature 6697: Plugin Check Commands: add check_vmware_esx
+  * Feature 6857: Run CheckCommands with C locale (workaround for comma vs dot and plugin api bug)
+  * Feature 6858: Add some more PNP details
+  * Feature 6868: Disable flapping detection by default
+  * Feature 6923: IDO should fill program_end_time on a clean shutdown
+  * Feature 7136: extended Manubulon SNMP Check Plugin Command
+  * Feature 7209: ITL: Interfacetable
+  * Feature 7256: Add OpenTSDB Writer
+  * Feature 7292: ITL: Check_Mem.pl
+  * Feature 7294: ITL: ESXi-Hardware
+  * Feature 7326: Add parent soft states option to Dependency object configuration
+  * Feature 7361: Livestatus: Add GroupBy tables: hostsbygroup, servicesbygroup, servicesbyhostgroup
+  * Feature 7545: Please add labels in SNMP checks
+  * Feature 7564: Access object runtime attributes in custom vars & command arguments
+  * Feature 7610: Variable from for loop not usable in assign statement
+  * Feature 7700: Evaluate apply/object rules when the parent objects are created
+  * Feature 7702: Add an option that hides CLI commands
+  * Feature 7704: ConfigCompiler::HandleInclude* should return an AST node
+  * Feature 7706: ConfigCompiler::Compile* should return an AST node
+  * Feature 7748: Redesign how stack frames work for scripts
+  * [...]
+
+-------------------------------------------------------------------
+Thu Feb  5 16:22:20 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.2.4
+  * Bug #6943: Configured recurring downtimes not applied on saturdays
+  * Bug #7660: livestatus / nsca / etc submits are ignored during reload
+  * Bug #7685: kUn-Bashify mail-{host,service}-notification.sh
+  * Bug #8128: Icinga 2.2.2 build fails on SLES11SP3 because of changed boost dependency
+  * Bug #8131: vfork() hangs on OS X
+  * Bug #8162: Satellite doesn't use manually supplied 'local zone name'
+  * Bug #8192: Feature statusdata shows wrong host notification options
+  * Bug #8201: Update Icinga Web 2 uri to /icingaweb2
+  * Bug #8214: Fix YAJL detection on Debian squeeze
+  * Bug #8222: inconsistent URL http(s)://www.icinga.org
+  * Bug #8223: Typos in readme file for windows plugins
+  * Bug #8245: check_ssmtp command does NOT support mail_from
+  * Bug #8256: Restart fails after deleting a Host
+  * Bug #8288: Crash in DbConnection::ProgramStatusHandler
+  * Bug #8295: Restart of Icinga hangs
+  * Bug #8299: Scheduling downtime for host and all services only schedules services
+  * Bug #8311: Segfault in Checkable::AddNotification
+  * Bug #8321: enable_event_handlers attribute is missing in status.dat
+  * Bug #8368: Output in "node wizard" is confusing
+
+-------------------------------------------------------------------
+Thu Jan 29 13:32:07 UTC 2015 - thardeck@suse.com
+
+- update to upstream version 2.2.3
+  * Bug #8063: Volatile checks trigger invalid notifications on OK->OK state changes
+  * Bug #8125: Incorrect ticket shouldn't cause "node wizard" to terminate
+  * Bug #8126: Icinga 2.2.2 doesn't build on i586 SUSE distributions
+  * Bug #8143: Windows plugin check_service.exe can't find service NTDS
+  * Bug #8144: Arguments without values are not used on plugin exec
+  * Bug #8147: check_interval must be greater than 0 error on update-config
+  * Bug #8152: DB IDO query queue limit reached on reload
+  * Bug #8171: Typo in example of StatusDataWriter
+  * Bug #8178: Icinga 2.2.2 segfaults on FreeBSD
+  * Bug #8181: icinga2 node update config shows hex instead of human readable names
+  * Bug #8182: Segfault on update-config old empty config
+
+-------------------------------------------------------------------
+Thu Dec 18 11:24:53 UTC 2014 - thardeck@suse.com
+
+- removed Use-Icinga-1.x-Apache-conf.patch (fixed upstream)
+- update to upstream version 2.2.2
+  * Bug #7045: icinga2 init-script doesn't validate configuration on reload action
+  * Bug #7064: Missing host downtimes/comments in Livestatus
+  * Bug #7301: Docs: Better explaination of dependency state filters
+  * Bug #7314: double macros in command arguments seems to lead to exception
+  * Bug #7511: Feature `compatlog' should flush output buffer on every new line
+  * Bug #7518: update-config fails to create hosts
+  * Bug #7591: CPU usage at 100% when check_interval = 0 in host object definition
+  * Bug #7618: Repository does not support services which have a slash in their name
+  * Bug #7683: If a parent host goes down, the child host isn't marked as unrechable in the db ido
+  * Bug #7707: "node wizard" shouldn't crash when SaveCert fails
+  * Bug #7745: Cluster heartbeats need to be more aggressive
+  * Bug #7769: The unit tests still crash sometimes
+  * Bug #7863: execute checks locally if command_endpoint == local endpoint
+  * Bug #7878: Segfault on issuing node update-config
+  * Bug #7882: Improve error reporting when libmysqlclient or libpq are missing
+  * Bug #7891: CLI `icinga2 node update-config` doesn't sync configs from remote clients as expected
+  * Bug #7913: /usr/lib/icinga2 is not owned by a package
+  * Bug #7914: SUSE packages %set_permissions post statement wasn't moved to common
+  * Bug #7917: update_config not updating configuration
+  * Bug #7920: Test Classic UI config file with Apache 2.4
+  * Bug #7929: Apache 2.2 fails with new apache conf
+  * [...]
+
+-------------------------------------------------------------------
+Tue Dec  2 17:45:43 UTC 2014 - thardeck@suse.com
+
+- added Use-Icinga-1.x-Apache-conf.patch to fix apache configuration
+
+-------------------------------------------------------------------
+Mon Dec  1 16:31:04 UTC 2014 - thardeck@suse.com
+
+- removed icinga2-make-apache-conf-flexible.conf (fixed upstream)
+- imported upstream spec
+- update to upstream version 2.2.1
+  * Feature #6709: Support for arrays in macros
+  * Feature #7463: Update spec file to use yajl-devel
+  * Feature #7739: The classicui Apache conf doesn't support Apache 2.4
+  * Feature #7747: Increase default timeout for NRPE checks
+  * Feature #7867: Document how arrays in macros work
+  * Bug #7173: service icinga2 status gives wrong information when run as unprivileged user
+  * Bug #7602: livestatus large amount of submitting unix socket command results in broken pipes
+  * Bug #7613: icinga2 checkconfig should fail if group given for command files does not exist
+  * Bug #7671: object and template with the same name generate duplicate object error
+  * Bug #7708: Built-in commands shouldn't be run on the master instance in remote command execution mode
+  * Bug #7725: Windows wizard uses incorrect CLI command
+  * Bug #7726: Windows wizard is missing --zone argument
+  * Bug #7730: Restart Icinga - Error Restoring program state from file '/var/lib/icinga2/icinga2.state'
+  * Bug #7735: 2.2.0 has out-of-date icinga2 man page
+  * Bug #7738: Systemd rpm scripts are run in wrong package
+  * Bug #7740: /usr/sbin/icinga-prepare-dirs conflicts in the bin and common package
+  * Bug #7741: Icinga 2.2 misses the build requirement libyajl-devel for SUSE distributions
+  * Bug #7743: Icinga2 node add failed with unhandled exception
+  * Bug #7754: Incorrect error message for localhost
+  * [...]
+
+-------------------------------------------------------------------
+Thu Nov 20 14:17:52 UTC 2014 - thardeck@suse.com
+
+- imported upstream spec (`python-icinga2` package dropped)
+- added icinga2-make-apache-conf-flexible.conf to make the Apache conf work with Apache 2.4
+- added new build requirement libyajl-devel
+- update to upstream version 2.2.0
+  * `python-icinga2` package dropped in favor of integrated cli commands #7245
+  * DB IDO schema update to version `1.12.0`
+  * [GelfWriter](#gelfwriter): Logging check results, state changes, notifications to GELF (graylog2, logstash) #7619
+  * Agent/Client/Node framework #7249
+  * Windows plugins for the client/agent parts #7242 #7243
+  * `icinga2 feature {enable,disable}` replaces `icinga2-{enable,disable}-feature` script  #7250
+  * `icinga2 object list` replaces `icinga2-list-objects` script  #7251
+  * `icinga2 pki` replaces` icinga2-build-{ca,key}` scripts  #7247
+  * `icinga2 repository` manages `/etc/icinga2/repository.d` which must be included in `icinga2.conf` #7255
+  * `icinga2 node` cli command provides node (master, satellite, agent) setup (wizard) and management functionality #7248
+  * `icinga2 daemon` for existing daemon arguments (`-c`, `-C`). Removed `-u` and `-g` parameters in favor of [init.conf](#init-conf).
+  * bash auto-completion & terminal colors #7396
+  * Former `localhost` example host is now defined in [hosts.conf](#hosts-conf) #7594
+  * All example services moved into advanced apply rules in [services.conf](#services-conf)
+  * Updated downtimes configuration example in [downtimes.conf](#downtimes-conf) #7472
+  * Updated notification apply example in [notifications.conf](#notifications-conf) #7594
+  * [...]
+
+-------------------------------------------------------------------
+Tue Sep 16 13:12:44 UTC 2014 - thardeck@suse.com
+
+- update to upstream version 2.1.1
+  * Bug #6147: Link libcJSON against libm
+  * Bug #6696: make test fails on openbsd
+  * Bug #6841: Too many queued messages
+  * Bug #6862: SSL_read errors during restart
+  * Bug #6981: SSL errors with interleaved SSL_read/write
+  * Bug #7029: icinga2.spec: files-attr-not-set for python-icinga2 package
+  * Bug #7032: "Error parsing performance data" in spite of "enable_perfdata = false"
+  * Bug #7036: Remove validator for the Script type
+  * Bug #7037: icinga2-list-objects doesn't work with Python 3
+  * Bug #7038: Fix rpmlint errors
+  * Bug #7042: icinga2-list-objects complains about Umlauts and stops output
+  * Bug #7044: icinga2 init-script terminates with exit code 0 if $DAEMON is not in place or not executable
+  * Bug #7047: service icinga2 status - prints cat error if the service is stopped
+  * Bug #7058: Exit code is not initialized for some failed checks
+  * Bug #7065: pipe2 returns ENOSYS on GNU Hurd and Debian kfreebsd
+  * Bug #7072: GraphiteWriter should ignore empty perfdata value
+  * Bug #7080: Missing differentiation between service and systemctl
+  * Bug #7096: new SSL Errors with too many queued messages
+  * Bug #7115: Build fails on Haiku
+  * Bug #7123: Manubulon-Plugin conf Filename wrong
+  * Bug #7139: GNUInstallDirs.cmake outdated
+  * [...]
+
+-------------------------------------------------------------------
+Fri Aug 29 15:13:53 UTC 2014 - thardeck@suse.com
+
+- update to upstream version 2.1
+  * DB IDO schema upgrade ([MySQL](#upgrading-mysql-db),[PostgreSQL](#upgrading-postgresql-db) required!
+      * new schema version: **1.11.7**
+      * RPMs install the schema files into `/usr/share/icinga2-ido*` instead of `/usr/share/doc/icinga2-ido*` #6881
+  * [Information for config objects](#list-configuration-objects) using `icinga2-list-objects` script #6702
+  * Add Python 2.4 as requirement #6702
+  * Add search path: If `-c /etc/icinga2/icinga2.conf` is omitted, use `SysconfDir + "/icinga2/icinga2.conf"` #6874
+  * Change log level for failed commands #6751
+  * Notifications are load-balanced in a [High Availability cluster setup](#high-availability-notifications) #6203
+      * New config attribute: `enable_ha`
+  * DB IDO "run once" or "run everywhere" mode in a [High Availability cluster setup](#high-availability-db-ido) #6203 #6827
+      * New config attributes: `enable_ha` and `failover_timeout`
+  * RPMs use the `icingacmd` group for /var/{cache,log,run}/icinga2 #6948
+  * Bug #6881: make install does not install the db-schema
+  * Bug #6915: use _rundir macro for configuring the run directory
+  * Bug #6916: External command pipe: Too many open files
+  * Bug #6917: enforce /usr/lib as base for the cgi path on SUSE distributions
+  * Bug #6942: ExternalCommandListener fails open pipe: Too many open files
+  * Bug #6948: check file permissions in /var/cache/icinga2
+  * Bug #6962: Commands are processed multiple times
+  * [...]
+
+-------------------------------------------------------------------
+Thu Aug 14 10:43:55 UTC 2014 - thardeck@suse.com
+
+- remove idoutils provides statement
+- replace icinga-apache-conf.patch by a sed statement
+
+-------------------------------------------------------------------
+Thu Aug  7 15:44:11 UTC 2014 - thardeck@suse.com
+
+- recommend monitoring-plugins
+- reactivate icinga-apache-conf.patch
+
+-------------------------------------------------------------------
+Thu Aug  7 14:43:40 UTC 2014 - thardeck@suse.com
+
+- removed obsolete icinga2-ignore-install-doc.patch
+- use updated upstream icinga2.spec as base
+- add _rundir variable to set path for cmd file
+- update to upstream version 2.0.2
+  * Bug #6450: ipmi-sensors segfault due to stack size
+  * Bug #6479: Notifications not always triggered
+  * Bug #6501: Classic UI Debian/Ubuntu: apache 2.4 requires 'a2enmod cgi' & apacheutils installed
+  * Bug #6548: Add cmake constant for PluginDir
+  * Bug #6549: GraphiteWriter regularly sends empty lines
+  * Bug #6550: add log message for invalid performance data
+  * Bug #6589: Command pipe blocks when trying to open it more than once in parallel
+  * Bug #6621: Infinite loop in TlsStream::Close
+  * Bug #6627: Location of the run directory is hard coded and bound to "local_state_dir"
+  * Bug #6659: RPMLint security warning - missing-call-to-setgroups-before-setuid /usr/sbin/icinga2
+  * Bug #6682: Missing detailed error messages on ApiListener SSL Errors
+  * Bug #6686: Event Commands are triggered in OK HARD state everytime
+  * Bug #6687: Remove superfluous quotes and commas in dictionaries
+  * Bug #6713: sample config: add check commands location hint (itl/plugin check commands)
+  * Bug #6718: "order" attribute doesn't seem to work as expected
+  * Bug #6724: TLS Connections still unstable in 2.0.1
+  * Bug #6756: GraphiteWriter: Malformatted integer values
+  * Bug #6765: Config validation without filename argument fails with unhandled exception
+  * [...]
+
+-------------------------------------------------------------------
+Thu Jul 10 15:27:02 UTC 2014 - thardeck@suse.com
+
+- update to upstream version 2.0.1
+  * Feature #6531: Add port option to check imap/pop/smtp and a new dig
+  * Feature #6581: Add more options to snmp check
+  * DB IDO - Bug #5577: PostgreSQL string escaping
+  * DB IDO - Bug #6577: icinga2-ido-pgsql snapshot package missing dependecy dbconfig-common
+  * Documentation - Bug #6506: Array section confusing
+  * Documentation - Bug #6592: Documentation for || and && is missing
+  * Documentation - Feature #6658: change docs.icinga.org/icinga2/latest to git master
+  * Livestatus - Bug #6494: Thruk Panorama View cannot query Host Status
+  * Livestatus - Feature #5312: OutputFormat python
+  * Migration - Bug #6559: $SERVICEDESC$ isn't getting converted correctly
+  * Bug #6316: application fails to start on wrong log file permissions but does not tell about it
+  * Bug #6368: Deadlock in ApiListener::RelayMessage
+  * Bug #6373: base64 on CentOS 5 fails to read certificate bundles
+  * Bug #6388: Debian package icinga2-classicui needs versioned dependency of icinga-cgi*
+  * Bug #6488: build warnings
+  * Bug #6492: icinga2.state could not be opened
+  * Bug #6493: Copyright problems
+  * Bug #6498: icinga2 cannot be built with both systemd and init.d files
+  * Bug #6510: Reminder notifications are sent on disabled services
+  * [...]
+
+-------------------------------------------------------------------
+Mon Jul  7 08:15:43 UTC 2014 - thardeck@suse.com
+
+- restore the icinga-apache patch since upstream has a different path
+- move "Provides icinga-idoutils" to the correct locations
+- remove "Provides" for icinga and nagios
+- added rpmlintrc to filter improper warnings
+
+-------------------------------------------------------------------
+Sat Jul  5 09:33:06 UTC 2014 - thardeck@suse.com
+
+- fix service user permissions
+- replace apache icinga.conf patch by sed statement
+
+-------------------------------------------------------------------
+Fri Jul  4 17:06:54 UTC 2014 - thardeck@suse.com
+
+- reduce spec file redundancies
+- run SUSE related changes only on SUSE distributions
+- revert post install script regression
+- make sure that icinga2 is not an empty package
+
+-------------------------------------------------------------------
+Thu Jul  3 16:16:55 UTC 2014 - thardeck@suse.com
+
+- initial version 2.0.0
+  - icinga-www is already compatible if icinga2-classicui-config is installed but then it can't interact with Icinga 1
+  - icinga-web needs manual config changes to work with icinga2 atm

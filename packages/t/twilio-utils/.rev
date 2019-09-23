@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0f331d62b38aa775a2b84a003a309c3</srcmd5>
+    <version>1.0.3</version>
+    <time>1370432314</time>
+    <user>coolo</user>
+    <comment>Resubmit with newer version avoiding previous conflict with /usr/bin/sendsms</comment>
+    <requestid>176877</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d0f331d62b38aa775a2b84a003a309c3</srcmd5>
+    <version>1.0.3</version>
+    <time>1379664855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba7b6e9655078c9ff99fe9e925c65e65</srcmd5>
+    <version>1.0.5</version>
+    <time>1379945146</time>
+    <user>coolo</user>
+    <comment>Update to release 1.0.5</comment>
+    <requestid>200192</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ba7b6e9655078c9ff99fe9e925c65e65</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>df80a95af94d0d048da399cb97dd8658</srcmd5>
+    <version>1.0.5</version>
+    <time>1409998683</time>
+    <user>coolo</user>
+    <comment>- Fix logger(1) dependency on openSUSE &gt; 13.1</comment>
+    <requestid>247302</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>0906b72ac8b9ffdbfb299bf5a1ee9931</srcmd5>
+    <version>1.0.5</version>
+    <time>1507065557</time>
+    <user>dimstar_suse</user>
+    <comment>- Change RPM dependency &quot;php5&quot; -&gt; &quot;php&quot; (bsc#1058103)</comment>
+    <requestid>530771</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,28 @@
+<package name="perl-Encode" project="openSUSE:Factory">
+  <title>character encodings in Perl</title>
+  <description>The 'Encode' module provides the interface between Perl strings and the
+rest of the system. Perl strings are sequences of _characters_.
+
+The repertoire of characters that Perl can represent is a superset of those
+defined by the Unicode Consortium. On most platforms the ordinal values of
+a character as returned by 'ord(_S_)' is the _Unicode codepoint_ for that
+character. The exceptions are platforms where the legacy encoding is some
+variant of EBCDIC rather than a superset of ASCII; see the perlebcdic
+manpage.
+
+During recent history, data is moved around a computer in 8-bit chunks,
+often called &quot;bytes&quot; but also known as &quot;octets&quot; in standards documents.
+Perl is widely used to manipulate data of many types: not only strings of
+characters representing human or computer languages, but also &quot;binary&quot;
+data, being the machine's representation of numbers, pixels in an image, or
+just about anything.
+
+When Perl is processing &quot;binary data&quot;, the programmer wants Perl to process
+&quot;sequences of bytes&quot;. This is not a problem for Perl: because a byte has
+256 possible values, it easily fits in Perl's much larger &quot;logical
+character&quot;.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Encode"/>
+  <url>http://search.cpan.org/dist/Encode/</url>
+</package>

@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Sun Apr 28 05:13:41 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.104
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.104     2019-04-27 10:50:50+01:00 Europe/London
+          - allow for verbatim text in descripition options
+
+-------------------------------------------------------------------
+Fri Aug  3 05:23:48 UTC 2018 - coolo@suse.com
+
+- updated to 0.103
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.103     2018-08-02 11:11:30-04:00 America/New_York
+          - show --[no-]option for boolean toggle options
+
+-------------------------------------------------------------------
+Wed Feb 21 06:23:35 UTC 2018 - coolo@suse.com
+
+- updated to 0.102
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.102     2018-02-20 14:44:17-05:00 America/New_York
+          - long spacer lines are now line broken
+          - "empty" spacer lines no longer have leading whitespace
+          - option specifications ":+" and ":5" (etc.) now get better
+            presentation in the usage description
+
+-------------------------------------------------------------------
+Wed Feb  7 16:34:51 UTC 2018 - coolo@suse.com
+
+- updated to 0.101
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.101     2018-01-21 19:32:11-05:00 America/New_York
+          - escape some unescaped braces in regex
+
+-------------------------------------------------------------------
+Wed Jul 13 05:22:15 UTC 2016 - coolo@suse.com
+
+- updated to 0.100
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.100     2016-07-11 22:21:26-04:00 America/New_York
+          - show off "shortcircuit" in synopsis (thanks, Zhenyi Zhou)
+          - Fix rendering of complex types ('i@' → 'INT...', etc)
+            (thanks, Arthur Axel fREW Schmidt)
+
+-------------------------------------------------------------------
+Mon Apr 13 19:09:38 UTC 2015 - coolo@suse.com
+
+- updated to 0.099
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.099     2015-01-23 21:11:09-05:00 America/New_York
+          - options that take arguments now indicate the argument's type and
+            whether it can be given multiply (thanks, Niels Thykier)
+  
+  0.098     2014-11-16 14:35:34-05:00 America/New_York
+          - when showing defaults, show false ones, too
+
+-------------------------------------------------------------------
+Fri Mar  7 09:22:21 UTC 2014 - coolo@suse.com
+
+- updated to 0.097
+    - explicitly make the default behavior case-sensitive
+    - add show_defaults option (thanks, Thomas Neumann)
+
+-------------------------------------------------------------------
+Tue Oct  8 06:14:40 UTC 2013 - coolo@suse.com
+
+- updated to 0.096
+      - update version of Test::Warnings required
+         (thanks, Alexandr Ciornii!)
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.095
+        - add the "shortcircuit" option option (thanks, Diab Jerius!)
+        - update documentation to note that failed validation is fatal (thanks,
+          SMYLERS)
+        - show off "required" in the SYNOPSIS (thanks, OALDERS)
+
+-------------------------------------------------------------------
+Wed Jun  5 05:47:21 UTC 2013 - coolo@suse.com
+
+- updated to 0.093
+       bogus %-codes in usage description are now noticed and fatal
+       make "hidden" options usable on their own (thanks, Roman Hubacek!)
+
+-------------------------------------------------------------------
+Thu Feb 23 09:57:22 UTC 2012 - coolo@suse.com
+
+- updated to 0.091
+      don't die quite so violently when a Params::Validate constraint fails
+      (initial patch by harleypig@github; final blame to RJBS)
+
+-------------------------------------------------------------------
+Fri Sep 16 11:51:35 UTC 2011 - coolo@suse.com
+
+- updated to 0.090
+  bump prereq on Params::Validate to deal with recent buggy versions
+
+-------------------------------------------------------------------
+Fri Sep 16 11:51:04 UTC 2011 - coolo@suse.com
+
+- remove %attr for docu
+
+-------------------------------------------------------------------
+Wed Apr  6 12:17:22 UTC 2011 - coolo@novell.com
+
+- updated to 0.089
+    bump version to deal with busted PAUSE indexing
+    fix infinite loop when long option documentation strings couldn't wrap
+    (HDP)
+
+-------------------------------------------------------------------
+Wed Dec 29 23:46:35 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.087
+- regenerated spec file as it was based on the very old cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 13:25:28 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:00:23 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Tue Jan 12 00:00:00 UTC 2010 - nine@detonation.org
+
+- Specfile autogenerated by cpanspec 1.78.
+

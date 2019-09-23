@@ -1,0 +1,7 @@
+<package name="guile1" project="openSUSE:Factory">
+  <title>GNU's Ubiquitous Intelligent Language for Extension</title>
+  <description>This is Guile, a portable, embeddable Scheme implementation written in
+C. Guile provides a machine independent execution platform that can be
+linked in as a library when building extensible programs.</description>
+  <devel project="devel:languages:misc" package="guile1"/>
+</package>

@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bac874c3f07dbd561b11acdd508cc2be</srcmd5>
+    <version>0.10.11</version>
+    <time>1457353386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>361427</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>66dd60b01790c581a4217fb090c6ab0a</srcmd5>
+    <version>0.11.6</version>
+    <time>1483955589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>447316</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bde70292da88ce1619a5830476c9190b</srcmd5>
+    <version>0.11.6</version>
+    <time>1485383503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452014</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>cb8f237946e051c9f2b25f7e7aa0e29b</srcmd5>
+    <version>0.11.6</version>
+    <time>1496225954</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in openSUSE:Factory by doing the right thing (forwarded request 495452 from dimstar)</comment>
+    <requestid>498971</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c53ac1c66c79bd68a6ab76b23124379a</srcmd5>
+    <version>0.11.10</version>
+    <time>1519683939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580001</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ef0c93f5a39bd31e80485d2dda3aebad</srcmd5>
+    <version>0.11.10</version>
+    <time>1519747228</time>
+    <user>dimstar_suse</user>
+    <comment>- add firewalld service 
+</comment>
+    <requestid>580606</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>acf16852cd2a13bae8fda223ac8f6b13</srcmd5>
+    <version>0.12.0</version>
+    <time>1526463581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606702</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b4e677cdaf0424d3e2cc761d5259833</srcmd5>
+    <version>0.12.1</version>
+    <time>1527605542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612713</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a6695ddd18a5cac17d29fc932e5182d</srcmd5>
+    <version>0.12.2</version>
+    <time>1548452736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668707</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>342bfec6b21d823cc5e70bbc0833745c</srcmd5>
+    <version>0.12.3</version>
+    <time>1556312080</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697985</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9150825fe710b51d9527ec5c92c1ce13</srcmd5>
+    <version>0.12.3</version>
+    <time>1565775490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723235</requestid>
+  </revision>
+</revisionlist>

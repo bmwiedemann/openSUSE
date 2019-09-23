@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71b7f47dbd85749615bc10b8ba8df9a4</srcmd5>
+    <version>1.0</version>
+    <time>1473798144</time>
+    <user>dimstar_suse</user>
+    <comment>Package that provides RPM macros used to setup apparmor profiles for packaging.
+
+The initial package only contains %apparmor_reload to (re)load a profile.</comment>
+    <requestid>408380</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a59988a9296978f024c99f008d8a041d</srcmd5>
+    <version>1.0</version>
+    <time>1484660101</time>
+    <user>dimstar_suse</user>
+    <comment>it's not base, it's rpm development (forwarded request 449658 from jengelh)</comment>
+    <requestid>449662</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5d13dfa1de0a671403d66cca247a3e16</srcmd5>
+    <version>1.0</version>
+    <time>1503926288</time>
+    <user>dimstar_suse</user>
+    <comment>- %apparmor_reload: skip and regenerate cache to make sure the latest
+  profile gets always used (even if the existing cache is newer)
+
+(+ a whitespace fix in an old changelog entry)</comment>
+    <requestid>518929</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e255eef7c9d0a96342f06645f591a960</srcmd5>
+    <version>1.0</version>
+    <time>1520160738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580982</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ac79fe807fea091acd352d4d32d822af</srcmd5>
+    <version>1.0</version>
+    <time>1560337281</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706063</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>51aded133ffe4c4190f1c647f2de4618</srcmd5>
+    <version>1.0</version>
+    <time>1566912080</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't assume systemctl is already installed or available at all.
+- Files in /usr/lib/rpm/macros.d are no config files (forwarded request 724522 from kukuk)</comment>
+    <requestid>724552</requestid>
+  </revision>
+</revisionlist>

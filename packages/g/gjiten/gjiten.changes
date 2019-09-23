@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Wed Aug 21 12:51:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- As a result of port-to-GSettings.patch(?), gjiten no longer found
+  its dictionaries. Add more symlinks from /usr/share/gjiten to
+  /usr/share/edict and drop the GJITEN_DICDIR change from
+  gjiten-dirs.patch.
+
+-------------------------------------------------------------------
+Thu Aug  8 15:04:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Add patches from debian porting gjiten to a more modern build.
+  * configure-set-foreign.patch
+  * stop-using-gnome-common.patch
+  * stop-using-libgnome-ui.patch
+  * switch-to-GtkBuilder.patch
+  * port-to-GSettings.patch
+- Drop configure.patch and schemas.patch, part of debian patch set.
+- Following above patch set:
+  * Drop libglade2-devel, libgnomeui-devel, scrollkeeper,
+    libgnome-keyring-devel and gnome-keyring-devel BuildRequires:
+    No longer needed.
+  * Add autoconf-archive, pkgconfig, pkgconfig(gmodule-export-2.0),
+    pkgconfig(gsettings-desktop-schemas) and pkgconfig(gtk+-2.0)
+    BuildRequires: New dependencies.
+  * Drop all old workarounds for various versions of openSUSE.
+- Use modern macros.
+
+-------------------------------------------------------------------
+Mon Nov 26 02:56:53 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Unbundle radkfile and symlink to edict instead.
+- Replace old $RPM_* shell vars. Remove redundant %clean section.
+- Drop spec code for openSUSE < 10.2.
+
+-------------------------------------------------------------------
+Sun Jul 27 14:00:27 CST 2014 - hillwood@linuxfans.org
+
+- Fix build for openSUSE 13.2 
+
+-------------------------------------------------------------------
+Wed Feb 15 17:27:13 CET 2012 - tiwai@suse.de
+
+- clean up spec file: fix Makefile.am to build properly, remove
+  obsoleted suse macro
+- Enable parallel builds
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:02 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Mon Jan  4 13:09:34 CET 2010 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel on 11.3 and later, following the module
+  split upstream.
+
+-------------------------------------------------------------------
+Tue Dec 18 19:29:02 CET 2007 - mfabian@suse.de
+
+- Bugzilla #348100: sometimes the radicals window in gjiten
+  was empty. Fix from upstream CVS. 
+
+-------------------------------------------------------------------
+Thu Oct 11 13:07:20 CEST 2007 - sbrabec@suse.cz
+
+- Removed false dependency on avahi.
+
+-------------------------------------------------------------------
+Mon May 21 18:16:32 CEST 2007 - mfabian@suse.de
+
+- fix build on STABLE (remove X-SuSE-translate=true from .desktop
+  file).
+
+-------------------------------------------------------------------
+Mon Mar 12 15:57:34 CET 2007 - mfabian@suse.de
+
+- fix build on STABLE: adapt installtion of schemas for
+  openSUSE > 10.2.
+
+-------------------------------------------------------------------
+Wed Jan 24 19:23:32 CET 2007 - mfabian@suse.de
+
+- make it build in older distributions in the openSUSE build
+  service.
+
+-------------------------------------------------------------------
+Wed Jan 24 16:42:52 CET 2007 - mfabian@suse.de
+
+- update to 2.6:
+  • DTD location changed in docbook doc (John Thacker).
+  • Don't look up kanji if there is a selection.
+  • Configurable toolbar/menubar was causing problems, removed.
+  • Add de_CH translation and close debian bug #314089.
+  • Japanese translation update (Daichi Kawahata).
+  • Shade unavailable radicals in radical window
+  • radkfile update.
+- make it build on older openSUSE releases by determining
+  gnome_prefix automatically.
+- use find_lang macro.
+
+-------------------------------------------------------------------
+Mon Jan 22 22:44:16 CET 2007 - aj@suse.de
+
+- Move to /usr
+
+-------------------------------------------------------------------
+Sat Oct  7 12:48:02 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Thu Sep 07 17:28:14 CEST 2006 - mfabian@suse.de
+
+- update to CVS version 2.5.20060907 to fix the problem that the
+  radicals are not displayed in the result field when using
+  the kanji dictionary. 
+
+-------------------------------------------------------------------
+Thu Sep 07 15:45:59 CEST 2006 - mfabian@suse.de
+
+- update to 2.5.
+  • Kanji can be clicked in WordDic for KanjiDic lookup.
+    (Mboso Sampson)
+  • Regenerated autoconf scripts for kfreebsd support.
+  • Fixed possible buffer overflows.
+  • Fixed stroke count search when irrelevant results showed up. 
+  • History buffer overrun fixed (John Thacker).
+  • Updated spec for FC3
+  • Fixed segfault with invalid dicfile in the schema.
+- remove schemasdir.patch (included upstream).
+
+-------------------------------------------------------------------
+Fri Jun 16 12:07:44 CEST 2006 - schwab@suse.de
+
+- Fix syntax error in configure script.
+
+-------------------------------------------------------------------
+Wed Mar 01 12:24:18 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(libgnome:ja)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jun 21 16:15:15 CEST 2005 - mfabian@suse.de
+
+- set correct default dictionary paths and other default values
+  in schemas.in.
+
+-------------------------------------------------------------------
+Fri Jun 10 18:53:36 CEST 2005 - mfabian@suse.de
+
+- update to 2.4.
+- Gettext fix for kanji info pref dialog. (Daichi Kawahata)
+- KanjiDic segv on CTRL-Q fixed. (Alexis S. L. Carvalho)
+- Japanese translation fixes and desktop file i18n.
+  (Daichi Kawahata)
+- Dicfile match colorization fix for gettext translation.
+- KanjiDic history width problem fixed.
+- Added support for the Chinese CEDICT dictionary.
+- German translation update. (Gregor Riepl)
+- Optional unicode radicals in KanjiDic.
+- Don't limit if result limit is < 1.
+- Perl script for automated dictionary setup
+  (system-wide or user-only).
+- Gconf schema for system-wide settings.
+- Fixed help menu.
+
+-------------------------------------------------------------------
+Tue Jan 25 18:26:19 CET 2005 - uli@suse.de
+
+- update -> 2.3 (search hiragana on katakana input and vice versa,
+  code cleanup, fixes 'whole expression' matching with newer edict
+  files, unlimited number of dictionary files, radkfile updated,
+  bugfixes, minor enhancements)
+
+-------------------------------------------------------------------
+Tue Dec 14 22:20:31 CET 2004 - hvogel@suse.de
+
+- fix desktop file 
+
+-------------------------------------------------------------------
+Wed May 26 16:13:50 CEST 2004 - ro@suse.de
+
+- do not define GTK_DISABLE_DEPRECATED
+
+-------------------------------------------------------------------
+Sat Jan 10 20:20:27 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sun Aug 24 14:15:54 CEST 2003 - mfabian@suse.de
+
+- update to 2.1 (Gnome2 version).
+  The EDICT dictionaries MUST be UTF-8 encoded now!
+
+-------------------------------------------------------------------
+Sat Jun 14 00:55:35 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Fri Sep 27 14:36:04 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Sat Jan 19 20:03:12 CET 2002 - mfabian@suse.de
+
+- update to gjiten-1.0
+  New stuff and fixes in v1.0 according to the author
+  Botond Botyanszki <boti@beer.com>:
+  - "Reply overrun" crashes with the JP-German GDICT fixed.
+  - Search options are saved on exit.
+  - Limit search results in word dictionary.
+  - Kanji info window moved to the main KanjiDic window.
+  - KanjiDic kanji-info history.
+  - Automatic vertical scrollbars.
+  - Bigger fonts for KanjiDic.
+  - Word dictionary fonts also customizable in preferences.
+
+-------------------------------------------------------------------
+Sat Nov  3 14:36:04 CET 2001 - mfabian@suse.de
+
+- update to gjiten-0.9
+- remove gjiten-0.8-fix-for-crash-with-fvwm2.patch
+  (included upstream)
+- remove gjiten-0.8-fix-for-64bit.patch (included upstream)
+  New stuff and fixes in v0.9 according to the author
+  Botond Botyanszki <boti@beer.com>:
+  - History saving (up to 50 entries) on exit.
+  - Auto adjust search options if no match is found.
+  - Now starts up properly with gnome/gtk specific cmd line options.
+  - Updated for the IA64 architecture.
+  - Shouldn't crash with Fvwm2 anymore.
+  - dpkg-buildpackage should work under debian potato from now.
+  - Dicfile limit raised to 40.
+  - Added Back/Forward buttons to the toolbar.
+  - Radkfile updated.
+  - Fixed history behaviour (garbage, whitespace, case sensitivity)
+  - Segfault on unconfigured exit fixed.
+  - Numerous small bugfixes.
+
+-------------------------------------------------------------------
+Sun Sep 16 14:46:27 CEST 2001 - mfabian@suse.de
+
+- make it work on ia64
+- fix for crash when using gjiten with fvwm 2.4.0
+
+-------------------------------------------------------------------
+Tue Sep  4 16:25:13 CEST 2001 - schwab@suse.de
+
+- Fix portability.
+
+-------------------------------------------------------------------
+Tue Sep  4 13:11:24 CEST 2001 - mfabian@suse.de
+
+- upgrade to gjiten-0.8
+- remove gjiten-0.7-setlocale.patch, now included upstream
+- share same data with xjdic and
+  make gjiten require xjdic-data and xjdic-indices instead of
+  including the same data in gjiten as well
+- default dictionary location changed to /usr/share/edict
+
+-------------------------------------------------------------------
+Tue Mar 20 18:57:15 CET 2001 - uli@suse.de
+
+- added esound* to neededforbuild
+
+-------------------------------------------------------------------
+Tue Jan  2 19:01:39 CET 2001 - mfabian@suse.de
+
+- corrected problem with setlocale():
+  setlocale() must be called before bindtextdomain() and
+  textdomain()
+
+-------------------------------------------------------------------
+Thu Nov  9 20:38:00 CET 2000 - Mike Fabian <mfabian@suse.de>
+
+- new package: gjiten-0.7
+

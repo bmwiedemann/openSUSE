@@ -1,0 +1,24 @@
+diff -aruN slurm-2.4.4.orig/etc/init.d.slurmdbd.in slurm-2.4.4/etc/init.d.slurmdbd.in
+--- slurm-2.4.4.orig/etc/init.d.slurmdbd.in	2012-11-02 17:46:12.000000000 +0100
++++ slurm-2.4.4/etc/init.d.slurmdbd.in	2012-11-17 19:00:06.079651971 +0100
+@@ -15,7 +15,7 @@
+ # Required-Stop:     $remote_fs $syslog $network munge
+ # Should-Start:      $named
+ # Should-Stop:       $named
+-# Default-Start:     2 3 4 5
++# Default-Start:     2 3 5
+ # Default-Stop:      0 1 6
+ # Short-Description: SLURM database daemon
+ # Description:       Start slurm to provide database server for SLURM
+diff -aruN slurm-2.4.4.orig/etc/init.d.slurm.in slurm-2.4.4/etc/init.d.slurm.in
+--- slurm-2.4.4.orig/etc/init.d.slurm.in	2012-11-02 17:46:12.000000000 +0100
++++ slurm-2.4.4/etc/init.d.slurm.in	2012-11-17 18:59:51.799652475 +0100
+@@ -19,7 +19,7 @@
+ # Required-Stop:     $remote_fs $syslog $network munge
+ # Should-Start:      $named
+ # Should-Stop:       $named
+-# Default-Start:     2 3 4 5
++# Default-Start:     2 3 5
+ # Default-Stop:      0 1 6
+ # Short-Description: slurm daemon management
+ # Description:       Start slurm to provide resource management

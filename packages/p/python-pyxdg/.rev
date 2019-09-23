@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e88551eee9786f77dee76092514c3143</srcmd5>
+    <version>0.25</version>
+    <time>1446208986</time>
+    <user>dimstar_suse</user>
+    <comment>This replaces the current python-xdg package.  This is the same program, but conforms to openSUSE python package naming conventions, has a more up-to-date, easy-to-maintain spec file, and implements unit tests.</comment>
+    <requestid>340367</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d7869f018c1b83768c27da417b6b50d</srcmd5>
+    <version>0.25</version>
+    <time>1494345783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493090</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>875c5ede2a6d5534fbfb83338d0a1a12</srcmd5>
+    <version>0.25</version>
+    <time>1507065475</time>
+    <user>dimstar_suse</user>
+    <comment>- drop test-icon test that fails because its standard is too old
+- drop hicolor-icon-theme requirement which was needed for that test</comment>
+    <requestid>530488</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ae05ec8291a86bb671672bced85f1b0</srcmd5>
+    <version>0.26</version>
+    <time>1527583194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.0:
+  * IconTheme: Add support for Scale and ScaledDirectories keys.
+  * DesktopEntry: New method findTryExec()
+  * Menu: More efficient processing of filter rules by building a Python AST
+  * Mime: Prefer the first mimetype found for a file extension, instead of the last
+  * Mime: Allow unknown magic-matching rule formats
+  * Mime: GlobDB has new methods first_match and all_matches for matching paths
+  * Mime: New function get_extensions to get extensions for a given mime type
+  * Mime: Fix MagicDB.match_data crashing with an unknown 'possible' mimetype
+  * Mime: Correctly handle __NOMAGIC__ rule removing previous magic matches
+  * Menu: XML parsing reworked
+  * BaseDirectory: More secure creation of a fallback runtime directory with get_runtime_dir(strict=False)
+  * Various miscellaneous improvements to testing.
+
+- Fix provides/obsoletes to actually provide python2-xdg too</comment>
+    <requestid>611402</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>479c27fe0058e328127992b6da9b9e7a</srcmd5>
+    <version>0.26</version>
+    <time>1545866893</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659628</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b26e4c1873edc04d143afe075afb6dd8</srcmd5>
+    <version>0.26</version>
+    <time>1556474235</time>
+    <user>maxlin_factory</user>
+    <comment>- add resource_leak.patch - Fix several ResourceWarnings: unclosed file</comment>
+    <requestid>697506</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c4ea118b809d53f3fe515db6bebb6ac3</srcmd5>
+    <version>0.26</version>
+    <time>1569233833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731156</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Sun May 19 14:44:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.18
+  * Add support for loading multiple TMC location databases by
+    specifying --loctable more than once.
+  * Sample rate can also be specified as -r 171k instead of -r 171000.
+  * Fix a crash if the input audio file couldn't be loaded.
+  * Print usage help instead of error message when stdin is empty.
+  * Speed up loading of TMC location database.
+  * Improve block sync detection by ignoring spurious sync pulses.
+  * Fine-tune filter bandwidths for better sensitivity, based on
+    test runs.
+  * At EOF, process the last partially received group.
+  * Remove character codetables G1 and G2 since they don't appear
+    in the latest RDS standard any more.
+  * Clean up code to ensure maintainability. Redsea now requires
+    a compiler that supports C++14.
+
+-------------------------------------------------------------------
+Fri Dec 14 00:11:07 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias, extend description.
+
+-------------------------------------------------------------------
+Fri Jun  8 15:42:04 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.17.1
+  Bugfix release.
+  * Return exit value 0 if --version or --help was requested
+  * Don't open stdout for libsndfile unless --feed-through was
+    specified, otherwise json can't be written (this may break the
+    feed-through on Linux temporarily)
+
+-------------------------------------------------------------------
+Tue Jun  5 18:06:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.17.0
+  * Change the type of the JSON field for TMC message urgency, from
+    integer (0, 1, 2) to string ("none", "U", "X"), to better match
+    its values in the specification
+  * Speed improvements by avoiding a few extraneous buffer copies
+    internally
+
+-------------------------------------------------------------------
+Tue Mar 27 19:58:46 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.16.0
+  * Add support for multi-channel signals (--channels) - libsndfile
+    is now a required dependency
+  * Speed improvements: ◦By using a lookup table instead of sinf/cosf
+    to generate the mix-down sinusoid
+  * By only using one mix-down operation instead of two
+
+-------------------------------------------------------------------
+Wed Jan 31 19:55:28 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.15.0
+  * Add prog_item_number field containing the raw Program Item Number
+  * Add partial_alt_kilohertz field containing an incomplete list of
+    alternative frequencies when the --show-partial option is used
+  * Add configure option --without-macports to disable directory checks
+    when cross-compiling
+  * Reduce write calls to output JSON stream using a streamstring
+
+-------------------------------------------------------------------
+Sat Dec  9 11:18:06 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.14.1
+  * Don't consider UTC+14 invalid (it's the time zone in Kiribati)
+  * Use JSON object callsign_uncertain for call signs of stations whose
+  * PI code begins with a 1
+  * Fix syntax errors in schema
+
+-------------------------------------------------------------------
+Thu Nov 16 21:40:23 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.14
+  * Added support for decoding call sign letters from North American
+    (RBDS) stations - activated by the -u switch. These are very
+    noise-resistant as they're based on the PI code.
+
+-------------------------------------------------------------------
+Tue Sep 19 15:43:58 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.13
+  * Change the JSON structure in radiotext_plus: RT+ tags are now displayed as
+    an array of objects with content-type and data
+  * Change the way frequencies are displayed for better machine readability, from
+    "frequency":"87.9 MHz" to "kilohertz":87900
+  * Update jsoncpp from version 1.7.7 to 1.8.1
+
+-------------------------------------------------------------------
+Sat Jul 22 10:53:54 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.12
+  * Add support for time-of-demodulation timestamps (-t, --timestamp)
+  * Add support for average block error rate (BLER) estimation (-E, --bler)
+  * Change the long option for -b to --input-bits and fix the incorrect
+    option in the usage help
+
+-------------------------------------------------------------------
+Mon Apr 17 16:20:56 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.11
+  * Add support for TMC alternative frequencies (tuning info variant 6)
+  * Add support for TMC gap parameter and enhanced mode (3A group variant 1)
+  * Change JSON schema for TMC: encryption_id is now under system_info
+  * Change PLL bandwidth and lowpass cutoff frequency to improve noise performance
+  * Change resampler anti-alias cutoff frequency to allow for lower sample rates
+  * Fix missing zero-padding in PIN time string
+  * Fix uninitialized PI field occasionally getting printed when the actual PI is missed
+  * Fix some names not getting read properly from the location database
+  * Fix grammar in some TMC event descriptions
+  * Fix potentially uninitialized data printout when a type 6B group was not fully received
+  * Fix potentially uninitialized RadioText+ tags when the group was not fully received
+  * Fix spurious printouts of "version B" groups when the C' offset was not seen
+
+-------------------------------------------------------------------
+Mon Apr  3 17:57:18 UTC 2017 - mardnh@gmx.de
+
+- initial package, version 0.10.0

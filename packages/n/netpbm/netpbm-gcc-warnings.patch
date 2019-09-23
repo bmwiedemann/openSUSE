@@ -1,0 +1,59 @@
+Index: netpbm-10.86.3/converter/other/pngx.c
+===================================================================
+--- netpbm-10.86.3.orig/converter/other/pngx.c	2019-05-14 09:27:19.536073096 +0200
++++ netpbm-10.86.3/converter/other/pngx.c	2019-05-14 09:27:21.976084785 +0200
+@@ -368,6 +368,7 @@ pngx_srgbIntentDesc(pngx_srgbIntent cons
+     case PNGX_ABSOLUTE_COLORIMETRIC: return "ABSOLUTE_COLORIMETRIC";
+     }
+     assert(false);
++    return NULL;
+ }
+ 
+ 
+@@ -383,6 +384,7 @@ const libpngSrgbIntentCode(pngx_srgbInte
+     }
+ 
+     assert(false);  /* All cases above return */
++    return -1;
+ }
+ 
+ 
+Index: netpbm-10.86.3/editor/pbmreduce.c
+===================================================================
+--- netpbm-10.86.3.orig/editor/pbmreduce.c	2019-05-14 09:27:21.952084670 +0200
++++ netpbm-10.86.3/editor/pbmreduce.c	2019-05-14 09:27:21.976084785 +0200
+@@ -202,6 +202,9 @@ oppositeDir(enum Direction const arg) {
+     case RIGHT_TO_LEFT: return LEFT_TO_RIGHT;
+     }
+     assert(false);  /* All cases handled above */
++
++    /* make gcc happy */
++    return RIGHT_TO_LEFT;
+ }
+ 
+ 
+Index: netpbm-10.86.3/lib/libpm.c
+===================================================================
+--- netpbm-10.86.3.orig/lib/libpm.c	2019-05-14 09:27:21.956084689 +0200
++++ netpbm-10.86.3/lib/libpm.c	2019-05-14 09:27:21.976084785 +0200
+@@ -440,6 +440,7 @@ pm_maxvaltobits(int const maxval) {
+         pm_error( "maxval of %d is too large!", maxval );
+ 
+     assert(false);
++    return 0;
+ }
+ 
+ int
+Index: netpbm-10.86.3/lib/libpnm3.c
+===================================================================
+--- netpbm-10.86.3.orig/lib/libpnm3.c	2019-05-14 09:16:33.096977241 +0200
++++ netpbm-10.86.3/lib/libpnm3.c	2019-05-14 11:07:02.148770284 +0200
+@@ -429,6 +429,8 @@ pnm_bittoxel(bit    const inputBit,
+     case PBM_WHITE: return pnm_whitexel(maxval, PBM_TYPE); break;
+     default:
+         assert(false);
++        pixel const black = {0, 0, 0};
++        return black;
+     }
+ }
+ 

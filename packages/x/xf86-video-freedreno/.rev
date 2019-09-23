@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebcad33be24f36de132d934c8c3ace3c</srcmd5>
+    <version>1.0.0</version>
+    <time>1390380305</time>
+    <user>coolo</user>
+    <comment>- Replaced temporary drm_mode.diff build fix with proper
+  U_drop-drm_mode-include.patch after upstreaming
+- Drop explicit -mfpu=neon (copied from omap) until proven needed
+
+- Initial import
+* drm_mode.diff: Build fix - drop drm/drm_mode.h include</comment>
+    <requestid>214191</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ea51afde5ed4012dcb9412e7c730998</srcmd5>
+    <version>1.0.0</version>
+    <time>1391376255</time>
+    <user>coolo</user>
+    <comment>- Code uses not only MIT license but also BSD-3-Clause</comment>
+    <requestid>214782</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70fe2740a3aa06fa0769ca042f744a42</srcmd5>
+    <version>1.0.0</version>
+    <time>1399317255</time>
+    <user>coolo</user>
+    <comment>Fix build failure in Factory due to changed X.org API (forwarded request 232177 from a_faerber)</comment>
+    <requestid>232179</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ddda529b2d32675179911546fc8e48ea</srcmd5>
+    <version>1.1.0</version>
+    <time>1403070625</time>
+    <user>coolo</user>
+    <comment>Update to v1.1.0 (forwarded request 235314 from a_faerber)</comment>
+    <requestid>235342</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ddda529b2d32675179911546fc8e48ea</srcmd5>
+    <version>1.1.0</version>
+    <time>1409303706</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b5c957dc32ba5c976732a139eb017237</srcmd5>
+    <version>1.2.0</version>
+    <time>1409326992</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246086</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7802761aba5f3a674701a4d37f0fe791</srcmd5>
+    <version>1.3.0</version>
+    <time>1431692472</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304390</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e30b076818755c011aaf296f5b28a02a</srcmd5>
+    <version>1.4.0</version>
+    <time>1455701115</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359191</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d62fe5be9c46191ae47ce575edec05fe</srcmd5>
+    <version>1.4.0</version>
+    <time>1492169821</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484371</requestid>
+  </revision>
+</revisionlist>

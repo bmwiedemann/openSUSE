@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Mon Oct  8 18:29:24 UTC 2018 - astieger@suse.com
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
+Mon Sep 17 20:51:20 UTC 2018 - seroton10@gmail.com
+
+- Upgrade to version 1.9.10
+  + security fix for CVE-2017-5934, XSS in GUI editor related code
+    (boo#1111104)
+  + removed raw#199.patch, is included in new version
+
+-------------------------------------------------------------------
+Tue Dec 26 16:01:34 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Dec 18 21:10:35 UTC 2017 - seroton10@gmail.com
+
+- Upgrade to version 1.9.9:
+  + added raw#199.patch as specified by upstream
+- Remove obsolete Java drawing Applets from package
+  + removed anywikidraw-java8.patch
+  + removed anywikidraw-java9.patch
+  + removed anywikidraw.patch
+  + removed twikidraw-java9.patch
+
+-------------------------------------------------------------------
+Tue Sep 19 21:24:42 UTC 2017 - seroton10@gmail.com
+
+- Adjust to Java9 as default compiler
+  + added anywikidraw-java9.patch
+  + added twikidraw-java9.patch
+
+-------------------------------------------------------------------
+Sun Jul 16 19:32:57 UTC 2017 - seroton10@gmail.com
+
+- Always use python2 interpreter
+
+-------------------------------------------------------------------
+Thu Feb 18 21:42:02 UTC 2016 - seroton10@gmail.com
+
+- Reinstate AnyWikiDraw applet, with proof it's actually GPL.
+
+-------------------------------------------------------------------
+Tue Feb  9 22:22:24 UTC 2016 - seroton10@gmail.com
+
+- Remove AnyWikiDraw applet due to non-GPL license (SR 356378)
+
+-------------------------------------------------------------------
+Sat Jan 23 15:15:09 UTC 2016 - seroton10@gmail.com
+
+- Rename package to moinmoin-wiki
+
+-------------------------------------------------------------------
+Sun Jul 19 18:53:18 UTC 2015 - seroton10@gmail.com
+
+- anywikidraw-java8.patch: Fix compilation error on Java 8.
+
+-------------------------------------------------------------------
+Fri Oct 31 22:47:33 UTC 2014 - seroton10@gmail.com
+
+- Upgrade to MoinMoin version 1.9.8:
+  + surge protection for authentication requests
+  + added abuse logging, and various other logging improvements
+  + various changes to reduce load caused by bots
+  + an XSS security fix, and other bugfixes
+  + see the CHANGES file for the full list, and for more details
+
+-------------------------------------------------------------------
+Wed Sep 17 21:06:20 UTC 2014 - seroton10@gmail.com
+
+- Reinstate AnyWikiDraw applet in the package (bnc#895361)
+  + anywikidraw.patch allows it to run as an unsigned applet
+
+-------------------------------------------------------------------
+Wed Sep 10 19:12:00 UTC 2014 - p.drouand@gmail.com
+
+- Fix build for SLE11SP3
+
+-------------------------------------------------------------------
+Tue Sep  9 21:23:04 UTC 2014 - seroton10@gmail.com
+
+- Rename moin-mkwiki to mkwiki.moin (like mkfs.*)
+
+-------------------------------------------------------------------
+Tue Sep  9 21:04:49 UTC 2014 - seroton10@gmail.com
+
+- Remove AnyWikiDraw from package (see bnc#895361)
+
+-------------------------------------------------------------------
+Tue Sep  2 07:19:50 UTC 2014 - seroton10@gmail.com
+
+- Added man pages
+- Filter out spurious "non-executable-script" rpmlint warning
+
+-------------------------------------------------------------------
+Sun Aug 31 18:03:19 UTC 2014 - seroton10@gmail.com
+
+- Rebuild Java applets for editing drawings from source.
+
+-------------------------------------------------------------------
+Wed Aug 27 22:49:51 UTC 2014 - seroton10@gmail.com
+
+- Reinstate applets - they are served to and executed in client
+  browser, so bytecode level is irrelevant
+
+-------------------------------------------------------------------
+Wed Aug 27 21:46:04 UTC 2014 - seroton10@gmail.com
+
+- Remove applet JARs from SLE build - bytecode level not accepted
+
+-------------------------------------------------------------------
+Fri Aug 22 22:12:26 UTC 2014 - seroton10@gmail.com
+
+- default configuration of Apache 2.4 for openSUSE 13.1 expects
+  old-style directives for access control.
+
+-------------------------------------------------------------------
+Tue Aug 19 23:15:20 UTC 2014 - seroton10@gmail.com
+
+- Reverted to standard install to /usr/share/moin
+  + Removed moin-setup.py.patch
+  + Added command moin-mkwiki to create a new wiki
+
+-------------------------------------------------------------------
+Mon Aug 18 18:47:36 UTC 2014 - seroton10@gmail.com
+
+- Remove data directory from package, only create it when needed;
+ensures it remains untouched by install/update/removal of package.
+
+-------------------------------------------------------------------
+Sun Aug 17 14:23:22 UTC 2014 - seroton10@gmail.com
+
+- Remove conditional sources from spec file
+- Python 2.5 is required according to current source repository
+
+-------------------------------------------------------------------
+Sat Aug 16 22:06:15 UTC 2014 - p.drouand@gmail.com
+
+- Do not explicitely require python
+- Do not explicitely require apache2; it's already required by 
+  apache2-mod_wsgi
+- Remove depreciated "Prefix" tag
+- Use download Url as source
+- Remove CFLAGS export; useless in a noarch package
+
+-------------------------------------------------------------------
+Sat Aug 16 19:25:18 UTC 2014 - seroton10@gmail.com
+
+- Initial version. Based on a package by Sven Uebelacker.
+

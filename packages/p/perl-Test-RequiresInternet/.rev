@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2ea1853d7300102322575c7ba533e32</srcmd5>
+    <version>0.05</version>
+    <time>1434456314</time>
+    <user>coolo</user>
+    <comment>New dependency to perl-Test-LWP-UserAgent, which we now have unresolvable in Factory</comment>
+    <requestid>312035</requestid>
+  </revision>
+</revisionlist>

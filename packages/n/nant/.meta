@@ -1,0 +1,6 @@
+<package name="nant" project="openSUSE:Factory">
+  <title>Ant for .NET</title>
+  <description>NAnt is a free .NET build tool. In theory it is kind of like make
+without make's wrinkles. In practice it's a lot like Ant.</description>
+  <devel project="Mono:Factory" package="nant"/>
+</package>

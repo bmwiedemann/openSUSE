@@ -1,0 +1,24 @@
+Index: man/man3/Makefile.am
+===================================================================
+--- man/man3/Makefile.am.orig
++++ man/man3/Makefile.am
+@@ -6,6 +6,7 @@ $(KEYMANPAGE): $(SoGuiBuiltFiles)
+ 	@( cd $(top_builddir); "@sim_ac_doxygen_exe@" sogui.doxygen )
+ 
+ filelist.txt: $(KEYMANPAGE)
++	rm -f *_.3
+ 	ls *.3 >filelist.txt
+ 
+ if BUILD_MANPAGES
+Index: man/man3/Makefile.in
+===================================================================
+--- man/man3/Makefile.in.orig
++++ man/man3/Makefile.in
+@@ -1187,6 +1187,7 @@ $(KEYMANPAGE): $(SoGuiBuiltFiles)
+ 	@( cd $(top_builddir); "@sim_ac_doxygen_exe@" sogui.doxygen )
+ 
+ filelist.txt: $(KEYMANPAGE)
++	rm -f *_.3
+ 	ls *.3 >filelist.txt
+ 
+ @BUILD_MANPAGES_TRUE@all-local: filelist.txt

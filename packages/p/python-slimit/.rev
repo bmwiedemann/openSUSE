@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1aa1a2049c8ce554149beb96366dc518</srcmd5>
+    <version>0.6</version>
+    <time>1332239640</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109051</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e935d128c6dcad3dfa16cc873b65f03</srcmd5>
+    <version>0.6.2</version>
+    <time>1334216869</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.6.2:
+  * Better multiline handling</comment>
+    <requestid>113062</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2e935d128c6dcad3dfa16cc873b65f03</srcmd5>
+    <version>0.6.2</version>
+    <time>1340184092</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2428765ac1973e5a7a34b22a2e2d7b1b</srcmd5>
+    <version>0.7.4</version>
+    <time>1340724353</time>
+    <user>coolo</user>
+    <comment>Update to 0.7.4 and add &gt;= 3.4 to python-ply dependency (forwarded request 125729 from poorboywilly)</comment>
+    <requestid>125774</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2428765ac1973e5a7a34b22a2e2d7b1b</srcmd5>
+    <version>0.7.4</version>
+    <time>1359110122</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b309d333acb522f49d4c2640eb3982ed</srcmd5>
+    <version>0.7.4</version>
+    <time>1378646874</time>
+    <user>coolo</user>
+    <comment>Added two requires that were missing--odict and ply are necessary to build and run the package.  I did this separate from any version update since I don't know if this might the kind of thing that would get pushed out in an update.  Unless told otherwise, I'll bump up the version in a separate submission. (forwarded request 197806 from poorboywilly)</comment>
+    <requestid>197894</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2b5331db157f7f529be3f0531a0aac8a</srcmd5>
+    <version>0.8.1</version>
+    <time>1378897694</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.1 (forwarded request 198372 from poorboywilly)</comment>
+    <requestid>198426</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2b5331db157f7f529be3f0531a0aac8a</srcmd5>
+    <version>0.8.1</version>
+    <time>1379664284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d049100eebc0fdd012d8a21f5536b973</srcmd5>
+    <version>0.8.1</version>
+    <time>1382693553</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204657</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>d049100eebc0fdd012d8a21f5536b973</srcmd5>
+    <version>0.8.1</version>
+    <time>1409302993</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>b88daf4d03bf6b6b4748bc1e8b002ef0</srcmd5>
+    <version>0.8.1</version>
+    <time>1530866420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620056</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>5124b4867e8d031bbb14adb5b4ad0be2</srcmd5>
+    <version>0.8.1</version>
+    <time>1549018093</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop odict, not really required from python 2.7+</comment>
+    <requestid>670320</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>fc9cffd8f1dca249a027fb6e758e81e6</srcmd5>
+    <version>0.8.1</version>
+    <time>1561103909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711154</requestid>
+  </revision>
+</revisionlist>

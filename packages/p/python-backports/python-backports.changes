@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jan  7 12:40:00 CET 2019 - mcepl@suse.com
+
+- Separate python-backports into separate package version 1.0.0
+
+-------------------------------------------------------------------
+Tue Dec  4 13:02:58 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jul 15 15:30:44 UTC 2017 - dmueller@suse.com
+
+- build fixes for SLE_12*
+
+-------------------------------------------------------------------
+Fri Jul 14 14:26:02 UTC 2017 - toddrme2178@gmail.com
+
+- Implement as seperate package.
+

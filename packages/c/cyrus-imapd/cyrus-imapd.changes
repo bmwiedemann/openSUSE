@@ -1,0 +1,1804 @@
+-------------------------------------------------------------------
+Fri Jul 19 10:18:30 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Wed Jan 23 12:22:35 UTC 2019 - liedke@rz.uni-mannheim.de
+
+- Update to 2.4.20
+  * Fixed: lmtpd crash
+  * Fixed: auth_pts will now error if its configured socket path is
+    too long for its buffer
+- Removed cyrus-imapd-2.4.19-lmtpd_crash.patch
+
+-------------------------------------------------------------------
+Wed Jan 16 10:09:23 UTC 2019 - Peter Varkoly <varkoly@suse.com>
+
+- bsc#1119629 cyrus-imapd.service contains bogus User and Groupi 
+    specification
+- bsc#1115999 Please convert SysV init scripts by cyrus-imapd 
+    into native systemd services
+  - Removed User and Group from the service file
+
+-------------------------------------------------------------------
+Tue Dec  4 10:42:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repeated emission of the %service_* boilerplate.
+
+-------------------------------------------------------------------
+Mon Dec  3 15:29:11 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Fixed startup of cyrus-imapd when using native systemd service
+  by setting RuntimeDirectory=cyrus-imapd in the service file
+
+-------------------------------------------------------------------
+Wed Nov 28 14:33:41 UTC 2018 - Peter Varkoly <varkoly@suse.com>
+
+- cyrus-imapd: migrate from cron to systemd timers
+  (bsc#1115438)
+  Created script service and timer replacing cron daily script
+
+-------------------------------------------------------------------
+Wed Nov 28 09:47:59 UTC 2018 - Peter Varkoly <varkoly@suse.com>
+
+- Please convert SysV init scripts by cyrus-imapd into native systemd services 
+  (bsc#1115999)
+  Fixed using the with_systemd macro
+
+-------------------------------------------------------------------
+Thu Nov 23 13:43:01 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Oct 25 09:07:33 UTC 2017 - rhafer@suse.de
+
+- Removed "cyrus-imapd-2.4.19_drac_auth.patch" and dropped drac
+  from the BuildRequires. DRAC's upstream is bascially dead nowadays,
+  and the drac patch in cyrus-imapd is also largely unmaintained.
+  Rebased cyrus-imapd-2.4.17_openslp.patch and
+  cyrus-imapd-2.4.19_autocreate-0.10-0.patch as a result of the
+  removal.
+
+-------------------------------------------------------------------
+Mon Jul 10 10:41:23 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+- Improve find commands.
+
+-------------------------------------------------------------------
+Sun Jun 25 21:22:24 UTC 2017 - aj@ajaissle.de
+
+- Add cyrus-imapd-2.4.19-lmtpd_crash.patch:
+  * lmtpd: fix uninitialised variable crash [boo#1045899]
+
+-------------------------------------------------------------------
+Wed Jun 21 15:38:32 UTC 2017 - aj@ajaissle.de
+
+- Rebased patch:
+  * cyrus-imapd-2.4.18-implicit_definitions.patch as cyrus-imapd-2.4.19-implicit_definitions.patch
+    Add fix for implicit-fortify-decl in ldap.c
+
+-------------------------------------------------------------------
+Wed Jun 14 18:20:42 UTC 2017 - aj@ajaissle.de
+
+- Update to 2.4.19
+  * Complete backport of the new (2.5 and later) IMAP IDLE implementation (thanks Thomas Jarosh). This fixes a bunch of bugs and race conditions that were inherent to the older implementation
+  * New option “imapidletimeout” overrides “timeout” specifically for connections in IDLE state
+  * OpenSSL 1.1.0 is now supported
+  * Fixed: imap ENABLED doesn’t print * ENABLED when nothing new enabled
+  * Fixed: mailbox lock management over rename (thanks Thomas Jarosh)
+  * Fixed: added overflow protection to urlfetch range checks
+  * Fixed: lmtpd can now deliver when mupdate server isn’t available (thanks Michael Menge)
+  * Fixed task 227: service processes no longer divide by zero when invoked with -T 0 argument (thanks Ian Batten and Jens Erat)
+  * Fixed task 229: ctl_cyrusdb now uses database paths from imapd.conf (thanks Simon Matter)
+  * Fixed bug #3862: mailbox database changes now rolled back on mupdate failure during rename (thanks Michael Menge)
+  * Fixed: XFER to 2.5 and later no longer downgrades index to oldest version
+  * Fixed: nonsensical “TEXT.MIME” section now handled as “HEADER”
+  * Fixed: added missing ‘auditlog: ‘ prefix to backend connections (thanks Wolfgang Breyha)
+  * Fixed: IMAP SEARCH crash on some platforms
+  * Fixed: memory leaks in IMAP SEARCH and IMAP APPEND
+  * Fixed Issue #1967: EXISTS count reported earlier if fetching past size of previous message set
+
+- Rebased patches:
+  * cyrus-imapd-2.4.17_drac_auth.patch as cyrus-imapd-2.4.19_drac_auth.patch
+  * cyrus-imapd-2.4.17_autocreate-0.10-0.patch as cyrus-imapd-2.4.19_autocreate-0.10-0.patch
+
+- Removed patches:
+  - cyrus-imapd-2.4.18-CVE-2015-8077.patch (upstream)
+  - cyrus-imapd-2.4.18-CVE-2015-8078.patch (upstream)
+
+- Added cyrus-imapd-2.4.19.tar.gz.sig
+
+-------------------------------------------------------------------
+Fri May 27 12:28:46 UTC 2016 - tchvatal@suse.com
+
+- Try to cleanup with spec-cleaner
+- Remove exit 0 in pre that stopped execution of the rest of the code
+- Update pre/post requires to be acutally correct
+- Disable stict-aliasing to avoid some problems
+
+-------------------------------------------------------------------
+Mon Dec 21 18:01:23 UTC 2015 - aj@ajaissle.de
+
+- Add cyrus-imapd-2.4.18-D19-Outlook_2013_XLIST.patch to add 
+  Outlook 2013-compatible XLIST behaviour.
+
+-------------------------------------------------------------------
+Sun Nov 15 11:48:17 UTC 2015 - aj@ajaissle.de
+
+- Added cyrus-imapd-2.4.18-CVE-2015-8077.patch:
+  boo#954200, CVE-2015-8077: Integer overflow in range checks
+
+- Added cyrus-imapd-2.4.18-CVE-2015-8078.patch:
+  boo#954201, CVE-2015-8078: Integer overflow in index_urlfetch
+
+-------------------------------------------------------------------
+Sun Aug 23 11:00:50 UTC 2015 - aj@ajaissle.de
+
+- Update to 2.4.18 [boo#945844]
+  * Security fix: handle urlfetch range starting outside message range
+  * A bunch of cleanups and fixes to compiling
+  * A bunch of sieve cleanups
+  * Enhanced SSL/TLS configuration options
+  * Disable use of SSLv2/SSLv3
+  * Allow SQL backend for mboxlist and statuscache (thanks Julien Coloos)
+  * Fixed Task #116: correct LIST response for domains starting with ‘inbox.’
+  * Fixed Task #76: fixed lmtpd userdeny db checks (thanks Leena Heino)
+  * Fixed bug #3856: lmtpd now performs userdeny checks
+  * Fixed bug #3848: support charset aliases in encoded headers
+  * Fixed bug #3853: disconnect_on_vanished_mailbox: release mailbox lock before exiting (thanks Wolfgang Breyha)
+  * Fixed bug #3415: fixed nntpd LIST/GROUP bug
+  * Fixed bug #3784: no longer crash in THREAD REFERENCES when messages reference themselves
+  * Fixed bug #3757: don’t segfault on mailbox close with no user
+  * New ssl/tls configuration options
+    tls_compression: 0
+        Enable TLS compression. Disabled by default.
+    tls_eccurve: prime256v1
+        Select the elliptic curve used for ECDHE.
+    tls_prefer_server_ciphers: 0
+        Prefer the cipher order configured on the server-side.
+    tls_versions: tls1_0 tls1_1 tls1_2
+        Disable SSL/TLS protocols not in this list.
+
+- Removed the following patches (included upstream):
+  - cyrus-imapd-2.4.17_tls-session-leak.patch
+  - cyrus-imapd.tls_options.patch
+
+- Added patch cyrus-imapd-2.4.18-implicit_definitions.patch:
+  - Have the correct #include when using implicit definitions
+
+-------------------------------------------------------------------
+Mon Dec  8 10:19:48 UTC 2014 - aj@ajaissle.de
+
+- Changed cyrus-imapd-rc-2.tar.gz/cron.daily.cyrus to use 'su -s 
+  /bin/bash - cyrus', as the default shell is now /sbin/nologin
+  [boo#908014]
+- Changed cyrus-imapd-rc-2.tar.gz/rc.cyrus to set
+  /var/run/cyrus-master.pid as the PID file (was: /var/run/cyrus.pid)
+  [boo#908006]
+
+-------------------------------------------------------------------
+Fri Nov 21 11:55:51 UTC 2014 - tchvatal@suse.com
+
+- Drop unused patch:
+  * KOLAB_cyrus-imapd-2.3.18_cross-domain-acls.patch 
+
+-------------------------------------------------------------------
+Fri Nov 14 10:49:38 UTC 2014 - rhafer@suse.com
+
+- Replace the TLS/POODLE patch with what was merged into the upstream
+  git repo:
+  * cyrus-imapd.tls_options.patch
+  * Obsoletes patches cyrus-imapd.tls_tlsonly.patch and
+    cyrus-imapd.tls_ec.patch
+- Add a default tls_versions settings to imapd.conf which disables
+  POODLE affected SSL versions.
+
+-------------------------------------------------------------------
+Sat Oct 18 11:15:00 UTC 2014 - johannes@lst.de
+
+- Add two patches from Kristian Kraemmer Nielsen found on the info-cyrus mailing list 
+  (http://lists.andrew.cmu.edu/pipermail/info-cyrus/2014-October/037708.html)
+  * cyrus-imapd.tls_ec.patch		- adding tls_ec for Perfect Forward Secrecy
+  * cyrus-imapd.tls_tlsonly.patch	- add tlsonly config option to fix POODLE vulnerability
+
+-------------------------------------------------------------------
+Wed Jan 29 11:14:13 UTC 2014 - aj@ajaissle.de
+
+- Added -snmp and -snmp-mibs sub-packages
+- Added README.SNMP to cyrus-imapd-rc-2.tar.gz
+- Added sysconfig option to use SNMP
+  * TODO: convert to a yesno option
+
+-------------------------------------------------------------------
+Fri Jan 24 13:45:42 UTC 2014 - aj@ajaissle.de
+
+- Updated to upstream release 2.4.17 (fate#311137)
+  Changes to the Cyrus IMAP Server since 2.3.x:
+    * All databases are now default skiplist, and ctl_cyrusdb will automatically convert database type on startup.
+    * make_sha1 and make_md5 are removed (replaced by GUID and reconstruct changes)
+    * Charset subsystem rewritten - Unicode 5.2 rather than Unicode 2, and UTF-8 support in sieve.
+    * Core mailbox handling code largely rewritten with new APIs, CRC checksums, new locking mechanisms, merging of cyrus.index and cyrus.expunge, inclusion of user \Seen flag, and much more.
+    * Replication code largely rewritten to provide better performance, consistency checking, and recovery from "split-brain" scenarios.
+    * Added support for LIST-EXTENDED IMAP extension. Removed support for deprecated (compile-time) LISTEXT IMAP extension. Based on work by Martin Konold <martin.konold@erfrakon.de>
+    * Added support for ESEARCH IMAP extension.
+    * Added support for WITHIN extension to IMAP SEARCH.
+    * Added support for ENABLE IMAP extension.
+    * Added support for QRESYNC IMAP extension.
+    * Added support for URLAUTH=BINARY IMAP extension.
+    * Removed legacy IMAP[2|3|4] cruft. We now only support IMAPrev1 + extensions.
+    * Added support for marking QoS on traffic. (courtesy of Philip Prindeville <philipp@redfish-solutions.com>)
+    * Modified user_deny.db code to open database once at service startup time.
+    * ... and hundreds of tiny things too numerous to mention in a short change log ...
+
+- Added the following patches:
+  - cyrus-imapd-2.4.17_drac_auth.patch -- this is a rebased version of contrib/drac_auth.patch
+  - cyrus-imapd-2.4.17_ptloader-ldap_user_attribute.patch -- Allow a result attribute to be specified with ptclient/ldap.c
+    * Supersedes KOLAB_cyrus-imapd-2.3.18_UID.patch
+
+- Renamed the following patches:
+  - syslog-facility-doc.patch to cyrus-imapd-2.3.16_syslog-facility-doc.patch
+
+- Rebased the following patches for cyrus-imapd-2.4.17:
+  - cyrus-imapd-db6.diff as cyrus-imapd-2.4.17_db6.patch
+  - cyrus-imapd-openslp.patch as cyrus-imapd-2.4.17_openslp.patch
+  - luser_relay.patch as cyrus-imapd-2.4.17_lmtp_catchall_mailbox.patch
+    * Option 'lmtp_luser_relay' was renamed to 'lmtp_catchall_mailbox'
+    * https://bugzilla.cyrusimap.org/show_bug.cgi?id=2360
+  - cyrus-imapd_tls-session-leak.dif as cyrus-imapd-2.4.17_tls-session-leak.patch
+    * https://bugzilla.cyrusimap.org/show_bug.cgi?id=3252
+  - cyrus-imapd-2.3.16-autocreate-0.10-0.drac.diff as cyrus-imapd-2.4.17_autocreate-0.10-0.patch
+  - pie.patch as cyrus-imapd-2.4.17_pie.patch
+
+- Removed the following patches (unknown upstream status):
+  - KOLAB_cyrus-imapd-2.3.18_Folder-names.patch
+    * There is no need for us to extend the mailbox name restrictions
+    * https://bugzilla.cyrusimap.org/show_bug.cgi?id=2633
+  - KOLAB_cyrus-imapd-2.3.18_Groups2.patch
+    * optional/not needed
+    * https://bugzilla.cyrusimap.org/show_bug.cgi?id=2632
+    * https://bugzilla.cyrusimap.org/show_bug.cgi?id=3282
+  - KOLAB_cyrus-imapd-2.3.18_timsieved_starttls-sendcaps.patch
+    * Workaround for an issue with kontact/kio ~ KDE 3.5.9
+  - KOLAB_cyrus-imapd-2.3.18_UID.patch
+    * Superseded by cyrus-imapd-2.4.17_ptloader-ldap_user_attribute.patch
+
+- Removed the following patches (upstream inclusion):
+  - charset.patch
+  - cyrus-imapd-perl-5.14.patch
+  - cyrus-imapd-perl-path.patch
+  - cyrus-imapd_references_header-dos.dif
+  - KOLAB_cyrus-imapd-2.3.18_Cyradm_Annotations.patch
+    * http://git.cyrusimap.org/cyrus-imapd/commit/?h=cyrus-imapd-2.4&id=98dd7a9130653ac848c0782a7688d26a090b494b
+  - KOLAB_cyrus-imapd-2.3.18_Logging.patch
+    * Use 'auditlog: 1' in imapd.conf
+    * https://bugzilla.cyrusimap.org/show_bug.cgi?id=2964
+  - user_deny_db-once.patch
+
+- Changed cyrus-imapd-rc.tar.gz contents, now having cyrus-imapd-rc-2.tar.gz:
+  - dir name now is SUSE (was: SuSE)
+  - renamed README.SuSE -> README.SUSE
+  - added annotation definitions for groupware folders
+  - imapd.conf: added annotaion definitions and lmtp_fuzzy_mailbox_match
+  - imapd.conf: changed path to TLS certs form /usr/ssl/ to /etc/SSL_accept
+  - imapd.conf: set default 'delete_mode' and 'expunge_mode' to 'delayed'
+  - cyrus.conf: added more services, added deleteprune and expungeprune
+  - moved DB_CONFIG into cyrus-imapd-rc.tar.gz
+
+- Spec file cleanup
+
+- Prepared systemd support
+  * with systemd, we use cyrus-imapd as service name
+  * we have a symlink 'rccyrus-imapd' to '/usr/sbin/service'
+  * for compatibility, we have an alias 'rccyrus' = 'rccyrus-imapd'
+
+- New package: cyrus-imapd-utils, which now contains tools to test mail servers
+- New package: cyrus-imapd-cyradm, which now contains the cyradm tool
+
+- TODO:
+  - Check KOLAB_cyrus-imapd-2.3.18_cross-domain-acls.patch
+    * Patch is optional
+    * https://roundup.kolab.org/issue1141
+  - systemd service not yet working as expected, so we disabled it atm
+
+-------------------------------------------------------------------
+Thu Jun 20 09:29:07 UTC 2013 - aj@ajaissle.de
+
+- Move kolab tag from package name to version field
+
+-------------------------------------------------------------------
+Fri Jun 14 01:06:46 UTC 2013 - jengelh@inai.de
+
+- Add cyrus-imapd-db6.diff to fix compile abort with db >= 5
+
+-------------------------------------------------------------------
+Mon May 27 08:29:47 UTC 2013 - werner@suse.de
+
+- Package perl-Cyrus-SIEVE-managesieve provides the sieveshell as
+  well as the package python-managesieve, therefore make them
+  conflicting
+
+-------------------------------------------------------------------
+Tue May 21 10:39:20 UTC 2013 - aj@ajaissle.de
+
+- Added /var/lib/imap/ptclient to %files section
+
+-------------------------------------------------------------------
+Fri Feb 15 11:26:29 UTC 2013 - aj@ajaissle.de
+
+- enable --with-ldap option
+
+-------------------------------------------------------------------
+Tue Jun 19 11:24:06 UTC 2012 - meissner@suse.com
+
+- allocate the right size (reported by frerichs@rz.uni-kiel.de)
+
+-------------------------------------------------------------------
+Fri Dec  2 07:47:58 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Oct  5 07:10:08 UTC 2011 - rhafer@suse.de
+
+- Update to 2.3.18:
+  Malicious NNTP clients could bypass the authentication and
+  execute commands that normally require authentication.
+  (bnc#719998, CVE-2011-3372)
+
+-------------------------------------------------------------------
+Tue Sep 27 16:36:08 CEST 2011 - meissner@suse.de
+
+- parallel make is not possible, see openSUSE:Factory:PowerPC build failure.
+
+-------------------------------------------------------------------
+Wed Sep 21 09:34:04 UTC 2011 - rhafer@suse.de
+
+- Update to 2.3.17. Only change:
+  * includes the nntpd bufferoverflow patch
+- Refreshed KOLAB patches
+- Fixed a potential DoS bug, when server-side threading is used
+  (bnc#718428)
+
+-------------------------------------------------------------------
+Sun Sep 18 00:14:26 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Sep  1 09:08:52 UTC 2011 - rhafer@suse.de
+
+- Fixed a buffer overflow in nntpd (bnc#715251) 
+
+-------------------------------------------------------------------
+Mon Jun 20 09:50:50 UTC 2011 - rhafer@suse.de
+
+- TLS initialization failures could lead to a bdb resource leak
+  resulting lmtpd to stop delivering mails. (bnc#606710,
+  cyrus-bug#3252)
+
+-------------------------------------------------------------------
+Mon May 23 14:17:33 UTC 2011 - rhafer@suse.de
+
+- Fixed STARTTLS plaintext command injection vulnerability
+  (bnc#694247, cyrus-bug#3425)
+- Fixed building against newer perl release (5.14)
+
+-------------------------------------------------------------------
+Tue Dec  7 21:56:34 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Nov 19 08:56:19 UTC 2010 - rhafer@novell.com
+
+- Fixed cronjob to include the correct path to ctl_mboxlist
+  (bnc#650919)
+
+-------------------------------------------------------------------
+Wed Oct 27 15:37:35 UTC 2010 - rhafer@novell.com
+
+- removed unneeded authid_normalize.patch the same functionality
+  is already available through "username_tolower" since quite some
+  time.
+
+-------------------------------------------------------------------
+Thu Sep 30 09:34:35 UTC 2010 - rhafer@novell.com
+
+- Check for libdb 4.8 presence
+
+-------------------------------------------------------------------
+Sun Jun 13 13:00:36 UTC 2010 - rbos@opensuse.org
+
+- Define and use _name because the macro expansion is not smart enough.
+  Without this construction the name definition of cyrus-imapd-kolab is
+  changed to cyrus-imapd.
+
+-------------------------------------------------------------------
+Mon May 31 12:55:18 UTC 2010 - rhafer@novell.com
+
+- Don't create unneeded /var/lib/db/deliverdb directory
+- Add a default DB_CONFIG to avoid berkely db errors for deliver.db
+  (bnc#606710)
+
+-------------------------------------------------------------------
+Wed May 19 09:07:09 UTC 2010 - rhafer@novell.com
+
+- Removed unneeded useradd call from %install section
+- Fix the package naming for kolab package again (the last sumbit 
+  request broke that accidently)
+
+-------------------------------------------------------------------
+Mon May  3 12:40:46 UTC 2010 - rhafer@novell.com
+
+- Only try to open user_deny.db once upon startup (bnc#601971). 
+  Backported from cvs HEAD.
+
+-------------------------------------------------------------------
+Fri Apr 30 14:37:43 UTC 2010 - rhafer@novell.com
+
+- removed some unneeded patches
+- added missing tags to init script
+
+-------------------------------------------------------------------
+Wed Apr 28 11:42:32 UTC 2010 - rhafer@novell.com
+
+- Changed cyrus' homedir to /var/lib/imap 
+
+-------------------------------------------------------------------
+Tue Apr 13 18:37:45 UTC 2010 - rbos@opensuse.org
+
+- Remove the obsolete tag "AutoReqProv: on", its default value is
+  already "on".
+
+-------------------------------------------------------------------
+Mon Apr 12 19:15:58 UTC 2010 - rbos@opensuse.org
+
+- Use cyrus-imapd-kolab when the package is build with kolab enabled 
+- Use the preferred Requires(pre) tag instead of PreReq
+
+-------------------------------------------------------------------
+Fri Apr  9 10:20:34 UTC 2010 - rhafer@novell.com
+
+- Adjusted documentation to reflect the correct syslog facility 
+  that the packages are build with ("daemon" instead of "local6")
+
+-------------------------------------------------------------------
+Tue Mar 30 11:35:40 UTC 2010 - rbos@opensuse.org
+
+- Removed Patch101 KOLAB_cyrus-imapd-%{version}_Annotations2.patch
+- Change Source107 to Patch107
+
+
+-------------------------------------------------------------------
+Tue Mar 30 08:33:47 UTC 2010 - rhafer@novell.com
+
+- Mention KOLAB_cyrus-imapd-2.3.16_cross-domain-acls.patch in the
+  spec file
+
+-------------------------------------------------------------------
+Wed Feb 24 21:07:14 UTC 2010 - rbos@opensuse.org
+
+- Replaced the 2.3.14 Kolab patches with their 2.3.16 equivalents
+   KOLAB_cyrus-imapd-*_Cyradm_Annotations.patch
+   KOLAB_cyrus-imapd-*_Folder-names.patch
+   KOLAB_cyrus-imapd-*_Groups2.patch
+   KOLAB_cyrus-imapd-*_Logging.patch
+   KOLAB_cyrus-imapd-*_timsieved_starttls-sendcaps.patch
+   KOLAB_cyrus-imapd-*_UID.patch
+
+- Removed the patch KOLAB_cyrus-imapd-2.3.14_Annotations2.patch as 
+  this is now part of cyrus
+
+- Added patch KOLAB_cyrus-imapd-2.3.16_cross-domain-acls.patch.  
+  This patch can not be directly applied, it needs to recreated 
+  due to the patches applied by openSUSE.
+
+-------------------------------------------------------------------
+Tue Feb 23 14:02:19 UTC 2010 - rhafer@novell.com
+
+- Fixed crasher in lmtpproxy when backend server returns an empty
+  SASL mechlist (bnc#551346)
+
+-------------------------------------------------------------------
+Mon Jan 25 14:23:25 UTC 2010 - rhafer@novell.com
+
+- updated autocreate patch to avoid "no-return-in-nonvoid-function" 
+  failures on openSUSE 11.1
+
+-------------------------------------------------------------------
+Wed Jan 13 11:00:15 UTC 2010 - rhafer@novell.com
+
+- Updated to 2.3.16
+  * Added user_deny.db to be able to selectively deny users access
+    to Cyrus services.
+  * Added disconnect_on_vanished_mailbox option. See imapd.conf(5)
+    for details
+  * Reworked SQL detection code in configure. See 
+    install-upgrade.html for more details.
+  * Added popuseimapflags option which enables setting and obeying
+    IMAP flags in the POP server.
+  * Added optimized method of handling an empty maildrop in pop3d.
+    Requires statuscache to be enabled.
+  * Added annotation_definitions option for specifying external
+    (third-party) annotations.
+  * Added sync_compress option to compress replication traffic
+  * Added user_folder_limit option to limit the number of folders a
+    non-admin user is allowed to create.
+  * Added -x option to cyr_expire to disable expunge
+  * Track idle state so a shutdown doesn't leave idled killing 
+    random other processes on a busy system
+  * Fix missing closedir() - bug #3159
+  * Make Cyrus compile with older GCC
+
+-------------------------------------------------------------------
+Tue Dec  1 21:30:16 UTC 2009 - rbos@opensuse.org
+
+- Changed capitalization of perl-Cyrus-Imap into perl-Cyrus-IMAP
+  as it used to be.  It changed in 1 of the previous updates, due
+  to a typo.
+
+-------------------------------------------------------------------
+Mon Nov 30 08:11:12 UTC 2009 - rbos@opensuse.org
+
+- Subpackages are now also renamed when cyrus is build with kolab
+  support 
+- Renamed _enable_kolab to with_kolab.  What seem to be more in line
+  with the rpm conventions.  There are macros like %%{with } and
+  %%{bcond_with }, but unfortenately they did not work for me.
+
+-------------------------------------------------------------------
+Wed Nov 25 10:18:35 UTC 2009 - rhafer@novell.com
+
+- Renumber kolab patches to start with 100
+- cyrus-imapd-kolab now conflicts with cyrus-imapd
+
+
+-------------------------------------------------------------------
+Sat Nov 21 20:46:22 CEST 2009 - rbos@opensuse.org
+
+- Added a switch to build Kolab enabled rpms, (cyrus with patches
+  needed by the groupware project Kolab) 
+- Added cyrus-imapd-2.3.14 patches for KOLAB
+- Updated patch ptclient_afskrb_return.patch to return NULL instead
+  of 0
+
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:12 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Sep 28 08:48:12 UTC 2009 - rhafer@novell.com
+
+- Fixed init script dependencies. saslauthd is not a hard 
+  requirement for cyrus-imapd (bnc#538852)
+
+-------------------------------------------------------------------
+Wed Sep 23 08:40:16 UTC 2009 - rhafer@novell.com
+
+- fixed multiple buffer overflows in the SIEVE code, caused by
+  unsafe usage of the sprintf function (bnc#539877, CVE-2009-3235)
+- Added flex and bison to buildrequires as the above bugfix 
+  requires the sieve parser code to be regenerated.
+
+-------------------------------------------------------------------
+Tue Sep  8 07:21:25 UTC 2009 - rhafer@novell.com
+
+- fixed buffer overflow in SIEVE implementation, caused by the 
+  incorrect use of sizeof() on a character pointer rather than a   
+  character buffer (bnc#537128, cert-vu#336053)
+
+-------------------------------------------------------------------
+Thu Sep  3 15:06:11 UTC 2009 - rhafer@novell.com
+
+- fixed typo in cron-script 
+
+-------------------------------------------------------------------
+Tue Jul 14 09:26:59 CEST 2009 - rhafer@novell.com
+
+- warning fixes for gcc 4.4 
+
+-------------------------------------------------------------------
+Mon Jun 29 16:52:40 CEST 2009 - rhafer@novell.com
+
+- removed obsolete configure options and resorted the rest for
+  better readability
+
+-------------------------------------------------------------------
+Mon Mar 30 14:12:52 CEST 2009 - rhafer@suse.de
+
+- Updated to 2.3.14
+  * Fixed incompatibility between older ManageSieve clients and 
+    newer servers that issue an auto-capability response after AUTH
+    with a SASL security layer.
+  * Fixed quota calculation to ignore files not mentioned in the
+    index
+  * Correct cache truncation after an aborted append (was leaving
+    empty holes in the cache file)
+  * Fixed ACLs copying when renaming users
+  * Fixed TLS session reuse
+  * Log more detail about changes done by a reconstruct
+    (indicating that there were problems with the mailbox before 
+    hand - mainly as a debugging aid)
+  * Ensured that the longest possible named mailbox can still be
+    deleted when delayed delete is enabled by increasing buffer
+    sizes
+  * Add configuration option mailbox_default_options allowing 
+    (for example) modsequences to be turned on for all new
+    mailboxes
+  * Various Replication fixes
+
+-------------------------------------------------------------------
+Thu Jan 15 15:06:26 CET 2009 - rhafer@suse.de
+
+- Updated to 2.3.13
+  * Added support for IMAP [CAPABILITY] response code to client-side
+     of Murder proxies.
+  * Added support for ManageSieve auto-capability response after
+     STARTTLS and after AUTH with a SASL security layer.
+  * Made MAXWORD and MAXQUOTED sizes configurable via imapd.conf
+  * Rewrote cyrusdb_quotalegacy.c to use readir()
+     rather than glob.c.  This avoids a potential crash due to
+     conflicts between glibc and Heimdal implementations of glob().
+  * Added support for fulldirhash to 'ctl_mboxlist -v'
+  * Several skiplist transaction bugfixes.
+  * cyr_expire no longer has a default of 0 (zero) for -X and -D.
+     These options must be used explicitly in order to have the desired
+     effect.
+  * Added sieve_utf8fileinto option.
+  * Added sieve_sasl_send_unsolicited_capability and
+     sieve_sasl_expect_unsolicited_capability options.
+  * Several 32/64-bit compatibility fixes.
+- Removed uneeded patches
+- Fixed init script dependencies
+
+-------------------------------------------------------------------
+Thu Oct  9 13:48:55 CEST 2008 - rhafer@suse.de
+
+- mention the changed default of "allowplaintext" in the README
+  (bnc#425658)
+
+-------------------------------------------------------------------
+Mon Aug 18 10:40:46 CEST 2008 - rhafer@suse.de
+
+- fixed init-script, added Required-Stop tag
+
+-------------------------------------------------------------------
+Tue Aug 12 19:17:28 CEST 2008 - rhafer@suse.de
+
+- recommend perl-TermReadLine-Gnu to have command line history in 
+  sieveshell and cyradm (bnc#400401)
+- move sieveshell and installsieve to perl-Cyrus-SIEVE-managesieve, 
+  as it is useful without cyrus-imapd (bnc#414637).
+
+-------------------------------------------------------------------
+Wed May  7 14:25:17 CEST 2008 - rhafer@suse.de
+
+- added missing return statement to auth_krb.c:myfreestate() to
+  fix current build failures.
+
+-------------------------------------------------------------------
+Thu Apr 10 00:10:23 CEST 2008 - crrodriguez@suse.de
+
+-  soft 'Recommends' cron otherwise script that generates
+   backups of mailboxes will not work.
+
+-------------------------------------------------------------------
+Mon Mar  3 10:59:02 CET 2008 - rhafer@suse.de
+
+- Fixed creation of maiboxes.txt backup in cron-job (bnc#355914) 
+
+-------------------------------------------------------------------
+Tue Feb  5 13:58:25 CET 2008 - rhafer@suse.de
+
+- cleanups in %post scriptlet (bnc#357950, bnc#357946)
+- Update to 2.3.11. From the changelog:
+  * Fixed several skiplist bugs -- courtesy of Fastmail.fm.
+  * Add robustness to skiplist recovery -- courtesy of Fastmail.fm.
+  * Added support for modification sequences to replication protocol
+    (for CONDSTORE) -- courtesy of David Carter.
+  * Fixed delayed delete replication -- courtesy of Fastmail.fm.
+  * Allow [un]deleting of user INBOXes (renaming to/from deleted
+    hierarchy) to work when using delayed delete -- courtesy of Simon
+    Matter.
+  * Fixed interaction with removal of rights and implicitownerrights.
+  * Fixed parsing of single FETCH item when using FETCH modifiers.
+  * Prevented SSL_accept() from blocking indefinitely when using
+    TLS/SSL. This should eliminate a lot of hung SSL-wrapped processes.
+  * Allow STARTTLS to be used to externally preauth'd LMTP connections.
+  * Allow a TLS client certificate to be sufficient authentication for
+    LMTP.
+  * timsieved now automatically sends CAPABILITY response after
+    STARTTLS. This code was reintroduced after being mistakenly removed
+    as part of bug #1338.
+  * Fixed miscellaneous bugs and build issues.
+
+-------------------------------------------------------------------
+Fri Feb  1 15:31:30 CET 2008 - rhafer@suse.de
+
+- create backups files in /var/adm/backup/imap instead of 
+  /var/lib/imap (bnc#355146, bnc#355914)
+
+-------------------------------------------------------------------
+Mon Jan 28 17:11:47 CET 2008 - rhafer@suse.de
+
+- limit the number of text backups of the mailboxes database 
+  (bnc#355914)
+
+-------------------------------------------------------------------
+Tue Oct 30 13:06:28 CET 2007 - rhafer@suse.de
+
+- update to 2.3.10. Most imporant changes:
+  * Added support for "delayed" delete, in which mailboxes are renamed
+    to a special admin-only "deleted" hierarchy at the time of the
+    DELETE (hiding them from the client), rather than immediately
+    removing them from the filesystem. 
+  * Fixed the special case of RENAMEing an Inbox, so that it doesn't
+    keep the same mailbox uniqueid, thus allowing it to replicate
+    properly (seen state is still preserved). 
+  * Disabled Nagle's algorithm in sync_client and sync_server to
+    increase the throughput of the replication protocol. -- courtesy of
+    Wes Craig. 
+  * Added support for a shared \Seen flag on messages (must be enabled
+    on a per-mailbox basis with the /vendor/cmu/cyrus-imapd/sharedseen
+    mailbox annotation. 
+  * Added -u and -U options to reconstruct -- courtesy of David Carter. 
+  * Added SETUIDVALIDITY command to the replication protocol --
+    courtesy of David Carter. 
+  * Changed message GUIDs used by replication to be the SHA1 hash of
+    the messages -- based on work of David Carter and Fastmail.fm. 
+  * Improve the performance of commands that operate on sequence-sets.
+    The sequence-set is now parsed only once, and the commands operate
+    on a sorted list of seq-ranges. 
+  * Added new cyr_synclog utility for adding events to the replication
+    log -- courtesy of Fastmail.fm. 
+  * Added support for disabling duplicate delivery suppression on a
+    per-folder basis with the /vendor/cmu/cyrus-imapd/duplicatedeliver
+    mailbox annotation -- courtesy of Fastmail.fm. 
+
+-------------------------------------------------------------------
+Wed May 23 14:24:04 CEST 2007 - rhafer@suse.de
+
+- enabled replication feature (Bug #264293)
+- Fixed rpmlint errors
+- backported fix from CVS to build against berkeley db 4.5 
+
+-------------------------------------------------------------------
+Mon Mar 26 16:44:10 CEST 2007 - rhafer@suse.de
+
+- Corrected configure switch for idled. It's --enable-idled not
+  --with-idle=idled now (Bug #255998) 
+
+-------------------------------------------------------------------
+Thu Mar 15 12:13:34 CET 2007 - rhafer@suse.de
+
+- added Service definitions for SuSEfirewall2 (Bug #251654) 
+
+-------------------------------------------------------------------
+Wed Feb 21 19:07:39 CET 2007 - rhafer@suse.de
+
+- update to version 2.3.8 (first production quality 2.3.X release)
+  Most important changes since 2.2.13:
+  * Support for mail spool replication
+  * Sieve scripts for shared folders
+  * Added new sieve_extensions option to allow individual Sieve
+    extensions to be enabled/disabled. 
+  * The Sieve "include" extension is now supported. This also allows
+    for global sieve scripts. See the new sieve_extensions options to
+    enable it. 
+  * Added support to place some/all mailbox metadata files (cyrus.*
+    files) on a separate (probably high-speed) partition. See the new
+    metapartition and metapartition_files options for details.
+    Development sponsored by FastMail. 
+  * Added support for accessing subfolders of INBOX via POP3. See the
+    new popsubfolders option for details. Development sponsored by
+    FastMail. 
+  * Added berkeley_hash and berkeley_hash_nosync cyrusdb backends (seem
+    to perform better under heavy loads). 
+
+-------------------------------------------------------------------
+Wed Jan 10 10:58:19 CET 2007 - rhafer@suse.de
+
+- Fixed use of uninitialzied value, that caused deliver to crash 
+  when delivering via Unix Domain Socket (Bug #226648)
+
+-------------------------------------------------------------------
+Thu Sep  7 16:14:38 CEST 2006 - rhafer@suse.de
+
+- silence compiler warnings 
+
+-------------------------------------------------------------------
+Fri Aug 11 15:57:09 CEST 2006 - rhafer@suse.de
+
+- removed update-messages
+
+-------------------------------------------------------------------
+Fri Jul 28 14:34:20 CEST 2006 - rhafer@suse.de
+
+- update to version 2.2.13. Most important changes:
+  * Allow sieve scripts to be run on shared mailboxes 
+    (via sieve annotation).
+  * Updated nntpd to be compliant with latest draft (soon to be
+    RFC3977).
+  * Updated IMAP UIDPLUS extension to be compliant with latest 
+    specification (RFC4315).
+  * Performance improvements to quota utility.
+  * Fixed possible race condition in IMAP IDLE.
+  * Made ptloader runtime configurable.
+  * Added more extensive output to arbitron.
+  * Allow responses of any length from backend when proxing
+    IMAP/POP3/NNTP traffic.
+  * Added plaintextloginalert option.
+  * Only allow mbpath to be run as Cyrus user.
+  * Added berkeley_hash and berkeley_hash_nosync cyrusdb backends
+    (seem to perform better under heavy loads).
+  * Added lastpop mailbox annotation.
+  * Added subscribe/unsubscribe support to cyradm.
+  * Fixed miscellaneous bugs and build issues.
+- removed obsolete patches
+
+-------------------------------------------------------------------
+Fri Jun  2 12:30:23 CEST 2006 - rhafer@suse.de
+
+- renamed SuSE.tar.gz to cyrus-sasl-rc.tar.gz to avoid name
+  collision with other packages in src.rpm (Bug #98188)
+
+-------------------------------------------------------------------
+Wed May 17 19:55:02 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  9 15:07:26 CET 2006 - rhafer@suse.de
+
+- fixed --with-ssl configure option
+
+-------------------------------------------------------------------
+Fri Oct 28 16:06:16 CEST 2005 - choeger@suse.de
+
+- update to autocreate patch v0.9.4
+- fixed implicit declaration problems
+
+-------------------------------------------------------------------
+Wed Aug 24 13:58:08 CEST 2005 - choeger@suse.de
+
+- Bugfix Bugzilla ID#105243 - timesieved exits with SIG11 when trying to
+  authenticate:
+  - Shut down sasl connection before reusing the connection structure again
+  - log the reason of the failure to syslog
+
+-------------------------------------------------------------------
+Wed Aug 17 17:09:56 CEST 2005 - choeger@suse.de
+
+- added "Autocreate INBOX patch for Cyrus"
+  http://email.uoa.gr/projects/cyrus/autocreate/, Bugzilla ID#96568, Feature
+  ID#2256.
+
+-------------------------------------------------------------------
+Tue Jul 12 16:08:50 CEST 2005 - choeger@suse.de
+
+- improved -pie patch
+
+-------------------------------------------------------------------
+Thu Jul  7 14:50:44 CEST 2005 - choeger@suse.de
+
+- use -pie
+
+-------------------------------------------------------------------
+Mon Jul  4 12:06:02 CEST 2005 - choeger@suse.de
+
+- use lsb conform cronjob name
+
+-------------------------------------------------------------------
+Tue May  3 16:24:22 CEST 2005 - choeger@suse.de
+
+- change heimdal include path to the mit one and use --with-gss_impl=auto
+
+-------------------------------------------------------------------
+Wed Apr 13 11:25:15 CEST 2005 - rhafer@suse.de
+
+- fixes for gcc-4 
+
+-------------------------------------------------------------------
+Wed Mar 16 09:43:48 CET 2005 - choeger@suse.de
+
+- added courier-imapd to Conflicts as it also provides pam configuration files
+
+-------------------------------------------------------------------
+Mon Mar 14 10:30:45 CET 2005 - choeger@suse.de
+
+- added /etc/pam.d/{imap,pop,sieve} to package as pam does not
+  seem to work anymore without creating a pam configuration file
+  as it did in the past (Bugfix Bugzilla ID#72390, Can't autenthicate to
+  cyradm)
+
+-------------------------------------------------------------------
+Wed Feb 16 10:56:01 CET 2005 - choeger@suse.de
+
+- bugfix to bug introduced with 2.2.11 which could result to segfaults (see
+http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&msg=33727)
+
+-------------------------------------------------------------------
+Mon Feb 14 15:04:16 CET 2005 - choeger@suse.de
+
+- added defined return code to signals.c(112) to satisfy the compiler
+
+-------------------------------------------------------------------
+Mon Feb 14 10:19:01 CET 2005 - choeger@suse.de
+
+- update to version 2.2.11
+  Bugfix ID#50795 VUL-0: cyrus-imapd: bugfix release
+
+-------------------------------------------------------------------
+Tue Feb  8 09:49:26 CET 2005 - choeger@suse.de
+
+- Bugfix Bugzilla ID#50368 - use of uninitialized variable in cyrus-imapd:
+  remove old and incompatible bdb4.2 environment upon update
+
+-------------------------------------------------------------------
+Wed Jan 26 17:30:27 CET 2005 - meissner@suse.de
+
+- Use RPM_OPT_FLAGS, and add -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Tue Dec  7 12:05:02 CET 2004 - choeger@suse.de
+
+- Bugfix Bugzilla ID#48761: fixed README.SuSE
+
+-------------------------------------------------------------------
+Mon Dec  6 10:57:20 CET 2004 - choeger@suse.de
+
+- Bugfix Bugzilla ID#43107, renamed fetchnews to cyrus_fetchnews
+
+-------------------------------------------------------------------
+Wed Nov 24 10:36:54 CET 2004 - choeger@suse.de
+
+- update to version 2.2.10
+
+-------------------------------------------------------------------
+Tue Nov 23 10:11:25 CET 2004 - choeger@suse.de
+
+- update to version 2.2.9
+  containing fix for Bug ID#48201 - VUL-0: cyrus-imapd multiple remote
+  vulnerabilites
+
+-------------------------------------------------------------------
+Thu Nov  4 10:04:05 CET 2004 - choeger@suse.de
+
+- added "lmtp_downcase_rcpt: yes" to default imapd.conf
+
+-------------------------------------------------------------------
+Sat Oct 23 13:48:52 CEST 2004 - choeger@suse.de
+
+- using kerberos-devel-packages
+
+-------------------------------------------------------------------
+Wed Sep 22 11:51:32 CEST 2004 - choeger@suse.de
+
+- removed sieve-vacation-time-period.patch as it still
+  does not work
+
+-------------------------------------------------------------------
+Tue Sep 21 14:24:11 CEST 2004 - choeger@suse.de
+
+- activating idled in /etc/cyrus.conf (as idled support it is now
+  compiled in and there will be error messages if idled is not activated)
+
+-------------------------------------------------------------------
+Tue Sep  7 17:08:59 CEST 2004 - choeger@suse.de
+
+- updated sieve-vacation-time-period.patch
+  We now use an own version of the sieve bytecode, because we
+  must be able to detect incompatible versions.
+
+-------------------------------------------------------------------
+Tue Aug 31 15:58:27 CEST 2004 - choeger@suse.de
+
+- only create update messages, if user is doing an update
+  AND user has SIEVE scripts
+
+-------------------------------------------------------------------
+Mon Aug 30 14:29:25 CEST 2004 - choeger@suse.de
+
+- Bugfix Bugzilla ID#44366 - still using /var/adm/notify
+  now using new update messages mechanism
+
+-------------------------------------------------------------------
+Mon Aug 30 10:21:40 CEST 2004 - choeger@suse.de
+
+- Bugfix ID#44287 - cyrus imapd vacation does not work
+  added sieve bytecode relevant extensions to make the feature
+  work again
+
+-------------------------------------------------------------------
+Fri Jul 30 11:34:30 CEST 2004 - choeger@suse.de
+
+- update to version 2.2.8
+   * Fix a double-free bug in the notify code
+
+-------------------------------------------------------------------
+Wed Jul 28 12:14:30 CEST 2004 - choeger@suse.de
+
+- update to version 2.2.7
+   * Fix handling of PARTIAL command and partial body fetches
+   * A large number of portability fixes supplied by Albert Chin
+     <china@thewrittenword.com>
+   * Added client_timeout option to control connect() timeouts for proxy
+     code
+   * Added popuseacl option
+   * Fix a number of issues with the quota -f tool
+   * Fix thread safety issue in saslserver()
+   * Fix possible stage file leak in append code
+   * Fix bugs in handling of MULTIAPPEND introduced in 2.2.3
+   * Fixed regression bug in Sieve vacation
+
+-------------------------------------------------------------------
+Mon Jun 21 16:50:47 CEST 2004 - choeger@suse.de
+
+- update to version 2.2.6
+   * Fix a bug in the proxy code where a backend connection might get
+     closed twice
+   * Improved consistancy checking in chk_cyrus
+   * Fix segfault in APPEND code
+   * Fix a bug with an interaction between sieve and unixhierarchysep
+   * Fix a file descriptor leak in the quotadb code
+   * Fix a triggered assertation in service-thread services
+   * Add a number of internal consistancy checks to the skiplist code
+   * Allow mbpath to handle virtual domains
+   * Fix various MANAGESIEVE client authentication issues
+   * Other minor fixes
+
+-------------------------------------------------------------------
+Tue Jun  1 16:19:04 CEST 2004 - choeger@suse.de
+
+- update to version 2.2.5
+   * Bug fixed in hash table code that could sometimes cause crashes
+     with the quotalegacy database
+   * Net-SNMP compatibility
+   * Significantly improved com_err detection
+   * Assorted minor NNTP improvements
+   * Assorted other minor bugfixes
+   * Quota now uses the cyrusdb interface (quotalegacy by default).
+   * All incoming messages are now staged to disk before locking the
+     destination mailbox (locks are no longer held during a network
+     read).
+   * Fixed off-by-one error in fetchnews (articles are no longer
+     skipped).
+   * nntpd now uses the Followup-To: header (if exists) instead of the
+     Newsgroups: header when constructing post address(es) and adds them
+     to the Reply-To: header instead of the To: header.
+   * Added berkeley_locks_max, berkeley_txns_max and berkeley_cachesize
+     options.
+   * Added imapmagicplus option.
+   * Substantial work on afspts/ptloader canonicalization code
+   * Much improved LDAP ptloader code (no more internal OpenLDAP
+     dependencies)
+   * Fixed a number of IPv6 related bugs
+
+-------------------------------------------------------------------
+Fri Apr 23 14:38:36 CEST 2004 - choeger@suse.de
+
+- enabling idled during compiletime.
+  Bugfix Bugzilla ID#38036
+
+-------------------------------------------------------------------
+Wed Apr 21 11:40:01 CEST 2004 - choeger@suse.de
+
+- added tools and contrib directory to %doc
+- added mail notification about sieve bytecode changes
+
+-------------------------------------------------------------------
+Wed Feb 18 18:45:15 CET 2004 - choeger@suse.de
+
+- enabled NNTP support (Bugzilla ID#34679)
+
+-------------------------------------------------------------------
+Tue Feb 17 17:15:21 CET 2004 - choeger@suse.de
+
+- added OpenSLP support to cyrus-imapd
+
+-------------------------------------------------------------------
+Fri Jan 23 09:33:36 CET 2004 - choeger@suse.de
+
+- conflicts package imap now
+
+-------------------------------------------------------------------
+Wed Jan 21 15:05:59 CET 2004 - choeger@suse.de
+
+- update to cyrus-imapd-2.2.3
+
+-------------------------------------------------------------------
+Thu Jan  8 15:48:04 CET 2004 - choeger@suse.de
+
+- Bugfix ID#29151, ipurge uses Date: Field instead of date of receipt
+  to delete old mails.
+  The patch introduces the -R switch which enables the user to use
+  the date of receipt.
+
+-------------------------------------------------------------------
+Wed Jan  7 17:36:01 CET 2004 - choeger@suse.de
+
+- using libwrap now, Bugzilla ID#33608,
+  cyrus-imap should be compiled with --with-libwrap=/usr
+
+-------------------------------------------------------------------
+Wed Dec 17 18:03:28 CET 2003 - choeger@suse.de
+
+- added cyrus-imapd-2.1.16-db42.patch to build with bdb4.2
+
+-------------------------------------------------------------------
+Fri Nov 21 11:33:21 CET 2003 - choeger@suse.de
+
+- update to version 2.1.16
+
+-------------------------------------------------------------------
+Thu Oct 30 16:24:43 CET 2003 - choeger@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Sat Oct 18 07:43:56 CEST 2003 - kukuk@suse.de
+
+- removed unused des from neededforbuild
+
+-------------------------------------------------------------------
+Mon Sep  1 13:22:17 CEST 2003 - choeger@suse.de
+
+- removed "-u root" from startproc as it always failes
+- added saslauthd to Required-Start: in init-script
+
+-------------------------------------------------------------------
+Fri Aug 29 12:29:52 CEST 2003 - kukuk@suse.de
+
+- Call useradd with -r for system accounts [Bug #29611]
+
+-------------------------------------------------------------------
+Wed Aug 20 19:39:09 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Aug 19 14:24:46 CEST 2003 - choeger@suse.de
+
+- updated to version 2.1.15
+- added sieve-vacation-time-period.patch which introduces the possibility
+  to give a start start/end tag in a vacation rule.
+  this new feature requires to add a line containing:
+  require "vacation-period";
+  and is therefor backward compatible with sieve scripts of unpatched
+  cyrus-imapd versions
+
+-------------------------------------------------------------------
+Wed Jul 30 13:24:00 CEST 2003 - choeger@suse.de
+
+- new macros for stop/restart of services on rpm update/removal
+
+-------------------------------------------------------------------
+Tue Jul 22 11:28:02 CEST 2003 - mls@suse.de
+
+- use -n option in %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jul 21 13:11:22 CEST 2003 - choeger@suse.de
+
+- chown user:group instead of user.group
+
+-------------------------------------------------------------------
+Thu Jul 17 16:42:52 CEST 2003 - choeger@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Thu Jul  3 13:23:18 CEST 2003 - choeger@suse.de
+
+- updated to version 2.1.14
+
+-------------------------------------------------------------------
+Tue Jul  1 14:03:34 CEST 2003 - choeger@suse.de
+
+- remove buildroot from .packlist
+
+-------------------------------------------------------------------
+Fri Jun 13 10:37:23 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Tue May 20 09:02:00 CEST 2003 - choeger@suse.de
+
+- remove installed (but unpackaged) file perllocal.pod
+- added installed (but unpackaged) mupdatetest manpage
+
+-------------------------------------------------------------------
+Mon May 19 10:59:20 CEST 2003 - choeger@suse.de
+
+- remove CVS directories and .cvsignore files
+
+-------------------------------------------------------------------
+Mon May  5 10:29:50 CEST 2003 - choeger@suse.de
+
+- update to version 2.1.13
+- chown/chmod mailboxes.db backup files
+
+-------------------------------------------------------------------
+Wed Apr 30 12:53:34 CEST 2003 - choeger@suse.de
+
+- added cron.daily job to backup mailboxes.db to
+  /var/lib/imap/backup on a daily basis
+
+-------------------------------------------------------------------
+Wed Apr 16 00:29:11 CEST 2003 - ro@suse.de
+
+- fixed prereq 
+
+-------------------------------------------------------------------
+Tue Apr 15 10:11:46 CEST 2003 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Mon Apr  7 13:15:48 CEST 2003 - choeger@suse.de
+
+- tail is now picky using -1 instead of -n 1
+
+-------------------------------------------------------------------
+Tue Feb  4 12:03:12 CET 2003 - choeger@suse.de
+
+- update to version 2.1.12, fixes (from doc/text/changes):
+  * Master now will forcibly exit if a service is not executable
+  * Master now has a daemon mode and pidfile support (-d and -p
+    options)
+  * Berkeley DB Configuration methods have changed. Hopefully they're
+    more generic now. You can still use --with-dbdir, or you can use
+    --with-bdb-libdir and --with-bdb-incdir
+  * timsieved now handles usernames with dots (when unixhierarchysep is
+    active)
+  * tugowar has been removed from the distribution.
+  * Squatter now has an option to skip unmodified mailboxes.
+  * Properly hash username to remove a user's sieve scripts when their
+    INBOX is removed.
+  * Reset output buffer when prot_flush returns EOF.
+  * Minor Makefile improvements with use of $(srcdir)
+  * Remotepurge improvement for empty mailboxes
+  * Fix for AFS overwriting the canonicalized username in ptloader
+  * Security audit of imapd.c performed by SecurityAppraisers and
+    Bynari
+
+-------------------------------------------------------------------
+Thu Jan 23 14:43:48 CET 2003 - ro@suse.de
+
+- fix build on gcc-3.3 (use stdarg) 
+
+-------------------------------------------------------------------
+Thu Jan 16 14:20:24 CET 2003 - ro@suse.de
+
+- use shared sasl2
+
+-------------------------------------------------------------------
+Tue Dec 10 15:11:13 CET 2002 - choeger@suse.de
+
+- added --without-ucdsnmp, because cyrus-imapd doesn't compile with
+  that option and that will prevent users from compiling their own
+  RPM, if they have installed ucdsnmp.
+
+-------------------------------------------------------------------
+Thu Dec  5 14:13:48 CET 2002 - choeger@suse.de
+
+- update to version 2.1.11
+  * Fixed some potential buffer overflows in the sieve code, as well as
+    a pre-login buffer overflow in the IMAP parsing code.
+
+-------------------------------------------------------------------
+Mon Nov 25 11:56:07 CET 2002 - choeger@suse.de
+
+- new features:
+  rfc_ignore_barenewlines
+  rfc_ignore_8bit
+  rfc_ignore_badheader
+
+-------------------------------------------------------------------
+Tue Nov 19 14:18:15 CET 2002 - ro@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Thu Nov 14 15:05:45 CET 2002 - choeger@suse.de
+
+- update to version 2.1.10
+
+-------------------------------------------------------------------
+Mon Nov  4 14:06:52 CET 2002 - choeger@suse.de
+
+- added $syslog to Required-Start in init script,
+  Bugzilla ID#20989
+
+-------------------------------------------------------------------
+Wed Sep  4 11:44:41 CEST 2002 - choeger@suse.de
+
+- compiled using skiplist as backend for mailboxes.db as this
+  will prevent problems when the system is under high load.
+  http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&searchterm=skiplist&msg=17010
+
+-------------------------------------------------------------------
+Mon Sep  2 12:38:24 CEST 2002 - choeger@suse.de
+
+- update to version 2.1.9 (bugfix release)
+  - Fix a strlcpy() off-by-one error. 
+  - Better handling of errors in connecting to LMTP servers for deliver
+    and lmtpproxyd. 
+  - Fix bug in pop3proxyd's pop3s handling. 
+  - Fix Exim install documentation. 
+- bugfix for %post /etc/services fillup mechanism
+- bugfix for lmtp_luser_relay patch
+
+-------------------------------------------------------------------
+Fri Aug 30 10:34:06 CEST 2002 - choeger@suse.de
+
+- added new feature lmtp_luser_relay to be able to store mail
+  to non existent mailboxes in a default mailbox
+
+-------------------------------------------------------------------
+Thu Aug 22 12:44:11 CEST 2002 - choeger@suse.de
+
+- update to version 2.1.8 (bugfix release)
+  - cleanup of a number of memory and file descriptor leaks
+  - corrections in how strlcpy() is used
+  - locking improvements for CREATE and RENAME operations
+  - This release fixes a critical locking problem with the CREATE
+    command that was introduced in 2.1.6 and 2.1.7
+
+-------------------------------------------------------------------
+Tue Aug 20 12:29:31 CEST 2002 - uli@suse.de
+
+- fixed for lib64 archs
+
+-------------------------------------------------------------------
+Mon Aug 19 18:59:51 CEST 2002 - rhafer@suse.de
+
+- link statically against libsasl2. Otherwise we run into trouble
+  if cyrus-imapd is used with pam-/nss_ldap (libldap is linked 
+  against cyrus-sasl 1.5.X)
+
+-------------------------------------------------------------------
+Fri Aug  9 17:31:17 CEST 2002 - rhafer@suse.de
+
+- updated SIEVE script location in imapd.conf (/var/lib/sieve) 
+
+-------------------------------------------------------------------
+Fri Aug  9 12:44:13 MEST 2002 - mls@suse.de
+
+- use sitearch macro
+
+-------------------------------------------------------------------
+Wed Aug  7 11:06:27 CEST 2002 - choeger@suse.de
+
+- added netcfg to Prereq
+
+-------------------------------------------------------------------
+Tue Aug  6 13:50:54 CEST 2002 - choeger@suse.de
+
+- completed Prereq
+
+-------------------------------------------------------------------
+Mon Aug  5 16:46:37 CEST 2002 - choeger@suse.de
+
+- added Prereq
+
+-------------------------------------------------------------------
+Tue Jul 30 16:30:27 CEST 2002 - ro@suse.de
+
+- fix build with perl-5.8
+
+-------------------------------------------------------------------
+Thu Jul 11 14:43:12 CEST 2002 - choeger@suse.de
+
+- enable cyrus-murder
+- don't use unset in %post
+
+-------------------------------------------------------------------
+Tue Jun 25 17:50:47 CEST 2002 - choeger@suse.de
+
+- update to version 2.1.5
+
+-------------------------------------------------------------------
+Wed Jun 19 13:34:22 CEST 2002 - choeger@suse.de
+
+- added old patches:
+  . authid_normalize.patch
+  . allow_auth_plain_proxying.patch
+
+-------------------------------------------------------------------
+Tue Jun 18 16:11:04 CEST 2002 - choeger@suse.de
+
+- renamed manpages master to cyrus_master and idled to cyrus_idled
+- updated config files
+- bzip2 sources
+- updated README.SuSE
+
+-------------------------------------------------------------------
+Mon Jun 17 19:14:31 CEST 2002 - choeger@suse.de
+
+- update to current maintained stable/production release (v2.1.4)
+
+-------------------------------------------------------------------
+Fri May 24 15:03:26 CEST 2002 - choeger@suse.de
+
+- create cyrus user in %pre install
+
+-------------------------------------------------------------------
+Thu May 16 15:00:31 CEST 2002 - choeger@suse.de
+
+- use fcntl locking instead of flock because flock seems to make
+  problems on linux
+
+-------------------------------------------------------------------
+Tue Apr 30 15:57:34 CEST 2002 - choeger@suse.de
+
+- fixed wrong path to lmtp socket in cyrus.conf, Bugzilla ID#16056
+
+-------------------------------------------------------------------
+Mon Apr 29 14:14:23 CEST 2002 - choeger@suse.de
+
+- added lib64 awareness 
+
+-------------------------------------------------------------------
+Fri Apr 26 10:06:04 CEST 2002 - choeger@suse.de
+
+- Bugfix for %post in specfile:
+  SIEVE port is 2000, not 2222, which is the RFC number...  :-(
+
+-------------------------------------------------------------------
+Thu Apr 25 16:57:43 CEST 2002 - choeger@suse.de
+
+- removed provides of my own packagename
+
+-------------------------------------------------------------------
+Wed Apr 17 15:08:55 CEST 2002 - choeger@suse.de
+
+- make the overquota behaviour configurable:
+  "lmtp_reject_over_quota: yes" will immediately reject mail to
+  users with folders that exceed the quota limit.
+  "lmtp_reject_over_quota: no", which is the default,
+  will behave as usual.
+
+-------------------------------------------------------------------
+Wed Apr 17 13:43:30 CEST 2002 - choeger@suse.de
+
+- bugfix for the vacation segv problem:
+  cmd buffer in send_response(imap/lmtpd.c) has not been
+  increased to fit the sendmail command in
+
+-------------------------------------------------------------------
+Fri Apr  5 16:05:25 CEST 2002 - ro@suse.de
+
+- more brackets for autoconf 
+
+-------------------------------------------------------------------
+Mon Mar 25 15:05:33 CET 2002 - choeger@suse.de
+
+- renamed manpage idled(8) to cyrus_idled(8) because of
+  a conflict with idled(8) of the idled package, Bugzilla ID#15434
+
+-------------------------------------------------------------------
+Mon Feb 25 10:30:01 CET 2002 - choeger@suse.de
+
+- Bugfix for a header parsing bug in SIEVE
+  (http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&searchterm=haferkamp&msg=12745)
+
+-------------------------------------------------------------------
+Fri Feb 22 11:49:11 CET 2002 - choeger@suse.de
+
+- made authid_normalize configurable
+
+-------------------------------------------------------------------
+Wed Feb 20 16:01:44 CET 2002 - choeger@suse.de
+
+- remove leading and trailing spaces from authid
+  combined with authid_tolower -> authid_normalize
+
+-------------------------------------------------------------------
+Mon Feb 11 10:40:35 CET 2002 - choeger@suse.de
+
+- made allow_auth_plain_proxying configurable
+
+-------------------------------------------------------------------
+Fri Feb  1 18:46:14 CET 2002 - choeger@suse.de
+
+- modify /etc/services in %post and exchange whatever
+  uses port 2222 with sieve (Bugzilla ID#12922)
+
+-------------------------------------------------------------------
+Thu Jan 31 23:00:26 CET 2002 - ro@suse.de
+
+- added heimdal-lib to neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jan 22 13:01:19 CET 2002 - ro@suse.de
+
+- fix to build with db4
+- bzipped source
+
+-------------------------------------------------------------------
+Tue Jan 15 10:36:05 CET 2002 - choeger@suse.de
+
+- added %post section to handle updates from older
+  SuSE Linux versions
+
+-------------------------------------------------------------------
+Tue Dec 11 11:13:58 CET 2001 - choeger@suse.de
+
+- FHS-enable
+  /usr/cyrus -> /usr/lib/cyrus
+  /usr/sieve -> /var/lib/sieve
+  /var/imap  -> /var/lib/imap
+- Bugfix: anonymous login possible, even if it is switched off
+  Bugzilla ID#12585
+
+-------------------------------------------------------------------
+Fri Nov 30 16:37:39 CET 2001 - choeger@suse.de
+
+- remove START_ variable
+
+-------------------------------------------------------------------
+Mon Nov 19 10:14:29 CET 2001 - choeger@suse.de
+
+- added ipurge_force_all.patch
+  ipurge only deletes mail in shared folders and not in folders
+  below user.* and INBOX.*
+  This patch adds -f option to allow *force* deletion of mail
+  in all folders, see also
+  http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&msg=10166
+  http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&msg=10168
+- Bugfix: drac patch was not applied because the configure
+  script does not set DRAC_AUTH
+- updated README.SuSE
+- added ipurge example to cyrus.conf
+
+-------------------------------------------------------------------
+Wed Sep  5 14:34:58 CEST 2001 - choeger@suse.de
+
+- added sieve_dotstuffing_fix
+  See
+  http://asg.web.cmu.edu/archive/message.php?mailbox=archive.info-cyrus&msg=10136
+  for more details
+
+-------------------------------------------------------------------
+Fri Aug 17 14:25:55 CEST 2001 - choeger@suse.de
+
+- added -u root to startproc options
+  for some strange reasons cyrus isn't able to read root.root owned
+  files after booting into system. -u root "fixes" this.
+
+-------------------------------------------------------------------
+Tue Aug  7 10:52:41 CEST 2001 - choeger@suse.de
+
+- update to 2.0.16  (important db3 fixes)
+
+-------------------------------------------------------------------
+Wed Jul 11 16:51:23 CEST 2001 - choeger@suse.de
+
+- update to 2.0.15 (sig11 fixes)
+
+-------------------------------------------------------------------
+Thu Jun 28 13:40:14 CEST 2001 - choeger@suse.de
+
+- bugfix: init script was not LSB compliant, Bugzilla ID#8983
+
+-------------------------------------------------------------------
+Fri Jun 15 09:38:27 CEST 2001 - choeger@suse.de
+
+- update to version 2.0.14
+
+-------------------------------------------------------------------
+Mon May 28 11:42:39 CEST 2001 - choeger@suse.de
+
+- little fix: Leave Returnpath empty, if it is already empty
+
+-------------------------------------------------------------------
+Wed May 16 11:41:36 CEST 2001 - lmuelle@suse.de
+
+- remove obsolete mail notify
+
+-------------------------------------------------------------------
+Thu Apr 19 11:53:13 CEST 2001 - choeger@suse.de
+
+- renamed master to cyrus_master to prevent conflict
+  with postfix master.8 manpage
+
+-------------------------------------------------------------------
+Mon Apr  2 16:25:55 CEST 2001 - choeger@suse.de
+
+- added missing fillup to %post :-(
+
+-------------------------------------------------------------------
+Tue Feb 27 11:20:53 CET 2001 - ro@suse.de
+
+- changed neededforbuild <cyrus-sasl> to <cyrus-sasl cyrus-sasl-devel>
+
+-------------------------------------------------------------------
+Wed Feb 21 08:56:23 CET 2001 - choeger@suse.de
+
+- new version, 2.0.12
+
+-------------------------------------------------------------------
+Thu Feb  1 11:22:41 CET 2001 - choeger@suse.de
+
+- new version 2.0.11 (bugfix release)
+
+-------------------------------------------------------------------
+Mon Jan 22 15:38:57 CET 2001 - schwab@suse.de
+
+- Compile with -fPIC for inclusion in shared library.
+
+-------------------------------------------------------------------
+Wed Dec 27 12:07:20 CET 2000 - choeger@suse.de
+
+- typo fix in README.SuSE
+- new version 2.0.9 (Bugfix Release)
+
+-------------------------------------------------------------------
+Mon Dec 18 16:10:04 CET 2000 - choeger@suse.de
+
+- added README.SuSE
+
+-------------------------------------------------------------------
+Mon Dec 18 15:08:17 CET 2000 - choeger@suse.de
+
+- bugfix: Dependencies
+- bugfix: openssl to neededforbuilt
+
+-------------------------------------------------------------------
+Sat Dec  9 13:33:43 CET 2000 - kukuk@suse.de
+
+- Fix group tags
+
+-------------------------------------------------------------------
+Thu Dec  7 13:59:40 CET 2000 - choeger@suse.de
+
+- added init script for new cyrus master daemon
+  was not able to test it, yet
+
+-------------------------------------------------------------------
+Wed Nov 29 17:26:48 CET 2000 - ro@suse.de
+
+- changed neededforbuild <tcld> to <tcl-devel>
+
+-------------------------------------------------------------------
+Fri Nov 24 08:13:16 CET 2000 - ro@suse.de
+
+- neededforbuild += openssl-devel 
+
+-------------------------------------------------------------------
+Tue Nov 21 16:42:17 CET 2000 - choeger@suse.de
+
+- new version 2.0.7
+- build root
+- long package name
+
+-------------------------------------------------------------------
+Mon Nov 20 07:58:47 CET 2000 - ro@suse.de
+
+- removed eazy from neededforbuild 
+
+-------------------------------------------------------------------
+Thu Nov 16 09:08:23 CET 2000 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Wed Oct 25 00:23:02 CEST 2000 - choeger@suse.de
+
+- fixed drac support 
+
+-------------------------------------------------------------------
+Fri Oct 20 11:44:11 CEST 2000 - choeger@suse.de
+
+- hacked in support for DRAC
+
+-------------------------------------------------------------------
+Wed Oct  4 11:48:04 MEST 2000 - choeger@suse.de
+
+- changed the behaviour of quota command
+  -t user.<uname> now prints the quota usage of this
+  user to STDOUT
+
+-------------------------------------------------------------------
+Mon Sep 25 15:05:09 CEST 2000 - choeger@suse.de
+
+- bugfix: /etc/imapd.conf was mode 755 ... :-(
+
+-------------------------------------------------------------------
+Sun Jun 18 23:54:19 CEST 2000 - ro@suse.de
+
+- regenerate bison-files 
+
+-------------------------------------------------------------------
+Fri Jun  9 10:54:33 MEST 2000 - choeger@suse.de
+
+- update to version 1.6.24
+- excluded sasl and made separate package
+- no longer need for pwcheck with ldap support,
+  we are using pam_ldap, now
+
+-------------------------------------------------------------------
+Wed May 24 09:50:23 MEST 2000 - choeger@suse.de
+
+- patch by jro to the false double-subscribe behaviour
+
+-------------------------------------------------------------------
+Mon May 22 16:27:21 MEST 2000 - choeger@suse.de
+
+- there's no tail in inst-sys, so we have to use sed instead
+
+-------------------------------------------------------------------
+Mon May 22 12:52:50 MEST 2000 - choeger@suse.de
+
+- added reiserfs-check before calling chattr in postinstall
+
+-------------------------------------------------------------------
+Thu Apr 27 14:04:29 MEST 2000 - choeger@suse.de
+
+- added new config option use-unix to pwcheck.conf
+- changed auth sequence from unix->ldap to ldap->unix
+
+-------------------------------------------------------------------
+Tue Mar 14 18:55:43 MET 2000 - choeger@suse.de
+
+- mnt/usr/bin/chattr does not work, so we call
+  chroot . /usr/bin/chattr
+
+-------------------------------------------------------------------
+Mon Mar 13 19:57:51 MET 2000 - choeger@suse.de
+
+- security fix in pwcheck-module
+
+-------------------------------------------------------------------
+Fri Mar 10 18:35:02 MET 2000 - choeger@suse.de
+
+- chattr is not in inst-sys, so we call
+  mnt/usr/bin/chattr 
+
+-------------------------------------------------------------------
+Wed Mar  1 11:24:21 MET 2000 - choeger@suse.de
+
+- added %{_mandir}
+
+-------------------------------------------------------------------
+Thu Feb 17 13:28:51 MET 2000 - choeger@suse.de
+
+- updated to version 1.5.19 of cyrus-imapd
+
+-------------------------------------------------------------------
+Tue Jan  4 18:11:48 MET 2000 - choeger@suse.de
+
+- bugfix for pwcheck
+
+-------------------------------------------------------------------
+Thu Nov 11 13:18:09 CET 1999 - choeger@suse.de
+
+- added mail-notification to postinstall
+
+-------------------------------------------------------------------
+Tue Oct 12 12:30:04 CEST 1999 - ro@suse.de
+
+- added tcld to neededforbuild
+
+-------------------------------------------------------------------
+Tue Sep 28 15:57:38 CEST 1999 - choeger@suse.de
+
+- first version
+

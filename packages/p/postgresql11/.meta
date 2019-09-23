@@ -1,0 +1,5 @@
+<package name="postgresql11" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:database:postgresql" package="postgresql11"/>
+</package>

@@ -1,0 +1,17 @@
+Index: src/misc.c
+===================================================================
+--- src/misc.c.orig
++++ src/misc.c
+@@ -654,9 +654,11 @@ preview_name (const char *name)
+    char *str = g_strdup (name);
+    char *ptr, *path;
+ 
+-   for (ptr = str; *ptr; ptr++)
++   if ( str != NULL ) {
++    for (ptr = str; *ptr; ptr++)
+       if (*ptr == '/')
+ 	 *ptr = '-';
++   }
+    path = g_strconcat (g_get_home_dir (), "/.wmakerconf/", str, NULL);
+    Free (str);
+ 

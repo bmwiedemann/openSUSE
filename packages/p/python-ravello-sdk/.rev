@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dae3c2e88b93a76cfc9cec8842bf6263</srcmd5>
+    <version>2.1</version>
+    <time>1485511250</time>
+    <user>dimstar_suse</user>
+    <comment>New package Ravello SDK.</comment>
+    <requestid>444360</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2344f0c501cb03dd85b0899c66c893d6</srcmd5>
+    <version>2.1</version>
+    <time>1486465759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455140</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8f411258f0ab9d35f676f5bca8ca761</srcmd5>
+    <version>2.4</version>
+    <time>1499880926</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508869</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cf71de70e8d32fa3a1d009b0b5c477f4</srcmd5>
+    <version>2.4</version>
+    <time>1506594952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529070</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>368a216fb196d44d4d4d00d65aa96c5b</srcmd5>
+    <version>2.7</version>
+    <time>1515623405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541756</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e04eb7cd8e1ae43e993469d25ad560a0</srcmd5>
+    <version>2.7</version>
+    <time>1545648177</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659633</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc5a4d05d60f906261dbd65fe7e943ba</srcmd5>
+    <version>2.17</version>
+    <time>1558520372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702937</requestid>
+  </revision>
+</revisionlist>

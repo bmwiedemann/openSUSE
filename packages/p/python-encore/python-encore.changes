@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed May 16 16:17:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.7.0
+  * Python 3 support (PR#102).
+  * Add a delayed asynchronizer that enforces an interval between operations (PR#63).
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Sun May 24 11:11:33 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 0.6.0
+  + New Features
+    * Added `MountedStore` store subclass. (PR#75)
+    * Added `concurrent.threadtools` module and `synchronized` 
+      decorator. (PR #91)
+    * Added the ability to request ranges of data from store 
+      values. (PR#76)
+  + Improvements
+    * Improved `get_data()` calls for `DynamicURLStore` 
+      instances. (PR#90)
+    * `DynamicURLStore` now accepts `401` return codes to 
+      indicate unauthorised keys. (PR#88)
+    * `DynamicURLStore` now implements `delete()` via sending an 
+      HTTP DELETE to the appropriate URL. (PR#87)
+    * `DynamicURLStore` uses streaming to send data. (PR#82)
+    * Refuse server-side compression for the `DynamicURLStore`. 
+      (PR#82)
+  + Fixes
+    * Fix attribute collision with futures 2.2.0. (PR#94)
+    * Fix race condition in file store. (PR#83)
+    * Various other minor fixes.
+
+-------------------------------------------------------------------
+Mon Oct 13 15:45:01 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.5.1
+  * no changelog
+- Update source to pypi url.
+
+-------------------------------------------------------------------
+Sat Apr 20 15:35:16 UTC 2013 - toddrme2178@gmail.com
+
+- Added a note about being part of the Enthought Tool Suite (ETS).
+
+-------------------------------------------------------------------
+Thu Apr 18 12:12:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 0.3
+  * no changelog
+
+-------------------------------------------------------------------
+Tue May 22 10:23:36 UTC 2012 - toddrme2178@gmail.com
+
+- Initial spec file
+

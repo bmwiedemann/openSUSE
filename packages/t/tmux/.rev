@@ -1,0 +1,569 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0868c538e0db45efdaa811732601928c</srcmd5>
+    <version>1.1</version>
+    <time>1266508824</time>
+    <user>autobuild</user>
+    <comment>Copy from home:gberh:Extra/tmux based on submit request 32631 from user gberh
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42a45835ca7f593450fce2d8d79b2570</srcmd5>
+    <version>1.2</version>
+    <time>1268408897</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/tmux based on submit request 34686 from user gberh
+</comment>
+    <requestid>34686</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a0b4e7a383c1eb661f79cb4a488ec60a</srcmd5>
+    <version>1.2</version>
+    <time>1268926352</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a0b4e7a383c1eb661f79cb4a488ec60a</srcmd5>
+    <version>1.2</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a0b4e7a383c1eb661f79cb4a488ec60a</srcmd5>
+    <version>1.2</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c2df4b26ccd4e46c73ad9587cbba2590</srcmd5>
+    <version>1.3</version>
+    <time>1279915960</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:openSUSE:Factory/tmux based on submit request 43684 from user coolo
+</comment>
+    <requestid>43684</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb39074f9ffcb5f99380ed75ff429fe9</srcmd5>
+    <version>1.4</version>
+    <time>1293579237</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56785 from user gberh
+</comment>
+    <requestid>56785</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>17845ad86c0af3d6b8e9992d40eab3c7</srcmd5>
+    <version>1.4</version>
+    <time>1293579246</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56785
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>17845ad86c0af3d6b8e9992d40eab3c7</srcmd5>
+    <version>1.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bfcd02f83b24ad3e4750b5972090348c</srcmd5>
+    <version>1.5</version>
+    <time>1310371976</time>
+    <user>saschpe</user>
+    <comment>- update to version 1.5</comment>
+    <requestid>75990</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bfcd02f83b24ad3e4750b5972090348c</srcmd5>
+    <version>1.5</version>
+    <time>1319182525</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>fb32beb917e0095fb234fc59ba55cc99</srcmd5>
+    <version>1.5</version>
+    <time>1323194941</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cb685676ad1fd8b5bc0e41be8bf8889b</srcmd5>
+    <version>1.6</version>
+    <time>1327490366</time>
+    <user>coolo</user>
+    <comment>- update to version 1.6
+  - extend the mode-mouse option to add a third choice which means
+    the mouse does not enter copy mode
+  - add a -r flag to switch-client to toggle the client read-only
+    flag
+  - add pane-base-index option
+  - support \ for line continuation in the configuration file
+  - framework for more powerful formatting of command output and
+    use it for list-{panes,windows,sessions}; this allows more
+    descriptive replacements (such as #{session_name}) and
+    conditionals
+  - mark dead panes with some text saying they are dead
+  - reject $SHELL if it is not a full path
+  - add -S option to refresh-client to redraw status line
+  - add an else clause for if-shell
+  - try to resolve relative paths for loadb and saveb (first, using
+    client working directory, if any, then default-path or session
+    working directory)
+  - support for \e[3J to clear the history and send the
+    corresponding terminfo code (E3) before locking
+  - when in copy mode, make repeat count indicate buffer to
+    replace, if used
+  - add screen*:XT to terminal-overrides for tmux-in-tmux
+  - status-line message attributes added
+  - move word-separators to be a session rather than window option
+  - change the way the working directory for new processes is
+    discovered; if default-path isn't empty, it is used; otherwise,
+    if a new window is created from the command-line, the working
+    directory of the client is used; if not, platform specific code
+    is used to retrieve the current working directory of the</comment>
+    <requestid>101306</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>cb685676ad1fd8b5bc0e41be8bf8889b</srcmd5>
+    <version>1.6</version>
+    <time>1340184280</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77d5ff65251af0e8259dde4cdefa108e</srcmd5>
+    <version>1.7</version>
+    <time>1350590674</time>
+    <user>coolo</user>
+    <comment>- update to version 1.7
+  - tmux configuration files now support line-continuation with a
+    &quot;\&quot; at the end of a line
+  - new option status-position to move the status line to the top
+    or bottom of the screen
+  - enforce history-limit option when clearing the screen
+  - Give each window a unique id, like panes but prefixed with @
+  - add pane id to each pane in layout description (while still
+    accepting the old form)
+  - provide defined ways to set the various default-path
+    possibilities: ~ for home directory, . for server start
+    directory, - for session start directory and empty for the
+    pane's working directory (the default). All can also be used as
+    part of a relative path (eg -/foo). Also provide -c flags to
+    neww and splitw to override default-path setting
+  - add -l flag to send-keys to send input literally (without
+    translating key names)
+  - allow a single option to be specified to show-options to show
+    just that option
+  - new command &quot;move-pane&quot; (like join-pane but allows the same
+    window)
+  - join-pane and move-pane commands learn &quot;-b&quot; option to place the
+    pane to the left or above
+  - support for bracketed-paste mode
+  - allow send-keys command to accept hex values
+  - add locking around &quot;start-server&quot; to avoid race-conditions
+  - break-pane learns -P/-F arguments for display formatting
+  - set-option learns &quot;-q&quot; to make it quiet, and not print out
+    anything
+  - copy mode learns &quot;wrap-search&quot; option</comment>
+    <requestid>138147</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>77d5ff65251af0e8259dde4cdefa108e</srcmd5>
+    <version>1.7</version>
+    <time>1359110497</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>41b03c0dfafee52b714c7d03aedbee1e</srcmd5>
+    <version>1.8</version>
+    <time>1364473776</time>
+    <user>coolo</user>
+    <comment>- update to version 1.8
+  - incompatible change: layout redo/undo has been removed
+  - add halfpage up/down bindings to copy mode
+  - session choosing fixed to work with unattached sessions
+  - new window options window-status-last-{attr,bg,fg} to denote
+    the last window which was active
+  - scrolling in copy-mode now scrolls the region without moving
+    the mouse cursor
+  - run-shell learnt '-t' to specify the pane to use when
+    displaying output
+  - support for middle-click pasting
+  - choose-tree learns '-u' to start uncollapsed
+  - select-window learnt '-T; to toggle to the last window if it's
+    already current
+  - new session option 'assume-paste-time' for pasting text versus
+    key-binding actions
+  - choose-* commands now work outside of an attached client
+  - aliases are now shown for list-commands command
+  - status learns about formats
+  - free-form options can be set with set-option if prepended with
+    an '@' sign
+  - capture-pane learnt '-p' to send to stdout, and '-e' for
+    capturing escape sequences, and '-a' to capture the alternate
+    screen, and '-P' to dump pending output
+  - many new formats added (client_session, client_last_session,
+    etc.)
+  - control mode, which is a way for a client to send tmux commands
+    currently more useful to users of iterm2
+  - resize-pane learnt '-x' and '-y' for absolute pane sizing
+  - config file loading now reports errors from all files which are</comment>
+    <requestid>161291</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>41b03c0dfafee52b714c7d03aedbee1e</srcmd5>
+    <version>1.8</version>
+    <time>1379664830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f5cb3e1814d08eea8c2735c84a2e7e3e</srcmd5>
+    <version>1.9</version>
+    <time>1392989181</time>
+    <user>coolo</user>
+    <comment>- update to version 1.9
+  - NOTE: This release has bumped the tmux protocol version. It is
+    therefore advised that the prior tmux server is restarted when
+    this version of tmux is installed, to avoid protocol mismatch
+    errors for newer clients trying to talk to an older running
+    tmux server.
+  - 88 colour support has been removed.
+  - 'default-path' has been removed. The new-window command accepts
+    '-c' to cater for this. The previous value of &quot;.&quot; can be
+    replaced with: 'neww -c $PWD', the previous value of '' which
+    meant current path of the pane can be specified as: 'neww -c
+    &quot;#{pane_current_path}&quot;'
+  - The single format specifiers: #A -&gt; #Z (where defined) have
+    been deprecated and replaced with longer-named equivalents, as
+    listed in the FORMATS section of the tmux manpage.
+  - The various foo-{fg,bg,attr} commands have been deprecated and
+    replaced with equivalent foo-style option instead. Currently
+    this is still backwards-compatible, but will be removed over
+    time.
+  - A new environment variable TMUX_TMPDIR is now honoured,
+    allowing the socket directory to be set outside of TMPDIR
+    (/tmp/ if not set).
+  - If -s not given to swap-pane the current pane is assumed.
+  - A #{pane_syncronized} format specifier has been added to be a
+    conditional format if a pane is in a syncronised mode (c.f.
+    syncronize-panes)
+  - Tmux now runs under Cygwin natively.
+  - Formats can now be nested within each other and expanded
+    accordingly.
+  - Added 'automatic-rename-format' option to allow the automatic</comment>
+    <requestid>223315</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6209a65460e27a15a7d32bab9d34b254</srcmd5>
+    <version>1.9a</version>
+    <time>1393232565</time>
+    <user>coolo</user>
+    <comment>- update to version 1.9a
+  - Fix crash due to uninitialized lastwp member of layout_cell
+  - Fix -fg/-bg/-style with 256 colour terminals.</comment>
+    <requestid>223598</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>6209a65460e27a15a7d32bab9d34b254</srcmd5>
+    <version>1.9a</version>
+    <time>1409303511</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>1cb5458db099bd792dc71a1a36d8e850</srcmd5>
+    <version>1.9a</version>
+    <time>1415118557</time>
+    <user>coolo</user>
+    <comment>- add tmux-fix-malloc-check-abort.patch in order to fix glibc
+  aborting on openSUSE Factory due toits MALLOC_CHECK_ settings
+  (http://sourceforge.net/p/tmux/tickets/105/, bnc#869950)</comment>
+    <requestid>259385</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>f6263f6d2f827f6e5a280e6a17648003</srcmd5>
+    <version>1.9a</version>
+    <time>1415953159</time>
+    <user>dimstar_suse</user>
+    <comment>- Add full download url for the tarball fetching/verification</comment>
+    <requestid>261429</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>d48baa1177a9a555391c83b852a016b5</srcmd5>
+    <version>1.9a</version>
+    <time>1416347139</time>
+    <user>dimstar_suse</user>
+    <comment>- tmux-socket-path.patch: Just like screen, create socket 
+  directory with tmpfiles.d functionality in /run/tmux 
+  and not in /tmp. This patch only alters the default
+  directory that can be still overrriden by setting
+  TMUX_TMPDIR or TMPDIR environment variable. This add some
+  robustness against accidental deletion via
+  systemd-tmpfiles-clean, tmpwatch, or similar.</comment>
+    <requestid>261719</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3096cb7154ecae3f0af2bd9b67ba78aa</srcmd5>
+    <version>2.0</version>
+    <time>1431247561</time>
+    <user>coolo</user>
+    <comment>- update to version 2.0
+  - Incompatible changes:
+    - The choose-list command has been removed.
+    - 'terminal-overrides' is now a server option, not a session
+      option.
+    - 'message-limit' is now a server option, not a session option.
+    - 'monitor-content' option has been removed.
+    - 'pane_start_path' option has been removed.
+    - The &quot;info&quot; mechanism which used to (for some commands)
+      provide feedback has been removed, and like other commands,
+      they now produce nothing on success.
+  - Normal changes:
+    - tmux can now write an entry to utmp if the library 'utempter'
+      is present at compile time.
+    - set-buffer learned append mode (-a), and a corresponding
+      'append-selection' command has been added to copy-mode.
+    - choose-mode now has the following commands which can be
+      bound:
+        - start-of-list
+        - end-of-list
+        - top-line
+        - bottom-line
+    - choose-buffer now understands UTF-8.
+    - Pane navigation has changed:
+        - The old way of always using the top or left if the choice
+          is ambiguous.
+        - The new way of remembering the last used pane is annoying
+          if the layout is balanced and the leftmost is obvious to
+          the user (because clearly if we go right from the
+          top-left in a tiled set of four we want to end up in</comment>
+    <requestid>305698</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c1d659ba80eb5a5d5761170f9b454e84</srcmd5>
+    <version>2.0</version>
+    <time>1431668592</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306355</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>09b0770efb082a3a0a6f1d466cdfe9b9</srcmd5>
+    <version>2.0</version>
+    <time>1437059737</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315663</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>cd368108d239977579d758dbf6db4454</srcmd5>
+    <version>2.0</version>
+    <time>1443068126</time>
+    <user>coolo</user>
+    <comment>- enable build on SLE11 (requires libevent2)
+- move comment to patch</comment>
+    <requestid>332585</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2fd3b7f66c7b8b91ec93d03a101d66ec</srcmd5>
+    <version>2.1</version>
+    <time>1445288012</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1
+- Incompatible Changes:
+* Mouse-mode has been rewritten.  There's now no longer options for:
+	- mouse-resize-pane
+	- mouse-select-pane
+	- mouse-select-window
+	- mode-mouse
+  Instead there is just one option:  'mouse' which turns on mouse support
+  entirely.
+* 'default-terminal' is now a session option.  Furthermore, if this is set
+  to 'screen-*' then emulate what screen does.  If italics are wanted, this
+  can be set to 'tmux' but this is still new and not necessarily supported
+  on all platforms with older ncurses installs.
+* The c0-* options for rate-limiting have been removed.  Instead, a backoff
+  approach is used.
+- Normal Changes:
+* New formats:
+	- session_activity
+	- window_linked
+	- window_activity_format
+	- session_alerts
+	- session_last_attached
+	- client_pid
+	- pid
+* 'copy-selection', 'append-selection', 'start-named-buffer' now understand
+  an '-x' flag to prevent it exiting copying mode.
+* 'select-pane' now understands '-P' to set window/pane background colours.
+* 'renumber-windows' now understands windows which are unlinked.
+* 'bind' now understands multiple key tables.  Allows for key-chaining.
+* 'select-layout' understands '-o' to undo the last layout change.</comment>
+    <requestid>339729</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>744debe58b9d4c51aea9d4708bbc984f</srcmd5>
+    <version>2.1</version>
+    <time>1454353056</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup specfile (forwarded request 357140 from mimi_vx)</comment>
+    <requestid>357145</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c044a2d32227bf7790329c235d54151e</srcmd5>
+    <version>2.2</version>
+    <time>1460482811</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>387936</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>982f819e48f7b584b25ef9ca52e1740a</srcmd5>
+    <version>2.2</version>
+    <time>1461855392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391453</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e85a1ff2d92ac03248840ecf3475c1ff</srcmd5>
+    <version>2.3</version>
+    <time>1475359746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432068</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d28eb45fa011d1f5a2999f5dc5dff6ea</srcmd5>
+    <version>2.4</version>
+    <time>1493020159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489756</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>438768261eb1714dcd4c815bd8722c78</srcmd5>
+    <version>2.4</version>
+    <time>1493903120</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boo#1037468 - tmux_issue889.patch</comment>
+    <requestid>492707</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f5680c7408d201d385dafbfbbb4cc6d3</srcmd5>
+    <version>2.5</version>
+    <time>1496226155</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5
+- dropped tmux_issue889.patch
+- refresh tmux-socket-path.patch
+* new stable release (forwarded request 499868 from mimi_vx)</comment>
+    <requestid>499869</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8ed59d019f57e452be1cfd8bc8a4aa3a</srcmd5>
+    <version>2.6</version>
+    <time>1508316836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534383</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a252a293b1485dc7f6d422675c99f7a4</srcmd5>
+    <version>2.7</version>
+    <time>1524238072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596834</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>620db18713a48583fa2e14358dc7ac3c</srcmd5>
+    <version>2.7</version>
+    <time>1526463779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607707</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>76e49820be7aa46e16561b75669c3a8a</srcmd5>
+    <version>2.7</version>
+    <time>1529402663</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617320</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>16f773b91c468567456ec180031461c9</srcmd5>
+    <version>2.8</version>
+    <time>1540200326</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8
+- drop 0001-Increment-the-lines-counter-when-skipping-a-line-to-.patch
+- move bash-completion to right place
+ * Make display-panes block the client until a pane is chosen or it
+    times out.
+ * Clear history on RIS like most other terminals do.
+ * Add an &quot;Any&quot; key to run a command if a key is pressed that is not
+    bound in the current key table.
+ * Expand formats in load-buffer and save-buffer.
+ * Add a rectangle_toggle format.
+ * Add set-hook -R to run a hook immediately.
+ * Add pane focus hooks.
+ * Allow any punctuation as separator for s/x/y not only /.
+ * Improve resizing with the mouse (fix resizing the wrong pane in some
+    layouts, and allow resizing multiple panes at the same time).
+ * Allow , and } to be escaped in formats as #, and #}.
+ * Add KRB5CCNAME to update-environment.
+ * Change meaning of -c to display-message so the client is used if it
+    matches the session given to -t.
+ * Fixes to : form of SGR.
+ * Add x and X to choose-tree to kill sessions, windows or panes. (forwarded request 643324 from mimi_vx)</comment>
+    <requestid>643325</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>6847cd2193f0a33500868b210f0db5b9</srcmd5>
+    <version>2.8</version>
+    <time>1543400054</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-cve201819387.patch  fixes CVE-2018-19387 boo#1116887 (forwarded request 652132 from mimi_vx)</comment>
+    <requestid>652133</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>e60cf011210ff546157122ef6bc6ce84</srcmd5>
+    <version>2.8</version>
+    <time>1546695770</time>
+    <user>dimstar_suse</user>
+    <comment>- add issue_1549.diff to fix boo#1120170 (forwarded request 662785 from mimi_vx)</comment>
+    <requestid>662786</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>39f11e652dae6622be1b0dafd5ef249f</srcmd5>
+    <version>2.9</version>
+    <time>1556817519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699719</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>1d0c5729442e762210f4645a9e0b3498</srcmd5>
+    <version>2.9</version>
+    <time>1559727974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707623</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>85ff116ca68ff1e4984887637af5bd3b</srcmd5>
+    <version>2.9a</version>
+    <time>1567168969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727173</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun Aug 28 18:41:32 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typo in perl-libconfigfile.spec
+
+-------------------------------------------------------------------
+Mon Jan 17 16:01:50 UTC 2011 - coolo@novell.com
+
+- buildrequire perl-macros
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:21 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:43 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug 15 15:02:04 CEST 2005 - pth@suse.de
+
+- Initial package, based on the work of Richard Bos <richard@radoeka.nl>

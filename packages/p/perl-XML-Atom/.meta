@@ -1,0 +1,5 @@
+<package name="perl-XML-Atom" project="openSUSE:Factory">
+  <title>Atom feed and API implementation</title>
+  <description>Atom is a syndication, API, and archiving format for weblogs and other data. XML::Atom implements the feed format as well as a client for the API.</description>
+  <devel project="devel:languages:perl" package="perl-XML-Atom"/>
+</package>

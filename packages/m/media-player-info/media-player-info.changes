@@ -1,0 +1,238 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:20:08 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Fri May  3 15:03:05 CEST 2019 - vuntz@opensuse.org
+
+- Update to version 23:
+  + mpi2hwdb.py: Export the icon through hwdb to udev
+  + mpi2hwdb.py: Force default icon to be multimedia-player
+  + Sort list of mpi files to get reproducible rules/hwdb
+
+-------------------------------------------------------------------
+Tue May  2 03:47:30 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to make build fully reproducible
+
+-------------------------------------------------------------------
+Thu Dec 18 12:45:44 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 22:
+  + Terminate udev rules with an empty line (lp#1364747).
+  + Add Sandisk Sansa Clip Sport (lp#1296418).
+  + Remove ZTE Score (deb#748647).
+- Drop fix-udev-rules-creator.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Apr 27 09:14:40 UTC 2014 - coolo@suse.com
+
+- buildrequire systemd to avoid a conflict with systemd-mini
+  (actually a short coming the way post requires are added
+  to the buildenv without checking for conflicts with previous
+  build requires)
+
+-------------------------------------------------------------------
+Mon Sep 30 12:11:46 UTC 2013 - fcrozat@suse.com
+
+- Add fix-udev-rules-creator.patch: fix missing eol causing udev
+  warning (git).
+- Ensure udev is notified when package is installed / updated /
+  uninstalled.
+
+-------------------------------------------------------------------
+Fri Jul 26 22:39:19 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 21:
+  + Fix build under non-UTF8 locales
+- Changes from version 20:
+  + Fix build in separate build tree
+- Changes from version 19:
+  + Drop obsolete fdi2mpi.py
+  + Port generator tools to Python 3
+  + Rename mpi files with overly long names
+  + Add Motorola Droid 4
+  + Create udev hwdb when building with udev >= 196
+- Changes from version 18:
+  + Add HP Veer
+  + Add Archos 5 Internet Tablet
+  + Add ZTE Score
+  + Add LG Optimus One P500
+  + Drop newer kindles
+  + Fix playlist path for Sony Ericsson Xperia mini pro
+- Added python3 BuildRequires for new generator tools
+
+-------------------------------------------------------------------
+Sun Oct 21 09:43:35 UTC 2012 - fcrozat@suse.com
+
+- Fix build with older openSUSE releases.
+
+-------------------------------------------------------------------
+Sat Oct 13 15:33:40 UTC 2012 - coolo@suse.com
+
+- move udev rules to /usr
+
+-------------------------------------------------------------------
+Sun Sep 16 19:51:06 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 17:
+  + Add support for Creative Zen MX, Nec LifeTouch Note, 
+    Nokia C7-00, Sony Ericsson Xperia Mini, iBeat Jess, Nokia N9.
+  + Xperia X12 is better known as Xperia arc.
+  + Galaxy Gio (GT-S5660) shares same ID as Ace.
+  + Add a third ID for Acer Liquid (MT).
+  + Add playlist format to Android devices.
+  + Add alternative product ID for Sony Ericsson Xperia X10.
+
+-------------------------------------------------------------------
+Sun Jul 22 12:57:33 UTC 2012 - coolo@suse.com
+
+- change buildrequires of udev to expect the pkg-config file
+
+-------------------------------------------------------------------
+Tue Feb 14 09:51:28 UTC 2012 - vuntz@opensuse.org
+
+- Add comments to clarify the license of the package (bnc#743602):
+  while some files in the tarball are GPL-2.0+ or MIT, those are
+  not shipped in any form in the resulting binary package.
+
+-------------------------------------------------------------------
+Tue Jan 24 10:24:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 16:
+  + Add support for Archos Key, Nokia N950, Sandisk Sansa Clip ZIP,
+    Sony Walkman NWZ-A800 series, Sony Walkman NWZ-S545,
+    Sony Walkman NWZ-S76x, Sony Walkman S-750 series.
+
+-------------------------------------------------------------------
+Thu Dec  8 13:42:34 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Oct  5 05:41:38 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 15:
+  + Add playlist path to all Android devices.
+  + Remove %File references from PlaylistPath property.
+  + Define "FolderSeparator" and "LineEnding" properties.
+  + Add support for Acer Liquid, Archos A43 Internet Tablet,
+    Barnes and Noble Nook eReaders, Cowon iAUDIO E2,
+    Creative Zen Style 300, Galaxy S 2, GoGear Vibe 4Gb, HP Pre 3,
+    HP Touchpad, LG Optimus S, MicroMax A60, Motorola Atrix,
+    Nokia 6730 Classic, Notion Ink Adam Tablet, Palm Pre 2,
+    Philips GoGear Raga, Samsung Galaxy Ace, Samsung Freeform II,
+    Samsung Galaxy S2, Samsung Galaxy SII, Samsung Reality,
+    Sharp IS03, Sony Ericsson Vivaz, Sony Ericsson W705,
+    Sony Ericsson Xperia mini pro, Sony Ericsson Xperia Play,
+    Sony Ericsson Xperia X12 (Arc), TrekStor i.Beat rock,
+    Vodafone 845 (Huawei U8120).
+  + Improve support for Sandisk Sansa Clip+, Sandisk Sansa Fuze,
+    Sony Walkman NWZ-S638F
+
+-------------------------------------------------------------------
+Tue May  3 00:37:56 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 14:
+  + Add support for Creative Zen X-Fi, Pantech SIRIUS alpha,
+    Sandisk Sansa Fuze+, Sharp IS01, Sony Ericsson C905.
+  + Improve support for Creative Zen X-Fi Style, HTC Legend.
+- Changes from version 13:
+  + Do not generate icon rules as it is currently broken
+    (lp#657609)
+  + Add suppor tfor Coby players, Huawei Ideos, Motorola Droid 2,
+    RCA H100a, Samsung U6, Sony Ericsson XPERIA X1, Sony Walkman
+    NWZ-E355.
+  + Improve suppor for Creative Zen Stone, HTC Desire, HTC Evo, LG
+    0x6018, Samsung Galaxy S, Sony Ericsson K800i, Sony Ericsson
+    Xperia X10 mini Pro.
+
+-------------------------------------------------------------------
+Sun Jan  9 11:04:39 CET 2011 - vuntz@opensuse.org
+
+- Update to version 12:
+  + Add support for more Blackberries, Cowon J3, Google Nexus S,
+    HTC EVO 4G, more Kindles, LG Ally, LG Optimus One, LG Vortex,
+    Nokia 6700, Philips GoGear Aria, Philips GoGear RaGa, Samsung
+    GT-S8000 Jet, Samsung YP-P2, Sony Ericsson Xperia X8.
+  + Improve suppport for Blackberries, iPods, iRiver T30, Philips
+    GoGear Opus, Samsung Galaxy.
+
+-------------------------------------------------------------------
+Wed Dec  8 08:51:36 CET 2010 - vuntz@opensuse.org
+
+- Update to version 11:
+  + Add support for many devices from Acer, Ali, Archos, Cowon,
+    Creative, Dane-Elec, HTC, Huawei, iRiver, LG, Motorola, Nokia,
+    Philips, Samsung, Sandisk, Sansa, Sony Ericsson, Sony.
+  + Improve support for various devices.
+
+-------------------------------------------------------------------
+Sat Oct  9 20:22:32 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 10:
+  + mpi2udev.py: Add missing comma in rules with icons
+  + Add automatic syntax checking
+  + Sanitize name of iRiver T30 and of hama T30
+  + Add devices:
+    - Archos Vision 18
+- Changes from version 9:
+  + Fix Apple video player detection
+  + Mark android devices as such
+  + Mark the n900 as a maemo device
+  + Mark the Palm Pre as a WebOS device
+  + Give user-readable name to HTC Diamond mpi file
+  + Fix Xperia X10 device ID
+  + Add devices:
+    - another HTC Diamond ID
+    - another Samsung Galaxy ID
+    - another Motorola Droid
+    - Xperia X10 usb ID
+    - Motorola CLIQ
+    - Sony Xperia X10 Mini
+    - Samsung YP-M1
+    - Motorola Dext
+    - iRiver E30
+- Changes from version 8:
+  + Fix OutputFormats syntax
+  + Add audio/flac as output format for the Samsung Galaxy
+- Changes from version 7:
+  + Add parser tools to the distribution
+  + Dual-license fdi2mpi.py under X11, too
+  + Rebuild udev rules on changes of mpi2udev.py
+  + mpi2udev.py: Add matching to USB product and manufacturer name
+  + README: Improve description of detection
+  + Add devices:
+    - Sony Ericsson Xperia X10
+    - another Samsung Galaxy ID
+    - Rockbox players
+    - Archos 5 IMT
+    - TEAC MP3 Player MP-375SD
+
+-------------------------------------------------------------------
+Thu Apr  8 16:16:04 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 6:
+  + Add icon for HTC G1 phone
+  + Add Palm Prē
+  + Add Samsung Galaxy
+  + Add Nokia N900 phone
+  + Add MP3 support to the Samsung Galaxy
+  + Add Google Nexus One
+  + Add Huawei Pulse phone
+  + Add icon for Google Nexus One phone
+  + Fix name of iPod icon name
+  + Fix format of DeviceMatch entries in new mpi files
+  + Add mpi file for Sansa Clip+
+  + Fix udev rules to catch MTP devices, too
+  + Add Cowon S9
+
+-------------------------------------------------------------------
+Tue Mar 23 18:26:17 CET 2010 - vuntz@opensuse.org
+
+- New package: media-player-information is needed in a hal-free
+  world to get information about media player. This is a
+  freedesktop.org initiative.
+

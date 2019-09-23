@@ -1,0 +1,399 @@
+# 'OUTPUT' is not a group, this defines the entry point for the solver.
+# there is an entry for every group file that needs to be written out.
+# the name of it needs to exist as package group as well and the solver
+# will take the instructions in this group and the included ones
+# (that's why sle_minimal is included to get minimal instructions)
+# and solve the packages in it (one by one next to 'silents' and 'locks')
+# and then at the end remove packages in the 'excludes'.
+# excludes are not package groups but solved module groups
+OUTPUT:
+  - dvd:
+      recommends: true
+  - opensuse_kubic:
+      recommends: false
+      includes:
+        - opensuse_microos
+        - opensuse_kubic
+  - opensuse_microos:
+      recommends: false
+      includes:
+        - opensuse_microos
+
+dvd:
+  - kernel-default
+  - dummy-release: [locked]
+  - openSUSE-MicroOS-release: [locked]
+  - patterns-microos-basesystem: [locked]
+  - openSUSE-Tumbleweed-Kubic-release: [locked]
+  - openSUSE-release-appliance: [locked]
+  - openSUSE-release
+  - openSUSE-release-dvd
+  # make sure bootloader exist due to patterns change
+  - grub2
+  - grub2-systemd-sleep-plugin
+  - grub2-snapper-plugin
+  - grub2-branding-openSUSE
+  - grub2-x86_64-efi: [x86_64]
+  - grub2-i386-pc: [x86_64,i586]
+  - grub2-arm64-efi: [aarch64]
+  - shim: [x86_64,aarch64]
+  - patterns-gnome-gnome: [suggested]
+  - patterns-gnome-gnome_basis: [suggested]
+  - patterns-gnome-gnome_basis_opt: [suggested]
+  - patterns-gnome-gnome_games: [suggested]
+  - patterns-gnome-gnome_ide: [suggested]
+  - patterns-gnome-gnome_imaging: [suggested]
+  - patterns-gnome-gnome_internet: [suggested]
+  - patterns-gnome-gnome_multimedia: [suggested]
+  - patterns-gnome-gnome_office: [suggested]
+  - patterns-gnome-gnome_utilities: [suggested]
+  - patterns-gnome-gnome_yast: [suggested]
+  - patterns-desktop-imaging: [suggested]
+  - patterns-kde-kde: [suggested]
+  - patterns-kde-kde_edutainment: [suggested]
+  - patterns-kde-kde_games: [suggested]
+  - patterns-kde-kde_ide: [suggested]
+  - patterns-kde-kde_imaging: [suggested]
+  - patterns-kde-kde_internet: [suggested]
+  - patterns-kde-kde_multimedia: [suggested]
+  - patterns-kde-kde_office: [suggested]
+  - patterns-kde-kde_plasma: [suggested]
+  - patterns-kde-kde_utilities: [suggested]
+  - patterns-kde-kde_utilities_opt: [suggested]
+  - patterns-kde-kde_yast: [suggested]
+  - patterns-base-apparmor: [suggested]
+  - patterns-base-base: [suggested]
+  - patterns-base-console: [suggested]
+  - patterns-devel-C-C++-devel_C_C++: [suggested]
+  - patterns-devel-base-devel_basis: [suggested]
+  - patterns-devel-base-devel_kernel: [suggested]
+  - patterns-devel-osc-devel_osc_build: [suggested]
+  - patterns-devel-perl-devel_perl: [suggested]
+  - patterns-devel-base-devel_rpm_build: [suggested]
+  - patterns-devel-ruby-devel_ruby: [suggested]
+  - patterns-devel-base-devel_web: [suggested]
+  - patterns-server-dhcp_dns_server: [suggested]
+  - patterns-server-directory_server: [suggested]
+  - patterns-base-enhanced_base: [suggested]
+  - patterns-server-file_server: [suggested]
+  - patterns-fonts-fonts: [suggested]
+  - patterns-fonts-fonts_opt: [suggested]
+  - patterns-games-games: [suggested]
+  - patterns-server-lamp_server: [suggested]
+  - patterns-desktop-laptop: [suggested]
+  - patterns-lxde-lxde: [suggested]
+  - patterns-lxde-lxde_laptop: [suggested]
+  - patterns-server-mail_server: [suggested]
+  - patterns-desktop-multimedia: [suggested]
+  - patterns-network-network_admin: [suggested]
+  - patterns-office-office: [suggested]
+  - patterns-server-printing: [suggested]
+  - patterns-media-rest_cd_core: [suggested]
+  - patterns-base-sw_management: [suggested]
+  - patterns-gnome-sw_management_gnome: [suggested]
+  - patterns-desktop-technical_writing: [suggested]
+  - patterns-base-basic_desktop: [suggested]
+  - patterns-base-transactional_base: [suggested]
+  - patterns-base-x11: [suggested]
+  - patterns-xfce-xfce: [suggested]
+  - patterns-xfce-xfce_basis: [suggested]
+  - patterns-xfce-xfce_laptop: [suggested]
+  - patterns-xfce-xfce_office: [suggested]
+  - patterns-yast-yast2_basis: [suggested]
+  - patterns-yast-yast2_install_wf: [suggested]
+  - arabic-fonts
+  - arphic-uming-fonts
+  - cracklib-dict-full
+  - indic-fonts
+  - ipa-gothic-fonts
+  - khmeros-fonts
+  - lklug-fonts
+  # for now xen_server
+  - thai-fonts
+  - un-fonts
+  - yast2-trans-af
+  - yast2-trans-ar
+  - yast2-trans-bg
+  - yast2-trans-bn
+  - yast2-trans-bs
+  - yast2-trans-ca
+  - yast2-trans-cs
+  - yast2-trans-cy
+  - yast2-trans-da
+  - yast2-trans-de
+  - yast2-trans-el
+  - yast2-trans-en_GB
+  - yast2-trans-en_US
+  - yast2-trans-es
+  - yast2-trans-et
+  - yast2-trans-fa
+  - yast2-trans-fi
+  - yast2-trans-fr
+  - yast2-trans-gl
+  - yast2-trans-gu
+  - yast2-trans-hi
+  - yast2-trans-hr
+  - yast2-trans-hu
+  - yast2-trans-id
+  - yast2-trans-it
+  - yast2-trans-ja
+  - yast2-trans-jv
+  - yast2-trans-ka
+  - yast2-trans-km
+  - yast2-trans-ko
+  - yast2-trans-lo
+  - yast2-trans-lt
+  - yast2-trans-mk
+  - yast2-trans-mr
+  - yast2-trans-nb
+  - yast2-trans-nl
+  - yast2-trans-pa
+  - yast2-trans-pl
+  - yast2-trans-pt
+  - yast2-trans-pt_BR
+  - yast2-trans-ro
+  - yast2-trans-ru
+  - yast2-trans-si
+  - yast2-trans-sk
+  - yast2-trans-sr
+  - yast2-trans-sv
+  - yast2-trans-ta
+  - yast2-trans-th
+  - yast2-trans-tr
+  - yast2-trans-uk
+  - yast2-trans-vi
+  - yast2-trans-wa
+  - yast2-trans-xh
+  - yast2-trans-zh_CN
+  - yast2-trans-zh_TW
+  - yast2-trans-zu
+  - patterns-desktop-books: [suggested]
+  - patterns-server-kvm_server: [suggested]
+  - patterns-base-minimal_base: [suggested]
+  - patterns-yast-x11_yast: [suggested]
+  - patterns-server-xen_server: [suggested]
+  # bnc#431280 (Japanese fonts)
+  - arphic-uming-fonts
+  - capi4hylafax
+  - cellwriter
+  - clicfs
+  - createrepo
+  - eekboard
+  - git
+  # hylafax as requested by kkeil
+  - hylafax+
+  - hylafax+-client
+  # kdump+tools
+  - kdump
+  # all kernel flavors we want to have
+  - kernel-default
+  - kexec-tools
+  - quota-nfs
+
+  - patterns-media-rest_dvd: [suggested]
+  # all loggers
+  - systemd-logger
+  - rsyslog
+  - syslog-service
+  - dia: [locked]
+  - gnuchess: [locked]
+  - gnumeric: [locked]
+  - marble: [locked]
+  - seamonkey: [locked]
+  - systemd-presets-branding-CAASP: [locked]
+  - texlive: [locked]
+  - gnuchess: [locked]
+  - myspell-german-old: [locked]
+  - apache2-worker: [locked]
+  - gnu-free-fonts: [locked]
+  - frozen-bubble: [locked]
+  - marble: [locked]
+  - digikam: [locked]
+  - digikam-doc: [locked]
+  - gimp-help: [locked]
+  - gimp-help-it: [locked]
+  - gimp-help-pl: [locked]
+  - gimp-help-sv: [locked]
+  - gimp-help-fr: [locked]
+  - gimp-help-da: [locked]
+  - gimp-help-de: [locked]
+  - gimp-help-es: [locked]
+  - gimp-help-ja: [locked]
+  - gimp-help-zh: [locked]
+  - gimp-help-el: [locked]
+  - gimp-help-en_GB: [locked]
+  - gimp-help-pt_BR: [locked]
+  - gimp-help-ru: [locked]
+  - libqt4-devel-doc-data: [locked]
+  - gnucash-docs: [locked]
+  - kernel-debug: [locked]
+  ## highly outdated at the moment
+  - MozillaFirefox-translations-other: [locked]
+  - MozillaThunderbird-translations-other: [locked]
+  - texlive: [locked]
+  - lyx: [locked]
+  - gnumeric: [locked]
+  - gnome-devel-docs: [locked]
+  - timidity: [locked]
+  - scribus: [locked]
+  - dynamic-wallpapers-11x: [locked]
+  - python-doc-pdf: [locked]
+  - wine-gecko: [locked]
+
+  # trying to get a working DVD: [locked]
+  - mono-devel: [locked]
+  - libqt5-qtdoc: [locked]
+  - kde-l10n-fr-doc: [locked]
+  - kde-l10n-pt_BR-doc: [locked]
+  - kde-l10n-pl-doc: [locked]
+  - kde-l10n-ru-doc: [locked]
+  - libqt5-creator: [locked]
+  - seamonkey: [locked]
+  - blender: [locked]
+  - calibre: [locked]
+  - libLLVM7: [locked]
+
+  ## attemt to shrink the DVD - 20151115 by dimstar: [locked]
+  - valgrind-devel: [locked]
+
+  ## Further shrinkg the DVD - 20160330 by dimstar: [locked]
+  - ImageMagick-doc: [locked]
+  - python-doc: [locked]
+  - python3-doc: [locked]
+
+  ## This appeared newly - and makes the DVD explode again - 20160531 - dimstar: [locked]
+  - mathjax: [locked]
+
+  - ocaml-compiler-libs: [locked]
+
+  ## Hunt for space
+  - libqt4-devel: [locked]
+
+  ## More space needed - 2017-02-02
+  - ant: [locked]
+  - java-1_8_0-openjdk-devel: [locked]
+
+  ## wow, we run out of space... drop 40MB of cjk fonts:
+  - noto-sans-cjk-fonts: [locked]
+  ## still run out of space, as kr was dropped, try jp also
+  - noto-sans-jp-fonts: [locked]
+
+  ## more space needed - dimstar - 20180419
+  - amarok-lang: [locked]
+
+  - libqt5-qtdeclarative-devel: [locked]
+
+  # lock to align with package-lists solution
+  - appmenu-qt: [locked]
+  - aspell-ispell: [locked]
+  - clang7-checker: [locked]
+  - fluid-soundfont-gm: [locked]
+  - fluid-soundfont-gs: [locked]
+  - gcin-branding-upstream: [locked]
+  - gimp-help: [locked]
+  - install-initrd-openSUSE: [locked]
+  - install-initrd-Kubic: [locked]
+  - install-initrd-MicroOS: [locked]
+  - laptop-mode-tools: [locked]
+  - libreoffice-branding-upstream: [locked]
+  - poppler-data: [locked]
+  - pulseaudio-module-gconf: [locked]
+  - tomcat: [locked]
+
+  - virtualbox: [locked]
+  - virtualbox-host-kmp-default: [locked]
+
+  - desktop-data-openSUSE-extra: [i586]
+ 
+  # DVD exploded in size - klettres grew from 17MB to 36 - dimstar, 20190821
+  - klettres: [locked]
+
+  # additional packages not picked
+  - apache-parent
+  - bcm20702a1-firmware
+  - bcm43xx-firmware
+  - elilo
+  - erofs-utils
+  - f2fs-tools
+  - fuse3
+  - icewm-config-upstream
+  - icewm-lite
+  - lifecycle-data-openSUSE
+  - mokutil: [x86_64]
+  - mtd-utils
+  - nut
+  - nut-cgi
+  - openafs-client
+  - pcsc-acr38
+  - pcsc-asedriveiiie-usb
+  - pcsc-asekey
+  - pcsc-cyberjack
+  - pcsc-gempc
+  - pcsc-towitoko
+  - postgresql
+  - postgresql-contrib
+  - postgresql-devel
+  - postgresql-server
+  - postgresql10
+  - postgresql10-contrib
+  - postgresql10-devel
+  - postgresql10-server
+  - qemu-guest-agent
+  - rng-tools
+  - rt2860
+  - salt-master
+  - salt-minion
+  - sendmail
+  - spacenavd
+  - spu-tools
+  - system-user-upsd
+  - technisat-usb2-firmware
+  - virtualbox-guest-tools
+  - virtualbox-guest-x11
+  - xen-tools-domU
+  - xml-commons-apis
+  - xml-commons-resolver
+  # used in staging tests
+  - yast2-nfs-server
+  - bind
+  - Mesa-demo-x
+  - inkscape
+  - autoyast2
+
+opensuse_microos:
+  - dummy-release: [locked]
+  # we need a global flag, not there yet
+  - kernel-vanilla-base: [locked]
+  - kernel-kvmsmall-base: [locked]
+  - kernel-vanilla: [locked]
+  - kernel-kvmsmall: [locked]
+  - openSUSE-MicroOS-release
+  - kernel-default
+  - patterns-microos-base: [aarch64,x86_64]
+  - patterns-microos-defaults: [aarch64,x86_64]
+  - patterns-microos-hardware: [aarch64,x86_64]
+  - patterns-microos-apparmor: [aarch64,x86_64]
+  - patterns-microos-selinux: [aarch64,x86_64]
+  - patterns-microos-sssd_ldap: [aarch64,x86_64]
+  - patterns-microos-ima_evm: [aarch64,x86_64]
+  - patterns-microos-cloud: [aarch64,x86_64]
+  - patterns-microos-onlyDVD: [aarch64,x86_64]
+  - patterns-microos-alt_onlyDVD: [aarch64,x86_64]
+  - patterns-containers-container_runtime: [aarch64,x86_64]
+  - podman-cni-config: [aarch64,x86_64]
+  - kernel-default-base: [aarch64,x86_64]
+  - grub2-x86_64-efi: [x86_64]
+  - grub2-i386-pc: [x86_64]
+  - grub2-arm64-efi: [aarch64]
+
+opensuse_kubic:
+  - patterns-containers-kubeadm: [aarch64,x86_64]
+  - patterns-containers-container_runtime_kubernetes: [aarch64,x86_64]
+  - patterns-containers-container_runtime: [aarch64,x86_64]
+  - patterns-containers-kubic_worker: [aarch64,x86_64]
+  - patterns-containers-kubic_admin: [aarch64,x86_64]
+  - patterns-containers-kubernetes_utilities: [aarch64,x86_64]
+  - patterns-containers-kubic_loadbalancer: [aarch64,x86_64]
+  - grub2-x86_64-efi: [x86_64]
+  - grub2-i386-pc: [x86_64]
+  - grub2-arm64-efi: [aarch64]

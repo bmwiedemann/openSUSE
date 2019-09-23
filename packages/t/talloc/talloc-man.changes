@@ -1,0 +1,322 @@
+-------------------------------------------------------------------
+Tue Mar  5 17:39:21 UTC 2019 - dmulder@suse.com
+
+- Update to version 2.1.16
+  + Fix standalone build of talloc.
+
+-------------------------------------------------------------------
+Wed Feb  6 17:47:12 UTC 2019 - dmulder@suse.com
+
+- Update to version 2.1.15
+  + Deprecate talloc_set_memlimit() and talloc_autofree_context()
+  + Fix undefined behavior in talloc_memdup
+  + The build uses python3 by default:
+  + --extra-python would take python2 now
+  + To build with python2 only use:
+    PYTHON=python2 ./configure
+    PYTHON=python2 make
+    PYTHON=python2 make install
+
+-------------------------------------------------------------------
+Wed Aug  8 16:08:31 UTC 2018 - dmulder@suse.com
+
+- Update to version 2.1.14
+  + Fix some typos in the comments
+  + Remove extra 0x prefix for the "%p" format specifiers,
+    avoiding 0x0x0 strings in the output.
+  + make sure we link extra-python versions of libraries
+
+-------------------------------------------------------------------
+Thu Apr  5 23:23:22 UTC 2018 - jmcdonough@suse.com
+
+- Update to version 2.1.13
+  + Use atexit() again instead of a library destructor; (bso#13366);
+    (bso#7587).
+  + Prevent assert in sssd (bso#7587).  
+
+-------------------------------------------------------------------
+Tue Mar 27 16:24:11 UTC 2018 - dimstar@opensuse.org
+
+- Eliminate usage of %__cp and %__mkdir_p.
+
+-------------------------------------------------------------------
+Fri Mar 16 17:49:24 UTC 2018 - jmcdonough@suse.com
+
+- Update to version 2.1.11
+  + disable-python - fix talloc wscript if bundling disabled
+  + Do not disclose the random talloc magic in free()'ed memory
+
+-------------------------------------------------------------------
+Mon Oct  9 06:55:51 UTC 2017 - jmcdonough@suse.com
+
+- Reference library name directly instead of using variables to 
+  pass obs source validator.
+
+-------------------------------------------------------------------
+Mon Oct  2 12:18:30 UTC 2017 - jengelh@inai.de
+
+- Remove %if guards for blocks that do not affect the build result.
+  Fix RPM groups and summaries. Drop very old SUSE support.
+  Replace old RPM macros by new constructs.
+
+-------------------------------------------------------------------
+Wed Jul 26 08:58:20 UTC 2017 - scabrero@suse.com
+
+- Update to version 2.1.10
+  + build, documentation and python3 improvements
+  + delete sle11-remove-unknown-compiler-options.patch, supported
+    options are checked for in upstream code
+
+-------------------------------------------------------------------
+Thu Mar 23 20:45:20 UTC 2017 - jmcdonough@suse.com
+
+- sle11-remove-unknown-compiler-options.patch: build SLE11 and earlier
+  without -Wno-format-length.
+
+-------------------------------------------------------------------
+Wed Mar 22 16:51:46 UTC 2017 - jmcdonough@suse.com
+
+- Update to version 2.1.9; (bsc#1032915).
+  + fix some coverity defects
+  + fix TALLOC_VERSION_MINOR and talloc_version_minor()
+  + add new tests
+  + add pytalloc_get_type()
+  + add pytalloc_GenericObject_{steal,reference}[_ex]()
+
+-------------------------------------------------------------------
+Wed Sep 14 09:49:36 UTC 2016 - jmcdonough@suse.com
+
+- Update to version 2.1.8.
+  + performance improvements
+  + Fix memory leak when destructors reparent children; (bso#11901).
+
+-------------------------------------------------------------------
+Tue Mar 15 16:28:22 UTC 2016 - lmuelle@suse.com
+
+- Update to 2.1.6; (bsc#954658).
+  + pytalloc: Add new BaseObject
+  + pytalloc: add a _pytalloc_get_type() helper function and generate
+    PyExc_TypeError on mismatch
+  + talloc: add _pytalloc_get_ptr/_pytalloc_get_mem_ctx helper functions
+  + Improve testsuite by avoiding path issues
+  + Only set public headers field when installing as a public library
+  + Fix a documentation typo
+
+-------------------------------------------------------------------
+Mon Mar  7 19:48:09 UTC 2016 - toddrme2178@gmail.com
+
+- Add talloc-python3.5-fix-soabi_name.patch: Do not change x86_64 to
+  x86-64 when building with python 3.5.
+
+-------------------------------------------------------------------
+Sun Feb 21 16:44:01 UTC 2016 - lmuelle@suse.com
+
+- Avoid a file collision for non SUSE build targets; (bsc#966174).
+
+-------------------------------------------------------------------
+Fri Feb 12 17:03:57 UTC 2016 - lmuelle@suse.com
+
+- Provide python-talloc and python-talloc-devel; (bsc#966523).
+
+-------------------------------------------------------------------
+Wed Nov 11 17:49:37 UTC 2015 - lmuelle@suse.com
+
+- Update to 2.1.5; (bsc#954658).
+  + Minor build fixes
+
+-------------------------------------------------------------------
+Sun Nov  8 13:30:08 UTC 2015 - lmuelle@suse.com
+
+- Point LD_LIBRARY_PATH to the just-built libraries while calling make test.
+- Create a 2nd talloc-man spec-file to avoid a build cycle.
+- Recommend to install talloc-man from libtalloc-devel.
+
+-------------------------------------------------------------------
+Fri Oct 30 11:57:39 UTC 2015 - lmuelle@suse.com
+
+- Add doxygen at build time to add the development documentation.
+- Disable rpath-install and silent-rules while configure.
+
+-------------------------------------------------------------------
+Sat Oct 24 21:19:20 UTC 2015 - lmuelle@suse.com
+
+- Add python3-talloc and python3-talloc-devel; (bsc#951911).
+
+-------------------------------------------------------------------
+Thu Oct 22 20:41:47 UTC 2015 - lmuelle@suse.com
+
+- Rename pytalloc to python-talloc.
+
+-------------------------------------------------------------------
+Thu Oct 22 18:07:41 UTC 2015 - lmuelle@suse.com
+
+- Update to 2.1.4; (bsc#951660).
+  + Test that talloc magic differs between processes.
+  + Increment minor version due to added talloc_test_get_magic.
+  + Provide tests access to talloc_magic.
+  + Test magic protection measures.
+
+-------------------------------------------------------------------
+Mon Sep  7 17:06:26 UTC 2015 - lmuelle@suse.com
+
+- Update the Samba Library Distribution Key file 'talloc.keyring';
+  (bso#945116).
+
+-------------------------------------------------------------------
+Wed Jul 22 07:37:51 UTC 2015 - lmuelle@suse.com
+
+- Update to 2.1.3; (bsc#939051).
+  + improved python3 bindings
+  + documentation fixes regarding talloc_reference() and talloc_unlink()
+
+-------------------------------------------------------------------
+Thu Apr 16 11:55:06 UTC 2015 - lmuelle@suse.com
+
+- Update to 2.1.2.
+  + Fix memory leak in SMB2 notify handling; (bso#11144).
+  + fix _talloc_total_limit_size prototype
+  + build: improve detection of srcdir
+
+-------------------------------------------------------------------
+Thu Nov  6 13:06:50 UTC 2014 - lmuelle@suse.com
+
+- Use the upstream tar ball, as signature verification is now able to handle
+  compressed archives.
+
+-------------------------------------------------------------------
+Fri May 23 19:15:38 UTC 2014 - lmuelle@suse.com
+
+- Require pkg-config from the devel packages.
+
+-------------------------------------------------------------------
+Thu May 22 17:44:49 UTC 2014 - lmuelle@suse.com
+
+- Update to 2.1.1.
+  + documentation updates
+  + a fix for pytalloc-util.pc
+  + performance improvements here and there
+  + fixed compiler warnings
+
+-------------------------------------------------------------------
+Tue May 20 11:59:12 UTC 2014 - dmueller@suse.com
+
+- Remove dependency on doxygen. Doxygen is only used for generating
+  the html documentation, but the html documentation was not
+  actually packaged, so there is no point in running it.
+
+-------------------------------------------------------------------
+Wed Apr 23 16:42:59 UTC 2014 - dmueller@suse.com
+
+- Remove dependency on gpg-offline to reduce rebuild times; signature checking
+  is implemented already in the source validator.
+
+-------------------------------------------------------------------
+Fri Dec  6 12:40:28 UTC 2013 - lmuelle@suse.com
+
+- Update to 2.1.0.
+  + Add talloc_pooled_object and test it
+  + Allow nested pools
+  + Add a separate pool size
+  + Put pool-specific data before the chunk
+  + Introduce __talloc_with_prefix
+  + Decouple the dual use of chunk->pool
+  + Only provide the --enable-talloc-compat1 in standalone build
+  + Simplify _talloc_free_poolmem a bit
+
+-------------------------------------------------------------------
+Fri Dec  6 12:29:33 UTC 2013 - lmuelle@suse.com
+
+- Verify source tar ball gpg signature.
+
+-------------------------------------------------------------------
+Thu Aug 29 12:07:49 UTC 2013 - lmuelle@suse.com
+
+- PreReq /sbin/ldconfig from pytalloc.
+
+-------------------------------------------------------------------
+Wed Aug 28 20:01:56 UTC 2013 - lmuelle@suse.com
+
+- Add pytalloc to baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Jul 22 11:29:51 UTC 2013 - lmuelle@suse.com
+
+- BuildIgnore python for post-11.0 systems only.
+- Package the talloc man page only on post-11.0 systems.
+
+-------------------------------------------------------------------
+Sun Jul  7 06:10:03 UTC 2013 - coolo@suse.com
+
+- BuildIgnore python to avoid build cycle
+
+-------------------------------------------------------------------
+Sun Dec  2 17:47:27 UTC 2012 - lmuelle@suse.com
+
+- Update to 2.0.8.
+  + Convert error cecking macros into fns
+  + don't allow a talloc_pool inside a talloc_pool.
+  + use a struct for pool headers.
+  + remove unused variables
+  + Update doxygen config.
+  + Slightly simplify talloc_unlink
+  + Only check for pkg-config file when checking for system talloc.
+  + fix a comment typo
+  + simplifiy the logic to build talloc_testsuite in the standalone build
+
+-------------------------------------------------------------------
+Thu Jun 28 16:29:25 UTC 2012 - lmuelle@suse.com
+
+- Disable rpath while configure.
+
+-------------------------------------------------------------------
+Tue Jun 12 16:32:43 UTC 2012 - lmuelle@suse.com
+
+- Add missing group field to the library subpackage.
+
+-------------------------------------------------------------------
+Sun Jun  3 21:13:08 UTC 2012 - lmuelle@suse.com
+
+- Define library name and use it instead of libtalloc2.
+
+-------------------------------------------------------------------
+Sat Jun  2 15:05:32 UTC 2012 - lmuelle@suse.com
+
+- Rename package to talloc and add an independent libtalloc2 subpackage.
+- Enhance and polish the package descriptions and summaries.
+
+-------------------------------------------------------------------
+Thu May 31 12:50:32 UTC 2012 - lmuelle@suse.com
+
+- BuildRequire pkg-config for post-10.2 systems and else pkgconfig.
+
+-------------------------------------------------------------------
+Thu May 31 11:45:48 UTC 2012 - lmuelle@suse.com
+
+- Rename libtalloc2-devel to libtalloc-devel.
+
+-------------------------------------------------------------------
+Wed May 30 17:55:55 UTC 2012 - lmuelle@suse.com
+
+- Define python_sitearch if undefined.
+
+-------------------------------------------------------------------
+Wed May 30 15:33:29 UTC 2012 - lmuelle@suse.com
+
+- Remove superfluous AutoReqProv on line.
+
+-------------------------------------------------------------------
+Wed May 16 13:02:31 UTC 2012 - lmuelle@suse.com
+
+- Require libtalloc2 from libtalloc2-devel.
+
+-------------------------------------------------------------------
+Wed May 16 12:45:04 UTC 2012 - lmuelle@suse.com
+
+- Cleanup BuildRequires and spec file in general.
+- Add new pytalloc and pytalloc-devel sub packages.
+
+-------------------------------------------------------------------
+Wed Sep  7 17:52:30 UTC 2011 - lars@samba.org
+
+- Initial independent libtalloc2 package.
+

@@ -1,0 +1,737 @@
+Index: XGrabxm.res
+===================================================================
+--- XGrabxm.res.orig
++++ XGrabxm.res
+@@ -22,8 +22,8 @@ XGrab*.selectiontype.numColumns: 1
+ XGrab*.selectiontype.x: 5
+ 
+ XGrab*.click.labelString: Click
++XGrab*.click.set: 1
+ XGrab*.stretch.labelString: Stretch
+-XGrab*.stretch.set: 1
+ XGrab*.key.labelString: Ctrl key
+ XGrab*.root.labelString: Everything!
+ 
+@@ -85,7 +85,7 @@ XGrab*.xwd.labelString:    X Window Dump
+ XGrab*.ps.labelString:     PostScript
+ XGrab*.xpm3.labelString:   XPM3
+ XGrab*.ppm.labelString:    PPM
+-XGrab*.ps.set: 1
++XGrab*.ppm.set: 1
+ XGrab*.puzzle.labelString: Puzzle
+ XGrab*.xwdxy.labelString:  XWD-xy
+ XGrab*.xpm.labelString:    XPM1
+Index: config.h
+===================================================================
+--- config.h.orig
++++ config.h
+@@ -75,11 +75,17 @@
+  * The inset sizes control the maximum size of the image on the page.
+  * These are preset to leave at least a 0.5 inch border around the image.
+  */
+-#define PAPER_WIDTH         8.5   /* inches are assumed */
+-#define PAPER_HEIGHT       11.0
+ 
+-#define VERT_MARGIN	    0.5
+-#define HORIZ_MARGIN	    0.5
++/* maddin, 5.9.96                       */
++/* changed this to the european A4 norm */
++/*                                      */
++
++#define PAPER_WIDTH         8.0   /* inches are assumed */
++#define PAPER_HEIGHT       11.6
++ 
++#define VERT_MARGIN        0.5
++#define HORIZ_MARGIN       0.5
++
+ 
+ 
+ /* xgrabsc generates images by bunches of IMAGE_CODEWIDTH chars for the
+@@ -103,7 +109,7 @@
+  * and command are for the xgrab program, and the default pre and post
+  * snapshot sleep times
+  */
+-#define DEFAULT_FILENAME  screen1.dmp
++#define DEFAULT_FILENAME  screen1.ppm
+ #define DEFAULT_COMMAND   lpr
+ #define DEFAULT_PRESLEEP  3
+ #define DEFAULT_POSTSLEEP 0
+Index: convert.c
+===================================================================
+--- convert.c.orig
++++ convert.c
+@@ -105,6 +105,7 @@ pixmap2bitmap(image)
+   image->used[whitep] = 1;
+   image->used[blackp] = 1;
+   image->numcells = 2;
++  return 0;
+ }
+ 
+ 
+@@ -331,5 +332,6 @@ pixmap2halftone(image, dither)
+   image->used[whitep] = 1;
+   image->used[blackp] = 1;
+   image->numcells = 2;
++  return 0;
+ }
+ 
+Index: get.c
+===================================================================
+--- get.c.orig
++++ get.c
+@@ -80,35 +80,40 @@ getImage(xrect, image, window)
+     XCloseDisplay(hDisplay);
+     exit(3);
+   }
+-    
+-  /* this won't cut the mustard for DirectColor */
+-  for (i=0; i<ncolors; i++)
+-    colors[i].pixel = i;
+-
+-  XQueryColors(hDisplay, cmap, colors, ncolors);
+-  for (i=0; i<ncolors; i++) {
+-    image->red[i]   = colors[i].red;
+-    image->green[i] = colors[i].green;
+-    image->blue[i]  = colors[i].blue;
+-  }
+ 
+-  /* figure out which colormap entries are actually used by the image */
+-  ncolors = cmapSize = 0;
+-  memset((char *)image->used, 0, MAX_CELLS);
+-  for (h=0; h<ximage->height; h++)
+-    for (w=0; w<ximage->width; w++) {
+-      i = XGetPixel(ximage, w, h);
+-      if (!image->used[i]) {
+-        image->used[i] = TRUE;
+-        if (i+1 > cmapSize)      /* keep track of colormap size */
+-          cmapSize = i+1;
+-        ncolors++;
+-      }
++  if (depth <= 8) {
++    /* this won't cut the mustard for DirectColor */
++    for (i=0; i<ncolors; i++)
++      colors[i].pixel = i;
++    
++    XQueryColors(hDisplay, cmap, colors, ncolors);
++    for (i=0; i<ncolors; i++) {
++      image->red[i]   = colors[i].red;
++      image->green[i] = colors[i].green;
++      image->blue[i]  = colors[i].blue;
+     }
+-  image->numcells = cmapSize;
+-  if (verbose)
+-    fprintf(stderr, "%s: image has %d colors\n", programName, ncolors);
+-
++    
++    /* figure out which colormap entries are actually used by the image */
++    ncolors = cmapSize = 0;
++    memset((char *)image->used, 0, MAX_CELLS);
++    for (h=0; h<ximage->height; h++)
++      for (w=0; w<ximage->width; w++) {
++	i = XGetPixel(ximage, w, h);
++	if (!image->used[i]) {
++	  image->used[i] = TRUE;
++	  if (i+1 > cmapSize)      /* keep track of colormap size */
++	    cmapSize = i+1;
++	  ncolors++;
++	}
++      }
++    image->numcells = cmapSize;
++    if (verbose)
++      fprintf(stderr, "%s: image has %d colors\n", programName, ncolors);
++  } else {
++    if (verbose)
++      fprintf(stderr, "%s: image has %d colors\n", programName, ncolors);
++  }
++   
+   return TRUE;
+ }
+ 
+Index: process.c
+===================================================================
+--- process.c.orig
++++ process.c
+@@ -219,6 +219,7 @@ reverseColors(image)
+       image->green[cidx] = (unsigned short)0xFFFF & (unsigned short)~((unsigned short)(image->green[cidx]));
+     }
+   }
++  return 0;
+ }
+ 
+ 
+@@ -237,6 +238,10 @@ compressColormap(image)
+   int  ncolors, w, h, m;
+   long p;
+ 
++  if (verbose)
++    fprintf(stderr, "skip compressing colormap...\n");
++  return;
++
+   if (ximage->depth <= 1  ||  image->numcells > MAX_CELLS)
+     return;
+ 
+Index: write.c
+===================================================================
+--- write.c.orig
++++ write.c
+@@ -59,6 +59,7 @@ swapbytes(pDblw)
+   cnv.bytes[1] = cnv.bytes[2];
+   cnv.bytes[2] = aByte;
+   *pDblw = cnv.dbl;
++  return 0;
+   }
+ 
+ 
+@@ -83,6 +84,7 @@ swapdws (bp, n)
+     *bp++ = c;
+     bp += 2;
+   }
++  return 0;
+ }
+ 
+ 
+@@ -101,6 +103,7 @@ swapwords (bp, n)
+     bp++;
+     *bp++ = c;
+   }
++  return 0;
+ }
+ 
+ 
+@@ -121,6 +124,7 @@ writeint(intValue, outfile)
+     swapbytes(&intValue);
+   fwrite(&(intValue), 4, 1, (outfile));
+ #endif
++  return 0;
+ }
+ 
+ 
+@@ -159,6 +163,7 @@ writeSimple(image, outfile)
+   for (h=0; h<image->ximage->height; h++)
+     for (w=0; w<image->ximage->width; w++)
+       fputc(XGetPixel(image->ximage, w, h), outfile);
++  return 0;
+ }
+ 
+ 
+@@ -184,6 +189,8 @@ XImage* makePSImage(image, desiredDepth,
+     int lshift, lmask;
+     long p;
+     int x, y, i;
++    int red , green , blue ;
++    double r , g , b ;
+     XImage* ximage = image->ximage;
+     XImage* psimage;
+ 
+@@ -230,10 +237,40 @@ XImage* makePSImage(image, desiredDepth,
+     for (y = 0; y < ximage->height; y++) {
+       for (x = 0; x < ximage->width; x++) {
+         p = XGetPixel(ximage, x, y);
+-        i = (0.299*(double)image->red[p]) +
+-            (0.587*(double)image->green[p])+
+-            (0.114*(double)image->blue[p]);
+-        i = (i >> lshift) & lmask;
++
++        if( image -> depth <= 8 ) 
++          {
++	    red   =  image->red[p]/256 ;
++            green =  image->green[p]/256;
++            blue  =  image->blue[p]/256;
++          } 
++        if( image -> depth == 16 ) 
++          { 
++             if( ( ( (p/2) & 0x7c00 )  >> 10 ) == 0 ) red = 0 ; 
++                else  red  = ((  ((p/2) & 0x7c00 )  >> 10 ) + 1 ) * 8 - 1; 
++	     if( ( ( (p/2) & 0x03e0 )  >> 5 ) == 0  ) green = 0 ; 
++ 	        else green = (( ((p/2) & 0x03e0) >> 5 ) + 1 ) * 8  - 1 ;
++             if( ( p & 0x001f ) == 0 )  blue  = 0 ;
++		else  blue  = (( p & 0x001f ) + 1) * 8  - 1 ;
++           }
++        if( image -> depth == 24 ) 
++          {
++               red   = (  p & 0xff0000 ) >> 16; 
++     	       green = ( p & 0x00ff00 )  >> 8 ; 
++ 	       blue  = ( p & 0x0000ff )  >> 0 ;
++           }
++
++        if( image -> depth == 32 ) 
++          {
++               red   = ( (p/0x100) & 0xff0000 )  >> 16; 
++ 	       green = ( (p/0x100) & 0x00ff00 )  >> 8 ; 
++ 	       blue  = ( (p/0x100) & 0x0000ff )  >> 0 ;
++           }
++        i = (0.299*(double)red) +
++            (0.587*(double)green)+
++            (0.114*(double)blue);
++        i = i  & lmask;
++
+         XPutPixel(psimage, x, y, i);
+       }
+     }
+@@ -269,6 +306,7 @@ writeOnlyPreview(image, outfile)
+     free(psimage->data);
+     free(psimage);
+   }
++  return 0;
+ }
+ 
+ 
+@@ -295,6 +333,7 @@ copyImage(image, newImage)
+     XCloseDisplay(hDisplay);
+     exit(3);
+   }
++  return 0;
+ }
+ 
+ 
+@@ -381,6 +420,7 @@ writePreview(image, outfile, defaultImag
+   if (newImage.ximage) {
+     XDestroyImage(newImage.ximage);
+   }
++  return 0;
+ }
+ 
+ 
+@@ -715,6 +755,7 @@ writePostscript(image, outfile, encode,
+     free(newImage->ximage);
+     free(newImage);
+   }
++  return 0;
+ }
+ 
+ 
+@@ -741,6 +782,7 @@ writeColorPS(image, outfile, encode, enc
+   double xdpi, ydpi, xscale, yscale, f;
+   double left, top;
+   int depth, bpl, spb;
++  int red , green , blue ;
+   long p;
+   /* rle variables */
+   int rlecount;
+@@ -1047,15 +1089,17 @@ writeColorPS(image, outfile, encode, enc
+ 
+   }
+ 
+-
+   /* write the rgb map */
++
+   fputs("%% get the rgb map\n", outfile);
+   fputs("currentfile rgbmap readhexstring\n", outfile);
+   for (x=0; x<image->numcells; x++)
+     fprintf(outfile, "%02.2x%02.2x%02.2x\n",
+-                      (byte)((image->red[x]   >> 8) & 0xff),
+-		      (byte)((image->green[x] >> 8) & 0xff),
+-		      (byte)((image->blue[x]  >> 8) & 0xff) );
++                      (byte)((image->red[x]  >> 8  ) & 0xff),
++		      (byte)((image->green[x] >> 8 ) & 0xff),
++		      (byte)((image->blue[x]  >> 8  ) & 0xff) );
++
++
+   fputs("pop pop\n\n", outfile);
+ 
+ 
+@@ -1148,6 +1192,7 @@ writeColorPS(image, outfile, encode, enc
+ #if defined(TRAILING_EOD)
+   fputc('\004', outfile);
+ #endif
++  return 0;
+ 
+ }
+ 
+@@ -1199,6 +1244,7 @@ writePuzzle(image, outfile)
+       /* this won't work if depth > 8 */
+       for (w=0; w<ximage->width; w++)
+         fputc(XGetPixel(ximage, w, h), outfile);
++  return 0;
+ }
+ 
+ 
+@@ -1315,6 +1361,7 @@ writeXWD(image, outfile, xyformat)
+     else
+       fwrite(ximage->data, ximage->height * ximage->bytes_per_line, 1, outfile);
+   }
++  return 0;
+ }
+ 
+ 
+@@ -1371,6 +1418,7 @@ writeXYPixmap(image, outfile)
+     }
+   }
+   fputs("  };\n", outfile);
++  return 0;
+ }
+ 
+ 
+@@ -1390,91 +1438,157 @@ writeZPixmap(xpmFormat, image, outfile)
+ {
+   XImage *ximage = image->ximage;
+   int nc, width, height, w, h, cidx, cpp;
+-  char mne[MAX_CELLS][3];
++  long red , green , blue , p ;
++  int  count , add  , i , cp ;
++  int mne[MAX_PIXCELLS][3];
++  int c1 , c2;
++  char cmap[MAX_PIX] = "abcdefghijklmnopqrstuvwxyz123456" ;
++  char pmap[MAX_PIXCELLS][2];
++  unsigned char *pix_red , *pix_green , *pix_blue ;  
+ 
+-  if (verbose) {
+-    switch (xpmFormat) {
+-    case 3:
+-      fprintf(stderr, "%s: formatting XPM3 Pixmap output\n", programName);
+-      break;
+-    case 2:
+-      fprintf(stderr, "%s: formatting XPM2 Pixmap output\n", programName);
+-      break;
+-    default:
+-    case 1:
+-      fprintf(stderr, "%s: formatting XPM output\n", programName);
+-      break;
++  fprintf(stderr, "%s: formatting XPM output\n", programName);
++  
++   pix_red   = (byte *) malloc( ximage->height * ximage->width );
++   pix_green = (byte *) malloc( ximage->height * ximage->width );
++   pix_blue  = (byte *) malloc( ximage->height * ximage->width );
++
++    count = 0;
++    cpp = 0 ;
++    for (h=0; h<ximage->height; h++) {
++      for (w=0; w<ximage->width; w++) {
++	p = XGetPixel(ximage,w,h);
++
++        if( image -> depth <= 8 ) 
++          {
++	    red   =  image->red[p]/256 ;
++            green =  image->green[p]/256;
++            blue  =  image->blue[p]/256;
++          } 
++        if( image -> depth == 16 ) 
++          { 
++             if( ( ( (p/2) & 0x7c00 )  >> 10 ) == 0 ) red = 0 ; 
++                else  red  = ((  ((p/2) & 0x7c00 )  >> 10 ) + 1 ) * 8 - 1; 
++	     if( ( ( (p/2) & 0x03e0 )  >> 5 ) == 0  ) green = 0 ; 
++ 	        else green = (( ((p/2) & 0x03e0) >> 5 ) + 1 ) * 8  - 1 ;
++             if( ( p & 0x001f ) == 0 )  blue  = 0 ;
++		else  blue  = (( p & 0x001f ) + 1) * 8  - 1 ;
++           }
++        if( image -> depth == 24 ) 
++          {
++               red   = (  p & 0xff0000 ) >> 16; 
++     	       green = ( p & 0x00ff00 )  >> 8 ; 
++ 	       blue  = ( p & 0x0000ff )  >> 0 ;
++           }
++
++        if( image -> depth == 32 ) 
++          {
++               red   = ( (p/0x100) & 0xff0000 )  >> 16; 
++ 	       green = ( (p/0x100) & 0x00ff00 )  >> 8 ; 
++ 	       blue  = ( (p/0x100) & 0x0000ff )  >> 0 ;
++           }
++         /* first record */
++        if( cpp == 0 )
++          {
++	        mne[0][2] = red ; 
++	        mne[0][1] = green ; 
++	        mne[0][0] = blue ; 
++                cpp++;
++	  } 
++        add = 1 ;
++        for( i = 0 ; i < cpp ; i ++ )
++          {
++           if( red == mne[i][2] && green == mne[i][1] && blue ==  mne[i][0] )
++              { 
++                add = 0; 
++                break; 
++              } 
++          }
++         
++        if( add )
++            {
++             if( cpp >=  MAX_PIXCELLS )
++               {                
++                fprintf(stderr, "%s: can't write xpm images,  because more then MAX_PIXCELLS = %d colors\n", 
++                               programName ,  MAX_PIXCELLS );
++ 	         return;
++               }
++/* 	     printf("add color %03d = 0x%02x%02x%02x\n" , 
++                         cpp ,  mne[cpp][2] , mne[cpp][1] , mne[cpp][0] ); */
++	     mne[cpp][2] = red ; 
++	     mne[cpp][1] = green ; 
++	     mne[cpp][0] = blue ;                
++	     cpp++;
++           }
++
++  
++   pix_red[count]   = red & 0xff;
++   pix_green[count] = green  & 0xff;
++   pix_blue[count]  = blue & 0xff;
++   count++;
++
++      }
+     }
++
++
++/* if is less  then 32 colors */
++if( cpp <  MAX_PIX ) cp = 1 ;
++  else cp = 2 ;
++
++fprintf(outfile, "/* XPM */\nstatic char *%s[] = {\n" , imageName );
++fprintf(outfile, "/* width height num_colors chars_per_pixel */\n");
++fprintf(outfile,  "\"%6d%6d%6d%6d\" ,\n" ,  ximage->width ,  ximage->height, \
++		  cpp  , cp );
++fprintf(outfile,  "/* colors */\n");
++
++
++for( i = 0 , c1 = 0 , c2 = 0  ; i < cpp ; i++  , c1 ++ )
++  {
++    if( c1 >= MAX_PIX ) {c1 = 0 ; c2 ++ ; } 
++    
++    if( cp == 1 ){ pmap[i][0] =  cmap[c1] ; pmap[i][1] = ' ' ; }
++      else { pmap[i][0] =  cmap[c2] ; pmap[i][1] =  cmap[c1] ; }
++
++    fprintf(outfile, "\"%c%c c #%02x%02x%02x\" ,\n" , \
++               pmap[i][0] , pmap[i][1] , mne[i][2] , mne[i][1] , mne[i][0] );
+   }
+ 
+-  nc  = image->numcells;
+-  cpp = image->numcells <= 26? 1 : 2;
+-  switch (xpmFormat) {
+-  case 3:
+-    fprintf(outfile, "/* XPM */\nstatic char * %s_name [] = {\n\"%d %d %d %d\",\n",
+-      imageName, ximage->width, ximage->height, image->numcells, cpp);
+-    fputs("/* pixels*/\n", outfile);
+-    break;
+-  case 2:
+-    fprintf(outfile, "! XPM2  \n%d %d %d %d\n", ximage->width,
+-      ximage->height, image->numcells, cpp);
+-    fputs("! pixels\n", outfile);
+-    break;
+-  case 1:
+-  default:
+-    fprintf(outfile, "#define %s_format 1\n",   imageName);
+-    fprintf(outfile, "#define %s_width %d\n",   imageName, ximage->width);
+-    fprintf(outfile, "#define %s_height %d\n",  imageName, ximage->height);
+-    fprintf(outfile, "#define %s_ncolors %d\n", imageName, image->numcells);
+-    fprintf(outfile, "#define %s_chars_per_pixel %d\n",     imageName, cpp);
+-    fprintf(outfile, "static char * %s_colors[] = {\n", imageName);
+-    break;
+-  }
+-
+-  for (cidx=0; cidx<image->numcells; cidx++) {
+-    if (cpp > 1) {
+-      mne[cidx][0] = (char)(cidx / 10) + 'a';
+-      mne[cidx][1] = (char)(cidx % 10) + '0';
+-      mne[cidx][2] = '\0';
+-    }
+-    else {
+-      mne[cidx][0] = (char)cidx + (cidx? 'A' : ' ');
+-      mne[cidx][1] = '\0';
++
++fprintf(outfile,  "/* pixels */\n");
++
++  count = 0 ;
++    for(h=0; h < ximage->height * ximage->width ; h++) 
++      {
++         /* Get Pixels */
++        for( i = 0 ; i < cpp ; i ++ )
++          {
++            red   =  pix_red[h] ;
++            green =  pix_green[h] ;
++            blue  =  pix_blue[h] ;
++   
++           if( red == mne[i][2] && green == mne[i][1] && blue ==  mne[i][0] )
++              { 
++               
++              if( count == 0 )  fprintf( outfile, "\"");
++		
++               if( cp == 1 ) fprintf(outfile, "%c" , pmap[i][0] );
++                    else fprintf(outfile, "%c%c" , pmap[i][0]  ,  pmap[i][1]);
++	         
++               count ++;
++               if (count > ximage->width - 1 ) {
++                   fprintf( outfile, "\",\n");
++                   count = 0;
++                 }
++
++                break;
++              } 
++
++          }
+     }
+-    switch (xpmFormat) {
+-    case 3:
+-      fprintf(outfile, "\"%s\tc #%4.4x%4.4x%4.4x\",\n",mne[cidx],
+-                image->red[cidx], image->green[cidx], image->blue[cidx]);
+-      break;
+-    case 2:
+-      fprintf(outfile, "%s c #%4.4x%4.4x%4.4x\n", mne[cidx],
+-                image->red[cidx], image->green[cidx], image->blue[cidx]);
+-      break;
+-    default:
+-    case 1:
+-      fprintf(outfile, "\"%s\", \"#%4.4x%4.4x%4.4x\"\n", mne[cidx],
+-                image->red[cidx], image->green[cidx], image->blue[cidx]);
+-      break;
+-    }
+-  }
+-  if (xpmFormat == 1) {
+-    fputs("} ;\n", outfile);
+-    fprintf(outfile, "static char * %s_pixels[] = {\n", imageName);
+-  }
+-  for (h=0; h<ximage->height; h++) {
+-    if (xpmFormat != 2)
+-      fputs("\"", outfile);
+-    for (w=0; w<ximage->width; w++)
+-      fputs(mne[XGetPixel(ximage, w, h)], outfile);
+-    if (xpmFormat == 2)
+-      fputs("\n", outfile);
+-    else
+-      fputs("\",\n", outfile);
+-  }
+-  if (xpmFormat == 3)
++
++/* write end */
+     fputs("};\n", outfile);
+-  else if (xpmFormat != 2)
+-    fputs("} ;\n", outfile);
++
++  return 0;
+ }
+ 
+ 
+@@ -1499,21 +1613,77 @@ writePPM(image, outfile)
+   nc  = image->numcells;
+   time(&p);
+   fprintf(outfile, "P3\n# PPM output created by xgrabsc on %s", ctime(&p));
++  fprintf(outfile, "# image depth is %d \n", image->depth );
++  fprintf(outfile, "# bits per pixel is %d \n", ximage->bits_per_pixel );
+   fprintf(outfile, "%d %d\n", ximage->width, ximage->height);
+-  fprintf(outfile, "%d\n", 1<<8);
+ 
+-  count = 0;
+-  for (h=0; h<ximage->height; h++) {
+-    for (w=0; w<ximage->width; w++) {
+-      p = XGetPixel(ximage,w,h);
+-      fprintf(outfile, "%3d %3d %3d", image->red[p]/256, image->green[p]/256, image->blue[p]/256);
+-      count++;
+-      if (count > PPM_PIXELS_PER_LINE) {
+-        fputc('\n', outfile);
+-	count = 0;
++
++  if (image -> depth <= 8) {
++  fprintf(outfile, "255\n");
++    count = 0;
++    for (h=0; h<ximage->height; h++) {
++      for (w=0; w<ximage->width; w++) {
++	p = XGetPixel(ximage,w,h);
++	fprintf(outfile, "%3d %3d %3d", image->red[p]/256, image->green[p]/256, image->blue[p]/256);
++	count++;
++	if (count > PPM_PIXELS_PER_LINE) {
++	  fputc('\n', outfile);
++	  count = 0;
++	}
++	else
++	  fputc(' ', outfile);
+       }
+-      else
+-        fputc(' ', outfile);
+     }
++  } else {
++  
++   switch( image -> depth )
++     {
++     case 16:
++             fprintf(outfile, "31\n");
++             break;
++     default:
++             fprintf(outfile, "255\n");
++             break;
++     }
++
++    count = 0;
++    for (h=0; h<ximage->height; h++) {
++      for (w=0; w<ximage->width; w++) {
++	p = XGetPixel(ximage,w,h);
++        if( image -> depth == 16 ) 
++          { 
++  	    fprintf(outfile, "%3d %3d %3d",  
++                     ( (p/2) & 0x7c00 )  >> 10 , 
++ 	  	     ( (p/2) & 0x03e0 )  >> 5 , 
++ 		     ( p & 0x001f )  );
++           }
++        if( image -> depth == 24 ) 
++          {
++  	    fprintf(outfile, "%3d %3d %3d",  
++                    (  p & 0xff0000 )  >> 16, 
++ 	  	     ( p & 0x00ff00 )  >> 8 , 
++ 		     ( p & 0x0000ff )  >> 0 );
++           }
++
++        if( image -> depth == 32 ) 
++          {
++  	    fprintf(outfile, "%3d %3d %3d",  
++                     ( (p/0x100) & 0xff0000 )  >> 16, 
++ 	  	     ( (p/0x100) & 0x00ff00 )  >> 8 , 
++ 		     ( (p/0x100) & 0x0000ff )  >> 0 );
++           }
++
++	count++;
++	if (count > PPM_PIXELS_PER_LINE) {
++	  fputc('\n', outfile);
++	  count = 0;
++	}
++	else
++	  fputc(' ', outfile);
++      }
++    }
++
++
+   }
++  return 0;
+ }
+Index: xgrabsc.c
+===================================================================
+--- xgrabsc.c.orig
++++ xgrabsc.c
+@@ -947,5 +947,6 @@ main(argc, argv)
+   char *env;
+   env = (char *)getenv("XGRABSC");
+   xgrabsc(argc, argv, env);
++  return 0;
+ }
+ #endif
+Index: xgrabsc.h
+===================================================================
+--- xgrabsc.h.orig
++++ xgrabsc.h
+@@ -74,7 +74,8 @@
+ #include "virtual.h"
+ #endif
+ 
+-
++#define MAX_PIX  32
++#define MAX_PIXCELLS  32 * 32
+ #define MAX_CELLS  256
+ #define TRUE  1
+ #define FALSE 0
+Index: xgrabxm.c
+===================================================================
+--- xgrabxm.c.orig
++++ xgrabxm.c
+@@ -102,8 +102,8 @@ typedef enum {
+ 
+ radioType encValue = PS_NORMAL;
+ radioType cnvValue = NO_DITHER;
+-radioType selValue = STRETCH;
+-radioType fmtValue = PS;
++radioType selValue = HITWIN;
++radioType fmtValue = PPM;
+ radioType outValue = TOFILE;
+ 
+ 
+@@ -748,4 +748,5 @@ int main(argc, argv, envp)
+ 
+   XtRealizeWidget(hShell);
+   XtAppMainLoop(appContext);
++  return 0;
+ }

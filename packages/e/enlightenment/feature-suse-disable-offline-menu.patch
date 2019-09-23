@@ -1,0 +1,25 @@
+commit 8f1c92e6d55a0d3a26b8e738437f9fe1c8023c8e
+Author: Simon Lees (SUSE) <sflees@suse.de>
+Date:   Mon Oct 31 10:54:16 2016 +1030
+
+    openSUSE "feature" Disable offline mode it does nothing here
+
+diff --git a/src/modules/conf/e_mod_main.c b/src/modules/conf/e_mod_main.c
+index 88fad12..4fad637 100644
+--- a/src/modules/conf/e_mod_main.c
++++ b/src/modules/conf/e_mod_main.c
+@@ -421,12 +421,14 @@ _e_mod_submenu_modes_fill(void *data EINA_UNUSED, E_Menu *m)
+    e_util_menu_item_theme_icon_set(mi, "preferences-modes-presentation");
+    e_menu_item_callback_set(mi, _e_mod_mode_presentation_toggle, NULL);
+ 
++#if 0
+    mi = e_menu_item_new(m);
+    e_menu_item_check_set(mi, 1);
+    e_menu_item_toggle_set(mi, e_config->mode.offline);
+    e_menu_item_label_set(mi, _("Offline"));
+    e_util_menu_item_theme_icon_set(mi, "preferences-modes-offline");
+    e_menu_item_callback_set(mi, _e_mod_mode_offline_toggle, NULL);
++#endif
+ 
+    e_menu_pre_activate_callback_set(m, NULL, NULL);
+ }

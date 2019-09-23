@@ -1,0 +1,12 @@
+diff --git a/Makefile.PL b/Makefile.PL
+index 8c08daa..eb9264f 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -55,6 +55,7 @@ sub MY::postamble
+   return q{
+ file_unpack: file_unpack.pl Makefile
+ 	$(CP) file_unpack.pl $@
++	mkdir -p $(INST_MAN1DIR)
+ 	## wait, so that -M < -M succeeds in ExtUtils/Command/MM.pm
+ 	(sleep 1; echo .nf; $(PERL) $@ --help) > $(INST_MAN1DIR)/$@.1 || true
+ };

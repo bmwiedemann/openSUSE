@@ -1,0 +1,29 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_comparison_always_false.dpatch by Matej Vela <vela@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix `comparison is always false' warnings on platforms where char
+## DP: is unsigned by default (this might lead to infinite loops).
+
+@DPATCH@
+diff -urNad vflib3-3.6.13~/src/sexp.c vflib3-3.6.13/src/sexp.c
+--- vflib3-3.6.13~/src/sexp.c
++++ vflib3-3.6.13/src/sexp.c
+@@ -707,7 +707,7 @@
+ 
+ 
+ static int  vf_sexp_do_read_from_stream(SEXP_STREAM stream, SEXP sexp);
+-static int  vf_sexp_read_str(SEXP_STREAM stream, char ch, SEXP sexp);
++static int  vf_sexp_read_str(SEXP_STREAM stream, int ch, SEXP sexp);
+ static int  vf_sexp_skip(SEXP_STREAM stream);
+ static char vf_get_char_esc(char **pp, SEXP_STREAM stream);
+ #define  NBUFFER_MIN    2*1024
+@@ -787,7 +787,7 @@
+ }
+ 
+ static int
+-vf_sexp_read_str(SEXP_STREAM stream, char ch, SEXP s)
++vf_sexp_read_str(SEXP_STREAM stream, int ch, SEXP s)
+ {
+   char         tmp[8];
+   int          ch1, dq_str; 

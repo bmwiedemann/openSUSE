@@ -1,0 +1,24 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">git://github.com/ClusterLabs/pacemaker.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+<!--
+    To update to a new release, change "revision" to the desired
+    git commit hash and bump "version" if necessary
+
+    <param name="version">2.0.2</param>
+-->
+    <param name="versionformat">2.0.2+%cd.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*pacemaker*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <service name="set_version" mode="disabled"/>
+</services>

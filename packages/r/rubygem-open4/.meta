@@ -1,0 +1,9 @@
+<package name="rubygem-open4" project="openSUSE:Factory">
+  <title>Open4::popen4 - enhanced subprocess management library</title>
+  <description>Open child process with handles on pid, stdin, stdout, and stderr: manage child processes and their io handles easily.
+
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-open4"/>
+  <url>http://github.com/ahoward/open4/tree/master</url>
+</package>

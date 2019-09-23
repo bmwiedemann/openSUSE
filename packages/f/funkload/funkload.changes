@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Fri Jun  5 06:31:27 UTC 2015 - boris@steki.net
+
+- replaced source archive location from pypi to github as package contain
+  documentation which pypi version does not have.
+- updated to release 1.17.1 
+  * Add a discover mode to the bench runner, so fl-run-bench can be
+    invoked without specifying the particular test case. This implementation
+    attempts to behave like unittest’s ‘discover’ argument, and there is
+    even a similar –failfast option.
+  * Support https proxy (http proxy was already supported)
+  * Add a midCycle hook to execute an action in the middle of a cycle
+  * Add -L options to fl-record to enable tcpwatch forwarded mode which
+    is usefull if you have an http_proxy to pass.
+  * Add –quiet option to fl-build-report to remove warning in rst to html convertion
+  * GH-71: zeromq-based publisher that will let each node
+    publish in realtime the tests results
+  * GH-68: Use lightweight threads (greenlets) if available.
+  * Added one more RPS chart in Section 5, where the X-axis
+    represents time(in second) and the Y-axis represents RPS.
+  * Added support for providing the test configuration file with –config
+  * Display the description in the URL when rendering the page in Firefox
+  * GH-41: Allow fl-run-bench to take modules in addition to filenames 
+  * Support for gzip compression
+  * Experimental comet request support, handle stream request in a separate thread
+  * Ability to configure multiple benchers per server in distribute mode
+  * Ability to configure multiple monitors per server (useful if you have
+    to use ssh tunnels instead of read hostnames).
+
+-------------------------------------------------------------------
+Wed Apr  8 17:00:45 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Cleanup dependencies`
+
+-------------------------------------------------------------------
+Sun Sep 04 15:20:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.16.1:
+  * fixes distributed code
+
+- changes from 1.16.0:
+  * extends HTTP methods with HEAD and OPTIONS, enable to send any methods
+    using the new "method" API, adding PROPFIND DAV example
+  * GH-9: new options for distributed mode: you can specify the Python binary
+    to use with ``--distribute-python=PYTHON_BIN`` option and additional
+    packages to install on slaves with the
+    ``--distributed-packages=DISTRIBUTED_PACKAGES`` option
+  * GH-9: added the ability to monitor hosts from the central host; the
+    monitoring will also retroactively match up the concurrent users for
+    graphing purposes
+  * GH-5: ``fl-record`` now checks for ``tcpwatch`` command in addition to
+    ``tcpwatch.py`` and ``tcpwatch-httpproxy``
+  * GH-6: filter out .swfs when building funkload tests with ``fl-record``
+  * GH-10: support of python2.7
+  * GH-15: exposed the load_auto_links parameter to the get/put/post/method
+    methods so that the option to not parse the payload is available when
+    writing a test
+  * fix org-mode output for Org 7.5, adding missing monitoring section
+  * GH-14: fix report creation when having error message with non-us characters
+  * GH-11: handling of deleted cookies
+  * GH-7: data and demo directory missing
+
+- changes from 1.15.0:
+  * now supporting emacs Org-mode_ text format as report output; this enables
+    to edit a report as plain text and to produce professional PDF reports
+    througth the Org-mode_ LaTeX export
+  * new `trend report to display evolution of performances over time; just use
+    the ``--trend`` option of the ``fl-build-report`` command
+  * the credential server can serve a sequence; using ``xmlrpc_get_seq``
+    threads can share a sequence
+  * removing deprecated gdchart support, now relying only on gnuplot; note that
+    a mathplotlib support is on the TODO list
+
+-------------------------------------------------------------------
+Wed Feb 16 01:13:58 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (1.14.0)
+

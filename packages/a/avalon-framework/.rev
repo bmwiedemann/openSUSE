@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f81091e3a32acdc8db0f425bf8e7a42a</srcmd5>
+    <version>4.1.4</version>
+    <time>1329405046</time>
+    <user>coolo</user>
+    <comment>add avalon framework to Factory - needed by apache-commons-logging</comment>
+    <requestid>103526</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f81091e3a32acdc8db0f425bf8e7a42a</srcmd5>
+    <version>4.1.4</version>
+    <time>1340183193</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f81091e3a32acdc8db0f425bf8e7a42a</srcmd5>
+    <version>4.1.4</version>
+    <time>1359108685</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>78ea57e18fed12cc9181cb994ea2a2f0</srcmd5>
+    <version>4.1.4</version>
+    <time>1359534535</time>
+    <user>coolo</user>
+    <comment>- provide compat symlinks in /usr/share/java/excalibur
+  part of a fix fo bnc#800694
+@coolo: please copy to 12.3 too</comment>
+    <requestid>150185</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>2c14bf5a2ff0cacac763b00c5b586b8b</srcmd5>
+    <version>4.1.4</version>
+    <time>1363940368</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160283 from m_meister)</comment>
+    <requestid>160426</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>c2d22092f78668e3f662641f6109bd8b</srcmd5>
+    <version>4.1.4</version>
+    <time>1378899564</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198256</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>c2d22092f78668e3f662641f6109bd8b</srcmd5>
+    <version>4.1.4</version>
+    <time>1379662016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>4ab3ccb70aa4ae50602640b11eb19d16</srcmd5>
+    <version>4.1.4</version>
+    <time>1405522172</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240329</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>4ab3ccb70aa4ae50602640b11eb19d16</srcmd5>
+    <version>4.1.4</version>
+    <time>1409300541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>b54ba9dfbc43581242461f71b32f2c82</srcmd5>
+    <version>4.1.4</version>
+    <time>1505507520</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526330</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>5f72eb3442dcb5e7967a1f23fdf57173</srcmd5>
+    <version>4.1.4</version>
+    <time>1532446262</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620766</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>36647d467e42b1a78417390a277fd0a6</srcmd5>
+    <version>4.3</version>
+    <time>1548769204</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 4.3</comment>
+    <requestid>667678</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f3b8f60f93711ec323482fb6a0370951</srcmd5>
+    <version>4.3</version>
+    <time>1554712265</time>
+    <user>dimstar_suse</user>
+    <comment>Do not require optional dependencies</comment>
+    <requestid>691484</requestid>
+  </revision>
+</revisionlist>

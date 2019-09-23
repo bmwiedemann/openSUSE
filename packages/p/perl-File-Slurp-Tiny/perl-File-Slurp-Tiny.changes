@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Jul 16 08:47:04 UTC 2015 - coolo@suse.com
+
+- updated to 0.004
+   see /usr/share/doc/packages/perl-File-Slurp-Tiny/Changes
+
+  0.004     2015-07-15 16:51:45+02:00 Europe/Amsterdam
+            Add discouragement notice
+            Don't skip '.
+' amd '..
+' in read_dir
+            Don't install benchmark.pl
+
+-------------------------------------------------------------------
+Mon Mar 17 08:34:07 UTC 2014 - coolo@suse.com
+
+- initial package 0.003
+    * created by cpanspec 1.78.07
+

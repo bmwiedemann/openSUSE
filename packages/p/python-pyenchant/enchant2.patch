@@ -1,0 +1,22 @@
+From ed02ae493ade4ca749462d041ce83261783fa1a1 Mon Sep 17 00:00:00 2001
+From: Raphael Michel <mail@raphaelmichel.de>
+Date: Thu, 8 Mar 2018 10:40:00 +0100
+Subject: [PATCH] Auto-detect enchant2
+
+After support for enchant2 is already merged, the only thing missing is to detect the library :)
+---
+ enchant/_enchant.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: pyenchant-2.0.0/enchant/_enchant.py
+===================================================================
+--- pyenchant-2.0.0.orig/enchant/_enchant.py
++++ pyenchant-2.0.0/enchant/_enchant.py
+@@ -65,6 +65,7 @@ def _e_path_possibilities():
+     """Generator yielding possible locations of the enchant library."""
+     # Allow it to be overridden using an environment variable.
+     yield os.environ.get("PYENCHANT_LIBRARY_PATH")
++    yield find_library("enchant-2")
+     # For linuxish systems, allow default soname lookup a chance to succeed.
+     if sys.platform not in ("win32", "darwin"):
+         yield "libenchant.so.1.6.0"

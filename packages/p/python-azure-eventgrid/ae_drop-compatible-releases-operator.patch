@@ -1,0 +1,12 @@
+diff -Nru azure-eventgrid-1.2.0.orig/setup.py azure-eventgrid-1.2.0/setup.py
+--- azure-eventgrid-1.2.0.orig/setup.py	2018-08-27 22:06:44.000000000 +0200
++++ azure-eventgrid-1.2.0/setup.py	2018-09-03 14:04:59.966227469 +0200
+@@ -80,7 +80,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     cmdclass=cmdclass
+ )

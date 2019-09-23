@@ -1,0 +1,369 @@
+-------------------------------------------------------------------
+Sat Feb 16 00:08:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+- Do not ignore errors from useradd.
+- Avoid %__-type macro indirection.
+
+-------------------------------------------------------------------
+Mon Oct  1 07:26:04 UTC 2018 - obs@botter.cc
+
+- Require perl-Data-Validate-IP
+
+-------------------------------------------------------------------
+Thu Sep 13 12:51:46 UTC 2018 - Stefan Jakobs <projects@localside.net>
+
+- Upgrade to ddclient-3.9.0
+  * Support IPv6 for CloudFlare
+  * name cheap support https now
+  * Use JSON::PP instead of the (deprecated) JSON::Any
+  * Specify port number properly to 'nsupdate'
+  * Adding support for freemyip.com
+
+-------------------------------------------------------------------
+Thu Nov 23 13:38:22 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Feb  3 08:36:33 UTC 2017 - josef.moellers@suse.com
+
+- Upgrade to ddclient-3.8.3.
+  * added Alpine Linux init scritp - patch send by @Tal on github.
+  * adding support for nsupdate - patch send by @droe on github
+  * allow log username-password combinations - patch send by @dirdi on github
+  * adding support for cloudflare - patch send by @roberthawdon on github
+  * adding support for duckdns - patch send by @gkranis
+
+-------------------------------------------------------------------
+Fri Jan  8 23:59:41 UTC 2016 - chris@computersalat.de
+
+- fix for boo#903588
+- revert patch change
+- recover deleted changes (rev34)
+- systemd fix
+  * conf file must be accessible only by its owner
+
+-------------------------------------------------------------------
+Mon Jun 30 17:51:12 CEST 2014 - pth@suse.de
+
+- Use perl_requires instead of harcoding a value.
+
+-------------------------------------------------------------------
+Wed Jun 18 11:03:39 UTC 2014 - stefan.fent@suse.com
+
+- fix pidfile path in /etc/ddclient.conf and set ownership to ddclient
+- create user and group ddclient (bnc#881520)
+- create /run/ddclient/ with user and group ddclient if not yet
+  available in %pre
+
+-------------------------------------------------------------------
+Thu May 22 13:14:42 UTC 2014 - chris@computersalat.de
+
+- update systemd stuff
+  * add {?has_systemd} to fix build for Systems using init scripts
+- spec cleanup
+  * add missing BuildRoot
+
+-------------------------------------------------------------------
+Tue May 20 14:31:29 UTC 2014 - jsegitz@novell.com
+
+- ensure proper handling of .service files with %service_add_pre
+
+-------------------------------------------------------------------
+Tue Dec 31 17:02:59 UTC 2013 - benoit.monin@gmx.fr
+
+- update to 3.8.2
+  * adding support by ChangeIP
+  * sha-1 patch  to allow Digest::SHA
+  * allow reuse of use
+  * preventing deep sleep - see bug #46
+  * Fallback to iproute if ifconfig doesn't work
+- drop ddclient-3.8.1-update_nic.patch: upstream changed the "use"
+  logic
+- move all sample-* to examples under the documentation directory
+- update source url on sourceforge
+
+-------------------------------------------------------------------
+Wed Dec  4 13:08:25 UTC 2013 - seife+obs@b1-systems.com
+
+- fix the breakage from last submission:
+  * service file was put into tmpfiles.d
+  * tmpfiles config was put into systemd service dir
+  * rcddclient link was broken (pointed to "service" file)
+- fix rpmlint warnings, also introduced by last submission:
+  * service files and tmpdir config are neither config files nor
+    should be executable
+- package is noarch, mark it as such
+- documentation should not have executable bit set
+
+-------------------------------------------------------------------
+Sun Oct 27 15:12:09 UTC 2013 - p.drouand@gmail.com
+
+- Improve systemd support for openSUSE >= 12.3
+
+-------------------------------------------------------------------
+Thu May 16 13:23:40 UTC 2013 - seife+obs@b1-systems.com
+
+- more init-script fixes:
+  - startproc now needs the pidfile parameter (or it woulld look
+    for "perl.pid". Sorry, should have run more tests.
+  - while I'm at it, get the pidfile from the config file in case
+    the user would have changed it
+
+-------------------------------------------------------------------
+Wed May 15 07:58:26 UTC 2013 - seife+obs@b1-systems.com
+
+- fix init script: start ddclient with "/usr/bin/perl ddclient",
+  otherwise startproc will falsely report that starting failed.
+
+-------------------------------------------------------------------
+Wed Oct 24 21:30:01 UTC 2012 - chris@computersalat.de
+
+- rework config patch
+  * ddclient.conf: add example for selfhost (http://selfhost.de)
+
+-------------------------------------------------------------------
+Tue Sep 25 04:03:07 UTC 2012 - binli@opensuse.org
+
+- Update ddclient-3.8.1-config.patch to check the configuraton file
+  from /etc instead of /etc/ddclient (bnc#781699).
+
+-------------------------------------------------------------------
+Mon Jan  9 15:25:09 UTC 2012 - chris@computersalat.de
+
+- update to 3.8.1
+  * Fixing #28: FreeDNS.afraid.org changed api slightly
+  * Added dtdns-support
+  * Added support for longer password
+  * Added cisco-asa patch
+  * Added support for LoopiaDNS
+- rebase patches
+
+-------------------------------------------------------------------
+Wed Oct 19 15:06:08 CEST 2011 - ro@suse.de
+
+- remove leftover debug line in init script
+
+-------------------------------------------------------------------
+Sat Oct 15 10:34:17 CEST 2011 - ro@suse.de
+
+- upgrade Suggests for perl-IO-Socket-SSL to Recommends
+  (bnc#723688)
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Mon Aug 29 15:22:47 CEST 2011 - ro@suse.de
+
+- work on init-script so that start/status/stop at least work
+  (bnc#267306)
+
+-------------------------------------------------------------------
+Tue Sep  1 11:01:31 UTC 2009 - chris@computersalat.de
+
+- rework config patch
+  o now one patch
+  o merged
+    - ddclient-3.6.3-config.patch
+    - ddclient-3.7.1-config.patch
+    - ddclient-3.7.1-sysconfig.patch
+    to ddclient-3.8.0-config.patch
+  o defaults for ppp0
+- added update_nic.patch
+  * opt('use') should have priority to global-defaults
+- init script
+  o beautify
+  o should start rp-pppoe
+  o ppp0 as a "use=" default if not set in ddclient.conf
+- sysconfig
+  o added argument list for DDCLIENT_OPTIONS
+- cleanup spec
+
+-------------------------------------------------------------------
+Sun Aug 30 20:12:52 CEST 2009 - coolo@novell.com
+
+- use %patch0
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Mon Feb  2 14:57:23 CET 2009 - kssingvo@suse.de
+
+- made rpmlint more happy
+- removed unneccessary .orig file to avoid build issue
+
+-------------------------------------------------------------------
+Wed Jan 28 14:18:40 CET 2009 - kssingvo@suse.de
+
+- new version 3.8.0:
+  * better password handling
+  * ddclient wrapper now included
+  * some remarks concerning postscript in sample config file
+  * support for multiple IP adresses
+  * namecheap patch
+  * Preventing error while reading cache when ip wasn't set correctly
+    before
+  * Preventing an error when trying to send a message on mail-failure
+  * mail-on-kill functionality
+  * documentation changes
+
+-------------------------------------------------------------------
+Tue Jan 27 18:12:39 CET 2009 - kukuk@suse.de
+
+- Add PreRequires
+
+-------------------------------------------------------------------
+Thu Aug 30 15:01:09 CEST 2007 - kssingvo@suse.de
+
+- config file ddclient.conf now with noreplace (bugzilla#305533)
+
+-------------------------------------------------------------------
+Tue Aug  7 11:08:19 CEST 2007 - kssingvo@suse.de
+
+- upgrade to version 3.7.3:
+  * fixed typo for dnspark
+  * Renamed dyndns.org to dyndns.com
+  * opendns support added
+  * several debian/ubuntu patches included
+  * Readme changes
+  * signature modified
+  * typo in namecheap support
+
+-------------------------------------------------------------------
+Thu Jun 14 12:14:12 CEST 2007 - kssingvo@suse.de
+
+- upgrade to version 3.7.2:
+  * updated easydns support
+  * fix for 'fw' in case of debug
+  * ssl call changed
+  * easydns.patch and eurodns.patch now included
+- enable_fw patch removed, now in upstream version included
+
+-------------------------------------------------------------------
+Thu May  3 14:26:56 CEST 2007 - kssingvo@suse.de
+
+- added sysconfig file, as suggested in bugzilla#268138
+- added /var/cache/ddclient (bugzilla#268138)
+
+-------------------------------------------------------------------
+Tue Apr  3 20:38:18 CEST 2007 - kssingvo@suse.de
+
+- fixed issue in debug messages (bugzilla#250170)
+
+-------------------------------------------------------------------
+Tue Feb 13 09:43:01 CET 2007 - kssingvo@suse.de
+
+- disabled ssl in default config (bugzilla#232005)
+
+-------------------------------------------------------------------
+Mon Feb 12 16:11:18 CET 2007 - kssingvo@suse.de
+
+- update to version 3.7.1:
+  * URL of zoneedit has changed (see bug #1558483)
+  * Added initscript for Ubuntu (posted by Paolo Martinelli)
+  * Added patch "Patch: Treat --daemon values as intervals"
+    (submitted by James deBoer)
+  * Don't send any mail when in not running daemon mode (patch
+    submitted by Daniel Thaler)
+  * Changed Changelog syntax
+  * Applied patches submitted by Torsten:
+    abuse_msg.diff: ddclient still reports the email to contact
+      dyndns.org but they prefer a web form today (IIRC). This patch
+      adjusts the abuse warning printed by ddclient.
+    cachedir.diff: Original ddclient stores a cache file in /etc
+      which would belong in /var/cache in my opinion and according
+      to the FHS.
+    help_nonroot.diff: Allow calling the help function as non-root.
+    update-new-config.patch: Force update if config has changed
+    smc-barricade-7401bra.patch: Support for SMC Barricade 7401BRA
+      FW firewall
+    cisco_fw.diff: Use configured hostname for firewall access with
+      -use=cisco (closes: #345712). Thanks to Per Carlson for the
+      patch!  See http://bugs.debian.org/345712.
+    maxinterval.diff: Increase max interval for updates.
+      See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=129370
+      http://www.dyndns.com/support/services/dyndns/faq.html#q15
+- added Suggests: for perl-IO-SSL-Socket (bugzilla#232005)
+- adapted /etc config patch to new version
+
+-------------------------------------------------------------------
+Mon Jan  8 12:31:20 CET 2007 - kssingvo@suse.de
+
+- fixed checkproc in init script (bugzilla#229460)
+
+-------------------------------------------------------------------
+Wed Sep 20 16:56:41 CEST 2006 - kssingvo@suse.de
+
+- added init script (bugzilla#201548)
+
+-------------------------------------------------------------------
+Wed Jun 28 16:46:05 CEST 2006 - kssingvo@suse.de
+
+- update to version 3.7.0:
+- support of many new routers
+- fix to have a '#' char in the password
+- renamed .orig to _orig in %doc section
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 14:32:12 CET 2006 - kssingvo@suse.de
+
+- update to version 3.6.7
+
+-------------------------------------------------------------------
+Tue Jul 26 15:49:56 CEST 2005 - kssingvo@suse.de
+
+- update to version 3.6.6
+
+-------------------------------------------------------------------
+Tue Mar 29 14:17:01 CEST 2005 - kssingvo@suse.de
+
+- fix of config directory location (bugzilla#74539)
+
+-------------------------------------------------------------------
+Tue Feb  1 17:04:29 CET 2005 - kssingvo@suse.de
+
+- new version 3.6.5: there was a bug in the linksys-ver2
+
+-------------------------------------------------------------------
+Thu Nov  4 11:45:06 CET 2004 - kssingvo@suse.de
+
+- new version 3.6.4 and now maintained at sourceforge
+
+-------------------------------------------------------------------
+Sun Jan 11 11:57:08 CET 2004 - adrian@suse.de
+
+- fix build as user
+
+-------------------------------------------------------------------
+Wed Aug 13 15:22:09 CEST 2003 - kssingvo@suse.de
+
+- fixed defaults (bugzilla#27701)
+
+-------------------------------------------------------------------
+Tue Jun 24 16:13:03 CEST 2003 - kssingvo@suse.de
+
+- upgraded to ddclient-3.6.3
+
+-------------------------------------------------------------------
+Tue Jan 14 17:08:21 CET 2003 - kssingvo@suse.de
+
+- updated to ddclient-3.6.3beta3
+
+-------------------------------------------------------------------
+Mon Oct 28 13:01:07 CET 2002 - kssingvo@suse.de
+
+- first shot.

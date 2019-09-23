@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48f0d6266079305852d2485e57591b6d</srcmd5>
+    <version>20170319</version>
+    <time>1494087835</time>
+    <user>dimstar_suse</user>
+    <comment>Provide/obsolete patterns-openSUSE-* names</comment>
+    <requestid>492735</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cebd4cebfb749c06f5506c2835f9b85</srcmd5>
+    <version>20170319</version>
+    <time>1494938747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494909</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>760f071b9b4e6ab66894a9282773f785</srcmd5>
+    <version>20170319</version>
+    <time>1496392414</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit spell fix after cleaning up the mess done by the spec formater</comment>
+    <requestid>500407</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a0f190505a193af0dcdb24eebcd19842</srcmd5>
+    <version>20170319</version>
+    <time>1518706814</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend php7 variants by the lamp pattern (boo#1081072).</comment>
+    <requestid>576921</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df0439d348252372970b5502d5a257ca</srcmd5>
+    <version>20180718</version>
+    <time>1538672511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639838</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cf668920231ab96404c607cc55561949</srcmd5>
+    <version>20180718</version>
+    <time>1544727000</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust icons to state of yast2-theme package</comment>
+    <requestid>657790</requestid>
+  </revision>
+</revisionlist>

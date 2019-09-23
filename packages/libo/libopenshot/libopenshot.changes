@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sun Aug 18 08:31:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to current master (devel) branch, fixes build for Factory.
+- Run spec-cleaner, use modern macros.
+- Enable ruby-devel BuildRequires, fixed upstream.
+- Replace ImageMagick-devel with disabled pkgconfig(Magick++)
+  BuildRequires, it's not detected either way.
+
+-------------------------------------------------------------------
+Fri May  3 08:08:51 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.2.3
+  * Bumping version to 0.2.3 (SO 17)
+  * Integration of resvg SVG library (optional during build) (#185)
+  * Improved Keyframe Performance (#197)
+  * MP3 Special Handling & Missing Frame Refactor (#196)
+  * Fix default sizes on readers without MAX_WIDTH and MAX_HEIGHT settings (#188)
+  * Adding new settings class to be used for changing realtime settings used by libopenshot, such as scaling mode for preview vs final render, or hardware decode, etc... (#183)
+  * Integrate Constant Rate Factor (CRF) for FFmpegWriter (#186)
+  * Improving cache performance by preventing the cache from getting behind the currently displaying frame # (#179)
+  * Set video bit rate to 0 if an invalid bit rate detected (which happens when using crf) (#191)
+  * Invalid SetMaxSize Logic and Invalid CRF q settings in FFmpegWriter (#198)
+  * Refactor FFmpegWriter Open() and PrepareStreams() methods, so that SetOption() can be called between them. (#193)
+  * Some polishing for the cmake ReSVG discovery (#187)
+  * Adding condition before calling av_frame_free (in AV_FREE_FRAME macro) (#184)
+  * tests/CMakeLists: Use same dependencies as src/ (#163)
+  * Remove Eclipse files and add to gitignore (#178)
+  * Fixing Scale Mode (None) in previews (#182)
+  * Exclude git tags from kicking off GitLab builds (for libopenshot)
+  * Update readme to use markdown and update copyright to 2019 (#94)
+  * Update README and INSTALL files (including build instructions) (#194)
+  * Add git log file with commits up to the previous release (#192)
+
+-------------------------------------------------------------------
+Mon Sep 24 09:56:15 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.2.2
+  * FFmpeg 3 & 4 support
+  * Fixed crash with masks and transitions
+  * Fixed many bugs around FPS and video length calculation (especially for MP3 and streaming WEBM formats)
+  * Protecting samples_per_frame calculation to keep from crashing on undetected FPS
+  * OpenMP schedule change (added stability)
+  * Limiting threads for both FFmpeg and OpenMP (attempting to find a good balance of parallel performance, while not spawning too many threads). Sometimes more is not always better.
+  * Travis CI integration
+  * Fix install paths for headers and effects (Jeff Shillitto - jeffski)
+  * Fix bug with FFmpeg > 3.2 flushing frames (Jeff Shillitto - jeffski)
+  * Adding "reader" property for Mask effect, to allow the user to adjust the image or video used by the mask effect.
+  * Fixing bitrate calculation (to be in bytes instead of bits)
+  * Adding in FPS detection for files which don't have valid FPS. In those cases (streaming files for example), we iterate through all packets, and average the # of frames, duration, bit rate, etc... Not ideal, but a better fallback.
+- soname change to 16
+
+-------------------------------------------------------------------
+Mon Jul  2 12:44:51 UTC 2018 - adrian@suse.de
+
+- update to version 0.2.0
+  * FFMPEG 3.2.0 support
+  * New video effects
+  * bugfixes
+  * new soname
+- return to ffmpeg3-devel BuildRequires
+  * ffmpeg4 is not supported
+  * exact version numbers are bad in case of new ffmpeg3 release
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Sat Apr 21 12:56:48 UTC 2018 - jengelh@inai.de
+
+- Explicitly request ffmpeg 3.x for building
+
+-------------------------------------------------------------------
+Tue Mar  6 13:15:43 UTC 2018 - adrian@suse.de
+
+- update to version 0.1.9
+  going back to git, as the tar is poorly named and not signed
+
+-------------------------------------------------------------------
+Wed Nov  1 11:59:48 UTC 2017 - tampakrap@opensuse.org
+
+- Replace the _service file with the upstream tarball
+
+-------------------------------------------------------------------
+Mon Sep 11 09:34:01 UTC 2017 - adrian@suse.de
+
+- update to version 0.1.8
+
+-------------------------------------------------------------------
+Sat Sep  2 22:01:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.7
+- Bump so version following upstream changes.
+
+-------------------------------------------------------------------
+Mon Apr  3 09:29:04 UTC 2017 - adrian@suse.de
+
+- update to version 0.1.4
+
+-------------------------------------------------------------------
+Fri Jan 13 10:26:36 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Thu Jan 12 07:30:09 UTC 2017 - adrian@suse.de
+
+- adapt for build.o.o from packman version
+
+-------------------------------------------------------------------
+Thu Jan  5 17:34:57 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * This release does not have a changelog
+
+-------------------------------------------------------------------
+Thu Oct 20 23:12:57 UTC 2016 - avvissu@yandex.by
+
+- Initial package
+
+

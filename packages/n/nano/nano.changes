@@ -1,0 +1,1047 @@
+-------------------------------------------------------------------
+Thu Sep 19 12:04:02 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- Do not recommend lang package. The lang package already has a
+  supplements.
+
+-------------------------------------------------------------------
+Tue Aug 27 01:24:55 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.4:
+  * At startup, the cursor can be put on the first or last
+    occurrence of a string by preceding the filename with +/string
+    or +?string.
+  * When automatic hard-wrapping occurs (--breaklonglines), any
+    leading quoting characters will be automatically copied to the
+    new line.
+  * M-6 works again also when the cursor is at end of buffer.
+
+-------------------------------------------------------------------
+Mon Aug 12 21:04:23 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Nano 4.3:
+  * The ability to read from and write to a FIFO has been regained
+  * Startup time is reduced by fully parsing a syntax only when needed
+  * Asking for help (^G) when using --operatingdir does not crash
+  * The reading of a huge or slow file can be stopped with ^C
+  * Cut, zap, and copy operations are undone separately when intermixed
+  * M-D reports the correct number of lines (zero for an empty buffer)
+
+-------------------------------------------------------------------
+Sat May  4 07:29:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2:
+  + The integrated spell checker does not crash when 'spell' is
+    missing.
+  + Option --breaklonglines works also when --ignorercfiles is
+    used.
+  + Automatic hard-wrapping is more persistent in pushing words to
+    the same overflow line.
+
+-------------------------------------------------------------------
+Tue Apr 16 03:15:34 UTC 2019 - seanlew@opensuse.org
+
+- Update to GNU nano 4.1:
+  * Newline char is auto added to the end of a buffer
+  * -finalnewline (-f) has been removed
+  * Syntax files are read in alpha order when globbing
+  * preproc directives are highlighted with C syntax
+  * M-S now toggles soft wrapping M-N toggles numbers
+  * Jumpy -scrolling toggle removed
+  * ^W/^Y and ^W/^V are recognized again
+  * Executing external command disallowed in view mode
+  * Resizing issues during external or spelling cmds fixed
+
+-------------------------------------------------------------------
+Tue Mar 26 08:49:36 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0:
+  * An overlong line is no longer automatically hard-wrapped.
+  * Smooth scrolling (one line at a time) has become the default.
+  * A newline character is no longer automatically added at end of buffer.
+  * The line below the title bar is by default part of the editing space.
+  * Option --breaklonglines (-b) turns automatic hard-wrapping back on.
+  * Option --jumpyscrolling (-j) gives the chunky, half-screen scrolling.
+  * Option --finalnewline (-f) brings back the automatic newline at EOF.
+  * Option --emptyline (-e) leaves the line below the title bar unused.
+  * <Alt+Up> and <Alt+Down> now do a linewise scroll instead of a findnext.
+  * Any number of justifications can be undone (like all other operations).
+  * When marked text is justified, it becomes a single, separate paragraph.
+  * Option --guidestripe=<number> draws a vertical bar at the given column.
+  * Option --fill=<number> no longer turns on automatic hard-wrapping.
+  * When a line continues offscreen, it now ends with a highlighted ">".
+  * The halfs of a split two-column character are shown as "[" and "]".
+  * A line now scrolls horizontally one column earlier.
+  * The bindable functions 'cutwordleft' and 'cutwordright' were renamed to 'chopwordleft' and 'chopwordright' as they don't use the cutbuffer.
+  * The paragraph-jumping functions were moved from Search to Go-to-Line.
+  * Option --rebinddelete is able to compensate for more misbindings.
+  * Options --morespace and --smooth are obsolete and thus ignored.
+  * The --disable-wrapping-as-root configure option was removed.
+- Enable file/magic guessing
+
+-------------------------------------------------------------------
+Sun Nov 11 20:27:04 UTC 2018 - sean@suspend.net
+
+- GNU nano 3.2:
+  * binding changes and renames
+  * python 3 highlighting improvements
+  * don't define controldelete or controlshitfdelete in tiny version
+  * removed some old debugging code
+
+-------------------------------------------------------------------
+Wed Sep 19 19:32:28 UTC 2018 - astieger@suse.com
+
+- GNU nano 3.1:
+  * fix a misbinding of ^H on some terminals and some systems
+  * no longer leave stray stuff after the prompt upon exit
+    when having suspended nano while using --constantshow
+  * do not allow to toggle to Replace in view mode
+
+-------------------------------------------------------------------
+Sun Sep  9 12:09:48 UTC 2018 - astieger@suse.com
+
+- GNU nano 3.0:
+  * speed improvements
+  * changes, updates and renames to commands and bindings
+  * external spell check can now be undone
+
+-------------------------------------------------------------------
+Fri Jun 15 18:59:32 UTC 2018 - astieger@suse.com
+
+- GNU nano 2.9.8:
+  * add ability to filter the buffer (or the marked region)
+    through an external command (^R^X and prefix the command with
+    the pipe symbol, "|")
+  * improve detecting and maintaining paragraphs
+  * support justifying //-style comments
+  * fix a crash when the binding of a key to a string lacks a
+    closing quote
+  * give feedback about the number of lines written also when
+    prepending or appending
+
+-------------------------------------------------------------------
+Sat May 19 14:30:18 UTC 2018 - astieger@suse.com
+
+- GNU nano 2.9.7:
+  * add the option '--afterends' for making Ctrl+Right (the
+    nextword function) stop at word ends instead of beginnings
+  * accept multibyte letters for the Yes/No/All answers
+  * emergency saves of changed buffers in case of crashes
+  * add bindable function 'linenumbers'
+  * rename the toggles 'constupdate' to 'constantshow',
+    'cuttoend' to 'cutfromcursor', for consistency with the
+    corresponding options
+
+-------------------------------------------------------------------
+Sat Apr 28 19:20:56 UTC 2018 - astieger@suse.com
+
+- GNU nano 2.9.6:
+  * fix a crash in word completion
+  * make --enable-altrcname work again
+  * improve the fluidity of scrolling when using the touchpad
+  * tweak the syntaxes for shell scripts and PO files
+  * make a replacing session go always forward by default
+  * no longer insert a newline after an external spell check of a
+    selected region
+  * always accept the English Y and N (and A) at a yes-no prompt
+    in any locale
+
+-------------------------------------------------------------------
+Fri Mar 30 15:43:36 UTC 2018 - astieger@suse.com
+
+- GNU nano 2.9.5:
+  * change the way the Scroll-Up and Scroll-Down commands work
+    (M-- and M-+): instead of keeping the cursor in the same screen
+    position they now keep the cursor in the same text position (if
+    possible)
+  * add a new color name, "normal", which gives the default
+    foreground or background color, which is useful for reverting
+    some overzealous painting by earlier syntax regexes
+  * fix a segfault when trying to insert a file in restricted mode
+  * fix the reading in of a new file being "undoable", 
+  * fix a slight miswrapping of help texts when --linenumbers was
+    used
+  * fix the shell syntax coloring the word "tar" in file names
+
+-------------------------------------------------------------------
+Sun Mar 11 15:24:48 UTC 2018 - astieger@suse.com
+
+- GNU nano 2.9.4:
+  * allow binding a key to a string (any piece of text and/or
+    commands)
+  * permit customizing the color of error messages with
+    'set errorcolor'
+  * color those error messages by default in bright white on red
+  * make <Enter> at the bottom of the screen scroll just one row
+    when --smooth is used
+  * do not fail when redoing a file insertion
+  * cancel a Shift-selection when any cursor key is pressed without
+    Shift even when the cursor cannot move 
+  * treat tabs fully the same as spaces when doing automatic
+    hard-wrapping
+  * allows syntax names to be unquoted
+  * remove deprecated options and deprecated bindable function
+    names
+
+-------------------------------------------------------------------
+Wed Jan 31 15:01:40 UTC 2018 - astieger@suse.com
+
+- GNU nano 2.9.3:
+  * fix a segfault with trimblanks that could occur when a typed
+    space caused the word after it to be pushed to the next line
+  * make macros work also when your keyboard still emits escape
+    sequences
+  * add the options -M and --trimblanks for the command line
+  * recognizeskey combos with Shift on a few more terminals
+  * no longer show dots in certain prompt texts when visible
+    witespace is turned on
+  * fix two corner cases when doing replacements in a marked region
+  * allow to open a named pipe again when using --noread
+  * accurately detect a needed color change when a line contains
+    a start match but not a corresponding end match any more
+- includes changes gom 2.9.2:
+  * correctly display the Modified state when undoing/redoing
+    (also when the file was saved somewhere midway)
+  * improve the undoing of an automatic linefeed at EOF
+  * show the cursor again when compiled with --withslang
+  * rename the option 'justifytrim' to 'trimblanks' because it
+    will now snip trailing whitespace also while you are typing
+    (and hard-wrapping is enabled)
+  * continue pushing words to the next line much longer (when
+    hard-wrapping)
+  * make <Tab> and <Shift+Tab> indent and unindent a marked region
+  * allow unindenting when not all lines are indented
+  * let a region marked with Shift persist when indenting/
+    unindenting or commenting/uncommenting it
+
+-------------------------------------------------------------------
+Mon Dec 11 21:03:50 UTC 2017 - astieger@suse.com
+
+- GNU nano 2.9.1:
+  * Fix a bug where, when the mark is on, ^S would overwrite the
+    file with just the marked region
+  * Clear the "Modified" flag when all edits are undone
+  * Add or updates some magic strings
+  * Remember when the cursor was last at line 1, column 1
+
+-------------------------------------------------------------------
+Sat Nov 18 15:55:45 UTC 2017 - astieger@suse.com
+
+- GNU nano 2.9.0:
+  * introduce the ability to record and replay keystrokes:
+    (M-: to start and stop recording, M-; to play the macro back)
+  * make ^Q and ^S do something useful by default
+   (^Q starts a backward search, and ^S saves the current file)
+  * change ^W to start always a forward search,
+  * show the number of open buffers (when more than one) in the title bar
+  * no longer ask to press Enter when there are errors in an rc file
+  * retire the options '--quiet' and 'set quiet' and 'set backwards'
+  * make indenting and unindenting undoable
+  * look in $XDG_CONFIG_HOME for a nanorc file
+  * look in $XDG_DATA_HOME for the history files
+  * add a history stack for executed commands (^R^X)
+  * do not overwrite the position-history file of another nano
+  * fix a score of tiny bugs
+
+-------------------------------------------------------------------
+Tue Aug 29 12:15:22 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.8.7:
+  * fixes a lockup when tabs are wider than the screen
+  * makes indenting + unindenting more predictable by retaining
+    relative indentations
+  * allows pasting (^U) at a prompt
+  * allows triple quotes
+  * fixes some hard-to-describe issues with softwrapping and
+    boundary-crossing tabs.
+
+-------------------------------------------------------------------
+Tue Jul 25 14:01:17 UTC 2017 - aloisio@gmx.com
+
+- Update to 2.8.6
+  * Add the ability to do softwrapping between words
+    -- at whitespace -- instead of always at the edge of the
+    screen.  This can be activated with -a or --atblanks or
+    'set atblanks' together with the softwrap option.
+  * Fix a handful of rare display glitches,
+  * Harmonize quoting rules in the rc files
+  * Rename the option 'cut' to 'cutfromcursor'
+    (please update your nanorc files before 2020).
+
+-------------------------------------------------------------------
+Sat Jul  1 21:02:21 UTC 2017 - asterios.dramis@gmail.com
+
+- Update to version 2.8.5:
+  * Avoid a crash when waking from a suspension that was induced
+    from the outside.
+  * Allow negative line and column numbers on the command line.
+  * Avoid some flickering when resizing the screen while in the
+    file browser.
+  * Open files in the order they were mentioned on the command
+    line.
+  * Do not pretend to have woken from suspension when receiving a
+    SIGCONT.
+
+-------------------------------------------------------------------
+Sun Jun  4 20:15:08 UTC 2017 - astieger@suse.com
+
+- update to 2.8.4:
+  * include the nanorc man page again.
+- includes changes from 2.8.3:
+  * fix a misplacement of the spotlight during interactive replacing
+  * speed up backwards searching
+  * improve PHP syntax highlighting
+  * no longer ask “save anyway?” when the user ^Q discards the buffer
+
+-------------------------------------------------------------------
+Wed May 10 10:43:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.8.2:
+  * new feature: it makes the ^G help texts searchable with ^W.
+  * fixes a crash when resizing the window in the middle of
+    verbatim input
+  * avoids an unlikely crash when used without UTF-8 support in some
+    locales
+  * avoids redrawing the screen twice when switching between
+    buffers while line numbers are active
+  * works around a coloring bug on musl
+  * tweaks to the documentation
+  * translation updates for fifteen languages.
+
+-------------------------------------------------------------------
+Wed Apr 12 20:27:59 UTC 2017 - astieger@suse.com
+
+- GNU nano 2.8.1:
+  * fix scrolling problems in softwrap mode when double-width
+    characters on row boundaries are involved
+  * show double-width characters as ">" and "<" when split across
+    two rows
+  * move the cursor more predictably (at the cost of sometimes
+    putting it on the second "half" of a character)
+  * avoid creating lines that consist of only blanks when using
+    autoindent
+  * make ^Home and ^End go to the start and end of the file
+    (on terminals that support those keystrokes)
+  * place the cursor better when linting
+  * let the linter ask only once whether to open an included file
+  * add bindings for ^Up and ^Down in the file browser
+
+-------------------------------------------------------------------
+Fri Mar 31 10:39:21 UTC 2017 - fstrba@suse.com
+
+- Update to version 2.8.0
+  * the Up and Down keys now step from visual row to visual row
+    instead of jumping between logical lines
+  * the Home and End keys now move to the start and end of a row,
+    and only when already there, then to the start and end of the
+    logical line
+  * the screen can now scroll per row instead of always per logical
+    line
+  * makes use of gnulib, to make it build on more platforms
+
+-------------------------------------------------------------------
+Fri Feb 24 19:31:03 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.7.5:
+  * the \B and \b regex anchors
+  * correctly repaints things when multiline regexes with identical
+    start and end are involved
+  * fixes a crash with zero-length regex matches
+  * does replacements at the edges of a marked region right,
+  * displays at most three warnings at startup
+  * documents the ability to read a file from standard input
+
+-------------------------------------------------------------------
+Sun Jan 15 10:40:09 UTC 2017 - astieger@suse.com
+
+- GNU nano 2.7.4:
+  * undo deletions in an orderly manner again
+  * set the preferred x position for vertical movements more
+    consistently
+  * avoid some scrolling problems in softwrap mode
+  * correct the behavior of the beginning-of-word anchor (\<) in
+    regex searches.
+
+-------------------------------------------------------------------
+Thu Dec 29 08:54:52 UTC 2016 - astieger@suse.com
+
+- GNU nano 2.7.3:
+  * now able to handle filenames that contain newlines
+  * avoid a brief flash of color when switching between buffers
+    that are governed by different syntaxes
+  * make the Shift+Ctrl+Arrow keys select text again on a Linux
+    console
+  * more resistant against malformations in the positionlog file
+  * do not crash when ^C is typed on systems where it produces the
+    code KEY_CANCEL
+  * no longer mistakenly warn about editing an unlocked file just
+    after saving a new one
+
+-------------------------------------------------------------------
+Sun Dec 18 12:31:01 UTC 2016 - astieger@suse.com
+
+- GNU nano 2.7.2:
+  * complete with one keystroke (^] by default) a fragment of a
+    word to a full word existing elsewhere in the current buffer
+  * fixes two bugs related to using line numbers in softwrap mode
+  * allow using the PageUp and PageDown keys together with Shift on
+    VTE-based terminals
+  * stop help lines from flickering during interactive replacing
+  * make a "set fill" override an earlier "set nowrap"
+  * properly restore the selected region after an external spell
+    check
+
+-------------------------------------------------------------------
+Thu Nov  3 20:19:59 UTC 2016 - astieger@suse.com
+
+- GNU nano 2.7.1:
+  * add ability to display line numbers
+  * fix some bugs with scrolling in softwrap mode
+  * stricter parsing of key rebindungs
+  * marks a new buffer as modified when the output of a command
+    (^R ^X) has been read into it
+
+-------------------------------------------------------------------
+Sun Sep  4 14:51:05 UTC 2016 - astieger@suse.com
+
+- GNU nano 2.7.0:
+  * new feature: allowing text to be selected by holding Shift
+     together with the cursor keys.
+  * now works also when run in very tiny terminals
+    (down to one line, one column)
+  * improves the handling of the prompt in cramped spaces
+
+-------------------------------------------------------------------
+Sun Aug 14 09:15:39 UTC 2016 - astieger@suse.com
+
+- nano 2.6.3:
+  * make Ctrl+Arrow keys work also on a Linux virtual console
+  * take as verbatim only the very first keystroke after M-V
+  * remove any lock files held when dying
+  * do not abort when a word contains digits (with default speller)
+  * fix a small sorting bug in the file browser
+  * speed up searching case-insensitively in a UTF-8 locale
+  * do not enter invalid bytes when holding down both Alt keys
+
+-------------------------------------------------------------------
+Wed Aug  3 22:21:56 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to version 2.6.2:
+  * The keystrokes Ctrl+Up and Ctrl+Down for jumping between blocks
+    of text, and the option 'wordchars' for specifying which
+    characters (beside alphanumeric ones) should be considered
+    word-forming.
+  * Provides feedback during Unicode input (M-V followed by a
+    six-digit hexadecimal number which must start with 0 or 10).
+  * Avoids a crash when resizing the window during Verbatim input.
+  * Doesn't drop a keystroke after having been suspended.
+  * Replaces the beginning-of-line anchor (^) just once per line.
+  * Several tiny improvements in screen rendering and key handling.
+- Removed build time references fix (not needed anymore).
+
+-------------------------------------------------------------------
+Mon Jun 27 20:39:37 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.6.1:
+  * "Stampede" is chiefly a translation update
+  * adds one  little feature (the ability to use negative numbers 
+    with Go To  Line: -1 meaning the first line from the bottom)
+  * includes syntax highlighting for Rust, and fixes three tiny
+  * bugs (but in such far corners of the editor that they aren't 
+    even worth mentioning).
+
+-------------------------------------------------------------------
+Mon Jun 20 13:02:56 UTC 2016 - mpluskal@suse.com
+
+- Download keyring from savannah
+
+-------------------------------------------------------------------
+Sat Jun 18 12:51:25 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.6.0:
+  * fixes more than fifty little bugs -- and some of them not so 
+    little.
+  * It improves moving about in the file browser, corrects failings 
+    of the internal spell checker, adds a new feature 
+    (comment/uncomment lines, with default binding M-3), makes some 
+    error messages clearer, shows more of a file when positionlog 
+    is used and the cursor is near the end, displays all error
+    messages at startup if there are multiple ones, does not 
+    misinterpret keystrokes when typing very fast, is less eager 
+    to trim the filename on narrow terminals, speeds up 
+    case-insensitive searches, and allows to abort re-searches.
+
+-------------------------------------------------------------------
+Fri Feb 26 08:36:04 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.5.3
+  * several bugfixes fostray cursor positioning errors, many many 
+    memory leaks including file reading, using the file browser, 
+    searching for multi-byte characters, history completion, and 
+    many other places.
+  * New features include the ability to trim whitespace from the 
+    ends of lines when justifying text, see nanorc(5) option 
+    justifytrim for deets.
+
+-------------------------------------------------------------------
+Sat Feb 13 08:12:52 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.5.2
+  * several fixes for various memory leaks, position history size 
+    growth, and a long standing issue with using nano under sudo 
+    creading root-owned files
+  * There are also the usual bevy of documentation and other 
+    miscellaneous fixes and touch ups.
+
+-------------------------------------------------------------------
+Tue Jan 12 15:17:34 UTC 2016 - astieger@suse.com
+
+- 2.5.1:
+  * fix syntax-highlighting bug
+  * fix positionlog bug
+  * disable time-eating multiline regex in the C syntax
+  * adds an escape hatch to the WriteOut menu when --tempfile is
+    used: the discardbuffer command, ^Q. 
+  * translation updates for fifteen languages
+  * small fix in the softwrap code
+
+-------------------------------------------------------------------
+Sun Dec  6 13:32:01 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.5.0
+  * color synax highlighting improvements
+  * several bugfixes
+  * since this release there will no longer be separate stable and 
+    unstable branches
+
+-------------------------------------------------------------------
+Thu Nov 19 15:34:32 UTC 2015 - astieger@suse.com
+
+- GNU nano 2.4.3:
+  * Fix several memory leaks
+  * Fix issues with color syntax higlighting
+  * Fix issues with search/replace
+  * Fix issues with file insertion
+  * Fix help menu bugs
+
+-------------------------------------------------------------------
+Mon Jul  6 13:35:04 UTC 2015 - astieger@suse.com
+
+- GNU nano 2.4.2:
+  * ability to resize when in modes other than the main editing window
+  * proper displaying of invalid UTF-8 bytes
+  * new syntax definitions for Elisp, Guile, and PostgreSQL
+  * better display of shortcuts in the help menu and file browser
+
+-------------------------------------------------------------------
+Thu Apr 16 10:12:49 UTC 2015 - astieger@suse.com
+
+- GNU nano 2.4.1:
+  * several fixes for issues with the file browser menu
+  * linter and formatter functions fixes
+  * spell checker fixes
+  * fixes to undo/redo with some specific marked-cutting situations
+  * small improvements to the color syntax highlighting definitions
+
+-------------------------------------------------------------------
+Sat Mar 28 11:05:03 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Mar 23 20:10:23 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.4.0:
+  * doc/nanorc.sample.in: Remove ‘undo’ section which is now obsolete.
+  * doc/syntax/nanorc.nanorc: Remove 'undo' from the valid options.
+  * doc/texinfo/nano.texi, doc/man/nanorc.5: Typo fix.
+  * src/global.c (add_to_sclist): Remove the now unused and unneeded
+    addition ability from this builder function of the shortcut list.
+  * src/global.c (strtokeytype): Move this to a better place.
+  * src/global.c (first_sc_for): Move this too to a better place.
+  * src/prompt.c (do_yesno_prompt): Use the new and more direct
+    func_from_key() wrapper instead of get_shortcut().
+  * src/text.c (do_linter): Likewise.
+  * src/files.c (do_insertfile, do_writeout): Likewise.
+  * src/files.c (do_insertfile): Adjust some indentation.
+  * src/prompt.c (do_statusbar_input), src/browser.c (do_browser):
+    Reorder a few things, and adjust some whitespace.
+  * doc/man/nano.1, doc/man/rnano.1: Separate short and long option
+    by a comma instead of putting the long one between parentheses.
+    And showing the required quotes around the argument of -Q.
+  * doc/texinfo/nano.texi: Standardize the formatting of command-line
+    options -- each one separately. Also add some more markup.
+  * doc/man/nano.1, doc/man/rnano.1: Tweak the formatting a bit so
+    that po4a will create a nicer POT file.
+  * doc/man/nanorc.5: Improve some of the wordings and formatting.
+  * doc/syntax/nanorc.nanorc: Remove a mistaken OR which causes a
+    'Bad regex, empty (sub)expression' error on some systems.
+  * doc/texinfo/nano.texi: Improve some wordings and formatting.
+  * src/text.c (do_justify): Replace the old get_shortcut() wrapper
+    with the new func_from_key().
+  * doc/syntax/{perl,python,ruby,sh}.nanorc: Recognize also header
+    lines of the form "#!/usr/bin/env thing" besides "#!/bin/thing".
+  * doc/syntax/spec.nanorc: Colorize %pretrans and %posttrans fully.
+  * src/files.c (do_lockfile): Gettextize the "File being edited"
+    prompt, and improve its wording.
+  * src/winio.c (do_credits): Remove the names of past translators
+    from the Easter-egg scroll.
+  * THANKS: Add a missing historical translator name.
+  * src/winio.c (do_credits): Add Mark to the scroll, for all his
+    undo work, colouring nano's interface, and other patches.
+  * New formatter code to support syntaxes like
+    go which have tools to automatically lint and reformat the text
+    for you (gofmt), which is lovely. rcfile option formatter,
+    function text.c:do_formatter() and some other calls.
+  * src/files.c (open_buffer): Check here for locking and properly
+    handle choosing to not open a file when locked instead of in
+    open_file().
+  * src/winio.c (do_credits): Add a general entry for all translators.
+  * src/files.c (write_lockfile): Avoid writing uninitialized bytes
+    to the lock file -- a simple null_at() would not initialize the
+    buffer.
+  * src/files.c (do_lockfile): Make sure that 'lockprog' and
+    'lockuser' are terminated -- strncpy() does not guarantee that
+    on its own.
+  * src/files.c (do_lockfile): Avoid printing a wrong PID on the
+    status bar due to treating serialized PID bytes as signed
+    integers.
+  * src/files.c (write_lockfile): Do not trim the nano version
+    number -- snprintf() counts the trailing zero into the size limit.
+  * src/cut.c (do_cut_text): Make sure to set modified even when
+    using --enable-tiny.
+  * src/file.c (do_lockfile): Also show the name of the affected file
+    when finding a lock file, for when many files are opened at once.
+  * src/file.c (do_lockfile): The user does the editing, not the editor.
+  * doc/syntax/sh.nanorc: Recognize also dash, openrc and runscript.
+  * README: Fix the explanation of how to subscribe to a mailing list.
+  * doc/syntax/{java,lua,python,ruby}.nanorc: Wrap some overlong lines.
+  * src/rcfile.c (parse_binding): Add an exception for do_toggle() as
+    rebinding toggles broke with r5022. (Fixed in r5134.)
+  * doc/man/nanorc.5, doc/texinfo/nano.texi: Add a note about the
+    inherent imperfection of using regular expressions for syntax
+    highlighting.
+  * doc/man/nanorc.5: Improve the indentation of some lists.
+  * doc/man/nanorc.5, doc/texinfo/nano.texi: Remove the mistaken
+    square brackets around the arguments of "header" and "magic" --
+    those arguments are not optional. Also add "formatter" to the
+    texinfo document, and slightly improve its punctuation.
+  * src/proto.h, src/nano.c: Fix compilation with --enable-tiny plus
+    --enable-nanorc.
+  * src/rcfile.c (parse_binding): Fix the rebinding of toggles.
+  * doc/man/{nano.1,rnano.1,nanorc.5}, doc/texinfo/nano.texi: Update
+    years and version numbers in the docs in anticipation of a release.
+  * src/nano.c (version): Drop compile time from version information
+    to enable a reproducible build.
+  * src/nano.c (renumber): Get out if there is nothing to renumber,
+    to prevent do_undo() from falling over trying to renumber emptiness.
+  * src/text.c (do_formatter): Fix a message plus a few comments.
+  * src/text.c (do_alt_speller): Do not set the modified flag when
+    an external spell checker didn't make any changes.
+  * src/nano.c (finish_stdin_pager, cancel_stdin_pager, stdin_pager):
+    Normalize the whitespace, remove an old comment, and place another
+    one better.
+  * src/text.c (do_undo): Make a message equal to another one. It
+    was mistakenly changed in r4950. (This is translation-neutral.)
+  * src/global.c (shortcut_init): Keep related items together in the
+    ^G help screen.
+  * src/text.c (do_alt_speller): Restore the positions of the mark
+    and the cursor in a better way: to the columns where they were.
+  * src/text.c (do_alt_speller): Remove some leftovers.
+  * src/search.c: Place some comments better and unwrap some lines.
+  * src/chars.c (move_mbleft): Start looking for a multibyte char
+    not at the start of the string, but only as far back as such a
+    char can possibly be. Change suggested by Mark Majeres.
+  *  src/search.c (findnextstr): Step backward or forward not simply
+    one byte but one character (possibly multibyte).
+  * src/winio.c (edit_redraw): Do not center the current line when
+    smooth scrolling is used.
+- Do less manually in spec.
+
+-------------------------------------------------------------------
+Tue Sep 16 18:24:20 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 2.3.6:
+  * Fix for installing internationalization files.
+  * Documentation (in particular man page) fixes.
+  * Few touch ups to syntax highlighting definitions.
+  From version 2.3.5:
+  * Many visible and under-the-hood fixes for components such as file locking,
+    more fixes to the undo system, and you no longer have to explicitly ask
+    nano to have undo/redo support as it now defaults to being enabled.
+  * Better handling of --tempfile mode.
+  * Better handling of command line arguments when also attempting to specify
+    +<line number>.
+  From version 2.3.4:
+  * Small number of fixes, but in particular allows nano to compile on non-UTF8
+    curses implementations (i.e. libncursesw).
+  * Small fixes to the undo implementation.
+  * Small fixes to the default syntax config.
+  From version 2.3.3:
+  * Many improvements to the core system, including substantial improvements to
+    the undo/redo code, UTF-8 handling, the configure script, and display of
+    shortcuts on very wide terminals.
+  * Ability to read named pipes (--noread), as well as linter support (see the
+    nanorc man page for details).
+  * Much improved syntax highlighting code, and configurations for JSON,
+    texinfo, Go, and a default syntax for catch all highlighting.
+  * Ability to set the color of the title bar, status bar, and shortcut keys
+    (e.g. "^X") and their descriptions (see the nanorc man page for details).
+  * Lots of other fixes.
+- Added new build requirements groff-full, makeinfo and pkg-config.
+
+-------------------------------------------------------------------
+Sat Mar 23 23:05:28 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 2.3.2:
+  * vim-style file locking (though not backup/restore), useful when using nano
+    in a multi-editor environment.
+  * Additional support for word boundary checking when cross compiling.
+  * Fixes for trying to go to an invalid line number.
+  * Documentation tweaks.
+
+-------------------------------------------------------------------
+Wed May 11 17:21:21 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.3.1:
+  * Some fixes for the new libmagic code.
+  * Fix for improper character counts when using auto-indent.
+  * New syntax highlighting definitions for RPM spec and lua files.
+- Spec file updates:
+  * Simplified License: to GPLv3+ which is the main license.
+- Removed nano-no-build-date.patch and added a fix inside the spec file.
+
+-------------------------------------------------------------------
+Sun Feb 27 13:37:00 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.3.0:
+  * libmagic support for syntax highlighting has been added on top of the
+    existing file extension and header support already available.
+  * Cursor position can be saved between editing sessions with the -P or
+    --poslog command line flags, or via "set poslog" in your .nanorc.
+  * Also included are some fixes for compilation with g++, and better handling
+    of issues writing the backup file, which should reduce the need for the
+   'set allow_insecure_backup" nanorc option.
+- Spec file updates:
+  * More changes based on rpmdevtools templates and spec-cleaner run.
+  * Changed License: to GPLv3+ and (GFDL or GPLv3+).
+  * Added description for the patch based on openSUSE Patches Guidelines.
+  * Updates in Buildrequires: and Requires: sections.
+  * Added Recommends: for the lang package.
+  * Updated Authors: data.
+  * Updates in %install section. Manually install the doc files in order to
+    easily split them between the main and lang package.
+  * Removed %check section (the package doesn't implement "make check").
+  * Use %preun instead of %postun for "install_info".
+
+-------------------------------------------------------------------
+Sat Jan  1 15:04:22 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.2.6
+  * This is just a small release to update a bug where restricted mode was not
+    particularly restricted since key bindings were introduced.
+- Spec file changes after spec-cleaner run.
+
+-------------------------------------------------------------------
+Tue Aug 31 03:24:22 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Update to version 2.2.5
+   * This release includes slightly less restrictive checkng
+     when writing files in strange environments 
+   * Also included are some syntax highlighting updated
+- Do not provide build dates in binaries 
+
+-------------------------------------------------------------------
+Thu Apr 15 22:19:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.2.4:
+  * security fixes due to an assessment of nano's vulnerability to
+    symlink attacks on open files; the CVEs fixed with this release
+    are CVE-2010-1160 and CVE-2010-1161
+  * fixes for various crash modes when using the spell checker on
+    new files in multibuffer mode
+  * fix for the 'file was modified' message when saving to a new
+    filename
+  * fixes to page up/down due to the soft wrapping code
+  * new syntax higlighting definition for cmake-related files
+
+- changes from 2.2.3:
+  * fix for paging up/down with smooth scrolling causing the cursor
+    position not being preserved due to a bug in 2.2.2
+
+-------------------------------------------------------------------
+Sun Jan 24 14:52:35 UTC 2010 - bitshuffler@opensuse.org
+
+- Updated to 2.2.2
+- Removed generic INSTALL file
+- Split of -lang subpackage
+
+-------------------------------------------------------------------
+Tue Dec  1 19:39:53 UTC 2009 - crrodriguez@opensuse.org
+
+- update to nano 2.2.0 (stable release) 
+
+-------------------------------------------------------------------
+Mon Nov 23 00:33:10 UTC 2009 - crrodriguez@novell.com
+
+- update to version 2.1.99pre2 
+
+-------------------------------------------------------------------
+Sun Oct 11 20:07:34 UTC 2009 - crrodriguez@opensuse.org
+
+- --enable-debug for a while..  
+
+-------------------------------------------------------------------
+Wed Sep 30 14:24:20 UTC 2009 - crrodriguez@opensuse.org
+
+- correct voidreturn patch 
+
+-------------------------------------------------------------------
+Tue Sep 29 15:07:11 CEST 2009 - crrodriguez@suse.de
+
+- cleanup spec file a bit 
+- fix voidreturn
+
+-------------------------------------------------------------------
+Tue Sep 22 00:28:45 CEST 2009 - crrodriguez@suse.de
+
+- update to version 2.1.11
+- tag localized man pages correctly 
+
+-------------------------------------------------------------------
+Sat Sep  5 20:43:21 CEST 2009 - crrodriguez@suse.de
+
+- update to version 2.1.10 see NEWS for details 
+
+-------------------------------------------------------------------
+Wed Feb 18 16:12:19 CET 2009 - crrodriguez@suse.de
+
+- update to version 2.1.9 see NEWS for details 
+ * Issues with the new sped-up syntax highlighting code were
+   corrected. Other fixes include configure-time detection of groff HTML
+   support before attempting to generate the HTML version of man pages. Using
+   ~ or ~username syntax in .nanorc should now work again. Also, nano will now
+   only ask for one acknowledgment of errors it encounters when parsing nanorc
+   files, and a new -q (--quiet) flag will silence these messages altogether.
+
+-------------------------------------------------------------------
+Mon Jan  5 21:45:36 CET 2009 - crrodriguez@suse.de
+
+- update to versison 2.1.7, see NEWS for details 
+
+-------------------------------------------------------------------
+Wed Sep  3 15:45:39 CEST 2008 - crrodriguez@suse.de
+
+- upgrade to nano 2.1.5, change list too long see ChangeLog
+  for more details 
+
+-------------------------------------------------------------------
+Tue Aug 26 22:23:00 CEST 2008 - cthiel@suse.de
+
+- update to version 2.0.8
+  * GNU nano 2.0.8 is what she said.  This release contains fixes for
+    several long standing issues, including: crashing when starting with too
+    small a window size, compilation fixes for AIX curses, crashes in the
+    help menu using some locales, and a fun issue where nano mistalenly
+    reports a successful file write on filesystems which are almost
+    completely full.  Have at it.
+
+-------------------------------------------------------------------
+Mon May  5 02:01:05 CEST 2008 - crrodriguez@suse.de
+
+- fix for Feature No 300498 , use RPM_OPT_FLAGS everywhere. 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:48:59 CEST 2008 - cthiel@suse.de
+
+- adapt package to use latests ncursesw
+
+-------------------------------------------------------------------
+Sun Feb 24 05:57:43 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro
+- add missing calls to install_info_* macros 
+
+-------------------------------------------------------------------
+Fri Dec 21 12:02:41 CET 2007 - cthiel@suse.de
+
+* update to version 2.0.7
+  * nano 2.0.7 keeps its balance.  This release fixes several bugs, among
+    others: a segfault and several cursor positioning problems when
+    uncutting text or inserting files into the current buffer; a problem
+    where the total number of characters would be miscalculated when
+    replacing single-byte characters with multibyte ones; several minor
+    issues with the statusbar prompt involving text display and mouse
+    support; and several oddities when tab-completing in the middle of a
+    line.  It also improves autodetection of DOS and Mac format files,
+    properly supports the mouse wheel when using a version of ncurses built
+    with the --enable-ext-mouse option, fixes some problems under NetBSD
+    curses, adds a lot of translation updates, and adds more minor
+    documentation updates.  Slang curses emulation support has also been
+    changed to turn off all the options that --enable-tiny does, as it's
+    hopelessly broken otherwise.  Finally, nano is now licensed under the
+    GNU GPL version 3 or later, and its documentation is now dual-licensed
+    under the GNU GPL version 3 or later and the GNU FDL version 1.2 or
+    later.  Have fun.
+
+-------------------------------------------------------------------
+Thu Dec  6 16:47:35 CET 2007 - cthiel@suse.de
+
+- added nano-2.0.6.patch to fix error: call to '__open_missing_mode'
+  declared with attribute error: open with O_CREAT in second argument needs
+  3 arguments
+
+-------------------------------------------------------------------
+Thu May  3 13:30:59 CEST 2007 - cthiel@suse.de
+
+- update to version 2.0.6
+  * GNU nano 2.0.6 "that was quick" is released.  This release fixes a
+    potential segfault after justifying text marked from the bottom up.  It
+    also adds one more minor documentation update.  Enjoy.
+
+-------------------------------------------------------------------
+Mon Apr 23 00:52:22 CEST 2007 - cthiel@suse.de
+
+- update to version 2.0.5
+  * GNU nano 2.0.5 braces for impact.  Among other things, this release
+    fixes various problems (including a segfault) when trying to open or
+    save a file in a directory beginning with "~" that isn't a home
+    directory; fixes a problem where a file with no name could be saved over
+    an existing filename with no warning about overwriting it; properly
+    disallows opening directories or device files from "include" commands in
+    nanorc files; no longer displays a misleading prompt when trying to save
+    in restricted mode with the mark on; and properly supports the Cancel
+    and Shift-Cancel keys.  It also improves several color syntaxes to
+    highlight trailing whitespace, just as the Java syntax does, and adds
+    yet more minor documentation updates.  Have fun.
+
+-------------------------------------------------------------------
+Sat Apr  7 13:40:56 CEST 2007 - cthiel@suse.de
+
+- update to version 2.0.4
+  * GNU nano 2.0.4 heralds the dawn.  This release contains proper support
+    for the Ctrl-[arrow key], Shift-[arrow key], and F13-F16 keys under
+    Xfce's Terminal.  It also adds still more minor documentation updates. 
+    Enjoy.
+
+-------------------------------------------------------------------
+Thu Mar 29 14:22:15 CEST 2007 - cthiel@suse.de
+
+- fixed build by adding BuildRequires: ncurses-devel
+
+-------------------------------------------------------------------
+Mon Jan 29 15:46:28 CET 2007 - cthiel@suse.de
+
+- update to version 2.0.3
+  * GNU nano 2.0.3 flows toward its ending.  This release contains several
+    minor optimizations to make the executable a little smaller under some
+    circumstances, some translation updates, improvements to the color
+    syntax for Python, and still more minor documentation updates.
+
+-------------------------------------------------------------------
+Thu Dec 21 12:27:20 CET 2006 - cthiel@suse.de
+
+- update to version 2.0.2
+  * GNU nano 2.0.2 forges ahead.  This release fixes a segfault when trying
+    to save in a nonexistent directory; fixes handling of strings containing
+    nulls at the "Write File", "Insert File", "Execute Command", and "Go to
+    Directory" prompts; fixes several minor memory leaks; fixes two more
+    potential compilation warnings; adds a few translation updates; and adds
+    a few more minor documentation updates.  Enjoy.
+
+-------------------------------------------------------------------
+Mon Nov 20 17:06:11 CET 2006 - cthiel@suse.de
+
+- update to version 2.0.1
+  * GNU nano 2.0.1 emerges from its cocoon.  This release contains several
+    bugfixes: saving one file over another will now always warn about
+    overwriting it, overwriting a file is no longer possible when saving a
+    new file in restricted mode, and zero-length Unicode characters are now
+    highlighted properly when nano is built without regular expression
+    support.  It also adds several minor documentation updates.  Have fun
+    with it.
+
+-------------------------------------------------------------------
+Sun Nov 12 15:30:30 CET 2006 - cthiel@suse.de
+
+- update to version 2.0.0
+  * GNU nano 2.0.0 does its little dance.  This release adds documentation
+    updates and a few cosmetic tweaks.  For those who haven't been following
+    nano 1.3 development, there are a ton of new features, including support
+    for UTF-8, moving to a specified line and column instead of just a line,
+    improved color syntax highlighting, inserting previously untypeable
+    characters using "Verbatim Input" mode, and copying text into the
+    cutbuffer without cutting it.  There are also fixes for some
+    long-standing bugs, such as the "NumLock glitch" from nano 1.2.x, and
+    the inability to unjustify text after resizing.  Finally, there are also
+    a ton of translation updates and new translations, as well as new color
+    syntaxes.  See the UPGRADE file for more information, and enjoy the new
+    stable release.
+
+-------------------------------------------------------------------
+Mon Jun 26 07:46:17 CEST 2006 - cthiel@suse.de
+
+- update to version 1.3.12 
+  * This release contains the last new features that nano will have before
+    2.0: copying text into the cutbuffer without cutting it, indenting lines
+    of marked text with a single keystroke, reworked help text that should
+    be easier for new users, searching for filenames in the file browser,
+    the ability to include color regexes in files separate from nanorc
+    files, etc.  It also contains many bugfixes.  Text can now be
+    unjustified after justifying it and resizing the window; the screen is
+    now cleared when suspending; the "default" color syntax is now handled
+    properly at all times; lines of text containing tabs are now wrapped at
+    the right place; double-column characters are now properly displayed
+    when past the right edge of the screen; invalid multi-line color regexes
+    are now ignored; and so on.
+
+-------------------------------------------------------------------
+Thu May 25 14:07:25 CEST 2006 - cthiel@suse.de
+
+- update to version 1.3.11
+  * This release focuses mostly on bugfixes, which include better handling
+    of the cursor at the statusbar prompt, support for certain combinations
+    of Shift and keyboard keys in both normal and
+    --rebind-keypad mode, a fix for a minor display problem after some
+    searches, a real fix for a long-standing segfault when displaying overly
+    long lines, and a real fix for nano's not hanging up properly in xterm
+    under certain circumstances.  There are also several new features, such
+    as the ability to set the characters used as brackets when searching for
+    matching brackets, and tab completion of directories at the "Go To
+    Directory" prompt.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Dec 24 13:49:33 CET 2005 - cthiel@suse.de
+
+- update to version 1.3.10
+
+-------------------------------------------------------------------
+Tue Oct 25 10:26:53 CEST 2005 - cthiel@suse.de
+
+- update to version 1.3.9
+
+-------------------------------------------------------------------
+Tue Sep 13 10:11:35 CEST 2005 - cthiel@suse.de
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Jul  1 11:21:50 CEST 2005 - cthiel@suse.de
+
+- update to version 1.3.8
+
+-------------------------------------------------------------------
+Wed Jun 29 13:40:45 CEST 2005 - cthiel@suse.de
+
+- update to version 1.3.7
+
+-------------------------------------------------------------------
+Mon Jun  6 14:27:15 CEST 2005 - cthiel@suse.de
+
+- initial package (1.2.5)
+

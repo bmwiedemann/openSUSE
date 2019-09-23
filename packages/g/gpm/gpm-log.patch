@@ -1,0 +1,16 @@
+Index: src/report.c
+===================================================================
+--- src/report.c.orig	2010-09-08 17:04:41.743044084 +0200
++++ src/report.c	2010-09-08 17:08:22.257855674 +0200
+@@ -92,8 +92,9 @@ void gpm_report(int line, char *file, in
+          switch(stat) {
+             case GPM_STAT_INFO:
+ #ifdef HAVE_VSYSLOG
+-               syslog(LOG_INFO | LOG_USER, GPM_STRING_INFO);
+-               vsyslog(LOG_INFO | LOG_USER, text, ap2);
++               // gpm spams /var/log/messages (bnc#307209)
++               // syslog(LOG_INFO | LOG_USER, GPM_STRING_INFO);
++               // vsyslog(LOG_INFO | LOG_USER, text, ap2);
+ #else
+                fprintf(stderr,GPM_STRING_INFO);
+                vfprintf(stderr,text,ap);

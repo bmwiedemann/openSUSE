@@ -1,0 +1,56 @@
+---
+ src/main.c |   15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+--- src/main.c
++++ src/main.c	2007-10-09 16:35:28.159452385 +0000
+@@ -331,6 +331,7 @@ unsigned int lines_per_page = (unsigned
+  * Send mail notification to user after print job has been completed.
+  */
+ int mail = 0;
++char *mailto;
+ 
+ /*
+  * -M, --media
+@@ -852,7 +853,7 @@ static struct option long_options[] =
+   {"no-page-prefeed",		no_argument,		0, 'K'},
+   {"lineprinter",		no_argument,		0, 'l'},
+   {"lines-per-page",		required_argument,	0, 'L'},
+-  {"mail",			no_argument,		0, 'm'},
++  {"mail",			optional_argument,	0, 'm'},
+   {"media",			required_argument,	0, 'M'},
+   {"copies",			required_argument,	0, 'n'},
+   {"newline",			required_argument,	0, 'N'},
+@@ -1851,7 +1852,11 @@ open_output_file ()
+       /* Format spooler options. */
+       spooler_options[0] = '\0';
+       if (mail)
+-	strcat (spooler_options, "-m ");
++	{
++	  strcat (spooler_options, "-m ");
++	  strcat (spooler_options, mailto);
++	  strcat (spooler_options, " ");
++	}
+       if (no_job_header)
+ 	{
+ 	  strcat (spooler_options, no_job_header_switch);
+@@ -2014,7 +2019,7 @@ handle_options (int argc, char *argv[])
+       int i;
+ 
+       c = getopt_long (argc, argv,
+-		       "#:123456789a:A:b:BcC::d:D:e::E::f:F:gGhH::i:I:jJ:kKlL:mM:n:N:o:Op:P:qrRs:S:t:T:u::U:vVw:W:X:zZ",
++		       "#:123456789a:A:b:BcC::d:D:e::E::f:F:gGhH::i:I:jJ:kKlL:m::M:n:N:o:Op:P:qrRs:S:t:T:u::U:vVw:W:X:zZ",
+ 		       long_options, &option_index);
+ 
+       if (c == -1)
+@@ -2215,6 +2220,10 @@ handle_options (int argc, char *argv[])
+ 
+ 	case 'm':		/* send mail upon completion */
+ 	  mail = 1;
++	  if(optarg)
++	    mailto = (optarg);
++	  else
++	    mailto = (*passwd).pw_name;
+ 	  break;
+ 
+ 	case 'M':		/* select output media */

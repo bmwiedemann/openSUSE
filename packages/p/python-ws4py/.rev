@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c75cc462873eb6776199c404476d672</srcmd5>
+    <version>0.4.2</version>
+    <time>1505139507</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-ws4py</comment>
+    <requestid>522410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12c9dee91fe3aae12013ee077bb49f01</srcmd5>
+    <version>0.4.2</version>
+    <time>1544726718</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654073</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2301ab2db15c4742f01fd186c70f1e04</srcmd5>
+    <version>0.5.1</version>
+    <time>1555053347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.1
+  * fixed runtime error: Set changed size during iteration
+  * on secure, only pass the requested number of bytes to the parsers
+  * Change threaded client test to test ssl socket
+  * exclude certain headers when requested
+  * Disable build for Python 3.4
+- launch tests using multibuild</comment>
+    <requestid>693259</requestid>
+  </revision>
+</revisionlist>

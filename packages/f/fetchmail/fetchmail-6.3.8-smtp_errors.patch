@@ -1,0 +1,41 @@
+# Patches fetchmail's behaviour for SMTP servers which: 
+# 1) insist on using TLS - we do not want messages which cannot
+# be sent due to server negotiation problems lost - rather we
+# keep them on the mailserver. As users should realize rather
+# quickly that something went wrong, the overhead shouldn't
+# be considered that important.
+# 2) use the 501 error code to mark spam - in such a case
+# the 'antispam' option should be used
+Index: fetchmail-6.3.10-beta1/sink.c
+===================================================================
+--- fetchmail-6.3.10-beta1.orig/sink.c	2009-05-25 17:55:07.000000000 +0200
++++ fetchmail-6.3.10-beta1/sink.c	2009-06-01 14:37:12.000000000 +0200
+@@ -553,6 +553,19 @@ static int handle_smtp_report(struct que
+ 	free(responses[0]);
+ 	return(PS_TRANSIENT);
+ 
++	case 501: /* Syntax error in parameters or arguments */
++	/*
++	 * Some SMTP servers use this error code to refuse spam, however
++	 * as we don't want to delete message if e.g. the address is (possibly 
++	 * by mistake) malformed, user has to use the 'antispam' option to
++	 * treat this as spam symptom
++	 */
++	free(responses[0]);
++	if (outlevel > O_SILENT)
++		report_complete(stdout, 
++				GT_(" SMTP 501 error - if the server uses this code to report spam, include '501' in the 'antispam' option .\n"));
++	return(PS_TRANSIENT);
++
+     default:
+ 	/* bounce non-transient errors back to the sender */
+ 	if (smtperr >= 500 && smtperr <= 599)
+@@ -622,7 +635,7 @@ static int handle_smtp_report_without_bo
+ #endif /* __DONT_FEED_THE_SPAMMERS__ */
+ 	return(PS_REFUSED);
+ 
+-    default:
++	default:
+ 	/* bounce non-transient errors back to the sender */
+ 	if (smtperr >= 500 && smtperr <= 599)
+ 	    return(PS_SUCCESS);

@@ -1,0 +1,221 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b113e2d6b0ec2a132db98e328aef03e</srcmd5>
+    <version>2.0.14</version>
+    <time>1166643188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a2aec0a9f6d70ee9636224260d5a91c</srcmd5>
+    <version>2.0.15</version>
+    <time>1167220024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3f5f29fe75010c4878ced36bce90d184</srcmd5>
+    <version>2.0.16</version>
+    <time>1170786744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="80">
+    <srcmd5>7fa8efdc2ec188f7a405bac408832189</srcmd5>
+    <version>2.0.16</version>
+    <time>1195464418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7facffdb4ba157b1285b3e7ca19798bb</srcmd5>
+    <version>2.0.17</version>
+    <time>1214433023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="49">
+    <srcmd5>ab3534c5d3a63d1c1acf01a39d686132</srcmd5>
+    <version>2.0.17</version>
+    <time>1235954143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f6c801f87fb4e0e1a9a0f64ec5eda97d</srcmd5>
+    <version>2.0.19</version>
+    <time>1242777983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c14c8c980aaaf86bc2a403c3dc111b48</srcmd5>
+    <version>2.0.19</version>
+    <time>1243550179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d645587730f32579dfb1fe33d924943c</srcmd5>
+    <version>2.0.19</version>
+    <time>1254963188</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_gfx based on submit request 22000 from user prusnak
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d645587730f32579dfb1fe33d924943c</srcmd5>
+    <version>2.0.19</version>
+    <time>1254963188</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_gfx based on submit request 22000 from user prusnak
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>01becb499af73ef5a5efaf6f721a9ef4</srcmd5>
+    <version>2.0.19</version>
+    <time>1264783599</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_gfx based on submit request 30806 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>80d60d9786ab98a4cf171f5a68f5633e</srcmd5>
+    <version>2.0.19</version>
+    <time>1268922811</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>80d60d9786ab98a4cf171f5a68f5633e</srcmd5>
+    <version>2.0.19</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>80d60d9786ab98a4cf171f5a68f5633e</srcmd5>
+    <version>2.0.19</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>80d60d9786ab98a4cf171f5a68f5633e</srcmd5>
+    <version>2.0.19</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>44b3c69c7e47d64352b7394833680b4c</srcmd5>
+    <version>2.0.22</version>
+    <time>1300096469</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63965 from user coolo
+</comment>
+    <requestid>63965</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3f51766d92606491ad524835dccb4918</srcmd5>
+    <version>2.0.22</version>
+    <time>1300096478</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63965
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>0433dd5d9d1b9f67ea53dc834018eddc</srcmd5>
+    <version>2.0.22</version>
+    <time>1316438944</time>
+    <user>lrupp</user>
+    <comment>- Add libSDL_gfx-devel to baselibs
+- Remove redundant tags/sections
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83181</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>0433dd5d9d1b9f67ea53dc834018eddc</srcmd5>
+    <version>2.0.22</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>b48840efa1c73e5fc773db62785a7111</srcmd5>
+    <version>2.0.22</version>
+    <time>1323194570</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a42832ca47e08de6eca18cbd7e0b26e2</srcmd5>
+    <version>2.0.23</version>
+    <time>1331232344</time>
+    <user>coolo</user>
+    <comment>- update to version 2.0.23
+  * Updated sources to resolve some splint (static code analysis)
+    issues
+  * Updates for OpenSDK (WinCE6/ARM) build target (patch contributed
+    itsnotabigtruck)
+  * Added OSX Xcode3+ template files to Other Builds collection
+    (contributed by Vasyl)
+  * Added various fixes and improvements contributed by folks on 
+    sourceforge (thanks contributors).
+  * Switched library and test code to zlib license.
+- fix self obsoletion (forwarded request 106533 from jreidinger)</comment>
+    <requestid>106667</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>a42832ca47e08de6eca18cbd7e0b26e2</srcmd5>
+    <version>2.0.23</version>
+    <time>1340183156</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>a42832ca47e08de6eca18cbd7e0b26e2</srcmd5>
+    <version>2.0.23</version>
+    <time>1359108627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>a42832ca47e08de6eca18cbd7e0b26e2</srcmd5>
+    <version>2.0.23</version>
+    <time>1379661926</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eb6972247640d438bdc36d9834b93af1</srcmd5>
+    <version>2.0.25</version>
+    <time>1384874948</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>207534</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>eb6972247640d438bdc36d9834b93af1</srcmd5>
+    <version>2.0.25</version>
+    <time>1409300447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>db64387201fdc8cc5e38b2aea3a5c145</srcmd5>
+    <version>2.0.25</version>
+    <time>1419896961</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266436</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>f347c626f2bf77b75ae543932ea23a42</srcmd5>
+    <version>2.0.25</version>
+    <time>1420754733</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove redundant requires</comment>
+    <requestid>280322</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8cc468894e0d00f969fa78b0843967d9</srcmd5>
+    <version>2.0.26</version>
+    <time>1535370437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630061</requestid>
+  </revision>
+</revisionlist>

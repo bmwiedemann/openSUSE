@@ -1,0 +1,13 @@
+[Unit]
+Description=isatapd creates and maintains an ISATAP client tunnel (RFC 5214) in Linux
+Documentation=man:isatapd(8)
+
+[Service]
+Environment="MTU=1280"
+EnvironmentFile=-/etc/sysconfig/isatapd
+ExecStart=/usr/sbin/isatapd --mtu $MTU $DAEMON_OPTS $ISATAP_ROUTERS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Mon Sep  9 13:04:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Build using -ffat-lto-objects
+- Run spec-cleaner
+- Remove obsolete conditions and unneeded build requirements
+- Fix the -devel package group
+
+-------------------------------------------------------------------
+Sat Dec 26 12:20:13 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+- Tiny cleanup with spec-clener
+
+-------------------------------------------------------------------
+Sun May 17 20:09:11 UTC 2015 - meissner@suse.com
+
+- info deletion must be in %preun
+
+-------------------------------------------------------------------
+Fri Nov 21 02:48:54 UTC 2014 - malcolmlewis@opensuse.org
+
+- Reintroduce devel package, header file needed for development of
+  other packages, eg glabels.
+- Add barcode-fix-renamed-include.patch: Fix renamed gettext
+  include header reference.
+- Spec and changes file tidy up.
+
+-------------------------------------------------------------------
+Sat Jan  4 16:01:20 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.99:
+  + Support for i18n.
+  + Change license to GPLv3 or later version.
+  + SVG support.
+  + Added support for PCL output.
+- Removed patchs fixed by upstream:
+  + barcode-0.98.patch.
+  + barcode-0.98-bookland.patch.
+  + barcode-0.98-gcc_warning.patch.
+  + barcode-0.98-memoryleak.patch.
+  + barcode-0.98-nohtmltoinfo.patch.
+- Adapt barcode-0.98-info.patch patch to upstream changes.
+- Change license tag to GPL-3.0+ because of license change by
+  upstream.
+- Use %configure instead of pass options "by-hand".
+- Remove devel subpackage; it was already useless and upstream
+  doesn't provide development files anymore.
+- info file has to be provided with linked binary.
+- Upstream doesn't provide any manpage anymore.
+
+-------------------------------------------------------------------
+Tue Jul 24 09:42:15 UTC 2012 - werner@suse.de
+
+- Build requires texinfo as well as makeinfo.
+
+-------------------------------------------------------------------
+Tue Jul 10 08:58:22 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:57:38 UTC 2011 - coolo@suse.com
+
+- use original tar and apply previous patch.
+
+-------------------------------------------------------------------
+Thu Oct 15 15:42:08 CEST 2009 - marek.belisko@open-nandra.com
+
+- memory leak fixed (bnc#546020).
+
+-------------------------------------------------------------------
+Thu Sep 17 10:30:58 CEST 2009 - mseben@novell.com
+
+- added leak-fix.patch (bnc#537525).
+
+-------------------------------------------------------------------
+Fri Apr 11 15:30:26 CEST 2008 - lmichnovic@suse.cz
+
+- reenabled pdf creation, the ps2pdf is fixed now
+  (*nohtmltoinfo.patch)
+
+-------------------------------------------------------------------
+Tue Apr  8 15:00:02 CEST 2008 - lmichnovic@suse.cz
+
+- fixed executable perm of info page.
+- not removing RPM_BUILD_ROOT in %install section.
+
+-------------------------------------------------------------------
+Tue Apr  8 14:47:02 CEST 2008 - lmichnovic@suse.cz
+
+- disabled generating html which was broken for a long time anyway
+  and disabled pdf creation because broken ps2pdf
+  (*nohtmltoinfo.patch).
+
+-------------------------------------------------------------------
+Fri Apr 20 14:34:15 CEST 2007 - aj@suse.de
+
+- Use texlive.
+- Cleanup build requires.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Sep 21 12:31:52 CEST 2005 - lmichnovic@suse.cz
+
+- fixed gcc warning.
+
+-------------------------------------------------------------------
+Fri Dec 10 01:57:16 CET 2004 - ro@suse.de
+
+- use ghostscript-x11-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Sun Jan 11 12:46:15 CET 2004 - adrian@suse.de
+
+- build as user.
+
+-------------------------------------------------------------------
+Thu Jun 19 22:48:36 CEST 2003 - ltinkl@suse.cz
+
+- updated sources to 0.98.
+- install bookland.py script.
+- correctly install info pages.
+
+-------------------------------------------------------------------
+Mon Apr  8 12:01:54 CEST 2002 - pmladek@suse.cz
+
+- used macro %{_libdir} to fix for lib64.
+- cleaned up spec file.
+
+-------------------------------------------------------------------
+Mon Jan  7 10:35:46 CET 2002 - rvasice@suse.cz
+
+- update to version 0.97.
+
+-------------------------------------------------------------------
+Tue Jun  5 12:40:31 CEST 2001 - rvasice@suse.cz
+
+- initial package version 0.96.
+- fixed paths in Makefile.in, added DESTDIR.

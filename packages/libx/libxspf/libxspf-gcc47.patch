@@ -1,0 +1,12 @@
+Index: libxspf-1.2.0/examples/read/read.cpp
+===================================================================
+--- libxspf-1.2.0.orig/examples/read/read.cpp
++++ libxspf-1.2.0/examples/read/read.cpp
+@@ -43,6 +43,7 @@
+ #include <cstdio>
+ #include <cstdlib> // MAX_PATH
+ #include <climits> // PATH_MAX
++#include <unistd.h>
+ 
+ 
+ #if defined(__WIN32__) || defined(WIN32)

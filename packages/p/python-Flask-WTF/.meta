@@ -1,0 +1,5 @@
+<package name="python-Flask-WTF" project="openSUSE:Factory">
+  <title>python-Flask-WTF</title>
+  <description>Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration.</description>
+  <devel project="devel:languages:python:flask" package="python-Flask-WTF"/>
+</package>

@@ -1,0 +1,211 @@
+-------------------------------------------------------------------
+Fri Mar  1 10:10:30 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Only translations was changed
+- Changelog from 0.14.0:
+  * Updated Translations
+  * Improved cmake scripting
+  * Moved translations from lxqt-l10n back to compton-conf
+
+-------------------------------------------------------------------
+Thu Jan 31 09:27:32 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Remove compton-conf-0.4.0-no-icon.patch:
+  compton-conf desktop file uses compton icon.
+  Adding it as BR so that checks detect the file makes this patch
+  obsolete.
+
+-------------------------------------------------------------------
+Tue May 22 14:14:39 UTC 2018 - mvetter@suse.com
+
+- Update to 0.4.0:
+  * Add checkbox for option xinerama-shadow-crop
+  * Add categories for Xfce and Gnome
+  * cmake: Use LXQtCompilerSettings
+  * Add RadioButtons for setting the rendering backend
+- Add compton-conf-0.4.0-no-icon.patch: remove icon beause of
+  warning
+
+-------------------------------------------------------------------
+Mon Oct 23 12:14:39 UTC 2017 - mvetter@suse.com
+
+- Update to 0.3.0:
+  * .github added to .gitattributes
+  * bump version to 0.3.0 and tools version to 0.4.0
+  * Added *lt.desktop
+  * Added Lithuanian language
+  * liblxqt don't make sense here
+  * Copied issue template
+  * Fixed typo
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * Added basic cli interface to compton-conf
+  * Added default CMAKE_BUILD_TYPE and proper version
+  * added *pl.desktop
+  * Included LXQtConfigVars in CMakeLists.txt
+  * Added subdirectory autostart (merged from lxqt-common)
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update Greek translation (el) Remove country variant from language code
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Portuguese update for .desktop files
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * Add compton to autostart (turned off by default).
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Bump year
+  * Added *da.desktop
+- Remove post and postun
+
+-------------------------------------------------------------------
+Thu Mar 16 11:09:10 UTC 2017 - mvetter@suse.com
+
+- Fix typo: Source1 should be asc file instead of another copy of
+  the tarball.
+
+-------------------------------------------------------------------
+Wed Mar 15 10:29:53 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.2.1:
+  * Created compton-conf_it.desktop, removed unused lines (#36)
+  * Create compton-conf_fr.desktop
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#34)
+
+-------------------------------------------------------------------
+Sat Sep 24 22:31:52 UTC 2016 - mvetter@suse.com
+
+- Update to 0.2.0:
+  * Bump release to 0.2.0 (#33)
+  * Set default opacity for active windows to 1
+  * Extend README.md
+  * Delete compton-conf_ru_RU.desktop
+  * build: Use external translations
+  * ts-files removal
+  *  bump years
+  * Work around grep 2.23 new behaviour
+  * compton-conf is LGPL only
+  * don't track $IDE settings
+  * Fix language tag
+  * Update translations
+  * Fix LICENSE file
+  * Fix mixed indents
+  * fixed Comment[ru_RU] -> Comment[hu]
+  * Correctly include the CMake modules in intree/superbuild mode
+  * Hungarian translation
+  * .desktop: icon change
+  * Make Qt5 default Change the option to USE_QT4, defaulting to No
+  * CMakeLists.txt: do not completely overwrite CMAKE_CXX_FLAGS
+  * Corrected language code (de_DE -> de) of german translation, marked translations as done.
+  * README.md: fix download URL
+  * Add Portuguese language to GUI
+  * Added german translation.
+  * i18n/i10n: Fixes mistakes in the documentation
+  * lxqt_translate_desktop: pass -h instead of --no-filename to grep which is compatible with Busybox
+  * Portuguese update fixed
+  * add Japanese translation
+  * lxqt_translate_desktop: Updates code to cope with the cmake-policy CMP0054
+  * Replace colon : with semicolon ; in README.md
+  * Adds .gitignore
+  * Add Russian translation
+  * Handles localization of .desktop files
+  * Updates translations
+  * Adds translations support
+  * Updates path to README.md
+  * Adds file-extension, screenshot & build instructios
+  * Add Qt5 support.
+- Add keyring
+- Delete compton-conf-0.1.0-fix_desktop_file.patch: use sed
+- Delete compton-conf-qt5-support.patch: not needed anymore
+
+-------------------------------------------------------------------
+Sun Jan 25 18:02:22 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to build for Fedora 
+
+-------------------------------------------------------------------
+Sun Oct 26 11:22:08 UTC 2014 - andrea@opensuse.org
+
+- ported to QT5 
+
+-------------------------------------------------------------------
+Tue May 13 14:31:55 UTC 2014 - andrea@opensuse.org
+
+- use pkgconfig buildrequires where possible 
+
+-------------------------------------------------------------------
+Sun May 11 15:00:00 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up, removed unused  buildrequires
+- merged fedora spec file using buildservice cross distro support
+
+-------------------------------------------------------------------
+Sun May 11 14:05:34 UTC 2014 - sfalken@opensuse.org
+
+- Changed BuildRequires: pkgconfig entries for libqt4 to single
+  Buildrequires: libqt4-devel at request of X11:lxde maintainers 
+
+-------------------------------------------------------------------
+Sat May 10 17:43:06 UTC 2014 - sfalken@opensuse.org
+
+- Ran spec-cleaner on spec-file. 
+
+-------------------------------------------------------------------
+Sat May 10 01:51:27 UTC 2014 - sfalken@opensuse.org
+
+- Removed CentOS specfile.  Base is too old to build, and I'm too lazy to fix it.
+  Del:  compton-conf-CentOS_CentOS-6.spec 
+
+-------------------------------------------------------------------
+Sat May 10 01:47:30 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for CentOS-6
+  Add:  compton-conf-CentOS_CentOS-6.spec 
+
+-------------------------------------------------------------------
+Fri May  9 21:16:08 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  compton-conf-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 20:34:20 UTC 2014 - sfalken@opensuse.org
+
+- Reintroduced desktop file patch
+  Add:  0001-fix_desktop_file.patch 
+
+-------------------------------------------------------------------
+Fri May  9 20:26:41 UTC 2014 - sfalken@opensuse.org
+
+- Removed desktop file patch (upstream fixes)
+  Del:  0001-fix_desktop_file.patch 
+
+-------------------------------------------------------------------
+Fri May  9 20:22:04 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  compton-conf-0.1.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Thu Apr 17 13:56:20 UTC 2014 - sfalken@opensuse.org
+
+- Removed explicit Requires: for libconfig and libqt
+  Updated:  0001-fix_desktop_file.patch 
+
+-------------------------------------------------------------------
+Fri Apr  4 04:01:34 UTC 2014 - sfalken@opensuse.org
+
+- Added patch to correct .desktop file
+  Add: 0001-fix_desktop_file.patch 
+
+-------------------------------------------------------------------
+Fri Apr  4 03:54:42 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload 
+  Add: _service
+  Add: compton-conf.spec
+  Add: compton-conf.changes

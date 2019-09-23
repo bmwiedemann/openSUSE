@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Apr 17 08:13:24 UTC 2015 - coolo@suse.com
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Cache-Cache/CHANGES
+
+  1.08 2015-01-22
+   - try to avoid some race conditions (thanks, Petr Písař)
+   - typo fixes (thanks, David Steinbrunner)
+
+-------------------------------------------------------------------
+Thu Sep 18 09:23:52 UTC 2014 - mlin@suse.com
+
+- update to version 1.07
+  * fix a bug where we checked @$ instead of $@ after eval
+
+-------------------------------------------------------------------
+Thu Mar 27 11:44:38 UTC 2014 - mlin@suse.com
+
+- update the license and polish the specfile
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:32 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:25 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Sep 15 13:16:58 UTC 2009 - anicka@suse.cz
+
+- Initial packaging of perl-Cache-Cache 1.06
+

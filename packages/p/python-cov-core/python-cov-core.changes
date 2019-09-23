@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:46:56 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Mar 31 14:57:23 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Fixed source URL
+
+-------------------------------------------------------------------
+Sat May  2 16:24:41 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.15.0: no upstream changelog
+- update project URL
+
+-------------------------------------------------------------------
+Wed Jul 30 07:27:46 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.13.0
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Mon Aug 12 10:16:32 UTC 2013 - speilicke@suse.com
+
+- Setuptools build requirement got lost
+
+-------------------------------------------------------------------
+Mon Aug 12 09:56:01 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

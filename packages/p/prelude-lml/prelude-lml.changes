@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Oct 04 07:00:00 UTC 2017 - thomas.andrejak@gmail.com
+
+- Update to 4.0.0
+- Rename source prelude-lml.run to prelude-lml-tmpfiles.conf 
+- Clean prelude-lml.service
+- Add patchs:
+  - prelude-lml-fix_check.patch: Fix make check
+  - prelude-lml-fix_etc_perms.patch: Fix Prelude LML dirs permissions
+
+-------------------------------------------------------------------
+Thu Mar 23 14:41:36 UTC 2017 - aj@ajaissle.de
+
+- Added %ghost /run/%{name}
+
+-------------------------------------------------------------------
+Fri Feb 10 00:33:55 UTC 2017 - thomas.andrejak@gmail.com
+
+- Update to 3.1.0 (Prelude 3.1.0 released on 14 Sept 2016)
+- Add missing /var/lib/prelude-lml dir
+- Remove unnecessary spool directory
+- Patch the configuration to be naturally OK with rsyslog
+  prelude-lml-conf_rsyslog.patch
+- Spec-Cleaner
+
+-------------------------------------------------------------------
+Thu Jan 26 21:35:45 UTC 2017 - jengelh@inai.de
+
+- Use SUSE RPM group names
+
+-------------------------------------------------------------------
+Thu Sep 15 10:25:42 UTC 2016 - thomas.andrejak@gmail.com
+
+- Update licence from GPL-2.0+ to GPL-3.0+ to include libmissing
+
+-------------------------------------------------------------------
+Sun Sep  4 21:57:53 UTC 2016 - thomas.andrejak@gmail.com
+
+Remove Selinux since it should be directly in Security:SELinux
+
+Clean usage of "-n %{name}-"
+
+-------------------------------------------------------------------
+Tue May  3 21:57:53 UTC 2016 - thomas.andrejak@gmail.com
+
+Initial import
+
+Add systemd files because it is a daemon.
+
+Also package SELinux files.

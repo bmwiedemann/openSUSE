@@ -1,0 +1,893 @@
+-------------------------------------------------------------------
+Mon Feb 18 08:57:22 UTC 2019 - schwab@suse.de
+
+- test-pcre-jitstack.diff: avoid false positive upon stack overflow
+
+-------------------------------------------------------------------
+Mon Jan  7 11:53:21 UTC 2019 - schwab@suse.de
+
+- Update to grep 3.3
+  ** Changes in behavior
+  * The --files-without-match (-L) option now causes grep to succeed
+    when a file is listed, instead of when a line is selected.
+  ** Improvements
+  * An over-30x performance improvement when many 'or'd expressions
+    share a common prefix, thanks to improvements in gnulib's dfa.c
+  * An additional 3-23% speed-up when searching large files, via
+    increased initial buffer size.
+  * grep now diagnoses stack overflow
+- remove-backref-alt-test.patch: remove
+
+-------------------------------------------------------------------
+Tue Aug  7 07:08:30 UTC 2018 - schwab@suse.de
+
+- remove-backref-alt-test.patch: Remove backref-alt test which fails or
+  not depending on glibc version
+
+-------------------------------------------------------------------
+Fri Jul 13 03:53:14 UTC 2018 - bwiedemann@suse.com
+
+- do not run profiling in parallel to make package build
+  reproducible (boo#1040589)
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:33 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Mon Jul  3 08:13:33 UTC 2017 - schwab@suse.de
+
+- Update to grep 3.1
+  * grep '[0-9]' is now just as fast as grep '[[:digit:]]' when run
+    in a multi-byte locale
+  * Context no longer excludes selected lines omitted because of -m
+
+-------------------------------------------------------------------
+Thu Jun  1 19:23:26 UTC 2017 - mpluskal@suse.com
+
+- Use https url's
+- Drop no longer needed explicit pie
+- Enable profiled build
+
+-------------------------------------------------------------------
+Sat Feb 11 07:19:36 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.0:
+  * grep without -F no longer goes awry when given two or more
+    patterns that contain no special characters other than '\' and
+    also contain a subpattern like '\.' that escapes a character to
+    make it ordinary.
+  * grep no longer fails to build on PCRE versions before 8.20.
+- Cleanup spec file:
+  * Drop support for old distributions
+  * Create lang subpackage
+  * Use fdupes to replace duplicate files with symlinks
+
+-------------------------------------------------------------------
+Wed Feb  8 09:56:26 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.28:
+  * Improve performance for -E or -G pattern lists that are easily
+    converted to -F format.
+  * Fix performance regression with multiple patterns.
+  * When standard output is /dev/null, grep no longer fails when 
+    standard input is a file in the Linux /proc file system, or when
+    standard input is a pipe and standard output is in append mode.
+  * When grep -Fo finds matches of differing length, it could
+    mistakenly print a shorter one.  Now it prints a longest one.
+- Drop upstreamed proc-lseek-glitch.patch 
+
+-------------------------------------------------------------------
+Mon Dec 12 16:51:24 UTC 2016 - schwab@suse.de
+
+- testsuite.patch: remove
+- proc-lseek-glitch.patch: work around proc lseek glitch
+
+-------------------------------------------------------------------
+Wed Dec  7 14:25:49 UTC 2016 - schwab@suse.de
+
+- Update to grep 2.27
+  * grep no longer reports a false match in a multibyte, non-UTF8 locale
+    like zh_CN.gb18030, with a regular expression like ".*7" that just
+    happens to match the 4-byte representation of gb18030's \uC9, the
+    final byte of which is the digit "7".
+  * grep by default now reads all of standard input if it is a pipe,
+    even if this cannot affect grep's output or exit status.
+  * grep no longer mishandles ranges in nontrivial unibyte locales.
+  * grep -P no longer attempts multiline matches.
+  * grep -m0 -L PAT FILE now outputs "FILE".
+  * To output ':' and tab-align the following character C, grep -T no
+    longer outputs tab-backspace-':'-C, an approach that has problems if
+    run inside an Emacs shell window.
+  * grep -T now uses worst-case widths of line numbers and byte offsets
+    instead of guessing widths that might not work with larger files.
+  * grep no longer reads the input in a few more cases when it is easy to
+    see that matching cannot succeed, e.g., 'grep -f /dev/null'.
+
+-------------------------------------------------------------------
+Fri Oct 28 13:01:39 UTC 2016 - astieger@suse.com
+
+- grep 2.26:
+  * no longer omit output merely because it follows an output line
+    suppressed due to encoding errors
+  * In the Shift_JIS locale, no longer mistakenly match in the
+    middle of a multibyte character
+  * grep can be much faster now when standard output is /dev/null.
+  * grep -F is now typically much faster when many patterns are
+    given, as it now uses the Aho-Corasick algorithm instead of
+    the Commentz-Walter algorithm in that case.
+  * grep -iF is typically much faster in a multibyte locale, if
+    the pattern and its case counterparts contain only single byte
+    characters.
+  * grep with complicated expressions (e.g., back-references) and
+    without -i now uses the regex fastmap for better performance.
+  * In multibyte locales, grep now handles leading "." in patterns
+    more efficiently.
+  * grep now prints a "FILENAME:LINENO: " prefix when diagnosing
+    an invalid regular expression that was read from an 
+   '-f'-specified file.
+
+-------------------------------------------------------------------
+Fri Apr 22 13:49:18 UTC 2016 - astieger@suse.com
+
+- grep 2.25:
+  * In the C or POSIX locale, grep now treats all bytes as valid
+    characters even if the C runtime library says otherwise.
+    ( Fixes yast2-users and other build failures - boo#966780 )
+  * grep -oz now uses null bytes, not newlines, to terminate output
+    lines.
+  * grep now outputs details more consistently when reporting a
+    write error.
+
+-------------------------------------------------------------------
+Fri Mar 11 09:30:02 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.24
+  * grep -z would match strings it should not.  To trigger the bug, 
+    you'd have to use a regular expression including an anchor 
+    (^ or $) and a feature like a range or a backreference, causing 
+    grep to forego its DFA matcher and resort to using re_search.
+    With a multibyte locale, that matcher could mistakenly match a 
+    string containing a newline. For example, this command: 
+    printf 'a\nb\0' | LC_ALL=en_US.utf-8 grep -z '^[a-b]*b'
+    would mistakenly match and print all four input bytes.  After 
+    the fix, there is no match, as expected.
+    [bug introduced in grep-2.7]
+  * grep -Pz now diagnoses attempts to use patterns containing ^ 
+    and $, instead of mishandling these patterns.  This problem 
+    seems to be inherent to the PCRE API; removing this limitation 
+    is on PCRE's maint/README wish list.  Patterns can continue to 
+    match literal ^ and $ by escaping them with \ (now needed even 
+    inside [...]). [bug introduced in grep-2.5]
+
+-------------------------------------------------------------------
+Fri Feb  5 08:01:46 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.23
+  * Binary files are now less likely to generate diagnostics and 
+    more likely to yield text matches.  grep now reports "Binary 
+    file FOO matches" and suppresses further output instead of 
+    outputting a line containing an encoding error; hence grep can 
+    now report matching text before a later binary match.  
+    Formerly, grep reported FOO to be binary when it found an 
+    encoding error in FOO before generating output for FOO, which 
+    meant it never reported both matching text and matching binary 
+    data; this was less useful for searching text containing 
+    encoding errors in non-matching lines. [bug introduced in 
+    grep-2.21]
+  * grep -c no longer stops counting when finding binary data. 
+    [bug introduced in grep-2.21]
+  * grep no longer outputs encoding errors in unibyte locales. For 
+    example, if the byte '\x81' is not a valid character in a
+    unibyte locale, grep treats the byte as binary data. [bug 
+    introduced in grep-2.21]
+  * grep -oP is no longer susceptible to an infinite loop when 
+    processing invalid UTF8 just before a match. [bug introduced in 
+    grep-2.22]
+  * --exclude and related options are now matched against trailing 
+    parts of command-line arguments, not against the entire
+    arguments. This partly reverts the --exclude-related change 
+    in 2.22. [bug introduced in grep-2.22]
+  * --line-buffer is no longer ineffective when combined with -l. 
+    [bug introduced in grep-2.5]
+  * -xw is now equivalent to -x more consistently, with -P and 
+    with backrefs.  [bug only partially fixed in grep-2.19]
+- Update info handling scriplets 
+  * move from postun to preun
+  * add dependeny for preun
+- Refresh partially upstreamed patch
+  * testsuite.patch
+
+-------------------------------------------------------------------
+Thu Nov 26 13:22:50 UTC 2015 - schwab@suse.de
+
+- testsuite.patch: also disable long-pattern-perf test
+
+-------------------------------------------------------------------
+Tue Nov  3 13:45:34 UTC 2015 - schwab@suse.de
+
+- testsuite.patch: disable unreliable test mb-non-UTF8-performance
+
+-------------------------------------------------------------------
+Mon Nov  2 18:20:38 UTC 2015 - astieger@suse.com
+
+- GNU grep 2.22:
+  * Improve performance for patterns containing very long strings
+  * Output and pattern matching bug fixes
+- drop add gnulib-perl522.patch, changed upstream
+- drop grep-F-heap-overrun.patch, included upstream
+
+-------------------------------------------------------------------
+Mon Jul  6 10:10:12 UTC 2015 - coolo@suse.com
+
+- add gnulib-perl522.patch from gnulib.bugs
+
+-------------------------------------------------------------------
+Mon Jan 26 10:46:13 UTC 2015 - schwab@suse.de
+
+- grep-F-heap-overrun.patch: fix heap overrun with grep -F (CVE-2015-1345,
+  bsc#914695)
+
+-------------------------------------------------------------------
+Mon Jan 12 08:59:43 UTC 2015 - schwab@suse.de
+
+- Fix last change
+
+-------------------------------------------------------------------
+Tue Dec 30 11:23:26 UTC 2014 - meissner@suse.com
+
+- build with PIE enabled
+
+-------------------------------------------------------------------
+Fri Nov 28 15:49:19 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU grep 2.21
+- Improvements:
+  * performance improved for searching files containing holes, on
+    platforms where lseek's SEEK_DATA flag works efficiently.
+  * performance improved for rejecting data that cannot match even
+    the first part of a nontrivial pattern.
+  * performance improved for very long strings in patterns.
+  * If a file contains data improperly encoded for the current 
+    locale, and this is discovered before any of the file's contents
+    are output, grep now treats the file as binary.
+  * -P no longer reports an error and exits when given invalid UTF-8
+    data. Instead, it considers the data to be non-matching.
+- Bug fixes:
+  * fix issues in multibyte locales
+  * grep -F -x -o no longer prints an extra newline for each match.
+  * grep in a non-UTF8 multibyte locale could mistakenly match in
+    the middle of a multibyte character when using a '^'-anchored
+    alternate in a pattern, leading it to print non-matching lines.
+  * grep -F Y no longer fails to match in non-UTF8 multibyte locales 
+  * grep -E rejected unmatched ')', instead of treating it like '\)'.
+   
+- Changes in behavior:
+  * The GREP_OPTIONS environment variable is now obsolescent
+  * In locales with multibyte character encodings other than UTF-8,
+    grep -P now reports an error and exits instead of misbehaving.
+  * When searching binary data, grep now may treat non-text bytes as
+    line terminators.  This can boost performance significantly.
+  * grep -z no longer automatically treats the byte '\200' as
+    binary data.
+
+-------------------------------------------------------------------
+Sat Jun  7 20:35:48 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU grep 2.20
+- Bug fixes:
+  * grep --max-count=N FILE would no longer stop reading after the
+    Nth match. I.e., while grep would still print the correct
+    output, it would continue reading until end of input, and
+    hence, potentially forever. [introduced in 2.19]
+  * A command like echo aa|grep -E 'a(b$|c$)' would mistakenly
+    report the input as a matched line. [introduced in 2.19]
+- Changes in behavior:
+  * grep --exclude-dir='FOO/' now excludes the directory FOO.
+    Previously, the trailing slash meant the option was
+    ineffective.
+
+-------------------------------------------------------------------
+Sat May 24 16:50:50 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU grep 2.19
+- Improvements:
+  * Performance has improved, typically by 10% and in some cases by
+    a factor of 200.  However, performance of grep -P in UTF-8
+    locales has gotten worse as part of the fix for the crashes
+    mentioned below.
+- Bug fixes:
+  * grep no longer mishandles patterns like [a-[.z.]], and no
+    longer mishandles patterns like [^a] in locales that have
+    multicharacter collating sequences so that [^a] can match a
+    string of two characters.
+  * grep no longer mishandles an empty pattern at the end of a
+    pattern list.
+  * grep -C NUM now outputs separators consistently even when NUM
+    is zero, and similarly for grep -A NUM and grep -B NUM.
+  * grep -f no longer mishandles patterns containing NUL bytes.
+  * Plain grep, grep -E, and grep -F now treat encoding errors in
+    patterns the same way the GNU regular expression matcher treats
+    them, with respect to whether the errors can match parts of
+    multibyte characters in data.
+  * grep -w no longer mishandles a potential match adjacent to a 
+    letter that takes up two or more bytes in a multibyte encoding.
+    Similarly, the patterns '\<', '\>', '\b', and '\B' no longer
+    mishandle word-boundary matches in multibyte locales.
+  * grep -P now reports an error and exits when given invalid UTF-8
+    data. Previously it was unreliable, and sometimes crashed or
+    looped.
+  * grep -P now works with -w and -x and backreferences. Before,
+    echo aa|grep -Pw '(.)\1' would fail to match, yet
+    echo aa|grep -Pw '(.)\2' would match.
+  * grep -Pw now works like grep -w in that the matched string has 
+    to be preceded and followed by non-word components or the
+    beginning and end of the line (as opposed to word boundaries
+    before).  Before, this
+    echo a@@a| grep -Pw @@ would match, yet this
+    echo a@@a| grep -w @@ would not.  Now, they both fail to match,
+    per the documentation on how grep's -w works.
+  * grep -i no longer mishandles patterns containing titlecase
+    characters. For example, in a locale containing the titlecase
+    character 'ǈ' (U+01C8 LATIN CAPITAL LETTER L WITH SMALL LETTER 
+    J), 'grep -i ǈ' now matches both 'Ǉ' (U+01C7 LATIN CAPITAL
+    LETTER LJ) and 'ǉ' (U+01C9 LATIN SMALL LETTER LJ).
+- remove mb-non-UTF8-performance.patch, committed upstream
+
+-------------------------------------------------------------------
+Tue Mar 25 15:10:02 UTC 2014 - schwab@suse.de
+
+- mb-non-UTF8-performance.patch: make performance-measuring less
+  system-sensitive
+
+-------------------------------------------------------------------
+Sat Feb 22 19:19:46 UTC 2014 - andreas.stieger@gmx.de
+
+- GNU grep 2.18
+  * no longer mishandles patterns like [^^-~] in unibyte locales
+  * -i in a multibyte, non-UTF8 locale could be up to 200 times
+    slower than in 2.16
+
+-------------------------------------------------------------------
+Wed Feb 19 10:32:43 UTC 2014 - mvyskocil@suse.com
+
+- update to 2.17 
+  * grep -i in a multibyte locale is now typically 10 times faster
+    for patterns that do not contain \ or [
+  * grep (without -i) in a multibyte locale is now up to 7 times faster
+    when processing many matched lines
+  * grep's --mmap option was disabled in March of 2010, and began to
+    elicit a warning in January of 2012.  Now it is completely gone.
+- Reformat spec file using hints from spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan  5 14:01:24 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2.16
+  * Fix gnulib-provided maint.mk to report correct version number
+  * The fix to make \s and \S work with multi-byte white space
+    broke the use of each shortcut whenever followed by a repetition
+    operator. For example, \s*, \s+, \s? and \s{3} would all
+    malfunction in a multi-byte locale.
+  * The fix to make grep -P work better with UTF-8 made it possible
+    for grep to evoke a larger set of PCRE errors, some of which
+    could trigger an abort.  E.g., this would abort:
+    printf '\x82'|LC_ALL=en_US.UTF-8 grep -P y
+    Now grep handles arbitrary PCRE errors
+  * Handle very long lines (2GiB and longer) on systems with a
+    deficient read system call.
+- removed patches:
+  * grep-gnulib-ppc64le.patch, upstream source removed
+
+-------------------------------------------------------------------
+Mon Dec 23 21:17:06 UTC 2013 - coolo@suse.com
+
+- don't drag texlive into bootstrap cycle - makeinfo is enough
+
+-------------------------------------------------------------------
+Fri Dec 20 01:36:52 UTC 2013 - uweigand@de.ibm.com
+
+- grep-gnulib-ppc64le.patch: Fix imported gnulib long double math
+  tests for little-endian PowerPC.
+
+-------------------------------------------------------------------
+Wed Dec 11 20:36:13 UTC 2013 - andreas.stieger@gmx.de
+
+- Update to 2.15:
+  Bug fixes:
+  * grep's \s and \S failed to work with multi-byte white space
+    characters.
+  * grep -i would segfault on systems using UTF-16-based wchar_t
+    when converting an input string containing certain 4-byte UTF-8
+    sequences to lower case.
+  * grep -E would segfault when given a regexp like
+    '([^.]*[M]){1,2}' for any multibyte character M.
+  * grep -F would get stuck in an infinite loop when given a search
+    string that is an invalid byte sequence in the current locale
+    and that matches the bytes of the input twice on a line.  Now
+    grep fails with exit status 1.
+  * grep -P could misbehave.
+
+  New features:
+  * grep -P can now use a just-in-time compiler to greatly speed up
+    matches, This feature is transparent to the user; no flag is
+    required to enable it.  It is only available if the
+    corresponding support in the PCRE library is detected when grep
+    is compiled.
+- require xz for SLE
+- require texinfo for makeinfo
+- don't autoreconf
+- remove the added german translations, upstream is up-to-date
+
+-------------------------------------------------------------------
+Wed Mar 27 12:55:18 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Aug 24 20:29:59 CEST 2012 - pth@suse.de
+
+- Update to 2.14:
+  Bug fixes:
+
+  * grep -i '^$' could exit 0 (i.e., report a match) in a multi-byte
+    locale, even though there was no match, and the command generated
+    no output.  E.g., seq 2 | LC_ALL=en_US.utf8 grep -il '^$' would
+    mistakenly print "(standard input)".  Related, seq 9 |
+    LC_ALL=en_US.utf8 grep -in '^$' would print "2:4:6:8:10:12:14:16"
+    and exit 0.  Now it prints nothing and exits with status of 1. 
+    [bug introduced in grep-2.6]
+
+  * 'grep' no longer falsely reports text files as being binary on
+    file systems that compress contents or that store tiny contents
+    in metadata.
+
+- Add current German message catalog from the translation project.
+
+-------------------------------------------------------------------
+Thu Jul  5 11:27:21 CEST 2012 - jsmeix@suse.de
+
+- Update to 2.13:
+  It's moderately important to upgrade from grep-2.6 or newer,
+  since a Turkish I-with-dot (U+0130) on a matched/printed line
+  makes "grep -i" (in nearly any UTF-8 locale) emit corrupt output.
+  Bug fixes:
+  * grep -i, in a multi-byte locale, when matching a line
+    containing a character like the UTF-8 Turkish I-with-dot
+    (U+0130) (whose lower-case representation occupies fewer
+    bytes), would print an incomplete output line. Similarly,
+    with a matched line containing a character (e.g., the Latin
+    capital I in a Turkish UTF-8 locale), where the lower-case
+    representation occupies more bytes, grep could print garbage.
+    [bug introduced in grep-2.6]
+  * --include and --exclude can again be combined, and again
+    apply to the command line, e.g., "grep --include='*.[ch]'
+    --exclude='system.h' PATTERN *" again reads all *.c
+    and *.h files except for system.h.
+    [bug introduced in grep-2.6]
+  New features:
+  * 'grep' without -z now treats a sparse file as binary,
+    if it can easily determine that the file is sparse.
+  Dropped features:
+  * Bootstrapping with Makefile.boot has been broken since
+    grep 2.6, and was removed.
+
+-------------------------------------------------------------------
+Mon May 21 18:19:15 UTC 2012 - tabraham@novell.com
+
+- Update to 2.12:
+  * "echp P|grep --devices=skip P" once again prints P, as it did in
+    2.10 [bug introduced in grep-2.11]
+  * grep no longer segfaults with -r --exclude-dir and no file 
+    operand.  I.e., ":|grep -r --exclude-dir=D PAT" would segfault.
+    [bug introduced in grep-2.11]
+  * Recursive grep now uses fts for directory traversal, so it can
+    handle much-larger directories without reporting things like 
+    "Filename too long", and it can run much faster when dealing 
+    with large directory hierarchies. [bug present since the 
+    beginning]
+  * grep -E 'a{1000000000}' now reports an overflow error rather 
+    than silently acting like grep -E 'a\{1000000000}'.
+  * The -R option now has a long-option alias --dereference-recursive.
+  * The -r (--recursive) option now follows only command-line 
+    symlinks. Also, by default -r now reads a device only if it is 
+    named on the command line; this can be overridden with --devices.  
+    -R acts as before, so use -R if you prefer the old behavior of 
+    following all symlinks and defaulting to reading all devices.
+
+-------------------------------------------------------------------
+Thu Apr 19 17:43:06 CEST 2012 - meissner@suse.de
+
+- use -mlong-double-64 on ppc*
+
+-------------------------------------------------------------------
+Tue Mar 13 18:18:23 UTC 2012 - tabraham@novell.com
+
+- Update to 2.11:
+  * grep no longer dumps core on lines whose lengths do not fit in 
+    'int'.  (e.g., lines longer than 2 GiB on a typical 64-bit host).
+    Instead, grep either works as expected, or reports an error.
+    An error can occur if not enough main memory is available, or if 
+    the GNU C library's regular expression functions cannot handle 
+    such long lines.  [bug present since "the beginning"]
+  * The -m, -A, -B, and -C options no longer mishandle context line
+    counts that do not fit in 'int'.  Also, grep -c's counts are now
+    limited by the type 'intmax_t' (typically less than 2**63) rather
+    than 'int' (typically less than 2**31).
+  * grep no longer silently suppresses errors when reading a directory
+    as if it were a text file.  For example, "grep x ." now reports a
+    read error on most systems; formerly, it ignored the error.
+    [bug introduced in grep-2.5]
+  * grep now exits with status 2 if a directory loop is found, instead 
+    of possibly exiting with status 0 or 1.  [bug introduced in 
+    grep-2.3]
+  * The -s option now suppresses certain input error diagnostics that 
+    it formerly failed to suppress.  These include errors when closing 
+    the input, when lseeking the input, and when the input is also the 
+    output.  [bug introduced in grep-2.4]
+  * On POSIX systems, commands like "grep PAT < FILE >> FILE" now report 
+    an error instead of looping.  [bug present since "the beginning"]
+  * The --include, --exclude, and --exclude-dir options now handle
+    command-line arguments more consistently.  --include and --exclude
+    apply only to non-directories and --exclude-dir applies only to
+    directories.  "-" (standard input) is never excluded, since it is
+    not a file name.  [bug introduced in grep-2.5]
+  * grep no longer rejects "grep -qr . > out", i.e., when run with -q
+    and an input file is the same as the output file, since with -q
+    grep generates no output, so there is no risk of infinite loop or
+    of an output-affecting race condition.  Thus, the use of the 
+    following options also disables the input-equals-output failure:
+      --max-count=N (-m) (for N >= 2)
+      --files-with-matches (-l)
+      --files-without-match (-L)
+    [bug introduced in grep-2.10]
+  * grep no longer emits an error message and quits on MS-Windows when
+    invoked with the -r option.
+  * grep no longer misinterprets some alternations involving anchors
+    (^, $, \<  \>  \B, \b).  For example, grep -E "(^|\B)a" no
+    longer reports a match for the string "x a".  [bug present since 
+    "the beginning"]
+  * If no file operand is given, and a command-line -r or equivalent
+    option is given, grep now searches the working directory.  Formerly
+    grep ignored the -r and searched standard input nonrecursively.
+    An -r found in GREP_OPTIONS does not have this new effect.
+  * grep now supports color highlighting of matches on MS-Windows.
+  * Use of the --mmap option now elicits a warning.  It has been a no-op
+    since March of 2010.
+  * grep no longer diagnoses write errors repeatedly; it exits after
+    diagnosing the first write error.  This is better behavior when
+    writing to a dangling pipe.
+  * Syntax errors in GREP_COLORS are now ignored, instead of sometimes
+    eliciting warnings.  This is more consistent with programs that
+    (e.g.) ignore errors in termcap entries.
+
+- changes from 2.10:
+  * grep no longer mishandles high-bit-set pattern bytes on systems
+    where "char" is a signed type. [bug appears to affect only 
+    MS-Windows]
+  * On POSIX systems, grep now rejects a command like 
+    "grep -r pattern . > out", in which the output file is also one 
+    of the inputs, because it can result in an "infinite" disk-filling 
+    loop. [bug present since "the beginning"]
+
+- removed fix-testsuite.diff obsoleted by this release
+
+-------------------------------------------------------------------
+Sat Feb  4 15:53:38 UTC 2012 - rschweikert@suse.com
+
+- keep executables in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Fri Dec  2 10:13:19 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  There are no GPL-3.0 files in the package.
+
+-------------------------------------------------------------------
+Thu Dec  1 15:48:03 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Oct 29 14:09:48 UTC 2011 - meissner@suse.com
+
+- disable the long double checks on ppc* as they dont meet
+  the preconditions in their double vs long double usage.
+
+-------------------------------------------------------------------
+Tue Sep 27 12:42:54 CEST 2011 - dmueller@suse.de
+
+- fix testsuite to build properly against locally built grep
+
+-------------------------------------------------------------------
+Wed Aug 10 03:17:41 UTC 2011 - crrodriguez@opensuse.org
+
+- Upgrade to version 2.9 
+* grep no longer clobbers heap for an ERE like '(^| )*( |$)'' )'
+* grep -P no longer aborts when PCRE's backtracking limit is exceeded
+* grep's interpretation of range expression is now more consistent
+
+-------------------------------------------------------------------
+Fri Sep 24 14:47:33 CEST 2010 - jsmeix@suse.de
+
+- Replaced configure typo '--without-included-rege'
+  in grep.spec (only in case of suse_version < 1120)
+  with '--without-included-regex' (which is the default
+  on systems with recent-enough version of the GNU C Library).
+
+-------------------------------------------------------------------
+Thu Sep 23 12:47:04 CEST 2010 - jsmeix@suse.de
+
+- Version upgrade to grep-2.7 with new behavior:
+  grep now diagnoses (and fails with exit status 2) commonly
+  mistyped regular expression like [:space:], [:digit:], etc.
+  Before, those were silently interpreted as [ac:eps]
+  and [dgit:] respectively. This new behavior is disabled
+  when the POSIXLY_CORRECT environment variable is set.
+  Regular expressions including back references are now
+  significantly faster in multi-byte locales.
+  Regular expressions including "." can now be significantly
+  faster in UTF-8 locales (though not in other multi-byte locales).
+  Several other minor bugs were fixed.
+  For details see the NEWS file.
+- Adapted RPM description text to match the "Introduction to grep"
+  at http://www.gnu.org/software/grep/ and removed the outdated
+  Authors section, see the AUTHORS file for the right authors.
+- Enhanced RPM spec file so that it builds and can be provided
+  even for older openSUSE and SLES versions.
+
+-------------------------------------------------------------------
+Thu Jul 22 15:45:31 CEST 2010 - jsmeix@suse.de
+
+- Forwarded the below "upgrade to grep-2.6.3" to openSUSE:Factory.
+  This is also a reset to full compliance with upstream.
+  All our own patches and "speedups" were dropped in the below
+  "upgrade to grep-2.6.3" because they had bad side effects
+  like bnc#618455 (SLES11-SP1) and bug#616037 (SLES9-SP4)
+  which do not happen with an upstream compliant grep
+  (regardless of an old version 2.5.1 or the new 2.6.3).
+
+- On Fri Apr 9 16:43:45 CEST 2010 duwe@suse.de did a version
+  upgrade to grep-2.6.3, which brings among various compile fixes
+  vast improvements for UTF-8 / multibyte handling.
+  Fixes bnc#255977 (SLES10-SP2) and bnc#415228 (SLES9-SP3).
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Jun 11 21:46:26 CEST 2009 - coolo@novell.com
+
+- rediff to avoid fuzz
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Thu Jun  4 17:41:19 CEST 2009 - crrodriguez@suse.de
+
+- link pcre library dynamically 
+
+-------------------------------------------------------------------
+Wed Feb 11 14:09:00 CET 2009 - schwab@suse.de
+
+- Update to grep 2.5.4.
+  * This is a bugfix release. No new features.
+
+-------------------------------------------------------------------
+Thu Aug 14 17:22:17 CEST 2008 - schwab@suse.de
+
+- More speedups.
+
+-------------------------------------------------------------------
+Tue Jun  3 11:29:37 CEST 2008 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Tue May 27 18:45:20 CEST 2008 - schwab@suse.de
+
+- Some speedups.
+
+-------------------------------------------------------------------
+Mon Feb 11 17:45:07 CET 2008 - schwab@suse.de
+
+- Fix another icase bug.
+
+-------------------------------------------------------------------
+Wed Nov 28 14:27:50 CET 2007 - schwab@suse.de
+
+- General cleanup.
+
+-------------------------------------------------------------------
+Wed Sep 12 14:32:07 CEST 2007 - schwab@suse.de
+
+- Allocate MB properties lazily.
+
+-------------------------------------------------------------------
+Tue May 15 15:00:53 CEST 2007 - schwab@suse.de
+
+- Fix some icase bugs.
+
+-------------------------------------------------------------------
+Mon May  7 15:41:23 CEST 2007 - schwab@suse.de
+
+- Try to get something sensible out of CVS.
+
+-------------------------------------------------------------------
+Thu Mar 22 18:18:33 CET 2007 - schwab@suse.de
+
+- Add a variant of the mbcache patch.
+
+-------------------------------------------------------------------
+Mon Jul 17 18:56:15 CEST 2006 - schwab@suse.de
+
+- Fix matching in unsafe encodings [#192390].
+
+-------------------------------------------------------------------
+Sun Jun 11 11:01:12 CEST 2006 - schwab@suse.de
+
+- Fix crash with -P '\xa'.
+
+-------------------------------------------------------------------
+Wed Mar 15 19:24:42 CET 2006 - schwab@suse.de
+
+- Don't block on opening a pipe when devices are supposed to be skipped
+  [#149660].
+
+-------------------------------------------------------------------
+Wed Feb  8 12:30:23 CET 2006 - schwab@suse.de
+
+- Fix dfa generation of interval expressions [#148453].
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 15:37:08 CET 2006 - agruen@suse.de
+
+- Fix a formatting error in the man page.
+
+-------------------------------------------------------------------
+Sat Mar 12 17:15:34 CET 2005 - schwab@suse.de
+
+- Fix word matching.
+
+-------------------------------------------------------------------
+Mon Nov 22 13:24:31 CET 2004 - schwab@suse.de
+
+- Update to grep 2.5.1a.
+
+-------------------------------------------------------------------
+Wed Oct 20 01:50:25 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Thu Sep 23 14:41:42 CEST 2004 - schwab@suse.de
+
+- Better fix for last change [#45689].
+
+-------------------------------------------------------------------
+Wed Mar 17 14:01:59 CET 2004 - schwab@suse.de
+
+- Fix dangling pointer [#36172].
+
+-------------------------------------------------------------------
+Wed Mar  3 18:00:00 CET 2004 - schwab@suse.de
+
+- Update from CVS.
+
+-------------------------------------------------------------------
+Thu Feb 19 10:29:01 CET 2004 - kukuk@suse.de
+
+- Cleanup neededforbuild
+
+-------------------------------------------------------------------
+Tue Feb 10 13:32:30 CET 2004 - schwab@suse.de
+
+- Fix configure test for strerror [#34231].
+
+-------------------------------------------------------------------
+Sat Jan 10 15:44:38 CET 2004 - adrian@suse.de
+
+- add %defattr
+- let rpm strip
+
+-------------------------------------------------------------------
+Fri Jul 25 16:29:00 CEST 2003 - schwab@suse.de
+
+- Fix parsing of bracket expressions.
+
+-------------------------------------------------------------------
+Mon Jul 21 17:02:26 CEST 2003 - schwab@suse.de
+
+- Fix use of pointer after free.
+
+-------------------------------------------------------------------
+Fri Jun 20 02:29:15 CEST 2003 - ro@suse.de
+
+- build with current gettext 
+
+-------------------------------------------------------------------
+Wed Apr 30 18:35:32 CEST 2003 - schwab@suse.de
+
+- Add i18n speedup patch from Takashi.
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 13:11:46 CEST 2003 - schwab@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Wed Feb 12 12:42:59 CET 2003 - schwab@suse.de
+
+- Disable huge backref test for now.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:48:52 CET 2003 - schwab@suse.de
+
+- Use %install_info.
+
+-------------------------------------------------------------------
+Mon Nov 18 13:12:35 CET 2002 - schwab@suse.de
+
+- Add AM_GNU_GETTEXT_VERSION.
+
+-------------------------------------------------------------------
+Thu Aug 15 11:11:40 CEST 2002 - schwab@suse.de
+
+- Add i18n patches.
+
+-------------------------------------------------------------------
+Wed Apr  3 18:26:51 CEST 2002 - schwab@suse.de
+
+- Link -lpcre statically.
+
+-------------------------------------------------------------------
+Wed Apr  3 16:46:19 CEST 2002 - schwab@suse.de
+
+- Update to grep 2.5.1.
+  * Includes support for Perl regexps.
+
+-------------------------------------------------------------------
+Wed Apr  3 16:21:16 CEST 2002 - ro@suse.de
+
+- build with current autoconf/automake 
+
+-------------------------------------------------------------------
+Tue Feb  5 10:57:56 CET 2002 - schwab@suse.de
+
+- Don't replace autoconf macros from gettext.
+
+-------------------------------------------------------------------
+Mon Jan 28 17:52:49 CET 2002 - schwab@suse.de
+
+- Add i18n patch.
+
+-------------------------------------------------------------------
+Tue Sep  4 14:56:42 CEST 2001 - schwab@suse.de
+
+- Update to grep 2.4.2:
+  - New option --binary-files
+  - Final newline silently provided.
+
+-------------------------------------------------------------------
+Thu Mar 22 18:51:02 CET 2001 - ro@suse.de
+
+- added split-aliases as provides
+
+-------------------------------------------------------------------
+Wed Mar  7 17:58:30 CET 2001 - schwab@suse.de
+
+- Split from base.
+

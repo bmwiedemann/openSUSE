@@ -1,0 +1,7 @@
+<package name="non-ntk" project="openSUSE:Factory">
+  <title>A fork of FLTK for the non audio suite</title>
+  <description>non-ntk is a fork of the FLTK UI toolkit. It employs cairo support and
+other additions not accepted upstream. It is currently used by the non-*
+audio suite of programs.</description>
+  <devel project="multimedia:libs" package="non-ntk"/>
+</package>

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Tue Feb 13 22:58:33 UTC 2018 - jengelh@inai.de
+
+- Don't assume any particular context of use in description.
+  Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue Feb 13 01:38:28 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.6.3:
+  * Implemented enhancements:
+    - The CMake script now checks if intltool-merge is present.
+    - The about dialog and contribute dialog can disabled at
+      compile time. (Useful if that information is better shown in
+      the appstream metadata.)
+    - The system name (name of data and executable) can now be
+      specified at compile time.
+  * Fixed bugs:
+    - Add an option to build a version without contribute/donation
+      dialog (gh#JMoerman/Go-For-It#42).
+    - Do not show about dialog in menu and .desktop when installed
+      via store? (gh#JMoerman/Go-For-It#43).
+    - Do not show header bar toggle when used on Pantheon/Gnome/...
+      (gh#JMoerman/Go-For-It#41).
+  * Updated translations.
+- Changes from version 1.6.2:
+  * Implemented enhancements:
+    - Reverse Domain Name Notation is now used for filenames
+      (application data, executables).
+    - An appstream appdata.xml metadata file has been added.
+    - The following translations are updated: Lithuanian.
+  * Fixed bugs:
+    - Parsed command line strings would not get freed.
+    - Changing the path to the stored todo.txt files would lead to
+      a crash when a task is marked as done.
+- Changes from version 1.6.1:
+  * Updated translations.
+- Changes from version 1.6.0:
+  * Implemented enhancements:
+    - Tasks can be filtered by clicking on a project or context
+      tag, or manually with the ctrl+f key combination.
+  * Fixed bugs:
+    - Crashes on start if ~/.todo already exists and is a file
+      (gh#JMoerman/Go-For-It#111).
+    - Drag area disappears on all items if one item is too long 
+      (gh#JMoerman/Go-For-It#60).
+    - Task name wrapping (gh#JMoerman/Go-For-It#65).
+- Conditionalize the use of %desktop_database_* and
+  %icon_theme_cache_* post/postun scriptlets: they are only needed
+  in older distros that don't have RPM 4.13.0 where file triggers
+  cover their functionality.
+- Add intltool BuildRequires: new dependency.
+- Drop go-for-it-vala-0.36.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Apr  1 11:12:35 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.5:
+  * No changelog available.
+- Add go-for-it-vala-0.36.patch -- Fix build with vala >= 0.36.
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.4.6.
+
+-------------------------------------------------------------------
+Sat Feb  6 16:14:56 UTC 2016 - mailaender@opensuse.org
+
+- Update to 1.4.5
+
+-------------------------------------------------------------------
+Tue Dec 29 05:32:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.4.4:
+  * Various bugfixes including windows line break handling.
+
+-------------------------------------------------------------------
+Mon Oct 12 06:54:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

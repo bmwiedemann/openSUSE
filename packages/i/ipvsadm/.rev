@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="123">
+    <srcmd5>56dc28455b0e160c0b508043910e243b</srcmd5>
+    <version>1.24</version>
+    <time>1168903071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="297">
+    <srcmd5>17daf815d7719571cc18cff157cb2c48</srcmd5>
+    <version>1.24</version>
+    <time>1219708648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="299">
+    <srcmd5>17daf815d7719571cc18cff157cb2c48</srcmd5>
+    <version>1.24</version>
+    <time>1219708648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="300">
+    <srcmd5>f2c9e1e712d36a2fe8514d583d5a6dd9</srcmd5>
+    <version>1.24</version>
+    <time>1268924039</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="302">
+    <srcmd5>f2c9e1e712d36a2fe8514d583d5a6dd9</srcmd5>
+    <version>1.24</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="303">
+    <srcmd5>f2c9e1e712d36a2fe8514d583d5a6dd9</srcmd5>
+    <version>1.24</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ebfacec87debe0cc58bc78788e320611</srcmd5>
+    <version>1.26</version>
+    <time>1297387510</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60354 from user mtomaschewski
+</comment>
+    <requestid>60354</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f99eda202595ab6586e3a4d9c56c635f</srcmd5>
+    <version>1.26</version>
+    <time>1297387640</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60354
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f99eda202595ab6586e3a4d9c56c635f</srcmd5>
+    <version>1.26</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>6a1f5703d7447a497334ed30523ee6f6</srcmd5>
+    <version>1.26</version>
+    <time>1316445825</time>
+    <user>lrupp</user>
+    <comment>- Select libnl-1_1-devel (forwarded request 82439 from jengelh)</comment>
+    <requestid>82557</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>6a1f5703d7447a497334ed30523ee6f6</srcmd5>
+    <version>1.26</version>
+    <time>1319181992</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>0cac65adaedd30637fd345b809bf1ce9</srcmd5>
+    <version>1.26</version>
+    <time>1323191978</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>0cac65adaedd30637fd345b809bf1ce9</srcmd5>
+    <version>1.26</version>
+    <time>1340183467</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>0cac65adaedd30637fd345b809bf1ce9</srcmd5>
+    <version>1.26</version>
+    <time>1359109089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>0cac65adaedd30637fd345b809bf1ce9</srcmd5>
+    <version>1.26</version>
+    <time>1379662681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>b88ec3e9e58ea25ba2cc790eecfa3c96</srcmd5>
+    <version>1.26</version>
+    <time>1387270901</time>
+    <user>coolo</user>
+    <comment>- Add systemd support and drop sysvinit support
+- Remove AUTHORS section
+- Remove redundant %clean section (forwarded request 210957 from posophe)</comment>
+    <requestid>210966</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>2848fe258736363e5838d4add0bd86cc</srcmd5>
+    <version>1.26</version>
+    <time>1392447916</time>
+    <user>coolo</user>
+    <comment>- Fix segfault when running 'ipvsadm -Ln' caused by buffer overrun
+  in ipvs_dests_parse_cb() function (bnc#775051), by Tim Serong.
+  [+ ipvsadm-1.26-ipvs_dests_parse_cb-memory-corruption.diff]
+- Fix wrong error message when using ipvsadm with option &quot;--ops&quot;
+  (bnc#847005), by Paul Zirnik.
+  [+ ipvsadm-1.26-wrong-error-with--ops-option.bnc847005.diff]</comment>
+    <requestid>222153</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>1f532bb24a598a5d652ee7a80faecb5a</srcmd5>
+    <version>1.26</version>
+    <time>1400824307</time>
+    <user>coolo</user>
+    <comment>- added necessary macros for systemd files (forwarded request 234967 from jsegitz)</comment>
+    <requestid>235141</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>e64d7aca5ba25c7d72aa8115a7c3e52b</srcmd5>
+    <version>1.26</version>
+    <time>1401644458</time>
+    <user>coolo</user>
+    <comment>- 03_libnl-3-linking.patch from debian, allow use of libnl3 
+ instead of libnl1 (forwarded request 235600 from elvigia)</comment>
+    <requestid>235763</requestid>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>e64d7aca5ba25c7d72aa8115a7c3e52b</srcmd5>
+    <version>1.26</version>
+    <time>1409301244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>04936895c4ed79b399128c30bb18e77a</srcmd5>
+    <version>1.28</version>
+    <time>1449687033</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347259</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0f04f6b1f2313e832a9825ec47acc6bc</srcmd5>
+    <version>1.28</version>
+    <time>1483048311</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447883</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fa61017e31128f295b92905c2ca0917a</srcmd5>
+    <version>1.29</version>
+    <time>1483956014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448883</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5c6544dac56f7595d39bb77b70563b06</srcmd5>
+    <version>1.29</version>
+    <time>1511817410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545406</requestid>
+  </revision>
+</revisionlist>

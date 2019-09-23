@@ -1,0 +1,621 @@
+-------------------------------------------------------------------
+Thu May 16 20:19:47 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.37:
+  + Deprecate SpiceMainChannel:color-depth and SpiceSession::color-depth
+  + Fix race condition on keyboard modifiers
+  + Fix cursor on Wayland: Fixes hidden cursor #83
+  + Fix clipboard on X11: avoid request client clipboard data when
+    is known that there is no data.
+  + Improve usb redirection
+  + Fix on usb redirection: Don't add same device twice
+  + Fix on smartcard: Warn if multiple readers are detected
+  + Add instrumentation for frame and queue statistics of
+    SpiceDisplay using [Recorder] library
+  + Fix Warnings with GStreamer >= 1.14 on video decoding due to
+    setting buffer's PTS
+  + Fix some Critical warnings when build without GNOME desktop
+    integration
+  + Fix Criticals when no primary monitor is set
+  + Documentation fixes
+- Add keyring and tarball signature files
+
+-------------------------------------------------------------------
+Mon Mar 25 09:59:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(usbutils) BuildRequires: usbutils 010 dropped the
+  .pc file.
+- Pass --with-usb-ids-path=/usr/share/hwdata/usb.ids to configure:
+  pass the correct path to the usb.ids file (shipped by hwdata).
+
+-------------------------------------------------------------------
+Sat Jan 19 15:53:51 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.36:
+  + Deprecate PulseAudio backend: it will be removed in a future
+    release
+  + Add H265 stream support
+  + Add SpiceQmpPort helper to interact with QEMU monitor over a Spice port
+  + Display a message if EGL support is required (with dmabuf local rendering)
+  + Many GstVideoOverlay improvements
+  + Smooth-scrolling improvements
+  + Miscellaneous fixes
+  Dropped patches (needed changes in base version):
+    0001-lz-Avoid-buffer-reading-overflow-checking-for-image-.patch
+    0002-lz-More-checks-on-image-sizes.patch
+    bb15d481-Fix-flexible-array-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Thu Nov 15 16:50:48 UTC 2018 - matthias.gerstner@suse.com
+
+- Add README.SUSE with information regarding the kvm group requirement for the
+  USB passthrough feature to work.
+
+-------------------------------------------------------------------
+Mon Aug 20 10:05:54 UTC 2018 - cbosdonnat@suse.com
+
+- Fix potential heap corruption when demarshalling (CVE-2018-10873,
+  bsc#1104448)
+  Added patch:
+    bb15d481-Fix-flexible-array-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 09:36:31 UTC 2018 - cbosdonnat@suse.com
+
+- Avoid buffer overflow on image lz cheks (CVE-2018-10893, bsc#1101295)
+  Added patches:
+    0001-lz-Avoid-buffer-reading-overflow-checking-for-image-.patch
+    0002-lz-More-checks-on-image-sizes.patch
+- Add setuid bit to spice-client-glib-usb-acl-helper (bsc#1101420)
+
+-------------------------------------------------------------------
+Thu Jun 14 22:55:47 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.35:
+  + New SpiceSession::disconnected signal.
+  + Use GstVideoOverlay if possible to render directly on
+    Gstreamer's sink element.
+  + Handling smooth-scroll for scroll events on touchpads in
+    Wayland.
+  + The spice-controller library was removed.
+  + Fix migration regression introduced in v0.34 (rhbz#1558043).
+  + Introspection: Fixes for SpicePortChannel,
+    SpiceDisplayChannel, SpiceRecordChannel, SpiceInputsChannel,
+    SpiceMainChannel.
+  + Fix width computation for palette images (rhbz#1508847).
+  + Introduction of spice+tls:// URI format to tls all channels.
+  + Fix keycodes on Xwayland (rhbz#1479682).
+  + Memory leak fixes.
+- Drop:
+  + Use-scancode-instead-of-keycode-names.patch: fixed upstream.
+  + libspice-controller subpackage to follow upstream changes.
+  + pkgconfig(celt051) BuildRequires: it is no longer required nor
+    used.
+- Switch python2 packages BuildRequires to python3, the new Python
+  version default.
+
+-------------------------------------------------------------------
+Mon Apr  9 19:22:17 UTC 2018 - brogers@suse.com
+
+- Partially fix bsc#1074144, where we have keymapping issues under Xwayland.
+   + Add the following upstream patch:
+   + Use-scancode-instead-of-keycode-names.patch
+
+-------------------------------------------------------------------
+Mon Aug 28 09:02:32 UTC 2017 - cbosdonnat@suse.com
+
+- Update to version 0.34 (bsc#1055295):
+  + NOTE: this is the last release with the spice-controller library
+  + add VP9 codec support
+  + API: add spice_display_change_preferred_video_codec_type()
+  + API: add new SpiceCursorChannel:cursor property, deprecate "cursor-set" signal
+  + API: spice_audio_new() is no longer in public header
+  + fix clipboard crash and other regressions from 0.33
+  + report invalid or stopped streams to the server
+  + use playbin instead of decodebin with gstreamer > 1.9
+  + support GST_DEBUG_BIN_TO_DOT_FILE debug
+  + deprecate a few esoteric options from --spice group:
+    --spice-color-depth, --spice-cache-size, --spice-glz-window-size used
+    mainly for development. They may be available with spicy in the future.
+  + win32: handle failures when starting win-usb manager
+  + win32: removed windows usb-clerk support, replaced by UsbDk
+  + win32: fix alt-tab & grab issues
+  + spicy learned to tweak codec preference, cancel transfer, and resize
+    precisely for debugging purposes
+  + use keycodemapdb submodule, drop perl(Text::CSV) dependency
+  + file-xfer: fix bad filename encoding
+  + file-xfer: handle new error kind
+  + build-sys fixes for macos
+  + replace some deprecated gtk code
+  + memory leak fixes, new tests
+- Drop now useless patches:
+  + 48da2c66-fix-lz4-deps.patch
+  + spice-gtk-remove-pygtk-bindings-leftovers.patch
+
+
+-------------------------------------------------------------------
+Tue Feb 28 06:06:56 UTC 2017 - zaitor@opensuse.org
+
+- Drop pkgconfig(pygtk-2.0) BuildRequires: No longer needed, nor
+  used as gtk2 support was dropped.
+- Add spice-gtk-remove-pygtk-bindings-leftovers.patch: Remove
+  leftover pygtk bindings, patch from upstream git.
+- Stop using sed to insert usbredirhost-0.5 into configure checks,
+  no longer needed: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb  2 09:59:52 UTC 2017 - cbosdonnat@suse.com
+
+- Merge SLES changelog (fate#322402)
+
+-------------------------------------------------------------------
+Tue Dec 13 16:07:53 UTC 2016 - cbosdonnat@suse.com
+
+- Better check for lz4.
+  48da2c66-fix-lz4-deps.patch
+
+-------------------------------------------------------------------
+Mon Dec  5 15:34:30 UTC 2016 - cbosdonnat@suse.com
+
+- Merge SLES and openSUSE differences in one spec file.
+
+-------------------------------------------------------------------
+Sat Oct  8 17:49:16 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.33:
+  + lz4 compression of USB channel.
+  + Keyboard: pause key fixes, set keypress-delay to 0 on local
+    socket.
+  + Mouse: fix pointer grabbing in server mode.
+  + Clipboard: fix copying text from old application without
+    UTF8_STRING target (motif).
+  + File-xfer changes: grouping all transferred files per
+    operation.
+  + New
+    spice_file_transfer_task_get_{total_bytes,transferred_bytes}
+    API and associated properties.
+  + New SpiceChannel:socket property.
+  + Fix rendering issues with CSD on Windows.
+  + Fix gettext support, some translations updates.
+  + Fix display refresh issue on f25 after resize (init egl only
+    when required).
+  + Many leaks and races fixes, new tests (bsc#1016291).
+- Changes from version 0.32:
+  + Libspice-client-gtk API/ABI break: library soname/version has
+    been bumped, and deprecated symbols have been removed. In
+    practice, most of the API (in particular for language bindings)
+    should be unchanged.
+  + Drop gtk+ 2.0 support.
+  + Require gtk+ >= 3.12 and glib >= 2.36.
+  + Add GStreamer as a backend for mjpeg, vp8 & h264 decoding. This
+    allows the upcoming Spice server release to send video regions
+    with better codecs.
+  + A number of spice-gtk structures are now private.
+  + Spice-gtk widget is no longer a GtkDrawingArea but an opaque
+    type with only guarantee to be a GtkWidget.
+  + Virgl:
+    - Use GtkGlArea if possible (on wayland only atm).
+    - Various fixes (multiple display, resize, canvas-less
+      support).
+   + Win-usbredir: use UsbDk backend when available and various
+     improvements.
+   + Ensure that dnd file copy get cancelled.
+   + Some JP and KR keyboard handling fixes on Windows.
+   + Fix SASL GSSAPI.
+   + Fix ipv6 proxy address handling.
+   + Allow smaller widget with scaling enabled.
+   + Add spice_main_request_mouse_mode() to request mouse mode.
+   + Add SpiceGtkSession:sync-modifiers to change modifiers sync
+     behaviour.
+   + Various video decoding improvements.
+   + Use GTask instead of GSimpleAsyncResult.
+   + Misc bindings, leaks, warnings, and spelling fixes (bsc#1010188).
+- Add gstreamer-plugins-bad, gstreamer-plugins-good,
+  pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-app-1.0),
+  pkgconfig(gstreamer-audio-1.0), pkgconfig(gstreamer-base-1.0) and
+  pkgconfig(opus) BuildRequires: New dependencies.
+- Add disabled pkgconfig(libphodav-2.0) BuildRequires: New optional
+  dependency, not yet available in openSUSE.
+- Drop pkgconfig(gtk+-2.0) BuildRequires: No longer needed as
+  upstream dropped gtk2 support.
+- Remove all buildhandling of gtk2.
+- Changes to subpackages following upstream changes:
+  + Bump sover for libspice-client-gtk-3.
+  + Drop libspice-client-gtk-2,python-SpiceClientGtk and
+    typelib-1_0-SpiceClientGtk-2_0 no longer built.
+
+-------------------------------------------------------------------
+Wed Aug 31 09:35:54 UTC 2016 - cbosdonnat@suse.com
+
+- Move acl helper to a new libspice-client-glib-helper package and
+  add a corresponding dependency (bsc#994858)
+
+-------------------------------------------------------------------
+Fri Mar 18 14:27:10 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.31:
+  + NOTE: this is the last release to support gtk+ 2.0.
+  + Add local GL scanout support for virtio-gpu/virgl guests.
+  + New file-transfer API, to be able to monitor transfers etc.
+  + New spice_display_change_preferred_compression() API.
+  + Better authentication error reports.
+  + usbredir: drop isoc packets on low bandwidth (rh#1264156).
+  + usbredir: add counter of free channels (rh#1298772).
+  + Add a toplevel include header spice-client-gtk.h.
+  + Grab keyboard based on session focus (rh#1275231).
+  + Don't print error message on successful file transfer
+    (rh#1265562).
+  + Allow simultaneous support for Pulse and GStreamer audio.
+  + Remove GSlice usage.
+  + Some BE endianness fixes.
+  + Misc leak and use after-free fixes.
+  + Documentation fixes.
+- Drop pkgconfig(x11) and pkgconfig(xrandr) BuildRequires: no
+  longer needed.
+
+-------------------------------------------------------------------
+Thu Oct  1 17:12:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.30:
+  + spice-protocol is no longer bundled with spice-gtk. Requires
+    spice-protocol >= 0.12.10
+  + Handle single headed monitors that have a non-zero x, y config
+  + Various small improvements to 'spicy' test application
+  + Fix build with automake < 1.13
+  + various bug fixes and improvements (boo#958306)
+  + New API:
+    - spice_main_update_display_enabled()
+    - Add SpiceSession::preferred-compression property and
+      --spice-preferred-compression commandline switch (requires a
+      yet-to-be-released version of spice server)
+  + Ability to set the SpiceDisplay::keypress-delay property via a
+    new SPICE_KEYPRESS_DELAY environment variable
+- Add python-six BuildRequires: New dependency, that configure
+  fails to look for.
+
+-------------------------------------------------------------------
+Fri Jun 30 08:30:10 UTC 2015 - cbosdonnat@suse.com
+
+- Update to version 0.29:
+  + sync guest audio volume with client volume
+  + use stream volume for PulseAudio source
+  + on Windows, fail early during initialization if the usbclerk service
+    can't be reached
+  + fix audio and usb managers to work with client provided fds
+  + check for too long passwords, boo#931044
+  + many crasher and bug fixes, (boo#898383)
+- Drop now useless patch: password-length-check.patch
+- bnc#894069: disable smart card support for SLE
+
+-------------------------------------------------------------------
+Fri Jun  5 08:30:10 UTC 2015 - cbosdonnat@suse.com
+
+- Check for passwords longer than what spice protocol allows to
+  help reporting the error to the user.
+  password-length-check.patch. boo#931044
+
+-------------------------------------------------------------------
+Thu Mar 26 22:47:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.28:
+  + webdav improvements:
+    - No longer spawn a server thread
+    - No longer use local TCP sockets & port
+    - Provides read-only mode with SpiceSession:share-dir-ro
+    - Requires libphodav-2.0 glib-2.0 >= 2.43.90 libsoup-2.4 >=
+      2.49.91
+  + Drop gstreamer 0.10 in favour of 1.0
+  + Add spice+unix://path connection support
+  + Accept URI with empty parameters value, such as
+    spice://localhost?port=5900&tls-port=
+  + Fixed lz4 support
+  + Silence some harmless warnings
+  + Misc API documentation improvements
+  + Switch-host migration fixes
+  + Learn to build --without-gtk
+  + Bugs and regressions fixes
+- Add pkgconfig(liblz4) BuildRequires and pass --enable-lz4 to
+  configure.
+
+-------------------------------------------------------------------
+Fri Dec 19 04:21:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.27:
+  + Add GStreamer 1.0 audio support.
+  + Add LZ4 compression algorithm support.
+  + Learn to release the keyboard grab on release keys pressed
+    (ctrl+alt by default), to let alt+f4/alt-tab and others for
+    client side.
+  + Session and channels life-cycle changes: a channel will no
+    longer hold a reference after session disconnection.
+  + Migration fixes, fail early on client provided fds (this is
+    left to solve in the future).
+  + Fix support for Gtk+ 3.0 on Windows.
+  + Clipboard size fixes.
+  + Server-side pointer drawing on grab.
+  + Build-sys improvements.
+  + New APIs:
+    - spice_usb_device_get_libusb_device()
+    - spice_session_is_for_migration()
+
+-------------------------------------------------------------------
+Wed Jul  2 11:56:56 UTC 2014 - fcrozat@suse.com
+
+- Release 0.25:
+  + Fix SPICE_GTK_MICRO_VERSION define for default value
+  + Make "phodav", the webdav server, an external dependency rather
+  than a submodule.
+
+- Changes from 0.24:
+  + support folder sharing, via WebDAV channel
+  + add HTTPS proxy support (requires glib 2.28), and Basic auth
+  + add SPICE_GTK_CHECK_VERSION macro
+  + advertise SASL capability early (to help fips-enabled servers)
+  + fix crash when releasing primary surface
+  + fix a few memory leaks with SASL
+  + fix spice_display_get_pixbuf() with offset area
+
+- Changes from 0.23:
+  + support Opus codec for audio channels
+  + ssl: use tls 1.0 or better
+  + support gdbus instead of dbus-glib when available
+
+- Changes from 0.22:
+  + improve inverted cursor support
+  + use system-wide trust certificate store
+  + make sasl support work with other method than MD5
+  + fix some clipboard crasher, limit clipboard size
+  + fix various regressions:
+    usbredir, alt-tab on win32, palette crash, agent notification,
+    old protocol support, sasl ending crash, gthread coroutine
+    crash, close  sockets on migration, pulse backend crash
+  + fix a few memory leaks
+- Add pkgconfig(libsoup-2.4) and pkgconfig(usbutils) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Sep 20 18:58:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.21:
+  + Improve inverted cursor support.
+  + Win32 usb redirected device uninstall fix.
+  + Add support for libusb hotplug API.
+  + Smartcard initialization fixes.
+  + C&p converts line-endings if necessary.
+  + Rendering and overall performance improvements.
+  + Build and bindings fixes.
+- Drop spice-gtk-mapfile.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Aug 14 17:04:39 UTC 2013 - dimstar@opensuse.org
+
+- Add spice-gtk-mapfile.patch: Add spice_channel_string_to_type to
+  map files (bnc#834896).
+
+-------------------------------------------------------------------
+Sun Jun 30 15:17:22 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.20:
+  + Adaptive video streaming support (sync with PulseAudio
+    backend only).
+  + Add spice_usb_device_manager_get_devices_with_filter().
+  + Add --spice-secure-channels to explicitely specify secure
+    channels.
+  + Multi-monitor, win32, USB redir fixes.
+  + Add basic gtk+ wayland and broadway backend support.
+  + Removed the GnomeRR code.
+
+-------------------------------------------------------------------
+Fri Apr 12 08:28:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.19:
+  + snappy has been renamed to spicy-screenshot.
+  + Several file-xfer fixes and improvements.
+  + Many win32 and USB redirection related fixes.
+  + Compile and work again with RHEL6 and older glib releases.
+  + misc fixes and improvements.
+
+-------------------------------------------------------------------
+Sun Mar 24 17:22:24 UTC 2013 - dimstar@opensuse.org
+
+- Drop pkgconfig(gstreamer-0.10) BuildRequires: the default audio
+  output module is to use pulseaudio directly.
+
+-------------------------------------------------------------------
+Sun Feb 17 16:52:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.18:
+  + Build fix with Gtk+ unstable.
+  + MinGW build fixes with old headers.
+  + Fix USB coldplug race.
+  + Bugs fxied: rh#908057.
+- Changes from version 0.17:
+  + Multi-monitor fixes (avoid monitor order shuffling, fix mouse
+    offset if monitor 0 is not at +0+0 and let agent do monitor
+    offset).
+  + Add support for VD_AGENT_CAP_SPARSE_MONITORS_CONFIG.
+  + Add controller & session "proxy" properties.
+  + Add drag and drop file copy support to send file to guest, you
+    will need capable agent to use that feature.
+  + Introspection fixes.
+  + Build fixes.
+- Add spice-gtk-polkit-privs.patch: set more resptrictive pokit
+  policies by default.
+
+-------------------------------------------------------------------
+Tue Feb  5 11:10:21 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.16:
+  + Fix crash with SSL connection (bgo#890464).
+  + Send monitor config to the agent on
+    spice_main_set_display_enabled() (bgo#881072).
+  + Fix channel leak and wrong condition in spice_channel_flush().
+  + Build fixes.
+- Changes from version 0.15:
+  + Add HTTP Proxy support (only with glib >= 2.26).
+  + Add "port" channel support, to allow arbitrary communication on
+    top of spice connection.
+  + usb-redir: fix migration support.
+  + win32: various keyboard & mouse fixes.
+  + Add info message when USB dialog is empty.
+  + Fix initial black screen on some 16bits guest.
+  + Various bug fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Dec  7 12:22:35 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(libusbredirparser-0.5) BuildRequires, to see early
+  unresolvables instread of 'late' build failures.
+- Replace libusbredirparser with libusbredirparser-0.5 in
+  configure{.ac,}.
+
+-------------------------------------------------------------------
+Sat Sep 22 13:43:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14:
+  + Support for seamless migration
+  + Improve scaling handling, add downscale-only property to give
+    more control over scaling
+  + Better handle key press/release events in high-latency
+    situations, this should avoid unwanted key repetitions
+  + Improve unescaping in URI parsing
+  + Fix symbol versioning which was broken in 0.13
+  + Fix for CVE-2012-4425
+  + Various bug fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Sep 11 07:24:33 UTC 2012 - dimstar@opensuse.org
+
+- Re-add pkgconfig(spice-protocol): as we don't install it
+  ourselves, we do require spice-protocol.pc to be available in
+  the build system or pkg-config --print-requires fails to traverse
+  the dependency chain, failing to add any pkgconfig() requires
+  to the -devel package.
+
+-------------------------------------------------------------------
+Fri Sep  7 20:37:48 UTC 2012 - vuntz@opensuse.org
+
+- Remove spice-protocol-devel Provides/Obsoletes from
+  spice-gtk-devel: this was a mistake in the 0.12.101 tarball, and
+  the real spice-protocol tarball is still wanted. See
+  http://lists.freedesktop.org/archives/spice-devel/2012-August/010343.html
+
+-------------------------------------------------------------------
+Tue Sep  4 10:54:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13:
+  + Add support for USB device redirection on Windows.
+  + Add monitors config support (multiple monitors in same display)
+  + Inhibit automount on GNOME desktop, to ease USB redirectio.
+  + Better video support (reduce some glitches).
+  + Misc migration fixes.
+  + Various bug fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Aug  7 19:43:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.12.101:
+  + Fix --spice-debug flag on glib >= 2.31
+  + Bugs fixed: rh#818169, rh#815426, rh#820335, rh#821795,
+    rh#823874, rh#835997, rh#823570, rh#822688.
+- spice-protocol has been merged: Provide and obsolete
+  spice-protocol-devel package.
+- Drop pkgconfig(spice-protocol) BuildRequires: it has been merged
+  to the spice-gtk code base.
+
+-------------------------------------------------------------------
+Wed May  2 10:18:04 UTC 2012 - idonmez@suse.com
+
+- Fix license to be GPL-2.0+ and LGPL-2.1+ since
+  spice-client-glib-usb-acl-helper is GPL-2.0+
+
+-------------------------------------------------------------------
+Sun Apr 29 16:52:52 CET 2012 - dimstar@opensuse.org
+
+- Update to version 0.12:
+  + Fix memory leak when guest is resized
+  + Fix color-depth setting
+  + Hide/Show cursor correctly when needed
+  + Fix blue-tinted video with old Spice servers
+  + Correct scroll-event not received with recent Gtk+
+  + Fix various migrations issues
+  + Allow to disable CELT encoding at runtime with
+    SPICE_DISABLE_CELT
+  + Various crash fixes (on pubkey, recording, clipboard)
+  + Build changes (common submodule) and fixes
+
+-------------------------------------------------------------------
+Fri Apr 27 17:00:09 UTC 2012 - reddwarf@opensuse.org
+
+- Build also gtk2 version (and its python bindings)
+
+-------------------------------------------------------------------
+Sun Mar 11 21:12:36 UTC 2012 - dimstar@opensuse.org
+
+- spice-client-glib-usb-acl-helper is here again. Besides depending
+  on the right version ofpolkit, it also depends of usbredir, which
+  caused it to silently disappear last time.
+
+-------------------------------------------------------------------
+Thu Mar  8 21:06:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.11:
+  - Fix semi-seamless migration regression
+  - Add Spice session UUID and name support
+  - Add foreign menu support to controller library
+  - Add a simple controller testing tool spice-controller-dump
+  - Build fixes
+- Drop spice-gtk-0.9-return-nonvoid.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Feb 25 21:04:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.10:
+  + USB redir is now aware of host/guest side filtering
+  + you can query spice_usb_device_manager_can_redirect_device()
+  + fix the usbredir channel lifetime to be equal to session
+    lifetime
+  + set keepalive on channel socket
+  + fix hangs on windows when using ssl chanels
+  + add a SpiceDisplay::zoom-level to maintain a scaling ratio
+  + add controller ENABLE_SMARTCARD option
+  + remove a few warnings, ui improvements, build fixes
+- No longer verify permissions of spice-client-glib-usb-acl-helper,
+  as the file is no longer installed.
+
+-------------------------------------------------------------------
+Thu Feb  9 17:37:50 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9:
+  + Add command line options for setting the cache size and the glz
+    window size
+  + Add a USB device selection widget to libspice-client-gtk
+  + Various bug fixes and code improvements.
+- Add spice-gtk-0.9-return-nonvoid.patch: Return a value in a
+  non-void declared function.
+
+-------------------------------------------------------------------
+Sun Feb  5 13:13:04 UTC 2012 - dimstar@opensuse.org
+
+- Don't install /usr/bin/spice-client-glib-usb-acl-helper with suid
+  bit set until bnc#744251 has gotten the full treatment. This
+  kills functionality for USB passthrough.
+
+-------------------------------------------------------------------
+Tue Jan 31 09:38:27 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.8:
+  + add USB redirection support
+  + introduce SpiceGtkSession to deal with session-wide Gtk events,
+    such as clipboard, instead of doing it per display
+  + many cursor and keyboard handling improvements
+  + handle the new "semi-seamless" migration
+  + support new Spice mini-headers
+  + better coroutines: fibers on windows & jmp on linux
+  + add Vala vapi bindings generation
+  + many bug fixes and code improvements
+
+-------------------------------------------------------------------
+Thu Nov 24 11:28:40 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 0.7.159
+

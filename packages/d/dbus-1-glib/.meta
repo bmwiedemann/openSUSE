@@ -1,0 +1,6 @@
+<package name="dbus-1-glib" project="openSUSE:Factory">
+  <title>GLib-based library for using D-Bus</title>
+  <description>D-Bus add-on library to integrate the standard D-Bus library with the
+GLib thread abstraction and main loop.</description>
+  <devel project="Base:System" package="dbus-1-glib"/>
+</package>

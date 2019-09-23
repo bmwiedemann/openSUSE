@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:47:08 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  9 02:55:26 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 5.1.1
+  + Added
+    * `aria-*` and `data-*` attributes are now supported in all
+      dash html components. (#40)
+    * These new keywords can be added using a dictionary expansion
+      e.g. `html.Div(id="my-div", **{"data-toggle": "toggled", "aria-toggled": "true"})`
+- Added license
+
+-------------------------------------------------------------------
+Thu Apr 19 18:16:32 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

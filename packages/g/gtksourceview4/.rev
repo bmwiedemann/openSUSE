@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59598d8b0a0a13dd4d07a02afb3c9511</srcmd5>
+    <version>3.99.2</version>
+    <time>1486306139</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry for the noise, yet a resub.
+Fix issues seen in sr#452943
+
+Hi legal / babelworx -- you already reviewed this ok in previous sr (sr#452943), but will show up in your que again due to not being in factory.
+
+
+</comment>
+    <requestid>453841</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b4f6a60f9fe321d2fceebb92cf65df07</srcmd5>
+    <version>3.99.2</version>
+    <time>1486968524</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455614</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5895fbd313f40b9eda359131cd49efc7</srcmd5>
+    <version>3.99.3</version>
+    <time>1490219975</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>461123</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9a62cf22965a7c6fad661cb4d01292f</srcmd5>
+    <version>3.99.4</version>
+    <time>1499291842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498565</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f65a93289dbf44f238cb229f53ed5c8a</srcmd5>
+    <version>3.99.5</version>
+    <time>1505331799</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 521851 from dimstar)</comment>
+    <requestid>521937</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7b66c653ba8f380bfab952ec5867b35</srcmd5>
+    <version>3.99.6</version>
+    <time>1510232566</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.99.6 (forwarded request 538031 from dimstar)</comment>
+    <requestid>538378</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>983f07bf5a6cb401e9022ccccb21d63b</srcmd5>
+    <version>3.99.7</version>
+    <time>1513110148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555595</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8408becb7248571ec1597375fc9382b9</srcmd5>
+    <version>3.99.7</version>
+    <time>1520588471</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581398 from dimstar)</comment>
+    <requestid>582889</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c2280631f5de3737a525d8818a01ac5</srcmd5>
+    <version>4.0.0</version>
+    <time>1521052710</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.0.0 (forwarded request 585425 from dimstar)</comment>
+    <requestid>585821</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>86c4eefa69d4c079c954bbe561b1e1c3</srcmd5>
+    <version>4.0.1</version>
+    <time>1525779471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.1:
+  + New syntax highlighting definition file for: TOML.
+  + Improvements to the syntax highlighting of: CSS and XML.
+  + Updated translations. (forwarded request 604639 from iznogood)</comment>
+    <requestid>605076</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>54404f9b4a5fd3b1e922a940566b5e58</srcmd5>
+    <version>4.0.2</version>
+    <time>1529402680</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617341</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06db02055247d5e84b6f3344ec8b0490</srcmd5>
+    <version>4.0.3</version>
+    <time>1536575511</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634612</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f12d1440f997c22bd53b6f9a21d64dcf</srcmd5>
+    <version>4.2.0</version>
+    <time>1553262971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686190</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>36507734721f2010cf2afbed7aa84fb0</srcmd5>
+    <version>4.2.0</version>
+    <time>1559481233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706388</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>a7be3faf371978bc225ddd6016c86cc1</srcmd5>
+    <version>1.0.1</version>
+    <time>1318944149</time>
+    <user>saschpe</user>
+    <comment>GoldenDict v1.0.1 as wanted in http://lizards.opensuse.org/2010/11/09/10-obscure-linux-office-applications/
+(compressed .tar as .tar.bz, and fixed date format in changelog as required in https://build.opensuse.org/request/show/87602)</comment>
+    <requestid>88010</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>a7be3faf371978bc225ddd6016c86cc1</srcmd5>
+    <version>1.0.1</version>
+    <time>1319181936</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>a6ab6c318cf3b56fdda6bd29ab86ee65</srcmd5>
+    <version>1.0.1</version>
+    <time>1323191732</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>4ba0f5ae706e90c05eb9fe4ad6247860</srcmd5>
+    <version>1.0.1</version>
+    <time>1332241861</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 109865 from lrupp)</comment>
+    <requestid>110091</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>4ba0f5ae706e90c05eb9fe4ad6247860</srcmd5>
+    <version>1.0.1</version>
+    <time>1340183403</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>4ba0f5ae706e90c05eb9fe4ad6247860</srcmd5>
+    <version>1.0.1</version>
+    <time>1359108985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>4ba0f5ae706e90c05eb9fe4ad6247860</srcmd5>
+    <version>1.0.1</version>
+    <time>1379662532</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>4ba0f5ae706e90c05eb9fe4ad6247860</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301073</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>580f67c1707fc765f39be2a19d1bda68</srcmd5>
+    <version>1.5.0~rc2+git.20170601T224956</version>
+    <time>1499880918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500936</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c59fd8dcf27c933185414210c2589051</srcmd5>
+    <version>1.5.0~rc2+git.20180531T195211</version>
+    <time>1529666980</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614424</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f4f710d76d58b78bf31d099aa982351</srcmd5>
+    <version>1.5.0~rc2+git.20190215T001516</version>
+    <time>1551687838</time>
+    <user>dimstar_suse</user>
+    <comment>- update source to e7e37cb (2019-02-15)
+- don't use CONFIG+=old_hunspell with libhunspell 1.6
+</comment>
+    <requestid>681091</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6ab0255ba42d6a204b8d8b61ac812bb0</srcmd5>
+    <version>1.5.0~rc2+git.20190215T001516</version>
+    <time>1565267038</time>
+    <user>dimstar_suse</user>
+    <comment>split -lang package </comment>
+    <requestid>721702</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sun Jul  8 12:42:16 UTC 2018 - adam@mizerski.pl
+
+- update url
+- use latest git version
+- change build system from imake to autotools
+- drop: x2x-1.30-beta.dif
+        x2x-1.30-beta-keycodes.dif
+        x2x-1.30-beta-buttonmasks.dif
+
+-------------------------------------------------------------------
+Wed Nov  5 11:32:41 UTC 2014 - dimstar@opensuse.org
+
+- Add imake BuildRequires: needed for xmkmf command.
+- Add pkgconfig(xscrnsaver) BuildRequires: lost build dependency
+  when xorg-x11-devel metapackage has been removed from the chain.
+
+-------------------------------------------------------------------
+Sun Oct 19 03:00:01 UTC 2014 - crrodriguez@opensuse.org
+
+- run spec cleaner
+- Discontinue use of xorg-x11-devel metapackage.
+
+-------------------------------------------------------------------
+Wed Feb  1 11:33:18 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  keymap.c and x2x.c seem to make it necessary to license under GPL-2.0+
+  irrespective of the ifdef in lawyerese.c which would seem to make the GPL
+  only applicable to windows systems
+
+-------------------------------------------------------------------
+Mon Nov  8 13:27:06 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Fri Dec  4 14:35:19 CET 2009 - seife@opensuse.org
+
+- de-fuzz the x2x-1.30-beta-keycodes.dif patch
+
+-------------------------------------------------------------------
+Mon Jul 14 14:29:20 CEST 2008 - werner@suse.de
+
+- Make mouse buttons work window change mode even if other masks
+  are active like NumLock.
+
+-------------------------------------------------------------------
+Fri Jan  4 11:03:10 CET 2008 - werner@suse.de
+
+- Add patch from http://x2x.dottedmag.net/ to repository to avoid
+  mixed up key symbols of the `from' and `to` display (bug #303870
+  and bug #351545).
+ 
+-------------------------------------------------------------------
+Wed Aug  2 17:17:44 CEST 2006 - werner@suse.de
+
+- Force both display to be used synchronous
+- Release not symbols but real keys to avoid problem with e.g.
+  shifted keys and their active symbols
+- Use a signal handler on SIGINT/SIGTERM to restore keyboard
+
+-------------------------------------------------------------------
+Mon Jul 24 14:07:16 CEST 2006 - mmarek@suse.de
+
+- fix filelist for build with modular Xorg
+
+-------------------------------------------------------------------
+Thu Mar 16 15:26:26 CET 2006 - werner@suse.de
+
+- Let NumLock and CapsLock alive in both directions
+
+-------------------------------------------------------------------
+Wed Mar 15 17:58:26 CET 2006 - werner@suse.de
+
+- Wake and use slave display even if DPMS was activated
+- Use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Aug  5 21:59:33 CEST 2004 - sndirsch@suse.de
+
+- updated to version 1.30-beta
+
+-------------------------------------------------------------------
+Sun Jan 11 11:16:18 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Jun 11 15:30:59 CEST 2001 - pblaha@suse.cz
+
+- mv x2x.1 -> x2x.man for build with xmkmf 
+
+-------------------------------------------------------------------
+Fri Apr 28 07:55:38 CEST 2000 - smid@suse.cz
+
+- buildroot added
+
+-------------------------------------------------------------------
+Wed Feb  9 20:31:40 MET 2000 - sndirsch@suse.de
+
+- changed group tag
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul  5 00:03:31 MEST 1999 - sndirsch@suse.de
+
+- created package
+

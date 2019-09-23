@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Sat May 26 10:42:11 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:09 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Fri Jul 25 13:37:37 CEST 2008 - mszeredi@suse.de
+
+- updated to 20070708
+ * Fix race condition with ZISO files
+
+-------------------------------------------------------------------
+Fri Aug 10 19:34:35 CEST 2007 - bk@suse.de
+
+- Add "Requires: fuse" to ensure that fuse is present (285101#c29)
+- remove nicely empty TODO file from package documentation :-)
+
+-------------------------------------------------------------------
+Thu Mar 29 19:35:22 CEST 2007 - cthiel@suse.de
+
+- added zlib-devel to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 24 14:45:17 CET 2007 - cthiel@suse.de
+
+- fix build
+- update to 20070116, includes a potential fix for #211544
+
+-------------------------------------------------------------------
+Sat Oct 21 13:13:57 CEST 2006 - cthiel@suse.de
+
+- update to 20061017
+  * Fixed crash related to handling wrong-coded names with Juliet extension.
+
+-------------------------------------------------------------------
+Fri Sep 29 01:54:17 CEST 2006 - ro@suse.de
+
+- fix a missing return value 
+
+-------------------------------------------------------------------
+Thu Sep 28 09:35:26 CEST 2006 - cthiel@suse.de
+
+- update to 20060928
+  * Fixed race-condition with find -- display stable inode numbers on
+    mounted filesystem to the outside world. Added check/addition for
+    library option "use_ino" -- required from now. isofs_real_init() split
+    into two parts to make real initialization/error checking before giving
+    control to libfuse.
+  * Several options added to maintain mount point (create if it does not
+    exists, delete on exit), do NOT maintain file ~/.mtab.fuseiso (with
+    format of /etc/mtab), specify iocharset (default iocharset is now
+    locale-specific).
+  * Added support to mounting NRG-image files created by Nero software.
+
+-------------------------------------------------------------------
+Mon Sep 25 09:34:57 CEST 2006 - cthiel@suse.de
+
+- update to 20060925 snapshot
+  * Added support to mounting BIN-image files. One-track only for now.
+  * Fixed directory read code to take directory end and block borders more
+    correctly.
+
+-------------------------------------------------------------------
+Wed Aug  2 13:42:31 CEST 2006 - cthiel@suse.de
+
+- update to 20060731 snapshot
+  * Fixed casting bug in isofs_parse_zisofs_header().
+  * Parse SL RR entries with flag 3 as directory separator.
+
+-------------------------------------------------------------------
+Sun Apr 23 21:30:25 CEST 2006 - cthiel@suse.de
+
+- initial package (version 20060107)
+

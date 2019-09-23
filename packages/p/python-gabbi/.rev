@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16832f1b51dcd7eb9af5af7928c1e6ae</srcmd5>
+    <version>1.32.0</version>
+    <time>1492417505</time>
+    <user>maxlin_factory</user>
+    <comment>package for writing HTTP tests</comment>
+    <requestid>456904</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37ea48844d9fffbde2db6877a712a11c</srcmd5>
+    <version>1.35.0</version>
+    <time>1501840788</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.35.0:
+  * release 1.35.0
+  * Documentation for &amp;lt;@ in json path values
+  * Allow value of a json path query to be read from disk
+  * Make _load_data_file public
+  * Add some simple docs for the LHS json path substitution
+  * Template expansion in LHS of json path test
+  * Correct location of gnocchi repo in gnocchi tests (forwarded request 511531 from tbechtold)</comment>
+    <requestid>511532</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19ed89519deea3206220dd95f37a809f</srcmd5>
+    <version>1.37.0</version>
+    <time>1535123442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631037</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d3f6a3ab4266190cbe4ba6b7feeba33</srcmd5>
+    <version>1.44.0</version>
+    <time>1542750242</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.44.0:
+  * jsonhandler: allow reading yaml data from disk (#254)
+  * Release 1.43.0
+  * read data from disk improvement (#251)
+  * Block PyYAML above 4.0 for the time being
+  * Formatting changes based on pylint and pep8 reviews
+  * Switch to using stestr instead of testrepository
+  * Relase 1.42.1
+  * Check for empty string as host in suitemaker
+  * Apply skipIf decorator to test method instead of TestCase
+  * update release notes
+  * Release 1.42.0
+  * Allow listing of tests with no host configured
+  * Use python3 when building releases
+  * Release 1.41.0
+  * Improve the tests for handling numbers, fix a found bug
+  * Avoid checking for &lt;@ when data is not a string
+  * Make it possible to use non-string $RESPONSE in data
+  * Release 1.40.1
+  * Clean up warnings shown during testing
+  * Tweak docstrings for disambiguation
+  * Simplify HTTP setup for readability
+  * Pass strict=True when creating httpclient
+  * Require gnocchi and placement targets to pass
+  * Fix Gnocchi CI
+  * Raise GabbiFormatError when headers are None
+  * Tune up the instructions that get tox installed
+  * Update documentation to indicate requirements-dev.txt
+  * Move header\_key.yaml to intercept tests
+  * Add tox to a new requirements-dev (#233)</comment>
+    <requestid>650384</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d331237fc8838397071cb0f57193632b</srcmd5>
+    <version>1.44.0</version>
+    <time>1547130211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664139</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82546addd6f56b62a6a3f05b0c0abbf5</srcmd5>
+    <version>1.45.0</version>
+    <time>1552643530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.45.0:
+  * * Adjust loading of YAML to be ready for new release of PyYAML.</comment>
+    <requestid>685057</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab842b6caf4e55790bc35e9443076f78</srcmd5>
+    <version>1.48.0</version>
+    <time>1564137904</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.48.0
+  * Work around issues in urllib3
+  * Enable a -q arg to gabbi-run</comment>
+    <requestid>718785</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0587715a2afd6f82d6992ab3d75ab77a</srcmd5>
+    <version>1.49.0</version>
+    <time>1565695467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722785</requestid>
+  </revision>
+</revisionlist>

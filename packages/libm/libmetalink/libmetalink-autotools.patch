@@ -1,0 +1,75 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -22,9 +22,6 @@
+ AC_PREREQ(2.61)
+ AC_INIT([libmetalink], [0.1.3], [t-tujikawa@users.sourceforge.net])
+ 
+-LT_PREREQ([2.2.6])
+-LT_INIT()
+-
+ dnl See versioning rule:
+ dnl  http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
+ AC_SUBST(LT_CURRENT, 4)
+@@ -66,7 +63,10 @@ AC_ARG_ENABLE([gcc-visibility],
+     [gcc_visibility=$withval], [gcc_visibility=no])
+ 
+ # Checks for programs
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
++LT_INIT([disable-static pic-only])
+ AC_PROG_INSTALL
+ 
+ # Package version
+Index: lib/libexpat_metalink_parser.c
+===================================================================
+--- lib/libexpat_metalink_parser.c.orig
++++ lib/libexpat_metalink_parser.c
+@@ -130,7 +130,7 @@ METALINK_PUBLIC
+ metalink_parse_file(const char* filename, metalink_t** res)
+ {
+   metalink_error_t r;
+-  FILE *docfp = fopen(filename, "rb");
++  FILE *docfp = fopen(filename, "rbe");
+   if(docfp == NULL)
+     return METALINK_ERR_CANNOT_OPEN_FILE;
+   r = metalink_parse_fp(docfp, res);
+Index: lib/Makefile.am
+===================================================================
+--- lib/Makefile.am.orig
++++ lib/Makefile.am
+@@ -1,7 +1,7 @@
+ SUBDIRS = includes
+ 
+-AM_CPPFLAGS = -I$(srcdir)/includes -I$(builddir)/includes \
+-	@XML_CPPFLAGS@ @EXPAT_CFLAGS@ \
++AM_CPPFLAGS = -include $(top_builddir)/config.h -I$(srcdir)/includes -I$(builddir)/includes \
++	@EXPAT_CFLAGS@ \
+ 	@DEFS@
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+@@ -57,6 +57,6 @@ OBJECTS += libexpat_metalink_parser.c
+ endif
+ 
+ libmetalink_la_SOURCES = $(HFILES) $(OBJECTS)
+-libmetalink_la_LDFLAGS = -no-undefined \
++libmetalink_la_LDFLAGS = -no-undefined -export-symbols-regex '^metalink_'\
+         -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+-	@XML_LIBS@ @EXPAT_LIBS@
++	@EXPAT_LIBS@
+Index: test/Makefile.am
+===================================================================
+--- test/Makefile.am.orig
++++ test/Makefile.am
+@@ -11,7 +11,7 @@ metalinktest_SOURCES = \
+ metalinktest_LDADD = ${top_builddir}/lib/libmetalink.la
+ metalinktest_LDFLAGS = -static  @CUNIT_LIBS@
+ 
+-AM_CFLAGS = -I${top_srcdir}/lib -I${top_srcdir}/lib/includes \
++AM_CFLAGS = -include $(top_builddir)/config.h -I${top_srcdir}/lib -I${top_srcdir}/lib/includes \
+ 	-I${top_builddir}/lib/includes \
+ 	-DLIBMETALINK_TEST_DIR=\"$(top_srcdir)/test/\" @CUNIT_CFLAGS@
+ TESTS = metalinktest

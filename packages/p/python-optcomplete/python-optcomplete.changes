@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Jul 21 10:21:22 UTC 2017 - sebix+novell.com@sebix.at
+
+- clean up spec file
+- fix build in tumbleweed
+
+-------------------------------------------------------------------
+Sun Dec 28 15:07:00 UTC 2014 - Led <ledest@gmail.com>
+
+- remove unneeded shebang in scripts
+- add patches:
+  + optcomplete-1.2-devel-fix-shebang.patch
+
+-------------------------------------------------------------------
+Fri Dec  9 08:43:52 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Mar 24 12:22:06 UTC 2010 - toms@suse.de
+
+- Improved package and added bash completion code in 
+  /etc/bash_completion.d/ and added examples and documentation
+
+-------------------------------------------------------------------
+Wed Mar 24 11:34:54 UTC 2010 - toms@suse.de
+
+- Initial version 1.2_devel
+

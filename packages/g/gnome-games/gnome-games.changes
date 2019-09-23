@@ -1,0 +1,493 @@
+-------------------------------------------------------------------
+Wed Apr 10 16:09:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Help does not show up as a game anymore.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 10:13:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 16:56:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.92:
+  + Fix compile-time warnings when building with recent librsvg and
+    gtk.
+  + Fix compile-time warning introduced in the 3.31.91.
+  + Various cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 16:34:11 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + New application icons from GNOME Design team.
+  + Collection loading is now paused in game, leading to vastly
+    improved performance when opening a game from file manager.
+  + Binding directional pads should work for more gamepads now.
+  + Fixes:
+    - It's not possible to open multiple main windows anymore.
+    - Invalid discs in PlayStation disc selector are now disabled.
+  + Updated translations.
+- Changes from version 3.31.90:
+  + During search, developers and platforms without any games to
+    show are now hidden.
+  + Fixes:
+    - Quit dialog now actually appears when exiting a game that
+      doesn't support snapshots.
+    - Opening a game by double-clicking while another game is
+      running now quits the previous game correctly.
+    - Database file is now correctly created even if data directory
+      didn't exist.
+    - Steam plugin now works if ~/.steam directory contains invalid
+      symlinks.
+  + Symbolic icon is now installed into symbolic/ directory instead
+    of scalable/.
+  + Deprecated HighContrast app icons have been removed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 13:27:48 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + UI:
+    - Make preferences window adaptive.
+    - Preferences window should now work better with window buttons
+      on the left side.
+  + Revert to non-portal file chooser for Flatpak, to allow adding
+    games consisting of multiple files.
+  + Update appdata to add launchable, provides and developer_name
+    tags, remove .desktop from application id.
+  + Appdata and desktop files are now validated when building.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  5 00:30:35 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + UI:
+    - Introduce a widget for switching between gamepad and keyboard
+      input. This is currently enabled for DOS and standalone
+      Libretro games.
+    - Make search bar in the collection adaptive.
+  + Fixes:
+    - Keyboard doesn't control every player in multiplayer games
+      anymore.
+    - Prevent a crash when creating snapshots of standalone
+      libretro games.
+    - Various code cleanups.
+  + Updated translations.
+- Changes from version 3.31.2:
+  + Drop custom development build style.
+  + Fixes:
+    - Fix build on upcoming Vala versions.
+    - Skip symlinked Steam directories to avoid duplicating games.
+    - Fix header bar buttons grabbing arrow keys in fullscreen.
+    - Various code cleanups.
+  + Updated translations.
+- Changes from version 3.31.1:
+  + UI:
+    - Update primary menu layout according to app menu retirement
+      initiative.
+    - Refine controller preferences: hide sidebar while testing
+      controllers and use better transitions.
+    - Wrap plugin descriptions in preferences.
+    - Remove double border on preferences sidebar.
+    - Use HdyColumn to allow preferences dialog to get smaller.
+    - Use HdyTitleBar in main and preferences windows.
+    - Update development build style.
+  + Don't build MAME plugin by default. It can still be enabled via
+    '-Dmame-plugin=true' build option.
+- Add pkgconfig(libhandy-0.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Oct 24 10:20:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + Fix search filter not updating when switching between
+    collection views.
+  + Fix header bar buttons grabbing arrow keys in fullscreen.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:06:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + MAME plugin loading is now slightly faster.
+  + Fix crash in PlayStation plugin.
+  + Pressed buttons in controller preferences are now positioned
+    correctly.
+  + Fix drawing failure in controller preferences.
+  + Fix occasional tiny thumbnails in Developers and Platforms
+    views.
+  + Fix GTK+ warnings when browsing collection.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 10:03:54 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Changes from version 3.29.92.1:
+  + UI:
+    - Add navigation with gamepads.
+    - Add the shortcuts for the gamepad controls in the shortcuts
+      window.
+    - Add Developers view that allows browsing games by developer.
+    - Add Platforms view that allows browsing game by platform.
+    - Use theme colors for GamepadView.
+    - Use symbolic icon for loading notification close button.
+  + Supported games:
+    - Add support for Flatpak-ed Steam games.
+  + Flatpak:
+    - Use `flatpak-spawn` to run Steam games.
+    - Fix displaying icons for Steam games.
+    - Fix downloading covers for Steam games.
+  + Cache covers on disk, significantly speeding up application UI.
+  + Fixes:
+    - Fix building with Vala 0.42.x.
+    - Fix many runtime warnings.
+    - Blacklist Flatpak-ed Steam desktop file.
+    - Various code cleanups.
+  + Update the authors and documenters lists.
+  + Updated translations.
+- Drop gnome-games-fix-build-vala42.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Jul 30 10:38:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.90:
+  + UI:
+    - Don't display the list of gamepads if none is available.
+    - Add borders around all lists in preferences.
+    - Scale the default emblem to the thumbnail's size.
+  + Ensure games in the collection are added only once.
+  + Add many more information about games and make Grilo fetch some
+    of it, thought this information is mostly unused.
+  + Fixes:
+    - Fix a reference leak leading to Libretro cores not being
+      uninitialized.
+    - Fix many potential crashers.
+    - Various code cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 28 21:03:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + Build:
+    - Replace the Autotools by Meson.
+    - Replace intltool for gettext.
+    - Replace the update-gameinfo build target by the
+      update-gameinfo.sh script.
+    - Add a development profile, settable by passing the
+      `-Dprofile=development` parameter to Meson. This profile
+      makes it clear the application is a development version by
+      appending ` (Development)` to the application name, by
+      appending `Devel` to the application ID, by changing the
+      style of the header bar and by appending the commit tag or
+      `-devel` to the version number.
+  + UI:
+    - Allow to set the keyboard to gamepad mapping from the
+      preferences Controllers page.
+    - Make searching for local covers less greedy and asynchronous,
+      speeding up the loading time of the collection.
+    - Move the application menu to the collection view's header
+      bar.
+    - Add the Help application menu entry, opening Games'
+      documentation on the GNOME wiki.
+    - Add the Shortcuts application menu entry displaying a
+      shortcuts window.
+    - Display small thumbnails if the window is narrow to display
+      more of games.
+    - Correctly update the selected media number on the media
+      selector.
+    - Drop the shadow in the collection view's scrolled window.
+  + Libretro backend:
+    - Add support for .options keyfiles listing options to be set
+      on a Libretro core at initialization time.
+    - Add predefined options for DeSmuME and DeSmuME 2015.
+  + Supported games:
+    - Add support for Virtual Boy games.
+    - Use a dedicated MIME type for Neo Geo Pocket Color instead of
+      the Neo Geo Pocket one.
+    - Use a phony TurboGrafx-CD MIME type to fetch information from
+      Grilo.
+  + Allow to read cue sheets in other formats than UTF-8, avoiding
+    the application to crash when parsing a file in UTF-16 or other
+    encoding.
+  + Update the authors lists.
+  + Update the appdata to the latest specifications, OARS metadata
+    and update gitlab links.
+  + Updated translations.
+- Switch to meson buildsystem, add meson BuildRequires and
+  corresponding macros.
+- Add gnome-games-fix-build-vala42.patch: Fix build with vala42.
+- Add fdupes BuildRequires and macro, remove duplicates.
+- Drop intltool and libtool BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Fri Apr 20 17:43:58 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.1:
+  + Allow axes to map to buttons in the gamepad mapping wizard.
+  + Unregister the grilo-plugin sources that are irrelevant to
+    Games.
+  + UI:
+   - Prevent display of multiple setting windows to the user.
+   - Use the standard size for media button's icon.
+  + Bugs fixed: glgo#GNOME/gnome-games#2, glgo#GNOME/gnome-games#9,
+    glgo#GNOME/gnome-games#12, bgo#782290.
+  + Updated Translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 16:12:45 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Libretro backend:
+    - Add a CRT video filter.
+    - Add gamepad rumble support.
+    - Skip core descriptors with no matching module file.
+  + UI:
+    - Make the collection icon view more compact.
+    - Exit games with Alt+Left/Right (depending on language) or
+      mouse back button.
+    - Wrap text of the empty collection pane to allow the window to
+      be smaller.
+  + Flatpak: Fix accessing files outside the sandbox.
+- Drop gnome-games-libmanette-2.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar  7 13:42:59 UTC 2018 - dimstar@opensuse.org
+
+- Add gnome-games-libmanette-2.patch: Allow building with
+  libmanette 2.0.
+- Add libtool BuildRequires and call autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:12 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 13 03:55:05 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + Replace the custom game controller support by libmanette. The
+    gamepad configuration storage changed accordingly and
+    previously configured gamepads have to be configured again.
+  + Set the Retro.CoreView as the default controllers for the
+    Retro.Core.
+  + Updated translations.
+- Drop libevdev, gudev-1.0 and add libmanette-0.2 pkgconfig(*)
+  BuildRequires: following upstream as shown above.
+- Run spec-cleaner, modernize spec, use autosetup, make_build
+  and make_install macros.
+
+-------------------------------------------------------------------
+Mon Oct 16 06:32:27 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 3.27.1:
+  + Adapt to API changes in retro-gtk 0.13.1.
+  + Properly define the log domains of the plugins.
+  + Fix the gettext domain of the gschema.
+  + Bump retro-gtk to 0.14.
+- Replace pkgconfig(retro-gtk-0.12) BuildRequires with
+  pkgconfig(retro-gtk-0.14).
+
+-------------------------------------------------------------------
+Wed Oct  4 17:32:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.1.1:
+  + Updated translations.
+- Drop tar scm service, upstream now have regular releases.
+
+-------------------------------------------------------------------
+Sat Sep 30 20:21:27 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Updated translations.
+- Drop %icon_theme_cache_*, %icon_theme_cache_*
+  and %glib2_gsettings_schema_* post/postun macros: functionality
+  now covered by file triggers.
+
+-------------------------------------------------------------------
+Mon Sep 11 05:50:55 UTC 2017 - aplazas@suse.com
+
+- Update to version 3.26.0:
+  + playstation: Parse only the basename of the executable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 12:56:23 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 3.25.92:
+  + Allow users to use any of their gamepads with integrated games
+    by configuring their gamepads against the de-facto standard
+    one. This is implemented via a wizard in the preferences page
+    (bgo#780754).
+  + Updated translations.
+- Add BuildRequires pkgconfig(librsvg-2.0), new dependency.
+
+-------------------------------------------------------------------
+Tue Jul 18 09:30:34 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 3.25.4:
+  + The way the games collection is built has been completely
+    reworked to replace the GameSource types generating Game
+    objects from any way of the implementation's choice by the trio
+    of UriSource, UriGameFactory and GameCollection. UriSource
+    generate URIs from any way of the implementation's choice,
+    UriGameFactory generate Game objects from URIs and
+    GameCollection acting as a glue between the two. This new
+    flexibility in the creation of the games collection helped to
+    simplify the way many game types were defined and helped to
+    introduce new game sources to the collection.
+  + Game URIs can now be passed as command line arguments, allowing
+    your game files to be opened with Games from your file manager.
+    The game will be automatically started by doing so.
+  + Add a "Add game files" button to the collection view, allowing
+    you to add game files from the collection view to the
+    collection.
+  + Game resources passed via the command line or the "Add game
+    files" button are stored in a database and restored when
+    starting the application. This allows Games to see your games
+    even if its game resources detection mechanisms failed.
+  + Introduction of RetroSimpleType to replace many very similar
+    plugins by this simple and easier to maintain generic
+    implementation of the Libretro based game types.
+  + Supported games:
+    - Add support for Atari Lynx, MS-DOS, WonderSwan and WonderSwan
+      Color games.
+    - Improve the detection of PlayStation discs by parsing them as
+      an emulator would instead of using lucky guessing the
+      location of the required information in the disc.
+    - Don't display desktop games setting the NoDisplay or Hidden
+      keys.
+  + Gamepad:
+    - Port the gamepad handling system from Vala to C to avoid
+      using Vala's preprocessor as it is poorly handled by the
+      autotools, resulting in broken tarballs.
+    - Make gamepads send events similar to GdkEvent.
+    - Replace the custom input types by the Linux event codes.
+  + UI:
+    - Use the more appropriate GtkMessageDialog instead of
+      GtkDialog for most of the existing custom dialogs.
+    - Refine the look of MediaSelector, using checkmarks to denote
+      the currently used media.
+    - Use theme relative colors for the games collection.
+    - Drop a useless sorting invalidation in CollectionIconView,
+      which makes the game collection loads a bit faster.
+  + Improved logging of the Libretro cores by using the Core.log()
+    signal with the retro_g_log() function which have been
+    introduced in retro-gtk recently. This will log messages from
+    the Libretro core with the core's name as the log domain
+    instead of GNOME Games.
+  + Improve the parameters passed to the grep command to avoid
+    injections.
+  + Bump retro-gtk to 0.12.
+  + Bump tracker-sparql to 2.0.
+  + Updated translations.
+- Add BuildRequires pkgconfig(sqlite3), new dependency.
+- Replace pkgconfig(retro-gtk-0.10) with pkgconfig(retro-gtk-0.12)
+  BuildRequires.
+- Replace  pkgconfig(tracker-sparql-1.0) with
+  pkgconfig(tracker-sparql-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Apr 11 07:03:18 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 3.24.1:
+  + Clean the licensing up all around the project (bgo#781036).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 15:19:42 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0.2:
+  + Distribute more files (bgo#780318).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 16:04:35 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0.1:
+  + Distribute the .gschema.xml.
+
+-------------------------------------------------------------------
+Mon Mar 20 13:44:52 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Make distcheck produce .xz tarballs by default
+  + Add the Flatpak build manifest for the PicoDrive extension
+  + Add metadata to the produced screenshots
+  + Bugs fixed: bgo#769833, bgo#779987.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 13 14:05:13 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Add the Flatpak build manifest.
+  + Look for Libretro cores recursively into directories.
+  + Fix some typos.
+  + Bugs fixed: bgo#779403, bgo#779780.
+  + Updated translations.
+- Drop _service: this is published as proper tarballs by upstream.
+- Drop libtool BuildRequires and no longer call autogen.sh: the
+  tarball is properly bootstrapped.
+
+-------------------------------------------------------------------
+Tue Feb 28 08:56:18 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 3.23.91:
+  + Allow to have smooth or sharp video output on retro games.
+  + Add more explicative error messages.
+  + Remember the size of the application window.
+  + Remember the maximized state of the application window.
+  + Remember the fullscreen state of the retro games.
+  + Prevent a useless empty button to be displayed on the error
+    page.
+  + Prevent keyboard shortcuts to set the window fullscreen when
+    not allowed.
+  + Fix keyboard navigation in the game collection.
+  + Check the presence of mandatory firmwares.
+  + List standalone Libretro games.
+- Handle gschema files in post(un).
+
+-------------------------------------------------------------------
+Tue Feb 14 09:25:48 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 3.23.90:
+  + Show a spinner notification when loading games.
+  + Smooth out the collection icons arrangement.
+  + Hide menubar when the app menu is disabled.
+  + Check there is a media set before updating it.
+  + Support Libretro cores having a Libretro Core Descriptor.
+  + Auto-detect Libretro cores supporting serialization.
+  + Be more tolerant with serialization sizes to follow Libretro
+    rules.
+  + Allow Libretro cores to load firmwares in
+    ~/.config/gnome-games.
+  + Add support for FDS games.
+  + Avoid some valid Game Boy games to not be detected.
+- Backwards-incompatible changes:
+  + Drop support for the .info Libretro core descriptor format in
+    favor of a new .libretro format.
+  + Drop support for Libretro cores in $(libdir)/retro-1.0/plugins
+    in favor of the ones in $(libdir)/libretro.
+  + Drop support for Libretro core paths in the
+    RETRO_PLUGIN_PATH_1_0 environment variable in favor of the ones
+    in LIBRETRO_PLUGIN_PATH.
+- Replace pkgconfig(retro-gobject-0.8) and pkgconfig(retro-gtk-0.8)
+  BuildRequires with pkgconfig(retro-gtk-0.10).
+
+-------------------------------------------------------------------
+Wed Sep 21 11:03:07 UTC 2016 - dimstar@opensuse.org
+
+- Initial package, version 3.22.0.
+

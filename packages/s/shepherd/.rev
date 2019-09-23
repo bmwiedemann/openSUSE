@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc04d775a3a8f53ca6ad69deaaa857dc</srcmd5>
+    <version>0.3.2</version>
+    <time>1520853105</time>
+    <user>dimstar_suse</user>
+    <comment>This is new build dependency for Guix package.
+
+Not much useful for anything else atm.
+
+conflicting man pages moved to shepherd-bins so conflict should be gone</comment>
+    <requestid>585329</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de6376905cdaf3b195cf686966146e4a</srcmd5>
+    <version>0.4.0</version>
+    <time>1524576680</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to version 0.4.0 and improve spec file.</comment>
+    <requestid>593862</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>79ad9231c0e7e90193858b683880ff95</srcmd5>
+    <version>0.5.0</version>
+    <time>1542889548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650594</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95a946a129b642df0f714705b20ab7bc</srcmd5>
+    <version>0.6.1</version>
+    <time>1560970615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1
+</comment>
+    <requestid>702619</requestid>
+  </revision>
+</revisionlist>

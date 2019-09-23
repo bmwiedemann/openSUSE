@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98899c23ea8e02b3f0f29338a0b63bc0</srcmd5>
+    <version>0.9.12</version>
+    <time>1365140204</time>
+    <user>coolo</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-03/msg00468.html</comment>
+    <requestid>160455</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>98899c23ea8e02b3f0f29338a0b63bc0</srcmd5>
+    <version>0.9.12</version>
+    <time>1379664242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa631fc4df53cfb6d0a484ea0b18708a</srcmd5>
+    <version>0.9.13</version>
+    <time>1386319688</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.13
+  + IPv6 Support
+  + Officially remove support for &lt;= Python 2.5 even though it was
+    broken already
+  + Drop pika.simplebuffer.SimpleBuffer in favor of the Python stdlib
+    collections.deque object
+  + New default object for receiving content is a “bytes” object which
+    is a str wrapper in Python 2, but paves way for Python 3 support
+  + New “Raw” mode for frame decoding content frames (#334) addresses
+    issues #331, #229
+  + Connection and Disconnection logic refactored, allowing for cleaner
+    separation of protocol logic and socket handling logic as well as
+    connection state management
+  + New “on_open_error_callback” argument in creating connection
+    objects and new Connection.add_on_open_error_callback method
+  + New Connection.connect method to cleanly allow for reconnection code
+  + Support for all AMQP field types, using protocol specified
+    signed/unsigned unpacking
+  + Method signature for creating connection objects has new argument
+    “on_open_error_callback” which is positionally before “on_close_callback”
+  + Internal callback variable names in connection.Connection have been
+    renamed and constants used. If you relied on any of these callbacks
+    outside of their internal use, make sure to check out the new constants.
+  + Connection._connect method, which was an internal only method is now
+    deprecated and will raise a DeprecationWarning. If you relied on 
+    this method, your code needs to change.
+  + pika.simplebuffer has been removed
+  + BlockingConnection consumer generator does not free buffer
+    when exited (#328)
+  + Unicode body payloads in the blocking adapter raises exception (#333)
+  + Support “b” short-short-int AMQP data type (#318)
+  + Docstring type fix in adapters/select_connection (#316)
+  + IPv6 not supported (#309)
+  + Stop the HeartbeatChecker when connection is closed (#307)
+  + Unittest fix for SelectConnection (#336)
+  + Handle condition where no connection or socket exists but
+    SelectConnection needs a timeout for retrying a connection (#322)
+  + TwistedAdapter lagging behind BaseConnection changes (#321)
+  + Refactored documentation
+  + Added Twisted Adapter example (#314)
+- Remove CFLAGS definition
+- Remove redundant %clean section (forwarded request 209552 from posophe)</comment>
+    <requestid>209553</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>aa631fc4df53cfb6d0a484ea0b18708a</srcmd5>
+    <version>0.9.13</version>
+    <time>1409302943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9dd66124fcc3d03c160e8e588b600d13</srcmd5>
+    <version>0.9.14</version>
+    <time>1427445696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293302</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84aee1b56759315c73f9c416287e8647</srcmd5>
+    <version>0.10.0</version>
+    <time>1462342740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373710</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>dffd3c10b5c5b65d9263f3b3fc4f1008</srcmd5>
+    <version>0.10.0</version>
+    <time>1503393095</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to singlespec</comment>
+    <requestid>518057</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>969e4754bf7a71622c50c534e980acc6</srcmd5>
+    <version>0.11.0</version>
+    <time>1509036234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535000</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4decac81d13773f047bcde4a15d1cb30</srcmd5>
+    <version>0.12.0</version>
+    <time>1538374621</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 1119-increase_timeouts.patch to increase timeouts and hopefully
+  make tests more resilient.
+- Fix %files section double inclduing egg files.
+- Switch to github tarball in order to get tests
+- Run the tests
+- Version update to 0.12.0:
+  * BlockingConnection now supports the add_callback_threadsafe method which
+    allows a function to be executed correctly on the IO loop thread.
+- Added Dep: Pika requires ssl python module provided by python
+- Fix license macro
+</comment>
+    <requestid>638342</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0337d0e344379f9eaaee2acf9c7056bd</srcmd5>
+    <version>0.13.0</version>
+    <time>1549464502</time>
+    <user>coolo</user>
+    <comment>- Update to 0.13.0:
+  * AsyncioConnection, TornadoConnection and TwistedProtocolConnection are no longer auto-imported
+  * Python 3.7 support
+- Drop merged patch 1119-increase_timeouts.patch
+</comment>
+    <requestid>671960</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>257d0ad351960b6f733daf53f94120db</srcmd5>
+    <version>0.13.1</version>
+    <time>1552572034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * URLParameters with SSL options not working</comment>
+    <requestid>684704</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>651fb6845f26cee9d5f908910a52244c</srcmd5>
+    <version>1.0.0</version>
+    <time>1554749630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0
+ * AsyncioConnection, TornadoConnection and TwistedProtocolConnection
+     are no longer auto-imported
+ * BlockingConnection.consume now returns (None, None, None) when inactivity
+     timeout is reached
+ * Python 3.7 support
+ * all_channels parameter of the Channel.basic_qos method renamed to global_qos
+ *  global_ parameter of the Basic.Qos spec class renamed to global_qos
+ * NOTE: heartbeat_interval is removed, use heartbeat instead.
+ * NOTE: The backpressure_detection option of ConnectionParameters
+     and URLParameters property is REMOVED in favor of Connection.Blocked
+     and Connection.Unblocked. See Connection.add_on_connection_blocked_callback</comment>
+    <requestid>692275</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5706007ad146c380b73533c15933f23d</srcmd5>
+    <version>1.0.1</version>
+    <time>1555691946</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1
+ * API docstring updates
+ * Twisted adapter: Add basic_consume Deferred to the call list</comment>
+    <requestid>695707</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6fed69ffa507cbddb08878188a54e0c7</srcmd5>
+    <version>1.0.1</version>
+    <time>1560971322</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for older distros which fail with
+  UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 4575: \
+    ordinal not in range(128)
+  Added e95001e480ec30f1617c47e77fb92e0384ff9e78.patch</comment>
+    <requestid>710562</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>da1179c92a5c146dc3639cf5d12bd7b1</srcmd5>
+    <version>1.1.0</version>
+    <time>1563914414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * various bugfixes
+- Drop merged patch e95001e480ec30f1617c47e77fb92e0384ff9e78.patch</comment>
+    <requestid>717865</requestid>
+  </revision>
+</revisionlist>

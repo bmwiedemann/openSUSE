@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Nov 18 11:10:49 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon Feb  7 15:20:08 UTC 2011 - chris@computersalat.de
+
+- recreated by cpanspec 1.78.03
+  * fix deps
+
+-------------------------------------------------------------------
+Mon Jan  3 15:34:12 UTC 2011 - mmarek@novell.com
+
+- Mark package as noarch.
+
+-------------------------------------------------------------------
+Mon Jan  3 14:01:18 UTC 2011 - mmarek@novell.com
+
+- Packaged CGI-Ajax-0.707.
+

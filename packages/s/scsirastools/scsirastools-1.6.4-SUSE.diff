@@ -1,0 +1,211 @@
+diff -Naurp scsirastools-1.6.4.orig/doc/Makefile.am scsirastools-1.6.4/doc/Makefile.am
+--- scsirastools-1.6.4.orig/doc/Makefile.am	2011-08-23 13:26:05.000000000 +0000
++++ scsirastools-1.6.4/doc/Makefile.am	2012-10-15 14:10:14.289365169 +0000
+@@ -13,8 +13,10 @@ exe_prefix =
+ datadir = ${prefix}/share
+ mandir = ${prefix}/share/man
+ sysconfdir = ${exe_prefix}/etc
++docdir = ${datadir}/doc/packages
+ sbindir = ${exe_prefix}/sbin
+ datato = ${DESTDIR}${datadir}/scsirastools
++docto = ${DESTDIR}${docdir}/scsirastools
+ 
+ sbin_PROGRAMS = 
+ 	
+@@ -34,9 +36,10 @@ install:
+ 	${INSTALL_DATA_CMD} $(fromd)/sgraidmon.8   ${DESTDIR}${mandir}/man8
+ 	${INSTALL_DATA_CMD} $(fromd)/sgdiskmon.8   ${DESTDIR}${mandir}/man8
+ 	${INSTALL_DATA_CMD} $(fromd)/sgsafte.8     ${DESTDIR}${mandir}/man8
+-	${INSTALL_DATA_CMD} $(fromd)/UserGuide     ${datato}
+-	${INSTALL_DATA_CMD} $(TOPDIR)/README       ${datato}
+-	${INSTALL_DATA_CMD} $(TOPDIR)/COPYING      ${datato}
+-	${INSTALL_DATA_CMD} $(TOPDIR)/kern/SCSIRAS ${datato}
++	$(MKDIR) ${docto}
++	${INSTALL_DATA_CMD} $(fromd)/UserGuide     ${docto}
++	${INSTALL_DATA_CMD} $(TOPDIR)/README       ${docto}
++	${INSTALL_DATA_CMD} $(TOPDIR)/COPYING      ${docto}
++	${INSTALL_DATA_CMD} $(TOPDIR)/kern/SCSIRAS ${docto}
+ 	
+ EXTRA_DIST = 
+diff -Naurp scsirastools-1.6.4.orig/files/sgdisk scsirastools-1.6.4/files/sgdisk
+--- scsirastools-1.6.4.orig/files/sgdisk	2011-08-23 13:26:05.000000000 +0000
++++ scsirastools-1.6.4/files/sgdisk	2012-10-15 14:10:14.289365169 +0000
+@@ -5,11 +5,13 @@
+ # processname: sgdiskmon
+ # description: sgdisk is used to start/stop the sgdiskmon software raid1 daemon
+ #
+-### BEGIN SLES INIT INFO
++### BEGIN INIT INFO
+ # Provides: sgdisk
+ # Required-Start: $local_fs
+-# Default-Start:  3 4 5
++# Required-Stop: $local_fs
++# Default-Start:  3 5
+ # Default-Stop:   0 1 2 6
++# Short-Description: sgdiskmon daemon
+ # Description: sgdisk is used to start/stop the sgdiskmon software raid1 daemon
+ ### END INIT INFO
+ 
+@@ -24,15 +26,16 @@ else
+ fi
+ 
+ # Dont need functions any more
+-#if [ $osver = suse ]
+-#then
+-#	. /etc/rc.status
++if [ $osver = suse ]
++then
++	. /etc/rc.status
+ #else
+ #	. /etc/init.d/functions
+-#fi
++fi
+ 
+ case "$1" in 
+ "start")
++	echo -n "Starting sgdiskmon "
+ 	# Is sg module loaded?
+ 	lsmod | grep sg >/dev/null
+         if [ $? -ne 0 ]
+@@ -44,18 +47,34 @@ case "$1" in
+ 	if [ "${rpid}" != "" ]
+ 	then
+ 	    echo "sgdiskmon is already started"
+-	    exit 1
++	    rc_status -v
++	    rc_exit
+ 	fi
+ 	sgdiskmon -b 
++	rc_status -v
+ 	touch /var/lock/subsys/sgdiskmon 
+ 	;;
+ "stop")
++	echo -n "Stopping sgdiskmon "
+ 	rpid=`ps -ef |grep sgdiskmon |grep -v grep |awk '{print $2}'`
+ 	if [ "${rpid}" != "" ]
+ 	then
++           echo -n "(pid $rpid) "
+ 	   kill $rpid
+ 	fi
+ 	rm -f /var/lock/subsys/sgdiskmon 
++	rc_status -v
++	;;
++"status")
++	echo -n "Checking for sgdiskmon "
++	rpid=`ps -ef |grep sgdiskmon |grep -v grep |awk '{print $2}'`
++	if [ "${rpid}" != "" ]
++	then
++	  echo "(pid $rpid)"
++  	else
++      rc_failed 3
++	fi
++	rc_status -v
+ 	;;
+ *)
+         echo "Usage: $0 start|stop"
+@@ -63,4 +82,4 @@ case "$1" in
+ 	;;
+ esac
+ 
+-exit 0
++rc_exit
+diff -Naurp scsirastools-1.6.4.orig/files/sgraid scsirastools-1.6.4/files/sgraid
+--- scsirastools-1.6.4.orig/files/sgraid	2011-08-23 13:26:05.000000000 +0000
++++ scsirastools-1.6.4/files/sgraid	2012-10-15 14:14:26.409827836 +0000
+@@ -5,11 +5,13 @@
+ # processname: sgraidmon
+ # description: sgraid is used to start/stop the sgraidmon software raid1 daemon
+ #
+-### BEGIN SLES INIT INFO
++### BEGIN INIT INFO
+ # Provides: sgraid
+ # Required-Start: $local_fs
+-# Default-Start:  3 4 5
++# Required-Stop: $local_fs
++# Default-Start:  3 5
+ # Default-Stop:   0 1 2 6
++# Short-Description: sgraidmon daemon
+ # Description: sgraid is used to start/stop the sgraidmon software raid1 daemon
+ ### END INIT INFO
+ 
+@@ -24,15 +26,16 @@ else
+ fi
+ 
+ # Dont need functions any more
+-#if [ $osver = suse ]
+-#then
+-#	. /etc/rc.status
+-#else
+-#	. /etc/init.d/functions
+-#fi
++if [ $osver = suse ]
++then
++	. /etc/rc.status
++else
++	. /etc/init.d/functions
++fi
+ 
+ case "$1" in 
+ "start")
++	echo -n "Starting sgraidmon "
+ 	# Is sg module loaded?
+ 	lsmod | grep sg >/dev/null
+         if [ $? -ne 0 ]
+@@ -44,7 +47,9 @@ case "$1" in
+ 	if [ "${rpid}" != "" ]
+ 	then
+ 	    echo "sgraidmon is already started"
+-	    exit 1
++	    rc_failed 1
++	    rc_status -v
++	    rc_exit
+ 	fi
+ 	# Could probably skip the 'mdevt Save' if it was already done once.
+ 	# Get the first disk device configured in /etc/raidtab via getmd
+@@ -62,15 +67,29 @@ case "$1" in
+ 	   mdevt Save /dev/$rdev
+ 	fi
+ 	sgraidmon -b 
++	rc_status -v
+ 	touch /var/lock/subsys/sgraidmon 
+ 	;;
+ "stop")
++	echo -n "Stopping sgraidmon "
+ 	rpid=`ps -ef |grep sgraidmon |grep -v grep |awk '{print $2}'`
+ 	if [ "${rpid}" != "" ]
+ 	then
+ 	   kill $rpid
+ 	fi
+ 	rm -f /var/lock/subsys/sgraidmon 
++	rc_status -v
++	;;
++"status")
++	echo -n "Checking for sgraidmon "
++	rpid=`ps -ef |grep sgraidmon |grep -v grep |awk '{print $2}'`
++	if [ "${rpid}" != "" ]
++	then
++	  echo -n "(pid $rpid)"
++	else
++	  rc_failed 3
++	fi
++	rc_status -v
+ 	;;
+ *)
+         echo "Usage: $0 start|stop"
+@@ -78,4 +97,5 @@ case "$1" in
+ 	;;
+ esac
+ 
+-exit 0
++rc_exit
++
+diff -Naurp scsirastools-1.6.4.orig/Makefile.am scsirastools-1.6.4/Makefile.am
+--- scsirastools-1.6.4.orig/Makefile.am	2011-08-23 13:26:05.000000000 +0000
++++ scsirastools-1.6.4/Makefile.am	2012-10-15 14:10:14.293365177 +0000
+@@ -1,5 +1,5 @@
+ 
+-SUBDIRS = mdadm.d src files doc 
++SUBDIRS = src files doc
+ PKGDIR = /usr/src/redhat
+ SOURCEDIR = $(PKGDIR)/SOURCES
+ BUILDDIR = $(PKGDIR)/BUILD

@@ -1,0 +1,3 @@
+addFilter("summary-not-capitalized")
+addFilter("shared-lib-calls-exit")
+addFilter("shlib-policy-name-error") # dlopened extras

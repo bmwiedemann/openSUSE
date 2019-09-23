@@ -1,0 +1,5 @@
+<package name="kde-dev-utils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kde-dev-utils"/>
+</package>

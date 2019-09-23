@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Mon Jun 11 18:12:58 UTC 2018 - bjorn.lie@gmail.com
+
+- Build against gtk3:
+  * Replace gtk2-devel with pkgconfig(gtk+-3.0) and
+    pkgconfig(glib-2.0) BuildRequires.
+  * Replace vte2-devel with pkgconfig(vte-2.91) BuildRequires.
+  * Pass --enable-gtk3=yes to configure.
+- Add lxterminal-fix-gtk3-comp-warnings.patch: Silence some
+  warnings during compilation, patch from upstream git.
+- Add conditional for post(un) desktop_database_post(un) macros, no
+  longer needed for newer versions of openSUSE.
+
+-------------------------------------------------------------------
+Wed Jan 10 16:32:25 UTC 2018 - kbabioch@suse.com
+
+- new upstream version 0.3.1:
+ * Fix CVE-2016-10369, a Denial-of-Service vulnerability. (boo#1038127)
+ * Fix bug that prevents changing tab name, which is introduced since 0.3.0.
+ * The keyboard shortcut can be changed by pressing key combinations.
+- added lxterminal-0.3.1-return-value-unixterminal.patch to fix compiler warnings
+
+-------------------------------------------------------------------
+Sun Dec 25 13:37:54 UTC 2016 - trcs@gmx.com
+
+- new upstream version 0.3.0
+  * Arguments are now properly passed to child process
+  * Fixed login shell, also applies to new tabs
+  * Renamed tabs can now be reset, fixed '--title'
+  * Improved GTK3 and VTE support
+  * Added palette customization
+  * Added terminal zoom feature
+  * Added tab activity notification (bold)
+  * Added --no_remote to spawn a separate teminal process
+  * Optional confirmation when closing multiple tabs
+
+-------------------------------------------------------------------
+Thu Oct 23 10:32:43 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.2.0
+- removed patch lxterminal-0.1.11_fix_ctrl_c_break.patch in upstream code 
+- removed obsolete-suse-version-checks
+
+-------------------------------------------------------------------
+Sun Aug 17 18:51:29 UTC 2014 - andrea@opensuse.org
+
+- added lxterminal-0.1.11_fix_ctrl_c_break.patch to fix bnc#891851 
+
+-------------------------------------------------------------------
+Thu Sep 22 08:30:41 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in lxterminal.spec
+
+-------------------------------------------------------------------
+Fri Jul 29 09:08:52 UTC 2011 - andrea@opensuse.org
+
+- upstream bugfix release 0.1.11
+- removed lxterminal-0.1.10-fix-rgba-composite.patch and
+  lxterminal-0.1.10-fix-desyncronization.patch now in
+  upstream code 
+
+-------------------------------------------------------------------
+Tue Jul 26 10:33:11 UTC 2011 - andrea@opensuse.org
+
+- added lxterminal-0.1.10-fix-rgba-composite.patch
+  and lxterminal-0.1.10-fix-desyncronization.patch
+  to fix upstream bugs 3372388 and 3376800
+
+-------------------------------------------------------------------
+Sun Jul 24 12:14:57 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.1.10
+  * translations update
+  * gtk3 support
+  * bug fixes
+- removed patches now in upsteam code 
+
+-------------------------------------------------------------------
+Tue May 31 10:01:36 UTC 2011 - andrea@opensuse.org
+
+- build with gtk2 based vte package on suse > 11.4 
+
+-------------------------------------------------------------------
+Mon Mar 14 18:51:11 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Thu Sep  2 17:42:41 UTC 2010 - andrea@opensuse.org
+
+- added lxterminal-0.1.9-fix-char_widthheight.patch to fix
+  failure cause of vte deprecated API (thanks BManojlovic) 
+
+-------------------------------------------------------------------
+Wed Sep 01 21:10:55 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.9
+  - fixed mistake in preferences file write sf#3056693
+  - translations updates
+  - fix next/prev tab key shortcuts leave garbage characters
+    in window problem sf#3036190
+- removed patches that taken from upstream git code
+
+-------------------------------------------------------------------
+Thu Jul 29 08:30:55 UTC 2010 - andrea@opensuse.org
+
+- added lxterminal-0.1.8-fix_alt-key_after_tab_delete.patch to
+  fix bug sf#3036189 
+
+-------------------------------------------------------------------
+Wed Jul 21 10:07:47 UTC 2010 - andrea@opensuse.org
+
+- added lxterminal-0.1.8-hide_menu_bar-sf3032519.patch to fix
+  bug sf#3032519 
+
+-------------------------------------------------------------------
+Tue Jul 20 07:42:08 UTC 2010 - andrea@opensuse.org
+
+- added lxterminal-0.1.8-fix-alt_n-sf3006779.patch (backport from
+  upstream git) to fix bug sf#3006779
+- split out lang package
+
+-------------------------------------------------------------------
+Mon Jul 19 22:28:03 UTC 2010 - andrea@opensuse.org
+
+- new upstream versio 0.1.8 
+- removed lxterminal-0.1.7-fix-path.patch now into upstream code
+- port lxterminal-0.1.6-disable-f10.patch to apply on new code,
+  the patch is now lxterminal-0.1.8-disable-f10.patch
+
+-------------------------------------------------------------------
+Mon Jun  7 14:20:49 UTC 2010 - andrea@opensuse.org
+
+- changed RPM Group to System/GUI/LXDE
+
+-------------------------------------------------------------------
+Tue Apr  6 08:19:14 UTC 2010 - andrea@opensuse.org
+
+- removed un-supported locales
+
+-------------------------------------------------------------------
+Wed Mar 10 16:15:04 UTC 2010 - andrea@opensuse.org
+
+- added lxterminal-0.1.7-fix-path.patch now -e option will work
+  again with commands not in the $PATH, example:
+  lxterminal -e ./command
+  will work again now 
+
+-------------------------------------------------------------------
+Mon Mar  1 23:46:09 UTC 2010 - andrea@opensuse.org
+
+- new upstream version 0.1.7
+  * several bug fixes
+  * URLs are now interactive and click on them
+    will open default browser 
+- removed no more needed patches
+
+-------------------------------------------------------------------
+Sat Dec 12 15:00:40 UTC 2009 - andrea@opensuse.org
+
+- bzipped source code
+- disable f10 shortcut because ncurses yast use it
+- translations upgrade 
+
+-------------------------------------------------------------------
+Mon Jul 13 15:00:33 UTC 2009 - andrea@opensuse.org
+
+- New stable version 0.1.6
+- fix no-return-in-non-void issue
+
+-------------------------------------------------------------------
+Fri May 22 15:00:33 UTC 2009 - andrea@opensuse.org
+
+- New package 

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9793522f37c7eadd938d6388f39f226</srcmd5>
+    <version>0.2.0</version>
+    <time>1535705204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632162</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>780a4dcc9663175f5ac2d1b7ccf26bd0</srcmd5>
+    <version>1.0.0</version>
+    <time>1566894441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726269</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5dc1396b38fb9cad4805d3f1515dda19</srcmd5>
+    <version>1.0.0</version>
+    <time>1569234746</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch 0002-Fix-README.md-has-unicode.patch
+  * wrong encoding is used when opening README.md in setup.py (forwarded request 731646 from scarabeus_iv)</comment>
+    <requestid>731648</requestid>
+  </revision>
+</revisionlist>

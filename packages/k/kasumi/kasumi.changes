@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Sun Nov 13 09:11:50 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Thu Jul 30 11:30:42 CEST 2009 - tiwai@suse.de
+
+- updated to version 2.5:
+  * Remove "SIKU" conjugation.
+  * Kill duplicated Ikuya Awashiro in man page
+  * Added some word type subcategories
+  * Fix misc warnings
+  * Fix paddings in windows
+  * Fix minimum size of columns in the word list view
+  * Other code clean ups
+
+-------------------------------------------------------------------
+Wed Jun 10 08:02:20 CEST 2009 - tiwai@suse.de
+
+- updated to version 2.4:
+  * default coding to UTF-8
+  * -E option for EUC-JP mode
+
+-------------------------------------------------------------------
+Tue Nov 06 18:20:11 CET 2007 - mfabian@suse.de
+
+- update to 2.3:
+  • FTBFS with GCC 4.3: missing #includes
+    http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=417266
+    Thaks to Martin Michlmayr <tbm@cyrius.com>.
+  • kasumi dumps core on x86_64 systems when trying
+    to add new words to the dictionary
+    https://bugzilla.novell.com/show_bug.cgi?id=253788
+    Thanks to Mike Fabian (-> remove 64bit patch).
+  • fail in the judgment of the version.
+    http://kasumi.sourceforge.jp/index.php?%A5%D0%A5%B0%CA%F3%B9%F0%2F95
+    Thanks to dtana.
+- remove typo.patch.
+- fix build with gcc 4.3.
+
+-------------------------------------------------------------------
+Mon May 21 18:11:11 CEST 2007 - mfabian@suse.de
+
+- fix build on STABLE (remove X-SuSE-translate=true from .desktop
+  file).
+
+-------------------------------------------------------------------
+Wed Mar 14 12:51:57 CET 2007 - mfabian@suse.de
+
+- enable 64bit patch again.
+
+-------------------------------------------------------------------
+Tue Mar 13 14:47:38 CET 2007 - mfabian@suse.de
+
+- updating to 2.2 (also fixes Bugzilla #253788)
+  • man page added
+  • Italian translations added
+
+-------------------------------------------------------------------
+Mon Aug 28 21:54:37 CEST 2006 - mfabian@suse.de
+
+- update to 2.0.1.
+  • search function for KasumiMainWindow
+  • obsolete "Add Mode" button
+  • set an alternative word type if specified one does not exist
+  • measures against an anthy's defect that it returns error code
+    even when it is right and no word is registered.
+
+-------------------------------------------------------------------
+Tue Feb 28 18:37:56 CET 2006 - mfabian@suse.de
+
+- add: "Provides: locale(anthy:ja)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:06 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 14:44:29 CET 2006 - mfabian@suse.de
+
+- update to 1.0.
+
+-------------------------------------------------------------------
+Wed Oct 19 11:57:20 CEST 2005 - mfabian@suse.de
+
+- update to 0.10.
+- fix build problem with gcc 4.1.
+
+-------------------------------------------------------------------
+Fri Aug 05 14:47:52 CEST 2005 - mfabian@suse.de
+
+- update to 0.9.
+
+-------------------------------------------------------------------
+Wed Feb 23 12:43:39 CET 2005 - mfabian@suse.de
+
+- fix some typos.
+
+-------------------------------------------------------------------
+Thu Feb 17 14:18:48 CET 2005 - mfabian@suse.de
+
+- new package: kasumi, version 0.7.
+

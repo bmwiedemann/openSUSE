@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>br.com.kurso</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <name>Kurso de Esperanto</name>
+  <summary>Multimedia application for teaching oneself Esperanto</summary>
+  <description>
+    <p>
+      Kurso de Esperanto is a multimedia computer application for teaching oneself
+      Esperanto. Here are several of its features:
+    </p>
+    <ul>
+      <li>Just 12 lessons.</li>
+      <li>Pronunciation and listening exercises.</li>
+      <li>Audio songs – learn while you sing!</li>
+      <li>A wide variety of exercises, to reinforce the learning points.</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">br.com.kurso.desktop</launchable>
+
+  <url type="homepage">http://kurso.com.br/</url>
+
+  <provides>
+    <binary>kurso-de-esperanto</binary>
+  </provides>
+</component>

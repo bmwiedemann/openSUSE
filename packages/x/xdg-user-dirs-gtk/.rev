@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>4920eaa8ec7849cd2f95f2c0bf9fefc0</srcmd5>
+    <version>0.7</version>
+    <time>1206677230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0fd464a131e8818ae0a4c2d80e71cf62</srcmd5>
+    <version>0.8</version>
+    <time>1221301709</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3141f797c7d74eac3cfd7c010a810f87</srcmd5>
+    <version>0.8</version>
+    <time>1229343503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9259b0c093d040833887f199097f414b</srcmd5>
+    <version>0.8</version>
+    <time>1236811566</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9259b0c093d040833887f199097f414b</srcmd5>
+    <version>0.8</version>
+    <time>1236811566</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>483f3ad8b432811e731312860b52f3bf</srcmd5>
+    <version>0.8</version>
+    <time>1267783200</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/xdg-user-dirs-gtk based on submit request 33994 from user dimstar
+</comment>
+    <requestid>33994</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>8efcf8896f94ca03b57bb8028a6e72a0</srcmd5>
+    <version>0.8</version>
+    <time>1268926548</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>8efcf8896f94ca03b57bb8028a6e72a0</srcmd5>
+    <version>0.8</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>8efcf8896f94ca03b57bb8028a6e72a0</srcmd5>
+    <version>0.8</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>c8aa29d2c2ef58ede30be66df1f4ce9b</srcmd5>
+    <version>0.8</version>
+    <time>1295021500</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58221 from user vuntz
+</comment>
+    <requestid>58221</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>9aef0a3aa64b9a64f3340a937092e7af</srcmd5>
+    <version>0.8</version>
+    <time>1295021513</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58221
+</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>9aef0a3aa64b9a64f3340a937092e7af</srcmd5>
+    <version>0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>c7a4e7554b82f56a4c746200cb19782e</srcmd5>
+    <version>0.8</version>
+    <time>1304346557</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69162</requestid>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>798adab11c2dee2199bfa48208ee7618</srcmd5>
+    <version>0.8</version>
+    <time>1304346564</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69162
+</comment>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>798adab11c2dee2199bfa48208ee7618</srcmd5>
+    <version>0.8</version>
+    <time>1319182581</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>133e7355354305b67edc4bf6dec922d1</srcmd5>
+    <version>0.8</version>
+    <time>1323195258</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c9d94a669cd980207bd66455e8d54187</srcmd5>
+    <version>0.9</version>
+    <time>1334217397</time>
+    <user>coolo</user>
+    <comment>Update to 0.9 (forwarded request 112434 from dimstar)</comment>
+    <requestid>112825</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>c9d94a669cd980207bd66455e8d54187</srcmd5>
+    <version>0.9</version>
+    <time>1340184340</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>c9d94a669cd980207bd66455e8d54187</srcmd5>
+    <version>0.9</version>
+    <time>1359110600</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>08d8b7cb68c3ad40729db7a7b4a1e70a</srcmd5>
+    <version>0.10</version>
+    <time>1364240758</time>
+    <user>coolo</user>
+    <comment>Update to 0.10</comment>
+    <requestid>160891</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>08d8b7cb68c3ad40729db7a7b4a1e70a</srcmd5>
+    <version>0.10</version>
+    <time>1379665006</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>08d8b7cb68c3ad40729db7a7b4a1e70a</srcmd5>
+    <version>0.10</version>
+    <time>1409303690</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>647c95e6b24c9f3c0eb0b5437dcfe89a</srcmd5>
+    <version>0.10</version>
+    <time>1521051858</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583568 from dimstar)</comment>
+    <requestid>584734</requestid>
+  </revision>
+</revisionlist>

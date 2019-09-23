@@ -1,0 +1,5 @@
+<package name="NetworkManager-pptp" project="openSUSE:Factory">
+  <title>NetworkManager VPN support for PPTP</title>
+  <description>NetworkManager-pptp provides VPN support to NetworkManager for PPTP.</description>
+  <devel project="GNOME:Factory" package="NetworkManager-pptp"/>
+</package>

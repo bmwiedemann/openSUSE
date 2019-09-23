@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="213">
+    <srcmd5>ff04d0ff6a28eaac2ac145fb5d321a0d</srcmd5>
+    <version>1.3.2</version>
+    <time>1168903687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="247">
+    <srcmd5>26d3a4e299ed265a367e26afbb9a6875</srcmd5>
+    <version>1.3.2</version>
+    <time>1171036950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="295">
+    <srcmd5>78e3d3a72806fe6199fe185c3dd59666</srcmd5>
+    <version>1.3.2</version>
+    <time>1200610940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="345">
+    <srcmd5>78e3d3a72806fe6199fe185c3dd59666</srcmd5>
+    <version>1.3.2</version>
+    <time>1200610940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="346">
+    <srcmd5>0761d32ed3ba779f7c963f75562fb9f8</srcmd5>
+    <version>1.3.2</version>
+    <time>1245365079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="348">
+    <srcmd5>0761d32ed3ba779f7c963f75562fb9f8</srcmd5>
+    <version>1.3.2</version>
+    <time>1245365079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="349">
+    <srcmd5>6a00cbd8b681b21526a1ae8f3add4bca</srcmd5>
+    <version>1.3.2</version>
+    <time>1268925212</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="351">
+    <srcmd5>6a00cbd8b681b21526a1ae8f3add4bca</srcmd5>
+    <version>1.3.2</version>
+    <time>1278667372</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="352">
+    <srcmd5>6a00cbd8b681b21526a1ae8f3add4bca</srcmd5>
+    <version>1.3.2</version>
+    <time>1278678602</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="355">
+    <srcmd5>6a00cbd8b681b21526a1ae8f3add4bca</srcmd5>
+    <version>1.3.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="356">
+    <srcmd5>762417d23e29838cb700f7efd3f28577</srcmd5>
+    <version>1.3.2</version>
+    <time>1306483202</time>
+    <user>saschpe</user>
+    <comment>Drop openjade-1.3-starlink-0.1.patch and valid_fo_patch2.gz: unused patches (forwarded request 71522 from namtrac)</comment>
+    <requestid>71526</requestid>
+  </revision>
+  <revision rev="12" vrev="357">
+    <srcmd5>3a6ccf82eceb2f68386fbd1b66f9dba6</srcmd5>
+    <version>1.3.2</version>
+    <time>1306488620</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="359">
+    <srcmd5>3a6ccf82eceb2f68386fbd1b66f9dba6</srcmd5>
+    <version>1.3.2</version>
+    <time>1319182215</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="360">
+    <srcmd5>5367a975297b0aa366c60a884b48d552</srcmd5>
+    <version>1.3.2</version>
+    <time>1322481314</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93814 from coolo)</comment>
+    <requestid>93954</requestid>
+  </revision>
+  <revision rev="15" vrev="361">
+    <srcmd5>9be2337e29358e5017e85dc16ac4ac25</srcmd5>
+    <version>1.3.2</version>
+    <time>1323192860</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="362">
+    <srcmd5>c75014ab6e0518afcda60d9638871999</srcmd5>
+    <version>1.3.2</version>
+    <time>1339478681</time>
+    <user>coolo</user>
+    <comment>- don't use obsolete getops.pl</comment>
+    <requestid>124434</requestid>
+  </revision>
+  <revision rev="17" vrev="364">
+    <srcmd5>c75014ab6e0518afcda60d9638871999</srcmd5>
+    <version>1.3.2</version>
+    <time>1340183755</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="366">
+    <srcmd5>c75014ab6e0518afcda60d9638871999</srcmd5>
+    <version>1.3.2</version>
+    <time>1359109539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="368">
+    <srcmd5>c75014ab6e0518afcda60d9638871999</srcmd5>
+    <version>1.3.2</version>
+    <time>1379663423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="370">
+    <srcmd5>c75014ab6e0518afcda60d9638871999</srcmd5>
+    <version>1.3.2</version>
+    <time>1409302036</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="371">
+    <srcmd5>339bb6dc8e8ce60599bc1783778bcc4b</srcmd5>
+    <version>1.3.2</version>
+    <time>1456433879</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359499</requestid>
+  </revision>
+  <revision rev="22" vrev="372">
+    <srcmd5>2889d0f95530ec79eeb01f25ff723c2f</srcmd5>
+    <version>1.3.2</version>
+    <time>1510837048</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+- Set RPM group for -devel package to &quot;Development/Languages/C and
+  C++&quot; (fix rpmlint warning).</comment>
+    <requestid>541551</requestid>
+  </revision>
+</revisionlist>

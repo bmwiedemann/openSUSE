@@ -1,0 +1,16 @@
+--- hg.orig
++++ hg
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ # mercurial - scalable distributed SCM
+ #
+--- hgweb.cgi.orig
++++ hgweb.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ # An example hgweb CGI script, edit as necessary
+ # See also https://mercurial-scm.org/wiki/PublishingRepositories

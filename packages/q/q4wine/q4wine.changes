@@ -1,0 +1,536 @@
+-------------------------------------------------------------------
+Sun Jan  6 13:24:07 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 1.3.11.
+  * Fixed:
+    + Display of Valve Proton in Processes view.
+    + Improve all dialogs of choosing files.
+    + Allow Stop Wine action to kill Valve Proton in Processes
+    view.
+  * Updated:
+    + Code cleanup: drop Qt4 support.
+
+-------------------------------------------------------------------
+Sun Sep 30 13:46:13 UTC 2018 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 1.3.10.
+  * Fixed:
+    + cppcheck: Uninitialized struct member: item.provider_id.
+- Changes in 1.3.9.
+  * Fixed:
+    + Fixed build with Qt >= 5.11.
+    + Error: wrong or broken XML data. Try again later.
+  * Added:
+    + Custom virtual desktop resolution size.
+- Changes in 1.3.8.
+  * Fixed:
+    + winetricks: Proxy settings are used even if proxy type set to
+    'none'.
+- Drop q4wine-qt511.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun 20 08:11:18 UTC 2018 - lazy.kent@opensuse.org
+
+- Add q4wine-qt511.patch: Fix build with Qt >= 5.11.
+
+-------------------------------------------------------------------
+Mon Apr 30 16:05:32 UTC 2018 - jengelh@inai.de
+
+- Update grammar of description.
+
+-------------------------------------------------------------------
+Fri Apr 27 21:53:50 UTC 2018 - lazy.kent@opensuse.org
+
+- Update to 1.3.7.
+  * Updated:
+    + Wine stock icons to be organized through Q4WineWine.
+    + Add gnome-terminal into terminal detection logic.
+  * Added:
+    + French translation.
+
+-------------------------------------------------------------------
+Sat Nov 25 21:18:01 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 1.3.6.
+  * Updated:
+    + Added indication of applications which was installed through
+    winetricks.
+    + Default Wine Desktop Integartion path settings for new prefixes.
+    + Added option to run custom scripts with fake drive settings
+    after creation of fake drive.
+    + Qt5 build enabled by default.
+    + Taiwan, Russian translation, Ukrainian translation, Spanish,
+    Czech translations.
+    + Bind Plus and Minus keys for Program tab for +- zoom respectively.
+    + Bind Plus and Minus keys for Config tab for +- zoom respectively.
+    + Allow to change Config and Program Icon sizes independently.
+  * Documented:
+    + q4wine prevents user from running winecfg from KRunner even
+    after uninstalling.
+  * Fixed:
+    + Static code analysis: errors and warnings.
+    + Error: wrong or broken XML data. Try again later.
+
+-------------------------------------------------------------------
+Sun May  7 17:30:42 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 1.3.5.
+  * Updated:
+    + Italian translation.
+    + Ukrainian translation.
+    + Russian translation.
+  * Fixed:
+    + Removed extra Doxygen files to reduce artifact size.
+
+-------------------------------------------------------------------
+Tue Jan  3 09:10:23 UTC 2017 - lazy.kent@opensuse.org
+
+- Update to 1.3.4.
+  * Added:
+    + Add WINE env var to console environment.
+  * Fixed:
+    + Icons are not loaded properly with Qt 5.7.x.
+    + Console launch environment uses dead setting fields.
+    + Q4Wine file selectors filters files with upper case
+    extension.
+    + Refactor winetrkics parser: use direct parser + transactions.
+    + Links imported from Windows desktop do not work.
+    + Import from Windows desktop is not working in some cases.
+    + Processes tab does not detect some wine processes correctly.
+
+-------------------------------------------------------------------
+Sat Oct  8 19:29:12 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.3.3.
+  * Fixed:
+    + Problem opening file dialog to mount ISO.
+
+-------------------------------------------------------------------
+Thu Sep  1 19:27:49 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.3.2.
+  * Fixed:
+    + [regression, bisected] Icon information is not displayed
+    correctly.
+    + Winetricks does not update.
+    + First startup wizard (quick mount profile): profile strings
+    are initially empty if fuseiso is not installed.
+    + Download (latest) Winetricks from GitHub.
+    + Correct proxy-related environment variables in Winetricks
+    plugin.
+    + Use env command in the command line to download Winetricks.
+    + Support proxy username/password in Winetricks plugin.
+    + Treat aarch64 as 64 bit platform and put libraries in lib64
+    directory.
+
+-------------------------------------------------------------------
+Thu Jul 28 14:14:37 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.3.1.
+  * Added:
+    + Allow to execute and create icons for *.bat and *.msi files.
+    + Added Chinese (China) and Japanese translations.
+  * Fixed:
+    + Renamed 'New' menu option for icon and prefix view to 'New
+    icon' and 'New folder' respectively to avoid confusion.
+    + Icon description is not exported into *.desktop file.
+    + Winetrick's item description label doesn't wrap properly.
+    + q4wine-cli does not accept extra app arguments.
+    + Translation files moved from i18n to l10n.
+    + Hide deprecated prefix options if values are not set.
+- Change the source URL to github.com.
+
+-------------------------------------------------------------------
+Tue Mar 15 16:29:50 UTC 2016 - dvaleev@suse.com
+
+- Set LIBS_ENTRY_PATH to %{_libdir} 
+
+-------------------------------------------------------------------
+Tue Mar  1 14:13:08 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.3.
+  * Added:
+    + Taiwan translation.
+    + Use icons from the system icon theme where possible.
+    + Replace default raster icons with SVG analogs.
+    + Extend App icons zoom sizes up to 512px.
+    + Allow to choose .svg and .svgz images for icons.
+    + Add an app option to switch
+    default/ambiance-light/ambiance-dark icon.
+    + Use ISO country codes for translation files.
+    + Use native language name for language selection.
+  * Fixed:
+    + WineLibs paths are no longer strictly required.
+    + Process explorer is broken.
+- Remove q4wine-fix-documentation-url.patch: alternate site no more
+  available and original site is available again.
+- Remove BuildRequires: fdupes.
+
+-------------------------------------------------------------------
+Thu Jan 14 20:19:08 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 1.2-r2.
+  * Added:
+    + Czech translation update.
+  * Fixed:
+    + QtSystemApplication library detection does not work well for
+    Qt5.
+
+-------------------------------------------------------------------
+Fri Jan  8 19:01:19 UTC 2016 - lazy.kent@opensuse.org
+
+- Apply q4wine-fix-documentation-url.patch again: the URL doesn't
+  work for Russian IPs.
+
+-------------------------------------------------------------------
+Fri Jan  1 16:16:49 UTC 2016 - ecsos@opensuse.org
+
+- Update to 1.2-r1
+  Added:
+    - Deleting prefix does not remove prefix folder in 
+      ~/.local/share/wineprefixes BUG-43;
+  Fixed:
+    - Fixed typo in Startup Wizard;
+    - Fixup Wine Libs detection BUG-50;
+    - Remove Wine settings from App settings BUG-50 BUG-23;
+    - Make Wine64 libs optional (for x86 only platforms) BUG-50;
+    - Backup/Restore prefix path handler;
+    - Can't use pre/post run scripts without standalone script
+      BUG-49;
+    - Do not force startpage open;
+    - add custom dll overrides outside from the list BUG-60;
+    - Revert "Kill dead online components" breaks the Qt5 build
+      BUG-62;
+    - Do not build wineappdb core components if 
+      -DWITH_WINEAPPDB=OFF is set BUG-62;
+    - 'Run -> Browser' on Programs window not work BUG-54;
+    - QT5: Winetricks application list fails to refresh and causes 
+      segfault on quit BUG-53;
+    - Make -DQT5 flag visible during cmake build and runtime;
+    - CLI: -v/-h options must not trigger nor database check nor 
+      wizard startup;
+    - Remove useless and confusing appdb startup dialog;
+- remove patch for dokumentation because alternate site no more 
+  available and original site is available again.
+  
+-------------------------------------------------------------------
+Mon Apr 13 12:09:46 UTC 2015 - lazy.kent@opensuse.org
+
+- Add q4wine-fix-documentation-url.patch: Fix documentation URL.
+  Use web.archive.org until project website will be repaired. Also
+  disable automatic opening this documentation after initial
+  program configuring. (boo#926859)
+
+-------------------------------------------------------------------
+Fri Dec 20 18:52:49 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.1+r2.
+  * Fixed error while loading application settings by key:
+    'WineLibs'.
+
+-------------------------------------------------------------------
+Sun Dec  1 12:35:25 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.1+r1.
+  * Fixed error while loading application settings by key:
+    'WineLibs'.
+  * Updated Afrikaans translation.
+  * Fixed cmake warnings.
+  * Updated .desktop file.
+
+-------------------------------------------------------------------
+Sun Nov 10 14:51:03 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.1.
+  * Added:
+    + Extended list of a virtual desktop resolutions.
+    + Configure multiple wine paths globally to allow easily
+      selection in prefixes.
+    + Create predefined execution template strings for optirun,
+      separate X display, e.t.c.
+  * Fixed a few bugs.
+
+-------------------------------------------------------------------
+Tue Aug  6 11:26:25 UTC 2013 - lazy.kent@opensuse.org
+
+- Add "-DCMAKE_NO_BUILTIN_CHRPATH=ON" cmake option (fix build with
+  updated cmake).
+
+-------------------------------------------------------------------
+Fri May  3 05:57:27 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.0+r3.
+  * "Use single-click to run icons" does not affect icons in
+    "setup" tab.
+  * q4wine.desktop value "" for key "Path" in group "Desktop
+    Entry".
+  * Pre and Post run Icon scripts unusable, if the path contains
+    ")".
+
+-------------------------------------------------------------------
+Sun Mar  3 16:04:50 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.0+r2.
+  * Fixed:
+    + Clean setup: error while loading application settings by key:
+      prefixDefaultPath.
+    + Winetricks plugin does not check script presence.
+    + "Use single-click to run icons" does not affect icons in
+      "setup" tab.
+  * Added:
+    + Winetricks plugin can use script installed in system.
+    + Persian translation.
+
+-------------------------------------------------------------------
+Sun Jan 27 06:37:20 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.0+r1.
+  * Fixed:
+    + Prefix tree "Delete" menu item do not remove menu tree.
+    + Support for utf8 system user name.
+    + Winetricks doesn't work properly if WINEPATH contain spaces.
+
+-------------------------------------------------------------------
+Sun Jan 20 14:54:51 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.0.
+  * Added:
+    + Option to set default directory for new wine prefixes
+      (default: $HOME/.local/share/wineprefixes).
+    + q4wine desktop menu tree.
+  * Removed:
+    + File -> Install wizard menu entry.
+  * Fixed:
+    + Quote run string in case of console useage (gnome-terminal).
+    + Winetricks functionality fails to work.
+    + Cannot run 'Create Fake Drive' for a new prefix with a win32
+      architecture.
+    + System Language autodetection does not work.
+    + Error while loading application settings by key: 'WineLibs'.
+      File or path does not exist: "".
+    + q4wine doesn't clean up user's tmp directory.
+- Add fdupes to build dependencies; use %fdupes macro.
+
+-------------------------------------------------------------------
+Wed Jun 27 16:59:07 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.999-rc8.
+  * Added:
+    + Prefix execution template string.
+  * Fixed:
+    + Regression: selection focus jumps to prefix name on
+      subdirectory selection.
+    + Regression: can't load user selected language.
+
+-------------------------------------------------------------------
+Sun Jun  3 18:42:50 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.999-rc7.
+  * Added:
+    + Winetricks database cache.
+    + Merge Wintricks core.
+    + New System Config interface.
+    + Pre and Post run Icon scripts.
+    + Icon and Prefix sorting (name, date).
+    + Version string to About page.
+    + Handler for wrong URL in wine app db.
+    + Add Logging subsystem activation/deactivation button to
+      Logging tab toolbar.
+    + Add taskmgr, winemine, iexplorer, control, oleview icons to
+      prefix's system folder.
+    + New system icons from latest wine version.
+    + Install program icons in $prefix/share/icons/hicolor/; Add
+      16,22,32,48,64,96,128,256 icon sizes.
+    + Add prefix to translation files names.
+  * Fixed:
+    + Enhanced win64 support for wine.
+    + Better Wine library path autodetection.
+    + Create ~/.local/share/wineprefixes directory if it does not
+      exists.
+    + Error is Desktop paths are empty.
+    + Desktop Paths are wrongly labeled.
+    + Unite Icon/Detail toolbar actions.
+    + No translations autoupdate at project build. Use `make
+      translations` instead.
+    + Fixed process refresh loop.
+    + Extended env command after console terminal.
+    + Set WINEDEBUG to '-all' if logging subsystem disabled and
+      program was executed not in console session.
+    + Icon export dialog empty icons.
+    + Dropped obsolete strings from translation files.
+- Split off language package.
+- Drop q4wine-gcc47.patch (fixed upstream).
+- Add icon_theme_cache_post/un macros.
+- BuildRequires: hicolor-icon-theme.
+- Doesn't require fdupes.
+
+-------------------------------------------------------------------
+Sat Mar 24 17:36:00 UTC 2012 - dimstar@opensuse.org
+
+- Add q4wine-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Thu Nov 24 17:12:44 UTC 2011 - lazy.kent@opensuse.org
+
+- Corrected License tag according to SPDX Standard.
+- Added desktop_database_post/un macros.
+- Spec clean up.
+
+-------------------------------------------------------------------
+Sun Jun  5 19:27:57 UTC 2011 - lazy.kent@opensuse.org
+
+- Update to 0.121
+  + Updated winetricks plugin
+  + Option to make Prefix view unexpanded at startup
+  + Polish translation
+  + German translation
+  + Hebrew translation
+  + Extended virtual desktop resolution list
+  + Prefix alphabetic sort
+- Removed WITH_WINETRIKS option (it is default now)
+- Use full URL for source
+
+-------------------------------------------------------------------
+Tue Apr  5 18:02:32 UTC 2011 - lazy.kent@opensuse.org
+
+- Requires libqt4-sql-sqlite
+- Added LICENSE and TODO to docs
+
+-------------------------------------------------------------------
+Tue Dec 28 11:28:08 UTC 2010 - lazy.kent@opensuse.org
+
+- Update to 0.120+r1
+  + q4wine now will create new symlinks when mounting
+    $WINEPREFIX/dosdevices/${DRIVE}: pointing to the mount point
+    and $WINEPREFIX/dosdevices/${DRIVE}:: pointing to the Image
+    file
+  + Prefixes list sorting
+  + Fixed mount images in read only mode (ro)
+  + Fixed removed media drive option in prefix settings dialog
+  + English fixes
+
+-------------------------------------------------------------------
+Fri Oct  1 19:38:55 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Added rpm build opt flags
+
+-------------------------------------------------------------------
+Fri Oct  1 16:25:43 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.120
+  + Czech translation
+  + Winetricks plugin updates
+  + Added minimize to tray at startup option
+  + Added minimize to tray at application icon startup option
+  + Fixed some typo and GUI layouts
+- Absolutely requires icoutils
+
+-------------------------------------------------------------------
+Sun Aug 22 10:15:28 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.119+r1
+  + Updated Russian translation
+  + Settings dialog online documentation
+  + Fixed some of English spell errors
+
+-------------------------------------------------------------------
+Tue Aug 10 14:17:02 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.119
+  + New Fake Drive settings dialog (Wizard now obsolete)
+  + Added a lot of new Fake Drive options
+  + Desktop integration
+  + Updated Ukrainian, Italian and Spanish translations
+  + Updated online documentation
+  + Some fixes for GUI layout
+  + Winetricks plugin improvement
+  + Fixed some of English spellings
+
+-------------------------------------------------------------------
+Thu Apr 15 10:54:22 UTC 2010 - lazy.kent.suse@gmail.com
+
+- Update to 0.118
+  + Added Wine AppDB support
+  + Added helper binary and Application logger subsystem
+  + You can mount iso images just by dropping them into q4wine
+    icons list space
+  + Automatic unmounting for mounted media before mount new one
+  + Added man pages
+  + A lot of fixes in Fake drive creation/update wizard
+  + Fixed locale detection bugs
+  + Fixes in tray icon support
+  + Fixes in winetricks plugin
+  + Fixed GUI issue with qtcurve theme engine
+  + Fixed memory leaks
+  + Fixed crush while drop existing icon
+- Added fuseiso to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 16 15:04:20 UTC 2009 - lazy.kent.suse@gmail.com
+
+- Update to 0.114r1
+  + Fixed wrong wine C: drive symlink while create new Fake Drive
+  + Fixed Russian spelling
+  + Fixed some text layouts
+
+-------------------------------------------------------------------
+Sun Nov 15 11:05:29 UTC 2009 - lazy.kent.suse@gmail.com
+
+- Update to 0.114
+  + New color option at Fake drive creation/update wizard
+  + New wine settings in Fake drive creation/update wizard
+  + New Spanish translation
+  + New Italian translation
+  + Fixed: prefix combobox change do not set right Prefix in Prefix
+    tree view
+  + Fix for prefix import and export
+
+-------------------------------------------------------------------
+Thu Oct 15 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- Corrected description
+
+-------------------------------------------------------------------
+Mon Oct  5 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- Update to 0.113
+  + q4wine now remembers 8 recent mounted images
+  + q4wine now remembers 8 recent launched binaries via Run dialog
+  + Now q4wine save last user selected prefix and dir
+  + Added q4wine-cli console utility for wine applications and
+    prefixes management
+  + Added translation file for Portuguese (Brazil)
+  + Added http proxy support for winetricks
+  + Added Drag & Drop support
+  + Added Drag support q4wine icons export
+  + Added Drop support for wine .exe and .com files
+  + Added Drop support for wine .bat files
+  + Added command line option for q4wine
+  + Cleanup q4wine tmp directory on exit
+  + Fixed GUI bug: Text fields size, on some desktop
+    configurations, are too small to edit
+- Added choice to build with/without icoutils support
+- Added fuseiso to Requires
+- Removed INSTALL from docs
+- Corrected Summary
+-------------------------------------------------------------------
+Sat Jun 20 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- Change compiling outside of the source tree
+
+-------------------------------------------------------------------
+Sun May 17 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- Compilied with winetricks support
+
+-------------------------------------------------------------------
+Fri May 15 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- Desktop file updated
+
+-------------------------------------------------------------------
+Wed May  6 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- Updated to v0.112r1
+  + Fixed compilation with Qt-4.4.X
+

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48b6f4d9764187a36cc0c061430b0a8b</srcmd5>
+    <version>0.1.7+git.1468408973.22daca0</version>
+    <time>1473798167</time>
+    <user>dimstar_suse</user>
+    <comment> I want to add this new package, its a library that configures ceph, I have a user fo this library and am currently trying to usptream thsi in to salt. Best wishes Owen Synge</comment>
+    <requestid>412808</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6945b24eb98b5de316a9d944fc0f26c7</srcmd5>
+    <version>0.2.1+git.1473421401.a6a2208</version>
+    <time>1474476627</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429192</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e56f1aa85cadcf5a43947e2d25c59183</srcmd5>
+    <version>0.2.3+git.1478902462.f898834</version>
+    <time>1479662330</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>440908</requestid>
+  </revision>
+</revisionlist>

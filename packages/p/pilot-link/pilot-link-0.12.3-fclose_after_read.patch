@@ -1,0 +1,17 @@
+Index: src/pilot-install-todo.c
+===================================================================
+--- src/pilot-install-todo.c.orig
++++ src/pilot-install-todo.c
+@@ -73,10 +73,12 @@ int read_file(char *filename, char **tex
+ 	*text = (char *) malloc(filelen + 1);
+ 	if (*text == NULL) {
+ 		fprintf(stderr,"   ERROR: Could not allocate memory.\n");
++                fclose(f);
+ 		return -1;
+ 	}
+ 
+ 	fread(*text, filelen, 1, f);
++        fclose(f);
+ 
+ 	return 0;
+ }

@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Fri Apr 20 05:06:19 UTC 2018 - coolo@suse.com
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.34 - 2018-04-19
+      - update bundled ExtUtils::HasCompiler to 0.021
+      - fix some examples in pod
+
+-------------------------------------------------------------------
+Tue Apr 25 05:14:35 UTC 2017 - coolo@suse.com
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.33 - 2017-04-23
+      - update bundled ExtUtils::HasCompiler to 0.017
+      - moved repository to Moose GitHub org
+      - avoid using base.pm in tests (RT#120530)
+      - minor pod and test cleanups
+
+-------------------------------------------------------------------
+Fri Sep 16 05:10:06 UTC 2016 - coolo@suse.com
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.32 - 2016-09-15
+      - update bundled ExtUtils::HasCompiler to 0.016
+
+-------------------------------------------------------------------
+Sat May 28 09:34:37 UTC 2016 - coolo@suse.com
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.31 - 2016-04-19
+      - update bundled ExtUtils::HasCompiler to 0.013 to fix possible false
+        negative (RT#113635)
+
+-------------------------------------------------------------------
+Wed Oct 21 08:41:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.30 - 2015-10-19
+      - include ExtUtils::HasCompiler in dist as intended so it doesn't need to
+        be installed
+  
+  0.29 - 2015-10-18
+      - Update compiler detection to use ExtUtils::HasCompiler
+
+-------------------------------------------------------------------
+Thu Apr 16 19:36:08 UTC 2015 - coolo@suse.com
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.28 - 2015-04-14
+      - Change link to Dylan paper to use archive.org, as the original link has
+        gone offline (RT#99756).
+
+-------------------------------------------------------------------
+Mon Apr 13 18:10:14 UTC 2015 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+-------------------------------------------------------------------
+Fri Mar  7 08:44:07 UTC 2014 - coolo@suse.com
+
+- updated to 0.26
+  - Fix bug in Makefile.PL when ExtUtils::CBuilder not available
+
+-------------------------------------------------------------------
+Fri Jul 26 18:30:33 UTC 2013 - coolo@suse.com
+
+- updated to 0.25
+    - Drop compatibility from 5.6.2 to 5.6.0
+    - Pod typo fixes (RT#77453, RT#85357)
+    - Only ask for Devel::Hide on perls where it will be actually used
+      (RT#81106)
+    - Fix SYNOPSIS to actually be executable (RT#78327)
+
+-------------------------------------------------------------------
+Mon Jun  3 15:30:40 UTC 2013 - coolo@suse.com
+
+- updated to 0.24
+ - Require Class::C3::XS on 5.8 perls if a working compiler is found
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:12 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 21:11:15 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 17:18:28 UTC 2010 - chris@computersalat.de
+
+- update to 0.23
+  - Fix various documentation problems (Martin Becker).
+- 0.22 Fri, Jan 29, 2010
+  - Add note that people should be using MRO::Compat rather than
+    Class::C3 directly.
+- 0.21 Wed, Mar 25, 2009
+  - Remove fake Build.PL. Module::Install doesn't support that anymore.
+    (Florian Ragwitz)
+  - Stop using auto_instal in Makefile.PL. Its use is strongly discouraged.
+    (Closes RT#38051, RT#44541) (Simon Bertrang)
+- 0.20 Mon, Dec 8, 2008
+  - Prevent redefined warnings when Class::C3 is loaded explicitly after
+    MRO::Compat has been loaded. Also add tests for this.
+- fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.19
+
+

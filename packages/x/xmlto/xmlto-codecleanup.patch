@@ -1,0 +1,44 @@
+--- a/xmlif/xmlif.l
++++ b/xmlif/xmlif.l
+@@ -43,7 +43,7 @@
+ 
+ static char **selections;	/* selection tokens */
+ static int nselections;		/* number of selections */
+-static ifsense;			/* sense of last `if' or unless seen */
++static int ifsense;			/* sense of last `if' or unless seen */
+ static char *attribute;		/* last attribute scanned */
+ 
+ struct stack_t {
+@@ -84,7 +84,7 @@ static void pop_level(void)
+     }
+ }
+ 
+-static void stash_attribute(char *attr)
++static void stash_attribute(const char *attr)
+ /* stash an attribute away for comparison */
+ {
+ #ifdef DEBUG
+@@ -176,7 +176,7 @@ static void process_value(char *val)
+ 	end->suppressed = suppress(attribute, val);
+ }
+ 
+-static void process_else()
++static void process_else(void)
+ /* process <?xmlif else> tag */
+ {
+     end->suppressed = end->matched;
+@@ -230,9 +230,12 @@ WS		[ \t\n]*
+ 
+ #include "config.h"
+ 
+-int yywrap() {exit(0);};
++int yywrap(void)
++{
++    exit(0);
++}
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+     int i;
+ 

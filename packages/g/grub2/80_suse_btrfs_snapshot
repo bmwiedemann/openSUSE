@@ -1,0 +1,22 @@
+#! /bin/sh
+set -e
+SNAPSHOTS="/.snapshots"
+if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ] &&
+   [ "x${GRUB_FS}" = "xbtrfs" ] && 
+   [ -d "${SNAPSHOTS}" ]; then
+  SNAPSHOT_RID=`btrfs inspect-internal rootid ${SNAPSHOTS}`
+  ROOT_RID=`btrfs inspect-internal rootid /`
+  if [ -n "${SNAPSHOT_RID}" -a "${SNAPSHOT_RID}" != "${ROOT_RID}" ]; then
+    SNAPSHOT_SUBVOL=`btrfs inspect-internal subvolid-resolve ${SNAPSHOT_RID} /`
+    ROOT_SUBVOL=`btrfs inspect-internal subvolid-resolve ${ROOT_RID} /`
+    INODE=`stat -c '%i' ${SNAPSHOTS}`
+    if [ "x${INODE}" = "x256" -a "x${ROOT_SUBVOL}${SNAPSHOTS}" != "x${SNAPSHOT_SUBVOL}" ]; then
+      echo "btrfs-mount-subvol (\$root) ${SNAPSHOTS} ${SNAPSHOT_SUBVOL}"
+    fi
+  fi
+    cat <<EOF
+if [ -f "${SNAPSHOTS}/grub-snapshot.cfg" ]; then
+  source "${SNAPSHOTS}/grub-snapshot.cfg"
+fi
+EOF
+fi

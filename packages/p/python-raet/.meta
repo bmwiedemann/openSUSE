@@ -1,0 +1,7 @@
+<package name="python-raet" project="openSUSE:Factory">
+  <title>python-raet</title>
+  <description>Reliable Asynchronous Event Transport protocol
+
+Asynchronous transaction based protocol using Ioflo. http://ioflo.com</description>
+  <devel project="devel:languages:python" package="python-raet"/>
+</package>

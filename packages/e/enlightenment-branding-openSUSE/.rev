@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>28a1a84ccda55925538b37873092b7bb</srcmd5>
+    <version>0.1</version>
+    <time>1393236193</time>
+    <user>coolo</user>
+    <comment>fix link</comment>
+    <requestid>223635</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>28a1a84ccda55925538b37873092b7bb</srcmd5>
+    <version>0.1</version>
+    <time>1409300830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5d2d2b801fb4fe4b0e8c8be62ca58ffe</srcmd5>
+    <version>0.1</version>
+    <time>1413616158</time>
+    <user>coolo</user>
+    <comment>Changes to default apps in our bottom bar.
+
+Recommend new themes</comment>
+    <requestid>257336</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>008ffbd6ce302e718bbc0a7024ee9c48</srcmd5>
+    <version>0.1</version>
+    <time>1434003807</time>
+    <user>dimstar_suse</user>
+    <comment>Fix obsoletes for e17 to e19 upgrades but not if e17 was manually selected</comment>
+    <requestid>311462</requestid>
+  </revision>
+</revisionlist>

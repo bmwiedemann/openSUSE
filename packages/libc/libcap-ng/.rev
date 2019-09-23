@@ -1,0 +1,310 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50a4da02114c4aaa476e85d04f709046</srcmd5>
+    <version>0.6.3</version>
+    <time>1271979667</time>
+    <user>autobuild</user>
+    <comment>Copy from security/libcap-ng based on submit request 38397 from user prusnak
+</comment>
+    <requestid>38397</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>50a4da02114c4aaa476e85d04f709046</srcmd5>
+    <version>0.6.3</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>50a4da02114c4aaa476e85d04f709046</srcmd5>
+    <version>0.6.3</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>872340d026ee9ca53bb07b5d9137b4e0</srcmd5>
+    <version>0.6.4</version>
+    <time>1286399386</time>
+    <user>autobuild</user>
+    <comment>Copy from security/libcap-ng based on submit request 49864 from user coolo
+</comment>
+    <requestid>49864</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5848d2cc7b4ed299f98ab5db072eb010</srcmd5>
+    <version>0.6.4</version>
+    <time>1288710535</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>065e4a7ada9912ce0d4368b48510156d</srcmd5>
+    <version>0.6.4</version>
+    <time>1288712558</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51984 from user coolo
+</comment>
+    <requestid>51984</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>46ab21b2e909ca91d14f5db4e15ccf0d</srcmd5>
+    <version>0.6.4</version>
+    <time>1288712564</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51984
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>304485b8f7a48bc20ff219fd264609ed</srcmd5>
+    <version>0.6.5</version>
+    <time>1290248188</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53545 from user coolo
+</comment>
+    <requestid>53545</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>981ca538a8bb2f44b2a2ff8f52f75259</srcmd5>
+    <version>0.6.5</version>
+    <time>1290248193</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53545
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>981ca538a8bb2f44b2a2ff8f52f75259</srcmd5>
+    <version>0.6.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>02363f0cca7c00681df83f6c9c89ce7a</srcmd5>
+    <version>0.6.6</version>
+    <time>1314780592</time>
+    <user>saschpe</user>
+    <comment>-  Update to version 0.6.6
+- Add CAP_SYSLOG and CAP_WAKE_ALARM (needed for newish kernels)
+
+-  Update to version 0.6.6
+- Add CAP_SYSLOG and CAP_WAKE_ALARM (needed for newish kernels) (forwarded request 80287 from elvigia)</comment>
+    <requestid>80288</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bd01efb0748b116bdfbf1a683764960a</srcmd5>
+    <version>0.6.6</version>
+    <time>1314780602</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80288
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d6a187af1816753094bd21b849af639a</srcmd5>
+    <version>0.6.6</version>
+    <time>1317941333</time>
+    <user>lrupp</user>
+    <comment>- cross-build workaround: make sure no attempt is made to build
+  python stuff even if it's installed on the host system (forwarded request 86727 from uli_suse)</comment>
+    <requestid>86933</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d6a187af1816753094bd21b849af639a</srcmd5>
+    <version>0.6.6</version>
+    <time>1319182075</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>5b66f374da23b4b1ec04c508e1e2a1c7</srcmd5>
+    <version>0.6.6</version>
+    <time>1323192169</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>cfd292069d319ae64533d13b4b1cdcc8</srcmd5>
+    <version>0.6.6</version>
+    <time>1323192170</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>2ca47ebdcdaa1e96f395f2cb918711a1</srcmd5>
+    <version>0.6.6</version>
+    <time>1329318943</time>
+    <user>coolo</user>
+    <comment>- Move libraries back to %{_libdir}, /usr merge project 
+
+- cross-build workaround: make sure no attempt is made to build
+  python stuff even if it's installed on the host system
+
+- Move libraries back to %{_libdir}, /usr merge project (forwarded request 104152 from elvigia)</comment>
+    <requestid>104166</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>2ca47ebdcdaa1e96f395f2cb918711a1</srcmd5>
+    <version>0.6.6</version>
+    <time>1340183568</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>2ca47ebdcdaa1e96f395f2cb918711a1</srcmd5>
+    <version>0.6.6</version>
+    <time>1359109246</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a47a23b1913d51d931aa59044eb91b4e</srcmd5>
+    <version>0.7.3</version>
+    <time>1363340379</time>
+    <user>coolo</user>
+    <comment>- use source url
+
+- version 0.7.3
+- Make file opens use the cloexec flag (Cristian Rodríguez)
+- Add CAP_BLOCK_SUSPEND
+- Fix possible segfaults when CAP_LAST_CAP is larger than the lookup table
+- In pscap, don't drop capabilities when running with capabilities
+- Add CAP_COMPROMISE_KERNEL
+- Define FTW_CONTINUE in case its not defined in libc
+- Use glibc for xattr.h if available
+- Make sure stderr is used consistently in utils
+- Fix logic causing file based capabilities to not be supported when it should
+
+- use source url
+
+- version 0.7.3
+- Make file opens use the cloexec flag (Cristian Rodríguez)
+- Add CAP_BLOCK_SUSPEND
+- Fix possible segfaults when CAP_LAST_CAP is larger than the lookup table
+- In pscap, don't drop capabilities when running with capabilities
+- Add CAP_COMPROMISE_KERNEL
+- Define FTW_CONTINUE in case its not defined in libc
+- Use glibc for xattr.h if available
+- Make sure stderr is used consistently in utils
+- Fix logic causing file based capabilities to not be supported when it should</comment>
+    <requestid>159295</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a47a23b1913d51d931aa59044eb91b4e</srcmd5>
+    <version>0.7.3</version>
+    <time>1379662909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0fbb2dffd27ea64888b05b9687eddfd8</srcmd5>
+    <version>0.7.4</version>
+    <time>1400301793</time>
+    <user>coolo</user>
+    <comment>- Version bupm to 0.7.4
+- Cleanup with spec-cleaner
+- Remove useless specification of attributes
+- Really split the two spec files instead of copying them to avoid
+  the huge ifdefing.
+  + more readable
+  - version must be edited in two places when bumping
+
+- Version bupm to 0.7.4
+- Cleanup with spec-cleaner
+- Remove useless specification of attributes
+- Really split the two spec files instead of copying them to avoid
+  the huge ifdefing.
+  + more readable
+  - version must be edited in two places when bumping</comment>
+    <requestid>234189</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>84a0fc29d9582ac95eb307311a0bb8af</srcmd5>
+    <version>0.7.4</version>
+    <time>1403615739</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238158</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>84a0fc29d9582ac95eb307311a0bb8af</srcmd5>
+    <version>0.7.4</version>
+    <time>1409301512</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>24f2fdf1172b19ecb80f5055b0b8c1f1</srcmd5>
+    <version>0.7.7</version>
+    <time>1449995666</time>
+    <user>coolo</user>
+    <comment>- Fix build by passing --without-python3 argument. For now we are
+  fine with py2 bindings only
+
+- Update to version 0.7.7
+  * Make sure all types used in _lnode are defined in proc-llist.h
+  * Fix python binding test for old kernels
+  * Fix leaked FD in library init 
+- Changes from version 0.7.6
+  * Fix python3 support
+- Changes from version 0.7.5
+  * Make python3 supported
+  * In python bindings test, clamp CAP_LAST_CAP with /proc/.../cap_last_cap
+  * Update table for 3.16 kernel
+
+- Update to version 0.7.7
+  * Make sure all types used in _lnode are defined in proc-llist.h
+  * Fix python binding test for old kernels
+  * Fix leaked FD in library init 
+- Changes from version 0.7.6
+  * Fix python3 support
+- Changes from version 0.7.5
+  * Make python3 supported
+  * In python bindings test, clamp CAP_LAST_CAP with /proc/.../cap_last_cap
+  * Update table for 3.16 kernel</comment>
+    <requestid>347793</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0373351a5c971f991622299e65a6ff0b</srcmd5>
+    <version>0.7.8</version>
+    <time>1495637142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495596</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a56440792234d1a69f7dca6c3e6013e1</srcmd5>
+    <version>0.7.9</version>
+    <time>1519396080</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to singlespec approach to allow building of python3
+  bindings
+
+- Remove ineffective --with-pic. Fix SRPM group. Redo descriptions.
+- Rename %soname to %sover to better reflect its use.
+
+- Update to version 0.7.9:
+  * Fix byte compiling python3 bindings
+  * Rework spec file to show new python2/3 separation
+- cleanup with spec-cleaner
+- use https urls
+
+- Move %doc to %license for licenses
+
+- Remove ineffective --with-pic. Fix SRPM group. Redo descriptions.
+- Rename %soname to %sover to better reflect its use.
+
+- Update to version 0.7.9:
+  * Detect and output a couple errors in filecap
+  * Use pthread_atfork to optionally reset the pid and related info
+    on fork
+- cleanup with spec-cleaner
+- use https urls</comment>
+    <requestid>578311</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>79176d9b5832d833206ad29287162e44</srcmd5>
+    <version>0.7.9</version>
+    <time>1566240386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721762</requestid>
+  </revision>
+</revisionlist>

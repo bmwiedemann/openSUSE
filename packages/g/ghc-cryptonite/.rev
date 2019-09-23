@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ae63ff91e1d7b6a13debb1d461b31b4</srcmd5>
+    <version>0.6</version>
+    <time>1440479950</time>
+    <user>coolo</user>
+    <comment>Cryptography Primitives sink</comment>
+    <requestid>324471</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1677f794b06e58ae0bb2c46dc0b03df7</srcmd5>
+    <version>0.10</version>
+    <time>1452122712</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10
+- drop blake2-fix.patch
+* Add reference implementation of blake2 for non-SSE2 platfom
+* Add support_blake2_sse flag
+
+- update to 0.9
+* Quiet down unused module imports
+* Move Curve25519 over to Crypto.Error instead of using Either String.
+* Add documentation for ChaChaPoly1305
+* Add missing documentation for various modules
+* Add a way to create Poly1305 Auth tag.
+* Added support for the BLAKE2 family of hash algorithms
+* Fix endianness of incrementNonce function for ChaChaPoly1305
+* Add support for ChaChaPoly1305 Nonce Increment
+* Add PKCS5 / PKCS7 padding and unpadding methods
+* Fix ChaChaPoly1305 Decryption
+* Add support for BCrypt
+- add blake2-fix.patch and disabled build of sse4.1 optimized blake2 (forwarded request 352132 from mimi_vx)</comment>
+    <requestid>352196</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7698a102e2a140ba62630474180f7885</srcmd5>
+    <version>0.15</version>
+    <time>1461855422</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14
+* Fix serialization of DH and ECDH
+* Reduce size of SHA3 context instead of allocating all-size fit memory. save up to
+    72 bytes of memory per context for SHA3-512.
+* Add a Seed capability to the main DRG, to be able to debug/reproduce randomized
+    program where you would want to disable the randomness.
+* Add support for Cipher-based Message Authentication Code (CMAC) (Kei Hibino)
+* CHANGE Change the SharedKey for Crypto.PubKey.DH and Crypto.PubKey.ECC.DH, from
+    an Integer newtype to a ScrubbedBytes newtype. Prevent mistake where the bytes 
+    representation is generated without the right padding (when needed).
+* CHANGE Keep The field size in bits, in the Params in Crypto.PubKey.DH, moving
+    from 2 elements to 3 elements in the structure.
+
+- update to 0.13
+* SECURITY Fix buffer overflow issue in SHA384, copying 16 extra bytes from 
+    the SHA512 context to the destination memory pointer leading to memory 
+    corruption, segfault
+* Fix compilation issue with Ed448 on 32 bits machine.
+
+- update to 0.11
+* Truncate hashing correctly for DSA
+* Add support for HKDF (RFC 5869)
+* Add support for Ed448
+* Extends support for Blake2s to 224 bits version.
+* Compilation fix with AESNI and ghci compiling C source in a weird order.
+* Fix example compilation, typo, and warning
+
+- add blake2-fix.patch and disabled build of sse4.1 optimized blake2
+- initial commit (forwarded request 391612 from mimi_vx)</comment>
+    <requestid>391613</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3ab714fdf8846f16792203a9e3109314</srcmd5>
+    <version>0.15</version>
+    <time>1469081142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411390</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39061264c12cdb578b8aafa5badc48e6</srcmd5>
+    <version>0.19</version>
+    <time>1476875008</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433381</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0eea8220b6c9fd422eea83cff3de077f</srcmd5>
+    <version>0.21</version>
+    <time>1485863037</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453296</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ac20fa2469917fc551fa7fa3cd686cb0</srcmd5>
+    <version>0.23</version>
+    <time>1504205203</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513225</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1b222781c09d3c632c517fc5494c9153</srcmd5>
+    <version>0.23</version>
+    <time>1505503787</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524361</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3e4976b991a4fa29492a65374be7b100</srcmd5>
+    <version>0.25</version>
+    <time>1527674765</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-cryptonite to the latest version.</comment>
+    <requestid>607777</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>87f5ab75286c405603e5d36cd04f5b81</srcmd5>
+    <version>0.25</version>
+    <time>1532445413</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+    an Integer newtype to a ScrubbedBytes newtype. Prevent mistake where the bytes
+* SECURITY Fix buffer overflow issue in SHA384, copying 16 extra bytes from
+    the SHA512 context to the destination memory pointer leading to memory</comment>
+    <requestid>623751</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>aea58f1d6f29a5594f51d0f9304ca497</srcmd5>
+    <version>0.25</version>
+    <time>1540448641</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643375</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b5c7faa20a76d0756d63c8ec55b5e269</srcmd5>
+    <version>0.26</version>
+    <time>1560338314</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>709199</requestid>
+  </revision>
+</revisionlist>

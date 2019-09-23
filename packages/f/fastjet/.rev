@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06187348bdaaa0b629c13158f50ebcf3</srcmd5>
+    <version>3.0.6</version>
+    <time>1398418467</time>
+    <user>coolo</user>
+    <comment>FastJet is a high energy particle physics package</comment>
+    <requestid>230702</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>06187348bdaaa0b629c13158f50ebcf3</srcmd5>
+    <version>3.0.6</version>
+    <time>1409300857</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3aad630e97d6a9edc22e10579dba81ac</srcmd5>
+    <version>3.1.1</version>
+    <time>1421232313</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280949</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c6b853979e0cf02ac0de60f4403fb74</srcmd5>
+    <version>3.1.3</version>
+    <time>1447146217</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343077</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eaa8f4d2b8a8785dadd105e29521d820</srcmd5>
+    <version>3.2.1</version>
+    <time>1479150989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440164</requestid>
+  </revision>
+</revisionlist>

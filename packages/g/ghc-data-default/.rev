@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38a56f14f5dc32b413e256c962f2ccd2</srcmd5>
+    <version>0.5.0</version>
+    <time>1396451939</time>
+    <user>coolo</user>
+    <comment>New packages for pandoc. See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00341.html</comment>
+    <requestid>227651</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>38a56f14f5dc32b413e256c962f2ccd2</srcmd5>
+    <version>0.5.0</version>
+    <time>1409300961</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7c54b9e894b6a4880d0ea08cff0a8560</srcmd5>
+    <version>0.5.3</version>
+    <time>1432188769</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306425</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8aa8fe366377527cd1ac42ad2b584867</srcmd5>
+    <version>0.5.3</version>
+    <time>1469081321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411523</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f1d6fad367022eda5b227e4186f895de</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1477135217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433383</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9ab515abb21ef3618f42b84ffab7a8c4</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1505503993</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524379</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>334b0c61b1e4993d25ac665e47687647</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1527675490</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609773</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>4dd49d3dd2f01de5de6e759ffe8a76e5</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1532445429</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.5.3
+- required by pandoc 1.10
+- use cabal2spec 0.25.5 spec file template</comment>
+    <requestid>623753</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>14fc294eaa0dc765e948a60a72f4d6db</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1540448648</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643377</requestid>
+  </revision>
+</revisionlist>

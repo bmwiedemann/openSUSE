@@ -1,0 +1,5 @@
+<package name="fslsfonts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="fslsfonts"/>
+</package>

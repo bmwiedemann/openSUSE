@@ -1,0 +1,12 @@
+--- doc/barcode.texi.orig
++++ doc/barcode.texi
+@@ -18,6 +18,9 @@
+ @comment %**start of header
+ @setfilename barcode.info
+ @settitle Barcode @value{version}
++@direntry
++* barcode: (barcode). Textmode Barcode creation utility
++@end direntry
+ @iftex
+ @afourpaper
+ @end iftex

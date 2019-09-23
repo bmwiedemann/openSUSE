@@ -1,0 +1,26 @@
+diff --git a/configure b/configure
+index 7641e96..6c64e85 100755
+--- a/configure
++++ b/configure
+@@ -5880,7 +5880,7 @@ fi
+ 
+ # Error out on compile warnings
+ if test "x$ac_cv_c_compiler_gnu" = xyes ; then
+-  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Werror -g -std=gnu99 -Wdeclaration-after-statement -Wno-unused"
++  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -g -std=gnu99 -Wdeclaration-after-statement -Wno-unused"
+ fi
+ 
+ # Checks for header files.
+diff --git a/configure.ac b/configure.ac
+index e444185..9ab3ba9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,7 +24,7 @@ AC_CHECK_LIB([X11], [XOpenDisplay])
+ dnl Add some useful warnings if we have gcc.
+ dnl changequote(,)dnl
+ if test "x$ac_cv_prog_gcc" = xyes ; then
+-  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -Werror -g -std=gnu99 -Wdeclaration-after-statement -Wno-unused"
++  CFLAGS="$CFLAGS -fno-strict-aliasing -Wall -g -std=gnu99 -Wdeclaration-after-statement -Wno-unused"
+ fi
+ dnl changequote([,])dnl
+ 

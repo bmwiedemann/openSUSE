@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Tue Jan 23 14:31:28 UTC 2018 - tchvatal@suse.com
+
+- Drop python2 from the buildrequirements
+  * This means we lose python bindings but as the package is no
+    longer developed there is 0 chance to obtain python3 bindings
+    and the code is not compatible
+
+-------------------------------------------------------------------
+Mon Sep 11 10:50:57 UTC 2017 - vcizek@suse.com
+
+- Patch for openssl 1.1 compatibility
+  * add vde2-openssl_1.1_compatibility.patch from Debian
+
+-------------------------------------------------------------------
+Mon Jul 24 13:51:51 UTC 2017 - jengelh@inai.de
+
+- Rename devel subpackages according to shared library guideline.
+- Rectify RPM groups.
+
+-------------------------------------------------------------------
+Wed Jul 19 20:03:02 UTC 2017 - tchvatal@suse.com
+
+- Add patch to build with our gcc checks:
+  * vde2-buffer-overflow.patch
+- Switch to svn checkout service in order to get something newer
+  than 2011 tarball
+- Update to version 2.3.2+svn587:
+  * allow pipes on stdin for daemonized switches
+  * vde_vxlan initial release
+  * Add format string to fprintf calls.
+  * Clean up unused variables.
+  * In 2014, I think we can stop trying to outsmart the compiler. Remove
+  * "register" storage class.
+  * Add missing headers in vde_router Makefile.am.
+  * Add missing format string in snprintf.
+  * Add missing source files in vde_vxlan Makefile.am.
+  * Enable vde_over_ns when header is present.
+  * Remove unused variable in vde_over_ns.
+  * vde_autolink: Add missing null entry in getopt_long array.
+
+-------------------------------------------------------------------
+Wed Jul 19 19:41:03 UTC 2017 - tchvatal@suse.com
+
+- Drop README.SUSE we are better of with the online guides
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb  3 07:08:19 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Apr 16 11:13:54 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 2.3.2 (bug fix release) 
+- disabled paralled job that break build
+- added python support
+
+-------------------------------------------------------------------
+Thu May 19 15:04:48 UTC 2011 - andrea@opensuse.org
+
+- split out slirpvde to fix legal issues in bug bnc694822 
+- fixed descriptions on libraries subpackages
+
+-------------------------------------------------------------------
+Mon May  9 08:00:57 UTC 2011 - andrea@opensuse.org
+
+- clean up spec file, split out libraries and cryptcab package 
+
+-------------------------------------------------------------------
+Sun May  8 22:36:57 UTC 2011 - andrea@opensuse.org
+
+- New package 
+

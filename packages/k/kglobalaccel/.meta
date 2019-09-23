@@ -1,0 +1,5 @@
+<package name="kglobalaccel" project="openSUSE:Factory">
+  <title>kglobalaccel</title>
+  <description>KGlobalAccel</description>
+  <devel project="KDE:Frameworks5" package="kglobalaccel"/>
+</package>

@@ -1,0 +1,92 @@
+diff -urpN Canna37p1.orig/server/main.c Canna37p1.fixed/server/main.c
+--- Canna37p1.orig/server/main.c	2007-04-06 11:30:18.000000000 -0500
++++ Canna37p1.fixed/server/main.c	2007-04-09 15:21:20.000000000 -0500
+@@ -43,6 +43,8 @@ char *argv[] ;
+   SockHolder *sock_holder = NULL;
+   int status;
+ 
++  /* split out arg parsing so we can use -inet still */
++  ParseArgs(argc, argv);
+   if (!(global_user_table = UserTable_new())
+       || !(global_event_mgr = EventMgr_new()))
+     goto genfail;
+@@ -56,7 +58,7 @@ char *argv[] ;
+      * unix socket in the real /tmp directory, not somewhere in
+      * the canna chroot jail --okir */
+ 	
+-  EarlyInit(argc, argv);
++  EarlyInit();
+ 
+   /* サーバを子プロセス(デーモン)として起動する */
+   parentid = BecomeDaemon();
+diff -urpN Canna37p1.orig/server/misc.c Canna37p1.fixed/server/misc.c
+--- Canna37p1.orig/server/misc.c	2007-04-06 11:30:18.000000000 -0500
++++ Canna37p1.fixed/server/misc.c	2007-04-09 16:00:14.000000000 -0500
+@@ -60,7 +60,9 @@ static int LogLevel = 0;
+ #endif
+ static int Syslog = 0; /* syslog を通すかどうかのフラグ */
+ static int HaveTTY = 1;
+-
++static char *ddname = NULL;
++static char *jailuser = NULL;
++static char *jailroot = NULL;
+ int PortNumberPlus = 0;
+ int MMountFlag = 0; /* メモリに辞書をロードするかしないかのフラグ */
+ static char *ProgramName;
+@@ -108,16 +110,12 @@ Usage()
+ extern void getserver_version pro((void));
+ 
+ void
+-EarlyInit ( argc, argv )
++ParseArgs ( argc, argv )
+ int argc;
+ char *argv[];	
+ {
+-    char *sp, *ddname = (char *)NULL;
+-    char *jailuser = NULL, *jailroot = NULL;
+-    char buf[ MAXDATA ];
++    char *sp;
+     int     i;
+-    int     context;
+-    struct  passwd *pwent;
+ 
+     /* Sorry, usually my patches are a lot less intrusive, but this
+      * code was such a mess I had to take the axe to it. --okir */
+@@ -189,7 +187,7 @@ char *argv[];	
+ 	    exit(1);
+ 	}
+     }
+-			
++
+     if (optind == argc - 1) {
+     	/* use dictionary home supplied on command line */
+ 	ddname = argv[optind];
+@@ -201,6 +199,15 @@ char *argv[];	
+ 	exit(2);
+     }
+ 
++}
++
++void
++EarlyInit ()
++{
++    char buf[ MAXDATA ];
++    int     context;
++    struct  passwd *pwent;
++
+ #ifdef __EMX__
+ /* TCP/IP スタックが利用可能でない時は終了する */
+     if (gethostname( buf, MAXDATA ) != 0) {
+diff -urpN Canna37p1.orig/server/server.h Canna37p1.fixed/server/server.h
+--- Canna37p1.orig/server/server.h	2003-09-23 02:11:31.000000000 -0500
++++ Canna37p1.fixed/server/server.h	2007-04-09 15:21:06.000000000 -0500
+@@ -198,7 +198,8 @@ void Dmsg vapro((int Pri, const char *f,
+ void PrintMsg vapro((const char *f, ...));
+ void nomem_msg pro((const char *));
+ 
+-void EarlyInit pro((int, char **));
++void ParseArgs pro((int, char **));
++void EarlyInit pro((void));
+ int BecomeDaemon pro((void));
+ void CloseServer pro((void));
+ int CheckSignal pro((void));

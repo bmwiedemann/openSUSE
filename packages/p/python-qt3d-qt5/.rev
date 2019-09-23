@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db2a1bb49e3cb9e83529f95de8fea8e0</srcmd5>
+    <version>5.12</version>
+    <time>1551883726</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for the Qt5 3D framework </comment>
+    <requestid>681763</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb8744df06d802001e9bb28eeefb674a</srcmd5>
+    <version>5.13.0</version>
+    <time>1563259231</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>714851</requestid>
+  </revision>
+</revisionlist>

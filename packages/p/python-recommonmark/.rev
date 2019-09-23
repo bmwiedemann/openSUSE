@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5fd8c25c9f085820a3f294355b10caa</srcmd5>
+    <version>0.4.0</version>
+    <time>1493455948</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by recent versions of the jupyter suite.</comment>
+    <requestid>486217</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>526d1c91900d10563ae1aa15bddf08d4</srcmd5>
+    <version>0.4.0</version>
+    <time>1494088278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493135</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c10bee5f24f7630484a19daf8255546d</srcmd5>
+    <version>0.4.0</version>
+    <time>1501311705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512812</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b86d7338fc10b15d5167bc874d4ad997</srcmd5>
+    <version>0.4.0</version>
+    <time>1544632096</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655993</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e5fc207656231fb1c55a4b2507bfc87</srcmd5>
+    <version>0.5.0</version>
+    <time>1548064863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667124</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d1ed5eb97fe93cf4a6d35162c0de1756</srcmd5>
+    <version>0.5.0</version>
+    <time>1553888165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686480</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>77c32d6c69b5a19bff594cacca51db58</srcmd5>
+    <version>0.5.0</version>
+    <time>1560862288</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix sphinx2 testing (the strings are now wrapped in
+  &lt;p&gt; element and the tests didn't account for it:
+  * sphinx2.patch</comment>
+    <requestid>709721</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b07c0d4145a7a440d8ce7d3568ee4c0</srcmd5>
+    <version>0.6.0</version>
+    <time>1565962053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722799</requestid>
+  </revision>
+</revisionlist>

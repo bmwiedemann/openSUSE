@@ -1,0 +1,883 @@
+-------------------------------------------------------------------
+Mon May 27 11:17:01 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use GCC >= 8 for suse_version > 1500 (i.e. Tumbleweed and
+  CODE16).
+
+-------------------------------------------------------------------
+Sat May 11 16:15:57 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13186-g2c3ee31903 snapshot.
+- Qt4 EOL: qxmpp-qt5 was renamed into qxmpp.
+- Removed leechcraft-Qt59.diff (upstreamed).
+
+-------------------------------------------------------------------
+Sun Apr 14 12:43:33 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13163-g100049e6a6 snapshot:
+  * Fixed Leap compiller errors;
+  * Added leechcraft-Qt59.diff to get Leap build;
+  * Fixed mode of sha1 _service.
+
+-------------------------------------------------------------------
+Sat Apr  6 14:46:33 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13143-gd05082db2d snapshot:
+  * ppc64 & arm were fixed via plugins disabling;
+  * Added _service with sha1;
+  * vGrabber plugin became obsoleted;
+  * gcc ≥ 8 became requred to build;
+  * Qt ≥ 5.10 became requred to build;
+  * Utils tests are back (libQt5Sql5-sqlite became requires).
+
+-------------------------------------------------------------------
+Sun Mar 24 18:18:10 UTC 2019 - dap.darkness@gmail.com
+
+- Removed leechcraft-projectM-qt5.patch
+  because projectM became Qt5' one.
+
+-------------------------------------------------------------------
+Fri Feb 22 10:13:49 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use newer projectM where available
+
+-------------------------------------------------------------------
+Sun Jun 10 09:49:32 UTC 2018 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-11552-gf61ee51c3d snapshot:
+  * Qt 5.11 configure issue should be resolved.
+- Right cmake & Qt minimal versions.
+
+-------------------------------------------------------------------
+Tue Feb 13 17:11:37 UTC 2018 - aloisio@gmx.com
+
+- Added leechcraft-projectM-qt5.patch
+
+-------------------------------------------------------------------
+Tue Jan 23 16:27:12 UTC 2018 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-10870-g558588d6ec snapshot:
+  * Utils tests became temporarily disabled (wip);
+  * cmake ≥ 3.10 became required to build;
+  * Wt build failure was fixed;
+  * Bug #2048 may be resolved (xoox log failure);
+  * Azoth tab closing segfault may be fixed;
+  * Bug #2045 was resolved (poshuku start-up segfault).
+
+-------------------------------------------------------------------
+Wed Nov 29 14:44:57 UTC 2017 - dimstar@opensuse.org
+
+- BuildIgnore openssl: the required libraries are pulled in by wt
+  and libqt. openssl (the program suite) is not required here.
+
+-------------------------------------------------------------------
+Sun Aug 13 07:51:04 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9561-gaf7a4f70b8 git snapshot:
+  * Bug #2042 was resolved (segfault on Qt 5.6 → 5.9 update).
+- Monocle plugin requires gcc ≥ 7.
+- Let's use Qt5 lastfm library.
+- Enabled back plugins since Qt5Qwt6 became available:
+  * lemon — another network Monitor;
+  * liznoo — power manager.
+
+-------------------------------------------------------------------
+Thu Aug 10 16:06:32 UTC 2017 - dap.darkness@gmail.com
+
+- Harbinger became really obsoleted now.
+- Added Qt5 runtime requirements.
+- Updated to 0.6.70-9432-g81ef79f367 git snapshot:
+  * Bugged contacts could be hidden now.
+  * Bug #1348 was resolved (no birthday notifications);
+  * Right main man page file name.
+
+-------------------------------------------------------------------
+Tue Jul 25 09:46:30 UTC 2017 - tchvatal@suse.com
+
+- Do not recommend fluendo plugins as now mp3 is enabled by default
+
+-------------------------------------------------------------------
+Sat Jun 24 07:09:58 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9312-g4cc613a2df git snapshot:
+  * Bug #2038 was resolved (Segfault: IRC → offline);
+  * %%check section: output on failure;
+  * %%check section: more tests enabled.
+
+-------------------------------------------------------------------
+Mon Jun  5 15:04:22 UTC 2017 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-9233-gffda87bea6 git snapshot:
+  * gcc7 fix;
+  * Qt5;
+  * buildrequires&obsoletes clean-up;
+  * GPTOOLS_MEM;
+  * %%check section;
+  * CXX 17.
+- Obsoleted plugins:
+  * azoth-astrality (no Qt5 telepathy);
+  * harbinger;
+  * lemon (no Qt5 qwt);
+  * liznoo (no Qt5 qwt);
+  * popishu (Qt5 Scintilla includes failure);
+  * qrosp (no Qt5 qross);
+  * vtyulc (no code maintainer).
+- New plugins:
+  * lmp-ppl (Portable Player Logging support);
+  * namauth (standard HTTP authentication facilities);
+  * poshuku-foc (Flash-on-Click);
+  * poshuku-webkitview (WebKit-based backend).
+- Removed patched:
+  * leechcraft-0.6.70-6645-gcd10d7e-boost161.diff
+  * leechcraft-0.6.70-6645-gcd10d7e-hunspell17.diff
+  * leechcraft-0.6.70-6645-gcd10d7e-torrent110.diff
+
+-------------------------------------------------------------------
+Wed Feb  1 12:35:53 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Wed Jan  4 16:48:42 UTC 2017 - dap.darkness@gmail.com
+
+- Updated leechcraft-0.6.70-6645-gcd10d7e-hunspell14.diff and
+  renamed into leechcraft-0.6.70-6645-gcd10d7e-hunspell17.diff
+
+-------------------------------------------------------------------
+Sun Aug 21 10:00:50 UTC 2016 - dap.darkness@gmail.com
+
+- Added leechcraft-0.6.70-6645-gcd10d7e-boost161.diff
+  for newest boost support.
+
+-------------------------------------------------------------------
+Sun Jul 31 16:35:50 UTC 2016 - jengelh@inai.de
+
+- Update summaries and descriptions: rectify grammar and remove
+  redundant mentions.
+- Avoid sh invocation for simple ldconfig calls.
+
+-------------------------------------------------------------------
+Mon Jul 25 11:28:39 UTC 2016 - olaf@aepfle.de
+
+- Unconditionally build with ffmpeg
+
+-------------------------------------------------------------------
+Mon Jul  4 19:51:29 UTC 2016 - dap.darkness@gmail.com
+
+- Updated leechcraft-0.6.70-6645-gcd10d7e-torrent110.diff & added
+  BOOST_ASIO_HAS_STD_CHRONO vs. bittorrent initialization failure.
+- Cmake clean-up.
+- Man pages clean-up.
+
+-------------------------------------------------------------------
+Sat Jun 11 14:48:26 UTC 2016 - dap.darkness@gmail.com
+
+- Dropped openSUSE 13.1 & SLE because of no valid compiler.
+- Enabled more packages for openSUSE Leap 42.
+- Recommended extra engines for lmp.
+- Added rpmlintrc to silence useless warnings.
+- Added simple man pages.
+
+-------------------------------------------------------------------
+Sat May  7 13:07:16 UTC 2016 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-6645-gcd10d7e git snapshot:
+  (NOTE: the latest one supporting gcc 4.8
+  i.e. openSUSE 13.1, 13.2 & Leap 42.1)
+- Azoth Herbicide required boost ≥ 1.58
+  and was disabled for 13.1, 13.2 & Leap 42.1 so.
+- Added leechcraft-0.6.70-6645-gcd10d7e-torrent110.diff
+  for newest torrent rasterbar support.
+- Added leechcraft-0.6.70-6645-gcd10d7e-hunspell14.diff
+  for newest hunspell support.
+
+-------------------------------------------------------------------
+Wed Feb  3 17:25:40 UTC 2016 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-6053-g34d21e8 git snapshot:
+  * Threads utility was split out.
+  * Taglib >= 1.10 became supported.
+- Musiczombie plugin chromaprint future was enabled for Factory.
+- C++14 code and xproxy plugin were enabled for Factory.
+- leechcraft-lmp-append-gstreamer-include-dirs-pkgconfig.patch
+  was removed as already provided via upstream tarball.
+
+-------------------------------------------------------------------
+Sun Nov 29 15:17:10 UTC 2015 - mlin@suse.com
+
+- Add leechcraft-lmp-append-gstreamer-include-dirs-pkgconfig.patch
+  * Fix compilation in lmp plugin with GStreamer 1.5.1 and above 
+
+-------------------------------------------------------------------
+Fri Aug 21 19:03:03 UTC 2015 - normand@linux.vnet.ibm.com
+
+- bypass bug 927268 for PowerPC if clang used in place of gcc
+  for build ppc64le architecture and (suse_version} <= 1320
+
+-------------------------------------------------------------------
+Thu Jul  2 15:26:25 UTC 2015 - dap.darkness@gmail.com
+
+- Fixed openSUSE <= 13.2 builds & pcc x32.
+
+-------------------------------------------------------------------
+Wed Jul  1 12:42:22 CEST 2015 - pth@suse.de
+
+- Build with gcc/g++ at least for the time being to avoid compiler
+  error. But use it only if suse_version > 1320.
+
+-------------------------------------------------------------------
+Wed Jun 10 16:35:52 UTC 2015 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-3565-g2d86529 git snapshot.
+- Utils postfix macros were introduced,
+  devel subpackage requirements were fixed.
+
+-------------------------------------------------------------------
+Mon May 25 18:25:50 UTC 2015 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-3466-g864bd1a git snapshot:
+  * clang seems to be better C++ compiler;
+  * Dolozhee plugin got https support and was fixed so.
+- New plugins were enabled:
+  * snails — e-mail client.
+- C++14 support (gcc >= 4.9 is required).
+
+-------------------------------------------------------------------
+Tue Apr 21 08:29:38 UTC 2015 - dap.darkness@gmail.com
+
+- Updated to 0.6.70-2742-gfaed6e2 git snapshot
+  to resolve openSUSE Factory build time issue.
+- More directories macro using to be ready for Qt5 release.
+- Dropped openSUSE < 13.1, removed useless patches:
+  * leechcraft-azoth-gcc47.patch
+  * leechcraft-monocle-gcc47.patch
+  * leechcraft-gcc47.patch
+- Removed useless obsoletings.
+- Let's recommend set of packages.
+- New plugins were enabled:
+  * azoth-abbrev provides abbreviations via commands like /abbrev
+    for LeechCraft Azoth;
+  * intermutko provides a HTTP Accept-Language header configurator;
+  * lmp-potorchu provides visualization effects
+    for LeechCraft audio player;
+  * zalil allows to upload files to accountless filebin services.
+- Useless Qt5' files removing.
+- SLE 12 support.
+
+-------------------------------------------------------------------
+Mon Jan 26 20:16:06 UTC 2015 - dap.darkness@gmail.com
+
+- Disabled plugins:
+  * azoth-zheet; MSN support became obsoleted by MSFT.
+
+-------------------------------------------------------------------
+Sun Jan 25 00:46:18 UTC 2015 - crrodriguez@opensuse.org
+
+- Disable azoth-zheet (MSN support) in tumbleweed and later 
+  as MSN was discontinued by MSFT. 
+
+-------------------------------------------------------------------
+Wed Sep 10 15:35:22 UTC 2014 - dap.darkness@gmail.com
+
+- A new plugin was enabled:
+  * Eleeminator is a a terminal emulator.
+
+-------------------------------------------------------------------
+Wed Jul 30 14:38:58 UTC 2014 - dap.darkness@gmail.com
+
+- 0.6.70 release:
+  * Poshuku browser IDN support was enabled;
+  * utilities library was split into different so files
+    and subpackages.
+- New plugins were enabled:
+  * Azoth MuCommands provides conference-oriented commands;
+  * LMP FrAdj is a 10-band equalizer;
+  * Poshuku DCAC provides DC/AC for browser;
+  * Poshuku QRd provides QR codes for browser.
+- leechcraft-azoth-gcc47.patch was updated.
+- Added leechcraft-gcc47.patch vs. names constructor error.
+
+-------------------------------------------------------------------
+Mon Jul  7 16:23:44 UTC 2014 - dap.darkness@gmail.com
+
+- 0.6.65-380-gffa0f72.tar.xz git snapshot:
+  * monocle-postrus became installable out of box (doesn't
+    require libspectre now and so isn't affected by bnc#828751).
+- New plugins were enabled:
+  * LMP BrainSlugz is a audio collection checker;
+  * LMP HttStream is a music streamer over http;
+  * Poshuku SpeedDial is a speed dial for browser.
+- Disabled plugins:
+  * azoth-p100q became obsoleted;
+  * azoth-otroid can't be built for oS 12.2-;
+  * bittorrent requires libtorrent-rasterbar >= 0.16 (oS 13.1+).
+
+-------------------------------------------------------------------
+Sat Jun  7 12:56:23 UTC 2014 - dap.darkness@gmail.com
+
+- udev → libudev, the latest is really needed
+  and Factory's udev doesn't require it any more.
+
+-------------------------------------------------------------------
+Sat May 17 09:25:32 UTC 2014 - dap.darkness@gmail.com
+
+- New plugin was enabled for Factory:
+  * Aggregator WebAccess is a news reader web interface module.
+
+-------------------------------------------------------------------
+Sat Apr  5 11:56:18 UTC 2014 - dap.darkness@gmail.com
+
+- 0.6.65 release:
+  * LMP audio player ReplayGain support;
+  * Azoth, the IM client, server history support (XEP-0313);
+  * XMPP Message Carbons support (XEP-0280);
+  * Monocle, the document reader, now supports annotated documents;
+  * PDF seamless scrolling without freezing the UI;
+  * The LHTR visual hypertext editor now gained
+    support for the image sources plugins (Blasq);
+  * HTML editor now supports syntax highlighting;
+  * Aggregator now supports renaming feeds;
+  * LackMan now supports vim-style navigation
+    and using Space key to toggle packages;
+  * MusicZombie now fetches all information about a single artist
+    in one request;
+  * New Life now supports importing history from Opera;
+  * Popishu text editor now supports the recoverable tabs concept;
+  * SB2 now supports hiding quarks by default;
+  * /etc/os-release is now properly parsed.
+- New plugins were enabled:
+  * CertMgr is the new SSL manager;
+  * CPU load is a monitoring quark;
+  * Ooronee handles images and text dropped onto it;
+  * Rosenthal is a core spell checker.
+- Deleted leechcraft-0.6.60-monocle-arm.patch as merged.
+- Added leechcraft-monocle-gcc47.patch
+  to prevent names constructor error.
+- Shellopen plugin amd mediacalls became obsoleted.
+
+-------------------------------------------------------------------
+Fri Mar  7 17:53:34 UTC 2014 - dap.darkness@gmail.com
+
+- Removed velvetbird bcond because of purple
+  already built for all OBS archs.
+- Added leechcraft-0.6.60-monocle-arm.patch to prevent
+  arm6-7 build failures, upstream url:
+  https://github.com/0xd34df00d/leechcraft/commit/ef3fdc
+- Added gstreamer-1_0 define against oS >= 13.2 and
+  versioned gst "BuildConflicts" to build lmp with the
+  same gst as QtWebKit was built to prevent runtime freeze.
+
+-------------------------------------------------------------------
+Sun Feb 23 14:57:17 UTC 2014 - dap.darkness@gmail.com
+
+- New plugins were enabled:
+  * Azoth Astrality: telepathy framework (Factory);
+  * Qrosp: scripting support;
+  * Textogroose: scripted lyrics finder.
+
+-------------------------------------------------------------------
+Mon Jan  6 20:36:26 UTC 2014 - dap.darkness@gmail.com
+
+- New mupdf version broke building again
+  and upstream decided not to fix it.
+
+-------------------------------------------------------------------
+Sat Jan  4 11:49:37 UTC 2014 - dmueller@suse.com
+
+- add velvetbird buildconditional to consolidate and correct
+  arch dependencies (fixes build)
+
+-------------------------------------------------------------------
+Mon Dec 30 16:18:59 UTC 2013 - dap.darkness@gmail.com
+
+- 0.6.60 release:
+  * Desktop mode provides a full-featured desktop environment;
+  * LMP social collection-oriented audio player improvements;
+  * See more at http://leechcraft.org/leechcraft-0.6.60-is-released
+- New plugins were enabled:
+  * Azoth Murm: VK.com (VKontakte) api messaging support;
+  * Azoth WoodPecker: Twitter support;
+  * Blasq is a new plugin for cloud image photo albums;
+  * Devmon for managing non-mass storage USB devices;
+  * Fenet is responsible for autostarting a window manager;
+  * Harbinger provides a collections manager plugin;
+  * Htthare provides content from local filesystem over LANs;
+  * Imgaste for uploading images to imagebins;
+  * Krigstask provides a taskbar and a pager quark for SB2;
+  * Laughty is a system-wide desktop notifications daemon;
+  * LMP MTPSync, LMP subplugin for uploading music via MTP;
+  * Mellonetray provides a system tray area quark for SB2;
+  * Monocle Dil contains a MOBI subplugin for documents viewer;
+  * Scroblibre, a Submissions API 1.2-compliant scrobbler;
+  * Sysnotify, a notification backend using the libnotify D-Bus;
+  * VtyuLC, experimental VLC-based video player;
+  * Xtazy for fetching currently playing tune from players.
+- Maintainership:
+  * Removed leechcraft-otlozhu-0.6.0-cpp.patch;
+  * Added leechcraft-azoth-gcc47.patch vs. oS 12.2' gcc issue;
+  * %%make_jobs was switched back because it requires kde;
+  * Build requirements were replaced by pkgconfig();
+  * cmake section was refactored again.
+  
+
+-------------------------------------------------------------------
+Sat Dec 21 16:11:29 UTC 2013 - dap.darkness@gmail.com
+
+- Added leechcraft-otlozhu-0.6.0-cpp.patch to prevent strange
+  build issue: "error: no type named 'type' in 'struct",
+  https://github.com/0xd34df00d/leechcraft/commit/170e8
+- make_jobs, ix86 and arm macros became used.
+- choroid, hotsensors, shaitan and syncer plugins
+  became obsoleted because of ustream request.
+
+-------------------------------------------------------------------
+Fri Sep 27 20:06:22 UTC 2013 - dap.darkness@gmail.com
+
+- _constraints was added to prevent out-of-memory build issue.
+
+-------------------------------------------------------------------
+Wed Sep 11 20:51:25 UTC 2013 - dap.darkness@gmail.com
+
+- 0.6.0 release fixes lots of bugs in
+  * Core, Util & XSD,
+  * AdvancedNotifications,
+  * Aggregator,
+  * Azoth, Azoth AdiumStyles, Azoth Autoidler,
+    Azoth p100q, Azoth Vader & Azoth Xoox,
+  * Dolozhee (set proper stretch on widgets),
+  * LastFMScrobble (fixed leaking),
+  * Launchy (use own settings instead of messing with LMP),
+  * Liznoo (try autostarting UPower if it's unavailable),
+  * LMP & LMP Graffiti,
+  * Poshuku & Poshuku CleanWeb,
+  * Summary (fixed leaking context menu actions).
+- Spec fixing up:
+  * Obsoletes nacheku because of ustream request.
+  * DSTRICT_LICENSING=True to suggest IM clients icons.
+  * DENABLE_MEDIACALLS=True to enable Jingle support.
+  * DENABLE_BITTORRENT_GEOIP=True to enable countries flags.
+
+-------------------------------------------------------------------
+Fri Jul 12 21:10:46 UTC 2013 - dap.darkness@gmail.com
+
+- 0.5.99 bugfix release:
+  * AN: fixed a typo in user string.
+  * AN: updated English and Russian translations.
+  * Azoth: auto-request logs for MUC participants as well.
+  * Azoth: fixed font zooming in fixed-font MUCs.
+  * Azoth CH: don't test the entry type, leave that to core.
+  * LMP: fixed a segfault on removable device removal in sync widget.
+  * Lemon: added Qwt 6.1 compatibility.
+  * Liznoo: added Qwt 6.1 compatibility.
+  * Monocle Mu: depend on openjpeg and jbig2dec, required by mupdf.
+  * Poshuku CleanWeb: fixed a rare segfault.
+- openSUSE 12.1 became EOL and unsupported by upstream:
+  * leechcraft-acetamide-qt47.patch was deleted;
+  * if-sections were deleted;
+  * gcc version required to build was incremented.
+- Forgotten doc dependencies were deleted (doxygen, graphviz).
+- Additional mupdf linking dependencies were added (jbig2dec, openjpeg).
+- Conflict with Lcms 2.5+ was added as a workaround for bnc#828751.
+
+-------------------------------------------------------------------
+Mon Jun 24 18:49:25 UTC 2013 - dap.darkness@gmail.com
+
+- 0.5.98 bugfix release:
+  * Core: first show unassociated dock widgets.
+  * Core: fixed some segfaults on tab closes.
+  * Core: fixed notifications about current tab changes.
+  * Core: fixed reusing IDs for jobs.
+  * AN: fixed overlay text drawing on notification icons.
+  * Aggregator: always save provider for delegated jobs.
+  * Aggregator: download the rest of the feeds after killing a stall.
+  * Azoth: fixed several rare segfaults.
+  * Azoth: don't try sending contact ID to another on DnD.
+  * Azoth: change tab name after entry renaming.
+  * Azoth MetaContacts: don't suggest unifying with MUC entries.
+  * Azoth Xoox: properly handle server errors on form fetching.
+  * Kinotify: fixed leaking state machine on each notification.
+  * LMP: fixed broken synchronization symbol fixing.
+  * LMP: temporary files are always removed after sync.
+  * LMP: metadata is now mapped properly from the source.
+  * Monocle: only render those pages that are actually visible.
+  * Monocle: don't set negative scales.
+  * Monocle: menu is shown only if mouse moved with a button pressed.
+  * Monocle Seen: safeguard against rendering a bunch of small images.
+  * TSM: fixed occasional segfaults on tab closes.
+  * Vrooby: proper partition naming in UDisks2 backend.
+- Fixed for PowerPC and ARM architectures:
+  * no v8 and mupdf for ppc* — monocle-mu plugin was disabled;
+  * no libpurple for armv5 — azoth-velvetbird plugin was disabled.
+- Removed leechcraft-doc-doxygen-rpmlint-w.patch: resolved in upstream.
+- Qt >= 4.8 became required to build.
+
+-------------------------------------------------------------------
+Mon Jun 10 20:52:29 UTC 2013 - dap.darkness@gmail.com
+
+- 0.5.97 bugfix release:
+  * Core: fixed colors for QML buttons (mucn neater now).
+  * Core: properly handle META key in shortcuts dialog.
+  * Core: properly set default string codec, fixes debug messages encoding.
+  * Util: fixed memory leak with QML and ColorThemeProxy.
+  * Util: fixed rectangle fitting algorithm.
+  * Azoth: fixed chat entry destruction on chat tab close.
+  * HotSensors: take text color from the QML theme.
+  * LackMan: fixed a typo in SQL query.
+  * Launchy: extended known category aliases for Multimedia.
+  * Monocle: keep page position on resize.
+  * NSM: fixed icons for tab context menu actions.
+  * TPI: update job name as well.
+  * TPI: don't show internal tasks.
+  * Vrooby: close the device popup on hoverout.
+- New plugins were enabled for Factory:
+  * Touchstreams — VK.com music streaming.
+
+-------------------------------------------------------------------
+Tue May 21 18:03:02 UTC 2013 - dap.darkness@gmail.com
+
+- 0.5.96 bugfix release:
+  * Core: keep tab icon along tab moves between windows.
+  * Core: fixed toolbar handling on tab moves between windows.
+  * Core: fixed file locking threading issues.
+  * Core: fixed network disk cache expiration handling.
+  * Core: proper handling of forcefully closed unassociated dock widgets.
+  * Core: don't show actions with empty text in popup menus.
+  * Azoth: fixed autoscrolling.
+  * Azoth: application-wide users list shortcut.
+  * Azoth: case-insensitive users list filtering.
+  * Azoth: use proper icon for voice calls.
+  * Azoth Acetamide: made the channels list dialog non-modal.
+  * Azoth Acetamide: allow joining to channels while the list is fetched.
+  * Blogique: fixed progress indicator.
+  * Blogique Hestia: fixed autoupdating entries in local blog.
+  * Monocle Postrus: fixed FindLibSpectre.cmake for upcoming CMake.
+  * LMP: fix rare segfaults on queue clearing.
+  * LMP: clear last song data on player clearing.
+  * LMP: support drags from filesystem browser.
+  * LMP: replace queue on playlist activation.
+  * LMP: properly restore play mode check state.
+  * Popishu: fixed caret line background color.
+  * VB: don't own conversation by the buddy, fixes multiple segfaults.
+- New plugins were enabled:
+  * azoth-otroid — Off-the-Record module for IM;
+  * monocle-mu — another pdf module via the mupdf backend;
+- Renamed to correspond upstream naming policy:
+  * poshuku-delicious => poshuku-onlinebookmarks-delicious;
+  * poshuku-readitlater => poshuku-onlinebookmarks-readitlater;
+- Updated leechcraft-acetamide-qt47.patch to revert some 0.5.96 changes
+  to provide azoth-acetamide plugin at openSUSE 12.1.
+- Added "-Doverride=" CXX-flag to prevent compiler errors at openSUSE 12.1.
+- Fixed up via `spec-cleaner`.
+
+-------------------------------------------------------------------
+Sun Apr 28 13:24:59 UTC 2013 - dap.darkness@gmail.com
+
+- 0.5.95 release:
+  * Aggregator module got a major speedup;
+  * Azoth IM client became more keyboard-friendly;
+  * Blogique, the blog client, now supports
+    - autosaving,
+    - tab unclosing,
+    - session management with the TabSessManager plugin,
+    - showing recent comments and inbox messages;
+  * Choroid plugin requires Qt >= 4.8;
+  * GActs now bundles a patched Qxt with it. It adds support for assigning
+    media keys to global shortcuts, a thing that upstream Qxt misses (and
+    seems to not accept the proposed patch for several years already);
+  * GMail Notifier module now supports showing a quark at SB2.
+  * Sidebar plugin became deprecated;
+  * Launchy module now supports favorites category;
+  * LHTR visual editor plugin now supports tables;
+  * License was switched from GPL-3.0+ to BSL-1.0;
+  * LMP audio-player got a proper album art manager;
+  * Monocle document reader now supports
+    - page thumbnails,
+    - bookmarks (with visually highlighting the currently displaying area),
+    - forms for PDF files,
+    - text searching;
+  * Multiple windows support;
+  * Poshuku history widget got support of
+    - filtering by URL,
+    - eliminating duplicates in the same section;
+  * SB2 now supports placing the panel in any window side;
+  * Vrooby now supports UDisks2 and building with several backends.
+- New plugins were enabled:
+  * azoth-velvetbird — LibPurple wrapper for IM;
+  * blogique-hestia — local blogging;
+  * hotsensors — temperature sensors for sidebar;
+  * lmp-graffiti — audio tags editor for player;
+  * monocle-doc — monocle plugin documentation;
+  * poshuku-autosearch — autosearch for browser.
+- See more at http://leechcraft.org/moving-to-bsl
+  and http://leechcraft.org/leechcraft-0.5.95-is-released
+- Added leechcraft-acetamide-qt47.patch to revert some 0.5.95 changes
+  to provide azoth-acetamide plugin at openSUSE 12.1.
+- Added leechcraft-doc-doxygen-rpmlint-w.patch to prevent rpmlint
+  "W: file-contains-date-and-time" for doxygen made html-files.
+- Removed boost.patch merged by upstream.
+
+-------------------------------------------------------------------
+
+Fri Feb  1 16:52:35 UTC 2013 - dap.darkness@gmail.com
+
+- A bug with not loading torrent plugin was fixed via boost.patch.
+
+-------------------------------------------------------------------
+Fri Dec 21 21:24:25 UTC 2012 - dap.darkness@gmail.com
+- 0.5.90 release:
+  * lots of improvements and bugfixes;
+  * desktop-files to open different file types;
+  * gcc 4.5 support was deprecated.
+- New plugins were enabled:
+  * azoth-shx — shell command runner;
+  * blogique & blogique-metida — blogging;
+  * dumbeep — dumb sound notifier;
+  * hotstreams — radio streams provider;
+  * launchy — third-party application launcher;
+  * lemon — another network Monitor;
+  * liznoo — power manager;
+  * monocle-postrus && monocle-seen — PostScript && Djvu documents support;
+  * musiczombie — MusicBrainz.org client;
+  * sb2 — another side bar;
+  * shaitan — terminal;
+  * tpi — quark task progress indicator.
+- Clean section was removed.
+- Applied into upstream patches were deleted.
+- Useless desktop-file was deleted.
+
+-------------------------------------------------------------------
+Wed Oct 31 13:44:33 UTC 2012 - mvyskocil@suse.com
+
+- setup permissions correctly to avoid false duplicates reported by
+  rpmlint because of new fdupes behavior (bnc#784670)
+
+-------------------------------------------------------------------
+Tue Sep 09 06:44:00 UTC 2012 - nekolayer@yandex.ru
+- fix build with new libqxmpp (backported from git)
+
+-------------------------------------------------------------------
+Fri Aug 10 20:44:22 UTC 2012 - dap.darkness@gmail.com
+- 0.5.80 release
+  Media player LMP:
+      * All proper logic for uploading songs to cloud services
+      * Fetching playlists from such services
+      * A new plugin has been added - LMP MP3tunes
+      * There is now a nice stats label below the playlist
+      * There are now different sort modes
+      * Among cosmetic changes are fixed background colors in QML elements
+      * Support for ignoring "The " when sorting artists in collection
+      * And shortcuts for different actions are configurable now, too
+  NetStoreManager:
+      * A new plugin has been added - NetStoreManager GoogleDrive
+      * For now only uploading and fetching the list of uploaded files works
+  Document viewer Monocle supports:
+      * Displaying one page or double-page spread
+      * Copying selection to image or text
+      * Scaling
+      * Width-fitting
+      * Tables of contents
+      * Links
+      * Paginated navigation
+      * Printing
+      * Monocle also integrates with the rest of LeechCraft
+      * For now only PDF and fb2 file formats are supported
+      * PDF is supported via Poppler library
+  IM client Azoth:
+      * A new plugin has been added - Azoth BirthdayNotifier
+      * Azoth now finally displays user's avatar in tooltips
+      * Tabs of conferences with unread highlight messages are now marked
+  * RSS-reader Aggregator now supports exporting feeds to PDF
+  * The issue reporter Dolozhee now supports fetching issue categories
+
+-------------------------------------------------------------------
+Wed Jul 11 21:12:20 UTC 2012 - dap.darkness@gmail.com
+- 0.5.75 release
+  Media player LMP got the following features:
+      * Uploading files from local collection to portable media players
+      * Optional transcoding of uploaded files
+      * Support for social radio stations like Last.FM radio
+      * Obtaining personalized recommendations, recent releases etc
+      * Support for MPRIS
+  New Modules:
+      * Vrooby is a removable storage devices manager
+      * Monocle is a modular document viewer
+  * Several things were optimized a lot
+  * A bunch of minor fixes and enhancements in other plugins
+  * A nickname can be inserted by Ctrl+activate it in the roster
+  * Azoth ChatHistory module finally got a small calendar widget
+  * Links in chat logs are now clickable
+
+-------------------------------------------------------------------
+Sun May 27 17:54:51 UTC 2012 - dap.darkness@gmail.com
+
+- 0.5.70 release
+  Media player LMP was all-new rewritten and got such features:
+      * Specialization on audio
+      * Local collection
+      * Static and dynamic playlists
+      * Support for external playlists in pls, xspf and m3u8 formats
+      * Playback modes: sequential, shuffled and track/album/playlist repeat
+      * Scrobbling listened tracks to Last.FM via LastFMScrobble
+      * Fetching missing album covers via LastFMScrobble
+      * Requests for similar artists via LastFMScrobble
+      * Tray icon
+  * Core: "back"/"forward" mouse buttons make tabs switching
+  * Fixes in AdvancedNotifications module
+  In modular IM client Azoth:
+      * Added support for /kick and /ban commands
+      * Smiles aren't replaced anymore in the middle of the words
+      * Added support for hiding and disabling accounts
+      * Autopaste module was migrated to the codepad.org
+      * Azoth p100q is now more compatible with Adium themes
+      * Azoth Xoox now supports adding, editing and removing phones and emails
+      * Some MUC reconnection issues were fixed in Azoth Xoox.
+      * Azoth Vader module now supports assigning phone numbers to contacts
+      * Some problems with authorization handling were fixed in Azoth Vader
+
+-------------------------------------------------------------------
+Thu May 24 08:29:26 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  COPYING and the majority of source code files now state that leechcraft
+  is GPL-3.0 licensed
+
+-------------------------------------------------------------------
+Sun Apr 29 17:10:00 UTC 2012 - nekolayer@yandex.ru
+
+- 0.5.65 release
+  New Modules:
+      * Dolozhee module (bug reporting and feature requesting tool)
+      * KBCraft module (keyboard layout manager)
+      * Otlozhu module (simple GTD-inspired TODO manager)
+      * XProxy module (advanced proxy configurator)
+  * LackMan got a major UI update and general overhaul
+  * TabSessManager supports global tab unclosing
+  * Azoth Xoox properly caches entity capabilities and vCards
+  * Lots of fixes and improvements in Azoth Acetamide
+  * Choosing chat window style and its variant became much more handy
+  * Azoth Xoox got full support for XEP-0232
+  * Azoth got configurable minimal message editor height
+  * Auscrie was improved and fixed.
+
+-------------------------------------------------------------------
+Thu Mar 15 14:15:00 UTC 2012 - nekolayer@yandex.ru
+
+- 0.5.60 release
+  New Modules:
+      * Added Azoth Zheet module (MSN support)
+      * Added Azoth Vader module (Mail Agent support)
+      * Sidebar module
+      * Session manager module (save/restore LC tabs)
+      * NetStore manager module (now support Yandex.Disk)
+      * GActs module (global hotkeys)
+  * Azoth Acetamide support CTCP and vCards
+  * Aggregator works with DB in another thread and not block main app
+  * Many Imporements in adium style support
+  * Now using system oxygen icon theme
+
+-------------------------------------------------------------------
+Thu Feb 09 10:50:00 UTC 2012 - nekolayer@yandex.ru
+
+- 0.5.0 release
+  * added magnet scheme support in Bittorent module
+  * updated icons
+  * Poshuku browser - don't notify about items already existing in Favourites.
+  * Azoth Xoox: always initialize message subtype.
+fixed summary description
+
+-------------------------------------------------------------------
+Wed Jan 25 11:04:00 UTC 2012 - nekolayer@yandex.ru
+
+- 0.4.99 release
+  * fixed memory leaks on Azoth
+  * Lackman update to new format
+  * Enabled flash support in Poshuku browser
+
+-------------------------------------------------------------------
+Fri Jan 13 17:20:00 UTC 2012 - nekolayer@yandex.ru
+
+- 0.4.98 release
+  * Aggregator storages crash fix
+  * IRC plugin fixes
+  * Azoth adiumstyles fixes
+fixed modules dependencies in spec
+
+-------------------------------------------------------------------
+Tue Dec 27 01:30:00 UTC 2011 - nekolayer@yandex.ru
+
+- 0.4.97 release
+  * Azoth messenger visual fixes
+  * bittorrent optimization
+  * fixed bookmarks sync
+
+-------------------------------------------------------------------
+Sun Dec 11 16:50:00 UTC 2011 - nekolayer@yandex.ru
+
+- 0.4.96 release
+  * Fixes in Azoth AdiumStyles
+  * Fixed handling of media players in Azoth Xtazy
+  * Authorization issues were fixed in Azoth.
+  * moderators are now able to kick participants in Azoth Xoox
+
+-------------------------------------------------------------------
+Tue Dec 06 01:50:00 UTC 2011 - nekolayer@yandex.ru
+- Enabled Plugins: LcFTP, Lackman, Gmail, Knowhow, Syncer
+- Added Renkoo AdiumStyle to azoth-adiumstyles
+- Set QAppStyle to Default from Plastique
+- Fix Aspell support
+- Fix AnHero plugin
+- Remove dbusmanager.patch, not needed
+
+Mon Dec 05 11:00:15 UTC 2011 - nlminhtl@gmail.com
+-------------------------------------------------------------------
+
+- Add eiskaltdcpp-fix-php5-issue.patch - fix resolving
+  /usr/bin/php5 dependence
+
+-------------------------------------------------------------------
+Tue Nov 29 21:09:22 UTC 2011 - nlminhtl@gmail.com
+
+- 0.4.95 release
+- new packages: pogooglue, delicious, readitlater, isterique
+- removing qt-multimedia from dependencies
+- optimizing the spec file by using macros
+- New features:
+- * Support for XEP-0055: Jabber Search in Azoth Xoox.
+- * AdvancedNotifications now supports enabling/disabling rules and 
+single shot rules.
+- * Azoth and Azoth Xoox now support inviting to MUCs.
+- * Azoth Acetamide now supports SSL connections.
+- * and other features 
+http://leechcraft.org/leechcraft-0.4.95-is-released
+
+-------------------------------------------------------------------
+Sat Nov 26 17:27:33 UTC 2011 - nlminhtl@gmail.com
+
+- fixing the bug with azoth style packages in openSUSE:Factory
+
+-------------------------------------------------------------------
+Fri Nov 11 06:23:33 UTC 2011 - nlminhtl@gmail.com
+
+- removing the download service for openSUSE:Factory
+- adding dependency aspell-devel for spell checking support
+
+-------------------------------------------------------------------
+Sun Oct 23 12:25:06 UTC 2011 - nlminhtl@gmail.com
+
+- 0.4.90 release 
+
+-------------------------------------------------------------------
+Fri Jul  21 21:15:59 UTC 2011 - nlminhtl@gmail.com
+
+- 0.4.85 version release 
+
+-------------------------------------------------------------------
+Mon Jul  4 11:49:59 UTC 2011 - nlminhtl@gmail.com
+
+- 0.4.80 version release 
+
+-------------------------------------------------------------------
+Thu Jun 30 11:47:27 UTC 2011 - nlminhtl@gmail.com
+
+- package name fixed 
+

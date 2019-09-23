@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7382446867446f989c15b25147d07598</srcmd5>
+    <version>1.1.1</version>
+    <time>1432636279</time>
+    <user>dimstar_suse</user>
+    <comment>Library exposing some functionality of Haddock</comment>
+    <requestid>307872</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0abe2dd6fa1990365ac7a527c7f52fde</srcmd5>
+    <version>1.2.1</version>
+    <time>1440337390</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324475</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7c67cee16d6375ea1498c3deccacdb9e</srcmd5>
+    <version>1.2.1</version>
+    <time>1468999304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411777</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>accf833efb5b6c10034b71db2e492bbe</srcmd5>
+    <version>1.4.2</version>
+    <time>1476875058</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433392</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d46360516ee22a52dd88a4dedfe2e028</srcmd5>
+    <version>1.4.3</version>
+    <time>1494088116</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491470</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b195c711d6e5511aa83c7bdfc7b1dce6</srcmd5>
+    <version>1.4.3</version>
+    <time>1505504797</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524707</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01d44d0fabc6589a15ec41606b9ba017</srcmd5>
+    <version>1.5.0.1</version>
+    <time>1527674899</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-haddock-library to the latest version.</comment>
+    <requestid>607806</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>074d236d8c6d1da524a9fcf0ed8512b2</srcmd5>
+    <version>1.6.0</version>
+    <time>1532445550</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update haddock-library to version 1.6.0.
+  ## Changes in version 1.6.0
+   * `MetaDoc` stores package name for since annotations
+
+- update to 1.2.1
+- remove unneeded dep
+- initial commit of haddoc-library package</comment>
+    <requestid>623780</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b35816eff5c584ca34d1688d9190ced2</srcmd5>
+    <version>1.7.0</version>
+    <time>1540448184</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642860</requestid>
+  </revision>
+</revisionlist>

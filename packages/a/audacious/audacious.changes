@@ -1,0 +1,500 @@
+-------------------------------------------------------------------
+Wed Dec 26 20:08:39 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.10.1:
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu Aug  9 12:01:37 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.10:
+  + New features (general):
+    * Shuffle history is remembered at exit to avoid repeating
+      songs.
+    * Exported M3U and PLS playlists now use relative paths by
+      default.
+    * Recursively adding subdirectories to the playlist is now
+      optional.
+    * The URL history shown in the Add/Open URL dialogues can be
+      cleared.
+    * Toolbar buttons in the GTK+ UI now show tooltip hints.
+    * The adplug input plugin has a new settings window.
+    * The Search Tool can be configured to scan for new files at
+      start-up.
+    * The number of results shown in the Search Tool is now
+      configurable.
+    * The Delete Files plugin is clearer about which files will be
+      deleted.
+    * Icons from the desktop theme are used more consistently.
+    * The bottom info bar now matches the colour tone of dark
+      themes.
+    * The soxr resampler has some new, more detailed settings.
+  + Qt UI enhancements:
+    * "audacious -m" now raises the main window as expected.
+    * The number pad Enter key now starts playback as expected.
+    * The Escape key can be used to return to the currently playing
+      playlist.
+    * Fix the row height of the playlist view changing
+      unexpectedly.
+    * Volume can be changed using the mouse wheel on the system
+      tray icon.
+    * Add Playlist Import/Export dialogue windows.
+    * Add a song info tooltip to the playlist and system tray icon.
+    * Add a "Play" icon to the tab of the currently playing
+      playlist.
+    * Add a label showing file path/URI to the song info window.
+    * URI and tag values in the song info window can be copied to
+      the clipboard.
+    * Add the missing "Search Library" command in the Winamp UI.
+    * Add font formatting to improve readability in the
+      Search Tool.
+    * Fix a build error (QStaticText-related) with Qt 5.10.
+    * Fix Audacious exiting when the settings window is closed.
+    * Fix font preferences not being respected in a couple of
+      places.
+    * Fix playlist position sometimes not updating when the song
+      changes.
+    * The info bar correctly changes colour when the theme changes.
+  + Bugs fixed:
+    * Non-existent files are no longer skipped when loading a
+      playlist.
+    * Fix an issue when trying to seek beyond the end of a WAV
+      file.
+    * The default ReplayGain amplification for untagged files works
+      again.
+    * Fix a crash when changing UI with the Ampache plugin enabled.
+    * Fix a crash on exit when using the Winamp UI and the Ampache
+      plugin.
+    * Fix a warning about --datarootdir when running ./configure.
+    * Reduce excessive file I/O when loading playlists.
+    * Fix repeated error messages when playing a short playlist on
+      repeat.
+    * PulseAudio users can now change the volume without a song
+      playing.
+    * Fix an error preventing FLAC tags from being updated.
+    * Add a .m4v extension to the whitelist so that audio can be
+      played.
+    * Fix a rare crash triggered by a specific sequence of playlist
+      edits.
+    * Fix incorrect "Recording On/Off" notifications in the
+      Winamp UI.
+    * Fix an error in the MPRIS 2 server affecting the playerctl
+      client.
+  + Other changes:
+    * The GNOME Shortcuts plugin, which has been broken since
+      GNOME 3.26, is gone.
+    * The system version of the AdPlug library is now used
+      (if installed).
+    * Audacious no longer registers as an inode/directory MIME
+      type handler.
+- Remove audacious-no-inode-directory-mimetype.patch: fixed
+  upstream.
+- Switch back to Gtk2 from Gtk3 for the Gtk3 version is gone.
+
+-------------------------------------------------------------------
+Sun Oct 29 11:49:17 UTC 2017 - olaf@aepfle.de
+
+- Remove the versioned conditional for Qt build.
+  It builds fine in PackageHub, and audacious-plugins expects the
+  Qt variant.
+- Remove Qt and GTK conditionals, they are always enabled and the
+  name is too generic
+- Remove conditional for appdata for obsolete Leap 42.1
+
+-------------------------------------------------------------------
+Wed Aug 23 10:46:47 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.9
+  Qt UI enhancements:
+  * More configurable main window, with new View menu and
+    additional options in Settings (#657)
+  * Full drag-and-drop capability for playlist entries
+  * Configurable playlist columns (add, remove, resize, and
+    rearrange)
+  * New controls for stream recording
+  * Improved playlist search bar, which hides until Control+F is
+    pressed, matches results more intelligently, and even mimics
+    the keyboard controls of the old 'Jump to Song' dialog
+  * Integrated menu items and keyboard shortcuts for the
+    Playlist Manager and Search Tool
+  * More detailed yet unobtrusive reporting of errors via the
+    status bar
+  * Visual indication when 'Stop After This Song' is active, by
+    making the stop button a toggle
+  * Better high-DPI support and many other cosmetic fixes
+  Usability improvements:
+  * A Comments column can be displayed in the playlist, and used
+    to sort it (#560)
+  * Bold, italics, and capitals highlight different types of
+    results in the GTK+ version of the Search Tool (#701)
+  * The Record button is hidden to prevent accidental usage
+    until recording is enabled in Settings (#703)
+  * Recording settings can be changed without immediately
+    starting to record the currently playing stream
+  * The unhelpful "Unknown playback error" message has been
+    removed
+  Advanced features:
+  * audtool gains better support for multiple playlists with the
+    --select-displayed and --select-playing commands (#609)
+  * Recursive adding of folders specified in M3U playlists (#731)
+  * Direct output to ALSA devices that require packed 24-bit
+    audio
+  * Automatic switching between track and album ReplayGain modes
+    when shuffle is enabled/disabled
+  * Option in Speed and Pitch effect to adjust both parameters
+    in lockstep, thereby preventing distortion
+  Under the hood:
+  * Conversion of a substantial amount of C-like code to safer
+    C++ practices
+  * For the Windows build, an update to the newer MinGW-w64
+    toolchain (still 32-bit)
+
+- Changed source URL
+
+-------------------------------------------------------------------
+Tue May 16 14:19:35 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+  Update package summaries so they are not all the same.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:09:56 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.8.2:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Wed Dec  7 15:05:09 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.8.1:
+  * No changelog available.
+- Rebase audacious-no-inode-directory-mimetype.patch
+
+-------------------------------------------------------------------
+Fri Sep 23 13:32:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 3.8:
+  * No changelog available.
+- Rebase audacious-no-inode-directory-mimetype.patch
+- Install the appstream file to /usr/share/metainfo/ instead of
+  /usr/share/appdata/ on openSUSE Leap 42.2 and newer.
+
+-------------------------------------------------------------------
+Tue Mar 29 18:41:47 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 3.7.2.
+
+-------------------------------------------------------------------
+Fri Mar 25 14:27:26 UTC 2016 - i@marguerite.su
+
+- fix boo#972690: audacious is used to open directory
+- add patch: audacious-no-inode-directory-mimetype.patch
+
+-------------------------------------------------------------------
+Tue Dec 29 05:32:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.7.1.
+
+-------------------------------------------------------------------
+Fri Nov 13 12:12:48 UTC 2015 - aloisio@gmx.com
+
+- Fixes audacious-plugins build on 13.1
+
+-------------------------------------------------------------------
+Mon Nov  9 06:25:27 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.7.
+- Enable Qt UI.
+
+-------------------------------------------------------------------
+Fri Aug 21 10:01:49 UTC 2015 - sor.alexei@meowr.ru
+
+- Work with Audacious plugin versions instead of ABI versions to
+  simplify things a lot.
+
+-------------------------------------------------------------------
+Mon Jun  1 13:19:32 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.6.2.
+
+-------------------------------------------------------------------
+Sat Apr  4 12:43:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.6.1.
+
+-------------------------------------------------------------------
+Sun Mar  1 16:13:14 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.6.
+
+-------------------------------------------------------------------
+Sun Dec 28 12:06:12 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 3.5.2.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Tue Dec 17 13:38:40 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 3.4.2
+
+-------------------------------------------------------------------
+Fri Mar 29 12:59:50 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.3.4:
+  * Ported from gtk2 to gtk3
+  * Save current track position
+  * Improved search feature
+  * Many bug fixes
+
+-------------------------------------------------------------------
+Sun Aug 19 10:40:44 UTC 2012 - seife+obs@b1-systems.com
+
+- update to current version 3.2.4
+- removed no longer necessary -lgmodule-2.0 hack
+
+-------------------------------------------------------------------
+Tue May 22 13:08:39 UTC 2012 - seife+obs@b1-systems.com
+
+- fix build on > 12.1 by adding -lgmodule-2.0 to LIBS
+
+-------------------------------------------------------------------
+Fri Dec 09 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <3.1.1>
+
+-------------------------------------------------------------------
+Sun Nov 20 09:14:24 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 3.1
+
+-------------------------------------------------------------------
+Sun Nov 06 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <3.0.3>
+
+-------------------------------------------------------------------
+Sun Aug 28 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <3.0.2>
+
+-------------------------------------------------------------------
+Sat Aug 13 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <3.0.1>
+
+-------------------------------------------------------------------
+Sat Jul 02 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.5.3>
+
+-------------------------------------------------------------------
+Thu Jun 23 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.5.2>
+
+-------------------------------------------------------------------
+Sat May 21 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.5.1>
+
+-------------------------------------------------------------------
+Sun Apr 17 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.5.0>
+
+-------------------------------------------------------------------
+Thu Feb 23 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.4.4>
+
+-------------------------------------------------------------------
+Fri Jan 14 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <2.4.3>
+
+-------------------------------------------------------------------
+Wed Dec  8 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <2.4.2>
+
+-------------------------------------------------------------------
+Fri Aug 27 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- enable libguess support
+
+-------------------------------------------------------------------
+Wed Aug 25 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <2.4-rc3>
+
+-------------------------------------------------------------------
+Fri Apr  9 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <2.3>
+
+-------------------------------------------------------------------
+Wed Nov 25 00:00:00 UTC 2009 - detlef@links2linux.de
+
+- new upstream version <2.2>
+
+-------------------------------------------------------------------
+Wed Jul  8 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- new upstream version <2.1>
+
+-------------------------------------------------------------------
+Fri Jun  5 00:00:00 UTC 2009 - Manfred.Tremmel@iiv.de
+
+- new upstream version <2.0.1>
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- added InitialPreference to action_audacious.desktop as it is
+  associated with directories, in order to avoid it being the
+  default action on directories
+- added patch to fix specifying files on the command-line when
+  audacious isn't already running:
+  http://bugzilla.atheme.org/show_bug.cgi?id=48
+
+-------------------------------------------------------------------
+Sun Jul 20 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- require audacious-plugins instead of audacious-plugins-option
+  package managers are stupid ;)
+
+-------------------------------------------------------------------
+Thu Jul 10 00:00:00 UTC 2008 - guru@unixtech.be
+
+- require audacious-plugins-option instead of audacious-plugins
+
+-------------------------------------------------------------------
+Sun Jul  6 00:00:00 UTC 2008 - guru@unixtech.be
+
+- split shared libraries into its own -libs subpackage to avoid the
+  chicken/egg problem when building audacious and audacious-plugins
+  (as they both require each other), with audacious now requiring
+  audacious-libs
+- minor spec file cleanups
+- added Provides for shlibs, openSUSE Shared Library Policy compliant
+- more explicit filenames in files sections
+- better Summary
+- added glib backport patch to build on openSUSE 10.2
+
+-------------------------------------------------------------------
+Mon May 26 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.5.1>
+
+-------------------------------------------------------------------
+Tue Apr 22 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- fix Requires for devel
+
+-------------------------------------------------------------------
+Sun Mar 30 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- disable ss2 for ix86, some old cpus doesn't support sse2
+
+-------------------------------------------------------------------
+Sat Mar 15 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.5.0>
+
+-------------------------------------------------------------------
+Mon Feb 18 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- rebuild with new libmcs-0.7
+
+-------------------------------------------------------------------
+Fri Feb  1 00:00:00 UTC 2008 - detlef@links2linux.de
+
+- new upstream version <1.4.6>
+
+-------------------------------------------------------------------
+Sat Dec 29 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <1.4.5>
+
+-------------------------------------------------------------------
+Sat Dec 22 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- rebuild for new libmcs and libmowgli
+
+-------------------------------------------------------------------
+Sat Dec  8 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- add servicemenu for konqueror and dolphin
+
+-------------------------------------------------------------------
+Mon Dec  3 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <1.4.4>
+
+-------------------------------------------------------------------
+Sat Dec  1 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream version <1.4.3>
+
+-------------------------------------------------------------------
+Mon Nov 19 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.1>
+
+-------------------------------------------------------------------
+Tue Nov  6 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0>
+
+-------------------------------------------------------------------
+Mon Nov  5 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- switch to 1.4 on PackMan
+- Audacious 1.4 is now complete, and is now recommended over 1.3
+
+-------------------------------------------------------------------
+Fri Nov  2 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-rc1>
+
+-------------------------------------------------------------------
+Mon Oct 29 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-beta4>
+
+-------------------------------------------------------------------
+Fri Oct 19 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-beta2>
+
+-------------------------------------------------------------------
+Mon Oct 15 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-beta1>
+
+-------------------------------------------------------------------
+Thu Sep 20 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- add xchat-plugin
+
+-------------------------------------------------------------------
+Thu Sep 13 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-dr4>
+
+-------------------------------------------------------------------
+Sun Sep  9 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-dr3>
+
+-------------------------------------------------------------------
+Thu Aug  9 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- new upstream release <1.4.0-dr2>
+- fix BuildRequires -> add dbus-support
+
+-------------------------------------------------------------------
+Mon Jul 23 00:00:00 UTC 2007 - detlef@links2linux.de
+
+- initial build <1.4.0-dr1>

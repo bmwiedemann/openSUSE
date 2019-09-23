@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Fri Mar  8 09:41:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.3:
+  * use six directly
+  * metadata updates
+
+-------------------------------------------------------------------
+Mon Dec 10 15:44:16 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github archives to get tests
+- Run the tests
+- Fix dependencies
+
+-------------------------------------------------------------------
+Thu Aug 24 13:36:21 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue Nov 15 10:28:09 UTC 2016 - dmueller@suse.com
+
+- update to 1.0.2:
+  * Update supported Django and Python versions, in line with Django's
+  own supported versions.
+
+-------------------------------------------------------------------
+Sun May  3 16:21:07 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.0.1:
+  * no changelog
+- additional changes from version 1.0:
+  * Dropped support of Python 2.5.
+  * Added support for Django 1.7 and 1.8.
+  * Modernized test setup.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:01:27 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Sep  9 10:38:12 UTC 2013 - speilicke@suse.com
+
+- Drop obsolete versiontools build requirement
+
+-------------------------------------------------------------------
+Sun Apr 14 10:14:27 UTC 2013 - toddrme2178@gmail.com
+
+- Remove pre_checkin.sh since the two versions are not the same
+
+-------------------------------------------------------------------
+Fri Apr 12 15:58:14 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Tue Feb 26 12:52:46 UTC 2013 - vuntz@opensuse.org
+
+- Add python-six Requires: since version 0.6, the six module is
+  used.
+
+-------------------------------------------------------------------
+Fri Feb  1 13:21:23 UTC 2013 - oliver.bengs@opensuse.org
+
+- update to 0.6
+  * Added required attribute to Meta to specify which settings are required to set.
+  * Moved to Travis for the tests: http://travis-ci.org/jezdez/django-appconf
+  * Stopped support for Django 1.2.X.
+  * Introduced support for Python >= 3.2.
+
+-------------------------------------------------------------------
+Tue Oct  9 08:20:47 UTC 2012 - oliver.bengs@opensuse.org
+
+- update to 0.5
+  * Install as a package instead of a module.
+  * Refactored tests to use django-jenkins for enn.io‘s CI server.
+
+
+-------------------------------------------------------------------
+Fri Jan 20 08:42:11 UTC 2012 - saschpe@suse.de
+
+- Minor cleanup:
+  * Remove CFLAGS
+  * BuildRequire python-distribute instead of setuptools
+  * Reduced macro usage
+
+-------------------------------------------------------------------
+Fri Jan 20 01:54:12 UTC 2012 - jfunk@funktronics.ca
+
+- Initial release
+
+

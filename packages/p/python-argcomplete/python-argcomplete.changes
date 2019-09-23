@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Fri Apr  5 11:02:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.5:
+  * check_module: Don’t crash, exit with error instead (#261)
+  * Register completion for multiple commands (#246)
+
+-------------------------------------------------------------------
+Mon Feb 25 05:52:03 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Trim unnecessary build dependencies using trim-test-deps.patch
+- Simplify skip_tcsh_tests.patch so it is easier to read and update
+- Update to v1.9.4
+  * Use the correct interpreter when checking wrappers
+  * Provide shellcode as a module function (#237)
+- from v1.9.3
+  * Fix handling of COMP\_POINT
+  * Fix crash when writing unicode to debug\_stream in Python 2
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:38 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Sep 15 13:49:08 UTC 2017 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 1.9.2
+- Update patch to skip broken tcsh tests
+  + skip_tcsh_tests.patch
+- Fix issues with singlespec auto-conversion
+  + Install %{python_sitelib}/bash_completion.d/python-argcomplete.sh
+    into %{_sysconfdir}/bash_completion.d/
+  + Use %python_clone to create both Python 2 and Python 3 versions
+    of all scripts below /usr/bin and /etc/bash_completion.d
+    with the %{python_version} suffix; also install the Python 3
+    versions without the suffix
+
+-------------------------------------------------------------------
+Thu Aug 24 13:32:49 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Jul 20 09:48:53 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 1.8.2
+- add patch skip_tcsh_tests.patch to skip broken tcsh tests
+
+-------------------------------------------------------------------
+Tue Nov 02 20:50:53 UTC 2016 - achim.herwig@wodca.de
+
+- ported back from python3 package including
+  introduced update-alternatives to coexist with corresponding python3 package
+
+-------------------------------------------------------------------
+Sat Dec 12 17:49:43 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.0.0
+* Don't print args with suppressed help by default; add 
+  argcomplete.autocomplete(print_suppressed=True) to control this behavior
+* Fix always_complete_options=False support.
+* Correct doc filename in setup.cfg
+* Make context managers exception-safe.
+* Fix issue with non-string choices for arguments.
+* Improve non-ascii argparse argument support on Python 2.7.
+
+-------------------------------------------------------------------
+Sun Apr 19 16:08:50 UTC 2015 - benoit.monin@gmx.fr
+
+- update to 0.8.7:
+  * register-python-argcomplete: add option to avoid default
+    readline completion. Thanks to @drmalex07 (pull request #99).
+- additional changes from 0.8.6:
+  * Expand tilde in script name, allowing argcomplete to work
+    when invoking scripts from one's home directory. Thanks to
+    @VorpalBlade (Issue 104).
+- additional changes from 0.8.5:
+  * Fix issues related to using argcomplete in a REPL
+    environement.
+  * New helper method for custom completion display.
+  * Expand test suite; formatting cleanup.
+- additional changes from 0.8.4:
+  * Fix issue related to using argcomplete in a REPL
+    environement. Thanks to @wapiflapi (pull request #91).
+- additional changes from 0.8.3:
+  * Fix multiple issues related to using argcomplete in a REPL
+    environement. Thanks to @wapiflapi (pull request #90).
+- additional changes from 0.8.2:
+  * Don't strip colon prefix in completion results if
+    COMP_WORDBREAKS does not contain a colon. Thanks to @berezv
+    (pull request #88).
+- additional changes from 0.8.1:
+  * Use complete --nospace to avoid issues with directory
+    completion.
+- additional changes from 0.8.0:
+  * Refactor main body of code into a class to enable
+    subclassing and overriding of functionality (Issue #78).
+- additional changes from 0.7.1:
+  * New keyword option "argcomplete.autocomplete(validator=...)"
+    to supply a custom validator or bypass default validation.
+    Thanks to @thijsdezoete (Issue #77).
+  * Document debug options.
+- additional changes from 0.7.0:
+  * New keyword option "argcomplete.autocomplete(exclude=[...])"
+    to suppress options (Issue #74).
+  * More speedups to code path for global completion hook negative
+    result.
+- additional changes from 0.6.9:
+  * Fix handling of development mode script wrappers. Thanks to
+    @jmlopez-rod and @dcosson (Issue #69).
+  * Speed up code path for global completion hook negative
+    result by loading pkg_resources on demand.
+- additional changes from 0.6.8:
+  * Begin tracking changes in changelog.
+  * Add completion support for PBR installed scripts (PR #71).
+  * Detect easy-install shims with shebang lines that contain
+    Py instead of py (Issue #69).
+
+-------------------------------------------------------------------
+Fri Jan 17 15:50:53 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.6.7:
+  + Upstream provides no changelog
+- Don't install testsuite globally
+
+-------------------------------------------------------------------
+Mon Nov 18 11:18:02 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.6.3:
+  + No changelog
+
+-------------------------------------------------------------------
+Thu Oct 24 10:58:50 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu May  2 14:04:51 UTC 2013 - speilicke@suse.com
+
+- Fix SLE builds
+- Add LICENSE.rst and README.rst
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon Apr 29 11:10:08 UTC 2013 - darin@darins.net
+
+- fixed license, set noarch for build 
+
+-------------------------------------------------------------------
+Fri Apr 26 20:49:09 UTC 2013 - darin@darins.net
+
+- add files in _bindir 
+- add python-distribute 
+
+-------------------------------------------------------------------
+Fri Apr 26 20:44:08 UTC 2013 - darin@darins.net
+
+- Initial packaging 

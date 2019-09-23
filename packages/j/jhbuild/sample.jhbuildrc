@@ -1,0 +1,73 @@
+# -*- mode: python -*-
+
+# edit this file to match your settings and copy it to ~/.jhbuildrc
+
+# if you have a GNOME git account, uncomment this line
+# repos['git.gnome.org'] = 'ssh://user@git.gnome.org/git/'
+
+# what module set should be used.  The default is the latest development
+# version, but it can be any of the files in the modulesets directory, or
+# even the URL of a module set file on a web server.
+# moduleset = 'gnome-2.32'
+
+# A list of the modules to build.  Defaults to the Gnome Desktop and
+# developer platform.
+# modules = [ 'meta-gnome-desktop' ]
+
+# Skip modules that jhbuild-recommended-deps will install.
+# Note: you should remove most of the modules in skip if you don't install the
+# jhbuild-recommended-deps package.
+skip = [ ]
+# skip from bootstrap
+skip.extend ([ 'gettext', 'autoconf', 'libtool', 'pkg-config', 'python', 'guile' ])
+# skip from external deps
+# not putting libcolorblind: not packaged
+# not putting opal and ptlib since they move too often with ekiga
+# not putting swfdec: moving with swfdec-gnome
+# not putting system-tools-backends: not packaged
+# not putting libchamplain: not packaged yet
+# not putting the following because they are only dependencies of dependencies: libdaemon, libgpg-error, pixman, libvolume_id, libgdiplus, speex, libsndfile, farsight2, libnice
+skip.extend ([ 'avahi', 'cairo', 'cairomm', 'clutter', 'clutter-cairo', 'clutter-gtk', 'dbus', 'dbus-glib', 'dbus-python', 'desktop-file-utils', 'enchant', 'fontconfig', 'gnutls', 'hal', 'DeviceKit', 'DeviceKit-power', 'hicolor-icon-theme', 'icon-naming-utils', 'iso-codes', 'libcroco', 'libgcrypt', 'libgsf', 'libmusicbrainz', 'liboil', 'libtasn1', 'libxklavier', 'libxml2', 'libxslt', 'gtk-vnc', 'ndesk-dbus', 'poppler', 'pycairo', 'shared-mime-info', 'startup-notification', 'libtelepathy', 'telepathy-glib', 'telepathy-mission-control', 'nspr', 'nss', 'mozilla', 'rarian', 'libggz', 'ggz-client-libs', 'expat', 'autogen', 'mono', 'mono-addins', 'sqlite3', 'PolicyKit', 'PolicyKit-gnome', 'libcanberra', 'pulseaudio', 'libproxy', 'libunique', 'intltool', 'libical', 'gst-plugins-farsight', 'telepathy-farsight', 'libnotify', 'libgda', 'WebKit', 'libchamplain', 'libgdata', 'gmime' ])
+# skip some gnome stuff that can't easily built or tested
+skip.extend ([ 'evolution-exchange', 'evolution-mapi' ])
+
+# what directory should the source be checked out to?
+checkoutroot = os.path.expanduser('~/gnome-jhbuild/sources')
+
+# An alternative location to look for (or download to) all downloaded tarballs
+tarballdir = os.path.expanduser('~/gnome-jhbuild/tarballs')
+
+# the prefix to configure/install modules to (must have write access)
+prefix = os.path.expanduser('~/gnome-jhbuild/usr')
+
+# if you do not want to use system-installed libraries for your builds, comment
+# out the lines below
+addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', 'lib', 'pkgconfig'))
+addpath('PKG_CONFIG_PATH', os.path.join(os.sep, 'usr', 'share', 'pkgconfig'))
+
+# extra arguments to pass to all autogen.sh scripts
+# to speed up builds of gnome2, try '--disable-static --disable-gtk-doc'
+# it is also possible to set CFLAGS this way, 'CFLAGS="-g -O2"' for example
+autogenargs='--disable-static --disable-gtk-doc'
+
+# On SMP systems you may use something like this to improve compilation time:
+# be aware that not all modules compile correctly with make -j2
+makeargs = '-j2'
+
+# set CFLAGS:
+cflags = '-g'
+
+# doesn't support -j2
+module_makeargs['autoconf'] = ''
+module_makeargs['autogen'] = ''
+module_makeargs['gettext'] = ''
+module_makeargs['libgcrypt'] = ''
+module_makeargs['nss'] = ''
+module_makeargs['ORBit2'] = ''
+module_makeargs['tomboy'] = ''
+
+# installation fails for the mozilla plugin
+module_autogenargs['totem'] = autogenargs + ' --disable-mozilla'
+module_autogenargs['gtk+'] = autogenargs + ' --without-libjasper'
+
+addpath('XDG_DATA_DIRS', '/usr/share')

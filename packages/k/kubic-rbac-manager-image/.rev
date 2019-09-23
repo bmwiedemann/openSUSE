@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d86152d23ba8bd213235f0e110107811</srcmd5>
+    <version>1.0.0</version>
+    <time>1561557906</time>
+    <user>dimstar_suse</user>
+    <comment>- remove mozilla-nss-certs
+- Fix registry path
+- Fix description
+- Fix labels
+- Fix image name
+- Initial container
+</comment>
+    <requestid>712104</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Dec 22 11:48:55 UTC 2014 - dimstar@opensuse.org
+
+- Don't start fdupes over docs: it can cause build failures if the
+  link is not in the direction expected.
+
+-------------------------------------------------------------------
+Mon Aug  4 22:53:37 UTC 2014 - dvaleev@suse.com
+
+- Set 64bit for powerpc64, aarch64 and s390x 
+
+- added patches:
+  * 0001-set-64bit-for-other-architectures.patch
+-------------------------------------------------------------------
+Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

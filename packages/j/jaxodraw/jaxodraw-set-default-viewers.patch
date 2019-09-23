@@ -1,0 +1,14 @@
+--- jaxodraw-2.1-0/src/main/java/net/sf/jaxodraw/util/JaxoPrefs.java.orig	2015-07-05 03:07:23.968000000 -0700
++++ jaxodraw-2.1-0/src/main/java/net/sf/jaxodraw/util/JaxoPrefs.java	2015-07-05 03:08:29.538000000 -0700
+@@ -170,9 +170,9 @@
+ 
+         PREFERENCES =
+             new Preference[]{
+-                new Preference(PREF_BROWSER, ""),
++                new Preference(PREF_BROWSER, "xdg-open"),
+                 new Preference(PREF_EDITOR, ""),
+-                new Preference(PREF_PSVIEWER, ""),
++                new Preference(PREF_PSVIEWER, "xdg-open"),
+                 new Preference(PREF_LOOKNFEEL,
+                     "javax.swing.plaf.metal.MetalLookAndFeel"),
+                 new Preference(PREF_LANGUAGE, "english"),

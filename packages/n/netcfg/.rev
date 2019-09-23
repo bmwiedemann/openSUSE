@@ -1,0 +1,366 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>d66dfb60f7d8ce901a3f3c4c686b5643</srcmd5>
+    <version>10.2</version>
+    <time>1168903606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>3a5c9854b7956d401d7f5285b34de25c</srcmd5>
+    <version>11.0</version>
+    <time>1201532503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="17">
+    <srcmd5>f5596433b6db700b03310492c1a94a5a</srcmd5>
+    <version>11.0</version>
+    <time>1204749162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="22">
+    <srcmd5>8f90ebb616fc12819f71a4c3dc847c62</srcmd5>
+    <version>11.0</version>
+    <time>1206545126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="22">
+    <srcmd5>73714baa12a623e065cd3d67fdb678a9</srcmd5>
+    <version>11.0.42</version>
+    <time>1220883766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>890b4d442e0c6157d113e6006e08f47a</srcmd5>
+    <version>11.1</version>
+    <time>1224774656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>890b4d442e0c6157d113e6006e08f47a</srcmd5>
+    <version>11.1</version>
+    <time>1224774656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>3c86e990feba5065ebea34fe9b9ebc1d</srcmd5>
+    <version>11.1</version>
+    <time>1268925083</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>3c86e990feba5065ebea34fe9b9ebc1d</srcmd5>
+    <version>11.1</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>3c86e990feba5065ebea34fe9b9ebc1d</srcmd5>
+    <version>11.1</version>
+    <time>1278678600</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>b3bb09de4f6681e9095d3d31f74e1e28</srcmd5>
+    <version>11.1</version>
+    <time>1288710955</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51919 from user coolo
+</comment>
+    <requestid>51919</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5d6aa93881e0533ee8c7c153d00a6cc5</srcmd5>
+    <version>11.4</version>
+    <time>1288710961</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51919
+</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>29d7430ab1cf9c7e47a0f5767ad44989</srcmd5>
+    <version>11.4</version>
+    <time>1288970559</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52128 from user pgajdos
+</comment>
+    <requestid>52128</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>981bb23176eb0aebceaecf3e11cc1123</srcmd5>
+    <version>11.4</version>
+    <time>1288970568</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52128
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>981bb23176eb0aebceaecf3e11cc1123</srcmd5>
+    <version>11.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>fe85b4a1c6012e5d2dd2c8cca2f37ab2</srcmd5>
+    <version>11.4</version>
+    <time>1299228138</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63330 from user pgajdos
+</comment>
+    <requestid>63330</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>3756624ecda014f7857354d90283b771</srcmd5>
+    <version>11.4</version>
+    <time>1299228147</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63330
+</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>e5b58668e8da26a784508b967493ceb3</srcmd5>
+    <version>11.5</version>
+    <time>1299507454</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63545 from user oertel
+</comment>
+    <requestid>63545</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>5ecb2f17153bf9ee593a6d646ac35179</srcmd5>
+    <version>11.5</version>
+    <time>1299507461</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63545
+</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>5ecb2f17153bf9ee593a6d646ac35179</srcmd5>
+    <version>11.5</version>
+    <time>1319182199</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>505dfc01b83d5ce5624b319af968579e</srcmd5>
+    <version>11.5</version>
+    <time>1323192697</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>505dfc01b83d5ce5624b319af968579e</srcmd5>
+    <version>11.5</version>
+    <time>1340183730</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>505dfc01b83d5ce5624b319af968579e</srcmd5>
+    <version>11.5</version>
+    <time>1359109499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>18a6f2d2f832c714792630d0c006ee9f</srcmd5>
+    <version>11.5</version>
+    <time>1370447165</time>
+    <user>coolo</user>
+    <comment>- services: map sieve to 4190 instead of 2000 as upstream (IANA)
+  does</comment>
+    <requestid>177722</requestid>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>18c3f89ce2b526c8a88ca2abe724e85a</srcmd5>
+    <version>11.5</version>
+    <time>1377248716</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to newer (not newest) version of IANA assignments
+  [bnc#831522], [bnc#731391] (both internal)</comment>
+    <requestid>196021</requestid>
+  </revision>
+  <revision rev="26" vrev="19">
+    <srcmd5>18c3f89ce2b526c8a88ca2abe724e85a</srcmd5>
+    <version>11.5</version>
+    <time>1379663360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="20">
+    <srcmd5>e1b9804885e8835c4c485b495840906c</srcmd5>
+    <version>11.5</version>
+    <time>1383144446</time>
+    <user>scarabeus_factory</user>
+    <comment>- /etc/protocols: assign 4 to ipv4 instead of ip to correspond with
+  IANA [bnc#843511] (internal)</comment>
+    <requestid>205102</requestid>
+  </revision>
+  <revision rev="28" vrev="21">
+    <srcmd5>e74ca4c45acca9057c3ff9a1dd64700a</srcmd5>
+    <version>11.5</version>
+    <time>1391852070</time>
+    <user>scarabeus_factory</user>
+    <comment>- added helper scripts and doc for creating services file to 
+  Sources</comment>
+    <requestid>221157</requestid>
+  </revision>
+  <revision rev="29" vrev="22">
+    <srcmd5>031b83a8a7949221e215cccd93cf465d</srcmd5>
+    <version>11.5</version>
+    <time>1403081968</time>
+    <user>coolo</user>
+    <comment>- move /etc/HOSTNAME to /etc/hostname during update
+
+- HOSTNAME renamed to hostname [bnc#858908]</comment>
+    <requestid>236841</requestid>
+  </revision>
+  <revision rev="30" vrev="23">
+    <srcmd5>29e49128784207641af8226be2d93cbd</srcmd5>
+    <version>11.5</version>
+    <time>1406521868</time>
+    <user>coolo</user>
+    <comment>- resolve some update scenarios [bnc#883999], [bnc#886443] (private)
+  with regard to /etc/HOSTNAME -&gt; /etc/hostname change</comment>
+    <requestid>242350</requestid>
+  </revision>
+  <revision rev="31" vrev="25">
+    <srcmd5>29e49128784207641af8226be2d93cbd</srcmd5>
+    <version>11.5</version>
+    <time>1409301971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="26">
+    <srcmd5>e530727efccb11de2d38900ec45bb73a</srcmd5>
+    <version>11.5</version>
+    <time>1413269938</time>
+    <user>coolo</user>
+    <comment>- fix %pre scriptlet [bnc#899506]</comment>
+    <requestid>253698</requestid>
+  </revision>
+  <revision rev="33" vrev="27">
+    <srcmd5>c9a856acd8da06e4bcafa8c284cd1dc2</srcmd5>
+    <version>11.5</version>
+    <time>1414218767</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257833</requestid>
+  </revision>
+  <revision rev="34" vrev="28">
+    <srcmd5>e23f6aed540688590d15e340bbbc7245</srcmd5>
+    <version>11.5</version>
+    <time>1417643605</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec-cleanify the previous commit.
+
+- Redo the HOSTNAME -&gt; hostname migration to support smallest
+  possible step. Thus ensuring the migration is done just once and
+  finished:
+   # HOSTNAME migration supported scenarios [bnc#858908]:
+   # /etc/HOSTNAME -&gt; /etc/hostname content preservation.
+   # If hostname and HOSTNAME both exist HOSTNAME wins.
+   # Nothing apart from content of the document is preserved
+- Solves bnc#858908 and bnc#899506 while moves bnc#887039 to
+  unsupported scenarios.
+
+- Remove the socket check from the defaultdomain checker as it was
+  always false and thus not needed
+  - Add comment explaining the reason for the code
+
+- Drop the scriptlet for the netgroup handling. It was caused by
+  the aaa_base -&gt; netcfg move, which I guess after 12 years is moot</comment>
+    <requestid>263637</requestid>
+  </revision>
+  <revision rev="35" vrev="29">
+    <srcmd5>3523824f5646af97c245ded28af35211</srcmd5>
+    <version>11.5</version>
+    <time>1418978292</time>
+    <user>dimstar_suse</user>
+    <comment>- Try different approach to fix failing migration from 13.1.
+  This one is from locilka
+
+- Keep the condition posix as it is shorter :)</comment>
+    <requestid>265549</requestid>
+  </revision>
+  <revision rev="36" vrev="30">
+    <srcmd5>21d8645c8c53e41ed6d99913fb5b7afd</srcmd5>
+    <version>11.5</version>
+    <time>1440135430</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ghost the empty /etc/hostname to not break installationimages
+  pkg.
+
+- Keep /etc/hostname empty and %ghost it. bnc#934056</comment>
+    <requestid>320307</requestid>
+  </revision>
+  <revision rev="37" vrev="31">
+    <srcmd5>060ac677d52cd70d9455424a88f29b58</srcmd5>
+    <version>11.5</version>
+    <time>1440743117</time>
+    <user>coolo</user>
+    <comment>- Do not actually replace the hostname if user already has something
+  in there. Thanks to Takashi Iwai for spotting this</comment>
+    <requestid>326599</requestid>
+  </revision>
+  <revision rev="38" vrev="32">
+    <srcmd5>dbf347c8d095062f9cbb031682150643</srcmd5>
+    <version>11.5</version>
+    <time>1452262932</time>
+    <user>dimstar_suse</user>
+    <comment>- Repack services.bz2 with latest from upstream and adjust the script
+  to not add all the names+emails at the bottom bnc#959693</comment>
+    <requestid>352006</requestid>
+  </revision>
+  <revision rev="39" vrev="33">
+    <srcmd5>a9e9697927be6fa05c60bbddaf36dbf2</srcmd5>
+    <version>11.5</version>
+    <time>1489178657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update script to generage services to use UTF8 by default
+- Update the services list with latest content</comment>
+    <requestid>477420</requestid>
+  </revision>
+  <revision rev="40" vrev="34">
+    <srcmd5>78fc22b38938f2958d5ffee0da6fd2d4</srcmd5>
+    <version>11.5</version>
+    <time>1489536415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update script to generage services to use UTF8 by default bsc#1028305</comment>
+    <requestid>479035</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>76a142289cd444ea4208fd2f34e6b29e</srcmd5>
+    <version>11.6</version>
+    <time>1521579305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580138</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3d8aee91bcd52973dca5e959eb39dcf4</srcmd5>
+    <version>11.6</version>
+    <time>1530993397</time>
+    <user>dimstar_suse</user>
+    <comment>- Tell users to really install tcpd if they expects hosts.* to work
+  bsc#1099755</comment>
+    <requestid>620190</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>11a8560758d05d2d9df4a60a56dbd30a</srcmd5>
+    <version>11.6</version>
+    <time>1537263692</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635303</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>2e8ff2071c486ec4922748c8155f3514</srcmd5>
+    <version>11.6</version>
+    <time>1557141415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699609</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+--- cronie-1.4.8.orig/src/pathnames.h
++++ cronie-1.4.8/src/pathnames.h
+@@ -37,7 +37,7 @@
+ 			 * (Don't ask why the default is "/etc/".)
+ 			 */
+ #ifdef _PATH_VARRUN
+-# define PIDDIR	_PATH_VARRUN
++# define PIDDIR	"/run/"
+ #else
+ # define PIDDIR SYSCONFDIR "/"
+ #endif

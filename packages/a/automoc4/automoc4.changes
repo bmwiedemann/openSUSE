@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Thu Dec  7 11:02:17 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Wed Mar 20 13:49:19 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Sat Sep 17 13:45:23 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Sun Aug  7 14:09:11 UTC 2011 - toddrme2178@gmail.com
+
+- Removed test for obsolete openSUSE version
+
+-------------------------------------------------------------------
+Thu Jan 22 19:53:02 CET 2009 - dmueller@suse.de
+
+- update to 0.9.88:
+  * improved dep handling
+
+-------------------------------------------------------------------
+Tue Sep  9 01:23:12 CEST 2008 - dmueller@suse.de
+
+- fix requires for old distros
+
+-------------------------------------------------------------------
+Mon Aug 11 11:29:42 CEST 2008 - dmueller@suse.de
+
+- update to 0.9.87:
+   * automoc4_add_library macro added
+
+-------------------------------------------------------------------
+Fri Aug  8 00:03:31 CEST 2008 - dmueller@suse.de
+
+- fix build after last change
+
+-------------------------------------------------------------------
+Thu Aug  7 18:07: CEST 2008 - wstephenson@suse.de
+
+- update to 0.9.84
+  * no significant change
+
+-------------------------------------------------------------------
+Fri Jun 20 16:40:13 CEST 2008 - dmueller@suse.de
+
+- update to released tarball
+  * no significant change
+
+-------------------------------------------------------------------
+Tue May 27 16:37:42 CEST 2008 - dmueller@suse.de
+
+- update to 813373:
+  * fix issues with building moc files in parallel
+
+-------------------------------------------------------------------
+Sat May  3 00:28:39 CEST 2008 - dmueller@suse.de
+
+- Initial package
+

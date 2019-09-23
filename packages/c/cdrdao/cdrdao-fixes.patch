@@ -1,0 +1,12 @@
+Index: cdrdao-1.2.3/paranoia/p_block.c
+===================================================================
+--- cdrdao-1.2.3.orig/paranoia/p_block.c
++++ cdrdao-1.2.3/paranoia/p_block.c
+@@ -111,6 +111,7 @@ void free_c_block(c_block *c){
+   }    
+ 
+   free_elem(c->e,1);
++  c->e = NULL;
+ }
+ 
+ static v_fragment *i_vfragment_constructor(void){

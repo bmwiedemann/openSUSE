@@ -1,0 +1,13 @@
+Index: bdfpsf.c
+===================================================================
+--- bdfpsf.c.orig
++++ bdfpsf.c
+@@ -98,7 +98,7 @@ _bdf_psf_load_map(FILE *in, bdf_font_t *
+ {
+     int i, more, c0, c1, cnt;
+     unsigned int code;
+-    unsigned char buf[4];
++    unsigned char buf[6];
+     bdf_glyph_t *gp;
+ 
+     gp = font->glyphs;

@@ -1,0 +1,11 @@
+[Unit]
+Description="keyboard lights and more for apple laptops"
+After=dbus.service
+
+[Service]
+Type=dbus
+BusName=org.pommed
+ExecStart=/usr/sbin/pommed -f
+
+[Install]
+WantedBy=multi-user.target

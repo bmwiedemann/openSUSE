@@ -1,0 +1,5 @@
+<package name="ktp-desktop-applets" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="ktp-desktop-applets"/>
+</package>

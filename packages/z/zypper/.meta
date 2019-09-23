@@ -1,0 +1,10 @@
+<package name="zypper" project="openSUSE:Factory">
+  <title>Command line software manager using libzypp</title>
+  <description>Zypper is a command line tool for managing software. It can be used to add
+package repositories, search for packages, install, remove, or update packages,
+install patches, hardware drivers, verify dependencies, and more.
+
+Zypper can be used interactively or non-interactively by user, from scripts,
+or front-ends.</description>
+  <devel project="zypp:Head" package="zypper"/>
+</package>

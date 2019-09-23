@@ -1,0 +1,65 @@
+From dfe497f9f51983147a7caa69f62bb6648ea507ec Mon Sep 17 00:00:00 2001
+From: Kenneth D'souza <kdsouza@redhat.com>
+Date: Wed, 17 Apr 2019 16:57:05 +0530
+Subject: [PATCH] smbinfo: Add bash completion support for smbinfo.
+
+This help us better populate options using <tab> <tab>.
+
+Signed-off-by: Kenneth D'souza <kdsouza@redhat.com>
+Signed-off-by: Pavel Shilovsky <pshilov@microsoft.com>
+---
+ bash-completion/smbinfo | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+ create mode 100644 bash-completion/smbinfo
+
+diff --git a/bash-completion/smbinfo b/bash-completion/smbinfo
+new file mode 100644
+index 0000000..ad5d34d
+--- /dev/null
++++ b/bash-completion/smbinfo
+@@ -0,0 +1,42 @@
++# bash completion for smbinfo  -*- shell-script -*-
++smb_info()
++{
++	local cur prev OPTS
++	COMPREPLY=()
++	cur="${COMP_WORDS[COMP_CWORD]}"
++	prev="${COMP_WORDS[COMP_CWORD-1]}"
++	OPTS="fileaccessinfo
++	      filealigninfo
++	      fileallinfo
++	      filebasicinfo
++	      fileeainfo
++	      filefsfullsizeinfo
++	      fileinternalinfo
++	      filemodeinfo
++	      filepositioninfo
++	      filestandardinfo
++	      fsctl-getobjid
++	      list-snapshots
++	      quota
++	      secdesc"
++	case $prev in
++		'-v'|'-h')
++			return 0
++			;;
++		'fileaccessinfo'|'filealigninfo'|'fileallinfo'|'filebasicinfo'|'fileeainfo'|'filefsfullsizeinfo'|\
++		'fileinternalinfo'|'filemodeinfo'|'filepositioninfo'|'filestandardinfo'|'fsctl-getobjid'|\
++		'list-snapshots'|'quota'|'secdesc')
++			local IFS=$'\n'
++			compopt -o filenames
++			COMPREPLY=( $(compgen -f -o dirnames -- ${cur:-""}) )
++			return 0
++			;;
++		'-V'|*'smbinfo')
++			COMPREPLY=( $(compgen -W "${OPTS[*]}" -- $cur) )
++			return 0
++			;;
++	esac
++
++	return 0
++}
++complete -F smb_info smbinfo
+-- 
+2.16.4
+

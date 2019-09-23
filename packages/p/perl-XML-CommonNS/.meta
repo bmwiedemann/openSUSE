@@ -1,0 +1,5 @@
+<package name="perl-XML-CommonNS" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-XML-CommonNS"/>
+</package>

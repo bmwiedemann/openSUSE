@@ -1,0 +1,348 @@
+<revisionlist>
+  <revision rev="1" vrev="28">
+    <srcmd5>6acd3696a68cadfb93b427b3ae9327cf</srcmd5>
+    <version>1.1.12</version>
+    <time>1168903501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8242c7734a21181f4f5927014f725c99</srcmd5>
+    <version>1.2.2</version>
+    <time>1186307080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c9fbc531e75dbc112cffe802af3eb44</srcmd5>
+    <version>1.2.5</version>
+    <time>1214255872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ace28dbf47a6625b36ef98457e542200</srcmd5>
+    <version>1.2.6</version>
+    <time>1220830380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>7e321f08c805d53d934b8defcbd71de3</srcmd5>
+    <version>1.2.6</version>
+    <time>1222213678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>563defffebec7c2aa28a5bac61b6f3d5</srcmd5>
+    <version>1.2.6</version>
+    <time>1227885536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b725923e8835b1bf638729bc250d501d</srcmd5>
+    <version>1.2.8</version>
+    <time>1244241993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b725923e8835b1bf638729bc250d501d</srcmd5>
+    <version>1.2.8</version>
+    <time>1244241993</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>cfa0fefb2471ec0cf1bfcec1e97ad717</srcmd5>
+    <version>1.2.8</version>
+    <time>1268924925</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a08d418ac8452935e48a127cb8ff08d8</srcmd5>
+    <version>1.4.5</version>
+    <time>1277217299</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/memcached based on submit request 41895 from user darix
+</comment>
+    <requestid>41895</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a08d418ac8452935e48a127cb8ff08d8</srcmd5>
+    <version>1.4.5</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a08d418ac8452935e48a127cb8ff08d8</srcmd5>
+    <version>1.4.5</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>a08d418ac8452935e48a127cb8ff08d8</srcmd5>
+    <version>1.4.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>6fa479189ebfd507e963d538bde6445a</srcmd5>
+    <version>1.4.5</version>
+    <time>1306764094</time>
+    <user>saschpe</user>
+    <comment>- follow fedora's lead and remove Werror (forwarded request 71687 from coolo)</comment>
+    <requestid>71782</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>245479a8c180d4e3d1d7aadbeacd07a6</srcmd5>
+    <version>1.4.5</version>
+    <time>1306764104</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71782
+</comment>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>245479a8c180d4e3d1d7aadbeacd07a6</srcmd5>
+    <version>1.4.5</version>
+    <time>1319182175</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>5e18a59608cce3007fd9b68e5387c96a</srcmd5>
+    <version>1.4.5</version>
+    <time>1323192530</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>910a8f0b5cbf0b54dc51c5bbed577a9c</srcmd5>
+    <version>1.4.13</version>
+    <time>1333467558</time>
+    <user>coolo</user>
+    <comment>update to 1.4.13 (forwarded request 112305 from tabraham1)</comment>
+    <requestid>112310</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>910a8f0b5cbf0b54dc51c5bbed577a9c</srcmd5>
+    <version>1.4.13</version>
+    <time>1340183695</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8b7f62c7da3cada4ccfd95c8942dbf2d</srcmd5>
+    <version>1.4.14</version>
+    <time>1345022401</time>
+    <user>namtrac</user>
+    <comment>- Update to version 1.4.14 
+* Avoid race condition in test during pid creation by blind retrying
+* Fixed issue with invalid binary protocol touch command expiration time
+- If the test suite fails, package must fail build.
+- Use byteswapping macros from endian.h and not some ad-hoc/slow
+ function.
+- Add systemd units.</comment>
+    <requestid>130819</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c25139df9e3364676f2721dae5f3bdb</srcmd5>
+    <version>1.4.15</version>
+    <time>1352700257</time>
+    <user>coolo</user>
+    <comment>update to 1.4.15 (forwarded request 140589 from computersalat)</comment>
+    <requestid>140831</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>43134eb200eec8c78b1e5eec6712d3a4</srcmd5>
+    <version>1.4.15</version>
+    <time>1353413348</time>
+    <user>coolo</user>
+    <comment>- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+Error is masked due to || : (forwarded request 142001 from dimstar)</comment>
+    <requestid>142011</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>43134eb200eec8c78b1e5eec6712d3a4</srcmd5>
+    <version>1.4.15</version>
+    <time>1359109439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>03ccd9b0ab942d459af3558a80e6e06d</srcmd5>
+    <version>1.4.15</version>
+    <time>1362730976</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157805</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>03ccd9b0ab942d459af3558a80e6e06d</srcmd5>
+    <version>1.4.15</version>
+    <time>1379663280</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9ecf452b3a223820319ed83ccc4c0b5f</srcmd5>
+    <version>1.4.20</version>
+    <time>1403615779</time>
+    <user>coolo</user>
+    <comment>memcached 1.4.20</comment>
+    <requestid>238438</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>9ecf452b3a223820319ed83ccc4c0b5f</srcmd5>
+    <version>1.4.20</version>
+    <time>1409301885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>d3dfd94afe74137f7da4f669b1036613</srcmd5>
+    <version>1.4.20</version>
+    <time>1415636934</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260622</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e397693a82e47b1d48c9e78cc145dd5</srcmd5>
+    <version>1.4.22</version>
+    <time>1424779369</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287369</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>6b252bb614a80010a403927fb87266df</srcmd5>
+    <version>1.4.22</version>
+    <time>1434456330</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312160</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5e18cdb688c425255074911a420a9876</srcmd5>
+    <version>1.4.25</version>
+    <time>1449686991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347188</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fc48a923fe8809c582f4bc5133181081</srcmd5>
+    <version>1.4.33</version>
+    <time>1478871325</time>
+    <user>dimstar_suse</user>
+    <comment>memcached 1.4.33
+bsc#1007871) (CVE-2016-8704)
+bsc#1007870) (CVE-2016-8705)
+bsc#1007869) (CVE-2016-8706)</comment>
+    <requestid>439548</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d12876573dea698d28e61f7c4a080efd</srcmd5>
+    <version>1.4.33</version>
+    <time>1491896223</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483912</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e885a532745070a2bc54570dae507581</srcmd5>
+    <version>1.4.39</version>
+    <time>1504521303</time>
+    <user>dimstar_suse</user>
+    <comment>memcached 1.4.39 bsc#1056865 CVE-2017-9951</comment>
+    <requestid>520202</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>19117e3142bfd780d67fe6b9ef51ecd6</srcmd5>
+    <version>1.4.39</version>
+    <time>1511517271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544848</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c4519b927cef6fb38e30f4ec8b4fe86d</srcmd5>
+    <version>1.5.6</version>
+    <time>1520778249</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.6 (bsc#1083903, CVE-2018-1000115):
+  * This update disables UDP by default to reduce DDoS amplification
+  attacks
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes156
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes155
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes154
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes153
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes152
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes151
+  * see https://github.com/memcached/memcached/wiki/ReleaseNotes150</comment>
+    <requestid>584636</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>2413f67f0bfc11b658bb38618119ba2d</srcmd5>
+    <version>1.5.6</version>
+    <time>1523448168</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595209</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>7a4c0f025ea6d45b7e727bbaa00f1a52</srcmd5>
+    <version>1.5.6</version>
+    <time>1530866834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621093</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cb0e5bea724d68e1c11465f4d8447b30</srcmd5>
+    <version>1.5.9</version>
+    <time>1531135843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621593</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>bee35caf706ae16330e86cc7843c8ed3</srcmd5>
+    <version>1.5.10</version>
+    <time>1534940383</time>
+    <user>dimstar_suse</user>
+    <comment>memcached 1.5.10</comment>
+    <requestid>630705</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>b75bd9fa7296638aa63c38f0f76d2e32</srcmd5>
+    <version>1.5.10</version>
+    <time>1539093142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639766</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3cee2ebedfa5144122f1593e8cd0f7f4</srcmd5>
+    <version>1.5.11</version>
+    <time>1540319721</time>
+    <user>dimstar_suse</user>
+    <comment>memcached 1.5.11</comment>
+    <requestid>642656</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>68fca18defc42ad2bce729ad43659d2c</srcmd5>
+    <version>1.5.14</version>
+    <time>1557472469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701122</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>117ec3025b409ec411f17488f795b4fb</srcmd5>
+    <version>1.5.17</version>
+    <time>1568983492</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729451</requestid>
+  </revision>
+</revisionlist>

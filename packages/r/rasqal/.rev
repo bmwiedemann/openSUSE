@@ -1,0 +1,231 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>252cea26daaab8f090c8b4c0a1ea40c0</srcmd5>
+    <version>0.9.14</version>
+    <time>1178764904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>8acd4378eb2b4321f1e6546f72a93831</srcmd5>
+    <version>0.9.14</version>
+    <time>1191366681</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb5ea0c50b4aec36a422a5670e1d54a9</srcmd5>
+    <version>0.9.15</version>
+    <time>1197889291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0605c9e52eb44d14b27378f7f6bb60a1</srcmd5>
+    <version>0.9.15</version>
+    <time>1199670870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ca951e3e08752de907792d37ae38cb65</srcmd5>
+    <version>0.9.16</version>
+    <time>1216953893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="28">
+    <srcmd5>d81a146fcb1af89e9d114a3d7347a72b</srcmd5>
+    <version>0.9.16</version>
+    <time>1245339521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="30">
+    <srcmd5>d81a146fcb1af89e9d114a3d7347a72b</srcmd5>
+    <version>0.9.16</version>
+    <time>1245339521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0225f603f7c7b935257a7fbc82a7eecb</srcmd5>
+    <version>0.9.17</version>
+    <time>1262518557</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/rasqal based on submit request 27950 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2ea2df6a55e79c7e22e4527908119b6f</srcmd5>
+    <version>0.9.17</version>
+    <time>1268925955</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>903d78253acb6b776835b44d7b488ccc</srcmd5>
+    <version>0.9.19</version>
+    <time>1271374430</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/rasqal based on submit request 37682 from user Beineri
+</comment>
+    <requestid>37682</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>903d78253acb6b776835b44d7b488ccc</srcmd5>
+    <version>0.9.19</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>903d78253acb6b776835b44d7b488ccc</srcmd5>
+    <version>0.9.19</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b3fb2fb5b4fa1c3b7797b8d8066b723e</srcmd5>
+    <version>0.9.20</version>
+    <time>1287505912</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51054 from user dirkmueller
+</comment>
+    <requestid>51054</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8496e38289c3a15b9b128376a5ee82f6</srcmd5>
+    <version>0.9.20</version>
+    <time>1287505917</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51054
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>8496e38289c3a15b9b128376a5ee82f6</srcmd5>
+    <version>0.9.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>9e24f894c608475838692026114879cd</srcmd5>
+    <version>0.9.20</version>
+    <time>1303300106</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67880 from user coolo
+</comment>
+    <requestid>67880</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>0d16d0a7ed4ace9ffc071b86d01634a7</srcmd5>
+    <version>0.9.20</version>
+    <time>1303300115</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67880
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fc6a32ccb717281c10e87cb0120874ef</srcmd5>
+    <version>0.9.21</version>
+    <time>1306740742</time>
+    <user>saschpe</user>
+    <comment>Update to 0.9.21, Spec file updates (forwarded request 70957 from adra)</comment>
+    <requestid>71680</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a98a575d9819159b99cde67fd1a4f89</srcmd5>
+    <version>0.9.27</version>
+    <time>1316516162</time>
+    <user>saschpe</user>
+    <comment>Update version 0.9.27. This version supports only raptor v2 and should be checked in after the raptor package. Also the error with the baselibs.conf has been corrected</comment>
+    <requestid>83599</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>4a98a575d9819159b99cde67fd1a4f89</srcmd5>
+    <version>0.9.27</version>
+    <time>1319182422</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e0d60f163bdd1a437b12427de70c2e27</srcmd5>
+    <version>0.9.28</version>
+    <time>1325007508</time>
+    <user>coolo</user>
+    <comment>Update rasqal to 0.9.28. Also removed the baselib.conf to prevent building a -32bit package as that this seems to depend on mhash for which there is no -32bit package</comment>
+    <requestid>97785</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c4980034b77073fa6473a10263ce8915</srcmd5>
+    <version>0.9.28</version>
+    <time>1325767909</time>
+    <user>coolo</user>
+    <comment>- remove libmhash buildrequires, which development was 
+  abandoned on 2007-08-18 and therefore should not be used.
+  the library will fallback to internal hashing routines.
+- remove obsolete configure options/cflags (forwarded request 98698 from elvigia)</comment>
+    <requestid>98701</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>6bc913bcc00b913fffafea1a3247a06f</srcmd5>
+    <version>0.9.28</version>
+    <time>1328890775</time>
+    <user>coolo</user>
+    <comment>baselibs.conf added</comment>
+    <requestid>103201</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e07d277a3115c152ea9e3d220e58a5f9</srcmd5>
+    <version>0.9.29</version>
+    <time>1337674990</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.9.29 (forwarded request 121564 from Zaitor)</comment>
+    <requestid>121578</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e07d277a3115c152ea9e3d220e58a5f9</srcmd5>
+    <version>0.9.29</version>
+    <time>1340184137</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>e07d277a3115c152ea9e3d220e58a5f9</srcmd5>
+    <version>0.9.29</version>
+    <time>1359110275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>1e9cdbe2204e020da1a2e50a4429803c</srcmd5>
+    <version>0.9.29</version>
+    <time>1359742496</time>
+    <user>coolo</user>
+    <comment>- update license again (forwarded request 150702 from coolo)</comment>
+    <requestid>150740</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5fc3c5521ba4c016fefe2ff6f4c0d8c4</srcmd5>
+    <version>0.9.30</version>
+    <time>1359997264</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9.30 (forwarded request 150810 from sumski)</comment>
+    <requestid>150829</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>5fc3c5521ba4c016fefe2ff6f4c0d8c4</srcmd5>
+    <version>0.9.30</version>
+    <time>1379664435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>5fc3c5521ba4c016fefe2ff6f4c0d8c4</srcmd5>
+    <version>0.9.30</version>
+    <time>1409303167</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e843b18a26eaa24836bd769984eff353</srcmd5>
+    <version>0.9.33</version>
+    <time>1426680029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290889</requestid>
+  </revision>
+</revisionlist>

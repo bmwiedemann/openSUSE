@@ -1,0 +1,860 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>338b420f906adf1108f99f99e83027ec</srcmd5>
+    <version>0.2.9</version>
+    <time>1289866461</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52724 from user prusnak
+</comment>
+    <requestid>52724</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ac42f76ac1a624dcd9552fe0b0d8c7fb</srcmd5>
+    <version>0.2.9</version>
+    <time>1289866466</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52724
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6c9c51056c580bce360186be458d127e</srcmd5>
+    <version>0.2.9</version>
+    <time>1292859339</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56156 from user prusnak
+</comment>
+    <requestid>56156</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3291cf64bef093f15669fd15130d8d13</srcmd5>
+    <version>0.2.9</version>
+    <time>1292859351</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56156
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>060efcf131b9ce1c94cd891f6dde7cc5</srcmd5>
+    <version>0.2.9</version>
+    <time>1294671245</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57381 from user gberh
+</comment>
+    <requestid>57381</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e8292e562b93f1dfd8eeaf422114f134</srcmd5>
+    <version>0.2.9</version>
+    <time>1294671258</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57381
+</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>3764a86f439bde8b94d36ea23d4c9fbf</srcmd5>
+    <version>0.2.9</version>
+    <time>1295310703</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58611 from user gberh
+</comment>
+    <requestid>58611</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>15120574be7f230b5ffad1bd540f1693</srcmd5>
+    <version>0.2.9</version>
+    <time>1295310710</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58611
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>3fa81e528d938044485b2a1ac850b230</srcmd5>
+    <version>0.3.0</version>
+    <time>1296808736</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59995 from user gberh
+</comment>
+    <requestid>59995</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>409bdc7717ec129e2ba44e605e1904cc</srcmd5>
+    <version>0.3.0</version>
+    <time>1296808743</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59995
+</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>409bdc7717ec129e2ba44e605e1904cc</srcmd5>
+    <version>0.3.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>ac0040b1a6caf256c180195d5df98274</srcmd5>
+    <version>0.3.0</version>
+    <time>1298032106</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61695 from user gberh
+</comment>
+    <requestid>61695</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>8a986abf63a916955fd6536fcff96e2e</srcmd5>
+    <version>0.3.0</version>
+    <time>1298032115</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61695
+</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>75947748e02d59f42530cedb503679b0</srcmd5>
+    <version>0.3.5</version>
+    <time>1304351789</time>
+    <user>darix</user>
+    <comment>- updated to version 0.3.5
+  + Remove frame titles from preference dialogue
+  + Show search engine icons in completion
+  + Add Liferea news aggregator workaround
+  + Support libSoup cache + size with WebKitGTK+ 1.3.11
+  + No language, no encryption but Mozilla in user agent
+  + Support F6, F7, Ctrl+(Shift)+Tab and Tab to complete
+  + Strip scheme and www. in completion
+  + Render filename as title of patch files
+  + Turn location into a plain entry
+  + Fix tab panel foreground colours
+  + Mask timezone, language and plugins in private mode
+  + Add 'Strip referrer details' preference
+  + Embed extension list in preferences
+  + Remove the Page Holder and Download Manager option
+  + Disable prefetching and HTML5 storage in private mode
+  + Handle 'Plugin will handle load' error
+  + Show access keys next to numbers in link search
+  + Introduce --private/ -p command line switch
+  + Don't show toolbar preferences if running a DE
+  + Show script alerts as infobars
+  + Improve URI handling with addon installer
+  + Change Ctrl+Q for Quit to Ctrl+Shift+Q
+  + Make speed dial faster and mandatory
+  + Load speed dial in private browsing mode
+  + Show video formats in about:(version)
+  + Move speed dial to key file instead of JSON
+  + Add Offline Application Cache to Clear Private Data</comment>
+    <requestid>69236</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>7545c155bc5ecb35aa8944789ff49d59</srcmd5>
+    <version>0.3.5</version>
+    <time>1304351798</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69236
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ac5381176dcb8dc02b37201726666f08</srcmd5>
+    <version>0.4.0</version>
+    <time>1316681265</time>
+    <user>saschpe</user>
+    <comment>- added midori-0.4.0-use-dom-api.patch in order to use DOM API
+  instead of private API for retrieving selected text, this fixes
+  the build with webkit &gt;= r88621
+- added midori-0.4.0-fix-underlinking.patch in order to link
+  explicitly against libjavascriptcoregtk
+- remove non-standard sections from the desktop file
+
+- update to version 0.4.0
+  + Provide buttons to choose how to startup after crash
+  + Never delay URIs given as command line arguments
+  + Space at the bottom of the page: Go to next page
+  + Initialize session in app/ private before adding URIs
+  + Add 'Last open tabs' option to Clear Private Data
+  + Show kinetic scrolling option regardless of Hildon
+  + Interpret Shift+Backspace as going forward
+  + Advertise SVG images as a supported MIME type
+  + Zoom in steps of 10% and support Ctr+=
+  + Integrate Adblock and History List options in list
+  + Skip empty lines, ignore subdocument rules in Adblock
+  + URL cache, faster JS generator, inline parsing in Adblock
+  + Reuse source of webview instead of redownloading
+  + Remove the description field from bookmark dialog
+  + Add --log-file/ -l switch to log to a file
+  + Pass through javascript: URIS from the command line
+  + Adjust the preferences dialog
+  + Bugfixes
+
+- updated to version 0.3.6
+  + Track selected search engine per window
+  + Improve preference dialogue size and alignments</comment>
+    <requestid>84323</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7b6e0e26ba29f4dc7cca4167d2970ed5</srcmd5>
+    <version>0.4.1</version>
+    <time>1318248719</time>
+    <user>oertel</user>
+    <comment>- update to version 0.4.1
+  + 'Automatic' identification with quirks
+  + Register downloaded files as recent files
+  + Use symbolic find and clear icons
+  + Drop usage of mootools
+  + Install separate Private Browsing shortcut
+  + Support dragging tabs out of the window
+  + Use feed: to support Thunderbird news reader
+  + Re-open closed tabs in private browsing
+  + Compare link-fingerprints caselessly
+  + Bugfixes
+- dropped obsolete midori-0.4.0-fix-underlinking.patch,
+  midori-0.4.0-use-dom-api.patch
+
+- change midori-0.4.0-fix-underlinking.patch to a version suggested
+  by upstream which checks the webkit version
+- fix the build on 11.3 by not disabling vala
+
+- use midori-0.4.0-fix-underlinking.patch only for &gt;= 12.1</comment>
+    <requestid>87234</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>7b6e0e26ba29f4dc7cca4167d2970ed5</srcmd5>
+    <version>0.4.1</version>
+    <time>1319182178</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>89fda5ba380f4d2c8b550a4188cbf8f0</srcmd5>
+    <version>0.4.2</version>
+    <time>1321277964</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.2
+  + improve -moz-document parsing in user stylesheets
+  + render verified secure sites in green, not yellow
+  + version details for extensions built against a different
+    release
+  + more detailed and more condensed about:version output
+  + refresh missing speed dial thumbnails automatically
+  + use faster global CSS mechanism for adblock and addons
+  + show crash dialog only if there's a session
+  + don't complete on a leading space or search token
+  + support user stylesheets on about: and file:// locations
+  + implement 'Always use my font choices' preferences
+  + allow smaller tabs when close buttons are disabled
+  + merge 'Closed Tabs' with 'History' in Clear Private Data
+  + correctly use user-home and bookmark-new icon names
+  + use versioned file speeddial-head-0.4.2.html
+  + split proxy server preference into host and port
+  + support localized 'next' and 'previous' links
+  + implement 'Only accept cookies cookies from sites you visit'
+  + fix crash in Add/ Import Bookmark feature
+  + fix size of tabs with GTK+ 3
+  + detect existing Firefox profiles for bookmark import
+  + work-around &quot;omg!&quot; in local directory browsing
+  + rework '--run' feature to allow window.open() and
+    console.info()
+  + automatically clear finnished downloads from the transferbar
+  + add 'Create desktop shortcut' to the app menu
+  + require GLib 2.22 and libSoup 2.27.90
+  + don't register recent files in private browsing mode
+  + findbar and speed dial honor close button position</comment>
+    <requestid>91259</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e42fd365cb30db215653a78644eb51e6</srcmd5>
+    <version>0.4.2</version>
+    <time>1323192542</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1d23cb429e8d359c7981a9f8b0e20bb3</srcmd5>
+    <version>0.4.3</version>
+    <time>1326118782</time>
+    <user>coolo</user>
+    <comment>- export CCFLAGS rather than CFLAGS, otherwise the waf script will
+  add -DG_DISABLE_CHECKS and -DG_DISABLE_ASSERT to CFLAGS and
+  thereby disable glib assert statements leading to crashes
+  (lp#909005)
+
+- update to version 0.4.3
+  + implement about:widgets to test rendering
+  + fix resizing of inspector by applying a minimum size
+  + use dark theme with GTK+ 3 in private browsing
+  + use channel-(in)secure-symbolic icons if available
+  + use .security-(un)trusted classes with GTK+
+  + improve notebook resizing peformance
+  + fix tab icons in GTK+3 and don't look for GTK+ jscore
+  + use system-wide CA file with libSoup 2.37.1
+  + improve cookie manager performance
+  + action and tab creation for faster startup
+  + fix number of items in trash in private browsing
+  + add Cairo version to about:version
+  + add X-GNOME-Keywords and X-AppInstall-Keywords to .desktop
+  + add easy privacy list to default Adblock filters
+  + fully implement speed dial for GTK+3
+  + disable box shadows with WebKitGTK+ 1.2.7
+  + fine-grained monospace font overriding
+  + implement resizing of Location and Search in toolbar
+  + don't show empty speed dial shortcuts in-between
+  + use Midori's name in midori-private.desktop
+  + hide all bars in fullscreen and a menu to Unfullscreen</comment>
+    <requestid>99301</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>739802c76c39f75e66af1a4d3ff69dbe</srcmd5>
+    <version>0.4.3</version>
+    <time>1331037576</time>
+    <user>coolo</user>
+    <comment>- add Provides: browser(npapi) FATE#313084</comment>
+    <requestid>108057</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0a87c8a8762ad92a773fd6b1d84aa2b2</srcmd5>
+    <version>0.4.4</version>
+    <time>1331492669</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.4
+  + disable page cache with &lt; 352 MB RAM
+  + display filename in download dialog
+  + fix box packing in GTK+3 (in most cases)
+  + enable experimental HTML5 fullscreen API
+  + harden IPv6 address recognition in location
+  + experimental site data policy support (see FAQ)
+  + close tabs by middle clicking close button
+  + merge cookies and other data in Clear Private Data
+  + improve KatzeArrayAction for Unity menuproxy compatibility
+  + use GDateTime for history to avoid broken C runtimes
+  + add Midori tag to DuckDuckGo default URI
+  + rewrite completion popup resizing
+  + streamline page icon loading stages and fallbacks
+  + disable clipboard work-around for WebKit &gt;= 1.4.3
+  + re-word .desktop entry as an action
+  + display informative text in private browsing
+  + consistent clear icons in entries
+  + revised download filename generation
+  + add 'Open in Image Viewer' menu item
+  + formhistory 2.0 with GDOM support
+  + handle javascript: and mailto: links better
+  + handle = key in Ukrainian layout better
+  + fix bookmark export and deletion of bookmark folders
+  + speed dial shortcut re-reordering by DND</comment>
+    <requestid>108673</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>00046521d76cf8f040a630bdc321a217</srcmd5>
+    <version>0.4.5</version>
+    <time>1335259356</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.5
+  + work around black border around widgets on Win32
+  + whitelist direct/ re-directed navigation requests in adblock
+  + require Vala 0.14
+  + provide geolocation diagnostics in about:geolocation
+  + list available about: URLs and app instance name in
+    about:version
+  + replace illegal characters in download filenames
+  + tweak app options on Win32 and use ShellExecuteEx in
+    sokoke_show_uri
+  + use sokoke_show_uri in midori_browser_download_status_cb
+  + external Download manager Steadyflow and Aria2 (with
+    cookies)
+  + ensure adblock config folder when blocking images
+  + use sqlite WAL mode for history if available
+  + allow relative -c/ --config path
+  + context menus on Back and Forward toolbar items
+  + always show the tabbar by default
+  + use ubuntu-bug if it exists
+  + show inline find while typing and statusbar text in overlay
+    with GTK+ 3.2
+  + Esc/ closing &quot;downloads still active&quot; should cancel, not
+    continue
+  + optional Granite support for notebook and bookmark dialog as
+    pop-over
+  + Ctrl+j to toggle statusbar aka downloads
+  + show at most 3 search engines in completion
+  + don't replace existing onclick/ blur with autosuggest
+  + implement low_memory_profile for FreeBSD and Win32
+  + use var in internal javascript, to fix Google apps</comment>
+    <requestid>113647</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1e9728d1e11e924622ca57d8d71c0965</srcmd5>
+    <version>0.4.5</version>
+    <time>1336452391</time>
+    <user>coolo</user>
+    <comment>- added midori-fix-broken-libsoup-macros.patch in order to fix the
+  broken usage of HAVE_LIBSOUP_* macros (lp#983137)</comment>
+    <requestid>116147</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>74f685c92000cf3e211ad37ca5481490</srcmd5>
+    <version>0.4.6</version>
+    <time>1337195299</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.6
+  + fix crasher in geolocation infobar
+  + fix crasher in about:version on some systems
+  + fix crasher opening bookmarks from Unity global menu
+  + use WebKitFaviconDatabase as of WebKit 1.8.0
+  + use midori-prefixed temp folder in midori_view_save_source
+  + fix cancelling downloads with SteadyFlow or Aria2
+  + fix crash dialog instead of opening tab in a running window
+  + fix page icons in multi-frame sites (gmail, tumbler)
+  + distinguish Simplified and Traditional Chinese
+  + support go-jump-symbolic
+  + handle empty tabs due to download links with a target
+  + handle frame load interrupted in the unholy trinity
+  + fix libsoup version check and wrong SSL status in location
+- drop obsolete midori-fix-broken-libsoup-macros.patch</comment>
+    <requestid>121058</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>74f685c92000cf3e211ad37ca5481490</srcmd5>
+    <version>0.4.6</version>
+    <time>1340183699</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a6e66dfb39cd77e8735e36f476001419</srcmd5>
+    <version>0.4.7</version>
+    <time>1352732730</time>
+    <user>coolo</user>
+    <comment>- added midori-fix-build-with-glib-lt-2.32.patch in order to fix
+  the build with glib &lt; 2.32
+
+- added midori-work-around-vala-storing-uint64-in-pointer.patch in
+  order to work around vala trying to store a uint64 in a pointer
+  (lp#1053386)
+
+- update to version 0.4.7
+  + improved download functionality
+    * panel and statusbar consistently verify file integrity,
+      show size, remaining time and speed of a file
+    * an icon and expected file size are displayed before saving a
+      file
+    * external download managers are available in the preferences
+    * the origin of the file is clearly visible in order to counter
+      phishing sites which fake downloads
+    * optionally whole websites can now be saved including any
+      images, scripts and other resources
+  + SSL errors are now fatal by default and the colorful URL bar
+    has been removed
+  + GCR support has been added allowing detailed inspection of
+    certificates and sharing of trusted certificates between
+    applications using GCR
+  + HSTS support was added
+  + see the included ChangeLog for a detailed list of all changes</comment>
+    <requestid>140941</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>a6e66dfb39cd77e8735e36f476001419</srcmd5>
+    <version>0.4.7</version>
+    <time>1359109444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4f2fe3d34613370975b744b5c9ad46b5</srcmd5>
+    <version>0.4.8</version>
+    <time>1360230132</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.8
+  + fix un-delaying of tabs
+  + fix compilation with GLib 2.30
+  + fix error handling in extensions
+  + retain selection in urlbar when switching tabs
+  + fix missing right-click menu on NextForward button
+  + hide error page button if buttons have no images
+  + rework URL completion: suggest open tabs
+  + always highlight matches in inline search
+  + pantheon: Only show private launcher in search
+  + granite: Fix notebook, require 0.2, drop _about_dialog_new
+  + don't include http(s), file or www. in page title
+  + autodetect Twitter RSS feeds
+  + adblock: Improve date parsing
+  + unit test rework: backtraces, regardless of debugging, wine
+  + more accurate version numbers in about:version
+  + drop obsolete --log-file command line switch
+  + emit inspector attach-window with correct signature
+  + fix Netscape plugins opening download dialogs
+  + rework path handling and setup in different modes (fix
+    segfaults)
+  + manage Netscape plugins are individual extensions
+  + address gtk_icon_set_render_icon_pixbuf assertions
+  + fix renaming in speed dial with spaces in title
+  + render completion title/ URL side by side with Granite
+  + transparently use Favicon-/ IconDatabase/ file store per WebKit
+  + add TabMoveFirst/ Last hotkeys (without defaults)
+  + drop Hildon support
+  + show URI in 'not responding' dialog
+  + query search engine icons when loading, rather than stupid (forwarded request 151452 from gberh)</comment>
+    <requestid>151453</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>e2e237f8a6b95b437d108369a1c0a3d4</srcmd5>
+    <version>0.4.8</version>
+    <time>1361348968</time>
+    <user>coolo</user>
+    <comment>- added midori-fix-docdir.patch in order to fix a hardcoded docdir
+  that breaks readable view (lp#1130297)</comment>
+    <requestid>155849</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3e6de8980de8470193454766e7b18ee3</srcmd5>
+    <version>0.4.9</version>
+    <time>1362773785</time>
+    <user>coolo</user>
+    <comment>- update to version 0.4.9
+  + let non-Granite security window behave like a window
+  + disable Contractor support in Granite for now
+  + use cache_dir_for_reading in about:paths
+  + strip LRE to prevent it from begin saved to disk
+  + enable stripping 'referer' by default
+  + fix crash on closing Adlock preferences dialog
+  + bail on unset title in completion, fixing strchr urlbar crash
+  + manage cookies accept policy per domain - not installed by
+    default
+  + don't store/ load stock:// icons for special pages
+  + drop KatzeScrolled in favour of GTK+ 3.4 touchscreen support
+  + write XBEL safely to prevent loss on eg. full disk
+  + omit nspluginwrapper Netscape plugins from extensions
+  + add --debug/ -g switch to run Midori in gdb
+  + list versions from about:version in --version
+  + work in progress --enable-webkit2 option enabling WebKit2/
+    GTK+3
+  + rename menu _Window to _Tabs
+  + update Easylist subscription URL for Adblock
+  + stop redundant tab numbering when adding
+  + allow feed panel webview widget to shrink.
+  + don't search for place holder text on cookie list rebuild
+  + add 'Google Translate (gt)' as a search engine
+  + default external Download Manager to &quot;fetch&quot; on FreeBSD
+  + drop GCC-version specific -Wno-unused-but-set-variable
+  + change X-Ayatana-Desktop-Shortcuts to Actions
+- dropped obsolete midori-fix-docdir.patch</comment>
+    <requestid>158039</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a5b1c38ddadf5ba8172aad29073f76a3</srcmd5>
+    <version>0.5.0</version>
+    <time>1365425674</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.0
+  + store --execute arguments in string array
+  + prevent overlay frame from being caught by show_all
+  + unconditionally show Toolbar Style preference
+  + duplicate current URI when reloading Midori.View
+  + update tabs being closable on setting change in Granite
+  + check default_search before setting SearchAction default
+  + populate application chooser button in idle
+  + bail out of completion resizing if cell height is 0
+  + pass proxy to bookmark dialog when editing via menu
+  + tweak bookmark dialog, button to buttons, toggles side by side
+  + move 'Flash windows' option into History List
+  + use light window for Clear Private Data with Granite
+  + use GtkFontButton with filter func with GTK+ 3.2
+  + implement 'Run in debugger' button in diagnostic dialog
+  + add Win32 work-around to History List for modifiers
+  + make toolbar drag/ drop work in GTK+3
+  + check if active form element is input before getting search
+    text
+  + implement direction-based mouse gesture configuration
+  + implement mouse movement, load-failed, crashed, search in
+    WebKit2
+  + add 'Show last crash log' button to diagnostic dialog
+  + make invalid actions fail; exit on error in new process only
+  + accept setting=value and extension=true/ false in --execute
+  + merged cookie permissions as of 2013-03-08
+  + gray out webGL preference if context is unavailable
+  + use browser API to Close Other in view menu item
+  + fix periods to ellipsis in Custom/ Customize Shortcuts
+  + support Colorful Tabs in History List</comment>
+    <requestid>162689</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>9641178c8c0547b9946dea235aedc289</srcmd5>
+    <version>0.5.0</version>
+    <time>1366232835</time>
+    <user>coolo</user>
+    <comment>- replace midori-work-around-vala-storing-uint64-in-pointer.patch
+  with midori-fix-storing-uint64-in-pointer.patch which contains an
+  actual fix</comment>
+    <requestid>171270</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d8669f0ee7ee743d4e2dc00094236686</srcmd5>
+    <version>0.5.1</version>
+    <time>1369641235</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.1
+  - fix mouse gesture regression breaking context menu
+  - fix --run command line switch by midori_paths_init
+  - fix bug in size calculation for the history list popup
+  - handle diagnostic dialog argument in running instance
+  - fix feed panel default value crash
+  - ensure existence of the applications directory
+  - fix download tooltip crash and extend test case
+  - integrate user interaction exploit demo in about:
+  - don't convey loading or progress on special pages
+  - address missing NULL checks and dead code found by clang
+  - no security window for blank pages, but a search icon
+  - introduce UI for created apps/ launchers: Web App Manager
+  - add custom-title setting to override browser title
+  - add a Gtk.Entry to --plain mode for entering URLs
+  - deprecate middle_click_opens_selection in favour of
+    gtk-enable-primary-paste
+- dropped obsolete midori-fix-storing-uint64-in-pointer.patch</comment>
+    <requestid>175961</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7cf6fa1249ac34c90745a1895c8e0b29</srcmd5>
+    <version>0.5.4</version>
+    <time>1375112549</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.4
+  - refactor history step and allow multiple title updates
+  - call midori_browser_connect_tab with correct type
+  - don't add HistoryCompletion if there's no history
+  - restore reload button icon in error pages
+  - don't insert folders into the log
+  - if an url is specified the fallback url should not be loaded
+  - fixed crashes when closing a loading tab + granite's tab moving
+  - test if plugins are redundant instead of skipping them all
+  - avoid selecting bookmark uris that begin by 'javascript:' for
+    completion
+  - set FOREIGN_KEYS pragma on db initialization
+  - implement a default zoom level preference
+  - fix tautological use of G_MAXINT with enum
+  - take current selection into account for bookmark folders when
+    adding/editing bookmark
+  - improve error page visuals, show suggestions on network errors
+  - bump vala to 0.16.0
+  - downgrade glib requirement to 2.32.3 to re-enable building
+    under Ubuntu 12.04 (LTS)
+  - bump glib2 version to 2.32.4
+  - improve and unify thumbnail generation
+  - omit speed dial and blank pages from view completion
+  - makes the elements of the speed dial non-selectable
+  - use NULL-safe comparison in katze_item_icon_loaded_cb
+  - drop non-DOM style sheet injection code path
+  - clean small leftovers from GTK and WebKit version bumps
+  - bump GTK+ requirement to 2.24 and drop support for earlier
+    versions
+  - check for app mode to set browser icon instead of readonly</comment>
+    <requestid>184458</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>42e7324bc7548b732c449e733b80c211</srcmd5>
+    <version>0.5.5</version>
+    <time>1376902272</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to version 0.5.5
+  - fix name and text fields inversion in XBEL folder import
+  - correct packing of cookie and nojs permission dialog.
+  - don't set tab title/special when a non-main frame displays an
+    error
+  - revise &quot;cookies&quot; debug output, merge expiry check and disallow
+    revival of old cookies
+  - drop now unused cgit module.xml file
+  - use SoupProxyResolverGnome unconditionally and disable
+    prefetching if proxy is active
+  - win32: Hide gui for profiles in webapp manager, as they are
+    currently broken on Windows
+  - win32: support additional mouse buttons for going back/forward
+    in history
+  - enrich app error messages with filenames
+  - fix segfault if url contains &quot; %00&quot;
+  - replace 'Run as app' in bookmark dialog with 'Create launcher'
+  - split config files and install from folders recursively
+  - implement GTK+ theme switching via Preferences (Win32)
+  - enable set_disk_cache_directory with WebKit2
+  - introduce Midori.ContextAction and refactor page menu from
+    scratch
+  - define large dialog icon size relative to dialog icon size
+  - extension Devpet which shows error messages and backtraces in
+    systray
+  - webKit2 cookie support
+  - check the hit test result for editable to see if , should
+    search
+  - use SoupCookieJarSqlite and drop KatzeHttpCookies(Sqlite)
+  - show folder tree when editing bookmarks</comment>
+    <requestid>195545</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>42e7324bc7548b732c449e733b80c211</srcmd5>
+    <version>0.5.5</version>
+    <time>1379663288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8151537e45c0dff9f29d3865ca31a4d3</srcmd5>
+    <version>0.5.8</version>
+    <time>1400055960</time>
+    <user>coolo</user>
+    <comment>update to 0.5.8</comment>
+    <requestid>233223</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>8151537e45c0dff9f29d3865ca31a4d3</srcmd5>
+    <version>0.5.8</version>
+    <time>1409301896</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>62e8995ff2877b63cf2724bbfbaa97d9</srcmd5>
+    <version>0.5.8</version>
+    <time>1410785448</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249023</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6eccb2846b0d6e769b4b7698b4e0cd28</srcmd5>
+    <version>0.5.9</version>
+    <time>1416823758</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.5.9</comment>
+    <requestid>262694</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>0779a7a047070448c88197f370a5edf9</srcmd5>
+    <version>0.5.9</version>
+    <time>1428652318</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294810</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8ee53496e5775d2a411b778ce1e757d7</srcmd5>
+    <version>0.5.10</version>
+    <time>1430387449</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.5.10</comment>
+    <requestid>304425</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>23b14957d902696f84dcb39d1290274c</srcmd5>
+    <version>0.5.11</version>
+    <time>1441727082</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329465</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>852e55fe33c06bbf31034f51094cb9e1</srcmd5>
+    <version>0.5.11</version>
+    <time>1493363664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491439</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>f6cf8e5a9f3d63645e8ff6a67086ee81</srcmd5>
+    <version>0.5.11</version>
+    <time>1503393022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517945</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>7e791fa39c7ec4e767abfd8cb4a76d31</srcmd5>
+    <version>0.5.11</version>
+    <time>1509461071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537739</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>9d50a310b54ea1596e5c70977b864e3e</srcmd5>
+    <version>0.5.11</version>
+    <time>1537360202</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636360</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>aaf06007997e487e3792ff18971b5f42</srcmd5>
+    <version>7.0.git20181130</version>
+    <time>1543953265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.0.git20181130:
+  * Fixed YouTube rendering issue due to custom user agent
+  * Fixed invisible cursor in text fields
+  * Restored behavior of &quot; &quot; and &quot;.&quot; in urlbar completion
+  * Download/ web notifications for background window/ tab
+  * Highlight in toolbar for finished downloads
+  * Re-introduced proxy server UX
+  * Multiple processes for indivdual tabs
+  * Adaptive toolbar layout for smaller screens
+  
+- Added Obsoletes
+- Update to version 6.0.git20181129:
+  * Open external links in default browser in app mode (gh#midori-browser/core#184)
+  * Don't consume the tab's focus in event (gh#midori-browser/core#185)
+  * Always build menu models from scratch (gh#midori-browser/core#183)
+  
+- Update to version 6.0.git20181126:
+  * (Re)store last window width and height (gh#midori-browser/core#180)
+  * Implement network proxy settings (gh#midori-browser/core#174)
+- Remove Branding packages
+- Update to version 6.0.git20181122:
+  * Don't add bookmarks UX when in app mode (gh#midori-browser/core#172)
+  * Implement notifications for downloads and web (gh#midori-browser/core#175)
+  * Hide page and browser actions when window is small (gh#midori-browser/core#171)
+  * Go back to using WebKit-provided user agent (gh#midori-browser/core#173)
+  * Reduce spacing around delete suggestion button (gh#midori-browser/core#170)
+  * Locate system-wide plugins at Config.PLUGINDIR (gh#midori-browser/core#168)
+  * Don't block regular key input in app mode (gh#midori-browser/core#167)
+  * Always set key regardless of location guess (gh#midori-browser/core#169)
+  * Create independent tabs to allow for more processes (gh#midori-browser/core#166)
+  * Double-check that extension folder contains Vala sources (gh#midori-browser/core#161)
+- Update to 6.0
+  * Revamped Vala-only core based on GTK+3 and WebKit2
+  * App based on Gtk.Application, supporting global/ window app menu
+  * Tabs on top with a custom stack switcher and Gtk.Stack
+  * Url completion with GLib.ListModel and Gtk.ListBox
+  * Peas-based extensions, also available in Private Browsing
+  * New fullscreen mode with auto-revealing toolbar 
+- Spec file cleaned and revised to adapt to new version
+- Run spec-cleaner
+- Removed patch midori-0.5.11-fix-crash-on-startup.patch no longer needed
+- Removed patch midori-fix-plugins.diff  no longer needed
+- Removed patch midori-fix-vala_0.35.patch  no longer needed
+- Removed source file baselibs.conf not needed
+- Removed source file midori.1 not needed
+</comment>
+    <requestid>653120</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>76df207bc298eaa435c0a48487fad37b</srcmd5>
+    <version>v8.0</version>
+    <time>1551785152</time>
+    <user>dimstar_suse</user>
+    <comment>- Added zoom-menu.patch to fix zoom menu entry (issue gh#midori-browser/core#286)
+- Update to version 8.0
+  * Javascript changes confirmation and prompts use dialogs again
+  * Bug fixes in Urlbar completion and focus handling as well as Adblock filtering
+  * Headerbar enabled by default only under Budgie, GNOME and Patreon
+  * Re-introduced support for `--inactivity-reset`, `-e Fullscreen` and `-e ZoomIn`
+  * Initial support for cross-browser web extensions (not exposed in the GUI yet)
+  * Builds deps: Glib lowered to 2.46.2, Json-Glib and libarchive are now required
+  * Link to the bug tracker from the About dialog
+  * Correct handling of external URIs such as apt:
+  * Fixed installation path for appdata and plugins
+  * Support for building Midori on Android with Gradle
+  * Better internal distinction of errors from visiting pages
+  * Zoom indicators in the page menu and statusbar features extension
+- Switch dependencies to pkgconfig
+</comment>
+    <requestid>681550</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>814073ae9f3a8aa48ea326cbaf6bd437</srcmd5>
+    <version>v9.0</version>
+    <time>1564576590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720001</requestid>
+  </revision>
+</revisionlist>

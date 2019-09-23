@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon Nov 19 09:57:54 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Update to version 1.2.0
+  * Bash completion is now supported
+  * Fix getopt parsing; passing `--issuer` and `--account` should no longer
+    hang
+- Applied spec-cleaner
+- Added fix-shebang.patch: Fixed shebang line for autodetection of dependencies
+
+-------------------------------------------------------------------
+Sat Jun 30 16:40:16 UTC 2018 - dmarcoux@posteo.de
+
+- Version 1.1.1
+
+-------------------------------------------------------------------
+Mon Mar  5 08:59:59 UTC 2018 - dmarcoux@posteo.de
+
+- Version 1.1.0
+
+-------------------------------------------------------------------
+Wed Jan 24 21:23:24 UTC 2018 - dmarcoux@posteo.de
+
+- Use %{_libexecdir}
+
+-------------------------------------------------------------------
+Tue Jan 16 22:55:48 UTC 2018 - dmarcoux@posteo.de
+
+- Version 1.0.0

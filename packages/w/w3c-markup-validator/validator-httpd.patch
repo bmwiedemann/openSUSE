@@ -1,0 +1,22 @@
+Index: validator-1.3/httpd/conf/httpd.conf
+===================================================================
+--- validator-1.3.orig/httpd/conf/httpd.conf
++++ validator-1.3/httpd/conf/httpd.conf
+@@ -43,6 +43,8 @@ PerlPostConfigRequire /usr/local/validat
+ 
+ <LocationMatch "^/+w3c-validator/+(check|feedback(\.html)?)$">
+   Options               +ExecCGI
++  Order Deny,Allow
++  Allow from all
+   SetHandler            cgi-script
+ <IfDefine MODPERL2>
+   SetHandler            perl-script
+@@ -64,6 +66,8 @@ Alias /w3c-validator/   /usr/local/valid
+ <Directory /usr/local/validator/htdocs/>
+   Options               IncludesNOEXEC Indexes MultiViews
+   AllowOverride         None
++  Order Deny,Allow
++  Allow from all
+   AddHandler            server-parsed .html
+   AddCharset            utf-8         .html
+   AddEncoding           x-gzip        .gz

@@ -1,0 +1,218 @@
+From 2f92b974dd8f6c0885e060b53254d4470d06235f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Sat, 17 Jun 2017 23:07:04 +0200
+Subject: [PATCH 5/7] Add support for interface rename in nameif
+
+---
+ man/en_US/nameif.8 | 43 ++++++++++++++++++++++++--------------
+ nameif.c           | 61 ++++++++++++++++++++++++++++++++++++++----------------
+ 2 files changed, 70 insertions(+), 34 deletions(-)
+
+Index: net-tools-2.0+git20180626.aebd88e/man/en_US/nameif.8
+===================================================================
+--- net-tools-2.0+git20180626.aebd88e.orig/man/en_US/nameif.8
++++ net-tools-2.0+git20180626.aebd88e/man/en_US/nameif.8
+@@ -4,26 +4,37 @@ nameif \- name network interfaces based
+ .SH SYNOPSIS
+ .B "nameif [\-c configfile] [\-s]"
+ .br
+-.B "nameif [\-c configfile] [\-s] {interface macaddress}"
++.B "nameif [\-c configfile] [\-s] [interface macaddress]"
++.br
++.B "nameif [-c configfile] [-r] [newifname oldifname]"
+ .SH DESCRIPTION
+-.B nameif 
+-renames network interfaces based on mac addresses. When no arguments are
+-given 
++.B nameif
++renames network interfaces based on mac addresses or interface names.
++When no arguments are given
+ .I /etc/mactab
+-is read. Each line  of it contains an interface name and a Ethernet MAC 
+-address. Comments are allowed starting with #. 
++is read. Each line  of it contains an interface name and a Ethernet MAC
++address. Comments are allowed starting with #.
+ Otherwise the interfaces specified on the command line are processed.
+ .I nameif
+-looks for the interface with the given MAC address and renames it to the
+-name given.
+-
+-When the 
+-.I \-s
+-argument is given all error messages go to the syslog.
+-
+-When the 
+-.I \-c 
+-argument is given with a file name that file is read instead of /etc/mactab.
++looks for the interface with the given MAC address or old interface name
++and renames it to the name given.
++.SH OPTIONS
++.TP
++.B "[-s|--syslog]"
++Log all error messages to syslog.
++.TP
++.B "[-r|--rename]"
++Rename the interface given by
++.I oldifname
++to the new name
++.I newifname
++without consulting any macaddress.
++.TP
++.B "[-c|--config-file configfile]"
++Read
++.I configfile
++instead of
++.I /etc/mactab.
+ 
+ .SH NOTES
+ .I nameif
+Index: net-tools-2.0+git20180626.aebd88e/nameif.c
+===================================================================
+--- net-tools-2.0+git20180626.aebd88e.orig/nameif.c
++++ net-tools-2.0+git20180626.aebd88e/nameif.c
+@@ -28,6 +28,7 @@
+ const char default_conf[] = "/etc/mactab";
+ const char *fname = default_conf;
+ int use_syslog;
++int do_rename;
+ int ctl_sk = -1;
+ 
+ void err(char *msg)
+@@ -114,7 +115,8 @@ int getmac(char *name, unsigned char *ma
+ struct change {
+ 	struct change *next;
+ 	int found;
+-	char ifname[IFNAMSIZ+1];
++	unsigned char ifname_old[IFNAMSIZ+1];
++	unsigned char ifname_new[IFNAMSIZ+1];
+ 	unsigned char mac[6];
+ };
+ struct change *clist;
+@@ -128,13 +130,28 @@ struct change *lookupmac(unsigned char *
+ 	return NULL;
+ }
+ 
++struct change *lookupifname(unsigned char *ifname_old)
++{
++	struct change *ch;
++	for (ch = clist;ch;ch = ch->next)
++		if (!strcmp(ch->ifname_old, ifname_old))
++			return ch;
++	return NULL;
++}
++
+ int addchange(char *p, struct change *ch, char *pos)
+ {
+-	if (strchr(ch->ifname, ':'))
+-		warning(_("alias device %s at %s probably has no mac"),
+-			ch->ifname, pos);
+-	if (parsemac(p,ch->mac) < 0)
+-		complain(_("cannot parse MAC `%s' at %s"), p, pos);
++	if (do_rename) {
++		if (strlen(p)+1>IFNAMSIZ)
++			complain(_("interface name `%s' too long"), p);
++		strcpy(ch->ifname_old, p);
++	} else {
++		if (strchr(ch->ifname_new, ':'))
++			warning(_("alias device %s at %s probably has no mac"),
++				ch->ifname_new, pos);
++		if (parsemac(p,ch->mac) < 0)
++			complain(_("cannot parse MAC `%s' at %s"), p, pos);
++	}
+ 	ch->next = clist;
+ 	clist = ch;
+ 	return 0;
+@@ -173,8 +190,8 @@ void readconf(void)
+ 		if (n > IFNAMSIZ-1)
+ 			complain(_("interface name too long at line %d"), line);
+ 		ch = xmalloc(sizeof(struct change));
+-		memcpy(ch->ifname, p, n);
+-		ch->ifname[n] = 0;
++		memcpy(ch->ifname_new, p, n);
++		ch->ifname_new[n] = 0;
+ 		p += n;
+ 		p += strspn(p, " \t");
+ 		n = strspn(p, "0123456789ABCDEFabcdef:");
+@@ -187,6 +204,7 @@ void readconf(void)
+ 
+ struct option lopt[] = {
+ 	{"syslog", 0, NULL, 's' },
++	{"rename", 0, NULL, 'r' },
+ 	{"config-file", 1, NULL, 'c' },
+ 	{"help", 0, NULL, 'h' },
+ 	{NULL},
+@@ -195,7 +213,7 @@ struct option lopt[] = {
+ static void usage(int rc)
+ {
+ 	FILE *fp = rc ? stderr : stdout;
+-	fprintf(fp, _("usage: nameif [-c configurationfile] [-s] {ifname macaddress}\n"));
++	fprintf(fp, _("usage: nameif [-c configurationfile] [-s] [-r] {ifname macaddress}\n"));
+ 	exit(E_USAGE);
+ }
+ 
+@@ -210,7 +228,7 @@ int main(int ac, char **av)
+ 	int ret = 0;
+ 
+ 	for (;;) {
+-		int c = getopt_long(ac,av,"c:sh",lopt,NULL);
++		int c = getopt_long(ac,av,"c:srh",lopt,NULL);
+ 		if (c == -1) break;
+ 		switch (c) {
+ 		default:
+@@ -223,6 +241,9 @@ int main(int ac, char **av)
+ 		case 's':
+ 			use_syslog = 1;
+ 			break;
++		case 'r':
++			do_rename = 1;
++			break;
+ 		}
+ 	}
+ 
+@@ -237,7 +258,7 @@ int main(int ac, char **av)
+ 			usage(E_OPTERR);
+ 		if (strlen(av[optind])+1>IFNAMSIZ)
+ 			complain(_("interface name `%s' too long"), av[optind]);
+-		safe_strncpy(ch->ifname, av[optind], sizeof(ch->ifname));
++		safe_strncpy(ch->ifname_new, av[optind], sizeof(ch->ifname_new));
+ 		optind++;
+ 		sprintf(pos,_("argument %d"),optind);
+ 		addchange(av[optind], ch, pos);
+@@ -268,18 +289,22 @@ int main(int ac, char **av)
+ 		if (n > IFNAMSIZ-1)
+ 			complain(_("interface name `%s' too long"), p);
+ 
+-		if (getmac(p, mac) < 0)
+-			continue;
++		if (do_rename) {
++			ch = lookupifname(p);
++		} else {
++			if (getmac(p, mac) < 0)
++				continue;
+ 
+-		ch = lookupmac(mac);
++			ch = lookupmac(mac);
++		}
+ 		if (!ch)
+ 			continue;
+ 
+ 		ch->found = 1;
+-		if (strcmp(p, ch->ifname)) {
+-			if (setname(p, ch->ifname) < 0)
++		if (strcmp(p, ch->ifname_new)) {
++			if (setname(p, ch->ifname_new) < 0)
+ 				complain(_("cannot change name of %s to %s: %s"),
+-						p, ch->ifname, strerror(errno));
++					 p, ch->ifname_new, strerror(errno));
+ 		}
+ 	}
+ 	fclose(ifh);
+@@ -288,7 +313,7 @@ int main(int ac, char **av)
+ 		struct change *ch = clist;
+ 		clist = clist->next;
+ 		if (!ch->found){
+-			warning(_("interface '%s' not found"), ch->ifname);
++			complain(_("interface '%s' not found"), ch->ifname_new);
+ 			ret = 1;
+ 		}
+ 		free(ch);

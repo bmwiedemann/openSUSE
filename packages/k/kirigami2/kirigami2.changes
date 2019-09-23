@@ -1,0 +1,519 @@
+-------------------------------------------------------------------
+Sat Sep  7 20:36:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Replace the custom overflow button with PrivateActionToolButton in ActionToolBar
+  * If a submenu action has an icon set, make sure to also display it
+  * [Separator] Match Breeze borders' color
+  * Add Kirigami ListSectionHeader component
+  * Fix context menu button for pages not showing up
+  * Fix PrivateActionToolButton with menu not clearing checked state properly
+  * Use QLatin1String + QString::remove operates on the same object, no need to reassign
+  * Fix supported OS attributes for api.kde.org
+  * remove references from the icon qrc to missing icons.
+  * allow to set custom icon for the left drawer handle
+  * Rework the visibleActions logic in SwipeListItem
+  * Allow usage of QQC2 actions on Kirigami components and now make K.Action based on QQC2.Action
+  * bump import
+  * Add handle icons
+  * Kirigami.Icon: Fix loading bigger images when source is a URL (kde#407409)
+  * Add icon used by Kirigami.AboutPage
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:32 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * reintroduce 00415d3345a with proper names 
+  * Partially revert 00415d3345a to fix regression 
+  * Sync to diff in D22868 (pushed wrong branch) 
+  * Revamp Kirigami.AboutPage 
+  * Consistently use Units.toolTipDelay instead of hardcoded values 
+  * properly size the card contents when the card size is constrained 
+  * hide ripple when we don't want items clickable 
+  * make handle follow arbitrary height of the drawer 
+  * Fix typo 
+  * [SwipeListItem] Take into account scrollbar visibility and form factor for handle and inline actions 
+  * Remove scaling of iconsize unit for isMobile 
+  * always show back button on layers>1 
+  * Fix 2 typos 
+  * hide actions with submenus from more menu 
+  * default ActionToolBar position ot Header 
+  * big z to not appear under dialogs 
+  * use opacity to hide buttons that don't fit 
+  * add the spacer only when it fills the width 
+  * fully retrocompatible with showNavigationButtons as bool 
+  * more granularity to globalToolBar.showNavigationButtons
+
+-------------------------------------------------------------------
+Fri Jul 19 11:42:33 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * [ActionTextField] Make action glow on press
+  * Remove ifdef for Qt 5.11 since that is now the required version
+  * support text mode and position
+  * mouseover effect for breadcrumb on desktop
+  * Fix typo in documentation
+  * enforce a minimum height of 2 gridunits
+  * Set SwipeListItem implicitHeight to be the maximum of content and actions
+  * Hide tooltip when PrivateActionToolButton is pressed
+  * Remove accidentally slipped back traces of cmake code for Plasma style
+  * ColumnView::itemAt
+  * force breeze-internal if no theme is speacified
+  * correct navigation on left pinned page
+  * keep track of the space covered by pinned pages
+  * show a separator when in left sidebar mode
+  * in single column mode, pin has no effect
+  * first semi working prototype of pinning
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * [ActionTextField] Make QML tooltip consistent
+  * base on height for items that should have a top padding (kde#405614)
+  * Compress color changes without a QTimer
+  * [FormLayout] Use even top and bottom spacing for separator (kde#405614)
+  * ScrollablePage: Make sure the scrolled view gets the focus when it's set
+  * Improve keyboard-only usage of the toolbar (kde#403711)
+  * make the recycler a FocusScope
+
+-------------------------------------------------------------------
+Wed May 15 18:16:17 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * dd the new files to the pri file
+  * [aboutpage] hide Authors header if there are no authors
+  * Update qrc.in to match .qrc (missing ActionMenuItem)
+  * fix formatting in android build instructions
+  * DesktopIcon -> Icon
+  * Make sure we don't squeeze out the ActionButton (kde#406678)
+  * make it work
+  * single event filter in a singleton
+  * Revert "make it an attached property"
+  * make it an attached property
+  * final api, documentation++
+  * add blockTargetWheel property
+  * add a wheelhandler event filter
+  * fix implicitWidth
+  * remove all the custom mouse wheel handling
+  * remove extra debug
+  * propagate hints to ColumnView and PageRow
+  * ensure layout is done right after component.oncompleted
+  * Pages: export correct contentHeight/implicit sizes
+  * [ColumnView] Also check for index in child filter...
+  * [ColumnView] Don't let mouse back button go back beyond first page
+  * header has immediately the proper size
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Mar 15 23:52:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.1
+  * New bugfix release
+- Changes since 5.56.0:
+  * avoid parenting OverlaySheet to ColumnView
+  * hide breadcrumb on pages that don't want a toolbar (kde#404481)
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * raise only colored buttons (kde#403807)
+  * fix height
+  * same margins sizing policy as the other list items
+  * === operators
+  * support for the concept of expandible items
+  * don't clear when replacing all the pages
+  * horizontal padding is double than vertical
+  * take padding into account to compute size hints
+  * [kirigami] Do not use light font styles for headings (2/3)
+  * Unbreak the AboutPage layout on smaller devices
+  * stopatBounds for breadcrumb flickable
+
+-------------------------------------------------------------------
+Mon Jan 14 06:14:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Mon Dec 10 22:32:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Fix warning
+  * DelegateRecycler: Fix build with strict iterators
+  * DelegateRecycler: Don't create a new propertiesTracker for every delegate
+  * Move the about page from Discover to Kirigami
+  * update versions
+  * antialiasing only when position != 0
+  * make sure scroll views are pixel aligned
+  * Make it possible to fallback to a different icon
+  * hide context drawer when there is a global toolbar
+  * ensure all items are laid out (kde#400671)
+  * center FormLayout
+  * change index on pressed, not on clicked (kde#400518)
+  * more consistency between toolbar and breadcrumb titles
+  * fix separators behavior
+  * new text sizes for Headings
+  * sidebar drawers don't move global headers/footers
+  * on big devices, just take 95% of the space
+- Dropped patches, now upstream:
+  * 0001-make-sure-scroll-views-are-pixel-aligned.patch
+
+-------------------------------------------------------------------
+Tue Nov 27 18:18:01 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to workaround visual glitches with unaligned text (boo#1117346, kde#401174):
+  * 0001-make-sure-scroll-views-are-pixel-aligned.patch
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:20 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Sep 15 10:46:05 UTC 2018 - fabian@ritter-vogt.de
+
+- Require the library in the -devel subpackage
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * fix-build-with-gcc48.patch
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:12 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * support dynamically adding and removing title (kde#396417)
+  * introduce actionsVisible (kde#396413)
+  * Fix documentation typo
+  * adapt margins when scrollbar appears/disappear
+  * better management of the size (kde#396983)
+  * Optimise setting up the palette
+  * AbstractApplciationItem shouldn't have its own size, only implicit
+  * new signals pagePushed/pageRemoved
+  * fix logic
+  * add ScenePosition element (kde#396877)
+  * No need to emit the intermediary palette for every state
+  * hide->show
+  * Collapsible Sidebar Mode
+  * kirigami_package_breeze_icons: don't treat lists as elements
+  * fix searc/replace regexp (kde#396294)
+  * animating a color produces a rater unpleasant effect (kde#389534)
+  * color focused item for keyboard navigation
+  * remove quit shortcut
+  * Remove long-time deprecated Encoding=UTF-8 from desktop format file
+  * fix toolbar size (kde#396521)
+  * fix handle sizing
+  * Honor BUILD_TESTING
+  * Show icons for actions that have an icon source rather than an icon name
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:41 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jun 13 17:03:25 UTC 2018 - wbauer@tmo.at
+
+- Add fix-build-with-gcc48.patch to make it compile with gcc 4.8 on
+  Leap 42.3
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Show action.main more prominently on the ToolBarApplicationHeader
+  * Allow Kirigami build without KWin tablet mode dependency
+  * correct swipefilter on RTL
+  * correct resizing of contentItem
+  * fix --reverse behavior
+  * share contextobject to always access i18n
+  * make sure tooltip is hidden
+  * make sure to not assign invalid variants to the tracked proeprties
+  * fix a couple of warnings
+  * handle not a MouseArea, dropped() signal
+  * no hover effects on mobile
+  * proper icons overflow-menu-left and right
+  * remove useless debug
+  * not hoverenabled
+  * Drag handle to reorder items in a ListView
+  * Add Settings class to API documentation
+  * Use Mnemonics on the toolbar buttons
+  * Use override
+  * Added missing files in QMake's .pri
+  * [API dox] Fix Kirigami.InlineMessageType -> Kirigami.MessageType
+  * fix applicationheaders in applicationitem
+  * fix build on macos/ios
+  * Fix warnings
+  * Remove wrong warning
+  * Don't allow showing/hiding the drawer when there's no handle (kde#393776)
+
+-------------------------------------------------------------------
+Sun May 13 21:03:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:04 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Mon Feb 12 23:44:31 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan 16 22:51:51 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Add recently added file to .qrc
+  * keep the flickable interactive
+  * proper prefix for icons as well
+  * upgrade version
+  * more docs
+  * fix form sizing
+  * Fixed qmake build
+  * read wheelScrollLines from kdeglobals if existing
+  * add a prefix for kirigami files to avoid conflicts
+  * some static linking fixes
+  * move plasma styles to plasma-framework
+  * Use single quotes for matching characters + QLatin1Char
+  * FormLayout
+
+-------------------------------------------------------------------
+Wed Jan  3 12:42:30 UTC 2018 - fabian@ritter-vogt.de
+
+- Remove baselibs.conf:
+  * Not needed
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+  * Update to 5.41.0
+
+-------------------------------------------------------------------
+Mon Nov 13 22:40:33 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * syntax working on older Qt 5.7 (kde#385785)
+  * stack the overlaysheet differently (kde#386470)
+  * Show the delegate highlighted property as well when there's no focus
+  * preferred size hints for the separator
+  * correct Settings.isMobile usage
+  * Allow applications to be somewhat convergent on a desktop-y system
+  * Make sure the content of the SwipeListItem doesn't overlap the handle
+  * check page.actions for null
+  * use a Dialog
+  * Overlaysheet's scrollview is always ointeractive
+  * Add categories in gallery desktop file (kde#385430)
+  * Update the kirigami.pri file
+  * use the non installed plugin to do the tests
+  * partly revert 72c01208fe79
+  * Deprecate Kirigami.Label
+  * Port gallery example use of Labels to be consistently QQC2
+  * Port Kirigami.Controls uses of Kirigami.Label
+  * remove useless debug
+  * make the scrollarea interactive on touch events
+  * Move the git find_package call to where it's used
+  * default to transparent listview items
+  * Add 'Introduction' section to README.md - this is needed for inqlude script to create a proper manifest file for inqlude.org website, used information from metainfo.yaml/Mainpage.dox
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Sep 19 23:18:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:30 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * None
+
+-------------------------------------------------------------------
+Wed May  3 15:11:42 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 2.1.1:
+  * Ships with correct translation files now
+
+-------------------------------------------------------------------
+Sat Apr 29 14:21:27 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 2.1.0:
+  * No upstream changelog provided, visit:
+    https://dot.kde.org/2017/04/28/kirigami-21-out
+- Remove patches, now upstream:
+  * fix-license.patch
+
+-------------------------------------------------------------------
+Fri Apr 21 09:42:31 UTC 2017 - fabian@ritter-vogt.de
+
+- Remove obsolete BuildReq
+- Add libqt5-qtquickcontrols2 runtime dependency
+
+-------------------------------------------------------------------
+Mon Jan 23 11:23:29 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patch to fix licensing issues (kde#375344):
+  * fix-license.patch
+
+-------------------------------------------------------------------
+Tue Dec 13 16:36:15 UTC 2016 - fabian@ritter-vogt.de
+
+- New kirigami2 package, copy of kirigami, which is now kirigami 1.1
+

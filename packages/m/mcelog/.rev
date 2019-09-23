@@ -1,0 +1,394 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>0731a57fb63e0534dca6ee930a77930c</srcmd5>
+    <version>0.7</version>
+    <time>1168903496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="111">
+    <srcmd5>8bce2c8de01a3a6d8f686661d4096efb</srcmd5>
+    <version>0.7</version>
+    <time>1222704024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="112">
+    <srcmd5>8bce2c8de01a3a6d8f686661d4096efb</srcmd5>
+    <version>0.7</version>
+    <time>1222704024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="113">
+    <srcmd5>9b736b38f52c8851cf2d5290e8fb4e5a</srcmd5>
+    <version>0.7</version>
+    <time>1231558796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="115">
+    <srcmd5>9b736b38f52c8851cf2d5290e8fb4e5a</srcmd5>
+    <version>0.7</version>
+    <time>1231558796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95495b8f627fa030bdbbe03e99740be1</srcmd5>
+    <version>0.9pre</version>
+    <time>1258390912</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mcelog based on submit request 24435 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5681875f246a37d5ced4f506140164ba</srcmd5>
+    <version>1.0pre1</version>
+    <time>1263309180</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mcelog based on submit request 29009 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb09dcd43aace8352b5b4a826439a988</srcmd5>
+    <version>1.0pre3</version>
+    <time>1266930244</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/mcelog based on submit request 32894 from user oertel
+</comment>
+    <requestid>32894</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c6b019ee4cd4530d089d0a36a62c2bf5</srcmd5>
+    <version>1.0pre3</version>
+    <time>1268924919</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c6b019ee4cd4530d089d0a36a62c2bf5</srcmd5>
+    <version>1.0pre3</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c6b019ee4cd4530d089d0a36a62c2bf5</srcmd5>
+    <version>1.0pre3</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cbed26e21cfa8a92b44e30daa50e5095</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1288273077</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51557 from user coolo
+</comment>
+    <requestid>51557</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4d35bd5dd0f56ea6cd52c27e825804d0</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1288273085</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51557
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>4d35bd5dd0f56ea6cd52c27e825804d0</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>523ddfd0bd621f5cfc2d6648a69dec25</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1308214395</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>73783</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>9a7bdb4675560e436cb5414517b0b150</srcmd5>
+    <version>1.0pre3.6363f5b719e9</version>
+    <time>1308214405</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73783
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>17999423d6a8c78693f18edb1c89f053</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1315233514</time>
+    <user>lrupp</user>
+    <comment>Update</comment>
+    <requestid>80892</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>591bf3cacaef8caa5ea1b27fe95a50f4</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1315233528</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80892
+</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>591bf3cacaef8caa5ea1b27fe95a50f4</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1319182173</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>91ecf57cacf7485ef6dd1780e639cc23</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1322215944</time>
+    <user>coolo</user>
+    <comment>- Add systemd unit. (forwarded request 93371 from elvigia)</comment>
+    <requestid>93503</requestid>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>7aec63dda824017f931ed8f32c830235</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1323192511</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>a3bdd42b72de6c3d45e2190f60f5edad</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1336035497</time>
+    <user>coolo</user>
+    <comment>Fixed typo in init-file. (forwarded request 115240 from xandry)</comment>
+    <requestid>115540</requestid>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>a3bdd42b72de6c3d45e2190f60f5edad</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1340183693</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>bfdeb843492c0004c41aa3849c579219</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1347618648</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133902</requestid>
+  </revision>
+  <revision rev="25" vrev="17">
+    <srcmd5>bfdeb843492c0004c41aa3849c579219</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1359109436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="18">
+    <srcmd5>c99b5d3387b804853147ba37a68a928b</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1361633887</time>
+    <user>coolo</user>
+    <comment>- Install mcelog.service accordingly (/usr/lib/systemd for 12.3
+  and up or /lib/systemd for older versions). (forwarded request 156105 from rmilasan)</comment>
+    <requestid>156168</requestid>
+  </revision>
+  <revision rev="27" vrev="20">
+    <srcmd5>c99b5d3387b804853147ba37a68a928b</srcmd5>
+    <version>1.0pre3.6e4e2a000124</version>
+    <time>1379663273</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>73e60e5c6fdd8e57a8ea859af3ac2c7d</srcmd5>
+    <version>1.1</version>
+    <time>1382549037</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204353</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>edc593e7c86f9b57a257d5abb5064924</srcmd5>
+    <version>1.1</version>
+    <time>1387462159</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- activate mcelog service via udev+systemd combo, if the kernel
+  registers a /dev/mcelog device the service will be automatically
+  started.
+- drop sysvinit scripts, add appropiate %pre %post invocations
+  of the needed systemd macros.</comment>
+    <requestid>211411</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2f87c36d5bf94653e33b9f51ba187c04</srcmd5>
+    <version>1.0.1</version>
+    <time>1399032050</time>
+    <user>coolo</user>
+    <comment>- Update to latest git tag v101.
+- Mainline decided to finally do a version upgrade to v101
+- Remove v1.1 again, obsolete it and go for version v102
+- Some important fixes in the latest update:
+    - bnc#873159
+    - bnc#873725 (forwarded request 231933 from trenn)</comment>
+    <requestid>231934</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>07fed9b9163d8a3e67430fad7a0af3a8</srcmd5>
+    <version>1.0.1</version>
+    <time>1400388606</time>
+    <user>coolo</user>
+    <comment>- Add mce decoding support for latest AMD CPUs (bnc#871881).
+- Implementation done by Borislav Petkov &lt;bp@suse.de&gt;
+   * Add patches/Start-consolidating-AMD-specific-stuff.patch
+   * Add add-defines.patch
+   * Add add-f10h-support.patch
+   * Add add-f11h-support.patch
+   * Add add-f12h-support.patch
+   * Add add-f14h-support.patch
+   * Add add-f15h-support.patch
+   * Add add-f16h-support.patch (forwarded request 234343 from trenn)</comment>
+    <requestid>234344</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>b9060cdaaa1a0e546c7d946711701af7</srcmd5>
+    <version>1.0.1</version>
+    <time>1405434348</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239615</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>7b4d524cd5e7a3c9f91afa580e2f7eca</srcmd5>
+    <version>1.0.1</version>
+    <time>1405750576</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241406</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>7b4d524cd5e7a3c9f91afa580e2f7eca</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>e4284e0c78fdc8d8980a1530e909bd4a</srcmd5>
+    <version>1.0.1</version>
+    <time>1411017124</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>248390</requestid>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>cd7e5ae536f35744edb1ad49fa1d10c5</srcmd5>
+    <version>1.0.1</version>
+    <time>1411556936</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250596</requestid>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>483cab428c33e8fe8f47a7da7c8fa953</srcmd5>
+    <version>1.0.1</version>
+    <time>1416824069</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261882</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3f63c67d4bab5f73604c0414b0d73529</srcmd5>
+    <version>1.0.8</version>
+    <time>1422216839</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282546</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ce39055cb382ac162dee0655c5a7df94</srcmd5>
+    <version>1.20</version>
+    <time>1436111857</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313136</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f72dd6b05a57e234c667bcdc7271a327</srcmd5>
+    <version>1.29</version>
+    <time>1455272474</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357397</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bc3a7b9a5c303edbe8c697a2a443346a</srcmd5>
+    <version>1.36</version>
+    <time>1462977434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394483</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bdc569a59c7be0e178fec1e8c5010615</srcmd5>
+    <version>1.46</version>
+    <time>1482784901</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446827</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fa61dae6e439630d567b2228aa5ec728</srcmd5>
+    <version>1.47</version>
+    <time>1485250167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451242</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b654133a0056c592a80ebc05b290a48d</srcmd5>
+    <version>1.48</version>
+    <time>1489241877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476786</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>7d1dbf905753359c472194249d1b628e</srcmd5>
+    <version>1.48</version>
+    <time>1491565928</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>482923</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f1f83d3b24b715d9a3f07fd946cd7938</srcmd5>
+    <version>1.53</version>
+    <time>1501227784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512296</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>fa3414faef99dad6c7171f4bf52dd2c0</srcmd5>
+    <version>1.53</version>
+    <time>1511949072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545092</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c8e7289e7e6a3137287108e0ee55cf6b</srcmd5>
+    <version>1.60</version>
+    <time>1538377600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637681</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bda943f3fd11b0d580914cb630793e79</srcmd5>
+    <version>1.62</version>
+    <time>1553699627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688262</requestid>
+  </revision>
+</revisionlist>

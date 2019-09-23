@@ -1,0 +1,28 @@
+From fc0ed79e5d700b4a730235fe88e60951717edc6e Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Fri, 26 Jul 2019 21:39:42 +0200
+Subject: [PATCH] usermod.c: Fix invalid variable name
+
+Fix invalid LASTLOG_MAX_UID variable name to correct LASTLOG_UID_MAX.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+---
+ src/usermod.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/usermod.c b/src/usermod.c
+index c3718864..0ae50e34 100644
+--- a/src/usermod.c
++++ b/src/usermod.c
+@@ -1879,7 +1879,7 @@ static void update_lastlog (void)
+ 		return;
+ 	}
+ 
+-	max_uid = (uid_t) getdef_ulong ("LASTLOG_MAX_UID", 0xFFFFFFFFUL);
++	max_uid = (uid_t) getdef_ulong ("LASTLOG_UID_MAX", 0xFFFFFFFFUL);
+ 	if (user_newid > max_uid) {
+ 		/* do not touch lastlog for large uids */
+ 		return;
+-- 
+2.22.0
+

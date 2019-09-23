@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4b69c7d609fc690db0937c035744e53</srcmd5>
+    <version>0.4.0</version>
+    <time>1440658506</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>320916</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76b3fe4f9f82777c0b1fd8d8410d4f68</srcmd5>
+    <version>0.5.0</version>
+    <time>1440871502</time>
+    <user>coolo</user>
+    <comment>- update to 0.5.0:
+  * Updated from global requirements
+  * Add tox target to find missing requirements</comment>
+    <requestid>327701</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>995786fb31e06dedf905b13c0a33faa2</srcmd5>
+    <version>0.6.0</version>
+    <time>1446208947</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Updated from global requirements</comment>
+    <requestid>337156</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2c0ae28209459a02da9127682b7cd1bb</srcmd5>
+    <version>2.2.0</version>
+    <time>1457353390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Standardize an oslo.policy credentials dictionary
+  * Revert &quot;Add common oslo.log format parameters&quot;
+  * Add roles to context
+  * Agnostic approach to construct context from_dict
+  * Add common oslo.log format parameters
+  * Improve Context docs with example syntax
+  * Define method for oslo.log context parameters
+  * Add additional unit tests
+  * Fix request_id type on Python 3: use text (Unicode)
+  * Updated from global requirements
+  * Provide a helper to load a context from environment
+  * Revert &quot;Add properties for id attributes&quot;
+  * Add properties for id attributes
+  * Trival: Remove 'MANIFEST.in'
+  * Updated from global requirements
+  * Remove python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini
+  * Remove reference to undefined attributes
+  * Fix coverage configuration and execution
+  * Add shields.io version/downloads links/badges into README.rst
+  * Change ignore-errors to ignore_errors
+  * Updated from global requirements</comment>
+    <requestid>361766</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e178d86f15f2171b80279499609ce4f3</srcmd5>
+    <version>2.2.0</version>
+    <time>1463652876</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to .spec from rpm-packaging upstream project</comment>
+    <requestid>393976</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc2e30bc992d40abcaa7aeb16d5ed9c3</srcmd5>
+    <version>2.9.0</version>
+    <time>1475242157</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425269</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1db25dc9cf3a0f052ab81ea21eb0d3f</srcmd5>
+    <version>2.12.1</version>
+    <time>1487681205</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.12.1:
+  - Move existing attributes to _id suffixed attributes
+  - Reformat the Context.__init__ arguments
+  - Remove references to Python 3.4
+  - Add Constraints support
+  - Show team and repo badges on README
+  - Update .gitreview for stable/ocata
+  - Postpone deprecation warnings to Pike
+  - Updated from global requirements
+  - Add the service token details to context
+
+- update to version 2.11.0:
+  - Update reno for stable/newton
+  - Revert &quot;Fix X-User and X-Tenant deprecated headers in from_environ&quot;
+  - Changed the home-page link
+  - Fix typos
+  - Enable release notes translation
+  - Fix X-User and X-Tenant deprecated headers in from_environ
+  - Updated from global requirements
+  - Provide a way to deprecate policy values</comment>
+    <requestid>456901</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fd40b1df8dcdb56336894b5835a4cba8</srcmd5>
+    <version>2.17.0</version>
+    <time>1503927150</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.17.0
+  - Provide unified calling interface for global_id
+  - Fix URLs according to document migration
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Cleanup document formatting
+  - rearrange the documentation to fit into the new standard layout
+  - Postpone deprecation warnings to Pike
+  - [Fix gate]Update test requirement
+  - Add global_request_id to context
+  - Update reno for stable/ocata
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Switch from oslosphinx to openstackdocstheme
+  - Optimize the link address</comment>
+    <requestid>518429</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>936c93f8dae898d0da0d3a2b88ae00ae</srcmd5>
+    <version>2.20.0</version>
+    <time>1516222608</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.20.0
+  - Remove -U from pip install
+  - Follow the new PTI for document build
+  - Update reno for stable/pike
+  - Remove use of positional decorator
+  - Remove setting of version/release from releasenotes
+  - Rename deprecated context params
+  - Update the documentation link for doc migration
+  - Revert &quot;Postpone deprecation warnings to Pike&quot;
+  - Ouput a placeholder instead of the auth_token
+  - Make from_dict extensible
+  - add bandit to pep8 job
+  - Output 'project' key in context's to_dict function
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support</comment>
+    <requestid>565790</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>28521909d3dc7acd49cae281e884f401</srcmd5>
+    <version>2.20.0</version>
+    <time>1521498943</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583337</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d36f2a123555b0ad631695958981600c</srcmd5>
+    <version>2.21.0</version>
+    <time>1536327528</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633098</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>de7b71a3a72786d39c0b50b9757c2f9e</srcmd5>
+    <version>2.22.1</version>
+    <time>1556916132</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.22.1
+  - Update mailinglist from dev to discuss
+  - fix tox python3 overrides
+  - Implement domain-scope for context objects
+  - Switch to stestr
+  - Update hacking version
+  - Always build universal wheels
+  - Update reno for stable/rocky
+  - Clean up .gitignore references to personal tools
+  - Add release notes link to README
+  - Use template for lower-constraints
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config</comment>
+    <requestid>692855</requestid>
+  </revision>
+</revisionlist>

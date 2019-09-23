@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c127ed95214d4802615dc152c33b5c2</srcmd5>
+    <version>0.008</version>
+    <time>1448553806</time>
+    <user>dimstar_suse</user>
+    <comment>needed for Pod::POM</comment>
+    <requestid>345750</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0b4bce1e2c3aeff2efd802e13a8dd39</srcmd5>
+    <version>0.009</version>
+    <time>1470773702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417260</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b8c76aedc73c78b3c60814440be04f6</srcmd5>
+    <version>0.010</version>
+    <time>1505920438</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527489</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f3fdd8883d3f9555949b4963abcb82a</srcmd5>
+    <version>0.011</version>
+    <time>1516804225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568409</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a25d2c106c36d2f94a4025f5a3679fe</srcmd5>
+    <version>0.012</version>
+    <time>1519747069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579754</requestid>
+  </revision>
+</revisionlist>

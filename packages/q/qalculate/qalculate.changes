@@ -1,0 +1,303 @@
+-------------------------------------------------------------------
+Sat Jul 27 07:47:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.3.0
+  * Support for number bases > 32, as well as negative and non-integer number
+    bases
+  * Support for all number bases, including non-numerical, and specification of
+    digits in base() function
+  * dBm and dBW units
+  * Support both micro sign and small mu as symbol for micro prefix
+  * New programming keypad icon
+  * Import definitions action in GUI
+  * Fix parsing of "0x80 mod 3" and similar
+  * Reduce length of expressions in warnings and errors (primarily when using
+    high precision)
+  * Improved handling of interval arithmetic for cubic equations
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
+Fri May 31 09:50:44 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix file conflicts when installing qalculate-data with old qalculate
+
+-------------------------------------------------------------------
+Wed May 29 20:17:28 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.2.0
+  * Updated physical constants (CODATA 2018)
+  * Programming keypad (GUI) and programming mode (CLI)
+  * Bookmarks and protect (from disappearing of the end of the list) option for
+    history (GUI)
+  * New and updated keypad buttons (GUI)
+  * Keypad in number bases dialog (GUI)
+  * bitrot() function for bit rotation
+  * Bitwise XOR, mod and rem operators, % as modulo, // and \ operators for
+    integer division
+  * Change order of operations for logical and bitwise operators to better
+    match C operator precedence
+  * Improved support for functions, variables and units with input base > 10
+  * Unicode support in char() and code()
+  * Simplification and factorization improvements
+  * RPN syntax improvements
+  * Recognize "factor" and "expand" commands at the beginning expressions
+  * For vector + scalar, add scalar to all components
+  * uptime variable
+  * Fix random segfault on automatic unit category selection (GUI)
+  * Fix display of number in sexagesimal base or time format (GUI)
+  * Fix abs(x)=a for complex x
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
+Fri Apr 26 09:49:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.0
+
+  * Calculation of Si(), Ci(), Shi(), and Chi().
+  * Convert trigonometric arguments to selected angle unit, and hide angle
+    unit in result.
+  * Hide optional arguments, with default value, in output.
+  * Add optional variable value argument to diff(), for calculation of
+    derivative for a specific x value.
+  * Improved sinc() support.
+  * Improved output with show ending zeroes activated.
+  * Fix ignore system language on Windows.
+  * Fix atomic unit of velocity.
+  * Fix and improve keypad menus, and add dynamic convert to menu to result
+    popup menu (GUI).
+  * Fix compilation errors because of erroneous limits.h inclusion.
+  * Fix "factorized result is wrong" error.
+  * Minor bug fixes and feature improvements.
+
+-------------------------------------------------------------------
+Tue Mar 26 06:45:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.0.0
+  * Implement 2019 redefinition of SI base units
+  * Uncertainty propagation improvements/fixes
+  * Separate use of interval arithmetic
+  * Improved polynomial gcd
+  * Added option to ignore the system language
+  * Switch to exact decimal fractions (fixed) from decimal fractions
+    mode (and vice versa) when exact mode is toggled.
+  * Restore lost signal handlers in the conversion GUI
+
+-------------------------------------------------------------------
+Tue Oct 30 10:15:13 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.8.0
+  * Equation solved and improved simplification for expressions with
+    trigonometric functions.
+  * General improvements to simplification and equation solving.
+  * Improved factorization.
+  * New magnitude(), entrywise() and hadamard() functions, and new
+    n variable (unknown integer).
+  * Parse |x| and ||x|| as abs(x) and magnitude(x).
+  * Use kilo as prefix for gram if automatic prefix is off.
+
+-------------------------------------------------------------------
+Thu Sep 13 17:41:50 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Re-ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Wed Sep 12 22:21:07 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2.6.2:
+  * Polar and exponential complex forms (changed with mode or with "to" operator/command)
+  * Fix f(x)+a=a (e.g. x+1=1, which returned false/zero).
+  * Fix ln(-i).
+  * Fix automatic unit conversion in RPN mode
+  * Allow conversion of the current result using standalone "to" expression (e.g. type "to m" to convert current result to meter) in GUI.
+  * Option to disable automatic conversion to local currency (when optimal conversion activated)
+  * Minor bug fixes.
+
+-------------------------------------------------------------------
+Fri Sep  7 18:34:28 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Split data files from application package, fix boo#1106954
+
+-------------------------------------------------------------------
+Fri Jul 20 06:32:50 UTC 2018 - christophe@krop.fr
+
+- Update to 2.6.1. Changes since 2.5.0:
+  * Support for searching matching functions
+  * Lunar phase functions
+  * Interpret 5m 7cm as 5m+7cm, and 3h 52min 20s as 3h+52min+20s, and similar
+  * Calendar conversion
+  * Fix display of addition with negative non-integer number
+  Check https://qalculate.github.io/news.html for the complete changelog
+
+-------------------------------------------------------------------
+Sat May 26 20:19:26 UTC 2018 - christophe@krop.fr
+
+- Update to 2.5.0:
+  * Improved interval arithmetic with dependent values.
+  * Experimental limit() function.
+  * Two's complement representation for binary numbers.
+  * Improved currency titles.
+  * bitcmp() function.
+  * Allow all rational numbers for second argument of root().
+  * Fix segfault when prefix is set in some cases.
+  * Fix a^infinity when a > 1.
+  * Minor bug fixes.
+- Drop 0001-Fix-leaking-of-FDs-created-by-pipe.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue May  8 12:26:36 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix FD leak (boo#1092329):
+  * 0001-Fix-leaking-of-FDs-created-by-pipe.patch
+
+-------------------------------------------------------------------
+Sat Mar 10 16:53:35 UTC 2018 - fabian@ritter-vogt.de
+
+- Use %license
+- Clean .spec file
+- Update to 2.2.1:
+  * Fix electric constant, magnetic constant, and characteristic impedance of vacuum.
+  * Fix handling of Unicode symbols in expressions with quotation marks.
+  * Fix segfault in solve() function.
+  * sinc() function.
+  * Add vacuum_permeability and vacuum_permittivity as alternative names for magnetic and electric constants.
+  * Add completion only names to enable completion of Greek letters from the Roman letter names.
+  * Suppress gnuplot output in terminal.
+
+-------------------------------------------------------------------
+Mon Dec 18 22:15:37 UTC 2017 - christophe@krop.fr
+
+- Update to 2.2.0
+  * Bitcoin support
+  * Fix wrong partial calculation of square root in exact mode in some cases
+  * Equation solving enhancements
+  Check http://qalculate.github.io/news.html for the complete changelog
+
+-------------------------------------------------------------------
+Tue Aug 29 06:52:20 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 2.0.0:
+  * CLN has been replaced with GMP and MPFR for low-level numerical calculations.
+  * The Glib dependancy has been removed. It has partly been replaced with libiconv and icu. Libqalculate can be compiled without them and libiconv is only used the CLI application.
+  * GVFS and wget have been replaced by libcurl for exchange rates retrieval.
+  * Date functions have been rewritten and now support much larger numbers.
+  * Trigonometric functions with angle unit other than radians have been fixed.
+  * Functions with more than one argument can now also be applied to the RPN stack.
+  * New functions: airy(), arg(), besselj(), bessely(), conj(), digamma(), erf(), erfc()
+  * Binary installer for Microsoft Windows.
+  * Increased efficiency and many minor enhancements and bug fixes.
+
+-------------------------------------------------------------------
+Fri Jun  2 16:26:34 UTC 2017 - wbauer@tmo.at
+
+- Update to 0.9.12:
+  * Fixes to unit parsing in adaptive parsing mode, build fixes and other minor bug fixes
+- Update to 0.9.11:
+  * Mixed units conversion (e.g. "15 in = 1 ft + 3 in" and "3,2 h = 3 h + 12 min")
+  * Fixes to unit conversion (e.g. "1/(1 ns) to GHz")
+  * Fix slow calculation of exponentiations with big numerators in exponents (e.g. "2^0.333333333")
+  * Critical fixes for RPN syntax
+  * Fix degree sign
+  * Fix transformation of last arguments to vector, when only one last argument (fixes function("1+\x"; 1))
+  * Plot functions (makes possible plotting, using gnuplot, in qalc)
+  * "Swap, "pop", "copy", "rotate" and "move" commands for RPN stack manipulation in qalc
+  * Enable both (or one of) RPN stack and syntax with the "rpn" command in qalc
+  * New commands for creation of simple functions and variables (without calculation of the expression) in qalc
+  * Various other minor enhancements and bug fixes...
+
+-------------------------------------------------------------------
+Thu Jan 19 10:43:13 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+- Remove unused .la files.
+
+-------------------------------------------------------------------
+Thu Jan 12 20:36:48 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 0.9.10:
+  * Unit conversion fixes (e.g. "1/s to ms" and "1/ns to GHz")
+  * Fixed parsing of degrees sign (used in defult symbol for temperature units)
+- Update to 0.9.9:
+  * libqalculate will no longer cause segmentation faults when using a locale unsupported by the users system
+  * Parsing of "today" fixed and "tomorrow" and "yesterday" added
+  * Qalculate! now compiles, without errors and warning, using clang
+  * New commands/options in qalc which list available variables, functions and units
+  * New command in qalcfor deletion of variables
+- Update to 0.9.8:
+  * Lots of bug fixes and minor improvements
+  * Three different parsing modes can be chosen from (providing mainly different handling of implicit multiplication). The default 'adaptive' mode has been enhanced.
+  * By default prefixes will not be added to for example imperial units.
+  * Changed handling of degrees Celsius and Fahrenheit. Conversion will take place already during parsing.
+  * When converting to unit without prefix, no prefix will be added to the result unless the unit expression is prepended with '?' ('0' works in the opposite direction).
+  * Option to ignore commas in numbers (for use as thousands separator).
+  * Possibility to abort slow number printing without using crash prone thread cancellation (use Calculator::startPrintControl() and related functions).
+  * New function: fibonacci (Qalculate! can now tell you that the millionth fibonacci number is approximately 1,953282129 * 10^208987, although for obvious reasons the exact number cannot be displayed).
+  * New units: Hartree, Rydberg, Dalton (same as u)
+  * Currencies have been updated to reflect the available data from ECB.
+  * Physical constant have been updated with the CODATA values from 2014.
+  * Use ~/.local and ~/.conf to store configuration and definitions
+  * 'to' can now not only be used for conversion to unit expressions. "to bin", "to oct", "to hex" and "to bases" changes number base displayed, "to factors" factorizes, "to fraction" displays as fraction, and "to base" and "to optimal" auto-converts units. (CLI)
+
+- Now using https://github.com/Qalculate/libqalculate as source
+- Remove gcc-6-compile.patch, fixed upstream
+
+-------------------------------------------------------------------
+Wed May 25 19:38:18 UTC 2016 - jslaby@suse.com
+
+- add gcc-6-compile.patch: Fix compilation with gcc 6
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Wed Dec  7 14:18:26 UTC 2011 - coolo@suse.com
+
+- this is GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Mar 14 09:16:58 UTC 2011 - coolo@novell.com
+
+- the usage of find_lang is mandatory
+
+-------------------------------------------------------------------
+Sun Apr 25 14:27:24 UTC 2010 - masterpatricko@gmail.com
+
+- Update to 0.9.7
+    * General build updates and bug fixes, including the ability to build against cln >= 1.2
+    * Bug fix for segfaults with some uses of integrate()
+    * New Simplified Chinese translation
+    * Fix crash with unsupported operator in RPN syntax
+    * Fix reduction of vector size
+
+-------------------------------------------------------------------
+Sat Sep 6 00:00:00 BST 2008 - masterpatricko@gmail.com
+- Many small fixes to spec file, with addition of patch to build on openSUSE 11+
+
+-------------------------------------------------------------------
+Sun Jun 17 00:00:00 EST 2007 - bwalle@suse.de
+- update to 0.9.6: bug fixes
+
+-------------------------------------------------------------------
+Mon Dec 18 00:00:00 EST 2006 - bernhard@suse.de
+- new upstream release
+
+-------------------------------------------------------------------
+Thu Jun 15 00:00:00 EST 2006 - bernhard@links2linux.de
+- new upstream release
+
+-------------------------------------------------------------------
+Sun May 14 00:00:00 EST 2006 - bernhard@links2linux.de
+- added BuildRequires gmp-devel
+
+-------------------------------------------------------------------
+Sun Mar 19 00:00:00 EST 2006 - bernhard@links2linux.de
+- new upsream version 0.9.3
+
+-------------------------------------------------------------------
+Tue Jan 10 00:00:00 EST 2006 - bernhard@links2linux.de
+- new upstream version 0.9.2
+
+-------------------------------------------------------------------
+Mon Nov 4 00:00:00 EST 2005 - bernhard@links2linux.de
+- initial package for PackMan

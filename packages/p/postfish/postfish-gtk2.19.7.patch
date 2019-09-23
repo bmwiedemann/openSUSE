@@ -1,0 +1,83 @@
+Index: postfish/multibar.c
+===================================================================
+--- postfish.orig/multibar.c
++++ postfish/multibar.c
+@@ -577,10 +577,10 @@ static void draw_and_expose(GtkWidget *w
+   Multibar *m=MULTIBAR(widget);
+   if(!GDK_IS_DRAWABLE(m->backing))return;
+   draw(widget,m->bars);
+-  if(!GTK_WIDGET_DRAWABLE(widget))return;
++  if(!gtk_widget_is_drawable(widget))return;
+   if(!GDK_IS_DRAWABLE(widget->window))return;
+   gdk_draw_drawable(widget->window,
+-		    widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
++		    widget->style->fg_gc[gtk_widget_get_state (widget)],
+ 		    m->backing,
+ 		    0, 0,
+ 		    0, 0,
+@@ -591,7 +591,7 @@ static void draw_and_expose(GtkWidget *w
+ static gboolean expose( GtkWidget *widget, GdkEventExpose *event ){
+   Multibar *m=MULTIBAR(widget);
+   gdk_draw_drawable(widget->window,
+-		    widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
++		    widget->style->fg_gc[gtk_widget_get_state (widget)],
+ 		    m->backing,
+ 		    event->area.x, event->area.y,
+ 		    event->area.x, event->area.y,
+Index: postfish/readout.c
+===================================================================
+--- postfish.orig/readout.c
++++ postfish/readout.c
+@@ -65,10 +65,10 @@ static void draw_and_expose(GtkWidget *w
+   Readout *r=READOUT(widget);
+   if(!GDK_IS_DRAWABLE(r->backing))return;
+   draw(widget);
+-  if(!GTK_WIDGET_DRAWABLE(widget))return;
++  if(!gtk_widget_is_drawable(widget))return;
+   if(!GDK_IS_DRAWABLE(widget->window))return;
+   gdk_draw_drawable(widget->window,
+-                    widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
++                    widget->style->fg_gc[gtk_widget_get_state (widget)],
+                     r->backing,
+                     0, 0,
+                     0, 0,
+@@ -79,7 +79,7 @@ static void draw_and_expose(GtkWidget *w
+ static gboolean expose( GtkWidget *widget, GdkEventExpose *event ){
+   Readout *r=READOUT(widget);
+   gdk_draw_drawable(widget->window,
+-                    widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
++                    widget->style->fg_gc[gtk_widget_get_state (widget)],
+                     r->backing,
+                     event->area.x, event->area.y,
+                     event->area.x, event->area.y,
+Index: postfish/windowbutton.c
+===================================================================
+--- postfish.orig/windowbutton.c
++++ postfish/windowbutton.c
+@@ -116,7 +116,7 @@ static void windowbutton_draw_indicator
+   gint focus_pad;
+   gboolean interior_focus;
+   
+-  if (GTK_WIDGET_DRAWABLE (check_button)){
++  if (gtk_widget_is_drawable (check_button)){
+     
+     widget = GTK_WIDGET (check_button);
+     button = GTK_BUTTON (check_button);
+@@ -135,7 +135,7 @@ static void windowbutton_draw_indicator
+       (widget->allocation.height - indicator_size) / 2;
+     
+     child = GTK_BIN (check_button)->child;
+-    if (!interior_focus || !(child && GTK_WIDGET_VISIBLE (child)))
++    if (!interior_focus || !(child && gtk_widget_get_visible (child)))
+       x += focus_width + focus_pad;      
+     
+     if (toggle_button->inconsistent)
+@@ -149,7 +149,7 @@ static void windowbutton_draw_indicator
+       state_type = GTK_STATE_ACTIVE;
+     else if (button->in_button)
+       state_type = GTK_STATE_PRELIGHT;
+-    else if (!GTK_WIDGET_IS_SENSITIVE (widget)){
++    else if (!gtk_widget_is_sensitive (widget)){
+       state_type = GTK_STATE_INSENSITIVE;
+       shadow_type = GTK_SHADOW_ETCHED_IN;
+     }else

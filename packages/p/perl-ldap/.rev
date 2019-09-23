@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>122561395622546aec7df89db9978ce9</srcmd5>
+    <version>0.33</version>
+    <time>1168903944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78470e6d49f0d505db9238c338176688</srcmd5>
+    <version>0.34</version>
+    <time>1205170428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="40">
+    <srcmd5>98508eb37191d0431d87a18296d21514</srcmd5>
+    <version>0.34</version>
+    <time>1219362890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>51aa4be00c959776668f320904e5fd59</srcmd5>
+    <version>0.37</version>
+    <time>1221235885</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>073cd9b01accd6a40edc3b6cd2fbdc6f</srcmd5>
+    <version>0.39</version>
+    <time>1235429460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1880c7c8773b0d1aa2f1895a8e85215a</srcmd5>
+    <version>0.39</version>
+    <time>1248821279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1880c7c8773b0d1aa2f1895a8e85215a</srcmd5>
+    <version>0.39</version>
+    <time>1248821279</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>43d5be94a9e7af8a4e96e592890310fd</srcmd5>
+    <version>0.39</version>
+    <time>1263229646</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-ldap based on submit request 28946 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>cdb23cf4b0ded45d2f619680ff5f7c43</srcmd5>
+    <version>0.39</version>
+    <time>1268925679</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7da25a300bf932a979c1218d8e72a3c1</srcmd5>
+    <version>0.40</version>
+    <time>1270586429</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-ldap based on submit request 37007 from user coolo
+</comment>
+    <requestid>37007</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3e7228d1986396618e7cfda4585e4b43</srcmd5>
+    <version>0.40</version>
+    <time>1271723094</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-ldap based on submit request 38296 from user dirkmueller
+</comment>
+    <requestid>38296</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3e7228d1986396618e7cfda4585e4b43</srcmd5>
+    <version>0.40</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3e7228d1986396618e7cfda4585e4b43</srcmd5>
+    <version>0.40</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d9d94a855c0840528a26a4785df42edb</srcmd5>
+    <version>0.40</version>
+    <time>1291584581</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54574 from user coolo
+</comment>
+    <requestid>54574</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>37f3bf2a84d622fad970e461f18fac60</srcmd5>
+    <version>0.40</version>
+    <time>1291584589</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54574
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>83f0ceeaca547737f99bd23a5a1069cb</srcmd5>
+    <version>0.4001</version>
+    <time>1294828820</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57792 from user vitezslav_cizek
+</comment>
+    <requestid>57792</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>21445236b4421148a7712fcfe43e5a1f</srcmd5>
+    <version>0.4001</version>
+    <time>1294828833</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57792
+</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>21445236b4421148a7712fcfe43e5a1f</srcmd5>
+    <version>0.4001</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>da3cee6ba7bd6cbfeaa643419bbac367</srcmd5>
+    <version>0.43</version>
+    <time>1316005370</time>
+    <user>saschpe</user>
+    <comment>- update to 0.43
+  * Fix copy &amp; paste errors in Net::LDAP::Message
+0.42 -- Sat Sep 3 07:46:06 CDT 2011
+  * Check whether LDAP socket object has a peerhost() method defined before calling it.
+  This fixes SASL authentication over UNIX domain (ldapi://) sockets. [Chris Mikkelson]
+0.41 -- Sat Sep 3 07:37:31 CDT 2011
+  * use of non-localised $_ in Net::LDAP::Constant causes prolems in lemonldap-ng [Damyan Ivanov]
+  * Added cn,o,ou to the default set of case-insensitive attributes [Kartik Subbarao]
+  * Entry.pod: fix typos [Peter Marschall]
+  * extend Net::LDAP::Entry-&gt;update() to take LDIF objects [Peter Marschall]
+  * Specify that we want to use the 'ldap' scheme to verify certificates. [Kevan Carstensen]
+- licence correction</comment>
+    <requestid>82069</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>da3cee6ba7bd6cbfeaa643419bbac367</srcmd5>
+    <version>0.43</version>
+    <time>1319182328</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>62b6e1011cc03eb81638f665194b832c</srcmd5>
+    <version>0.43</version>
+    <time>1323193410</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2373d89522076ad2810e9a53da6e9b15</srcmd5>
+    <version>0.44</version>
+    <time>1329221365</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103912</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>2373d89522076ad2810e9a53da6e9b15</srcmd5>
+    <version>0.44</version>
+    <time>1340183960</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>2373d89522076ad2810e9a53da6e9b15</srcmd5>
+    <version>0.44</version>
+    <time>1359109863</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>7f40362b39e88680b10333aa5cd3f2a4</srcmd5>
+    <version>0.44</version>
+    <time>1378748826</time>
+    <user>coolo</user>
+    <comment>- switch to new macros to fix build</comment>
+    <requestid>197989</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>7f40362b39e88680b10333aa5cd3f2a4</srcmd5>
+    <version>0.44</version>
+    <time>1379663936</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="10">
+    <srcmd5>7f40362b39e88680b10333aa5cd3f2a4</srcmd5>
+    <version>0.44</version>
+    <time>1409302589</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2bc02a706907ea1c63299ee5edd24fb0</srcmd5>
+    <version>0.64</version>
+    <time>1424121172</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286202</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fed764dd1aa0ff05842987e1d245ad95</srcmd5>
+    <version>0.65</version>
+    <time>1506955540</time>
+    <user>dimstar_suse</user>
+    <comment>- add perl526.patch to build with perl 5.26
+- remove ssl subpackage without files
+
+- update to 0.65
+  Enhancements:
+  * t/74matchedvalues.t: more tests
+  * {ASN,Extension}.pm: update ExtendedResponse to RFC 4511
+  * Constant.pm: add LDAP_NOTICE_OF_DISCONNECTION
+  * Control/DontUseCopy.pm: new
+  * Control/ProxyAuth.pm: make sure criticality does not get changed
+  * Control/Relax.pm: make sure value &amp; criticality do not get changed
+  * Control/ManageDsaIT.pm: make sure value never gets set
+  
+  Bug Fixes
+  * LDAP.pm: do not set default sslversion for start_tls() &amp; LDAPS
+    Instead of second-guessing a default sslversion for start_tls() and LDAPS,
+    rely on the - known to be sane - default value used by IO::Socket::SSL.
+  * RT#100151: LDAP.pm: localize $SIG{__DIE__} in IPv6 support check
+    Thanks to Troy Loveday &lt;troyl@ti.com&gt; for the detailed bug report and patch.
+  * FAQ.pod: fix error in search() example
+  * RFC.pod: typo fix</comment>
+    <requestid>529888</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>659971e8a04e0760a00fdda6300db92b</srcmd5>
+    <version>0.66</version>
+    <time>1561049636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710407</requestid>
+  </revision>
+</revisionlist>

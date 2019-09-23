@@ -1,0 +1,116 @@
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_herd.py django-redis-4.10.0/tests/test_sqlite_herd.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_herd.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_herd.py	2019-02-20 18:07:26.878110390 +0700
+@@ -4,7 +4,7 @@
+     'default': {
+         'BACKEND': 'django_redis.cache.RedisCache',
+         'LOCATION': [
+-            '127.0.0.1:6379:5',
++            'redis://127.0.0.1:6379?db=5',
+         ],
+         'OPTIONS': {
+             'CLIENT_CLASS': 'django_redis.client.HerdClient',
+@@ -19,7 +19,7 @@
+     },
+     'sample': {
+         'BACKEND': 'django_redis.cache.RedisCache',
+-        'LOCATION': '127.0.0.1:6379:1,127.0.0.1:6379:1',
++        'LOCATION': 'redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1',
+         'OPTIONS': {
+             'CLIENT_CLASS': 'django_redis.client.HerdClient',
+         }
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_json.py django-redis-4.10.0/tests/test_sqlite_json.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_json.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_json.py	2019-02-20 18:04:29.728741763 +0700
+@@ -22,7 +22,7 @@
+     },
+     "sample": {
+         "BACKEND": "django_redis.cache.RedisCache",
+-        "LOCATION": "127.0.0.1:6379:1,127.0.0.1:6379:1",
++        "LOCATION": "redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "SERIALIZER": "django_redis.serializers.json.JSONSerializer",
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_lz4.py django-redis-4.10.0/tests/test_sqlite_lz4.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_lz4.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_lz4.py	2019-02-20 18:04:19.408662209 +0700
+@@ -22,7 +22,7 @@
+     },
+     "sample": {
+         "BACKEND": "django_redis.cache.RedisCache",
+-        "LOCATION": "127.0.0.1:6379:1,127.0.0.1:6379:1",
++        "LOCATION": "127.0.0.1:6379?db=1,127.0.0.1:6379?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "COMPRESSOR": "django_redis.compressors.lz4.Lz4Compressor",
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_msgpack.py django-redis-4.10.0/tests/test_sqlite_msgpack.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_msgpack.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_msgpack.py	2019-02-20 18:04:11.648602403 +0700
+@@ -22,7 +22,7 @@
+     },
+     "sample": {
+         "BACKEND": "django_redis.cache.RedisCache",
+-        "LOCATION": "127.0.0.1:6379:1,127.0.0.1:6379:1",
++        "LOCATION": "redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "SERIALIZER": "django_redis.serializers.msgpack.MSGPackSerializer",
+diff -u django-redis-4.10.0-orig/tests/test_sqlite.py django-redis-4.10.0/tests/test_sqlite.py
+--- django-redis-4.10.0-orig/tests/test_sqlite.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite.py	2019-02-20 18:33:38.606001141 +0700
+@@ -20,7 +20,7 @@
+     },
+     "sample": {
+         "BACKEND": "django_redis.cache.RedisCache",
+-        "LOCATION": "127.0.0.1:6379:1,127.0.0.1:6379:1",
++        "LOCATION": "redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+         }
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_sharding.py django-redis-4.10.0/tests/test_sqlite_sharding.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_sharding.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_sharding.py	2019-02-20 18:33:24.753899936 +0700
+@@ -4,8 +4,8 @@
+     'default': {
+         'BACKEND': 'django_redis.cache.RedisCache',
+         'LOCATION': [
+-            '127.0.0.1:6379:1',
+-            '127.0.0.1:6379:2',
++            'redis://127.0.0.1:6379?db=1',
++            'redis://127.0.0.1:6379?db=2',
+         ],
+         'OPTIONS': {
+             'CLIENT_CLASS': 'django_redis.client.ShardClient',
+@@ -23,7 +23,7 @@
+     },
+     'sample': {
+         'BACKEND': 'django_redis.cache.RedisCache',
+-        'LOCATION': '127.0.0.1:6379:1,127.0.0.1:6379:1',
++        'LOCATION': 'redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1',
+         'OPTIONS': {
+             'CLIENT_CLASS': 'django_redis.client.ShardClient',
+         }
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_usock.py django-redis-4.10.0/tests/test_sqlite_usock.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_usock.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_usock.py	2019-02-20 18:03:45.416400309 +0700
+@@ -20,7 +20,7 @@
+     },
+     'sample': {
+         'BACKEND': 'redis_cache.cache.RedisCache',
+-        'LOCATION': '127.0.0.1:6379:1,127.0.0.1:6379:1',
++        'LOCATION': 'redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1',
+         'OPTIONS': {
+             'CLIENT_CLASS': 'redis_cache.client.DefaultClient',
+         }
+diff -u django-redis-4.10.0-orig/tests/test_sqlite_zlib.py django-redis-4.10.0/tests/test_sqlite_zlib.py
+--- django-redis-4.10.0-orig/tests/test_sqlite_zlib.py	2018-11-19 15:48:56.000000000 +0700
++++ django-redis-4.10.0/tests/test_sqlite_zlib.py	2019-02-20 18:03:54.064466919 +0700
+@@ -22,7 +22,7 @@
+     },
+     "sample": {
+         "BACKEND": "django_redis.cache.RedisCache",
+-        "LOCATION": "127.0.0.1:6379:1,127.0.0.1:6379:1",
++        "LOCATION": "redis://127.0.0.1:6379?db=1,redis://127.0.0.1:6379?db=1",
+         "OPTIONS": {
+             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",

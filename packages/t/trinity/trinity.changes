@@ -1,0 +1,987 @@
+-------------------------------------------------------------------
+Wed Aug 28 07:05:26 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20190801:
+  * Remove DEVEL crud
+  * update TCP setsockopts
+  * Add SO_DETACH_REUSEPORT_BPF
+  * update x86-32 syscalls
+  * add new 5.3 syscalls
+
+-------------------------------------------------------------------
+Tue Jul 16 12:03:00 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20190701:
+  * format string fixes
+  * don't free the default dump filename ptr
+  * remove pointless or
+  * Fix reversed file closures in ftrace code.
+  * Fix cut-n-paste errors in smc socket creation
+  * Map PF_XDP to string
+  * more signed->unsigned
+  * silence the perf dumper
+  * socket args are unsigned
+  * Don't do 10 iterations of sockets we can't generate
+  * no logging by default
+  * Bump version string to something that makes more sense
+  * Fix compile failure on centos7
+  * update x86-32 syscalls
+  * update prctl
+  * update setsockopts
+  * basic fspick support
+  * basic fsmount support
+  * basic fsconfig support
+  * basic fsopen support
+  * basic move_mount support
+  * basic open_tree support
+  * basic io_uring support
+  * Add pidfd_send_signal
+  * commit the additional PF_XDP bits
+  * Add PF_XDP support
+
+-------------------------------------------------------------------
+Wed Jun 26 14:20:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20190614:
+  * memfd build fixes for modern glibc
+  * cppcheck fixes
+  * strncpy -> memcpy
+
+-------------------------------------------------------------------
+Tue Mar 12 07:34:11 UTC 2019 - jslaby@suse.com
+
+- Update to version 1.9+git.20190124:
+  * Begin 1.10
+  * 1.9 release
+  * Compile fix missing bits of commit that added the new syscalls.
+  * proto-rds: include libc network headers first
+  * Silence spew from fds/bpf.c
+  * add skeletons for io_pgetevents & rseq
+
+-------------------------------------------------------------------
+Thu Sep 27 10:54:25 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20180921:
+  * Fixed trinity compile issue as on gcc gcc (Ubuntu 8.2.0-6ubuntu1) 8.2.0 it failed as -Werror=format-overflow= while assigning a array variable as size over flow
+
+-------------------------------------------------------------------
+Mon Aug 27 09:12:38 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.9+git.20180827:
+  * Check if VIDIOC_RESERVED is defined.
+- Do not build with -Werror (this Workarounds various build
+  failures).
+
+-------------------------------------------------------------------
+Mon Jun 18 08:07:12 UTC 2018 - jslaby@suse.com
+
+- workaround build with gcc8
+
+-------------------------------------------------------------------
+Tue Jun 12 08:49:35 UTC 2018 - pdostal@suse.com
+
+- Update to version 1.9+git.20180608:
+  * configure: fix build with kernel headers v4.17+
+  * trinity: check pidstatfile before fclose
+
+-------------------------------------------------------------------
+Wed May 30 13:44:02 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.9+git.20180413:
+  * parisc-specific updates
+
+-------------------------------------------------------------------
+Tue Apr 10 12:29:57 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.9+git.20180402:
+  * Fix pthread undefined references
+  * short-circuit log handle discovery if logging disabled
+  * mlock: move MLOCK_ONFAULT to compat.h
+  * memfd: fix build with glibc 2.27
+- Drop no longer needed patches:
+  * memfd-do-not-redefine-memfd_create.patch
+  * mlock-move-MLOCK_ONFAULT-to-compat.h.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar 10 07:18:00 UTC 2018 - jslaby@suse.com
+
+- Update to version 1.9+git.20180228:
+  * suppress packed warning
+  * add sgxv2
+  * add ioctl pattern for sgx driver
+  * trinity: Add support for s390_sthyi svc
+  * trinity: Add support for s390_guarded_storage svc
+  * trinity: Add support for s390_pci_mmio_read and write
+  * trinity: Add support for runtime_instr svc
+- add memfd-do-not-redefine-memfd_create.patch
+- add mlock-move-MLOCK_ONFAULT-to-compat.h.patch
+
+-------------------------------------------------------------------
+Thu Feb  8 12:27:26 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.9+git.20180206:
+  * trinity: Add support for readdir svc
+  * trinity: Add support for copy_file_range svc
+  * trinity: Add support for mlock2 svc
+  * trinity: Add support for statx svc
+  * trinity: Add support for preadv2/pwritev2 svcs
+  * trinity: Update and comment on s390 system call table
+  * trinity: Fix compile error on linux 4.15 kernel
+
+-------------------------------------------------------------------
+Wed Jan 10 10:12:33 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.9+git.20171219:
+  * document why we take that rec->lock in the extrafork path
+  * compat: handle removed autofs macros
+  * fd logging -> object logging
+  * Begin 1.9
+- Drop not needed patch:
+  * compat-handle-removed-autofs-macros.patch
+
+-------------------------------------------------------------------
+Tue Nov 28 09:14:12 UTC 2017 - jslaby@suse.com
+
+- add compat-handle-removed-autofs-macros.patch to fix factory
+  build failure
+
+-------------------------------------------------------------------
+Thu Nov 09 10:07:14 UTC 2017 - lcavajani@suse.com
+
+- Update to version 1.8+git.20171103:
+  * add SO_ZEROCOPY
+  * add statx for i386
+  * add MSG_ZEROCOPY
+  * add new madvise flags
+  * update hashes
+  * perf_event_open: update features to 4.14-rc6
+  * TODO: some extra cmdline args
+  * 1.8 release
+
+-------------------------------------------------------------------
+Thu Oct 19 06:35:55 UTC 2017 - jslaby@suse.com
+
+- Update to version 1.7+git.20171006:
+  * ignore possible error codes like ERESTARTSYS
+  * Fix up null ptr deref when no -l arg.
+
+-------------------------------------------------------------------
+Thu Sep 21 07:28:54 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170918:
+  * output a packet count for debugging
+  * net/proto-rds.c: rds_setsockopt() stub not needed
+  * proto-rds: fix missing includes
+  * syscalls-mips: split header
+  * mips[o32]: add missing syscalls
+  * mips: add n32 and 64 ABIs
+  * reinstate the log-to-file code for now.
+  * fix the case where -l is passed a directory.
+  * remove duplicate LOGGING_DISABLED checks
+  * make output() aware that LOGGING_UDP is a thing
+  * remove logfiles_opened
+  * update some documentation regarding logging
+  * update the TODO some.
+  * add a script I use to monitor when the kernel interfaces change
+  * add hashcheck use to TODO
+
+-------------------------------------------------------------------
+Tue Aug 29 11:15:31 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170825:
+  * add RENAME_WHITEOUT
+  * econet: make optional
+  * ax25: make optional
+  * change include <sys/termios.h> -> <termios.h>
+  * ipx: make optional
+  * replace __WORDSIZE with WORD_BIT
+  * types.h: change __uint32_t -> uint32_t
+  * syscalls/select: ensure __NFDBITS is defined
+  * fix includes
+  * pathnames: add missing nftw defines
+  * Fix version.h generation
+  * syscall: ensure a child is not killed with a lock held
+  * Add SIGILL as a potential child exit signal
+
+-------------------------------------------------------------------
+Mon Aug 14 13:34:40 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170813:
+  * dump_pid_stack: fix uninitialised variable
+  * beginnings of TCP_ULP support.
+  * add tls header
+  * only Werror on gcc7+
+
+-------------------------------------------------------------------
+Mon Jul 24 13:18:23 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170712:
+  * remove old debug leftover
+  * remove the syscall-in-subchild code.
+  * make the new seed be sequential (sort of)
+  * move the 'are we done' check to the generic child code.
+  * Include sys/io.h for UIO_MAXIOV symbol.
+  * ioctls/vfs.c: add more ioctls from linux/fs.h
+  * ioctls/vfs.c: FS_IOC_GETFSMAP
+  * get_syscall_entry: remove SYSCALL_OFFSET
+  * add new TCP setsockopts
+  * update setsockopt options
+  * special case tls for TCP_ULP
+  * update netlink protocols
+
+-------------------------------------------------------------------
+Fri Jun 16 09:17:12 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170612:
+  * mark the sync syscalls as expensive
+  * reduce the likelyhood that we call expensive syscalls.
+
+-------------------------------------------------------------------
+Sun May 28 11:43:25 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 1.7+git.20170525:
+  * add incoming packets to the correct place in the list.
+  * add the last op_nr to the childexited message
+  * add a flag to mark when we're expecting a spawn message.
+  * only process CHILD_EXITED messages if the opnr is current
+  * maintain a count of packets processed each scan of the child list.
+  * childhdr is already set at this point.
+  * use a single thread to process all child packets
+  * optimize packet rx list walk
+  * drop duplicate packets instead of adding them to the list.
+  * fix up cppcheck signedness warnings
+  * replace state machine with simpler drain logic
+
+-------------------------------------------------------------------
+Thu May 18 11:59:33 UTC 2017 - vsistek@suse.com
+
+- Update to version 1.7+git.20170512:
+  * create a thread per child queue
+  * change decoders to return strings
+  * mutex needs to protect list walks, not just removal.
+  * add a server/ copy of zmalloc
+  * support user CFLAGS in Makefiles
+  * fix potential use-before-init
+  * move some udp related server functions to their own file
+  * output decoded packets to logfiles.
+  * remove the 'stash' copy of the syscall rec
+  * print where handshakes came from
+  * tweak socket buffer sizes.
+  * timestamp syscall operations.
+  * timestamp all child messages
+  * only print setsockopt success if it actually succeeded
+  * server side packet ordering.
+  * reset the expected sequence number when a child is respawned
+  * after iterating the child list once, sleep.
+  * no implied ordering between packets on spawn/exit/signal
+  * detect pid changes in child messages
+  * scope reduction
+  * misc cleanup
+  * more cppcheck cleanups
+  * dump errno if write() to logfile fails
+  * maintain a packets pending count
+  * copy incoming packet timestamp into the packet header
+  * log the last operation number a child did when we get a signal
+  * use pthread_yield rather than sleep
+  * send the SIGALARM message from the child that just received it.
+  * bump the expected sequence nr if we got a SIGALARM
+
+-------------------------------------------------------------------
+Mon May  8 16:48:14 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170506:
+  * Fix PowerPC compilation issue
+  * log which syscalls got enabled.
+  * add missing 'transmit and free udp packet' lines to uniarch table code.
+  * configure: fix cross compile detection of broken ipv6 headers
+  * fix off-by-one in dump_childnos()
+  * fix memory corruption in tables-uniarch:log_enabled_syscalls_uniarch
+  * reorder local/global definitions
+  * todo: iterate fd provider list in help text
+  * copy the ->dump method into the child object header
+  * remove a bunch of bogus __unused__ attributes
+  * if handshake fails, force a re-read from udp
+  * initial attempt at syscall arg logging over udp.
+  * introduce a trinity_msgchildhdr struct
+  * fix backwards ternary operators
+  * log seed/reseed events
+  * fix infinite loop in main
+  * don't spin on locks if we've already finished.
+  * split up the decode file
+  * do more dead child reaping when waiting for exit
+  * move socket setup to own function, cleaning up main()
+  * rewrite the handshake code to pass a struct
+  * num_children moved to the handshake message
+  * make ->dump silent when running with -q
+  * start moving towards separating queueing packets and decoding them
+  * initialize logging later.
+  * queue & decode child messages.
+  * use threads to separate 'add to queue' and 'decode queue'.
+  * shut up cppcheck: scope reduction
+
+-------------------------------------------------------------------
+Mon Apr 10 08:19:09 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170405:
+  * simple handshake over udp to logging server
+  * send a udp message to indicate main started
+  * have the logmsg type be the first byte
+  * move the message struct definition to udp.h
+  * fix missed variable replacement
+  * Initial logging server implementation.
+  * don't hardcode protocol version in server side.
+  * reset proto to v0 for now.
+  * move exit reasons to header
+  * shut down socket if handshake fails
+  * add logging of main exiting
+  * add server decoding of main exiting
+  * log child creation
+  * decode child started messages
+  * log child exiting
+  * decode child exiting
+  * log child signal messages
+  * decode child signal messages
+  * replace decode switch with table lookup
+  * remove old debugging message that now triggers all the time
+  * retry sending handshake up to 3 times before giving up.
+  * scope reduction
+  * fail hard if we get passed '-l off'
+  * micro-optimize the 'became tainted' case.
+  * fix swapped args
+  * update -l help text
+  * don't make locking failure fatal
+  * export logging_enabled and use it appropriately
+  * fix off-by-one in ip proto selection
+  * error handling cleanups for ftrace
+  * fix some ftrace resource leaks
+  * log where the shm starts/end
+  * remove dump_objects, and make add_object do the dumping.
+  * clean up bpf object creation logging
+  * remove duplicate logging from epollfd creation
+  * remove duplicate logging from eventfd creation
+  * remove duplicate logging from timerfd creation
+  * improve dump output for file fds
+  * only set up the pipe objhead once
+  * extend pipe object with additional info about creation
+  * perf fd destructor/dump were backwards.
+  * remove duplicate output from perf fd init
+  * enhance perf fd creation logging
+  * remove unused defines
+  * support continuations in output()
+  * copy, and log the perf event structure in the perf object.
+  * enhance testfile ->dump to log more info
+  * extended logging for epoll fd creation
+  * fix cut-n-paste error in inotify syscall ->post
+  * extended logging for eventfd
+  * quieten down the mm dumper
+  * fix 'always true' comparison by hoisting declaration
+  * fix leak of epoll object in failure path
+  * extended logging for timerfd objects
+  * extended logging for memfd objects
+  * extended logging for inotify objects
+  * extended logging for userfaultfd
+  * fanotify object extended logging
+  * cleanup ->dump of socket creation
+  * pass the global bool down to ->dump
+  * move MAX_PATH_LEN to header
+  * log files opened over udp
+  * split out the decoding from the server
+  * Check for btrfs_ioctl_defrag_range_args.
+  * drmfd dump needs to take the bool arg too.
+  * log and decode map objects
+  * remove __unused__
+  * log & decode pipe objects
+  * mapping name can contain a path
+  * helper functions for msghdr init
+  * convert map dump to use init_msgobjhdr
+  * log & decode perf objects
+  * use init_msghdr for MAIN_ messages
+  * add init_childmsghdr helper
+  * log & decode epoll objects
+  * log & decode eventfd objects
+  * log & decode timerfd objects
+  * log & decode testfile objects
+  * log & decode memfd objects
+  * log & decode drm objects
+  * log & decode inotify objects
+  * log & decode userfault objects
+  * log & decode fanotify objects
+  * log & decode bpf map objects
+  * remove unused bpf fd in object struct
+  * log & decode socket objects
+  * log & decode futex objects
+  * log & decode sysvshm objects
+  * log & decode object destruction
+  * compile fixes
+  * pass the buffer down to the decode routines instead of using a global
+
+-------------------------------------------------------------------
+Thu Mar 16 16:18:44 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170315:
+  * Add PF_KCM to domains list, so -E KCM works.
+  * missing include, compile fix
+  * remove some more leftover log-to-file code
+  * introduce some basic 'connect to udp server' code.
+  * move output() and friends to trinity.h
+  * log.c->output.c log.h->arg-decoder.h
+  * implement logging shutdown
+  * make sendudp less fatal on failure
+  * add ->dump member to objhead
+  * Add TCP_FASTOPEN_CONNECT
+  * skeletal support for AF_QIPCRTR
+  * skeletal support for PF_SMC
+  * add RTNLGRP_MPLS_NETCONF
+  * remove unnecessary macro hell
+  * Sometimes unshare various namespaces in child processes
+  * make iovec's with a single element half the time
+  * set iovec lens to '20' half the time.
+  * fds/drm.c: Increase buffer size.
+  * add some new BPF map types
+  * improve bpf sanitize to support more than just PROG_LOAD
+  * add BPF_OBJ_PIN/BPF_OBJ_GET
+  * bpf arg 1 is cmds, not flags
+  * compile fixes
+  * always include config.h
+  * bpf: set r2/r3 in all cases
+  * new BPF prog types
+  * split out the bpf attr generations per-case.
+  * unused fields are already zeroed, as this is zmalloc'd
+  * improve BPF_MAP_CREATE by setting reasonable types/size
+  * keep bpf keys in small range for now
+  * bpf: pass in the right size arg depending on which union we use
+  * basic statx coverage
+  * Check for bpf_prog_type BPF_PROG_TYPE_PERF_EVENT.
+  * prctl todo for later
+  * don't mess with ioperm
+
+-------------------------------------------------------------------
+Sun Feb 12 13:33:29 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170210:
+  * Correctly handle an error during initialization of fd providers
+  * Correctly handle commas in fd provider mask
+  * Correctly handle failure to open the kernel taint file
+  * Fix glibc for linux < 4.5 using compat.h
+  * generate_socket can be static
+  * socket generation should signify success when no cache exists.
+  * Fix --enable-fds bash list expansion bug
+  * write_socket_to_cache can be static
+  * open_socket can be static
+  * add TFD_TIMER_ABSTIME & TFD_TIMER_CANCEL_ON_SET to timerfd_settime flags
+  * remove all the ANSI colour code stuff
+  * remove all the 'log to disk' code.
+  * Fix a rare double reap bug
+  * Makefile: use grep -c to avoid wc -l
+  * Makefile: use findstring to check if we are building in development mode
+  * Makefile: improve build time with immediate variables
+  * Makefile: -Werror also for gcc 6.x
+  * btrfs/ioctl.h is not really needed
+  * do a flush after rewinding the pid stat file.
+  * don't set dropprivs if we start up without any.
+  * get_domain_name returns strings without the PF_
+  * if creation of a specific socket fails, bail out instead of retrying
+- Cleanup spec file a bit
+
+-------------------------------------------------------------------
+Sun Jan 08 09:51:43 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7+git.20170107:
+  * check that the mprotect succeeded before writing to page.
+  * optimize the case where we're dirtying a whole mapping.
+  * protocol is always unsigned.
+  * clear out any old state left in the postbuffer before we do a syscall.
+
+-------------------------------------------------------------------
+Mon Dec 26 10:33:32 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7+git.20161222:
+  * move taint checking init to its own function
+  * sort by argname
+  * add --ftrace-dump-file arg to specify where the dump file goes
+  * greatly simplify the seeding code.
+  * ECHILD with child==-1 is boring
+  * teach sanitise_socket_triplet about the privileged socket types
+  * remove the ECHILD handling completely.
+  * remove some off-by-one's in the -N handling
+  * don't reduce max number of children if < 4 specified
+  * add missing ipv6 setsockopts.
+  * add IP_RECVFRAGSIZE setsockopt
+  * update i386 syscalls
+  * linux/nvme.h has been renamed in linux 4.4 to linux/nvme_ioctl.h
+  * fix segfault in get_writable_address
+
+-------------------------------------------------------------------
+Wed Dec 07 11:26:17 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7+git.20161205:
+  * list_empty is a bool
+  * get_cpu type fixes
+  * split stop_ftrace_if_tainted in two
+  * replace duplicate code with taint_check helper
+  * We only want to do the ftrace stop/postmortem once
+  * don't fall through if opening ftrace tracing_on fails
+  * similarly, if stopped ftrace fails, bail out after warning
+  * dump the trace to a file when we detect tainting.
+  * use userspace headers for ax25 instead of kernel.
+
+-------------------------------------------------------------------
+Thu Dec 01 14:18:13 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7+git.20161130:
+  * Check for bpf_attr map_flags.
+  * Fix missing initializer warnings for older gcc's.
+  * rename lock -> thislock to solve -Wshadow warnings on older gcc
+  * rework taint checking
+  * Add beginnings of ftrace work
+  * Fix -Wunused error
+  * reset tainted filepos to 0 before each read
+
+-------------------------------------------------------------------
+Sat Nov 12 14:40:55 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7+git.20161108:
+  * fix build when USE_BPF is not defined
+  * Some older distros apparently need types.h included here.
+
+-------------------------------------------------------------------
+Wed Nov 02 16:54:45 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.7+git.20161028:
+  * disable the mremap page-dirtying for now
+  * pick read/write dirtying based on PROT settings of mapping
+  * for now disable periodic dirtying of mappings.
+  * Sanity checks in pid_alive
+  * update find.sh to a more interesting example.
+  * kill_pid debugging
+  * consolidate the seed initialization into init_seed
+  * Add FALLOC_FL_UNSHARE_RANGE flag to fallocate
+  * 1.7 release.
+  * Move version back to devel
+
+-------------------------------------------------------------------
+Wed Oct 19 19:40:23 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20161018:
+  * don't use rewind() on /proc/pid/stat
+  * Fix up segfaults when encountering null entries in syscall tables.
+  * fix segfault in setsockopt() when called with --disable-fds=sockets
+  * add the 'special' ring-id's for keyctl
+  * generate random numbers in the -1..-10 range
+  * change the random munging a little
+  * silence cppcheck
+  * mark pages as PROT_READ before we fault them with a read
+  * remove the 'do syscall in a subchild' code for now.
+  * allow '0' as a file mode
+
+-------------------------------------------------------------------
+Thu Oct 06 12:18:43 UTC 2016 - nmoudra@suse.com
+
+- Update to version 1.6+git.20161005:
+  * add missing locking around state modification
+  * skip the sleep if the grandchild has already exited.
+  * reduce the amount of time we wait for the grandchild a little
+  * make enable_random_syscalls static
+  * annotate fadvise flags
+  * fix up some segfaults when --disable-fds=sockets is passed.
+  * move the reading of MemFree out to its own function for other uses.
+  * create a bpf fd of each type.
+  * add the newer bpf map types
+  * correct the params for BPF_MAP_TYPE_STACK_TRACE creation
+
+-------------------------------------------------------------------
+Sun Sep 18 06:57:32 UTC 2016 - mpluskal@suse.com
+
+- Simplify conditions
+- Use correct header with nvme ioctls
+
+-------------------------------------------------------------------
+Thu Sep 15 12:47:10 UTC 2016 - slemke@suse.de
+
+- Updated to 1.6+git.20160913
+  * Removed Provides: 20160315
+  * Removed Obsoletes: 20160315  
+
+-------------------------------------------------------------------
+Sat Aug 27 08:16:34 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160826:
+  * overwrite the correct pointer with the sockaddr
+  * Replace ->generate with lists of valid socket triplets
+  * add support for privileged sockets to the socket generator.
+  * use correct loop boundary for privileged sockets
+  * add PF_CAIF valid triplets
+  * add PF_DECnet socket triplets
+  * dummy entry for (dead) econet
+  * add valid protos for PF_KCM
+  * add PF_X25 valid triplet
+  * remove ->socket
+
+-------------------------------------------------------------------
+Sun Jul 17 13:06:16 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160706:
+  * check for potential failure to acquire testfile fd.
+  * fds/drm.c: Add forward declaration of struct.
+  * flesh out the bpf sanitiser a little.
+  * introduce object types for bpf maps & progs
+  * make the BPF_PROG_LOAD case look more sane
+  * bpf: only do bpf_gen_filter for BPF_PROG_TYPE_SOCKET_FILTER
+  * fix wrong variable name in childops wait
+  * if we use the fallback seed, don't use rand() yet.
+  * Before falling back to gtod, try getrandom() if available.
+  * net/proto-unix.c: set protocol to 0 in unix_rand_socket()
+- Drop support for building on SLE-11 as builds are failing 
+  anyways
+
+-------------------------------------------------------------------
+Sun Jun 12 16:30:20 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160603:
+  * if we use the fallback seed, don't use rand() yet.
+  * Before falling back to gtod, try getrandom() if available.
+- Change _service to disabled
+
+-------------------------------------------------------------------
+Fri May 27 20:28:47 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160526:
+  * for each random syscall, do one in an extra child too.
+  * compile fix.
+  * fix memory leak on child fork failure.
+  * check for potential failure to acquire testfile fd.
+  * fds/drm.c: Add forward declaration of struct.
+  * flesh out the bpf sanitiser a little.
+  * introduce object types for bpf maps & progs
+  * make the BPF_PROG_LOAD case look more sane
+  * bpf: only do bpf_gen_filter for BPF_PROG_TYPE_SOCKET_FILTER
+  * fix wrong variable name in childops wait
+
+-------------------------------------------------------------------
+Sat May 21 13:11:31 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160520:
+  * split num_fd_providers_enabled into two vars.
+  * make setup_fd_providers silent, so it doesn't spew during -h
+  * add flags from 4.7 for preadv2/pwritev2
+  * if random_ipv4_address picked localhost last time, let it happen again.
+  * Convert fd provider initialization to use constructors
+  * include file cleanup
+  * document how register_fd_provider gets run
+  * merge enable_fds_param/disable_fds_param into toggle_fds_param
+  * shut up clang
+  * fix up more clang detritus
+  * change set_dontkillme to take a child struct instead of a pid
+  * bump the child progress indicator in set_dontkillme
+
+-------------------------------------------------------------------
+Sun May 15 11:54:21 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160513:
+  * don't call fcntl on -1 fd's
+  * only do the 'stuck syscall' info on children running random syscalls
+  * print the error if the initial mmaps fail
+  * fix offset for 1GB pages.
+  * when disabling 1GB pages, just do nothing
+
+-------------------------------------------------------------------
+Wed Apr 27 09:55:14 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160426:
+  * fix the 'pick new childop' code.
+  * remove the shm_rw debug code.
+  * store the type of childop we're doing in the child struct
+  * remove the 10MB initial mapping.
+  * be careful not to read past the end of the ip_ssoptrs array
+  * define maximum size of ip_ssoptrs array
+  * push the dropprivs code down into the child processes.
+  * bump the 'pick new op' counter even higher.
+  * add a 'read /proc/<pid>/status' childop
+  * fix leaks in thrash-pid-files
+  * reformat childop structs
+  * convert uid.c to use output() instead of outputerr()
+  * set a flag in the child struct when we've dropped privs
+  * factor out the 'set new op' code to a separate function
+  * rewrite set_new_op to take ptrs to alternative childops.
+  * Introduce 'root child ops'.
+
+-------------------------------------------------------------------
+Fri Apr 22 19:37:34 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160422:
+  * update the prototypes for the read-all-files childop
+  * children/ -> childops/
+  * move op_nr from syscall record to childdata
+  * fix open() return code check
+  * open/stat instead of stat/open
+  * use fstat instead of lstat
+  * reset the op ptr when we reach the loop counter.
+  * reset the child timestamp when we clean it out
+  * Add new CLONE_NEWCGROUP flag
+  * change stats to count operations, not just syscalls
+
+-------------------------------------------------------------------
+Wed Apr 20 15:40:30 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160420:
+  * reset the op ptr when we reach the loop counter.
+  * reset the child timestamp when we clean it out
+  * Add new CLONE_NEWCGROUP flag
+
+-------------------------------------------------------------------
+Sat Apr 16 21:45:45 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160416:
+  * move the "child progressing" timestamp from the syscall rec to the child.
+  * change reap_child to take child struct
+  * pass the child ptr down to the child op.
+  * fix badly named child_random_syscalls()
+  * repeat the previous childop 1000 times
+  * update the prototypes for the read-all-files childop
+  * children/ -> childops/
+  * move op_nr from syscall record to childdata
+  * fix open() return code check
+  * open/stat instead of stat/open
+
+-------------------------------------------------------------------
+Tue Apr 12 11:49:51 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6+git.20160408:
+  * add a ->send method to struct netproto
+  * add pwritev2/preadv2
+  * add SO_CNX_ADVICE setsockopt
+  * add MSG_BATCH flag
+  * if a proto's ->send is missing, fallback to random
+  * decode netlink protocols
+  * add missing NETLINK_ROUTE decoding
+  * when per proto ->socket succeeds, indicate success so we don't fall back
+  * Only pick a single netlink group
+  * rename ->send to ->gen_packet, and redefine args.
+
+-------------------------------------------------------------------
+Sat Apr 02 09:55:20 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.6~git.20160331:
+  + add ext[234] ioctls
+  + remove unnecessary include
+  + add bare-bones PF_KCM support
+  + use SOCK_RAW for IP sockets half the time.
+  + make get_new_random_fd bail early if no fd provider has finished yet.
+  + by default, start nr_cpus * 4 child processes.
+  + EBADF is a possible return from execve
+  + remove some noise from potential failures from unshare()
+  + add l2tp to analyze-sockets
+  + add a ->send method to struct netproto
+- Change versioning scheme
+  + do not use just date
+  + add corresponding obsoletes/provides for smooth transition
+- Update _service
+  + exclude .git when generating tarball
+  + enable automatic changelog updating
+- Update dependencies
+  * add libbtrfs-devel as it provides btrfs/ioctl.h
+
+-------------------------------------------------------------------
+Sun Mar 20 08:52:07 UTC 2016 - mpluskal@suse.com
+
+- Update to 20160315
+- Install manpage
+
+-------------------------------------------------------------------
+Wed Mar  2 07:52:44 UTC 2016 - normand@linux.vnet.ibm.com
+
+- Update to 20160301 to avoid PowerPC build failure
+  remove 0001-net-protocols.c-fix-build-on-old-machines.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 08:29:58 UTC 2016 - jslaby@suse.com
+
+- Update to 20160131
+- remove 0001-compat.h-add-more-macros.patch (upstream)
+- remove 0002-Makefile-fix-build-with-older-glibc.patch (upstream)
+- add 0001-net-protocols.c-fix-build-on-old-machines.patch
+
+-------------------------------------------------------------------
+Mon Jan  4 10:36:03 UTC 2016 - jslaby@suse.com
+
+- Update to 20151230
+- add 0001-compat.h-add-more-macros.patch
+- add 0002-Makefile-fix-build-with-older-glibc.patch
+
+-------------------------------------------------------------------
+Mon Dec 21 19:02:42 UTC 2015 - mpluskal@suse.com
+
+- Update to 20151221
+
+-------------------------------------------------------------------
+Mon Dec 14 21:50:12 UTC 2015 - mpluskal@suse.com
+
+- Update to 20151214
+
+-------------------------------------------------------------------
+Sat Dec  5 14:51:18 UTC 2015 - mpluskal@suse.com
+
+- Update to 20151204
+- Make building more verbose
+- Use default optflags for building
+
+-------------------------------------------------------------------
+Mon Nov  2 12:27:25 UTC 2015 - jslaby@suse.com
+
+- Update to 20151029
+
+-------------------------------------------------------------------
+Thu Sep 17 14:22:00 UTC 2015 - mpluskal@suse.com
+
+- Update to 20150905 
+
+-------------------------------------------------------------------
+Wed Aug 19 14:40:47 UTC 2015 - mpluskal@suse.com
+
+- Update to 20150804
+- Drop older-distros.patch it is already part of upstream
+
+-------------------------------------------------------------------
+Tue Jun 30 09:44:29 UTC 2015 - jslaby@suse.com
+
+- Update to 20150629
+- Add older-distros.patch: support for SLE11
+
+-------------------------------------------------------------------
+Mon Jun 22 12:00:47 UTC 2015 - mpluskal@suse.com
+
+- Update to 20150617
+
+-------------------------------------------------------------------
+Thu Apr 30 09:03:51 UTC 2015 - jslaby@suse.com
+
+- Update to 20150429
+
+-------------------------------------------------------------------
+Tue Feb 17 20:37:26 UTC 2015 - mpluskal@suse.com
+
+- Update to 20150215
+
+-------------------------------------------------------------------
+Wed Jan 14 15:13:16 UTC 2015 - jslaby@suse.com
+
+- update to 20150107
+
+-------------------------------------------------------------------
+Sat Dec 13 13:49:06 UTC 2014 - mpluskal@suse.com
+
+- Update to 20141206
+
+-------------------------------------------------------------------
+Sat Nov 22 13:00:16 UTC 2014 - mpluskal@suse.com
+
+- Update to 20141117
+
+-------------------------------------------------------------------
+Tue Nov 11 08:36:08 UTC 2014 - mpluskal@suse.com
+
+- Add COPYING with license
+- Update to 20141110
+
+-------------------------------------------------------------------
+Wed Oct 22 13:50:08 UTC 2014 - mpluskal@suse.com
+
+- Update to 20141022
+  * modify_ldt-initialize-scratch.patch: removed
+- Change git source to github
+
+-------------------------------------------------------------------
+Mon Jan 20 10:45:14 UTC 2014 - jslaby@suse.com
+
+- update to 20140119
+  * compat-define-some-net-constants.patch: removed
+  * fix-broken-includes.patch: removed
+  * net-netlink-add-missing-compat.h-include.patch: removed
+  * perf-fixes.patch: removed
+- add modify_ldt-initialize-scratch.patch
+
+-------------------------------------------------------------------
+Sun Sep 15 18:19:39 UTC 2013 - jslaby@suse.com
+
+- update to 20130913
+  * perf-fixes.patch: removed
+  * seccomp.patch : removed
+  * PR_MCE_KILL_GET.patch: removed
+  * compat-define-some-net-constants.patch: added
+  * net-netlink-add-missing-compat.h-include.patch: added
+  * fix-broken-includes.patch: added
+
+-------------------------------------------------------------------
+Tue Jun  4 09:41:51 UTC 2013 - jslaby@suse.com
+
+- update to 20130603
+  * PR_MCE_KILL_GET.patch: added
+  * perf-fixes.patch: added
+  * seccomp.patch: added
+  * compat-define-MS_BORN-constant.patch: removed
+  * compat-define-some-KVM_-constants.patch: removed
+  * fix-stupid-header-requirements.patch: removed
+  * fix-tpacket3_hdr-build-failure.patch: removed
+
+-------------------------------------------------------------------
+Mon May 20 12:48:56 UTC 2013 - jslaby@suse.com
+
+- update to 20130517
+- setsockopt-remove-some-more-opts.patch: removed
+- fix-stupid-header-requirements.patch: added
+- fix-tpacket3_hdr-build-failure.patch: added
+- compat-define-MS_BORN-constant.patch: added
+- compat-define-some-KVM_-constants.patch: added
+
+-------------------------------------------------------------------
+Fri Mar  1 11:08:44 UTC 2013 - jslaby@suse.com
+
+- update to 20130227
+  - remove most of patches, they are upstream -- hooray
+- compat.h-add-KEYCTL.patch: removed
+- compat.h-add-some-more-constants.patch: removed
+- handle-missing-rds.patch: removed
+- sockaddr-remove-L2TPv3.patch: removed
+- sockaddr-remove-PF_CAIF-PF_ALG.patch: removed
+- sockaddr-remove-PF_NFC.patch: removed
+- sockaddr-remove-PF_PROTO_PPTP.patch: removed
+
+-------------------------------------------------------------------
+Tue Feb 26 23:00:15 UTC 2013 - jslaby@suse.com
+
+- update to 20130223
+  * added more tests
+  * many cleanups
+- compat.h-add-KEYCTL.patch: added
+- 0001-compat.h-add-SO_BSDCOMPAT.patch: removed
+- 0002-compat.h-add-RLIMIT_RTTIME.patch: removed
+- 0003-compat.h-add-newer-net-constants.patch: removed
+
+-------------------------------------------------------------------
+Fri Jan 11 10:22:28 UTC 2013 - jslaby@suse.com
+
+- make some patches more robust (use compat.h)
+  * they'll go to upstream
+
+-------------------------------------------------------------------
+Thu Jan 10 09:45:54 UTC 2013 - jslaby@suse.com
+
+- update to 20130109
+  * added more tests
+  * many cleanups
+
+-------------------------------------------------------------------
+Fri Nov 30 12:52:03 UTC 2012 - jslaby@suse.com
+
+- update to 20121129
+  * added more tests
+  * many cleanups
+- syscalls-remove-RLIMIT_RTTIME.patch added to fix another build
+  failures on <= 1200
+
+-------------------------------------------------------------------
+Mon Oct 29 11:39:04 UTC 2012 - jslaby@suse.com
+
+- initial package
+

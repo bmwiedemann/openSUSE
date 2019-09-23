@@ -1,0 +1,33 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-12-14 13:29:43.522967049 +0100
+
+DD builds some static libs, and cmake is totally clueless about what
+dependencies those have (problem solved in libtool!), so add them
+manually to get our build going.
+
+---
+ doomsday/sdk/libgui/CMakeLists.txt |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: Doomsday-Engine-2.1.1/doomsday/sdk/libgui/CMakeLists.txt
+===================================================================
+--- Doomsday-Engine-2.1.1.orig/doomsday/sdk/libgui/CMakeLists.txt
++++ Doomsday-Engine-2.1.1/doomsday/sdk/libgui/CMakeLists.txt
+@@ -141,7 +141,7 @@ if (UNIX AND NOT APPLE)
+     # must be linked publicly (rather than privately like is the
+     # done for libassimp).
+     get_property (assimpLibs TARGET libassimp PROPERTY INTERFACE_LINK_LIBRARIES)
+-    target_link_libraries (libgui PUBLIC ${assimpLibs})
++    target_link_libraries (libgui PUBLIC ${assimpLibs} -lz)
+ endif ()
+ 
+ if (IOS)
+@@ -153,7 +153,7 @@ endif ()
+ 
+ if (DENG_X11)
+     target_include_directories (libgui PRIVATE ${X11_INCLUDE_DIR})
+-    target_link_libraries (libgui PRIVATE ${X11_LIBRARIES})
++    target_link_libraries (libgui PRIVATE ${X11_LIBRARIES} -lGL)
+     deng_target_link_qt (libgui PRIVATE X11Extras)
+     if (DENG_ENABLE_DISPLAYMODE)
+         if (NOT X11_Xrandr_FOUND)

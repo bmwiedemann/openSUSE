@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18fd03f8c1e7daf4377eb63ce9a7e1e2</srcmd5>
+    <version>3.99.5</version>
+    <time>1503593210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>514719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfbbf92bcc5ad69afb931b644b2444af</srcmd5>
+    <version>3.100</version>
+    <time>1514502120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.100
+   * Improved detection of MPEG audio data in RIFF WAVE files.
+     sf#3545112 Invalid sampling detection
+  * New switch --gain &lt;decibel&gt;, range -20.0 to +12.0, a more
+    convenient way to apply Gain adjustment in decibels, 
+    than the use of --scale &lt;factor&gt;.
+  * Fix for sf#3558466 Bug in path handling
+  * Fix for sf#3567844 problem with Tag genre
+  * Fix for sf#3565659 no progress indication with pipe input
+  * Fix for sf#3544957 scale (empty) silent encode without warning
+  * Fix for sf#3580176 environment variable LAMEOPT doesn't
+    work anymore
+  * Fix for sf#3608583 input file name displayed with wrong
+    character encoding (on windows console with CP_UTF8)
+  * Fix dereference NULL and Buffer not NULL terminated issues.
+  * Fix dereference of a null pointer possible in loop.
+  * Make sure functions with SSE instructions maintain their own
+    properly aligned stack. Thanks to Fabian Greffrath
+  * Multiple Stack and Heap Corruptions from Malicious File.
+  * Fix a division by zero vulnerability.
+  * Fix CVE-2017-9410 fill_buffer_resample function in
+    libmp3lame/util.c heap-based buffer over-read and ap
+  * Fix CVE-2017-9411 fill_buffer_resample function in
+    libmp3lame/util.c invalid memory read and application crash
+  * Fix CVE-2017-9412 unpack_read_samples function in
+    frontend/get_audio.c invalid memory read and application crash
+  * Fix clip detect scale suggestion unaware of scale input value
+  * HIP decoder bug fixed: decoding mixed blocks of lower sample
+    frequency Layer3 data resulted in internal buffer overflow.
+  * Add lame_encode_buffer_interleaved_int()</comment>
+    <requestid>559093</requestid>
+  </revision>
+</revisionlist>

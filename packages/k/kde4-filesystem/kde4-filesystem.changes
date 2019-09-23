@@ -1,0 +1,936 @@
+-------------------------------------------------------------------
+Tue Jun 21 10:50:54 UTC 2016 - wbauer@tmo.at
+
+- Add kdebase4-workspace-libs to %kde4_runtime_requires, it is
+  necessary so that KDE4 applications respect the KDE4 settings
+  when run inside a KDE session (boo#985660)
+
+-------------------------------------------------------------------
+Fri Aug 15 08:06:10 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.14.0
+   * KDE 4.14.0 SC Final Release
+   * See http://www.kde.org/announcements/4.14/
+
+-------------------------------------------------------------------
+Thu Jul 17 16:29:16 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.90
+   * KDE 4.14 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.14-beta2.php
+
+-------------------------------------------------------------------
+Fri Jul 11 13:25:28 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 4.13.80
+   * KDE 4.14 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.14-beta1.php
+- Rename rpmlintrc to kde4-filesystem-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Apr 11 16:39:48 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13.0
+   * KDE 4.13  release
+   * See http://www.kde.org/announcements/4.13/
+
+-------------------------------------------------------------------
+Thu Mar 27 17:32:41 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.97
+   * KDE 4.13 RC  release
+   * See http://www.kde.org/announcements/announce-4.13-rc.php
+
+-------------------------------------------------------------------
+Thu Mar 20 17:56:25 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.12.95
+   * KDE 4.13 Beta 3  release
+   * See http://www.kde.org/announcements/announce-4.13-beta3.php
+
+-------------------------------------------------------------------
+Thu Mar 13 20:12:30 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 4.13
+   * KDE 4.13 Beta 2  release
+   * See http://www.kde.org/announcements/announce-4.13-beta2.php
+
+-------------------------------------------------------------------
+Sat Jan 11 15:38:26 UTC 2014 - tittiatcoke@gmail.com
+
+Update to 4.12.1
+   * KDE 4.12.1  release
+   * See http://www.kde.org/announcements/announce-4.12.1.php
+
+-------------------------------------------------------------------
+Sat Dec 14 17:58:26 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.12.0
+   * KDE 4.12.0  release
+   * See http://www.kde.org/announcements/4.12.php
+
+-------------------------------------------------------------------
+Fri Nov 29 06:56:05 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.97
+   * KDE 4.12 RC 1 release
+   * See http://www.kde.org/announcements/announce-4.12-rc.php
+
+-------------------------------------------------------------------
+Sat Nov 23 22:12:40 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.95
+   * KDE 4.12 Beta 3 release
+   * See http://www.kde.org/announcements/announce-4.12-beta3.php
+
+-------------------------------------------------------------------
+Sat Nov 16 17:42:54 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.90
+   * KDE 4.12 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.12-beta2.php
+
+-------------------------------------------------------------------
+Sat Nov  9 22:44:28 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.12 (4.11.80 Aka Beta 1)
+  * http://www.kde.org/announcements/announce-4.12-beta1.php
+
+-------------------------------------------------------------------
+Thu Oct 10 19:48:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added %_kde_platform_minor_version macro, which extracts KDE 
+  minorversion, e.g. 11 in 4.11. This allows defining packaging 
+  features per KDE version
+
+-------------------------------------------------------------------
+Tue Oct  1 19:24:57 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Obsolete phonon-backend-xine, for users upgrading from
+  earlier releases (e.g. 12.1)
+
+-------------------------------------------------------------------
+Sat Sep  7 17:02:25 UTC 2013 - tittiatcoke@gmail.com
+
+- Remove all the provides from this package to satify the openSUSE
+  rules for submitting packages to Factory
+
+-------------------------------------------------------------------
+Thu Sep  5 23:08:19 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Obsolete and provide no longer existent polkit-kde-kcmmodules-1 package
+
+-------------------------------------------------------------------
+Thu Aug  8 14:52:20 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.11.0
+   * KDE 4.11 Final release
+   * See http://www.kde.org/announcements/4.11/
+
+-------------------------------------------------------------------
+Thu Jul 25 21:56:05 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 4.10.97
+  * KDE 4.11 RC 2 release
+  * See http://www.kde.org/announcements/announce-4.11-rc2.php
+
+-------------------------------------------------------------------
+Mon Jul 15 08:12:54 UTC 2013 - cgiboudeaux@gmx.com
+
+- Update to 4.10.95
+ * KDE 4.11 RC 1 release
+ * See http://www.kde.org/announcements/announce-4.11-rc1.php
+
+-------------------------------------------------------------------
+Tue Jul  2 12:09:54 UTC 2013 - tittiatcoke@gmail.com
+
+- Introduce a new variable for the diverse branding packages. This 
+  should resolve wrong dependencies, inconsistency between
+  packages, etc
+
+-------------------------------------------------------------------
+Thu Jun 27 18:05:48 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.90
+   * KDE 4.11 Beta 2 release
+   * See http://www.kde.org/announcements/announce-4.11-beta2.php
+
+-------------------------------------------------------------------
+Thu Jun 13 19:09:35 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.80
+   * KDE 4.11 Beta 1 release
+   * See http://www.kde.org/announcements/announce-4.11-beta1.php
+
+-------------------------------------------------------------------
+Sat Jun  1 09:46:48 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.4
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.4.php
+   * resolves bnc#8122760
+
+-------------------------------------------------------------------
+Sat May  4 16:56:32 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.3
+   * Bugfix release
+   * See http://www.kde.org/announcements/announce-4.10.3.php
+   * resolves bnc#818500
+
+-------------------------------------------------------------------
+Mon Apr 1 19:04:33 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.2
+
+-------------------------------------------------------------------
+Wed Mar 13 12:53:33 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.1
+
+-------------------------------------------------------------------
+Tue Feb 26 08:57:10 UTC 2013 - saschpe@suse.de
+
+- /etc/rpm/macros.kde4 is no %config, it is not meant to be changed
+  by users.
+- Add rpmlintrc to filter some warnings
+
+-------------------------------------------------------------------
+Thu Jan 31 17:34:42 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.10.0
+  * This is the final release for 4.10 (contains bugfixes)
+-------------------------------------------------------------------
+Fri Jan 19 17:00:42 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.98
+  * This is the third RC release for 4.10 (contains bugfixes)
+  
+-------------------------------------------------------------------
+Thu Jan 3 21:00:42 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to 4.9.97
+  * This is the second RC release for 4.10 (contains bugfixes)
+  
+-------------------------------------------------------------------
+Wed Dec 19 18:32:42 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.95 
+  * This is the first RC release for 4.10 (contains bugfixes)
+
+-------------------------------------------------------------------
+Sat Dec  1 19:53:47 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.90 
+   * This is the second Beta release for 4.10 (Contains bugfixes)
+
+-------------------------------------------------------------------
+Fri Nov  2 14:46:47 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.3
+  * see http://kde.org/announcements/announce-4.9.3.php for details
+
+-------------------------------------------------------------------
+Sat Sep 29 10:35:25 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to 4.9.2
+  * see http://kde.org/announcements/announce-4.9.2.php for details
+
+-------------------------------------------------------------------
+Mon Sep 10 08:33:04 UTC 2012 - dmueller@suse.com
+
+- plasma-addons-akonadi was dropped
+
+-------------------------------------------------------------------
+Wed Sep  5 13:39:08 UTC 2012 - dmueller@suse.com
+
+- bump version requirements to 4.9.1
+- obsolete dropped packages
+
+-------------------------------------------------------------------
+Mon Aug  6 10:47:59 UTC 2012 - dmueller@suse.com
+
+- bump version requirements to 4.8.5
+
+-------------------------------------------------------------------
+Fri Jun  1 13:55:02 UTC 2012 - dmueller@suse.com
+
+- bump version requirements to 4.8.4 
+
+-------------------------------------------------------------------
+Sun Apr 29 20:52:26 UTC 2012 - dmueller@suse.com
+
+- bump version requirements to 4.8.3
+
+-------------------------------------------------------------------
+Fri Mar 30 01:08:23 CEST 2012 - dmueller@suse.de
+
+- bump version requirements to 4.8.2 
+
+-------------------------------------------------------------------
+Thu Mar  1 00:02:21 CET 2012 - dmueller@suse.de
+
+- bump version requirements to 4.8.1
+
+-------------------------------------------------------------------
+Wed Jan 25 10:31:15 UTC 2012 - idonmez@suse.com
+
+- Require akonadi 1.7.0 
+
+-------------------------------------------------------------------
+Mon Jan 23 14:42:21 UTC 2012 - idonmez@suse.com
+
+- obsolete kdeaccessibility4 
+
+-------------------------------------------------------------------
+Wed Jan 18 21:51:43 CET 2012 - dmueller@suse.de
+
+- bump version requirements to 4.8.0
+- obsolete kwikdisk
+
+-------------------------------------------------------------------
+Tue Jan 10 16:30:27 CET 2012 - dmueller@suse.de
+
+- update version requirements to 4.7.98 
+- obsolete kdepim4-wizards
+
+-------------------------------------------------------------------
+Wed Dec  7 11:29:39 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Dec  2 01:52:56 CET 2011 - dmueller@suse.de
+
+- bump version requirements to 4.7.4
+
+-------------------------------------------------------------------
+Wed Nov  2 20:17:46 CET 2011 - dmueller@suse.de
+
+- bump version requirements to 4.7.3
+
+-------------------------------------------------------------------
+Fri Oct  7 10:10:34 UTC 2011 - toddrme2178@gmail.com
+
+- Cleaned up obsoletes:
+  * Added provides for obsoletes (fix for RPMLINT warning)
+  * Bumped obsolete versions to next stable KDE release 
+    (so i.e. 4.0.83 becomes 4.1)
+  * Sorted by version number then name
+  * Cleaned up indenting so it is easier to see which packages
+    were removed at the same time
+  * Removed some redundant obsoletes (fix for RPMLINT warning)
+- Added obsoletes/provides for packages removed or renamed for 4.7.1:
+  * kbattleship
+  * kdeartwork4
+  * kdegames4
+  * kdemultimedia4
+  * kdenetwork4
+  * kdesdk4
+  * kdetoys4
+  * kdeutils4
+  * klines
+  * ktron
+  * ktuberling
+- Made macros that were duplicates of standard macros use the
+  standard macro directly.  This is particularly important for the
+  %_kde_mandir macro, since it means all files in this directory
+  automatically get the %doc tag without needing to explicitly set
+  it.  IMPORTANT: none of these changes actually change the contents
+  of the macros or where the files are stored
+- Cleaned up spec file formatting
+- Cleaned up macros file formatting
+
+-------------------------------------------------------------------
+Sun Oct  2 16:19:57 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.7.2
+
+-------------------------------------------------------------------
+Sun Sep 18 18:32:26 UTC 2011 - idonmez@suse.com
+
+- kdeadmin4 package is gone (it was empty) 
+
+-------------------------------------------------------------------
+Thu Sep  1 22:32:45 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.7.1
+
+-------------------------------------------------------------------
+Thu Jul 28 18:38:58 CEST 2011 - dmueller@suse.de
+
+- add missing obsoletes for kdeedu4, kdeedu4-noarch and kmtrace-devel 
+
+-------------------------------------------------------------------
+Fri Jul 22 20:17:21 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.7.0
+
+-------------------------------------------------------------------
+Thu Jul 21 10:48:07 UTC 2011 - idonmez@novell.com
+
+- Update to 4.6.95
+- Require akonadi 1.6.0 
+
+-------------------------------------------------------------------
+Fri Jul  1 11:18:15 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.6.5
+
+-------------------------------------------------------------------
+Mon Jun 27 14:27:36 UTC 2011 - toddrme2178@gmail.com
+
+- remove tests for obsolete openSUSE versions (fix for RPMLINT warning)
+- fix self-obsoletes (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Thu Jun  9 11:10:02 CEST 2011 - dmueller@suse.de
+
+- add a rpm group back
+
+-------------------------------------------------------------------
+Thu Jun  2 12:01:48 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.6.4
+
+-------------------------------------------------------------------
+Thu Apr 28 15:22:36 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.6.3
+
+-------------------------------------------------------------------
+Mon Apr  4 12:31:25 UTC 2011 - cgiboudeaux@gmx.com
+
+- Add _kde4_configkfcgdir
+
+-------------------------------------------------------------------
+Fri Apr  1 14:01:43 CEST 2011 - dmueller@suse.de
+
+- bump version requirements to 4.6.2
+
+-------------------------------------------------------------------
+Wed Mar  9 15:15:25 UTC 2011 - coolo@novell.com
+
+- fix quoting of *.so
+
+-------------------------------------------------------------------
+Tue Mar  8 14:05:00 CET 2011 - dmueller@suse.de
+
+- bump version requirements to 4.6.1
+
+-------------------------------------------------------------------
+Wed Mar  2 17:42:30 CET 2011 - dmueller@suse.de
+
+- require new Qt version
+
+-------------------------------------------------------------------
+Wed Jan 19 23:12:21 CET 2011 - dmueller@suse.de
+
+- bump version requirements to 4.6.0
+
+-------------------------------------------------------------------
+Mon Jan 10 14:20:23 CET 2011 - dmueller@suse.de
+
+- bump akonadi version dep
+
+-------------------------------------------------------------------
+Tue Jan  4 17:44:36 CET 2011 - dmueller@suse.de
+
+- bump version requirements to 4.5.95
+
+-------------------------------------------------------------------
+Wed Dec 22 10:53:43 CET 2010 - dmueller@suse.de
+
+- bump version requirements to 4.5.90
+
+-------------------------------------------------------------------
+Fri Dec  3 16:37:28 CET 2010 - dmueller@suse.de
+
+- bump version requirements to 4.5.85
+
+-------------------------------------------------------------------
+Fri Nov 19 17:06:35 CET 2010 - dmueller@suse.de
+
+- bump version requirements to 4.5.80
+
+-------------------------------------------------------------------
+Thu Oct 28 22:05:56 CEST 2010 - dmueller@suse.de
+
+-bump version requirements to 4.5.3
+
+-------------------------------------------------------------------
+Thu Sep 30 23:41:34 CEST 2010 - dmueller@suse.de
+
+- bump version requirements to 4.5.2 
+
+-------------------------------------------------------------------
+Fri Sep 24 09:56:36 UTC 2010 - coolo@novell.com
+
+- also translate .directory files in %kde_post_install
+
+-------------------------------------------------------------------
+Fri Aug 27 10:22:07 CEST 2010 - dmueller@suse.de
+
+- bump version requirements to 4.5.1
+
+-------------------------------------------------------------------
+Thu Jul 29 13:47:10 CEST 2010 - dmueller@suse.de
+
+- bump version requirements to 4.5.0
+
+-------------------------------------------------------------------
+Fri Jul 23 23:11:15 CEST 2010 - dmueller@suse.de
+
+- bump version requirements to 4.4.95
+
+-------------------------------------------------------------------
+Fri Jul 16 18:17:35 CEST 2010 - dmueller@suse.de
+
+- bump versions to 4.4.93
+
+-------------------------------------------------------------------
+Thu Jul  8 01:20:08 CEST 2010 - dmueller@suse.de
+
+- bump versions to 4.4.5 
+
+-------------------------------------------------------------------
+Fri Jun 18 16:07:06 CEST 2010 - dmueller@suse.de
+
+- bump version requires to 4.4.4 
+
+-------------------------------------------------------------------
+Thu Apr 29 22:09:29 CEST 2010 - dmueller@suse.de
+
+-bump version requires to 4.4.3
+
+-------------------------------------------------------------------
+Fri Mar 26 18:16:10 CET 2010 - dmueller@suse.de
+
+- bump version requires to 4.4.2
+
+-------------------------------------------------------------------
+Fri Feb 26 19:30:06 CET 2010 - dmueller@suse.de
+
+- bump version requires to 4.4.1
+
+-------------------------------------------------------------------
+Thu Feb  4 11:10:16 CET 2010 - dmueller@suse.de
+
+- bump version requires to 4.4.0
+
+-------------------------------------------------------------------
+Wed Feb  3 13:33:41 UTC 2010 - llunak@novell.com
+
+- use KDE4_SERIALIZE_TOOL when icerun is available
+
+-------------------------------------------------------------------
+Mon Feb  1 19:53:06 UTC 2010 - jengelh@medozas.de
+
+- switch to %_smp_mflags
+
+-------------------------------------------------------------------
+Sun Jan 31 20:22:25 CET 2010 - dmueller@suse.de
+
+- bump version requires to 4.3.98
+
+-------------------------------------------------------------------
+Wed Jan 20 01:48:53 CET 2010 - dmueller@suse.de
+
+- bump version requires to 4.3.95
+
+-------------------------------------------------------------------
+Fri Dec 18 13:47:40 CET 2009 - dmueller@suse.de
+
+- update to 4.3.85
+  * see http://www.kde.org/announcements/announce-4.4-beta2.php for details
+
+-------------------------------------------------------------------
+Tue Dec  1 15:20:06 UTC 2009 - llunak@novell.com
+
+- restrict basic requirements to the whole major KDE version,
+  not minor version, otherwise new KDE minor versions can cause
+  dependency problems
+
+-------------------------------------------------------------------
+Mon Nov  2 21:55:58 CET 2009 - dmueller@suse.de
+
+- bump version to 4.3.3
+
+-------------------------------------------------------------------
+Fri Aug 28 06:02:02 CEST 2009 - dmueller@suse.de
+
+- bump version to 4.3.1 
+
+-------------------------------------------------------------------
+Tue Aug 11 00:16:05 CEST 2009 - llunak@novell.com
+
+- fix kde4 location macros
+
+-------------------------------------------------------------------
+Thu Jul 30 14:32:26 CEST 2009 - llunak@novell.com
+
+- consistent _kde4_ rpm file location macros
+
+-------------------------------------------------------------------
+Wed Jul 29 12:32:54 CEST 2009 - dmueller@suse.de
+
+- bump version to 4.3.0
+
+-------------------------------------------------------------------
+Tue Jul 21 21:01:47 CEST 2009 - dmueller@suse.de
+
+- bump version to 4.2.98
+
+-------------------------------------------------------------------
+Thu Jul  9 10:11:23 CEST 2009 - beineri@opensuse.org
+
+- bump version to 4.2.96
+
+-------------------------------------------------------------------
+Wed Jul  1 08:03:31 CEST 2009 - beineri@opensuse.org
+
+- bump version to 4.2.95
+
+-------------------------------------------------------------------
+Wed Jun  3 18:21:16 CEST 2009 - dmueller@suse.de
+
+- bump version to 4.2.90
+
+-------------------------------------------------------------------
+Sun May 31 17:15:02 CEST 2009 - dmueller@suse.de
+
+- bump version to 4.2.88
+
+-------------------------------------------------------------------
+Fri May 15 07:29:06 CEST 2009 - beineri@opensuse.org
+
+- update to 4.2.85 (KDE 4.3 Beta1)
+
+-------------------------------------------------------------------
+Wed May 13 12:00:06 CEST 2009 - dmueller@suse.de
+
+- add versioned Qt dependency
+
+-------------------------------------------------------------------
+Thu Apr 30 21:08:48 CEST 2009 - dmueller@suse.de
+
+- bump to 4.2.3
+
+-------------------------------------------------------------------
+Sun Apr  5 15:25:50 CEST 2009 - beineri@opensuse.org
+
+- own /usr/share/doc/kde/HTML/<lang> (bnc#457911)
+
+-------------------------------------------------------------------
+Fri Mar 27 00:35:50 CET 2009 - dmueller@suse.de
+
+- bump to 4.2.2
+
+-------------------------------------------------------------------
+Fri Feb 27 00:10:51 CET 2009 - dmueller@suse.de
+
+- bump to 4.2.1
+
+-------------------------------------------------------------------
+Thu Jan 22 02:26:29 CET 2009 - dmueller@suse.de
+
+- bump to 4.2.0
+
+-------------------------------------------------------------------
+Tue Jan 13 18:04:53 CET 2009 - stbinner@suse.de
+
+- bump version to 4.1.96 (KDE 4.2 RC1)
+
+-------------------------------------------------------------------
+Mon Jan 12 19:46:57 CET 2009 - dmueller@suse.de
+
+- add missing obsoletes
+
+-------------------------------------------------------------------
+Mon Jan 12 16:19:50 CET 2009 - stbinner@suse.de
+
+- bump version to 4.1.87
+
+-------------------------------------------------------------------
+Sun Nov  2 19:14:37 CET 2008 - dmueller@suse.de  
+  
+- bump version to 4.1.3  
+  
+-------------------------------------------------------------------
+Sun Nov  2 18:02:38 CET 2008 - coolo@suse.de
+
+- do not use the desktop file script manually but let the
+  macro expand
+
+-------------------------------------------------------------------
+Thu Sep 25 18:57:56 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.1.2
+
+-------------------------------------------------------------------
+Mon Sep  8 23:57:44 CEST 2008 - dmueller@suse.de
+
+- remove Bsymbolic-functions for older distros (e.g. SLE10)
+
+-------------------------------------------------------------------
+Mon Sep  8 11:37:19 CEST 2008 - dmueller@suse.de
+
+- do not strip LDFLAGS
+
+-------------------------------------------------------------------
+Thu Aug 28 10:32:47 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.1.1
+
+-------------------------------------------------------------------
+Wed Aug 13 11:14:31 CEST 2008 - dmueller@suse.de
+
+- experimental link reduction
+
+-------------------------------------------------------------------
+Mon Aug  4 08:35:36 CEST 2008 - dmueller@suse.de
+
+- add more icon directories to the filelist
+
+-------------------------------------------------------------------
+Wed Jul 23 13:27:45 CEST 2008 - dmueller@suse.de
+
+- update requires to 4.1.0
+  * obsolete kde4-korn
+
+-------------------------------------------------------------------
+Fri Jul 18 02:01:43 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.0.99
+
+-------------------------------------------------------------------
+Tue Jul 15 01:13:51 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.0.98
+
+-------------------------------------------------------------------
+Thu Jul 10 10:51:29 CEST 2008 - schwab@suse.de
+
+- Fix typo in %create_subdir_filelist macro.
+
+-------------------------------------------------------------------
+Fri Jul  4 14:31:07 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.0.85
+
+-------------------------------------------------------------------
+Fri Jul  4 13:43:55 CEST 2008 - schwab@suse.de
+
+- Fix infinite loop.
+- Rewrite %create_subdir_filelist macro.
+
+-------------------------------------------------------------------
+Thu Jul  3 06:59:53 CEST 2008 - dmueller@suse.de
+
+- no longer noarch, list kde4 plugin dirs
+
+-------------------------------------------------------------------
+Mon Jun 30 11:17:58 CEST 2008 - dmueller@suse.de
+
+- make the build verbose (bnc#403687)
+
+-------------------------------------------------------------------
+Thu Jun 26 17:50:02 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.0.84
+
+-------------------------------------------------------------------
+Tue Jun 24 14:39:20 CEST 2008 - dmueller@suse.de
+
+- bump version to 4.0.83
+
+-------------------------------------------------------------------
+Tue Jun 10 15:43:37 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.82:
+  * kde4-secpolicy gone
+
+-------------------------------------------------------------------
+Mon Jun  9 23:11:16 CEST 2008 - dmueller@suse.de
+
+- update to 4.0.81 tree
+
+-------------------------------------------------------------------
+Tue May  6 10:48:05 CEST 2008 - stbinner@suse.de
+
+- bump version to 4.0.4
+
+-------------------------------------------------------------------
+Mon Apr 28 14:57:03 CEST 2008 - dmueller@suse.de
+
+- rename akonadi to akonadi-runtime to resolve version conflict
+
+-------------------------------------------------------------------
+Sat Apr 26 01:37:12 CEST 2008 - dmueller@suse.de
+
+- fix akonadi obsolete
+
+-------------------------------------------------------------------
+Mon Apr 21 15:54:16 CEST 2008 - dmueller@suse.de
+
+- fix libakonadi1 obsolete
+- stricter requirements to reject UNSTABLE tree packages
+- fix filelist macro to not list files twice
+
+-------------------------------------------------------------------
+Mon Apr 14 13:15:24 CEST 2008 - dmueller@suse.de
+
+- add kdepimlibs requires 
+- add color-schemes dir
+
+-------------------------------------------------------------------
+Mon Apr  7 23:16:48 CEST 2008 - dmueller@suse.de
+
+- package kde_config_dir
+
+-------------------------------------------------------------------
+Mon Apr  7 13:59:30 CEST 2008 - dmueller@suse.de
+
+- remove provides for kdepim related stuff
+
+-------------------------------------------------------------------
+Fri Apr  4 17:24:51 CEST 2008 - dmueller@suse.de
+
+- move global config dir to /usr/share/kde4
+
+-------------------------------------------------------------------
+Fri Mar 28 11:51:23 CET 2008 - dmueller@suse.de
+
+- update requirements to 4.0.3
+
+-------------------------------------------------------------------
+Thu Feb 28 13:59:13 CET 2008 - dmueller@suse.de
+
+- update to 4.0.2
+
+-------------------------------------------------------------------
+Thu Feb 14 15:28:17 CET 2008 - dmueller@suse.de
+
+- allow optional parameters to %cmake_kde4
+
+-------------------------------------------------------------------
+Wed Feb  6 10:16:25 CET 2008 - stbinner@suse.de
+
+- increase platform version for one-click install etc.
+
+-------------------------------------------------------------------
+Thu Jan 31 00:03:20 CET 2008 - dmueller@suse.de
+
+- update to 4.0.1
+
+-------------------------------------------------------------------
+Wed Jan 16 06:04:50 CET 2008 - stbinner@suse.de
+
+- fix obsoletes/provides list
+
+-------------------------------------------------------------------
+Sat Jan  5 18:35:59 CET 2008 - stbinner@suse.de
+
+- update to 4.0
+
+-------------------------------------------------------------------
+Thu Jan  3 13:24:20 CET 2008 - stbinner@suse.de
+
+- update to 3.97.2
+
+-------------------------------------------------------------------
+Wed Dec  5 18:10:29 CET 2007 - dmueller@suse.de
+
+- update to 3.97.0
+
+-------------------------------------------------------------------
+Mon Dec  3 11:10:57 CET 2007 - dmueller@suse.de
+
+- bump version to 3.96.2
+
+-------------------------------------------------------------------
+Wed Nov 28 10:59:31 CET 2007 - dmueller@suse.de
+
+- update vresion to 3.96.1
+- add platform version macro 
+
+-------------------------------------------------------------------
+Tue Nov 20 17:56:42 CET 2007 - dmueller@suse.de
+
+- bump version to 3.96
+
+-------------------------------------------------------------------
+Tue Nov  6 11:04:17 CET 2007 - dmueller@suse.de
+
+- bump version to 3.95.2 
+
+-------------------------------------------------------------------
+Tue Oct 30 15:33:52 CET 2007 - dmueller@suse.de
+
+- bump version number to 3.95 
+
+-------------------------------------------------------------------
+Wed Oct 17 21:24:48 CEST 2007 - dmueller@suse.de
+
+- one more missing directory
+
+-------------------------------------------------------------------
+Wed Oct 17 14:55:06 CEST 2007 - dmueller@suse.de
+
+- add some more icon related directories 
+
+-------------------------------------------------------------------
+Tue Oct 16 17:19:48 CEST 2007 - dmueller@suse.de
+
+- hack around dbus-1 packaging errors on older distros 
+
+-------------------------------------------------------------------
+Fri Sep 14 15:04:43 CEST 2007 - stbinner@suse.de
+
+- own one path more
+
+-------------------------------------------------------------------
+Sat Sep  1 17:26:15 CEST 2007 - stbinner@suse.de
+
+- bump version to 3.93.0
+
+-------------------------------------------------------------------
+Thu Aug 30 11:29:22 CEST 2007 - dmueller@suse.de
+
+- add %kde4_modules 
+
+-------------------------------------------------------------------
+Thu Aug 16 11:11:35 CEST 2007 - stbinner@suse.de
+
+- define _kde_html_dir as $prefix/share/doc/kde/HTML (#292072)
+
+-------------------------------------------------------------------
+Sat Aug  4 03:58:04 CEST 2007 - dmueller@suse.de
+
+- bump version to 3.92.0
+
+-------------------------------------------------------------------
+Mon Jul 16 11:24:54 CEST 2007 - stbinner@suse.de
+
+- bump version to 3.91.0 to be in sync with KDE release
+
+-------------------------------------------------------------------
+Tue Jun 12 10:44:59 CEST 2007 - stbinner@suse.de
+
+- add LGPL license file (#279912)
+
+-------------------------------------------------------------------
+Fri Jun  8 16:14:52 CEST 2007 - dmueller@suse.de
+
+- fix quoting in kde_post_install macro
+
+-------------------------------------------------------------------
+Mon Jun  4 14:58:46 CEST 2007 - dmueller@suse.de
+
+- add apps/kicker/applets
+
+-------------------------------------------------------------------
+Fri Jun  1 09:30:34 CEST 2007 - coolo@suse.de
+
+- initial package
+

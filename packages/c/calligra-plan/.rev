@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>351df403e90ae4d148d2baa8985b0570</srcmd5>
+    <version>3.1.0</version>
+    <time>1521904534</time>
+    <user>dimstar_suse</user>
+    <comment>Split out from calligra.
+
+- Conflict with calligra &lt; 3.1.0, some icons were part of the main
+  calligra package previously
+- Add 0001-Plan-fix-build-with-Qt-5.6.patch to fix build on Leap 42
+- Initial package of version 3.1.0, plan is released separately
+  from calligra now
+- Changes since 3.0.1 (where it was still part of calligra):
+  * Add dialog to be able to edit multiple tasks at once
+    (kde#310937)
+  * Provide expand all/collapse all in context menu (kde#313606)
+    Expands/collapses selected item(s) and all children
+    Retains the treeviews expanded rows across operations
+  * Printing: Make changes to page layout persistent (kde#385084)
+  * Open Document Text format report generator added
+    Adds the abillity to generate reports in odt format directly.
+    Reports can be viewed using an odt viewer like Calligra Words
+    or LibreOffice Writer
+    Report templates are also in odt format and can be designed 
+    using e.g Words or Writer
+  * Add support for sharing resources in multiple projects
+  * Improved context help and documentation
+  * Add support for automatic holidays generation
+  * Calendar view: Handle context menus with no calendar
+  * Replace the file centric startup page with page more suitable
+    for projects
+  * Add editing and reloading of task modules.
+  * Gantt view: Fix possible crash when deleting gantt view with
+    large projects
+  * Gantt view: Fix issue with task dependencies not cleared in 
+    certain situations
+  * Fix undo/redo issue with modifying project target times
+  * Fix potential crash in Cost Breakdown View
+  * Fix potential crash when creating new project from current 
+    project
+  * Fix performance issue in chart view
+  Note:
+  * Support for scripting is discontinued
+  * Reports using KReport is not supported in this release
+</comment>
+    <requestid>590305</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9af454769a5d6fe7c7267c21f9227576</srcmd5>
+    <version>3.1.0</version>
+    <time>1524144692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597692</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>35096c687b11631b4d2fa1ca372bd7b6</srcmd5>
+    <version>3.1.0</version>
+    <time>1528111340</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-build-with-Qt-511.patch.
+- Run spec-cleaner.
+</comment>
+    <requestid>613795</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e199f75f03e09cab92aa95fa1fb1e6ba</srcmd5>
+    <version>3.1.0</version>
+    <time>1564414146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719366</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6fbea302184c18b74fba676194779090</srcmd5>
+    <version>3.1.0</version>
+    <time>1565695372</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.13</comment>
+    <requestid>722611</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="caasp-cli" project="openSUSE:Factory">
+  <title>SUSE CaaSP CLI</title>
+  <description>Command line interface for interacting with SUSE Container as a Service Platform clusters</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="caasp-cli"/>
+</package>

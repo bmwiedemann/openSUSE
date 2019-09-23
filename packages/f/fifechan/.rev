@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12e77a41f509cea854dd3c50a15a5421</srcmd5>
+    <version>0.1.4</version>
+    <time>1490707266</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>461014</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>88c7b9d90f3a42ceccb2e5efcabd1d79</srcmd5>
+    <version>0.1.4</version>
+    <time>1491896685</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>676431fe5dcd36b1c32fddede9f3e4b1</srcmd5>
+    <version>0.1.5</version>
+    <time>1548335635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to fifechan 0.1.5
+  * Adds AT key
+  * Add Auto layouting
+  * Bugfixes
+- Drop unused Debian build files
+</comment>
+    <requestid>667851</requestid>
+  </revision>
+</revisionlist>

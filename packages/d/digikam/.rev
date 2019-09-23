@@ -1,0 +1,1552 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>5bcfe5b97b08099d590c8d4eeafe1b09</srcmd5>
+    <version>0.9.0</version>
+    <time>1166484913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>3fbf7bef70305728ad39179b06843ad6</srcmd5>
+    <version>0.9.0</version>
+    <time>1167908663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ff668eda9a7c8ce53760095b798395ff</srcmd5>
+    <version>0.9.1</version>
+    <time>1173204511</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>bbbfaee7b31a6a9ca10f926ddd43f91d</srcmd5>
+    <version>0.9.1</version>
+    <time>1176762647</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>ec91a4fa099f3109d3c4570e2f2373cd</srcmd5>
+    <version>0.9.1</version>
+    <time>1177010160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>2c9ce952715e909aa9f8d07e8d853d0d</srcmd5>
+    <version>0.9.1</version>
+    <time>1177077337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>5c4bb08a679782006d6b1525b91f2f86</srcmd5>
+    <version>0.9.1</version>
+    <time>1177362978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>6d0d2c31787277a9cacfcb8418f52864</srcmd5>
+    <version>0.9.1</version>
+    <time>1177412941</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="24">
+    <srcmd5>1a3986b701f9c8b8fbec8b9a92157578</srcmd5>
+    <version>0.9.1</version>
+    <time>1178890350</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="30">
+    <srcmd5>917a72685d4bcba84734c5ec524ba3bd</srcmd5>
+    <version>0.9.1</version>
+    <time>1179394065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="41">
+    <srcmd5>d067a20aae6921a348cf9bf3ffb207f6</srcmd5>
+    <version>0.9.1</version>
+    <time>1180682847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="51">
+    <srcmd5>84d4c9a088946245866246c8d5707728</srcmd5>
+    <version>0.9.1</version>
+    <time>1181774071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>72f7f88bf3dd24823e61a85c085782c9</srcmd5>
+    <version>0.9.2</version>
+    <time>1182204924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6256ecf71459536f2545f206d55e2287</srcmd5>
+    <version>0.9.2</version>
+    <time>1182273914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>72e557feb747d4af958f6ff1489ccc71</srcmd5>
+    <version>0.9.2</version>
+    <time>1182456415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>682d1f3fd4a20494731bd2885fc88e74</srcmd5>
+    <version>0.9.2</version>
+    <time>1184143469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>e2953ca453c2acc4aa0a0ecf341894a7</srcmd5>
+    <version>0.9.2</version>
+    <time>1184785360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>9f928edc5fe1e097510adf260cb00571</srcmd5>
+    <version>0.9.2</version>
+    <time>1187910097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="69">
+    <srcmd5>09dd22a82c941e5462f85df74a724f92</srcmd5>
+    <version>0.9.2</version>
+    <time>1194102916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>eed10973e5952fc49e331f0add40817b</srcmd5>
+    <version>0.9.3rc1</version>
+    <time>1197327032</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>49884136cc671116b313d5baa3b43893</srcmd5>
+    <version>0.9.3</version>
+    <time>1199135931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="57">
+    <srcmd5>792dc5b6492bc5a10935da6954d2f297</srcmd5>
+    <version>0.9.3</version>
+    <time>1210280695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="62">
+    <srcmd5>4ec18e9587731e15b9a8e3399492a493</srcmd5>
+    <version>0.9.3</version>
+    <time>1210984401</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="74">
+    <srcmd5>ea2bcfaae9c95e0e877016da2994908a</srcmd5>
+    <version>0.9.3</version>
+    <time>1214832322</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>93edbc29b70b166f13bad0adb2064ed8</srcmd5>
+    <version>0.9.4</version>
+    <time>1216655326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="50">
+    <srcmd5>2ea72b38c64565ebf8a32b1b8eac307c</srcmd5>
+    <version>0.9.4</version>
+    <time>1225981380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="51">
+    <srcmd5>57698e044885117873ebe445e58644d5</srcmd5>
+    <version>0.9.4</version>
+    <time>1226936776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="52">
+    <srcmd5>e225cb2e68a3979ddb220c31c4e073ee</srcmd5>
+    <version>0.9.4</version>
+    <time>1232409653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>23d5239e9b79fc9c9342a2f62e1ceea4</srcmd5>
+    <version>0.9.5</version>
+    <time>1237334621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e95771168c9eccc16a3a41a719290422</srcmd5>
+    <version>0.9.5</version>
+    <time>1239101617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>10174dc26ba3aa9a8829b742eb256751</srcmd5>
+    <version>0.10.0</version>
+    <time>1240264819</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6eee101499a78f14637d0ae9e6af62c9</srcmd5>
+    <version>0.10.0</version>
+    <time>1242691751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>9cd615d9b755d3cb8afa871c797bf5f5</srcmd5>
+    <version>0.10.0</version>
+    <time>1243940392</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>cab31243568f2659a0ff313dc76f4bb9</srcmd5>
+    <version>0.10.0</version>
+    <time>1248366134</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>7ab5ef5cd51778edfce432f327a353cc</srcmd5>
+    <version>0.10.0</version>
+    <time>1248540945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>8c25b229d01d4bcf06585a62a07303d1</srcmd5>
+    <version>0.10.0</version>
+    <time>1250870181</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 18304 from user Beineri
+</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>8c25b229d01d4bcf06585a62a07303d1</srcmd5>
+    <version>0.10.0</version>
+    <time>1250870181</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 18304 from user Beineri
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fba8d407a90b7c7045badf222bd815e4</srcmd5>
+    <version>1.0rc</version>
+    <time>1260981018</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 26777 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0aade549e9577c8568792a29887ba430</srcmd5>
+    <version>1.0.0</version>
+    <time>1261440808</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 27376 from user Beineri
+</comment>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>9a6b1fac2a36dcc608f9264adfe72f3a</srcmd5>
+    <version>1.0.0</version>
+    <time>1262967660</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 28327 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>cea6404bea984e22c2953fee980e6151</srcmd5>
+    <version>1.0.0</version>
+    <time>1265279522</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 30777 from user llunak
+</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1d56ff6f20001405cef7d405880c1623</srcmd5>
+    <version>1.1.0</version>
+    <time>1265749946</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 31960 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>06bb8d7eaf3e0f3ccf586e4db606d355</srcmd5>
+    <version>1.1.0</version>
+    <time>1268923340</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>360a6d9a0e169011b623b3aba04a47fd</srcmd5>
+    <version>1.2.0</version>
+    <time>1270109271</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 36483 from user wstephenson
+</comment>
+    <requestid>36483</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>c7aec0ae932a195dc72cab8f55b86042</srcmd5>
+    <version>1.2.0</version>
+    <time>1274140063</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 40173 from user llunak
+</comment>
+    <requestid>40173</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>a5c319f8b9df5902fb86ff5410c1c14d</srcmd5>
+    <version>1.2.0</version>
+    <time>1277139336</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/digikam based on submit request 41783 from user dirkmueller
+</comment>
+    <requestid>41783</requestid>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>a5c319f8b9df5902fb86ff5410c1c14d</srcmd5>
+    <version>1.2.0</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>a5c319f8b9df5902fb86ff5410c1c14d</srcmd5>
+    <version>1.2.0</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0b2c75a334f46bf26cca5955137a7d03</srcmd5>
+    <version>1.3.0</version>
+    <time>1279565786</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/digikam based on submit request 43249 from user dirkmueller
+</comment>
+    <requestid>43249</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a97b27eea1b7a72a5eec4f72115b1dd0</srcmd5>
+    <version>1.3.0</version>
+    <time>1281313397</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/digikam based on submit request 44563 from user dirkmueller
+</comment>
+    <requestid>44563</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5bef51cf020da69984945b883a5cca48</srcmd5>
+    <version>1.4.0</version>
+    <time>1282917829</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/digikam based on submit request 46224 from user adrianSuSE
+</comment>
+    <requestid>46224</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f35d385cfeff8a75c5d9534e8100bca1</srcmd5>
+    <version>1.4.0</version>
+    <time>1285282945</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/digikam based on submit request 48977 from user coolo
+</comment>
+    <requestid>48977</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9dee7e2b0260c21c1cdc0b8692e664a5</srcmd5>
+    <version>1.5.0</version>
+    <time>1288271860</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51558 from user coolo
+</comment>
+    <requestid>51558</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>14893610e4151168b5b375a56add9f2b</srcmd5>
+    <version>1.5.0</version>
+    <time>1288271868</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51558
+</comment>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>774eb6916c652c6b7629f29db0caad50</srcmd5>
+    <version>1.5.0</version>
+    <time>1289532527</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>14893610e4151168b5b375a56add9f2b</srcmd5>
+    <version>1.5.0</version>
+    <time>1289569337</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>79daf0bf9427045025009338c9959dd1</srcmd5>
+    <version>1.6.0</version>
+    <time>1290591777</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53817 from user adrianSuSE
+</comment>
+    <requestid>53817</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>fae31190eafae4a2a9caf1a061b025f7</srcmd5>
+    <version>1.6.0</version>
+    <time>1290591783</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 53817
+</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>eaf9af16200708794f5936b02479dd89</srcmd5>
+    <version>1.7.0</version>
+    <time>1293577170</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56701 from user rwooninck
+</comment>
+    <requestid>56701</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>f226ddd1c33b4b52913f17bc985ccfb9</srcmd5>
+    <version>1.7.0</version>
+    <time>1294049119</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56916 from user rwooninck
+</comment>
+    <requestid>56916</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>a3104c3dcbb0493603edea6df0131bd5</srcmd5>
+    <version>1.7.0</version>
+    <time>1294049139</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56916
+</comment>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>08c59510d3bce41b251eea68c149d300</srcmd5>
+    <version>1.8.0</version>
+    <time>1295957200</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59102 from user wstephenson
+</comment>
+    <requestid>59102</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>8de1395d5494b5f7192738d5d9a13719</srcmd5>
+    <version>1.8.0</version>
+    <time>1295957215</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59102
+</comment>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>8de1395d5494b5f7192738d5d9a13719</srcmd5>
+    <version>1.8.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f846bb35fca51b9c37c087f1c160c8d3</srcmd5>
+    <version>1.9.0</version>
+    <time>1299674158</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63497 from user rwooninck
+</comment>
+    <requestid>63497</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>55b3798add85ff13112945c5f2129822</srcmd5>
+    <version>1.9.0</version>
+    <time>1299674167</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63497
+</comment>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>6b0790ea49549dc1e1638ac844c0d687</srcmd5>
+    <version>1.9.0</version>
+    <time>1308643057</time>
+    <user>saschpe</user>
+    <comment>Fix compilation with new Marble</comment>
+    <requestid>74202</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>e3a8ad5129ab38ec7cff731b3ddc1b9c</srcmd5>
+    <version>1.9.0</version>
+    <time>1308643071</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74202
+</comment>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>2df16bb7243b6e6dbcc43bf1939472bb</srcmd5>
+    <version>2.0.0</version>
+    <time>1312445681</time>
+    <user>saschpe</user>
+    <comment>Update to 2.0 release</comment>
+    <requestid>77440</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>c4876cdafbf7cb99210748eddedaaa65</srcmd5>
+    <version>2.0.0</version>
+    <time>1312445696</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77440
+</comment>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>652d6fc55d8affebccd5486602bce8b2</srcmd5>
+    <version>2.0.0</version>
+    <time>1314609664</time>
+    <user>saschpe</user>
+    <comment>forward to factory</comment>
+    <requestid>79378</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>0c860c39abfd0c569c2b7d607abaf558</srcmd5>
+    <version>2.0.0</version>
+    <time>1314609676</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79378
+</comment>
+  </revision>
+  <revision rev="73" vrev="5">
+    <srcmd5>d8b9396c8567e27390d70c681c3ff9f3</srcmd5>
+    <version>2.0.0</version>
+    <time>1314693723</time>
+    <user>saschpe</user>
+    <comment> - Add digikam-link-order.patch: fix library link order,
+   bko #258931</comment>
+    <requestid>80019</requestid>
+  </revision>
+  <revision rev="74" vrev="6">
+    <srcmd5>0f5114981efb5786042611e139ec6466</srcmd5>
+    <version>2.0.0</version>
+    <time>1314693742</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80019
+</comment>
+  </revision>
+  <revision rev="75" vrev="7">
+    <srcmd5>880b78ac2c5e4e87c7766472b9b551fc</srcmd5>
+    <version>2.0.0</version>
+    <time>1315232844</time>
+    <user>lrupp</user>
+    <comment>- fix package-with-large-docs - perhaps we can get it back to live cd somehow</comment>
+    <requestid>80893</requestid>
+  </revision>
+  <revision rev="76" vrev="8">
+    <srcmd5>2a196f69726718490cdefa039836cc99</srcmd5>
+    <version>2.0.0</version>
+    <time>1315232856</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80893
+</comment>
+  </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>42a028a963d9591912ab179a45223f4b</srcmd5>
+    <version>2.1.0</version>
+    <time>1316001636</time>
+    <user>saschpe</user>
+    <comment>- Add disable-unsupported-cmake-policy.patch to remove unsupported
+  cmake policy setup, fixes openSUSE 11.4 build
+
+- update to version 2.1.0
+  * Mainly bug fix release
+  * CameraGUI improvements
+- new libkvkontakte may need to be splitted into own package as well</comment>
+    <requestid>82072</requestid>
+  </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>44a32e1459d28dfc034edf5d34cff258</srcmd5>
+    <version>2.1.0</version>
+    <time>1316001645</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82072
+</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>41ac0cb264abe40ced52c17967c722ec</srcmd5>
+    <version>2.1.1</version>
+    <time>1316081081</time>
+    <user>saschpe</user>
+    <comment>version update</comment>
+    <requestid>82195</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>1d589311805799b9c2b7f4216d4dddb0</srcmd5>
+    <version>2.1.1</version>
+    <time>1316081093</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82195
+</comment>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>70bf29aca60a95d67b307ae62e09c201</srcmd5>
+    <version>2.1.1</version>
+    <time>1316443318</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83256 from jengelh)</comment>
+    <requestid>83323</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>621e0ff4b939cf7e145ac6232dc288ee</srcmd5>
+    <version>2.2.0</version>
+    <time>1317759271</time>
+    <user>lrupp</user>
+    <comment>mainly bugfix release</comment>
+    <requestid>86583</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>fb0dff859efe0aeaa37b75270ab13e24</srcmd5>
+    <version>2.2.0</version>
+    <time>1318761759</time>
+    <user>lrupp</user>
+    <comment>- Removed check for obsolete openSUSE version (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 87850 from TheBlackCat)</comment>
+    <requestid>88020</requestid>
+  </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>fb0dff859efe0aeaa37b75270ab13e24</srcmd5>
+    <version>2.2.0</version>
+    <time>1319181848</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d33f67100e8e9f04a0d9f2e38de34e49</srcmd5>
+    <version>2.3.0</version>
+    <time>1320769552</time>
+    <user>coolo</user>
+    <comment>- Workaround kde#286034 
+
+- update to version 2.3.0
+  * Bugfix release, please see included NEWS file for fixed bugs.</comment>
+    <requestid>90540</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>e3e5514be2538323c4d71df045e99aa8</srcmd5>
+    <version>2.3.0</version>
+    <time>1321460261</time>
+    <user>coolo</user>
+    <comment>- Require libqt4-sql-sqlite and libqt4-sql-mysql (bnc#730111)
+
+Both requirements were already present before, see bnc#627274
+Apparently both requirements were dropped with the update to digikam 1.9.0 without giving a good reason. (forwarded request 91678 from christiantrippe)</comment>
+    <requestid>91679</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>7031d55db343236dafdc930b91f2a408</srcmd5>
+    <version>2.3.0</version>
+    <time>1323191173</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>14d7607b21a60c80eafb30968b163370</srcmd5>
+    <version>2.4.1</version>
+    <time>1323869589</time>
+    <user>coolo</user>
+    <comment>- update to 2.4.1
+  * a bug-fixes release, including a total of 25 fixed bugs. 
+  * histogram view from right sidebar have been improved for better
+     image analyse.
+
+- require libkipi8 version build against, it changes ABI too often</comment>
+    <requestid>96415</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>f2bc22775f86f7108df9c30629d17588</srcmd5>
+    <version>2.5.0</version>
+    <time>1328711850</time>
+    <user>coolo</user>
+    <comment>Upgrade to version 2.5.0. The packages kipi-plugins, libmediawiki, libkface, libkgeomap are now generated as subpackages from digikam. The Documentation subpackage has now the correct license include the license file</comment>
+    <requestid>102732</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>d2c7f7006c86f7ca6bd0a48ac4e02c12</srcmd5>
+    <version>2.5.0</version>
+    <time>1333389215</time>
+    <user>coolo</user>
+    <comment>- Add digikam-boost-1.48.patch to fix build with new boost</comment>
+    <requestid>112154</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>e63a1af02b2b613c13a854e0844eb9c8</srcmd5>
+    <version>2.5.0</version>
+    <time>1336035318</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 115248 from dimstar)</comment>
+    <requestid>115252</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>74bd1fe7b2bec56d414a1df3b5e411e9</srcmd5>
+    <version>2.6.0</version>
+    <time>1339392649</time>
+    <user>coolo</user>
+    <comment>Update to 2.6.0, Removed/Rebased some patches (forwarded request 124135 from adra)</comment>
+    <requestid>124174</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>ce34af8aee109faeb535c9b6f4f5d2b0</srcmd5>
+    <version>2.6.0</version>
+    <time>1340134844</time>
+    <user>coolo</user>
+    <comment>- disable parallel build, it's too memory hungy for OBS workers</comment>
+    <requestid>125430</requestid>
+  </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>ce34af8aee109faeb535c9b6f4f5d2b0</srcmd5>
+    <version>2.6.0</version>
+    <time>1340183280</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>c467338ad98648742ed1e65d0e9486d5</srcmd5>
+    <version>2.7.0</version>
+    <time>1342171848</time>
+    <user>namtrac</user>
+    <comment>updated digikam to 2.7.0 (forwarded request 127704 from NicoK)</comment>
+    <requestid>127735</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8d21eb6cedd6939546021facd1909395</srcmd5>
+    <version>2.8.0</version>
+    <time>1346179486</time>
+    <user>coolo</user>
+    <comment>update to 2.8.0 (forwarded request 130589 from NicoK)</comment>
+    <requestid>131419</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>75ff4c82fe2b5939fef0a26ca8718a7c</srcmd5>
+    <version>2.9.0</version>
+    <time>1347487312</time>
+    <user>namtrac</user>
+    <comment>update to version 2.9.0 (forwarded request 133568 from mlin7442)</comment>
+    <requestid>133597</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>5f5a090e4613a7b3ba2c061856ae0019</srcmd5>
+    <version>2.9.0</version>
+    <time>1348644840</time>
+    <user>coolo</user>
+    <comment>changed source URL (digikam is available at kde.org now), format spec file, take 2 (forwarded request 135411 from NicoK)</comment>
+    <requestid>135429</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>fcd6e15ceebe3fada9259876e214b7c3</srcmd5>
+    <version>2.9.0</version>
+    <time>1348669019</time>
+    <user>coolo</user>
+    <comment>- slideshow.png is gone</comment>
+    <requestid>136035</requestid>
+  </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>b6084c5d463115e1fff160619d68d30d</srcmd5>
+    <version>2.9.0</version>
+    <time>1349372200</time>
+    <user>coolo</user>
+    <comment>- add BuildRequires:  libusb-compat-devel to fix gphoto2 deps (forwarded request 136977 from rabauke)</comment>
+    <requestid>136980</requestid>
+  </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>13d865c7a5e22d4cc5974f1be6847855</srcmd5>
+    <version>2.9.0</version>
+    <time>1351537337</time>
+    <user>coolo</user>
+    <comment>Added glu as build requirement (forwarded request 139618 from adra)</comment>
+    <requestid>139619</requestid>
+  </revision>
+  <revision rev="102" vrev="6">
+    <srcmd5>2e3bc93b623549ec75770ad3a30a4ea7</srcmd5>
+    <version>2.9.0</version>
+    <time>1352716846</time>
+    <user>coolo</user>
+    <comment>Added libpgf-devel as build requirement (to be used instead of the bundled copy) (forwarded request 140856 from adra)</comment>
+    <requestid>140858</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>3846b36388a1e8e650f2ebd8200725ca</srcmd5>
+    <version>2.9.83</version>
+    <time>1354885679</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>144064</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>f099d1907e4cd1dd919963876ce0659a</srcmd5>
+    <version>2.9.95</version>
+    <time>1357552750</time>
+    <user>coolo</user>
+    <comment>Apologies for the previous submit. Package was updated by another maintainer and I have indicated the packaging guidelines to him. </comment>
+    <requestid>147306</requestid>
+  </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>f099d1907e4cd1dd919963876ce0659a</srcmd5>
+    <version>2.9.95</version>
+    <time>1359108813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c2c93751656c0aee8757cc0859f373ce</srcmd5>
+    <version>3.0.0</version>
+    <time>1360683395</time>
+    <user>coolo</user>
+    <comment>update to 3.0.0 final (this time with the correct source URL)</comment>
+    <requestid>155188</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>55fad7ca6a23e4bfc15663332e5794ed</srcmd5>
+    <version>3.0.0</version>
+    <time>1360870552</time>
+    <user>coolo</user>
+    <comment>- Remove spurious bison/flex dependencies</comment>
+    <requestid>155369</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>1d480815463e6891317186bc9e4dcc35</srcmd5>
+    <version>3.1.0</version>
+    <time>1363858686</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160217</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>eafa30dd7d382f0f0d01b6677d3a4cfd</srcmd5>
+    <version>3.1.0</version>
+    <time>1366272845</time>
+    <user>coolo</user>
+    <comment>- Added patch digikam-patch78541.diff from upstream to fix 
+  detection of certain cameras (bnc#814622, bko#311393)</comment>
+    <requestid>171331</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>259ca581b37c2b66f59f9745b0ab1c10</srcmd5>
+    <version>3.1.0</version>
+    <time>1367221961</time>
+    <user>coolo</user>
+    <comment>- Added missing bugid bnc#816693
+- fixed wrong bugtracker (bko==bugzilla.kernel.org, kde== bugs.kde.org) (forwarded request 173557 from NicoK)</comment>
+    <requestid>173558</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>3b872168b6554cc290a6e7671022751a</srcmd5>
+    <version>3.2.0</version>
+    <time>1368711138</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.0</comment>
+    <requestid>175730</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>ed018b8e2bcc1a95eeab69734137b35b</srcmd5>
+    <version>3.2.0</version>
+    <time>1370923604</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178241</requestid>
+  </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>7644ea2b5d4211467c13ed2b09064fe9</srcmd5>
+    <version>3.2.0</version>
+    <time>1371134335</time>
+    <user>coolo</user>
+    <comment>Added libeigen3-devel and libkqoauth-devel as build requirements, Replaced ImageMagick with ImageMagick-devel as build requirement, Minor other fixes (forwarded request 178437 from adra)</comment>
+    <requestid>178493</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>b390072b5b9058e8daef3ebf4c8078da</srcmd5>
+    <version>3.3.0</version>
+    <time>1376653682</time>
+    <user>scarabeus_factory</user>
+    <comment>rajceexport-stop-crashing-when-uploaded-nothing.patch: rajceexport: stop crashing when uploaded nothing (bnc#835021) (forwarded request 195371 from jirislaby)</comment>
+    <requestid>195376</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>efbc91f5f8609e16d9ab55f491829860</srcmd5>
+    <version>3.3.0</version>
+    <time>1377855372</time>
+    <user>coolo</user>
+    <comment>Dropped desktop-files.diff, it's no longer needed and AcquireImages is missing it's icon due to it (bnc#835989) (forwarded request 196709 from sumski)</comment>
+    <requestid>196718</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>0d20addb673c1f47dc5b7e1a2fc966ae</srcmd5>
+    <version>3.4.0</version>
+    <time>1378531910</time>
+    <user>coolo</user>
+    <comment>- Update to 3.4.0
+  digikam
+    - General         : Add interroperabilty with Capture NX about
+                        Color Labels support.
+    - MaintenanceTool : add new options to select Albums and Tags
+                        to process.
+    - MaintenanceTool : add multi-threading and multi-core CPU
+                        support for Metadata Synchronizer, Thumbs
+                        Generator, and Fingerprint Generator tools.
+    - 9 fixed bugs. (forwarded request 197616 from Dmitry_R)</comment>
+    <requestid>197621</requestid>
+  </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>0d20addb673c1f47dc5b7e1a2fc966ae</srcmd5>
+    <version>3.4.0</version>
+    <time>1379662227</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>36c2160d0213ee9a7d25927123767e3c</srcmd5>
+    <version>3.5.0</version>
+    <time>1382095996</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.5.0</comment>
+    <requestid>203721</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>2be00c1df34d5bf26259fc4078d9afeb</srcmd5>
+    <version>3.5.0</version>
+    <time>1383034895</time>
+    <user>coolo</user>
+    <comment>BuildRequire pkgconfig(libkipi) &gt;= 2.0.0, instead of generic, and unversioned libkipi-devel</comment>
+    <requestid>204954</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>1dc0be914336613de191573ae4750eea</srcmd5>
+    <version>4.0.0~beta4</version>
+    <time>1398267105</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.0~beta4</comment>
+    <requestid>230933</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>d595d00e3a3a9a5e23d5911d2cc6888a</srcmd5>
+    <version>4.0.0~rc</version>
+    <time>1399703528</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.0~rc</comment>
+    <requestid>232985</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>461f3507f0cb929b0819d7d7c90185f6</srcmd5>
+    <version>4.0.0</version>
+    <time>1401108025</time>
+    <user>coolo</user>
+    <comment>-------------------------------------------------------------------
+
+- Build with lcm2 for openSUSE 13.2 and newer
+
+-------------------------------------------------------------------
+
+- Update to 4.0.0 final
+  * Final release. see NEWS file for more details</comment>
+    <requestid>235336</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>299b9c6f97695b21607e9d261b178e2c</srcmd5>
+    <version>4.1.0</version>
+    <time>1404306271</time>
+    <user>coolo</user>
+    <comment>Forward request 239002: 
+version update</comment>
+    <requestid>239137</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>aa475f6b73f4e87a553164f2430fbe6f</srcmd5>
+    <version>4.2.0</version>
+    <time>1409170696</time>
+    <user>coolo</user>
+    <comment>-------------------------------------------------------------------
+Tue Aug  5 14:08:33 UTC 2014 - nico.kruber@gmail.com
+
+- Update to 4.2.0
+  digikam:
+    - AlbumGui : New view on left sidebar to search quickly items
+                 with assigned Labels.
+                 Details: http://mohamedanwer.wordpress.com/2014/07/17/the-great-merging-day/
+    - AlbumGui : Tags view: add a new option to show items with
+                 no tag.
+                 Details: http://mohamedanwer.wordpress.com/2014/07/11/tags-left-sidebar-supports-new-action-now/
+    - Geberal  : Add retina display support with preview and
+                 editor canvas under OSX.
+    - 16 fixed bugs
+      (kde#336851, kde#336650, kde#326019, kde#337231, kde#337392,
+       kde#262175, kde#262167, kde#286463, kde#337417, kde#160363,
+       kde#330976, kde#337507, kde#337688, kde#160363, kde#132827,
+       kde#337993)
+  kipi-plugins:
+    - 4 fixed bugs (kde#313203, kde#334089, kde#336835, kde#256466)
+- adapt remove-gplv2-only.patch
+- dropped QtGstreamer-1.0.patch (added upstream)
+
+-------------------------------------------------------------------
+Thu Jul 24 10:34:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added QtGstreamer-1.0.patch to support QtGstreamer 1.x API (applied
+  on Factory/13.2 only)
+- Build with gstreamer-plugins-qt-devel for those openSUSE versions</comment>
+    <requestid>246443</requestid>
+  </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>aa475f6b73f4e87a553164f2430fbe6f</srcmd5>
+    <version>4.2.0</version>
+    <time>1409300765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>1b52091e1af3a2742ff411ea66a474a3</srcmd5>
+    <version>4.3.0</version>
+    <time>1411127740</time>
+    <user>coolo</user>
+    <comment>Update to 4.3.0</comment>
+    <requestid>249878</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>d5b81e7c64cc96a148743938e93dfc61</srcmd5>
+    <version>4.3.0</version>
+    <time>1412155325</time>
+    <user>coolo</user>
+    <comment>- Added handle_right_libkexiv2_version.diff and handle_right_libkexiv2_version2.diff, kde#339144, bnc#898260
+
+- Add bug325580.patch: Fix job reset when it's done : do not return directly is an error appear with a job, without to reset job. kde#325580, kde#339210</comment>
+    <requestid>251984</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>2cdeab7b27e6fbf7a92c4aa21ca843e0</srcmd5>
+    <version>4.4.0</version>
+    <time>1413528629</time>
+    <user>coolo</user>
+    <comment>Update to 4.4.0</comment>
+    <requestid>256860</requestid>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>8d528261a5d7730f58f8874358dec959</srcmd5>
+    <version>4.4.0</version>
+    <time>1413739662</time>
+    <user>coolo</user>
+    <comment>fix build with KDE 4.14.x</comment>
+    <requestid>257322</requestid>
+  </revision>
+  <revision rev="130" vrev="3">
+    <srcmd5>7aeaf64c2d27bddfef80b116c904908c</srcmd5>
+    <version>4.4.0</version>
+    <time>1415953111</time>
+    <user>dimstar_suse</user>
+    <comment>Added kde#89156.patch: avoid deadlocks with external MySQL/MariaDB, kde#89156</comment>
+    <requestid>259996</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>ce6ddbc2c36561236d945ee99c7f7147</srcmd5>
+    <version>4.5.0</version>
+    <time>1417160830</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.5.0 (this sr also obsoletes the old libraries and thus avoids the conflicts)</comment>
+    <requestid>263143</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>28fab70123ffd4ad22070d63ed58cafd</srcmd5>
+    <version>4.6.0</version>
+    <time>1420429380</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.6.0</comment>
+    <requestid>267143</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>6da49270c6a71eda53a22e6e6d25d917</srcmd5>
+    <version>4.6.0</version>
+    <time>1421874792</time>
+    <user>coolo</user>
+    <comment>libkface has been split off from digikam upstream and should now be provided as a separate package.  libkface can only be accepted together with this digikam update</comment>
+    <requestid>281486</requestid>
+  </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>1069ebb68368b7966a397d5930ef6e76</srcmd5>
+    <version>4.6.0</version>
+    <time>1422216963</time>
+    <user>dimstar_suse</user>
+    <comment>fix dep</comment>
+    <requestid>282660</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>22f6938e172615e9606ab3e26310d974</srcmd5>
+    <version>4.8.0</version>
+    <time>1426174624</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.8.0 (2nd try - reverts an accidental change I saw too late)
+
+Please wait until the builds finish before accepting. Last time, I forgot to create a sr when I wanted to wait for the builds to turn out ok (I always test with a local build for 13.2 first though).</comment>
+    <requestid>290079</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>73be201f773fb1e5c5726f346472b3a5</srcmd5>
+    <version>4.9.0</version>
+    <time>1428949760</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.9.0</comment>
+    <requestid>295354</requestid>
+  </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>0588324f4410094f88228b53e60b4b48</srcmd5>
+    <version>4.9.0</version>
+    <time>1431365528</time>
+    <user>coolo</user>
+    <comment>Update for digikam to start using libkgeomap from KDE Applications</comment>
+    <requestid>304408</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>f33259d554a0a9e6f1acac6e4342755b</srcmd5>
+    <version>4.11.0</version>
+    <time>1438548253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318503</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>daaf5ef763069f3bc5172147308077fa</srcmd5>
+    <version>4.11.0</version>
+    <time>1439190925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321246</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>4e5b02705f1a2c7f8d0623050ad0a883</srcmd5>
+    <version>4.13.0</version>
+    <time>1442474209</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330032</requestid>
+  </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>a2a54057ff6c0add3482cbb2695bfc04</srcmd5>
+    <version>4.13.0</version>
+    <time>1444636890</time>
+    <user>coolo</user>
+    <comment>- Don't buildrequire marble-devel when libkgeomap isn't built
+
+- Align build of Leap 42.1 with the one in Tumbleweed (do not build
+  libkface3 and libkgeomap2).</comment>
+    <requestid>337929</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>84868bfe31b67c84b5bf31c49f611908</srcmd5>
+    <version>4.14.0</version>
+    <time>1446647548</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341878</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>17b34aa285b531adb1f42c7c0bd68e16</srcmd5>
+    <version>4.14.0</version>
+    <time>1453508009</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed some of the if statements for the digikam-libs package, so that it also builds for Leap.</comment>
+    <requestid>354780</requestid>
+  </revision>
+  <revision rev="144" vrev="3">
+    <srcmd5>cf1140abbb13baf8cfb99b6e6d6c9b1d</srcmd5>
+    <version>4.14.0</version>
+    <time>1454149904</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356746</requestid>
+  </revision>
+  <revision rev="145" vrev="4">
+    <srcmd5>be3e8100843c18fdbd91371c9496315e</srcmd5>
+    <version>4.14.0</version>
+    <time>1456132203</time>
+    <user>dimstar_suse</user>
+    <comment>This SR also includes a change to enable co-installability of the kipi-plugsin5 package. This would allow people to use kipi-plugins for gwenview5 and Spectacle. This SR should stay together with SR#359942 (kipi-plugins5)</comment>
+    <requestid>359944</requestid>
+  </revision>
+  <revision rev="146" vrev="5">
+    <srcmd5>2daa6573ea0284a804155011fd7810b2</srcmd5>
+    <version>4.14.0</version>
+    <time>1457173288</time>
+    <user>dimstar_suse</user>
+    <comment>This is the update for digikam to make it build with the newer openCV 3.1.  This should be in the same staging area as OpenCV !!</comment>
+    <requestid>365844</requestid>
+  </revision>
+  <revision rev="147" vrev="6">
+    <srcmd5>c16a46630fafa82c437a80a492c0750d</srcmd5>
+    <version>4.14.0</version>
+    <time>1457685454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367536</requestid>
+  </revision>
+  <revision rev="148" vrev="7">
+    <srcmd5>a21c3bbd7e166d69517c2051cacd18a8</srcmd5>
+    <version>4.14.0</version>
+    <time>1464075243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396566</requestid>
+  </revision>
+  <revision rev="149" vrev="8">
+    <srcmd5>502a87885eae0c25e0ca35973ef624f7</srcmd5>
+    <version>4.14.0</version>
+    <time>1464964680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399598</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>864d312f6170fa016663a05dd6c72c20</srcmd5>
+    <version>5.2.0</version>
+    <time>1475241730</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround kde#369517 by removing libvkontakte translations
+  (not built but installed anyway) 
+
+- Ensure akonadi-contact-devel is not pulled in for ppc64, as
+  QWebEngine is not available for that platform
+
+- Don't disable building the documentation any more, kde#365135 is
+  fixed in 5.2.0
+
+- Update to Digikam v5.2.0: https://www.digikam.org/node/758
+  * many bugfixes
+  * updated documentation
+- Remove build-32bits.patch again, fixed upstream
+- Add threadweaver and gphoto buildrequires
+- Enable appstyles to not force fusion style
+- Fix miscellaneous rpmlint warnings
+
+- Add find_libastro-qt5.patch to fix build of geolocation support
+  in Leap 42.1
+
+- Update to Digikam v5.1.0: https://www.digikam.org/node/756
+  * many bugfixes
+  * supports new RAW cameras
+- Add build-32bits.patch to fix build on 32-bit x86
+
+- Enable mediaplayer (Qt5Multimedia support)
+
+- Drop unused build dependency on sqlite2
+- Obsolete the kipi-plugins5 package</comment>
+    <requestid>431477</requestid>
+  </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>fce25421e17f412f7d0df57e37bbdea3</srcmd5>
+    <version>5.2.0</version>
+    <time>1475502602</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432953</requestid>
+  </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>7dd16ec3337818cedc690be988ec8867</srcmd5>
+    <version>5.2.0</version>
+    <time>1476108968</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432990</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>dc1a101bd3c1e7a5f5faffbef34efd72</srcmd5>
+    <version>5.3.0</version>
+    <time>1478780081</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439183</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>c48983e26e87be017c087f24b2b303a8</srcmd5>
+    <version>5.4.0</version>
+    <time>1485511738</time>
+    <user>dimstar_suse</user>
+    <comment>big version update. Note: needs the new QtAV package.</comment>
+    <requestid>449804</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>3ddb8bd3543294e1e3127d2103c31e7a</srcmd5>
+    <version>5.4.0</version>
+    <time>1488479784</time>
+    <user>dimstar_suse</user>
+    <comment>Also drop an unused requirement</comment>
+    <requestid>460533</requestid>
+  </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>67251ad2459e60cd1f76c6eb40de41c7</srcmd5>
+    <version>5.4.0</version>
+    <time>1489345196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>462078</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>cffa85b7509a6e5842feffe5f86e1279</srcmd5>
+    <version>5.5.0</version>
+    <time>1489653742</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479266</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>99fc265a5645841329237b927eba4413</srcmd5>
+    <version>5.5.0</version>
+    <time>1496226015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499679</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>822bf5566b693d52ff9c12f151ec0275</srcmd5>
+    <version>5.6.0</version>
+    <time>1503592262</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire Qt &gt;= 5.6.0
+
+- Update to 5.6.0:
+  * https://www.digikam.org/news/2017-06-21-5.6.0-release-announcement/
+- New features (from NEWS):
+Database    : We activated database shrinking for MySQL as part of
+              the maintenance since now we can test the affected
+              tables for integrity.
+Searches    : Users can now restrict the results of fuzzy
+              image/drop/sketch search to be in specific albums.
+Searches    : Users can now select both tags and albums in duplicates
+              search and restrict the set of images in which
+              duplicates are searched with logical operations (in
+              selected albums or/and tags, in selected albums but not
+              tags and vice versa and only in selected objects of
+              current tab)
+Searches    : In extended search, the tags selection can also be
+              restricted such that images must be either tagged with
+              at least one of or with all selected tags.
+General     : New tool to export Albums to static HTML gallery.
+General     : New tool to export Albums to video diaporama.
+HTMLGallery : New &quot;Elegant&quot; theme using javascript to render image
+              as slideshow in web browser.
+HTMLGallery : New &quot;SimpleRounded&quot; theme that uses flat shapes with
+              rounded corners.
+HTMLGallery : New &quot;BlueCurved&quot; theme with a blue rubbon on the left
+              and an area for navigation arrows.
+HTMLGallery : Add option to generate a Gallery from a selection of
+              images instead an album list.
+ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
+    <requestid>506106</requestid>
+  </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>0963a24567495be6a9dd1ad4b85d0add</srcmd5>
+    <version>5.6.0</version>
+    <time>1503741171</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with cmake 3.9:
+  * fix-build-cmake39.patch</comment>
+    <requestid>518877</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>0a0b9873af27605a9c436802a2efe714</srcmd5>
+    <version>5.7.0</version>
+    <time>1505416521</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525901</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>e1c38ebcb3cbfab2f315f74d44ea51c3</srcmd5>
+    <version>5.7.0</version>
+    <time>1507896874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532996</requestid>
+  </revision>
+  <revision rev="163" vrev="3">
+    <srcmd5>88aaa1b1240a478d567c58613cc72e7f</srcmd5>
+    <version>5.7.0</version>
+    <time>1511426725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544531</requestid>
+  </revision>
+  <revision rev="164" vrev="4">
+    <srcmd5>16d8f35a7c9dc6e9a64413631d527122</srcmd5>
+    <version>5.7.0</version>
+    <time>1512926249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555601</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>46fcc869e5075ab7e857af1e578d4afe</srcmd5>
+    <version>5.8.0</version>
+    <time>1516222632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>565891</requestid>
+  </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>6597e8d149532bc0b81aa4540e32ab6d</srcmd5>
+    <version>5.8.0</version>
+    <time>1516359229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567200</requestid>
+  </revision>
+  <revision rev="167" vrev="3">
+    <srcmd5>e8c227cf47165055318ee2db5e0189cf</srcmd5>
+    <version>5.8.0</version>
+    <time>1517323374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570509</requestid>
+  </revision>
+  <revision rev="168" vrev="4">
+    <srcmd5>9289e22319f8f4269629b2842699b833</srcmd5>
+    <version>5.8.0</version>
+    <time>1518187912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574411</requestid>
+  </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>f5302cc2fde733a415f2edd822a87d70</srcmd5>
+    <version>5.8.0</version>
+    <time>1518426927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575308</requestid>
+  </revision>
+  <revision rev="170" vrev="6">
+    <srcmd5>236249da07e0c901f1dc0001b431faaf</srcmd5>
+    <version>5.8.0</version>
+    <time>1520588777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584415</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>2a47ba37e3986f967b97c17b94ac4a78</srcmd5>
+    <version>5.9.0</version>
+    <time>1522225875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591045</requestid>
+  </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>16e4a155aaf83e81f94ee96f751d9238</srcmd5>
+    <version>5.9.0</version>
+    <time>1534322189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628957</requestid>
+  </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>913474ab340e4ae691b491258aa1e5ea</srcmd5>
+    <version>5.9.0</version>
+    <time>1539869988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642839</requestid>
+  </revision>
+  <revision rev="174" vrev="4">
+    <srcmd5>80159877c6ab79f4b37c3d68369f3a3c</srcmd5>
+    <version>5.9.0</version>
+    <time>1540988515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645711</requestid>
+  </revision>
+  <revision rev="175" vrev="5">
+    <srcmd5>88f314be52374fad345158904273c48c</srcmd5>
+    <version>5.9.0</version>
+    <time>1541079933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645877</requestid>
+  </revision>
+  <revision rev="176" vrev="6">
+    <srcmd5>f88d3f92f2ded05e5e1935d01633d0dc</srcmd5>
+    <version>5.9.0</version>
+    <time>1543828354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653431</requestid>
+  </revision>
+  <revision rev="177" vrev="7">
+    <srcmd5>dea0cdcc29d8679ed3730069562ccf6d</srcmd5>
+    <version>5.9.0</version>
+    <time>1546535381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662612</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>5e065abc336207b112ad49556eca38f9</srcmd5>
+    <version>6.0.0</version>
+    <time>1553611117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0
+- Drop patches merged upstream:
+  * Add-QtWebEngine-support.patch
+  * fix-black-Welcome-page-by-clicking-on-a-link.patch
+  * add-support-for-Exiv2-0.27.patch
+  * be-compatible-with-backward-0.26.patch
+  * adjust-find-cmake-script-to-exiv2-0.27-RC1.patch
+  * first-patch-to-be-compatible-with-Exiv2-0.27.patch
+  * f27ab9c1051bd0a0.patch
+  * fix-compile.patch
+- Drop docs subpackage, docs are no longer included
+- Drop kipi-plugins subpackage, no longer included
+- Drop patch for kipi-plugins that's no longer relevant:
+  * 0002-Revert-replace-obsolete-qSort-function.patch
+- Drop 0001-Revert-replace-obsolete-qSort-function.patch and build
+  with gcc7 on Leap 42.3 instead
+- Refresh Lower-minimum-exiv2-version.patch
+- Remove kipi-plugins requirement, digikam doesn't use libkipi
+  anymore
+- Recommend enblend-enfuse and hugin (previously recommended by
+  kipi-plugins), needed for certain functionality in digikam
+- Update/cleanup build requirements
+- Use fdupes without -s option
+- Make lang package conditional
+- Handle soversion via a macro, bump to 6 following upstream
+- Run spec-cleaner (forwarded request 679892 from wolfi323)</comment>
+    <requestid>679901</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>574563c95db9fb3a005b565c1c93cd24</srcmd5>
+    <version>6.1.0</version>
+    <time>1556202020</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697163</requestid>
+  </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>15056c16d33f5777bbc1a031e9f0a94c</srcmd5>
+    <version>6.1.0</version>
+    <time>1556817604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699899</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>771b9b0a5b57a76dd70c531bcd7d2837</srcmd5>
+    <version>6.2.0</version>
+    <time>1565362507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721993</requestid>
+  </revision>
+  <revision rev="182" vrev="2">
+    <srcmd5>e218b738eb0d7c8750e668640336dbfe</srcmd5>
+    <version>6.2.0</version>
+    <time>1566464029</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1144232 - Drop jasper dependency from Digikam:
+  Disable JPEG2000 support due to removal of jasper
+- Add BuildRequires libjpeg8 for regular JPEG support (forwarded request 724959 from jubalh)</comment>
+    <requestid>724968</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>12563ad690b10bda089803c4a5b2ceb9</srcmd5>
+    <version>6.3.0</version>
+    <time>1568804991</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731091</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,125 @@
+From: Jeremy Bicha <jbicha@debian.org>
+Date: Mon, 22 Oct 2018 08:42:57 -0400
+Subject: build without scrollkeeper
+
+---
+ help/Guidelines    |  2 +-
+ help/xiphos.omf.in |  9 ---------
+ waffles/gnome.py   | 36 ------------------------------------
+ wscript            |  1 -
+ 4 files changed, 1 insertion(+), 47 deletions(-)
+ delete mode 100644 help/xiphos.omf.in
+
+diff --git a/help/Guidelines b/help/Guidelines
+index 6676912..69ec156 100644
+--- a/help/Guidelines
++++ b/help/Guidelines
+@@ -21,7 +21,7 @@ in PDF format, please email one of the Documentation developers.
+    Also, using xmllint can save a lot of frustration: "xmllint xiphos.xml"
+ 
+ This also helps with finding errors and debugging. 
+-3. Please make sure that you have properly edited xiphos-manual-(lang).omf and Makefile.am.
++3. Please make sure that you have properly edited Makefile.am.
+ -----------------
+ Translations
+ -----------------
+diff --git a/help/xiphos.omf.in b/help/xiphos.omf.in
+deleted file mode 100644
+index e796583..0000000
+--- a/help/xiphos.omf.in
++++ /dev/null
+@@ -1,9 +0,0 @@
+-<?xml version="1.0" standalone="no"?>
+-<omf>
+-  <resource>
+-    <subject category="GNOME|Applications"/>
+-    <type>manual</type>
+-    <relation seriesid="3376140e-2a26-11d8-9eab-83cf5b4f5f4e"/>
+-    <rights type="GNU FDL" license.version="1.1" holder="Pierre Benz"/>
+-  </resource>
+-</omf>
+diff --git a/waffles/gnome.py b/waffles/gnome.py
+index 58bbb0d..b5c2290 100644
+--- a/waffles/gnome.py
++++ b/waffles/gnome.py
+@@ -37,19 +37,9 @@ def postinstall_icons():
+ 			Utils.pprint('YELLOW', 'Icon cache not updated. After install, run this:')
+ 			Utils.pprint('YELLOW', 'gtk-update-icon-cache -q -f -t %s' % dir)
+ 
+-def postinstall_scrollkeeper(prog_name):
+-	if Build.bld.is_install:
+-		# now the scrollkeeper update if we can write to the log file
+-		if os.access('/var/log/scrollkeeper.log', os.W_OK):
+-			dir1 = Build.bld.get_install_path('${PREFIX}/var/scrollkeeper')
+-			dir2 = Build.bld.get_install_path('${DATAROOTDIR}/omf/%s' % prog_name)
+-			command = 'scrollkeeper-update -q -p %s -o %s' % (dir1, dir2)
+-			ret = Utils.exec_command(command)
+-
+ def postinstall(prog_name='myapp', schemas=1, icons=1, scrollkeeper=1):
+ 	if schemas: postinstall_schemas(prog_name)
+ 	if icons: postinstall_icons()
+-	if scrollkeeper: postinstall_scrollkeeper(prog_name)
+ 
+ # OBSOLETE
+ class gnome_doc_taskgen(TaskGen.task_gen):
+@@ -79,17 +69,8 @@ def apply_gnome_doc(self):
+ 		else:
+ 			out = self.path.find_resource('%s/%s.xml' % (x, self.doc_module))
+ 
+-		tsk2 = self.create_task('xsltproc2po')
+-		out2 = self.path.find_or_declare('%s/%s-%s.omf' % (x, self.doc_module, x))
+-		tsk2.set_outputs(out2)
+-		node = self.path.find_resource(self.doc_module+".omf.in")
+-		tsk2.inputs = [node, out]
+-
+-		tsk2.run_after.append(tsk)
+-
+ 		if bld.is_install:
+ 			path = self.install_path + '/gnome/help/%s/%s' % (self.doc_module, x)
+-			bld.install_files(self.install_path + '/omf/%s/' % (self.doc_module), out2, env=self.env)
+ 			for y in self.to_list(self.doc_figures):
+ 				try:
+ 					os.stat(self.path.abspath() + '/' + x + '/' + y)
+@@ -187,21 +168,6 @@ Task.simple_task_type('xmlto', '${XMLTO} html -m ${SRC[1].abspath(env)} ${SRC[0]
+ 
+ Task.simple_task_type('xml2po', '${XML2PO} ${XML2POFLAGS} ${SRC} > ${TGT}', color='BLUE')
+ 
+-# how do you expect someone to understand this?!
+-xslt_magic = """${XSLTPROC2PO} -o ${TGT[0].abspath(env)} \
+---stringparam db2omf.basename ${APPNAME} \
+---stringparam db2omf.format docbook \
+---stringparam db2omf.lang ${TGT[0].abspath(env)[:-4].split('-')[-1]} \
+---stringparam db2omf.dtd '-//OASIS//DTD DocBook XML V4.1.2//EN' \
+---stringparam db2omf.omf_dir ${PREFIX}/share/omf \
+---stringparam db2omf.help_dir ${PREFIX}/share/gnome/help \
+---stringparam db2omf.omf_in ${SRC[0].abspath(env)} \
+---stringparam db2omf.scrollkeeper_cl ${SCROLLKEEPER_DATADIR}/Templates/C/scrollkeeper_cl.xml \
+-${DB2OMF} ${SRC[1].abspath(env)}"""
+-
+-#--stringparam db2omf.dtd '-//OASIS//DTD DocBook XML V4.3//EN' \
+-Task.simple_task_type('xsltproc2po', xslt_magic, color='BLUE')
+-
+ def detect(conf):
+ 	conf.check_tool('gnu_dirs glib2 dbus')
+ 	sgml2man = conf.find_program('docbook2man', var='SGML2MAN')
+@@ -215,8 +181,6 @@ def detect(conf):
+ 	xml2po = conf.find_program('xml2po', var='XML2PO')
+ 	xsltproc2po = conf.find_program('xsltproc', var='XSLTPROC2PO')
+ 	conf.env['XML2POFLAGS'] = '-e -p'
+-	conf.env['SCROLLKEEPER_DATADIR'] = Utils.cmd_output("scrollkeeper-config --pkgdatadir", silent=1).strip()
+-	conf.env['DB2OMF'] = Utils.cmd_output("pkg-config --variable db2omf gnome-doc-utils", silent=1).strip()
+ 
+ def set_options(opt):
+ 	opt.add_option('--want-rpath', type='int', default=1, dest='want_rpath', help='set rpath to 1 or 0 [Default 1]')
+diff --git a/wscript b/wscript
+index ce5592a..9db93a8 100644
+--- a/wscript
++++ b/wscript
+@@ -533,7 +533,6 @@ def build(bld):
+ 
+     def post(ctx):
+         if bld.env['POST_INSTALL']:
+-            gnome.postinstall_scrollkeeper('xiphos') # Installing the user docs
+             gnome.postinstall_icons() # Updating the icon cache
+ 
+     bld.add_post_fun(post)

@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Fri May 17 20:34:45 UTC 2019 - Bruce Rogers <brogers@suse.com>
+
+- Update to 0.19.0
+  * Add libdrm dependency
+  * Fix file descriptor leak on failed connections
+  * Handle new VD_AGENT_GRAPHICS_DEVICE_INFO message advertised by
+    VD_AGENT_CAP_GRAPHICS_DEVICE_INFO capability
+  * Session agent autostart changed to WindowManager ([rhbz#1623947])
+    This fixes possible race with xdg-user-dirs
+  * Fix of sending empty screen resolution messages ([rhbz#1641723])
+  * Fix 'Dependency failed for Activation socket' with systemd ([rhbz#1545212])
+  * Fix error messages about on selecting text on host ([rhbz#1594876])
+    this was also fixed with Gtk backend
+  * Update paths from /var/run → /run
+  * Fix Session agent restart
+  * Add test for file creation
+  * Prefer GLib memory functions stdlib.h ones
+  * Several code and logs improvements
+  * Add GTK+ framework to handle x11 backend such as clipboard
+  * Deprecate X11 backend in favor of GTK+ framework
+  * Ask pkg-config to appropriate directory to install udev rules
+  * Fix leak of udscs's file descriptor
+  * Better quote directory path when calling xdg-open to save file transfer
+  * Bump GLib to 2.34
+  * Add systemd socket activation (rhbz#1340160)
+  * Add support to detailed errors on file transfers
+  * Add check for available free space in guest before starting a file transfer
+  * Use better names for duplicated files on file transfer
+  * Improve support on big endian guests (#5)
+  * Use IdleHint to check if a session is locked over console-kit (rhbz#1412673)
+  * Fixes double free on errors over udscs by improving memory ownership
+  * Hide autostart file on Unity
+  * Improve command line messages for vdagentd
+  * Fix typo in --enable-static-uinput configure option
+  * Code repository moved to gitlab.freedesktop.org
+- Add keyring and tarball signature files
+- obsoleted patches removed:
+  8ba17481-quote-save-dir-before-passing-to-shell.patch
+  vdagentd-do-endian-swapping.patch
+
+-------------------------------------------------------------------
+Tue Dec  5 16:12:24 UTC 2017 - cbosdonnat@suse.com
+
+- Fix potential shell command injection.
+  8ba17481-quote-save-dir-before-passing-to-shell.patch
+  CVE-2017-15108 (bsc#1070724)
+
+-------------------------------------------------------------------
+Thu Jul 27 12:20:36 UTC 2017 - msuchanek@suse.com
+
+- Fix warning in vdagentd-do-endian-swapping.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 13:56:35 UTC 2017 - msuchanek@suse.com
+
+- Add endian swapping to run on BE guests (boo#1012215).
+  vdagentd-do-endian-swapping.patch
+
+-------------------------------------------------------------------
+Fri Nov 25 18:53:15 UTC 2016 - zaitor@opensuse.org
+
+- Add pkgconfig(glib-2.0) BuildRequires: Explicit dependency.
+- Handle spice-vdagentd.target in pre/post/preun/postun.
+- Handle spice-vdagentd.conf in post via tmpfiles_create macro.
+
+-------------------------------------------------------------------
+Fri Nov 25 18:53:14 UTC 2016 - seife+obs@b1-systems.com
+
+- Update to 0.17.0
+  * Denies file-transfer in locked sessions
+  * Denies file-transfer in login screen
+  * Bump glib version to 2.28
+  * Set exit code to 1 instead of 0 when virtio device cannot be
+    opened
+  * Fix double-free on uinput->screen_info (rhbz#1262635)
+  * Code improvement over unix domain client server support (udcs)
+  * Fix build compatiblity with different libsystemd versions
+    (fdo#94209)
+- obsoleted patches removed:
+  8c465007-vdagentd-fixes-small-leak.patch
+  f97751fa-revert-uinput-fix-small-leak-of-screen_info.patch
+- package: add explicit buildrequires for pkgconfig(dbus-1)
+
+-------------------------------------------------------------------
+Tue Sep  6 12:56:15 UTC 2016 - cbosdonnat@suse.com
+
+- Fix crash when changing guest display's resolution (bsc#997236)
+  8c465007-vdagentd-fixes-small-leak.patch
+  f97751fa-revert-uinput-fix-small-leak-of-screen_info.patch
+
+-------------------------------------------------------------------
+Thu Jun  2 11:36:40 UTC 2016 - cbosdonnat@suse.com
+
+- fate#320079
+
+-------------------------------------------------------------------
+Tue Jul 21 18:52:21 UTC 2015 - mpluskal@suse.com
+
+- Update tp 0.16.0
+  * Xspice support
+  * Release clipboard on client disconnect if owned by client 
+    (rhbz#1003977)
+  * Turn some error messages into debugging messages (rhbz#918310)
+  * Not having the virtio channel is not an error; instead silently 
+    do nothing
+- Cleanup spec file with spec-cleaner
+- Actually apply spice-vdagent-var_run.patch
+
+-------------------------------------------------------------------
+Wed Jul  9 16:21:19 UTC 2014 - fcrozat@suse.com
+
+- Add supplements on virtio_console to automatically install
+  spice-vdagent when X11 server is installed on KVM with Spice
+  enabled.
+
+-------------------------------------------------------------------
+Tue Jul  1 14:10:31 UTC 2014 - fcrozat@suse.com
+
+- Enable systemd service at initial install, it is needed for
+  udev rules to properly start the agent.
+
+-------------------------------------------------------------------
+Tue May 27 08:45:45 CEST 2014 - ohering@suse.de
+
+- fix /var/run handling
+  spice-vdagent-var_run.patch
+
+-------------------------------------------------------------------
+Mon Feb  3 08:39:02 UTC 2014 - seife+obs@b1-systems.com
+
+- run spec-cleaner
+- remove autoreconf call
+
+-------------------------------------------------------------------
+Sun Feb  2 14:15:26 UTC 2014 - seife+obs@b1-systems.com
+
+- import the spec file from fedora core 21, adapt for openSUSE
+- version 0.15.0
+

@@ -1,0 +1,342 @@
+-------------------------------------------------------------------
+Fri Jan 25 11:01:07 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Conditionally require optional build test Test::MockObject
+
+-------------------------------------------------------------------
+Fri Jan 18 12:47:56 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Added required dependencies for building and testing
+- Cleaned spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 18 12:22:36 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix env-script-interpreter in bin/{SOAPsh.pl,stubmaker.pl} and
+  examples/XMLRPC/{xmlrpc.cgi,xmlrpc.daemon}
+  * Added patch perl-SOAP-Lite-1.27-usr-bin-env.patch
+
+-------------------------------------------------------------------
+Tue May 15 05:56:13 UTC 2018 - coolo@suse.com
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-SOAP-Lite/Changes
+
+  1.27 May 14, 2018
+      ! Problem with compression in server mode
+
+-------------------------------------------------------------------
+Fri Jan  5 15:36:00 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Update to 1.26
+    ! typo fix
+    https://anonscm.debian.org/cgit/pkg-perl/packages/libsoap-lite-perl.git/tree/debian/patches/spelling-error.patch
+
+  1.25 December 29, 2017
+    ! Bad usage of UNIVERSAL::isa (See RT#62667)
+
+  1.24 December 19, 2017
+    + Consistent Versioning https://github.com/redhotpenguin/soaplite/pull/24
+    ! Remove is_utf8() check from 78588
+
+  1.23 December 18, 2017
+    ! RT #78588 unicode data not correct encoded
+
+-------------------------------------------------------------------
+Sat Aug 19 06:10:44 UTC 2017 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-SOAP-Lite/Changes
+
+  1.22 August 15, 2017
+      ! Noindex URI::tcp module [github/JaSei]
+      ! Correct the soap namespace declaration when calling services defined in WSDL [github/waaeer]
+      ! Fix typos [github/kmhl]
+  
+  1.21 November 6, 2016
+      ! #118654 consistently use '#!/usr/bin/env perl' throughout (@mototimo) [github/moto-timo]
+
+-------------------------------------------------------------------
+Sun Jun 12 13:43:59 UTC 2016 - coolo@suse.com
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-SOAP-Lite/Changes
+
+  1.20 June 9, 2016
+      ! Minor kwalitee updates (@oeuftete)
+      ! #106688 encode utf8 content in test which fails under RHES 6.6
+
+-------------------------------------------------------------------
+Mon Sep 21 13:16:58 UTC 2015 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-SOAP-Lite/Changes
+
+  1.19 August 26, 2015
+      ! #106665 Correct the version manually, no autoversioning, and the maintainer screwed up
+  
+  1.18 August 25, 2015
+      ! Fix a couple of cases where undefined values were being passed to functions [github/redhotpenguin]
+      ! Do not set content_length for compressed request [github/bor]
+      ! Add test for check return of send_receive(), add titles for some tests [github/bor]
+  
+  1.17 July 30, 2015
+      ! #106051 Fix utf8 encoding for CGI test (thanks cpan/ETHER for tips)
+  
+  1.16 July 23, 2015
+      ! Fix empty release. Note to self - do not release code when wife is in early labor
+  
+  1.15 July 21, 2015
+      + Preventing "billion laughs" exponential entity expansion attack [github/thilo-fester]
+
+-------------------------------------------------------------------
+Fri Apr 17 16:43:29 UTC 2015 - coolo@suse.com
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-SOAP-Lite/Changes
+
+  1.14 March 24, 2015
+      + Add header and body tags [@bubi6608]
+      ! Fixed typo in trace logging example [@oschwald]
+      + Converted the dist from using ExtUtils::MakeMaker to using Dist::Zilla [@mvuets]
+      ! Cleaned up prereqs [@mvuets]
+      ! Cleaned up author and release tests [@mvuets]
+  
+  1.13 December 30, 2014
+      ! Fixed undefined value error when using bugzilla's xmlrpc.cgi (bugzilla's API) [dbeusee]
+  
+  1.12 November 26, 2014
+      ! #100557 Redefined sub in SOAP::Lite::Deserializer::XMLSchema2001
+  
+  1.11 February 21, 2014
+      ! #93080 bug when SOAP::Lite is trying to parse WSDL definition by https with custom settings
+  
+  1.10 January 23, 2014 
+      ! Fixed uninitialized warning when Context-Length is not set [github/dbeusee]
+      ! avoid string eval in as_base64 [github/otrosien]
+      ! #88915 warnings issued with using importing with +trace
+  
+  1.09 January 14, 2013
+      ! #92025 tighten multipart content-type matching [dmn@debian.org]
+
+-------------------------------------------------------------------
+Thu Dec 19 09:52:30 UTC 2013 - cfarrell@suse.com
+
+- license update: (Artistic-1.0 or GPL-1.0+) and CC-BY-ND-2.0
+  just do it
+
+-------------------------------------------------------------------
+Mon Dec 16 10:40:47 UTC 2013 - cfarrell@suse.com
+
+- license update: (Artistic-1.0 or GPL-1.0+) and CC-BY-ND
+  See lib/SOAP/Lite.pm - documentation and the text is CC-BY-ND
+
+-------------------------------------------------------------------
+Mon Dec  9 11:12:54 UTC 2013 - coolo@suse.com
+
+- updated to 1.08
+  ! #15703 add no_index for examples to prevent CPAN pollution [githumb.com/sergeyromanov]
+  ! #89948 Remove warning when Content-Id is not present
+  ! #87935 skip all MIME-Parser tests if it is not installed
+  ! #87787 Use of uninitialized value $ns in Lite.pm 
+  ! #87848 Fix manifest, fix invalid http version from release blunder
+
+-------------------------------------------------------------------
+Wed Aug 14 10:42:46 UTC 2013 - ncutler@suse.com
+
+- update to 1.04
+- delete patches (presumably obsoleted by upstream changes)
+- perl-macros is obsoleted by recent perl packages.
+    Therefore BuildRequire perl-macros only on older versions
+    (which includes SLE)
+
+-------------------------------------------------------------------
+Mon Dec 19 12:43:09 UTC 2011 - coolo@suse.de
+
+- update to 0.714
+    Moved SOAP::Transport::TCP into SOAP-Transport-TPC distribution
+    ! #70329 - not generating attributes properly (deleting id attribute)
+    ! #52637 error sending a request in perl 5.10.0 containing utf-8 data using the string data type
+       ! #48775 Small bug in SOAP::Packager
+       ! #51178 Emailing: SOAP-Lite-0.710.10.patch
+       ! #55962 Spelling errors
+       ! #52015 defined(%hash) deprecated in Perl 5.11
+       ! #63693 Uninitalized value
+       ! #65655 Assignment of shift to list
+       ! #58538 regression from 0.710.08 soap:Client,Application failed during request deserialization
+       ! #64250 Bleadperl v5.13.7-297-g558b442 breaks SOAP::Lite 0.712
+       ! #68088 XML::Parser::Lite fails tests under perl 5.14 RC1
+       ! #69825 Bug in SOAP/Lite/Deserializer/XMLSchemaSOAP1_2.pm
+
+-------------------------------------------------------------------
+Sun May 22 11:31:49 UTC 2011 - idonmez@novell.com
+
+- Add SOAP-Lite-0.712-perl514.patch: fix test suite breakage with
+  Perl 5.14, upstream bug #68088 
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:12 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug 16 08:58:57 UTC 2010 - chris@computersalat.de
+
+- update to 0.712
+  ! #57409 SOAP::Lite installation problem
+  ! #52015 defined(%hash) deprecated in Perl 5.11
+  ! #39546 use of version.pm
+  ! #52637 error sending a request in perl 5.10.0 containing utf-8
+     data using the string data type
+  ! #55962 Spelling errors
+- recreated by cpanspec
+- noarch pkg
+- removed env_path.dif
+- reworked https_daemon.diff > SOAP-Lite-0.712-HTTPS_DAEMON.patch
+
+-------------------------------------------------------------------
+Thu Apr  8 23:39:45 CEST 2010 - dmueller@suse.de
+
+- update to 0.711:
+   SOAP::Transport::JABBER, SOAP::Transport::MQ and SOAP::Tranport::FTP
+   are now in their own distributions.
+   ! [2790747] Bugtracker specification in META.yml missing
+   ! #45997: Inconsistency in SOAP::Serializer documentation
+   ! #55618: HTTP_TRANSFER_ENCODING can be undefined in SOAP/Transpo
+   ! [2946245] / #54106 Only last Cookie Set
+   ! #50178: Win32 isuue with IO::SessionData and IO::SessionSet
+   ! #41527: SOAP::Lite 0.69 with Apache2 HTTP Server module and mod_perl 2 
+           returns 500 Internal 
+
+-------------------------------------------------------------------
+Thu Apr  8 23:16:43 CEST 2010 - dmueller@suse.de
+
+- add missing perl version dependency
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sun Nov 15 17:50:37 CET 2009 - dmueller@suse.de
+
+- update to 0.710.10:
+   ! #49981: UDDI::Lite version not parsable by cpanplus (again)
+   ! #46444: use SOAP::Lite::Deserializer::XMLSchemaSOAP1_2 missing
+   ! #37151: Strawberry perl 5.10 - Tests fail and then later hang
+   ! #49981: UDDI::Lite version not parsable by cpanplus
+   ! #49011: Fails to install under strawberry perl
+   ! [2825166] In Constant DEFAULT_HTTP_CONTENT_TYPE
+   ! [2832939] chunked client requests are returned 411(Length Required)
+   ! [2860559] serious utf8 bug
+   ! #44568 Tracing unavailable when SOAP::Lite is used as a server
+   ! #44195 submitting patches / mention Nginx transport module in documentation
+   ! [2777361] SOAP 1.2 Content-Type rejected
+   ! #41937 ([patch] enable more tests)
+   ! #39101: Apache2::Const::HTTP_BAD_REQUEST not defined
+   ! #39672: serialization and autotype 'off'
+   ! #41348: t/SOAP/Transport/HTTP/CGI.t failing on 5.6.x
+   ! #20569: XMLRPC::Lite "wrong element 'nil'" exception on '<value><nil/></value>'
+   + require Task::Weaken
+   + better META.yml generated (Alexandr Ciornii)
+
+-------------------------------------------------------------------
+Fri Sep  5 16:05:09 CEST 2008 - ug@suse.de
+
+* HTTP header is no more accessible
+* Memory leak when calling WS using wsdl
+  SOAP::Transport::HTTP->new() was leaking two scalars per call
+* > not deserialized in result
+* < and > not deserialized in faultstring/detail
+* Incorrect Content-Type while sending requests with no parts
+* Incorrect starting part detection for Multipart/Related
+* SOAP::Lite Envelope not stripped down for XMLRPC
+* XMLRPC::Transport::HTTP::CGI generates extra params
+* fixed memory leaks with XMLRPC::Lite
+* SOAP::Lite Passes Decoded Strings to LWP
+* KeepAlive fails to function
+* Subclasses of XMLRPC::Serializer misbehave because of a "ref" call in SOAP::Lite
+* Memory leak in 0.69 && 0.71
+* version 0.710.08
+
+-------------------------------------------------------------------
+Fri Apr  4 11:28:37 CEST 2008 - ug@suse.de
+
+- version update from 0.69 to 0.71.01
+- tons of fixes please look at the CHANGES file for details
+- Added LOOPBACK test transport backend.
+- Added more core tests
+- Added additional callbacks to XML::Parser::Lite and made it 
+  work under (at least) perl5.6.2, 5.8.7, 5.8.8 and 5.10.
+
+-------------------------------------------------------------------
+Wed Oct 25 09:35:20 CEST 2006 - ug@suse.de
+
+- version update from 0.66 to 0.69
+- Commented out two lines of code that were causing S::L to die under
+  a non-fatal error condition. This is a HACK.
+- Patched support for mod_perl Apache2 (thanks to JT Justman)
+- Fixed bug where SOAP::SOM objects were not properly detected,
+  serialized and returned (thanks chris at prather dot o r g)
+- Fixed bug with default_ns and ns functions so that they
+  serialized XML properly.
+- Started to add experimental DIME support - possible impacts to MIME
+  support as well
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  2 16:44:08 CET 2006 - ug@suse.de
+
+- version update from 0.60a to 0.66
+
+-------------------------------------------------------------------
+Wed Sep 28 22:15:39 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Mon Mar 22 00:54:31 CET 2004 - ro@suse.de
+
+- removed .orig backup files
+
+-------------------------------------------------------------------
+Fri Feb 27 15:35:36 CET 2004 - ug@suse.de
+
+- version update from 0.60 to 0.60a
+
+-------------------------------------------------------------------
+Tue Aug 26 15:30:09 CEST 2003 - ug@suse.de
+
+- version update from 0.55 to 0.60
+- Makefile.PL patch dropped because
+  autodetection of installed perl modules
+  is working in 0.60
+- Merged SOAP::MIME into SOAP::Lite's core
+- Differentiate between xsd:int and xsd:long to 
+  fix interoperability bug with Java Web services
+- Fixed MIME interoperability bug with Apache Axis
+- SOAP Faultcodes are now properly typed a xsd:QName, whereas
+  before they were xsd:string
+- Fixed documentation errors
+- Disabled SOAPStruct (bug 747316)
+- Fixed XML::Parser::Expat vulnerability (bug 747265)
+- Fixed warning when autodispatched call has no parameters
+- Fixed warning when empty SOAPAction specified (bug 747278)
+- Turned off HTTP keep alive patch by default
+- Removed dependency on the URI module for non-HTTP transports
+
+-------------------------------------------------------------------
+Tue Aug 26 13:19:00 CEST 2003 - ro@suse.de
+ 
+- fix dependency: /usr/bin/env, not /bin/env
+
+-------------------------------------------------------------------
+Mon Aug 25 14:18:04 CEST 2003 - ug@suse.de
+
+- initial version
+

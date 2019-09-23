@@ -1,0 +1,14 @@
+<package name="mipv6d" project="openSUSE:Factory">
+  <title>MIPL - Mobile IPv6 for Linux</title>
+  <description>MIPL Mobile IPv6 for Linux is an implementation of the Mobility Support
+in IP version 6 (RFC 3775).
+
+This user space part works together with Mobile IPv6 enabled Linux
+kernels.  See INSTALL and any other documents referred there for
+installation instructions and required kernel compile options.
+
+MIPL Mobile IPv6 for Linux has been developed in the GO-Core Project at
+the Helsinki University of Technology.	See AUTHORS for core
+development team and THANKS for complete listing of contributors.</description>
+  <devel project="network" package="mipv6d"/>
+</package>

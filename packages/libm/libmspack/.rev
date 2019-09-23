@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94b9e735f086b884701856c92f800a83</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1168903348</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="65">
+    <srcmd5>a6230aef7b2c76ba6b143d7bad4cc14b</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1200609521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="67">
+    <srcmd5>a6230aef7b2c76ba6b143d7bad4cc14b</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1200609521</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="68">
+    <srcmd5>7c8f24d9d4626f4043eec285d9b24393</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1245366086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="70">
+    <srcmd5>7c8f24d9d4626f4043eec285d9b24393</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1245366086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="71">
+    <srcmd5>35bed504ad679539b7db4c1fad9e07f2</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1268924639</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="73">
+    <srcmd5>35bed504ad679539b7db4c1fad9e07f2</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="74">
+    <srcmd5>35bed504ad679539b7db4c1fad9e07f2</srcmd5>
+    <version>0.0.20060920alpha</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="68">
+    <srcmd5>0acb1ac57fac725588adebeda0e4ce80</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1293578178</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56682 from user elvigia
+</comment>
+    <requestid>56682</requestid>
+  </revision>
+  <revision rev="10" vrev="69">
+    <srcmd5>8d0dd8d43623a5bd32394c28601b7b8e</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1293578188</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56682
+</comment>
+  </revision>
+  <revision rev="11" vrev="72">
+    <srcmd5>8d0dd8d43623a5bd32394c28601b7b8e</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="74">
+    <srcmd5>8d0dd8d43623a5bd32394c28601b7b8e</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1319182112</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="75">
+    <srcmd5>c2153fa0571915b8c6b080f814d6e541</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1321886818</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 92547 from coolo)</comment>
+    <requestid>92572</requestid>
+  </revision>
+  <revision rev="14" vrev="76">
+    <srcmd5>a6178983b78d0709a923c22dae97e8e9</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1330618859</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+
+No indication of GPL-2.0+ code in the package (forwarded request 107184 from babelworx)</comment>
+    <requestid>107188</requestid>
+  </revision>
+  <revision rev="15" vrev="78">
+    <srcmd5>a6178983b78d0709a923c22dae97e8e9</srcmd5>
+    <version>0.1.99_0.2alpha</version>
+    <time>1340183607</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>417b97bea5e210abec60d2c99bfff26e</srcmd5>
+    <version>0.3</version>
+    <time>1342866606</time>
+    <user>namtrac</user>
+    <comment>Remove autoreconf call, libtool buildrequires. (forwarded request 128253 from a_jaeger)</comment>
+    <requestid>128355</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>417b97bea5e210abec60d2c99bfff26e</srcmd5>
+    <version>0.3</version>
+    <time>1359109307</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e572ee82a7dd42e2b3868342be21fd64</srcmd5>
+    <version>0.4</version>
+    <time>1372145231</time>
+    <user>coolo</user>
+    <comment>- Avoid Source URL for http://www.cabextract.org.uk/ as this does
+  not work 
+
+- Update to version 0.4alpha:
+  + This release adds support for the Microsoft Exchange Offline
+    Address Book (OAB) format, both compressed and incremental
+    variants.</comment>
+    <requestid>180718</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>e572ee82a7dd42e2b3868342be21fd64</srcmd5>
+    <version>0.4</version>
+    <time>1379663011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>f193068d288fb012ec3f975aca491e0a</srcmd5>
+    <version>0.4</version>
+    <time>1396709226</time>
+    <user>coolo</user>
+    <comment>- Add baselibs.conf: wxWidgets-32bit depends on libmspack0-32bit (forwarded request 229001 from jengelh)</comment>
+    <requestid>229040</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>f193068d288fb012ec3f975aca491e0a</srcmd5>
+    <version>0.4</version>
+    <time>1409301628</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>00a4c41e15d215cad6a242ea94da5e1f</srcmd5>
+    <version>0.4</version>
+    <time>1421873654</time>
+    <user>coolo</user>
+    <comment>- Fix possible infinite loop caused DoS (bnc912214, CVE-2014-9556,
+  libmspack-qtmd_decompress-loop.patch). (forwarded request 282134 from sbrabec)</comment>
+    <requestid>282135</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>182093877c4eb47e61500a43d746ea90</srcmd5>
+    <version>0.5</version>
+    <time>1424068563</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285767</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d3350f67a36dcc21c036c42d0c355248</srcmd5>
+    <version>0.5</version>
+    <time>1425566298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288196</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4e63e15a39ec1badb158fb47076fa13</srcmd5>
+    <version>0.6</version>
+    <time>1516358851</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct SRPM group.
+
+- Fix typo
+
+- Update to version 0.6
+   * read_spaninfo(): a CHM file can have no ResetTable and have a
+   negative length in SpanInfo, which then feeds a negative output 
+   length to lzxd_init(), which then sets frame_size to a value of
+   your choosing, the lower 32 bits of output length, larger than 
+   LZX_FRAME_SIZE. If the first LZX block is uncompressed, this
+   writes data beyond the end of the window.
+   This issue was raised by ClamAV as CVE-2017-6419.
+   * lzxd_init(), lzxd_set_output_length(), mszipd_init(): due to the 
+   issue mentioned above, these functions now reject negative lengths
+   * cabd_read_string(): add missing error check on result of read().
+   If an mspack_system implementation returns an error, it's
+   interpreted as a huge positive integer, which leads to reading
+   past the end of the stack-based buffer.
+   This issue was raised by ClamAV as CVE-2017-11423
+- Add subpackage for helper tools
+- Run spec-cleaner</comment>
+    <requestid>566588</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>f7a609ea1e30606260ed64d404884261</srcmd5>
+    <version>0.6</version>
+    <time>1516546033</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct mspack-tools group to Productivity/File utilities</comment>
+    <requestid>567632</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a95633ad4bd2cf11190ca3172f65c9a1</srcmd5>
+    <version>0.8</version>
+    <time>1541509418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644177</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b8800ae8d7e0736a77fa1b9ad760e718</srcmd5>
+    <version>0.9.1</version>
+    <time>1542122664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647204</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>750a426283ccb07be7fa51b088302cfa</srcmd5>
+    <version>0.10.1</version>
+    <time>1552380428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682383</requestid>
+  </revision>
+</revisionlist>

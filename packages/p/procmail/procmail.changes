@@ -1,0 +1,259 @@
+-------------------------------------------------------------------
+Fri Jul 12 11:40:29 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add procmail-fix-Werror=return-type.patch in order to fix
+  -Werror=return-type errors.
+
+-------------------------------------------------------------------
+Fri Nov 17 10:37:58 UTC 2017 - werner@suse.de
+
+- Add patch procmail-formisc.c.patch to fix bug bsc#1068648
+  CVE-2017-16844
+
+-------------------------------------------------------------------
+Mon May 29 18:59:25 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to have binaries independent of speed
+  of compile system (boo#1041534)
+
+-------------------------------------------------------------------
+Mon Dec 29 14:39:04 UTC 2014 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Mon Dec 22 09:24:14 UTC 2014 - dimstar@opensuse.org
+
+- Drop .keyring and .sig files: procmail is signed using an MD5
+  type key, which is no longer accepted by GPG 2.1
+- Drop the usage of gpg-offline: we don't have keys to verify and
+  the source validator performs the action transparent nowadays.
+
+-------------------------------------------------------------------
+Thu Sep  4 13:32:42 UTC 2014 - werner@suse.de
+
+- Correct licenses 
+- Add cflags() shell function to be able to check for compiler,
+  linker, and assembler flags, that is if those are supported by
+  the compiler, linker, or assembler.
+
+-------------------------------------------------------------------
+Thu Sep  4 08:39:12 UTC 2014 - werner@suse.de
+
+- Add patch procmail-3.22-CVE-2014-3618.patch to fix heap-overflow
+  in procmail's formail utility when processing specially-crafted
+  email headers (bnc#894999, CVE-2014-3618)
+
+-------------------------------------------------------------------
+Mon Apr 15 09:04:23 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add GPG verification
+
+-------------------------------------------------------------------
+Thu Feb 28 06:03:41 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Nov 14 14:14:34 UTC 2011 - werner@suse.de
+
+- Go forward and add the patches from Debian
+- Also add ipv6 patch from openmamba
+- Adop or drop our own patches
+- Do not sleep a second on NFS based home shares
+- Support LMTP (rfc2033: Local Mail Transfer Protocol) server
+
+-------------------------------------------------------------------
+Tue Feb  8 23:24:29 UTC 2011 - seife+obs@b1-systems.com
+
+- the only thing that needs mimencode are the examples
+  change the "Requires: mimencode" to "Recommends"
+
+-------------------------------------------------------------------
+Tue Dec 15 11:54:17 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Fri Nov 20 16:08:01 CET 2009 - werner@suse.de
+
+- Fix that last fix (bnc#556509)
+
+-------------------------------------------------------------------
+Fri Jan 30 13:23:46 CET 2009 - od@suse.de
+
+- assume RFC2822-compliant header continuation lines, do not cover
+  up for older mail clients that insert more spacing (bnc#469222)
+
+-------------------------------------------------------------------
+Tue Nov 11 11:23:28 CET 2008 - kukuk@suse.de
+
+- vacation is no required package
+
+-------------------------------------------------------------------
+Tue Mar  4 13:48:05 CET 2008 - werner@suse.de
+
+- Avoid warnings due oldish C code of procmail
+- Be sure that autoconf catchs missing pw_class
+
+-------------------------------------------------------------------
+Thu Jun 28 14:51:06 CEST 2007 - werner@suse.de
+
+- Be sure that standard programs are available in procmailrc
+
+-------------------------------------------------------------------
+Mon Jan  8 13:33:24 CET 2007 - werner@suse.de
+
+- Use only fcntl(2) for locking, do not mix with flock(2) (#231845)
+
+-------------------------------------------------------------------
+Fri May 26 19:19:08 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Thu May 11 14:26:18 CEST 2006 - werner@suse.de
+
+- Enable large file support (bug #174497)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 18:26:40 CET 2006 - werner@suse.de
+
+- Fix the last bug fix to re-enable biff/comsat (bug #135883)
+
+-------------------------------------------------------------------
+Mon Nov  7 12:18:54 CET 2005 - werner@suse.de
+
+- Do not truncate a folder if reached quota (bug #132530)
+
+-------------------------------------------------------------------
+Sun May  9 23:24:16 CEST 2004 - od@suse.de
+
+- fixed handling of folded headers: delete leading whitespace
+
+-------------------------------------------------------------------
+Fri Mar 26 01:22:54 CET 2004 - ro@suse.de
+
+- added postfix to neededforbuild
+
+-------------------------------------------------------------------
+Mon Feb 23 16:38:07 CET 2004 - werner@suse.de
+
+- Reenabled locking with fcntl.
+
+-------------------------------------------------------------------
+Mon Feb 23 13:56:51 CET 2004 - werner@suse.de
+
+- Update to procmail 3.22 (includes maildir feature)
+
+-------------------------------------------------------------------
+Sun Jan 11 09:57:46 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Sep  1 11:46:14 CEST 2003 - pthomas@suse.de
+
+- Pass -fno-strict-aliasing to gcc, as regexp.c uses type punning
+  and thus could be miscompiled.
+
+-------------------------------------------------------------------
+Wed May 28 15:04:03 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue May 13 16:42:23 CEST 2003 - mmj@suse.de
+
+- Use %defattr
+
+-------------------------------------------------------------------
+Wed Jan 22 21:09:57 CET 2003 - mmj@suse.de
+
+- Enabled locking with fcntl as well
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Jan 11 13:13:32 CET 2001 - werner@suse.de
+
+- Update to 3.15.1 due security:
+  * A race to create the mailspool would bounce one of the
+    messages due to an internal error
+  * LC_ in KEEPENV would preserve only the first LC_foo variable
+  * Strip runtime linker variables (LD_*) from environment on
+    all platforms
+  * Drop duplicate and malformed environment entries
+
+-------------------------------------------------------------------
+Tue Jan  9 17:50:08 CET 2001 - werner@suse.de
+
+- Update to 3.15 due to security issue
+
+-------------------------------------------------------------------
+Thu Nov 23 18:50:12 CET 2000 - werner@suse.de
+
+- Update to 3.14
+
+-------------------------------------------------------------------
+Wed Jun  7 10:13:40 CEST 2000 - ro@suse.de
+
+- doc relocation 
+
+-------------------------------------------------------------------
+Sun Feb 27 15:57:03 CET 2000 - kukuk@suse.de
+
+- Move /usr/man -> /usr/share/man
+
+-------------------------------------------------------------------
+Mon Dec  6 13:48:43 CET 1999 - werner@suse.de
+
+- Fix default PATH
+
+-------------------------------------------------------------------
+Fri Oct  1 21:37:05 MEST 1999 - werner@suse.de
+
+- New version 3.13.1
+- Add procmail-maildir.patch (supporting of maildirs with ending '/')
+- Add procmail-locking.patch (no locking for directories required)
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Fri Jul 17 14:36:50 MEST 1998 - werner@suse.de
+
+- Use mktemp
+
+----------------------------------------------------------------------------
+Thu Jul 16 22:30:18 MET DST 1998 - werner@suse.de
+
+- fix for mailstat script
+
+----------------------------------------------------------------------------
+Mon Jul  7 13:17:08 CEST 1997 - florian@suse.de
+
+
+- update to version 3.11-pre7
+
+- add docu files in /usr/doc/packages
+
+
+----------------------------------------------------------------------------
+Tue Oct 22 22:14:08 MEST 1996 - florian@suse.de
+
+
+- Umstieg auf non-sgid-mail spool-Verzeichnis.
+

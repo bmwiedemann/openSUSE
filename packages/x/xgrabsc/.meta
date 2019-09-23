@@ -1,0 +1,5 @@
+<package name="xgrabsc" project="openSUSE:Factory">
+  <title>xgrabsc</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="X11:Utilities" package="xgrabsc"/>
+</package>

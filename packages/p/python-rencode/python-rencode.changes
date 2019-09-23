@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Mar  1 09:43:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.6:
+  * Various packaging fixes
+- Switch to github tarball to get all needed files (missing pyx on pypi)
+- Run tests
+
+-------------------------------------------------------------------
+Thu Jul 20 17:26:53 UTC 2017 - aloisio@gmx.com
+
+- Set correct license
+
+-------------------------------------------------------------------
+Mon Jun  5 12:48:15 UTC 2017 - aloisio@gmx.com
+
+- Initial package (v. 1.0.5) 
+

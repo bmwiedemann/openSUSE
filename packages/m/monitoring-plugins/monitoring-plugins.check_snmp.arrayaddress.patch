@@ -1,0 +1,13 @@
+Index: monitoring-plugins-2.2/plugins/check_snmp.c
+===================================================================
+--- monitoring-plugins-2.2.orig/plugins/check_snmp.c
++++ monitoring-plugins-2.2/plugins/check_snmp.c
+@@ -588,7 +588,7 @@ main (int argc, char **argv)
+ 				strncat(perfstr, critical_thresholds, sizeof(perfstr)-strlen(perfstr)-1);
+ 			}
+ 
+-			if (type)
++			if (type[0])
+ 				strncat(perfstr, type, sizeof(perfstr)-strlen(perfstr)-1);
+ 			strncat(perfstr, " ", sizeof(perfstr)-strlen(perfstr)-1);
+ 		}

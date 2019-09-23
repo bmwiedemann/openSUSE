@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Feb  6 13:12:59 UTC 2015 - coolo@suse.com
+
+- updated to 0.41
+  - fixed synopsis
+
+-------------------------------------------------------------------
+Mon Sep  8 08:37:20 UTC 2014 - coolo@suse.com
+
+- updated to 0.40
+    - fix test. accept ACST as Australia/Darwin's timezone
+      Because Australian eastern time zone abbr changed in tzdata 2014f
+      ref http://mm.icann.org/pipermail/tz-announce/2014-August/000023.html
+ 
+ 0.32 2014-06-09T01:53:19Z
+ 
+     - change perl version requirements to 5.8.1
+
+-------------------------------------------------------------------
+Fri Mar  7 06:52:32 UTC 2014 - coolo@suse.com
+
+- initial package 0.31
+    * created by cpanspec 1.78.07
+

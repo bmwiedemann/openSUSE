@@ -1,0 +1,16 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig	2011-09-26 10:42:02.188049948 +0200
++++ configure.ac	2011-09-26 10:42:07.548763835 +0200
+@@ -144,9 +144,9 @@ AC_SUBST(ENABLE_TUNER)
+ 
+ dnl Checks for libraries.
+ if test "x$ENABLE_TUNER" = xyes; then
+-    AC_DEFINE(ENABLE_TUNER)
++    AC_DEFINE([ENABLE_TUNER],,[Enable Tuner])
+     AC_CHECK_LIB(rfftw, rfftw, [
+-        AC_DEFINE(HAVE_FFTW)
++        AC_DEFINE([HAVE_FFTW],,[Have libfftw])
+         LIBS="$LIBS -lfftw -lrfftw"], ,-lfftw)
+ fi
+ 

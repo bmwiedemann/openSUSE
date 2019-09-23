@@ -1,0 +1,18 @@
+--- src/osdep/unix/Makefile
++++ src/osdep/unix/Makefile
+@@ -28,11 +28,10 @@
+ 
+ # Extended flags needed for SSL.  You may need to modify.
+ 
+-SSLDIR=/usr/local/ssl
+-SSLCERTS=$(SSLDIR)/certs
+-SSLKEYS=$(SSLCERTS)
+-SSLINCLUDE=$(SSLDIR)/include
+-SSLLIB=$(SSLDIR)/lib
++SSLCERTS=/etc/ssl/certs
++SSLKEYS=/etc/ssl/certs
++SSLINCLUDE=/usr/include/openssl
++SSLLIB=/usr/lib
+ 
+ SSLCRYPTO=-lcrypto
+ 

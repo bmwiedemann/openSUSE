@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Tue Nov 26 07:35:24 UTC 2013 - coolo@suse.com
+
+- updated to 1.19
+  - Remove the OP tree munging optimization since it wasn't in the
+    end really speeding things up. (chocolateboy)
+  - Require Time::HiRes explicitly because CentOS cripples the base
+    perl install.
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:18 UTC 2013 - coolo@suse.com
+
+- updated to 1.18
+  - Revert fixes for implicitly-lvalue getters for now since that
+    actually breaks user code. It seems it's not just because the
+    users are naughty, so more investigation required.
+  - For Hashes: Implement predicates that check definedness and
+    existance explicitly. The traditional "predicates" check
+    definedness. It's conceivable to also want a bool-check
+    type predicate. File a ticket if you need that.
+  - Fix bug regarding getters being implicitly lvalue by
+    returning the internal SV*. Instead, we now use TARG.
+
+-------------------------------------------------------------------
+Mon Jun  3 15:39:29 UTC 2013 - coolo@suse.com
+
+- updated to 1.16
+   - Drop erroneous MYMETA files from distribution.
+ 
+   - Support for hash keys with NUL (\0) characters. Previously,
+     these were truncated.
+ 
+   - Skip some failing tests on old debugging perls. Guys, please
+     upgrade your perl!
+
+-------------------------------------------------------------------
+Mon Feb 27 08:47:13 UTC 2012 - coolo@suse.com
+
+- updated to 1.13
+  - Removes the cached read-only and read-write accessors
+    for the time being. (These were only available from another
+    development releasse.
+  - Much more brutal thread-safety testing.
+  - Fixed thread-safety problem with the global hashkey storage.
+  - Lots of refactoring in the C code.
+  - Instead of storing an index in the CV, we store a pointer to
+    the hashkey struct.
+  - Implements cached read-only and read-write accessors.
+    Details on what that means are in the documentation.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:22:14 UTC 2011 - coolo@suse.com
+
+- updated to 1.12
+  - Reclaim compatibility with the most recent versions of
+    ExtUtils::ParseXS.
+  - Explicit tests for wrong-type invocants.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:22:12 UTC 2011 - coolo@suse.com
+
+- updated to 1.11
+
+-------------------------------------------------------------------
+Mon Jun 20 09:19:56 UTC 2011 - coolo@novell.com
+
+- change license
+
+-------------------------------------------------------------------
+Mon Dec 27 14:15:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.11)
+

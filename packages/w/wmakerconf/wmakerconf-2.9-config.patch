@@ -1,0 +1,25 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -121,7 +121,10 @@ if test "$x_libraries" != "NONE"; then
+ fi
+ 
+ # Add some common include and library path's
+-CPPFLAGS="$CPPFLAGS -I/usr/local/include -I/usr/X11/include/ -I/usr/X11R6/include/ -I/usr/X11R6/include/X11 -I/usr/openwin/include -I$wprefix/include"
++CPPFLAGS="$CPPFLAGS -I/usr/X11/include/ -I/usr/X11R6/include/ -I/usr/X11R6/include/X11 -I/usr/openwin/include"
++case $wprefix in /usr|/usr/local) ;;
++*) CPPFLAGS="$CPPFLAGS -I$wprefix/include" ;;
++esac
+ LDFLAGS="$LDFLAGS -L/usr/local/lib -L/usr/X11/lib -L/usr/X11R6/lib -L/usr/openwin/lib -L$wprefix/lib"
+ 
+ # Checks for socket and nsl library, required on Solaris systems
+@@ -241,7 +244,7 @@ if test -n "$perlpath"; then
+         AC_DEFINE_UNQUOTED(PERL, "$perlpath", [Path of perl utility])
+         # Checks for libwww-perl
+         AC_MSG_CHECKING([for libwww-perl])
+-        ac_try="$perlpath -c libwww.pl >/dev/null 2>conftest.out"
++        ac_try="$perlpath -c scripts/libwww.pl >/dev/null 2>conftest.out"
+         if eval $ac_try; then
+                 GETSCRIPT=libwww.pl     
+                 AC_MSG_RESULT(yes)

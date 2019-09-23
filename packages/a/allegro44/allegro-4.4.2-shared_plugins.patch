@@ -1,0 +1,13 @@
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -833,7 +833,7 @@ option(WANT_JPGALLEG "Enable JPGAlleg" o
+ if(WANT_FRAMEWORKS)
+     set(ADDON_LINKAGE SHARED)
+ else()
+-    set(ADDON_LINKAGE STATIC)
++    set(ADDON_LINKAGE SHARED)
+ endif()
+ 
+ if(WANT_ALLEGROGL)

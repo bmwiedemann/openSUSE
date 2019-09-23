@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f7ee9dc9a37d98b321f2e0a7cc637c7</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1373312730</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>182493</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0f7ee9dc9a37d98b321f2e0a7cc637c7</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1379664403</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e353661d852ba2cfe251babee4d89c66</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1385295816</time>
+    <user>coolo</user>
+    <comment>- Resolve build problems with old automake: add patch autofix.diff
+- Write down pyzy version requirements into specfile's BuildRequires (forwarded request 208002 from jengelh)</comment>
+    <requestid>208013</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e353661d852ba2cfe251babee4d89c66</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1409303124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>cc57c915546d94ab55b944708728db75</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1425031199</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 287837 from hillwood)</comment>
+    <requestid>287838</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>ade06fb548947b4ed9d1419583003823</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1437549597</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317798</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>01046fead53707a8ed4e3e91d9c50789</srcmd5>
+    <version>1.0git20120805</version>
+    <time>1547540242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665272</requestid>
+  </revision>
+</revisionlist>

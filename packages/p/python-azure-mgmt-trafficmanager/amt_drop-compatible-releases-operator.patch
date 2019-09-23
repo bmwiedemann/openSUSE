@@ -1,0 +1,12 @@
+diff -Nru azure-mgmt-trafficmanager-0.51.0.orig/setup.py azure-mgmt-trafficmanager-0.51.0/setup.py
+--- azure-mgmt-trafficmanager-0.51.0.orig/setup.py	2019-01-08 19:22:24.000000000 +0100
++++ azure-mgmt-trafficmanager-0.51.0/setup.py	2019-04-01 13:14:15.504030382 +0200
+@@ -79,7 +79,7 @@
+     install_requires=[
+         'msrest>=0.5.0',
+         'msrestazure>=0.4.32,<2.0.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-mgmt-nspkg'],

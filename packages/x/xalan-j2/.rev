@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d8c518cc02a9ee5a93fdcb33a49a995</srcmd5>
+    <version>2.7.0</version>
+    <time>1168904507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="207">
+    <srcmd5>d1b0a996344b0c9bae4d11a1bee98a6c</srcmd5>
+    <version>2.7.0</version>
+    <time>1216656235</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="217">
+    <srcmd5>65f207b300cb9d04610b56098bc0499c</srcmd5>
+    <version>2.7.0</version>
+    <time>1217371576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="240">
+    <srcmd5>cfeef7013b681169b7d5ce095e41367b</srcmd5>
+    <version>2.7.0</version>
+    <time>1237574209</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="241">
+    <srcmd5>110254cfe6bde1a0fce4266be2ece946</srcmd5>
+    <version>2.7.0</version>
+    <time>1241628947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="243">
+    <srcmd5>110254cfe6bde1a0fce4266be2ece946</srcmd5>
+    <version>2.7.0</version>
+    <time>1241628947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="244">
+    <srcmd5>778117a9529a27b9e9670f5c27d6db7a</srcmd5>
+    <version>2.7.0</version>
+    <time>1268926528</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="246">
+    <srcmd5>778117a9529a27b9e9670f5c27d6db7a</srcmd5>
+    <version>2.7.0</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="247">
+    <srcmd5>778117a9529a27b9e9670f5c27d6db7a</srcmd5>
+    <version>2.7.0</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="248">
+    <srcmd5>9a507070187bf1c15943f621b1d8a2f2</srcmd5>
+    <version>2.7.0</version>
+    <time>1289839699</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52366 from user mvyskocil
+</comment>
+    <requestid>52366</requestid>
+  </revision>
+  <revision rev="11" vrev="249">
+    <srcmd5>e99d683ff81a3a1b40550ed77d2a0c12</srcmd5>
+    <version>2.7.0</version>
+    <time>1289839706</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52366
+</comment>
+  </revision>
+  <revision rev="12" vrev="252">
+    <srcmd5>e99d683ff81a3a1b40550ed77d2a0c12</srcmd5>
+    <version>2.7.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="254">
+    <srcmd5>e99d683ff81a3a1b40550ed77d2a0c12</srcmd5>
+    <version>2.7.0</version>
+    <time>1319182577</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="255">
+    <srcmd5>0dbc670dcc50e3aaf3e73a3338cb0798</srcmd5>
+    <version>2.7.0</version>
+    <time>1323195216</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="257">
+    <srcmd5>0dbc670dcc50e3aaf3e73a3338cb0798</srcmd5>
+    <version>2.7.0</version>
+    <time>1340184332</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="258">
+    <srcmd5>256f07760d59e0870732bd329fcd3625</srcmd5>
+    <version>2.7.0</version>
+    <time>1357653968</time>
+    <user>coolo</user>
+    <comment>- remove xerces-j2-bootstrap depenency (bnc#789163)</comment>
+    <requestid>147386</requestid>
+  </revision>
+  <revision rev="17" vrev="260">
+    <srcmd5>256f07760d59e0870732bd329fcd3625</srcmd5>
+    <version>2.7.0</version>
+    <time>1359110587</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="261">
+    <srcmd5>893dfc35ba5e2746b2d972400ee36363</srcmd5>
+    <version>2.7.0</version>
+    <time>1378238835</time>
+    <user>coolo</user>
+    <comment>Should fix the conflict with xml-commons
+- mark all files related to update-alternatives as ghost
+- reformat header of spec a bit
+
+- drop javadoc package</comment>
+    <requestid>196619</requestid>
+  </revision>
+  <revision rev="19" vrev="263">
+    <srcmd5>893dfc35ba5e2746b2d972400ee36363</srcmd5>
+    <version>2.7.0</version>
+    <time>1379664987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c600511e498857dc00ef56bc304f4fb</srcmd5>
+    <version>2.7.2</version>
+    <time>1403844792</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner.
+
+- Version bump to 2.7.2 release:
+  * various small fixes
+  * Fix security bnc#870082 CVE-2014-0107
+- Fix few rpmlint warnings
+- Deleted xalan-j2-java14compat.patch patch as we don't bother
+  with 1.4 java anymore
+- Rebased patches on new code:
+  * xalan-j2-crosslink.patch
+  * xalan-j2-manifest.patch
+  * xalan-j2-noxsltcdeps.patch</comment>
+    <requestid>238326</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>21ca031079ca6dfed206036898674bc6</srcmd5>
+    <version>2.7.2</version>
+    <time>1406914013</time>
+    <user>coolo</user>
+    <comment>- Update-alternatives love.</comment>
+    <requestid>242661</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>21ca031079ca6dfed206036898674bc6</srcmd5>
+    <version>2.7.2</version>
+    <time>1409303666</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>0439b26af0fe14e0dc8f6a66b486584a</srcmd5>
+    <version>2.7.2</version>
+    <time>1418840209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>265265</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>747888fcdb2aa9fbbf94f68b1a2d9c6e</srcmd5>
+    <version>2.7.2</version>
+    <time>1507280109</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on java-gcj-compat</comment>
+    <requestid>530856</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>0c68bfc738ec97ee04dea82838200224</srcmd5>
+    <version>2.7.2</version>
+    <time>1541864854</time>
+    <user>dimstar_suse</user>
+    <comment>Add maven provides</comment>
+    <requestid>646979</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>e4a87998bdc40e4adf532a229980bb0a</srcmd5>
+    <version>2.7.2</version>
+    <time>1544189482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653654</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>1626e4214047528ba1c0994515b4fb07</srcmd5>
+    <version>2.7.2</version>
+    <time>1549464384</time>
+    <user>coolo</user>
+    <comment>Add OSGi manifests</comment>
+    <requestid>670538</requestid>
+  </revision>
+</revisionlist>

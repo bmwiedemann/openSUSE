@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Dec 20 10:14:25 UTC 2011 - cfarrell@suse.com
+
+- license update: LGPL-2.0+ and GPL-2.0+
+  See canvas-curve.pl in the test directory. This is aggregation.
+
+-------------------------------------------------------------------
+Wed Dec 14 11:12:46 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Jun  8 09:57:01 UTC 2011 - saigkill@opensuse.org
+
+- removed devel package
+- added %%perl_gen_filelist & added filelist to %%files 
+
+-------------------------------------------------------------------
+Wed Jun  8 09:49:59 UTC 2011 - saigkill@opensuse.org
+
+- changed suse_version macro after proposal from speilike
+- prepared for factory 
+
+-------------------------------------------------------------------
+Thu Apr 14 16:40:48 UTC 2011 - saigkill@opensuse.org
+
+- added %%perl_requires
+- added %%perl_make_install 
+

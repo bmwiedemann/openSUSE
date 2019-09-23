@@ -1,0 +1,120 @@
+commit e13ab06f65a4e8b6259bccda1401abb9c1c9fdca
+Author: Luca Beltrame <lbeltrame@kde.org>
+Date:   Sun Jul 21 09:04:56 2019 +0200
+
+    Add QMap include to fix building under Qt 5.13
+    
+    Include is no longer added transitively.
+
+diff --git a/plugins/betternotify/notify.h b/plugins/betternotify/notify.h
+index 7d452341..8635f5d0 100644
+--- a/plugins/betternotify/notify.h
++++ b/plugins/betternotify/notify.h
+@@ -23,6 +23,7 @@
+ #ifndef NOTIFY_H
+ #define NOTIFY_H
+ 
++#include <QMap>
+ #include <QQueue>
+ #include <QPoint>
+ #include <QPointer>
+commit 546ede9ef712bb1b156a55ce30df81c3203dde61
+Author: Luca Beltrame <lbeltrame@kde.org>
+Date:   Thu Jul 25 07:01:28 2019 +0200
+
+    One more build fix
+
+diff --git a/plugins/untiny/untiny.h b/plugins/untiny/untiny.h
+index 71fdc9bf..d6478ae9 100644
+--- a/plugins/untiny/untiny.h
++++ b/plugins/untiny/untiny.h
+@@ -27,6 +27,7 @@
+ 
+ #include "plugin.h"
+ 
++#include <QMap>
+ #include <QQueue>
+ #include <QUrl>
+ #include <QPointer>
+commit 08fb06b63a78888e6703de6ac1a4fd6a0e2791eb
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Jul 28 00:14:30 2019 +0200
+
+    Fix compile on CI
+    
+    plugins/uploaders/flickr/flickr.h:50:24: error: field mUrlMap has incomplete type QMap<KJob*, QUrl>
+    plugins/uploaders/imageshack/imageshack.h:48:24: error: field mUrlMap has incomplete type QMap<KJob*, QUrl>
+
+diff --git a/plugins/uploaders/flickr/flickr.h b/plugins/uploaders/flickr/flickr.h
+index 890219ae..7b26609e 100644
+--- a/plugins/uploaders/flickr/flickr.h
++++ b/plugins/uploaders/flickr/flickr.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ /**
+ @author Andrey Esin \<gmlastik@gmail.com\>
+ */
+diff --git a/plugins/uploaders/imageshack/imageshack.h b/plugins/uploaders/imageshack/imageshack.h
+index d9ddc88d..63d0e3fa 100644
+--- a/plugins/uploaders/imageshack/imageshack.h
++++ b/plugins/uploaders/imageshack/imageshack.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ /**
+ @author Mehrdad Momeny \<mehrdad.momeny@gmail.com\>
+ */
+commit bef6784596bf0b41287ebad81f138e1c8c2a6be2
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Jul 28 00:20:34 2019 +0200
+
+    Fix build on CI
+    
+    Even more missing QMap includes
+
+diff --git a/plugins/uploaders/mobypicture/mobypicture.h b/plugins/uploaders/mobypicture/mobypicture.h
+index 098f4119..86f61fda 100644
+--- a/plugins/uploaders/mobypicture/mobypicture.h
++++ b/plugins/uploaders/mobypicture/mobypicture.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ class KJob;
+ 
+ class Mobypicture : public Choqok::Uploader
+diff --git a/plugins/uploaders/posterous/posterous.h b/plugins/uploaders/posterous/posterous.h
+index c7f6fe18..5c9442d9 100644
+--- a/plugins/uploaders/posterous/posterous.h
++++ b/plugins/uploaders/posterous/posterous.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ class KJob;
+ 
+ class Posterous : public Choqok::Uploader
+diff --git a/plugins/uploaders/twitgoo/twitgoo.h b/plugins/uploaders/twitgoo/twitgoo.h
+index ee3f496d..020080e6 100644
+--- a/plugins/uploaders/twitgoo/twitgoo.h
++++ b/plugins/uploaders/twitgoo/twitgoo.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ class KJob;
+ 
+ class Twitgoo : public Choqok::Uploader

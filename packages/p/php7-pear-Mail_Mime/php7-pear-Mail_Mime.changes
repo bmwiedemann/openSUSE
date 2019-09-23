@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Wed Nov  8 15:31:04 UTC 2017 - jweberhofer@weberhofer.at
+
+- Move to new unified spec
+
+-------------------------------------------------------------------
+Wed Nov  8 15:26:18 UTC 2017 - jweberhofer@weberhofer.at
+
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Fri Nov  3 08:20:37 UTC 2017 - jengelh@inai.de
+
+- Update description with spelling fixes and better read flow.
+
+-------------------------------------------------------------------
+Sun Sep 10 06:26:24 UTC 2017 - jweberhofer@weberhofer.at
+
+- Removed circular dependency to php-pear(Mail_mimeDecode)
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Fri Aug 18 10:21:46 UTC 2017 - ecsos@opensuse.org
+
+- New upstream release 1.10.1
+
+- renamed package to php7-pear-Mail_Mime
+
+-------------------------------------------------------------------
+Tue Sep 15 12:53:31 UTC 2015 - aj@ajaissle.de
+
+- New upstream release 1.10.0
+  * Add possibility to add externally created Mail_mimePart objects as attachments [alec]
+  * Add possibility to set preamble text for multipart messages [alec]
+
+- Changes 1.9.0
+  * Bug #20921: Make Mail_mimePart::encodeHeaderValue() a static method [alec]
+  * Bug #20931: Really remove unset headers [alec]
+  * Request #18772: Added methods for creating text/calendar messages [alec]
+
+-------------------------------------------------------------------
+Thu Dec 11 16:44:00 UTC 2014 - aj@ajaissle.de
+
+- New upstream release 1.8.9
+  * Fixed Bug #20273: Incorrect handling of HTAB in encodeHeader() [alec]
+  * Fixed Bug #20226: Mail_mimePart::encodeHeader does not encode ISO-2022-JP string [alec]
+  * Fixed Bug #20222: Broken Compatybility with PHP4 [alec]
+
+-------------------------------------------------------------------
+Fri Nov  8 12:39:40 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 1.8.8
+  * Fixed warning/notice on (static vs. non-static) PEAR::raiseError() usage [alec]
+  * Fixed Bug #19761: PHP5 warnings about return by reference [alec]
+  * Fixed Bug #19770: Make cid generator more unique on Windows [alec]
+  * Fixed Bug #19987: E_STRICT warning when null is passed by reference [alec] 
+
+-------------------------------------------------------------------
+Fri Feb  1 10:55:34 UTC 2013 - aj@ajaissle.de
+
+- New upstram version 1.8.7
+
+- Changelog 1.8.7
+  * Bug #5333: Fix more return by reference errors [alec]
+  * Bug #19754: Fix compatibility with PHP4 [alec]
+
+- Changelog 1.8.6
+  * Bug #19473: PEAR::isError() compatibility problem with PHP 5.4 [alec]
+  * Bug #19497: Attachment filename is cut on slash character [alec]
+  * Bug #19665: Add Mail-Reply-To and Mail-Followup-To to structured recipient headers list [alec]
+
+- Changelog 1.8.5
+  * Added possibility to set additional parameters of message part header, e.g. attachment size [alec]
+  * Added automatic setting of attachment size via Content-Disposition header size parameter [alec]
+
+- Changelog 1.8.4
+  * Request #19406: Allow to set individual attachment part headers
+    [alec]
+  * Fixed Bug #18982: Non-static method Mail
+    mimePart::encodeHeader() should not be called statically [alec]
+
+- Changelog 1.8.3
+  * Request #19009: Remove error_reporting from tests [alec]
+  * Fixed Bug #19094: Email addresses do not have to contain a
+    space between the name and address part [alec]
+  * Fixed Bug #19328: Wrong encoding of filenames with comma [alec]
+
+- Changelog 1.8.2
+  * #18426: Fixed backward compatibility for "dfilename" parameter
+    [alec]
+  * Removed xmail.dtd, xmail.xsl from the package [alec]
+  * Fixed handling of email addresses with quoted local part [alec]
+
+-------------------------------------------------------------------
+Thu Jan 12 11:31:05 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Jan 20 15:23:44 UTC 2011 - chris@computersalat.de
+
+- change to php_pear_gen_filelist macro
+
+-------------------------------------------------------------------
+Wed Jan 19 20:50:11 UTC 2011 - chris@computersalat.de
+
+- pkg rename php5-pear-Mail_Mime
+- merge with php-pear-mail_mime, php5-pear-mail_mime
+- update to 1.8.1
+  * #18083: Not possible to set separate charset for attachment content
+    and headers [alec]
+- 1.8.0
+  Bugs Fixed:
+  * Double-addition of e-mail domain to content ID in HTML images [alec]
+  * #17311: Multi-octet characters are split across adjacent
+    'encoded-word's [alec]
+  * #17573: Place charset parameter in first line of Content-Type header
+    (if possible) [alec]
+  Implemented Features:
+  * #17518: addTo() method [alec]
+- added php-macros
+- cleanup spec
+
+-------------------------------------------------------------------
+Sat May 30 18:13:28 CEST 2009 - chris@computersalat.de
+
+- fixed post script
+
+-------------------------------------------------------------------
+Thu May 21 23:30:00 CEST 2009 - chris@computersalat.de
+
+- new version 1.5.2
+- beautify spec
+  o new spec header
+  o package rename due to package convention
+  o removed php4 stuff, deps
+  o added Provides and Obsoletes for old package names.
+    This should not break deps
+- added stuff to automatically create correct filelist
+  o tested against Factory (1120)
+  o opensuse >= 1100 complains about
+    "directory not owned by package"
+- some rpmlint stuff
+
+-------------------------------------------------------------------
+Tue Dec 23 20:30:23 UTC 2008 - rbos@opensuse.org
+
+- Changed the pear install command, use package.xml instead of the tarbal
+
+-------------------------------------------------------------------
+Sat Jun 17 19:42:58 UTC 2006 - suse-tux@gmx.de
+
+- made spec file portable for older/new suse-versions
+- removed #usedforbuild, added %%clean-macro
+- added rpmmacros (changed "mv" to "%%__mv" etc.)
+- removed Packager-tag :)
+
+-------------------------------------------------------------------
+Sun Jun 11 12:52:52 UTC 2006 - suse-tux@gmx.de
+
+- built for 10.0 because it's missing there
+- added Packager-tag
+
+-------------------------------------------------------------------
+Wed Jan 25 15:48:46 UTC 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 15:57:52 UTC 2006 - mmarek@suse.de
+
+- fix filelist, remove temporary files created by pear installer
+- unify php5-pear-*.spec files
+- increase php's memory_limit during installation (parsing
+  xml needs more than default 8M sometimes)
+
+-------------------------------------------------------------------
+Mon Jan 16 00:12:04 UTC 2006 - mmarek@suse.cz
+
+- created package to satisfy horde dependencies
+

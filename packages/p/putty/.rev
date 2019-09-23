@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9aca614a08fb649c9722a5cd672d2f1c</srcmd5>
+    <version>0.62</version>
+    <time>1346831369</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>132440</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9aca614a08fb649c9722a5cd672d2f1c</srcmd5>
+    <version>0.62</version>
+    <time>1359109966</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>135ed51cccc7631008f8abdc735d1ee7</srcmd5>
+    <version>0.63</version>
+    <time>1375901505</time>
+    <user>coolo</user>
+    <comment>- update to 0.63</comment>
+    <requestid>186194</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>135ed51cccc7631008f8abdc735d1ee7</srcmd5>
+    <version>0.63</version>
+    <time>1379664087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>135ed51cccc7631008f8abdc735d1ee7</srcmd5>
+    <version>0.63</version>
+    <time>1409302770</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>409a8f2cded3a5be21a2bd8d1525e597</srcmd5>
+    <version>0.63</version>
+    <time>1412625904</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254334</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>430f36c21a81a3aad8649dd0f8789ce8</srcmd5>
+    <version>0.64</version>
+    <time>1425377758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.64</comment>
+    <requestid>288575</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>edf721b14a1f847765e04f848fe777d4</srcmd5>
+    <version>0.64</version>
+    <time>1431673420</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>307196</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>829e302113ad5ed88e728a49b40c631b</srcmd5>
+    <version>0.65</version>
+    <time>1438615361</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>320147</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>60aac186627d669c61227c5fd945994f</srcmd5>
+    <version>0.66</version>
+    <time>1447146234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.66
+* Resolve integer overflow, buffer underrun in terminal emulator's
+  ECH handling. [CVE-2015-5309, bnc#954191]</comment>
+    <requestid>343110</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bd7a582e7da59322287b0f7ae8a8a760</srcmd5>
+    <version>0.67</version>
+    <time>1458120941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.67</comment>
+    <requestid>370641</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c51483b96b78af009d946c24edc8b191</srcmd5>
+    <version>0.68</version>
+    <time>1489653786</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.68</comment>
+    <requestid>479457</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e41bccd9a950790bbeb6a05e907c3342</srcmd5>
+    <version>0.69</version>
+    <time>1494088213</time>
+    <user>dimstar_suse</user>
+    <comment>duh</comment>
+    <requestid>492734</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>86e8e30ab51542f59c5258d54e3f0f2a</srcmd5>
+    <version>0.69</version>
+    <time>1495267944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494005</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>430057357871bfcb6e5618d48a10d4cd</srcmd5>
+    <version>0.70</version>
+    <time>1500670124</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511334</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1a32a27e525d0cc9ae829a9c61df0a76</srcmd5>
+    <version>0.70</version>
+    <time>1513343186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update python BuildRequire to python-base</comment>
+    <requestid>557149</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>294ef98a11b1d51055ba36f18b7e4965</srcmd5>
+    <version>0.70</version>
+    <time>1520253783</time>
+    <user>dimstar_suse</user>
+    <comment>- Turn off -Werror.</comment>
+    <requestid>582221</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>c8031863d1aa5bff3dfb44d6494ce986</srcmd5>
+    <version>0.70</version>
+    <time>1528897094</time>
+    <user>maxlin_factory</user>
+    <comment>- Turn on -DNOT_X_WINDOWS, for Wayland system. (forwarded request 614760 from jnwang)</comment>
+    <requestid>615190</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>736ffbb9a494c938a5afe7e933ec99e5</srcmd5>
+    <version>0.70</version>
+    <time>1531232106</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620941</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fa0addad2bc1e06b1c32ee90a3373f29</srcmd5>
+    <version>0.71</version>
+    <time>1552902195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.71</comment>
+    <requestid>685782</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8ceebb9e87f61fb6cb62088871f84926</srcmd5>
+    <version>0.71</version>
+    <time>1552986166</time>
+    <user>dimstar_suse</user>
+    <comment>- Unbreak the Leap 42.3 build of putty.
+- Update package descriptions.</comment>
+    <requestid>686205</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>cd6043cda7db0b5bcaddf75f005fce3e</srcmd5>
+    <version>0.71</version>
+    <time>1556621929</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable Xresources / remove -DNOT_X_WINDOWS [boo#1133181],
+  the crash under Wayland appears gone.
+- Add 0001-Revert-settings.c-allow-load_open_settings-NULL.patch
+  [boo#1133181]</comment>
+    <requestid>697368</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>31aaf251a2e43228bcd87ef1e7e0d978</srcmd5>
+    <version>0.72</version>
+    <time>1565695625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.72 [boo#1144547, boo#1144548]</comment>
+    <requestid>722840</requestid>
+  </revision>
+</revisionlist>

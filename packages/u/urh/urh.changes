@@ -1,0 +1,387 @@
+-------------------------------------------------------------------
+Sun Aug 25 22:05:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.5
+  * Fix bug in FSK modulation: remove spiky jumps
+  * Add missing update when deleting bits
+  * Add hidden import
+  * make subdevice and antenna for usrp configurable
+  * make analysis look better in lower resolutions
+
+-------------------------------------------------------------------
+Wed Jun 26 14:19:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.2
+  * Show shortcuts in context menus if possible
+  * Refactor demod backend
+  * Add oqpsk modulation in backend
+  * Fix crash when running spectrum dialog for long time
+  * Improve usability of Decoding
+  * Make modulation backend more generic
+  * Several fixes
+
+-------------------------------------------------------------------
+Sat Jun  1 18:34:04 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.0
+  * This release brings #652 which uses native IQ formats of SDRs.
+    This improves performance and reduces RAM requirements when
+    recording and sending with native backend.
+
+-------------------------------------------------------------------
+Mon May 20 18:10:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  * This release greatly enhances the capabilities of automatic label
+    and message type inference. Preamble, Synchronization, Address
+    (SRC/DST), Sequence Number and Checksum labels are now assigned
+    automatically when hitting the Analyze button.
+  Further Changes:
+  * More accurate logic analysis
+  * Fix parameters of auto interpretation for better PSK detection
+  * Fix appearance of message type edit button in dark themes
+  * Fix error with message length divisor
+
+-------------------------------------------------------------------
+Wed Apr  3 14:10:40 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.7
+  * Improve dialog construction to prevent error on KDE
+  * Increase frequency range of PlutoSDR
+  * Fix crash when showing diff of empty protocol
+  * Create directory before to prevent error with multiprocessing
+
+-------------------------------------------------------------------
+Sun Feb 24 19:05:38 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.6
+  * fix center detection crash on special signals
+
+-------------------------------------------------------------------
+Tue Jan 22 10:24:01 UTC 2019 - mardnh@gmx.de
+
+- Upstream changed license terms
+  https://github.com/jopohl/urh/commit/2ce8174330fd14adfb5642affea6d3f4f1693213
+  Correct license tag:
+  * "Apache-2.0 AND GPL-2.0-only" -> "GPL-3.0-only"
+
+-------------------------------------------------------------------
+Sat Jan 19 19:40:39 UTC 2019 - mardnh@gmx.de
+
+- Update to version 2.5.5
+  * refactor name filters
+  * Add .cu8 .cs8 format alias
+  * remove MAX_MESSAGE_SAMPLES threshold in auto interpretation
+  * add user feedback if auto detection fails
+  * improve max memory allocation on 32 bit
+  * Make auto interpretation work in live mode during simulation
+
+-------------------------------------------------------------------
+Tue Jan  8 20:21:31 UTC 2019 - mardnh@gmx.de
+
+- Update to version 2.5.4
+  * Test release only - no changes for users
+- Update to version 2.5.3
+  * fix crash when using spectrum analyzer with GNU Radio backend
+
+-------------------------------------------------------------------
+Wed Dec 12 22:04:24 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.5.2
+  Bugfixes
+  * prevent crash in substitution encoding
+  * consider alignment offset when showing selected labels
+  Adjustments
+  * remove Save and Close of fuzzing dialog, as closing means
+    saving here anyway
+  New features
+  * make application font size configurable in Options -> View
+
+-------------------------------------------------------------------
+Sun Nov 25 12:12:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.5.1
+  * improve stability when capturing with SoundCard
+  * stop simulation instantly after finishing
+
+-------------------------------------------------------------------
+Mon Nov 19 18:50:32 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.5.0
+  * Add native support for PlutoSDR
+  * save button was not shown when change on saved signal was undone
+  Bugfixes
+  * y scale got falsely reset on save
+
+-------------------------------------------------------------------
+Sun Nov 11 19:02:12 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.2
+  * enhance settings for RTL-SDR
+  * ergonomic improvements
+  Bugfixes
+  * fix problem with set reference message shortcut
+  * fix loading decodings and centralized place for decodings
+
+-------------------------------------------------------------------
+Tue Oct 23 18:49:00 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.1
+  * Add an option to disable automatic detection of interpretation
+    parameters for newly loaded signals to the Edit menu
+  Bugfixes
+  * fix off by one error when creating a new label in analysis
+  * fix crash when opening a project with saved dc correction setting
+
+-------------------------------------------------------------------
+Fri Oct 19 18:30:01 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.0
+  * added font size zoom to table views (analysis/generator/simulator)
+  * greatly enhance accuracy of automatic interpretation
+  * added DC correction option to recording dialogs and as a new
+    filter type in Interpretation
+  Improvements
+  * ignore case when searching for hex values in analysis
+  * RSSI is now given in dBm
+  Bugfixes
+  * Fix display of RSSI indicator in Interpretation
+
+-------------------------------------------------------------------
+Sun Sep 30 07:32:06 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.3.0
+  * added native support for BladeRF
+  * added backward compatibility for SDRPlay < 2.13
+  * improved UI for message type and label configuration in analysis
+  * rename close all action to close all files for more clarity
+  * added a close project action
+- Build with support for BladeRF
+
+-------------------------------------------------------------------
+Thu Aug 30 18:42:11 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.2.4
+  * fix scaling of modulated preview in modulation dialog
+  * improve default parameters for PSK modulation in modulation
+    dialog
+
+-------------------------------------------------------------------
+Mon Jul 30 06:58:40 UTC 2018 - mpluskal@suse.com
+
+- Use python macros when building
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jul 29 08:17:31 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.2.3
+  New features:
+  * allow save and load of binary protocols (.bin files)
+  * improve bootstrap of simulator messages
+      + auto assign destination when dropping messages to simulator
+      + show participant address in participant legend if present
+      + auto assign participant address when clicking analyze button in
+        analysis based on SRC address label
+  * consider API changes of SDRPlay 2.13
+  * also consider participant address (next to RSSI) when auto assigning
+    participants in analysis
+  * Clear button stays enabled during operation so e.g. recordings can be
+    cleared live
+  Bugfixes:
+  * antenna selection is not saved when reopening dialog #494
+  * hiding multiple rows at once in analysis not working properly #499
+
+-------------------------------------------------------------------
+Fri Jun 29 15:45:53 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.2.0
+  * make message pause configurable in simulator
+  * add padding when sending very short messages with soundcard
+  * move .desktop file to data folder. Important if you build a package
+    of URH
+  * make relative external programs paths relative to project path
+  * improve conditional compiling of native device extensions
+  * improve device selection in options, use a table instead of a list
+    view
+  * improve python2 interpreter settings for GNU Radio backend with
+    empty urh.ini
+  * add alignment action to analysis
+    alignment image
+
+-------------------------------------------------------------------
+Mon Jun 18 06:37:34 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.1.1
+  * a bug was fixed where sample rate of a signal was not written
+    correctly to wav file when exporting as wav
+-------------------------------------------------------------------
+Fri Jun  1 19:19:53 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.1.0
+  Features:
+  * The highlight of this release is a Command Line Interface (CLI)
+  * Add export features #437
+  * Make refin and refout configurable for CRC #439
+  Fixes:
+  * fix #441 (Reference signal is not kept when disabling and
+    re-enabling "Mark diffs in protocol")
+  * fix #442 (consider hidden zeros for show selection in interpretation)
+  * fix #444 (Message Break error box popping up too early)
+  * fix #448 (Include pyaudio in windows package for soundcard support)
+
+-------------------------------------------------------------------
+Mon May  7 09:09:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.0.4
+  * Improve external program behaviour in Simulator
+  * Improve simulator useability
+  * Improve transcript for external programs
+  * make endianness selectable in order column
+  * UI improvements
+  * add support for soundcards as new SDR device
+  * Multi device support
+  * add support for 24bit wav
+
+-------------------------------------------------------------------
+Mon Apr 23 07:07:28 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.0.2
+  * Improve external program behaviour in Simulator
+  * Improve simulator useability
+  * Improve transcript for external programs
+  * Make endianness selectable in order column
+  * UI improvements
+
+-------------------------------------------------------------------
+Fri Mar 23 18:24:20 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.0.1
+  * Bugfix release
+
+-------------------------------------------------------------------
+Wed Feb 28 16:18:35 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.0.0
+  * Add Simulator mode
+  * Performance and stability improvements:
+    - improve accuracy when sending messages with short pauses
+    - improve accuracy of protocol sniffer
+    - allow setting lower frequencies for HackRF (#396)
+    - consider latest changes of LimeSuite API (#397)
+    - add timestamp to protocol sniffer output (#392)
+    - improve performance of modulations
+    - improve performance of filtering in analysis
+    - improve performance when starting sending
+    - improve send accuracy of HackRF
+    - improve performance when filtering messages in Analysis
+
+-------------------------------------------------------------------
+Fri Jan 19 14:46:01 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.9.2
+  * Add BCD (Binary Coded Decimal) as new display format
+  * Make bit order configurable in analysis view table
+  * Improved loading of protocol files
+- Package svg version of the app-icon
+
+-------------------------------------------------------------------
+Tue Dec 19 08:12:18 UTC 2017 - guillaume@opensuse.org
+
+- Add more required runtime deps:
+  * python3-pyzmq
+  * python3-qt5
+
+-------------------------------------------------------------------
+Mon Dec 18 19:52:23 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.9.1
+  * hotfix release that fixes an error with HackRF receiving
+
+-------------------------------------------------------------------
+Sun Dec 17 14:17:06 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.9.0
+  * added native support for SDRplay
+  * improved performance for continuous send mode
+  * added collapsable comboboxes to device dialog
+
+-------------------------------------------------------------------
+Mon Dec  4 18:44:47 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.17
+  * show warning at bottom if no project loaded
+  * if no project is opened an new project is created, add
+    currently opnened files to new project
+  * add --version flag to command line script
+
+-------------------------------------------------------------------
+Thu Nov 30 17:21:04 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.16
+  * This release fixes an issue on Windows where processes ended
+    with an error.
+  * The NetworkSDR can now be used in continuous send mode
+
+-------------------------------------------------------------------
+Mon Nov 27 20:32:14 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.15
+  * This release fixes a problem mentioned in #366 and #368
+    with GNU Radio backend on Windows.
+
+-------------------------------------------------------------------
+Sun Nov 26 12:05:59 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.14
+  * This release fixes an overflow error (#364) when modulating
+    very long messages in Generator.
+  * The highlight of this release is an enhanced spectrum analyzer
+    (#365) with increased performance and a waterfall plot to have
+    a different, time based perspective on the spectrum.
+
+-------------------------------------------------------------------
+Sat Nov 18 13:45:33 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.13
+
+-------------------------------------------------------------------
+Thu Nov 16 18:48:19 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.12
+  * added a CSV import wizard for generic support of USB oscilloscopes
+
+-------------------------------------------------------------------
+Mon Nov 13 19:05:33 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.11
+  The following issues were fixed in this release:
+  * crash when entering bits on empty position in Analysis/Generation
+  * bandpass filter can now also work with negative frequencies
+  * bandpass filter operations now run in a separate process and
+    can be canceled with the ESC button
+  * added a csv import to work with USB oscilloscopes
+  * added a advanced modulation menu in Interpretation where a
+    minimum message length for ASK can be configured
+
+-------------------------------------------------------------------
+Thu Nov  9 11:17:01 UTC 2017 - mardnh@gmx.de
+
+- Remove macros %desktop_database_post and %icon_theme_cache_post
+  from %post and %postun section. These macros are not longer
+  needed.
+
+-------------------------------------------------------------------
+Sun Nov  5 14:04:47 UTC 2017 - jengelh@inai.de
+
+- Update summary.
+
+-------------------------------------------------------------------
+Sun Oct 22 14:02:48 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.8.10
+
+-------------------------------------------------------------------
+Sun Oct 22 11:49:42 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 1.8.8

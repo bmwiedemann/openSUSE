@@ -1,0 +1,119 @@
+Add variables referred by util-linux login, runuser and su, but not by
+shadow.
+
+Delete variables used by shadow implementation of login, su and runuser
+that has no use in util-linux implementation.
+
+Index: etc/login.defs
+===================================================================
+--- etc/login.defs.orig
++++ etc/login.defs
+@@ -1,5 +1,7 @@
+ #
+ # /etc/login.defs - Configuration control definitions for the shadow package.
++# Some variables are used by login(1), su(1) and runuser(1) from util-linux
++# package as well pam pam_unix(8) from pam package.
+ #
+ #	$Id$
+ #
+@@ -17,15 +19,8 @@ FAIL_DELAY		3
+ LOG_UNKFAIL_ENAB	no
+ 
+ #
+-# Enable logging of successful logins
++# Enable "syslog" logging of  newgrp(1) and sg(1) activity.
+ #
+-LOG_OK_LOGINS		no
+-
+-#
+-# Enable "syslog" logging of su(1) activity - in addition to sulog file logging.
+-# SYSLOG_SG_ENAB does the same for newgrp(1) and sg(1).
+-#
+-SYSLOG_SU_ENAB		yes
+ SYSLOG_SG_ENAB		yes
+ 
+ #
+@@ -63,12 +58,33 @@ MOTD_FILE	/etc/motd
+ HUSHLOGIN_FILE	.hushlogin
+ #HUSHLOGIN_FILE	/etc/hushlogins
+ 
++# If this variable is set to "yes", hostname will be suppressed in the
++# login: prompt.
++#LOGIN_PLAIN_PROMPT	no
++
+ #
+ # *REQUIRED*  The default PATH settings, for superuser and normal users.
+ #
+ # (they are minimal, add the rest in the shell startup files)
+-ENV_SUPATH	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+-ENV_PATH	PATH=/bin:/usr/bin
++#
++# ENV_PATH: The default PATH settings for non-root.
++#
++# ENV_ROOTPATH: The default PATH settings for root
++# (used by login, su and runuser).
++#
++# ENV_SUPATH is an ENV_ROOTPATH override for su and runuser
++# (and falback for login).
++#
++ENV_PATH	/bin:/usr/bin
++ENV_ROOTPATH	/sbin:/bin:/usr/sbin:/usr/bin
++#ENV_SUPATH	/sbin:/bin:/usr/sbin:/usr/bin
++
++# If this variable is set to "yes", su will always set path. every su
++# call will overwrite the PATH variable.
++#
++# Per default, only "su -" will set a new PATH.
++#
++ALWAYS_SET_PATH	no
+ 
+ #
+ # Terminal permissions
+@@ -84,19 +100,6 @@ ENV_PATH	PATH=/bin:/usr/bin
+ TTYGROUP	tty
+ TTYPERM		0600
+ 
+-#
+-# Login configuration initializations:
+-#
+-#	ERASECHAR	Terminal ERASE character ('\010' = backspace).
+-#	KILLCHAR	Terminal KILL character ('\025' = CTRL/U).
+-#
+-# The ERASECHAR and KILLCHAR are used only on System V machines.
+-#
+-# Prefix these values with "0" to get octal, "0x" to get hexadecimal.
+-#
+-ERASECHAR	0177
+-KILLCHAR	025
+-
+ # Default initial "umask" value used by login(1) on non-PAM enabled systems.
+ # Default "umask" value for pam_umask(8) on PAM enabled systems.
+ # UMASK is also used by useradd(8) and newusers(8) to set the mode for new
+Index: lib/getdef.c
+===================================================================
+--- lib/getdef.c.orig
++++ lib/getdef.c
+@@ -77,6 +77,7 @@ struct itemdef {
+ 
+ #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
+ static struct itemdef def_table[] = {
++	{"ALWAYS_SET_PATH", NULL},
+ 	{"CHARACTER_CLASS", NULL},
+ 	{"CHFN_RESTRICT", NULL},
+ 	{"CONSOLE_GROUPS", NULL},
+@@ -85,6 +86,7 @@ static struct itemdef def_table[] = {
+ 	{"DEFAULT_HOME", NULL},
+ 	{"ENCRYPT_METHOD", NULL},
+ 	{"ENV_PATH", NULL},
++	{"ENV_ROOTPATH", NULL},
+ 	{"ENV_SUPATH", NULL},
+ 	{"ERASECHAR", NULL},
+ 	{"FAIL_DELAY", NULL},
+@@ -95,6 +97,7 @@ static struct itemdef def_table[] = {
+ 	{"KILLCHAR", NULL},
+ 	{"LASTLOG_UID_MAX", NULL},
+ 	{"LOGIN_RETRIES", NULL},
++	{"LOGIN_PLAIN_PROMPT", NULL},
+ 	{"LOGIN_TIMEOUT", NULL},
+ 	{"LOG_OK_LOGINS", NULL},
+ 	{"LOG_UNKFAIL_ENAB", NULL},

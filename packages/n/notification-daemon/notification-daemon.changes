@@ -1,0 +1,477 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:37:55 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 28 10:11:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Provide dbus(org.freedesktop.Notifications), a virtual package
+  by analogy with dbus(org.freedesktop.secrets).
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Fri Apr 15 21:34:13 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Wed Apr  6 14:04:30 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Remove GNOME-Flashback autostart file.
+  + Stop using deprecated GdkDeviceManager.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 18:56:21 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.18.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 19:11:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix empty body text with invalid pango markup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 24 07:00:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Deprecation warning fixes.
+  + Internationalization fixes.
+  + Now upstream gettext is used instead of intltool.
+  + Ported away from gnome-common.
+  + Updated translations.
+- Drop intltool BuildRequires: no longer needed after the port to
+  gettext.
+- Dro ppkgconfig(libcanberra-gtk3) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Sun Jun  7 12:35:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 29 18:11:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Fix resident notifications.
+  + Reset timeout when updating notification content.
+  + Style fixes, should look better with Adwaita theme.
+
+-------------------------------------------------------------------
+Wed Apr 15 06:45:59 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Fix timeout, based on patch by Jakub Adam.
+  + Properly check if GVariant is string.
+  + Fix crash in hint_to_boolean.
+
+-------------------------------------------------------------------
+Thu Mar 26 20:27:45 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Free memory returned by g_find_program_in_path.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 29 11:22:43 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.2:
+  + Fix few deprecation warnings.
+
+-------------------------------------------------------------------
+Thu Jan 29 11:08:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Rename existing .desktop file to
+    notification-daemon-autostart.desktop and add back regular
+    .desktop file.
+- Changes from version 3.14.0:
+  + Desktop file moved to autostart.
+  + Fix notifications with long text.
+  + Updated .doap file.
+  + Fix crash with newer glib versions.
+  + Fix crash in nd_notification_get_is_transient.
+
+-------------------------------------------------------------------
+Mon Sep  3 18:53:31 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.6:
+  + Fix a wrong loop condition
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun  6 19:29:38 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.7.5:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:28:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.7.4:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:39:03 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.7.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 14:07:09 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.7.2:
+  + Remove vestigial dbus-glib requirement
+  + Updated translations.
+- Remove now unneeded dbus-1-glib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Apr 21 10:30:11 CEST 2011 - vuntz@opensuse.org
+
+- Drop --libexecdir=%{_libexecdir}/%{name}-1.0 from configure: we
+  don't need a specific libexecdir.
+- Remove now unneeded libnotify-devel, libwnck-devel BuildRequires.
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: libcanberra-devel.
+  + New ones: glib-2.0, gtk+-3.0, libcanberra-gtk3, x11.
+
+-------------------------------------------------------------------
+Thu Mar 24 12:31:37 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.7.1:
+  + Don't use DBus activation
+  + Don't exit on idle
+  + Install a desktop file for notification-daemon
+- Changes from version 0.7.0:
+  + Support image-data and image-path hints
+  + Updated translations.
+- Changes from version 0.6.0:
+  + Drop setup capplet
+  + Drop themes
+  + Add a 'dock' for bubbles
+  + Add 'persistence' and 'action-icons' capabilities
+  + Support transient and resident notifications
+  + Port to GDBus
+- Remove GConf schema handling (no longer used upstream)
+- Remove fdupes and gconf2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:58:45 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:51:45 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Sun Aug  8 02:34:39 CEST 2010 - vuntz@opensuse.org
+
+- Clean up update to 0.5.0.
+- Remove gstreamer-0_10-devel BuildRequires, now that libcanberra
+  is used.
+
+-------------------------------------------------------------------
+Thu Jul 29 11:16:55 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.5.0:
+  + Add a new default theme
+  + Properly handle monitor changes
+  + Add multi-screen support
+  + Exit when not in use
+  + Exit when unable to acquire bus name
+  + Support version 1.1 of the notification spec
+  + Various memory leak fixes
+  + Better RTL locale support
+  + Don't monitor all X events unless necessary
+  + Update the list of ways to start a browser
+  + Fix the screensaver lock detection
+  + Use top right location by default
+  + Use canberra instead of gstreamer for event sounds
+  + Limit the total number of notifications that can be displayed
+    at once
+  + Conversion from glade to gtkbuilder
+  + Bugs fixed: bgo#608077, bgo#608082, bgo#608858, bgo#612032,
+    bgo#622021, bgo#622552, bgo#622556
+- Drop notification-daemon-memleak.patch,
+  notification-daemon-no-libsexy.patch and
+  notification-daemon-crash-theme-change.patch: fixed upstream.
+- Drop notification-daemon-new-bubble.patch and the packaging hacks
+  to create our bubble theme based on the standard theme. There is
+  now a nice upstream theme included that we will use instead.
+- Add libcanberra-devel BuildRequires.
+- Remove libglade2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jun 28 17:14:17 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (bnc#617754).
+
+-------------------------------------------------------------------
+Thu Jun  3 17:41:35 CEST 2010 - vuntz@opensuse.org
+
+- Add notification-daemon-no-libsexy.patch: we don't need libsexy
+  to implement a feature available in recent GTK+. And it turns out
+  that it fixes the crash reported as bnc#589250, so use this patch
+  from upstream.
+- Drop libsexy-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Dec  3 10:31:21 CET 2009 - vuntz@opensuse.org
+
+- Rebase notification-daemon-new-bubble.patch to apply without
+  fuzz.
+
+-------------------------------------------------------------------
+Sat Apr 25 02:15:54 CEST 2009 - vuntz@novell.com
+
+- Add notification-daemon-crash-theme-change.patch to fix a crash
+  when the notification theme changes while a notification is
+  opened. Fix bnc#496430.
+
+-------------------------------------------------------------------
+Thu Apr 23 23:44:15 CEST 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Thu Apr 09 12:49:01 CET 2009 - opensuse@sukimashita.com
+
+- Make notification-properties appear in control-center's look and
+  feel category
+
+-------------------------------------------------------------------
+Fri Jan 23 06:23:11 CET 2009 - vuntz@novell.com
+
+- Minor spec cleanups.
+
+-------------------------------------------------------------------
+Sat Dec 20 11:47:47 EST 2008 - mboman@suse.de
+
+- Update to version 0.4.0:
+  + Bumped up the required minimum version of GTK+ to 2.10.0.
+  + Bump the notification spec version we're compliant with to 1.0.
+  + Send the reason code along with the NotificationClosed signal in order
+    to indicate why the notification was closed
+  + Send an error if the user attempts to close an already closed
+    notification.
+  + Text is now escaped in the summary in the Standard theme so that
+    ampersands and other special characters show up instead of disappearing.
+  + Set the type hint for notifications to TYPE_NOTIFICATION
+  + Added support for playing sounds when the "sound-file" hint is set or
+    when the default_sound GConf key is set, as well as support for the
+    "suppress-sound" hint
+  + Added a control panel applet for controlling such things as the
+    notification theme and popup positions
+  + Added better support for attaching context notifications to an icon on
+    the system tray, even when it moves
+  + Added an Arabic translation
+  + Added an Italian translation
+  + Fixed a bug where text would sometimes get truncated
+  + Fixed a bug where notifications weren't displayed if a fullscreen
+    window was minimized
+  + Fixed a bug where we were quitting on theme engine failure, instead of
+    falling back to the default theme engine
+  + Fixed a bug where notifications with arrows were crossing the monitor
+    on multihead setups instead of staying on their head
+  + Fixed the close button size on the notifications so that they don't
+    stretch
+  + Fixed a crash when an unsupported value type was passed in for the
+    urgency when using the standard theme
+- Remove backported notification-daemon-svn3017.patch
+- Remove notification-daemon-clipping.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Tue Oct 28 00:40:15 CET 2008 - vuntz@novell.com
+
+- Add notification-daemon-svn3017.patch to get many fixes from
+  upstream that never made into a release since early 2007.
+- Add notification-daemon-memleak.patch to fix a leak.
+- Add gstreamer-0_10-devel as BuildRequires.
+- Clean up spec file.
+
+-------------------------------------------------------------------
+Mon Mar 31 14:47:21 CEST 2008 - vuntz@suse.de
+
+- Remove all the bubble related patches:
+  notification-daemon-bubble-enable.patch,
+  notification-daemon-bubble-init.patch,
+  notification-daemon-drawing.patch
+- Instead, create a new theme based on the standard theme by
+  copying the standard theme.
+- Add notification-daemon-new-bubble.patch: we patch the
+  standard-based theme to be easily themed via the GTK+ theme, and
+  we also add some internal API to know if an engine wants to
+  always stack notifications. This theme is named bubble to keep
+  compatibility with previous versions of the package.
+- Remove useless build-requires: gcc-c++ libxml2-devel
+  perl-XML-Parser update-desktop-files
+
+-------------------------------------------------------------------
+Thu Mar 13 16:58:01 CET 2008 - sbrabec@suse.cz
+
+- Custom look'n'feel gconf keys moved to gconf2-branding-openSUSE.
+
+-------------------------------------------------------------------
+Thu Mar  6 19:32:42 CET 2008 - maw@suse.de
+
+- Fix the build when against newer versions of intltool.
+
+-------------------------------------------------------------------
+Tue Aug  7 23:40:02 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Tue Mar 13 22:09:01 CET 2007 - dobey@suse.de
+
+- Update drawing patch to build
+- notification-daemon-bubble-enable.patch
+  * Enable building the bubble theme again
+- notification-daemon-bubble-init.patch
+  * Add new methods requiresd for theme to load
+
+-------------------------------------------------------------------
+Tue Mar  6 17:19:27 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 0.3.7:
+  * Bug and crash fixes.
+  * Fixed memory leaks.
+  * Fixed dbus 0.61 and dbus-glib 0.72 compatibility.
+  * The background of the window in the standard theme is now just
+    slightly transparent when compiled against GTK+ 2.10 and when
+    using a composite manager.
+  * Fix several rendering glitches.
+  * Added initial accessibility support.
+  * Clicking anywhere in a notification should now close the
+    notification.
+  * Added a GConf key to allow users to specify corners.
+  * Translation update.
+  * A notification's timeout will now pause while the mouse is
+    hovering over the notification.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:11:58 CET 2007 - sbrabec@suse.cz
+
+- Compile with the latest dbus-binding-tool.
+
+-------------------------------------------------------------------
+Mon Dec 11 19:17:58 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Nov 30 19:42:25 CET 2006 - jhargadon@suse.de
+
+- removed unneeded files from package (#223690)
+
+-------------------------------------------------------------------
+Thu Nov 30 13:44:45 CET 2006 - sbrabec@suse.cz
+
+- Build correctly in older products.
+
+-------------------------------------------------------------------
+Sat Oct 14 18:37:37 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Fri Sep 15 17:58:57 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.3.5
+- removed upstreamed patches
+- Add three new required theme functions:
+          - theme_check_init - determines if the theme is compatible with the
+            running version of notification-daemon.
+          - get_theme_info - returns info on the theme.
+          - clear_notification_actions - Clears the notification action buttons
+            on the window
+- Disabled the Bubble theme for this release. It's the source of too
+  many bugs
+- Fix the scaling of different icon sizes. Now small icons display as
+  small, and larger icons are scaled down to 48x48
+- Fixed a problem where icons were being clipped in notifications
+- Fixed incorrect usage of GtkIconTheme.
+- Fixed notifications with a timeout of 2147484ms or longer expiring
+  in less than a second
+- Fixed a bug where a notification would duplicate its actions when
+  updated.
+- The Standard theme's countdown timer is now rendered using Cairo when
+  compiled against Gtk 2.8.0 or higher. This improves the timer by making
+- Renamed notification-daemon.service to
+  org.freedesktop.Notifications.service
+
+-------------------------------------------------------------------
+Wed Aug 16 16:57:45 CEST 2006 - aj@suse.de
+
+- Add a build require on dbus-1-glib-devel.
+
+-------------------------------------------------------------------
+Tue Mar 14 22:29:43 CET 2006 - dobey@suse.de
+
+- Add patch to fix default action clicking in notifications
+
+-------------------------------------------------------------------
+Mon Mar  6 17:57:10 CET 2006 - dobey@suse.de
+
+- Update drawing patch to fix colors
+
+-------------------------------------------------------------------
+Mon Feb 13 15:40:25 CET 2006 - dobey@suse.de
+
+- Update to version 0.3.4
+- Remove upstreamed patch for unversioned plug-ins
+- Add patch to fix usage of icon theme icons
+- Many upstream bug fixes
+- Add libwnck-devel to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 26 19:42:35 CET 2006 - dobey@suse.de
+
+- Add patch to default to new drawing theme
+- Add patch to remove libtool version on plug-ins
+- Add intltool to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:34 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:14:03 CET 2006 - dobey@suse.de
+
+- Update to version 0.3.2
+- Add in patch for new drawing layout
+
+-------------------------------------------------------------------
+Sun Aug  7 08:14:06 CEST 2005 - aj@suse.de
+
+- Fix 64-bit bug.
+
+-------------------------------------------------------------------
+Tue Aug  2 17:27:51 CEST 2005 - rodrigo@suse.de
+
+- Updated to 0.2.1.
+
+-------------------------------------------------------------------
+Wed Jun 29 17:33:40 CEST 2005 - sbrabec@suse.cz
+
+- New SuSE package, pre-0.0.1 version from actual svn snapshot.
+

@@ -1,0 +1,1279 @@
+-------------------------------------------------------------------
+Tue Aug 27 18:23:15 CEST 2019 - schubi@suse.de
+
+- Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:34:40 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Mon Mar 11 16:43:56 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Prevent UI syntax error due to nil in widget term (bsc#1126515)
+- 4.1.1
+
+-------------------------------------------------------------------
+Tue Dec  4 11:09:02 UTC 2018 - jreidinger@suse.com
+
+- always use absolute path to binaries (bsc#1118291)
+- escape properly shell arguments (bsc#1118291)
+- 4.1.0
+
+-------------------------------------------------------------------
+Sun Nov 25 20:08:26 UTC 2018 - Noah Davis <noahadvs@gmail.com>
+
+- Provide icon with module (boo#1109310)
+- 4.0.4
+
+-------------------------------------------------------------------
+Mon Aug 20 16:01:46 CEST 2018 - schubi@suse.de
+
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Changed dir of COPYING file.
+
+-------------------------------------------------------------------
+Thu Jun 28 15:18:37 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.3
+
+-------------------------------------------------------------------
+Mon Feb  5 08:18:52 UTC 2018 - knut.anderssen@suse.com
+
+- Replace SuSEFirewall2 by firewalld (fate#323460)
+- 4.0.2
+
+-------------------------------------------------------------------
+Tue Nov 14 14:25:11 CET 2017 - kukuk@suse.de
+
+- Link ypserv agent against libtirpc, sunrpc is deprecated and does
+  not support IPv6 (bsc#1076566)
+- 4.0.1
+
+-------------------------------------------------------------------
+Mon Sep 11 07:34:10 UTC 2017 - jsrain@suse.cz
+
+- added libnsl-devel to BuildRequires for upstream changes
+- 4.0.0
+
+-------------------------------------------------------------------
+Wed May 24 09:14:54 CEST 2017 - schubi@suse.de
+
+- Added yp-tools to the requirements in order to call ypdomainname
+  (Additional fix for bnc#916031 and bsc#994530)
+- 3.2.1
+
+-------------------------------------------------------------------
+Wed Oct 19 15:17:12 UTC 2016 - jreidinger@suse.com
+
+- report error if ypdomainname failed instead of silent ignoring
+  (bsc#994530)
+- 3.2.0
+
+-------------------------------------------------------------------
+Tue Jul 19 06:49:37 UTC 2016 - mfilka@suse.com
+
+- bnc#988928
+  - updated translation
+- 3.1.14
+
+-------------------------------------------------------------------
+Wed Jun  1 14:54:19 UTC 2016 - igonzalezsosa@suse.com
+
+- Drop yast2-nis-client-devel-doc package (fate#320356)
+- 3.1.13
+
+-------------------------------------------------------------------
+Wed Feb  4 11:01:53 UTC 2015 - ancor@suse.com
+
+- Use correct location for ypdomainname (bnc#916031)
+- 3.1.12
+
+-------------------------------------------------------------------
+Thu Dec  4 09:50:31 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Thu Aug  7 10:38:46 UTC 2014 - cwh@suse.com
+
+- Made a more compact layout to better fit 800x600 (bnc#847291)
+- 3.1.10 
+
+-------------------------------------------------------------------
+Wed Jul 30 08:00:24 CEST 2014 - jsuchome@suse.cz
+
+- yast2-network required for writing network settings (bnc#888664)
+- 3.1.9
+
+-------------------------------------------------------------------
+Mon Mar 31 13:23:54 UTC 2014 - jreidinger@suse.com
+
+- one more fix for failing old testsuite as we cannot mock new
+  systemd there
+- 3.1.8
+
+-------------------------------------------------------------------
+Fri Mar 28 15:26:58 UTC 2014 - vmoravec@suse.com
+
+- Fix failing testsuite
+- 3.1.7
+
+-------------------------------------------------------------------
+Wed Mar 12 10:19:01 UTC 2014 - vmoravec@suse.com
+
+- Fix failing testsuite due to changes in yast2
+- 3.1.6
+
+-------------------------------------------------------------------
+Thu Mar  6 12:58:47 CET 2014 - jsuchome@suse.cz
+
+- use Service API for starting ypbind (bnc#866923)
+- 3.1.5
+
+-------------------------------------------------------------------
+Mon Jan 13 15:59:10 CET 2014 - jsuchome@suse.cz
+
+- updated for current NetworkService API (bnc#856376)
+
+-------------------------------------------------------------------
+Tue Dec 17 09:44:57 UTC 2013 - mfilka@suse.com
+
+- contains .etc.defaultdomain agent
+- 3.1.3 
+
+-------------------------------------------------------------------
+Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
+
+- Add explicit COPYING file
+
+-------------------------------------------------------------------
+Tue Nov  5 12:02:10 CET 2013 - jsuchome@suse.cz
+
+- add/remove unix-nis PAM module option if needed (bnc#848963) 
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 11:41:28 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:34:09 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Thu Jul 25 16:15:46 CEST 2013 - jsuchome@suse.cz
+
+- reduced obsoleted documentation
+- 2.24.2
+
+-------------------------------------------------------------------
+Thu Jul 25 10:55:44 UTC 2013 - lslezak@suse.cz
+
+- move the development documentation to devel-doc subpackage
+- 2.24.1
+
+-------------------------------------------------------------------
+Fri Apr 19 16:16:57 CEST 2013 - jsuchome@suse.cz
+
+- testsuite adapted to last changes in Service and SuSEfirewall2
+- 2.24.0
+
+-------------------------------------------------------------------
+Thu Jan  3 15:54:23 UTC 2013 - locilka@suse.com
+
+- Testsuites adapted to switching Service module to systemd
+  (yast2-2.23.15)
+- Testsuite adapted to one single SuSEfirewall2 service
+  (yast2-2.23.17)
+- 2.23.1
+
+-------------------------------------------------------------------
+Thu Oct 11 15:32:39 CEST 2012 - jsuchome@suse.cz
+
+- remove obsoleted SuSEconfig call
+- 2.23.0 
+
+-------------------------------------------------------------------
+Thu Mar 29 15:29:20 CEST 2012 - jsuchome@suse.cz
+
+- merged proofread texts 
+- 2.22.2 
+
+-------------------------------------------------------------------
+Mon Mar 26 10:53:57 CEST 2012 - jsuchome@suse.cz
+
+- testsuite adapted to changes in FileUtils.ycp
+- 2.22.1
+
+-------------------------------------------------------------------
+Tue Jan 24 17:18:47 CET 2012 - jsuchome@suse.cz
+
+- confirmed license
+- 2.22.0 
+
+-------------------------------------------------------------------
+Fri Nov 25 12:22:45 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Nov  3 14:30:58 CET 2011 - locilka@suse.cz
+
+- Fixed testsuite
+- 2.21.5
+
+-------------------------------------------------------------------
+Mon Oct 24 11:38:22 CEST 2011 - jsuchome@suse.cz
+
+- testsuite adapted to last change of yast2-pam
+- 2.21.4 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:44:57 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.3 
+
+-------------------------------------------------------------------
+Mon Sep 12 15:04:54 UTC 2011 - lslezak@suse.cz
+
+- updated testsuite (systemd support) (bnc#664548)
+- 2.21.2
+
+-------------------------------------------------------------------
+Fri Aug  5 12:34:20 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+
+-------------------------------------------------------------------
+Fri Jul 15 12:13:23 CEST 2011 - jsuchome@suse.cz
+
+- fixed typo
+- 2.21.1 
+
+-------------------------------------------------------------------
+Wed Mar 23 12:35:14 CET 2011 - jsuchome@suse.cz
+
+- aborting in Stage::cont does not abort installation (bnc#678650)
+- 2.21.0 
+
+-------------------------------------------------------------------
+Mon Sep 20 21:59:33 CEST 2010 - jsuchome@suse.cz
+
+- added button to call NFS client (bnc#626515)
+- 2.20.0
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Mon Jul 27 15:42:20 CEST 2009 - jsuchome@suse.cz
+
+- adapt UI so it fits to traditional xterm size (bnc#520090)
+- 2.18.2 
+
+-------------------------------------------------------------------
+Thu Jun 18 09:18:01 CEST 2009 - jsuchome@suse.cz
+
+- 2.18.1 
+
+-------------------------------------------------------------------
+Tue Jun 16 14:27:42 CEST 2009 - mvidner@suse.cz
+
+- Using autodocs-ycp.ami, which contains a fix for automake 1.11.
+
+-------------------------------------------------------------------
+Mon Jun  8 10:17:49 CEST 2009 - jsuchome@suse.cz
+
+- correctly read set domain specific broadcast (bnc#503184)
+- 2.18.0
+
+-------------------------------------------------------------------
+Wed Jan 14 11:58:34 CET 2009 - jsuchome@suse.cz
+
+- no exit confirmation popup if no changes were made (bnc#458319) 
+- used Button box in popup for adding domain (bnc#455740)
+
+-------------------------------------------------------------------
+Thu Nov 13 16:33:43 CET 2008 - ug@suse.de
+
+- rnc file fixed
+- 2.17.7
+
+-------------------------------------------------------------------
+Thu Oct  9 11:02:05 CEST 2008 - jsuchome@suse.cz
+
+- fixed failing testsuite
+- 2.17.6 
+
+-------------------------------------------------------------------
+Mon Sep 29 09:31:32 CEST 2008 - jsuchome@suse.cz
+
+- autoyast API updated for network policy (bnc#429162) 
+- 2.17.5
+
+-------------------------------------------------------------------
+Fri Sep 26 11:01:04 CEST 2008 - ug@suse.de
+
+- rnc file fixed
+
+-------------------------------------------------------------------
+Thu Sep 25 10:25:53 CEST 2008 - jsuchome@suse.cz
+
+- reset netconfig settings before reading (bnc#427630)
+- 2.17.4
+
+-------------------------------------------------------------------
+Thu Sep 18 10:31:15 CEST 2008 - jsuchome@suse.cz
+
+- DHCLIENT_MODIFY_NIS_CONF is not used any more
+- 2.17.3 
+
+-------------------------------------------------------------------
+Tue Sep 16 16:13:06 CEST 2008 - jsuchome@suse.cz
+
+- do not require entering server with 'auto' policy (bnc#425433)
+- help text and widget labels for policy configuration (bnc#423025)
+- 2.17.2
+
+-------------------------------------------------------------------
+Thu Sep  4 15:02:19 CEST 2008 - mc@suse.de
+
+- fix typo in variable name 
+
+-------------------------------------------------------------------
+Thu Sep  4 14:43:20 CEST 2008 - jsuchome@suse.cz
+
+- rpcbind is default instead of portmap (bnc#423026)
+- DHCLIENT_SET_DOMAINNAME replaced by NETCONFIG_NIS_SETDOMAINNAME
+- 2.17.1
+
+-------------------------------------------------------------------
+Tue Aug 26 14:21:23 CEST 2008 - mc@suse.de
+
+- 2.17.0
+- Netconfig patch for fine-grained merging of static and
+  DHCP-supplied data 
+
+-------------------------------------------------------------------
+Tue May 20 15:27:26 CEST 2008 - jsuchome@suse.cz
+
+- pass correct service name to SuSEFirewallServices
+- move firewall config to the first dialog (bnc#390749)
+- 2.16.3
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Tue Apr 15 10:00:07 CEST 2008 - jsuchome@suse.cz
+
+- disabling during installation makes sense with current workflow
+- 2.16.2 
+
+-------------------------------------------------------------------
+Wed Mar 26 10:48:56 CET 2008 - jsuchome@suse.cz
+
+- use OK button label instead of Accept (fate #120373)
+- 2.16.1 
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+
+-------------------------------------------------------------------
+Mon Dec  3 15:09:12 CET 2007 - jsuchome@suse.cz
+
+- merged texts from proofread 
+
+-------------------------------------------------------------------
+Fri Oct 19 11:00:23 CEST 2007 - jsuchome@suse.cz
+
+- clear nscd cache instead of restarting nscd (#333305)
+- 2.16.0 
+
+-------------------------------------------------------------------
+Mon Aug 27 16:29:32 CEST 2007 - jsuchome@suse.cz
+
+- install nfs-client together with autofs (#304309)
+- 2.15.3 
+
+-------------------------------------------------------------------
+Fri May 25 13:30:04 CEST 2007 - jsrain@suse.cz
+
+- removed outdated translations from .desktop-files (#271209)
+
+-------------------------------------------------------------------
+Thu Mar 29 11:05:36 CEST 2007 - jsuchome@suse.cz
+
+- changed dependency tag for yast2-core (#252988)
+- 2.15.2
+
+-------------------------------------------------------------------
+Wed Mar  7 15:58:22 CET 2007 - jsuchome@suse.cz
+
+- fixed failing testsuite by removing PackageSystem from testedfiles
+- 2.15.1
+
+-------------------------------------------------------------------
+Tue Jan 30 08:03:57 CET 2007 - jsuchome@suse.cz
+
+- fixed testsuite failure caused by new rpm parameter in Package::Installed
+- 2.15.0 
+
+-------------------------------------------------------------------
+Mon Nov  6 10:21:22 CET 2006 - jsuchome@suse.cz
+
+- new version for new product
+- 2.14.0
+
+-------------------------------------------------------------------
+Thu Oct 26 16:30:32 CEST 2006 - jsuchome@suse.cz
+
+- added schema name to desktop file (#215249)
+- 2.13.8 
+
+-------------------------------------------------------------------
+Thu Oct 26 15:26:55 CEST 2006 - jsuchome@suse.cz
+
+- schema file moved from autoyast package (#215249)
+- 2.13.7 
+
+-------------------------------------------------------------------
+Mon Sep  4 11:36:03 CEST 2006 - jsuchome@suse.cz
+
+- removed dia from doc/Makefiles
+- 2.13.6
+
+-------------------------------------------------------------------
+Tue Aug 22 09:32:35 CEST 2006 - jsuchome@suse.cz
+
+- behave as DHCP supports NIS when NetworkManager is enabled (#186179)
+- 2.13.5
+
+-------------------------------------------------------------------
+Thu May 11 16:32:33 CEST 2006 - jsuchome@suse.cz
+
+- do not show message that DHCP doesn't support NIS when using
+  NetworkManager (#152262)
+- 2.13.4 
+
+-------------------------------------------------------------------
+Mon Mar 27 09:36:15 CEST 2006 - jsuchome@suse.cz
+
+- added checking for root permissions (#158483)
+- 2.13.3
+
+-------------------------------------------------------------------
+Fri Mar 10 17:08:30 CET 2006 - jsuchome@suse.cz
+
+- added checks for nil output from agents (#155439)
+- fixed BuildRequires
+- 2.13.2 
+
+-------------------------------------------------------------------
+Tue Jan 17 10:26:13 CET 2006 - visnov@suse.cz
+
+- fix testsuite
+- 2.13.1 
+
+-------------------------------------------------------------------
+Mon Jan  9 11:05:04 CET 2006 - jsuchome@suse.cz
+
+- new version for new product
+- 2.13.0 
+
+-------------------------------------------------------------------
+Wed Jan  4 15:41:29 CET 2006 - jsuchome@suse.cz
+
+- fixed testsuite (firewall initialization)
+- 2.12.3
+
+-------------------------------------------------------------------
+Thu Aug  4 14:28:34 CEST 2005 - jsuchome@suse.cz
+
+- update also "services", "netgroup" and "aliases" entries (#100205)
+- 2.12.2
+
+-------------------------------------------------------------------
+Thu Jul 28 11:26:51 CEST 2005 - jsuchome@suse.cz
+
+- updated desktop file
+- 2.12.1
+
+-------------------------------------------------------------------
+Tue Jul 12 14:48:43 CEST 2005 - jsuchome@suse.cz
+
+- install autofs by default (not autofs4) - bug #95970
+- 2.12.0
+
+-------------------------------------------------------------------
+Thu Mar  3 11:04:12 CET 2005 - jsuchome@suse.cz
+
+- do not default to 'always start' when called from users
+
+-------------------------------------------------------------------
+Fri Feb 18 14:39:53 CET 2005 - jsuchome@suse.cz
+
+- install autofs4 by default (not autofs) - bug #50871
+- 2.11.9
+
+-------------------------------------------------------------------
+Mon Feb 14 13:44:43 CET 2005 - jsuchome@suse.cz
+
+- save changes when editing Additional domains (#50734)
+- enable to set autofs in autoyast configuration (#50734)
+- 2.11.8
+
+-------------------------------------------------------------------
+Thu Feb 10 13:53:27 CET 2005 - jsuchome@suse.cz
+
+- fixed testsuite (firewall initialization)
+- 2.11.7 
+
+-------------------------------------------------------------------
+Mon Feb  7 16:17:47 CET 2005 - jsuchome@suse.cz
+
+- merged texts from proofread
+- 2.11.6 
+
+-------------------------------------------------------------------
+Mon Jan 31 08:56:39 CET 2005 - jsuchome@suse.cz
+
+- fixed build (failing testsuite on SuSEFirewall initialization)
+- 2.11.5
+
+-------------------------------------------------------------------
+Mon Jan 24 10:25:46 CET 2005 - jsuchome@suse.cz
+
+- fixed testusite (new Autologin.ycp)
+- 2.11.4 
+
+-------------------------------------------------------------------
+Thu Dec 16 13:01:24 CET 2004 - jsuchome@suse.cz
+
+- do not ask for 'Abort Installation' when called from users
+- use Accept button instead of OK in the dialogs
+- 2.11.3
+
+-------------------------------------------------------------------
+Wed Dec 15 11:09:24 CET 2004 - jsuchome@suse.cz
+
+- when looking for running dhcpcd, handle multiple files correctly (#49181)
+- do not show Abort button in 'pseudo-popups'
+- adapt for new Progress usage
+- yast2-firewall, yast2-network not needed for build
+- 2.11.2
+
+-------------------------------------------------------------------
+Tue Dec  7 14:59:58 CET 2004 - jsuchome@suse.cz
+
+- fixed helptext to not include foo.com address (#48112)
+- 2.11.1 
+
+-------------------------------------------------------------------
+Fri Oct 29 09:04:36 CEST 2004 - jsuchome@suse.cz
+
+- adapted for new Mode:: interface
+- 2.11.0 
+
+-------------------------------------------------------------------
+Tue Sep 14 09:00:24 CEST 2004 - jsuchome@suse.cz
+
+- adapted testsuite to changes in yast2-firewall
+- 2.10.8
+
+-------------------------------------------------------------------
+Thu Sep  9 16:19:11 CEST 2004 - jsuchome@suse.cz
+
+- get rid of Require module (#30872)
+- show a message when autofs package should be installed (#44863)
+- 2.10.7
+
+-------------------------------------------------------------------
+Mon Sep  6 17:41:12 CEST 2004 - jsuchome@suse.cz
+
+- fixed testsuite (firewall is not restarted when not touched)
+- 2.10.6
+
+-------------------------------------------------------------------
+Fri Sep  3 11:57:00 CEST 2004 - jsuchome@suse.cz
+
+- added Open firewall port checkbox (#44474)
+- 2.10.5
+
+-------------------------------------------------------------------
+Tue Aug 31 00:21:09 CEST 2004 - nashif@suse.de
+
+- use modified flag (#43904)
+
+-------------------------------------------------------------------
+Mon Aug 30 18:50:01 CEST 2004 - jsuchome@suse.cz
+
+- only enabling is possible during installation (#44476)
+
+-------------------------------------------------------------------
+Mon Aug 23 12:58:51 CEST 2004 - jsuchome@suse.cz
+
+- cmdline: always save status on 'enable' command,
+    enable DHCP-configured NIS client when static data weren't provided 
+- clear nologin from passwd (#40571)
+- 2.10.3
+
+-------------------------------------------------------------------
+Thu Aug 19 09:40:33 CEST 2004 - jsuchome@suse.cz
+
+- cmdline: use standardized enum type for "automounter" and
+  "broadcast" options
+
+-------------------------------------------------------------------
+Mon Aug 16 15:31:41 CEST 2004 - jsuchome@suse.cz
+
+- 2.10.2
+
+-------------------------------------------------------------------
+Tue Aug 10 09:06:13 CEST 2004 - jsuchome@suse.cz
+
+- merged proofread texts
+
+-------------------------------------------------------------------
+Tue Jul 27 15:55:37 CEST 2004 - jsuchome@suse.cz
+
+- use Package module instead of Require
+
+-------------------------------------------------------------------
+Thu Jul 22 20:16:32 CEST 2004 - jsuchome@suse.cz
+
+- use Nsswitch module from yast2-pam for handling /etc/nsswitch.conf
+- use Message module for common messages 
+- command-line interface
+- 2.10.1
+
+-------------------------------------------------------------------
+Thu Jun 17 10:37:38 CEST 2004 - mvidner@suse.cz
+
+- Added "testedfiles" to test cases to make it work with the new testsuite.
+- 2.10.0
+
+-------------------------------------------------------------------
+Tue May 18 16:03:35 CEST 2004 - mvidner@suse.cz
+
+- The last change would do more harm than good, reverted (#40571).
+- 2.9.20
+
+-------------------------------------------------------------------
+Mon May 17 15:38:27 CEST 2004 - mvidner@suse.cz
+
+- Reset compat entries in /etc/passwd and co. to defaults
+  to handle nologin written by LDAP client (#40571).
+- 2.9.19
+
+-------------------------------------------------------------------
+Tue May  4 09:53:01 CEST 2004 - mvidner@suse.cz
+
+- merged proofread messages
+- 2.9.18
+
+-------------------------------------------------------------------
+Tue Apr 27 13:07:37 CEST 2004 - mvidner@suse.cz
+
+- fix parallel build by making a convenience library
+- 2.9.17
+
+-------------------------------------------------------------------
+Fri Apr 16 15:46:04 CEST 2004 - mvidner@suse.cz
+
+- show an improvised, dhcp provided domain as the default one (#35654)
+- 2.9.16
+
+-------------------------------------------------------------------
+Fri Apr  2 15:11:40 CEST 2004 - mvidner@suse.cz
+
+- changed license to GPL
+- 2.9.15
+
+-------------------------------------------------------------------
+Thu Apr  1 16:08:59 CEST 2004 - mvidner@suse.cz
+
+- only validate input if service is on, fixes disabling it (#37728).
+- 2.9.14
+
+-------------------------------------------------------------------
+Tue Mar 30 11:31:16 CEST 2004 - mvidner@suse.cz
+
+- warn if LDAP is enabled (#36981)
+- 2.9.13
+
+-------------------------------------------------------------------
+Mon Mar 22 16:08:56 CET 2004 - mvidner@suse.cz
+
+- re-enabled testsuite
+- added AGENT_LIBADD so that agents work from standalone Perl
+- 2.9.12
+
+-------------------------------------------------------------------
+Wed Mar 10 09:06:49 CET 2004 - kkaempf@suse.de
+
+- disable testsuite
+- 2.9.11
+
+-------------------------------------------------------------------
+Wed Mar 10 02:19:22 CET 2004 - sh@suse.de
+
+- V 2.9.10
+- Migration to new wizard 
+
+-------------------------------------------------------------------
+Mon Mar  8 19:22:36 CET 2004 - lslezak@suse.cz
+
+- use Sequencer::
+- set icon
+- version 2.9.9
+
+-------------------------------------------------------------------
+Mon Mar  8 13:33:31 CET 2004 - mvidner@suse.cz
+
+- require yast2-installation because of ProductFeatures
+- 2.9.8
+
+-------------------------------------------------------------------
+Fri Mar  5 16:51:08 CET 2004 - mvidner@suse.cz
+
+- fixed enabling/disabling, broken in 2.9.6 (#35297)
+- in nsswitch.conf, the default is compat, not files (#35299)
+- added type information (lslezak)
+- 2.9.7
+
+-------------------------------------------------------------------
+Fri Feb 27 15:44:29 CET 2004 - lslezak@suse.cz
+
+- yp.conf agent: SLP option support
+- new UI (#29084) with SLP support
+- version 2.9.6
+
+-------------------------------------------------------------------
+Thu Feb 19 12:48:42 CET 2004 - lslezak@suse.cz
+
+- removed yast2-packager from neededforbuild
+- version 2.9.5
+
+-------------------------------------------------------------------
+Wed Feb 18 15:13:03 CET 2004 - jsuchome@suse.cz
+
+- added possibility to call ShortSummary function from auto-client
+
+-------------------------------------------------------------------
+Tue Feb 10 18:42:13 CET 2004 - lslezak@suse.cz
+
+- NI fixes (data types, removed globals)
+- version 2.9.4
+
+-------------------------------------------------------------------
+Mon Feb  2 20:58:15 CET 2004 - msvec@suse.cz
+
+- 2.9.3
+
+-------------------------------------------------------------------
+Mon Dec 15 15:48:09 CET 2003 - mvidner@suse.cz
+
+- Made compilable by the new interpreter (jhumpol)
+- Added yast2-pam to neededforbuild (jsuchome)
+- 2.9.2
+
+-------------------------------------------------------------------
+Tue Oct 14 13:49:23 CEST 2003 - mvidner@suse.cz
+
+- Got a more reliable way of finding NIS servers,
+  using RPC broadcasts (#37099).
+- Added Select All and Select None buttons to the server selection popup.
+- Shortcut of Find changed not to conflict with Next (#29960).
+- 2.9.1
+
+-------------------------------------------------------------------
+Thu Oct  2 13:43:48 CEST 2003 - jsuchome@suse.cz
+
+- adapted to new Autologin interface
+- 2.9.0 
+
+-------------------------------------------------------------------
+Tue Sep 23 12:30:04 CEST 2003 - jsuchome@suse.cz
+
+- disable autologin when nis is enabled (#31470)
+- 2.8.9
+
+-------------------------------------------------------------------
+Tue Sep 16 14:25:12 CEST 2003 - jsuchome@suse.cz
+
+- fix of #30994: broadcast doesn't need IP/hostname
+- fix of #30996: search function returns IP address, not hostname
+- 2.8.8
+
+-------------------------------------------------------------------
+Sun Sep 14 20:47:21 CEST 2003 - adrian@suse.de
+
+- make it working in kcontrol
+
+-------------------------------------------------------------------
+Mon Sep  8 16:18:53 CEST 2003 - jsuchome@suse.cz
+
+- return needed packages list (nashif)
+
+-------------------------------------------------------------------
+Wed Sep  3 15:28:39 CEST 2003 - jsuchome@suse.cz
+
+- Abort Installation button during installation (#29835)
+- 2.8.6
+
+-------------------------------------------------------------------
+Mon Sep  1 17:25:31 CEST 2003 - jsuchome@suse.de
+
+- patched .descktop file
+
+-------------------------------------------------------------------
+Fri Aug 22 02:42:02 CEST 2003 - nashif@suse.de
+
+- Add variable for required packages and return them in auto client
+- 2.8.5
+
+-------------------------------------------------------------------
+Thu Aug 14 15:49:24 CEST 2003 - jsuchome@suse.cz
+
+- Removed "success popup" and added writing progress dialog (#28729)
+- 2.8.4
+
+-------------------------------------------------------------------
+Mon Aug  4 17:25:52 CEST 2003 - mvidner@suse.cz
+
+- Added desktop file (supersedes y2cc file).
+- 2.8.3
+
+-------------------------------------------------------------------
+Thu Jul 31 05:57:04 CEST 2003 - nashif@suse.de
+
+- Use correct SCR path for writing dhcp options
+
+-------------------------------------------------------------------
+Tue Jul 29 17:22:13 CEST 2003 - mvidner@suse.cz
+
+- Cancel in the server selection popup now works.
+- Added screenshot mode: "/sbin/yast2 nis screenshots"
+- 2.8.2
+
+-------------------------------------------------------------------
+Thu Jul 10 11:07:33 CEST 2003 - jsuchome@suse.de
+
+- added ShortSummary()
+
+-------------------------------------------------------------------
+Fri Jun 20 16:42:35 CEST 2003 - mvidner@suse.cz
+
+- Using Label, Popup and Require.
+- 2.8.1
+
+-------------------------------------------------------------------
+Thu Apr 24 12:54:34 CEST 2003 - mvidner@suse.de
+
+- Added a button to find NIS servers.
+- Clear {passwd,group,shadow}_compat: nisplus (#16168).
+- 2.8.0
+
+-------------------------------------------------------------------
+Mon Mar  3 14:40:32 CET 2003 - mvidner@suse.de
+
+- Texts from final proofreading.
+- 2.7.10
+
+-------------------------------------------------------------------
+Mon Mar  3 10:58:00 CET 2003 - mvidner@suse.de
+
+- Prefer "compat" to "files nis" so that daemons
+  don't have to be restarted to read nsswitch.conf (#23203).
+- 2.7.9
+
+-------------------------------------------------------------------
+Mon Feb 24 15:59:32 CET 2003 - mvidner@suse.de
+
+- Made it possible to freely switch between static and DHCP setup
+  (#23734).
+- Removed the "Successfully saved" popup in installation workflow (#23777).
+- 2.7.8
+
+-------------------------------------------------------------------
+Wed Feb 19 14:17:23 CET 2003 - jsuchome@suse.de
+
+- Enable only starting service if run during the installation (#23831)
+
+-------------------------------------------------------------------
+Tue Feb 18 15:27:44 CET 2003 - mvidner@suse.de
+
+- Preselect to start the service if run during the installation
+  (from the user module, #23733).
+
+-------------------------------------------------------------------
+Mon Feb 17 16:01:32 CET 2003 - mvidner@suse.de
+
+- Check whether dhcpcd is running (test -f /var/run/dhcpcd-*.pid, #23591).
+- Changed _auto::Result to Export (nashif).
+- 2.7.7
+
+-------------------------------------------------------------------
+Thu Feb 13 15:15:35 CET 2003 - jsuchome@suse.de
+
+- 'Next' instead of 'Finish' when Mode::cont is true
+
+-------------------------------------------------------------------
+Mon Feb 10 13:17:48 CET 2003 - jsuchome@suse.de
+
+- Merged proofread texts (3rd round).
+
+-------------------------------------------------------------------
+Wed Feb  5 12:18:34 CET 2003 - jsuchome@suse.de
+
+- added return value of client (for installation usage)
+- 2.7.6
+
+-------------------------------------------------------------------
+Mon Feb  3 17:17:01 CET 2003 - mvidner@suse.de
+
+- Merged proofread texts.
+- Added Read to _auto (nashif).
+- 2.7.5
+
+-------------------------------------------------------------------
+Fri Jan 24 16:30:39 CET 2003 - mvidner@suse.de
+
+- Now DHCP can be used to get the domain and servers (#14323).
+- Don't display a popup before writing (#23050).
+- 2.7.4
+
+-------------------------------------------------------------------
+Mon Jan 20 10:27:38 CET 2003 - mvidner@suse.de
+
+- Properly handle nsswitch for nis.
+- Restart nscd if running.
+- Fixed the agent fix for the "server foo broadcast" case.
+- 2.7.3
+
+-------------------------------------------------------------------
+Wed Jan 15 15:45:52 CET 2003 - mvidner@suse.de
+
+- Added function key shortcuts (try F1 in text mode).
+- Prevent agent from returning strings as integers/booleans (~#21804).
+- Using the new *_auto dispatcher (nashif).
+
+-------------------------------------------------------------------
+Fri Dec 20 10:52:46 CET 2002 - mvidner@suse.de
+
+- Easier editing of the server list.
+- Made autofs independent of NIS (#19769).
+- 2.7.2
+
+-------------------------------------------------------------------
+Thu Dec  5 12:51:04 CET 2002 - mvidner@suse.cz
+
+- Use the faked Pkg instead of the real one to prevent testsuite failures.
+- 2.7.1
+
+-------------------------------------------------------------------
+Mon Aug 26 16:13:49 CEST 2002 - mvidner@suse.cz
+
+- Adapted for the new packagemanager.
+- 2.6.14
+
+-------------------------------------------------------------------
+Thu Aug 22 13:23:34 CEST 2002 - mvidner@suse.cz
+
+- Use not only /etc/defaultdomain but also `ypdomainname`,
+  because dhcpcd may use it. (~#14232)
+- Provide/Obsolete yast2-config-nis-devel.
+- 2.6.13
+
+-------------------------------------------------------------------
+Wed Aug 14 09:32:44 CEST 2002 - mvidner@suse.cz
+
+- Make "yast2 nis-client" invoke "yast2 nis" (#17570).
+- Merged proofread texts for the second translation round.
+- 2.6.12
+
+-------------------------------------------------------------------
+Sun Aug 11 23:03:43 CEST 2002 - mvidner@suse.cz
+
+- Let the table keep the keyboard focus (#16116 workaround).
+- 2.6.11
+
+-------------------------------------------------------------------
+Wed Jul 31 19:03:19 CEST 2002 - mvidner@suse.cz
+
+- Added comments for translators
+- 2.6.10
+
+-------------------------------------------------------------------
+Mon Jul 29 15:05:03 CEST 2002 - mvidner@suse.cz
+
+- yast2-runlevel is no longer required.
+- Tests fixed for perl 5.8.0.
+- 2.6.9
+
+-------------------------------------------------------------------
+Fri Jul 19 17:50:52 CEST 2002 - mvidner@suse.cz
+
+- Merged proofread texts.
+- Fixed other_domains in autoyast import (nashif).
+- Screenshot helpers using Wizard.
+- 2.6.8
+
+-------------------------------------------------------------------
+Fri Jul 12 16:27:17 CEST 2002 - arvin@suse.de
+
+- use proper namespace for Args and CallFunction (#16776)
+- 2.6.7
+
+-------------------------------------------------------------------
+Thu Jul 11 20:11:42 CEST 2002 - mvidner@suse.cz
+
+- Relaxed input validation:
+ * Allow server names besides server IPs.
+ * Nis domain names are not as strict as DNS ones (#16648).
+- 2.6.6
+
+-------------------------------------------------------------------
+Wed Jul 10 17:17:02 CEST 2002 - mvidner@suse.cz
+
+- Install autofs if requested (#16568).
+- Global broadcast option obsoleted, shown only if used. (~#15665).
+- Autoyast data structure and summary simplified.
+- 2.6.5
+
+-------------------------------------------------------------------
+Thu Jul 04 21:31:21 CEST 2002 - arvin@suse.de
+
+- moved non binary files to /usr/share/YaST2
+
+-------------------------------------------------------------------
+Thu Jun 27 16:37:50 CEST 2002 - kkaempf@suse.de
+
+- Renamed to "yast2-nis-client".
+
+-------------------------------------------------------------------
+Thu Jun 27 16:37:24 CEST 2002 - mvidner@suse.cz
+
+- Added broadcast option of ypbind-1.12.
+- Adapted to changed any-agent interface.
+
+-------------------------------------------------------------------
+Tue May 21 16:51:14 CEST 2002 - mvidner@suse.cz
+
+- Support the full yp.conf grammar of ypbind-1.11. (#15665)
+- Added an expert options dialog (/etc/sysconfig/ypbind). (#15666)
+- Abort button added, WM close button works too. (#10571)
+- Using current devtools; menuentries -> config.
+- 2.6.2
+
+-------------------------------------------------------------------
+Wed Apr 24 01:37:17 EDT 2002 - nashif@suse.de
+
+- Adapted to new autoinst interface
+
+-------------------------------------------------------------------
+Mon Apr 15 10:52:12 CEST 2002 - mvidner@suse.cz
+
+- Moved autoinst code from y2c_autoinst (nashif).
+- Fix to work with automake 1.6.
+- 2.6.1
+
+-------------------------------------------------------------------
+Mon Mar 11 12:44:14 CET 2002 - mvidner@suse.cz
+
+- Report the error message from init.d/ypbind to the server module (#14706).
+- 2.5.18
+
+-------------------------------------------------------------------
+Tue Mar  5 17:00:08 CET 2002 - mvidner@suse.cz
+
+- Removed a misleading confirmation popup in Autoyast. (#14484)
+- 2.5.17
+
+-------------------------------------------------------------------
+Mon Feb 25 14:54:16 CET 2002 - mvidner@suse.cz
+
+- Added a help text for autofs (#13701).
+- Don't log an error when yp.conf or init.d/amavis is missing.
+- 2.5.16
+
+-------------------------------------------------------------------
+Mon Feb 18 12:03:11 CET 2002 - mvidner@suse.cz
+
+- Replace the checkIP builtin obsoleted in libycp-2.5.29.
+- 2.5.15
+
+-------------------------------------------------------------------
+Tue Feb 12 18:15:04 CET 2002 - mvidner@suse.cz
+
+- Flush /etc/nsswitch.conf before using it (#13176).
+- 2.5.14
+
+-------------------------------------------------------------------
+Fri Feb  1 10:46:45 CET 2002 - mvidner@suse.cz
+
+- Set automount in nsswitch.conf.
+- Don't set ypdomainname, the init script does it.
+- Had the English texts proofread.
+- 2.5.13
+
+-------------------------------------------------------------------
+Mon Jan 28 17:39:40 EST 2002 - nashif@suse.de
+
+- Adapted for automatic installation (2.5.12)
+
+-------------------------------------------------------------------
+Thu Jan 17 09:54:11 CET 2002 - mvidner@suse.cz
+
+- Fixed saving a new yp.conf (2.5.11)
+
+-------------------------------------------------------------------
+Wed Jan 16 17:15:00 CET 2002 - mvidner@suse.cz
+
+- Moved domainname.scr to yast2-lib-network. (2.5.10)
+
+-------------------------------------------------------------------
+Mon Jan 14 16:43:13 CET 2002 - mvidner@suse.cz
+
+- yp.conf now flushed.
+- Added missing files (agent and *.scr) to spec. (nashif)
+- 2.5.9
+
+-------------------------------------------------------------------
+Fri Jan 11 16:35:56 CET 2002 - mvidner@suse.cz
+
+- Using /etc/defaultdomain instead of YP_DOMAINNAME.
+- Writing yp.conf directly made SuSEconfig.ypclient unnecessary.
+- Changed keys in autoinstallation map.
+- Removed old menu entry for good.
+- 2.5.7
+
+-------------------------------------------------------------------
+Fri Jan  4 09:35:40 CET 2002 - mvidner@suse.cz
+
+- Build fix: duplicate menuentry removed. (2.5.6)
+
+-------------------------------------------------------------------
+Thu Jan  3 17:32:30 CET 2002 - mvidner@suse.cz
+
+- Added a checkbox to start autofs. (#6092)
+- 2.5.5
+
+-------------------------------------------------------------------
+Tue Dec 18 15:09:02 CET 2001 - mvidner@suse.cz
+
+- Added an autoinstallation client.
+- Using Report and Wizard.
+- 2.5.4
+
+-------------------------------------------------------------------
+Tue Dec 11 13:43:07 CET 2001 - mvidner@suse.cz
+
+- Preserve the case of the domain name (bug 12546).
+- Menu entry unification.
+- Nis::Write can be used by NisServer::Write.
+- 2.5.3
+
+-------------------------------------------------------------------
+Fri Nov 30 16:46:48 CET 2001 - mvidner@suse.cz
+
+- Converted to a Module.
+- Using y2autoconf and create-spec.
+- 2.5.2
+
+-------------------------------------------------------------------
+Thu Oct 11 10:52:33 CEST 2001 - mvidner@suse.cz
+
+- Don't report to start the client when stopping it. (#11614)
+- 2.5.1
+
+-------------------------------------------------------------------
+Fri Sep 14 17:50:44 CEST 2001 - mvidner@suse.cz
+
+- Delay when restarting ypbind (bug #10428). (2.4.10)
+
+-------------------------------------------------------------------
+Thu Sep 13 14:28:13 CEST 2001 - mvidner@suse.cz
+
+- Improved ncurses layout. (2.4.9)
+
+-------------------------------------------------------------------
+Fri Sep  7 09:36:47 CEST 2001 - mvidner@suse.cz
+
+- Use the runlevel editor for dealing with START_* variables (2.4.8)
+
+-------------------------------------------------------------------
+Mon Sep  3 14:43:07 CEST 2001 - mvidner@suse.cz
+
+- Use yast2-config-runlevel.
+- Start portmap only if not running already (Bug #9999).
+- 2.4.7
+
+-------------------------------------------------------------------
+Thu Aug 23 17:35:23 CEST 2001 - mvidner@suse.cz
+
+- Added documentation in a devel subpackage (2.4.6)
+
+-------------------------------------------------------------------
+Tue Aug 21 17:25:01 CEST 2001 - mvidner@suse.cz
+
+- Only one <p> per string. (2.4.5)
+
+-------------------------------------------------------------------
+Tue Aug  7 17:24:46 CEST 2001 - mvidner@suse.cz
+
+- Warn about the necessity of reboot when changing the domain.
+- Changed from RPM Requires to require.ycp.
+- Documented the possibility to enter multiple NIS servers. (#9559)
+- version 2.4.4
+
+-------------------------------------------------------------------
+Mon Jul 30 13:12:36 CEST 2001 - mvidner@suse.cz
+
+- Turned off autoheader.
+- Replaced _("&OK") by OKButtonLabel() etc.
+- version 2.4.3
+
+-------------------------------------------------------------------
+Mon Jul 23 17:11:05 CEST 2001 - mvidner@suse.cz
+
+- Requires ypbind.
+- version 2.4.2
+
+-------------------------------------------------------------------
+Thu Jul 19 17:00:00 CEST 2001 - msvec@suse.cz
+
+- correct provides
+- minor function name fix
+- fixed textdomain
+- version 2.4.1
+
+-------------------------------------------------------------------
+Wed Jul 18 18:02:57 CEST 2001 - msvec@suse.cz
+
+- split of the yast2-config-network
+- version 2.4.0

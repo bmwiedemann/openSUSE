@@ -1,0 +1,5 @@
+<package name="gswrap" project="openSUSE:Factory">
+  <title>The ghostscript container to wrap ghostscript within</title>
+  <description>If the option -dSAFER is used this script uses bwrap from package bubblewrap to embbedd the final ghostscript command within a minimal container.  For this a new, completely empty, filesystem namespace on a tmpfs is populate with the required libraries and files to run the final ghostscript command.</description>
+  <devel project="Printing" package="gswrap"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="cmpi-pywbem-power-management" project="openSUSE:Factory">
+  <title>Power Management Providers</title>
+  <description>Power Management Providers based on DSP1027.</description>
+  <devel project="systemsmanagement:wbem" package="cmpi-pywbem-power-management"/>
+</package>

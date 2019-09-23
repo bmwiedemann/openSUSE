@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Tue Aug 20 08:24:19 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Fix provides/obsoletes: in the past, this plugin was called
+  xfce4-panel-plugin-timeout (not -time-out).
+
+-------------------------------------------------------------------
+Fri Aug 16 12:10:55 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Wed Aug 14 08:02:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.0.3
+  - make strings translatable (bxo#8716)
+  - Left-align labels for time settings (bxo#6346)
+  - Add option to hide icon - fixes bxo#12084 
+
+-------------------------------------------------------------------
+Mon Jul 29 07:51:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Use %license for COPYING
+- Don't add Changelog. NEWS is enough
+- Added bcond for git master builds  
+
+-------------------------------------------------------------------
+Tue Mar 10 06:53:12 UTC 2015 - gber@opensuse.org
+
+- update to version 1.0.2
+  - ditch _xfce_create_framebox() and use xfce_gtk_frame_box_new()
+    instead
+  - fix transparency (bxo#8747), set the Gtk.EventBox invisible
+    like other panel plugins do
+  - updated translations
+
+-------------------------------------------------------------------
+Fri Apr 20 11:44:06 UTC 2012 - gber@opensuse.org
+
+- added documentation files
+
+-------------------------------------------------------------------
+Tue Apr 17 22:39:57 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr 17 11:21:56 UTC 2012 - gber@opensuse.org
+
+- update to version 1.0.1
+  - port to libxfce4ui
+  - build the plugin as a module
+  - fix double-free when seconds are not displayed
+  - port to GtkTooltip
+  - emit the 'update' signal only if the countdown is running
+  - only call gtk_progress_set_percentage() with valid value
+- dropped obsolete
+  xfce4-panel-plugin-timeout-1.0.0-hidden_progress_bar.patch
+
+-------------------------------------------------------------------
+Wed Apr  4 08:16:01 UTC 2012 - gber@opensuse.org
+
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Fri May 27 21:14:33 UTC 2011 - gber@opensuse.org
+
+- renamed xfce4-time-out-plugin-1.0.0-hidden_progress_bar.patch to
+  xfce4-panel-plugin-timeout-1.0.0-hidden_progress_bar.patch
+
+-------------------------------------------------------------------
+Wed May 25 12:16:59 UTC 2011 - pcerny@novell.com
+
+- fixed invalid progress bar update
+  xfce4-time-out-plugin-1.0.0-hidden_progress_bar.patch
+  https://bugzilla.xfce.org/show_bug.cgi?id=7660
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

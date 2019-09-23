@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:46:07 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Aug 10 11:55:44 UTC 2018 - mcepl@suse.com
+
+- Remove unnecessary dependency on unittest2
+
+-------------------------------------------------------------------
+Wed Feb 28 10:49:07 UTC 2018 - sebix+novell.com@sebix.at
+
+- add remove_hypothesis_tests.patch to remove hypothesis-based tests and fix tests in build environment
+
+-------------------------------------------------------------------
+Mon Sep 11 18:43:53 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,181 @@
+.\"  -*- nroff -*-
+.\"
+.Dd January 3, 2013
+.Dt SCHEMASPY 1
+.Os
+.Sh NAME
+.Nm schemaspy
+.Nd Tool for analyzing and graphing database schemas
+.Sh SYNOPSIS
+.Nm schemaspy
+.Bk -words
+.Fl db Ar dbName
+.Fl o Ar outputDir
+.Op Ar options
+.Ek
+.Sh DESCRIPTION
+.Nm
+is a Java-based tool that analyzes the metadata of a schema in a database
+and generates a visual representation of it in a browser-displayable
+format. It lets you click through the hierarchy of database tables via
+child and parent table relationships as represented by both HTML links
+and entity-relationship diagrams. It's also designed to help resolve
+the obtuse errors that a database sometimes gives related to failures
+due to constraints.
+.Pp
+.Nm
+uses JDBC's database metadata extraction services to gather the majority
+of its information, but has to make vendor-specific SQL queries to
+gather some information such as the SQL associated with a view and the
+details of check constraints. The differences between vendors have been
+isolated to configuration files and are extremely limited. Almost all
+of the vendor-specific SQL is optional.
+.Sh OPTIONS
+.Ss Commonly Used Options
+.Bl -tag -width Ds
+.It Fl t Ar databaseType
+Type of database (e.g. mysql, ora, db2, etc.).
+Use
+.Fl dbhelp
+for a list of built-in types.
+Defaults to
+.Ar ora . 
+.It Fl db Ar dbName
+Name of database to connect to.
+This flag is required.
+.It Fl u Ar user
+Valid database user id with read access.
+A user id is required unless
+.Fl sso
+is specified.
+.It Fl s Ar schema
+Database schema.
+This is optional if it's the same as user or isn't supported by your database.
+Use
+.Fl noschema
+if your database thinks it supports schemas but doesn't (e.g. older versions of Informix).
+.It Fl p Ar password
+Password associated with that user.
+Defaults to no password.
+.It Fl o Ar output-dir
+Directory to write the generated HTML/graphs to.
+This flag is required.
+.It Fl dp Ar path-to-drivers
+Looks for drivers here before looking in
+.Pa driverPath
+in
+.Pa [databaseType].properties .
+The drivers are usually contained in .jar or .zip files and are typically provided by your database vendor.
+.It Fl hq
+.It Fl lq
+Generate either higher or lower-quality diagrams.
+Various installations of Graphviz (depending on OS and/or version) will default to generating either higher or lower quality images.
+That is, some might not have the "lower quality" libraries and others might not have the "higher quality" libraries.
+Higher quality output takes longer to generate and results in significantly larger image files (which take longer to download /
+display), but the resultant Entity Relationship diagrams generally look better.
+.El
+.Ss Less Commonly Used Options
+.Bl -tag -width Ds
+.It Fl gv Ar path-to-graphviz
+By default SchemaSpy expects the dot executable to be in the
+.Pa PATH
+environment variable.
+Use this option to explicitly specify where Graphviz is installed.
+.It Fl desc Ar description
+Displays the specified textual description on summary pages.
+If your description includes an equals sign then escape it with a backslash.
+For example:
+.Bd -literal -offset indent
+-desc "<a href\e='http://schemaspy.sourceforge.net'>SchemaSpy</a>". 
+.Ed
+.It Fl all
+Evaluate all schemas in a database.
+Generates a high-level index of the schemas evaluated and allows for traversal of cross-schema foreign key relationships.
+Use with
+.Fl schemaSpec Ar regex
+to narrow-down the schemas to include. 
+.It Fl schemas Ar "schema1,schema2"
+Evaluate specified schemas.
+Similar to
+.Fl all ,
+but explicitly specifies which schema to evaluate without interrogating the database's metadata.
+Can be used with databases like MySQL where a database isn't composed of multiple schemas. 
+.It Fl meta Ar metafile
+.Ar metafile
+is either the name of an individual XML file or the directory that contains meta files.
+If a directory is specified then it is expected to contain files matching the pattern
+.Pa [schema].meta.xml .
+For databases that don't have schema substitute database for schema.
+See Providing Additional Metadata on the website for details. 
+.It Fl connprops Ar propsfile
+.It Fl connprops Ar key\e=value
+Specifies additional properties to be used when connecting to the database.
+Either specify a
+.Pa .properties
+file (with
+.Pa key=value
+entries) or specify the entries directly, escaping the ='s with \= and separating each
+.Pa key\e=value
+pair with a semi-colon.
+.It Fl i Ar tableNamesRegex
+Only include matching tables/views.
+This is a regular expression that's used to determine which tables/views to include.
+For example:
+.Fl i Pa "(.*book.*)|(library.*)"
+includes only those tables/views with 'book' in their names or that start with 'library'.
+You might want to use
+.Fl desc
+with this option to describe the subset of tables. 
+.It Fl I Ar tableNamesRegex
+Exclude matching tables/views.
+This regular expression excludes matching tables/views from the analysis.
+Can be used in conjunction with
+.Fl i .
+.It Fl x Ar columnNamesRegex
+Exclude matching columns from relationship analysis to simplify the generated graphs.
+This is a regular expression that's used to determine which columns to exclude.
+It must match table name, followed by a dot, followed by column name.
+For example:
+.Fl x Pa "(book.isbn)|(borrower.address)"
+Note that each column name regular expression must be surround by ()'s and separated from other column names by a |.
+Excluded relationships will still show up on detail pages. 
+.It Fl X Ar columnNamesRegex
+Same as
+.Fl x
+but excluded relationships will not show up on detail pages.
+.It Fl noviews
+Exclude all views.
+.It Fl ahic
+Allow HTML In Comments.
+Any HTML embedded in comments normally gets encoded so that it's rendered as text.
+This option allows it to be rendered as HTML.
+.It Fl norows
+Don't query or display row counts.
+.It Fl noimplied
+Don't include implied foreign key relationships in the generated table details.
+.It Fl sso
+Single Sign-On.
+Don't require a user to be specified with
+.Fl u
+to simplify configuration when running in a single sign-on environment.
+.It Fl pfp
+Prompt For Password.
+Prompts for the password so it doesn't appear on the command line.
+.It Fl nohtml
+Only generate files needed for insertion/deletion of data (e.g. for scripts) and an XML representation of the schema
+.It Fl loglevel
+Specifies how verbose logging of programmatic flow should be.
+The levels in descending order are:
+.Ar severe ,
+.Ar warning ,
+.Ar info ,
+.Ar config ,
+.Ar fine ,
+.Ar finer ,
+.Ar finest .
+.El
+.Sh SEE ALSO
+.Rs
+.%T "SchemaSpy: Graphical Database Schema Metadata Browser"
+.%O http://schemaspy.sourceforge.net/
+.Re

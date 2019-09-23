@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24d693c5f1499934bbbcfe81e2b31a4b</srcmd5>
+    <version>0.0+git.20170125</version>
+    <time>1486306096</time>
+    <user>dimstar_suse</user>
+    <comment>hip new editor</comment>
+    <requestid>452980</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ecf52b47e2092a09f06fe34cf2436f2</srcmd5>
+    <version>0.0+git.20170125</version>
+    <time>1486465538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update boost dependencies</comment>
+    <requestid>454784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05b61f655573cad07072ff2d68f8abbe</srcmd5>
+    <version>0.0+git.20170223</version>
+    <time>1488125390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20170223:</comment>
+    <requestid>460433</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>73f3210517ea25e792430199b9579c47</srcmd5>
+    <version>0.0+git.20170223</version>
+    <time>1493580278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492212</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee2a04842a665f3cd452453008346f47</srcmd5>
+    <version>0.0+git.20170513</version>
+    <time>1495442816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495960</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3ce0f2a2a2728017c97d49d8e1470cb2</srcmd5>
+    <version>0.0+git.20170513</version>
+    <time>1500975603</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512147</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44c42e3de5ac92f16254f5994a23ef9b</srcmd5>
+    <version>0.0+git.20171017</version>
+    <time>1508434429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20171017:</comment>
+    <requestid>535194</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>45b67c333c71462ea107003a6034e00b</srcmd5>
+    <version>0.0+git.20180228</version>
+    <time>1519844564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580781</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>990bdec1251e3d322085f7221e2d3c58</srcmd5>
+    <version>2018.04.13</version>
+    <time>1523956682</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove _service and _servicedata
+- Update to first official release 2018.04.13
+</comment>
+    <requestid>597108</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c267e690e95e27c18759d676b5d9e85d</srcmd5>
+    <version>2018.09.04</version>
+    <time>1536094668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2018.09.04:
+  This version contains a significant overhaul of various Kakoune features that can break user configuration
+  * %sh{...} strings are not reparsed automatically anymore, they need to go through an explicit evaluate-commands
+  * The -allow-override switch from define-command has been renamed -override.
+  * The search prompt uses buffer word completion so that fuzzy completion can be used to quickly search for a buffer word.
+  * The wrap highlighter can accept a new -marker &lt;marker_text&gt; switch.
+  * The command line syntax has changed to support robust escapin
+  * Escaping of ' in '...' and &quot; and % in &quot;...&quot; strings is done by doubling up ('', &quot;&quot; and %%) instead of using a backslash
+  * Bare words escaping has been tweaked.
+  * See :doc command-parsing.
+  * See :doc highlighters</comment>
+    <requestid>632963</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c37f677b749faf5899fbd9ad2d09e9dd</srcmd5>
+    <version>2018.10.27</version>
+    <time>1546535228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662272</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d464cacb1cbb5145889926f5721a2361</srcmd5>
+    <version>2019.01.20</version>
+    <time>1548335596</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to to 2019.01.20:
+  * auto_complete has been renamed to autocomplete for more
+    consistency.
+  * Start of a builtin key parser in the ncurses ui bypassing
+    the ncurses one. Can be favored by setting the ui option
+  * Right clicks extend the current selection, the control modifier allows
+    merging all the selections after extension.
+  * The regex highlighter now supports named capture groups to
+    ease readability.</comment>
+    <requestid>667750</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b9a04c08730f6d2dab3f618b9a41f7f6</srcmd5>
+    <version>2019.07.01</version>
+    <time>1562056782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2018.07.01:
+  * Re-organized bundled script files directory hierarchy.
+  * Introduced helpers to write/read from file in scripts with
+    %file{...} expansion and echo -to-file &lt;filename&gt;.
+  * Added ClientCreate and ClientClose hooks
+  * edit -scratch with no buffer name will create a new
+    scratch buffer with a unique autogenerated name.
+  * info -placement is now info -style and supports
+    menu and modal additional styles.
+  * completions option type docstring are now arbitrary
+    kakoune commands that are run on item select.
+  * InsertCompletionSelect hook has been removed as
+    completions commands now provides a similar feature.
+  * Introduced a module system using the provide-module and
+    require-module commands that allows for lazily loading language
+    support files with dependency resolution.
+  * Added a new hook ModuleLoaded which is run after a module is
+    loaded, allowing for module specific configuration.
+  * Shell quoting of lists is not automatic anymore, $kak_quoted_...
+    makes it opt-in, and works for all option types.
+  * Lower case function key syntax is not accepted anymore,
+    &lt;f1&gt; should be converted to &lt;F1&gt;.
+- Change to gnu++17 standard</comment>
+    <requestid>712982</requestid>
+  </revision>
+</revisionlist>

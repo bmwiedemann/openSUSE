@@ -1,0 +1,254 @@
+<revisionlist>
+  <revision rev="1" vrev="104">
+    <srcmd5>1c9195ad408d55aad5a4edcf3e32d479</srcmd5>
+    <version>0.13.49</version>
+    <time>1224903275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="105">
+    <srcmd5>8c68b66e2664cce7ca74c2c4f731e8ad</srcmd5>
+    <version>0.13.49</version>
+    <time>1233019772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="106">
+    <srcmd5>6396b55d3c89cb7da66cb8f02d2511cb</srcmd5>
+    <version>0.13.49</version>
+    <time>1245450814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93fb7d83471f77e2cffc82709884f32b</srcmd5>
+    <version>0.13.56</version>
+    <time>1250177971</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/zziplib based on submit request 17619 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>93fb7d83471f77e2cffc82709884f32b</srcmd5>
+    <version>0.13.56</version>
+    <time>1250177971</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/zziplib based on submit request 17619 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30a5224a37cbb16a399929e2bd9b001c</srcmd5>
+    <version>0.13.58</version>
+    <time>1268411877</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/zziplib based on submit request 34323 from user coolo
+</comment>
+    <requestid>34323</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5f7467cfdf6f4a7b1c9b1cf5ebb02973</srcmd5>
+    <version>0.13.58</version>
+    <time>1268926830</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5f7467cfdf6f4a7b1c9b1cf5ebb02973</srcmd5>
+    <version>0.13.58</version>
+    <time>1278667399</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>5f7467cfdf6f4a7b1c9b1cf5ebb02973</srcmd5>
+    <version>0.13.58</version>
+    <time>1278678634</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>5f7467cfdf6f4a7b1c9b1cf5ebb02973</srcmd5>
+    <version>0.13.58</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>43ef072f0fe8c60510fac4654155dc09</srcmd5>
+    <version>0.13.58</version>
+    <time>1304331834</time>
+    <user>saschpe</user>
+    <comment>- Fix build with gcc 4.6 (forwarded request 68918 from elvigia)</comment>
+    <requestid>68919</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>55d90869755d8241cd905fd5866ebb32</srcmd5>
+    <version>0.13.58</version>
+    <time>1304331843</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68919
+</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>88ac88a08209dd8390a6e927bd9bcef9</srcmd5>
+    <version>0.13.58</version>
+    <time>1316681639</time>
+    <user>saschpe</user>
+    <comment>Resubmit of #82503 after adding Obsoletes/Provides (cf. thread on -packaging ML; &quot;&lt;=&quot; is ok with notice)
+- Implement shlib policy/packaging for package, add baselibs.conf
+  and resolve redundant constructs (forwarded request 84008 from jengelh)</comment>
+    <requestid>84028</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>88ac88a08209dd8390a6e927bd9bcef9</srcmd5>
+    <version>0.13.58</version>
+    <time>1319182648</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>112bca36794a401ea895a3d698e15cbc</srcmd5>
+    <version>0.13.58</version>
+    <time>1321876294</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92481 from coolo)</comment>
+    <requestid>92519</requestid>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>6274364b33dbc943e274d4edd902d732</srcmd5>
+    <version>0.13.58</version>
+    <time>1323195697</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>6274364b33dbc943e274d4edd902d732</srcmd5>
+    <version>0.13.58</version>
+    <time>1340184424</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ac7608e840980afdf9287209e1c74ac4</srcmd5>
+    <version>0.13.62</version>
+    <time>1355734227</time>
+    <user>coolo</user>
+    <comment>Update to 0.13.62 version (forwarded request 145545 from posophe)</comment>
+    <requestid>145546</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ac7608e840980afdf9287209e1c74ac4</srcmd5>
+    <version>0.13.62</version>
+    <time>1359110789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>3b652118ac58702a6793a17436923460</srcmd5>
+    <version>0.13.62</version>
+    <time>1363954037</time>
+    <user>coolo</user>
+    <comment>- zziplib-largefile.patch: Enable largefile support
+- Enable debug information (forwarded request 159895 from AndreasSchwab)</comment>
+    <requestid>159930</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>3b652118ac58702a6793a17436923460</srcmd5>
+    <version>0.13.62</version>
+    <time>1379665199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>3b652118ac58702a6793a17436923460</srcmd5>
+    <version>0.13.62</version>
+    <time>1409303885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>7eb02301d612c2faa871648fc6c436ec</srcmd5>
+    <version>0.13.62</version>
+    <time>1490965480</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>482259</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>c518966bb7455099aab5fa6289bee010</srcmd5>
+    <version>0.13.62</version>
+    <time>1510321206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539292</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>70883ecd158ffe4d2ca7322da5158f92</srcmd5>
+    <version>0.13.67</version>
+    <time>1517323090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569981</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>318d25b110418efe692acde32ceec7df</srcmd5>
+    <version>0.13.67</version>
+    <time>1518187522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573678</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5ad2a647cf3c09e7256217a37c94b3b0</srcmd5>
+    <version>0.13.67</version>
+    <time>1518813646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577013</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>81e71150253e641afc2dc22c06dc0c9d</srcmd5>
+    <version>0.13.68</version>
+    <time>1519218467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577974</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>3e48dba91024009b3b8ff1c1e65dd2bf</srcmd5>
+    <version>0.13.68</version>
+    <time>1519486648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579215</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ec3cc69449f1c6c51a4b840051f6f0e3</srcmd5>
+    <version>0.13.69</version>
+    <time>1522058451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588696</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ade09854191a8fd2b3eb8aff29965107</srcmd5>
+    <version>0.13.69</version>
+    <time>1537436366</time>
+    <user>maxlin_factory</user>
+    <comment>- Avoid memory leak from __zzip_parse_root_directory().
+  Free allocated structure if its address is not passed back.
+  [bsc#1107424, CVE-2018-16548, CVE-2018-16548.patch]</comment>
+    <requestid>634660</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>c53d27a6ac1ce68c01dd88b808149829</srcmd5>
+    <version>0.13.69</version>
+    <time>1539250969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639943</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>67894e3cc68c3f74c4e81b4be591fddd</srcmd5>
+    <version>0.13.69</version>
+    <time>1560862398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709891</requestid>
+  </revision>
+</revisionlist>

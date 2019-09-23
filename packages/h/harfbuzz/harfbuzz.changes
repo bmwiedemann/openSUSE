@@ -1,0 +1,1133 @@
+-------------------------------------------------------------------
+Sat Jul 13 21:26:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.3:
+  + Fix UCD script data for Unicode 10+ scripts. This was broken
+    since 2.5.0.
+  + More optimizations for HB_TINY.
+- Changes from version 2.5.2:
+  + More hb-config.hh facilities to shrink library size, namely
+    when built as HB_TINY.
+  + New documentation of custom configurations in CONFIG.md.
+  + Fix build on gcc 4.8. That's supported again.
+  + Universal Shaping Engine improvements.
+  + API Changes: Undeprecate some horizontal-kerning API and
+    re-enable in hb-ft, such that Type1 fonts will continue
+    kerning.
+- Changes from version 2.5.1:
+  + Fix build with various versions of Visual Studio.
+  + Improved documentation.
+  + Bugfix in subsetting glyf table.
+  + Improved scripts for cross-compiling for Windows using mingw.
+  + Rename HB_MATH_GLYPH_PART_FLAG_EXTENDER to
+    HB_OT_MATH_GLYPH_PART_FLAG_EXTENDER. A deprecated macro is
+    added for backwards-compatibility.
+- Changes from version 2.5.0:
+  + This release does not include much functional changes, but
+    includes major internal code-base changes. We now require
+    C++11. Support for gcc 4.8 and earlier has been dropped.
+  + New hb-config.hh facility for compiling smaller library for
+    embedded and web usecases.
+  + New Unicode Character Databse implementation that is half the
+    size of previously-used UCDN.
+  + Subsetter improvements.
+  + Improved documentation.
+  + isc shaping fixes.
+- Changes from version 2.4.0:
+  + Unicode 12.
+  + Misc fixes.
+  + Subsetter improvements.
+  + New API: HB_BUFFER_FLAG_DO_NOT_INSERT_DOTTED_CIRCLE and
+    hb_directwrite_face_create().
+
+-------------------------------------------------------------------
+Mon Mar 18 12:56:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.1:
+  * too many changes to ever iterate, see NEWS for the details
+
+-------------------------------------------------------------------
+Thu Oct  4 12:56:06 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.0:
+  * Various gcc warning fixes
+  * New Face-builder API
+  * Internal source header name changes
+  * Major Khmer shaper improvements
+  * Couple of Indic bugfixes
+
+-------------------------------------------------------------------
+Sat Jun 16 03:46:42 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.8.1:
+  + Add correctness bug in hb_set_t operations, introduced in
+    1.7.7.
+- Changes from version 1.8.0:
+  + Update to Unicode 11.0.0.
+- Changes from version 1.7.7:
+  + All HarfBuzz objects are significantly smaller in size now.
+  + Sinhala: Position repha on top of post-consonant, not base.
+  + Significant libharfbuzz-subset changes. API subject to change.
+  + New API in libharfbuzz: hb_blob_create_from_file() and
+    hb_face_count().
+- Add missing post(un) ldconfig scriptlets for libharfbuzz-subset
+  shared library.
+
+-------------------------------------------------------------------
+Tue Mar 13 10:34:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.7.6:
+  + Fix to hb_set_t binary operations. Ouch.
+  + New experimental harfbuzz-subset library. All of hb-subset.h is
+    experimental right now and API WILL change.
+  + New API:
+    - hb_blob_copy_writable_or_fail().
+    - HB_OT_TAG_BASE.
+    - hb_set_previous().
+    - hb_set_previous_range().
+- Split out new sub-package libharfbuzz-subset0.
+- Add libharfbuzz-gobject0 and libharfbuzz-subset0 to baselibs.
+- Use make_build macro.
+
+-------------------------------------------------------------------
+Tue Mar 13 08:36:14 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Sun Mar 11 03:40:33 UTC 2018 - luc14n0@linuxmail.org
+
+- Fix broken libharbuzz-gobject.so symlink by requiring Harfbuzz's
+  Gobject library for the devel package.
+- Add missing GI bindings requirement for the devel package.
+
+-------------------------------------------------------------------
+Fri Mar  9 11:51:15 UTC 2018 - astieger@suse.com
+
+- Fix build on Leap 42.3: don't use make_build.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:22 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  9 21:00:57 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.7.5:
+  + Separate Khmer shaper from Indic.
+  + First stab at AAT morx. Not hooked up.
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Wed Jan 10 21:34:23 UTC 2018 - crrodriguez@opensuse.org
+
+- harfbuzz-devel hb-ft.h requires pkgconfig(freetype2) but it is
+  not automatically added by the dependency generator.
+
+-------------------------------------------------------------------
+Tue Jan  9 19:33:26 UTC 2018 - zaitor@opensuse.org
+
+- Add pkgconfig(gobject-2.0) and
+  pkgconfig(gobject-introspection-1.0) BuildRequires, and pass
+  with-gobject=yes to configure, build GObject and Introspection
+  support.
+- Following this, package the new sub-packages libharfbuzz-gobject0
+  and typelib-1_0-HarfBuzz-0_0.
+- Clean up spec, use autosetup and make_build macros.
+
+-------------------------------------------------------------------
+Wed Dec 20 17:56:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.4:
+  + Fix collect_glyphs() regression caused by hb_set_t changes.
+- Changes from version 1.7.3:
+  + hb_set_t performance tuning and optimizations.
+  + Speed up collect_glyphs() and reject garbage data.
+  + In hb_coretext_font_create() set font point-size (ptem).
+  + Misc fixes.
+
+-------------------------------------------------------------------
+Sun Dec 10 23:16:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.2:
+  + Optimize hb_set_add_range().
+  + Misc fixes.
+  + New API: hb_coretext_font_create().
+
+-------------------------------------------------------------------
+Sat Dec  2 20:44:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.1:
+  + Fix atexit object destruction regression.
+  + Fix minor integer-overflow.
+- Changes from version 1.7.0:
+  + Minor Indic fixes.
+  + Implement kerning and glyph names in hb-ot-font.
+  + Various DSO optimization re .data and .bss sizes.
+  + Make C++11 optional; build fixes.
+  + Mark all other backends "unsafe-to-break".
+  + Graphite fix.
+
+-------------------------------------------------------------------
+Fri Oct 27 20:28:36 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 1.6.3:
+  + Fix hb_set_t some more.  Should be solid now.
+  + Implement get_glyph_name() for hb-ot-font.
+  + Misc fixes.
+- Changes from version 1.6.2:
+  + Yesterday's release had a bad crasher; don't use it
+    (gh#behdad/harfbuzz#578).
+- Changes from version 1.6.1:
+  + Don't skip over COMBINING GRAPHEME JOINER when ligating, etc
+    (gh#behdad/harfbuzz#554).
+  + Faster hb_set_t implementation.
+  + Don't use deprecated ICU API.
+  + Fix undefined-behavior in Myanmar shaper, introduced in 1.6.0.
+  + Deprecated API: hb_set_invert().
+- Changes from version 1.6.0:
+  + Update to Unicode 10.
+  + Various Indic and Universal Shaping Engine fixes.
+  + Implement Unicode Arabic Mark Ordering Algorithm UTR#53.
+  + Implement optical sizing / tracking in CoreText backend, using
+    new API hb_font_set_ptem().
+  + Allow notifying hb_font_t that underlying FT_Face changed
+    sizing, using new API hb_ft_font_changed().
+  + More Graphite backend RTL fixes.
+  + Fix caching of variable font shaping plans.
+  + hb-view / hb-shape now accept following new arguments:
+    o --unicodes: takes a list of hex numbers that represent
+    Unicode codepoints.
+  + New API: hb_face_get_table_tags(), hb_font_set_ptem(),
+    hb_font_get_ptem() and hb_ft_font_changed().
+- Drop pkgconfig(gobject-2.0) BuildRequires: not needed/used.
+
+-------------------------------------------------------------------
+Sat Sep  9 21:00:13 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.5.1:
+  + Fix "unsafe-to-break" in fallback shaping and other corner
+    cases. All our tests pass with --verify now, meaning
+    unsafe-to-break API works as expected.
+  + Add --unicodes to hb-view / hb-shape.
+  + [indic] Treat Consonant_With_Stacker as consonant.  This will
+    need further tweaking.
+  + hb_buffer_diff() tweaks.
+- Changes from version 1.5.0:
+  + Misc new API, for appending a buffer to another, and for
+    comparing contents of two buffers for types of differences.
+  + New "unsafe-to-break" API.  Can be used to speed up reshaping
+    in line-breaking situations.  Essentially, after shaping, it
+    returns positions in the input string (some of the cluster
+    boundaries) that are "safe to break" in that if the text is
+    segmented at that position and two sides reshaped and
+    concatenated, the shaping result is exactly the same as shaping
+    the text in one piece.
+  + hb-view and hb-shape and hb-shape now take --verify, which
+    verifies the above property.
+  + Some corner cases of the implementation are still not quite
+    working. Those will be fixed in subsequent releases.
+
+-------------------------------------------------------------------
+Sun Sep  3 14:44:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.8:
+  + Major fix to avar table handling.
+  + Rename hb-shape --show-message to --trace.
+  + Build fixes.
+- Changes from version 1.4.7:
+  + Multiple Indic, Tibetan, and Cham fixes.
+  + CoreText: Allow disabling kerning.
+  + Adjust Arabic feature order again.
+  + Misc build fixes.
+
+-------------------------------------------------------------------
+Tue Apr 25 10:26:28 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.4.6:
+  + Graphite2: Fix RTL positioning issue.
+  + Backlist GDEF of more versions of Padauk and Tahoma.
+  + New, experimental, cmake alternative build system.
+
+-------------------------------------------------------------------
+Sat Mar 11 13:51:28 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.5 (fate#322101):
+  + Revert "Fix Context lookup application when moving back after a
+    glyph..." This introduced memory access problems. To be fixed
+    properly soon.
+
+-------------------------------------------------------------------
+Tue Mar  7 14:24:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + Fix Context lookup application when moving back after a glyph
+    deletion.
+  + Fix buffer-overrun in Bengali.
+
+-------------------------------------------------------------------
+Sun Feb 26 18:38:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.3:
+  + Route Adlam script to Arabic shaper.
+  + Misc fixes.
+  + New API: hb_font_set_face().
+  + Deprecate API: hb_graphite2_font_get_gr_font().
+- Tweak descriptions for icu and devel subpackages.
+
+-------------------------------------------------------------------
+Tue Jan 24 17:12:44 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.4.2:
+  + Implement OpenType Font Variation tables avar/fvar/HVAR/VVAR.
+  + hb-shape and hb-view now accept --variations.
+  + Various API additions.
+
+-------------------------------------------------------------------
+Sun Jan  8 11:38:22 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + Always build and use UCDN for Unicode data by default. Reduces
+    dependence on version of Unicode data in glib.
+- Changes from version 1.4.0:
+  + Merged "OpenType GX" branch which adds core of support for
+    OpenType 1.8 Font Variations.
+  + New API:
+    - hb_font_set_var_coords_normalized().
+    - HB_OT_LAYOUT_NO_VARIATIONS_INDEX.
+    - hb_ot_layout_table_find_feature_variations().
+    - hb_ot_layout_feature_with_variations_get_lookups().
+    - hb_shape_plan_create2().
+    - hb_shape_plan_create_cached2().
+  + Currently variations in GSUB/GPOS/GDEF are fully supported, and
+    no other tables are supported. In particular, fvar/avar are NOT
+    supported, hence the hb_font_set_var_coords_normalized() taking
+    normalized coordinates. API to take design coordinates will be
+    added in the future.
+  + HVAR/VVAR/MVAR support will also be added to hb-ot-font in the
+    future.
+  + Fix regression in GDEF glyph class processing.
+  + Add decompositions for Chakma, Limbu, and Balinese in USE
+    shaper.
+  + Misc fixes.
+
+-------------------------------------------------------------------
+Tue Dec  6 12:26:24 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.3.4:
+  + Fix vertical glyph origin in hb-ot-font.
+  + Implement CBDT/CBLC color font glyph extents in hb-ot-font.
+
+-------------------------------------------------------------------
+Fri Nov  4 14:38:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.3.3:
+  + Implement parsing of OpenType MATH table.
+
+-------------------------------------------------------------------
+Wed Oct 26 09:34:39 UTC 2016 - dimstar@opensuse.org
+
+- Drop pkgconfig(icu-le) BuildRequires: That was actually removed
+  upstream in version 0.9.21.
+
+-------------------------------------------------------------------
+Sun Oct  2 18:10:45 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.3.2:
+  + Fix build of hb-coretext on older OS X versions.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:02:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.3.1:
+  + Blacklist bad GDEF of more fonts.
+  + More CoreText backend crash fixes with OS X 10.9.5.
+  + Misc fixes.
+
+-------------------------------------------------------------------
+Thu Jul 28 14:23:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.3.0:
+  + Update to Unicode 9.0.0.
+  + Move Javanese from Indic shaper to Universal Shaping Engine.
+  + Allow MultipleSubst to delete a glyph (matching Windows
+    engine).
+  + Update Universal Shaping Engine to latest draft from Microsoft.
+  + DirectWrite backend improvements.  Note: this backend is for
+    testing ONLY.
+  + CoreText backend improvements with unreachable fonts.
+  + Implement symbol fonts (cmap 3.0.0) in hb-ft and hb-ot-font.
+  + Blacklist bad GDEF of more fonts (Tahoma & others).
+  + Misc fixes.
+
+-------------------------------------------------------------------
+Fri May 27 11:48:17 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20.2 FATE#318572 
+
+-------------------------------------------------------------------
+Tue May 10 20:56:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.7:
+  + Blacklist another version of Times New Roman (Bold) Italic from
+    Windows 7.
+  + Fix Mongolian Free Variation Selectors shaping with certain
+    fonts.
+  + Fix Tibetan shorthand contractions shaping.
+  + Improved list of language tag mappings.
+  + Unbreak build on Windows CE.
+  + Make 'glyf' table loading lazy in hb-ot-font.
+
+-------------------------------------------------------------------
+Mon Apr 11 12:35:50 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.6:
+  + Blacklist GDEF table of another set of Times New Roman (Bold)
+    Italic.
+  + DirectWrite backend improvements. Note: DirectWrite backend is
+    exclusively for our internal testing and should NOT be used in
+    any production system whatsoever.
+
+-------------------------------------------------------------------
+Fri Apr  8 19:08:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.5:
+  + Fix GDEF mark-filtering-set, which was broken in 1.2.3.
+
+-------------------------------------------------------------------
+Fri Mar 18 14:54:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.4:
+  + Synthesize GDEF glyph class for any glyph that does not have
+    one in GDEF. Hope we don't discover broken fonts that shape
+    badly with this change.
+  + Misc build and other minor fixes.
+  + API changes: Added HB_NDEBUG. It's fine for production systems
+    to define this to disable high-overhead debugging checks.
+
+-------------------------------------------------------------------
+Tue Mar  1 19:40:45 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  + Blacklist GDEF table of certain versions of Times New Roman
+    (Bold) Italic, due to bug in glyph class of ASCII double-quote
+    character. This should address "regression" introduced in 1.2.0
+    when we switched mark zeroing in most shapers from
+    BY_UNICODE_LATE to BY_GDEF_LATE. This fourth release in a week
+    should finally stablize things...
+  + hb-ot-font's get_glyph() implementation saw some optimizations.
+    Though might be really hard to measure in real-world
+    situations.
+  + Also, two rather small API changes:
+    - We now disable some time-consuming internal bookkeeping if
+      built with NDEBUG defined. This is a first time that we use
+      NDEBUG to disable debug code. If there exist production
+      systems that do NOT want to enable NDEBUG, please let me know
+      and I'll add HB_NDEBUG.
+    - Added get_nominal_glyph() and get_variation_glyph() instead
+      of get_glyph()
+  + New API:
+    - hb_font_get_nominal_glyph_func_t.
+    - hb_font_get_variation_glyph_func_t.
+    - hb_font_funcs_set_nominal_glyph_func().
+    - hb_font_funcs_set_variation_glyph_func().
+    - hb_font_get_nominal_glyph().
+    - hb_font_get_variation_glyph().
+  + Deprecated API:
+    - hb_font_get_glyph_func_t.
+    - hb_font_funcs_set_glyph_func().
+  + Clients that implement their own font-funcs are encouraged to
+    replace their get_glyph() implementation with a
+    get_nominal_glyph() and get_variation_glyph() pair. The
+    variation version can assume that variation_selector argument
+    is not zero. Old (deprecated) functions will continue working
+    indefinitely using internal gymnastics; it is just more
+    efficient to use the new functions.
+- Changes from version 1.2.2:
+  + Fix regression with mark positioning with fonts that have
+    non-zero mark advances. This was introduced in 1.2.0 while
+    trying to make mark and cursive attachments to work together.
+    I have partially reverted that, so this version is much more
+    like what we had before. All clients who updated to 1.2.0
+    should update to this version.
+- Changes from version 1.2.1:
+  + CoreText:
+    - Fix bug with wrong scale if font scale was changed later
+      (gh/libass/libass/#212).
+    - Drastically speed up font initialization.
+    - Fix tiny leak.
+  + Group ZWJ/ZWNJ with previous syllable under cluster-level=0
+    (gh/behdad/harfbuzz#217).
+  + Add test/shaping/README.md about how to add tests to the suite.
+
+-------------------------------------------------------------------
+Mon Feb 22 16:49:31 UTC 2016 - zaitor@opensuse.org
+
+- Add Conflicts: cantarell-fonts < 0.0.23. Previous versions of
+  cantarell-fonts have a bug that harfbuzz now exposes, so add a
+  conflicts to work-around that.
+
+-------------------------------------------------------------------
+Fri Feb 19 15:28:03 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + Fix various issues (hangs mostly) in case of memory allocation
+    failure.
+  + Change mark zeroing types of most shapers from BY_UNICODE_LATE
+    to BY_GDEF_LATE. This seems to be what Uniscribe does.
+  + Change mark zeroing of USE shaper from NONE to BY_GDEF_EARLY.
+    That's what Windows does.
+  + Allow GPOS cursive connection on marks, and fix the interaction
+    with mark attachment. This work resulted in some changes to how
+    mark attachments work (gh#behdad/harfbuzz#211).
+  + Graphite2 shaper: improved negative advance handling
+    (eg. Nastaliq).
+  + Add nmake-based build system for Windows.
+  + Minor speedup.
+  + Misc. improvements.
+
+-------------------------------------------------------------------
+Thu Jan 14 08:50:37 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.3:
+  + Ported Indic shaper to Unicode 8.0 data.
+  + Universal Shaping Engine fixes.
+  + Speed up CoreText shaper when font fallback happens in
+    CoreText.
+  + Documentation improvements, thanks to Khaled Hosny.
+  + Very rough directwrite shaper for testing.
+  + Misc bug fixes.
+  + API extensions.
+
+-------------------------------------------------------------------
+Sun Nov 29 19:19:10 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.2:
+  + Fix badly-broken fallback shaper that affected terminology.
+  + Fix y_scaling in Graphite shaper.
+  + API changes: An unset glyph_h_origin() function in font-funcs
+    now (sensibly) implies horizontal origin at 0,0. Ie, the nil
+    callback returns true instead of false. As such,
+    implementations that have a glyph_h_origin() that simply
+    returns true, can remove that function with HarfBuzz >= 1.1.2.
+    This results in a tiny speedup.
+
+-------------------------------------------------------------------
+Wed Nov 25 20:10:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.1:
+  + Build fixes, specially for hb-coretext.
+
+-------------------------------------------------------------------
+Fri Nov 20 13:18:12 UTC 2015 - mimi.vx@gmail.com
+
+- Update to version 1.1.0:
+  + Implement 'stch' stretch feature for Syriac Abbreviation Mark.
+  + Disable use of decompose_compatibility() callback.
+  + Implement "shaping" of various Unicode space characters, even
+    if the font does not support them.
+  + If font does not support U+2011 NO-BREAK HYPHEN, fallback to
+    U+2010 HYPHEN.
+  + Changes resulting from libFuzzer continuous fuzzing:
+    - Reject font tables that need more than 8 edits.
+    - Bound buffer growth during shaping to 32x.
+    - Fix assertions and other issues at OOM / buffer max-growth.
+  + Misc fixes and optimizations.
+  + API changes: All fonts created with hb_font_create() now
+    inherit from (ie. have parent) hb_font_get_empty().
+
+-------------------------------------------------------------------
+Mon Oct 19 14:43:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.6:
+  + Reduce max nesting level in OT lookups from 8 to 6.
+  + Fix memory access issue in ot-font.
+  + Revert default load-flags of fonts created using
+    hb_ft_font_create() back to FT_LOAD_DEFAULT|FT_LOAD_NO_HINTING.
+    This was changed in 1.0.5, but caused major issues, so revert.
+- Changes from version 1.0.5:
+  + Fix multiple memory access bugs discovered using libFuzzer.
+  + Misc fixes.
+  + New API:
+    - hb_font_set_parent().
+    - hb_ft_font_[sg]et_load_flags()
+      The default flags for fonts created using hb_ft_font_create()
+      has changed to default to FT_LOAD_DEFAULT now. Previously it
+      was defaulting to FT_LOAD_DFEAULT|FT_LOAD_NO_HINTING.
+  + API changes:
+    - Fonts now default to units-per-EM as their scale, instead
+      of 0.
+    - hb_font_create_sub_font() does NOT make parent font immutable
+      anymore. hb_font_make_immutable() does.
+
+-------------------------------------------------------------------
+Fri Oct  9 19:02:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.4:
+  + Fix minor out-of-bounds read error.
+
+-------------------------------------------------------------------
+Sun Sep  6 18:53:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + Start of user documentation.
+  + Implement glyph_extents() for TrueType fonts in hb-ot-font.
+  + Improve GPOS cursive attachments with conflicting lookups.
+  + More fixes for cluster-level = 1.
+  + Uniscribe positioning fix.
+- Changes from version 1.0.2:
+  + Fix shaping with cluster-level > 0.
+  + Fix Uniscribe backend font-size scaling.
+  + Declare dependencies in harfbuzz.pc. FreeType is not declared
+    though, to avoid bugs in pkg-config 0.26 with recursive
+    dependencies.
+  + Slightly improved debug infrastructure.  More to come later.
+  + Misc build fixes.
+- Changes from version 1.0.1:
+  + Fix out-of-bounds access in USE shaper.
+- Changes from version 1.0.0:
+  + Implement Universal Shaping Engine:
+    https://www.microsoft.com/typography/OpenTypeDev/USE/intro.htm
+    http://blogs.windows.com/bloggingwindows/2015/02/23/windows-shapes-the-worlds-languages/
+  + Bump version to 1.0.0. The soname was NOT bumped.
+
+-------------------------------------------------------------------
+Wed Sep  2 13:00:41 UTC 2015 - mpluskal@suse.com
+
+- Update to version 0.9.42:
+  + New API to allow for retrieving finer-grained cluster
+    mappings if the client desires to handle them. Default behavior
+    is unchanged.
+  + Fix cluster merging when removing default-ignorables.
+  + Update to Unicode 8.0
+  + hb-graphite2 fixes.
+  + Misc fixes.
+  + Removed HB_NO_MERGE_CLUSTERS hack.
+  + New API:
+    - hb_buffer_cluster_level_t enum
+    - hb_buffer_get_cluster_level()
+    - hb_buffer_set_cluster_level()
+    - hb-shape / hb-view --cluster-level
+- Changes from version 0.9.41:
+  + Fix hb-coretext with trailing whitespace in right-to-left.
+  + New API: hb_buffer_reverse_range().
+  + Allow implementing atomic ops in config.h.
+  + Fix hb_language_t in language bindings.
+  + Misc fixes.
+
+-------------------------------------------------------------------
+Tue May  5 08:28:46 UTC 2015 - fstrba@suse.com
+
+- Revert the introduction of harfbuzz-bootstrap: it did not help to
+  work around the cycle.
+
+-------------------------------------------------------------------
+Mon Apr 27 09:44:21 UTC 2015 - dimstar@opensuse.org
+
+- Add this-is-only-for-build-envs requires to the -bootstrap
+  package: This ensures that OBS can use it, but the users will
+  not install it on their systems.
+
+-------------------------------------------------------------------
+Sun Apr 26 10:34:56 UTC 2015 - fstrba@suse.com
+
+- Make harfbuzz-bootstrap package provide the libharfbuzz.so.0
+  * Makes the freshly built freetype2 installable
+- Make harfbuzz-bootstrap-devel package provide the
+  pkgconfig(harfbuzz)
+  * Makes the freshly built freetype2-devel installable
+
+-------------------------------------------------------------------
+Wed Apr 15 15:44:47 UTC 2015 - fstrba@suse.com
+
+- Make harfbuzz-bootstrap-devel conflict with harfbuzz-devel
+
+-------------------------------------------------------------------
+Tue Apr 14 12:12:44 UTC 2015 - fstrba@suse.com
+
+- Try to completely disable the provides for harfbuzz-bootstrap
+
+-------------------------------------------------------------------
+Fri Apr 10 08:13:58 UTC 2015 - fstrba@suse.com
+
+- Split a minimal harfbuzz-bootstrap package in order to avoid
+  possible build cycles between freetype2 and harfbuzz.
+- Add harfbuzz-bootstrap-rpmlintrc file to avoid errors on this
+  bootstrap package (to be used only for freetype2 build)
+- Add pre_checkin.sh script to sync the harfbuzz.spec and
+  harfbuzz-bootstrap.spec as well as the harfbuzz.changes and
+  harfbuzz-bootstrap.changes automatically.
+
+-------------------------------------------------------------------
+Sat Mar 21 23:16:34 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.9.40:
+  + Another hb-coretext crasher fix.
+
+-------------------------------------------------------------------
+Fri Mar  6 08:41:16 UTC 2015 - mpluskal@suse.com
+
+- Update to version 0.9.39:
+  + Critical hb-coretext fixes.
+  + Optimizations and refactoring; no functional change expected.
+  + Misc build fixes.
+
+-------------------------------------------------------------------
+Sun Jan 25 08:33:49 UTC 2015 - vuntz@opensuse.org
+
+- Update to version 0.9.38:
+  + Fix minor out-of-bounds access in Indic shaper.
+  + Change New Tai Lue shaping engine from South-East Asian to
+    default, reflecting change in Unicode encoding model.
+  + Add hb-shape --font-size.  Can take up to two numbers for
+    separate x / y size.
+  + Fix CoreText and FreeType scale issues with negative scales.
+  + Reject blobs larger than 2GB. This might break some icu-le-hb
+    clients that need security fixes. See:
+    http://www.icu-project.org/trac/ticket/11450
+  + Avoid accessing font tables during face destruction, in case
+    rogue clients released face data already.
+  + Fix up gobject-introspection a bit.
+  + Misc fixes.
+  + API additions:
+    hb_ft_face_create_referenced()
+    hb_ft_font_create_referenced()
+- Changes from version 0.9.37:
+  + Fix out-of-bounds access in Context lookup format 3.
+  + Indic: Allow ZWJ/ZWNJ before syllable modifiers.
+
+-------------------------------------------------------------------
+Sat Nov 22 12:01:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.9.36:
+  + Fix performance bug in hb_ot_collect_glyphs() (moz#1090869).
+  + Add basic vertical-text support to hb-ot-font.
+  + Misc build fixes.
+
+-------------------------------------------------------------------
+Thu Aug 21 01:54:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to version 0.9.35:
+  + Fix major shape-plan caching bug when more than one shaper
+    were provided to hb_shape_full() (as exercised by XeTeX).
+  + Fix Arabic fallback shaping regression.
+  + Major hb-coretext fixes.  That backend is complete now,
+    including respecing buffer direction and language, down to
+    vertical writing.
+  + Build fixes for Windows CE.
+  + Misc fixes:
+    - Use atexit() only if it's safe to call from shared library.
+      fdo#82246
+    - Mandaic had errors in its Unicode Joining_Type.
+      fdo#82306
+  + API changes:
+    - hb_buffer_clear_contents() does not reset buffer flags now.
+- Changes from version 0.9.34:
+  + hb_feature_from_string() now accepts CSS
+    font-feature-settings format.
+  + As a result, hb-shape / hb-view --features also accept
+    CSS-style strings. Eg, "'liga' off" is accepted now.
+  + Add old-spec Myanmar shaper: fdo#81775
+  + Don't apply 'calt' in Hangul shaper.
+  + Fix mark advance zeroing for Hebrew shaper: fdo#76767
+  + Implement Windows-1256 custom Arabic shaping. 
+    Only built on Windows, and requires help from get_glyph().
+  + Disable 'liga' in vertical text.
+  + Build fixes.
+  + API changes:
+    - Make HB_BUFFER_FLAG_BOT/EOT easier to use.
+- Changes from version 0.9.33:
+  + Turn off ARabic 'cswh' feature that was accidentally turned on.
+  + Add HB_TAG_MAX_SIGNED.
+  + Make hb_face_make_immutable() really make face immutable!
+  + Windows build fixes.
+- Changes from version 0.9.32:
+  + Apply Arabic shaping features in spec order exactly.
+  + Another fix for Mongolian free variation selectors.
+  + For non-Arabic scripts in Arabic shaper apply 'rlig' and 'calt'
+    together.
+  + Minor adjustment to U+FFFD logic.
+  + Fix hb-coretext build.
+- Changes from version 0.9.31:
+  + Only accept valid UTF-8/16/32; we missed many cases before.
+  + Better shaping of invalid UTF-8/16/32.  Falls back to U+FFFD
+    REPLACEMENT CHARACTER now.
+  + With all changes in this release, the buffer will contain fully
+    valid Unicode after hb_buffer_add_utf8/16/32 no matter how
+    broken the input is.
+  + Fix Mongolian Variation Selectors for fonts without GDEF.
+  + Fix minor invalid buffer access.
+  + Accept zh-Hant and zh-Hans language tags.
+    hb_ot_tag_to_language() now uses these instead of private tags.
+  + Build fixes.
+  + New API:
+    - hb_buffer_add_codepoints(). This does what
+      hb_buffer_add_utf32() used to do, ie. no validity check on
+      the input at all. add_utf32 now replaces invalid Unicode
+      codepoints with the replacement character.
+    - hb_buffer_set_replacement_codepoint()
+    - hb_buffer_get_replacement_codepoint()
+      Previously, in hb_buffer_add_utf8 and hb_buffer_add_utf16,
+      when we detected broken input, we replaced that with
+      (hb_codepoint_t)-1. This has changed to use U+FFFD now, but
+      can be changed using these new API.
+
+-------------------------------------------------------------------
+Fri Jul 11 17:42:59 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.30:
+  + Update to Unicode 7.0.0:
+    - New scripts Manichaean and Psalter Pahlavi are shaped using
+      Arabic shaper.
+    - All the other new scripts to through the generic shaper for
+      now.
+  + Minor Indic improvements.
+  + Fix graphite2 backend cluster mapping.
+  + API changes:
+    - New HB_SCRIPT_* values for Unicode 7.0 scripts.
+    - New function hb_ot_layout_language_get_required_feature().
+  + Build fixes.
+
+-------------------------------------------------------------------
+Tue Jul  1 19:34:56 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.29:
+  + Implement cmap in hb-ot-font.h. No variation-selectors yet.
+  + Myanmar: Allow MedialYa+Asat.
+  + Various Indic fixes:
+    - Support most characters in Extended Devanagary and Vedic
+      Unicode blocks.
+    - Allow digits and a some punctuation as consonant
+      placeholders.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Mon May  5 17:13:17 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.9.28:
+  + Unbreak old-spec Indic shaping (fdo#76705).
+  + Fix shaping of U+17DD and U+0FC6.
+  + Add HB_NO_MERGE_CLUSTERS build option. NOT to be enabled by
+    default for shipping libraries. It's an option for further
+    experimentation right now. When we are sure how to do it
+    properly, we will add public run-time API for the
+    functionality.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Thu Mar 27 03:17:39 UTC 2014 - mgorse@suse.com
+
+- Update to version 0.9.27: 
+  + Don't use "register" storage class specifier.
+  + Wrap definition of free_langs() with HAVE_ATEXIT.
+  + Add coretext_aat shaper and hb_coretext_face_create()
+    constructor.
+  + If HAVE_ICU_BUILTIN is defined, use hb-icu Unicode callbacks.
+  + Only do fallback Hebrew composition if no GPOS 'mark'
+    available.
+  + Allow bootstrapping without gtk-doc.
+  + Use AM_MISSING_PROG for ragel and git.
+  + Typo in ucdn's Makefile.am.
+  + Improve MemoryBarrier() implementation.
+
+-------------------------------------------------------------------
+Tue Feb 11 22:42:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.26:
+  + Misc fixes.
+  + Fix application of 'rtlm' feature.
+  + Automatically apply frac/numr/dnom around U+2044 FRACTION
+    SLASH.
+  + Uniscribe: fix scratch-buffer accounting.
+  + Reorder Tai Tham SAKOT to after tone-marks.
+  + Add Hangul shaper.
+  + Disable 'cswh' feature in Arabic shaper.
+  + Coretext: better handle surrogate pairs.
+  + Add HB_TAG_MAX and _HB_SCRIPT_MAX_VALUE.
+
+-------------------------------------------------------------------
+Wed Dec 11 13:05:49 UTC 2013 - pgajdos@suse.com
+
+- Update to version 0.9.25:
+  + Myanmar shaper improvements.
+  + Avoid font fallback in CoreText backend.
+  + Additional OpenType language tag mappiongs.
+  + More aggressive shape-plan caching.
+- Changes from version 0.9.24:
+  + Misc compiler warning fixes with clang.
+  + No functional changes.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:54:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.23:
+  + Fix (Chain)Context recursion with non-monotone lookup
+    positions.
+  + Misc Indic bug fixes.
+  + New Javanese / Buginese shaping, similar to Windows 8.1.
+- Drop harfbuzz-fix-non-return-in-nonvoid.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Oct 20 16:16:57 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.9.22:
+  + Fix use-after-end-of-scope in hb_language_from_string().
+  + Fix hiding of default_ignorables if font doesn't have space
+    glyph.
+  + Protect against out-of-range lookup indices.
+  + API Changes: Added hb_ot_layout_table_get_lookup_count().
+- Add harfbuzz-fix-non-return-in-nonvoid.patch, fix a missing
+  return. Patch taken from upstream git.
+
+-------------------------------------------------------------------
+Tue Sep 17 20:46:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.21:
+  + Rename gobject-introspection library name from harfbuzz to
+    HarfBuzz.
+  + Remove (long disabled) hb-old and hb-icu-le test shapers.
+  + Misc gtk-doc and gobject-introspection annotations.
+  + Misc fixes.
+  + API change: Add HB_SET_VALUE_INVALID.
+
+-------------------------------------------------------------------
+Mon Sep  2 07:13:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.20:
+  + Misc substitute_closure() fixes.
+  + Build fixes.
+  + GObject and Introspection:
+    - Added harfbuzz-gobject library (hb-gobject.h) that has type
+      bindings for all HarfBuzz objects and enums.  Enable using
+      --with-gobject.
+    - Added gobject-introspection boilerplate. Nothing useful
+      right now.
+  + OpenType shaper:
+    - Apply 'mark' in Myanmar shaper.
+    - Don't apply 'dlig' by default.
+  + Uniscribe shaper:
+    - Support user features.
+    - Fix loading of fonts that are also installed on the system.
+    - Fix shaping of Arabic Presentation Forms.
+    - Fix build with wide chars.
+  + CoreText shaper:
+    - Support user features
+  + Updated documentations.
+- Add missing post/postun scripts to -n libharfbuzz-icu0.
+
+-------------------------------------------------------------------
+Wed Jul 17 06:58:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.19:
+  + Build fixes.
+  + Better handling of multiple variation selectors in a row.
+  + Pass on variation selector to GSUB if not consumed by cmap.
+  + Fix undefined memory access.
+  + Add Javanese config to Indic shaper.
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
+Wed May 29 06:21:15 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.18:
+  + All unneeded code is disabled by default.
+  + Uniscribe and CoreText shapers can be enabled with their --with
+    options.
+  + icu_le and old shapers cannot be enabled for now.
+  + glib, freetype, and cairo will be detected automatically.
+  + icu and graphite2 are default off, can be enabled with their
+    --with options.
+- Split out new library package, libharfbuzz-icu0.
+- Pass parameters --with-glib, --with-freetype, --with-cairo,
+  --with-icu and --with-graphite2 to configure, as advised by
+  upstream.
+- Enable pkgconfig(graphite2) BuildRequires, as the depdency is now
+  available in openSUSE.
+
+-------------------------------------------------------------------
+Wed May 22 12:19:17 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.17:
+  + Build fixes.
+  + Fix bug in hb_set_get_min().
+  + Fix regression with Arabic mark positioning / width-zeroing.
+
+-------------------------------------------------------------------
+Sat Apr 20 23:24:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.16:
+  + Major speedup in OpenType lookup processing. With the Amiri
+    Arabic font, this release is over 3x faster than previous
+    release. All scripts / languages should see this speedup.
+  + New --num-iterations option for hb-shape / hb-view; useful for
+    profiling.
+
+-------------------------------------------------------------------
+Sat Apr  6 15:21:14 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.15:
+  + Build fixes.
+  + Fix crasher in graphite2 shaper.
+  + Fix Arabic mark width zeroing regression.
+  + Don't compose Hangul jamo into Unicode syllables.
+
+-------------------------------------------------------------------
+Fri Mar 22 13:30:55 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.14:
+  + Build fixes.
+  + Fix time-consuming sanitize with malicious fonts.
+  + Implement hb_buffer_deserialize_glyphs() for both json and
+    text.
+  + Do not ignore Hangul filler characters.
+  + Indic fixes:
+    - Fix Malayalam pre-base reordering interaction with
+      post-forms.
+    - Further adjust ZWJ handling.
+
+-------------------------------------------------------------------
+Thu Mar 14 21:56:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.13:
+  + Build fixes.
+  + Ngapi HarfBuzz Hackfest in London (February 2013):
+    - Fixed all known Indic bugs.
+    - New Win8-style Myanmar shaper.
+    - New South-East Asian shaper for Tai Tham, Cham, and New Tai
+      Lue.
+    - Smartly ignore Default_Ignorable characters (joiners, etc)
+      when matching GSUB/GPOS lookups.
+    - Fix 'Phags-Pa U+A872 shaping.
+    - Fix partial disabling of default-on features.
+    - Allow disabling of TrueType kerning.
+  + Fix possible crasher with broken fonts with overlapping tables.
+  + Removed generated files from git again.
+
+-------------------------------------------------------------------
+Tue Feb  5 21:58:28 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.9.12:
+  + Build fixes for Sun compiler.
+  + Minor bug fix.
+
+-------------------------------------------------------------------
+Mon Jan 14 21:19:08 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.9.11:
+  + Fix GPOS mark attachment with null Anchor offsets.
+  + [Indic] Fix old-spec reordering of viramas if sequence ends in
+    one.
+  + Fix multi-threaded shaper data creation crash.
+  + Add atomic ops for Solaris.
+  + API changes: Rename hb_buffer_clear() to
+    hb_buffer_clear_contents().
+
+-------------------------------------------------------------------
+Tue Jan  8 16:23:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.9.10:
+  + [Indic] Fixed rendering of Malayalam dot-reph
+  + Updated OT language tags.
+  + Updated graphite2 backend.
+  + Improved hb_ot_layout_get_size_params() logic.
+  + Improve hb-shape/hb-view help output.
+  + Fixed hb-set.h implementation to not crash.
+  + Fixed various issues with hb_ot_layout_collect_lookups().
+  + Various build fixes.
+
+-------------------------------------------------------------------
+Mon Dec 10 08:10:45 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.9:
+  + Fix build on Windows.
+  + Minor improvements.
+
+-------------------------------------------------------------------
+Wed Dec  5 16:36:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.8:
+  + Some API additions (see NEWS for details).
+  + Actually implement hb_shape_plan_get_shaper ().
+  + Make UCDB data tables const.
+  + Lots of internal refactoring in OTLayout tables.
+  + Flesh out hb_ot_layout_lookup_collect_glyphs().
+- Drop harfbuzz-missing-return.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Dec  4 14:11:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.9.7:
+  + Some API additions and changes (see NEWS for details).
+  + Fix Arabic contextual joining using pre-context text.
+  + Fix Sinhala "split matra" mess.
+  + Fix Khmer shaping with broken fonts.
+  + Implement Thai "PUA" shaping for old fonts.
+  + Do NOT route Kharoshthi script through the Indic shaper.
+  + Disable fallback positioning for Indic and Thai shapers.
+  + Misc fixes.
+  + hb-shape / hb-view changes:
+    - Add --text-before and --text-after
+    - Add --bot / --eot / --preserve-default-ignorables
+    - hb-shape --output-format=json
+- Add harfbuzz-missing-return.patch: fix missing return value.
+
+-------------------------------------------------------------------
+Wed Nov 14 14:11:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.6:
+  + Don't clear pre-context text if no new context is provided.
+  + Fix ReverseChainingSubstLookup, which was totally borked.
+  + Adjust output format of hb-shape a bit.
+  + Include config.h.in in-tree. Makes it easier for alternate
+    build systems.
+  + Fix hb_buffer_set_length(buffer, 0) invalid memory allocation.
+  + Use ICU LayoutEngine's C API instead of C++. Avoids much
+    headache.
+  + Drop glyphs for all of Unicode Default_Ignorable characters.
+  + Misc build fixes.
+  + Arabic shaper:
+    - Enable 'dlig' and 'mset' features in Arabic shaper.
+    - Implement 'Phags-pa shaping, improve Mongolian.
+  + Inidic shaper:
+    - Decompose Sinhala split matras the way old HarfBuzz / Pango
+      did.
+    - Initial support for Consonant Medials.
+    - Start adding new-style Myanmar shaping.
+    - Make reph and 'pref' logic introspect the font.
+    - Route Meetei-Mayek through the Indic shaper.
+    - Don't apply 'liga' in Indic shaper.
+    - Improve Malayalam pre-base reordering Ra interaction with
+      Chillus.
+
+-------------------------------------------------------------------
+Mon Oct 15 20:18:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.5:
+  + Synthetic-GSUB Arabic fallback shaping.
+  + Misc Indic improvements.
+  + Add build system support for pthread.
+  + Imported UCDN for in-tree Unicode callbacks implementation.
+  + Context-aware Arabic joining.
+  + Misc other fixes.
+  + API extensions.
+
+-------------------------------------------------------------------
+Thu Sep 13 12:01:23 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.9.4:
+  + Indic improvements with old-spec Malayalam.
+  + Better fallback glyph positioning, specially with Thai / Lao
+    marks.
+  + Implement dotted-circle insertion.
+  + Better Arabic fallback shaping / ligation.
+  + Added ICU LayoutEngine backend for testing.
+  + Misc fixes.
+- Add pkgconfig(icu-le) BuildRequires: needed for the new ICU
+  LayoutEngine backend.
+
+-------------------------------------------------------------------
+Tue Aug 21 15:43:57 UTC 2012 - vuntz@opensuse.org
+
+- Initial package (version 0.9.3).
+

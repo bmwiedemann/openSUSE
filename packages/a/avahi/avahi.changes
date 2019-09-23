@@ -1,0 +1,1271 @@
+-------------------------------------------------------------------
+Thu Aug 22 20:40:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim descriptions of secondary packages.
+
+-------------------------------------------------------------------
+Mon Aug 12 17:29:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gtk2-devel and python-gtk-devel BuildRequires: No longer
+  build gtk2 support. Following this, pass --disable-gtk to
+  configure. Drop sub-package libavahi-ui0, no longer built.
+- Drop long disabled sub-packages libavahi-qt4-1 and
+  libavahi-qt4-devel.
+
+-------------------------------------------------------------------
+Fri Jul  5 12:22:21 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Wed Apr 17 12:36:40 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop -Qt4 variant: Qt4 is EOL.
+
+-------------------------------------------------------------------
+Sun Mar 17 09:47:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove %if..%endif guards that do not affect the build result.
+- Write "D-BUS" per its own name, "D-Bus".
+- Replace FIXME PreReq with proper requires as needed.
+- Update boilerplate summaries, and remove em dash grammar.
+
+-------------------------------------------------------------------
+Fri Jan  4 00:40:38 UTC 2019 - mgorse@suse.com
+
+- Replace avahi-0.7-python3.patch with avahi-0.7-dbm.patch: use
+  what is upstream (boo#1110668).
+- Add avahi-0.7-encode-strings-as-utf8.patch: encode strings as
+  UTF-8 (boo#1110668).
+- Add avahi-0.7-python3-bookmarks.patch: make bookmarks python 3
+  compatible (boo#1110668).
+- Add CVE-2018-1000845.patch: drop legacy unicast queries from
+  address not on local link (boo#1120281 CVE-2018-1000845).
+- Drop avahi-0.6.31-invalid-packet.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar 22 12:50:43 UTC 2018 - tchvatal@suse.com
+
+- Drop the qt3 parts
+
+-------------------------------------------------------------------
+Wed Mar 14 02:09:53 UTC 2018 - mgorse@suse.com
+
+- Add avahi-0.7-python3.patch: Port to python 3 (bsc#1076402).
+- Build python bindings against python 3, rather than python 2;
+- Python-avahi is now python3-avahi, and python-avahi-gtk is now
+  python3-avahi-gtk
+- Obsolete the python 2 packages
+- Replace python_sitelib with python3_sitelib in %files, and add
+  __pycache__.
+
+-------------------------------------------------------------------
+Sat Mar 10 08:39:00 UTC 2018 - jengelh@inai.de
+
+- Rename %*soname to %*sover to better reflect its use.
+
+-------------------------------------------------------------------
+Tue Mar  6 16:57:37 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 19 15:19:41 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Wed Nov 29 15:44:31 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.7:
+  + The Avahi 0.7 release brings two new features, binary TXT
+    records in XML service files and the ability to start the
+    gobject client in a custom context.
+  + New Features:
+    - Add support for binary values in TXT records in XML service
+      files by specifying
+      value-format="text|binary-hex|binary-base64". If not
+      specified, defaults to the normal value of "text" (thus
+      backwards compatible).
+    - avahi-gobject: Allow starting the client in a custom
+      GMainContext by passing context to ga_client_start_in_context
+      instead of ga_client_start (avahi-gobject minor version has
+      been incremented).
+  + Notable Changes:
+    - avahi-daemon: Remove all default rlimits from
+      avahi-daemon.conf, as two main problems happened with firstly
+      rlimit-nproc causing avahi to fail when started in a
+      container without user namespaces and secondly because memory
+      rlimits were causing avahi to crash in some cases. Leave it
+      up to the init system to impose any modified limits instead.
+      It is recommend to ship this change in distribution default
+      config files.
+    - avahi-common: Fix watch cleanup issue in watch_free
+    - avahi-discover (python): Updated for Python3 & GTK3
+    - avahi-autoipd:
+      . Clear previously set address before binding a new one.
+      . Fix dhclient hooks to check for avahi-autoipd before
+        running.
+    - build: Move default rundir from /var/run to /run as per
+      modern system setups.
+  + Other Changes:
+    - build:
+      . Fix the printed value of "Building libavahi-client" in
+        ./configure.
+      . autogen.sh improved to work when called from another
+        directory.
+      . Fix warnings when compiling against musl libc.
+    - avahi-compat-libdns_sd: Fix incorrect URL in warnings.
+    - service-type-database: Add new service Types: _ipps._tcp,
+      _xpra._tcp.
+    - avahi-dnsconfd: Update manpage with the correct action script
+      name.
+    - avahi-gobject:
+      . Use the correct shared library name in AvahiCore-0.6.gir
+      . Fix build failing under some locales.
+    - avahi-common/dbus-watch-glue.c: remove Unneeded semicolon.
+    - Update gentoo init scripts for newer openrc version.
+  + Updated translations.
+- Drop avahi-empty-share-dir.patch, avahi-gir-fixup.patch,
+  avahi-move-everything-to-run.patch and avahi-outdated-URL.patch:
+  Fixed upstream.
+- Drop systemd_requires macro: on a machine managed by systemd, we
+  don't have to require it. If the machine/container is not managed
+  by systemd, we don't want to require it.
+- Add pkgconfig(pygobject-3.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:37:18 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Jun  1 08:37:54 UTC 2017 - jengelh@inai.de
+
+- Do not suppress errors from avahi-autoipd user creation, but do
+  suppress getent output.
+- Replace $RPM_* shell vars by macros.
+
+-------------------------------------------------------------------
+Tue May 30 13:22:45 UTC 2017 - dimstar@opensuse.org
+
+- Modify user generation (boo#1010384):
+  + Use getent to check for existing users/groups, only creating
+    them if not found.
+  + Do not hide output of groupadd/useradd.
+  + Do not mask failures: if a user can't be added, we have a
+    problem.
+
+-------------------------------------------------------------------
+Wed Feb 15 17:58:46 UTC 2017 - dimstar@opensuse.org
+
+- Drop %insserv_cleanup scriptlets: it's been a while that avahi
+  did not install any sysV init scripts anymore.
+- Simplify avahi_spec-prepare.sh: OBS is well able to handle macros
+  in package names by now.
+- Drop conditions to only handle systemd services on openSUSE >
+  12.1; it's been long that we did not ship the sysv scripts
+  anymore and openSUSE 12.1 is long EOL.
+
+-------------------------------------------------------------------
+Mon Jul 11 18:31:35 UTC 2016 - mgorse@suse.com
+
+- Replace avahi-0.6.31-systemd-order.patch with
+  avahi-0.6.32-suppress-resolv-conf-warning.patch: only warn
+  on missing resolv.conf if the options that use it are enabled.
+  https://github.com/lathiat/avahi/pull/63
+
+-------------------------------------------------------------------
+Thu Jun 23 18:45:13 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.6.32:
+  + Don't log warnings about invalid packets, commonly triggered by
+    Windows 10 systems.
+  + Fix issue with bad packet size estimation, causing probes to
+    continuously be sent when hosting large numbers of services.
+  + Fix build on Solaris/SmartOS (filio.h issue).
+  + Fix build on FreeBSD (PCAP_D_IN issue).
+  + Fix debug output with libdaemon >= 0.14.
+  + avahi_server_set_browse_domains now correctly uses the provided
+    list, instead of re-using the list from the configuration file.
+  + Set nl_pid to 0, this will automatically assign the value and
+    prevent conflicts per netlink(7). (Bug #334).
+  + Check for netlink pid=0 (kernel) instead of uid=0, which works
+    correctly with network & user namespaces.
+  + Fix reversed IFA_LOCAL and IFA_ADDRESS checks (Avahi#355).
+  + Don't fail the build on deprecated GTK/GLIB usage.
+  + Gracefully fail if SO_REUSEPORT is not available.
+  + Minor Python 3 update for the python ServiceTypeDatabase test
+    usage of print, should be backwards compatible.
+  + avahi-autoipd: Fix incorrect usage of IFLA_RTA instead of
+    IFA_RTA which could crash on ARM (Closes: gh#lathiat/avahi#42).
+- Drop upstream fixed patches:
+  + avahi-unicastdomains.patch
+  + avahi-gtk_box_new.patch
+  + avahi-fix-mkdir.diff
+  + avahi-enable-ipv6.patch
+  + avahi-reserve-space-for-record-data-when-size-e.patch
+- Rebase avahi-0.6.31-invalid-packet.patch.
+
+-------------------------------------------------------------------
+Thu Jun 23 18:45:12 UTC 2016 - mgorse@suse.com
+
+- Add avahi-0.6.31-systemd-order.patch: start after NM/wicked, to
+  ensure resolv.conf is present (bsc#982317, gh#lathiat/avahi#59).
+
+-------------------------------------------------------------------
+Fri May 20 10:07:48 UTC 2016 - alarrosa@suse.com
+
+- Update to GNOME 3.20.2 (Fate#318572) 
+- Added License field in spec file.
+
+-------------------------------------------------------------------
+Thu Apr 14 13:23:21 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Jan 25 13:58:10 UTC 2016 - dimstar@opensuse.org
+
+- No longer install sysv services: the systemd services have been
+  installed for a long time already and are masking the sysv
+  scripts; those scripts existance only add confusion (boo#959908).
+
+-------------------------------------------------------------------
+Mon Oct 19 09:24:58 UTC 2015 - zaitor@opensuse.org
+
+- Temp disable 2 old Conflicts that are breaking staging. These can
+  back in once there is a new release of avahi.
+
+-------------------------------------------------------------------
+Thu Oct  8 14:42:24 UTC 2015 - mgorse@suse.com
+
+- Add avahi-0.6.31-invalid-packet.patch: do not spam logs for
+  invalid packets (boo#947140 bsc#948277).
+
+-------------------------------------------------------------------
+Wed Aug 19 13:59:10 UTC 2015 - dimstar@opensuse.org
+
+- Sync up the multiple .spec files.
+
+-------------------------------------------------------------------
+Thu Jan 22 15:51:33 UTC 2015 - dimstar@opensuse.org
+
+- Add avahi-outdated-URL.patch: Do not redirect users to
+  <http://0pointer.de/avahi-compat?s=libdns_sd&e=ntpd>, which no
+  longer exists, but bring them to the more generic blog entry
+  http://0pointer.de/blog/projects/avahi-compat.html (boo#914298).
+
+-------------------------------------------------------------------
+Sat Apr 26 20:06:15 UTC 2014 - dmueller@suse.com
+
+- Do not depend on gnome-icon-theme:
+  + the network-wired icon is meanwhile available in faenza, gnome,
+    mate, nimbus oxygen and tango icon theme.
+  + the dependency causes avahi depending on gtk3, which causes a
+    build loop with gtk2.
+  + the avahi-desktop.patch causes these desktop files to be only
+    shown in GTK based desktops, which have any of those icon
+    themes available.
+
+-------------------------------------------------------------------
+Tue Apr 15 15:55:46 UTC 2014 - aj@suse.com
+
+- We've moved everything to /run, adjust file list as well.
+
+-------------------------------------------------------------------
+Thu Feb 27 18:12:43 UTC 2014 - mt@suse.com
+
+- Do not start unconditionally / by default under sysconfig as
+  it breaks vlan,bridge,bonding setups (bnc#853845, bnc#851953).
+
+-------------------------------------------------------------------
+Wed Sep 25 17:26:26 UTC 2013 - dimstar@opensuse.org
+
+- Sanitize scrtiplet requirements (bnc#839520):
+  + Add shadow Requires(pre) for useradd and groupadd.
+  + Add coreutils Requires(post) for chown.
+
+-------------------------------------------------------------------
+Sat Sep 21 14:30:30 UTC 2013 - dimstar@opensuse.org
+
+- Change RPM Group of shared library package to System/Libraries.
+- Run pre_checkin.sh to sync .spec files.
+
+-------------------------------------------------------------------
+Wed Aug 21 21:53:19 UTC 2013 - mgorse@suse.com
+
+- Fix hang when registering with large numbers of service files
+  (bnc#835984, avahi-reserve-space-for-record-data-when-size-e.patch).
+
+-------------------------------------------------------------------
+Mon Feb  4 16:59:54 CET 2013 - sbrabec@suse.cz
+
+- Automatically disable avahi on networks with unicast .local
+  domain (bnc#431704, avahi-daemon-check-dns-suse.sh,
+  avahi-daemon-check-dns-suse.patch).
+- Split avahi-autoipd into a separate package (bnc#431704#c6,
+  avahi-autoipd.if-up, avahi-autoipd.if-down,
+  avahi-autoipd.README.SUSE).
+- Use dedicated UID and GID for avahi-autoipd.
+- Added sysconfig to fine tune behavior.
+- Remove no more needed gnome-nettool2.png.
+- Fix paths in man pages (sed script).
+- Update avahi-discover.desktop to fit Desktop Menu Specification
+  better (avahi#365, fdo#49699, avahi-desktop.patch).
+- Move service-types.db to the main package. It is requires by
+  python-avahi and avahi-utils.
+
+-------------------------------------------------------------------
+Mon Jan 28 10:01:28 UTC 2013 - rmilasan@suse.com
+
+- Add avahi-move-everything-to-run.patch: move everything 
+  (socket and pid files) to /run.
+
+-------------------------------------------------------------------
+Wed Nov 14 09:05:25 UTC 2012 - dimstar@opensuse.org
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+
+-------------------------------------------------------------------
+Tue Oct 16 11:37:56 UTC 2012 - coolo@suse.com
+
+- Replace systemd-devel BuildRequires with pkgconfig(systemd)
+  to prefer the -mini package, avoiding build cycles.
+
+-------------------------------------------------------------------
+Wed Oct  3 15:20:32 UTC 2012 - schwab@linux-m68k.org
+
+- Mark /etc/avahi/hosts as %config(noreplace)
+
+-------------------------------------------------------------------
+Wed Jul 11 14:40:22 CEST 2012 - vuntz@opensuse.org
+
+- Add avahi-enable-ipv6.patch: enable IPv6 by default. Fix
+  bnc#710230.
+
+-------------------------------------------------------------------
+Sun Jul  1 20:38:09 UTC 2012 - coolo@suse.com
+
+- Add avahi-fix-mkdir.diff: fix build with automake 1.12.1, which
+  removed AM_PROG_MKDIR_P, which is deprecated for a long time.
+
+-------------------------------------------------------------------
+Mon Feb 27 13:34:33 UTC 2012 - vuntz@opensuse.org
+
+- Stop passing --with-systemdsystemunitdir to configure: we'll just
+  use the right default value, which should be %{_unitdir}.
+- Change systemd BuildRequires to systemd-devel since this is
+  needed to get that default value in configure.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:15:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.6.31:
+  + Add Mumble to service type database
+  + systemd: syslog.target is not longer useful
+  + Compatibility with newer automake
+- Rebase avahi-empty-share-dir.patch.
+- Move dbus xml interface files from devel subpackage to main
+  subpackage: those files are needed at runtime.
+
+-------------------------------------------------------------------
+Thu Dec  8 17:16:31 UTC 2011 - dimstar@opensuse.org
+
+- Add avahi-gir-fixup.patch: Change the gir/typelib dependency to
+  be correctly libavahi-core.so.7 instead of avahi-core.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:52:27 UTC 2011 - dimstar@opensuse.org
+
+- Split the typelib files in typelib-1_0-Avahi-0_6 subpackage.
+- Add typelib-1_0-Avahi-0_6 Requires to libavahi-glib-devel
+  subpackage.
+
+-------------------------------------------------------------------
+Sun Dec  4 13:40:54 UTC 2011 - dimstar@opensuse.org
+
+- Change libtool BuildRequires to be unconditional: it is needed to
+  build all submodules as well.
+- Change License tag to spdx identifier (LGPL-2.1+) and remove
+  duplicate mentions of the License tag.
+
+-------------------------------------------------------------------
+Mon Oct 10 08:44:41 UTC 2011 - fcrozat@suse.com
+
+- Use systemd macros for 12.1
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:44 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 13:52:05 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Jul  2 12:18:24 UTC 2011 - dimstar@opensuse.org
+
+- Add avahi-gtk_box_new.patch: do not used deprecated
+  gtk_[hv]box_new function anymore; this fixes build of
+  avahi-glib2.
+
+-------------------------------------------------------------------
+Wed May 18 20:37:41 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.30:
+  + Make IPv6 work again
+  + Minor other updates
+  + Updated translations
+- Changes from version 0.6.29:
+  + Updates regarding systemd integration
+  + Compatibility with newer gtk3 and gobject introspection
+  + Fix CVE-2011-1002, fixing the fix for CVE-2010-2244
+  + Minor other updates
+  + Updated translations
+- Drop patches fixed upstream:
+  + avahi-init-lsb.patch
+  + avahi-init-dnsconfd-fix-status.patch
+  + avahi-fix-howl.pc.patch
+  + avahi-null-packet-infinite-loop.patch
+
+-------------------------------------------------------------------
+Fri Feb 25 09:56:01 UTC 2011 - fcrozat@novell.com
+
+- Enable gtk3 support:
+  + Add gtk3-devel BuildRequires for avahi-glib2.
+  + Add libavahi-ui-gtk3-0 subpackage.
+  + Pass --enable-gtk3 instead of --disable-gtk3 to configure in
+    avahi-glib2.
+- Remove explicit Requires of glib2-devel and gtk2-devel in
+  libavahi-glib-devel: they will automatically be added the
+  pkgconfig() way.
+- Use sysconfig PreReq instead of sysvinit(network) on 11.3 and
+  earlier.
+
+-------------------------------------------------------------------
+Thu Feb 17 15:38:40 CET 2011 - vuntz@opensuse.org
+
+- Add avahi-null-packet-infinite-loop.patch: fix an infinite loop
+  eating CPU when receiving corrupted/null packets. Fix bnc#671797.
+
+-------------------------------------------------------------------
+Sun Feb 13 13:48:53 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Tue Dec  7 21:18:09 UTC 2010 - coolo@novell.com
+
+- prereq init script network
+
+-------------------------------------------------------------------
+Wed Oct 13 16:43:18 CEST 2010 - vuntz@opensuse.org
+
+- Add avahi-init-dnsconfd-fix-status.patch to make avahi-dnsconfd
+  init script report unused instead of dead in status when it's
+  unused.
+
+-------------------------------------------------------------------
+Tue Oct  5 10:52:15 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.28:
+  + Updates regarding systemd integration
+  + Properly avoid bus activation on non-systemd systems
+  + Compatibility with newer gtk3 and gobject introspection
+  + i18n updates
+  + Minor other updates
+- Drop avahi-gobject-introspection-1.2.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 29 02:11:18 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Sat Sep 18 17:29:54 CEST 2010 - vuntz@opensuse.org
+
+- Rename avahi-gobject-introspection-1.1.patch to
+  avahi-gobject-introspection-1.2.patch and update it to the 1.2
+  format.
+
+-------------------------------------------------------------------
+Wed Sep  1 13:23:37 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.27:
+  + Various systemd fixes.
+  + Daemon:
+    - make sure we never choke on SIGPIPE
+    - return successful error code when we ran successfully
+    - reset signals on initialization
+    - unblock all signals by default
+  + Update libavahi-client so that it can deal with auto-activated
+    avahi daemons
+  + Bump soname
+  + Build fix when gtk3 is not installed.
+  + i18n updates
+- Changes from version 0.6.26:
+  + Fix CVE-2010-2244
+  + Support for Gtk+ 3 and Gtk+ Introspection
+  + Native systemd socket activation support
+  + Add systemd service files
+  + Add various resource control options, for traffic rate limiting
+    as well as cache size and D-Bus client object limits.
+  + i18n updates
+  + Minor other updates
+- Rename libavahi-core6 to libavahi-core7, to follow library soname
+  bump.
+- Rebase avahi-gacdir.patch.
+- Add avahi-gobject-introspection-1.1.patch to set format of gir
+  file to 1.1.
+- Add avahi-fix-howl.pc.patch to fix generation of howl.pc.
+- Drop avahi-0.6.25-fixcrash.patch: fixed upstream.
+- Drop avahi-init_unused-not-dead.patch: fixed upstream.
+- Add gobject-introspection-devel BuildRequires for the glib2
+  build, to get introspection support.
+- Remove libglade2-devel BuildRequires.
+- Remove avahi-utils-gtk <= 0.6.22 Conflicts, since the file for
+  which we added the Conflicts doesn't exist anymore.
+- Pass --disable-gtk3 to configure since we don't want gtk3 support
+  right now.
+- Pass --with-systemdsystemunitdir=/lib/systemd/system to
+  configure. Thanks Kay!
+
+-------------------------------------------------------------------
+Mon Jun 21 12:04:15 UTC 2010 - lnussel@suse.de
+
+- also check ipv6 case in avahi-0.6.25-fixcrash.patch 
+
+-------------------------------------------------------------------
+Wed Jun 16 11:19:57 UTC 2010 - lnussel@suse.de
+
+- Add avahi-0.6.25-fixcrash.patch: avoid crash due to assertion
+  when receiving corrupt packets.
+
+-------------------------------------------------------------------
+Sat May  1 01:54:24 UTC 2010 - aj@suse.de
+
+- Handle /var/run on tmpfs.
+- Avoid self-obsoletes.
+
+-------------------------------------------------------------------
+Mon Mar 15 17:10:10 CET 2010 - sbrabec@suse.cz
+
+- Do not force start avahi daemon on update (bnc#588367).
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Tue Dec 15 22:09:00 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Nov  3 19:11:57 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Oct  7 21:36:26 CEST 2009 - dimstar@opensuse.org
+
+- Add avahi-init_unused-not-dead.patch, init scripts report
+  service dead instead of unused after a stop (bnc#329708).
+
+-------------------------------------------------------------------
+Thu Aug 13 19:11:24 CEST 2009 - vuntz@novell.com
+
+- Tweak the use of new python macros.
+
+-------------------------------------------------------------------
+Mon Aug 10 13:16:55 CEST 2009 - coolo@novell.com
+
+- fix generation of sub-spec files by using update_spec.pl
+
+-------------------------------------------------------------------
+Sun Aug  9 12:29:11 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Thu May 28 18:45:06 CEST 2009 - vuntz@novell.com
+
+- Remove perl-XML-Parser BuildRequires.
+
+-------------------------------------------------------------------
+Thu Apr 16 23:20:25 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.6.25:
+  + Use send_destination for DBus <deny> rule
+  + Make .desktop files pass desktop-file-validate
+  + CVE-2009-0758: Reflector creates packet storm on legacy unicast
+    traffic
+  + Build system fixes.
+  + Updated translations.
+- Respin avahi-desktop.patch.
+- Drop bnc_459007.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb  2 01:26:26 CET 2009 - vuntz@novell.com
+
+- Call %suse_update_desktop_file on bssh and bvnc.
+
+-------------------------------------------------------------------
+Sun Feb  1 23:36:41 CET 2009 - vuntz@novell.com
+
+- Update avahi-desktop.patch to not add X-SuSE-translate=true in
+  .desktop files.
+
+-------------------------------------------------------------------
+Fri Jan 16 12:01:12 CET 2009 - ro@suse.de
+
+- readd libavahi-common.la, breaks > 100 packages if done this way 
+
+-------------------------------------------------------------------
+Wed Jan 14 14:17:05 CET 2009 - sbrabec@suse.cz
+
+- avahi-glib2-utils-gtk renamed back to its correct name
+  avahi-utils-gtk (bnc#456418).
+- Removed pointless libtool .la file.
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Jan  6 12:57:35 EST 2009 - mboman@suse.de
+
+- Update to version 0.6.24:
+  + A huge number of bug fixes, including a security relavant one
+    (low risk)
+  + Add two new configuration directives "allow-interfaces" and
+    "deny-interfaces" which can be used to make Avahi ignore certain
+    network interfaces or only use certain network interfaces
+  + Translation updates
+- Remove avahi-man-selection.patch. Fixed upstream
+- Remove avahi-no-gtk-no-interfaces.patch. Fixed upstream.
+- Remove avahi-bookmarks-no-pygtk.patch. Fixed upstream
+- Remove avahi-no-gtk-python.patch. Fixed upstream
+- Remove avahi-allocsize.patch. Fixed upstream
+- Remove avahi-dnsconfd-netconfig.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Wed Dec 17 09:10:32 CET 2008 - mauro@suse.de 
+
+- Added bnc_459007.patch to fix bnc#459007
+  + Fixes CVE-2008-5081
+
+-------------------------------------------------------------------
+Mon Dec 15 18:21:42 CET 2008 - sbrabec@suse.cz
+
+- avahi-discover.glade is required by avahi-utils-gtk and
+  python-avahi-gtk => move to avahi (bnc#456418).
+- Upgrade protection for avahi-utils-gtk built as
+  avahi-glib2-utils-gtk (bnc#456418).
+
+-------------------------------------------------------------------
+Mon Nov 24 15:22:14 CET 2008 - sbrabec@suse.cz
+
+- Removed dependency libavahi-common3 -> avahi (bnc#447101).
+
+-------------------------------------------------------------------
+Thu Oct 23 11:36:59 CDT 2008 - maw@suse.de
+
+- Make debug packages require a specific %{version}-%{release}.
+
+-------------------------------------------------------------------
+Fri Oct 17 15:28:25 CEST 2008 - lnussel@suse.de
+
+- use netconfig for avahi-dnsconfd (bnc#431240)
+- disable avahi-dnsconfd by default (bnc#431240)
+- remove 0pointer.de and zeroconf.org from default config (bnc#433359)
+- fix indenting in init script (bnc#435506)
+
+-------------------------------------------------------------------
+Fri Sep 12 10:09:45 CEST 2008 - aj@suse.de
+
+- Remove languages directory ownership, it's now part of filesystem.
+
+-------------------------------------------------------------------
+Fri Sep  5 00:58:19 CEST 2008 - ro@suse.de
+
+- add Required-Stop to initscripts 
+
+-------------------------------------------------------------------
+Mon Sep  1 10:22:46 CEST 2008 - meissner@suse.de
+
+- Added GCC attribute alloc_size markup for allocator functions
+
+-------------------------------------------------------------------
+Fri Jul 18 17:18:20 CEST 2008 - sbrabec@suse.cz
+
+- Build glib2, gobject and python stuff separately to break build
+  loop cups -> gtk2 -> avahi -> cups.
+- Split avahi-python-gtk from avahi-python.
+- Updated to version 0.6.23:
+  * A lot of translation updates
+  * Beef up bnvc quite a bit, including passing a domain to browse
+    in
+  * Increase numer of open files resource limit to 300 so that we
+    can deal with more clients simultaneously.
+  * Rework 'poof' algorithm a bit to reduce traffic load on noisy
+    links.
+  * Build fixes
+  * Minor other updates
+  * Backwards compatible with Avahi 0.6.x with x < 23.
+
+-------------------------------------------------------------------
+Wed Jul 16 13:30:43 CEST 2008 - coolo@suse.de
+
+- don't build cycle between avahi and cups
+
+-------------------------------------------------------------------
+Tue May 27 18:04:25 CEST 2008 - coolo@suse.de
+
+- fix baselibs config one more time
+
+-------------------------------------------------------------------
+Sat May 17 20:12:20 CEST 2008 - coolo@suse.de
+
+- 10.2 had even more xxbit packages to be renamed
+
+-------------------------------------------------------------------
+Sun May 11 11:49:29 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Tue Apr 29 17:01:55 CEST 2008 - cthiel@suse.de
+
+- obsolete avahi-<arch>, avahi-compat-mDNSResponder-<arch> and
+  avahi-glib-<arch> via baselibs.conf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 11 16:18:47 CET 2008 - sbrabec@suse.cz
+
+- Fix build failure of avahi-mono.
+
+-------------------------------------------------------------------
+Wed Mar  5 16:13:04 CET 2008 - sbrabec@suse.cz
+
+- Build Qt bindings in separate packages to shorten build path and
+  unneeded triggering for rebuild.
+- Spec file rewritten to allow simple and fast build per partes.
+
+-------------------------------------------------------------------
+Wed Jan 30 17:13:23 CET 2008 - sbrabec@suse.cz
+
+- Fixed init scripts (bnc#332964).
+
+-------------------------------------------------------------------
+Mon Jan 21 15:08:05 CET 2008 - ro@suse.de
+
+- same for libavahi-glib1 and libavahi-ui0 
+
+-------------------------------------------------------------------
+Sun Jan 20 19:14:33 CET 2008 - ro@suse.de
+
+- avahi-mono: buildreq libavahi-client3 (for mono-find-requires)
+
+-------------------------------------------------------------------
+Wed Dec 19 16:33:02 CET 2007 - jpr@suse.de
+
+- Update to 0.6.22
+    * i18n support
+    * Documentation and example code updates
+    * Support for registering the Avahi documentation in devhelp
+      (needs manual setup)
+    * Added a new component libavahi-gobject, which is a 
+      GObjectified version of the Avahi API
+    * Major BSD compatibility improvements
+    * avahi-ui: Allow overwriting of pretty service name by the
+      application
+    * Service type database updates
+    * Add new option --parsable to avahi-browse
+    * Make avahi-autoipd actually produce correct ARP packets
+    * Add FreeBSD kqueue support for watching /etc/avahi/services
+    * Use search domain from /etc/resolv.conf as additional browse
+      domains.
+    * No longer return a conflict error when two local applications 
+      register identical RRs.
+    * Properly find alternative service/host names for very long names
+    * DNS name compression fix (Sjoerd Simons)
+    * Fedora init script order fix
+    * Several fixes to make gcc produces less warnings
+    * Minor other updates 
+- Package avahi-discover-standalone in gtk-utils with its glade files
+
+-------------------------------------------------------------------
+Sun Oct 21 14:20:02 CEST 2007 - coolo@suse.de
+
+- fix provides, obsoleting something another package provides creates
+  a conflict between them
+
+-------------------------------------------------------------------
+Tue Oct  9 19:07:37 CEST 2007 - sbrabec@suse.cz
+
+- Rename packages according to shared library naming policy.
+- Make devel packages binding specific to deliver correct
+  dependencies (#193817).
+- Rename python package according to python package naming policy.
+- Prepend library devel packages names by "lib".
+- libavahi-ui moved to libavahi-glib to prevent depending of avahi
+  core on libglade2.
+- Split commands line utilities and GTK+ UI utilities to separate
+  packages to not force them for daemon or Qt binding users.
+
+-------------------------------------------------------------------
+Wed Sep  5 23:22:37 CEST 2007 - maw@suse.de
+
+- Move %{_datadir}/pixmaps/gnome-nettool2.png from the python
+  subpackage to the base package (#299566).
+
+-------------------------------------------------------------------
+Wed Sep  5 12:44:12 CEST 2007 - sbrabec@suse.cz
+
+- Start avahi by default (#298872).
+- Handle avahi-bookmarks daemon in scriptlets.
+
+-------------------------------------------------------------------
+Tue Aug  7 18:31:53 CEST 2007 - maw@suse.de
+
+- But that macro is deprecated (http://en.opensuse.org/Packaging/SUSE_Package_Conventions/RPM_Macros#3.28._.25run_ldconfig_.28deprecated.29)
+  so replace it with /sbin/ldconfig.
+
+-------------------------------------------------------------------
+Mon Aug  6 17:03:54 CEST 2007 - bk@suse.de
+
+- replace -p /usr/sbin/ldconfig with %{run_ldconfig}
+
+-------------------------------------------------------------------
+Mon Jul 30 08:54:42 CEST 2007 - aj@suse.de
+
+- Add gcc-c++ to BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jul 24 08:40:29 CEST 2007 - aj@suse.de
+
+- Resort spec file so that mDNSResponder is provided again.
+
+-------------------------------------------------------------------
+Mon Jul 16 11:44:59 CEST 2007 - aj@suse.de
+
+- Fix spec file.
+
+-------------------------------------------------------------------
+Mon Jul 16 09:14:58 CEST 2007 - aj@suse.de
+
+- Use extra spec file for avahi-mono to avoid build cycle
+  avahi->gnome->mono->avahi.
+
+-------------------------------------------------------------------
+Thu Jul  5 22:08:28 CEST 2007 - maw@suse.de
+
+- Build require gtk2-devel.
+
+-------------------------------------------------------------------
+Thu Jul  5 17:38:41 CEST 2007 - maw@suse.de
+
+- Don't remove libavahi-common.la, because many things depend on it
+- Make avahi-mono require gtk-sharp2.
+- Update avahi-gacdir.patch, fixing the build on biarch platforms. 
+
+-------------------------------------------------------------------
+Thu Jul  5 02:19:19 CEST 2007 - maw@suse.de
+
+- Remove some extraneous comments in the .spec file. 
+
+-------------------------------------------------------------------
+Tue Jul  3 12:17:48 CDT 2007 - maw@suse.de
+
+- Update to version 0.6.20:
+  + Various bug fixes and portability fixes
+  + New features, including a new libavahi-ui library and tools
+    to exploit it
+  + A fix for a local DoS vulnerability (b.n.c #287123 and
+    CVE-2007-3372)
+- Remove upstreamed patches: avahi-python-compile.patch and
+  avahi-compat-libdns_sd-fixes.patch; rename
+  avahi-discover-icon.patch to avahi-desktop.patch, and fix more
+  .desktop files therein
+- Buildrequire gtk-sharp2.
+
+-------------------------------------------------------------------
+Wed Jun  6 14:09:40 CEST 2007 - sbrabec@suse.cz
+
+- Removed invalid desktop Category "Application" (#254654).
+
+-------------------------------------------------------------------
+Thu May 24 01:29:15 CEST 2007 - ro@suse.de
+
+- fix some rpmlint errors (call ldconfig in post scripts) 
+
+-------------------------------------------------------------------
+Tue Mar 27 17:25:07 CEST 2007 - crivera@suse.de
+
+- Improve libdns_sd compat support.  This helps fix 214887. 
+
+-------------------------------------------------------------------
+Mon Mar 26 12:23:04 CEST 2007 - rguenther@suse.de
+
+- Add gdbm-devel and zlib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Mar 13 19:37:35 CET 2007 - crivera@suse.de
+
+- Rework the sub package split.  There is a new package, avahi-python,
+  that contains all of the Python utilities.  This removes all Python
+  dependencies from the base avahi package.  This fixes 245390.
+
+-------------------------------------------------------------------
+Fri Mar  9 23:10:02 CET 2007 - crivera@suse.de
+
+- Install avahi.firewill in /etc/sysconfig/SuSEfirewall2.d/services
+  instead of /usr/share/SuSEfirewall2/services.  This allows avahi
+  to build again.  This also depends on the latest dbus-1-python
+  submission being approved. 
+
+-------------------------------------------------------------------
+Tue Feb 27 17:45:31 CET 2007 - crivera@suse.de
+
+- Remove netdev patch in favor of using the configure parameter
+  instead.  This also fixes a similar issue with the autoipd group
+  and user.  This fixes 237145. 
+
+-------------------------------------------------------------------
+Mon Feb 26 18:27:52 CET 2007 - crivera@suse.de
+
+- Replace the non-existent "netdev" group with the "avahi" group in
+  avahi-dbus.conf.  This fixes 237145.
+- Remove Application, Utility, Network, and Settings categories from
+  the .desktop file.  This fixes 244464.
+
+-------------------------------------------------------------------
+Wed Feb 21 17:20:41 CET 2007 - sbrabec@suse.cz
+
+- Updated to a bugfix release 0.6.17:
+  * Don't accept "localhost" as a local mDNS host name
+  * Allow running avahi-bookmarks as CGI script
+  * Improve libdns_sd compatibility
+  * Stability: libdns_sd mutex locking order fix
+  * Publish IPv6 addresses via IPv4 and vice versa
+  * IA64 fixes
+  * A lot of minor cleanups and fixes
+- Fixed python dependencies (#244457).
+- Fixed howl compatibility links (#244486).
+- Fixed python byte-compilation (#244458).
+- Added avahi-bookmarks init script.
+- Added SuSEfirewall2 rule.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:50 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Wed Jan 31 23:20:35 CET 2007 - ro@suse.de
+
+- removed gnome-nettool from BuildRequires (and Recommends)
+  (causes a build-cycle) and use local copy of the icon
+
+-------------------------------------------------------------------
+Fri Jan 26 01:35:53 CET 2007 - ro@suse.de
+
+- add mono-devel to build requires to make mono-reqprov work 
+
+-------------------------------------------------------------------
+Wed Jan 24 15:33:20 CET 2007 - sbrabec@suse.cz
+
+- Updated to version 0.6.16 (CVE-2006-5461, CVE-2006-6870):
+  * Revert previous patch to check nlmsg_pid as it is bogus and
+    breaks in many cases, notably when using NetworkManager.
+  * Replace with new SO_PASSCRED-based check of the sending UID
+    which seems to work better.
+  * Handle some errors in libdns_sd more gracefully the way the real
+    libdns_sd does
+  * Apply fix for Linux 2.6.19+ where IFA_RTA / IFLA_RTA is no
+    longer defined
+  * Fix doxygen comments for avahi watch
+  * Make d-bus version detection work for >= 1.0
+  * Dont dbus_connection_close on shared dbus connections
+  * Fix potential endless loop in dns label unpacking code
+  * Fix bogus assertion in client-publish-service.c example
+  * Mild fix to some doxygen docs for avahi-common/address.h
+  * Fix passing in custom priviledged group (previously ignored
+    setting)
+  * Check that netlink messages actually originate from the kernel
+    and not another process.
+  * Fix dbus_service_browser not setting
+    AVAHI_LOOKUP_RESULT_OUR_OWN.
+
+-------------------------------------------------------------------
+Sun Jan 21 19:12:18 CET 2007 - dmueller@suse.de
+
+-compat-mDNSResponder-devel should require avahi-devel
+
+-------------------------------------------------------------------
+Sat Jan 20 18:40:18 CET 2007 - aj@suse.de
+
+- Fix avahi-sharp.pc file to use correct gcac location.
+- Add obsoletes and provides for mDNSResponder.
+
+-------------------------------------------------------------------
+Thu Dec 14 10:53:09 CET 2006 - sbrabec@suse.cz
+
+- Created init script symlinks in /usr/sbin (#228203).
+
+-------------------------------------------------------------------
+Sun Nov 12 21:53:11 CET 2006 - thoenig@suse.de
+
+- Update patch avahi-dbus-request-name-flags-fix-thoenig-02.patch:
+  Be precise with regard to the minor version of D-Bus
+
+-------------------------------------------------------------------
+Sun Nov 12 15:57:26 CET 2006 - thoenig@suse.de
+
+- Add patch avahi-dbus-request-name-flags-fix-thoenig-01.patch:
+  Fix flawed logic for flags passed to dbus_bus_request_name()
+
+-------------------------------------------------------------------
+Mon Oct 30 13:51:56 CET 2006 - sbrabec@suse.cz
+
+- Check the sender ID of netlink packets before using them
+  (#216219).
+
+-------------------------------------------------------------------
+Sun Oct 15 21:36:55 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Mon Oct  9 11:57:13 CEST 2006 - sbrabec@suse.cz
+
+- Build in older products.
+- Enabled parallel build.
+
+-------------------------------------------------------------------
+Fri Sep 22 08:24:24 CEST 2006 - aj@suse.de
+
+- Fix filelist for python upgrade.
+- Build everything with RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Mon Sep 18 22:50:04 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.6.14
+- Add new daemon "avahi-autoipd" which is an implementation of
+    IPv4LL as defined in RFC3927, a technology for assigning link-local IP
+    addresses without DHCP server. The same functionality has been available on
+    Windows under the name APIPA. While it is not the first implemenatation of
+    this technology for Free operating systems it is clearly the most powerful
+    and hopefully even the most secure. (Because it chroot()s and drops
+    priviliges and suchlike)
+- Fix a segfault in the code handling static host name registrations
+- Add a few new entries to the service type database
+- s/D-?BUS/D-Bus/g
+- Documentation updates
+- Fix service type database building on Solaris
+- Make use of newer D-Bus APIs
+- Fix random seed initialization
+- Install SFTP static service file by default
+- Other minor code cleanups
+- removed upstreamed patches 
+
+-------------------------------------------------------------------
+Sun Sep  3 11:34:13 CEST 2006 - aj@suse.de
+
+- Follow package rename qt->libqt4.
+
+-------------------------------------------------------------------
+Thu Aug 24 12:22:42 CEST 2006 - cthiel@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Aug 16 11:55:15 CEST 2006 - cthiel@suse.de
+
+- buildrequire python-gtk-devel instead of python-gtk
+
+-------------------------------------------------------------------
+Mon Aug 14 11:47:41 CEST 2006 - thoenig@suse.de
+
+- Add patch avahi-dbus-api-fix-thoenig-01.patch: Use
+  dbus_connection_close, not dbus_connection_disconnect 
+
+-------------------------------------------------------------------
+Fri Aug 11 21:02:19 CEST 2006 - cthiel@suse.de
+
+- remove avahi-0.6.10-pygtk-hack.patch, since python-gtk has been fixed in
+  the meantime
+
+-------------------------------------------------------------------
+Sun Aug  6 13:16:20 CEST 2006 - cthiel@suse.de
+
+- fixed build by adding avahi-0.6.10-pygtk-hack.patch to hack around an
+  unfavorable configure check
+ 
+-------------------------------------------------------------------
+Mon Jul  3 17:37:35 CEST 2006 - schwab@suse.de
+
+- Fix quoting in configure script.
+- Fix invalid redefinition of docdir.
+
+-------------------------------------------------------------------
+Mon May 15 20:23:10 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 0.6.10 (#137781).
+ * Fix a buffer overflow in avahi-core
+ * Refuse to process invalid UTF8 data
+ * Automatically reconnect to the DBUS if we're kicked. (Works only if
+   chroot() is disabled)
+ * Don't hit an assert() in the client libs when the Avahi daemon is
+   terminated
+ * Enumerate all service types in the database in the Service
+   Discovery Applet for Gnome
+ * Improve the Bonjour compatibility layer to make it survive
+   GnomeMeeting's broken usage
+ * Deal properly with local non-ASCII hostnames
+ * AMD64 and FreeBSD portability fixes
+ * Filter double DNS server entries in avahi-dnsconfd
+ * Fix a locking bug in avahi-sharp's EntryGroup.AddService()
+ * Ported to Solaris (incomplete)
+ * Add _airport._tcp to our service type database
+
+-------------------------------------------------------------------
+Tue May  9 13:47:16 CEST 2006 - sbrabec@suse.cz
+
+- Fixed buffer overflow in avahi_record_to_string() (#137781#c7).
+
+-------------------------------------------------------------------
+Mon Apr 24 15:14:45 CEST 2006 - sbrabec@suse.cz
+
+- Replaced Obsoletes by Conflicts for mDNSResponder* (#149676).
+
+-------------------------------------------------------------------
+Wed Apr 19 16:11:02 CEST 2006 - jpr@suse.de
+
+- Fix compat layer ABI inconsistencies with mDNSResponder (part of
+#149676)
+
+-------------------------------------------------------------------
+Wed Apr  5 19:45:50 CEST 2006 - sbrabec@suse.cz
+
+- Wait for daemon initialization in the init script (#150902).
+
+-------------------------------------------------------------------
+Tue Apr  4 16:11:18 CEST 2006 - sbrabec@suse.cz
+
+- Use Provides and Obsoletes instead of Conflicts to allow seamless
+  replacement.
+
+-------------------------------------------------------------------
+Mon Mar 20 15:38:41 CET 2006 - sbrabec@suse.cz
+
+- Call %insserv_cleanup in %postun.
+
+-------------------------------------------------------------------
+Thu Feb  9 20:00:47 CET 2006 - sbrabec@suse.cz
+
+- Provide libdns_sd.so RPM symbol, as mDNSResponder does.
+- Reduced BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  9 13:22:57 CET 2006 - sbrabec@suse.cz
+
+- Fixed circular dependency between avahi and avahi-glib
+  (avahi-discover moved to avahi-glib).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 15:47:18 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.6.5.
+- Enable howl compatibility layer as separate packages.
+
+-------------------------------------------------------------------
+Mon Jan 16 17:22:36 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 0.6.4.
+
+-------------------------------------------------------------------
+Tue Dec 20 15:36:49 CET 2005 - ro@suse.de
+
+- fix build with dbus-1 0.60
+- added libxml2-python to nfb 
+
+-------------------------------------------------------------------
+Fri Dec 16 19:22:21 CET 2005 - rml@suse.de
+
+- Move libdns_sd.so to avahi-compat-mDNSResponder from
+  avahi-compat-mDNSResponder-devel (fix up requires/provides) 
+
+-------------------------------------------------------------------
+Fri Dec  2 16:35:32 CET 2005 - sbrabec@suse.cz
+
+- Provide dns_sd.h compatibility symlink.
+
+-------------------------------------------------------------------
+Fri Dec  2 15:51:50 CET 2005 - sbrabec@suse.cz
+
+- Enable mDNSResponder compatibility layer as separate packages.
+
+-------------------------------------------------------------------
+Fri Dec  2 12:40:40 CET 2005 - sbrabec@suse.cz
+
+- Call aclocal to compile in PLUS.
+- Enabled qt4 bindings.
+- Fixed file ownership.
+- Disabled parallel build - mono fails often.
+
+-------------------------------------------------------------------
+Thu Dec  1 18:43:53 CET 2005 - sbrabec@suse.cz
+
+- Bi-arch fix.
+- Build as user.
+- Enabled parallel build.
+
+-------------------------------------------------------------------
+Wed Nov 30 18:05:00 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.6.1.
+- Moved all devel files and Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Wed Oct 12 18:40:49 CEST 2005 - ro@suse.de
+
+- use gnome2-devel-packages in nfb and cleanup nfb 
+- fix build of sharp part on x86_64
+
+-------------------------------------------------------------------
+Mon Oct 10 18:31:12 CEST 2005 - ro@suse.de
+
+- removed restart_on_update in postinstall
+  (only needed in postuninstall) 
+
+-------------------------------------------------------------------
+Thu Oct  6 15:19:48 CEST 2005 - jpr@suse.de
+
+- Initial check in
+

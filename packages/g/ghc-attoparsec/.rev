@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0a66c04c02e08cb87723bb8b61dace8</srcmd5>
+    <version>0.10.4.0</version>
+    <time>1375764500</time>
+    <user>coolo</user>
+    <comment>New package for Haskell Platform 2013.2.0.0.
+See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
+    <requestid>185522</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b0a66c04c02e08cb87723bb8b61dace8</srcmd5>
+    <version>0.10.4.0</version>
+    <time>1379662427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9706c4f29cd6da276b50d8eca88b89d9</srcmd5>
+    <version>0.10.4.0</version>
+    <time>1408957471</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>245998</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9706c4f29cd6da276b50d8eca88b89d9</srcmd5>
+    <version>0.10.4.0</version>
+    <time>1409300957</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>31d5f2ea00337ba254e95fbb98db73db</srcmd5>
+    <version>0.10.4.0</version>
+    <time>1417031674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260146</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>93726dd00d4a0f03c2bab5f8a22b4d9e</srcmd5>
+    <version>0.12.1.6</version>
+    <time>1432188764</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306424</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b48ce645e36f7d51c89c70abe5240520</srcmd5>
+    <version>0.13.0.1</version>
+    <time>1452262957</time>
+    <user>dimstar_suse</user>
+    <comment>* Fixed a bug in the implementations of inClass and notInClass for Text
+* Made the parser type in the Zepto module a monad transformer. (forwarded request 352125 from mimi_vx)</comment>
+    <requestid>352167</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c8c578bf5ef029a3e2fbf348007a6a2</srcmd5>
+    <version>0.13.0.2</version>
+    <time>1462051808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0.2
+- remove useless _service
+* Restore the fast specialised character set implementation for Text
+* Move testsuite from test-framework to tasty
+* Performance optimization of takeWhile and takeWhile1 (forwarded request 391603 from mimi_vx)</comment>
+    <requestid>391604</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>513a93a744dbbaa810a4c7631df7e9da</srcmd5>
+    <version>0.13.0.2</version>
+    <time>1469080800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>410843</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>699bef95c657c1f83f19f3011c880b3c</srcmd5>
+    <version>0.13.1.0</version>
+    <time>1477135189</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433359</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4cd198b9ee71ceae7c9aabd2ced153d8</srcmd5>
+    <version>0.13.1.0</version>
+    <time>1505503259</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524143</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>03944318edf06a45823f86ffa48c6cd9</srcmd5>
+    <version>0.13.2.2</version>
+    <time>1527674393</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-attoparsec to the latest version.</comment>
+    <requestid>607744</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>93f21403bc938fcf450bc6186364c467</srcmd5>
+    <version>0.13.2.2</version>
+    <time>1532161184</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- regenerate spec file
+- expand macro in name tag
+- more transparent packaging (fewer macros)
+- currently under consideration for inclusion in Haskell Platform
+- add copyright notice
+- initial packaging</comment>
+    <requestid>623718</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>45f09a309054e6c2132bf308b8fa8abb</srcmd5>
+    <version>0.13.2.2</version>
+    <time>1540448501</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>643329</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>57b05a212613f35172334f6967174428</srcmd5>
+    <version>0.13.2.2</version>
+    <time>1560971417</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710620</requestid>
+  </revision>
+</revisionlist>

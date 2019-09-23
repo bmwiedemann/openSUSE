@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Sep 13 09:03:41 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add BuildRequires:  pkgconfig(sane-backends)
+
+-------------------------------------------------------------------
+Fri Sep 13 08:59:30 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 4
+   see /usr/share/doc/packages/perl-Image-Sane/Changes
+
+-------------------------------------------------------------------
+Tue Aug  1 14:15:20 UTC 2017 - malcolmlewis@opensuse.org
+
+- Initial build.

@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Mon Jul  8 02:01:12 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.5.1.2.
+  ## 0.5.1.2
+
+  * Fixes compilation with GHC < 8.0.  See
+    [#142](https://github.com/fpco/store/issues/142).
+
+-------------------------------------------------------------------
+Wed May 22 02:02:01 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.5.1.1.
+  ## 0.5.1.1
+
+  * Update to the instances for generics, to improve error messages for
+    sum types with more than 255 constructors.  See
+    [#141](https://github.com/fpco/store/issues/141)
+
+-------------------------------------------------------------------
+Thu Apr 25 02:02:26 UTC 2019 - psimons@suse.com
+
+- Update store to version 0.5.1.0.
+  ## 0.5.1.0
+
+  * Update to TH to support sum types with more than 62 constructors.
+
+  * Uses TH to derive Either instance, so that it can sometimes have ConstSize #119.
+
+-------------------------------------------------------------------
+Mon Oct 22 10:35:50 UTC 2018 - psimons@suse.com
+
+- Update store to version 0.5.0.1.
+  ## 0.5.0.1
+
+  * Updates to test-suite enabling `store` to build with newer dependencies.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:02 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:41 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:43 UTC 2018 - psimons@suse.com
+
+- Update store to version 0.5.0.
+  * `Data.Store.Streaming` moved to a separate package, `store-streaming`.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update store to version 0.4.3.2.
+  * Buildable with GHC 8.2
+
+-------------------------------------------------------------------
+Wed Jul 26 16:56:09 UTC 2017 - psimons@suse.com
+
+- Update to version 0.4.3.1.
+
+-------------------------------------------------------------------
+Sun Apr  9 18:08:08 UTC 2017 - psimons@suse.com
+
+- Update to version 0.4.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Mar  7 11:19:19 UTC 2017 - psimons@suse.com
+
+- Update to version 0.4.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Feb 20 08:43:05 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb 12 18:51:52 UTC 2017 - psimons@suse.com
+
+- Update to version 0.3 with cabal2obs.

@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ba3ce051409f4afd8eec1ecf46d5b02</srcmd5>
+    <version>2.0</version>
+    <time>1511346103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542789</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e766048bbf2a1e9f8935683944c72f1a</srcmd5>
+    <version>2.0</version>
+    <time>1545648073</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659553</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6e34e7e744612f2d75a8186b9c631dd1</srcmd5>
+    <version>2.0</version>
+    <time>1548064789</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix tests with new PIL (due to ordering there were
+  2 png returns and randomly on py2 it could return apng instead
+  of just png:
+  * pil-fix-test.patch</comment>
+    <requestid>666942</requestid>
+  </revision>
+</revisionlist>

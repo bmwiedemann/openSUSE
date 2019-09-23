@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Jan 29 23:45:37 UTC 2017 - jengelh@inai.de
+
+- Trim description and fix grammar errors.
+- Remove static libraries.
+
+-------------------------------------------------------------------
+Fri Jan 13 22:10:06 UTC 2017 - sebix+novell.com@sebix.at
+
+- clean specfile
+- correct license
+- also build iconv_hook
+
+-------------------------------------------------------------------
+Thu Jul 16 07:22:02 UTC 2015 - pgajdos@suse.com
+
+- Requries: %{apache_suse_maintenance_mmn}
+  This will pull this module to the update (in released distribution) 
+  when apache maintainer thinks it is good (due api/abi changes).
+
+-------------------------------------------------------------------
+Fri Oct 31 08:27:08 UTC 2014 - pgajdos@suse.com
+
+- call spec-cleaner
+- use apache rpm macros
+
+-------------------------------------------------------------------
+Sat Mar  5 16:14:48 CET 2011 - draht@suse.de
+
+- avoid rpath setting via libtool via apxs2 
+

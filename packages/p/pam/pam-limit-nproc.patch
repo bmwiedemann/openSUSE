@@ -1,0 +1,11 @@
+Index: Linux-PAM-1.3.1/modules/pam_limits/limits.conf
+===================================================================
+--- Linux-PAM-1.3.1.orig/modules/pam_limits/limits.conf
++++ Linux-PAM-1.3.1/modules/pam_limits/limits.conf
+@@ -47,4 +47,6 @@
+ #ftp             hard    nproc           0
+ #@student        -       maxlogins       4
+ 
++# No limits for nproc, use systemd configuration instead
++
+ # End of file

@@ -1,0 +1,494 @@
+<revisionlist>
+  <revision rev="1" vrev="14">
+    <srcmd5>891b8369c9db16e5f36b119f56e0b553</srcmd5>
+    <version>20040830</version>
+    <time>1168903571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="15">
+    <srcmd5>b436b40a97f492c1affbddb9f641eb37</srcmd5>
+    <version>20040830</version>
+    <time>1176853175</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="16">
+    <srcmd5>db9d94133a88c5f3d843b43bf5118f97</srcmd5>
+    <version>20040830</version>
+    <time>1185631694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="17">
+    <srcmd5>088d6010ac4dd256b078339caad8b213</srcmd5>
+    <version>20040830</version>
+    <time>1188643782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="18">
+    <srcmd5>4c826949136972e9c20fc1d54f12bbe5</srcmd5>
+    <version>20040830</version>
+    <time>1205511869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>8f9334292fad77cdae50d1a2b2c12cb7</srcmd5>
+    <version>20040830</version>
+    <time>1208199904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="20">
+    <srcmd5>4c0ceb5b5960f2e76bcac32a17f8e446</srcmd5>
+    <version>20040830</version>
+    <time>1214590897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="21">
+    <srcmd5>ee351b3fc591f28d4c2784498debd6ed</srcmd5>
+    <version>20040830</version>
+    <time>1218842117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="22">
+    <srcmd5>c8a3f768e045bdbbf21dca9913a160e7</srcmd5>
+    <version>20040830</version>
+    <time>1222704201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a03c4fbc2b122d5c3e21a8b6d47f2b15</srcmd5>
+    <version>20090731</version>
+    <time>1249423283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a03c4fbc2b122d5c3e21a8b6d47f2b15</srcmd5>
+    <version>20090731</version>
+    <time>1249423283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9c665c3d6fb58209c62a49576d170f08</srcmd5>
+    <version>20090731</version>
+    <time>1268925023</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>0effa16cbf9d4b07aecf68c61cff5065</srcmd5>
+    <version>20090731</version>
+    <time>1269013383</time>
+    <user>autobuild</user>
+    <comment>Copy from OpenOffice.org:UNSTABLE/myspell-dictionaries based on submit request 35371 from user pmladek
+</comment>
+    <requestid>35371</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>683865d878b42ce03ad87e752a95fd35</srcmd5>
+    <version>20090731</version>
+    <time>1270722960</time>
+    <user>autobuild</user>
+    <comment>Copy from OpenOffice.org:UNSTABLE/myspell-dictionaries based on submit request 37270 from user pmladek
+</comment>
+    <requestid>37270</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>d82db67ad3d9dc6f1e80c81d36d057f0</srcmd5>
+    <version>20090731</version>
+    <time>1271187320</time>
+    <user>autobuild</user>
+    <comment>Copy from OpenOffice.org:UNSTABLE/myspell-dictionaries based on submit request 37615 from user pmladek
+</comment>
+    <requestid>37615</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>ca76cc295ba589f7657570ca41d00e2c</srcmd5>
+    <version>20090731</version>
+    <time>1271933867</time>
+    <user>autobuild</user>
+    <comment>Copy from OpenOffice.org:UNSTABLE/myspell-dictionaries based on submit request 38486 from user pmladek
+</comment>
+    <requestid>38486</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>ca76cc295ba589f7657570ca41d00e2c</srcmd5>
+    <version>20090731</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>ca76cc295ba589f7657570ca41d00e2c</srcmd5>
+    <version>20090731</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>577aff5b2ab8ba9329e4e44c27894b86</srcmd5>
+    <version>unknown</version>
+    <time>1291306009</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54282 from user pmladek
+</comment>
+    <requestid>54282</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>527407e64588b8a2f87d4cc56c38b7a8</srcmd5>
+    <version>unknown</version>
+    <time>1291306017</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54282
+</comment>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>64f622ecc010349a7bd5ab30cf0470d5</srcmd5>
+    <version>unknown</version>
+    <time>1296776837</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59976 from user pmladek
+</comment>
+    <requestid>59976</requestid>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>549e5e57df9764da0114f1f40a9b5d59</srcmd5>
+    <version>unknown</version>
+    <time>1296776846</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59976
+</comment>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>549e5e57df9764da0114f1f40a9b5d59</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>51dd71240b42cb90042178f022516ddf</srcmd5>
+    <version>unknown</version>
+    <time>1306488463</time>
+    <user>saschpe</user>
+    <comment>- updated Valencian dictionary; used avl version again (bnc#681560)</comment>
+    <requestid>68101</requestid>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>0df68351be9f6490aa39e87ea4581cc5</srcmd5>
+    <version>unknown</version>
+    <time>1306488476</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68101
+</comment>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>3ded8cdfecd27a1b62e1ba0447f88160</srcmd5>
+    <version>unknown</version>
+    <time>1308213030</time>
+    <user>saschpe</user>
+    <comment>- myspell-portuguese (bnc#688200):
+    * added myspell-portuguese-dictionary into Provides to have a common
+      provides with the myspell-portuguese-preao package
+    * added myspell-portuguese-preao into Conflicts
+
+- updated Portuguese (pt_PT) dictionary (bnc#688200)</comment>
+    <requestid>73709</requestid>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>1283007f9cc8130cbba91169e424444b</srcmd5>
+    <version>unknown</version>
+    <time>1308213045</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73709
+</comment>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>8a694bacaa349ac7a9c302b29644cc67</srcmd5>
+    <version>unknown</version>
+    <time>1317805798</time>
+    <user>lrupp</user>
+    <comment>- updated description for LibreOffice (bnc#718113)</comment>
+    <requestid>86527</requestid>
+  </revision>
+  <revision rev="29" vrev="25">
+    <srcmd5>8a694bacaa349ac7a9c302b29644cc67</srcmd5>
+    <version>unknown</version>
+    <time>1319182190</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="26">
+    <srcmd5>ceebd417542f58464f956e13ba80d59a</srcmd5>
+    <version>unknown</version>
+    <time>1334216547</time>
+    <user>coolo</user>
+    <comment>- update license to follow spdx.org standard
+
+- Update pt_BR dictionary (Vero 2.1), its license, URL and description
+
+- http://extensions.services.openoffice.org was not reliable; removed this URL
+  from the source tag to pass the commit check; kept the URL just in a comment
+
+- Updated Greek dictionary to version 20100124 (1.1.0)
+- Updated spec file based on spec-cleaner run</comment>
+    <requestid>112407</requestid>
+  </revision>
+  <revision rev="31" vrev="28">
+    <srcmd5>ceebd417542f58464f956e13ba80d59a</srcmd5>
+    <version>unknown</version>
+    <time>1340183717</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="29">
+    <srcmd5>37676e5e125572ea5d9136dd64e7dab0</srcmd5>
+    <version>unknown</version>
+    <time>1345630410</time>
+    <user>namtrac</user>
+    <comment>- Update pt_BR dictionary (Vero 2.1.1), Portugue dictionary (12.7.1.1) and
+  its info (URL), correct Kichwa URL (there was an incorrect one)</comment>
+    <requestid>130591</requestid>
+  </revision>
+  <revision rev="33" vrev="31">
+    <srcmd5>37676e5e125572ea5d9136dd64e7dab0</srcmd5>
+    <version>unknown</version>
+    <time>1359109473</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="33">
+    <srcmd5>37676e5e125572ea5d9136dd64e7dab0</srcmd5>
+    <version>unknown</version>
+    <time>1379663327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="34">
+    <srcmd5>f5e98f7d2c2a366f2326adf550487520</srcmd5>
+    <version>unknown</version>
+    <time>1388774831</time>
+    <user>coolo</user>
+    <comment>- update Polish dictionary to version 20140102 (bnc#857026)</comment>
+    <requestid>212614</requestid>
+  </revision>
+  <revision rev="36" vrev="35">
+    <srcmd5>5de4b9b2537d671ed0e808f88e3a3fa4</srcmd5>
+    <version>20140417</version>
+    <time>1399031618</time>
+    <user>coolo</user>
+    <comment>- myspell-de provides myspell-austrian, myspell-german and
+  myspell-nswiss (removed subpackages from igerman98 source
+  package)
+
+- obsolete libreoffice-hyphen
+- obsolete/provide libreoffice-thesaurus-*
+
+- do not provide locale(OpenOffice_org:*) [bnc#806250#c21]
+
+- subpackages Provides old names
+
+- package reworked, using data and layout from
+  http://cgit.freedesktop.org/libreoffice/dictionaries/
+  [bnc#806250]</comment>
+    <requestid>231922</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d028c1c9fe7bffe90bbbdd1a8ae37947</srcmd5>
+    <version>20140507</version>
+    <time>1401685207</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235562</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>d028c1c9fe7bffe90bbbdd1a8ae37947</srcmd5>
+    <version>20140507</version>
+    <time>1409301946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7b01bc4629155c29fd5aa0d623c307e0</srcmd5>
+    <version>20140911</version>
+    <time>1410968508</time>
+    <user>coolo</user>
+    <comment>- package lightproof files [bnc#890735]
+- package all doc files
+- update to 20140911</comment>
+    <requestid>248963</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>22b1cc3eb1b71c56203c3c04fd4413de</srcmd5>
+    <version>20141215</version>
+    <time>1421959673</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20141215
+- package split according to locale [bnc#907966] (forwarded request 265883 from pgajdos)</comment>
+    <requestid>265884</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6cf23a3735b55a5ab3ed1ba74637d72c</srcmd5>
+    <version>20150130</version>
+    <time>1423215717</time>
+    <user>dimstar_suse</user>
+    <comment>- git state 20150130
+- fixed [bnc#914911]:
+  * gl: fixed dangling symlinks when gl_ES not installed
+  * de: _frami dropped from dictionaries name,
+        removed hyph_de.dic, th_de_v2.dat, th_de_v2.idx links from
+        myspell-de main language package (dangling when no 
+        variant is installed)
+  * en: introduced dependenciencies between language subpackages 
+        to not have dangling symlinks:
+        - all variants depends on en_US variant
+        - all except en_PH depends on en_GB
+        - en_MW, en_NA and en_ZW variants depends on en_ZA
+  * ca: ca-valencia.{dic,aff} regular files moved to 
+        myspell-ca_ES_valencia</comment>
+    <requestid>283743</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>573f89d886d1d67685d4809cea31f0a8</srcmd5>
+    <version>20150407</version>
+    <time>1428651996</time>
+    <user>dimstar_suse</user>
+    <comment>- git state 20150407, fixes [bnc#806250]</comment>
+    <requestid>294737</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>d5af58aa203770d85ffeef8ef1e07bfb</srcmd5>
+    <version>20150407</version>
+    <time>1430581112</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>304811</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d0191256eebf78d8f0089db7b9b944f0</srcmd5>
+    <version>20150827</version>
+    <time>1440871314</time>
+    <user>coolo</user>
+    <comment>- Fixup es generating in update script
+
+- Slightly whitespace the spec.in file
+
+- Update to git state 20150827 reflecting LO 5.0</comment>
+    <requestid>327328</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>27036ed6d1339ac7b094de9376bbdbdc</srcmd5>
+    <version>20151217</version>
+    <time>1451177920</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350682</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>485371ad4755d4cd4776ea26918488a6</srcmd5>
+    <version>20160203</version>
+    <time>1455701378</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358671</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>002a1d3c9c45b3dfd28143c3037f627b</srcmd5>
+    <version>20160511</version>
+    <time>1463392957</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to git state 20160511:
+  * Notably croatian and czech rules updates</comment>
+    <requestid>394824</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1ed0e5c9fd7319841f7cd557ccf081f2</srcmd5>
+    <version>20161031</version>
+    <time>1478377418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to git state 20161031:
+  * Various language updates
+  * Notably Swedish and pt_PT</comment>
+    <requestid>438036</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5cdd24bb551e6dd8916dd24185e60ac5</srcmd5>
+    <version>20170511</version>
+    <time>1495267652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to git state 20170511:
+  * Add Tibetian dictionary
+- Update update.sh script to not bother &lt; 12.3 releases
+
+- add FLAG UTF-8 to es_ANY.aff [bsc#1014742]
+  + myspell-dictionaries-es-FLAG-UTF-8.patch</comment>
+    <requestid>494635</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b72605ca870ea464e18d18d3f3a31119</srcmd5>
+    <version>20171102</version>
+    <time>1510231110</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to git state 20171102:
+  * Albanian dictionary
+  * Udates all around the place
+    Spanish/English/Swedish/...</comment>
+    <requestid>538321</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>90edeb83e4ba7b1bb770a7e31bf598ad</srcmd5>
+    <version>20171218</version>
+    <time>1514027846</time>
+    <user>dimstar_suse</user>
+    <comment>- git state 20171218
+  * hungarian, spanish
+- update.sh: save git log before removing .git; run spec-cleaner
+  if present</comment>
+    <requestid>558055</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>3b044aea9107c49c4904469831a0b9ed</srcmd5>
+    <version>20180403</version>
+    <time>1523875569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20180403:
+  * Various updates around
+  * Indonesian spelling dictionary and thesaurus added</comment>
+    <requestid>593147</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>604ca5c9a5ba210ac90feff043e7e526</srcmd5>
+    <version>20180704</version>
+    <time>1531946118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622071</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>fff2c88ab209fc66825d063d5e49c7e4</srcmd5>
+    <version>20180704</version>
+    <time>1532774661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20180704 bsc#1102294 bsc#1099508:</comment>
+    <requestid>625716</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a962fe0f4ad57da1788c05641eb3128c</srcmd5>
+    <version>20181025</version>
+    <time>1541510338</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20181025:
+  * Turkish dictionary added
+  * Updated French dictionary</comment>
+    <requestid>644673</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>390c6fa85c3a1ecaa7323746593a2ba4</srcmd5>
+    <version>20190423</version>
+    <time>1556311344</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 20190423:
+  * Serbian dictionary updated
+  * Update af_ZA hunspell
+  * Update Spanish dictionary
+  * Update Slovenian dictionary
+  * Update Breton dictionary
+  * Update Galician dictionary</comment>
+    <requestid>697124</requestid>
+  </revision>
+</revisionlist>

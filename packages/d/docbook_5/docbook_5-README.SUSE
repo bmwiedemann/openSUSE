@@ -1,0 +1,20 @@
+README.SUSE (2017-10-12)
+=====================================
+
+XML CATALOG File
+----------------
+
+The main DocBook catalog is located in /etc/xml/catalog.d/docbook_5.xml
+
+
+DocBook V5.1
+------------
+
+DocBook is a general purpose schema particularly well suited to books and
+papers about computer hardware and software (though it is by no means
+limited to these applications).
+
+The Version 5.1 release introduces assemblies for topic-oriented authoring.
+It also addresses a selection of bugs and feature requests. 
+
+For further details, see the documentation in the package docbook_5-doc

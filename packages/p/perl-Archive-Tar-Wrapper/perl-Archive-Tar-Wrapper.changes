@@ -1,0 +1,198 @@
+-------------------------------------------------------------------
+Sat Aug 24 05:02:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.37 (2019/08/24):
+      Fixed issue 14 - https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/14
+
+-------------------------------------------------------------------
+Fri Apr 12 05:03:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.36 (2019/04/11):
+      Bug fixes since tests on Windows were failing after latests changes.
+      Refactored code due unexpected way bsdtar on Windows and tar on OpenBSD behave.
+      Refactored the tests due the bugs found.
+      Small fixes on Pod, specially the section for MS Windows users.
+      Added the missing tests to the MANIFEST.
+
+-------------------------------------------------------------------
+Sat Apr  6 05:03:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.35 (2019/04/05):
+      Added _rem_dots method, a improved way to remove '.' and '..' from readdir(), supposed to be faster than previous implementation with sort() and shift().
+      Added two more tests to increase testing coverage.
+      Fixed a small bug regarding Pod, that now covers 100% of the code.
+      Small fixes to documentation.
+  
+  0.34 (2019/03/22):
+      Increased test coverage.
+      Refactored code to make it easier for testing.
+      Disabled performance-small.t for now.
+      Refactored bzip2 tests.
+      Adding META.yml "provides" from Makefile.PL
+      Covered methods that didn't have Pod.
+      Refactored all Pod following best practices.
+      Refactored a single method to be "private".
+      Slightly changed new() to enable unit testing for OS specific configurations.
+
+-------------------------------------------------------------------
+Tue Mar 26 06:02:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+-------------------------------------------------------------------
+Thu Sep 20 05:03:52 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.33 (2018/07/10):
+      Skipping bzip2 testing if the program is not available
+      (https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/11).
+      Undeclared dependency of Dumbbench
+      (https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/12).
+  
+  0.32 (2018/07/10):
+      Typo fixed by Mohammad S Anwar
+      (https://github.com/glasswalk3r/archive-tar-wrapper-perl/pull/10).
+      Refactored performance tests, and now they will run as TODO to test the
+      hypotesis that there is a better algorithm to write() method.
+  
+  0.31 (2018/07/03):
+      Enabled performance testing to acquire from different setups which scheme is
+      faster to remove dots when reading directories.
+      Disabled Solaris OS until issues are fixed.
+      Fixed bug introduced in Makefile.PL due changes of release 0.30 (thanks to
+      David Cantrell <david@cantrell.org.uk>).
+      Updated documentation.
+  
+  0.30 (2018/06):
+      Keeping track of changes per request
+      https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/7.
+      Fixing proper handling of File::Which when checking on Microsoft Windows.
+      Refactored troubleshooting messages on Microsoft Windows.
+      Bug fixes provided by Shoichi Kaji (skaji at cpan.org) in PRs
+      https://github.com/glasswalk3r/archive-tar-wrapper-perl/pull/9
+      and https://github.com/glasswalk3r/archive-tar-wrapper-perl/pull/8
+  
+  0.29 (2018/06/25):
+      Added Microsoft Windows support with the help of Ingram Braun M.A.
+      <me@ingram-braun.net>.
+  
+  0.28 (2018/06/19)
+      Moving Test::Simple dependency to TEST_REQUIRES per issue
+      https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/6.
+      Removed the README (completely replaced by README.md).
+      Fixed licensing declaration per
+      https://github.com/glasswalk3r/archive-tar-wrapper-perl/issues/5.
+      Refactored more debugging messages with proper use of Log::Log4perl.
+      Applied the usage of Test::More is_deeply() whenever possible to improve
+      tests results in case of errors.
+      Small refactorings.
+  
+  0.27 (2018/06/15)
+      Added Test::Simple 1.302073 as minimum version required to be able to use
+      is_deeply().
+      Getting a logger from Log::Log4perl to be able to improve performance by
+      avoiding doing expensive string
+      concatenation unless the log level allows it.
+      Reverted changes on list_reset() to go back reading and printing each line
+      recovered instead of keeping it in memory, instead of following PBP.
+      Refactored t/001Basic.t by following PBP, using three arguments for open()
+      and adding note() to include more information.
+
+-------------------------------------------------------------------
+Tue Jun 19 05:04:43 UTC 2018 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+-------------------------------------------------------------------
+Fri Jun 15 05:04:20 UTC 2018 - coolo@suse.com
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.26 (2018/06/09)
+      Implemented refactoring due warnings from Perl::Critic.
+  
+  0.25 (2018/06/04)
+      Implemented refactoring due warnings from Perl::Critic.
+      Merge pull request #3 from manwar/suggest-code-tidy
+  
+  0.24 (2018/06/02)
+      Added a LICENSE file (GNU GPL v3).
+      Removed MYMETA files (see https://rt.cpan.org/Ticket/Display.html?id=108171).
+      Improved Kwalitee by adding information to Makefile.PL
+      Fixed tests under OpenBSD
+      Added some code to check for OpenBSD tar, which is not quite compatible to the command line options passed by this module.
+      Also made the method is_gnu() more robust, testing the return code and properly handling STDOUT and STDERR when trying "tar --version".
+      Dependencies added are those already available on standard perl (Config and IPC::Open3).
+      Added a README.md for better formatting in Github project page.
+      Small refactorings and code formating with perltidy.
+
+-------------------------------------------------------------------
+Sun Jun  7 08:13:19 UTC 2015 - coolo@suse.com
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.23  (2015/05/28)
+     (ms) Mark Gardner added separate skips in the test suite to deal 
+          with the absense of GNU tar:
+          https://github.com/mschilli/archive-tar-wrapper-perl/pull/7
+
+-------------------------------------------------------------------
+Fri Apr 17 08:34:36 UTC 2015 - coolo@suse.com
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Archive-Tar-Wrapper/Changes
+
+  0.22  (2015/03/08)
+     (ms) Added tar_gnu_write_options option suggested by Csaba Major with
+          tests and docs.
+  
+  0.21  (2014/10/16)
+     (ms) [rt.cpan.org 87536] Setting default umask to get predictable test 
+          results regardless of local umask settings.
+  
+  0.20  (2014/09/29)
+     (ms) Ignore errors on chown/chgrp when files from different owners/groups
+          are copied into a tarball, accept the limitation that they'll be
+          owned by the script user unless we're running as superuser.
+  
+  0.19  (2014/02/16)
+     (ms) RsrchBoy added support for bzip2-compressed tarfiles.
+  
+  0.18  (2013/07/15)
+     (ms) Moved to tmpdir() in t/002Mult.t because some smoke testers don't
+          like writing into t/data.
+  
+  0.17  (2013/07/01)
+     (ms) Sanko Robinson replaced bin_find() by File::Which::which() to allow
+          for better Win32 portability.
+  
+  0.16  (2012/03/19)
+     (ms) [rt.cpan.org 75770] Allow add() with directories, and now preserves
+          directory permissions.
+  
+  0.15  (2011/12/20)
+     (ms) [RT 73046] Randy Stauner submitted a patch to reset the directory if a 
+          write() fails (e.g. because no files have been added).
+          https://github.com/mschilli/archive-tar-wrapper-perl/pull/1
+
+-------------------------------------------------------------------
+Thu Apr 14 07:44:31 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.14
+    * created by cpanspec 1.78.04
+

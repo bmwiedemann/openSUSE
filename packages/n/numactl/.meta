@@ -1,0 +1,6 @@
+<package name="numactl" project="openSUSE:Factory">
+  <title>NUMA Policy Control</title>
+  <description>Control NUMA policy for individual processes. Offer libnuma for
+individual NUMA policy in applications.</description>
+  <devel project="Base:System" package="numactl"/>
+</package>

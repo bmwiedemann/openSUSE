@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2981a5e809acc597e0f5e0266f6123d</srcmd5>
+    <version>7.4.3</version>
+    <time>1526371940</time>
+    <user>dimstar_suse</user>
+    <comment>Python code quality checkecer</comment>
+    <requestid>605971</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60770a6bf52549d0407aba87ef81e80f</srcmd5>
+    <version>7.4.3</version>
+    <time>1545648123</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659592</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd0e5192e264d9ff944cb1667f2345fc</srcmd5>
+    <version>7.6.6</version>
+    <time>1550574068</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 7.6.6:
+  * various async and tests fixes
+  * no actual upstream changelog updated since 7.4 release
+- Actually run tests</comment>
+    <requestid>677093</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c1c74b43da837b9d4aa9895707bb135</srcmd5>
+    <version>7.7.1</version>
+    <time>1557472190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701546</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1ac5bc6bed2306c81ed966cc36fa6f64</srcmd5>
+    <version>7.7.1</version>
+    <time>1569233949</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one test that relies on the number of errors found by
+  linters that differ based on the release we got</comment>
+    <requestid>731468</requestid>
+  </revision>
+</revisionlist>

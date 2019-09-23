@@ -1,0 +1,427 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>6b3e4eeed48a39351b80792e2b524416</srcmd5>
+    <version>1.2.11</version>
+    <time>1168901421</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="37">
+    <srcmd5>9f17bff99d8d5626ae0a87016d16700d</srcmd5>
+    <version>1.2.11</version>
+    <time>1172928829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b25d0f2a3771679e1e5bef081cc69181</srcmd5>
+    <version>1.2.12</version>
+    <time>1185494956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="20">
+    <srcmd5>93be0687093f0f85de5084f040d0e1fe</srcmd5>
+    <version>1.2.12</version>
+    <time>1189702701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="27">
+    <srcmd5>c24ba4f49eed7f86a8e0d651acb1fffc</srcmd5>
+    <version>1.2.12</version>
+    <time>1191423754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3dc90608e86d59cce0f05fd21ec9b755</srcmd5>
+    <version>1.2.13</version>
+    <time>1200613876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="22">
+    <srcmd5>80e5d663e3b5f06f6b142e8ae281fb43</srcmd5>
+    <version>1.2.13</version>
+    <time>1205255145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="28">
+    <srcmd5>555f4b6d7b753db050ce651bb1e85009</srcmd5>
+    <version>1.2.13</version>
+    <time>1206543744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="33">
+    <srcmd5>248145462d07503b82b24b338fcbc760</srcmd5>
+    <version>1.2.13</version>
+    <time>1207834340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="48">
+    <srcmd5>2bff1aedb4daea95efd6f5a07d29221b</srcmd5>
+    <version>1.2.13</version>
+    <time>1212229775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="57">
+    <srcmd5>1f6fde4284840df53423b594b3b75f4b</srcmd5>
+    <version>1.2.13</version>
+    <time>1215559107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="103">
+    <srcmd5>d80a029b87e34bdf064fe0cc1ecb68f0</srcmd5>
+    <version>1.2.13</version>
+    <time>1225637091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="104">
+    <srcmd5>ccafde7589e2487690c31285d186c510</srcmd5>
+    <version>1.2.13</version>
+    <time>1229343157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="105">
+    <srcmd5>a2c7e10736924da8bac3652d425836b8</srcmd5>
+    <version>1.2.13</version>
+    <time>1235164809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="106">
+    <srcmd5>446dffb8cc640a206c38df27814e3ee2</srcmd5>
+    <version>1.2.13</version>
+    <time>1243544447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="107">
+    <srcmd5>79f3b9fc74b80b9a1a562cb6f7ed9d7d</srcmd5>
+    <version>1.2.13</version>
+    <time>1245105670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="108">
+    <srcmd5>eced57bf35a77e7c404d6700661c0b6d</srcmd5>
+    <version>1.2.13</version>
+    <time>1245169529</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="109">
+    <srcmd5>e2e4a19c3070f477f8f0ed4deda86061</srcmd5>
+    <version>1.2.13</version>
+    <time>1253134165</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 20507 from user prusnak
+</comment>
+  </revision>
+  <revision rev="19" vrev="110">
+    <srcmd5>d5e35b3d9e0f80dfe0f4b59500fa4f49</srcmd5>
+    <version>1.2.13</version>
+    <time>1255017739</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 21997 from user prusnak
+</comment>
+  </revision>
+  <revision rev="20" vrev="111">
+    <srcmd5>0807abfc4b857099de9cc0285a172a3b</srcmd5>
+    <version>1.2.13</version>
+    <time>1255446572</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 22323 from user prusnak
+</comment>
+  </revision>
+  <revision rev="21" vrev="113">
+    <srcmd5>0807abfc4b857099de9cc0285a172a3b</srcmd5>
+    <version>1.2.13</version>
+    <time>1255446572</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 22323 from user prusnak
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6727cd8b8394313965922fd7637e7d44</srcmd5>
+    <version>1.2.14</version>
+    <time>1261824195</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 27561 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>fc1fd9a525502c3df304879bd058b446</srcmd5>
+    <version>1.2.14</version>
+    <time>1263483169</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 29326 from user coolo
+</comment>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>ff7d63b8511934ab2a452c34d1e09672</srcmd5>
+    <version>1.2.14</version>
+    <time>1268922810</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>9fcc6571222926c0fcf99b9132010eea</srcmd5>
+    <version>1.2.14</version>
+    <time>1272914766</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 39296 from user prusnak
+</comment>
+    <requestid>39296</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>9fcc6571222926c0fcf99b9132010eea</srcmd5>
+    <version>1.2.14</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>9fcc6571222926c0fcf99b9132010eea</srcmd5>
+    <version>1.2.14</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>54791e0fe3e7bed6c2213008fdb4ae6f</srcmd5>
+    <version>1.2.14</version>
+    <time>1281736915</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL based on submit request 45390 from user RedDwarf
+</comment>
+    <requestid>45390</requestid>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>e3be895170163e4ef2998f2b39a7451d</srcmd5>
+    <version>1.2.14</version>
+    <time>1289532337</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>54791e0fe3e7bed6c2213008fdb4ae6f</srcmd5>
+    <version>1.2.14</version>
+    <time>1289569338</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>9aee169d6020ce8a1eca515f04669add</srcmd5>
+    <version>1.2.14</version>
+    <time>1291587906</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54806 from user prusnak
+</comment>
+    <requestid>54806</requestid>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>782ebcbac48d58c6e5c683388b4bea03</srcmd5>
+    <version>1.2.14</version>
+    <time>1291587916</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54806
+</comment>
+  </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>782ebcbac48d58c6e5c683388b4bea03</srcmd5>
+    <version>1.2.14</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="34" vrev="16">
+    <srcmd5>133fc7b3948a1e8498b6d15313f615c0</srcmd5>
+    <version>1.2.14</version>
+    <time>1316503651</time>
+    <user>lrupp</user>
+    <comment>- remove _service, too fragile
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83179</requestid>
+  </revision>
+  <revision rev="35" vrev="18">
+    <srcmd5>133fc7b3948a1e8498b6d15313f615c0</srcmd5>
+    <version>1.2.14</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="19">
+    <srcmd5>b09b8109d015d792c5318695e4164061</srcmd5>
+    <version>1.2.14</version>
+    <time>1323194568</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="37" vrev="20">
+    <srcmd5>08fbe9fc40efdbd78c2b49c6e646c084</srcmd5>
+    <version>1.2.14</version>
+    <time>1324475953</time>
+    <user>coolo</user>
+    <comment>- own aclocal directory, there is no other reason to buildrequire
+  automake</comment>
+    <requestid>97255</requestid>
+  </revision>
+  <revision rev="38" vrev="21">
+    <srcmd5>7f8737621c6ba115ae9d785ef4c4f97c</srcmd5>
+    <version>1.2.14</version>
+    <time>1325348418</time>
+    <user>coolo</user>
+    <comment>- add autoconf as buildrequire to avoid implicit dependency</comment>
+    <requestid>98361</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6e6b1281afe627ebcac2e3a935d5aa71</srcmd5>
+    <version>1.2.15</version>
+    <time>1336423931</time>
+    <user>coolo</user>
+    <comment>build version 1.2.15
+SDL-1.2.14-wesnoth_clicks.patch is now included in the source code
+SDL-1.2.14-joystick-crash.patch is now included in the source code (forwarded request 115741 from worldcitizen)</comment>
+    <requestid>115926</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>6e6b1281afe627ebcac2e3a935d5aa71</srcmd5>
+    <version>1.2.15</version>
+    <time>1340183156</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>62fc74176408c84165565ef1767c9996</srcmd5>
+    <version>1.2.15</version>
+    <time>1348149019</time>
+    <user>coolo</user>
+    <comment>- 12.3's Mesa doesn't bundle libGLU anymore (forwarded request 134789 from coolo)</comment>
+    <requestid>134892</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>62fc74176408c84165565ef1767c9996</srcmd5>
+    <version>1.2.15</version>
+    <time>1359108626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>d9a2b78d37128ff726ee9b0735c32f86</srcmd5>
+    <version>1.2.15</version>
+    <time>1366183532</time>
+    <user>coolo</user>
+    <comment>- USe OS byteswapping macros that are optimized for all platforms
+ directly by GCC.
+ - DO not use dlopen to load libraries that otherwise can be linked
+  at build-time, this is a _very_ bad idea, starting with the fact
+  that rpm dependencies do not take account of dlopen and will 
+  break profiling/debugging etc..
+- SDL-devel now has strict requires, so it will only pull what
+ it really requires, as it no longer requires metapackages, it is
+ very likely that some packages dont the chain will fail to build
+ those must be fixed in the respective spec files (not here)</comment>
+    <requestid>164090</requestid>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>fa8360c8979799044f4f05dcb2f9d97c</srcmd5>
+    <version>1.2.15</version>
+    <time>1370925555</time>
+    <user>coolo</user>
+    <comment>- sdl-lfs.patch: Ensure library is built with large file 
+ support/ 64bit off_t in 32bit systems (forwarded request 178233 from elvigia)</comment>
+    <requestid>178251</requestid>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>c6b7762a01ee809812eac3f576f81e8a</srcmd5>
+    <version>1.2.15</version>
+    <time>1376903597</time>
+    <user>scarabeus_factory</user>
+    <comment>- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+- Optional signature verification in local builds (forwarded request 186960 from jengelh)</comment>
+    <requestid>186994</requestid>
+  </revision>
+  <revision rev="46" vrev="11">
+    <srcmd5>c6b7762a01ee809812eac3f576f81e8a</srcmd5>
+    <version>1.2.15</version>
+    <time>1379661924</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="12">
+    <srcmd5>3a2288a368439c8d8843737bd65aea7e</srcmd5>
+    <version>1.2.15</version>
+    <time>1387453889</time>
+    <user>coolo</user>
+    <comment>- Add libsdl-1.2.15-resizing.patch: resolve an issue whereby window
+  frame corner resizing emitted no resize events to applications
+  (bnc#855639)</comment>
+    <requestid>211150</requestid>
+  </revision>
+  <revision rev="48" vrev="13">
+    <srcmd5>6dbd1ee8b3a784ffcca9005d50f3274e</srcmd5>
+    <version>1.2.15</version>
+    <time>1401108017</time>
+    <user>coolo</user>
+    <comment>-  Update SDL-lfs.patch, after a recent verification I found
+   that something is not including SDL_config.h (config.h)
+   therefore not using large file offsets. (forwarded request 235317 from elvigia)</comment>
+    <requestid>235318</requestid>
+  </revision>
+  <revision rev="49" vrev="15">
+    <srcmd5>6dbd1ee8b3a784ffcca9005d50f3274e</srcmd5>
+    <version>1.2.15</version>
+    <time>1409300444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="16">
+    <srcmd5>a2da96c332a64c86d2f6e44abf7e0193</srcmd5>
+    <version>1.2.15</version>
+    <time>1413285885</time>
+    <user>coolo</user>
+    <comment>- Drop esound-devel BuildRequires: esd is really no longer the way
+  to go. (forwarded request 255286 from dimstar)</comment>
+    <requestid>255288</requestid>
+  </revision>
+  <revision rev="51" vrev="17">
+    <srcmd5>00299aa52be1d9ecb444a67d911c0179</srcmd5>
+    <version>1.2.15</version>
+    <time>1419896958</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266428</requestid>
+  </revision>
+  <revision rev="52" vrev="18">
+    <srcmd5>021b6158bb2794639f3ba05c3f679520</srcmd5>
+    <version>1.2.15</version>
+    <time>1420754731</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid bs_sched computation failure by expanding %power64
+readd --with-pic. Cleanup spec.</comment>
+    <requestid>280320</requestid>
+  </revision>
+  <revision rev="53" vrev="19">
+    <srcmd5>26e2da7780e62912154b2ad861bd64ce</srcmd5>
+    <version>1.2.15</version>
+    <time>1421334052</time>
+    <user>dimstar_suse</user>
+    <comment>- libspe2 only exists for ppc and ppc64 (forwarded request 280923 from Andreas_Schwab)</comment>
+    <requestid>280925</requestid>
+  </revision>
+  <revision rev="54" vrev="20">
+    <srcmd5>e6170284729dece51f714e29b4e4367b</srcmd5>
+    <version>1.2.15</version>
+    <time>1499162090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507391</requestid>
+  </revision>
+  <revision rev="55" vrev="21">
+    <srcmd5>cb9135b39b37bd24c923166f31930783</srcmd5>
+    <version>1.2.15</version>
+    <time>1552042737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681137</requestid>
+  </revision>
+  <revision rev="56" vrev="22">
+    <srcmd5>03166838e99eb056142e27312381ce13</srcmd5>
+    <version>1.2.15</version>
+    <time>1567679598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726418</requestid>
+  </revision>
+</revisionlist>

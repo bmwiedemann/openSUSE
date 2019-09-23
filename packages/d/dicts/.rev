@@ -1,0 +1,206 @@
+<revisionlist>
+  <revision rev="1" vrev="262">
+    <srcmd5>519860831c3fd94071f81b170e3aa111</srcmd5>
+    <version>1.5</version>
+    <time>1168902606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="326">
+    <srcmd5>36640fffb18d3efafac5731b593cd7ac</srcmd5>
+    <version>1.5</version>
+    <time>1194562715</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="331">
+    <srcmd5>cc79ea7ba49e28f5b1f99e9a06c30421</srcmd5>
+    <version>1.5</version>
+    <time>1196287358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="363">
+    <srcmd5>2ae9d8fb5b42de8f5836190d25de670a</srcmd5>
+    <version>1.5</version>
+    <time>1214590136</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="388">
+    <srcmd5>12c71babdea06fdc4f0ebc32d53148dc</srcmd5>
+    <version>1.5</version>
+    <time>1234484615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="390">
+    <srcmd5>12c71babdea06fdc4f0ebc32d53148dc</srcmd5>
+    <version>1.5</version>
+    <time>1234484615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="391">
+    <srcmd5>5b77e896e3c00e036893a93f17e79f9c</srcmd5>
+    <version>1.5</version>
+    <time>1256034069</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/dicts based on submit request 22594 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="8" vrev="392">
+    <srcmd5>2e7b0cd1ac22421a7ea7c456978abc04</srcmd5>
+    <version>1.5</version>
+    <time>1263307903</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/dicts based on submit request 29005 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="393">
+    <srcmd5>39ea50f67880cb4ed1e0a964fdc83669</srcmd5>
+    <version>1.5</version>
+    <time>1268923335</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="394">
+    <srcmd5>04a73d2311b432dc9bdf3cd802b788ac</srcmd5>
+    <version>1.5</version>
+    <time>1269273312</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/dicts based on submit request 35476 from user WernerFink
+</comment>
+    <requestid>35476</requestid>
+  </revision>
+  <revision rev="11" vrev="396">
+    <srcmd5>04a73d2311b432dc9bdf3cd802b788ac</srcmd5>
+    <version>1.5</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="397">
+    <srcmd5>04a73d2311b432dc9bdf3cd802b788ac</srcmd5>
+    <version>1.5</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="400">
+    <srcmd5>04a73d2311b432dc9bdf3cd802b788ac</srcmd5>
+    <version>1.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="401">
+    <srcmd5>2b1fc13cce36f33bb8564278958009a6</srcmd5>
+    <version>1.5</version>
+    <time>1313999275</time>
+    <user>saschpe</user>
+    <comment>Fixed typos in descriptions of dicts.spec
+Added missing part of ispell-french description (forwarded request 79364 from aturrini)</comment>
+    <requestid>79366</requestid>
+  </revision>
+  <revision rev="15" vrev="402">
+    <srcmd5>b8258da4811c9c73e656a3f49c6820c2</srcmd5>
+    <version>1.5</version>
+    <time>1313999286</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79366
+</comment>
+  </revision>
+  <revision rev="16" vrev="403">
+    <srcmd5>342a41c0b327b7a193d8085f960c0e4a</srcmd5>
+    <version>1.5</version>
+    <time>1315232829</time>
+    <user>lrupp</user>
+    <comment>Fixed more typos in dicts.spec. I have not updated dicts.change since it can be considered a single operation. (forwarded request 80849 from aturrini)</comment>
+    <requestid>80862</requestid>
+  </revision>
+  <revision rev="17" vrev="404">
+    <srcmd5>72dc25a79e7d76f8bae14e474851f7df</srcmd5>
+    <version>1.5</version>
+    <time>1315232843</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80862
+</comment>
+  </revision>
+  <revision rev="18" vrev="406">
+    <srcmd5>72dc25a79e7d76f8bae14e474851f7df</srcmd5>
+    <version>1.5</version>
+    <time>1319181847</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="407">
+    <srcmd5>72432350640a85975c63b838eff9b3ec</srcmd5>
+    <version>1.5</version>
+    <time>1319205868</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88919</requestid>
+  </revision>
+  <revision rev="20" vrev="409">
+    <srcmd5>72432350640a85975c63b838eff9b3ec</srcmd5>
+    <version>1.5</version>
+    <time>1340183279</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="410">
+    <srcmd5>09c47c127884147f312b440647bef62f</srcmd5>
+    <version>1.5</version>
+    <time>1352358239</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-Permissive
+Use a license from the spreadsheet linked at http://license.opensuse.org (forwarded request 140319 from babelworx)</comment>
+    <requestid>140321</requestid>
+  </revision>
+  <revision rev="22" vrev="412">
+    <srcmd5>09c47c127884147f312b440647bef62f</srcmd5>
+    <version>1.5</version>
+    <time>1359108812</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="413">
+    <srcmd5>e4635c9a51553c526c141e5600dc250a</srcmd5>
+    <version>1.5</version>
+    <time>1370581025</time>
+    <user>coolo</user>
+    <comment>Fix license tags to contain valid entries (forwarded request 173095 from babelworx)</comment>
+    <requestid>177910</requestid>
+  </revision>
+  <revision rev="24" vrev="415">
+    <srcmd5>e4635c9a51553c526c141e5600dc250a</srcmd5>
+    <version>1.5</version>
+    <time>1379662225</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="416">
+    <srcmd5>0269bc63d29764a040dd9b2f6ad58900</srcmd5>
+    <version>1.5</version>
+    <time>1392447726</time>
+    <user>coolo</user>
+    <comment>- Update polish dictionary to version 20140102 (bnc#857026)</comment>
+    <requestid>222128</requestid>
+  </revision>
+  <revision rev="26" vrev="418">
+    <srcmd5>0269bc63d29764a040dd9b2f6ad58900</srcmd5>
+    <version>1.5</version>
+    <time>1409300763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="419">
+    <srcmd5>24681d09a72a4797b3eab35fc19beea4</srcmd5>
+    <version>1.5</version>
+    <time>1489345382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477558</requestid>
+  </revision>
+  <revision rev="28" vrev="420">
+    <srcmd5>ccc6a52edc17abe79bace55013cca047</srcmd5>
+    <version>1.5</version>
+    <time>1495637415</time>
+    <user>dimstar_suse</user>
+    <comment>- s/decrementieren/dekrementieren/ for german dictionary (boo#1039305)</comment>
+    <requestid>497319</requestid>
+  </revision>
+</revisionlist>

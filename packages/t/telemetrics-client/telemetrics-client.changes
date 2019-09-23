@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Mon Sep 16 17:37:43 UTC 2019 - kukuk@suse.de
+
+- Rename telmctl-enable-disable.diff to telemctl-enable-disable.diff
+- Update to version 2.2.2+git20190903.a4774bd:
+  * configure.ac: bump version to 2.2.2
+  * crash_probe.c: improve error handling
+  * telemdaemon.c: sanity check for record size
+  * telemdaemon.c: modify handle_client
+  * telempostdaemon.c: fix unitialized variable
+  * telem_recoder_gen.c: remove redundant if statement
+  * telemctl.c: changed handling of opt_in/opt_out
+  * Fix build warning not used variable
+  * Allow record creation on opt-out
+  * journal.c: fix some resource leaks
+  * journal.c: deserialize_journal_entry fixes
+  * telemctl.c: avoid using fscanf
+  * telem_record_gen.c: fix a potential resource leak
+  * telemctl.c: allow deleting of files not owned by telemetry
+  * inifile.c: Check for NULL pointer
+  * oops_parser.c: remove needless check
+  * oops_parser.c: detect kernel panic
+  * iorecord.c: fix a potential race
+  * telemctl.c: fix resource leak
+  * telemetry.c: remove unneeded test
+  * telempostdaemon.c: avoid freeing of uninitialized variables
+  * telemdaemon.c: fix for a potential string overflow
+  * oops_parser.c: remove unneeded check
+  * telemdaemon.c: properly handle mkstemp error
+  * telem_recorde_gen.c: fix potential memory leaks
+  * telem_record_gen.c: return correct error in instanciate_record
+  * telemdaemon.c: don't assume correct machine_id length
+  * util.c: correct return value from "get_header_value"
+  * iorecord.c: fix memory allocation check
+  * Fix double free in deserialize_journal_entry and print_journal
+  * telemctl: binary version
+  * Add "ACPI Error:" pattern for ACPI issues.
+  * configure.ac: bump version to 2.2.1
+  * man pages: remove references to telemd
+  * Fix build for logtype=systemd
+  * crash_probe: Limit the size of backtrace
+  * configure.ac: bump version to 2.2.0
+  * telem_journal: improve usage message
+  * Updated AUTHORS
+
+-------------------------------------------------------------------
+Tue Jun 11 12:07:03 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.1+git20190605.781d938:
+  * Fix compiler warnings [-Wstringop-truncation]
+  * telem_record_gen.c: fix for compiler warning [-Wstringop-overflow=]
+  * check_probes.c: fix for compiler warning [-Wstringop-overflow=]
+
+-------------------------------------------------------------------
+Tue Jun 04 12:30:41 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.1+git20190603.ad4dde2:
+  * journal.c: reduce severity of message when failing to opening old records
+  * Protect security checks from removal
+
+-------------------------------------------------------------------
+Tue May 07 07:56:50 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.1+git20190502.d13073f:
+  * src: standardize log and debug messages
+  * log.h: fix telem_debug macro
+  * Minor houskeeping
+
+-------------------------------------------------------------------
+Tue Apr 23 14:34:24 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.1+git20190422.2639e4d:
+  * daemons: name space separation
+  * telemetry.c: support variants in the system_name header
+  * telempostdaemon: fix retries loop
+  * configuration: rework to allow layered configuration
+  * telem_record_gen: various changes
+  * Improve support of non-default configuration files.
+
+-------------------------------------------------------------------
+Thu Mar 28 12:16:57 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.1+git20190322.4a2cfd9:
+  * spool.c: fix memory leak
+
+-------------------------------------------------------------------
+Mon Mar  4 12:10:52 CET 2019 - kukuk@suse.de
+
+- Replace -devel build requires with pkgconfig build requires
+
+-------------------------------------------------------------------
+Fri Mar 01 08:41:58 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.1+git20190225.46f2e0c:
+  * Release v2.1.1
+  * pythonprobe: fix folders
+
+-------------------------------------------------------------------
+Sun Feb 24 11:00:36 UTC 2019 - kukuk@suse.de
+
+- Enhance telemctl to be able to enable and disable services
+- Move binaries into better located places
+
+-------------------------------------------------------------------
+Thu Feb 21 21:15:53 UTC 2019 - kukuk@suse.de
+
+- Update to version 2.1.0+git20190220.191d91e:
+  * Release v2.1.0
+  * journalprobe: don't process entire journal on restart
+  * heartbeat: modified payload
+
+-------------------------------------------------------------------
+Fri Feb 15 14:52:23 CET 2019 - kukuk@suse.de
+
+- Initial version
+

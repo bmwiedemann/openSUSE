@@ -1,0 +1,196 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Date: Thu, 28 Apr 2016 17:18:44 +0200
+Subject: [PATCH] parted: implement --wipesignatures option
+References: bsc#943623, fate#319893, bsc#980834
+Patch-mainline: no, custom extension
+
+With this option, parted uses libblkid to wipe superblock signatures
+from a disk region where it is about to create a new partition.
+
+[sparschauer: Use own #if USE_BLKID block in linux_dev_ops (bsc#1047031)]
+Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ doc/C/parted.8             |    4 ++++
+ include/parted/device.in.h |    2 ++
+ libparted/arch/linux.c     |   39 +++++++++++++++++++++++++++++++++++++++
+ libparted/device.c         |   17 +++++++++++++++++
+ parted/parted.c            |   16 ++++++++++++++++
+ 5 files changed, 78 insertions(+)
+
+--- a/doc/C/parted.8
++++ b/doc/C/parted.8
+@@ -30,6 +30,10 @@ never prompts for user intervention
+ .B -v, --version
+ displays the version
+ .TP
++.B --wipesignatures
++mkpart wipes the superblock signatures from the disk region where it is
++about to create the partition
++.TP
+ .B -a \fIalignment-type\fP, --align \fIalignment-type\fP
+ Set alignment for newly created partitions, valid alignment types are:
+ .RS
+--- a/include/parted/device.in.h
++++ b/include/parted/device.in.h
+@@ -119,6 +119,7 @@ struct _PedDeviceArchOps {
+         /* These functions are optional */
+         PedAlignment *(*get_minimum_alignment)(const PedDevice *dev);
+         PedAlignment *(*get_optimum_alignment)(const PedDevice *dev);
++        int (*wipe_signatures)(const PedDevice *dev, PedSector start, PedSector length);
+ };
+ 
+ #include <parted/constraint.h>
+@@ -155,6 +156,7 @@ extern PedConstraint *ped_device_get_opt
+ 
+ extern PedAlignment *ped_device_get_minimum_alignment(const PedDevice *dev);
+ extern PedAlignment *ped_device_get_optimum_alignment(const PedDevice *dev);
++extern int ped_device_wipe_signatures(const PedDevice *dev, PedSector start, PedSector length);
+ 
+ /* private stuff ;-) */
+ 
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -3298,6 +3298,44 @@ linux_get_optimum_alignment(const PedDev
+                 blkid_topology_get_alignment_offset(tp) / dev->sector_size,
+                 blkid_topology_get_optimal_io_size(tp) / dev->sector_size);
+ }
++
++static int
++linux_wipe_signatures(const PedDevice *dev, PedSector start, PedSector length)
++{
++        PED_ASSERT (dev != NULL);
++        LinuxSpecific* arch_specific = LINUX_SPECIFIC (dev);
++
++        blkid_loff_t wipe_offset = start * dev->sector_size;
++        blkid_loff_t wipe_size = length * dev->sector_size;
++
++        _ensure_read_write (dev);
++
++        blkid_probe pr;
++        pr = blkid_new_probe();
++        if (!pr)
++                goto error;
++
++        if (blkid_probe_set_device(pr, arch_specific->fd, wipe_offset, wipe_size) == -1)
++                goto error_free_probe;
++        if (blkid_probe_enable_superblocks(pr, 1) == -1)
++                goto error_free_probe;
++        if (blkid_probe_set_superblocks_flags(pr, BLKID_SUBLKS_MAGIC) == -1)
++                goto error_free_probe;
++
++        while (blkid_do_probe(pr) == 0) {
++                if (blkid_do_wipe(pr, 0) == -1)
++                        goto error_free_probe;
++        }
++
++        blkid_free_probe(pr);
++        return 1;
++
++error_free_probe:
++        blkid_free_probe(pr);
++
++error:
++        return 0;
++}
+ #endif
+ 
+ static PedDeviceArchOps linux_dev_ops = {
+@@ -3318,6 +3356,9 @@ static PedDeviceArchOps linux_dev_ops =
+         get_minimum_alignment:	linux_get_minimum_alignment,
+         get_optimum_alignment:	linux_get_optimum_alignment,
+ #endif
++#if USE_BLKID
++	wipe_signatures: linux_wipe_signatures,
++#endif
+ };
+ 
+ PedDiskArchOps linux_disk_ops =  {
+--- a/libparted/device.c
++++ b/libparted/device.c
+@@ -565,4 +565,21 @@ ped_device_get_optimum_alignment(const P
+         return align;
+ }
+ 
++
++/**
++ * Wipe superblock signatures from the specified region on the device.
++ *
++ * \return zero on failure
++ */
++int
++ped_device_wipe_signatures(const PedDevice *dev, PedSector start, PedSector length)
++{
++	int ret = 0;
++
++        if (ped_architecture->dev_ops->wipe_signatures)
++                ret = ped_architecture->dev_ops->wipe_signatures(dev, start, length);
++
++	return ret;
++}
++
+ /** @} */
+--- a/parted/parted.c
++++ b/parted/parted.c
+@@ -76,6 +76,7 @@ static int MEGABYTE_SECTORS (PedDevice*
+ enum
+ {
+   PRETEND_INPUT_TTY = CHAR_MAX + 1,
++  WIPESIGNATURES = CHAR_MAX + 2,
+ };
+ 
+ enum
+@@ -117,6 +118,7 @@ static struct option const options[] = {
+         {"script",      0, NULL, 's'},
+         {"version",     0, NULL, 'v'},
+         {"align",       required_argument, NULL, 'a'},
++        {"wipesignatures", 0, NULL, WIPESIGNATURES},
+         {"-pretend-input-tty", 0, NULL, PRETEND_INPUT_TTY},
+         {NULL,          0, NULL, 0}
+ };
+@@ -128,11 +130,13 @@ static const char *const options_help []
+         {"script",      N_("never prompts for user intervention")},
+         {"version",     N_("displays the version")},
+         {"align=[none|cyl|min|opt]", N_("alignment for new partitions")},
++        {"wipesignatures", N_("wipe superblock signatures when creating partition")},
+         {NULL,          NULL}
+ };
+ 
+ int     opt_script_mode = 0;
+ int     pretend_input_tty = 0;
++int     wipesignatures = 0;
+ int     opt_machine_mode = 0;
+ int     disk_is_modified = 0;
+ int     is_toggle_mode = 0;
+@@ -650,6 +654,7 @@ _adjust_end_if_iec (PedSector* start, Pe
+         }
+ }
+ 
++
+ static int
+ do_mkpart (PedDevice** dev, PedDisk** diskp)
+ {
+@@ -840,6 +845,14 @@ do_mkpart (PedDevice** dev, PedDisk** di
+         if (ped_partition_is_flag_available (part, PED_PARTITION_LBA))
+                 ped_partition_set_flag (part, PED_PARTITION_LBA, 1);
+ 
++        if (wipesignatures) {
++                if (!ped_device_wipe_signatures(*dev, part->geom.start, part->geom.length))
++                        ped_exception_throw (
++                                        PED_EXCEPTION_WARNING,
++                                        PED_EXCEPTION_OK,
++                                        _("Wiping the superblock signatures has failed."));
++        }
++
+         if (!ped_disk_commit (disk))
+                 goto error;
+ 
+@@ -2196,6 +2209,9 @@ while (1)
+                 case PRETEND_INPUT_TTY:
+                   pretend_input_tty = 1;
+                   break;
++                case WIPESIGNATURES:
++                  wipesignatures = 1;
++                  break;
+                 default:
+                   wrong = 1;
+                   break;

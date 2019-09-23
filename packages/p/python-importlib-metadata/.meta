@@ -1,0 +1,5 @@
+<package name="python-importlib-metadata" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-importlib-metadata"/>
+</package>

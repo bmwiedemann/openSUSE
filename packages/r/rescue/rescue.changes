@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Jun 23 17:51:10 UTC 2015 - nemysis@gmx.ch
+
+- license update: GPL-3.0+ No indication that this is GPL-3.0 (only)
+
+-------------------------------------------------------------------
+Tue Jun 23 17:26:17 UTC 2015 - nemysis@gmx.ch
+
+- Add BuildRequires for hicolor-icon-theme
+- Add BuildRoot
+
+-------------------------------------------------------------------
+Mon Nov 24 18:37:42 UTC 2014 - nemysis@gmx.ch
+
+- Change Source0 Web URL
+
+-------------------------------------------------------------------
+Mon Nov 24 18:09:21 UTC 2014 - nemysis@gmx.ch
+
+- Install icon in %{_datadir}/icons/hicolor/-x-/apps/ instead of
+  %{_datadir}/pixmaps/
+
+-------------------------------------------------------------------
+Tue Oct 21 11:24:18 UTC 2014 - nemysis@gmx.ch
+
+- Remove rescue-rpmlintrc
+- Change rescue.desktop
+
+-------------------------------------------------------------------
+Sun Oct 19 19:18:20 UTC 2014 - nemysis@gmx.ch
+
+- Add rescue.desktop and  rescue-rpmlintrc,
+  forgotten in previous commit
+
+-------------------------------------------------------------------
+Sun Oct 19 19:12:18 UTC 2014 - nemysis@gmx.ch
+
+- Use %{_libexecdir} instead of {_datadir}
+- Change Group
+- Use rescue.desktop instead of Desktop Entry in spec
+- Add rescue-rpmlintrc
+- Use check for openSUSE %if 0%{?suse_version}
+- Remove BuildRequires for desktop-file-utils
+- Remove not needed mkdir -p
+- Change %fdupes
+- Change rescue.sh
+
+-------------------------------------------------------------------
+Thu Sep 18 15:30:50 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

@@ -1,0 +1,15 @@
+<package name="f3" project="openSUSE:Factory">
+  <title>F3 (Fight Flash Fraud / Fight Fake Flash)</title>
+  <description>This package contains tools for identifying fake flash drives (primarily USB
+sticks and memory cards).
+
+A fake flash drive fraudulently inflates its apparent storage capacity (far)
+beyond the physical capacity of its flash memory. Not surprisingly, using such
+a flash drive will, sooner or later, result in data loss and/or corruption.
+
+The main tools in this package are an open-source implementation of the H2testw
+algorithm. Some experimental tools are also provided, among them one for using
+the actual storage capacity of fake drives as safely as possible.
+</description>
+  <devel project="hardware" package="f3"/>
+</package>

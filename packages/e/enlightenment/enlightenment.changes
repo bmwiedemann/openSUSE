@@ -1,0 +1,1731 @@
+-------------------------------------------------------------------
+Sun Sep 30 19:47:10 UTC 2018 - sean@suspend.net
+
+- 0.22.4
+    * T5076 Incorrect desktop files
+    * T5203 alt+esc sometimes crash
+    * T6787 Exec-keys in some .desktop files are failing to be recognized by Enlightenment
+    * T7030 efl internals pass null objects to functions which should not be passed null
+-------------------------------------------------------------------
+Tue Mar 23 05:48:53 UTC 2018 - sflees@suse.de
+
+- 0.22.3
+    * T6779 Fix screenlock regression
+    * T6784 enlightenment_open still uses deprecated defaults.list
+    * remove pulse - wayland hack thats no longer needed 
+
+-------------------------------------------------------------------
+Thu Mar 15 05:48:53 UTC 2018 - sflees@suse.de
+
+- 0.22.2
+    * T5910    systray related crashes.
+    * T6202    luncher: popup focus issue.
+    * T6211    Login with wrong password possible! "Authentication via PAM had errors setting up the authentication session. The error code was 11"
+    * T6259    BSD CPUClock bryce gadget - arrow moves in the opposite direction
+    * T6328    luncher preview issues
+    * T6414    e moves and resizes maximized windows on restart
+    * T6454    Copy Paste freezes E.
+    * T6617    Better check for evas gl support
+    * T6619    Black flicker between E's splash screen and desktop
+    * T6623    moving gadgets around multiple times crashes E
+    * T6633    make it simpler to report bugs
+    * T6644    wayland / xwayland issues
+    * T6721    Make Bryce Less like a pogostick
+    * T6722    lockscreen gadgets are not shown on "startup lockscreen" and "suspend lockscreen" 
+    * T6723    window borders doesn't accept edje icons 
+    * Other miscolanious fixes
+- Don't ship wayland desktop file in Leap 15 (but build support)
+- Fix desktop files not to symlink to each other
+- Add feature-qt-apps-gtk2-theme.patch to set a style for Qt apps
+  they look rather broken otherwise
+
+-------------------------------------------------------------------
+Thu Nov 30 05:48:53 UTC 2017 - sflees@suse.de
+
+- Remove sysactions.conf - not needed when systemd is available
+
+-------------------------------------------------------------------
+Thu Nov  9 06:18:00 UTC 2017 - sflees@suse.de
+
+- 0.22.1
+  * Bugs fixed
+    * T5883 	screen blank: mouse click broken after waking from screem blank.
+    * T6258 	E22 freezes on bryce manipulations
+    * T6288 	Luncher app popup doesn't update from different VD
+    * T6316 	enlightenment-0.22.0/src/bin/e_intl.c: unbounded file read ?
+    * T6322 	No input on Logout problems window.
+  * Other noteable changes
+    * music-control - install properly with meson build with icon
+    * Adding danish strings to desktop files
+
+-------------------------------------------------------------------
+Fri Nov  3 04:12:23 UTC 2017 - sflees@suse.de
+
+- 0.22.0 Release
+  * Greatly improved Wayland support
+  * Improvements to new gadget infrastructure
+  * Added a sudo/ssh askpass utility gui
+  * tiling policy improvements
+  * integrated per-window volume controls
+
+-------------------------------------------------------------------
+Thu Sep 14 00:15:17 UTC 2017 - sflees@suse.de
+
+- 0.22.0 alpha test package
+
+-------------------------------------------------------------------
+Wed Aug 23 00:49:51 UTC 2017 - sflees@suse.de
+
+- Update to 0.21.9 fixing a number of issues including
+    * T4648
+    * T4887
+    * T5258
+    * T5370
+    * T5521
+    * T5599
+    * T5601
+    * T5604
+    * T5606
+    * T5654
+    * T5664
+    * T5666
+    * T5678
+    * T5693
+    * T5700
+    * T5714
+    * T5738
+    * T5817 
+
+-------------------------------------------------------------------
+Wed Jun 28 07:59:52 UTC 2017 - sflees@suse.de
+
+- fix feature-wizard-auto-lang.patch to work again
+- fix update-alternatives usage.
+- Remove systemd handling not needed for user services
+
+-------------------------------------------------------------------
+Wed May 24 10:27:39 UTC 2017 - sflees@suse.de
+
+- Update to 0.21.8 Fixing a number of issues including the following
+  * T3144
+  * T5262
+  * T5288
+  * T5340
+  * T5348
+  * T5418
+  * T5444
+  * T5464
+
+-------------------------------------------------------------------
+Wed May 17 14:19:33 UTC 2017 - fvogt@suse.com
+
+- Use update-alternatives to create default.desktop xsession (boo#1030873)
+
+-------------------------------------------------------------------
+Thu Mar  9 00:29:12 UTC 2017 - sflees@suse.de
+
+- Update to 0.21.7
+  * Fixes wayland build issues.
+  * eina_init BEFORE switching uid.
+  * tiling: dont use floating state when toggling.
+  * multiple wayland fixes.
+  * bryce fixes.
+  * warning fixes.
+-------------------------------------------------------------------
+Wed Feb 15 04:16:28 UTC 2017 - sflees@suse.de
+
+- Update to 0.21.6
+  * Multiple wayland fixes
+  * tasks - calculate min width properly given a known height of a gadget
+  * e dialog - fix unreszable dialogs to not be 1x1
+  * Make gadget editor popup scrollable
+  * Fix multiple code warnings
+  * https://phab.enlightenment.org/T2452
+  * https://phab.enlightenment.org/T2579
+  * https://phab.enlightenment.org/T5077
+
+-------------------------------------------------------------------
+Thu Dec  8 01:13:18 UTC 2016 - sflees@suse.de
+
+- Bump to 0.21.5 changes to come
+  * Multiple wayland related fixes
+  * Revert all sizing commits to ibar/ibox for the past year
+  * Maintain “empty” object's size hints when ibar/ibox resizes
+  * https://phab.enlightenment.org/T4509
+  * https://phab.enlightenment.org/T4524
+  * https://phab.enlightenment.org/T4647
+  * https://phab.enlightenment.org/T4733
+  * https://phab.enlightenment.org/T4830
+
+
+-------------------------------------------------------------------
+Wed Nov 30 21:56:25 UTC 2016 - sflees@suse.de
+
+- Bump to 0.21.4
+  * Most changes are related to wayland and bryce and won't affect
+    most users, thre are several other minor fixes as well.
+  * boo#983978 - Scaling set to 1.2 at start of the wizard 
+  * Updated German and other translations
+  * https://phab.enlightenment.org/T2879
+  * https://phab.enlightenment.org/T4358
+  * https://phab.enlightenment.org/T4479
+  * https://phab.enlightenment.org/T4512
+  * https://phab.enlightenment.org/T4522
+  * https://phab.enlightenment.org/T4687
+  * https://phab.enlightenment.org/T4716
+  * https://phab.enlightenment.org/T4732
+  * https://phab.enlightenment.org/T4747
+  * https://phab.enlightenment.org/T4784
+  * https://phab.enlightenment.org/T4797
+  * https://phab.enlightenment.org/T4798
+  * https://phab.enlightenment.org/T4809
+  * https://phab.enlightenment.org/T4810
+  * https://phab.enlightenment.org/T4815
+  * https://phab.enlightenment.org/T4819
+  * https://phab.enlightenment.org/T4826i
+- edit feature-wizard-auto-lang.patch added workaround for boo#1008982
+  LC_CTYPE is not set
+- add feature-wizard-keylayout-from-sys.patch boo#1003939 this is another
+  enhancement but due to a further upstream bug the keyboard layout
+  screen still needs to be displayed
+- add feature-suse-disable-offline-menu.patch - as openSUSE uses 
+  network manager not connman offline mode doesn't do whats expected
+  so the menu item has been removed
+
+-------------------------------------------------------------------
+Thu Oct 13 12:10:40 UTC 2016 - simonf.lees@suse.com
+
+- Add feature-wizard-auto-lang.patch boo#1003939
+
+-------------------------------------------------------------------
+Fri Oct  7 06:34:52 UTC 2016 - sflees@suse.de
+
+- Bump to 0.21.3
+
+  * https://phab.enlightenment.org/T4007
+  * https://phab.enlightenment.org/T4430
+  * https://phab.enlightenment.org/T4439
+  * https://phab.enlightenment.org/T4499
+  * https://phab.enlightenment.org/T4544
+  * https://phab.enlightenment.org/T4632
+  * https://phab.enlightenment.org/T4655
+
+Carsten Haitzler (4):
+      update e po files
+      e exec - fix exec of enlightenment_open to use actual e prefix
+      explicitly use eina list types passing into EINA_LIST_FREE()
+
+Cedric BAIL (1):
+      fix text preview to use eina_strbuf_append_length that doesn't call strlen and crash.
+
+Christopher Michael (3):
+      Remove unused variables from ibar_resize_handle function
+      add missing EINA_UNUSED for function parameter
+      Update wayland readme file
+
+Derek Foreman (6):
+      Don't send keyboard leave events to unfocused clients
+      Fix error print when wl_wl fails to start
+      Fix xwayland binary location det0.21ection
+      Don't kill self during shutdown
+      NULL out xwayland fd handlers after deleting them
+
+Flavio Ceolin (1):
+      emix: when in alsa mode only operate on master
+
+Marcel Hollerbach (7):
+      ibar: try to get a better min size
+      tiling: place popup on the current active zone
+      tiling: be more accurate on the description
+      mixer: introduce Barrier checks
+      mixer: introduce emix_max_volume_get
+      ibar: multiply size with scale
+      mixer: lock up the slider for the case a drag is in progress
+
+Massimo Maiurana (1):
+      Updating slovenian translation
+
+Mike Blumenkrantz (34):
+      use stringshare_add() for evry files plugin mime types
+      another case of stringshare misuse re:efreet_mime_type_get()
+      ignore xwl clients when flagging wl surfaces as internal
+      add event handler for evry event type, not #define value
+      do not attempt to populate gadgets during type_add if site has not yet been populated
+      add docs for E_Comp struct members
+      move 'unmaximize' smart callback to after geom calc in client_unmaximize
+      use comp canvas win by default for any drop handler with an E_Object
+      handle e_comp deref during e_dnd shutdown to avoid crash
+      always use compositor object stacking when performing internal drags
+      clamp bryces to a lower canvas layer
+      use same layer in bryce editor for "above window" setting
+      set gadget added flag any time a gadget is created or wizarded
+      add separate codepath for handling layout of moving gadgets
+      force smart calc on gadget sites at key points during move operations
+      attempt to retain gadget size when executing move operations
+      adjust gadget drop coords for pointer offset
+      check visibility of gadget site 'events' member to determine drop availability
+      add backspace/delete for clearing all lockscreen gadgets
+      always use largest available size for free-oriented gadgets
+      add gadget doc note for gadget_destroyed callback re:object lifetimes
+      force bgpreview widget to resize after a wallpaper update
+      always delete gadget's display object and ensure gadget object is null
+      do not update bryce layer when restacking to a higher layer than CLIENT_ABOVE
+      remove extraneous recalc trigger when deleting a gadget
+      do not consume key events in comp autoclose key callback if desklock is active
+      add e_util_open(), unify all callers of enlightenment_open
+      remove (wrong) setting of layer for time's clock gadget popup
+      do not show wireless gadget popups if desklock is active
+      force shape queue when gadget util ctxpopups change visibility
+      print object type in shape debug if name does not exist
+      clamp gadget util ctxpopups to E_LAYER_POPUP at the lowest
+      handle "unmaximize" smart callback differently depending on fullscreen state
+      force zone useful geometry recalc on desk flip if prev/next desk has obstacles
+
+Romain Naour (2):
+      configure.ac: wayland only build fix
+      e_xkb: add guard around skip_new_keyboard
+
+Simon Lees (3):
+      Also set QT_STYLE_OVERRIDE
+
+YeongJong Lee (1):
+      fix korean translation mismatch
+
+-------------------------------------------------------------------
+Fri Aug 26 12:31:37 UTC 2016 - simonf.lees@suse.com
+
+- Fix fedora builds a bit.
+
+-------------------------------------------------------------------
+Fri Aug 19 13:31:31 UTC 2016 - sflees@suse.de
+
+- Release test build
+
+-------------------------------------------------------------------
+Fri Aug 19 04:16:19 UTC 2016 - sflees@suse.de
+
+- Bump to 0.21.2
+Carsten Haitzler (6):
+      e - fix dnd problems coming from getting top object in comp canvas
+      e ibar/ibox port to elm box - fix assumption on resize
+      e - fix major memory bloat when in gl mode - dont create shm segments
+      e temp module - kill tempget process not terminate to ensure death
+      e ibar - fix devilhorns fix to use the right widght and hight for separator
+      e comp - set alpha after setting native surface to avoid random crash
+
+Chidambar Zinnoury (3):
+      e: Don’t show two consecutive menu separators if there is no need in client menu.
+      e fm: Add a separator only if there is something before.
+      e fm: Don’t check every other line whether the location is writable when creating menu.
+
+Christopher Michael (7):
+      Revert "e - fix major memory bloat when in gl mode - dont create shm segments"
+      remove unused variables from _ibar_resize_handle
+      use proper variables to set size_hint_max on ibar
+      e ibar - fix "old man" fat finger typo ;)
+      remove need to create different dialog windows under wayland
+      wl_fb: Check that e_comp_wl_init does not fail.
+      add key_up and key_down methods to sreen interface
+
+Derek Foreman (2):
+      Fix wayland clients not deleting when they're hidden
+      Fix wayland extension global creation
+
+Jean-Philippe ANDRÉ (1):
+      bg: Fix bg with single jpeg images (no edj)
+
+JengHyun Kang (1):
+      e_comp_wl: break from meaningless loop
+
+Marcel Hollerbach (4):
+      e_comp_wl: destroy e_drag when source disappears
+      e_alert: define EFL_BETA_API_SUPPORT before any include
+      e_dnd: move the ungrab to the object free
+      xwayland: show the dialog after ecore_wl2 is in sync
+
+Massimo Maiurana (2):
+      Updating italian and spanish translations
+      Updating italian translation
+
+Mike Blumenkrantz (6):
+      only check x11 configurerequest geometry changes when applicable
+      improve quickaccess relaunch help dialog text
+      move new version of e_comp_top_window_at_xy_get() to dnd, restore old version
+      clear wl subsurface data during delete only if subsurface is not also deleted
+      add xwayland compat for efl 1.19+
+      bump efl wayland req to 1.18 now that it's out
+
+Romain Naour (1):
+      E: include uuid.h only when Wayland support is enabled.
+
+Stefan Schmidt (1):
+      mailmap: sync updated file from efl repo
+
+
+-------------------------------------------------------------------
+Wed Jul 20 13:11:23 UTC 2016 - sflees@suse.de
+
+- 0.21.1 Release
+== Tickets Addressed ==
+
+  * https://phab.enlightenment.org/T4112
+  * https://phab.enlightenment.org/T4119
+  
+== Changes ==
+Al Poole (1):
+      fwin: prevent segv when the vaarg abi messup with unused parameter.
+
+Carsten Haitzler (1):
+      e ibar/ibox fix starrting/started signal emittion
+
+Cedric BAIL (1):
+      filepreview: avoid race condition when destroying txt file preview with slow hard drive.
+
+Chidambar Zinnoury (1):
+      e desks config: Bring some flip settings back.
+
+Chris Michael (1):
+      add missing EINA_UNUSED for unused function params
+
+Derek Foreman (3):
+      Properly send kbd focus to xdg_shell popups
+      Make sure the same keyboard resource doesn't end up on the focus list twice
+      Fix xdg_shell focus logic
+
+Marcel Hollerbach (1):
+      e_comp_data: NULL out source once it is freed
+
+Mariusz Bialonczyk (1):
+      modules/temperature: cosmetics: typo fix (celcius -> celsius)
+
+Mike Blumenkrantz (6):
+      handle e_comp_x init failure more effectively and perform cleanups
+      set x11 randr iface for wl_x11 based on wm presence, not composited state
+      match wl_wl output sizing in wl_x11 when running in an existing wm session
+      set unmax flag for xdg shell unmaximize
+      set/unset smart parent as e_widget when adding sub-objects
+      adjust xdg-shell window menu coords by client's coords
+
+-------------------------------------------------------------------
+Mon Jul  4 02:44:02 UTC 2016 - sflees@suse.de
+
+- Spec Cleaner run
+
+-------------------------------------------------------------------
+Mon Jul  4 02:07:39 UTC 2016 - sflees@suse.de
+
+- Enlightnement 0.21.0 Release
+  Highlights:
+  * Greatly improved Wayland support
+  * New gadget infrastructure
+  * Wizard improvements
+  * Video backgrounds
+  
+- enhance-upstream-share-icons.patch no longer needed.
+
+-------------------------------------------------------------------
+Wed Jun  8 04:37:30 UTC 2016 - sflees@suse.de
+- This entry was from a merge.
+- 0.20.9 Release
+== Tickets Addressed ==
+
+  * https://phab.enlightenment.org/T3277
+  * https://phab.enlightenment.org/T3555
+  * https://phab.enlightenment.org/T3654
+  * https://phab.enlightenment.org/T3681
+  * https://phab.enlightenment.org/T3683
+  * https://phab.enlightenment.org/T3701
+  * https://phab.enlightenment.org/T3702
+  * https://phab.enlightenment.org/T3716
+
+== Changes ==
+Carsten Haitzler (2):
+      e start - no it doesny need dbus-launch
+      e - suspend.hibernat intelligently - dont account for ac power
+
+Chris Michael (2):
+      stop filling logs with buffer transform/scale spam
+      change 'if' clause to make gcc-6 happy
+
+Dave Andreoli (1):
+      enlightenment_open: correctly return the exist status code of the executed command
+
+Hannes Janetzek (1):
+      just a small patch to make sure evry_hide does not get called synchronously from an Evry_Action
+
+Massimo Maiurana (1):
+      Updating italian translation
+
+Mike Blumenkrantz (13):
+      remove pulse sinks/sources from list before running cbs which access the list
+      fix e_place_zone_region_smart_cleanup()
+      add client util function for detecting popups, block popups in ibar/tasks
+      update README.wayland to include xwayland crash bug
+      update client remember on opacity change
+      use current zone for shelf config dialog
+      set x11 maximized window hint correctly on resize end
+      delete x11 mouse-in job when hiding the job's client
+      use current zone when activating a client's menu with the mouse
+      handle shaded state when receiving x11 configure requests
+      only block mouse-out callback for wl action clients if the mouse is grabbed
+      unset comp_grabbed flag before action client compositor ungrab
+      force mouse-in again during comp ungrab if client previously had mouse-in
+
+-------------------------------------------------------------------
+Mon May 16 05:52:59 UTC 2016 - sflees@suse.de
+- 0.21.0 RC1 Release
+  * Remove - fix-upstream-startup-apps.patch included upstream
+
+CHANGES SINCE BETA
+  * Wayland DMA buffer support
+  * Wayland session recovery
+  * New DRM subsystem
+  * Various crash fixes/additions
+
+TICKETS ADDRESSED
+https://phab.enlightenment.org/T2931
+https://phab.enlightenment.org/T2934
+https://phab.enlightenment.org/T3072
+https://phab.enlightenment.org/T3277
+https://phab.enlightenment.org/T3347
+https://phab.enlightenment.org/T3408
+https://phab.enlightenment.org/T3433
+https://phab.enlightenment.org/T3555
+https://phab.enlightenment.org/T3585
+https://phab.enlightenment.org/T3596
+https://phab.enlightenment.org/T3599
+https://phab.enlightenment.org/T3603
+https://phab.enlightenment.org/T3636
+https://phab.enlightenment.org/T3654
+https://phab.enlightenment.org/T3681
+https://phab.enlightenment.org/T3683
+https://phab.enlightenment.org/T3701
+https://phab.enlightenment.org/T3702
+https://phab.enlightenment.org/T3716
+
+-------------------------------------------------------------------
+Thu May 12 06:21:12 UTC 2016 - sflees@suse.de
+
+- Add fix-upstream-startup-apps.patch to fix startup apps
+
+-------------------------------------------------------------------
+Thu May  5 00:15:22 UTC 2016 - sflees@suse.de
+
+- Drop wayland support, needs efl from git.
+
+-------------------------------------------------------------------
+Fri Apr 29 05:21:39 UTC 2016 - sflees@suse.de
+
+- 0.21.0 Beta Release
+Highlights:
+
+Greatly improved Wayland support
+New gadget infrastructure
+Wizard improvements
+Video backgrounds
+Changes since alpha:
+
+Improvements to window placement when using multiple monitors
+Upgrade to v3 of Wayland DnD protocol
+Various crash fixes/additions
+Tickets addressed:
+
+https://phab.enlightenment.org/T1759
+https://phab.enlightenment.org/T2735
+https://phab.enlightenment.org/T3157
+https://phab.enlightenment.org/T3432
+https://phab.enlightenment.org/T3435
+https://phab.enlightenment.org/T3444
+https://phab.enlightenment.org/T3455
+https://phab.enlightenment.org/T3461
+https://phab.enlightenment.org/T3475
+https://phab.enlightenment.org/T3507
+
+-------------------------------------------------------------------
+Wed Apr 13 02:46:29 UTC 2016 - sflees@suse.de
+
+- Update to 0.21.0 alpha1
+
+-------------------------------------------------------------------
+Fri Apr  8 05:35:30 UTC 2016 - sflees@suse.de
+
+- Recommend Pulse X11 Intergration for audio out of the box 
+  boo#972912
+- Make services localonly 
+
+-------------------------------------------------------------------
+Fri Apr  8 03:02:37 UTC 2016 - sflees@suse.de
+
+- Fix crashes
+  * fix-upstream-dont-add-deleted-clients-to-tasks.patch
+  * fix-upstream-remove-deleted-clients-on-repop-tasks.patch
+- Fix systray issues particuarlly with KDE5 apps
+  * fix-upstream-systray-handle-kde5-apps.patch
+  * fix-upstream-systray-use-canvas-coords.patch
+- Reduce Memory usage by sharing icons.
+  * enhance-upstream-share-icons.patch
+
+-------------------------------------------------------------------
+Wed Mar  9 19:46:44 UTC 2016 - sflees@suse.de
+
+- Enlightenment 0.20.6
+  Tickets Addressed:
+     T3152
+     T3208
+     T3210
+  Multiple wayland issues fixed
+  Other issues listed below
+    e – efm: fix op registry listener add and dont use eina_error
+    e xkbswitch: don’t free layouts that are just pointed to in instances
+    don’t have to hook the ecore_evas resize callback here as that should be handled by elm now
+    Move pixmap free to client free from client destroy
+    Render deleted objects as long as they still have a pixmap
+    Track whether objects are on the post_updates list or not
+    Track whether a render is in progress or not
+    clamp minimum shelf size to 20px in shelf config
+    do not perform special case position adjustment for re_manage clients
+    do not clamp comp object input regions to 0,0
+    improve enforcement of shelf autohide-related window adjustment
+    reshuffle x11 comp init to cleanup on failure cases
+    pre-remove pixmap from x11 clients during del hook
+    enable comp object image data refresh if a dirty call is made with no damages
+    remove some unused variables
+    make bgpreview create vdesk config dialog on mouse up instead of mouse down
+    do not decrement e_comp->new_clients for non-new clients during _e_client_eval
+    update winlist ui when using directional window selection
+    force changed when adding or removing keyboard layouts in config
+    disable emotion_shutdown during shutdown procedure
+    use strbufs instead of strcat in fwin navbars
+    do not set XCURSOR_PATH variable if re-setting existing value
+    remove security hole in e_start_main
+    remove DISPLAY usage from E_IPC_SOCKET value
+    remove multihead env var setting in e_exec
+    strcpy -> strncpy in evry files plugin
+    use strbuf instead of strcat in keybinding string synthesis
+    use strbuf instead of strcat in edgebinding string synthesis
+    use dblequal for double comparisons in edgebindings config
+    replace static buffer usage with binbuf in e_fm_ipc
+    prevent potential null deref during pager (plain) window drag
+    remove unused value in config profile saving
+    remove useless client_add handler in e_ipc
+    use uint instead of int for eina_list_count() return in cpufreq (trivial)
+    simplify static grab case statements
+    remove ipc command allowing arbitrary command execution by the compositor
+    simplify ipc socket creation
+    remove impossible null check in color dialog
+    do not add render updates during damage of deleted clients
+    don’t directly use image data when creating a comp object mirror
+    Revert “send mouse out+in on desk flip end”
+    reject x11 client mouse-in events on comp object based on frame geometry
+    reverse ordering for x11 client mouse in NotifyVirtual and NotifyInferior details
+    only use x11 mouse out event if client has received mouse in previously
+    apply x11 mouse in event for clients using a job
+    apply x11 focus/unfocus using jobs
+    block re-unsetting of native surface for comp objects
+    always run client res changes in e_comp_canvas_update()
+ 
+
+-------------------------------------------------------------------
+Sat Feb  6 09:29:53 UTC 2016 - simon@simotek.net
+
+- Enlightenment 0.20.5
+Hotfix for critical issue in 0.20.4 
+
+-------------------------------------------------------------------
+Wed Feb  3 04:17:55 UTC 2016 - simon@simotek.net
+
+- Enlightenment 0.20.4
+Make configure check for Ecore_Wl2 library
+include header for Ecore_Wl2
+remove unused event loop and add external Ecore_Wl2_Display variable
+port wayland compositor to use Ecore_Wl2
+port e_scale to use Ecore_Wl2
+Port shot module to use ecore_wl2 library
+Fix formatting of wl_weekeyboard module
+Don't leak eina_iterator in shot module
+Port wl_weekeyboard to use Ecore_Wl2 library
+Port wl_fb module to use Ecore_Wl2 Library
+Fix formatting
+Fix formatting
+Try to init (and error check the init) of ecore_wl2 library before we     create a compositor
+Fix using global ewd variable by making it part of e_comp_wl
+Fix type of size fields for E_Shell_Data
+Fix issue of nested compositors not working with Ecore_Wl2 library
+Update wl_weekeyboard for ecore_evas_wayland_window_get2 function rename
+Fix issue of using the wrong id when finding pixmap client
+check siginfo si_code to verify that SIGUSR2 comes from user
+e_comp_wl: only ignore ignored clients
+call ecore_wl2_shutdown() in wl compositor delete callback
+create wl client connection during compositor init, use in shot module
+define EFL_BETA_API_SUPPORT explicitly in e.h if wayland support is enabled
+remove defines for various beta api in other places
+remove need_reparent, reparented, first_damage flags from wl client comp_data
+call xdg surface map when creating a surface for visible internal windows
+set want_focus for xdg popup surfaces on creation
+only do passthrough surface map on xwayland surfaces during commit
+more correctly handle evry mouse detection on wayland
+improve focus setting during wayland client show callback
+|= instead of = flag setting for want_focus during wayland surface commit
+automatically mark wayland cursor surfaces as visible during set_cursor
+do not set focus in wayland client show callback for cursor clients
+always apply damages and input regions during wayland commit
+remove duplicate visibility setting blocks from wayland surface commit
+add render updates for cursor clients if damages exist during set_cursor
+reenable fallthrough surface (un)mapping for subsurfaces during commit
+remove _e_comp_wl_focus_down_set()
+track wayland client mouse button states as a full button mask
+enable surface visibility fallthrough for drag clients
+unify client mouse action ending
+allow instant client mouse actions to persist until mouse up
+determine new_client state for xwayland clients using xwayland pixmap
+handle more mouse buttons in wayland
+allocate E_Shell_Data for all xdg surfaces (popups)
+add function for disabling mouse/key/wheel/signal bindings
+disable binding activation when grab dialog, menus, or dnd is active
+remove comp canvas key handler shortcuts for passing keys to wayland clients
+defer screenshot action execution using a job
+disable bindings during wayland screenshot operations
+do not attempt to create x11 canvas during xwayland init
+do not shortcut access of Efreet_Desktop->x hash in fileman
+disable shelf shadows if "noshadow" data item exists in shelf theme
+do not update keymap group in _e_comp_wl_input_keymap_update()
+update xkb.cur_group and send event upon serializing an EFFECTIVE layout in wl input
+send mouse out+in on desk flip end
+disable map when unsetting zoomap child
+-------------------------------------------------------------------
+Wed Jan 20 00:18:06 UTC 2016 - simon@simotek.net
+
+- Enlightenment 0.20.3 Bugfix release 
+e randr - fix randr dialog to do restore right again
+Fix xbl_avail variable being used when it could be undefined
+Fix spelling in .pc file
+e_grabinput: do not pass a faulty time
+block input devices from backlight list
+unpopulate all gadcons during shutdown
+add shelf callback for hidden state and trigger extra hide-on-show if hiding
+un-defer comp util object hiding if second hide occurs during animation
+add special case for frame adjustment during first recalc of new clients
+test given coordinates in smart window placement algorithm
+remove wayland function usage from grabinput methods
+simplify and clarify winlist directional selection action code
+check all corners of an object in e_comp_object_util_zone_get()
+disable custom logging when eina backtrace is active
+select mixer popup sink after popup has been fully initialized
+optimize zoomap recalc during recursion
+make ibar config pointer EINTERN
+do full cleanup when overriding existing comp autoclose object
+remove configs for illume modules
+allow NULL object in e_comp_object_util_autoclose()
+improve menu hiding and autoclose
+make E_DESK_TYPE an int define
+enforce border_fix_on_shelf_toggle config option in shelf
+create comp object updates tiler in helper function from either show or damage
+do not unset comp object native surface during shape apply
+unset WM_STATE for x11 clients upon unmapping them
+if available, use wl output (nested) for wayland compositor creation
+use more correct defines for enabling wl output modules during comp init
+automatically attempt to create a wayland x11 output during comp init
+20.3 release
+configure.ac: Remove ecore-x from wayland only build.
+Tiling: tile windows with "Static" gravity.
+Update copyright year.
+
+Tickets Addressed
+
+    T1106
+    T1497
+    T2811
+    T2948
+    T3011
+
+-------------------------------------------------------------------
+Tue Dec 29 05:11:11 UTC 2015 - simon@simotek.net
+
+- Enlightenment 0.20.2 Bugfix release
+Add missing function prototype for e_winlist_direction_select
+emix: Rename parameter bool to mute
+wayland: Add support for wl_surface.damage_buffer
+alsa: fix a valgrind warning
+mixer: only save state if not in init
+simplify e_mouse_update() code for x11 compositors
+only show x11 clients during MapNotify/Request if they have Normal state
+show non-new x11 clients immediately when changing Withdrawn -> Normal
+ignore withdrawn state for x11 override clients during show
+Set QT_QPA_PLATFORM theme to gtk2
+enhance winlist next window selection
+
+Tickets Addressed
+
+    T2906
+    T2942
+    T2950
+
+
+-------------------------------------------------------------------
+Tue Dec 15 10:24:19 UTC 2015 - simon@simotek.net
+
+- Enlightenment 0.20.1 Bugfix release
+e backlight - avoid seg when comp is shut down and backlight updated
+e comp - set e_comp to null on shutdown so others dont access junk
+e zone - handle null e_comp if comp is already shut down
+e randr - feature fix that allows config to jump to specific screen
+e exec - fix missing ref and unref for instance event
+e randr - fix silent free of data behind randr's back
+e comp randr support - fix leak of randr info
+e randr2 - remove auto-clone and now make randr dialog come up instead
+e randr - fix leak of modes list in randr code
+e - fix using an invalid icon theme - fall back to hicolor if not exists
+e - fix leak added by previous fix for icon theme
+conf_apps: fix add/remove screen lock applications.
+e_randr2: Add NULL check
+Updating italian translation
+use client geometry for calculations in x11 ConfigureRequest handler
+reshuffle all notifications on a notification merge
+disable redirection toggling for the nocomp client
+fix wl-x11 make/install rules to not include nonexistent DATA files
+enforce wayland subsurface stacking order when parent surface is restacked
+apply already-committed wayland subsurface positioning after parent surface move
+init ecore-x during wl-x11 init to ensure DISPLAY is set
+move comp canvas resize callback to monitor elm win geometry
+do not apply x11 randr iface in wl-x11 if running nested in x11
+add wayland shell private data for managing shell-specific data
+do not drop subsurface buffer early after commit from cache
+make e_comp_wl_surface_attach static and take a surface state
+set wayland new client focus based on accepts_focus and !override
+use canvas RENDER_PRE callback to trigger compositor pre-render callbacks
+do not reapply x11 icccm state during fetch
+never set withdrawn state on x11 clients
+use current box geometry for calculating desktop ibar/ibox sizing
+
+Tickets Addressed
+
+    T2901
+    T2907
+    T2912
+
+
+-------------------------------------------------------------------
+Mon Nov 30 20:59:27 UTC 2015 - simon@simotek.net
+
+- Enlightenment 0.20.0 Release 
+Release Highlights
+
+    Full Wayland support
+    New screen management infrastructure and dialog
+    New audio mixer infrastructure and gadget
+    Many internal widgets replaced with Elementary
+    Improved FreeBSD support
+    Geolocation module
+
+Tickets Addressed (since -rc)
+
+    T2594
+    T2830
+    T2834
+    T2846
+    T2863
+    T2867
+
+Tickets Addressed (since 0.19)
+
+    T999
+    T1069
+    T1270
+    T1333
+    T1350
+    T1462
+    T1570
+    T1612
+    T1637
+    T1665
+    T1667
+    T1673
+    T1682
+    T1692
+    T1714
+    T1732
+    T1768
+    T1773
+    T1779
+    T1797
+    T1801
+    T1810
+    T1812
+    T1818
+    T1820
+    T1828
+    T1831
+    T1863
+    T1880
+    T1888
+    T1894
+    T1905
+    T1906
+    T1922
+    T1923
+    T1930
+    T1937
+    T1939
+    T1940
+    T1948
+    T1951
+    T1954
+    T1963
+    T1988
+    T2004
+    T2007
+    T2029
+    T2030
+    T2031
+    T2045
+    T2050
+    T2053
+    T2059
+    T2071
+    T2099
+    T2100
+    T2112
+    T2114
+    T2127
+    T2131
+    T2142
+    T2144
+    T2146
+    T2168
+    T2170
+    T2181
+    T2182
+    T2187
+    T2194
+    T2210
+    T2212
+    T2219
+    T2221
+    T2255
+    T2256
+    T2259
+    T2260
+    T2271
+    T2274
+    T2277
+    T2279
+    T2282
+    T2283
+    T2284
+    T2287
+    T2291
+    T2330
+    T2336
+    T2344
+    T2354
+    T2357
+    T2363
+    T2364
+    T2385
+    T2408
+    T2411
+    T2419
+    T2423
+    T2424
+    T2452
+    T2462
+    T2492
+    T2517
+    T2525
+    T2526
+    T2527
+    T2528
+    T2531
+    T2532
+    T2533
+    T2537
+    T2539
+    T2547
+    T2557
+    T2565
+    T2566
+    T2570
+    T2572
+    T2585
+    T2589
+    T2592
+    T2594
+    T2597
+    T2604
+    T2609
+    T2610
+    T2622
+    T2624
+    T2626
+    T2637
+    T2641
+    T2645
+    T2652
+    T2674
+    T2676
+    T2679
+    T2700
+    T2703
+    T2717
+    T2722
+    T2730
+    T2731
+    T2743
+    T2744
+    T2745
+    T2750
+    T2754
+    T2760
+    T2762
+    T2763
+    T2770
+    T2776
+    T2784
+    T2785
+    T2786
+    T2788
+    T2803
+    T2819
+    T2827
+    T2829
+    T2830
+    T2834
+    T2846
+    T2863
+    T2867
+
+-------------------------------------------------------------------
+Sat Nov 14 21:18:33 UTC 2015 - simon@simotek.net
+
+- only call fdups once
+
+-------------------------------------------------------------------
+Fri Oct  9 10:09:30 UTC 2015 - sleep_walker@opensuse.org
+
+- fix my e-mail address
+- drop enlightenment-0.19.1-fix-bashisms.patch as it is bogus
+- give pam configuration more fitting better name
+- fix Fedora build
+
+-------------------------------------------------------------------
+Thu Oct  8 01:31:50 UTC 2015 - simon@simotek.net
+
+- bump to 0.19.12
+Tickets Resolved
+
+T2271
+T2679
+T2743
+T2744
+T2745
+T2746
+T2750
+T2754
+T2760
+T2762
+T2763
+
+Changes since 0.19.11
+md5: fix wrong sizeof argument (SIZEOF_MISMATCH)
+efm - handle cancel of async eio if icon is freed and eio still active
+e - efm fix. fix eio error handler that is called after eio cancel
+e menus: Fix invalid comparisons.
+broadcast support for _GTK_FRAME_EXTENTS
+fully support _GTK_FRAME_EXTENTS
+add util function for determining if a client is allowed to have a frame
+fix e_shelf_position_calc() to not set struct members before applying them
+block border-affecting entries from showing up in client menu with csd
+block border-affecting client functions for csd clients
+set comp object client_inset.calc based on frame_object existence
+check warp_client existence during pointer warp before dereferencing it
+fix handling of x11 ICCCM WithdrawnState
+initialize pixmap size vars in comp resize interceptor
+map/unmap x11 client windows when toggling iconic state
+completely remove all wayland support from build system
+blacklist all versions of efl affected by T2745
+force pixmap clear when hiding an x11 window
+set x11 broadcast atom hint array size based on array-name size
+force adjustment of client geometry when changing csd frame size
+remove client maximize states during unmaximize only if they are active
+unset E_Client->changes.need_unmaximize after calling unmaximize
+allow client resizes on axes currently unrestricted by maximize state
+unset the requested maximize state when receiving a client unmaximize request
+use more accurate math to determine whether to apply a client maximize change
+do not set client window coordinates during a move until after resizing check
+use client window coords for resize-moving without a frame_object
+_GTK_FRAME_EXTENTS changes using a property, not a client message
+reject identical calls to e_comp_object_frame_geometry_set()
+reject client resize attempts for clients with dirty pixmaps
+remove object event callback on notification popdown
+free x11 damage region rects
+add RENDER_DEBUG for forced renders when setting dirty flag
+fix comp render return value for failed draws of non-argb clients
+unify comp render returns for argb and non-argb clients
+move client post-update adding into render function
+fix systray to work with spec-breaking apps, eg. steam
+move configure init after intl init has completed
+make icon selection dialog resizable in .desktop editor
+clear menu cache when saving a menu file
+attempt to load default e_bindings if initial load fails
+repopulate app list dialogs when efreet deskop cache updates
+only use fast-path pixmap size updating after a resize for x11 clients
+Add "(drag only)" to title for drag only edge bindings
+Updating spanish translation
+
+-------------------------------------------------------------------
+Thu Oct  1 21:57:57 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 0.19.11
+Tickets Resolved
+ T1069
+ T1810
+ T1922
+ T2050
+ T2219
+ T2255
+ T2626
+ T2679
+ T2722
+ T2730
+ T2731
+
+  Changes since 0.19.10
+    e - fm - flush all evas caches to get rid of open file handles b4
+      umount
+    e - fix crash in desktop lookup+fixup where exe_inst is null
+    deskmirror - fix dangling reference to mirror by refcounting it
+    deskmirror: check if ec is not null before accessing it
+    delete notification mirror objects upon deleting original popup
+    unset client hidden flag on config dialogs when activating from
+      another vdesk
+    add ilist method for setting disabled state
+    remove unused variables in ilist widget
+    send FLOAT_SET edje messages during desk flip
+    make bgpreview widget work with panoramic wallpapers
+    always set alpha for internal wins
+    decode .desktop link and directory uris in fileman menus
+    re-set internal ee win after applying alpha
+    only lower x11 layer windows for layers which have windows during
+      init
+    add eeze watch for backlight events
+    remove backlight update calls from backlight module
+    add efl versioning for eeze backlight monitoring
+    do not return non-visible clients for e_client_under_pointer_get()
+    only set focus on clients which are visible during client eval
+    move focus setting on restart into desk restore function
+    apply vertical maximize algorithm for LEFT/RIGHT maximized windows
+    unset E_Client->want/take_focus flags during client eval
+    block gadcon thaw on unpopulate when gadcon is deleted
+    only unpopulate a shelf when applying new settings if the shelf
+      won't be recreated
+    clamp client geometry to zone during geometry calc
+    redo client maximization when a non-overlap shelf changes geometry
+    do not emit client iconify signal when reapplying compositor theme
+    calculate comp object visibility regardless of pending damages
+    update xkb settings and send xkb update event when calling
+      e_xkb_layout_set()
+    only init E_EVENT_XKB_CHANGED during xkb init if xkb init hasn't
+      already occurred
+    attempt to maintain currently-selected kbd layout when modifying
+      kbd list
+    improve client exe_inst creation
+    fix systray implementation of notifier watcher
+      (StatusNotifierItem)
+
+- refresh enlightenment-0.16.999.65256-dont_require_suidbit.patch to
+  apply cleanly
+- prepare for wayland support (once it won't be broken)
+- simplify some macro blocks
+
+-------------------------------------------------------------------
+Wed Sep 23 04:44:54 UTC 2015 - simon@simotek.net
+
+- Remove unneeded debug from spec
+
+-------------------------------------------------------------------
+Wed Sep 23 03:23:33 UTC 2015 - simon@simotek.net
+
+- Belated changelog entry for removing some pages from the wizard
+  this also means set_default_system_language.patch is no longer required
+
+-------------------------------------------------------------------
+Thu Sep 17 12:38:17 UTC 2015 - simon@simotek.net
+
+- Add network manager intergration including feature-network-manager-wizard.patch 
+
+-------------------------------------------------------------------
+Tue Sep 15 06:01:47 UTC 2015 - simon@simotek.net
+
+- bump to 0.19.10
+  * Remove enlightenment-0.19.9-fix-font-loading.patch (included upstream)
+Tickets Resolved:
+
+    T1732
+    T1923
+    T2690
+    T2703
+    T2717
+ 
+e comp - set rects to null to silence compiler warning
+fix x11 compositor to use damage events
+explicitly show the client object of internal window during show
+force-disable refocus during desk flip on client activation
+unshade clients when activating
+ensure that normal clients are stacked below overrides when raising
+add extreme hacks to enforce nocomp stacking policies
+set 'starting' flag for desk show in e_zone_desk_count_set()
+ensure that non-fullscreen nocomp clients have their layers re-set
+Wizard: Update icon theme search list
+
+-------------------------------------------------------------------
+Sun Sep  6 08:15:42 UTC 2015 - simon@simotek.net
+
+- Add enlightenment-0.19.9-fix-font-loading.patch
+  * Already upstream in what will become 0.19.10 and
+    0.20.0
+  * Currently we don't ship the icon sets e looks for
+
+-------------------------------------------------------------------
+Sun Aug 23 11:42:06 UTC 2015 - simon@simotek.net
+
+- bump to 0.19.9
+Full Release Notes:
+https://phab.enlightenment.org/phame/live/3/post/e19_9_release/
+
+Tickets resolved:
+
+    T2045
+    T2127
+    T2462
+    T2492
+    T2585
+    T2645
+    T2674
+    T2676
+
+-------------------------------------------------------------------
+Thu Aug  6 06:25:11 UTC 2015 - simon@simotek.net
+
+- bump to 0.19.8 -skipped .6 - .7
+  
+Full release notes:
+https://phab.enlightenment.org/phame/live/3/post/e19_6_release/
+https://phab.enlightenment.org/phame/live/3/post/e19_7_release/
+https://phab.enlightenment.org/phame/live/3/post/e19_8_release/
+
+Tickets resolved: 
+  0.19.6
+T2259
+T2277
+T2411
+T2547
+T2566
+T2594
+  0.19.8
+T2071
+T2210
+T2423
+T2604
+T2642
+
+Changes:
+0.19.6
+passive window grabs - fix side-effect leave/enter events on clients
+enlightenment: Make E build again with EFL from git
+wizard: Prevent crash
+wizard: Prevent crash
+reject client fullscreening based on config and desk visibility
+force xwindow stacking to obey nocomp policy and stack below current nocomp
+allow new fullscreening clients to replace current nocomp where applicable
+fix focusing client on mouse events which trigger actions (with exceptions)
+fix shelf visibility state signals
+fix eo errors for ilist icon select state
+allow layer-blocked clients in deskmirror to restack
+return an accurate value for override clients in e_comp_object_util_zone_get()
+only apply deskmirror client visibility logic for non-deleted clients
+stop rejecting possibly-valid x11 focus events
+check for possible parent window on x11 mouse button events
+fix focus FIXME regarding focus-setting on clients from other desks
+unset changes.visible when forcing visibility during no-effect desk flip
+add E_Client->mouse.in for determining mouse-in status
+trigger fake mouse-out on clients when unsetting focus
+trigger client mouse-in on x11 mouse movement for non-action clients
+enforce pstate's extremely-confusing no_turbo option in cpufreq
+use client window for x11 button ungrabbing
+redo all x11 client mouse grabbing for focus
+straggler ungrab of x11 parent window from previous commit
+ensure x11 focus grabs are applied on client init when needed
+only ungrab x11 windows when appropriate focus options are set
+reject x11 replay clicks when event window != client window
+do not apply x11 focus grabs to internal clients if efl version > 1.14
+make e_client_util_desk_visible() work for overrides without desks
+make pager popups only trigger on urgency hint if client is not currently visible
+set CRITICAL urgency for notification internal notifications
+block client signal binding activation when mouse action is active
+move E_Client->mouse.in to E_Client->mouse_in to avoid abi breakage
+account for race condition when creating initial comp object updates tiler
+fix compile against newer efl
+move grabinput focus fix timer to x11 compositor and fix it to Work Better
+always set x11 override client geometry on startup
+fix compile warning
+only unset e MANAGED atom on non-shutdown
+only trigger client mouse-in from x11 mouse move event if client+desk are visible
+ensure that focus is set and focus stack is managed on winlist hide
+never use new clients for stacking part 2: the secret of the stacking
+ensure clients possess comp_data before dereferencing it during x11 stacking
+always stop passing key events on once they reach the lokker callback
+simulate modal windows for badly behaved x11 clients
+
+0.19.7
+use runtime check for determining x11 compositor grab behavior
+improve x11 compatibility with efl versions earlier than 1.15
+
+0.19.8
+e - warning fix - fix SVID_SOURCE complaint warning
+e menu - an extra object ref causes menus to never be freed
+e - shelf menu - handle deletion properly if cb is not for shelf menu
+allow x11 mouse wheel events to check ev->event_window for possible client match
+reject x11 NotifyVirtual and NotifyInferior mouse in events
+disable ecore-evas events on client windows during actions
+fix build break from previous commit
+use gadget zone for evry gadget launcher
+add fallback loading of default theme on init
+remove spurious focus setting on desk flip without animation
+fix wizard module loading when E_MODULE_SRC_PATH is set
+defer focus-setting on focus revert during desk flip when visibility is pending
+show drag object immediately when beginning a drag
+
+-------------------------------------------------------------------
+Wed Jun 10 07:29:05 UTC 2015 - simon@simotek.net
+
+- Fix up e17 obsoletion after consoltation with DimStar
+
+-------------------------------------------------------------------
+Thu May  7 06:25:17 UTC 2015 - simon@simotek.net
+
+- bump to 0.19.5 lots of improvements
+MEDIUM: modules/shot: switch to https://
+e clients - make sure we handle client with a NULL zone
+e_shelf - check visiblity with zone and desk FIRST not later
+e - xsettings - calloc buffer since we leave 3 of 4 bytes unset
+e client - desk wait - ref it properly and clean up delfn
+modules/bluez4: fix duplicated symbol
+e_ipc: fix creation of IPC server when $DISPLAY is a path
+pre-escape all notification body texts before display or merge
+set ec->fullscreen before applying fullscreen geometry
+never resize client clip object
+exit immediately if any unrecognized arg is passed on startup
+use stderr messages when failing to init X compositor
+fix horizontal/vertical smart maximize
+fix crash when using e_comp_object_util_center_pos_get() with non comp_objects
+don't modify pixmap hash when changing pixmap parent window
+slight ibar dnd optimization when checking taskbar apps for drop site
+fix ibar drop calc to not unexpectedly trigger epileptic seizures in users
+fix straggler container text in mousebindings config
+remove layer setting from deskmirror
+always lower e_layout children upon packing
+raise deskmirror windows on startup
+set xkb dialog as changed after adding a new layout
+set E_Exec_Instance desktop during client idler if none present
+allow client icon change events in ibar client prop handler
+fix nocomp_override conditional which would inaccurately toggle nocomp
+fix evry comparison macro to work as expected
+use client geometry for starting unmaximize calculations
+swap key -> keyname when attempting to bind lparen/rparen keys
+remove contact module
+add function for clearing app menu cache
+clear app menu cache any time a desktop is edited internally
+remove eina_streq usage
+attempt to decode notification image uris with efreet before showing them
+fix submenu visibility during scroll
+ensure client max w/h props are set before applying them to client geom
+use client geom for comp object centering functions if ec->new_client is set
+rename client menu move/resize items to indicate real function
+freeze evas events on clients during keyboard move/resize actions
+only apply mouse down focus events if a binding did not run on the same event
+force visibility on clients before attempting to hide them
+change default icon theme to hicolor
+try hicolor icon theme as fallback for fdo icon setting if user's theme fails
+fix notification text to conform to spec and libnotify implementation
+prune module config list when loading a module
+fix infinite loop when changing ibar sources
+
+Tickets resovled
+T1939
+T1951
+T2053
+T2059
+T2112
+T2142
+T2170
+T2181
+T2182
+T2187
+T2260
+T2271
+T2284
+T2364
+
+-------------------------------------------------------------------
+Sun Apr 19 05:18:51 UTC 2015 - simon@simotek.net
+
+- Packaging: Require a icon theme that will be detected by enlightenment
+
+-------------------------------------------------------------------
+Fri Apr 17 02:01:37 UTC 2015 - simon@simotek.net
+
+- Packaging: Require xdg-utils on the odd chance its not already installed
+
+-------------------------------------------------------------------
+Sun Mar 15 05:15:09 UTC 2015 - simon@simotek.net
+
+- Bump to 0.19.4 Bugfix release
+    maximization bug affecting libreoffice and others - fix
+    e - client list update after adding to client list - fix netwm bug
+    efm - make dir listing far faster - no file magic content and dont sync
+    e - menus - fix autoscroll on zones not at 0 y...
+    e - menus - fix submenu popup direction when zones are not at 0 y
+    e backlight: use saner default values.
+    cpufreq: freebsd fixes
+    continue to hide window input regions on desk flip if they are shaded
+    ensure no duplicate XDG paths are prepended during startup
+    check for eldbus instead of edbus in device backend libs
+    block linear desk flips that would wrap if desk flip wrapping is disabled
+    use direct path for setting icons in util theme set function when icon is a path
+    don't send unfocused signal to override clients
+    escape notification popup text...always
+    fix crashing when changing desklock settings and using pin/personal auth
+    clamp client size to screen when client limit policy does not allow offscreen
+    rename extremely frustratingly-named E_Screen_Limits enum and members
+    do not reapply focus on canvas object ungrab/close for pointer-focus enthusiasts
+    remove unnecessary icon setting and fix sizing in edgebindings
+    fix dialog sizing when icon setting fails
+    set default text for edgebindings caption when no bindings exist
+    fix appindicator icon loading when using IconThemePath key
+    don't clamp bgpreview vsize if bgpreview is a fullscreen overlay
+    fix border frame color classes to be configured as solids, not text
+    remove wayland-only support
+
+-------------------------------------------------------------------
+Sun Jan 25 22:46:27 UTC 2015 - simon@simotek.net
+
+- Bump to 0.19.3 bugfix release
+  * Fix safing settings failing in some cases on reboot 
+  * Fix eldbus usage
+  * don't recalc winlist on client add event if client is not added to winlist
+  * don't show mixer popup during nocomp
+  * comp pending resizes should not require both w+h to change
+  * don't set gravity on client windows during X move/resize
+  * completely block border changes on MWM borderless windows
+  * disable client stack debugging
+  * add E_VERSION_MAJOR define for external module usage
+  * check focus after X nocomp end
+  * don't change shade.x/y during unshade or after shade
+  * fix build from tarball when configured mount backend is different from origin
+  * don't set deskmirror scale for non-mb objects
+  * Tiling: don't try to change the border of borderless windows.
+
+-------------------------------------------------------------------
+Fri Jan  9 04:29:27 UTC 2015 - simon@simotek.net
+
+- Require Elementary (Hadn't picked this up as terminology
+    currently requires it)
+
+-------------------------------------------------------------------
+Mon Jan  5 10:39:29 UTC 2015 - simon@simotek.net
+
+- Recommend sni-qt to make Qt4/kde4 apps work with systray
+
+-------------------------------------------------------------------
+Fri Dec 19 07:40:32 UTC 2014 - simon@simotek.net
+
+- Bump to 0.19.2
+   * Randr Fixes particuarlly for nvidia
+   * Fix X Crash
+   * eeze and efm fixes
+   * Further minor fixes
+
+-------------------------------------------------------------------
+Thu Dec 11 22:49:29 UTC 2014 - sleep_walker@suse.cz
+
+- use %fdupes properly, replace duplicates with symlinks
+  (found by Olaf Kirch <olaf@aepfle.de>
+
+-------------------------------------------------------------------
+Mon Nov 17 00:41:00 UTC 2014 - Led <ledest@gmail.com>
+
+- remove unneeded '-e' option of 'echo' command in
+  enlightenment_remote script. That option may be unsupported in
+  some POSIX-complete shells
+- add patches:
+  * enlightenment-0.19.1-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 05:24:02 UTC 2014 - simon@simotek.net
+
+- Bump to 0.19.1 (Bugfix release)
+   * don't add nocomp damages for input-only windows
+   * check protocol visibility for nocomp breaks, not comp object visibility
+   * manually break out of nocomp
+   * end nocomp on nocomp end...always
+   * force render queue on unmaximize if client was fullscreen
+   * add borderless theme for deskmirror clients to support various
+animations
+   * comp render queue on every client resize instead of on unmaximize
+   * force comp render queue more aggressively to detect changes in nocomp
+   * client hooks should not continue to be called if the client has
+been deleted
+   * thaw evas on winlist activation with no clients available
+   * modules/teamwork: Use eina_file_mkstemp() to avoid problems with umask
+   * fix: Add more desktops to be tiled by default in the tiling config.
+
+-------------------------------------------------------------------
+Thu Oct  9 06:42:29 UTC 2014 - simon@simotek.net
+
+- add sysactions.conf-systemd
+  - follows upstream by calling systemctl rather then consolekit and 
+    upower through dbus
+  - keeps the full user permissions and not providing mount options
+
+-------------------------------------------------------------------
+Tue Sep 16 04:51:13 UTC 2014 - simon@simotek.net
+
+- Update to 0.19.0 Release
+
+Changelog from upstream (Note we don't build wayland support for 13.2)
+Features:
+* greatly improved wayland support
+    - E_WL_FORCE environment variable for forcing output types
+* e_uuid_store: Add infrastructure to store window/surface properties.
+* Add a tiling profile.
+* per-screen desklock logo visibility config
+* Tiling: Merge the tiling module rework..
+* check udisks1 DevicePresentationHide flag
+* ACTIVATE_EXCLUDE window active hint policy
+* show video resolution in filepreview widget
+* add fileman option to clamp video size for video previews
+* handle xrandr backlight using a single, accurate handler
+* blanking options for wakeup on events (urgent + notify)
+* packagekit module for package manager integration
+* ibar now optionaly triggers its menu on mouse in
+* selective redirection toggling
+* new focus option "raise on revert focus"
+* add PIN-style desklock for lokker module
+* make desklock hookable, break out current desklock into module, move pam
+stuff to separate file
+* revive personal desklock passwords
+* allow moveresize visuals to be replaced
+* allow desk flip animations to be handled completely externally
+* E16-style live pager returns!
+* comp config is no longer a module
+* E_FIRST_FRAME env variable
+* new compositor API
+* add E_MODULE_SRC_PATH for setting current module src path without needing
+to install modules
+* use non-recursive makefiles for entire build system
+
+Improvements:
+* filemanager popups no longer span multiple monitors
+* system operations no longer dim screen until action has begun
+* window stacking and focus restore is more accurate across restarts
+* gstreamer1 is now used for media previews
+* improved multiple monitor setup reliability
+* shaped windows now render more accurately
+
+
+-------------------------------------------------------------------
+Fri Aug 29 13:51:20 UTC 2014 - simon@simotek.net
+
+- Update to 0.19.0 RC3- Merged from X11:Enlightenment:Nightly
+  * Major Packaging changes
+    * Use upstream sysactions.conf, if systemd is present, no longer requires suid bits
+    * remove disable physics / ephysics configure flags, physics module is long gone, 
+      and we support physics now anyway (removes sysactions.conf-oS12.2 patch from factory)
+    * e18.service now enlightenment.service
+  * Upstream changes
+    * Compositor rewrite
+    * Vastly better wayland support (were not building it)
+    * New modules
+      * Tiling
+      * Pager
+      * ibar - now behaves like a complete task bar (Win 7 Style)
+      * Music control
+      * package management modules
+    * Bug fixes and coverty fixes
+    * Probably a whole lot more (News files still need work)
+
+-------------------------------------------------------------------
+Mon May 12 17:06:41 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 0.18.8
+  * screenshot now displays a helpful error message when it fails
+  * efm no longer sometimes shows files from other directories
+  * efm no longer sometimes shows blank filenames
+  * fix syscon button signals
+  * fix winlist scrolling
+  * fix systray appindicator deletion
+  * fix systray appindicator icon loading
+- fix Provides & Obsoletes ranges
+
+-------------------------------------------------------------------
+Wed Apr 16 22:19:25 UTC 2014 - simon@simotek.net
+
+- Update to 0.18.7
+   * unify temp module temperature_get_bus_files() functions
+   * check notification icon size correctly
+   * correctly check evry trigger matches
+   * comp config dialog correctly detects effects disabled/fast states
+* efm current .desktop fetching now returns the right .desktop
+* swallow efm background objects after applying theme
+* ibar now scrolls correctly during drags
+* no longer place windows at 0,0 during restart
+* music_control: Use correct markup for metadata text.
+
+-------------------------------------------------------------------
+Tue Apr  8 08:13:25 UTC 2014 - simon@simotek.net
+
+- Update to 0.18.6 (No idea where the 1.8.X version numbers where coming from
+  Should have been 0.18.*
+  
+  Release Notes:
+  
+    This bugfix release primarily focuses on fixing issues reported by the
+    Coverity static analyzer.
+
+    * wl_desktop_shell builds out of source tree
+    * get entry width based on viewport size, not entry size
+    * fix hiding of windows when delete is requested
+    * don't deref teamwork pointer after null check
+    * don't deref possibly-null value in mouse bindings
+    * correctly calculate minimum flowlayout rows
+    * efm_op no longer tries to close invalid fds during delete ops
+    * don't use external log domain in systray
+    * don't use external log domain in music player
+    * don't crash when saving screenshots with no file extension
+    * don't crash on possibly-null gadman bg string extensions
+    * check for unicode string end in client menu
+    * don't crash when passing NULL desk to e_border_under_pointer_get
+    * set connman pending.disconnect when disconnecting a service
+    * don't iterate with or access freed pointer in comp match dialog
+    * ensure use of non-garbage values for menu item icon placeholders
+    * use more descriptive + accurate buffer size in batget iterator
+    * prevent out of bounds access in systray theme setup
+    * prevent out of bounds write in e_intl_locale_parts_get()
+    * ensure null termination of string in xsettings config
+    * dim/undim actions don't require acpi triggers
+
+-------------------------------------------------------------------
+Thu Mar  6 03:41:42 UTC 2014 - simon@simotek.net
+
+- Update to 1.8.5
+  * Fix selection of the standard profile in wizard.
+  * pointer warp speed config slider correctly detects changed state
+  * set border starting geometry from initial zone
+  * don't use raise stack for iterating borders
+  * Fix wl_desktop_shell compiler warning for Mike
+  * evry string matching now handles UTF8
+  * remove efm nav SELF_RENAME handler
+
+
+-------------------------------------------------------------------
+Thu Feb 27 09:54:40 UTC 2014 - simon@simotek.net
+
+- Update to 1.8.4 and efl 1.9.0 
+
+-------------------------------------------------------------------
+Fri Feb 21 11:43:09 UTC 2014 - simon@simotek.net
+
+- conflicts should only be for above 0.17.3 as we obsolete older versions
+  use version 0.1 of branding to see if that fixes other complants
+
+-------------------------------------------------------------------
+Wed Feb 12 21:45:25 UTC 2014 - simon@simotek.net
+
+- Make enlightenment-devel explicity conflict with e17-devel and 
+  provide obsoletes
+- Do the same for doc-html
+
+-------------------------------------------------------------------
+Wed Feb 12 06:26:58 UTC 2014 - simon@simotek.net
+
+- Enlightenment now provides and obsoletes e17 >= 0.17.3
+  This should migrate 12.3 and 13.1 users to enlightenment (e18)
+  but leave 13.2 users (0.17.6) with e17
+
+-------------------------------------------------------------------
+Tue Dec 31 04:52:45 UTC 2013 - simon@simotek.net
+
+- bump to 0.18.2
+  * Fix for lock screen
+  * Fix for excessive logging to .xsession-errors
+  * Fixed display of version info
+
+-------------------------------------------------------------------
+Tue Dec 24 03:40:59 UTC 2013 - simon@simotek.net
+
+- Requires branding
+
+-------------------------------------------------------------------
+Tue Dec 24 03:33:15 UTC 2013 - simon@simotek.net
+
+- Upstream branding change for terminology
+
+-------------------------------------------------------------------
+Sun Dec 22 04:12:17 UTC 2013 - simon@simotek.net
+
+- e18.0 RELEASE !!!!!!
+ * Compositing merged into core
+   * No longer (as) optional
+   * No longer (as) buggy
+   * Wayland client support added
+   * Teamwork module added
+ * Fixed at least 10 crashes
+   * User experience while crashing improved; some users have reported over a 200% improvement here
+ * New modules for improving desktop integration:
+   * music-control - Control your music!
+   * bluez4 - Control your bluetooth!
+   * appmenu - Control your DBus application menus!
+   * conf_comp - Control your compositor settings!
+ * Improved systemd integration
+ * Internal theme merged into Elementary
+   * Theme migration guide for themers looking to update their E17 themes to work with E18
+ * RandR and binding config domains have been split into separate files to make copying and updating easier
+ * MANY filemanager improvements
+   * udisks2 support
+   * Directory listing is now more accurate
+   * Seriously, too many improvements to name
+
+
+-------------------------------------------------------------------
+Fri Dec 20 17:42:15 UTC 2013 - sleep_walker@suse.cz
+
+- bump to 0.18.0 pre-release
+
+-------------------------------------------------------------------
+Thu Dec 19 18:32:42 UTC 2013 - sleep_walker@suse.cz
+
+- refresh patches
+- beutify spec a bit
+- change to pkgconfig based dependencies
+- simplify dependencies
+
+-------------------------------------------------------------------
+Thu Dec 19 16:58:34 UTC 2013 - sleep_walker@suse.cz
+
+- buildrequire systemd-devel instead of systemd
+
+-------------------------------------------------------------------
+Fri Dec 13 23:19:11 UTC 2013 - sleep_walker@suse.cz
+
+- bumped to 0.18.0 rc2
+
+-------------------------------------------------------------------
+Mon Dec  9 10:42:30 UTC 2013 - simon@simotek.net
+
+- 0.18.0 RC1 full changelogs will come with the release
+
+-------------------------------------------------------------------
+Thu Nov 28 00:17:26 UTC 2013 - simon@simotek.net
+
+- Create new enlightenment package by merging e17 from factory and nightly repo's
+

@@ -1,0 +1,32 @@
+# HG changeset patch
+# Parent  b96f2a8d5f606fd982a8fe3655c4b71e282c3976
+Index: security/nss/lib/sqlite/manifest.mn
+===================================================================
+RCS file: /cvsroot/mozilla/security/nss/lib/sqlite/manifest.mn,v
+retrieving revision 1.5
+
+diff --git a/lib/sqlite/manifest.mn b/lib/sqlite/manifest.mn
+--- a/lib/sqlite/manifest.mn
++++ b/lib/sqlite/manifest.mn
+@@ -1,19 +1,20 @@
+ # 
+ # This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ CORE_DEPTH = ../..
+ 
+ MODULE = nss
+ 
+-LIBRARY_NAME = sqlite
++LIBRARY_NAME = nsssqlite
+ LIBRARY_VERSION = 3
+ MAPFILE = $(OBJDIR)/sqlite.def
++MAPFILE_SOURCE = sqlite.def
+ DEFINES += -DSQLITE_THREADSAFE=1
+ 
+ EXPORTS = \
+ 	$(NULL)
+ 
+ PRIVATE_EXPORTS = \
+ 	sqlite3.h \
+ 	$(NULL)

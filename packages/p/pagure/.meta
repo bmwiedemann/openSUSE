@@ -1,0 +1,10 @@
+<package name="pagure" project="openSUSE:Factory">
+  <title>A git-centered forge</title>
+  <description>Pagure is a light-weight git-centered forge based on pygit2.
+
+Currently, Pagure offers a web-interface for git repositories, a ticket
+system and possibilities to create new projects, fork existing ones and
+create/merge pull-requests across or within projects.</description>
+  <devel project="devel:tools:scm" package="pagure"/>
+  <url>https://pagure.io/pagure</url>
+</package>

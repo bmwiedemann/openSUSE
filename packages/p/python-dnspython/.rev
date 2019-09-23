@@ -1,0 +1,247 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>4d38c25ce6c5d282782c017dd35e71f1</srcmd5>
+    <version>1.8.0</version>
+    <time>1288711060</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51714 from user jengelh
+</comment>
+    <requestid>51714</requestid>
+  </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>013141b4bdfcd2bc7dc262c6d379dda8</srcmd5>
+    <version>1.8.0</version>
+    <time>1288711067</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51714
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fb24c36a0b3ec7f31902c5e25918e10a</srcmd5>
+    <version>1.9.1</version>
+    <time>1290442025</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53679 from user jengelh
+</comment>
+    <requestid>53679</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>96e6153ca666b69bd99ae6f7faaa1eb1</srcmd5>
+    <version>1.9.1</version>
+    <time>1290442036</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53679
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90287fd0204a64bd88654b5fb4f930ce</srcmd5>
+    <version>1.9.2</version>
+    <time>1290519747</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53764 from user jengelh
+</comment>
+    <requestid>53764</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>90287fd0204a64bd88654b5fb4f930ce</srcmd5>
+    <version>1.9.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad51c5d739af9b9efe16fcbdaf63b4da</srcmd5>
+    <version>1.9.3</version>
+    <time>1301039727</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65170 from user licensedigger
+</comment>
+    <requestid>65170</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1fc3e8cece80dd643bb75dc77b4a7d6c</srcmd5>
+    <version>1.9.3</version>
+    <time>1301039740</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65170
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>502793b912848741405fece6f90e9c0a</srcmd5>
+    <version>1.9.4</version>
+    <time>1301470071</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65342 from user coolo
+</comment>
+    <requestid>65342</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>502793b912848741405fece6f90e9c0a</srcmd5>
+    <version>1.9.4</version>
+    <time>1319182387</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f359a3fe9937e0ba6f0691d389723850</srcmd5>
+    <version>1.10.0</version>
+    <time>1338582725</time>
+    <user>coolo</user>
+    <comment>- license update: ISC
+  See LICENSE (and compare http://www.spdx.org/licenses/MIT with
+  http://www.spdx.org/licenses/ISC)
+
+- Update to new upstream release 1.10.0
+* Added dns.resolver.LRUCache.
+* dns.resolver.query() will try TCP if a UDP response is truncated.
+* The python socket module's DNS methods can be now be overriden
+  with implementations that use dnspython's resolver.
+- Remove redundant tags/sections from specfile
+- Correct license field</comment>
+    <requestid>123105</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f359a3fe9937e0ba6f0691d389723850</srcmd5>
+    <version>1.10.0</version>
+    <time>1340184049</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>f359a3fe9937e0ba6f0691d389723850</srcmd5>
+    <version>1.10.0</version>
+    <time>1359110023</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fc06a93b499d91129bd955c18705a793</srcmd5>
+    <version>1.11.0</version>
+    <time>1373984088</time>
+    <user>coolo</user>
+    <comment>- Package LICENSE, use proper upstream URL
+- Run testsuite
+- Cleanup macro usage
+
+- update to 1.11.0:
+  * TLSA RR support
+  * Added set_flags() method to dns.resolver.Resolver
+  * Names with offsets &gt;= 2^14 are no longer added to the compression
+    table.
+  * The &quot;::&quot; syntax is not used to shorten a single 16-bit section of
+  the text form an IPv6 address.
+  * Empty rdatasets are not printed.
+  * DNSKEY key tags are no longer assumed to be unique.</comment>
+    <requestid>183064</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5d3878704966e467892de2dcabff9058</srcmd5>
+    <version>1.11.1</version>
+    <time>1379076376</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.11.1:
+  * fix syntax error exception on dns server failure
+  * various fixlets for DNSSEC support (forwarded request 198593 from dirkmueller)</comment>
+    <requestid>198876</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>5d3878704966e467892de2dcabff9058</srcmd5>
+    <version>1.11.1</version>
+    <time>1379664166</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>5d3878704966e467892de2dcabff9058</srcmd5>
+    <version>1.11.1</version>
+    <time>1409302858</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>befefc320816d41467073a47e64b38a7</srcmd5>
+    <version>1.12.0</version>
+    <time>1414218791</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257912</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>94b54fd6572b751a215fc4386c727fbe</srcmd5>
+    <version>1.12.0</version>
+    <time>1417160677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263157</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cb5c476aadf4c8487aa6eca0cb25da1f</srcmd5>
+    <version>1.14.0</version>
+    <time>1466501455</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403573</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d8b07aa8b8e31365a7c6287edd3d3d33</srcmd5>
+    <version>1.15.0</version>
+    <time>1476351021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>433898</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>857cf3b527971a802d8336d874ded021</srcmd5>
+    <version>1.15.0</version>
+    <time>1476780166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>435073</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>42c4106c48d9f8536541b5ce00c53ed9</srcmd5>
+    <version>1.15.0</version>
+    <time>1494937775</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493313</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>35790a149b15f73ef30effacbe3e9a60</srcmd5>
+    <version>1.15.0</version>
+    <time>1526030935</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch pycryptodome.patch to work with pycryptodome:
+  * pycryptodome.patch</comment>
+    <requestid>605770</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>3fb5b6638ce34233f46fbd604a3b3464</srcmd5>
+    <version>1.15.0</version>
+    <time>1526737271</time>
+    <user>dimstar_suse</user>
+    <comment>- require python-pycryptodome instead of recommending it
+</comment>
+    <requestid>607507</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>2b697dae15cef8247906077663cb3391</srcmd5>
+    <version>1.15.0</version>
+    <time>1544726587</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654018</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5cfd28837dad7bd0d075d144abe085a0</srcmd5>
+    <version>1.16.0</version>
+    <time>1552380345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.0:
+  * various fixes for wheel/cryptodome/etc
+- Remove all patches, merged upstream:
+  * 210.patch
+  * pycryptodome.patch
+  * readme.patch</comment>
+    <requestid>682862</requestid>
+  </revision>
+</revisionlist>

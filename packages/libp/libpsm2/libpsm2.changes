@@ -1,0 +1,272 @@
+-------------------------------------------------------------------
+Mon Feb 18 06:29:08 UTC 2019 - nmoreychaisemartin@suse.com
+
+- Update to 11.2.78 (bsc#1125605, bsc#1125717)
+  - Revert of commit to check free BAR space and release TIDs
+  - Remove unnecessary long waiting timeout for HFI driver
+- Drop libpsm2-include-ioctl_h.patch which was fixed upstream
+
+-------------------------------------------------------------------
+Mon Oct 15 06:43:58 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to 11.2.23 (fate#325853)
+  - compiler flag optimizations for KNL
+  - optimizations for OFI
+  - Bug fixes for CUDA runtime
+  - Add psm2_info_query API
+  - Modify PSM send side protocol selection logic to select correct flow at
+    start of send function
+  - Update LMC disable thresholds
+  - Fix for Issue #30: Compilation error due to snprintf truncation warning
+  - Convert CUDA runtime API calls to CUDA Driver API calls
+  - Prevent SHM and IPS from closing other protocol connections
+  - Change CUDA_THRESH_RNDV and move CUDA init to separate function
+  - Fix selection logic for multi-HFI within NUMA node
+  - Refresh JKey to support SELinux
+  - Fix Issue #24: Uninitialized AM message
+  - Fix data data corruption on GPU buffers when when using am ptl
+  - Force EPID remap in shm if remote PID changed
+  - PSM2 GDR Copy feature and tuning of thresholds to fully utilize the feature
+  - Fix uniformity of process mapping to HFIs
+  - PSM2 specific perf benchmarks
+  - Fix for issue 27: Null termination of string
+- Drop libpsm2-fix-gcc8-compilation-error.patch
+  which was fixed upstream
+
+-------------------------------------------------------------------
+Thu Mar 15 07:18:37 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to version 10.3.46
+  - Enabled IPS_PROTO_FLAG_RCVTHREAD flag
+  - Fix GPU Direct Recv threshold default
+  - Resolve PSM2_CUDA runtime issues
+  - Fix bug in code to remove octal base for env vars
+  - Change direct use of HFI_CLASS_PATH and guard possible buffer overruns
+- Add libpsm2-fix-gcc8-compilation-error.patch to fix compilation
+  with gcc8 (bsc#1084634)
+
+-------------------------------------------------------------------
+Fri Dec  8 08:25:14 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to version 10.3.37 (bsc#1068108):
+  - Allow PSM_PERF to work with multiple threads
+  - AM Handler with Caller Context for OFI PSM2
+  - Add new API functions psm2_mq_ipeek_dequeue and psm2_mq_req_free (for OFI
+    usage)
+  - Reserve additional space in "psm2_mq_req" for user use (for OFI usage)
+  - Bug Fixes
+    - Fix SLES 12.3 libpsm2-2 Provides line
+    - Add additional libpsm2-2 noarch Provides line
+    - Clean up CUDA symbol loading
+    - Avoid typecasting unknown addresses to aligned data types
+    - Handle EFAULT and ENOTSUPP returned from driver
+    - Release hfi1 memory mappings when closing a context
+
+
+-------------------------------------------------------------------
+Mon Nov 20 16:42:59 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Updated to version 10.3.17:
+    - Small bug fixes and some enhanced debugging.
+    - Assigned context is not freed on close() which could lead to
+      context starvation. Therefore release hfi1 mappings when closing a
+      context.
+    - Close receive thread only while closing last endpoint
+- Rebase libpsm2-include-ioctl_h.patch, libpsm2-use_RPM_OPT_FLAGS.patch and
+  libpsm2-use-exported-variable-for-version-and-release.patch to the
+  latest sources.
+
+-------------------------------------------------------------------
+Wed Sep  6 05:55:42 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to version 10.2.260:
+    - Fixed support for SLE12-SP2
+    - V2 EPID
+    - Initialize CUDA support only if env variable is switched on
+    - Add PSM_PERF functionality (for measuring number of instructions
+      retired between two points in code)
+    - Bug Fixes
+      - Include commits from GitHub PR's #13, #14, #16
+      - Fix SLES build issue
+      - Allow psm2_ep_connect to be called multiple times with 'self' epid
+      - Fix issue with psm2_mq_ipeek2 and psm2_mq_test2 when used with
+        multi-threaded OMPI
+      - Fix performance related bugs for PSM2_CUDA builds
+- Remove libpsm2-fix-compilation-for-hfi1-v5.patch  and
+  libpsm2-compat-dependency-to-libpsm2.patch as they were merged
+  upstream.
+- Update _service to allow auto updates from github
+
+-------------------------------------------------------------------
+Sat Aug 12 15:45:38 UTC 2017 - jengelh@inai.de
+
+- Remove unnecessary ldconfig from -devel subpackage.
+
+-------------------------------------------------------------------
+Wed Aug  9 15:03:15 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Update to version 10.2-235
+  - Set TidFlow starting sequence number to 0
+  - Add support for KNM detection
+  - Generalize affinity logic to extend to non-CUDA workloads as well
+  - Cleanup build artifacts. "make" output will now be in $PWD/build_release by
+    default
+  - Bug Fixes
+    - Mask non-DW msg size assert
+    - Fix hang associated with re-transmit of last fragment of non-DW aligned
+      SDMA eager message
+    - Keep track of only last unsent ACK message
+    - Retry context operns to fix interrupted syscall
+    - Fix segfault in disconnect code path
+  - Add psm2_ep_disconnect API
+  - Add GPU-Direct and support for CUDA buffers in PSM2
+  - Implement new HFI Selection algorithm for CUDA version of PSM2
+    - Related to this, Add new PSM2_MULTIRAIL option to allow multirail only
+      within a socket.
+  - Bug Fixes and Driver interface changes
+  - Sync with driver interface changes for GPU-Direct feature support
+  - Fix hang in PSM2 during context open
+  - Fix bug in psmi_memalign()
+  - Fix data corruption due to unaligned bytes in msg
+- Drop libpsm2-gcc7.patch as it was fixed upstream
+- Add set_version service
+- Add libpsm2-fix-compilation-for-hfi1-v5.patch to fix compilation
+  for older kernels
+
+-------------------------------------------------------------------
+Mon Jul 10 09:54:50 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Add libpsm2-compat-dependency-to-libpsm2.patch so libpsm_infinipath.so
+  provided by libpsm2-compat is linked to libpsm2 which provides
+  its missing symbols
+
+-------------------------------------------------------------------
+Mon Jul 10 09:15:38 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Remove obsolete psm2 library directory
+
+-------------------------------------------------------------------
+Fri Jul  7 11:56:10 UTC 2017 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to choose
+  udev-mini over udev, which in turn allows to break build cycles.
+
+-------------------------------------------------------------------
+Fri Jun 30 07:20:15 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Install psm2-compat library in the standard path
+- Have libpsm2-compat conflict with libpsm_infinipath1
+
+-------------------------------------------------------------------
+Fri May 19 19:07:37 UTC 2017 - dimstar@opensuse.org
+
+- Add libpsm2-gcc7.patch: Fix build with gcc 7.x. Patch taken from
+  upstream git, https://github.com/01org/opa-psm2/commit/52aa214e8.
+
+-------------------------------------------------------------------
+Fri May 19 11:01:20 UTC 2017 - nmoreychaisemartin@suse.com
+
+- libpsm2-2 provides libpsm2 (bsc#1039855)
+
+-------------------------------------------------------------------
+Mon May 15 11:54:57 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Fix package version numbering (bsc#1037661).
+
+-------------------------------------------------------------------
+Fri Apr  7 15:20:59 CEST 2017 - pth@suse.de
+
+- Remove leftover conflict marker
+
+-------------------------------------------------------------------
+Wed Mar 29 13:51:32 CEST 2017 - pth@suse.de
+
+- Fix summary for libpsm2-compat.
+
+-------------------------------------------------------------------
+Mon Mar 13 14:06:39 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups and refine description
+
+-------------------------------------------------------------------
+Thu Mar  9 08:05:48 UTC 2017 - josef.moellers@suse.com
+
+- Update to latest Intel version:
+    Sync with PSM2 master upto fixes for CMA get/put
+
+    In addition to Dynamic CMA failover support, this code surface
+    includes-
+    * Improved output array_of_errors in psm_ep_connect,
+    * Improved signal handling for SIGSEGV/SIGBUS events
+    * New abstraction layer for driver commands
+    * Ubuntu packaging support
+
+    ... and some bug fixes.
+    JM: This obsoletes my libpsm2-calc-checksum.patch.
+
+- Include sys/ioctl.h in psmi_wrappers.c
+- Add hfi1diag/psmi_wrappers.h to installed files.
+  (FATE#321472, bnc#990171, libpsm2-include-ioctl_h.patch)
+
+-------------------------------------------------------------------
+Fri Mar  3 13:45:39 UTC 2017 - josef.moellers@suse.com
+
+- Update to new version 10.3.1, mainly bug fixes
+  Intel has not made available any changelog.
+  As Intel's source did not compile, replaced calculation of the
+  hash
+- Deleted file
+  libpsm2-avoid-executable-flag-on-installed-header-files.patch
+  (bnc#1024057, libpsm2-calc-checksum.patch, FATE#321472)
+
+-------------------------------------------------------------------
+Tue Dec  6 16:01:36 CET 2016 - pth@suse.de
+
+- Update to 10.2.2. As 0.7 isn't mentioned in the log, see
+  ChangeLog for any changes to the package.
+- Remove libpsm2-avoid-executable-flag-on-installed-header-files.patch
+  as the fix is upstream.
+- Adapt the remaining patches to the changed sources.
+- Generate ChangeLog from git log and package it.
+
+-------------------------------------------------------------------
+Thu Jun  9 14:20:16 CEST 2016 - ndas@suse.de
+
+- Removed git from buildrequires and specify version and revision using 
+  environment variables (bsc#983235).
+  
+  [+libpsm2-use-exported-variable-for-version-and-release.patch]
+
+- Added a _service file(bsc#983235).
+
+-------------------------------------------------------------------
+Fri May 27 10:25:07 CEST 2016 - ndas@suse.de
+
+- Removed hfi1_user.h from the source as the required changes
+  are available in kernel-devel's hfi1_user.h(bsc#980733).
+ 
+ [-hfi1_user.h]
+
+-------------------------------------------------------------------
+Wed Mar 23 09:47:20 CET 2016 - ndas@suse.de
+
+- Fix build error (bsc#972292).
+
+-------------------------------------------------------------------
+Fri Mar 11 16:33:22 CET 2016 - pth@suse.de
+
+- Fix dependency of libpsm2-devel and -compat(bsc#970895).
+
+-------------------------------------------------------------------
+Wed Mar  9 18:21:57 CET 2016 - pth@suse.de
+
+- Add libpsm2-use_RPM_OPT_FLAGS.patch to include RPM_OPT_FLAGS
+  in CFLAGS.
+- Do not recreate RPM_BUILD_ROOT.
+- Remove unneeded %clean section
+
+-------------------------------------------------------------------
+Wed Mar  2 16:58:02 UTC 2016 - nirmoy.das@suse.com
+
+- Initial Package, Version 0.7(fate#319243).
+

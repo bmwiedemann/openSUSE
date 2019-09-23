@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Mon Sep  2 15:03:50 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.2.1
+  * Fixed known GPU hang issue when encoding 444 8/10bit in ICL
+    issue#677
+  * Fixed several compile warnings.
+- Werror-implicit-function-not-valid-for-C++.patch,
+  Werror-initialize-in-right-order.patch
+  * needed as buildfixes
+
+-------------------------------------------------------------------
+Sat Jul  6 10:56:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 19.2.0:
+  * Release pVEInterf to fix the mem leak issue.
+  * Fix memory leak during 3D surface allocation.
+  * Move the lock earlier to make surface heap status aligned when
+    surface is destroyd.
+  * [VP] UMD_OCA Implement:
+    - Add UMD_OCA support in mos.
+    - Add UMD_OCA support for VP RCS case (No CM based) and
+      Vebox/SFC case.
+    - It is disabled by default.
+  * [VP] Remove dupliatcated defines on composition.
+  * Remove duplicated defines and revert part codes.
+  * Full support of Gen9 CML kernel integration.
+  * Stay the same compile option as Gen9.
+  * Readme: update feature list for default and open source build
+  * [Encode]:
+    - Fix segment fault issue in Jpeg encode cases on Linux.
+    - Fix Dynamic Scaling Media Reset Issue.
+- Update modalias supplements.
+
+-------------------------------------------------------------------
+Mon Apr  1 09:29:32 CEST 2019 - tiwai@suse.de
+
+- Updated to version 18.4.1:
+  * Supported Platforms:
+    - BDW/SKL/APL(BXT)/KBL/CFL/WHL/CNL/ICL
+  * Improvements:
+    - WHL: Added WHL support and enabled its VP8 encoding.
+    - ICL: Added ICL open source compute shaders for video processing.
+      Enabled ICL HDR10 Tone Mapping using close source compute shaders.
+    - DRM uAPI relative code is refactored to better comply to i915
+      Open Source Userspace Requirement.
+    - Added X11 build option detection.
+    - Enabled software swizzling support to improve surface reading
+      performance of vaGetImage.
+    - Added ARGB,Y410 image format support.
+    - Added versioning information to CMRT library.
+    - BRC enhancement:
+      AVC hardware encoding: added QVBR support.
+      AVC shader encoding: added AVBR and max frame size BRC support.
+      VP8 encoding: corrected fps calculation error.
+  * Fixed issues:
+    - GStreamer/gstreamer-vaapi integration:
+      Fixed the issue about KBL HEVC P010_10LE encoding kernel state
+      initialization failure for CODECHAL_HEVC_MBENC_PENC.
+      Fixed the issue about aspect ratio being unable to retain in
+      video processsing PutSurface for vaapisink display.
+    - Corrected RT format reporting for HEVC main10 profile.
+    - Corrected caps reporting of max width/height for VP9 decoding
+      from 2k (2048x2048) to 8k (8192x8192).
+- Add sub-packages libigfxcmrt7 and libigfxcmrt-devel
+- Updated supplements accordingly
+
+-------------------------------------------------------------------
+Tue Nov 13 15:38:31 UTC 2018 - sndirsch@suse.com
+
+- added hardware supplements in order to install the package on
+  appropriate hardware (Broadwell, Skylake, Broxton/Apollo Lake, 
+  Kaby Lake, Coffee Lake, Cannonlake, Ice Lake at this time)
+- added script to generate the above information easily
+
+-------------------------------------------------------------------
+Wed Nov  7 20:08:17 CET 2018 - tiwai@suse.de
+
+- Updated to version 18.3.0:
+  * Adding ICL support
+  * Adding dynamic loading support of Gmmlib
+  * Better support to ffmpeg and gstreamer:
+    + AVC low power encoding
+    + MPEG2 encoding
+    + VP8 decoding
+    + VC1 decoding
+    + JPEG encoding and decoding
+  * Adding Dockerfile and docker images
+- Use shared lib of gmmlib; added buildreq accordingly
+
+-------------------------------------------------------------------
+Tue Jul 10 21:46:35 CEST 2018 - tiwai@suse.de
+
+- initial package: media-driver Q2'18 release
+

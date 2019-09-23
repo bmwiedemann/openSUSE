@@ -1,0 +1,786 @@
+-------------------------------------------------------------------
+Tue Aug 20 02:06:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass --enable-usb, --enable-modbus-usb and --enable-test to
+  configure aswell, build all the drivers we used to build with
+  --enable-all (boo#1145913).
+
+-------------------------------------------------------------------
+Fri Aug  9 18:52:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing enable-all to configure, pass enable-gapcmon and
+  enable-cgi instead, reflecting what we actually build.
+- Following this, drop unused pkgconfig(gnome-vfs-2.0)
+  BuildRequires and add pkgconfig(glib-2.0) and
+  pkgconfig(gthread-2.0), align with what configure actually checks
+  for.
+
+-------------------------------------------------------------------
+Wed Jul  3 13:45:08 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Wed Mar 21 12:25:20 UTC 2018 - tchvatal@suse.com
+
+- Do not use path based dependency but use normal package name
+
+-------------------------------------------------------------------
+Thu Mar 15 11:04:07 UTC 2018 - tchvatal@suse.com
+
+- Drop support for < sle12, also removes patch:
+  * apcupsd-pm-utils.patch
+- Drop intitscript
+- Format with spec-cleaner
+- Use license macros instead of %doc macros
+
+-------------------------------------------------------------------
+Mon Dec 11 13:53:35 UTC 2017 - crrodriguez@opensuse.org
+
+- BuildRequire pkgconfig(x11) not xorg-x11-devel 
+
+-------------------------------------------------------------------
+Thu Nov 23 13:43:36 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Aug 31 17:04:39 UTC 2017 - dimstar@opensuse.org
+
+- Pass --with-distname=, based on the values of ID_LIKE from
+  /etc/os-release to configure. Since the removal of
+  /etc/SuSE-release, the build system is no longer able to identify
+  us building on a SUSE system. Let's help it.
+
+-------------------------------------------------------------------
+Thu Dec  8 12:59:44 CET 2016 - manfred99@gmx.ch
+
+- update apcupsd-httpd.conf to work with apache2 >= 2.4. Entries
+  are commented out, so this file acts as example only. bsc#950950
+
+-------------------------------------------------------------------
+Tue May 31 23:09:00 CEST 2016 - manfred99@gmx.ch
+
+- Update to apcupsd version 3.14.14
+  * win32: Fix missing DLLs when installing only apctray
+  * Fixes for socket error handling. Resolves apcaccess crash when connection 
+    fails as well as several other theoretical issues.
+  * MODBUS/USB error handling (COMMLOST) improvements for faulty USB links
+  * Fix hiddev binding when usbfs is mounted on /dev/bus/usb instead of 
+    /proc/bus/usb. This is necessary for switching between MODBUS/USB and
+    USB/HID on Linux.
+  * Update GPLv2 text and FSF address to match current versions from FSF.
+  * Various fixes for potential issues suggested by Coverity Scan
+  * MacOS X port support for El Capitan System Integrity Protection (SIP)
+    aka "rootless"
+  * Fix shutdown failure on Windows when UPSNAME includes spaces
+  * Fix building bsd-usb driver
+    (This was broken when modbus-usb support was added.)
+  * Add status display for output current as well as apparent power
+- fix firewall rule installation in spec file
+- drop BuildRequires: net-snmp-devel, net-snmp was dropped in favour of snmplite
+- drop installation of own automake files for ppc64, not needed any more
+- Removed patches, fixed in upstream:
+  * apcupsd-3.14.6-undef-MIB-for-new-net-snmp.diff
+  * fix-fsf-adress.patch
+  * apcupsd-3.14.1-cloexec.patch
+  * apcupsd-gpp.patch
+- Removed patch, not needed as it builds on all supported arches,
+  and not linking against libstdc++ is done on purpose:
+  * apcupsd-3.14.8-cxxld.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 12:33:03 UTC 2015 - tchvatal@suse.com
+
+- Ensure locfile is properly set bnc#929444
+
+-------------------------------------------------------------------
+Sat Apr 18 11:45:54 UTC 2015 - matwey.kornilov@gmail.com
+
+- Move *.cgi scripts to apcupsd-cgi package (fix boo#925886)
+
+-------------------------------------------------------------------
+Thu Apr  2 07:26:12 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 3.14.13:
+  * apcaccess and apcupsd status format updates to ease parsing by scripts
+  * UPS name is included in subject line of emails in default scripts
+  * Default event scripts pull SYSADMIN and APCUPSD_MAIL definitions from a
+    common config file so they can easily be configured in one place
+  * MODBUS USB support
+    Previous releases supported MODBUS serial (RS232). This release adds
+    support for MODBUS over USB. This protocol is preferable to the normal
+    USB HID driver because it offers access to more UPS data readouts and
+    controls. The only configuration file change needed versus MODBUS serial
+    is to change UPSCABLE to usb and use an empty DEVICE setting. See the 
+    MODBUS section of the apcupsd manual for more details.
+  * Support for Apple Notification Center on Mac OS X (replaces Growl)
+  * Apple install packages and binaries are signed with an Apple Developer
+    key for compatibility with Gate Keeper
+  * Windows USB driver has been updated with additional USB identifiers to
+    support future APC products.
+  * Fix issue with certain Back-UPS USB models repeatedly cycling power on/off 
+    after killpower is issued
+  * Fix display of battery level during MODBUS calibration
+  * Fix apctest EEPROM setting on various models
+  * Close and reopen serial port during extended COMMLOST in apcsmart driver
+    (helps recover connection when USB serial port dongles are reconnected)
+  * Avoid probing non-APC USB devices as it can cause lockups
+  * Fix issue with service failing to start on Windows during boot with USB UPS
+  * Fix bogus lock file error when config file error forces early termination
+  * Fix MODBUS NOMOUTV reading for voltages other than 120VAC
+  * Fix LOADPCT (CI_LOAD) on MODBUS driver
+  * Fix issue with net driver not reporting MODEL value
+  * Fix several potential issues identified by Coverity static analysis
+  * Numerous other fixes and improvements all over the code, many of them
+    submitted by users...Thank you!
+- Refreshed patches:
+  * apcupsd-3.14.1-cloexec.patch
+  * apcupsd-3.14.8-cxxld.patch
+  * apcupsd-gpp.patch
+- Removed patch:
+  * apcupsd-3.14.10-nodbg.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 07:23:30 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Remove patch that is never applied today:
+  * apcupsd-powersave.patch
+
+------------------------------------------------------------------
+Tue Dec  2 22:16:05 CET 2014 - sbrabec@suse.cz
+
+- Fix removal of HALT_POWERDOWN_INSERT (bsc#907702).
+
+-------------------------------------------------------------------
+Sun Nov 16 20:08:17 UTC 2014 - matwey.kornilov@gmail.com
+
+- Add patch apcupsd-3.14.10-nodbg.patch: reduce amount of debug
+  messages (redhat #1053324)
+
+-------------------------------------------------------------------
+Sun Nov 16 17:35:44 UTC 2014 - matwey.kornilov@gmail.com
+
+- fix HIBERNATE variable initialization in apccontrol script
+
+-------------------------------------------------------------------
+Tue Aug 19 14:45:38 UTC 2014 - wagner-thomas@gmx.at
+
+- added config for SuSEfirewall2
+
+-------------------------------------------------------------------
+Wed May 14 14:15:04 UTC 2014 - meissner@suse.com
+
+- %service_add_pre in  %pre section missing, added.
+
+-------------------------------------------------------------------
+Fri Feb 14 19:42:38 CET 2014 - sbrabec@suse.cz
+
+- Replace pm-utils support by systemd (FATE#316824).
+  add: apcupsd-pm-utils.patch (for old products only)
+  replace: apcupsd.hibernate
+  update: apcupsd-hibernate.patch, README.SUSE
+- Fix init script references to apcupsd-lite.
+  update: apcupsd.init
+
+-------------------------------------------------------------------
+Wed Feb 12 21:05:58 CET 2014 - sbrabec@suse.cz
+
+- Updated to version 3.14.11:
+  * APC MODBUS protocol support over RS232
+    For more see ReleaseNotes.
+- Verify GPG signature.
+- Remove obsolete apcupsd-early-powerdown script.
+- Remove upgrade scripts for SuSE Linux 8 and SLES 8.
+- Do not call powersave-notify (regression bnc#856907).
+
+-------------------------------------------------------------------
+Thu Jan  9 23:39:33 UTC 2014 - p.drouand@gmail.com
+
+- Add %fillup_prereq PreReq tag and %{fillup_only} in %post to 
+  correctly fillup sysconfig file; fix bnc#837337
+
+-------------------------------------------------------------------
+Sun Mar 10 13:07:20 UTC 2013 - dimstar@opensuse.org
+
+- Update apcupsd-3.14.8-systemd.patch: apcupsd lives in /usr/sbin,
+  not in /sbin (bnc#801312).
+
+-------------------------------------------------------------------
+Fri Jan 11 16:49:03 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0
+
+
+-------------------------------------------------------------------
+Fri Jan 11 09:41:28 UTC 2013 - aj@suse.de
+
+- Remove patch apcupsd-largebuf-overflow.patch, it's upstream now
+
+-------------------------------------------------------------------
+Fri Jan 11 09:12:45 UTC 2013 - coolo@suse.com
+
+- fix build on factory - systemd moved to /usr
+
+-------------------------------------------------------------------
+Fri Sep 14 20:17:07 UTC 2012 - p.drouand@gmail.com
+
+- Updated to version 3.14.10:
+  * Fix missing status and spurrious incorrect status on newer BackUPS CS
+    models using USB interface.
+
+  * USB compatibility fixes for Mac OS X Lion
+
+  * USB driver support for newer Microlink models on Mac OS X Lion and Windows
+
+  * Ignore transitions to battery due to calibration (possible if user
+    initiates calibration, then exits apctest and starts apcupsd before 
+    calibration completes.
+
+  * Fix truncation of long UPS model names such as "Smart-UPS RT 5000 XL"
+
+  * Fix MODEL vs. APCMODEL confusion. Remove APCMODEL and rename old MODEL
+    aka 'mode' to DRIVER.
+    
+- Improve Systemd and logrotate support
+- Remove apcupsd-lite support : difference between apcupsd-lite and 
+  apcupsd are minimal or cpu consumption don't justify his presence
+
+-------------------------------------------------------------------
+Tue May 29 15:42:50 UTC 2012 - jengelh@inai.de
+
+- Adjust directory name to source config.guess/sub from
+  to be a /little/ more future proof.
+
+-------------------------------------------------------------------
+Thu Mar  1 20:26:01 UTC 2012 - aj@suse.de
+
+- Buildrequire xorg-x11-devel
+
+-------------------------------------------------------------------
+Wed Feb  8 11:55:48 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 build 
+
+-------------------------------------------------------------------
+Tue Jan 31 16:25:50 CET 2012 - sbrabec@suse.cz
+
+- Mark all files in /etc/apcupsd as config files. Their editing
+  sometimes makes sense (bnc#744358).
+
+-------------------------------------------------------------------
+Tue Dec 20 11:26:20 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Mon Oct 17 08:51:57 UTC 2011 - mkubecek@suse.cz
+
+- apcupsd-3.14.8-exit-race.patch:
+  When terminating apcupsd, cancel other threads before cleanup to
+  avoid race condition and possible segfault (bnc#724487).
+- Change build requirement from sysvinit to sysvinit-init for 12.1
+
+-------------------------------------------------------------------
+Sat Sep 17 11:23:44 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug 25 20:02:35 CEST 2011 - sbrabec@suse.cz
+
+- Implemented hibernate on power fail (bnc#703592#c39).
+
+-------------------------------------------------------------------
+Tue Aug  2 17:40:15 CEST 2011 - sbrabec@suse.cz
+
+- Fixed init check to succeed with unmounted /usr (bnc#703592#c23).
+
+-------------------------------------------------------------------
+Mon Jul  4 20:36:19 CEST 2011 - sbrabec@suse.cz
+
+- Updated to version 3.14.8:
+  * Implement battery calibration and self-test interval in apctest
+    for USB models.
+  * Add support for turning the UPS off completely.
+  * Updates of SNMP code.
+  * Add support for reading battery voltage from the PowerSummary.
+  * Switch time/date output format to simplified ISO.
+  * Compilation warning fixes.
+  * Other bug fixes and improvements.
+  * Documentation improvements.
+- Removed HAL support.
+
+-------------------------------------------------------------------
+Thu Mar 24 15:34:50 UTC 2011 - vcizek@novell.com
+
+- fixed apcupsd-lite path in init script
+  (reported later as bnc#703592)
+
+-------------------------------------------------------------------
+Tue Jul 27 20:11:58 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- avoid leaking file descriptors (use CLOEXEC, patch from Fedora) 
+
+-------------------------------------------------------------------
+Wed Mar 31 15:48:30 UTC 2010 - coolo@novell.com
+
+- package requires sysvinit to build
+
+-------------------------------------------------------------------
+Mon Feb 15 20:44:32 CET 2010 - seife@opensuse.org
+
+- add missing hal directories to pass rpmlint checks
+
+-------------------------------------------------------------------
+Mon Feb 15 19:10:15 CET 2010 - seife@opensuse.org
+
+- fix build with newer net-snmp by undefining MIB
+
+-------------------------------------------------------------------
+Fri Oct 30 11:44:14 CET 2009 - sbrabec@suse.cz
+
+- Require distribution-release, not dummy-release (bnc#550230).
+
+-------------------------------------------------------------------
+Mon Jun 29 17:08:30 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 3.14.6:
+  * Major updates to the User Manual.
+  * New manpages for apcupsd, apcupsd.conf, apctest, apcaccess, and
+    apccontrol.
+  * Add support for turning the UPS off completely.
+  * apcsmart: Deadlock fixes during comms failures.
+  * linux-usb: Fix out-of-bounds array access.
+  * Fix build with gcc-4.4.
+  * apcsmart: Fix crash during process shutdown (SIGTERM).
+  * Several other minor fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Jun  2 17:45:13 CEST 2009 - crrodriguez@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Thu Feb 26 00:21:40 CET 2009 - ro@suse.de
+
+- run suse_update_config in autoconf directory to fix build
+  on ppc64
+
+-------------------------------------------------------------------
+Wed Jan 28 15:49:43 CET 2009 - sbrabec@suse.cz
+
+- Updated to version 3.14.5:
+  * docs: Document the /refresh switch for apctray.
+  * apctest: Do not create pid file.
+  * gapcmon: Network connect timeout fix.
+  * Fix a few unsafe uses of sprintf and strcat.
+  * gapcmon: Iconify fixes for KDE
+  * Fix LOWBATT glitch handling bug.
+  * Support shutting down apcupsd instances running in other
+    sessions.
+  * docs: PCNET username and password details.
+
+-------------------------------------------------------------------
+Fri Sep 19 14:46:25 CEST 2008 - ro@suse.de
+
+- buildreq dummy-release instead of openSUSE-release 
+
+-------------------------------------------------------------------
+Mon Jul 14 17:12:50 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 3.14.4:
+  * Build system rewrite.
+  * Built-in version of libgd for multimon cgi has been removed
+  * Removal of NLS support.
+  * Powerflute has been disabled.
+  * gapcmon: Corrected the use of NOMPOWER and the calc of current
+    usage amount.
+  * Add a heuristic to fix up incorrect NOMINV or NOMOUTV.
+  * Fix hal policy file syntax.
+  * A HAL policy file is automatically installed on Linux systems
+    to disable the hald-addon-hid-ups module which conflicts with
+    apcupsd's control of USB UPSes.
+  * Add support for Nominal Power.
+  * Add units to NOMINV, NOMOUTV, and NOMBATTV stats.
+  * Eliminate warnings emitted from gcc-4.2.1.
+  * Fix killpower and eeprom settings bug on USB models introduced
+    when INPUT reports were prioritized over FEATURE reports.
+  * Fix bugs that could cause NIS-net driver to get stuck waiting
+    for comms to be restored instead of shutting down.
+- Fixed UPS shutdown on systems with /usr on a different file
+  system (bnc#407269).
+
+-------------------------------------------------------------------
+Wed Feb 20 18:09:57 CET 2008 - jdelvare@suse.de
+
+- Remove duplicate index.html file in documentation, create a
+  symbolic link instead to save some disk space.
+- Fix rpmlint warnings about bad end-of-line encoding of some
+  documentation files.
+
+-------------------------------------------------------------------
+Mon Feb 18 16:51:51 CET 2008 - jdelvare@suse.de
+
+- Package apctest.8 properly.
+- Convert the user's guide to HTML before packaging it. Not that
+  many users know what to do with latex source files (361885).
+- Do not package the uninteresting or redundant documentation.
+  This makes the package 4 times smaller (installed size divided
+  by 15, from 33.1 MB to 2.2 MB on i386) (361885).
+
+-------------------------------------------------------------------
+Mon Jan 21 15:17:31 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 3.14.3:
+  * HAL policy file is automatically installed on Linux systems to
+    disable the hald-addon-hid-ups module which conflicts with
+    apcupsd's control of USB UPSes. The file is automatically
+    removed when apcupsd is uninstalled.
+  * Add support for Nominal Power (aka Configured Active Power)
+    reading.
+  * Add units to NOMINV, NOMOUTV, and NOMBATTV stats.
+  * Eliminate some gcc warnings.
+  * Fix killpower and eeprom settings bug on USB modules introduced
+    when INPUT reports were prioritized over FEATURE reports.
+  * Fix bugs that could cause NIS-net driver to get stuck waiting
+    for comms to be restored instead of shutting down.
+- Fixed possible buffer overflow.
+- Removed support for SuSE Linux <= 10.0.
+
+-------------------------------------------------------------------
+Mon Jan 14 14:39:56 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 3.14.2:
+  * USB fix for BackUPS LCD series. This fix carries a risk of
+    breaking other models, but test results are positive so far.
+  * Fix linux-usb device detection bug when multiple hiddev nodes
+    are present. Fixes Fedora#245864:
+  * Fix SNMP port selection when using SNMP driver.
+  * Add workaround for broken BackUPS Pro model that returns
+    certain reports encoded in ASCII.
+  * apcsmart: Wait 20 seconds before declaring COMMLOST.
+  * Documentation updates: Fix up udev info for modern Linux
+    distros.
+  * Don't leak unnecessary descriptors to child when execing
+    apccontrol.
+  * Fix bug with multi-threaded net_open() calls.
+  * Correct multimon.conf humidity monitoring. (Novell#199834)
+  * Fix race between attach_ups() and detach_ups().
+  * Remove dependency on libc++ (again).
+
+-------------------------------------------------------------------
+Thu Aug 23 13:27:57 CEST 2007 - sbrabec@suse.cz
+
+- Fixed multimon.conf comments for humidity measurement (#199834).
+
+-------------------------------------------------------------------
+Tue Jul 24 00:55:01 CEST 2007 - ro@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Wed Jul  4 17:14:12 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 3.14.1:
+  * PCNET driver supports remote shutdown request from UPS web
+    interface
+  * Fix potential NIS client lockup when server disappears.
+  * Fix crash when displaying EEPROM values more than once.
+  * Increase self-test timeout to 40 seconds to accomodate the
+    RS 800.
+  * Rewrite device opening logic to be more reliable.
+  * Do not attempt to cancel shutdowns.
+
+-------------------------------------------------------------------
+Thu May 24 01:25:28 CEST 2007 - ro@suse.de
+
+- fix some rpmlint errors 
+
+-------------------------------------------------------------------
+Wed Apr 11 15:34:00 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 3.14.0:
+  * New stable release.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu Nov 16 16:46:49 CET 2006 - mrueckert@suse.de
+
+- added apcupsd-3.13.9_missing_netsnmp_include.patch:
+  include for net-snmp-config.h was missing.
+
+-------------------------------------------------------------------
+Tue Nov  7 00:55:26 CET 2006 - ro@suse.de
+
+- fix permissions for icon files 
+
+-------------------------------------------------------------------
+Fri Oct 20 13:27:04 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 3.13.9:
+  * Runtime configurable paths for apccontrol.
+  * Ambient temperature is reported for USB UPSes with a AP9612
+    SmartSlot card.
+  * pcnet driver detects COMMLOST and SelfTest events.
+  * pcnet driver supports killpower (turning off UPS output power).
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Sep 20 19:07:54 CEST 2006 - sbrabec@suse.cz
+
+- Build correctly in older products.
+
+-------------------------------------------------------------------
+Wed Sep 20 17:08:41 CEST 2006 - sbrabec@suse.cz
+
+- Create /sbin/apcupsd-lite, working with unmounted /usr (#186606).
+- Call killpower only if power is failing (#186606#6) (#187454).
+- Minor fixes of previous update.
+
+-------------------------------------------------------------------
+Mon Sep 18 18:55:38 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 3.13.8:
+  * GUI monitoring application, gapcmon.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Tue Sep 12 13:22:15 CEST 2006 - aj@suse.de
+
+- Adjust BuildRequires.
+
+-------------------------------------------------------------------
+Mon Apr  3 18:44:55 CEST 2006 - sbrabec@suse.cz
+
+- Do not remove /etc/nologin, if changes are disabled (#161709).
+
+-------------------------------------------------------------------
+Sat Mar 25 12:22:03 CET 2006 - ro@suse.de
+
+- remove second preun script 
+
+-------------------------------------------------------------------
+Fri Mar 24 14:28:48 CET 2006 - sbrabec@suse.cz
+
+- Removed fast incorrect shutdown script (#132478).
+- Added README.SUSE.
+- Integrated with powersave.
+- Do not strip binaries.
+- Simplified neededforbuild.
+- Removed obsolete halt-setup.sh and clean halt.local.
+- Scriptlet fixes.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 01:30:04 CET 2006 - ro@suse.de
+
+- disable parallel build, seems to cause trouble 
+
+-------------------------------------------------------------------
+Thu Jan 12 19:33:04 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 3.12.1.
+
+-------------------------------------------------------------------
+Fri Sep 30 11:12:33 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 3.10.18 (#116685).
+
+-------------------------------------------------------------------
+Tue Jul 12 11:14:06 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 3.10.17a.
+- Moved binaries (linked against libraries in /usr) to /usr/sbin.
+
+-------------------------------------------------------------------
+Wed May  4 18:28:09 CEST 2005 - sbrabec@suse.cz
+
+- Removed START_APCUPSD from halt.local (#81281).
+
+-------------------------------------------------------------------
+Thu Jan 06 14:30:22 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 3.10.16.
+
+-------------------------------------------------------------------
+Tue Nov 30 13:59:26 CET 2004 - sbrabec@suse.cz
+
+- Fixed OS misdetection (missing USB support, #48607).
+  Patch from Andrea Arcangeli.
+
+-------------------------------------------------------------------
+Mon Aug 23 15:13:16 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 3.10.15.
+
+-------------------------------------------------------------------
+Mon Apr 19 11:54:36 CEST 2004 - ro@suse.de
+
+- Force-define HID_MAX_USAGES
+- build using apache2
+
+-------------------------------------------------------------------
+Fri Mar 19 12:21:09 CET 2004 - sbrabec@suse.cz
+
+- Removed *.orig files from documentation.
+
+-------------------------------------------------------------------
+Thu Feb 05 17:30:35 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 3.10.11.
+
+-------------------------------------------------------------------
+Mon Nov 10 13:09:27 CET 2003 - ro@suse.de
+
+- use net-snmp instead of ucdsnmp 
+
+-------------------------------------------------------------------
+Tue Sep 16 23:11:20 CEST 2003 - kukuk@suse.de
+
+- Remove setuid bit from apcupsd (else SuSEconfig will do it)
+
+-------------------------------------------------------------------
+Mon Sep 01 18:09:02 CEST 2003 - sbrabec@suse.cz
+
+- Removed tcpd.h (use systemwide instead).
+
+-------------------------------------------------------------------
+Mon Sep 01 15:54:37 CEST 2003 - sbrabec@suse.cz
+
+- Added "Should-Start: hotplug_usb" to init script.
+- Fix and update hack of orphan fi in halt.local.
+- Fixed pre and postinstall scripts.
+- Really turned on and fixed SNMP support.
+
+-------------------------------------------------------------------
+Fri Aug 29 21:14:30 CEST 2003 - kukuk@suse.de
+
+- Add "Should-Start: serial" to init script [Bug #28353]
+
+-------------------------------------------------------------------
+Fri Aug 15 13:41:04 CEST 2003 - sbrabec@suse.cz
+
+- Updated to development version 3.10.6-05Aug03.
+- Turned on all optional features.
+
+-------------------------------------------------------------------
+Mon Mar 10 16:53:53 CET 2003 - sbrabec@suse.cz
+
+- Buffer overflow fixes.
+- Name clash and error handling fixes.
+
+-------------------------------------------------------------------
+Wed Feb 12 15:32:51 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 3.8.6.
+
+-------------------------------------------------------------------
+Thu Aug 15 14:39:09 CEST 2002 - mcihar@suse.cz
+
+- added $remote_fs to Required-Start (should fix #17294)
+
+-------------------------------------------------------------------
+Fri Aug  2 00:28:03 CEST 2002 - ro@suse.de
+
+- adapted to /srv/www
+- added prereqs 
+
+-------------------------------------------------------------------
+Sat Jul 27 17:43:20 CEST 2002 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Mon Jan  7 08:57:41 CET 2002 - cihlar@suse.cz
+
+- updated to version 3.8.5:
+  * Battery Runtime Calibration in the apctest
+    program
+  * Resolved a crash caused by a lost TCP/IP
+    connection
+
+-------------------------------------------------------------------
+Mon Dec 17 09:12:27 CET 2001 - cihlar@suse.cz
+
+- updated to version 3.8.4-2:
+  * bug fix release
+
+-------------------------------------------------------------------
+Mon Dec 10 09:31:18 CET 2001 - cihlar@suse.cz
+
+- removed START_APCUPSD
+
+-------------------------------------------------------------------
+Thu Nov 29 09:39:35 CET 2001 - cihlar@suse.cz
+
+- update to version 3.8.3:
+  * updated manual
+  * several bug fixes
+  * added support for new hardware
+- fixed permissions of halt-setup.sh
+- fixed halt-setup.sh
+- moved halt-setup.sh from %postun to %preun
+
+-------------------------------------------------------------------
+Tue Nov 27 11:21:02 CET 2001 - cihlar@suse.cz
+
+- fixed variable names in init script [#12451]
+
+-------------------------------------------------------------------
+Thu Jul 26 07:54:53 CEST 2001 - cihlar@suse.cz
+
+- fixed call of suse_update_config
+
+-------------------------------------------------------------------
+Wed Jul 25 10:12:44 CEST 2001 - cihlar@suse.cz
+
+- update to 3.8.2
+- added part with autoconf
+- compile with --with-libwrap and --enable-pthreads
+
+-------------------------------------------------------------------
+Thu Apr 12 13:54:57 CEST 2001 - cihlar@suse.cz
+
+- fixed init script by new skeleton
+
+-------------------------------------------------------------------
+Mon Jan 15 10:57:39 CET 2001 - cihlar@suse.cz
+
+- added apctest
+
+-------------------------------------------------------------------
+Wed Jan 10 09:36:42 CET 2001 - cihlar@suse.cz
+
+- update to 3.8.1
+- change to new init script mechanism
+- fixed initialization of halt.local
+- added BuildRoot
+- clean up spec file
+- bzipped sources
+- added fillup of rc.config
+
+-------------------------------------------------------------------
+Mon Jun 19 19:07:59 MEST 2000 - kasal@suse.de
+
+- Updated to 3.7.2.  The package is still BETA, see "Todo" below.
+
+-------------------------------------------------------------------
+Sun Oct 10 06:06:02 CEST 1999 - bk@suse.de
+
+- new package, requested e.g by Andre Hedrick <andre@suse.com>
+  Todo:
+  - polish /sbin/init.d/apcupsd and add links to the rcX.d directories
+  - add the proper START_APCUPSD= fillup for /etc/rc.config
+  - add the changes for halt.sh in the suse subdir
+

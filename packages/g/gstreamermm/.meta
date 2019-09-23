@@ -1,0 +1,6 @@
+<package name="gstreamermm" project="openSUSE:Factory">
+  <title>libgstreamermm</title>
+  <description>With gstreamermm it is possible to
+develop applications that work with multimedia in C++.</description>
+  <devel project="multimedia:libs" package="gstreamermm"/>
+</package>

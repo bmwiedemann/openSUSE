@@ -1,0 +1,1587 @@
+-------------------------------------------------------------------
+Wed Apr 24 09:40:12 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133120).
+
+-------------------------------------------------------------------
+Mon Jan 28 21:09:53 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2019.1:
+  + This is the first libostree release of 2019; no big changes,
+    just a collection of smaller features and bugfixes.
+  + On the features side, a good example is:
+    lib/repo: Search a list of paths in gpgkeypath for gpg keys.
+  + Another feature is grub2: add support for devicetree.
+  + lib/kargs: allow empty-list arguments i.e it ensures libostree
+    supports "empty list" kernel arguments.
+  + There's also some ongoing work to have libostree be a "backend"
+    for OCI/Docker container storage; checkout: honor opaque
+    checkouts.
+  + If built with --disable-http2, allow enabling via http2=1 will
+    allow people to more easily play with HTTP2 if it's disabled by
+    default.
+
+-------------------------------------------------------------------
+Wed Nov 14 08:35:59 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 2018.9:
+  + New features:
+    * Allow disabling pulling from LAN/USB/Internet
+    * lib/repo: Add an API to get min-free-space-* reserved bytes
+    * OstreeMutableTree: add _remove method
+    * repo: Add a checkout option to not hardlink zero-sized files
+  + Bugfixes (apart from regular memory leaks fixes):
+    * finalize-staged: Bump timeout to 5 minutes
+    * deploy: Fix removing /var/.updated with separate /var mount
+    * src/ostree: Don't delete refs having aliases
+  + One notable change in this release is the initrd service
+    ostree-prepare-root.service now runs earlier in the boot
+    process. This shouldn't actually affect OSes, unless there's
+    extended logic in the initrd that integrates tightly with
+    OSTree.
+  + Another systemd related change is the introduction of a path
+    unit: ostree-finalize-staged.path. This allows the service of
+    the same name to be path activated instead of explicitly started
+    at deployment staging time. This release however does not yet
+    rely on this mechanism to give time for packagers and
+    integrators to adapt to the new unit (e.g. by enabling it in
+    the systemd presets). A future release will require this. Note
+    that deployment staging is still not the default for libostree,
+    although at least rpm-ostree now unconditionally uses staging,
+    and while it generally worked well, we hit issues with people
+    using slower hard drives, hence the increase in timeout in
+    PR #1755 .
+  + Another change to call out is:
+    lib/commit: Don't chown objects to repo target owner.
+    We previously had incomplete support for a process running as
+    uid 0 writing to a repository owned by a non-zero uid, but it
+    was never finished. This will likely be revisited at a later
+    time.
+
+-------------------------------------------------------------------
+Mon Aug 27 09:52:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2018.8:
+  + This release is pretty much all minor bugfixes: memory leaks,
+    fixing error messages and docs, handling a race condition on
+    pull with summary updates. There's one new feature (noted
+    below), and we also gained a new contributing tutorial:
+    https://mail.gnome.org/archives/ostree-list/2018-August/msg00005.html
+  + The one bugfix I want to call out explicitly is:
+    ostree-remount.service: RemainAfterExit=yes
+    (gh#ostreedev/ostree#1697). It's surprising it took us so long
+    to find and fix this; I've seen occasional boot failures that I
+    believe trace down to this problem. The behavior of systemd
+    units of Type=simple without RemainAfterExit=yes set is rather
+    nonsensical; I may try to push to have a warning emitted
+    upstream if such a unit is a dependency of another.
+  + And the one new feature is the auto-update-summary config
+    option for repositories. For more information, see the docs and
+    gh#ostreedev/ostree#1681.
+- Rebase ostree-grub2-location.patch with quilt.
+- Drop libostree-fix-wformat-warnings-on-i586.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Aug 27 09:10:10 UTC 2018 - bjorn.lie@gmail.com
+ 
+- Update to version 2018.7:
+  + There's no one major feature in this release, but we have a
+    variety of improvements and bugfixes.
+
+-------------------------------------------------------------------
+Fri Jun 29 00:09:52 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 2018.6:
+  + lib/repo: Do free space math under lock in error path.
+  + lib/archive: Tell g-ir-scanner to ignore the private
+    libarchive bits.
+  + deploy: Delete .updated file from /etc and /var on new
+    deployments.
+  + switchroot: Allow letting ostree-prepare-root mount /var.
+  + lib/repo-pull:
+    - Support retries for delta superblocks;
+    - Support queuing delta superblock requests;
+    - Add some missing assertions for progress statistics;
+    - Support retrying requests on transient network errors.
+  + ostree/trivial-httpd: Add --random-408s command line option.
+  + fsck: Add --all to print all corrupted object.
+  + bash-completion: Don't add a space after files and directories.
+  + u-boot: add support for devicetree.
+- Changes from version 2018.5:
+  + lib/sysroot: Add OSTREE_EX_STAGE_DEPLOYMENTS environment
+    variable.
+  + docs: Add "Hello World" example.
+  + lib/deploy:
+    - Do post-ops when removing staged commit;
+    - Also compare deployment csum versions.
+  + repo: Add checksum to error message opening unreadable object
+  + deploy:
+    - Don't prune repo at finalization time by default;
+    - Return staged deployment;
+    - Silently do nothing if passed same set of deployments.
+  + man: Add man page for create-usb.
+  + fsck: Mark commits with missing or deleted object partial.
+  + Add concept of "staged" deployment.
+  + bin: Hide `admin instutil` command.
+  + pull: Don't save summary to cache before validating signatures.
+  + lib/repo-pull:
+    - Improve error message when no summary is found;
+    - Rename a variable for clarity.
+- Add libostree-fix-wformat-warnings-on-i586.patch to fix 32-bit
+  arch building failure.
+
+-------------------------------------------------------------------
+Wed May 02 05:42:01 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 2018.4:
+  + A quick turnaround after 2018.3 to include one main PR:
+    gh#ostreedev/ostree#1508.
+  + "switchroot: Ensure /run/ostree-booted is created even without
+    initramfs".
+  + This fixes ostree when booting without an initramfs. Thanks to
+    @akiernan for the bug report and helping review the fix! I'm
+    working on enhancing the test suite, which will help in adding
+    some coverage here.
+- Changes from version 2018.3:
+  + Keeping up with our ~monthly cadence. A variety of contributors
+    here again, it's great to see! There's two notable features,
+    and a variety of non-critical bugfixes.
+  + On the features side we have:
+    - sysroot: Add concept of deployment "pinning".
+    - ostree: introduce PAYLOAD_LINK object type.
+    - lib/fetcher: Allow clients to append to User-Agent.
+  + By default libostree prunes older deployments; the pinning
+    feature allows you to explicitly retain them until unpinned.
+    This is useful for major version updates.
+  + The PAYLOAD_LINK functionality allows libostree to do
+    content-based deduplication. Previously, if e.g. a file changes
+    in metadata (mode, owner, xattrs such as SELinux labels), we
+    can't make a plain Unix hardlink, and hence by default end up
+    with a new copy on disk. However, the Linux kernel has
+    standardized "reflinks" and some filesystems support them,
+    including modern versions of XFS. When reflinks are available,
+    this functionality causes libostree to compute a content-only
+    payload, and when importing an object, if it matches in content
+    with an existing object, to use reflinks to deduplicate, while
+    using different inodes.
+  + Finally, the HTTP User-Agent API is intended for higher level
+    tools linking to libostree where one wants to expose the app
+    version as well.
+  + Beyond that, as mentioned above we have a variety of
+    non-critical fixes such as memory leaks, test suite
+    improvements, correctly printing the "would be pruned" size
+    when using prune --no-prune, etc.
+- Changes from version 2018.2:
+  + We're keeping up with the approximately-monthly release cycle.
+    There's mostly a collection of smaller fixes here, with some
+    enhancements. I'm biased but my personal favorite is
+    gh#ostreedev/ostree#1438 since it makes the output of findmnt
+    rather significantly nicer on this workstation where I have
+    container tooling creating sub-mounts in /var that are no
+    longer replicated in /sysroot.
+  + For the embedded space, gh#ostreedev/ostree#1411 for devicetree
+    support is likely interesting, and is related to a discussion
+    on the mailing list:
+    https://mail.gnome.org/archives/ostree-list/2018-February/msg00001.html
+  + Jonathan's PR gh#ostreedev/ostree#1441 to add callback
+    filtering to checkout was necessary for us to re-implement some
+    hairy logic from librpm around "file coloring"; see
+    projectatomic/rpm-ostree#1227 We're getting quite far along now
+    in having rpm-ostree be a truly hybrid system, supporting the
+    existing RPM ecosystem.
+  + Marcus definitely wins the "lines changed" count this cycle by
+    adding SPDX-License-Identifier to all of the C source files
+    (gh#ostreedev/ostree#1439). This happened because we relicensed
+    the documentation to dual CC BY-SA and GFDL in
+    gh#ostreedev/ostree#1432 to enable a Wikipedia page which I
+    just noticed exists now!
+
+-------------------------------------------------------------------
+Fri Apr  6 10:29:32 UTC 2018 - dimstar@opensuse.org
+
+- Drop pkgconfig(libgsystem) BuildRequires: this is no longer
+  needed.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 05 14:25:03 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 2018.1:
+  + Support for booting without initramfs.
+  + bash/ostree: add missing --add-metadata option.
+  + bin/commit: add --keep-metadata option.
+  + bin/commit: move parent checking code higher up.
+  + bin: Fix cookie builtin build with curl but no soup.
+  + build-sys: Allow building with curl, but without libsoup.
+  + build-sys: Link with -ldl for rust build.
+  + deploy: add --karg-none argument.
+  + find-remotes: Add --finders option.
+  + grub2: Exit gracefully if there's no system ostree repository.
+  + lib/checkout: Validate pathnames during checkout.
+  + lib/fetcher: Add version to USER_AGENT string.
+  + lib/pull: allways include ostree-repo-pull-private.h.
+  + lib: Validate metadata structure more consistently during pull.
+  + ostree-prepare-root: enabler for simpler kernel arg.
+  + rofiles: Add --copyup option.
+  + rofiles: Fix --copyup when creating a new file.
+
+-------------------------------------------------------------------
+Wed Dec 20 10:37:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.15:
+  + The headlining feature in this release is support for
+    repository locking, contributed by Dan Nicholson. Currently it
+    is disabled by default; add locking=true in a repository
+    configuration file to enable. This feature should be considered
+    as "tech preview"; it's highly likely we'll stabilize it in its
+    current form, but it's possible something will change.
+    Currently the locking only protects commit + prune; there is a
+    large pending PR to extend locking to many more APIs and
+    commands.
+  + Several new APIs were added; for example libostree now has a
+    convenient API to break a hardlink, which happens in e.g.
+    rpm-ostree in several places such as handling the RPM database.
+  + Also, multithreading support in the commit APIs was cleaned up
+    and clarified. It's now possible to call transaction_set_ref()
+    from multiple threads, which rpm-ostree uses now to import RPMs
+    to OSTree in parallel.
+  + We're tracking an issue with http2+libcurl and it looks like
+    there are a number of issues still floating around
+    HTTP2+libcurl (some are server bugs), that we added support at
+    both build and runtime to disable http2.
+  + The fsck command learned how to verify ref bindings, and
+    relatedly, the commit command gained a --unbound option to skip
+    creating ref bindings.
+
+-------------------------------------------------------------------
+Wed Dec 20 10:36:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.14:
+  + This release is almost entirely bugfixes. One notable fix is a
+    read-after-free when libcurl is finalizing that some people
+    have hit.
+  + There are a number of improvements around the ${repo}/tmp
+    directory and the per-transaction staging directory in
+    preparation for adding locking in a future release. This
+    release should already help avoid several failures when doing
+    concurrent commits; the aim of the locking work will support
+    concurrent prunes and commits.
+
+-------------------------------------------------------------------
+Wed Dec 20 10:35:29 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.13:
+  + A lot of across-the-board improvements here; the pure bugfixes
+    are mostly in the experimental Avahi bits, hardening the
+    FIFREEZE on /boot code, explicit errors when trying to commit
+    non-UTF8 filenames, and finally a number of fixes around our
+    use of mmap.
+  + One slight backwards-incompatible change (but I doubt it'll
+    break anyone): Disallow refs starting with a non-letter or
+    digit If this does affect you, please let us know ASAP.
+  + For improvements, first up, Alex changed the static delta code
+    to avoid holding everything in memory; this is a substantial
+    improvement for large deltas, and also for flatpak which uses
+    deltas as a "bundle" format.
+  + A few notable changes:
+    - commit: Add _CONSUME modifier flag. You probably want to use
+      this by default for your build/package systems.
+    - core: Add standard SOURCE_TITLE metadata key. This one I
+      think is conceptually quite interesting; for many people,
+      their ostree commits are derived from something else that has
+      its own versioning, and it's useful to show that explicitly.
+      I encourage ostree-based build systems to consider rendering
+      human-readable information about your builds into this
+      standardized metadata key.
+    - On the command line side: cleaning up the --help output
+      significantly.
+
+-------------------------------------------------------------------
+Mon Oct 09 13:02:48 UTC 2017 - aplazas@suse.com
+
+- Update to version 2017.12:
+  + Quite a lot in this release. First, on the notable bugfix side,
+    we fixed an issue where background threads could remain alive
+    after an error was encountered during pulls. Particularly for
+    projects like flatpak that do multiple pulls in process, this
+    is an important fix.
+  + Another important change related to pulls is that libostree now
+    performs checksums when mirroring again. The intent here was to
+    speed up mirroring, but it led to a confusing security story.
+    Now it's easier to explain: for HTTP pulls we verify checksums
+    (and this can be disabled), for local filesystem pulls we
+    don't, (but it can be enabled). We've always verified checksums
+    by default when pulling from an archive repository into a
+    non-archive.
+  + Anton Gerasimov contributed a change to the libcurl backend to
+    support PKCS#11 URIs, useful for storing certificates in a
+    hardware or software enclave.
+  + The schema for the experimental OstreeRepoFinderMount API to
+    find OSTree repos on removable media has changed incompatibly,
+    so that the media doesn’t need to contain two similar lists of
+    refs. It will now look in .ostree/repos.d, .ostree/repo,
+    ostree/repo and var/lib/flatpak paths on removable media.
+  + Similarly, the experimental
+    ostree_repo_resolve_keyring_for_collection() API has changed to
+    return an OstreeRemote containing the keyring, rather than just
+    the keyring, making it more generally useful.
+  + The bloom filter used when finding refs from remote peers has
+    been fixed to work correctly on 32-bit architectures (such as
+    ARM). This doesn’t change the bloom filter format, but will
+    require bloom filters created on 32-bit architectures to be
+    regenerated in order for advertisements from those machines to
+    work.
+  + Repositories which have a collection ID set will now put their
+    repository metadata in an ostree-metadata ref when ostree
+    summary --update is run, in addition to putting it in the
+    summary file. This is part of a plan to securely allow unsigned
+    summary files for peer-to-peer pulling of refs. This won’t
+    happen for repositories which don’t have a collection ID set,
+    or if --enable-experimental-api is not configured.
+  + A new ostree create-usb command has been added (if configured
+    with --enable-experimental-api) which can be used to put refs
+    from repositories onto removable media in a format which can be
+    detected by OstreeRepoFinderMount. For example, to allow easy
+    sharing of flatpaks or OS updates between offline machines.
+  + OstreeRepo has gained hash() and equal() methods, so it can now
+    easily be used in a hash table based on its device number and
+    inode, rather than using its path.
+  + A minor bug was fixed in rofiles-fuse, which would cause files
+    to be created with random mode bits if called for O_RDONLY.
+  + For clients that use OstreeRepoDevInoCache, a bug was fixed
+    which caused libostree to ignore callbacks that allow modifying
+    file modes, ownership, and extended attributes.
+  + libostree now supports --with-crypto=gnutls. Like the OpenSSL
+    support, this is currently just checksums, but we are driving
+    this towards making the GPG dependency optional and supporting
+    other signature methods.
+  + In previous releases, libostree learned how to make hardlinks
+    for local pulls. But if we couldn't hardlink (e.g. the devices
+    were separate), the local pull code went through a much slower
+    generic path that included re-checksumming objects. Now there's
+    a copy/reflink fast path that uses FICLONE/copy_file_range()
+    directly if possible. This can be substantially faster.
+  + ostree prune learned a new --only-branch option. This can be a
+    lot more convenient for release engineering tasks.
+  + As usual, more work was done to improve the testsuite. It
+    should now be able to better detect tmpfs/overlayfs
+    environments. The upstream CI now also runs tests in a
+    non-overlayfs environment for better coverage.
+- Changes from version 2017.11:
+  + This release has a few new features, some UX improvements for
+    the command line, and a variety of bugfixes.
+  + The project is now more canonically called "libostree", though
+    "OSTree" and "ostree" are also fine.
+  + The most important bugfix for anyone using rofiles-fuse
+    (typically build systems, rpm-ostree also uses it) is:
+    - rofiles-fuse: Fix lchown() and hardlink verification for
+      symlinks.
+  + On the features side, we've added a few new APIs to the
+    libarchive importing and checkout path that will be used by
+    rpm-ostree. This should be of interest to anyone using
+    libostree for build systems or underlying a hybrid
+    image/package system like rpm-ostree.
+  + Also on the host system side, there is a new (canonical) place
+    for build systems to put the kernel/initramfs:
+    /usr/lib/modules/$kver.
+  + Make all of the deployments show up in the uboot configuration,
+    to help enable automatic fallback if a new OS fails to boot.
+  + Lots of style cleanups, some "error prefixing" work to ensure
+    we produce understandable errors in more situations,
+    and one other notable cleanup: add a tmpfiles.d snippet to
+    clean up /var/tmp/ostree-ovl.XXX. This should be nice for
+    anyone who uses ostree admin unlock frequently.
+  + Improve the management of configuration for remotes.
+  + Lots of cleanup in the command line parsing and fixes for
+    --help, and also helped with the new --selinux-label option for
+    ostree commit.
+  + Fix the handling of GPG keys that have subkeys.
+  + Fix the build system and tests.
+
+-------------------------------------------------------------------
+Sun Aug 20 16:28:49 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.10:
+  + In this release Coverity scans were set up , and fixed all of
+    the problems it found. None of the issues were critical; the
+    only off-by-one array indexing for example was in a test case.
+  + Add bash completion.
+  + Documentation fixes.
+  + There are a number of smaller features:
+    - lib/repo: Add API to create and list ref aliases.
+    - repo: Introduce ostree_repo_open_at() and
+      ostree_repo_create_at() is a notable new API, and finally
+      completes our fd-relative porting for OstreeRepo. The
+      semantics of these functions are nicer; it's now more
+      convenient to unconditionally call ostree_repo_create_at()
+      for example to ensure a repository exists, returning the
+      opened result.
+  + lib/sysroot: Add journal-msg signal is a nice cleanup in that
+    we finally stopped doing printf() in the library code for
+    OstreeSysroot. If you maintain a client, you should start
+    listening for this signal, like the demo command line does (if
+    you want the text of course).
+  + In the "important bugfixes" category, pull: mark commits from
+    local cache as partial fixes up the --localcache-repos logic.
+  + Also a number of bugfixes contributed for the collections logic
+    as well as cases of trying to download a missing summary file.
+
+-------------------------------------------------------------------
+Sun Aug 13 22:08:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.9:
+  + A notable new feature in this release is that the pull
+    machinery now interprets two new metadata keys:
+    ostree.ref-binding and ostree.collection-binding.
+    This allows closing a longstanding class of "sidegrade" attacks
+    that Florian Weimer identified when performing a security audit
+    of libostree years ago (bgo#724873).
+    There was a more recent discussion on this topic on the list:
+    https://mail.gnome.org/archives/ostree-list/2017-May/msg00013.html
+  + For the ostree-as-host case, this only matters if you offer
+    multiple refs. For flatpak, it's more important as a MITM
+    attacker could actually switch applications; that's why flatpak
+    implemented this a while ago as xa.ref.
+  + I'll note here that it's recommended for content providers to
+    make use of ostree's support for tls-ca-path to implement TLS
+    CA pinning, which protects all metadata and content in a strong
+    fashion; in this scenario the GPG signatures act as a secondary
+    layer of defense and make offline verification easier (for e.g.
+    mirroring).
+  + Otherwise, there's some performance enhancements for local
+    pulls, and a variety of bugfixes.
+
+-------------------------------------------------------------------
+Thu Jul 20 22:28:38 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.8:
+  + This is a quicker release closely following 2017.7, but it
+    still includes a number of changes. First, a lot of work is
+    landing from Philip/Krzesimir for doing "collections" and
+    pulling content from Avahi/USB drives etc. That work is still
+    underneath --enable-experimental-api, but look for more from
+    that soon!
+  + Other notable user-visible features from this cycle are:
+    - lib/repo: Add min-free-space-percent option, default 3%.
+    - Add "pull --localcache-repo".
+  + An important bugfix for bare-user repo mode owners is:
+    lib/commit: Ensure bare-user objects are always
+    user-readable.
+  + Besides that we have a lot of code cleanup, CI work, etc.
+
+-------------------------------------------------------------------
+Thu Jun 29 13:27:54 UTC 2017 - aplazas@suse.com
+
+- Update to version 2017.7:
+  + The most notable thing for this release is that for flatpak
+    users/distributors, this release adds a lot of (opt-in)
+    hardening against setuid or world-writable files. These issues
+    are also (to a lesser degree) applicable to ostree-based build
+    systems which use the bare-user repository mode. A pending
+    flatpak version will require this version of libostree.
+  + For ostree-as-host, we fixed a major regression in SELinux
+    labeling for /etc (only applies to SELinux-using host systems).
+  + Known issue: test-symbols.sh will fail when building from the
+    tarball (as opposed to a git clone).
+  + Besides that, there's various smaller cleanups and fixes. It's
+    great to see contributors from a variety of organizations;
+    having libostree be a shared infrastructure layer across
+    distributions is a longstanding vision.
+
+-------------------------------------------------------------------
+Fri Jun 16 21:11:18 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.6:
+  + One of the most notable changes in this release is that we
+    switched to using a systemd generator for handling /var, which
+    means admins can now set it up as an explicit mount point. We
+    feel pretty confident in the code, but do test your specific
+    setup. One note in particular; the new model (obviously)
+    requires systemd, and while we tried to preserve the
+    non-systemd path, it wasn't explicitly tested.
+  + The work to port to a new code style continues rapidly; at this
+    point most of the library is converted, with just the command
+    line remaining. I think the new style is a lot more readable
+    now that we rely fully on __attribute__((cleanup)).
+  + Enhance the OstreeAsyncProgress reporting API, which I think is
+    going to be quite useful for user interface frontends (like
+    GNOME Software).
+  + There's a smattering of smaller bugfixes; minor memory leaks,
+    double close() and the like. In this cycle we also beefed up
+    our CI/testing more - we now test both Fedora Atomic Host and
+    flatpak more explicitly. Contributions to extend the suite to
+    other distributions would be appreciated; for example, tests
+    for ostree-as-host on Debian. Our Travis-executed tests should
+    be extensible.
+  + Fix some of the test suite for installed tests, and also
+    introspection fixes for language bindings.
+  + Another feature that involved a lot of internal changes is our
+    handling for /etc on SELinux-based systems. We now label files
+    as we go rather than having a more fragile separate relabeling
+    path. This is also exposed as an API, which is used by
+    rpm-ostree now. I think this particular change highlights the
+    strength of "libostree" as an API that can be reused by higher
+    level systems.
+- Changes from version 2017.5:
+  + This is a bugfix release for 2017.4 to fix a regression that
+    broke flatpak.
+- Changes from version 2017.4:
+  + A notable new feature in this release is a fourth repository
+    mode: "bare-user-only". This is very similar to bare-user, but
+    canonicalizes permissions and ignores xattrs. The intended
+    use of this is for "non-OS" container tools such as flatpak,
+    where one intentionally discards the traditional file
+    ownership. (I'm calling this container case "non-OS" to
+    distinguish from other container tools where one might want to
+    "log in" via PAM and supporting distinct UIDs inside a single
+    container is valuable)
+  + We have a few new APIs, such as ostree_check_version() which is
+    important when making use of some of the "API extensions" we
+    have using GVariant on e.g. ostree_repo_pull_with_options().
+  + The diff is a bit larger due to us switching to a new code
+    style.
+  + Another quite important change is that ostree trivial-httpd is
+    disabled by default. With a libcurl build, this is the last
+    part that links to libsoup. It's only needed for unit tests, so
+    can be subpackaged or discarded. (We're doing the latter for
+    Fedora).
+  + Speaking of curl, we now support --with-openssl which enables
+    using OpenSSL's libcrypto for SHA256. This can be notably
+    faster. You likely want this if e.g. libcurl is already linked
+    to OpenSSL for you. I'm increasingly confident in the curl
+    code, and should be ready to recommend using it by default in
+    the next release or two.
+
+-------------------------------------------------------------------
+Sat Mar 11 10:23:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.3:
+  + contrib/golang: rm directory.
+  + deltas: Don't put unreadable *from* objects in fallback.
+  + delta-show: Don't dump whole superblock, do show fallback
+    checksums.
+  + repo: Fix static delta progress display.
+  + pull: Explicitly error out if metadata objects are fallbacks.
+  + pull: Fold together deltapart+fallback count for display.
+  + ci: Install PyYAML.
+  + lib: Ensure an error is set in ensure_unlinked() if errno !=
+    ENOENT.
+  + libtest: Re-enable quiet mode for building fs tree.
+  + README.md: Add more/clean up links to consuming projects.
+  + libglnx: Re-bump to master due to accidental reversion.
+  + ci: Hard error on all -fsanitize=undefined warnings.
+  + build: Add --with-smack, use it to reset contexts for writing
+    objects.
+  + main: Make ostree --version output YAML (and add gitrev).
+  + deploy: Correctly use libmount unref() calls rather than
+    free().
+  + man/repo-config: Document mirrorlist.
+  + tree-wide: Squash noncritical compiler warnings.
+  + deploy/libmount: Fix build with old util-linux 2.23 (CentOS7).
+  + fetcher: Log failures into journal.
+  + upgrade: Add support for --pull-only and --deploy-only.
+  + grub2: Use g_spawn_sync() rather than GSubprocess to avoid
+    SIGCHLD.
+  + deltas: Expose the filename parameter.
+  + pull: don't use static deltas if archive repo.
+  + libglnx: bump for -Wmaybe-uninitialized fix.
+  + grub2: Use "linux16" only on x86/x86_64.
+  + pull: Use all available commits for delta sources.
+  + build: Fix disabling --enable-man if xsltproc is not available.
+  + fetcher/curl: Fix leaks caught by ASAN.
+  + libostree: Allow compression level to be set for archive-z2
+    stream.
+  + Allow and start using C99 declaration-after-statement.
+  + repo/checkout: Verify early if src/destination are on same
+    device.
+  + checkout: Support a "pure addition" mode.
+  + repo/checkout: fix 32-bit builds.
+  + repo-pull: add option to set the async update frequency.
+  + ostree: allow setting update frequency from command line.
+  + repo/checkout: Convert a few functions to new "stmt-decl/FALSE"
+    style.
+
+-------------------------------------------------------------------
+Thu Mar  2 14:51:14 UTC 2017 - dimstar@opensuse.org
+
+- Update License: this should be LGPL-2.1+, not GPL-2.0+.
+
+-------------------------------------------------------------------
+Thu Mar  2 10:01:46 UTC 2017 - jengelh@inai.de
+
+- RPM group changes
+
+-------------------------------------------------------------------
+Wed Feb 22 16:34:23 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2017.2:
+  + libostree: Don't distribute generated enumtypes in tarballs.
+  + lib: Adjust comments in symbols section for last release.
+  + lib: Prefix GPG errors with the checksum.
+  + lib: Move the bupsplit selftest into our test framework.
+  + Rename to libOSTree.
+  + oxidation: Add implementation of bupsplit in Rust.
+  + trusted.gpg.d: keep in the same location.
+  + lib: Add ostree_repo_reload_config().
+  + rust: Support `make dist` -> cargo vendor.
+  + repo: Add archive/zlib-level option, drop default compression
+    to 6.
+  + fetcher: Drop the libsoup queue.
+  + libcurl backend.
+  + fetcher queue: also throttle on outstanding writes.
+  + libostree: added empty ot_cleanup_{read,write}_archive macros.
+  + ostree-repo: Clarify error behaviour of remote option getters.
+  + admin-switch: Don't segfault if there's no remote.
+  + commit: Support -F/--body-file, like git.
+  + build: Remove .PHONY for Rust shared library.
+  + rofiles-fuse: Support write/read_buf().
+- Rename from ostree to libostree, following upstream.
+
+-------------------------------------------------------------------
+Fri Feb 10 16:42:57 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2017.1:
+  + This release has mostly bugfixes, the main new feature is that
+    the prune command gained more sophistication around selectively
+    pruning branches. We're planning to use this in Project Atomic
+    work where we want to co-locate both "development" and "stable"
+    branches in the same repository.
+  + The next release is likely to be more exciting, as we have an
+    additional new libcurl backend in the works - this release
+    contains some preparatory cleanup for that.
+
+-------------------------------------------------------------------
+Thu Dec 22 14:31:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2016.15:
+  + This release is mostly bugfixes - for example, it cleans up the
+    vast majority of memory leaks caught by ASAN. We also build
+    without libsoup again, which is preparatory for a potential
+    addition of a libcurl HTTP backend.
+  + Another notable change is that we now always checksum
+    individual objects even when applying static deltas, regardless
+    of whether or not the summary file is signed. This is part of
+    an ongoing thread about supporting OCI as a transport layer.
+- Add pkgconfig(zlib) BuildRequires: configure explicitly checks
+  for it.
+
+-------------------------------------------------------------------
+Tue Nov 29 15:05:10 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2016.14:
+  + otutil: Note that ot_log_structured takes a printf format.
+  + libglnx: Bump to master (for -fsanitize fixes).
+  + Distribute test scripts even if we wouldn't run them.
+  + Distribute valgrind suppressions in tarballs.
+  + Filter bootloader supplied kernel cmdline options.
+  + repo: Don't put remote refs in the summary file.
+  + pull: Don't do deltas with --commit-metadata-only.
+  + pull: Add per-remote cookie jar.
+  + remote: Add command to list cookies.
+  + remote: Add commands to add and remove cookies for a remote.
+  + OsreeFetcher: Treat 403 as not found.
+  + trivial-httpd: Add support for checking cookies.
+  + Update documentation for cookie handling commands.
+  + deltas: Only keep one file open at a time during compilation.
+- Changes from version 2016.13:
+  + pull: Add support for `http-headers` option.
+  + pull: Redo logic for "scanning".
+  + commit: Fix reading xattrs from OstreeRepoFile:s.
+  + lib: Define and use cleanup functions for gpgme.
+  + lib: Split out helper function to create GPG context.
+  + Add "gpgkeypath" option to remotes.
+  + lib: Add an API to GPG verify a commit given a remote.
+  + pull: Do GPG verify commit objects when using deltas.
+
+-------------------------------------------------------------------
+Wed Nov  2 11:50:20 UTC 2016 - dimstar@opensuse.org
+
+- Add pkgconfig(libsystemd) BuildRequires: configure explicitly
+  calls on both .pc names (systemd and libsystemd). We do want to
+  stay independent of potential systemd packaging changes.
+
+-------------------------------------------------------------------
+Wed Oct 26 10:15:24 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2016.12:
+  + pull: Support inherit-transaction.
+  + pull: Support multiple specifications of --subpath.
+  + docs: amend vmlinuz & initramfs naming convention.
+  + ostree-sysroot-deploy.c: delete redundant check.
+  + OstreeFetcher: provide proxy credentials if needed.
+  + core: Do create hardlinks to symlinks for checkouts.
+  + add .redhat-ci.yml and .redhat-ci.Dockerfile.
+  + .redhat-ci.yml: use projectatomic/ostree-tester.
+  + Fix regression for symlinks in bare-user repos.
+  + ostree_repo_read_commit_detached_metadata: Handle parent repo.
+  + detached metadata: Put these in transaction.
+  + Release 2016.12.
+
+-------------------------------------------------------------------
+Mon Oct 10 17:34:47 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2016.11:
+  + static-delta: add some error handling.
+  + pull: Do allow executing deltas when mirroring into
+    bare{,-user}.
+  + ostree-repo.c: Fix file descriptor cleanup.
+  + ostree_sysroot.c: Don't close sysroot_fd twice.
+  + sysroot: Port some small cleanup code to fd-relative.
+  + sysroot: Port origin writing code to fd-relative.
+  + sysroot: Drop an fsync for origin file when writing
+    deployments.
+  + sysroot: Drop an unnecessary fsync.
+  + boot: Ensure we remount /var writable before systemd does
+    journal flush.
+  + ostree_sysroot_init_osname: also create /var/log.
+  + docs: add mention of rpm-ostree package layering.
+  + admin: Allow running status unlocked.
+  + Fix spelling of "repository".
+  + checkout: Fix fsync defaults for new API to be off for real.
+  + trivial-httpd: Port mostly to fd-relative.
+  + libglnx: Update to latest.
+
+-------------------------------------------------------------------
+Mon Sep 19 17:30:19 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 2016.10:
+  + pull code: support contenturl setting.
+  + trivial-httpd: prepend timestamp in log file.
+  + pull: drop fetching_sync_uri.
+  + pull: add mirrorlist support.
+  + libtest: add has_gpgme() helper function.
+  + tests: add tests for contenturl and mirrorlist.
+  + pull code: clean up mirrorlist hack.
+  + build: Set --enable-man during distcheck.
+  + build: Distribute man page XML source.
+  + build: Actually distribute man page XML source.
+  + switchroot: Fix build on Ubuntu.
+  + switchroot: Fix test-switchroot now autotools can build static.
+  + ostree-prepare-root: Error if realpath fails.
+  + ostree-prepare-root: Fix running with musl.
+  + gpg: do not segfault when the algorithm name is not known.
+  + repo: Revert default timestamp from 1 back to 0.
+  + delta: Add missing `goto out` for failure to mmap().
+  + repo: Only use mmap() for metadata > 16k.
+  + delta: Unreference files we've processed.
+  + fetcher: Fix another finalization deadlock.
+  + sysroot: Avoid double cleanup, and ensure no cleanup if
+    specified.
+  + core: Make OSTREE_TIMESTAMP public API.
+  + Release 2016.10.
+
+-------------------------------------------------------------------
+Tue Sep 06 15:45:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2016.9:
+  + libostree.sym: Add 2016.9 section.
+  + deltas: Handle cleanup of fd array properly.
+  + deltas: Use F_DUPFD_CLOEXEC properly.
+  + pull-local: Support requiring static deltas.
+  + tests: Ensure deltas for pulling when needed.
+  + pull: Disable static deltas by default for local pulls.
+  + tests: Test that local pulls do not use deltas.
+  + Move ostree-* executables to /usr/lib/ostree.
+  + ostree_bootdir: prepend $(prefix) to path.
+  + ostree_bootdir: properly preprend $(prefix).
+  + manual/repo.md: reword bits about the summary file.
+  + repo: Really ignore progress changed user data.
+  + fix typo in docs/manual/atomic-upgrades.md.
+  + prune: Elaborate on what formats are accepted by dates.
+  + fixup! fix typo in docs/manual/atomic-upgrades.md.
+  + test-rofiles-fuse: Actually check out via hardlinks.
+  + rofiles-fuse: Rework to be based on nlink.
+  + pull_with_options: fix remote parameter name & desc.
+  + pull_with_options: allow GPG verification override.
+  + pull_with_options: fix stray return FALSE.
+  + pull: Make .commitpartial files world readable.
+  + repo: Add prefixes to errors for querying size/deleting.
+  + lib: Add an API to list only "our" objects, fix prune to use
+    it.
+  + pull: use same name for parameter and documentation comment.
+  + u-boot: Merge ostree's and systems uEnv.txt.
+  + sysroot: Drop unnecessary `dup()` invocation.
+  + sysroot: Add a flag to suppress post-deploy cleanup.
+  + commit: Don't delete tmp/cache dir.
+  + switchroot: Fix building with musl libc.
+  + ostree-prepare-root: Allow building statically with musl.
+  + switchroot: Replace custom error printing with err/warn
+    functions from libc.
+  + switchroot: Move `path_is_on_readonly_fs` to header file.
+  + repo-pull: properly store the cancellable.
+
+-------------------------------------------------------------------
+Sun Aug 14 22:36:03 UTC 2016 - dmacvicar@suse.de
+
+- Update to version 2016.8:
+  + Almost entirely bugfixes. Most notable is a fix for a
+    relatively rare race condition in the pull code on cleanup
+    (after completion), and also a memory leak.
+  + Besides that, there are improvements for the test suite, some
+    more porting away from libgsystem, a bugfix for static deltas
+    important to flatpak, build tweaks for older glib, etc.
+- Changes from 2016.7:
+  + There's quite a lot of changes in this release since 2016.5,
+    but one thing to call out explicitly it is a fixed race
+    condition in the HTTP pull code that could cause hangs or
+    crashes that mostly occurred only when doing "large" pulls
+    (thousands of object requests). If this occurs, client systems
+    can work around it by cancelling and retrying the pull.
+
+-------------------------------------------------------------------
+Tue Jun 28 09:48:27 UTC 2016 - fcrozat@suse.com
+
+- Move grub2 related files to new ostree-grub2 subpackage (similar
+  to Fedora), only used to integrate ostree with grub2
+  (fully fix boo#974714).
+
+-------------------------------------------------------------------
+Mon Jun 27 09:31:37 UTC 2016 - fcrozat@suse.com
+
+- Update to version 2016.6:
+  + refs: add "ostree refs --create" and unit tests.
+  + manual: Link to mender.io.
+  + Add "archive" as an alias for "archive-z2".
+  + libglnx porting: delete temp files on failure of file creation.
+  + repo: Avoid a possible divide by zero in progress.
+  + manual: Discuss mirroring.
+  + build: Fix libreaddir-rand to honor global CFLAGS.
+  + tests: Support OT_SKIP_READDIR_RAND.
+  + pull: Ensure we always process queue only from main thread.
+- Switch git url to https://github.com/ostreedev/ostree.
+- Fix Url in specfile.
+
+-------------------------------------------------------------------
+Wed May 11 15:01:58 UTC 2016 - dimstar@opensuse.org
+
+- Add ostree-grub2-location.patch: Fix path to find
+  grub-mkconfig_lib. openSUSE installs those files to 
+  /usr/share/grub2, upstream would do /usr/share/grub (boo#974714).
+
+-------------------------------------------------------------------
+Fri Apr 22 00:29:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2016.5:
+  + Add a stub .travis.yml.
+  + tests: Add a test-abi.
+  + pull: Add OSTREE_REPO_PULL_FLAGS_UNTRUSTED flag.
+  + Add --untrusted option to pull and pull-local.
+  + OstreeSePolicy: add ostree_sepolicy_get_csum().
+  + core: Add verbose messages for pruning.
+  + core: Add debug messages for traversing.
+  + build: Set G_LOG_DOMAIN to OSTree.
+  + main: Set log handler for OSTree domain.
+  + packaging: fix bashism in dist-snapshot target.
+  + docs: Add a section on repository management.
+  + commit: Support generating commits with no parent, or a custom
+    one.
+  + commit: Support writing orphans.
+  + commit: support editor for orphan commits.
+  + docs/CONTRIBUTING.md: Update for github move, Homu etc.
+  + test-xattrs: use TAP syntax to skip test.
+  + various tests: skip if temp directory lacks xattr support.
+  + Symlink libreaddir-rand.so into tests directory.
+  + tap-test: clean up temporary test directories as intended.
+  + In tests that use gpg, terminate the gpg-agent after testing.
+  + Load g-i bindings from builddir during build-time testing.
+  + tests/admin-test.sh: this is a bash script, not a POSIX sh
+    script.
+  + Force libreaddir-rand to be a shared library.
+  + Skip tests that run rofiles-fuse if /dev/fuse or /etc/mtab
+    unavailable.
+  + test-pull-untrusted.sh: always corrupt a regular file, not a
+    symlink.
+  + basic-test: commit with a non-empty subject.
+  + Probe for GNU parallel more accurately.
+  + tests: Make failing to kill the GPG agent non-fatal.
+  + libtest.sh: use G_TEST_SRCDIR, G_TEST_BUILDDIR to find
+    resources.
+  + test-abi: use G_TEST_SRCDIR, G_TEST_BUILDDIR.
+  + test-xattrs: sync how this is skipped with test-rofiles-fuse.
+  + libtest.sh: only check whether $(pwd) is empty once.
+  + manual: Fix a bunch of typos and docbookisms.
+  + Introducing ostree-grub-generator.
+  + pull: Don't try to cache summaries for pull-local.
+  + Fix local-pull test.
+  + pull-local: Support --gpg-verify and --gpg-verify-summary.
+  + build: Find grub2-mkconfig a bit more automagically.
+  + build: Make tests/libreaddir-rand.so rule use AM_V_GEN.
+  + tests: add libostreetest.h to EXTRA_DIST.
+  + tests: add missing ${CMD_PREFIX} before ostree.
+  + contrib: indent golang code using only tabs instead of both
+    tabs and spaces.
+  + Remove empty new lines at the EOF.
+  + docs: Prefer the form "cannot" to "can not".
+  + Use git.mk.
+  + Support pathnames for --subpath=...
+  + Export ostree_repo_get_remote_option* functions.
+  + Inherit remotes and remote options from parent repo.
+  + Add test case for inheriting remote options.
+  + cfg.mk: ignore syntax-check for git.mk.
+  + Add support for ostree static-delta delete.
+  + small cleanups.
+  + Fix the symbol versions for ostree_repo_get_remote_*option.
+  + ostree-repo-pull: always initialize flags_i.
+  + pull: More consistently use remote_repo_local for local repos.
+  + build: Move grub2-15_ostree back to pkglibexecdir.
+  + Fix AS_HELP_STRING for builtin grub2 mkconfig.
+  + fetcher: Initialize output_stream_set_lock mutex.
+  + commit: Fix crash if dfd_iter is NULL.
+  + Add cache_dir_fd to OstreeRepo.
+  + Add OstreeRepo option for an out-of-band cache dir.
+  + man: Elaborate on per-remote GPG.
+  + Add remotes-config-dir to OstreeRepo.
+  + Look for $remotename.trustedkeys.gpg in remotes.d dir.
+  + refs: Add g_prefix_error around opendir for easier debugging.
+  + static-delta: Put temp files in /var/tmp.
+  + static-delta: Initialize read_source_fd to -1.
+- Stop passing --with-grub2 to configure, no longer recognized.
+
+-------------------------------------------------------------------
+Mon Apr 11 08:17:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2016.4:
+  + fetcher: Remove message_to_request table
+  + fetcher: Convert from GSimpleAsyncResult to GTask
+  + fetcher: Rework reference counting
+  + fetcher: Track outstanding requests with a table
+  + sysroot: Cleanup refs and prune even on last undeployment
+  + pull: Recover from missing commits in recursive pulls
+  + doc: Note that refs --delete does not prune
+  + tests: Add a test for pull+deploy of specific "bare" commit
+  + static-delta: Handle LZMA_BUF_ERROR returned by zlib
+  + static-delta: Don't run bspatch when output object already
+    exists
+  + static-delta: Set error on bsdiff failure
+  + commit: Improve variable name
+  + Don't require /boot/uEnv.txt for u-boot support
+  + tests: fix LZMA test to really compress/decompress
+  + upgrader: Add ostree_sysroot_upgrader_dup_origin()
+  + upgrader: Allow overriding the commit to pull
+  + upgrade: Add --override-commit=CHECKSUM option
+  + prepare-root: set up /boot bind-mount for single partition
+    systems
+  + static-delta: Fix annotation on
+    ostree_repo_list_static_delta_names
+  + sysroot: Write symlinks before calling fsync(), then rename
+    after
+  + init-fs: Explicitly set /tmp to 01777
+  + core: use OSTREE_OBJECT_TYPE_LAST instead of
+    OSTREE_OBJECT_TYPE_COMMIT
+  + pull: add support for tombstone commits
+  + repo: create a tombstone commit when deleting a commit
+  + fsck: add argument --add-tombstones
+  + tests: add tests for prune and tombstones commits
+  + docs: Note not to put private keys in /usr/share/ostree
+  + generate-static-delta: Support min-fallback-size 0 to disable
+    fallbacks
+  + static deltas: Add support for inline-parts
+  + static-deltas generate: Add --inline option to CLI tool
+  + Add tests for inline static deltas
+  + deltas: Make apply-offline only read the parts once
+  + delta: Ensure the from commit exists when applying static delta
+  + static-delta apply-offline: Don't skip validation
+  + Add _ostree_repo_open|commit_untrusted_content_bare
+  + deltas: Verify checksums in apply-offline unless skip_validate
+    is TRUE
+  + deltas: Make min-fallback-size 0 actually disable fallbacks
+  + deltas: Support passing filename to delta generator
+  + deltas: Support passing filename to
+    ostree_repo_static_delta_execute_offline
+  + pull: Verify checksums from static deltas unless gpg signed
+    summary
+  + deltas: Support including detached metadata in static deltas
+  + libostree: Fix a couple compiler warnings
+  + prune: add --delete-commit
+  + fsck: create a tombstone when the parent is missing
+  + tests: add test for ostree prune --delete-commit
+  + prune: add --keep-younger-than=DATE
+  + pull: make slightly clearer when failing for missing xattrs
+    support
+  + ostree: do not print the usage on each G_IO_ERROR_NOT_SUPPORTED
+  + libostree: add new API ostree_repo_write_commit_with_time
+  + commit: add --timestamp=TIMESTAMP
+  + tests: add tests for prune --keep-younger-than=DATE
+  + tests: prefix invocation of ostree with  where missing
+  + repo: Validate checksums have correct length
+  + repo: Never delete .commitmeta files
+  + trivial-httpd: Avoid SoupBuffer when there's no content
+  + glnx: Update from master
+  + fetcher: Remove "sending_messages" hash table
+  + fetcher: Remove "total_requests" counter
+  + remote: Print full refspec in "ostree remote refs"
+  + repo: Fix backwards timestamp in ostree_repo_write_commit()
+  + gpg-verifier: Fix compiler warning
+  + Release 2015.11
+  + parse-datetime: use the module from gnulib
+  + tests: add missing ${CMD_PREFIX}
+  + cmdline: Fatally error if the timestamp in a commit is invalid
+  + build: Delete generated parse-datetime.c file, use AM_V_GEN
+  + build: Also add a configure check for YACC/bison
+  + Update to latest libglnx
+  + repo: Add _ostree_repo_allocate_tmpdir helper
+  + repo: Use per-transaction staging dir
+  + repo: Allocate a tmpdir for each OstreeFetcher to isolate
+    concurrent downloads
+  + fetcher: Add "config-flags" construct-only property
+  + fetcher: Move the SoupSession to a separate thread
+  + pull: Push a temporary main context for sync requests
+  + build: Fix srcdir != builddir
+  + repo: Add ostree_repo_verify_summary()
+  + remote: Add "ostree remote summary" command
+  + repo: new function ostree_repo_prune_static_deltas
+  + prune: add new flag --static-deltas-only
+  + tests: add tests for prune --static-deltas-only
+  + deploy: Find kernel/initramfs consistently from filesystem
+  + bootconfig: Add ostree_bootconfig_parser_write_at
+  + deploy: Change large parts to be fd-relative, drop fsync
+  + fetcher: Lazily create tmp directory
+  + grub2_generate: load sysroot before using it
+  + repo: Expose dfd-relative mtree writes as public API
+  + repo: Add APIs for devino optimization between checkout ->
+    commit
+  + Release 2016.1
+  + repo: Note global transaction resume is legacy
+  + sysroot: Don't individually fsync dirs in checkout, rely on
+    syncfs
+  + diff: do not traverse parent commits
+  + Add a checkout option to skip fsync
+  + refs: Add a missing `goto out` for error handling
+  + grub2: Don't delete grub2.cfg.old file we just copied
+  + tests: Use "bash strict mode"
+  + build: Move man pages into man/
+  + build: Rename doc/ -> apidoc/
+  + Rewrite manual in mkdocs
+  + apidoc: Remove unnecessary srcdir != builddir workaround
+  + repo: Port -refs.c to openat()
+  + build: Add --disable-man
+  + lib: Add a #define OSTREE_SHA256_DIGEST_LEN 32
+  + build: Hoist man conditional higher
+  + static-delta: Add `show` subcommand
+  + packaging: Sync spec file with Fedora
+  + build: 'make clean' removes parse-datetime.c
+  + docs-md: Delete (obsoleted by docs/)
+  + README.md: Update to link to Read The Docs, describe a bit
+    better
+  + build: Remove --disable-static-deltas option
+  + lib: Create an internal static delta parsing/opening function
+  + lib: Expand `ostree static-delta show` to show part stats
+  + fetcher: Fix hung GTlsInteraction
+  + Import rofiles-fuse
+  + Add an `export` builtin, and API to write to libarchive
+  + pull: Support specifying exact commit to pull via branch@commit
+  + manual-tests: New static-delta-generate-crosscheck.sh
+  + man/ostree-export.xml: Add to git
+  + Support Docker-style whiteouts
+  + packaging: Add a fuse subpackage
+  + rofiles-fuse: Fix truncate call to not use O_CREAT
+  + manual: Note that the bare-user mode exists
+  + Rename libarchive write API to "export", matching command line
+  + repo: Add ostree_repo_import_archive_to_mtree
+  + ostree-sysroot: add debug option to help testing
+  + pull: Add require-static-deltas pull option
+  + pull: Add a --dry-run option for static deltas
+  + build: Link ostree with libarchive
+  + docs: Add a new formats section, move static deltas in there
+  + libarchive: Make autocreate_parents imply autocreating root dir
+  + build: Use threadsafe GPGME
+  + gpg: Use gpg_strerror_r for threadsafety
+  + Release 2016.2
+  + libarchive: Fix a 32 bit format warning
+  + lib: Two more compiler warning fixes
+  + deltas: Fix some more 32 bit warnings
+  + deltas: Fix regression in
+    ostree_repo_static_delta_execute_offline
+  + rofiles-fuse: Handle operations on the root
+  + deltas: Include an endianness marker
+  + deltas: Use endianness marker when parsing
+  + deltas: Heuristically detect endianness for older deltas
+  + deltas: Add a compression size heuristic for endianness
+    detection
+  + Release 2016.3
+  + docs: Add a blurb on the summary file
+  + Fix make syntax-check
+  + test-rofiles-fuse: skip when fusermount is not present
+  + lib: Introduce versioned symbols
+  + repo: Add ostree_repo_get_dfd()
+  + Add a missing #include to fix "make check"
+  + ostree-repo: new public function `ostree_repo_list_refs_ext`
+  + refs: allow to specify multiple refs as args
+  + refs: add tests
+  + libostree: Adjust `cleanup_ref_prefix` to use
+    ostree_repo_list_refs_ext
+  + refs: Add argument --list to print the full ref name
+  + tests: Port to glib-tap.mk, make `make check` run all of the
+    tests
+  + deploy: Bump the mtime on ostree/deploy after deployments
+    finish
+  + tests: Convert two more exit 77 instances into TAP-compatible
+    SKIP
+  + docs/introduction: Note VMs vs baremetal
+  + lib: Add ostree_sysroot_init_osname() API, bump mtime
+  + tests: More TAP fixups
+  + tests: Unify some tmpdir code, add ability for C to use
+    libtest.sh
+  + lib: Add ostree_sysroot_load_if_changed() API
+  + tests/basic: Fix race in timestamp test
+  + build: Don't install test data without --enable-installed-tests
+  + docs: Reference the git docs on references
+  + libotutil: new function ot_openat_ignore_enoent
+  + pull: cache summary and summary.sig
+  + repo: use the skip summary download optimization for
+    repo_remote_fetch_summary
+  + prune: delete all cached summaries files
+  + tests: add test for summary file caching
+  + repo: Fix the skip-summary-if-summary.sig-is-same cache
+  + rofiles-fuse: Fix permission comparison
+  + docs: Cleanup Markdown
+  + docs: Add a section on writing buildsystems
+  + contrib/golang: Initial golang bindings
+  + tests: Strengthen test tmpdir sanity check, be compat with
+    ginsttest saving
+  + libglnx porting: gs_fd_close -> glnx_fd_close
+  + libglnx porting: gs_free -> g_autofree
+  + libglnx porting: xattr calls
+  + libglnx porting: gs_transfer_out_value -> g_steal_pointer
+  + Don't fail "ostree remote refs" if writing the summary cache is
+    not permitted
+  + manual: Migrate related projects wiki page into manual
+  + deploy: Handle a read-only /boot
+  + mkdocs: Fix the site name
+  + tests/admin-test.sh: add #!/bin/sh
+  + Skip test_libarchive_ignore_device_file if we cannot write
+    xattrs
+  + test-libarchive: fix underlinking
+  + admin-switch: Add missing reboot argument
+  + Use GSubprocess instead of GSSubprocess (libgsystem removal)
+  + libglnx porting: Use glnx_set_error_from_errno
+  + libglnx porting: Use glnx_shutil_rm_rf_at()
+  + libglnx porting: Use glnx_opendirat()
+  + admin: Add an `unlock` command, and libostree API
+  + Fix building without libarchive
+  + pull local: Don't import objects we already have
+  + prune: Don't fail on partial commits
+  + tests: Add a commitpartial + prune test
+  + traverse: Require variant when traversing dirtree
+  + Release 2016.4
+- Add bison, pkgconfig(fuse) and pkgconfig(mount) BuildRequires:
+  New dependencies.
+
+-------------------------------------------------------------------
+Thu Oct 08 15:07:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2015.9:
+  + _ostree_static_delta_part_validate: Take a stream instead of a
+    file as arg
+  + sysroot: Add ostree_sysroot_prepare_cleanup()
+  + deploy: Do not prune repository
+  + libglnx: Update from master
+  + reset: Simplify argument checking logic
+  + repo: Fix build without libsoup
+  + pull: Honor depth with OSTREE_REPO_PULL_FLAGS_COMMIT_ONLY
+  + Mutable is a keyword in C++11
+  + Remove unused variables
+
+-------------------------------------------------------------------
+Thu Oct 08 15:06:51 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2015.8:
+  + gpg: Add ostree_gpg_verify_result_describe()
+  + admin: Show GPG signatures in status command
+  + pull-metalink: Don't print error output when we expect failure
+  + Add an API to set/unset a deployment tree's mutability
+  + ostree_repo_checkout_tree_at: remove @subpath documentation
+  + refs: Use *at for writes, honor repo fsync flag
+  + repo: Add a private helper to replace a file, honoring fsync
+    policy
+  + libglnx: Pick up file permission regression fix
+  + tests: Fix root uid check in test-commit-sign.sh
+  + _ostree_repo_file_replace_contents: make buf const
+  + summary: write the contents to a temporary file
+  + config: add new parameter "commit-update-summary" to core
+    section
+  + libglnx: Update to latest
+  + reset: Don't enforce parent commits
+  + repo: Improve error handling in sign_data()
+  + repo: Add a "gpg-verify-result" signal
+  + pull: Print GPG signature status as soon as its known
+  + repo: Add ostree_repo_remote_get_gpg_verify()
+  + admin: Conditionally show GPG signatures in status command
+  + sysroot: Cache an OstreeRepo instance
+  + main: Tweak GPG output to match rpm-ostree
+  + sysroot: Add ostree_sysroot_get_fd()
+  + libglnx: Update from master
+  + sysroot: Close sysroot fd in finalize
+  + status: Don't crash if we deployed a local refspec
+  + deploy: Use syncfs() in addition to sync()
+  + deploy: Drop fsync of modified config files
+  + deploy: Drop a fsync, use fd-relative APIs
+  + README.md: fix typo
+  + reset: update help output
+  + pull: Always request detached metadata for commits
+  + test-auto-summary.sh properly quote arguments to assert_streq
+  + g_output_stream_splice: check correctly the error code
+  + gpg: do not use secring.gpg
+  + show: add option --gpg-homedir
+  + libotutil: Establish a place for GPG utilities
+  + libotutil: Add ot_gpgme_ctx_tmp_home_dir()
+  + repo: Initialize GPGME in instance init()
+  + ostree: Split up "remote" subcommands
+  + gpg: Fix _ostree_gpg_verifier_add_keyring()
+  + pull: the commit size in the summary is not for the detached
+    metadata
+  + Fix build when using GLib < 2.44
+  + sysroot: Add an API to lock
+  + libglnx: fix reference to commit
+  + repo: Fix an obvious typo
+  + doc: remove unknown parameter from inline documentation
+  + core: Cleanup commitpartial file with fd-relative lookups
+  + Teach fsck about partial commits
+  + libglnx: Pick up bugfix and backports
+  + repo: Stop creating "transaction" symlink
+  + gpg: Add ostree_gpg_verify_result_describe_variant()
+  + Juggling libglnx.h includes
+  + Use g_autofree instead of gs_free
+  + Use g_autoptr() for GIO object types
+  + Use glnx_unref_object instead of gs_unref_object
+  + Use g_autoptr(GChecksum) instead of gs_free_checksum
+  + Use g_autoptr(GBytes) instead of gs_unref_bytes
+  + Use g_autoptr(GHashTable) instead of gs_unref_hashtable
+  + Use g_autoptr(GPtrArray) instead of gs_unref_ptrarray
+  + Use g_autoptr(GVariant) instead of gs_unref_variant
+  + Use g_autoptr(GKeyFile) instead of gs_unref_keyfile
+  + Use g_autoptr(GVariantBuilder) instead of
+    gs_unref_variant_builder
+  + Use g_auto(GStrv) instead of gs_strfreev
+  + Remove unnecessary #include "libgsystem.h"
+  + trivial-httpd: fix indentation
+  + trivial-httpd: add option to specify the port
+  + summary: list the available static deltas
+  + core: new function _ostree_parse_delta_name
+  + core: store information about delta files checksums
+  + pull: check that the superblock checksum is the same as in the
+    summary
+  + pull: get rid of detached metadata for deltas
+  + ostree-repo: add new API to sign the summary file
+  + summary: add new command line arguments to sign the summary
+    file
+  + pull: verify signature for the summary file
+  + tests: add a test for signed summary file
+  + summary: delete summary.sig on an update
+  + ot-fs-utils: remove empty line at EOF
+  + gpg: Fix ot_gpgme_error_to_gio_error()
+  + gpg: Add custom data buffers to wrapper GIO streams
+  + repo: Simplify sign_data() a little
+  + sysroot: Add a try_lock() API
+  + ostree-repo-pull: add option to disable static-deltas
+  + pull: add new switch option --disable-static-deltas
+  + doc: add missing options block for pull
+  + tests: add new test for pull --disable-static-deltas
+  + syntax-check: add syntactic rule to prohibit gs_unref_*
+  + syntax-check: add syntactic rule to prohibit gs_strfreev
+  + maint.mk: Remove GNU releases specific bits
+  + repo: Stash keyring name in OstreeRemote
+  + repo: Delete a remote's keyring when deleting a remote
+  + repo: Add ostree_repo_remote_gpg_import()
+  + repo: Add remote's keyring during GPG verification
+  + ostree: Add a "remote gpg-import" command
+  + ostree: Add --gpg-import to the "remote add" command
+  + tests: Add test-remote-gpg-import.sh
+  + admin: Use locking for most sysroot commands
+  + tests: Fix writable repo test
+  + test-basic: Always chown back before doing assertion
+  + ostree-repo: replace more gs_unref_(variant|bytes) with
+    g_autoptr
+  + repo: Bump mtime any time we write a ref
+  + repo: Prevent GPG keys from being imported to keybox format
+  + admin: Ensure instutil commands and usage help don't grab lock
+  + ostree-repo: document
+    OSTREE_REPO_COMMIT_MODIFIER_FLAGS_GENERATE_SIZES
+  + Fix annotations on ostree_repo_remote_gpg_import().
+  + sysroot: Sort returned boot loader configs
+  + tests: Add a test script to cross-check loader config vs GRUB2
+  + tests: Add a crosscheck for syslinux bootloader config
+    generation
+  + tests: Run all tests through a randomized readdir()
+  + pull: Ensure console state for multiple GPG verification
+    messages
+  + pull: Validate delta checksums more strongly
+  + tests: Add a commented out test for mirroring with deltas
+  + repo: Don't crash when creating a summary if we have --empty
+    deltas
+  + tests: Add a test-pull-summary-sigs
+  + Revert "tests: Run all tests through a randomized readdir()"
+  + tests: Run all tests through a randomized readdir()
+  + tests/remote-gpg-import: Only commit workdir
+  + gpg: Gracefully handle no trusted.gpg.d directory
+  + Fix tests on 32 bit systems
+  + tests: Link test-gpg-verify-result with gpgme
+  + tests: Use readdir64 when _FILE_OFFSET_BITS set
+  + tests: Use temporary gpg homedir
+  + Revert "tests: skip test-commit-sign.sh when not root"
+  + Fix double free in ostree_repo_pull_with_options
+  + repo: Change GPG verification policy
+  + autogen.sh: fix typo
+  + tests/test-pull-mirror-summary.sh: remove empty newline
+  + pull-local: Support --depth option
+  + metalink: Fix behavior when requested file is not found
+  + tests/metalink: Add a case with nested unknown elements
+  + diff: Fix adding CLI options twice
+  + repo: Add _ostree_repo_remote_new_fetcher()
+  + repo: Add _ostree_repo_get_remote_option_inherit()
+  + repo: Handle "file" remotes in
+    ostree_repo_remote_get_gpg_verify()
+  + repo: Redo ostree_repo_remote_get_url()
+  + metalink: Allow NULL for "out" params in metalink requests
+  + metalink: Return requested file as a GBytes
+  + repo: Add ostree_repo_remote_fetch_summary()
+  + ostree: Add a "remote refs" command
+  + pull: verify summary signatures also when not mirroring
+  + repo: new function ostree_repo_remote_get_gpg_verify_summary
+  + pull: fail if GPG is enabled and the summary is not signed
+  + tests: add test for check for remote add
+    --set=gpg-verify-summary=true
+  + ostree_repo_remote_fetch_summary: honor gpg-verify-summary
+  + pull: Error if gpg=true and summary is 404, add more tests
+  + core: Fix inverted conditional in GPG checking
+  + pull: Also fix misplaced remote name handling
+  + tests: Check error messages instead of "expected-fail", handle
+    old parallel
+  + build: Make gtk-doc optional
+  + pull: Avoid leaking signal handlers across fetch requests
+  + pull: Plug a memory leak
+  + core: Add _ostree_get_default_sysroot_path()
+  + sysroot: Use _ostree_get_default_sysroot_path()
+  + repo: Add a "sysroot-path" property
+  + sysroot: Pass the internal repo a system root path
+  + repo: Fix location of remote configs for system repos
+  + main: Fix UID check based on sysroot path
+  + tests: Export OSTREE_SYSROOT in setup_os_repository
+  + tests: do not commit from the working directory
+  + libostree: new API ostree_repo_remote_list_refs
+  + repo: merge repo_remote_fetch_summary_{metalink,url}
+  + repo: new function _ostree_preload_metadata_file
+  + pull: new option --commit-metadata-only
+  + static-delta: do not fail compilation with big files
+  + static-delta: add max-bsdiff-size option
+  + repo: fix an incorrect comment
+  + repo: don't forget to abort the transaction when failed
+  + Update .gitignore
+  + README: Attempt to flesh out more, start moving docs from wiki
+  + tests: add tests for --disable-bsdiff and --max-bsdiff-size
+  + tests: skip tests using gjs/parallel if they are not installed
+  + Update .gitignore
+  + tests: add tests for LZMA compressor and decompressor
+  + sysroot: Add an unload() API
+  + pull: Stop using GMainLoop
+  + tests: rename test-rollsum to test-rollsum-cli
+  + rollsum: Fix assertion for CRC matches
+  + tests: Add tests for rollsum
+  + repo-pull: Add a queue for scanning
+  + Update .gitignore
+  + tests: Build test-lzma with LZMA flags
+  + static-delta: Ignore symlinks when computing similar objects
+  + static-delta: assert on non-regular files
+
+-------------------------------------------------------------------
+Sun Aug  9 13:01:44 UTC 2015 - fcrozat@suse.com
+
+- Update to version 2015.7:
+  + critical update for v2015.4: fix a bug causing unpredictable
+    ordering of generated syslinux/uboot/grub2 bootloader entries.
+  + Performance enhancement for deployments; rely on syncfs()
+    rather than individual fsync() calls.
+  + GPG: Always retrieve detached metadata, so we'll find newly
+    added signatures.
+  + GPG: Support for keys specific to remotes, rather than relying
+    on the global /usr/share/ostree/trusted.gpg.d
+  + A new locking API (used for the commandline) so that concurrent
+    invocations of e.g. `ostree admin upgrade` are safe.
+  + Other enhancements targeted for the Cockpit program and
+    rpm-ostree.
+  + The summary file can now be GPG signed as well (preview).
+  + Other changes to static deltas, which continue to evolve.
+
+-------------------------------------------------------------------
+Wed Apr 08 09:32:52 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2015.5:
+  + pull: (trivial) Fix English in function name.
+  + Fix make distcheck.
+  + Fix repeated words.
+  + Add infrastructure for "make syntax-check".
+  + Remove trailing dot from error message.
+  + syntax-check: quote the first argument to AC_DEFINE.
+  + Remove unused include <assert.h>.
+  + Remove unused <dirent.h>.
+  + Remove magic argument numbers to exit(2).
+  + Do not interleave spaces and tabs.
+  + Replace "==" with "=" in shell script test.
+  + pull: use a single per-transaction syncfs instead of fsync.
+  + syntax-check: Remove empty lines at the end of file.
+  + tests: Move test-varint and test-rollsum under "make check".
+  + configure.ac: Enable option subdir-objects for automake.
+  + tests: Add tests for ot-unix-utils.
+  + packaging: Add man5 pages.
+  + prepare-root: avoid double-stacked /sysroot mount.
+  + prepare-root: Update comments.
+  + repo: Hold an fd "repo_dir_fd" open for the toplevel too.
+  + util: Add an API to atomic-replace a file, dirfd relative,
+    optional fsync.
+  + Add an internal API to stream content objects.
+  + When mirroring, write content directly, do not verify.
+  + pull: Copy the upstream summary file when doing a pull
+    --mirror.
+  + Add an internal API to get a read fd for a content object.
+  + pull: Optimize file:/// URIs to skip libsoup and hardlink if
+    possible.
+  + Change pull-local to just be a wrapper for pull with file:///.
+  + pull-local: Fix regression with absolute paths.
+  + repo: Fix major performance regression with --scan-hardlinks.
+  + repo: Store pending objects in prefixed subdirectory.
+  + deltas: Use base64 for csums, add version to parts.
+  + deltas: Remove support for gzipped delta parts.
+  + deltas: Add _V0 to part #define.
+  + deltas: Rework format to allow streaming.
+  + deltas: Compute rollsum targets.
+  + deltas: Print total size of rollsums we would use.
+  + deltas: Stub out a few more opcodes.
+  + deltas: Use the new internal streaming APIs.
+  + deltas: Flesh out the open/write/close opcodes.
+  + deltas: Initial code to copy content from existing objects.
+  + deltas: Implement rollsums.
+  + deltas: Make syntax-check happy.
+  + deltas: Prune deltas when the corresponding "to" commit
+    vanishes.
+  + repo: Add a new iterator traversal API for commits.
+  + deltas: Search for similar objects (possibly renamed across
+    directories).
+  + tests: Restore accidentally deleted Makefile bit.
+  + libostree: set directory mtimes to 0 on checkout.
+  + repo: Check for OSTREE_REPO in ostree_repo_new_default().
+  + tests: do not run tests/test-rollsum as part of make check.
+  + Use libglnx.
+  + deploy: Also look for /usr/lib/os-release.
+  + checkout: Drop internal use of GFile *.
+  + libglnx: Use git.gnome.org's copy.
+  + repo: Port APIs used by prune to fd-relative *at calls.
+  + Add explicit zlib dependency.
+  + tests: Move test gpg keyring into writable tmpdir.
+  + ostree-repo-traverse.c: Fix documentation parameter name.
+  + Fix GObject introspection annotation.
+  + ostree-repo-static-delta-processing: initialize "modev".
+  + build: build libbupsplit separately.
+  + prepare-root: Move /sysroot instead of unmounting it.
+  + repo: detached sigs: Use error prefixing instead of
+    overwriting.
+  + ostree: Add gpg-sign command.
+  + gpg: Remove _ostree_gpg_verifier_set_homedir().
+  + configure.ac: Bump GLib requirement to 2.40.
+  + libotutil: Remove ot_variant_new_from_bytes().
+  + libotutil: Allow no variant in
+    ot_util_variant_builder_from_variant().
+  + core: Add definitions for GPG signature metadata.
+  + core: Fix duplication bug in
+    _ostree_detached_metadata_append_gpg_sig().
+  + deploy: Use glnx file copy code.
+  + repo: Drop internal GFile* API helper.
+  + repo: Port hardlink-scanning code to fd-relative calls.
+  + Add bsdiff submodule.
+  + Add bsdiff support to deltas.
+  + static-delta: increase threshold for rollsum to 50%.
+  + tests: add test for bsdiff.
+  + autogen.sh: replace all $(libbsdiff_srcpath) and
+    $(libglnx_srcpath).
+  + Fix "make syntax-check" failures.
+  + Makefile.dist-packaging: fix make rpm with submodules.
+  + static-delta: Add --disable-bsdiff option.
+  + ostree_repo_static_delta_generate: add new param "verbose".
+  + tests: enforce ${CMD_PREFIX} on all ostree processes.
+  + tests: Remove some duplications from Makefile-tests.am.
+  + deltas: Gather statistics on total number rollsum'd and
+    bsdiff'd.
+  + deltas: Use mmap() instead of copying input file.
+  + commit: Add missing (allow-none) in write_ref_immediate().
+  + repo: Fix assertion to allow NULL options.
+  + tests: add tests for mutable tree.
+  + gpg: Rewrite OstreeGpgVerifier to use GPGME.
+  + OstreeGpgVerifier: Take the signature as a GBytes.
+  + src: drop some dead assignments.
+  + ostree-repo-refs: Drop unused function "parse_rev_file".
+  + ot_keyfile_copy_group: return FALSE on invalid inputs.
+  + keyfile-utils: add tests.
+  + tests: add test for test-ot-opt-utils.
+  + libotutil: remove ot-waitable-queue.
+  + src: Move ot-tool-util from ostree/ to libotutil/.
+  + src: Drop unused argument "value" from ot_parse_boolean.
+  + tests: Add tests for test-ot-tool-util.
+  + sysroot: Read some bootloader state with fd-relative API.
+  + sysroot: Read the bootloader configuration with fd-relative
+    API.
+  + sysroot: Make origin parsing code fd-relative.
+  + glnx: Update.
+  + ostree-prepare-root: log informational messages to stdout.
+  + sysroot: Drop unnecessary new sysroot object.
+  + deployment: Add an API to get relative origin path.
+  + sysroot: Port some deployment reading code to fd-relative APIs.
+  + README.md: Note make check.
+  + configure.ac: Make gpgme a hard dependency.
+  + build: Use both pkg-config and AM_PATH_GPGME.
+  + repo: Delete .commitmeta file on empty metadata.
+  + ostree-repo.c: fix typo.
+  + OstreeGpgVerifier: Don't add trustdb.gpg to the keyring list.
+  + OstreeGpgVerifier: Take the signed data as a GBytes.
+  + fsck: Fix object count output.
+  + gpg: Add OstreeGpgVerifyResult.
+  + repo: Add ostree_repo_verify_commit_ext().
+  + repo: Reject duplicate signatures when signing commit.
+  + gpg-sign: Add a --delete option to delete signatures.
+  + show: Print a blurb for each signature on a commit.
+  + tests: Update test-gpg-signed-commit.sh.
+  + gpg: Link to GPGME bug about GPGME_SIGSUM_KEY_REVOKED.
+  + gpg: Regenerate test data for test-gpg-verify-result.
+  + Fix build failure on g_autoptr(gchar) with glib master.
+  + build: ostree-gpg-verify-result.h is a public header, install
+    it.
+  + libglnx: Update to latest.
+  + gpg-sign: Update man page for --delete option.
+  + Fix build with !HAVE_LIBSOUP.
+  + gpg-sign: Add missing NULL terminator in options.
+  + Release 2015.4.
+  + Add ostree_repo_is_writable().
+  + Add ostree_ensure_repo_writable().
+  + Check repo permission prior to attempting to modify it.
+  + tests: Add a test case for unwritable repos.
+  + Add OstreeAdminBuiltinFlags for admin commands.
+  + Add OSTREE_ADMIN_BUILTIN_FLAG_SUPERUSER.
+  + bsdiff: change submodule location.
+  + core: Fix possible crash in ostree_mutable_tree_walk().
+  + Include ostree-gpg-verify-result.h in ostree.h.
+  + main: Only verify SUPERUSER flag if using default sysroot.
+  + build: Use glibc's xattr support instead of requiring libattr.
+  + build: Drop libattr from the spec file.
+  + tests/basic-test.sh: enable repo-noperm test only for non-root
+    user.
+  + src/ostree/ot-main.c: drop empty newline at end of file.
+  + build: exclude .sig files from syntax-check.
+  + tests: skip test-commit-sign.sh when not root.
+  + dist-packaging: Don't delete 91-ostree.preset, do clean old
+    rpms/sources.
+  + tests: Missing linker flags for test-rollsum.
+  + core: Actually allow none in ostree_parse_refspec().
+  + tests: Verify that the pull error was from interruption.
+  + pull: Handle remote web server not honoring range requests.
+  + ostree_repo_checkout_tree_at: New API for checkouts.
+  + Release 2015.5.
+- Add libcap-devel BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb 19 17:19:01 UTC 2015 - dimstar@opensuse.org
+
+- Initial package, version 2015.3.
+

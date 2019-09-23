@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>878e7af2e026b0666a9e91b4a06136fa</srcmd5>
+    <version>0.2.0</version>
+    <time>1488479301</time>
+    <user>dimstar_suse</user>
+    <comment>New OpenStack service client</comment>
+    <requestid>459548</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>56e9baa3c3547512f37e9beffa97b3bd</srcmd5>
+    <version>0.2.0</version>
+    <time>1496926982</time>
+    <user>dimstar_suse</user>
+    <comment>- fix buildrequires</comment>
+    <requestid>501637</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cc9b897a189e0dcf7ecabd1903dfa68</srcmd5>
+    <version>0.4.1</version>
+    <time>1503927019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.1
+  - Use assertIsNone(value) instead of assertEqual(None, value)
+  - [Fix gate]Update test requirement
+  - Enable release notes translation
+  - Fix a typo in bash_complition file name
+  - Update CLI options for blobs
+  - Allow to specify dict and list properties in cli
+  - Parse blob dict upload output right
+  - Allowed to use the artifacts by name
+  - Add keycloak auth support
+  - Return missing 'return' in build_option_parser
+  - Add tag support for Glare client
+  - Remove unnecessary code from shell
+  - Add short arguments and fix small errors
+  - Add the possibility to specify glare url in cli
+  - Add 'list-types' and 'schema' operation in native shell
+  - Add missing 'activate' command to native glare cli
+  - Remove unecessary cli option &quot;--glare-url&quot;
+  - Add setting of external locations
+  - HTTP Client refactoring
+  - Fix updating image by name
+  - Raise error if there are more than 1 artifact with same name/version
+  - Updated from global requirements
+  - Rename deprecated 'warn' to 'warning' in logging</comment>
+    <requestid>514882</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11ae2cbc39dbb13310e48edc47c754a5</srcmd5>
+    <version>0.4.2</version>
+    <time>1516804008</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.2
+  - Allow to delete blobs with external urls
+  - Add content_length to header in upload_blob
+  - Updated from global requirements
+  - Add ssl options to keycloak auth module
+  - Add ssl options to glare cli</comment>
+    <requestid>567261</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2479b27c2376f22376017cb18d42d6c</srcmd5>
+    <version>0.5.2</version>
+    <time>1520415178</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.2
+  - Remove setting of version/release from releasenotes
+  - Allow to work in secure mode without certificate
+  - Look the list of artifacts in 'artifacts' section
+  - Avoid tox_install.sh for constraints support
+  - Rename -s option to -S
+  - Don't create client for help and bash completion
+  - Adopt new api for artifact listing
+  - Updated from global requirements
+- Switch to stable/queens spec template</comment>
+    <requestid>579506</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6f17bb8d50cd05a5bd60f20884cac5bd</srcmd5>
+    <version>0.5.3</version>
+    <time>1536327434</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633069</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>34da3f554e4a8e94f8e3ac5d9ff9e49f</srcmd5>
+    <version>0.5.3</version>
+    <time>1556916034</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to stable/stein template</comment>
+    <requestid>692826</requestid>
+  </revision>
+</revisionlist>

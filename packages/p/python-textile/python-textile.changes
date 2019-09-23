@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sun Jun  9 06:45:28 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.4:
+ - BUGFIX: Restricted mode strips out CSS attributes again.
+ - Update travis to more current versions and test against current Pillow version.
+
+-------------------------------------------------------------------
+Mon Apr 23 07:29:51 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 3.0.3:
+ * BUGFIX: Improve handling code block following extended p block (#63)
+
+-------------------------------------------------------------------
+Thu Apr 12 19:09:52 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 3.0.2:
+ * Fix for multiple multi-line paragraphs. (#62)
+- update to version 3.0.1:
+ * Fix improper handling of extended code blocks. (#61)
+
+-------------------------------------------------------------------
+Sat Nov 18 21:08:44 UTC 2017 - sebix+novell.com@sebix.at
+
+- change source url back to fixed pypi url
+
+-------------------------------------------------------------------
+Thu Nov 16 21:55:29 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 3.0.0:
+ * Update to the current version of html5lib
+ * Bugfixes:
+  * Fix handling of HTML entities in extended pre blocks. (#55)
+  * Empty definitions in definition lists raised an exception (#56)
+  * Fix handling of unicode in img attributes (#58)
+
+-------------------------------------------------------------------
+Sun Sep 17 14:05:59 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix dependencies
+
+-------------------------------------------------------------------
+Wed Aug 16 19:35:04 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to 2.3.16
+ * Bugfixes:
+  * Fix processing of extended code blocks ("#50":https://github.com/textile/python-textile/issues/50)
+  * Don't break when links fail to include "http:" ("#51":https://github.com/textile/python-textile/issues/51)
+  * Better handling of poorly-formatted tables ("#52":https://github.com/textile/python-textile/issues/52)
+
+-------------------------------------------------------------------
+Fri Jul 21 08:20:36 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to version 2.3.15
+ * Bugfix: Don't break on unicode characters in the fragment of a url. (#49)
+- upgrade to version 2.3.14
+ * Bugfix: Fix textile on Python 2.6 (#48)
+
+-------------------------------------------------------------------
+Thu Jul 20 09:54:44 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to version 2.3.13
+ * Remove extraneous arguments from textile method. These were originally added long ago to work with django, but markup languages are long gone from django.
+ * Bugfix: Don't mangle percent-encoded URLs so much. ("#45":https://github.com/textile/python-textile/issues/45)
+ * Bugfix: More fixes for poorly-formatted lists. ("#46":https://github.com/textile/python-textile/issues/46)
+ * Bugfix: Improve handling of whitespace in pre-formatted blocks. This now matches php-textile's handling of pre blocks much more closely. ("#47":https://github.com/textile/python-textile/issues/47)
+
+-------------------------------------------------------------------
+Tue Jun  6 18:30:32 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to cersion 2.3.12
+  upstream changelog for 2.3.12
+  * Bugfix: Don't die on pre blocks with unicode characters. ("#43":https://github.com/textile/python-textile/issues/43)
+  * Bugfix: Fix regressions introduced into the code between 2.2.2 and 2.3.11. (Special thanks to "@adam-iris":https://github.com/adam-iris for providing pull request "#44":https://github.com/textile/python-textile/pull/44)
+  * Bugfix: Don't just die when processing poorly-formatted textile lists. ("#37":https://github.com/textile/python-textile/issues/37)
+  * Add Python 3.6 to testing.
+  * Add a "print the version string and exit" argument to the cli tool: @pytextile -v@
+  upstream changelog for 2.3.11:
+  * Bugfix: Don't strip leading dot from image URIs ("#42":https://github.com/textile/python-textile/issues/42)
+  upstream changelog for 2.3.10:
+* Packaging: cleanup in MANIFEST.IN leads to better linux packaging, and smaller wheel size.
+
+-------------------------------------------------------------------
+Sun Apr  9 08:00:33 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to 2.3.9
+- convert specfile to singlespec
+- upstream changes:
+  - Version 2.3.9
+    * Packaging: remove extraneous files from the source distribution upload.
+    * Remove a lingering file from a feature branch for overhauling list handling. This brings coverage back up to 100%.
+  - Version 2.3.8
+    * Bugfix: Fix process of string containing only whitespaces ("#40":https://github.com/textile/python-textile/issues/40)
+    * Bugfix: Fix process of formatted text after lists ("#37":https://github.com/textile/python-textile/issues/37)
+    * Test: Use sys.executable instead of 'python' to test the CLI ("#38":https://github.com/textile/python-textile/issues/38)
+  - Version 2.3.7
+    * Bugfix: Don't assume pytest is available to be imported in setup.py ("#39":https://github.com/textile/python-textile/issues/39)
+  - Version 2.3.6
+    * Packaging: @tests@ directory is correctly included in source-tarball. ("#33":https://github.com/textile/python-textile/issues/33)
+  - Version 2.3.5
+    * Bugfix: Correctly handle unicode text in url query-strings. ("#36":https://github.com/textile/python-textile/issues/36)
+  - Version 2.3.4
+    * Bugfix: fix an issue with extended block code
+    * Remove misplaced shebang on non-callable files.
+    * Packaging: Add test-command to setup.py directly.
+    * Packaging: Included the tests/ directory for source-tarballs, useful for packaging checks. ("#33":https://github.com/textile/python-textile/issues/33)
+    * Add a cli tool @pytextile@ which takes textile input and prints html output.  See @pytextile -h@ for details.
+
+-------------------------------------------------------------------
+Fri Aug 19 22:00:31 UTC 2016 - sebix+novell.com@sebix.at
+
+- update to upstream version 2.3.3
+
+-------------------------------------------------------------------
+Thu Oct 24 11:15:52 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Fri Sep 23 10:33:59 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

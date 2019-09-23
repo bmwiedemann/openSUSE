@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e3fc488e3b19f2a13446d7d86cbb8ad</srcmd5>
+    <version>0.27.1</version>
+    <time>1537971039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636340</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3117e11510d8791bbea86ea1d3c5ea20</srcmd5>
+    <version>0.27.1</version>
+    <time>1538672497</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide and obsolete certbot main package too to ensure we can
+  migrate to the new split setup directly</comment>
+    <requestid>639739</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4dcd3c6fb22e137fba1bb8e4139b1085</srcmd5>
+    <version>0.27.1</version>
+    <time>1539251707</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not conflict with Certbot as now we provide/obsolete it</comment>
+    <requestid>640815</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>981bfda97cf715238f10111cabccca20</srcmd5>
+    <version>0.28.0</version>
+    <time>1542580400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649948</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1cdf355b423f470fe916bf33b901a000</srcmd5>
+    <version>0.28.0</version>
+    <time>1544095157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655548</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58247e389bf9c88209c7e27d9543ca78</srcmd5>
+    <version>0.29.1</version>
+    <time>1545141467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.1:
+  * The default work and log directories have been changed back
+    to /var/lib/letsencrypt and /var/log/letsencrypt respectively.
+  * Noninteractive renewals with `certbot renew` (those not started
+    from a terminal) now randomly sleep 1-480 seconds before beginning
+    work in order to spread out load spikes on the server side.
+  * Added External Account Binding support in cli and acme library.
+    Command line arguments --eab-kid and --eab-hmac-key added.
+  * Private key permissioning changes: Renewal preserves existing group mode
+    &amp; gid of previous private key material. Private keys for new
+    lineages (i.e. new certs, not renewed) default to 0o600.
+  * Update code and dependencies to clean up Resource and Deprecation Warnings.
+  * Only depend on imgconverter extension for Sphinx &gt;= 1.6
+- update URL</comment>
+    <requestid>658302</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>192e59339b42157465b0c32869fc8b22</srcmd5>
+    <version>0.30.2</version>
+    <time>1549140530</time>
+    <user>coolo</user>
+    <comment>- Update to 0.30.2:
+  * Update the version of setuptools pinned in certbot-auto to 40.6.3 to
+    solve installation problems on newer OSes.
+  * Always download the pinned version of pip in pipstrap to address breakages
+  * Rename old,default.conf to old-and-default.conf to address commas in filenames
+    breaking recent versions of pip.
+  * Add VIRTUALENV_NO_DOWNLOAD=1 to all calls to virtualenv to address breakages
+    from venv downloading the latest pip
+  * Added the `update_account` subcommand for account management commands.</comment>
+    <requestid>669788</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93e7a39162e4f382405785592ee5bd2c</srcmd5>
+    <version>0.31.0</version>
+    <time>1549916777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673116</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f9cd3fc92848fcfb7b8954ef80267535</srcmd5>
+    <version>0.31.0</version>
+    <time>1552572150</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide certbot namespace on py2 too to avoid migration conflict</comment>
+    <requestid>684874</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f57bf5a305029b949c9f4bfc79244af</srcmd5>
+    <version>0.32.0</version>
+    <time>1552985963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685976</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c267096279b5a7e3b08ee9a652b680c8</srcmd5>
+    <version>0.32.0</version>
+    <time>1557834221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702684</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>347159618e9b54eb19a236eed95408d7</srcmd5>
+    <version>0.34.2</version>
+    <time>1559580599</time>
+    <user>dimstar_suse</user>
+    <comment>up</comment>
+    <requestid>705622</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f4459167d42e3a56d4044429daf2d94c</srcmd5>
+    <version>0.35.1</version>
+    <time>1560862767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.35.1
+  * Renewal parameter webroot_path is always saved.
+  * Scripts in Certbot hook directories are no longer executed when 
+    their filenames end in a tilde.</comment>
+    <requestid>710516</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5e323d791a1e6817a707929ac869e439</srcmd5>
+    <version>0.36.0</version>
+    <time>1563456093</time>
+    <user>dimstar_suse</user>
+    <comment>version bump</comment>
+    <requestid>716056</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7c2f7ae4865fa6bfce5083b22705ab2d</srcmd5>
+    <version>0.36.0</version>
+    <time>1563993454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718247</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3a52711bdbb990cc6fc5a57d8d6bce34</srcmd5>
+    <version>0.37.2</version>
+    <time>1567001028</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>726140</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f762e8f81fe57f38b07b945cf049c2c3</srcmd5>
+    <version>0.38.0</version>
+    <time>1568379541</time>
+    <user>lnussel_factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>730161</requestid>
+  </revision>
+</revisionlist>

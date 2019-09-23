@@ -1,0 +1,27 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-11-25 16:12:06.300523574 +0100
+Status: sent to upstream
+
+build: resolve compile error with g++-4.7
+
+g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../intl -I../shared   -DSYSCONFDIR="\"/etc\""   -Wall   -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -c -o metaserver.o metaserver.cpp
+metaserver.cpp: In member function 'CString CMetaServer::httpReadBodyNormal()':
+metaserver.cpp:265:47: error: 'read' was not declared in this scope
+[...]
+
+---
+ simulation/metaserver.cpp |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: ultimatestunts-srcdata-0771/simulation/metaserver.cpp
+===================================================================
+--- ultimatestunts-srcdata-0771.orig/simulation/metaserver.cpp
++++ ultimatestunts-srcdata-0771/simulation/metaserver.cpp
+@@ -20,6 +20,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <netdb.h>
++#include <unistd.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"

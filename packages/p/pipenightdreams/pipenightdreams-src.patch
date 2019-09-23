@@ -1,0 +1,219 @@
+diff -ruB pipenightdreams-0.10.0.orig/src/eventmanager.cpp pipenightdreams-0.10.0/src/eventmanager.cpp
+--- pipenightdreams-0.10.0.orig/src/eventmanager.cpp	2002-01-17 20:56:26.000000000 +0100
++++ pipenightdreams-0.10.0/src/eventmanager.cpp	2015-07-09 16:33:30.409916178 +0200
+@@ -40,7 +40,7 @@
+   lista_streams->remove(lista_streams->indexOf(s));
+ }
+ 
+-void EventManager::pumpEvents(bool wait=false){
++void EventManager::pumpEvents(bool wait){
+   SDL_Event event;
+   Index * stream;
+   bool got=false;
+Only in pipenightdreams-0.10.0/src: eventmanager.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/graphic.cpp pipenightdreams-0.10.0/src/graphic.cpp
+--- pipenightdreams-0.10.0.orig/src/graphic.cpp	2002-01-17 20:56:29.000000000 +0100
++++ pipenightdreams-0.10.0/src/graphic.cpp	2015-07-09 16:35:27.978297977 +0200
+@@ -44,11 +44,11 @@
+   if (pixels) free(pixels);
+ }
+ 
+-void Graphic::setAlpha(char value=OPAQUE){
++void Graphic::setAlpha(char value){
+   SDL_SetAlpha(surface, SDL_SRCALPHA, value);
+ }
+ 
+-void Graphic::enableClipping(bool flag=true){
++void Graphic::enableClipping(bool flag){
+ 
+   if (flag){
+     SDL_Rect rect;
+@@ -68,7 +68,7 @@
+   clip_height=height;
+ }
+ 
+-void Graphic::flip(Axis a=HAxis){
++void Graphic::flip(Axis a){
+   if (surface){
+     if (SDL_MUSTLOCK(surface))
+       if (SDL_LockSurface(surface)<0) return;
+Only in pipenightdreams-0.10.0/src: graphic.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/hash.cpp pipenightdreams-0.10.0/src/hash.cpp
+--- pipenightdreams-0.10.0.orig/src/hash.cpp	2002-01-17 20:56:30.000000000 +0100
++++ pipenightdreams-0.10.0/src/hash.cpp	2015-07-09 16:32:29.178238241 +0200
+@@ -55,10 +55,12 @@
+   return(sum % nbuckets);
+ }
+ 
+-Hash::Hash(int bs=256){
++typedef List *ListPtr;
++
++Hash::Hash(int bs){
+  int i;
+  nbuckets=bs;
+- lbuckets=new (List *)[nbuckets];
++ lbuckets=new ListPtr[nbuckets];
+ 
+  for (i=0;i<nbuckets;i++)
+    lbuckets[i]=new List();
+@@ -99,7 +101,7 @@
+   return NotAdded;
+ }
+ 
+-Hash::Result Hash::remove(Str * str, bool del=false){
++Hash::Result Hash::remove(Str * str, bool del){
+   if (str){
+     Index * i;
+     List * list=lbuckets[function(str)];
+@@ -135,7 +137,7 @@
+   return NULL;
+ }
+ 
+-void Hash::empty(bool del=true){
++void Hash::empty(bool del){
+   int i;
+   List * list;
+   for (i=0;i<nbuckets;i++){
+Only in pipenightdreams-0.10.0/src: hash.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/image.cpp pipenightdreams-0.10.0/src/image.cpp
+--- pipenightdreams-0.10.0.orig/src/image.cpp	2002-01-17 20:56:32.000000000 +0100
++++ pipenightdreams-0.10.0/src/image.cpp	2015-07-09 16:38:28.289350311 +0200
+@@ -19,7 +19,7 @@
+ #include "SDL_image.h"
+ #include <stdio.h>
+ 
+-Image::Image(Str * filename=NULL):Graphic(){
++Image::Image(Str * filename):Graphic(){
+   if (filename) load(filename);
+ }
+ 
+Only in pipenightdreams-0.10.0/src: image.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/list.cpp pipenightdreams-0.10.0/src/list.cpp
+--- pipenightdreams-0.10.0.orig/src/list.cpp	2002-01-17 20:56:35.000000000 +0100
++++ pipenightdreams-0.10.0/src/list.cpp	2015-07-09 16:39:49.492923699 +0200
+@@ -125,7 +125,7 @@
+   return (insert(indexOf(i), obj));
+ }
+ 
+-List::Result List::remove(Index * index, bool del=false){
++List::Result List::remove(Index * index, bool del){
+   if (isEmpty()) return EmptyList;
+   if (!index) return NullIndex;
+ 
+@@ -155,7 +155,7 @@
+   return Removed;
+ }
+ 
+-void List::empty(bool del=true){
++void List::empty(bool del){
+   while (!isEmpty())
+     remove(getFirst(), del);
+ }
+Only in pipenightdreams-0.10.0/src: list.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/pipe.cpp pipenightdreams-0.10.0/src/pipe.cpp
+--- pipenightdreams-0.10.0.orig/src/pipe.cpp	2002-01-21 05:08:13.000000000 +0100
++++ pipenightdreams-0.10.0/src/pipe.cpp	2015-07-09 16:41:04.498529740 +0200
+@@ -43,11 +43,11 @@
+   return !(full_level>0) && !fixed;
+ }
+ 
+-void Pipe::setFixed(bool flag=true){
++void Pipe::setFixed(bool flag){
+   fixed=flag;
+ }
+ 
+-void Pipe::setBonus(Bonus bonus=NormalBonus){
++void Pipe::setBonus(Bonus bonus){
+   this->bonus=bonus;
+ }
+ 
+Only in pipenightdreams-0.10.0/src: pipe.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/player.h pipenightdreams-0.10.0/src/player.h
+--- pipenightdreams-0.10.0.orig/src/player.h	2002-01-17 20:56:40.000000000 +0100
++++ pipenightdreams-0.10.0/src/player.h	2015-07-09 16:46:00.001968259 +0200
+@@ -47,8 +47,8 @@
+     void setStartRowColumn(int row, int column);
+     void setBoard(Board * bd);
+ 
+-    inline void setRestrictionCoef(unsigned int coef);
+-    inline void setFixedCoef(unsigned int coef);
++    void setRestrictionCoef(unsigned int coef);
++    void setFixedCoef(unsigned int coef);
+ 
+     void incLives();
+     void decLives();
+Only in pipenightdreams-0.10.0/src: player.h.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/pointer.cpp pipenightdreams-0.10.0/src/pointer.cpp
+--- pipenightdreams-0.10.0.orig/src/pointer.cpp	2002-01-17 20:56:41.000000000 +0100
++++ pipenightdreams-0.10.0/src/pointer.cpp	2015-07-09 16:46:52.577685399 +0200
+@@ -17,7 +17,7 @@
+ 
+ #include "pointer.h"
+ 
+-Pointer::Pointer(int row=0, int column=0){
++Pointer::Pointer(int row, int column){
+   this->row=row;
+   this->column=column;
+   this->moved_flag=true;
+Only in pipenightdreams-0.10.0/src: pointer.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/pointer.h pipenightdreams-0.10.0/src/pointer.h
+--- pipenightdreams-0.10.0.orig/src/pointer.h	2002-01-17 20:56:41.000000000 +0100
++++ pipenightdreams-0.10.0/src/pointer.h	2015-07-09 16:48:35.036134405 +0200
+@@ -45,9 +45,9 @@
+ 
+     inline void setRow(int row);
+     inline void setColumn(int column);
+-    inline void setRowColumn(int row, int column);
+-    inline void setMoved(bool flag);
+-    inline bool moved();
++    void setRowColumn(int row, int column);
++    void setMoved(bool flag);
++    bool moved();
+ 
+     Str * image_name;
+     Image * ima;
+Only in pipenightdreams-0.10.0/src: pointer.h.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/score.cpp pipenightdreams-0.10.0/src/score.cpp
+--- pipenightdreams-0.10.0.orig/src/score.cpp	2002-01-17 20:56:42.000000000 +0100
++++ pipenightdreams-0.10.0/src/score.cpp	2015-07-09 16:49:55.374702585 +0200
+@@ -18,7 +18,7 @@
+ #include "score.h"
+ #include <math.h>
+ 
+-Score::Score(int value=0){
++Score::Score(int value){
+   this->value=value;
+   delta=0;
+   changed=true;
+Only in pipenightdreams-0.10.0/src: score.cpp.orig
+diff -ruB pipenightdreams-0.10.0.orig/src/str.cpp pipenightdreams-0.10.0/src/str.cpp
+--- pipenightdreams-0.10.0.orig/src/str.cpp	2002-01-17 20:56:42.000000000 +0100
++++ pipenightdreams-0.10.0/src/str.cpp	2015-07-09 17:10:30.190079767 +0200
+@@ -11,7 +11,7 @@
+ 
+ const char Str::nul = '\0';
+ 
+-Str::Str(const char * string=NULL){
++Str::Str(const char * string){
+   s=NULL;
+   set(string);
+ }
+@@ -25,7 +25,7 @@
+   if (s) delete[] s;
+ }
+ 
+-void Str::set(const char * string=NULL){
++void Str::set(const char * string){
+   if (s) delete[] s;
+   if (string){
+     s=new char[strlen(string)+1];
+@@ -71,7 +71,7 @@
+   return (strlen(s));
+ }
+ 
+-bool Str::isEqual(Str * str, bool case_sensitive = true){
++bool Str::isEqual(Str * str, bool case_sensitive){
+   if (case_sensitive){
+     return (!strcmp(s, str->s));
+   }
+Only in pipenightdreams-0.10.0/src: str.cpp.orig

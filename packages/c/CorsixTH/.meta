@@ -1,0 +1,8 @@
+<package name="CorsixTH" project="openSUSE:Factory">
+  <title></title>
+  <description>Theme Hospital clone.
+
+</description>
+  <devel project="games" package="CorsixTH"/>
+  <url>https://github.com/CorsixTH</url>
+</package>

@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="281">
+    <srcmd5>05e9a7c4e6f3deb0dc2e066733b78846</srcmd5>
+    <version>0.6</version>
+    <time>1168904212</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="305">
+    <srcmd5>b6a483f1229dfe7b75c536019b95491e</srcmd5>
+    <version>0.6</version>
+    <time>1170417880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="318">
+    <srcmd5>b96fcb954a75381486f1544ed5efd99a</srcmd5>
+    <version>0.6</version>
+    <time>1179222314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="386">
+    <srcmd5>d6cbcc70f69816188188a459df912d12</srcmd5>
+    <version>0.6</version>
+    <time>1210975168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="416">
+    <srcmd5>d6cbcc70f69816188188a459df912d12</srcmd5>
+    <version>0.6</version>
+    <time>1210975168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="417">
+    <srcmd5>33bcd4279e448bd8fbbb1a4f1a262ea8</srcmd5>
+    <version>0.6</version>
+    <time>1245340534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="419">
+    <srcmd5>33bcd4279e448bd8fbbb1a4f1a262ea8</srcmd5>
+    <version>0.6</version>
+    <time>1245340534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="420">
+    <srcmd5>a6857f26c5bcb22d3aa732bcad5053a0</srcmd5>
+    <version>0.6</version>
+    <time>1268926154</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="422">
+    <srcmd5>a6857f26c5bcb22d3aa732bcad5053a0</srcmd5>
+    <version>0.6</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="423">
+    <srcmd5>a6857f26c5bcb22d3aa732bcad5053a0</srcmd5>
+    <version>0.6</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="426">
+    <srcmd5>a6857f26c5bcb22d3aa732bcad5053a0</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="428">
+    <srcmd5>a6857f26c5bcb22d3aa732bcad5053a0</srcmd5>
+    <version>0.6</version>
+    <time>1319182465</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="429">
+    <srcmd5>242657feb0814db9ef76844bda7bd93b</srcmd5>
+    <version>0.6</version>
+    <time>1325007523</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>97008</requestid>
+  </revision>
+  <revision rev="14" vrev="431">
+    <srcmd5>242657feb0814db9ef76844bda7bd93b</srcmd5>
+    <version>0.6</version>
+    <time>1340184212</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="433">
+    <srcmd5>242657feb0814db9ef76844bda7bd93b</srcmd5>
+    <version>0.6</version>
+    <time>1359110399</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="435">
+    <srcmd5>242657feb0814db9ef76844bda7bd93b</srcmd5>
+    <version>0.6</version>
+    <time>1379664658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="437">
+    <srcmd5>242657feb0814db9ef76844bda7bd93b</srcmd5>
+    <version>0.6</version>
+    <time>1409303356</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="438">
+    <srcmd5>22e79f75b3446a90d0efea3b63d1921d</srcmd5>
+    <version>0.6</version>
+    <time>1417643541</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263573</requestid>
+  </revision>
+  <revision rev="19" vrev="439">
+    <srcmd5>e076ce535242c8f6d40ca6ddba88c13f</srcmd5>
+    <version>0.6</version>
+    <time>1437398026</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>316942</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>599be5d231f224247fed1786039b73f9</srcmd5>
+    <version>0.7</version>
+    <time>1467359686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403819</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0ea5e8b94120dde10e68e8ef84285f7b</srcmd5>
+    <version>0.7</version>
+    <time>1475749883</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433132</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0ea678a3f15bc4d923d7ec248176585e</srcmd5>
+    <version>0.7.1</version>
+    <time>1486305981</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pretty url
+
+- removed _service 
+
+- Version 0.7.1 (bsc#1022632)
+  - Fixed handling of empty /etc/xml/catalog.d
+  - Fixed handling of hidden files in /etc/xml/catalog.d</comment>
+    <requestid>453664</requestid>
+  </revision>
+</revisionlist>

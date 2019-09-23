@@ -1,0 +1,10 @@
+<package name="perl-App-cpanminus" project="openSUSE:Factory">
+  <title>Get, unpack, build and install modules from CPAN</title>
+  <description>cpanminus is a script to get, unpack, build and install modules from CPAN.
+Why? It's dependency free, requires zero configuration, and stands alone.
+When running, it requires only 10MB of RAM.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-App-cpanminus"/>
+  <url>http://search.cpan.org/dist/App-cpanminus</url>
+</package>

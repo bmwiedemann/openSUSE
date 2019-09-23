@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue May 28 11:39:32 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Disable experimental array/vector/string for older releases as
+  GCC doesn't fully support the required C++11 extensions.
+
+-------------------------------------------------------------------
+Mon May 13 08:12:29 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 1.6 (jsc#6358)
+  - See ChangeLog for the complete change list
+
+-------------------------------------------------------------------
+Wed Feb  6 09:46:51 UTC 2019 - nmoreychaisemartin@suse.com
+
+- Conflict with former libpmemobj++-devel (bsc#1124441)
+
+-------------------------------------------------------------------
+Tue Nov  6 11:31:30 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- C++ bindings have been split off pmdk to a separate package
+  (libpmemobj-cpp), version 1.5

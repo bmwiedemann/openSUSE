@@ -1,0 +1,8 @@
+<package name="perl-Graph" project="openSUSE:Factory">
+  <title>Graph data structures and algorithms</title>
+  <description>Graph::Directed allows you to create directed graphs.
+For the available methods, see Graph.
+http://search.cpan.org/~jhi/Graph-0.94/lib/Graph.pod</description>
+  <devel project="devel:languages:perl" package="perl-Graph"/>
+  <url>http://search.cpan.org/dist/Graph/</url>
+</package>

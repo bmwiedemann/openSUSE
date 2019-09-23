@@ -1,0 +1,8 @@
+<package name="php7-APCu" project="openSUSE:Factory">
+  <title>APCu - APC User Cache</title>
+  <description>APCu is userland caching: APC stripped of opcode caching in preparation
+for the deployment of Zend Optimizer+ as the primary solution to opcode
+caching in future versions of PHP.</description>
+  <devel project="server:php:extensions:php7" package="php7-APCu"/>
+  <url>http://pecl.php.net/package/APCu</url>
+</package>

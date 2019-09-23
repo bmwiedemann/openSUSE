@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>456f69e6dc22add58d18259ff2d0f7fb</srcmd5>
+    <version>1.9</version>
+    <time>1314024339</time>
+    <user>saschpe</user>
+    <comment>ELF/DWARF object analyzer. The well-known pahole tool allows to discover holes (padding) in structs and so reduce them.</comment>
+    <requestid>79444</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f44011faa03ded77955ef20e57f80b9</srcmd5>
+    <version>1.9</version>
+    <time>1314024350</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79444
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dc557a8f8d9633420d2b8818ff4438a9</srcmd5>
+    <version>1.9</version>
+    <time>1316443800</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Implement baselibs config</comment>
+    <requestid>83315</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>dc557a8f8d9633420d2b8818ff4438a9</srcmd5>
+    <version>1.9</version>
+    <time>1319181859</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>9880eeafdefb5e7e97b37ae07a1dc028</srcmd5>
+    <version>1.9</version>
+    <time>1323191245</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c657b93b9a00787f79babcd4dd90cd0</srcmd5>
+    <version>1.10</version>
+    <time>1339352110</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.10
+* Initial DWARF4 support
+* Add stubs for some new GNU tags
+* Fix a crash when pahole is called with -R -S</comment>
+    <requestid>123980</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5c657b93b9a00787f79babcd4dd90cd0</srcmd5>
+    <version>1.10</version>
+    <time>1340183296</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>5c657b93b9a00787f79babcd4dd90cd0</srcmd5>
+    <version>1.10</version>
+    <time>1359108832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>5c657b93b9a00787f79babcd4dd90cd0</srcmd5>
+    <version>1.10</version>
+    <time>1379662263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>5c657b93b9a00787f79babcd4dd90cd0</srcmd5>
+    <version>1.10</version>
+    <time>1409300801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>9cb456270e76f6854bc7e81484de7234</srcmd5>
+    <version>1.10</version>
+    <time>1414066851</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258032</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>92df22784ed6e12d6c12c7cc1f6be2ee</srcmd5>
+    <version>1.10</version>
+    <time>1421959770</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with newer libdwarf versions</comment>
+    <requestid>282365</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>0bc0dd119b7d2711198c8aa7ddd32ab9</srcmd5>
+    <version>1.10</version>
+    <time>1486046665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453924</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>84a754dd0b6c151bb1c61605e708f2cc</srcmd5>
+    <version>1.11</version>
+    <time>1522225881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.11</comment>
+    <requestid>591069</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dcb7361dab15c41a7c9395ffd953e59f</srcmd5>
+    <version>1.12</version>
+    <time>1534543528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.12</comment>
+    <requestid>629649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9ec456a2bc073ac78f0c3e9164454b6e</srcmd5>
+    <version>1.13</version>
+    <time>1560970900</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706043</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5ff4fdb130dda720aea540b57cf6afcc</srcmd5>
+    <version>1.15</version>
+    <time>1561642012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.15</comment>
+    <requestid>712252</requestid>
+  </revision>
+</revisionlist>

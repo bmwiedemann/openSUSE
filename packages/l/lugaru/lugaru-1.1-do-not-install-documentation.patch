@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5869354..5e4f99a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -291,16 +291,3 @@ if(APPLE)
+     install(FILES ${CMAKE_SOURCE_DIR}/Dist/OSX/Lugaru.icns DESTINATION ${LUGARU_RESDIR})
+     install(FILES ${CMAKE_SOURCE_DIR}/Dist/OSX/Info.plist DESTINATION ${LUGARU_APP_ROOT}/Contents)
+ endif(APPLE)
+-
+-# Documentation
+-
+-install(FILES ${CMAKE_SOURCE_DIR}/AUTHORS
+-              ${CMAKE_SOURCE_DIR}/CONTENT-LICENSE.txt
+-              ${CMAKE_SOURCE_DIR}/COPYING.txt
+-              ${CMAKE_SOURCE_DIR}/README.md
+-              ${CMAKE_SOURCE_DIR}/RELEASE-NOTES.md
+-              ${CMAKE_SOURCE_DIR}/Docs/DEVTOOLS.txt
+-              ${CMAKE_SOURCE_DIR}/Docs/README.Empire.txt
+-              ${CMAKE_SOURCE_DIR}/Docs/README.SevenTasks.txt
+-              ${CMAKE_SOURCE_DIR}/Docs/README.Temple.txt
+-        DESTINATION ${LUGARU_DOCDIR})

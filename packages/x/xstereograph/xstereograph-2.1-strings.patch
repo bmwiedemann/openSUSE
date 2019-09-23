@@ -1,0 +1,793 @@
+--- src/bd_help.h
++++ src/bd_help.h
+@@ -1,100 +1,93 @@
+-char bd_help[]="\
+-The depthmap builder is a powerful tool allowing to build a depthmap
+-by assigning to each point of coordinates (x,y) in a rectangle 
+-x1 <= x <= x2, y1 <= y <= y2, a luminosity value in the rangle 0..255.
+-The width and height in pixels of the desired resulting image should
+-be specified in the relevant entries.
+-
+-The luminosity is calculated mathematically as a result of the position 
+-of all objects present in the scene, and depends linearly on the value 
+-of the third coordinate z, which is viewed as perpendicular to the Oxy 
+-screen plane. The user should thus also specify the lower and upper 
+-values of z. If several objects have parts sharing the same values of
+-(x,y), only those parts corresponding to the upper layer (z maximal)
+-are represented. 
+-
+-The user should enter a C procedure defining the objects to be built,
+-as for the provided examples in the mathfiles/ directory. This
+-procedure is then embedded in suitable C code to produce a .pgm file
+-(portable gray bitmap). The pnmtotiff utility is finally used to
+-convert this image into the tif format required by SIS. As a
+-consequence, the depthmap builder will only work if you have 
+-pnmtotiff or a similar utility installed on your system.
+-
+-Several position and drawing primitives can be used, in any combination
+-position primitives -- drawing primitives, 
+-position primitives -- drawing primitives,
+-position primitives -- drawing primitives...
+-
+-
+-Position primitives:
+-
+-1. rotation_angles(double a, double b, double c);
+-
+-Rotates an object by an angle a with respect to 0xy, b with respect to
+-0xz and c with respect to 0yz. All angles in degrees.
+-Default values: a=0, b=0, c=0.
+-
+-2. scale(double h);
+-Sets an homothety factor equal to h. All three coordinates x,y,z are 
+-multiplied by h.
+-Default value: h=1.
+-
+-3. translation(double a, double b, double c);
+-
+-Translates coordinates (x,y,z) by (a,b,c).
+-Default values: (a,b,c)=(0,0,0).
+-
+-
+-Drawing primitives:
+-
+-0. max(double x, double y);  min(double x, double y);
+-
+-standard max and min functions.
+-
+-1. mesh(point *p, int i, int j, int k);
+-
+-Here \"point\" is the predefined type  double[3], and p is an
+-array of points, e.g.  point p[15], representing 15 points
+-as triples of coordinates (x,y,z). The above mesh primitive 
+-draws the 3D-triangle whose vertices are p[i], p[j], p[k].
+-
+-2. build(BFunction bfunct);
+-
+-where BFunction is the predefined void function type
+-typedef void (*BFunction)();
+-
+-bfunct() is used to define the object, e.g. as a collection of 
+-triangular meshes, and build(bfunct) makes the actual drawing.
+-
+-3. graph(PFunction pfunct, double u1, double u2, int nu,
+-                           double v1, double v2, int nv);
+-
+-where PFunction is the predefined function type
+-typedef void  (*PFunction)(point p, double u, double v);
+-
+-pfunct(p,u,v) assigns to parameters (u,v) a point
+-       p={x(u,v),y(u,v),z(u,v)}. 
+-The procedure  graph(pfunct, u1,u2,nu, v1,v2,nv); draws the 
+-graph for u1 <= u <= u2, v1 <= v <= v2, by using a subdvision
+-in nu subintervals for u and nv subintervals for v.
+-
+-4. light(ZFunction zfunct);
+-
+-with predefined function type
+-typedef double (*ZFunction)(double x, double y);
+-
+-The function zfunct prescribes the depth as  z=zfunct(x,y), and
+-light(zfunct) assigns the luminosity accordingly. 
+-NOTE: The position primitives have no effect on the light procedure.
+-
+-
+-Check examples in the /mathfiles directory to see how all this works.
++char bd_help[]="\
++The depthmap builder is a powerful tool allowing to build a depthmap\n\
++by assigning to each point of coordinates (x,y) in a rectangle \n\
++x1 <= x <= x2, y1 <= y <= y2, a luminosity value in the rangle 0..255.\n\
++The width and height in pixels of the desired resulting image should\n\
++be specified in the relevant entries.\n\
++\n\
++The luminosity is calculated mathematically as a result of the position \n\
++of all objects present in the scene, and depends linearly on the value \n\
++of the third coordinate z, which is viewed as perpendicular to the Oxy \n\
++screen plane. The user should thus also specify the lower and upper \n\
++values of z. If several objects have parts sharing the same values of\n\
++(x,y), only those parts corresponding to the upper layer (z maximal)\n\
++are represented. \n\
++\n\
++The user should enter a C procedure defining the objects to be built,\n\
++as for the provided examples in the mathfiles/ directory. This\n\
++procedure is then embedded in suitable C code to produce a .pgm file\n\
++(portable gray bitmap). The pnmtotiff utility is finally used to\n\
++convert this image into the tif format required by SIS. As a\n\
++consequence, the depthmap builder will only work if you have \n\
++pnmtotiff or a similar utility installed on your system.\n\
++\n\
++Several position and drawing primitives can be used, in any combination\n\
++position primitives -- drawing primitives, \n\
++position primitives -- drawing primitives,\n\
++position primitives -- drawing primitives...\n\
++\n\
++\n\
++Position primitives:\n\
++\n\
++1. rotation_angles(double a, double b, double c);\n\
++\n\
++Rotates an object by an angle a with respect to 0xy, b with respect to\n\
++0xz and c with respect to 0yz. All angles in degrees.\n\
++Default values: a=0, b=0, c=0.\n\
++\n\
++2. scale(double h);\n\
++Sets an homothety factor equal to h. All three coordinates x,y,z are \n\
++multiplied by h.\n\
++Default value: h=1.\n\
++\n\
++3. translation(double a, double b, double c);\n\
++\n\
++Translates coordinates (x,y,z) by (a,b,c).\n\
++Default values: (a,b,c)=(0,0,0).\n\
++\n\
++\n\
++Drawing primitives:\n\
++\n\
++0. max(double x, double y);  min(double x, double y);\n\
++\n\
++standard max and min functions.\n\
++\n\
++1. mesh(point *p, int i, int j, int k);\n\
++\n\
++Here \"point\" is the predefined type  double[3], and p is an\n\
++array of points, e.g.  point p[15], representing 15 points\n\
++as triples of coordinates (x,y,z). The above mesh primitive \n\
++draws the 3D-triangle whose vertices are p[i], p[j], p[k].\n\
++\n\
++2. build(BFunction bfunct);\n\
++\n\
++where BFunction is the predefined void function type\n\
++typedef void (*BFunction)();\n\
++\n\
++bfunct() is used to define the object, e.g. as a collection of \n\
++triangular meshes, and build(bfunct) makes the actual drawing.\n\
++\n\
++3. graph(PFunction pfunct, double u1, double u2, int nu,\n\
++                           double v1, double v2, int nv);\n\
++\n\
++where PFunction is the predefined function type\n\
++typedef void  (*PFunction)(point p, double u, double v);\n\
++\n\
++pfunct(p,u,v) assigns to parameters (u,v) a point\n\
++       p={x(u,v),y(u,v),z(u,v)}. \n\
++The procedure  graph(pfunct, u1,u2,nu, v1,v2,nv); draws the \n\
++graph for u1 <= u <= u2, v1 <= v <= v2, by using a subdvision\n\
++in nu subintervals for u and nv subintervals for v.\n\
++\n\
++4. light(ZFunction zfunct);\n\
++\n\
++with predefined function type\n\
++typedef double (*ZFunction)(double x, double y);\n\
++\n\
++The function zfunct prescribes the depth as  z=zfunct(x,y), and\n\
++light(zfunct) assigns the luminosity accordingly. \n\
++NOTE: The position primitives have no effect on the light procedure.\n\
++\n\
++\n\
++Check examples in the /mathfiles directory to see how all this works.\n\
+ ";
+-
+-
+-
+-
+-
+-
+-
+--- src/help.h
++++ src/help.h
+@@ -1,41 +1,41 @@
+-char sis_help[] = "\
+-Xstereograph/Magic-eye is a user friendly X-frontend to Stereograph,
+-a fancy SIS generator (SIS = Single  Image  Stereogram) written by
+-Fabian Januszewski. In a few words, a SIS generator produces 
+-plane images which can be interpreted and look like 3D images.
+-
+-How does Stereograph operates? Well, as follows. Starting from 
+-two images,
+-* a depth image, providing information on the shape 
+-  and distance of the \"magic object\" to be displayed,
+-* a texture, giving the output its superficial appearance,
+-Stereograph combines them into a single output image (performing
+-clever anti-aliasing and anti-artifact procedures along the way).
+-
+-As a result, a 3-D stereogram is generated. In such a stereogram, 
+-the \"magic\" object is somehow hidden, although you can see it with
+-bare eyes after your eyes reach a suitable position and focus.
+-
+-The \"Select\" buttons are used to select the depth image and texture, 
+-respectively. The \"Randomize\" buttons provide random selections from
+-the distributed sis/depth_maps and sis/textures. If no depth image has 
+-been selected, magic-eye implicitly provides a random selection as well. 
+-If no texture has been selected (\"Selection\" then indicates \"Texture: -\"),
+-magic-eye uses a chaotic distribution of 8bit color pixels, through
+-the option -C of Stereograph, in place of the texture image.
+-
+-It is also possible to produce stereograms from user built depth_map and 
+-texture images, rather than from the distributed demo files. 
+-
+-Note: these files must be in .PNG, .PPM or .TGA format (use e.g. povray 
+-to produce such files). The depth_map should only use gray scale colors.
+-
+-Credits: Xstereograph is written using the simple X library libsx by  
+-Dominic Giampaolo -- which does indeed provide very easy access
+-to programming under X11.
+-
+-Man page: More details on the technical aspects of SIS stereograms
+-operation can be obtained from the stereograph manual page, as
+-displayed by the \"Man page\" option from the \"About\" button.
++char sis_help[] = "\
++Xstereograph/Magic-eye is a user friendly X-frontend to Stereograph,\n\
++a fancy SIS generator (SIS = Single  Image  Stereogram) written by\n\
++Fabian Januszewski. In a few words, a SIS generator produces \n\
++plane images which can be interpreted and look like 3D images.\n\
++\n\
++How does Stereograph operates? Well, as follows. Starting from \n\
++two images,\n\
++* a depth image, providing information on the shape \n\
++  and distance of the \"magic object\" to be displayed,\n\
++* a texture, giving the output its superficial appearance,\n\
++Stereograph combines them into a single output image (performing\n\
++clever anti-aliasing and anti-artifact procedures along the way).\n\
++\n\
++As a result, a 3-D stereogram is generated. In such a stereogram, \n\
++the \"magic\" object is somehow hidden, although you can see it with\n\
++bare eyes after your eyes reach a suitable position and focus.\n\
++\n\
++The \"Select\" buttons are used to select the depth image and texture, \n\
++respectively. The \"Randomize\" buttons provide random selections from\n\
++the distributed sis/depth_maps and sis/textures. If no depth image has \n\
++been selected, magic-eye implicitly provides a random selection as well. \n\
++If no texture has been selected (\"Selection\" then indicates \"Texture: -\"),\n\
++magic-eye uses a chaotic distribution of 8bit color pixels, through\n\
++the option -C of Stereograph, in place of the texture image.\n\
++\n\
++It is also possible to produce stereograms from user built depth_map and \n\
++texture images, rather than from the distributed demo files. \n\
++\n\
++Note: these files must be in .PNG, .PPM or .TGA format (use e.g. povray \n\
++to produce such files). The depth_map should only use gray scale colors.\n\
++\n\
++Credits: Xstereograph is written using the simple X library libsx by  \n\
++Dominic Giampaolo -- which does indeed provide very easy access\n\
++to programming under X11.\n\
++\n\
++Man page: More details on the technical aspects of SIS stereograms\n\
++operation can be obtained from the stereograph manual page, as\n\
++displayed by the \"Man page\" option from the \"About\" button.\n\
+ ";
+ 
+--- src/xstereograph.c
++++ src/xstereograph.c
+@@ -328,259 +328,259 @@
+ 
+ /* Building sis-depth.c program */
+ fprintf(fd, "\
+-#include <stdlib.h>
+-#include <stdio.h>
+-#include <math.h>
+-
+-#define PI 3.14159265358979
+-#define COLORDEPTH %d
+-#define COLOREXTEN %d
+-#define WIDTH  %s
+-#define HEIGHT %s
+-
+-typedef double point[3];
+-
+-typedef void (*BFunction)();
+-typedef double (*ZFunction)(double x, double y);
+-typedef void  (*PFunction)(point p, double x, double y);
+-
+-const double CONV_RAD=M_PI/180;
+-int do_init = 1;
+-short int pixel_color[WIDTH][HEIGHT];
+-double x_1=%s, x_2=%s, y_1=%s, y_2=%s, z_1=%s, z_2=%s;
+-double ratio_x, ratio_y, ratio_z;
+-double m_rot[12]={1,0,0,0,0,1,0,0,0,0,1,0};
+-
+-double max(double x, double y)
+-{
+-   if(x>=y) return x; else return y;
+-}
+-
+-double min(double x, double y)
+-{
+-   if(x>=y) return x; else return y;
+-}
+-
+-void do_init_image()
+-{
+-int i,j;
+-
+-   if (do_init)
+-     {
+-     for(j=0; j<HEIGHT; j++) for(i=0; i<WIDTH; i++) pixel_color[i][j] = 0;
+-     ratio_x = (x_2-x_1)/(double)WIDTH;
+-     ratio_y = (y_2-y_1)/(double)HEIGHT;
+-     if(ratio_x==0 || ratio_y==0) exit(1);
+-     ratio_z = z_2-z_1;
+-     if(ratio_z<=0) exit(1); else ratio_z = ((double)COLOREXTEN)/ratio_z;
+-     do_init = 0;
+-     }
+-}
+-
+-void translation(double a, double b, double c)
+-{
+-   m_rot[3] = a;   
+-   m_rot[7] = b;   
+-   m_rot[11] = c;   
+-}
+-
+-void scale(double a)
+-{
+-int i;
+-
+-   for (i=0; i<=11; i++) m_rot[i] *= a;   
+-}
+-
+-void rotation_angles(double theta, double phi, double psi)
+-{
+-double ca,cb,cc, sa,sb,sc;
+-
+-   ca=theta*CONV_RAD;
+-   cb=phi*CONV_RAD;
+-   cc=psi*CONV_RAD;
+-
+-   sa=sin(ca); ca=cos(ca);
+-   sb=sin(cb); cb=cos(cb);
+-   sc=sin(cc); cc=cos(cc);
+-
+-   m_rot[0] = ca*cb;
+-   m_rot[1] = -sa*cc-ca*sb*sc;
+-   m_rot[2] = sa*sc-ca*sb*cc;
+-
+-   m_rot[4] = sa*cb;
+-   m_rot[5] = ca*cc-sa*sb*sc;
+-   m_rot[6] = -ca*sc-sa*sb*cc;
+-
+-   m_rot[8] = sb;
+-   m_rot[9] = cb*sc;
+-   m_rot[10]= cb*cc;
+-
+-}
+-
+-void rotate(point p, point q)
+-{
+-int i,j;
+-   for(i=0; i<=2; i++)
+-     {
+-     j=4*i;
+-     q[i] = m_rot[j]*p[0]+m_rot[j+1]*p[1]+m_rot[j+2]*p[2]+m_rot[j+3];
+-     }
+-}
+-
+-void setpoint(point p, point q)
+-{
+-int i;
+-
+-   for(i=0; i<=2; i++) p[i] = q[i];
+-}
+-
+-void mesh(point *p, int h, int i, int j)
+-{
+-point a[3];
+-double ca,cb,cc,cd, delta, s,t, adds,addt, x, y, z, z0,z1,z2;
+-int u1, u2, v1, v2;
+-int k,l,m;
+-
+-   do_init_image();
+-   rotate(p[h],a[0]);
+-   rotate(p[i],a[1]);
+-   rotate(p[j],a[2]);
+-
+-   u1=WIDTH; u2=-1;
+-   v1=HEIGHT; v2=-1;
+-
+-   for(k=0; k<=2; k++)
+-     {
+-     l=(int)((a[k][0]-x_1)/ratio_x);
+-     if(l<u1) u1=l;
+-     if(l>u2) u2=l;
+-     l=(int)((y_2-a[k][1])/ratio_y);
+-     if(l<v1) v1=l;
+-     if(l>v2) v2=l;
+-     }
+-
+-    if(u1<0) u1=0;
+-    if(u2>=WIDTH) u2=WIDTH-1;
+-    if(v1<0) v1=0;
+-    if(v2>=HEIGHT) v2=HEIGHT-1;
+-    if(u1>u2 || v1>v2) return;
+-
+-    z0 = a[0][2];
+-    z1 = a[1][2]-z0;
+-    z2 = a[2][2]-z0;
+-
+-    z0 = (z0-z_1)*ratio_z;
+-    z1 = z1*ratio_z;
+-    z2 = z2*ratio_z;
+-
+-    delta = (a[1][0]-a[0][0])*(a[2][1]-a[0][1]) 
+-                      - (a[1][1]-a[0][1])*(a[2][0]-a[0][0]);
+-    if (fabs(delta)<1E-5) return;
+-    
+-    delta=1/delta;
+-    ca = (a[2][1]-a[0][1])*delta;
+-    cb = (a[0][0]-a[2][0])*delta;
+-    cc = (a[0][1]-a[1][1])*delta;
+-    cd = (a[1][0]-a[0][0])*delta;
+-    adds = ca*ratio_x;
+-    addt = cc*ratio_x;
+-
+-    for(l=v1; l<=v2; l++) 
+-      {
+-      x = x_1 + u1*ratio_x - a[0][0];
+-      y = y_2 - l*ratio_y - a[0][1];
+-      s = ca*x + cb*y;
+-      t = cc*x + cd*y;
+-      for(k=u1; k<=u2; k++)
+-	{
+-        if (s>=-0.0001 && t>=-0.0001 && s+t<=1.0001)
+-	  {
+-          m = (int) (z0 + s*z1 + t*z2);
+-          if (m<0) m=0;
+-          if (m>COLOREXTEN) m=COLOREXTEN;
+-          if (m>pixel_color[k][l]) pixel_color[k][l] = m;
+-	  }
+-        s = s + adds;
+-        t = t + addt;
+-        }
+-      }
+-}
+-
+-void build(BFunction bfunct)
+-{
+-   do_init_image();
+-   bfunct();
+-}
+-
+-void light(ZFunction zfunct)
+-{
+-int i, j;
+-int k;
+-double x,y;
+-
+-   do_init_image();
+-
+-   for(j=0; j<HEIGHT; j++) 
+-   {
+-     y = y_2-ratio_y*j;
+-     for(i=0; i<WIDTH; i++)
+-     {
+-        x = ratio_x*i+x_1;
+-        k = (int)((zfunct(x,y)-z_1)*ratio_z);
+-        if (k<0) k=0;
+-        if (k>COLOREXTEN) k=COLOREXTEN;
+-        if (k>pixel_color[i][j]) pixel_color[i][j] = k;
+-     }
+-   }
+-}
+-
+-void graph(PFunction pfunct, double xi, double xs, int nx, 
+-                             double yi, double ys, int ny)
+-{
+-int i, j, l;
+-double hx,hy;
+-point p[4];
+-
+-   if(nx<=0 || ny<=0) return;
+-
+-   do_init_image();
+-
+-   hx = (xs-xi)/nx;
+-   hy = (ys-yi)/ny;
+-
+-   for(j=0; j<ny; j++) 
+-     {
+-     for(l=0; l<=1; l++)
+-         pfunct(p[l],xi,yi+(j+l)*hy);
+-
+-     for(i=1; i<=nx; i++)
+-         {
+-         setpoint(p[2],p[0]); setpoint(p[3],p[1]); 
+-         for(l=0; l<=1; l++)
+-            pfunct(p[l], xi+i*hx,yi+(j+l)*hy);
+-         mesh(p,0,1,2); mesh(p,1,2,3);
+-         }
+-     }
+-}
+-
+-int main(int argc, char **argv)
+-{
+-int i, j;
+-
+-   %s
+-
+-   printf(\"P6\\n# CREATOR: sis\\n\");
+-   printf(\" %%d %%d %%d\\n\", WIDTH, HEIGHT, COLORDEPTH);
+-
+-   for(j=0; j<HEIGHT; j++) for(i=0; i<WIDTH; i++)
+-     {
+-     int k=pixel_color[i][j]/3;
+-     int l=pixel_color[i][j] - 3*k;
+-     int m=0;
+-     if (l==2) {l=1; m=1;}
+-     printf(\"%%c%%c%%c\", k, k+l, k+m);
+-     }
+-}
++#include <stdlib.h>\n\
++#include <stdio.h>\n\
++#include <math.h>\n\
++\n\
++#define PI 3.14159265358979\n\
++#define COLORDEPTH %d\n\
++#define COLOREXTEN %d\n\
++#define WIDTH  %s\n\
++#define HEIGHT %s\n\
++\n\
++typedef double point[3];\n\
++\n\
++typedef void (*BFunction)();\n\
++typedef double (*ZFunction)(double x, double y);\n\
++typedef void  (*PFunction)(point p, double x, double y);\n\
++\n\
++const double CONV_RAD=M_PI/180;\n\
++int do_init = 1;\n\
++short int pixel_color[WIDTH][HEIGHT];\n\
++double x_1=%s, x_2=%s, y_1=%s, y_2=%s, z_1=%s, z_2=%s;\n\
++double ratio_x, ratio_y, ratio_z;\n\
++double m_rot[12]={1,0,0,0,0,1,0,0,0,0,1,0};\n\
++\n\
++double max(double x, double y)\n\
++{\n\
++   if(x>=y) return x; else return y;\n\
++}\n\
++\n\
++double min(double x, double y)\n\
++{\n\
++   if(x>=y) return x; else return y;\n\
++}\n\
++\n\
++void do_init_image()\n\
++{\n\
++int i,j;\n\
++\n\
++   if (do_init)\n\
++     {\n\
++     for(j=0; j<HEIGHT; j++) for(i=0; i<WIDTH; i++) pixel_color[i][j] = 0;\n\
++     ratio_x = (x_2-x_1)/(double)WIDTH;\n\
++     ratio_y = (y_2-y_1)/(double)HEIGHT;\n\
++     if(ratio_x==0 || ratio_y==0) exit(1);\n\
++     ratio_z = z_2-z_1;\n\
++     if(ratio_z<=0) exit(1); else ratio_z = ((double)COLOREXTEN)/ratio_z;\n\
++     do_init = 0;\n\
++     }\n\
++}\n\
++\n\
++void translation(double a, double b, double c)\n\
++{\n\
++   m_rot[3] = a;   \n\
++   m_rot[7] = b;   \n\
++   m_rot[11] = c;   \n\
++}\n\
++\n\
++void scale(double a)\n\
++{\n\
++int i;\n\
++\n\
++   for (i=0; i<=11; i++) m_rot[i] *= a;   \n\
++}\n\
++\n\
++void rotation_angles(double theta, double phi, double psi)\n\
++{\n\
++double ca,cb,cc, sa,sb,sc;\n\
++\n\
++   ca=theta*CONV_RAD;\n\
++   cb=phi*CONV_RAD;\n\
++   cc=psi*CONV_RAD;\n\
++\n\
++   sa=sin(ca); ca=cos(ca);\n\
++   sb=sin(cb); cb=cos(cb);\n\
++   sc=sin(cc); cc=cos(cc);\n\
++\n\
++   m_rot[0] = ca*cb;\n\
++   m_rot[1] = -sa*cc-ca*sb*sc;\n\
++   m_rot[2] = sa*sc-ca*sb*cc;\n\
++\n\
++   m_rot[4] = sa*cb;\n\
++   m_rot[5] = ca*cc-sa*sb*sc;\n\
++   m_rot[6] = -ca*sc-sa*sb*cc;\n\
++\n\
++   m_rot[8] = sb;\n\
++   m_rot[9] = cb*sc;\n\
++   m_rot[10]= cb*cc;\n\
++\n\
++}\n\
++\n\
++void rotate(point p, point q)\n\
++{\n\
++int i,j;\n\
++   for(i=0; i<=2; i++)\n\
++     {\n\
++     j=4*i;\n\
++     q[i] = m_rot[j]*p[0]+m_rot[j+1]*p[1]+m_rot[j+2]*p[2]+m_rot[j+3];\n\
++     }\n\
++}\n\
++\n\
++void setpoint(point p, point q)\n\
++{\n\
++int i;\n\
++\n\
++   for(i=0; i<=2; i++) p[i] = q[i];\n\
++}\n\
++\n\
++void mesh(point *p, int h, int i, int j)\n\
++{\n\
++point a[3];\n\
++double ca,cb,cc,cd, delta, s,t, adds,addt, x, y, z, z0,z1,z2;\n\
++int u1, u2, v1, v2;\n\
++int k,l,m;\n\
++\n\
++   do_init_image();\n\
++   rotate(p[h],a[0]);\n\
++   rotate(p[i],a[1]);\n\
++   rotate(p[j],a[2]);\n\
++\n\
++   u1=WIDTH; u2=-1;\n\
++   v1=HEIGHT; v2=-1;\n\
++\n\
++   for(k=0; k<=2; k++)\n\
++     {\n\
++     l=(int)((a[k][0]-x_1)/ratio_x);\n\
++     if(l<u1) u1=l;\n\
++     if(l>u2) u2=l;\n\
++     l=(int)((y_2-a[k][1])/ratio_y);\n\
++     if(l<v1) v1=l;\n\
++     if(l>v2) v2=l;\n\
++     }\n\
++\n\
++    if(u1<0) u1=0;\n\
++    if(u2>=WIDTH) u2=WIDTH-1;\n\
++    if(v1<0) v1=0;\n\
++    if(v2>=HEIGHT) v2=HEIGHT-1;\n\
++    if(u1>u2 || v1>v2) return;\n\
++\n\
++    z0 = a[0][2];\n\
++    z1 = a[1][2]-z0;\n\
++    z2 = a[2][2]-z0;\n\
++\n\
++    z0 = (z0-z_1)*ratio_z;\n\
++    z1 = z1*ratio_z;\n\
++    z2 = z2*ratio_z;\n\
++\n\
++    delta = (a[1][0]-a[0][0])*(a[2][1]-a[0][1]) \n\
++                      - (a[1][1]-a[0][1])*(a[2][0]-a[0][0]);\n\
++    if (fabs(delta)<1E-5) return;\n\
++    \n\
++    delta=1/delta;\n\
++    ca = (a[2][1]-a[0][1])*delta;\n\
++    cb = (a[0][0]-a[2][0])*delta;\n\
++    cc = (a[0][1]-a[1][1])*delta;\n\
++    cd = (a[1][0]-a[0][0])*delta;\n\
++    adds = ca*ratio_x;\n\
++    addt = cc*ratio_x;\n\
++\n\
++    for(l=v1; l<=v2; l++) \n\
++      {\n\
++      x = x_1 + u1*ratio_x - a[0][0];\n\
++      y = y_2 - l*ratio_y - a[0][1];\n\
++      s = ca*x + cb*y;\n\
++      t = cc*x + cd*y;\n\
++      for(k=u1; k<=u2; k++)\n\
++	{\n\
++        if (s>=-0.0001 && t>=-0.0001 && s+t<=1.0001)\n\
++	  {\n\
++          m = (int) (z0 + s*z1 + t*z2);\n\
++          if (m<0) m=0;\n\
++          if (m>COLOREXTEN) m=COLOREXTEN;\n\
++          if (m>pixel_color[k][l]) pixel_color[k][l] = m;\n\
++	  }\n\
++        s = s + adds;\n\
++        t = t + addt;\n\
++        }\n\
++      }\n\
++}\n\
++\n\
++void build(BFunction bfunct)\n\
++{\n\
++   do_init_image();\n\
++   bfunct();\n\
++}\n\
++\n\
++void light(ZFunction zfunct)\n\
++{\n\
++int i, j;\n\
++int k;\n\
++double x,y;\n\
++\n\
++   do_init_image();\n\
++\n\
++   for(j=0; j<HEIGHT; j++) \n\
++   {\n\
++     y = y_2-ratio_y*j;\n\
++     for(i=0; i<WIDTH; i++)\n\
++     {\n\
++        x = ratio_x*i+x_1;\n\
++        k = (int)((zfunct(x,y)-z_1)*ratio_z);\n\
++        if (k<0) k=0;\n\
++        if (k>COLOREXTEN) k=COLOREXTEN;\n\
++        if (k>pixel_color[i][j]) pixel_color[i][j] = k;\n\
++     }\n\
++   }\n\
++}\n\
++\n\
++void graph(PFunction pfunct, double xi, double xs, int nx, \n\
++                             double yi, double ys, int ny)\n\
++{\n\
++int i, j, l;\n\
++double hx,hy;\n\
++point p[4];\n\
++\n\
++   if(nx<=0 || ny<=0) return;\n\
++\n\
++   do_init_image();\n\
++\n\
++   hx = (xs-xi)/nx;\n\
++   hy = (ys-yi)/ny;\n\
++\n\
++   for(j=0; j<ny; j++) \n\
++     {\n\
++     for(l=0; l<=1; l++)\n\
++         pfunct(p[l],xi,yi+(j+l)*hy);\n\
++\n\
++     for(i=1; i<=nx; i++)\n\
++         {\n\
++         setpoint(p[2],p[0]); setpoint(p[3],p[1]); \n\
++         for(l=0; l<=1; l++)\n\
++            pfunct(p[l], xi+i*hx,yi+(j+l)*hy);\n\
++         mesh(p,0,1,2); mesh(p,1,2,3);\n\
++         }\n\
++     }\n\
++}\n\
++\n\
++int main(int argc, char **argv)\n\
++{\n\
++int i, j;\n\
++\n\
++   %s\n\
++\n\
++   printf(\"P6\\n# CREATOR: sis\\n\");\n\
++   printf(\" %%d %%d %%d\\n\", WIDTH, HEIGHT, COLORDEPTH);\n\
++\n\
++   for(j=0; j<HEIGHT; j++) for(i=0; i<WIDTH; i++)\n\
++     {\n\
++     int k=pixel_color[i][j]/3;\n\
++     int l=pixel_color[i][j] - 3*k;\n\
++     int m=0;\n\
++     if (l==2) {l=1; m=1;}\n\
++     printf(\"%%c%%c%%c\", k, k+l, k+m);\n\
++     }\n\
++}\n\
+ ",
+ COLORDEPTH,
+ COLOREXTEN,

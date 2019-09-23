@@ -1,0 +1,30 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-04-30 16:29:33.540380817 +0200
+
+gcc:
+getpixel.c: In function 'getpixel':
+getpixel.c:29:1: warning: control reaches end of non-void function [-Wreturn-type]
+
+rpmlint:
+I: Program returns random data in a function
+E: libXbgi no-return-in-nonvoid-function getpixel.c:29
+
+If the color is not in the palette, the function will return trash.
+Any value would be ok, but consistently give 0 to quiesce gcc.
+
+---
+ src/getpixel.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: xbgi-364/src/getpixel.c
+===================================================================
+--- xbgi-364.orig/src/getpixel.c
++++ xbgi-364/src/getpixel.c
+@@ -30,6 +30,7 @@ unsigned int getpixel(int x, int y)
+     for (col = 0; col < MAXCOLORS + 1; col++)
+       if (vga_palette[col].pixel_value == pixel)
+ 	return (col);
++  return 0;
+ }
+ 
+ 

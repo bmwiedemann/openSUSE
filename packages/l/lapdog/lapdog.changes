@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Nov 16 12:23:30 UTC 2017 - aloisio@gmx.com
+
+- Actually perform the build in the %build section
+- Use %license macro
+
+-------------------------------------------------------------------
+Mon Nov 13 17:21:27 UTC 2017 - aloisio@gmx.com
+
+- Added lapdog-1.1-pass_cxxflags.patch
+
+-------------------------------------------------------------------
+Thu Nov  9 10:21:04 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.1
+  * Drop groups when running action script
+
+- Dropped lapdog-1.0-setgroups.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon Sep 11 11:53:28 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.0)

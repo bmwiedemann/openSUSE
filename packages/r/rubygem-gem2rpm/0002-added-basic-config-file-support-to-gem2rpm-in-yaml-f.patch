@@ -1,0 +1,93 @@
+From 1742038eb7ec8fcb25009ce8b270b420183875bc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marcus=20R=C3=BCckert?= <mrueckert@suse.de>
+Date: Thu, 24 Jul 2014 16:54:45 +0200
+Subject: [PATCH 02/32] added basic config file support to gem2rpm in yaml
+ format.
+
+There is no validation as it is basically a hash where certain keys are
+picked up by our templates.
+---
+ bin/gem2rpm    | 21 +++++++++++++++++++--
+ lib/gem2rpm.rb |  3 ++-
+ 2 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/bin/gem2rpm b/bin/gem2rpm
+index fa7ce6b..7f28603 100755
+--- a/bin/gem2rpm
++++ b/bin/gem2rpm
+@@ -8,6 +8,7 @@ require 'optparse'
+ require 'fileutils'
+ require 'open-uri'
+ require 'uri'
++require 'yaml'
+ 
+ opts = OptionParser.new("Usage: #{$0} [OPTIONS] GEM")
+ opts.separator("  Convert ruby Gems to source RPMs and specfiles")
+@@ -23,6 +24,8 @@ deps = false
+ nongem = false
+ doc_subpackage = true
+ fetch = false
++config_file = nil
++config = {}
+ 
+ opts.separator("")
+ opts.separator("  Options:")
+@@ -58,6 +61,9 @@ end
+ opts.on("--fetch", "Fetch the gem from rubygems.org") do |val|
+   fetch = true
+ end
++opts.on("--config FILE", "Path to gem2rpm.yaml") do |val|
++  config_file = val
++end
+ opts.separator("")
+ opts.separator("  Arguments:")
+ opts.separator("    GEM            the path to locally stored gem package file or the name")
+@@ -127,13 +133,24 @@ if srpm
+     end
+ end
+ 
++if config_file
++  begin
++    config = YAML.load_file(config_file)
++    config[:sources] ||= []
++    config[:sources] << File.basename(config_file)
++  rescue Exception => ex
++    $stderr.puts "Failed to load config file '#{config_file}': #{ex}"
++    exit 1
++  end
++end
++
+ # Produce a specfile
+ if output_file.nil?
+-    Gem2Rpm::convert(gemfile, template, $stdout, nongem, local, doc_subpackage) unless deps
++    Gem2Rpm::convert(gemfile, template, $stdout, nongem, local, doc_subpackage, config) unless deps
+ else
+     begin
+         out = open(output_file, "w")
+-        Gem2Rpm::convert(gemfile, template, out, nongem, local, doc_subpackage)
++        Gem2Rpm::convert(gemfile, template, out, nongem, local, doc_subpackage, config)
+     ensure
+         out.close()
+     end
+diff --git a/lib/gem2rpm.rb b/lib/gem2rpm.rb
+index 017ecd1..e5e2693 100644
+--- a/lib/gem2rpm.rb
++++ b/lib/gem2rpm.rb
+@@ -31,12 +31,13 @@ module Gem2Rpm
+   end
+ 
+   def Gem2Rpm.convert(fname, template=TEMPLATE, out=$stdout,
+-                      nongem=true, local=false, doc_subpackage = true)
++                      nongem=true, local=false, doc_subpackage = true, config={})
+     package = Gem2Rpm::Package.new(fname)
+     # Deprecate, kept just for backward compatibility.
+     format = Gem2Rpm::Format.new(package)
+     spec = Gem2Rpm::Specification.new(package.spec)
+     spec.description ||= spec.summary
++    config ||= {}
+     download_path = ""
+     unless local
+       begin
+-- 
+2.20.1
+

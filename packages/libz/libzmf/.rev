@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>84a774d33d0112b0f239f5c75de9c326</srcmd5>
+    <version>0.0.1</version>
+    <time>1482785124</time>
+    <user>lnussel_factory</user>
+    <comment>libreoffice 5.3</comment>
+    <requestid>443569</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a33447f09f13da0a108bffb74bcc755f</srcmd5>
+    <version>0.0.1</version>
+    <time>1484041637</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build on older distributions:
+  * libzmf-old-boost.patch</comment>
+    <requestid>448709</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0f511e152ca056340afcec33977c8f28</srcmd5>
+    <version>0.0.1</version>
+    <time>1486046717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453967</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e45483ecb7191c7963b0e13695a4ff78</srcmd5>
+    <version>0.0.2</version>
+    <time>1507391185</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.0.2:
+  * Allow build with boost older than 1.56.
+  * Require C++11 for build.
+  * Fix various issues found by oss-fuzz.
+  * Minor code cleanups.
+- Drop merged patch:
+  * libzmf-old-boost.patch</comment>
+    <requestid>530392</requestid>
+  </revision>
+</revisionlist>

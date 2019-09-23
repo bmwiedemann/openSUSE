@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb33d084cf1fe3d1802a719054f2c4f7</srcmd5>
+    <version>2.1.0</version>
+    <time>1533292616</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626910</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cbc507497c9435ccb122b50945a5af11</srcmd5>
+    <version>3.1.0</version>
+    <time>1543828352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653426</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>adf79bfdcef46de92c0d0c9c5b187107</srcmd5>
+    <version>3.1.0</version>
+    <time>1554977859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693002</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>02e5a41b8ae264b4d79c1f48f7339601</srcmd5>
+    <version>3.1.0</version>
+    <time>1556621836</time>
+    <user>dimstar_suse</user>
+    <comment>- Export lang to fix build with older openSUSE releases</comment>
+    <requestid>697475</requestid>
+  </revision>
+</revisionlist>

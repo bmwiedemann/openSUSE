@@ -1,0 +1,1557 @@
+<revisionlist>
+  <revision rev="1" vrev="13">
+    <srcmd5>ae2507b3b7febb26a86216b61ccfab1c</srcmd5>
+    <version>0.8.2</version>
+    <time>1168904081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="33">
+    <srcmd5>47c534ebd2a0839e3c806291e17c1cd4</srcmd5>
+    <version>0.8.2</version>
+    <time>1170426414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="34">
+    <srcmd5>b4347b61a87318d961d956c665e7ce1c</srcmd5>
+    <version>0.8.2</version>
+    <time>1170804759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5d8cb67515d9159e859e49b71b7cc19</srcmd5>
+    <version>0.9.0</version>
+    <time>1172486683</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>13626edd95afce1d3ebc60f3291ca913</srcmd5>
+    <version>0.9.0</version>
+    <time>1175200851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>67d37bd5f71b6e39dd4ad23306f17e40</srcmd5>
+    <version>0.9.0</version>
+    <time>1175812130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="33">
+    <srcmd5>ea0504befeee6c233bd8d1c2db2cf1f3</srcmd5>
+    <version>0.9.0</version>
+    <time>1181578656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="35">
+    <srcmd5>3cf8f23a6d64b3f376cd4bc69c924f9d</srcmd5>
+    <version>0.9.0</version>
+    <time>1181830922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="36">
+    <srcmd5>6163a7ade6e664cc9dc6dd4651ff9fe6</srcmd5>
+    <version>0.9.0</version>
+    <time>1181860123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="37">
+    <srcmd5>0d286956eb5c829f840214e7436acbcb</srcmd5>
+    <version>0.9.0</version>
+    <time>1182333427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="38">
+    <srcmd5>75b216c151b8281cbd468b49224e6b03</srcmd5>
+    <version>0.9.0</version>
+    <time>1182360089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e27304d52c9035afc19eeea8b69798b3</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1184086554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>dac041932f68574c608673d25f9c4758</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1185819635</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>f9c09a6dfd021a9b8729197e6a7a1bbe</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1186484621</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>954d32b06e45843ed6cc4302db69fac8</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1186686691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>9d42391482dbd7b690ec76c51a6c72c9</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1186911894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>a4f2bc3d341e07e53046771c02bd6e36</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1187624374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="36">
+    <srcmd5>192b5fa6dc29a329473ecc224d1037e8</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1191366578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="37">
+    <srcmd5>4f4e5b664342e9124d41f5ac6ef228f0</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1192146583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="50">
+    <srcmd5>c311f078f629f546d7651c57cff8a57b</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1194985922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="57">
+    <srcmd5>01c12e392e3d1b7e7a857b2646a0e62b</srcmd5>
+    <version>0.9.0.cvs</version>
+    <time>1197329665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2bf9a7ff083fbfa301632ddd8d857b13</srcmd5>
+    <version>0.9.1</version>
+    <time>1200613132</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="22">
+    <srcmd5>69c182717fd3925a7f94042c8e0ae5fa</srcmd5>
+    <version>0.9.1</version>
+    <time>1205254599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="35">
+    <srcmd5>779cf075a8124974d43c95fe65d030f8</srcmd5>
+    <version>0.9.1</version>
+    <time>1209134494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="46">
+    <srcmd5>b2134ea0373af806abb469cc258dc5d7</srcmd5>
+    <version>0.9.1</version>
+    <time>1212448136</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>96788ad1210cf71e5358e60bcb04a0c9</srcmd5>
+    <version>0.9.2svn20080703</version>
+    <time>1216953751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>60dedd596cb79e0a3b3b8f6dffae7625</srcmd5>
+    <version>0.9.2svn20080703</version>
+    <time>1217852169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>90ea8ef6fcfc90b04ce8d3c1b0699ea1</srcmd5>
+    <version>0.9.2svn20081008</version>
+    <time>1223483755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dad60de662783ff8f863f3b11359553c</srcmd5>
+    <version>0.10.1</version>
+    <time>1238605054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a824273d6c7bde421f532a6d645c0b64</srcmd5>
+    <version>0.10.1</version>
+    <time>1239841141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>00e2fcbc2be2defb695c6cdac7723acf</srcmd5>
+    <version>0.11.0</version>
+    <time>1250005033</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/qemu based on submit request 1038 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>e5c36e338ff464419049d2f8748c1af4</srcmd5>
+    <version>0.11.0</version>
+    <time>1252024115</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/qemu based on submit request 1740 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>3269429657a646c184ffd23ce06c63af</srcmd5>
+    <version>0.11.0</version>
+    <time>1252588163</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/qemu based on submit request 1823 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>ee2ed045cfb25684987924255861cd95</srcmd5>
+    <version>0.11.0</version>
+    <time>1255358879</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/qemu based on submit request 2136 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>ee2ed045cfb25684987924255861cd95</srcmd5>
+    <version>0.11.0</version>
+    <time>1255358879</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/qemu based on submit request 2136 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>e1fc795b444922b7159cf6cf6d1d37fe</srcmd5>
+    <version>0.11.0</version>
+    <time>1268925913</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>bc581806ac770cef4e55b909e0fcd8f6</srcmd5>
+    <version>0.11.0</version>
+    <time>1272214040</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/qemu based on submit request 38683 from user coolo
+</comment>
+    <requestid>38683</requestid>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>834c6ce8e4dd98f9f30390c3161fa8ca</srcmd5>
+    <version>0.11.0</version>
+    <time>1274654703</time>
+    <user>autobuild</user>
+    <comment>Copy from Virtualization/qemu based on submit request 40395 from user bfrogers
+</comment>
+    <requestid>40395</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>024d742df91d20f923df3f8ccee893ad</srcmd5>
+    <version>0.12.4</version>
+    <time>1275322825</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:uli_suse:branches:SUSE:Factory:Head/qemu based on submit request 6447 from user uli_suse
+</comment>
+    <requestid>6447</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>024d742df91d20f923df3f8ccee893ad</srcmd5>
+    <version>0.12.4</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>024d742df91d20f923df3f8ccee893ad</srcmd5>
+    <version>0.12.4</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>024d742df91d20f923df3f8ccee893ad</srcmd5>
+    <version>0.12.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>233619521bc4b97fc5fa10d7bcc0b295</srcmd5>
+    <version>0.14.0_rc1</version>
+    <time>1298032042</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61514 from user elvigia
+</comment>
+    <requestid>61514</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>6e6466058b40a74a3356756b7db4d472</srcmd5>
+    <version>0.14.0_rc1</version>
+    <time>1298032051</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61514
+</comment>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>e4a829b12c5a82dd020c5cd6eab89e23</srcmd5>
+    <version>0.14.0_rc1</version>
+    <time>1298286324</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62247 from user coolo
+</comment>
+    <requestid>62247</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>5ddb68a7c51ef5548c673cc03e9b5a1e</srcmd5>
+    <version>0.14.0_rc1</version>
+    <time>1298286330</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62247
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b8e9681bc1a54600101544a62a35c0ed</srcmd5>
+    <version>0.14.1</version>
+    <time>1308642488</time>
+    <user>saschpe</user>
+    <comment>Add BuildRequires: glibc-devel-static (forwarded request 74173 from a_jaeger)</comment>
+    <requestid>74212</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>3222194394e25f2cda751869662f5027</srcmd5>
+    <version>0.14.1</version>
+    <time>1308642500</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74212
+</comment>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>6fcf0eefe736d1a3f07969c1a2fae352</srcmd5>
+    <version>0.14.1</version>
+    <time>1317132422</time>
+    <user>saschpe</user>
+    <comment>fix openat function (forwarded request 84944 from adrianSuSE)</comment>
+    <requestid>84946</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>7c6a96a4bacff25c6ea5fe813b97c449</srcmd5>
+    <version>0.14.1</version>
+    <time>1317293598</time>
+    <user>saschpe</user>
+    <comment>reboot syscall and more mmap fixes (forwarded request 85070 from adrianSuSE)</comment>
+    <requestid>85338</requestid>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>3272b2efd37ead2282950745c7cdaa2f</srcmd5>
+    <version>0.14.1</version>
+    <time>1317912324</time>
+    <user>oertel</user>
+    <comment>add binfmt misc handler (forwarded request 86517 from adrianSuSE)</comment>
+    <requestid>86715</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>d6932a2cea699d329648e5fe3987e04f</srcmd5>
+    <version>0.14.1</version>
+    <time>1319024286</time>
+    <user>coolo</user>
+    <comment>add xattr and fix prlimit64 (forwarded request 88364 from adrianSuSE)</comment>
+    <requestid>88583</requestid>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>d6932a2cea699d329648e5fe3987e04f</srcmd5>
+    <version>0.14.1</version>
+    <time>1319182414</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>c5a237ef43f0771973a36c42c62ae5fb</srcmd5>
+    <version>0.14.1</version>
+    <time>1320487556</time>
+    <user>coolo</user>
+    <comment>fix build on i586 and friends (where s390x is not supported (forwarded request 89915 from adrianSuSE)</comment>
+    <requestid>89916</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>354921ffedac44192cc7133598b2eae5</srcmd5>
+    <version>1.0</version>
+    <time>1323773365</time>
+    <user>coolo</user>
+    <comment>- add linker patch for ppc hosts
+
+- remove exclusivearch - we should be able to build everywhere!
+
+- fix compilation for 11.4
+
+- fix compilation on sle11
+- add %fdupes for duplicate file checking
+
+- update to 1.0 from upstream. for changelogs please see:
+  - 0.14 -&gt; 0.15: http://wiki.qemu.org/ChangeLog/0.15
+  - 0.15 -&gt; 1.0:  http://wiki.qemu.org/ChangeLog/1.0
+- the binary &quot;qemu&quot; is now called qemu-system-i386
+
+- only ignore specific timer_create syscall, no all of them
+
+- don't print out unsupported syscalls but rather silently ignore
+  them - some programs catch stderr and get confused
+
+- add a number of patches to fake /proc entries (from Alex)</comment>
+    <requestid>96396</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>0385d70d577a4e88671ab53a3a26de30</srcmd5>
+    <version>1.0</version>
+    <time>1328890749</time>
+    <user>coolo</user>
+    <comment>Address bnc#740165, CVE-2012-0029.</comment>
+    <requestid>102957</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ec845fae48fb13f0d0ac4d60b6a9084c</srcmd5>
+    <version>1.0.1</version>
+    <time>1330062848</time>
+    <user>coolo</user>
+    <comment>1.0.1 stable update</comment>
+    <requestid>106700</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>462378c7d16d495d3943c2b3b3db4468</srcmd5>
+    <version>1.0.1</version>
+    <time>1330521062</time>
+    <user>coolo</user>
+    <comment>- Enable spice support</comment>
+    <requestid>107383</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>d41ea5cf728f607d07dda4c8430d57cd</srcmd5>
+    <version>1.0.1</version>
+    <time>1331986983</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>109659</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>839abf29596d63e4182ff7635aaf1f50</srcmd5>
+    <version>1.1.0rc2</version>
+    <time>1337578256</time>
+    <user>coolo</user>
+    <comment>Update qemu to v1.1.0-rc2 for 12.2. (forwarded request 121369 from a_faerber)</comment>
+    <requestid>121370</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8d30df1583c7258f19f6268a2a18b660</srcmd5>
+    <version>1.1.0rc3</version>
+    <time>1337955521</time>
+    <user>coolo</user>
+    <comment>Update qemu from 1.1.0-rc2 to 1.1.0-rc3. (forwarded request 121983 from a_faerber)</comment>
+    <requestid>121984</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>552d5912ea5ebadb0169174e14b57dd5</srcmd5>
+    <version>1.1.0</version>
+    <time>1339353204</time>
+    <user>lrupp</user>
+    <comment>Update to final v1.1.0 (forwarded request 124131 from a_faerber)</comment>
+    <requestid>124132</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>06a78619d50f815df56b82e218360663</srcmd5>
+    <version>1.1.0</version>
+    <time>1339839849</time>
+    <user>coolo</user>
+    <comment>Now all requests from BNC#765948 should be addressed. (forwarded request 125140 from a_faerber)</comment>
+    <requestid>125141</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>06a78619d50f815df56b82e218360663</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184124</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>974e59ef805c0c3fe7ea99e22e5d54f3</srcmd5>
+    <version>1.1.0</version>
+    <time>1340618508</time>
+    <user>coolo</user>
+    <comment>Revert linux-user LIBRARY_PATH patch (forwarded request 125461 from a_faerber)</comment>
+    <requestid>125462</requestid>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>531ec9ee295e00828252d4f80bb7b8a7</srcmd5>
+    <version>1.1.0</version>
+    <time>1340962475</time>
+    <user>coolo</user>
+    <comment>Add a qemu-guest-agent package intended for VM guests. Package qemu-img and qemu-nbd in qemu-tools (removing from virt-utils with SR #126236). Also a linux-user fix was added.</comment>
+    <requestid>126237</requestid>
+  </revision>
+  <revision rev="67" vrev="7">
+    <srcmd5>2a1ad5b59f67333a7f8001ebdd2ebac6</srcmd5>
+    <version>1.1.0</version>
+    <time>1342963235</time>
+    <user>coolo</user>
+    <comment>Sync linux-user patches by agraf into Factory, requested by adrianS.</comment>
+    <requestid>128479</requestid>
+  </revision>
+  <revision rev="68" vrev="8">
+    <srcmd5>4a872409886fd8344fa5832aaf52ad82</srcmd5>
+    <version>1.1.0</version>
+    <time>1345973659</time>
+    <user>namtrac</user>
+    <comment>- add hijack for /proc/cpuinfo
+- add compatibility patch for glibc 2.16 (Thanks AJ!)</comment>
+    <requestid>129433</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>6b5bee378c7ccb680ec148cead8ecbf4</srcmd5>
+    <version>1.2.0</version>
+    <time>1347618933</time>
+    <user>namtrac</user>
+    <comment>Add some BuildRequires to build features we want, especially virtfs. 3rd sr... (forwarded request 133145 from vuntz)</comment>
+    <requestid>133405</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>28e827a4096581d6488a7c03c19583e6</srcmd5>
+    <version>1.2.0</version>
+    <time>1347722978</time>
+    <user>namtrac</user>
+    <comment>Fix build for Factory.</comment>
+    <requestid>134276</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>445ee8d9af76ceeb71571e6d5fb98f62</srcmd5>
+    <version>1.2.0</version>
+    <time>1347832066</time>
+    <user>namtrac</user>
+    <comment>- Don't strip binaries (forwarded request 134441 from AndreasSchwab)</comment>
+    <requestid>134490</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>9966eb5a77301620a4d2ef341055f711</srcmd5>
+    <version>1.2.0</version>
+    <time>1350646571</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138542</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>d5980df4c523f1b7346384291aa34e3f</srcmd5>
+    <version>1.3.0</version>
+    <time>1354978386</time>
+    <user>namtrac</user>
+    <comment>Update QEMU to v1.3.0 final</comment>
+    <requestid>144307</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>b0f0a2ba604d560667903c3e5a5dac1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1356082374</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146173</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>b0f0a2ba604d560667903c3e5a5dac1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3d75c1234f50f2f8320eff4c4c280a49</srcmd5>
+    <version>1.4.0</version>
+    <time>1361117624</time>
+    <user>coolo</user>
+    <comment>Update to final v1.4.0 and update licenses syntax</comment>
+    <requestid>155639</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>db1c4508dcef48b67b86fb06dafb9b9d</srcmd5>
+    <version>1.4.0</version>
+    <time>1366723215</time>
+    <user>coolo</user>
+    <comment>- Add explicit alsa-devel BuildRequires: this used to (wrongly) be
+  pulled in by libSDL-devel.</comment>
+    <requestid>172924</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0c0b5ff1bbc7318124ed20b9ad9b5b11</srcmd5>
+    <version>1.5.0</version>
+    <time>1369641519</time>
+    <user>coolo</user>
+    <comment>Update to 1.5.0 and enable the new GTK+ UI. This adds a dependency on pixman and introduces a qemu-lang sub-package for the UI translations.</comment>
+    <requestid>176307</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>7ff4cd2379a76acb63d548737fc2ae71</srcmd5>
+    <version>1.5.0</version>
+    <time>1370435504</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177148</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>a30f594ced4e915e6cddb3cc4998ded0</srcmd5>
+    <version>1.6.0rc1</version>
+    <time>1375730458</time>
+    <user>coolo</user>
+    <comment>Update to v1.6.0-rc1 for Milestone 4</comment>
+    <requestid>185663</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>07cdb4505fc4af1f4418d1dc5ce22847</srcmd5>
+    <version>1.6.0</version>
+    <time>1376911875</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to v1.6.0 final (forwarded request 195473 from a_faerber)</comment>
+    <requestid>195475</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>b68c359a425a584b79dbf94782d545c0</srcmd5>
+    <version>1.6.0</version>
+    <time>1379076207</time>
+    <user>scarabeus_factory</user>
+    <comment>Improved .changes to mention one of the benefits of a recent change. No code changes. Please accept and forward to factory ASAP, as gnome-boxes requires it to function, and gnome-boxes has been a featured application for our last few releases. Thanks (forwarded request 198639 from RBrownCCB)</comment>
+    <requestid>198640</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>539aa3f32cb0ba139494cba6d0f8bf79</srcmd5>
+    <version>unknown</version>
+    <time>1379319123</time>
+    <user>coolo</user>
+    <comment>Addressed identified issues, and a couple I noticed.</comment>
+    <requestid>199065</requestid>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>539aa3f32cb0ba139494cba6d0f8bf79</srcmd5>
+    <version>unknown</version>
+    <time>1379664408</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="85" vrev="6">
+    <srcmd5>9d8d801a3806d9c5337b02533966a410</srcmd5>
+    <version>unknown</version>
+    <time>1381474978</time>
+    <user>scarabeus_factory</user>
+    <comment>- use --enable-pie to fix arm build 
+
+- Undo workaround for sasl - fixed in Factory
+
+- Work around Factory sasl breakage by allowing build w/o vnc-sasl
+- Move build_and_copy_vgabios_bin.patch to Git patch queue
+* Clearly mark in-.spec patch queue as for roms/ipxe/ only
+- Synchronized qemu.spec.in from qemu.spec:
+* Added ipxe-build-Avoid-strict-aliasing-warning.patch
+* Modified SeaBIOS summary
+* Added Conflicts for firmware subpackages
+* Dropped %dir
+- Add patch enabling PIE support for ppc/ppc64 (k0da)</comment>
+    <requestid>202769</requestid>
+  </revision>
+  <revision rev="86" vrev="7">
+    <srcmd5>ae0b0390f9f43b69521275dd488c77e8</srcmd5>
+    <version>unknown</version>
+    <time>1387271035</time>
+    <user>coolo</user>
+    <comment>Addressed changelog issue from last review. Also removed temporary workaround for an acpica's iasl issue, and reworked another work around.</comment>
+    <requestid>210842</requestid>
+  </revision>
+  <revision rev="87" vrev="8">
+    <srcmd5>250938fb2094c47d7569f8ec60875fc5</srcmd5>
+    <version>unknown</version>
+    <time>1388757013</time>
+    <user>scarabeus_factory</user>
+    <comment>Fix SeaBIOS package version number, spotted by BdMdesigN (forwarded request 212660 from a_faerber)</comment>
+    <requestid>212661</requestid>
+  </revision>
+  <revision rev="88" vrev="9">
+    <srcmd5>86879cbad873e2e6b8799a776349ef8b</srcmd5>
+    <version>unknown</version>
+    <time>1389726046</time>
+    <user>coolo</user>
+    <comment>- xen dropped support for i586, so don't buildrequire it (forwarded request 213868 from coolo)</comment>
+    <requestid>213872</requestid>
+  </revision>
+  <revision rev="89" vrev="10">
+    <srcmd5>83a626eb874cf9203ddd7b3063e946a6</srcmd5>
+    <version>unknown</version>
+    <time>1390164140</time>
+    <user>coolo</user>
+    <comment>Properly use Gtk3 (bnc#840607, bnc#849587) (forwarded request 214293 from a_faerber) -- and thanks to factory-repo-checker complaining otherwise, also include an experimental linux-user patch for arm JeOS image builds failing with unsupported ioctl 0x1269 (BLKPG)</comment>
+    <requestid>214320</requestid>
+  </revision>
+  <revision rev="90" vrev="11">
+    <srcmd5>53f8cb2527c7dbb0d4bd99ac1b9d5def</srcmd5>
+    <version>unknown</version>
+    <time>1392111914</time>
+    <user>coolo</user>
+    <comment>Add xen_disk discard support (olh), backport VMDK SCSI change from v1.6.2 maintenance update and update syscall numbers (forwarded request 221154 from a_faerber)</comment>
+    <requestid>221155</requestid>
+  </revision>
+  <revision rev="91" vrev="12">
+    <srcmd5>e6e71c9c7c0e4dac20734e1b3f9fa462</srcmd5>
+    <version>unknown</version>
+    <time>1392792698</time>
+    <user>coolo</user>
+    <comment>Enable usb passthrough again, now that we have a recent libusb available. (forwarded request 222785 from bfrogers)</comment>
+    <requestid>222798</requestid>
+  </revision>
+  <revision rev="92" vrev="13">
+    <srcmd5>fb6e92a76fa348a9ccae1242f647d519</srcmd5>
+    <version>unknown</version>
+    <time>1393310059</time>
+    <user>coolo</user>
+    <comment>Split out executables and firmware files into architecture-specific sub-packages qemu-x86, qemu-s390, qemu-ppc, qemu-arm and qemu-extra. (forwarded request 223321 from bfrogers)</comment>
+    <requestid>223743</requestid>
+  </revision>
+  <revision rev="93" vrev="14">
+    <srcmd5>3a4bd095fb36ee5deeb110a1077112ec</srcmd5>
+    <version>unknown</version>
+    <time>1393656997</time>
+    <user>coolo</user>
+    <comment>Move target-x86_64.conf from qemu to qemu-x86 package (forwarded request 224272 from a_faerber)</comment>
+    <requestid>224288</requestid>
+  </revision>
+  <revision rev="94" vrev="15">
+    <srcmd5>4c5482efd082c8b402c327c6631417bd</srcmd5>
+    <version>unknown</version>
+    <time>1395610132</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to v2.0.0-rc0 (forwarded request 226783 from a_faerber)</comment>
+    <requestid>226797</requestid>
+  </revision>
+  <revision rev="95" vrev="16">
+    <srcmd5>01c0ea26c6b68e9984aeb5a4fef07954</srcmd5>
+    <version>unknown</version>
+    <time>1398153975</time>
+    <user>coolo</user>
+    <comment>Update to v2.0.0 final</comment>
+    <requestid>230824</requestid>
+  </revision>
+  <revision rev="96" vrev="17">
+    <srcmd5>750a3845f7f7f55598d58bda596626f3</srcmd5>
+    <version>unknown</version>
+    <time>1400356888</time>
+    <user>coolo</user>
+    <comment>Tidy libcacard and qemu-extra (forwarded request 233897 from a_faerber)</comment>
+    <requestid>233918</requestid>
+  </revision>
+  <revision rev="97" vrev="18">
+    <srcmd5>1ac00971e33e228a3e23edbcc50fbf88</srcmd5>
+    <version>unknown</version>
+    <time>1401108011</time>
+    <user>coolo</user>
+    <comment>Fix CVE-2013-4148 (bnc#864812), CVE-2013-4149 (bnc#864649), CVE-2013-4150 (bnc#864650), CVE-2013-4151 (bnc#864653), CVE-2013-4526 (bnc#864671), CVE-2013-4527 (bnc#864673), CVE-2013-4529 (bnc#864678), CVE-2013-4530 (bnc#864682), CVE-2013-4531 (bnc#864796), CVE-2013-4533 (bnc#864655), CVE-2013-4534 (bnc#864811), CVE-2013-4535 / CVE-2013-4536 (bnc#864665), CVE-2013-4537 (bnc#864391), CVE-2013-4538 (bnc#864769), CVE-2013-4539 (bnc#864805), CVE-2013-4540 (bnc#864801), CVE-2013-4541 (bnc#864802), CVE-2013-4542 (bnc#864804), CVE-2013-6399 (bnc#864814), CVE-2014-0182 (bnc#874788) (forwarded request 235280 from a_faerber)</comment>
+    <requestid>235281</requestid>
+  </revision>
+  <revision rev="98" vrev="19">
+    <srcmd5>d41016e65f4a65690afcd61e86aac86e</srcmd5>
+    <version>2.0.0</version>
+    <time>1403081945</time>
+    <user>coolo</user>
+    <comment>Fix problem discovered with direct kernel boot for SLES 10 and SLES 11 guests (bnc#880625)
+Only build x86 firmware on x86, to avoid randomly getting the upstream binary firmware blobs packaged, instead of the ones we try to build.
+Add probing of vhost-net for SLE11 host in udev rules file.
+Get rid of pmtools Buildrequires for old distros - I checked, we can't build the firmware as is for old distros correctly. (forwarded request 236077 from bfrogers)</comment>
+    <requestid>236078</requestid>
+  </revision>
+  <revision rev="99" vrev="20">
+    <srcmd5>17d004f99ad3823e061f284854263797</srcmd5>
+    <version>2.0.0</version>
+    <time>1405101925</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239454</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>218742af7862b5d430131abeb311b3a1</srcmd5>
+    <version>2.0.92</version>
+    <time>1405658421</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241285</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>a6c0c0916334a1ed274a3a92fc43ec11</srcmd5>
+    <version>2.0.93</version>
+    <time>1407072985</time>
+    <user>coolo</user>
+    <comment>- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.1
+* Patches added:
+  0039-fix-full-frame-updates-for-VNC-clie.patch
+  0040-vnc-update-fix.patch
+
+- Update to v2.1.0-rc3: http://wiki.qemu-project.org/ChangeLog/2.1
+* Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.1
+* Updated update_git.sh script accordingly
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+- Backported VNC fixes for openQA (bnc#888142):
+* Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.1
+* Patches added:
+  0039-fix-full-frame-updates-for-VNC-clie.patch
+  0040-vnc-update-fix.patch
+
+- Update to v2.1.0-rc3: http://wiki.qemu-project.org/ChangeLog/2.1
+* Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.1
+* Patches dropped:
+  0039-module-Simplify-module_load.patch
+  0040-module-Don-t-complain-when-a-module.patch
+* Updated update_git.sh script accordingly</comment>
+    <requestid>243344</requestid>
+  </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>a6c0c0916334a1ed274a3a92fc43ec11</srcmd5>
+    <version>2.0.93</version>
+    <time>1409303129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>d2484ab09d6b9f16aee97e53ebf88555</srcmd5>
+    <version>2.1.0</version>
+    <time>1409551158</time>
+    <user>coolo</user>
+    <comment>Update to v2.1.0, break libcacard dependency cycle (libcacard -&gt; qemu link needed), qemu-linux-user fixes for Raspberry Pi image building</comment>
+    <requestid>246671</requestid>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>9f78d030b6f1d371046aa2f38f15be54</srcmd5>
+    <version>2.1.0</version>
+    <time>1410281977</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247440</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>3a2f8d898b0766d973dddf955750732e</srcmd5>
+    <version>2.2.0</version>
+    <time>1423918380</time>
+    <user>dimstar_suse</user>
+    <comment>Update to QEMU v2.2.0</comment>
+    <requestid>285739</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>eeb971dce6cefaea7290e2772f49357e</srcmd5>
+    <version>2.2.0</version>
+    <time>1426485368</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>289883</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c7c39693c60f116a832028ba5bc89456</srcmd5>
+    <version>2.3.0</version>
+    <time>1430580691</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.3.0 and split off a new qemu-testsuite.spec</comment>
+    <requestid>304733</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>3e209602d780ee950e34cf7f6f988f04</srcmd5>
+    <version>2.3.0</version>
+    <time>1431248066</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305645</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>4dd76df59c150b2feec20e2f91418013</srcmd5>
+    <version>2.3.0</version>
+    <time>1431668637</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306677</requestid>
+  </revision>
+  <revision rev="110" vrev="4">
+    <srcmd5>e200aea41995fafe183e8c36b2f2c77a</srcmd5>
+    <version>2.3.0</version>
+    <time>1432158707</time>
+    <user>dimstar_suse</user>
+    <comment>Fix CVE-2015-3456 (boo#929339) and limit qemu-linux-user %check to prepared architectures</comment>
+    <requestid>307303</requestid>
+  </revision>
+  <revision rev="111" vrev="5">
+    <srcmd5>064e2a5f16f3b4ddee8be8e2b4d0f814</srcmd5>
+    <version>2.3.0</version>
+    <time>1434133575</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix gcc5 compilation (somewhat)
+- Fix qemu2 cow caching (bsc#933132)</comment>
+    <requestid>309702</requestid>
+  </revision>
+  <revision rev="112" vrev="6">
+    <srcmd5>7b1bb16db6521ed26aa05f68246cfc95</srcmd5>
+    <version>2.3.0</version>
+    <time>1437059901</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315104</requestid>
+  </revision>
+  <revision rev="113" vrev="7">
+    <srcmd5>7d0544372d65bbcd6777caee338c4afc</srcmd5>
+    <version>2.3.0</version>
+    <time>1437803033</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>318214</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>458d388cb3282bb142a4091e23cdec25</srcmd5>
+    <version>2.4.0</version>
+    <time>1450471921</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.4
+
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.4
+* Patches added:
+  0040-dictzip-Fix-on-big-endian-systems.patch
+
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.4
+* Patches added:
+  0039-tests-Unique-test-path-for-string-v.patch
+
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.4
+* Patches added:
+  0038-tcg-aarch64-Fix-tcg_out_qemu_-ld-st.patch
+
+- Update to v2.4.0: See http://wiki.qemu-project.org/ChangeLog/2.4
+
+- Update to v2.4.0-rc2: See http://wiki.qemu-project.org/ChangeLog/2.4
+
+- Update to v2.4.0-rc1: See http://wiki.qemu-project.org/ChangeLog/2.4
+* Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.4
+* Patches dropped:
+  0037-linux-user-Allocate-thunk-size-dyna.patch
+  0039-s390x-Fix-stoc-direction.patch
+  0040-s390x-Add-interlocked-access-facili.patch
+  0041-fdc-force-the-fifo-access-to-be-in-.patch
+  0042-rules.mak-Force-CFLAGS-for-all-obje.patch
+  0043-qcow2-Set-MIN_L2_CACHE_SIZE-to-2.patch
+  0044-hw-arm-boot-Increase-fdt-alignment.patch
+* Patches renamed:
+  0038-Revert-Revert-seccomp-tests-that-al.patch -&gt; 0037-Revert-Revert-seccomp-tests-that-al.patch
+
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.4</comment>
+    <requestid>348861</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>939e949f76fad2f15f50f6a6be17a0a3</srcmd5>
+    <version>2.4.0</version>
+    <time>1452611460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352621</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d23efb87132e50347740d535211347f6</srcmd5>
+    <version>2.6.0</version>
+    <time>1465480824</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400016</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>72fda21ee35d3fa8d83e0ce1ba73c716</srcmd5>
+    <version>2.6.0</version>
+    <time>1465938375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401238</requestid>
+  </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>f9cb07d9bd84a8f23bf1a5b8150b1891</srcmd5>
+    <version>2.6.0</version>
+    <time>1468482118</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406808</requestid>
+  </revision>
+  <revision rev="119" vrev="4">
+    <srcmd5>fb133d630c8ba83d8764a89dddb98f71</srcmd5>
+    <version>2.6.0</version>
+    <time>1471009012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416920</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>8badbc9a67d05ae678ce530b20bd38e9</srcmd5>
+    <version>2.6.1</version>
+    <time>1471855744</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419835</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>ef0b1a94f1ebaa3966457db7d57e6de3</srcmd5>
+    <version>2.7.0</version>
+    <time>1484818595</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.7.0</comment>
+    <requestid>450184</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>8b14a6ea727501025526f60f9abe43d6</srcmd5>
+    <version>2.8.0</version>
+    <time>1489866500</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479792</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>373e93d79bb56dd53fdebd12e280bf12</srcmd5>
+    <version>2.9.0</version>
+    <time>1496533778</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.9.0, and include latest known security fixes and other improvements.</comment>
+    <requestid>500485</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>3c32de737febae157f7962d216de4716</srcmd5>
+    <version>2.9.0</version>
+    <time>1498638900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505146</requestid>
+  </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>ac58d40d5fff44b0abd4565a81c85e74</srcmd5>
+    <version>2.9.0</version>
+    <time>1503591724</time>
+    <user>dimstar_suse</user>
+    <comment>Latest fixes, including security issues. Also includes adjustment to libvdeplug-devel package name change. Also a couple Pre and Post Requires added as needed (were missing). I'm hoping this is the last supersede request.</comment>
+    <requestid>517607</requestid>
+  </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>2dca15e23f972ada7aa99b120b0d9763</srcmd5>
+    <version>2.9.0</version>
+    <time>1503999593</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518588</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>b70701115efc587b8d0cb7112c19908f</srcmd5>
+    <version>2.10.0</version>
+    <time>1504814978</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.10 qemu. Also adjust some misc spec file Requires/BuildRequires, include qemu specific supportconfig files, and do other prep work for SLE15.</comment>
+    <requestid>520233</requestid>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>15658155936c9a3f71a8e631e95c41c4</srcmd5>
+    <version>2.10.0</version>
+    <time>1506340252</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+* Patches added:
+  0036-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+- For SLE15 pre-release testing, add support for the EPYC processor.
+  This will be officially supported once it is included in the v2.11
+  release. (bsc#1052825)
+  0036-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+- Fix some support statements in our SLE support documents.
+- For SLE15 pre-release testing, add support for the EPYC processor.
+  This will be officially supported once it is included in the v2.11
+  release. (bsc#1052825)
+  0036-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+- Fix some support statements in our SLE support documents.
+</comment>
+    <requestid>528316</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>021521fff91e22862e839d15ede19be0</srcmd5>
+    <version>2.10.1</version>
+    <time>1507896185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.10.1 a stable, bug-fix-only release
+* Patches dropped (upstream):
+  0034-slirp-fix-clearing-ifq_so-from-pend.patch
+  0035-s390-ccw-Fix-alignment-for-CCW1.patch
+  0038-s390x-ais-for-2.10-stable-disable-a.patch
+  0039-s390x-cpumodel-remove-ais-from-z14-.patch
+* Patches renamed:
+  0036-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+  -&gt; 0034-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+  0037-chardev-baum-fix-baum-that-releases.patch
+  -&gt; 0035-chardev-baum-fix-baum-that-releases.patch
+  0040-io-fix-temp-directory-used-by-test-.patch
+  -&gt; 0036-io-fix-temp-directory-used-by-test-.patch
+  0041-io-fix-check-for-handshake-completi.patch
+  -&gt; 0037-io-fix-check-for-handshake-completi.patch
+  0042-crypto-fix-test-cert-generation-to-.patch
+  -&gt; 0038-crypto-fix-test-cert-generation-to-.patch
+  0043-vhost-user-disable-the-broken-subpr.patch
+  -&gt; 0039-vhost-user-disable-the-broken-subpr.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+* Patches added:
+  0040-io-fix-temp-directory-used-by-test-.patch
+  0041-io-fix-check-for-handshake-completi.patch
+  0042-crypto-fix-test-cert-generation-to-.patch
+  0043-vhost-user-disable-the-broken-subpr.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+* Patches added:
+  0038-s390x-ais-for-2.10-stable-disable-a.patch
+  0039-s390x-cpumodel-remove-ais-from-z14-.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+* Patches added:
+  0037-chardev-baum-fix-baum-that-releases.patch
+- Add dependencies on ovmf (uefi) for the qemu-x86 and qemu-arm
+  packages
+- Fix s390-netboot.img to be included with qemu-s390 package, not
+  qemu-ppc
+- Update to v2.10.1, a stable, bug-fix-only release
+* fixes bsc#1056386 CVE-2017-13673, bsc#1056334 CVE-2017-13672,
+  bsc#1057585 CVE-2017-14167
+* Patches dropped (upstream):
+  0034-slirp-fix-clearing-ifq_so-from-pend.patch
+  0035-s390-ccw-Fix-alignment-for-CCW1.patch
+  0038-s390x-ais-for-2.10-stable-disable-a.patch
+  0039-s390x-cpumodel-remove-ais-from-z14-.patch
+* Patches renamed:
+  0036-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+  -&gt; 0034-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+  0037-chardev-baum-fix-baum-that-releases.patch
+  -&gt; 0035-chardev-baum-fix-baum-that-releases.patch
+  0040-io-fix-temp-directory-used-by-test-.patch
+  -&gt; 0036-io-fix-temp-directory-used-by-test-.patch
+  0041-io-fix-check-for-handshake-completi.patch
+  -&gt; 0037-io-fix-check-for-handshake-completi.patch
+  0042-crypto-fix-test-cert-generation-to-.patch
+  -&gt; 0038-crypto-fix-test-cert-generation-to-.patch
+  0043-vhost-user-disable-the-broken-subpr.patch
+  -&gt; 0039-vhost-user-disable-the-broken-subpr.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Fix failures and potential failures in qemu-testsuite
+  0040-io-fix-temp-directory-used-by-test-.patch
+  0041-io-fix-check-for-handshake-completi.patch
+  0042-crypto-fix-test-cert-generation-to-.patch
+  0043-vhost-user-disable-the-broken-subpr.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Fix migration issue on s390
+  0038-s390x-ais-for-2.10-stable-disable-a.patch
+  0039-s390x-cpumodel-remove-ais-from-z14-.patch
+- Fix case of not being able to build from rpm sources due to
+  undefined macro (boo#1057966)
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Fix baum that release brlapi twice (bsc#1060045)
+  0037-chardev-baum-fix-baum-that-releases.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Add dependencies on ovmf (uefi) for the qemu-x86 and qemu-arm
+  packages
+- Fix s390-netboot.img to be included with qemu-s390 package, not
+  qemu-ppc
+- Update to v2.10.1, a stable, bug-fix-only release
+* fixes bsc#1056386 CVE-2017-13673, bsc#1056334 CVE-2017-13672,
+  bsc#1057585 CVE-2017-14167
+* Patches dropped (upstream):
+  0034-slirp-fix-clearing-ifq_so-from-pend.patch
+  0035-s390-ccw-Fix-alignment-for-CCW1.patch
+  0038-s390x-ais-for-2.10-stable-disable-a.patch
+  0039-s390x-cpumodel-remove-ais-from-z14-.patch
+* Patches renamed:
+  0036-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+  -&gt; 0034-target-i386-cpu-Add-new-EPYC-CPU-mo.patch
+  0037-chardev-baum-fix-baum-that-releases.patch
+  -&gt; 0035-chardev-baum-fix-baum-that-releases.patch
+  0040-io-fix-temp-directory-used-by-test-.patch
+  -&gt; 0036-io-fix-temp-directory-used-by-test-.patch
+  0041-io-fix-check-for-handshake-completi.patch
+  -&gt; 0037-io-fix-check-for-handshake-completi.patch
+  0042-crypto-fix-test-cert-generation-to-.patch
+  -&gt; 0038-crypto-fix-test-cert-generation-to-.patch
+  0043-vhost-user-disable-the-broken-subpr.patch
+  -&gt; 0039-vhost-user-disable-the-broken-subpr.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Fix failures and potential failures in qemu-testsuite
+  0040-io-fix-temp-directory-used-by-test-.patch
+  0041-io-fix-check-for-handshake-completi.patch
+  0042-crypto-fix-test-cert-generation-to-.patch
+  0043-vhost-user-disable-the-broken-subpr.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Fix migration issue on s390
+  0038-s390x-ais-for-2.10-stable-disable-a.patch
+  0039-s390x-cpumodel-remove-ais-from-z14-.patch
+- Fix case of not being able to build from rpm sources due to
+  undefined macro (boo#1057966)
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+- Fix baum that release brlapi twice (bsc#1060045)
+  0037-chardev-baum-fix-baum-that-releases.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.10
+</comment>
+    <requestid>531956</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>94ce70f4e63a6136efba0731da1e27f9</srcmd5>
+    <version>2.10.1</version>
+    <time>1509722526</time>
+    <user>dimstar_suse</user>
+    <comment>Add a few security fixes, update sle support doc, provide migration analysis scripts, build more firmware (skiboot), and enable glusterfs support on more targets.</comment>
+    <requestid>537250</requestid>
+  </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>2612c7c4a3f82cba5559095773bd58b9</srcmd5>
+    <version>2.10.1</version>
+    <time>1512291835</time>
+    <user>dimstar_suse</user>
+    <comment>Remove SDL support for SLE15 usage (still supported for openSUSE, for now) - see fate#324465.
+Fix skiboot.lib build issue
+Address python compatibility issue.</comment>
+    <requestid>546547</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>4123f33279f3fb106bfa1a78d85de803</srcmd5>
+    <version>2.11.0</version>
+    <time>1513851769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557424</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>48ad166d8631de5fd55177e18103900b</srcmd5>
+    <version>2.11.0</version>
+    <time>1516091745</time>
+    <user>dimstar_suse</user>
+    <comment>Address recent cpu vulnerability code named Spectre, as far as QEMU is concerned. (CVE-2017-5715 bsc#1068032)</comment>
+    <requestid>561712</requestid>
+  </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>1ce8905605f9206fb29b4ff6c646afea</srcmd5>
+    <version>2.11.0</version>
+    <time>1517096340</time>
+    <user>dimstar_suse</user>
+    <comment>Address python2 vs python3 build issues. Delta from previous SR addresses BuildRequires used for python, as well as changes needed in seabios build related to python.</comment>
+    <requestid>569858</requestid>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>aca1518358f67f001ded96dc90440876</srcmd5>
+    <version>2.11.0</version>
+    <time>1518187346</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.11
+* Patches added:
+  0046-memattrs-add-debug-attribute.patch
+  0047-exec-add-ram_debug_ops-support.patch
+  0048-exec-add-debug-version-of-physical-.patch
+  0049-monitor-i386-use-debug-APIs-when-ac.patch
+  0050-target-i386-add-memory-encryption-f.patch
+  0051-machine-add-memory-encryption-prope.patch
+  0052-kvm-update-kvm.h-to-include-memory-.patch
+  0053-docs-add-AMD-Secure-Encrypted-Virtu.patch
+  0054-accel-add-Secure-Encrypted-Virtuliz.patch
+  0055-sev-add-command-to-initialize-the-m.patch
+  0056-sev-register-the-guest-memory-range.patch
+  0057-kvm-introduce-memory-encryption-API.patch
+  0058-qmp-add-query-sev-command.patch
+  0059-hmp-add-info-sev-command.patch
+  0060-sev-add-command-to-create-launch-me.patch
+  0061-sev-add-command-to-encrypt-guest-me.patch
+  0062-target-i386-encrypt-bios-rom.patch
+  0063-sev-add-support-to-LAUNCH_MEASURE-c.patch
+  0064-sev-Finalize-the-SEV-guest-launch-f.patch
+  0065-hw-i386-set-ram_debug_ops-when-memo.patch
+  0066-sev-add-debug-encrypt-and-decrypt-c.patch
+  0067-target-i386-clear-C-bit-when-walkin.patch
+  0068-include-add-psp-sev.h-header-file.patch
+  0069-sev-add-support-to-query-PLATFORM_S.patch
+  0070-sev-add-support-to-KVM_SEV_GUEST_ST.patch
+  0071-qmp-add-query-sev-launch-measure-co.patch
+  0072-sev-Fix-build-for-non-x86-hosts.patch
+- Update python3 related patches now that they are upstream
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.11
+* Patches added:
+  0045-pc-fail-memory-hot-plug-unplug-with.patch
+- Add AMD SEV (Secure Encrypted Virtualization) support by taking
+  the v7 series of the patches posted to qemu ml. (fate#322124)
+  0046-memattrs-add-debug-attribute.patch
+  0047-exec-add-ram_debug_ops-support.patch
+  0048-exec-add-debug-version-of-physical-.patch
+  0049-monitor-i386-use-debug-APIs-when-ac.patch
+  0050-target-i386-add-memory-encryption-f.patch
+  0051-machine-add-memory-encryption-prope.patch
+  0052-kvm-update-kvm.h-to-include-memory-.patch
+  0053-docs-add-AMD-Secure-Encrypted-Virtu.patch
+  0054-accel-add-Secure-Encrypted-Virtuliz.patch
+  0055-sev-add-command-to-initialize-the-m.patch
+  0056-sev-register-the-guest-memory-range.patch
+  0057-kvm-introduce-memory-encryption-API.patch
+  0058-qmp-add-query-sev-command.patch
+  0059-hmp-add-info-sev-command.patch
+  0060-sev-add-command-to-create-launch-me.patch
+  0061-sev-add-command-to-encrypt-guest-me.patch
+  0062-target-i386-encrypt-bios-rom.patch
+  0063-sev-add-support-to-LAUNCH_MEASURE-c.patch
+  0064-sev-Finalize-the-SEV-guest-launch-f.patch
+  0065-hw-i386-set-ram_debug_ops-when-memo.patch
+  0066-sev-add-debug-encrypt-and-decrypt-c.patch
+  0067-target-i386-clear-C-bit-when-walkin.patch
+  0068-include-add-psp-sev.h-header-file.patch
+  0069-sev-add-support-to-query-PLATFORM_S.patch
+  0070-sev-add-support-to-KVM_SEV_GUEST_ST.patch
+  0071-qmp-add-query-sev-launch-measure-co.patch
+  0072-sev-Fix-build-for-non-x86-hosts.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.11
+- Update python3 related patches now that they are upstream
+- guest agent: change service file to a template so it can be
+  used by Xen as well. Adjust udev rule accordingly.
+  FATE#324963
+- Fix machine inconsistency with -no-acpi and nvdimm (bsc#1077823)
+  0045-pc-fail-memory-hot-plug-unplug-with.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.11
+- Add AMD SEV (Secure Encrypted Virtualization) support by taking
+  the v7 series of the patches posted to qemu ml. (fate#322124)
+  0046-memattrs-add-debug-attribute.patch
+  0047-exec-add-ram_debug_ops-support.patch
+  0048-exec-add-debug-version-of-physical-.patch
+  0049-monitor-i386-use-debug-APIs-when-ac.patch
+  0050-target-i386-add-memory-encryption-f.patch
+  0051-machine-add-memory-encryption-prope.patch
+  0052-kvm-update-kvm.h-to-include-memory-.patch
+  0053-docs-add-AMD-Secure-Encrypted-Virtu.patch
+  0054-accel-add-Secure-Encrypted-Virtuliz.patch
+  0055-sev-add-command-to-initialize-the-m.patch
+  0056-sev-register-the-guest-memory-range.patch
+  0057-kvm-introduce-memory-encryption-API.patch
+  0058-qmp-add-query-sev-command.patch
+  0059-hmp-add-info-sev-command.patch
+  0060-sev-add-command-to-create-launch-me.patch
+  0061-sev-add-command-to-encrypt-guest-me.patch
+  0062-target-i386-encrypt-bios-rom.patch
+  0063-sev-add-support-to-LAUNCH_MEASURE-c.patch
+  0064-sev-Finalize-the-SEV-guest-launch-f.patch
+  0065-hw-i386-set-ram_debug_ops-when-memo.patch
+  0066-sev-add-debug-encrypt-and-decrypt-c.patch
+  0067-target-i386-clear-C-bit-when-walkin.patch
+  0068-include-add-psp-sev.h-header-file.patch
+  0069-sev-add-support-to-query-PLATFORM_S.patch
+  0070-sev-add-support-to-KVM_SEV_GUEST_ST.patch
+  0071-qmp-add-query-sev-launch-measure-co.patch
+  0072-sev-Fix-build-for-non-x86-hosts.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.11
+- Update python3 related patches now that they are upstream
+- guest agent: change service file to a template so it can be
+  used by Xen as well. Adjust udev rule accordingly.
+  FATE#324963
+- Fix machine inconsistency with -no-acpi and nvdimm (bsc#1077823)
+  0045-pc-fail-memory-hot-plug-unplug-with.patch
+- Patch queue updated from git://github.com/openSUSE/qemu.git opensuse-2.11
+</comment>
+    <requestid>574404</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>604d658cd5408bd2532a95895c023e45</srcmd5>
+    <version>2.11.1</version>
+    <time>1519486663</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.11.1. Also fix some bugs.</comment>
+    <requestid>579227</requestid>
+  </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>f372b2c76ee19a426a6bd0c98700dcd6</srcmd5>
+    <version>2.11.1</version>
+    <time>1521903867</time>
+    <user>dimstar_suse</user>
+    <comment>A smattering of bug fixes.</comment>
+    <requestid>587591</requestid>
+  </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>0f3558ad7c858d9eb55f650ceeae8a51</srcmd5>
+    <version>2.11.1</version>
+    <time>1523127286</time>
+    <user>dimstar_suse</user>
+    <comment>Two bug fixes. Perhaps last time sync'd with SLE15/Leap15 since v2.12 qemu coming out soon.</comment>
+    <requestid>594022</requestid>
+  </revision>
+  <revision rev="139" vrev="4">
+    <srcmd5>08acdc2fe7a9ecf7efb70cf7d4b7d845</srcmd5>
+    <version>2.11.1</version>
+    <time>1525121337</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix autoinstall of qemu-guest-agent by getting the modalias string
+  right (bsc#1091143)
+- Guard strncpy call with GCC pragma to disable warning about possible
+  incorrect usage, when in fact it is correct. This is for gcc 8
+  compatibility (bsc#1090355)
+  ipxe-efi-guard-strncpy-with-gcc-warning-ignore-pragma.patch
+- Add WantedBy for enable qemu-ga@.service auto start (bsc#1090369)
+- fix qemu-ga service file name (bsc#1089067)
+- Fix autoinstall of qemu-guest-agent by getting the modalias string
+  right (bsc#1091143)
+- Guard strncpy call with GCC pragma to disable warning about possible
+  incorrect usage, when in fact it is correct. This is for gcc 8
+  compatibility (bsc#1090355)
+  ipxe-efi-guard-strncpy-with-gcc-warning-ignore-pragma.patch
+- Add WantedBy for enable qemu-ga@.service auto start (bsc#1090369)
+- fix qemu-ga service file name (bsc#1089067)
+</comment>
+    <requestid>602139</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>cf631e835bf5f36b1b52533d350dfcc8</srcmd5>
+    <version>2.12.0</version>
+    <time>1527605186</time>
+    <user>dimstar_suse</user>
+    <comment>v2.12 version update finally! (We had an issue the needed to get resolved before pushing this on everybody). Also a smattering of other fixes, and post 2.12 stable fixes. Please note that there are now more sub-packages being generated, which will need to be made available in the repo.</comment>
+    <requestid>612292</requestid>
+  </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>e6bdfa165ac09939d67c4ac137a57df7</srcmd5>
+    <version>2.12.0</version>
+    <time>1528195758</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for AHCI (workaround-&gt;proper upstream fix), ccid-card-passthrough regression, and one more qemu-guest-agent tweak.
+</comment>
+    <requestid>613355</requestid>
+  </revision>
+  <revision rev="142" vrev="3">
+    <srcmd5>3ca3f996d1af74d8bd665ad186c90c22</srcmd5>
+    <version>2.12.0</version>
+    <time>1531469750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621222</requestid>
+  </revision>
+  <revision rev="143" vrev="4">
+    <srcmd5>f03e4a948e97074a42d34338cb614beb</srcmd5>
+    <version>2.12.0</version>
+    <time>1533292227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626736</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>24694332bef6b4642ca7b3e0e44c58a5</srcmd5>
+    <version>2.12.1</version>
+    <time>1534321802</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.12.1, a stable, (mostly) bug-fix-only release</comment>
+    <requestid>627736</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>beaf4ca00ec9c72a5a77b046c910010d</srcmd5>
+    <version>3.0.0</version>
+    <time>1536678448</time>
+    <user>maxlin_factory</user>
+    <comment>Update qemu to v3.0.0, and include prep work for next SLE release</comment>
+    <requestid>630986</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>3ac8941724e32353cbf44f692fecb2c0</srcmd5>
+    <version>3.0.0</version>
+    <time>1538502251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638230</requestid>
+  </revision>
+  <revision rev="147" vrev="3">
+    <srcmd5>0333c837007b9797db4f85403e322be2</srcmd5>
+    <version>3.0.0</version>
+    <time>1540199155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641738</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>26e922e03819eb5cd3649e799ff2b147</srcmd5>
+    <version>3.1.0</version>
+    <time>1545866712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660294</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>3b085745e82cab339ed037790ce13b60</srcmd5>
+    <version>3.1.0</version>
+    <time>1547211775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664460</requestid>
+  </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>e22e0e3065abe3ce08dc88e134315f16</srcmd5>
+    <version>3.1.0</version>
+    <time>1549311904</time>
+    <user>coolo</user>
+    <comment>Add a few more fixes
+</comment>
+    <requestid>670650</requestid>
+  </revision>
+  <revision rev="151" vrev="4">
+    <srcmd5>d30c1db0e7c7109e04b9029202d51bf7</srcmd5>
+    <version>3.1.0</version>
+    <time>1551113228</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678239</requestid>
+  </revision>
+  <revision rev="152" vrev="5">
+    <srcmd5>dbb2f6e221ba8b5d03fe55fb5e74df7a</srcmd5>
+    <version>3.1.0</version>
+    <time>1552299247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682913</requestid>
+  </revision>
+  <revision rev="153" vrev="6">
+    <srcmd5>0a8eea25e4f44fb62cd78fa79901cc43</srcmd5>
+    <version>3.1.0</version>
+    <time>1554114850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689894</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>25b2dcdd9ea0653455d7deefceff2c96</srcmd5>
+    <version>4.0.0</version>
+    <time>1557472248</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v4.0.0. Also include some gcc9 related code fixes.</comment>
+    <requestid>701649</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>29502d2a3e324740d9ff72ae567c24a0</srcmd5>
+    <version>4.0.0</version>
+    <time>1558129277</time>
+    <user>dimstar_suse</user>
+    <comment>Misc patches, including one for the recent Intel Security issue</comment>
+    <requestid>703262</requestid>
+  </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>efe5043adaedc756ea9dd6b51a7d7978</srcmd5>
+    <version>4.0.0</version>
+    <time>1560337514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706381</requestid>
+  </revision>
+  <revision rev="157" vrev="4">
+    <srcmd5>a3215a1e080e38af0993fd86de2223a3</srcmd5>
+    <version>4.0.0</version>
+    <time>1561049643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710412</requestid>
+  </revision>
+  <revision rev="158" vrev="5">
+    <srcmd5>59dd34141b679ffd65a8c1292d7ce36b</srcmd5>
+    <version>4.0.0</version>
+    <time>1562073459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712740</requestid>
+  </revision>
+  <revision rev="159" vrev="6">
+    <srcmd5>a878383695754b8afbf6c8a3aae8e7a2</srcmd5>
+    <version>4.0.0</version>
+    <time>1565266888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721319</requestid>
+  </revision>
+</revisionlist>

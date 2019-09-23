@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>330becd1571ff8fd5c9db44d19894b7a</srcmd5>
+    <version>2.0.19</version>
+    <time>1359467296</time>
+    <user>coolo</user>
+    <comment>This packages replaces unmaintaned traceroute from net-tools for the linux-only implementation used by the rest of the distributions world.</comment>
+    <requestid>150068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>894a3cadd439f6bae5093ee06968fe42</srcmd5>
+    <version>2.0.19</version>
+    <time>1362736857</time>
+    <user>coolo</user>
+    <comment>- The previous incarnation of traceroute had a traceroute6
+  binary, provide a compatibility symlink for it.
+- Build with full RELRO. (forwarded request 157930 from elvigia)</comment>
+    <requestid>157938</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>894a3cadd439f6bae5093ee06968fe42</srcmd5>
+    <version>2.0.19</version>
+    <time>1379664839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>894a3cadd439f6bae5093ee06968fe42</srcmd5>
+    <version>2.0.19</version>
+    <time>1409303520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>567539c4507eb407375a37be5293354a</srcmd5>
+    <version>2.0.20</version>
+    <time>1409638931</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247020</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cf5ce09fe4369c6d3f34175a3711aa5a</srcmd5>
+    <version>2.0.21</version>
+    <time>1437477971</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317217</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d508c22ec8d7d99645b1248b925a781</srcmd5>
+    <version>2.1.0</version>
+    <time>1549311816</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>667939</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,215 @@
+From 525eee5a72ac0b0dc84d22336f061e3776e26c62 Mon Sep 17 00:00:00 2001
+From: Stephen Finucane <stephenfin@redhat.com>
+Date: Thu, 25 Apr 2019 17:23:43 +0100
+Subject: [PATCH] Add support for Sphinx 2.0
+
+Sphinx 2.0 switched the default HTML builder from HTML4 to HTML5 [1].
+Since some of our tests are validating raw HTML output, this has caused
+them to break. We can't drop support for Sphinx < 2.0 yet since Sphinx
+2.0 doesn't support Python 2.7, so simply if-else this mofo until such a
+time as we _can_ drop support.
+
+[1] https://github.com/sphinx-doc/sphinx/issues/4587
+
+Change-Id: I4631169908e34fa924f5a0a783a94ad9c1215d9f
+Signed-off-by: Stephen Finucane <stephenfin@redhat.com>
+---
+ os_api_ref/tests/test_basic_example.py | 91 +++++++++++++++++++++++++-
+ os_api_ref/tests/test_microversions.py | 45 ++++++++++++-
+ 2 files changed, 132 insertions(+), 4 deletions(-)
+
+diff --git a/os_api_ref/tests/test_basic_example.py b/os_api_ref/tests/test_basic_example.py
+index dc89bae..20a4fad 100644
+--- a/os_api_ref/tests/test_basic_example.py
++++ b/os_api_ref/tests/test_basic_example.py
+@@ -91,7 +91,33 @@ class TestBasicExample(base.TestCase):
+     def test_parameters(self):
+         """Do we get some parameters table"""
+ 
+-        table = """<table border="1" class="docutils">
++        # TODO(stephenfin): Drop support for this once we drop support for both
++        # Python 2.7 and Sphinx < 2.0, likely in "U"
++        if sphinx.version_info >= (2, 0, 0):
++            table = """<table class="docutils align-center">
++<colgroup>
++<col style="width: 20%"/>
++<col style="width: 10%"/>
++<col style="width: 10%"/>
++<col style="width: 60%"/>
++</colgroup>
++<thead>
++<tr class="row-odd"><th class="head"><p>Name</p></th>
++<th class="head"><p>In</p></th>
++<th class="head"><p>Type</p></th>
++<th class="head"><p>Description</p></th>
++</tr>
++</thead>
++<tbody>
++<tr class="row-even"><td><p>name</p></td>
++<td><p>body</p></td>
++<td><p>string</p></td>
++<td><p>The name of things</p></td>
++</tr>
++</tbody>
++</table>"""
++        else:
++            table = """<table border="1" class="docutils">
+ <colgroup>
+ <col width="20%"/>
+ <col width="10%"/>
+@@ -118,7 +144,65 @@ class TestBasicExample(base.TestCase):
+ 
+     def test_rest_response(self):
+ 
+-        success_table = """table border="1" class="docutils">
++        # TODO(stephenfin): Drop support for this once we drop support for both
++        # Python 2.7 and Sphinx < 2.0, likely in "U"
++        if sphinx.version_info >= (2, 0, 0):
++            success_table = """<table class="docutils align-center">
++<colgroup>
++<col style="width: 30%"/>
++<col style="width: 70%"/>
++</colgroup>
++<thead>
++<tr class="row-odd"><th class="head"><p>Code</p></th>
++<th class="head"><p>Reason</p></th>
++</tr>
++</thead>
++<tbody>
++<tr class="row-even"><td><code>200 - OK</code></td>
++<td><p>Request was successful.</p></td>
++</tr>
++<tr class="row-odd"><td><code>100 - Continue</code></td>
++<td><p>An unusual code for an API</p></td>
++</tr>
++<tr class="row-even"><td><code>201 - Created</code></td>
++<td><p>Resource was created and is ready to use.</p></td>
++</tr>
++</tbody>
++</table>"""
++
++            error_table = """<table class="docutils align-center">
++<colgroup>
++<col style="width: 30%"/>
++<col style="width: 70%"/>
++</colgroup>
++<thead>
++<tr class="row-odd"><th class="head"><p>Code</p></th>
++<th class="head"><p>Reason</p></th>
++</tr>
++</thead>
++<tbody>
++<tr class="row-even"><td><code>405 - Method Not Allowed</code></td>
++<td><p>Method is not valid for this endpoint.</p></td>
++</tr>
++<tr class="row-odd"><td><code>403 - Forbidden</code></td>
++<td><p>Policy does not allow current user to do this operation.</p></td>
++</tr>
++<tr class="row-even"><td><code>401 - Unauthorized</code></td>
++<td><p>User must authenticate before making a request</p></td>
++</tr>
++<tr class="row-odd"><td><code>400 - Bad Request</code></td>
++<td><p>Some content in the request was invalid</p></td>
++</tr>
++<tr class="row-even"><td><code>500 - Internal Server Error</code></td>
++<td><p>Something went wrong inside the service.</p></td>
++</tr>
++<tr class="row-odd"><td><code>409 - Conflict</code></td>
++<td><p>There is already a zone with this name.</p></td>
++</tr>
++</tbody>
++</table>"""
++        else:
++            success_table = """table border="1" class="docutils">
+ <colgroup>
+ <col width="30%"/>
+ <col width="70%"/>
+@@ -142,7 +226,7 @@ class TestBasicExample(base.TestCase):
+ </table>
+ """
+ 
+-        error_table = """<table border="1" class="docutils">
++            error_table = """<table border="1" class="docutils">
+ <colgroup>
+ <col width="30%"/>
+ <col width="70%"/>
+@@ -174,5 +258,6 @@ class TestBasicExample(base.TestCase):
+ </tbody>
+ </table>
+ """
++
+         self.assertIn(success_table, self.content)
+         self.assertIn(error_table, self.content)
+diff --git a/os_api_ref/tests/test_microversions.py b/os_api_ref/tests/test_microversions.py
+index d58f673..11f3636 100644
+--- a/os_api_ref/tests/test_microversions.py
++++ b/os_api_ref/tests/test_microversions.py
+@@ -18,6 +18,7 @@ Tests for `os_api_ref` module.
+ """
+ 
+ from bs4 import BeautifulSoup
++import sphinx
+ from sphinx_testing import with_app
+ 
+ from os_api_ref.tests import base
+@@ -55,7 +56,48 @@ class TestMicroversions(base.TestCase):
+ 
+     def test_parameters_table(self):
+         """Test that min / max mv css class attributes are set in params"""
+-        table = """<div class="api-detail collapse section" id="list-servers-detail">
++        if sphinx.version_info >= (2, 0, 0):
++            table = """<div class="api-detail collapse section" id="list-servers-detail">
++<table class="docutils align-center">
++<colgroup>
++<col style="width: 20%"/>
++<col style="width: 10%"/>
++<col style="width: 10%"/>
++<col style="width: 60%"/>
++</colgroup>
++<thead>
++<tr class="row-odd"><th class="head"><p>Name</p></th>
++<th class="head"><p>In</p></th>
++<th class="head"><p>Type</p></th>
++<th class="head"><p>Description</p></th>
++</tr>
++</thead>
++<tbody>
++<tr class="row-even"><td><p>name</p></td>
++<td><p>body</p></td>
++<td><p>string</p></td>
++<td><p>The name of things</p></td>
++</tr>
++<tr class="rp_min_ver_2_11 row-odd"><td><p>name2</p></td>
++<td><p>body</p></td>
++<td><p>string</p></td>
++<td><p>The name of things</p>
++<p><strong>New in version 2.11</strong></p>
++</td>
++</tr>
++<tr class="rp_max_ver_2_20 row-even"><td><p>name3</p></td>
++<td><p>body</p></td>
++<td><p>string</p></td>
++<td><p>The name of things</p>
++<p><strong>Available until version 2.20</strong></p>
++</td>
++</tr>
++</tbody>
++</table>
++</div>
++"""  # noqa
++        else:
++            table = """<div class="api-detail collapse section" id="list-servers-detail">
+ <table border="1" class="docutils">
+ <colgroup>
+ <col width="20%"/>
+@@ -94,6 +136,7 @@ class TestMicroversions(base.TestCase):
+ </table>
+ </div>
+ """  # noqa
++
+         self.assertIn(table, self.content)
+ 
+     def test_mv_selector(self):
+-- 
+2.21.0
+

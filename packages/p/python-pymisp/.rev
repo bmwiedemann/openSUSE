@@ -1,0 +1,383 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f930b106e4d535a1fef5b2f8056e04d3</srcmd5>
+    <version>2.4.68</version>
+    <time>1498741865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>505132</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd13208c7e248e8b1061bb3fb922edc1</srcmd5>
+    <version>2.4.80</version>
+    <time>1506108846</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.80
+- add fix-tests-pr-111.patch to skip an optional test depending on third party data
+- update to version 2.4.79
+- updated shebang fixes</comment>
+    <requestid>527495</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eced964eacf12b4f6d887f8f6a34d4fb</srcmd5>
+    <version>2.4.81</version>
+    <time>1507628578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.81:
+- update to version 2.4.80.1</comment>
+    <requestid>532855</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d0681620bbfd8ca13f91facd2596e69</srcmd5>
+    <version>2.4.82</version>
+    <time>1510960861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542612</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df21355b9414087dad5c935efdf6cce0</srcmd5>
+    <version>2.4.85</version>
+    <time>1514679245</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560597</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2fe17693f203e32632106685fe7c37f4</srcmd5>
+    <version>2.4.87</version>
+    <time>1518025249</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>573307</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f52533e964e6519631efe26e5fd2bba4</srcmd5>
+    <version>2.4.87.1</version>
+    <time>1519145833</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578328</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6acb0c3ef2c08d1a0494ea9fabcca430</srcmd5>
+    <version>2.4.90</version>
+    <time>1526041669</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.90:
+ * New
+  - Add more feed management methods. Fix #221
+  - Add update_attribute method.
+  - Add event_timestamp to REST search. Fix #220
+  - Add helper for Geolocation object.
+  - Add helper for ASN object.
+  - More flexibility in &lt;something&gt; -&gt; datetime.
+  - Add helper for DomainIP.
+  - Add preliminary fail2ban object.
+ * Changes
+  - Add more examples.
+  - Remove useless timestamp cleanup.
+  - Make object helpers more generic, cleanup.
+  - Update fail2ban helper &amp; example.
+ * Fix
+  - Use the recommended approach to add an attribute.
+  - Tests, new template version.
+  - New key - extends_uuid.
+  - Update test file accordingly to the default value.
+  - Geolocation object filename.
+  - Consider a timestamp &lt; 30000000 as a date.
+  - AbstractMISP.from_dict() do not accept positional argument.
+  - Properly create fail2ban object.
+  - Add Info field to the event.
+  - Disable email object for python &lt;3.6.
+ * Other
+  - Added missing field to feed generator.
+  - Add the ability to add an Autonomous System(AS) via the API.
+  - Changed shebang to python3.
+  - Deleted remaining outputs.
+  - First jupyter notebook tutorial (1 iterations)
+  - Added change_analysis_status API.
+  - Fix add_named_attribute regression, update add_named_attribute.py
+    example.
+  - Example of specifying special attribute type in your search: here yara
+    attribute.
+- update to 2.4.89:
+ - Add email object generator.
+ - Method to return an object by uuid.
+ - Do not try to upload objects in case make_binary_objects fails. Realtime feed generator
+ - Creation of the generator object which permit to easily add attributes and objects to daily events, stored as a MISP feed.
+ - Added support of MISP Object.
+ - Point to right anchor for client side certificates.
+ - Add search on sighting.
+ - Add attributes within objects as well, for tagging via value/id/uuid.
+</comment>
+    <requestid>603204</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>890e830bc1981917c189f4259a44cdeb</srcmd5>
+    <version>2.4.90.1</version>
+    <time>1527583077</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.90.1:
+ * New
+  - Properly implement the Email object creator.
+ * Changes
+  - Normalize the RestResponse calls.
+ * Fix
+  - Properly get and decode the body of the email.
+  - Provide the extension of the EML file to attach.
+  - Properly handle attachments.
+</comment>
+    <requestid>611050</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>648bc198f518b9d39fe836c4e6668df2</srcmd5>
+    <version>2.4.95.1</version>
+    <time>1539251288</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-274.patch and fix-274-1.patch to fix missing enum library (#274).
+- update to version v2.4.95 (2018-09-06):
+ - New
+ -  Add helpers for new server related APIs.
+  Fix #266
+ -  Reworking the REST API (WiP)
+ -  Add Jupyter for search.
+ - Changes
+ -  [data-model] updated describeTypes file.
+ -  Added email-header attribute.
+ -  Updated types/categories mapping.
+ -  Open all json files as bytes before loading in json.
+ -  [PyMISP] describeTypes.json updated to add XMR type.
+ - Fix
+ -  Normalizing the outputs.
+ -  Jerry rig support for old python.
+ -  Format of the describeTypes.
+ -  [search.py] more example of query type added.
+ -  Properly validate the last-type search query.
+ -  Opening the json blobs as bytes was buggy.
+ -  Allow boolean parameters in search_index.
+ -  Typo in OpenIOC script.
+  - Fix #237
+ -  Bad URL in get_attachment.
+  - Fix #240
+ -  Improve error message in case the object template is unknown.
+- update to version v2.4.93 (2018-07-01):
+ - New
+ -  Add many comments in the jupyter notebook.
+ -  Return the new object in `add_object`</comment>
+    <requestid>639137</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8de3146c625b79a9c9cb54b33f24ea2a</srcmd5>
+    <version>2.4.96</version>
+    <time>1540987918</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>643569</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9f310fb59adbe9040a5709524c1d895b</srcmd5>
+    <version>2.4.96</version>
+    <time>1545648128</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659595</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6eb762191840c70d4845a23b2c8715af</srcmd5>
+    <version>2.4.102</version>
+    <time>1551216029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.102:
+ - New
+  - Add test cases for stix export.
+ - Changes
+  - [datamodel] new anonymised type added.
+  - [data] types updated to include the new zeek type.
+ - Other
+  - Check if IOC values are in warninglist.
+- update to version 2.4.101:
+ - New
+  - Add missing test case for NOT on attribute level, update Pipfile.
+  - Add support for unix timestamp in set_date.
+    fix #302
+  - Add test for references when adding/updating a full event.
+  - [usersStats] Possibility to fetch users/statistics data for all
+    context (usage, org, tags, ...)
+ - Changes
+  - Force to_ids to be a boolean, as MISP is expecting.
+    fix #320
+  - Add support for sharing group filter for search_index.
+  - Support for Payload Delivery &gt; Other attribute as PyMISP function.
+  - Add Pipfile config.
+  - [data] fix describeTypes.
+  - [data] new types added (hassh-md5 and hasshserver-md5)
+  - Bump misp-objects.
+  - [misp-objects] templates updated to the latest version.
+  - [data] describeTypes updated (grabbed from MISP HEAD)
+  - [data] ja3-fingerprint-md5 type added.
+  - [test] set a default distribution for massive event creation.
+  - [data] describeTypes.json updated to the latest version.
+  - More flexibility when loading an object from python dict.
+  - Pass all parameters to the search API.
+  - Remove compat for MISP 2.4.52, cleanup.
+  - Set verifycert to false in tests.
+  - [tests] Added verifycert option in case of using self-signed cert.
+ - Fix
+  - Remove jupyter &amp; ipython from dev install so it works with python2.
+  - Wrong variable name in MISPEvent.
+  - Documentation error fix #278.
+  - Attempt to fix memory footprint in MISPAttribute.
+  - Still support simple event dict content.
+  - Don't modify event passed to the add_attribute methods.
+    fix #321
+  - The wrong class name was used when there is an error at Event
+    creation.
+  - Use new API in get_csv.py.
+    Fix #314
+  - Test case was broken.
+  - Create massive event using ExpandedPyMISP.
+  - Error vs errors key.
+  - Typo.
+  - Get_object_template_id.
+ - Other
+  - Update pymisp tutorial.
+    Extract the &quot;response&quot; field from the json result returned by misp.search_index
+  - Sort describeTypes.json output. 
+    This is needed for the compatibility with the gen_misp_types_categories.py script. Data was sorted using the order_dict function of the gen_misp_types_categories script.
+- Update to version 2.4.99:
+ - New
+  - Auto generate doc for PyMISPExpanded. 
+  - Search_index in ExpandedPyMISP, cleanup, update jupyter.
+  - Add log search. 
+  - Add test for pushing an event to ZMQ. 
+  - Change_distribution method. 
+  - Add test cases for sightings, cleanup. 
+  - [example] Added sighting rest search example. 
+  - [sighting] Added support of sighting REST API. 
+  - Allow to pass csv to return_format in search. 
+  - Page/limit in search. 
+ - Changes
+  - Add test cases for default distribution levels. 
+  - Include proposals in attributes search. 
+    Add includeProposals param to the search method
+  - Update readme to document testing. 
+  - Fixes &amp; update Jupyter. 
+  - [tuto] Update search. 
+  - Add a script to load the API key from the file system (training VM)
+  - Add print in testlive to debug travis. 
+ - Fix
+  - Auto generate doc for PyMISPExpanded. 
+  - Properly handle errors on event creation/update. 
+  - Test case. 
+  - Do not run the zmq test on travis. 
+  - Type of quick_filter. 
+  - Quick_filter was broken. 
+  - Properly initialize the config when jupyter runs on the VM.
+  - Readme update + python3 + pep8. 
+    align python path to readme specifying python3
+  - Feed-generator gitignore. 
+  - Test cases. 
+ - Other
+  - Dded get_object &amp; get_attribute. 
+  - Fix for last pymisp version. 
+  - Mention virtualenv. 
+    mide make sense for people who want to use it with virtualenv
+  - Be more precise with the supported time indicators.
+  - Fixed documentation bug. 
+  - Fixes date parameters for search_index() function. 
+  - Align examples on custom usage of misp_verifycert. 
+</comment>
+    <requestid>679037</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>32e40025eb55be76ca07d9702423ec6c</srcmd5>
+    <version>2.4.103</version>
+    <time>1554458669</time>
+    <user>dimstar_suse</user>
+    <comment>- New requirement python3-sphinx-autodoc-typehints for docs.
+
+- run spec-cleaner
+- update to version 2.4.103:
+ - New
+  - Add auth parameter to pass to python-requests.
+  - Add readthedocs config.
+ - Changes
+  - [jupyter] remove all the response key (as response is removing it)
+  - Enforce strict in object testing to ease debugging.
+  - [pipenv] Pipfile.lock generated.
+  - [exportpdf] BIG refactoring. Classes, comments, Galaxy starting.
+  - [exportPDF] add basic handling of clusters.
+  - [exportpdf] Add metadata, bugfixes cases (too long values,
+    sanitization), links to misp instances.
+  - Add sphinx-autodoc-typehints.
+  - Use version 2 of readthedoc config file.
+  - [doc] add a reference to the Jupyter Notebook.
+  - Remove dependency on six.
+ - Fix
+  - [exportpdf] fix empty object/attribute/galaxy bugs.
+  - [exportpdf] Add suggestions (UX)
+  - [exportpdf] switch page size to A4.
+  - [exportpdf] switch page size to A4.
+  - Hopefully last fix for python 2.7 &amp; reportlab.
+  - Properly pass the auth parameter to the request.
+  - Properly catch error if reportlab isn't installed.
+  - Make sure install works even without reportlab installed.
+  - URLJoin condition for double quotes. [Hannah Ward]
+  - Do not override sub-path from root URL. [Hannah Ward]</comment>
+    <requestid>691461</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7a7194004e5d6871a3bf411ed9e5f06b</srcmd5>
+    <version>2.4.106</version>
+    <time>1557751758</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.106:
+ - New
+  - Test cases for attributes and proposals.
+  - Improve python3.6+ lib.
+  - Add_attributes method in MISPObject (for multiple attributes)
+  - Method to set the default role.
+  - Default to &quot;me&quot; in the get_user method, update ExpandedPyMISP.
+    Fix #377
+  - Add get_object to ExpandedPyMISP.
+    Fix #372
+  - Test cases for CSV loader, add cleaner methods in ExpandedPyMISP.
+  - Add CSV loader.
+    Fix #376
+  - Helper to create MISP Objects for regcheck.org.uk.
+  - Test for ACLs in testlive.
+  - Test for manual calls to add_object and add_object_reference.
+  - Test update object in event.
+ - Changes
+  - Add python 3.7 support for pipenv users.
+  - Allow to pass a eml as string to EmailObject.
+  - Bump dependencies.
+    Fix CVE-2019-11324 (urllib3)
+  - Allow to pass an AbstractMISP to add_reference.
+    Fix #379
+  - Rework notebooks.
+  - Display an error on failure in testlive.
+  - Add tests for disable_tag.
+  - Reorganize some tests.
+  - Orders of tests in make_bool.
+  - Initial set of refactoring on PDF generator.</comment>
+    <requestid>701014</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fab4f13fdbf72726d78e855b2df0c5cc</srcmd5>
+    <version>2.4.111.2</version>
+    <time>1564994315</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>720299</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>90b68cfd4777b0cc63f29726f0c66897</srcmd5>
+    <version>2.4.112</version>
+    <time>1565695079</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>722152</requestid>
+  </revision>
+</revisionlist>

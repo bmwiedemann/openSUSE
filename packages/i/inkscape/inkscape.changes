@@ -1,0 +1,1035 @@
+-------------------------------------------------------------------
+Tue Jul 30 16:18:54 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Change Python dependencies to Python 3 as Python 2 will be EOL in 2020.
+- Use Python 3 to extract translations, add
+  0001-Run-python-script-for-translations-with-Python-3.patch
+- Make extensions compatible with Python 3
+  (https://bugs.launchpad.net/inkscape/+bug/1735363)
+  * Add mr_568_extensions_python3_compatibility.patch
+  * Add f5e0ea893f34_extensions_python3_compatibility.patch
+  * Add mr_582_extensions_python3_compatibility.patch
+- Some spec cleanups (buildroot, defattr)
+- Require extensions-extra for gimp extension
+
+-------------------------------------------------------------------
+Fri May 31 08:43:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add inkscape-fix-for-poppler-0.76.patch: Fix build with poppler
+  0.76, patch from upstream git.
+
+-------------------------------------------------------------------
+Wed May 15 13:09:07 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1135211).
+
+-------------------------------------------------------------------
+Sun Jan 20 05:26:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 0.92.4
+  * Align multiple objects as a group relative to a single object
+  * Write image data to stdout and read from it
+  * Experience extensions working faster within complex docs
+  * See improved speed when deselecting a path with many nodes
+  * Ungroup text elements won't result in changed font size
+  * Able to print and/or print correct paper size with printers
+  * See improved perf of the measure tool when grids are visible
+  * See proper opacity of partially transparent embedded bmp imgs
+  * Able to Shift/Ctrl-click on control handles of shapes w/o crash
+  * Build Inkscape with up-todate- poppler library 0.72.0
+
+-------------------------------------------------------------------
+Tue Dec 18 23:33:00 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.92.3+20181214.6afa35c3d3:
+  * fix poppler 0.72.0 build
+  * Remove nullptr not used in some system
+  * Backport from trunk. Add filter render in 1 pass and remove
+    banding on filters
+
+-------------------------------------------------------------------
+Mon Dec 03 21:39:34 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.92.3+20181125.5aff6bad34:
+  * Backport from master, Fix bug 1804946: Measurement tool is very
+    slow when using grids This move from Namedview to a new
+    prefernes value of type point to not reload full namedvies/grid
+    on meassure
+  * CMake: Do not override CMAKE_<LANG>_LINK_EXECUTABLE variables
+  * CMake: Specifically enable Microsoft bit-field layout for
+    structs
+  * CMake/MSYS2: Add new dependency of libtiff (libzstd)
+  * Fix build with poppler-0.71.0
+  * Fix encoding of "title" label in win32 native file dialog
+  * ShapeEditor: Always keep KnotHolders in set_item()
+  * CI: Fix wrong path in docker registry for 14.04
+  * CI: Make ccache and -std=c++98 actually work with old CMake
+  * Fix code incompatible with old gcc / C++ < 11
+- Switch to source service checkout from stable branch.
+- Drop Fix-compilation-poppler-0_65.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul  9 14:23:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Add yet a commit from upstream to fix build with new poppler.
+
+-------------------------------------------------------------------
+Mon Jul  9 12:38:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Add Fix-compilation-poppler-0_65.patch: Fix compilation with
+  poppler 0.65.0 and newer. Replace unused includes with one that
+  is actually used (lp#1772883).
+
+-------------------------------------------------------------------
+Sat Jun  2 21:34:36 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop optional gnome-vfs2-devel BuildRequires: No longer strickly
+  needed, and obsolete upstream.
+
+-------------------------------------------------------------------
+Mon Apr 30 15:06:12 UTC 2018 - jengelh@inai.de
+
+- Update summaries. Trim filler words from descriptions.
+
+-------------------------------------------------------------------
+Wed Apr 25 02:38:43 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Omit translations from appdata on Leap 42.x/SLE12, merging
+  translations in XML requires msgfmt >= 0.19.7
+
+-------------------------------------------------------------------
+Tue Apr 24 17:41:35 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to 0.92.3, a stability and bugfix release
+  * new CLI options --export-area-{drawing,page}, --export-margin
+  * Text tool, switching between RTL/LTR writing
+  * Circle/Ellipse tool, toolbar fields for Rx, Ry radius
+  * PDF+LaTeX export, basic linespacing support
+  * Preferences option for number of rendering tiles
+  * Various bug fixes, for details see:
+    https://inkscape.org/en/release/0.92.3/
+- Drop obsolete inkscape-poppler058-fix.patch
+- Use cmake instead of autoconf
+  * Add build_internal_libraries_as_static.patch
+  * Add fix_install_targets.patch
+- Spec file cleanup
+  * Remove conditionals for EOLed distributions
+  * Remove ghostscript-fonts-std dependency
+  * Add libjpeg build dependency
+  * Do not package extension unittests
+  * Move all extensions with ghostscript or pstoedit dependency
+    to extensions-extra subpackage
+- Correct License, original inkscape code is GPL-2.0 or later, but 
+  the binary contains code from Gimp (GPL-3.0), see COPYING
+
+-------------------------------------------------------------------
+Wed Mar  7 11:41:05 UTC 2018 - guoyunhebrave@gmail.com
+
+- Add python-scour Recommends, used to clean up and minify SVG.
+
+-------------------------------------------------------------------
+Fri Dec  8 22:07:47 UTC 2017 - dimstar@opensuse.org
+
+- Add explicit python2-xml BuildRequires: the ./i18n.py script,
+  executed during build, imports xml and we are thus responsible to
+  have the dependencies in place.
+
+-------------------------------------------------------------------
+Mon Oct  9 07:43:48 UTC 2017 - dmueller@suse.com
+
+- remove env shebang from inkscape extensions subpackage
+
+-------------------------------------------------------------------
+Sat Sep 23 16:20:45 UTC 2017 - plinnell@opensuse.org
+
+- Disable IM7 until upstream supports it
+- Resolves: https://bugzilla.suse.com/show_bug.cgi?id=1059927
+
+-------------------------------------------------------------------
+Sat Sep 23 11:53:02 UTC 2017 - zaitor@opensuse.org
+
+- Rebase inkscape-poppler058-fix.patch: Add yet an upstream commit.
+
+-------------------------------------------------------------------
+Fri Sep 15 19:15:32 UTC 2017 - zaitor@opensuse.org
+
+- Add inkscape-poppler058-fix.patch: Adapt to poppler 0.58, patch
+  from upstream git (lp#1715820).
+
+-------------------------------------------------------------------
+Fri Aug 18 00:19:00 UTC 2017 - plinnell@opensuse.org
+
+- drop inkscape-gcc7-buildfix.patch
+
+-------------------------------------------------------------------
+Fri Aug 11 09:44:53 UTC 2017 - pgajdos@suse.com
+
+- do not require aspell, require gtkspell [bsc#1052953]
+
+-------------------------------------------------------------------
+Mon Aug  7 23:08:09 UTC 2017 - plinnell@opensuse.org
+
+- Update to version 0.92.2:
+  + Stability and bug fix release. Several crash bugs fixed.
+  + No change log, changes here: 
+  https://launchpad.net/inkscape/+milestone/0.92.2
+	
+
+-------------------------------------------------------------------
+Wed May 17 17:25:43 UTC 2017 - dimstar@opensuse.org
+
+- Add inkscape-gcc7-buildfix.patch: Fix C++11 errors and warnings
+  with g++-7.
+
+-------------------------------------------------------------------
+Mon Mar 20 14:39:18 UTC 2017 - mliska@suse.cz
+
+- Update to version 0.92.1:
+  + Text: baseline-spacing related issues with regular and flowed text in legacy Inkscape SVG files (Bug #1655483 and others)
+  + Text: Default baseline spacing stored in relative units is always converted to document units (Bug #1645016)
+  + Path effects: Crash on ungroup if group contains elements with path effects (Bug #1657591)
+  + Clipboard: Pasting a path effect from clipboard fails (Bug #1656093)
+  + Clipboard: Fix copy&pasting of groups which contain elements with path effects (Bug #1656527)
+  + Selection: Node tool can selected objects on locked layers (Bug #1656141)
+  + Clones: Critical warnings with clones and symbols (Bug #1653184)
+  + About screen missing for several UI languages (Bug #1659426)
+  + Selection: Missing transformation handles after reset of rotation center (Bug #1657874) 
+  + Bitmap images: Crash when opening files with invalid image links (Bug #1660142)
+  + Bitmap images: Fix path separators in relative image links (Windows) (Bug #1659347)
+  + File import: Failure to open CDR/Visio/WPG files from paths with special characters (Windows) (Bug #1656763)
+
+-------------------------------------------------------------------
+Tue Feb 14 06:51:51 UTC 2017 - src@posteo.de
+
+- buildrequire potrace-devel for tracing bitmaps.
+
+-------------------------------------------------------------------
+Wed Feb  1 11:29:05 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon Jan  9 21:08:34 UTC 2017 - robby.engelmann@igfs-ev.de
+
+- update to version 0.92:
+  + Mesh Gradients are now supported.
+  + Many SVG2 and CSS3 properties are now supported (e.g. paint-order, mix-blend-mode). Not all are available from the GUI.
+  + The new Object dialog allows to select, label, hide and lock any object in the drawing from a dialog that lists them all
+  + Selection sets make it possible to 'group' objects together regardless of document structure
+  + Several new path effects have been added, among them Envelope/Perspective, Lattice Deformation, Mirror and Rotate Copies
+  + There are several new extensions (e.g. a seamless pattern extension) and a new filter (colorblindness simulation) included in the release, many old extensions have been updated or got new features
+  + Spray tool and measure tool received a set of nifty new features
+  + Interactive smoothing for lines created with the Pencil tool
+  + BSplines (and more) are available for the Pen tool
+  + Checkerboard background can be used to more easily see object transparencies
+  + see http://wiki.inkscape.org/wiki/index.php/Release_notes/0.92 for full changelog
+- Drop upstream included patches:
+  + inkscape-remove-datetime.patch
+  + inkscape-cache-fix.patch
+  + inkscape-appdata.patch
+- Rebased patch
+  + inkscape-packages.patch
+
+-------------------------------------------------------------------
+Tue Jul 26 07:00:52 UTC 2016 - badshah400@gmail.com
+
+- Add inkscape-appdata.patch to install a translated appdata file;
+  patch touches autotools build files, run autoreconf before
+  configure.
+
+-------------------------------------------------------------------
+Fri Jun 24 10:45:25 UTC 2016 - zaitor@opensuse.org
+
+- Export -std=c++11 in CXXFLAGS, needed now after removal of patch
+  in libsig++ forcing the flag previously. May be removed when
+  lp#1488079 is fixed.
+
+-------------------------------------------------------------------
+Wed Mar 23 13:22:51 UTC 2016 - aeszter@gwdg.de
+
+- Add inkscape-cache-fix.patch: Fix bnc#972343 
+
+-------------------------------------------------------------------
+Tue Mar  8 16:32:33 UTC 2016 - dimstar@opensuse.org
+
+- Pass --disable-strict-build to configure: allow to build against
+  recent glibmm2 versions with deprecated symbols.
+
+-------------------------------------------------------------------
+Sat Jan 31 08:33:53 UTC 2015 - mailaender@opensuse.org
+
+- Update to version 0.91:
+  + Improved performance. The new renderer is significantly faster
+    on most drawings.
+  + OpenMP multithreading for filters.
+  + Substantial memory savings.
+  + Responsiveness improvements.
+  + Rendering bug fixes. The following things now render correctly:
+    - Pattern fills (no more gaps between tiles, regardless of
+      transformation).
+    - Stroke of transformed objects in patterns.
+    - Patterns containing clipped objects.
+    - Nested clipping paths.
+    - Masked and clipped objects with large masks / clipping paths
+      in Outline view.
+    - Paths with wide strokes and long miters.
+    - Fonts.
+  + A grayscale display color mode has been added, that shows a
+    preview of your drawing in grayscale.
+  + The tool control bar for the Node Tool features a new dropdown
+    to insert new nodes on the selected segments extreme values.
+  + The Measurement tool is a new feature for the artist to measure
+    the elements in their drawing.
+  + Text size default unit is now points (pt) and is customizable
+    (px,pt,pc,mm,cm,in,em).
+  + Text toolbar shows full list of font style variants for that
+    font.
+  + Files with text in em units read correctly.
+  + Font substitution warning dialog.
+  + Gradient toolbar enhanced to select and modify gradient stops,
+    invert, repeat, and link gradients.
+  + On-canvas gradient editing fixes: double clicking to create
+    stops, correct focus on select.
+  + Gradients sortable by color, name and usage in Fill/Stroke.
+  + Gradients can be renamed in Fill/Stroke.
+  + New Find/Replace dialog can operate on text or any attribute.
+  + Drag and drop to reorder layers and create sublayers.
+  + Show/Hide All layers options in context menu.
+  + Inkscape has a new Symbols dialog.
+  + Visio Stencil files (.vss) can also be used by dropping them in
+    the same symbols directory.
+  + See http://wiki.inkscape.org/wiki/index.php/Release_notes/0.91
+    for a full list of changes.
+- Drop upstream fixed patches:
+  + inkscape-return-on-exit.patch
+  + inkscape-apply-invert-transform.patch
+  + inkscape-0.48.5-librevenge.patch
+  + inkscape-fix-build-with-poppler-0.29.patch (r13685)
+  + inkscape-gc-detection.patch (r12155)
+- Rebase inkscape-packages.patch.
+- Add pkgconfig(libexif) BuildRequires: enable EXIF support.
+- Add aspell-devel BuildRequires: enable spell checking support.
+- Add pkgconfig(libcdr-0.1) and pkgconfig(libvisio-0.1)
+  BuildRequires: support for more image formats.
+- Add pkgconfig(dbus-glib-1) BuildRequires: new dependency.
+- Remove docbook-toys and sgml-skel BuildRequires: no longer
+  needed.
+
+-------------------------------------------------------------------
+Mon Jan  5 14:25:44 UTC 2015 - dimstar@opensuse.org
+
+- Add inkscape-gc-detection.patch: Use pkg-config to detect bdw-gc.
+
+-------------------------------------------------------------------
+Mon Dec 29 08:31:27 UTC 2014 - mlin@suse.com
+
+- Add inkscape-fix-build-with-poppler-0.29.patch: Fix build with
+  poppler 0.29. Patch has been backported from
+  https://bugs.launchpad.net/inkscape/+bug/1399811.
+
+-------------------------------------------------------------------
+Sat Nov 22 19:53:52 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- make inkscape-split-extensions-extra script more robust
+  (comments, 'as' keyword, leading/trailing whitespace)
+
+-------------------------------------------------------------------
+Tue Jul 22 13:01:10 UTC 2014 - fstrba@suse.com
+
+- Add inkscape-0.48.5-librevenge.patch:
+  + Port the WPG importer to librevenge framework based libwpg.
+- Add autoconf, automake and libtool BuildRequires and call
+  libtoolize and autorecof: regenerate the build system, as above
+  patch touches the build system.
+- Update BuildRequires, following the port:
+  + Remove libwpg-devel
+  + Add pkgconfig(libwpg-0.3) and pkgconfig(librevenge-0.0).
+- Run osc service localrun clean_spec_file on the package
+
+-------------------------------------------------------------------
+Tue Jul 22 12:04:55 UTC 2014 - fcrozat@suse.com
+
+- Add _constraints file to require at least 5G disk space to fix
+  spurious rebuild issues.
+
+-------------------------------------------------------------------
+Fri Jul 11 20:57:03 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.48.5:
+  + Adobe Illustrator SVG files containing entities can be loaded
+    again.
+  + Support for Poppler 0.26.
+  + Support for Boehm-GC 7.4.0 and later.
+  + Several crash bugs were fixed.
+  + 64-bit compilation is now possible on Windows.
+- Drop upstream included patches:
+  + inkscape-gcc48-buildfix.patch.
+  + inkscape-use-recommended-freetype-include.patch.
+  + bug-1315142-patch-src_extension_internal_pdfinput_pdf-parser_cpp-r13333-v2.diff.
+
+-------------------------------------------------------------------
+Tue May 13 19:44:15 UTC 2014 - coolo@suse.com
+
+- Pick
+  bug-1315142-patch-src_extension_internal_pdfinput_pdf-parser_cpp-r13333-v2.diff
+  Port to poppler-0.26 (lp#1315142).
+
+-------------------------------------------------------------------
+Mon Apr 28 09:11:03 UTC 2014 - schwab@linux-m68k.org
+
+- Don't strip '-g' from RPM_OPT_FLAGS on arm.
+
+-------------------------------------------------------------------
+Wed Dec 11 18:18:09 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Add inkscape-use-recommended-freetype-include.patch: Freetype
+  upstream recommends using their macros together with ft2build.h
+  include. Positive sideeffect is that this patch makes it build
+  with both freetype2 2.5.1, and older versions.
+
+-------------------------------------------------------------------
+Mon Jun 24 10:19:35 UTC 2013 - cgiboudeaux@gmx.com
+
+- Add inkscape-gcc48-buildfix.patch: Fix build with GCC 4.8
+  (lp#1095364).
+
+-------------------------------------------------------------------
+Mon Dec 17 23:11:27 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.48.4:
+  + Important bugfixes:
+    - A security bug was fixed.
+    - Some major bugs causing crashes when using extensions or the
+      filters editor were fixed.
+    - A bug affecting the outline mode was fixed.
+    - Inkscape can now be built on platforms with new versions of
+      the Poppler library (v0.20 and higher). (lp#1005565)
+    - Relative path names can be used again on the command line for
+      EPS/PS and other file types handled by script extensions
+      (lp#695120)
+  + Updated translations.
+- Drop inkscape-poppler20.patch: fixed upstream.
+- Drop inkscape-libpng15.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct  3 19:59:49 UTC 2012 - pgajdos@suse.com
+
+- build also with libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Fri Sep 14 15:49:03 UTC 2012 - dmueller@suse.com
+
+- Reduce memory usage during linking on ARM to let the build
+  succeed.
+
+-------------------------------------------------------------------
+Wed Sep 12 15:40:36 UTC 2012 - malcolmlewis@opensuse.org
+
+- Add inkscape-apply-invert-transform.patch: Apply invert
+  transform to all image tags (bnc#779560 lp#840625).
+
+-------------------------------------------------------------------
+Wed Jul 18 17:51:12 UTC 2012 - dimstar@opensuse.org
+
+- Explicitly add ps2pdf-ext.py to the -extras package. This used to
+  be caught by the extras-split script, but due to the change of
+  this extensions to be a simple wrapper around ps2pdf from
+  ghostscript, it's missed (bnc#772085).
+- Add ghostscript Requires to the -extra package, as otherwise
+  ps2pdf-ext.py won't work at all.
+
+-------------------------------------------------------------------
+Fri Jun 15 04:24:07 UTC 2012 - coolo@suse.com
+
+- yudit is in non-free now (due to openmotif requirement), so do
+  not require it
+
+-------------------------------------------------------------------
+Wed Jun  6 19:05:59 UTC 2012 - badshah400@gmail.com
+
+- Add inkscape-poppler20.patch for openSUSE > 12.1 to fix errors
+  when building with poppler = 0.20.0; fixes build failures in
+  Factory.
+
+-------------------------------------------------------------------
+Wed May 16 13:11:44 UTC 2012 - dimstar@opensuse.org
+
+- Add inkscape-return-on-exit.patch: Return non-zero values in case
+  of errors. Patch has been accepted and merged by upstream.
+  [bnc#758275, lp#993500].
+
+-------------------------------------------------------------------
+Fri Feb 24 14:08:44 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.48.3.1:
+  + Bug fixes.
+- Changes from version 0.48.3:
+  + Regression fixes:
+    - Pre-0.46 grids are now correctly imported (lp#221040)
+  + Important bugfixes:
+    - Clipped and masked objects are selected correctly (lp#365458)
+    - The units feet and picas are now correctly handled for grids
+      (lp#885500)
+    - The grid origin is moved when resizing the page (e.g. when
+      clicking clicking "Fit page to selection") (lp#240689)
+    - The emphasized grid lines of the axonometric grid now move
+      properly according to the origin of the grid.
+  + Other bugs fixed: lp#167419, lp#168417, lp#168942, lp#184341,
+    lp#239430, lp#298528, lp#340123, lp#341866, lp#386237,
+    lp#403421, lp#407394, lp#408566, lp#479644, lp#487144,
+    lp#494722, lp#496793, lp#602005, lp#612882, lp#623660,
+    lp#663667, lp#668895, lp#681262, lp#693010, lp#721424,
+    lp#721448, lp#725063, lp#786667, lp#788560, lp#789122,
+    lp#791709, lp#805095, lp#810503, lp#812413, lp#812497,
+    lp#819209, lp#821435, lp#824221, lp#829947, lp#834721,
+    lp#837603, lp#837799, lp#845354, lp#858369, lp#869019,
+    lp#884368, lp#885324, lp#887539, lp#888793, lp#889172,
+    lp#898538, lp#900854, lp#902054, lp#907157, lp#909783,
+    lp#909958, lp#910463, lp#910467, lp#910479, lp#911079,
+    lp#911123, lp#915329, lp#917544, lp#919728, lp#923241,
+    lp#933831.
+  + Updated translations.
+- Change liblcms-devel BuildRequires to liblcms2-devel, to build
+  against lcms2.
+- Drop inkscape-glib-2.31.patch: fixed upstream.
+- Add some automatic detection of localized man pages in %install,
+  so that we don't have to list all new translations manually.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:47:52 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Dec  1 09:14:47 UTC 2011 - dimstar@opensuse.org
+
+- Add inkscape-glib-2.31.patch: Fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Wed Jul 13 21:16:21 UTC 2011 - mrdocs@opensuse.org
+
+- Update to version 0.48.2:
+  + many crash/hang fixes
+  + DXF and tex export fixes
+  + Bugs fixed: https://launchpad.net/inkscape/+milestone/0.48.2
+  + Updated translations.
+- Drop inkscape-0.48.0-gcc46.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar 22 08:00:15 UTC 2011 - idoenmez@novell.com
+
+- Add inkscape-0.48.0-gcc46.patch: fix compilation with gcc 4.6 
+
+-------------------------------------------------------------------
+Sat Feb 12 19:22:44 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Jan 31 12:07:52 UTC 2011 - mrdocs@opensuse.org
+
+- Update to version 0.48.1:
+  0.48.1 is a stability and bugfix release. 	
+  + Many small regressions in the node tool were fixed.
+  + Exporting of masks has been substantially improved in all 
+    Cairo-based output formats.
+  + lp#544599, lp#591986, lp#605575: Several crash bugs in the node
+    tool have been fixed.
+  + lp#627134: Rulers are redrawn properly with recent versions of
+    GTK
+  + lp#675309: Unlinking an orphaned clone no longer causes a crash
+  + lp#482993: Problems with extensions sometimes not working at
+    all on Mac OS X.
+  + lp#651678: Inkscape should no longer crash due to missing icons
+    at startup  or when opening the document properties dialog.
+  + lp#680520: Shift-clicking on the top rounding handle of a
+    rectangle will no longer cause a crash.
+  + lp#676271: Inkscape builds correctly with recent Poppler.lp
+  + Bugs fixed: lp#658055, bnc#661370
+- drop inkscape-r9710-9712.patch: fixed upstream.
+- export CFLAGS, as inkscape is C and C++
+- Remove --enable-inkboard from configure: jessyink replaces it
+- Remove Obsoletes: sodipodi NLD9 is obsolete
+- Delete installed but useless header files
+- run spec-cleaner on the spec file
+
+-------------------------------------------------------------------
+Tue Dec 14 18:18:01 CET 2010 - vuntz@opensuse.org
+
+- Fix the build again: the te_IN translation should simply be te,
+  so move the translation.
+
+-------------------------------------------------------------------
+Sat Dec 11 11:16:56 CET 2010 - vuntz@opensuse.org
+
+- Add popt-devel BuildRequires to fix the build.
+
+-------------------------------------------------------------------
+Tue Dec  7 16:50:10 CET 2010 - vuntz@opensuse.org
+
+- Tag localized man pages with the right language. We should
+  eventually move them to the lang subpackage, but at the moment,
+  they would create a file conflict between bundles and the lang
+  subpackage.
+
+-------------------------------------------------------------------
+Tue Nov 30 09:51:39 CET 2010 - vuntz@opensuse.org
+
+- Make inkscape-extensions-extra depend on python-xml instead of
+  pyxml: pyxml will be removed, and we really wanted to use
+  python-xml anyway.
+- Update inkscape-packages.patch to mention python-xml instead of
+  pyxml: even if upstream mentions pyxml, python-xml is really okay
+  here.
+
+-------------------------------------------------------------------
+Sun Aug 15 22:27:48 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.48.0:
+  + multipath editing
+  + improved text tool: subscript, superscript,numerical input for
+    text kerning, tracking and more
+  + new Airbrush tool
+  + LaTeX export with PDF/PS/EPS
+  + JessyInk extension to create presentations
+  + numerous bugfixes
+- Rebase inkscape-remove-datetime.patch.
+- Drop inkscape-poppler-0.12.2.patch, inkscape-gcc45.patch and
+  inkscape-non_void.patch: upstream fixed.
+- Add inkscape-r9710-9712.patch to fix node editor crash when
+  dragging near the last node of a path.
+
+-------------------------------------------------------------------
+Mon Jun 14 12:04:30 CEST 2010 - vuntz@opensuse.org
+
+- Do not add wrong categories to inkscape.desktop (Office,
+  FlowChart).
+
+-------------------------------------------------------------------
+Tue Mar  2 13:20:36 UTC 2010 - dimstar@opensuse.org
+
+- Add inkscape-gcc45.patch to fix build with gcc 4.5. Patch
+  copied from upstream bug tracker, lp#522327.
+- Add inkscape-non_void.patch, cross-ported from gdl upstream,
+  commit 40b8cb7.
+
+-------------------------------------------------------------------
+Wed Dec 16 15:06:57 CET 2009 - vuntz@opensuse.org
+
+- Add inkscape-poppler-0.12.2.patch to fix build with recent
+  poppler. This patch comes from Fedora, but was not committed
+  upstream. See lp#487038 for the discussion, and another patch.
+
+-------------------------------------------------------------------
+Fri Nov 27 14:50:21 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.47:
+  + Timed autosave: no more lost work
+  + Spiro splines: an exciting new way to work with paths, fully
+    supported in Pen, Pencil, and Node tools
+  + Auto smooth nodes: a new type of node that keeps the path as
+    smooth as possible as you move it or its neighbors
+  + New modes in Tweak tool: pushing and jittering whole objects,
+    scaling/rotating objects, deleting and duplicating using the
+    "soft brush"
+  + Reworked, much more usable snapping system and a Snapping
+    toolbar
+  + New path effects, including sketch, hatching, envelope
+    deformation: effects can be stacked and assigned to groups
+  + A huge collection of preset filters in the new Filters menu
+  + New cairo-based PS and EPS export: improved quality, more
+    features supported, fallback rasterization for filters and
+    transparency
+  + Spell checker for text objects in a document
+  + Many new extensions: restacking, calendar, printing marks,
+    cartesian and polar grids, interpolating attributes
+  + Optimized SVG code options, now with their own Preferences page
+  + Many other improvements, usability tweaks, memleak stops, and
+    misc bugfixes
+- Drop patches: inkscape-automake111.patch, inkscape-gcc44.patch,
+  inkscape-gtk-clist.patch, inkscape-lp237574-poppler.patch,
+  inkscape-polyutil-newpoly.patch, inkscape-warnings.patch,
+- Rebased patches: inkscape-packages.patch and
+  inkscape-remove-datetime.patch.
+- No longer patch configure.ac during %setup.
+- Add gsl-devel BuildRequires.
+- Added openSUSE palette file to the package (openSUSE.gpl).
+- Do not provide sodipodi; version Obsoletes for sodipodi.
+  Fixes a rpmlint warning.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:21 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Jul 13 11:58:53 CEST 2009 - coolo@novell.com
+
+- remove dupliacted files (fix build with automake 1.11)
+
+-------------------------------------------------------------------
+Wed May 13 02:53:30 CEST 2009 - vuntz@novell.com
+
+- Remove unneeded BuildRequires: libglade2-devel,
+  libgnomeprintui-devel, libgnomeui-devel, libwnck-devel,
+  loudmouth-devel
+- Add BuildRequires: gc-devel, gnome-vfs2-devel
+- Do not build gc inside this package and use the system-installed
+  one. Drop gc6.4.patch since we don't need to patch gc now :-)
+- Drop inkscape-boehm-gc.patch: we just use the system-installed gc
+  now.
+- Drop inkscape-swigfix.patch: I don't really see the point of
+  this.
+- Drop inkscape-bug-189159.patch: the change is actually wrong,
+  looking at the code...
+- Drop inkscape-configure.patch: not needed anymore.
+- Drop inkscape-buffer-overrun.patch: doesn't appear to be needed
+  anymore.
+- Tag inkscape-polyutil-newpoly.patch
+- Remove non-existing --enable-db2html, --enable-gnome,
+  --with-gnome-print and --with-gc configure options.
+- Use makeinstall.
+- Do not package some files twice.
+
+-------------------------------------------------------------------
+Tue Apr 28 13:14:17 CEST 2009 - vuntz@novell.com
+
+- Add inkscape-gcc44.patch to fix build with gcc 4.4.
+
+-------------------------------------------------------------------
+Fri Apr  3 11:38:25 CEST 2009 - vuntz@novell.com
+
+- Remove python-numeric Requires: there's no reference to it
+  anywhere in the code, so it wasn't needed.
+
+-------------------------------------------------------------------
+Sat Mar 28 00:40:10 CET 2009 - vuntz@novell.com
+
+- Add inkscape-remove-datetime.patch to be more build-compare
+  friendly.
+
+-------------------------------------------------------------------
+Sun Jan 25 14:45:22 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn since it's what glibc upstream
+  uses.
+
+-------------------------------------------------------------------
+Fri Oct  3 21:01:44 CEST 2008 - vuntz@novell.com
+
+- Add inkscape-lp237574-poppler.patch to compile with poppler in
+  Factory.
+
+-------------------------------------------------------------------
+Wed Sep 24 13:56:13 CEST 2008 - sbrabec@suse.cz
+
+- Require and supplement correct resolvables for gimp.
+
+-------------------------------------------------------------------
+Tue Jul  1 11:15:28 CEST 2008 - sbrabec@suse.cz
+
+- Added missing dependencies: libMagick++-devel, libwpg-devel,
+  gimp, transfig, yudit.
+- Packaged extensions using pyxml, lxml and yudit as an extra
+  package to shrink mandatory dependencies and not break plugins.
+  Uses an extra script for evaluation.
+- Packaged optional dia, fig, gimp and skencil plugins as separate
+  packages with extra dependencies.
+- Removed dependency on skencil, no more needed for EPS import
+  (bnc#394748).
+- Removed dependency on libwmf, no more needed for WMF import.
+- Tell user about pyxml and lxml packages instead of suggestinng of
+  compilation from source (however the message should not appear).
+
+-------------------------------------------------------------------
+Sat Jun 28 01:29:17 CEST 2008 - maw@suse.de
+
+- Add inkscape-gtk-clist.patch, to enable building against
+  recent versions of gtk+.
+
+-------------------------------------------------------------------
+Thu May 15 19:58:44 CEST 2008 - maw@suse.de
+
+- Recommend python-lxml (bnc#370334).
+
+-------------------------------------------------------------------
+Wed May  7 19:10:42 CEST 2008 - maw@suse.de
+
+- Respin inkscape-warnings.patch.
+
+-------------------------------------------------------------------
+Thu Apr  3 19:42:45 CEST 2008 - maw@suse.de
+
+- Buildrequire libpoppler-glib-devel, thereby enabling pdf import support
+  (bnc#376752).
+
+-------------------------------------------------------------------
+Fri Mar 28 23:18:56 CET 2008 - maw@suse.de
+
+- Update to version 0.46:
+  + Many new features and bugfeatures
+  + For a detailed account of what's new, see the NEWS file
+- Remove stale patches: inkscape-invalid-conversion.patch,
+  inkscape-0.45.1-gcc43.patch, inkscape-g_assert.patch
+- Respin inkscape-bug-189159.patch
+- Add inkscape-warnings.patch
+- Rename sr@latin to sr@Latn.
+
+-------------------------------------------------------------------
+Thu Mar  6 19:27:48 CET 2008 - maw@suse.de
+
+- Fix the build when against newer versions of intltool.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:27:27 CET 2008 - maw@suse.de
+
+- Disable perl support for now.
+
+-------------------------------------------------------------------
+Mon Jan 28 17:59:41 CST 2008 - maw@suse.de
+
+- Add inkscape-g_assert.patch.
+
+-------------------------------------------------------------------
+Fri Jan 11 10:41:20 CET 2008 - coolo@suse.de
+
+- take more gcc43 patches from SVN
+
+-------------------------------------------------------------------
+Sat Nov 10 11:50:12 CET 2007 - mauro@suse.de
+
+- Added inkscape-0.45.1-gcc43.patch
+  + Fixes issues with gcc 4.3. 
+
+-------------------------------------------------------------------
+Wed Aug  8 00:03:52 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Thu May 10 12:10:58 CEST 2007 - prusnak@suse.cz
+
+- recommends pyxml [#271758]
+
+-------------------------------------------------------------------
+Wed Apr 18 08:38:14 CEST 2007 - aj@suse.de
+
+- Fix spec list so that package builds again.
+
+-------------------------------------------------------------------
+Thu Mar 29 09:52:37 CST 2007 - maw@suse.de
+
+- Update to version 0.45
+- Remove upstreamed inkscape-siox-max.patch
+- Remove now-unnecessary inkscape-session-manager-strcmp.patch and
+  inkscape-enable-perl.patch
+- Add inkscape-buffer-overrun.patch
+
+-------------------------------------------------------------------
+Wed Jan 31 14:23:33 CET 2007 - sbrabec@suse.cz
+
+- Removed remaining references to /opt/gnome (#240571).
+
+-------------------------------------------------------------------
+Tue Jan 23 11:22:41 CET 2007 - prusnak@suse.cz
+
+- fixed build errors
+  * polyutil-newpoly.patch - uninitialized structure
+  * session-manager-strcmp.patch - comparing char* w/ string literal
+
+-------------------------------------------------------------------
+Mon Jan 22 18:01:04 CET 2007 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu Jan  4 12:46:30 CET 2007 - prusnak@suse.cz
+
+- fixed illegal comparison (siox-max.patch) [#231224]
+
+-------------------------------------------------------------------
+Mon Nov  6 17:11:05 CET 2006 - jhargadon@suse.de
+
+- applied a patch that fixes a problem where the package would not
+  compile with the --with-perl option. 
+
+-------------------------------------------------------------------
+Sat Oct 21 14:06:26 CEST 2006 - schwab@suse.de
+
+- Don't use obsolete macro.
+
+-------------------------------------------------------------------
+Fri Oct 13 22:24:29 CEST 2006 - danw@suse.de
+
+- Remove dead patches
+
+-------------------------------------------------------------------
+Thu Oct  5 17:47:54 CEST 2006 - jhargadon@suse.de
+
+- added --datadir=%prefix/share as a configuration option.  This
+  is a work around for bug #204719 
+
+-------------------------------------------------------------------
+Fri Sep 29 23:04:34 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.44.1
+- Layers dialog
+- Outline mode, many performance improvements
+- Native PDF export with transparency
+- Clipping and masking support
+- Configurable keyboard shortcuts
+- Docked color palette in the editing window
+- Interactive indicator of the style of selection in the statusbar
+- Innovative "node sculpting" and other improvements in Node tool
+- Better SVG support: <switch> element, ICC color profiles for images
+- Persistent rotation centers, Paste Size command
+- many bug fixes
+- removed the --with-perl option from configuration in the specfile
+
+-------------------------------------------------------------------
+Sat Sep  9 20:34:07 CEST 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Wed Aug 16 16:26:35 CEST 2006 - cthiel@suse.de
+
+- buildrequire python-gtk-devel instead of python-gtk
+
+-------------------------------------------------------------------
+Fri Jul  7 22:15:04 CEST 2006 - jpr@suse.de
+
+- add patch to not use freetype2 internals
+
+-------------------------------------------------------------------
+Sat Feb 18 08:36:44 CET 2006 - stbinner@suse.de
+
+- fix typo .desktop file
+
+-------------------------------------------------------------------
+Sat Feb 18 01:19:27 CET 2006 - gekker@suse.de
+
+- fixup .desktop file for UI team
+
+-------------------------------------------------------------------
+Tue Jan 31 01:13:40 CET 2006 - ro@suse.de
+
+- take fix from swig to swig-generated source file 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 23 16:23:29 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.43 (#134655).
+- Enabled Inkboard Collaborative Editing.
+
+-------------------------------------------------------------------
+Mon Nov  7 18:18:03 CET 2005 - sbrabec@suse.cz
+
+- Fixed qualification and type conversion errors.
+
+-------------------------------------------------------------------
+Thu Aug 25 15:37:14 CEST 2005 - nadvornik@suse.cz
+
+- updated to bugfix release 0.42.2 [#112918]
+
+-------------------------------------------------------------------
+Mon Aug  1 18:54:39 CEST 2005 - ro@suse.de
+
+- added dir to filelist /usr/share/man/fr/man1 
+
+-------------------------------------------------------------------
+Fri Jul 29 17:29:35 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 0.42.
+
+-------------------------------------------------------------------
+Tue May 31 17:04:28 CEST 2005 - schwab@suse.de
+
+- Fix more invalid casts.
+
+-------------------------------------------------------------------
+Wed May 18 18:27:40 CEST 2005 - ro@suse.de
+
+- fix build with current pkgconfig 
+
+-------------------------------------------------------------------
+Thu Apr 28 13:10:17 CEST 2005 - sbrabec@suse.cz
+
+- Build boehm-gc with -fPIC and -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Wed Apr 27 17:32:44 CEST 2005 - ro@suse.de
+
+- remove boehm-gc from nfb (dropped) 
+- use private copy of gc6.4
+
+-------------------------------------------------------------------
+Tue Apr 26 16:57:05 CEST 2005 - sbrabec@suse.cz
+
+- Install missing translation files.
+
+-------------------------------------------------------------------
+Mon Apr 11 18:48:04 CEST 2005 - sbrabec@suse.cz
+
+- Fixed invalid casts.
+
+-------------------------------------------------------------------
+Mon Mar 21 17:29:00 CET 2005 - sbrabec@suse.cz
+
+- Bi-arch fix (#66780).
+- Require skencil needed for PS/EPS input (#66780).
+
+-------------------------------------------------------------------
+Mon Feb 28 17:34:41 CET 2005 - sbrabec@suse.cz
+
+- Added needed Requires and triggers for optional extensions
+  (#66780).
+- Turned on perl, python and gnome-print support.
+
+-------------------------------------------------------------------
+Mon Feb 21 17:04:21 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.41.
+- Worked around problems with boehm-gc detection.
+
+-------------------------------------------------------------------
+Fri Feb 11 12:38:36 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.40.
+
+-------------------------------------------------------------------
+Fri Feb 11 01:55:21 CET 2005 - ro@suse.de
+
+- change to libsigc++12 in neededforbuild 
+
+-------------------------------------------------------------------
+Tue Nov  2 21:24:58 CET 2004 - mmj@suse.de
+
+- Locale rename: no -> nb
+
+-------------------------------------------------------------------
+Thu Aug 12 13:27:48 CEST 2004 - hhetter@suse.de
+
+- Obsolete and Provide sodipodi 
+
+-------------------------------------------------------------------
+Mon Aug  2 13:49:10 CEST 2004 - hhetter@suse.de
+
+- initial SuSE package 
+

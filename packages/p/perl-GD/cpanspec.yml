@@ -1,0 +1,26 @@
+---
+description_paragraphs: 1
+no_testing: see https://rt.cpan.org/Public/Bug/Display.html?id=85789
+#sources:
+#  - source1
+#  - source2
+patches:
+  GD-cflags.patch: -p1
+preamble: |-
+ BuildRequires:  freetype2-devel
+ BuildRequires:  gd-devel >= 2.0.28
+ BuildRequires:  libjpeg-devel
+ BuildRequires:  libpng-devel
+ BuildRequires:  libtiff-devel
+ BuildRequires:  libvpx-devel
+ BuildRequires:  xorg-x11-devel
+ Requires: gd
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_install: |-
+# mv %{buildroot}%{_bindir}/bdftogd{,.perl-gd}
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: -
+#./Build build flags=%{?_smp_mflags} --myflag

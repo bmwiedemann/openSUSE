@@ -1,0 +1,50 @@
+From 937561ef8c09e3281caba3c859e80ce2fcf23ce4 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 14 Sep 2015 18:53:34 +0200
+Subject: [PATCH] client: fail on script pre-init error (bsc#912098)
+References: bsc#912098
+
+diff --git a/client/dhclient.c b/client/dhclient.c
+index b438629..82d6ed5 100644
+--- a/client/dhclient.c
++++ b/client/dhclient.c
+@@ -632,7 +632,8 @@ main(int argc, char **argv) {
+ 		 * in case somebody cares.
+ 		 */
+ 		script_init(NULL, "NBI", NULL);
+-		script_go(NULL);
++		if (script_go(NULL))
++			log_fatal("dhclient-script was unable to pre-init");
+ 
+ 		/*
+ 		 * If we haven't been asked to persist, waiting for new
+@@ -644,6 +645,8 @@ main(int argc, char **argv) {
+ 			exit(0);
+ 		}
+ 	} else if (!release_mode && !exit_mode) {
++		unsigned int failed = 0;
++
+ 		/* Call the script with the list of interfaces. */
+ 		for (ip = interfaces; ip; ip = ip->next) {
+ 			/*
+@@ -665,7 +668,16 @@ main(int argc, char **argv) {
+ 							    "alias_",
+ 							    ip->client->alias);
+ 			}
+-			script_go(ip->client);
++			if (script_go(ip->client)) {
++				log_info("%s: unable to pre-init requested interface %s",
++						path_dhclient_script, ip->name);
++				ip->flags &= ~(INTERFACE_REQUESTED|INTERFACE_AUTOMATIC);
++				failed++;
++			}
++		}
++		if (failed) {
++			log_fatal("%s: unable to pre-init requested interfaces -- see log messages",
++					path_dhclient_script);
+ 		}
+ 	}
+ 
+-- 
+2.1.4
+

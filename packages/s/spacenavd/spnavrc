@@ -1,0 +1,24 @@
+#
+# dead zone.
+# Sensor values below this do not generate events
+#
+dead-zone = 2
+
+#
+# sensitivity
+# Factor multiplied to senosr values
+#
+sensitivity = 1.0
+
+#
+# invert-rot/invert-trans
+# Axes enumerated here (x, y and/or z) will be inverted
+#
+invert-rot = 
+invert-trans =
+
+#
+# led
+# Specifies if the blue led should be on or of, when spacenavd is running
+#
+led = on

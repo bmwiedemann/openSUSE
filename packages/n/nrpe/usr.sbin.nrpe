@@ -1,0 +1,40 @@
+# Last Modified: Mon Oct 26 16:37:33 2009
+#include <tunables/global>
+/usr/sbin/nrpe {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/bash>
+  #include <abstractions/consoles>
+
+  capability setgid,
+  capability setuid,
+  capability sys_admin,
+  capability dac_override,
+
+  /etc/nrpe.cfg r,
+  /etc/nrpe.d/ r,
+  /etc/nrpe.d/** r,
+  /usr/sbin/nrpe mr,
+
+  /usr/lib/nagios/plugins/check_disk           px,
+  /usr/lib/nagios/plugins/check_load           px,
+  /usr/lib/nagios/plugins/check_md_raid        px,
+  /usr/lib/nagios/plugins/check_memusage_py.pl px,
+  /usr/lib/nagios/plugins/check_procs          px,
+  /usr/lib/nagios/plugins/check_updates        px,
+  /usr/lib/nagios/plugins/check_mem.pl         px,
+  /usr/lib/nagios/plugins/check_zypper         px,
+  /usr/lib/nagios/plugins/yum_check_updates    px,
+  /usr/lib/nagios/plugins/check_ntp_time       px,
+  /usr/lib/nagios/plugins/check_swap           px,
+  /usr/lib/nagios/plugins/check_users          px,
+  /usr/lib/nagios/plugins/check_iostat         px,
+  /usr/lib/nagios/plugins/check_mem            px,
+  /usr/lib/nagios/plugins/check_contentage     px,
+  /usr/lib/nagios/plugins/** ux,
+  /bin/bash rix,
+  /var/run/nrpe/nrpe.pid rw,
+  /proc/sys/crypto/fips_enabled r,
+  /etc/hosts.allow r,
+  /etc/hosts.deny r,
+}

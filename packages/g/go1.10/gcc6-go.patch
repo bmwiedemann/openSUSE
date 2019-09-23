@@ -1,0 +1,70 @@
+Index: go/src/cmd/dist/buildtool.go
+===================================================================
+--- go.orig/src/cmd/dist/buildtool.go
++++ go/src/cmd/dist/buildtool.go
+@@ -183,7 +183,7 @@ func bootstrapBuildTools() {
+ 	// only applies to the final cmd/go binary, but that's OK: if this is Go 1.10
+ 	// or later we don't need to disable inlining to work around bugs in the Go 1.4 compiler.
+ 	cmd := []string{
+-		pathf("%s/bin/go", goroot_bootstrap),
++		pathf("%s/bin/go-6", goroot_bootstrap),
+ 		"install",
+ 		"-gcflags=-l",
+ 		"-tags=math_big_pure_go compiler_bootstrap",
+Index: go/src/make.bash
+===================================================================
+--- go.orig/src/make.bash
++++ go/src/make.bash
+@@ -41,7 +41,7 @@
+ # This is used by cgo.  Default is CC.
+ #
+ # CXX_FOR_TARGET: Command line to run to compile C++ code for GOARCH.
+-# This is used by cgo. Default is CXX, or, if that is not set, 
++# This is used by cgo. Default is CXX, or, if that is not set,
+ # "g++" or "clang++".
+ #
+ # FC: Command line to run to compile Fortran code for GOARCH.
+@@ -151,8 +151,8 @@ echo "Building Go cmd/dist using $GOROOT
+ if $verbose; then
+ 	echo cmd/dist
+ fi
+-if [ ! -x "$GOROOT_BOOTSTRAP/bin/go" ]; then
+-	echo "ERROR: Cannot find $GOROOT_BOOTSTRAP/bin/go." >&2
++if [ ! -x "$GOROOT_BOOTSTRAP/bin/go-6" ]; then
++	echo "ERROR: Cannot find $GOROOT_BOOTSTRAP/bin/go-6." >&2
+ 	echo "Set \$GOROOT_BOOTSTRAP to a working Go tree >= Go 1.4." >&2
+ 	exit 1
+ fi
+@@ -162,7 +162,7 @@ if [ "$GOROOT_BOOTSTRAP" = "$GOROOT" ];
+ 	exit 1
+ fi
+ rm -f cmd/dist/dist
+-GOROOT="$GOROOT_BOOTSTRAP" GOOS="" GOARCH="" "$GOROOT_BOOTSTRAP/bin/go" build -o cmd/dist/dist ./cmd/dist
++GOROOT="$GOROOT_BOOTSTRAP" GOOS="" GOARCH="" "$GOROOT_BOOTSTRAP/bin/go-6" build -o cmd/dist/dist ./cmd/dist
+ 
+ # -e doesn't propagate out of eval, so check success by hand.
+ eval $(./cmd/dist/dist env -p || echo FAIL=true)
+Index: go/src/make.rc
+===================================================================
+--- go.orig/src/make.rc
++++ go/src/make.rc
+@@ -61,8 +61,8 @@ for(p in $path){
+ 		}
+ 	}
+ }
+-if(! test -x $GOROOT_BOOTSTRAP/bin/go){
+-	echo 'ERROR: Cannot find '$GOROOT_BOOTSTRAP'/bin/go.' >[1=2]
++if(! test -x $GOROOT_BOOTSTRAP/bin/go-6){
++	echo 'ERROR: Cannot find '$GOROOT_BOOTSTRAP'/bin/go-6.' >[1=2]
+ 	echo 'Set $GOROOT_BOOTSTRAP to a working Go tree >= Go 1.4.' >[1=2]
+ 	exit bootstrap
+ }
+@@ -75,7 +75,7 @@ if(~ $GOROOT_BOOTSTRAP $GOROOT){
+ echo 'Building Go cmd/dist using '^$GOROOT_BOOTSTRAP
+ if(~ $#vflag 1)
+ 	echo cmd/dist
+-GOROOT=$GOROOT_BOOTSTRAP GOOS='' GOARCH='' $GOROOT_BOOTSTRAP/bin/go build -o cmd/dist/dist ./cmd/dist
++GOROOT=$GOROOT_BOOTSTRAP GOOS='' GOARCH='' $GOROOT_BOOTSTRAP/bin/go-6 build -o cmd/dist/dist ./cmd/dist
+ 
+ eval `{./cmd/dist/dist env -9}
+ if(~ $#vflag 1)

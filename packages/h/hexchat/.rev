@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a0fd22d5f3ef1588231e84a6fdcfabe</srcmd5>
+    <version>2.9.5</version>
+    <time>1367904184</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>174479</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f6921dd2daabeb14dda478f66db71b16</srcmd5>
+    <version>2.9.5</version>
+    <time>1377248695</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>196037</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>31a8b921a8f5ce1f96c3eb4918afa814</srcmd5>
+    <version>2.9.5</version>
+    <time>1378549903</time>
+    <user>scarabeus_factory</user>
+    <comment>-&gt;</comment>
+    <requestid>197520</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>31a8b921a8f5ce1f96c3eb4918afa814</srcmd5>
+    <version>2.9.5</version>
+    <time>1379662611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f6fa5f4bf8955d1c066427dfc3997f6</srcmd5>
+    <version>2.9.6.1</version>
+    <time>1380556499</time>
+    <user>scarabeus_factory</user>
+    <comment>Bump to latest release and thus fix build failure on 13.1 and Factory. (forwarded request 201426 from scarabeus_iv)</comment>
+    <requestid>201453</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1578ee54690000be8f84defe714f2216</srcmd5>
+    <version>2.9.6.1</version>
+    <time>1380696544</time>
+    <user>coolo</user>
+    <comment>- Do not put date into binary to avoid needless rebuilds.
+
+- Add missing defattr on the devel package.
+
+- Add more deps
+- Adjust configure a bit
+- Utilize devel package as we have .h and .pc files. (forwarded request 201527 from scarabeus_iv)</comment>
+    <requestid>201534</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5a2445fbb23b4abe356baa3b1004aae6</srcmd5>
+    <version>2.9.6.1</version>
+    <time>1401644441</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235679</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>302a7b6427ada5e11dcf290191733d4b</srcmd5>
+    <version>2.10.0</version>
+    <time>1402946805</time>
+    <user>coolo</user>
+    <comment>- Version bump to 2.10.0:
+  * fix SASL on InspIRCd networks
+  * fix building on OpenBSD
+  * fix crash when using invalid timestamps on Windows
+  * fix Lag Meter reporting invalid numbers
+  * fix drag and drop on User List/Channel Switcher
+  * fix various Unicode issues on Windows
+  * add fullscreen display mode
+  * add /getbool command
+  * add support for userhost-in-names capability
+  * add –command command line flag on Windows
+  * add message parameter to /query
+  * add help messages to user commands
+  * add plugin_pref to Perl
+  * add regex search to the Channel List on Windows
+  * add option to hide nick change messages
+  * redesign various settings windows (notably key bindings)
+  * render colors and attributes in the Input Box and Topic Bar
+  * bind middle-click to close tabs
+  * build the GTK+ PixBuf theme engine on Windows
+  * change /list to open the Channel List window
+  * change the format key bindings are stored in (will convert automatically)
+  * enable italics
+  * rewrite /dns adding support for Windows and replacing the plugin
+  * rebrand the Perl plugin
+  * replace the Search window with a Search Bar
+  * replace Text Box transparency with full window transparency (may come back)
+  * remove all deprecated GTK+ usage
+  * remove all direct use of X11, fixing XWayland support
+  * hide unsupported channel modes from the Topic Bar</comment>
+    <requestid>237244</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>58841fca9bd07b898c3565e32c3e1922</srcmd5>
+    <version>2.10.0</version>
+    <time>1406479642</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242460</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>58841fca9bd07b898c3565e32c3e1922</srcmd5>
+    <version>2.10.0</version>
+    <time>1409301162</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c4bcf63f3eeae2e3fe75a49f3aef7836</srcmd5>
+    <version>2.10.0</version>
+    <time>1409761375</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247113</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>35dc33e4051e582327d16f4bea7a7664</srcmd5>
+    <version>2.10.1</version>
+    <time>1411370640</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250359</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>265c5d4788b3e8984552a83bd935e8a5</srcmd5>
+    <version>2.10.2</version>
+    <time>1421333953</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 2.10.2:
+  * verify hostnames of certificates
+  * use more secure openssl options (No SSLv2/3)
+  * detect utf8 urls in chat
+  * fix using multiple client certs at the same time
+  * fix checking for Perl on some distros
+  * fix friends list not properly updating
+  * fix building with format-security
+  * fix more non-ascii path issues on Windows
+  * fix opening utf8 urls on Windows and OSX
+  * update deps on Windows
+  * update translations
+- Remove the asneeded.diff as it seems not to be needed, builds without
+  and perl is linked well.</comment>
+    <requestid>281383</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cf40d7f60712f2cfa0bcf6827dfd7638</srcmd5>
+    <version>2.10.2</version>
+    <time>1456434529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361187</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>43901aba1592009eb776d4097f7d4d88</srcmd5>
+    <version>2.12.0</version>
+    <time>1459002474</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378885</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>397a17f589c0046fba5b8d6b0162cc22</srcmd5>
+    <version>2.12.0</version>
+    <time>1459936376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385122</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>95a1db30a27deb02f50b66304028f708</srcmd5>
+    <version>2.12.0</version>
+    <time>1461855291</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390622</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>86a8129630a38de5d1c1a8fc35618f0b</srcmd5>
+    <version>2.12.0</version>
+    <time>1462697148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393986</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>35dc4587b97f71032b0ac1f5156f8748</srcmd5>
+    <version>2.12.0</version>
+    <time>1469831316</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415646</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>fce2983a7126fb04107ef9cd2c12aa1e</srcmd5>
+    <version>2.12.0</version>
+    <time>1473349149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425179</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b1422997e4c588767bf6288e421c7003</srcmd5>
+    <version>2.12.3</version>
+    <time>1477990767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438069</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ecf21410f4e58a773899ddf692ab3482</srcmd5>
+    <version>2.12.3</version>
+    <time>1479299573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440416</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>7733a2f1df3d4015d22c438547b482e1</srcmd5>
+    <version>2.12.3</version>
+    <time>1492714632</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>488100</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ce5c9fdd02653e1cb2ec9e918ab34b41</srcmd5>
+    <version>2.12.4</version>
+    <time>1502366554</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>507924</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>15232346cdfbaa429e4e7dc6482a7209</srcmd5>
+    <version>2.14.1</version>
+    <time>1522062135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590070</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4bf11baf98f82869463a2cc8b86c082e</srcmd5>
+    <version>2.14.2</version>
+    <time>1535963760</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.2
+  * remove shift+click binding to close tabs
+  * re-add option to build against legacy perl
+  * add appstream metainfo for plugins
+  * add build option to set perl binary
+  * add option to build without appstream
+  * fix not unminimizing when restoring from tray
+  * fix translations containing invalid text events
+  * fix server passwords starting with :
+  * update libraries on windows, fixing CVE-2018-15120 (and emoji!)
+</comment>
+    <requestid>632627</requestid>
+  </revision>
+</revisionlist>

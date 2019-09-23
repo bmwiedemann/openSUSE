@@ -1,0 +1,10 @@
+<package name="zisofs-tools" project="openSUSE:Factory">
+  <title>User tools for zisofs</title>
+  <description>Zisofs-tools, in conjunction with a zisofs-enabled system, allows the
+creation of an iso9660 filesystem that can be decompressed &quot;live&quot; on a
+file-by-file basis, while still being readable by systems without
+zisofs support. This package contains the tools necessary to create
+such a filesystem and read compressed files on a system without zisofs
+support.</description>
+  <devel project="Base:System" package="zisofs-tools"/>
+</package>

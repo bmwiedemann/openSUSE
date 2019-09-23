@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Tue Sep  5 18:57:47 UTC 2017 - benoit.monin@gmx.fr
+
+- update BuildRequires list to fix build failure:
+  * remove libpng12-devel
+  * add fontconfig-devel, libX11-devel and libXpm-devel 
+
+-------------------------------------------------------------------
+Sat Mar 11 20:37:25 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Thu Dec 31 14:26:13 UTC 2015 - mardnh@gmx.de
+
+- specfile overhaul
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 13 00:00:00 CEST 2011 - dok@dok-net.net
+
+- Updated to 0.20
+
+-------------------------------------------------------------------
+Wed Oct 29 00:00:00 CET 2008 - mvidner@suse.cz
+
+- Updated to 0.13:
+  New features: improved label quoting.
+-------------------------------------------------------------------
+Tue Jun  3 00:00:00 CEST 2008 - mvidner@suse.cz
+
+- Updated to 0.12:
+  New features: arctextcolour, arclinecolour, textcolour,
+  linecolour (#rrggbb values, or the 16 HTML names), double lined
+  arcs, width, arcgradient.
+- Added check section
+-------------------------------------------------------------------
+Tue May 13 00:00:00 CEST 2008 - mvidner@suse.cz
+
+- Initial packaging
+

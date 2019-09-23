@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Sep 26 09:13:16 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not depend on pep8 linter, also reported upstream
+  to fix properly:
+  * shortuuid-no-pep8.patch
+
+-------------------------------------------------------------------
+Sat Apr 28 13:50:31 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

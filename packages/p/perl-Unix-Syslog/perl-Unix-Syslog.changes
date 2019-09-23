@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Fri Nov 18 11:08:31 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:57 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Apr 16 14:50:45 UTC 2010 - chris@computersalat.de
+
+- update to 1.1
+  - Clearly marked MSWin32 systems as unsupported. (How do
+    64bit Windows system identify themselves?)
+  - Fixed bug that caused Perl to segfault when closelog() was
+    called before openlog().
+- 1.0   Tue Oct 2 22:22:43 2007
+  - Bumped version number to 1.0.
+  - License has changed to Artistic 2.0!
+  - (Syslog.pm) Get rid of `require AutoLoader', which was wrong
+    to begin with.
+- cleanup spec
+  o recreated with cpanspec
+  o fixed deps
+    * removed perl-Convert-BER perl-URI
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 23:30:26 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Fri Feb 27 15:45:20 CET 2004 - ug@suse.de
+
+- version update from 0.98 to 0.100
+- Added functions priorityname() and facilityname()
+- Updated docs
+
+-------------------------------------------------------------------
+Fri Aug 22 15:59:05 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 22 14:06:43 CEST 2003 - mls@suse.de
+
+- adapt to perl-5.8.1
+
+-------------------------------------------------------------------
+Tue Jun 17 13:16:21 CEST 2003 - ug@suse.de
+
+- added missing directory to files-section
+
+-------------------------------------------------------------------
+Mon Aug  5 12:36:21 MEST 2002 - link@suse.de
+
+- renamed from perl-Syslog to perl-Unix-Syslog
+- updated to 0.98 
+- overhauled spec file
+
+-------------------------------------------------------------------
+Mon Jul 29 12:36:34 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Sun Jan 13 02:56:54 MET 2002 - link@suse.de
+
+- update to v0.97 
+
+-------------------------------------------------------------------
+Thu Nov 16 00:34:53 CET 2000 - ro@suse.de
+
+- use BuildRoot
+- fix neededforbuild 
+
+-------------------------------------------------------------------
+Thu Nov 16 00:17:13 CET 2000 - ro@suse.de
+
+- renamed package perl_log to perl-Syslog
+
+-------------------------------------------------------------------
+Wed May 24 12:06:41 MEST 2000 - ug@suse.de
+
+- added to distribution 
+

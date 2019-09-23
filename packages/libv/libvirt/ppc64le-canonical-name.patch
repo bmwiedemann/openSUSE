@@ -1,0 +1,17 @@
+Canonicalize hostarch name ppc64le to ppc64
+
+See bnc#894956
+
+Index: libvirt-5.7.0/src/util/virarch.c
+===================================================================
+--- libvirt-5.7.0.orig/src/util/virarch.c
++++ libvirt-5.7.0/src/util/virarch.c
+@@ -172,6 +172,8 @@ virArch virArchFromHost(void)
+         arch = VIR_ARCH_I686;
+     } else if (STREQ(ut.machine, "amd64")) {
+         arch = VIR_ARCH_X86_64;
++    } else if (STREQ(ut.machine, "ppc64le")) {
++        arch = VIR_ARCH_PPC64;
+     } else {
+         /* Otherwise assume the canonical name */
+         if ((arch = virArchFromString(ut.machine)) == VIR_ARCH_NONE) {

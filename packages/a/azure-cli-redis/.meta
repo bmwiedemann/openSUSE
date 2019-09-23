@@ -1,0 +1,11 @@
+<package name="azure-cli-redis" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'redis' Command Module</title>
+  <description>Microsoft Azure CLI 'redis' Command Module
+
+This package is for the 'redis' module.
+i.e. 'az redis'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-redis"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

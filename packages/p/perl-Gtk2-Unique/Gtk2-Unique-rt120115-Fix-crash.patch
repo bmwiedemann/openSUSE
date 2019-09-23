@@ -1,0 +1,14 @@
+diff --git a/xs/UniqueApp.xs b/xs/UniqueApp.xs
+index daba209d123d89b1c59a2c84e2ae254aaf895538..cd38bbc3a2e3830927bd74ab52fb2dbb9c7e1a4c 100644
+--- a/xs/UniqueApp.xs
++++ b/xs/UniqueApp.xs
+@@ -1,6 +1,8 @@
+ #include "unique-perl.h"
+ #include <gperl_marshal.h>
+ 
++G_CONST_RETURN gchar * unique_command_to_string (UniqueApp *app, gint command);
++
+ static void
+ perl_unique_app_marshall_message_received (
+ 	GClosure *closure,
+

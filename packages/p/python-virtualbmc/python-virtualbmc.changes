@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Sep 19 19:58:39 UTC 2018 - gyee@suse.com
+
+- update to version 1.4.0:
+  * Changes the design of the VirtualBMC tool. Instead of forking the vbmc
+    command-line tool to become a daemon and serve a single libvirt domain,
+    the vbmcd master process and vbmc command-line client have been introduced.
+    These client-server tools communicate over the ZeroMQ queue. The vbmcd
+    process is responsible for herding its children, each child still serves
+    a single libvirt domain.
+  * The vbmc start command now supports multiple domains.
+ 
+-------------------------------------------------------------------
+Thu Apr 26 12:53:20 UTC 2018 - jengelh@inai.de
+
+- Fixup summary to be in noun phrase.
+
+-------------------------------------------------------------------
+Tue Apr 24 13:23:15 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 1.3.0)

@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90a8640a43fc0b7e6418e25988307024</srcmd5>
+    <version>1.13.0</version>
+    <time>1475242171</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425274</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c059c44ea81acbaf54817d17babbef0d</srcmd5>
+    <version>1.13.0</version>
+    <time>1480786057</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Deal-with-CONF.config_dir-correctly.patch
+
+- switch to stable/newton tarball in _service</comment>
+    <requestid>443168</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6339403446459d9075ef9d9aa1c6cb16</srcmd5>
+    <version>1.13.1</version>
+    <time>1486773603</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.13.1:
+  * Update .gitreview for stable/newton
+  * [Backport] Ignore timeout error when receiving message</comment>
+    <requestid>447506</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac104ed5a194aa73d334aabdbcaeec8a</srcmd5>
+    <version>1.16.0</version>
+    <time>1487680994</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.16.0:
+  - Don't use deprecated method logger.warn
+  - Update reno for stable/newton
+  - modify the home-page info with the developer documentation
+  - Updated from global requirements
+  - Add Constraints support
+  - Ignore timeout error when receiving message from sockect
+  - Show team and repo badges on README
+  - Report underlying integer for unknown capabilities
+  - Imported Translations from Zanata
+  - Enable release notes translation
+  - Add Python 3.5 classifier and venv
+  - Deal with CONF.config_dir correctly
+- Remove 0001-Deal-with-CONF.config_dir-correctly.patch . Applied upstream.</comment>
+    <requestid>456732</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e7943dd68887c41ffa390a773598a2c</srcmd5>
+    <version>1.22.0</version>
+    <time>1503927088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.22.0
+  - Preserve all LogRecord fields from privileged side
+  - Remove log translations
+  - Update URLs in documents according to document migration
+  - Use iterable object for 'args' in log record
+  - rearrange existing documentation to follow the new standard layout
+  - add sphinx instructions to build API reference docs
+  - [Fix gate]Update test requirement
+  - Enable some off-by-default checks
+  - Remove references to Python 3.4
+  - switch from oslosphinx to openstackdocstheme
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - Add test to verify log record can be formatted
+  - Using assertIsNone(xxx) instead of assertEqual(None, xxx)</comment>
+    <requestid>514995</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0013d1843c3157b231e19057cdba759d</srcmd5>
+    <version>1.26.0</version>
+    <time>1516804072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.26.0
+  - Remove -U from pip install
+  - Expose caps values/names as int enum
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - add bandit to pep8 job
+  - Updated from global requirements
+  - Update capabilities from current kernel source</comment>
+    <requestid>567277</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7177a1f649bbe3585a32c2fcc8d19b67</srcmd5>
+    <version>1.27.0</version>
+    <time>1521498974</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template
+
+- update to version 1.27.0 (bsc#1078607)
+  - Update .gitreview for stable/queens
+  - msgpack-python has been renamed to msgpack
+
+- update to version 1.26.0 (bsc#1078607)</comment>
+    <requestid>583345</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c83ccf7c8c7dd28cd0f2cb166224a355</srcmd5>
+    <version>1.29.0</version>
+    <time>1536327542</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633105</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f956f03309d8cd945e575e36a3c8dd7</srcmd5>
+    <version>1.29.2</version>
+    <time>1553084302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.29.2
+  - Update UPPER_CONSTRAINTS_FILE for stable/rocky
+  - Switch to stestr
+  - Avoids calling ffi.dlopen(None) on Windows
+  - Update .gitreview for stable/rocky
+  - import zuul job settings from project-config</comment>
+    <requestid>682297</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9e5d1355e82156e0e2cf0887c03fdef</srcmd5>
+    <version>1.32.1</version>
+    <time>1556916154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.32.1
+  - Remove PyPI downloads
+  - Switch to stestr
+  - Update mailinglist from dev to discuss
+  - Use template for lower-constraints
+  - import zuul job settings from project-config
+  - Add that 'Release Notes' in README
+  - Add futures as a requirement for Python 2
+  - Added example blogposts
+  - Update reno for stable/rocky
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - add lib-forward-testing-python3 test job
+  - Expose privsep options for config-generator
+  - Set unicode_errors handler to 'surrogateescape' in msgpack
+  - Trivial: Update pypi url to new url
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Avoids calling ffi.dlopen(None) on Windows
+  - fix tox python3 overrides
+  - Update hacking version
+  - Clean up .gitignore references to personal tools
+  - Use threads to process target function
+  - add python 3.7 unit test job</comment>
+    <requestid>692862</requestid>
+  </revision>
+</revisionlist>

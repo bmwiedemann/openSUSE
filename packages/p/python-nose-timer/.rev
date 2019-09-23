@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75863655e84b12d81c88cda40bc6a47f</srcmd5>
+    <version>0.7.2</version>
+    <time>1527605507</time>
+    <user>dimstar_suse</user>
+    <comment>A timer plugin for nosetests</comment>
+    <requestid>612559</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1d392d6d2a40a1a9af66748aecf3f8c</srcmd5>
+    <version>0.7.2</version>
+    <time>1545648016</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659513</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>751f17ecd38561b78f4809284acdaa13</srcmd5>
+    <version>0.7.5</version>
+    <time>1560536672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707613</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Sat Mar 28 22:38:24 UTC 2015 - mpluskal@suse.com
+
+- Update project url
+- Use url for source
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:51 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 29 13:42:31 UTC 2012 - pgajdos@suse.com
+
+- SUSE-Bitstream-Vera license
+
+-------------------------------------------------------------------
+Wed Dec 21 14:38:27 UTC 2011 - toms@suse.de
+
+- Renamed bitstream-vera -> bitstream-vera-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+
+-------------------------------------------------------------------
+Sat Sep 17 19:53:05 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Aug  9 10:37:34 CEST 2006 - dmueller@suse.de
+
+- install into /usr/share/fonts/truetype
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:52 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 17:20:19 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Thu Aug 12 17:58:13 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #39451: run SuSEconfig.fonts only if it exists.
+
+-------------------------------------------------------------------
+Fri Mar 19 19:54:54 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Mon Feb 23 16:13:44 CET 2004 - hmacht@suse.de
+
+- building as non-root (# norootforbuild)
+
+-------------------------------------------------------------------
+Mon Jun 16 08:21:34 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Thu Apr 17 13:04:47 CEST 2003 - adrian@suse.de
+
+- update to final released fonts version 1.10
+
+-------------------------------------------------------------------
+Wed Feb 19 16:52:28 CET 2003 - adrian@suse.de
+
+- initial package of Bitstream Vera fonts 1.0
+

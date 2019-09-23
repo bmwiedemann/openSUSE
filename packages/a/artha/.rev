@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb4fa295be4f53add6f6bd009cfb8bf0</srcmd5>
+    <version>1.0.2</version>
+    <time>1313067375</time>
+    <user>saschpe</user>
+    <comment>New package: artha - free cross-platform English thesaurus that works completely off-line</comment>
+    <requestid>78167</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>519049c703ea8f865e1423fca3a667ac</srcmd5>
+    <version>1.0.2</version>
+    <time>1313067388</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78167
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>519049c703ea8f865e1423fca3a667ac</srcmd5>
+    <version>1.0.2</version>
+    <time>1319181775</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e424e61649e1d0710805aea5c6873da8</srcmd5>
+    <version>1.0.2</version>
+    <time>1329750403</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104297 from coolo)</comment>
+    <requestid>105310</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e424e61649e1d0710805aea5c6873da8</srcmd5>
+    <version>1.0.2</version>
+    <time>1340183181</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>e424e61649e1d0710805aea5c6873da8</srcmd5>
+    <version>1.0.2</version>
+    <time>1359108667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d5ae8f9a20348ad02f732802787c45e7</srcmd5>
+    <version>1.0.3</version>
+    <time>1359997001</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.3; add patches to fix builds (forwarded request 150633 from badshah400)</comment>
+    <requestid>150796</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d5ae8f9a20348ad02f732802787c45e7</srcmd5>
+    <version>1.0.3</version>
+    <time>1379661990</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d5ae8f9a20348ad02f732802787c45e7</srcmd5>
+    <version>1.0.3</version>
+    <time>1409300515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>ac5fdd5a89d8470bbe8b91f2963fa54c</srcmd5>
+    <version>1.0.3</version>
+    <time>1524838065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600617</requestid>
+  </revision>
+</revisionlist>

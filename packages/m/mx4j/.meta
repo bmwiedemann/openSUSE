@@ -1,0 +1,6 @@
+<package name="mx4j" project="openSUSE:Factory">
+  <title>Open Source Implementation of JMX Java API</title>
+  <description>OpenJMX is an open source implementation of the Java(TM) Management
+Extensions (JMX).</description>
+  <devel project="Java:packages" package="mx4j"/>
+</package>

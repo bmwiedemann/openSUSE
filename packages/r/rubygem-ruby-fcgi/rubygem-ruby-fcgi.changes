@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Feb 13 09:40:01 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Tue Jun  5 07:47:16 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  See data/LICENSE
+
+-------------------------------------------------------------------
+Fri Jul  8 13:45:09 UTC 2011 - mrueckert@suse.com
+
+- update to 0.8.9 and switch to gem based packaging
+  - ruby 1.9 support
+
+-------------------------------------------------------------------
+Sat Sep 30 22:46:21 CEST 2006 - mrueckert@suse.de
+
+- install into vendor_ruby
+
+-------------------------------------------------------------------
+Sat Jul  1 03:58:37 CEST 2006 - mrueckert@suse.de
+
+- update to version 0.8.7:
+  * patch from http://www.kbmj.com/tech/index.php?itemid=26
+  * patch from http://sean.treadway.info/articles/2005/12/24/open-season-for-eagain
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep  1 20:17:07 CEST 2005 - mrueckert@suse.de
+
+- Dont build into site_ruby
+- removed %dir entries for site_ruby dir
+
+-------------------------------------------------------------------
+Mon Aug 22 01:27:38 CEST 2005 - ro@suse.de
+
+- added directories to filelist 
+
+-------------------------------------------------------------------
+Mon Aug 22 00:33:26 CEST 2005 - ro@suse.de
+
+- added ruby-devel to nfb 
+
+-------------------------------------------------------------------
+Mon Aug 15 18:04:50 CEST 2005 - mrueckert@suse.de
+
+- Initial package with v 0.8.6
+

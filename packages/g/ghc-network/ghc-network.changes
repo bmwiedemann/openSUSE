@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Tue Apr 30 09:23:15 UTC 2019 - psimons@suse.com
+
+- Update network to version 2.8.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/network-2.8.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Nov 19 16:02:57 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.8.0.0.
+  ## Version 2.8.0.0
+
+  * Breaking change: PortNumber originally contained Word32 in network
+    byte order and used "deriving Ord". This results in strange behavior
+    on the Ord instance. Now PortNumber holds Word32 in host byte order.
+    [#347](https://github.com/haskell/network/pull/347)
+  * Breaking change: stopping the export of the PortNum constructor in
+    PortNumber.
+  * Use bytestring == 0.10.* only.
+  * Use base >= 4.7 && < 5.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:42:52 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.7.0.2.
+  * Removing withMVar to avoid the deadlock between "accept" and "close"
+     [#330](https://github.com/haskell/network/pull/330)
+  * "close" does not throw exceptions. A new API: "close'" throws
+     exceptions when necessary.
+     [#337](https://github.com/haskell/network/pull/337)
+  * Fixing the hang of lazy sendAll.
+     [#340](https://github.com/haskell/network/pull/340)
+  * Installing NetDef.h (#334)
+     [#334](https://github.com/haskell/network/pull/334)
+   * A new API: socketPortSafe.
+     [#319](https://github.com/haskell/network/pull/319)
+   * Fixing a drain bug of sendAll.
+     [#320](https://github.com/haskell/network/pull/320)
+   * Porting the new CALLCONV convention from master.
+     [#313](https://github.com/haskell/network/pull/313)
+   * Withdrawing the deprecations of packFamily and unpackFamily.
+     [#324](https://github.com/haskell/network/pull/324)
+   * Obsoleting the Network module.
+   * Obsoleting the Network.BSD module.
+   * Obsoleting APIs: MkSocket, htonl, ntohl,
+		getPeerCred, getPeerEid,
+		send, sendTo, recv, recvFrom, recvLen,
+		inet_addr, inet_ntoa,
+		isConnected, isBound, isListening, isReadable, isWritable,
+		aNY_PORT, iNADDR_ANY, iN6ADDR_ANY, sOMAXCONN,
+		sOL_SOCKET, sCM_RIGHTS,
+		packFamily, unpackFamily, packSocketType
+   * Do not closeFd within sendFd.
+     [#271](https://github.com/haskell/network/pull/271)
+   * Exporting ifNameToIndex and ifIndexToName from Network.Socket.
+   * New APIs: setCloseOnExecIfNeeded, getCloseOnExec and getNonBlock
+   * New APIs: isUnixDomainSocketAvailable and getPeerCredential
+   * socketPair, sendFd and recvFd are exported even on Windows.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:33 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:28 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.6.3.6.
+  ## Version 2.6.3.6
+   * Removed unnecessary withMVar, which caused locking on close.
+     [#330](https://github.com/haskell/network/pull/330)
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.6.3.5.
+ * Reverting "Do not closeFd within sendFd"
+   [#271](https://github.com/haskell/network/pull/271)
+ * Don't touch IPv6Only when running on OpenBSD
+   [#227](https://github.com/haskell/network/pull/227)
+ * Do not closeFd within sendFd
+   [#271](https://github.com/haskell/network/pull/271)
+ * Updating examples and docs.
+ * Adds a function to show the defaultHints without reading their undefined fields
+   [#291](https://github.com/haskell/network/pull/291)
+ * Improve exception error messages for getAddrInfo and getNameInfo
+   [#289](https://github.com/haskell/network/pull/289)
+ * Deprecating SockAddrCan.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Jun  8 11:08:22 UTC 2017 - psimons@suse.com
+
+- Update to version 2.6.3.2 revision 1.
+
+-------------------------------------------------------------------
+Wed Aug 17 18:31:55 UTC 2016 - psimons@suse.com
+
+- Update to version 2.6.3.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:30:20 UTC 2016 - psimons@suse.com
+
+- Update to version 2.6.2.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jul 13 05:45:23 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.2.1
+* Regenerate configure and HsNetworkConfig.h.in.
+* Better detection of CAN sockets.
+* Add support for TCP_USER_TIMEOUT.
+* Don't conditionally export the SockAddr constructors.
+* Add isSupportSockAddr to allow checking for supported
+   address types at runtime.
+
+-------------------------------------------------------------------
+Sun May 31 20:06:52 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.2.0
+* no upstream changelog
+
+-------------------------------------------------------------------
+Sun May 10 18:20:22 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.1.0
+* no upstream changelog
+
+-------------------------------------------------------------------
+Fri Apr 10 15:43:13 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.0.2
+* split to network and network-uri packages
+
+-------------------------------------------------------------------
+Fri Sep 12 06:31:03 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.2.3
+* no changelog
+* Haskell Platform 2014.2.0.0
+
+-------------------------------------------------------------------
+Tue Sep  2 09:37:14 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- regenerate spec file
+
+-------------------------------------------------------------------
+Sat Aug 23 00:15:19 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Mon May  6 17:41:10 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.1.2 from upstream
+* no changelog
+* see https://github.com/haskell/network for commit messages
+- update needed for Haskell Platform 2013.2
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Mon Jan  7 15:22:09 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- expand macro in name tag to help source validator
+
+-------------------------------------------------------------------
+Sat Nov 17 14:30:41 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Wed Oct  3 06:47:57 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- downgrade to 2.3.1.0 for Haskell Platform 2012.4.0.0
+* cabal-install requires < 2.4
+
+-------------------------------------------------------------------
+Mon Oct  1 19:46:56 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.0.1 from upstream
+- required by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Sun Jun  3 17:13:04 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 2.3.0.13 from upstream
+* Add Num constraint to packBits, unpackBits
+* Turn off some build warnings
+* Network.URI: remove dropHead, use 'drop 1'
+- spec file template generated by cabal2spec-0.25.5
+
+-------------------------------------------------------------------
+Wed Dec 28 20:13:41 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Adjusted version for platform 2011.4
+
+-------------------------------------------------------------------
+Wed Dec 14 09:09:58 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fix defattr
+
+-------------------------------------------------------------------
+Wed Dec 14 08:57:49 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Added rpmlintrc and BR ghc libraries
+
+-------------------------------------------------------------------
+Tue Nov  1 14:03:07 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

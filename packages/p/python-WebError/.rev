@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5873bf64ae1e26ce0c206c49dba3c2c</srcmd5>
+    <version>0.10.3</version>
+    <time>1331900637</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109042</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e5873bf64ae1e26ce0c206c49dba3c2c</srcmd5>
+    <version>0.10.3</version>
+    <time>1340184034</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>deff85ffea41706b17191a0003498281</srcmd5>
+    <version>0.10.3</version>
+    <time>1349721309</time>
+    <user>coolo</user>
+    <comment>Add build dependencies to fix test failure. (forwarded request 137425 from poorboywilly)</comment>
+    <requestid>137465</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>deff85ffea41706b17191a0003498281</srcmd5>
+    <version>0.10.3</version>
+    <time>1359109989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>a6f94c5f021db275a747c1a221436864</srcmd5>
+    <version>0.10.3</version>
+    <time>1371654318</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179719</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>a6f94c5f021db275a747c1a221436864</srcmd5>
+    <version>0.10.3</version>
+    <time>1379664121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>b0f2a05f8f22eb185e049beaf7989cba</srcmd5>
+    <version>0.10.3</version>
+    <time>1382693728</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204682</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>b0f2a05f8f22eb185e049beaf7989cba</srcmd5>
+    <version>0.10.3</version>
+    <time>1409302809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2193ca003fb9bad62a93c4bf52fd5e90</srcmd5>
+    <version>0.13.1</version>
+    <time>1530087771</time>
+    <user>dimstar_suse</user>
+    <comment>Clean up SPEC file (still py2k-only, so no change to the singlespec)</comment>
+    <requestid>619211</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3101c75422df20bbf2d20a2353a32bdd</srcmd5>
+    <version>0.13.1</version>
+    <time>1530304552</time>
+    <user>dimstar_suse</user>
+    <comment>Add Provides: python2-WebError (to allow function of Pylons)</comment>
+    <requestid>619593</requestid>
+  </revision>
+</revisionlist>

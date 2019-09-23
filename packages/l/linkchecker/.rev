@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>102a39492ad5411cb6572a205f5340e3</srcmd5>
+    <version>4.5</version>
+    <time>1168903435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="35">
+    <srcmd5>be19eeccd504e0ace7d57d1c4eadad43</srcmd5>
+    <version>4.5</version>
+    <time>1175472468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9035cbd4c90c4c2230dd4e66e92f09c</srcmd5>
+    <version>4.8</version>
+    <time>1199927282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0aa46faa4473dbe6195e7dad3215ab6</srcmd5>
+    <version>4.9</version>
+    <time>1211415964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="34">
+    <srcmd5>b0aa46faa4473dbe6195e7dad3215ab6</srcmd5>
+    <version>4.9</version>
+    <time>1211415964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="35">
+    <srcmd5>fe6a7c00844304e9bb872307a798c926</srcmd5>
+    <version>4.9</version>
+    <time>1245366689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="37">
+    <srcmd5>fe6a7c00844304e9bb872307a798c926</srcmd5>
+    <version>4.9</version>
+    <time>1245366689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="38">
+    <srcmd5>5aa6e58eda7c4e62db6336c9d0107833</srcmd5>
+    <version>4.9</version>
+    <time>1268924824</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="40">
+    <srcmd5>5aa6e58eda7c4e62db6336c9d0107833</srcmd5>
+    <version>4.9</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="41">
+    <srcmd5>5aa6e58eda7c4e62db6336c9d0107833</srcmd5>
+    <version>4.9</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="44">
+    <srcmd5>5aa6e58eda7c4e62db6336c9d0107833</srcmd5>
+    <version>4.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>44d7ecd2ddfb1592933b13107cc110d0</srcmd5>
+    <version>6.5</version>
+    <time>1303385989</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67006 from user coolo
+</comment>
+    <requestid>67006</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>43479ba4e9d051eb1f6307b905ce3d23</srcmd5>
+    <version>6.5</version>
+    <time>1303385997</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67006
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>88bd75a19837fed92dd75e3ab304cda9</srcmd5>
+    <version>6.9</version>
+    <time>1316459614</time>
+    <user>lrupp</user>
+    <comment>- Version update to 6.9 
+Fixes:
+- gui: Correctly reset logger statistics.
+- gui: Fixed saving of parent URL source.
+- installer: Fixed portable windows version by not compressing DLLs.
+- checking: Catch socket errors when resolving GeoIP country data.
+Changes:
+- checking: Automatically allow redirections from URLs given by the
+  user.
+- checking: Limit download file size to 5MB.
+  SF bug #3297970
+- gui: While checking, show new URLs added in the URL list view by
+  scrolling down.
+- gui: Display release date in about dialog.
+  Closes: SF bug #3297255
+- gui: Warn before closing changed editor window.
+  Closes: SF bug #3297245
+- doc: Improved warningregex example in default configuration file.
+  Closes: SF bug #3297254
+Features:
+- gui: Add syntax highlighting for Qt editor in case QScintilla
+  is not installed.
+- gui: Highlight check results and colorize number of errors.
+- gui: Reload configuration after changes have been made in the editor.
+  Closes: SF bug #3297242</comment>
+    <requestid>82431</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>88bd75a19837fed92dd75e3ab304cda9</srcmd5>
+    <version>6.9</version>
+    <time>1319182153</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>1a4badc5a306cf850501aef3aca9ac39</srcmd5>
+    <version>6.9</version>
+    <time>1323192401</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fd458ade444f1cbe22ba4dea510df31d</srcmd5>
+    <version>7.5</version>
+    <time>1329400708</time>
+    <user>coolo</user>
+    <comment>Update to 7.5</comment>
+    <requestid>105225</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>fd458ade444f1cbe22ba4dea510df31d</srcmd5>
+    <version>7.5</version>
+    <time>1340183665</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>fd458ade444f1cbe22ba4dea510df31d</srcmd5>
+    <version>7.5</version>
+    <time>1359109398</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>fd458ade444f1cbe22ba4dea510df31d</srcmd5>
+    <version>7.5</version>
+    <time>1379663163</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>fd458ade444f1cbe22ba4dea510df31d</srcmd5>
+    <version>7.5</version>
+    <time>1409301797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f94119f7fa5bca0f3b8750110bd7061a</srcmd5>
+    <version>9.3</version>
+    <time>1412533851</time>
+    <user>coolo</user>
+    <comment>Install icons in the right place</comment>
+    <requestid>248627</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f59e1fb0ff8ad220b40a010cab6dd598</srcmd5>
+    <version>9.3</version>
+    <time>1427445686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293230</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>3f903cf3e3d3ea1817dddec28db346a8</srcmd5>
+    <version>9.3</version>
+    <time>1453416289</time>
+    <user>dimstar_suse</user>
+    <comment>- add explicit dependency on python-requests, fixes boo#962747</comment>
+    <requestid>354933</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>859be4507df4283a7753c1616ff263f5</srcmd5>
+    <version>9.4.0</version>
+    <time>1548335410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665673</requestid>
+  </revision>
+</revisionlist>

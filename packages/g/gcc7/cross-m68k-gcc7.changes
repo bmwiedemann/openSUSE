@@ -1,0 +1,492 @@
+-------------------------------------------------------------------
+Thu Jul 25 10:51:53 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r273795).
+  * Includes fix for LTO linker plugin heap overflow.
+    (bsc#1142649, CVE-2019-14250)
+
+-------------------------------------------------------------------
+Mon Jul 22 09:47:10 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r273666).
+  * Fixes build with -Werror=return-type.
+
+-------------------------------------------------------------------
+Thu Jul 18 07:10:26 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r273559).
+  * Includes fix for vector shift miscompilation on s390.  [bsc#1141897]
+
+-------------------------------------------------------------------
+Wed Jun 12 10:37:51 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add gcc7-flive-patching.patch patch.  [bsc#1071995, fate#323487]
+
+-------------------------------------------------------------------
+Wed May 22 12:56:05 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Strip -flto from $optflags.
+
+-------------------------------------------------------------------
+Wed Apr 24 09:52:10 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r270528).
+  * Disables switch jump-tables when retpolines are used.
+  [bsc#1131264, jsc#SLE-6738]
+
+-------------------------------------------------------------------
+Thu Mar 28 08:21:08 UTC 2019 - rguenther@suse.com
+
+- Add gcc8-pr89752.patch to fix ICE compiling tensorflow on aarch64.
+  [bsc#1129389]
+
+-------------------------------------------------------------------
+Thu Mar 14 09:19:08 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r269676).
+  * Pulls fix for aarch64 FMA steering pass use-after-free.  [bsc#1128794]
+  * Fixes ICE compiling tensorflow.  [bsc#1129389]
+- Change URLs to use https.
+
+-------------------------------------------------------------------
+Fri Feb  8 07:50:27 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r268660).
+  * Pulls fix for s390x FP load-and-test issue.  [bnc#1124644]
+- Improve build reproducability by disabling address-space randomization
+  during build.
+
+-------------------------------------------------------------------
+Mon Jan  7 08:35:49 UTC 2019 - rguenther@suse.com
+
+- Update gcc44-rename-info-files.patch to adjust gnat manual
+  entries in the info directory.  [bnc#1114592]
+
+-------------------------------------------------------------------
+Thu Dec  6 12:07:47 UTC 2018 - rguenther@suse.com
+
+- Update to GCC 7.4 release.
+- Fix AVR configuration to not use __cxa_atexit or libstdc++ headers.
+  Point to /usr/avr/sys-root/include as system header include directory.
+
+-------------------------------------------------------------------
+Fri Aug 17 08:36:04 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r263609).
+  * Includes fix for build with ISL 0.20.
+  * Includes fix to no longer try linking -lieee with -mieee-fp.
+    [bnc#1084842]
+
+-------------------------------------------------------------------
+Fri Jun 29 10:25:01 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r262243).
+  * Pulls fix for libcpp lexing bug on ppc64le manifesting during
+    build with gcc8.  [bnc#1099119]
+  * Pulls fix for forcing compile-time tuning even when building
+    with -march=z13 on s390x.  [bnc#1099192]
+
+-------------------------------------------------------------------
+Thu Jun  7 10:20:14 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r261272).
+  * Fixes support for 32bit ASAN with glibc 2.27+
+  * Includes gcc7-bnc1087550.diff
+
+-------------------------------------------------------------------
+Wed Apr 18 14:02:32 UTC 2018 - rguenther@suse.com
+
+- Update gcc7-bnc1087550.diff with latest changes.  [bnc#1087550]
+
+-------------------------------------------------------------------
+Wed Apr 11 07:35:40 UTC 2018 - rguenther@suse.com
+
+- Update gcc7-bnc1087550.diff with fix from upstream that supports
+  both ABIs for ios_base::failure.  [bnc#1087550]
+
+-------------------------------------------------------------------
+Mon Apr  9 13:51:55 UTC 2018 - rguenther@suse.com
+
+- Set SUSE_ASNEEDED to zero during %install so libasan keeps its
+  NEEDED entry for libstdc++.so.  [GCC#84428]
+
+-------------------------------------------------------------------
+Fri Apr  6 09:05:43 UTC 2018 - rguenther@suse.com
+
+- Enable --enable-fix-cortex-a53-835769 for aarch64.
+- Add gcc7-bnc1087550.diff to revert the ios_base::failure ABI
+  back to compatible behavior with the default ABI.  [bnc#1087550]
+
+-------------------------------------------------------------------
+Tue Apr  3 12:54:54 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r258812).
+  * Picks fix to no longer enable -mpc-relative-literal-loads by default
+    with --enable-fix-cortex-a53-843419.
+- Enable --enable-fix-cortex-a53-843419 on aarch64.  [bnc#1084812]
+  [bnc#1087930]
+
+-------------------------------------------------------------------
+Wed Mar  7 08:59:22 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r258313).
+  * includes spectre V2 mitigation patch for s390x.  [bnc#1083946]
+
+-------------------------------------------------------------------
+Thu Mar  1 13:03:25 UTC 2018 - rguenther@suse.com
+
+- Fix nvptx offload target compiler install so GCC can pick up
+  required files.  Split out the newlib part into cross-nvptx-newlib7-devel
+  and avoid conflicts with GCC 8 variant via Provides/Conflicts
+  of cross-nvptx-newlib-devel.
+
+-------------------------------------------------------------------
+Tue Feb 27 08:37:14 UTC 2018 - mliska@suse.cz
+
+- Update to gcc-7-branch head (r258025).
+  * includes fix for chromium build failure.  [bnc#1083290]
+
+-------------------------------------------------------------------
+Mon Feb 26 09:02:16 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r257981).
+- Add conflicts to non-bootstrap variant for cross packages to silence
+  repo-checker.
+- Amend gcc48-remove-mpfr-2.4.0-requirement.patch to fix build on SLE11.
+
+-------------------------------------------------------------------
+Thu Feb  1 09:26:51 UTC 2018 - rguenther@suse.com
+
+- Use %{?_smp_mflags} everywhere.
+- Update _constraints to bump physicalmemory and general simplification.
+
+-------------------------------------------------------------------
+Thu Jan 25 09:46:10 UTC 2018 - rguenther@suse.com
+
+- Update to GCC 7.3 release.
+
+-------------------------------------------------------------------
+Mon Jan 22 11:29:58 UTC 2018 - schwab@suse.de
+
+- Move misplaced %endif
+
+-------------------------------------------------------------------
+Wed Jan 17 13:13:12 UTC 2018 - rguenther@suse.com
+
+- Update to GCC 7.3.0 RC1 (r256792).
+
+-------------------------------------------------------------------
+Tue Jan 16 11:29:06 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r256737)
+  * Includes gcc7-pr81481.diff
+  * Adds backport of retpoline support via -mindirect-branch=,
+    -mfunction-return= and friends.  [bnc#1074621]
+
+-------------------------------------------------------------------
+Mon Jan 15 12:24:39 UTC 2018 - rguenther@suse.com
+
+- Handle new debug sources filelist variant debugsourcefiles.list.
+- Prune libstdc++ includes for crosses.
+
+-------------------------------------------------------------------
+Wed Jan 10 08:01:42 UTC 2018 - rguenther@suse.com
+
+- Do not install target parts of cross compilers into the sysroot
+  but instead fixup manually (once required).
+
+-------------------------------------------------------------------
+Tue Jan  2 13:29:18 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r256067).
+- Deal with C++ being disabled for crosses.
+- For crosses that have a target triplet not matching that of binutils
+  create symlinks to as and ld in the GCC private directory.
+
+-------------------------------------------------------------------
+Tue Dec 12 12:41:34 UTC 2017 - rguenther@suse.com
+
+- Split cross-avr into -bootstrap and non-bootstrap variant for avr-libc
+  integration.
+
+-------------------------------------------------------------------
+Fri Dec  8 10:32:47 UTC 2017 - rguenther@suse.com
+
+- Add gcc7-avoid-fixinc-error.diff to avoid install-host aborting
+  on non-existing target include directory.  Remove --with-build-sysroot=/
+  hack from icecream cross configs, no longer prune include-fixed for
+  them to retain a GCC provided limits.h.  Remove installed install-tools.
+
+-------------------------------------------------------------------
+Thu Nov 23 09:30:47 UTC 2017 - rguenther@suse.com
+
+- Add gcc7-pr82248.diff to fix bogus stack probe instruction on ARM.
+  [bnc#1068967]
+
+-------------------------------------------------------------------
+Fri Oct 20 11:12:53 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r253932).
+  * contains fix for PR82445 which is about a RPI1 bootloader
+    miscompile.  [bnc#1061667]
+
+-------------------------------------------------------------------
+Thu Oct  5 09:00:25 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r253435).  [fate#321452, fate#321496]
+  [fate#323972]
+  * contains fix for PR82406 which blocks chromium build.
+- Add gcc7-pr81481.diff to fix a register allocation issue.
+  [bnc#1048861]
+
+-------------------------------------------------------------------
+Wed Sep 27 12:24:55 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r253221).
+  * Includes similar fix to gcc41-ppc32-retaddr.patch, disable the
+    patch but keep the testcase.
+
+-------------------------------------------------------------------
+Mon Sep 25 20:22:09 UTC 2017 - matz@suse.de
+
+- Add support for zero-sized VLAs and allocas with
+  -fstack-clash-protection.  [bnc #1059075]
+  Changes gcc7-stack-probe.diff.
+
+-------------------------------------------------------------------
+Tue Aug 29 07:17:15 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r251579).
+  * Includes GCC 7.2 release.
+  * Includes gcc7-pr81766.diff and gcc7-go-sigrtmax.patch.
+
+-------------------------------------------------------------------
+Fri Aug 25 04:40:35 UTC 2017 - bwiedemann@suse.com
+
+- Sort tar file list to make cross-* packages build reproducibly
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Tue Aug  8 12:38:37 UTC 2017 - rguenther@suse.com
+
+- Add gcc7-pr81766.diff to fix grub2 build.
+
+-------------------------------------------------------------------
+Fri Aug  4 11:41:36 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r250819).
+  * Includes GCC 7.2 RC1.
+  * Includes fix for gcov crash.  [bnc#1050487]
+- Add gcc7-stack-probe.diff for support of -fstack-clash-protection
+  [bnc#1039513].
+- Add gcc7-go-sigrtmax.patch to fix Go build with glibc 2.26.
+
+-------------------------------------------------------------------
+Thu Jun 29 08:54:57 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r249772).
+  * Includes patch for PR81080.  [bnc#1044016]
+  * Includes patch for PR81204.  [bnc#1045732]
+  * Includes patch for PR81112.  [bnc#1043966]
+
+-------------------------------------------------------------------
+Tue Jun 13 08:42:45 UTC 2017 - rguenther@suse.com
+
+- Fix cross compiler update-alternatives machinery to make rpmlint
+  happy.
+
+-------------------------------------------------------------------
+Fri Jun  9 11:20:46 UTC 2017 - rguenther@suse.com
+
+- Update plugin enablement guard to use %sle_version.  [bnc#1043590]
+
+-------------------------------------------------------------------
+Wed Jun  7 13:18:16 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r248970).
+  * Includes gcc7-pr80593.patch.
+
+-------------------------------------------------------------------
+Tue May 30 07:39:56 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r248590).
+- Add #!BuildIgnore: gcc-PIE also to cross compiler builds.
+
+-------------------------------------------------------------------
+Wed May 17 12:09:04 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r248152)
+- Drop not working SLE-10 build support.
+- For SLE-15 make the i586 compiler generate code for architecture
+  level of x86_64.
+- Add gcc7-pr80593.patch to fix ceph build. [bnc#1025891]
+
+-------------------------------------------------------------------
+Thu May  4 10:12:09 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r247545)
+  * Includes GCC 7.1 release
+- For SLE15 change ppc64le tuning to power9.  [fate#322728]
+- Change tarball compression to xz, BuildRequire xz.
+
+-------------------------------------------------------------------
+Fri Apr 28 12:26:08 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r247368)
+  * Includes GCC 7.1 RC2
+  * Includes ARM ABI fix for PR77728, fixing ABI incompatibility
+    with GCC 4.8.
+
+-------------------------------------------------------------------
+Thu Apr 20 11:17:21 UTC 2017 - rguenther@suse.com
+
+- Update to gcc-7-branch head (r247019).
+- Always create nvptx offloading cross spec file.
+- Fix libada provides/conflicts.
+- Package gcov.h.
+- Add #!BuildIgnore: gcc-PIE.
+- Fix update-alternatives.
+
+-------------------------------------------------------------------
+Tue Apr  4 14:44:52 UTC 2017 - mliska@suse.cz
+
+- Add update-alternatives for binaries produces by cross compilers.
+- Add nospeccleaner comment, remove legacy norootforbuild and
+  icecream.
+
+-------------------------------------------------------------------
+Fri Mar 31 08:51:09 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r246609).
+- Add cross-binutils Requires to cross-gcc packages.
+
+-------------------------------------------------------------------
+Mon Mar 27 14:06:43 UTC 2017 - rguenther@suse.com
+
+- Really fix libtsan requirement on ppc.  [boo#1030623]
+- Also fix liblsan requirement on pcc.
+
+-------------------------------------------------------------------
+Thu Mar 23 09:59:21 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r246414).
+- Package gcov-dump.
+- Remove gcc7-debug-dwarf2out-ice.patch.
+- Add gcc7-remove-Wexpansion-to-defined-from-Wextra.patch to remove
+  useless warning from Wextra that causes build fails due to excessive
+  log file size.
+- Remove libtsan Requires from the gcc7-32bit package, tsan doesn't have
+  a 32bit multilib on any arch.  [boo#1030623]
+
+-------------------------------------------------------------------
+Mon Mar 13 10:56:29 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r246083).
+
+-------------------------------------------------------------------
+Wed Mar  8 14:10:58 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r245976).
+- BuildRequire at least gcc-4.8 Ada.
+- Enable asan and ubsan for s390.
+- Also require gcc-c++ of the host compiler version used when that
+  is changed due to Ada requirements.
+
+-------------------------------------------------------------------
+Tue Feb 14 08:00:25 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r245417).
+- Enable profiledbootstrap for %ix86, build with release checking.
+- Build stage1 with -O2 -g.
+- Enable Ada for s390x.
+- Enable asan and ubsan for s390x.
+- Refresh gcc44-rename-info-files.patch.
+
+-------------------------------------------------------------------
+Thu Feb  2 13:44:56 UTC 2017 - rguenther@suse.com
+
+- Fix up nvptx offloading so that it actually works.
+
+-------------------------------------------------------------------
+Tue Jan 31 12:25:34 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r245052).
+- Use plain avr as gcc target for AVR to match what binutils does.
+  [bnc#1022404]
+- Cleanup spec file and gcc7-rpmlintrc a bit.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:10:21 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r244934).
+- Add accelerator offloading cross to nvptx-none, for this also
+  add nvptx-newlib.tar.bz2.
+
+-------------------------------------------------------------------
+Tue Jan 24 12:56:39 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r244867).
+- Bump libgo SO version to 11.
+- PowerPC now supports lsan and tsan.
+- Correct lsan/tsan packaging who are 64bits only.
+
+-------------------------------------------------------------------
+Fri Jan 20 08:36:18 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r244684).
+- Use --with-gcc-major-version-only and drop gcc-dir-version.patch.
+- Enable offloading for nvptx-none on the host (offload compiler still
+  missing).  Re-enable HSA offloading.
+- Re-add missing cross.spec.in and enable crosses.
+
+-------------------------------------------------------------------
+Thu Jan 12 12:01:01 UTC 2017 - rguenther@suse.com
+
+- Update to gcc trunk head (r244350).
+- Package avx512vpopcntdqintrin.h and sgxintrin.h on x86_64/i?86.
+
+-------------------------------------------------------------------
+Wed Dec 14 14:34:22 UTC 2016 - rguenther@suse.com
+
+- Update to gcc trunk head (r243648).
+- Package {arm,aarch64}/arm_fp16.h and arm/arm_cmse.h.
+
+-------------------------------------------------------------------
+Mon Nov 28 10:43:45 UTC 2016 - rguenther@suse.com
+
+- Remove broken libffi build support.
+- Remove more Java remanents.
+
+-------------------------------------------------------------------
+Fri Nov 25 08:30:28 UTC 2016 - mliska@suse.cz
+
+- Update to gcc trunk (r242874).
+- Add avx5124fmapsintrin.h and avx5124vnniwintrin.h header files.
+
+-------------------------------------------------------------------
+Wed Nov 23 15:36:06 UTC 2016 - mliska@suse.cz
+
+- New package, inherits from gcc6
+  * gcc-dir-version.patch, drop patchlevel from install directory names
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs file
+  that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not slow down
+  Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr for ppc
+  * gcc44-textdomain.patch, make translation files version specific and
+  adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files when
+  renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed libstdc++
+  html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with earlier
+  mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with host gcc 4.3
+- Drops
+  * libjava-no-multilib.diff, gcc41-java-slow_pthread_self.patch
+  and all Java related hunks in included patches
+  because Java is no longer included in GCC 7.
+  * gcc6-hsa-enablement.patch as it's part of trunk
+  * gcc6-libsanitizer-aarch64-vma48.patch as it's part of trunk
+  * gcc6-SOURCE_DATE_EPOCH.patch as it's part of trunk

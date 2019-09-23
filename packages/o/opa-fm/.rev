@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f588aa8a58260177631c0141dc052488</srcmd5>
+    <version>10.3.1</version>
+    <time>1495267915</time>
+    <user>dimstar_suse</user>
+    <comment>Unify spec file with SLE12
+Fix build with rdma-core (vs previous OFED)</comment>
+    <requestid>493029</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bacf50d7041a45ef0934d8fba4c8081</srcmd5>
+    <version>10.4.0</version>
+    <time>1497016628</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501895</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c77a1526536ebdf398a030921eac7094</srcmd5>
+    <version>10.4.0</version>
+    <time>1498485254</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505928</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cd5bbcbb2f8ccfd28567a3bcd02cb640</srcmd5>
+    <version>10.4.1</version>
+    <time>1502629071</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515858</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>95012aecfe5f2e0746e50806070eace7</srcmd5>
+    <version>10.4.1</version>
+    <time>1503999910</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519122</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>036cea593fa9967cb126db201ce3ae13</srcmd5>
+    <version>10.4.1</version>
+    <time>1504981516</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521605</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a51f26ed871d637189e4f1a254485391</srcmd5>
+    <version>10.5.1</version>
+    <time>1505920338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527302</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6379e2f193bb30a330d30768de609fcc</srcmd5>
+    <version>10.6.0</version>
+    <time>1511274937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544091</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c5822a25839624220c3ec21b4872e056</srcmd5>
+    <version>10.6.0</version>
+    <time>1513677575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558212</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c786fdb1fe04d0668d48b662bed1c4a0</srcmd5>
+    <version>10.7.0</version>
+    <time>1529501178</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617428</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dda3b176159937fc814f425e3fed640f</srcmd5>
+    <version>10.7.0</version>
+    <time>1531813321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622967</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>21b7f406879da06ff7a70500a6adf759</srcmd5>
+    <version>10.8.0</version>
+    <time>1542123332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644620</requestid>
+  </revision>
+</revisionlist>

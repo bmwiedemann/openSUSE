@@ -1,0 +1,1866 @@
+-------------------------------------------------------------------
+Sat Nov 17 23:13:30 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16.1:
+  * Bump core abi version.
+  * Fix windows crawling when unfullscreened.
+
+-------------------------------------------------------------------
+Sun Nov 11 18:15:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16:
+  * Fix cutoff tooltips.
+  * Fix window display delays.
+  * Support for gtk frame extents.
+  * Introduce at-spi support for ezoom.
+  * Maintenance updates and fixes.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Apr 18 11:10:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14:
+  * Handle _NET_WM_MOVERESIZE ClientMessages.
+    Fixes the whisker menu resize bug.
+  * Improve horizontal and vertical maximizing.
+  * Remove the "Number of Desktops" option.
+  * Fix a crash when displaying special characters in gtk-window-decorator.
+  * Set rotate and wall default flip bindings to None.
+    Fixes a problem where edges of screen are unclickable by default.
+  * Fix potential for skydome silently failing to render.
+  * Don't fallback for exceeding max texture size.
+  * Improve --button-layout behavior for gtk-window-decorator.
+  * Update translations.
+- Workaround /usr/@DATADIRNAME@/locale/ on openSUSE Leap 42.1 and
+  older.
+- Rebase compiz-suse-defaults.patch.
+- Only switch gtk-window-decorator to Gtk3 on openSUSE Leap 42.3
+  and newer.
+
+-------------------------------------------------------------------
+Wed Mar 22 21:40:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Switch gtk-window-decorator to Gtk3 after Marco.
+
+-------------------------------------------------------------------
+Sun Apr 10 21:20:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.8.12.3:
+  * Drop glib-gettext dependency.
+    This fixes usage of autogen.sh with newer glib.
+  * Change default Blue filter to Gaussian.
+  * Fix broken appearance on HiDPI with GTK+ 3.10+ (if scaling is on).
+    For now scaling is just disabled completely.
+  * Fix for some cases when cursor settings were ignored by
+    applications.
+
+-------------------------------------------------------------------
+Thu Mar 24 11:55:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12.2:
+  * Include forgotten compiz-start.desktop.in into the tarball,
+    needed for --enable-menu-entries.
+- Solve libcompizconfig dependency loop.
+
+-------------------------------------------------------------------
+Wed Mar 17 15:07:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12.1:
+  * Increase maximum Mipmap LOD for Blur plugin.
+  * Probably fix "white glitches" that happen on resize in
+    gtk-window-decorator.
+  * Fix right click near top edge of maximised windows in
+    gtk-window-decorator.
+  * Fix a X11 Drawable leakage in gtk-window-decorator.
+
+-------------------------------------------------------------------
+Sat Feb 13 09:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12:
+  * Move mate-window-decorator.py into gtk-window-decorator.
+  * Add an optional libcompizconfig build dependency that makes it
+    so gtk-window-decorator can honour MATE or GNOME Flashback
+    cursor theme settings, and also read shadow settings without
+    D-Bus plugin from CCSM.
+  * annotate plugin changes:
+    - Implement shape drawing.
+    - Fix shape drawing code to always call cairo_save before
+      drawing and cairo_restore after drawing.
+    - Implement centered shape drawing with a toggle keybinding.
+    - Unify stroke and line width options.
+    - Fix longstanding damage bugs.
+    - Use stroke colour for freedraw mode.
+    - Improve transparent colours rendering.
+    - Change default stroke width to 3.0.
+  * Move plugin-matecompat image to ccsm project.
+  * Add Desktop Wall plugin from compiz-plugins-main project.
+  * Fix Desktop Wall settings of arrow and gradient thumbs colors.
+  * Fix gtk-window-decorator crash when a window is hanged.
+- Require compiz-plugins and libcompizconfig.
+- Merge compiz-fusion-plugins-main-defaults.patch from
+  compiz-plugins-main into compiz-suse-defaults.patch.
+- Enable D-Bus plugin by default.
+
+-------------------------------------------------------------------
+Thu Dec 17 23:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.10:
+  * Add mate-window-decorator: Marco native settings monitor for
+    gtk-window-decorator.
+  * Add all relevant checks from compiz-manager.
+  * Remove scripts, modify desktop menu entries and disable by
+    default.
+  * gtk-window-decorator: Make it possible to build with Gtk3.
+  * Add a compiz-decorator script that tries to detect the best
+    suitable decorator.
+- Remove compiz-add-manager-checks.patch: merged upstream.
+- Remove compiz-decorator, gnome-window-decorator, compiz.desktop
+  from sources: added upstream.
+- Rebase compiz-suse-defaults.patch.
+
+-------------------------------------------------------------------
+Sat Dec 12 10:02:46 UTC 2015 - sor.alexei@meowr.ru
+
+- Bring compiz-decorator back: Compiz must handle Emerald-only
+  installations.
+- Set back compiz-decorator as a default decorator in
+  compiz-suse-defaults.patch.
+- Fix crashes in gnome-window-decorator.
+- Force compiz-gnome bigger priority than compiz-emerald if 
+  MATE or GNOME session is installed by supplements.
+- Simplify compiz-decorator: no need to fallback if decorator is
+  missing as it can't be (requirement).
+- Do not change default resize mode in compiz-suse-defaults.patch.
+- Do not even suggest Marco in compiz-gnome: gtk-window-decorator
+  only need a library for supporing Metacity decorations.
+- Remove bug-449168-avoid-independent-output-painting.diff:
+  considered harmful.
+- Modify compiz-add-manager-checks.patch: do not start Compiz
+  without --replace when other WM is running.
+- Do not generate MATE Control Centre keybindings after all:
+  support is removed from upstream.
+
+-------------------------------------------------------------------
+Thu Nov 25 07:52:46 UTC 2015 - sor.alexei@meowr.ru
+
+- Rename compiz-default-settings.diff to
+  compiz-suse-defaults.patch.
+- Rename mate-window-decorator to gnome-window-decorator to point
+  out it's not DE-centric.
+- Adjust gnome-window-decorator so it will start accepting custom
+  options properly (transparently as gtk-window-decorator does).
+- Remove compiz-decorator: automatical decorator detection lost its
+  meaning with the KDE decorator loss.
+- Set gnome-window-decorator as a default decorator in
+  compiz-suse-defaults.patch.
+- Modify compiz-suse-defaults.patch to center windows by default.
+- Do not default Expo plugin: can be annoying.
+- Drop compiz-unmanaged-window-position.patch: was fixed upstream,
+  reverse applying is a mistake.
+
+-------------------------------------------------------------------
+Fri Nov 20 08:32:20 UTC 2015 - sor.alexei@meowr.ru
+
+- Add compiz-add-manager-checks.patch: add all relevant checks
+  from compiz-manager; and pciutils dependency.
+- Get from Ubuntu packages a script to generate MATE Control Centre
+  keybinding XML's.
+
+-------------------------------------------------------------------
+Mon Nov  9 11:48:58 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.9.
+- Update dependencies and license.
+- Split libdecoration0.
+- Split plugins from compiz to compiz-plugins, make compiz
+  recommend compiz-plugins and compiz-plugins to recommend
+  compiz-plugins-main.
+- compiz-gnome to recommend compiz-plugins-main and suggest ccsm.
+- compiz-gnome doesn't have to depend on GNOME Control Centre and
+  gnome-desktop2.
+- Rebase compiz-default-settings.diff.
+- Remove dummy compiz-kde4 package.
+- Do not recommend compiz-emerald.
+- Merely suggest compicc instead of recommending.
+- Drop kde-compiz.desktop and startkde-compiz: no longer used.
+- Remove compiz-kde-4.9.patch, kde-auto-comp.diff,
+  compiz-0.8.8-non-abstract-KWD-Window.patch,
+  compiz-global_Region_define.patch: KDE-related.
+- Restore standalone locales, place in compiz-lang.
+- Change compiz-devel group to "Development/Languages/C and C++".
+- Tickle default enabled plugins.
+- Move matecompat and svg plugins from compiz-gnome to compiz.
+- Adjust compiz-decorator script for MATE.
+- Add mate-window-decorator wrapper that adjusts gwd settings with
+  Marco or Metacity ones.
+- Drop support of old openSUSE.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Oct 20 14:00:15 UTC 2014 - dmueller@suse.com
+
+- enable build for %arm and aarch64 
+
+------------------------------------------------------------------
+Thu Aug 14 12:00:00 UTC 2014 - ku.b@gmx.de
+
+- disable metacity; fix compile error due to private function changes
+- remove unused compiz-gtk_widget_visible.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 01:40:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop kde4 package for 13.1, KWin has dropped support for compiz
+  with 4.11 release.
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Feb 26 20:47:51 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Fri Jan 18 20:10:27 CET 2013 - mhrusecky@suse.cz
+
+- fixing build in Factory
+  compiz-0.8.8-non-abstract-KWD-Window.patch
+
+-------------------------------------------------------------------
+Sat Nov 17 11:36:47 CET 2012 - ro@suse.de
+
+- compiz-kde-4.9.patch:
+  taken from gentoo to fix compilation with kde-4.9 
+
+-------------------------------------------------------------------
+Fri Jun  1 13:17:57 UTC 2012 - cfarrell@suse.com
+
+- license update: HPND and GPL-2.0+
+  SPDX format (and the majority of the MIT-like licenses are actually HPND
+  - see http://www.spdx.org/licenses/HPND)
+
+-------------------------------------------------------------------
+Thu May 12 12:00:01 UTC 2012 - ku.b@gmx.de
+
+- correct the license format
+
+-------------------------------------------------------------------
+Thu May 12 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- add xsessions start script to run Compiz-KDE from the display manager
+
+-------------------------------------------------------------------
+Thu May 10 12:00:02 UTC 2012 - ku.b@gmx.de
+
+- substitute freeglut with Mesa-demo-x
+
+-------------------------------------------------------------------
+Thu May 10 12:00:01 UTC 2012 - ku.b@gmx.de
+
+- add build fixes for gcc-4.7.0
+
+-------------------------------------------------------------------
+Fri Jan  6 11:00:41 UTC 2012 - cyberorg@opensuse.org
+
+- enable gtk-window-decorator 
+
+-------------------------------------------------------------------
+Tue Nov 15 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- readd compiz-unmanaged-window-position.patch
+
+-------------------------------------------------------------------
+Sun Nov 13 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- build with gnome3
+- enable basic plugins as default
+- recommend kolor-manager in kde4 component
+- recommend compicc
+- add compizconfig / ccp plugin
+- add proper version to ccp and compicc
+
+-------------------------------------------------------------------
+Sat Nov 12 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- no transparent windows during move
+- some other minor changes like skydome
+
+-------------------------------------------------------------------
+Mon Oct 03 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- update to 0.8.8
+- unmanaged window position patch does not apply 
+- openSUSE-11.3 builds
+
+-------------------------------------------------------------------
+Mon Jun 14 15:39:30 UTC 2010 - dimstar@opensuse.org
+
+- Add compiz-unmanaged-window-position.patch, fixes window position
+  of unmanaged windows, like for example the clock-applet.
+
+-------------------------------------------------------------------
+Sun May  9 17:07:17 UTC 2010 - dimstar@opensuse.org
+
+- Add compiz-gtk_widget_visible.patch to fix build with old GTK,
+  specifically for openSUSE <= 11.1.
+
+-------------------------------------------------------------------
+Tue Mar 30 11:29:13 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.8.6:
+  + Maintenance release.
+  + Various focus and window placement fixes.
+  + Fixed handling of windows that have a (server-drawn) border.
+  + Fixed handling of window icons that have a colour depth of 1
+    bit.
+  + Added KDE 4.4 support to KDE4 window decorator.
+- Drop patches compiz-kde44.patch and compiz-gtk2.19.7.patch.
+- Rebase kde-auto-comp.diff
+
+-------------------------------------------------------------------
+Mon Mar 22 13:03:55 UTC 2010 - dimstar@opensuse.org
+
+- Add compiz-gtk2.19.7.patch to fix build with newer gtk.
+
+-------------------------------------------------------------------
+Fri Feb 12 16:06:37 UTC 2010 - dominique.leuenberger@tmf-group.com
+
+- Add compiz-kde44.patch in order to build against KDE 4.4.
+
+-------------------------------------------------------------------
+Wed Dec  2 18:37:25 UTC 2009 - coolo@novell.com
+
+- fix syntax error to fix build
+
+-------------------------------------------------------------------
+Fri Nov 13 13:00:22 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.8.4
+  + Fixed issue in strut handling that could lead to struts being
+    ignored for certain monitor configurations.
+  + Fixed window position constraining logic.
+  + Fixed kconfig xslt files missing from 0.8.0 tarball.
+  + New plugin "commands" that handles the bindings for arbitrary
+    commands
+  + New plugin "gnomecompat" which handles bindings
+  + Added support for _NET_WM_FULLSCREEN_MONITORS EWMH hint.
+  + Added support for reading the icon hint from the WM_HINTS
+    property
+  + Update Gnome support for Gnome 2.24.
+  + Adjusted gtk-window-decorator for newer libmetacity-private
+    versions.
+  + Adjusted kde4-window-decorator for KDE 4.2 API
+- Re-enable KDE4 window decorator
+- Respin patches:
+  + bug-449168-avoid-independent-output-painting.diff
+  + bug-474862-allow-moving-focus-to-fs-window.diff
+  + compiz-default-settings.diff
+  + compiz-java-config-notify.diff
+  + kde-auto-comp.diff
+- Drop patches:
+  + compiz-0.7.8-NOMAD.diff
+  + compiz-core-default-plugins-diff
+  + compiz-dmx-ignore-glx.diff
+  + compiz-kde4-decorator-rollback.diff
+  + compiz-kde4-decorator-update.diff
+  + compiz-kde4-paint-fix.diff
+  + compiz-ldpreload-indirect.diff
+  + compiz-missing-translations.patch
+  + compiz-no-focus-prevention-for-windows-without-decorations.diff
+  + compiz-scale-mode-toggle-1.diff
+  + gnome-xgl-settings-hwinfo-primary-display-bno335445.patch
+  + gnome-xgl-settings-remove-gconf.diff
+  + bug-475349-moveInputFocusToOtherWindow.diff
+- Remove obsoleted Mesa and gnome-xgl-settings sources
+
+-------------------------------------------------------------------
+Tue Oct 20 17:03:30 CEST 2009 - dimstar@opensuse.org
+
+- Disable KDE4 Packages at least on openSUSE 11.2 due to
+  incompatibility between compiz 0.7.8 and KDE 4.3, bnc#545324,
+  bnc#545747.
+
+-------------------------------------------------------------------
+Sun Oct  4 19:04:05 UTC 2009 - aj@suse.de
+
+- Require libxslt-devel and libxml-devel for devel package.
+
+-------------------------------------------------------------------
+Tue Sep 29 10:56:34 UTC 2009 - aj@suse.de
+
+- Disable kde3 for openSUSE 11.2.
+
+-------------------------------------------------------------------
+Wed Sep 23 07:41:39 UTC 2009 - aj@suse.de
+
+- Add new openSUSE logo for compiz (file opensuse.png), bnc#540516.
+
+-------------------------------------------------------------------
+Mon Sep  7 11:20:43 CEST 2009 - dimstar@opensuse.org
+
+- Add compiz-gconf_includes.patch to fix compilation with missing
+  -I/usr/include/gconf/2 CFLAGS.
+- Clean spec file using spec_cleaner.
+
+-------------------------------------------------------------------
+Wed Aug 19 15:33:17 CEST 2009 - dominique-obs@leuenberger.net
+
+- The -devel package requires startup-notification-devel in plus.
+- BuildRequire libgnome-window-settings-devel on openSUSE 11.2
+  and newer.
+- Add compiz-metacity-private.patch, fixes bnc#481519
+- Add gnome-desktop-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri May  8 16:51:48 EDT 2009 - davidr@novell.com
+
+- Fix texture allocation that caused compiz to crash when
+  using some applications (e.g. googleearth) (bnc#502416)
+
+-------------------------------------------------------------------
+Fri Apr 17 19:04:42 CEST 2009 - crrodriguez@suse.de
+
+- use --disable-static
+
+-------------------------------------------------------------------
+Thu Apr  9 16:23:43 CEST 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Sun Mar 29 16:45:32 IST 2009 - cyberorg@opensuse.org
+
+- add branding-upstream (bnc#490018)
+
+-------------------------------------------------------------------
+Sun Mar  8 20:51:29 IST 2009 - cyberorg@opensuse.org
+
+- Fix post for branding packages 
+
+-------------------------------------------------------------------
+Thu Feb 26 19:29:19 EST 2009 - davidr@novell.com
+
+- Fix remote WM detection. (bnc#480181)
+
+-------------------------------------------------------------------
+Thu Feb 26 17:17:26 EST 2009 - davidr@novell.com
+
+- Improve bug-475349-moveInputFocusToOtherWindow.diff. (bnc#480088)
+
+-------------------------------------------------------------------
+Thu Feb 26 12:10:11 EST 2009 - davidr@novell.com
+
+- Have dbus plugin register plugin options properly. (bnc#480007)
+
+-------------------------------------------------------------------
+Wed Feb 25 18:42:02 EST 2009 - davidr@novell.com
+
+- Fix gconf plugin. (bnc#479749)
+
+-------------------------------------------------------------------
+Tue Feb 24 19:51:25 EST 2009 - davidr@novell.com
+
+- Never use the libgl fallback for server vendor DMX. (bnc#479303)
+- Never allow glx plugin to load for server vendor DMX. (bnc#479303)
+
+-------------------------------------------------------------------
+Thu Feb 12 14:53:53 EST 2009 - davidr@novell.com
+
+- Don't lose input focus when closing active window. (bnc#475349)
+
+-------------------------------------------------------------------
+Wed Feb 11 16:18:10 EST 2009 - davidr@novell.com
+
+- Fix regression in position constraints fix. (bnc#474594)
+
+-------------------------------------------------------------------
+Wed Feb 11 12:38:32 EST 2009 - davidr@novell.com
+
+- Allow input focus to be moved properly to fullscreen
+  windows. (bnc#474862)
+
+-------------------------------------------------------------------
+Tue Feb 10 19:54:33 EST 2009 - davidr@novell.com
+
+- Fix position constraints when moving unmanaged window.
+  (bnc#474594)
+
+-------------------------------------------------------------------
+Wed Feb 11 01:37:13 CET 2009 - ro@suse.de
+
+- add libgnomeui-devel to buildrequires
+
+-------------------------------------------------------------------
+Mon Feb  9 16:34:29 EST 2009 - davidr@novell.com
+
+- Fix broken handling reparented windows. (bnc#474096)
+- Avoid possible freeze when closing rdesktop. (bnc#474086)
+- Make sure window has a parent before handling unmap
+  notify event. (bnc#474090)
+
+-------------------------------------------------------------------
+Fri Feb  6 13:46:40 EST 2009 - davidr@novell.com
+
+- Avoid independent output painting. (bnc#449168)
+
+-------------------------------------------------------------------
+Tue Feb  3 16:41:49 EST 2009 - davidr@novell.com
+
+- Have KDE decorators use automatic compositing when
+  manual compositing failed. (bnc#472146)
+
+-------------------------------------------------------------------
+Fri Jan 30 18:12:35 EST 2009 - davidr@novell.com
+
+- Fix root window clipping issue. (bnc#470020)
+
+-------------------------------------------------------------------
+Fri Jan 30 12:51:02 EST 2009 - davidr@novell.com
+
+- Fix critical issue with some windows being added twice during
+  startup. (bnc#440799)
+
+-------------------------------------------------------------------
+Thu Jan 29 15:14:10 EST 2009 - davidr@novell.com
+
+- Properly handle viewport paint offsets. (bnc#437576)
+
+-------------------------------------------------------------------
+Wed Jan 28 16:45:13 EST 2009 - davidr@novell.com
+
+- Make sure screen edges are created before they are first
+  used. (bnc#444449)
+
+-------------------------------------------------------------------
+Wed Jan 28 14:37:04 EST 2009 - davidr@novell.com
+
+- Acquire compositing manager selection before window manager
+  selection. This seems to avoid issues with how metacity is
+  giving up the owner selections and makes compiz properly
+  replace metacity with compositing enabled. (bnc#470039)
+
+-------------------------------------------------------------------
+Tue Jan 27 14:40:18 EST 2009 - davidr@novell.com
+
+- Fix window resize issue that could cause a crash. (bnc#466802)
+
+-------------------------------------------------------------------
+Fri Jan 23 16:08:08 EST 2009 - davidr@novell.com
+
+- Add walkDepthFirst function. (bnc#468433)
+
+-------------------------------------------------------------------
+Wed Jan 21 19:21:47 IST 2009 - cyberorg@opensuse.org
+
+- Fix build for newer kde4
+
+-------------------------------------------------------------------
+Thu Jan  8 19:33:30 EST 2009 - davidr@novell.com
+
+- Fix decorator double click handling when window movement
+  is intercepted at the compositing manager level. (bnc 458000)
+
+-------------------------------------------------------------------
+Tue Jan  6 18:46:20 EST 2009 - davidr@novell.com
+
+- Fix root window resize problem. (bnc 462650)
+- Include place plugin fix in NOMAD patch.
+
+-------------------------------------------------------------------
+Tue Dec 23 13:04:54 CET 2008 - davidr@novell.com
+
+- Fix place plugin issue. (bnc 442052)
+
+-------------------------------------------------------------------
+Thu Dec  4 14:54:55 EST 2008 - davidr@novell.com
+
+- Allow decoration property to be of any type so we're
+  not breaking backward compatibility. (bnc 431846)
+- Fix major issue in handling of WM_TRANSIENT_FOR and
+  WM_CLIENT_LEADER hints. (bnc 443819)
+- Fix client message forwarding bug.
+- Fix focus issue when moving non top-level windows.
+
+-------------------------------------------------------------------
+Thu Dec  4 07:08:58 CET 2008 - coolo@suse.de
+
+- fix prereqs for the branding packages
+
+-------------------------------------------------------------------
+Mon Dec  1 18:59:38 CET 2008 - rodrigo@novell.com
+
+- Add supplements for branding packages
+
+-------------------------------------------------------------------
+Mon Dec  1 08:03:36 EST 2008 - davidr@novell.com
+
+- Fix unnecessary breakage of libdecoration API.
+
+-------------------------------------------------------------------
+Sun Nov 30 13:44:27 EST 2008 - davidr@novell.com
+
+- Fix one more clipping issue in the NOMAD patch.
+
+-------------------------------------------------------------------
+Fri Nov 28 12:42:34 IST 2008 - cyberorg@opensuse.org
+
+- Add missing translations 
+  http://bugs.opencompositing.org/show_bug.cgi?id=1081 
+
+-------------------------------------------------------------------
+Thu Nov 27 16:13:40 CET 2008 - rodrigo@novell.com
+
+- Added %version to Provides for compiz-branding
+
+-------------------------------------------------------------------
+Wed Nov 26 14:51:22 EST 2008 - davidr@novell.com
+
+- Fix another nasty clipping issue when drawing
+  non top-level windows.
+- Fix compositing manager window movement of unmanaged
+  windows.
+
+-------------------------------------------------------------------
+Wed Nov 26 13:56:24 CET 2008 - rodrigo@novell.com
+
+- Added -branding-openSUSE and branding-SLE subpackages (bnc#432649)
+- Make compiz require compiz-branding virtual package
+- Use 'cube-image' as the name of the image to use in
+  compiz-default-settings.diff
+- Review latest changes
+
+-------------------------------------------------------------------
+Wed Nov 26 12:59:00 IST 2008 - cyberorg@opensuse.org
+
+- Fix ABI version 
+
+-------------------------------------------------------------------
+Fri Nov 21 12:55:49 EST 2008 - davidr@novell.com
+
+- Add missing ABI version bump to NOMAD patch.
+
+-------------------------------------------------------------------
+Fri Nov 21 04:16:44 EST 2008 - davidr@novell.com
+
+- Fix decorator starting issue.
+
+-------------------------------------------------------------------
+Thu Nov 20 22:45:00 EST 2008 - davidr@novell.com
+
+- Update compiz-ldpreload-indirect.diff so it doesn't break
+  Xdmx support.
+
+-------------------------------------------------------------------
+Wed Nov 19 09:50:24 EST 2008 - davidr@novell.com
+
+- Fix bug that caused wobbly plugin to crash.
+
+-------------------------------------------------------------------
+Tue Nov 18 14:46:56 EST 2008 - davidr@novell.com
+
+- Add another minor clippig fix to NOMAD patch.
+- Add background drawing fix to NOMAD patch.
+- Add input only window handling fix to NOMAD patch.
+
+-------------------------------------------------------------------
+Sun Nov 16 11:05:00 EST 2008 - davidr@novell.com
+
+- Add fixes for wobbly non top-level window support to
+  NOMAD patch.
+- Add obs plugin non top-level window fixes to NOMAD patch.
+- Add cube plugin non top-level window opacity fix to
+  NOMAD patch.
+- Fix window damage issues in NOMAD patch.
+- Add scale plugin non top-level window fixes to NOMAD patch.
+- Add water plugin non top-level window fixes to NOMAD patch.
+- Add scale plugin thumbnail drawing fix to NOMAD patch.
+- Add switcher plugin non top-level window fixes to NOMAD patch.
+
+-------------------------------------------------------------------
+Fri Nov 14 16:35:51 EST 2008 - davidr@novell.com
+
+- Fix a number of clipping issues in NOMAD patch.
+- Add non top-level window movement fix to NOMAD patch.
+- Add fix for wobbly effect when sub windows are
+  involved to NOMAD patch.
+
+-------------------------------------------------------------------
+Thu Oct 30 17:45:23 CEST 2008 - rodrigo@novell.com
+
+- Add Provides: windowmanager as stated in bnc#440195 for other
+  window managers
+
+-------------------------------------------------------------------
+Sun Oct 12 09:57:26 EDT 2008 - davidr@novell.com
+
+- Fix serious memory leak in NOMAD patch.
+
+-------------------------------------------------------------------
+Thu Oct  9 11:32:32 CEST 2008 - rodrigo@novell.com
+
+- Updated NOMAD patches from David Reveman
+
+-------------------------------------------------------------------
+Tue Oct  7 13:22:01 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Tue Oct  7 14:50:50 IST 2008 - cyberorg@opensuse.org
+
+- remove old patch 
+
+-------------------------------------------------------------------
+Mon Oct  6 14:14:12 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Sat Oct  4 22:09:47 IST 2008 - cyberorg@opensuse.org
+
+- Fix fallback wm, fixes bnc #432327 
+
+-------------------------------------------------------------------
+Mon Sep 29 16:42:22 CEST 2008 - rodrigo@novell.com
+
+- Review and merge changes from X11:Compiz
+
+-------------------------------------------------------------------
+Fri Sep 19 12:47:08 IST 2008 - cyberorg@opensuse.org
+
+- use rectangle mode for performance bnc #390776
+- use transparent cube on rotation
+- rename compiz-default-gconf-settings.diff to compiz-default-settings.diff
+
+-------------------------------------------------------------------
+Wed Sep 17 12:17:36 IST 2008 - cyberorg@opensuse.org
+
+- 0.7.8 release
+- New plugin "obs" that handles opacity, brightness 
+  and saturation bindings and matches.
+- Put unresponsive window greyout, including options 
+  to configure it, to fade plugin.
+- Add "constant fade time" fade mode to fade plugin.
+- Enhanced timer infrastructure 
+- Added matching for window's alpha channel (match type rgba=[0|1]).
+- Reflect new Metacity "spacer" button type in gtk-window-decorator.
+- Various bugfixes.
+- Recommends simple-ccsm-kde4
+
+-------------------------------------------------------------------
+Mon Sep 15 16:01:33 IST 2008 - cyberorg@opensuse.org
+
+- Changes for new animation plugin reorganization
+- l10n updates
+- Improve focus stealing prevention.
+- Limit number of damage rects in one screen repaint.
+- Improved handling of the "process killer" process.
+- Adapt patches to the latest code
+
+-------------------------------------------------------------------
+Thu Sep 10 00:00:00 CEST 2008 - davidr@novell.com
+
+- Include NOMAD changes with support for non top-level window
+  compositing.
+
+-------------------------------------------------------------------
+Thu Jul 31 19:52:55 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice
+
+-------------------------------------------------------------------
+Mon Jul 28 10:22:58 CEST 2008 - ro@suse.de
+
+- remove xgl dependencies for > 11.0 
+
+-------------------------------------------------------------------
+Mon Jul 28 19:12:05 IST 2008 - cyberorg@opensuse.org
+
+- fix patching of kde4 
+
+-------------------------------------------------------------------
+Tue Jul  1 16:35:45 CEST 2008 - mhopf@suse.de
+
+- Cleanup of no longer used patches.
+- Add compile support for kde 4.1, courtesy of Dirk Mueller.
+
+-------------------------------------------------------------------
+Tue Jun 24 15:03:27 CEST 2008 - dmueller@suse.de
+
+- remove unnecessary linking of (disappeared) plasma lib (bnc#400088)
+
+-------------------------------------------------------------------
+Wed Jun 18 18:34:00 IST 2008 - cyberorg@opensuse.org
+
+- Add patch compiz-kde4-unlink-plasma.diff
+
+-------------------------------------------------------------------
+Wed Jun 18 18:34:00 IST 2008 - cyberorg@opensuse.org
+
+- kde4 paint fix patch
+
+-------------------------------------------------------------------
+Sat May 31 19:30:00 IST 2008 - cyberorg@opensuse.org
+
+- Rewrite of place plugin, which significantly improves multi-output
+  behaviour.
+- Configurable multi-output behaviour in place.
+- Removed plane plugin. Former plane plugin users are encouraged to use
+  the wall plugin of Compiz Fusion.
+- Removed cube wallpaper painting. Users are encouraged to use the Compiz
+  Fusion wallpaper plugin instead.
+- Place plugin viewport placement viewport numbers are now 1-based.
+- Panel and desktop selection mode in switcher plugin.
+- Improved painting behaviour when using overlapping outputs.
+- Gtk-window-decorator now emits accessibility events when switching.
+- Gtk-window-decorator behaviour when using Metacity themes has been
+  improved to match Metacity better.
+- KDE4-window-decorator has been adapted to current KDE4 API.
+- Various bugfixes.
+
+-------------------------------------------------------------------
+Mon May 26 17:31:17 CEST 2008 - rodrigo@suse.de
+
+- Changed compiz-decorator to try KDE4 window decorator before
+  KDE3 one
+
+-------------------------------------------------------------------
+Tue May 20 11:23:41 CEST 2008 - rodrigo@suse.de
+
+- Added compiz-fix-sm.diff from llunak@novell.com 
+
+-------------------------------------------------------------------
+Mon May 12 11:56:56 CEST 2008 - schwab@suse.de
+
+- Work around broken Qt configuration.
+
+-------------------------------------------------------------------
+Mon May 05 14:00:00 IST 2008 - cyberorg@opensuse.org
+
+- Fix compiz-decorator to start kde4-window-decorator properly
+
+-------------------------------------------------------------------
+Wed Apr 30 20:17:02 CEST 2008 - rodrigo@suse.de
+
+- Added compiz-blur-buffer-overflow-fix.diff to increase first pass
+  shader buffer, to fix buffer overflows with gaussian shader from
+  cyberorg@opensuse.org in the X11:XGL build service repository
+
+-------------------------------------------------------------------
+Mon Apr 28 17:06:00 IST 2008 - cyberorg@opensuse.org
+
+- Fix *control-center* deps
+
+-------------------------------------------------------------------
+Tue Apr 22 14:29:49 CEST 2008 - rodrigo@suse.de
+
+- Disable gnome-xgl-settings, its functionality is now provided
+  in simple-ccsm.
+- Depend on gnome-control-center*, not control-center2 
+
+-------------------------------------------------------------------
+Mon Apr 14 20:19:29 CEST 2008 - mhopf@suse.de
+
+- Update from buildservice.
+
+-------------------------------------------------------------------
+Thu Apr 03 22:03:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.4 release
+- remove compiz-prepend-core-to-gconf.diff as proper fix is applied upstream
+- Configurable handling of overlapping output devices.
+- Enhanced focus stealing prevention with configurable amount of focus
+  stealing prevention.
+- Added configurable, optional delay for edge actions to prevent
+  accidential invocation.
+- Generalized vertex system to improve plugin compatibility.
+- Optimized gaussian blur shaders to support more hardware.
+- Improved unredirection of fullscreen windows.
+- Several bugfixes.
+- Translation updates.
+
+-------------------------------------------------------------------
+Fri Mar 28 00:52:55 IST 2008 - cyberorg@cyberorg.info
+
+- Add compiz-prepend-core-to-gconf.diff from Guillaume Seguin.
+
+-------------------------------------------------------------------
+Wed Mar 19 15:59:55 CET 2008 - mhopf@suse.de
+
+- exec'ing decorator in compiz-decorator.
+- Redirecting in/out of director from/to /dev/null.
+- Updated compiz-core-default-plugins.diff to fix strange bug WRT gconf.
+
+-------------------------------------------------------------------
+Wed Mar 19 12:56:44 CET 2008 - mhopf@suse.de
+
+- Rewrote libIndirectGL patch to really support AIGLX and Xgl on all cards.
+
+-------------------------------------------------------------------
+Fri Mar 14 20:22:00 IST 2008 - cyberorg@cyberorg.info
+
+- add default plugins to load if gconf is used
+
+-------------------------------------------------------------------
+Fri Mar 14 13:25:00 IST 2008 - cyberorg@cyberorg.info
+
+- remove kde4-kwin version requirement, as 4.0.6 is available in unstable repo only
+
+-------------------------------------------------------------------
+Wed Mar 12 18:48:49 CET 2008 - mhopf@suse.de
+
+- Fixed compilation problem
+- Disabled possibility to build with static Mesa.
+
+-------------------------------------------------------------------
+Wed Mar 12 00:35:00 IST 2008 - cyberorg@cyberorg.info
+
+- start decorator in initScreen patch from onestone's commit
+- gnome-xgl-settings-remove-gconf.diff cleanup from Rodrigo
+- minor modification to compiz-decorator add x in variables
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@cyberorg.info
+
+- Many small fixes in compiz-decorator
+- add proper fallback decorator if no default available (patch from crdlb)
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.2 development release
+- Several bugfixes
+- Translation support in gtk-window-decorator.
+- Updated translations.
+- Full session save/restore in a plugin.
+
+-------------------------------------------------------------------
+Fri Feb 08 01:20:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.0 development release
+- move svg plugin to -gnome package due to librsvg dep
+- add compiz-decorator script to start decorator according to DE
+- multi-display support
+- kde4-window-decorator
+- Added mouse wheel handling to g-w-d
+
+-------------------------------------------------------------------
+Wed Jan 30 00:14:42 CET 2008 - dreveman@suse.de
+
+- Better RANDR support.
+
+-------------------------------------------------------------------
+Tue Dec 04 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- sync to latest git
+- many bug fixes including kwd fixes
+- back to action system used in 0.5.2
+- kconfig plugin back in this release
+
+-------------------------------------------------------------------
+Tue Oct 30 18:32:10 CET 2007 - btimothy@suse.de
+
+- Fix gnome-xgl-info to parse the primary vga controller
+  properly when mulitple devices are outputted from
+  `hwinfo --gfxcard`.  Also fixes leading zero problem
+  with device indexes.  #335445
+
+-------------------------------------------------------------------
+Fri Oct 19 13:45:00 IST 2007 - cyberorg@cyberorg.info
+
+- Update to version 0.6.2
+- Remove settings tabs from gnome-xgl-settings, it launches ccsm now
+- Support for automatically starting one decorator per screen.
+- various stacking problem fixes.
+- Fixes for various focus issues.
+- Minor other bug fixes.
+- kconfig plugin no in this version
+
+-------------------------------------------------------------------
+Thu Sep  6 19:45:33 CEST 2007 - dreveman@suse.de
+
+- Fix plugin load crash in gnome-xgl-settings. #296701
+
+-------------------------------------------------------------------
+Mon Aug 27 13:45:00 IST 2007 - cyberorg@cyberorg.info
+
+- Apply compiz-prepend-glib-gconf-to-plugins-list.diff, 
+  prevent gconf unload if compiz launched with gconf.
+- Apply compiz-disable-xcb-support.diff to build on 10.2
+
+-------------------------------------------------------------------
+Wed Aug 22 15:25:50 CEST 2007 - mhopf@suse.de
+
+- Fix strict aliasing issue in gnome-xgl-settings (#241515).
+- Removed -fno-strict-aliasing (except for Mesa where necessary).
+
+-------------------------------------------------------------------
+Wed Aug 22 19:11:00 IST 2007 - cyberorg@cyberorg.info
+
+- Add %post and %postun to run ldconfig- shut rpmlint up
+- Fix config.kcfg installation
+
+-------------------------------------------------------------------
+Mon Aug 20 20:51:41 CEST 2007 - dreveman@suse.de
+
+- Update to compiz 0.5.4, which include proper KDE
+  configuration support and fixes to a number of upstream
+  bugs, including #258390.
+- Track changes to compiz in gnome-xgl-settings and fix issue
+  that caused it to crash. (#296701)
+- Move gconf plugin into compiz-gnome package.
+
+-------------------------------------------------------------------
+Tue Aug 14 12:31:01 IST 2007 - cyberorg@cyberorg.info
+
+- Fix Requires for -devel package
+
+-------------------------------------------------------------------
+Tue Aug  7 15:10:01 IST 2007 - cyberorg@cyberorg.info
+
+- Make gnome-xgl-switch and gnome-xgl-info install in proper place
+- clean up spec file
+
+-------------------------------------------------------------------
+Mon Aug  6 16:41:01 CEST 2007 - dreveman@suse.de
+
+- Update gnome-xgl-settings so it works with compiz 0.5.2.
+- Fix schemas install.
+- Make sure the key-bindings dir exist.
+
+-------------------------------------------------------------------
+Fri Aug  3 23:45:11 CEST 2007 - dreveman@suse.de
+
+- Update to compiz 0.5.2.
+
+-------------------------------------------------------------------
+Tue Jul 17 11:35:48 CEST 2007 - mhopf@suse.de
+
+- Fix specfile.
+
+-------------------------------------------------------------------
+Mon Jul 16 18:59:01 CEST 2007 - mhopf@suse.de
+
+- Updated to latest git version (0.5.1_git_xxx) to make compiz compile against
+  new libwnck.
+- New schema system.
+- Moved gnome-xgl-info and gnome-xgl-switch back to main package (always
+  needed, and no gnome needed, despite the name).
+- gnome-xgl-info and gnome-xgl-switch reside in /usr/bin now.
+- Cleanup of developer files.
+
+-------------------------------------------------------------------
+Tue May 15 15:23:40 CEST 2007 - dmueller@suse.de
+
+- move gtk-window-decorator and its requirements to -gnome
+- make it possible to install compiz-kde without requiring compiz-gnome
+
+-------------------------------------------------------------------
+Mon Apr 23 11:33:35 CEST 2007 - mhopf@suse.de
+
+- Don't tell users to enale 24bit before they're even running the right
+  driver (#266157).
+
+-------------------------------------------------------------------
+Thu Apr 12 15:47:42 CEST 2007 - mhopf@suse.de
+
+- Added autoconf check for Fuse version.
+- Added test for XFixes version.
+- Added missing include.
+- Testing for 1021 instead of 1030 for metacity-devel.
+
+-------------------------------------------------------------------
+Wed Apr 11 19:49:34 CEST 2007 - mhopf@suse.de
+
+- Updated to 0.5.0:
+
+- Remove stencil buffer requirement.
+- Focus stealing prevention support.
+- Blur plugin that provide support for blurring windows and contents behind
+  translucent windows.
+- Fragment attribute interface that allow plugins to perform more advanced
+  fragment shading effects and integrate properly with other plugins.
+- Extensible window matching interface and new option type that provide
+  advanced window selection functionality.
+- Plugin that provide a composited video interface for efficient video
+  playback.
+- FUSE plugin that maps compiz options to a file-system and allow efficient
+  manipulation of options by reading and writing files.
+- Better occlusion detection and more efficient rendering.
+- Flat file configuration backend.
+
+-------------------------------------------------------------------
+Wed Mar 28 17:09:02 CEST 2007 - mhopf@suse.de
+
+- Removed temporary workaround.
+- Revoked requirement change.
+
+-------------------------------------------------------------------
+Tue Mar 27 13:35:46 CEST 2007 - cyberorg@cyberorg.info
+
+- Move metacity requirement from compiz to compiz-gnome package.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:46:41 CET 2007 - mhopf@suse.de
+
+- Update to 0.4.0
+- Additional patches, compare SLE10-SP1 version.
+- More translations.
+- Major cleanup.
+- Removed no longer needed compiz-broken-Mesa-decl.diff (Mesa update).
+- Commented temporary workaround for libpanel-applet-2.la dependency
+  (#256134).
+
+-------------------------------------------------------------------
+Tue Mar 20 15:22:30 CET 2007 - danw@suse.de
+
+- Add xgl-settings-246659-hwinfo.patch from sle10-sp. #255939
+
+-------------------------------------------------------------------
+Tue Mar 20 15:06:37 CET 2007 - mhopf@suse.de
+
+- Minor cleanup.
+
+-------------------------------------------------------------------
+Mon Mar 19 12:56:40 CET 2007 - pgajdos@suse.cz
+
+- gconf scriptlets, use %find_lang, dependiences 
+
+-------------------------------------------------------------------
+Wed Mar 14 10:35:09 CET 2007 - pgajdos@suse.cz
+
+- fixed: gconf scriptlets, use %find_lang, dependiences 
+
+-------------------------------------------------------------------
+Tue Mar 13 14:01:37 CET 2007 - pgajdos@suse.cz
+
+- fixed: 'warning: array subscript is above array bounds'
+- array-subscript.patch
+
+-------------------------------------------------------------------
+Fri Mar  2 17:32:10 CET 2007 - mhopf@suse.de
+
+- Update %setup to be more compatible (#249998).
+
+-------------------------------------------------------------------
+Fri Mar  2 16:48:30 CET 2007 - mhopf@suse.de
+
+- Re-add metacity support (metacity-devel needed for suse >= 10.3)
+- Fixed loading of libIndirectGL on x86-64 (#249411)
+
+-------------------------------------------------------------------
+Thu Feb  8 08:50:26 CET 2007 - aj@suse.de
+
+- Add defattr.
+- Add requires for devel package.
+- Add -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Fri Feb  2 12:54:50 CET 2007 - mhopf@suse.de
+
+- Don't build and link statically against local Mesa any longer,
+  if libIndirectGL is available. (#234154)
+
+-------------------------------------------------------------------
+Fri Feb  2 11:58:59 CET 2007 - mhopf@suse.de
+
+- Update gnome-xgl-settings tarball:
+  - incorporate earlier patches
+  - fix detection in machines with multiple video cards (#177818)
+  - always provide link to wiki (#187799)
+  - don't complain about very large monitors (#238303)
+  - update icon (#240419)
+
+-------------------------------------------------------------------
+Thu Feb  1 14:56:10 CET 2007 - mhopf@suse.de
+
+- Update to compiz 0.3.7 as in SLE10-SP1
+- Include new logo for gnome-xgl-settings. #236822
+
+-------------------------------------------------------------------
+Mon Jan 22 22:56:54 CET 2007 - jpr@suse.de
+
+- Make transluceny and other options work in the settings dialog
+  (#235542)
+- More default setting fixes for compiz (#236541)
+
+-------------------------------------------------------------------
+Fri Jan 19 14:26:31 CET 2007 - mhopf@suse.de
+
+- Fix upgrade path for gnome: PreReq (Andreas Hanke) #236350.
+- Fix upgrade path for gnome: gnome-xgl-settings #235177.
+
+-------------------------------------------------------------------
+Wed Jan 17 13:08:40 CET 2007 - mhopf@suse.de
+
+- Fixed MD5 warning message #207624.
+
+-------------------------------------------------------------------
+Fri Jan 12 12:44:36 CET 2007 - mhopf@suse.de
+
+- Added support for changing gnome main directory to /usr.
+- Nuked no longer working SL10.0 support.
+- Moved kde-window-decorator to own subpackage.
+- Using non-system names for user macros.
+
+-------------------------------------------------------------------
+Sat Jan  6 12:53:00 CET 2007 - cyberorg@cyberorg.info
+
+- Add missing kde-window-decorator
+
+-------------------------------------------------------------------
+Fri Jan  5 12:09:52 CET 2007 - mhopf@suse.de
+
+- Update to 0.3.6.
+- Update of Mesa to 6.5.2.
+- Creating Mesa linux-indirect-static config dynamically now.
+- More cleanup of spec file.
+- Updated default plugins.
+
+-------------------------------------------------------------------
+Tue Dec 19 15:23:05 CET 2006 - mhopf@suse.de
+
+- Fix AllocAndFetchScreenConfigs in Mesa, should work with XCB now. #222882
+- More cleanup of specfile.
+- Added changelog to spec file once again.
+
+-------------------------------------------------------------------
+Tue Dec 19 11:41:32 CET 2006 - mhopf@suse.de
+
+- Added glfinish patch. Works well on i915 again. #222677
+
+-------------------------------------------------------------------
+Fri Nov 24 13:38:12 CET 2006 - mhopf@suse.de
+
+- Remove libGL.a dependency in pkgconfig file.
+
+-------------------------------------------------------------------
+Thu Nov 23 11:44:40 CET 2006 - mhopf@suse.de
+
+- Don't remove gwd.schemas, but install it.
+
+-------------------------------------------------------------------
+Wed Nov 22 19:09:54 CET 2006 - mhopf@suse.de
+
+- updated to 0.3.4
+
+-------------------------------------------------------------------
+Fri Nov 17 15:02:38 CET 2006 - mhopf@suse.de
+
+- Cleaned up spec file (Thanks to Jigish Gohil <jigish.gohil@gmail.com>).
+- Added -devel package.
+
+-------------------------------------------------------------------
+Tue Nov 14 15:13:09 CET 2006 - mhopf@suse.de
+
+- updated to 0.3.2
+
+-------------------------------------------------------------------
+Mon Nov 13 20:04:14 CET 2006 - dreveman@suse.de
+
+- Fix support for _NET_MOVERESIZE_WINDOW. #220114
+
+-------------------------------------------------------------------
+Tue Oct 31 18:05:39 CET 2006 - dreveman@suse.de
+
+- Add opensuse logo and use it by default instead of the
+  freedesktop logo.
+
+-------------------------------------------------------------------
+Tue Oct 31 17:18:13 CET 2006 - danw@suse.de
+
+- Add freeglut dependency to compiz-gnome. #210940. Also move
+  the 3ddiag and xgl-hardware-list dependencies from compiz to
+  compiz-gnome and add pciutils (for lspci)
+
+-------------------------------------------------------------------
+Fri Oct 27 17:34:35 CEST 2006 - dreveman@suse.de
+
+- Some missing options have been added to compiz.schemas.in.
+- A typo that caused the prev_all option in switcher plugin
+  to not work has been fixed.
+- Max texture size and the maximium size that should be used
+  for windows are now calculated more properly. (188297)
+- Support for_NET_WM_STATE_DEMANDS_ATTENTION hint has been
+  fixed. (197233)
+- Support for WM_TAKE_FOCUS hint has been fixed. (213074)
+- Default value for active_plugins in compiz.schemas.in has
+  been fixed.
+- Automatic launching of gtk-window-decorator has been fixed.
+
+-------------------------------------------------------------------
+Fri Oct 13 17:04:45 CEST 2006 - dreveman@suse.de
+
+- Update to version 0.2 of compiz. New plugins: dbus, screenshot
+and plane. Metacity theme support.
+
+-------------------------------------------------------------------
+Thu Oct 12 20:57:16 CEST 2006 - danw@suse.de
+
+- Quick fix to make gnome-xgl-settings work again with the latest
+  libglade.
+
+-------------------------------------------------------------------
+Fri Sep 15 20:56:00 CEST 2006 - danw@suse.de
+
+- Update to gnome-xgl-settings 0.7, incorporating previous
+  patches plus a new-and-improved sax2 path to fix #202051
+
+-------------------------------------------------------------------
+Thu Sep 14 15:11:40 CEST 2006 - stbinner@suse.de
+
+- move gnome-xgl-info and gnome-xgl-switch to base rpm (#191183)
+- add check to gnome-xgl-switch for gdm-safe-restart (#191183)
+- adapt gnome-xgl-switch to new SuSEconfig.kdm path (#205260)
+- add missing dependency on 3ddiag package (#205246)
+- make compiz-gnome depend on compiz base package (#191183)
+
+-------------------------------------------------------------------
+Tue Aug 29 20:42:07 CEST 2006 - stbinner@suse.de
+
+- split on GNOME depending parts into -gnome subpackage (#191183)
+
+-------------------------------------------------------------------
+Sun Aug  6 12:44:29 CEST 2006 - cthiel@suse.de
+
+- fix build with X.org 7.1
+
+-------------------------------------------------------------------
+Fri Jul 28 17:55:52 CEST 2006 - dreveman@suse.de
+
+- Fix lotus client issue with compiz configuring windows before
+  being managed. bnc 195409.
+- Motif hint update to work around lotus client issue. bnc 195409.
+- Scale algorithm update to make lotus client windows not show up
+  in top left corner. bnc 195409.
+
+-------------------------------------------------------------------
+Thu Jun 29 13:40:01 CEST 2006 - mhopf@suse.de
+
+- Added patch for compiling against broken GLX_EXT_texture_from_pixmap
+  declaration in Mesa's glx.h
+
+-------------------------------------------------------------------
+Wed Jun 21 17:26:54 CEST 2006 - dreveman@suse.de
+
+- Protect against circular transient dependencies. (bnc 186825)
+- Constrain window dimensions if they are too large.
+
+-------------------------------------------------------------------
+Tue Jun 20 17:24:43 CEST 2006 - danw@suse.de
+
+- Fix a mistranslation and a typo in de.po (186618)
+- Add "Desktop Effects" to the po files where we have a translation
+  for "Desktop Effects:", to properly localize the capplet in the
+  control center. (179463)
+- Break some very long lines in translations, fix a padding bug that
+  didn't show up with the English strings, remove a sizing hack
+  that causes the window to keep growing wider forever in zh_CN and
+  zh_TW.
+
+-------------------------------------------------------------------
+Tue Jun 20 00:01:15 CEST 2006 - dreveman@suse.de
+
+- Trap errors correctly when getting motif hints. (bnc 185852) 
+
+-------------------------------------------------------------------
+Mon Jun 19 17:19:52 CEST 2006 - danw@suse.de
+
+- Add additional translations from localization team
+
+-------------------------------------------------------------------
+Mon Jun 19 16:52:10 CEST 2006 - dreveman@suse.de
+
+- Use xkb state events to determine if modifier keys are released.
+  (bnc 184483)
+
+-------------------------------------------------------------------
+Fri Jun 16 22:59:39 CEST 2006 - dreveman@suse.de
+
+- Handle motif WM hints correctly. (bnc 185852)
+- Add modal dialogs to window types that should be in switcher
+  and scale mode. (bnc 185749)
+
+-------------------------------------------------------------------
+Thu Jun 15 19:42:42 CEST 2006 - dreveman@suse.de
+
+- Fix highlighting of window buttons. (bnc 185293)
+- Add --replace option to gnome-window-decorator. (bnc 185296)
+- Fix dependency issue with switcher plugin. (bnc 183676)
+
+-------------------------------------------------------------------
+Fri Jun  9 19:50:28 CEST 2006 - danw@suse.de
+
+- Add translations
+
+-------------------------------------------------------------------
+Fri Jun  9 14:41:58 CEST 2006 - dreveman@suse.de
+
+- Allow windows to be both maximized and shaded. (bnc 182063)
+
+-------------------------------------------------------------------
+Fri Jun  9 02:15:37 CEST 2006 - dreveman@suse.de
+
+- Constrain window geometry in configure requests correctly.
+  (bnc 183121)
+- Add window shading. (bnc 182063)
+
+-------------------------------------------------------------------
+Thu Jun  8 13:52:02 CEST 2006 - dreveman@suse.de
+
+- Fix issue with switcher window sometimes not being visible.
+  (bnc 182519)
+
+-------------------------------------------------------------------
+Thu Jun  8 00:34:38 CEST 2006 - dreveman@suse.de
+
+- Add default move and resize key-bindings. (bnc 181273)
+- Fix positioning of fullscreen windows. (bnc 181907)
+- Fix major performance issue. (bnc 181909)
+- Fix issue that could cause compiz to crash. (bnc 182430)
+
+-------------------------------------------------------------------
+Mon Jun  5 16:49:52 CEST 2006 - danw@suse.de
+
+- If installing proprietary drivers fails, send the user to the
+  wiki, not sax (181228). If the card is unrecognized but has
+  recommended drivers, install them (180986).
+
+-------------------------------------------------------------------
+Fri Jun  2 14:39:17 CEST 2006 - dreveman@suse.de
+
+- Don't show fallback name in titlebar. (bnc 173059)
+- Fix keyboard movement issues. (bnc 179902)
+- Fix clipping issue with switcher. (bnc 179828)
+- Disable skydome animation while cube is unfolded. (bnc 179833)
+- Save initial viewport when startup notification is received.
+  (bnc 180224)
+- Add hide_skip_taskbar_windows option. (bnc 180055)
+- Set _NET_WM_DESKTOP on all windows to 0; KDE's pager and
+  tasklist require this to be set. (bnc 178320)
+- Hide tooltips on NotifyGrab. (bnc 180692)
+- Include java window placement workaround. (bnc 151836)
+
+-------------------------------------------------------------------
+Fri May 26 22:49:21 CEST 2006 - danw@suse.de
+
+- Update gnome-xgl-settings to 0.6, fixing:
+- Don't consider 3D to be configured unless it's configured with
+  the right driver (#178906)
+- Use zen-installer rather than zen-updater (#176553)
+- Don't consider SaX2 to have failed if the user cancels it
+  (ie, stay in the "you need to run sax" state, don't move to the
+  "i give up, go look at the wiki" state). (#178902)
+
+-------------------------------------------------------------------
+Fri May 26 12:34:27 CEST 2006 - dreveman@suse.de
+
+- Task switcher (ALT-TAB) able to "show all" (bnc 173376)
+- Fix so swicher doesn't eat keystrokes (bnc 177650)
+- MSB byte order fix (bnc 178171)
+- Fix keyboard navigation in scale plugin (bnc 178216)
+- Don't add windows that appear after the switcher is popped up
+  (bnc 178350)
+- Add maximize_window_horizontally,
+  maximize_window_vertically, toggle_window_maximized,
+  toggle_window_maximized_horizontally,
+  toggle_window_maximized_vertically bindings (bnc 178220)
+- Fix window gravity issue (bnc 178765)
+- Fix cube rendering issue (bnc 178233)
+- Treat dock windows with below state as normal windows
+  (bnc 178316)
+- Make sloppy focus default in scale mode (bnc 174788)
+
+-------------------------------------------------------------------
+Sun May 21 15:28:26 CEST 2006 - dreveman@suse.de
+
+- Fix stacking and sync request issues. (bnc #173416)
+- Fix shadow performance in g-w-d.
+
+-------------------------------------------------------------------
+Fri May 19 22:52:28 CEST 2006 - danw@suse.de
+
+- Patch compiz.schemas to turn off wobbly windows (bnc 176429)
+- Update gnome-xgl-settings tarball, supporting new xgl-hardware-list
+  format
+- Fix Mesa build to use $RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Fri May 19 17:26:25 CEST 2006 - dreveman@suse.de
+
+- Session management fix. (bnc #176746)
+- Fix focus option in wobbly plugin.
+- Allow use of larger window icons in switcher. (bnc #177044)
+
+-------------------------------------------------------------------
+Wed May 17 19:47:26 CEST 2006 - joeshaw@suse.de
+
+- Add patch to turn the audible bell off by default.  (bnc #176424)
+
+-------------------------------------------------------------------
+Wed May 17 13:19:50 CEST 2006 - dreveman@suse.de
+
+- New compiz snapshot, compiz-restart.diff no longer needed.
+- Icon support in scale plugin. (bnc 174788) 
+- Fix key-bindings in scale plugin.
+- Fix window position issue when transitioning to withdrawn state.
+- Add "minimal" option to gnome-window-decorator so it can be used
+  when running the login manager. (bnc 173901)
+- Fix issue that caused switcher window to lose decorations
+  when some window is unmapped.
+
+-------------------------------------------------------------------
+Wed May 17 06:43:51 CEST 2006 - danw@suse.de
+
+- Add compiz-restart.diff to make sure all pending MapRequest
+  events are processed before compiz exits, to fix 175558
+  (panel doesn't show up if you explicitly start compiz from
+  gnome-session-properties).
+- Update gnome-xgl-settings tarball to 0.5, incorporating
+  xgl-settings-options.diff, adding code to run SaX2 in certain
+  cases, syncing strings to the versions sent for translation,
+  adding cube keybinding editors, and fixing the logout-request
+  to explicitly request a logout rather than a reboot or shutdown.
+
+-------------------------------------------------------------------
+Sun May 14 13:58:01 CEST 2006 - dreveman@suse.de
+
+- Fix issue that caused some windows to not be unmapped
+  correctly. Most noticeable on tooltips.
+
+-------------------------------------------------------------------
+Fri May 12 15:03:33 CEST 2006 - dreveman@suse.de
+
+- Make sure window is mapped when getting the window pixmap.
+  (bnc 173248)
+- Fix placement issues with maximized windows.
+- Allow click on window decorations to trigger window action menu.
+- Don't show window action menu on desktop and dock windows.
+- Fix issue with unmaximizing initially maximized windows.
+- Fix a server grab issue that could cause windows to get added
+  twice.
+- Handle North and West gravity correctly for ConfigureRequest.
+- Fix some issues with moving windows into withdrawn state.
+- Don't show windows that request to not be in tasklists in
+  switcher.
+- Only go into show desktop mode when some window is covering the
+  desktop.
+
+-------------------------------------------------------------------
+Mon May  8 03:39:07 CEST 2006 - danw@suse.de
+
+- Add xgl-settings-options.diff to patch out some not-quite-working
+  code in xgl-settings. 
+
+-------------------------------------------------------------------
+Mon May  8 01:45:37 CEST 2006 - dreveman@suse.de
+
+- Audible and visual bell control. (bnc 163251)
+- Change to Shift instead of Control for "move with snapping".
+- Fix crash with handling of modal dialogs.
+- Fix reparenting bug.
+- Show icon and minimized windows in switcher. (bnc 168590)
+
+-------------------------------------------------------------------
+Sun May  7 23:00:49 CEST 2006 - danw@suse.de
+
+- Fix default scale activation corner (169423)
+- Make compiz translatable
+- Update xgl-settings tarball for compiz changes and to add
+  "Advanced Options" page
+
+-------------------------------------------------------------------
+Wed May  3 16:59:21 CEST 2006 - dreveman@suse.de
+
+- Fix unminimize to maximized window. (bnc 171465)
+- When a window is activated, move to cube side that contains the
+  biggest part of the window. (bnc 152677)
+- Don't constrain the cursor when moving and resizing. Fixes some
+  issues with the maximize snap-off feature. 
+
+-------------------------------------------------------------------
+Wed May  3 00:11:30 CEST 2006 - dreveman@suse.de
+
+- Fix major window stacking order bug.
+- Make sure cube unfolds completely when using the unfold feature.
+- Update to final enums for GLX_EXT_texture_from_pixmap.
+- Fix ConfigureRequest handling. (bnc 171143)
+
+-------------------------------------------------------------------
+Mon May  1 22:39:56 CEST 2006 - danw@suse.de
+
+- Update xgl-settings tarball to latest version, for compiz 0.10
+  and xgl-hardware-list 060501
+
+-------------------------------------------------------------------
+Sun Apr 30 15:23:08 CEST 2006 - dreveman@suse.de
+
+- Remove compiz-gconf.patch and compiz-schema.patch as they are 
+  no longer needed.
+- Configurable drop-shadows.
+- Made window decoration updates for switcher window more
+  efficient.
+- Fix issue that caused some animations to to stop.
+- Fix so that we're leaving show desktop mode when all windows
+  have been unminimized.
+- Draging a maximized window down will snap-off from being
+  maximized and moving it back up will maximize it again.
+- Fix pointer warping.
+- Add maximize effect to wobbly plugin.
+- For the rotate-to-specific-face keys, rotate counterclockwise
+  when that's faster.
+- Fix so that rotate-to-specific-face works properly when use it
+  before previous rotation is done.
+- Add show-dektop key-binding.
+- Add raise-on-click option.
+- Made screen edges drag-and-drop aware so it's possible to drag
+  from window one cube side to window on another cube side.
+- Fix bring to front option in switcher.
+- Add zoom option to switcher.
+- Cube unfolding support.
+- Don't decorate fullscreen windows.
+
+-------------------------------------------------------------------
+Tue Apr 25 22:15:46 CEST 2006 - danw@suse.de
+
+- Add compiz-gconf.patch to make it so plugins are actually loaded
+  if you run with no previous compiz gconf keys set
+
+-------------------------------------------------------------------
+Tue Apr 25 20:07:52 CEST 2006 - danw@suse.de
+
+- Add xgl-settings-scale.patch to fix a crasher when the scale
+  corner is disabled
+
+-------------------------------------------------------------------
+Mon Apr 24 17:03:28 CEST 2006 - danw@suse.de
+
+- Update to gnome-xgl-settings 0.2 and add it back to the build.
+- Patch compiz.schemas to make the switcher/initiate binding
+  clearer in gnome-keybinding-properties.
+
+-------------------------------------------------------------------
+Fri Apr 21 02:18:51 CEST 2006 - dreveman@suse.de
+
+- Add window menu binding.
+- Default bindings now the same as metacity. Alt-Button2 for
+  resizing and Alt-Button3 for window menu.
+- Add force quit dialog.
+- Add go-directly-to-cube-face bindings. 
+
+-------------------------------------------------------------------
+Thu Apr 20 03:19:51 CEST 2006 - dreveman@suse.de
+
+- Fix infinite loop in gconf plugin.
+- A lot of improvements to schema file.
+- Fix for focusable panel applets.
+- Better check if a newly-mapped window should be focused.
+- Don't add decorations to previously-undecorated windows.
+  (bnc 165393)
+- Handle gravity for ConfigureRequests. (Fixes bnc 163058)
+- Fix issue with resizing of windows with aspect ratio.
+- Fix so that scale plugin can't be initiated when no windows are
+  visible.
+- Add support for automatic unredirecting of fullscreen windows.
+  Allows fullscreen video without support for FBOs or pbuffers
+  present.
+- Fix offset that caused water plugin to crash when FBOs are not
+  available.
+- Support for PNGs on top face of cube.
+- Novell logo on top face by default.
+- Fix positioning of window buttons and only show appropriate
+  buttons.
+- Changed to "Pause" key for scale effect.
+- Fix a crasher in the screenshot binding code.
+- Fix issue that caused gnome-theme-manager to crash. (#165421)
+- Fix modal dialog handling.
+
+-------------------------------------------------------------------
+Fri Apr  7 21:08:52 CEST 2006 - danw@suse.de
+
+- Patch in an improved schemas file (and a code patch to fix a bug
+  it exposes) and remove the gconf-dump plugin. Also, after discussion
+  with JP, remove gnome-xgl-switch, since it's sort of a cruel joke at
+  this stage (it only helps you with the easy part of enabling Xgl, not
+  the hard parts).
+
+-------------------------------------------------------------------
+Fri Apr  7 17:52:55 CEST 2006 - dreveman@suse.de
+
+- Changed default key-binding for scale plugin to F11.
+- Fix darkenBack option in scale plugin.
+- Don't start scale effect when some other plugin is running.
+- Add flip_move option for only using edge flipping when moving
+  windows.
+- Fix schemas file. Patch no longer needed.
+
+-------------------------------------------------------------------
+Fri Apr  7 11:14:17 CEST 2006 - dreveman@suse.de
+
+- gconf schemas and key-binding work by Dan Winship and
+  Radek Doulik.
+- Support for screen edge flipping and hot corners.
+
+-------------------------------------------------------------------
+Thu Apr  6 00:08:10 CEST 2006 - dreveman@suse.de
+
+- Fix offset direction so that water looks better.
+- Add offset scale option.
+- Fix issue that cause wrong window to get focus when using
+  "focus follow mouse".
+- Add constrain_y option to move plugin so that acts more like
+  metacity and doesn't allow you to move windows so that the
+  titlebar is invisible.
+- Workaround that fix a FBO/raster-position issue found on newer
+  nvidia drivers. 
+
+-------------------------------------------------------------------
+Mon Apr  3 16:47:38 CEST 2006 - dreveman@suse.de
+
+- Update to CVS version.
+- Remove scissor workaround, now fixed in Mesa package.
+- CopySubBufferMESA support.
+- minimize/maximize/unmaximize key bindings.
+- Add bindings for changing window opacity.
+- Ambient and diffuse light is now fixed. Patch not needed.
+- Better focus-follow-mouse support.
+- Opacity, brightness and saturation options in switcher plugin.
+- Handle window state changes correctly.
+- "bring to front" option in switcher plugin.
+- Added all mandatory SM client callbacks
+- Add opacity option to scale plugin.
+- Fix decorations on dialog windows.
+- Add water plugin.
+- Draw outline around window title text and buttons instead of
+  small shadow.
+- Fix mipmap filtering.
+- Fix so that show desktop mode works properly.
+- Move hidden windows on viewport changes.
+- Fix so that minimize plugin can't leave windows in scaled state.
+- Add "initiate all" option to switcher plugin.
+- Fix typo that caused color parsing to be incomplete.
+- Fix so that timeouts are not only triggered when we're idle.
+- New Mesa package with CopySubBufferMESA support.
+
+-------------------------------------------------------------------
+Tue Mar 14 16:55:09 CET 2006 - mhopf@suse.de
+
+- Workaround for main remaining issue in #157051:
+  i815 does not render anything before setting a scissor region.
+- Put window in withdrawn state when being unmapped. Should make it work
+  better with KDE.
+- Fixed ambient and diffuse light.
+- Enabled building for x86_64 again.
+- More cleanup of build script.
+
+-------------------------------------------------------------------
+Mon Mar 13 19:20:34 CET 2006 - jpr@suse.de
+
+- Add simple configuration gui
+
+-------------------------------------------------------------------
+Fri Mar 10 15:58:08 CET 2006 - mhopf@suse.de
+
+- CVS update to 2006-03-09
+- copmiz update to 0.0.6:
+  - Fix panel action issue
+  - Fix issue with switcher and non-selectable window being active
+  - Minimal session support
+  - Fade plugin fixes
+  - Skydome support
+  - Better window stacking support
+
+-------------------------------------------------------------------
+Wed Mar  1 20:15:21 CET 2006 - dreveman@suse.de
+
+- Ligthing support.
+- Constrain window dimensions to max texture size.
+- Nicer drop-shadow on windows without decorations.
+- Add slow animations option which is very useful for debugging.
+- Fixed various issues found when using slow animations option.
+- Fixed bug that caused drawing errors and wrong placement of 
+  windows when being un-minimized.
+
+-------------------------------------------------------------------
+Thu Feb 23 12:51:53 CET 2006 - dreveman@suse.de
+
+- Remove gnome-desktop and control-center2 dependencies.
+- Fixed issue that caused some windows not to be decorated.
+- Fixed bug in cube plugin that could cause compiz to crash.
+- Added decorations to task switcher.
+- Added key-binding for moving backwards in task switcher.
+- Mipmap support in task switcher for much better looking
+  thumbnails.
+- Fixed issues in wobbly plugin that caused it to behave badly when
+  used at the same time as scale plugin.
+- Fixed window placement issue when going out of show desktop mode.
+
+-------------------------------------------------------------------
+Mon Feb 20 18:25:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Feb 20 12:53:52 CET 2006 - dreveman@suse.de
+
+- Fix drawing of cube with more than 4 sides.
+- Tweak zoom plugin.
+- Nearest filtering support in zoom plugin.
+- Window placement fix.
+- Input focus fixes.
+- Fixed client list bug that caused libwnck to crash.
+
+-------------------------------------------------------------------
+Wed Feb 15 01:20:56 CET 2006 - dreveman@suse.de
+
+- Handle clock rollbacks.
+- Minor placement fix for window icons.
+
+-------------------------------------------------------------------
+Tue Feb 14 01:25:20 CET 2006 - jpr@suse.de
+
+- fix BuildRequires so it builds again
+
+-------------------------------------------------------------------
+Mon Feb 13 11:47:13 CET 2006 - dreveman@suse.de
+
+- Update to version 0.0.2.
+- Modified mesa-glx-x11-texture-from-pixmap-1.patch so that glxproto.h
+  with texture from pixmap enums is not required.
+
+-------------------------------------------------------------------
+Tue Feb  7 23:01:07 CET 2006 - dreveman@suse.de
+
+- First non svn release of compiz.
+
+-------------------------------------------------------------------
+Sun Jan  8 12:28:59 CET 2006 - dreveman@suse.de
+
+- Update to svn_104, build non thread safe mesa.
+
+-------------------------------------------------------------------
+Mon Dec 19 14:27:33 CET 2005 - dreveman@suse.de
+
+- Update to svn_96.
+
+-------------------------------------------------------------------
+Thu Dec 15 18:20:37 CET 2005 - dreveman@suse.de
+
+- Use Mesa 6.4.1 and some x86_64 fixes.
+
+-------------------------------------------------------------------
+Mon Dec 12 16:00:03 CET 2005 - dreveman@suse.de
+
+- Fixed non-x86 build issue.
+
+-------------------------------------------------------------------
+Mon Dec 12 10:56:37 CET 2005 - dreveman@suse.de
+
+- Window placement, cube color and display modal dialog fixes.
+
+-------------------------------------------------------------------
+Thu Dec  8 22:44:20 CET 2005 - dreveman@suse.de
+
+ - Better default key-bindings, fixed saturation and client pinging. 
+
+
+

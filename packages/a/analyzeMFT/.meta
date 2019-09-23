@@ -1,0 +1,38 @@
+<package name="analyzeMFT" project="openSUSE:Factory">
+  <title>A python tool to deconstruct the Windows NTFS $MFT file</title>
+  <description>analyzeMFT.py is designed to fully parse the MFT file from an NTFS filesystem and present the results as accurately as possible in a format that allows further analysis with other tools. At present, it parses the attributes from a $MFT file to produce the following output:
+
+    Record Number
+    Good - if the entry is valid
+    Active - if the entry is active
+    Record type - the type of record
+    Record Sequence - the sequence number for the record
+    Parent Folder Record Number
+    Parent Folder Sequence Number
+    For the standard information attribute:
+        Creation date
+        Modification date
+        Access date
+        Entry date 
+    For up to four file name records:
+        File name
+        Creation date
+        Modification date
+        Access date
+        Entry date
+        Object ID
+        Birth Volume ID
+        Birth Object ID
+        Birth Domain ID 
+    And flags to show if each of the following attributes is present:
+        Standard Information, Attribute List, Filename, Object ID, Volume Name, Volume Info, Data, Index Root, Index Allocation, Bitmap, Reparse Point, EA Information, EA, Property Set, Logged Utility Stream 
+    Notes/Log - Field used to log any significant events or observations relating to this record
+        std-fn-shift - Populated if anomaly detection is turned on. Y/N. Y indicates that the FN create date is later than the STD create date.
+        usec-zero - Populated if anomaly detection is turned on. Y/N. Y indicates that the STD create date's microsecond value is zero. 
+
+For each entry in the MFT a record is written to an output file in CSV format.
+
+Major contributions from Matt Sabourin. 
+</description>
+  <devel project="security:forensics" package="analyzeMFT"/>
+</package>

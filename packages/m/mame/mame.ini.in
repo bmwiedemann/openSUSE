@@ -1,0 +1,33 @@
+# MAME default configuration
+
+# Core search paths
+artpath            $HOME/.mame/artwork;@DATADIR@/mame/artwork
+bgfx_path          $HOME/.mame/bgfx;@DATADIR@/mame/bgfx
+cheatpath          $HOME/.mame/cheats;@DATADIR@/mame/cheats
+crosshairpath      $HOME/.mame/crosshair;@DATADIR@/mame/crosshair
+ctrlrpath          $HOME/.mame/ctrlr;@DATADIR@/mame/ctrlr
+fontpath           @DATADIR@/mame/fonts
+hashpath           $HOME/.mame/hash;@DATADIR@/mame/hash
+languagepath       $HOME/.mame/language;@DATADIR@/mame/language
+pluginspath        $HOME/.mame/plugins;@DATADIR@/mame/plugins
+rompath            $HOME/.mame/roms;@DATADIR@/mame/roms;@DATADIR@/mame/chds
+samplepath         $HOME/.mame/samples;@DATADIR@/mame/samples
+
+# Users may override the default configuration
+inipath            $HOME/.mame/ini;@SYSCONFDIR@/mame
+
+# Core output directories
+cfg_directory      $HOME/.mame/cfg
+comment_directory  $HOME/.mame/comments
+diff_directory     $HOME/.mame/diff
+input_directory    $HOME/.mame/inp
+memcard_directory  $HOME/.mame/memcard
+nvram_directory    $HOME/.mame/nvram
+snapshot_directory $HOME/.mame/snap
+state_directory    $HOME/.mame/sta
+
+# Default settings
+video              opengl
+autosave           1
+joystick           1
+mouse              1

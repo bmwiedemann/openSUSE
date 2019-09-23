@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Sep 10 18:55:12 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.1.1f
+- Drop upstream Silence_redundant-move_warning.patch
+- Use -ffat-lto-objects to provide a proper static library.
+- Run tests by default
+
+-------------------------------------------------------------------
+Mon Aug 26 09:24:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove pointless empty scriptlets
+
+-------------------------------------------------------------------
+Tue Jul  2 21:27:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version

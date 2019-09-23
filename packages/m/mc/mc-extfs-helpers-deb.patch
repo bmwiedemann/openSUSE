@@ -1,0 +1,39 @@
+--- src/vfs/extfs/helpers/deb.in.orig	2012-04-20 11:21:37.000000000 +0400
++++ src/vfs/extfs/helpers/deb.in	2012-07-23 17:21:47.000000000 +0400
+@@ -176,6 +176,15 @@
+ 	}
+ }
+ 
++sub _which
++{
++    my $app = shift;
++    foreach my $dir (split/:/, $ENV{'PATH'}) {
++        return "$dir/$app" if -x "$dir/$app";
++    }
++    return undef;
++}
++
+ $pressinstall=<<EOInstall;
+ 
+                               WARNING
+@@ -192,6 +201,20 @@
+ 
+ umask 077;
+ 
++
++# check for required dpkg utilities
++my $dpkg_deb = _which('dpkg-deb');
++my $dpkg = _which('dpkg');
++
++# use uar extfs-heper if not exists
++if (not defined $dpkg_deb or not defined $dpkg)
++{
++    if ($0 =~ /^(.*)\/deb$/) {
++        my $uar = "$1/uar" ;
++        exec $uar, @ARGV;
++    }
++}
++
+ if($ARGV[0] eq "list") { shift; &mcdebfs_list(@ARGV); exit 0; }
+ elsif($ARGV[0] eq "copyout") { shift; &mcdebfs_copyout(@ARGV); exit 0; }
+ elsif($ARGV[0] eq "run") { shift; &mcdebfs_run(@ARGV); exit 0; }

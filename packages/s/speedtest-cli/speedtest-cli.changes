@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Tue Mar 26 17:14:55 UTC 2019 - Michal Svec <msvec@suse.com>
+
+- Update to version 2.1.1:
+  * Fix SSL support on Python2.4 and Python2.5
+- Update to version 2.1.0:
+  * Automatically resolve .best property
+  * Pass Content-Length header with POST requests
+  * Fix install instructions with git clone
+  * Add functionality for single threaded testing
+  * Add debug support to show if a URL request resulted in a redirect
+  * Add the python version to the version output
+  * Switch from platform.system to platform.platform when building the User-Agent header
+  * Don't pass server_hostname to ssl.wrap_socket
+  * ensure ERROR doesn't print an empty string
+
+-------------------------------------------------------------------
+Wed Mar  6 09:22:05 UTC 2019 - Michal Svec <msvec@suse.com>
+
+- Update to version 2.0.2:
+  * Ensure we are utilizing the context created by HTTPSConnection, or falling back to ssl
+- Changes for version 2.0.1:
+  * Handle malformed XML responses
+  * Ensure --share works with --csv
+  * Fix SSL communication during latency tests on python 2.6 and older
+  * Handle error where latitude and longitude from config are invalid
+- Changes for version 2.0.0:
+  * Redesigned Python API
+  * Add option to exclude servers, and allow --server and --exclude to be specified multiple times
+  * Address Exception issues
+  * Print errors to stderr
+  * Remove deprecated speedtest_cli.py
+
+-------------------------------------------------------------------
+Sun Nov 26 21:18:49 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.7:
+  * Support using --csv-delimiter with --csv-header
+
+-------------------------------------------------------------------
+Fri Oct  6 09:55:32 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.6:
+  * Ensure the UTC ISO8601 date includes a Z offset
+  * Fix calculation of uploads to perform per size
+  * Pre-allocate upload data, but allow to disable pre-allocation,
+    for memory limited devices
+- Changes for version 1.0.5:
+  * Fixes for UTF-8 encoding of CSV output
+
+-------------------------------------------------------------------
+Fri Mar 24 18:42:45 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.0.2:
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Wed Nov 23 12:01:00 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.0.0:
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Tue Feb 16 08:33:41 UTC 2016 - mpluskal@suse.com
+
+- Switch to python3
+
+-------------------------------------------------------------------
+Mon Dec 21 08:38:29 UTC 2015 - mpluskal@suse.com
+
+- Update dependencies - boo#959814
+
+-------------------------------------------------------------------
+Sat Aug  8 12:58:09 UTC 2015 - mpluskal@suse.com
+
+- Follow python packaging guidelines
+- Use setuptools for installation
+
+-------------------------------------------------------------------
+Thu Jul  2 15:37:11 UTC 2015 - nemysis@gmx.ch
+
+- Initial package creation
+

@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Tue Mar 19 08:46:55 UTC 2019 - lars@linux-schulserver.de - 0.80
+
+- update to 0.80
+  * Raise Spreadsheet::ParseXLSX minimum version to 0.24
+  * Improve docs on attributes
+  * Add attribute accessors
+- add BuildRequires for Spreadsheet::ParseExcel, Text::CSV_PP,
+  Spreadsheet::ParseXLSX and Text::CSV_XS to run all tests
+
+-------------------------------------------------------------------
+Thu Sep 20 08:07:34 UTC 2018 - coolo@suse.com
+
+- updated to 0.79
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/
+
+-------------------------------------------------------------------
+Thu Feb  8 06:09:34 UTC 2018 - coolo@suse.com
+
+- updated to 0.78
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/
+
+-------------------------------------------------------------------
+Wed Jan  3 14:58:21 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Resurrect description, the one from CPAN is insufficient
+- Do not install examples to bin, conflicts with gnumeric and xls2csv
+- Remove executable flags from all examples
+
+-------------------------------------------------------------------
+Wed Oct 18 21:53:29 UTC 2017 - jamesp@vicidial.com
+
+- nonstdperlpath.patch added
+    * Change non-standard /pro/bin/perl path to /usr/bin/perl
+
+-------------------------------------------------------------------
+Sun Oct  8 08:18:15 UTC 2017 - coolo@suse.com
+
+- updated to 0.74
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.74	- 27 Aug 2017, H.Merijn Brand
+      * Re-enable opening files with bad characters in the filename (issue#14)
+  
+  0.73	- 30 Jul 2017, H.Merijn Brand
+      * Spreadsheet::XLSX::Reader::LibXML support completely dropped
+      * New options for ss2tk (font specs and SS labels)
+      * Safer xls2csv option parsing/passing
+      * Pass unknown command-line options to the parser
+      * Fix ReadData ("a,b,c
+1,2,3
+", parser => "csv")
+      * Drop 5.8.0 support. 5.8.1 is now minimum
+  
+  0.72	- 25 May 2017, H.Merijn Brand
+      * get_active_sheet is only available as of Spreadsheet::ParseExcel 0.61
+      * Support password protected spreadsheets (implementation just for Excel)
+      * Do not warn on undefined labels (xlscat)
+  
+  0.71	- 13 May 2017, H.Merijn Brand
+      * Use -w as intended
+      * Add option pivot
+      * No trailing spaces on xlscat -L
+      * Lexicalize code snippet (issue#12)
+      * Add attr method
+      * Remove special chars from worksheet name component (Windows, PR#13)
+      * Add refresh to ss2tk / csv2tk
+      * Add shortcut for UTF-8 output to xlscat
+      * Upgrade recommended modules to required for cpancover
+  
+  0.70	- 02 Mar 2017, H.Merijn Brand
+      * Add label functionality to ::Sheet
+      * Add ->column and ->cellcolumn for ::Sheet
+      * Add col2label sub/method
+      * Sanitize xls2csv export filenames
+      * Fix sorting in xlscat for un-aligned columns
+      * It's 2017
+      * Be overly verbose about maxrow and maxcol being 1-based (RT#120476)
+  
+  0.69	- 02 Dec 2016, H.Merijn Brand
+      * Several OO fixes, more tests, more docs
+  
+  0.68	- 29 Nov 2016, H.Merijn Brand
+      * List non-core modules/version used on very verbose in xlscat
+      * Option to export all sheets in a spreadsheet to CSV (UTF-8 only)
+      * Add OO interface
+      * Feature: add new spreadsheets to existing book (even of different types)
+  
+  0.67	- 17 Jun 2016, H.Merijn Brand
+      * CPANTESTERS showed that some versions really messed op numeric/percentage
+  
+  0.66	- 16 Jun 2016, H.Merijn Brand
+      * Remove Spreadsheet::XLSX::Reader::LibXML test files from distribution
+      * Allow old versions of Spreadsheet::ParseXLSX to "fail" on percentage tests
+  
+  0.65	- 15 Jun 2016, H.Merijn Brand
+      * Test with perl-5.24.0
+      * Show parser-version used under debug
+      * No more Spreadsheet::XLSX::Reader::LibXML
+      * Cells will inherit hidden state from hidden rows and columns
+      * Require 5.8.0 as 5.6.x does not include required Encode
+  
+  0.64	- 22 Apr 2016, H.Merijn Brand
+      * It's 2016
+      * Allow inconsistent Spreadsheet::XLSX releases on Debian (tests)
+      * Decode utf-16be entries in Excel when appropriate
+      * Two examples in xlscat
+  
+  0.63	- 10 Oct 2015, H.Merijn Brand
+      * Guard against negative MinRow in XLSX
+      * Documentation updated
+      * Support Spreadsheet::XLSX::Reader::LibXML disabled on author request
+      * Fix warning in utilities
+      * Check minimum parser version for pre-selected parser
+  
+  0.62	- 16 Aug 2015, H.Merijn Brand
+      * Fix documentation structure
+      * Test all supported parsers (not just the preferred one)
+      * Basic support for Spreadsheet::XLSX::Reader::LibXML (work in progress)
+      * Copy example file if link fails (Alan Berndt)
+      * Add a contributing guide
+  
+  0.61	- 13 Jun 2015, H.Merijn Brand
+      * Discourage Spreadsheet::XLSX
+      * A space is not an empty field in XLS
+      * Strip the correct selection (RT#105197)
+  
+  0.60	- 30 Mar 2015, H.Merijn Brand
+      * No merged cell support in Spreadsheet::XLSX
+  
+  0.59	- 26 Mar 2015, H.Merijn Brand
+      * Minimal support (+ docs) for merged cells
+      * Make parser errors report at one level up
+      * Don't select non-existing columns in xlscat
+  
+  0.58	- 11 Feb 2015, H.Merijn Brand
+      * Remove perl recommendation from META as it breaks cpan clients
+      * Move sort instruction to correct place in xlscat's help
+  
+  0.57	- 08 Feb 2015, H.Merijn Brand
+      * Moved project to github
+      * Add --sort to xlscat
+      * Clip before conversion
+      * Removed an unneeded localizing of $/ (related to p5 RT#123218)
+  
+  0.56	- 05 Jan 2015, H.Merijn Brand
+      * printf does not play nice with encoding (related to RT#98436)
+      * default output UTF-8 if whole line is UTF-8
+  
+  0.55	- 01 Jan 2015, H.Merijn Brand
+      * Mention Spreadsheet::CSV in documentation
+      * Add ssdiff to examples
+      * Amend xlscat -n to also number in HTML
+      * Updated copyright to 2015
+  
+  0.54	- 30 Jan 2014, H.Merijn Brand
+      * Optional features required versions now builtin
+  
+  0.53	- 29 Jan 2014, H.Merijn Brand
+      * Updated copyright to 2014
+      * Prefer Data::Peek over Data::Dumper
+      * Support (and prefer) Spreadsheet::ParseXLSX for .xlsx
+  
+  0.52	- 05 Dec 2013, H.Merijn Brand
+      * Store CSV parse error - if any - in $ss->[0]{error}
+  
+  0.51	- 30 Oct 2013, H.Merijn Brand
+      * Link xlsgrep during install
+  
+  0.50	- 24 Oct 2013, H.Merijn Brand
+      * Added xlsgrep to examples
+      * Allow -C B,D for xlscat
+      * More prominent reference to xlscat in docs
+
+-------------------------------------------------------------------
+Sat Jun 15 10:44:00 UTC 2013 - coolo@suse.com
+
+- obsolete xsl2csv
+
+------------------------------------------------------------------
+Tue Jun  4 18:21:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.49
+    * /dev/null cannot be used for tests on Windows
+    * Improve documentation consistency (RT#80409)
+    * Updated copyright to 2013
+    * Force old(er) tar format (ustar) - assumes GNU tar on release box
+    * Fix yml/json optional_features
+    * Install utilities from example by default
+    * Several minor changes (for maint)
+    * Note that empty sheets are skipped when clip is true (RT#75277)
+    * Allow undef as valid value for the options (Max Maischein)
+    * Don't generate warnings when stripping whitespace and only
+      generating one of cells or rc. (Max Maschein)
+    * Fix test warning under perl-5.17.x
+
+-------------------------------------------------------------------
+Fri Feb 17 11:25:52 UTC 2012 - coolo@suse.com
+
+- updated to 0.46
+   * Updated copyright to 2012
+   * Support passing attributes to the underlying parser
+   * Do not strip fields in sheets with no cells at all (RT#74976)
+
+-------------------------------------------------------------------
+Fri Nov 18 12:07:10 UTC 2011 - coolo@suse.com
+
+- update to 0.45
+    - NAME / DISTNAME in Makefile.PL
+    - More cross-checks for META data
+
+-------------------------------------------------------------------
+Thu Sep  1 21:23:03 UTC 2011 - chris@computersalat.de
+
+- initial package 0.43
+  * created by cpanspec 1.78.05
+

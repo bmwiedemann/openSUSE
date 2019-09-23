@@ -1,0 +1,430 @@
+-------------------------------------------------------------------
+Mon Aug 19 15:06:39 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.0.6
+  * fix an uninitialized memory access, which could have led to NULL
+    dereference or heap corruption in an out-of-memory situation
+  * fix a use-after-free when calling `fluid_player_stop()`
+  * fix the MIDI player not outputting any sound after stopping and
+    restarting the playback
+
+-------------------------------------------------------------------
+Fri Apr 19 07:59:57 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.0.5
+  * the MIDI player erroneously assumed a default tempo of 125 BPM
+    rather than 120 BPM
+  * improve integration of systemd
+  * fix a buffering bug in fluid_synth_process()
+  * fix a major memory leak when unloading SF3 files
+  * fix multiple NULL dereferences and memory leaks in jack driver
+  * fix a memory leak when creating threads
+
+-------------------------------------------------------------------
+Sat Feb 23 08:44:53 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.0.4:
+  * introduce verbose error reporting for `fluid_settings_*` functions 
+  * avoid undefined behavior when `fopen()` directories
+  * improve compatibility with FreeBSD and DragonFlyBSD (#508, thanks to @t6)
+  * fix build when cross compiling (#501)
+  * fix build on MacOSX 10.4 (#513)
+  * fix build when compiling with MinGW
+  * enable network support on Mac by default (#513)
+
+-------------------------------------------------------------------
+Wed Jan  2 10:48:04 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.0.3:
+  * fix handle leak in winmidi driver
+  * fix build failures when cross compiling
+  * fix a bug when calculating the lower boundary of attenuation
+  * fix a double free in `fluid_sample_set_sound_data()`
+  * silence a warning when loading soundfonts from memory
+  * minor performance improvements
+
+-------------------------------------------------------------------
+Sun Nov 18 17:59:42 UTC 2018 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.0.2:
+  * fix building fluidsynth without any audio drivers
+  * fix a possibly misaligned memory access in the soundfont loader
+  * fix a memory leak in the pulse audio driver
+  * fix a NULL deref in the coreaudio driver
+  * use cmake to query for DSound and WinMidi support
+  * remove an unintended MFC dependency header
+  * include Windows DLL version info for MinGW builds
+  * implement midi.autoconnect for jack
+  * add a cmake option to disable multi-threading
+
+-------------------------------------------------------------------
+Sun Oct  7 15:31:52 UTC 2018 - tom.mbrt@googlemail.com
+
+- Update to 2.0.1:
+  * implement auto-conntect for CoreMidi
+  * fix a build issue with cmake < 3.3
+  * fix a crash when creating multiple jack drivers
+  * various fixes to dsound driver
+  * fix multiple potential NULL dereferences
+  * fix two memory leaks in the soundfont loader
+  * correct upper threshold of synth.chorus.depth
+- Remove fluidsynth-last_client-reuse-fix.patch
+
+-------------------------------------------------------------------
+Sat Sep 29 11:38:37 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Backported fluidsynth-last_client-reuse-fix.patch from master
+  (qsynth crashes without it)
+
+-------------------------------------------------------------------
+Tue Sep 14 15:24:14 UTC 2018 - tom.mbrt@googlemail.com
+
+- Update to 2.0.0:
+   * for a full changelog, see https://github.com/FluidSynth/fluidsynth/wiki/ChangeLog#fluidsynth-200
+   * for API/ABI breaking changes, see http://www.fluidsynth.org/api/index.html#NewIn2_0_0
+- bump soversion to 2
+- require cmake >= 3.1.0
+- execute unit tests (make check)
+- remove cmake option 'enable-ladspa' as it's now enabled by default
+- add conditionals to spec file to allow builds for other RPM-based distributions
+
+-------------------------------------------------------------------
+Sun May  6 06:55:29 UTC 2018 - tom.mbrt@googlemail.com
+
+- Update to 1.1.11:
+  * fix pkgconfig file for absolute paths
+  * add a cmake option for OSS support
+  * fix broken enable-midishare cmake option
+  * fix double free in fluid_midi_router
+  * prevent malicious soundfonts from causing buffer overflows
+  * avoid SF3 files to be loaded incorrectly
+  * fix an endless loop in fast file renderer
+- remove 0001-Fix-pkgconfig-file-for-absolute-paths-347.patch
+
+
+-------------------------------------------------------------------
+Tue Mar  6 16:09:17 UTC 2018 - tom.mbrt@googlemail.com
+
+- Add 0001-Fix-pkgconfig-file-for-absolute-paths-347.patch
+  to fix pkgconfig file generation when absolute lib and include
+  paths are used (boo#1084081)
+
+-------------------------------------------------------------------
+Fri Mar  2 16:47:20 UTC 2018 - tom.mbrt@googlemail.com
+
+- Avoid using indirection macros
+- Do not hard-code /usr/sbin
+
+-------------------------------------------------------------------
+Sun Feb 25 11:57:25 UTC 2018 - tom.mbrt@googlemail.com
+
+- Update to 1.1.10:
+  * avoid a buffer overrun when loading malformed soundfonts
+  * fix synth.default-soundfont returning incomplete path
+  * improve reliability of fluid_is_soundfont()
+  * include windows version info in libfluidsynth.dll
+  * enable jack midi driver to support more than 16 midi channels
+  * minor cmake adjustments for MSVC builds to enable building fluidsynth as vcpkg package
+  * fix build issues against statically built fluidsynth library on all OSs
+  * enable fluidsynth to be set up as systemd user service
+  * cmake: prevent double usage of LIB_SUFFIX and LIB_INSTALL_DIR
+- Install systemd service files
+
+-------------------------------------------------------------------
+Thu Feb 15 13:22:56 UTC 2018 - tchvatal@suse.com
+
+- Switch to cmake macros
+- Use %license to install license
+- Disable optional lash support as we try to remove lash
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan  4 10:11:54 UTC 2018 - tom.mbrt@googlemail.com
+
+- Update to version 1.1.9:
+  * fix building the portaudio driver on Windows
+  * fix build if no MIDI drivers are available
+  * fix return value of fluid_file_set_encoding_quality()
+  * fix use-after-free in fluid_timer
+  * fix memory leak in pulseaudio driver
+  * fix memory leak in rvoice_mixer
+  * fix dumptuning shell command displaying uninitialized values
+  * fix a resource leak in source shell command
+  * harmonize fluidsynth's output library naming with autotools on Windows
+  * dont set LIB_SUFFIX when building with MinGW
+  * avoid a possible deadlock when initializing fluidsynths DLL on windows
+  * avoid a buffer overrun when mixing effects channels in fluid_synth_nwrite_float()
+  * correctly clean up fluid_server on Windows
+  * implement handling of FLUID_SEQ_ALLSOUNDSOFF events in fluid_seq_fluidsynth_callback()
+  * support for registering audio drivers based on actual needs
+
+-------------------------------------------------------------------
+Fri Oct 13 13:50:41 UTC 2017 - tom.mbrt@googlemail.com
+
+- Update to version 1.1.8:
+  * fix build against glib < 2.30
+  * fix dsound audio driver on windows
+  * fix a bug around `synth.audio-groups` setting, which caused improper multi-channel rendering
+  * cmake 3.0.2 is now required
+  * compilation with clang is now possible
+  * build fixes on OS/2
+- Use pkgconfig for resolving build requirements
+- Minor description update
+
+-------------------------------------------------------------------
+Wed Sep  6 09:27:00 UTC 2017 - tom.mbrt@googlemail.com
+
+- Update to version 1.1.7:
+  * consistently relicense libfluidsynth under LGPL-2.1+
+  * fluid_synth_set_channel_type() was not exported properly
+  * fix calculations for modulators
+  * fix SysEx parsing issues
+  * fix mangling with illegal sample loops, causing audible glitches
+  * fix inverse logic of audio.jack.multi option
+  * fix channel fine tune RPN to use correct range
+  * fix timing problems when changing the sequencers scale from a callback event
+  * workaround incorrectly rendered audio when requesting more than 64 frames from fluid_synth_write_*()
+  * adjust ALSA MIDI port type
+  * avoid voice_count becoming negative
+  * avoid notes with a fixed key generator playing forever
+  * avoid TCP/IP connections from closing in an undefined manner
+  * a lot of memory leaks, NULL dereferences and SegFaults
+  * add support of vorbis-compressed sf3 sound fonts
+  * add sostenuto pedal to the synth
+  * add vbr quality when encoding with libsndfile
+  * re-implement routing reverb and chorus to distinct buffers in fluid_synth_nwrite_float()
+  * add IPv6 support to socket API
+- remove the following patches as they got fixed upstream:
+  * fluidsynth-fix-build-lash.diff
+  * jackmulti.diff
+  * reverb_mixer.diff
+
+-------------------------------------------------------------------
+Sun Nov 22 16:47:50 UTC 2015 - idonmez@suse.com
+
+- Add baselibs.conf as a source file 
+
+-------------------------------------------------------------------
+Sun Nov 22 09:33:11 UTC 2015 - tom.mbrt@googlemail.com
+
+- Added jackmulti.diff to fix inverse logic of audio.jack.multi option
+- Added reverb_mixer.diff to workaround reverb issue,
+  see: http://sourceforge.net/p/fluidsynth/tickets/137/
+
+-------------------------------------------------------------------
+Mon Sep 24 09:43:15 UTC 2012 - schwab@linux-m68k.org
+
+- Use %{optflags}
+
+-------------------------------------------------------------------
+Fri Sep 21 22:50:34 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.1.6:
+  + Handle MIDI End of track events.
+  + Prevent broken rendering after an voice overflow.
+  + Enable long arguments where available.
+  + Windows: Install fluidsynth.pc (pkg-config spec).
+  + Mac OS X Lion: Fix build failure.
+  + Linux: Prevent libdbus crash.
+
+-------------------------------------------------------------------
+Mon Jun  4 14:25:26 UTC 2012 - toddrme2178@gmail.com
+
+- Added 32-bit compatibility library (needed by 
+  gstreamer-0_10-plugins-buzztard-32bit )
+
+-------------------------------------------------------------------
+Tue Jan 10 23:45:05 UTC 2012 - reddwarf@opensuse.org
+
+- Updated to 1.1.5
+  + Autotools build resulted in the wrong version number for
+    libfluidsynth.so
+  + One symbol was dropped from libfluidsynth.so - this symbol was
+    not part of the public API though
+  + JACK: Using jack_free instead of free when needed
+  + Update Free Software Foundation address
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Aug  8 12:57:18 CEST 2011 - tiwai@suse.de
+
+- Updated to version 1.1.4:
+  Improvements to the API for playing MIDI files, several bug fixes
+  in the engine itself; for details, see:
+    http://sourceforge.net/apps/trac/fluidsynth/wiki/ChangeLog1_1_4
+- Use cmake for build
+- Re-add a symbol dropped from 1.1.3
+- Clean up spec file
+
+-------------------------------------------------------------------
+Fri Dec 31 14:20:06 UTC 2010 - lnussel@suse.de
+
+- provide libfluidsynth-devel for compatibility with packman
+
+-------------------------------------------------------------------
+Mon Oct 11 15:47:49 UTC 2010 - oliver.bengs@opensuse.org
+
+- Updated to version 1.1.3:
+  + Compilation with LADSPA enabled was broken in 1.1.2
+  + Multichannel output broken when double precision was used 
+  + Doxygen settings
+  + Fix build problem with scummvm
+  + Optimize by not starting unused threads with multicore rendering
+  + Race condition in alsa_seq / alsa_raw drivers caused them not to quit
+
+-------------------------------------------------------------------
+Thu Sep  2 12:17:49 UTC 2010 - oliver.bengs@opensuse.org
+
+- Updated to version 1.1.2:
+	see details in
+	http://sourceforge.net/apps/trac/fluidsynth/wiki/ChangeLog1_1_2
+- disabled LADSPA, because it is broken in this release
+- enabled dbus and libsndfile
+
+-------------------------------------------------------------------
+Fri Apr  2 08:09:19 UTC 2010 - davejplater@gmail.com
+
+- Updated to version 1.1.1
+- FluidSynth 1.1.1 - "Clarity", see Changes page for details.
+  http://fluidsynth.resonance.org/trac/wiki/ChangeLog1_1_1
+  This is a rather major bug fix release to version 1.1.0.
+  FluidSynth 1.1.0 - "A More Solid Fluid", see Changes page for details.
+  http://fluidsynth.resonance.org/trac/wiki/ChangeLog1_1_0
+  This is the result of a 6 month development cycle and is the most 
+  significant release since 1.0.0!
+  
+-------------------------------------------------------------------
+Mon Jul 27 15:53:19 CEST 2009 - tiwai@suse.de
+
+- updated to version 1.0.9:
+  see details in
+    http://fluidsynth.resonance.org/trac/wiki/ChangeLog1_0_9
+- add support of pulseaudio and LASH
+
+-------------------------------------------------------------------
+Mon Apr 14 18:22:47 CEST 2008 - schwab@suse.de
+
+- Avoid libtool namespace clash.
+
+-------------------------------------------------------------------
+Tue Nov 20 10:40:37 CET 2007 - tiwai@suse.de
+
+- updated to version 1.0.8:
+  * Improved synthesis interpolation
+  * Dithering on 16 bit converted output
+  * Updated fluidmax plugin with polyphony parameter.
+  * Improved ALSA audio and sequencer drivers.
+  * Fixed some Floating Point Exceptions which were causing
+    excessive CPU usage
+  * Some fixes to Chorus and Reverb parameters
+  * Looping/tuning problem when loop end close to end of sample
+  * FluidSynth crashes with QSynth and audio meters turned on
+  * ALSA sequencer driver no longer prints out false errors
+  * Many memory leaks plugged
+  * Warning message printed if a non option is not a valid
+    SoundFont or MIDI file
+
+-------------------------------------------------------------------
+Tue Apr 17 16:41:38 CEST 2007 - tiwai@suse.de
+
+- follow library packaging policy
+  * split shared library to libfluidsynth1 sub package
+  * remove static library
+- fix buildrequires ladspa-devel
+
+-------------------------------------------------------------------
+Mon May 15 15:46:14 CEST 2006 - tiwai@suse.de
+
+- updated to version 1.0.7a.
+  * cleanup of LADCCA support
+  * fix warnings with JACK backend
+  * fix sequencer buffer overrun bug
+  * new filter routine
+  * crash bugfix
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 12 18:26:33 CET 2005 - tiwai@suse.de
+
+- fix the crash with 64bit architectures (#137998)
+
+-------------------------------------------------------------------
+Wed Oct 12 20:00:06 CEST 2005 - tiwai@suse.de
+
+- removed glib* from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Jun 14 11:45:27 CEST 2005 - tiwai@suse.de
+
+- updated to version 1.0.6.
+- split fluidsynth-dssi to an individual package (built from
+  own tarball).
+
+-------------------------------------------------------------------
+Fri Apr  8 12:23:43 CEST 2005 - tiwai@suse.de
+
+- fix for gcc-4.0.
+
+-------------------------------------------------------------------
+Fri Jan 21 15:08:32 CET 2005 - tiwai@suse.de
+
+- updated to version 1.0.5.
+
+-------------------------------------------------------------------
+Tue Aug 17 20:15:59 CEST 2004 - tiwai@suse.de
+
+- fixed the build of fluidsynth-dssi plugin.
+
+-------------------------------------------------------------------
+Tue Aug 17 17:13:33 CEST 2004 - tiwai@suse.de
+
+- Added the DSSI plugin support.
+  A new subpackage fluidsynth-dssi is created.
+
+-------------------------------------------------------------------
+Tue Apr 27 01:30:09 CEST 2004 - ro@suse.de
+
+- add -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Tue Jan 13 19:39:14 CET 2004 - tiwai@suse.de
+
+- added non-root build.
+- added %run_ldconfig.
+- fixed %defattr.
+
+-------------------------------------------------------------------
+Tue Nov 18 18:57:58 CET 2003 - tiwai@suse.de
+
+- updated to version 1.0.3.
+
+-------------------------------------------------------------------
+Thu Aug 28 11:12:15 CEST 2003 - tiwai@suse.de
+
+- fixed bugs; retrieved from 1.0.3.
+
+-------------------------------------------------------------------
+Thu Jul  3 17:44:34 CEST 2003 - tiwai@suse.de
+
+- updated to version 1.0.2.
+
+-------------------------------------------------------------------
+Fri Jun  6 16:20:24 CEST 2003 - tiwai@suse.de
+
+- updated to version 1.0.1.
+
+-------------------------------------------------------------------
+Thu Mar 27 17:22:27 CET 2003 - tiwai@suse.de
+
+- initial version 1.0.0.  iiwusynth is obsoleted.
+

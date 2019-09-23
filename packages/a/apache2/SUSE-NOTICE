@@ -1,0 +1,13 @@
+
+The SUSE build of apache2 contains the following modifications:
+  * assert HAVE_POLL during compilation (safety measure)
+  * small fixes in apachectl to make it work with multiple MPMs, and 
+    use w3m alternatively to lynx
+  * avoid error if compiled with openssl 0.9.6e
+  * added patch to experimental caching module that fixes segfault for 'GET
+    https://whatever.html HTTP/1.0' request on HTTP Port
+    (/modules/experimental/cache_util.c)
+  * RFC 2817 TLS upgrade backported from 2.1
+  * fixed log_server_status to use Socket.pm and match our configuration
+  * fixed check_forensic script (adjusted for GNU tools, use safe tmpdir)
+  * http://www.apache.org/dist/httpd/patches/apply_to_2.0.52/util_ldap_cache_mgr.c.patch

@@ -1,0 +1,8 @@
+<package name="pkgconf" project="openSUSE:Factory">
+  <title>Package compiler and linker metadata toolkit</title>
+  <description>pkgconf is a program which helps to configure compiler and linker flags
+for development frameworks. It is similar to pkg-config from freedesktop.org
+and handles .pc files in a similar manner as pkg-config.</description>
+  <devel project="devel:tools" package="pkgconf"/>
+  <url>http://pkgconf.org/</url>
+</package>

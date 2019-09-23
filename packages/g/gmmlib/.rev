@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5735f6a0ea396e655a1947a0a81df7bc</srcmd5>
+    <version>18.3.0</version>
+    <time>1543223909</time>
+    <user>dimstar_suse</user>
+    <comment>created package, needed by intel-media-driver package update</comment>
+    <requestid>648265</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb1ef101ca798bf650e4fdad8265bf44</srcmd5>
+    <version>18.4.1</version>
+    <time>1554384152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690433</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8cd89d127b2a893de9b06440092c9890</srcmd5>
+    <version>19.2.3</version>
+    <time>1562591483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713728</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ceb201b1b7f966ec99f77dff70c6d65</srcmd5>
+    <version>19.2.4</version>
+    <time>1567581159</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 19.2.4 
+  * adds support for Icelake, EHL, Cometlake, Lakefield
+  * bug fixes</comment>
+    <requestid>727791</requestid>
+  </revision>
+</revisionlist>

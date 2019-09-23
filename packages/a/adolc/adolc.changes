@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Wed Aug  8 16:20:17 UTC 2018 - jengelh@inai.de
+
+- Repair broken description ("the package ADOL-C [end of sentence]")
+- Move main description to shared library subpackage since that
+  will be installed most of the time (if and when some part of
+  adolc is installed at all).
+
+-------------------------------------------------------------------
+Mon Jun 11 11:00:31 UTC 2018 - adam.majer@suse.de
+
+- Install license using %license
+- Install documentation using %doc instead of manually
+- Cleanup long description by only having one verbose copy in long
+  description
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jun 10 07:59:00 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.6.3:
+  * Fix bug in memory deallocation in taylor.c.
+  * Reduced interface directional active gradient.
+
+-------------------------------------------------------------------
+Wed Feb  1 09:50:03 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Sep  4 22:32:43 UTC 2016 - kkhere.geo@gmail.com
+
+- upadte to version 2.6.2
+  * fixes for corner case crashes 
+
+-------------------------------------------------------------------
+Thu Jun  9 11:47:28 UTC 2016 - kkhere.geo@gmail.com
+
+- update to version 2.6.1
+  * small assorted bugfixes 
+
+-------------------------------------------------------------------
+Mon Jan 11 16:13:30 UTC 2016 - kkhere.geo@gmail.com
+
+- update to version 2.6.0
+  * Drivers for Lie-Derivatives (by Mirko Franke).
+  * New extended interface for external functions, which may be used to
+    interface to source transformation tools. Previous interface remains
+    intact too.
+  * Driver to compute the abs-normal form of piecewise smooth functions.
+  * Mechanism to compute sparsity pattern of abs-normal form.
+  * Interface to define passive parameters that can be changed before each
+    trace interpretation. Major use case is Lagrange Multipliers.
+  * Interface to AdjoinableMPI improved and debugged.
+  * ADOL-C now uses boost (>= 1.54) for increased execution speed if
+    detected during build.
+  * ADOL-C and all applications must be compiled using a C++11 compiler.
+  * Many, many odd and sundry bugfixes.
+ - added BuildRequires: boost-devel
+
+-------------------------------------------------------------------
+Wed Apr 22 17:36:30 UTC 2015 - mpluskal@suse.com
+
+- Use source for url
+- Do not pull autotools when they are not used
+- Cleanup spec-file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 19 10:58:17 UTC 2014 - kkhere.geo@gmail.com
+
+- Update to upstream version 2.5.2 
+  * incorporated bugfixes since 2.5.1
+
+-------------------------------------------------------------------
+Sun Aug 17 12:22:22 UTC 2014 - kkhere.geo@gmail.com
+
+- Update to upstream version 2.5.1
+  * Lots of bugfixes
+- Added a couple of post release bugfixes from trunk
+- Removed patch incorporated upstream
+  * no-return-in-non-void-adouble_tl_cpp.patch
+
+-------------------------------------------------------------------
+Tue Feb 25 11:44:46 UTC 2014 - kkhere.geo@gmail.com
+
+- Update to upstream version 2.5.0
+  * An overhaul of the internal memory management to make it
+    more efficient
+  * Support for the AdjoinableMPI API (thanks to Jean Utke)
+  * Overhaul of the external functions interface (thanks to Jean Utke)
+  * Support for piecewise linearizations of piecewise smooth functions
+  * Support for pkg-config (thanks to Oliver Sander)
+  * Computations on the NVIDIA-GPU in forward mode using CUDA
+  * Overhaul of the traceless forward mode.
+  * Support for sparsity in traceless forward mode.
+  * Fixes in higher order tensor propagation
+  * Fix a function name conflict
+       address() -> tensor_address()
+  * Various other small misceleneous fixes
+- Patch added
+  * no-return-in-non-void-adouble_tl_cpp.patch 
+
+-------------------------------------------------------------------
+Tue Mar 19 11:41:14 UTC 2013 - kkhere.geo@gmail.com
+
+- Update to upstream version 2.4.1
+  * list of changes in the release announcement
+    see http://list.coin-or.org/pipermail/adol-c/2013-January/000882.html
+    and http://list.coin-or.org/pipermail/adol-c/2013-March/000887.html 
+
+-------------------------------------------------------------------
+Sat Sep 15 14:13:00 UTC 2012 - scorot@free.fr
+
+- fix build for SLE 11 SP2
+
+-------------------------------------------------------------------
+Thu Mar 22 17:23:36 UTC 2012 - kkhere.geo@gmail.com
+
+- Update to new upsteam version 2.3.0
+  * list of changes in the release announcement
+    see http://list.coin-or.org/pipermail/adol-c/2012-March/000804.html
+  * licensing modified
+    see http://list.coin-or.org/pipermail/adol-c/2012-March/000805.html
+- Update License tag in accordance with above change
+- Remove ColPack, it can be packaged in its own package with v1.0.6
+- Add a BuildRequires for ColPack-devel
+
+-------------------------------------------------------------------
+Fri Feb 17 06:44:42 UTC 2012 - kkhere.geo@gmail.com
+
+- Change License tag to reflect discussion in bnc#739158 
+
+-------------------------------------------------------------------
+Mon Dec 19 11:13:36 UTC 2011 - Rene.vanPaassen@gmail.com
+
+- Corrected group tags to proper categories 
+
+-------------------------------------------------------------------
+Fri Dec 16 16:19:31 UTC 2011 - Rene.vanPaassen@gmail.com
+
+- need Group: tags for SLE_11 and SLE_11_SP1, if all tags are equal, 
+  the format_spec_file service is so NICE (not!) to remove subpackage
+  group tags. the doc package needs a Group: Documentation tag 
+  (guidelines), and then, fortunately, format_spec_file leaves
+  us alone 
+
+-------------------------------------------------------------------
+Thu Dec 15 10:28:47 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Oct  6 10:59:00 UTC 2011 - kkhere.geo@gmail.com
+
+- update Colpack to new version 1.0.4
+  * some memory allocation bugfixes
+
+-------------------------------------------------------------------
+Wed Oct  5 12:04:37 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc, %__cxx macros
+
+-------------------------------------------------------------------
+Fri Sep 16 19:07:38 UTC 2011 - jengelh@medozas.de
+
+- Implement baselibs for package; remove redundant tags/sections
+
+-------------------------------------------------------------------
+Thu Jun  9 10:37:26 UTC 2011 - kkhere.geo@gmail.com
+
+- update to upstream release 2.2.1
+  * allow reading hexadecimal and octal numbers in .adolcrc
+  * bugfix for direct reverse callsequence after trace
+  * reimplemented nonl_dom as arrays instead of linked lists 
+
+-------------------------------------------------------------------
+Tue Apr 12 11:36:09 UTC 2011 - kkhere.geo@gmail.com
+
+- update to upstream release 2.2.0
+  * numerous bugfixes
+  * memory leak fixes
+  * new revamped internal memory manager 
+
+-------------------------------------------------------------------
+Thu Nov 11 12:09:19 UTC 2010 - kshitij@math.upb.de
+
+- update to upstream release 2.1.12
+  * bug fix in tapeless mode log and sqrt
+  * allow changing TAPE_DIR at runtime
+  * allow direct coupling with IpOpt
+
+-------------------------------------------------------------------
+Fri Oct 15 09:41:17 UTC 2010 - coolo@novell.com
+
+- remove the macro from the version tag
+
+-------------------------------------------------------------------
+Mon Oct 11 15:54:54 UTC 2010 - kshitij@math.upb.de
+
+- update to svn trunk rev 175
+  * build fixes for windows and linux
+  * bug fixes
+  * ISO C99 compatibility 
+- stoped building 32bit packages on 64bit arch
+
+-------------------------------------------------------------------
+Sat Sep 25 12:29:28 UTC 2010 - kshitij@math.upb.de
+
+- Fix building on older distros
+
+-------------------------------------------------------------------
+Thu Sep 23 17:51:00 UTC 2010 - kkhere.geo@gmail.com
+
+- correct file ownership 
+
+-------------------------------------------------------------------
+Thu Sep 23 17:43:32 UTC 2010 - kshtiij@math.upb.de
+
+- use LIBS instead of LDFLAGS to check for ColPack
+  the order seems to matter in the build service environment
+
+-------------------------------------------------------------------
+Thu Sep 23 16:43:15 UTC 2010 - kshitij@math.upb.de
+
+- initial package for version 2.1.10 
+

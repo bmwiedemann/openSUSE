@@ -1,0 +1,307 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cec2e39b351fc08c8d770bd7fa501af9</srcmd5>
+    <version>1.0.0</version>
+    <time>1415118514</time>
+    <user>coolo</user>
+    <comment>Fixed License tag as requested</comment>
+    <requestid>258942</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c65a300670857bd2ff3659b66f9ab75</srcmd5>
+    <version>1.0.0</version>
+    <time>1422959983</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283590</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a231bb5635b875711e54be5ba55849a</srcmd5>
+    <version>1.1.0</version>
+    <time>1424117269</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>284893</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4fe598c3856f4c3345a857a7000653ab</srcmd5>
+    <version>1.1.0</version>
+    <time>1424827056</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to use cmake macros (forwarded request 287060 from sfalken)</comment>
+    <requestid>287407</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5cab7356ad78fbf88278963b413e6a5</srcmd5>
+    <version>1.3.0</version>
+    <time>1447454156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>343470</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ec07282165bd4846d74e25421b39707d</srcmd5>
+    <version>2.0.0</version>
+    <time>1475750526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to to 2.0.0:
+  * BACKWARDS-INCOMPATIBLE: New XdgIconLoader library
+  * New explicit dependency Qt SVG
+  * The IconLoader can use GTK+ icon cache
+  * Improved overall performance
+  * Better XDG handling
+  * Overall polishing</comment>
+    <requestid>430265</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>250c5d56d20d0215589adda85490b7b7</srcmd5>
+    <version>3.1.0</version>
+    <time>1508876565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Bump version to 3.1.0
+  * xdgdesktopfile: Add API for getting actions info
+  * xdgdesktopfile: Add support for activating actions
+  * xdgdesktopfile: Add getting actions
+  * Check $XDG_CONFIG_HOME and $XDG_CONFIG_DIRS for mimeapps.list first.
+  * Fix reading and writing mimeapps.list file.
+  * Don't export github templates
+  * Release 3.0.0: Update changelog
+  * Backport support for Scale directory key according to Icon Theme spec
+  * Bump Major to 3
+  * test: Drop Q_FOREACH
+  * Drop Q_FOREACH
+  * liblxqt make no sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * Avoid Qt special keywords collision
+  * XdgDesktopFile: Stops allocating unneeded QMap::keys()
+  * XdgDesktopFile: Stop allocating unneeded QHash:values()
+  * XdgDesktopFile: Improve const-ness
+  * xdgiconloader: Reworks the unthemed/pixmap search
+  * xdgiconloader: Puts the hicolor at the end of the theme hierarchy
+  * XdgIcon: Add flag for &quot;FollowsColorScheme&quot; processing
+  * xdgiconloader: Honor &quot;FolowsColorScheme&quot; theme hint
+  * xdgiconloader: Support symbolic SVG icons
+  * More fixes (#131)
+  * xdgiconloader: Correct hierarchy of fallbacks (#116)
+  * xdgiconloader: Fix XdgIconLoaderEngine::actualSize() (#130)
+  * Update CMakeLists.txt
+  * It adds loadIcon() timing measurements.
+  * xdgiconloader: Consider all existing files/images
+  * Check QTXDGX_ICONENGINEPLUGIN_INSTALL_PATH existence
+  * Mark QTXDGX_ICONENGINEPLUGIN_INSTALL_PATH as advanced
+  * xdgiconloader: Implement QIconEnginePlugin interface
+  * Disables uninstall target
+  * Remove last uses of Java-style (non-mutable) iterators from QtBase
+  * Adds a development qtxdg-iconfinder utility tool
+  * Enable strict iterators for debug builds
+  * Removes extra semi-colons
+  * Improve build warnings
+  * Bump year
+  * QtGui: eradicate Q_FOREACH loops [already const]
+  * Optimize QIconLoader::findIconHelper()
+  * Remove unused variable in QIconLoader::findIconHelper()
+  * Improve use of QHash to minimize double hashing
+  * QIconLoaderEngine: add missing Q_DECL_OVERRIDEs
+  * Replace QLatin1Literal with QLatin1String
+  * QIconCacheGtkReader: use QStringRef more
+  * Gui: use const (and const APIs) more
+  * Adds Link Time Optimization
+  * Replaces CMAKE_SOURCE_DIR by PROJECT_SOURCE_DIR
+  * Refactors superbuild support
+  * Remove duplicate use of source header files
+  * Use AUTOMOC everywhere
+  * Stop using include_directories()
+  * Removes test project definition
+  * Use CMAKE_INCLUDE_CURRENT_DIR
+  * Adds PROJECT_NAME to the build Qt version message
+  * Simplify target_compile_definitions() and target_include_directories()
+  * qiconloader: Reuse Qt implementation
+  * XdgIconLoader: Fix FTBFS in super-build/in-tree builds
+  * Allow xdg-user-dirs in the realpath of $HOME. On some systems /home is a symlink and $HOME points to the symlink. This commit allows the xdg-user-dirs to start with the real/canonical path.
+  * Updates version requirements in pkg-config (.pc) stuff
+  * Make Qt5Xdg use only the same version Qt5XdgIconLoader
+  * Adds minimum Qt version requirement (5.4.2)
+  * test: Fixes false positive in tst_xdgdesktopfile::testReadLocalized()
+  * Remove cpack (#106)
+- Update to to 2.0.0:
+  * BACKWARDS-INCOMPATIBLE: New XdgIconLoader library
+  * New explicit dependency Qt SVG
+  * The IconLoader can use GTK+ icon cache
+  * Improved overall performance
+  * Better XDG handling
+  * Overall polishing
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 1.1.0 
+- Added conditionals to build for Fedora (Only needed for F20) 
+- changed license tag in the spec file to GPL-3.0
+- ported to QT5 
+- new upstream version 1.0.0 
+- spec file clean up
+- removed statically defined requires , we let rpm work for us
+- use pkg-config where possible  
+- BuildRequires and patch cleanup 
+- Removed fedora spec, split into subproject
+  Del:  libqtxdg-Fedora_20.spec 
+- Removed BuildRequires: pkgconfig() in favour of BuildRequires: libqt4-devel at the request of X11:lxde:lxqt maintainers 
+- Ran spec-cleaner on spec file 
+- Added specfile for Fedora_20
+  Add:  libqtxdg-Fedora_20.spec 
+- Repackaged tarball to unpack to libqtxdg-0.5.3 instead of . 
+- First stable release, added stable tarball
+  Added: libqtxdg-0.5.3.tar.xz 
+  Delete:  _service
+- .spec file cleanup for rpmlint checks
+  Removed explicit Requires:
+  Adjusted description 
+- Removed direct cmake calls, in favour of %cmake and %cmake_install 
+- Specfile complete, successful build and packaging 
+- Added 0001-translation-dir.patch to correct for openSUSE directories 
+- Wrote initial _service file and first source pull 
+</comment>
+    <requestid>535967</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6ec94c95f866b4e9c371bf0bace279d6</srcmd5>
+    <version>3.2.0</version>
+    <time>1530304273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * xdgiconloader: Add GTK cache revalidation (fixes finding and
+    showing new icons, especially in main menu)
+  * xdgiconloader: Cache ScalableFollowsColorEntry properly
+  * Set genericName as tooltip (for main menu)
+  * Fix symbolic SVG icons with Qt &gt;= 5.10
+- Update to 3.1.0:
+  * Bump version to 3.1.0
+  * xdgdesktopfile: Add API for getting actions info
+  * xdgdesktopfile: Add support for activating actions
+  * xdgdesktopfile: Add getting actions
+  * Check $XDG_CONFIG_HOME and $XDG_CONFIG_DIRS for mimeapps.list first.
+  * Fix reading and writing mimeapps.list file.
+  * Don't export github templates
+  * Release 3.0.0: Update changelog
+  * Backport support for Scale directory key according to Icon Theme spec
+  * Bump Major to 3
+  * test: Drop Q_FOREACH
+  * Drop Q_FOREACH
+  * liblxqt make no sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * Avoid Qt special keywords collision
+  * XdgDesktopFile: Stops allocating unneeded QMap::keys()
+  * XdgDesktopFile: Stop allocating unneeded QHash:values()
+  * XdgDesktopFile: Improve const-ness
+  * xdgiconloader: Reworks the unthemed/pixmap search
+  * xdgiconloader: Puts the hicolor at the end of the theme hierarchy
+  * XdgIcon: Add flag for &quot;FollowsColorScheme&quot; processing
+  * xdgiconloader: Honor &quot;FolowsColorScheme&quot; theme hint
+  * xdgiconloader: Support symbolic SVG icons
+  * More fixes (#131)
+  * xdgiconloader: Correct hierarchy of fallbacks (#116)
+  * xdgiconloader: Fix XdgIconLoaderEngine::actualSize() (#130)
+  * Update CMakeLists.txt
+  * It adds loadIcon() timing measurements.
+  * xdgiconloader: Consider all existing files/images
+  * Check QTXDGX_ICONENGINEPLUGIN_INSTALL_PATH existence
+  * Mark QTXDGX_ICONENGINEPLUGIN_INSTALL_PATH as advanced
+  * xdgiconloader: Implement QIconEnginePlugin interface
+  * Disables uninstall target
+  * Remove last uses of Java-style (non-mutable) iterators from QtBase
+  * Adds a development qtxdg-iconfinder utility tool
+  * Enable strict iterators for debug builds
+  * Removes extra semi-colons
+  * Improve build warnings
+  * Bump year
+  * QtGui: eradicate Q_FOREACH loops [already const]
+  * Optimize QIconLoader::findIconHelper()
+  * Remove unused variable in QIconLoader::findIconHelper()
+  * Improve use of QHash to minimize double hashing
+  * QIconLoaderEngine: add missing Q_DECL_OVERRIDEs
+  * Replace QLatin1Literal with QLatin1String
+  * QIconCacheGtkReader: use QStringRef more
+  * Gui: use const (and const APIs) more
+  * Adds Link Time Optimization
+  * Replaces CMAKE_SOURCE_DIR by PROJECT_SOURCE_DIR
+  * Refactors superbuild support
+  * Remove duplicate use of source header files
+  * Use AUTOMOC everywhere
+  * Stop using include_directories()
+  * Removes test project definition
+  * Use CMAKE_INCLUDE_CURRENT_DIR
+  * Adds PROJECT_NAME to the build Qt version message
+  * Simplify target_compile_definitions() and target_include_directories()
+  * qiconloader: Reuse Qt implementation
+  * XdgIconLoader: Fix FTBFS in super-build/in-tree builds
+  * Allow xdg-user-dirs in the realpath of $HOME. On some systems /home is a symlink and $HOME points to the symlink. This commit allows the xdg-user-dirs to start with the real/canonical path.
+  * Updates version requirements in pkg-config (.pc) stuff
+  * Make Qt5Xdg use only the same version Qt5XdgIconLoader
+  * Adds minimum Qt version requirement (5.4.2)
+  * test: Fixes false positive in tst_xdgdesktopfile::testReadLocalized()
+  * Remove cpack (#106)
+- Update to to 2.0.0:
+  * BACKWARDS-INCOMPATIBLE: New XdgIconLoader library
+  * New explicit dependency Qt SVG
+  * The IconLoader can use GTK+ icon cache
+  * Improved overall performance
+  * Better XDG handling
+  * Overall polishing
+- Upstream release 0.10.0
+- Changed %build and %install to use cmake macros 
+- New upstream version 1.1.0 
+- Added conditionals to build for Fedora (Only needed for F20) 
+- changed license tag in the spec file to GPL-3.0
+- ported to QT5 
+- new upstream version 1.0.0 
+- spec file clean up
+- removed statically defined requires , we let rpm work for us
+- use pkg-config where possible  
+- BuildRequires and patch cleanup 
+- Removed fedora spec, split into subproject
+  Del:  libqtxdg-Fedora_20.spec 
+- Removed BuildRequires: pkgconfig() in favour of BuildRequires: libqt4-devel at the request of X11:lxde:lxqt maintainers 
+- Ran spec-cleaner on spec file 
+- Added specfile for Fedora_20
+  Add:  libqtxdg-Fedora_20.spec 
+- Repackaged tarball to unpack to libqtxdg-0.5.3 instead of . 
+- First stable release, added stable tarball
+  Added: libqtxdg-0.5.3.tar.xz 
+  Delete:  _service
+- .spec file cleanup for rpmlint checks
+  Removed explicit Requires:
+  Adjusted description 
+- Removed direct cmake calls, in favour of %cmake and %cmake_install 
+- Specfile complete, successful build and packaging 
+- Added 0001-translation-dir.patch to correct for openSUSE directories 
+- Wrote initial _service file and first source pull 
+</comment>
+    <requestid>618054</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e2f076cf6c08a5d27adb7e6c4038fbb</srcmd5>
+    <version>3.3.1</version>
+    <time>1551113949</time>
+    <user>coolo</user>
+    <comment>- Update to 3.3.1:
+  * Silenced compiler warnings about not used variables.
+  * Dropped not needed MOC stuff, we already use CMAKE_AUTOMOC.
+  * Dropped using libqtxdg's own versions of things that are in
+    lxqt-build-tools
+  * Updated translations
+
+- Update to 3.3.0:
+  * Use C++ ISO Standard 14, removed support for &lt; 14
+  * XdgDesktopFile: Simplify scheme handling
+  * XdgDesktopFile: Clear internal data before loading a new file
+  * XdgDesktopFile: Don’t try read non existent files
+  * xdgaction: Set icon in updateIcon() only if needed
+  * xdgiconloader: Support more classes for “FollowColors” icons
+  * xdgiconloader: Consider device pixel ratio when painting
+  * xdgiconloader: Cover all KDE colors schemes for symbolic icons
+  * xdgiconloader: Fixes pedantic warning
+  * xdgmenuwidget: Fix menu-item drag url</comment>
+    <requestid>678873</requestid>
+  </revision>
+</revisionlist>

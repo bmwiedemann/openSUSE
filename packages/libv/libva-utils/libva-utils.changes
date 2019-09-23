@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Fri Aug 23 19:59:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.0:
+  * meson: rename the h264enc binary to be in line with the
+    autotools build.
+  * Unify NEWS format.
+  * sfcsample: don't include X11 headers.
+  * test: update vaInitialize_vaTerminate_Bad_vaSetDriverName.
+  * Check for -fstack-protector.
+  * vavpp: csc with AYUV format.
+  * vavpp: requires BGRA frame when saving a BGRA file.
+
+-------------------------------------------------------------------
+Sat Jul  6 08:09:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.1:
+  * No changes, sync with libva version only.
+- Changes from version 2.4.0:
+  * Fix make dist issue caused by decode streamout sample.
+  * Add VP sample for Blending.
+  * Add VP seperate sample for scaling, csc, sharpness, denoise,
+    chromasitting.
+
+-------------------------------------------------------------------
+Tue Oct 23 19:23:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.3.0:
+  * Add HEVC encode sample code
+  * Add sample code for avc decode streamout
+  * Add VP8 sample encoder application (SVCT supported)
+- Changes from version 2.2.0:
+  * Add meson build
+  * Remove driver specific test cases.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Drop conditionals for obsolete versions of openSUSE.
+- Disable sha1sum as source, currently not provided by upstream.
+
+-------------------------------------------------------------------
+Sun May  6 12:43:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 2.1.0:
+  * Refine gtest conformance cases.
+  * vp9enc: add support low power mode.
+  * vavpp: add support for RGBA/RGBX surface.
+  * vainfo: add support new profile/entrypoint pairs.
+
+-------------------------------------------------------------------
+Mon Mar 19 23:17:13 UTC 2018 - sndirsch@suse.com
+
+- disabled wayland build on Leap 42.3 
+
+-------------------------------------------------------------------
+Fri Nov 17 10:28:40 UTC 2017 - zaitor@opensuse.org
+
+- Add vaapi-wayland-tools Obsoletes and Provides.
+
+-------------------------------------------------------------------
+Tue Nov 14 21:42:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.0.0:
+  * Add option '--device ' to vainfo.
+  * Add vp9enc for VP9 encoding.
+  * Add vavpp for video processing.
+  * Add FEI gtest cases.
+  * Fix segmentation fault in putsurface_wayland.
+  * Fix GCC 7.1.1 warnings/errors.
+  * Fix libva version printed out by vainfo.
+- Pass enable-drm, enable-wayland and enable-x11 to configure,
+  ensure we build all supported backends.
+- Following the above, add pkgconfig(libdrm), pkgconfig(libva),
+  pkgconfig(libva-drm), pkgconfig(libva-wayland),
+  pkgconfig(wayland-client), pkgconfig(x11), pkgconfig(xext) and
+  pkgconfig(xfixes) BuildRequires; align with what configure looks
+  for.
+- Run spec-cleaner on spec file.
+
+-------------------------------------------------------------------
+Tue Aug 29 14:30:24 UTC 2017 - sndirsch@suse.com
+
+- removed putsurface_wayland from filelist (now requires wayland-
+  enabled -devel package)
+
+-------------------------------------------------------------------
+Wed Aug 16 17:27:10 UTC 2017 - chris@computersalat.de
+
+- Version 1.8.3 - 28.Jun.2017
+  * Bump version to 1.8.3
+  * Switch AC_PROG_LIBTOOL to LT_INIT
+  * putsurface: include wayland-client.h instead of wayland-server.h
+  * avcenc: add AUD NAL unit at the beginning of pic
+  * avcenc: enable direct_spatial_mv_pred_flag for B frame
+  * avcenc: add the frame number as the command line input parameter
+
+-------------------------------------------------------------------
+Fri Aug  4 14:03:25 UTC 2017 - sndirsch@suse.com
+
+- Version 1.8.2
+  * Bump version to 1.8.2 
+
+-------------------------------------------------------------------
+Thu Jun 29 12:30:05 UTC 2017 - sndirsch@suse.com
+
+- changed Group to Development/Tools/Other 
+
+-------------------------------------------------------------------
+Wed Apr 19 19:10:38 UTC 2017 - chris@computersalat.de
+
+- fix changes file
+  * add missing changes for 1.8.1
+  * fix Version string
+
+-------------------------------------------------------------------
+Tue Apr 18 20:45:56 UTC 2017 - chris@computersalat.de
+
+- Version 1.8.1 - 10.Apr.2017
+  * Bump version to 1.8.1
+- add sha1sum file
+
+-------------------------------------------------------------------
+Sat Apr 15 22:37:52 UTC 2017 - chris@computersalat.de
+
+- initial pkg 1.8.0
+- Version 1.8.0 - 31.Mar.2017
+  * First release of libva-utils as a separate project
+  * Follows libva release versioning
+  * Contains all the utilities and tests for libva API
+  * dynamically links to libva
+  * building system clean ups
+  * test suite included using GoogleTestFramework

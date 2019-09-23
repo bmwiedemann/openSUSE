@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Jan 24 16:34:19 UTC 2019 - Matthias Mailänder <matthias@mailaender.name>
+
+- Add xwininfo to Requires (bnc#1100949)
+
+-------------------------------------------------------------------
+Fri Apr  6 14:51:19 UTC 2012 - vuntz@opensuse.org
+
+- Replace License tag with spdx identifier (GPL-2.0+).
+
+-------------------------------------------------------------------
+Mon Feb 14 02:40:06 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Aug 30 03:26:36 UTC 2010 - bili@novell.com
+
+- Add the dependency for jack(bnc#635106).
+
+-------------------------------------------------------------------
+Fri Aug 28 11:26:57 UTC 2009 - puzel@novell.com
+
+- use new python macros 
+
+-------------------------------------------------------------------
+Thu May 14 11:14:53 CEST 2009 - vuntz@novell.com
+
+- Recompress source tarball to bz2.
+- Remove unneeded BuildRequires: autoconf, automake, intltool
+- Use fdupes.
+- Do not version the requires on recordmydesktop -- this can be
+  wrong if they are not released in sync.
+- Add py_requires.
+- Limit width of description lines.
+- Do not ship empty NEWS file.
+
+-------------------------------------------------------------------
+Tue May 12 03:07:47 BRT 2009 - ecanuto@novell.com
+
+- Initial package for gtk-recordMyDesktop screen capture.
+

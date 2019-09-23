@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f63dd74d1d15967179bee354d6a7509</srcmd5>
+    <version>2.0</version>
+    <time>1197431143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b607191879e1f1387185e81ec11a6fbe</srcmd5>
+    <version>2.1</version>
+    <time>1205254657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="21">
+    <srcmd5>41213943b15bc1003ddf6c06f002b993</srcmd5>
+    <version>2.1</version>
+    <time>1211052945</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dcfb0535b36fc1ee469e6cb9f49383e4</srcmd5>
+    <version>2.2</version>
+    <time>1216421361</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="38">
+    <srcmd5>71abf2b73c4ec85ed37136a1113efa7e</srcmd5>
+    <version>2.2</version>
+    <time>1239106486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63e1f36e9049bab790a32f65edab075f</srcmd5>
+    <version>2.3</version>
+    <time>1252581089</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/qgit based on submit request 20272 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>63e1f36e9049bab790a32f65edab075f</srcmd5>
+    <version>2.3</version>
+    <time>1252581089</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:scm/qgit based on submit request 20272 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d2813c1d6979f90544d1595874a0e1b3</srcmd5>
+    <version>2.3</version>
+    <time>1268925914</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>d2813c1d6979f90544d1595874a0e1b3</srcmd5>
+    <version>2.3</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>d2813c1d6979f90544d1595874a0e1b3</srcmd5>
+    <version>2.3</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>d2813c1d6979f90544d1595874a0e1b3</srcmd5>
+    <version>2.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>d2813c1d6979f90544d1595874a0e1b3</srcmd5>
+    <version>2.3</version>
+    <time>1319182414</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>df5411567ae3a44a8517104f6f8cf28a</srcmd5>
+    <version>2.4</version>
+    <time>1322738747</time>
+    <user>coolo</user>
+    <comment>- update to 2.4:
+  * fix functionality losses with newer git releases
+  * shortlog parsing fixes
+  * display cleanups</comment>
+    <requestid>94647</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7b81abc873d65ddb170a7f23dbe77f87</srcmd5>
+    <version>2.4</version>
+    <time>1322828540</time>
+    <user>coolo</user>
+    <comment>- update to 2.4 (bnc#734180):</comment>
+    <requestid>94885</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>75f2329fa2dc84cd8ef499466dba447b</srcmd5>
+    <version>2.4</version>
+    <time>1323194312</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>75f2329fa2dc84cd8ef499466dba447b</srcmd5>
+    <version>2.4</version>
+    <time>1340184124</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>727220249529e151411e0b5cf4a3432e</srcmd5>
+    <version>2.4</version>
+    <time>1348148774</time>
+    <user>coolo</user>
+    <comment>- Don't strip binaries (forwarded request 134497 from AndreasSchwab)</comment>
+    <requestid>134629</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>727220249529e151411e0b5cf4a3432e</srcmd5>
+    <version>2.4</version>
+    <time>1359110258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8e9aefdf5bd3bf29e756465a798024c</srcmd5>
+    <version>2.5</version>
+    <time>1370430546</time>
+    <user>coolo</user>
+    <comment>- update to 2.5:
+  * fixed sorting of tree-view
+  * better support for dark GUI color schemes
+  * fixed off-sync line numbers in the annotation file view</comment>
+    <requestid>177616</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>b8e9aefdf5bd3bf29e756465a798024c</srcmd5>
+    <version>2.5</version>
+    <time>1379664409</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>b8e9aefdf5bd3bf29e756465a798024c</srcmd5>
+    <version>2.5</version>
+    <time>1409303130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>58d80ec6de17cfc03c546673ce1553d3</srcmd5>
+    <version>2.6</version>
+    <time>1483959292</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6:
+  * switch to Qt5 (bsc#988809)
+- spec-cleaner run</comment>
+    <requestid>448505</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7032e5545235dad1988f8d4e43333dce</srcmd5>
+    <version>2.8</version>
+    <time>1532774442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624403</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,4 @@
+Name: gtk3-devel
+BuildRequires: gtk3-devel
+#!BuildIgnore: brp-trim-desktopfiles
+#!BuildIgnore: cputype-armv6

@@ -1,0 +1,5 @@
+## Name: lighttpd
+## Description: Open the https port for lighttpd.
+
+# space separated list of allowed TCP ports
+TCP="https"

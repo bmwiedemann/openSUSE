@@ -1,0 +1,37 @@
+--- applets/install.sh
++++ applets/install.sh	2019/03/29 09:03:34
+@@ -1,11 +1,11 @@
+-#!/bin/sh
++#!/usr/bin/busybox sh
+ 
+ export LC_ALL=POSIX
+ export LC_CTYPE=POSIX
+ 
+ prefix=$1
+ if [ -z "$prefix" ]; then
+-	echo "usage: applets/install.sh DESTINATION TYPE [OPTS ...]"
++	echo "usage: busybox.install DESTINATION TYPE [OPTS ...]"
+ 	echo "  TYPE is one of: --symlinks --hardlinks --binaries --scriptwrapper --none"
+ 	echo "  OPTS is one or more of: --cleanup --noclobber"
+ 	exit 1
+@@ -13,9 +13,9 @@
+ shift # Keep only remaining options
+ 
+ # Source the configuration
+-. ./.config
++#. ./.config
+ 
+-h=`sort busybox.links | uniq`
++h=`sort /usr/share/busybox/busybox.links | uniq`
+ 
+ sharedlib_dir="0_lib"
+ 
+@@ -78,7 +78,7 @@
+ 
+ rm -f "$prefix/bin/busybox" || exit 1
+ mkdir -p "$prefix/bin" || exit 1
+-install -m 755 busybox "$prefix/bin/busybox" || exit 1
++install -m 755 /usr/bin/busybox "$prefix/bin/busybox" || exit 1
+ 
+ for i in $h; do
+ 	appdir=`dirname "$i"`

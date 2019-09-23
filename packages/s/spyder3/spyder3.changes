@@ -1,0 +1,1721 @@
+-------------------------------------------------------------------
+Fri Sep 13 14:22:39 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix desktop file categories.
+
+-------------------------------------------------------------------
+Mon Aug 19 07:41:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Use GitHub release tarball due to missing files in sdist
+- Activate and fix tests, skipping tests requiring VCS or Internet
+
+-------------------------------------------------------------------
+Thu Jul 25 19:51:41 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Remove version requirement for python3-pyqtwebengine
+ - fixes boo#1141974
+
+-------------------------------------------------------------------
+Mon Jul 15 19:50:59 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.3.6:
+ - Issues Closed:
+  - [Issue 9757](https://github.com/spyder-ide/spyder/issues/9757) - Text in help search bar becomes selected once help is displayed ([PR 9760](https://github.com/spyder-ide/spyder/pull/9760))
+  - [Issue 8336](https://github.com/spyder-ide/spyder/issues/8336) - AttributeError in profiler ([PR 9758](https://github.com/spyder-ide/spyder/pull/9758))
+  - In this release 2 issues were closed.
+ - Pull Requests Merged:
+  - [PR 9760](https://github.com/spyder-ide/spyder/pull/9760) - PR: Backport PR #9552 ([9757](https://github.com/spyder-ide/spyder/issues/9757))
+  - [PR 9758](https://github.com/spyder-ide/spyder/pull/9758) - PR: Avoid an error when profdata is None in Profiler ([8336](https://github.com/spyder-ide/spyder/issues/8336))
+  - [PR 9718](https://github.com/spyder-ide/spyder/pull/9718) - PR: Fix completion plugins listening to external hosts
+  - In this release 3 pull requests were closed.
+
+-------------------------------------------------------------------
+Sun Jun 30 11:31:50 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.3.5:
+ - New features:
+  - Add option to allow users showing/hiding CMD windows created by the
+    `subprocess` module on Windows. The option can be found in
+    `Preferences > IPython Console > Advanced settings > Windows adjustments`.
+ - Issues Closed:
+  - [Issue 9520](https://github.com/spyder-ide/spyder/issues/9520) - Can't run profiler ([PR 9652](https://github.com/spyder-ide/spyder/pull/9652))
+  - [Issue 9304](https://github.com/spyder-ide/spyder/issues/9304) - PermissionError when trying to load a kernel connection file ([PR 9651](https://github.com/spyder-ide/spyder/pull/9651))
+  - [Issue 9262](https://github.com/spyder-ide/spyder/issues/9262) - Only require PyWebEngine on Python 3+ to avoid blocking py2 compat in pip wheels ([PR 9436](https://github.com/spyder-ide/spyder/pull/9436))
+  - [Issue 9240](https://github.com/spyder-ide/spyder/issues/9240) - The external system terminal close after running script if the Python console exits due to an exception ([PR 9312](https://github.com/spyder-ide/spyder/pull/9312))
+  - [Issue 9221](https://github.com/spyder-ide/spyder/issues/9221) - TypeError: cursor_position_changed ([PR 9650](https://github.com/spyder-ide/spyder/pull/9650))
+  - [Issue 9217](https://github.com/spyder-ide/spyder/issues/9217) - ValueError when clicking on a traceback link in the IPython console ([PR 9649](https://github.com/spyder-ide/spyder/pull/9649))
+  - [Issue 9143](https://github.com/spyder-ide/spyder/issues/9143) - Help pane doesn't accept aliased modules ([PR 9166](https://github.com/spyder-ide/spyder/pull/9166))
+  - [Issue 9113](https://github.com/spyder-ide/spyder/issues/9113) - Opening window in a subprocess from Spyder ([PR 9123](https://github.com/spyder-ide/spyder/pull/9123))
+  - [Issue 9093](https://github.com/spyder-ide/spyder/issues/9093) - Error when trying to create spyder.lock on an unwritable config directory ([PR 9098](https://github.com/spyder-ide/spyder/pull/9098))
+  - [Issue 9051](https://github.com/spyder-ide/spyder/issues/9051) - Variable explorer viewers go to the background on macOS ([PR 9119](https://github.com/spyder-ide/spyder/pull/9119))
+  - In this release 10 issues were closed.
+ - Pull Requests Merged:
+  - [PR 9658](https://github.com/spyder-ide/spyder/pull/9658) - PR: Require spyder-kernels 0.5.0 in setup.py
+  - [PR 9652](https://github.com/spyder-ide/spyder/pull/9652) - PR: Remove usage of QTextCodec because it's not really needed ([9520](https://github.com/spyder-ide/spyder/issues/9520))
+  - [PR 9651](https://github.com/spyder-ide/spyder/pull/9651) - PR: Catch error when loading kernel connection file ([9304](https://github.com/spyder-ide/spyder/issues/9304))
+  - [PR 9650](https://github.com/spyder-ide/spyder/pull/9650) - PR: Catch an error when disconnecting a signal in calltip widget ([9221](https://github.com/spyder-ide/spyder/issues/9221))
+  - [PR 9649](https://github.com/spyder-ide/spyder/pull/9649) - PR: Catch error when pressing the link of a traceback in IPython console ([9217](https://github.com/spyder-ide/spyder/issues/9217))
+  - [PR 9436](https://github.com/spyder-ide/spyder/pull/9436) - PR: Require pyqtwebengine only in Python 3 ([9262](https://github.com/spyder-ide/spyder/issues/9262))
+  - [PR 9312](https://github.com/spyder-ide/spyder/pull/9312) - PR: Improvements to the cmd used to start external terminals on Windows ([9240](https://github.com/spyder-ide/spyder/issues/9240))
+  - [PR 9166](https://github.com/spyder-ide/spyder/pull/9166) - PR: Fix Help plugin string validation for the console ([9143](https://github.com/spyder-ide/spyder/issues/9143))
+  - [PR 9123](https://github.com/spyder-ide/spyder/pull/9123) - PR: Add preference to show/hide cmd windows generated by the subprocess module ([9113](https://github.com/spyder-ide/spyder/issues/9113))
+  - [PR 9119](https://github.com/spyder-ide/spyder/pull/9119) - PR: Make Variable Explorer viewers stay on top in macOS ([9051](https://github.com/spyder-ide/spyder/issues/9051))
+  - [PR 9099](https://github.com/spyder-ide/spyder/pull/9099) - PR: Add sponsors sections and remove relative links to images in Readme
+  - [PR 9098](https://github.com/spyder-ide/spyder/pull/9098) - PR: Avoid some permission errors at startup on Windows  ([9093](https://github.com/spyder-ide/spyder/issues/9093))
+  - In this release 12 pull requests were closed.
+
+-------------------------------------------------------------------
+Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix jupyter dependencies.
+
+-------------------------------------------------------------------
+Sun Apr  7 19:08:38 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Add changelog.sh for easier changelog conversion in packaging.
+- update to version 3.3.4:
+ - New features:
+  - Fix several incompatibilities with PyQt5 5.12.
+  - Avoid errors when running `turtle` programs in the IPython console
+  multiple times.
+  - Avoid the UMR to reload modules installed in the user site-packages
+  directory.
+ - Issues Closed:
+  - [Issue 8978](https://github.com/spyder-ide/spyder/issues/8978) - Github login window is resizing automatically ([PR 8993](https://github.com/spyder-ide/spyder/pull/8993))
+  - [Issue 8934](https://github.com/spyder-ide/spyder/issues/8934) - IOError raised when completion plugins fail to start ([PR 8950](https://github.com/spyder-ide/spyder/pull/8950))
+  - [Issue 8927](https://github.com/spyder-ide/spyder/issues/8927) - Change "Clear variables" to "Remove variables" in French translation ([PR 8951](https://github.com/spyder-ide/spyder/pull/8951))
+  - [Issue 8878](https://github.com/spyder-ide/spyder/issues/8878) - Error when try to type opening bracket in console ([PR 8879](https://github.com/spyder-ide/spyder/pull/8879))
+  - [Issue 8841](https://github.com/spyder-ide/spyder/issues/8841) - Static Code Analysis can be attempted without selected file ([PR 8921](https://github.com/spyder-ide/spyder/pull/8921))
+  - [Issue 8807](https://github.com/spyder-ide/spyder/issues/8807) - Error when saving LANG_FILE ([PR 8808](https://github.com/spyder-ide/spyder/pull/8808))
+  - [Issue 8789](https://github.com/spyder-ide/spyder/issues/8789) - spyder_io_hdf5 plugin no longer available ([PR 8790](https://github.com/spyder-ide/spyder/pull/8790))
+  - [Issue 8776](https://github.com/spyder-ide/spyder/issues/8776) - Problem with debugfile() in version >= 3.3.0
+  - [Issue 8764](https://github.com/spyder-ide/spyder/issues/8764) - VersionConflict when opening a file in the Editor ([PR 8781](https://github.com/spyder-ide/spyder/pull/8781))
+  - [Issue 8762](https://github.com/spyder-ide/spyder/issues/8762) - Text written in help pane gets automatically selected and replaced with every keystroke ([PR 8907](https://github.com/spyder-ide/spyder/pull/8907))
+  - [Issue 8748](https://github.com/spyder-ide/spyder/issues/8748) - spyder 3.3.3 icon theme Spyder 3 problem with PyQt 5.12 ([PR 8896](https://github.com/spyder-ide/spyder/pull/8896))
+  - [Issue 8747](https://github.com/spyder-ide/spyder/issues/8747) - Spyder should depend on QtWebEngine for pyqt >= 5.12 ([PR 8753](https://github.com/spyder-ide/spyder/pull/8753))
+  - [Issue 6278](https://github.com/spyder-ide/spyder/issues/6278) - Problems with running turtle programs in Spyder
+ - Pull Requests Merged:
+  - [PR 9073](https://github.com/spyder-ide/spyder/pull/9073) - PR: Increase minimal required version of spyder-kernels to 0.4.3
+  - [PR 9041](https://github.com/spyder-ide/spyder/pull/9041) - PR: Fix a recurrrent error with our IPython console tests
+  - [PR 9023](https://github.com/spyder-ide/spyder/pull/9023) - PR: Fix warning and todo action menu entries
+  - [PR 9020](https://github.com/spyder-ide/spyder/pull/9020) - PR: Fix our tests on Windows/Python 3.7
+  - [PR 8996](https://github.com/spyder-ide/spyder/pull/8996) - PR: Generate PyPI long description from README.md
+  - [PR 8993](https://github.com/spyder-ide/spyder/pull/8993) - PR: Fix over-height resize of the Github login dialog ([8978](https://github.com/spyder-ide/spyder/issues/8978))
+  - [PR 8953](https://github.com/spyder-ide/spyder/pull/8953) - PR: Compile French translation po file
+  - [PR 8951](https://github.com/spyder-ide/spyder/pull/8951) - PR: Change 'Supprimer' for 'Effacer' in remove variables text for French translation ([8927](https://github.com/spyder-ide/spyder/issues/8927))
+  - [PR 8950](https://github.com/spyder-ide/spyder/pull/8950) - PR: Don't raise an error if completion plugins fail to start ([8934](https://github.com/spyder-ide/spyder/issues/8934))
+  - [PR 8928](https://github.com/spyder-ide/spyder/pull/8928) - PR: Use generic Qt name instead of Qt4 when switching backend for Mayavi
+  - [PR 8921](https://github.com/spyder-ide/spyder/pull/8921) - PR: Set enabled value of start_button with is_valid (Static Code Analysis) ([8841](https://github.com/spyder-ide/spyder/issues/8841))
+  - [PR 8910](https://github.com/spyder-ide/spyder/pull/8910) - PR: Fix tests on Windows/Python 3.7
+  - [PR 8907](https://github.com/spyder-ide/spyder/pull/8907) - PR: Fix force_refresh to only force with valid object entries (Help plugin) ([8762](https://github.com/spyder-ide/spyder/issues/8762))
+  - [PR 8899](https://github.com/spyder-ide/spyder/pull/8899) - PR: Run our tests with pip on Windows/Python 3.7
+  - [PR 8896](https://github.com/spyder-ide/spyder/pull/8896) - PR: Increase minimal QtAwesome version to 0.5.7 ([8748](https://github.com/spyder-ide/spyder/issues/8748))
+  - [PR 8895](https://github.com/spyder-ide/spyder/pull/8895) - PR: Remove Appveyor support and stop testing on Windows/Python 2
+  - [PR 8879](https://github.com/spyder-ide/spyder/pull/8879) - PR: Don't fail on UnicodeEncodeError when saving Help's search history to disk ([8878](https://github.com/spyder-ide/spyder/issues/8878))
+  - [PR 8808](https://github.com/spyder-ide/spyder/pull/8808) - PR: Avoid errors when trying to save LANG_FILE ([8807](https://github.com/spyder-ide/spyder/issues/8807))
+  - [PR 8802](https://github.com/spyder-ide/spyder/pull/8802) - PR: Upgrade Travis config to use Xenial image
+  - [PR 8790](https://github.com/spyder-ide/spyder/pull/8790) - PR: Fix missing spyder_io_hdf5 plugin ([8789](https://github.com/spyder-ide/spyder/issues/8789))
+  - [PR 8781](https://github.com/spyder-ide/spyder/pull/8781) - PR: Avoid errors when using Pygments to detect the lexer used to highlight a file ([8764](https://github.com/spyder-ide/spyder/issues/8764))
+  - [PR 8756](https://github.com/spyder-ide/spyder/pull/8756) - PR: Fix PyQt5 pinning restrictions in setup.py
+  - [PR 8753](https://github.com/spyder-ide/spyder/pull/8753) - PR: Add pyqtwebengine as a new dependency ([8747](https://github.com/spyder-ide/spyder/issues/8747))
+----
+- update to version 3.3.3:
+ - New features:
+  - Fix an incompatibility with Numpy 1.16 that generated an error
+  when trying to open an array in the Variable Explorer.
+  - Increase maximum PyQt5 supported version to 5.12
+  - Increase minimal required version of spyder-kernels to 0.4.2
+  to get important fixes about saving/loading the current
+  namespace and skipping installed modules from our User Module
+  Reloader (UMR).
+ - Issues Closed:
+  - [Issue 8697](https://github.com/spyder-ide/spyder/issues/8697) - Starting a python file importing tensorflow the second time results in error
+  - [Issue 8681](https://github.com/spyder-ide/spyder/issues/8681) - PYTHONPATH environment variable not inherited if using non-default python interpreter ([PR 8685](https://github.com/spyder-ide/spyder/pull/8685))
+  - [Issue 8668](https://github.com/spyder-ide/spyder/issues/8668) - Console throws error about wurlitzer on fresh install
+  - [Issue 8582](https://github.com/spyder-ide/spyder/issues/8582) - Spyder encountered a problem when opening numpy array ([PR 8632](https://github.com/spyder-ide/spyder/pull/8632))
+  - [Issue 8581](https://github.com/spyder-ide/spyder/issues/8581) - An error ocurred while starting the kernel: b'' ([PR 8736](https://github.com/spyder-ide/spyder/pull/8736))
+  - [Issue 8475](https://github.com/spyder-ide/spyder/issues/8475) - pyqt5 Dependency seems outdated ([PR 8530](https://github.com/spyder-ide/spyder/pull/8530))
+ - Pull Requests Merged:
+  - [PR 8736](https://github.com/spyder-ide/spyder/pull/8736) - PR: Don't show empty kernel error messages ([8581](https://github.com/spyder-ide/spyder/issues/8581))
+  - [PR 8731](https://github.com/spyder-ide/spyder/pull/8731) - PR: Backport PR 8559
+  - [PR 8728](https://github.com/spyder-ide/spyder/pull/8728) - PR: Increase minimal spyder-kernels version in setup.py to avoid faulty release
+  - [PR 8696](https://github.com/spyder-ide/spyder/pull/8696) - PR: Increase minimal required version of spyder-kernels
+  - [PR 8689](https://github.com/spyder-ide/spyder/pull/8689) - PR: Backport PR 8363
+  - [PR 8686](https://github.com/spyder-ide/spyder/pull/8686) - PR: Backport PR 8452
+  - [PR 8685](https://github.com/spyder-ide/spyder/pull/8685) - PR: Avoid dropping predefined PYTHONPATH when using an external interpreter ([8681](https://github.com/spyder-ide/spyder/issues/8681))
+  - [PR 8636](https://github.com/spyder-ide/spyder/pull/8636) - PR: Improve warning for when only some namespace objs couldn't be saved
+  - [PR 8632](https://github.com/spyder-ide/spyder/pull/8632) - PR: Don't force write flag to True in ArrayEditor, to fix compat with Numpy >=1.16 ([8582](https://github.com/spyder-ide/spyder/issues/8582))
+  - [PR 8530](https://github.com/spyder-ide/spyder/pull/8530) - PR: Increase maximum PyQt5 supported version ([8475](https://github.com/spyder-ide/spyder/issues/8475))
+
+-------------------------------------------------------------------
+Fri Jan  4 17:31:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix rpmlint issues.
+
+-------------------------------------------------------------------
+Wed Jan  2 09:25:32 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.3.2:
+ - New features
+  - Main Window
+   * Add new German and Hungarian translations.
+  - Preferences
+   * Give users the ability to select the OpenGL implementation
+     used by Qt. This option can be changed in
+     `General > Advanced Settings > Rendering engine`.
+  - Find in files
+   * Simplify the way to exclude files from search.
+   * Fix error that prevented to stop a search when it was in
+     progress.
+   * Save its options when Spyder is closed.
+  - Under the hood
+   * Don't remove Spyder's temporary directory when Spyder is
+     closed. This avoids conflicts when multiple Spyder
+     instances are running.
+ - Issues Closed
+  * [Issue 8290](https://github.com/spyder-ide/spyder/issues/8290) - spyder.desktop doesn't contain  WMClass variable for grouping windows ([PR 8292](https://github.com/spyder-ide/spyder/pull/8292))
+  * [Issue 8236](https://github.com/spyder-ide/spyder/issues/8236) - Update translations for 3.3.2
+  * [Issue 8216](https://github.com/spyder-ide/spyder/issues/8216) - Error on startup with non-clean config file (from previous files/projects open?) and recent master builds ([PR 8249](https://github.com/spyder-ide/spyder/pull/8249))
+  * [Issue 8179](https://github.com/spyder-ide/spyder/issues/8179) - Error when changing language from French to English ([PR 8188](https://github.com/spyder-ide/spyder/pull/8188))
+  * [Issue 8128](https://github.com/spyder-ide/spyder/issues/8128) - Error raises when use multiprocessing
+  * [Issue 8103](https://github.com/spyder-ide/spyder/issues/8103) - DeprecationWarning with iPython during executing certain commands in the console.
+  * [Issue 8046](https://github.com/spyder-ide/spyder/issues/8046) - PermissionError while launching Spyder ([PR 8048](https://github.com/spyder-ide/spyder/pull/8048))
+  * [Issue 8025](https://github.com/spyder-ide/spyder/issues/8025) - Custom interpreters are not shown in "Preferences > Python interpreter" ([PR 8231](https://github.com/spyder-ide/spyder/pull/8231))
+  * [Issue 8007](https://github.com/spyder-ide/spyder/issues/8007) - Kernel crash due to file with the same name of a stdlib Python module present in current working directory
+  * [Issue 7882](https://github.com/spyder-ide/spyder/issues/7882) - Error while restarting kernel ([PR 7887](https://github.com/spyder-ide/spyder/pull/7887))
+  * [Issue 7868](https://github.com/spyder-ide/spyder/issues/7868) - Connect to kernel dialog needs to be clearer that either the SSH keyfile *or* the password is required ([PR 7898](https://github.com/spyder-ide/spyder/pull/7898))
+  * [Issue 7862](https://github.com/spyder-ide/spyder/issues/7862) - 4.0beta1 is offered as an update when using a development version and a virtualenv ([PR 7902](https://github.com/spyder-ide/spyder/pull/7902))
+  * [Issue 7856](https://github.com/spyder-ide/spyder/issues/7856) - Nbconvert 5.4.0 breaking mainwindow notebook test due to change in output file text ([PR 7860](https://github.com/spyder-ide/spyder/pull/7860))
+  * [Issue 7811](https://github.com/spyder-ide/spyder/issues/7811) - Find In Files: empty "Exclude" field makes all files be excluded ([PR 7816](https://github.com/spyder-ide/spyder/pull/7816))
+  * [Issue 7810](https://github.com/spyder-ide/spyder/issues/7810) - Find In Files: regexp icon ([PR 7864](https://github.com/spyder-ide/spyder/pull/7864))
+  * [Issue 7809](https://github.com/spyder-ide/spyder/issues/7809) - Make visible by default the widget to exclude file types in Find in Files ([PR 7864](https://github.com/spyder-ide/spyder/pull/7864))
+  * [Issue 7804](https://github.com/spyder-ide/spyder/issues/7804) - Stopping a search using FindInFiles freezes the app ([PR 7806](https://github.com/spyder-ide/spyder/pull/7806))
+  * [Issue 7803](https://github.com/spyder-ide/spyder/issues/7803) - Change the way to exclude file types in Find in files ([PR 7806](https://github.com/spyder-ide/spyder/pull/7806))
+  * [Issue 7800](https://github.com/spyder-ide/spyder/issues/7800) - FileNotFoundError when using custom interpreter ([PR 7829](https://github.com/spyder-ide/spyder/pull/7829))
+  * [Issue 7753](https://github.com/spyder-ide/spyder/issues/7753) - Error when copying data from a dataframe ([PR 7759](https://github.com/spyder-ide/spyder/pull/7759))
+  * [Issue 7748](https://github.com/spyder-ide/spyder/issues/7748) - Cannot import notebook variables ([PR 7761](https://github.com/spyder-ide/spyder/pull/7761))
+  * [Issue 7742](https://github.com/spyder-ide/spyder/issues/7742) - Error when dropping files in the Editor ([PR 7764](https://github.com/spyder-ide/spyder/pull/7764))
+  * [Issue 7733](https://github.com/spyder-ide/spyder/issues/7733) - Error when browsing git repository ([PR 7766](https://github.com/spyder-ide/spyder/pull/7766))
+  * [Issue 7721](https://github.com/spyder-ide/spyder/issues/7721) - Error after upgrading to Python 3.7 ([PR 7807](https://github.com/spyder-ide/spyder/pull/7807))
+  * [Issue 7705](https://github.com/spyder-ide/spyder/issues/7705) - Error on saving generated by Pygments lexers ([PR 7712](https://github.com/spyder-ide/spyder/pull/7712))
+  * [Issue 7674](https://github.com/spyder-ide/spyder/issues/7674) - New Python interpreter selection combobox displays previous, not actual executable path if selected from file browser ([PR 7715](https://github.com/spyder-ide/spyder/pull/7715))
+  * [Issue 7619](https://github.com/spyder-ide/spyder/issues/7619) - Error when trying to display Latex through Matplotlib
+  * [Issue 7578](https://github.com/spyder-ide/spyder/issues/7578) - AttributeError: 'NoneType' object has no attribute 'input' ([PR 7716](https://github.com/spyder-ide/spyder/pull/7716))
+  * [Issue 7561](https://github.com/spyder-ide/spyder/issues/7561) - Annoying "Are you sure you want to restart the kernel?" ([PR 7694](https://github.com/spyder-ide/spyder/pull/7694))
+  * [Issue 7552](https://github.com/spyder-ide/spyder/issues/7552) - TypeError: scaledToWidth in the IPython console
+  * [Issue 7447](https://github.com/spyder-ide/spyder/issues/7447) - Main window is black when starting Spyder over ssh/X11 ([PR 7859](https://github.com/spyder-ide/spyder/pull/7859))
+  * [Issue 7302](https://github.com/spyder-ide/spyder/issues/7302) - PermissionError when launching kernel ([PR 7717](https://github.com/spyder-ide/spyder/pull/7717))
+  * [Issue 7244](https://github.com/spyder-ide/spyder/issues/7244) - AttributeError when pasting list in collectionseditor.py ([PR 7817](https://github.com/spyder-ide/spyder/pull/7817))
+  * [Issue 7236](https://github.com/spyder-ide/spyder/issues/7236) - UnicodeDecodeError when changing PYTHONPATH in Python 2 ([PR 7655](https://github.com/spyder-ide/spyder/pull/7655))
+  * [Issue 7195](https://github.com/spyder-ide/spyder/issues/7195) - Crash when displaying a pandas data frame with a column containing a data frame ([PR 8114](https://github.com/spyder-ide/spyder/pull/8114))
+  * [Issue 7177](https://github.com/spyder-ide/spyder/issues/7177) - Error when passing a regexp to the findreplace widget ([PR 8115](https://github.com/spyder-ide/spyder/pull/8115))
+  * [Issue 6936](https://github.com/spyder-ide/spyder/issues/6936) - Data Type of customized class is changed to base class when viewed in the Variable Explorer ([PR 7679](https://github.com/spyder-ide/spyder/pull/7679))
+  * [Issue 6535](https://github.com/spyder-ide/spyder/issues/6535) - Text in "About Spyder" menu is not selectable ([PR 7727](https://github.com/spyder-ide/spyder/pull/7727))
+  * [Issue 6218](https://github.com/spyder-ide/spyder/issues/6218) - UnicodeDecodeError when truncating results in Find in files ([PR 7812](https://github.com/spyder-ide/spyder/pull/7812))
+  * [Issue 6176](https://github.com/spyder-ide/spyder/issues/6176) - Find in Files options not saved to spyder.ini ([PR 7863](https://github.com/spyder-ide/spyder/pull/7863))
+  * [Issue 5898](https://github.com/spyder-ide/spyder/issues/5898) - Closing all files in split pane view with at least 2 open then clicking any menu triggers RuntimeError
+  * [Issue 4474](https://github.com/spyder-ide/spyder/issues/4474) - Find in files exclude as a textbox is very limited (not very UX friendly either) ([PR 7864](https://github.com/spyder-ide/spyder/pull/7864))
+  * [Issue 4291](https://github.com/spyder-ide/spyder/issues/4291) - Menu items don't show in full-screen mode ([PR 7720](https://github.com/spyder-ide/spyder/pull/7720))
+  * [Issue 3777](https://github.com/spyder-ide/spyder/issues/3777) - Output of C extensions is not shown in IPython console
+  * [Issue 937](https://github.com/spyder-ide/spyder/issues/937) - Editor maximized - Run script - console takes most of screen ([PR 7205](https://github.com/spyder-ide/spyder/pull/7205))
+  * In this release 45 issues were closed.
+ - Pull Requests Merged
+  * [PR 8292](https://github.com/spyder-ide/spyder/pull/8292) - PR: Add StartupWMClass to Linux desktop files ([8290](https://github.com/spyder-ide/spyder/issues/8290))
+  * [PR 8278](https://github.com/spyder-ide/spyder/pull/8278) - PR: Update Spanish translation for 3.3.2
+  * [PR 8264](https://github.com/spyder-ide/spyder/pull/8264) - PR: French Translation for 3.3.2
+  * [PR 8263](https://github.com/spyder-ide/spyder/pull/8263) - PR: Fix tests in Appveyor/Python 2
+  * [PR 8261](https://github.com/spyder-ide/spyder/pull/8261) - PR: Fix error in Pydoc widget when quitting server in Python 2
+  * [PR 8259](https://github.com/spyder-ide/spyder/pull/8259) - PR: Fixes due to the new Pytest 4
+  * [PR 8256](https://github.com/spyder-ide/spyder/pull/8256) - PR: Add German translation
+  * [PR 8255](https://github.com/spyder-ide/spyder/pull/8255) - PR: Update Japanese translation for 3.3.2
+  * [PR 8250](https://github.com/spyder-ide/spyder/pull/8250) - PR: Update Hungarian translation for 3.3.2
+  * [PR 8249](https://github.com/spyder-ide/spyder/pull/8249) - PR: Prevent an error during the initialization of the Editor plugin ([8216](https://github.com/spyder-ide/spyder/issues/8216))
+  * [PR 8248](https://github.com/spyder-ide/spyder/pull/8248) - PR: Update Russian translation
+  * [PR 8232](https://github.com/spyder-ide/spyder/pull/8232) - PR: Fix passing --run-slow to runtests.py
+  * [PR 8231](https://github.com/spyder-ide/spyder/pull/8231) - PR: Don't associate the combobox of FileComboBox to the same option as its lineedit ([8025](https://github.com/spyder-ide/spyder/issues/8025))
+  * [PR 8188](https://github.com/spyder-ide/spyder/pull/8188) - PR: Catch errors when trying to change the interface language ([8179](https://github.com/spyder-ide/spyder/issues/8179))
+  * [PR 8187](https://github.com/spyder-ide/spyder/pull/8187) - PR: Don't install qtconsole from git on Appveyor because it's generating errors
+  * [PR 8173](https://github.com/spyder-ide/spyder/pull/8173) - PR: Fix various DeprecationWarnings and FutureWarnings
+  * [PR 8152](https://github.com/spyder-ide/spyder/pull/8152) - PR: Make test_codeanalysis more robust to changes in Pyflakes and Pycodestyle
+  * [PR 8133](https://github.com/spyder-ide/spyder/pull/8133) - PR: Skip test_values_dbg in Python 2 because it's timing out too much
+  * [PR 8123](https://github.com/spyder-ide/spyder/pull/8123) - PR: Improve usability of runtests locally and test output on the CIs
+  * [PR 8116](https://github.com/spyder-ide/spyder/pull/8116) - PR: Do not close split editor when empty or when switching project
+  * [PR 8115](https://github.com/spyder-ide/spyder/pull/8115) - PR: Catch errors when trying to replace text in the Editor with a regexp ([7177](https://github.com/spyder-ide/spyder/issues/7177))
+  * [PR 8114](https://github.com/spyder-ide/spyder/pull/8114) - PR: Catch errors when trying to display dataframe values as strings ([7195](https://github.com/spyder-ide/spyder/issues/7195))
+  * [PR 8111](https://github.com/spyder-ide/spyder/pull/8111) - PR: Remove several old files
+  * [PR 8110](https://github.com/spyder-ide/spyder/pull/8110) - PR: Use software OpenGL implementation by default
+  * [PR 8048](https://github.com/spyder-ide/spyder/pull/8048) - PR: Don't raise exceptions when writing config to disk fails ([8046](https://github.com/spyder-ide/spyder/issues/8046))
+  * [PR 8024](https://github.com/spyder-ide/spyder/pull/8024) - PR: Remove testpath condition now that its conda packages are in good shape
+  * [PR 8021](https://github.com/spyder-ide/spyder/pull/8021) - PR: Fix tests by pinning testpath and switching to Python 3.5 on Windows
+  * [PR 7928](https://github.com/spyder-ide/spyder/pull/7928) - PR: Update PR template to link to developer COI and clarify other text
+  * [PR 7926](https://github.com/spyder-ide/spyder/pull/7926) - PR: Convert and optimize needed PNGs in img_src directory
+  * [PR 7908](https://github.com/spyder-ide/spyder/pull/7908) - PR: Fix showing kernel creation error messages
+  * [PR 7902](https://github.com/spyder-ide/spyder/pull/7902) - PR: Improve detection of new Spyder versions to be offered for updates ([7862](https://github.com/spyder-ide/spyder/issues/7862))
+  * [PR 7898](https://github.com/spyder-ide/spyder/pull/7898) - PR: Clarify and improve Connect to kernel dialog text ([7868](https://github.com/spyder-ide/spyder/issues/7868))
+  * [PR 7888](https://github.com/spyder-ide/spyder/pull/7888) - PR: Remove old pdn image source files that are no longer needed
+  * [PR 7887](https://github.com/spyder-ide/spyder/pull/7887) - PR: Remove unnecessary code to restart kernels ([7882](https://github.com/spyder-ide/spyder/issues/7882))
+  * [PR 7873](https://github.com/spyder-ide/spyder/pull/7873) - PR: Correct next/previous word shortcut callback ([7872](https://github.com/spyder-ide/spyder/issues/7872))
+  * [PR 7864](https://github.com/spyder-ide/spyder/pull/7864) - PR: More improvements to Find in Files ([7810](https://github.com/spyder-ide/spyder/issues/7810), [7809](https://github.com/spyder-ide/spyder/issues/7809), [4474](https://github.com/spyder-ide/spyder/issues/4474))
+  * [PR 7863](https://github.com/spyder-ide/spyder/pull/7863) - PR: Correctly save Find in Files options when closing Spyder ([6176](https://github.com/spyder-ide/spyder/issues/6176))
+  * [PR 7860](https://github.com/spyder-ide/spyder/pull/7860) - PR: Fix failing test due to a new version of nbconvert ([7856](https://github.com/spyder-ide/spyder/issues/7856))
+  * [PR 7859](https://github.com/spyder-ide/spyder/pull/7859) - PR: Set selected OpenGL implementation for QtQuick too ([7447](https://github.com/spyder-ide/spyder/issues/7447))
+  * [PR 7838](https://github.com/spyder-ide/spyder/pull/7838) - PR: Start testing with Python 3.7 on Linux
+  * [PR 7837](https://github.com/spyder-ide/spyder/pull/7837) - PR: Fix tests after ci-helpers updated conda version
+  * [PR 7829](https://github.com/spyder-ide/spyder/pull/7829) - PR: Use a function to create and get our temporary directory ([7800](https://github.com/spyder-ide/spyder/issues/7800))
+  * [PR 7817](https://github.com/spyder-ide/spyder/pull/7817) - PR: Don't import objects in collectionseditor that are not dicts ([7244](https://github.com/spyder-ide/spyder/issues/7244))
+  * [PR 7816](https://github.com/spyder-ide/spyder/pull/7816) - PR: Don't ignore all files when exclude pattern is empty ([7811](https://github.com/spyder-ide/spyder/issues/7811))
+  * [PR 7812](https://github.com/spyder-ide/spyder/pull/7812) - PR: Truncate results correctly in Find in Files for Python 2 ([6218](https://github.com/spyder-ide/spyder/issues/6218))
+  * [PR 7807](https://github.com/spyder-ide/spyder/pull/7807) - PR: Correctly handling pydoc._start_server on Python 3.7 ([7721](https://github.com/spyder-ide/spyder/issues/7721))
+  * [PR 7806](https://github.com/spyder-ide/spyder/pull/7806) - PR: Stop searches in Find in Files correctly and improve how to exclude file types ([7804](https://github.com/spyder-ide/spyder/issues/7804), [7803](https://github.com/spyder-ide/spyder/issues/7803))
+  * [PR 7791](https://github.com/spyder-ide/spyder/pull/7791) - PR: Remove gettext scripts separated into their own repo
+  * [PR 7790](https://github.com/spyder-ide/spyder/pull/7790) - PR: Protect calls to unregister_editorstack_cb and pin sip in our tests
+  * [PR 7785](https://github.com/spyder-ide/spyder/pull/7785) - PR: House cleaning
+  * [PR 7769](https://github.com/spyder-ide/spyder/pull/7769) - PR: Exclude non-runnable code from coverage reports
+  * [PR 7766](https://github.com/spyder-ide/spyder/pull/7766) - PR: Fix Browse and Commit vcs actions in file and project explorers ([7733](https://github.com/spyder-ide/spyder/issues/7733))
+  * [PR 7765](https://github.com/spyder-ide/spyder/pull/7765) - PR: Fix minor issues with the tutorial as pointed out by Dr. Fangohr himself
+  * [PR 7764](https://github.com/spyder-ide/spyder/pull/7764) - PR: Catch error when dropping a file on the Editor doesn't have an associated url ([7742](https://github.com/spyder-ide/spyder/issues/7742))
+  * [PR 7761](https://github.com/spyder-ide/spyder/pull/7761) - PR: Catch errors generated when creating the env vars dialog  ([7748](https://github.com/spyder-ide/spyder/issues/7748))
+  * [PR 7759](https://github.com/spyder-ide/spyder/pull/7759) - PR: Catch any error when trying to copy the contents of a dataframe ([7753](https://github.com/spyder-ide/spyder/issues/7753))
+  * [PR 7727](https://github.com/spyder-ide/spyder/pull/7727) - PR: Make the text of the About Spyder message box selectable ([6535](https://github.com/spyder-ide/spyder/issues/6535))
+  * [PR 7720](https://github.com/spyder-ide/spyder/pull/7720) - PR: Implement a workaround to toggle on/off fullscreen mode for Windows systems ([4291](https://github.com/spyder-ide/spyder/issues/4291))
+  * [PR 7717](https://github.com/spyder-ide/spyder/pull/7717) - PR: Catch any error generated when trying to start kernels ([7302](https://github.com/spyder-ide/spyder/issues/7302))
+  * [PR 7716](https://github.com/spyder-ide/spyder/pull/7716) - PR: Catch error when writing to stdin and there's no kernel client available ([7578](https://github.com/spyder-ide/spyder/issues/7578))
+  * [PR 7715](https://github.com/spyder-ide/spyder/pull/7715) - PR: Simplify how custom interpreters are loaded/saved ([7674](https://github.com/spyder-ide/spyder/issues/7674))
+  * [PR 7712](https://github.com/spyder-ide/spyder/pull/7712) - PR: Catch errors when getting file type extensions supported by Pygments ([7705](https://github.com/spyder-ide/spyder/issues/7705))
+  * [PR 7700](https://github.com/spyder-ide/spyder/pull/7700) - PR: Add option to select OpenGL implementation used by Qt
+  * [PR 7694](https://github.com/spyder-ide/spyder/pull/7694) - PR: Make "Are you sure you want to restart the kernel?" warning optional ([7561](https://github.com/spyder-ide/spyder/issues/7561))
+  * [PR 7691](https://github.com/spyder-ide/spyder/pull/7691) - PR: Load css when showing kernel errors in the IPython console
+  * [PR 7679](https://github.com/spyder-ide/spyder/pull/7679) - PR: Make editor for collection types which copy incorrectly read-only ([6936](https://github.com/spyder-ide/spyder/issues/6936))
+  * [PR 7655](https://github.com/spyder-ide/spyder/pull/7655) - PR: Add validation in Python 2 to prevent the addition of paths with unicode characters to the PYTHONPATH ([7236](https://github.com/spyder-ide/spyder/issues/7236))
+  * [PR 7205](https://github.com/spyder-ide/spyder/pull/7205) - PR: Unmaximize plugins when an action or menu calls another plugin ([937](https://github.com/spyder-ide/spyder/issues/937))
+  * [PR 4473](https://github.com/spyder-ide/spyder/pull/4473) - PR: Add Hungarian translation
+
+-------------------------------------------------------------------
+Thu Aug 16 08:02:39 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description and trim filler words.
+
+-------------------------------------------------------------------
+Mon Aug 13 16:22:13 UTC 2018 - toddrme2178@gmail.com
+
+- Update to Version 3.3.1
+  + New features
+    > Preferences
+      * Save the list of custom interpreters introduced in
+        `Preferences > Python interpreter`.
+    > IPython console
+      * Do not save pdb commands in debugging history
+  + Issues Closed
+    * Tutorial should be conformed to the Spyder Docs style guide ([PR 7659](https://github.com/spyder-ide/spyder/pull/7659))
+    * Tutorial is out of date and needs updating ([PR 7643](https://github.com/spyder-ide/spyder/pull/7643))
+    * Include runtests.py in tarball ([PR 7651](https://github.com/spyder-ide/spyder/pull/7651))
+    * Update setup.py with polished, up to date description, links and metadata for PyPI ([PR 7582](https://github.com/spyder-ide/spyder/pull/7582))
+    * Improve selection of custom Python interpreter in Preferences ([PR 7566](https://github.com/spyder-ide/spyder/pull/7566))
+    * IOError when getting saved file names in a project ([PR 7515](https://github.com/spyder-ide/spyder/pull/7515))
+    * NameError: name '_' is not defined ([PR 7495](https://github.com/spyder-ide/spyder/pull/7495))
+    * "switch to console" keyboard shortcut doesn't do anything ([PR 7471](https://github.com/spyder-ide/spyder/pull/7471))
+    * Check for new conda packages in Anaconda's repos instead of Github ([PR 7478](https://github.com/spyder-ide/spyder/pull/7478))
+    * Error in display of tabulator in editor ([PR 7464](https://github.com/spyder-ide/spyder/pull/7464))
+    * Don't ask again ineffective in Console delete all variables dialog  ([PR 7462](https://github.com/spyder-ide/spyder/pull/7462))
+    * AttributeError: 'NoneType' object has no attribute 'get_active_project_path' ([PR 7409](https://github.com/spyder-ide/spyder/pull/7409))
+    * Update readme and contributing guide to reflect need to install (correct version of) spyder-kernels ([PR 7418](https://github.com/spyder-ide/spyder/pull/7418))
+    * Failure checking out a branch and the opened file is in a different path ([PR 7642](https://github.com/spyder-ide/spyder/pull/7642))
+    * Syntax highlighting for numeric literals containing underscores ([PR 7505](https://github.com/spyder-ide/spyder/pull/7505))
+    * Debugging history saves both python commands and pdb commands ([PR 7300](https://github.com/spyder-ide/spyder/pull/7300))
+    * Error when connecting to external kernels ([PR 7463](https://github.com/spyder-ide/spyder/pull/7463))
+    * Do not reopen Project explorer on startup ([PR 7546](https://github.com/spyder-ide/spyder/pull/7546))
+    * Spyder hangs on interactive input in internal console (input is not redirected) ([PR 7500](https://github.com/spyder-ide/spyder/pull/7500))
+  + Pull Requests Merged
+    * Conform tutorial to docs style guide and further minor improvements ([7652](https://github.com/spyder-ide/spyder/issues/7652))
+    * Add runtests.py and conftest.py to our tarball ([7639](https://github.com/spyder-ide/spyder/issues/7639))
+    * Don't require keyring for Python 2 and Linux in our wheels
+    * Edit tutorial to update it, fix errors, copyedit and clarify ([7641](https://github.com/spyder-ide/spyder/issues/7641))
+    * Handle error when doing a browser history update ([7328](https://github.com/spyder-ide/spyder/issues/7328))
+    * Upgrade all links to use HTTPS where available, and fix link targets when broken/redirected
+    * Update conda install command for spyder-kernels 1.x
+    * Fix bug in spyder3.appdata.xml
+    * Send reported issues to Spyder's main repo in DEV mode
+    * Update capitalization of Spyder name, and standardize description with everywhere else
+    * Update setup.py description, metadata, links, and more ([7581](https://github.com/spyder-ide/spyder/issues/7581))
+    * Improve selection of custom interpreter ([7529](https://github.com/spyder-ide/spyder/issues/7529))
+    * Migrate to CircleCI 2.0
+    * Do not automatically open Project Explorer when opening project if user closed it ([6292](https://github.com/spyder-ide/spyder/issues/6292))
+    * Fix misspelling in Japanese translation
+    * Catch errors when saving/getting the list of open files per project ([7513](https://github.com/spyder-ide/spyder/issues/7513))
+    * Add support for numeric literals with underscores highlighting in Python 3.6 ([7324](https://github.com/spyder-ide/spyder/issues/7324))
+    * Setting tab stop width by using the width of multiple spaces ([7432](https://github.com/spyder-ide/spyder/issues/7432))
+    * Handle input commands correctly in the internal console. ([1329](https://github.com/spyder-ide/spyder/issues/1329))
+    * Reinstall Matplotlib in Appveyor in case it had been removed
+    * Avoid raising an error when getting available translations ([7489](https://github.com/spyder-ide/spyder/issues/7489))
+    * Change way to check for updates ([7452](https://github.com/spyder-ide/spyder/issues/7452))
+    * Remove old shortcut for the Python console ([7465](https://github.com/spyder-ide/spyder/issues/7465))
+    * Fix tabulation spacing by setting tab spacing after the font ([7432](https://github.com/spyder-ide/spyder/issues/7432))
+    * Fix connection to external kernels ([7082](https://github.com/spyder-ide/spyder/issues/7082))
+    * Really hide reset namespace warning in IPython console ([7404](https://github.com/spyder-ide/spyder/issues/7404))
+    * Improve message about the lack of spyder-kernels in external interpreters
+    * Update the running Github clone procedure in the readme and contributing guide to include spyder-kernels ([7337](https://github.com/spyder-ide/spyder/issues/7337))
+    * Catch AttributeError when trying to get the active project path ([7403](https://github.com/spyder-ide/spyder/issues/7403))
+    * Remove conda recipe
+    * Do not save pdb commands in debugging history ([7299](https://github.com/spyder-ide/spyder/issues/7299))
+- Update to Version 3.3
+  + New features
+    > Main Window
+      * Add a new error reporting dialog to simplify and automate the process of
+        submitting reports to Github.
+    > IPython console
+      * Add an option to use a tight layout with inline plots. Activate it under
+        `Preferences > IPython console > Graphics`.
+      * Add an option to turn on/off Jedi completions. Activate it under
+        `Preferences > IPython console > Advanced`.
+    > Variable Explorer
+      * Change the button names of all its viewers from `Ok` and `Cancel` to
+        `Save and Close` and `Close`, respectively, to better express what each
+        one really does.
+      * Fix several critical memory leaks.
+    > Under the hood
+      * Remove support for PyQt 5.4 and older versions.
+      * Remove support for PyQt4.
+      * Remove support for Python 3.3.
+      * Move all code used to create kernels for our consoles to a new package
+        called `spyder-kernels`. It's required version for Spyder 3.3+ is any
+        `0.x.x` release (e.g `0.2.3`).
+      * Add the `keyring` package as a new dependency to safely save users
+        Github passwords.
+  + Issues Closed
+    * Update translations for 3.3.0
+    * Spyder (Python 3.6) + Pandas 0.23 - Future Warning ([PR 7335](https://github.com/spyder-ide/spyder/pull/7335))
+    * HIstory browsing while debugging is broken ([PR 7296](https://github.com/spyder-ide/spyder/pull/7296))
+    * "Stop the current command" stops only the first run after "Run file" button is pressed more than one time ([PR 7294](https://github.com/spyder-ide/spyder/pull/7294))
+    * ImportError when trying to load third-party plugins ([PR 7263](https://github.com/spyder-ide/spyder/pull/7263))
+    * Add pythoncom and fastmat to the UMR blacklist ([PR 7198](https://github.com/spyder-ide/spyder/pull/7198))
+    * "SyntaxError: invalid syntax" when creating kernel manager ([PR 7163](https://github.com/spyder-ide/spyder/pull/7163))
+    * Validate serialized length of modified objects in the Variable Explorer ([PR 7218](https://github.com/spyder-ide/spyder/pull/7218))
+    * Ensure garbage collection is run in the main window when closing Variable Explorer editors ([PR 7234](https://github.com/spyder-ide/spyder/pull/7234))
+    * Change behavior of the Variable Explorer editors buttons ([PR 7202](https://github.com/spyder-ide/spyder/pull/7202))
+    * Don't save IPython history in safe mode ([PR 7151](https://github.com/spyder-ide/spyder/pull/7151))
+    * Error when getting Pygments lexers ([PR 7150](https://github.com/spyder-ide/spyder/pull/7150))
+    * Running ./bootstap.py --test should open an empty history.py ([PR 7115](https://github.com/spyder-ide/spyder/pull/7115))
+    * "Help > Report Issue" goes to a broken link if not logged into GitHub ([PR 7230](https://github.com/spyder-ide/spyder/pull/7230))
+    * typo in locale\fr ([PR 7160](https://github.com/spyder-ide/spyder/pull/7160))
+    * Spyder is slow to start due to big history file ([PR 7132](https://github.com/spyder-ide/spyder/pull/7132))
+    * RuntimeWarning when displaying min/max in the Variable Explorer ([PR 7154](https://github.com/spyder-ide/spyder/pull/7154))
+    * Can't use pythonw as interpreter when needed on Mac ([PR 7170](https://github.com/spyder-ide/spyder/pull/7170))
+    * ValueError: unknown locale when starting kernels ([PR 7159](https://github.com/spyder-ide/spyder/pull/7159))
+    * Multiple loading of pytorch module with script causes RuntimeError on IPython console. ([PR 7168](https://github.com/spyder-ide/spyder/pull/7168))
+    * Error when setting color scheme in the IPython console ([PR 7164](https://github.com/spyder-ide/spyder/pull/7164))
+    * AttributeError: Nonetype has no attribute "clear" when right clicking in the empty project explorer with no project open ([PR 7165](https://github.com/spyder-ide/spyder/pull/7165))
+    * Realtime code analysis stops working when non-ASCII characters are used in strings ([PR 7254](https://github.com/spyder-ide/spyder/pull/7254))
+    * Spyder crashes with segmentation fault on startup in Anaconda 4.5.0 ([PR 7029](https://github.com/spyder-ide/spyder/pull/7029))
+    * Add Astropy to default UMR blacklist for Python 2.7 due to resulting bug ([PR 7168](https://github.com/spyder-ide/spyder/pull/7168))
+    * Error when viewing bytes in the Variable Explorer ([PR 7206](https://github.com/spyder-ide/spyder/pull/7206))
+    * OSError: [Errno 28] No space left on device ([PR 7210](https://github.com/spyder-ide/spyder/pull/7210))
+    * Spyder opens new instances when double-clicking Python scripts ([PR 7260](https://github.com/spyder-ide/spyder/pull/7260))
+    * Remove support for PyQt4 ([PR 6961](https://github.com/spyder-ide/spyder/pull/6961))
+    * Include Matplotlib in Help > Dependencies ([PR 7166](https://github.com/spyder-ide/spyder/pull/7166))
+    * Spyder fails to start when trying to set language on Windows ([PR 7159](https://github.com/spyder-ide/spyder/pull/7159))
+    * UnicodeEncodeError when saving Help's history ([PR 7246](https://github.com/spyder-ide/spyder/pull/7246))
+    * Script executes in other console of its dedicated console is dedicated is on debugging ([PR 7243](https://github.com/spyder-ide/spyder/pull/7243))
+    * The tab switcher widget won't close if it loses focus ([PR 6759](https://github.com/spyder-ide/spyder/pull/6759))
+    * Find Russian symbols with a regexp gives an error ([PR 7209](https://github.com/spyder-ide/spyder/pull/7209))
+    * Cannot runfile if the name of the file contains a `'` character in Windows
+    * TypeError: unsupported operand type(s) for -: 'float' and 'NoneType' ([PR 6769](https://github.com/spyder-ide/spyder/pull/6769))
+    * 'Execute in an external system terminal' doesn't work if there is spaces in the path where the python interpreter is installed in Windows ([PR 6750](https://github.com/spyder-ide/spyder/pull/6750))
+    * Changing file in editor with [Ctl]+[tab] uncompatible with tiling window manager ([PR 6759](https://github.com/spyder-ide/spyder/pull/6759))
+    * The figure layout is not respected when plotting inline in the IPython console ([PR 6790](https://github.com/spyder-ide/spyder/pull/6790))
+    * Use an authentication dialog to send reports to Github ([PR 6707](https://github.com/spyder-ide/spyder/pull/6707))
+    * Errors when selecting a kernel from a different Python installation ([PR 7306](https://github.com/spyder-ide/spyder/pull/7306))
+    * No such file or directory when trying to access %userprofile ([PR 7287](https://github.com/spyder-ide/spyder/pull/7287))
+    * Plotting with Mayavi is broken ([PR 6919](https://github.com/spyder-ide/spyder/pull/6919))
+    * Avoid showing autoreload warnings ([PR 7306](https://github.com/spyder-ide/spyder/pull/7306))
+    * Error trying to open renamed project ([PR 7272](https://github.com/spyder-ide/spyder/pull/7272))
+    * Move online documentation to Github Pages ([PR 7007](https://github.com/spyder-ide/spyder/pull/7007))
+    * Stop button not working after second run on dedicated consoles ([PR 7245](https://github.com/spyder-ide/spyder/pull/7245))
+    * UnicodeDecodeError thrown when viewing Dataframes with non-ascii index ([PR 7242](https://github.com/spyder-ide/spyder/pull/7242))
+    * Variable Explorer is leaking memory when editing variables ([PR 7234](https://github.com/spyder-ide/spyder/pull/7234))
+    * Adding, removing, or moving a breakpoint while debugging changes the focus ([PR 7251](https://github.com/spyder-ide/spyder/pull/7251))
+  + Pull Requests Merged
+    * Update Spanish translation for 3.3
+    * Update Brazilian Portuguese translation for 3.3
+    * French translation for 3.3
+    * Update Japanese translation for 3.3
+    * Handle deprecated Pandas methods in tests ([7312](https://github.com/spyder-ide/spyder/issues/7312))
+    * Move all kernel code to an external package called spyder-kernels ([6469](https://github.com/spyder-ide/spyder/issues/6469), [6297](https://github.com/spyder-ide/spyder/issues/6297))
+    * Fix history browsing while debugging ([7295](https://github.com/spyder-ide/spyder/issues/7295))
+    * Don't allow multiple executions in the IPython console when one is taking place ([7293](https://github.com/spyder-ide/spyder/issues/7293))
+    * Improve detection of users' home directory ([6351](https://github.com/spyder-ide/spyder/issues/6351))
+    * Fix crash while running our tests on CircleCI
+    * Fix links to Travis CI and Google Group
+    * Add validation when renaming the active project outside Spyder ([6036](https://github.com/spyder-ide/spyder/issues/6036))
+    * Catch any error when trying to load third-party plugins ([7259](https://github.com/spyder-ide/spyder/issues/7259))
+    * Add spyder-script.py as a valid name to be detected by lockfile ([6899](https://github.com/spyder-ide/spyder/issues/6899))
+    * Prevent realtime code analysis failures due to encoding errors ([6970](https://github.com/spyder-ide/spyder/issues/6970))
+    * Stop editor from jumping around when adding/removing lines with breakpoints while debugging ([5201](https://github.com/spyder-ide/spyder/issues/5201))
+    * Save credentials in the Github login dialog
+    * Catch possible errors when writing Help's history to disk ([6864](https://github.com/spyder-ide/spyder/issues/6864))
+    * Avoid disabling consoles stop button when an execution is taking place ([5958](https://github.com/spyder-ide/spyder/issues/5958))
+    * Show message in our consoles when trying to run a file while on debugging ([6851](https://github.com/spyder-ide/spyder/issues/6851))
+    * Fix error when viewing dataframe with a non-ascii index ([5833](https://github.com/spyder-ide/spyder/issues/5833))
+    * Improve pythonw detection
+    * Call garbage collector from Main Window after closing Variable Explorer editors ([7157](https://github.com/spyder-ide/spyder/issues/7157), [5830](https://github.com/spyder-ide/spyder/issues/5830))
+    * Run tests in macOS
+    * Use the error dialog to report issues too ([7101](https://github.com/spyder-ide/spyder/issues/7101))
+    * Limit length of serialized values in Variable Explorer when applying modifications ([7158](https://github.com/spyder-ide/spyder/issues/7158))
+    * Catch EnvironmentError in all places we write to disk ([6901](https://github.com/spyder-ide/spyder/issues/6901))
+    * Fix error when using unicode to search text with regular expressions in the Editor ([6812](https://github.com/spyder-ide/spyder/issues/6812))
+    * Add bytes or unicode ellipses in value_to_display ([6942](https://github.com/spyder-ide/spyder/issues/6942))
+    * Change behavior of Variable Explorer editor buttons ([7156](https://github.com/spyder-ide/spyder/issues/7156))
+    * Add fastmat and pythoncom to UMR blacklist. ([7190](https://github.com/spyder-ide/spyder/issues/7190))
+    * Add env var to prevent showing useless warning in macOS
+    * Change validation to allow pythonw executables as valid interpreters ([7059](https://github.com/spyder-ide/spyder/issues/7059))
+    * Remove internal copy of our docs
+    * Add astropy and pythorch to UMR blacklist by default. ([7041](https://github.com/spyder-ide/spyder/issues/7041), [6962](https://github.com/spyder-ide/spyder/issues/6962))
+    * Add Matplotlib as optional dependency for the IPython Console. ([6887](https://github.com/spyder-ide/spyder/issues/6887))
+    * Handle not initialized menu in DirView. ([6975](https://github.com/spyder-ide/spyder/issues/6975))
+    * Handle AttributeError when setting color scheme in the IPython Console. ([6996](https://github.com/spyder-ide/spyder/issues/6996))
+    * Show errors generated when creating QtKernelManager inside the IPython console ([7161](https://github.com/spyder-ide/spyder/issues/7161))
+    * Fix typo in 'Save File' french translation. ([7100](https://github.com/spyder-ide/spyder/issues/7100))
+    * Fix a couple of problems when setting and detecting the system locale ([7051](https://github.com/spyder-ide/spyder/issues/7051), [6886](https://github.com/spyder-ide/spyder/issues/6886))
+    * Filter a Numpy 1.14 warning shown in our consoles ([7063](https://github.com/spyder-ide/spyder/issues/7063))
+    * Avoid loading/saving IPython console history in safe mode or testing ([7149](https://github.com/spyder-ide/spyder/issues/7149))
+    * Catch any exception when trying to get Pygments lexers ([7148](https://github.com/spyder-ide/spyder/issues/7148))
+    * Limit the number of lines in history according to the relevant setting ([7080](https://github.com/spyder-ide/spyder/issues/7080))
+    * Add --safe-mode option to start with a clean config directory ([7112](https://github.com/spyder-ide/spyder/issues/7112))
+    * Add Twitter and Facebook links to Readme, for SEO/visibility
+    * Remove Jedi pinnings in our CIs
+    * Load libGL using low-level function without requiring pyopengl ([6968](https://github.com/spyder-ide/spyder/issues/6968))
+    * Update links to docs when they are ready  ([5986](https://github.com/spyder-ide/spyder/issues/5986))
+    * Adapt sphinxify for changes in Sphinx 1.8
+    * Skip tests numpy_returns and matplotlib_figure_returns for now on jedi >=0.12 and pin CIs to 0.11.1
+    * Update minimum Python version in setup.py to 3.4
+    * Add a few extra badges, fix troubleshooting link in readme and update banner
+    * Remove support for PyQt4 ([6889](https://github.com/spyder-ide/spyder/issues/6889))
+    * Check "use a tight layout for inline plots" by default in the preferences
+    * Update contributing doc with better organization, standard links and minor fixes
+    * Fix often failing elapsed time test with fuzzier check and more reps
+    * Fix tests after update to PyQt 5.9
+    * Fix Mayavi plotting in our consoles ([6339](https://github.com/spyder-ide/spyder/issues/6339))
+    * Update readme screenshot, streamline organization, add banner and update/cleanup content
+    * Bump next version to be 3.3.0
+    * Add checklists for Github issue report and pull requests
+    * Remove old code present in our kernel
+    * Add option to use Jedi in the IPython console + warning on greedy completer
+    * Add instance pattern "cls" for class methods
+    * Add an option to control bbox_inches option when plotting inline ([6619](https://github.com/spyder-ide/spyder/issues/6619))
+    * Fix a bug when running a file with a single quote character in its name
+    * Initialize start time to a time and not None ([6767](https://github.com/spyder-ide/spyder/issues/6767))
+    * Add 3.2.8 version header to the changelog
+    * Change Editor's tab switcher from Qt.SubWindow to Qt.Popup for tiling window managers ([6834](https://github.com/spyder-ide/spyder/issues/6834), [6743](https://github.com/spyder-ide/spyder/issues/6743))
+    * Enclose python exe path in double quotes ([6746](https://github.com/spyder-ide/spyder/issues/6746))
+    * Add authentication dialog to submit issues to Github ([6617](https://github.com/spyder-ide/spyder/issues/6617))
+
+-------------------------------------------------------------------
+Fri Jun  1 14:35:37 UTC 2018 - sebix+novell.com@sebix.at
+
+- add dependency python3-cloudpickle, fixes boo#1095587
+- user %license macro
+
+-------------------------------------------------------------------
+Sat Apr 28 20:13:57 UTC 2018 - toddrme2178@gmail.com
+
+- Update to Version 3.2.8
+  + New features
+    > Editor
+      * Add `Ctrl+Shift+Enter` shortcut to introduce new lines at any point.
+    > IPython console
+      * Always run Cython files in a dedicated console.
+  + Issues Closed
+    * ValueError trying to open pandas.DateOffset objects in Variable Explorer 
+    * AttributeError when attempting to edit non-writeable or non-settable attributes of certain (e.g. many common Pandas) objects in CollectionsEditor 
+    * TypeError and Python hard crash to desktop after modifying _typ attribute of pandas Period in CollectionsEditor 
+    * Saving session data (spydata) deletes all arrays nested inside other data structures 
+    * System time change causes Spyder error 
+    * AttributeError: 'NoneType' object has no attribute 'apply_plugin_settings' when attempting to activate Automatic Connections for Help
+    * Typo in introspection.utils.get_words
+    * Sphinx html_use_smartypants is deprecated as of 1.6 and removed in 1.7 
+    * Spyder always open a new instance after updating to 3.2.7 version 
+    * Strange behavior for Spyder code annotations 
+    * AttributeError: 'NoneType' object has no attribute 'apply_plugin_settings' 
+    * AttributeError: 'NoneType' object has no attribute 'load_module' 
+    * Setting a path containing a single quote 
+    * ValueError when closing a file whose folder changed name in File Explorer 
+    * When browsing MultiIndex in Object Explorer, Pandas raises NotImplementedError: isna is not defined for MultiIndex 
+    * FileNotFoundError generated for template.py 
+    * Variable Explorer windows don't close when Spyder exits; prevents it from reopening until manually closed 
+    * Bug: Find and Replace indicate "no matches" when "[", "(", or ")" included in the search string 
+    * AttributeError when attempting to view dom.minidom.Element object in Variable Explorer 
+    * How do I move to a new line while I'm in the middle of the current line? 
+    * pyximport.install() in sitecustomize.py is not a good idea 
+    * delete (context="editor", name="delete") keyboard shortcut doesn't work 
+    * Saving large workspace on network drive crashes Spyder on Windows 
+  + Pull Requests Merged
+    * Error report stopgap to make instructions harder to miss
+    * Fix various bugs in Variable Explorer, including an application crash to desktop 
+    * Replace deprecated function in inline CollectionsEditor tests and add recently supported data types
+    * Make several GUI/qtbot tests more reliable by increasing timeouts and tweaking the methods used
+    * Add .pytest_cache to gitignore
+    * Fix new instance validation on Windows. 
+    * Fix NotImplementedError when browsing a MultiIndex in the Collection Editor 
+    * Set parent for Variable Explorer editors so Spyder closes properly 
+    * Change time elapsed calculation to prevent OSError 
+    * Fix bugs in session saving to spydata and improve tests 
+    * Allow TODO check marks with blank line 
+    * Fix typo in utils.introspection.get_words
+    * Pin to a Tornado version less than 5.0 to avoid hangs in our tests
+    * Run Cython files in a dedicated console 
+    * Avoid showing dialogs in IPython console tests to avoid segfaults
+    * Be able to open files in the Editor if no template is found 
+    * Add handling for AttributteError when importing module from path 
+    * Remove ipyconsole and editor attrs from the Help plugin 
+    * Update deprecated Sphinx directive html_use_smartypants 
+    * Allow rename from Explorer to work for directories 
+    * Fix error when setting a path with a single quote 
+    * Delay check whether we are running under pytest until run time
+    * Allow shortcut key for editor/delete to work like Del key 
+    * Restore the previous wording for package versions in error report
+    * Skip some IPython console tests in PyQt4 because they are segfaulting too much
+    * Find/replace - return match counts on unescaped characters 
+    * Add Ctrl+Shift+Enter to enter a new line in the Editor 
+- Update to Version 3.2.7
+  + New features
+    > Main Window
+      * Improve the interface to report errors to Github.
+    > Variable Explorer
+      * Enable the display of many more Numpy array types.
+    > Editor
+      * Copy text from the search field to the replace one
+        after pressing `Tab`.
+    > IPython console
+      * Make `%edit foo.py` open `foo.py` in the Editor on
+        Windows.
+    > Find in Files
+      * Remove items from the `Search in` list when hovering
+        over them and pressing `Del`.
+      * Add a `Clear this list` option below `Select other
+        directory`.
+    > Under the hood
+      * Demand PyQt less than 5.10 for our wheels.
+  + Issues Closed
+    * Update translations for 3.2.7 
+    * test_completions_custom_path fails with jedi 0.9.0 (Spyder 3) 
+    * FileNotFoundError history.py when running code in the IPython console 
+    * Mouse cursor issue with PyQt 5.10 
+    * Add the the Collapse All and Expand All buttons to the toolbar of the Outline Explorer 
+    * PermissionError when Spyder is started 
+    * Selecting "tutorial" from help menu does not bring up Help pane automatically if not loaded, leading to user confusion 
+    * IndexError when getting help of an object 
+    * AttributeError when running code in the IPython console 
+    * RuntimeError when interrupting kernel 
+    * pdb history doesn't collapse similar text 
+    * IOError when trying to write to stderr file 
+    * Convert re expressions to use raw strings 
+    * Errors pop up when change the key shortcuts in python 2.7 
+    * %edit magic command does not work on Windows 
+    * Color scheme changes after kernel restart 
+    * Spyder Profiler Hangs/Freezes 
+    * Bug with saved window layouts 
+    * Icon should be moved from share/pixmaps to share/icons 
+    * UnicodeEncodeError when searching text in the Editor 
+    * Uncaught error when opening a pandas DataFrame with out of bounds timestamps 
+    * Several tests fail locally under user environment with customized keyboard shortcuts due to relying on hardcoded keybindings 
+    * TypeError: tabText(self, int) when moving plugin tabs 
+    * UnicodeEncodeError when using a project with non-ascii characters on it 
+    * UnicodeDecodeError when moving a file with Project Explorer 
+    * Add missing Keywords metadata in desktop file 
+    * Paths in the "Search in" combobox of the "Find in File" plugin becomes corrupted 
+    * Improve interface to report errors 
+    * IPython console failing when custom interpreter is removed 
+    * Use Tab key to copy text to "Replace with:" field 
+  + Pull Requests Merged
+    * Update Spanish translation
+    * French translation for 3.2.7 
+    * Update Japanese translation for 3.2.7
+    * Update Brazilian Portuguese translation
+    * Update Russian translation
+    * Demand PyQt5 less than 5.10 in our wheels 
+    * Skip test_completions_custom_path if jedi version before 0.10.0 
+    * Update broken matplotlib project URL in install doc 
+    * Make projects work on unicode directories 
+    * Handle errors when writing history to disk in the IPython Console 
+    * Fix all test files to be run independently
+    * Xfail test_auto_backend for certain versions of zmq and ipykernel
+    * Add test for file directory change in the Project Explorer. 
+    * Add keywords to desktop files 
+    * Change share/pixmaps to share/icons in setup.py 
+    * Add error handling for the lockfile symlink on Windows 
+    * Harmonized the toolbar of the Outline Explorer with its context menu. 
+    * Add validation for custom interpreter option 
+    * Show Help if closed when opening tutorial to avoid user confusion 
+    * Fix and catch typeerror thrown when from_index is None while moving plugin tab 
+    * Catch any error in the isdefined method of dochelpers 
+    * Handle AttributeError when running code in the IPython Console. 
+    * Catch any error when creating stderr files in the IPython console 
+    * Catch RuntimeError when no kernel is running 
+    * Skip test_tab_copies_find_to_replace on Linux because it fails
+    * Don't add repeated entries to history while on pdb 
+    * Skip test_calltip on Python 3 and PyQt < 5.9 because it's failing there
+    * Custom layouts not working when hexstate is None 
+    * Pin pyqt5 to 5.9.2 on tests because 5.10 is giving segfaults during the collection phase
+    * Install and run window manager in Travis to fix focus issues and unskip now-passing tests
+    * Update Brazilian Portuguese translation
+    * Change to re strings for Deprecation Warning 
+    * Use a temporary config directory to run our tests 
+    * Preserve color scheme on kernel restart 
+    * Update super() call to use Python 2 style call 
+    * Fix %edit magic on Windows 
+    * Fix Profiler error when run is stopped 
+    * Catch OutOfBoundsDatetime errors from pandas 
+    * Use a checkbox in error dialog to dismiss it instead of a button
+    * Fix some completion errors in the Editor and show again no docs message in Help
+    * Fix error when searching text in the Editor in translated interfaces 
+    * Find/replace - Copy search text to replace textbox on tabbing between them 
+    * Add troubleshooting blurb and OS version to issue template and enhance UI
+    * Add Troubleshooting links and blurb to various appropriate places in Spyder and doc
+    * Enable the display of many more numpy array types in the Variable Explorer
+    * Fix 3 bugs and add 4 improvements to Find in Files 
+    * Major overhaul of Readme, contributing and install docs
+    * Differenciate between ), }, and ] when closing brackets
+    * Change error report dialog to enter issue description before submitting it 
+- Update to Version 3.2.6
+  + New features
+    > Editor
+      * Make `Shift+Del` to cut text if users have some text
+        selected.
+      * Make `Shift+Ins` to paste text.
+      * Make `Ctrl+PgUp`, `Ctrl+PgDn` and `Ctrl+Tab` shortcuts
+        configurable.
+    > Variable Explorer
+      * Display date/times in human readable format.
+      * Disable editing for immutable types (e.g. tuples).
+    > Under the hood
+      * Fix installation of wheels with `pip`.
+  + Issues Closed
+    * Error on Maximize Current Pane
+    * AttributeError when resetting console namespace
+    * Not able to change layouts after resetting
+    * DataFrame Editor raises TypeError when editing any complex type
+    * Fix errors when entering a value for a cell larger than the max int in Array and Dataframe editors
+    * Consoles get renamed when moved in the IPython console
+    * 3.2.5 fails to activate Matplotlib Qt5 backend
+    * Variable Explorer throws an error instead of displaying contents when attempting to inspect any loaded modules
+    * Spyder not starting in macOS because pyopengl is present
+    * Update to 3.2.5 with pip fails for Python 2.7 as it pulls pyqt5 
+    * Spyder crashes upon typing `net(` in editor
+    * When comparing a generated and loaded profile, any negative deltas show (actual_value - ?) 1h:60min, not actual value
+    * Improve how we detect that Spyder is running under Anaconda
+    * Shift+del should delete line only when empty selection, otherwise clipboard cut
+    * Tuples can be "edited" in Variable Explorer but changes are discarded
+    * "ValueError: malformed node or string" when evaluating code that contains Path elements
+    * Window layout setting error
+    * Segmentation fault when trying to change keyboard shortcuts in Preferences
+    * File switcher error
+    * ValueError: not enough values to unpack in the File Explorer
+    * Add ability to change Ctrl+PgUp and PgDn shortcuts
+    * Keyboard shortcut hint is missing from menu item Search/Find in files
+    * Tab in-between find and replace text boxes
+  + Pull Requests Merged
+    * Fix error when trying to maximize plugins that don't have a dock widget
+    * Catch error when resetting console namespace and no kernel_client is available
+    * Skip some tests because they are failing locally or segfaulting
+    * Cannot change windows layout on first start after reset
+    * Add shortcut to Find in Files in Search menu
+    * Mark introspection test slow and re-enable it on certain CIs
+    * Add test to verify that the Automatic backend is working correctly
+    * Run slow tests only in our CIs
+    * Fix TypeError editing any complex val in DataFrameEditor, and bug resulting in bool_s being treated as uneditable
+    * Prevent an error in the FileSwitcher when all tabs are closed in the last focused widget.
+    * Allow tab cycling shortcuts to be configurable in Editor
+    * Patch ipykernel to avoid errors when setting the Qt5 Matplotlib backend
+    * Fix crash and error dialog when triggering OverflowError (too large int) when editing arrays and dataframes
+    * Fix renames when moving IPython console tabs
+    * Fix negative deltas on profiler
+    * Avoid a calltip crash when docstring is None
+    * Fix mime type error detection in the File Explorer
+    * Remove unnecessary flaky from introspection test, minor cleanup
+    * Make Tab key properly switch between find and replace fields
+    * Fix segfault on shortcut preferences when using mouse
+    * Improve how we detect if we are running under Anaconda
+    * Avoid errors when importing pyopengl at startup
+    * Make pyqt5 a wheel dependency only for Python 3
+    * Fix error when attempting to view module contents in CollectionsEditor
+    * Add expected default behavior for Shift+Del and Shift+Ins
+    * Add coverage files and Notepad++ backups to gitignore
+    * Skip several failing tests on Windows and one on a specific CI build
+    * Add test coverage reporting with AppVeyor to Codecov
+    * Display date/times in human readable format in Variable Explorer
+    * Make bullets/numbers/headings more consistent and add Anaconda for Linux in install doc 
+    * Properly disable editing in Variable Explorer for values in immutable collections (e.g. tuples)
+    * Manage types that extend str in value_to_display
+- Update to Version 3.2.5
+  + New features
+    > IPython Console
+      * Improve kernel startup time.
+      * Add option to show kernel elapsed time.
+      * Add button and option to remove all user-defined variables.
+      * Load `%autoreload` magic at kernel startup to make changes to
+        modules take effect instantly in the console.
+      * Use `cloudpickle` to serialize/deserialize data between kernels
+        and Spyder.
+    > Variable Explorer
+      * Add support for `datetime.timedelta` objects.
+    > Under the hood
+      * Add `pyqt5` as a new wheel dependency.
+      * Add a new `--hide-console` option and deprecate `--show-console`
+        on Windows.
+  + Issues Closed
+    * Update translations for 3.2.5
+    * Remove 'DMG Installers' option from documentation
+    * UserWarning: Config option use_jedi not recognized by IPCompleter
+    * Error when choosing rename option after editing tuple value from Variable explorer.
+    * Code from one file not updating when called from another if run directly in the console
+    * "Real-time code style analysis" checkbox in Prefs > Editor > Introspection checks for pep8, not pycodestyle
+    * Return value of EditorStack.has_filename not checked properly
+    * IPython console missing features with respect to the old Python console
+    * AttributeError is thrown when trying to get help of an object
+    * Improve working directory dropdown box
+    * TypeError: disconnect() failed between 'sig_prompt_ready' and all its connections
+    * Missing python doc in help menu
+    * Problems with backend "TkAgg" on Linux
+    * NameError when running isdefined
+    * Save after moving editor tabs with split panes changes wrong files
+    * Symbol finder gives error message
+    * Cannot run static code analysis on Spyder 3.2.4
+    * Error when trying to explore empty numpy array
+    * Variable explorer broken because of DeprecationWarning in ipykernel
+    * Close parenthesis when unmatched
+    * Crash on profiler because of lack of profiler.results
+    * Can't open preferences anymore as I get an error message
+    * Runtime Error raised while closing IPython Console instance
+    * AttributeError: 'InternalShell' object has no attribute 'is_running'
+    * Keyboard shortcuts reset button cannot be canceled/undone and too easy to trigger  
+    * Explicitly stated default Russian encoding on Windows not recognized
+    * Automatic graphics backend throws an error
+    * Can't enable debug mode
+    * Spyder crashes after typing plt.plot( at the ipython console
+    * Change --show-console for --hide-console
+    * "Replace Selection" Erroneously Removing/Interpreting Escape Sequences
+    * 'Show in external file explorer' on editor menu more than once for split panels
+    * ValueError: invalid literal for int() with base 10: b''
+    * Error when replacing "\" by "\\"
+    * Add Clear button to (find) entry boxes
+    * Don't set current working directory for external kernels
+    * Error when drag and drop file from zip
+    * Fast file switch and fast symbol search do not work properly if the editor is splitted
+    * Exploring variables in debugging mode is giving focus to the Editor
+    * Spyder always opens a new instance
+    * Variable explorer should list datetime.timedelta variables
+    * Spyder is not installing the PyQt5 wheel when using pip
+    * Outline explorer doesn't work with second Editor window
+    * Breakpoint doesn't appear in gui (red circle) but is listed in Debug > Breakpoints > List breakpoints
+    * There should be a way to donate money to support the project
+  + Pull Requests Merged
+    * Update Japanese translation for 3.2.5
+    * Update French translation for 3.2.5
+    * Update Spanish translations for 3.2.5
+    * Update Russian translation for 3.2.5
+    * Load %autoreload magic at kernel startup
+    * Remove/update outdated refs to Mac OS X, Mac DMG installers and Continuum.io
+    * Skip a test that started to fail on Windows and Python 2
+    * Disable renames for list, set and tuple in the Variable Explorer
+    * Make tabs drag behavior in the IPython console to be the same as the Editor one
+    * Several improvements to the IPython console
+    * Fix missing documentation links
+    * Add PyQt5 as a new wheel dependency
+    * Change pep8 check_executable for pycodestyle.
+    * Change for file save on split editor when tabs are moved
+    * Disable smartpants quotes in Sphinx to prevent crash with MathJax
+    * Catch AttributeError while using the Help plugin
+    * Adjust calls to use has_filenames return value of None
+    * Simplify how pyopengl is declared in setup.py
+    * Add a tooltip showing the full path of highlighted item in the working directory dropdown box
+    * Improve how Matplotlib backend is set in the IPython console
+    * Catch TypeError while executing code instructions in the IPython console
+    * Prevent Editor dockwidget to become visible when clicking on the outline explorer if the Editor is in a separate window
+    * Skip test_load_kernel_file in PyQt4 because it segfaults too much
+    * Catch NameError in isdefined
+    * Add validation for mimedata2url in Editor's dragEnterEvent
+    * Ignore warning generated by ipykernel.datapub
+    * Skip test_issue_4066 in our CIs with PyQt >= 5.9
+    * Set focus for filter line when doing symbol search
+    * Handle 3d empty numpy arrays
+    * Change position of data loading to prevent not calling validation in the Pylint plugin
+    * Change default behavior of --show-console option
+    * Catch not found file error when loading profiler results.
+    * Skip some dataframe tests on Linux
+    * Add validation for attribute 'is_running' in the Help plugin
+    * Support datetime.timedelta in variable explorer
+    * Catch search regexp error while doing replace/find
+    * Better feedback for regexp errors in find/replace
+    * Do not overwrite unmatched braces
+    * Fix ValueError when switching Python interpreters
+    * Fix typo in Solarized color schemes.
+    * Add confirmation message to reset shortcuts.
+    * Add handling for RuntimeError while closing an IPython console instance.
+    * Fix syncing of line number and plugin list for breakpoints and add unit tests.
+    * Make clear line shortcut configurable in the IPython console
+    * Don't unescape control characteres in replace in selection
+    * Add cp1251 (default Russian) encoding on Windows to be recognized by the Editor
+    * Reduce row height in dependencies dialog
+    * Add clear button to find comboboxes
+    * Fix bootstrap.py --debug
+    * Add validation to not publish pdb_state after getting values of variables
+    * Fix EditorSplitter menu_actions and add test.
+    * Don't rely on process name when detecting a previous instance
+    * Trade ipykernel.serialize for cloudpickle and remove use of publish_data
+    * Make the fileswitcher aware of split editorstacks
+- Update to Version 3.2.4
+  + New features
+    * Add compatibility with Jedi 0.11
+    * Display lists with all types of elements in the Variable Explorer.
+  + Issues Closed
+    * Cannot get past splash screen
+    * Sorting by column in variable explorer
+    * Error in variable explorer for dicts with mixed-type keys
+    * Spyder crashes because of race condition in ZMQ
+    * Error when opening a new project
+    * Not all lists are supported by the variable explorer
+    * Error when pressing Ctrl+C in the terminal where Spyder was started 
+    * Increase kernel_client.hb_channel.time_to_dead even more
+    * Variable Explorer: sort by values not working
+    * Checking/Unchecking path in the pathmanager is not working as expected in the IPython console
+    * Enter in IPython console inserts new line when big Dataframes are in namespace
+    * Problem when closing files with split editors whose tabs order are not synced.
+    * Variable explorer crash when viewing numpy structured array
+    * Profiler incorrectly detects recursion
+    * Variable explorer raise error when try to sort dict by values
+    * error when closing a file
+    * Error when trying to sort dataframe with duplicate columns
+    * Error when Selecting Fig from Variable Explorer
+    * In ipdb, the up and down keys have a strange behaviour
+    * pdb.pm() raises an Error
+    * Issues with recognizing directory renaming
+    * Closing last open file while being in non-existing working dir raises exception
+    * AttributeError: 'NoneType' object has no attribute 'execute'
+    * Error when trying to edit elements of a float numpy array in variable explorer
+    * Some issues with dedicated consoles
+    * "Save as" dialog extremely slow
+  + Pull Requests Merged
+    * Add an error message when sorting a dataframe on categorical dtypes 
+    * Make consoles to start without an stderr file
+    * Update minimal QtPy required version
+    * Skip a Matplotlib test in PyQt4 because it's failing too much
+    * Backport PR 5159
+    * Fix crashing of the fileswitcher after closing the last file of the Editor.
+    * Change spyderproject for spyproject in some missing places.
+    * Add an error message when failing to serialize an object
+    * Skip some tests to prevent recurrent failures and segfaults
+    * Prevent a race condition with ZMQ during startup
+    * Fix history browsing while debugging
+    * Add handling for OSError's when changing directories.
+    * Display all lists in the variable explorer
+    * Add a safe getcwd function to handle errors when the current working was deleted
+    * Show error when trying to sort dataframe with duplicate columns
+    * Fix editing floats in array editor
+    * Sync correctly the closing of files in multiple editorstacks.
+    * Wait until console is ready before executing code for dedicated consoles
+    * Fix some execution delays in the IPython console
+    * A couple of fixes for Jedi 0.11
+    * Enable sorting by values in Variable Explorer
+    * Prevent unchecked paths in the pathmanager to be added to the IPython console sys.path
+    * Fix recursion error in profiler
+    * Prevent hard crash when inspecting certain structured arrays
+    * Don't show errors when kernel_client is None
+    * Fix some issues with the Editor Save dialog
+    * Apply window style only if it's not None
+    * Handle error when using deepcopy in the collections editor.
+    * Editor historystack improvements
+    * Fix calling pdb.pm() in a console
+- Update to Version 3.2.3
+  + New features
+    * Add a button to the Variable Explorer to remove all variables at
+      once.
+  + Issues Closed
+    * AttributeError when using outline and split code 
+    * 'Execute in external system terminal' unwantedly uses python2 on ubuntu16.04
+    * AttributeError: 'super' object has no attribute '_handle_error' in IPython console
+    * Renaming file containing folders yields IndexError.
+    * pip created executable name changes between versions
+    * KeyboardInterrupt error in waitingspinner
+    * Debug: "Run Current Line" past the end of a script doesn't exit the debugger
+    * "unblockcomment" incompatible with "automatically remove trailing spaces"
+    * RuntimeError when using outline and split code editor
+    * Variable Explorer: Add a button to remove all variables at once
+  + Pull Requests Merged
+    * Use get_python_executable to run in external terminals
+    * Fix RuntimeError and AttributeError when using outline and split code editor
+    * Stop creating universal wheels
+    * Add handling for IndexError in the Editor when renaming folder containing file
+    * Don't use super in _handle_error method of IPython console
+    * Avoid KeyboardInterrupt to raise an error in waitingspinner
+    * Exit the debugger if we are about to enter to sitecustomize.py
+    * Fix unblock comments
+    * Add a button in the Variable Explorer toolbar to reset namespace
+- Update to Version 3.2.2
+  + New features
+    * Add a button to Find in Files to make searches case sensitive.
+    * Extend Find in Files to select other search directories.
+    * Add an option to set cursor blinking speed in miliseconds in
+      `Preferences > General > Interface > Cursor blinking`.
+    * Add checkboxes to PYTHONPATH manager to enable/disable paths.
+    * Show the number of matches in the Find/Replace widget.
+  + Issues Closed
+    * Unable to save file in Python
+    * Editor - Cannot close a (vertical) split after open
+    * Word operators do not have a color style in the IPython console
+    * Increase the limit of DPI setting for IPython inline graphics 
+    * IPython consoles can't start if Spyder temp directory is missing
+    * BUG: Error editing element of numpy array in variable explorer
+    * Spyder Issue when using ctrl+P : goto line 
+    * Unable to start Array builder using keyboard shortcut
+    * Console slow to close when debugging
+    * Consistent layout in different panes
+    * "Replace selection" adds "\." anytime the string to be added contains "."
+    * IPython: Run Code at Startup - Magics
+    * Force-stop does not work on hanged progress.
+    * Run Configuration per file: Working Directory not remembered
+    * Error when trying to load third-party plugins
+    * Pressing Ctrl+Tab wanting to switch to another tab raises an IndexError
+    * Make Spyder remember tab order
+    * Kernels fail to start because they can't create stderr files in non-ascii accounts on Windows
+    * SPYDER_DEBUG=3 is failing on Windows
+    * Find in Files should have ignore case flag
+    * Extend Find in Files to select other directories
+    * Array editor: Change default float formatter from %.3f to %.6g
+    * Debug: If a breakpoint is on the first line of a script the whole script runs
+    * Exceptions swallow the prompt!
+    * Add icon to mac dock when running with bootstrap
+    * Editor autocompletion and help extraction not working in Spyder 3.1.4
+    * Option to Disable Blinking Cursor
+    * Spyder stops executing commands if Variable explorer shows complicated objects
+    * Ctrl+F should show the number of appearances in the file as #current/#total
+    * Spyder 3 opens a command prompt window when running certain commands
+    * Add the possibility to disable entries in the PYTHONPATH manager
+  + Pull Requests Merged
+    * Skip package names that end in certain suffixes when loading third-party plugins
+    * Correctly move to first breakpoint after entering debugging
+    * Fix error when creating some error messagebox
+    * Add handling for non existing indexes in IPython Console clients
+    * Add more handling to actions with reference deleted
+    * Deactivate editor actions when Tab Swither is shown
+    * Skip some tests in our CIs
+    * Don't run continue when starting debug if there is a breakpoint in the first line with code.
+    * Create Spyder TEMPDIR if it does not exist when creating new consoles
+    * Fix cwd issues in the "Run > Configuration per file" dialog
+    * Increase waiting time and repetitions for tests that enter debugging
+    * Fix 1D Numpy arrays edition in the Variable Explorer
+    * Make inactive paths to be ignored when Spyder's path list is synchronized with PYTHONPATH on Windows
+    * Increase dpi limit of inline plots
+    * Allow values with '%' in config system
+    * Add a style for word operator tokens in the IPython pygments dictionary
+    * Make value_to_display more robust
+    * Increase tries for a couple of flaky tests
+    * Add test with non-ascii directory for consoles stderr file
+    * Fix setting SPYDER_DEBUG variable on Windows
+    * Fix handling of line count in the fileswitcher
+    * Prevent subprocess.Popen calls to create visible consoles on Windows.
+    * Remove regex escape characters from replacement string on the Find/Replace widget
+    * Fix shortcut to make array builders appear in the IPython Console
+    * Minor fixes in Find in Files
+    * Stop console before closing it
+    * Send Spyder python path to introspection plugins
+    * Reduce row height in shortcut dialog
+    * Clean Spyder config before re-running our tests
+    * Change format in array and dataframe editors
+    * Unify layout for panes and widgets
+    * Display prompt after errors
+    * Preserve order when saving/loading files from a project.
+    * Extend Find in Files to select other search directories
+    * Add a button to Find in Files to make searches case sensitive
+    * Add an option to set cursor blinking speed in miliseconds
+    * Add checkboxes to PYTHONPATH manager to enable/disable paths
+    * Add icon earlier when running application
+    * Show the number of matches in the Find/Replace widget
+    
+-------------------------------------------------------------------
+Mon Aug 28 20:47:39 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 3.2.1
+  * See: https://github.com/spyder-ide/spyder/blob/v3.2.1/CHANGELOG.md
+- Update dependencies
+
+-------------------------------------------------------------------
+Mon Oct 17 08:30:26 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Fri Oct 14 18:19:07 UTC 2016 - toddrme2178@gmail.com
+
+- Fix pylint dependency.
+
+-------------------------------------------------------------------
+Thu Oct 13 21:34:50 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 3.0.0
+  * See: https://github.com/spyder-ide/spyder/blob/3.x/CHANGELOG.md
+- Remove spyderlib subpackage.  spyderlib no longer exists.
+  Everything that was in spyderlib is now in the spyder namespace.
+- Split plugins into their own subpackages.  Plugins are each in
+  their own namespace, and third-party plugins are now possible.
+  Further, some plugins can pull in dependencies that some users
+  may not want.
+- Update URL to new upstream URL.
+- Add additional dependencies.
+- Check which dependencies are really needed and which ones are
+  optional and divide them into Requires and Recommends
+  appropriately.
+
+-------------------------------------------------------------------
+Thu Jun  9 18:17:22 UTC 2016 - toddrme2178@gmail.com
+
+- Update to Version 2.3.9
+  * Issue #3067 - File left open in sitecustomize when executing it in Python 3
+  * Issue #3031 - Variable Explorer freezes when certain binary data is loaded
+  * Issue #2991 - RuntimeWarning with pandas.dataframes that contain np.nan values
+  * Issue #2984 - Can't access Preferences in spyder
+  * Issue #2983 - Freeze while assigning data from numpy array when the data is a string
+
+-------------------------------------------------------------------
+Sun May  8 07:08:16 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+
+-------------------------------------------------------------------
+Wed Mar  9 16:57:40 UTC 2016 - toddrme2178@gmail.com
+
+- Update to Version 2.3.8
+  + New features
+    * Python and IPython consoles
+      * Fix a sitecustomize error when using Matplotlib 1.5 with Python 2 on Linux
+    * Variable Explorer
+      * Add support for Pandas Series when using Pandas 0.17+
+      * Fix a freeze when creating empty DataFrames in Python 2
+      * Fix a freeze when working with big Numpy recarray's
+    * Under the hood
+      * Avoid startup crashes when there are errors importing Numpy, SciPy or Pillow
+  + Bug fixes
+    * [Issue 2819](../../issues/2819) - Spyder fails to start because of an error with scipy
+    * [Issue 2815](../../issues/2815) - Variable explorer is not recognizing Pandas Series objects
+    * [Issue 2793](../../issues/2793) - Connecting to kernel fails because of update to Matplotlib 1.5
+    * [Issue 2791](../../issues/2791) - DataFrame with no rows gives error when trying to view it
+    * [Issue 2783](../../issues/2783) - Spyder freezes on assigning a fits table data
+    * [Issue 2744](../../issues/2744) - Spyder hangs when creating an empty DataFrame on Python 2
+- Fixes bug BNC#966417
+
+-------------------------------------------------------------------
+Tue Oct 27 10:45:51 UTC 2015 - toddrme2178@gmail.com
+
+- Remove optional dependencies from BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct  6 14:30:57 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 2.3.7
+  + New features
+    * Editor
+      * Remove support for Jedi 0.9 because it was causing crashes
+    * Variable Explorer
+      * Fix crashes and freezes when working with DataFrames on Python 2
+    * Under the hodd
+      * Restore support for PySide
+  + Bug fixes
+    * Issue 2709 - IPython console error when trying to use SymPy
+    * Issue 2693 - README should link to manual
+    * Issue 2689 - "Resize" button in variable explorer chops off the array
+    * Issue 2684 - Applications directory link is broken in Spyder 2.3.6 dmg's
+    * Issue 2680 - "Close all files" hangs Spyder
+    * Issue 2661 - Conda package manager is packed in 2.3.6 win32 distribution leading to errors
+    * Issue 2659 - Crash while getting completions of DataFrames on the Editor because of Jedi 0.9
+    * Issue 2654 - Creating DataFrames in Python or IPython consoles make Spyder 2.3.6 to hang
+    * Issue 2649 - PySide can not be used on 2.3.6
+    * Issue 2296 - Line numbers misaligned when zooming and scrolling in Mac
+    * Issue 2036 - Code analysis and tooltips are not displayed in Ubuntu
+  + Pull requests
+    * PR 2650 - Failed sip import blocks fallback to PySide
+
+-------------------------------------------------------------------
+Fri Aug 28 07:46:52 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 2.3.6
+  + New Features
+    * IPython Console
+      * Make it fully compatible with IPython/Jupyter 4.0
+    * Variable Explorer
+      * Don't refresh it when focused to avoid slow downs when 
+        working with big data
+      * Add variable name to DataFrame editor
+      * Fix several crashes and freezes when working with DataFrames
+    * Under the hood
+      * Use PyQt4 API #2 by default (API #1 is not supported anymore).
+        This is necessary to support IPython/Jupyter 4.0
+  + Bug fixes
+    * Multiple untitled files generate at close
+    * Indenting at the first position in file fails/crashes
+    * Crash after update IPython to 4.0
+    * Call tips and auto completion tips go out of screen on a second monitor
+    * Having a lof of data in the Variable explorer slows down Spyder considerably
+    * Spyder crash on launch with Babel 2.0/Python 3.4
+    * List of pandas dataframes in variable explorer slows down Spyder
+    * Variable explorer auto-refreshes after kernel restarts
+    * DataFrames with headers that contain BOM utf-8 data are freezing/crashing Spyder (in Python 2)
+    * Spyder crashes when displaying DataFrames with duplicate column names in the Variable Explorer
+    * Don't ask to confirm exit on default untitled files
+    * Display object name in DataFrame editor
+  + Pull requests
+    * Fix missing exception on Windows when importing data on the Variable Explorer
+    * Show call tips at right position when there are multiple screens
+    * Fix error when indenting on the first line of a file
+- Switch dependencies to jupyter versions
+    
+-------------------------------------------------------------------
+Mon Jun 29 11:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 2.3.5.2
+  * Note: Versions 2.3.5 and 2.3.5.1 have serious startup bugs on
+    Windows and Mac respectively. Hence they are not listed here.
+  * New features
+    - Editor
+      + Add support for Jedi 0.9
+    - IPython Console
+      + Add initial support for IPython/Jupyter 4.0
+    - Main Window
+      + Improve how Spyder looks in MacOS X
+      + Several fixes to prevent startup crashes
+  * Bug fixes
+    - Issue 2468 - 'Connect to existing kernel' fails if json file not in PWD
+    - Issue 2466 - No Notification of Running Instance
+    - Issue 2463 - Failure to preserve Matplotlib backend when using symbolic math
+    - Issue 2456 - Launching IPython console fails because of errors importing Pandas or Matplotlib
+    - Issue 2452 - os.system causes TypeError in Python 3
+    - Issue 2448 - Spyder crashes using Variable Explorer with BeautifulSoup
+    - Issue 2446 - When importing putting two periods in a row produces an error in a Python console
+    - Issue 2363 - Spyder fails to start because of problems with lockfile
+    - Issue 2356 - Block comment incorporating whitespace excludes last line
+    - Issue 2341 - IPython console: "sre_constants.error: unbalanced parenthesis" while typing
+    - Issue 2314 - Cell highlighting not updated after closing the FindReplace widget
+    - Issue 2302 - Closing all files in editor shouldn't leave it empty
+    - Issue 2299 - IPython preference "Automatically load Pylab and Numpy Modules" not followed
+    - Issue 2298 - Cannot stop executing when runing a flask app with debug=True
+    - Issue 2285 - Copying from Spyder and pasting into LibreOffice displays strange comments
+    - Issue 2228 - Shortcut to run cells on Mac is not working
+    - Issue 2188 - can't run win_post_install from pip
+    - Issue 2171 - Spyder Mac apps (for Python 2 and 3) hang on startup with OSX 10.9.5
+    - Issue 2028 - Background color of theme is not set properly on Mac OSX
+    - Issue 1957 - Python 3 Mac app can't start Python or IPython consoles
+    - Issue 1844 - "Set as current console's working directory" button not working on Python 3
+    - Issue 1615 - Mac app - Matplotlib does not work with Canopy
+  * Pull requests
+    - PR 2486 - Stop using IPython.lib.kernel 0.13.2 shim and add initial support for Jupyter
+    - PR 2484 - Remove unnecessary changes to detected kernel json file when connecting to external kernels
+    - PR 2434 - Match for pylint when parsing pylint version
+    - PR 2411 - Improve github issue template
+    - PR 2377 - Fix the fact that spyder_win_post_install.py can't be run from pip
+    - PR 2293 - Hide menu icons on Mac OS X
+    - PR 2247 - Add support to run Python programs on xfce and xterm external terminals
+    - PR 2216 - Fix broken png files: libpng 1.6.2 and newer has stricter iCCP rules
+
+-------------------------------------------------------------------
+Tue Mar 24 13:06:52 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 2.3.4:
+  * New features
+    - Debugging
+      + After pressing the Debug button (or Ctrl+F5) move to the first 
+        breakpoint
+    - IPython Console
+      + Drop support for Sympy versions less than 0.7.3
+    - Python Console
+      + Remove support to run system commands with ! (like !diff)
+    - Editor
+      + Accept drops from compressed files on Windows
+  * Bug fixes
+    - spyder crashes if ipython installed but not pygments
+    - Cannot plot inline in IPython console on Linux
+    - Update French translations for 2.3.4
+    - Importing a module with debugger causes "TypeError: decoding Unicode is 
+      not supported"
+    - SyntaxErrors with Python 3.2
+    - Object Inspector is not showing "No documentation available" for objects 
+      without docstring
+    - IPython does not work with brewed or virtualenv Python(s) in MacOSX
+    - Spyder2.3.3 Code completion breaks
+    - Spyder's WM_CLASS is empty, resulting in unexpected behavior for task 
+      managers
+    - Code completion issue with Jedi
+    - IPython consoles are not named correctly when connecting to existing 
+      kernels and passing the full kernel path
+    - runfile with path containing apostrophes (quotes) will not work
+    - Long NumPy arrays throw off errors
+    - Special character "!" is not processed correctly when debugging in Python 
+      consoles
+    - Spyder crashes on Windows because of non-ascii chars in working directory
+    - Don't execute external commands (!) when running pdb in python consoles
+    - Execute until first breakpoint when pressing the Debug button
+    - Dragging (not dropping) file from 7zip over spyder window causes 
+      TypeError in dragEnterEvent
+    - spyderlib.utils.external overrides modules for script execution
+    - spyder 2.3 ipython console startup code or file not working
+    - Running in external system terminals is not working on Windows and Python 
+      3
+    - Spyder crashes on launch trying to load the project config file 
+      (.spyderproject)
+    - raw_input borks with '!'
+    - Plot A List Of Floats In Variable Explorer Not Possible
+    - Problems with sitecustomize because of pickleshare library
+    - "Highlight occurrences" setting is lost after IDE restart
+    - Mac app - Sometimes it's not possible to get the user env vars
+    - The PYTHONPATH manager on the Mac app does not work with the EPD64 
+      interpreter
+    - Ctrl-C doesn't copy to clipboard in object inspector
+  * Pull requests
+    - Update French translations
+    - Improve message for no docstring
+    - catch a reason to crash on startup
+    - Fix a bug in completion if callback value is not converted to string
+    - Open configuration file with utf-8 encoding on Windows and Python 2
+    - Fix zlib segmentation fault in Anaconda 3.4 Linux
+- Update to 2.3.3:
+  * New features
+    - Editor
+      + Use the Jedi library to do code completions
+      + Add Ctrl+= as a shortcut to do Zoom in and Ctrl+0 to reset zoom
+      + Add an option to show blank spaces, under the Source menu. There is 
+      also an option to make this permanent under Preferences > Editor.
+    - IPython Console
+      + Don't print DataFrames as html tables because this won't be supported 
+      since IPython 3.0
+      + Drop support for IPython 0.13
+      + Support the upcoming 3.0 version
+      + Add Ctrl+T as shortcut to open new consoles
+      + Simplify how consoles are named
+    - Variable Explorer
+      + More optimizations to handle big DataFrames and NumPy arrays (i.e. with 
+      more than 1e6 elements).
+    - Main Window
+      + Add Ctrl+W and Ctrl+F4 to close tabs in all platforms
+      + Show shortcuts to move to each pane in View > Panes
+  * Bug fixes
+    - Visual help for indentation: draw spaces and tabs
+    - Allow the file explorer to open any file into the editor as text
+    - Augment or replace rope with Jedi
+    - Kill button 'clicked' signal is connected but never disconnected on the 
+      python shell
+    - Add support to get code completions for compiled modules (e.g. OpenCV)
+    - Debug ignores breakpoints, if there's no ASCII characters in a file path
+    - Creating file gives TypeError on Python 3
+    - Keyboard shortcut to come back to normal zoom level
+    - Shortcuts to create and close IPython consoles
+    - Transition to git and github
+    - Evaluating cell or selection in Python consoles takes ages
+    - Spyder with GTK/GTKAgg backend on GNOME freezes
+    - Matplotlib backend in Mac can't be changed when using PySide
+    - exception in spyder internal console when typing 'exit(' in editor
+    - autocomplete in the middle of a word
+    - Your IPython frontend and kernel versions are incompatible
+    - Winpdb (F7) doesn't work in Python 3
+    - TkAgg backend unresponsive window on Linux and OS X
+    - Improve inline backend options
+    - Pandas Dataframe not opening in Variable Explorer
+    - "About spyder" and "Report issue ..." output errors
+    - Profiler - sorting by Total Time sorts by string order, not numeric order
+    - Unable to bring up tutorial
+    - Bug on Variable Explorer while viewing DataFrames, with timestamp columns
+    - Missing py27 dmg download
+    - PYTHON pathmanager on windows 8 does not work properly
+    - Spyder 2.3.2 freezes when viewing big collections on the Variable 
+      Explorer
+    - UnicodeDecodeError in the Internal console when trying to run a file with 
+      non-ascii chars and synatx errors in it
+    - Go to definition menu item inactive with rope present.
+    - iPython console rendering of pandas.DataFrame.repr_html() note in 
+      changelog
+    - Small typo in Help : Plotting examples
+    - Closing takes a long time with Python 3.4
+    - UnicodeDecodeError when inspecting pandas DataFrame in ipython console
+    - Update French translations for 2.3.3
+
+
+-------------------------------------------------------------------
+Sat Dec  6 08:34:31 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 2.3.2:
+  * Editor
+   - Improve cells visualization
+   - Add support for drag selection and improve look of 
+     line number area
+   - Open on it any text file present in the Variable Explorer
+   - View and edit IPython notebooks as Json files
+   - Syntax highlighting for Json and Yaml files
+  * Variable Explorer:
+   - Import csv files as Pandas DataFrames
+  - Improve browsing speed for NumPy arrays and DataFrames with more
+    han 1e5 elements
+  * IPython Console
+   - Add a stop button to easily stop computations
+
+-------------------------------------------------------------------
+Mon Oct 13 15:02:55 UTC 2014 - toddrme2178@gmail.com
+
+- Fix icon directory ownership
+
+-------------------------------------------------------------------
+Thu Sep 18 09:14:37 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 2.3.1
+  * New features since
+    * Variable Explorer
+      * Support for Pandas DataFrame's and TimeSerie's types
+      * Support for Numpy 3D arrays
+      * Drag and drop works for all its supported file types 
+        (e.g. images, mat files, json files, etc)
+    * Editor
+      * F9 runs the current line under the cursor if nothing is 
+        selected
+      * Focus remains on it after evaluating cells and selections 
+        (an option was added to return to the old behavior)
+    * IPython console
+      * Connect to external kernels through ssh
+    * Object Inspector
+      * Add a tutorial for beginners
+    * Main Window
+      * Improve style on Mac
+  * Bug fixes
+    * Issue  93  Variable explorer: allow array editor to deal 
+                  with arrays with more than 2 dimensions
+    * Issue  1160  Variable Explorer: add support for pandas 
+                   objects
+    * Issue  1305  mayavi plot hangs when IPython graphics backend 
+                   is inline (default)
+    * Issue  1319  Spyder is not getting its taskbar icon right in 
+                   Win 7/8
+    * Issue  1445  Linux style middle mouse button paste not 
+                   executed in console
+    * Issue  1530  Wrong encoding for date in pylint widget
+    * Issue  1590  Add numpy matrices as a supported type to the 
+                   Variable Explorer
+    * Issue  1604  spyder 2.2.5 freezes with netCDF4-python
+    * Issue  1627  Run selection (F9) changes focus to Python 
+                   interpreter, but ex-Matlab users expect the 
+                   focus to remain on the editor
+    * Issue  1670  Provide a "Run current line" feature
+    * Issue  1690  Feature request: connect to existing IPython
+                   kernel over ssh
+    * Issue  1699  Option to disable middle button paste
+    * Issue  1783  The new cell delimiter when converting a 
+                   notebook to python file is # In[`*`]
+    * Issue  1863  Ctrl-C doesn't work in a *restarted* IPython 
+                   console
+    * Issue  1893  Matplotlib plots do not display correctly in 
+                   2.3.0 (when running in dedicated python 
+                   interpreter)
+- Update dependencies
+
+-------------------------------------------------------------------
+Thu Jul 17 08:11:46 UTC 2014 - toddrme2178@gmail.com
+
+- Add spyder3-rpmlintrc to sources
+- Remove unused version_check.patch
+
+-------------------------------------------------------------------
+Mon Jul 14 09:36:03 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 2.3.0 final
+  - New features
+    * Python 3 support
+    * Editor
+        * Use the Tab key to do code completions
+        * Highlight cells, i.e. portions of a file delimited by separators of the form `# %%`
+        * First-class support for Enaml files
+        * Syntax highlighting for Julia files
+        * Use Shift+Tab to show the signature corresponding to a function/method while it's been called
+        * Do code completions using the tokens (or words) found in a file
+        * Token-based completions work for any file type supported by the Editor
+        * Add a new tooltip widget (borrowed from the IPython project) to better handle how to show function signatures
+    * IPython console
+        * Assign the keyboard shortcut Ctrl+Shift+I to move to it
+        * Open a console by default at startup
+        * Give visual feedback when opening a console
+        * Show kernel error messages in the client tab
+    * Object Inspector
+        * Add an intro message to explain how to use it
+        * New style based on the Bootswatch Cerulean theme
+    * Main Window
+        * Reorganize several menus
+    * Under the hood
+        * Improve startup time
+        * Develop a new way to update configuration defaults (that doesn't involve resetting user settings)
+  - Bug fixes
+
+-------------------------------------------------------------------
+Fri May 30 17:43:52 UTC 2014 - toddrme2178@gmail.com
+
+- Initial python 3 version
+- Update to 2.3.0rc
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Fri Feb 14 10:32:54 UTC 2014 - dmueller@suse.com
+
+- remove python-pylint buildrequires, doesn't seem  to be used
+
+-------------------------------------------------------------------
+Wed Nov 13 12:42:19 UTC 2013 - p.drouand@gmail.com
+
+- Define %{python_sitelib} to fix build with SLE
+
+-------------------------------------------------------------------
+Tue Oct 15 21:33:19 UTC 2013 - toddrme2178@gmail.com
+
+- Update to version 2.2.5
+  * Issue  1322  Problems with scientific_startup in other interpreters from the one Spyder is running on
+  * Issue  1337  Mac app - Update to Qt 4.8.4 for HDPI
+  * Issue  1450  IPython kernel cpu usage increases with time
+  * Issue  1520  LinuxColor for ipython plugin
+  * Issue  1551  /doc/installation.rst: update Arch Linux package link
+  * Issue  1560  spyder 2.2.3 incompatible with pylint 0.25.1 on Windows
+  * Issue  1564  Fix several Editor cell problems
+  * Issue  1578  Typo in your 'About Spyder...' dialog.
+  * Issue  1581  Cannot launch Spyder 2.2.4 installed from DMG on Mac OS X.
+  * Issue  1589  Mention what types of objects our Variable Explorer support in our docs
+  * Issue  1595  Fail to start an ipython console when variable explorer autorefresh is turned off in Preferences
+  * Issue  1596  Spelling mistake in dialog ('loose' --> 'lose')
+  * Update our Mac application to the latest versions of Python, Qt and PyQt (now it's based in Homebrew).
+  * Several important compatibility fixes for PySide.
+  * Improve our support for IPython 1.0+.
+
+-------------------------------------------------------------------
+Sat Oct 12 14:06:50 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 2.2.4 (bnc#849811)
+  * Fix issue 347: Matplotlib hangs on Mac if using PySide
+  * Fix issue 1265: Create a Debug menu to easily show how to set breakpoints
+  * Fix issue 1489: Project Explorer does not load all projects in workspace.
+  * Fix issue 1516: Make Spyder compatible with both IPython 0.13 and 1.0
+  * Fix issue 1531: Pyflakes version check is looking for 0.5.0 only
+  * Fix issue 1539: /tmp/spyder is owned by the first user on the server
+    to launch spyder
+  * Make Spyder compatible with SymPy 0.7.3+
+  * Add shortcuts to the tooltips of all toolbars
+  * Make IPython Console work better if Matplotlib is not installed
+- Changes between version 2.2.3 and 2.2.2
+  * Fix issue 634: Debugging: Lingering break points
+  * Fix issue 639: Project Explorer: horizontal size issue (added an
+    optional horizontal scrollbar. This option may be enabled/disabled
+    in the widget context menu)
+  * Fix issue 749: Outline Explorer: Duplicate entries
+  * Fix issue 852: Implement matlab-like cell features
+  * Fix issue 1388: Add an "About Spyder dependencies" dialog box
+  * Fix issue 1438: "runfile" doesn't work correctly if unicode_literals has
+    been imported (replaced backslashes by slashes in paths)
+  * Fix issue 1515: Add an option to use the same interpreter Spyder is
+    running on as "Python executable" for external consoles
+  * Fix issue 1522: licenses of the images (especially the .png)
+  * Fix issue 1526: Build script (setup.py) includes the wrong version of
+    pyflakes/rope in Windows installer
+  * Fix issue 1527: please include the LICENSE file in the source package 
+  * New "Run selection" (F9), "Run cell" (Ctrl+Enter) and "Run cell and
+    advance" (Shift+Enter) actions in "Run" menu entry, as a replacement
+    to the old "Run selection or block" and "Run block and advance" actions.
+   *Added "Optional Dependencies" dialog box in "?" menu.
+   *Editor: added Monokai and Zenburn syntax coloring schemes.
+   *Keyboard shortcuts: removing deprecated shortcuts at startup. Otherwise,
+    when renaming the name of a registered shortcut (in the code), the old
+    shortcut will stay in Spyder configuration file and opening the Preferences
+    dialog will show a shortcut conflict dialog box. 
+ * External console tabs: fixed history browsing with Ctrl+Tab and added 
+   Shift+Ctrl+Tab support.
+ * Preferences>Console>Advanced: new option to switch between the default Python
+   executable
+ * Run Icons: removed deprecated images, updated other images to the new design
+    setup.py/Windows installers: now building CHM documentation for Windows
+ * SPYDER_DEBUG environment variable now supports 3 levels of debug mode:
+     SPYDER_DEBUG=0 or False: debug mode is off
+     SPYDER_DEBUG=1 or True: debug level 1 is on (internal console is disconnected)
+     SPYDER_DEBUG=2: debug level 2 is on (+ logging coms with external Python processes)
+     SPYDER_DEBUG=3: debug level 3 is on (+ enabling -v option in external
+     Python processes and debugging editor) 
+- Changes between version 2.2.2 and 2.2.1
+  * Fix issue 1497: Spyder 2.2.1 does not work with Python < 2.7
+  * Fix issue 1498: TypeError thrown by IPython Console when the pager is off
+  * Fix issue 1499: Console (Terminal) throws NotImplementedError for Home/End keys
+  * Fix issue 1509: Add support for javascript syntax highlighting
+  * Fix issue 1510: Problems with zooming in/out 
+  * Add new icons to the Run, Debug and Main toolbars
+  * Update Pylint plugin to work with pylint 1.0
+  * Add Ctrl/Cmd+[+,-] to zoom in/out in the Editor
+  * Disable Crtl+MouseWheel to zoom in/out in Mac (See  Issue 1509 )
+  * Update Pandas and Matplotlib in our Mac application 
+
+-------------------------------------------------------------------
+Tue Aug 13 10:00:20 UTC 2013 - speilicke@suse.com
+
+- Updato to version 2.2.1 (bnc#833564):
+  + Upstream provides no changelog
+- Install documentation into correct location
+
+-------------------------------------------------------------------
+Mon Apr 22 21:48:07 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added version_check.patch, fixes detection of pyqt version
+
+-------------------------------------------------------------------
+Thu Feb 14 01:24:49 UTC 2013 - fisiu@opensuse.org
+
+- Update to version 2.1.13:
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Nov 29 17:20:37 UTC 2012 - toddrme2178@gmail.com
+
+- Fix typo
+
+-------------------------------------------------------------------
+Thu Nov 29 13:05:17 UTC 2012 - toddrme2178@gmail.com
+
+- Update to Version 2.1.11
+  * Bug fixes
+- Split documentation package
+- Split spyderlib package and binary package, since spyderlib is
+  used independently of the spyder gui
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Tue Jun 12 08:32:23 UTC 2012 - toddrme2178@gmail.com
+
+- Install desktop file, with appropriate icon
+- Tag documentation in spec file
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Mon May 28 09:40:29 UTC 2012 - toddrme2178@gmail.com
+
+- Update to Version 2.1.10
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue May 22 15:46:57 UTC 2012 - toddrme2178@gmail.com
+
+- Update dependencies
+- Clean up spec file formatting
+- Update to Version 2.1.9
+  * Bug fixes
+- Update to Version 2.1.8
+  * Bug fixes
+- Update to Version 2.1.7
+  * Bug fixes
+  * Variable explorer/Array editor: added support for masked arrays
+  * Showing Spyder's internal console automatically when there is a traceback
+  * Do not crash when a 3rd party plugin failed to import
+  * Editor:
+    * Automatic insertion of single, double and triple quotes
+    * Automatically colons insertion when pressing Enter after 'if', 'def', etc
+    * Don't trigger code completion on comments if text ends with a dot
+    * Added keyboard shortcut (Ctrl+Shift+Escape) to clear the console
+    * Added keyboard shortcut (Ctrl+P) to print current file (thanks to fheday at gmail dot com for the contribution)
+    * Code introspection features (code completion, calltips, go-to-definition) are now working even if script has syntax errors
+- Update to Version 2.1.6
+  * Bug fixes
+- Update to Version 2.1.5
+  * Bug fixes
+  * Debugging: when a non-empty SPYDER_DEBUG environment variable exists, Spyder switch to debug mode (log files are created in user's home directory and debug prints are available in the terminal)
+  * Variable explorer/Dictionary editor: added option to plot histogram from a 1-D array
+  * Console:
+    * standard Python interpreter is now a real Python interactive session: the older implementation was running a startup script and tried to emulate a standard Python interactive session (changing attributes like __name__, running the PYTHONSTARTUP script, etc.). But this implementation was not close enough to the standard Python interactive session, i.e. when you execute `python` outside Spyder, without any argument. A recent bug report confirmed this: the PYTHONSTARTUP script was executed but not exactly the same way as it is outside Spyder: for example, doing `from __future__ import division` in the startup script had no effect whereas it did outside Spyder.
+    * when running a standard Python interpreter, instead of running the startup script (spyderlib/widgets/externalshell/startup.py), the shell widget (ExternalPythonShell) simply runs the python executable with -u -i options, that's all. So now, the PYTHONSTARTUP script is executed as expected.
+    * Scientific startup script (default PYTHONSTARTUP in Spyder): added floating point division (from __future__ import division)
+    * PySide support:
+      * Added new "Qt (PyQt/PySide)" settings group in "External modules" tab
+      * It is now possible to select the Qt-Python bindings library: default (i.e. depends on the QT_API environment variable), PyQt or PySide
+      * The PyQt input hook has been adapted for PySide, so it is now possible to do interactive (non-blocking) plotting with PySide
+    * New options for standard Python interpreters (no effect on IPython):
+      * "Merge process standard output/error channels": merging the output channels of the process means that the standard error won't be written in red anymore, but this has the effect of speeding up display
+      * "Colorize standard error channel using ANSI escape codes": this method is the only way to have colorized standard error channel when the output channels have been merged
+  * Internal console (Issue 868): output is now immediately available
+  * "Maximize current plugin" action: now automatically shows the "Outline" plugin when maximizing the "Editor" plugin
+  * Editor/Outline comment separators: allow space betwee hash and dash, e.g "# --- Outline Separator"
+- Update to Version 2.1.4
+  * Bug fixes
+  * Console:
+    * option "Open an IPython interperter at startup" is now *explicitely* disabled for IPython v0.11+ (these versions of IPython are not fully supported through Spyder's console plugin)
+- Update to Version 2.1.3
+  * Bug fixes
+  * Variable explorer performance were improved, especially when dealing with very long sequences -- See this discussion: http://groups.google.com/group/spyderlib/browse_thread/thread/3a7ef892695e417a
+  * Variable explorer / dictionary editor: added support for unknown objects -- this allows browsing any object attributes -- This is still experimental.
+- Update to Version 2.1.2
+  * Bug fixes
+  * File/Project explorer:
+    * Added "Delete" keyboard shortcut to remove selected file(s)/folder(s)
+    * SCM integration: added support for !TortoiseHg v2 (only v1 was supported)
+  * Console/Matplotlib options: the backend may now be set separately from the Matplotlib patch
+  * Console:
+    * The Matplotlib patch is only applied for Matplotlib <=v1.0
+    * !PyQt API version issues (error like "!ValueError: API 'QString' has already been set to version 1"): the "ignore setapi errors" option is disabled by default, to avoid masking these errors and associated tracebacks
+- Update to Version 2.1.1
+  * Bug fixes
+- Update to Version 2.1
+  * Bug fixes
+  * New *Profiler* plugin (thanks to Santiago Jaramillo)
+  * New experimental *IPython* plugin embedding IPython's Qt console: see [http://spyder-ide.blogspot.com/2011/08/preview-of-new-ipython-plugin-for.html here]
+  * General:
+    * Main window:
+      * added "Custom window layouts" management (see menu "View")/handling 3 custom layouts: default shortcuts Shift+Alt+FX to switch to/from layout #X and Ctrl+Shift+Alt+FX to set layout #X
+      * "General" preferences page: added option to set the Qt windows style, depending on platform (Plastique, Cleanlooks, CDE, Windows...)
+      * Menu "?": added menu entry to report Spyder issues, filling automatically informations on your configuration
+      * Reorganized "Run"/"Source" menu, added "Interpreters" menu
+      * Fixed application name for Gnome 3/Fedora 15
+    * Command line options: added option "--defaults" to reset settings (stored in .spyder.ini) to defaults (a lot of settings are preserved: shortcuts, window layouts, ...) -- this is less brutal than "--reset" which reset all settings by removing all configuration files related to Spyder
+  * *Outline* (function/class browser) is now a plugin in itself, embedded in its own dockwidget: Spyder's window layout is even more customizable than before
+  * *Code completion*
+    * (Editor/Console): entries starting with an underscore character are now placed to the end of the suggested list
+    * (Editor/Console): Import statements are now completed correctly
+  * *Console*:
+    * Major code cleaning: running Python applications in Spyder has never been cleaner and is very close to a simple Python interpreter
+    * Added built-in function `open_in_spyder` to open a file in Spyder's source code editor from the console
+    * Standard Python interpreter:
+      * now refresh the variable explorer at each new prompt (even if auto-refresh is disabled -- actually, this is the typical use case)
+      * added support for basic special commands (%pwd, %ls, %clear) and system commands (starting with '!', e.g. !dir or !ls)
+      * added [http://spyder-ide.blogspot.com/2011/09/new-enhanced-scientific-python.html "scientific" startup script] with support for numpy, scipy and matplotlib
+    * Preferences (External modules tab):
+      * added an option to set !PyQt API to v1 or v2 -- this avoids issues with Enthought Tool Suite or any other library/program using !PyQt API v2 which is *not* the default API for Python 2
+      * changed matplotlib patch to fix compatiblity issue with !PyQt API v2
+    * Preferences (Advanced Settings tab): added option "Python executable" to customize path to Python interpreter executable binary
+  * *Variable explorer*:
+    * New HDF5 plugin ([http://code.google.com/u/DavidAnthonyPowell/ DavidAnthonyPowell]): import/export HDF5 files to/from the variable explorer
+    * Dictionary editor/Variable explorer:
+      * Added support for more NumPy data types
+      * Added action "Resize rows to contents" (partially implements feature requested with Issue 807)
+  * *Editor*:
+    * find/replace:
+      * added support for *multiline* regular expression search pattern
+      * added support for *multiline* regular expression text replacement
+      * added button "Highlight matches" to highlight all found results
+    * syntax highlighting: added support for OpenCL, gettext files, patch/diff files, CSS and HTML files
+    * support for "2 spaces" and "tabs" indentation characters
+    * new code analysis feature: added support for the [http://pypi.python.org/pypi/pep8 pep8] style guide checker
+    * "Comment" and "Uncomment" actions were replaced by a single "Comment/Uncommment" toggle action
+    * (Fixes  Issue 811 ) "Run configuration": added "Run in an external system terminal" option
+  * *File explorer* and *Project explorer*:
+    * great performance improvement (using a multithreaded file system model)
+    * Added minimalist SCM support (Mercurial and git are currently supported)
+  * *File explorer*: added an option to "Show current directory only"
+  * *Project explorer*: this plugin was entirely rewritten to improve performances and usability
+  * *Pylint plugin*:
+    * added option to save file before analyzing it
+  * *Spyder's console embedded in your application (spyderlib.widgets.internalshell):
+    * in traceback, a clickable link now opens the associated file in Spyder (if application was launched from Spyder with monitor enabled)
+    * Application sample embedding Spyder's internal shell: upgraded to guidata v1.4+ (simplified build script a lot!)
+- Update to Version 2.0.12
+  * Bug fixes
+  * (Fixes Issue 655) Editor/pyflakes-powered code analysis: warnings are now ignored for lines containing "pyflakes:ignore"
+  * Internal console (Spyder debugging only): turned off the multithreaded mode
+- Update to Version 2.0.11
+  * Bug fixes
+  * File explorer widget/plugin: improved performances (widget is now populated in a separate thread)
+  * Spyder crash dialog: warning the user about the '--reset' option (this will remove all configuration files)
+
+-------------------------------------------------------------------
+Sun Apr 17 14:48:10 UTC 2011 - saschpe@gmx.de
+
+- Initial version (2.0.10)
+

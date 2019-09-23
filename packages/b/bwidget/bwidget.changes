@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Sun Nov  1 13:27:39 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.9
+  * widget.tcl: Widget::define got new parameter -namespace, allowing
+    megawidget namespace be different to class name. This allows lower
+    case namespace names. Ticket [023a631b20]
+
+-------------------------------------------------------------------
+Wed Dec 24 18:18:05 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.8
+  + widget.tcl: Widget::which errors when option not present.
+    Ticket [397db23424]
+  + widget.tcl: Don't invoke unqualified upvar in callers
+    scope. Ticket [046fa04231]
+  + widget.tcl: Don't double creation of temporary widget for
+  + default values retrieval. Use result of _get_tkwidget_options
+    instead. Ticket [393b67ab19]
+  + widget.tcl: New procedure Widget::which (as in [namespace which]),
+    that returns the fully qualified name for a widget option or
+    widget variable. Ticket [a8705e5fd9]
+  + widget.tcl: Remove unneeded upvar. Ticket [43f93e0a97]      
+  + widget.tcl et al: remove apparently unused procedure
+    Widget::syncoptions and all calls. Ticket [3c2b8eafc6]
+  + scrollframe.tcl: Make -constrainedwidth 1 and
+    -constrainedheight 1 work together. Ticket [2fa44401d5]
+  + widget.tcl: Remove temporary widget. Ticket [6cd041bcc1]
+  + combobox.tcl: Themed ComboBox color specifications
+    are honored. Ticket [6c6704e40f]
+  + combobox.tcl: Fails in themed mode with "unknown
+    option -bg". Patch solves this but listbox items
+    are white on white when "-foreground" is specified.
+    Ticket [6632134ce9]
+  + listbox.tcl: Update on option -deltay added.
+    Set x0 to 2 to make highlight work and look nice for
+    listbox with image.
+    Take image into account to show selection.
+    Ticket [ff1787af9c]
+  + scrollw.tcl: Raise scrolled window if it is below in
+    the window hierarchy. Ticket [ff1787af9c]
+  + dynhelp.tcl: Sometimes the tooltip does not occur under
+    gnome/metacity on ubuntu. Ticket [a588d2f800]
+- Add Url to project home
+
+-------------------------------------------------------------------
+Thu Aug  9 13:09:02 UTC 2012 - max@suse.com
+
+- New version 1.9.6:
+  * listbox.tcl ListBox::selection Only redraw if selection
+    changed.
+  * entry.tcl, BWMan/entry.tcl checkbox.tcl Themed mode: Invoking
+    "configure" without arguments results in errors that non-ttk
+    options are not present.
+  * Removed Entry options: -background -foreground -relief
+    -borderwidth -fg -bg -bd.
+  * entry.tcl mapped entry option -state to ttk::entry state in
+    themed mode to make state change visible.
+  * BWMan/ListBox.html documented options -selectfill and
+    -autofocus as read-only.
+  * widget.tcl (Widget::focusOK) fixed list with update.
+    Arises, if a ttk widget with a widget path with spaces is the
+    next widget.
+
+-------------------------------------------------------------------
+Wed Feb 29 06:53:44 UTC 2012 - gschlotter@suse.com
+
+- Upgrade to version 1.9.5.
+- /images/CVS/ doesn't exist in this version
+- source name changed to bwidget from BWidget
+- included dos2unix to erease an error from a txt file
+
+
+-------------------------------------------------------------------
+Sat Sep 17 21:09:28 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Jul 29 17:37:47 CEST 2009 - max@suse.de
+
+- Bugfix release: 1.9.0.
+  * MainFrame: getmenustate method
+  * ScrollFrame: follows much better when contents size changes
+  * ComboBox: Posting, Keyboard, not unique contents return,
+    Mac X11 and aqua, text selection handling.
+  * Listbox: item deletion error
+  * PasswdDlg: disabled password handling
+  * Balloon Help: Placement on borders and on multiple screens
+    (as far as possible)
+
+- Potential incompatibilities:
+  * Option data base entry for "MessageDlg -text" changed
+    from "*MessageDlg.frame.msg.message"
+    to "*MessageDlg.frame.msg.text" 
+
+-------------------------------------------------------------------
+Thu Apr 17 11:01:35 CEST 2008 - max@suse.de
+
+- New version 1.8.0 from CVS as of 2007-10-31.
+- Many bug fixes, new translations and adjustments for Tk 8.5.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun 17 11:44:32 CEST 2005 - max@suse.de
+
+- Moved script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Fri Jan 30 11:01:18 CET 2004 - max@suse.de
+
+- new version: 1.7.0 + some newer fixes from CVS.
+- building as a non-root user.
+
+-------------------------------------------------------------------
+Mon May 26 08:47:26 CEST 2003 - max@suse.de
+
+- new version: 1.6
+
+-------------------------------------------------------------------
+Thu Jun 13 14:04:02 CEST 2002 - max@suse.de
+
+- new version: 1.4.1
+
+-------------------------------------------------------------------
+Mon Feb 25 18:14:02 CET 2002 - max@suse.de
+
+- fixed permissions of library and demo scripts.
+
+-------------------------------------------------------------------
+Mon Jul 23 09:02:20 CEST 2001 - max@suse.de
+
+- new version 1.3.1
+- changed RPM group to Development/Libraries/Tcl
+- using buildroot
+- BuildArchitectures: noarch
+- added missing ./config subdir and it's contents.
+
+-------------------------------------------------------------------
+Sat Dec  9 17:47:04 MET 2000 - nashif@suse.de
+
+- sorted
+
+-------------------------------------------------------------------
+Tue Oct 12 17:06:11 CEST 1999 - max@suse.de
+
+- new package (version 1.2.1)
+

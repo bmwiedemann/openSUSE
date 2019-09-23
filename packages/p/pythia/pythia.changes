@@ -1,0 +1,294 @@
+-------------------------------------------------------------------
+Wed Aug 21 08:06:55 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.243:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase existing patches to apply cleanly.
+
+-------------------------------------------------------------------
+Fri May  3 12:49:40 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.240:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase existing patches to apply cleanly.
+- Disable boost and drop boost BuildRequires as it is no longer
+  needed when compiling against LHAPDF >= 6.2.
+- Remove unnecessary hidden files not cleaned up by build.
+- Cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Apr 30 22:09:08 UTC 2018 - badshah400@gmail.com
+
+- Update to version 8.235:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase pythia-remove-rpaths.patch 
+- Drop bundled header file MixMax.h which is not used by pythia
+  directly and violates GPL copyright.
+- Update License to GPL-2.0-or-later in keeping with upstream
+  change.
+- Use %%license to install COPYING file instead of %%doc.
+- Remove no-longer needed post-install mosifications:
+  + The correct permission for pythia8-config binary is set by
+    install script; stop setting it manually
+  + Rpaths are already removed from the shared libraries; don't
+    execute chrpath to do this. Also drop BuildRequires: chrpath.
+  + Don't remove non-existent backup file.
+
+-------------------------------------------------------------------
+Mon Oct  9 10:20:22 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.230:
+  + Long list of changes, see
+    http://home.thep.lu.se/~torbjorn/Pythia.html.
+- Drop python-dont-force-std-cxx98.patch, incorporated into
+  upstream sources.
+- Rebase existing patches.
+
+-------------------------------------------------------------------
+Thu Aug 31 22:16:11 UTC 2017 - badshah400@gmail.com
+
+- Build with HepMC2-devel < 3, since pythia tests fail when built
+  against HepMC-devel >= 3. 
+
+-------------------------------------------------------------------
+Mon Jul 31 16:21:15 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.226:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase patches for update.
+- Add python-dont-force-std-cxx98.patch to prevent usage of
+  --std=c++98 and instead inherit default compiler flags; using
+  c++98 causes conflicts with dependencies such as fastjet which
+  are built using default compiler std, leading to build failures
+  for openSUSE > 1320 (where fastjet is compiled with --std=c+=14
+  support). Tests in the check section show that this does not
+  have any untoward repercussions.
+
+-------------------------------------------------------------------
+Sun Feb  5 16:42:33 UTC 2017 - badshah400@gmail.com
+
+- Use individual libboost-*-devel packages instead of boost-devel
+  (only for suse_version > 1325).
+
+-------------------------------------------------------------------
+Thu Feb  2 04:05:24 UTC 2017 - bwiedemann@suse.com
+
+- Fix build with rpm-4.13 that creates no .orig file
+
+-------------------------------------------------------------------
+Wed Jan 25 09:46:08 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.223:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+    or locally at
+    /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Pass "-std=c++14" to CXXFLAGS as it is required for building
+  with fastjet support.
+- Move installation of shell env definitions to %install section;
+  this avoids an rpmlint warning and is a better place to do the
+  installation rather than the %build section.
+
+-------------------------------------------------------------------
+Sun Jan  1 13:06:18 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions; only have the full one on the most important
+  package. RPM group corrections.
+
+-------------------------------------------------------------------
+Wed Sep  7 03:45:36 UTC 2016 - badshah400@gmail.com
+
+- Modify pythia-remove-rpaths.patch to make disabling rpaths
+  optional, specified by passing the "--disable-rpath" option to
+  configure. Pass said option at the %build stage to prevent
+  rpath usage in build shared libraries.
+
+-------------------------------------------------------------------
+Fri Sep  2 01:42:56 UTC 2016 - badshah400@gmail.com
+
+- Update to version 8.219:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+    or locally at
+    /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Rebase patches so that they apply cleanly against updated
+  version.
+- Add pythia-remove-rpaths.patch to remove rpath usage when
+  building shared libraries.
+
+-------------------------------------------------------------------
+Mon Feb  1 17:02:25 UTC 2016 - badshah400@gmail.com
+
+- Update to version 8.215:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+    or locally at
+    /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Rebase patches so that they apply cleanly against updated
+  version.
+
+-------------------------------------------------------------------
+Wed Sep 23 21:34:24 UTC 2015 - badshah400@gmail.com
+
+- Update to version 8.212:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+
+-------------------------------------------------------------------
+Fri Sep  4 09:17:48 UTC 2015 - badshah400@gmail.com
+
+- Update pythia-honour-env-cxxflags.patch to really fix the
+  issue (mentioned in previous entry) for all cases.
+
+-------------------------------------------------------------------
+Wed Sep  2 03:22:30 UTC 2015 - badshah400@gmail.com
+
+- Update pythia-honour-env-cxxflags.patch to fix a minor issue
+  with the pythia8-config script when system CXXFLAGS are passed
+  during compilation.
+
+-------------------------------------------------------------------
+Fri Aug 14 23:52:54 UTC 2015 - badshah400@gmail.com
+
+- Fix the location pointed to by PYTHIA8DATA env variable saved in
+  /etc/profile.d/pythia.*; remove %{appname} macro as nothing uses
+  it any more.
+- Use %configure instead of ./configure (remove duplicate
+  specification of "--prefix=PATH").
+- Add pythia-honour-env-cxxflags.patch to allow compilation with
+  CXXFLAGS set by env appended to default compilation flags; this
+  allows the build to honour RPM_OPT_FLAGS.
+- Fix some unusual characters in the descriptions.
+
+-------------------------------------------------------------------
+Fri Aug 14 11:44:09 UTC 2015 - badshah400@gmail.com
+
+- Verify installation by running select bundled tests in a %check
+  section.
+
+-------------------------------------------------------------------
+Fri Aug 14 11:33:44 UTC 2015 - idonmez@suse.com
+
+- Change postinstall scripts to run ldconfig directly 
+
+-------------------------------------------------------------------
+Fri Aug 14 05:18:52 UTC 2015 - badshah400@gmail.com
+
+- Update to version 8.210:  
+  + Bug fix in CKKW-L merging for LHE files, such that the
+    factorization and renormalization scales are set by the SCALUP
+    value if the muf2 and mur2 LHEF3 attributes have not been set,
+    and the user has not set any explicit values; this change
+    restores the PYTHIA 8.1 behaviour.
+  + Various technical improvements in the machinery for hard
+    diffraction.
+  + Correct quark flavour selection when a string spanned directly
+    between two junctions is split up.
+  + Check that SK-I and SK-II colour reconnection machineries only
+    are called for event topologies they are set up to handle.
+  + Bug fixes in partial widths of the W' boson. Results are
+    correct when the W' is a simply rescaled copy of the W, but
+    not for more general couplings. Thanks to Mihail Chizhov.
+  + Minor fix in default location of PDF data files in the
+    constructors. No practical consequence since correct
+    non-default values are used.
+  + Tiny fix in the configure script, so that CXX options
+    containing an equal sign are parsed correctly.
+- Changes from version 8.202 through 8.209:
+  + See /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Add pythia-makefile-destdir-support.patch to enable DESTDIR
+  support in the Makefile; makes configure stage buildroot-free
+  and prevents an ugly BUILDROOT trace in the shlib.
+- Enable additional bindings now that all necessary deps are in
+  Factory; new subpackage: libpythia8lhapdf6.
+- Add BuildRequires: chrpath; required to cleanup rpath in
+  libpythia8lhapdf6.so.
+
+-------------------------------------------------------------------
+Fri Oct 17 06:09:48 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.201:
+  + Undocumented changes
+- Changes from version 8.200:
+  + Long list of changes, see announcement here:
+    https://www.hepforge.org/lists-archive/pythia8-announce/2014/000009.html
+- Packaging changes:
+  + Rename pythia-libs to libpythia8 to satisfy rpmlint (although
+    the package only includes one unversioned shlib)
+  + Documentation files moved from toplevel dir in source to
+    "share" subdir, adapt specfile accordingly
+  + pythia8-config.in is now replaced by the script pythia8-config
+    and does not require any tweaking in specfile to get right
+    paths
+  + configure options changed, allowing to automatically install
+    to libdir where it needed to be manually copied to /usr/lib64
+    for the x86_64 arch
+  + Package new headers directory: %{_includedir}/Pythia8Plugins/
+  + Package new pdf documentation: %{_docdir}/%{name}/pdfdoc/.
+
+-------------------------------------------------------------------
+Thu Sep  4 23:49:37 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.186:
+  + New user hook to help experimentation with colour
+    reconnection, in particular in relation to resonance decays
+  + New set of parameters StringFlav:probQQ1toQQ0join, used to
+    pick diquark spin when two already produced quarks are to be
+    joined into a diquark
+  + Possibility to map the bookkeeping of exotic unresolved
+    incoming beams in Les Houches event files onto neutrino beams,
+    see LesHouches:idRenameBeams; primarily intended for dark
+    matter annihilation
+  + A correction to the graviton (G^*) + parton hard processes
+    (5003-5005) to account for off-shell G^* production; the
+    previous formula assumed the graviton was on-shell and
+    could greatly overestimate the low-mass tail of the G^*.
+  + Bug fixes in examples/JetMatching.h, for uninitialized
+    boolean, and number of partons to match for heavy flavour
+    handling. The former bug was introduced with the new
+    matching schemes in version 8.185 and affected matching to
+    ALPGEN, since no events were rejected
+  + Differentiate the reading of ALPGEN masses, so that vanishing
+    c or b masses in ALPGEN are not unwittingly used where
+    inappropriate; also protect the c and b masses from being set
+    too low in TimeShower and SpaceShower, so that flavour
+    thresholds are not messed up
+  + Reduce number of maximum violation warnings in SpaceShower by
+    leaving some headroom for branching weights
+  + Bug fix that hasVetoed in Pythia.cc was not reset correctly in
+    some specific cases
+  + Bug fix in PartonLevel.cc where a reference could become
+    invalid
+  + Improvements and bug fixes in junction handling
+  + Bug fix to not reuse colour indices in double diffraction
+  + Bug fix in the calculation of the average mass threshold of
+    open decay channels of a resonance; reduced
+    ResonanceWidths::MASSMIN parameter value.
+  + Correct typo in left-right symmetry documentation
+  + Other minor fixes.
+
+-------------------------------------------------------------------
+Sat Mar 15 21:21:44 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.185:
+  + This is a bug-fix release, see
+    http://www.hepforge.org/lists-archive/pythia8-announce/2014/000007.html
+    for a summary of changes.
+
+-------------------------------------------------------------------
+Sat Feb 22 05:10:04 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.183:
+  + This is a bug-fix release, see
+    http://www.hepforge.org/lists-archive/pythia8-announce/2014/000006.html
+    for a list of changes.
+
+-------------------------------------------------------------------
+Tue Dec 10 23:32:03 UTC 2013 - badshah400@gmail.com
+
+- Initial version
+

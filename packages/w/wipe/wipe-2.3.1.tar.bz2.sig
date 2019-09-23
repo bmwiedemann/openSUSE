@@ -1,0 +1,7 @@
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+iEYEABECAAYFAkrt+egACgkQ8bTfnhV0Hs6RYwCeKnKQ5YMzcpAZqSc/M0HYImSJ
+v3gAn24YkQ3uPoO7r5lHppnYEtekHt9s
+=bpo5
+-----END PGP SIGNATURE-----

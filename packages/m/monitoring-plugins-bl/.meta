@@ -1,0 +1,5 @@
+<package name="monitoring-plugins-bl" project="openSUSE:Factory">
+  <title>foo</title>
+  <description></description>
+  <devel project="server:monitoring" package="monitoring-plugins-bl"/>
+</package>

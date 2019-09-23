@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>851e55da5afe7262388a2ecf991e9028</srcmd5>
+    <version>1.2.0</version>
+    <time>1317829006</time>
+    <user>lrupp</user>
+    <comment>Needed by frei0r-plugins available in GNOME:Apps, which will be submitted after this.</comment>
+    <requestid>85477</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>851e55da5afe7262388a2ecf991e9028</srcmd5>
+    <version>1.2.0</version>
+    <time>1319181893</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7fff7fb27f753cd2883a9285a7965dff</srcmd5>
+    <version>1.2.0</version>
+    <time>1323191457</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91404e7da62e0051bfd24b57115e7148</srcmd5>
+    <version>1.4.0</version>
+    <time>1339839964</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4.0
+  + Brings a generic metadata container
+- Remove gavl-1.2.0-overflow.patch, applied upstream
+- Add --without-cpuflags to %configure call</comment>
+    <requestid>125146</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>91404e7da62e0051bfd24b57115e7148</srcmd5>
+    <version>1.4.0</version>
+    <time>1340183347</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>0e142d17b12a86bd612ee75f34a1ba4f</srcmd5>
+    <version>1.4.0</version>
+    <time>1343661155</time>
+    <user>namtrac</user>
+    <comment>- fixed the -lm detection to actually work in --as-needed
+  scenarios (forwarded request 129097 from msmeissn)</comment>
+    <requestid>129249</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>0e142d17b12a86bd612ee75f34a1ba4f</srcmd5>
+    <version>1.4.0</version>
+    <time>1359108901</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>0e142d17b12a86bd612ee75f34a1ba4f</srcmd5>
+    <version>1.4.0</version>
+    <time>1379662383</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>4016160653ad3e765378c6b2fdbe2533</srcmd5>
+    <version>1.4.0</version>
+    <time>1398923467</time>
+    <user>coolo</user>
+    <comment>- Run autogen.sh instead of autoconf to fix build in packman 11.4
+
+ 11.4 Evergreen and all that... (forwarded request 231140 from olh)</comment>
+    <requestid>231615</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>4016160653ad3e765378c6b2fdbe2533</srcmd5>
+    <version>1.4.0</version>
+    <time>1409300919</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f3918ac736a3a5aacdffde854642efef</srcmd5>
+    <version>1.4.0rsvn4256</version>
+    <time>1425377533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288265</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>be31613e1694576229a2f20d6daf84e4</srcmd5>
+    <version>1.4.0rsvn4256</version>
+    <time>1425891788</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289247</requestid>
+  </revision>
+</revisionlist>

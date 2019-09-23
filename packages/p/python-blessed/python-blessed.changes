@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Sep  5 13:40:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Set pytest maximum version.
+
+-------------------------------------------------------------------
+Wed Mar  6 13:51:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.15.0:
+  * no upstream changelog
+- Make sure tests are run
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Jul 17 13:29:00 UTC 2018 - tchvatal@suse.com
+
+- Tox is not used when building so no need to depend on it
+
+-------------------------------------------------------------------
+Wed May  9 03:18:05 UTC 2018 - toddrme2178@gmail.com
+
+- Add license tag
+
+-------------------------------------------------------------------
+Fri Oct 20 16:13:50 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f63015d278d26e9e219702b0be70f2f1</srcmd5>
+    <version>1.2.5</version>
+    <time>1168903507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>f6e92a7336138c8544d13e605ba2f85b</srcmd5>
+    <version>1.2.5</version>
+    <time>1177274782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f9667b59e33331c4e10679b1f95ec9e</srcmd5>
+    <version>1.2.14</version>
+    <time>1185494346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="112">
+    <srcmd5>c55442e95305d3303d7f4d6b07fbe09d</srcmd5>
+    <version>1.2.14</version>
+    <time>1211539454</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e78888981fae82538ac7029314e8317</srcmd5>
+    <version>1.2.15</version>
+    <time>1219011392</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5e78888981fae82538ac7029314e8317</srcmd5>
+    <version>1.2.15</version>
+    <time>1219011392</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>2719f7ee9d5ce303739bc2e46e976cc7</srcmd5>
+    <version>1.2.15</version>
+    <time>1268924934</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>2719f7ee9d5ce303739bc2e46e976cc7</srcmd5>
+    <version>1.2.15</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>2719f7ee9d5ce303739bc2e46e976cc7</srcmd5>
+    <version>1.2.15</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>2719f7ee9d5ce303739bc2e46e976cc7</srcmd5>
+    <version>1.2.15</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>2719f7ee9d5ce303739bc2e46e976cc7</srcmd5>
+    <version>1.2.15</version>
+    <time>1319182177</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d090ba3558185ea09dc73ae66d1102f4</srcmd5>
+    <version>1.2.17</version>
+    <time>1323961605</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 1.2.17:
+  * minor fixes
+  * potrace support improved
+- license update: GPL-2.0
+  Various files are GPL-2.0 (i.e. only). Use SPDX format
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>95487</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d090ba3558185ea09dc73ae66d1102f4</srcmd5>
+    <version>1.2.17</version>
+    <time>1340183698</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d090ba3558185ea09dc73ae66d1102f4</srcmd5>
+    <version>1.2.17</version>
+    <time>1359109443</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>d090ba3558185ea09dc73ae66d1102f4</srcmd5>
+    <version>1.2.17</version>
+    <time>1379663285</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>d090ba3558185ea09dc73ae66d1102f4</srcmd5>
+    <version>1.2.17</version>
+    <time>1409301892</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>24773f14914cdf344db33d9590c87a27</srcmd5>
+    <version>1.2.18</version>
+    <time>1430595378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.18
+  * configure.in (PYTHON): bump version.
+  * COPYING: GPL.
+  * GNUmakefile.in (FILES): add GPL
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Update dependencies
+- Remove upstreamed/obsolete patches
+  * mftrace-python-compile.patch
+  * mftrace-rpm-opt-flags.patch</comment>
+    <requestid>304347</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>83532abb0d13521e372075862a661b6b</srcmd5>
+    <version>1.2.18</version>
+    <time>1540988425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645531</requestid>
+  </revision>
+</revisionlist>

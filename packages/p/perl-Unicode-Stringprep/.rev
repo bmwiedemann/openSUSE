@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f7b07f3de314edb4d22cbadf289c2db</srcmd5>
+    <version>1.103</version>
+    <time>1330364105</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>104740</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1f7b07f3de314edb4d22cbadf289c2db</srcmd5>
+    <version>1.103</version>
+    <time>1340183949</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1f7b07f3de314edb4d22cbadf289c2db</srcmd5>
+    <version>1.103</version>
+    <time>1359109842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>1f7b07f3de314edb4d22cbadf289c2db</srcmd5>
+    <version>1.103</version>
+    <time>1379663910</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a8e4bdaf6ff44e34887a4f9313e3b010</srcmd5>
+    <version>1.104</version>
+    <time>1406360528</time>
+    <user>coolo</user>
+    <comment>- updated to 1.104
+   - FIXES: #72615 faulty data in Build.PL causes a lack of
+     meta files, which breaks carton.</comment>
+    <requestid>242344</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a8e4bdaf6ff44e34887a4f9313e3b010</srcmd5>
+    <version>1.104</version>
+    <time>1409302559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41458a7d136e887c148db42a60a0f912</srcmd5>
+    <version>1.105</version>
+    <time>1410795692</time>
+    <user>coolo</user>
+    <comment>- updated to 1.105
+    - FIXES: #98106: [PATCH] Silence &quot;Redundant argument in sprintf&quot;
+      warnings (reported by fraserbn@*****.com)</comment>
+    <requestid>249267</requestid>
+  </revision>
+</revisionlist>

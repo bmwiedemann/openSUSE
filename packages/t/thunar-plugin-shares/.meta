@@ -1,0 +1,7 @@
+<package name="thunar-plugin-shares" project="openSUSE:Factory">
+  <title>Thunar Plugin for Sharing files using Samba</title>
+  <description>The Thunar Shares Plugin allows for quickly sharing a directory using Samba
+from within Thunar without requiring root access.</description>
+  <devel project="X11:xfce" package="thunar-plugin-shares"/>
+  <url>http://thunar.xfce.org/plugins.html#thunar-shares-plugin</url>
+</package>

@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Wed Sep  5 10:59:58 UTC 2018 - nadvornik@suse.com
+
+- version 0.12.1536145027.be6a3dd
+- return non-zero exit code if there are possible migrations, but
+  none is mirrored on registration server (bsc#1107238)
+- check for closed stdin (bsc#1100137)
+
+-------------------------------------------------------------------
+Thu Jun 21 08:48:18 UTC 2018 - nadvornik@suse.com
+
+- adjusted packaging of changes file
+
+-------------------------------------------------------------------
+Tue Jun 12 13:20:24 CEST 2018 - kukuk@suse.de
+
+- implement offline migration
+- require SUSEConnect >= 0.3.10
+
+-------------------------------------------------------------------
+Fri Mar  9 11:37:00 UTC 2018 - nadvornik@suse.com
+
+- version 0.11.1520597355.bcf74ad
+  - more changes to get --root working
+
+-------------------------------------------------------------------
+Thu Jan 25 09:54:05 UTC 2018 - nadvornik@suse.com
+
+- version 0.11.1516874532.fa20262
+  - add --no-snapshots and --root options
+
+-------------------------------------------------------------------
+Wed Aug 31 09:05:47 UTC 2016 - nadvornik@suse.com
+
+- use the same snapper commandline as yast2 migration (bsc#984324)
+- version 0.10
+
+-------------------------------------------------------------------
+Mon Apr 18 15:32:36 UTC 2016 - nadvornik@suse.com
+
+- better help for --download-only (bsc#973886)
+- call rollback only if release package can't be installed
+- better error messages (bsc#975485)
+- added man page (bsc#972688)
+- version 0.9
+
+-------------------------------------------------------------------
+Mon Apr  4 11:51:44 UTC 2016 - nadvornik@suse.com
+
+- install release packages and call SUSEConnect
+  rollback before getting migration target
+  (fate#320533)
+
+-------------------------------------------------------------------
+Tue Dec 15 14:15:55 UTC 2015 - nadvornik@suse.com
+
+- do not add --recommends by default (bsc#959134)
+
+-------------------------------------------------------------------
+Fri Nov 27 11:42:03 UTC 2015 - stephan.barth@suse.com
+
+- Extended Supplements from zypper to zypper and SUSEConnect to improve
+  handling of dependencies
+
+-------------------------------------------------------------------
+Thu Nov 26 13:16:00 UTC 2015 - stephan.barth@suse.com
+
+- Added Supplements for zypper to ensure automatic installation
+
+-------------------------------------------------------------------
+Tue Oct 20 14:25:02 UTC 2015 - nadvornik@suse.com
+
+- version 0.8
+- use stable sort for product list returned by scc
+
+-------------------------------------------------------------------
+Fri Oct  9 09:11:02 UTC 2015 - nadvornik@suse.com
+
+- fixed obsoleted service check to work with SMT
+
+-------------------------------------------------------------------
+Thu Oct  1 15:07:57 UTC 2015 - nadvornik@suse.com
+
+- version 0.7
+- backup of /etc/zypp (bsc#946858)
+- do not create extra snapshots (bnc#947270)
+- correctly handle zypper failures (bnc#946750)
+
+-------------------------------------------------------------------
+Sun Sep 20 11:23:51 UTC 2015 - nadvornik@suse.com
+
+- version 0.6
+- better exception handling (bsc#946003, bsc#945681, bsc#946206)
+- sync output (bnc#945619)
+- use --no-refresh where possible (bsc#945462)
+- rollback (bsc#941458)
+
+-------------------------------------------------------------------
+Thu Sep 10 12:17:05 UTC 2015 - nadvornik@suse.com
+
+- version 0.5
+- use --updatestack-only (bsc#945030)
+
+-------------------------------------------------------------------
+Thu Aug 27 14:23:15 UTC 2015 - nadvornik@suse.com
+
+- version 0.4
+- handle products with flag 'available'
+- install patches, restart after updates (bsc#943267)
+- use long product names
+- sort product list, put installed products at the end (bsc#943269)
+
+-------------------------------------------------------------------
+Tue Aug 18 13:25:05 UTC 2015 - nadvornik@suse.com
+
+- version 0.3
+- handle api exceptions (bsc#940771)
+- create snapshots (bsc#941460)
+- use releasever (bsc#941565)
+- do not print internal product name (bsc#941630)
+
+-------------------------------------------------------------------
+Tue Aug  4 12:51:49 UTC 2015 - nadvornik@suse.com
+
+- version 0.2
+- disable obsolete repos (fate#319140)
+- require suse-connect >= 0.2.20
+
+-------------------------------------------------------------------
+Tue Jun 23 11:38:57 UTC 2015 - nadvornik@suse.com
+
+- new package
+

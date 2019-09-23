@@ -1,0 +1,67 @@
+From 4d04a693eb507540542b5a7005892c21f49afb82 Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Tue, 26 Mar 2013 18:14:50 +0100
+Subject: [PATCH 03/12] lu: perform lba range check before 0 byte fastpath
+
+0 byte IOs are subject to the same lba checks as normal IOs.
+---
+ src/istgt_lu_disk.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git src/istgt_lu_disk.c src/istgt_lu_disk.c
+index 9b58da3..5ff5b09 100644
+--- src/istgt_lu_disk.c
++++ src/istgt_lu_disk.c
+@@ -4058,12 +4058,6 @@ istgt_lu_disk_lbread(ISTGT_LU_DISK *spec, CONN_Ptr conn __attribute__((__unused_
+ 	uint64_t nbytes;
+ 	int64_t rc;
+ 
+-	if (len == 0) {
+-		lu_cmd->data = NULL;
+-		lu_cmd->data_len = 0;
+-		return 0;
+-	}
+-
+ 	maxlba = spec->blockcnt;
+ 	llen = (uint64_t) len;
+ 	blen = spec->blocklen;
+@@ -4079,6 +4073,12 @@ istgt_lu_disk_lbread(ISTGT_LU_DISK *spec, CONN_Ptr conn __attribute__((__unused_
+ 		return -1;
+ 	}
+ 
++	if (len == 0) {
++		lu_cmd->data = NULL;
++		lu_cmd->data_len = 0;
++		return 0;
++	}
++
+ 	if (nbytes > lu_cmd->iobufsize) {
+ 		ISTGT_ERRLOG("nbytes(%zu) > iobufsize(%zu)\n",
+ 		    (size_t) nbytes, lu_cmd->iobufsize);
+@@ -4117,11 +4117,6 @@ istgt_lu_disk_lbwrite(ISTGT_LU_DISK *spec, CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cm
+ 	uint64_t nbytes;
+ 	int64_t rc;
+ 
+-	if (len == 0) {
+-		lu_cmd->data_len = 0;
+-		return 0;
+-	}
+-
+ 	maxlba = spec->blockcnt;
+ 	llen = (uint64_t) len;
+ 	blen = spec->blocklen;
+@@ -4137,6 +4132,11 @@ istgt_lu_disk_lbwrite(ISTGT_LU_DISK *spec, CONN_Ptr conn, ISTGT_LU_CMD_Ptr lu_cm
+ 		return -1;
+ 	}
+ 
++	if (len == 0) {
++		lu_cmd->data_len = 0;
++		return 0;
++	}
++
+ 	if (nbytes > lu_cmd->iobufsize) {
+ 		ISTGT_ERRLOG("nbytes(%zu) > iobufsize(%zu)\n",
+ 		    (size_t) nbytes, lu_cmd->iobufsize);
+-- 
+2.1.2
+

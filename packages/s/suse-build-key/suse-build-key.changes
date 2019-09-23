@@ -1,0 +1,266 @@
+-------------------------------------------------------------------
+Fri Jan 11 15:00:10 UTC 2019 - meissner@suse.com
+
+- add PTF key to the key directory, so it does not get stripped 
+  out when using --exclude-docs (bsc#1044232)
+
+-------------------------------------------------------------------
+Wed Mar 28 14:56:15 UTC 2018 - meissner@suse.com
+
+- created a new security@suse.de communication key. (bsc#1082022)
+- extended the PTF key and the SLE10 build@suse.de key. (bsc#1085512)
+
+-------------------------------------------------------------------
+Wed Dec  7 16:35:05 UTC 2016 - meissner@suse.com
+
+- extend the build@suse.de product key. (bsc#1014151)
+
+  pub  2048R/39DB7C82 2013-01-31 [expires: 2020-12-06]
+  uid                            SuSE Package Signing Key <build@suse.de>
+
+-------------------------------------------------------------------
+Tue Nov 29 12:54:46 CET 2016 - ro@suse.de
+
+- use dumpsigs script from openSUSE to merge code 
+
+-------------------------------------------------------------------
+Thu Oct  2 12:45:05 UTC 2014 - meissner@suse.com
+
+- renamed security_at_suse_de.asc to security_at_suse_de_old.asc
+- security_at_suse_de.asc: new 4096 bit RSA key.
+  pub  4096R/317CD502 2014-10-02 SUSE Security Team <security@suse.de>
+  bnc#899509
+
+-------------------------------------------------------------------
+Fri Aug 29 08:28:03 UTC 2014 - meissner@suse.com
+
+- Went to new method again.
+  - suse-build-key.gpg blob dropped
+  - ship seperate files
+
+-------------------------------------------------------------------
+Mon Feb 10 09:57:50 UTC 2014 - meissner@suse.com
+
+- create suse-build-key.gpg during build.
+- Remove old keys from keyring. (fate#314767)
+  Keys currently inside the RPM trusted keyring:
+  - pub  2048R/39DB7C82 SuSE Package Signing Key <build@suse.de>
+  - pub  2048R/50A3DD1C SuSE Package Signing Key (reserve key) <build@suse.de>
+- Various keys are moved to the documentation area
+  (/usr/share/doc/packages/suse-build-key)
+  - build-at-suse-sle11.asc: the old SUSE Linux Enterprise 11 key.
+    if SUSE Linux Enterprise 11 packages need to be verified on
+    a SUSE Linux Enterprise 12 system.
+  - suse_ptf_key.asc: The suse ptf key. For verification of provided PTFs.
+  - security_at_suse_de.asc: Use only for email encryption and
+    verification purposes when contacting our security contact address
+    security@suse.de
+
+-------------------------------------------------------------------
+Mon Jan 13 15:01:24 UTC 2014 - meissner@suse.com
+
+- reverted to contain the fullkeyring build SLE12 Alpha.
+- also list the old sle11 build@suse.de key temporary
+
+-------------------------------------------------------------------
+Thu Jan  9 12:29:53 UTC 2014 - meissner@suse.com
+
+- Merged over logic from openSUSE-build-key.
+- Got rid of default importing into roots keyring.
+- Removed some old keys.
+- Clarify that security@suse.de is a email only key
+- PTF key is supplied also as %doc, to not be default
+  imported.
+- Keys currently inside:
+  - pub  2048R/39DB7C82 SuSE Package Signing Key <build@suse.de>
+  - pub  2048R/50A3DD1C SuSE Package Signing Key (reserve key) <build@suse.de>
+  - pub  1024D/B37B98A9 SUSE PTF Signing Key <support@suse.com>
+  - pub  2048R/3D25D3D9 SuSE Security Team <security@suse.de>
+
+-------------------------------------------------------------------
+Thu Jan 31 17:11:08 CET 2013 - ro@suse.de
+
+- added future signing key for SLES (fate#314767) (bnc#801055)
+  using 2048 bit rsa key 
+
+-------------------------------------------------------------------
+Mon Jan 14 01:55:36 CET 2013 - ro@suse.de
+
+- added reserve key for SLES (fate#312896)
+  50A3DD1C SuSE Package Signing Key (reserve key) <build@suse.de>
+  valid until (2017-01-13) 
+
+-------------------------------------------------------------------
+Sun Oct 21 23:03:01 CEST 2012 - ro@suse.de
+
+- export keys to single files in /usr/lib/rpm/gnupg/keys 
+
+-------------------------------------------------------------------
+Mon Dec 12 12:02:49 CET 2011 - ro@suse.de
+
+- reduced key list. remaining keys:
+  307E3D54 SuSE Package Signing Key <build@suse.de>
+  3D25D3D9 SuSE Security Team <security@suse.de>
+  9C800ACA SuSE Package Signing Key <build@suse.de>
+  B37B98A9 SUSE PTF Signing Key <support@suse.com> 
+
+-------------------------------------------------------------------
+Fri Jan 28 13:02:42 CET 2011 - ro@suse.de
+
+- if we have to set $HOME, we also have to export the variable
+  (bnc#665912) 
+
+-------------------------------------------------------------------
+Tue May  4 16:11:41 CEST 2010 - ro@suse.de
+
+- updated keys: (bnc#600157,bnc#599167)
+  - 307E3D54 build@suse.de "SuSE Package Signing Key" (2014-05-03)
+  - 9C800ACA build@suse.de "SuSE Package Signing Key" (2014-05-03)
+  - B37B98A9 support@suse.com "SUSE PTF Signing Key" (2014-05-03)
+  - 7E2E3B05 novell-provo-build@novell.com "Novell Provo Build"
+    (2014-05-06)
+- added keys:
+  - 1D061A62 support@novell.com
+    "build@novell.com (Novell Linux Products)" (2014-05-06)
+
+-------------------------------------------------------------------
+Fri Oct 31 14:28:18 CET 2008 - ro@suse.de
+
+- added ptf key, expiring 2010-07-02
+
+-------------------------------------------------------------------
+Mon Jun  2 15:45:33 CEST 2008 - ro@suse.de
+
+- update keys again: for collaboration with rpm, the current
+  self-signature needs to be the first signature found in a key 
+
+-------------------------------------------------------------------
+Mon May  5 18:31:20 CEST 2008 - ro@suse.de
+
+- updated keys
+  9C800ACA,8495160C,307E3D54: extend expiration by 2 years
+  until 2010-05-05
+  7E2E3B05: extend expiration by 2 years until 2010-05-24 
+
+-------------------------------------------------------------------
+Mon Mar 19 16:49:05 CET 2007 - rguenther@suse.de
+
+- merge suse-build-key keyring to roots gpg pubring
+
+-------------------------------------------------------------------
+Mon May 29 17:20:45 CEST 2006 - ro@suse.de
+
+- added new official provo dsa autobuild key ID 7E2E3B05
+
+-------------------------------------------------------------------
+Fri May 19 14:02:59 CEST 2006 - ro@suse.de
+
+- removed unused provo autobuild key
+- added new official provo autobuild key ID A1912208 
+
+-------------------------------------------------------------------
+Thu Apr 20 12:47:18 CEST 2006 - ro@suse.de
+
+- add dumpsigs script here to have _one_ place for the script 
+
+-------------------------------------------------------------------
+Fri Mar 31 16:53:02 CEST 2006 - ro@suse.de
+
+- added build@suse.de rsa key ID 307E3D54
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 18 17:47:07 CEST 2005 - ro@suse.de
+
+- use correct provo autobuild key 
+
+-------------------------------------------------------------------
+Tue Oct 18 12:28:04 CEST 2005 - ro@suse.de
+
+- added provo autobuild signing key (#128128)
+- removed jds key 
+
+-------------------------------------------------------------------
+Fri May 27 14:47:30 CEST 2005 - mls@suse.de
+
+- added mktemp to PreReqs [#86177]
+
+-------------------------------------------------------------------
+Thu Apr 28 11:45:36 CEST 2005 - ro@suse.de
+
+- added JDS public key (15c17deb) 
+
+-------------------------------------------------------------------
+Tue Jan 25 18:10:26 CET 2005 - ro@suse.de
+
+- added OES public key (0dfb3188)
+
+-------------------------------------------------------------------
+Tue Jun 22 12:28:07 CEST 2004 - ro@suse.de
+
+- updated build key (expiration changed to 2008-06-21) (#42326)
+
+-------------------------------------------------------------------
+Tue Feb 24 12:19:49 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Tue Sep  9 18:51:02 CEST 2003 - ro@suse.de
+
+- ignore return code from first gpg calls
+
+-------------------------------------------------------------------
+Tue Sep  9 18:23:07 MEST 2003 - draht@suse.de
+
+- call gpg twice without any arguments for proper initialization
+  inside postinstall
+
+-------------------------------------------------------------------
+Tue Sep  9 17:43:55 MEST 2003 - draht@suse.de
+
+- use temp file instead of pipe due to resource race between two
+  instances of gpg in %post.
+
+-------------------------------------------------------------------
+Thu Sep  5 04:56:32 CEST 2002 - draht@suse.de
+
+- package now installs key from package-owned file into the rpm
+  pubring in %post to allow other key packages to add their keys.
+
+-------------------------------------------------------------------
+Tue Aug 20 10:46:52 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Fri Jul 26 09:50:14 CEST 2002 - kukuk@suse.de
+
+- Change Provides from suse-build-key to build-key
+
+-------------------------------------------------------------------
+Thu Feb 21 00:10:52 MET 2002 - draht@suse.de
+
+- directory permission problem: 644 -> 755.
+
+-------------------------------------------------------------------
+Mon Feb 18 12:16:34 CET 2002 - ro@suse.de
+
+- moved to /usr/lib/rpm/gnupg/pubring.pgp
+  rpm needs a directory as gpg_path and will use pubring.gpg
+  in that directory 
+
+-------------------------------------------------------------------
+Wed Feb 13 20:45:46 MET 2002 - draht@suse.de
+
+- initial package. Contains 
+  - pub  2048R/3D25D3D9 1999-03-06 SuSE Security Team <security@suse.de>
+
+  - pub  1024D/9C800ACA 2000-10-19 SuSE Package Signing Key <build@suse.de>
+  - sub  2048g/8495160C 2000-10-19 [expires: 2006-02-12]
+
+

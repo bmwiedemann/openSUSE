@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08d54eae32ec788c45f8f6918139158c</srcmd5>
+    <version>0.1.2</version>
+    <time>1415118591</time>
+    <user>coolo</user>
+    <comment>New package, which is required to build the forthcoming new versions of kdumpid.</comment>
+    <requestid>259491</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48e12083c91a71bbf6ba71c5b381a181</srcmd5>
+    <version>0.1.3</version>
+    <time>1416048116</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261606</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a48fc77d2f89e94ed99c3f3500b683d</srcmd5>
+    <version>0.1.4</version>
+    <time>1417809899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264175</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>432a2ecb5e4a7edd4fbd2a52a1500ebb</srcmd5>
+    <version>0.1.4</version>
+    <time>1440658609</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325738</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a5b8d6ff9943a09bfccd52f3e69de2a7</srcmd5>
+    <version>0.1.5</version>
+    <time>1448720356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346373</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>26946b2f3c53ed64ed670ee1cdae833c</srcmd5>
+    <version>0.1.7</version>
+    <time>1449687265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347949</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d868ccd0d00dabb70fdca6df902847a1</srcmd5>
+    <version>0.2.0</version>
+    <time>1454491192</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to 0.2.0</comment>
+    <requestid>357211</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2ff50741bf99efac615aeaf541f63582</srcmd5>
+    <version>0.3.0</version>
+    <time>1496225751</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to libkdumpfile-0.3.0
+  * API and ABI changed (see NEWS)
+  * Address translation routines moved into `libaddrxlat` (can be
+    used without a dump file).
+  * Python bindings.
+  * Comprehensive test suite for `libaddrxlat`.
+  * Caching.
+  * ...and more!</comment>
+    <requestid>494937</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a584363ae2500ab3136c68c20dacf3be</srcmd5>
+    <version>0.3.0</version>
+    <time>1497274427</time>
+    <user>dimstar_suse</user>
+    <comment>Fix RPM Group</comment>
+    <requestid>502645</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b56d51b1379f446893b22a4cd1ed8b0b</srcmd5>
+    <version>0.3.0</version>
+    <time>1556621925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697355</requestid>
+  </revision>
+</revisionlist>

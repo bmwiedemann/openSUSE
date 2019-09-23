@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18455871d56018f63aac8b2584ae4efc</srcmd5>
+    <version>3.06</version>
+    <time>1551455221</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.06
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+  3.06 2019-02-14T18:24:29+0100
+   - Fix coercing integers and numbers #147
+   - Changed recursion guard to not keeping tracking of plain scalars #147
+- updated to 3.05
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+- Add missing BuildRequires for tests
+- Skip failing id-keyword-draft4.t
+</comment>
+    <requestid>679768</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b596969d09f0633b39c95acdb7d70931</srcmd5>
+    <version>3.07</version>
+    <time>1554458717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691644</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a18a5b5f81778872dfb7ab9d37c645c7</srcmd5>
+    <version>3.08</version>
+    <time>1554712809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692128</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7de6d1e60242862896d191ea36ce1602</srcmd5>
+    <version>3.09</version>
+    <time>1557142041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700693</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>19836f2ae13a6d14dd5926c0e0b01b1f</srcmd5>
+    <version>3.10</version>
+    <time>1557264005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701309</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1d99438a98d25c35e298934c34b197f7</srcmd5>
+    <version>3.11</version>
+    <time>1557751899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>52916aa7c20b136c09f42c112f3dbd80</srcmd5>
+    <version>3.14</version>
+    <time>1565695151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722200</requestid>
+  </revision>
+</revisionlist>

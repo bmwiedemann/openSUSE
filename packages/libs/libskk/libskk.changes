@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Thu Mar  8 19:15:45 UTC 2018 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use
+- Update summaries
+
+-------------------------------------------------------------------
+Thu Mar  8 14:51:13 UTC 2018 - ftake@geeko.jp
+
+- Update to 1.0.3 (1.2.0+git20171110+1.0.3)
+  + Fix hiragana to katakana conversion in abbrev mode [#41]
+  + Make "commit-unhandled" actually commit in abbrev mode [#39]
+  + Avoid redundant dictionary lookup in non-numeric conversion
+    cases [#36]
+  + Fix KZIK rules [#35, #37]
+  + Add command for sticky-shift [#32]
+  + Don't crash when a rule has no default metadata [#31]
+  + Bind C-j to go back to hiragana in AZIK latin [#30]
+  + Build fixes [#42, #43]
+
+-------------------------------------------------------------------
+Mon Sep  7 11:10:59 UTC 2015 - dimstar@opensuse.org
+
+- Add libskk-typlib-dependencies.patch: Fix dependency between
+  Skk.typelib and the library.
+- Move autogen.sh to build phase, where it belongs.
+
+-------------------------------------------------------------------
+Tue Aug 25 11:55:21 UTC 2015 - opensuse-packaging@opensuse.org
+
+- Update to version 1.2.0+git20150413.be6e20b:
+  + Issue #33. Fix initial state of okuri ari recursive edit.
+  + Add test for Issue #33
+  + Dictionary switch just needs one press (two before), but if
+    there's number two press is still needed.
+  + rules: inherit KZIK keymap from the default keymap
+  + Inherit default/{latin,wide-latin} (KZIK)
+
+-------------------------------------------------------------------
+Wed Oct 15 06:30:57 UTC 2014 - hillwood@linuxfans.org
+
+- Update to 1.0.2
+  * Migrate to libgee 0.8 from 0.6.
+  * rules: new ACT09 rule contributed by Naoki Mizuno.
+  * Consume key event for "commit" command. 
+    Use "commit-unhandled" for the previous behavior.
+  * Comsume C-j in abbrev mode.
+ 
+
+-------------------------------------------------------------------
+Sat Oct 26 16:14:35 UTC 2013 - i@marguerite.su
+
+- add Requires: skkdic and skkdic-extra
+- without dictionaries, this library is actually useless
+
+-------------------------------------------------------------------
+Wed Oct  9 12:07:11 CST 2013 - hillwood@linuxfans.org
+
+- disable introspection
+
+-------------------------------------------------------------------
+Thu Sep 26 08:36:06 UTC 2013 - i@marguerite.su
+
+- update version 1.0.1
+ * Cancel okuri-ari conversion only if there is no candidate (Issue#23).
+ * Allow clients to populate lookup table before setting cursor pos
+   (ibus-skk Issue#51).
+ * rules: inherit AZIK keymap from the default keymap (Issue#22).
+ * Don't use type-punning when converting bytes to uint32 (Issue#20).
+
+-------------------------------------------------------------------
+Tue Sep 25 23:40:46 CST 2012 - hillwood@linuxfans.org
+
+- fix Requires error for typelib-1_0-Skk-1_0
+
+-------------------------------------------------------------------
+Mon Sep 24 11:50:19 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  See COPYING
+
+-------------------------------------------------------------------
+Tue Sep 18 11:56:24 CST 2012 - hillwood@linuxfans.org
+
+- Initial package 1.0.0.
+ * Make sure to create parent directory of user-dict (Debian bug#685745).
+ * Clear output and preedit on context reset.
+ * Fix header include in tests (Issue#19).
+

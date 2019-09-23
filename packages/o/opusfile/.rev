@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38ed4b40b5ebf9daa92887e237bacfdd</srcmd5>
+    <version>0.5</version>
+    <time>1392790928</time>
+    <user>coolo</user>
+    <comment>We have libopus and opus-tools. This is the missing part.
+Used, at least, by qmmp.</comment>
+    <requestid>222215</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>38ed4b40b5ebf9daa92887e237bacfdd</srcmd5>
+    <version>0.5</version>
+    <time>1409302078</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0cc8f4b70d62ea4a214b7a7e4f3c65a</srcmd5>
+    <version>0.6</version>
+    <time>1418978329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265814</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92ad669ed014e99b8b0c3002bab41289</srcmd5>
+    <version>0.7</version>
+    <time>1452263041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352577</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d358d203bc400042b2c0bcbcaf7fec5</srcmd5>
+    <version>0.8</version>
+    <time>1473349132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424389</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7bb146e7b1f3f8fefe376a7572f42a2e</srcmd5>
+    <version>0.9</version>
+    <time>1510665127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540138</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f344612e020c4978dfc381dd74554c88</srcmd5>
+    <version>0.10</version>
+    <time>1514840708</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>559961</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>31f1aff9f27242f9f1cb8bed5678c2ee</srcmd5>
+    <version>0.11</version>
+    <time>1537971098</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.11:
+  * Fix two potential integer overflows. (These were not security-critical unless the compiler took the opportunity provided by the undefined behavior to format your hard drive.)
+  * Allow JPEGs in METADATA_BLOCK_PICTURE tags to include EXIF data.
+  * A few warning fixes for gcc 8.
+  * Make opus_tags_copy return OP_EFAULT on failure instead of returning success.
+  * Various integration and testing environment improvements.</comment>
+    <requestid>636855</requestid>
+  </revision>
+</revisionlist>

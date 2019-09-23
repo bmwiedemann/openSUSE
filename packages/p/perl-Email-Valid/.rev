@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b0c9221c56130ad617325c031d24cf3</srcmd5>
+    <version>0.184</version>
+    <time>1311148925</time>
+    <user>saschpe</user>
+    <comment>Depency from perl-HTML-FormHandler which is a depency for shutter</comment>
+    <requestid>76092</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acc329dc25d2f9f5a59634bd2a614d95</srcmd5>
+    <version>0.184</version>
+    <time>1311148939</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76092
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>acc329dc25d2f9f5a59634bd2a614d95</srcmd5>
+    <version>0.184</version>
+    <time>1319182263</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>264c882e3a56a84365fe6762d8bf3db5</srcmd5>
+    <version>0.185</version>
+    <time>1323185042</time>
+    <user>coolo</user>
+    <comment>- update to 0.185
+    do not die in t/valid.t when testing for working DNS
+    avoid a pointless warning
+    check TLD validity before MX records
+    reject addresses with non-ASCII characters</comment>
+    <requestid>95101</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>95a41fe162caeda9ba4647c68b53f8e1</srcmd5>
+    <version>0.185</version>
+    <time>1323193249</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e46144056a6d728638fd9e40118761d</srcmd5>
+    <version>0.187</version>
+    <time>1330364086</time>
+    <user>coolo</user>
+    <comment>- updated to 0.187
+    addresses in the form rjbs@[1.2.3.4] are now (correctly) considered
+    valid; this can be disabled with the -allow_ip option
+    (this resolves RT#48398)
+    check email address length and localpart length (thanks, Steve
+    Bertrand!)
+    use blessed($x) instead of wrapping an -&gt;isa called in eval{}; this
+    patch (thanks, Felipe Bergo!) was submitted to avoid problems with
+    people who have global __DIE__ handlers, but was applied to just
+    avoid the dumb eval{}; people with __DIE__ are otherwise on their
+    own, here</comment>
+    <requestid>107128</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5e46144056a6d728638fd9e40118761d</srcmd5>
+    <version>0.187</version>
+    <time>1340183834</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>5e46144056a6d728638fd9e40118761d</srcmd5>
+    <version>0.187</version>
+    <time>1359109654</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d12de5d36712d01c372748ce483e37d3</srcmd5>
+    <version>0.190</version>
+    <time>1370514008</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177634 from coolo)</comment>
+    <requestid>177666</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d12de5d36712d01c372748ce483e37d3</srcmd5>
+    <version>0.190</version>
+    <time>1379663658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0198ec2ddb7e95ac5dadb3ddd406f6ec</srcmd5>
+    <version>1.192</version>
+    <time>1382361202</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202257</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0198ec2ddb7e95ac5dadb3ddd406f6ec</srcmd5>
+    <version>1.192</version>
+    <time>1409302269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c38c32b71a3195bfb0052739445b460d</srcmd5>
+    <version>1.196</version>
+    <time>1429107918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296627</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aa48564b7dda70d5fa5d406f04520c95</srcmd5>
+    <version>1.197</version>
+    <time>1445287973</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339517</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e2c5b28424f707b1a5f524ee9819ff3e</srcmd5>
+    <version>1.198</version>
+    <time>1446209017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341469</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>61b4a0cbbe9a1c9772c9ae6c097ade3d</srcmd5>
+    <version>1.200</version>
+    <time>1460482401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384963</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8dc9986e1d7e2d1a6fc88c3733cf3f02</srcmd5>
+    <version>1.202</version>
+    <time>1475359710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431501</requestid>
+  </revision>
+</revisionlist>

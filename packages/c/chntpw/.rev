@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>996308b33e55247b38e02db5ecb1880e</srcmd5>
+    <version>1.0</version>
+    <time>1516359105</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 140201
+- add chntpw_1.0-1.diff.gz all patches from debian, fixes build and runtime bugs</comment>
+    <requestid>560906</requestid>
+  </revision>
+</revisionlist>

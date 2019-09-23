@@ -1,0 +1,27 @@
+Index: sql/create_tables.sql
+===================================================================
+--- sql/create_tables.sql.orig
++++ sql/create_tables.sql
+@@ -27,8 +27,8 @@ USE phpmyadmin;
+ -- Privileges
+ --
+ -- (activate this statement if necessary)
+--- GRANT SELECT, INSERT, DELETE, UPDATE, ALTER ON `phpmyadmin`.* TO
+---    'pma'@localhost;
++GRANT SELECT, INSERT, DELETE, UPDATE, ALTER ON `phpmyadmin`.* TO
++    'pma'@localhost IDENTIFIED BY 'pmapass';
+ 
+ -- --------------------------------------------------------
+ 
+Index: config.sample.inc.php
+===================================================================
+--- config.sample.inc.php.orig
++++ config.sample.inc.php
+@@ -200,7 +200,6 @@ $cfg['Servers'][$i]['savedsearches']
+ $cfg['Servers'][$i]['central_columns']          = 'pma__central_columns';
+ $cfg['Servers'][$i]['designer_settings']        = 'pma__designer_settings';
+ $cfg['Servers'][$i]['export_templates']         = 'pma__export_templates';
+-$cfg['Servers'][$i]['auth_swekey_config']       = '';
+ */
+ 
+ /**

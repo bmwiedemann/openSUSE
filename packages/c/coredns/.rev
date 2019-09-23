@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4cb578d3940669cf4baf088aae2cfcb6</srcmd5>
+    <version>1.2.6</version>
+    <time>1546946643</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias and rhetorics from descriptions.
+- Use a single %setup statement.
+- Include source tarballs for each of the used golang packages created with 
+  _service.
+  + beorn7-perks.tar.xz
+  + golang-protobuf.tar.xz
+  + matttproud-golang_protobuf_extensions.tar.xz
+  + mholt-caddy.tar.xz
+  + miekg-dns.tar.xz
+  + prometheus-client_golang.tar.xz
+  + prometheus-client_model.tar.xz
+  + prometheus-common.tar.xz
+  + prometheus-procfs.tar.xz
+- Remove makearchive script, previously used to create a single source tarball.
+  - makearchive.sh
+- Initial package creation version 1.2.6
+</comment>
+    <requestid>658917</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>974f449644499aad925a6d200b72d18b</srcmd5>
+    <version>1.2.6</version>
+    <time>1559837898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707883</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0dec46248587d0d5502462cfc65d059a</srcmd5>
+    <version>1.3.1</version>
+    <time>1563914324</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove systemd support, not needed on openSUSE Kubic
+- Build with pie (security policy)
+
+- Update to version 1.3.1:
+  * log now allows multiple names to be specified
+  * import was added to give it a README.md to make itâ€™s documentation more discoverable
+  * kubernetes TTL is also applied to negative responses (NXDOMAIN, etc)
+- Changed included from version 1.3.0:
+  * EDNS0 handling in the server and make it compliant with https://dnsflagday.net/
+  * k8s_external a new plugin that allows external zones to point to Kubernetes in-cluster services.
+  * rewrite fixes a bug where a rule would eat the first character of a name
+  * log now supported the metadata labels. It also fixes a bug in the formatting of a plugin logging a info/failure/warning
+  * forward removes the dynamic read timeout and uses a fixed value now.
+  * kubernetes now checks if a zone transfer is allowed. Also allow a TTL of 0 to avoid caching in the cache plugin.
+
+- Update spec file BuildRequires golang(API) &amp;gt;= 1.11 (forwarded request 717843 from kukuk)</comment>
+    <requestid>717844</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6fd68976e0814958ed79feb0430f83f7</srcmd5>
+    <version>1.3.1</version>
+    <time>1563994259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718309</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b9fe3b94cb4f42ddca14908b31fe2e51</srcmd5>
+    <version>1.3.1</version>
+    <time>1568900797</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729668</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,550 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41875601eee3ecfe4dec50928a9951ad</srcmd5>
+    <version>0.11.0</version>
+    <time>1419159438</time>
+    <user>coolo</user>
+    <comment>Activate (again) sddm package. sec team gave the green light. bnc#897788</comment>
+    <requestid>264718</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc9156e85bafd703d5825bedaa1524e0</srcmd5>
+    <version>0.11.0</version>
+    <time>1426680389</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop conflict with lightdm, and move DBus configuration file,
+  now that sddm is whitelisted
+- Drop xdm (Build)Requires
+- Install sddm-pam* directly, instead of messing with symlinking
+- Add create_pid_file.patch: openSUSE's generic display-manager
+  service doesn't know what to do without a pid file. drop the patch
+  as soon as that sick dinosaur is killed
+- Drop ommit_systemd_service.patch</comment>
+    <requestid>291087</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>97d0077c5bc27c91398a0b4c2a32f854</srcmd5>
+    <version>0.11.0</version>
+    <time>1431365577</time>
+    <user>coolo</user>
+    <comment>- Add sysconfig-support.patch: Support DISPLAYMANAGER_AUTOLOGIN
+  entry from /etc/sysconfig/displaymanager, the value overwrites
+  any entry in sddm.conf/[Autologin]/User. Patch also defaults
+  to plasma5.desktop as default autologin and last selected 
+  sessions. This is controlled only by sddm.conf file.
+- Mark sddm.conf as %config(noreplace)
+
+- Added sddm-relaxed-auth.diff: Insert XAUTHLOCALHOSTNAME into
+  users enviroment, so the session handles hostname changes with
+  a single X instance/run
+- Use breeze_cursors in openSUSE branding</comment>
+    <requestid>305382</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9ccc02f12f0219e38d5bdcfe294b49fa</srcmd5>
+    <version>0.11.0</version>
+    <time>1433232057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309604</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5aca468cda4787592dcedddcf9dc0d94</srcmd5>
+    <version>0.11.0</version>
+    <time>1440871430</time>
+    <user>coolo</user>
+    <comment>Added patch from upstream sddm-wait-for-display-script.patch:
+  avoid a black screen (boo#942815)</comment>
+    <requestid>327268</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>789ffc4f82d3e2b1a0b7e0f03733979e</srcmd5>
+    <version>0.12.0</version>
+    <time>1441954903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * SDDM now depends on Qt &gt;= 5.3
+  * Display setup script is now killed if it hasn't finished
+    within 30 seconds.
+  * The Maldives non-free background has been replaced by a
+    CC-BY-SA alternative
+  * Wayland sessions support
+  * New sddm.conf option XephyrPath
+    (defaults to /usr/bin/Xephyr)
+  * new sddm.conf option ServerArguments
+    (defaults to -nolisten tcp)
+  * new sddm.config option DisplayStopCommand (executes Xstop)
+  * Assorted improvements to the default theme
+  * Honor TryExec in Xsession desktop files
+  * Fix session startup on zsh
+  * Allow setting a custom DBUS_CONFIG_FILENAME at compile time
+  * Allow SYSTEMD_SYSTEM_UNIT_DIR to be overridden at compile time
+  * Allow QT_IMPORTS_DIR to be overridden at compile time
+  * No longer hardcode min/max UIDs, allow setting
+    UID_MIN and UID_MAX at compile time
+  * Assorted FreeBSD fixes
+  * Fix build warnings with Qt 5.5.
+  * Enable QT_NO_CAST_FROM_ASCII
+  * Added Arabic
+  * Added Hungarian
+  * Various i18n updates and improvements
+  * Full right-to-left languages support.
+- Drop sddm-wait-for-display-script.patch, merged upstream</comment>
+    <requestid>329349</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3c7ca854fcb392d1470b429ef18dbe06</srcmd5>
+    <version>0.12.0</version>
+    <time>1443357128</time>
+    <user>dimstar_suse</user>
+    <comment>- Added shadow BuildRequires, it's needed to check UID_MIN &amp; UID_MAX
+  from /etc/login.defs
+
+- Change the theme to &quot;maui&quot; in the shipped sddm.conf,
+  sddm-branding-openSUSE sets it to &quot;breeze&quot; on installation.
+- Remove the superfluous requirement for &quot;breeze&quot;. This is not
+  needed even with the &quot;breeze&quot; theme, as it is actually part of
+  plasma5-workspace which is required by sddm-branding-openSUSE
+  anyway.
+- sddm-branding-openSUSE should PreReq sddm, otherwise the config
+  might not exist.
+- Make the regexps for sed stricter to really only modify the theme
+  setting when installing/uninstalling sddm-branding-openSUSE.
+  Otherwise it would e.g. also replace CursorTheme=breeze_cursors
+  with CursorTheme=maui_cursors...
+  Also only modify the config on new installation, not during
+  updates.</comment>
+    <requestid>333503</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>31118292d97ca0c7b928a2793a6809d4</srcmd5>
+    <version>0.12.0</version>
+    <time>1445511475</time>
+    <user>dimstar_suse</user>
+    <comment>- openSUSE branding now needs to require plasma5-workspace-branding
+
+- Added patches from upstream:
+  0001-Don-t-cast-QByteArray-to-char.patch
+  (https://github.com/sddm/sddm/issues/489)
+  and 0002-Disable-greeters-from-loading-KDE-s-debug-hander.patch
+  (boo#950491, CVE-2015-0856)
+
+- Added boo949903.patch: Let sddm also default to plasma5 for last
+  used session (boo#949903)</comment>
+    <requestid>339672</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6bc8722cfafd0635b8e4744315ab2c6b</srcmd5>
+    <version>0.12.0</version>
+    <time>1446208853</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches to fix multihead in some cases
+  (also fixes boo#950293):
+  * 0001-always-create-window-for-each-screen.patch
+  * 0002-screen-model-for-each-window.patch</comment>
+    <requestid>340798</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd49388c3a38ea57d5ba7558ac4bda39</srcmd5>
+    <version>0.13.0</version>
+    <time>1447353571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342700</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1265cc3d82a728b8e5f7645011a7bd15</srcmd5>
+    <version>0.13.0</version>
+    <time>1448400523</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345449</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>aedc3082c01edf401156fd35746a8854</srcmd5>
+    <version>0.13.0</version>
+    <time>1465750284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400687</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d3d9948916f0afa04d618b0783e89118</srcmd5>
+    <version>0.13.0</version>
+    <time>1475588775</time>
+    <user>dimstar_suse</user>
+    <comment>Do NOT accept! Requires Plasma 5.8 beta</comment>
+    <requestid>430002</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>02f7d8358e5e54d91c6641cf7ae4aec8</srcmd5>
+    <version>0.14.0</version>
+    <time>1480018717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441310</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>113151dcaaed46290201e29c00ccf2d9</srcmd5>
+    <version>0.13.0</version>
+    <time>1480073336</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to version 0.13.0 - https://openqa.opensuse.org/tests/310343#step/first_boot/7 is broken</comment>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6076d8a7d696f5e7ac703c48c37aec02</srcmd5>
+    <version>0.14.0</version>
+    <time>1480341815</time>
+    <user>dimstar_suse</user>
+    <comment>Next try. Maybe this time it's less broken.
+
+- Fix %post and %postun of branding subpackages
+
+- Add various bugfixes from develop branch:
+  * 0001-Fix-display-of-user-avatars.-684.patch
+  * 0002-Add-a-config-option-to-enable-high-DPI-scaling-701.patch
+  * 0003-elarun-Update-date-and-time.patch
+  * 0004-Support-Non-Latin-characters-in-theme-settings-708.patch
+  * 0005-Cleanup-dangling-pointer-in-SocketServer-725.patch
+
+- Sync with KDE:Frameworks5:LTS, sort sddm.changes
+- Remove 0001-Fall-back-to-regular-login-when-autologin-fails.patch
+
+- Update to 0.14.0:
+  - http://hawaiios.org/news/2016/08/28/sddm-0.14.0
+    + New sddm.conf option EnableAvatars (useful for slow filesystems)
+    + New sddm.conf option UserAuthFile on the XDisplay section
+      to change the default Xauthority file name and path.
+    + New sddm.conf option SessionLogFile on XDisplay and WaylandDisplay
+      sections to change the default user session log location.
+    + ComboBox now exposes the arrow background color as
+      &quot;arrowColor&quot; property.
+    + New &quot;style&quot; theme configuration for QtQuick Controls 2.0.
+    + Require Qt 5.6 or better.
+    + Enable HiDPI support.
+    + Refresh sessions list.
+    + Always fallback to an embedded theme if no suitable theme is found.
+    - Actually change Qt platform theme.
+    - Switch to Wayland session vt only when authentication
+      succeeds.
+    - Close PAM session.</comment>
+    <requestid>442001</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>6d9c1e5dbe8cd076f4b6392ba1cf9910</srcmd5>
+    <version>0.14.0</version>
+    <time>1489415437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478453</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>d4a8746027b1fca306363fd87a106c92</srcmd5>
+    <version>0.14.0</version>
+    <time>1490132735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480839</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>5527e5363c7ba640292a487c2ace0f72</srcmd5>
+    <version>0.14.0</version>
+    <time>1492417275</time>
+    <user>maxlin_factory</user>
+    <comment>- Use default tty (tty7) in systemd unit as specified in sddm.conf:
+  * 0001-Systemd-service-unit-Use-tty7-by-default.patch
+- Add patch from upstream to allow setting QT_IM_MODULE in sddm.conf:
+  * 0001-Also-set-QT_IM_MODULE-in-non-testing-mode.patch
+
+- Revert calling plymouth quit with --retain-splash. It is possible
+  that this prevents logging in on tty1.</comment>
+    <requestid>484360</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>d6b308396dd0816d63ee7d44f1859bf4</srcmd5>
+    <version>0.14.0</version>
+    <time>1493369605</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build failure for :E
+- BuildRequire python3-docutils directly</comment>
+    <requestid>491047</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>9e90c2093f16ff33935367cdb22165b3</srcmd5>
+    <version>0.14.0</version>
+    <time>1496327003</time>
+    <user>dimstar_suse</user>
+    <comment>- Also set the default last session in sysconfig-support.patch
+  (replaces boo949903.patch)
+- Adjust 0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
+  to also handle symlinks for the last session
+
+- Replace patch with newer version:
+  * 0001-Also-theme-the-default-cursor-for-the-root-window.patch
+
+- Add upstream patches: 
+  * 0001-Parse-desktop-file-sections.patch
+  * 0002-Ignore-session-desktop-files-with-the-Hidden-propert.patch
+- Add downstream patch:
+  * 0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
+- Fix typo in sysconfig-support.patch (DYSPLAY -&gt; DISPLAY)
+- Use default.desktop as default autologin session file
+
+- BuildRequire python-docutils instead of python3-docutils on SLE
+
+- Add patch to fix the default X cursor appearing sometimes:
+  * 0001-Also-theme-the-default-cursor-for-the-root-window.patch</comment>
+    <requestid>496501</requestid>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>f5c83ea0169d0b84e0c518b6aeb2490a</srcmd5>
+    <version>0.14.0</version>
+    <time>1499880772</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace patch with version merged upstream, to avoid potentially
+  killing the X server:
+  * 0001-Also-theme-the-default-cursor-for-the-root-window.patch
+
+- Add patch to keep old entries in XAUTHORITY file (boo#1043221):
+  * 0001-Do-not-truncate-XAUTHORITY-file-on-login.patch</comment>
+    <requestid>509273</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>069ff39ca7a4554a505de5d125f34c59</srcmd5>
+    <version>0.15.0</version>
+    <time>1504896215</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520264</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>12e7632a1169d49c5a6e9838c9f0ecef</srcmd5>
+    <version>0.15.0</version>
+    <time>1508503288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534971</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>7deb5154a7b2299a33928e9d7e4ad0f4</srcmd5>
+    <version>0.15.0</version>
+    <time>1509305042</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;Requires: xdm&quot; because sddm.conf references the files
+  '/etc/X11/xdm/Xsession' and '/etc/X11/xdm/Xsetup'</comment>
+    <requestid>537329</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>c623b0fa6802c77187390bb99e560e48</srcmd5>
+    <version>0.15.0</version>
+    <time>1512292298</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to add back Xauthority truncation in a way that does
+  not break ssh -X (boo#1043221, boo#1069498):
+  * 0001-Move-Xauthority-to-a-different-location-and-truncate.patch
+
+- Amend patch toremove elogind from sddm-greeter.pam:
+  * proper_pam.diff</comment>
+    <requestid>547175</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b8918265ccbdeb0ce0c030167b110264</srcmd5>
+    <version>0.17.0</version>
+    <time>1513851761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557251</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>89519a93e92a18878e4eeab8816641bb</srcmd5>
+    <version>0.17.0</version>
+    <time>1519844389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579678</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>9d270d89ad32cfd8055b1c29eb0af9b1</srcmd5>
+    <version>0.17.0</version>
+    <time>1520502090</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not quit on SIGHUP (boo#1080305):
+  * 0001-Don-t-quit-on-SIGHUP.patch</comment>
+    <requestid>582256</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>457f44cd371ec32ff817366cc3ec4696</srcmd5>
+    <version>0.17.0</version>
+    <time>1521578559</time>
+    <user>dimstar_suse</user>
+    <comment>- Reorder patches for easier maintainability, needs refresh of:
+  * 0001-Move-Xauthority-to-a-different-location-and-truncate.patch
+  * 0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+  * sddm-relaxed-auth.diff
+- Replace 0001-Revert-Rename-XDisplay-and-WaylandDisplay-config-sec.patch
+  with 0001-Support-both-X11-XDisplay-Wayland-and-WaylandDisplay.patch
+- Add patches to fix setting EnableHiDPI in the configuration:
+  * 0001-greeter-Use-Qt-command-line-parser.patch                                                                                                                                                                                                 
+  * 0001-Fix-platform-detection-for-EnableHiDPI.patch</comment>
+    <requestid>585771</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>a5a079b6229d802fa1558d9c65d556da</srcmd5>
+    <version>0.17.0</version>
+    <time>1521904128</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt &lt; 5.10:
+  * 0001-Fix-build-with-Qt-5.10-Use-QString-instead-of-QLatin.patch</comment>
+    <requestid>589945</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>72249ae313ecc3c23ed34f923051c633</srcmd5>
+    <version>0.17.0</version>
+    <time>1522316911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590866</requestid>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>cc81943e4a02a32c12b8d6ce4f86f712</srcmd5>
+    <version>0.17.0</version>
+    <time>1525121520</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to show a username input field with too many users:
+  * 0006-Don-t-fill-UserModel-if-theme-does-not-require-it.patch
+- Backport related changes from develop branch:
+  * 0001-Support-for-theme-supplied-default-avatars.patch
+  * 0002-Remove-trailing-spaces.patch
+  * 0003-UserModel-optimize-filtering-out-duplicate-users-995.patch
+  * 0004-UserModel-fix-filtering-out-duplicate-users-998.patch
+  * 0005-UserModel-optimize-setting-of-default-user-icon-999.patch
+
+- Revert previous change, had the opposite effect for some reason
+
+- Start the X server with -keeptty (boo#1089287)</comment>
+    <requestid>601509</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>c3b1d4b6e8ca33fc095555a33ad04099</srcmd5>
+    <version>0.17.0</version>
+    <time>1526219780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606133</requestid>
+  </revision>
+  <revision rev="35" vrev="9">
+    <srcmd5>a2f90a475dbd258ff71f70a0cb4c188e</srcmd5>
+    <version>0.17.0</version>
+    <time>1526462590</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not include sessions with NoDisplay=true in the list (boo#1086614):
+  * 0001-Don-t-add-session-files-with-NoDisplay-true-to-Sessi.patch</comment>
+    <requestid>606940</requestid>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>a44dad59515520d27a26c0a09fd66bb2</srcmd5>
+    <version>0.17.0</version>
+    <time>1530741244</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fix for pam_group from develop branch:
+ * 0007-Honor-PAMs-ambient-supplemental-groups.patch
+
+See:
+
+https://github.com/sddm/sddm/pull/834
+https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (forwarded request 620337 from luizluca)</comment>
+    <requestid>620401</requestid>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>28bc354f0c4287885034985e0be1c8a4</srcmd5>
+    <version>0.17.0</version>
+    <time>1531379845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621443</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9ccf135461c6df5c6b32ffe8dc1acbb1</srcmd5>
+    <version>0.18.0</version>
+    <time>1532527579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623643</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>f15ba50680afd750ad84f9bea7ee5f3a</srcmd5>
+    <version>0.18.0</version>
+    <time>1532685738</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ReuseSession=true for now (boo#1102832, kde#391253)</comment>
+    <requestid>625743</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>770dcef170622f1fe99e6f6bfdc4da08</srcmd5>
+    <version>0.18.0</version>
+    <time>1533292236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626756</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>007a80c8bc085e55d2541a02bee86def</srcmd5>
+    <version>0.18.0</version>
+    <time>1538374418</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix wayland session start if fish is used as shell:
+  * 0001-Revert-Adds-sourcing-of-etc-profile-to-fish.patch
+
+- Rewrite sddm-relaxed-auth.diff as sddm-relaxed-auth.patch:
+  * Set XAUTHLOCALHOSTNAME only where necessary
+  * Also set it for the Greeter session (boo#1091784)</comment>
+    <requestid>638834</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>5c3a467d5d84e5127ec8b772caa816c3</srcmd5>
+    <version>0.18.0</version>
+    <time>1547129998</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ignore errors from useradd.
+
+- Add the dirs created by systemd-tmpfiles as %ghost as well
+- Use service macros and create rcsddm link for sddm.service
+
+- Add patch to delete socket on shutdown:
+  * 0001-Destroy-the-QLocalServer-in-Auth-on-shutdown.patch
+- Move creation of runtime directories and cleanup of files on boot
+  into sddm-tmpfiles.conf (boo#1116431)
+
+- Remove 0001-Don-t-leak-VT-FDs-in-jumpToVt.patch as the FD leak
+  worked around a race condition as a side effect
+
+- Add patch to not leak tty FDs for wayland sessions:
+  * 0001-Don-t-leak-VT-FDs-in-jumpToVt.patch</comment>
+    <requestid>664016</requestid>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>514eda73107333a911ff8b16f132f826</srcmd5>
+    <version>0.18.0</version>
+    <time>1549916329</time>
+    <user>dimstar_suse</user>
+    <comment>Just adding a bugref.</comment>
+    <requestid>671973</requestid>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>5b6bafd44d6525fe01effad723c8b5cd</srcmd5>
+    <version>0.18.0</version>
+    <time>1551027737</time>
+    <user>coolo</user>
+    <comment>- Add patch to fix reading garbage from getpwnam (boo#1125624):
+  * 0001-Use-C-scoping-for-handling-buffer-deletion.patch</comment>
+    <requestid>676938</requestid>
+  </revision>
+  <revision rev="45" vrev="8">
+    <srcmd5>9440ed3a9cd09723b2021429ee7eda88</srcmd5>
+    <version>0.18.0</version>
+    <time>1566664898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724941</requestid>
+  </revision>
+</revisionlist>

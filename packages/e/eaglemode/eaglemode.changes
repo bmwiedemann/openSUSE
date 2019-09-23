@@ -1,0 +1,264 @@
+-------------------------------------------------------------------
+Mon Apr 15 08:21:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing from description.
+
+-------------------------------------------------------------------
+Thu Apr 11 12:58:46 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build version 0.94.1
+  Changes:
+  - Version 0.94.1
+    * Improved video performance on multi-core CPUs a little.
+    * Prohibited starting up after failure in creating initial bookmarks.
+    * Reviewed and improved various details concerning protection against unwanted file system changes.
+    * Colorized file manager command execution messages on Windows 10.
+  - Version 0.94.0
+    * Extended the internal font, mainly by Cyrillic and Greek characters.
+    * Improved character code page support.
+    * Added Clang support (compile command: perl make.pl build compiler=clang).
+    * Minor fixes.
+  - Version 0.93.2
+    * Ported PDF, SVG, and PS viewers to Windows.
+    * Minor fixes.
+  - Version 0.93.1
+    * Adapted minimally to new OS versions.
+    * Ported time zones feature to Windows.
+-  Cleaned Requires: *-devel up. As they are not needed most of them
+   are auto detected
+
+-------------------------------------------------------------------
+Fri Jun 29 13:21:27 UTC 2018 - kstreitova@suse.com
+
+- require p7zip-full for TW as 7z binary needed by eaglemode was
+  moved to this package (see bsc#899627 for more details about
+  this change) 
+
+-------------------------------------------------------------------
+Wed Oct 11 07:29:52 UTC 2017 - joop.boonen@opensuse.org
+
+- Update to 0.93.0, announce message: 
+
+  • Added autoplay function: Slideshow of picture files and playback of multiple audio/video files.
+  • Minor fixes.
+
+-------------------------------------------------------------------
+Sat Jan  7 15:03:56 UTC 2017 - nemysis@openSUSE.org
+
+- Update to 0.92.0, announce message:
+
+  • Parallelized painting for improved graphics performance on multi-core CPUs
+  • Changed many virtual API methods to "const" (required for the above point,
+    compiling old user code may fail, sorry, please adapt)
+  • Minor fixes.
+
+-------------------------------------------------------------------
+Sun Jun 26 08:49:45 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 0.91.0, announce message:
+
+ * Fixed behavior on virtual desktops with multiple monitors.
+ * Added saving and restoring of window geometry.
+ * On X11, the fullscreen mode now goes via the window manager
+   instead of switching to override-redirect mode.
+ * On Windows, in the virtual cosmos, replaced all the static disk
+   drive items and the home dir item by a single file system
+   item which dynamically lists all available drives.
+ * Minor fixes.
+
+-------------------------------------------------------------------
+Sat Apr 23 22:48:35 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 0.90.0, announce message:
+
+- Changes from Version 0.90.0
+
+ * Added lots of icons to the control panel and gave it a new layout.
+ * Reworked the graphic design of the toolkit elements (buttons, etc.).
+ * Added new file manager themes: Glass, Card/*, and Night. Removed the Cloud theme.
+ * Minor improvements and fixes.
+
+- Changes from Version 0.89.2
+ * Added API class emAvlTreeSet.
+ * Moved emAvlTreeMap into an own header file.
+ * Fixed the StrictRaster option of emRasterLayout.
+ * Fixed configuration loading for minimum forward compatibility with the upcoming "design" version 0.90.0 (running <=0.89.1 after running 0.90.0 may crash).
+ * Minor fixes.
+
+- Remove not needed Requires for arc, lha and unarj
+
+-------------------------------------------------------------------
+Tue Aug 25 16:58:25 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 0.89.1, announce message:
+
+ * Fixed shortcuts for Windows systems where wsf files are not associated with wscript.
+ * Multi-user installation of start menu and desktop icons on Windows.
+ * Improved resolution of built-in font.
+ *  Minor fixes.
+
+-------------------------------------------------------------------
+Thu May 28 07:57:55 UTC 2015 - nemysis@gmx.ch
+
+- Use GenericName[en]=Eagle Mode instead of GenericName[en]=Eagle Modee
+
+-------------------------------------------------------------------
+Wed May 27 14:12:58 UTC 2015 - nemysis@gmx.ch
+
+- Update to 0.89.0, announce message:
+
+- Changes fromVersion 0.89.0
+  • Added new API classes: emListBox, emFileSelectionBox, emFileDialog,
+    and emAnything.
+  • Removed method emPanel::EnableAutoExpansion()
+    (it's always "enabled" now).
+  • Minor fixes and improvements.
+
+- Changes from Version 0.88.0
+  • Replaced API class emTiling by more specialized classes:
+    emLinearLayout, emRasterLayout, and emPackLayout.
+  • Accordingly replaced emGroup by emLinearGroup, emRasterGroup,
+   and emPackGroup.
+  • Fixed cropping of video frames.
+  • Fixed launch feedback.
+  • Minor fixes.
+
+- Change Source0 to use Web URL
+- Change Desktop entry
+- Change icons, use eaglemode-icons.tar
+- Add BuildRequires for hicolor-icon-theme
+- Change Description
+- Simplify installation handling
+
+-------------------------------------------------------------------
+Tue Jan  6 21:02:58 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.87.0
+  + Bug fix: The view often zoomed away unexpectedly from alternative
+    file content panels (since version 0.86.0).
+  + Reorganized the toolkit classes, renamed all "emTk*" to "em*".
+  + Minor fixes.
+- Changes from version 0.86.0
+  + Added kinetic effects (inertia and friction) to zooming and scrolling
+    by mouse and keyboard.
+  + Added a magnetism which zooms and scrolls automatically for showing
+    a content full-sized. (It gets active after zooming or scrolling by
+    mouse, when a content is not to far from being shown full-sized.)
+  + Added an acceleration effect to zooming by mouse wheel.
+  + Added animations for logical position changes by keys and bookmarks.
+  + Adapted emLKC to kernel 3.16 and higher.
+  + Minor fixes and improvements.
+- Changes from version 0.85.0
+  + Fixed some bugs of the PDF viewer.
+  + Adapted to Debian 7.
+  + Adapted to xine-lib 1.2x.
+  + Minor fixes.
+
+-------------------------------------------------------------------
+Wed Dec 17 20:38:29 UTC 2014 - dimstar@opensuse.org
+
+- On openSUSE > 13.2, xterm has been split into xterm-bin for the
+  program and xterm for the app launcher. We only need the program,
+  so conditionall Require xterm-bin.
+
+-------------------------------------------------------------------
+Sat Jun 29 17:33:22 UTC 2013 - schwab@linux-m68k.org
+
+- Force use of %{optflags}
+- Fix file list
+
+-------------------------------------------------------------------
+Mon Feb 11 12:36:28 UTC 2013 - coolo@suse.com
+
+- unrar is neither in FTP-repos nor on DVD, so better don't require it
+
+-------------------------------------------------------------------
+Mon Dec 24 14:37:41 UTC 2012 - joop.boonen@opensuse.org
+
+- Fixed sles build pkgconfig isn't supported by sles 
+
+-------------------------------------------------------------------
+Wed Sep 19 13:36:55 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0
+  Many of the files are licensed under GPL-3.0 "only" (i.e. no mention of
+  "or later")
+
+-------------------------------------------------------------------
+Mon Sep 17 13:09:10 UTC 2012 - joop.boonen@opensuse.org
+
+- Don't require arc, unarj and lha anymore as they don't
+  exist in Factory and the are not used much anymore 
+
+-------------------------------------------------------------------
+Thu Aug 30 13:02:19 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 0.84.0
+- Added UHU-Linux patch so eaglemode is build for Factory
+
+-------------------------------------------------------------------
+Sat Jan  7 00:00:00 CET 2012 - joop.boonen@opensuse.org
+
+- Reformated the spec file to meet the openSUSE standard
+
+-------------------------------------------------------------------
+Sun Nov 13 00:00:00 CET 2011 - joop.boonen@opensuse.org
+
+- Build version 0.83.0
+- Added missing buildreq
+  libpoppler-glib-devel and gtk2-devel
+
+-------------------------------------------------------------------
+Mon Jul  4 00:00:00 CEST 2011 - joop.boonen@opensuse.org
+
+- Build version 0.82.0
+
+-------------------------------------------------------------------
+Thu May 12 00:00:00 CEST 2011 - joop.boonen@opensuse.org
+
+- Build version 0.81.0
+
+-------------------------------------------------------------------
+Wed Dec  8 00:00:00 CET 2010 - joop.boonen@opensuse.org
+
+- Build version 0.80.0
+
+-------------------------------------------------------------------
+Tue Aug 24 00:00:00 CEST 2010 - joop.boonen@opensuse.org
+
+- Build version 0.79.0
+
+-------------------------------------------------------------------
+Sat Jul 24 00:00:00 CEST 2010 - joop.boonen@opensuse.org
+
+- etc files can now be found in /etc/eaglemode
+  in stead of /etc/eaglemode/etc
+- added export CFLAGS="$RPM_OPT_FLAGS"
+- and export CXXFLAGS="$CFLAGS"
+
+-------------------------------------------------------------------
+Sat Jun 26 00:00:00 CEST 2010 - joop.boonen@opensuse.org
+
+- Build version 0.78.0
+
+-------------------------------------------------------------------
+Wed Feb 10 00:00:00 CET 2010 - joop.boonen@opensuse.org
+
+- Build version 0.76.0
+
+-------------------------------------------------------------------
+Sun Jan 10 00:00:00 CET 2010 - joop.boonen@opensuse.org
+
+- building with menu item
+
+-------------------------------------------------------------------
+Sat Jan  9 00:00:00 CET 2010 - joop.boonen@opensuse.org
+
+- added all requirements according to te eagle mode webpage
+
+-------------------------------------------------------------------
+Sun Nov  8 00:00:00 CET 2009 - joop.boonen@opensuse.org
+
+- Build version 0.75.1
+
+-------------------------------------------------------------------

@@ -1,0 +1,1639 @@
+-------------------------------------------------------------------
+Wed Aug 21 13:25:25 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 16.0.4
+  - Always set the display name for user shares (server#16254)
+  - Prevent undefined offset 0 in findByUserIdOrMail (server#16325)
+  - Use HTTP1.1 to read S3 objects (server#16330)
+  - Bump lodash.mergewith from 4.6.1 to 4.6.2 (server#16338)
+  - Bump lodash.merge from 4.6.1 to 4.6.2 (server#16341)
+  - Bump lodash from 4.17.11 to 4.17.13 (server#16352)
+  - Addsubtag should push to array (server#16405)
+  - Add catch for RuntimeException (server#16414)
+  - Only prevent disabling encrytion via the API (server#16425)
+  - Do not keep searching for recent (server#16432)
+  - Update operationprogressbar.js (server#16437)
+  - Fix File#putContents(string) on ObjectStorage (server#16444)
+  - Pass $configargs to openssl_pkey_export (server#16500)
+  - Nested recursion breaking max nested level for parent comment calculation (server#16524)
+  - Allow hidden smb shares (server#16527)
+  - Allow to provide supported calendar component set internally as a string (server#16536)
+  - Lock SCSS so we only run 1 job at a time (server#16541)
+  - Fix max contrast retrieval to limit minimum color for relative time (server#16543)
+  - Supresses disclosing the userid for LDAP users in the welcome mail (server#16561)
+  - Use a pattern to identify sensitive config keys (server#16562)
+  - Do not log locked files (server#16564)
+  - Log email shares in admin_audit log (server#16566)
+  - Change send to sent (server#16567)
+  - Do not log all locked exceptions (server#16578)
+  - Check the if we can actually access the storage cache for recent files (server#16598)
+  - Set proper defaults for v-tooltip usages (server#16607)
+  - Fix/xss/on favorite file (server#16610)
+  - Log circles and remote shares in admin_audit (server#16627)
+  - Make sure we only fetch the file by id for the actual owner (server#16630)
+  - Remove unncessary code block in share recommendations, fixed undefined var error (server#16633)
+  - Files_external: proper user context for sharing (server#16637)
+  - Properly return an int in the getId function of the cache (server#16689)
+  - Fix enable/disable user audit message (server#16691)
+  - Delay sending event from app init to when they are needed (server#16695)
+  - Fix download button shown in public share page with hidden downloads (files_pdfviewer#145)
+  - Change name from 'Text editor' to 'Plain text editor' to prevent confusion with 'Text' (files_texteditor#169)
+  - Run drone for webpack build (files_texteditor#176)
+  - Bump lodash from 4.17.11 to 4.17.14 (files_videoplayer#135)
+  - Bump lodash.mergewith from 4.6.1 to 4.6.2 (firstrunwizard#199)
+  - Bump lodash.merge from 4.6.1 to 4.6.2 (firstrunwizard#200)
+  - Bump lodash from 4.17.11 to 4.17.14 (firstrunwizard#202)
+  - Bump fstream from 1.0.11 to 1.0.12 (firstrunwizard#205)
+  - Bump lodash from 4.17.11 to 4.17.13 (notifications#376)
+  - Trim the subject before encrypting the subject (notifications#384)
+  - Align the notification subject vertically to the icon (notifications#390)
+  - Fix notification body text alignment and text contrast (notifications#391)
+  - Fix mention and actions layout (notifications#392)
+  - Bump lodash.mergewith from 4.6.1 to 4.6.2 (recommendations#105)
+  - Bump lodash from 4.17.11 to 4.17.14 (recommendations#107)
+  - Bump tar from 2.2.1 to 2.2.2 (recommendations#120)
+  - Bump cypress-image-snapshot from 3.0.1 to 3.0.2 (viewer#102)
+  - Bump babel-loader from 8.0.5 to 8.0.6 (viewer#103)
+  - Bump cypress-file-upload from 3.1.1 to 3.1.2 (viewer#104)
+  - Bump @babel/preset-env from 7.4.4 to 7.4.5 (viewer#109)
+  - Bump eslint-plugin-node from 9.0.1 to 9.1.0 (viewer#116)
+  - Bump cypress-testing-library from 3.0.1 to 4.0.0 (viewer#119)
+  - Bump nextcloud-vue from 0.11.3 to 0.11.4 (viewer#121)
+  - Bump webpack-cli from 3.3.2 to 3.3.3 (viewer#127)
+  - Bump file-loader from 3.0.1 to 4.0.0 (viewer#130)
+  - Bump cypress-image-snapshot from 3.1.0 to 3.1.1 (viewer#131)
+  - Bump webpack from 4.33.0 to 4.34.0 (viewer#135)
+  - Bump cypress-file-upload from 3.1.2 to 3.1.3 (viewer#137)
+  - Bump webpack-cli from 3.3.3 to 3.3.4 (viewer#138)
+  - Bump nextcloud-server from 0.15.9 to 0.15.10 (viewer#139)
+  - Bump webpack from 4.34.0 to 4.35.0 (viewer#144)
+  - Bump eslint-plugin-vue from 5.2.2 to 5.2.3 (viewer#152)
+  - Bump webpack-cli from 3.3.4 to 3.3.5 (viewer#153)
+  - Bump eslint-plugin-promise from 4.1.1 to 4.2.1 (viewer#154)
+  - Bump url-loader from 2.0.0 to 2.0.1 (viewer#155)
+  - Bump eslint-plugin-import from 2.17.3 to 2.18.0 (viewer#156)
+  - Bump eslint-loader from 2.1.2 to 2.2.1 (viewer#165)
+  - Bump webpack from 4.35.2 to 4.35.3 (viewer#176)
+  - Bump stylelint-scss from 3.8.0 to 3.9.1 (viewer#178)
+  - Bump eslint-plugin-import from 2.18.0 to 2.18.2 (viewer#182)
+  - Bump webpack-cli from 3.3.5 to 3.3.6 (viewer#187)
+  - Bump vue-loader from 15.7.0 to 15.7.1 (viewer#188)
+  - Bump webpack from 4.35.3 to 4.36.1 (viewer#189)
+  - Bump webpack from 4.36.1 to 4.38.0 (viewer#194)
+  - Bump url-loader from 2.0.1 to 2.1.0 (viewer#196)
+  - Bump lodash from 4.17.11 to 4.17.15 (viewer#201)
+  - Bump webpack from 4.38.0 to 4.39.0 (viewer#202)
+  - Bump webpack from 4.39.0 to 4.39.1 (viewer#204)
+  - Detect and switch fullscreen (viewer#47)
+  - Update version on master (viewer#66)
+  - Test actions (viewer#67)
+  - Revert "Test actions" (viewer#68)
+  - Bump nextcloud-vue from 0.9.5 to 0.10.0 (viewer#69)
+  - Bump eslint-plugin-import from 2.16.0 to 2.17.2 (viewer#70)
+  - Bump eslint-import-resolver-webpack from 0.11.0 to 0.11.1 (viewer#71)
+  - Bump webpack from 4.29.6 to 4.30.0 (viewer#72)
+  - Fix/loading/race condition (viewer#73)
+  - Bump webpack-cli from 3.3.1 to 3.3.2 (viewer#90)
+  - Bump eslint-plugin-node from 8.0.1 to 9.0.1 (viewer#92)
+  - Bump webpack from 4.30.0 to 4.31.0 (viewer#96)
+
+-------------------------------------------------------------------
+Tue Jul  9 14:36:14 UTC 2019 - ecsos@opensuse.org
+
+- Update to 16.0.3
+  - Do not fail hard on new user mail error (server#16189)
+  - Fix redirect after rescanFailedIntegrityCheck to "Overview" 
+    page (server#16244)
+  - Fix permissions for drag-n-drop uploads (server#16249)
+  - Try to delete the cypress folder of the viewer app 
+    (server#16297)
+  - Send browser notifications again (notifications#373)
+
+-------------------------------------------------------------------
+Thu Jul  4 14:52:34 UTC 2019 - ecsos@opensuse.org
+
+- Update to 16.0.2
+  - Update ca bundle (server#15553)
+  - Update ca bundle checker (server#15554)
+  - User management/subadmin: rephrase ambiguous error message 
+    (server#15575)
+  - Update shipped.json to include privacy and recommendations 
+    (server#15592)
+  - Show supported apps in app management (server#15593)
+  - Update CRL due to revoked cookbook.crt (server#15628)
+  - Only show sharing section if it has content (server#15649)
+  - Remove quota feedback if no link set (server#15666)
+  - Allow redis cluster to use password (server#15686)
+  - Don't run repair step for every individual user, outsource that
+    to background job (server#15718)
+  - Check the actual status code for 204 and 304 (server#15724)
+  - [Security] Bump tar from 2.2.1 to 2.2.2 (server#15728)
+  - Don't notify admins if no potentially over exposing links found
+    (server#15745)
+  - Also allow dragging below the file list (server#15754)
+  - Change text color in search box in darktheme, ref #15598 
+    (server#15768)
+  - Check for free space on touch (server#15772)
+  - Search files by id in shared storages last (server#15799)
+  - Hide newFile menu if quota is set to 0B (server#15856)
+  - Add core/js/dist/ to l10nignore (server#15948)
+  - Add LDAP integr. test for receiving share candidates with 
+    group limitation (server#15984)
+  - Remove auto focus of share input field on dialog open, 
+    fix #15261 (server#16010)
+  - LDAP) API: return one base properly when multiple are 
+    configured (server#16015)
+  - Handle storage exceptions when trying to set mtime 
+    (server#16038)
+  - Fix LDAP Wizard forgetting groups on select with search
+    (server#16051)
+  - Revert "Fix userid casting in notifications" (server#16068)
+  - Fix appid argument for integrity:check-app (server#16080)
+  - Fix full text search for groupfolders (server#16082)
+  - Fall back to black for non-color values (server#16089)
+  - Check if uploading to lookup server is enabled before verifying
+    (server#16091)
+  - Allow apps to store longer messages in the comments API 
+    (server#16105)
+  - Invalidates user when plugin reported deletion success
+    (server#16112)
+  - Fix download link included in public share page with hidden
+    download (server#16125)
+  - Better check reshare permissions (server#16127)
+  - Verify that paths are valid for recursive local move 
+    (server#16128)
+  - Don't allow to disable encryption via the API (server#16133)
+  - Do not show a internet connectivity warning if internet access 
+    is dis… (server#16146)
+  - Update Nextcloud version in docs link (server#16157)
+  - Allow apps to overwrite the maximum length when reading from 
+    database (server#16177)
+  - RefreshWebcalJob: replace ugly Regex with standard php utils 
+    (server#16201)
+  - Better check reshare permissions part2 (server#16211)
+  - Fix "unshare group share from self" activity (activity#380)
+  - Fix load of character maps (files_pdfviewer#141)
+  - [Security] Bump axios from 0.18.0 to 0.18.1 
+    (firstrunwizard#192)
+  - Correctly show errors when setting the password (gallery#529)
+  - Blacklist using .noimage (gallery#533)
+  - Update dependabot deps in stable16 (notifications#359)
+  - Increase size of icon bubble for more visibility 
+    (notifications#368)
+  - Add app description to readme and appinfo (privacy#133)
+  - Catch and filter share that can't be found (recommendations#79)
+  - [Security] Bump axios from 0.18.0 to 0.18.1 
+    (recommendations#92)
+  - [Security] Bump tar from 2.2.1 to 2.2.2 (viewer#113)
+  - [Security] Bump axios from 0.18.0 to 0.19.0 (viewer#117)
+
+-------------------------------------------------------------------
+Thu May 16 15:48:08 UTC 2019 - ecsos@opensuse.org
+
+- Update to 16.0.1
+  - Fix setupcheck for intl module (server#15223)
+  - Take return of mkdir into consideration; photocache to not 
+    create a folder for deletion (server#15303)
+  - Remove the custom prefix from the table name length when
+    checking on … (server#15312)
+  - Check if the data is in the lookup server (server#15341)
+  - Do NOT assume all files are selected if the first checkbox is 
+    (server#15345)
+  - Fix collapse button in app navigation in IE11 (server#15389)
+  - Make sure all middlewares are only registered once 
+    (server#15399)
+  - Allow to send the password of protected conversations 
+    (server#15405)
+  - Remove extra margin from warning messages in authenticate
+    page (server#15409)
+  - Set Edge < 16 as incompatible with css vars (server#15417)
+  - Remove extra param in cache update call (server#15418)
+  - Handle 0 B default quota properly in the web UI
+    (server#15424)
+  - Fix multiselect min width (server#15433)
+  - Make access column a real boolean (server#15434)
+  - Fix public upload by also load the semaphore method 
+    (server#15439)
+  - Remove setup args from logging (server#15442)
+  - Use non-absolute logout URL to fix wrong URL in reverse proxy 
+    scenario (server#15452)
+  - Fix mobile vertical scrolling (server#15469)
+  - Remove recommendation for opcache on CLI (server#15471)
+  - Update file-upload.js (server#15482)
+  - Add interfaces to interact with subscription from support app
+    (server#15513)
+  - Fall back to application/octet-stream instead of using an 
+    invalid mim… (activity#374)
+  - Only call setViewerMode if FileList is available 
+    (files_pdfviewer#132)
+  - Use correct CSS URL, remove default marked settings and 
+    change to GFM rendering (files_texteditor#150)
+  - Use correct method to determine if HTTPS is used 
+    (firstrunwizard#189)
+
+-------------------------------------------------------------------
+Fri Apr 26 10:17:16 UTC 2019 - ecsos@opensuse.org
+
+- Added some missing require and recommend packages.
+
+-------------------------------------------------------------------
+Fri Apr 26 09:28:26 UTC 2019 - ecsos@opensuse.org
+
+- gh#10655 Added php-intl as required package for avoiding upstream
+
+-------------------------------------------------------------------
+Thu Apr 25 15:02:44 UTC 2019 - ecsos@opensuse.org
+
+- Update to 16.0.0 
+  Nextcloud 16 is smarter than ever, with machine learning to 
+  detect suspicious logins and offering clever recommendations. 
+  Group Folders now sport access control lists so system 
+  administrators can easily manage who has access to what in 
+  organization-wide shares. We also introduce Projects, a way to 
+  easily relate and find related information like files, 
+  chats or tasks.
+
+  As this is a major release, the changelog is very long. 
+  Find an overview of what has been improved in this series of blog
+  posts:
+
+  - Nextcloud 16 becomes smarter with Machine Learning for security
+    and productivity
+  - ACL permissions for Groupfolders
+  - Nextcloud 16 allows you to link resources to keep track of your 
+    projects
+  - Talk 6.0 brings commands, improved user experience and more
+
+  - Coming soon, seems the github API can't deal with the size of 
+    our changelog.
+
+-------------------------------------------------------------------
+Tue Apr  9 15:28:54 UTC 2019 - ecsos@opensuse.org
+
+- Update to 15.0.7
+  - Fix for crashing occ files:scan (server#14968)
+  - Fix .drone.yml syntax (server#14984)
+  - Harden appdata putcontent (server#15000)
+  - Check if OCA.Files.App is available before calling 
+    (server#15001)
+
+-------------------------------------------------------------------
+Thu Apr  4 14:52:21 UTC 2019 - ecsos@opensuse.org
+
+- Update to 15.0.6
+  - Fix grid toggle button on public page (server#14376)
+  - Fix(EMailTemplate): malformed HTML in some cases (server#14387)
+  - Bugfix for issue 10862: Trash-bin ignores 
+    trashbin_retention_obligation (server#14414)
+  - Parse multiple navigation items (server#14416)
+  - Fix referrer policy meta tags. (server#14438)
+  - Fix a bug with smb notify having leading slash when it should 
+    not (server#14462)
+  - Fix for issue #13319: load oc-backbone-webdav before loading 
+    versions app (server#14472)
+  - Add accessibility translations (server#14490)
+  - Run tests that fail with "no such process" over to apache 
+    server (server#14495)
+  - Make header.feature more robust by running it on apache 
+    (server#14497)
+  - Fix expire date change eventhandler (server#14503)
+  - Update icewind/smb to 3.0.2 (server#14512)
+  - Do not cut full color on accessibility svg color invert 
+    (server#14516)
+  - Dav: Fix handling of chunked WebDAV upload (server#14517)
+  - Do not just write foobar (server#14521)
+  - Fix database configuration (server#14531)
+  - Add activities for group membership changes (server#14534)
+  - Check if password can be changed for the users backend in OCS 
+    api (server#14542)
+  - Add test for updated CA bundle (server#14546)
+  - Clear backupcode reminder when no 2fa (server#14559)
+  - Use a tmp file for swift writes (server#14570)
+  - Have streams of files_external in sync (server#14580)
+  - Resolve user and groups in nested groups first before filtering
+    the results (server#14591)
+  - Remove Google+ from Social Sharing Bundle (server#14596)
+  - Do not calculate folder size for parent that also needs proper 
+    scan, fixes #3524 (server#14597)
+  - Mention Open Cloud Mesh in Federated User Settings 
+    (server#14599)
+  - Update index.php (server#14601)
+  - Remove sensitive SMB arguments from exception log 
+    (server#14658)
+  - Prevent recursion when moving a file to the trashbin 
+    (server#14661)
+  - Disable fragile tests (server#14672)
+  - Use SCSS variables since CSS vars are not loaded on public 
+    pages (server#14677)
+  - Handle long etags from dav external storage (server#14694)
+  - Improve lookup server behaviour (server#14696)
+  - Add an integration test that ensures deletion of LDAP users 
+    (server#14697)
+  - Dont try to restore a trashbin item to a readonly target 
+    (server#14699)
+  - Throw a proper error if rename fails in dav (server#14700)
+  - Groupname like username - allow share with both (server#14709)
+  - Updated documentation go.php to 15 and adjusted copyright year.
+    (server#14716)
+  - Always register the Notifier (server#14749)
+  - Fix getting the access list on external storage (server#14751)
+  - Always allow moving mountpoints inside the same mountpoint 
+    (server#14759)
+  - Use current directory for hashing. (server#14762)
+  - Fix user creation using LDAP Plugin (server#14781)
+  - Avoid replacement by user object (server#14795)
+  - Fix placeholder in disable message (server#14840)
+  - Fix setup checks for ocm/ocs-provider (server#14854)
+  - Remove Google+ federation usersettings (server#14855)
+  - Add setup check for missing UTF8MB4 on mysql (server#14857)
+  - Make regions translatable (server#14859)
+  - Show a setup warning in case S3 object storage is used as 
+    primary storage (server#14865)
+  - Fix plural rule detection for languages (server#14867)
+  - Fix translations of settings (server#14882)
+  - Fix opening folders from different file lists (server#14891)
+  - Fix hidden file display in grid view (server#14924)
+  - Locale is not language (activity#355)
+  - Fallback to plaintext subject if no rich subject is set 
+    (activity#358)
+  - Ignore query arguments in single video share for stable15 
+    (Fix #121) (files_videoplayer#122)
+  - Less alerting log entries on fails (notifications#291)
+
+-------------------------------------------------------------------
+Fri Mar  1 08:00:06 UTC 2019 - ecsos@opensuse.org
+
+- Fix Update nextcloud 15.0.4 to 15.0.5 error "ocm-provider" 
+  apache2. (server#14445)
+
+-------------------------------------------------------------------
+Thu Feb 28 16:56:08 UTC 2019 - ecsos@opensuse.org
+
+- Update to 15.0.5
+  - Show autocompletion as soon as "@" is typed (server#13961)
+  - Trim filename in webfrontend for windows compatibility 
+    (server#13978)
+  - Clean code and fix drop zone shadow (server#13982)
+  - Show original path in trashbin (server#14029)
+  - Update icewind/smb to 3.0.1 (server#14068)
+  - Fix: Check if `$this->params['user']` is an array 
+    (server#14085)
+  - [Security] Bump lodash from 4.17.10 to 4.17.11 
+    in /apps/updatenotification (server#14093)
+  - [Security] Bump lodash from 4.17.10 to 4.17.11 
+    in /apps/accessibility (server#14094)
+  - [Security] Bump lodash from 4.17.10 to 4.17.11 
+    in /apps/oauth2 (server#14095)
+  - Make sure the relative path is always a string (server#14101)
+  - Fix the thorrtler whitelist bitmask (server#14151)
+  - [Security] Bump handlebars from 4.0.12 to 4.1.0 in /build
+    (server#14187)
+  - Fix recent files (server#14195)
+  - Update CRL to contain revoked files_external_dropbox, 
+    passman & payback (server#14201)
+  - Ensure attribute names are lower cased (server#14203)
+  - Fix small glitches in update notification page (server#14207)
+  - Fix expiration date changing (server#14212)
+  - Fix trashbin restore translation (server#14213)
+  - Remove trailing spaces from localized strings (server#14225)
+  - Fixing phpdoc in FullTextSearch/Model/ISearchResult 
+    (server#14268)
+  - Fix empty file uploads to S3 (and other streaming storages) 
+    (server#14273)
+  - Do not do redirect handling when loggin out (server#14275)
+  - Catch Request exception in testRemoteUrl (server#14277)
+  - Correctly determinate the owner in case of shared external
+    storages (server#14283)
+  - Fix header label visibility on open menu (server#14287)
+  - Prefix $path for filename for internal file cache
+    (server#14288)
+  - Set false as default for requirePNG (server#14292)
+  - Use proper scroll container when dragging files (server#14301)
+  - Fix OC.getCurrentUser() on guest pages (server#14308)
+  - Fix ocm end-point discovery discovery (server#14312)
+  - Apply theme to 2FA button (server#14331)
+  - Fix "Undefined index: user_uid" on login page (server#14339)
+  - Fix unsafe array access (server#14340)
+  - Always query lookup server in GS mode (server#14368)
+  - Use latest ca-bundle.crt from 
+    https://curl.haxx.se/docs/caextract.html (server#14371)
+  - Try to support 7.3 for DAV (3rdparty#213)
+  - Backport/stable15/streams 0.7.1 (3rdparty#244)
+  - Don't add empty entries to the objects array (activity#347)
+  - Ensure parameters are always an array (activity#350)
+  - Bye, Scrutinizer! (notifications#293)
+
+-------------------------------------------------------------------
+Fri Feb  8 21:41:33 UTC 2019 - ecsos@opensuse.org
+
+- Fix require php versions. boo#1084320
+
+-------------------------------------------------------------------
+Thu Feb  7 10:20:42 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to 15.0.4
+  - Make external storages browsable again in the web UI 
+    (server#14076)
+  - Upload new files in objectstore to a .part path first 
+    (server#13036)
+  - Broker: add timezone to CANCEL messages (server#13384)
+  - Add strengthify.min files (server#13546)
+  - Fix click app names (server#13575)
+  - Principals can be principal/user/ or principal/ from lega… 
+    (server#13582)
+  - Correctly handle displaynames returned from the sharee API
+    (server#13585)
+  - Don't close input stream when writing in encrypted file 
+    (server#13588)
+  - Bump pear/archive_tar to 1.4.5 (server#13598)
+  - Fix integer background job id type error (server#13609)
+  - Fix user settings label translation (server#13611)
+  - Fix app navigation flickering on hover (server#13625)
+  - Update URL for federation (server#13636)
+  - Fix colorizeSvg with transformations that contain a comma (,)
+    (server#13653)
+  - Use warning background color & primary text color for setting 
+    warnings (server#13665)
+  - Fix template paramter (server#13670)
+  - Cache tokens when using swift's v2 authentication 
+    (server#13740)
+  - Cleanup shared lock if changing to exclusive lock failed 
+    (server#13744)
+  - Honor remember_login_cookie_lifetime (server#13758)
+  - Fix integration of social sharing into the link popover menu
+    (server#13761)
+  - Respect user locale in natural sort comparator (server#13762)
+  - Call proper function when fetching link shares in the 
+    breadcrumb view (server#13769)
+  - Add acceptance tests for moving and copying files (server#13771)
+  - Show proper default locale (server#13781)
+  - Ignore non existing users when retrieving details of group 
+    members (server#13792)
+  - Remove .css fileending from accessibility user css route 
+    (server#13793)
+  - Add icon to restore activity (server#13794)
+  - Fix long comment in dark theme (server#13804)
+  - Bump bower from 1.8.4 to 1.8.8 in /build (server#13821)
+  - Fix for high contrast theme (server#13852)
+  - Always use multipart uploader for s3 uploads (server#13882)
+  - Fix paged search with multiple bases (LDAP) (server#13884)
+  - Fix dropping a folder on a folder row (server#13887)
+  - Fix updating the password of a link share when passwords are 
+    enforced (server#13900)
+  - Add fallback for trashbin original location (server#13904)
+  - Allow shared versions again in legacy backend (server#13905)
+  - Improve data directory write checking for NFS mounts 
+    (server#13906)
+  - Clean pending 2FA authentication on password reset 
+    (server#13915)
+  - Forward error message from password policy (server#13918)
+  - Remove warning in case of external storage error 
+    (server#13920)
+  - Handle mail send error gracefully (server#13930)
+  - Bump pear/archive_tar from 1.4.3 to 1.4.5 (3rdparty#214)
+  - Move to SCSS and fix app icon for dark theme (activity#338)
+  - Fill screen in fullscreen mode for public videos. Fixes #77 
+    (files_videoplayer#79)
+  - Use target="_blank" and rel="noreferrer noopener" 
+    (firstrunwizard#105)
+  - Fix notification documentation to reflect recent changes 
+    (notifications#258)
+
+-------------------------------------------------------------------
+Sat Jan 12 09:49:21 UTC 2019 - ecsos@opensuse.org
+
+- Update to 15.0.2
+  - Don't log parameters on user creation in case of 
+    error/exception (server#13479)
+  - RemoveClassifiedEventActivity: check if calendar still exists 
+    (server#13506)
+  - Broker: add timezone to CANCEL messages (3rdparty#196)
+    
+-------------------------------------------------------------------
+Thu Jan 10 15:48:48 UTC 2019 - ecsos@opensuse.org
+
+- Update to 15.0.1
+  - Change doc link for 15 (server#12963)
+  - Use strengthify.min on personal settings page (server#12984)
+  - Use default cursor for disabled primary buttons (server#13007)
+  - Better activities for systemtags that are removed by CLI
+    (server#13029)
+  - Ie11 compatibility updatenotifications (server#13076)
+  - Fix exception on LDAP mapping during login (server#13119)
+  - Fix SAML Client login flow on Apple devices (server#13123)
+  - Only trust the X-FORWARDED-HOST header for trusted proxies 
+    (server#13150)
+  - Prevent special characters from breaking the file drop remote 
+    url (server#13151)
+  - Allow content provider to generate new Index (server#13155)
+  - Make the footer "Get your own free account" translatable 
+    (server#13169)
+  - Use a case insensitive search for email (server#13179)
+  - Fix ie11 checkboxes (server#13206)
+  - SCSS cache buster is a combination of apps/theming/scc_vars 
+    (server#13209)
+  - Files list not rendering if user has favorites navigation 
+    unfolded (server#13215)
+  - Do not forgot to store the second displayname portion 
+    (server#13218)
+  - Add default values when parsing account data (server#13252)
+  - Fix opening search results for comments (server#13253)
+  - Fetch lastInsertId only when id null (server#13278)
+  - Add caching headers for public previews (server#13328)
+  - Unbundle user_external to release it via appstore 
+    (server#13329)
+  - Rewrite getNumberOfUnreadCommentsForFolder query (server#13335)
+  - Fix can change password check in case of encryption is enabled 
+    (server#13349)
+  - Update the CRL (server#13352)
+  - Check anonymous OPTIONS requests file in root (not in subdir) 
+    (server#13354)
+  - Re add the uploaded file list to file drops (server#13355)
+  - Returns a 404 instead of exception if app is not installed 
+    - #13088 (server#13357)
+  - Transpile arrow function for ie11 compatibility (server#13360)
+  - IE fix for apps menu (server#13361)
+  - Allow URI as data for vcard PHOTO (server#13366)
+  - Throttle with correct metadata (server#13368)
+  - Fix loginflow with apptoken enter on iOS (server#13370)
+  - Register and show when an LDAP user was detected as 
+    unavailable/deleted (server#13372)
+  - Fix apps menu overlapping (server#13404)
+  - Use the real logger in the settings (server#13405)
+  - CSP: Allow fonts to be provided in data (server#13411)
+  - HttpClient getHeader can return empty string (server#13425)
+  - Respect classification of calendar events in activity stream 
+    (server#13439)
+  - Add support for boolean default (server#13444)
+  - Show the repair steps and repair info output in the web for 
+    better feedback (server#13469)
+  - Fix PDF sidebar shown in PDF thumbnails (files_pdfviewer#114)
+  - Do not get the url from the download links 
+    (files_videoplayer#74)
+  - Use proper slogan from theming app (firstrunwizard#94)
+  - Update info.xml (firstrunwizard#96)
+  - Update richObjectStringParser.js (notifications#245)
+
+-------------------------------------------------------------------
+Thu Dec 20 07:06:43 UTC 2018 - ecsos@opensuse.org
+
+- fix require php versions.
+
+-------------------------------------------------------------------
+Mon Dec 10 17:15:24 UTC 2018 - ecsos@opensuse.org
+
+- Update to 15.0.0
+  Nextcloud 15 introduces social networking, next-gen 2-factor 
+  authentication and innovative collaborative document editing 
+  abilities. 
+  This release also adds a new design and grid view, workflow 
+  features and 2-3x faster loading performance.
+  
+  As this is a major release, the changelog is very long. 
+  Find an overview of what has been improved in this series of blog 
+  posts or see: https://nextcloud.com/changelog/
+  
+- Use php7 in apache under suse_version >= 1500 now.
+
+-------------------------------------------------------------------
+Tue Nov 27 22:51:28 UTC 2018 - ecsos@opensuse.org
+
+- Fix warning for /.well-known/{caldav,carddav} in overview 
+  security & setup warning.
+
+-------------------------------------------------------------------
+Thu Nov 22 16:56:26 UTC 2018 - ecsos@opensuse.org
+
+- update to 14.0.4
+  - Allow overwrite.cli.url without trailing slash (server#11772)
+  - Remove duplicate call to decodeURIComponent (server#11781)
+  - Check for empty string (server#11783)
+  - Add "Referrer-Policy" to htaccess file, addresses issue #11099
+    (server#11798)
+  - Always query the lookup server in a global scale setup 
+    (server#11800)
+  - Fix a case where "password_by_talk" was not a boolean
+    (server#11851)
+  - Add .l10nignore files for compiled assets (server#11925)
+  - Properly escape column name in "createFunction" call 
+    (server#11929)
+  - Allow userId to be null (server#11939)
+  - Allow "same-origin" as "Referrer-Policy" (Backport to stable14)
+    (server#11950)
+  - Do not emit preHooks twice on non-part-storage (server#11961)
+  - Filter null values for UserManager::getByEmail (server#11976)
+  - Allow local delivery of schedule message while prohibiting 
+    FreeBusy requests (server#11979)
+  - Load apps/APP/l10n/*.js and themes/THEME/apps/APP/l10n/*.js 
+    (server#11990)
+  - Lazy open first source stream in assemblystream (server#11994)
+  - Fix opening a section again in the Files app (server#11995)
+  - Remove cookies from Clear-Site-Data Header (server#12005)
+  - Forwarded ExpiredTokenException (server#12032)
+  - Allow chunked uploads even if your quota is not sufficient
+    (server#12040)
+  - Improve encrypt all / decrypt all (server#12045)
+  - Double check for failed cache with a shared storage 
+    (server#12108)
+  - Implement the size of an assembly stream (server#12111)
+  - Bring the browser window of an actor to the foreground when 
+    acting as him (server#12120)
+  - Move acceptance tests that crash the PHP built-in server to
+    Apache (server#12121)
+  - Remove unneeded empty search attribute values, fixes #12086 
+    (server#12122)
+  - Fixes wrong variable usage (server#12137)
+  - LDAP: announce display name changes so that addressbook picks 
+    it up (server#12141)
+  - Bruteforce protection handling in combination with 
+    (server#12160)
+  - Add global site selector as user back-end which doesn't support 
+    password confirmation (server#12184)
+  - Do not set indeterminate state for file shares (server#12187)
+  - Revert "Wait for cron to finish before running upgrade command" 
+    (server#12197)
+  - Fix bug #12151: fix list formatting by correcting malformed
+    html (server#12202)
+  - A folder should get a folder mimetype (server#12297)
+  - Use the proper server for the apptoken flow login
+    (server#12299)
+  - Do not log FileLock as exception (server#12300)
+  - Set the filemodel before rending the detailsview (server#12301)
+  - Disabled ldap fix (server#12331)
+  - Fix - Add to favorites not working in IE11 (server#12339)
+  - Remove arrow function for ie compatibility (server#12341)
+  - Fix default types of activity event member variables
+    (server#12353)
+  - Suppress wrong audit log messages about failed login attempts 
+    (server#12372)
+  - Add fix for IE11 flexbox height bug (server#12374)
+  - Properly search the root of a shared external storage 
+    (server#12375)
+  - Fix app update available check (server#12412)
+  - Use nextcloud-password-confirmation (server#12416)
+  - Fix IE rule for min width (server#12431)
+  - Added cache override to ensure an always up-to-date 
+    accessibility css (server#12432)
+  - Unique contraint and deadlock fixes for filecache and 
+    file_locks (server#12433)
+  - Fix app menu calculation for random size of the right header 
+    (server#12440)
+  - Fix missing quickaccess favorite folder on add (server#12441)
+  - Fixes dav share issue with owner (server#12459)
+  - Fix wrong share popover opening on share link (server#12482)
+  - Only use width and opacity for transition (server#12492)
+  - Forward object not found error in swift as dav 404 
+    (server#12502)
+  - Fix the warning appearing in the admin section when
+    mail_smtpmode is not configured (server#12529)
+  - Remove unused svg api route (server#12542)
+  - Bearer tokens are app token (server#12545)
+  - Handle permission in update of share better (server#12561)
+  - Correctly restrict affected users when using command to send 
+    emails (activity#312)
+  - Improve code blocks in markdown rendering (files_texteditor#121)
+  - Properly escape column name in "createFunction" call 
+    (survey_client#85)
+
+-------------------------------------------------------------------
+Fri Oct 12 16:35:32 UTC 2018 - ecsos@opensuse.org
+
+- update to 14.0.3
+  - Fixes the apps menu scrollbar (server#11662)
+  - Ignore "session_lifetime" if it can not be converted to a 
+    number (server#11761)
+  - Normalize getUnjailedPath (server#11770)
+- changes from 14.0.2
+  - Fix contacts menu on mentions (server#11350)
+  - Make the server ready to use global scale with SAML as auth 
+    back-end (server#11373)
+  - Fix default flex shrink on list (server#11374)
+  - Fixes the logo height (server#11385)
+  - Do not explode when getting permissions from a FailedStorage 
+    (server#11389)
+  - Do not hide the progress bar while the chunked upload is being 
+    assembled (server#11399)
+  - Fix "checkWellKnownUrl" not being run (server#11418)
+  - Add back the total used space per user (server#11425)
+  - Fix invalid inline input confirm border (server#11426)
+  - Center back the history icon (server#11430)
+  - AssemblyStream is also eof if we have no more source stream 
+    (server#11436)
+  - Re-enable upload button after updating Avatar (server#11451)
+  - Fix typo in config.sample.php (server#11488)
+  - Bugfix 2FA theme: buttons white (server#11489)
+  - Update config and babel for ie11 (server#11490)
+  - Only catch QueryException when trying to build class 
+    (server#11492)
+  - Show auth type "None" in email settings (server#11493)
+  - Fix public page footer link wrap (server#11510)
+  - Fix share header text on small widths (server#11511)
+  - Add missing compiled mimetype list (server#11516)
+  - Fixes the move/copy picker buttons (server#11525)
+  - Fix breadcrumbs (server#11530)
+  - Added kinetic scrolling for iOS to apps dropdown menu #10281
+    (server#11554)
+  - Throw an error if a node is smaller than expected in 
+    assemblystream (server#11555)
+  - Reduce the min-width of the files table so it works on sharing
+    pages on mobile (server#11556)
+  - Fix header overflow, fix more apps menu, fix #11552 
+    (server#11558)
+  - Add new group entry on users list + fixes (server#11575)
+  - Redirect guests to login if they follow the link of a comment 
+    mention-notifications (server#11577)
+  - Force multiselect max-height to 5.5 items (server#11579)
+  - Just update password hash without validating (server#11580)
+  - Fix sticky header on users list (server#11582)
+  - Fix header border on users list (server#11608)
+  - Fix call to logger (server#11610)
+  - Allow the creationg of previews of files stored in appdata
+    (server#11703)
+  - Update CRL due to changed cert for linkshareex (server#11706)
+  - Fix a misleading setup check for .well-known/caldav & carddav
+    (server#11738)
+  - Remove unneeded CSS rule for IE 11 (files_pdfviewer#101)
+  - Hide footer in public share page (files_pdfviewer#103)
+  - Fix embedded viewer with new server layout on IE 11 
+    (files_pdfviewer#98)
+
+-------------------------------------------------------------------
+Wed Sep 26 16:16:54 UTC 2018 - ecsos@opensuse.org
+
+- update to 14.0.1
+  - Fixes the upload progress bar layout - 14 backport 
+    (server#11039)
+  - Fix markup and style of mentions in comments (server#11077)
+  - Do not invalidate main token on OAuth (server#11090)
+  - Expire tokens hardening (server#11103)
+  - fix js files client for user names with spaces (server#11152)
+  - Fix user and group listing with users that have an integer 
+    user id (server#11186)
+  - Fix exception class (server#11187)
+  - Remove posix_getpwuid and compare only userid (server#11191)
+  - Fix check for more users in sharing dialogue (server#11201)
+  - Remove filter_var flags due to PHP 7.3 deprecation, 
+    fixes #10894 (server#11237)
+  - Fixes empty favorite names for trailing slashes (server#11259)
+  - Fix size of icons in menus inside apps when shown as images
+    (server#11276)
+  - Prevent comment being composed from overlapping the submit
+    button (server#11277)
+  - replace setcookie value with '' instead of null. (server#11280)
+  - Fix the link and anchor for the update notifications 
+    (server#11282)
+  - Include empty directories in the default state of acceptance
+    tests (server#11283)
+  - Get permission of storage for shares (server#11287)
+  - Shared by info for room shares without names (server#11288)
+  - Fix icons cacher regex for compressed output (server#11291)
+  - Revert "Use APCu caching of composer" (server#11293)
+  - Use user locale as default in the template (server#11294)
+  - Fix expiration code of tokens (server#11302)
+  - Add unit test for findLanguageFromLocale (server#11340)
+  - 14 scroll fix (activity#295)
+  - Update stable14 target versions (files_texteditor#111)
+  - Update stable14 target versions (firstrunwizard#80)
+  - Update stable14 target versions (gallery#467)
+  - Update stable14 target versions (nextcloud_announcements#32)
+  - Update stable14 target versions (notifications#158)
+  - Update config and babel for ie11 (notifications#161)
+
+-------------------------------------------------------------------
+Mon Sep 10 15:04:19 UTC 2018 - ecsos@opensuse.org
+
+- Insert Referrer-Policy in nextcloud.conf
+
+-------------------------------------------------------------------
+Thu Sep  6 18:54:35 UTC 2018 - ecsos@opensuse.org
+
+- update to 14.0.0
+  No changelog from upstrem. Look instead here:
+  https://github.com/nextcloud/server/compare/v13.0.6...v14.0.0
+
+-------------------------------------------------------------------
+Fri Aug 31 17:05:06 UTC 2018 - ecsos@opensuse.org
+
+- update to 13.0.6
+  - Add sabre plugin to allow anonymous options requests to the dav 
+    root (server#10285)
+  - Do scan the root storage in background scan (server#10376)
+  - Adding test for table schedulingobjects and fixing postgres LOB 
+    (server#10552)
+  - Fix transfering ownership of a share to user with same id as 
+    receiver (server#10565)
+  - Make file cache updates more robust (server#10581)
+  - Retry smb stat on timeout (server#10591)
+  - Use insertIfNotExists to store new mimetypes. (server#10620)
+  - Only warn about data lose on password reset if per-user keys 
+    are used (server#10646)
+  - Update the scope of the lockdownmanager (server#10682)
+  - Log entries that are hidden during file listing (server#10698)
+  - Forgotten pass fix link (server#10735)
+  - Fix comment style in config sample (server#10759)
+  - Make sure error_log() always receives a string (server#10760)
+  - Fix call to OC.generateUrl for caldav birthday calendar on/off 
+    (server#10761)
+  - Use the path_hash instead of the path to query the filecache 
+    (server#10762)
+  - Don't blame random people for background email updates 
+    (server#10763)
+  - Resolve all group memberships properly (server#10783)
+  - Remove unexecutable code (server#10816)
+  - Improve URL detection (server#10821)
+  - MySQL 8.0+ and MariaDB 10.3+ are large prefix and 
+    barracuda by default (server#10823)
+  - Disallow negative mtime in dav search (server#10837)
+
+-------------------------------------------------------------------
+Tue Jul 24 12:19:49 UTC 2018 - Mathias.Homann@opensuse.org
+
+- update to 13.0.5
+  - Fix highlighting of the upload drop zone (server#9837)
+  - Apply ldapUserFilter on members of group (server#9839)
+  - Make the DELETION of groups match greedy on the groupID 
+    (server#9841)
+  - Add parent index to share table (server#9843)
+  - Log full exception in cron instead of only the message 
+    (server#9958)
+  - Properly lock the target file on dav upload when not using part
+    files (server#9986)
+  - LDAP backup server should not be queried when auth fails
+    (server#10032)
+  - Fix filenames in sharing integration tests (server#10044)
+  - Lower log level for quota manipulation cases (server#10076)
+  - Let user set avatar in nextcloud if LDAP provides invalid 
+    image data (server#10089)
+  - Improved logging of smb connection errors (server#10093)
+  - Allow admin to disable fetching of avatars as well as 
+    a specific attribute (server#10115)
+  - Allow to disable encryption (server#10121)
+  - Update message shown when unsharing a file (server#10164)
+  - Fixed English grammatical error on Settings page.
+    (server#10165)
+  - Request a valid property for DAV opendir (server#10169)
+  - Allow updating the token on session regeneration 
+    (server#10170)
+  - Prevent lock values from going negative with memcache backend 
+    (server#10180)
+  - Correctly handle users with numeric user ids (server#10185)
+  - Correctly parse the subject parameters for link (un)shares of 
+    calendars (server#10188)
+  - Fix "parsing" of email-addresses in comments and chat messages 
+    (server#10189)
+  - Sanitize parameters in createSessionToken() while logging 
+    (server#10195)
+  - Also retry rename operation on InvalidArgumentException 
+    (server#10201)
+  - Improve url detection in comments (server#10202)
+  - Only bind to ldap if configuration for the first server is set 
+    (server#10233)
+  - Use download manager from PDF.js to download the file 
+    (files_pdfviewer#84)
+  - Fix trying to load removed scripts (files_pdfviewer#87)
+  - Only pull for new messages if the session is allowed to be kept 
+    alive (notifications#138)
+  - Always push object data (notifications#139)
+  - Add prioritization for Talk (notifications#140)
+
+-------------------------------------------------------------------
+Mon Jun 11 16:40:57 UTC 2018 - ecsos@opensuse.org
+
+- update to 13.0.4
+  - Allow setting notify credentials in environment (server#9788)
+  - Make the token expiration also work for autocasting 0 
+    (server#9803)
+  - Enable caldav for webdav subtree public-calendars (server#9820)
+- This also fix security issues:
+  - (boo#1100343, CVE-2018-3762) and (boo#1100344, CVE-2018-3761)
+
+-------------------------------------------------------------------
+Thu Jun  7 22:12:29 UTC 2018 - ecsos@opensuse.org
+
+- update to 13.0.3
+  - Backport various scss fixes #8777 (server#9259)
+  - Fix ellipsis in filename column (server#9344)
+  - Replace deprecated sinon reset() call with resetHistory() 
+    (server#9358)
+  - Issue #9318: catch exceptions in SCSSCacher::resetCache()
+    (server#9377)
+  - Log lock state on conflict (server#9389)
+  - Remove unneeded locks in getCacheEntry (server#9391)
+  - Only allow a single concurrent dav write to a file 
+    (server#9392)
+  - Workflow rules error when changing operation (server#9409)
+  - Fix jsunit tests (server#9430)
+  - Allow IPv6 database host (server#9432)
+  - Add labels for Contacts menu and Settings (server#9433)
+  - Get correct version of an app (server#9436)
+  - Fix ids of permission checkboxes for shares (server#9453)
+  - Fix race condition when preparing upload folder (server#9454)
+  - Allow to specify a link to a legal notice (server#9516)
+  - Fix for unbound cloned LDAP connections (server#9522)
+  - Dont use $info as array when its not an array (server#9525)
+  - Improve OAuth (server#9540)
+  - Bump theming version for extraordinary release (server#9547)
+  - Fix translation bug on lost password page (server#9548)
+  - Cleanup locks in scanner on error (server#9566)
+  - Bump version for theming again 🙇 (server#9573)
+  - Make sure force language is reflected in html lang attribute
+    (server#9579)
+  - Add privacy link to theming and fix scrollbars (server#9586)
+  - Fix settings menu (server#9590)
+  - Handle exception while itterating trough smb file listing
+    (server#9608)
+  - Send invitations for shared calendars (server#9610)
+  - Regenerate session id after public share auth (server#9619)
+  - Emit event when running ./occ db:add-missing-indices 
+    (server#9620)
+  - Add PHP missing message to index.php (server#9621)
+  - Delete the previews when a version is restored (server#9622)
+  - Limit Sinon version to 5.0.7 at most (server#9629)
+  - Prepare another theming release including translations for 
+    recently added imprint and privacy policy strings 
+    (server#9647)
+  - Dont open the file on dav HEAD request (server#9649)
+  - Fix(AmazonS3): fix loop $result['Contents'] error 
+    (server#9650)
+  - Fix undefined variables (server#9651)
+  - Add search category icon (server#9652)
+  - Fix "Invalid argument supplied for foreach()" (server#9654)
+  - Do not load calendar/addressbook plugins if not needed 
+    (server#9655)
+  - Make LargeFileHelper.php faster by avoiding execs as much as 
+    possible (server#9656)
+  - Improve error reporting and move format parameter to the 
+    options (server#9657)
+  - The OAuth endpoint needs to support Basic Auth (server#9659)
+  - LDAP password renewal fixes (server#9661)
+  - Check user state when fetching to avoid dealing with offline 
+    objects (server#9662)
+  - Make sure the file is readable before attempting to create 
+    a preview (server#9668)
+  - Fix drone mysqlmb4 tests (server#9672)
+  - Make sure the log doesn't try to read from PUT if it can't 
+    (server#9694)
+  - Allow admins to override FreeBusy capabilities without 
+    modifying ShareAPI capabilities (server#9707)
+  - Fix the unit tests (server#9712)
+  - Fix header nav (server#9727)
+  - Fix local users check in contacts menu (server#9732)
+  - Don't open the file when handling HEAD requests (3rdparty#99)
+  - Do not sanitize markdown output twice (files_texteditor#101)
+
+-------------------------------------------------------------------
+Thu Apr 26 16:45:18 UTC 2018 - ecsos@opensuse.org
+
+- update to 13.0.2
+  - Show group display names (server#8779)
+  - Group existence check works without attribute (like with users)
+    (server#8849)
+  - The FN is optional, carrying the displayname if present 
+    (server#8900)
+  - Set "share with" field to the ID of the circle (server#8905)
+  - Show EOL warning in the update section (server#8986)
+  - Use app version to generate scss filename (server#9015)
+  - Update icewind/smb to 2.0.5 (server#9017)
+  - Fix search text overlapping close button (server#9019)
+  - Clear any theming prefixed cache on cache buster increase 
+    (server#9020)
+  - Reset encryptionVersion to '1' if a file was stream copied 
+    (server#9064)
+  - Do not treat is-encrypted as custom property (server#9071)
+  - Fix proper permissions for multiple file access (server#9072)
+  - When formatting a share node an Empty target is invalid
+    (server#9073)
+  - Move on with the next user if we found the user on one user 
+    back-end (server#9077)
+  - Allow usage of Windows 10 WebDav Netdrive (server#9089)
+  - Add more logging for the object storage during creation of the 
+    buckets (server#9094)
+  - Do not convert email addresses with idn_to_ascii if… 
+    (server#9095)
+  - Fix progress bar hidden before the upload ends (server#9124)
+  - Update CRL to include old quicknotes cert (server#9213)
+  - Fix user selectable text for public links for text files 
+    (server#9230)
+  - Provide an option to disable HTML emails (server#9231)
+  - Fix appinfo parsing when a single localized option is provided 
+    (server#9233)
+  - Use multibyte substring (server#9234)
+  - Fix webdav support for OneNote clients (server#9236)
+  - Fixed files copy/move when in favorites or recent section 
+    (server#9238)
+  - Don't update personal settings for admins (activity#262)
+  - Skip parameters which are not there instead of failing out 
+    (activity#265)
+  - Bump version 13 (files_pdfviewer#64)
+  - Fix info.xml (files_pdfviewer#66)
+  - No default enable (files_pdfviewer#67)
+  - Fix position of icons in "Share with" input field (gallery#418)
+  - Fix "No results found" tooltip (gallery#419)
+  - Fix UI while a share is being added (gallery#420)
+  - Hide "No results found" tooltip on autocompletion (gallery#424)
+  - Fix error while clicking on the share link checkbox 
+    (gallery#430)
+
+-------------------------------------------------------------------
+Thu Mar 15 16:33:22 UTC 2018 - ecsos@opensuse.org
+
+- update to 13.0.1
+  - Dont polute the log on DAV emaillogin (server#8045)
+  - Don't perform CSRF check on OCS routes with Bearer auth 
+    (server#8099)
+  - Use S3Client::upload instead of splitting single/multipart 
+    upload ourselves (server#8102)
+  - Remove old perl script to update l10n files (server#8145)
+  - Scss hardening (server#8156)
+  - Do not try to get the jailed path if we can't find the id 
+    (server#8177)
+  - Handle SSL certificate verifications for others than 
+    Let's Encrypt (server#8183)
+  - Use a phan version instead of master (server#8195)
+  - Repair step to clear frontend related caches (server#8197)
+  - Keep previous exception when transforming to dav exception
+    (server#8228)
+  - Actually return stream from swift (server#8250)
+  - Remove invalid link to documentation (server#8253)
+  - Fix deleting folders when using s3 external storage  
+    (server#8261)
+  - Link to NC13 dev manual (server#8264)
+  - Better result handling of email search (server#8267)
+  - Update CRL to revoke files_rightclick (server#8271)
+  - Fix styling issues of guest pages #8155 (server#8286)
+  - Remove jquery ui background image (server#8287)
+  - Show open graph preview in WhatsApp (server#8309)
+  - Make acceptance tests for comments more consistent with the 
+    others (server#8395)
+  - Fix edit tag textbox size (server#8407)
+  - Use TTF fonts for avatar generation (server#8440)
+  - Use mb_* string methods to extract first character for 
+    generated avatars (server#8470)
+  - Show hint in OCS API for user creation (server#8515)
+  - Fix hiding and event propagation issues with the user 
+    management popover (server#8517)
+  - Add some whitespace around change.svg icon (server#8518)
+  - Avoid fruitless login attempts (server#8532)
+  - Fix retrieval of group members with numerical uids from LDAP 
+    (server#8536)
+  - Theming: handle not being in the serverroot (server#8554)
+  - Ext storage error warning (server#8561)
+  - Set autocomplete=new-password for mail share password
+    (server#8577)
+  - Fix upload button visible on read-only folders (server#8595)
+  - Fixed app navigation for IE11 (server#8609)
+  - Fix breadcrumbs width calculation (server#8610)
+  - Fix comments (and systemtags) when involving users with 
+    numerical ids (server#8615)
+  - Update commentstabview.js (server#8621)
+  - Properly encapsulate require_once for app.php (server#8631)
+  - AppData hardening (server#8636)
+  - Use hash algo that's robust against collisions (server#8654)
+  - Fixed date/time picker on IE11 (server#8663)
+  - Use a more widely available method to test s3 settings 
+    (server#8667)
+  - Use proper lanugage in langauge code (server#8668)
+  - Display the proper language strings in setttings (server#8669)
+  - Do not create empty userid when attribute does not have allowed
+    chars (server#8673)
+  - Remove too restrict check for background image/color
+    (server#8675)
+  - Fix example regex for user agent matching (server#8676)
+  - Generate different UIDs for Birthday, Anniversary and Death
+    event (server#8678)
+  - Don't use double quotes in MySQL queries (server#8680)
+  - Log exceptions that happen when writing the app store reply
+    to storage (server#8683)
+  - Set the correct active navigation entry (server#8685)
+  - Fix activities for end2end encryption (server#8686)
+  - Filter out the current user when searching for emails too 
+    (server#8687)
+  - Fix check if theming defaults instance is available 
+    (server#8688)
+  - Fix undefined index problem (server#8693)
+  - Disable part files for object stores (server#8725)
+  - Better handling of invisible elements in acceptance tests
+    (server#8738)
+  - Remove base url from global cache prefix (server#8745)
+  - Check if the cached js file exists (server#8746)
+  - Sharee email matches not limited (server#8749)
+  - Fix integer overflow in ChunkingPlugin (server#8752)
+  - Revert wording back to updates (server#8755)
+  - Add acceptance tests for permissions on public shared folders 
+    (server#8758)
+  - Also send file emails in ASAP mode (activity#249)
+  - Ensure userids are strings (activity#252)
+  - Null coalescing operator is PHP7+ (activity#254)
+  - Update PDF.js to 1.9.426 (files_pdfviewer#55)
+  - Enable full screen mode for PDF files (files_pdfviewer#59)
+  - Fix ACE module files failing to load (files_texteditor#83)
+  - Do not keep FileInfoModels returned by "getModelForFile" 
+    (files_texteditor#89)
+  - Fix share drop down in gallery not properly shown (gallery#394)
+  - Fix gallery button hidden in folders without create permission
+    (gallery#402)
+  - Fix controls position in gallery layout (gallery#405)
+  - Removed old code already present thanks to the files app
+    (gallery#406)
+  - Create "file app" public share links if the slideshow is
+    opened from ... (gallery#407)
+  - Allow to check against haveibeenpwned.com password list 
+    (password_policy#61)
+
+-------------------------------------------------------------------
+Tue Feb  6 12:23:12 UTC 2018 - ecsos@opensuse.org
+
+- update to 13.0.0
+  Over 1100 changes were merged in the server, with many hundreds 
+  more in existing or new apps. The main improvements include:
+  * Collaboration features
+    - Nextcloud Talk, a private videoconference software integrated 
+      with Nextcloud
+      - real-time and asynchronous communication with push 
+        notifications, calls and chat web and mobile devices
+      - Integration in business workflow with calendar invitations 
+        and calls directly from Nextcloud Files
+      - Screen and note sharing with participant moderation 
+        capabilities
+      - 100% secure peer-to-peer, end-to-end encrypted calls, 
+        mediated by self-hosted server
+    - auto-completion of user names in comments and notification 
+      to the mentioned user
+    - support free/busy scheduling in native calendar applications 
+      like Thunderbird Lightning
+    - show meeting invites in the calendar
+  * End-to-End Encryption
+    - can encrypt data on a per-folder level rather than 
+      all-or-nothing approach
+    - does not require users to remember or exchange passwords
+    - does not require re-uploading data upon sharing
+    - features an optional off-line administrator recovery key
+    - allows full audit logging
+    - can be combined with our File Access Control feature so 
+      administrator can enforce aspects of End-to-end Encryption
+    - protects from identity theft with our Cryptographic Identity 
+      Protection feature
+    This feature is in Tech Preview for Nextcloud 13 and does not 
+    yet implement sharing.
+  * User Interface
+    - new way of selecting files
+    - easy way to quickly copy or move to a location
+    - High DPI support
+    - admin menu integrated in one list
+    - no limitation to file uploads via the web interface
+    - user quota in the side bar
+    - social sharing (Twitter, G+, Facebook, Diaspora) now features
+      a preview
+    - improved theming
+  * Performance
+    - decreased page load times with up to 50% and faster search
+    - 80% faster LDAP and up to 10x faster external storage
+    - Server-side Encryption performance largely improved
+        
+   See https://nextcloud.com/changelog/
+
+-------------------------------------------------------------------
+Wed Jan 24 15:46:44 UTC 2018 - ecsos@opensuse.org
+
+- update to 12.0.5
+  Many fixes were merged, the most important ones include:
+  - #7144 Unlock files even if an exception occurs
+  - #7322 Set primary action button color to same as theming color
+  - #7323 Use the correct root for shared jail when the source 
+    storage is also a jail
+  - #7353 Fix translation of federation scope menu
+  - #7362 Allow to skip data dir permission checks
+  - #7407 Check if owner of share exists
+  - #7409 Add retry wrapper when reading files from swift
+  - #7451 Fix constructor spy in unit test with Sinon 4.1.3
+  - #7455 Remove wrong entry in admin_settings that causes 500
+  - #7456 CardDAV convertor check should not be to wide
+  - #7457 Fix loading icon position in the app menu
+  - #7464 Allow getting the filepath when getting cached mounts
+  - #7468 Allow 'Nextcloud' in the user agent string of Android
+  - #7558 Fix email buttons for white theme
+  - #7567 Respect sharing options when searching for Sharees
+  - #7568 Fix duplicate session token after remembered login
+  - #7577 Check userExists later, 
+    saves lookups for appData_INSTANCEID userids
+  - #7672 Added additional methods for removal of sensitive info
+  - #7688 Fix scss webroot and url rewrite
+  - #7717 Throw ServerNotAvailableException when LDAP is caught 
+    shutting down
+  - #7666 Fix drag shadow not visible when dragging a file on 
+    a narrow screen
+  - #7674 Do no run SyncJob in cron
+  - #7684 Fix inverted app icons on IE11
+  - #7694 Don't attempt to translate login names to uids when uids
+    are provided
+  - #7708 Don't show recurring msg when pages result was turned off
+  - #7742 Hide favourite icon in details view if favourite action 
+    is not available
+  - #7745 Don't lie about preview types
+  - #7747 Update of composer
+  - #7758 add option to use legacy v2 auth with s3
+  - #7759 Use correct L10N files for jsconfig
+  - #7757 Wait for the shared link to be set in the acceptance 
+    tests
+  - gallery/#349 Fix date picker not visible in slideshow sharing 
+    dialog
+  - activity/#229 Properly construct path of root on file rename
+  - #7770 Fix SCSS processing when undoing theming values
+  - #7774 Update icewind/smb to 2.0.3
+  - #7777 Set height for sidebar icons
+  - #7779 Improve zip support
+  - #7786 Return correct mount type for federated shares
+  - #7792 Fix empty details view after renaming a file
+  - #7817 Fix preview when theming changes invertion of icons
+  - #7821 Log full exception in cron instead of only the message
+  - #7888 Keep all shipped apps enabled because they should be okay
+  - #7962 update icewind/smb to 2.0.4
+
+-------------------------------------------------------------------
+Tue Dec 19 18:38:20 UTC 2017 - ecsos@opensuse.org
+
+- Nextcloud 12 is not compatible with php ≥ 7.2,
+  so php < 7.2 is needed.
+
+-------------------------------------------------------------------
+Mon Dec  4 17:13:49 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 12.0.4
+  * Server
+    Over 50 fixes were merged in the server.
+    - Improve text: 'you have now' -> 'you now have (server#6464)
+    - Fix initializing paged search under some circumstances 
+      (server#6502)
+    - LDAP: simplify returning the homePath (server#6509)
+    - Fix sharer name overlap with filename (server#6524)
+    - Allow to close sidebar for text files (server#6525)
+    - Fix quota new endpoint 12 (server#6527)
+    - Pass new value to triggerChange (server#6528)
+    - Throw 101 when an empty group string is provided 
+      (server#6547)
+    - Contacts menu privacy (server#6554)
+    - Add color-border variable (server#6649)
+    - Do not stop on scss compilation failure (server#6661)
+    - Don't pass User object when uid string is expected 
+      (server#6674)
+    - Navigate to the root directory when showing the main filelist 
+      (server#6689)
+    - Fix LDAP User deletion (cleanup) (server#6699)
+    - Update aws sdk + s3 improvements (server#6737)
+    - Dont run invalid path repair step when upgrading 
+      from 11.0.5.2 and later (server#6743)
+    - Fix language when trying to change password (server#6751)
+    - Fix postgresql tests (server#6792)
+    - Also use configured 'cache_path' for new chunking 
+      (server#6814)
+    - Set s3 part size to 500mb (server#6815)
+    - Fix contacts menu for IE11 (server#6823)
+    - Still trigger conflict resolution for existing entries when 
+      the curre (server#6847)
+    - Propagate multipart upload exception when aborting upload 
+      (server#6855)
+    - Allow to migrate from 10.0.3.3 (server#6878)
+    - Timespan check (server#6896)
+    - Do not log WebDAV maintenance mode exception (server#6908)
+    - Don't reset quota (server#6910)
+    - Backport of translation string fixes (server#6935)
+    - Fix class name in exception logger plugin (server#6942)
+    - Allow quota of 0 again (server#6943)
+    - Fix uninitialized variable $this->params (server#6944)
+    - Don't add a LIKE condition when it's not needed (server#6945)
+    - Fix undefined offset warning when using '/' as external 
+      storage root (server#6946)
+    - Fix page title not changed (server#6987)
+    - Better readability for text on log in page which is directly 
+      on backgrounds (server#7028)
+    - Translate Grant Access (server#7040)
+    - Use fopen directly when reading objects from s3 (server#7079)
+    - Improve mimetype detection for object storages (server#7081)
+    - Fix seeking on object storage (server#7082)
+    - Hide spinner for initial install (server#7095)
+    - Ensure uid for calendar objects is unique (server#7096)
+    - Revert "Only allow colons in db host for IPv6 addresses 
+      (server#7102)
+    - Theme flow redirection page (server#7114)
+    - Fix icon for security settings (server#7116)
+    - If for some reason the json can't be decoded it is not cached
+      (server#7118)
+    - Improve performance of UserMountCache with external storage 
+      folders (server#7120)
+    - {J,CS}SResourceLocator: account for symlinks in app path 
+      (server#7170)
+    - Fix s3 download and touch (server#7186)
+    - Touch opertation on object storage, don't create 
+      the file cache entry to early (server#7207)
+    - Allow migration from upcoming 10.0.4 ownCloud release 
+      (server#7245)
+    - CSSResourceLocator: handle SCSS in apps outside root 
+      (server#7257)
+    - only replace permission popupmenu (server#7259)
+    - Fix accesslist when a user has an ID only containting 0-9 
+      (server#7262)
+    - Update CRL due to files_frommail (server#7277)
+    - Only in case of $currentAccess the array uses the id as index
+      (server#7328)
+  * Other
+    - Add aws sdk (3rdparty#69)
+    - Don't send emails to disabled users (activity#202)
+    - Add an option to disable emails completly (activity#206)
+    - Make sure the mountPoint property is public before using it 
+      (files_accesscontrol#79)
+    - Allow to playback m4v files (files_videoplayer#43)
+    - Fix notifications order (notifications#93)
+    
+-------------------------------------------------------------------
+Tue Sep 19 15:44:28 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 12.0.3
+  Nextcloud 12.0.3 delivers a lot of enhancements in various areas 
+  including:
+    - A number of improvements to email notification templates
+    - 2FA enhancements
+    - Smarter LDAP password handling
+    - File Drop and upload-in-general updates
+    - A performance improvement handling large files
+  See https://nextcloud.com/changelog/#latest12
+  Details: https://github.com/nextcloud/server/pulls?q=is%3Apr+milestone%3A%22Nextcloud+12.0.3%22+is%3Aclosed
+  
+-------------------------------------------------------------------
+Tue Aug 15 09:16:16 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 12.0.2
+  * Server
+    - Minor bugfix release
+
+-------------------------------------------------------------------
+Thu Aug 10 19:47:41 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 12.0.1
+  So many changes. See https://nextcloud.com/changelog/#latest12
+
+-------------------------------------------------------------------
+Mon Jul 17 18:32:45 UTC 2017 - ecsos@opensuse.org
+
+- unneeded git-files should not be remove,
+  otherwise it throw integrity check failure in some situations.
+
+-------------------------------------------------------------------
+Mon May 22 15:28:21 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 12.0.0
+  no changelog from upstream at this time
+  See https://github.com/nextcloud/server/issues?q=is%3Aissue+milestone%3A%22Nextcloud+12.0%22+is%3Aclosed
+
+-------------------------------------------------------------------
+Fri Apr 28 22:46:46 UTC 2017 - ecsos@opensuse.org
+
+- fix boo#1036756: package security issue
+
+-------------------------------------------------------------------
+Mon Apr 24 18:09:20 UTC 2017 - adamradovits12@hotmail.com
+
+- upstream update to version 11.0.3
+  * Server
+    - Use the correct principal for shared addressbooks 
+	  (server/3608)
+    - Fix saving backup codes by using a correct data uri 
+	  (server/3652)
+    - Update icewind/streams to 0.5.2 (server/32931)
+    - Fix string comparison and return docs (server/3665)
+    - Typecast shared mount's storage_id to int as documented
+      + some refactor to avoid similar bugs (server/3658)
+    - Use a proper date format for transfer ownership 
+	  (server/3700)
+    - DAV sharing permissions should not depend on the order 
+	  (server/3722)
+    - Add new user agent of windows 10 dav backend 
+	  (server/37641)
+    - Add back appstoreenabled config switch (server/37671)
+    - Call right function after sudo mode (server/3820)
+    - Dont allow empty wildcard search (server/3842)
+    - Remove single quotes around search query like in 
+	  user search (server/3849)
+    - Fix mimetype detection on public uploads for the 
+	  workflow engine (server/3765)
+    - Fix branding and show Nextcloud (server/39691)
+    - Fix reshare with user activity message (server/39812)
+    - Create correct VCard and return correct error codes 
+	  (server/4029)
+    - Prevent migration from ownCloud 10 to Nextcloud 11 
+	  (server/34151)
+    - Make sure transparency is an integer when saving a 
+	  calendar (server/4167)
+    - Make public links work with master key (server/42071)
+    - Don't try to render the avatars if avatars are 
+	  disabled (server/4214)
+    - Reduce error message text (server/42281)
+    - Don't list on public calendar endpoints (server/4229)
+    - Fix upload of folders in Chrome (server/4154)
+    - Make sure blob columns are correctly converted as 
+	  parameters (server/4233)
+    - Save the scope of an auth token in the session 
+	  (server/4225)
+    - Take share by mail into consideration if we calculate 
+	  the access list (server/4242)
+    - Also add the root of external storages to the file id 
+	  list (server/4237)
+    - Fix LDAP description (server/42382)
+    - Remove the double password confirmation on changing 
+	  cron (server/4236)
+    - Fix scheduling plugin on legacy caldav endpoint 
+	  (server/4235)
+    - Directly fix invalid values of DTEND and DTSTART 
+	  (server/4234)
+    - Make JobList::next() lock free (server/4254)
+    - Don't remove owner property for public calendars 
+	  (server/4272)
+    - Add capabilities for share by mail (server/42511)
+    - Dont use the permissions mask while scanning 
+	  (server/4278)
+    - Add missing maintenance plugin to new DAV endpoint 
+	  (server/4290)
+    - Fix bug with shared_by for own calendars if shared 
+	  (server/4301)
+    - Translation string corrected > 1 user (server/4377)
+  * Activity
+    - Fix activities for "Files drop" on external storages 
+	  (activity/118)
+  * User_SAML
+    - Bump to php-saml 2.10.5 (user_saml/1001)
+  * Logreader
+    - Small screen layout improvements 
+	  (logreader/2bcd915969386ceb77c7f91dfd5fc19fd3212346
+    - Fix log filtering 
+	  (logreader/4095dfc62dcceb3c59a3f581baa5589737d0e6f3)
+    - Greatly speedup log iteration 
+	  (logreader/71a4c6849641f821e80d96674c57a69fe7a8aa9e)
+    - Search more rows 
+	  (logreader/b9d00b5599ac8a76862895266f1c23096391aad8)
+    - Stop iterating if we dont have a valid file handle 
+	  (logreader/a87a8e653ecae5efef6342e645b98f2878219c87)
+    - Don't return a LogIterator on a broken handle 
+	  (logreader/39069108f99d463b1cb8bc944f3ef24324b9f43d)
+    - More robust log iteration 
+	  (logreader/c0eb04d55bf1dee94ef523dae0e3b0e6afc272a6)
+    - Use proper iso date format 
+	  (logreader/13a31181a6d72d084797a71f49f2c5edee8c8dae)
+    - Automatically try to fix some common escape errors from 
+	  copy-pasted log entries 
+	  (logreader/031db2a7f9b9f8cee42acf6eae7d993d31d4660a)
+    - Fix stack trace parsing of incorrectly escaped logentries 
+	  (logreader/538667770edfdd48374ef33e9c15498ed98ece60)
+    - Highlight entries from the same request when clicking 
+	  on an entry 
+	  (logreader/2d1ccd0e4cca32220fcbe0b4d79d1cd23f0e73a5)
+    - Fix copy paste info searchfield 
+	  (logreader/0e91b2f46649a720feb7c3b6b8266b8657db5574)
+    - Fix reset search after 0 results 
+	  (logreader/50bec8ecf7edd81cfb96a35089283c0d879b41f3)
+    - Allow searching for requestId and user 
+	  (logreader/7f84e55bb4a1e4086ab0918a6bf58ad3885bbd91)
+    - Allow searching in url 
+	  (logreader/7833d97cf85fd351d2f7550d67d21bd0c2a815f4)
+    - Fix infinite scroll 
+	  (logreader/cbe874c6c068b9156ad8456edf31d112da40cbc9)
+    - Dont show loading indicator if we already have entries 
+	  (logreader/d26a08dc0540126177e8d20c3e243b44c5a399c4)
+  * Gallery
+    - Fix upload after core changes 
+	  (gallery/b4ac4429841cfe2b7ea260dfb37fcde25580143c2)
+    - Update JavaScript libraries (gallery/247)
+
+-------------------------------------------------------------------
+Thu Mar  2 09:29:20 UTC 2017 - jengelh@inai.de
+
+- Remove empty %postun and redundant %clean.
+- Ensure summary/description is neutral.
+
+-------------------------------------------------------------------
+Tue Feb 28 22:50:25 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 11.0.2
+  * Server
+    - Use login name to fix password confirm with ldap users 
+      (server/2953)
+    - Change the row-format before changing the collation 
+      (server/3063)
+    - Generate correct path for owner and use the display name 
+      (server/3080)
+    - Markdown support for app descriptions (server/3117)
+    - Fix style in comment (server/3143)
+    - Escape the name for the jquery selector (server/3138)
+    - Define spreed calls (server/3115)
+    - LDAP Backend OCS Api (server/3213)
+    - Fix Sharing app description (server/3397)
+    - Fix shared-as-busy events for owner (server/3363)
+    - Use correct theming when returning the defaults (server/3399)
+    - Filter out sensitive appconfig values (server/3400)
+    - Add transifex config for sharebymail (server/3423)
+    - Update the email in the accounts table as well (server/3411)
+    - Don't log the password on confirmPassword when LDAP throws an 
+      exception (server/3414)
+    - Make sure ownCloud 8.2 activities also can get displayed 
+      (server/3412)
+    - Popovermenu backport (server/3286)
+    - Set vendor during install (server/3426)
+    - Make sure the file information is available when sending the 
+      email (server/3433)
+    - Add profile data to provisioning api (server/3259)
+    - Fix detection of the new iOS app (server/3431)
+    - Add integration tests for legacy DAV endpoints (server/3445)
+    - Make sure invalid images don't flood the log file 
+      (server/3440)
+    - Fix printing backup code (server/3510)
+    - Fix cookie name (nctoken instead of octoken) (server/3511)
+    - LDAP's checkPassword should only catch when a user was not 
+      found (server/3493)
+    - Return unknown free space from nullstorage (server/3508)
+    - Fix for address book data lost when any user receiving a 
+      share is deleted (server/3499)
+    - Rename database password toggle (server/3500)
+    - Popovermenu files css fix (server/3494)
+    - Add screensharing icon (server/3481)
+    - Fix misleading wording: searching is affected, not user 
+      access (server/3560)
+    - Backport of Fix Broken UUID Attribute Detection (server/3528)
+  * Activity
+    - Make sure integer like names are still strings (activity/103)
+    - Fix activities for public uploads (activity/113)
+    - Show the parent as target when the file was not renamed 
+      (activity/114)
+    - Fix activities for "Files drop" on external storages 
+      (activity/118)
+  * SAML & SSO
+    - Setup account later (user_saml/79)
+  * Serverinfo
+    - Fix SQL syntax error on MariaDB 10.0.27 and 10.1.19 
+      (serverinfo/77)
+    - Don't throw an error when /proc/meminfo is not readable 
+      (serverinfo/76)
+  * Survey_Client
+    - Fix problem when checking size with dash in DB name 
+      (survey_client/50)
+
+-------------------------------------------------------------------
+Fri Jan 27 10:18:35 UTC 2017 - guoyunhebrave@gmail.com
+
+- Add php-openssl dependency
+
+-------------------------------------------------------------------
+Mon Jan 23 17:58:01 UTC 2017 - ecsos@opensuse.org
+
+- upstream update to version 11.0.1
+
+-------------------------------------------------------------------
+Wed Dec 14 17:28:37 UTC 2016 - ecsos@opensuse.org
+
+- upstream update to version 11.0.0
+
+-------------------------------------------------------------------
+Fri Sep 30 19:05:50 UTC 2016 - ecsos@opensuse.org
+
+- upstream update to version 10.0.1
+
+-------------------------------------------------------------------
+Sat Aug 27 10:27:46 UTC 2016 - ecsos@opensuse.org
+
+- upstream update to version 10.0.0
+
+-------------------------------------------------------------------
+Sun Aug  7 16:52:22 UTC 2016 - chris@computersalat.de
+
+- update spec file
+  * osc service localrun format_spec_file
+  * update Source with full URL
+  * simplify deps mainly for openSUSE
+
+-------------------------------------------------------------------
+Sat Jul 23 12:33:00 UTC 2016 - ecsos@opensuse.org
+
+- enable HSTS to prevent the warning "The Strict-Transport-Security
+  HTTP header is not configured" in admin-page
+- turn maintenance:mode off after upgrade
+
+-------------------------------------------------------------------
+Thu Jul 21 15:17:28 CEST 2016 - asemen@suse.de
+
+- upstream update to version 9.0.53 (bsc#989998)
+
+-------------------------------------------------------------------
+Fri Jul  8 17:31:32 UTC 2016 - ecsos@opensuse.org
+
+- make apache_secure_data more restrictiver
+- add missing .user.ini
+- move README and README.SELinux to docdor to fix message code 
+  integrity check
+
+-------------------------------------------------------------------
+Tue Jul  5 15:16:35 CEST 2016 - asemen@suse.de
+
+- upstream update to version 9.0.52
+
+-------------------------------------------------------------------
+Fri Jul  1 14:02:22 CEST 2016 - asemen@suse.de
+
+- initial build nextcloud 9.0.51
+

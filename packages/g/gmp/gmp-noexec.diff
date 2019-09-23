@@ -1,0 +1,13 @@
+Index: mpn/m4-ccas
+===================================================================
+--- mpn/m4-ccas.orig
++++ mpn/m4-ccas
+@@ -100,6 +100,8 @@ fi
+ echo "$M4 $DEFS $ASM >$TMP"
+ $M4 $DEFS $ASM >$TMP || exit
+ 
++echo '.section .note.GNU-stack,"",%progbits' >> $TMP
++
+ echo "$CC"
+ $CC || exit
+ 

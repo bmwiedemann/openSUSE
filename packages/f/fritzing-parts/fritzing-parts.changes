@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Fri Jun 10 11:21:41 UTC 2016 - bugs@vdm-design.de
+
+- Update to version 0.9.3b
+  * New Parts added and/or revised by Fabian Althaus (el-j):
+
+    Full set of Molex Picoblade and Hirose DF13 header series, thanks to steelgoose
+    Lots of new SparkFun parts, thanks to support from SparkFun:
+        ESP8266 Thing Dev Board
+        Stepoko
+        Arduino Pro Mini 3.3V and 5V
+        Arduino Mega Pro 3.3V
+        Badger RedStick and Array
+        Myoware Cable Shield, Power Shield, and Proto Shield
+        Ludus Protoshield and Protoshield Wireless
+        CAN-Bus Shield
+        MIDI Shield
+        FemtoBuck LED Driver
+        Load Sensor Combinator
+        Soil Moisture Sensor
+        BME280 Breakout
+        LSM303C 6-DOF-IMU Breakout
+        SHT1x Humidity/Temperature Breakout
+        16 Output I/O Expander Breakout - SX1509
+    Particle Photon
+    Raspberry Pi 3 and Zero, thanks to Nagaranudit
+    DQuid IO GPRS, thanks to DQuid team
+    nRF24L01 2.4GHz RF, thanks to Doume
+    nRF24L01+ 2.4GHz RF, thanks to Richard Bruneau
+    RFduino BLE SMT, thanks to Arnaud Boudou, Felix Kosmalla
+    Micro Python pyboard, thanks to Mike Causer
+    Pololu A4988 stepper motor driver, thanks to Matteo Perini
+    WeMos D1 Mini, thanks to Mike Causer
+    Adafruit HUZZAH ESP8266 Breakout, thanks to pkurtans
+    Adafruit push-power button
+    Adafruit Powerboost 500C, thanks to Dean Cording
+    Bluetooth HC-05 module, thanks to Computação na Escola
+    HC-SR04 distance sensor, thanks to Ricky Ng-Adam
+    SIM800L GPRS breakout, thanks to AlbMA
+    Monacor LTR 110 line transformer
+    MBR745 Schottky diode, thanks to S. van Doorn
+    10A rectifier diode, thanks to tomaskovacik
+    OMRON G5LE and NVF4-2 relays, thanks to tomaskovacik
+    MPX2010 pressure sensor, thanks to Knutse
+    MPX4250AP pressure sensor, thanks to Old Grey
+    174917 DENSO ECU-socket, thanks to Old Grey
+    Rotary Switch 12 position 1 pole, thanks to Old Grey
+    4060 counter/divider, thanks to neutmute
+    LM124-324 Quad Opamp, thanks to Knutse
+    Hi-Link HLK-PM01 power module, thanks to inahas
+    LTC3105 step-up DC/DC converter
+    Refined ruler design, thanks to duff2013
+
+-------------------------------------------------------------------
+Tue Apr  7 18:02:36 UTC 2015 - bugs@vdm-design.de
+
+- Update to version 0.9.2b
+  * Parts
+     RaspIO Duino http://raspi.tv/tag/raspio-duino
+     stm32 nucleo board http://bit.do/2cmY
+     dquid io board http://www.dquid.com/
+     Raspberry Pi 2 http://bit.do/2cnn
+     sodaq mbili http://mbili.sodaq.net/
+     WeIO http://www.we-io.net/
+     netduino plus2 http://www.netduino.com/netduinoplus2/specs.htm
+     some more sparkfun-parts
+     ws2812
+     sim928A
+     8x8 matrix
+
+-------------------------------------------------------------------

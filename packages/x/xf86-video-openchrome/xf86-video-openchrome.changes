@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Wed May 23 15:07:36 UTC 2018 - sndirsch@suse.com
+
+- n_xorg-server-1.20.patch
+  * fix build against xorg-server 1.20 
+
+-------------------------------------------------------------------
+Wed Mar  8 09:27:09 UTC 2017 - sndirsch@suse.com
+
+- updated to release 0.6.0
+  * First official support for CX700, VX700, and VX800 chipsets
+    integrated TMDS transmitter (i.e., DVI support)
+  * Initial support for Silicon Image SiI 164 TMDS transmitter
+  * Improved FP reinitialization when resuming from standby
+    (HP 2133 Mini-Note, FIC CE260 / CE261 based netbooks like
+    Everex CloudBook and Sylvania g netbook)
+  * Improved automatic detection of display resources
+  * Improved X Server stability in dual monitor mode
+  * Automatic active steering of the display controller channel to the
+    correct display output device
+  * Fix for the disruption of the VT (Virtual Terminal) screen bug
+    introduced in Version 0.5
+  * Fix for HP 2133 Mini-Note's PCIe WLAN getting turned off
+    inadvertently bug introduced in Version 0.5
+
+-------------------------------------------------------------------
+Wed Dec 14 12:49:55 UTC 2016 - sndirsch@suse.com
+
+- updated to release 0.5.0
+  * Support for multiple display outputs (i.e., RandR)
+  * Support for VIA Technologies VT1632A TMDS transmitter for DVI
+  * Changing the screen resolution during runtime will no longer crash
+    the X.Org Server
+  * CLE266 chipset will not function correctly if "CRT + TV" option was
+    chosen in BIOS setup (observed in VIA Embedded EPIA-M mainboard)
+  * xf86InitFBManager implicit compilation warning
+  * VX800 chipset now resumes from ACPI S3 State correctly if only VGA
+    is used (Xubuntu 14.04 has a bug when resuming with VX800 chipset. 
+    The fix is working at least for Lubuntu 10.04 and 12.04.)
+  * Some improvement in ACPI S3 State resume behavior for 
+    P4M900 / VN896 / CN896 chipsets when LVDS FP (Flat Panel) is being used
+    (This fix is not perfect and the solution to fully solve this bug is
+     still being investigated.) 
+
+-------------------------------------------------------------------
+Wed Apr 27 13:11:13 UTC 2016 - sndirsch@suse.com
+
+- updated to release 0.4.0
+- obsoletes patches 
+  * U_Add-pciid-for-ECS-VX900-I-motherboard.patch
+  * u_xf86.h-cannot-be-included-without-first-including-xo.patch
+  * xf86-video-openchrome-abuild.patch
+
+-------------------------------------------------------------------
+Sun Jun  7 07:13:23 UTC 2015 - sndirsch@suse.com
+
+- U_Add-pciid-for-ECS-VX900-I-motherboard.patch
+  * Add pciid for ECS VX900-I motherboard (bnc#911300)
+
+-------------------------------------------------------------------
+Tue Dec 16 18:02:21 UTC 2014 - sndirsch@suse.com
+
+- fixed summary and description 
+
+-------------------------------------------------------------------
+Wed Nov  5 10:35:23 UTC 2014 - sndirsch@suse.com
+
+- u_xf86.h-cannot-be-included-without-first-including-xo.patch 
+  * fixes build with latest glibc
+
+-------------------------------------------------------------------
+Mon Oct 27 09:10:25 UTC 2014 - sndirsch@suse.com
+
+- fixed buildrequires (added pkgconfig(gl)) 
+
+-------------------------------------------------------------------
+Wed May 29 18:18:23 UTC 2013 - dvlaeev@suse.com
+
+- Set ExclusiveArch to x86. The pacakge is x86 specific 
+
+-------------------------------------------------------------------
+Sat Mar 30 19:50:48 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.3.2.
+- Add xf86-video-openchrome-abuild.patch: fix brp check by using
+  strcmp as appropriate.
+

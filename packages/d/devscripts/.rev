@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e896ef587efd03704ca485a436843ce7</srcmd5>
+    <version>2.12.4</version>
+    <time>1349720877</time>
+    <user>coolo</user>
+    <comment>split the deb package. See http://lists.opensuse.org/opensuse-factory/2012-06/msg00963.html for context.
+Resubmit with License fixes</comment>
+    <requestid>137277</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e896ef587efd03704ca485a436843ce7</srcmd5>
+    <version>2.12.4</version>
+    <time>1359108809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cb1da280d12050d6c462a27f06374758</srcmd5>
+    <version>2.12.4</version>
+    <time>1360008535</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150930 from coolo)</comment>
+    <requestid>151155</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>2039cfb4d7c0a1adcd9dcfb5e07dee4a</srcmd5>
+    <version>2.12.4</version>
+    <time>1360870533</time>
+    <user>coolo</user>
+    <comment>separate checkbashisms package so that rpmlint can depend on it without depending on all the other stuff. (bnc#802887) (forwarded request 155256 from flichtenheld)</comment>
+    <requestid>155257</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df5cb33894bdf1ee7ed0109e61537a41</srcmd5>
+    <version>2.12.6</version>
+    <time>1372686809</time>
+    <user>coolo</user>
+    <comment>update to 2.12.6 (forwarded request 181578 from flichtenheld)</comment>
+    <requestid>181579</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>df5cb33894bdf1ee7ed0109e61537a41</srcmd5>
+    <version>2.12.6</version>
+    <time>1379662222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>df5cb33894bdf1ee7ed0109e61537a41</srcmd5>
+    <version>2.12.6</version>
+    <time>1409300759</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8878a717eb5966e268175eb7b78c6593</srcmd5>
+    <version>2.15.1</version>
+    <time>1421777479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.15.1
+  + see  /usr/share/doc/packages/devscripts/changelog for details
+- Upstream moved to python3
+  + Use python3-{devel,setuptools} instead of python-{devel,setuptools}
+  That means compatibility with SLE11 is broken
+- Remove now unapplied patches
+  + devscripts-pod2man-no-utf8.patch
+  + devscripts-old-File-Path.patch
+- Adapt devscripts-2.11.7-remove-install-layout-deb.patch to upstream
+  changes &gt; devscripts-2.15.1-remove-install-layout-deb.patch
+- Remove yet obsolete compatibility stuff
+- Remove obsolete patch:
+  * fix_pod_syntax.patch</comment>
+    <requestid>281088</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>49da46b46f92caa3baa09ec8286bb58f</srcmd5>
+    <version>2.18.10</version>
+    <time>1554372311</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed license tag as suggested by licensedigger.
+
+- Changed download location for source tarball from Debian package
+  pool to salsa.debian.org to avoid download errors in OBS.
+  * format must be changed to tar.bz2, because salsa.debian.org
+  doesn't support tar.xz.
+  * verified identical contents of new and old tarball
+
+- Update to version 2.18.10:
+  * See /usr/share/doc/packages/devscripts/changelog
+- Rebase and rename devscripts-2.11.7-buildfix.patch to
+  devscripts-fix-build.patch.
+- Rebase and rename devscripts-2.15.1-remove-install-layout-deb.patch
+  to devscripts-fix-python-install-layout.patch.
+- Rebase and rename devscripts-2.11.7-debcommit-hg16.patch to
+  devscripts-debcommit-hg16.patch (is it still relevant?).
+- Kill support for ancient openSUSE and non-SUSE distributions.
+- Spec clean-up.</comment>
+    <requestid>690674</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>42ac6e9246a21c95a2124293be12c557</srcmd5>
+    <version>2.19.5</version>
+    <time>1567852500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728028</requestid>
+  </revision>
+</revisionlist>

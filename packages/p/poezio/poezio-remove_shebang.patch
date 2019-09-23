@@ -1,0 +1,18 @@
+Index: poezio-0.11/poezio/daemon.py
+===================================================================
+--- poezio-0.11.orig/poezio/daemon.py
++++ poezio-0.11/poezio/daemon.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # Copyright 2011 Florent Le Coz <louiz@louiz.org>
+ #
+ # This file is part of Poezio.
+Index: poezio-0.11/poezio/keyboard.py
+===================================================================
+--- poezio-0.11.orig/poezio/keyboard.py
++++ poezio-0.11/poezio/keyboard.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # Copyright 2010-2011 Florent Le Coz <louiz@louiz.org>
+ #
+ # This file is part of Poezio.

@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f607d763459d197ef67482d5bcbf9c86</srcmd5>
+    <version>0.2.10</version>
+    <time>1391604236</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>215353</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d05f13a43dbec842c40b581172d44349</srcmd5>
+    <version>0.2.10</version>
+    <time>1405760715</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241181</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d05f13a43dbec842c40b581172d44349</srcmd5>
+    <version>0.2.10</version>
+    <time>1409301608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8c89b108ac0906ec306e9bd8c945122c</srcmd5>
+    <version>0.2.10</version>
+    <time>1505334078</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522290</requestid>
+  </revision>
+</revisionlist>

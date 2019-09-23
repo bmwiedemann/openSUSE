@@ -1,0 +1,56 @@
+--- httpd-2.4.6.orig/support/logresolve.pl.in
++++ httpd-2.4.6/support/logresolve.pl.in
+@@ -57,6 +57,7 @@ $|=1;
+ 
+ use FileHandle;
+ use Socket;
++use File::Temp;
+ 
+ use strict;
+ no strict 'refs';
+@@ -71,11 +72,13 @@ my $filename;
+ my %hash = ();
+ my $parent = $$;
+ 
++my $tempdir = File::Temp::tempdir("logresolve.pl.sockets.XXXXXX", CLEANUP => 1);
++
+ my @children = ();
+ for (my $child = 1; $child <=$CHILDREN; $child++) {
+ 	my $f = fork();	
+ 	if (!$f) {
+-		$filename = "./.socket.$parent.$child";
++		$filename = "$tempdir/socket.$parent.$child";
+ 		if (-e $filename) { unlink($filename) || warn "$filename .. $!\n";}
+ 		&child($child);
+ 		exit(0);
+@@ -91,9 +94,9 @@ sub cleanup {
+ 	 # die kiddies, die
+ 	kill(15, @children);
+ 	for (my $child = 1; $child <=$CHILDREN; $child++) {
+-		if (-e "./.socket.$parent.$child") {
+-			unlink("./.socket.$parent.$child")
+-				|| warn ".socket.$parent.$child $!";
++		if (-e "$tempdir/socket.$parent.$child") {
++			unlink("$tempdir/socket.$parent.$child")
++				|| warn "$tempdir/socket.$parent.$child $!";
+ 		}
+ 	}
+ }
+@@ -113,7 +116,7 @@ sub parent {
+ 		if (!socket($CHILDSOCK{$child}, AF_UNIX, SOCK_STREAM, $PROTOCOL)) {
+ 			warn "parent socket to child failed $!";
+ 		}
+-		$filename = "./.socket.$parent.$child";
++		$filename = "$tempdir/socket.$parent.$child";
+ 		my $response;
+ 		do {
+ 			$response = connect($CHILDSOCK{$child}, sockaddr_un($filename));
+@@ -176,7 +179,7 @@ sub child {
+ 	 # create a socket to communicate with parent
+ 	socket(INBOUND, AF_UNIX, SOCK_STREAM, $PROTOCOL)
+ 		|| die "Error with Socket: !$\n";
+-	$filename = "./.socket.$parent.$me";
++	$filename = "$tempdir/socket.$parent.$me";
+ 	bind(INBOUND, sockaddr_un($filename))
+ 		|| die "Error Binding $filename: $!\n";
+ 	listen(INBOUND, 5) || die "Error Listening: $!\n";

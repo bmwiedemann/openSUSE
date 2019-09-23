@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 312690d..334bf30 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -171,16 +171,22 @@ endif()
+ set(SOURCES ${SOURCES} ${MOC_FILES})
+ 
+ 
+-add_library(qwtplot3d STATIC ${SOURCES} ${HEADERS})
+-QT_BIND_TO_TARGET(qwtplot3d)
++add_library(qwtplot3d-qt5 SHARED ${SOURCES} ${HEADERS})
++QT_BIND_TO_TARGET(qwtplot3d-qt5)
++
++target_link_libraries(qwtplot3d-qt5 GL GLU)
+ 
+ if (ZLIB_FOUND)
+-target_link_libraries(qwtplot3d ${ZLIB_LIBRARIES})
++target_link_libraries(qwtplot3d-qt5 ${ZLIB_LIBRARIES})
+ endif(ZLIB_FOUND)
+ 
++set_target_properties(qwtplot3d-qt5 PROPERTIES
++  VERSION 0.2.7
++  SOVERSION 0
++)
+ 
+ install(FILES ${HEADERS} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+-INSTALL(TARGETS qwtplot3d 
++INSTALL(TARGETS qwtplot3d-qt5
+         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}")

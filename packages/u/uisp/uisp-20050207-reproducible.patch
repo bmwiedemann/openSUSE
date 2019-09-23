@@ -1,0 +1,18 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2018-03-12
+
+make package build bit-reproducible
+
+Index: uisp-20050207/configure.ac
+===================================================================
+--- uisp-20050207.orig/configure.ac
++++ uisp-20050207/configure.ac
+@@ -53,7 +53,7 @@ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS([gettimeofday memset select strcasecmp strncasecmp strstr strtol])
+ 
+ # Set the DATE variable for the man page
+-DATE=`date "+%B, %Y"`
++DATE=`date -u -d@${SOURCE_DATE_EPOCH:-$(date +%s)} "+%B, %Y"`
+ AC_SUBST(DATE)
+ 
+ AC_CONFIG_FILES([Makefile

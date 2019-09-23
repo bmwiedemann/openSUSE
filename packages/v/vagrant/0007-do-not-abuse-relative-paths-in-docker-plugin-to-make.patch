@@ -1,0 +1,26 @@
+From 70837c27d8d2be474ed2dd7239fd39beae4d8250 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Fri, 16 Nov 2018 21:14:46 +0100
+Subject: [PATCH 07/15] do not abuse relative paths in docker plugin to make
+ docker work, added by tmkn@tmkn.uk on Thu Oct 26 19:42:46 UTC 2017
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ plugins/providers/docker/config.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/providers/docker/config.rb b/plugins/providers/docker/config.rb
+index 07c4e5333..e8142df8b 100644
+--- a/plugins/providers/docker/config.rb
++++ b/plugins/providers/docker/config.rb
+@@ -1,6 +1,6 @@
+ require "pathname"
+ 
+-require_relative "../../../lib/vagrant/util/platform"
++require "vagrant/util/platform"
+ 
+ module VagrantPlugins
+   module DockerProvider
+-- 
+2.22.1
+

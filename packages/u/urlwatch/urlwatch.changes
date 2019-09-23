@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Mon Apr 15 08:29:05 UTC 2019 - mvetter@suse.com
+
+- Update to 2.17:
+  Added:
+  * XPath/CSS: Support for excluding elements (#333, by Chenfeng Bao)
+  * Add support for using external diff_tool on Windows (#373, by Chenfeng Bao)
+  * Document how to use Amazon Simple E-Mail Service "SES" (by mborsetti)
+  * Compare data with multiple old versions (compared_versions, #328, by Chenfeng Bao)
+  Fixed:
+  * YAML: Fix deprecation warnings (#367, by Florent Aide)
+  * Updated manpage with new options: Authentication, filter tests (Fixes #351)
+  * Text formatter: Do not emit empty lines for line_length=0 (Fixes #357)
+  Changed:
+  * SMTP configuration fix: Only use smtp.user config if it's a non-empty value
+
+-------------------------------------------------------------------
+Mon Jan 28 08:31:53 UTC 2019 - mvetter@suse.com
+
+- Update to 2.16:
+  * Added XPath: Handle /text() selector (#282)
+  * Added document how to specify cookies to README.md (#264)
+  * Added text Reporter: minimal config option to only print a summary (PR#304, fixes #147)
+  * Added README.md: Document how to watch Github releases via XPath (#266)
+  * Added jupport for parsing XML/RSS with XPath (Fixes #281)
+  * Allow explicit setting of encoding for URL jobs (PR#313, contributes to #306)
+  * Added Slack Channel Reporter (PR#309)
+  * Added ANSI color output on the Windows console via colorama (PR#296, closes #295)
+  * Added support for using CSS selectors via the cssselect module (PR#321, closes 273)
+  * ignore_http_error_codes is now an option for URL jobs (PR#325, fixes #203)
+  * Added job_defaults in the config for globally specifying settings (PR#345, closes #253)
+  * Added Optional timeout (in seconds) for URL jobs to specify socket timeout (PR#348, closes #340)
+  * Remvoed support for JSON storage (dead code that was never used in production; PR#336)
+  * HtmlReporter now also highlights links for browser jobs (PR#303)
+  * Allow --features and --edit-* to run without urls.yaml (PR#301)
+  * When a previous run had errors, do not use conditional GETs (PR#313, fixes #292)
+  * Explicitly specify JSON pretty print separators for consistency (PR#343)
+  * Use data-driven unit tests/fixtures for easier unit test maintenance (PR#344)
+  * Fix migration issues with case-insensitive filesystems (#223)
+  * Correctly reset retry counter when job is added or unchanged (PR#291, PR#314)
+  * Fix a FutureWarning on Python 3.7 with regard to regular expressions (PR#299)
+  * If the filter list is empty, do not process the filter list (PR#308)
+  * Fix parsing/sanity-checking of urls.yaml after editing (PR#317, fixes #316)
+  * Fix Python 3.3 compatibility by depending on enum34 there (PR#311)
+  * Fix migration issues introduced by PR#180 and #256 (PR#323, fixes #267)
+
+-------------------------------------------------------------------
+Wed Oct 24 07:43:03 UTC 2018 - mvetter@suse.com
+
+- Update to 2.15:
+  * Added support for Mailgun regions (by Daniel Peukert, PR#280)
+  * Added allowing multiple occurences of 'filter' when adding jobs in CLI (PR#278)
+  * Fixed incorrect name for chat_id config in the default config (by Robin B, PR#276)
+
+-------------------------------------------------------------------
+Mon Oct 15 08:26:23 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Added missing runtime dependency: python3-lxml (bsc#1111796)
+
+-------------------------------------------------------------------
+Tue Sep  4 06:34:45 UTC 2018 - mvetter@suse.com
+
+- Update to 2.14:
+  * Added filter to pretty-print JSON data: format-json (by Niko Böckerman, PR#250)
+  * Added list active Telegram chats using --telegram-chats (with fixes by Georg Pichler, PR#270)
+  * Added support for HTTP ETag header in URL jobs and If-None-Match (by Karol Babioch, PR#256)
+  * Added xupport for filtering HTML using XPath expressions, with lxml (PR#274, Fixes #226)
+  * Added install_dependencies to setup.py commands for easy installing of dependencies
+  * Added ignore_connection_errors per-job configuration option (by Karol Babioch, PR#261)
+  * Improved code (HTTP status codes, by Karol Babioch PR#258)
+  * Improved documentation for setting up Telegram chat bots
+  * Allow multiple chats for Telegram reporting (by Georg Pichler, PR#271)
+
+-------------------------------------------------------------------
+Wed Jun  6 11:14:19 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.13:
+  * Added support for specifying a `diff_tool` (e.g. `wdiff`) for each job
+  * Added support for testing filters via `--test-filter JOB`
+  * Remove default parameter from internal `html2text` module (Fixes #239)
+  * Better error/exception reporting in `--verbose` mode (Fixes #164)
+
+- Update to 2.12:
+  * Bugfix: Do not 'forget' old data if an exception occurs
+
+-------------------------------------------------------------------
+Tue May 22 09:10:01 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.11:
+  * Retry: Make sure "tries" is initialized to zero on load
+  * html2text: Make sure the bs4 method strips HTML tags (by Louis Sautier)
+- Marked COPYING file as %license
+
+-------------------------------------------------------------------
+Fri May 18 07:33:54 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.10:
+  * File editing: Fix issue when $EDITOR contains spaces
+  * Browser: Add support for browser jobs using requests-html
+  * Retry: Add support for optional retry count in job list
+  * HTTP: Add support for specifying optional headers
+
+-------------------------------------------------------------------
+Mon Mar 26 06:48:01 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.9:
+  * Pushover: Device and sound attribute
+  * XDG: Move cache file to XDG_CACHE_DIR
+  * E-Mail: Add support for --smtp-login and document GMail SMTP usage
+  * Unconditionally migrate urlwatch 1.x cache dirs
+
+-------------------------------------------------------------------
+Wed Jan 31 08:58:58 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.8, please see 
+  
+  /usr/share/doc/packages/urlwatch/ChangeLog
+
+- Added python3-appdirs as dependency
+
+-------------------------------------------------------------------
+Thu Jan 12 19:38:03 UTC 2017 - mardnh@gmx.de
+
+- Update to 2.6
+  * New filters: sha1sum, hexdump, element-by-class
+  * New reporters: pushbullet; mailgun
+  * Improved filters: BeautifulSoup support for html2txt
+  * Improved handlers: HTTP Proxy; support for file:// URIs
+  * CI Integration: Build configuration for Travis CI
+  * Consistency: Feature list is now sorted by name
+  * Issue #108: Fix creation of example files on first startup
+  * Issue #118: Fix match filters for missing keys
+  * Small fixes
+
+-------------------------------------------------------------------
+Tue Jul 12 20:55:15 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 2.5, please see
+
+  /usr/share/doc/packages/urlwatch/ChangeLog
+
+-------------------------------------------------------------------
+Fri Feb 26 13:51:18 UTC 2016 - nemysis@openSUSE.org
+
+- Change Requires use python3-minidb instead of minidb
+
+-------------------------------------------------------------------
+Wed Feb 24 23:06:22 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 2.1, please see
+
+  /usr/share/doc/packages/urlwatch/ChangeLog
+
+- Change BuildRequires, changed by Upstream for python3-devel
+- Remove BuildRequires for fdupes, not need for it
+- Add BuildRequires for python3-setuptools
+- Add Requires for minidb, python-keyring, python3-PyYAML and
+  python3-requests
+- Change Description
+- Add README.md to Documentation
+
+-------------------------------------------------------------------
+Tue Dec  1 23:39:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.18
+  * Fallback to using pwd if os.getlogin() fails (fixes #2)
+  * Handle HTTP compression (Content-encoding: gzip/deflate)
+  * Add option to suppress output on stdout (-q/--quiet)
+  * Allow customizing subject when sending e-mail (-S/--subject)
+  * Added support for TLS and SMTP auth (-p/--pass, -T/--tls, -A/--auth)
+  * Added support for specifying cache directory (-c/--cache)
+  * Add support for HTTP Auth to urlwatch.handler (fixes #10)
+
+-------------------------------------------------------------------
+Sat Aug  2 20:43:43 UTC 2014 - dmitry_r@opensuse.org
+
+- Initial package, version 1.17
+

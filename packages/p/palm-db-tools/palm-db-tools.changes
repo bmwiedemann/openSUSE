@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Sat Jan 12 13:53:15 UTC 2013 - coolo@suse.com
+
+- remove suse_update_config
+
+-------------------------------------------------------------------
+Sun Nov 27 06:53:22 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue May 10 18:03:15 UTC 2011 - cgiboudeaux@gmx.com
+
+- Add gcc46_build_fix.patch
+
+-------------------------------------------------------------------
+Thu Jun 11 14:08:51 CEST 2009 - nadvornik@novell.com
+
+- fixed to compile with new gcc
+- removed obsolete macro %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Oct 24 11:26:25 CEST 2007 - nadvornik@suse.cz
+
+- added missing includes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 23:44:59 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Apr 27 12:14:28 CEST 2005 - postadal@suse.cz
+
+- fixed for gcc 4.0 
+
+-------------------------------------------------------------------
+Sat Jan 10 15:22:24 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Aug 22 14:05:59 CEST 2003 - postadal@suse.cz
+
+- fixed data type (type-fix.diff)
+- build libflatfile.a with -fPIC
+
+-------------------------------------------------------------------
+Thu Jul 31 12:18:56 CEST 2003 - ro@suse.de
+
+- try to fix installation (urgs...) 
+
+-------------------------------------------------------------------
+Mon Jul 28 12:31:10 CEST 2003 - postadal@suse.cz
+
+- updated to version 0.3.6
+- removed obsoleted patches (c++, gcc, makefile)
+
+-------------------------------------------------------------------
+Wed Jan 22 17:44:13 CET 2003 - postadal@suse.cz
+
+- updated to version 0.3.5
+  * note, link, linked field Type support
+- fix to compile with gcc3.2
+
+-------------------------------------------------------------------
+Thu Jan 31 16:59:33 CET 2002 - schwab@suse.de
+
+- Fix for gcc3.
+
+-------------------------------------------------------------------
+Wed Oct  7 09:35:56 CEST 2001 - tcrhak@suse.cz
+
+- added -a to automake (needed by automake 1.5-4)
+
+-------------------------------------------------------------------
+Fri Aug 10 10:23:16 CEST 2001 - adostal@suse.cz
+
+- update to version 0.3.2 (stable) 
+- add makefile patch
+
+-------------------------------------------------------------------
+Mon Jun  4 11:41:19 CEST 2001 - pblaha@suse.cz
+
+- create this package version 0.3.2
+

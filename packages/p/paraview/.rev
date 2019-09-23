@@ -199,4 +199,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>724258</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>43adc313a611e2b0e1a69a34d00f05ab</srcmd5>
+    <version>5.6.2</version>
+    <time>1569235113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732252</requestid>
+  </revision>
 </revisionlist>

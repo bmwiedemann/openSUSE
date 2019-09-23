@@ -1,0 +1,355 @@
+From 7679ba160c6875f1569bf1132cdb7ca7614fb08a Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sun, 12 Feb 2017 15:18:27 +0100
+Subject: [PATCH] * [core]: fix compile warnings
+
+---
+ fl_i18n/fl_i18n.cxx       |    4 +-
+ icc_betrachter.cxx        |    4 +-
+ icc_examin.cpp            |   22 +-
+ icc_examin_io.cpp         |    2 +-
+ icc_gl.cpp                |    2 +-
+ icc_measurement.cpp       |    3 +-
+ icc_oyranos.cpp           |   31 +-
+ icc_utils.h               |    3 +-
+ oyranos_display_helpers.c |    2 +-
+
+diff --git a/fl_i18n/fl_i18n.cxx b/fl_i18n/fl_i18n.cxx
+index d095f5b..d0cc9cc 100644
+--- a/fl_i18n/fl_i18n.cxx
++++ b/fl_i18n/fl_i18n.cxx
+@@ -288,8 +288,8 @@ fl_initialise_locale( const char *domain, const char *locale_path,
+     DBG_PROG_V( locale )
+   }
+ 
+-  if(previous_locale) free(previous_locale); previous_locale = NULL;
+-  if(tmp) free(tmp); tmp = NULL;
++  if(previous_locale) { free(previous_locale); previous_locale = NULL; }
++  if(tmp) { free(tmp); tmp = NULL; }
+ 
+     // .. or take locale info from environment
+   if(!strlen(locale) && getenv("LANG"))
+diff --git a/icc_betrachter.cxx b/icc_betrachter.cxx
+index 7661fca..c3ca0f2 100644
+--- a/icc_betrachter.cxx
++++ b/icc_betrachter.cxx
+@@ -1182,11 +1182,11 @@ ICClist<std::string> ICCfltkBetrachter::open_veraltet(ICClist<std::string> datei
+       dateiwahl()->value(ptr);
+       DBG_PROG_S( dateinamen[0])
+     } 
+-      if(ptr) DBG_PROG_V( ptr );
++    if(ptr) DBG_PROG_V( ptr );
+     if (!ptr)
+       ptr = getenv("PWD");
+ 
+-      if(ptr) DBG_PROG_V( ptr )
++    if(ptr) DBG_PROG_V( ptr )
+     if(( ptr &&
+         (ptr[0] == '/') &&
+         (strlen(ptr) == 1) ) ||
+diff --git a/icc_examin.cpp b/icc_examin.cpp
+index dac0339..2ef649a 100644
+--- a/icc_examin.cpp
++++ b/icc_examin.cpp
+@@ -1030,7 +1030,7 @@ ICCexamin::setzeFensterTitel()
+ void ICCexamin::optionsRefresh_( void )
+ {
+   if(!options_)
+-    options_ = oyOptions_ForFilter( "//"OY_TYPE_STD"/icc_color", 0, 0 );
++    options_ = oyOptions_ForFilter( "//" OY_TYPE_STD "/icc_color", 0, 0 );
+ 
+   char t[4];
+   /* should always be a single digit */
+@@ -1735,14 +1735,16 @@ void
+ ICCexamin::fortschritt(double f, double anteil)
+ {
+ #ifndef __APPLE__ /* FLTK has problems to events from different threads on osX*/
+-  int thread = wandelThreadId(iccThreadSelf());
+-  if(thread != THREAD_HAUPT)
+-    icc_examin_ns::lock(__FILE__,__LINE__);
++    int thread = wandelThreadId(iccThreadSelf());
++    if(thread != THREAD_HAUPT)
++      icc_examin_ns::lock(__FILE__,__LINE__);
+ 
+     if(0.0 < f && f <= 1.0) {
+       if(!icc_betrachter->load_progress->visible() &&
+          anteil > 0.0 )
++      {
+         icc_betrachter->load_progress-> show();
++      }
+       if(fabs(anteil) >= 1.0)
+         icc_betrachter->load_progress-> value( (float)f );
+       else
+@@ -1756,8 +1758,8 @@ ICCexamin::fortschritt(double f, double anteil)
+     }
+     icc_betrachter->load_progress-> damage(FL_DAMAGE_ALL);
+   
+-  if(thread != THREAD_HAUPT)
+-    icc_examin_ns::unlock(icc_betrachter->load_progress, __FILE__,__LINE__);
++    if(thread != THREAD_HAUPT)
++      icc_examin_ns::unlock(icc_betrachter->load_progress, __FILE__,__LINE__);
+ #endif
+ }
+ 
+@@ -1791,8 +1793,8 @@ ICCexamin::statusFarbe(double & L, double & a, double & b)
+                                   (int)(rgb[1]*255), (int)(rgb[2]*255) );
+ 
+   int thread = wandelThreadId(iccThreadSelf());
+-  if(thread != THREAD_HAUPT)
+-    icc_examin_ns::lock(__FILE__,__LINE__);
++    if(thread != THREAD_HAUPT)
++      icc_examin_ns::lock(__FILE__,__LINE__);
+ 
+     if (L < .5)
+       icc_betrachter->DD_box_stat->labelcolor( FL_WHITE/*fl_rgb_color( VG )*/ );
+@@ -1804,8 +1806,8 @@ ICCexamin::statusFarbe(double & L, double & a, double & b)
+     Fl::add_idle(fl_delayed_redraw, icc_betrachter->DD_box_stat);
+     Fl::awake((void*)0);
+ 
+-  if(thread != THREAD_HAUPT)
+-    icc_examin_ns::unlock(icc_betrachter->DD_box_stat, __FILE__,__LINE__);
++    if(thread != THREAD_HAUPT)
++      icc_examin_ns::unlock(icc_betrachter->DD_box_stat, __FILE__,__LINE__);
+ 
+   DBG_PROG_ENDE
+ }
+diff --git a/icc_examin_io.cpp b/icc_examin_io.cpp
+index c65f9b6..79ad370 100644
+--- a/icc_examin_io.cpp
++++ b/icc_examin_io.cpp
+@@ -634,7 +634,7 @@ ICCexaminIO::oeffnen ()
+     if (!ptr)
+       ptr = getenv("PWD");
+ 
+-      if(ptr) DBG_PROG_V( ptr );
++    if(ptr) DBG_PROG_V( ptr );
+     if(( ptr &&
+         (ptr[0] == '/') &&
+         (strlen(ptr) == 1) ) ||
+diff --git a/icc_gl.cpp b/icc_gl.cpp
+index 2a7d735..6a12f06 100644
+--- a/icc_gl.cpp
++++ b/icc_gl.cpp
+@@ -157,7 +157,7 @@ FTFont *font = NULL, *ortho_font = NULL;
+ 
+ #ifdef HAVE_FTGL
+ #define drawOTEXT(Font, scal, buffer) { \
+-                                   float scal_ = scal; SCALE(scal); \
++                                   float scal_ = scal; \
+                                    glScaled(scal,scal_*w()/(double)h(),scal_); \
+                                      drawText(Font, buffer); \
+                                    glScaled(1.0/scal_,1.0/(scal_*w()/(double)h()),1.0/scal_); \
+diff --git a/icc_measurement.cpp b/icc_measurement.cpp
+index ebfbb25..93e14f2 100644
+--- a/icc_measurement.cpp
++++ b/icc_measurement.cpp
+@@ -1480,8 +1480,9 @@ ICCmeasurement::getText                     (void)
+     layout.push_back (h); layout.push_back (h); layout.push_back (HI); // Lab
+     layout.push_back (h); layout.push_back (h); layout.push_back (HI); // Lab'
+     layout.push_back (h); layout.push_back (h); layout.push_back (HI); // XYZ
+-    if (xyz_erg_sp)
++    if (xyz_erg_sp) {
+       layout.push_back (h); layout.push_back (h); layout.push_back (HI);//XYZ'
++    }
+     if (RGB_measurement_) {
+       layout.push_back (h); layout.push_back (h); layout.push_back (HI);//RGB
+     } else {
+diff --git a/icc_oyranos.cpp b/icc_oyranos.cpp
+index 868f017..87358d7 100644
+--- a/icc_oyranos.cpp
++++ b/icc_oyranos.cpp
+@@ -372,8 +372,9 @@ Oyranos::moni_native_test_ (int x, int y)
+       if(oy_moni_name)
+         v_block = oy_moni_name;
+     }
+-    if(block && size)
++    if(block && size) {
+       free( block ); block = 0; size = 0;
++    }
+ 
+     oyProfile_Release( &oy_moni );
+   }
+@@ -410,8 +411,9 @@ Oyranos::moni_test_ (int x, int y)
+       if(oy_moni_name)
+         v_block = oy_moni_name;
+     }
+-    if(block && size)
++    if(block && size) {
+       free( block ); block = 0; size = 0;
++    }
+ 
+     oyProfile_Release( &oy_moni );
+   }
+@@ -648,7 +650,7 @@ Oyranos::moniInfo (int x, int y, int * num)
+       strcmp(display_name, old_screen_name) != 0))
+   {
+     oyOptions_SetFromText( &options,
+-                             "//"OY_TYPE_STD"/config/command",
++                             "//" OY_TYPE_STD "/config/command",
+                              "properties", OY_CREATE_NEW );
+     oyDeviceGet( OY_TYPE_STD, "monitor", display_name, options, &device );
+     oyOptions_Release( &options );
+@@ -1184,11 +1186,11 @@ Oyranos::gamutCheckAbstract(Speicher & s, Speicher & abstract,
+                 * result = 0;
+     oyProfile_s * prof = oyProfile_FromMem( size, (void*)block, 0, 0 );
+     int error = oyOptions_MoveInStruct( &opts,
+-                      "//"OY_TYPE_STD"/proofing_profile",
++                      "//" OY_TYPE_STD "/proofing_profile",
+                       (oyStruct_s**)&prof, 0 );
+ 
+     oyOptions_AppendOpts( opts, options );
+-    error = oyOptions_Handle( "//"OY_TYPE_STD"/create_profile.icc",
++    error = oyOptions_Handle( "//" OY_TYPE_STD "/create_profile.icc",
+                       opts,"create_profile.icc_profile.proofing_effect",
+                       &result );
+ 
+@@ -1359,7 +1361,7 @@ Oyranos::wandelLabNachProfilUndZurueck(double *lab, // 0.0 - 1.0
+     oyImage_Release( &image_lab );
+     oyImage_Release( &image_tmp );
+ 
+-    if(channels)    delete [] channels; channels = NULL;
++    if(channels) { delete [] channels; channels = NULL; }
+ 
+   DBG_PROG_ENDE
+   return 0;
+@@ -1394,10 +1396,10 @@ oyProfile_s * Oyranos::oyMoni (int x, int y, int native)
+     if(native)
+     {
+       oyOptions_SetFromText( &options,
+-                             "//"OY_TYPE_STD"/config/command",
++                             "//" OY_TYPE_STD "/config/command",
+                              "list", OY_CREATE_NEW );
+       oyOptions_SetFromText( &options,
+-                   "//"OY_TYPE_STD"/config/icc_profile.x_color_region_target",
++                 "//" OY_TYPE_STD "/config/icc_profile.x_color_region_target",
+                                        "yes", OY_CREATE_NEW );
+     }
+ 
+@@ -1476,11 +1478,12 @@ Oyranos::wandelLabNachBildschirmFarben(int x, int y, oyProfile_s * profile,
+ 
+       size_old = size;
+ 
+-      if(rgb)
++      if(rgb) {
+         free(rgb); rgb = 0;
++      }
+       rgb = (double*) calloc(sizeof(double),3*size);
+       if(lab)
+-        free(lab); lab = 0;
++        free(lab);
+       lab = (double*) calloc(sizeof(double),3*size);
+ 
+       oyImage_Release( &image_disp );
+@@ -1563,10 +1566,10 @@ double*  Oyranos::convertLabToProfile    ( oyProfile_s * profile,
+       size_old = size;
+ 
+       if(rgb)
+-        free(rgb); rgb = 0;
++        free(rgb);
+       rgb = (double*) calloc(sizeof(double),3*size);
+       if(lab)
+-        free(lab); lab = 0;
++        free(lab);
+       lab = (double*) calloc(sizeof(double),3*size);
+ 
+       oyImage_Release( &image_disp );
+@@ -1653,7 +1656,7 @@ void Oyranos::colourServerRegionSet  ( Fl_Widget         * widget,
+                           OY_CREATE_NEW );
+   }
+ 
+-  error = oyOptions_Handle( "//"OY_TYPE_STD"/set_xcm_region",
++  error = oyOptions_Handle( "//" OY_TYPE_STD "/set_xcm_region",
+                                 opts,"set_xcm_region",
+                                 &result );
+   if(error)
+@@ -1709,7 +1712,7 @@ oyProfile_s * Oyranos::getEditingProfile      ( int early_binding )
+ 
+     oyOptions_SetFromInt( &opts, "///icc_profile_flags", icc_oyranos.icc_profile_flags, 0, OY_CREATE_NEW );
+     oyOptions_MoveIn( opts, &matrix, -1 );
+-    oyOptions_Handle( "//"OY_TYPE_STD"/create_profile.icc",
++    oyOptions_Handle( "//" OY_TYPE_STD "/create_profile.icc",
+                                 opts,"create_profile.icc_profile.color_matrix",
+                                 &result );
+ 
+diff --git a/icc_utils.h b/icc_utils.h
+index a101aeb..d2e10a3 100644
+--- a/icc_utils.h
++++ b/icc_utils.h
+@@ -69,6 +69,7 @@
+ # define icc_strdup_m(text_) strdup(text_)
+ #endif 
+ #include <iostream>
++#include <ostream>
+ #include <sstream>
+ #include <cmath>
+ # include <cstring>
+@@ -165,7 +166,7 @@ void dbgWriteS( std::string s );
+ #define dbgWrite(ss) \
+ { \
+   std::ostringstream dbg_stream; \
+-  dbg_stream << ss; \
++  dbg_stream << std::dec << ss; \
+   dbgWriteS( dbg_stream.str() ); \
+ }
+ /* look in icc_utils.cpp for the WRITE_DBG definition */
+diff --git a/oyranos_display_helpers.c b/oyranos_display_helpers.c
+index 1afbd73..422f26e 100644
+--- a/oyranos_display_helpers.c
++++ b/oyranos_display_helpers.c
+@@ -508,7 +508,7 @@ oyProfile_s * getEditingProfile      ( )
+                 * result = 0;
+ 
+     oyOptions_MoveIn( opts, &matrix, -1 );
+-    oyOptions_Handle( "//"OY_TYPE_STD"/create_profile.icc",
++    oyOptions_Handle( "//" OY_TYPE_STD "/create_profile.icc",
+                                 opts,"create_profile.icc_profile.color_matrix",
+                                 &result );
+ 
+
+From 2fc88e5f17d43990a2d6362e88c2fc2381baf307 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sun, 12 Feb 2017 15:17:56 +0100
+Subject: [PATCH] * [core]: fix compile error with gcc-6.3
+
+---
+ icc_draw.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/icc_draw.cpp b/icc_draw.cpp
+index 41e4802..d36f486 100644
+--- a/icc_draw.cpp
++++ b/icc_draw.cpp
+@@ -759,8 +759,10 @@ TagDrawings::drawKurve_    ()
+     } else {
+       fl_color(9 + j);
+     }
++#   ifdef DEBUG_DRAW
+     if(kurven.size())
+-      DBG_PROG_S( cout << "draw curv "<< name << " " << j << " " << kurven[j].size() << " parts " );
++      cout << "draw curv "<< name << " " << j << " " << kurven[j].size() << " parts ";
++#   endif
+     s.str("");
+     if (kurven2.size())
+     {
+From 0909f0f3df2d4c1e42f9215e1d366fb82f1acf04 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sun, 12 Feb 2017 11:12:54 +0100
+Subject: [PATCH] * [core]: fix scope issue detected by gcc-6.3
+
+---
+ agviewer.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/agviewer.cpp b/agviewer.cpp
+index ae39b8b..1b6ddab 100644
+--- a/agviewer.cpp
++++ b/agviewer.cpp
+@@ -474,7 +474,7 @@ Agviewer::normalize(GLfloat v[3])
+   if (d == 0)
+     fprintf(stderr, "Zero length vector in normalize\n");
+   else
+-    v[0] /= d; v[1] /= d; v[2] /= d;
++  { v[0] /= d; v[1] /= d; v[2] /= d; }
+   DBG_PROG_ENDE
+ }
+ 

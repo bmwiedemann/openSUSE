@@ -1,0 +1,35 @@
+From ebce81931d04aefea31795cb4df3f552ba6d3f38 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 20 Aug 2017 16:49:50 +0200
+Subject: [PATCH] Disable detection of OpenGL (for GLES platforms)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On embedded platforms, Qt5 is typically build using GLES. Unfortunately,
+the OpenGL code in the presentation module uses the old desktop OpenGL
+immediate mode style and thus fails to compile on GLES platforms.
+
+Workaround for bug kde#383715
+
+Signed-off-by: Stefan Brüns <stefan.bruens@rwth-aachen.de>
+---
+ core/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index cd482ea..bc3772b 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -323,7 +323,7 @@ find_package(Marble)
+ find_package(PkgConfig)
+ find_package(Jasper)                               # For JPEG 2000 support.
+ find_package(Eigen3)                               # For Refocus tool.
+-find_package(OpenGL)                               # For Presentation tool.
++# find_package(OpenGL)                               # For Presentation tool.
+ 
+ find_package(ImageMagick COMPONENTS Magick++ MagickCore)
+ 
+-- 
+2.14.0
+

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f084a4bb299b08da610db4496cafa0c</srcmd5>
+    <version>1.0.0</version>
+    <time>1551386518</time>
+    <user>coolo</user>
+    <comment>I want to maintain osmo-bts in Factory</comment>
+    <requestid>678088</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c7ce17bc2fbf2941cc63ca2cea33eef</srcmd5>
+    <version>1.0.0</version>
+    <time>1553809721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689107</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d50402bcec1054f7b7dd282405bc61ca</srcmd5>
+    <version>1.0.1</version>
+    <time>1554115212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690204</requestid>
+  </revision>
+</revisionlist>

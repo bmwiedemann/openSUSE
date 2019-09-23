@@ -1,0 +1,562 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a41676897024f71b0c02d356a024b86</srcmd5>
+    <version>0.16</version>
+    <time>1203955672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e49562b62c49ddc69ea78260db814f49</srcmd5>
+    <version>0.16</version>
+    <time>1204048695</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>58bdb8c01d89b55c72725478024f985e</srcmd5>
+    <version>0.16</version>
+    <time>1204075160</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d9dc646b1d893ef5e4c56ad09faef7e3</srcmd5>
+    <version>0.16</version>
+    <time>1204160084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>2c270463a5b008d3223af5252da7971f</srcmd5>
+    <version>0.16</version>
+    <time>1207829487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>503ea35f62f3a1b890dcf1e05b7d11d1</srcmd5>
+    <version>0.17.1</version>
+    <time>1215523907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="23">
+    <srcmd5>2bdb65d6650842135f979d2890670e59</srcmd5>
+    <version>0.17.1</version>
+    <time>1220229284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="31">
+    <srcmd5>3913a6f7e6a25a5901f616b0a0f6a96c</srcmd5>
+    <version>0.17.1</version>
+    <time>1227880727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>10a4051b61e5015eadcaacf0fc6e16cc</srcmd5>
+    <version>0.18</version>
+    <time>1234743476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8932e48c8ee82eebb3e9d1ea7ad1cbf6</srcmd5>
+    <version>0.18</version>
+    <time>1234782992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85f719581f03a8cc0ecd29052c9b31ae</srcmd5>
+    <version>0.18.1</version>
+    <time>1241627882</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1c4cd9623217af366ed02b49dfa52957</srcmd5>
+    <version>0.18.2</version>
+    <time>1248446193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1c4cd9623217af366ed02b49dfa52957</srcmd5>
+    <version>0.18.2</version>
+    <time>1248446193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>32a2f1cd04e1aee64491c1d6190242c7</srcmd5>
+    <version>0.18.2</version>
+    <time>1258373506</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/exiv2 based on submit request 24262 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f1d86b419161c7a3dff1119e2b549075</srcmd5>
+    <version>0.19</version>
+    <time>1262865421</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/exiv2 based on submit request 28131 from user vuntz
+</comment>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3400847f639938bdeef73e865e843152</srcmd5>
+    <version>0.19</version>
+    <time>1266973285</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/exiv2 based on submit request 33322 from user coolo
+</comment>
+    <requestid>33322</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>fbd02b1bd7dac8e6c0c03c992c7c53ae</srcmd5>
+    <version>0.19</version>
+    <time>1268923501</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>fbd02b1bd7dac8e6c0c03c992c7c53ae</srcmd5>
+    <version>0.19</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>fbd02b1bd7dac8e6c0c03c992c7c53ae</srcmd5>
+    <version>0.19</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3825e2ae26d3e70bc1cb5343353f24a4</srcmd5>
+    <version>0.20</version>
+    <time>1281382472</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/exiv2 based on submit request 45199 from user vuntz
+</comment>
+    <requestid>45199</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>3825e2ae26d3e70bc1cb5343353f24a4</srcmd5>
+    <version>0.20</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a20e9d667d341f41f01e898b9fee9a89</srcmd5>
+    <version>0.21</version>
+    <time>1303380109</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67043 from user dirkmueller
+</comment>
+    <requestid>67043</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>123c511caff14054cfd480d42e2ea8a4</srcmd5>
+    <version>0.21</version>
+    <time>1303380118</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67043
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bba188d177356008ceb647940b221dea</srcmd5>
+    <version>0.22</version>
+    <time>1316460156</time>
+    <user>lrupp</user>
+    <comment>- ran spec-cleaner
+
+- update to 0.22
+  This release introduces support for Postscript (EPS) images. 
+  XMP metadata can be read and written from/to EPS images and 
+  previews are accessible. 
+  Further it includes a new build environment for MSVC 64 bit 
+  builds and a number of smaller features and bugfixes. (forwarded request 83025 from coolo)</comment>
+    <requestid>83031</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7072fc11cff13a404ebf1161d63db671</srcmd5>
+    <version>0.22</version>
+    <time>1316617438</time>
+    <user>saschpe</user>
+    <comment>- Add BuildRequires: graphviz to resolve &quot;sh: dot: command not
+  found&quot; and make doxygen happy</comment>
+    <requestid>84048</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>7072fc11cff13a404ebf1161d63db671</srcmd5>
+    <version>0.22</version>
+    <time>1319181872</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>12eef42a7353a366b9c237fe466c5158</srcmd5>
+    <version>0.22</version>
+    <time>1323191329</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>37c3dc4d25fc1702b65ad3448e272171</srcmd5>
+    <version>0.23</version>
+    <time>1336468466</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116337</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>37c3dc4d25fc1702b65ad3448e272171</srcmd5>
+    <version>0.23</version>
+    <time>1340183315</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>5c982c9db894301c58dd99cb73f7d67e</srcmd5>
+    <version>0.23</version>
+    <time>1348414309</time>
+    <user>coolo</user>
+    <comment>- Add 90_changeset_r2743.diff: add support for additional Samgsung
+  EXIF tags (backport for upstream)
+- Add 90_changeset_r2744.diff: add support for additional Pentax
+  EXIF tags (backport for upstream)
+- Add more Canon models (5D Mark III, 600D, 60D, 1100D, WFT-E2 II,
+  WFT-E4 II, 650D)
+- Add 90_changeset_r2756.diff: add support for EOS-M Sigma 12-24mm
+  f/4.5-5.6 DG HSM II lens (backport from upstream)
+- Add 90_changeset_r2818_partial.diff: add support for additional
+  Canon camera (5D Mark III, 600D, 60D, 1100D, WFT-E2 II, WFT-E4
+  II, 650D) and EF/EF-M lenses. (backport from upstream)
+- Add 99_pending_canon_eos_m.diff: add support for some Canon EOS-M
+  lenses (pending upstream merge)
+- Add 99_pending_minolta_manual_lens.diff: add support for Minolta
+  manual lens (pending upstream merge)
+- Add 99_pending_pentax_da_35.diff: add support for PENTAX-DA 35mm
+  F2.4 AL lens (pending upstream merge)
+- Add 99_pending_zeiss_planar_35_ze.diff: add support for Carl
+  Zeiss Planar T* 50mm f/1.4 ZE lens (pending upstream merge) (forwarded request 135061 from fcrozat)</comment>
+    <requestid>135079</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>5c982c9db894301c58dd99cb73f7d67e</srcmd5>
+    <version>0.23</version>
+    <time>1359108862</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>3f79e5f16c1a1181db4b07b3b43c86ab</srcmd5>
+    <version>0.23</version>
+    <time>1370523125</time>
+    <user>coolo</user>
+    <comment>- Remove pending patches with upstream versions :
+  + 99_pending_canon_eos_m.diff (replaced by
+    90_changeset_r2993.diff).
+  + 99_pending_minolta_manual_lens.diff (replaced by
+    90_changeset_r2989.diff).
+  + 99_pending_pentax_da_35.diff (replaced by
+    90_changeset_r2860.diff).
+  + 99_pending_zeiss_planar_35_ze.diff (replaced by
+    90_changeset_r3011.diff).
+- Backport patches from upstream (cherry-picking courtesy of Pascal
+  de Bruijn):
+  + 90_changeset_r2889.diff, 90_changeset_r2985.diff: additional
+    lenses for Pentax body.
+  + 90_changeset_r2958.diff: additional lenses for Samsung body
+  + 90_changeset_r2959.diff, 90_changeset_r2961.diff,
+    90_changeset_r2985.diff, 90_changeset_r3003.diff,
+    90_changeset_r3016.diff, 90_changeset_r3017.diff: additional
+    lenses for Pentax body.
+  + 90_changeset_r2963.diff, 90_changeset_r2994.diff,
+    90_changeset_r3004.diff, 90_changeset_r3023.diff,
+    90_changeset_r3026.diff: additional lenses for Canon body.
+  + 90_changeset_r2968.diff, 90_changeset_r2969.diff,
+    90_changeset_r2995.diff, 90_changeset_r3005.diff,
+    90_changeset_r3006.diff: additional lenses for Minolta body.
+  + 90_changeset_r2970.diff, 90_changeset_r2975.diff,
+    90_changeset_r2978.diff, 90_changeset_r2981.diff,
+    90_changeset_r2982.diff, 90_changeset_r2992.diff: additional
+    lenses for Olympus body.
+  + 90_changeset_r2998.diff: add support for FocusDistance data
+    from Olympus EXIF tags. (forwarded request 177260 from fcrozat)</comment>
+    <requestid>177808</requestid>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>f3882cdd29e4166f11acb636c36e0f9a</srcmd5>
+    <version>0.23</version>
+    <time>1375176562</time>
+    <user>coolo</user>
+    <comment>- Backport patches from upstream (cherry-picking courtesy of Pascal
+  de Bruijn):
+  * 90_changeset_r3036.diff: Canon EF-S 55-250mm f/4-5.6 IS II
+  * 90_changeset_r3037.diff: A few more Pentax lenses
+  * 90_changeset_r3038.diff: Updates for the Minolta Bodies
+  * 90_changeset_r3039.diff: Added 18-55mm f/3.5-5.6 IS STM
+  * 90_changeset_r3047.diff: Added Sigma 60mm to the Olympus list
+  * 90_changeset_r3048.diff: Added Sigma 19 and 30m to the Olympus
+    list
+  * 90_changeset_r3051.diff: Added a lot more canon compacts
+  * 90_changeset_r3052.diff: Sigma 17-50mm F2.8 EX DC HSM
+  * 90_changeset_r3053.diff: Removed Optio M30 from the Pentax list
+  * 90_changeset_r3054.diff: Added Samsung NX 45mm F1.8
+  * 90_changeset_r3055.diff: Added Samsung NX 45mm F1.8 2D/3D
+  * 90_changeset_r3060.diff: Renamed LensModel to LensType in the
+    Olympus struct.
+  * 90_changeset_r3061.diff: Fixes Issue# 908
+  * 90_changeset_r3062.diff: More entries for Pentax
+  * 90_changeset_r3063.diff: Do not try to guess lenses when it is
+    undefined
+  * 90_changeset_r3066.diff: Lumix G Vario 14-140mm F3.5-5.6 Asph.
+    Power OIS
+  * 90_changeset_r3067.diff: Lumix G Vario 14-42mm F3.5-5.6 II
+    Asph. Mega OIS
+  * 90_changeset_r3068.diff: Added EOS 70D (forwarded request 184591 from darix)</comment>
+    <requestid>184592</requestid>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>f3882cdd29e4166f11acb636c36e0f9a</srcmd5>
+    <version>0.23</version>
+    <time>1379662317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dacb4266431ee68760386318b27aacc5</srcmd5>
+    <version>0.24</version>
+    <time>1397555195</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.24
+  * exiv2 (0.19-1) 00_hyphens_used_as_minus.diff
+  * (Reported with patch by Mark Purcell, fixed by Niels Kristian Bech Jensen)
+  * Video metadata support (Abhinav Badola for GSoC 2012)
+  * Samsung NX100 JPG exports have broken EXIF (Reported by Pascal de Bruijn)
+  * Warnings while compiling with g++4.5
+  * (Reported by Sebastien Gilles, fixed by Robin Mills)
+  * For TIFF-like images, non-intrusive writing is not used when it should
+  * (Reported by Thomas Lotze)
+  * Patch to detect Carl Zeiss Planar T* 50mm f/1.4 ZE on Canon
+  * (Reported with patch by Stian Grindvoll)
+  * Exiv2 fails to compile under Linux (Volker Grabsch)
+  * example1.cpp clang Mac OS X warnings (Reported by Jerry Jacobs)
+  * Exiv2 crashes on input (Reported by Christian Grothoff)
+  * Complete Samsung NX lenses portfolio recognition
+  * (Reported with patch by Jaroslav Stepanek, updates by Pascal de Bruijn)
+  * Porting the Video Code to MSVC (umbrella)
+  * (Robin Mills, Abhinav Badola, Shawn Xiong)
+  * Photoshop doesn't recognize its own EPS files after modification by Exiv2
+  * (Volker Grabsch)
+  * autotools build (make config ; ./configure ; make) is broken
+  * (Robin Mills)
+  * Sigma 50mm f/1.4 on Canon not detected correctly
+  * (Reported by Rick Gabriel, patch by Aakash Goenka)
+  * PENTAX-DA 18-135mm F3.5-5.6 not detected correctly
+  * (Reported by S. Verdoold, patch by Pascal de Bruijn)
+  * Sigma 18-250mm not properly recognised on Pentax
+  * (Reported by S. Verdoold, patch by Pascal de Bruijn)
+  * Video code is failing the test suite (on all plaforms)
+  * (Robin Mills, Abhinav Badola) (forwarded request 230069 from christiantrippe)</comment>
+    <requestid>230083</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>115244f0c9c6628422229357ddb9cdab</srcmd5>
+    <version>0.24</version>
+    <time>1399377395</time>
+    <user>coolo</user>
+    <comment>- add fix-parallel-build.patch to fix -j, notified upstream about it</comment>
+    <requestid>232667</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>484abb4712d7739463c3735fe3e296c7</srcmd5>
+    <version>0.24</version>
+    <time>1403070556</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236513</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>484abb4712d7739463c3735fe3e296c7</srcmd5>
+    <version>0.24</version>
+    <time>1409300849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>0f97e669daa16e9dd4b3ca36dc61ad3f</srcmd5>
+    <version>0.24</version>
+    <time>1423732922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284897</requestid>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>7bac426675eaed4bc2222f496fd06819</srcmd5>
+    <version>0.24</version>
+    <time>1432158421</time>
+    <user>dimstar_suse</user>
+    <comment>- add parallel-build-dep.patch: Fix build dependencies</comment>
+    <requestid>306487</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>e42ac81428697c93257e50fb7b3a8d96</srcmd5>
+    <version>0.24</version>
+    <time>1432796674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308680</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b9b8bce2e3c8ffa5e8c4e454adeeb7e3</srcmd5>
+    <version>0.25</version>
+    <time>1435053340</time>
+    <user>dimstar_suse</user>
+    <comment>- readd parallel-build-dep.patch
+
+- Update to version 0.25
+  * exivsimple has array index errors when stripping quotes form 
+    trivial input strings
+  * Use SVN eol-style LF on all files
+  * Access violation on IptcData::operator[] when key is invalid
+  * PNG images with tiff tags throw exceptions
+  * Plasma kde crashes when specific jpeg is on the Desktop
+  * TIFF parser,Binary array elements should be decoded using the 
+    Makernote's endianness, not that of the image
+  * Coverity scan : Issue CID 981992 , 981993
+  * Wrong key name in output of addmodel sample
+  * Printing tags does not honor multi-byte label widths correctly
+  * Wrong ApertureValue written
+  * pyexiv2 fails on cifs shares on an Ubuntu client
+  * TIFF parser,Parse TIFF PageNumber
+  * Add new sample applications exifdata and exivvalue
+  * Add option -K Key (--key Key) to specify one or more keys to 
+    output
+  * &quot;exiv2 -eX&quot; followed by &quot;exiv2 -iX&quot; produces invalid XMP 
+    metadata packet
+  * Sony NEX Lens Information
+  * Handle Pentax makernotes in samsung-rebranded cameras
+  * Olympus XZ-1 FocusDistance incorrect
+  * Support Panasonic Makernote
+  * detection of Pentax DA 35/2.4 lens
+  * Canon EOS M EF-M lenses
+  * Lens matching on Canon
+  * Tamron 18-270 is not detected anymore</comment>
+    <requestid>313178</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>84375154278d1ddb8dac5eb01f5dd0ed</srcmd5>
+    <version>0.25</version>
+    <time>1437223161</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317202</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>7bc37f9baf7d70ccf3ea761831d09443</srcmd5>
+    <version>0.25</version>
+    <time>1464017417</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396741</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2f188b52a7fddb9bf718441e7a07aa91</srcmd5>
+    <version>0.26</version>
+    <time>1500892188</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508326</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ce63fe47c06ee3a29cd39167c0002b7f</srcmd5>
+    <version>0.26</version>
+    <time>1505502156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523221</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>32fe499149946dae0199ef9e4c1c9acc</srcmd5>
+    <version>0.26</version>
+    <time>1508769550</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Use-more-GNUInstallDirs.patch (bsc#938600)
+- add d4e4288d839d0d9546a05986771f8738c382060c.patch (
+    CVE-2017-14864 bsc#1060995,
+    CVE-2017-14862 bsc#1060996,
+    CVE-2017-14859 bsc#1061000)</comment>
+    <requestid>534384</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>16a47c8933230d3b5f7d5e3e9b14e6f3</srcmd5>
+    <version>0.26</version>
+    <time>1512042035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545091</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>77c524fb814629aed3995d0a08423a97</srcmd5>
+    <version>0.26</version>
+    <time>1528021783</time>
+    <user>dimstar_suse</user>
+    <comment>- update to latest 0.26 branch:
+  * obsoletes 0001-Use-more-GNUInstallDirs.patch
+  d4e4288d839d0d9546a05986771f8738c382060c.patch
+  gcc-version-check.patch
+  7f5b0778fa301b68c1c88e3820ec3afbd09dd0a5.patch
+  fix-crash.patch
+  * adds exiv2-update-to-0.26-branch.patch
+  * Fixes CVE-2017-14864 (bsc#1060995),
+  CVE-2017-14862 (bsc#1060996), CVE-2017-14859 (bsc#1061000)
+  CVE-2017-14860 (bsc#1048883), CVE-2017-11337 (bsc#1048883),
+  CVE-2017-11338 (bsc#1048883), CVE-2017-11339 (bsc#1048883),
+  CVE-2017-11340 (bsc#1048883), CVE-2017-11553,
+  CVE-2017-12955 (bsc#1054593), CVE-2017-12956,
+  CVE-2017-12957, CVE-2017-11683, CVE-2017-11592,
+  CVE-2017-11591 (bsc#1050257)</comment>
+    <requestid>613049</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>8001b12c6aeba4e4315b64ad547c9394</srcmd5>
+    <version>0.26</version>
+    <time>1530993373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620180</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>12c103627da6f6d6854945c1c69de5df</srcmd5>
+    <version>0.26</version>
+    <time>1540818892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644006</requestid>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>d30994fcaae3f91a3151b497547418bd</srcmd5>
+    <version>0.26</version>
+    <time>1540988229</time>
+    <user>dimstar_suse</user>
+    <comment>  * Fixes CVE-2017-1000128 (bsc#1068871)</comment>
+    <requestid>645494</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>72d1807b47debb2c4a1e545035adea44</srcmd5>
+    <version>0.27.0</version>
+    <time>1548537370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664993</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>24ac687bcc5cc61a835d198212ece8d6</srcmd5>
+    <version>0.27.1</version>
+    <time>1561194300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710687</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>2f17824e4cc92911d6b6ffc7036d4b07</srcmd5>
+    <version>0.27.2</version>
+    <time>1567678107</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.27.2</comment>
+    <requestid>721092</requestid>
+  </revision>
+</revisionlist>

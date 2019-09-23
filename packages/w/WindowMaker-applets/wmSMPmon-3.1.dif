@@ -1,0 +1,12 @@
+--- wmSMPmon/Makefile
++++ wmSMPmon/Makefile
+@@ -14,7 +14,8 @@
+ INSTALLMANFLAGS = -m 644
+ CC = gcc
+ CFLAGS = -Wall -O2 -g
+-LIB = -L/usr/X11R6/lib -lXpm -lXext -lX11
++LIBDIR = -L/usr/X11R6/lib
++LIB = $(LIBDIR) -lXpm -lXext -lX11
+ 
+ all: $(OBJ)
+ 	$(CC) -o $(EXE) $(OBJ) $(LIB)

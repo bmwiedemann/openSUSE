@@ -1,0 +1,562 @@
+-------------------------------------------------------------------
+Mon Mar 11 15:18:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Minor tweaks for app icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan  5 19:59:09 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + Use new icon design.
+  + Add flatpak manifest.
+  + Show a notification when scan is complete.
+  + Remove the application menu.
+  + Add Keyboard Shortcuts window and improve shortcuts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  9 08:33:06 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Updated translations.
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Thu Jul 26 22:38:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.1:
+  + Localization fixes.
+  + Updated translations.
+- Drop baobab-fix-linguas-build-issues.patch and
+  baobab-fix-gschema-translations.patch: Fixed upstream.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Thu Jul 26 22:37:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Add baobab-fix-gschema-translations.patch: build: Fix gschema
+  translations.
+
+-------------------------------------------------------------------
+Thu Mar 22 13:41:31 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop gnome-utils Conflicts, not needed for a long time.
+- Drop update-desktop-files BuildRequires and no longer pass
+  suse_update_desktop_file macro.
+- Add baobab-fix-linguas-build-issues.patch: build: Fix setting
+  GNOMELOCALEDIR (bgo#794381), and build: Use LINGUAS file for help
+  (bgo#794449).
+- Update URL to new home in GNOME wiki.
+
+-------------------------------------------------------------------
+Mon Mar 12 12:33:24 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:27 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 14 20:06:12 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + build: Use python3 found by meson to run
+    build-aux/post-install.py (bgo#791980).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 17 02:40:35 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + Add support for mouse back button.
+  * Replace window menu with a "Scan" button (and other visual
+    tweaks).
+  * Minor bugfixes.
+  * Updated documentation translations.
+  * Updated translations.
+- Update Url to https://wiki.gnome.org/Apps/Baobab: current
+  Baobab's web page.
+- Add gio-unix-2.0 and gobject-2.0 pkgconfig modules. Note that
+  they were being pulled with glib-2.0 module and used already
+  since they all live in glib2-devel package.
+- Add fdupes BuildRequires and its macro for replacement of
+  duplicates by hardlinks under the data directory.
+- Drop pkgconfig(gobject-introspection-1.0) BuildRequires: it's no
+  longer needed/required anymore.
+
+-------------------------------------------------------------------
+Tue Oct 17 10:41:22 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.27.1:
+  + Build system ported to Meson.
+  + Use traditional titlebar on Unity.
+  + Updated translations.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+
+-------------------------------------------------------------------
+Tue Oct  3 00:00:13 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Fix saving window size.
+  + Updated documentation translations.
+  + Updated translations.
+- Drop %glib2_gsettings_schema_*, %desktop_database_* and
+  %icon_theme_cache_* post/postun macros: functionality now covered
+  by file triggers.
+
+-------------------------------------------------------------------
+Mon Sep 11 08:57:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Raised minimal vala version.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 09:53:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.92:
+  + Updated documentation translations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:01:36 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 14:22:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Never show more than 5 recent elements.
+  + Do not regenerate .po files automatically.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 08:43:40 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  7 21:21:25 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 19:41:26 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 12 19:42:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 20:30:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Stop using intltool.
+  + Rejig 'devices and locations' UI.
+  + Updated AppData.
+  + Misc bugfixes.
+  + Updated documentations translations.
+  + Updated translations.
+- Drop intltool BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
+Fri Apr 15 07:33:36 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Mon Apr 11 18:33:24 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated AppData.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 20 19:49:16 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 28 21:13:35 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Updated CSS to recent GTK+ changes.
+  + Updated AppData file with tags for GNOME Software.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 11:39:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Remove scan-remote action.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 23 17:49:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Temporary fix for 'make distcheck' due to bug in Intltool
+    (lp#1117944).
+
+-------------------------------------------------------------------
+Wed Sep 16 17:36:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.90:
+  + Remove unused scan-home action.
+  + Exclude mounts when scanning recent locations.
+  + In Ringchart, always use the correct state when getting colors.
+  + Fixes for contex menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:31:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Ship symbolic variant for application icon.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 20:12:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 18 14:23:34 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Exclude mountpoints when handling commandline arguments.
+  + Fix HiDPI issues in the charts.
+  + Misc fixes and updates for help pages.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 14 09:21:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Fix url in manpage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 19:28:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Misc fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  7 10:28:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Add X-GNOME-Utilities category to .desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 23 17:51:51 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.2:
+  + Import custom CSS, use icon as resources, various other
+    adaptation to GTK+ changes.
+  + Visual fixes for the ringschart and the chart switcher.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 21:00:17 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.1:
+  + Use more specific error messages (bgo#686136).
+  + Adapt to recent GTK+ changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 14:43:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Make DBus-activatable.
+  + Fix a problem at startup with treemap as default chart.
+  + Misc bugfixes.
+  + Updated translations.
+- No longer pass obsolete --disable-scrollkeeper to configure.
+
+-------------------------------------------------------------------
+Mon Mar 24 21:34:07 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Misc bugfixes (make sure to clear the hardlink list before
+    rescanning, fix a warning).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 19 16:17:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Minor UI fixes and updates.
+  + Adapt to new Vala.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  4 13:06:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.1:
+  + Updated help pages.
+  + Minor fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 14 21:19:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 18:57:26 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.10:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 22:30:38 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.91:
+  + Add an appdata file for gnome-software.
+  + Minor fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 20:52:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Use latest GTK+ features.
+  + Show a message when allocated size is not available.
+  + Misc build system cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  3 11:01:03 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.3:
+  + Adapt to the latest GTK+ and Vala changes.
+  + Misc bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 26 12:16:50 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.9.2:
+  + The treeview now shows the last modified time.
+  + Always exclude mounts by default.
+  + Misc bugfixes.
+  + Updated help pages.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul  8 21:57:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.1:
+  + Use the latest Gtk and Vala features.
+  + Port chart widgets to Vala.
+  + Minor bugfixes.
+  + Updated translations.
+- Add pkgconfig(glib-2.0) BuildRequires: new verified dependency.
+
+-------------------------------------------------------------------
+Mon May 13 18:07:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 21:58:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 21:07:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 18 21:11:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Minor bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  6 10:22:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.91:
+  + Use the newest libgd to animate tranistion to and from the
+    results page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 22 09:15:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.90:
+  + Update to the latest libgd and egglistbox.
+  + Add an High Contrast icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 14 13:14:32 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Fix crash in the about dialog.
+  + Use a menu button instead of toolbar items.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 12 21:46:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.6.4:
+  + Fix crash in scan remote folder (bgo#690037)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 15 19:33:18 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.3:
+  + Fix crash in the about dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 17 20:38:33 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Fix linking error on OpenBSD.
+
+-------------------------------------------------------------------
+Tue Oct 16 07:10:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Minor tweaks to the UI.
+  + Updated translations.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires: enable
+  gobject-introspection.
+
+-------------------------------------------------------------------
+Mon Sep 24 20:57:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 22:07:27 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  3 21:30:44 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 21:22:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  6 13:04:43 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Yet more work on the new user interface
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug  2 07:00:00 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + More work on the new user interface
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 25 19:37:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.3:
+  + Near-complete rewrite in Vala (with substantial internal
+    reorganisation)
+  + Completely new user interface concept (with more changes to
+    come)
+  + Updated translations.
+- Add vala BuildRequires: baobab was rewritten in vala.
+- Drop pkgconfig(libgtop-2.0) BuildRequires.
+- Change pkgconfig(glib-2.0) BuildRequires to pkgconfig(gio-2.0):
+  this is in sync with what configure checks for.
+
+-------------------------------------------------------------------
+Thu Apr  5 11:14:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.1:
+  + Fix a problem with chart tooltips
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 26 21:47:42 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 24 23:59:12 UTC 2012 - dimstar@opensuse.org
+
+- Remove hack to find localized help: this has been fixed in
+  find-lang.sh.
+
+-------------------------------------------------------------------
+Mon Mar 19 19:48:10 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.3.4:
+  + Misc bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:06:46 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.3:
+  + Misc bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 22 07:47:13 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.2:
+  + Misc bugfixes.
+  + New user documentation using Mallard.
+  + Updated translations.
+- Change pkgconfig(gnome-doc-utils) BuildRequires to yelp-tools,
+  following the build system change for user documentation.
+- Manually list the translated help documents as %find_lang doesn't
+  support the new XDG help system yet.
+
+-------------------------------------------------------------------
+Tue Nov  1 19:42:24 UTC 2011 - dimstar@opensuse.org
+
+- Initial package, version 3.3.1:
+  + First release after the split of gnome-utils.
+

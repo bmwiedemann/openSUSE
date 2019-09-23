@@ -1,0 +1,11 @@
+--- a/buildtools/wafsamba/wafsamba.py	2015-11-06 08:28:25.000000000 -0500
++++ b/buildtools/wafsamba/wafsamba.py	2016-03-07 14:28:58.412124485 -0500
+@@ -115,7 +115,7 @@
+                   ldflags='',
+                   external_library=False,
+                   realname=None,
+-                  keep_underscore=False,
++                  keep_underscore=True,
+                   autoproto=None,
+                   autoproto_extra_source='',
+                   group='main',

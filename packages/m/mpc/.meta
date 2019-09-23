@@ -1,0 +1,7 @@
+<package name="mpc" project="openSUSE:Factory">
+  <title>MPC multiple-precision complex shared library</title>
+  <description>MPC is a C library for the arithmetic of complex numbers with
+arbitrarily high precision and correct rounding of the result. It is
+built upon and follows the same principles as MPFR.</description>
+  <devel project="devel:libraries:c_c++" package="mpc"/>
+</package>

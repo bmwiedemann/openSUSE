@@ -1,0 +1,12 @@
+Index: lib/srchilite/srchilite.doxyfile.in
+===================================================================
+--- lib/srchilite/srchilite.doxyfile.in.orig
++++ lib/srchilite/srchilite.doxyfile.in
+@@ -727,6 +727,7 @@ HTML_HEADER =
+ # standard footer.
+ 
+ HTML_FOOTER = 
++HTML_FOOTER_DESCRIPTION = FALSE
+ 
+ # The HTML_STYLESHEET tag can be used to specify a user-defined cascading 
+ # style sheet that is used by each HTML page. It can be used to 

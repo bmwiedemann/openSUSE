@@ -1,0 +1,502 @@
+-------------------------------------------------------------------
+Mon Jul 22 08:18:01 UTC 2019 - mvetter@suse.com
+
+- bsc#1142308: Drop dependency on libjasper
+  Thus removing support for decoding RED camera movies
+
+-------------------------------------------------------------------
+Fri Aug  5 22:12:55 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to version 9.27.0:
+  dcraw - revision 1.477
+  * Added "-o 6" for ACES colorspace.
+  * Copied color matrices from DNG Converter 9.5.1.
+  * Support the Canon EOS 80D & IXUS 160, Fuji X-E2 & X-E2S &
+    X-Pro2.
+
+-------------------------------------------------------------------
+Mon Jul 20 07:34:22 UTC 2015 - fstrba@suse.com
+
+- Update to version 9.26.0:
+  * fixes: 
+  dcraw revision 1.476
+  * Support the Blackmagic URSA, Nokia N9, and Photron BC2-HD.
+  * Support the Canon EOS 750D, 760D, EOS M, and sRAW/mRAW for EOS 5DS R.
+  * When there's a tie for largest raw image, "-s" says which to decode.
+  * Fixed null-byte warnings in TIFF output.
+  dcraw revision 1.475
+  * Use typecasts instead of [0] to flatten multi-dimensional arrays.
+  dcraw revision 1.474
+  * Updated color matrices, support the Canon EOS 5DS.
+
+-------------------------------------------------------------------
+Fri Feb 27 22:05:35 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to version 9.24.2:
+  dcraw - revision 1.473
+  * Canon multi-exposure files are already white-balanced.
+  * Moved border_interpolate() to the end of xtrans_interpolate().
+  From version 9.24.1:
+  * No visible changes.
+  From version 9.24.0:
+  dcraw - revision 1.471
+  * Support all format options of the Nikon D4S and D810.
+  * Guess which filter pattern OmniVision cameras use.
+  dcparse - revision 1.77
+  * Display OmniVision's MakerNote.
+  From version 9.23.0:
+  dcraw - revision 1.470
+  * Fixed data errors with Olympus E-M5MarkII HR images.
+  * Support the Lenovo A820.
+  * Copied color matrices from DNG Converter 8.7.1.
+  * Support pre-release Sonys and Canons that lack a proper model
+    name.
+  * Support the Samsung NX1 (yet another compression algorithm).
+  * Read camera white balance in all professional Kodak cameras.
+  * Reduced zippering in Fuji X-Trans interpolation.
+  * Support YCbCr files from the Kodak C330.
+  * Support Hasselblad multi-shot files.
+  dcparse - revision 1.76
+  * Parse Redcine and Canon EOS QuickTime movies.
+
+-------------------------------------------------------------------
+Tue Jul 15 17:59:16 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 9.22:
+  dcraw - revision 1.467
+  * Correctly handle Fuji X-Trans images in DNG format.
+  * Copied color matrices from DNG Converter 8.5.
+  From version 9.21:
+  dcraw - revision 1.465
+  * In colorcheck(), darken sample squares and do a second pass for exact white
+    balance.
+  * Removed C99 dependency in Phase One code.
+  * Correctly dereference TIFF type 13 (SubIFD) tags.
+  * Removed redundant strings.
+  * Support Lossy DNG files that lack an OpcodeList2 tag.
+  * Decode DNG files made from Fuji X-Trans photos.
+  * Support the Canon G1 X Mark II, Nikon P340, Samsing NX mini.
+  * Patched in Anders Torger's code for Phase One correction.
+  * Correctly crop all Sony cameras, read Panasonic blacklevels.
+
+-------------------------------------------------------------------
+Mon Feb 17 21:56:48 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 9.20:
+  dcraw - revision 1.461
+  * Fixed Sony A700 black level.
+  * Added three temporary color matrices.
+  * Use Little CMS version 2.
+  * Support the Kodak 12-megapixel camera(s).
+  * Can now use "-M" with a DNG file that embeds a bad color matrix.
+  * Improved support for Nokia cameraphones.
+  * Support the Alcatel 5235D, Powershot G16 and S120, Pentax K-3, etc.
+  * Added tone curve for Canon RMF files.
+  * Copied color matrices from DNG Converter 8.3.
+  * Support blacklevel patterns up to 64x64.
+  dcparse - revision 1.75
+  * Read the Pentax K-3 MakerNote.
+- Renamed README.SuSE to README.openSUSE.
+- Added new build requirement liblcms2-devel (removed liblcms-devel).
+
+-------------------------------------------------------------------
+Sun Jun 16 20:54:03 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to version 9.19:
+  dcraw - revision 1.456
+  * Fix green spots when half-sizing Fuji X-Trans images.
+  * Support the Baumer TXG14, OmniVision OV5647 (Raspberry Pi), and Samsung
+    NX2000.
+  From version 9.18:
+  dcraw - revision 1.455
+  * Support the Fuji HS50, X20, X100S, SL1000, Samsung NX300, Canon A3300 and
+    EOS C500, and Olympus XZ-10.
+  * Added Frank Markesteijn's X-Trans demosaic algorithm.
+  * Lowercased the names of all camera makers.
+  * Hardened dcraw against corrupt input files.
+  * Tableized away large chunks of code in identify().
+- Removed dcraw.1.patch (not needed anymore).
+
+-------------------------------------------------------------------
+Fri Jan 18 12:52:55 UTC 2013 - postadal@suse.cz
+
+- Update to version 9.17:
+  dcraw - revision 1.454
+  * Copied color matrices from DNG Converter 7.3.
+  * Support the Canon EOS 6D, 1DX, SX50, Casio EX-ZR100, Fuji X-E1 & XF1,
+    Pentax K-5 II (s), and Samsung EX2F
+- updated update_dcraw script to be able to work with dcraw tarball
+
+-------------------------------------------------------------------
+Mon Jul 30 20:44:51 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 9.16:
+  dcraw - revision 1.452
+  * Measured saturation level on the Canon EOS-1D X.
+  * Support the Samsung NX1000 and Sony RX100.
+  * Support the Canon EOS 650D, Samsung NX20, and Sigma SD1.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:57:13 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 9.15:
+  dcraw - revision 1.449
+  * Fixed gravity sensor for Canon 5D Mark III with Firmware Version 1.1.x.
+  * Decode CAMF and IMAG blocks from Sigma SD15 and DP cameras. Added "-E" and
+    "-I" options to support raw pixel substitution. Support Adobe Lossy DNG and
+    the Imacon Flexframe 3f format. Support the Canon G1-X, 1D-X, 5D Mark III,
+    the Fuji X-Pro1, X-S1, and many others.
+  * Support the Casio EX-Z500.
+  dcparse - revision 1.74
+  * Decode CAMF blocks from Sigma SD15 and DP cameras.
+- Dropped dcraw-omp.patch (wasn't used anyway).
+
+-------------------------------------------------------------------
+Tue Mar 27 08:41:25 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  Use option (b) from dcraw.c
+
+-------------------------------------------------------------------
+Fri Dec 23 18:52:51 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 9.12:
+  dcraw - revision 1.446
+  * Support the Canon S100, Nikon 1 J1 and V1, Panasonic GX1, Fuji X10, and
+    Samsung NX200 with color matrices from DNG Converter 6.6.
+
+-------------------------------------------------------------------
+Fri Oct  7 19:34:48 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 9.11:
+  dcraw - revision 1.445
+  * Copied new color matrices from DNG Converter 6.5.
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Removed support for openSUSE < 11.3.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Wed Aug  3 21:04:01 UTC 2011 - asterios.dramis@gmail.com
+
+- updated to version 9.10
+  dcraw - revision 1.444
+  * Support ARRIRAW and Redcode R3D raw formats (video only).
+  * Support the Leica D-LUX 5 and V-LUX 2, Panasonic G3 and GF3, Olympus E-P3,
+    Sony NEX-C3 and SLT-A35, and Canon SX30.
+  * Updated support for Nikon encrypted WB and Canon sRAW/mRAW.
+- Spec file updates:
+  * Added libjasper-devel in BuildRequires:.
+
+-------------------------------------------------------------------
+Sat May 14 12:05:25 UTC 2011 - asterios.dramis@gmail.com
+
+- updated to version 9.08
+  dcraw - revision 1.443
+  * Support the Fuji HS20EXR/F550EXR, Kodak Z990, Leaf AFi-II 12, Nikon D5100
+    and Samsung NX11 and NX100.
+  dcparse - revision 1.73
+  * Improved parsing of Fuji images.
+- Spec file updates:
+  * Small fix if suse_version is not set.
+
+-------------------------------------------------------------------
+Mon Apr  4 20:18:58 UTC 2011 - asterios.dramis@gmail.com
+
+- updated to version 9.07 (dcraw revision 1.442)
+  * Support the Hasselblad 9044x6732 back, Leaf 1068x1464 back, Fuji X100 and
+    Canon 600D and 1100D.
+
+-------------------------------------------------------------------
+Wed Mar 23 19:09:55 UTC 2011 - asterios.dramis@gmail.com
+
+- updated to version 9.06
+  * Support the Nikon D3100 & D7000 & P7000, Panasonic FZ40 & FZ100 & LX5,
+    Samsung WB2000, Nokia X2, Canon SX120 & PowerShot G12, Hasselblad H4D,
+    Pentax 645D & K-5 & K-r, Sony SLT-A33 & SLT-A55V, Canon SX20 IS, Samsung
+    EX1, Sony A450, Kodak Z981, Olympus E-P2, Panasonic G2 & GF1, Samsung WB550
+    and NX10, Casio EX-Z1050, Fuji HS10, Canon EOS 550D / Digital Rebel T2i /
+    Kiss Digital X4.
+  * Support high-ISO images from the Samsung WB2000.
+  * Read correct camera WB from Nikon NRW and Samsung SRW files.
+  * Copied color matrices from Adobe DNG Converter 6.3.
+  * Fixed rotation for Kodak EasyShare and some Canon EOS photos.
+  * Get Fuji HS10 black level from the metadata.
+  * Built color matrices for the Sony NEX-3 and NEX-5.
+  * Support A100 images modified by Sony software.
+  * Split the darkness level into four separate color channels.
+- Replaced dcraw.c and dcraw.1 with the package tarball provided from the official
+  site.
+- Added clean_crw and fuji_green programs.
+- Added rawphoto.c file in the documentation (gimp-plugin).
+- Removed dcwrap program (no longer provided from the official site).
+- Spec file updates:
+  * Changed version numbering scheme (used the one from the tarball provided).
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Added description for dcraw-omp.patch based on openSUSE Patches Guidelines.
+  * Added gettext-runtime in BuildRequires:.
+  * Added dcraw-lang package.
+  * Compile also fujiturn16 program (to rotate 48-bit PPM images).
+  * Updates in %prep, %build, %install and %files sections based also on Fedora
+    and Debian packages.
+- Rebased dcraw-omp.patch to apply cleanly.
+- Added a patch for dcraw.1 to fix "macro `LO' not defined" rpm post build
+  check warning.
+- Added a patch for fuji_green.c to fix gcc implicit declaration warning.
+
+-------------------------------------------------------------------
+Sun May  2 00:56:47 CEST 2010 - postadal@suse.cz
+
+- updated to RCS 1.432
+  * Support the Canon EOS-1D Mark IV and PowerShots G11 and S90,
+    Casio EX-Z750, Pentax K-x, Fuji SX200EXR, Sony A550, Sony DSLR-A850,
+    Canon EOS 7D, Casio EX-Z850, Canon A470, G11, Nikon D3000, 
+    Panasonic FZ35/FZ38, Casio Z60, Casio Z75, Kodak Z980, Pentax K-7, 
+    Olympus X200,D560Z,C350Z
+  * Correctly crop Nikon D300S photos
+  * Support camera WB for the Kodak EasyShare Z980 and Z1015
+  * Decode all packed 10-bit and 12-bit formats in one function
+  * Copied color matrices from Adobe DNG Converter 5.4
+
+-------------------------------------------------------------------
+Sun Nov 15 16:39:58 CET 2009 - meissner@suse.de
+
+- rediffed OMP patch to get fuzz-0
+
+-------------------------------------------------------------------
+Thu Aug  6 16:11:05 CEST 2009 - postadal@suse.cz
+
+- updated to RCS 1.425
+  * Support the Phase One P45+, Casio EX-S20, Samsung S850, Agfa DC-833m,
+    Panasonic DMC-GH1, Canon SX1, SX110,, EOS 500D/Rebel T1i/Kiss X3,
+    Motorola PIXL, Kodak Z1015, Olympus E-30, Pentax K2000/K-m, Hasselblad V96C,
+    Samsung S85, Leaf AFi 7, Panasonic FX150 and G1, Canon PowerShot G10,
+    Panasonics LX3 and FZ28, Nikons D90 and P6000, Canon EOS 50D, Sony A900,
+  * When sampling dark pixels, don't get too close to the light pixels
+  * Linearize the Apple Quicktake, Kodak DC40/DC50, and Logitech Fotoman Pixtura
+  * Added "-g" option for custom gamma curves
+  * Support 3672 x 2486 images from the Panasonic DMC-FZ50
+  * Correctly handle negative pixels in split NEF files
+  * Support GPS-tagged ORFs and anonymous DNGs
+  * Support the sRAW1 and sRAW2 modes of the Canon EOS 50D and 5D Mark II
+- updated omp.patch
+
+-------------------------------------------------------------------
+Sun Sep  7 22:40:44 CEST 2008 - postadal@suse.cz
+
+- updated to RCS 1.404
+  * Support the Kodak C603, Nikon D700, Canon EOS 1000D,
+    Canon PowerShot SD300, and Olympus E-520, SONY A300
+  * Removed useless code from ppg_interpolate()
+  * Don't crash on corrupt CR2 files
+  * Extract the largest JPEG from any X3F file
+  * Fixed camera WB on the A200
+  * Set model-specific saturation levels in adobe_coeff()
+
+-------------------------------------------------------------------
+Sun Apr 13 22:57:10 CEST 2008 - postadal@suse.cz
+
+- updated to RCS 1.401
+  * Copy GPS data into thumbnails and TIFF output
+  * Support the Apple QuickTake 200, Fuji IS-1, Sony DSLR-A350,
+    Pentax K20D, Nokia N95, and Canon PowerShots A460, A530, and A650
+    Canon EOS 450D, Nikon D60, and Fuji S100FS, Olympus E-420
+  * Copied new matrices from Adobe DNG Converter 4.4
+  * fixed sRAW support (broke Fuji DNG files)
+- added omp.patch to speed up decoding (-fomp disabled by default) 
+
+-------------------------------------------------------------------
+Tue Feb 12 10:54:10 CET 2008 - postadal@suse.cz
+
+- updated to RCS 1.398
+  * Added the "-P" and "-S" options
+  * Support the Sony DSLR-A200 and the PowerShots A720 and S5 IS
+  * Support the Panasonic DMC-L10, added the "-W" option
+  * Cropped four columns from the Nikon D3
+  * Abolished the getrat() macro, support the Hasselblad H3D
+  * Added the Olympus E-3 and adjusted a few maximums
+  * Support the AVT F-080C, Canon EOS 40D, Canon EOS-1Ds Mark III,
+    Canon PowerShot G9, Nikon Coolpix S6, Nikon D3, Nikon D300,
+    Panasonic DMC-FZ18, and Sony DSLR-A700
+  * Support the new Canon sRAW CR2 format
+  * Added median filtering after interpolation
+  * Use fseeko() and ftello() only when needed
+  * Reject TIFF files with unsupported Compression tags
+
+-------------------------------------------------------------------
+Fri Aug  3 17:16:18 CEST 2007 - postadal@suse.cz
+
+- updated to RCS 1.390
+  * Added Patterned Pixel Grouping interpolation
+  * Support 3096x2103 mode for the Panasonic DMC-FZ8.
+  * Added "-C" option to correct chromatic aberration.
+  * Support the Hasselblad CFV, Kodak EasyShare C330, and Nikon D40X.
+  * Use a switch statement for Leica and Panasonic models.
+  * Output seven new TIFF tags, including ImageDescription and Artist.
+  * Generated color matrices for the Apple QuickTake and Phase One H 20.
+  * Copied new matrices from Adobe DNG Converter 4.1.
+  * Added "-M" option and improved PPG interpolation.
+  * Reports of corruption in 16-bit linear DNGs were false.
+  * Support all Lossless JPEG predictors.
+  * Reject 8-bit grayscale TIFFs.
+  * Decode raw CINE files, which may exceed 2GB.
+  * Error-check the "-s" option, and enable "-s all".
+  * Support camera WB for the Canon EOS-1D and EOS-1DS.
+  * Use full output range for "-H 2".
+  * Added color matrix for the Canon PowerShot A640.
+  * When they differ, use DateTimeOriginal instead of DateTime.
+
+-------------------------------------------------------------------
+Thu May  3 14:31:24 CEST 2007 - postadal@suse.cz
+
+- updated to RCS 1.379
+  * Offer blended highlights with the "-H 2" option
+  * Set "shot_order" for ORF and CR2 files
+  * Added "-A" option to select a rectangle for white balance
+  * Protect against overflow attacks on malloc() or calloc()
+  * Nucore raw formats are not used outside Nucore, so drop them
+  * Support the Canon PowerShots A630 and A640, Panasonic DMC-FZ8,
+  * Sigma SD14, Apple QuickTake 100 & 150, Mamiya ZD, Casio QV-R41,
+    Olympus E-410 and Pentax Optio 750Z
+- fixed doc permissions
+
+-------------------------------------------------------------------
+Wed Apr 25 02:12:58 CEST 2007 - postadal@suse.cz
+
+- updated to RCS 1.377
+  * Added a color matrix for the Fuji S6000fd
+  * Set aspect ratio for the Kodak DC20 and DC25
+  * Replaced bilateral filter with wavelet denoising
+  * Fixed incompatibility between "-f" and "-p"
+  * Fixed strange color casts with the Polaroid x530
+  * Added Adobe matrices for the Nikon D40 and Pentax K10D
+  * Found larger JPEG thumbs for Nikon D100,D1H,D1X,D2H,D2X,E5000,E5700
+  * Support the Canon EOS-1D Mark III, Olympus SP550UZ, Fuji FinePix S5Pro
+  * Use the "a trous" wavelet transform instead of the JPEG2000 method
+  * Apply sqrt() to denoise highlights and shadows evenly
+  * Optimized AHD interpolation to take 22% less time
+  * Better detect and reject non-raw TIFFs
+- fixed dcraw permission
+
+-------------------------------------------------------------------
+Thu Feb  8 12:29:52 CET 2007 - postadal@suse.cz
+
+- updated to RCS 1.364
+  * Built a color matrix for Canon PowerShot S3 IS, Canon PowerShot A610
+  * Added Olympus SP510UZ, Panasonic DMC-L1, Leica Digilux 3,
+    Casio EX-Z4, Kodak DCS200, Canon PowerShots A620, S3 IS, Pentax K10D,
+    Canon PowerShot A610 
+  * Suport Olympus E-400, Sinar 4-shot and Sinar IA file format
+  * Added "-K" option for dark-frame subtraction
+  * Get the Olympus black level from the ORF metadata.
+  * Found a more reliable way to identify 4775936-byte images
+
+-------------------------------------------------------------------
+Mon Oct 16 22:47:15 CEST 2006 - postadal@suse.cz
+
+- updated to RCS 1.353
+  * added support for Pentax K100D, Nikon D200, D80, E3200, 
+    Canon EOS 400D, Panasonic DMC-LX2, DMC-FZ50 
+  * correctly display long exposure times for CRW files
+  * added color matrices from Adobe DNG Converter 3.5
+  * display the focal length of Canon CRW images
+
+-------------------------------------------------------------------
+Thu Aug 17 17:35:46 CEST 2006 - postadal@suse.cz
+
+- updated to RCS 1.340
+  * improved support for the Olympus E-330
+
+-------------------------------------------------------------------
+Wed Aug  2 12:35:19 CEST 2006 - postadal@suse.cz
+
+- updated to RCS 1.338
+  * added "-H 2" option for rudimentary highlight recovery
+  * new "-T" option provides TIFF output with metadata and ICC profile
+  * replaced "-r" and "-l" options with raw white balance
+  * added support for Imacon Ixpress 22-Mp, Leaf Aptus 75, Leica D-Lux 2, 
+    Sony DSLR-A100, Minolta DiMAGE G530, Sinar 4080x4080, Samsung GX-1S
+  * fixed camera WB for Canon EOS 10D, 300D, and clones
+  * added camera WB for the Kodak DCS Pro SLR models, Imacon Ixpress, 
+    Kodak P850/P880
+
+-------------------------------------------------------------------
+Sun Mar 26 15:56:10 CEST 2006 - postadal@suse.cz
+
+- updated to RCS 1.319
+  * new color matrix for the Nikon E700, E800, and E950
+  * new "-D" option to output unscaled raw pixels (totally raw)
+  * fixed defective pixels and columns in Phase One images
+ 
+-------------------------------------------------------------------
+Thu Feb  9 22:12:25 CET 2006 - dmueller@suse.de
+
+- update to RCS 1.315 (#112733) 
+
+-------------------------------------------------------------------
+Wed Feb  8 02:36:13 CET 2006 - dmueller@suse.de
+
+- update to RCS 1.314: 
+  Updated color matrices based on Adobe DNG Converter 3.3.
+   Added Kodak ProPhoto D65 as an output option.
+
+-------------------------------------------------------------------
+Thu Jan 26 12:29:16 CET 2006 - sbrabec@suse.cz
+
+- Updated to dcraw v8, RCS 1.313.
+- Added simple update_dcraw script.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 15:56:34 CET 2006 - adrian@suse.de
+
+- add stack protector compiler flag
+
+-------------------------------------------------------------------
+Thu Oct 13 13:48:05 CEST 2005 - postadal@suse.cz
+
+- update to RCS 1.290
+  * added as default new interpolation algorithm AHD
+    (Adaptive homogeneity-directed demosaicing algorithm)
+  * new Bilateral filtering to remove color noises in CIELAB space
+- update dcraw.1, fujiturn, dcparse (parse.c)
+- removed crwfixdates (fixdates.c) superseded by "dcraw -z" 
+
+-------------------------------------------------------------------
+Tue Jun  7 12:00:09 CEST 2005 - adrian@suse.de
+
+- update to RCS 1.263
+- compile with -fno-strict-aliasing to avoid compiler errors
+
+-------------------------------------------------------------------
+Fri Jun  3 12:46:05 CEST 2005 - postadal@suse.cz
+
+- Updated to current version on maintainers website.
+  RCS version 1.262.
+
+-------------------------------------------------------------------
+Fri Feb  4 15:43:01 CET 2005 - meissner@suse.de
+
+- Updated to current version on maintainers website.
+  RCS version 1.234.
+
+-------------------------------------------------------------------
+Thu Aug 26 14:05:18 CEST 2004 - sbrabec@suse.cz
+
+- Updated to dcraw RCS version 1.200.
+- Added more tools and documentation.
+
+-------------------------------------------------------------------
+Wed Jun 16 10:48:17 CEST 2004 - adrian@suse.de
+
+- initial package of version 1.194
+

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27d9bd8b78270643a7a7f2857ebcb401</srcmd5>
+    <version>2.9.0</version>
+    <time>1541865644</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/opensuse-factory/2018-11/msg00020.html</comment>
+    <requestid>647076</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bbfd7bde733c50382959604270c47e76</srcmd5>
+    <version>2.10.1</version>
+    <time>1543311654</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.10.1</comment>
+    <requestid>651452</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec4e762cf6f3c2c802e7377a64180012</srcmd5>
+    <version>2.11.0</version>
+    <time>1546946853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662539</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>276b6451c45daae33b9f0b2299408531</srcmd5>
+    <version>3.2.2</version>
+    <time>1558515472</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 3.2.2
+  * Support for Mastodon social proofs.
+  * New slash commands.
+  * Set short term retention policies on teams and direct messages.</comment>
+    <requestid>693811</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>471a24462ed0555f1afa01df8221667d</srcmd5>
+    <version>3.2.2</version>
+    <time>1559837933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708027</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf0871f91ef451d85512d89a61036083</srcmd5>
+    <version>4.2.1</version>
+    <time>1564137607</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.2.1
+  * Search across all chat conversations.
+  * Team mentions in chat.</comment>
+    <requestid>718334</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f759fce0b7d623d4231cc32d05d6cb4b</srcmd5>
+    <version>4.3.1</version>
+    <time>1566243548</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.3.1
+  * Replies will automatically notify who you're replying to.
+  * Support user lookup by phone number.</comment>
+    <requestid>724256</requestid>
+  </revision>
+</revisionlist>

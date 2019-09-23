@@ -1,0 +1,759 @@
+-------------------------------------------------------------------
+Wed Apr 10 09:55:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 11 12:19:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Avoid segfault when updating latest timestamp.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan  8 04:48:40 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + Updated DOAP file.
+  + Code clean up.
+  + Replacing *_get_type() with g_type_ensure().
+  + Fix app icon not showing in about dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  4 21:51:22 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.3:
+  + Improved app icon.
+  + Updated translations.
+- Changes from version 3.31.2:
+  + Updated app icon.
+  + Retire app menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  8 09:53:52 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Install AppData XML to metainfo.
+  + Update MSGID_BUGS_ADDRESS in po/Makevars.
+  + Updated translations.
+- Drop gnome-logs-fix-appdata-meson.patch (fixed upstream).
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Mon Jul 23 21:16:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + Disable exporting logs when there are none.
+  + Update GTK+ requirement in README.
+  + Various fixes in meson build system.
+  + Fix typo in meson build system.
+  + Dropped dogtail test case.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 11 17:57:27 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.5:
+  + Fix typo in data/meson.build.
+- Changes from version 3.28.4:
+  + Fix build error in meson build system.
+- Switch to meson buildsystem, add meson BuildRequires and
+  corresponding macros.
+- Add gnome-logs-fix-appdata-meson.patch: Fix appdata installfolder
+  when using meson build system.
+
+-------------------------------------------------------------------
+Fri Jun 15 08:46:20 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.3:
+  + Distribute meson files in tarball.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  7 09:39:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.1:
+  + Only show similar timestamps once.
+  + Various memory leak fixes.
+  + Exporting blank journal crash fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May  7 09:39:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + Various memory leak fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 12 19:26:54 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  6 11:02:32 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:28:32 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  5 14:32:54 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + Avoid using hard-coded colors (bgo#792152).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:04 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.4:
+  + Add meson build system.
+  + Add missing LINGUAS file.
+  + Add warning cflags support in meson.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:03 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.3:
+  + Updated translations.
+- Update Url tag to https://wiki.gnome.org/Apps/Logs to the
+  current Logs' web page.
+- Add gsettings-desktop-schemas Requires as it is an explicit
+  runtime dependency highlighted by configure.ac file and gnome
+  wiki.
+- Add xsltproc and docbook-xsl-stylesheets BuildRequires used to
+  build the manual pages. Note that they were being pulled and used
+  already.
+- Adopt the use of %make_build macro rather than raw make command,
+  following the best practices.
+
+-------------------------------------------------------------------
+Sat Feb  3 03:27:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.2:
+  + Update timestamps in boot selection menu when necessary.
+  + Updated translations.
+- Add fdupes BuildRequires and its macro for removal of duplicates
+  under the data directory.
+
+-------------------------------------------------------------------
+Sat Feb 03 03:27:01 UTC 2018 - aplazas@suse.com
+
+- Update to version 3.27.1:
+  + Migrated from intltool to gettext.
+  + Updated translations.
+- Drop intltool BuildRequires: No longer needed after upstreams
+  port to gettext.
+
+-------------------------------------------------------------------
+Fri Feb  2 09:22:04 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.26.3:
+  + Avoid using hard-coded colors.
+  + Updated translations.
+- Drop gnome-logs-nb-translations.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Dec 22 08:42:05 UTC 2017 - zaitor@opensuse.org
+
+- Add gnome-logs-nb-translations.patch: Update Norwegian Bokmål
+  translations.
+- Clean up spec, use modern macros.
+
+-------------------------------------------------------------------
+Wed Nov  1 11:09:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 11:08:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  7 02:36:50 UTC 2017 - sckang@suse.com
+
+- Modify gnome-logs.spec: use System/X11/Utilities group instead of
+  System/Utilities.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:36:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 21 10:18:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 15 08:22:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.90:
+  + Add a Ignore button to info bar.
+  + Various event compression UI improvements.
+  + Translatable string improvement.
+  + Require GTK+ 3.22 to build.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 30 03:25:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.4:
+  + Moving sorting to GlJournalModel.
+  + Event compression related fixes.
+  + Removing GlEventView type and displaying detailed event
+    information in popover.
+  + Removed tooltip for each row and size group for widgets in each
+    row.
+  + Updated translations.
+- Drop no longer needed post(un) handling of
+  desktop_database_post(un), icon_theme_cache_post(un) and
+  glib2_gsettings_schema_post(un), we have file-triggers to take
+  care of this for us now.
+
+-------------------------------------------------------------------
+Sun Jul 30 03:25:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.25.1:
+  + Avoid some deprecated GTK+ API.
+  + Increase default window size to 1200*780.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 29 12:09:56 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.2:
+  + Improved scrolling performance.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 24 17:05:18 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 21 08:10:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 23:58:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 08:58:11 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Translator comments improvements.
+  + Exact search type crash fix.
+  + Fix crash when users don't have proper permissions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 17 11:37:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.4:
+  + Keep boot_match as a duplicated string.
+  + Rename some functions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 12 11:17:52 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.3:
+  + Fix search results not remembered.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 22 12:40:43 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.2:
+  + Improved quick search behavior and search performance.
+  + Use Unicode in translatable strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 16 14:30:44 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.23.1:
+  + Add search popover.
+  + Fix CSS parsing error and clean up an unused function.
+  + Updated translations.
+- Drop gnome-logs-css-parsing-error.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Nov 13 17:06:52 UTC 2016 - badshah400@gmail.com
+
+- Add gnome-logs-css-parsing-error.patch: Fix a css parsing error
+  that caused text in logs to be tiny and no respect accessibility
+  settings; patch taken from upstream git master branch
+  (bgo#768985).
+
+-------------------------------------------------------------------
+Mon Oct 10 07:51:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:53:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 14:59:01 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.92:
+  + Fix a startup crash when the journal is empty.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 18:55:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.90:
+  + Refactoring and movement of several journal query features to
+    the model from the view.
+  + Improved check for journal read permissions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 21 11:30:58 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.3:
+  + Substitute a newline character in single-line strings.
+  + Toolstip string improvement.
+  + GSettings schema translation improvements.
+  + Use AM_DISTCHECK_CONFIGURE_FLAGS.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 12 11:24:32 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 22 10:38:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 12:33:52 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + Scrolling in the details view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 01 03:22:25 UTC 2016 - sckang@suse.com
+
+- Update to version 3.19.91:
+  + Use a different export icon.
+  + Improve error handling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 16:10:39 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + Updated AppData file.
+  + Add context to shortcuts window strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 18 09:36:59 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.4:
+  + Fix test error in tests/test-gl-util.c.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec 19 07:02:22 UTC 2015 - damjanovic.ivo@gmail.com
+
+- Update to version 3.19.3:
+  + Show seconds in details view and exported logs.
+  + Set default icon from Arnaud Bonatti.
+  + Avoid double frees on journal errors.
+  + Use GtkShortcutsWindow.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 19:49:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.2:
+  + Improve startup time.
+  + Add full log text as tooltip for each row.
+  + Fix CSS class name typo in details view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 01:57:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Search string tokenization crash fix.
+  + Simple log export.
+  + Single boot item menu fix.
+  + Log view permissions warning.
+  + Clickable Support link.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 13 10:35:43 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix for crash when searching.
+  + Fix display of boots when there is only one.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:34:40 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 10:35:42 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.91:
+  + Boot selection UI improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 16:58:47 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Update list box row behavior after GTK+ change.
+  + Monospace font for all log view text, and alignement fixes.
+  + Boolean search combinations.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Thu Jul 23 07:20:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.4:
+  + View events from different boots.
+  + Support for searching using journal fields.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 26 07:42:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.3:
+  + Single-line three-column log event view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 29 10:52:14 UTC 2015 - antoine.belvire@laposte.net
+
+- Add %glib2_gsettings_schema_{post,postun} to update glib schema
+  database after installation and uninstallation.
+
+-------------------------------------------------------------------
+Tue May 26 09:31:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.2:
+  + Update journal dependency to libsystemd.
+  + Updated translations.
+- Replace pkgconfig(libsystemd-journal) for pkgconfig(libsystemd)
+  following upstream changes.
+
+-------------------------------------------------------------------
+Mon May 11 17:57:32 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Port to G_DECLARE_FINAL_TYPE.
+  + Dogtail installed test.
+  + CSS provider simplification.
+  + Fix for variable initialization.
+
+-------------------------------------------------------------------
+Mon May 11 17:55:46 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:34:23 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Install a symbolic application icon.
+  + Updated translations.
+- Remove HighContrast %icon_theme_cache_post(un) calls, as Symbolic
+  icons have replaced them.
+
+-------------------------------------------------------------------
+Mon Mar 23 21:53:34 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + fix timestamp comparison test.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:25:44 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:34:58 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Added on-demand loading of journal entries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 18 19:02:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90:
+  + Port to GListModel.
+  + Extensive refactoring of the journal query code.
+  + Mark the application as busy when reading from the journal.
+  + Unit test for timestamp comparison.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 23 22:32:26 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.15.4:
+  + Preliminary asynchronous querying of the journal.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 17 20:46:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.3:
+  + An option for the sort order of the event list.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 28 20:30:28 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.2:
+  + Only show the categories list when relevant.
+  + Substitute binary path in service file correctly.
+  + Add elements to AppData to fix validation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 18 16:45:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Coverity warning fix.
+  + Enhanced systemd message catalog parsing and display.
+  + Updated translations.
+- Own Hicontrast icon dirs, and run macros for icons in
+  post/postun.
+
+-------------------------------------------------------------------
+Thu Nov 13 19:48:13 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Substitute binary path in service file correctly.
+  + Add elements to AppData to fix validation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:30:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:21:25 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 20:58:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.92:
+  + Validate AppData XML with appstream-glib instead of
+    appdata-tools.
+  + Translatable application name in desktop file.
+
+-------------------------------------------------------------------
+Mon Sep  1 15:30:40 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + Add extra Utilities category to the desktop file.
+
+-------------------------------------------------------------------
+Mon Aug 18 12:07:35 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Add licenses to AppData description.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 21 21:42:34 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Increase category list padding.
+  + Use new GtkApplication appmenu resource handling.
+  + Match desktop file name in AppData.
+  + Avoid deprecated xalign property.
+  + Use GtkIconTheme RTL support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 18:49:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.3:
+  + Fix warnings.
+- Changes from version 3.13.2:
+  + Use widget GtkBuilder templates for the event detail view.
+  + Avoid using deprecated GtkMisc.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 12:53:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.1:
+  + Add a D-Bus service file and make the application D-Bus
+    activatable.
+  + Avoid some deprecated GTK+ API.
+  + Updated translations.
+- Update name in update-desktop-file following upstream changes.
+
+-------------------------------------------------------------------
+Sat May 17 12:43:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:28:46 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Add F1 accelerator for help action.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 21:08:51 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 13:31:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Add Utility category to the desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 19:52:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Several keyboard navigation improvements.
+  + --version command-line argument support.
+  + Mallard help.
+  + Updated translations.
+- Add yelp-tools BuildRequires: new dependency for Mallard help.
+
+-------------------------------------------------------------------
+Wed Feb 19 21:44:16 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Batch loading of journal items so that the UI remains
+    responsive.
+  + Show a Help item in the application menu.
+  + Validate the desktop file during make check.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  4 17:36:46 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.5:
+  + Show application icon if a corresponding desktop file is found.
+  + Show priority, kernel device and audit session in details view.
+  + Hide unimplemented UI labels.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 27 19:42:18 UTC 2014 - dimstar@opensuse.org
+
+- Drop gnome-common BuildRequires and call to aclocal: the latest
+  tarball has been built with a recent enough version of appdata
+  tools.
+- Drop appdata-tools BuildRequires: no longer needed, as upstream
+  takes care of valudating appdata.xml files now.
+- Add gtk-doc BuildRequires: required in order to build the man
+  pages. It was implicit to gnome-common before.
+
+-------------------------------------------------------------------
+Mon Jan 27 14:15:15 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.3:
+  + Validate AppData during distcheck.
+  + Add man page.
+  + Add icon.
+  + Updated translations.
+- Add hicolor-icon-theme and update-desktop-files BuildRequires,
+  and add corresponding macros to post/postun.
+
+-------------------------------------------------------------------
+Tue Nov 19 22:01:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Add and validate AppData.
+  + Load log events for the current category only.
+  + Show log events from the current boot only.
+  + Pretty timestamp formats.
+  + Updated translations.
+- Add appdata-tools BuildRequires: needed to validate the appdata
+  file.
+- Add gnome-common BuildRequires and call aclocal --install, in
+  order to ensure a recent enough appdata.m4 is being used. When
+  the tarball was created, appdata.m4 did not use --nonet yet and
+  in turn required internet access.
+
+-------------------------------------------------------------------
+Sat Nov  2 18:47:28 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 3.11.1:
+  + Support case-insensitive search.
+  + Show timestamps against messages in the event view.
+  + Use a monospace font for log messages.
+  + Use a single header bar.
+  + Switch the default category to "important" and match the
+    mockups.
+  + Refactor code to read messages from the journal.
+  + .desktop file fix.
+  + Show the message catalog entry for a message in the details
+    view.
+  + RTL and style fixes.
+  + Category switching fix.
+  + Many other fixes.
+  + Updated translations.
+- Add Recommends for lang package, and add required macros for
+  building language package to pick up the new translations.
+
+-------------------------------------------------------------------
+Mon Sep 30 19:44:30 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.1.
+

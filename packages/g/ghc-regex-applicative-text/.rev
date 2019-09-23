@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5087ccbaa04db2ef1d0e1729e3f7a66</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1465335972</time>
+    <user>dimstar_suse</user>
+    <comment>regex-applicative-text: regex-applicative on text</comment>
+    <requestid>397590</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>beb33ba58193e06c1a60e6d36e202d8a</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1469628697</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412019</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4ce0adf1444c33873cd1986f964975f7</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1499754343</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>508574</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5f30bf986836be0ebe03604fac562f1c</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1505506144</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525285</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2b86093fcde3a6be0bd4666d639a81f4</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1527675622</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609813</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>21f1b70be78b27f0a35d36e9a57ca851</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1532445681</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623839</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5de68f4d962a303ae2129d4a2381deac</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1540448476</time>
+    <user>dimstar_suse</user>
+    <comment>trivial version update</comment>
+    <requestid>643199</requestid>
+  </revision>
+</revisionlist>

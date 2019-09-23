@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>62d9b738fc4108ad10d268bdb82971c7</srcmd5>
+    <version>2.0.1</version>
+    <time>1317213829</time>
+    <user>saschpe</user>
+    <comment>new package</comment>
+    <requestid>85023</requestid>
+  </revision>
+  <revision rev="2" vrev="11">
+    <srcmd5>62d9b738fc4108ad10d268bdb82971c7</srcmd5>
+    <version>2.0.1</version>
+    <time>1319181805</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="12">
+    <srcmd5>da07559498f38364d6cb1298bdc771ed</srcmd5>
+    <version>2.0.1</version>
+    <time>1332752448</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0+-with-openssl-exception
+Use SUSE- proprietary prefix until license accepted upstream at spdx.org (forwarded request 110807 from babelworx)</comment>
+    <requestid>110808</requestid>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>8b3d26be1fcfcf504e838fbbf7d4dda4</srcmd5>
+    <version>2.0.1</version>
+    <time>1333356673</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0+-with-openssl-exception
+fix subpackage (forwarded request 112001 from babelworx)</comment>
+    <requestid>112002</requestid>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>8b3d26be1fcfcf504e838fbbf7d4dda4</srcmd5>
+    <version>2.0.1</version>
+    <time>1340183229</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="17">
+    <srcmd5>8b3d26be1fcfcf504e838fbbf7d4dda4</srcmd5>
+    <version>2.0.1</version>
+    <time>1359108736</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="18">
+    <srcmd5>337e4b50e8e9818c58484a9e473cab18</srcmd5>
+    <version>2.0.1</version>
+    <time>1364158521</time>
+    <user>coolo</user>
+    <comment>- Add aarch64 to the list of lib64 platforms (forwarded request 160668 from Andreas_Schwab)</comment>
+    <requestid>160718</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>261621cee124bfe201f2f939212b6ec5</srcmd5>
+    <version>2.0.6</version>
+    <time>1370788384</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.0.6
+* Fixes to the build procedure
+- Remove ccrtp-ppc64.patch (no longer applies) (forwarded request 177838 from jengelh)</comment>
+    <requestid>177985</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>daddb413e16bfaeed070ecdbaf8c57dc</srcmd5>
+    <version>2.0.6</version>
+    <time>1371217388</time>
+    <user>coolo</user>
+    <comment>- Build and ship development documentation (forwarded request 178910 from jengelh)</comment>
+    <requestid>178913</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>daddb413e16bfaeed070ecdbaf8c57dc</srcmd5>
+    <version>2.0.6</version>
+    <time>1379662091</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>52c9d673a41f6d7240a3346dedf960ba</srcmd5>
+    <version>2.0.6</version>
+    <time>1389026695</time>
+    <user>scarabeus_factory</user>
+    <comment>- add libgcrypt-1.6.diff: Fix build with libgcrypt-1.6 (forwarded request 212911 from dirkmueller)</comment>
+    <requestid>212914</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b4b28070b8c2c0582864044c64ff423b</srcmd5>
+    <version>2.0.9</version>
+    <time>1405253172</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239656</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b4b28070b8c2c0582864044c64ff423b</srcmd5>
+    <version>2.0.9</version>
+    <time>1409300621</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0c5726eca9acb7f339f31d384a777123</srcmd5>
+    <version>2.1.1</version>
+    <time>1420429466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1</comment>
+    <requestid>267136</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>09c825331cddff53083dfc528960ac59</srcmd5>
+    <version>2.1.2</version>
+    <time>1439556431</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322873</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e194157059ca173d698ace1b38ada66d</srcmd5>
+    <version>2.1.2</version>
+    <time>1480693334</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442809</requestid>
+  </revision>
+</revisionlist>

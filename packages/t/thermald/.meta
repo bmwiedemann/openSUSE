@@ -1,0 +1,5 @@
+<package name="thermald" project="openSUSE:Factory">
+  <title>Thermald</title>
+  <description>The Linux Thermal Daemon program from 01.org</description>
+  <devel project="hardware" package="thermald"/>
+</package>

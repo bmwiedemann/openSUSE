@@ -1,0 +1,370 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>d0120898e7029b80734a25fb07f6878e</srcmd5>
+    <version>4.6.1</version>
+    <time>1240887397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d0120898e7029b80734a25fb07f6878e</srcmd5>
+    <version>4.6.1</version>
+    <time>1240887397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df82b0629365a1989a7dea27ec246239</srcmd5>
+    <version>4.7.1</version>
+    <time>1265280432</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/xfce4-settings based on submit request 31405 from user prusnak
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>233575cc5ee88fdd8ee324cdbc6fddfc</srcmd5>
+    <version>4.7.1</version>
+    <time>1268926585</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6d5a7033ab52a413d2d2b4221eef5c39</srcmd5>
+    <version>4.7.1</version>
+    <time>1268989013</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/xfce4-settings based on submit request 35151 from user prusnak
+</comment>
+    <requestid>35151</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>829441b60654250970b27071bd53f8a7</srcmd5>
+    <version>4.6.4</version>
+    <time>1271979311</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/xfce4-settings based on submit request 38533 from user prusnak
+</comment>
+    <requestid>38533</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>829441b60654250970b27071bd53f8a7</srcmd5>
+    <version>4.6.4</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>829441b60654250970b27071bd53f8a7</srcmd5>
+    <version>4.6.4</version>
+    <time>1278678626</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de1ad183519252d512244ea99d39a935</srcmd5>
+    <version>4.7.4</version>
+    <time>1291585941</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54792 from user anubisg1
+</comment>
+    <requestid>54792</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d80cb47f6d49b7592ad6f28025963423</srcmd5>
+    <version>4.7.4</version>
+    <time>1291585950</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54792
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>316e9dd46cde1a1e2e0ebfd551c81e98</srcmd5>
+    <version>4.7.6</version>
+    <time>1291770264</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55001 from user prusnak
+</comment>
+    <requestid>55001</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>149a5ed9884ad58583ff4a6a093ef0fc</srcmd5>
+    <version>4.7.6</version>
+    <time>1291770272</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55001
+</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6cc8a41a387513da461e9da5ee1d4462</srcmd5>
+    <version>4.7.6</version>
+    <time>1295022614</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57406 from user gberh
+</comment>
+    <requestid>57406</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>1a38696d54815b706b029b31a1c52c22</srcmd5>
+    <version>4.7.6</version>
+    <time>1295022624</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57406
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c550c6389d7f1e497c44bf22bc4822a3</srcmd5>
+    <version>4.8.0</version>
+    <time>1295310133</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58602 from user gberh
+</comment>
+    <requestid>58602</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7e6e18d75fcdd33579f939a940cc0063</srcmd5>
+    <version>4.8.0</version>
+    <time>1295310140</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58602
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ee81ad7461cc014c65804528ed237e62</srcmd5>
+    <version>4.8.1</version>
+    <time>1296841746</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60008 from user gberh
+</comment>
+    <requestid>60008</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>ee81ad7461cc014c65804528ed237e62</srcmd5>
+    <version>4.8.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>468d6b6c99447f2c06e61ca73af87c0a</srcmd5>
+    <version>4.8.1</version>
+    <time>1298030641</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61717 from user gberh
+</comment>
+    <requestid>61717</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>10b8a5714473aefa863b6b2828d235d8</srcmd5>
+    <version>4.8.1</version>
+    <time>1298030648</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61717
+</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>b98bf49576f9ce0f3b024a4b0eda49af</srcmd5>
+    <version>4.8.2</version>
+    <time>1316618959</time>
+    <user>saschpe</user>
+    <comment>- update to version 4.8.2
+  - set sensitivity of custom dpi spinner
+  - remove unused code and variables.
+  - bugfixes
+  - translation updates</comment>
+    <requestid>84069</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>69475ace4082a13cecbb5ceb96796045</srcmd5>
+    <version>4.8.3</version>
+    <time>1317025300</time>
+    <user>saschpe</user>
+    <comment>- update to version 4.8.3
+  - do not use freed memory
+  - translation updates
+
+- fixed typos in xfce4-settings.spec</comment>
+    <requestid>84573</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>69475ace4082a13cecbb5ceb96796045</srcmd5>
+    <version>4.8.3</version>
+    <time>1319182594</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>11625aacaa9304fc595d75425f3109d6</srcmd5>
+    <version>4.8.3</version>
+    <time>1323195327</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>fa51fb31b7e46d845c27a1b9cd455f98</srcmd5>
+    <version>4.8.3</version>
+    <time>1334824946</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup
+- correct dependencies
+- added xfce4-settings-fix-keyboard-shortcut-settings.patch in
+  order to clear out all old entries in the list of shortcuts when
+  resetting the keyboard shortcuts in order to prevent duplicates
+  (bxo#8138)</comment>
+    <requestid>112554</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>098f5da951db8dd58444edc7b76b70de</srcmd5>
+    <version>4.10.0</version>
+    <time>1336470586</time>
+    <user>coolo</user>
+    <comment>- update to version 4.10.0
+  - use the more generic application-x-executable icon for MIME
+    editor
+  - Xsettings: fix an alignment problem seen on PPC
+  - translation updates
+
+- update to version 4.9.5
+  - fix display rate matching
+  - bump package dependency versions
+  - fix missing : in Xft.hintstyle
+  - set Xcursor resources too
+  - fix typo in appearance error
+  - add hardcoded fallback if menu is not found
+  - translation updates
+
+- add back X-XFCE category to all desktop files until XFCE is
+  supported by %suse_update_desktop_file
+- fix non-existent icon name in xfce4-mime-settings.desktop
+
+- update to version 4.9.4
+  - fix compilation without device property support
+  - Xfsettingsd: don't set large dpi in xrdb
+  - include xscreensaver in the manager dialog
+  - complete theme installation script
+  - Settings editor: set sensitivity of save button on init
+  - Xfsettingsd: properly round display refresh rate to find match
+  - add mime icons in the mime-editor treeview
+  - store window and column sizes in xfconf
+  - add cateogry based settings manager
+  - re-add support for pluggable dialogs and enable them always</comment>
+    <requestid>116187</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>098f5da951db8dd58444edc7b76b70de</srcmd5>
+    <version>4.10.0</version>
+    <time>1340184360</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>098f5da951db8dd58444edc7b76b70de</srcmd5>
+    <version>4.10.0</version>
+    <time>1359110636</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f9f55f9327caebfea26bbfd8bce8cd25</srcmd5>
+    <version>4.10.1</version>
+    <time>1367827899</time>
+    <user>coolo</user>
+    <comment>- update to version 4.10.1
+  - autotools updates
+  - xsettingsd: Unset input method properties
+  - appearance: Fix gtk3 theme detection in install script
+  - xfsettingsd: Check service name of NameOwnerChanged
+  - translation updates</comment>
+    <requestid>174593</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f9f55f9327caebfea26bbfd8bce8cd25</srcmd5>
+    <version>4.10.1</version>
+    <time>1379665057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>aaa219d9b7c739fdd5e809561dd717a2</srcmd5>
+    <version>4.10.1</version>
+    <time>1409118375</time>
+    <user>coolo</user>
+    <comment>- add xfce4-settings-fork-before-gtk-dbus-init.patch in order to
+  fix problems due to forking after gtk/dbus init (bxo#11045)</comment>
+    <requestid>246352</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>aaa219d9b7c739fdd5e809561dd717a2</srcmd5>
+    <version>4.10.1</version>
+    <time>1409303741</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>167c4b24b49a734d6f635f187afb45f2</srcmd5>
+    <version>4.12.0</version>
+    <time>1425892096</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289643</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a8910281c98a30214a6c89da347ac131</srcmd5>
+    <version>4.12.0</version>
+    <time>1431365959</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306263</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1c0d84c644e4c2629f8f1d5985a4e1b3</srcmd5>
+    <version>4.12.1</version>
+    <time>1483048351</time>
+    <user>lnussel_factory</user>
+    <comment>revert to version 4.12.1, 4.13 is developer release (forwarded request 447918 from seife)</comment>
+    <requestid>447920</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>644553de57c13fade8fc9293afb7f0e5</srcmd5>
+    <version>4.12.1</version>
+    <time>1488479808</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460609</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b26cb96cd013f81c597bb053eb62e05a</srcmd5>
+    <version>4.12.2</version>
+    <time>1520415226</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 4.12.2 (forwarded request 582177 from seife)</comment>
+    <requestid>582271</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3ba31b555444064b48cce034294021f0</srcmd5>
+    <version>4.12.3</version>
+    <time>1523447974</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594832</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d079db9d88e696c6fea2acd1592123a6</srcmd5>
+    <version>4.12.4</version>
+    <time>1529919740</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.12.4 (forwarded request 618651 from seife)</comment>
+    <requestid>618656</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c0c4af7f7e7fc18bfdb73742d70d9ea2</srcmd5>
+    <version>4.14.0</version>
+    <time>1566291511</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724090</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>aa13b0059d346b86b00b786e176fea06</srcmd5>
+    <version>4.14.1</version>
+    <time>1566635906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725484</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+## Type:        string
+## Default:     DMZ-Black
+## Path:        Desktop
+## Description: default mouse cursor theme
+#
+# Name of mouse cursor theme for X11. Possible themes can be found
+# in /usr/share/icons/
+#
+X_MOUSE_CURSOR="DMZ-Black"

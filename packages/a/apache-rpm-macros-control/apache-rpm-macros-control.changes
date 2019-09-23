@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Dec 18 23:37:37 UTC 2015 - opensuse@cboltz.de
+
+- fix typo in %apache_request_restart
+
+-------------------------------------------------------------------
+Tue Nov 10 15:12:08 UTC 2015 - pgajdos@suse.com
+
+- initial version of the package 20151110 [bsc#893659]
+  macros: %define apache_restart_flag
+          %apache_request_restart
+          %apache_restart_if_needed
+
+

@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f0edbf8dd00950f2653a63e880e1f0d</srcmd5>
+    <version>0.7</version>
+    <time>1343671925</time>
+    <user>coolo</user>
+    <comment>CMU Cambridge Language Modeling Toolkit for to-be submited package &quot;presage&quot;, which is a optional dependency for fcitx. and license investigation is finished in bnc#773622</comment>
+    <requestid>129299</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c24c07b27723148f2ce85ed45fb4fd2f</srcmd5>
+    <version>0.7</version>
+    <time>1348231082</time>
+    <user>coolo</user>
+    <comment> (forwarded request 135206 from MargueriteSu)</comment>
+    <requestid>135208</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c24c07b27723148f2ce85ed45fb4fd2f</srcmd5>
+    <version>0.7</version>
+    <time>1359108757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c24c07b27723148f2ce85ed45fb4fd2f</srcmd5>
+    <version>0.7</version>
+    <time>1379662126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>176ff138f1b178de6196d47325471496</srcmd5>
+    <version>0.7</version>
+    <time>1393780951</time>
+    <user>scarabeus_factory</user>
+    <comment>- decl-mismatch.patch: fix mismatching declaration (forwarded request 224335 from Andreas_Schwab)</comment>
+    <requestid>224348</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>73e1250a6d4ed04034a1177e8840faa9</srcmd5>
+    <version>0.7</version>
+    <time>1394806433</time>
+    <user>coolo</user>
+    <comment>- add patch 0002-Fix-includes.patch from upstream 
+- add patch 0003-Fix-endian-check.patch 
+- add patch 0004-Fix-vocab_size.patch
+- run testsuite (but ignore errors for now, completes only
+  on little-endian 64bit) (forwarded request 225536 from oertel)</comment>
+    <requestid>225591</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>73e1250a6d4ed04034a1177e8840faa9</srcmd5>
+    <version>0.7</version>
+    <time>1409300657</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>f6ef2c45190a721df251ae6a90e85aeb</srcmd5>
+    <version>0.7</version>
+    <time>1518514015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574878</requestid>
+  </revision>
+</revisionlist>

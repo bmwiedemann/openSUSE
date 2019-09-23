@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon May 28 13:45:46 UTC 2012 - coolo@suse.com
+
+- updated to 0.215
+ * no changelog (actually an improvement against 0.214)
+
+-------------------------------------------------------------------
+Thu Dec 22 09:07:34 UTC 2011 - coolo@suse.com
+
+- updated to 0.214
+   + Bumped versions for being more modern ;) (Getty)
+
+-------------------------------------------------------------------
+Fri Apr 22 06:01:38 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.213
+  - Fix for a regression introduced with the removal of MooseX::POE::Meta::Trait::Constructor 
+
+-------------------------------------------------------------------
+Sun Apr  3 14:48:05 UTC 2011 - coolo@novell.com
+
+- updated to 0.212
+  - Fix for double BUILD (doy)
+
+-------------------------------------------------------------------
+Fri Apr  1 11:59:09 UTC 2011 - coolo@novell.com
+
+- initial package 0.211
+    * created by cpanspec 1.78.03
+

@@ -1,0 +1,5 @@
+<package name="stardict-dic-enru-mueller7" project="openSUSE:Factory">
+  <title>English-Russian dictionary by professor V. K. Mueller</title>
+  <description>English-Russian dictionary by professor V. K. Mueller, 7 edition with 46231 articles in StarDict format.</description>
+  <devel project="Education" package="stardict-dic-enru-mueller7"/>
+</package>

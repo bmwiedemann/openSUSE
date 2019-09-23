@@ -1,0 +1,12 @@
+Index: go/src/cmd/ld/elf.c
+===================================================================
+--- go.orig/src/cmd/ld/elf.c
++++ go/src/cmd/ld/elf.c
+@@ -1323,6 +1323,7 @@ asmbelf(vlong symo)
+ 			sh->type = SHT_REL;
+ 			sh->flags = SHF_ALLOC;
+ 			sh->entsize = ELF32RELSIZE;
++			sh->addralign = 4;
+ 			sh->link = elfshname(".dynsym")->shnum;
+ 			shsym(sh, linklookup(ctxt, ".rel.plt", 0));
+ 

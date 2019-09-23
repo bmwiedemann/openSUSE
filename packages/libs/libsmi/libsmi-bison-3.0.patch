@@ -1,0 +1,84 @@
+Description: follow flex parameter specification change
+ Follow change from *_PARAM to %*-param after deprecation in flex.
+ Follow yyerror() parameterisation changes.
+Author: Andy Whitcroft <a...@canonical.com>
+
+Index: libsmi-0.4.8/lib/parser-smi.y
+===================================================================
+--- libsmi-0.4.8.orig/lib/parser-smi.y
++++ libsmi-0.4.8/lib/parser-smi.y
+@@ -11,6 +11,9 @@
+  * @(#) $Id: parser-smi.y 8090 2008-04-18 12:56:29Z strauss $
+  */
+ 
++%parse-param { struct Parser *parserPtr }
++%lex-param { struct Parser *parserPtr }
++
+ %{
+ 
+ #include <config.h>
+@@ -43,14 +46,6 @@
+ 
+ 
+ 
+-/*
+- * These arguments are passed to yyparse() and yylex().
+- */
+-#define YYPARSE_PARAM parserPtr
+-#define YYLEX_PARAM   parserPtr
+-
+-    
+-    
+ #define thisParserPtr      ((Parser *)parserPtr)
+ #define thisModulePtr     (((Parser *)parserPtr)->modulePtr)
+ 
+Index: libsmi-0.4.8/lib/parser-sming.y
+===================================================================
+--- libsmi-0.4.8.orig/lib/parser-sming.y
++++ libsmi-0.4.8/lib/parser-sming.y
+@@ -11,6 +11,9 @@
+  * @(#) $Id: parser-sming.y 7966 2008-03-27 21:25:52Z schoenw $
+  */
+ 
++%parse-param { struct Parser *parserPtr }
++%lex-param { struct Parser *parserPtr }
++
+ %{
+ 
+ #include <config.h>
+@@ -48,13 +51,6 @@
+ #endif
+ 
+ 
+-/*
+- * These arguments are passed to yyparse() and yylex().
+- */
+-#define YYPARSE_PARAM parserPtr
+-#define YYLEX_PARAM   parserPtr
+-
+-    
+     
+ #define thisParserPtr      ((Parser *)parserPtr)
+ #define thisModulePtr     (((Parser *)parserPtr)->modulePtr)
+@@ -1556,7 +1552,7 @@ identityStatement:	identityKeyword sep l
+ 			referenceStatement_stmtsep_01
+ 			{
+ 				setIdentityReference(identityPtr, $14, 
+-									 thisParserPtr)
++									 thisParserPtr);
+ 			}
+ 			'}' optsep ';'
+ 			{
+Index: libsmi-0.4.8/lib/error.h
+===================================================================
+--- libsmi-0.4.8.orig/lib/error.h
++++ libsmi-0.4.8/lib/error.h
+@@ -22,7 +22,7 @@
+ #ifdef yyerror
+ #undef yyerror
+ #endif
+-#define yyerror(msg)	smiyyerror(msg, parserPtr)
++#define yyerror(parserPtr, msg)	smiyyerror(msg, parserPtr)
+ 
+ 
+ extern int smiErrorLevel;	/* Higher levels produce more warnings */

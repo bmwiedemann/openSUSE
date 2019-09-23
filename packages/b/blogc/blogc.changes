@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Thu Sep 12 06:39:29 UTC 2019 - mvetter@suse.com
+
+- Update to 0.18.0:
+  * blogc-make(1) now includes the pagination_tags rule, to build
+    pagination pages for each tag.
+  * Fixed a bug in blogc(1) that prevented digits in -D
+    command-line arguments.
+  * Do not show error message when evaluating variables with
+    blogc(1)'s -p command-line argument.
+
+-------------------------------------------------------------------
+Fri May  3 06:55:59 UTC 2019 - mvetter@suse.com
+
+- Update to 0.17.0:
+  * blogc(1) now supports sorting source files by DATE variable,
+    by providing the FILTER_SORT=1 global variable.
+	The source files are sorted in descending order by default, and
+	can be reversed by providing the FILTER_REVERSE=1 global variable.
+	See blogc-pagination(7) for details.
+  * blogc-make(1) got a new setting to support sorting posts:
+	posts_sort. See blogcfile(5) for details.
+
+-------------------------------------------------------------------
+Tue Apr 23 06:02:56 UTC 2019 - mvetter@suse.com
+
+- Update to 0.16.1:
+  * blogc-make(1) was implementing atom feeds wrong for long time.
+  * atom_legacy_entry_id isn't supported by blogcfile(5) anymore.
+
+-------------------------------------------------------------------
+Mon Apr 15 08:33:07 UTC 2019 - mvetter@suse.com
+
+- Update to 0.16.0:
+  * Added new template block listing_entry, to include the content
+    of a source file on a listing page. This is useful if the user
+    wants to have an index page with posts listing and some content
+    together. See blogc(1) (description of -e option) and
+    blogc-template(7) for details.
+  * Adapted blogc-make(1) to support the new listing_entry block.
+    See blogcfile(5) for details.
+  * Changed blogc(1)-p option to be able to retrieve values from
+    entries, instead of just listings. Any variables that can be used
+    in templates are available, including CONTENT, that contains
+    the HTML generated from the source file.
+
+-------------------------------------------------------------------
+Wed Feb 27 08:58:52 UTC 2019 - mvetter@suse.com
+
+- Update to 0.15.1:
+  * Backslashes won't escape inline code in source files, to be
+    more compatible with Markdown spec. To escape a back-tick
+    character inside inline code, please enclose the code with double back-ticks.
+  * Simplified implementation of BLOGC_SYSINFO_USERNAME template
+    variable, to prevent issues with static builds in glibc, due to
+    some functions requiring shared libraries even when built statically.
+
+-------------------------------------------------------------------
+Tue Feb 12 08:41:37 UTC 2019 - mvetter@suse.com
+
+- Update to 0.15.0:
+  * Includes some predefined internal template variables, to show
+    some build metadata in websites. See blogc-template(7) for details.
+  * Fixes a bug when using whitespace characters like \r, \n
+    and \t in template blocks, conditionals and variables, instead
+    of just spaces (' '). These characters where not allowed previously.
+
+-------------------------------------------------------------------
+Thu Jan 17 11:55:49 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Minor code improvements in blogc-make and blogc-git-receiver
+  * Fixed a bug in blogc-make handling of rule names. Previously
+    it would accept incomplete rule names, but would run all the
+    rules that matched that substring, e.g. atom would match atom,
+    atom_tags, atom_dump, and run all of them in sequence.
+    Now it will only match the exact rule names.
+
+-------------------------------------------------------------------
+Fri Jul 27 10:03:50 UTC 2018 - mvetter@suse.com
+
+- Update to 0.14.0:
+  * Allow usage of empty values for the *_prefix settings in blogcfile(5)
+  * Fixed some bugs in the default Atom feed template.
+    This includes a change in the algorithm that generates Atom
+    IDs for every post. Users upgrading to this version may want to set
+    atom_legacy_entry_id to true in blogcfile(5), to avoid
+    re-sharing posts due to the ID changes.
+  * Allow usage of custom Atom feed templates. Users can dump the
+    default template to use as base for customizations, using
+    blogc-make(1)atom_dump rule.
+  * Minor fixes to prevent segfaults.
+
+-------------------------------------------------------------------
+Mon Jul 23 07:19:24 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.10:
+  * Fix bug in the config-parser, that prevented usage of keys
+    with empty values.
+
+-------------------------------------------------------------------
+Wed Jun 13 08:03:08 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.9:
+  * Fix blogc-git-receiver(1)'s git shell to reinstall its git
+    hooks symlinks if they are broken.
+
+-------------------------------------------------------------------
+Mon Jun 11 06:41:17 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.8:
+  * This is a minor release, that fixes a corner-case segmentation
+    fault in blogc-git-receiver(1)'s pre-receive hook, that was
+    introduced in the previous release.
+- Changes in 0.13.7:
+  * Users can now run blogc-git-receiver(1) in shared hosting
+    enviromnents, if they have SSH access.
+  * If atom_posts_per_page and posts_per_page settings for
+    blogc-make(1) are set to zero, index listings and Atom feeds
+    are not built, instead of producing "empty" files.
+  * Fixed some other minor issues.
+
+-------------------------------------------------------------------
+Tue May 15 08:53:53 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.6:
+  * Improved blogc-make(1) output formatting when running the
+    runserver helper rule.
+
+-------------------------------------------------------------------
+Mon May 14 09:02:46 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.5:
+  * Added a watch rule to blogc-make(1). This rule allows the usage
+    of the automatic website reloader/rebuilder without using
+    blogc-runserver(1).
+  * Changed the architecture of the blogc-make(1)runserver rule.
+
+-------------------------------------------------------------------
+Wed Mar 21 09:48:24 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.4:
+  Minor release with bug-fixes and a minor blogc-make feature:
+  * When running commands, blogc-make(1) will show the command's 
+    STDERR always, to avoid suppressing blogc(1)
+    warnings.
+  * When setting posts_per_page to -1 in blogcfile(5), the
+    pagination features are disabled, and all the posts are
+    included in the template listing blocks.
+
+-------------------------------------------------------------------
+Wed Mar 14 08:53:33 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.3:
+  * Minor release with few bugfixes for bugs detected by 
+    clang-analyzer.
+
+-------------------------------------------------------------------
+Mon Mar 12 07:40:20 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.2:
+  * Pass MAKE_TAGS to blogc.
+  * MAKE_SLUG to blogc when running pages and posts build tasks.
+  * Fix memory leak
+
+-------------------------------------------------------------------
+Sun Feb 25 22:50:37 UTC 2018 - mvetter@suse.com
+
+- Remove not needed BuildRequires automake
+
+-------------------------------------------------------------------
+Fri Feb 23 14:56:45 UTC 2018 - mvetter@suse.com
+
+- Initial package for openSUSE in version 0.13.1

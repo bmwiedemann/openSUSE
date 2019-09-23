@@ -1,0 +1,12 @@
+<package name="lbzip2" project="openSUSE:Factory">
+  <title>Parallel bzip2/bunzip2 Filter</title>
+  <description>Lbzip2 is a Pthreads-based parallel bzip2/bunzip2 filter, passable to GNU tar with the --use-compress-program option.
+
+It isn't restricted to regular files on input, nor output. Successful splitting for decompression isn't guaranteed, just very likely (failure is detected). Splitting in both modes and compression itself occur with an approximate 900k block size.
+
+On an Athlon-64 X2 6000+, lbzip2 was 92% faster than standard bzip2 when compressing, and 45% faster when decompressing (based on wall clock time).
+
+Lbzip2 strives to be portable by requiring UNIX 98 APIs only, besides an unmodified libbz2.</description>
+  <devel project="Archiving" package="lbzip2"/>
+  <url>http://phptest11.atw.hu/</url>
+</package>

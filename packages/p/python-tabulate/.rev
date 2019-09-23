@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c955d822d7273ebd1a59f5fb5272c9d1</srcmd5>
+    <version>0.7.7</version>
+    <time>1493020175</time>
+    <user>dimstar_suse</user>
+    <comment>tabulate is rather useful for ascii tables</comment>
+    <requestid>489792</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ebde809d871c64f1a29fe73452af678</srcmd5>
+    <version>0.8.2</version>
+    <time>1522226005</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-setuptools to Requires
+
+- Update to 0.8.2
+  * Bugfix release
+- Changes from 0.8.1
+  * Multiline data in several output formats. New latex_raw format.
+  * Column-specific floating point formatting.
+  * Python 3.5 &amp; 3.6 support.
+  * Drop support for Python 2.6, 3.2, 3.3 (should still work).
+- Run spec-cleaner</comment>
+    <requestid>591612</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7824c2a0bd8881393904b90c519f1f07</srcmd5>
+    <version>0.8.3</version>
+    <time>1550151071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673450</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>545404857bc2441f7946dc4e96eeb611</srcmd5>
+    <version>0.8.3</version>
+    <time>1568805065</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731170</requestid>
+  </revision>
+</revisionlist>

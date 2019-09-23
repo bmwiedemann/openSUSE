@@ -1,0 +1,38 @@
+From: sc-gj <glenn.l.jenkins@uwtsd.ac.uk>
+Date: Mon, 5 Dec 2016 10:12:05 +0000
+Git-commit: 1af4cf1253974ee1c0d6592671ce001cd7689c85
+References: bsc#1087487
+Subject: [PATCH] Fix for issue #246 - minor typo in conversion from sflow data
+ to gmond internal metric structures caused a crash when this data was used to
+ generate XML for output.
+
+Acked-by: John Jolly <jjolly@suse.de>
+---
+ gmond/sflow.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gmond/sflow.c b/gmond/sflow.c
+index 8c62b5d8..5e633634 100644
+--- a/gmond/sflow.c
++++ b/gmond/sflow.c
+@@ -303,7 +303,8 @@ submit_sflow_string(Ganglia_host *hostdata, char *metric_prefix, EnumSFLOWGMetri
+   char mtitle_buf[SFLOW_MAX_METRIC_NAME_LEN];
+   if(ok || sflowCFG.submit_null_str) {
+     set_metric_name_and_title(&mname, &mtitle, mname_buf, mtitle_buf, metric_prefix, tag);
+-    fmsg.id = vmsg.id = gmetric_uint;
++    //fmsg.id = vmsg.id = gmetric_uint;
++    fmsg.id = vmsg.id = gmetric_string;
+     fmsg.Ganglia_metadata_msg_u.gfull.metric.type = "string";
+     vmsg.Ganglia_value_msg_u.gstr.metric_id.name = mname;
+     vmsg.Ganglia_value_msg_u.gstr.str = (ok ? (char *)val : sflowCFG.null_str);
+@@ -1188,6 +1189,7 @@ processCounterSample(SFlowXDR *x, char **errorMsg)
+     SFLOWXDR_skip(x,4);
+     
+     machine_type = SFLOWXDR_next(x);
++
+     os_name = SFLOWXDR_next(x);
+     osrelease_len = SFLOWXDR_next(x);
+     if(osrelease_len > 0 && osrelease_len <= SFLOW_MAX_OSRELEASE_LEN) {
+-- 
+2.13.6
+

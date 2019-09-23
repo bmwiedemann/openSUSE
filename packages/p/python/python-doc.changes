@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Fri Oct 26 10:48:44 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch openssl-111.patch to work with openssl-1.1.1
+
+-------------------------------------------------------------------
+Tue Sep 25 22:01:08 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Apply "CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch" which
+  converts shutil._call_external_zip to use subprocess rather than
+  distutils.spawn. [bsc#1109663, CVE-2018-1000802]
+
+-------------------------------------------------------------------
+Mon May 21 18:41:43 UTC 2018 - michael@stroeder.com
+
+- update to 2.7.15
+  * dozens of bugfixes, see NEWS for details
+- removed obsolete patches:
+  * python-ncurses-6.0-accessors.patch
+  * python-fix-shebang.patch
+  * gcc8-miscompilation-fix.patch
+- add patch from upstream:
+  * do-not-use-non-ascii-in-test_ssl.patch
+
+-------------------------------------------------------------------
+Mon Nov 20 16:11:48 UTC 2017 - jmatejek@suse.com
+
+- update to 2.7.14
+  * dozens of bugfixes, see NEWS for details
+  * fixed possible integer overflow in PyString_DecodeEscape (CVE-2017-1000158, bsc#1068664)
+  * fixed segfaults with dict mutated during search
+  * fixed possible free-after-use problems with buffer objects with custom indexing
+  * fixed urllib.splithost to correctly parse fragments (bpo-30500)
+- drop upstreamed python-2.7.13-overflow_check.patch
+- drop unneeded python-2.7.12-makeopcode.patch
+- drop upstreamed 0001-2.7-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3094.patch
+
+-------------------------------------------------------------------
+Tue Jan  3 17:42:16 UTC 2017 - jmatejek@suse.com
+
+- update to 2.7.13
+
+-------------------------------------------------------------------
+Fri Dec  2 15:36:00 UTC 2016 - jmatejek@suse.com
+
+- provide python2-* symbols, for support of new packages built as
+  python2-foo
+
+-------------------------------------------------------------------
+Thu Jun 30 09:23:05 UTC 2016 - jmatejek@suse.com
+
+- update to 2.7.12
+  * dozens of bugfixes, see NEWS for details
+  * fixes multiple security issues:
+    CVE-2016-0772 TLS stripping attack on smtplib (bsc#984751)
+    CVE-2016-5636 zipimporter heap overflow (bsc#985177)
+    CVE-2016-5699 httplib header injection (bsc#985348)
+      (this one is actually fixed since 2.7.10)
+
+-------------------------------------------------------------------
+Sun May 24 14:36:56 UTC 2015 - michael@stroeder.com
+
+- update to 2.7.10
+
+-------------------------------------------------------------------
+Fri Dec 12 17:11:51 UTC 2014 - jmatejek@suse.com
+
+- update to 2.7.9
+- drop HTML doc tarball, build HTML documentation from source
+- set fixed doc build date, lower sphinx requirement (for older openSUSE)
+
+-------------------------------------------------------------------
+Tue Sep 30 15:32:07 UTC 2014 - jmatejek@suse.com
+
+- update to 2.7.8
+
+-------------------------------------------------------------------
+Fri Jun 20 13:46:40 UTC 2014 - jmatejek@suse.com
+
+- update to 2.7.7
+
+-------------------------------------------------------------------
+Fri Mar 14 20:26:03 UTC 2014 - andreas.stieger@gmx.de
+
+- Fix build with SQLite 3.8.4 [bnc#867887], fixing SQLite tests,
+  adding python-2.7.6-sqlite-3.8.4-tests.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 15:55:04 UTC 2013 - jmatejek@suse.com
+
+- update to 2.7.6
+- docs are now versioned with patchlevel too
+
+-------------------------------------------------------------------
+Tue Jun  4 13:23:28 UTC 2013 - jmatejek@suse.com
+
+- disable Source URLs for docs (the doc archives are regenerated
+  every day and autobuild detects this as "upstream file is different"
+  error)
+
+-------------------------------------------------------------------
+Tue May 28 08:42:49 UTC 2013 - speilicke@suse.com
+
+- Update to version 2.7.5
+
+-------------------------------------------------------------------
+Thu May  9 16:14:17 UTC 2013 - jmatejek@suse.com
+
+- update to 2.7.4
+- removed %docdir/python/README from package (conflict with python-base)
+- removed ACKS (is now part of Misc docs)
+
+-------------------------------------------------------------------
+Fri Apr  5 13:33:29 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Fix installation so we don't create double sub-directories
+
+-------------------------------------------------------------------
+Thu May 17 17:49:31 UTC 2012 - jfunk@funktronics.ca
+
+- Support directory-based certificate stores with the ca_certs parameter of SSL
+  functions [bnc#761501]
+
+-------------------------------------------------------------------
+Mon Nov 28 09:21:32 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Run spec-cleaner
+  * Remove outdated %clean section, AutoReqProv and authors from descr.
+- Fix license to Python-2.0 (also SPDX style)
+
+-------------------------------------------------------------------
+Tue May 24 14:30:36 UTC 2011 - jmatejek@novell.com
+
+- updated to build against 2.7.1
+
+-------------------------------------------------------------------
+Thu Aug 26 11:43:28 UTC 2010 - jmatejek@novell.com
+
+- updated to 2.7
+
+-------------------------------------------------------------------
+Thu Mar 11 19:19:07 CET 2010 - matejcik@suse.cz
+
+- updated to build against 2.6.5 source
+
+-------------------------------------------------------------------
+Wed Dec 23 08:36:27 UTC 2009 - aj@suse.de
+
+- Apply patches with fuzz=0
+
+-------------------------------------------------------------------
+Mon Apr 27 15:21:03 CEST 2009 - matejcik@suse.cz
+
+- update to build against 2.6.2 source
+
+-------------------------------------------------------------------
+Wed Mar 11 10:52:59 CET 2009 - coolo@suse.de
+
+- fix build in actually packaging the docs
+
+-------------------------------------------------------------------
+Thu Oct  9 18:58:15 CEST 2008 - matejcik@suse.cz
+
+- updated docs to version 2.6
+
+-------------------------------------------------------------------
+Mon Sep 15 18:34:58 CEST 2008 - matejcik@suse.cz
+
+- updated to build against 2.6rc1
+
+-------------------------------------------------------------------
+Wed Jun 25 21:55:18 CEST 2008 - matejcik@suse.cz
+
+- updated to build against 2.6b1
+- will update the docs when 2.6 final is out
+
+-------------------------------------------------------------------
+Thu May 24 18:51:37 CEST 2007 - jmatejek@suse.cz
+
+- updated to version 2.5.1
+
+-------------------------------------------------------------------
+Tue Sep 19 18:30:50 CEST 2006 - jmatejek@suse.cz
+
+- updated to version 2.5 final, going into STABLE dist
+
+-------------------------------------------------------------------
+Wed Sep 13 19:11:36 CEST 2006 - jmatejek@suse.cz
+
+- updated to build against 2.5c2
+
+-------------------------------------------------------------------
+Tue Sep  5 14:01:05 CEST 2006 - jmatejek@suse.cz
+
+- updated to build against 2.5c1
+- will actually update the docs as soon as this goes into STABLE
+
+-------------------------------------------------------------------
+Mon Apr 24 20:08:41 CEST 2006 - jmatejek@suse.cz
+
+- update to 2.4.3
+
+-------------------------------------------------------------------
+Tue Mar 21 18:11:38 CET 2006 - jmatejek@suse.cz
+
+- created separate noarch specfile
+

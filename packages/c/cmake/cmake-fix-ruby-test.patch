@@ -1,0 +1,13 @@
+Index: b/Modules/FindRuby.cmake
+===================================================================
+--- a/Modules/FindRuby.cmake
++++ b/Modules/FindRuby.cmake
+@@ -111,7 +111,7 @@
+   _RUBY_CONFIG_VAR("sitelibdir" RUBY_SITELIB_DIR)
+ 
+   # vendor_ruby available ?
+-  execute_process(COMMAND ${RUBY_EXECUTABLE} -r vendor-specific -e "print 'true'"
++  execute_process(COMMAND ${RUBY_EXECUTABLE} -r rbconfig -e "print 'true' unless RbConfig::CONFIG['vendorarchdir'].nil?"
+     OUTPUT_VARIABLE RUBY_HAS_VENDOR_RUBY  ERROR_QUIET)
+ 
+   if(RUBY_HAS_VENDOR_RUBY)

@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Sep  1 14:25:56 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5:
+  * Reduce delay before checking for updates after an "updates-
+    changed" signal
+  * Fix continuos loop of update checks if the refresh cache
+    interval is 0
+  * Add fallback icons for KDE-based themes
+
+-------------------------------------------------------------------
+Wed Jul 24 17:43:57 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- Update to version 4:
+  * Use consistent vocabulary in German translations
+  * Add support for libayantana-indicator
+  * Fix typo in German translations
+
+-------------------------------------------------------------------
+Thu Apr 25 08:04:41 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Remove useless clang dependency
+
+-------------------------------------------------------------------
+Tue Apr 16 07:01:16 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fix Obsoletes: pk-update-icon <= 3
+
+-------------------------------------------------------------------
+Sun Apr 14 16:07:12 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Changed to more appropriate Obsoletes: pk-update-icon <= 2
+
+-------------------------------------------------------------------
+Fri Apr 12 07:50:54 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added Obsoletes: pk-update-icon
+
+-------------------------------------------------------------------
+Sun Apr  7 11:13:32 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2:
+  * Add keywords to desktop files
+  * Fix typo in notification message
+  * Do not run glib-compile-schemas if schemas are installed into staging directory
+  * Set application indicator title
+  * Add note for vendors on how to override default settings
+  
+- Added BuildRequires: clang
+- Spec file cleanup:
+  - Changed URL and Source to https://
+  - Use more appropriate macros such as %autosetup and %make_build
+
+-------------------------------------------------------------------
+Tue Jul 10 08:53:29 UTC 2018 - seife+obs@b1-systems.com
+
+- add 10_opensuse_update_command.gschema.override for update
+  program default
+
+-------------------------------------------------------------------
+Mon Jul  9 19:53:44 UTC 2018 - seife+obs@b1-systems.com
+
+- initial package version 1

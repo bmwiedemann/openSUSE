@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Apr 24 14:50:56 UTC 2018 - aloisio@gmx.com
+
+- Added missing runtime requirement
+
+-------------------------------------------------------------------
+Thu Mar 23 14:22:49 UTC 2017 - jengelh@inai.de
+
+- Correct grammar errors in description.
+
+-------------------------------------------------------------------
+Thu Mar  2 21:18:58 UTC 2017 - aloisio@gmx.com
+
+- Replaced python3-gobject dependency with python3-gobject-Gdk
+- Fixed the script shebang to invoke python3 directly
+
+-------------------------------------------------------------------
+Mon Feb 27 20:36:35 UTC 2017 - aloisio@gmx.com
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Aug 15 22:18:42 UTC 2014 - toganm@opensuse.org
+
+- Initial Packaging
+

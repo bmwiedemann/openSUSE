@@ -1,0 +1,5 @@
+<package name="purple-carbons" project="openSUSE:Factory">
+  <title>XEP-0280: Message Carbons plugin for libpurple</title>
+  <description>XEP-0280: Message Carbons plugin for libpurple (Pidgin, Finch, etc.)</description>
+  <devel project="network:pidgin" package="purple-carbons"/>
+</package>

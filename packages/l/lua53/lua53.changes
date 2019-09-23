@@ -1,0 +1,480 @@
+-------------------------------------------------------------------
+Fri Aug  2 08:13:02 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Tue Mar 12 12:04:26 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 5.3.5:
+  (it is really problematic to find ANY documentation of changes
+  between minor versions; the best we have is
+  https://www.lua.org/bugs.html)
+  - Long brackets with a huge number of '=' overflow some
+    internal buffer arithmetic.
+  - Small build tweaks.
+
+-------------------------------------------------------------------
+Tue Jul 25 10:04:01 UTC 2017 - tchvatal@suse.com
+
+- Provide symbol for pkgconfig
+
+-------------------------------------------------------------------
+Mon Jul 24 12:08:05 UTC 2017 - dimstar@opensuse.org
+
+- Add INSTALL_LMOD and INSTALL_CMOD variables to lua53.pc: this is
+  queried for example by rrdtool's buildsystem.
+
+-------------------------------------------------------------------
+Thu Jul 20 12:36:41 UTC 2017 - tchvatal@suse.com
+
+- Properly set includedir in the .pc file
+
+-------------------------------------------------------------------
+Mon Jul 10 11:32:37 UTC 2017 - tchvatal@suse.com
+
+- Require lua macros rather than bundling them with lua itself
+
+-------------------------------------------------------------------
+Fri Jul  7 13:31:06 UTC 2017 - tchvatal@suse.com
+
+- Add patch lua-build-system.patch for all the builsystem changes
+- Drop patches merged to the above:
+  * lua-5.3.3-prefix.patch
+  * lua-5.3.3-shared.patch
+- Drop not really needed lua-5.3.3-visible.patch
+- Version update to lua 5.3.4 containing various bugfixes
+- Rename to lua53
+
+-------------------------------------------------------------------
+Tue Jun 13 21:30:38 UTC 2017 - jengelh@inai.de
+
+- Let package description adhere to guidelines: trim redundant
+  or biased wording and strip future goals.
+
+-------------------------------------------------------------------
+Thu Jun 16 09:32:46 UTC 2016 - i@marguerite.su
+
+- update version 5.3.3
+  * bugfix release
+- changes in 5.3.2
+  * metatable may access its own deallocated field when it has a
+    self reference in __newindex
+  * label between local definitions can mix-up their initializations
+  * gmatch iterator fails when called from a coroutine different
+    from the one that created it
+- split lua-suse.diff to 3 reasonable patches
+  * add lua-5.3.3-prefix.patch
+  * add lua-5.3.3-shared.patch
+  * add lua-5.3.3-visible.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 18:12:35 UTC 2015 - jengelh@inai.de
+
+- Update RPM group classification
+
+-------------------------------------------------------------------
+Thu Jul 30 11:52:14 UTC 2015 - dimstar@opensuse.org
+
+- Provide Lua(API) = 5.3, so that packages installing files to
+  /usr/share/lua/5.3 can properly depend on the right lua branch.
+- Provide Lua(devel) = 5.3 by lua-devel and conflict with other
+  packages providing Lua(devel) (e.g lua51-devel, lua52-devel...).
+
+-------------------------------------------------------------------
+Mon Jul 13 16:33:31 UTC 2015 - i@marguerite.su
+
+- macros.lua installs to lua-devel
+- build with LUA_COMPAT_MODULE to compatible w/ old module system
+
+-------------------------------------------------------------------
+Fri Jul 10 09:52:48 UTC 2015 - i@marguerite.su
+
+- update version 5.3.1
+  * integers (64-bit by default)
+  * official support for 32-bit numbers
+  * bitwise operators
+  * basic utf-8 support
+  * functions for packing and unpacking values
+  * see http://www.lua.org/manual/5.3/readme.html#changes
+
+-------------------------------------------------------------------
+Sun Mar 15 00:19:08 UTC 2015 - mpluskal@suse.com
+
+- Update to 5.2.4
+  * Compiler can optimize away overflow check in table.unpack.
+  * Ephemeron table can wrongly collect entry with strong key.
+  * Chunk with too many lines may crash Lua.
+
+-------------------------------------------------------------------
+Wed Sep 17 15:04:25 UTC 2014 - i@marguerite.su
+
+- the %dir is still needed.
+
+-------------------------------------------------------------------
+Fri Sep 12 09:19:07 UTC 2014 - pgajdos@suse.com
+
+- fix update-alternatives 
+
+-------------------------------------------------------------------
+Wed Sep 10 10:21:23 UTC 2014 - pgajdos@suse.com
+
+- fix /etc/rpm/macros.lua perms
+
+-------------------------------------------------------------------
+Mon Mar 31 11:05:05 UTC 2014 - pgajdos@suse.com
+
+- updated to 5.2.3:
+  * yieldable pcall and metamethods
+  * new lexical scheme for globals
+  * ephemeron tables
+  * new library for bitwise operations
+  * light C functions
+  * emergency garbage collector
+  * <CODE>goto</CODE> statement
+  * finalizers for tables
+
+-------------------------------------------------------------------
+Mon Sep  9 11:12:20 UTC 2013 - pgajdos@suse.com
+
+- updated to 5.2.2: bugfix release, fixed:
+  * Stack overflow in vararg functions with many fixed parameters 
+    called with few arguments. 
+  * Garbage collector can trigger too many times in recursive loops.
+  * Wrong assert when reporting concatenation errors (manifests only 
+    when Lua is compiled in debug mode). 
+  * Wrong error message in some short-cut expressions. 
+  * luac listings choke on long strings. 
+  * see http://www.lua.org/bugs.html for details
+
+-------------------------------------------------------------------
+Tue Feb 19 11:30:57 UTC 2013 - pgajdos@suse.com
+
+- fix visibility of global variables [bnc#803791]
+  * modified lua-suse.diff
+- added LUA_SO target as dependency to LUAC_T and LUA_T to fix
+  parallel build
+  * modified lua-suse.diff
+- added regresion check for this error into %check
+
+-------------------------------------------------------------------
+Tue Feb  5 14:18:18 UTC 2013 - coolo@suse.com
+
+- update alternatives need to be %ghosts
+
+-------------------------------------------------------------------
+Thu Nov 15 15:11:34 UTC 2012 - pgajdos@suse.com
+
+- export luaU_dump in order to fix linking of luac binary 
+
+-------------------------------------------------------------------
+Tue Oct  9 14:55:31 UTC 2012 - crrodriguez@opensuse.org
+
+- Tweak lua-suse.diff again:
+* LUA_IFUNC must be defined as upstream but without "extern", 
+  revert the previous mod.
+* LUA_API must be defined as visibility default 
+
+-------------------------------------------------------------------
+Thu Aug 16 00:34:57 UTC 2012 - crrodriguez@opensuse.org
+
+- Even after the previous update, third party modules/libraries
+  would not work because LUA_CDIR constant is wrong in x86_64 
+
+-------------------------------------------------------------------
+Wed Aug 15 22:34:12 UTC 2012 - crrodriguez@opensuse.org
+
+- devel package must require libluaver = %{version} 
+
+-------------------------------------------------------------------
+Wed Aug 15 22:24:01 UTC 2012 - crrodriguez@opensuse.org
+
+- Broken lua-suse patch breaks loading third party modules
+  or scripts 
+
+-------------------------------------------------------------------
+Mon Jun 18 09:09:13 UTC 2012 - pgajdos@suse.com
+
+- updated to 5.2.1:
+  * main thread predefined in the registry
+  * bugfixes
+
+-------------------------------------------------------------------
+Thu Mar 29 19:29:57 UTC 2012 - joop.boonen@opensuse.org
+
+- Correction in Provides and Obsolete for lua-libs
+- Passed the spec file through spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 18 22:03:20 UTC 2012 - dimstar@opensuse.org
+
+- Require liblua5_2 from the -devel package: Otherwise the .so file
+  is a dangling symlink and apps will use the static lib.
+- Update baselibs.conf to reference liblua5_2 instead of liblua5_1.
+
+-------------------------------------------------------------------
+Fri Jan  6 18:17:22 CET 2012 - dmueller@suse.de
+
+- readd lua.pc for building rpm
+
+-------------------------------------------------------------------
+Wed Dec 21 15:11:08 UTC 2011 - pgajdos@suse.com
+
+- raise update-alternatives priority to 15 (lua51 have 10, lua50
+  have 5)
+
+-------------------------------------------------------------------
+Wed Dec 21 13:58:22 UTC 2011 - pgajdos@suse.com
+
+- updated to 5.2.0:
+  * Main changes
+	yieldable pcall and metamethods
+	new lexical scheme for globals
+	ephemeron tables
+	new library for bitwise operations
+	light C functions
+	emergency garbage collector
+	[goto] statement
+	finalizers for tables
+  * Language
+	no more fenv for threads or functions
+	tables honor the [__len] metamethod
+	hex and [\z] escapes in strings
+	support for hexadecimal floats
+	order metamethods work for different types
+	no more verification of opcode consistency
+	hook event "tail return" replaced by "tail call"
+	empty statement
+	[break] statement may appear in the middle of a block
+  * Libraries
+	arguments for function called through [xpcall]
+	optional 'mode' argument to load and loadfile (to control binary x text)
+	optional 'env' argument to load and loadfile (environment for loaded chunk)
+	[loadlib] may load libraries with global names (RTLD_GLOBAL)
+	new function [package.searchpath]
+	modules receive their paths when loaded
+	optional base in [math.log]
+	optional separator in [string.rep]
+	[file:write] returns <CODE>file</CODE>
+	closing a pipe returns exit status
+	[os.exit] may close state
+	new metamethods [__pairs] and <CODE>__ipairs</CODE>
+	new option 'isrunning' for [collectgarbage] and <CODE>lua_gc</CODE>
+	frontier patterns
+	[\0] in patterns
+	new option [*L] for <CODE>io.read</CODE>
+	options for [io.lines]
+	[debug.getlocal] can access function varargs
+  * C API
+	new functions: lua_absindex, lua_arith, lua_compare, lua_copy, lua_len,
+                       lua_rawgetp, lua_rawsetp, lua_upvalueid, lua_upvaluejoin,
+	               lua_version, luaL_checkversion, luaL_setmetatable,
+	               luaL_testudata, luaL_tolstring
+        [lua_pushstring] and <CODE>pushlstring</CODE> return string 
+        [nparams] and <CODE>isvararg</CODE> available in debug API
+	new lua_Unsigned
+  * Implementation
+	max constants per function raised to 2^26
+	generational mode for garbage collection (experimental)
+	NaN trick (experimental)
+	internal (immutable) version of ctypes
+	simpler implementation for string buffers
+	parser uses much less C-stack space (no more auto arrays)
+  * Lua standalone interpreter
+	new [-E] option to avoid environment variables
+	handling of non-string error messages
+
+-------------------------------------------------------------------
+Tue Oct  4 11:44:08 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Mon Jun 14 15:55:32 CEST 2010 - pgajdos@suse.cz
+
+- removed -L/usr/lib from Libs: in etc/lua.pc [bnc#613497]
+- used upstream bugfix patch from http://www.lua.org/download.html
+
+-------------------------------------------------------------------
+Sat Apr 24 11:38:23 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Tue Mar 23 11:16:23 CET 2010 - pgajdos@suse.cz
+
+- modified LUA_PATH_DEFAULT [bnc#589441]: search modules under
+  /usr/%{_lib}/lua/%{major_version} too
+
+-------------------------------------------------------------------
+Sat Dec 12 18:28:44 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- package documentation as noarch
+
+-------------------------------------------------------------------
+Sun Dec  6 16:02:17 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:29 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Sep 16 23:25:13 CEST 2009 - dmueller@suse.de
+
+- add baselibs.conf
+
+-------------------------------------------------------------------
+Mon Jun  8 15:57:11 CEST 2009 - pgajdos@suse.cz
+
+- package owns /usr/{lib,share}/lua directories from now
+- emoved unneeded root.patch
+
+-------------------------------------------------------------------
+Thu Sep 11 16:00:41 CEST 2008 - pgajdos@suse.cz
+
+- updated to 5.1.4: bugfix release
+
+-------------------------------------------------------------------
+Wed Jun 11 10:56:51 ADT 2008 - jfunk@funktronics.ca
+
+- Set LUA_ROOT to /usr and fix INSTALL_CMOD for lib64
+- Add RPM macros file
+- Allows for lua-<modulename> packages like python, perl, and ruby
+
+-------------------------------------------------------------------
+Fri Mar 28 07:57:37 CET 2008 - coolo@suse.de
+
+- hint the solver about the package rename
+
+-------------------------------------------------------------------
+Wed Mar 26 21:29:35 CET 2008 - coolo@suse.de
+
+- do not package/provide the shared lib twice / follow shared lib
+  policy
+
+-------------------------------------------------------------------
+Tue Feb 19 10:37:22 CET 2008 - pgajdos@suse.cz
+
+- created -doc package
+- updated to version 5.1.3, bug fix release. Fixed bugs:
+  * wrong error message in some concatenations
+  * too many variables in an assignment may cause a C stack 
+    overflow 
+  * an error in a module loaded through the '-l' option shows no 
+    traceback
+  * gsub may go wild when wrongly called without its third 
+    argument and with a large subject 
+  * table.remove removes last element of a table when given 
+    an out-of-bound index 
+  * lua_setfenv may crash if called over an invalid object
+  * stand-alone interpreter shows incorrect error message when 
+    the "message" is a coroutine.
+  * debug.sethook/gethook may overflow the thread's stack 
+
+-------------------------------------------------------------------
+Tue Jul 24 14:31:30 CEST 2007 - pgajdos@suse.cz
+
+- using /sbin/ldconfig in specfile
+- updated to version 5.1.2, fixes some bugs:
+  * count hook may be called without being set
+  * code generated for "-nil", "-true", and "-false" is wrong
+  * recursive coroutines may overflow C stack
+  * wrong error message in some concatenations
+  * very small numbers all collide in the hash function
+
+-------------------------------------------------------------------
+Mon Nov 27 17:42:31 CET 2006 - mrueckert@suse.de
+
+- package liblua.so as symlink.
+
+-------------------------------------------------------------------
+Thu Nov 16 21:29:32 CET 2006 - mrueckert@suse.de
+
+- the core package now uses update alternatives to allow installation
+  of 5.0.x and 5.1.x
+- devel packages will conflict now
+
+-------------------------------------------------------------------
+Tue Nov 14 21:29:31 CET 2006 - mrueckert@suse.de
+
+- ARGH dont copy and paste!:
+  lua-libs should not depend on lua. another run on (#217875)
+
+-------------------------------------------------------------------
+Tue Nov 14 11:42:44 CET 2006 - mrueckert@suse.de
+
+- really fix the file pattern (#217875)
+
+-------------------------------------------------------------------
+Thu Nov  9 15:08:50 CET 2006 - mrueckert@suse.de
+
+- splitted out lua-libs so we can install at least both libs
+  in parallel. (#217875)
+
+-------------------------------------------------------------------
+Thu Oct 19 22:44:09 CEST 2006 - dmueller@suse.de
+
+- fix wrong prefix in lua.pc
+- link liblua with -lm to satisfy unresolved symbols
+
+-------------------------------------------------------------------
+Thu Oct 19 16:44:39 CEST 2006 - mjancar@suse.cz
+
+- include lua.pc
+
+-------------------------------------------------------------------
+Wed Oct 18 19:17:00 CEST 2006 - mjancar@suse.cz
+
+- update to 5.1.1
+  Language:
+  * new module system.
+  * new semantics for control variables of fors.
+  * new semantics for setn/getn.
+  * new syntax/semantics for varargs.
+  * new long strings and comments.
+  * new `mod' operator (`%')
+  * new length operator #t
+  * metatables for all types
+  API:
+  * new functions: lua_createtable, lua_get(set)field, lua_push(to)integer.
+  * user supplies memory allocator (lua_open becomes lua_newstate).
+  * luaopen_* functionst must be called through Lua.
+  Implementation:
+  * new configuration scheme via luaconf.h.
+  * incremental garbage collection.
+  * better handling of end-of-line in the lexer.
+  * fully reentrant parser (new Lua function `load')
+  * better support for 64-bit machines.
+  * native loadlib support for Mac OS X.
+  * standard distribution in only one library (lualib.a merged into lua.a)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:05 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 01:36:17 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+- Fix shared library linking.
+
+-------------------------------------------------------------------
+Thu Sep  8 15:17:49 CEST 2005 - anicka@suse.cz
+
+- enable dynamic loading capability (#106845)
+
+-------------------------------------------------------------------
+Fri Apr 23 16:17:31 CEST 2004 - mcihar@suse.cz
+
+- initial packaging
+

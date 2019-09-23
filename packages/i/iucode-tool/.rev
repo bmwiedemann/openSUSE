@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>617f73cad1557d8cf7ddc0d8c5718d07</srcmd5>
+    <version>1.6.1</version>
+    <time>1479734720</time>
+    <user>dimstar_suse</user>
+    <comment>new package, usefull for intel thingy</comment>
+    <requestid>424406</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4031d175869c91401e8ad792a1d5d683</srcmd5>
+    <version>2.1</version>
+    <time>1480341968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1:
+  * iucode_tool: prepare for early-initramfs size minimization
+  * iucode_tool: add command line option to minimize early initramfs size
+  * iucode_tool(8): document --mini-earlyfw and --normal-earlyfw
+  * iucode_tool: cosmetic error path cleanup for write_cpio_header()
+  * iucode_tool: alternative bug-workaround for the early initramfs
+  * intel_microcode: constify and restyle function prototypes
+  * iucode_tool: constify function paramenters
+  * Makefile.am: ship CONTRIBUTING in the tarball
+  * Ready for release: v2.1
+
+- Update to version 1.6.1:</comment>
+    <requestid>441824</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a94cbb5e1b09bec697256af3e88c226</srcmd5>
+    <version>2.1.1</version>
+    <time>1484475658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1 (boo#1019946):</comment>
+    <requestid>450296</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a78ecb0bde33cc82472d766f2b1fb44f</srcmd5>
+    <version>2.1.2</version>
+    <time>1492011158</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.1.2:</comment>
+    <requestid>482453</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>800a9dd643b8deac5510730fbe78a074</srcmd5>
+    <version>2.2</version>
+    <time>1509105620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2:</comment>
+    <requestid>535176</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0789134547d4451a68f7ffb3246e139b</srcmd5>
+    <version>2.3</version>
+    <time>1517606597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3:
+  * Ready for release: v2.3
+  * update copyright dates to 2018
+  * iucode_tool(8): document changes to ucode filtering
+  * iucode_tool: support selecting by ucode revision
+  * iucode_tool: add function to parse signed 32-bit integers
+  * iucode_tool: optimize detection of base10 numeric names
+  * iucode_tool: better handle offline/non-continuous topology
+  * iucode_tool(8): document changes to --scan-system
+  * iucode_tool: select scan-system strategy change at runtime
+  * gitignore: rearrange, and ignore backup and vim swap files
+  * iucode_tool: move scan_system_processor() one layer down
+  * iucode_tool: do not scan-system while parsing
+  * iucode_tool: add two command-line parser helpers
+  * intel_microcode.h: document intel_ucode_status_t sources</comment>
+    <requestid>572024</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7715a50497adcd6c194cccb7ad801c2f</srcmd5>
+    <version>2.3.1</version>
+    <time>1520778226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1:
+  * Ready for release: v2.3.1
+  * iucode_tool: fix filter by revision parser on ILP32</comment>
+    <requestid>584420</requestid>
+  </revision>
+</revisionlist>

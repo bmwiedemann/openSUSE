@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:17:08 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Mon Aug 11 13:12:48 UTC 2014 - ncutler@suse.com
+
+- initial submission of upstream version 0.03 to devel:languages:perl
+- checked license
+- took over maintainership
+

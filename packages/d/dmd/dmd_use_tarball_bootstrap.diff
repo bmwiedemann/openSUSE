@@ -1,0 +1,13 @@
+diff --git src/posix.mak src/posix.mak
+index d8863de8b..977a403b7 100644
+--- src/posix.mak
++++ src/posix.mak
+@@ -503,7 +503,7 @@ CURL_FLAGS:=-fsSL --retry 5 --retry-max-time 120 --connect-timeout 5 --speed-tim
+ $(HOST_DMD_PATH):
+ 	mkdir -p ${HOST_DMD_ROOT}
+ ifneq (,$(shell which xz 2>/dev/null))
+-	curl ${CURL_FLAGS} ${HOST_DMD_URL}.tar.xz | tar -C ${HOST_DMD_ROOT} -Jxf - || rm -rf ${HOST_DMD_ROOT}
++	tar -C ${HOST_DMD_ROOT} -Jxf  ~/rpmbuild/SOURCES/dmd.2.078.0.linux.tar.xz || rm -rf ${HOST_DMD_ROOT}
+ else
+ 	TMPFILE=$$(mktemp deleteme.XXXXXXXX) &&	curl ${CURL_FLAGS} ${HOST_DMD_URL}.zip > $${TMPFILE}.zip && \
+ 		unzip -qd ${HOST_DMD_ROOT} $${TMPFILE}.zip && rm $${TMPFILE}.zip;

@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96655ea8c0e47c00a122962a5b8614f2</srcmd5>
+    <version>0.5</version>
+    <time>1440135632</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed by the newest version of IPython, which is already in openSUSE:Factory</comment>
+    <requestid>323072</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0462c032fb1fb48076017fd64b76b261</srcmd5>
+    <version>0.5.1</version>
+    <time>1480018739</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441354</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>abde871375164676d3eb83c57522fb47</srcmd5>
+    <version>0.5.1</version>
+    <time>1493368925</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489405</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6110aa7a8cf37d98a12ccdf286895744</srcmd5>
+    <version>0.5.2</version>
+    <time>1503591803</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.2:
+  * Add readthedocs config file
+  * Add project dir to sys.path when building docs
+  * Version number -&amp;gt; 0.5.2
+  * Use buffering when opening the pty (forwarded request 518124 from tbechtold)</comment>
+    <requestid>518125</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c62c10c968899152215d3c9085fbcf9</srcmd5>
+    <version>0.6.0</version>
+    <time>1533887197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627898</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c6035b8eebabec80c7d7078f85a5a91e</srcmd5>
+    <version>0.6.0</version>
+    <time>1545866862</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659567</requestid>
+  </revision>
+</revisionlist>

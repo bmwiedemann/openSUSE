@@ -1,0 +1,620 @@
+-------------------------------------------------------------------
+Mon Dec 11 02:47:34 UTC 2017 - avvissu@yandex.by
+
+- Update to 8.5.9:
+  * make --fail stop jpeg read on any libjpeg warning
+  * don't build enumtypes so often, removing perl as a compile dependency
+  * fix a crash with heavy use of draw operations from language bindings
+- Change in 8.5.8
+  * fix transparency detection in merge
+  * define env var VIPS_WARNING to hide warning messages
+  * shut down dzsave output earlier to help mark-sweep bindings
+  * fix webp thumbnail upscale
+- Change in 8.5.7
+  * better smartcrop
+  * transform cmyk->rgb automatically on write if there's an embedded profile
+    and the saver does not support cmyk
+  * fix DPI mixup in svgload ... we were writing images about 20% too large
+- Change in 8.5.6
+  * tiff read with start page > 0 could break edge tiles or strips
+  * raise b64 limit to allow for huge profiles
+  * fix error return in blob save
+  * tag vipsprofile as py2
+  * don't cache thumbnail
+- Change in 8.5.5
+  * doc polishing
+  * more improvements for truncated PNG files
+  * improve corrupted jpg handling
+  * fix small test suite issues on os x
+- Change in 8.5.4
+  * don't depend on image width when setting n_lines
+- Change in 8.5.3
+  * more link fixing in docs 
+  * revise cache sizing again to help out of order errors under heavy load
+- Change in 8.5.2
+  * better behaviour for truncated PNG files
+  * missing proto for vips_tiffsave_buffer()
+  * move some docs from the wiki and blog into core libvips docs
+  * add support for markdown in docs
+- Change in 8.5.1
+  * init more classes earlier
+- Change in 8.5.0
+  * rewritten buffer system is safer and frees memory earlier
+  * added tiff save to buffer
+  * added dzsave save to buffer (zip only)
+  * revise header get/set functions
+  * better vipsheader behaviour with complex field types
+  * added vips_image_hasalpha()
+  * added vips_thumbnail() / vips_thumbnail_buffer()
+  * webpload/webpsave read and write icc, xmp, exif metadata
+  * better >4gb detect for zip dzsave output [Felix Bünemann]
+  * all loaders have a @fail option, meaning fail on first warning, though it
+    only does anything for jpg and csv
+  * add vips_image_get_fields() to help bindings
+  * add tiff multi-page read/write
+  * add VIPS_META_PAGE_HEIGHT metadata
+  * IM6/IM7 magickload supports page/n/page-height, all_frames deprecated
+  * gifload supports n/page-height
+  * added #defines for VIPS_SONAME, VIPS_LIBRARY_CURRENT, VIPS_LIBRARY_REVISION,
+    VIPS_LIBRARY_AGE
+  * better support for bscale / bzero in fits images
+  * deprecate vips_warn() / vips_info(); use g_warning() / g_info() instead
+  * vipsthumbnail supports much fancier geometry strings
+  * vips_thumbnail() has new @size option
+  * fix --vips-cache-max etc. 
+  * add compute reordering, plus some new API to support it:
+    vips_reorder_margin_hint() and vips_reorder_prepare_many(), thanks
+    aferrero2707
+  * kick load operations from cache on read error 
+  * fix return from C++ assignment operator overloads (+=, -= etc) 
+  * add @max_slope to vips_hist_local() to implement CLAHE
+  * vips_gaussnoise() pixels are reproducible on recalc
+  * max/min sort values by y and x coordinate
+  * tiff read uses libtiff scanline API if rows-per-strip is large
+  * vips_region_shrink() knows about alpha, helps dzsave and tiffsave
+  * use expat, not libxml, for XML load ... removes a required dependency, since
+    we get expat as part of glib
+  * new sequential mode infrastructure is faster and more flexible
+  * add vips_smartcrop(), based on sharp's smartcropper
+  * vipsthumbnail has a --smartcrop option
+  * added vips_rot90() etc. convenience functions
+  * fix vips_resize() bug when hscale and vscale were very different
+- Update homepage and sourceURL
+
+-------------------------------------------------------------------
+Sun Jan  8 14:22:19 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 8.4.5, bugfix release
+
+-------------------------------------------------------------------
+Tue Nov 22 11:06:41 UTC 2016 - jengelh@inai.de
+
+- RPM group classification fix and description update
+
+-------------------------------------------------------------------
+Tue Nov  8 16:33:37 UTC 2016 - avvissu@yandex.by
+
+- Update to 8.4.3:
+  * fix error detection in gif_close
+  * fix tiny threading memleak
+  * improve compatibility with very old glib, see #548
+- Change in 8.4.2:
+  * small doc improvements
+  * fix error message for metadata fetch type mismatch
+  * resolve a race condition in thread shutdown, thanks Lovell
+- Change in 8.4:
+  * many more wepsave options [Felix Bünemann]
+  * added quant_table option to wepsave [Felix Bünemann]
+  * added @n option to pdfload, thanks andris
+  * dzsave won't write empty tiles in google mode, thanks bverem, 
+    perog, felixbuenemann
+  * allow nested [] in CLI args
+  * restore BandFmt on unpremultiply in vipsthumbnail
+  * better python detection and build [Felix Bünemann]
+  * max-alpha defaults to 65535 for RGB16/GREY16
+  * added radsave_buffer [Henri Chain]
+  * support tiff orientation tag
+  * autorotate option for tiff load
+  * tiffsave converts for jpg if jpg compression is turned on
+  * tiffsave supports --strip
+  * conversions to GREY16 could lock
+  * free pixel buffers on image close as well as thread exit
+    thread buffers clogging up the system
+  * dzsave can write compressed zips [Felix Bünemann]
+  * vips_image_write() only refs the input when it has to ... makes 
+    it easier to combine many images in bounded memory
+  * VImage::write() implementation was missing
+  * VImage::write() return value changed from void to VImage to help 
+    chaining
+  * added C++ arithmetic assignment overloads, += etc. 
+  * VImage::ifthenelse() with double args was missing =0 on options
+  * better accuracy for reducev with smarter multiplication
+  * better quality for vips_resize() with linear/cubic kernels 
+  * pyvips8 can create new metadata
+  * better upsizing with vips_resize()
+  * add imagemagick v7 support, thanks sachinwalia2k8 
+  * added vips_worley(), vips_perlin() noise generators
+  * added vips_convf(), vips_convi(), vips_convasep(), vips_conva()
+    im_conv*() functions rewritten as classes
+  * vips_convsep() calls vips_convasep() for the approximate case
+  * new fixed-point vector path for convi is up to about 2x faster
+  * gif loader can make 1, 2, 3, or 4 bands depending on file contents
+  * support --strip for pngsave
+  * add svgz support [Felix Bünemann]
+  * rename boostrap.sh -> autogen.sh to help snapcraft
+  * support unicode filenames on Windows 
+  * added VIPS_ROUND as well as VIPS_RINT
+  * resize/reduce*/shrink*/affine now round output size to nearest rather 
+    than rounding down, thanks ioquatix
+  * better support for tile overlaps in google maps mode in dzsave
+  * dzsave puts vips-properties.xml in the main dir for gm and zoomify 
+    layouts
+  * resize and reduce have @centre option for centre convention 
+    downsampling
+  * vipsthumbnail uses centre convention to better match imagemagick
+- Change in 8.3.4:
+  * better transparency handling in gifload, thanks diegocsandrim
+- Change in 8.3.3:
+  * fix performance regression in 8.3.2, thanks Lovell
+  * yet more robust vips file reading
+- Change in 8.3.2:
+  * more robust vips image reading
+  * more robust tiff read [Matt Richards]
+- Change in 8.3.1:
+  * rename vips wrapper script, it was still vips-8.2, thanks Benjamin
+  * export C++ operator overloads for MSVC linking [Lovell]
+  * fix magickload @page with GraphicsMagick
+  * add giflib5 support
+  * allow resize >1 on one axis, <1 on the other
+  * vips_resize has an optional @kernel argument
+  * fix giflib4 detection [felixbuenemann]
+- Change in 8.3:
+  * add vips_reduce*() ... a fast path for affine downsize
+  * vips_resize() uses vips_reduce() with lanczos3 
+  * bicubic is better on 32-bit int images
+  * add pdfload, svgload, gifload for PDF, SVG and GIF rendering 
+  * vipsthumbnail knows about pdfload and svgload
+  * added @page param to magickload 
+  * matload is more specific (thanks bithive)
+  * lower mem use for progressive jpg decode
+  * sharpen has a new @sigma param, @radius is deprecated
+  * sharpen allows a much greater range of parameters
+  * sharpen defaults now suitable for screen output
+  * better handling of deprecated args in python
+  * much better handling of arrayimage command-line args
+  * faster hist_find (Lovell Fuller)
+  * webpload has a @shrink parameter for shrink-on-load
+  * vipsthumbnail knows about webp shrink-on-load
+  * better behaviour for vips_cast() shift of non-int types (thanks apacheark)
+  * python .bandrank() now works like .bandjoin()
+  * vipsthumbnail --interpolator and --sharpen switches are deprecated
+  * switches to disable PPM, Rad and Analyze support
+  * added VIPS_COUNT_PIXELS(), overcomputation tracking
+  * @out_format in vips_system() can contain [options]
+  * webpsave_buffer no longer ignores @lossless, thanks aaron42net
+  * float tiff tagged as scRGB to match photoshop convention, thanks Murat
+  * better jpeg autorot, thanks otto
+- Change in 8.2.4:
+  * fix nohalo and vsqbs interpolators, thanks Rafael
+- Change in 8.2.3:
+  * fix a crash with SPARC byte-order labq vips images
+  * fix parsing of filenames containing brackets, thanks shilpi230
+  * fix hist_entropy (lovell)
+  * small fixes to radiance load
+- Update patch:
+  * vips-libexif-header.patch -> vips-8.4.2_libexif-header.patch
+- Disable pyvips8: not available for version 8.0
+- Use pkgconfig(style)
+- Use _typelibdir and _girdir macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Apr 21 10:12:28 UTC 2016 - normand@linux.vnet.ibm.com
+
+- ignore make check errors for ppc64 architecture tracked upstream
+  https://github.com/jcupitt/libvips/issues/427
+
+-------------------------------------------------------------------
+Tue Feb 16 15:05:45 UTC 2016 - eshmarnev@suse.com
+
+- Update to version 8.2.2
+    - changes to ease compiling C++ binding with MSVC 
+    - reorder file tests to put slow loaders last
+    - ifthenelse needs less C stack during eval
+    - better rounding in bilinear interpolator
+    - fix to "make check" in non-C locales 
+    - use compiler builtins isnan, isinf, fabs, fmin, fmax, ceil, 
+      floor when possible 
+      - tune vips_shrinkh(), 30% faster 
+      - remove SEQ hint from vips_subsample(), fixes cli performance 
+      - fix double free on attach ICC profile from file in tiff write 
+      - use g_assert_not_reached() 
+    - better vips-from-C docs
+    - remove Duff from im_conv() / im_conv_f() for a 25% speedup
+
+-------------------------------------------------------------------
+Wed Oct 28 10:47:58 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 8.1.1
+  * add vips_premultiply(), vips_unpremultiply()
+  * change the alpha range rules for vips_flatten() to match vips_premultiply()
+  * vipsthumbnail uses vips_resize() rather than its own code
+  * vipsthumbnail uses vips_premultiply() for better alpha quality
+  * added bandand() bandor() bandeor() convenience funcs to Python
+  * oops, base64 encode could pad by up to two zero bytes
+  * added VipsRefString as a thing that gi bindings can unpack
+  * support "with Vips.Image as i:" in Python
+  * try to support DOS CSV and PPM files on linux
+  * add vips_byteswap(), remove byteswap option from vips_copy()
+  * add vips_bandfold()/vips_bandunfold()
+  * dzsave supports zip output > 4gb, thanks benjamin
+  * add support for HSV colourspace
+  * skip oversized markers in jpeg write
+  * jpeg exif tags saved as name rather than title
+  * can now set any jpeg exif tag, not just modify existing tags
+  * add vips_hist_entropy()
+  * vips_log(), vips_log10() are zero-avoiding
+  * better overlap handling for dzsave, thanks robclouth
+  * add @spacing option to vips_text()
+  * tiff loads and saves IPCT and Photoshop data
+
+-------------------------------------------------------------------
+Wed May  6 20:00:22 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 8.0.2
+  * remove old doc stuff, lots of doc improvements
+  * add fliphor(), flipver(), rot90(), rot180(), rot270(), median(),
+    dilate(), erode() convenience methods to Python and C++
+  * python: use [] to index and slice image bands, use () to get a point
+  * c++: use [] to band index, () returns a vector<double>
+  * add shift option to cast
+  * sRGB2scRGB and scRGB2sRGB scale 16-bit alpha to and from 8-bit
+  * add magickload_buffer() [mcuelenaere]
+  * add vips_foreign_is_a_buffer() [mcuelenaere]
+  * added test_foreign.py, plus more test images
+  * added vips_region_shrink(), fast x2 shrinker
+  * rewritten tiff writer is about 3 - 4x faster at making pyramids
+  * jpg, magick, png, tiff readers now use only 1 fd per input image
+  * added vips_info_set(), vips_progress_set(), vips_profile_set()
+  * better conversion to greyscale
+  * add vips_image_copy_memory(), improves stability with heavy threading
+  * jpegsave supports new mozjpeg features [lovell]
+  * add vips_vipsload(), vips_vipssave()
+
+-------------------------------------------------------------------
+Fri Feb 13 20:47:10 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 7.42.3
+  * Bug fixes and small improvements see included ChangeLog file for details
+
+-------------------------------------------------------------------
+Mon Jan 12 15:17:38 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 7.42.1
+  * See included ChangeLog file for details
+  * Remove obsolete vips-date-and-time.patch
+- Fix libexif headers path
+  * vips-libexif-header.patch
+- Build with webp support
+- Enable post-build tests
+
+-------------------------------------------------------------------
+Wed Oct 22 16:30:21 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.40.11
+  * See included ChangeLog file for details
+
+-------------------------------------------------------------------
+Fri Aug 22 17:35:33 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.40.6
+  * fix similarity rotate+scale
+  * fix 16-bit PNG save
+  * fix vipsthumbnail on many-core systems
+  * fix a race in im_maxpos_avg()
+  * limit n_thr on tiny images
+  * don't exit() on memleak detected, just warn
+  * add "autocrop" option to openslide load
+  * argh fix affine, again, there were sometimes black bars with
+    nohalo and the vips8 interface
+  * pngsave in interlaced mode makes a copy of the image, so it's
+    always seq 
+  * vipsthumbnail shrinks to 1/2 window_size
+  * vipsthumbnail has an anti-alias filter between shrink and affine
+  * vipsthumbnail defaults to bicubic 
+  * better rounding behaviour for fixed-point bicubic reduces noise
+  * fix colour for openslide read associated
+
+-------------------------------------------------------------------
+Tue Jul 29 07:54:41 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.40.4
+  * fix vips_rawsave_fd(), im_point()
+  * vips_scale() now does round to nearest to avoid rounding errors
+  * improve im_openout() compat macro
+  * more robust vips_system()
+  * add webp support to vips7 
+  * fix interlaced thumbnails in vipsthumbnail
+  * fits save now caches the image before write, so it's top-to-bottom
+  * add --properties argument to dzsave
+  * dzsave write to zip stops at 4gb
+  * improve short option name handling
+
+-------------------------------------------------------------------
+Fri Jun 27 21:42:22 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.40.1
+  * revise man.1 pages
+  * fix vips_guess_prefix()
+
+-------------------------------------------------------------------
+Tue Jun 24 18:58:00 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.40.0
+  * new functions and classes, see included ChangeLog file
+  * auto-decode for (almost) all operations, see vips_image_decode()
+  * background render thread cleans up and quits neatly
+  * colourspace has a source_space option
+  * operations can be tagged as "deprecated"
+  * better rounding in vips_flatten()
+  * VipsStatistic operations are sequential
+  * vipsthumbnail has --rotate auto-rotate option
+  * removed embedded thumbnail reader from vipsthumbnail: embedded
+    thumbnails are too unlike the main image
+  * reduce default cache size to 1,000 operations
+  * vips_system() now supports many input images and you can
+    change image argument order
+  * support 16-bit palette TIFFs, plus palette TIFFs can have an alpha
+  * dzsave can directly write a ZIP file 
+  * add ".vips" as an alternative suffix for vips files
+  * support 1/2/4 bit palette tiff images with alpha
+  * added Travis CI config
+  * better filename tracking for globalbalance
+  * revised vips8 image load/save API, now simpler and more logical
+  * operations emit "invalidate" if any of their input images invalidate
+  * operation cache drops ops on invalidate
+
+-------------------------------------------------------------------
+Thu Feb 27 06:48:05 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.38.5
+  * jpeg load from buffer could write to input, thanks Lovell
+  * fix webpload from buffer, thanks Lovell
+  * vips_sequential() could fail under heavy load
+  * remove support for seq mode read for operations like extract
+  * --sharpen=none option to vipsthumbnail was broken
+  * more locking on property create and lookup to help very-threaded systems
+
+-------------------------------------------------------------------
+Fri Feb  7 13:53:01 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.38.3
+  * undeprecate VIPS_MASK_IDEAL_HIGHPASS and friends
+  * auto RAD decode for affine
+  * falsecolour was not working for some image types
+  * foreign memory buffer images did not have the right dhint,
+    broke command-line falsecolour on sequential images
+  * support many Radiance readers active at once
+  * add secret "rgbjpeg" flag to vips_tiffsave() to help IIP
+
+-------------------------------------------------------------------
+Tue Jan 21 15:44:22 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.38.1
+  * bump soname
+  * better conversion to and from scrgb/xyz for rad (hdr) 
+  * fix --interpolate flag to vipsthumbnail
+
+-------------------------------------------------------------------
+Sun Jan 19 06:33:02 UTC 2014 - dmitry_r@opensuse.org
+
+- Update to version 7.38.0
+  * redone im_rotate_*mask45(), im_gauss_*mask*(), im_log_*mask(),
+    im_dilate(), im_erode(), im_rank_image(), im_compass(),
+    im_linedet(), im_gradient(), im_convsep(), im_convsep_f(),
+    im_fastcor(), im_spcor(), im_sharpen() as classes
+  * im_gradcor() deprecated
+  * vips_init() now does some ABI compat checking, though this
+    change requires an ABI break
+  * add "interlace" option to vips_jpegsave()
+  * remove vips_image_copy_fields() and vips_demand_hint() and add 
+    vips_image_pipeline() to do both jobs
+  * vipsthumbnail allows non-square bounding boxes, thanks seth
+  * add vips_matrixprint()
+  * add @point subsample mode to vips_subsample()
+  * im_contrast_surface() deprecated: it was slower than calling
+    conv a few times
+  * radiance load supports sequential read
+  * rewritten radiance decode is much faster
+  * add vips_crop(), a synonym for vips_extract_area()
+  * rename vips_gammacorrect() as vips_gamma(), now takes 1 / exp
+  * vips_gamma() works for any format
+  * add --linear mode to vipsthumbnail
+  * support XYZ as a PCS for vips_icc_import() and vips_icc_export()
+  * add --strip option to jpegsave
+  * added vips_gaussblur() convenience function
+  * added --vips-profile, records and dumps thread timing and memory 
+    use info 
+  * added vipsprofile, visualises --vips-profile output
+  * auto-vectorization-friendly inner loops
+  * added vips::init() and vips::shutdown() to C++ API
+  * reuse pixel buffers on sharing to reduce mem cycling
+  * conv is SMALLTILE, huge mem use saving on wide images
+  * vipsthumbnail has a --crop option
+  * remove video4linux1 code, it was useless on all modern linuxes
+  * redone freq filter builders as classes
+  * redone im_fwfft(), im_invfft(), im_freqflt(), im_disp_ps(),
+    im_fractsurf(), im_phasecor() as classes
+  * vips_colourspace() allows B_W, GREY16, RGB16 as source / target
+  * added vips_thread_shutdown(), thanks Lovell
+  * vips_linear() has a uchar output mode
+  * redone im_cntlines(), im_rank() as classes
+  * move im_zerox() to deprecated, it wasm't very useful
+
+-------------------------------------------------------------------
+Fri Dec 20 06:45:15 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.36.5
+  * better cache sizing in unbuffered sequential mode
+  * allow larger tile_size in dzsave
+  * remove use of PATH_MAX to help gnu hurd
+  * fix vips_hist_match()
+  * improve compat with im_init_world()
+
+-------------------------------------------------------------------
+Thu Nov 14 19:44:51 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.36.3
+  * reverse similarity rotation direction to match the convention
+    used elsewhere in vips
+  * fix blocked caching of sequential load operations
+  * fix cache flags
+  * fix --delete option to vipsthumbnail
+
+-------------------------------------------------------------------
+Thu Oct 17 15:41:25 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.36.2
+  * better jpeg startup
+  * rename jpeg bool type to reduce confusion between libraries
+
+-------------------------------------------------------------------
+Tue Oct  8 15:45:39 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.36.1
+  * small bugfixes
+
+-------------------------------------------------------------------
+Sat Oct  5 17:07:19 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.36.0
+  * added vips_matrixload() and vips_matrixsave(), load and save
+    vips mat format
+  * rename image arrays as image matrices ... INTERPRETATION_ARRAY ->
+    INTERPRETATION_MATRIX etc. 
+  * rewrite im_buildlut(), im_identity*(), im_maplut(),
+    im_falsecolour(), im_gammacorrect(), im_histgr(), im_histcum(),
+    im_histnorm(), im_heq(), im_histnD(), im_histindexed(),
+    im_histspec(), im_invertlut(), im_lhisteq(), im_stdif(),
+    im_project(), im_profile(), im_tone_build*(), im_mpercent*(),
+    im_ismonotonic() as classes
+  * vips_hist_local(), vips_stdif() do any number of bands
+  * thin vips8 wrapper for im_histplot()
+  * added vips_error_freeze() / vips_error_thaw()
+  * used freeze() / thaw() to stop file format sniffers logging
+    spurious errors
+  * vipsthumbnail uses embedded jpg thumbnails if it can 
+  * rename vips_diag() as vips_info(), add --vips-info flag
+  * deprecate im_hsp()
+  * added vips_webpload(), vips_webpload_buffer(), vips_webpsave(),
+    vips_webpsave_buffer(), vips_webpsave_mime()
+  * tiff reader allows separate planes for strip read
+  * tiff reader and writer allow many more formats,
+    eg. 32-bit int, complex, etc. 
+  * tiff reader and writer allow any number of bands
+  * added vips_image_new_matrixv()
+  * dzsave basename param now called filename, so you can use .dz
+    as a destination (basename is still there but deprecated)
+  * new _UNBUFFERED sequential mode saves memory in some important cases
+  * vips_conv() is a simple wrapper over the old convolution functions
+  * new optimize_coding param for jpeg write produces optimal Huffman tables
+  * im_tone_map() and im_tone_analyse() deprecated
+  * new --band arg to vips_maplut() replaces im_tone_map() functionality
+  * added vips_similarity(), simple wrapper for vips_affine() that lets you
+    give a scale and rotate
+
+-------------------------------------------------------------------
+Tue Aug 20 19:39:40 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version  7.34.2
+  * lower priority for Matlab load to reduce segvs from Mat_Open()
+  * null-terminate libexif strings
+  * openslide always outputs solid pixels*
+
+-------------------------------------------------------------------
+Thu Jul  4 14:42:20 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.34.1
+  * fix morphological operators on non-uchar images
+  * remove any ICC profile when we use vips to go to srgb
+  * fix VImage.PIL_mode_from_vips() failed for CMYK
+  * fix no-pango build
+  * add im_vips2dz(): run the deepzoom writer from vips7
+  * vips_magickload() has an option to read all images in a sequence
+  * redo im_make_xy(), im_*eye(), im_zone*(), im_sines() as classes
+  * added vips_pngload_buffer()
+  * faster --centre option to dzsave
+
+-------------------------------------------------------------------
+Sat Jun 15 12:42:35 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.32.4
+  * icc import and export could segv on very wide images
+  * added "persistent" option to tilecache
+  * removed some left-over debugging code from configure.ac
+  * better handling of args without values
+  * better error messages from vips.c
+  * fix demand hints so "vips shrink" works again
+  * remove "fred" from dist
+
+-------------------------------------------------------------------
+Wed Mar  6 19:47:41 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.32.0
+  * tilecache in threaded mode could deadlock if the downstream
+    pixel source raised an error
+  * fix another dzsave corner-case
+  * neater output for "header"
+  * added VIPS_META_LOADER: record the loader name
+  * vipsthumbnail is better at cache sizing
+  * removed obsolete vips-libpng16.patch
+
+-------------------------------------------------------------------
+Thu Feb 28 16:13:17 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.30.8
+  * Fixed png icc profile write
+
+-------------------------------------------------------------------
+Fri Feb 15 09:26:44 UTC 2013 - pgajdos@suse.com
+
+- build also with libpng16
+  * libpng16.patch
+
+-------------------------------------------------------------------
+Sat Jan 19 18:23:59 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 7.30.7
+  * better option parsing for "vips"
+  * backported threaded tile cache from next version
+
+-------------------------------------------------------------------
+Wed Dec 19 20:45:52 UTC 2012 - dmitry_r@opensuse.org
+
+- Update to version 7.30.6
+  * see ChangeLog
+- Change license to LGPL-2.1 [bnc#780722]
+- Build with matio support for openSUSE 12.1
+
+-------------------------------------------------------------------
+Wed Sep 26 07:20:13 UTC 2012 - dmitry_r@opensuse.org
+
+- Change license to GPL-2.0+ (bnc#780722)
+  
+-------------------------------------------------------------------
+Thu Sep 13 20:51:57 UTC 2012 - dmitry_r@opensuse.org
+
+- Build without matio support for openSUSE 12.1
+  by reason of matio 1.5.0 build problems
+
+-------------------------------------------------------------------
+Sat Sep  8 18:00:37 UTC 2012 - dmitry_r@opensuse.org
+
+- Fix rpmlint warning "file-contains-date-and-time"
+  * vips-date-and-time.patch
+
+-------------------------------------------------------------------
+Sat Sep  1 15:59:00 UTC 2012 - dmitry_r@opensuse.org
+
+- Initial package
+- Version 7.30.1

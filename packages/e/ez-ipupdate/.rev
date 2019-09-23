@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="133">
+    <srcmd5>8cf1a3e980fc517f14ca061bdfcfa9ec</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1168902721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="264">
+    <srcmd5>daaa08a87d0b864b8bf5bd5ad829be0e</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1222776323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="265">
+    <srcmd5>daaa08a87d0b864b8bf5bd5ad829be0e</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1222776323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="267">
+    <srcmd5>daaa08a87d0b864b8bf5bd5ad829be0e</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1222776323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="268">
+    <srcmd5>f9aac8a1497a79239c2d777161de9331</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1268923507</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="270">
+    <srcmd5>f9aac8a1497a79239c2d777161de9331</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="271">
+    <srcmd5>f9aac8a1497a79239c2d777161de9331</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="274">
+    <srcmd5>f9aac8a1497a79239c2d777161de9331</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="275">
+    <srcmd5>dac45ffefaaa3607c5a1e743ab23d08d</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1316469270</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83492 from jengelh)</comment>
+    <requestid>83673</requestid>
+  </revision>
+  <revision rev="10" vrev="277">
+    <srcmd5>dac45ffefaaa3607c5a1e743ab23d08d</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1319181873</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="278">
+    <srcmd5>6bf5c8abff83664b7b030d2242dc9979</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1323341312</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95015 from coolo)</comment>
+    <requestid>95526</requestid>
+  </revision>
+  <revision rev="12" vrev="280">
+    <srcmd5>6bf5c8abff83664b7b030d2242dc9979</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1340183318</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="282">
+    <srcmd5>6bf5c8abff83664b7b030d2242dc9979</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1359108864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="283">
+    <srcmd5>69f33458d55f36de3f728bff5dbc12cd</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1365791393</time>
+    <user>coolo</user>
+    <comment>Add support for joker.com and various other fixes (forwarded request 163609 from psmt)</comment>
+    <requestid>163610</requestid>
+  </revision>
+  <revision rev="15" vrev="285">
+    <srcmd5>69f33458d55f36de3f728bff5dbc12cd</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1379662321</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="286">
+    <srcmd5>f0cad29f2b981c0bde035c6587493ee3</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1383313110</time>
+    <user>scarabeus_factory</user>
+    <comment>Modify symlink creation as per request from review</comment>
+    <requestid>205250</requestid>
+  </revision>
+  <revision rev="17" vrev="288">
+    <srcmd5>f0cad29f2b981c0bde035c6587493ee3</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1409300854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="289">
+    <srcmd5>80449f47cda3f565ea9800109b4ea85a</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1429948349</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298619</requestid>
+  </revision>
+  <revision rev="19" vrev="290">
+    <srcmd5>e5ed608a519969c6bb1c790eef753888</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1447353651</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343490</requestid>
+  </revision>
+  <revision rev="20" vrev="291">
+    <srcmd5>bfff77bfaa9a9bbb46967a6b7542dd09</srcmd5>
+    <version>3.0.11b8</version>
+    <time>1452027277</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351635</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,24 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: [PATCH] Install 64bit libs into /usr/lib64
+Upstream: No
+
+---
+ Makefile | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 2bcc3837af41..29f51efd5c98 100644
+--- a/Makefile
++++ b/Makefile
+@@ -50,6 +50,11 @@ html_install_SQ = '$(subst ','\'',$(html_install))'
+ img_install = $(prefix)/share/kernelshark/html/images
+ img_install_SQ = '$(subst ','\'',$(img_install))'
+ libdir ?= $(prefix)/lib
++ifeq ($(prefix),/usr)
++  ifeq ($(shell getconf LONG_BIT),64)
++    libdir = ${prefix}/lib64
++  endif
++endif
+ libdir_SQ = '$(subst ','\'',$(libdir))'
+ includedir = $(prefix)/include/trace-cmd
+ includedir_SQ = '$(subst ','\'',$(includedir))'

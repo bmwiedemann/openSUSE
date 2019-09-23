@@ -1,0 +1,397 @@
+-------------------------------------------------------------------
+Fri Jun  7 12:32:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to python3 sphinx instead of python2 based variant
+
+-------------------------------------------------------------------
+Thu Jun 22 16:51:01 UTC 2017 - antoine.belvire@opensuse.org
+
+- Add libmemcached-1.0.18-fix-build-gcc7.patch: Fix build with GCC
+  7, picked from Fedora (boo#1041295).
+
+-------------------------------------------------------------------
+Wed May 11 14:53:53 UTC 2016 - kstreitova@suse.com
+
+- use spec-cleaner to clean specfile
+- remove unnecessary conditionals
+- update description and summary
+
+-------------------------------------------------------------------
+Mon Feb 23 16:50:49 UTC 2015 - mrueckert@suse.de
+
+- enable verbose build
+
+-------------------------------------------------------------------
+Tue Dec 16 17:31:06 UTC 2014 - dimstar@opensuse.org
+
+- Add libmemcached-no-docs-available.patch: Do not build
+  documentation if this is not a VC checkout. The idea is that the
+  tarballs do only ship the pre-built documentation (which, on the
+  other hand, is also missing in 1.0.18).
+
+-------------------------------------------------------------------
+Tue Dec  9 16:24:59 UTC 2014 - jengelh@inai.de
+
+- Let signature verification happen through source validator
+  instead of gpg-offline in %prep
+- Add libmemcached-automake1_14.diff to workaround an automake
+  regression. Rediff libmemcached-pthread.patch for -p1.
+
+-------------------------------------------------------------------
+Mon Mar 31 10:46:47 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.0.18:
+  + MEMCACHED_BEHAVIOR_RETRY_TIMEOUT can now be set to zero.
+  + Numerous bug fixes.
+- remove upstreamed patch libmemcached-with-memcached.patch
+- remove outdated dist version dependencies, (build)require the 
+  needed automake >= 1.13 instead
+
+-------------------------------------------------------------------
+Sat Jan  4 23:08:40 UTC 2014 - dmueller@suse.com
+
+- use rpmoptflags 
+
+-------------------------------------------------------------------
+Fri Aug  2 22:56:56 UTC 2013 - chris@computersalat.de
+
+- update to 1.0.17
+  * fix #1091599 Can not make a rpm package on CentOS 6.3
+  * fix #1123153 increment/decrement can erroneously report
+    MEMCACHED_UNKNOWN_READ_FAILURE
+  * fix #1126601 Double clean up leads to accessing invalid memory
+- rebase pthread patch
+- add with-memcached patch
+  * http://bazaar.launchpad.net/~brianaker/libmemcached/1164440/revision/1158
+
+-------------------------------------------------------------------
+Thu Apr 18 20:55:07 UTC 2013 - dimstar@opensuse.org
+
+- Add libmemcached-pthread.patch: fix linking agains pthread:
+  when built with SASL support, libmemcached.so needs to be linked
+  against libpthread, or we have undefined symbols in the library.
+- Add libtool BuildRequires and call autorecon, as above patch
+  requires to boostrap.
+
+-------------------------------------------------------------------
+Sat Apr 13 21:53:59 UTC 2013 - dimstar@opensuse.org
+
+- Add cyrus-sasl-devel Requires: memcached.h includes (from its own
+  headers) struct/sasl.h, which in turn includes sasl/sasl.h. This
+  header comes from cyrus-sasl-devel.
+
+-------------------------------------------------------------------
+Mon Feb  4 21:25:25 UTC 2013 - chris@computersalat.de
+
+- update to 1.0.16
+  * Added support to do two part shutdown of socket.
+  * Fixes for Fedora 18.
+  * Fix for binary memcached_touch()
+- remove obsolete bigendian patch
+
+-------------------------------------------------------------------
+Sun Dec 30 19:29:49 UTC 2012 - chris@computersalat.de
+
+- update to 1.0.15
+  * no man pages with 'make install'
+  * --enable-static --disable-shared build fails with linker error
+  * bug occurs when do "configure --enable-memaslap;
+    make" on ubuntu 12.04 LTS(amd64)
+  * compilation error with custom prefix
+  * libmemcached 1.0.14 and bigendian
+  * libmemcached 1.0.14 missing config.h
+  * libmemcached 1.0.14 with DTRACE
+  * libmemcachedinternal missing -ldl
+  * libmemcached 1.0.14 test faild because of /usr/bin/touch
+  * Fix incorrect assertion messages
+  * pdate from murmur2 to murmur3 hash.
+
+-------------------------------------------------------------------
+Wed Nov 28 19:54:51 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Mon Nov 19 16:19:25 UTC 2012 - dvaleev@suse.com
+
+- fix defined but not used variable error on bigendian machines
+  (libmemcached-bigendian.patch) 
+
+-------------------------------------------------------------------
+Fri Oct  5 09:51:40 UTC 2012 - coolo@suse.com
+
+- update to 1.0.11
+ * Removed custom version of memcached.
+ * Updated hardening rules.
+ * Fixed a case where the return error from a socket connection differred from that of a TCP/IP socket.
+
+-------------------------------------------------------------------
+Mon Aug 13 22:43:19 UTC 2012 - chris@computersalat.de
+
+- update to 1.0.10
+  * --disable-assert has been removed from configure, and
+    --enable-assert has been added in its place.
+  * Compiling fixes for Clang on OSX Mountain Lion.
+ - 1.0.9 Wed Jul  4 22:46:19 EDT 2012
+  * Faster close on socket.
+  * Instance allocation is now seperated from server interface. This
+    should allow for a better preservation of ABI compliance from now
+    on.
+  * Fix close on exec bug.
+  * Numerous other bug fixes.
+ - 1.0.8 Tue May 22 15:06:04 EDT 2012
+  * Added support for setting options via ENV variable LIBMEMCACHED
+  * Fix corner case on last used result.
+
+-------------------------------------------------------------------
+Mon Apr 30 07:43:54 UTC 2012 - idonmez@suse.com
+
+- Update to 1.0.7
+  * Add API call for exist calls. 
+  * Update all license files to be BSD bnc#757326
+
+-------------------------------------------------------------------
+Fri Apr 13 20:54:30 UTC 2012 - tabraham@novell.com
+
+- update to 1.0.6
+  * Fixes for gcc 4.7, lp:961812
+  * Fix for restart issue that happens under testing.
+  * Fix for lp:962815.
+  * Support for transparent AES encryption.
+
+- changes from 1.0.5
+  * Fixes for OSX.
+  * Version is now parsed directly in the parser, which makes buffered 
+    operations now work with it..
+  * memstat has been extended so that it can be used to find the version 
+    of the server.
+  * Update documentation.
+  * Fixes for compile issues on Debian and Ubuntu
+
+-------------------------------------------------------------------
+Sat Feb 18 04:24:39 UTC 2012 - termim@gmail.com
+
+- update to 1.0.4 Thu Jan 26 22:33:54 PST 2012
+  * Fix for memcached_dump().
+  * Additional testing for memcached_stat_execute().
+
+- update to 1.0.3 Sun Jan  8 18:11:36 PST 2012
+  * Increased size of sort buffer used during Ketama.
+  * Added support for new behavior to handle dead servers.
+  * Overall haul of UDP IO.
+  * Fixed C compile issue with memcached_exist()
+  * Numerous bug fixes.
+  * Clang support for OSX.
+  * All commands now using vector send support.
+
+- update to 1.0.2 Mon Oct 24 08:00:48 PDT 2011
+  * Dropped libmemcached/memcached_util.h (undocumented header file)
+  * Added memcached_touch() and memcached_touch_by_key()
+  * UDP support restructured to toggle on a complete memcached_st structure.
+
+- update to 0.53 Mon Sep 26 20:50:33 PDT 2011
+  * Fix for FreeBSD/OpenBSD and -lm
+  * Added memcached_exist()
+  * Fix for memory when using config test.
+  * CLI gained --quiet
+
+- update to 0.52 Sun Sep 11 22:16:08 PDT 2011
+  * Build fixes for Ubuntu/Suse.
+  * Fixes for OSX Lion.
+  * Bug fix for looping back through dns lookups under certain failures.
+  * Fixes related to dead server failures.
+
+- update to 0.51 Thu Jul 21 11:08:58 PDT 2011
+  * memcached_callback_set() now takes its data argument as const
+  * Update to tests.
+  * Fix in parser for port number.
+
+0.50 Mon Jun 20 10:36:57 PDT 2011
+ * Updates to C++ interface 
+ * Custom free allocators need to now check for value before calling free.
+ * memcached_fetch_result() now uses the internal result when available (about 25 to 50% faster).
+ * Fix for stats structure.
+ * Updates to documentation.
+ * memcached_fetch_result() now uses the internal result when available (about 25 to 50% faster).
+
+- update to 0.49 Thu Apr 14 08:43:37 PDT 2011
+  * Fix calls to auto methods so that if value is not passed in nothing bad happens.
+  * New parser calls for generating memcached_st objects.
+  * New error system.
+  * New flow control for messages means faster get/set calls.
+  * Added new documentation system.
+  * A behavior change has been now made that if you specify a weight for any server, we enable the weight flag and do weight balancing.  
+  * Added MEMCACHED_BEHAVIOR_REMOVE_FAILED_SERVERS to simplify the setting of AUTO REJECT for servers.
+
+- update to 0.48 Tue Mar 15 23:05:18 PDT 2011
+  * Fix memory leak in server parse.
+  * Move test framework out to be its own library (easier to work with Gearman).
+
+
+- update to 0.47 Wed Feb 23 18:46:48 PST 2011
+  * Additional fixes for OpenBSD.
+  * Bug fix 677609, 456080.
+  * SIGPIPE fix for Linux send(). 
+  * memcapable can now test ascii or binary based on flags.
+  * Additional build fixes for SASL.
+
+
+- update to 0.46 Mon Feb 14 10:28:01 PST 2011
+  * Fixes a number of corner case bugs.
+  * Fixes related to OpenBSD.
+  * Better testing for protocol version.
+  * Removes special case infinite wait on blocking setup.
+
+- update to 0.45 Tue Feb  8 16:02:06 PST 2011
+  * Add support for systemtap
+
+- update to 0.44 Wed Sep 22 21:57:57 PDT 2010
+  * Windows bug fixes.
+  * Hudson port support in test harness.
+  * Improved portability of test hanrness.
+  * SASL fixes.
+
+- update to 0.43 Wed Jul 28 16:29:47 PDT 2010
+  * Added --args to memstat so that a greater range of values can be returned.
+  * Prelimanary support for Windows.
+  * memcached_stat_execute() merged. 
+
+- update to 0.42 Tue Jul  6 12:29:50 PDT 2010
+  * Mistake in libtool caused issue with library version
+
+- update to 0.41 Wed Jun 30 13:15:19 PDT 2010
+  * Added --file for memcat.
+  * Added limemcached_ping() to libmemcached_util
+  * Bugfix for some cases where connect would have issues with timeout.
+  * Wrong value for errno given as error on an IO failure inside of poll.
+  * Bug fix for issue where multiple interfaces with bad DNS were not being caught.
+
+- update to 0.40 Thu Apr 22 19:01:25 PDT 2010
+  * Placed retry logic in for busted resolvers
+  * Add an ignore for SIGPIPE to solve OSX issues.
+  * A couple of fixed for memcached_light server.
+  * Updated to debug mode to track io_wait
+
+- update to 0.39 Tue Apr  6 12:35:13 PDT 2010
+  * Add support for prefix keys to binary protocol.
+  * Remove the undocumented call memcached_server_remove().
+  * The undocumented call memcached_server_by_key() now returns const.
+  * memcached_server_error_reset() has been deprecated.
+  * memcached_server_list() has been deprecated. Use memcached_server_cursor() to walk the servers found in a memcached_st() structure.
+  * memcached_verbosity() can now be run concurrently with other operations.
+  * SASL support.
+  * Fixes memory leak found in EJECT HOSTS.
+
+- update to 0.38 Wed Feb 10 09:40:33 PST 2010
+  * C++ interface for libhashkit.
+  * Modified memcached_set_memory_allocators() so that it requires a context pointer.
+  * memcached_clone() now runs 5 times faster.
+  * Functions used for callbacks are now given const memcached_st.
+  * Added MEMCACHED_BEHAVIOR_CORK.
+  * memslap now creates a configuration file at ~/.memslap.cnf
+  * memcached_purge() now calls any callbacks registered during get execution.
+  * Many fixes to memslap.
+  * Updates for memcapable.
+  * Compile fixes for OpenBSD.
+  * Fix for possible recursive decent on IO failure.
+
+- update to 0.37 Mon Jan 11 16:29:57 PST 2010
+  * Fixed build for libhashkit.
+  * Fixed install path regression.  
+  * Modified RPM to strict check install. 
+  * Added documentation for memcached_server_cursor();
+  * Added memcached_servers_reset().
+  * Modified memcached_st to remove dead cursor_server member.
+
+- update to 0.36 Wed Jan  6 18:23:50 PST 2010
+  * Merged in new memslap utility.
+  * All of constants.h has been updated to match style (all old identifiers continue to work).
+  * Added first pass for libhashkit.
+  * Updated test Framework/extended tests.
+  * Random read support during replication added.
+  * Modified use_sort so that the option can be applied to any distribution type.
+  * We removed the MEMCACHED_BEHAVIOR_KETAMA_COMPAT_MODE added in 0.35. Instead use memcached_behavior_set_distribution().
+
+- update to 0.35 Mon Nov  9 11:18:33 PST 2009
+  * Added support for by_key operations for inc/dec methods.
+  * Added mget test to memslap.
+  * Support for compatible ketama for SpyMemcached
+  * Update C++ interface.
+  * Fix for memcp
+
+- update to 0.34 Tue Oct 13 08:39:51 PDT 2009
+  * Added support for setting behavior flags on a connection pool.
+  * Don't increment server_failure_counter on normal disconnects.
+  * Added prototype for a callback based protocol parser (server side) with examples so that you could let your own application speak the memcached protocol
+  * Updated memcapable to test ASCII protocol.
+  * Changed behavior so that server can be removed at first sign of failure.
+  * Added memcached_server_get_last_disconnect() call
+
+- update to 0.33 Wed Sep 23 10:11:58 PDT 2009
+  * Added memcapable to test servers for binary compatibility.
+  * Updated C++ interface. Added basic support for C++ exceptions. Added multiple constructors the memcached client object. The C++ interface now takes parameters which are C++ types (such as std::string).
+  * Several bug fixes for binary protocol support.
+  * Fixed crashing issue with dumping from memcachd server (server internals were changed without documenting change).
+
+- update to 0.32 Tue Sep 15 15:49:09 PDT 2009
+  * Change of behavior where linger is only modified for no-block and then it is set to zero.
+  * Added Twitter's memcached_server_error() functions.
+  * Fix for OSX compiles in development builds.
+  * Updated C++ interface.
+  * Updated memcached_mget and memcached_mget_by_key to take a size_t as a parameter instead of an unsigned int for number_of_keys.
+
+- update to 0.31 Fri Jul 10 09:02:50 PDT 2009
+  * Added support or HA via replication.
+  * malloc() removed for server key usage.
+  * Update build system.
+  * Added support for memcached_set_memory_allocators().
+  * Fixed bug in configure.ac for have_htoll.
+
+-------------------------------------------------------------------
+Tue Jan 31 16:18:09 UTC 2012 - jengelh@medozas.de
+
+- Enable pkgconfig provides
+
+-------------------------------------------------------------------
+Wed Jan 25 23:06:37 UTC 2012 - chris@computersalat.de
+
+- spec-cleanup
+- add missing Group to subpkg
+
+-------------------------------------------------------------------
+Thu Dec  8 13:40:27 UTC 2011 - coolo@suse.com
+
+- "BSD" is not a valid spdx.org license
+
+-------------------------------------------------------------------
+Wed Oct 12 19:38:05 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/sections (cf. specfile guidelines)
+- Add missing Requires:libmemcachedutil0 to -devel subpackage
+- Do parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Jun  2 19:49:13 CEST 2009 - pascal.bleser@opensuse.org
+
+- spec file cleanups
+  * removed autoreconf, not needed as there are no patches to autotools
+  * proper use of macros such as %%makeinstall
+  * slightly more deterministic %%files sections
+
+- disabled %%check section for now, one check failing for no apparent reason
+
+- split out new libmemcached0 library into its own subpackage
+
+- update to 0.30:
+  * added a memcachd_dump command (and framework for the memdump tool)
+  * realigned all structures to remove padding (and line up important bits for 64-bit caches
+  * removed some of the sprintf() statements in storage calls()
+  * removed printf() in a stat call for unknown stat members
+  * added amemcached_generate_hash() function
+  * added tests to make sure all hash functions are stable
+
+-------------------------------------------------------------------
+Thu Feb  5 02:50:16 CET 2009 - crrodriguez@suse.de
+
+- initial version 
+

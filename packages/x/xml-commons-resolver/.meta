@@ -1,0 +1,5 @@
+<package name="xml-commons-resolver" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="xml-commons-resolver"/>
+</package>

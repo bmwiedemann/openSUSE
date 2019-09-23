@@ -1,0 +1,5 @@
+<package name="perl-MooX-late" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-MooX-late"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="iptables" project="openSUSE:Factory">
+  <title>IP Packet Filter Administration</title>
+  <description>Iptables is used to set up, maintain, and inspect the tables of IP
+packet filter rules in the Linux kernel. This version requires kernel
+2.4.0 or newer.</description>
+  <devel project="security:netfilter" package="iptables"/>
+</package>

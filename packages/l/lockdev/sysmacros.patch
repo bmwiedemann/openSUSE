@@ -1,0 +1,12 @@
+Index: lockdev-1.0.3_git201003141408/src/lockdev.c
+===================================================================
+--- lockdev-1.0.3_git201003141408.orig/src/lockdev.c
++++ lockdev-1.0.3_git201003141408/src/lockdev.c
+@@ -124,6 +124,7 @@
+ #include <sys/stat.h>
+ #include <sys/file.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/wait.h>
+ #include "lockdev.h"
+ #include "ttylock.h"

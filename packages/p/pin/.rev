@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c1d1f75788d9c2a8f43cb062f4a54de</srcmd5>
+    <version>0.36</version>
+    <time>1168903968</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1a4ed788ebfe93f47c65105affa8cd2f</srcmd5>
+    <version>0.37</version>
+    <time>1175629449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>62615318bda2ffbe271d795daf3ef004</srcmd5>
+    <version>0.38</version>
+    <time>1178733903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>be723d41bd792ceaa7fa29cca9cec230</srcmd5>
+    <version>0.38</version>
+    <time>1182458910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="91">
+    <srcmd5>be723d41bd792ceaa7fa29cca9cec230</srcmd5>
+    <version>0.38</version>
+    <time>1182458910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="92">
+    <srcmd5>ffe731ad70278058bb1d73db5d4b9827</srcmd5>
+    <version>0.38</version>
+    <time>1229349788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="94">
+    <srcmd5>ffe731ad70278058bb1d73db5d4b9827</srcmd5>
+    <version>0.38</version>
+    <time>1229349788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="95">
+    <srcmd5>cb72f1182c4bc8391e1eac807df75d13</srcmd5>
+    <version>0.38</version>
+    <time>1268925713</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="97">
+    <srcmd5>cb72f1182c4bc8391e1eac807df75d13</srcmd5>
+    <version>0.38</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="98">
+    <srcmd5>cb72f1182c4bc8391e1eac807df75d13</srcmd5>
+    <version>0.38</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="101">
+    <srcmd5>cb72f1182c4bc8391e1eac807df75d13</srcmd5>
+    <version>0.38</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="103">
+    <srcmd5>cb72f1182c4bc8391e1eac807df75d13</srcmd5>
+    <version>0.38</version>
+    <time>1319182358</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="104">
+    <srcmd5>4da92adbc88f08acaff27c132fdc7d87</srcmd5>
+    <version>0.38</version>
+    <time>1329317977</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104485 from coolo)</comment>
+    <requestid>104684</requestid>
+  </revision>
+  <revision rev="14" vrev="106">
+    <srcmd5>4da92adbc88f08acaff27c132fdc7d87</srcmd5>
+    <version>0.38</version>
+    <time>1340184002</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="108">
+    <srcmd5>4da92adbc88f08acaff27c132fdc7d87</srcmd5>
+    <version>0.38</version>
+    <time>1359109927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="110">
+    <srcmd5>4da92adbc88f08acaff27c132fdc7d87</srcmd5>
+    <version>0.38</version>
+    <time>1379664031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="112">
+    <srcmd5>4da92adbc88f08acaff27c132fdc7d87</srcmd5>
+    <version>0.38</version>
+    <time>1409302703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="113">
+    <srcmd5>e0b56da874da9a74be6a298c6fbd468e</srcmd5>
+    <version>0.38</version>
+    <time>1412799248</time>
+    <user>coolo</user>
+    <comment>- Remove old specfile tags and sections (forwarded request 254704 from jengelh)</comment>
+    <requestid>254710</requestid>
+  </revision>
+  <revision rev="19" vrev="114">
+    <srcmd5>a599c9414c92219902c4fd44629e0cfe</srcmd5>
+    <version>0.38</version>
+    <time>1416425199</time>
+    <user>dimstar_suse</user>
+    <comment>fix bashisms (forwarded request 261875 from Ledest)</comment>
+    <requestid>262112</requestid>
+  </revision>
+  <revision rev="20" vrev="115">
+    <srcmd5>c5b7b1bf02f405d315313a57aaa98b9e</srcmd5>
+    <version>0.38</version>
+    <time>1452721569</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up with spec-cleaner and silence rpmlint warnings (forwarded request 353333 from scarabeus_iv)</comment>
+    <requestid>353334</requestid>
+  </revision>
+  <revision rev="21" vrev="116">
+    <srcmd5>cd00c9b5843d8223a3652c854076d506</srcmd5>
+    <version>0.38</version>
+    <time>1529402076</time>
+    <user>maxlin_factory</user>
+    <comment>- fix for bug #1095723, pin broken on systems without /etc/SuSE-release file (forwarded request 615401 from lemmy04)</comment>
+    <requestid>615910</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a90655a746ccc97316766b99193ddda3</srcmd5>
+    <version>0.40</version>
+    <time>1537883055</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo SuSE-Release -&gt; SuSE-release 
+
+- final fix for [bsc#1095723]
+
+- fix for bug #1095723, pin broken on systems without 
+  /etc/SuSE-release file [bsc#1095723]</comment>
+    <requestid>637880</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>231d2977b725b47eb54d19cf0140aecb</srcmd5>
+    <version>0.40</version>
+    <time>1548452679</time>
+    <user>dimstar_suse</user>
+    <comment>- read the correct variable from /etc/os-release to really fix boo#1095723
+- display the correct expected filename if ARCHIVES_*.gz doesn't exist (forwarded request 668208 from cboltz)</comment>
+    <requestid>668328</requestid>
+  </revision>
+</revisionlist>

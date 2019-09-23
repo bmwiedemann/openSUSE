@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Thu Sep  5 15:01:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.0:
+  + Main changes:
+    * Changes in official python version support: added 3.7 and dropped 3.4.
+    * Added ability to submit a form without updating ``StatefulBrowser`` internal
+      state: ``submit_selected(..., update_state=False)``. This means you get a
+      response from the form submission, but your browser stays on the same page.
+      Useful for handling forms that result in a file download or open a new tab.
+  + Bug fixes
+    * Improve handling of form enctype to behave like a real browser.
+    * HTML ``type`` attributes are no longer required to be lowercase.
+    * Form controls with the ``disabled`` attribute will no longer be submitted
+      to improve compliance with the HTML standard. If you were relying on this
+      bug to submit disabled elements, you can still achieve this by deleting the
+      ``disabled`` attribute from the element in the :class:`~mechanicalsoup.Form`
+      object directly.
+    * When a form containing a file input field is submitted without choosing a
+      file, an empty filename & content will be sent just like in a real browser.
+    * ``<option>`` tags without a ``value`` attribute will now use their text as
+      the value.
+    * The optional ``url_regex`` argument to ``follow_link`` and ``download_link``
+      was fixed so that it is no longer ignored.
+    * Allow duplicate submit elements instead of raising a LinkNotFoundError.
+- Drop upstream-included bs4-47.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 16:57:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with beautifulsoup4-4.7+:
+  * bs4-47.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 16:49:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11.0:
+  * Constructing a Form instance from a bs4.element.Tag whose tag name is not form will now emit a warning, and may be deprecated in the future. [#228]
+  * Breaking Change: LinkNotFoundError now derives from Exception instead of BaseException. While this will bring the behavior in line with most people's expectations, it may affect the behavior of your code if you were heavily relying on this implementation detail in your exception handling. [#203]
+  * Improve handling of button submit elements. Will now correctly ignore buttons of type button and reset during form submission, since they are not considered to be submit elements. [#199]
+  * Do a better job of inferring the content type of a response if the Content-Type header is not provided. [#195]
+  * Improve consistency of query string construction between MechanicalSoup and web browsers in edge cases where form elements have duplicate name attributes. This prevents errors in valid use cases, and also makes MechanicalSoup more tolerant of invalid HTML. [#158]
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May 18 17:33:40 UTC 2018 - jengelh@inai.de
+
+- Trim personal impressions from description.
+
+-------------------------------------------------------------------
+Thu May 10 02:51:41 UTC 2018 - toddrme2178@gmail.com
+
+- Update to Version 0.10
+  + Main changes:
+    * Added ``StatefulBrowser.refresh()`` to reload the current page with the same request.
+    * ``StatefulBrowser.follow_link``,
+      ``StatefulBrowser.submit_selected()`` and the new
+      ``StatefulBrowser.download_link`` now sets the ``Referer:`` HTTP
+      header to the page from which the link is followed.
+    * Added method ``StatefulBrowser.download_link``, which will download the
+      contents of a link to a file without changing the state of the browser.
+    * The ``selector`` argument of ``Browser.select_form`` can now be a
+      `bs4.element.Tag <https://www.crummy.com/software/BeautifulSoup/bs4/doc/#tag>`__
+      in addition to a CSS selector.
+    * ``Browser.submit`` and ``StatefulBrowser.submit_selected`` accept a larger
+      number of keyword arguments. Arguments are forwarded to
+      `requests.Session.request <http://docs.python-requests.org/en/master/api/#requests.Session.request>`__.
+  + Internal changes:
+    * ``StatefulBrowser.choose_submit`` will now ignore input elements that are
+      missing a name-attribute instead of raising a ``KeyError``.
+    * Private methods ``Browser._build_request`` and ``Browser._prepare_request``
+      have been replaced by a single method ``Browser._request``.
+- Update to Version 0.9
+  + Main changes:
+    * We do not rely on BeautifulSoup's default choice of HTML parser.
+      Instead, we now specify ``lxml`` as default. As a consequence, the
+      default setting requires ``lxml`` as a dependency.
+    * Python 2.6 and 3.3 are no longer supported.
+    * The GitHub URL moved from
+      https://github.com/hickford/MechanicalSoup/ to
+      https://github.com/MechanicalSoup/MechanicalSoup. @moy and
+      @hemberger are now officially administrators of the project in
+      addition to @hickford, the original author.
+    * We now have a documentation site: https://mechanicalsoup.readthedocs.io/.
+      The API is now fully documented, and we have included a tutorial,
+      several more code examples, and a FAQ.
+    * ``StatefulBrowser.select_form`` can now be called without argument,
+      and defaults to ``"form"`` in this case. It also has a new argument,
+      ``nr`` (defaults to 0), which can be used to specify the index of
+      the form to select if multiple forms match the selection criteria.
+    * We now use requirement files. You can install the dependencies of
+      MechanicalSoup with e.g.::
+        pip install -r requirements.txt -r tests/requirements.txt
+    * The ``Form`` class was restructured and has a new API. The behavior of
+      existing code is unchanged, but a new collection of methods has been
+      added for clarity and consistency with the ``set`` method:
+      - ``set_input`` deprecates ``input``
+      - ``set_textarea`` deprecates ``textarea``
+      - ``set_select`` is new
+      - ``set_checkbox`` and ``set_radio`` together deprecate ``check``
+        (checkboxes are handled differently by default)
+    * A new ``Form.print_summary`` method allows you to write
+      ``browser.get_current_form().print_summary()`` to get a summary of the
+      fields you need to fill-in (and which ones are already filled-in).
+    * The ``Form`` class now supports selecting multiple options in
+      a ``<select multiple>`` element.
+  + Bug fixes
+    * Checking checkboxes with ``browser["name"] = ("val1", "val2")`` now
+      unchecks all checkbox except the ones explicitly specified.
+    * ``StatefulBrowser.submit_selected`` and ``StatefulBrowser.open`` now
+      reset __current_page to None when the result is not an HTML page.
+      This fixes a bug where __current_page was still the previous page.
+    * We don't error out anymore when trying to uncheck a box which
+      doesn't have a ``checkbox`` attribute.
+    * ``Form.new_control`` now correctly overrides existing elements.
+  + Internal changes
+    * The testsuite has been further improved and reached 100% coverage.
+    * Tests are now run against the local version of MechanicalSoup, not
+      aginst the installed version.
+    * ``Browser.add_soup`` will now always attach a *soup*-attribute.
+      If the response is not text/html, then soup is set to None.
+    * ``Form.set(force=True)`` creates an ``<input type=text ...>``
+      element instead of an ``<input type=input ...>``.
+
+-------------------------------------------------------------------
+Wed Oct 18 16:44:35 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.8.0
+  * See changelog at https://github.com/MechanicalSoup/MechanicalSoup/blob/v0.8.0/docs/ChangeLog.txt
+
+-------------------------------------------------------------------
+Mon Jul 14 10:00:11 UTC 2014 - toddrme2178@gmail.com
+
+- - Initial version
+

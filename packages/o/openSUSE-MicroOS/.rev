@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c28f6d835bade9703f0b758079cda15</srcmd5>
+    <version>16.0.0</version>
+    <time>1557751780</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to MicroOS:
+- New flavors: bare, ContainerHost and Kubic-kubeadm
+- Remove workaround for kiwi bug
+- Merge XEN into kvm-and-xen
+- Remove unneeded sections in config.sh:
+  * cloud.cfg change was a noop
+  * RPi HDMI hotplug is implemented now
+- Bump version to 16.0.0
+- Remove -x86_64 suffixes, arch is part of the filename already
+- Don't set DHCLIENT_SET_HOSTNAME to yes, cloud-init takes care of the hostname
+- Workaround gh#SUSE/kiwi#1053 by adding grub2-*-efi explicitly
+- Use the new microos and containers patterns and release pkg
+- Remove xfsprogs from OpenStack - leftover from JeOS
+- Merge bootstrap package sections
+- Remove unpartitioned space, no longer needed
+- Use more kiwi-friendly container-runtime and container-runtime-kubernetes patterns
+  [boo#1125949]
+- Drop the data partition, disable quotas entirely instead
+  (we'd need a seperate /var partition, but kiwi can't do it)
+- Change profile configuration: MicroOS+podman and MicroOS+cri-o+kubeadm
+- Use glibc-locale-base instead of glibc-locale
+- Fix etc overlay with new transactional-update and read-only-root-fs
+- Add cloud-init and cloud-init-config-casp directly
+- VMware image was apparently not read-only, fixed
+- Add apparmor pattern to cri-o profile directly
+- correct owner for vagrant home directory
+  
+- unpredictable kernel-native ethX naming for Vagrant box to come up for 
+  ssh config
+- Remove docker profiles
+- Only install cri-o-kubeadm-criconfig on kubeadm
+- Enable systemd-timesyncd
+- Enable kubelet service for images
+- Rename from kubic-images to openSUSE-Tumbleweed-Kubic
+- Use the net.ifnames=0 in the kernel cmdline args for KVM/Xen
+- Don't install kernel-firmware for the Vagrant flavour
+- Add Vagrant flavour (from jan.fajerski@suse.com)
+- Resolve criconfig dependency choice 
+- Avoid kernel-default-base:
+  * Missing important kernel modules for kubernetes
+- Remove cloud-init-config subvolume (boo#1107283)
+- Replace CaaSP-Stack flavour with kubeadm flavour
+- Introduce seperate crio and docker profiles
+- Decouple from CaaSP: It goes a separate path from now
+- Enable btrfs_quota_groups (bsc#1093518) (still broken in kiwi as of now)
+- Don't remove /etc/localtime in config.sh
+- Set bootloader_console=&quot;gfxterm&quot; unless tty is on serial console
+- Remove systemd.show_status=0 from the kernel cmdline (bsc#1089826)
+- Fix VMware capitalization
+- Fix (kvm-and-)xen driver inclusion on non-MicroOS
+- Don't use import=true:
+  * OBS doesn't handle it correctly
+  * No effect in combination with _multibuild
+- Use legacy MBR instead of GPT for Pine64 due to boo#1098550
+- Don't setup data_part on Pine64
+- Don't setup data_part on RPi, it breaks the MBR
+- Add patterns-caasp-apparmor to the Stack profile
+- Add pine64 flavour
+- Add sections to allow building against CaaSP
+- Add pre_checkin.sh to generate both caasp and kubic image descriptions
+- Update schema to version 6.7
+- Don't try to enable quotas here, it's wrong (bsc#1093518)
+- /var/lib/docker on a separate partition with btrfs
+- Adjust snapper configuration to enable quotas, disable timeline
+  snapshots and keep fewer number snapshots
+- Only call add-yast-repos if available
+- Adjust zypp.conf to disable multiversion and recommends and enable
+  excludedocs
+- Use set -exo pipefail for good measure
+- Add hardware-x86_64 flavor with kernel-default
+- Include live-add-yast-repos
+- Add new flavors and targets for patterns-caasp-Stack and patterns-caasp-onlyDVD
+- Add _constraints
+- New image, based on SLE 15 JeOS and CaaSP 3.0 descriptions
+</comment>
+    <requestid>701121</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c8023a808fa81fea2966bbdc93bbba90</srcmd5>
+    <version>16.0.0</version>
+    <time>1566464166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725103</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>68fcf35d90964101ea66626179fd735c</srcmd5>
+    <version>16.0.0</version>
+    <time>1566665123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725570</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43728e149021cf15dd773e32d8ececf0</srcmd5>
+    <version>16.0.0</version>
+    <time>1569234802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731673</requestid>
+  </revision>
+</revisionlist>

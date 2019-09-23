@@ -1,0 +1,270 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd850042ea35e1791a5497a68a2cbfbb</srcmd5>
+    <version>0.9.2</version>
+    <time>1307521617</time>
+    <user>saschpe</user>
+    <comment>moved from Contrib due to cleanup repository, removed faulty chat styles (bnc#694859), spec cleanup</comment>
+    <requestid>72648</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1adc43a3b4b872e0a67f6111dd7a63c8</srcmd5>
+    <version>0.9.2</version>
+    <time>1307521628</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72648
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>020542d471cc40ad4dbc8b5293821078</srcmd5>
+    <version>0.10.0</version>
+    <time>1318939900</time>
+    <user>saschpe</user>
+    <comment>Changed License to GPL-3.0+, fix bnc#718899</comment>
+    <requestid>87828</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f2a2f7caff25cf56ff2d71d29de0215</srcmd5>
+    <version>0.10.1</version>
+    <time>1319043994</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88649</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4f2a2f7caff25cf56ff2d71d29de0215</srcmd5>
+    <version>0.10.1</version>
+    <time>1319182021</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>412b963462ad4c64f214a777f406250c</srcmd5>
+    <version>0.10.1</version>
+    <time>1319206597</time>
+    <user>coolo</user>
+    <comment>- Update summary for main package</comment>
+    <requestid>88884</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ec1e6b24c6ad41b7af050328782a4e9f</srcmd5>
+    <version>0.10.1</version>
+    <time>1327583118</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 99942 from dec16180)</comment>
+    <requestid>100210</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4f7157fc5a4f88cec16b726148c8bdd3</srcmd5>
+    <version>0.11.0</version>
+    <time>1329242493</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104046</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b074c50c87a404c391b3c45158d5da7c</srcmd5>
+    <version>0.11.2</version>
+    <time>1335165279</time>
+    <user>coolo</user>
+    <comment> (forwarded request 114470 from Fisiu)</comment>
+    <requestid>114477</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8583a796f2cebb48b01d1858be3340fb</srcmd5>
+    <version>0.11.3</version>
+    <time>1336579797</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116927</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8583a796f2cebb48b01d1858be3340fb</srcmd5>
+    <version>0.11.3</version>
+    <time>1340183495</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f62d6f495522269fa7bfc5b17ef52a6a</srcmd5>
+    <version>0.12.0</version>
+    <time>1347618504</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134087</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e1d35cdb9db74d0e22a5c3e9c76c4034</srcmd5>
+    <version>0.12.3</version>
+    <time>1352214472</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 0.12.3, bugfix only:
+  + icons cleanup
+  + add French translation
+  + fix config file name created during crash application
+  + work around QTBUG-27122
+  + reconnect xmpp after waking up from suspend
+
+- Upstream update to 0.12.2, bugfix only:
+  + fixed sent SMS history
+  + fixed xmpp status icons on GTK+-based platforms
+  + cleanup unused icons
+  + updated translations
+
+- Upstream update to 0.12.1, bugfix only:
+  + reconnecting after suspend
+  + fixed avatar size in roster
+  + fixed handling of untrusted server certificates
+  + many minor bugs fixed (forwarded request 140271 from Fisiu)</comment>
+    <requestid>140273</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e1d35cdb9db74d0e22a5c3e9c76c4034</srcmd5>
+    <version>0.12.3</version>
+    <time>1359109134</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>e1d35cdb9db74d0e22a5c3e9c76c4034</srcmd5>
+    <version>0.12.3</version>
+    <time>1379662732</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>11ad735e99c00ca59d36eb2e8d990ff7</srcmd5>
+    <version>0.12.3</version>
+    <time>1386077169</time>
+    <user>coolo</user>
+    <comment>- Add kadu-0.12.3-cmake-macro-fix.patch: Fix cmake macro usage in
+  openSUSE &amp;gt; 13.1. (forwarded request 209172 from Fisiu)</comment>
+    <requestid>209173</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>11ad735e99c00ca59d36eb2e8d990ff7</srcmd5>
+    <version>0.12.3</version>
+    <time>1409301300</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aed1196cf321c7248bf6a13746826c35</srcmd5>
+    <version>1.1</version>
+    <time>1415118565</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 1.1 (changes since 0.12.3):
+  * new OTR encryption
+  * add faenza icon theme
+  * new tray tooltips
+  * image sending uses new protocol
+  * many bug fixes
+- All external plugins updated
+- New external plugin kadu-completion
+- Drop kadu-0.12.3-cmake-macro-fix.patch: fixed upstream. (forwarded request 259403 from Fisiu)</comment>
+    <requestid>259404</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2766b9f658117b511af23afb76e4b6d1</srcmd5>
+    <version>1.2</version>
+    <time>1418054209</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream update to 1.2, bugfix only:
+  * users of old GG versions could not receive messages from Kadu
+  * after some imported configuration no contacts are displayed at all (forwarded request 264352 from Fisiu)</comment>
+    <requestid>264354</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f8e30aad30dd13dc4b08db370dbe89d1</srcmd5>
+    <version>1.2</version>
+    <time>1422960015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283701</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>216acb5c789334794422445de40a976f</srcmd5>
+    <version>1.5</version>
+    <time>1423669491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285473</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8806520f16a24ccbe1881b290e4bcca8</srcmd5>
+    <version>2.1</version>
+    <time>1441727139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1:
+  * Esc closes chat windows
+  * Fix licence window on Linux
+  * Set status to offline after disconnected because of multilogin
+- Update to 2.0:
+  * Port to Qt 5.2
+  * Store content of input box in chat widgets
+  * Paste and send action added to chat widget
+  * Add option to open chat windows minimized on incoming message
+  * Hide description option also affects notifications
+  * Plugin categories are now translated
+  * Remove support for configuration files of Kadu 0.6.5
+  * Many bugfixes and minor changes</comment>
+    <requestid>329611</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d994dad550ddedfc0800ae553468dc1d</srcmd5>
+    <version>2.1</version>
+    <time>1448400821</time>
+    <user>coolo</user>
+    <comment>- Add qdatastream-qt55.patch: fix compilation with Qt &amp;gt;= 5.5.
+- Add qt_dock_icon.patch: fix tray icon in Plasma 5. (forwarded request 345135 from Fisiu)</comment>
+    <requestid>345136</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9205c7e37b0298881cd28b5aaff56401</srcmd5>
+    <version>3.0</version>
+    <time>1458228901</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373218</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>aa8d36a4af71017b915ceb6fbe439357</srcmd5>
+    <version>3.0</version>
+    <time>1471688852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419998</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>2f3e175632a3d930a5aa56548d653b00</srcmd5>
+    <version>3.0</version>
+    <time>1473241517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424386</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>238810751c06a2a02ec6a2b163a07cbe</srcmd5>
+    <version>4.3</version>
+    <time>1515876031</time>
+    <user>dimstar_suse</user>
+    <comment>Fixup issues reported by bot in sr#525964</comment>
+    <requestid>560111</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4034aa3ca5f76cc434e1d5165518da64</srcmd5>
+    <version>4.3</version>
+    <time>1519902492</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pkgconfig(Qt5Sql) to BuildRequires to fix build issue.
+</comment>
+    <requestid>581268</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>d82ab428638749e5f6d1224546ba2807</srcmd5>
+    <version>4.3</version>
+    <time>1520853126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585367</requestid>
+  </revision>
+</revisionlist>

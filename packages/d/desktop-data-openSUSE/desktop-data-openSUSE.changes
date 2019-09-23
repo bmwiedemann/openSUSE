@@ -1,0 +1,1156 @@
+-------------------------------------------------------------------
+Fri Dec 14 03:58:30 UTC 2018 - hellcp@opensuse.org
+
+- Update to version 15.1.20181213:
+  * Replace old menus and set wallpapers for Gnome
+  * Remove all irrelevant stuff from KDE4, Novell and duplicated icons
+  * Fix up cursors not working by default, DMZ theme doesn't exist
+
+-------------------------------------------------------------------
+Thu Nov 23 13:49:11 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Oct 26 16:53:52 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 15.0.20171024:
+  * Remove update_rpm: the package has been converted to _service
+
+-------------------------------------------------------------------
+Mon Oct 23 13:56:00 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 15.0.20171023:
+  * Drop /etc/skel/public_html (boo#1064226).
+
+-------------------------------------------------------------------
+Tue Feb 16 12:57:54 UTC 2016 - alarrosa@suse.com
+
+- Upgraded package from upstream sources.
+- Removed the update_rpm script and replaced it with a proper
+  obs source service (disabled by default). Use xz compression
+  instead of bz2.
+- Removed package_edutainment.png icon "patch" since it's now
+  properly installed from the upstream sources.
+- Updated the spec file accordingly.
+
+-------------------------------------------------------------------
+Thu Jan 28 17:13:36 UTC 2016 - alarrosa@suse.com
+
+- Added package_edutainment.png which is used by Yast's software
+  management module as Education package group icon (bnc#953027)
+
+-------------------------------------------------------------------
+Sat Dec 19 20:09:09 UTC 2015 - dimstar@opensuse.org
+
+- Bump version to 13.3
+
+-------------------------------------------------------------------
+Fri Nov 14 13:04:22 UTC 2014 - gber@opensuse.org
+
+- Remove package-manager.desktop again, yast2-packager now provides
+  yast2-packager.desktop which handles rpm files again
+- optimize update_rpm script and fix git URL
+
+-------------------------------------------------------------------
+Sat Nov 08 04:39:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post script
+
+-------------------------------------------------------------------
+Tue Oct 14 17:24:48 UTC 2014 - badshah400@gmail.com
+
+- Remove etc/skel/Templates directory, there are valid objections
+  to installing templates this way (see bnc#897716), and this
+  should be done without installing files to a user's local home
+  directories.
+
+-------------------------------------------------------------------
+Thu Oct  2 19:20:45 UTC 2014 - badshah400@gmail.com
+
+- Add /etc/skel/Templates directory with templates for commonly
+  used files: plain text, ODF text, ODF presentation and ODF
+  drawing. This provides the user with a choice of new document
+  templates to choose from when, e.g., using the "New Document"
+  item in right-click menu from file-browsers such as Nautilus;
+  fixes bnc#897716.
+
+-------------------------------------------------------------------
+Wed Jul 30 07:29:09 UTC 2014 - gber@opensuse.org
+
+- adapt package-manager.desktop to the removal of
+  /usr/bin/package-manager, it now only serves as a shortcut to
+  YaST's package installer (bnc#871978)
+
+-------------------------------------------------------------------
+Fri Feb 28 06:22:44 UTC 2014 - coolo@suse.com
+
+- bump version to 13.2
+
+-------------------------------------------------------------------
+Mon Sep  2 14:30:31 UTC 2013 - coolo@suse.com
+
+- remove supplements and move it to the patterns. Supplements
+  are rather intransparent
+
+-------------------------------------------------------------------
+Wed Apr 24 19:11:19 UTC 2013 - coolo@suse.com
+
+- bump version to 13.1
+
+-------------------------------------------------------------------
+Tue Jan 29 09:41:41 UTC 2013 - wstephenson@suse.com
+
+- Fix Audio players show up in Video Player submenun (bnc#788628)
+- Fix application menu schema warning from kbuildsycoca (bnc#789456)
+
+-------------------------------------------------------------------
+Mon Jan 21 13:10:04 UTC 2013 - wstephenson@suse.com
+
+- Update for changes to XDG menu spec (bnc#443364):
+  * Edutainment is now two top level menus, Education and Science
+  * All additional categories allowed for Education are now 
+    permitted for Science
+  * Monitor additional category is permitted for System and Network
+  * Spirituality, Maps, Feed, NetworkService, Shooter additional
+    categories were added
+
+-------------------------------------------------------------------
+Mon Dec 10 10:31:26 UTC 2012 - coolo@suse.com
+
+- bump version to 12.3
+
+-------------------------------------------------------------------
+Wed Nov 30 07:02:26 UTC 2011 - coolo@suse.com
+
+- bump version to 12.2
+
+-------------------------------------------------------------------
+Tue Oct 18 18:22:23 UTC 2011 - coolo@suse.com
+
+- desktop-data is fine with any wallpaper branding for 12.1
+
+-------------------------------------------------------------------
+Tue Oct 11 14:59:10 UTC 2011 - vuntz@opensuse.org
+
+- Add back Hidden.directory and a mention of it in
+  applications.menu to help KDE 3 (bnc#686786).
+- Drop hidden-fix.diff: the updated fix is now in git.
+
+-------------------------------------------------------------------
+Mon Sep 26 12:33:09 UTC 2011 - vuntz@opensuse.org
+
+- Remove update-alternatives Requires(post)/Requires(postun) since
+  we don't use this anymore (moved to wallpaper-branding-openSUSE).
+
+-------------------------------------------------------------------
+Thu Sep 22 15:48:46 UTC 2011 - vuntz@opensuse.org
+
+- Drop the bits related to creating the XML file used by GNOME for
+  the default wallpaper, including the alternatives handling. This
+  all moves to branding-openSUSE now.
+
+-------------------------------------------------------------------
+Thu Sep 22 14:02:08 UTC 2011 - coolo@suse.com
+
+- wallpaper moved out of here, so require it
+
+-------------------------------------------------------------------
+Wed Sep 21 15:47:30 UTC 2011 - vuntz@opensuse.org
+
+- Update openSUSE-default-static.xml to reference the new filename
+  for default wallpapers.
+
+-------------------------------------------------------------------
+Wed Sep 21 12:50:08 UTC 2011 - coolo@suse.com
+
+- use drops for 12.1 beta
+
+-------------------------------------------------------------------
+Tue Sep 20 12:49:17 UTC 2011 - coolo@suse.com
+
+- bump version to 12.1
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+
+-------------------------------------------------------------------
+Thu Aug 25 03:28:42 UTC 2011 - badshah400@gmail.com
+
+- Added package-manager-icon of sizes 64x64, 128x128, 256x256
+  and scalable svg (bnc#713902)
+- Add post and postun macros to update hicolor icon-theme cache
+- Add patch to fix the category of package-manager.desktop file
+- Bumped release number 
+
+-------------------------------------------------------------------
+Tue Apr 12 03:09:07 UTC 2011 - anixx@opensuse.org
+
+- Added patch to fix hidden entries (bnc#686786)
+
+-------------------------------------------------------------------
+Sat Feb 19 10:37:34 CET 2011 - vuntz@opensuse.org
+
+- Rename openSUSE-default.xml to openSUSE-default-static.xml: we'll
+  use openSUSE-default.xml as a symlink to either this static
+  version or a dynamic version elsewhere.
+- Use update-alternatives to create openSUSE-default.xml in this
+  package, pointing to openSUSE-default-static.xml.
+- Do not repackage openSUSE-default.xml and
+  openSUSE-default-static.xml in extra subpackage.
+- Call %suse_update_desktop_file on package-manager.desktop.
+
+-------------------------------------------------------------------
+Thu Feb 10 14:17:25 UTC 2011 - wstephenson@novell.com
+
+- Move package-manager.desktop here from libzypp (bnc#329635)
+
+-------------------------------------------------------------------
+Wed Feb  9 11:30:29 CET 2011 - vuntz@opensuse.org
+
+- Add default 11.4 wallpaper.
+- Improve summary and description.
+- Untar the source file in %prep instead of %install.
+- Add openSUSE-default.xml to define the GNOME background: this
+  will make sure we only display the background once, even if it's
+  available in different sizes. We add some checks to make sure the
+  content of this file is always correct.
+- Add desktop-data-openSUSE.xml.in and use it to generate
+  desktop-data-openSUSE.xml instead of doing it while listing all
+  available wallpapers: with openSUSE-default.xml, we don't have to
+  explicitly list all default wallpapers.
+- Move generation of GNOME-related xml files to %build instead of
+  %install.
+- Move generation of GNOME-related xml files to %build instead of
+  %install.
+- Use fdupes.
+
+-------------------------------------------------------------------
+Mon Jan 17 14:22:50 UTC 2011 - coolo@novell.com
+
+- do not install the package on non-x11 installs
+
+-------------------------------------------------------------------
+Mon Jan  3 13:15:39 CET 2011 - dmueller@suse.de
+
+- bump version requires to 11.4
+
+-------------------------------------------------------------------
+Mon Nov 15 13:41:56 UTC 2010 - wstephenson@novell.com
+
+- Move package-manager icons from libzypp (bnc#329635)
+
+-------------------------------------------------------------------
+Tue Sep 21 17:25:28 CEST 2010 - vuntz@opensuse.org
+
+- Do not reference Hidden.directory for the GNOME settings menu,
+  but instead use suse-settings.directory that we already ship.
+
+-------------------------------------------------------------------
+Sun Aug  8 01:51:17 CEST 2010 - vuntz@opensuse.org
+
+- Remove DMZ cursor themes from package, and instead add Requires
+  for dmz-icon-theme-cursors (bnc#589293).
+
+-------------------------------------------------------------------
+Wed Jun 16 14:45:49 UTC 2010 - wstephenson@novell.com
+
+- new wallpaper JPGs were actually PNGs (bnc#613466)
+
+-------------------------------------------------------------------
+Mon May 10 09:00:45 UTC 2010 - coolo@novell.com
+
+- new version
+
+-------------------------------------------------------------------
+Mon May 10 08:58:20 UTC 2010 - coolo@novell.com
+
+- move old wallpapers to gos-wallpapers
+
+-------------------------------------------------------------------
+Mon May 10 08:56:44 UTC 2010 - martin.schlander@gmail.com
+
+- fixing bnc #525248 by simply replacing some icons
+
+-------------------------------------------------------------------
+Fri May  7 18:57:24 CEST 2010 - jimmac@novell.com
+
+- update default wallpaper for 11.3
+
+-------------------------------------------------------------------
+Thu Oct  8 23:16:18 CEST 2009 - llunak@novell.com
+
+- use xdg-user-dir locations (bnc#540574)
+
+-------------------------------------------------------------------
+Fri Oct  2 12:12:33 UTC 2009 - wstephenson@suse.de
+
+- Remove hostname lookup on login (bnc#400004)
+
+-------------------------------------------------------------------
+Thu Oct  1 17:09:59 CEST 2009 - vuntz@opensuse.org
+
+- Add default wallpaper for 11.2, and make old 11.1 wallpaper
+  visible in extra subpackage.
+
+-------------------------------------------------------------------
+Tue Sep  1 18:05:09 UTC 2009 - beineri@opensuse.org
+
+- fix last commit to use inline_limit
+
+-------------------------------------------------------------------
+Thu Aug 27 13:08:54 UTC 2009 - beineri@opensuse.org
+
+- use inline by default for menus (bnc#529057)
+
+-------------------------------------------------------------------
+Sun Aug 16 13:37:09 CEST 2009 - beineri@opensuse.org
+
+- introduce Utilities/Accessibility menu category
+
+-------------------------------------------------------------------
+Thu Jul 16 13:23:20 CEST 2009 - beineri@opensuse.org
+
+- add Edutainment/Geography menu category
+
+-------------------------------------------------------------------
+Thu May  7 10:08:29 CEST 2009 - coolo@suse.de
+
+- remove it also from file list
+
+-------------------------------------------------------------------
+Wed May  6 18:21:16 CEST 2009 - llunak@suse.cz
+
+- remove /opt/kde3
+
+-------------------------------------------------------------------
+Thu Feb  5 11:54:41 CET 2009 - stbinner@suse.de
+
+- bump version to 11.2
+- add Oxygen icon set for application menu categories (bnc#439015)
+
+-------------------------------------------------------------------
+Mon Nov 10 14:11:08 CET 2008 - stbinner@suse.de
+
+- list GNOME settings.menu instead of preferences.menu (bnc#441444)
+
+-------------------------------------------------------------------
+Tue Nov  4 09:46:17 CET 2008 - stbinner@suse.de
+
+- new default wallpaper (bnc#440817)
+
+-------------------------------------------------------------------
+Wed Oct 15 11:04:18 CEST 2008 - stbinner@suse.de
+
+- removed old default wallpapers, moved to gos-wallpapers package
+
+-------------------------------------------------------------------
+Mon Oct 13 16:13:30 CEST 2008 - stbinner@suse.de
+
+- add 11.1 wallpaper
+- add more legal Categories to desktop-data-openSUSE (bnc#430979)
+
+-------------------------------------------------------------------
+Thu Jun 26 10:16:47 CEST 2008 - stbinner@suse.de
+
+- bump version to 11.1
+
+-------------------------------------------------------------------
+Sat May 24 00:26:40 CEST 2008 - hpj@suse.de
+
+- Add a /usr/share/icons/default symlink that points to the DMZ
+  cursor theme (bnc#328016).
+
+-------------------------------------------------------------------
+Fri May 23 18:46:20 CEST 2008 - stbinner@suse.de
+
+- don't show all YaST modules as menu entries after bnc#382778
+- move kdm error message a bit up (bnc#391830)
+- fix system menu disappearing on displaymanager_shutdown=None
+  (bnc#295794)
+
+-------------------------------------------------------------------
+Mon May 19 11:31:37 CEST 2008 - dmueller@suse.de
+
+- provide desktop-branding
+
+-------------------------------------------------------------------
+Wed May  7 09:39:09 CEST 2008 - dmueller@suse.de
+
+- kdm3 branding update
+- fix provide conflict
+
+-------------------------------------------------------------------
+Mon Apr 28 17:06:02 CEST 2008 - dmueller@suse.de
+
+- fix kdm3 theming
+
+-------------------------------------------------------------------
+Fri Apr 25 18:54:13 CEST 2008 - dmueller@suse.de
+
+- split off kde4-kdm-branding-openSUSE
+
+-------------------------------------------------------------------
+Mon Apr 21 19:38:18 CEST 2008 - sbrabec@suse.cz
+
+- Added selected wallpapers from ximian-artwork (gnome-themes)
+  (bnc#380955).
+- Generate gnome-wp-list correctly:
+  * Request translation for NoDisplay items.
+  * Do not use default* symlinks, use proposed background instead.
+- Added more wallpapers (bnc#358461).
+- Obsolete gnome2-SuSE (bnc#380708).
+
+-------------------------------------------------------------------
+Thu Apr 17 16:11:55 CEST 2008 - sbrabec@suse.cz
+
+- Generate gnome-wp-list of background files to make wallpapers
+  visible in GNOME.
+
+-------------------------------------------------------------------
+Tue Apr 15 22:03:10 CEST 2008 - stbinner@suse.de
+
+- fix typo in provides
+
+-------------------------------------------------------------------
+Mon Apr  7 10:56:30 CEST 2008 - stbinner@suse.de
+
+- add default openSUSE 11.0 wallpaper (bnc#369924)
+- moved SUSE Linux 10.1 wallpaper to gos-wallpapers
+
+-------------------------------------------------------------------
+Fri Mar  7 11:29:57 CET 2008 - dmueller@suse.de
+
+- add kdm4 theming
+
+-------------------------------------------------------------------
+Wed Mar  5 21:41:13 CET 2008 - maw@suse.de
+
+- Update tarball to r6628:
+  + Add directory /etc/xdg/menus/applications-merged.
+
+-------------------------------------------------------------------
+Wed Mar  5 14:46:43 CET 2008 - coolo@suse.de
+
+- make the busy cursor in yast look like DMZ
+
+-------------------------------------------------------------------
+Tue Feb 12 10:24:51 CET 2008 - coolo@suse.de
+
+- adding kdm4 themeing as symlink to the kde3 one
+
+-------------------------------------------------------------------
+Thu Feb  7 13:30:44 CET 2008 - stbinner@suse.de
+
+- moved kdm theming from kdebase3-SuSE to here
+
+-------------------------------------------------------------------
+Fri Jan 18 08:43:45 CET 2008 - coolo@suse.de
+
+- also provide checkHardware, so that the solver drops it
+
+-------------------------------------------------------------------
+Thu Dec  6 01:02:10 CET 2007 - dmueller@suse.de
+
+- move Documents and public_html from aaa_skel (#332772)
+
+-------------------------------------------------------------------
+Sun Sep 23 10:37:41 CEST 2007 - stbinner@suse.de
+
+- fix "System" category icon (#327514)
+
+-------------------------------------------------------------------
+Mon Aug 20 11:59:28 CEST 2007 - stbinner@suse.de
+
+- update wallpaper again, this time it's green
+
+-------------------------------------------------------------------
+Wed Aug 15 10:12:53 CEST 2007 - stbinner@suse.de
+
+- let also -extra subpackage conflict with desktop-data-NLD
+
+-------------------------------------------------------------------
+Thu Aug  9 11:53:09 CEST 2007 - stbinner@suse.de
+
+- readd lost Development/Debugger category icon
+- update to new, blue wallpaper (also solves #290294)
+
+-------------------------------------------------------------------
+Wed Jul 18 10:30:58 CEST 2007 - coolo@suse.de
+
+- new wallpapers
+
+-------------------------------------------------------------------
+Mon Jul  2 16:22:21 CEST 2007 - coolo@suse.de
+
+- replace crystalwhite with DMZ
+
+-------------------------------------------------------------------
+Fri Jun 22 16:31:30 CEST 2007 - stbinner@suse.de
+
+- add X-SuSE-PDFViewer as alternative to PDFViewer category
+- rename 10.2 wallpaper to suse102, add dummy 10.3 wallpaper
+
+-------------------------------------------------------------------
+Thu Jun 14 11:16:24 CEST 2007 - stbinner@suse.de
+
+- split photo wallpapers into extra sub-package
+
+-------------------------------------------------------------------
+Thu Apr 12 12:02:18 CEST 2007 - stbinner@suse.de
+
+- fix RealPlayer appearing twice in the KDE menu (#173514)
+
+-------------------------------------------------------------------
+Thu Apr  5 11:14:54 CEST 2007 - stbinner@suse.de
+
+- symlink /usr/bin/call-browser to /usr/bin/xdg-open (#170316)
+
+-------------------------------------------------------------------
+Thu Feb 22 13:55:53 CET 2007 - stbinner@suse.de
+
+- addition of DMZ and DMZ-AA cursors
+- directory icons renamed to package_*.png
+- install directory icons to hicolor/, depend on hicolor-icon-theme
+
+-------------------------------------------------------------------
+Mon Jan 29 14:37:58 CET 2007 - stbinner@suse.de
+
+- don't set xcursor theme for remote logins (#228069)
+
+-------------------------------------------------------------------
+Mon Jan 22 10:04:25 CET 2007 - stbinner@suse.de
+
+- adapt to GNOME prefix move (#237119)
+
+-------------------------------------------------------------------
+Tue Dec  5 09:50:12 CET 2006 - stbinner@suse.de
+
+- obsolete desktop-data-NLD (#224918)
+
+-------------------------------------------------------------------
+Mon Dec  4 15:14:42 CET 2006 - dmueller@suse.de
+
+- update version to 10.3
+
+-------------------------------------------------------------------
+Tue Nov 21 13:26:39 CET 2006 - coolo@suse.de
+
+- new wallpapers from pdes SVN
+
+-------------------------------------------------------------------
+Sat Nov 18 14:26:41 CET 2006 - stbinner@suse.de
+
+- try to find seamonkey and opera (#221703)
+
+-------------------------------------------------------------------
+Thu Nov  9 17:40:52 CET 2006 - stbinner@suse.de
+
+- don't show kinfocenter modules in the menu (#211379)
+
+-------------------------------------------------------------------
+Sun Oct 29 17:17:28 CET 2006 - stbinner@suse.de
+
+- fix typo in wallpaper meta data (#216132)
+
+-------------------------------------------------------------------
+Mon Oct  2 10:59:33 CEST 2006 - stbinner@suse.de
+
+- bump version number to 10.2
+
+-------------------------------------------------------------------
+Sat Sep  9 00:07:44 CEST 2006 - dmueller@suse.de
+
+- fix fillup comment 
+
+-------------------------------------------------------------------
+Fri Sep  1 21:34:00 CEST 2006 - stbinner@suse.de
+
+- rename development's "Project Management" to "Design" (#115167)
+
+-------------------------------------------------------------------
+Thu Aug 24 13:12:27 CEST 2006 - stbinner@suse.de
+
+- readd gv.png, ghostview package will drop it
+
+-------------------------------------------------------------------
+Mon Aug  7 14:30:48 CEST 2006 - stbinner@suse.de
+
+- new default wallpaper for openSUSE 10.2
+
+-------------------------------------------------------------------
+Fri May 26 11:03:08 CEST 2006 - stbinner@suse.de
+
+- remove obsolete CREATE_XDG_MENUS entry from .fillup (#150130)
+
+-------------------------------------------------------------------
+Thu Apr 20 17:10:30 CEST 2006 - coolo@suse.de
+
+- adding SLED menu files to the -SUSE package, so they get picked
+  up for translation by collect-desktop-files (#168045)
+
+-------------------------------------------------------------------
+Mon Mar 20 18:22:35 CET 2006 - coolo@suse.de
+
+- restrict the list of wallpapers
+
+-------------------------------------------------------------------
+Mon Mar 13 19:53:19 CET 2006 - coolo@suse.de
+
+- update wallpapers
+
+-------------------------------------------------------------------
+Mon Mar 13 15:19:27 CET 2006 - stbinner@suse.de
+
+- fix typos in hidden .desktop files
+
+-------------------------------------------------------------------
+Fri Mar 10 17:19:25 CET 2006 - coolo@suse.de
+
+- update from SVN (to revert previous submission of Code10 theming)
+
+-------------------------------------------------------------------
+Fri Mar 10 16:01:16 CET 2006 - stbinner@suse.de
+
+- make wallpaper descriptions translatable
+
+-------------------------------------------------------------------
+Fri Feb 10 13:43:52 CET 2006 - stbinner@suse.de
+
+- remove SUSE Sans fonts, DejaVu fonts will replace them (#132577)
+
+-------------------------------------------------------------------
+Fri Feb 10 10:10:13 CET 2006 - coolo@suse.de
+
+- mycomputer is gone - fix file list
+
+-------------------------------------------------------------------
+Thu Feb  9 13:28:55 CET 2006 - coolo@suse.de
+
+- update from SVN to fix the menu again (all yast modules were flat
+  in Applications now)
+
+-------------------------------------------------------------------
+Mon Feb  6 12:09:55 CET 2006 - coolo@suse.de
+
+- update from SVN to fix the menu for kcmyast removal
+
+-------------------------------------------------------------------
+Sat Jan 28 14:30:39 CET 2006 - coolo@suse.de
+
+- updated list of wallpapers (removing a whole bunch of old ones)
+
+-------------------------------------------------------------------
+Wed Jan 25 22:24:47 CET 2006 - coolo@suse.de
+
+- avoid file conflict with clanbomber
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 18 10:26:01 CET 2006 - stbinner@suse.de
+
+- add conflict with desktop-data-NLD
+
+-------------------------------------------------------------------
+Tue Jan 17 14:40:27 CET 2006 - ltinkl@suse.cz
+
+- update from svn (fixes #67130)
+
+-------------------------------------------------------------------
+Mon Jan 16 08:29:33 CET 2006 - stbinner@suse.de
+
+- update from svn 
+- add a custom.menu hook (#141010)
+
+-------------------------------------------------------------------
+Mon Oct 31 11:37:45 CET 2005 - ltinkl@suse.cz
+
+- integrate desktop-launch (#67130)
+
+-------------------------------------------------------------------
+Thu Sep 29 13:12:51 CEST 2005 - stbinner@suse.de
+
+- deleted backup file in included tarball
+
+-------------------------------------------------------------------
+Thu Sep 29 10:12:57 CEST 2005 - stbinner@suse.de
+
+- fix "Photograph" to correct "Photography" xdg menu category
+
+-------------------------------------------------------------------
+Wed Sep 28 08:36:45 CEST 2005 - stbinner@suse.de
+
+- fix typo for correct AppArmor hierarchy within kcontrol
+- fix two typos in menu categories names
+
+-------------------------------------------------------------------
+Fri Aug 19 11:18:55 CEST 2005 - cthiel@suse.de
+
+- bump version to 10.0
+
+-------------------------------------------------------------------
+Thu Aug 11 09:13:31 CEST 2005 - adrian@suse.de
+
+- add YaST AppAmor menu
+
+-------------------------------------------------------------------
+Fri Aug  5 16:19:41 CEST 2005 - coolo@suse.de
+
+- update from svn
+
+-------------------------------------------------------------------
+Wed Jul 27 15:43:46 CEST 2005 - coolo@suse.de
+
+- update from svn
+
+-------------------------------------------------------------------
+Tue Jun 07 18:50:19 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #86981: add "PreReq: /sbin/SuSEconfig"
+
+-------------------------------------------------------------------
+Wed Mar 16 15:56:03 CET 2005 - adrian@suse.de
+
+- fix file conflict
+- no general description for games
+
+-------------------------------------------------------------------
+Wed Mar 16 11:30:56 CET 2005 - adrian@suse.de
+
+- add icons for .directory files as fallback
+- hide Screensaver menu also for non-KDE
+
+-------------------------------------------------------------------
+Mon Mar 14 16:54:22 CET 2005 - adrian@suse.de
+
+- replace default wallpaper background
+
+-------------------------------------------------------------------
+Mon Mar 14 11:01:39 CET 2005 - adrian@suse.de
+
+- fix internal name of RSS menu
+
+-------------------------------------------------------------------
+Wed Mar  9 14:05:45 CET 2005 - adrian@suse.de
+
+- fix icon usage
+- new wallpapers
+- add RSS feeds menu
+
+-------------------------------------------------------------------
+Tue Mar  8 11:05:17 CET 2005 - adrian@suse.de
+
+- a number of new wallpapers
+
+-------------------------------------------------------------------
+Mon Mar  7 21:10:52 CET 2005 - adrian@suse.de
+
+- add default wallpaper pixmaps
+
+-------------------------------------------------------------------
+Sat Feb 26 08:50:19 CET 2005 - adrian@suse.de
+
+- add Gnome preference menu via patch from clahey
+
+-------------------------------------------------------------------
+Mon Feb 21 14:43:01 CET 2005 - adrian@suse.de
+
+- skip files with NoDisplay=true for %suse_update_desktop_file
+
+-------------------------------------------------------------------
+Mon Feb 21 11:35:31 CET 2005 - adrian@suse.de
+
+- hide settings menu by default (#66085)
+
+-------------------------------------------------------------------
+Thu Feb 10 02:27:40 CET 2005 - ro@suse.de
+
+- removed backup file from tar 
+
+-------------------------------------------------------------------
+Wed Feb  9 16:37:50 CET 2005 - adrian@suse.de
+
+- qt/kde does switch to plastik style
+
+-------------------------------------------------------------------
+Wed Feb  9 14:12:48 CET 2005 - adrian@suse.de
+
+- move XDG_DATA_DIRS export to aaa_base package
+
+-------------------------------------------------------------------
+Tue Feb  8 15:49:01 CET 2005 - sbrabec@suse.cz
+
+- Fixed typo (text in body of applications.menu).
+
+-------------------------------------------------------------------
+Fri Feb  4 10:10:49 CET 2005 - adrian@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Thu Feb  3 14:23:49 CET 2005 - adrian@suse.de
+
+- remove DontShowIfEmpty from application.menu
+- export XDG_DATA_DIRS
+
+-------------------------------------------------------------------
+Wed Jan 19 12:34:35 CET 2005 - adrian@suse.de
+
+- add feedback menu
+
+-------------------------------------------------------------------
+Tue Nov 30 19:11:00 CET 2004 - hvogel@suse.de
+
+- files %files 
+
+-------------------------------------------------------------------
+Tue Nov 30 18:12:18 CET 2004 - hvogel@suse.de
+
+- get rid of SuSEconfig.xdgmenu again. All major alternative
+  WM's use pipe menus now
+
+-------------------------------------------------------------------
+Thu Nov 18 17:25:17 CET 2004 - hvogel@suse.de
+
+- make use of the new fullmenu option in xdg_menu
+
+-------------------------------------------------------------------
+Wed Nov 17 14:41:41 CET 2004 - hvogel@suse.de
+
+- add sysconfig control for SuSEconfig.xdgmenu
+
+-------------------------------------------------------------------
+Tue Nov 16 09:42:20 CET 2004 - hvogel@suse.de
+
+- added SuSEconfig.xdgmenu which provides XDG menus for *box
+
+-------------------------------------------------------------------
+Tue Oct  5 13:48:11 CEST 2004 - adrian@suse.de
+
+- update the old 9.1 mountain wallpapers to the new branding
+
+-------------------------------------------------------------------
+Sun Oct  3 22:11:11 CEST 2004 - adrian@suse.de
+
+- final wallpapers for 9.2
+- hide one realplayer menu item
+
+-------------------------------------------------------------------
+Thu Sep 30 09:30:35 CEST 2004 - adrian@suse.de
+
+- translate also the "My Computer" icon
+
+-------------------------------------------------------------------
+Tue Sep 21 11:22:40 CEST 2004 - adrian@suse.de
+
+- move qtrc from kdebase3-SuSE to this package (#44803)
+
+-------------------------------------------------------------------
+Mon Sep 20 18:48:06 CEST 2004 - adrian@suse.de
+
+- use new backgrounds from Ken
+
+-------------------------------------------------------------------
+Tue Sep  7 11:45:22 CEST 2004 - adrian@suse.de
+
+- add X-KDE-Settings-Hardware Category
+
+-------------------------------------------------------------------
+Tue Sep  7 10:52:03 CEST 2004 - adrian@suse.de
+
+- fix Telephone menu Categories
+
+-------------------------------------------------------------------
+Sat Aug 21 21:05:30 CEST 2004 - adrian@suse.de
+
+- minor menu adjustments
+
+-------------------------------------------------------------------
+Tue Apr  6 07:36:49 CEST 2004 - adrian@suse.de
+
+- new backgrounds by Ken
+
+-------------------------------------------------------------------
+Sun Apr  4 20:47:34 CEST 2004 - adrian@suse.de
+
+- no general descriptions for game menus
+- new backgrounds by Ken
+
+-------------------------------------------------------------------
+Wed Mar 31 09:59:59 CEST 2004 - adrian@suse.de
+
+- fix some icon definitions
+- use "Graphik" everywhere in german translations (#36440)
+
+-------------------------------------------------------------------
+Tue Mar 30 13:05:25 CEST 2004 - adrian@suse.de
+
+- use current cvs
+  * minor fixes
+- apply translations to .directory files
+- bump version to 9.1
+
+-------------------------------------------------------------------
+Fri Mar 19 15:38:35 CET 2004 - adrian@suse.de
+
+- fix accents in czech glyphs
+
+-------------------------------------------------------------------
+Wed Mar 17 18:24:49 CET 2004 - adrian@suse.de
+
+- SUSE Sans fonts do only claim to have the Adobe Standard glyphs now
+- fix link to drives
+- reduce double entries in menu
+- fix some menu icons
+
+-------------------------------------------------------------------
+Mon Mar 15 13:32:15 CET 2004 - adrian@suse.de
+
+- add myComputer desktop and icon file
+
+-------------------------------------------------------------------
+Mon Mar  8 15:32:30 CET 2004 - adrian@suse.de
+
+- add general default background as png.
+  Needed by some WMs, like fvwm now
+
+-------------------------------------------------------------------
+Mon Mar  8 14:51:59 CET 2004 - adrian@suse.de
+
+- add generic Provides: desktop-data
+
+
+-------------------------------------------------------------------
+Mon Mar  8 11:10:14 CET 2004 - adrian@suse.de
+
+- minor theme tuning
+- define default mouse cursors (crystalwhite)
+
+-------------------------------------------------------------------
+Sun Mar  7 13:32:56 CET 2004 - adrian@suse.de
+
+- add dutch ligatures to font
+
+-------------------------------------------------------------------
+Thu Mar  4 22:45:56 CET 2004 - adrian@suse.de
+
+- add missing Categories from 0.8 spec
+
+-------------------------------------------------------------------
+Thu Mar  4 18:20:40 CET 2004 - adrian@suse.de
+
+- add new Backgrounds from Ken
+- menu icon tuning
+
+-------------------------------------------------------------------
+Wed Mar  3 18:09:23 CET 2004 - adrian@suse.de
+
+- fix SUSE Mono font, it is really a monospaced font now.
+
+-------------------------------------------------------------------
+Wed Mar  3 10:43:07 CET 2004 - adrian@suse.de
+
+- fix PreRequires
+
+-------------------------------------------------------------------
+Sun Feb 29 13:53:02 CET 2004 - adrian@suse.de
+
+- fix some Categories in menu file
+  (reducing double entries)
+
+-------------------------------------------------------------------
+Sat Feb 28 14:42:29 CET 2004 - adrian@suse.de
+
+- add missing directory to file list
+
+-------------------------------------------------------------------
+Sat Feb 28 10:37:02 CET 2004 - adrian@suse.de
+
+- add SUSE Sans fonts 
+  (based on Bitstream Vera with additional latin glyphs)
+
+-------------------------------------------------------------------
+Sat Feb 21 23:16:17 CET 2004 - adrian@suse.de
+
+- cleanup more double menu entries
+- fix Database tags
+
+-------------------------------------------------------------------
+Wed Feb 18 17:57:47 CET 2004 - adrian@suse.de
+
+- do not short "More" menus
+
+-------------------------------------------------------------------
+Mon Feb 16 16:49:48 CET 2004 - adrian@suse.de
+
+- introduce jukebox menu
+
+-------------------------------------------------------------------
+Fri Jan 16 16:06:07 CET 2004 - adrian@suse.de
+
+- reduce double entries
+
+-------------------------------------------------------------------
+Mon Nov 10 17:55:25 CET 2003 - adrian@suse.de
+
+- sync with menu spec version 0.8
+- sync with translations in KDE
+
+-------------------------------------------------------------------
+Mon Sep 29 21:10:49 CEST 2003 - adrian@suse.de
+
+- /etc/xdg has been moved to filesystem
+
+-------------------------------------------------------------------
+Tue Sep 23 16:31:08 CEST 2003 - adrian@suse.de
+
+- apply hungarian translations from Marcel Hilzinger
+
+-------------------------------------------------------------------
+Wed Sep 17 16:46:51 CEST 2003 - adrian@suse.de
+
+- new translations
+
+-------------------------------------------------------------------
+Wed Sep 17 12:11:53 CEST 2003 - adrian@suse.de
+
+- some menu description changes, as wished by Martin
+
+-------------------------------------------------------------------
+Sun Sep 14 16:53:58 CEST 2003 - adrian@suse.de
+
+- add PreReq: /bin/rm
+- icon entry fixes
+
+-------------------------------------------------------------------
+Fri Sep 12 17:06:58 CEST 2003 - adrian@suse.de
+
+- add Multimedia/Music menu
+- add spanish translations
+
+-------------------------------------------------------------------
+Fri Sep 12 15:25:39 CEST 2003 - adrian@suse.de
+
+- cleanup old susewm stuff
+
+-------------------------------------------------------------------
+Thu Sep 11 21:35:26 CEST 2003 - adrian@suse.de
+
+- remove unneeded desktop-data.csh
+- cleanup tar ball from cvs backup files
+
+-------------------------------------------------------------------
+Tue Sep  9 13:40:24 CEST 2003 - adrian@suse.de
+
+- export XCURSOR_THEME, if defined
+
+-------------------------------------------------------------------
+Tue Sep  9 03:52:54 CEST 2003 - adrian@suse.de
+
+- add translations from Karl
+- encoding fixes from mfabian
+- add missing Icon definitions
+
+-------------------------------------------------------------------
+Sat Sep  6 19:37:42 CEST 2003 - adrian@suse.de
+
+- mark game and more menus as generalDescription
+- add missing menu file for kmenuedit
+
+-------------------------------------------------------------------
+Fri Sep  5 08:57:07 CEST 2003 - adrian@suse.de
+
+- further menu sorting
+- yast menu structure from kdebase3-SuSE has been moved here
+
+-------------------------------------------------------------------
+Tue Sep  2 10:07:25 CEST 2003 - adrian@suse.de
+
+- fix Multimedia menu mess up
+
+-------------------------------------------------------------------
+Mon Sep  1 21:59:10 CEST 2003 - adrian@suse.de
+
+- remove double stuff
+- solve several double entries in menu
+- solve conflict with "Core" Category
+
+-------------------------------------------------------------------
+Mon Sep  1 11:55:59 CEST 2003 - adrian@suse.de
+
+- more mapping fixes
+- unmapped entries are in "More" folder now.
+
+-------------------------------------------------------------------
+Sat Aug 30 18:47:27 CEST 2003 - adrian@suse.de
+
+- check if menu file is valid
+  * calling Vladimirs xdg-menu script for WindowMaker
+
+-------------------------------------------------------------------
+Sat Aug 30 15:02:13 CEST 2003 - adrian@suse.de
+
+- add YaST menu strukture
+
+-------------------------------------------------------------------
+Mon Aug 25 18:07:16 CEST 2003 - adrian@suse.de
+
+- fixes for Gnome and in General
+- add some last menus
+
+-------------------------------------------------------------------
+Tue Aug 19 10:38:54 CEST 2003 - adrian@suse.de
+
+- add Type=Directory in .directory files (for Gnome)
+- fix typo in applications.menu
+
+-------------------------------------------------------------------
+Sun Aug 17 15:48:38 CEST 2003 - adrian@suse.de
+
+- mor sub directories and mappings
+
+-------------------------------------------------------------------
+Thu Aug 14 14:57:02 CEST 2003 - adrian@suse.de
+
+- cleanup .directory files
+
+-------------------------------------------------------------------
+Wed Aug 13 14:59:35 CEST 2003 - adrian@suse.de
+
+- more sub directories
+
+-------------------------------------------------------------------
+Mon Aug 11 21:40:19 CEST 2003 - adrian@suse.de
+
+- fix tar ball
+
+-------------------------------------------------------------------
+Mon Aug 11 21:00:41 CEST 2003 - adrian@suse.de
+
+- more sorting, we are at 50%
+- some directory files are still missing
+
+-------------------------------------------------------------------
+Tue Aug  5 16:10:44 CEST 2003 - adrian@suse.de
+
+- some more sorting, lets say we have 15%
+
+-------------------------------------------------------------------
+Thu Jul 31 17:45:38 CEST 2003 - adrian@suse.de
+
+- do not package /usr/share/pixmaps anymore
+
+-------------------------------------------------------------------
+Thu Jul 31 15:59:28 CEST 2003 - adrian@suse.de
+
+- initial version. Contains application.menu and the needed 
+  .directory files
+

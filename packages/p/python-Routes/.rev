@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2fa6135aa1baa0f70e73a381a8007481</srcmd5>
+    <version>1.12.3</version>
+    <time>1322501239</time>
+    <user>coolo</user>
+    <comment>Dependency for OpenStack packages.</comment>
+    <requestid>93445</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de9b5293eaec328fe7c03f264457262c</srcmd5>
+    <version>1.12.3</version>
+    <time>1323194264</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>645106b79de7802e30a1725f248e9616</srcmd5>
+    <version>1.13</version>
+    <time>1332416367</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>110430</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>50f5e32c45f9ad079e1598467c0c3b85</srcmd5>
+    <version>1.13</version>
+    <time>1335259379</time>
+    <user>coolo</user>
+    <comment>Depends on sr 114130</comment>
+    <requestid>114131</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>50f5e32c45f9ad079e1598467c0c3b85</srcmd5>
+    <version>1.13</version>
+    <time>1340184032</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>50f5e32c45f9ad079e1598467c0c3b85</srcmd5>
+    <version>1.13</version>
+    <time>1359109984</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>50f5e32c45f9ad079e1598467c0c3b85</srcmd5>
+    <version>1.13</version>
+    <time>1379664114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>3a006c5699ae6e2cf56deadf3d22a0c6</srcmd5>
+    <version>1.13</version>
+    <time>1382693466</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204652</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>3a006c5699ae6e2cf56deadf3d22a0c6</srcmd5>
+    <version>1.13</version>
+    <time>1409302802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4564b251c7929f286157a65d289ba1e7</srcmd5>
+    <version>2.1</version>
+    <time>1429769073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298515</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>565d95732d2276c20dbd533c5c38d391</srcmd5>
+    <version>2.2</version>
+    <time>1439191000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321429</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a85117cd5094dade87d973e4dd1621cd</srcmd5>
+    <version>2.3.1</version>
+    <time>1465336163</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400232</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2d6f1d3f880296b391bf583157435015</srcmd5>
+    <version>2.4.1</version>
+    <time>1503592353</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507236</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3d1b5852cbd8bd38b897ce4b74a72ffe</srcmd5>
+    <version>2.4.1</version>
+    <time>1545223927</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659355</requestid>
+  </revision>
+</revisionlist>

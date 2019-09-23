@@ -1,0 +1,9 @@
+<package name="libsecprog" project="openSUSE:Factory">
+  <title>Secure Replacements for Problematic C Functions</title>
+  <description>The &quot;Secure Programming Library&quot; provides several functions that should
+serve as a replacement for problematic C functions from glibc. Besides
+the replacement functions, there are some helper functions, such as
+safe_reopen() or sigprotection(), that can be used for developing
+exposed applications.</description>
+  <devel project="devel:libraries:c_c++" package="libsecprog"/>
+</package>

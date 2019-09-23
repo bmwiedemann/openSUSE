@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4e7a521eb7ef658e69aaddf4834efe1</srcmd5>
+    <version>0.20</version>
+    <time>1395897029</time>
+    <user>coolo</user>
+    <comment>fate#317093: provide netlabel-tools on SLE-12 [only?]
+
+- Install LICENSE, README, CHANGELOG as documentation
+
+- Update to netlabel tools 0.20 providing the following fixes:
+  - Patch from Marius Tomaschewski &lt;mt@suse.de&gt; to fix the
+    Makefile install target to allow installation by normal users
+  - Fixed build problems on Debian/Ubuntu
+  - Correctly read all the parts of multipart Netlink messages,
+    fixed problems when trying to display large configurations
+    - Updated the doxygen configuration file to work with modern
+      doxygen versions
+    - Updated and improved portions of the build mechanism
+    - Incorporate fixes from the Fedora/RHEL RPMs
+    - Add support for systemd with the inclusion of a systemd unit
+      file, configuration file, and configuration helper script
+- Fixed install rules to allow installation as normal users (again),
+  corrected link option order for as-needed, adjusted service file,
+  replacing netlabel_tools-0.19.diff by netlabel_tools-0.20.diff
+  and adding netlabel_tools-0.20-service.diff patches.
+- Removed unneeded netlabel_tools-0.19-version_info.diff patch</comment>
+    <requestid>227604</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3fdcca8901c20b0d2a770c8f32d780af</srcmd5>
+    <version>0.20</version>
+    <time>1401899950</time>
+    <user>coolo</user>
+    <comment>- Port to libnl3 (0001-Port-to-libnl3.patch) 
+  This is the last package depending on libnl1, after all
+  relevant requests are accepted, libnl1 can be dropped. (forwarded request 235990 from elvigia)</comment>
+    <requestid>235991</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3fdcca8901c20b0d2a770c8f32d780af</srcmd5>
+    <version>0.20</version>
+    <time>1409301974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>431c830b04d5f8478a8566ed074760db</srcmd5>
+    <version>0.20</version>
+    <time>1426064225</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289777</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7547900a4e98e06b629da4d46a709f1</srcmd5>
+    <version>0.21</version>
+    <time>1449686998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347196</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3e42be793689b9821cee4a6bfb47aec0</srcmd5>
+    <version>0.21</version>
+    <time>1480786065</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed to build on factory and leap-42.2
+  * Removed obsolete --enable-systemd configure option.
+  * Pass explicit --with-systemdsystemunitdir configure option;
+    it is used in the rpm file list anyway and avoids detection
+    in configure using systemd.pc pkg-config query.
+  * Removed unneeded systemd-devel build-require, which does not
+    provide the systemd.pc pkg-config file, but libsystemd files.
+  * Added systemd-rpm-macros build-require for reliable _unitdir.
+- Fixed to call service script macros in the correct package.</comment>
+    <requestid>443185</requestid>
+  </revision>
+</revisionlist>

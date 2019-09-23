@@ -1,0 +1,587 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04f0a866dc1d92e51f9ba19130ee7c04</srcmd5>
+    <version>1.5</version>
+    <time>1395218455</time>
+    <user>scarabeus_factory</user>
+    <comment>new package for systemsmanagement</comment>
+    <requestid>225686</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>353b982893c9fb329bd12a18b5a55a4c</srcmd5>
+    <version>1.5.3</version>
+    <time>1395406312</time>
+    <user>coolo</user>
+    <comment>- update to 1.5.3:
+  * Fixes to the git module related to host key checking
+  * Force command action to not be executed by the shell unless 
+    specifically enabled.
+  * Validate SSL certs accessed through urllib*. 
+  * Implement new default cipher class AES256 in ansible-vault.
+  * Misc bug fixes.</comment>
+    <requestid>226917</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>acc4dc366c12598bf12c954b20c95c7c</srcmd5>
+    <version>1.6.3</version>
+    <time>1404157507</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>238757</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92dc9d510e5486a5e42b577c7379f612</srcmd5>
+    <version>1.6.6</version>
+    <time>1405971582</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>241351</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46cde8761f0b34069028ee429ebbef66</srcmd5>
+    <version>1.7.1</version>
+    <time>1408957504</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246146</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>46cde8761f0b34069028ee429ebbef66</srcmd5>
+    <version>1.7.1</version>
+    <time>1409300488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b57b867a5f7389f5484ea45e6aedba3c</srcmd5>
+    <version>1.7.2</version>
+    <time>1414613415</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258592</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>46fabce6e2724ae6a4deb8b4ad3442df</srcmd5>
+    <version>1.8.2</version>
+    <time>1418251456</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264169</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>783bb3ed8978ef7360e4279ab2b459ac</srcmd5>
+    <version>1.8.4</version>
+    <time>1424779362</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287348</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3569ea347e6f0be104685a9c01e5ba5d</srcmd5>
+    <version>1.9.0.1</version>
+    <time>1427983413</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293834</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9b7b01f0717238bae6473418c135013f</srcmd5>
+    <version>1.9.1</version>
+    <time>1430387451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304449</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>73b728aadb3d172066c946d34af7fce6</srcmd5>
+    <version>1.9.2</version>
+    <time>1438421661</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.2:
+  - Security fixes to check that hostnames match certificates with 
+    https urls (CVE-2015-3908; bnc #938161):
+    + get_url and uri modules
+    + url and etcd lookup plugins
+  - Security fixes to the zone (Solaris containers), jail (bsd
+    containers), and chroot connection plugins.  These plugins can be
+    used to connect to their respective container types in leiu of the
+    standard ssh connection.  Prior to this fix being applied these
+    connection plugins didn't properly handle symlinks within the containers
+    which could lead to files intended to be written to or read from the
+    container being written to or read from the host system instead. (CVE
+    pending)
+  - Fixed a bug in the service module where init scripts were being
+    incorrectly used instead of upstart/systemd.
+  - Fixed a bug where sudo/su settings were not inherited from
+    ansible.cfg correctly.
+  - Fixed a bug in the rds module where a traceback may occur due to an
+    unbound variable.
+  - Fixed a bug where certain remote file systems where the SELinux
+    context was not being properly set.
+  - Re-enabled several windows modules which had been partially merged
+    (via action plugins):
+	+ win_copy.ps1
+	+ win_copy.py
+	+ win_file.ps1
+	+ win_file.py
+	+ win_template.py
+  - Fix bug using with_sequence and a count that is zero.  Also allows
+    counting backwards isntead of forwards</comment>
+    <requestid>316930</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1c8e51ef69b75fc9c728c52bb13ada33</srcmd5>
+    <version>1.9.3</version>
+    <time>1442638516</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331654</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c7bd77c6253d7a104d088510f923c79d</srcmd5>
+    <version>1.9.4</version>
+    <time>1444636982</time>
+    <user>coolo</user>
+    <comment>- update to 1.9.4
+  This release addresses several bugs, most notably those related to
+  the yum module (introduced in 1.9.3):
+  + Fixes a bug where yum state=latest would error if there were no
+    updates to install.
+  + Fixes a bug where yum state=latest did not work with wildcard
+    package names.
+  + Fixes a bug in lineinfile relating to escape sequences.
+  + Fixes a bug where vars_prompt was not keeping passwords private
+    by default.
+  + Fix ansible-galaxy and the hipchat callback plugin to check that
+    the host it is contacting matches its TLS Certificate.</comment>
+    <requestid>337610</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0e3e26d5e99143f0cac86f0ddcfc6dc5</srcmd5>
+    <version>1.9.4</version>
+    <time>1445288030</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339866</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4330b90c3f24719244be10b436a7ba34</srcmd5>
+    <version>1.9.4</version>
+    <time>1445796806</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340615</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ef30202d42e472d9f72b8f8acda1b6f1</srcmd5>
+    <version>2.0.0.2</version>
+    <time>1455701191</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359571</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1fd62dceed4e4e74bd1adda04cf0471e</srcmd5>
+    <version>2.0.1.0</version>
+    <time>1457695783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369186</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a5b9b45e63a2d28e38ecdc783af7ef2e</srcmd5>
+    <version>2.0.2.0</version>
+    <time>1462977472</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394610</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a26a346abad6c09034cf862bf9f702bb</srcmd5>
+    <version>2.1.0.0</version>
+    <time>1464853152</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399371</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b114996ce1316a0a7488bbeb65aa12e1</srcmd5>
+    <version>2.1.1.0</version>
+    <time>1470217433</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415831</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>66d6bc24e756d00d318994d5c1e4ba3f</srcmd5>
+    <version>2.1.2.0</version>
+    <time>1476109260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433538</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1c5a19be730b9c4be320b9a1acda4642</srcmd5>
+    <version>2.2.0.0</version>
+    <time>1478174376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438496</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d7f04b59b7fb775ea22e198079ae0c37</srcmd5>
+    <version>2.2.1.0</version>
+    <time>1484660250</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.2.1.0 (final)</comment>
+    <requestid>450565</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c8d383da8bf43486d61d672b9465c97b</srcmd5>
+    <version>2.2.2.0</version>
+    <time>1490707384</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482977</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>652e75394286468cc88feeaec5796edd</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1495133252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487782</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2455cc4c2f68e9d69b2cb60aed8e390a</srcmd5>
+    <version>2.3.1.0</version>
+    <time>1496927060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501813</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>918389655eb777124e3cd9ba4a879f92</srcmd5>
+    <version>2.3.2.0</version>
+    <time>1503593330</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515727</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>12394d19c4af159f2e161e18074da09a</srcmd5>
+    <version>2.4.0.0</version>
+    <time>1507197483</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530765</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b16fda94d4ee0509e19ff3668ed758f7</srcmd5>
+    <version>2.4.1.0</version>
+    <time>1510232599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538485</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6acf8f0e8358234e176c5bcc1f3e43f8</srcmd5>
+    <version>2.4.2.0</version>
+    <time>1512216718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546598</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aec7ac2b7671f065a0ce91efc19601b7</srcmd5>
+    <version>2.4.3.0</version>
+    <time>1517932270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573306</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>dd180cd010216d4b71e79c3e5b2b966a</srcmd5>
+    <version>2.4.3.0</version>
+    <time>1519308098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578720</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a0a2dedda4a66e71698b6a092de46b74</srcmd5>
+    <version>2.4.3.0</version>
+    <time>1520415438</time>
+    <user>dimstar_suse</user>
+    <comment>As mentioned in SR 580670, the license change now has a separate
+changelog entry. 
+
+The changelog entry got extended by the correct CVE and SUSE bugzilla 
+numbers for further reference.
+
+
+---
+
+- License changed to GPL-3.0-or-later, as mentioned in the source
+  (former license focues on GPL-3.0 only)
+
+- update to 2.3.1 RC1 (package version 2.3.0.1) (bsc#1056094):
+  * SECURITY (MODERATE): fix for CVE-2017-7466, which finally fixes
+    an arbitrary command execution vulnerability</comment>
+    <requestid>583250</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>aae597460c9b7d00a79e62135a899123</srcmd5>
+    <version>2.5.0</version>
+    <time>1524489944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  Major Changes
+  * Ansible Network improvements
+    + Created new connection plugins network_cli and netconf to replace
+      connection=local. connection=local will continue to work for a
+      number of Ansible releases.
+    + No more unable to open shell. A clear and descriptive message will 
+      be displayed in normal ansible-playbook output without needing to enable debug mode
+    + Loads of documentation, see Ansible for Network Automation Documentation.
+    + Refactor common network shared code into package under module_utils/network/
+    + Filters: Add a filter to convert XML response from a network device to JSON object.
+    + Loads of bug fixes.
+    + Plus lots more.
+  * New simpler and more intuitive 'loop' keyword for task loops. The 
+    with_&lt;lookup&gt; loops will likely be deprecated in the near future 
+    and eventually removed.
+  * Added fact namespacing; from now on facts will be available under 
+    ansible_facts namespace (for example: ansible_facts.os_distribution) 
+    without the ansible_ prefix. They will continue to be added into the 
+    main namespace directly, but now with a configuration toggle to enable
+    this. This is currently on by default, but in the future it will default to off.
+  * Added a configuration file that a site administrator can use to 
+    specify modules to exclude from being used.
+  Minor Changes
+  * please refer to /share/doc/packages/ansible/changelogs/CHANGELOG-v2.5.rst
+  Deprecated Features
+  * Previously deprecated 'hostfile' config settings have been 're-deprecated' 
+    because previously code did not warn about deprecated configuration settings.
+  * Using Ansible-provided Jinja tests as filters is deprecated and will 
+    be removed in Ansible 2.9.
+  * The stat and win_stat modules have deprecated get_md5 and the md5 return
+    values. These options will become undocumented in Ansible 2.9 and 
+    removed in a later version.
+  * The redis_kv lookup has been deprecated in favor of new redis lookup
+  * Passing arbitrary parameters that begin with HEADER_ to the uri module, 
+    used for passing http headers, is deprecated. Use the headers parameter 
+    with a dictionary of header names to value instead. 
+    This will be removed in Ansible 2.9
+  * Passing arbitrary parameters to the zfs module to set zfs properties is 
+    deprecated. Use the extra_zfs_properties parameter with a dictionary of
+    property names to values instead. This will be removed in Ansible 2.9.
+  * Use of the AnsibleModule parameter check\_invalid\_arguments in custom
+    modules is deprecated. In the future, all parameters will be checked to 
+    see whether they are listed in the arg spec and an error raised if they 
+    are not listed. This behaviour is the current and future default so most 
+    custom modules can simply remove check\_invalid\_arguments if they set it 
+    to the default value of True. The check\_invalid\_arguments parameter 
+    will be removed in Ansible 2.9.
+  * The nxos_ip_interface module is deprecated in Ansible 2.5. 
+    Use nxos_l3_interface module instead.
+  * The nxos_portchannel module is deprecated in Ansible 2.5. 
+    Use nxos_linkagg module instead.
+  * The nxos_switchport module is deprecated in Ansible 2.5. 
+    Use nxos_l2_interface module instead.
+  * The ec2_ami_find has been deprecated; use ec2_ami_facts instead.
+  * panos_security_policy: Use panos_security_rule - the old module uses 
+    deprecated API calls
+  * vsphere_guest is deprecated in Ansible 2.5 and will be removed in 
+    Ansible-2.9. Use vmware_guest module instead.
+  Removed Features (previously deprecated)
+  * accelerate.
+  * boundary_meter: There was no deprecation period for this but the hosted 
+    service it relied on has gone away so the module has been removed. #29387
+  * cl_ : cl_interface, cl_interface_policy, cl_bridge, cl_img_install, 
+    cl_ports, cl_license, cl_bond. Use nclu instead
+  * docker. Use docker_container and docker_image instead.
+  * ec2_vpc.
+  * ec2_ami_search, use ec2_ami_facts instead.
+  * nxos_mtu. Use nxos_system's system_mtu option instead. 
+    To specify an interface's MTU use nxos_interface.
+  * panos_nat_policy: Use panos_nat_rule the old module uses
+    deprecated API calls
+- also package the changelogs directory below 
+  /usr/share/doc/packages/ansible/ for better reference
+</comment>
+    <requestid>593337</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1a589b1115cd6536ae6b8ac4ba150f5c</srcmd5>
+    <version>2.5.1</version>
+    <time>1525611673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1
+  Minor Changes
+  + Updated example in vcenter_license module.
+  + Updated virtual machine facts with instanceUUID which is unique 
+    for each VM irrespective of name and BIOS UUID.
+  + A lot of Bugfixes, please refer to the Changelog installed in 
+    /usr/share/doc/packages/ansible/changelogs/CHANGELOG-v2.5.rst
+</comment>
+    <requestid>601506</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e59b2f5d7a2e90fdd789090319cee5a6</srcmd5>
+    <version>2.6.0</version>
+    <time>1531947176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621710</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6047a93ffd6cc25531549e03ee0b1618</srcmd5>
+    <version>2.6.2</version>
+    <time>1533045818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626516</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f9118903a8410febaa9bea402fdc6eab</srcmd5>
+    <version>2.6.3</version>
+    <time>1536094545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632460</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4f9844a18c9eb0188534916c035d29a8</srcmd5>
+    <version>2.6.4</version>
+    <time>1536679232</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 2.6.4
+  Minor Changes:
+  * add azure_rm_storageaccount support to StorageV2 kind. 
+  * import_tasks - Do not allow import_tasks to transition to dynamic
+    if the file is missing
+  Bugfixes:
+  * Add md5sum check in nxos_file_copy module
+  * Allow arbitrary log_driver for docker_container
+  * Fix Python2.6 regex bug terminal plugin nxos, iosxr
+  * Fix check_mode in nxos_static_route module
+  * Fix glob path of rc.d Some distribtuions like SUSE has the rc%.d
+    directories under /etc/init.d
+  * Fix network config diff issue for lines 
+  * Fixed an issue where ansible_facts.pkg_mgr would incorrectly set 
+    to zypper on Debian/Ubuntu systems that happened to have the 
+    command installed
+  * The docker_* modules respect the DOCKER_* environment variables again
+  * The fix for CVE-2018-10875 prints out a warning message about 
+    skipping a config file from a world writable current working directory.
+    However, if the user is in a world writable current working directory 
+    which does not contain a config file, it should not print a warning 
+    message. This release fixes that extaneous warning.
+  * To resolve nios_network issue where vendor-encapsulated-options 
+    can not have a use_option flag.
+  * To resolve the issue of handling exception for Nios lookup gracefully.
+  * always correctly template no log for tasks
+  * ansible-galaxy - properly list all roles in roles_path
+  * basic.py - catch ValueError in case a FIPS enabled platform 
+    raises this exception
+  * docker_container: fixing working_dir idempotency problem</comment>
+    <requestid>634926</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7a82caae9779668a77e3be577c3fb87f</srcmd5>
+    <version>2.6.4</version>
+    <time>1537264022</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636180</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>00110383ab611b1505deb48e4fb12444</srcmd5>
+    <version>2.7.0</version>
+    <time>1539593330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641261</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c872f970da27edf0f838bbb43938ee8a</srcmd5>
+    <version>2.7.1</version>
+    <time>1540819371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645097</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f0dc93a12748ec1ba6cfc0e43c071595</srcmd5>
+    <version>2.7.4</version>
+    <time>1543953489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653830</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8d650909bb5d4cfe1865ed2b92b1331e</srcmd5>
+    <version>2.7.5</version>
+    <time>1546946655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659072</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fb461970a0520a295806e73b580808d1</srcmd5>
+    <version>2.7.6</version>
+    <time>1548335718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668109</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>33c760d30dcb0ba3dcb1dc6a1f875083</srcmd5>
+    <version>2.7.7</version>
+    <time>1550574181</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677223</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>78f0d8d0ed77111308104dac1b7365c4</srcmd5>
+    <version>2.7.8</version>
+    <time>1552206783</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682374</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>225259d64404b912b30be949c7026d20</srcmd5>
+    <version>2.7.10</version>
+    <time>1554712717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691914</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>27d6619b5944be7a7e0650e34af710ed</srcmd5>
+    <version>2.8.1</version>
+    <time>1560971178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708762</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>76982f5eaa64a7463e9b15ad5be96226</srcmd5>
+    <version>2.8.3</version>
+    <time>1565362436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721780</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>3931edf04f604d7e8d7ff36c9184c6a1</srcmd5>
+    <version>2.8.3</version>
+    <time>1565721919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723122</requestid>
+  </revision>
+</revisionlist>

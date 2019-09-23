@@ -1,0 +1,271 @@
+-------------------------------------------------------------------
+Tue Mar 19 15:30:52 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.1.1
+  * Fixed a potential race condition with entrypoint patching
+  * Fixed the TSD dispatch stubs for PPC64LE
+  * Fixed a segfault when generating GLX dispatch stubs for AARCH64
+
+-------------------------------------------------------------------
+Mon Aug 27 12:30:13 UTC 2018 - sndirsch@suse.com
+
+- Update to release 1.1.0
+  * Changes
+    + Update the OpenGL XML and header files.
+    + EGL: Remove a few unused functions in egldispatchstubs.c.
+    + GLdispatch: Add a version script for the TSD build.
+    + Some fixes for "make dist"
+    + GLdispatch: Use --version-script instead -export-symbols.
+    + Merge branch 'freebsd-fixes'
+    + Add a (void*) cast for the last parameter when calling mincore.
+    + Use sh instead of bash for the test scripts.
+    + configure: Recognize both "x86_64" and "amd64" for host_cpu.
+    + configure: Check if linking against libdl is necessary.
+    + GL: Expand glapi_gen_libglglxstubs in the makefile.
+    + Move the glapi_gen_libglglxstubs function into the GL makefile.
+    + vnd-glapi: Change glapi_gen_mapi to a makefile variable.
+    + Move the glapi_gen_mapi function into the vnd-glapi makefile.
+    + generate: Remove glapi_gen_libopengl_exports.
+    + GL: Don't generate g_glapi_mapi_gl_tmp.h
+    + Merge pull request #150 from aaronp24/work-around-xorgproto-api-break
+    + Merge pull request #153 from RAOF/fix-egl-platform-detection-crash
+    + Handle dlsym succeeding with info.dli_sname == NULL.
+    + Merge pull request #152 from kbrenneman/fix-eglMakeCurrent-bad-display
+    + Always return an error from eglMakeCurrent if the EGLDispaly is invalid
+    + GLX: Work around 'X_GLXCreateContextAtrribsARB' typo fix API break
+    + Merge pull request #148 from kbrenneman/bump-library-versions
+    + Bump the version numbers in the library filenames.
+    + Merge pull request #143 from kbrenneman/gldispatch-fix-execmem
+    + GLdispatch: Fix the allocation size for the dynamic stubs.
+    + GLdispatch: Remove obsolete #ifdefs from u_execmem.c.
+    + Merge pull request #140 from kbrenneman/add-GLX_EXT_no_config_context
+    + tests: Only use glXCreateContext in testglxmakecurrent.
+    + tests: Add a test for creating GLX contexts.
+    + tests/GLX_dummy: Add a vendor-provided create context function
+    + tests: Add a dummy attribute for glXQueryContext.
+    + tests: Add support for GLX_EXT_no_context_config to GLX_dummy
+    + tests: Remove the vendor dispatch stub for glXCreateContextAttribsARB.
+    + Add support for GLX_EXT_no_config_context.
+
+-------------------------------------------------------------------
+Thu Apr 19 13:24:28 UTC 2018 - sndirsch@suse.com
+
+- update to release 1.0.0
+  * Now that both the EGL and GLX interfaces are defined and stable,
+    set the package version to 1.0.0.
+  * Changes
+    + GLX: Fix an error in handling GLX dispatch stubs.
+    + EGL: Fix handling a malloc failure in eglQueryString.
+    + GLdispatch: Clean up the assembly dispatch code.
+    + GLdispatch aarch64: Align the dispatch stubs to a 64K page size.
+    + Fix typo in _LIBRARY_FEATURE_NAMES.
+    + Merge pull request #131 from michalsrb/fix-missing-gles-symbols
+    + Merge branch 'fix-aarch64-page-size'
+    + Convert lq/stq instructions
+    + Merge pull request #125 from kbrenneman/ppc64le-convert-lq-stq
+    + Don't #define USE_ASM (defined(USE_X86_ASM) || ... )
+    + Remove -Wno-misleading-indentation
+    + Remove the cJSON README and tests
+    + Update cJSON to version 1.5.9
+    + Merge pull request #135 from aaronp24/remove-misleading-indentation
+    + Fix memory leak in LoadVendorsFromConfigDir
+    + Cleanup winsys dispatch index list on EGL mapping teardown
+    + Merge pull request #137 from polarina/memleak
+    + Set package version to 1.0.0.
+- supersedes U_Fix-typo-in-LIBRARY_FEATURE_NAMES.patch
+
+-------------------------------------------------------------------
+Wed Jan  3 20:48:01 UTC 2018 - tchvatal@suse.com
+
+- Make sure to use only python3 for the build and do not rely
+  on env calls for python
+
+-------------------------------------------------------------------
+Mon Aug 14 13:35:51 UTC 2017 - msrb@suse.com
+
+- U_Fix-typo-in-LIBRARY_FEATURE_NAMES.patch
+  * Fix typo that caused gles 3.1 and 3.2 symbols to be missing in
+    the generated libraries. (bnc#1052776)
+
+-------------------------------------------------------------------
+Wed Jun 21 14:48:46 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.2~20170620~d850cdd:
+  * EGL: detect platform gbm vendor capability.
+  * EGL: add platform gbm detection in eglGetDisplay.
+  * EGL: alias "drm" to gbm when using EGL_PLATFORM.
+  * EGL: honour eglGetPlatformDisplay's attrib_list.
+  * PPC64LE: Fix the cache clear instructions (boo#1045185).
+  * configure: Remove AC_PROG_CXX.
+  * EGL: Allow vendor libraries to identify platforms for
+    eglGetDisplay.
+  * GL: Use a table to look up core GLX functions.
+
+-------------------------------------------------------------------
+Thu Jun  1 11:37:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.2~20170427~6bcecd8:
+  * Print out $host_cpu when undetected, for easier debugging.
+  * Fix compile errors.
+  * armv7: make sure asm is compiled in unified syntax mode.
+  * Treat armv7hl as armv7l.
+  * tests: Expand the unit tests for libGLdispatch.
+  * GLdispatch: Minor cleanup of the x86-64 TLS stubs.
+  * GLdispatch: Add support for x32.
+  * Shorten the generated x86-64 TLS stubs.
+  * GLX: Fix GLX entrypoint generation for x32.
+  * tests: Add support for x32.
+  * GLdispatch: Remove the ".syntax divided" directive for ARMv7.
+  * Update the README file.
+  * GLdispatch: Fix TEXTREL in the ARMv7 TSD stubs.
+  * GLdispatch: Improve the documentation in entry_arm7_tsd.c.
+  * Makefile and structural changes for ppc64le support.
+  * GLdispatch: Implement the TSD dispatch stubs for PPC64LE.
+  * GLdispatch: Implement the TLS dispatch stubs for PPC64LE.
+  * GLX: Implement GLX dispatch stubs for PPC64LE.
+  * tests: Fill in the ASM code in the template in patch_ppc64le().
+  * GLX: Add cache-flushing sequence to the generated GLX stubs.
+  * GLdispatch: Rename entry_x86_64_common.c to entry_simple_asm.c.
+
+-------------------------------------------------------------------
+Thu Jun  1 11:15:20 UTC 2017 - alarrosa@suse.com
+
+- Obsolete libglvnd0 <= %version-%release instead of only older
+  versions in order to fix conflicts on TW.
+
+-------------------------------------------------------------------
+Sat Apr 29 20:59:17 UTC 2017 - jengelh@inai.de
+
+- The package misuses an SLPP package name (libglvnd0) while not
+  being SLPP — there is not even a libglvnd.so.0. Since
+  implementing SLPP does not make much sense either (these are all
+  just compat wrappers), switch to libglvnd.
+- Avoid doubleshipping of README.
+
+-------------------------------------------------------------------
+Fri Apr  7 11:09:23 UTC 2017 - jengelh@inai.de
+
+- Replace old $RPM_ shell vars by macros
+- Converge on one style of using macros (drop curlies)
+- RPM group correction
+
+-------------------------------------------------------------------
+Wed Mar 29 08:56:19 UTC 2017 - sndirsch@suse.com
+
+- baselibs.conf: added -devel package
+
+-------------------------------------------------------------------
+Tue Mar 28 14:34:53 UTC 2017 - sndirsch@suse.com
+
+- fixed/improved summary/description of libglvnd-devel package
+
+-------------------------------------------------------------------
+Mon Mar 27 14:40:29 UTC 2017 - sndirsch@suse.com
+
+- removed unneeded rpmlintrc 
+
+-------------------------------------------------------------------
+Fri Jan 20 13:15:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.1~20161222~dc16f8c:
+  * Update the README file.
+  * util: Add a local implementation of vsprintf(3).
+  * tests: Fix testpatchentrypoints.
+  * util: Add functions for splitting a string into tokens.
+  * Checked in the EGL headers.
+  * Checked in a copy of the cJSON library.
+  * EGL: Initial implementation of libEGL.
+  * EGL: Implement EGL_KHR_debug.
+  * GLdispatch: Remove an incorrect assert.
+  * util: Add trylock functions to glnvd_pthread.
+  * GLX: Fix a deadlock in teardown
+  * EGL: Rework the current rendering API.
+  * EGL: Fix a crash in __eglGetVendorFromDevice.
+  * EGL: Improve eglGetDisplay platform guessing.
+  * EGL: Check for some client extensions when loading the vendors.
+  * EGL: Check the version number in the JSON files.
+  * EGL: Trim the dispatch stub list.
+  * Change the package version to 0.1.999.
+  * GLX: Keep track of the displays passed to glXMakeCurrent.
+  * EGL: Fix a few errors in EGL_KHR_debug.
+  * EGL: Change __EGLapiImports to use (void *) for function
+    pointers.
+  * EGL: Add -Wno-misleading-indentation for cJSON.
+  * utils: Add cJSON.h to noinst_HEADERS.
+  * EGL: Change the vendor config search paths.
+  * EGL: Fix a couple of typos.
+  * Increment the package version to 0.2.
+  * Don't use 'xrange' because Python 3 doesn't have it.
+  * EGL: Fix an uninitialized variable.
+  * Factor out some common extension string functions.
+  * tests: Some minor cleanup
+  * tests: Rename GLX_dummy directory.
+  * tests: Move the entrypoint patching code into a helper library.
+  * tests: Add a more extensive test for entrypoint patching.
+  * GLX: Add an environment variable to specify a vendor for a
+    single screen.
+  * tests: Rewrite testglxgetprocaddress.
+  * tests: Add a test for generated GLX entrypoints.
+  * Change the assembly templates for ARMv7 to use uint16_t.
+  * Fix a crash in process termination when EGL and GLX are both
+    loaded.
+  * chmod -x files that aren't scripts
+  * GLdispatch: Don't call into the vendor from
+    __glDispatchForceUnpatch.
+  * EGL: Don't call into the vendor library from __eglFini.
+  * EGL: Better wayland detection in eglGetDisplay
+  * EGL: Add display detection for X11.
+  * EGL: Fix an unitialized variable in IsX11Display.
+  * tests: Skip testglxqueryversion if the server doesn't support
+    GLX.
+  * EGL: Fix the python command line.
+  * tests: Remove init_test_env.sh and fini_test_env.sh.
+  * tests: Add a basic test for eglGetPlatformDisplay.
+  * tests: Add a test for eglGetProcAddress.
+  * tests: Add a test for EGL device functions.
+  * tests: Add a test for eglMakeCurrent.
+  * tests: Add a test for eglGetError.
+  * tests: Add a test for EGL_KHR_debug.
+  * Add support for aarch64.
+  * GLdispatch: Fix the x86 TLS stubs.
+  * GLdispatch: Fix TEXTREL in the x86 TSD stubs.
+  * GLdispatch: Remove public_string_pool.
+  * GLdispatch: Remove _glapi_init_table_from_callback.
+  * GLdispatch: Remove the __GLdispatchProcEntry list.
+  * tests: Clean up tests makefile.
+  * Add configure options for the EGL, GLX, and GLES libraries.
+  * configure: Change the description for --disable-gles.
+
+-------------------------------------------------------------------
+Fri Jan 20 12:35:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.1.1:
+  * GLX: Some additional cleanup for the GLX dispatch table.
+  * Remove uneeded xorg-server dependency
+  * tests: Add more GLX functions to GLX_dummy.
+  * tests: Clean up the function arrays in GLX_dummy.
+  * tests: Implement glXCreateContextAttribsARB in GLX_dummy.
+  * tests: Expand the MakeCurrent tests to the GLXFBConfig-based
+    functions.
+  * tests: Merge the dummy and patchentry libraries.
+  * GLX: Fix a couple of errors.
+  * GLdispatch: Don't unpatch entrypoints in
+    __glDispatchLoseCurrent.
+- Add _service and use it to update to current relase.
+- Replace autoreconf for autogen.sh call ref info in README.
+
+-------------------------------------------------------------------
+Tue Jul 12 11:56:23 UTC 2016 - sndirsch@suse.com
+
+- added Recommends to Mesa-libGL1/Mesa-libGL-devel
+
+-------------------------------------------------------------------
+Fri Jun  3 09:20:28 UTC 2016 - sndirsch@suse.com
+
+- fixed build on 32bit with SUSE < 1330 
+
+-------------------------------------------------------------------
+Thu Jun  2 15:43:46 UTC 2016 - sndirsch@suse.com
+
+- created libglvnd package 
+

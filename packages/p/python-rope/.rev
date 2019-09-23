@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>617a8af8b3fe20a7451be43715f640be</srcmd5>
+    <version>0.9.3</version>
+    <time>1331900621</time>
+    <user>coolo</user>
+    <comment>Useful Python lib</comment>
+    <requestid>108725</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f3416a3ce8db049a63fa7c0467ccca24</srcmd5>
+    <version>0.9.4</version>
+    <time>1339076384</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.4:
+  + Upstream provides no changelog</comment>
+    <requestid>123788</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f3416a3ce8db049a63fa7c0467ccca24</srcmd5>
+    <version>0.9.4</version>
+    <time>1340184089</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f3416a3ce8db049a63fa7c0467ccca24</srcmd5>
+    <version>0.9.4</version>
+    <time>1359110116</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f3416a3ce8db049a63fa7c0467ccca24</srcmd5>
+    <version>0.9.4</version>
+    <time>1379664277</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f3416a3ce8db049a63fa7c0467ccca24</srcmd5>
+    <version>0.9.4</version>
+    <time>1409302983</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cda4eeec162dbd6bbb3d64e5111d951b</srcmd5>
+    <version>0.10.2</version>
+    <time>1424779351</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287325</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7e87731bcdbb94822bee875ecf98e085</srcmd5>
+    <version>0.10.2</version>
+    <time>1438750185</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316568</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>119647f24c3bb8999691fa5cb289f0d3</srcmd5>
+    <version>0.10.5</version>
+    <time>1502892692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513727</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1a7b07f04a240af6bdada89028371aa6</srcmd5>
+    <version>0.10.7</version>
+    <time>1503999977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519182</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d46273a808dc9208f166b27582eb0e3f</srcmd5>
+    <version>0.11.0</version>
+    <time>1534543247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0
+  + Upstream provides no changelog
+- Remove patch CVE-2014-3539-disable-doa.patch (included upstream)
+</comment>
+    <requestid>628350</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bf541ed96b5600747e442fff7a331e07</srcmd5>
+    <version>0.11.0</version>
+    <time>1535705186</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix buildrequires to not require devel
+- Run tests without conditional</comment>
+    <requestid>632148</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ad459814aa1eeae244461e3f04827aa5</srcmd5>
+    <version>0.11.0</version>
+    <time>1549286648</time>
+    <user>coolo</user>
+    <comment>- Workaround gh#python-rope/rope#247 (some tests fail on Python 3.7)
+</comment>
+    <requestid>666513</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6cc86ab8ff3cff5456f60c28e0d815e5</srcmd5>
+    <version>0.12.0</version>
+    <time>1550048469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673302</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9ae765e28e1f6691a88e4f6610ac9c10</srcmd5>
+    <version>0.12.0</version>
+    <time>1552206830</time>
+    <user>coolo</user>
+    <comment>- Fix expansion of test removal</comment>
+    <requestid>682417</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>997a78833a95da9525a807b96c67eef6</srcmd5>
+    <version>0.14.0</version>
+    <time>1553635946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687823</requestid>
+  </revision>
+</revisionlist>

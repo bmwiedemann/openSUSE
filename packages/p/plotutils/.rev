@@ -1,0 +1,202 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9a6912b35f57b022ec87d726b74adf65</srcmd5>
+    <version>2.5</version>
+    <time>1168903977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="197">
+    <srcmd5>9a6912b35f57b022ec87d726b74adf65</srcmd5>
+    <version>2.5</version>
+    <time>1168903977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="198">
+    <srcmd5>bf800ab918ade705a23b78e9be015d89</srcmd5>
+    <version>2.5</version>
+    <time>1224729862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="199">
+    <srcmd5>bf15d8311f4d15c855b1c5b91dc1faf2</srcmd5>
+    <version>2.5</version>
+    <time>1231462063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d3ad692b1ca22653c7930d174b80e9af</srcmd5>
+    <version>2.5.1</version>
+    <time>1231463850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>773b78d734111acf0854a621aad4e83b</srcmd5>
+    <version>2.5.1</version>
+    <time>1232626535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>773b78d734111acf0854a621aad4e83b</srcmd5>
+    <version>2.5.1</version>
+    <time>1232626535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2cf774332ad2761a8dfa4a87e037eb78</srcmd5>
+    <version>2.6</version>
+    <time>1259331264</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/plotutils based on submit request 25126 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>14550f12eb2af5075cb241a1a278c547</srcmd5>
+    <version>2.6</version>
+    <time>1268925726</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>14550f12eb2af5075cb241a1a278c547</srcmd5>
+    <version>2.6</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>14550f12eb2af5075cb241a1a278c547</srcmd5>
+    <version>2.6</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>14550f12eb2af5075cb241a1a278c547</srcmd5>
+    <version>2.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>14550f12eb2af5075cb241a1a278c547</srcmd5>
+    <version>2.6</version>
+    <time>1319182361</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>9e2987fafa31eafbad7ef9a317a3162a</srcmd5>
+    <version>2.6</version>
+    <time>1321876274</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 91733 from coolo)</comment>
+    <requestid>92415</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>b596b5d7fc5b23c61af2182f8eefd31a</srcmd5>
+    <version>2.6</version>
+    <time>1323193933</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>b596b5d7fc5b23c61af2182f8eefd31a</srcmd5>
+    <version>2.6</version>
+    <time>1340184006</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>49c7b21c6d8e2d22bdf9c46d1931a161</srcmd5>
+    <version>2.6</version>
+    <time>1344319928</time>
+    <user>coolo</user>
+    <comment>- prepare spec file for dropping SuSEconfig.fonts (openFATE#313536)</comment>
+    <requestid>130119</requestid>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>2d9c2cdb6a09dcd81d3cf5ad95033b62</srcmd5>
+    <version>2.6</version>
+    <time>1346399755</time>
+    <user>coolo</user>
+    <comment>- build also with libpng15
+  * libpng15.patch</comment>
+    <requestid>132050</requestid>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>2d9c2cdb6a09dcd81d3cf5ad95033b62</srcmd5>
+    <version>2.6</version>
+    <time>1359109933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>c0dd8a8a5f111012ee60650834ad9979</srcmd5>
+    <version>2.6</version>
+    <time>1362414799</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157062 from coolo)</comment>
+    <requestid>157151</requestid>
+  </revision>
+  <revision rev="21" vrev="20">
+    <srcmd5>769efd1d1a53b3f01f4fb531a2598eaa</srcmd5>
+    <version>2.6</version>
+    <time>1366233321</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add GPG checking (forwarded request 164055 from namtrac)</comment>
+    <requestid>171139</requestid>
+  </revision>
+  <revision rev="22" vrev="21">
+    <srcmd5>5b022e16f6cac14ca579a53d4b709b70</srcmd5>
+    <version>2.6</version>
+    <time>1373984015</time>
+    <user>coolo</user>
+    <comment>- Do not remove lex/yacc code as current bison generate broken
+  code (fix for bnc#829479, depends on bnc#829497)
+- Add plotutils-hershey_glyphs.patch to avoid arithmetic overflow
+  in Hershey pointing hands glyphs
+- Add plotutils-man-spline.patch as there is no --number-of-intervals
+  but --no-of-intervals option
+- Add plotutils-postscript.patch to avoid broken postscript due not
+  initialized variable</comment>
+    <requestid>183075</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>5b022e16f6cac14ca579a53d4b709b70</srcmd5>
+    <version>2.6</version>
+    <time>1379664040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="25">
+    <srcmd5>5b022e16f6cac14ca579a53d4b709b70</srcmd5>
+    <version>2.6</version>
+    <time>1409302715</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="26">
+    <srcmd5>bfc92aadd816d9a2025e74251cba6f89</srcmd5>
+    <version>2.6</version>
+    <time>1412799203</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254519</requestid>
+  </revision>
+  <revision rev="26" vrev="27">
+    <srcmd5>fff468b025ce421c283544bdd6a3f249</srcmd5>
+    <version>2.6</version>
+    <time>1494096308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492210</requestid>
+  </revision>
+  <revision rev="27" vrev="28">
+    <srcmd5>78bebe94c58a4f3c00e6945aa50a6bc9</srcmd5>
+    <version>2.6</version>
+    <time>1523956462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597199</requestid>
+  </revision>
+</revisionlist>

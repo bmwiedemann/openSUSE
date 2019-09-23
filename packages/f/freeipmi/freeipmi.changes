@@ -1,0 +1,1053 @@
+-------------------------------------------------------------------
+Thu Aug 22 02:21:00 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.6.4
+  o In libfreeipmi, add additional workarounds for packets that are
+    re-ordered during sensor bridging.
+  o In libfreeipmi, add additional sensor / event interpretations.
+  o In libfreeipmi, fix error return value on bridging requests.
+  o Add workaround in ipmi-sel for QuantaPlex T42D-2U motherboard,
+    whichlists a SDR record that makes no sense.
+  o Add workaround for Dell Poweredge FC830, which have an error
+    when reading the last SDR record on a motherboard.
+  o Support Supermicro X10 OEM dimm events. 
+
+-------------------------------------------------------------------
+Fri Jan 25 07:01:47 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.6.3
+  o In ipmi-locate, support parsing SPMI tables exported via sysfs.
+  o Support Intel S2600GZ OEM sensor and SEL events.
+  o Support Intel S2600WP OEM sensor and SEL events.
+  o Support Gigabyte MG20-OP0-ZB OEM SEL events.
+  o Fix DISCRETE_READING workaround in libipmimonitoring.
+  o In libfreeipmi, add workaround for packets that are re-ordered
+    during sensor bridging.
+  o Minor bug fixes.
+  o Various documentation updates/fixes.  
+
+-------------------------------------------------------------------
+Fri Jan 11 12:16:51 UTC 2019 - trenn@suse.de
+
+- Add provides:freeipmi:/usr/sbin/ipmiseld to the
+  freeipmi-ipmiseld split package for backward compatibility
+  for now
+  
+-------------------------------------------------------------------
+Fri Nov  9 15:30:58 UTC 2018 - trenn@suse.de
+
+- Remove has_systemd conditions
+- Add rcservice shortcut links to control services
+- Fix some more build warnings
+- Use %license instead of %doc where appropriate
+- Extract ipmiseld service as a separate package as done with other
+  services
+- Declare /var/lib/freeipmi/ipckey as %ghost and do not create it
+  explicitly in .spec file (bsc#1100124)
+
+-------------------------------------------------------------------
+Tue Aug 28 15:54:51 UTC 2018 - trenn@suse.de
+
+- Enable build for aarch64 (fate#326605)
+
+-------------------------------------------------------------------
+Wed Aug  1 07:12:47 UTC 2018 - josef.moellers@suse.com
+
+- Changed mode of .service files from 755 to 644.
+  [bsc#1103311, 1103311-service-files-mode.patch]
+
+-------------------------------------------------------------------
+Fri May  4 05:58:46 UTC 2018 - kkaempf@suse.com
+
+- Update to 1.6.2
+  o Fix error in bridging where bridged requests were sent to the
+    wrong LUN.
+  o Fix command parsing bugs in legacy ipmi-config scripts
+    (i.e. bmc-config, ipmi-pef-config, etc.)
+  o Do not output full path of daemons in syslog, output only the
+    daemon name (i.e. output "ipmidetected" instead of
+    "/usr/sbin/ipmidetectd").
+  o Update channel range from 0-7 to 0-11, per errata IPMI update.
+
+-------------------------------------------------------------------
+Sat Feb  3 10:11:46 UTC 2018 - kkaempf@suse.com
+
+- Update to 1.6.1
+  o Add IPv6 hostname support to FreeIPMI, all of FreeIPMI can now take
+    IPv6 addresses as inputs to "host" parameters, options, or inputs.
+  o Support significant portions of IPMI IPv6 configuration in
+    libfreeipmi.
+  o Add --no-session option in ipmi-raw.
+  o Add SDR cache options to ipmi-config.
+  o Legacy -f short option for --flush-cache and -Q short option for
+    quiet-cache.  Backwards compatible for tools that supported it
+    before.
+  o In ipmi-oem, support Gigabyte get-bmc-services and
+    set-bmc-services.
+  o Various performance improvements:
+    - Remove excessive calls to secure_memset to clear memory.
+    - Remove excessive memsets and clears of data.
+    - Remove unnecessary "double input checks".
+    - Remove expensive input checks in libfreeipmi fiid library.
+      Fallout from this may include FIID_ERR_FIELD_NOT_FOUND
+      errors in different fiid functions.
+    - Remove unnecessary input checks in libfreeipmi fiid library.
+    - Add recent 'lookups' of fields in fiid library to internal
+      cache.
+  o Various minor fixes/improvements
+    - Update libfreeipmi core API to use poll() instead of select(), to
+      avoid issues with applications with a high number of threads.  
+
+  - As a side point, while IPv6 networking support has been added, IPv6
+    configuration in ipmi-config & bmc-config is not supported in this
+    release.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:37:11 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Oct 18 14:54:53 UTC 2017 - alarrosa@suse.com
+
+- Follow the shared library packaging policy. Created new packages
+  libipmiconsole2, libipmidetect0, libipmimonitoring6, libfreeipmi17
+
+-------------------------------------------------------------------
+Wed Aug 30 10:02:28 UTC 2017 - kkaempf@suse.com
+
+- Update to 1.5.7
+  o In libipmimonitoring, fix several mem-leak corner cases.
+
+-------------------------------------------------------------------
+Thu Jul  6 06:22:09 UTC 2017 - kkaempf@suse.com
+
+- Update to 1.5.6
+  o In libfreeipmi locate (used by ipmi-locate), use DMI firmware in
+    sysfs if it exists.
+  o Minor mem-leak corner case fix in libfreeipmi.
+  o Minor documentation fixes.
+  o Minor error message clarifications.
+
+-------------------------------------------------------------------
+Thu Mar  9 19:49:21 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Thu Nov  3 06:56:39 UTC 2016 - kkaempf@suse.com
+
+- Update to 1.5.5
+  o Fix invalid flag clear in libipmiconsole that can lead to a potential
+    double close on a file descriptor.
+  o Support Supermicro H8SGL-F OEM sensors and events.
+
+-------------------------------------------------------------------
+Tue Oct  4 08:32:38 UTC 2016 - kkaempf@suse.com
+
+- Update to 1.5.4
+  o Various changes/fixes in libipmiconsole
+    - If user retrieves file descriptor from ipmiconsole_ctx_fd,
+      user is required to close it.  ipmiconsole_ctx_destroy no
+      longer closes it.  This is to avoid a potential double close
+      which can be a problem for multithreaded applications. This
+      is a change in behavior, but we do not believe this will
+      affect most applications since most users close the file
+      descriptor under most scenarios anyways.
+    - ipmiconsole_ctx_destroy() should now be called to free
+      resources even if ipmiconsole_engine_teardown() has been
+      called.  This has been done to create consistent behavior in
+      the API and avoid a former segfault possibility.  This is a
+      change in behavior, but we do not believe this will affect
+      most applications since ipmiconsole_engine_teardown() is
+      only called when an application is being shutdown.
+    - The use of IPMICONSOLE_ENGINE_CLOSE_FD has been clarified in
+      the header file.  Some of the prior text was unclear.
+      Behavior has not been changed.
+  o In ipmi-oem, support Intel get-bmc-services and set-bmc-
+    services commands.
+  o In ipmi-oem, support Gigabyte get-nic-mode and set-nic-mode
+    commands.
+  o Support Gigabyte MD90-FS0-ZB OEM SEL events.           
+
+-------------------------------------------------------------------
+Tue Aug  2 06:01:20 UTC 2016 - kkaempf@suse.com
+
+- Update to 1.5.3
+  o Update Fujitsu OEM extension product id support range.
+  o In ipmiconsole, support --debugfile option for more difficult
+    debugging scenarios.
+  o In all sensor related tools, increase max number of record ids and
+    sensor types that can be handled.
+  o Fix several invalid completion code errors/values.
+
+-------------------------------------------------------------------
+Mon May 30 07:39:22 UTC 2016 - kkaempf@suse.com
+
+- Update to 1.5.2
+  o Update configuration file parsing code to handle values up to
+    1024 characters in length.
+  o Set FD_CLOEXEC for ipmi driver device files opened within
+    libfreeipmi.
+  o Support --read-fru, --write-fru, and --device-id option in
+    bmc-device.
+  o Support --fru-file option in ipmi-fru.
+  o Various library updates in libfreeipmi to handle new features.
+    
+-------------------------------------------------------------------
+Wed Dec  2 07:09:14 UTC 2015 - kkaempf@suse.com
+
+- Update to 1.5.1
+  o Update Intel Node Manager support for 3.0 specification.
+    - Update API and fiid templates in libfreeipmi.
+    - Support new OEM SEL events
+    - Update ipmi-oem commands.
+    - Support new get/set-turbo-synchronization-ratio
+    - Support new 'policypowerdomain' option in
+      get-node-manager-capabilities and set-node-manager-policy.
+    - Update output of get-node-manager-policy and
+      get-node-manager-capabilities for changes.
+    - get/set-node-manager-alert-thresholds converted to
+      get/set-node-manager-policy-alert-thresholds. Legacy
+      commands still supported.
+  o Update libfreeipmi for IPMI 2.0 Errata 7.
+    - Support/handle FRU Multirecord NVM Express type.
+  o Support Get Device SDR Info, Get Device SDR, and Reserve
+    Device SDR Repository commands in libfreeipmi.
+  o Support ipmi-sel OEM interpretation of Linux kernel panics.
+  o Re-organize OEM header files into per-vendor files.
+  o In ipmi-oem, fix error in "DNS Register BMC" output in
+    "get-dns-config" output in Inventec, Quanta, and Wistron vendor
+    sections.
+  o Support systemd through --with-systemdsystemunitdir configure
+    option.
+  o Minor corner case bug fixes.
+
+-------------------------------------------------------------------
+Fri Oct 30 08:27:34 UTC 2015 - kkaempf@suse.com
+
+- Update to 1.4.11
+  o Fix logic error with a few OEM SEL events for Intel E5 2600 V3
+    motherboard.
+  o Fix various logic errors in ipmi-oem Intel Node Manager extensions.
+  o Documentation updates.
+
+-------------------------------------------------------------------
+Wed Oct 21 12:29:56 UTC 2015 - kkaempf@suse.com
+
+- Fix SLE10 and RHEL5 builds
+
+-------------------------------------------------------------------
+Wed Oct 21 07:40:59 UTC 2015 - kkaempf@suse.com
+
+- Update to 1.4.10
+  o In ipmi-oem, support Supermicro get-power-supply-status2.
+  o In ipmi-locate, fix probing issue on arm32 & 64.
+  o Handle several additional completion code error message in
+    libfreeipmi.
+  o Handle several error handling corner cases in ipmi-sensors.
+  o Support Intel E5 2600 V3 motherboard OEM SEL events.
+  o Fix several errors in ipmi-oem intelnm get-node-manager-statistics
+    output.
+  o Fix logic errors in ipmi-oem intelnm set-node-manager-policy.
+
+-------------------------------------------------------------------
+Thu Jun 18 07:37:27 UTC 2015 - kkaempf@suse.com
+
+- fix Fedora/RHEL builds
+
+-------------------------------------------------------------------
+Tue Jun  2 10:53:50 UTC 2015 - kkaempf@suse.com
+
+- Update to 1.4.9
+  o Fix strtol parse corner cases in several commands.
+  o Minor documentation fixes.
+
+-------------------------------------------------------------------
+Thu Apr  2 16:11:34 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Thu Jan  8 07:26:44 UTC 2015 - kkaempf@suse.com
+
+- Update to 1.4.8
+  o Fix segfault in crypt code with libgcrypt versions >= 1.6.0.
+  o Fix --fanout command line parse bug.
+
+-------------------------------------------------------------------
+Thu Dec 11 07:24:23 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.7
+  o Fix typo from FRU spec, language "Tegulu" is actually "Telugu".
+  o Fix typo in SEL session output, "Invalid Username of Password" to
+    "Invalid Username or Password".
+  o Loop on select() call if interrupted by EINTR in openipmi, ssif,
+    and sunbmc inband drivers.
+  o Fix integer overflow bug in ipmi-config when configure
+    vlan ID > 255.
+  o Add workaround for ipmi-config issue on Supermicro X10DDW-i.
+  o Fix error handling bug in bmc-info.
+
+-------------------------------------------------------------------
+Wed Oct 29 20:22:43 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.6
+  o In ipmi-fru, support output of DDR4 SDRAM modules.
+  o Fix EFI probing on non IA64 systems.
+  o Fix corner case in ipmi-raw w/ standard input or --file and
+    empty lines.
+  o Fix parsing corner case in ipmi-chassis.
+  o Support SSIF bridging.
+
+-------------------------------------------------------------------
+Fri Aug 29 11:44:33 UTC 2014 - juwolf@suse.com
+
+- Remove executable flags from systemd service files to prevent
+  systemd warning (bnc#893142)
+
+-------------------------------------------------------------------
+Tue Jul 29 06:12:44 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.5
+  o Fix libipmiconsole calculation bug w/ SOL character send size.
+  o Support Supermicro H8DGU and H8DG6 OEM sensors and events.
+  o Minor documentation updates.
+
+-------------------------------------------------------------------
+Mon Jun 30 06:16:28 UTC 2014 - kkaempf@localhost
+
+- Update to 1.4.4
+  o Support retrys of SSIF reads to handle SSIF NACKs.
+
+-------------------------------------------------------------------
+Thu May  8 06:54:32 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.3
+  has freeipmi-1.4.2.patch included, drop local patch
+
+-------------------------------------------------------------------
+Wed May  7 06:17:51 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.2
+  o In ipmi-oem, support Supermicro get-power-supply-status and
+    get-pmbus-power-supply-status commands.
+  o Support 'ipmiping' workaround in ipmipower.
+  o Minor documentation updates.
+
+- Fix compile bug, add freeipmi-1.4.2.patch
+
+-------------------------------------------------------------------
+Tue Mar  4 12:20:07 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.1
+  Tools - New Features
+  --------------------
+  o Support 'serialalertsdeferred' workaround in ipmiconsole.
+  o Support 'solpacketseq' workaround in ipmiconsole.
+  o Fix portability issues for Apple / OS X.
+
+
+-------------------------------------------------------------------
+Thu Feb  6 12:58:14 UTC 2014 - kkaempf@suse.com
+
+- Drop freeipmi-max-sensor.patch, included upstream
+
+- Update to 1.4.0 beta0
+
+  Tools - New Features
+  --------------------
+  o Support new tool ipmi-config.  Ipmi-config is a consolidated
+    configuration tool implementing everything that was previously in
+    bmc-config, ipmi-pef-config, ipmi-sensors-config, and
+    ipmi-chassis-config.
+    - The consolidated tool will allow users to checkout, commit, and
+      diff sections/fields across the four former tools using only one
+      tool.
+    - The consolidated tool will also allow users to checkout, commit,
+      and diff new sections/fields not yet covered in the four former
+      tools.
+    - Legacy scripts for bmc-config, ipmi-pef-config,
+      ipmi-sensors-config, and ipmi-chassis-config will point to the new
+      tool with all appropriate options to ensure full backwards
+      compatability.
+    - The ipmi-pef-config --info option has been made legacy.  It is
+      still supported but no longer advertised.
+  o Support Intel Data Center Host Interface / Management Engine as
+    optional driver type for in-band communication.
+    - Typically these are loaded as /dev/dcmi and /dev/mei drivers.
+    - This driver is identified as the "inteldcmi" type, as it is
+      specific to Intel systems.
+  o Support OEM extensions for Intel Windmill, Wiwynn Windmill, and
+    Quanta Winterfell motherboards in ipmi-sel and ipmi-sensors.  These
+    motherboards are also know as motherboards for the Open Compute
+    Project (OCP).
+  o Support DCMI configuration in ipmi-config.
+  o Update FreeIPMI for changes in IPMI 2.0 Errata 5.  Include are:
+    - New sensor events for Power Supply and OS Boot sensors.  New
+      events are supported in all areas, ipmi-sensors, ipmi-sel,
+      libipmimonitoring, etc.
+    - PEF now supports 255 filter numbers, not 127.  This is supported
+      in ipmi-config (formerly ipmi-pef-config).
+    - Support get/set of new System Info Parameters Present OS Version,
+      BMC URL, and Base OS/Hypervisor URL.  This is supported in
+      bmc-info and bmc-device.
+  o Update ipmi-oem Intel Node Manager OEM commands for changes listed
+    in Intelligent Power Node Manager 2.0 specification.
+    - Due to changes in the specification, minor text changes may exist
+      in some output from intelnm OEM commands.
+  o Update ipmi-sel to support new SEL events in Intelligent Power Node
+    Manager 2.0 specification.
+
+  Tools - Bug Fixes/Minor Changes
+  -------------------------------
+  o Fix bmc-info output of GUID, format was output with two bytes out of
+    order.
+    - May affect scripts parsing and using the GUID.
+  o Bmc-info now supports --get-system-guid and outputs the System GUID
+    as well as the Device GUID by default.
+    - The Device GUID is not prefixed with the text "Device GUID"
+      instead of just "GUID".  Any scripts scripting against this will
+      need to be adjusted.
+  o Bmc-info now supports a workaround of 'guidformat' to read the GUID
+    with a format a number of vendors have incorrectly used.
+  o In ipmi-config's sensor configuration, decimal values that cannot be
+    encoded accurately now report a clearer error message.
+
+  Libraries
+  ---------
+
+  o Update libfreeipmi and libipmimonitoring to support IPMI 2.0 Errata 5.
+    Included are:
+    - Support new sensor events for Power Supply and OS Boot sensors.
+    - Support PEF filter numbers up to 255.
+    - Support new System Info Parameters for Present OS Version, BMC
+      URL, and Base OS/Hypervisor URL.
+  o Update libfreeipmi to support Intel Node Manager payloads per Intel
+    Intelligent Power Node Manager 2.0 specification.
+    - Due to changes in the specification, some payload fields have been
+      changed.
+  o Update libfreeipmi SEL sub-library to handle new event messages in
+    Intelligent Power Node Manager 2.0 specification.
+
+-------------------------------------------------------------------
+Wed Jan 15 21:10:07 UTC 2014 - kkaempf@suse.com
+
+- Updated 1.3.4 release from upstream to support ppc64le.
+
+-------------------------------------------------------------------
+Thu Dec 19 14:01:05 UTC 2013 - kkaempf@suse.com
+
+- Prevent crash on systems with more than 601 sensors.
+  Add freeipmi-max-sensor.patch
+
+-------------------------------------------------------------------
+Fri Dec 13 07:31:45 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.3.4 - 12/12/13
+  -------------------------
+  o Support 'solchannelsupport' workraound in ipmiconsole /
+    IPMICONSOLE_WORKAROUND_SKIP_CHANNEL_PAYLOAD_SUPPORT workaround
+    flag in libipmiconsole.
+  o Fix SDR cache workaround for motherboards with invalid SDR record
+    counts listed.
+  o Workaround Supermicro bug in bmc-watchdog.
+  o Fix error checks in sensor decoding functions, leading to
+    possible problems in ipmi-sensors-config.
+  o Update documentation with additional workarounds for motherboards.
+  o Fix various minor bugs.
+
+-------------------------------------------------------------------
+Wed Oct 30 08:38:34 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.3.3
+  -------------------------
+  o Add support for intelnm get-node-manager-alert-destination and
+    set-node-manager-alert-destination in ipmi-oem.
+  o Under very verbose mode, ipmi-sel will now record types for OEM
+    records.  This should allow OEM parses outside of FreeIPMI to more
+    effectively parse OEM specific SEL records.
+  o Fix big endian portability bugs.    
+
+-------------------------------------------------------------------
+Sun Oct 27 19:14:16 UTC 2013 - p.drouand@gmail.com
+
+- Add systemd support for openSUSE >= 12.3
+
+-------------------------------------------------------------------
+Fri Oct  4 07:56:38 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.3.2 - 09/10/13
+  -------------------------
+  o Update FreeIPMI tools to check libfreeipmi API error codes
+    correctly.
+  o Update ipmi-api.h to list mappings of IPMI completion codes and
+    RMCPPlus codes to API Error codes.
+
+-------------------------------------------------------------------
+Mon Aug 26 07:05:01 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.3.1 - 08/22/13
+  Tools - New Features
+  --------------------
+  o In all tools reporting time (ipmi-sel, ipmi-fru, ipmi-oem,
+    bmc-device, ipmi-sensors, ipmi-dcmi), timestamps are now reporting
+    under the assumption the timestamp is already in localtime (compared
+    to being in UTC time and converted to localtime).  This is by
+    definition in the IPMI specification.
+  o In all tools reporting time (ipmi-sel, ipmi-fru, ipmi-oem,
+    bmc-device, ipmi-sensors, ipmi-dcmi), support --utc-to-localtime,
+    --localtime-to-utc, and --utc-offset options to allow users to
+    adjust timestamps as needed for certain environments.
+  o In ipmi-fru, support output of DDR3 SDRAM modules.
+  o In ipmi-fru, support output of new FRU multirecords, most notably
+    extended DC output and extended DC load (per FRU Revision 1.2
+    update).
+  o In bmc-device, support --get-sel-time-utc-offset and
+    --set-sel-time-utc-offset.
+
+  Tools - Bug Fixes/Minor Changes
+  -------------------------------
+  o In ipmi-fru, report power supply low/high end voltage ranges as
+    signed numbers (per FRU Revision 1.2 update).
+  o In ipmi-fru, output "unspecified" for manufacturing date/time or
+    peak capacity as appropriate (per FRU Revision 1.2 update).
+  o In ipmi-fru, bridge additional FRU entries as appropriate.
+  o In all tools reporting time (ipmi-sel, ipmi-fru, ipmi-oem,
+    bmc-device, ipmi-sensors, ipmi-dcmi), special timestamps such as
+    Post-Init and Unspecified will now be output.
+  o Fix output corner case with entity sensor names in various tools.
+
+  Libraries
+  ---------
+  o In libfreeipmi, support additional chassis types (per FRU Revision
+    1.2 update).
+  o In libfreeipmi, support new FRU multirecord types (per FRU Revision
+    1.2 update).
+  o In libfreeipmi, support new IPMI_FRU_FLAGS_READ_RAW 'fru'
+    sub-library flag to read data from the FRU raw without parsing
+    headers/records.
+  o In libfreeipmi, add support for DDR3 SDRAM FRU entries and JEDEC
+    manufacturer IDs.
+  o In libfreeipmi, add support for Get SEL Time UTC Offset and Set SEL
+    Time UTC Offset payloads.
+  o In libfreeipmi 'sel' sub-library, support
+    IPMI_SEL_PARAMETER_UTC_OFFSET,
+    IPMI_SEL_STRING_FLAGS_UTC_TO_LOCALTIME, and
+    IPMI_SEL_STRING_FLAGS_LOCALTIME_TO_UTC options/flags.
+  o In libfreeipmi, do not pad legacy byte on IPMI 1.5 packets.  Legacy
+    byte should be padded on ethernet frame, not IP packet.
+  o In libfreeipmi, 'sdr' sub-library, when creating SDR cache, add
+    checksums to cache to ensure data in cache is not corrupted.  Older
+    caches without checksums still backwards compatible supported.
+  o In libfreeipmi, support new IPMI_ERR_COMMAND_INVALID_OR_UNSUPPORTED
+    error code for IPMI commands that are invalid or unsupported.
+
+-------------------------------------------------------------------
+Tue Jul 23 06:08:05 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.2.9 - 07/17/13
+  -------------------------
+  o Fix threshold output corner case in ipmi-sensors.
+  o Fix invalid declaration in libipmimonitoring header.
+  o Fix older compiler build problems.
+
+-------------------------------------------------------------------
+Mon Jun 24 07:13:38 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.2.8 - 06/21/13
+  -------------------------
+  o Fix portability build bug on ARM systems.
+  o Add 'internal IPMI error' troubleshooting to manpages.
+  o Fix bmc-info corner case on Bull 510 systems.
+
+- drop automake-1_13.patch patch, included upstream
+
+-------------------------------------------------------------------
+Tue Apr 30 07:05:07 UTC 2013 - kkaempf@suse.com
+ 
+- FreeIPMI 1.2.6 - 04/29/13
+  -------------------------
+  o Support HP Proliant DL160 G8 OEM sensors.
+  o Support Supermicro X9SCM-iiF OEM sensors and events.
+  o Support output of temperature sampling period to ipmi-dcmi.
+  o Clarify error message when SOL session cannot be stolen in
+    ipmiconsole/libipmiconsole.
+  o Fix dcmi rolling average time period output error
+  o Fix ipmi-dcmi output errors with --get-dcmi-sensor-info.
+  o Fix corner case in calculation of confidentiality pad length with
+    AES-CBC-128 encryption.  Incorrect pad effects some vendor firmware
+    implementations.
+  o Send IPMI 2.0 packets differently than IPMI 1.5 packets, as the
+    former does not require legacy pad data to be appended to
+    payloads.
+  o Fix Intel OEM SEL buffer overflow.
+  o Fix out of trunk source build.
+
+  Libraries
+  ---------
+  o Support new ipmi_rmcpplus_sendto() and ipmi_rmcpplus_recvfrom()
+    functions.
+  o Support new HP Proliant DL160 G8 OEM sensor events.
+
+-------------------------------------------------------------------
+Thu Feb 28 11:18:34 UTC 2013 - kkaempf@suse.com
+
+- fix for automake 1.13
+
+-------------------------------------------------------------------
+Thu Feb 28 08:02:52 UTC 2013 - kkaempf@suse.com
+
+- FreeIPMI 1.2.5 - 02/26/13
+  -------------------------
+  o In all config tools (bmc-config, ipmi-pef-config,
+    ipmi-chassis-config, ipmi-sensors-config), fix bug when user
+    specifies --checkout and --filename option and no data outputs to
+    file.
+  o In all config tools, exit with value 1 when non-fatal errors
+    occur.
+    Exit with value 2 when fatal errors occur.
+  o Support Supermicro X9SPU-F-O OEM sensors and events.
+  o Support Supermicro X9DRI-LN4F+ OEM intepretations (previously
+    forgotten).
+  o Clarify use of --filename in config tool manpages.
+  
+- FreeIPMI 1.2.4 - 01/10/12 
+  ------------------------- 
+  o Support Supermicro X9DRI-LN4F+ OEM sensors and events. 
+  o Fix output corner case for "session-based" channels. 
+  o Fix ipmi-oem set-power-restore-delay corner case in time settings. 
+  o Fix ipmiseld memleak. 
+  o Fix libfreeipmi potential fd leak when generating random numbers. 
+  o Fix libfreeipmi error output bug in RMCP interface. 
+  o Fix several minor corner cases discovered by static code analysis.
+
+-------------------------------------------------------------------
+Thu Nov 15 08:59:44 UTC 2012 - kkaempf@suse.com
+
+- FreeIPMI 1.2.3 - 11/14/12
+  -------------------------
+  Tools
+  ------
+  o In ipmi-oem, support new Dell Poweredge R720 OEM commands extensions,
+    including:
+    - get-nic-selection-failover
+    - set-nic-selection-failover
+    - power-monitoring-over-interval
+    - power-monitoring-interval-range
+    - get-last-post-code
+  o In ipmi-oem, update active-lom-status for Dell Poweredge R720.
+  o In ipmi-oem, support new Dell Poweredge R720 get-system-info option
+    'cmc-info'.
+  o In ipmi-oem, Dell get-system-info "slot-number" key changed to
+    "blade-slot-info".  Legacy option still supported.
+  o In ipmi-sel, support Dell Poweredge R720 OEM SEL extensions.
+  o In all tools, support nochecksumcheck workaround option.
+  o In all daemons (ipmiseld, ipmidetectd, bmc-watchdog), check for
+    syscall errors during daemon setup.
+      
+  Libraries
+  ---------
+  o In libfreeipmi, support Dell R720 OEM extension intepretations.
+  o In libfreeipmi, libipmimonitoring, and libipmiconsole, support
+    NO_CHECKSUM_CHECK workaround flag.
+  o In libipmiconsole, IPMICONSOLE_DEBUG_FILE logs debug to files in
+    current working directory and not /var/log.  PID is also appended
+    to debug files.
+    
+  Misc
+  ----
+  o Various documentation updates and fixes.  
+
+-------------------------------------------------------------------
+Thu Oct  4 08:58:15 UTC 2012 - kkaempf@suse.com
+
+- FreeIPMI 1.2.2 - 10/02/12
+  Tools
+  ------
+  o Support new --sol-payload-instance and --deactivate-all-instances
+    options in ipmiconsole.
+  o Fix ipmiseld compile issue with -Werror=format-security.
+
+  Libraries
+  ---------
+  o In libipmiconsole, add new ipmiconsole_ctx_set_config() and
+    ipmiconsole_ctx_get_config() functions.
+  o In libipmiconsole, add support for specifying and handling
+    different SOL payload instances.  This support includes:
+    - Support new IPMICONSOLE_CTX_CONFIG_OPTION_SOL_PAYLOAD_INSTANCE
+      configuration option.
+    - In libipmiconsole, support new
+      IPMICONSOLE_BEHAVIOR_DEACTIVATE_ALL_INSTANCES behavior flag.
+    - Return more appropriate error codes when activation limits are
+      discovered.
+  o In libfreeipmi, fix debug output corner case when outputting byte
+    arrays.
+
+  Misc
+  ----
+  o Various documentation updates and fixes.
+
+-------------------------------------------------------------------
+Mon Jul 30 18:51:18 UTC 2012 - kkaempf@suse.com
+
+- FreeIPMI 1.1.7 - 07/30/12
+  o In ipmi-sensors and ipmi-sel, fix units output corner case.
+  o In bmc-info, detect unsupported system info corner case.
+  o Update documentation with motherboard support.
+  
+  Special Note: This will likely be the last release of FreeIPMI
+  in the 1.1.X stable branch.
+
+-------------------------------------------------------------------
+Wed Jul  4 13:18:37 UTC 2012 - kkaempf@suse.com
+
+- Fix build: %make_install -> %makeinstall
+
+-------------------------------------------------------------------
+Fri Jun 29 07:02:47 UTC 2012 - kkaempf@suse.com
+
+- FreeIPMI 1.1.6 - 06/28/12
+  - Tools
+  ------
+  o In ipmi-sel, support Supermicro SEL OEM interpretations in
+    --output-event-state.
+  o In ipmi-sel and ipmi-sensors, support additional sensor/SEL
+    interpretations including:
+    - Version Change
+    - System Firmware Progress Transition Severity
+    - Button/Switch Transition Severity
+    - Chassis Transition Severity
+    - POST Memory Resize State
+    - Cable/Interconnect Transition Severity
+    - Boot Error Transition Severity
+    - Slot Connector Transition Severity
+    - Memory State
+    - Memory Transition Severity
+  o In bmc-config, ipmi-chassis-config, ipmi-pef-config, and
+    ipmi-chassis-config, support cipher suite ID argument.
+  o Support Supermicro X9DRi-F OEM sensors and events.
+  o Fix Intel S2600JF/Appro 512x OEM SEL interpretations based on
+    comments from Intel.
+
+  Libraries
+  ---------
+  o Support Supermicro SEL OEM interpretations.
+  o Support new sensor/SEL interpretations.
+
+  Misc
+  ----
+  o Various documentation updates and fixes.
+
+-------------------------------------------------------------------
+Thu May 17 21:45:32 UTC 2012 - kkaempf@suse.com
+
+- FreeIPMI 1.1.5 - 05/17/12
+  Tools
+  ------
+  o Support Supermicro OEM sensors/SEL on H8DGU-F motherboards.
+  o In ipmiconsole, fix password length check bug.
+  o In bmc-watchdog, fix --start-if-stopped and --reset-if-running
+    options.
+  o In ipmidetectd, fix usage output typos.
+  o In ipmi-sensors-config, fix several parallel output corner cases.
+  o For consistency to other tools, turn on quiet-caching if
+    communicating with multiple hosts in bmc-device and ipmi-oem.
+  o In ipmi-sensors, fix bug in which multiple workarounds could not
+    be used or used in combination with bridging.
+  o Fix start run levels in ipmidetectd init script.
+  
+  Libraries
+  ---------
+  o In libfreeipmi fru-parse API, handle additional device busy errors.
+  
+  Misc
+  ----
+  o Various documentation updates.
+
+-------------------------------------------------------------------
+Tue May  8 08:18:31 UTC 2012 - trenn@suse.de
+
+- Fix build: Added version 1.1.4 tarball
+- Adjust specfile according to spec-cleaner as suggested by Sascha Peilicke
+  to get this package into factory.
+
+-------------------------------------------------------------------
+Fri Apr 20 06:42:25 UTC 2012 - kkaempf@suse.com
+
+- FreeIPMI 1.1.4 - 04/19/12
+  Tools
+  ------
+  o In ipmi-oem, fix error message output in several Supermicro OEM
+    commands.
+  o In ipmi-oem, add Intel --get-power-restore-delay and
+    --set-power-restore-delay support.
+  o In ipmi-sel, support Intel S2600JF/Appro 512x OEM SEL
+    interpretations.
+      
+  Libraries
+  ----------
+  o In libfreeipmi, support new sensor and SEL event
+    interpretations, including Session Audit, Voltage Limits.
+  o In libfreeipmi, support new OEM interpretations for Intel S5000PAL
+    NMI State and SMI timeout sensors/SEL events.
+  o In libfreeipmi, support Intel S2600JF/Appro 512x OEM SEL
+    interpretations.
+      
+  Misc
+  ----
+  o Various documentation updates.
+
+-------------------------------------------------------------------
+Fri Mar 23 16:14:28 UTC 2012 - trenn@suse.de
+
+- Adjust source url, downloadable tarballs moved from zresearch
+  to ftp.gnu.org
+- Update to 1.1.3
+
+-------------------------------------------------------------------
+Mon Mar 19 10:14:02 UTC 2012 - trenn@suse.de
+
+- Adjust .spec file via format_spec_file
+
+-------------------------------------------------------------------
+Tue Mar  6 16:11:04 UTC 2012 - trenn@suse.de
+
+- Update to 1.1.2
+- Adjusted license to GPL-3.0
+- Silent some build checks:
+   - license string
+   - too short description
+   - remove INSTALL file from %docdir
+
+-------------------------------------------------------------------
+Wed Sep 21 09:05:12 UTC 2011 - kkaempf@suse.com
+
+- Update to 1.0.6
+  o Support 'ignorescanningdisabled' workaround in ipmi-sensors.
+  o Support Supermicro X8SIL-F, X9SCL, and X9SCM motherboard OEM sensors.
+  o Update bmc-watchdog logrotate script to reduce unnecessary output.
+  o Fix ipmi-fru output typo.
+
+- Update to 1.0.5
+  o Fix various issues in ipmi-dcmi, including command line parsing
+    bugs, asset tag/string identifier overwriting, and fix assumptions
+    based on new information in v1.5 errata.
+  o Support pkg-config files for libraries.
+  o Various documentation updates.  
+
+-------------------------------------------------------------------
+Sat Apr 23 14:01:37 UTC 2011 - kkaempf@novell.com
+
+- Update to 1.0.4
+  o Support "discretereading" workaround in ipmi-sensors and
+    associated libraries.
+  o Support "spinpoll" workaround/performance optimization in tools
+    and libraries.
+  o Support additional sensor/SEL interpretations for Intel
+    motherboards.
+  o Add convenience input checking functions to libipmiconsole.
+  o Fix bug in libipmimonitoring to allow additional OEM
+    interpretations.
+
+-------------------------------------------------------------------
+Wed Mar 30 07:38:14 UTC 2011 - kkaempf@novell.com
+
+- update to 1.0.3
+  o Support additional error handling in bmc-info.
+  o Support ability to set "none" workaround flags on the command
+    line and in tools.
+  o In libipmiconsole, force ipmiconsole_engine_init() to be
+    called before ipmiconsole_ctx_create().
+  o Fix libipmiconsole callback semantics.
+  o Fix libipmiconsole bugs in overriding standard defaults vs.
+    config file defaults.
+  o Fix potential race in libipmiconsole during engine teardown.
+  o Add package version macros to libfreeipmi.
+  o Add library version macros to all libraries.
+  o Fix Solaris build bug.
+  o Fix config output bug in ipmipower.    
+- update to 1.0.2
+  o Support --ignore-unrecognized-events in ipmi-sensors. 
+  o Clarify error messages in ipmi-locate. 
+  o Support Supermicro X7DBR-3, X8DTL-3F, X8DT3-LN4F motherboard OEM 
+    sensors. 
+  o Support Dell Module/Board OEM sensor interpretation on Poweredge 
+    R210 motherboards. 
+  o In bmc-info, support motherboards that don't implement Get Device 
+    Guid. 
+  o In bmc-watchdog, fix error logging corner case. 
+  o Support new -r option in ganglia_ipmi_sensors.pl plugin to modify 
+    ipmi hostname. 
+  o Add workaround for SDR caching compliance bug in HP Proliant 
+    DL585G7. 
+  o In bmc-config, add workaround for motherboards that do not allow 
+    you to configure identical usernames. 
+  o Various documentation updates. 
+
+- update to 1.0.1
+  o Remove ipmimonitoring tool. Tool is now superseded by ipmi-sensors
+    and the new --output-sensor-state option. 
+  o Support --output-event-state option for ipmi-sel to support SEL
+    event interpretation. 
+  o All config-tools now support multi-channel configuration under 
+    verbose mode. 
+  o Re-architect libipmimonitoring to support all defined IPMI sensor
+    types, OEM bitmasks, and OEM interpretations. 
+  o Add SEL monitoring support to libipmimonitoring. 
+  o Support new 'interpret' sub-library in libfreeipmi. 
+  o Support interpretation rules for sensors when no states/events occur. 
+  o Support interpretation rules for out of spec sensor states/events. 
+  o Support interpretation rules for OEM sensors and events. 
+  o Move all config files to /etc/freeipmi/. Support legacy config 
+    files for backwards compatibility. 
+  o Support serial keepalive in ipmiconsole to check if serial 
+    connection has remained alive across system reboots. 
+  o Create symlinks and manpage pointers for 'ipmi-power', 'ipmi-ping',
+    'rmcp-ping', 'ipmi-console', and 'ipmi-detect' to give some additional
+    consistency to the tool naming. 
+  o Various documentation updates. 
+  o Update to support DCMI 1.1. 
+  o Update all licensing information to GPLv3.
+
+- update to 0.8.12
+  o In bmc-config, workaround RMCP+ Privilege Level configuration 
+    compliance bugs on HP DL145 servers. 
+  o In ipmi-chassis-config, after configuring boot flags, set valid bits 
+    appropriately. 
+  o Fix N/A output corner case in ipmi-sel. 
+  o Support Supermicro X8DTU-6+ motherboard OEM sensors. 
+  o Fix FRU date/time calculation bug that did not account for leap 
+    years.
+
+- update to 0.8.11
+  o Support Fujitsu iRMC S1 and iRMC S2 OEM extensions in 
+    ipmi-sensors and ipmi-sel. 
+  o Support --output-oem-event-string in ipmi-sel. 
+  o Other minor documentation/bug fixes.
+
+- update to 0.8.10
+  o Support many new Inventec OEM extensions in ipmi-oem. 
+  o Support many new Quanta OEM extensions in ipmi-oem. 
+  o Support many new Intel OEM extensions in ipmi-oem. 
+  o Support Intel s5500WB OEM extensions in ipmi-sel. 
+  o Support Intel Node Manager SEL events across Quanta S99Q, 
+    Inventec 5441, Inventec 5442, and Intel S5500WB motherboards. 
+  o Move some OEM extensions from Dell section to Inventec section in 
+    ipmi-oem. Were previously thought to be additions by Dell, but 
+    in fact are not. Backwards compatability supported. 
+  o Support 'assumeio' inband workaround globally. 
+  o Gracefully handle some errors in ipmi-sensors. 
+  o Fix in-band probing corner case. 
+  o Fix various parameter input checks in ipmi-oem. 
+  o Fix help output corner cases in ipmi-oem. 
+  o Other minor documentation/bug fixes.
+
+- update to 0.8.9
+  o In ipmi-sel and ipmimonitoring, workaround Supermicro H8QME SEL 
+    compliance issues in ipmi-sel. 
+  o In ipmi-sel, do not report error if SEL is empty. 
+  o Support Fujitsu 'get-sel-entry-long-text' in ipmi-oem. 
+  o Fix workaround flags bug in ipmimonitoring. 
+  o Revert 'Open Session Privilege Workaround' changes in 0.8.8, were
+    unnecessary. 
+  o Fix daylight savings bug when configuring BMC times in bmc-device. 
+  o Support 'veryslowcommit' workaround for config tools to work around
+    very slow BMCs. 
+  o Support --enable-rawdumps compile option. 
+  o Support SHA256 in IPMI 2.0. 
+  o Other minor bug fixes.
+
+- update to 0.8.8
+  o Support Supermicro 'get-bmc-services-status' and 
+    'set-bmc-services-status' in ipmi-oem. 
+  o Support bmc-watchdog 'ignorestateflag' workaround around more 
+    issues. 
+  o Support Open Session Privilege Workaround around more related 
+    compliance issues. 
+  o Fix bmc-watchdog --version option. 
+  o Fix legacy workaround corner case in channel detection for 
+    Intel nodes. 
+  o Support Quanta reset-to-defaults command in ipmi-oem. 
+  o Modify ipmiconsole protocol to not deactivate SOL protocol is 
+    SOL is already deactivated. 
+  o Modify ipmiconsole protocol to not error out under several 
+    malformed packet scenarios. 
+  o Fix ipmiping/rmcpping command line parsing corner case. 
+  o Minor documentation updates. 
+  o Minor error message output fixes. 
+  o Support --without-random-device configure option for some 
+    embedded systems.
+
+- update to 0.8.7
+  o Support Supermicro X8DTG OEM sensors. 
+  o Support Supermicro X8DTG workarounds with 'integritycheckvalue'
+    workaround flag. 
+  o Document workarounds for Intel S5500WBV/Penguin Relion 700
+    motherboard. 
+  o Map IPMI 2.0 "invalid role" error code to "privilege level cannot be 
+    obtained" for better usability. 
+  o Fix bmc-config Security Keys commit by making some required fields
+    optional. 
+  o Fix bmc-watchdog init script return codes on Suse. 
+  o Support 'ignorestateflag' workaround in bmc-watchdog. 
+  o Fix ipmi-sensors corner case for sensors with percentage units. 
+  o Support 'slowcommit' workaround for config tools to work around
+    slower BMCs. 
+  o Update documentation w/ Supermicro X8DTG issues. 
+  o Update documentation w/ inband troubleshooting.
+
+- update to 0.8.6
+  o Support Quanta S99Q/Dell FS12-TY OEM SEL events. 
+  o In ipmi-oem, support Quanta S99Q/Dell FS12-TY OEM commands. 
+  o Fix --key-pair parsing bug in all config tools. 
+  o Locally support sunbmc driver if bmc_intf.h header not found. 
+  o If Sunbmc driver is not supported, report "Device Not Supported" 
+    instead of "Internal Error". 
+  o Fix error output messages. 
+  o Fix Solaris install issue. 
+  o Other minor fixes.
+
+-------------------------------------------------------------------
+Fri Apr 30 07:26:00 UTC 2010 - kkaempf@novell.com
+
+- update to 0.8.5
+  - Support Inventec 5442/Dell Xanadu III OEM events.
+  - Workaround Quanta S99Q/Dell FS12-TY Node Busy errors.
+  - Fix some library error checks limiting bmc-config Bad Password
+    Threshold configuration.
+  - Fix some library macro names based on actual OEM names.
+  - Fix documentation typos.
+  
+  (update to 0.8.4)
+  - Fix IPMI 2.0 sequence number wrap around corner case.
+  - Fix ipmi-sensors --comma-separated-output corner case.
+  - In ipmi-sensors, output multiple event strings w/ space
+    delimiter in simple output.
+    - In ipmi-oem, support Dell get-active-lom-status.
+    - In ipmi-oem, support IBM get-led.
+    - In ipmi-sel, fix possible --assume-system-event-records
+      corner case.
+  - Fix Posix portability issue w/ time functions.
+  - Minor documentation updates.
+
+-------------------------------------------------------------------
+Wed Feb  3 07:04:10 UTC 2010 - kkaempf@novell.com
+
+- update to 0.8.3
+  - fix buffer overflow (was: ipmi-messaging-support-cmds.patch)
+
+-------------------------------------------------------------------
+Thu Jan 14 13:17:47 UTC 2010 - kkaempf@novell.com
+
+- adapt_to_suse_docdir.patch: Use /usr/share/doc/packages/$(name)
+- add_default_start.patch: Add 'Default-Start:' to init.d scripts
+- ipmi-messaging-support-cmds.patch: Fix buffer overflow
+
+-------------------------------------------------------------------
+Thu Jan 14 10:56:05 UTC 2010 - kkaempf@novell.com
+
+- Update to 0.8.2
+

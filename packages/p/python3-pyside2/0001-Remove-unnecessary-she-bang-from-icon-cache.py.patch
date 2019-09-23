@@ -1,0 +1,21 @@
+From 08afc74f3c040569bf7e41483358bec968de7d06 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 21 Dec 2018 16:20:45 +0100
+Subject: [PATCH] Remove unnecessary she-bang from icon-cache.py
+
+---
+ sources/pyside2-tools/pyside2uic/icon_cache.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/sources/pyside2-tools/pyside2uic/icon_cache.py b/sources/pyside2-tools/pyside2uic/icon_cache.py
+index 523d207..9d0dfe2 100644
+--- a/sources/pyside2-tools/pyside2uic/icon_cache.py
++++ b/sources/pyside2-tools/pyside2uic/icon_cache.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # This file is part of the PySide project.
+ #
+ # Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies).
+-- 
+2.19.2
+

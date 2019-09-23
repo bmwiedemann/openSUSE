@@ -1,0 +1,8 @@
+<package name="rubygem-net-ssh-gateway" project="openSUSE:Factory">
+  <title>A simple library to assist in establishing tunneled Net::SSH connections</title>
+  <description>A simple library to assist in establishing tunneled Net::SSH connections
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-net-ssh-gateway"/>
+  <url>http://net-ssh.rubyforge.org/gateway</url>
+</package>

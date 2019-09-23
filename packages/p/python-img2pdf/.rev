@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>277aeef1d5e778f6eadd7016b0dbddac</srcmd5>
+    <version>0.2.4</version>
+    <time>1528195991</time>
+    <user>dimstar_suse</user>
+    <comment>Convert images to PDF via direct JPEG inclusion</comment>
+    <requestid>614045</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7dd2f421a572df71e266970b665c19a7</srcmd5>
+    <version>0.2.4</version>
+    <time>1533045659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626378</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a46a6f51c9c346440b5ad7f723e1f828</srcmd5>
+    <version>0.2.4</version>
+    <time>1545647902</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659438</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>caa8a8a70d7ace0dcb20eaed76fd710b</srcmd5>
+    <version>0.3.3</version>
+    <time>1553700175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689088</requestid>
+  </revision>
+</revisionlist>

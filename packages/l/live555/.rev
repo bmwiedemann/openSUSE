@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb2819003fd2d21ee8e3b05f84edfd81</srcmd5>
+    <version>2013.04.30</version>
+    <time>1367932576</time>
+    <user>coolo</user>
+    <comment>New addition: live555 demuxer: can be used by VLC</comment>
+    <requestid>174706</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bb2819003fd2d21ee8e3b05f84edfd81</srcmd5>
+    <version>2013.04.30</version>
+    <time>1379663169</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bb2819003fd2d21ee8e3b05f84edfd81</srcmd5>
+    <version>2013.04.30</version>
+    <time>1409301806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edde72f4983c81ec929efc59452b2bfb</srcmd5>
+    <version>2014.09.22</version>
+    <time>1412533827</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253614</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>046a6efb1f5f88860514f160fafeb79a</srcmd5>
+    <version>2014.09.22</version>
+    <time>1415016668</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258933</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ebc1909654efd4c83efe75c77c95dd0</srcmd5>
+    <version>2015.01.27</version>
+    <time>1423214227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283913</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dc10c7c9e79f1ed932147c289b4fb7d</srcmd5>
+    <version>2015.10.12</version>
+    <time>1445287955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339475</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>882c79cfec7476429e9526bcc3f747d0</srcmd5>
+    <version>2016.10.11</version>
+    <time>1477134075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435617</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00401f6885dc1c5de3212760e6a9ed31</srcmd5>
+    <version>2017.06.04</version>
+    <time>1499880764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508982</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6a024b0c14685b13daa0b2983f2ae471</srcmd5>
+    <version>2017.06.04</version>
+    <time>1503589156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515043</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a38377b3866516a6063e06779945fd2</srcmd5>
+    <version>2017.10.28</version>
+    <time>1509820070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538277</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ebc07ea258e84ae2f8b03d2dd5ffa6f9</srcmd5>
+    <version>2018.10.17</version>
+    <time>1542012643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646703</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c5d84e3988cd49bcaff383197b22837</srcmd5>
+    <version>2018.12.14</version>
+    <time>1549311496</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666197</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>39755ecaa7bcf8e76dcb09f07218ce1f</srcmd5>
+    <version>2019.02.03</version>
+    <time>1549630123</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672138</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>fc86e2f4288cf52c5d90e62989904e7f</srcmd5>
+    <version>2019.02.03</version>
+    <time>1558340793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703463</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d03f858c77c53c0e4cb2b3640590ca05</srcmd5>
+    <version>2019.02.03</version>
+    <time>1561645390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712054</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>95c4d5dc6f34d8ea0228d46849b76691</srcmd5>
+    <version>2019.06.28</version>
+    <time>1563366210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.06.28, fixes boo#1127341 VUL-1:CVE-2019-9215: live555: malformed headers lead to invalid memory access in the parseAuthorizationHeader function.</comment>
+    <requestid>715479</requestid>
+  </revision>
+</revisionlist>

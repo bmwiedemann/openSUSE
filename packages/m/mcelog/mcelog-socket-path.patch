@@ -1,0 +1,13 @@
+--- mcelog-1.0.1.orig/paths.h
++++ mcelog-1.0.1/paths.h
+@@ -4,8 +4,8 @@
+ #define DIMM_DB_FILENAME PREFIX "/var/lib/memory-errors"
+ #define CONFIG_FILENAME PREFIX "/etc/mcelog/mcelog.conf"
+ 
+-#define SOCKET_PATH "/var/run/mcelog-client"
++#define SOCKET_PATH "/run/mcelog/mcelog-client"
+ 
+ #define LOG_FILE "/var/log/mcelog"
+ 
+-#define PID_FILE "/var/run/mcelog.pid"
++#define PID_FILE "/run/mcelog/mcelog.pid"

@@ -1,0 +1,34 @@
+From b704fa4d735222166cd2d43c9f8da60df5b4fd0d Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 4 May 2018 09:10:10 +0200
+Subject: [PATCH] sddm-theme: Set needsFullUserModel=false
+
+Otherwise SDDM has to load all users even if they're not shown.
+See https://github.com/sddm/sddm/pull/1017
+---
+ sddm-theme/Main.qml         | 2 ++
+ sddm-theme/theme.conf.cmake | 1 +
+ 2 files changed, 3 insertions(+)
+
+Index: plasma-workspace-5.16.0/sddm-theme/Main.qml
+===================================================================
+--- plasma-workspace-5.16.0.orig/sddm-theme/Main.qml
++++ plasma-workspace-5.16.0/sddm-theme/Main.qml
+@@ -182,6 +182,8 @@ PlasmaCore.ColorScope {
+ 
+                     if ( userListModel.count === 0 ) return false
+ 
++                    if ( userListModel.hasOwnProperty("containsAllUsers") && !userListModel.containsAllUsers) return false
++
+                     return userListModel.count <= userListModel.disableAvatarsThreshold && (userList.y + mainStack.y) > 0
+                 }
+ 
+Index: plasma-workspace-5.16.0/sddm-theme/theme.conf.cmake
+===================================================================
+--- plasma-workspace-5.16.0.orig/sddm-theme/theme.conf.cmake
++++ plasma-workspace-5.16.0/sddm-theme/theme.conf.cmake
+@@ -3,3 +3,4 @@ type=image
+ color=#1d99f3
+ fontSize=10
+ background=${CMAKE_INSTALL_PREFIX}/${WALLPAPER_INSTALL_DIR}/Next/contents/images/5120x2880.png
++needsFullUserModel=false

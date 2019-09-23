@@ -1,0 +1,34 @@
+#!/bin/sh
+# 
+# Batik SVG Browser (Squiggle) script
+# JPackage Project <http://www.jpackage.org/>
+
+# Source functions library
+if [ -f /usr/share/java-utils/java-functions ] ; then 
+  . /usr/share/java-utils/java-functions
+else
+  echo "Can't find functions library, aborting"
+  exit 1
+fi
+
+# Source system prefs
+if [ -f /etc/xmlgraphics-batik-squiggle.conf ] ; then 
+  . /etc/xmlgraphics-batik-squiggle.conf
+fi
+
+# Source user prefs
+if [ -f $HOME/.xmlgraphics-batik-squigglerc ] ; then 
+  . $HOME/.xmlgraphics-batik-squigglerc
+fi
+
+# Configuration
+MAIN_CLASS=org.apache.batik.apps.svgbrowser.Main
+BASE_JARS="xmlgraphics-batik/squiggle xmlgraphics-batik/swing xmlgraphics-batik/gui-util xmlgraphics-batik/bridge xmlgraphics-batik/util xmlgraphics-batik/dom rhino xml-commons-jaxp-1.3-apis xml-commons-jaxp-1.3-apis-ext"
+# Set parameters
+set_jvm
+set_classpath $BASE_JARS
+set_flags $BASE_FLAGS
+set_options $BASE_OPTIONS
+
+# Let's start
+run "$@"

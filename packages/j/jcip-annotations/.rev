@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01300f8b6daa6e6fb2ca4e27ae67bc93</srcmd5>
+    <version>1.0</version>
+    <time>1291807652</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55007 from user coolo
+</comment>
+    <requestid>55007</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1861b2f1d2df1feddc148c4c15e1c8e8</srcmd5>
+    <version>1.0</version>
+    <time>1291807657</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55007
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1861b2f1d2df1feddc148c4c15e1c8e8</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>1861b2f1d2df1feddc148c4c15e1c8e8</srcmd5>
+    <version>1.0</version>
+    <time>1319182008</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>bcd569d6a4ec764b1782a173302cfc3e</srcmd5>
+    <version>1.0</version>
+    <time>1330618829</time>
+    <user>coolo</user>
+    <comment>license update: CC-BY-2.5
+Most of the pattern matches in the package are for CC-BY-2.5, not CC-BY-3.0 (forwarded request 107179 from babelworx)</comment>
+    <requestid>107182</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>bcd569d6a4ec764b1782a173302cfc3e</srcmd5>
+    <version>1.0</version>
+    <time>1340183484</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>bcd569d6a4ec764b1782a173302cfc3e</srcmd5>
+    <version>1.0</version>
+    <time>1359109120</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>cfaea66c22112d1cf522d97510cf58e9</srcmd5>
+    <version>1.0</version>
+    <time>1378899521</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198286</requestid>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>cfaea66c22112d1cf522d97510cf58e9</srcmd5>
+    <version>1.0</version>
+    <time>1379662710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>cfaea66c22112d1cf522d97510cf58e9</srcmd5>
+    <version>1.0</version>
+    <time>1409301276</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>b8e779318785d0ce976c53be989220f5</srcmd5>
+    <version>1.0</version>
+    <time>1427983024</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292625</requestid>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>66485f720d35747f0a1eb7b53e7f595f</srcmd5>
+    <version>1.0</version>
+    <time>1495442838</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new javapackages-tools</comment>
+    <requestid>496634</requestid>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>c2c3a7a7f16ff23b4a3a5dc3743747f3</srcmd5>
+    <version>1.0</version>
+    <time>1505920192</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527147</requestid>
+  </revision>
+</revisionlist>

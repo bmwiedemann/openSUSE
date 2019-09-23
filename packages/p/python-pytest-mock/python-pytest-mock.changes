@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Wed Sep 11 08:21:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add back the mock 3.0 patch as the mock is being integrated now:
+  * mock3.patch
+
+-------------------------------------------------------------------
+Fri Jul 26 12:26:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove mock30.patch for now as we are not able to upgrade
+  to mock3 yet
+
+-------------------------------------------------------------------
+Thu Jul 18 08:52:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add upstream patch to test with pytest5 - fix_tests.patch 
+
+-------------------------------------------------------------------
+Wed May 15 17:39:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from upstream to build with new mock:
+  * mock30.patch
+
+-------------------------------------------------------------------
+Mon Apr 29 08:07:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.10.4:
+  * Fix plugin when 'terminal' plugin is disabled
+
+-------------------------------------------------------------------
+Mon Apr  1 08:34:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.10.3:
+  * Fix test suite in Python 3.8. Thanks @hroncok for the report and @blueyed for the PR (#140).
+
+-------------------------------------------------------------------
+Tue Mar 26 09:33:33 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.10.2
+  * Fix bug at the end of the test session when a call to
+    patch.stopall is done explicitly by user code.
+
+-------------------------------------------------------------------
+Wed Feb 13 09:46:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.10.1:
+  * Fix broken links and update README. Also the code is now formatted using black.
+
+-------------------------------------------------------------------
+Sun May  6 19:35:00 UTC 2018 - arun@gmx.de
+
+- update to version 1.10.0:
+  * Add support for the recently added assert_called method in Python
+    3.6 and mock-2.0. Thanks @rouge8 for the PR (#115).
+
+-------------------------------------------------------------------
+Sat Apr 21 16:39:10 UTC 2018 - arun@gmx.de
+
+- update to version 1.9.0:
+  * Add support for the recently added assert_called_once method in
+    Python 3.6 and mock-2.0. Thanks @rouge8 for the PR (#113).
+
+- changes from version 1.8.0:
+  * Add aliases for NonCallableMock and create_autospec to
+    mocker. Thanks @mlhamel for the PR (#111).
+
+-------------------------------------------------------------------
+Sat Mar  3 10:13:26 UTC 2018 - mimi.vx@gmail.com
+
+- update to 1.7.1
+  * fix reading README.rst in setup.py
+
+-------------------------------------------------------------------
+Fri Mar  2 10:04:50 UTC 2018 - chris@computersalat.de
+
+- fix deps for setuptools
+
+-------------------------------------------------------------------
+Thu Mar  1 00:05:11 UTC 2018 - mimi.vx@gmail.com
+
+- update to 1.7.0
+  * Drop support for python-2.6 and python-3.3
+
+-------------------------------------------------------------------
+Thu Jan 11 12:23:03 UTC 2018 - tchvatal@suse.com
+
+- Fix building with python3 only available
+- Install properly license file/etc
+
+-------------------------------------------------------------------
+Wed Oct 11 14:45:16 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.6.3:
+  * Fix UnicodeDecodeError during assert introspection in
+    assert_called_with in Python 2.
+  * Provide source package in tar.gz format and remove obsolete
+    MANIFEST.in.
+  * Fix mocker.resetall() by ignoring mocker objects which don't
+    have a resetall method, like for example patch.dict
+
+-------------------------------------------------------------------
+Fri Aug 11 14:27:43 UTC 2017 - tbechtold@suse.com
+
+- Remove python-virtualenv BuildRequires and simplify test
+  execution
+
+-------------------------------------------------------------------
+Wed Apr  5 12:22:45 UTC 2017 - jmatejek@suse.com
+
+- update to 1.6.0
+  * original assertions now appear in failure message
+- shorten summary
+- add requirements on mock and pytest
+- enable tests
+
+-------------------------------------------------------------------
+Thu Mar  9 09:06:36 UTC 2017 - okurz@suse.com
+
+- Initial singlespec submission
+

@@ -1,0 +1,22 @@
+# This file is part of package dkimproxy.
+# 
+# Copyright (c) 2018 SuSE LINUX Products GmbH, Germany.
+# Author: Peter Varkoly
+# Please send feedback to http://www.suse.de/feedback
+#
+# Description:
+#
+#  Used to start the DKIMproxy. This is an SMTP-proxy 
+#  that implements the DKIM and DomainKeys standards
+#
+
+[Unit]
+Description=Outbound DKIM-proxy (dkimproxy.out)
+After=remote-fs.target
+
+
+[Service]
+EnvironmentFile=/etc/sysconfig/dkimproxy
+PIDFile=/run/dkimporxy_out.pid
+ExecStart=/usr/share/dkimproxy/bin/dkimproxy.out --conf_file=$DKIMPROXY_OUT_CFG --user=$DKIMPROXY_USER --group=$DKIMPROXY_GROUP --daemonize
+

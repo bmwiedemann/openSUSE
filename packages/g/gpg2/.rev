@@ -1,0 +1,1132 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>3fe832eafeb1475c7db0198a1f9e97d4</srcmd5>
+    <version>1.9.22</version>
+    <time>1168902933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d733a59618700919ed36e22fed63d8b2</srcmd5>
+    <version>2.0.1rc1</version>
+    <time>1170086391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fe7cc46dbb55d0177ac518eba0c8d31e</srcmd5>
+    <version>2.0.1rc1</version>
+    <time>1170114769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8521d8ff99186fb85407d160aa4f5f65</srcmd5>
+    <version>2.0.1rc1</version>
+    <time>1171559900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="10">
+    <srcmd5>c8c4b3f3f63f2efb189b3ab818181f16</srcmd5>
+    <version>2.0.1rc1</version>
+    <time>1175213314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a6c4188ea45d8700b802a2c910bf4f4d</srcmd5>
+    <version>2.0.3</version>
+    <time>1175711429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f13d0e357a513582a2c90b97455ddd1</srcmd5>
+    <version>2.0.4</version>
+    <time>1178890554</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>57627153bee3702386f7ae3388c42848</srcmd5>
+    <version>2.0.4</version>
+    <time>1179325218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>f813e59818a637fdee321c55d015b218</srcmd5>
+    <version>2.0.4</version>
+    <time>1179955131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>c60dd208841e3a5d6e13392fe080b7d7</srcmd5>
+    <version>2.0.4</version>
+    <time>1182455761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="25">
+    <srcmd5>716575aed5300d290cd016da94bf0129</srcmd5>
+    <version>2.0.4</version>
+    <time>1185493384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="42">
+    <srcmd5>3bf7cc1eaaea5f090b2359aa846e3b4e</srcmd5>
+    <version>2.0.4</version>
+    <time>1189527519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="44">
+    <srcmd5>4b83d3da1cb215f057bd6c2d99baf5cf</srcmd5>
+    <version>2.0.4</version>
+    <time>1189701884</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>43cc766258302dc40f7072496a1db6ff</srcmd5>
+    <version>2.0.5</version>
+    <time>1193355965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a5db0bdc259cc65723c90b15edea2a33</srcmd5>
+    <version>2.0.8</version>
+    <time>1199970870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>f822e5400f94dc146d05bf989311f9a6</srcmd5>
+    <version>2.0.8</version>
+    <time>1202492744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>afd54102703614cac1a087eba042d3c5</srcmd5>
+    <version>2.0.8</version>
+    <time>1203034858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>7a2586614294aa8e5dff296e8bc591b9</srcmd5>
+    <version>2.0.8</version>
+    <time>1206544387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>9a6ca6f8edded8a4b1d7f2917ced74a5</srcmd5>
+    <version>2.0.8</version>
+    <time>1206651708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e57aefed5b630ca5a6b5a7957fefb82a</srcmd5>
+    <version>2.0.9</version>
+    <time>1207454131</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>c63bb589191d5e7a0089e559bfc89b9d</srcmd5>
+    <version>2.0.9</version>
+    <time>1211407467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>a01a108d079ce1f6dca95052b47b2fb8</srcmd5>
+    <version>2.0.9</version>
+    <time>1214095751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>355cd6383c433739694cc7ed517c467d</srcmd5>
+    <version>2.0.10</version>
+    <time>1231869466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8335a97e352cdc52a50da90d4be297f2</srcmd5>
+    <version>2.0.10</version>
+    <time>1232625858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>5c72f655007abf5903bdb82db217c277</srcmd5>
+    <version>2.0.10</version>
+    <time>1236008011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e28e3ab3f2af7725ff3750940005772f</srcmd5>
+    <version>2.0.11</version>
+    <time>1236267923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>36880b5a63a6273216d33282fa299b15</srcmd5>
+    <version>2.0.11</version>
+    <time>1237574233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>a0bcdbde5beac44ddbc40a5a6b8f391d</srcmd5>
+    <version>2.0.11</version>
+    <time>1243938495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>31bdb46459f9def3d7cd12d5cbba5fb4</srcmd5>
+    <version>2.0.11</version>
+    <time>1244820832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>636ba7f1ba5cc8364a8834d43020a60d</srcmd5>
+    <version>2.0.12</version>
+    <time>1245454385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>636ba7f1ba5cc8364a8834d43020a60d</srcmd5>
+    <version>2.0.12</version>
+    <time>1245454385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f655fbf7ff83d45d7167e2b75e82aaea</srcmd5>
+    <version>2.0.13</version>
+    <time>1258392933</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 24526 from user puzel
+</comment>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>bab6f01a133bd195fdc8c6c63a696810</srcmd5>
+    <version>2.0.13</version>
+    <time>1260978659</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 26776 from user puzel
+</comment>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a871e68432b59a70bd42f477ba96362a</srcmd5>
+    <version>2.0.13</version>
+    <time>1264777034</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 30695 from user puzel
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>370e087570f6b7376f49faceff551bdc</srcmd5>
+    <version>2.0.14</version>
+    <time>1266508896</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 32876 from user puzel
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d60cfdcbc1775c55ce9ac10ed82d2724</srcmd5>
+    <version>2.0.14</version>
+    <time>1266973528</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 33137 from user msmeissn
+</comment>
+    <requestid>33137</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>2ef53b9304a78baa0cf29082e24089c1</srcmd5>
+    <version>2.0.14</version>
+    <time>1268923856</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>3c67794410cc30e0a2ae94e9893f26d2</srcmd5>
+    <version>2.0.14</version>
+    <time>1269562308</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 35485 from user puzel
+</comment>
+    <requestid>35485</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>295537c0f7c4a4462a667ec81b951731</srcmd5>
+    <version>2.0.15</version>
+    <time>1270128545</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 36536 from user puzel
+</comment>
+    <requestid>36536</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>2351f1e44c6c821c6799da5948561db3</srcmd5>
+    <version>2.0.15</version>
+    <time>1270656496</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 37232 from user puzel
+</comment>
+    <requestid>37232</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>925c1ac445e8d96f122538b66560d32c</srcmd5>
+    <version>2.0.15</version>
+    <time>1271251727</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 37836 from user puzel
+</comment>
+    <requestid>37836</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>2fba334f067c1ce84104699c06e4601e</srcmd5>
+    <version>2.0.15</version>
+    <time>1276095824</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/gpg2 based on submit request 41206 from user adrianSuSE
+</comment>
+    <requestid>41206</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>2fba334f067c1ce84104699c06e4601e</srcmd5>
+    <version>2.0.15</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>2fba334f067c1ce84104699c06e4601e</srcmd5>
+    <version>2.0.15</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>251ae3f61c789eb01db1e2c5ff8b5b83</srcmd5>
+    <version>2.0.16</version>
+    <time>1279608099</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 43430 from user puzel
+</comment>
+    <requestid>43430</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ed853ccc4a12e762e4dae9814fd9ff60</srcmd5>
+    <version>2.0.16</version>
+    <time>1280494291</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/gpg2 based on submit request 44100 from user puzel
+</comment>
+    <requestid>44100</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>b6482a59e47c19e8f872fb2a1fd65506</srcmd5>
+    <version>2.0.16</version>
+    <time>1288692327</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51918 from user coolo
+</comment>
+    <requestid>51918</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>641dae663d314694a9f361d9943febd0</srcmd5>
+    <version>2.0.16</version>
+    <time>1288692335</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51918
+</comment>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>1b2e67e6d0fd2b2663254bc7b8f5669c</srcmd5>
+    <version>2.0.16</version>
+    <time>1294652726</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57359 from user prusnak
+</comment>
+    <requestid>57359</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>2726b0e5f3a88af0f70c9b5a5ee6c465</srcmd5>
+    <version>2.0.16</version>
+    <time>1294652734</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57359
+</comment>
+  </revision>
+  <revision rev="51" vrev="9">
+    <srcmd5>2726b0e5f3a88af0f70c9b5a5ee6c465</srcmd5>
+    <version>2.0.16</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>875009933da92eb0a87070b48c0c79be</srcmd5>
+    <version>2.0.17</version>
+    <time>1300268238</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64162 from user puzel
+</comment>
+    <requestid>64162</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>e165c32eda48e83f32ef368e97ed7212</srcmd5>
+    <version>2.0.17</version>
+    <time>1300268245</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64162
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>51d1c7e17f5afb8d886f1d52f0750e13</srcmd5>
+    <version>2.0.18</version>
+    <time>1312808398</time>
+    <user>saschpe</user>
+    <comment>update to upstream 2.0.18 (forwarded request 78194 from AndreasStieger)</comment>
+    <requestid>78247</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>dcb53264032beca0ddb051099bda440c</srcmd5>
+    <version>2.0.18</version>
+    <time>1313737991</time>
+    <user>saschpe</user>
+    <comment>- libcurl.m4 tests were broken, resulting in the usage
+  of a &quot;fake&quot; internal libcurl. (forwarded request 79279 from elvigia)</comment>
+    <requestid>79286</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>405cd715df03da5ba04140b7f9dc4287</srcmd5>
+    <version>2.0.18</version>
+    <time>1313738001</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79286
+</comment>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>9d8a3f49310ebf0012b637d37c328d63</srcmd5>
+    <version>2.0.18</version>
+    <time>1314881455</time>
+    <user>saschpe</user>
+    <comment>link with pie</comment>
+    <requestid>80347</requestid>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>87c118aa3e4e550b12cb617fd125e52c</srcmd5>
+    <version>2.0.18</version>
+    <time>1314881464</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80347
+</comment>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>daa9ebf3008dcd81ba3e1ef8209ec07c</srcmd5>
+    <version>2.0.18</version>
+    <time>1317542998</time>
+    <user>lrupp</user>
+    <comment>- Test suite hangs in qemu-arm, workaround. (forwarded request 85884 from elvigia)</comment>
+    <requestid>85893</requestid>
+  </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>daa9ebf3008dcd81ba3e1ef8209ec07c</srcmd5>
+    <version>2.0.18</version>
+    <time>1319181939</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="61" vrev="9">
+    <srcmd5>a5bcee395d2923a79b48a188a0274e5d</srcmd5>
+    <version>2.0.18</version>
+    <time>1323190728</time>
+    <user>coolo</user>
+    <comment>- fixed licence to GPL-3.0+ (bnc#734878)
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>95545</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>75609c4c8aa02144bda0252656d7107d</srcmd5>
+    <version>2.0.19</version>
+    <time>1334818128</time>
+    <user>coolo</user>
+    <comment>- Mention some of the changes in Greg's version update
+
+  * GPG now accepts a space separated fingerprint as a user ID.  This
+    allows to copy and paste the fingerprint from the key listing.
+  * GPG now uses the longest key ID available.  Removed support for the
+    original HKP keyserver which is not anymore used by any site.
+  * Rebuild the trustdb after changing the option --min-cert-level.
+  * Ukrainian translation.
+  * Honor option --cert-digest-algo when creating a cert.
+  * Emit a DECRYPTION_INFO status line.
+  * Improved detection of JPEG files. (forwarded request 114352 from vitezslav_cizek)</comment>
+    <requestid>114364</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>75609c4c8aa02144bda0252656d7107d</srcmd5>
+    <version>2.0.19</version>
+    <time>1340183407</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>58c6c1c08d3fcdb8c9cd02bd441f9753</srcmd5>
+    <version>2.0.19</version>
+    <time>1358411963</time>
+    <user>coolo</user>
+    <comment>Add support for BZIP2 compression algorithm (bnc#798175). (forwarded request 148630 from Lazy_Kent)</comment>
+    <requestid>148677</requestid>
+  </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>58c6c1c08d3fcdb8c9cd02bd441f9753</srcmd5>
+    <version>2.0.19</version>
+    <time>1359108995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="66" vrev="7">
+    <srcmd5>56ce3d8fbf9c0e2c47b974d63a98d95e</srcmd5>
+    <version>2.0.19</version>
+    <time>1364472971</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161391 from m_meister)</comment>
+    <requestid>161454</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>268f22ae0e2242d49c865589ea3fd682</srcmd5>
+    <version>2.0.20</version>
+    <time>1368694772</time>
+    <user>coolo</user>
+    <comment>update to 2.0.20 (forwarded request 175003 from AndreasStieger)</comment>
+    <requestid>175189</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>06ef398c2e6c766dc4c2ce4a36d0fbe5</srcmd5>
+    <version>2.0.20</version>
+    <time>1368711319</time>
+    <user>coolo</user>
+    <comment>- set safe umask before creating a plaintext file (bnc#780943)
+  added gpg2-set_umask_before_open_outfile.patch
+- select proper ciphers when running in FIPS mode (bnc#808958)
+  added gnupg-detect_FIPS_mode.patch (forwarded request 175573 from vitezslav_cizek)</comment>
+    <requestid>175847</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>04378b0c328ad50ce299cc016b4465d1</srcmd5>
+    <version>2.0.20</version>
+    <time>1371543625</time>
+    <user>coolo</user>
+    <comment>- revert usage of gpg-offline to avoid cycles
+
+- add gnupg-2.0.20-automake113.diff to fix build with automake 1.13</comment>
+    <requestid>179317</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f164d67344d9d5fa11f615ea7278f930</srcmd5>
+    <version>2.0.21</version>
+    <time>1377085537</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 2.0.21 (forwarded request 195623 from AndreasStieger)</comment>
+    <requestid>195696</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>26d03606dc950b8c841fca7b4672643b</srcmd5>
+    <version>2.0.21</version>
+    <time>1379422955</time>
+    <user>coolo</user>
+    <comment>- fix CVE-2013-4351 (bnc#840510) (forwarded request 199274 from vitezslav_cizek)</comment>
+    <requestid>199283</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>26d03606dc950b8c841fca7b4672643b</srcmd5>
+    <version>2.0.21</version>
+    <time>1379662546</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>4f60bcd79c1938a5beae9b982fa5727b</srcmd5>
+    <version>2.0.22</version>
+    <time>1381063966</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 2.0.22 [bnc#844175] [CVE-2013-4402] (forwarded request 202365 from AndreasStieger)</comment>
+    <requestid>202374</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>17e579e9ef7664f7d672c5df2d87b1c9</srcmd5>
+    <version>2.0.22</version>
+    <time>1392617897</time>
+    <user>coolo</user>
+    <comment>- install scdaemon to /usr/bin (bnc#863645) (forwarded request 222380 from vitezslav_cizek)</comment>
+    <requestid>222429</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>cc4a7c1c08e2717b85857abafb47f4e9</srcmd5>
+    <version>2.0.22</version>
+    <time>1399051285</time>
+    <user>coolo</user>
+    <comment>- add patch by Stephan Mueller which adds an option to enable
+  legacy ciphers in FIPS mode
+  * added gnupg-add_legacy_FIPS_mode_option.patch
+  (part of bnc#856312)
+- added BuildRequires: makeinfo (to build info pages from the
+  patched gnupg.texi) (forwarded request 232207 from vitezslav_cizek)</comment>
+    <requestid>232310</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e271f3c742f246a6eaf4a73a0a6b5069</srcmd5>
+    <version>2.0.23</version>
+    <time>1403081948</time>
+    <user>coolo</user>
+    <comment>update to 2.0.23 (forwarded request 236179 from AndreasStieger)</comment>
+    <requestid>236186</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>4a5ce1c324e8cc65ce2f31672b657a9c</srcmd5>
+    <version>2.0.24</version>
+    <time>1403723999</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238560</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>158f4406a5ff4c92f21c403f1802e49f</srcmd5>
+    <version>2.0.25</version>
+    <time>1404817310</time>
+    <user>coolo</user>
+    <comment>GnuPG 2.0.25, and a BuildRequires fix to move 13.1 fails up to the scheduler, or build with gcrypt 1.6.1</comment>
+    <requestid>239236</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>8736713c43c609fc3a62ea279acffe62</srcmd5>
+    <version>2.0.26</version>
+    <time>1408089495</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244478</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>8736713c43c609fc3a62ea279acffe62</srcmd5>
+    <version>2.0.26</version>
+    <time>1409301088</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>986da3bbac5f6ee100558f34c0fd4e9d</srcmd5>
+    <version>2.1.0</version>
+    <time>1418112830</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263909</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>a2066c1c7441a1238785114008cbf3e8</srcmd5>
+    <version>2.1.0</version>
+    <time>1418737842</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>264728</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>400ad88e4f2e045d04b7df83d6f662b7</srcmd5>
+    <version>2.1.0</version>
+    <time>1419809519</time>
+    <user>dimstar_suse</user>
+    <comment>Support for large RSA keys (changelog fixed)</comment>
+    <requestid>266408</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>bd4d15b30f0054dc883fb7bd38941c68</srcmd5>
+    <version>2.1.1</version>
+    <time>1421873433</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>266596</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>aefb030bdf7c5275d42cfff692f1e2d9</srcmd5>
+    <version>2.1.2</version>
+    <time>1423918461</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285756</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>4ec0be7842f8a7d064344a3ac5c78e8a</srcmd5>
+    <version>2.1.2</version>
+    <time>1425217929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287682</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>03ac44b56684ee8741d4ccf7d69c5d95</srcmd5>
+    <version>2.1.2</version>
+    <time>1427109382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291614</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>08694e12234f2bf5737bb0f1261edc30</srcmd5>
+    <version>2.1.2</version>
+    <time>1427445480</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292455</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>e03bd69c8592ad7ec04adfb4e32bcd17</srcmd5>
+    <version>2.1.3</version>
+    <time>1428949786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295424</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>24c0e80a7c37b62842dea91ac35811af</srcmd5>
+    <version>2.1.4</version>
+    <time>1431673363</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306640</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>b1984e7527d2ddcca55fe67d75589b22</srcmd5>
+    <version>2.1.4</version>
+    <time>1432070927</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307582</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>010444fee830867da7cc198839a99723</srcmd5>
+    <version>2.1.5</version>
+    <time>1434133485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311649</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>f58f0d8aa11446ff65d3652eaa6670e6</srcmd5>
+    <version>2.1.5</version>
+    <time>1435170502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312215</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>db4efdf5539778d99953883313574aa6</srcmd5>
+    <version>2.1.6</version>
+    <time>1437059927</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315691</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>657cf768d6291336aecbe6bcf1a74af6</srcmd5>
+    <version>2.1.7</version>
+    <time>1439818421</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.1.7</comment>
+    <requestid>322235</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>e1a94742225805f72038f6f11b7d8ed5</srcmd5>
+    <version>2.1.8</version>
+    <time>1442392626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330468</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>48041fbfc607f4cb9133757fef13cf20</srcmd5>
+    <version>2.1.9</version>
+    <time>1445350854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337606</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>c177a36abb1bb46c474a731d0d370e96</srcmd5>
+    <version>2.1.9</version>
+    <time>1448957810</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346197</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>086ccdbd9de5565fd59f7ac0912dcf7c</srcmd5>
+    <version>2.1.10</version>
+    <time>1449689627</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.1.10</comment>
+    <requestid>347481</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>e9458bba01c25a79dae93f2d96b57b5c</srcmd5>
+    <version>2.1.10</version>
+    <time>1451045141</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350481</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>df6cfe82f393ee20d67be94d965c5216</srcmd5>
+    <version>2.1.10</version>
+    <time>1453998005</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356125</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>2a9c7af3cce6959cd28d00293bb0f761</srcmd5>
+    <version>2.1.11</version>
+    <time>1457532987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367545</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>3f7580dbfd79fca3ea014cfc8c08c752</srcmd5>
+    <version>2.1.12</version>
+    <time>1463497620</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394637</requestid>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>7ed2ff7157d92e18cdc2aa6cff0e9958</srcmd5>
+    <version>2.1.12</version>
+    <time>1465335816</time>
+    <user>dimstar_suse</user>
+    <comment>- add gnupg-fix-signature-checking.patch (bsc#981020)
+  https://bugs.gnupg.org/gnupg/issue2351</comment>
+    <requestid>399868</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>a7ece6101c30f69d0ab668573cc45db0</srcmd5>
+    <version>2.1.13</version>
+    <time>1468048641</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402817</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>95b818de482d920b1ffeb84df10d3623</srcmd5>
+    <version>2.1.13</version>
+    <time>1470508583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416968</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>fa8f84c7e6c61e4c546bafa440c67714</srcmd5>
+    <version>2.1.15</version>
+    <time>1472594437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420990</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>894513c77df1c477efb037cb2ee9535c</srcmd5>
+    <version>2.1.15</version>
+    <time>1474115541</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid mixing up status and colon line output - bsc#993324
+- enable web key discovery tools
+- Add an explicit runtime dependency on libgcrypt &gt;= 1.7.0 to match runtime version check</comment>
+    <requestid>427261</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b8e4604f45b533797dac414021623df9</srcmd5>
+    <version>2.1.16</version>
+    <time>1479837456</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.1.16 (forwarded request 441007 from AndreasStieger)</comment>
+    <requestid>441009</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>05789d5076ff6baab70c4e2da322feb4</srcmd5>
+    <version>2.1.17</version>
+    <time>1483047702</time>
+    <user>lnussel_factory</user>
+    <comment>GnuPG 2.1.17 (forwarded request 447203 from AndreasStieger)</comment>
+    <requestid>447204</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>1cec3c463e6691c216e11f2950dfb029</srcmd5>
+    <version>2.1.17</version>
+    <time>1484041017</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the fixme, condition around fdupes
+
+- add runtime dependency to match runtime version check for libksba</comment>
+    <requestid>449308</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>1de893ef88f45ca799f48ad28402c0bb</srcmd5>
+    <version>2.1.18</version>
+    <time>1485938906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452272</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>ce6346b2dbfc926301ab5ba4c89b1bab</srcmd5>
+    <version>2.1.19</version>
+    <time>1489241923</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.1.19</comment>
+    <requestid>477543</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>ec67f12faf0de78d8b56c9f2fa9f7a4e</srcmd5>
+    <version>2.1.19</version>
+    <time>1489866539</time>
+    <user>dimstar_suse</user>
+    <comment>- Use stronger defaults for new users, using SHA-2 digest family
+  for certificates and message signatures - FATE#323084
+  adding gnupg-2.1.19-stronger-defaults.patch (forwarded request 479376 from AndreasStieger)</comment>
+    <requestid>479947</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>3b9fa248e4ec338e2b30d229ae573902</srcmd5>
+    <version>2.1.20</version>
+    <time>1491895786</time>
+    <user>maxlin_factory</user>
+    <comment>GnuPG 2.1.20</comment>
+    <requestid>485787</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>860ef84c8229b47ce527ccad51e7d5dd</srcmd5>
+    <version>2.1.21</version>
+    <time>1495283365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495114</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>4318a20ffeb4120d55925c690398df6c</srcmd5>
+    <version>2.1.21</version>
+    <time>1496327304</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 496742 from mstrigl)</comment>
+    <requestid>497286</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>9a02b1d49d013e95459f67cc745d827c</srcmd5>
+    <version>2.1.22</version>
+    <time>1501840611</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512957</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>f9160a8412fd1c3a2de132b61b28e23d</srcmd5>
+    <version>2.2.0</version>
+    <time>1504520792</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.2.0 bsc#1054088 (forwarded request 519191 from AndreasStieger)</comment>
+    <requestid>519193</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>c75f735284fe7a1a2c3960ea094642b4</srcmd5>
+    <version>2.2.1</version>
+    <time>1506108728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527382</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>cc078d1804ee6321c188abe1004ad01f</srcmd5>
+    <version>2.2.2</version>
+    <time>1510659403</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.2.2 (forwarded request 539676 from AndreasStieger)</comment>
+    <requestid>539677</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>6d304fe57f2935dc0433ce50284bade1</srcmd5>
+    <version>2.2.3</version>
+    <time>1511595601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544086</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>5bb04a70e9c60a38c00764ebcb8ecd25</srcmd5>
+    <version>2.2.4</version>
+    <time>1514027465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559114</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>cef013d5dd016c5804a2dc0370fbd1f8</srcmd5>
+    <version>2.2.5</version>
+    <time>1519844071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580131</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>3ae1adb2e967eb3230e5eaf162f9127f</srcmd5>
+    <version>2.2.5</version>
+    <time>1523126843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593728</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>9b38a152b6ac4d1b57537fdf34e0bdee</srcmd5>
+    <version>2.2.6</version>
+    <time>1523956525</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.2.6</comment>
+    <requestid>597193</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3e5dbbd1d0121f4d22f9a630c9c306c9</srcmd5>
+    <version>2.2.7</version>
+    <time>1525779134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604049</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>08950e42fb587ab3369e271b2f8398a6</srcmd5>
+    <version>2.2.8</version>
+    <time>1529665885</time>
+    <user>maxlin_factory</user>
+    <comment>GnuPG 2.2.8 (bsc#1096745, CVE-2018-12020)</comment>
+    <requestid>615264</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>30c6a539ac9362de56263d5e01a7d4b8</srcmd5>
+    <version>2.2.9</version>
+    <time>1531813119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622429</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>4e64bbfe8f705920e49cbf4fb48b7405</srcmd5>
+    <version>2.2.9</version>
+    <time>1532592992</time>
+    <user>dimstar_suse</user>
+    <comment>- Add basic udev rules for smartcards to be used with
+  scdaemon, taken from debian:
+  * scdaemon.udev</comment>
+    <requestid>625188</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>155993488730af49373885d1f78c230b</srcmd5>
+    <version>2.2.10</version>
+    <time>1536094103</time>
+    <user>dimstar_suse</user>
+    <comment>GnuPG 2.2.10</comment>
+    <requestid>632346</requestid>
+  </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>4cc68ae327c8cf75a4f7e5824bf280d8</srcmd5>
+    <version>2.2.10</version>
+    <time>1539342482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640771</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>444364c6d8ba88fbfe97420701084299</srcmd5>
+    <version>2.2.11</version>
+    <time>1542202168</time>
+    <user>dimstar_suse</user>
+    <comment>- Code no longer uses libcurl, remove from buildrequires. 
+
+- Update to 2.2.11:
+  * gpgsm: Fix CRL loading when intermediate certicates are not yet trusted.
+  * gpgsm: Fix an error message about the digest algo.
+  * gpg: Fix a wrong warning due to new sign usage check introduced with 2.2.9.
+  * gpg: Print the &quot;data source&quot; even for an unsuccessful keyserver query.
+  * gpg: Do not store the TOFU trust model in the trustdb.
+  * scd: Fix cases of &quot;Bad PIN&quot; after using &quot;forcesig&quot;.
+  * agent: Fix possible hang in the ssh handler.
+  * dirmngr: Tack the unmodified mail address to a WKD request.
+  * dirmngr: Tweak diagnostic about missing LDAP server file.
+  * dirmngr: In verbose mode print the OCSP responder id.
+  * dirmngr: Fix parsing of the LDAP port.
+  * wks: Add option --directory/-C to the server.
+  * wks: Add option --with-colons to the client. 
+  * Fix EBADF when gpg et al. are called by broken CGI scripts.
+  * Fix some minor memory leaks and bugs.</comment>
+    <requestid>648382</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>5261a5271572ddac71350cf91cc35e95</srcmd5>
+    <version>2.2.12</version>
+    <time>1545223694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658514</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>8820b3f66f7e44301572c05361d83192</srcmd5>
+    <version>2.2.13</version>
+    <time>1551024299</time>
+    <user>coolo</user>
+    <comment>- Update to 2.2.13:
+  * gpg: Implement key lookup via keygrip (using the &amp;amp; prefix).
+  * gpg: Allow generating Ed25519 key from existing key.
+  * gpg: Emit an ERROR status line if no key was found with -k.
+  * gpg: Stop early when trying to create a primary Elgamal key.
+  * gpgsm: Print the card's key algorithms along with their keygrips
+    in interactive key generation.
+  * agent: Clear bogus pinentry cache in the error case.
+  * scd: Support &quot;acknowledge button&quot; feature.
+  * scd: Fix for USB INTERRUPT transfer.
+  * wks: Do no use compression for the the encrypted challenge and response.
+Release-info: https://dev.gnupg.org/T4290
+See-also: gnupg-announce/2019q1/000434.html
+
+- Update to 2.2.12: (forwarded request 674396 from kbabioch)</comment>
+    <requestid>674400</requestid>
+  </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>662a18ec1201d9cf2e8096efc429fb45</srcmd5>
+    <version>2.2.13</version>
+    <time>1551468343</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679738</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>1290cdb31cf37cfc04996354ffe6d2dd</srcmd5>
+    <version>2.2.14</version>
+    <time>1553435779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686408</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>e7896e0690e4e5826a74b481ec3f85e1</srcmd5>
+    <version>2.2.15</version>
+    <time>1553887983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689296</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>62f9ea6b00b2e236e07f7e2932648dcf</srcmd5>
+    <version>2.2.16</version>
+    <time>1559481331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706484</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>9407f6d0585f7167da69629513233533</srcmd5>
+    <version>2.2.16</version>
+    <time>1561643606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710989</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>7ca29580525ade06db372d8f966caa1e</srcmd5>
+    <version>2.2.17</version>
+    <time>1563259065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714631</requestid>
+  </revision>
+</revisionlist>

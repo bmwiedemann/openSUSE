@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff4a8d254bb688924e8fd7c56d7f4d1d</srcmd5>
+    <version>1.2.0</version>
+    <time>1545223797</time>
+    <user>dimstar_suse</user>
+    <comment>Python wrapper for the GitHub API</comment>
+    <requestid>652740</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1aef6a500525b2b49ec83736a7cd8874</srcmd5>
+    <version>1.2.0</version>
+    <time>1548335674</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667878</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db11be1ca03830f735ef4645259b5645</srcmd5>
+    <version>1.3.0</version>
+    <time>1552599778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0:
+  * Add partial support for the Checks API:
+  * Add unignore method to unignore notifications from repository for the user, to Repository and ShortRepository classes.
+  * Add unsubscribe method to unsubscribe the user to repository's notifications, to Repository and ShortRepository classes.
+  * Add support for webhooks in an organization</comment>
+    <requestid>685061</requestid>
+  </revision>
+</revisionlist>

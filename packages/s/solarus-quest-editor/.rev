@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a66c907ff8c570dd04517dd8a235137</srcmd5>
+    <version>1.5.2</version>
+    <time>1490317606</time>
+    <user>dimstar_suse</user>
+    <comment>complements the solarus engine</comment>
+    <requestid>452883</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>928f978adb6e1278d71b85fe5456e6e6</srcmd5>
+    <version>1.5.3</version>
+    <time>1524238067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596748</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>39cb74fa28e45317edf6d6936309fbde</srcmd5>
+    <version>1.5.3</version>
+    <time>1542012221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647697</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8388cdcf5648267ef246b1c7eabf07b8</srcmd5>
+    <version>1.6.0</version>
+    <time>1548062924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661477</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7804e01abfb25810f7b51c7ee37d9d2</srcmd5>
+    <version>1.6.1</version>
+    <time>1565695265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722325</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c7e3053f37ea6ec157beab6b4fdcb91e</srcmd5>
+    <version>1.6.1</version>
+    <time>1565864911</time>
+    <user>dimstar_suse</user>
+    <comment>- Install translations:
+  * Add solarus-quest-editor-v1.6.1-install-translations.patch
+    which allows installation of translation files with CMake.
+  * Add lang subpackage.
+- Split assets into a noarch subpackage.
+- Drop obsolete build dependency on update-desktop-files.</comment>
+    <requestid>723258</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2363a1cdddb93155a551aa7154875c15</srcmd5>
+    <version>1.6.2</version>
+    <time>1566243571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2:
+  * Fix crash when closing tileset views (#467).
+  * Fix broken enemies in the initial quest (#466).
+  * Automatically install translation files.
+  * Update French translation.
+- Remove solarus-quest-editor-v1.6.1-install-translations.patch:
+  Merged upstream.</comment>
+    <requestid>724270</requestid>
+  </revision>
+</revisionlist>

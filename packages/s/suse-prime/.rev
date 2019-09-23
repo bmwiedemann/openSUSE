@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>528ab20ae84008c3ad6cde4708361d1d</srcmd5>
+    <version>0.2</version>
+    <time>1542124800</time>
+    <user>dimstar_suse</user>
+    <comment>GPU (nvidia/intel) selection for NVIDIA optimus laptops
+
+A collection of shell scripts that makes it possible to use the
+NVIDIA GPU on a Optimus Laptop. The switching is similar to
+the feature provided by the nvidia-prime package in Ubuntu.
+
+Latest changes:
+- changed Requires: nvidia_driver to Recommends in order to receive
+  more acceptance for integration into (open)SUSE
+- added Supplements: nvidia_driver:&lt;intel_PCI_ID&gt;, so package gets
+  selected as well when nvidia driver packages are selected on an
+  Optimus system
+- added proper and valid Group tag</comment>
+    <requestid>648440</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9cf90ea339a2a34f821e276460e3b44c</srcmd5>
+    <version>0.2</version>
+    <time>1547130210</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Fixed-syntax-error-and-handled-not-yet-existing-conf.patch
+  * Fixed syntax error and handled not yet existing configurations
+
+- U_adding-query-switch.patch
+  * adding &quot;query&quot; switch (boo#1121246)
+  * removing line from xorg-nvidia.conf, which is not needed
+    anymore and prevents use of external displays</comment>
+    <requestid>664115</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bac21f4369659fc822475e28f992373b</srcmd5>
+    <version>0.3</version>
+    <time>1547211948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.3
+  * added &quot;query&quot; switch: use 'prime-select query' to check which
+    GPU you're currently using
+  * removed UseDisplayDevice option from xorg-nvidia.conf which is
+    not needed anymore and prevents use of external displays
+- supersedes patches
+  * U_Fixed-syntax-error-and-handled-not-yet-existing-conf.patch
+  * U_adding-query-switch.patch</comment>
+    <requestid>664399</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8eddd2269f711fb8ecc412baf7ec429d</srcmd5>
+    <version>0.3</version>
+    <time>1547540207</time>
+    <user>dimstar_suse</user>
+    <comment>- U_prime-select.sh-bail-out-if-nvidia-xconfig-fails-use.patch 
+  * 'nvidia-xconfig --query-gpu-info' may easily fail due to missing
+    NVIDIA kernel modules or alike. Therefore bail out in this case
+    with exit 1.
+  * There could be more than one NVIDIA card/GPU in the system. Use
+    the first detected one for X configuration in that case.</comment>
+    <requestid>664721</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>553a922c364ec989625aa0d2f68bea68</srcmd5>
+    <version>0.5</version>
+    <time>1548537909</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed URLs in specfile (project location changed on github) 
+
+- Update to release 0.5
+  * Add various improvements to the original script (by @bubbleguuum)
+    1. add bbswitch support to power off NVIDIA card if not in use.
+    This is important to save battery when running on Intel and
+    to decrease cpu temperature significantly.
+    This support is optional, it requires user to make some
+    manual modifications to his system using detailed documentation.
+    2. add Intel Open Source driver support (xf86-video-intel)
+    via new intel2 command-line option.
+    This driver has some additional features that users may want.
+    3. add the proper BusID for Intel in xorg configuration.
+    Without this, Xorg fails to start on some laptops.
+    4. fix (via modified xorg-nvidia.conf) for external monitor
+    not enumerated by xrandr with the nvidia config.
+    On Optimus laptop, the dGPU is usually responsible of managing
+    external video ports, including connections via Thunderbolt 3.
+  * get-current option for prime-select script
+    Show valid options for prime-select script, if driver has not
+     been configured yet
+- supersedes the following patches
+  * 0002-fix-README.patch
+  * U_prime-select.sh-bail-out-if-nvidia-xconfig-fails-use.patch
+  * 0004-xorg-nvidia.conf-refix-config.patch
+  * 0003-prime-select-Show-valid-options-if-driver-has-not-be.patch
+  * 0001-Add-various-improvements-to-the-original-script.patch
+- %preun: cleanup before uninstalling the package completely by
+  using prime-select's 'unset' option
+
+- 0001-Add-various-improvements-to-the-original-script.patch
+  * Add various improvements to the original script
+    1. add bbswitch support to power off NVIDIA card if not in use.
+       This is important to save battery when running on Intel and
+       to decrease cpu temperature significantly.
+       This support is optional, it requires user to make some
+       manual modifications to his system using detailed documentation.
+    2. add Intel Open Source driver support (xf86-video-intel)
+       via new intel2 command-line option.
+       This driver has some additional features that users may want.
+    3. add the proper BusID for Intel in xorg configuration.
+       Without this, Xorg fails to start on some laptops.
+    4. fix (via modified xorg-nvidia.conf) for external monitor
+       not enumerated by xrandr with the nvidia config.
+       On Optimus laptop, the dGPU is usually responsible of managing
+       external video ports, including connections via Thunderbolt 3.
+- 0002-fix-README.patch
+  * fix README
+- 0003-prime-select-Show-valid-options-if-driver-has-not-be.patch
+  * prime-select: Show valid options, if driver has not been
+    configured yet.
+- 0004-xorg-nvidia.conf-refix-config.patch
+  * xorg-nvidia.conf: refix config</comment>
+    <requestid>668820</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73c482ff2ea323ede0bea1071e349d52</srcmd5>
+    <version>0.6.5</version>
+    <time>1553635983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688196</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>626a5a33ff4fa32977ece87f36139113</srcmd5>
+    <version>0.6.8</version>
+    <time>1554276472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690570</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>553a922c364ec989625aa0d2f68bea68</srcmd5>
+    <version>0.5</version>
+    <time>1554749647</time>
+    <user>dimstar_suse</user>
+    <comment>revert to version 0.5, boo#1131748</comment>
+    <requestid>692307</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>738bb032e1d5351e98f5262da5000e80</srcmd5>
+    <version>0.5</version>
+    <time>1558532448</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Corrected-DPI-value-in-xorg-nvidia.conf.patch
+  * Corrected DPI value in xorg-nvidia.conf (boo#1130723)</comment>
+    <requestid>704686</requestid>
+  </revision>
+</revisionlist>

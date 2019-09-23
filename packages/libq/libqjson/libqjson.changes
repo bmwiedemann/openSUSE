@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Thu Sep 11 18:18:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added baselibs.conf, needed for libkdepimlibs4-32bit
+
+-------------------------------------------------------------------
+Tue Mar 12 09:03:12 UTC 2013 - schwab@suse.de
+
+- Properly determine LIB_SUFFIX
+
+-------------------------------------------------------------------
+Fri Nov 27 14:57:00 UTC 2012 - cgiboudeaux@gmx.com
+
+- Fix the SLES build (directory not owned by a package).
+- Install the license files.
+
+-------------------------------------------------------------------
+Tue Nov 27 10:12:58 UTC 2012 - fcastelli@suse.com
+
+- Update to version 0.8.1
+- Ensure API and ABI compatibility with 0.7.1
+
+-------------------------------------------------------------------
+Thu Nov 22 10:28:41 UTC 2012 - fcastelli@suse.com
+
+- Update to version 0.8.0
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:44 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+----------------------------------------------------------------------
+Fri Dec 4 01:00:00 CEST 2009 - flavio@castelli.name
+
+- updated to 0.7.1: fixed installation issued
+
+----------------------------------------------------------------------
+Fri Dec 4 00:24:00 CEST 2009 - flavio@castelli.name
+
+- updated to 0.7.0: it's now possible to serialize QObject instances to JSON and vice-versa
+
+----------------------------------------------------------------------
+Sun Oct 11 19:18:00 CEST 2009 - flavio@castelli.name
+
+- updated to 0.6.3: fixed a bug affecting ulonglong numbers serialization
+
+-------------------------------------------------------------------
+Thu Sep 17 07:51:40 CEST 2009 - dmueller@suse.de
+
+- fix debug package requires (for 11.0 and older)
+
+-------------------------------------------------------------------
+Wed Sep 15 19:21:00 CEST 2009 - flavio@castelli.name
+
+- updated to 0.6.2: fixed a bug affecting ulonglong numbers parsing
+
+-------------------------------------------------------------------
+Wed Sep 09 09:55:00 CEST 2009 - flavio@castelli.name
+
+- updated to 0.6.1: relevant bugs fixed
+
+------------------------------------------------------------------
+Mon Aug 24 17:14:00 CEST 2009 - flavio@castelli.name
+
+- updated to latest svn version: moved the SerializerRunnable class inside QJson namespace
+
+-------------------------------------------------------------------
+Thu Jul 23 10:24:00 CEST 2009 - flavio@castelli.name
+
+- updated to latest svn version: fixed a bug in cmdline_tester
+
+-------------------------------------------------------------------
+Mon Jul 20 15:24:32 CEST 2009 - prusnak@suse.cz
+
+- updated to 0.6.0 (KDE SVN rev 999750)
+- renamed libqjson0-devel to libqjson-devel to follow guidelines
+
+-------------------------------------------------------------------
+Mon Apr 07 00:00:00 UTC 2009 - flavio@castelli.name
+
+- released 0.5.1 - added unicode support
+
+-------------------------------------------------------------------
+Mon Apr 03 00:00:00 UTC 2009 - flavio@castelli.name
+
+- first release
+

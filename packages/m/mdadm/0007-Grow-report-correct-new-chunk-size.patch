@@ -1,0 +1,30 @@
+From 76d505dec6c9f92564553596fc8350324be82463 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.com>
+Date: Thu, 6 Dec 2018 10:36:28 +1100
+Subject: [PATCH] Grow: report correct new chunk size.
+
+When using "--grow --chunk=" to change chunk
+size, the old chunksize is reported instead of the new.
+
+Signed-off-by: NeilBrown <neilb@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ Grow.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Grow.c b/Grow.c
+index 76f82c075e38..363b209d14a3 100644
+--- a/Grow.c
++++ b/Grow.c
+@@ -3286,7 +3286,7 @@ static int reshape_array(char *container, int fd, char *devname,
+ 				goto release;
+ 			} else if (verbose >= 0)
+ 				printf("chunk size for %s set to %d\n",
+-				       devname, array.chunk_size);
++				       devname, info->new_chunk);
+ 		}
+ 		unfreeze(st);
+ 		return 0;
+-- 
+2.14.0.rc0.dirty
+

@@ -1,0 +1,16 @@
+---
+ src/Makefile.am |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: libraw1394-2.1.1/src/Makefile.am
+===================================================================
+--- libraw1394-2.1.1.orig/src/Makefile.am
++++ libraw1394-2.1.1/src/Makefile.am
+@@ -5,6 +5,7 @@ MAINTAINERCLEANFILES = Makefile.in
+ lib_LTLIBRARIES = libraw1394.la
+ 
+ libraw1394_la_LDFLAGS = -version-info @lt_major@:@lt_revision@:@lt_age@
++libraw1394_la_LDFLAGS += -export-symbols-regex '^raw1394_' -no-undefined
+ 
+ libraw1394_la_SOURCES =   \
+ 	main.c            \

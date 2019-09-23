@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Tue Jun 18 17:15:22 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Move tcmu.conf into main package; (bsc#1138443)
+
+-------------------------------------------------------------------
+Wed May 22 13:32:52 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Add explicit libtcmu package dependency to avoid incorrect upstream
+  .so versioning; (bsc#1135815)
+
+-------------------------------------------------------------------
+Tue May 21 13:48:20 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Rename openSUSE zbc patches:
+  + file_zbc-fixed-compile-error-under-ppc64le ->
+    file_zbc-fixed-compile-error-under-ppc64le.patch
+  + file_zbc-optionally-build-zbc-handler ->
+    file_zbc-optionally-build-zbc-handler.patch
+
+-------------------------------------------------------------------
+Fri Oct 19 18:19:42 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0:
+  * tcmu-runner: bump version to 1.4.0
+  * Disable explicit alua support.
+  * logger: notification on changing the options for dynamic reloading
+  * logger: update .gitignore for logrotate.conf_install.cmake
+  * logger: fix the return value
+  * Sync sig handler naming.
+  * Add logrotate support
+  * Move starting log message.
+  * Allow log file restart from SIGHUP
+  * Simplify log outputs
+  Replacing tcmu-runner-1.3.0.tar.gz with tcmu-runner-1.4.0.tar.xz,
+  updating the SPEC file, and removing patches:
+  * api-avoid-compiler-Werror-return-type-failures.patch
+  * build-drop-versionless-libtcmu.so-symlink.patch
+  * tcmu-runner-remove-uio-include-for-iovec.patch
+  * support custom cephx credentials; (bsc#1135369)
+
+-------------------------------------------------------------------
+Fri Feb  9 17:28:47 UTC 2018 - ddiss@suse.com
+
+- Update to version 1.3.0; (fate#322524)
+  + Improved Ceph RBD integration
+  + Support XCOPY copy-offload commands
+  + Support COMPARE_AND_WRITE, with Ceph OSD request mapping
+  + Asynchronous I/O improvements and bug fixes
+- Remove a number of downstream patches now carried upstream:
+  + glfs-discard-glfs_check_config
+  + fixed-local-dos-when-unregisterhandler-was-called-for-a-not-existing-handler
+  + only-allow-dynamic-unregisterhandler-for-external-handlers-thereby-fixing-dos
+  + fixed-a-number-of-memory-leaks-with-deregistering-of-dbus-handlers
+  + removed-all-check_config-callback-implementations-to-avoid-security-issues
+  + tcmu-runner-add-local-target_core_user-h
+- Remove development packages (bsc#1080619)
+  + API discontinued upstream
+- Add fix for -Werror-return-type failures:
+  + api-avoid-compiler-Werror-return-type-failures.patch
+- Add fix for library versioning:
+  + build-drop-versionless-libtcmu.so-symlink.patch
+
+-------------------------------------------------------------------
+Wed Sep 20 22:59:29 UTC 2017 - lduncan@suse.com
+
+- Add two patches: make target_core_user.h local, to insulate
+  tcmu-runner from kernel version/data structure/naming
+  changes, and add include of <sys/uio.h> to that file,
+  to fix "stuct iovec" not defined issue  (bsc#1058303),
+  adding patches:
+  * tcmu-runner-add-local-target_core_user-h
+  * tcmu-runner-remove-uio-include-for-iovec.patch
+  The latter patch is added only for SUSE version >= 13.3,
+  since it is only needed there.
+
+-------------------------------------------------------------------
+Wed Aug  9 21:48:42 UTC 2017 - lduncan@suse.com
+
+- Remove install prefix from beginning of install libdir when
+  setting tcmu-runner plugin path (bsc#1052795), adding
+  SUSE-specific patch:
+  * tcmu-runner-remove-handler-path-install-prefix.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 01:53:01 UTC 2017 - lduncan@suse.com
+
+- One more update from Security Audit, adding one more patch:
+  - removed-all-check_config-callback-implementations-to-avoid-security-issues
+    (bsc#1049491)
+
+-------------------------------------------------------------------
+Thu Jul 20 01:18:42 UTC 2017 - lduncan@suse.com
+
+- Updates based on Security Audit, adding 4 patches:
+  * glfs-discard-glfs_check_config (bsc#1049485)
+  * fixed-local-dos-when-unregisterhandler-was-called-for-a-not-existing-handler
+    (bsc#1049488)
+  * only-allow-dynamic-unregisterhandler-for-external-handlers-thereby-fixing-dos
+    (bsc#1049489)
+  * fixed-a-number-of-memory-leaks-with-deregistering-of-dbus-handlers
+    (bsc#1049490)
+
+-------------------------------------------------------------------
+Mon May 15 16:14:50 UTC 2017 - ddiss@suse.com
+
+- Make Ceph RBD handler aarch64 and x86-64 only for now
+  + librbd isn't yet available for all platforms
+
+-------------------------------------------------------------------
+Thu May 11 20:46:08 UTC 2017 - ddiss@suse.com
+
+- Build the Ceph RBD handler and package separately; (fate#322524).
+- Split the GlusterFS handler into a separate package
+  + avoid adding an unnecessary dependencies to tcmu-runner core
+
+-------------------------------------------------------------------
+Thu May 11 17:25:11 UTC 2017 - ddiss@suse.com
+
+- Explicitly disable the GlusterFS handler for SLE builds.
+
+-------------------------------------------------------------------
+Thu May 11 15:12:24 UTC 2017 - ddiss@suse.com
+
+- Update to upstream version 1.2.0; (bsc#1038712).
+  + Add remove devices when tcmulib teardown
+  + fix builds done outside of source directory
+  + free tcmu_device after dev->fd is closed
+  + fix Read_Capacity_16
+  + detect INQURY response truncation
+  + fix incorrect memcpy length
+  + fix inquiry buffer length calculations
+  + add tcmu.conf for log level configuration
+- Remove upstreamed fixes:
+  + tcmu-runner-include-falloc-in-qcow.patch
+  + tcmu-runner-let-cmake-install-man-page.patch
+  + tcmu-runner-Use-CMake-FULL-library-directory-for-SOs.patch
+  + include-tcmu-runner-h-in-install.patch
+
+-------------------------------------------------------------------
+Sun Aug 21 17:08:20 UTC 2016 - jengelh@inai.de
+
+- rename libtcmu1-devel to libtcmu-devel
+- drop unnecessary %oname indirect macro
+
+-------------------------------------------------------------------
+Tue Aug 16 03:37:30 UTC 2016 - lduncan@suse.com
+
+- Updated SPEC file to break library into separate packages
+- Install tcmu-runner.h, adding:
+  * include-tcmu-runner-h-in-install.patch
+
+-------------------------------------------------------------------
+Fri Jul 29 15:08:48 UTC 2016 - jengelh@inai.de
+
+- Drop silly buildrequires on libgfapi0/libglib-2_0-0.
+  Abolish old macros.
+
+-------------------------------------------------------------------
+Sat May 28 16:55:45 UTC 2016 - lduncan@suse.com
+
+- Updated SPEC file to install LICENSE file (bsc#982130)
+
+-------------------------------------------------------------------
+Thu May  5 01:46:10 UTC 2016 - lduncan@suse.com
+
+- Created from upstream version 1.0.4
+
+-------------------------------------------------------------------

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Feb 28 15:15:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Add MANIFEST.in. [stefan]
+  * Release as universal wheel. [stefan]
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:55 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 10 02:55:40 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Sat Oct  7 15:40:52 UTC 2017 - arun@gmx.de
+
+- initial package

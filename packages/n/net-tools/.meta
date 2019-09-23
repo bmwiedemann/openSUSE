@@ -1,0 +1,6 @@
+<package name="net-tools" project="openSUSE:Factory">
+  <title>Important Programs for Networking</title>
+  <description>This package contains essential programs for network administration and
+maintenance: netstat, hostname, arp, ifconfig, rarp, and route.</description>
+  <devel project="network:utilities" package="net-tools"/>
+</package>

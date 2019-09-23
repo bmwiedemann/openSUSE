@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/opencontainers/runc.git</param>
+    <param name="scm">git</param>
+    <param name="filename">docker-runc</param>
+    <param name="versionformat">git.%H</param>
+    <param name="revision">425e105d5a03fabd737a126ad93d62a9eeede87f</param>
+    <param name="exclude">.git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

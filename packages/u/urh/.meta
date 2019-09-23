@@ -1,0 +1,9 @@
+<package name="urh" project="openSUSE:Factory">
+  <title>Universal Radio Hacker: investigate wireless protocols like a boss</title>
+  <description>The Universal Radio Hacker is a software for investigating unknown wireless
+protocols.
+
+</description>
+  <devel project="hardware:sdr" package="urh"/>
+  <url>https://github.com/jopohl/urh</url>
+</package>

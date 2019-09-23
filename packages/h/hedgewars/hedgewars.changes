@@ -1,0 +1,694 @@
+-------------------------------------------------------------------
+Fri Jun 14 16:33:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix builds on 32bit archs, use CLang+Pas2C instead of FPC
+- Spec file cleanups:
+  * use bcond_with{,out} for disabling/enabling features
+  * remove several unused BuildRequires
+  * remove obsolete xpm icon
+  * use metainfo instead of appdata dir
+  * remove defattr
+  * use %license for Fonts_LICENSE.txt, add COPYING
+
+-------------------------------------------------------------------
+Mon Dec 10 12:00:00 UTC 2018 - buckyballreaction@gmail.com
+- 0.9.25 highlights:
+  * Complete overhaul of Continental supplies
+  * Can adjust weapon start and crate probabilities in Balanced Random Weapon
+  * Remove rubber duck
+  * New air mine features
+  * Rework team rankings
+  * Tied teams now rank equally
+  * Help button in main menu
+  * 19 new hedgehog taunts
+  * Many new Lua API features
+  * Functionality of controllers restored
+  * Fix at least 2 crashes
+  * Fixed some awkward network bugs which caused games to come to a standstill
+  * Many bugs related to the wrap world edge fixed (but not all)
+  * Sudden Death always came exactly 1 turn later than planned
+
+-------------------------------------------------------------------
+Tue Jul  3 12:00:00 UTC 2018 - buckyballreaction@gmail.com
+- package changes:
++ features
+* bugfixes
+====================== 0.9.24.1 ====================
+ * Fix crash when portable portal device is fired at reduced graphics quality
+ * Fix possible crash when starting Hedgewars frontend in fullscreen mode
+
+====================== 0.9.24 ======================
+Game:
+ + New weapon: Minigun
+ + New game modifier: Enable switch hedgehog at start of turn
+ + Change weapon icons: Mudball, air mine
+ + Add healing visual effect in Paramedics mode and a few scripts
+ + Show remaining ammo when using Birdy egg or RC Plane bomb
+ + Add separate control for team chat (default: U)
+ + Add separate control for changing hedgehog tags (default: Home)
+ + Toggle all hedgehog tags at once with [Precise] + [Change hedgehog tags]
+ + Hedgehog tag translucency is now changed with [Switch] + [Change hedgehog tags]
+ + When using flying saucer shortly after a jump, stay in-mid air
+ + No longer cut off team/hedgehog names when not playing online
+ * Fix possible network desynchronization and crash when players rejoin an active game
+ * Fix time box being usable in Sudden Death with 0 health decrease
+ * Fix chat input key being sometimes registered twice
+ * Fix not displaying current volume status after pressing mute key
+ * Fix many effects not being correctly recorded by the video recorder
+ * Fix quit menu showing incorrect keys if using non-default key bindings
+ * Fix script translations not being loaded for Portuguese and Chinese
+ * When using seduction, only show “CENSORED” text in English locale
+
+Frontend:
+ + Migrate to Qt 5
+ + Schemes are now stored in separate files under Schemes
+ + Add default directory DrawnMaps for hand-drawn maps
+ + Lead player to training missions when starting Hedgewars the first time
+ * Fix map preview, map name, style name not being displayed if host selects map or style you don't have
+ * Remove “Upload to YouTube” functionality (it was broken for years)
+ * Fix broken preview of team hats (e.g. cap_team)
+ * Fix chart in stats screen not supporting negative numbers
+
+Content:
+ + New scenarios: Bazooka Battlefield, Tentacle Terror
+ + New basic training mission: Movement
+ + Completely redo basic training missions: Bazooka, Grenade, Rope
+ + Major overhaul of Sudden Death visuals in most themes
+ + New flag: uk_scotland
+ + New voice: Default_pl (Polish)
+ + New voice: Russian_pl (Polish with a Russian accent)
+ + Add theme icons for: Blox, CrazyMission, Deepspace, Eyes, Planes
+
+Styles and game modes:
+ + Various styles: Add current score/time next to team bars (where applicable)
+ + Remove rubber duck from most weapon schemes and Random Weapon and Balanced Random Weapon
+ + Construction Mode: Add a few shortcuts
+ + Construction Mode: Show selected object at cursor and a crate preview icon
+ + Construction Mode: Remember all selections
+ + Construction Mode: Add subtle glow to healing station
+ + Construction Mode: Allow to change "Switch Hedgehog" in weapon scheme
+ + Construction Mode: Hide selected sub-modes from crate/object placer from enemies over the net
+ + Highlander: Replace undocumented script param “mode=orig” to “multiuse=true”
+ + Highlander: Display the meaning of “multiuse=true” (or lack thereof) in mission panel
+ + Continental supplies: Custom weapon icons for the special weapons
+ + Racer, Tech Racer: Before starting a round, make first waypoint flash and center camera to it
+ + Racer, Tech Racer: Various other waypoint appearance improvements
+ + Racer: Use dark waypoints in bright themes like Bath
+ + Racer, HedgeEditor: Show waypoint outline around cursor when placing waypoints
+ + Battalion: Minor message and visual improvements
+ + Battalion: Mutate hog hats by default, but not the names
+ + Battalion: Script parameter “mutatenames=true” to also change the hog names (default: false)
+ + Battalion (King Mode): Kings always wear crowns and non-kings don't, regardless of settings
+ + Battalion (King Mode): If the king dies, the hogs die normally instead of disappearing
+ + Space Invasion: Add a default Space Invasion game scheme
+ + Capture the Flag: Can now be played with more than 2 clans
+ + Capture the Flag: Show team scores and score graph in stats screen
+ + HedgeEditor: Show cursor coordinates in top left corner
+ + Control: Always remove TimeBox and Resurrector
+ + Climb Home: Show messages when a fire cake is nearby and when you're inside home
+ + ShoppaMap: Map complexity can now be changed with the slider
+ + ShoppaMap: Remove script parameter “pad”
+ * The Specialists: Less buggy hog switching at turn start
+ * Mutant: When game ends due to all land being gone, declare the highest-scoring team the winner
+ * Battalion: Some texts in the mission panel were wrong and misleading
+ * Construction Mode: Remove drill strike if added by weapon scheme (it's broken)
+ * Construction Mode, Racer, HedgeEditor: No longer play Incoming voice for building stuff, fix other sound problems
+ * Capture the Flag: Fix many bugs caused by playing with >2 teams
+ * Capture the Flag: Properly place flag when first hog uses kamikaze or TimeBox
+ * Capture the Flag: Fix flag not being dropped when carrier uses piano strike
+ * CTF_Blizzard: Don't allow more than 2 clans. Excess hogs will be removed
+
+A Space Adventure:
+ + Precise Shooting: Display collected ammo
+ + Hard Flying: Display personal best at mission start
+ + Killing the Specialists: Add event messages and graphical effects
+ * Killing the Specialists: Fix very misleading hints in mission panel
+ * Killing the Specialists: Fix number of rounds measured being way too low
+
+A Classic Fairytale:
+ + Mission 3: Display number of turns left at timed parcours
+ + Mission 2, Mission 5: Reduce computer hog levels
+ + Mission 6: Change mines
+ + Mission 7: Add one additional pick hammer in a crate
+ * Fix incorrect storytelling in mission descriptions
+ * Missions now work even with corrupted team file, by using a default behaviour
+ * Mission 1: Fix error message spam when Leaks a Lot drowns
+ * Mission 3: Fix cannibals sometimes doing nothing for a full turn
+ * Mission 6: Fix cyborgs sometimes doing nothing for a full turn
+ * Mission 8: Fix invisible cyborg sometimes blocking the way
+ * Mission 9: Fix cannibal talking to himself in cut scene if mission starts with 3 natives
+
+Missions:
+ + Target Practice: Re-center camera to hog when projectile is destroyed or drowns
+
+Theme customization:
+ + Add fallback music with new keys “fallback-music” and “fallback-sd-music”
+ + Allow to hide themes explicitly with new key “hidden”. Using this key it's possible for hidden themes to have icons
+ * Fix green color channel on themes with key “sd-tint”
+
+Lua API:
+ + New library: SimpleMission: Allows to create missions more easily
+ + New call: WriteLnToChat(string): Add a line in the chat
+ + New call: SetVampiric(bool): Toggle vampirism
+ + New call: SetLaserSight(bool): Toggle laser sight
+ + New call: GetWind(): Returns current wind (approximation) from -100 to 100
+ + New call: GetTeamName(teamIdx): Returns name of team with given index (starts at 0)
+ + New call: GetTeamIndex(teamname): Returns index of team with given name
+ + New call: GetTeamClan(teamname): Returns clan of team with given name
+ + New call: SpawnSupplyCrate(x, y, content, [, amount]): Spawn ammo or utility crate, depending on content
+ + New call: HealHog(gearUid, healthBoost[, showMessage[, tint]]): Heal hedgehog with graphical effects and message
+ + New call: SetTeamLabel(teamname[, label]): Set an arbitrary label for a team, will be displayed next to the team bar
+ + New call: SetSoundMask(soundId, isMasked): Allows to disable playing a sound effect from engine
+ + New call: SkipTurn(): Force current hedgehog to skip turn
+ + New call: Explode(x, y, radius[, options]): Cause an explosion
+ + New param: PlaySound accepts 3rd parameter for voices: instaVoice: If true, sound plays instantly instead of being queued
+ + New callback: onEndTurn(): Called at the end of a turn (when gears have settled)
+ + New callback: onSkipTurn(): Called when a hog skips turn
+ + New hedgehog effect: heArtillery: Per-hedgehog artillery mode (can't walk). Values: 1 = permanently active. 2 = temporarily active (sniper rifle). 0 = not active
+ * AddAmmo now automatically unselects weapon if it would remove current ammo from current hedgehog
+ * Fix call: SetWeapon(amNothing) now unselects weapon
+ * Fix call: SetWind did not update flake flying direction
+ * Fix global: TotalRounds was stuck at -1 for several turns
+ * Fix CursorX, CursorY often not being updated when moving cursor at screen border
+
+-------------------------------------------------------------------
+Tue Dec  5 09:41:31 UTC 2017 - p.seiler@linuxmail.org
+- package changes:
+ * version update to 0.9.23
+ * replaced SDL with SDL2
+
+- Code changes:
+Legend: 
++ features
+* bugfixes
+
+HIGHLIGHTS:
+ + Battalion style
+ + Fort mode is now a map type instead of a scheme setting
+ + Fort mode now works with more than 2 teams
+ + New weapon: rubber duck
+ + New theme, map, 3 forts, 3 missions, some hats and graves
+ + WxW style allows you to select one of many wall sets
+ + Complete HedgeEditor overhaul
+ + Greatly improved script parameter support for many styles
+ + Improves stats screen of most styles and missions
+ + Various improvements for almost all styles
+ + AI hedgehogs can now use Bee, Vamprism, and Time Box
+ + Campaign page now shows your progress
+ + Improved turn timer
+ + Improved randomization options in team and multiplayer pages
+ + Improved theme customization support
+ + Various Lua API additions
+ * Fix cursor often jumping around after clicking
+ * A huge amount of bugfixes for both campaigns, the missions and styles
+ * Video recording functionality is restored
+
+Content:
+ + New game-style/mode: Battalion (see https://hedgewars.org/wiki/Battalion )
+ + New theme: Beach
+ + New theme music for Jungle and Fruit themes
+ + Change SD theme music for Halloween and Hoggywood (old tracks)
+ + Completely new Cheese map; replaces the old one
+ + New forts: Lonely_Island, Octopus, Olympic, Snail
+ + Many new random hedgehog and team names
+ + Add hats: barrelhider, bishop, jester, leprechaun, pirate_eyepatch, tf_scout, zoo_octopus
+ + Add hair-less variants of old hats: beefeaterhat, lambdahat, nursehat, pirate_bandana, pirate_hat, poke_ash_hat, RamboClean, sf_vega_hat, sf_guile_hat, simple_red, simple_yellow, simple_green, thugclean
+ * Remove hat: tf_scount (this was a duplicate of tf_demoman)
+ * Add graves: Clover, Old_Apple, pi, Simple_reversed, TV, Whisky, Ying_and_Yang
+ * Redo flags: cm_pentagram, cm_soviet, armenia, ireland, nepal, suisse, sweden, turkey
+
+Game engine (weapons):
+ + New weapon: rubber duck
+ + Freezer can now freeze sticky mines (they get disabled and fall into the water)
+ + Keep rope / parachute / flying saucer selected when destroyed and secondary ammo selected
+ * Gameplay fix: Hammer damage is now rounded down. This means it will cause NO DAMAGE to a hedgehog with less than 3 hp.
+ * Fixed air strikes drops being off-center
+ * Fixed hedgehogs getting hurt while firing deagle / sniper rifle bullet in certain situations
+ * Fixed mine, sticky mine, seduction, resurrector not working correctly across wrap world edge
+ * Fixed teleportation being able to teleport in land if you clicked across the wrap or bounce world edge
+ * Fixed turn not ending when sticky mine was trapped on rubberband
+ * Rope is now destroyed when attempting to shoot it through wrap or bouncy world edge
+ * Fixed possible to move rope angle below 0° while having secondary weapon selected
+ * Fixed molotov cocktails bouncing vertically off rubber
+ * Fixed sniper rifle disabling laser sight utility after using
+ * Fixed RC planes being able to collect frozen crates
+ * Fixed cake taking over 200 seconds to explode when its stuck and can't move
+ * Fixed Birdy descending into water when hog took damage or died before it got picked up
+ * Fixed player being able to switch to dying hog
+ * Various other fixes
+
+Game engine (gameplay):
+ + Fort Mode will now work with more than 2 teams
+ + Divided Teams mode will now work with more than 2 teams (Hint: you probably want to set world edges to "wrap" in such games)
+ + Frozen hedgehogs can no longer be poisoned
+ + AI hedgehogs can now use Bee, Vampirism and Time Box
+ + Improved hedgehog spawns on maps that lack land mass or free space
+ + Hogs no longer spawn on icy terrain
+ + Temporarily suspend Heavy Wind mode while turn timer is not running
+ + Engine supports now really gigantic maps
+ * Fixed cursor often jumping back to screen center when putting target location while moving cursor
+ * Fixed team getting infinite ammo when stockpiling >= 100 ammo (max. finite ammo is now limited to 99)
+ * Fixed failure to collect crate across wrap world edge
+ * Remove buggy “/finish” chat command
+ * Fix key controls not working in ammo menu: ammo menu, placement, camera/cursor movement keys
+ * Various other fixes
+
+Game engine (graphics, sounds and texts):
+ + Show indicator symbols at bottom right while extra damage or low gravity are active
+ + Color coding for the turn timer: green = ready timer, yellow = turn in progress, red = retreat timer, gray = timer paused
+ + Play countdown sounds at 1-4 seconds turn time
+ + Several new sound effects for weapons and utilities
+ + More ticker messages: Hog gets sick, king died, hog was resurrected, hog time travels (and returns), timeout, kamikaze
+ + Small visual effects enhancements: Baseball bat, dynamite and more
+ + Render graves behind everything else, so that they can't hide mines etc.
+ * Video recording functionality is restored
+ * Fixed screenshots being too bright if taken in quick succession
+ * Fixed hedgehog voices missing a response type (Justyouwait/"You're gonna pay for that") on some platforms (e.g. GNU/Linux)
+ * Fixed SD flakes of themes not working if regular flakes were disabled
+ * Fixed Seduction's "Yoohoo!" sound not playing
+ * Fixed hedgehogs saying “Missed” when drowning enemy without dealing damage
+ * Fixed enemy saying "Missed” when giving poison without direct damage
+ * Fixed hedgehogs not saying “Stupid” and not displaying announcer message for inflicting self-harm
+ * Fixed incorrect time box tooltip when in Sudden Death
+ * Fixed short sound effect breakdown right after using a time box
+ * Fixed sticky mine sound sometimes playing when shooting portable portal device when a sticky mine is placed on terrain
+ * Fixed hedgehog holding nothing in hand when napalm or piano strike got selected
+ * Fixed excessive water splashes sometimes caused by mines
+
+Highlander:
+ + Show collected weapons after kill and play sound
+ + Mission panel now shows all game modifiers (e.g. mines time, vampirism, etc.)
+ + Loyal Highlander (optional): With “loyal=true” in script param, you only get weapons for enemy kills (clan kills don't count)
+ * Removed "Freezer"/IceGun from the default Highlander weaponset
+
+Construction Mode:
+ + Added script parameter support:
+  + initialenergy: Amount of energy at start
+  + energyperround: New energy per round
+  + maxenergy: Maximum allowed energy
+  + cratesperround: Maximum placable crates per round
+ + Completely reworked all in-game texts and descriptions
+ * Fix rubber being placable inside land
+ * Fix invalid girder placement costing energy
+ * Special tools like structure placer now have their own proper descriptions (instead of Air Attack description, etc.)
+ * Costs for weapon and utility crates were all equal
+ * Remove airplane cursor
+ * Fix Lua errors when hog goes to time travel while any filter is in map
+ * Many other fixes and tweaks
+
+Racer and TechRacer:
+ + Allow to only place 2 waypoints in Racer
+ + Allow to remove Racer waypoints with precise key
+ + New script parameters for Racer:
+  + rounds: Number of rounds to play
+  + waypointradius: Size of waypoints
+  + maxwaypoints: Maximum allowed number of waypoints
+ + Show correct ranking and times in stats screen of Racer and TechRacer
+ * Fix description and icon of waypoint placement tool in Racer
+ * Remove airplane cursor in Racer
+ * Fixed waypoint message in TechRacer and Racer overwriting current weapon selection message
+ * Fixed TechRacer not recording finish if time was >= 100s
+
+WxW:
+ + Support for multiple sets of walls per map
+ + Add optional “Crate Before Attack” rule
+ + Add optional “All But Last” rule
+ + Add optional “Kill The Leader” rule
+ + Script parameter support (see Lua file comment for documentation)
+ + Possible to set max. number of weapons in game (script parameter only)
+ + Menu can be disabled (with script parameter “menu=false”) for insant game start
+ + Possible to set number of crates per turn
+ + Ropes, ShoppaKing, ShoppaHell and ShoppaNeon can now be played with the classic left and right walls
+ + Allows almost all game modifiers to be changed, the only exception is crate probabilities
+ + New wall sets for Ropes, ShoppaNeon, ShoppaDesert, ShoppaWild, ShoppaKing and ShoppaHell.
+ + Basic support for a bunch of Shoppa maps
+ + Fully functional even without a map border
+ + More sound effects
+ + More helpful mission display after configuration has been accepted
+ + Hide “Surf Before Crate” setting if surfing is disabled for this map, or the bottom is active and water never rises
+ + Hide walls setting if script does not provide walls for map yet
+ + Freeze crates at turn start if Walls Before Crate or Surf Before Crate is enabled (they unfreeze if you met requirements)
+ + Allow toggling the radar with Switch Hog key while roping or rope selected
+ * No smoke when hog is near near a WxW wall but walls need not to be touched
+ * Fix other player being able to change the menu config in the short period before the first turn
+
+Tumbler:
+ + Script parameter support:
+  + spawnbarrels: New barrels per turn
+  + spawnmines: New mines per turn
+  + ammoflamer: Initial Flamer fuel
+  + ammobarrel: Initial Barrel Launcher ammo
+  + ammomine: Initial Mine Deployer ammo
+  + minetimerplaced: Mine timer (ms) of mines dropped from Mine Deployer
+  + bonustime: Bonus time (s) in utility crates
+  + bonusflames: Bonus Flamer fuel in ammo crates
+  + chanceammo: Per-turn % chance of an ammo crate drop
+  + chancetime: Per-turn % chance of an utility crate (extra time) drop
+ + Alternative weapon selection with slot keys (F1, F2, F3)
+ + Add mine/barrel launch sounds
+ + Add countdown sounds
+ + Rewrote mission description and captions
+ + Sound and message when trying to fire empty weapon
+ * Permanently disable some game modifiers which won't work together with this
+
+Space Invasion:
+ + Show actual scores in stats screen, and a proper graph
+ + Show a couple of “awards” (snarky comments) in stats screen
+ + Remove bonuses “Boom!”, “BOOM!” and “BOOM!! BOOM!! BOOM!!” for balancing reasons
+ + Script parameter support:
+  + rounds: Number of rounds
+  + shield: Initial shield
+  + barrels: Initial barrel ammo
+  + pings: Available radar pings
+  + timebonus: Time bonus for red drones
+  + barrelbonus: Ammo bonus for green invaders
+  + shieldbonus: Shield bonus for purple invaders
+  + forcetheme: Set to “true” to use the selected theme instead of EarthRise
+ + Complete rewrite of almost all messages and the mission panel
+ + More event messages
+ + Show current score in HUD (white number)
+ + Stop overwriting most game scheme’s parameters
+ + Disable weapon scheme
+ + More sounds: Empty ammo, countdown, throw, kamikaze, radar ping, explosion
+ * Fix explosion being drawn twice when colliding with invader
+
+HedgeEditor:
+ + Dud mine placement mode
+ + Allow to select frames in sprite placement mode
+ + New placable sprite: sprTargetBee
+ + Complete rewrite of all help texts
+ + Allow to add and subtract health
+ + Add more convenient start values (e.g. for health)
+ + Allow to set timer of sticky mines
+ + Health crates can now have 0 health
+ + Hog and team names (from identity modes) are now translatable
+ + Show health/timer above health crates, barrels, mines, sticky mines and air mines
+ + Allow to toggle health/timer display with Precise+3
+ + Allow to toggle main help at any time with Precise+1
+ * Add proper description and name for the gear placement tool (no more fake air attack)
+ * Fix many issues with exported files
+ * Fix placement mode being changable when gear placement tool is not selected
+ * Make land gun spawn in utility crates instead of weapon crates
+ * Stop aggressively showing the mission panel after any button press
+ * Fix placement modes sometimes showing “nil” in caption
+ * Fix girder sprite being displayed at top left for no reason
+ * Ammo names are not hardcoded anymore (no more double work for translators)
+ * Fix many missing or poor-quality texts for translation
+ * Fix error when trying to set ShoppaBalance rank without anything selected
+ * Don't show misleading circle when placing girder/rubber
+ * Disable timer keys 2-4 in rubber placement mode
+ * Fix incorrect weapon crate preview of air attack, drill strike and napalm
+
+Other styles and schemes:
+ + The Specialists: Saints get low gravity
+ + Capture The Flag: Setting number of captures with script parameter “captures=<number>”
+ + Mutant: Show appropriate ranking and graph in stats screen
+ + Shoppa: Don't place air mines
+ * Capture the Flag: Fix flag of first team spawning at second hog instead of first
+ * Gravity: Using the low gravity *utility* had no effect. Now it halves the base gravity of the style
+ * Disable Sudden Death for good in Shoppa game scheme, some game styles and mission maps
+
+A Classic Fairytale:
+ + Mission 4: Add infinite skip
+ + Mission 5: Spare traitor's life with Skip instead of Precise
+ + Mission 6: Add alternate dialogues when killing cyborgs before collecting the crates
+ + Mission 6: Give hero only a portal gun at the final portal seqment, remove the large amount of crate drops
+ + All missions: Clarify mine timers
+ * Mission 1: Leap of faith: Hog was able to walk to the right and get stuck
+ * Mission 1: Leap of faith: Teleport player back to mole when failing
+ * Mission 2: Fix crash when trying to open ammo menu in opening sequence
+ * Mission 2: Fix game sometimes getting stuck after walking back to Leaks A Lot
+ * Mission 2: Fix breakages when heroes died before a new sequence, or together with enemies
+ * Mission 2: Remove restart option when cooperating with cyborg; it messed up things too much
+ * Mission 3: Fix various Lua errors when playing with 2 hogs and one of them dies
+ * Mission 3: Fix broken end sequence after killing cyborg or princess
+ * Mission 3: Fix broken sequence of princess being caged
+ * Mission 3: All girder crates now have 3 girders each
+ * Mission 5: Fix crash when skipping animation while the cyborg talks before the 3rd wave of cannibals starts
+ * Mission 5: Make sure the player can only play with one hog after the cyborg imprisoned the other natives
+ * Mission 5: Fix final animation being stuck if cyborg's way to the left is blocked
+ * Mission 6: Block off left cave entrance to stop player to just rope all the way around
+ * Mission 6: Fix mines not being able to get triggered in first turn
+ * Mission 8: Fix Lua error message at the very beginning and error spam in intro sequence
+ * Mission 10: Fix mission becoming unplayable when all hogs except the traitor died
+ * All missions: Add missing texts for translation
+ * All missions: Fix incorrect crate types
+ * All missions: Rewrite mission texts to state missions more clearly
+ * Fix swapped mission preview images of missions 2 and 3
+
+A Space Adventure:
+ + Side missions save and show your personal best successes (e.g. fastest finish in Hard Flying)
+ + Spacetrip: Show 2 flowers over fully completed planets (with side missions)
+ + All missions: Add skip where it doesn't hurt
+ + All missions: Clarify mine timers
+ + All missions: Improve displaying behaviour of mission panel
+ + All missions: Change team colors
+ + Side missions: Remove or shorten intro sequences
+ + Side missions: Generous ready time to give more time to read the mission panel
+ + Getting to the device: Put device part in a real crate, improve some dialogues
+ + Final mission: Add outro sequence instead of instantly quitting
+ + Bad timing: Improve messaging and choice dialog
+ * Spacetrip: Fix various bugs and logic flaws in the initial mission
+ * A frozen adventure: Fix bazooka and excess freezers (>6) not retained over checkpoints
+ * A frozen adventure: Fix and improve poorly written messages
+ * Getting to the device: Add real crate and correct message for collecting device part
+ * Getting to the device: Remove checkpoints. There was a good chance for these missions to become unwinnable
+ * Searching in the dust: Remove checkpoints. See above.
+ * Searching in the dust: Fix Hog Solo dropping straight down when roping near smuggler
+ * Searching in the dust: Fix incorrect messages after collecting device part
+ * Precise flying: Fix victory not being recognized, also wait for flames to settle before losing
+ * Hard Flying: Fix ending in a Lua error
+ * The First Stop: Fix stats screen showing teams twice
+ * Fruit planet: Fix “Precise shooting” disappearing directly after completing “Bad timing”
+ * Fruit planet: Fix “Getting to the device” not visible when landing on fruit planet with first main mission completed only
+ * Killing The Specialists: Fix killing hog with Deagle gave you chance to use another weapon in same turn
+ * Fix weird behaviour when walking right before the first animation in most missions
+ * Fix a couple of texts being untranslatable
+ * Fix a variety of minor logic flaws in the story
+ * Fix typos
+ * All missions: Fix incorrect crate types
+
+Missions:
+ + New scenario: Teamwork 2
+ + New scenario: Big Armory
+ + New training: Basic Flying Saucer Training
+ + Rope-Knocking Challenge was improved (now awards score based on kills and time; taunts for knocking out hedgehogs)
+ + Rewrote some help texts in basic rope training
+ + Graphical effect (black bars) while in cut scenes
+ + Change description and icon for baseball bat in Knockball mission map
+ + Sniper rifle target practice: Dynamite blows up quicker, can also skip with precise key
+ * Fixed mistakes and bad wording of strings in several missions, scripts and campaigns
+ * TrophyRace: Fix hedgehogs not being eliminated anymore after one hog skipped or ran out of time
+ * Portal Mind Challenge was cleaned up and reworked (especially less awful wording)
+ * Fixed Target Practice missions getting stuck when a target dropped into water
+ * Climb Home: Fix game getting stuck when a player reached home in multiplayer
+ * Climb Home: Fix Lua error messages and broken stats screen
+ * Sniper rifle target practice: Fix targets spawning twice in dynamite scenes
+ * Sniper rifle target practice: Fix auto-camera generally behaving weird
+
+Frontend:
+ + Campaign screen shows which campaigns and missions you've completed so far
+ + Training screen now has 3 mission categories: Training (tutorials), Challenge (get a high score), Scenario (complete a task)
+ + Replaced the Fort Mode game modifier by adding "Forts" to the map type selection. This makes the mode easier selectable/discoverable. Also the slider can be used to adjust the distance between forts.
+ + Menu screens got few new icons and many other tweaks, e.g. larger dropdown lists for easier access
+ + Additional button for just randomizing theme that will not change your selected map
+ + Randomizing map/theme in online mode will not include DLC content
+ + New teams start with a random grave and fort
+ + Hedgewars creates 4 human teams and 2 computer teams on its first launch
+ + Allow to randomize hog names, hats, team name, flag, grave, voice and fort separately
+ + “Random team” button is now able to randomly select from all available hats
+ + Creating new game/weapon schemes guarantees unique names
+ + Custom maps and styles are now marked with an icon instead of an asterisk
+ + Mark custom forts in team editor
+ + Room host can delegate room control to other player by rightclick
+ + Switch from HTTP to HTTPS where possible
+ * Fix flag being selectable for computer players although it had no effect
+ * Campaign screen does no longer show AI-controlled teams
+ * Campaign names and campaign mission names can now be translated
+ * Creating randomized teams now randomizes (almost) every aspect
+ * Fixed mostly broken descriptions for multiplayer mission maps
+ * Clicking on "New" in weapon scheme editor now creates empty weapon scheme instead of default
+ * Fix language names in language list being always in English
+ * Prevent starting game with >48 hogs (because engine doesn't support it yet)
+ * Fix the key for toggling team bars being incorrectly described
+ * Fix caption of stats screen showing only one winner if multiple teams have won
+ * Remove broken “Play again” button appearing in stats page after an online game
+ * Weapons scheme editor: When leaving, it no longer flickers and the selection is not reset to Default
+ * Team editor: Fix old team being retained when renaming a team
+ * Team editor: Automatically rename team when leaving team editor page with an already used team name
+ * Fix broken cancel button in the login window
+
+Content Creation:
+ + Theme objects can now have more than 1 in-land rect specified. You can specify the amount in theme.cfg by adding another number (and a comma) before the first rect
+ + Theme objects can now be placed on water (by setting first in-land rectangle to 0,0,0,0)
+ + Themes can now use flakes with negative falling speed (rising flakes)
+ + Themes can now contain custom sound files: splash.ogg Droplet1.ogg Droplet2.ogg Droplet3.ogg skip.ogg
+ + Themes can now have mirrored clouds and flakes: CloudsL.png, SDCloudsL.png, FlakeL.png, SDFlakeL.png
+ + Water in themes supports custom animation and flow speed with water-animation and sd-water-animation in theme.cfg
+ + Simplified hat format for unanimated hats; a single 32×32 image is enough. For clan hats, use size 64×32, with the color overlay at the right
+ + Ammos.png and Ammos_bw.png in HWPs are now overlayed over the base images; use transparent icons to keep them unchanged from the original
+ + Custom Sudden Death background tint for themes with sd-tint
+ * Default water color was black instead of blue
+
+Translations:
+ + Complete translations: German, Polish
+ + Major translation updates: Scottish Gaelic, Italian
+ + Loading screen can now be translated
+ + A few window titles can be translated
+ + Campaign names and campaign mission names can be translated
+ + A Classic Fairytale, missions 8 and 10 can now be translated
+ * Built-in texts from Qt (e.g. “cut”, “paste”, “copy”) in frontend weren't translated
+ * Remove text from mission images to make them language-neutral
+ * Fix English-only language/country names in language selection
+ * Fix very, very broken mission map descriptions
+
+Lua API:
+ + New call: SetCinematicMode(enable) -- e.g. for cutscenes etc.
+ + New call: GetAmmoName(ammoType [, ignoreOverwrite]) -- returns the localized name for the specified ammoType
+ + New call: GetVisualGearType(vgUid) -- returns the visual gear type
+ + New call: SetAmmoTexts(ammoType, name, caption, description) -- Overwrite displayed name and description of an ammo type
+ + New call: SetAmmoDescriptionAppendix(ammoType, descAppend) -- Append a custom text to the description of an ammo type without overwriting it
+ + New call: GetHogFort(gearUid) -- Returns the name of the fort of the hog's team
+ + New call: PlaceRubber(x, y, frameIdx) -- Places a rubber
+ + New call: SendGameResultOff() -- Disable the game automatically setting a game result in the stats screen
+ + New call: SendRankingStatsOff() -- Disable the game automatically filling the team rankings in the stats screen
+ + New call: SendAchievementsStatsOff() -- Disable the game automatically populating the bullet point list in the “Details” section on the stats screen
+ + New call: GetTeamStats(teamname) -- Returns a table of team stats
+ + New call: EndTurn([noTaunts]) -- Ends the current turn
+ + New hook: onVisualGearAdd(vgUid) -- called when a visual gear is added
+ + New hook: onVisualGearDelete(vgUid) -- called when a visual gear is deleted
+ + New hook: onUsedAmmo(ammoType) -- called when ammo has been finished using (e.g. after both shotgun shots)
+ + New variable: AirMinesNum -- Number of air mines being placed on a medium-sized map
+ + New variable: WorldEdge -- World edge type (weNone, weWrap, weBounce, weSea)
+ + New variable: AmmoTypeMax -- Maximum ammo type ID (useful to iterate through all ammo types, starting by 0)
+ + New variable: ReadyTimeLeft -- Remaining ready time, 0 if turn in progress. Can be set in onNewTurn
+ + Locale library: loc_noop -- Mark string for translation but don't translate it
+ + Animate library: AnimInit([startAnimating]) -- New parameter startAnimating: if true, will start game in cinematic mode with most controls disabled. Must play an animation after that
+ + Animate library: AnimSetInputMask(extraInputMask) -- Set input mask in a manner comptible with the Animate library
+ + Animate library: AnimMove(gear, dir, posx, posy, [maxMoveTime]) -- new optional parameter maxMoveTime. If hog did not reach its destination within maxMoveTime milliseconds, animation stops and hog is just teleported there
+ + Gear values: “Boom” -- used to modify explosion size and/or damage for most gears
+ + 8 overridable custom sprites/sounds: sprCustom1-sprCustom8, sndCustom1-sndCustom8
+ * Fixed call: HideHog(gear) -- Fix crash when gear is invalid. Returns true on success or false otherwise
+ * Fixed call: SwitchHog(gear) -- Fix new hog being unable to open ammo menu
+ * Removed call: SetAmmoStore -- Old undocumented function of questional use, has never been used
+ * Fixed variable: Goals -- Fix Goals text being cut off at ca. 255 characters
+ * Fix huge numbers having sign errors on 64-bit architectures
+
+
+-------------------------------------------------------------------
+Wed Nov 29 14:18:18 UTC 2017 - dimstar@opensuse.org
+
+- Replace libopenssl-devel BuildRequires with pkgconfig(openssl),
+  allowing OBS to pick openssl 1.0 (which is required due to Qt4
+  not being able to be ported to openSSL 1.1).
+
+-------------------------------------------------------------------
+Mon Nov 14 08:57:14 UTC 2016 - jengelh@inai.de
+
+- Minor description fixes
+
+-------------------------------------------------------------------
+Mon Jul 25 12:30:42 UTC 2016 - mailaender@opensuse.org
+
+- use cmake macros
+- build with debug info
+- fix script-without-shebang on appdata.xml
+
+-------------------------------------------------------------------
+Tue Nov 04 00:15:00 UTC 2015 - dbuck@novell.com
+
+- update to 0.9.22
+
+-------------------------------------------------------------------
+Sun Jan 04 02:00:00 UTC 2015 - dbuck@novell.com
+
+- update to 0.9.21
+- disable server as some haskell dependencies are missing 
+  (Data.Digest.Pure.SHA)
+
+-------------------------------------------------------------------
+Sun Jan 12 10:14:44 UTC 2014 - mailaender@opensuse.org
+
+- update to 0.9.20.5
+
+-------------------------------------------------------------------
+Sun Jan  5 10:20:06 UTC 2014 - mailaender@opensuse.org
+
+- Update to version 0.9.20.4
+
+-------------------------------------------------------------------
+Sun Jan  5 08:52:20 UTC 2014 - mailaender@opensuse.org
+
+- Fixed build on x64 vs i586.
+
+-------------------------------------------------------------------
+Wed Dec 25 09:46:54 UTC 2013 - mailaender@opensuse.org
+
+- update to 0.9.20
+- libphysfs linker problems have been resolved upstream
+  (removed all patches that did more harm than good)
+
+-------------------------------------------------------------------
+Mon Nov 25 13:42:57 UTC 2013 - mailaender@opensuse.org
+
+- adhere to $RPM_OPT_FLAGS
+- fixed linker flags with hedgewars-gcc-linker.patch
+
+-------------------------------------------------------------------
+Sat Nov 23 15:56:11 UTC 2013 - mailaender@opensuse.org
+
+- build the server again
+
+-------------------------------------------------------------------
+Sat Nov 16 07:55:21 UTC 2013 - mailaender@opensuse.org
+
+- use system flags
+- build debug info
+
+-------------------------------------------------------------------
+Fri Nov 15 13:15:16 UTC 2013 - mailaender@opensuse.org
+
+- fixed .desktop shortcuts and mime info
+
+-------------------------------------------------------------------
+Sat Aug 31 13:42:37 UTC 2013 - mailaender@opensuse.org
+
+- update to third re-release 0.9.19.3
+
+-------------------------------------------------------------------
+Sun Jun  2 22:00:00 UTC 2013 - dbuck@novell.com
+
+- update to 0.9.19
+
+-------------------------------------------------------------------
+Thu Nov  1 22:39:59 UTC 2012 - mailaender@opensuse.org
+
+- update to 0.9.18
+
+-------------------------------------------------------------------
+Sat Jul  2 16:25:33 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Sat Nov 13 00:00:00 UTC 2010 - dbuck@novell.com
+
+- update to 0.9.14
+
+-------------------------------------------------------------------
+Sat Apr  3 00:00:00 UTC 2010 - dbuck@novell.com
+
+- update to 0.9.13
+
+-------------------------------------------------------------------
+Wed Oct 21 00:00:00 UTC 2009 - dbuck@novell.com
+
+- grabbed latest updated 0.9.12 tag from SVN
+- add a few patches from nemo
+
+-------------------------------------------------------------------
+
+Mon Feb 02 00:00:00 UTC 2009 - toni@links2linux.de 
+
+- initial packaging

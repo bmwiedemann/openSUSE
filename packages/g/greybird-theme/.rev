@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>a9918e5a800f27a89d66f691193f1278</srcmd5>
+    <version>0.4</version>
+    <time>1330952542</time>
+    <user>coolo</user>
+    <comment>This is a new minimalistic modern gtk2/3 xfwm and emerald theme. As it supports gtk3 it's perfect for future suse releases</comment>
+    <requestid>104151</requestid>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>a9918e5a800f27a89d66f691193f1278</srcmd5>
+    <version>0.4</version>
+    <time>1340183411</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a14ea448fb9e0dd6e8b38e117621961</srcmd5>
+    <version>0.8.2</version>
+    <time>1342866548</time>
+    <user>namtrac</user>
+    <comment>updated version to 8.2-95 (forwarded request 128028 from seilerphilipp)</comment>
+    <requestid>128041</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8a14ea448fb9e0dd6e8b38e117621961</srcmd5>
+    <version>0.8.2</version>
+    <time>1359109003</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c134efac5a90a395aa2bb0da99056a6a</srcmd5>
+    <version>1.1.1</version>
+    <time>1368694841</time>
+    <user>coolo</user>
+    <comment>package update</comment>
+    <requestid>175761</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c134efac5a90a395aa2bb0da99056a6a</srcmd5>
+    <version>1.1.1</version>
+    <time>1379662554</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8a6e14b81309dfee23428616a2b91689</srcmd5>
+    <version>1.2.2</version>
+    <time>1393935994</time>
+    <user>coolo</user>
+    <comment>package update</comment>
+    <requestid>224460</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8a6e14b81309dfee23428616a2b91689</srcmd5>
+    <version>1.2.2</version>
+    <time>1409301099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>453de8f1d66c91bd78088b6acc7c21e0</srcmd5>
+    <version>3.22.6</version>
+    <time>1519747138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580267</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f03fa12c19a3ca15e00a03ecf399183</srcmd5>
+    <version>3.22.9</version>
+    <time>1543224197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.22.9:
+  * Support for Xfwm4 4.13
+  * Improve contrast in Xfwm4's alt-tab dialog (both 4.12 and 4.13)
+  * Switch from ruby-sass to sassc
+  * Fix height thunar's pathbar entry widget
+  * Use correct colors for GtkNotebook
+  * Fix Chromium's titlebar buttons
+  * Make the Gtk3 xfce4-panel 80% transparent again
+  * Improve hidpi support in CSD (gh#shimmerproject/greybird#100)
+  * Fix Gtk2 radiobuttons (gh#shimmerproject/greybird#219)
+  * Drop superfluous assets
+  * Make radio and checkitems more consistent between Gtk2 and Gtk3
+  * Improve lightdm-gtk-greeter theming
+  * Include Gtk3 window decorations
+  * Improve backdrop style of several widgets
+- BuildRequires: remove ruby-sass and add  sassc
+</comment>
+    <requestid>649883</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>65019c97e1287922255569576c597444</srcmd5>
+    <version>3.22.10</version>
+    <time>1550574158</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677177</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e26a482f9ea8cebe02de5491c75316c1</srcmd5>
+    <version>3.22.10~git2.799485d</version>
+    <time>1556622093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697535</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9dd798afe7434e26c04d1bc5d42b23c8</srcmd5>
+    <version>3.22.10~git3.c0b8881</version>
+    <time>1557472816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701866</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0cf0b7632f95a511eefc5f3956056bd6</srcmd5>
+    <version>0.1.1</version>
+    <time>1435870013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>305635</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27b7ea57aee1a26d6f395efd39d83b01</srcmd5>
+    <version>0.1.2</version>
+    <time>1443336008</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333505</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>07ca86744195e996ee5a703ea1af27de</srcmd5>
+    <version>0.1.2</version>
+    <time>1451045158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350489</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c58bcfec3f9d873803328653094fe91</srcmd5>
+    <version>0.1.3</version>
+    <time>1521579051</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.3
+Upstream changes:
+  * SIMD enhancements: SSE, AVX, Neon.
+  * Improve support for clang, ARM, and cross-compilation.
+  * Provide env. var. override of runtime parameters.
+  * Build fix re cmake variables AVCODEC_INCLUDE_DIRS &amp;
+    AVUTIL_INCLUDE_DIRS.
+  * Build options WITH_SINGLE_PRECISION, WITH_DOUBLE_PRECISION &amp;
+    WITH_SIMD have been removed; replacement options are detailed
+    in INSTALL, `Resampling engines'.
+</comment>
+    <requestid>586160</requestid>
+  </revision>
+</revisionlist>

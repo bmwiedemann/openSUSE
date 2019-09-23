@@ -1,0 +1,387 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02f9a41d8470e0aec70f49bede185d64</srcmd5>
+    <version>0.8.0</version>
+    <time>1168903342</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c3af99e899f9576cd7c985a1a35690b9</srcmd5>
+    <version>0.8.1</version>
+    <time>1172783983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="13">
+    <srcmd5>8601f4bdad5a008e0e449362b9feef40</srcmd5>
+    <version>0.8.1</version>
+    <time>1180217695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="101">
+    <srcmd5>8601f4bdad5a008e0e449362b9feef40</srcmd5>
+    <version>0.8.1</version>
+    <time>1180217695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="102">
+    <srcmd5>dfe285fde86e0bebddbf72795a475194</srcmd5>
+    <version>0.8.1</version>
+    <time>1232327389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="104">
+    <srcmd5>dfe285fde86e0bebddbf72795a475194</srcmd5>
+    <version>0.8.1</version>
+    <time>1232327389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="105">
+    <srcmd5>14b985121c31fd122c2ddf7944d62576</srcmd5>
+    <version>0.8.1</version>
+    <time>1268924627</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="106">
+    <srcmd5>b5e2f3b8d76154ced7689a2e8441a9e2</srcmd5>
+    <version>0.8.1</version>
+    <time>1273791304</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmatroska based on submit request 39873 from user RedDwarf
+</comment>
+    <requestid>39873</requestid>
+  </revision>
+  <revision rev="9" vrev="108">
+    <srcmd5>b5e2f3b8d76154ced7689a2e8441a9e2</srcmd5>
+    <version>0.8.1</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="109">
+    <srcmd5>b5e2f3b8d76154ced7689a2e8441a9e2</srcmd5>
+    <version>0.8.1</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>081d8223d0ba23ee3fa43c921a4ce658</srcmd5>
+    <version>1.0.0</version>
+    <time>1279544763</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmatroska based on submit request 42755 from user RedDwarf
+</comment>
+    <requestid>42755</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bc9f3b48bff527d8f88058a8d11e5aa1</srcmd5>
+    <version>1.0.0</version>
+    <time>1280793078</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmatroska based on submit request 44352 from user coolo
+</comment>
+    <requestid>44352</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ee1e0baae94a94873f16ab095451e2a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1282943566</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libmatroska based on submit request 46398 from user coolo
+</comment>
+    <requestid>46398</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ba244c4de7cbad13c67a22d063f4744c</srcmd5>
+    <version>1.0.0</version>
+    <time>1289533186</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>ee1e0baae94a94873f16ab095451e2a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1289569346</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>ee1e0baae94a94873f16ab095451e2a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bb8a71bd9b3e44fe0c1cf3f678d78d9e</srcmd5>
+    <version>1.1.0</version>
+    <time>1298031305</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61632 from user RedDwarf
+</comment>
+    <requestid>61632</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a6d9aaead4d8146a5768e4c2d0daf2c6</srcmd5>
+    <version>1.1.0</version>
+    <time>1298031312</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61632
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>77b941a635fa4eb68b921f5948dc8052</srcmd5>
+    <version>1.1.0</version>
+    <time>1306153148</time>
+    <user>saschpe</user>
+    <comment>update baselibs.conf</comment>
+    <requestid>70968</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>c7ea588a98ac66b7731bf3a91471848f</srcmd5>
+    <version>1.1.0</version>
+    <time>1306153157</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70968
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3de4b06b8e2839092dd940482cb637ab</srcmd5>
+    <version>1.2.0</version>
+    <time>1309531084</time>
+    <user>saschpe</user>
+    <comment>Update to version 1.2.0</comment>
+    <requestid>74931</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>85813c69ff6eb7a5cf75e96a1ce465d8</srcmd5>
+    <version>1.3.0</version>
+    <time>1317026134</time>
+    <user>saschpe</user>
+    <comment>- Update to version 1.3.0
+  + initialize all data members
+  + The KaxCodeVersion variable now resides in the library instead of being declared static in the header file.
+  + make KaxChapterSegmentEditionUID an unsigned integer to match the KaxChapterEditionUID it's supposed to target</comment>
+    <requestid>84770</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>85813c69ff6eb7a5cf75e96a1ce465d8</srcmd5>
+    <version>1.3.0</version>
+    <time>1319182109</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>a35a9a520c6e41b5de9379c8a4a64743</srcmd5>
+    <version>1.3.0</version>
+    <time>1323192272</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>92b207fb018b4d79045c383e3eb42aae</srcmd5>
+    <version>1.3.0</version>
+    <time>1336653171</time>
+    <user>coolo</user>
+    <comment>- Do not use gcc 's -ansi flag, but whatever the compiler 
+  has a default. (forwarded request 120536 from elvigia)</comment>
+    <requestid>120550</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>92b207fb018b4d79045c383e3eb42aae</srcmd5>
+    <version>1.3.0</version>
+    <time>1340183603</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>92b207fb018b4d79045c383e3eb42aae</srcmd5>
+    <version>1.3.0</version>
+    <time>1359109302</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7ced87244fe598a1c546e51bd80dc5b3</srcmd5>
+    <version>1.4.0</version>
+    <time>1364909739</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>161884</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>7ced87244fe598a1c546e51bd80dc5b3</srcmd5>
+    <version>1.4.0</version>
+    <time>1379663001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3ff32ff5f939f64d381f2a99729fcb74</srcmd5>
+    <version>1.4.1</version>
+    <time>1383545226</time>
+    <user>coolo</user>
+    <comment>Not expecting it to go to 13.1.
+
+- Update to version 1.4.1
+  * Added new elements/classes DiscardPadding, CodecDelay and
+    SeekPreRoll
+  * The licensing information has been cleared up/unified.
+  * The Makefile now contain options for specifying the destination
+    base directory during installation (&quot;DESTDIR&quot;) and for
+    specifying which library types to build (&quot;link&quot;).
+  * The libraries are built without the &quot;-ansi&quot; and
+    &quot;-fno-gnu-keywords&quot; flags on Linux
+  * Code cleanup
+- Remove matroska-noansiflag.patch. Applied upstream.</comment>
+    <requestid>205614</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>33304492a62f3e64489d41175c39fb5b</srcmd5>
+    <version>1.4.1</version>
+    <time>1389888967</time>
+    <user>coolo</user>
+    <comment>- Add C++ visibility support by simply reusing the win32 
+  dll code for the same purpose.
+- added patches:
+  * matroska-visibility.patch (forwarded request 213932 from elvigia)</comment>
+    <requestid>214090</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>6b43a472f0c846679c642f39fa0bbb0d</srcmd5>
+    <version>1.4.1</version>
+    <time>1390246959</time>
+    <user>coolo</user>
+    <comment>- Revert last change for now as it breaks mkvtoolnix which 
+  uses internal symbols :-(
+  keep fvisibility-inlines-hidden though (forwarded request 214121 from elvigia)</comment>
+    <requestid>214147</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>92ae5736234d9d6afe0634cf523f5f7b</srcmd5>
+    <version>1.4.1</version>
+    <time>1392638106</time>
+    <user>coolo</user>
+    <comment>- Also revert fvisibility-inlines-hidden: still breaks mkvtoolnix
+  on i586. (forwarded request 221919 from dimstar)</comment>
+    <requestid>221971</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>008202553e921898377ce710c3f9d09d</srcmd5>
+    <version>1.4.1</version>
+    <time>1407485406</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243745</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>f6b104a7b968ec26dcb1f313ff61d612</srcmd5>
+    <version>1.4.1</version>
+    <time>1407943190</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244165</requestid>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>f6b104a7b968ec26dcb1f313ff61d612</srcmd5>
+    <version>1.4.1</version>
+    <time>1409301616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>db21e215bd1a4874fd54342f699b2ea9</srcmd5>
+    <version>1.4.2</version>
+    <time>1423215802</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284201</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>52fd0c52b34aca845ea1540a2f0b9356</srcmd5>
+    <version>1.4.4</version>
+    <time>1445675373</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340386</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e337b54b89ea75b4cd851160c4006788</srcmd5>
+    <version>1.4.4</version>
+    <time>1450955845</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350486</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fcb89d2e5b299acb48c7b921131ec349</srcmd5>
+    <version>1.4.5</version>
+    <time>1469080465</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed mistakes</comment>
+    <requestid>408925</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>f712167792fabafb5c5d5327d0767b3d</srcmd5>
+    <version>1.4.5</version>
+    <time>1470217066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414512</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3c7ef33d0c6f508c00a6ed5e0bde2e60</srcmd5>
+    <version>1.4.7</version>
+    <time>1498995418</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506394</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>88ad79174954d904605325bd77d7bf38</srcmd5>
+    <version>1.4.8</version>
+    <time>1507896509</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.4.8:
+KaxBlockGroup, KaxSimpleBlock: fixed writing the block header if the track number is 128.
+</comment>
+    <requestid>532736</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>e786f33dea73dfe4a664c32cf23a89dd</srcmd5>
+    <version>1.4.8</version>
+    <time>1521579012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585309</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>31b371dc16e82c89be73f02f1ef2661d</srcmd5>
+    <version>1.4.9</version>
+    <time>1533214592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626520</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>20e1b56a3d260da1cef075d2e96056ad</srcmd5>
+    <version>1.4.9</version>
+    <time>1534543013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628344</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>66d8171e282d088f9cbff48e2bd81bef</srcmd5>
+    <version>1.5.0</version>
+    <time>1556022838</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696465</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7f67a350317daf6ff08f8e0323ee83b4</srcmd5>
+    <version>1.5.2</version>
+    <time>1562925567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714710</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,870 @@
+-------------------------------------------------------------------
+Mon Mar 11 09:09:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.40.0:
+  + Fixed array and transfer annotations for documentation.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:58:28 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.39.91:
+  + Replace deprecated gnome-common with autoreconf.
+
+-------------------------------------------------------------------
+Thu Feb 14 20:38:32 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 2.39.90:
+  + Fixed compile warnings 
+  + Linux: Get procmap doesn't need suid.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:01:20 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:09 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 11 23:17:03 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:11:39 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.37.92:
+  + Code cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 14 14:11:07 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.37.90:
+  + Added reserved fields to the sysdeps struct.
+  + Fixed build failure in FreeBSD 11.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 23 13:01:08 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.37.2:
+  + Added support for per-process io monitoring.
+  + Added nullpointer check.
+  + Use unicode in translatable strings.
+  + Updated translations.
+- Bump soname and baselibs.conf following upstream changes.
+- Drop libgtop-add-NULL-pointer-checker.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue May 23 09:58:38 UTC 2017 - zaitor@opensuse.org
+
+- Add libgtop-add-NULL-pointer-checker.patch: Add NULL pointer
+  checker (bug found with scan-build). Patch from upstream stable
+  git branch.
+
+-------------------------------------------------------------------
+Tue Mar 21 09:52:56 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.36.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Tue Mar 14 08:48:24 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.35.92:
+  + Better output format for arrays.
+
+-------------------------------------------------------------------
+Thu Mar  2 14:26:43 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+- Redo summaries and RPM groups.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:32:12 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 2.35.90:
+  + Use dynamically allocated cpu buffer.
+  + Do not cache getpagesize().
+  + Use faster g_ascii_isspace in tokenization.
+  + Ignore paragraphs not describing a CPU/core.
+  + Updated translations.
+- Drop libgtop-bsc1020294-cpu-buffer.patch: fixed upstream.
+- Drop fdupes BuildRequires: it's already not been started and
+  rpmlint also does not complain about duplicate files.
+
+-------------------------------------------------------------------
+Thu Jan 19 17:29:25 UTC 2017 - mgorse@suse.com
+
+- Add libgtop-bsc1020294-cpu-buffer.patch: dynamically allocate
+  memory for buffer when reading /proc/cpuinfo (bsc#1020294
+  bgo#323354).
+
+-------------------------------------------------------------------
+Mon Jan 16 20:39:12 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 2.34.2:
+  + Linux: fill last_processor member.
+  + Added more gettext options.
+  + Updated translations.
+- Add url to upstream developer page, silence rpmlint.
+
+-------------------------------------------------------------------
+Thu Dec  1 16:05:29 UTC 2016 - dimstar@opensuse.org
+
+- Fix build on SLE: pass "po libgtop" to
+  translation-update-upstream: it fails do detect the correct
+  gettext domain.
+
+-------------------------------------------------------------------
+Sat Aug 20 14:17:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.34.1:
+  + Rename --with-libgtop-examples to --with-examples.
+  + Use gettext instead of intltool/glib-gettext.
+  + Added Language headers to the translations.
+- Drop intltool BuildRequires following upstream changes.
+- Remove obsolete clean section, and conditionals for long gone
+  versions of openSUSE.
+- Make translation-update-upstream conditional, only apply on
+  non-openSUSE.
+
+-------------------------------------------------------------------
+Fri Apr 15 02:12:01 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Drop extending-max-cpu-number.patch: fixed upstream.
+  (bnc#885202).
+
+-------------------------------------------------------------------
+Tue Mar 22 10:38:59 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.34.0:
+  + Stable release.
+
+-------------------------------------------------------------------
+Tue Mar  1 10:54:57 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.33.91:
+  + Fix building on musl-libc.
+  + Updated translations.
+- Drop libgtop_spec-update.sh as source, and clean spec of it. No
+  longer needed in the obs.
+- Move %install_info_delete for doc subpackage from postun to
+  preun.
+
+-------------------------------------------------------------------
+Wed Jan 20 09:07:10 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.33.4:
+  + On OpenBSD only PID 1 is special.
+  + Call setlocale in main.
+
+-------------------------------------------------------------------
+Tue Dec 22 21:41:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.33.3:
+  + Fixed broken compilation on OpenBSD.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 06:59:22 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.32.0:
+  + Stable release.
+
+-------------------------------------------------------------------
+Wed Sep 16 07:43:18 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + Darwin: Fixed build.
+  + All:
+    - GI docs fixes.
+    - include fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 21:16:12 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.31.90:
+  + ABI changes:
+    - ABI was inconsistent on platforms like FreeBSD which make use
+      of glibtop_machine. The ABI was actually different between
+      the library and the server. Fixed this by simply always
+      defining glibtop_machine in glibtop struct.
+    - Add Pss and Swap members in glibtop_proc_mem.
+    - This is the second ABI breakage in since 2.28 (the first one
+      was bumping NCPU), there were no release for 2.30.
+  + FreeBSD:
+    - proclist: exclude the "idle" kernel process when
+      GLIBTOP_EXCLUDE_IDLE.
+    - Remove extraneous glibtop_init() calls.
+  + Linux:
+    - proc_mem: implement Pss and Swap.
+    - Remove extraneous glibtop_init() calls.
+  + All:
+    - Propagate the change that machine in struct glibtop is now a
+      pointer. Hope that change doesn't break build on other
+      platforms, I can only test Linux and FreeBSD.
+
+-------------------------------------------------------------------
+Thu Aug  6 13:00:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.31.4:
+  + Implement a proper --enable-debug mode.
+  + FreeBSD:
+    - procstate: set process name for kernel (pid=0).
+    - procmap: get dev/inode for ZFS (no filename yet).
+    - mem: rework memory usage to something more meaningful.
+    - proclist: don't report threads.
+    - proctime: fix CPU times.
+  + Linux:
+    - mem:
+      . Use MemAvailable when available.
+      . Match `free`, report Slab as Cached.
+    - Support for x.y versionsmemory to match `free`.
+  + Fix a lot of GI tags: it now works without crashing.
+  + Server and daemon binaries are now dynamically linked against
+    their libgtop.
+  + Update a lot of examples/.
+  + Clean up some very old code.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 26 08:58:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.31.3:
+  + Numerous OpenBSD backend fixes.
+  + Fixed FreeBSD build issues.
+  + Implemented procaffinity support for NetBSD.
+  + Updated translations.
+- Add pkgconfig(glib-2.0) BuildRequires: New explicit dependency.
+
+-------------------------------------------------------------------
+Wed Oct  1 21:07:20 UTC 2014 - crrodriguez@opensuse.org
+
+- Replace xorg-x11-devel BuildRequires with pkgconfig(xau): there
+  is no need for the whole metapackage.
+
+-------------------------------------------------------------------
+Thu Jul  3 02:24:57 UTC 2014 - mgorse@suse.com
+
+- Add extending-max-cpu-number.patch: support more than 32 CPUs
+  (bnc#885202).
+- Adjust package name, since the patch introduces an ABI break.
+
+-------------------------------------------------------------------
+Wed Apr 30 13:26:33 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.30.0:
+  + Fixed libtool versioning for ABI breakage.
+  + Removed useless override for LINK variable.
+  + Fixed FTBFS on kFreeBSD.
+- Change the name of libgtop-2_0_name defines to soname, and
+  actually use it. Bump from 7 to 10, following upstreams soname
+  change. Also update baselibs.conf to reflect the new soname.
+- Remove the check for the library name in the install section:
+  this is rpmlints job.
+
+-------------------------------------------------------------------
+Mon Aug 19 21:13:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.28.5:
+  + Fix numerous bugs in the OpenBSD backend.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 23 10:19:49 UTC 2011 - vuntz@opensuse.org
+
+- Split typelib file into typelib-1_0-GTop-2_0 subpackage.
+- Add typelib-1_0-GTop-2_0 Requires to devel subpackage.
+- Change group of main subpackage and libgtop-2_0-7 to
+  System/Libraries.
+
+-------------------------------------------------------------------
+Tue Aug 30 16:22:09 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.28.4:
+  + Fix numerous bugs in the FreeBSD backend.
+  + Split off OpenBSD code in its own backend, and fixes.
+  + Updated translations.
+- Stop shipping .la files in devel subpackage.
+
+-------------------------------------------------------------------
+Mon Mar 28 13:58:57 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.28.3:
+  + Fix build issue for strict linkers.
+  + Add Introspection support
+  + Updated translations.
+- Add gobject-introspection-devel to BuildRequires, to enable
+  introspection.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:56:16 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Mon Oct 11 20:24:37 CEST 2010 - vuntz@opensuse.org
+
+- Remove libgtop package that was empty, and add Provides/Obsoletes
+  for it to libgtop-2_0-7. Also move the Requires of the lang
+  package there, as a Recommends.
+- Remove unneeded Requires of devel package: glib2-devel,
+  gdbm-devel, xorg-x11-devel. Only glib2-devel was really needed,
+  and it will be added automatically via the pkgconfig() way.
+
+-------------------------------------------------------------------
+Tue Sep 28 13:28:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 30 19:45:42 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Updated translations.
+- Remove en@shaw translations on 11.2 and earlier.
+
+-------------------------------------------------------------------
+Mon Feb  1 11:34:35 UTC 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec  2 12:00:26 CET 2009 - vuntz@opensuse.org
+
+- Update the way we remove the la locale for old versions of
+  openSUSE.
+
+-------------------------------------------------------------------
+Tue Sep 22 19:43:04 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 27 12:11:43 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + linux:
+    - fixed format error.
+
+-------------------------------------------------------------------
+Tue May  5 16:52:30 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + linux:
+    - glibtop_get_proc_map: oops, fixed segfault.
+- Changes from version 2.27.1:
+  + linux:
+    - glibtop_get_proc_map is ~40% faster. This should be
+      noticeable in system-monitor.
+  + New cygwin support.
+
+-------------------------------------------------------------------
+Tue Apr 14 14:56:03 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + linux:
+    - glibtop_get_mounlist(...): also hide "none" fs.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Mon Mar  2 06:40:54 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + Cosmetic version bump
+- Move gtk-doc to -devel package
+
+-------------------------------------------------------------------
+Wed Feb 18 03:41:29 CET 2009 - mboman@suse.de
+
+- Exclude locale/la on <= 1110
+
+-------------------------------------------------------------------
+Tue Feb 17 04:52:02 CET 2009 - vuntz@novell.com
+
+- Update to version 2.25.91:
+  + Single glib.h include.
+  + Fixed Darwin build. (bgo#556904).
+  + Updated translations.
+- Remove BuildRequires: gdbm-devel, popt-devel.
+
+-------------------------------------------------------------------
+Sun Feb  1 19:49:18 EST 2009 - mboman@suse.de
+
+- Update to version 2.24.4:
+  + Fixed license: libgtop is GPL-2
+  + fixed potential memory leak
+  + fixed read(2) usage. Should fix the missing cpus bug in system-monitor
+- Remove libgtop-fsusage-leak.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Tue Jan 13 09:44:04 CET 2009 - olh@suse.de
+
+- add PreReq info to libgtop to help solver during libgtop upgrade
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Jan  5 13:04:32 CET 2009 - vuntz@novell.com
+
+- Add libgtop-fsusage-leak.patch to fix a potential leak. Fix
+  bnc#460758.
+
+-------------------------------------------------------------------
+Tue Sep 23 10:19:52 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 24 09:59:30 CEST 2008 - mboman@novell.com
+
+- Updated to version 2.23.90:
+  * freebsd: Updated port by Joe Marcus Clarke.
+
+-------------------------------------------------------------------
+Tue Aug 12 09:59:30 CEST 2008 - captain.magnus@opensuse.org
+
+- Updated to version 2.23.4:
+  + Fixed and improved glibtop_get_fsusage with kernel >= 2.6.25.
+    Closes bgo#539360.
+
+-------------------------------------------------------------------
+Tue Jun 17 09:59:30 CEST 2008 - aj@suse.de
+
+- Do not build require gtk-doc.
+
+-------------------------------------------------------------------
+Mon Jun 16 21:06:29 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.2:
+  + glibtop_get_proc_open_files API can also lists IPv6 TCP sockets
+  + glibtop_get_proc_affinity : new API to retrieve process CPU
+    affinity
+  + Fixed parsing of big /proc/stat for uptime
+- Remove stale patches: gnome-system-monitor-resident-schema.patch
+  and libgtop-bnc386735.patch.
+
+-------------------------------------------------------------------
+Mon May 12 16:14:07 EDT 2008 - hfiguiere@suse.de
+
+- added libgtop-bnc386735.patch to fix bnc#386735.
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr 10 01:02:33 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Bug fixed: bgo#525953.
+
+-------------------------------------------------------------------
+Fri Mar 14 03:25:44 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Fixed proc_kernel.
+
+-------------------------------------------------------------------
+Tue Mar  4 18:58:21 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Fixed smaps parsing on linux kernels >= 2.6.24.x.
+
+-------------------------------------------------------------------
+Wed Jan 30 18:22:57 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.21.5:
+  * Fixed build on GNU/kfreebsd
+  * Fixed procmem units
+
+-------------------------------------------------------------------
+Thu Dec 20 20:25:53 CEST 2007 - jpr@suse.de
+
+- Update to version 2.21.1
+  * don't export _p/_s private symbols anymore. This is not an
+    API/ABI breakage.
+  * darwin implementation
+  * linux:
+    - splitted fsusage and mountlist implementations;
+    - smarter mountlist(allfs = False);
+    - fixed some compile warning on 64bit;
+  * solaris:
+    - fixed netload build
+
+-------------------------------------------------------------------
+Mon Sep 17 17:25:53 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * updated translations
+
+-------------------------------------------------------------------
+Mon Sep 10 22:41:29 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.92:
+  + Fix hardwired path in linux/sysinfo.c.
+
+-------------------------------------------------------------------
+Tue Aug  7 20:12:00 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- Use %fdupes.
+
+-------------------------------------------------------------------
+Fri Aug  3 21:52:26 CEST 2007 - mauro@suse.de
+
+- Updated to version 2.19.5
+- Small change of the API: get_proclist returns pid_t instead of unsigned
+
+-------------------------------------------------------------------
+Tue Jul 17 13:30:16 CEST 2007 - sbrabec@suse.cz
+
+- Fixed shared library packaging.
+- Added script to update library package names.
+
+-------------------------------------------------------------------
+Mon Jul  9 22:04:13 CEST 2007 - maw@suse.de
+
+- Rename the package to libgtop-2_0-7
+- Update to version 2.19.4
+- Minor API change - get_proclist returns pit_t instead of unsigned
+- Portability fixes.
+
+-------------------------------------------------------------------
+Mon Apr  2 13:13:15 CDT 2007 - maw@suse.de
+
+- Update to version 2.14.8
+- Support for FreeBSD
+- Fixed up signal handling.
+
+-------------------------------------------------------------------
+Mon Mar 26 13:11:22 CEST 2007 - rguenther@suse.de
+
+- Add gdbm-devel BuildRequires.
+
+-------------------------------------------------------------------
+Tue Feb 27 09:50:37 CST 2007 - maw@suse.de
+
+- Create a -doc subpackage (#248813).
+
+-------------------------------------------------------------------
+Mon Feb 19 15:04:20 CST 2007 - maw@suse.de
+
+- Update to version 2.14.7
+- Remove libgtop-buffer-overflow.patch which is now upstream
+- Package gtk-doc generated docs in the -devel subpackage.
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Fri Jan 19 12:30:57 CST 2007 - maw@suse.de
+
+- Add libgtop-buffer-overflow.patch (#235086 and CVE-2007-0235).
+
+-------------------------------------------------------------------
+Mon Jan  8 18:27:14 CET 2007 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Jan  8 00:10:45 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr
+
+-------------------------------------------------------------------
+Tue Oct  3 18:39:13 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.14.4
+- Fixed linux maps/smaps parsing on 64bit kernel
+- Fixed build with --as-needed
+- Added missing G_BEGIN_DECLS/G_END_DECLS
+
+-------------------------------------------------------------------
+Tue Aug 15 22:46:36 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.14.2
+- Updated solaris support
+- interface addition to handle wireless interfaces.
+
+-------------------------------------------------------------------
+Tue Aug 15 17:17:28 CEST 2006 - sbrabec@suse.cz
+
+- Call ldconfig (#198912).
+
+-------------------------------------------------------------------
+Tue Aug  1 23:50:19 CEST 2006 - gekker@suse.de
+
+- Update to version 2.14.1
+* Updated translations.
+* Fixed NetBSD port (Julio M. Merino Vidal  <jmmv@NetBSD.org>).
+* Fixed proc_state documentation.
+* Updated mountlist ignore list.
+* fix get_procmap for linux < 2.6.14.
+* Fixed libtool versioning (James Henstridge)
+* fixed proclist
+* implemented server->real_ncpu
+* Requires automake-1.9 (James Henstridge)
+* Supports up to 32 CPU
+* Supports Linux smaps
+* fixed SMP detection
+
+-------------------------------------------------------------------
+Tue Mar 28 19:32:59 CEST 2006 - joeshaw@suse.de
+
+- Add a patch which makes the "Resident" field RSS - Shared,
+  rather than just being a duplicate of RSS.  Fixes half of
+  bnc #157022.  Submitted upstream as bgo #336376.
+- Remove an unused, commented-out patch
+
+-------------------------------------------------------------------
+Sat Feb  4 15:11:24 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 30 23:28:41 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.2
+
+-------------------------------------------------------------------
+Mon Sep  5 21:27:03 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.0 (GNOME 2.12)
+
+-------------------------------------------------------------------
+Tue Aug 23 18:11:13 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.92
+
+-------------------------------------------------------------------
+Mon Aug  8 13:53:22 CEST 2005 - rodrigo@suse.de
+
+- Updated to 2.11.91
+
+-------------------------------------------------------------------
+Tue Aug  2 22:06:49 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.90
+- Fixup devel requirements
+
+-------------------------------------------------------------------
+Fri Jul 22 23:12:30 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.2
+
+-------------------------------------------------------------------
+Wed Jun 22 02:24:41 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.0
+
+-------------------------------------------------------------------
+Fri Jun 17 12:55:23 CEST 2005 - sbrabec@suse.cz
+
+- Build with libXau on x86_64 (#91187).
+
+-------------------------------------------------------------------
+Wed Jun  1 18:57:26 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Thu Mar 10 00:41:13 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10).
+
+-------------------------------------------------------------------
+Fri Mar  4 00:16:39 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.92
+
+-------------------------------------------------------------------
+Fri Feb 11 05:39:03 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.91
+
+-------------------------------------------------------------------
+Thu Jan 27 15:28:01 CET 2005 - hhetter@suse.de
+
+- updated to version 2.9.90
+
+-------------------------------------------------------------------
+Mon Jan 24 11:44:26 CET 2005 - ro@suse.de
+
+- fix build on x86_64 working around non-fPIC libXau
+
+-------------------------------------------------------------------
+Fri Jan 21 23:05:51 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.4
+
+-------------------------------------------------------------------
+Tue Jan  4 16:47:21 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.3
+
+-------------------------------------------------------------------
+Tue Dec 21 18:22:52 CET 2004 - gekker@suse.de
+
+- Update to version 2.9.0
+
+-------------------------------------------------------------------
+Tue Nov 23 16:00:20 CET 2004 - ro@suse.de
+
+- fix name of info file in postinstall
+
+-------------------------------------------------------------------
+Mon Oct 25 12:40:22 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Thu Apr 29 16:21:36 CEST 2004 - hhetter@suse.de
+
+- updated to version 2.5.2 [GNOME2.6]
+
+-------------------------------------------------------------------
+Mon Mar 22 17:42:22 CET 2004 - sbrabec@suse.cz
+
+- Provide and obsolete libgtop2-devel.
+
+-------------------------------------------------------------------
+Tue Mar 16 10:08:06 CET 2004 - sbrabec@suse.cz
+
+- FHS 2.3 fix (mandir, infodir, #35821).
+
+-------------------------------------------------------------------
+Fri Feb 20 14:13:43 CET 2004 - sbrabec@suse.cz
+
+- Package renamed to libgtop.
+
+-------------------------------------------------------------------
+Mon Feb 16 15:15:41 CET 2004 - hhetter@suse.de
+
+- fix filelist
+
+-------------------------------------------------------------------
+Mon Feb  9 14:59:01 CET 2004 - hhetter@suse.de
+
+- updated to version 2.0.8 [GNOME2.4.2]
+
+-------------------------------------------------------------------
+Thu Nov  6 17:10:51 CET 2003 - schwab@suse.de
+
+- Fix quoting in configure script.
+
+-------------------------------------------------------------------
+Tue Sep 09 17:18:03 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.5.
+
+-------------------------------------------------------------------
+Mon Aug 25 15:03:09 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.4.
+
+-------------------------------------------------------------------
+Tue Aug 19 13:37:34 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.3.
+
+-------------------------------------------------------------------
+Mon Jul 14 16:14:29 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 26 12:55:50 CEST 2003 - sbrabec@suse.cz
+
+- Cleaned up neededforbuild.
+- Use %find_lang.
+
+-------------------------------------------------------------------
+Mon Jun 23 01:51:15 CEST 2003 - ro@suse.de
+
+- added gnome-filesystem to neededforbuild
+- added directories to filelist
+
+-------------------------------------------------------------------
+Tue May 27 16:02:02 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.0.2.
+- Updated neededforbuild.
+- Fixed %files.
+
+-------------------------------------------------------------------
+Thu Jan 16 10:04:41 CET 2003 - hhetter@suse.de
+
+- updated to version 2.0.1
+- adapted automake fix
+
+-------------------------------------------------------------------
+Tue Sep 24 14:48:42 CEST 2002 - sbrabec@suse.cz
+
+- Fixed incorrect update to 2.0.0.
+
+-------------------------------------------------------------------
+Tue Jun 11 11:49:06 CEST 2002 - hhetter@suse.de
+
+- updated to version 2.0.0
+
+-------------------------------------------------------------------
+Tue Jun  4 10:50:12 CEST 2002 - hhetter@suse.de
+
+- update to source frozen version 1.90.2
+- fix filelist
+
+-------------------------------------------------------------------
+Wed May 15 11:16:46 CEST 2002 - ro@suse.de
+
+- use libdir
+
+-------------------------------------------------------------------
+Thu Apr 18 01:54:01 CEST 2002 - ro@suse.de
+
+- fix for automake-1.6
+
+-------------------------------------------------------------------
+Thu Jan 17 10:15:15 CET 2002 - hhetter@suse.de
+
+- prefixed to /opt/gnome2
+
+-------------------------------------------------------------------
+Mon Jan 14 17:11:01 CET 2002 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform
+

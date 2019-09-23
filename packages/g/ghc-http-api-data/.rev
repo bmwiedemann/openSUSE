@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a92157acb225a97b49a608f6e0512f89</srcmd5>
+    <version>0.2.1</version>
+    <time>1448553825</time>
+    <user>dimstar_suse</user>
+    <comment>http-api-data: Converting to/from HTTP API data like URL pieces, headers and query parameters.</comment>
+    <requestid>345873</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a708c55a028d4fd39aba0947755cef25</srcmd5>
+    <version>0.2.2</version>
+    <time>1450856959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.2
+* Add instances for more time types: LocalTime, ZonedTime, UTCTime and NominalDiffTime</comment>
+    <requestid>348695</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e45862b62b13a07e5ea31e5e28c7de6</srcmd5>
+    <version>0.2.3</version>
+    <time>1465938506</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.3
+* Add more parser helpers for Bounded Enum types. (forwarded request 401643 from mimi_vx)</comment>
+    <requestid>401644</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c08443a670299d3d17f0d99c468287ab</srcmd5>
+    <version>0.2.3</version>
+    <time>1469081412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411551</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>33b615a00ecffa39079ecfe8809fa9fe</srcmd5>
+    <version>0.2.4</version>
+    <time>1473103203</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421643 from psimons)</comment>
+    <requestid>421742</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b87afccef335c5a9879ad5c5e453f91</srcmd5>
+    <version>0.3.5</version>
+    <time>1488559828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461640</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>371dec758a917cfbd5c752f36556b90a</srcmd5>
+    <version>0.3.5</version>
+    <time>1492169786</time>
+    <user>maxlin_factory</user>
+    <comment>(re-)submit package with improved summary and description</comment>
+    <requestid>484195</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e588b9f562b15aa4aef7ed002d47707</srcmd5>
+    <version>0.3.7.1</version>
+    <time>1497274111</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499707</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>875d702fcdd15be0a59d5a0b44a26d7f</srcmd5>
+    <version>0.3.7.1</version>
+    <time>1505505028</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524814</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c79f50ff1635a842952605431de16e4f</srcmd5>
+    <version>0.3.8.1</version>
+    <time>1527674968</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-http-api-data to the latest version.</comment>
+    <requestid>607819</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>142829ac5650905aa23a7a6fae129516</srcmd5>
+    <version>0.3.8.1</version>
+    <time>1532161200</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- correct license to BSD-2-Clause</comment>
+    <requestid>623792</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cede5595dfeb5ee6c40c6b03cae228b3</srcmd5>
+    <version>0.3.10</version>
+    <time>1540448210</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642867</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1593146ded320199cd008d81ff934ce</srcmd5>
+    <version>0.4</version>
+    <time>1544094983</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>650504</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0c7d04ee7b08f25da0e9813c104fcaaa</srcmd5>
+    <version>0.4.1</version>
+    <time>1560338275</time>
+    <user>dimstar_suse</user>
+    <comment>Update http-api-data to version 0.4.1.</comment>
+    <requestid>709187</requestid>
+  </revision>
+</revisionlist>

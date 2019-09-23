@@ -1,0 +1,326 @@
+-------------------------------------------------------------------
+Wed May 16 07:59:04 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.7
+ see installed CHANGELOG.md
+
+  ## 1.2.7 (May 12, 2018)
+  * Fix segfault on large numbers of connections [#843]
+
+-------------------------------------------------------------------
+Mon Apr 30 11:04:01 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.2.6
+ see installed CHANGELOG.md
+
+  ## 1.2.6 (April 30, 2018)
+  * *Fix segfault when an Exception is raised from unbind callback (for real this time!)*
+  * Fix race condition while initializing the machine [#756]
+  * Fix for newer compilers where bind() and std::bind() conflict [#830, #831]
+  * Be verbose about SSL connection errors [#807]
+  * Avoid explicitly calling class methods when in class scope
+  * Java: Add EM_PROTO_SSL/TLS definitions [#773, #791]
+  * Java: return zero when sending data to a closed connection [#475, #804]
+  * Pure Ruby: Connection::error? calls report_connection_error_status [#801]
+
+-------------------------------------------------------------------
+Thu Aug  3 19:11:42 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.5
+ see installed CHANGELOG.md
+
+  ## 1.2.5 (July 27, 2017)
+  * Java: Use long for larger values in oneshot timer intervals [#784, #794]
+  
+  ## 1.2.4 (July 27, 2017)
+  * Java: Add EM_PROTO_SSL/TLS definitions [#773, #791]
+  * Fix IPv6 UDP get_peername [#788]
+  * Allow for larger values in oneshot timer intervals [#784, #793]
+  * Update extconf.rb to allow MinGW builds with OpenSSL 1.1.0 [#785]
+
+-------------------------------------------------------------------
+Fri Feb 24 05:35:47 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.3
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Jan 31 05:37:52 UTC 2017 - coolo@suse.com
+
+- updated to version 1.2.2
+ see installed CHANGELOG.md
+
+  ## 1.2.2 (January 23, 2016)
+  * Java: Fix Fixnum deprecated warning in Ruby 2.4+ [#759]
+  * Fix uncaught C++ exception in file watcher and raise InvalidSignature [#512, #757]
+  * Fix connection count off-by-one for epoll and kqueue [#750]
+  * Fix uninitialized variable warning in EM::P::HttpClient [#749]
+  * Fix missing initial value for EventableDescriptor NextHeartbeat [#748]
+  * Fix hostname resolution on Solaris, Ilumos, SmartOS, et al [#745, #746]
+  * Improve reliability of tests, reduce public Internet accesses in tests [#656, #666, #749]
+
+-------------------------------------------------------------------
+Fri Nov 18 05:29:43 UTC 2016 - coolo@suse.com
+
+- updated to version 1.2.1
+ see installed CHANGELOG.md
+
+  ## 1.2.1 (November 15, 2016)
+  * Throw strerror(errno) when getsockname or getpeername fail [#683]
+  * Use a single concrete implementation of getpeername/getsockname, the rest pure virtuals [#683]
+  * Use gai_strerror to get the failure string from getaddrinfo [#744]
+  * Fix deregistering descriptor when using KQUEUE [#728]
+  * Fix to enable to work an example code in EM::Pool [#731]
+  * LineText2: Add regular expression delimiter support [#706]
+  * Pure Ruby: EM rescue ECONNREFUSED on initial TCP connect [#741]
+  * Pure Ruby: EM SSL (working start_tls) [#712]
+  * Pure Ruby: EM fixes [#707]
+  * Java: Use Acceptors to get peer and sock names if not present in Connections [#743]
+
+-------------------------------------------------------------------
+Sat Mar 19 05:29:44 UTC 2016 - coolo@suse.com
+
+- updated to version 1.2.0.1
+ see installed CHANGELOG.md
+
+  ## 1.2.0.1 (March 15, 2016)
+  * Fix crash when accepting IPv6 connections due to struct sockaddr_in [#698, #699]
+
+-------------------------------------------------------------------
+Tue Mar 15 05:30:07 UTC 2016 - coolo@suse.com
+
+- updated to version 1.2.0
+ see installed CHANGELOG.md
+
+  ## 1.2.0 (March 15, 2016)
+  * Integrate work from the EventMachine-LE 1.1.x versions [#570]
+  * Add start_tls options :ecdh_curve, :dhparam, :fail_if_no_peer_cert [#195, #275, #399, #665]
+  * Add start_tls option :ssl_version for choosing SSL/TLS versions and ciphers [#359, #348, #603, #654]
+  * Add start_tls option :sni_hostname to be passed to TLS params [#593]
+  * Add method EM::Channel#num_subscribers to get the number of subscribers to a channel [#640]
+  * Add support for proc-sources in EM::Iterator [#639]
+  * Factor out method cleanup_machine to cleanup code from EM.run [#650]
+  * Replace Exception class with StandardError [#637]
+  * Close socket on close_connection even after close_connection_after_writing [#694]
+  * Allow reusing of datagram socket/setting bind device [#662]
+  * Handle deferred exceptions in reactor thread [#486]
+  * Reimplement Queue to avoid shift/push performance problem [#311]
+  * Windows: Switch from gethostbyname to getaddrinfo, support IPv6 addresses [#303, #630]
+  * Windows: Use rake-compiler-dock to cross-compile gems [#627]
+  * Windows: Add AppVeyor configuration for Windows CI testing [#578]
+  * Windows: Bump rake-compiler to version 0.9.x [#542]
+  * Fix compilation on AIX (w/ XLC) [#693]
+  * Fix build on OpenBSD [#690]
+  * Fix OpenSSL compile issue on AIX 7.1 [#678]
+  * Fix EventMachine.fork_reactor keeps the threadpool of the original process [#425]
+  * Fix to prevent event machine from stopping when a raise is done in an unbind [#327]
+
+-------------------------------------------------------------------
+Thu Jan 21 05:34:22 UTC 2016 - coolo@suse.com
+
+- updated to version 1.0.9.1
+ see installed CHANGELOG.md
+
+  ## 1.0.9.1 (January 14, 2016)
+  * Fix EPROTO not defined on Windows [#676]
+  * Fix missing cast to struct sockaddr * [#671]
+  * Fix bug in OpenSSL path detection [#675]
+
+-------------------------------------------------------------------
+Thu Jan 14 05:37:55 UTC 2016 - coolo@suse.com
+
+- updated to version 1.0.9
+ see installed CHANGELOG.md
+
+  ## 1.0.9 (January 13, 2016)
+  * Try more ways to detect OpenSSL [#602, #643, #661, #663, #668, #669]
+  * Use WSAGetLastError in pipe.cpp same as ed.cpp [#659]
+  * Test compiler flags with the C++ compiler and add them to CXXFLAGS [#634, #651]
+  * Restore silent-fail on unsupported EM.epoll and EM.kqueue [#638, #649]
+  * getDescriptorByFileno deprecated in JRuby 1.7.x, removed in JRuby 9000 [#642, #648]
+  * Add -Wno-address always-true because on Windows rb_fd_select [#578]
+  * Remove the WITHOUT_SSL constant [#578]
+  * Fix SSL error when the server replies a TLS Alert to our ClientHello [#544, #653]
+  * Use WSAStringToAddress in lieu of inet_pton for IPv6 address detection on Windows [#595, #632]
+  * Fix nasty TCP/IPv6 bug [#595, #632]
+  * Use select_large_fdset on Solaris [#611, #625]
+  * Detect the Solaris Studio compiler [#611, #625]
+  * Throw a message with strerror included [#136, #621]
+
+-------------------------------------------------------------------
+Fri Aug  7 04:29:43 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.8
+ see installed CHANGELOG.md
+
+  ## 1.0.8 (August 6, 2015)
+  * fix kqueue assertion failed, postpone ArmKqueueWriter until all events are processed [#51, #176, #372, #401, #619]
+  * fix Rubinius GC, crank the machine from Ruby space when running Rubinius [#201, #202, #617]
+  * test to show that LineText2 preserves whitespace and newlines [#32, #622]
+  * bump up compiler warnings and resolve them [#616]
+  * fix Windows x64 use uintptr_t instead of unsigned long for binding pointers [#612, #615]
+  * fix linetext2 unroll tail recursion to avoid stack level too deep [#609]
+  * fix for compilation with SSL on windows [#601]
+  * open file descriptors and sockets with O_CLOEXEC where possible [#298, #488, #591]
+  * fix SmtpClient: send second EHLO after STARTTLS. [#589]
+  * fix nul-terminated strings in C, use StringValueCStr instead of StringValuePtr
+
+-------------------------------------------------------------------
+Fri Jun 12 08:59:04 UTC 2015 - dimstar@opensuse.org
+
+- Rename rubygem-eventmachine.rpmlintrc to
+  rubygem-eventmachine-rpmlintrc in order to be in line with the
+  naming convention.
+- Add rubygem-eventmachine-rpmlintrc to the source list.
+
+-------------------------------------------------------------------
+Wed Feb 11 01:24:44 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.7
+ * fix delay in kqueue/epoll reactor shutdown when timers exist [#587]
+ * fix memory leak introduced in v1.0.5 [#586]
+ * expose EM.set_simultaneous_accept_count [#420]
+ * fix busy loop when EM.run and EM.next_tick are invoked from exception handler [#452]
+ 
+ ## 1.0.6 (February 3, 2015)
+ * add support for Rubinius Process::Status [#568]
+ * small bugfixes for SmtpServer [#449]
+ * update buftok.rb [#547]
+ * fix assertion on Write() [#525]
+ * work around mkmf.rb bug preventing gem installation [#574]
+ * add pause/resume support to jruby reactor [#556]
+ * fix pure ruby reactor to use 127.0.0.1 instead of localhost [#439]
+ * fix compilation under macruby [#243]
+ * add chunked encoding to http client [#111]
+ * fix errors on win32 when dealing with pipes [1ea45498] [#105]
+ 
+ ## 1.0.5 (February 2, 2015)
+ * use monotonic clocks on Linux, OS X, Solaris, and Windows [#563]
+ * use the rb_fd_* API to get autosized fd_sets [#502]
+ * add basic tests that the DNS resolver isn't leaking timers [#571]
+ * update to test-unit 2.x and improve various unit tests [#551]
+ * remove EventMachine_t::Popen code marked by ifdef OBSOLETE [#551]
+ * ruby 2.0 may fail at Queue.pop, so rescue and complain to $stderr [#551]
+ * set file handle to INVALID_HANDLE_VALUE after closing the file [#565]
+ * use `defined?` instead of rescuing NameError for flow control [#535]
+ * fix closing files and sockets on Windows [#564]
+ * fix file uploads in Windows [#562]
+ * catch failure to fork [#539]
+ * use chunks for SSL write [#545]
+
+-------------------------------------------------------------------
+Mon Oct 13 08:37:57 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu Feb  6 08:29:10 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Mon Mar 18 06:15:50 UTC 2013 - coolo@suse.com
+
+- updated to version 1.0.3
+ * binary win32 gems now include fastfilereader shim [#222]
+ * fix long-standing connection timeout issues [27fdd5b, igrigorik/em-http-request#222]
+ * http and line protocol cleanups [#193, #151]
+ * reactor return value cleanup [#225]
+ * fix double require from gemspec [#284]
+ * fix smtp server reset behavior [#351]
+ * fix EM.system argument handling [#322]
+ * ruby 1.9 compat in smtp server and stomp protocols [#349, #315]
+ * fix pause from post_init [#380]
+
+-------------------------------------------------------------------
+Sun Mar  3 19:30:39 UTC 2013 - coolo@suse.com
+
+- updated to version 1.0.1
+ * use rb_wait_for_single_fd() on ruby 2.0 to fix rb_thread_select() deprecation
+ * fix epoll/kqueue mode in ruby 2.0 by removing calls to rb_enable_interrupt() [#248, #389]
+ * fix memory leak when verifying ssl cerificates [#403]
+ * fix initial connection delay [#393, #374]
+
+-------------------------------------------------------------------
+Sun Sep 23 19:34:07 UTC 2012 - coolo@suse.com
+
+- add a faked beta version, so that rpm understands that 1.0.0
+  is > 1.0.0.beta4
+
+-------------------------------------------------------------------
+Sun Sep 23 15:16:32 UTC 2012 - coolo@suse.com
+
+- updated to version 1.0.0, finaly final - still no changelog
+
+-------------------------------------------------------------------
+Sun Jul 29 19:56:39 UTC 2012 - coolo@suse.com
+
+- update to pre version, everyone wants
+
+-------------------------------------------------------------------
+Tue Jul 10 19:06:15 UTC 2012 - jatan@suse.de
+
+- Add provides for rubygem-eventmachine-0_12
+
+-------------------------------------------------------------------
+Wed Jun  6 10:44:12 UTC 2012 - saschpe@suse.de
+
+- Regenerate with gem2rpm-opensuse, add ruby-devel Buildrequires
+
+-------------------------------------------------------------------
+Wed Jun  6 08:20:55 UTC 2012 - cfarrell@suse.com
+
+- license update: Ruby
+  Look at the license in the data/ directory
+
+-------------------------------------------------------------------
+Tue Jun  5 12:42:25 UTC 2012 - saschpe@suse.de
+
+- Fix license, it's GPL-2.0+ according to docs/COPYING and docs/GNU
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 12 03:45:19 UTC 2009 - mrueckert@suse.de
+
+- update to 0.12.10
+
+-------------------------------------------------------------------
+Mon Apr 20 16:46:55 CEST 2009 - mrueckert@suse.de
+
+- update to 0.12.6
+
+-------------------------------------------------------------------
+Mon Nov  3 15:22:59 CET 2008 - mrueckert@suse.de
+
+- update to 0.12.2
+
+-------------------------------------------------------------------
+Wed Aug 27 16:56:41 CEST 2008 - mrueckert@suse.de
+
+- created patched gem file to fix build issues in extconf.rb
+
+-------------------------------------------------------------------
+Mon Aug 25 17:40:23 CEST 2008 - mrueckert@suse.de
+
+- update to 0.12.0
+
+-------------------------------------------------------------------
+Thu Feb 21 03:57:46 CET 2008 - mrueckert@suse.de
+
+- update to 0.10.0
+  improvements and a pure ruby version was added
+
+-------------------------------------------------------------------
+Mon Aug  6 00:47:24 CEST 2007 - mrueckert@suse.de
+
+- update to 0.8.1
+
+-------------------------------------------------------------------
+Wed Jun 20 02:56:59 CEST 2007 - mrueckert@suse.de
+
+- initial package of version 0.7.2
+

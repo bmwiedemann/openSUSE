@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue Mar 21 15:17:10 UTC 2017 - cbosdonnat@suse.com
+
+* Release 0.1.7
+  - Add support for vp8 video streams
+  - Support sized data streams and stream data reports
+  - Add minor debug tools for media playback
+  - Enable file transfer for spice_auto.html
+  - Avoid an unwanted exception when used by cockpit plugin
+  - Make spice_auto.html respect an input path
+  - Minor Coverity adjustments
+  - Improve log messages- 
+

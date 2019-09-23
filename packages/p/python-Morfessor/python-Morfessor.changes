@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Aug 16 16:25:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.0.6
+  * add lru_cache to the segmentation commands
+- Update to 2.0.5
+  * Make scripts executable
+
+-------------------------------------------------------------------
+Tue Nov  7 18:42:00 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

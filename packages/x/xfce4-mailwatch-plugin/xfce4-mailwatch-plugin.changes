@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:26:25 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Tue Jul 16 16:38:48 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Package renamed to follow upstream name xfce4-foo-plugin
+- Use lang subpackage for manual edits instead of %lang_package macro 
+- Cleaned up spec file
+- Added bcond for git master builds
+- Only add NEWS and omit Changelog
+- Move COPYING under %license macro 
+
+-------------------------------------------------------------------
+Thu Oct 24 17:01:35 UTC 2013 - gber@opensuse.org
+
+- fix URL
+
+-------------------------------------------------------------------
+Thu Oct 24 13:45:56 UTC 2013 - gber@opensuse.org
+
+- update to version 1.2.0
+  - Fix recieving data from multiple packets
+  - Port to libxfce4ui
+  - Fix compilation and linking with libgcrypt
+  - Fix compilation error when using gnutls >= 3.0.3
+  - Fix build when SSL is disabled
+  - Also support gtk-2.12-style tooltips, and make the tooltip
+    auto-update in place if the status changes while the tooltip is
+    active
+  - Fix high CPU usage while checking mail
+  - Add new help dialog with redirection
+  - Remove a moved documentation
+  - Add configured features to print
+  - Use exo icon chooser dialog for icon selection
+  - Drop the old panel support
+  - Translation updates
+- dropped
+  xfce4-panel-plugin-mailwatch-1.1.0-fix-high-cpu-usage-while-checking-mail.patch,
+  xfce4-panel-plugin-mailwatch-1.1.0-fix-build-with-4.7.patch,
+  xfce4-panel-plugin-mailwatch-1.1.0-fix-gnutls-3.0.3.patch,
+  xfce4-panel-plugin-mailwatch-1.1.0-use-docdir.patch,
+  xfce4-panel-plugin-mailwatch-1.1.0-set-mail-interval.patch,
+  xfce4-panel-plugin-mailwatch-1.1.0-fix-format-sting-errors.patch,
+  xfce4-panel-plugin-mailwatch-link-against-libgcrypt.patch,
+  xfce4-panel-plugin-mailwatch-automake-1.13.patch
+
+-------------------------------------------------------------------
+Wed Mar 13 11:08:12 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Mon May  7 12:53:50 UTC 2012 - gber@opensuse.org
+
+- fix help function by depending on libxfce4ui-tools which provides
+  xfhelp4 again
+
+-------------------------------------------------------------------
+Fri Apr 20 10:16:37 UTC 2012 - gber@opensuse.org
+
+- corrected license
+
+-------------------------------------------------------------------
+Tue Apr 17 22:32:38 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+
+-------------------------------------------------------------------
+Tue Apr 17 19:34:04 UTC 2012 - gber@opensuse.org
+
+- corrected source URL
+- use pristine source tarball
+
+-------------------------------------------------------------------
+Wed Apr  4 17:19:18 UTC 2012 - gber@opensuse.org
+
+- dixed missing icon
+
+-------------------------------------------------------------------
+Tue Apr  3 17:16:52 UTC 2012 - gber@opensuse.org
+
+- added xfce4-panel-plugin-mailwatch-1.1.0-set-mail-interval.patch
+  which fixes a problem with the interval not being set correctly
+  (bxo#6947)
+- added xfce4-panel-plugin-mailwatch-1.1.0-fix-format-sting-errors.patch
+  which fixes some format string errors (bxo#8063)
+- added xfce4-panel-plugin-mailwatch-link-against-libgcrypt.patch
+  in order to link agains libgcrypt
+- specfile cleanup
+- correct dependencies
+- split off -lang subpackage
+
+-------------------------------------------------------------------
+Thu Oct 20 21:49:35 UTC 2011 - gber@opensuse.org
+
+- added xfce4-panel-plugin-mailwatch-1.1.0-use-docdir.patch in
+  order to use docdir correctly
+- install HTML documentation below
+  /usr/share/xfce4/xfce4-mailwatch-plugin/html/
+- package AUTHORS ChangeLog COPYING NEWS README TODO
+
+-------------------------------------------------------------------
+Sun Sep 25 15:47:16 UTC 2011 - gber@opensuse.org
+
+- added xfce4-panel-plugin-mailwatch-1.1.0-fix-gnutls-3.0.3.patch
+  in order to fix the build with gnutls >= 3.0.3, a lowat level of
+  0 is the default in gnutls >= 2.12.0 and
+  gnutls_transport_set_lowat() has been removed in 3.0.3
+
+-------------------------------------------------------------------
+Fri Sep 16 19:09:25 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typos in xfce4-panel-plugin-mailwatch.spec
+
+-------------------------------------------------------------------
+Wed Aug 24 22:53:42 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build in Factory 
+
+-------------------------------------------------------------------
+Wed Mar  9 11:00:00 UTC 2011 - gber@opensuse.org
+
+- new package (split off from xfce4-panel-plugins)
+

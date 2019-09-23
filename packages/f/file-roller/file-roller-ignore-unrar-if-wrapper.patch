@@ -1,0 +1,53 @@
+Index: file-roller-3.32.0/src/fr-command-rar.c
+===================================================================
+--- file-roller-3.32.0.orig/src/fr-command-rar.c	2019-03-11 23:00:45.000000000 +0100
++++ file-roller-3.32.0/src/fr-command-rar.c	2019-03-14 20:21:40.103871799 +0100
+@@ -775,6 +775,39 @@ fr_command_rar_get_mime_types (FrArchive
+ 	return rar_mime_type;
+ }
+ 
++static gboolean
++unrar_is_suse_wrapper ()
++{
++  const gchar *path = g_getenv ("PATH");
++  gchar **paths;
++  gchar **pp;
++  gchar *p;
++  gchar *full_name;
++  FILE *fp;
++  char bytes[2];
++  gboolean ret = FALSE;
++
++  if (!path)
++    path = "/usr/bin";
++
++  paths = g_strsplit (path, ":", 0);
++  for (pp = paths; *pp; pp++)
++    {
++      p = *pp;
++      full_name = g_strconcat (p, "/unrar", NULL);
++      fp = fopen (full_name, "r");
++      g_free (full_name);
++      if (!fp)
++        continue;
++      bytes[0] = bytes[1] = 0;
++      fread (bytes, 2, 1, fp);
++      fclose (fp);
++      ret = (bytes[0] == '#' && bytes[1] == '!');
++      break;
++    }
++  g_strfreev (paths);
++  return ret;
++}
+ 
+ static FrArchiveCap
+ fr_command_rar_get_capabilities (FrArchive  *archive,
+@@ -786,7 +819,7 @@ fr_command_rar_get_capabilities (FrArchi
+ 	capabilities = FR_ARCHIVE_CAN_STORE_MANY_FILES | FR_ARCHIVE_CAN_ENCRYPT | FR_ARCHIVE_CAN_ENCRYPT_HEADER;
+ 	if (_g_program_is_available ("rar", check_command))
+ 		capabilities |= FR_ARCHIVE_CAN_READ_WRITE | FR_ARCHIVE_CAN_CREATE_VOLUMES;
+-	else if (_g_program_is_available ("unrar", check_command))
++	else if (_g_program_is_available ("unrar", check_command) && !unrar_is_suse_wrapper ())
+ 		capabilities |= FR_ARCHIVE_CAN_READ;
+ 
+ 	/* multi-volumes are read-only */

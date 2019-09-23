@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e5afeefe27fe8644f9863868dd34230</srcmd5>
+    <version>0.6.00</version>
+    <time>1288711125</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51355 from user coolo
+</comment>
+    <requestid>51355</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>007ec0232fbb4c75adcd16cf1c9549cb</srcmd5>
+    <version>0.6.00</version>
+    <time>1288711131</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51355
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>007ec0232fbb4c75adcd16cf1c9549cb</srcmd5>
+    <version>0.6.00</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e22196a14d02d609bb094d54f52cb9e5</srcmd5>
+    <version>0.6.00</version>
+    <time>1312287851</time>
+    <user>saschpe</user>
+    <comment>Fix filelist. (forwarded request 77665 from a_jaeger)</comment>
+    <requestid>77669</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f12ab32d38ec4a8c0a1e2f9e29d6c2d1</srcmd5>
+    <version>0.6.00</version>
+    <time>1312287859</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77669
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>d94aa98b26548c3818c6a1d6c50789d1</srcmd5>
+    <version>0.6.00</version>
+    <time>1317211582</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Add baselibs config (forwarded request 83164 from jengelh)</comment>
+    <requestid>85202</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>d94aa98b26548c3818c6a1d6c50789d1</srcmd5>
+    <version>0.6.00</version>
+    <time>1319181839</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>356900d5fba9d0682f54fbf9e05c5e6c</srcmd5>
+    <version>0.6.00</version>
+    <time>1323191108</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>5c0305cf3f8c733bd406a108ae11f419</srcmd5>
+    <version>0.6.00</version>
+    <time>1334641467</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113780</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>5c0305cf3f8c733bd406a108ae11f419</srcmd5>
+    <version>0.6.00</version>
+    <time>1340183267</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>5c0305cf3f8c733bd406a108ae11f419</srcmd5>
+    <version>0.6.00</version>
+    <time>1359108792</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>5c0305cf3f8c733bd406a108ae11f419</srcmd5>
+    <version>0.6.00</version>
+    <time>1379662196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>5c0305cf3f8c733bd406a108ae11f419</srcmd5>
+    <version>0.6.00</version>
+    <time>1409300730</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ddd5086df03e4beb5cfd68098f4de800</srcmd5>
+    <version>0.6.00+131.gfadf11e</version>
+    <time>1515876527</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563826</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>afd52d3440d0472dbd2598b2a8ed162d</srcmd5>
+    <version>0.6.00+131.gfadf11e</version>
+    <time>1516634253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>565780</requestid>
+  </revision>
+</revisionlist>

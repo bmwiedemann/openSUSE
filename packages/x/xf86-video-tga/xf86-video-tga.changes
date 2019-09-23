@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Aug  7 15:03:49 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Thu Mar 21 16:20:46 UTC 2013 - sndirsch@suse.com
+
+-  Add mibstore.patch, fixes build with xorg-server 1.14 
+
+-------------------------------------------------------------------
+Wed Mar 20 14:40:20 UTC 2013 - sndirsch@suse.com
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Sun Sep  2 20:26:25 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Fix build against older X server.
+  + Port to XAA-less server.
+  + Port to new compat API.
+  + Silence warnings by using newer xf86dgaproto.
+
+-------------------------------------------------------------------
+Fri Apr 20 07:37:52 UTC 2012 - vuntz@opensuse.org
+
+- Use %x11_abi_videodrv_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-tga from xorg-x11-driver-video.
+  Initial version: 1.2.1.
+

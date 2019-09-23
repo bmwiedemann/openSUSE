@@ -1,0 +1,310 @@
+From 21741160071c83e4ae6b9fa268947abfd0d3405f Mon Sep 17 00:00:00 2001
+From: Raymund Will <rw@suse.com>
+Date: Fri, 3 Mar 2017 18:47:44 +0100
+Subject: [PATCH] Extended Delete
+References: bsc#870211, bsc#945705
+
+Delete boot entries not only by number. but alse based on
+- partition UUID, optionally restricted by loader
+or
+- disk and partition, again optionally restricted by loader.
+
+This does unfortunately require an API-change of efivar!
+
+Signed-off-by: Raymund Will <rw@suse.com>
+---
+ src/efibootmgr.c         | 187 ++++++++++++++++++++++++++++++++++++++++++++++-
+ src/include/efibootmgr.h |   3 +-
+ 2 files changed, 185 insertions(+), 5 deletions(-)
+
+diff --git a/src/efibootmgr.c b/src/efibootmgr.c
+index 20d71e2..93663cb 100644
+--- a/src/efibootmgr.c
++++ b/src/efibootmgr.c
+@@ -608,6 +608,146 @@ delete_var(const char *prefix, uint16_t num)
+ 	return 0;
+ }
+ 
++static int
++delete_by_uuid(const char *prefix, char *uuid_str, char *loader)
++{
++	int count = 0;
++	list_t *pos, *tmp;
++	var_entry_t *entry;
++	const unsigned char *description;
++	efi_load_option *load_option;
++	efidp path = NULL;
++	char text_path[1024];
++
++	list_for_each_safe(pos, tmp, &entry_list) {
++		uint16_t pathlen;
++		ssize_t rc;
++
++		entry = list_entry(pos, var_entry_t, list);
++		load_option = (efi_load_option *)entry->data;
++		pathlen = efi_loadopt_pathlen(load_option,
++					      entry->data_size);
++		path = efi_loadopt_path(load_option, entry->data_size);
++		rc = efidp_format_device_path(text_path, 1024,
++					      path, pathlen);
++
++		if (rc < 0 || rc > 1024)
++			error(20, "Could not parse device path");
++
++		if (strlen(text_path) == 0)
++			continue;
++		if (strcasestr(text_path, uuid_str) == NULL)
++			continue;
++		if (loader && strcasestr(text_path, loader) == NULL)
++			continue;
++		/* found! */
++		if (opts.verbose) {
++			description = efi_loadopt_desc(load_option,
++						       entry->data_size);
++			printf("Delete %s%04X %s\t%s\n",
++				prefix, entry->num, description, text_path);
++		}
++		if (delete_var(prefix, entry->num) != 0)
++			return -1;
++		count++;
++	}
++	if (count==0) {
++		/* Nothing changed => exit early */
++		exit(0);
++	}
++	return 0;
++}
++
++static int
++delete_by_dpl(const char *prefix, char *disk, uint32_t part, char *loader)
++{
++	int fd, rc;
++	uint64_t start, size;
++	efi_guid_t signature;
++	char sigstr[40];
++	char *sigstrp = sigstr;
++	uint8_t mbr_type, signature_type;
++
++	if (disk == NULL && part == 0 && loader == NULL)
++		errx(42, "Cowardly refusing to delete ALL %s entries.",
++		      prefix);
++	if (disk == NULL) {
++		/* foreach d in gpt_disks
++		 *   delete_by_dpl(prefix, d, part, loader)
++		 */
++		errx(42, "Future extension.");
++	}
++	if (part == 0) {
++		/* foreach p in partions_on_gpt_disk
++		 *   delete_by_dpl(prefix, disk, p, loader)
++		 */
++		errx(42, "Future extension.");
++	}
++	memset((char *)&signature, 0, sizeof(signature));
++
++	fd = open(disk, O_RDONLY|O_DIRECT);
++	if (fd == -1)
++		error(42, "Could not open disk %s", disk);
++	rc = efi_disk_get_partition_info(fd, part, &start, &size,
++			(uint8_t*)&signature, &mbr_type, &signature_type);
++	close(fd);
++
++	if (rc)
++		return -1;
++	if (mbr_type != 0x02) {
++		errx(42, "Cowardly refusing non-GPT disk %s", disk);
++	}
++
++	efi_guid_to_str(&signature, &sigstrp);
++
++	if (opts.verbose && !loader) {
++		printf("About to delete all entries referring to UUID %s\n",
++			sigstr);
++	} else if ( opts.delete != 15) {
++		printf("About to delete all entries referring to loader %s\n"
++			"  on UUID %s\n",
++			loader, sigstr);
++	}
++	return delete_by_uuid(prefix,sigstr,loader);
++}
++
++/* verbatim copy of same function in efivar/src/creator.c */
++static char *
++tilt_slashes(char *s)
++{
++        char *p;
++        for (p = s; *p; p++)
++                if (*p == '/')
++                        *p = '\\';
++        return s;
++}
++
++static int
++check_uuid(const char *s)
++{
++	/* algorithm derived from efivar/src/guid.h */
++	size_t len = 36;
++	unsigned int i;
++	if (strlen(s) != len)
++		return -1;
++	for (i = 0; i < len; i++) {
++		if (i == 8 || i == 13 || i == 18 || i == 23) {
++			if (s[i] != '-')
++				return -1;
++			continue;
++		}
++		if (s[i] >= '0' && s[i] <= '9')
++			continue;
++		/* "| 0x20" is tolower() without having to worry about
++		 * locale concerns, since we know everything here must
++		 * be within traditional ascii space. */
++		if ((s[i] | 0x20) >= 'a' && (s[i] | 0x20) <= 'f')
++			continue;
++		return -1;
++	}
++	return 0;
++}
++
+ static void
+ set_var_nums(const char *prefix, list_t *list)
+ {
+@@ -1215,7 +1355,9 @@ usage()
+ 	printf("\t-a | --active         sets bootnum active\n");
+ 	printf("\t-A | --inactive       sets bootnum inactive\n");
+ 	printf("\t-b | --bootnum XXXX   modify BootXXXX (hex)\n");
+-	printf("\t-B | --delete-bootnum delete bootnum\n");
++	printf("\t-B | --delete-bootnum delete bootnum (specified with -b)\n");
++	printf("\t     --delete         delete entry by bootnum (-b), by UUID (-P)\n");
++	printf("\t                      or by disk+partition[+file] (-d -p -l)\n");
+ 	printf("\t-c | --create         create new variable bootnum and add to bootorder\n");
+ 	printf("\t-C | --create-only	create new variable bootnum and do not add to bootorder\n");
+ 	printf("\t-D | --remove-dups	remove duplicate values from BootOrder\n");
+@@ -1242,6 +1384,7 @@ usage()
+ 	printf("\t-o | --bootorder XXXX,YYYY,ZZZZ,...     explicitly set BootOrder (hex)\n");
+ 	printf("\t-O | --delete-bootorder delete BootOrder\n");
+ 	printf("\t-p | --part part        (defaults to 1) containing loader\n");
++	printf("\t-P | --part-uuid UUID   select all variables for given partition UUID\n");
+ 	printf("\t-q | --quiet            be quiet\n");
+ 	printf("\t-t | --timeout seconds  set boot manager timeout waiting for user input.\n");
+ 	printf("\t-T | --delete-timeout   delete Timeout.\n");
+@@ -1267,6 +1410,7 @@ set_default_opts()
+ 	opts.label           = (unsigned char *)"Linux";
+ 	opts.disk            = "/dev/sda";
+ 	opts.part            = 1;
++	opts.part_uuid       = NULL;
+ }
+ 
+ static void
+@@ -1288,6 +1432,7 @@ parse_opts(int argc, char **argv)
+ 			{"delete-bootnum",         no_argument, 0, 'B'},
+ 			{"create",                 no_argument, 0, 'c'},
+ 			{"create-only",            no_argument, 0, 'C'},
++			{"delete",                 no_argument, 0,   2},
+ 			{"remove-dups",            no_argument, 0, 'D'},
+ 			{"disk",             required_argument, 0, 'd'},
+ 			{"iface",            required_argument, 0, 'i'},
+@@ -1320,7 +1465,7 @@ parse_opts(int argc, char **argv)
+ 		};
+ 
+ 		c = getopt_long (argc, argv,
+-				 "AaBb:cCDd:e:E:gH:i:l:L:M:m:n:No:Op:qt:TuU:v::Vw"
++				 "AaBb:cCDd:e:E:gH:i:l:L:M:m:n:No:Op:P:qt:TuU:v::Vw"
+ 				 "@:hry",
+ 				 long_options, &option_index);
+ 		if (c == -1)
+@@ -1368,11 +1513,16 @@ parse_opts(int argc, char **argv)
+ 			opts.create = 1;
+ 			opts.no_order = 1;
+ 			break;
++		case  2:
++			opts.delete |= 1;
++			break;
+ 		case 'D':
+ 			opts.deduplicate = 1;
+ 			break;
+ 		case 'd':
+ 			opts.disk = optarg;
++			if (opts.delete)
++				opts.delete |= 2;
+ 			break;
+ 		case 'e':
+ 			rc = sscanf(optarg, "%u", &num);
+@@ -1410,6 +1560,9 @@ parse_opts(int argc, char **argv)
+ 			break;
+ 		case 'l':
+ 			opts.loader = optarg;
++			tilt_slashes(opts.loader);
++			if (opts.delete)
++				opts.delete |= 8;
+ 			break;
+ 		case 'L':
+ 			opts.label = (unsigned char *)optarg;
+@@ -1474,6 +1627,17 @@ parse_opts(int argc, char **argv)
+ 			else
+ 				errorx(37, "invalid numeric value %s\n",
+ 				       optarg);
++			if (opts.delete)
++				opts.delete |= 4;
++			break;
++		case 'P':
++			if ((rc=check_uuid(optarg)) < 0) {
++				fprintf(stderr,
++					"malformed partition UUID: %s (%d)\n",
++					optarg, rc);
++				exit(1);
++			}
++			opts.part_uuid = optarg;
+ 			break;
+ 		case 'q':
+ 			opts.quiet = 1;
+@@ -1595,9 +1759,24 @@ main(int argc, char **argv)
+ 	set_var_nums(prefices[mode], &entry_list);
+ 
+ 	if (opts.delete) {
+-		if (opts.num == -1)
++		if (opts.part_uuid) {
++			ret = delete_by_uuid(prefices[mode], opts.part_uuid,
++				(opts.delete & 8) ? opts.loader : NULL);
++			if (ret < 0)
++				error(42, "Could not delete variable(s)");
++		} else if (opts.delete & 2) {
++			ret = delete_by_dpl(prefices[mode],
++				(opts.delete & 2) ? opts.disk : NULL,
++				(opts.delete & 4) ? opts.part : 0,
++				(opts.delete & 8) ? opts.loader : NULL);
++			if (ret < 0)
++				error(42, "Could not delete variable(s)");
++		} else if (opts.delete > 1)
++			errorx(3, "Disk and partition must be specified "
++				"(see the --delete option).");
++		else if (opts.num == -1)
+ 			errorx(3, "You must specify an entry to delete "
+-				"(see the -b option).");
++				"(e.g. with the -b option).");
+ 		else {
+ 			ret = delete_var(prefices[mode], opts.num);
+ 			if (ret < 0)
+diff --git a/src/include/efibootmgr.h b/src/include/efibootmgr.h
+index d692d0c..d2d90dc 100644
+--- a/src/include/efibootmgr.h
++++ b/src/include/efibootmgr.h
+@@ -60,6 +60,7 @@ typedef struct {
+ 	int keep_old_entries;
+ 	char *testfile;
+ 	char *extra_opts_file;
++	char *part_uuid;
+ 	uint32_t part;
+ 	int edd_version;
+ 	uint32_t edd10_devicenum;
+@@ -70,7 +71,7 @@ typedef struct {
+ 	int below4g;
+ 	int above4g;
+ 	int deduplicate;
+-	unsigned int delete:1;
++	unsigned int delete:4;
+ 	unsigned int delete_order:1;
+ 	unsigned int delete_bootnext:1;
+ 	unsigned int quiet:1;
+-- 
+2.6.6
+

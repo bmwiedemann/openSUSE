@@ -1,0 +1,28 @@
+Index: parcellite-1.1.7/src/preferences.c
+===================================================================
+--- parcellite-1.1.7.orig/src/preferences.c
++++ parcellite-1.1.7/src/preferences.c
+@@ -24,7 +24,7 @@
+ #define INIT_MENU_KEY         NULL
+ 
+ #define DEF_USE_COPY          TRUE
+-#define DEF_USE_PRIMARY       FALSE
++#define DEF_USE_PRIMARY       TRUE
+ #define DEF_SYNCHRONIZE       FALSE
+ #define DEF_SAVE_HISTORY      TRUE
+ #define DEF_HISTORY_LIMIT     25
+@@ -35,10 +35,10 @@
+ #define DEF_ITEM_LENGTH       50
+ #define DEF_ITEM_LENGTH_MAX   200
+ #define DEF_ELLIPSIZE         2
+-#define DEF_PHISTORY_KEY      "<Ctrl><Alt>X"
+-#define DEF_HISTORY_KEY       "<Ctrl><Alt>H"
+-#define DEF_ACTIONS_KEY       "<Ctrl><Alt>A"
+-#define DEF_MENU_KEY          "<Ctrl><Alt>P"
++#define DEF_PHISTORY_KEY      ""
++#define DEF_HISTORY_KEY       ""
++#define DEF_ACTIONS_KEY       ""
++#define DEF_MENU_KEY          ""
+ #define DEF_NO_ICON           FALSE
+ 
+ /**allow lower nibble to become the number of items of this type  */

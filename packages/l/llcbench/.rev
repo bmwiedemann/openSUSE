@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5aa98e8573cc8d453dec4e71239d6a5</srcmd5>
+    <version>1.10</version>
+    <time>1478377492</time>
+    <user>dimstar_suse</user>
+    <comment>new package, industrial standard for HPC benchmarking</comment>
+    <requestid>437993</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41af0e0a96cc10e179999dcaa341f80e</srcmd5>
+    <version>1.10</version>
+    <time>1479150980</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply optflags everywhere
+- Install mpi_bench
+- Install helper/example scripts
+- Update dependencies</comment>
+    <requestid>440161</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>67a81bed32ffbfe173cab562e5bb1943</srcmd5>
+    <version>1.10</version>
+    <time>1497274171</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on current Factory - llcbench-noinline.patch</comment>
+    <requestid>501326</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>118afe9043c81ba49a01c04af1a589d7</srcmd5>
+    <version>1.10</version>
+    <time>1509105637</time>
+    <user>dimstar_suse</user>
+    <comment>- Force specific version of mpicc</comment>
+    <requestid>535639</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Tue Jul 23 13:19:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.3.4:
+  * Do not raise windows error when calling resolve on a non-existing path in Python 2.7, to match behaviour on Python 3.x (see issue #54).
+  * Use the new collections.abc when possible (see issue #53).
+  * Sync with upstream pathlib (see issues #47 and #51).
+
+-------------------------------------------------------------------
+Mon Mar 11 07:37:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Provides/Obsoletes of python-pathlib2, needed by
+  python2-jupyter_ipython and python2-pytest-django and others
+
+-------------------------------------------------------------------
+Sat Mar  9 10:24:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix build dependency on python3-scandir, unbreaking Leap 42.3
+  and SLE 12 SP4
+- Add bcond test to deactivate %check properly when necessary
+
+-------------------------------------------------------------------
+Mon Feb  4 22:24:31 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- depend on python3-scandir for python3 < 3.5 only
+
+-------------------------------------------------------------------
+Wed Jan  2 09:20:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Always pull in python2-scandir as there is no core functionality
+
+-------------------------------------------------------------------
+Fri Dec 28 13:08:53 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.3:
+  * Bring back old deprecated dependency syntax to ensure
+    compatibility with older systems (see issue #46).
+  * Drop Python 3.3 support, as scandir no longer supports it.
+  * Add Python 3.7 support.
+- Update conditionals for tests and dependencies to work on older
+  SLE/openSUSE releases as well
+
+-------------------------------------------------------------------
+Mon Nov 12 07:40:50 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Avoid an issue with accidentally still pulling scandir on python3
+
+-------------------------------------------------------------------
+Thu Nov  1 10:01:21 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Scandir is needed only on older than 3.5 python
+
+-------------------------------------------------------------------
+Tue Aug  7 14:38:54 UTC 2018 - mimi.vx@gmail.com
+
+- cleanup deps 
+
+-------------------------------------------------------------------
+Wed May 30 10:44:01 UTC 2018 - mimi.vx@gmail.com
+
+- update to 2.3.2
+- drop pathlib2-2.3.0-fix-tests.patch
+- fix requires and drop coverage report
+
+-------------------------------------------------------------------
+Tue May 22 13:31:30 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC
+- Switch on tests (add patch pathlib2-2.3.0-fix-tests.patch)
+
+-------------------------------------------------------------------
+Fri Jan  5 10:07:12 UTC 2018 - alarrosa@suse.com
+
+- Update to version 2.3.0
+  * Sync with upstream pathlib from CPython 3.6.1
+
+-------------------------------------------------------------------
+Thu Aug 24 13:49:05 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Mar 30 21:57:01 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version
+

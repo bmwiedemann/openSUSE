@@ -1,0 +1,7 @@
+<package name="iw" project="openSUSE:Factory">
+  <title>Configuration utility for nl80211 based wireless drivers</title>
+  <description>iw is a nl80211 based CLI configuration utility for wireless devices. It
+supports almost all new drivers that have been added to the kernel
+recently.</description>
+  <devel project="hardware" package="iw"/>
+</package>

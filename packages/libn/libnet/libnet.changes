@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Fri Oct 23 13:48:35 UTC 2015 - tchvatal@suse.com
+
+- Add patch for bnc#949391:
+  * libnet-pf-packet.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 14:08:34 UTC 2015 - tchvatal@suse.com
+
+- Remove no longer needed provide/obsolete
+
+-------------------------------------------------------------------
+Tue May 13 14:04:38 UTC 2014 - tchvatal@suse.com
+
+- Drop patch removing manpages, no reason to remove them.
+  libnet-1.2.0-drop-man-build.patch
+
+-------------------------------------------------------------------
+Tue May 13 13:56:58 UTC 2014 - tchvatal@suse.com
+
+- Update to actual released tarball which is versioned 1.2-rc3
+- Cleanup with spec-cleaner
+- No reason to not have this library in /usr so move it there
+- Add patch libnet-1.2-rc.patch needed to set proper version in
+  automake.
+
+-------------------------------------------------------------------
+Thu Jan  2 09:30:15 UTC 2014 - mvyskocil@suse.com
+
+- Use macro in libnet-devel to ensure correct dependency 
+
+-------------------------------------------------------------------
+Thu Dec 19 11:02:52 UTC 2013 - mvyskocil@suse.com
+
+- Update to 1.2
+  no changelog available
+- add libnet-1.2.0-drop-man-build.patch to not fail on non existing
+  manual pages
+
+-------------------------------------------------------------------
+Thu Oct  3 12:54:03 UTC 2013 - mvyskocil@suse.com
+
+- Install just plain c files in samples/ 
+
+-------------------------------------------------------------------
+Wed Mar 27 15:52:11 UTC 2013 - mvyskocil@suse.com
+
+- update to 1.1.6
+  * obsoleted libnet-1.1.2.1-uninitialized-fix.diff
+  * obsoleted libnet-1.1.5-arrray-fix.diff
+  * fixes the PF_PACKET detection (bnc#810138)
+  * includes many bugfixes from Debian
+  * ICMPv6 and IPv6 related bugfixes
+  * and many more
+
+-------------------------------------------------------------------
+Mon Feb 13 10:48:57 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Nov 20 20:45:32 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sat Nov 19 20:43:21 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu May  5 23:05:05 CEST 2011 - dmueller@suse.de
+
+- complete package rename to libnet1
+
+-------------------------------------------------------------------
+Wed Feb  9 12:18:57 UTC 2011 - adam@mizerski.pl
+
+- minor specfile improvements
+- removed dead/unused libnet-1.1.5-strict-aliasing-fix.diff
+
+-------------------------------------------------------------------
+Sat Nov 20 16:14:05 UTC 2010 - coolo@novell.com
+
+- fix requires of devel package
+
+-------------------------------------------------------------------
+Fri Nov 19 12:53:43 UTC 2010 - mvyskocil@suse.cz
+
+- update to 1.1.5 (from libnet-dev.sf.net) a bugfix release
+  see CHANGELOG for complete list of fixes from 1.1.2.1
+- patches changes:
+  * remove libnet-endianess-fix.diff
+  * remove libnet-shared.diff
+  * remove libnet-1.1.2.1-makefile.diff
+  * refresh libnet-1.1.5-strict-aliasing-fix.diff
+  * refresh libnet-1.1.5-arrray-fix.diff
+- rename to libnet1 to conforms Shared Library Policy
+- split devel files to libnet-devel and documentation to libnet-doc
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:27 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Sep  9 14:54:14 CEST 2008 - crrodriguez@suse.de
+
+- after removing static libraries, syslog-ng complains that are
+  needed, so we move the shared library to /%{_lib} to really fix
+  the problem 
+
+-------------------------------------------------------------------
+Thu Sep  4 11:11:18 CEST 2008 - crrodriguez@suse.de
+
+- remove "la" file with empty dependency_libs
+- disable static libraries 
+- libpcap is no longer needed for this package
+- configure option --with-pf_packet does not exists anymore
+ 
+-------------------------------------------------------------------
+Wed Mar 14 13:53:59 CET 2007 - anosek@suse.cz
+
+- fixed permissions of man pages [#254335]
+
+-------------------------------------------------------------------
+Fri Feb 17 14:06:34 CET 2006 - lmichnovic@suse.cz
+
+- fixed subscription beyond array and uninitialized variable [#151312]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 19 13:57:33 CEST 2005 - mmarek@suse.cz
+
+- fixed some gcc warnings 
+
+-------------------------------------------------------------------
+Thu Nov 18 01:56:50 CET 2004 - ro@suse.de
+
+- fixed file list
+
+-------------------------------------------------------------------
+Wed Aug 04 16:11:46 CEST 2004 - postadal@suse.cz
+
+- updated to version 1.1.2.1
+
+-------------------------------------------------------------------
+Wed Feb 11 13:33:44 CET 2004 - postadal@suse.cz
+
+- removed compiled files from /usr/share/doc/packages/libnet/sample
+
+-------------------------------------------------------------------
+Tue Feb 10 11:20:01 CET 2004 - postadal@suse.cz
+
+- updated to version 1.1.1
+- removed obsoleted patches: autoconf-fix.diff, samples.diff
+- fixed code that broke strict aliasing
+
+-------------------------------------------------------------------
+Sun Jan 11 09:41:45 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Aug 13 18:59:35 CEST 2003 - mjancar@suse.cz
+
+- build also shared library
+
+-------------------------------------------------------------------
+Thu Jul 24 19:37:25 CEST 2003 - meissner@suse.de
+
+- honor detected endianess.
+
+-------------------------------------------------------------------
+Thu Jul 24 13:51:33 CEST 2003 - postadal@suse.cz
+
+- update to version 1.1.0
+
+-------------------------------------------------------------------
+Mon Nov 11 12:59:41 CET 2002 - postadal@suse.cz
+
+- fixed deprecated multiline string literals 
+
+-------------------------------------------------------------------
+Wed Jan  9 13:02:28 CET 2002 - cihlar@suse.cz
+
+- use %{_libdir}
+
+-------------------------------------------------------------------
+Wed Feb 14 12:38:15 CET 2001 - cihlar@suse.cz
+
+- update to version 1.0.2a
+- clean up spec file
+
+-------------------------------------------------------------------
+Thu Nov 16 22:40:56 CET 2000 - grimmer@suse.de
+
+- initial package (version 1.0.1b)
+

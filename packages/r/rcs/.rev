@@ -1,0 +1,195 @@
+<revisionlist>
+  <revision rev="1" vrev="881">
+    <srcmd5>6e1a0ce813fcb179969e773522bad621</srcmd5>
+    <version>5.7</version>
+    <time>1166483859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="916">
+    <srcmd5>00944568860d8f9c7e4fce5cfb116d86</srcmd5>
+    <version>5.7</version>
+    <time>1179763845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1005">
+    <srcmd5>00944568860d8f9c7e4fce5cfb116d86</srcmd5>
+    <version>5.7</version>
+    <time>1179763845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1006">
+    <srcmd5>e126172840f8e779d6aaea7b4f2d6708</srcmd5>
+    <version>5.7</version>
+    <time>1224729954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1008">
+    <srcmd5>e126172840f8e779d6aaea7b4f2d6708</srcmd5>
+    <version>5.7</version>
+    <time>1224729954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1009">
+    <srcmd5>1ca46116c62366a73ee712b8b43ecd99</srcmd5>
+    <version>5.7</version>
+    <time>1268925958</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1011">
+    <srcmd5>1ca46116c62366a73ee712b8b43ecd99</srcmd5>
+    <version>5.7</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1012">
+    <srcmd5>1ca46116c62366a73ee712b8b43ecd99</srcmd5>
+    <version>5.7</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1015">
+    <srcmd5>1ca46116c62366a73ee712b8b43ecd99</srcmd5>
+    <version>5.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1005">
+    <srcmd5>f2b2aa91161b28354c57bb0ecb3356d0</srcmd5>
+    <version>5.8</version>
+    <time>1318940894</time>
+    <user>saschpe</user>
+    <comment>- bump version to 5.8
+- add documentation</comment>
+    <requestid>88438</requestid>
+  </revision>
+  <revision rev="11" vrev="1006">
+    <srcmd5>3b28b3f7d4f1d585af0833aa7cebdf0f</srcmd5>
+    <version>5.8</version>
+    <time>1319026128</time>
+    <user>coolo</user>
+    <comment>- remove old sources</comment>
+    <requestid>88647</requestid>
+  </revision>
+  <revision rev="12" vrev="1008">
+    <srcmd5>3b28b3f7d4f1d585af0833aa7cebdf0f</srcmd5>
+    <version>5.8</version>
+    <time>1319182422</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1009">
+    <srcmd5>ed6545511007a4540dff0f4361831479</srcmd5>
+    <version>5.8</version>
+    <time>1319207366</time>
+    <user>coolo</user>
+    <comment>- Better URL, %check as documented</comment>
+    <requestid>88808</requestid>
+  </revision>
+  <revision rev="14" vrev="1010">
+    <srcmd5>870cf057d6bc85317bd31a287709c6d6</srcmd5>
+    <version>5.8</version>
+    <time>1323194369</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1012">
+    <srcmd5>870cf057d6bc85317bd31a287709c6d6</srcmd5>
+    <version>5.8</version>
+    <time>1340184138</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1013">
+    <srcmd5>3871bc33f35d2503e64d8f65c9be02b1</srcmd5>
+    <version>5.8</version>
+    <time>1343136980</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128158 from a_jaeger)</comment>
+    <requestid>128213</requestid>
+  </revision>
+  <revision rev="17" vrev="1014">
+    <srcmd5>37be54f31ef614c223806bc5dd8599e0</srcmd5>
+    <version>5.8</version>
+    <time>1355998157</time>
+    <user>coolo</user>
+    <comment>- rcs-rlog-zLT.patch
+  * fix output of &quot;rlog -zLT&quot; on x86_64 (bnc#784948) (forwarded request 145657 from sndirsch)</comment>
+    <requestid>145944</requestid>
+  </revision>
+  <revision rev="18" vrev="1016">
+    <srcmd5>37be54f31ef614c223806bc5dd8599e0</srcmd5>
+    <version>5.8</version>
+    <time>1359110276</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1018">
+    <srcmd5>37be54f31ef614c223806bc5dd8599e0</srcmd5>
+    <version>5.8</version>
+    <time>1379664436</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1020">
+    <srcmd5>37be54f31ef614c223806bc5dd8599e0</srcmd5>
+    <version>5.8</version>
+    <time>1409303169</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c607e87668cc6cd9950dccca7a7170bb</srcmd5>
+    <version>5.9.4</version>
+    <time>1422521748</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile: added rcs.keyring as source
+
+- rcs 5.9.4:
+  + documentation improvements
+
+- rcs 5.9.3:
+  - compatibility w/ RCS 2.x file format dropped
+  - fix crash on co/ci without changes on a branch
+- includes changes from 5.9.2:
+  - avoid possibly failing command in backticks
+  - handle low-memory situations like RCS 5.7 (mostly)
+  - default for env var ‘RCS_MEM_LIMIT’ relaxed
+- includes changes from 5.9.1:
+  - avoid ‘grep -q’
+  - ‘PROGRAM --help’ shows home page / &quot;gethelp&quot; info
+- includes changes from 5.9.0:
+  - common option ‘-V’ obsoleted by ‘--version’
+  - ‘rcsmerge --help’ mentions ‘-A’, ‘-E’, ‘-e’
+  - ‘ident -VN’ and ‘merge -VN’ now signal error
+  - ident(1) recognizes Subversion &quot;fixed-width keyword syntax&quot;
+  - new co(1) option ‘-S’ for &quot;self-same&quot; mode
+  - several RCS commands &quot;internalized&quot; into rcs(1)
+  - ‘--help’ output includes a one-line description
+  - effects of ‘-VN’ (N ∈ {3,4,5}) documented
+- includes changes from 5.8.2:
+  - fix wrong symbolic name dereference
+  - ‘integrity’ value syntax better specified
+  - New manual chapter: RCS file format
+  - Manpages refer to info documentation
+  - Script to trim &quot;junk at end of file&quot; posted</comment>
+    <requestid>282529</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>093d4af21d69167bcc9b9de4887ead7e</srcmd5>
+    <version>5.9.4</version>
+    <time>1435053486</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312674</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d8c3056a3b6f855322566c7e74ab9e6c</srcmd5>
+    <version>5.9.4</version>
+    <time>1452721571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353371</requestid>
+  </revision>
+</revisionlist>

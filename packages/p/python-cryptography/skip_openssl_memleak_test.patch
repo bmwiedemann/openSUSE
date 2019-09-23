@@ -1,0 +1,16 @@
+diff --git a/tests/hazmat/backends/test_openssl_memleak.py b/tests/hazmat/backends/test_openssl_memleak.py
+index 6e92e34..3280c47 100644
+--- a/tests/hazmat/backends/test_openssl_memleak.py
++++ b/tests/hazmat/backends/test_openssl_memleak.py
+@@ -118,9 +118,8 @@ def assert_no_memory_leaks(s, argv=[]):
+ 
+ 
+ def skip_if_memtesting_not_supported():
+-    return pytest.mark.skipif(
+-        not Binding().lib.Cryptography_HAS_MEM_FUNCTIONS,
+-        reason="Requires OpenSSL memory functions (>=1.1.0)"
++    return pytest.mark.skip(
++        reason="Our FIPS openssl startup code invokes CRYPTO_malloc() which prevents later debugging via CRYPTO_set_mem_functions()"
+     )
+ 
+ 

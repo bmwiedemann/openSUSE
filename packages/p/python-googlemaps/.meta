@@ -1,0 +1,11 @@
+<package name="python-googlemaps" project="openSUSE:Factory">
+  <title>An easy-to-use Python wrapper for the Google Maps and Local Search APIs</title>
+  <description>Easy geocoding, reverse geocoding, driving directions, and local search in Python via Google.
+
+Author:
+--------
+    John Kleint &lt;py-googlemaps-general@lists.sourceforge net&gt;
+</description>
+  <devel project="Application:Geo" package="python-googlemaps"/>
+  <url>http://sourceforge.net/projects/py-googlemaps</url>
+</package>

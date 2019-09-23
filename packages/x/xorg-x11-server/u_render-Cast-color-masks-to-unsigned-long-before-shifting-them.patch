@@ -1,0 +1,41 @@
+From: Egbert Eich <eich@hammer45.arch.suse.de>
+Date: Fri May 30 19:08:00 2014 -0400
+Subject: [PATCH]render: Cast color masks to unsigned long before shifting them
+Patch-mainline: to be upstreamed
+Git-commit: 6ec9a78f9b79668239c3a1519d715cbecf186cef
+Git-repo: 
+References: bnc#876757
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+The color masks in DirectFormatRec are CARD16. Shifting them may lead
+to unexpected results. Cast them to unsigned long to make sure the
+shifted value will still fit into that type.
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ render/picture.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/render/picture.c b/render/picture.c
+index 2908b76..74369de 100644
+--- a/render/picture.c
++++ b/render/picture.c
+@@ -548,12 +548,12 @@ PictureMatchVisual(ScreenPtr pScreen, int depth, VisualPtr pVisual)
+                     return format;
+             }
+             else {
+-                if (format->direct.redMask << format->direct.red ==
+-                    pVisual->redMask &&
+-                    format->direct.greenMask << format->direct.green ==
+-                    pVisual->greenMask &&
+-                    format->direct.blueMask << format->direct.blue ==
+-                    pVisual->blueMask) {
++	      if (((unsigned long)format->direct.redMask) <<
++		  format->direct.red  == pVisual->redMask &&
++		  ((unsigned long)format->direct.greenMask) <<
++		  format->direct.green == pVisual->greenMask &&
++                  ((unsigned long)format->direct.blueMask) <<
++		  format->direct.blue == pVisual->blueMask) {
+                     return format;
+                 }
+             }

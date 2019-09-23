@@ -1,0 +1,1158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f072e5c80005de179d2fb559fd27b5d3</srcmd5>
+    <version>4.70</version>
+    <time>1392111890</time>
+    <user>coolo</user>
+    <comment>Real-time web framework perl-Mojolicious.
+This package will be needed by openQA in the not too far future.</comment>
+    <requestid>215542</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a49ec9d12fd9187eafd8a543e5ddf89</srcmd5>
+    <version>4.90</version>
+    <time>1395749983</time>
+    <user>coolo</user>
+    <comment>- updated to 4.90
+   - Removed deprecated to_rel method from Mojo::URL.
+   - Updated IO::Socket::SSL requirement to 1.84 due to breaking changes in
+     IO::Socket::SSL.
+   - Improved documentation browser with more accessible links and readable
+     inline code.
+   - Fixed textarea and title parsing bugs in Mojo::DOM::HTML.
+ 
+ 4.89  2014-03-13
+   - Added support for template variants.
+   - Improved built-in templates with unobtrusive menu bar.
+   - Fixed bug in Mojo::DOM::HTML where non-self-closing elements were not
+     handled correctly.
+   - Fixed bug in Mojo::DOM::HTML where &lt;image&gt; was not treated as an alias for
+     &lt;img&gt;.
+ 
+ 4.88  2014-03-09
+   - Added build_controller method to Mojolicious.
+   - Added match method to Mojolicious::Routes.
+   - Improved Mojo::Server::Daemon to handle setuid/setgid errors more
+     gracefully.
+   - Improved Mojo::Server::Prefork to handle lock file errors more gracefully.
+   - Improved exception page to show better context information for templates.
+   - Fixed comment on last line bug in Mojo::Template.
+ 
+ 4.87  2014-03-04
+   - Improved Mojo::ByteStream to allow more method chaining.
+   - Fixed RFC 7159 support in Mojo::JSON.
+   - Fixed RFC 7159 compliance bugs in Mojo::Transaction::WebSocket and
+     Test::Mojo.</comment>
+    <requestid>227137</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09f3db66fc4df14f1160b01ceb4b3e73</srcmd5>
+    <version>5.08</version>
+    <time>1403070652</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237859</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29b40d837ad0207d0cfde520671229e9</srcmd5>
+    <version>5.12</version>
+    <time>1404996965</time>
+    <user>coolo</user>
+    <comment>- updated to 5.12
+   - Fixed a few multipart form handling bugs.
+   - Fixed AUTOLOAD bug in Mojo::Collection where it would behave differently
+     than calling pluck directly.
+ 
+ 5.11  2014-07-02
+   - Moved reverse_proxy attribute from Mojo::Server::Daemon to Mojo::Server.
+   - Added delay and inactivity_timeout helpers to
+     Mojolicious::Plugin::DefaultHelpers.
+   - Improved error method in Mojolicious::Validator::Validation to return
+     field names when called without arguments.
+   - Fixed &quot;0&quot; value bug in Mojo::UserAgent::Transactor.
+ 
+ 5.10  2014-06-28
+   - Added cleanup attribute to Mojo::Server::Prefork.
+   - Improved Mojo::Server::Prefork to keep sending heartbeat messages when
+     stopping gracefully.
+   - Fixed small bug where Mojo::Server::Daemon was too eager to reconfigure
+     Mojo::IOLoop.
+   - Fixed small bug where Hypnotoad would clean up process id and lock files
+     too early.
+ 
+ 5.09  2014-06-24
+   - Improved .ep templates to make the current controller available as $c.</comment>
+    <requestid>240154</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>29b40d837ad0207d0cfde520671229e9</srcmd5>
+    <version>5.12</version>
+    <time>1409302389</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f050e8cd27a3cf0755de797da276a78</srcmd5>
+    <version>5.60</version>
+    <time>1415803684</time>
+    <user>coolo</user>
+    <comment>- updated to 5.60
+Tons of changes, just the peak of the ice berg:
+   - Added to_array method to Mojo::Collection.
+   - Added xss_escape function to Mojo::Util.
+   - Updated Net::DNS::Native requirement to 0.12 for some important bug fixes.
+   - Added support for non-blocking name resolution with Net::DNS::Native.
+ 
+ 5.58  2014-11-06
+   - Improved error handling in Mojo::IOLoop::Client.
+ 
+ 5.57  2014-11-02
+   - Deprecated stringification support in Mojo::Collection in favor of
+     Mojo::Collection::join.
+   - Deprecated Mojo::Collection::pluck in favor of Mojo::Collection::map.
+   - Deprecated Mojo::DOM::val.
+   - Improved map method in Mojo::Collection to be able to call methods.
+   - Improved tap method in Mojo::Base to be able to call methods.
+ 
+ 5.56  2014-10-29
+   - Deprecated Mojo::Collection::AUTOLOAD in favor of Mojo::Collection::pluck.
+   - Deprecated Mojo::DOM::AUTOLOAD in favor of Mojo::DOM::children.
+ 
+ 5.55  2014-10-28
+   - Deprecated support for data arguments in Mojo::JSON::Pointer.
+   - Added access_control_allow_origin, content_language, content_location and
+     strict_transport_security methods to Mojo::Headers.
+ 
+ 5.54  2014-10-23
+   - Deprecated object-oriented Mojo::JSON API.
+   - Added auto_decompress attribute to Mojo::Content.</comment>
+    <requestid>261183</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3e690653b1a492747aa2db8058516df7</srcmd5>
+    <version>5.70</version>
+    <time>1418978312</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.70
+   - Improved Mojo::Template performance.
+   - Fixed error handling bugs in Mojo::IOLoop::Stream.
+   - Fixed a few limit bugs in Mojo::Message.
+   - Fixed Windows bug in Mojo::IOLoop::Client. (OlegG)
+ 
+ 5.69  2014-12-13
+   - Deprecated Mojo::DOM::siblings.
+   - Added following, following_siblings, preceding and preceding_siblings
+     methods to Mojo::DOM.
+   - Added port method to Mojo::IOLoop::Server.
+   - Removed deprecated emit_safe method from Mojo::EventEmitter.
+   - Removed deprecated render_static method from Mojolicious::Controller.
+   - Removed deprecated has_conditions method from Mojolicious::Routes::Route.
+   - Updated Net::DNS::Native requirement to 0.14 for some important bug fixes.
+   - Improved Mojo::DOM::HTML performance slightly.
+   - Fixed parent combinator bug in Mojo::DOM::CSS.
+   - Fixed whitespace bug in Mojo::DOM::HTML.
+   - Fixed Mojo::UserAgent::Transactor to handle query parameters more like
+     most common browsers.
+ 
+ 5.68  2014-12-02
+   - Improved Mojo::DOM::CSS performance significantly.
+   - Fixed deprecation warnings in get command.
+   - Fixed bug in Mojolicious::Controller where sending a WebSocket message
+     would cause multiple resume events.
+ 
+ 5.67  2014-11-27
+   - Improved overall performance by deserializing sessions only on demand.
+   - Fixed bug where embedded applications would deserialize sessions twice.</comment>
+    <requestid>265681</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66f03a4df5c0909889981ba453b34d94</srcmd5>
+    <version>5.72</version>
+    <time>1421232337</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.72
+   - Added EXPERIMENTAL support for case-insensitive attribute selectors like
+     [foo=&quot;bar&quot; i] to Mojo::DOM::CSS.
+   - Added max_lines attribute to Mojo::Headers.
+   - Improved Mojo::Reactor::EV to update the current time before starting a
+     timer.
+   - Improved error messages for start-line and header limits.
+   - Fixed bug in Mojo::Headers where max_line_size was not checked correctly.
+   - Fixed whitespace bug in Mojo::DOM::CSS.
+ 
+ 5.71  2015-01-01
+   - Updated Net::DNS::Native requirement to 0.15 for some important bug fixes.
+   - Updated jQuery to version 2.1.3.
+   - Improved Mojo::URL performance.
+   - Fixed fragment and userinfo normalization bugs in Mojo::URL.
+   - Fixed query charset bug in Mojo::URL.
+   - Fixed a few merge bugs in Mojo::Parameters.</comment>
+    <requestid>281081</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03ead861bcea28d698cbff41d7338141</srcmd5>
+    <version>5.74</version>
+    <time>1422521793</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.74
+   - Improved parser errors to be more consistent with connection errors in
+     Mojo::Message::Request and Mojo::Message::Response.
+   - Fixed &quot;0&quot; value bug in Mojo::Parameters.
+   - Fixed bug where placeholder default values would not always have
+     precedence.
+   - Fixed proxy detection in get command.
+ 
+ 5.73  2015-01-24
+   - Deprecated Mojolicious::Routes::Route::bridge in favor of
+     Mojolicious::Routes::Route::under.
+   - Deprecated Mojolicious::Controller::render_exception in favor of
+     reply-&gt;exception helper.
+   - Deprecated Mojolicious::Controller::render_not_found in favor of
+     reply-&gt;not_found helper.
+   - Removed deprecated object-oriented Mojo::JSON API.
+   - Removed deprecated stringification support from Mojo::Collection.
+   - Removed deprecated support for data arguments from Mojo::JSON::Pointer.
+   - Removed deprecated AUTOLOAD and pluck methods from Mojo::Collection.
+   - Removed deprecated AUTOLOAD and val methods from Mojo::DOM.
+   - Moved tutorial from Mojolicious::Lite to Mojolicious::Guides::Tutorial.
+   - Added term_escape method to Mojo::ByteStream.
+   - Added term_escape function to Mojo::Util.
+   - Improved get command to use the user agent of the application.
+   - Improved diagnostics information for MOJO_DAEMON_DEBUG,
+     MOJO_USERAGENT_DEBUG and MOJO_WEBSOCKET_DEBUG environment variables.
+   - Fixed tag helpers to generate correct HTML5. (batman, sri)
+   - Fixed JSON Pointer escaping bug.
+   - Fixed portability bug in monkey_patch tests.</comment>
+    <requestid>283053</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e92a24ece885eed84c49551232c31031</srcmd5>
+    <version>5.77</version>
+    <time>1423392170</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.77
+   - Added content_security_policy method to Mojo::Headers.
+   - Fixed canonicalize in Mojo::Path to not remove parts with more than three
+     dots.
+ 
+ 5.76  2015-02-02
+   - Emergency release for a critical security issue that can expose files on
+     Windows systems, everybody should update!
+   - Increased default max_message_size from 10MB to 16MB in Mojo::Message.
+   - Reduced default max_line_size from 10KB to 8KB in Mojo::Headers and
+     Mojo::Message.
+   - Improved Hypnotoad load balancing by calling srand() after starting a new
+     worker in Mojo::Server::Prefork.
+   - Improved design of built-in templates.
+   - Fixed bug in Mojo::IOLoop where the accept limit was applied too broadly.
+   - Fixed bug in Mojo::Server::Prefork where the TTOU signal would not always
+     stop a worker.
+   - Fixed bug in Mojo::DOM::CSS where combinators needed to be surrounded by
+     whitespace.
+ 
+ 5.75  2015-01-26
+   - Added healthy method to Mojo::Server::Prefork.
+   - Improved all built-in web servers to die if group or user assignment
+     failed.
+   - Improved Hypnotoad to wait for new workers to be ready before stopping the
+     old ones during hot deployment.
+   - Improved commands and log messages to use less punctuation.
+   - Fixed bug in Mojo::IOLoop where the callback passed to next_tick would
+     receive the wrong invocant.
+   - Fixed race condition and memory leak in Mojo::Server::Prefork.</comment>
+    <requestid>284654</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6fe267a628a0f616ba7c43eb12c309bd</srcmd5>
+    <version>5.79</version>
+    <time>1424068590</time>
+    <user>coolo</user>
+    <comment>- updated to 5.79
+   - Fixed bug in Mojo::Reactor::Poll that caused excessive idle CPU usage.
+ 
+ 5.78  2015-02-12
+   - Replaced expires method in Mojo::Cookie::Response with an attribute.
+   - Added split_cookie_header function to Mojo::Util.
+   - Updated IO::Socket::SSL requirement to 1.94.
+   - Relaxed RFC 822/1123 and RFC 850/1036 handling in Mojo::Date.
+   - Improved Mojo::Reactor::Poll performance significantly.
+   - Improved text method in Mojo::Message to use default_charset as well.
+   - Improved design of built-in templates.
+   - Fixed bug in Mojo::DOM that made parsing a requirement.
+   - Fixed warnings in Mojo::URL.</comment>
+    <requestid>286118</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>784cd3de8b3b225b0b60ae193ddf2c5c</srcmd5>
+    <version>6.0</version>
+    <time>1425377692</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>288319</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>52a6595218497d8da6205f0a7cf26509</srcmd5>
+    <version>6.02</version>
+    <time>1426485662</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290787</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3b5f9743384672779a72957426c265e1</srcmd5>
+    <version>6.08</version>
+    <time>1429107949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296646</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea5380536a4ac01cf35e299378d473da</srcmd5>
+    <version>6.10</version>
+    <time>1430132724</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304124</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c15143e07389cc5d49d5c941981749e5</srcmd5>
+    <version>6.11</version>
+    <time>1431980940</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307678</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d7ab32b08139c63f0fd328142ae68023</srcmd5>
+    <version>6.12</version>
+    <time>1435053578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312968</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>47908a00d0a839a4df2cebd443c8c86e</srcmd5>
+    <version>6.14</version>
+    <time>1438421652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>316641</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d120d373458f293ad04d285d6966d76b</srcmd5>
+    <version>6.17</version>
+    <time>1440743182</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325694</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ec6c7e0715d07030b72afb593b6aa413</srcmd5>
+    <version>6.18</version>
+    <time>1441726763</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328813</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>befd564420ee071efd4d867cf525ca66</srcmd5>
+    <version>6.19</version>
+    <time>1442474445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330957</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>df8f0771bb932abeb8844f810d779798</srcmd5>
+    <version>6.20</version>
+    <time>1443068103</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332251</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>778054eb6e75275cf9916d52ca8eef2b</srcmd5>
+    <version>6.22</version>
+    <time>1443585161</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334135</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c63a4d048bb69a6a5a86fb1493ad9515</srcmd5>
+    <version>6.24</version>
+    <time>1445287941</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339329</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>af5bb7397a164df47aec694de6228856</srcmd5>
+    <version>6.25</version>
+    <time>1445675369</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340376</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5df777502433770b9f04582898a31a41</srcmd5>
+    <version>6.26</version>
+    <time>1446209020</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341472</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ff43a1c04c83b54717098e76563d6841</srcmd5>
+    <version>6.28</version>
+    <time>1446978371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342247</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2b5db7282dd4d626ea14e1d761369979</srcmd5>
+    <version>6.29</version>
+    <time>1447146196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342986</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a529885643ccfb2d55b1bbf70be64e01</srcmd5>
+    <version>6.30</version>
+    <time>1447588016</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344363</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ead8969a4d8a98df85b8f2cd921ffe2d</srcmd5>
+    <version>6.31</version>
+    <time>1447766571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344482</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c711e09b4b9b58fc6fd185aa9f8bc0ea</srcmd5>
+    <version>6.32</version>
+    <time>1448186463</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345611</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6e7f776c0f87c49bd9f0ceb0a72a66af</srcmd5>
+    <version>6.33</version>
+    <time>1449145864</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346630</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>059b8e074a9a84a7a2e712f21440f7ef</srcmd5>
+    <version>6.36</version>
+    <time>1449687282</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348061</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6f844585c0eb28ff0a10a696f2542e40</srcmd5>
+    <version>6.37</version>
+    <time>1450284202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349055</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1acb29da5766894547099afba8022c8c</srcmd5>
+    <version>6.38</version>
+    <time>1451390372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350871</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bc63662910e7bb3f4fb1f70563683d4a</srcmd5>
+    <version>6.39</version>
+    <time>1452850933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353506</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>76dbf564e97485f2a79ef3b29210c5a3</srcmd5>
+    <version>6.40</version>
+    <time>1453416258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354804</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>544333197cf6e0e07b450a5364a6e5ee</srcmd5>
+    <version>6.42</version>
+    <time>1453998227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355958</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb79cc5ad9e21e47649884e287d94b42</srcmd5>
+    <version>6.47</version>
+    <time>1456434367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360712</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>74032002733961412849cdbb278d6417</srcmd5>
+    <version>6.54</version>
+    <time>1457533057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368907</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3e19275800368d1b3e531e21817b88b4</srcmd5>
+    <version>6.55</version>
+    <time>1458228848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370278</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bb73adde206a682c585a2b717a05b975</srcmd5>
+    <version>6.58</version>
+    <time>1460482734</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>387507</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ee93c890da09d893bea76e9d57451771</srcmd5>
+    <version>6.62</version>
+    <time>1464204573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397854</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8de505e1127be1ea0d1139a3cba17d1d</srcmd5>
+    <version>6.64</version>
+    <time>1466326084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401460</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3783e833290baea39c3564d11a6c3f6b</srcmd5>
+    <version>6.66</version>
+    <time>1466814258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404393</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7727b19f577003886bb4c1d2c55c7fe1</srcmd5>
+    <version>7.0</version>
+    <time>1468999765</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  7.0  2016-07-19
+    - Code name &quot;Doughnut&quot;, this is a major release.
+    - Removed Mojolicious::Plugin::Charset.
+    - Removed authority method from Mojo::URL.
+    - Removed squish method from Mojo::ByteStream.
+    - Removed squish function from Mojo::Util.
+    - Removed support for smart whitespace trimming from all_text and text methods
+      in Mojo::DOM.
+    - Updated jQuery to version 3.1.0.
+    - Improved Mojo::URL not to include the userinfo part when generating URLs, as
+      recommended by the URL Living Standard.
+    - Improved Mojolicious::Plugin::Config to no longer log which files have been
+      loaded.
+    - Fixed trailing slash bug in Mojo::URL.
+    - Fixed a few whitespace bugs in Mojo::DOM.
+    - Fixed attribute selector bug in Mojo::DOM::CSS. (Akron)
+    - Fixed a bug causing headers with zero length values to be ignored by the get
+      command. (jberger)</comment>
+    <requestid>412081</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>25c8d104e2f94626ba7bed26eb091d87</srcmd5>
+    <version>7.01</version>
+    <time>1470413849</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416744</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f4944cad1bac4ff2617a7e08cde3261f</srcmd5>
+    <version>7.03</version>
+    <time>1471855759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419872</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7370e380d7e98305de10ae447768258f</srcmd5>
+    <version>7.05</version>
+    <time>1473103093</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424239</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ad13d7d6b2ea944fb8b6b314d7dfd3fc</srcmd5>
+    <version>7.07</version>
+    <time>1474622693</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>429626</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a712ea93e13ca2130b8c776436e62275</srcmd5>
+    <version>7.08</version>
+    <time>1476113493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431496</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>bfe4c1d71f80d7eb396bb5881f732341</srcmd5>
+    <version>7.09</version>
+    <time>1477904011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437288</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>009211efd31f316af7077d5662fb237d</srcmd5>
+    <version>7.10</version>
+    <time>1478871104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439455</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>86f611bf828772f253178aeea6ca4d26</srcmd5>
+    <version>7.11</version>
+    <time>1480951800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443133</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>da5b5b4c6460b1879cd421cbcb7a37bb</srcmd5>
+    <version>7.12</version>
+    <time>1482784656</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447249</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e2f4e86b4db2f7f8d24098d8919d0a58</srcmd5>
+    <version>7.18</version>
+    <time>1484475277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449776</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>61e66aa2c3e73c37cbd32b11ef5cc52c</srcmd5>
+    <version>7.20</version>
+    <time>1485167368</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.20
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  7.20  2017-01-18
+    - Fixed a bug in Mojo::File where the make_path method would die even if no
+      error occurred.
+    - Fixed warnings in Mojo::IOLoop::TLS.
+
+- updated to 7.19
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  7.19  2017-01-14
+    - Added module Mojo::IOLoop::TLS.
+    - Added can_nnr and can_socks methods to Mojo::IOLoop::Client.</comment>
+    <requestid>451164</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e56dd1d1e30b88b3920d27732907f95a</srcmd5>
+    <version>7.21</version>
+    <time>1485380293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451964</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>4e8cf5fe3a3ca5e97542f31f0232c8d2</srcmd5>
+    <version>7.22</version>
+    <time>1485862557</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452897</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ab331a71b43586e41ec0b39337d79667</srcmd5>
+    <version>7.23</version>
+    <time>1486716552</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455181</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c7cfdab0e71b0bebfdf8b2dc3badfecd</srcmd5>
+    <version>7.25</version>
+    <time>1487259973</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.25
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  7.25  2017-02-09
+    - Fixed cleanup bugs in Mojo::IOLoop::Stream.
+
+- updated to 7.24
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  7.24  2017-02-05
+    - Added open method to Mojo::File.
+    - Added tempfile function to Mojo::File.
+    - Fixed bug in Mojo::Asset::File where the slurp method would not work
+      correctly for very large files.</comment>
+    <requestid>456712</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b36b9dbc780e78fca59bababa94c60f6</srcmd5>
+    <version>7.26</version>
+    <time>1487767930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459234</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>abcc1a7f0e8d90c7c214aa58e2a01b2c</srcmd5>
+    <version>7.27</version>
+    <time>1488548161</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460886</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>921d4668f257a647c67a5a5dc3b9083e</srcmd5>
+    <version>7.28</version>
+    <time>1489415280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477881</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>eb3f59e20bf539f64062143feb5cd87d</srcmd5>
+    <version>7.29</version>
+    <time>1489866448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479452</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>3e4a38a4b8e9c07c12d2230351b6acb4</srcmd5>
+    <version>7.30</version>
+    <time>1492417383</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486680</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1ff52fd21c7f5ca80845f24a4c557dfb</srcmd5>
+    <version>7.31</version>
+    <time>1494441281</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492953</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b7b4cefe3b823630556a56043c59ec7a</srcmd5>
+    <version>7.32</version>
+    <time>1496821933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499918</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>236d7b56886a0d2799c0d114eddbb7f1</srcmd5>
+    <version>7.33</version>
+    <time>1497687664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502484</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4c7e355bc20d6f1e66602a23a06b9470</srcmd5>
+    <version>7.36</version>
+    <time>1500274912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509619</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>d732ce0a607c22505882985603ca090d</srcmd5>
+    <version>7.37</version>
+    <time>1501227596</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512443</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>530e85b18c35cc33b3a340d8e303701e</srcmd5>
+    <version>7.39</version>
+    <time>1502011534</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514518</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>c14598c541085762c9a85d14ac405c73</srcmd5>
+    <version>7.42</version>
+    <time>1503132944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517491</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>050c6202eeac7b46de80d4790c833f5c</srcmd5>
+    <version>7.43</version>
+    <time>1503999353</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517859</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>19024ceea6a30a1c13babe87f1621ebf</srcmd5>
+    <version>7.44</version>
+    <time>1504617243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520605</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>29629d9ca555a700cc405784b5c4934e</srcmd5>
+    <version>7.45</version>
+    <time>1505237814</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522241</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>892281c6d8baa00cd96ebfe7e9f08bd1</srcmd5>
+    <version>7.46</version>
+    <time>1505757176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>524560</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>703375343bae8fe64e466be63140167c</srcmd5>
+    <version>7.47</version>
+    <time>1508769382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533851</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>05b192df314e686b4c8f20098087986a</srcmd5>
+    <version>7.48</version>
+    <time>1509193266</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536880</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>f968f1971e7b65cc8006fb09a983e8dc</srcmd5>
+    <version>7.52</version>
+    <time>1509787486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538634</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>ecee328c2d783f986f9e0f23ee0ce597</srcmd5>
+    <version>7.55</version>
+    <time>1510321348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539810</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>fef8312deabef08d276593b5d55bdddd</srcmd5>
+    <version>7.57</version>
+    <time>1511274054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>543260</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f210bf1e01ee4c613f18fd8bed1108ae</srcmd5>
+    <version>7.58</version>
+    <time>1512765971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548019</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b9dc2efc24a4de2e88bfe66fe2f2904e</srcmd5>
+    <version>7.59</version>
+    <time>1514027861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558060</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8211d967f1cb0d0b9a41ef013976fe1e</srcmd5>
+    <version>7.60</version>
+    <time>1515504903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562419</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>209c183054be3fc1c11b004141019f47</srcmd5>
+    <version>7.61</version>
+    <time>1516443938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566232</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>72a6ccb5c5298ebb77595125d5d38fe1</srcmd5>
+    <version>7.64</version>
+    <time>1518187581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573896</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>873da51c666b54f80cdb1ea9f1a9a256</srcmd5>
+    <version>7.65</version>
+    <time>1518514275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575635</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>f72ccbff7d6a24fb107f89a40e79034f</srcmd5>
+    <version>7.66</version>
+    <time>1518813926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577180</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>9c6aa91314aff4e3cd8992598deef000</srcmd5>
+    <version>7.67</version>
+    <time>1519218834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578618</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f697bbb3993b2e49d2f4c0eedd217bcf</srcmd5>
+    <version>7.69</version>
+    <time>1519747087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579897</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ce5b1b42165d9f2be69076126e177cf0</srcmd5>
+    <version>7.70</version>
+    <time>1520329625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581948</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>b1e93d541560fe6e45b9778e0e0819e9</srcmd5>
+    <version>7.71</version>
+    <time>1521499153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588482</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>5c119bddc2c50a949f280dbc3f3cd6d1</srcmd5>
+    <version>7.75</version>
+    <time>1524144527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595606</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>5eee775200b10d82005d10dafbfed2ce</srcmd5>
+    <version>7.76</version>
+    <time>1524742706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600834</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>29c24e4f99f2f13e9b977c521211cff0</srcmd5>
+    <version>7.77</version>
+    <time>1525343608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603036</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>4a43ad05936cc3e0b31b986504d5d2cf</srcmd5>
+    <version>7.81</version>
+    <time>1527933547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611488</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>ffc63b37cd3104d836594df6f2ea4723</srcmd5>
+    <version>7.88</version>
+    <time>1533045418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624683</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>2adb054a2ee57a816ab52be8394e51cf</srcmd5>
+    <version>7.93</version>
+    <time>1534543507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629578</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>3e58b404ecabf33f46737541eab7bc1c</srcmd5>
+    <version>7.94</version>
+    <time>1536833431</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>632860</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>36bccd20735e9d1f4dd75851bf141a3a</srcmd5>
+    <version>8.0</version>
+    <time>1537436552</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636639</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>022c56392887081937687d104228b4e0</srcmd5>
+    <version>8.01</version>
+    <time>1537964682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638337</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>8fc552d2371e475a0726e09c37fcc235</srcmd5>
+    <version>8.06</version>
+    <time>1542012081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647499</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>f95dd79403b8e9f478bd28bc7c09acc0</srcmd5>
+    <version>8.09</version>
+    <time>1544632023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655783</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>fc093f1ab25a3a5d99519cf1f336ec19</srcmd5>
+    <version>8.11</version>
+    <time>1546535396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662641</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>28629c79b86cc1d00eeac89f7810ebd3</srcmd5>
+    <version>8.12</version>
+    <time>1549286736</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670908</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c4577dfaf1707b5e6dce426770e5e69b</srcmd5>
+    <version>8.14</version>
+    <time>1555773184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695937</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>dd07025e06e59a9c27b67e9dbc39ed05</srcmd5>
+    <version>8.15</version>
+    <time>1556475295</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698643</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>cf75d25a4516a02ab223c3070c5f8ea7</srcmd5>
+    <version>8.16</version>
+    <time>1558428000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704251</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c4ae8441e4bf68e26f23db7031aa26ee</srcmd5>
+    <version>8.17</version>
+    <time>1558783248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705195</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>b4417665a0f522191a0c9cbe58ff69c3</srcmd5>
+    <version>8.18</version>
+    <time>1561882925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712541</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>ca7ae730d5875ce5e1370326959dcae2</srcmd5>
+    <version>8.21</version>
+    <time>1563366414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715697</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>111049c8717e5660a9f786b8554dcf6f</srcmd5>
+    <version>8.22</version>
+    <time>1563701671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716851</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>4a83600b4efe5849b1c711ef339a83d4</srcmd5>
+    <version>8.23</version>
+    <time>1565695683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723031</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>69568a472976ab98dc21d876494f110b</srcmd5>
+    <version>8.24</version>
+    <time>1568623960</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730867</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9b5e1ec5242eb2310a2640f969101af</srcmd5>
+    <version>6.0.6</version>
+    <time>1548537759</time>
+    <user>dimstar_suse</user>
+    <comment>- Add scotch to oS:Factory:
+  FATE#327141: [HPC Module] Add 'scotch' to the HPC Module</comment>
+    <requestid>668670</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7dff056d961269da1da3b5d82fe8a955</srcmd5>
+    <version>6.0.6</version>
+    <time>1562327315</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the package group fix.
+
+- Set default module version correctly when installing
+  master package, unset when deinstalling the default library
+  package.
+- Fix dependencies for HPC packages.
+- Fix HPC modulefile: library dir is always there when module file
+  is installed.
+- Fix package groups.
+- Cosmetic fixes to module file.
+- Consolidate use of openmpi1, openmpi2, openmpi3 for non-HPC builds.</comment>
+    <requestid>674944</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40812f88d7e538db13e9fef48782cdd1</srcmd5>
+    <version>6.0.7</version>
+    <time>1567091984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726805</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d7bf45592da78b8632b489fed51faed</srcmd5>
+    <version>6.0.7</version>
+    <time>1568190846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729700</requestid>
+  </revision>
+</revisionlist>

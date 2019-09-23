@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6128c2cdd1ca4ad1dbc0060674f134e3</srcmd5>
+    <version>1.7.3</version>
+    <time>1524838054</time>
+    <user>dimstar_suse</user>
+    <comment>Pure OCaml regular expressions, with support for Perl and POSIX-style strings.
+
+It is a dependency of opam.</comment>
+    <requestid>599804</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>78e8e1f5327eb012d0d457b1898af8ec</srcmd5>
+    <version>1.7.3</version>
+    <time>1529402295</time>
+    <user>maxlin_factory</user>
+    <comment>Fix build - Package the .dune files produced by latest dune. 
+</comment>
+    <requestid>616473</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ef85afed9bd2da0db176750fa4facf4d</srcmd5>
+    <version>1.7.3</version>
+    <time>1550668354</time>
+    <user>maxlin_factory</user>
+    <comment>Fix build with ocaml-dune 1.7.1. Use OCaml-LGPL-linking-exception in License.</comment>
+    <requestid>677426</requestid>
+  </revision>
+</revisionlist>

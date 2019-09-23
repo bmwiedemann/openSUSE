@@ -1,0 +1,2176 @@
+<revisionlist>
+  <revision rev="1" vrev="64">
+    <srcmd5>ebfed0856654e8375e4c29de7364a8e2</srcmd5>
+    <version>2.12r</version>
+    <time>1166483890</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="70">
+    <srcmd5>51270ebc4cc5486123ab89bdb0b71e87</srcmd5>
+    <version>2.12r</version>
+    <time>1170428136</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="73">
+    <srcmd5>0d7d511ed46f004561e2c7c7e68df797</srcmd5>
+    <version>2.12r</version>
+    <time>1171301925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="76">
+    <srcmd5>7f1a47ae423cdf40659f853abcf0fd6e</srcmd5>
+    <version>2.12r</version>
+    <time>1172779733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="77">
+    <srcmd5>86a3ff65f08613223eaa0202feb61dca</srcmd5>
+    <version>2.12r</version>
+    <time>1173304299</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="78">
+    <srcmd5>a4ba895eaaa066fc10db4574de61f3a6</srcmd5>
+    <version>2.12r</version>
+    <time>1173401502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="80">
+    <srcmd5>c8af44d93c91d955b8c434a0fac5a303</srcmd5>
+    <version>2.12r</version>
+    <time>1173568291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="82">
+    <srcmd5>ffd40b0594045fd261c36aa4a028967a</srcmd5>
+    <version>2.12r</version>
+    <time>1173978765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="84">
+    <srcmd5>d5a6b6b394ffae08576ab97527325525</srcmd5>
+    <version>2.12r</version>
+    <time>1174952918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="87">
+    <srcmd5>aa50373b98387becc296233ed3209d6d</srcmd5>
+    <version>2.12r</version>
+    <time>1175712272</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f4bf5ef80c025c9eb7c9999c89c6c5a1</srcmd5>
+    <version>2.12r+git20070330</version>
+    <time>1176395502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>233a1994d1206aec005a1f78440bf231</srcmd5>
+    <version>2.12r+git20070330</version>
+    <time>1176763376</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>974bfb4dcbf7e00c31b23c781bdca54e</srcmd5>
+    <version>2.12r+git20070412</version>
+    <time>1177363650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>371771e32fb9e526263f7d879e5a5d4d</srcmd5>
+    <version>2.12r+git20070412</version>
+    <time>1180998928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>672b2b010bbbf0057bb77cb518cc492f</srcmd5>
+    <version>2.12r+git20070412</version>
+    <time>1181054532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5c4d3a61663623eb2378b5e7ff32c6c8</srcmd5>
+    <version>2.12r+git20070509</version>
+    <time>1181066978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1fd57778927daacaa51c23cc1d317ce6</srcmd5>
+    <version>2.12r+git20070530</version>
+    <time>1181215002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d40d52c9e3bdf81ccbb8f05d3f0b06be</srcmd5>
+    <version>2.12r+git20070530</version>
+    <time>1181830705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>ed46f6088e5452c43899d98dab2a2110</srcmd5>
+    <version>2.12r+git20070530</version>
+    <time>1182464185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9f38d944e59afb5701c4b63aa621efa6</srcmd5>
+    <version>2.12r+2.13rc1</version>
+    <time>1183634666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>819ab95aae9db1da1bf2bf31448d3e18</srcmd5>
+    <version>2.12r+2.13rc1</version>
+    <time>1183655608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>885347f51693993d33e439c1fa8f0edc</srcmd5>
+    <version>2.12r+2.13rc1</version>
+    <time>1184071708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>2ef9c3ff69294fec595e2171f51e97ab</srcmd5>
+    <version>2.12r+2.13rc1</version>
+    <time>1184347978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fcef22c20feb69b190af79a754f92f2b</srcmd5>
+    <version>2.12r+2.13rc2</version>
+    <time>1184791151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>633ec2d8d63cfb0e427cd8ecd86989c8</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1185495199</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>c5ec29da389857ef825fa1f60793f882</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1187370146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>e2162dbfcb626c6a9ceab8982b7c18fc</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1188230117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>32ef57997ba48bb2cc836b1e839ee2eb</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1188321763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>1a24dad88096b1635e3797cf159acaa7</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1188420412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="21">
+    <srcmd5>53641a7dbbfd7cd8add1efb45edcfd96</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1189780095</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a0c8f11807688c7f242f2f3815619858</srcmd5>
+    <version>2.13</version>
+    <time>1191367096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>c961d059ff3ba83ffa4d7b0c7e73ff43</srcmd5>
+    <version>2.13</version>
+    <time>1191537534</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b147ce4251b4331d9cc990374633e950</srcmd5>
+    <version>2.13.0.1+git20071106</version>
+    <time>1194566751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>b01cbf350689f6ead473ce6a328b7e0f</srcmd5>
+    <version>2.13.0.1+git20071106</version>
+    <time>1195612079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dd77befaeb351eb91bdc9f60d70346b0</srcmd5>
+    <version>2.13.0.1+git20071121</version>
+    <time>1195682606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>db1942bfe6f31e68a805c56d25236ef8</srcmd5>
+    <version>2.13.0.1+git20071121</version>
+    <time>1196357503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>e2583b66e88d5cd048c9372618383315</srcmd5>
+    <version>2.13.0.1+git20071121</version>
+    <time>1196676653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="11">
+    <srcmd5>12aada73fa0488c3e156ac02b3093ea9</srcmd5>
+    <version>2.13.0.1+git20071121</version>
+    <time>1198000705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d72ea687d0b0358ab946538aa423688f</srcmd5>
+    <version>2.13.1</version>
+    <time>1202502193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>de9ed787400c6e433c410ca28c35ea25</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662740</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>6f108ee235fa5fb55b7339d12ecc4642</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662742</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>ce570098ae546ab2d2459f59f376728f</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662743</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>ae4f2f9049ee43989431df3c1ebc381d</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662744</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>8122793ae6f697d147dd96f764d58285</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662745</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>a80815c354b9d1179516d745258e0e39</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662746</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="46" vrev="8">
+    <srcmd5>a1955553b1565e263e174e1f14008c02</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662747</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="47" vrev="9">
+    <srcmd5>c9b5e1ebad35d000b01e0a503eaab33e</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662747</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="48" vrev="10">
+    <srcmd5>eb23818df065dfde25deddce1925ab7f</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662748</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="49" vrev="11">
+    <srcmd5>e0c5efba9c44adae1f2616a5bfe40853</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662748</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="50" vrev="12">
+    <srcmd5>e660ae749a6d1154b09be395f46a0967</srcmd5>
+    <version>2.13.1</version>
+    <time>1202662749</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="51" vrev="24">
+    <srcmd5>f384169952d8c762678f31d0f8101f2c</srcmd5>
+    <version>2.12r+2.13rc2+git20070725</version>
+    <time>1202662761</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="52" vrev="22">
+    <srcmd5>5251890236d3514320025d105799e253</srcmd5>
+    <version>2.13.0.1+git20071121</version>
+    <time>1202663614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="13">
+    <srcmd5>09901990661e158ba091ea6e17693126</srcmd5>
+    <version>2.13.1</version>
+    <time>1203036218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="17">
+    <srcmd5>ebf1cef369d3418718b1805b7cf71c49</srcmd5>
+    <version>2.13.1</version>
+    <time>1206656662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="19">
+    <srcmd5>7b620f0b978abd9575900218738f3c0a</srcmd5>
+    <version>2.13.1</version>
+    <time>1207266540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9e7b41cfbffa4afa38023a2e1d3c2bb6</srcmd5>
+    <version>2.14</version>
+    <time>1214433271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>c592f0700afefc018f754f8f22621f56</srcmd5>
+    <version>2.14</version>
+    <time>1215218233</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>64dc8bde4e866f79f2d4ce75c3953600</srcmd5>
+    <version>2.14</version>
+    <time>1215561414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="18">
+    <srcmd5>cab9d13667cf884255eb056361aee9e2</srcmd5>
+    <version>2.14</version>
+    <time>1219093029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="21">
+    <srcmd5>3a37a3b3f77b360de9ef5d760dc32cca</srcmd5>
+    <version>2.14</version>
+    <time>1219338178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>59606effac6b788979b7f6d0e900c209</srcmd5>
+    <version>2.14.1</version>
+    <time>1221474353</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>0558193feb416e9953effa3a32f471d0</srcmd5>
+    <version>2.14.1</version>
+    <time>1222270742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>fb055654045b4ee897dbbfb0a817cdcc</srcmd5>
+    <version>2.14.1</version>
+    <time>1223484165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>6bd77f3a114bcde22da3bda103e79038</srcmd5>
+    <version>2.14.1</version>
+    <time>1224856112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>1830a5c2f998ff990b35d7e6b5ef3bda</srcmd5>
+    <version>2.14.1</version>
+    <time>1225670594</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>79685b2ce1b56145f44b4adf73895d43</srcmd5>
+    <version>2.14.1</version>
+    <time>1226070295</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="7">
+    <srcmd5>3ecbff0b2ad22d78acaead4a4b58598b</srcmd5>
+    <version>2.14.1</version>
+    <time>1227279297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="8">
+    <srcmd5>59aaa55963cda98d7878d7d0a560ce75</srcmd5>
+    <version>2.14.1</version>
+    <time>1227540034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="9">
+    <srcmd5>07d5ec2e8096010b59e7eb3cc0fb6b75</srcmd5>
+    <version>2.14.1</version>
+    <time>1227884905</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="10">
+    <srcmd5>40512f24f348efa6d0088d9c111e930b</srcmd5>
+    <version>2.14.1</version>
+    <time>1228228913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="11">
+    <srcmd5>6afd014483efb16ffc4ada5ced1959d7</srcmd5>
+    <version>2.14.1</version>
+    <time>1231463194</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="13">
+    <srcmd5>e2d9947db7b6e907725a7e81f54b6e8d</srcmd5>
+    <version>2.14.1</version>
+    <time>1234139288</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1c0f8eed3697e5496b939cfc617adf9d</srcmd5>
+    <version>2.14.2</version>
+    <time>1234744502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>e76f4d3fdf77fb292fdf737939520c3d</srcmd5>
+    <version>2.14.2</version>
+    <time>1234796799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>0cbebb0eec4a15a8552b9d875c6085bb</srcmd5>
+    <version>2.14.2</version>
+    <time>1240056354</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>27193e03bb74d8887a9ad5c1b301dcad</srcmd5>
+    <version>2.16</version>
+    <time>1246633939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>8266446566ef0fabc41158917390abb2</srcmd5>
+    <version>2.16</version>
+    <time>1247838765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>66f69a5a7d3c6f48c47e21cd7aec760f</srcmd5>
+    <version>2.16</version>
+    <time>1254518471</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 21341 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>66f69a5a7d3c6f48c47e21cd7aec760f</srcmd5>
+    <version>2.16</version>
+    <time>1254518471</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 21341 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="80" vrev="6">
+    <srcmd5>74a0022cd18c8c973198a9daef3deddc</srcmd5>
+    <version>2.16</version>
+    <time>1256083329</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 22629 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="81" vrev="7">
+    <srcmd5>628b39f5eece2a5ca011df692892bba8</srcmd5>
+    <version>2.16</version>
+    <time>1256658452</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 23219 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="82" vrev="8">
+    <srcmd5>c61dc010c4a6810c7864fa58f28d65de</srcmd5>
+    <version>2.16</version>
+    <time>1258362124</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 24460 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="83" vrev="9">
+    <srcmd5>b47eeb412aae1c0b3358999aaf58bb6f</srcmd5>
+    <version>2.16</version>
+    <time>1259916986</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 25299 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="84" vrev="10">
+    <srcmd5>ca195bbb346a6a8e1c376827bb5ec449</srcmd5>
+    <version>2.16</version>
+    <time>1260273171</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 25715 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="85" vrev="11">
+    <srcmd5>3018aae4fa7aaf29e4cc0f5e0fd9a31b</srcmd5>
+    <version>2.16</version>
+    <time>1260950374</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 26627 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>ffac87129bd40f03193a0f723af6713c</srcmd5>
+    <version>2.17.1</version>
+    <time>1267093423</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 33360 from user msmeissn
+</comment>
+    <requestid>33360</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>56f9d6c8a016b0e96d6181627e199454</srcmd5>
+    <version>2.17.1</version>
+    <time>1268408747</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 34654 from user coolo
+</comment>
+    <requestid>34654</requestid>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>46acdbe3f1a64a79c5889455e7cf97dd</srcmd5>
+    <version>2.17.1</version>
+    <time>1268926440</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>8aecc3ef7f68715290d8cdd686af427a</srcmd5>
+    <version>2.17.2</version>
+    <time>1270638912</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 37093 from user hennevogel
+</comment>
+    <requestid>37093</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>cd7988c2521473e74f80330e34c15a1b</srcmd5>
+    <version>2.17.2</version>
+    <time>1273788843</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 39808 from user puzel
+</comment>
+    <requestid>39808</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>1fa9d4c41ea42d1dbcc0f1af19bb26e9</srcmd5>
+    <version>2.17.2</version>
+    <time>1275058453</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 40798 from user puzel
+</comment>
+    <requestid>40798</requestid>
+  </revision>
+  <revision rev="92" vrev="4">
+    <srcmd5>d65136945a1eec7da4dfd58e32bb0d2f</srcmd5>
+    <version>2.17.2</version>
+    <time>1276830908</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 41635 from user coolo
+</comment>
+    <requestid>41635</requestid>
+  </revision>
+  <revision rev="93" vrev="5">
+    <srcmd5>374f11606d946c47a23384da295df08c</srcmd5>
+    <version>2.17.2</version>
+    <time>1277491487</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 42035 from user puzel
+</comment>
+    <requestid>42035</requestid>
+  </revision>
+  <revision rev="94" vrev="6">
+    <srcmd5>374f11606d946c47a23384da295df08c</srcmd5>
+    <version>2.17.2</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="95" vrev="7">
+    <srcmd5>374f11606d946c47a23384da295df08c</srcmd5>
+    <version>2.17.2</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>57d140ce1d3e12abb3827347b65431eb</srcmd5>
+    <version>2.18</version>
+    <time>1280486145</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 43994 from user puzel
+</comment>
+    <requestid>43994</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>1cf9967b31380249e73cde6ff3eaf6ce</srcmd5>
+    <version>2.18</version>
+    <time>1286493052</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/util-linux based on submit request 49395 from user elvigia
+</comment>
+    <requestid>49395</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>b84c725823217467676b5f303e30016a</srcmd5>
+    <version>2.18</version>
+    <time>1289568399</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52790 from user kay_sievers
+</comment>
+    <requestid>52790</requestid>
+  </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>416b53eedd78fc64b78fb4dc340354d7</srcmd5>
+    <version>2.18</version>
+    <time>1289568405</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52790
+</comment>
+  </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>6b4ff0ff8ca971b1f66bcc53cb6245a1</srcmd5>
+    <version>2.18</version>
+    <time>1290248078</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53370 from user coolo
+</comment>
+    <requestid>53370</requestid>
+  </revision>
+  <revision rev="101" vrev="6">
+    <srcmd5>34f72e97a2d76ea27835e4eb83e194b2</srcmd5>
+    <version>2.18</version>
+    <time>1290248084</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53370
+</comment>
+  </revision>
+  <revision rev="102" vrev="7">
+    <srcmd5>db2a0298c56921e09f7998fea3d0ef2b</srcmd5>
+    <version>2.18</version>
+    <time>1291128131</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54162 from user puzel
+</comment>
+    <requestid>54162</requestid>
+  </revision>
+  <revision rev="103" vrev="8">
+    <srcmd5>a13336b86f05b131fbb176b7092f4e78</srcmd5>
+    <version>2.18</version>
+    <time>1291128140</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54162
+</comment>
+  </revision>
+  <revision rev="104" vrev="9">
+    <srcmd5>8a056cd4123032c124bc823906a326c9</srcmd5>
+    <version>2.18</version>
+    <time>1291586976</time>
+    <user>lrupp</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/util-linux based on submit request 9386 from user mszeredi
+</comment>
+  </revision>
+  <revision rev="105" vrev="10">
+    <srcmd5>364b1355e1218176bf94b0f5ede069bc</srcmd5>
+    <version>2.18</version>
+    <time>1292758827</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55969 from user puzel
+</comment>
+    <requestid>55969</requestid>
+  </revision>
+  <revision rev="106" vrev="11">
+    <srcmd5>ce097a09a8bf8a9d52105ffa028e97be</srcmd5>
+    <version>2.18</version>
+    <time>1292758849</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 55969
+</comment>
+  </revision>
+  <revision rev="107" vrev="7">
+    <srcmd5>78b49578b673d8cc985e8a16f853718e</srcmd5>
+    <version>2.18.91</version>
+    <time>1294964603</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57964 from user puzel
+</comment>
+    <requestid>57964</requestid>
+  </revision>
+  <revision rev="108" vrev="8">
+    <srcmd5>f20004487404faa88043ebc7dd4c009e</srcmd5>
+    <version>2.18.91</version>
+    <time>1294964610</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57964
+</comment>
+  </revision>
+  <revision rev="109" vrev="9">
+    <srcmd5>7ee5b367e64d649165ca24cd299ff59e</srcmd5>
+    <version>2.18.91</version>
+    <time>1295347109</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58667 from user kay_sievers
+</comment>
+    <requestid>58667</requestid>
+  </revision>
+  <revision rev="110" vrev="10">
+    <srcmd5>3ebcba8ebfd9e0d68a89532ce11ef86d</srcmd5>
+    <version>2.18.91</version>
+    <time>1295347117</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58667
+</comment>
+  </revision>
+  <revision rev="111" vrev="11">
+    <srcmd5>6433168e4b49e2fcd384db2107ba460a</srcmd5>
+    <version>2.18.91</version>
+    <time>1295965840</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59108 from user elvigia
+</comment>
+    <requestid>59108</requestid>
+  </revision>
+  <revision rev="112" vrev="12">
+    <srcmd5>9a477cef25b33dd97d79948556633b9c</srcmd5>
+    <version>2.18.91</version>
+    <time>1295965845</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59108
+</comment>
+  </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>908284253677d812bf6883f4ee6862df</srcmd5>
+    <version>2.18.93</version>
+    <time>1296230102</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59150 from user puzel
+</comment>
+    <requestid>59150</requestid>
+  </revision>
+  <revision rev="114" vrev="4">
+    <srcmd5>0d83750b4f868f79b6980c8405930c7a</srcmd5>
+    <version>2.18.93</version>
+    <time>1296230111</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59150
+</comment>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>b8cac81fc1cbf00af610e6e59e44d09f</srcmd5>
+    <version>2.19</version>
+    <time>1297386063</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60484 from user puzel
+</comment>
+    <requestid>60484</requestid>
+  </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>b8cac81fc1cbf00af610e6e59e44d09f</srcmd5>
+    <version>2.19</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="117" vrev="5">
+    <srcmd5>336e0bbaf98fc45c9d4194658decdb28</srcmd5>
+    <version>2.19</version>
+    <time>1298376978</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62438 from user puzel
+</comment>
+    <requestid>62438</requestid>
+  </revision>
+  <revision rev="118" vrev="6">
+    <srcmd5>288b087e6da65ed7e6ae182661f61c1f</srcmd5>
+    <version>2.19</version>
+    <time>1298376989</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62438
+</comment>
+  </revision>
+  <revision rev="119" vrev="5">
+    <srcmd5>717de6c1c57fce91fa1ebe28c2001728</srcmd5>
+    <version>2.19.1</version>
+    <time>1304492689</time>
+    <user>saschpe</user>
+    <comment>update to 2.19.1</comment>
+    <requestid>69386</requestid>
+  </revision>
+  <revision rev="120" vrev="6">
+    <srcmd5>bf4c1e2be14acbda32f08741bff45bba</srcmd5>
+    <version>2.19.1</version>
+    <time>1304492707</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69386
+</comment>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>7fd60526a287f4604357cb24234e2a2b</srcmd5>
+    <version>2.19.91</version>
+    <time>1312297614</time>
+    <user>saschpe</user>
+    <comment>update to 2.20-rc1</comment>
+    <requestid>77687</requestid>
+  </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>b12bf6dd3045123732934e45e8e5b55f</srcmd5>
+    <version>2.19.91</version>
+    <time>1313048474</time>
+    <user>saschpe</user>
+    <comment>util-linux-2.20-rc1-hexdump-segfault.patch (bnc#710877) 
+util-linux-2.20-rc-fix-dmesg.patch (bnc#710417) 
+util-linux-2.20-rc1-agetty-fixes.patch (bnc#711240)</comment>
+    <requestid>78456</requestid>
+  </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>cc6f67fbfba9bd9f1dc3fea74f9845f2</srcmd5>
+    <version>2.19.91</version>
+    <time>1313048484</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78456
+</comment>
+  </revision>
+  <revision rev="124" vrev="4">
+    <srcmd5>2838c82fc8432c648ae3c138c249d00b</srcmd5>
+    <version>2.19.91</version>
+    <time>1313582488</time>
+    <user>saschpe</user>
+    <comment>update to 2.20-rc2</comment>
+    <requestid>79116</requestid>
+  </revision>
+  <revision rev="125" vrev="5">
+    <srcmd5>0af473ab04a232496e185617942a4afb</srcmd5>
+    <version>2.19.91</version>
+    <time>1313582498</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79116
+</comment>
+  </revision>
+  <revision rev="126" vrev="6">
+    <srcmd5>1a549b30fdcbc536032c44834cb3b302</srcmd5>
+    <version>2.19.91</version>
+    <time>1314347602</time>
+    <user>saschpe</user>
+    <comment>- BuildIgnore pwdutils. (forwarded request 79843 from rguenther)</comment>
+    <requestid>79845</requestid>
+  </revision>
+  <revision rev="127" vrev="7">
+    <srcmd5>3bbcf5e04738a13e326b8a9f048e519a</srcmd5>
+    <version>2.19.91</version>
+    <time>1314347616</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79845
+</comment>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>8258606b656a909295562198450b55f7</srcmd5>
+    <version>2.20</version>
+    <time>1314713119</time>
+    <user>darix</user>
+    <comment>- update to util-linux-2.20 
+- build with --enable-ddate
+- add util-linux-sfdisk-manpage-fix.patch</comment>
+    <requestid>80182</requestid>
+  </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>7c805fa1be74b82048ebf7400c49212f</srcmd5>
+    <version>2.20</version>
+    <time>1314713130</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80182
+</comment>
+  </revision>
+  <revision rev="130" vrev="4">
+    <srcmd5>2befd46bd2b4bb757568f00db3019a4a</srcmd5>
+    <version>2.20</version>
+    <time>1315910345</time>
+    <user>saschpe</user>
+    <comment>add util-linux-lib-sysfs-deinit.patch (bnc#714151)</comment>
+    <requestid>81983</requestid>
+  </revision>
+  <revision rev="131" vrev="5">
+    <srcmd5>445a510043d5ec301a7c182a862c0491</srcmd5>
+    <version>2.20</version>
+    <time>1315910353</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81983
+</comment>
+  </revision>
+  <revision rev="132" vrev="6">
+    <srcmd5>b08bcefbca4d2429fbd4e806330521d2</srcmd5>
+    <version>2.20</version>
+    <time>1317912394</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc, %configure macros
+- set bindir explicitly when installing
+- (cross-?)build fix: disable build dependency on SELINUX_LIBS
+  in libmount (forwarded request 86523 from uli_suse)</comment>
+    <requestid>86716</requestid>
+  </revision>
+  <revision rev="133" vrev="7">
+    <srcmd5>d52b2f90c027d940ee6ea44399744491</srcmd5>
+    <version>2.20</version>
+    <time>1318429010</time>
+    <user>lrupp</user>
+    <comment>- add fdisk-dont-shorten-long-path-to-disk.patch (bnc#722959)</comment>
+    <requestid>87483</requestid>
+  </revision>
+  <revision rev="134" vrev="9">
+    <srcmd5>d52b2f90c027d940ee6ea44399744491</srcmd5>
+    <version>2.20</version>
+    <time>1319182544</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>9b6639e9d131775029724bb5d64153da</srcmd5>
+    <version>2.20.1</version>
+    <time>1319208271</time>
+    <user>coolo</user>
+    <comment>update to 2.20.1</comment>
+    <requestid>88850</requestid>
+  </revision>
+  <revision rev="136" vrev="5">
+    <srcmd5>56248a6fdc6b81a4ac04217d50ad77aa</srcmd5>
+    <version>2.20.1</version>
+    <time>1320232798</time>
+    <user>coolo</user>
+    <comment>Please take this to 12.1. Thanks.
+
+add util-linux-dmesg-fix-printing-of-multibyte-characters.patch (bnc#725993)</comment>
+    <requestid>89918</requestid>
+  </revision>
+  <revision rev="137" vrev="6">
+    <srcmd5>ae8df596b3213a4fb1266fe275ff8a92</srcmd5>
+    <version>2.20.1</version>
+    <time>1320771289</time>
+    <user>coolo</user>
+    <comment>Please, take this also to 12.1. Thanks.
+
+add fsck-use-FS-blacklist-for-non-all-mode-too.patch (bnc#728645)</comment>
+    <requestid>90521</requestid>
+  </revision>
+  <revision rev="138" vrev="7">
+    <srcmd5>480bdae2bd794e2468cb546af69eaf47</srcmd5>
+    <version>2.20.1</version>
+    <time>1320937605</time>
+    <user>coolo</user>
+    <comment>Worth adding to 12.1 IMHO. Thanks.
+
+- add libmount-ignore-tailing-slash-in-netfs-source-paths.patch and
+  libmount-fix-chdir-to-parent-for-restricted-user-umo.patch:
+  fix umounting network filesystems as plain user (bnc#728480)</comment>
+    <requestid>90738</requestid>
+  </revision>
+  <revision rev="139" vrev="8">
+    <srcmd5>f943a697763bd8c315ab3f9bcce4f682</srcmd5>
+    <version>2.20.1</version>
+    <time>1321460519</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 91532 from coolo)</comment>
+    <requestid>91540</requestid>
+  </revision>
+  <revision rev="140" vrev="9">
+    <srcmd5>d223cf54698ffa98f9dd9e7627585e82</srcmd5>
+    <version>2.20.1</version>
+    <time>1321980593</time>
+    <user>coolo</user>
+    <comment>- add fdisk-tinfo.patch to fix build with newer curses. (forwarded request 92886 from a_jaeger)</comment>
+    <requestid>92907</requestid>
+  </revision>
+  <revision rev="141" vrev="10">
+    <srcmd5>34f5df065500c1cfc864fc449d2c4f5e</srcmd5>
+    <version>2.20.1</version>
+    <time>1323195060</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="142" vrev="11">
+    <srcmd5>b94a699dabf6f1f4e1d3875eec5dc798</srcmd5>
+    <version>2.20.1</version>
+    <time>1325007554</time>
+    <user>coolo</user>
+    <comment>- do not call %suse_update_config</comment>
+    <requestid>98205</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>9d236d2e614dbd540be6c81800ca4713</srcmd5>
+    <version>2.21</version>
+    <time>1330434982</time>
+    <user>coolo</user>
+    <comment>- update to util-linux-2.21</comment>
+    <requestid>106894</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>9a8dca24e16ae1bb5d9293c76bdd7f06</srcmd5>
+    <version>2.21</version>
+    <time>1332236130</time>
+    <user>coolo</user>
+    <comment>- Fix Obsoletes / Provides for login. (forwarded request 109640 from fcrozat)</comment>
+    <requestid>109642</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>bf75b87eae4561c8b745910927507382</srcmd5>
+    <version>2.21.1</version>
+    <time>1333355343</time>
+    <user>coolo</user>
+    <comment>- update to util-linux-2.21.1
+  - bugfix release</comment>
+    <requestid>112071</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>91a0961f786c9163314702fd310af189</srcmd5>
+    <version>2.21.1</version>
+    <time>1334693000</time>
+    <user>coolo</user>
+    <comment>- fix miscalculation in sfdisk on ix86 (bnc#754789)
+  - add sfdisk-fix-calculation-due-to-type-mismatch.patch</comment>
+    <requestid>113321</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>bcac86e15de412a96d37f1f7a5898707</srcmd5>
+    <version>2.21.2</version>
+    <time>1338030276</time>
+    <user>coolo</user>
+    <comment>update to 2.21.2</comment>
+    <requestid>122372</requestid>
+  </revision>
+  <revision rev="148" vrev="2">
+    <srcmd5>fed4712c10a6e8a0378393beb366d167</srcmd5>
+    <version>2.21.2</version>
+    <time>1338528286</time>
+    <user>coolo</user>
+    <comment>- require binutils-devel because &quot;which&quot; wants to find libiberty.a
+- remove which-lib64.patch because it's broken and couldn't find
+  libiberty.a whithin /usr/lib64 
+- which doesn't need autoreconf anymore (forwarded request 123013 from rudi_m)</comment>
+    <requestid>123095</requestid>
+  </revision>
+  <revision rev="149" vrev="3">
+    <srcmd5>e883bd4f7f251d71e24b072d197dc01b</srcmd5>
+    <version>2.21.2</version>
+    <time>1339824282</time>
+    <user>coolo</user>
+    <comment>- improve error messages from new mount (bnc#767208)
+ - backport patches from upstream git:
+  - mount-new-add-loopdev-specific-error-message.patch
+  - mount-new-use-MNT_ERR-for-error-messages.patch
+  - libmount-add-special-MNT_ERR-codes.patch
+  - mount-new-improve-error-messages.patch
+  - libmount-add-MNT_ERR_LOOPDEV.patch
+
+- fix automount with quota (rh#825836)
+  - mount-new-allow-sloppy-for-non-root.patch
+- fix wrong mount options for CIFS mounts (bnc#766157)
+  - libmount-don-t-use-nosuid-noexec-nodev-for-cifs-user.patch</comment>
+    <requestid>125114</requestid>
+  </revision>
+  <revision rev="150" vrev="5">
+    <srcmd5>e883bd4f7f251d71e24b072d197dc01b</srcmd5>
+    <version>2.21.2</version>
+    <time>1340184303</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="151" vrev="6">
+    <srcmd5>471a2dab469f434d581c7db5d5f9ddc7</srcmd5>
+    <version>2.21.2</version>
+    <time>1340628134</time>
+    <user>coolo</user>
+    <comment>- Remove pam_lastlog from login.pamd, login is doing it itself.
+  [bnc#768067] (forwarded request 125752 from kukuk)</comment>
+    <requestid>125753</requestid>
+  </revision>
+  <revision rev="152" vrev="7">
+    <srcmd5>680f06153608b0479b61bb431cae5958</srcmd5>
+    <version>2.21.2</version>
+    <time>1348669680</time>
+    <user>coolo</user>
+    <comment>add name of the patch (forwarded request 135213 from jirislaby)</comment>
+    <requestid>135232</requestid>
+  </revision>
+  <revision rev="153" vrev="8">
+    <srcmd5>a3875de5d5fa16ed8a4406b18fc57c07</srcmd5>
+    <version>2.21.2</version>
+    <time>1357217323</time>
+    <user>namtrac</user>
+    <comment>- 0001-include-bitops.h-Use-the-operating-system-byteswappi.patch 
+  Use OS byteswapping macros, this patch is functionally identical
+  to the version submitted upstream with the exception it excludes
+  code that target non-linux systems. (forwarded request 146536 from elvigia)</comment>
+    <requestid>146886</requestid>
+  </revision>
+  <revision rev="154" vrev="9">
+    <srcmd5>c68bebadf2d07b795d2934f81ff1dc5e</srcmd5>
+    <version>2.21.2</version>
+    <time>1357653908</time>
+    <user>coolo</user>
+    <comment>- add-canonicalize_path_restricted.patch,
+  mount-sanitize-paths-from-non-root-users.patch,
+  umount-sanitize-paths-from-non-root-users.patch:
+  prevent leaking information about existence of folders
+  (bnc#797002, CVE-2013-0157)</comment>
+    <requestid>147398</requestid>
+  </revision>
+  <revision rev="155" vrev="11">
+    <srcmd5>c68bebadf2d07b795d2934f81ff1dc5e</srcmd5>
+    <version>2.21.2</version>
+    <time>1359110532</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="156" vrev="12">
+    <srcmd5>4a9c9ae3734668dfb2ba0240b73b848a</srcmd5>
+    <version>2.21.2</version>
+    <time>1360231160</time>
+    <user>coolo</user>
+    <comment>- 0001-Test-for-secure_getenv-too.patch:
+  Current glibc in 12.3/factory no longer exports internal 
+  function __secure_getenv() but has secure_getenv() instead.</comment>
+    <requestid>151448</requestid>
+  </revision>
+  <revision rev="157" vrev="13">
+    <srcmd5>e1a7c87790455841885e49777feb77ba</srcmd5>
+    <version>2.21.2</version>
+    <time>1361192455</time>
+    <user>coolo</user>
+    <comment>- fdiskbsdlabel.patch:
+  Fix fdisk compilation on aarch64 (forwarded request 155674 from Andreas_Schwab)</comment>
+    <requestid>155700</requestid>
+  </revision>
+  <revision rev="158" vrev="14">
+    <srcmd5>38d11af6c55354b0e035f06d83781c3d</srcmd5>
+    <version>2.21.2</version>
+    <time>1364323721</time>
+    <user>coolo</user>
+    <comment>Please wait for which, adjtimex, time to go in first since those packages have been split from util-linux.</comment>
+    <requestid>161218</requestid>
+  </revision>
+  <revision rev="159" vrev="15">
+    <srcmd5>708d817e53958e64c78c463fa6830f28</srcmd5>
+    <version>2.21.2</version>
+    <time>1370453772</time>
+    <user>coolo</user>
+    <comment>Added mkfs.bfs_cleanup64bit.patch and mkfs.bfs_cleanup_endian.patch to fix 64Bit and endian issues. (forwarded request 177733 from ihno)</comment>
+    <requestid>177735</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>34551e602b7194343213091ea8f58c6b</srcmd5>
+    <version>2.23.1</version>
+    <time>1370592725</time>
+    <user>coolo</user>
+    <comment>- util-linux.spec: work around su(1) PAM problems based on su(1)
+  being provided by both the coreutils and the util-linux package.
+  Fix macro typo in %post and %verifyscript sections related to su(1):
+    s/sysvinit_tools/enable_su/ (forwarded request 177950 from bernhard-voelker)</comment>
+    <requestid>177962</requestid>
+  </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>a7071ae9b26ef752088ea45cd4a528b1</srcmd5>
+    <version>2.23.1</version>
+    <time>1371221300</time>
+    <user>coolo</user>
+    <comment>- util-linux.spec: remove previously added &quot;moving-su-trickery&quot; again
+  as a su-less coreutils packet is in Base:Build and Factory now. (forwarded request 178821 from bernhard-voelker)</comment>
+    <requestid>178855</requestid>
+  </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>1c241f2b5ea42137e1a2d0ca49acbdee</srcmd5>
+    <version>2.23.1</version>
+    <time>1372136212</time>
+    <user>coolo</user>
+    <comment>- rely on systemd-rpm-macros instead of the full thing</comment>
+    <requestid>180243</requestid>
+  </revision>
+  <revision rev="163" vrev="4">
+    <srcmd5>8d874a5c922f6b7247dcd6aec616f8be</srcmd5>
+    <version>2.23.1</version>
+    <time>1372761009</time>
+    <user>coolo</user>
+    <comment>Correct condition for Conflicts of sysvinit-tools. (forwarded request 181632 from bernhard-voelker)</comment>
+    <requestid>181637</requestid>
+  </revision>
+  <revision rev="164" vrev="6">
+    <srcmd5>8d874a5c922f6b7247dcd6aec616f8be</srcmd5>
+    <version>2.23.1</version>
+    <time>1379664900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>94a70f93c1299215678e5017023f9900</srcmd5>
+    <version>2.23.2</version>
+    <time>1379927772</time>
+    <user>coolo</user>
+    <comment>- Avoid build require gpg-offline twice 
+
+- Update to version 2.23.2:
+  nsenter(1):
+  * this NEW COMMAND provides command line interface to setns()
+    Linux syscall and allows to run program with namespaces of
+    other processes
+  unshare(1):
+  * supports new PID and USER namespaces
+  fdisk(8):
+  * provides experimental support for GUID Partition Table (GPT),
+    the implementation is still not complete and some (unimportant)
+    features are missing.
+  * ~50% of fdisk code has been refactored, this task is going to
+    be complete in the next release. The goal is to have libfdisk
+    shared between all fdisks.
+  partx(8):
+  * supports new &quot;update&quot; command (implemented by
+    BLKPG_RESIZE_PARTITION ioctl)
+  mount(8):
+  * supports new userspace mount option x-mount.mkdir[=&lt;mode&gt;] to
+    create mountpoints on demand
+  * the support for propagation flags has been improved, now the
+    flags could be specified in /etc/fstab and used together with
+    regular mount options. It's also possible to specify more
+    propagation flags together. This EXPERIMENTAL feature is
+    implemented by additional mount(2) syscalls, because Linux does
+    not allow to use propagation flags with another options or more
+    flags together.
+  umount(8):
+  * supports new command line option --recursive to recursively
+    unmount all sub-mounts for the specified mountpoint * supports
+    new command line option --all-targets to unmount all
+    mountpoints in the current namespace for the specified
+    filesystem * the options --recursive and --all-targets could be
+    used together
+  dmesg(1):
+  * supports new command line options --color, --human and
+  --nopager, the --human option enables relative times, colors and
+  pager support.
+  su(1):
+  * supports new command line options --group and --supp-group to
+    specify primary and supplementary groups
+  chfn(1) and chsh(1):
+  * the commands could be linked with libuser to support non-local
+    accounts modification (e.g. LDAP, etc).
+  kill(1):
+  * the command has been improved to be compatible with procps
+    version, the procps version is deprecated now, the util-linux
+    version is enabled by default.
+  blkdiscard(8):
+  * this NEW COMMAND discard sectors on a device (for example on
+    SSD disks)
+  sulogin(8):
+  * provides multi-console feature from SysVinit
+  findmnt(8):
+  * provides new columns FREQ, PASSNO, ID, OPT-FIELDS, PROPAGATION
+  lslocks(8):
+  * provides new column BLOCKER and detects blocked locks
+  lsblk(8):
+  * supports new command line option --scsi and new columns HCTL,
+    TRANsport VENDOR and REVision
+  swapon(8) and losetup(8):
+  * the commands prints basic overview by default if no option
+    specified
+  column(1):
+  * supports new command line option --output-separator to specify
+    table output delimiter
+  rename(1):
+  * supports new command line option --symlink to rename symlink
+    target
+  hwclock(8):
+  * supports new command line option --compare to periodically
+    compare the Hardware Clock to the System Time (based on
+    adjtimex -c)
+  ipcs(1):
+  * supports new command line options --bytes and --human
+  wipefs(1):
+  * supports new command line option --force to force erase on used
+    devices
+- Removed upstreamed patches (mkfs.bfs_cleanup_64bit.patch-Patch,
+  mkfs.bfs_cleanup_endian.patch)</comment>
+    <requestid>199432</requestid>
+  </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>3221b0198b139ed63d5bf8643d86fb4c</srcmd5>
+    <version>2.23.2</version>
+    <time>1380470054</time>
+    <user>coolo</user>
+    <comment>- Add more-fix-buffer-overflow.patch (bnc#829720). (forwarded request 201207 from mgorse)</comment>
+    <requestid>201216</requestid>
+  </revision>
+  <revision rev="167" vrev="3">
+    <srcmd5>f2ea523f8bf73df9d616834010cbc1a3</srcmd5>
+    <version>2.23.2</version>
+    <time>1380526368</time>
+    <user>coolo</user>
+    <comment>- Add more-check-for-buffer-size-when-write-multibyte-char.patch and
+  more-guarantee-space-for-multibyte.patch -- check for buffer space with
+  multi-byte chars (BNC#829720). (forwarded request 201241 from mgorse)</comment>
+    <requestid>201407</requestid>
+  </revision>
+  <revision rev="168" vrev="4">
+    <srcmd5>11597bbd42ec08f3f9a80a9bec7c84ab</srcmd5>
+    <version>2.23.2</version>
+    <time>1381322579</time>
+    <user>scarabeus_factory</user>
+    <comment>- Safely migrate su config files from coreutils to util-linux
+  (bnc#814626#c18). (forwarded request 201935 from sbrabec)</comment>
+    <requestid>202588</requestid>
+  </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>d12acc97ef8fd6f341cb688373a934ba</srcmd5>
+    <version>2.23.2</version>
+    <time>1381354933</time>
+    <user>scarabeus_factory</user>
+    <comment>- No *fdisk on m68k (forwarded request 202697 from Andreas_Schwab)</comment>
+    <requestid>202718</requestid>
+  </revision>
+  <revision rev="170" vrev="6">
+    <srcmd5>5ae3f0b0ff620eac1ecdad37a49d06a2</srcmd5>
+    <version>2.23.2</version>
+    <time>1383145269</time>
+    <user>scarabeus_factory</user>
+    <comment>- Drop SUID flag for eject (bnc#824406).
+
+Depends on request id 204833! (forwarded request 204834 from sbrabec)</comment>
+    <requestid>204988</requestid>
+  </revision>
+  <revision rev="171" vrev="7">
+    <srcmd5>578a47e8459f4ffce27b4aa4331aabe4</srcmd5>
+    <version>2.23.2</version>
+    <time>1383656030</time>
+    <user>coolo</user>
+    <comment>- blkdiscard-BLKSSZGET-fills-in-an-int.patch: Fix type mismatch in
+  blkdiscard (forwarded request 205643 from AndreasSchwab)</comment>
+    <requestid>205813</requestid>
+  </revision>
+  <revision rev="172" vrev="8">
+    <srcmd5>33a9d64fe44830efa45bfa0a9597a1ff</srcmd5>
+    <version>2.23.2</version>
+    <time>1385738777</time>
+    <user>coolo</user>
+    <comment>- Add patch 
+  tty3270-on-serial-line-of-s390.patch
+  to better support the first and second serial line on s390/x</comment>
+    <requestid>208910</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>c7122d044acab82b407b9cd05a4c6d57</srcmd5>
+    <version>2.24</version>
+    <time>1387174512</time>
+    <user>coolo</user>
+    <comment>- Update to util-linux-2.24
+  + Release highlights (2.24)
+  fdisk(8):
+    * the code has been completely refactored and moved to libfdisk
+      (the library does not have a stable API yet)
+    * user interface has been unified for all label types and it
+      supports colors
+    * GPT disk UUID, partition UUID and partition name modification
+      is supported now
+  pylibmount:
+    * this new library provides PYTHON BINDINGS for libmount;
+       use --with-python[=2|3] to enable the bindings
+  last(1) and lastb(1):
+    * the NEW IMPLEMENTATION has been merged from sysvinit to
+      util-linux and extended; now it supports command line options
+      --present, --since, and --time-format
+    * use --enable-deprecated-last to enable the old util-linux
+      last(1) implementation
+  swapon(8):
+    * the option --discard= and fstab mount option discard= allow
+      to explicitly specify 'pages' or 'once' discard policy. If no
+      policy is selected, the default behavior is to enable both.
+      See swapon.8 man page for more details.
+  libblkid and blkid(8):
+    * supports LOGUUID= for external logs (e.g. extN and XFS)
+    * generates a pseudo PARTUUID= for MBR partitions (based on MBR
+      Id, Linux kernel supports the same concept for root= command
+      line option)
+  agetty(8):
+    * supportes new issue file \S escape code to read information</comment>
+    <requestid>210834</requestid>
+  </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>b1a585ff2c171120485f9ac3880871ce</srcmd5>
+    <version>2.24</version>
+    <time>1389628396</time>
+    <user>coolo</user>
+    <comment>- Add patch
+  agetty-fooled-on-serial-line-due-plymouth.patch
+  even with TTYReset=no it seems with systemd or plymouth the termios
+  flags become changed from under the first agetty on a serial system
+  console as the flags are locked (bnc#774126).</comment>
+    <requestid>213474</requestid>
+  </revision>
+  <revision rev="175" vrev="3">
+    <srcmd5>a485de432b5418d3f027b04ef9e51a76</srcmd5>
+    <version>2.24</version>
+    <time>1389953848</time>
+    <user>coolo</user>
+    <comment>- Ensure localstatedir value used by configure is /run (changed to that
+  value upstream since 2012). (forwarded request 213676 from fcrozat)</comment>
+    <requestid>213763</requestid>
+  </revision>
+  <revision rev="176" vrev="4">
+    <srcmd5>e4930b184a5bec20e6ebb435052ae203</srcmd5>
+    <version>2.24</version>
+    <time>1390818236</time>
+    <user>scarabeus_factory</user>
+    <comment>- Change patch agetty-fooled-on-serial-line-due-plymouth.patch
+  to sleep instead of sending breaks to terminal (bnc#774126).</comment>
+    <requestid>214769</requestid>
+  </revision>
+  <revision rev="177" vrev="5">
+    <srcmd5>ef6f762aa4a5469ff6eb4070655836a5</srcmd5>
+    <version>2.24</version>
+    <time>1391106403</time>
+    <user>coolo</user>
+    <comment>- Don't verify /usr/bin/eject, it lost the SUID bit and was dropped
+  from /etc/permissions (bnc#824406) (forwarded request 215357 from saschpe)</comment>
+    <requestid>215478</requestid>
+  </revision>
+  <revision rev="178" vrev="6">
+    <srcmd5>ad597d7454af0041336d7329ed2de665</srcmd5>
+    <version>2.24</version>
+    <time>1391666806</time>
+    <user>coolo</user>
+    <comment>- Modify patch agetty-on-s390-on-dev--3270-tty1-line.patch and
+  patch tty3270-on-serial-line-of-s390.patch to handle 3270
+  terminals 
+- Really do not verify /usr/bin/eject
+
+- Add patch agetty-on-s390-on-dev--3270-tty1-line.patch
+  to let agetty detect /dev/3270/tty1 as device not as baud rate</comment>
+    <requestid>220785</requestid>
+  </revision>
+  <revision rev="179" vrev="7">
+    <srcmd5>6a26d0aad9bb0325d39fd90cfa69143a</srcmd5>
+    <version>2.24</version>
+    <time>1391948282</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add patch sulogin-does-not-find-any-console.patch to enable sulogin
+  to find suitable console device even if first is not usable (bnc#862078)
+
+- Avoid that hanging plymouth locks terminal lines that is
+  add patch sulogin-fooled-on-tty-line-due-plymouth.patch and
+  modify patch agetty-fooled-on-serial-line-due-plymouth.patch
+  to remove any lock which had been left over.</comment>
+    <requestid>221269</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>63d1cd86689110df9b52abe8d9bbf9d5</srcmd5>
+    <version>2.24.1</version>
+    <time>1392481385</time>
+    <user>coolo</user>
+    <comment>util-linux 2.24.1 (forwarded request 221543 from AndreasStieger)</comment>
+    <requestid>222119</requestid>
+  </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>bdb205eabf95daa33e2b6501cb4d9ed2</srcmd5>
+    <version>2.24.1</version>
+    <time>1394901479</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>225791</requestid>
+  </revision>
+  <revision rev="182" vrev="3">
+    <srcmd5>1cf592920e07d9efc3ec804ed8d020ab</srcmd5>
+    <version>2.24.1</version>
+    <time>1395470989</time>
+    <user>coolo</user>
+    <comment>- Merge fixes and features from SLE11 (bnc#831868):
+  * Detect squashfs version &lt;= 3 as squashfs3 and version &gt;= 4 as
+    squashfs. (mszeredi@suse.cz,
+    util-linux-ng-2.16-squashfs3-detect.patch, bnc#666893)
+  * add sfdisk-warn-about-2TB-limit.patch (puzel@novell.com,
+    bnc#495657)
+  * Document barrier option in mount.8 (jack@suse.cz,
+    hvogel@suse.de,
+    util-linux-ng-2.19.1-barrier_documentation.patch, bnc#489740)
+  * lscpu: improve hypervisor detection (puzel@novell.com,
+    fate#310255)
+    - util-linux-lscpu-improve-hypervisor-detection.patch
+  * umount: avoid calling readlink on mountpoints if not necessary
+    - add: umount-avoid-readlink.patch (puzel@suse.com, bnc#794529)
+  * fix file conflict between util-linux and s390-32
+    (puzel@suse.com, bnc#805684)
+  * util-linux-update-default-commit-interval.patch:
+    mount(8): update default commit interval (puzel@suse.com,
+    bnc#809480)
+  * Obsolete no more packaged uuid-runtime.
+- Add uname26 (util-linux-setarch-uname26.patch, FATE#313476). (forwarded request 226509 from sbrabec)</comment>
+    <requestid>226832</requestid>
+  </revision>
+  <revision rev="183" vrev="4">
+    <srcmd5>6aebb2eb6da9c80bf49d3410a2da3fb7</srcmd5>
+    <version>2.24.1</version>
+    <time>1396770998</time>
+    <user>coolo</user>
+    <comment>- remove unnecessarily added patches from SLE11:
+  * util-linux-update-default-commit-interval.patch, openSUSE  has
+    never changed the default and neither will SLE12
+  * sfdisk-warn-about-2TB-limit.patch, fixed by upstream years ago
+  * umount-avoid-readlink.patch, this patch only affects unused
+    code and the used code does not have this bug
+- edit util-linux-lscpu-improve-hypervisor-detection.patch to not
+  change the default behaviour of &quot;lscpu -p&quot; as documented in it's
+  man page. Now this patch only affects the summary output.
+
+Also see discussion here
+http://lists.opensuse.org/opensuse-factory/2014-03/msg00256.html (forwarded request 228719 from rudi_m)</comment>
+    <requestid>229044</requestid>
+  </revision>
+  <revision rev="184" vrev="5">
+    <srcmd5>9b6ab9ebc2d82c4df95b9c99f819d8a1</srcmd5>
+    <version>2.24.1</version>
+    <time>1398145798</time>
+    <user>coolo</user>
+    <comment>- Enable socket activation needed by systemd service (bnc#872807).
+
+- libblkid: Drop the broken ext2/ext3/ext4 discrimination logic
+  (util-linux-libblkid-ext-probe.patch, bnc#864703).
+
+- Abort blkid probing on I/O errors (bnc#859062,
+  blkid-stop-scanning-on-I-O-error.patch,
+  blkid-convert-superblocks-to-new-calling-convention.patch,
+  http://www.spinics.net/lists/util-linux-ng/msg08976.html) (forwarded request 230696 from sbrabec)</comment>
+    <requestid>230697</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>dfe8af572f29d7410b19e846aa398f77</srcmd5>
+    <version>2.24.2</version>
+    <time>1399128692</time>
+    <user>coolo</user>
+    <comment>- minor update to util-linux 2.24.2
+- remove tty3270-on-serial-line-of-s390.patch (was already upstream
+  since 2.24.1)
+- remove barrier_documentation.patch (applied upstream)
+- rebase blkid-convert-superblocks-to-new-calling-convention.patch (forwarded request 231272 from rudi_m)</comment>
+    <requestid>231816</requestid>
+  </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>dd7b8f99a3a327e1689f07251e5b9a65</srcmd5>
+    <version>2.24.2</version>
+    <time>1400783919</time>
+    <user>coolo</user>
+    <comment>squashed sr234195  and re-submitted
+
+- Prevent excessive clock drift calculations (bnc#871698,
+  util-linux-prevent-excessive-clock-drift-calculations.patch),
+  committed by sbrabec@suse.cz (forwarded request 234334 from rudi_m)</comment>
+    <requestid>234890</requestid>
+  </revision>
+  <revision rev="187" vrev="3">
+    <srcmd5>51193e18727ac9af4862df2853ba2120</srcmd5>
+    <version>2.24.2</version>
+    <time>1401685339</time>
+    <user>coolo</user>
+    <comment>- use nologin from upstream (was added in 2.24) 
+- remove unknown configure options
+- remove unused and outdated suse READMEs
+- require bc for checks (forwarded request 235657 from rudi_m)</comment>
+    <requestid>235663</requestid>
+  </revision>
+  <revision rev="188" vrev="4">
+    <srcmd5>51368a019effdf1d49a119d52e2256af</srcmd5>
+    <version>2.24.2</version>
+    <time>1406442244</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242481</requestid>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>f6130b74501e8bb702aebdca60201a99</srcmd5>
+    <version>2.25</version>
+    <time>1408964387</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.25
+  (using work of Ruediger Meier &lt;sweet_f_a@gmx.de&gt;):
+  * based on the git master branch of util-linux
+  * many fixes (including bnc#869355, bnc#871951 and
+    bnc#871698#c49)
+  * new Python binding sub-package for libmount: python-libmount
+  * new library: libsmartcols
+  * new commands: lslogins, setpriv
+  * add fstrim systemd timer
+  * better systemd integration
+  * DROPPED command:
+    * cytune: Upstream decided to remove tool untested for years
+      that supports this old hardware.
+- Dropped patches included in the upstream:
+    (*git) Included with no changes
+    (+git) Included with improvements
+    (!git) Included with differences
+  * support-other-tty-lines-not-vconsole.patch           (*b9c7390)
+  * agetty-fooled-on-serial-line-due-plymouth.patch,
+  * sulogin-fooled-on-tty-line-due-plymouth.patch        (*bb280f7)
+  * agetty-on-s390-on-dev-3270-tty1-line.patch           (*f2bcda5)
+  * sulogin-does-not-find-any-console.patch              (*624b204)
+  * util-linux-setarch-uname26.patch                     (*f6eb160)
+  * util-linux-ng-2.16-squashfs3-detect.patch            (*11402f5)
+  * util-linux-lscpu-improve-hypervisor-detection.patch
+                     (!b774473, b32488c, 5bd31c6, 0f0c558, 96ce475)
+    WARNING, INCOMPATIBLE CHANGE: &quot;lscpu -p&quot; no more reports
+    hypervisor, as it breaks standard behavior. Use standard output
+    instead! (FATE#310255)
+  * blkid-stop-scanning-on-I-O-error.patch               (+296d96e)</comment>
+    <requestid>245630</requestid>
+  </revision>
+  <revision rev="190" vrev="3">
+    <srcmd5>f6130b74501e8bb702aebdca60201a99</srcmd5>
+    <version>2.25</version>
+    <time>1409303588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="191" vrev="4">
+    <srcmd5>c470c98ad30766e21b24208a405c4157</srcmd5>
+    <version>2.25</version>
+    <time>1409326939</time>
+    <user>coolo</user>
+    <comment>- Always mark ipcs/limits and misc/setarch as known failure
+
+- fix parsing of slash in the format string [bnc#889934] (internal)
+- added patches:
+  * util-linux-slash-in-format-string.patch
+
+- Remove hacks for format_spec_file and source_validator
+  (bnc#891152, bnc#891829).
+- Use macro defined summary that passes both SLE and openSUSE
+  check-in QA scripts (invented by Ruediger Oertel).
+
+- Always mark ipcs/limits and misc/setarch as known failure
+
+- fix parsing of slash in the format string [bnc#889934] (internal)
+- added patches:
+  * util-linux-slash-in-format-string.patch
+
+- Remove hacks for format_spec_file and source_validator
+  (bnc#891152, bnc#891829).
+- Use macro defined summary that passes both SLE and openSUSE
+  check-in QA scripts (invented by Ruediger Oertel).
+
+- Always mark ipcs/limits and misc/setarch as known failure
+
+- fix parsing of slash in the format string [bnc#889934] (internal)
+- added patches:
+  * util-linux-slash-in-format-string.patch
+
+- Remove hacks for format_spec_file and source_validator
+  (bnc#891152, bnc#891829).</comment>
+    <requestid>246534</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>38c713665c1cc4e5767cd75873d78f3b</srcmd5>
+    <version>2.25.1</version>
+    <time>1410081106</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247686</requestid>
+  </revision>
+  <revision rev="193" vrev="2">
+    <srcmd5>7724d04e87fd96756b8cd1ed3b467b95</srcmd5>
+    <version>2.25.1</version>
+    <time>1411926810</time>
+    <user>coolo</user>
+    <comment>- Install runuser and runuser-l PAM file
+  (runuser.pamd, bnc#892079). (forwarded request 248084 from sbrabec)</comment>
+    <requestid>249014</requestid>
+  </revision>
+  <revision rev="194" vrev="3">
+    <srcmd5>cc2199061e0f73be6b0d9f72b477c43e</srcmd5>
+    <version>2.25.1</version>
+    <time>1415365624</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix mis-compilation of libuuid without uuidd support
+  (bnc#900935).
+- Fix uuidd socket activation (bnc#900935).
+- Remove obsolete sysvinit script for uuidd.
+- Remove no more needed uuidd permissions stuff.
+- Replace PreReq for obsolete pwdutils by names of binaries.
+- Add fstrim service scripts and rcfstrim helper.</comment>
+    <requestid>259170</requestid>
+  </revision>
+  <revision rev="195" vrev="4">
+    <srcmd5>a7d4f11f40ecdd878d58e426aed94741</srcmd5>
+    <version>2.25.1</version>
+    <time>1416347590</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261333</requestid>
+  </revision>
+  <revision rev="196" vrev="5">
+    <srcmd5>2cbb5ef77c35e465e1e567d6b907805b</srcmd5>
+    <version>2.25.1</version>
+    <time>1422594058</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281410</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>eabc68bb174779286231e86ae500b303</srcmd5>
+    <version>2.25.2</version>
+    <time>1424095367</time>
+    <user>coolo</user>
+    <comment>- Do not try to unregister an info file (ipc.info.gz) which we do
+  not own. Already in May 2011, we stopped registering it: &quot;do not
+  register ipc.info.gz (not provided by this package)&quot;.
+
+- libblkid: care about unsafe chars and possible buffer overflow
+  in cache (CVE-2014-9114, util-linux-libblkid-unsafe-chars.patch,
+  util-linux-libblkid-overflow.patch, bsc#907434)
+
+- Update to version 2.25.2: mostly minor fixes
+  (including boo#908742)
+- re-enable utmpdump and ipcs tests for all archs
+
+- Use util-linux:/bin/logger as split-provide,
+  /usr/lib/systemd/system/fstrim.service didn't exist in 13.1
+
+- Do not try to unregister an info file (ipc.info.gz) which we do
+  not own. Already in May 2011, we stopped registering it: &quot;do not
+  register ipc.info.gz (not provided by this package)&quot;.
+
+- libblkid: care about unsafe chars and possible buffer overflow
+  in cache (CVE-2014-9114, util-linux-libblkid-unsafe-chars.patch,
+  util-linux-libblkid-overflow.patch, bsc#907434)
+
+- Update to version 2.25.2: mostly minor fixes
+  (including boo#908742)
+- re-enable utmpdump and ipcs tests for all archs
+
+- Use util-linux:/bin/logger as split-provide,
+  /usr/lib/systemd/system/fstrim.service didn't exist in 13.1</comment>
+    <requestid>285829</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>b5f7d2b227f3cf1a7c3b086a56a3f9e5</srcmd5>
+    <version>2.26</version>
+    <time>1425571471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287963</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>d8a12a352d15b60b4518e78c0898c869</srcmd5>
+    <version>2.26.1</version>
+    <time>1427109038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290679</requestid>
+  </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>39e0b409febae84114aec3efb5530102</srcmd5>
+    <version>2.26.2</version>
+    <time>1431247429</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305842</requestid>
+  </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>20aa96143e8f16bcd681e797c5697791</srcmd5>
+    <version>2.26.2</version>
+    <time>1433143575</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309343</requestid>
+  </revision>
+  <revision rev="202" vrev="3">
+    <srcmd5>e79ae5dfd2270c2b5e035275d6dc0dc8</srcmd5>
+    <version>2.26.2</version>
+    <time>1436111407</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>312146</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>e556e3a80a13bc86b07b1194ae24c7e6</srcmd5>
+    <version>2.27</version>
+    <time>1444833275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334018</requestid>
+  </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>26f06dd2f83bb4e38987a6430698e9a3</srcmd5>
+    <version>2.27</version>
+    <time>1446465239</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>341342</requestid>
+  </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>3ea05c2ff79292af26fb3e5b1f802538</srcmd5>
+    <version>2.27.1</version>
+    <time>1448186269</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345050</requestid>
+  </revision>
+  <revision rev="206" vrev="2">
+    <srcmd5>5a2106392e04f5f90b412d582f85ad3d</srcmd5>
+    <version>2.27.1</version>
+    <time>1449995636</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347194</requestid>
+  </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>cb040767523357f8bbb69b38157abf7e</srcmd5>
+    <version>2.28</version>
+    <time>1460924106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389567</requestid>
+  </revision>
+  <revision rev="208" vrev="2">
+    <srcmd5>30ed690f7d08e6013dd5f88877cf1db7</srcmd5>
+    <version>2.28</version>
+    <time>1465750205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397533</requestid>
+  </revision>
+  <revision rev="209" vrev="3">
+    <srcmd5>24a2dc4434b149d29e8bf51f976596f5</srcmd5>
+    <version>2.28</version>
+    <time>1467186022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401944</requestid>
+  </revision>
+  <revision rev="210" vrev="4">
+    <srcmd5>59ed408e351833178e09eb8a7833cca1</srcmd5>
+    <version>2.28</version>
+    <time>1468869391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408335</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>bd5aade18196012907a984d181fb37fa</srcmd5>
+    <version>2.28.1</version>
+    <time>1472111380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421062</requestid>
+  </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>22522e76b73967cc71310fa321714ed8</srcmd5>
+    <version>2.28.2</version>
+    <time>1473679292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425668</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>4329d3828d0d4d92a364fd820cd8d617</srcmd5>
+    <version>2.29</version>
+    <time>1479556106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440452</requestid>
+  </revision>
+  <revision rev="214" vrev="2">
+    <srcmd5>1e8b2bbd9802cc21ece292a5363e8bf9</srcmd5>
+    <version>2.28.2</version>
+    <time>1479556649</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to previous rev - procps pulls systemd into ring0</comment>
+  </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>5bbe1cf14c8cb0c88ccb40a13ab21a72</srcmd5>
+    <version>2.29</version>
+    <time>1484474184</time>
+    <user>dimstar_suse</user>
+    <comment>- don't install bash-completions for uninstalled binaries (chfn,
+  chsh, newgrp, pg)
+- for now remove procps dependency  which is only needed for tests
+  because it pulls systemd
+
+Note the util-linux bash completions are incompatible to the
+installed binaries from the shadow package. We could use the
+completions from bash-completion package or we could switch
+to the binaries from util-linux. They seem to have more
+features and being backward compatible.
+
+I've reverted the previous procps fix. It was not mwerged to
+Factory yet. (forwarded request 448848 from rudi_m)</comment>
+    <requestid>448913</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>95c468d15c3f6942b6450aebe4ea6ba8</srcmd5>
+    <version>2.29.1</version>
+    <time>1488407952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457450</requestid>
+  </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>3df9420b6db7f4a031356e5320b618d0</srcmd5>
+    <version>2.29.2</version>
+    <time>1493103320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487606</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>b1f7cf768248249fb4b7478c93541889</srcmd5>
+    <version>2.30</version>
+    <time>1498741101</time>
+    <user>dimstar_suse</user>
+    <comment>- don't conflict with sysvinit-tools in Tumblweed anymore. Needed for Leap 15
+  which wants to use a different release number scheme (lp150.x which produces
+  lower numbers than the conflict).
+- Update to version 2.30:
+  * Many changes and improvements, most notably:
+    * The libblkid library has been improved for hybrid CDROM/DVD
+      media.
+    * The deprecated command tailf has been removed. Use &quot;tail -f&quot;
+      from coreutils.
+    * blkzone -- NEW COMMAND to run zone commands on block devices
+      that support Zoned Block Commands (ZBC) or Zoned-device ATA
+      Commands (ZAC).
+    * fincore -- NEW COMMAND to count pages of file contents in
+      core (memory).
+    * lsmem -- NEW COMMAND to list the ranges of available memory
+      with their online status.
+    * The command fallocate -- supports an &quot;insert range&quot; operation
+      now.
+    * The command &quot;column -t|--table&quot; has been modified to use
+      libsmartcols. It now provides nearly all of that library's
+      functionality from the command line.
+  * Security issues:
+    * hwclock - no longer makes any internal permission checks. The
+      System Administrator must set proper permissions to control
+      user access to the RTC. It is NOT recommended to use SUID.
+    * CVE-2016-2779 - This security issue is NOT FIXED yet.
+  * More details at:
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.30/v2.30-ReleaseNotes
+- Drop upstreamed patch
+  arm64-lscpu-use-sysfs-for-table-access-if-available.patch
+- Refreshed patch
+  util-linux-losetup-Add-support-for-setting-logical-blocksize.patch 
+- fix compiler warnings for mkzimage_cmdline
+- When when hypervisor_decode_sysfw fails continue with other
+  detection methods (bsc#1042991, bsc#1039360, bsc#1033718)
+  + util-linux-lscpu-cleanup-DMI-detection-return-codes.patch</comment>
+    <requestid>504843</requestid>
+  </revision>
+  <revision rev="219" vrev="2">
+    <srcmd5>3bdabf0042f3e307c03faeb61c685cf5</srcmd5>
+    <version>2.30</version>
+    <time>1499598232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507990</requestid>
+  </revision>
+  <revision rev="220" vrev="3">
+    <srcmd5>b1f7cf768248249fb4b7478c93541889</srcmd5>
+    <version>2.30</version>
+    <time>1499624979</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - this drags in even systemd into ring0</comment>
+    <requestid>509038</requestid>
+  </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>72a05ee6c8fafd1a17ae40c3c1fd19da</srcmd5>
+    <version>2.30.1</version>
+    <time>1506594769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528604</requestid>
+  </revision>
+  <revision rev="222" vrev="2">
+    <srcmd5>e9c51a55f0c11c0b1f75fa56bddbc7d6</srcmd5>
+    <version>2.30.1</version>
+    <time>1507280015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530401</requestid>
+  </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>3f15aa87f6a450c52d7d77fb89f2ab21</srcmd5>
+    <version>2.31</version>
+    <time>1514569588</time>
+    <user>dimstar_suse</user>
+    <comment>Depends on rq#558192.
+
+- Update bash completion conflict to cover rfkill file conflict.
+- lsmem: Add support for zone awareness (bsc#1065471, FATE#324252).
+- Drop util-linux-losetup-Add-support-for-setting-logical-blocksize.patch.
+- Update to version 2.31.</comment>
+    <requestid>558203</requestid>
+  </revision>
+  <revision rev="224" vrev="2">
+    <srcmd5>25674cf6a3552ceddc3beba58eb3577a</srcmd5>
+    <version>2.31</version>
+    <time>1516970024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568562</requestid>
+  </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>d2964ac815c107bc9e2f5a24283f8e04</srcmd5>
+    <version>2.31.1</version>
+    <time>1518187275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571531</requestid>
+  </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>4cf2ef6324277256077b09938a2601bd</srcmd5>
+    <version>2.31.1</version>
+    <time>1519396060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577315</requestid>
+  </revision>
+  <revision rev="227" vrev="3">
+    <srcmd5>829f2c016fba3e27459da66bd7ec9a66</srcmd5>
+    <version>2.31.1</version>
+    <time>1522403733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590605</requestid>
+  </revision>
+  <revision rev="228" vrev="4">
+    <srcmd5>e6271a153e4e0498b1b9890042c4806b</srcmd5>
+    <version>2.31.1</version>
+    <time>1524400170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596303</requestid>
+  </revision>
+  <revision rev="229" vrev="5">
+    <srcmd5>bf4eff591cdae9c97a980fbf32f14006</srcmd5>
+    <version>2.31.1</version>
+    <time>1527276838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611350</requestid>
+  </revision>
+  <revision rev="230" vrev="6">
+    <srcmd5>bd12f1111f0dd9fb11d12304307cd442</srcmd5>
+    <version>2.31.1</version>
+    <time>1531812977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621748</requestid>
+  </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>a78296e6fd62d5b58ed2725da8e2ba2d</srcmd5>
+    <version>2.32.1</version>
+    <time>1535440687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627977</requestid>
+  </revision>
+  <revision rev="232" vrev="2">
+    <srcmd5>5c4bce305de51ab9310617d4bd4e3e0f</srcmd5>
+    <version>2.32.1</version>
+    <time>1542202143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646821</requestid>
+  </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>bf0e967d7f6128e27b8df0ebb7cc6ccd</srcmd5>
+    <version>2.33</version>
+    <time>1544440896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652216</requestid>
+  </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>e33b535b9c594e7a523077f66f3c2cf7</srcmd5>
+    <version>2.33</version>
+    <time>1545996724</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop rfkill-block@.service and rfkill-unblock@.service that
+  functionally conflict with systemd-rfkill@.service
+  (boo#1092820#c13).
+
+- Drop rfkill-block@.service and rfkill-unblock@.service that
+  functionally conflict with systemd-rfkill@.service
+  (boo#1092820#c13).
+
+- Drop rfkill-block@.service and rfkill-unblock@.service that
+  functionally conflict with systemd-rfkill@.service
+  (boo#1092820#c13).</comment>
+    <requestid>659326</requestid>
+  </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>e96aca858a6b7602c78c001403cac791</srcmd5>
+    <version>2.33.1</version>
+    <time>1548769150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668376</requestid>
+  </revision>
+  <revision rev="236" vrev="2">
+    <srcmd5>cc94c55d0c39074b5211fbcfdff94d47</srcmd5>
+    <version>2.33.1</version>
+    <time>1552042832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681652</requestid>
+  </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>62af3029d6e0d9f00fa93a29e0a07e9a</srcmd5>
+    <version>2.33.2</version>
+    <time>1558426752</time>
+    <user>dimstar_suse</user>
+    <comment>Depends on https://build.opensuse.org/request/show/700977
+- Update to version 2.33.2 (bsc#1134337):
+  * agetty: Fix 8-bit processing in get_logname() (bsc#1125886).
+  * mount: Fix &quot;mount&quot; output for net file systems (bsc#1122417).
+  * Many Other fixes, see
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.33/v2.33.2-ReleaseNotes
+- Fix problems in reading of login.defs values (bsc#1121197,
+  util-linux-login_defs-priority1.patch,
+  util-linux-login_defs-priority2.patch,
+  util-linux-login_defs-SYS_UID.patch).
+- Perform one-time reset of /etc/default/su (bsc#1121197).
+- Add virtual symbols for login.defs compatibility (bsc#1121197).
+- Add login.defs safety check util-linux-login_defs-check.sh
+  (bsc#1121197).
+- Drop bc BuildRequires: not needed.</comment>
+    <requestid>701846</requestid>
+  </revision>
+  <revision rev="238" vrev="2">
+    <srcmd5>2e363fa81c9e347b4438a04f5dbe6e1f</srcmd5>
+    <version>2.33.2</version>
+    <time>1562591361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712923</requestid>
+  </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>73628a034550fd4c81bf261c80b5334a</srcmd5>
+    <version>2.34</version>
+    <time>1566899932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723396</requestid>
+  </revision>
+  <revision rev="240" vrev="2">
+    <srcmd5>b5e1bd4da7cfb94552185c424125d163</srcmd5>
+    <version>2.34</version>
+    <time>1568190292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728060</requestid>
+  </revision>
+</revisionlist>

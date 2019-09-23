@@ -1,0 +1,8 @@
+<package name="gtk-doc" project="openSUSE:Factory">
+  <title>GTK+ DocBook Documentation Generator</title>
+  <description>Gtkdoc is a set of Perl scripts that generate API reference
+documentation in DocBook format.  It can extract documentation from
+source code comments in a manner similar to Java-doc.  It is used to
+generate the documentation for GLib, Gtk+, and GNOME.</description>
+  <devel project="GNOME:Factory" package="gtk-doc"/>
+</package>

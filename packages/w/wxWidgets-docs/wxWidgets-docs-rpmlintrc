@@ -1,0 +1,6 @@
+# Project name just starts with lowercase.
+addFilter("summary-not-capitalized")
+# We know what we are doing.
+addFilter("macro-in-comment")
+# Happens in mshtml section.
+addFilter("wrong-file-end-of-line-encoding")

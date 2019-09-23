@@ -1,0 +1,143 @@
+Index: ebtables.sysv
+===================================================================
+--- ebtables.sysv.orig
++++ ebtables.sysv
+@@ -11,12 +11,15 @@
+ #
+ # config: __SYSCONFIG__/ebtables         (text)
+ #         __SYSCONFIG__/ebtables.<table> (binary)
+-
+-source /etc/init.d/functions
+-source /etc/sysconfig/network
+-
+-# Check that networking is up.
+-[ ${NETWORKING} = "no" ] && exit 0
++### BEGIN INIT INFO
++# Provides:          ebtables
++# Required-Start:    $remote_fs $network
++# Required-Stop:     $remote_fs $network
++# Short-Description: Ethernet Bridge filter tables
++# Description:       Ethernet Bridge filter tables
++# Default-Start:     2 3 5
++# Default-Stop:      0 1 6
++### END INIT INFO
+ 
+ [ -x __EXEC_PATH__/ebtables ] || exit 1
+ [ -x __EXEC_PATH__/ebtables-save ] || exit 1
+@@ -30,12 +33,15 @@ umask 0077
+ #default configuration
+ EBTABLES_TEXT_FORMAT="yes"
+ EBTABLES_BINARY_FORMAT="yes"
+-EBTABLES_MODULES_UNLOAD="yes"
++EBTABLES_MODULES_UNLOAD="no"
+ EBTABLES_SAVE_ON_STOP="no"
+ EBTABLES_SAVE_ON_RESTART="no"
+ EBTABLES_SAVE_COUNTER="no"
+ 
+-config=__SYSCONFIG__/$prog-config
++. /etc/rc.status
++rc_reset
++
++config=/etc/sysconfig/ebtables
+ [ -f "$config" ] && . "$config"
+ 
+ start() {
+@@ -45,16 +51,15 @@ start() {
+ 			__EXEC_PATH__/ebtables -t $table --atomic-file __SYSCONFIG__/ebtables.$table --atomic-commit || RETVAL=1
+ 		done
+ 	else
+-		__EXEC_PATH__/ebtables-restore < /etc/sysconfig/ebtables || RETVAL=1
++		__EXEC_PATH__/ebtables-restore < __SYSCONFIG__/ebtables || RETVAL=1
+ 	fi
+ 
+ 	if [ $RETVAL -eq 0 ]; then
+-		success "$prog startup"
+-		rm -f /var/lock/subsys/$prog
++		touch /var/run/rcebtables
++		rc_failed 0
+ 	else
+-		failure "$prog startup"
++		rc_failed 3
+ 	fi
+-	echo
+ }
+ 
+ stop() {
+@@ -70,17 +75,18 @@ stop() {
+ 	fi
+ 
+ 	if [ $RETVAL -eq 0 ]; then
+-		success "$prog shutdown"
+-		rm -f /var/lock/subsys/$prog
++		rm -f /var/run/rcebtables
++		rc_failed 0
+ 	else
+-		failure "$prog shutdown"
++		rc_failed 3
+ 	fi
+-	echo
+ }
+ 
+ restart() {
+ 	stop
++	rc_status -v
+ 	start
++	rc_status -v
+ }
+ 
+ save() {
+@@ -106,40 +112,42 @@ save() {
+ 		done
+ 	fi
+ 
+-	if [ $RETVAL -eq 0 ]; then
+-		success "$prog saved"
+-	else
+-		failure "$prog saved"
++	if [ $RETVAL -ne 0 ]; then
++		rc_failed 3
+ 	fi
+-	echo
+ }
+ 
+ case "$1" in
+   start)
+ 	start
++	rc_status -v
+ 	;;
+   stop)
+ 	[ "$EBTABLES_SAVE_ON_STOP" = "yes" ] && save
+ 	stop
++	rc_status -v
+ 	;;
+   restart|reload)
+ 	[ "$EBTABLES_SAVE_ON_RESTART" = "yes" ] && save
+ 	restart
+ 	;;
+-  condrestart)
+-	[ -e /var/lock/subsys/$prog ] && restart
+-	RETVAL=$?
++  try-restart|condrestart)
++	if [ -e /var/run/rcebtables ]; then
++		restart
++	fi
+ 	;;
+   save)
+ 	save
++	rc_status -v
+ 	;;
+   status)
+ 	__EXEC_PATH__/ebtables-save
+-	RETVAL=$?
++	rc_status -v
+ 	;;
+   *)
+-	echo $"Usage $0 {start|stop|restart|condrestart|save|status}"
+-	RETVAL=1
++	echo $"Usage $0 {start|stop|restart|try-restart|save|status}"
++	exit 1
++	;;
+ esac
+ 
+-exit $RETVAL
++rc_exit

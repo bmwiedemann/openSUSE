@@ -1,0 +1,21 @@
+Index: xen-4.7.1-testing/tools/pygrub/src/pygrub
+===================================================================
+--- xen-4.7.1-testing.orig/tools/pygrub/src/pygrub
++++ xen-4.7.1-testing/tools/pygrub/src/pygrub
+@@ -25,6 +25,7 @@ import fsimage
+ import grub.GrubConf
+ import grub.LiloConf
+ import grub.ExtLinuxConf
++import xnloader
+ 
+ PYGRUB_VER = 0.6
+ FS_READ_MAX = 1024 * 1024
+@@ -766,6 +767,8 @@ if __name__ == "__main__":
+             if len(data) == 0:
+                 os.close(tfd)
+                 del datafile
++                if file_to_read == "/nwserver/xnloader.sys":
++                    xnloader.patch_netware_loader(ret)
+                 return ret
+             try:
+                 os.write(tfd, data)

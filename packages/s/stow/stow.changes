@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Sun Nov 15 08:56:46 UTC 2015 - astieger@suse.com
+
+- stow 2.2.2
+  * @VERSION@ substitution was set up for the Stow::Util module.
+- includes changes from unreleased 2.2.1:
+  * various bug fixes
+  * Correctly handle the stow/target directories as non-canonical paths
+  * Fix stowing of relative links when --no-folding is used.
+- verify tarball signature
+
+-------------------------------------------------------------------
+Wed Aug  6 11:53:54 UTC 2014 - aspiers@suse.com
+
+- Rename rpmlintrc as per pkg guideline to %{name}-rpmlintrc
+  (SR #243198)
+- Remove old, unused stow.spec.quux
+
+-------------------------------------------------------------------
+Thu Sep 12 12:10:50 BST 2013 - aspiers@suse.com
+
+- Use %configure and %perl_requires macros.
+- Don't rm -rf $RPM_BUILD_ROOT.
+
+-------------------------------------------------------------------
+Wed Sep 11 18:15:27 BST 2013 - aspiers@suse.com
+
+- Run "osc service localrun format_spec_file" on spec file.
+
+-------------------------------------------------------------------
+Tue Jan  8 18:31:58 GMT 2013 - aspiers@suse.com
+
+- split off HTML/PDF docs into -doc subpackage
+- fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Mar  1 11:24:02 GMT 2012 - aspiers@suse.com
+
+- improve Description
+- fix License field
+
+-------------------------------------------------------------------
+Wed Feb 29 19:16:12 GMT 2012 - aspiers@suse.com
+
+- update to 2.2.0
+
+-------------------------------------------------------------------
+Thu Jan 12 17:57:27 GMT 2012 - Adam Spiers <aspiers@suse.com>
+
+- update to 2.1.3
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 16 15:23:33 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Clean up specfile
+
+-------------------------------------------------------------------
+Tue May 13 12:15:42 CEST 2003 - mmj@suse.de
+
+- Remove files we don't package
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Mon Apr  7 15:53:46 CEST 2003 - mmj@suse.de
+
+- Only delete info entries when removing last version.
+
+-------------------------------------------------------------------
+Fri Feb  7 13:14:42 CET 2003 - mmj@suse.de
+
+- Use %install_info macro
+- Cleanup the build root
+
+-------------------------------------------------------------------
+Mon Oct 28 10:52:11 CET 2002 - mmj@suse.de
+
+- Initial addition, version 1.3.3
+
+-------------------------------------------------------------------

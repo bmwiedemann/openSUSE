@@ -1,0 +1,38 @@
+
+# HG changeset patch
+# User Torsten Lilge <ttl-octave@mailbox.org>
+# Date 1562267649 -7200
+# Node ID 1ae91e5d70cc1fe849945b6aba6da727b8768ff5
+# Parent  f5b9670604425f6bfda76c7a8e61798559f0e609
+fix auto-close feature in editor when using tabs for indentation (bug #56533)
+
+* octave-qscintilla.cc (auto_close): do not consider new inserted line for
+  detecting a required closing sstatement since this line has indentation
+  indicating that there already is a close satement, us indentation method
+  instead of adding spaces for indenting the line with the close statement
+
+diff --git a/libgui/src/m-editor/octave-qscintilla.cc b/libgui/src/m-editor/octave-qscintilla.cc
+index a2a97ea..dc407f7 100644
+--- a/libgui/src/m-editor/octave-qscintilla.cc
++++ b/libgui/src/m-editor/octave-qscintilla.cc
+@@ -965,7 +965,8 @@ namespace octave
+     //       end* (until) (catch)
+     if (linenr < lines () - 1)
+       {
+-        int offset = 1;
++        int offset = 2;     // linenr is the old line, thus, linnr+1 is the
++                            // new one and can not be taken into account
+         size_t next_start;
+         QString next_line;
+         do                            // find next non-blank line
+@@ -1022,7 +1023,9 @@ namespace octave
+         next_line = "end" + first_word + "\n";
+       }
+ 
+-    insertAt (QString (start, ' ') + next_line, linenr + 2, 0);
++    //insertAt (QString (start, ' ') + next_line, linenr + 2, 0);
++    insertAt (next_line, linenr + 2, 0);
++    setIndentation (linenr + 2, indentation (linenr));
+   }
+ 
+   void octave_qscintilla::dragEnterEvent (QDragEnterEvent *e)

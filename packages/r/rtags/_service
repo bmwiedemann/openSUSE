@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">git://github.com/Andersbakken/rtags</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">rtags</param>
+    <param name="versionformat">2.22+git.%cd.%h</param>
+    <param name="revision">c4dea89941554688d4b02509c5cb0c5eeca47981</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

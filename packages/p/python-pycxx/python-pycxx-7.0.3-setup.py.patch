@@ -1,0 +1,85 @@
+This patch makes several changes to setup.py:
+
+- Add omitted headers and sources to install
+  - Extend install_headers to handle subdirs
+- Install only Python v2 or v3 code as appropriate
+- Update version number
+- Convert tabs to spaces (from original RPM)
+  - http://www.python.org/dev/peps/pep-0008/#tabs-or-spaces
+
+--- a/setup.py
++++ b/setup.py
+@@ -1,13 +1,31 @@
+ import os, sys
+ from glob import glob
+ from distutils.command.install import install
++from distutils.command.install_headers import install_headers
+ from distutils.core import setup
+ 
+-headers = (glob( os.path.join( "CXX","*.hxx" ) )
+-          +glob( os.path.join( "CXX","*.h" ) ))
+-sources = (glob( os.path.join( "Src", "*.cxx" ) )
+-          +glob( os.path.join( "Src", "*.c" ) ))
++# either "Python2" or "Python3"
++PythonVer = "Python" + sys.version[0]
+ 
++headers = [
++    (None,
++     glob(os.path.join("CXX","*.hxx")) + \
++         glob(os.path.join("CXX","*.h"))
++     ),
++    (PythonVer,
++     glob(os.path.join("CXX",PythonVer,"*.hxx"))
++     )
++    ]
++
++sources = [
++    ("CXX",
++     glob(os.path.join("Src", "*.cxx")) + \
++         glob(os.path.join("Src", "*.c"))
++     ),
++    (os.path.join("CXX",PythonVer),
++     glob(os.path.join("Src",PythonVer,"*"))
++     )
++    ]
+ 
+ class my_install (install):
+ 
+@@ -17,10 +35,26 @@ class my_install (install):
+         install.finalize_options (self)
+ 
+     def run (self):
+-        self.distribution.data_files = [("CXX", sources)]
++        self.distribution.data_files = sources
+         self.distribution.headers = headers
+         install.run (self)
+ 
++class my_install_headers (install_headers):
++    def run (self):
++        if not self.distribution.headers:
++            return
++
++        for subdir, headers in self.distribution.headers:
++            try:
++                dir = os.path.join(self.install_dir,subdir)
++            except:
++                dir = self.install_dir
++            self.mkpath(dir)
++            for header in headers:
++                (out, _) = self.copy_file(header, dir)
++                self.outfiles.append(out)
++
++
+ # read the version from the master file CXX/Version.hxx
+ v_maj = None
+ v_min = None
+@@ -43,7 +77,8 @@ setup (name             = "CXX",
+        description      = "Facility for extending Python with C++",
+        url              = "http://cxx.sourceforge.net",
+        
+-       cmdclass         = {'install': my_install},
++       cmdclass         = {'install': my_install,
++                           'install_headers': my_install_headers},
+        packages         = ['CXX'],
+        package_dir      = {'CXX': 'Lib'}
+       )

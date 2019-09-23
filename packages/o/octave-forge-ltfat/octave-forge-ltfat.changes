@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Jul 18 08:51:11 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.3.1:
+  * Two additional matching pursuit variants in multidgtrealmp
+- Use fdupes to clean up duplicate files.
+
+-------------------------------------------------------------------
+Wed Jun  6 08:30:33 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.3.0:
+  * New function for computing matching pursuit in DGT:
+    multidgtrealmp
+  * Matching pursuit and orthogonal matching pursuit for general
+    frames (for small problems): franamp
+  * ltfat_inferno is now the default colormap.
+
+-------------------------------------------------------------------
+Sun Jan  1 11:43:34 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 2.2.0
+  * New Gabor window generating functions: ptpfun, ptpfundual, pebfun, pebfundual
+  * Introduced Mulaclab, a GUI for editing time-frequency representations.
+  * Included new colormaps: ltfat_inferno, ltfat_magma, ltfat_plasma,
+    ltfat_viridis, ltfat_nicecolormap
+
+-------------------------------------------------------------------
+Fri Jun 10 16:26:07 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.1.2
+  * Improved functions for DGT and DGTREAL phase reconstruction:
+    constructphase, constructphasereal
+
+-------------------------------------------------------------------
+Tue Oct 27 15:10:02 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.1.1
+  * New function for computing higher order phase derivatives: gabphasederiv
+  * New function doing the adjustable reassignment: gabreassignadjust
+  * New function for the Gabor transform phase reconstruction: constructphase, constructphasereal
+  * New filterbank-generating function: audfilters
+  * New generic quadratic TF distribution function: quadtfdist
+  * New functions for reading and writing wav files: wavload, wavsave
+
+-------------------------------------------------------------------
+Tue May 12 17:26:37 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.1.0
+  * New general filterbank generating routine: warpedfilters
+  * New filterbank spectrogram reassignment function: filterbankreassign
+  * New quadratic time-frequency distributions
+  * Better alignment of wavelet filters.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.0.1
+

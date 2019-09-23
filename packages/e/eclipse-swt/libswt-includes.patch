@@ -1,0 +1,11 @@
+--- make_linux.mak.orig	2010-10-09 13:13:09.000000000 +0200
++++ make_linux.mak	2010-10-09 13:13:09.000000000 +0200
+@@ -113,6 +113,8 @@
+ 		-DLINUX -DGTK \
+ 		-I$(JAVA_HOME)/include \
+ 		-I$(JAVA_HOME)/include/linux \
++		-I/usr/include/xulrunner-$(XULRUNNER_VERSION) \
++		-I/usr/include/nspr4 \
+ 		-fPIC \
+ 		${SWT_PTR_CFLAGS}
+ LFLAGS = -shared -fPIC ${SWT_LFLAGS}

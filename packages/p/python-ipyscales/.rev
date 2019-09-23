@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>061571f48fefbd06a59074fcdf167838</srcmd5>
+    <version>unknown</version>
+    <time>1558516329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Fixed typo
+</comment>
+    <requestid>703187</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a443549c9e575a57cfac952661bb6ce3</srcmd5>
+    <version>unknown</version>
+    <time>1566243513</time>
+    <user>dimstar_suse</user>
+    <comment>The full jupyterlab isn't needed for install
+</comment>
+    <requestid>724163</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+Index: arprec-2.2.17/src/write.cpp
+===================================================================
+--- arprec-2.2.17.orig/src/write.cpp
++++ arprec-2.2.17/src/write.cpp
+@@ -196,6 +196,6 @@ bool mp_real::write(ostream &s, int prec
+ 
+   string str = to_string(precision, width, expn_width, 
+       fmt, showpos, uppercase, fill);
+-  return (s << str) != 0;
++  return static_cast<bool>(s << str) != 0;
+ }
+ 

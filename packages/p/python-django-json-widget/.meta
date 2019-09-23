@@ -1,0 +1,5 @@
+<package name="python-django-json-widget" project="openSUSE:Factory">
+  <title></title>
+  <description>Django JSON widget allows editing the Django jsonfield</description>
+  <devel project="devel:languages:python:django" package="python-django-json-widget"/>
+</package>

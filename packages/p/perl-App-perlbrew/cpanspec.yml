@@ -1,0 +1,13 @@
+---
+#description_paragraphs: 3
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  wget curl groff
+post_prep: |-
+ chmod a+x t/fake-bin/curl

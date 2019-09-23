@@ -1,0 +1,309 @@
+-------------------------------------------------------------------
+Wed Jul 24 12:53:19 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Thu Jul 11 08:34:38 UTC 2019 - jslaby@suse.com
+
+- Switch to git snapshots as there was no release over years.
+- Update to version 1.3.2+20190710
+  * Apply latest consecutive resize, not earliest.
+  * mosh-server: improve error logging
+  * Add syslog logging of connections
+  * Fix issue with incorrect true-color background erase colors.
+  * Add true color support.
+  * Allow non-inserting prediction.
+  * Don't do prediction on large pastes into mosh-client.
+  * and more.
+
+-------------------------------------------------------------------
+Mon Jul 24 13:38:47 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.3.2:
+  * Platform support:
+    + Explicitly enable binding to both IPv4 and IPv6 addresses.
+      (Giel van Schijndel)
+    + Restore perl 5.8.8 support for RHEL5.
+      (Alexander Chernyakhovsky)
+    + Make tests detect UTF-8 locale with a helper executable.
+      (John Hood)
+    + Don't print /etc/motd on IllumOS.  (John Hood)
+    + Print {,/var}/run/motd.dynamic on Ubuntu.  (John Hood)
+    + Fix build on Haiku. (Adrien Destugues)
+    + Disable unicode-later-combining.test for tmux 2.4.
+      This fixes build failures.  (John Hood)
+  * Bug fixes:
+    + In tests, explicitly set 80x24 tmux window, for newer versions
+      of tmux.  (John Hood)
+    + Work around JuiceSSH rendering bug.  (John Hood)
+    + Do not move cursor for SCROLL UP and SCROLL DOWN--
+      fixes an issue with tmux 2.4.  (John Hood)
+
+-------------------------------------------------------------------
+Thu Apr  6 07:49:52 UTC 2017 - shshyukriev@suse.com
+
+-Update to v 1.3.0
+* New features:
+  * Change website URLs from http://mosh.mit.edu to https://mosh.org.
+    (Keith Winstein)
+  * Add --no-ssh-pty option for Dropbear compatibility and other issues.
+  * Switch to semantic versioning, making this version 1.3.0 instead
+    of 1.2.7. 
+
+-------------------------------------------------------------------
+Sat Jan 21 11:26:52 UTC 2017 - mpluskal@suse.com
+
+- Enable tests
+- Small package cleanup
+
+-------------------------------------------------------------------
+Wed Dec 27 16:43:26 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.6:
+  * New features:
+    + Add Travis CI builds for Linux and macOS.
+    + Add a --local option to run without ssh.
+    + Mosh now returns exitstatus reflecting connection success.
+    + Add a end-to-end test suite and many tests.
+    + Implement timeouts and signals to help address orphaned
+      sessions.
+    + Major rework of Mosh's display differencing/rendering code
+      with much improved performance for slow machines.
+    + Implement ANSI back/forward tab (CSI CBT, CSI CHT).
+    + Do not start user shell until network session starts.
+    + Add options for more flexible specification of IPv4/IPv6
+      hostname resolution.
+    + Improved bash completion.
+    + Add options for different methods of resolving the remote
+      host address, allowing operation without SshProxyCommand.
+  * Platform support:
+    + Add configurable support for Apple Common Crypto and Nettle,
+      in place of OpenSSL. Implement base64 locally.
+    + Workaround Cygwin select() bug..
+    + Workaround a glibc-2.22 issue causing segfaults.
+    + Prefer c++ to g++, for systems like FreeBSD where g++ is not
+      usable.
+    + Fixes for Illumos Hipster 20151003.
+    + Disable -Werror for protobuf code, to resolve a new gcc6
+      warning.
+    + Link test for -fstack-protector-all on an embedded platform.
+    + Resolve issue with bswap64() on FreeBSD-CURRENT with
+      libc++-3.8.0.
+    + Fix an issue with RECVTOS error message on client on FreeBSD.
+  * Bug fixes:
+    + Remove an assertion causing aborts on Unicode fallback found
+      by fuzzing with afl.
+    + Fix a server hang with XON/XOFF on BSD systems.
+    + Fix a typeahead-prediction bug that caused display corruption
+      on urxvt.
+
+-------------------------------------------------------------------
+Fri May 27 07:57:45 UTC 2016 - mpluskal@suse.com
+
+- Update dependencies for Tumbleweed
+
+-------------------------------------------------------------------
+Mon Apr  4 18:51:34 UTC 2016 - mpluskal@suse.com
+
+- Update dependencies
+  * drop autotools and autoreconf calling (as patch needing it was
+    dropped)
+  * add bash-completion as build dependnency and update install 
+    path for completion
+- Make building more verbose
+
+-------------------------------------------------------------------
+Sun Aug  2 09:32:36 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.2.5:
+  * Bind to a specific IP address with --bind-server.
+  * MOSH_ESCAPE_KEY configures escape character.
+  * Support non-roaming IPv6.
+  * Implement XTerm mouse mode.
+  * Report Git revision along with version if available.
+  * Add pselect() emulation.
+  * ARM Neon: fix gcc4.8 compiling problem.
+  * NaCl: Conditionally rename main to mosh_main.
+  * Debian: Improve bash-completion install and functionality.
+  * Automake/autoconf workarounds.
+  * mosh-server: Allow startup without PTY.
+  * network.cc: Properly close old fd on Socket assignment
+    operator.
+  * mosh-server: Allow startup with zero-window-size PTY.
+  * AddrInfo: Fix error message generation when node == NULL.
+  * Timestamp: Prevent integer overflow on Darwin PPC 32-bit.
+  * scripts/mosh: Fix hang when remote closes the connection.
+  * Fix issues with parsing of 256-color SGR sequences.
+  * Numerous code hygiene, Coverity, and Clang static analyzer
+    fixes.
+- Remove mosh-1.2.4-ipv6.patch: merged upstream.
+
+-------------------------------------------------------------------
+Thu Nov 13 15:43:07 UTC 2014 - tchvatal@suse.com
+
+- Enable utempter
+- Run autoreconf after michals patch
+- spec-cleaner run
+
+-------------------------------------------------------------------
+Thu Nov  7 08:58:01 UTC 2013 - mhrusecky@suse.com
+
+- Patch (mosh-1.2.4-ipv6.patch) for IPv6 support from
+  https://github.com/keithw/mosh/pull/453
+
+-------------------------------------------------------------------
+Wed Jun  5 18:50:37 UTC 2013 - tchvatal@suse.com
+
+- Make ufw files happy with rpmlint from suse (i hope).
+
+-------------------------------------------------------------------
+Wed Jun  5 13:00:59 UTC 2013 - tchvatal@suse.com
+
+- Do not handle examples, forgotten here by testing.
+
+-------------------------------------------------------------------
+Wed Jun  5 12:58:44 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 1.2.4.
+  * New features:
+          * Support port ranges with -p LOWPORT:HIGHPORT (Luke Mewburn)
+          * Ctrl-^ Ctrl-Z suspends mosh client (Nikolai Zeldovich)
+          * mm:ss display of lost-contact times (Kevin Ballard)
+          * Show infobar with control chars when Ctrl-^ is typed
+          * Put terminal in altscreen mode (Anders Kaseorg)
+          * Tell automake/Debian pkg about our checks (Anders Kaseorg)
+
+  * Platform support:
+          * OS X: Script to build a universal package (Peter Iannucci)
+          * FreeBSD: Fix build problems (Jimmy Olgeni)
+          * AIX: port by Anton Lundin
+          * Solaris with system curses (Anton Lundin)
+          * Cygwin and others: eliminate use of IO::Pty (Anton Lundin)
+
+  * Bug fixes:
+          * Fix bug (introduced in 1.2.3) where server stays around
+            if process quits while client is detached
+          * Clean up spurious entries from detached sessions warning
+  * Fix freeze when connectivity is one-directional for hours
+            (reported by Axel Beckert)
+          * Don't wipe title until a new one is set (sqweek)
+          * Eliminate memory leaks and cppcheck warnings (Anders Kaseorg)
+
+- Cleanup the dependencies a bit and explicitly name desired features.
+
+-------------------------------------------------------------------
+Sat Feb  9 00:58:38 UTC 2013 - crrodriguez@opensuse.org
+
+- Version 1.2.3 released.
+
+* Security improvements:
+* Use OpenSSL AES implementation
+* Update AES-OCB implementation (Keegan McAllister)
+* Don't let bad server dictate IP (Felix Groebert)
+
+* New features:
+* Client hops ports to survive challenging client-side firewall
+* Server stops sending to save client power (Daniel Drown)
+* Set DiffServ code point and ECN-capable (Dave Täht)
+* Slow down if explicit congestion notification received
+* Warn about unattached Mosh sessions on login
+* Compatible with KDE konsole (uses BEL to terminate OSC)
+* Improved heuristic about color of predicted characters
+
+* Bug fixes:
+* Improved performance on systems with expensive time
+* No longer choke on "ffff::" address for hosts with IPv6
+* More conservative MTU and datagram sizing
+
+* Platform support:
+* Build on Solaris and IllumOS (Timo Sirainen, Ira Cooper)
+* Build on ARM with gcc 4.7 (Alexander Chernyakhovsky)
+
+* Licensing changes:
+* Allow distribution on Apple App Stores
+* Allow linking with OpenSSL.
+
+- enable bash completion
+
+- Disable hardening, instead just use the distribution CFLAGS.
+ fstack-protector-all considerably slows down things.
+
+-------------------------------------------------------------------
+Tue Jul 31 19:57:00 UTC 2012 - sven@uebelacker.net
+
+- adding mosh service for SuSEfirewall2.d
+
+-------------------------------------------------------------------
+Thu Jun 21 12:49:00 UTC 2012 - fcastelli@suse.com
+
+- Update to v1.2.2
+  * Version 1.2.2 released.
+    - Remove warning on out-of-order/duplicated datagrams
+    - Add "experimental" prediction mode
+  * Version 1.2.1 released.
+    - Improve performance on lossy links.
+    - New diagnostic message when link is dead in only one direction.
+    - Use less CPU when link is down. (Keegan McAllister)
+    - Use much less CPU when application or mosh-server sends
+      large repeat counts (resolves CVE-2012-2385, reported by
+      Timo Juhani Lindfors).
+    - Use less memory when mosh-server is malicious.
+    - Fix vttest regression re: wrapping and tabs.
+    - Enable roundtrip verifier of terminal emulator correctness
+      when verbose.
+    - Remove skalibs as a dependency. (Keegan McAllister)
+    - Remove use of poll() and OS X poll workaround. (Keegan McAllister)
+    - Include bash_completion file. (ejeffrey)
+    - Include UFW firewall profile. (Fumihito YOSHIDA)
+    - Warning on out-of-order/duplicated datagrams (or failed nonce increment).
+    - Clearer error message on invalid port number.
+    - Cleanups to quit scenario when firewalled.
+
+-------------------------------------------------------------------
+Sat Apr 28 00:13:05 UTC 2012 - jeffm@suse.com
+
+- Update to 1.2
+  - Remove Boost as a dependency
+  - Add support for FreeBSD, Cygwin, RHEL/CentOS 5, OS X 10.5 on PPC.
+  - More verbose and helpful diagnostics. Server now has -v flag.
+  - Client now has --ssh= flag to set SSH options (like port)
+  - Remove skalibs as a dependency on Debian/Ubuntu
+  - Now passes locale-related env vars over the connection
+  - Fix startup script to no longer hang on some Macs
+  - Fix terminal emulation and argument parsing on FreeBSD
+  - Fix alignment problems on ARM
+  - Now prints message of the day
+  - Use binary hardening flags where available
+  - Responsiveness and CPU-usage improvements
+  - Several terminal-emulation improvements and bug fixes
+
+-------------------------------------------------------------------
+Tue Apr 17 08:23:03 UTC 2012 - fcastelli@suse.com
+
+- Fix license
+- Fix utempter-devel requirement for SLE
+
+-------------------------------------------------------------------
+Wed Apr 11 12:53:34 UTC 2012 - fcastelli@suse.com
+
+- Fix copyrights inside of the spec file.
+
+-------------------------------------------------------------------
+Tue Apr 10 16:31:20 UTC 2012 - fcastelli@suse.com
+
+- Add perl-IO-Tty requirement.
+
+-------------------------------------------------------------------
+Tue Apr 10 11:43:46 UTC 2012 - fcastelli@suse.com
+
+- Fix url of the project inside of the spec file
+
+-------------------------------------------------------------------
+Tue Apr 10 08:50:38 UTC 2012 - fcastelli@suse.com
+
+- Initial package (v1.1.3)
+

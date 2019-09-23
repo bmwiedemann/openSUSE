@@ -1,0 +1,49 @@
+Special for screen and its new TERM setting like TERM=screen.xterm-256color
+Map all "screen(-xxx)?.yyy(-zzz)?" to "screen" as well as map "konsole(-xxx)?"
+and "gnome(-xxx)?" to "xterm".
+
+This helps to get /etc/inputrc work for most users.
+
+---
+ lib/readline/bind.c |   19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+--- lib/readline/bind.c
++++ lib/readline/bind.c	2019-08-16 08:26:42.327029248 +0000
+@@ -1195,19 +1195,34 @@ parser_if (char *args)
+      word in ARGS is the same as the value stored in rl_readline_name. */
+   if (rl_terminal_name && _rl_strnicmp (args, "term=", 5) == 0)
+     {
+-      char *tem, *tname;
++      char *tem, *tname, *talias;
+ 
+-      /* Terminals like "aaa-60" are equivalent to "aaa". */
+       tname = savestring (rl_terminal_name);
++      /* Various terminal types of screen are equivalent to "screen" */
++      if (_rl_strnicmp (rl_terminal_name, "screen", 6) == 0)
++	{
++	  tem = strchr (tname, '.');
++	  if (tem)
++	    *tem = '\0';
++	}
++      /* Terminals like "aaa-60" are equivalent to "aaa". */
+       tem = strchr (tname, '-');
+       if (tem)
+ 	*tem = '\0';
+ 
++      /* Map terminal types "konsole" and "gnome" to "xterm" nowadays */
++      talias = tname;
++      if (_rl_stricmp("konsole", tname) == 0)
++	talias = "xterm";
++      if (_rl_stricmp("gnome", tname) == 0)
++	talias = "xterm";
++
+       /* Test the `long' and `short' forms of the terminal name so that
+ 	 if someone has a `sun-cmd' and does not want to have bindings
+ 	 that will be executed if the terminal is a `sun', they can put
+ 	 `$if term=sun-cmd' into their .inputrc. */
+       _rl_parsing_conditionalized_out = _rl_stricmp (args + 5, tname) &&
++					_rl_stricmp (args + 5, talias) &&
+ 					_rl_stricmp (args + 5, rl_terminal_name);
+       xfree (tname);
+     }

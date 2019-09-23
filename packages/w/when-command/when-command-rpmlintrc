@@ -1,0 +1,2 @@
+# program uses dlopen for libXss.so.1
+addFilter("explicit-lib-dependency")

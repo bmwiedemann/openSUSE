@@ -1,0 +1,414 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bb06e1c260340351ec522ecd2fc9c9f</srcmd5>
+    <version>8.2.6</version>
+    <time>1201001753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3db1bbf6468130afc4090647d087fd15</srcmd5>
+    <version>8.2.6</version>
+    <time>1207834099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7eff4a85ad37ded8989209f33c8c498b</srcmd5>
+    <version>8.3.1</version>
+    <time>1208796880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7be9dbdf84e8c8038fc0373d77e5c946</srcmd5>
+    <version>8.3.1</version>
+    <time>1210377484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a10af6f22362cfbbbf32d1893e83c213</srcmd5>
+    <version>8.3.1</version>
+    <time>1211245879</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7bec9b429d3582600c651e9b9e098aab</srcmd5>
+    <version>8.3.1</version>
+    <time>1220052282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>113407440ef006492d3f9a7047c4ce41</srcmd5>
+    <version>8.3.1</version>
+    <time>1220675110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bdc8dbd763b223b5a82eb9ffa17a8fd5</srcmd5>
+    <version>8.3.3</version>
+    <time>1220884198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b421024cff856919b5b395b5c39c5d1c</srcmd5>
+    <version>8.3.4</version>
+    <time>1222434586</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4e27e08af831713256cadc82b7f82123</srcmd5>
+    <version>8.3.5</version>
+    <time>1226068850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>23623a420d048271459a6fb55e4d112a</srcmd5>
+    <version>8.3.5</version>
+    <time>1231462310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3cd0c03ac0e624863810b0a9ba8a2ecc</srcmd5>
+    <version>8.3.7</version>
+    <time>1242417961</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e1b5a26ea496d225fcaec378caaf6b84</srcmd5>
+    <version>8.4.0</version>
+    <time>1248880624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>86812700643a732421d111281ab5a6ea</srcmd5>
+    <version>8.4.1</version>
+    <time>1253133632</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 20456 from user rmax
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>86812700643a732421d111281ab5a6ea</srcmd5>
+    <version>8.4.1</version>
+    <time>1253133632</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 20456 from user rmax
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ab14a39ed95627d8c2e14332c4164b4c</srcmd5>
+    <version>8.4.2</version>
+    <time>1262892459</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 28233 from user rmax
+</comment>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f0291f164aacb552fd552f3a32781724</srcmd5>
+    <version>8.4.2</version>
+    <time>1263481356</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 29531 from user coolo
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4bc4d71ab9da4c334780ce1ac246ca08</srcmd5>
+    <version>8.4.2</version>
+    <time>1265912070</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 31920 from user rmax
+</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f674d6a42d84707521293f9286ce637c</srcmd5>
+    <version>8.4.2</version>
+    <time>1268925759</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bd011f7f24bbaab53b3ba35f402f14f9</srcmd5>
+    <version>8.4.3</version>
+    <time>1272122122</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 38684 from user coolo
+</comment>
+    <requestid>38684</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e7f9451c1caade02f5c069fb2a462e98</srcmd5>
+    <version>8.4.3</version>
+    <time>1272486688</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 38791 from user rmax
+</comment>
+    <requestid>38791</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4a0c3a31311934cadc9f9149b5d5908d</srcmd5>
+    <version>8.4.4</version>
+    <time>1276244757</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 41333 from user rmax
+</comment>
+    <requestid>41333</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>a1e2c36efd9d015b74e5759e8b548582</srcmd5>
+    <version>8.4.4</version>
+    <time>1277135455</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database:postgresql/postgresql based on submit request 41737 from user coolo
+</comment>
+    <requestid>41737</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a1e2c36efd9d015b74e5759e8b548582</srcmd5>
+    <version>8.4.4</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>a1e2c36efd9d015b74e5759e8b548582</srcmd5>
+    <version>8.4.4</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>a1e2c36efd9d015b74e5759e8b548582</srcmd5>
+    <version>8.4.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ea4b104958ddda73cfc01fdeb470f11b</srcmd5>
+    <version>9.0.3</version>
+    <time>1298026591</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61583 from user rmax
+</comment>
+    <requestid>61583</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>955be913217ed7c66d8efe37b4795414</srcmd5>
+    <version>9.0.3</version>
+    <time>1298026601</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61583
+</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>44d497c753bc2efbe1613e1a8440c72a</srcmd5>
+    <version>9.0.3</version>
+    <time>1298244165</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62168 from user coolo
+</comment>
+    <requestid>62168</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>aa83e53c914f7cdeaf23c019fe4343ff</srcmd5>
+    <version>9.0.3</version>
+    <time>1298244172</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62168
+</comment>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>8ebf82f73c562c67fe6c1cf6ced08b22</srcmd5>
+    <version>9.0.3</version>
+    <time>1298247188</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62224 from user oertel
+</comment>
+    <requestid>62224</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>cae9afdd19d0038c42980f3e538852f0</srcmd5>
+    <version>9.0.3</version>
+    <time>1298247195</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62224
+</comment>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>16bfa99a685273e9576a5057c5178cb4</srcmd5>
+    <version>9.0.4</version>
+    <time>1306487670</time>
+    <user>saschpe</user>
+    <comment>Fix build with Perl 5.14</comment>
+    <requestid>71411</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>60268fcc71f0c3ae62f3ac9714f96214</srcmd5>
+    <version>9.0.4</version>
+    <time>1306488652</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>ec85a7119514e8a74c7f7ecbec59cb57</srcmd5>
+    <version>9.0.4</version>
+    <time>1317543935</time>
+    <user>lrupp</user>
+    <comment>- Add postgresql-devel to baselibs (forwarded request 82527 from jengelh)</comment>
+    <requestid>84796</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b1b5655ebd18d1b4a700e0be99f80ed3</srcmd5>
+    <version>9.1.1</version>
+    <time>1317912320</time>
+    <user>oertel</user>
+    <comment>Version 9.1.1</comment>
+    <requestid>86836</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>b1b5655ebd18d1b4a700e0be99f80ed3</srcmd5>
+    <version>9.1.1</version>
+    <time>1319182366</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>082fc20ff0818696448fde834285513d</srcmd5>
+    <version>9.1.1</version>
+    <time>1323193961</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>fb049f13d93e8e3ccf5837eaf5b60baa</srcmd5>
+    <version>9.1.1</version>
+    <time>1323193962</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>fb049f13d93e8e3ccf5837eaf5b60baa</srcmd5>
+    <version>9.1.1</version>
+    <time>1340184013</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3e25d84a2bef53e6d324f4474c118ec7</srcmd5>
+    <version>9.2</version>
+    <time>1357916334</time>
+    <user>coolo</user>
+    <comment>Adopt the new packaging scheme. History of the former postgresql package has moved to postgresql92.</comment>
+    <requestid>147674</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3e25d84a2bef53e6d324f4474c118ec7</srcmd5>
+    <version>9.2</version>
+    <time>1359109944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>3e25d84a2bef53e6d324f4474c118ec7</srcmd5>
+    <version>9.2</version>
+    <time>1379664054</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2cc82aecd85c9598eb04f000545e5a7e</srcmd5>
+    <version>9.3</version>
+    <time>1380297498</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200798</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>0e499d3b75c8dcc43737f957ea90cb90</srcmd5>
+    <version>9.2</version>
+    <time>1380468287</time>
+    <user>coolo</user>
+    <comment>revert broken update</comment>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>2cc82aecd85c9598eb04f000545e5a7e</srcmd5>
+    <version>9.3</version>
+    <time>1391413945</time>
+    <user>coolo</user>
+    <comment>- Bump version and defaultpackage to 9.3.</comment>
+    <requestid>213442</requestid>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>2cc82aecd85c9598eb04f000545e5a7e</srcmd5>
+    <version>9.3</version>
+    <time>1409302733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>dd2003d4de2936bf4e23a7b41598986b</srcmd5>
+    <version>9.4</version>
+    <time>1445675108</time>
+    <user>coolo</user>
+    <comment>- Move ~postgres/.bash_profile to postgresql-server to avoid a
+  file conflict between the versioned server packages.
+
+- Bump version and defaultpackage to 9.4.</comment>
+    <requestid>334928</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8fa4aa03d542ff7b30837c4e282a2a10</srcmd5>
+    <version>9.6</version>
+    <time>1487259930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>456854</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e7afa8f5ffb2f1c5416978b3c472bc6d</srcmd5>
+    <version>10</version>
+    <time>1511688798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545165</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>08babb822f264adbafa8fcc4337bde5e</srcmd5>
+    <version>10</version>
+    <time>1513342910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556945</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>3a5abc91bc67f3094e87e23b9ca40835</srcmd5>
+    <version>10</version>
+    <time>1516358943</time>
+    <user>dimstar_suse</user>
+    <comment>- postgresql-script: /etc/sysconfig/language is deprecated, use the
+  locale that was inherited from systemd instead for initializing
+  a new database instance (boo#1074988).</comment>
+    <requestid>566886</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>c6c4b08901d9f9e996875bb511f7d1fc</srcmd5>
+    <version>10</version>
+    <time>1525697619</time>
+    <user>dimstar_suse</user>
+    <comment>fix for update-alternatives</comment>
+    <requestid>604586</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>fc7dce40599f71f30ddab8ce956b7952</srcmd5>
+    <version>11</version>
+    <time>1552380543</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop use of $FIRST_ARG in .spec
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+- Change the persmissions for /var/run/postgresql to 1775, so that
+  the directory can only be used by users in the postgres group
+  (bsc#1123886).</comment>
+    <requestid>678945</requestid>
+  </revision>
+</revisionlist>

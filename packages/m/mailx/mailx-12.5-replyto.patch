@@ -1,0 +1,212 @@
+--- collect.c
++++ collect.c	2006-07-20 11:21:32.000000000 +0000
+@@ -720,7 +720,7 @@ cont:
+ 			 * Grab a bunch of headers.
+ 			 */
+ 			do
+-				grabh(hp, GTO|GSUBJECT|GCC|GBCC,
++				grabh(hp, GTO|GSUBJECT|GCC|GBCC|GREPLYTO,
+ 						value("bsdcompat") != NULL &&
+ 						value("bsdorder") != NULL);
+ 			while (hp->h_to == NULL);
+@@ -743,13 +743,21 @@ cont:
+ 			break;
+ 		case 's':
+ 			/*
+-			 * Set the Subject list.
++			 * Set the Subject line.
+ 			 */
+ 			cp = &linebuf[2];
+ 			while (whitechar(*cp & 0377))
+ 				cp++;
+ 			hp->h_subject = savestr(cp);
+ 			break;
++		case 'R':
++			/*
++			 * Add to the Reply-To list.
++			 */
++			cp = &linebuf[2];
++			while ((hp->h_replyto = checkaddrs(cat(hp->h_replyto,
++					sextract(&linebuf[2], GREPLYTO|GFULL))))
++				== NULL);
+ 		case '@':
+ 			/*
+ 			 * Edit the attachment list.
+--- def.h
++++ def.h	2006-07-20 11:21:32.000000000 +0000
+@@ -393,7 +393,7 @@ enum gfield {
+ 	GUA	= 128,		/* User-Agent field */
+ 	GMIME	= 256,		/* MIME 1.0 fields */
+ 	GMSGID	= 512,		/* a Message-ID */
+-	/*	  1024 */	/* unused */
++	GREPLYTO= 1024,		/* a Reply-To field */
+ 	GIDENT	= 2048,		/* From:, Reply-To: and Organization: field */
+ 	GREF	= 4096,		/* References: field */
+ 	GDATE	= 8192,		/* Date: field */
+@@ -403,7 +403,7 @@ enum gfield {
+ 	GFILES	= 131072	/* include filename addresses */
+ };
+ 
+-#define	GMASK	(GTO|GSUBJECT|GCC|GBCC)	/* Mask of places from whence */
++#define	GMASK	(GTO|GSUBJECT|GCC|GBCC|GREPLYTO)	/* Mask of places from whence */
+ 
+ #define	visible(mp)	(((mp)->m_flag&(MDELETED|MHIDDEN|MKILL))==0|| \
+ 				dot==(mp) && (mp)->m_flag&MKILL)
+--- extern.h
++++ extern.h	2011-05-13 09:07:33.891926124 +0000
+@@ -457,7 +457,7 @@ int send(struct message *mp, FILE *obuf,
+ 		char *prefix, enum sendaction action, off_t *stats);
+ /* sendout.c */
+ char *makeboundary(void);
+-int mail(struct name *to, struct name *cc, struct name *bcc,
++int mail(struct name *to, struct name *cc, struct name *bcc, struct name *replyto,
+ 		struct name *smopts, char *subject, struct attachment *attach,
+ 		char *quotefile, int recipient_record, int tflag, int Eflag);
+ int sendmail(void *v);
+--- mailx.1
++++ mailx.1	2011-05-13 09:11:27.640426515 +0000
+@@ -43,7 +43,7 @@ mailx \- send and receive Internet mail
+ .PD 0
+ .HP
+ .ad l
+-\fBmailx\fR [\fB\-BDdEFintv~\fR]
++\fBmailx\fR [\fB\-BDdEFintv~\fR] [\fB\-R\fR [\fIaddress\fR]]
+ [\fB\-s\fI\ subject\fR] [\fB\-a\fI\ attachment\fR ]
+ [\fB\-c\fI\ cc-addr\fR] [\fB\-b\fI\ bcc-addr\fR] [\fB\-r\fI\ from-addr\fR]
+ [\fB\-h\fI\ hops\fR]
+@@ -203,8 +203,12 @@ it is recommended to set the
+ .I from
+ variable directly instead.
+ .TP
++.BI \-R\ \fR|\fB\ \-R \ address
++Without any argument any folders will be opened read-only.
++With argument an reply-to adress is specifed on command line.
++Only the first argument after the
+ .B \-R
+-Opens any folders read-only.
++flag is used as the address.
+ .TP
+ .BI \-s \ subject
+ Specify subject on command line (only the first argument after the
+@@ -2131,6 +2135,9 @@ copying the message to
+ `dead.letter' in the user's home directory
+ if save is set.
+ .TP
++.BI ~R string
++Use string as the Reply-To field.
++.TP
+ .BI ~r filename
+ Read the named file into the message.
+ .TP
+--- main.c
++++ main.c	2011-05-13 09:18:29.747926305 +0000
+@@ -52,6 +52,11 @@ static char sccsid[] = "@(#)main.c	2.51
+  * Note: We set egid to realgid ... and only if we need the egid we will
+  *       switch back temporary.  Nevertheless, I do not like seg faults.
+  *       Werner Fink, <werner@suse.de>
++ * ---
++ * We want to set reply-to on the command line to deal with antispam rules
++ * and adresses behind firewalls.
++ * 2000-07-19, poc@pocnet.net
++ * Changes by werner@suse.de (move Option r to R, make ~R work)
+  */
+ 
+ 
+@@ -87,9 +92,9 @@ static void setscreensize(int dummy);
+ int 
+ main(int argc, char *argv[])
+ {
+-	const char optstr[] = "A:BHEFINVT:RS:a:b:c:dDefh:inqr:s:tu:v~";
++	const char optstr[] = "A:BHEFINVT:R::S:a:b:c:dDefh:inqr:s:tu:v~";
+ 	int i, existonly = 0, headersonly = 0, sendflag = 0;
+-	struct name *to, *cc, *bcc, *smopts;
++	struct name *to, *cc, *bcc, *replyto, *smopts;
+ 	struct attachment *attach;
+ 	char *subject, *cp, *ef, *qf = NULL, *fromaddr = NULL, *Aflag = NULL;
+ 	char nosrc = 0;
+@@ -179,6 +184,8 @@ main(int argc, char *argv[])
+ 	attach = NULL;
+ 	smopts = NULL;
+ 	subject = NULL;
++	replyto = NULL;
++
+ 	while ((i = getopt(argc, argv, optstr)) != EOF) {
+ 		switch (i) {
+ 		case 'V':
+@@ -348,12 +355,18 @@ main(int argc, char *argv[])
+ 			Aflag = optarg;
+ 			break;
+ 		case 'R':
+-			Rflag = 1;
++			/*
++			 * Set the Reply-to Address (as who we send mail)
++			 */
++			if (optarg && *optarg)
++				replyto = checkaddrs(cat(replyto, extract(optarg, GREPLYTO|GFULL)));
++			else
++				Rflag = 1;
+ 			break;
+ 		case '?':
+ usage:
+ 			fprintf(stderr, catgets(catd, CATSET, 135,
+-"Usage: %s -eiIUdEFntBDNHRV~ -T FILE -u USER -h hops -r address -s SUBJECT -a FILE -q FILE -f FILE -A ACCOUNT -b USERS -c USERS -S OPTION users\n"), progname);
++"Usage: %s -eiIUdEFntBDNHV~ [-R [reply-address]] -T FILE -u USER -h hops -r address -s SUBJECT -a FILE -q FILE -f FILE -A ACCOUNT -b USERS -c USERS -S OPTION users\n"), progname);
+ 			exit(2);
+ 		}
+ 	}
+@@ -387,6 +400,10 @@ usage:
+ 		fprintf(stderr, "The -R option is meaningless in send mode.\n");
+ 		goto usage;
+ 	}
++	if (replyto && to == NULL) {
++		fprintf(stderr, "The reply-to is meaningless not in send mode.\n");
++		goto usage;
++	}
+ 	if (Iflag && ef == NULL) {
+ 		fprintf(stderr, catgets(catd, CATSET, 204,
+ 					"Need -f with -I.\n"));
+@@ -441,8 +458,8 @@ usage:
+ 	if (fromaddr)
+ 		assign("from", fromaddr);
+ 	if (!rcvmode) {
+-		mail(to, cc, bcc, smopts, subject, attach, qf, Fflag, tflag,
+-		    Eflag);
++		mail(to, cc, bcc, replyto, smopts, subject, attach, qf,
++		    Fflag, tflag, Eflag);
+ 		/*
+ 		 * why wait?
+ 		 */
+--- sendout.c
++++ sendout.c	2011-05-13 09:19:01.288426393 +0000
+@@ -712,7 +712,7 @@ savemail(char *name, FILE *fi)
+  * which does all the dirty work.
+  */
+ int 
+-mail(struct name *to, struct name *cc, struct name *bcc,
++mail(struct name *to, struct name *cc, struct name *bcc, struct name *replyto,
+ 		struct name *smopts, char *subject, struct attachment *attach,
+ 		char *quotefile, int recipient_record, int tflag, int Eflag)
+ {
+@@ -731,6 +731,7 @@ mail(struct name *to, struct name *cc, s
+ 		head.h_to = to;
+ 		head.h_cc = cc;
+ 		head.h_bcc = bcc;
++		head.h_replyto = replyto;
+ 	}
+ 	head.h_attach = attach;
+ 	head.h_smopts = smopts;
+--- tty.c
++++ tty.c	2006-07-20 11:21:39.000000000 +0000
+@@ -338,6 +338,12 @@ grabh(struct header *hp, enum gfield gfl
+ 		hp->h_organization = rtty_internal("Organization: ",
+ 				hp->h_organization);
+ 	}
++	if (gflags & GREPLYTO) {
++		TTYSET_CHECK(hp->h_replyto)
++		hp->h_replyto = checkaddrs(sextract(rtty_internal("Reply-To: ",
++						   detract(hp->h_replyto, comma)),
++					GREPLYTO|GFULL));
++	}
+ 	if (!subjfirst)
+ 		GRAB_SUBJECT
+ out:

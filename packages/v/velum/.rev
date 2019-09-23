@@ -1,0 +1,357 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e529a3f272efcbabb32e7c2226a4e8d</srcmd5>
+    <version>3.0.0+dev+git_r625_12fea6362f44ad192e38171fbe1538d07afcac3f</version>
+    <time>1517234365</time>
+    <user>dimstar_suse</user>
+    <comment>re-submission with dropped rubygem-kubeclient dependencies</comment>
+    <requestid>570508</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1446cc9d6e4eb3ab6af7def8338f4124</srcmd5>
+    <version>3.0.0+dev+git_r629_307ef40804ab6fb6da4f650dace1b49846d37605</version>
+    <time>1517323564</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>571059</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0ef399e0cef530f64b67b55de12ce26</srcmd5>
+    <version>3.0.0+dev+git_r633_b8e974fd577e29eb7be871a0cbb661bacb511dc7</version>
+    <time>1517517064</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>571724</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0fc52bec4d133f180a99e04377b0f3c0</srcmd5>
+    <version>3.0.0+dev+git_r636_348aa62ece758fd9933ade7f585ec04e8d8d32a4</version>
+    <time>1517606575</time>
+    <user>dimstar_suse</user>
+    <comment>- Commit b58ccc8 by Maximilian Meister mmeister@suse.de
+ relax gems
+ 
+ Signed-off-by: Maximilian Meister &lt;mmeister@suse.de&gt;
+ 
+ Commit a02e6b9 by Maximilian Meister mmeister@suse.de
+ use bundler dependency script from darix
+ 
+ also hardcode the native dependencies in the spec template as they likely
+ won't change that often
+ 
+ Signed-off-by: Maximilian Meister &lt;mmeister@suse.de&gt;
+- patch modifications:
+  + 1_nodev.gem.patch
+</comment>
+    <requestid>572010</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31d8eed5bd5c1bc3c0e8e644850b7421</srcmd5>
+    <version>3.0.0+dev+git_r644_b0361e81be2d64b10de6b8c676dce394044f164a</version>
+    <time>1518187873</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>574233</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37ae31b8b792bdc995ded0625cbef8a6</srcmd5>
+    <version>3.0.0+dev+git_r646_67806291a2f2903835f76b154b3e1b4811873011</version>
+    <time>1518950569</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>577057</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c82a9f86f5115106679736f999f987d7</srcmd5>
+    <version>3.0.0+dev+git_r650_4eb2d26dfbef4dd92b3b4685f1704ed8787d5732</version>
+    <time>1519308211</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>578943</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>84d2bbfefde960707ee326f15f1ad1f0</srcmd5>
+    <version>3.0.0+dev+git_r657_5ff58ad3ec6b1b88d02799820e6e06af020d24b9</version>
+    <time>1519684025</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>580259</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d6150eaa8bdcb5f3b77081ef44077875</srcmd5>
+    <version>3.0.0+dev+git_r659_6ac641fcbeac276b2a74c5797714694a5f9e21df</version>
+    <time>1519747193</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>580512</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45ae810009b5abddc82f6837972a9f17</srcmd5>
+    <version>3.0.0+dev+git_r661_5c6b6e3523e7ef1bf74aad6c4121e4720ac72c8c</version>
+    <time>1519902519</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>581543</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aa99564b270a475bda5ac288201f56f6</srcmd5>
+    <version>3.0.0+dev+git_r666_49d2721eff73ac568a7b0632a322b4d4face3f5e</version>
+    <time>1520588848</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>584616</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ab9e73d5be530680a63835c0ad8498e7</srcmd5>
+    <version>3.0.0+dev+git_r670_a808a80f6484c097cb87f9e380fdf0b646981986</version>
+    <time>1520933051</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>585869</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5d1fc906880653d7bf671b778422a201</srcmd5>
+    <version>3.0.0+dev+git_r672_9f7ffab6f82eadc94ec36a8a32e1e70e5aa94bcc</version>
+    <time>1521052841</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>586793</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c6b359e6375c7fd8636c0fe566bcc56b</srcmd5>
+    <version>3.0.0+dev+git_r674_5b21e6e383d86fce7989f811a1113b477b06e3cc</version>
+    <time>1521193449</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>587553</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1a93413894b4f4af6ab15535d38ecf5b</srcmd5>
+    <version>3.0.0+dev+git_r680_b67a614f1900c58674e0de37797339511f040afe</version>
+    <time>1521716894</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>589837</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0b30cc8280905b330d45e4e4a197f504</srcmd5>
+    <version>3.0.0+dev+git_r691_a1b9bbaa7ca9523c58c3a76c31a619683d3e7d35</version>
+    <time>1522062548</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>590738</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a3fd41ac2bf9c18a325e456e0523f7a</srcmd5>
+    <version>3.0.0+dev+git_r695_2c7f4d4eda39b1fcff1ccea959177a200da9c718</version>
+    <time>1522225947</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>591306</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9cff5b3a8d2499c831199e8dfd89368</srcmd5>
+    <version>3.0.0+dev+git_r703_df2128664b7874c6a1ace8bd622484e95db32af9</version>
+    <time>1522935203</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>593478</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>43956e9494997035a0c7a53ba849484a</srcmd5>
+    <version>3.0.0+dev+git_r717_cf9fe3cc189a6efc1b972ff3e7a724202bb75f7b</version>
+    <time>1523448158</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>595184</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>81f20245747248f3d2b96e7c874438a0</srcmd5>
+    <version>3.0.0+dev+git_r721_b3b345cea8107a4333b73fbbe8574d8e53705d5c</version>
+    <time>1523616736</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>596187</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>35004b6c395e7dbe508d6d918f4f3e4f</srcmd5>
+    <version>3.0.0+dev+git_r723_2e93fa9a1dd8002ae016b8e5996b603ccd0c0dc1</version>
+    <time>1523886359</time>
+    <user>dimstar_suse</user>
+    <comment>- Commit e46dca7 by Michal Jura mjura@suse.com
+ Skip worker_bootstrap when cloud_framework is openstack, bsc#1089652
+ 
+ We don't provide openstack-types.json file for OpenStack cloud framework. We
+ have to skip worker_bootstrap function from SetupController class.
+</comment>
+    <requestid>596982</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cb395fc1911074315b2b8348ee1fac4d</srcmd5>
+    <version>3.0.0+dev+git_r725_0f32ab90393bfb78110ac53bc9cb3a914a97433c</version>
+    <time>1524238237</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>598537</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>72f4d55b1d0e98a7b4a2826aaac0742e</srcmd5>
+    <version>3.0.0+dev+git_r734_f7dc070fb3c2fa61475e52ed2fb91ca204727921</version>
+    <time>1524400837</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>599484</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dae4f5bd06a9ff1d02f7a2263adb4485</srcmd5>
+    <version>3.0.0+dev+git_r738_10fcaf450fd1ac030569f55335e6ba1f31662c8e</version>
+    <time>1524838211</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>601890</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0f422e9d11a76b7e32ee7ee44a8a2b3f</srcmd5>
+    <version>4.0.0+dev+git_r744_91ff022f1f12c133c9ccf131aa97bdd9091e4e50</version>
+    <time>1525960249</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>605707</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>41103f83581233be114f32d3046a75d0</srcmd5>
+    <version>4.0.0+dev+git_r754_6c7835c7a3cc0999ebebf57517c32bf35bbd8bd0</version>
+    <time>1526023085</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>606231</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ca7e73ba60bc7d7b02297ef3986b375b</srcmd5>
+    <version>4.0.0+dev+git_r754_6c7835c7a3cc0999ebebf57517c32bf35bbd8bd0</version>
+    <time>1526220363</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>606452</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>165a7ba952f80e0e1ce0f45b55a6de5e</srcmd5>
+    <version>4.0.0+dev+git_r779_59c041df8d903e1d017edbdd1063c3f76492b733</version>
+    <time>1527001369</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>611201</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0f1a6c0943966b12ff4f8d69901be3a2</srcmd5>
+    <version>4.0.0+dev+git_r797_7e1a29814f26359f9f065d99f101f1ba80ec93ab</version>
+    <time>1527583463</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>612255</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>37698eb36ffad2370045426122bb1b23</srcmd5>
+    <version>4.0.0+dev+git_r808_1dbbecc8a60ef4939b41f048eaf80b2922d9d8b3</version>
+    <time>1527934278</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>613134</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>11db412f7239d01501e4957e20d709fd</srcmd5>
+    <version>4.0.0+dev+git_r812_70ac7085850ee488a3bed38990076c820f6cd395</version>
+    <time>1528195978</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>614021</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c9ffcf34ad44ae49ea5403708cf8cf29</srcmd5>
+    <version>4.0.0+dev+git_r821_b85325010440e29c1c005ba296236091b000cd15</version>
+    <time>1528492480</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>614309</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8335868a86b931314567f7c6df667e1a</srcmd5>
+    <version>4.0.0+dev+git_r831_82884a6c15046fbb438b5dea8fb8a1c01b2360f0</version>
+    <time>1529066798</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>616509</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d326a460877756a341681dba423c5c54</srcmd5>
+    <version>4.0.0+dev+git_r835_cfb20e9771a87f9c7a4506c4da721db60497d0f0</version>
+    <time>1529501351</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>617470</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bb8df8cbd506f8f14355d19ef67c1f91</srcmd5>
+    <version>4.0.0+dev+git_r840_1b17eeef3e92c6e2dbfcfcd38cf31168fae9644a</version>
+    <time>1529667329</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>618281</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>11e3a28da65642094b63af563f6aefd5</srcmd5>
+    <version>4.0.0+dev+git_r842_80000d63fed98ba9f7c2320f8180856e0d756e64</version>
+    <time>1530087638</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>618554</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>95557057cca847e3fa08952f259e454f</srcmd5>
+    <version>4.0.0+dev+git_r846_18067aa11e7ac6c2d1d95169d3425687fe70ad91</version>
+    <time>1530304534</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>619579</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6b6395bc9c6e6bd6bf7333a9bc3d1862</srcmd5>
+    <version>4.0.0+dev+git_r849_5a47921acc39abe81892cc5a47bd8f921ae52fb5</version>
+    <time>1530653685</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>620394</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7bbe2086be8ed8eaea39bdf037534ed8</srcmd5>
+    <version>4.0.0+dev+git_r857_d2c6971de32315a433620d76da0a757677fa0594</version>
+    <time>1531470098</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>622263</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ccfb1f6a1bdb1bfbe0e7004855e8bc07</srcmd5>
+    <version>4.0.0+dev+git_r859_b55671441cd42c71da60f5c1dab26591651f4af1</version>
+    <time>1532361755</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>624698</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7f661d13590c0bdc7eb1844964d8392f</srcmd5>
+    <version>4.0.0+dev+git_r863_622d86735c2699c568fa8881c0d94cd4bf448d1b</version>
+    <time>1533549286</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627588</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2fff518928570e690331ec26fb681c94</srcmd5>
+    <version>4.0.0+dev+git_r940_e589023f00ba7897b32676d7be6938e270b4e7bb</version>
+    <time>1539869932</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>642741</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="185">
+    <srcmd5>43754b157140cd52aa108ea27ec4cd8a</srcmd5>
+    <version>0.7.0</version>
+    <time>1336653095</time>
+    <user>coolo</user>
+    <comment>Moving M17N/cm-unicode to M17N:fonts/cm-unicode-fonts.</comment>
+    <requestid>120561</requestid>
+  </revision>
+  <revision rev="2" vrev="186">
+    <srcmd5>27170ec79c7288e8e215311cb770817e</srcmd5>
+    <version>0.7.0</version>
+    <time>1338016935</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122117</requestid>
+  </revision>
+  <revision rev="3" vrev="188">
+    <srcmd5>27170ec79c7288e8e215311cb770817e</srcmd5>
+    <version>0.7.0</version>
+    <time>1340183240</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="189">
+    <srcmd5>938f96ddc4794ba5facc560ebe3de026</srcmd5>
+    <version>0.7.0</version>
+    <time>1347617717</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133923</requestid>
+  </revision>
+  <revision rev="5" vrev="191">
+    <srcmd5>938f96ddc4794ba5facc560ebe3de026</srcmd5>
+    <version>0.7.0</version>
+    <time>1359108754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="193">
+    <srcmd5>938f96ddc4794ba5facc560ebe3de026</srcmd5>
+    <version>0.7.0</version>
+    <time>1379662121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="195">
+    <srcmd5>938f96ddc4794ba5facc560ebe3de026</srcmd5>
+    <version>0.7.0</version>
+    <time>1409300653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,363 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95bad53115ee304d018b1f7c9739b2a1</srcmd5>
+    <version>1.5.99.903</version>
+    <time>1336471298</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115417</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9052c230f6fa7b83a00b8d481f1fbb02</srcmd5>
+    <version>1.6.1</version>
+    <time>1337195463</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.1:
+  + Fix wrong conversion causing coasting to be triggered on almost
+    all scroll events.
+  + Fix bug where, on clickpads, moving the clicking finger out of
+    the soft button area caused erroneous button events.
+- Rebase xf86-input-synaptics-wait.diff,
+  xf86-input-synaptics-add-clickpad-support.diff,
+  xf86-input-synaptics-add-led-support.diff,
+  xf86-input-synaptics-fix-clickpad-capabilities.diff,
+  xf86-input-synaptics-filter-bogus-coord.diff: this is needed
+  because of whitespace changes in the code.
+
+- Update to version 1.6.0:
+  + Fix coasting for negative scroll directions.
+  + Fix issues on resuming after suspend.
+  + Documentation fixes.
+  + Build fixes.
+- Changes from version 1.5.99.904:
+  + Ensure hw millis are monotonic.
+  + Don't release the button on TS_3 if TapAndDrag is disabled.
+  + Various scroll-related fixes.
+  + Various coasting-related fixes.
+  + Several other bug fixes.
+- Rebase xf86-input-synaptics-clickpad-doc-update.diff and
+  xf86-input-synaptics-filter-bogus-coord.diff.</comment>
+    <requestid>120916</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>49b5d8f56d6f881693299d813b9e1e23</srcmd5>
+    <version>1.6.1</version>
+    <time>1339352427</time>
+    <user>coolo</user>
+    <comment>- Remove obsoleted patches and revive LED double-tap (bnc#765524)
+  * Remove obsoleted clickpad patches:
+    xf86-input-synaptics-add-clickpad-support.diff
+    xf86-input-synaptics-fix-clickpad-capabilities.diff
+    xf86-input-synaptics-clickpad-doc-update.diff
+  * Remove obsoleted stability patches:
+    xf86-input-synaptics-filter-bogus-coord.diff
+    xf86-input-synaptics-move-threshold.diff
+  * Revive LED double-tap patch:
+    xf86-input-synaptics-led-double-tap.diff</comment>
+    <requestid>123890</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f70eb45de462f2044178b1e5f014ced</srcmd5>
+    <version>1.6.2</version>
+    <time>1340033750</time>
+    <user>coolo</user>
+    <comment>Update to version 1.6.2 (forwarded request 124939 from klausi123)</comment>
+    <requestid>125000</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3f70eb45de462f2044178b1e5f014ced</srcmd5>
+    <version>1.6.2</version>
+    <time>1340184345</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>901d927b14963423697dc5472b7737aa</srcmd5>
+    <version>1.6.2</version>
+    <time>1341168846</time>
+    <user>coolo</user>
+    <comment>- Fix double-tap LED behavior (bnc#768506)
+- Enable tap-to-click as default (bnc#722457) (forwarded request 126648 from tiwai)</comment>
+    <requestid>126667</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>62387336edb5473988dd9fc4fdba589a</srcmd5>
+    <version>1.6.2</version>
+    <time>1343735171</time>
+    <user>coolo</user>
+    <comment>- Drop broken LED double-tap patches (bnc#768506,bnc#765524) (forwarded request 128979 from tiwai)</comment>
+    <requestid>129428</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>1e75b07e5a0a6cc1bdf379ec37150c2c</srcmd5>
+    <version>1.6.2</version>
+    <time>1357632947</time>
+    <user>coolo</user>
+    <comment>- xf86-input-synaptics-Reset-num_active_touches-on-DeviceOff-52496.patch
+  * Reset num_active_touches on DeviceOff (bnc#779452, fdo#52496)</comment>
+    <requestid>146964</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>541c1e3957fe9e1c843c9f7e9a9f2234</srcmd5>
+    <version>1.6.2</version>
+    <time>1358874420</time>
+    <user>coolo</user>
+    <comment>- Use tapTwoFingers and tapThreeFingers for leftMouse and 
+  middleMouse click respectively. (bnc#799455) (forwarded request 149184 from scarabeus_iv)</comment>
+    <requestid>149356</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>541c1e3957fe9e1c843c9f7e9a9f2234</srcmd5>
+    <version>1.6.2</version>
+    <time>1359110607</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f0fa992dfa2efb7a62c9d05a1e245f2f</srcmd5>
+    <version>1.6.3</version>
+    <time>1360008398</time>
+    <user>coolo</user>
+    <comment>- xf86-input-synaptics 1.6.3
+  * Compared to 1.6.2, we've had a memory leak fixed, better
+    behaviour for synaptics soft buttons and, most importantly,
+    a fix to reset the touch state after suspend.
+- obsoletes xf86-input-synaptics-Reset-num_active_touches-on-DeviceOff-52496.patch</comment>
+    <requestid>151078</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dddcd7f944b92da6766d925d71e853ad</srcmd5>
+    <version>1.7.0</version>
+    <time>1365175829</time>
+    <user>coolo</user>
+    <comment>update to 1.7.0 (forwarded request 162126 from tobijk)</comment>
+    <requestid>162158</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>706567f4ee100ae710c690608e5446db</srcmd5>
+    <version>1.7.1</version>
+    <time>1369642280</time>
+    <user>coolo</user>
+    <comment>update to version 1.7.1 (forwarded request 175589 from tobijk)</comment>
+    <requestid>176248</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>706567f4ee100ae710c690608e5446db</srcmd5>
+    <version>1.7.1</version>
+    <time>1379665019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5a549cce6d8bd613fbd656ac8f7d3ea4</srcmd5>
+    <version>1.7.2</version>
+    <time>1386779915</time>
+    <user>coolo</user>
+    <comment>update to version 1.7.2 (forwarded request 210090 from tobijk)</comment>
+    <requestid>210413</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f459b1a9a452e828f5bfae4940a97e2d</srcmd5>
+    <version>1.7.3</version>
+    <time>1389726101</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7.3
+  * Just one fix for the stable branch, fixing the #define for
+    server 1.15 (and newer). A bad ABI detection check enabled
+    driver scaling on input ABI 20, causing sluggish pointer
+    behaviour.</comment>
+    <requestid>213691</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>09fa0ef956ad58f2ab88a30b697117bf</srcmd5>
+    <version>1.7.3</version>
+    <time>1393008204</time>
+    <user>coolo</user>
+    <comment>- n_xf86-input-synaptics-xorg.conf.d_snippet.diff: disable
+  &quot;HorizEdgeScroll&quot; instead of setting &quot;HorizScrollDelta&quot; to 0
+  (bnc#864664, fdo#75074)
+- adapted n_xf86-input-synaptics-default-tap.diff</comment>
+    <requestid>223242</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1641fd4ee9c8c547e0d3625cf3aa5fc</srcmd5>
+    <version>1.7.99.1</version>
+    <time>1395513966</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7.99.1:
+ - libevdev support:
+    The evdev backend on Linux now uses libevdev. We recommend
+    to use libevdev 1.1-rc1 or later as the synaptics driver is
+    very likely to trigger SYN_DROPPED and we've fixed a bunch
+    of issues in libevdev 1.1.
+ - Support for T440, T540, X240, Helix, Yoga:
+   The bulk of the changes is to support this set of Lenovo
+   touchpads. These touchpads don't have separate physical
+   buttons for the trackstick and need to be emulated as
+   software-button by the driver.
+ - TouchpadOff behaviour change:
+   Synaptics has a property &quot;Synaptics Off&quot; to disable events.
+   Previously, this disabled any event from the touchpad.
+   Now, physical button clicks are allowed even when the
+   touchpad is disabled.
+ - mtdev was dropped:
+   There are no touchpad drivers in the kernel tree that
+   use protocol A, so using mtdev is just a computationally
+   expensiv and memory-wasting noop.
+- As per upstream change, swap pkgconfig(mtdev) BuildRequires for
+  pkgconfig(evdev) &gt;= 1.0.99.1
+- Rebase n_xf86-input-synaptics-wait.diff for this release
+
+- Update to version 1.7.4:
+  One fix: closing the fd again if the device cannot be enabled
+  properly, and two reverts: scrollbuttons and circular pad
+  support are making a comeback. Apparently there are still a
+  few laptops out there that require either feature.</comment>
+    <requestid>226599</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d15f650552e51392341ad808a80ad1b8</srcmd5>
+    <version>1.7.99.2</version>
+    <time>1399703515</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.7.99.2
+  * The second snapshot for synaptics 1.8 is now available. Note
+    that there are are two significant changes:
+    - the event device is not grabbed anymore. In some setups this
+      may lead to duplicate events but where it does you're really
+      better off using an InputClass instead of an InputDevice
+      section in your xorg.conf.
+    - the secondary software button area (i.e. the top software
+      buttons on the Lenovo *40 series) is now automatically
+      enabled based on the INPUT_PROP_TOPBUTTONPAD property,
+      slated for kernel 3.15. No more PNPID matching in the
+      snippets, which didn't work without a kernel patch anyway.
+      If you can't update the kernel, use Option
+      &quot;HasSecondarySoftButtons&quot; &quot;on&quot;.</comment>
+    <requestid>232918</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f206bd1dbfe44d5a197c1dd0e7ab0617</srcmd5>
+    <version>1.8.0</version>
+    <time>1400218193</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.8.0 
+  * final release; changes since 1.7.99.2: 
+    + conf: drop the PNPID matching from the fdi file</comment>
+    <requestid>233833</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f206bd1dbfe44d5a197c1dd0e7ab0617</srcmd5>
+    <version>1.8.0</version>
+    <time>1409303701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a01b230bd0d34438e2ae0bfb00cd98bb</srcmd5>
+    <version>1.8.1</version>
+    <time>1411472735</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250583</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2095c3392499acf1037613cab6a2f8f8</srcmd5>
+    <version>1.8.2</version>
+    <time>1428192191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2:
+  * One significant change here: an artificial delay is now used
+    between the button events of a doubletap. Some applications
+    previously dropped the events because they had the same
+    timestamp, with the delay this should now work fine.</comment>
+    <requestid>293783</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d84e8e2d4085884ba015004ae5c9770b</srcmd5>
+    <version>1.8.2</version>
+    <time>1440135373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319779</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>43b3a0a03f71402e4c08c83efe293304</srcmd5>
+    <version>1.8.3</version>
+    <time>1446764969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.3
+  * With Gabriele's fix, the order of fingers on the touchpad doesn't
+    matter for two-finger scrolling. Previously, only one of the
+    fingers would trigger scroll events. See 
+    https://bugs.freedesktop.org/show_bug.cgi?id=92622</comment>
+    <requestid>342047</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2c3f252af27f3e86e712246264ca3aa4</srcmd5>
+    <version>1.8.3</version>
+    <time>1447882377</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344216</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>082ccb0dfb869e90dadc70848906a9cd</srcmd5>
+    <version>1.8.3</version>
+    <time>1464017487</time>
+    <user>dimstar_suse</user>
+    <comment>- replaced n_conf-rename-to-70-synaptics.conf.patch with upstreamed
+  patch U_conf-rename-to-70-synaptics.conf.patch (boo #979554)
+
+- n_conf-rename-to-70-synaptics.conf.patch
+  * bump up synaptics driver to 70, so it get's preferred over
+    libinput, which was dropped down to 060 (boo #979554)
+- adjusted n_xf86-input-synaptics-default-tap.diff,
+  n_xf86-input-synaptics-xorg.conf.d_snippet.diff
+- removed Supplements: xorg-x11-server, so the driver no longer
+  gets installed by default</comment>
+    <requestid>397408</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fb4eb4b9304b0cecfb33d1c3d1c74997</srcmd5>
+    <version>1.9.0</version>
+    <time>1480018677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0:
+  This release supports the X server 1.19.
+
+- Update to version 1.8.99.2:
+  + Remove upstream patch U_conf-rename-to-70-synaptics.conf.patch
+  + Adapt n_xf86-input-synaptics-wait.diff</comment>
+    <requestid>441186</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d5f22073faa3a3341878911398ac50e5</srcmd5>
+    <version>1.9.0</version>
+    <time>1496533561</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041556)</comment>
+    <requestid>499618</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7699f30833c99472f649bc5a85b003df</srcmd5>
+    <version>1.9.1</version>
+    <time>1528021754</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 1.9.1:
+   * A few build system janitorial things, a compatibility patch
+     by Luca and one patch to avoid log spam when the device goes
+     away (and before udev tells us that it's gone).</comment>
+    <requestid>613021</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>d4c203d9165562e9fa5eee26e0cf9591</srcmd5>
+    <version>1.9.1</version>
+    <time>1564993784</time>
+    <user>dimstar_suse</user>
+    <comment>-  move xorg.conf.d snippet from /etc/X11/xorg.conf.d to
+  /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
+    <requestid>719822</requestid>
+  </revision>
+</revisionlist>

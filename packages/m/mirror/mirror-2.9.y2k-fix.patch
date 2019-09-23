@@ -1,0 +1,80 @@
+Index: dateconv.pl
+===================================================================
+--- dateconv.pl.orig
++++ dateconv.pl
+@@ -37,8 +37,8 @@
+ #
+ 
+ # input date and time string from ftp "ls -l" format ("Feb 01 13:25"),
+-# return data and time string in Unix format "dd Mmm YY HH:MM", "such as
+-# "1 Feb 92 13:25"
++# return data and time string in Unix format "dd Mmm YYYY HH:MM", "such as
++# "1 Feb 1992 13:25"
+ sub lstime_to_standard
+ {
+ 	local( $ls ) = @_;
+@@ -69,6 +69,7 @@ $month_num{ "nov" } = 10;
+ $month_num{ "dec" } = 11;
+ 
+ ( $mn, $yr ) = (localtime)[ 4, 5 ];
++$yr += 1900;
+ 
+ 
+ # input date and time string from ftp "ls -l", such as Mmm dd yyyy or
+@@ -125,13 +126,6 @@ sub main'lstime_to_time
+ 		$year-- if( $month > $mn );
+ 	}
+ 
+-	# Cope with a wide range of naff dates: Andrew.Macpherson@bnr.co.uk
+-        $year %= 100 ;
+-
+-	# "timelocal.pl" loops endlessly for 37 < $year < 70:
+-	# ian@ilm.mech.unsw.edu.au (Ian Maclaine-cross)
+-	$year += 50 if 37 < $year && $year < 70 ;
+-
+ 	if( $use_timelocal ){
+ 		return &'timelocal( $secs, $mins, $hours, $day, $month, $year );
+ 	}
+@@ -140,7 +134,7 @@ sub main'lstime_to_time
+ 	}
+ }
+ 
+-# input time number, output GMT string as "dd Mmm YY HH:MM"
++# input time number, output GMT string as "dd Mmm YYYY HH:MM"
+ sub main'time_to_standard
+ {
+ 	package dateconv;
+@@ -149,5 +143,6 @@ sub main'time_to_standard
+ 
+ 	local( $sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst ) =
+ 		 gmtime( $time );
+-	return sprintf( "%2d $months[ $mon + 1 ] %2d %02d:%02d", $mday, $year, $hour, $min );
++	$year += 1900;
++	return sprintf( "%2d $months[ $mon + 1 ] %4d %02d:%02d", $mday, $year, $hour, $min );
+ }
+Index: mirror.pl
+===================================================================
+--- mirror.pl.orig
++++ mirror.pl
+@@ -646,6 +646,7 @@ while( $ARGV[ 0 ] =~ /^-/ ){
+ 				$wday,$yday,$isdst ) 
+ 				= localtime( time );
+ 			$mon++;
++			$year += 1900;
+ 			$upload_log = "$home/upload_log.$mday.$mon.$year";
+ 		}
+ 			
+@@ -3857,12 +3858,7 @@ sub t2str
+ 	}
+ 	local($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = @t;
+ 
+-	if( $year < 70 ){
+-	    $year += 2000;
+-	}
+-	else {
+-	    $year += 1900;
+-	}
++	$year += 1900;
+ 	    
+ 	return sprintf( "%04d/%02d/%02d-%02d:%02d:%02d",
+ 		$year, $mon + 1, $mday, $hour, $min, $sec );

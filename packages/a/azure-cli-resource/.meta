@@ -1,0 +1,11 @@
+<package name="azure-cli-resource" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'resource' Command Module</title>
+  <description>Microsoft Azure CLI 'resource' Command Module
+
+This package is for the 'resource' module.
+i.e. 'az resource'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-resource"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

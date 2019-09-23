@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:53:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Jan 30 08:07:41 UTC 2018 - mimi.vx@gmail.com
+
+- fix Requires and BuiildRequires
+
+-------------------------------------------------------------------
+Tue Jan 23 17:35:31 UTC 2018 - tbechtold@suse.com
+
+- Require libudev (bsc#1077282)
+  Otherwise, an pyudev import fails with:
+  ImportError: No library named udev
+
+-------------------------------------------------------------------
+Thu Aug 24 13:52:57 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Mon May 23 16:12:57 UTC 2016 - tbechtold@suse.com
+
+- Remove do_not_install_tests.patch
+- Require python-six
+
+-------------------------------------------------------------------
+Mon May 23 14:49:16 UTC 2016 - tbechtold@suse.com
+
+- update to 0.20.0:
+  * Remove parsing code added in previous release.
+  * No longer do CI for Python 2.6.
+  * Eliminate all wildcard imports and __all__ statements.
+  * No longer use deprecated Device.from_sys_path() method.
+  * Minor pylint induced changes.
+  * Documentation fixes.
+  * Restore raising KeyError by Attributes.as* methods when attribute not found.
+  * Explicitly require six module.
+  * Never raise a DeviceNotFoundError when iterating over a device enumeration.
+  * Device.subsystem() now returns None if device has no subsystem.
+  * Add DeprecationWarnings to deprecated Device methods.
+  * Replace "/" with "!" in Device.from_name() sys_name parameter.
+  * Add some unstable classes for parsing some kinds of values.
+  * Make version info more like Python's including micro numbers and levels.
+  * Refactor some internal modules into subdirectories.
+  * Work on tests and reproducers.
+  * DeviceNotFoundError is no longer a subtype of LookupError
+  * Added support for pyqt5 monitor observer
+  * Added discover module, which looks up a device on limited information
+  * Attributes class no longer extends Mapping, extends object instead
+  * Attributes class no longer inherits [] operator, Mapping methods
+  * Attributes class objects are no longer iterable
+  * Attributes.available_attributes property added
+  * Attributes.get() method, with usual semantics, defined
+  * Device.from_* methods are deprecated, uses Devices.from_* methods instead
+  * Device.from_device_file() now raises DeviceNotFoundByFileError
+  * Device.from_device_number() now raises DeviceNotFoundByNumberError
+  * Devices.from_interface_index() method added
+  * Devices.from_kernel_device() method added
+  * Numerous testing infrastructure changes
+- Remove do_not_install_tests.patch . No longer needed.
+- Require libudev1 . Needed to use python-pyudev
+
+-------------------------------------------------------------------
+Wed Sep 23 18:44:41 UTC 2015 - asterios.dramis@gmail.com
+
+- Added a patch (do_not_install_tests.patch) to not install the
+  tests as a module (not needed). Fixes also file conflicts in
+  Factory.
+
+-------------------------------------------------------------------
+Tue Sep 15 05:47:44 UTC 2015 - hpj@urpla.net
+
+- Update to version 0.17:
+  * #52: Remove global libudev object
+  * #57: Really start the monitor on :meth:`pyudev.Monitor.poll()`
+  * #60: Do not use :meth:`select.select` to avoid hitting its file descriptor
+    limit
+  * #58: Force non-blocking IO in :class:`pyudev.Monitor` to avoid blocking on
+    receiving the device
+  * #63: Set proper flags on pipe fds.
+  * #65: Handle irregular polling events properly.
+  * #50: Add :class:`pyudev.wx.MonitorObserver` and deprecate 
+    :class:`pyudev.wx.WxUDevMonitorObserver`
+  * #50: Add :class:`pyudev.glib.MonitorObserver` and deprecate 
+    :class:`pyudev.glib.GUDevMonitorObserver`
+  * #50: Add :class:`pyudev.pyqt4.MonitorObserver` and deprecate 
+    :class:`pyudev.pyqt4.QUDevMonitorObserver`
+  * #50: Add :class:`pyudev.pyside.MonitorObserver` and deprecate 
+    :class:`pyudev.pyside.QUDevMonitorObserver`
+  * Add a wrapper function to retry interruptible system calls.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:59 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Nov 20 11:14:36 UTC 2012 - saschpe@suse.de
+
+- Build HTML documentation
+- Fix SLE_11_SP2 build (not noarch)
+
+-------------------------------------------------------------------
+Sun Nov 18 19:40:16 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 0.16.1:
+  * #53: Fix source distribution
+  * #54: Fix typo in test
+  From version 0.16:
+  * Remove :meth:`pyudev.Monitor.from_socket`.
+  * Deprecate :meth:`pyudev.Device.traverse()` in favor of
+    :attr:`pyudev.Device.ancestors`.
+  * #47: Deprecate :meth:`pyudev.Monitor.receive_device` in favor of
+    :attr:`pyudev.Monitor.poll`.
+  * #47: Deprecate :attr:`pyudev.Monitor.enable_receiving` in favor of
+    :attr:`pyudev.Monitor.start`.
+  * #47: Deprecate :attr:`pyudev.Monitor.__iter__` in favor of explicit looping
+    or :class:`pyudev.MonitorObserver`.
+  * #49: Deprecate ``event_handler`` to :class:`pyudev.MonitorObserver` in
+    favour of ``callback`` argument.
+  * #46: Continuously test pyudev on Travis-CI.
+  * Add :attr:`pyudev.Device.ancestors`.
+  * Add :attr:`pyudev.Device.action`.
+  * #10: Add :attr:`pyudev.Device.sequence_number`.
+  * #47: Add :meth:`pyudev.Monitor.poll`.
+  * #47: Add :attr:`pyudev.Monitor.started`.
+  * #49: Add ``callback`` argument to :class:`pyudev.Monitor`.
+  * :meth:`pyudev.Monitor.start` can be called repeatedly.
+  * #45: Get rid of 2to3
+  * #43: Fix test failures on Python 2.6
+  * Fix signature in declaration of ``udev_monitor_set_receive_buffer_size``.
+  * #44: Test wrapped signatures with help of ``gccxml``.
+  * Fix compatibility with udev 183 and newer in :class:`pyudev.Context`.
+  * :meth:`pyudev.MonitorObserver.stop` can be called from the observer thread.
+- Removed python-setuptools and added python-distribute as build requirement.
+
+-------------------------------------------------------------------
+Sat Mar 10 19:20:03 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 0.15:
+  * #20: :meth:`pyudev.Monitor.filter_by()` and
+    :meth:`pyudev.Monitor.filter_by_tag()` can be called after
+    :meth:`pyudev.Monitor.enable_receiving()` now
+  * #20: Added :meth:`~pyudev.Monitor.remove_filter()`
+  * :class:`pyudev.MonitorObserver` calls
+    :meth:`pyudev.Monitor.enable_receiving()` now when started.
+  * #40: Added user guide to the documentation
+  * #39: Added :meth:`pyudev.Device.from_device_file()`
+  * :data:`errno.EINVAL` from underlying libudev functions causes
+    :exc:`~exceptions.ValueError` instead of
+    :exc:`~exceptions.EnvironmentError` now.
+
+-------------------------------------------------------------------
+Sat Feb 18 16:21:43 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 0.14:
+  * Documentation now hosted at http://pyudev.readthedocs.org
+  * #37: Added :class:`pyudev.wx.WxUDevMonitorObserver` for wxPython
+  * Added :class:`pyudev.MonitorObserver`
+  * Added :attr:`pyudev.glib.GUDevMonitorObserver.enabled`,
+    :attr:`pyudev.pyqt4.QUDevMonitorObserver.enabled` and
+    :attr:`pyudev.pyside.QUDevMonitorObserver.enabled`
+
+-------------------------------------------------------------------
+Sun Nov  6 13:37:02 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.13:
+  * #36: Added :meth:`pyudev.Monitor.set_receive_buffer_size` (thanks to Rémi
+    Rérolle)
+  * #34: :class:`pyudev.Device.tags` returns a :class:`pyudev.Tags` object now
+  * Added :meth:`pyudev.Enumerator.match_parent`
+  * Added ``parent`` keyword argument to :meth:`pyudev.Enumerator.match()`
+  * Removed :meth:`pyudev.Enumerator.match_children` in favour of
+    :meth:`pyudev.Enumerator.match_parent`
+  * :attr:`pyudev.Device.children` requires udev version 172 now
+  * #31: Added :meth:`pyudev.Enumerator.match_attribute`
+  * Added ``nomatch`` argument to :meth:`pyudev.Enumerator.match_subsystem` and
+    :meth:`pyudev.Enumerator.match_attribute`
+
+-------------------------------------------------------------------
+Wed Aug 31 20:43:18 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.12:
+  * #32: Fixed memory leak
+  * #33: Fixed Python 3 support for :mod:`pyudev.glib`
+  * Fixed license header in :mod:`pyudev._compat`
+- Spec file updates.
+  * Changed License: to LGPL-2.1+.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Sun Aug 28 19:28:06 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.11:
+  * #30: Added :attr:`pyudev.Device.sys_number`
+  * #29: Added :meth:`pyudev.Device.from_device_number` and
+    :attr:`pyudev.Device.device_number`
+  * Officially support PyPy now
+  From 0.10:
+  * Added :attr:`pyudev.__version_info__`
+  * Added :attr:`pyudev.Device.device_type`
+  * :class:`pyudev.Context`, :class:`pyudev.Enumerator`, :class:`pyudev.Device`
+    and :class:`pyudev.Monitor` can now directly be passed to
+    :mod:`ctypes`-wrapped functions
+  * #24: Added :attr:`pyudev.Context.run_path`
+  From 0.9:
+  * #21: Added :meth:`pyudev.Device.find_parent`
+  * #22: Added :meth:`pyudev.Monitor.filter_by_tag`
+  * Added :attr:`pyudev.Context.log_priority` to control internal UDev logging
+  * Improve error reporting, if libudev is missing
+- Spec file updates:
+  * Changed package name to python-pyudev.
+  * Changed License: to LGPL-2.1.
+  * Updated Url:.
+  * Added Provides/Obsoletes entries for pyudev.
+  * Build the package as noarch.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Tue Feb  8 13:18:25 UTC 2011 - tittiatcoke@gmail.com
+
+- Initial Package (version 0.8).
+

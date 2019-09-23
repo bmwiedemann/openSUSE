@@ -1,0 +1,11 @@
+<package name="potrace" project="openSUSE:Factory">
+  <title>Utility for Tracing a Bitmap to Scalable Outline Image</title>
+  <description>Potrace is a utility for tracing a bitmap, which means, transforming a
+bitmap into a smooth, scalable image.  The input is a bitmap (PBM, PGM,
+PPM, or BMP), and the default output is one of several vector file
+formats.  A typical use is to create EPS files from scanned data, such
+as company or university logos, handwritten notes, etc. The resulting
+image is not &quot;jaggy&quot; like a bitmap, but smooth. It can then be rendered
+at any resolution.</description>
+  <devel project="graphics" package="potrace"/>
+</package>

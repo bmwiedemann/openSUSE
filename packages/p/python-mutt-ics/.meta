@@ -1,0 +1,8 @@
+<package name="python-mutt-ics" project="openSUSE:Factory">
+  <title>A tool to show calendar event details in Mutt</title>
+  <description>A tool to show calendar event details in Mutt.
+
+</description>
+  <devel project="devel:languages:python" package="python-mutt-ics"/>
+  <url>https://github.com/dmedvinsky/mutt-ics</url>
+</package>

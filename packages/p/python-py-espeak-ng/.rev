@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3579dd7b1d590a325d9539f60f48a6a</srcmd5>
+    <version>0.1.1</version>
+    <time>1518601872</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package (0.1.1)
+</comment>
+    <requestid>576024</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2fb7e0f991ff969984335afefe899134</srcmd5>
+    <version>0.1.1</version>
+    <time>1545648095</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659572</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bb193092f393d3717f921159c8fb686</srcmd5>
+    <version>0.1.8</version>
+    <time>1553084368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.8:
+  * Include tests in the tarball
+  * Include license in the tarball
+  * Use apache-2.0 license
+  * Fix various typos</comment>
+    <requestid>686315</requestid>
+  </revision>
+</revisionlist>

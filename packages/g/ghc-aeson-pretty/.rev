@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe5fd50586de81b5812d6322b59f50a7</srcmd5>
+    <version>0.7.2</version>
+    <time>1442474402</time>
+    <user>dimstar_suse</user>
+    <comment>A JSON pretty-printing library compatible with aeson as well as a command-line tool to improve readabilty of streams of JSON data.</comment>
+    <requestid>330852</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51dc0350ffea9e2c9635b5c1ba20083b</srcmd5>
+    <version>0.7.2</version>
+    <time>1469080872</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411159</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfe31e0d3c9ca31dfa445027c3451a58</srcmd5>
+    <version>0.8.2</version>
+    <time>1477219828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433356</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e379a13f48a77534559164090ec6a5e2</srcmd5>
+    <version>0.8.4</version>
+    <time>1498120598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504054</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61c55d386171c842f54c185430219b7e</srcmd5>
+    <version>0.8.5</version>
+    <time>1499291879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506797</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1d03217364bfc36f1d78de26785b1707</srcmd5>
+    <version>0.8.5</version>
+    <time>1505502935</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524024</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>074cdcf2f901c4e7a7593349fe328b35</srcmd5>
+    <version>0.8.7</version>
+    <time>1527674339</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-aeson-pretty to the latest version.</comment>
+    <requestid>607736</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fdb35739d496c696a4683355783df548</srcmd5>
+    <version>0.8.7</version>
+    <time>1532161171</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- moved aeson-pretty binary from devel package to normal</comment>
+    <requestid>623710</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>71b6d400cc419e3ebeadd085b3371a9c</srcmd5>
+    <version>0.8.7</version>
+    <time>1540448532</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643343</requestid>
+  </revision>
+</revisionlist>

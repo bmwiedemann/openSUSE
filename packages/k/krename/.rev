@@ -1,0 +1,287 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c4b61d39bbc4a35b85013695aced4ce</srcmd5>
+    <version>3.0.13</version>
+    <time>1168903241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba6eb38ef8690be9e922b31f14307ddc</srcmd5>
+    <version>3.0.14</version>
+    <time>1174952441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>658f783e4711a948e768481225c71d1f</srcmd5>
+    <version>3.9.1</version>
+    <time>1215544931</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c9ac9e531420a8aa63d860c02be274f6</srcmd5>
+    <version>3.9.2</version>
+    <time>1223734508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>633eaae9d60705a9d33f6c7c6530f9ea</srcmd5>
+    <version>3.9.3</version>
+    <time>1243940902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb8f6cbf1678332c8b99b201070cd812</srcmd5>
+    <version>4.0.0</version>
+    <time>1253832089</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krename based on submit request 21010 from user Beineri
+</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>087d0c17349a388c050e726443c5a32b</srcmd5>
+    <version>4.0.1</version>
+    <time>1255351042</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krename based on submit request 22230 from user Beineri
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>087d0c17349a388c050e726443c5a32b</srcmd5>
+    <version>4.0.1</version>
+    <time>1255351042</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krename based on submit request 22230 from user Beineri
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f94da8eac7c033d289d4a22a9737219c</srcmd5>
+    <version>4.0.2</version>
+    <time>1260198766</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krename based on submit request 25735 from user Beineri
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>820ae0f52c18f8607ab1fe3e8657788d</srcmd5>
+    <version>4.0.3</version>
+    <time>1265750947</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/krename based on submit request 31808 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>07a9ae3e79b7e696a9e9d842eebe3fd0</srcmd5>
+    <version>4.0.3</version>
+    <time>1268924315</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>07a9ae3e79b7e696a9e9d842eebe3fd0</srcmd5>
+    <version>4.0.3</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>07a9ae3e79b7e696a9e9d842eebe3fd0</srcmd5>
+    <version>4.0.3</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f6b95dbd2a22f333f3472b5e681be1cc</srcmd5>
+    <version>4.0.4</version>
+    <time>1279567496</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/krename based on submit request 43160 from user Beineri
+</comment>
+    <requestid>43160</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>47d0e42d30b0864ef7467f6c01c332cc</srcmd5>
+    <version>4.0.5</version>
+    <time>1288971248</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52216 from user dirkmueller
+</comment>
+    <requestid>52216</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>04be9ca5186a2a550efc26afe6987bd1</srcmd5>
+    <version>4.0.6</version>
+    <time>1296843544</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60024 from user wstephenson
+</comment>
+    <requestid>60024</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>395158e212c659fbdf875eae333edd86</srcmd5>
+    <version>4.0.6</version>
+    <time>1296843552</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60024
+</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>395158e212c659fbdf875eae333edd86</srcmd5>
+    <version>4.0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>330f7697ccd45dc792ad000a03663f0f</srcmd5>
+    <version>4.0.7</version>
+    <time>1298812204</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62857 from user adrianSuSE
+</comment>
+    <requestid>62857</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6257478e6aa64c819f4848f049fdfcc5</srcmd5>
+    <version>4.0.7</version>
+    <time>1314194288</time>
+    <user>saschpe</user>
+    <comment>- remove GPLv2 only code (only used for self-testing)
+
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed Group: to Productivity/File utilities.
+  * Updates in Summary: and %description sections.
+  * Added update-desktop-files in Buildrequires:.
+  * Removed support for openSUSE &lt; 11.3.
+  * Removed kde4-krename Provides/Obsoletes entries (not needed anymore).
+  * Fixed rpmlint warning &quot;file-contains-date-and-time&quot;.
+  * Minor other updates.
+- Modified the patch for krename.desktop to make the desktop file KDE and XDG
+  compatible.
+- Added a patch for the servicemenus to make them KDE and XDG compatible.
+- Added a patch (taken from Fedora) to fix crash on static initialization.
+- Added a patch (taken from upstream) to fix podofo library names cmake check.</comment>
+    <requestid>79596</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>fb2f729adfe87a2830f81d9c01a6d23b</srcmd5>
+    <version>4.0.7</version>
+    <time>1314194299</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79596
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>fb2f729adfe87a2830f81d9c01a6d23b</srcmd5>
+    <version>4.0.7</version>
+    <time>1319182057</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>749e4f2e610720f21cf795ec2d41c2cb</srcmd5>
+    <version>4.0.7</version>
+    <time>1323192122</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5f00bb0429ead463abbe06293bd3d583</srcmd5>
+    <version>4.0.9</version>
+    <time>1325767703</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.9, Removed the patch to fix crash on static initialization (fixed upstream) (forwarded request 98806 from adra)</comment>
+    <requestid>98807</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e2c486aa2e5246fc07814e986934d0cf</srcmd5>
+    <version>4.0.9</version>
+    <time>1334818200</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114383</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>87bcea68d7bd208308042f2b102940a4</srcmd5>
+    <version>4.0.9</version>
+    <time>1336423641</time>
+    <user>coolo</user>
+    <comment>- Fix taglib requires for older distros</comment>
+    <requestid>116632</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>87bcea68d7bd208308042f2b102940a4</srcmd5>
+    <version>4.0.9</version>
+    <time>1340183537</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>df72bb8a20ecb85f82eb9672a55996d9</srcmd5>
+    <version>4.0.9</version>
+    <time>1354524513</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143788</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>df72bb8a20ecb85f82eb9672a55996d9</srcmd5>
+    <version>4.0.9</version>
+    <time>1359109204</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>df72bb8a20ecb85f82eb9672a55996d9</srcmd5>
+    <version>4.0.9</version>
+    <time>1379662832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>df72bb8a20ecb85f82eb9672a55996d9</srcmd5>
+    <version>4.0.9</version>
+    <time>1409301420</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>e65d9ad7ccad2e2e1b7f182b7f6fbcc4</srcmd5>
+    <version>4.0.9</version>
+    <time>1409761392</time>
+    <user>coolo</user>
+    <comment>Add patch fix-freetype2-includes.patch to ensure that the right freetype2 includes are found</comment>
+    <requestid>247208</requestid>
+  </revision>
+  <revision rev="33" vrev="14">
+    <srcmd5>b33ff5495c30df64efc042be088e9dc0</srcmd5>
+    <version>4.0.9</version>
+    <time>1466333581</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403069</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>49f41ca988f70fa1127b7322332369fd</srcmd5>
+    <version>5.0.0</version>
+    <time>1518813902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577160</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>a3e77a19a61f8929c44d25a344059023</srcmd5>
+    <version>5.0.0</version>
+    <time>1546535305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662427</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>10cf4e87417b4df75e41d23f6779fec5</srcmd5>
+    <version>5.0.0</version>
+    <time>1547130200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664079</requestid>
+  </revision>
+</revisionlist>

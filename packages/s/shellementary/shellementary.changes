@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Mon Dec 16 23:43:45 UTC 2013 - sleep_walker@suse.cz
+
+- change to use pkgconfig dependencies
+
+-------------------------------------------------------------------
+Mon Dec  9 22:20:19 UTC 2013 - sleep_walker@suse.cz
+
+- updating to EFL 1.8
+
+-------------------------------------------------------------------
+Fri Nov 30 19:20:53 UTC 2012 - sleep_walker@suse.cz
+
+- adaptation for factory
+  - remove autoupdate configuration from spec file
+  - use separate packages instead of single efl package
+  - fix Url
+
+-------------------------------------------------------------------
+Mon Nov 26 17:55:52 UTC 2012 - sleep_walker@suse.cz
+
+- fix license
+- simplify/unify make install
+- --disable-silent-rules
+
+-------------------------------------------------------------------
+Sat Nov 24 18:29:22 UTC 2012 - sleep_walker@suse.cz
+
+- use efl instead of separate packages
+
+-------------------------------------------------------------------
+Mon Oct  1 19:41:45 UTC 2012 - sleep_walker@suse.cz
+
+- remove patch fixed in upstream
+
+-------------------------------------------------------------------
+Mon Oct  1 14:29:16 UTC 2012 - sleep_walker@suse.cz
+
+- source_grabber autoupdate to revision 9ae51a669a0e2e2d57b80351efc30a63dbba27c8
+
+-------------------------------------------------------------------
+Tue Sep 25 09:43:10 UTC 2012 - sleep_walker@suse.cz
+
+- fix this long standing bug with autoreconf vs. autogen differences
+
+-------------------------------------------------------------------
+Tue Sep 25 09:27:22 UTC 2012 - sleep_walker@suse.cz
+
+- add aclocal and automake calls
+
+-------------------------------------------------------------------
+Fri Sep 21 14:45:00 UTC 2012 - sleep_walker@suse.cz
+
+- replace autogen with autoreconf as upstream refuse to have it in dist tarball
+
+-------------------------------------------------------------------
+Thu Sep 20 21:50:36 UTC 2012 - sleep_walker@suse.cz
+
+- source_grabber autoupdate to revision ab2747c0e47dcec73618f6742fbcf9b9c72d1579
+
+-------------------------------------------------------------------
+Wed Sep 12 21:11:06 UTC 2012 - sleep_walker@suse.cz
+
+- make_install --> makeinstall
+
+-------------------------------------------------------------------
+Mon Sep 10 21:13:43 UTC 2012 - sleep_walker@suse.cz
+
+- source_grabber autoupdate to revision 31b8684eb94d59def6686d1b8da71d4d25770953
+
+-------------------------------------------------------------------
+Thu Sep  6 22:29:58 UTC 2012 - sleep_walker@suse.cz
+
+- source_grabber autoupdate to revision 31b8684eb94d59def6686d1b8da71d4d25770953
+
+-------------------------------------------------------------------
+Fri Jul  6 21:54:41 UTC 2012 - sleep_walker@suse.cz
+
+- add dependencies for factory
+
+-------------------------------------------------------------------
+Fri Jul  6 21:27:19 UTC 2012 - sleep_walker@suse.cz
+
+- change pkgconfig dependency name
+
+-------------------------------------------------------------------
+Fri Jul  6 21:25:55 UTC 2012 - sleep_walker@suse.cz
+
+- make printf more secure
+
+-------------------------------------------------------------------
+Tue Jun 26 09:51:35 UTC 2012 - sleep_walker@suse.cz
+
+- change autoreconf to autogen.sh, fix make install
+
+-------------------------------------------------------------------
+Sat Jun 16 16:39:18 UTC 2012 - sleep_walker@suse.cz
+
+- remove version checking used in previous repository
+
+-------------------------------------------------------------------
+Thu Jun 14 10:33:04 UTC 2012 - sleep_walker@suse.cz
+
+- source_grabber autoupdate to revision fbf1426657d7b987ac4fcda68e9a2082a7b1144a
+

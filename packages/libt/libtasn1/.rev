@@ -1,0 +1,402 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82b958593ddaeef1f823282a974d2ebf</srcmd5>
+    <version>1.2</version>
+    <time>1199763639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>c5c97bffdd61518268e29e04bf5511ac</srcmd5>
+    <version>1.2</version>
+    <time>1200609754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>94a0c426577879fb30e264ecd3254c8c</srcmd5>
+    <version>1.5</version>
+    <time>1221275613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0715f2dbf8a57e05eee0a7960553ec5</srcmd5>
+    <version>1.8</version>
+    <time>1233939995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a6d872d684f9f0b98ec3ac61cbfc32a4</srcmd5>
+    <version>1.8</version>
+    <time>1234472090</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cff66e9202f131290b61fc8035c707ea</srcmd5>
+    <version>2.2</version>
+    <time>1243466176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cff66e9202f131290b61fc8035c707ea</srcmd5>
+    <version>2.2</version>
+    <time>1243466176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>3e36b6948c4f6641045bbf106e5d45d5</srcmd5>
+    <version>2.2</version>
+    <time>1262129240</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libtasn1 based on submit request 27862 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>035251bfddc9d2f1a5ba73f666dd58db</srcmd5>
+    <version>2.2</version>
+    <time>1268924742</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>1d490a215a3ef2472c92c84ddaa3f06a</srcmd5>
+    <version>2.2</version>
+    <time>1272122525</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libtasn1 based on submit request 38726 from user coolo
+</comment>
+    <requestid>38726</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>1d490a215a3ef2472c92c84ddaa3f06a</srcmd5>
+    <version>2.2</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>1d490a215a3ef2472c92c84ddaa3f06a</srcmd5>
+    <version>2.2</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>3bdb259a9bf0c87f1bcb471ec00bc429</srcmd5>
+    <version>2.2</version>
+    <time>1288692350</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51855 from user coolo
+</comment>
+    <requestid>51855</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>023499c88a77a04de88aede7b5ce34d2</srcmd5>
+    <version>2.2</version>
+    <time>1288692358</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51855
+</comment>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>023499c88a77a04de88aede7b5ce34d2</srcmd5>
+    <version>2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>023499c88a77a04de88aede7b5ce34d2</srcmd5>
+    <version>2.2</version>
+    <time>1319182140</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>c33e0591efe78381550d69cafbfa37eb</srcmd5>
+    <version>2.2</version>
+    <time>1323192354</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d9987674a1cf8fde49a5343547a62934</srcmd5>
+    <version>2.11</version>
+    <time>1326292642</time>
+    <user>coolo</user>
+    <comment>update to version 2.11 (forwarded request 99368 from tabraham1)</comment>
+    <requestid>99372</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0d4ace4291463b13bc0182ba8e78b623</srcmd5>
+    <version>2.12</version>
+    <time>1334692763</time>
+    <user>coolo</user>
+    <comment>update to 2.12 (forwarded request 113648 from tabraham1)</comment>
+    <requestid>113727</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>0d4ace4291463b13bc0182ba8e78b623</srcmd5>
+    <version>2.12</version>
+    <time>1340183642</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>af9b427b6e7f103339eb092c537e7a0e</srcmd5>
+    <version>2.12</version>
+    <time>1341219712</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+ and GPL-3.0
+Tools are GPL-3.0 (forwarded request 126633 from babelworx)</comment>
+    <requestid>126639</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>9b2f2008ede1d4f6856a6b28c49d0942</srcmd5>
+    <version>2.12</version>
+    <time>1343031262</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128607 from a_jaeger)</comment>
+    <requestid>128703</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9ebc9e334dd7b26cb392a90b1415b287</srcmd5>
+    <version>2.14</version>
+    <time>1349244225</time>
+    <user>coolo</user>
+    <comment>- updated to version 2.14
+  This release adds asn1_read_node_value() to obtain a node's value. This
+  is to deprecate the export of the node_asn internal structure for the
+  upcoming 3.x release. The ASN1_DATA_NODE type and the ASN1_ETYPE_*
+  constants were added to support the new function.
+- removed upstreamed libtasn1-stdio.h patch
+- make check (forwarded request 136368 from msmeissn)</comment>
+    <requestid>136403</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>77e3c23a518c07ed74e84ad083365c00</srcmd5>
+    <version>3.0</version>
+    <time>1353404389</time>
+    <user>coolo</user>
+    <comment>update to libtasn1 3.0, SONAME libtasn1.so.6 (forwarded request 141684 from AndreasStieger)</comment>
+    <requestid>141696</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>77e3c23a518c07ed74e84ad083365c00</srcmd5>
+    <version>3.0</version>
+    <time>1359109362</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>843b7c8c7a5519327ba9ad0a9e10418f</srcmd5>
+    <version>3.3</version>
+    <time>1372146244</time>
+    <user>coolo</user>
+    <comment>- updated to libtasn1 3.3
+  * Noteworthy changes in release 3.3 (released 2013-03-23) [stable]
+  - More precise overflow checks using gnulib's intprops module.
+  - Updates to compile in Android systems.
+  * Noteworthy changes in release 3.2 (released 2012-11-30) [stable]
+  - Corrected buffer overflow in the error reporting of the parser (reported
+    by Andreas Metzler).
+  * Noteworthy changes in release 3.1 (released 2012-11-24) [stable]
+  - Completed rename of types:
+    ASN1_ARRAY_TYPE -&amp;gt; asn1_static_node (was asn1_static_node_t)
+  - Added new types: VisibleString, NumericString, IA5String, TeletexString,
+    PrintableString, UniversalString, BMPString, UTF8String. When re-defined
+    a warning is being print instead of failing.
+  - Parser outputs more detailed syntax error messages.
+  - Added asn1_decode_simple_der() and asn1_encode_simple_der().
+  - Added asn1_read_value_type() to return value and type.
+  - Introduced ASN1_ETYPE_UTC_TIME and ASN1_ETYPE_GENERALIZED_TIME
+- added gpg source checking (forwarded request 180213 from msmeissn)</comment>
+    <requestid>180214</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0eb8104b41b4a8d232425bf1b1e6110e</srcmd5>
+    <version>3.3</version>
+    <time>1372173277</time>
+    <user>coolo</user>
+    <comment>- remove gpg source checking again to avoid this cycle:
+  libtasn1 -&amp;gt; libssh2_org -&amp;gt; openssh -&amp;gt; krb5 -&amp;gt; python-Jinja2 -&amp;gt; vim -&amp;gt; libtasn1 (forwarded request 180869 from coolo)</comment>
+    <requestid>180871</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>0eb8104b41b4a8d232425bf1b1e6110e</srcmd5>
+    <version>3.3</version>
+    <time>1379663108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e46654aadfd409fa4c3de291c667defe</srcmd5>
+    <version>3.6</version>
+    <time>1402058175</time>
+    <user>coolo</user>
+    <comment>- updated to libtasn1 3.6
+  * Noteworthy changes in release 3.6 (released 2014-05-25) [stable]
+  - Corrected an off-by-one error in ASN.1 DER tag decoding. (CVE-2014-3468/bnc#880735)
+  - Several improvements and new safety checks on DER decoding;
+    issues found using Codenomicon TLS test suite. (CVE-2014-3469/bnc#880738,
+    CVE-2014-3467/bnc#880737)
+  - Marked asn1_der_decoding_element() as deprecated. Use
+    asn1_der_decoding() instead.
+  * Noteworthy changes in release 3.5 (released 2014-05-01) [stable]
+  - Correctly handle decoding of recursive CHOICE options.
+  - Allow deleting elements of SET OF. Patch by Jean-Louis Thekekara.
+  - Several small bug fixes found by coverity.
+  - Code improvements contributed by Kurt Roeckx.
+  * Noteworthy changes in release 3.4 (released 2013-11-25) [stable]
+  - Added asn1_delete_structure2() which allows zeroizing the contents
+    of all values in the structure prior to deinitialization.
+  - The parser accepts negative numbers in an INTEGER range (but
+    still does no enforce them).</comment>
+    <requestid>236130</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>1f0860110fdd4eb2b43d31c482babaed</srcmd5>
+    <version>3.6</version>
+    <time>1403176797</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237267</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ee87dc733925ffc2b2b98ef24de90bcf</srcmd5>
+    <version>3.7</version>
+    <time>1406556676</time>
+    <user>coolo</user>
+    <comment>- updated to libtasn1 3.7: 
+  * Noteworthy changes in release 3.7 (released 2014-06-26) [stable]
+  - Fixes in length calculation in _asn1_extract_der_octet().
+  - Fixes in DER decoding.
+  - Fixes: CVE-2014-3468 CVE-2014-3467 CVE-2014-3469 bnc#880738
+    bnc#880737 bnc#880735</comment>
+    <requestid>242449</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>ee87dc733925ffc2b2b98ef24de90bcf</srcmd5>
+    <version>3.7</version>
+    <time>1409301733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bff433749aabae54f72f8bc7a33eabdf</srcmd5>
+    <version>4.2</version>
+    <time>1413616086</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256690</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>b804089441497083619d493eabfd5ca6</srcmd5>
+    <version>4.2</version>
+    <time>1424436637</time>
+    <user>dimstar_suse</user>
+    <comment>- Put C API documentation into -devel package. (forwarded request 286290 from jengelh)</comment>
+    <requestid>286293</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>534046206f35dc29a491bf4b7054c7f0</srcmd5>
+    <version>4.3</version>
+    <time>1427273726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Cleanup spec-file with spec-cleaner
+- Add info preun and post dependencies
+- Update to 4.3
+  * Added asn1_decode_simple_ber() (forwarded request 292307 from pluskalm)</comment>
+    <requestid>292349</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0a9abecb7069191af2225081fb37e240</srcmd5>
+    <version>4.4</version>
+    <time>1427983300</time>
+    <user>dimstar_suse</user>
+    <comment>- update to libtasn1 4.4 [bsc#924828]:
+  * Corrected a two-byte stack overflow in asn1_der_decoding. (forwarded request 293642 from AndreasStieger)</comment>
+    <requestid>293643</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>328642efce44ff92511b1564a3810563</srcmd5>
+    <version>4.5</version>
+    <time>1430780086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305052</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>47e2900369307c1da2367e1240d8a8a9</srcmd5>
+    <version>4.7</version>
+    <time>1443071751</time>
+    <user>coolo</user>
+    <comment>New release (forwarded request 331599 from Zaitor)</comment>
+    <requestid>331611</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>37cbeb0c708e09f24404424ab5da0894</srcmd5>
+    <version>4.8</version>
+    <time>1462428556</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>388236</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>037ec8156a82be89c885024db45dbbf7</srcmd5>
+    <version>4.8</version>
+    <time>1465847564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400967</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>38dc51361c988ae22561314e21efb71e</srcmd5>
+    <version>4.9</version>
+    <time>1472111501</time>
+    <user>dimstar_suse</user>
+    <comment>libtasn1 4.9 (forwarded request 418353 from AndreasStieger)</comment>
+    <requestid>421047</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d4d9d40fb6be1948e275d4130b1a69ce</srcmd5>
+    <version>4.12</version>
+    <time>1497602887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502798</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>912610c0fae3440fb0ff7ed32728b4bc</srcmd5>
+    <version>4.13</version>
+    <time>1516970101</time>
+    <user>dimstar_suse</user>
+    <comment>Added CVE reference (forwarded request 568530 from kbabioch)</comment>
+    <requestid>568531</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>e7d06af87f284467f800172a0cfc5d7c</srcmd5>
+    <version>4.13</version>
+    <time>1519844108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580148</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>cdb891d1e9d1c03646e5e5308e1e3d93</srcmd5>
+    <version>4.13</version>
+    <time>1556914908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699551</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1a1814c97dd8fb4bbe31b49b4b1d0cf4</srcmd5>
+    <version>4.14</version>
+    <time>1565178948</time>
+    <user>dimstar_suse</user>
+    <comment>- libtasn1 4.14:
+  * New #defines for version checking
+  * other developer visible changes
+- drop libtasn1-object-id-recursion.patch, incorporating the
+  upstream fix for boo#1105435 CVE-2018-1000654</comment>
+    <requestid>720159</requestid>
+  </revision>
+</revisionlist>

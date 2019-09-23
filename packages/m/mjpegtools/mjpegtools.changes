@@ -1,0 +1,470 @@
+-------------------------------------------------------------------
+Wed Aug 22 10:37:29 UTC 2018 - dimstar@opensuse.org
+
+- Inject pkg-config --cflags SDL_gfx into CFLAGS: the build system
+  does not use pkg-config yet to find the right parameters for
+  SDL_gfx, so we cheat like that.
+
+-------------------------------------------------------------------
+Tue Mar  6 22:13:45 UTC 2018 - virtuousfox@gmail.com
+
+- Add libmplex2-2_0-0 to baselibs.conf for gstreamer-plugins-bad-32bit
+  forgotten in the previous change
+
+-------------------------------------------------------------------
+Tue Mar  6 05:37:58 UTC 2018 - virtuousfox@gmail.com
+
+- Add libmpeg2encpp-2_0-0 to baselibs.conf for gstreamer-plugins-bad-32bit
+  which may be needed for wine's A/V support to function properly
+
+-------------------------------------------------------------------
+Tue Feb 27 09:56:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Split libmjpegutils-2_0-0 to follow openSUSE recommended
+  guidelines for libs:
+  + liblavfile-2_0-0
+  + liblavjpeg-2_0-0
+  + liblavplay-2_0-0
+  + liblavrec-2_0-0
+  + libmplex2-2_0-0
+  + libmpeg2encpp-2_0-0
+- Run spec-cleaner, modernize spec slightly.
+- Drop libmpeg2encpp-2_0-0 Obsoletes, package is added back.
+
+-------------------------------------------------------------------
+Tue Feb 20 18:27:14 UTC 2018 - bjorn.lie@gmail.com
+
+- No longer use patched tarball for build, mpeg2 is now available
+  in openSUSE:
+  + Drop pre_checkin.sh, mjpegtools-codecpatch.sh and
+    mjpegtools-codecpatch.patch, no longer needed.
+  + Drop BUILD_ORIG and obsolete versions conditionals.
+  + Drop previously conditional mjpegtools-orig-addon and
+    libmpeg2encpp-2_0-0 subpackages.
+  + Update baselibs.conf for the new build structure.
+  + Add mjpegtools-orig-addon and libmpeg2encpp-2_0-0 Obsoletes:
+    Ensure a smooth upgrade for our users.
+
+-------------------------------------------------------------------
+Tue Feb 20 16:04:41 UTC 2018 - bwiedemann@suse.com
+
+- Make source tarball generation reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Sat Dec 30 22:41:59 UTC 2017 - zaitor@opensuse.org
+
+- Add conditional post(un) handling for libmpeg2encpp-2_0-0.
+
+-------------------------------------------------------------------
+Tue Oct 31 16:36:27 UTC 2017 - zaitor@opensuse.org
+
+- Drop pkgconfig(gdk-x11-2.0), pkgconfig(gobject-2.0) and
+  pkgconfig(gtk+-x11-2.0) BuildRequires and pass --without-gtk, no
+  longer build gtk2 support.
+
+-------------------------------------------------------------------
+Sun Apr  2 21:38:24 UTC 2017 - meissner@suse.com
+
+- mjpegtools-more-pie.patch: remove some -fno-PIC calls. They
+  do not seem to be necessary and break PIE builds.
+  (The compiler would warn if the assembler would not build.)
+
+-------------------------------------------------------------------
+Fri Feb 24 11:12:26 UTC 2017 - zaitor@opensuse.org
+
+- Add mjpegtools Requires to mjpegtools-orig-addon, installing the
+  addon without having the package it "extends" is pointless.
+
+-------------------------------------------------------------------
+Sat Feb 18 01:35:01 UTC 2017 - zaitor@opensuse.org
+
+- Split the package in smaller pieces, allowing as user to keep the
+  main/free parts from the distribution and 'enhancing' the
+  capability with simple addon-packages: libmpeg2encpp-2_0-0 (as a
+  library it is required by other code depending on it) and
+  mjpegtools-orig-addon, which is auto-recommended when the user
+  has mjpegtools installed AND has a repo enabled, containing this
+  package AND has recommends enabled.
+
+-------------------------------------------------------------------
+Thu Jan  8 15:15:11 UTC 2015 - olaf@aepfle.de
+
+- BuildRequire at least libpng 1.14 due to usage of
+  PNG_TRANSFORM_GRAY_TO_RGB
+
+-------------------------------------------------------------------
+Mon Dec  1 12:53:29 UTC 2014 - kstreitova@suse.com
+
+- Added baselibs.conf as a source in the spec file (to avoid error 
+  message from the Factory check script). 
+
+-------------------------------------------------------------------
+Sat Nov 29 20:11:00 UTC 2013 - Led <ledest@gmail.com>
+
+- fix bashisms in shell scripts
+- fix shebang in lavtc.sh that contains bash-specific constructions
+- add patches:
+  * mjpegtools-2.0.0-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 14:20:46 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  ÃPresence of many GPL-2.0 licensed files in mplex/ y4mdenoise
+
+-------------------------------------------------------------------
+Fri Mar  1 11:50:08 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jul  3 21:51:17 UTC 2012 - meissner@suse.com
+
+- disable simd-accel on ppc as it does not build with the
+  reduced tarball
+
+-------------------------------------------------------------------
+Sun May  6 14:35:50 UTC 2012 - reddwarf@opensuse.org
+
+- Don't force a libpng version
+- Modify %attr use to make it compatible with old distros
+
+-------------------------------------------------------------------
+Thu Mar 15 19:38:49 UTC 2012 - dimstar@opensuse.org
+
+- Add mjpegtools-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Fri Dec  2 12:57:55 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Nov 15 02:02:52 UTC 2011 - cmorve69@yahoo.es
+
+- Update to 2.0.0
+- Remove obsoleted patches
+- Rename to follow SLPP
+- Use pkgconfig()-type BuildRequires
+- Spec-clean
+
+-------------------------------------------------------------------
+Sun Aug  7 15:49:23 UTC 2011 - chris@computersalat.de
+
+- fix BUILD_ORIG
+  o add fix_lib_versioning-mpeg2enc patch (mpeg2enc/Makefile.am)
+- add gtk2-devel (Gtk+ support for glav)
+- remove author from descr
+
+-------------------------------------------------------------------
+Thu Jul  7 09:10:47 UTC 2011 - idonmez@novell.com
+
+- Add mjpegtools-v4l-2.6.38.patch: use the new v4l interface 
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+    
+- added 32bit compatibility libraries
+- properly escape macro in comments (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Wed Feb  9 18:12:41 CET 2011 - pth@suse.de
+
+- Optimize the handling of CFLAGS.
+- Don't use -fno-strict-aliasing as the compiler doesn't report
+  any aliasing issues.
+
+-------------------------------------------------------------------
+Wed Feb  9 17:20:30 CET 2011 - pth@suse.de
+
+- Use AC_PREREQ before AC_INIT
+- Move AM_INIT_AUTOMAKE to just after AC_INIT
+- Use LT_INIT to init libtool and pass disable-static as default.
+- Only pass -release to libtool and not -release and -version-info,
+  thus fixing the library naming.
+- Add and use an option to configure to disable processor specific
+  code tuning.
+- Don't bother with patching .in files as they're regenerated by
+  calling autoreconf.
+
+-------------------------------------------------------------------
+Thu Sep  2 16:13:20 CEST 2010 - pgajdos@suse.cz
+
+- fixed crash
+- see http://bugs.gentoo.org/293919, 
+  https://qa.mandriva.com/show_bug.cgi?id=55450 
+
+-------------------------------------------------------------------
+Mon Mar  1 17:02:04 UTC 2010 - puzel@novell.com
+
+- mjpegtools-1.9.0-fix-compiler-error.patch
+  - fix build
+
+-------------------------------------------------------------------
+Sat Nov 21 09:31:15 CET 2009 - meissner@suse.de
+
+- fuzz=0 for codec patch
+
+-------------------------------------------------------------------
+Thu Jun  4 17:19:20 CEST 2009 - puzel@suse.cz
+
+- add mjpegtools-fix-invalid-conversion.patch
+  - fixes build with new gcc and glibc
+
+-------------------------------------------------------------------
+Mon Jan 19 14:01:50 CET 2009 - puzel@suse.cz
+
+- update to 1.9.0 (bug fixes)
+  - delete mjpegtools-jpeg2yuv_stdin.patch (fixed upstream)
+  - delete mjpegtools-gcc43.patch (fixed upstream)
+- set correct group for -devel package (Development/Libraries/C and C++)
+
+-------------------------------------------------------------------
+Thu Jun 26 15:48:35 CEST 2008 - puzel@suse.cz
+
+- update to 1.9.0rc3
+  * bugfix release
+- removed mjpegtools-includes.patch (fixed in upstream)
+- removed mjpegtools-motionestbug.patch (fixed in upstream)
+- removed mjpegtools-strcmp.patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Tue May 13 12:21:45 CEST 2008 - puzel@suse.cz
+
+- added libpng-devel to BuildRequires [bnc #343848]
+
+-------------------------------------------------------------------
+Mon Jan  7 11:07:27 CET 2008 - ssommer@suse.de
+
+- fix build with gcc43 
+
+-------------------------------------------------------------------
+Sun Aug 12 12:20:55 CEST 2007 - ro@suse.de
+
+- fix build for BUILD_ORIG not set 
+
+-------------------------------------------------------------------
+Fri Aug 10 14:05:13 CEST 2007 - pcerny@suse.cz
+
+- fixed dependency problems on ppc/ppc64 [#297568]
+  (reenabling architecture dependent configure options)
+- changed DISTRIBUTABLE to BUILD_ORIG
+- patch for jpeg2yuv to detect EOF correctly (from upstream)
+- patch names synchronization
+
+-------------------------------------------------------------------
+Sun Aug  5 14:03:47 CEST 2007 - olh@suse.de
+
+- getopt returns int, not char
+  align vector buffers to 16 bytes
+  mark one string constant as const
+  build parallel
+
+-------------------------------------------------------------------
+Fri Jul 20 13:32:54 CEST 2007 - pcerny@suse.cz
+
+- removed dependece on avifile and some other packages
+
+-------------------------------------------------------------------
+Wed May  9 16:11:04 CEST 2007 - pcerny@suse.cz
+
+- update to 1.9.0rc2
+
+-------------------------------------------------------------------
+Mon Oct 16 02:10:57 CEST 2006 - ro@suse.de
+
+- fix build with current libquicktime 
+
+-------------------------------------------------------------------
+Tue Mar 14 13:02:53 CET 2006 - ro@suse.de
+
+- disable altivec also on ppc64 (not just on ppc) 
+
+-------------------------------------------------------------------
+Fri Jan 27 14:32:59 CET 2006 - nadvornik@suse.cz
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 26 15:51:26 CET 2006 - sbrabec@suse.cz
+
+- Added %install_info_prereq.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:19 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 29 17:58:40 CET 2005 - ro@suse.de
+
+- overwrite cpuinfo.sh, the build-host is basically random
+  and optimizing for a random cpu does not help 
+
+-------------------------------------------------------------------
+Wed Oct 26 16:20:05 CEST 2005 - rguenther@suse.de
+
+- add missing include of assert.h to allow building with gcc 4.1
+
+-------------------------------------------------------------------
+Fri Oct 21 14:21:24 CEST 2005 - kraxel@suse.de
+
+- updated to 1.8.0.
+- splitted away -devel package.
+
+-------------------------------------------------------------------
+Mon Sep 26 17:12:42 CEST 2005 - sbrabec@suse.cz
+
+- Force gtk2 using gtk1-compat-devel.
+
+-------------------------------------------------------------------
+Tue May  3 17:11:53 CEST 2005 - pmladek@suse.cz
+
+- added some more fixes to build with gcc4
+
+-------------------------------------------------------------------
+Tue Apr 19 02:27:18 CEST 2005 - ro@suse.de
+
+- fix build with gcc-4 
+
+-------------------------------------------------------------------
+Thu Apr 22 18:53:01 CEST 2004 - kraxel@suse.de
+
+- add -fno-strict-aliasing.
+
+-------------------------------------------------------------------
+Thu Feb  5 10:06:21 CET 2004 - kraxel@suse.de
+
+- update to 1.6.2-final.
+
+-------------------------------------------------------------------
+Thu Jan 22 17:31:05 CET 2004 - kraxel@suse.de
+
+- updated to 1.6.2-rc4.
+- some spec file cleanups.
+
+-------------------------------------------------------------------
+Sat Jan 10 14:48:49 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Aug 12 00:58:07 CEST 2003 - ro@suse.de
+
+- fix build with latest avifile 
+
+-------------------------------------------------------------------
+Tue May 27 12:51:13 CEST 2003 - kraxel@suse.de
+
+- file list fixups.
+
+-------------------------------------------------------------------
+Mon Mar 10 11:49:38 CET 2003 - kraxel@suse.de
+
+- ppc build fix.
+
+-------------------------------------------------------------------
+Tue Feb 25 10:28:44 CET 2003 - aj@suse.de
+
+- Add missing assert includes.
+
+-------------------------------------------------------------------
+Mon Feb 17 16:04:38 CET 2003 - ro@suse.de
+
+- fix last change 
+
+-------------------------------------------------------------------
+Thu Feb 13 16:04:44 CET 2003 - sf@suse.de
+
+- compile with -fPIC on archs != i386 
+  (needed for gstreamer-plugins) 
+
+-------------------------------------------------------------------
+Thu Feb 13 14:35:11 CET 2003 - ro@suse.de
+
+- added freetype2-devel
+
+-------------------------------------------------------------------
+Wed Feb 12 18:09:05 CET 2003 - ro@suse.de
+
+- added expat to neededforbuild 
+
+-------------------------------------------------------------------
+Tue Dec 10 16:50:54 CET 2002 - kraxel@suse.de
+
+- updated to version 1.6.1
+- splitted libmovtar into a new package
+
+-------------------------------------------------------------------
+Fri Jul  5 10:43:03 CEST 2002 - kukuk@suse.de
+
+- Use %ix86 macro
+
+-------------------------------------------------------------------
+Thu Jul  4 12:26:24 CEST 2002 - ro@suse.de
+
+- neededforbuild quicktime4linux -> libquicktime 
+
+-------------------------------------------------------------------
+Tue Jun 25 14:11:51 CEST 2002 - uli@suse.de
+
+- build movtar with -fPIC
+
+-------------------------------------------------------------------
+Wed Jun 12 12:15:56 CEST 2002 - uli@suse.de
+
+- update -> 1.6.0 (final)
+
+-------------------------------------------------------------------
+Fri May 24 16:18:48 CEST 2002 - meissner@suse.de
+
+- %_lib fixes.
+
+-------------------------------------------------------------------
+Fri Apr 26 18:33:21 CEST 2002 - uli@suse.de
+
+- update -> 1.6.0-rc2
+- update jpeg-mmx -> 0.1.4-rc1
+- update libmovtar -> 0.1.3-rc1
+- ditched buildroot crap, it breaks movtar
+- disabled cmov optimizations (no runtime detection)
+- changed MPEGTOOLS switch to DISTRIBUTABLE (with inverse logic)
+  to ensure consistency with other packages
+
+-------------------------------------------------------------------
+Wed Apr  3 15:19:07 CEST 2002 - sf@suse.de
+
+- update to 1.6.0-beta2
+- gcc3 fix
+- spec cleanup
+- removed mjpegtools.dif
+- added DV-support again, as mmx-detection in libdv is "fixed"
+- added buildroot
+
+-------------------------------------------------------------------
+Fri Feb  8 17:57:19 CET 2002 - uli@suse.de
+
+- build without DV support (causes reliable segfaults even on
+  non-DV input)
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:11 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Fri Jan 25 11:37:58 CET 2002 - uli@suse.de
+
+- update -> 1.6.0-beta1
+
+-------------------------------------------------------------------
+Wed Aug  8 16:55:46 CEST 2001 - ro@suse.de
+
+- changed neededforbuild <sdl> to <SDL>
+- changed neededforbuild <sdl-devel> to <SDL-devel>
+
+-------------------------------------------------------------------
+Tue Jul 10 15:48:38 CEST 2001 - uli@suse.de
+
+- initial package
+

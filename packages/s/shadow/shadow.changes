@@ -1,0 +1,404 @@
+-------------------------------------------------------------------
+Mon Sep  2 11:12:59 UTC 2019 - mvetter@suse.com
+
+- bsc#1144060: Add pam_keyinit.so to /etc/pam.d configuration files
+  to support kernel keyring feature
+- Update pamd.tar.bz2 with pam configuration files accordingly
+
+-------------------------------------------------------------------
+Mon Aug 19 14:50:02 CEST 2019 - kukuk@suse.de
+
+- encryption_method_nis.patch: drop, DES should really not be used
+  anymore anywhere, even with NIS
+- shadow-login_defs-suse.patch: remove encryption NIS entry
+
+-------------------------------------------------------------------
+Fri Jul 26 23:44:56 CEST 2019 - sbrabec@suse.com
+
+- Fix incorrect variable name in usermod
+  (shadow-usermod-variable.patch).
+- shadow-login_defs-comments.patch:
+  * Drop SHA_CRYPT_*_ROUNDS that are in the upstream login.defs.
+  * Add missing LASTLOG_UID_MAX.
+  * Refresh shadow-login_defs-suse.patch.
+- Port shadow-login_defs-check.sh to match the current spec file
+  and login.defs.
+
+-------------------------------------------------------------------
+Thu Jul 25 15:27:15 CEST 2019 - kukuk@suse.de
+
+- Provide "useradd_or_adduser_dep" for sysuser-shadow
+
+-------------------------------------------------------------------
+Sat Jul 20 02:11:10 CEST 2019 - sbrabec@suse.com
+
+- shadow-login_defs-suse.patch: Set ALWAYS_SET_PATH default to
+  "yes" (bsc#353876#c7).
+
+-------------------------------------------------------------------
+Fri Jul 19 10:19:44 UTC 2019 - sbrabec@suse.com
+
+- Fix comment about patch in spec file
+
+-------------------------------------------------------------------
+Fri Jun 14 06:20:46 UTC 2019 - mvetter@suse.com
+
+- Update to 4.7:
+  * Spawn: don't loop forever on ECHILD
+  * Do not fail locking if there is a stale lockfile (Tomas Mraz)
+  * Use lckpwdf if prefix not set (Tomas Mraz)
+  * Build: check correct DocBook version (Jan Tojnar)
+  * Usermod: Print 'no changes' to stdout, not stderr (Serge Hallyn)
+  * Add support for btrfs subvolumes for home (Adam Majer)
+  * Fix chpasswd long line handling (Nathan Ruiz)
+  * Use secure_getenv for gettime (Chris Lamb)
+  * Make sp_lstchg reproducible (Chris Lamb)
+  * Do not crash commonio_close if db file is not open (Tomas Mraz)
+  * Don't flush nscd and sssd cache in read-only mode (Charlie Vuillemez)
+  * French manpage update (Alban VIDAL)
+  * Fix manpage defaults for SUB_UID/GID_COUNT (Tomas Mraz)
+  * Sync po files from shadow.pot (Alban VIDAL)
+  * Usermod: guard against unsafe chown of homedir contents (Tomas Mraz)
+  * Add LASTLOG_UID_MAX to login.defs (Tomas Mraz)
+  * new[ug]idmap file capabilities support (Giuseppe Scrivano and Christian Brauner)
+  * Fix segfault in useradd (Tomas Mraz)
+  * Coverity issues (Tomas Mraz)
+  * Flush sssd caches (Jakub Hrozek)
+  * Log UID in nologin (Vladimir Ivanov)
+  * run pam_getenvlist after setup_env in su.c (Michael Vogt)
+  * Support systems with only utmpx (A. Wilcox)
+  * Fix unguarded ENABLE_SUBIDS code (Jan Chren (rindeal))
+  * Update po/zh_CN translation (Lion Yang)
+  * Create parent dirs for useradd -m (Michael Vetter)
+  * Prevent usermod segv
+  * Fix usermod crash (fariouche)
+- Remove btrfs-subvolumes.patch (fate#316134):
+  upstreamed: https://github.com/shadow-maint/shadow/pull/149
+- Remove useradd-mkdirs.patch (bsc#865563):
+  upstreamed https://github.com/shadow-maint/shadow/pull/112
+- Remove shadow-4.6.0-fix-usermod-prefix-crash.patch
+  upstreamed https://github.com/shadow-maint/shadow/issues/110
+- Rebase userdel-script.patch
+- Rebase useradd-script.patch
+- Rebase shadow-util-linux.patch
+
+-------------------------------------------------------------------
+Thu May 30 11:15:49 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Make building more verbose
+- Use spec-cleaner
+
+-------------------------------------------------------------------
+Thu May  2 09:45:48 UTC 2019 - lnussel@suse.de
+
+- don't specify MOTD_FILE in login.defs but fall back to built in
+  defaults of login (boo#1133929)
+
+-------------------------------------------------------------------
+Tue Apr 30 22:27:14 CEST 2019 - sbrabec@suse.com
+
+- Split shadow-login_defs.patch hunks to its logical components
+  (bsc#1121197):
+  * shadow-login_defs-unused-by-pam.patch
+  * shadow-login_defs-comments.patch
+  * shadow-util-linux.patch
+  * shadow-login_defs-suse.patch
+  * Move appropriate hunks to chkname-regex.patch and
+    encryption_method_nis.patch
+  * Remove GROUPADD_CMD that is not supported (bsc#1121197#c14).
+- Split getdef-new-defs.patch hunks to its logical components
+  (bsc#1121197):
+  * encryption_method_nis.patch
+  * chkname-regex.patch
+  * shadow-util-linux.patch
+    Add support for login: ALWAYS_SET_PATH and LOGIN_PLAIN_PROMPT.
+  * useradd-script.patch, userdel-script.patch
+  * Remove duplicated definitions of MOTD_FILE and ENV_PATH.
+- Add shadow-login_defs-unused-check.sh to allow verification of
+  login.defs variable usage (bsc#1121197).
+- Add virtual symbols for login.defs compatibility (bsc#1121197).
+
+-------------------------------------------------------------------
+Wed Jan 23 09:35:01 UTC 2019 - adam.majer@suse.de
+
+- btrfs-subvolumes.patch: implement support for creating user home
+  directories on btrfs subvolumes (fate#316134)
+
+-------------------------------------------------------------------
+Wed Oct 31 14:17:29 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Add empty /etc/sub{u,g}id files. useradd and usermod add entries for users
+  only when those files exist. Having those entries is a requirement to create
+  user namespaces, for instance, when running podman as a non-root user.
+
+-------------------------------------------------------------------
+Mon May 14 12:45:42 UTC 2018 - mvetter@suse.com
+
+- Update to 4.6:
+  * Newgrp: avoid unnecessary lookups
+  * Make language less binary
+  * Add error when turning off man switch
+  * Spelling fixes
+  * Make userdel work with -R
+  * newgidmap: enforce setgroups=deny if self-mapping a group
+  * Norwegian bokmål translation
+  * pwck: prevent crash by not passing O_CREAT
+  * WITH_TCB fixes from Mandriva
+  * Fix pwconv and grpconv entry skips
+  * Fix -- slurping in su
+  * add --prefix option
+- Remove CVE-2018-7169.patch: upstreamed
+- Remove shadow-4.1.5.1-pam_group.patch: upstreamed
+- Update userdel-script.patch: change due to prefix
+- Update useradd-mkdirs.patch: change due to prefix
+  Additionally changed in that patch (bsc#1106914):
+  * Test for strdup() failure
+  * Directory to 0755 instead 0777
+- Add shadow-4.6.0-fix-usermod-prefix-crash.patch:
+  Fixes crash in usermod when called with --prefix.
+  See https://github.com/shadow-maint/shadow/issues/110
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:45 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Fri Feb 16 08:39:08 UTC 2018 - kbabioch@suse.com
+
+- Added CVE-2018-7169.patch: Fixed an privilege escalation in newgidmap,
+  which allowed an unprivileged user to be placed in a user namespace where
+  setgroups(2) is allowed. (CVE-2018-7169 bsc#1081294)
+
+-------------------------------------------------------------------
+Wed Nov  8 12:39:12 UTC 2017 - mvetter@suse.com
+
+- bsc#1061838:
+  Revert: Requires: group(mail)
+  Introduced circular dependency
+
+-------------------------------------------------------------------
+Fri Oct 13 15:44:28 UTC 2017 - adam.majer@suse.de
+
+- Revert accidentalied prerequisites.
+  Use PreReq for permissions
+
+-------------------------------------------------------------------
+Thu Oct 12 08:59:28 UTC 2017 - schwab@suse.de
+
+- Prequire group(shadow), group(root), user(root)
+
+-------------------------------------------------------------------
+Mon Oct  9 11:53:44 UTC 2017 - mvetter@suse.com
+
+- bsc#1061838:
+  Add Requires for group(mail)
+
+-------------------------------------------------------------------
+Thu Sep 14 08:18:27 UTC 2017 - mvetter@suse.com
+
+- boo#1048645:
+  Set suid bit for newuidmap and newgimap
+
+-------------------------------------------------------------------
+Thu Sep 14 08:17:08 UTC 2017 - mvetter@suse.com
+
+- Revert the changes for bsc#1023895 back
+  Pulls in too many deps into ring0.
+  Next version of shadow plans to have no conditional man pages.
+
+-------------------------------------------------------------------
+Fri Sep  8 11:41:13 UTC 2017 - mvetter@suse.com
+
+- run spec-cleaner
+- bsc#1023895:
+  man page contained invalid options because they depend
+  on compile flags and we shipped pre built ones.
+  New BuildRequires: docbook-xsl-stylesheets docbook_4 xml2po
+  xsltproc
+
+-------------------------------------------------------------------
+Thu Jun  8 17:00:57 CEST 2017 - kukuk@suse.de
+
+- Adjust requires (we need user/group root instead of aaa_base now)
+
+-------------------------------------------------------------------
+Mon May 22 13:31:25 UTC 2017 - adam.majer@suse.de
+
+- New upstream version 4.5
+- Refreshed patches:
+  * shadow-login_defs.patch
+  * chkname-regex.patch
+  * getdef-new-defs.patch
+  * useradd-mkdirs.patch
+- Upstreamed patches:
+  * shadow-4.1.5.1-manfix.patch
+  * shadow-4.1.5.1-errmsg.patch
+  * shadow-4.1.5.1-backup-mode.patch
+  * shadow-4.1.5.1-audit-owner.patch
+  * shadow-4.2.1-defs-chroot.patch
+  * shadow-4.2.1-merge-group.patch
+  * Fix-user-busy-errors-at-userdel.patch
+  * useradd-clear-tallylog.patch
+- shadow-4.1.5.1-pam_group.patch
+  dynamically added users via pam_group are not listed in groups
+  databases but are still valid
+- shadow.keyring: update keyring with current maintainer's keyid
+  only - Serge Hallyn 'F1D08DB778185BF784002DFFE9FEEA06A85E3F9D'
+- disable_new_audit_function.patch:
+  Disable newer libaudit functionality for older distributions
+
+-------------------------------------------------------------------
+Mon Feb 20 07:28:24 UTC 2017 - josef.moellers@suse.com
+
+- useradd: call external program "/sbin/pam_tally2" to reset
+  failed login counter in "/var/log/tallylog"
+  (bsc#980486, useradd-clear-tallylog.patch)
+
+-------------------------------------------------------------------
+Wed Nov  2 07:41:51 UTC 2016 - meissner@suse.com
+
+- add keyring, three public keys from https://pkg-shadow.alioth.debian.org/download.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:55:43 UTC 2016 - mvetter@suse.com
+
+- bsc#1002975: Use permissions according to permissions package
+  and dont try to manipulate them in %files section.
+
+-------------------------------------------------------------------
+Wed Sep 14 07:46:33 UTC 2016 - mvetter@suse.com
+
+- boo#994486: Include shadow.5 manpage
+  Previously this was provided by man-pages package in
+  the man-pages-addons tarball which got removed later on.
+
+-------------------------------------------------------------------
+Tue May 31 06:48:41 UTC 2016 - mvetter@suse.com
+
+- Add package dependency for aaa_base, fixing bnc#899409
+  (was done by tbehrens@suse.com but not submitted to Factory)
+
+-------------------------------------------------------------------
+Mon May 30 09:41:55 UTC 2016 - mvetter@suse.com
+
+- shadow 4.2.1 requested by fate#320422
+- bsc#979069: Dont include shadow-4.1.5.1-bug935203-manpage.patch
+- Dont set SUID bit yet. Once bsc#979282 is through, which will adapt the permissions package, we can enable the SUID bits.
+  Remove the files used to circumvent the check.
+- Remove:
+    * shadow-rpmlintrc
+    * shadow-subids
+    * shadow-subids.easy
+    * shadow-subids.secure
+    * shadow-subids.paranoid
+
+-------------------------------------------------------------------
+Thu May 19 12:28:47 UTC 2016 - christian.brauner@mailbox.org
+
+- Update to shadow-4.2.1:
+  - add support for subuids/subgids via newuidmap/newgidmap
+- Rename chkname-regex.diff to chkname-regex.patch
+- Rename encryption_method_nis.diff to encryption_method_nis.patch
+- Rename getdef-new-defs.diff to getdef-new-defs.patch
+- Rename shadow-login_defs.diff to shadow-login_defs.patch
+- Rename userdel-scripts.diff to userdel-script.patch
+- Rename useradd-script.diff to useradd-script.patch
+- Rename useradd-default.diff to useradd-default.patch
+- Rename useradd-mkdirs.diff to useradd-mkdirs.patch
+- Add fixes from Red Hat/Fedora:
+  - shadow-4.1.5.1-audit-owner.patch.patch:
+    - log owner changes for home directory
+  - shadow-4.1.5.1-userdel-helpfix.patch.patch:
+    - give a hint about what happens when you force the removal of a user
+  - shadow-4.2.1-defs-chroot.patch.patch:
+    - initialize uid_t uid_min and uid_t uid_max not before we need them
+  - shadow-4.2.1-merge-group.patch.patch:
+    - simplify by using a single call to snprintf()
+- Add upstream fix
+  - Fix-user-busy-errors-at-userdel.patch:
+    - call sub_uid_close()
+
+-------------------------------------------------------------------
+Fri Jan 15 11:08:29 UTC 2016 - fvogt@suse.com
+
+- Moved call from %verifyscript into %post:
+  * Caused call to %service_add_post shadow.service shadow.timer
+    during rpm -qV shadow
+
+-------------------------------------------------------------------
+Wed Jul 15 13:25:11 UTC 2015 - jkeil@suse.de
+
+- Add systemd unit files to continuously check password & groupfile integrity
+  * Idea from Arch Linux
+  * pending request to systemd-presets-branding-openSUSE to enable by default
+
+-------------------------------------------------------------------
+Mon Mar 31 22:00:00 UTC 2014 - tbehrens@suse.com
+
+- Add patch useradd-mkdirs.diff: fix for bnc#865563, create all parts
+  of the path
+
+-------------------------------------------------------------------
+Fri Nov 22 10:15:25 UTC 2013 - werner@suse.de
+
+- Stop any systemd user manager instance in case a user entry will
+  be deleted (bnc#849870).  Nevertheless a running process requires
+  the option --force for the userdel command.
+
+-------------------------------------------------------------------
+Tue Nov 12 14:47:30 CET 2013 - kukuk@suse.de
+
+- Add ENCRYPT_METHOD_NIS for pam_unix.so (encryption_method_nis.diff)
+
+-------------------------------------------------------------------
+Tue Sep 17 14:56:44 CEST 2013 - kukuk@suse.de
+
+- Add some fixes from Fedora:
+  - shadow-4.1.5.1-backup-mode.patch: open backup file with correct
+    permissions.
+  - shadow-4.1.5.1-logmsg.patch: fix error message
+  - shadow-4.1.5.1-errmsg.patch: print error reason
+  - shadow-4.1.5.1-manfix.patch: fix manual page
+
+-------------------------------------------------------------------
+Tue Feb  5 13:19:46 CET 2013 - kukuk@suse.de
+
+- Cleanup login.defs and enable ENCRYPT_METHOD [bnc#802006]
+
+-------------------------------------------------------------------
+Tue Nov 13 17:31:50 CET 2012 - kukuk@suse.de
+
+- Fix getdef default variables (getdef-new-defs.diff)
+
+-------------------------------------------------------------------
+Tue Nov 13 10:36:28 CET 2012 - kukuk@suse.de
+
+- Fix default group value in /etc/default/useradd 
+  (useradd-default.diff)
+
+-------------------------------------------------------------------
+Thu Sep 27 15:20:44 CEST 2012 - kukuk@suse.de
+
+- Implement CHARACTER_CLASS support
+  (chkname-regex.diff)
+
+-------------------------------------------------------------------
+Wed Sep 26 15:20:06 CEST 2012 - kukuk@suse.de
+
+- Add support for useradd.local
+  (useradd-script.diff)
+
+-------------------------------------------------------------------
+Tue Sep 25 16:22:18 CEST 2012 - kukuk@suse.de
+
+- Fix spec file
+- Adjust login.defs
+  (shadow-login_defs.diff)
+- Add userdel*.local script support and scrips
+  (userdel-scripts.diff)
+
+-------------------------------------------------------------------
+Mon Sep 24 16:04:03 CEST 2012 - kukuk@suse.de
+
+- Initial package [FATE#314473]

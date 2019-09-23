@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Fri Apr 17 18:14:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Digest-CRC/Changes
+
+  
+  0.21  Sat Feb 21 13:18:25 2015
+            - new() throwing an error if an unsupported type is specified
+
+-------------------------------------------------------------------
+Mon Feb  9 09:16:47 UTC 2015 - opensuse@dstoecker.de
+
+- update to version 0.20 bug-fix release
+
+-------------------------------------------------------------------
+Wed Feb 15 18:04:12 UTC 2012 - opensuse@dstoecker.de
+
+- update to new 0.18 bug-fix release
+- added openpgparmor support
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:43 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Sep 14 08:04:12 UTC 2011 - opensuse@dstoecker.de
+
+- update to new 0.17 bug-fix release
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:04 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:48 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:33 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Thu Sep 30 00:00:00 UTC 2010 - opensuse@dstoecker.de
+
+- updated
+
+-------------------------------------------------------------------
+Tue Sep 28 00:00:00 UTC 2010 - opensuse@dstoecker.de
+
+- updated
+
+-------------------------------------------------------------------
+Fri Feb  8 00:00:00 UTC 2008 - opensuse@dstoecker.de
+
+- updated
+
+-------------------------------------------------------------------
+Thu Oct 25 00:00:00 UTC 2007 - Peter Eisentraut 0.10
+
+- initial package release
+

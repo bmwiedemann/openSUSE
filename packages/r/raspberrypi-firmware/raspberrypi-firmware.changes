@@ -1,0 +1,721 @@
+-------------------------------------------------------------------
+Mon Sep 16 06:36:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not run %preun scripts on upgrade (boo#1150408)
+
+-------------------------------------------------------------------
+Thu Sep  5 15:24:04 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to e2e17cd03 (2019-09-04)
+  * firmware: Port file loading revamp to master
+  * firmware: Avoid defaulting to 64-bit kernel on older Pi
+  * firmware: Revamp file loading logic
+  * firmware: power: Allow reading uncached voltage
+  * firmware: arm_loader: Request KMS to use CVT timings
+  * firmware: vc_image: Default YUVUV to non-tall mode, with flag if required
+  * firmware: ldconfig: Implement [pi2/pi3/pi3+] using board types
+    See: #1242
+  * firmware: platform: Remove 10mV of margin
+  * firmware: power: Add 2711-specific PMIC compensation values
+  * firmware: sdhost_arasan: Disable busy wait on EMMC_STATUS_NEW_CARD_DATA_SET
+  * firmware: AWB: Fix for manual WB settings in capture
+    See: #1215
+  * firmware: arm_loader: Use platform_get_min_core_voltage for actual min voltage
+  * firmware: clock: Remember disable state across clock changes
+  * firmware: platform: pi4: Reduce min core voltage to 810mV
+  * firmware: arm_dt: Use boost to force turbo mode rather than modifying core_freq_min for uart
+  * firmware: arm_loader: Add optional flag to add_boost and get_boost calls
+  * firmware: avs_2711: Move margin from init structure to run time
+  * firmware: platform: fix get_min_default
+  * firmware: arm_loader: Use AP_CLOCK_T for clock_iterator for easier debugging
+  * hdmi: Switch to active pixel rate + margin for core clock boost
+  * platform: Reduce the minimum core clock frequency from 250 to 200 MHz
+  * firmware: arm_loader: Fix initial_turbo getting stuck
+    See: #1005
+  * firmware: clock_2711: don't set reserved values for KA in PLL KAIP registers
+  * firmware: AWB: Allow user to set manual gains for the RPi algorithm
+  * firmware: arm_loader: Fix disabling of audio before reboot
+  * firmware: fixed up the custom CVT values to use correct group
+  * firmware: hdmi: Add independent table entries for hdmi_timings on each display
+    See: #1218
+  * firmware: Fix to allow HDMI audio port route setting
+    See: raspberrypi/linux#3100
+  * firmware: pwm_audio: Use the correct DREQs on Pi4
+    See: #1214
+  * firmware: pixelvalve_2711: Alter back porch for widths of 1366
+    See: #1202
+  * firmware: Clear the SMIDSW1 display interrupt flag on startup
+  * firmware: dt-blob: Declare Pi 4B's SD_IO voltage selector
+  * firmware: Fixups for missing code changes from Pi4 branch
+    See: #1201
+  * firmware: Change order of display remapping for default display number
+  * firmware: AWB: Set default number of stats regions for RPi AWB
+    See: #1198
+  * firmware: Fix composite interrupt HVS channel
+  * firmware: scalarlib: Fix width setting for SCALERLIB_PIXEL_FORMAT_YUV10COL
+  * firmware: vcmailbox: Add a new SET_AUDIO_LDO_STATE mailbox command
+  * firmware: Add mailbox call to report the HDMI timings
+  * firmware: H264: Set the decoder cache AXI burst length to the same as the encoder
+  * firmware: gencmd: Fix gencmd max result length
+  * firmware: bootloader_config: New gencmd to read the EEPROM config
+  * firmware: pwm_audio: Use PWM1 on BCM2838 unless remapped
+    See: #1178
+  * firmware: AWB updates
+    See: #1167
+  * firmware: dispmanx: Fix handling of disable_overscan to not disable it totally
+    See: raspberrypi/linux#3059
+  * firmware: power: Enable/disable H264 and ISP clocks with domain
+  * firmware: arm_loader: arm_64bit=0 should disable loading of kernel8.img
+  * firmware: dt-blob: CM has no activity LED
+
+-------------------------------------------------------------------
+Wed Jul 10 15:00:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix %post scripts to copy RPi4 firmware files too
+- Add %preun to remove files from EFI partition
+- Move Pi4 debug firmware to its own package extra-pi4 due to 
+  limited size on EFI partition
+
+-------------------------------------------------------------------
+Wed Jul 10 13:24:18 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 025759b8 (2019-07-09):
+  * firmware: hvs: Emulate the EOLn interrupt with a timer reset from VSTART
+    See: #1154
+  * firmware: Add support for Rec2020 colour space in vc_image, IL, and MMAL
+  * firmware: Fix composite mode on devices up to Pi3B+
+    See: #1166
+  * firmware: Fixes for core_freq_min causing failure on HDMI1
+    See: http://git/vc4/vc4/merge_requests/529
+  * firmware: hdmi: Don't release previous boost until mode set is complete
+    See: #1159
+  * firmware: bcm_host: Adjust for 64-bit physical addresses
+    See: #1161
+  * firmware: arm_loader: Shrink most stubs back to 256 bytes, add arm64 GIC stub
+    See: raspberrypi/linux#3032
+  * firmware: arm_dispmanx: Add support for setting the colour encoding
+  * firmware: dmalib: Fix Lite channel interrupt usage, and macro name
+  * firmware: Force overscan off when using LCDs
+    See: #1173
+  * firmware: cec: Fix crash when using CEC with HDMI1
+  * firmware: arm_display: Fix race condition initialising CEC
+  * firmware: hdmi: Always use boost frequency for initial mode set
+    See: #1159
+  * firmware: AWB: Fix usage for IR operation
+    See: #1167
+  * firmware: arm_loader: Support CLOCK_EMMC2 from GET_CLOCK_RATE
+    See: #1179
+  * firmware: arm_loader: Force word alignment for the DTB
+    See: #1175
+  * firmware: clock_2711: don't set reserved values for KA in PLL KAIP registers
+  * firmware: Assorted minor fixes for tvservice -o
+  * firmware: Rename hdmi_enable_4k to hdmi_enable_4kp60
+  * frimware: Revert: clock_2711: don't set reserved values for KA in PLL KAIP registers
+
+-------------------------------------------------------------------
+Wed Jun 26 06:18:15 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to d786b62 (2019-06-25):
+  * firmware: Fix AWB exception bug
+  * firmware: Updates for Pi4
+  * firmware: 2711: CORE, EMMC & BVB clock updates for WiFi / 4Kp60
+  * firmware: 711: Use boost instead of fixed freq for 4Kp60
+
+-------------------------------------------------------------------
+Wed Jun  5 07:58:19 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to e289f6a59 (2019-05-28):
+  * firmware: smservice: Avoid a double free
+  * firmware: arm_loader/display: All the framebuffer allocation to be made on the ARM
+  * firmware: isp_tuners: Fix memory leak in error path
+  * firmware: testc: Fix dps parsing
+  * firmware: camera_subsystem: Fix hardware sync pulses off disable_camera_led
+  * firmware: Replace the remaining direct users of C(mask_gpu_interrupt[0|1])
+  * firmware: arm_display: Kick transposer for the rainbow screen if required
+  * firmware: dispmanx: Do not allow transpose if using Full KMS
+    See: raspberrypi/linux#2891
+  * firmware: Revert: arm_loader/display: All the framebuffer allocation to be made on the ARM
+  * firmware: arm_loader: Further conditionals for passing in a frame buffer
+  * firmware: di_adv: Drop back to fast if QPUs are masked off
+
+-------------------------------------------------------------------
+Fri Mar  8 13:34:45 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to fd15e070 (2019-03-08):
+  * firmware: raspivid: Stop --raw option resetting --raw-format to YUV
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=43&t=189830&start=25#p1432589
+  * firmware: Fixed up overflow in microsecond timer
+    See: raspberrypi/userland#535
+  * firmware: camera_subsystem: Clean up disable_camera_led handling
+  * firmware: smservice: Add defines for VPU allocations
+  * smservice: Add support for reporting the supported version to the host
+  * firmware: Camplus: cdi: Remove requirement for calibration functions
+  * firmware: isp: Reinstate lres shift parameter accidentally dropped with gamma changes
+    See: #1108
+  * firmware: mmal_ril: List all 4 Bayer orders if the IL component says it supports Bayer
+  * firmware: camera/image_encode: Add timestamp to frames encoded with image_encode
+    See: raspberrypi/linux#2351
+
+-------------------------------------------------------------------
+Thu Jan 31 08:43:07 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 81cca1a (2019-01-22):
+  * firmware: Added ability to have an third transpose buffer
+    See: #837
+  * firmware: isp: Correct the conversion tables changed in adding the gamma block
+    See: #1084
+  * firmware: raspberrypi_full variant: Drop unused Camplus sw stages
+  * bootcode: Reset WiFi and BT devices before resetting the expander
+    See: #1088
+  * bootcode: Fix Ethernet boot on a different subnet
+    See: #1078
+  * firmware: interface: Drop vcfiled
+    See: raspberrypi/userland#525
+  * firmware: Add reference counting to the local audio players
+    See: #547
+  * firmware: arm_loader: Add reporting the firmware git hash via the mailbox
+  * firmware: vcos: Add reporting of which variant was built
+    See: raspberrypi/linux#2806
+  * firmware: Update vcdbg help
+    See: #594
+
+-------------------------------------------------------------------
+Tue Jan  8 08:27:00 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to e1bd9b0 (2018-12-21):
+  * firmware: Added a mailbox function for setting gamma
+  * firmware: bootcode: Support parsing of gpio filters from config.txt
+    See: #1076
+  * firmware: video_encode: Allow Inline Headers to be changed whilst active
+  * firmware: IL: Add XRGB8888 and XBGR8888, and support on video_render, isp, and hvs
+  * firmware: image_encode: Allow arbitrary buffer strides matching the appropriate multiples
+  * firmware: platform: Use 3aplus dt-blob section and bcm2710-rpi-3-a-plus.dtb
+  * firmware: dispmanx: Also apply overscan_scale when clamping to screen
+    See: https://forum.kodi.tv/showthread.php?tid=338052
+  * firmware: arm_dt: Accept "csi" as a special DT node that masks IRQs
+  * firmware: MMAL: Include OPAQUE in the list of supported encodings where appropriate
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=67&t=226416
+  * firmware: video_render: asserting on the buffer being unlocked is invalid
+  * firmware: video_render: Further fix to a vcos_verify
+  * firmware: IL hvs: Fail component create if the HVS or TXP interrupts are masked
+  * firmware: Clean up masked interrupt handling - moves it to intctrl
+  * firmware: vcinclude: Clean up INTERRUPT_xxx defines to use one place
+  * firmware: vcfw: camera_subsystem: Stop cameras being detected if ARM has Unicam instance
+  * firmware: vc_image: Fix up vc_image_bits_per_pixel for YUYV variants and BGR888
+  * firmware: vc_image: Make the alternate path in yuv420 to rgb888 support bgr888
+  * firmware: vc_image: Add an rgb_stripe_swap_ext which takes pitches
+  * firmware: vc_image_convert: yuv420 to bgr888 failed on (width&31) != 0
+  * firmware: IL isp: Use gamma block to shift 10bpp YUV to the correct pipe depth
+  * firmware: video_encode: Always set the input port nBufferSize to match the image
+  * firmware: Camera/ISP: Allow option to disable demosaicing
+
+-------------------------------------------------------------------
+Fri Nov 30 12:50:54 UTC 2018 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Removed upstream-mmc and rpi3-hdmi overlays as not needed anymore
+- Added Conflicts statement to avoid issues with older kernels
+
+-------------------------------------------------------------------
+Tue Nov 20 11:16:37 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 55e591283 (2018-11-05):
+  * firmware: Move to driver based backlight
+    See: #1063
+  * bootcode: Extend TEST_UNIT_READY timeout to 20 seconds, 
+    some hard drives take a really long time
+    See: #898
+  * firmware: video_render: Treat an empty buffer with ENDOFFRAME set as 
+    a flush
+  * firmware: dispmanx: Add option to ignore all layers lower than the 
+    current layer
+
+-------------------------------------------------------------------
+Wed Oct 17 08:50:51 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 10c1c5f96 (2018-10-15):
+  * firmware: jpeg/mjpeg: MJPEG doesn't insert JFIF APP0 header
+    See: https://github.com/raspberrypi/userland/issues/345
+  * firmware: Add IL HVS component
+  * firmware: mmal: Acquire zero copy buffers on being passed to the VPU
+  * firmware: video_render: Use per pixel alpha on RGBA and BGRA
+  * firmware: video_render: Add support for alpha options (MIX and PREMULT)
+  * firmware: video_encode: Use default values on invalid nStride or nSliceHeight
+    See: https://github.com/raspberrypi/firmware/issues/1051
+  * firmware: gpioman/FXL6408: Handle open failing sensibly
+    See: https://github.com/raspberrypi/firmware/issues/1053
+  * firmware: Delay backlight coming on
+    See: https://github.com/raspberrypi/firmware/issues/1052
+  * firmware: LCD driver close fixes
+  * 2ndstage: ignore autoboot.txt if boot partition is already set
+    See: https://github.com/raspberrypi/noobs/issues/508
+  * firmware: 2ndstage: Report IP address in ARP response in network order
+  * firmware: video_decode: Fix error in previous memory leak patch
+  * firmware: video_encode: Add ISP conversion support for RGBX32
+  * firmware: platform: Also report soft temperature limit in get_throttled bits
+  * firmware: IL isp: minor code cleanups
+  * firmware: image_encode: Support Video domain on input port
+  * firmware: Camplus: annotate: Check lines_available >= lines_required
+    See: https://github.com/raspberrypi/userland/issues/485
+  * firmware: arm_dt: Work around an absent cache-line-size
+    See: https://github.com/raspberrypi/linux/issues/2643
+  * firmware: rawcam: Fix double buffer return issue
+  * firmware: rawcam: Code cleanup
+  * firmware: host_apps: Fixup partially merged commit from userland
+    See: https://github.com/raspberrypi/firmware/issues/1027
+  * firmware: mmal: Add KEEP_PORT_FORMATS flag to mmal connection
+    See: https://github.com/raspberrypi/userland/pull/483
+  * firmware: RaspiStill: Apply gpsd info as EXIF tags
+    See: https://github.com/raspberrypi/userland/pull/286
+  * firmware: video_encode: Drop back to software conversion if stride is not mod32
+    See: https://github.com/Hexxeh/rpi-firmware/issues/182
+  * firmware: arm_dt: Break out GPIO save/restore from HAT code as needed for PoE
+
+
+-------------------------------------------------------------------
+Thu Aug 16 13:41:12 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 953a3396 (2018-08-10):
+  * firmware: MMAL/IL: Fix for reducing alignment patch
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=43&t=62364
+  * firmware: Added a dpi_timings config item
+  * firmware: Add DPI Driver default settings
+  * firmware: HVS channel should come from the DISPLAY_INFO
+
+-------------------------------------------------------------------
+Wed Jul 11 12:18:48 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to d3c3d031 (2018-07-09):
+  * firmware: pwm_sdm: fix an edge case when reading back DMA 
+    source addresses
+  * firmware: pwm_sdm: fix write handle refcounting
+  * firmware: arm_loader: Update NOTIFY_REBOOT to reset the GPIO 
+    expander
+  * firmware: Allow selection of DSI port for LCD
+  * firmware: dtoverlay: More "reg" and "name" support
+  * firmware: imx219: Updates for production test
+  * firmware: variant: Disable custom_preproc and focus_stats_preproc 
+    camera stages
+  * firmware: bootcode: Force an I2C stop as a reset
+  * firmware: power: Ensure at least 2ms between writes to the PMIC regs
+  * firmware: power: Add 3ms threshold
+  * firmware: power: Reduce i2c speed of pmic to 100kHz
+
+-------------------------------------------------------------------
+Thu Jun  7 07:35:12 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to ab802d3 (2018-06-03):
+  * revert: sdram: Reduce address skew from -10 to -5
+  * sdram: Reduce address skew from -10 to -5 
+  * platform: Avoid improving the schmoo on Pi3+
+  * platform: Latest AVS rules
+  * sdram: Increase read/write latency for higher sdram frequencies
+  * power: Add boot-time 3b+ PMIC register logging
+  * power: Continue to probe PMIC after error
+  * Match phy setup same as bootcode for device mode initialisation
+  * Add logging_messages to UART
+  * Fix 3B+ bootcode.bin only booting
+  * video_encode: Filter the list of encoders based on variant
+  * mmal: Relax requirement on a buffer in mmal_port_send_buffer
+  * platform: avs: Also apply chicken bits to boost voltage
+
+-------------------------------------------------------------------
+Thu May 24 11:25:26 UTC 2018 - fvogt@suse.com
+
+- Allow u-boot to set arm_control to support 32-bit images on RPi3
+
+-------------------------------------------------------------------
+Fri Apr 20 13:22:58 UTC 2018 - guillaume.gardet@opensuse.org
+
+- config: replace dtoverlay=vc4-kms-v3d and dtoverlay=dwc2 by 
+  dtoverlay=upstream, this fix gfx for RPi1-256M version
+
+-------------------------------------------------------------------
+Thu Apr 19 07:30:25 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to a154f21 (2018-04-16):
+  * Partial revert for eemc clock change for slice
+  * config: Add gpio command
+  * hat_lib: Only probe HAT EEPROM if ID pins are inputs
+  * Added a arm_display_kick function
+  * Possible fix for HDMI audio pause
+  * arm_loader: Always set the turbo frequencies immediately
+
+-------------------------------------------------------------------
+Thu Apr  5 17:07:29 UTC 2018 - agraf@suse.com
+
+- Allow user defined config options (bsc#1088356)
+- Move HDMI workaround to rpi3 section (fixes RPi2 HDMI output)
+
+-------------------------------------------------------------------
+Wed Mar 14 09:34:05 UTC 2018 - agraf@suse.com
+
+- Update to 3347884 (2018-03-13)
+  - Add support for new RPi3 B+ (bsc#1085262)
+
+-------------------------------------------------------------------
+Mon Feb 19 10:48:28 UTC 2018 - agraf@suse.com
+
+- Add overlays to match previous U-Boot provided DT
+- Add Recommends: on dt and config packages
+
+-------------------------------------------------------------------
+Fri Feb 16 13:50:46 UTC 2018 - agraf@suse.com
+
+- Update to 445b6a8 (2018-02-09)
+
+-------------------------------------------------------------------
+Wed Jan 31 12:54:22 UTC 2018 - jengelh@inai.de
+
+- Avoid bashisms in %post
+
+-------------------------------------------------------------------
+Mon Jan 22 10:23:06 UTC 2018 - agraf@suse.com
+
+- Merge config.txt files into a single config.txt with subsections
+- Set GPU memory usage to 32MB, this is enough for vc4 (boo#1074566)
+- Update to 050175d (2018-01-17)
+
+-------------------------------------------------------------------
+Sat Nov 25 19:03:08 UTC 2017 - afaerber@suse.de
+
+- Add rpi0w sub-package and config (boo#1069828). Derived from rpi3.
+- Update to abfb4be3e1 (2017-11-17)
+
+-------------------------------------------------------------------
+Thu Oct 12 08:47:43 UTC 2017 - guillaume@opensuse.org
+
+- Update to a88e126a (2017-10-11)
+
+-------------------------------------------------------------------
+Wed Aug 23 14:01:08 UTC 2017 - guillaume@opensuse.org
+
+- Update to 8fe001e (2017-08-22)
+
+-------------------------------------------------------------------
+Wed Apr 19 04:14:55 UTC 2017 - afaerber@suse.de
+
+- Update to b038854 (2017-04-04)
+
+-------------------------------------------------------------------
+Mon Feb 20 18:12:19 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to 2b495ac (2017-02-20)
+
+-------------------------------------------------------------------
+Thu Jan 12 14:24:06 UTC 2017 - guillaume@opensuse.org
+
+- Update to e44f66a (2017-01-10)
+
+-------------------------------------------------------------------
+Fri Nov 18 16:18:56 UTC 2016 - guillaume@opensuse.org
+
+- Update to 64996b0 (2016-11-16)
+
+-------------------------------------------------------------------
+Tue Oct 25 07:52:59 UTC 2016 - guillaume@opensuse.org
+
+- Update to 4a0e54e (2016-10-20)
+
+-------------------------------------------------------------------
+Wed Oct 12 13:33:31 UTC 2016 - guillaume@opensuse.org
+
+- Update to a021d6e (2016-10-11)
+
+-------------------------------------------------------------------
+Tue Sep 27 09:09:10 UTC 2016 - guillaume@opensuse.org
+
+- Increase from 64 MB to 96 MB of RAM for GPU for RPi with 256 or 
+  512 MB of RAM to be able to decode a 1080p h264 video in kodi
+
+-------------------------------------------------------------------
+Tue Sep 27 08:53:46 UTC 2016 - guillaume@opensuse.org
+
+- Update to ad8608c (2016-09-21)
+
+-------------------------------------------------------------------
+Thu Sep 15 08:53:28 UTC 2016 - fvogt@suse.com
+
+- Use "avoid_warnings=1" in config-rpi{,2,3}.txt (bsc#998973)
+
+-------------------------------------------------------------------
+Mon Sep 12 13:30:41 UTC 2016 - afaerber@suse.de
+
+- Clean up config-{rpi2,rpi3}.txt, dropping rpi1 defaults
+* On the rpi1 Model B rev. 2 performance results are similar
+  with and without defaults, so in doubt leave our settings in
+  config-rpi.txt until proven the defaults work better somewhere.
+
+-------------------------------------------------------------------
+Tue Sep  6 08:33:28 UTC 2016 - fvogt@suse.com
+
+- Use default frequencies in config-rpi{2,3}.txt (bsc#989511)
+* Defaults work well on rpi2
+* Allow much higher frequencies on rpi3
+
+-------------------------------------------------------------------
+Fri Sep  2 15:29:14 UTC 2016 - afaerber@suse.de
+
+- get-from-git.sh: Update for -config-rpi* sub-packages
+- Update to 334f548 (2016-09-02)
+- Add post-install scripts to copy files to /boot/efi where needed.
+  /boot/vc may be the mountpoint for boot.scr based installations
+  or a symlink to /boot/efi. (bsc#996064)
+
+-------------------------------------------------------------------
+Wed Aug 24 13:21:26 UTC 2016 - mpluskal@suse.com
+
+- Update to d0bc6ce (2016.08.23)
+
+-------------------------------------------------------------------
+Thu Jul 21 19:59:56 UTC 2016 - mpluskal@suse.com
+
+- Update to 051aed7 (2016.07.15)
+- Simplify spec file a bit
+
+-------------------------------------------------------------------
+Thu Jun 16 15:51:19 UTC 2016 - afaerber@suse.de
+
+- Fix last changelog entry
+- Run format_spec_file in pre_checkin.sh to fix spec file header
+- Restore silently dropped defattr that breaks older builds
+
+-------------------------------------------------------------------
+Mon Jun  6 11:44:28 UTC 2016 - dmueller@suse.com
+
+- remove branding-openSUSE subpackage and split config
+  into the 3 variants for (rpi, rpi2, rpi3)
+
+-------------------------------------------------------------------
+Tue May 31 09:59:59 UTC 2016 - guillaume@opensuse.org
+
+- Update to ac0c0bf (2016-05-20)
+
+-------------------------------------------------------------------
+Tue May 10 17:58:12 UTC 2016 - dmueller@suse.com
+
+- mark package as noarch (adds rpmlintrc)
+- split extra bootloaders into separate -extra subpackage
+
+-------------------------------------------------------------------
+Wed May  4 19:37:54 UTC 2016 - afaerber@suse.de
+
+- Enable aarch64 builds for Raspberry Pi 3
+
+-------------------------------------------------------------------
+Fri Apr 29 08:49:32 UTC 2016 - guillaume@opensuse.org
+
+- Update to 20958cd (2016-04-27)
+
+-------------------------------------------------------------------
+Wed Apr  6 12:11:46 UTC 2016 - guillaume@opensuse.org
+
+- Update to c065500 (2016-04-05)
+
+-------------------------------------------------------------------
+Mon Mar  7 14:41:14 UTC 2016 - afaerber@suse.de
+
+- Revert to last actual change b48c36f (2016-03-04)
+- Fix version bug found by Guillaume by using git-log (as intended)
+
+-------------------------------------------------------------------
+Mon Mar  7 12:54:59 UTC 2016 - guillaume@opensuse.org
+
+- Update to 845eb06 (2016-03-05)
+
+-------------------------------------------------------------------
+Mon Mar  7 12:50:58 UTC 2016 - guillaume@opensuse.org
+
+- Fix get-from-git.sh to get version even when packaged files are 
+  not in the last commit
+
+-------------------------------------------------------------------
+Tue Mar  1 14:49:16 UTC 2016 - guillaume@opensuse.org
+
+- Update Config.txt (add GPU mem option for 1024 MB version)
+
+-------------------------------------------------------------------
+Tue Mar  1 14:47:38 UTC 2016 - guillaume@opensuse.org
+
+- Update to 9cd1c6c (2016-02-29)
+
+-------------------------------------------------------------------
+Thu Feb 25 15:05:36 UTC 2016 - guillaume@opensuse.org
+
+- Update to 565197e (2016-02-19)
+
+-------------------------------------------------------------------
+Thu Feb  4 14:37:48 UTC 2016 - guillaume@opensuse.org
+
+- Update to cb2ffaa (2016-02-01)
+
+-------------------------------------------------------------------
+Thu Jan 14 10:58:53 UTC 2016 - guillaume@opensuse.org
+
+- Update to 7147575 (2016-01-13)
+
+-------------------------------------------------------------------
+Tue Dec  8 16:29:07 UTC 2015 - afaerber@suse.de
+
+- Update to 224c756 (2015-12-08)
+
+-------------------------------------------------------------------
+Tue Dec  8 16:13:14 UTC 2015 - afaerber@suse.de
+
+- Move files from /boot to /boot/vc to allow directly updating the
+  FAT partition through a /boot/vc mount
+- Require the main package for the branding package
+
+-------------------------------------------------------------------
+Sun Nov 29 14:08:53 UTC 2015 - afaerber@suse.de
+
+- Update to ed611df (2015-11-25)
+* Clarifies licensing of start_*.elf files
+- Improve get-from-git.sh
+* Automate file removal and addition
+* Use date of last relevant change
+- Add branding-openSUSE subpackage, based on a to-do item in
+  openSUSE:Factory:ARM JeOS package's uboot-image-install.in script
+* Update comment about zImage to reflect current U-Boot situation
+
+-------------------------------------------------------------------
+Wed Oct 28 14:07:32 UTC 2015 - afaerber@suse.de
+
+- Add get-from-git.sh script as source file (sr#341314)
+
+-------------------------------------------------------------------
+Mon Oct 26 18:11:24 UTC 2015 - afaerber@suse.de
+
+- Update to 4047fe2 (2015-10-23)
+- Throw out all non-free gfx sub-packages and files
+
+-------------------------------------------------------------------
+Mon Oct 12 09:45:37 UTC 2015 - guillaume@opensuse.org
+
+- Update to ba7a8fb (2015-10-11)
+
+-------------------------------------------------------------------
+Mon Aug 17 07:22:16 UTC 2015 - guillaume@opensuse.org
+
+- Update to e1e2823 (2015-08-15)
+
+-------------------------------------------------------------------
+Fri Aug 14 09:05:41 UTC 2015 - guillaume@opensuse.org
+
+- Update to c25cc51 (2015-08-13)
+
+-------------------------------------------------------------------
+Mon Jul 20 14:44:42 UTC 2015 - guillaume@opensuse.org
+
+- Update to cf20cb2 (2015-07-17)
+
+-------------------------------------------------------------------
+Tue Jun 23 09:32:02 UTC 2015 - guillaume@opensuse.org
+
+- Update to e8f6e12 (2015-06-22)
+
+-------------------------------------------------------------------
+Thu Jun  4 20:44:41 UTC 2015 - guillaume@opensuse.org
+
+- Update to 16044ee (2015-06-02)
+
+-------------------------------------------------------------------
+Mon Feb 16 10:40:36 UTC 2015 - guillaume@opensuse.org
+
+- Add %{_bindir}/raspividyuv
+
+-------------------------------------------------------------------
+Mon Feb 16 09:42:23 UTC 2015 - guillaume@opensuse.org
+
+- Update to 8aca576 (2015-02-14)
+
+-------------------------------------------------------------------
+Tue Feb 10 18:46:23 UTC 2015 - bill@merriam.net
+
+- Update spec file to change ExclusiveArch to %arm to support the ARMv7 RPi
+
+-------------------------------------------------------------------
+Wed Nov  5 17:02:33 UTC 2014 - guillaume@opensuse.org
+
+- Update to 0080d30 (2014-11-04)
+
+-------------------------------------------------------------------
+Thu Oct 16 12:30:27 UTC 2014 - guillaume@opensuse.org
+
+- Update to e4afeda (2014-10-12)
+
+-------------------------------------------------------------------
+Wed May 14 07:27:53 UTC 2014 - bwiedemann@suse.com
+
+- Update to c0319ac (2014-05-13)
+
+-------------------------------------------------------------------
+Wed Oct 30 12:10:50 UTC 2013 - guillaume@opensuse.org
+
+- Add "Provides: libEGL.so.1 libGLESv1_CM.so.1 libGLESv2.so.2" to
+fix libs deps
+
+-------------------------------------------------------------------
+Tue Oct 29 17:21:27 UTC 2013 - guillaume@opensuse.org
+
+- Fix Mesa conflicts for EGL, GLESv1 and GLESv2 libs
+
+-------------------------------------------------------------------
+Tue Oct 29 17:11:49 UTC 2013 - guillaume@opensuse.org
+
+- Update to 4c14569 (2013-10-18)
+
+-------------------------------------------------------------------
+Mon Sep  9 19:35:47 UTC 2013 - guillaume.gardet@opensuse.org
+
+- Move bins and libs to standard path (/usr/*) so remove /opt/vc/lib
+    from lib search path (keep symlinks in /opt/vc for compatibility
+    purpose) 
+
+-------------------------------------------------------------------
+Sun Sep  8 16:36:30 UTC 2013 - seife+obs@b1-systems.com
+
+- Update to f6bb324 (2013-09-07)
+- add script to fetch tarball from git
+- add /opt/vc/lib to library search path so that demo apps in
+  raspberrypi-gfx actually work
+
+-------------------------------------------------------------------
+Thu Jul  4 16:46:16 UTC 2013 - guillaume@opensuse.org
+
+- Update to ca5f9c4 (2013-07-02) and now use hardfp 
+
+-------------------------------------------------------------------
+Wed Jul  3 08:17:05 UTC 2013 - guillaume@opensuse.org
+
+- Enable build for armv6l
+
+-------------------------------------------------------------------
+Mon Apr  8 09:28:47 UTC 2013 - lars@linux-schulserver.de
+
+- Update to baa3ecffe6 (2013-04-08):
+  + ALSA fix to improve mame audio. 
+  + Add camera demo apps.
+  + Removed unnecessary executable bits in documentation
+  + improved README
+
+-------------------------------------------------------------------
+Sun Dec 30 18:40:55 UTC 2012 - bwiedemann@suse.com
+
+- Update to 76d0ac3 (2012-12-28) to support 512MB RAM
+
+-------------------------------------------------------------------
+Thu Oct 25 10:15:37 UTC 2012 - guillaume@opensuse.org
+
+- Update to 14a55da (2012.10.21) and add support to GFX
+
+-------------------------------------------------------------------
+Fri Oct 19 09:27:31 UTC 2012 - bwiedemann@suse.com
+
+- rename output to raspberrypi-firmware to be consistent
+
+-------------------------------------------------------------------
+Sun Aug 12 10:45:31 UTC 2012 - bwiedemann@suse.com
+
+- initial package from 
+  https://github.com/raspberrypi/firmware/ cb9513f
+

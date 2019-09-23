@@ -1,0 +1,67 @@
+Index: VirtualBox-4.3.6/src/apps/Makefile.kmk
+===================================================================
+--- VirtualBox-4.3.6.orig/src/apps/Makefile.kmk
++++ VirtualBox-4.3.6/src/apps/Makefile.kmk
+@@ -34,5 +34,7 @@ if1of ($(KBUILD_TARGET),darwin solaris l
+  endif
+ endif
+ 
++include $(PATH_SUB_CURRENT)/VBoxPermissionMessage/Makefile.kmk
++
+ include $(FILE_KBUILD_SUB_FOOTER)
+ 
+Index: VirtualBox-4.3.6/src/apps/VBoxPermissionMessage/Makefile.kmk
+===================================================================
+--- /dev/null
++++ VirtualBox-4.3.6/src/apps/VBoxPermissionMessage/Makefile.kmk
+@@ -0,0 +1,32 @@
++# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
++## @file
++#
++# VBoxPermissionMessage is wrapper for suse users
++#
++#
++# Copyright (C) 2009 Oracle Corporation
++#
++# This file is part of VirtualBox Open Source Edition (OSE), as
++# available from http://www.virtualbox.org. This file is free software;
++# you can redistribute it and/or modify it under the terms of the GNU
++# General Public License (GPL) as published by the Free Software
++# Foundation, in version 2 as it comes in the "COPYING" file of the
++# VirtualBox OSE distribution. VirtualBox OSE is distributed in the
++# hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
++#
++
++
++SUB_DEPTH = ../../..
++include $(KBUILD_PATH)/subheader.kmk
++
++PROGRAMS += VBoxPermissionMessage
++
++VBoxPermissionMessage_TEMPLATE = VBOXQTGUIEXE
++VBoxPermissionMessage_SOURCES = VBoxPermissionMessage.cpp
++VBoxPermissionMessage_QT_MODULES = Core Gui
++VBoxPermissionMessage_QT_MODULES += Widgets
++
++#INSTALLS += VBoxPermissionMessage
++
++include $(KBUILD_PATH)/subfooter.kmk
++
+Index: VirtualBox-4.3.6/src/apps/VBoxPermissionMessage/VBoxPermissionMessage.cpp
+===================================================================
+--- /dev/null
++++ VirtualBox-4.3.6/src/apps/VBoxPermissionMessage/VBoxPermissionMessage.cpp
+@@ -0,0 +1,12 @@
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QMessageBox>
++int main(int argc, char *argv[])
++{
++        QApplication app(argc, argv);
++        QMessageBox msgBox;
++        msgBox.setWindowTitle(QObject::tr("Permissions problem !"));
++        msgBox.setText(QObject::tr("You are not a member of the \"vboxusers\" group. Please add yourself to this group before starting VirtualBox. You could do it using: Yast / Security and Users / User and Group management. Don't forget re-login your user account!"));
++        int ret = msgBox.exec();
++        app.quit();
++        return 0;
++}
+\ No newline at end of file

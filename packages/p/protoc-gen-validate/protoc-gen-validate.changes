@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Jan 10 12:35:49 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Update to version 0.0.12:
+  * cc: use raw path generation for C++ validation files. (#129)
+  * Implement java ExplicitValidatorIndex (#121)
+  * Feature/java documentation (#123)
+  * Add java_package option to validate.proto (#120)
+  * Apply standard formatting to .bzl files. (#117)
+  * Bump Bazel go rules (#119)
+  * Implement Java validator generators (#108)
+  * enum: check enum and field package name (#118)
+
+-------------------------------------------------------------------
+Wed Mar 21 17:01:00 UTC 2018 - mrostecki@suse.com
+
+- Initial release

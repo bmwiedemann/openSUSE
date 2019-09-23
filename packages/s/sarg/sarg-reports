@@ -1,0 +1,309 @@
+#!/bin/sh
+# SARG - Daily/Weekly/Monthly Squid usage reports creation tool
+# Written by Ugo Viti <ugo.viti@initzero.it>
+
+# ----------------------------------------------------------------------------
+#
+# Copyright (C) 2005 Ugo Viti
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# ----------------------------------------------------------------------------
+
+
+# Thanks for enanchements to:
+# - martijn
+# - Stas Degteff https://sourceforge.net/users/stas_degteff/
+
+VER=20050202
+
+## What is this?
+# sarg-reports (this file) is a simple bash script written to automate
+# the SARG (a powerful squid log analyzer) reports and log management.
+# Sarg it self, provide to end user a generic interface to create
+# reports based on squid access log (begin of log to current date).
+# sarg-reports (this script) is useful because it allow you to easly
+# create and manage Daily, Weekly and Monthly reports.
+# Try it, within 5 minutes you will be ready to rule :-)
+# using sarg-reports is very easy, read the following 3 steps to know how
+
+## Requirements
+# a) An unix system with bash shell (like GNU/Linux, FreeBSD, etc...)
+# b) Squid - http://www.squid-cache.org
+# c) Sarg - http://web.onda.com.br/orso/sarg.html
+
+
+##
+## Installation guide and configuration parameters
+##
+
+# 1) Download Squid and Sarg, Install, Configure and Tune
+#    they before continue reading
+
+# 2) In root crontab (crontab -e) insert the following lines:
+#    (the today report creation time depend mostly of your squid server
+#    load average, tune it):
+#
+#    --- BEGIN ROOT CRONTAB ---
+#    PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+#    00 08-18/1 * * * sarg-reports today
+#    00 00      * * * sarg-reports daily
+#    00 01      * * 1 sarg-reports weekly 
+#    30 02      1 * * sarg-reports monthly
+#    --- END ROOT CRONTAB ---
+#
+#    REMEMBER: if you use logrotate, configure it to rotate the logs within MONTHLY basis,
+#              AFTER sarg-reports created the monthly html report.
+
+# 3) Customize the following variables:
+#    (Please, configure accurately the sarg.conf file before)
+#
+#        (SARG) The sarg executable location
+#      (CONFIG) The sarg main configuration file location
+#     (HTMLOUT) Location where will be saved the reports
+#   (PAGETITLE) The title of main index page
+#     (LOGOIMG) Image logo to view in main index page
+#    (LOGOLINK) HTTP web page link of logo
+#       (DAILY) Word 'daily' translation, translate it to your language
+#      (WEEKLY) Word 'weekly' translation, translate it to your language
+#     (MONTHLY) Word 'monthly' translation, translate it to your language
+# (EXCLUDELOG1) Exclude text from cron emails
+#       +       (normally, sarg, during cron activity, if it don't find any valid records,
+# (EXCLUDELOG2) it will output an error message (usually on 'today' reports).
+#               I don't want to be warned by email about this, so, i wrote the 'text'
+#               that will be never logged.
+#               This is useful to receive email of real problems only (enjoy that)
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+## Italian Language
+#       SARG=/usr/bin/sarg
+#     CONFIG=/etc/sarg/sarg.conf
+#    HTMLOUT=/var/www/html/admin/log/proxy
+#  PAGETITLE="Statistiche Proxy di $(hostname)"
+#    LOGOIMG=http://www.initzero.it/images/initzero-logo.jpg
+#   LOGOLINK=http://www.initzero.it
+#      DAILY=Giornaliero
+#     WEEKLY=Settimanale
+#    MONTHLY=Mensile
+#EXCLUDELOG1="SARG: Nessun records trovato."
+#EXCLUDELOG2="SARG: Fine"
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+## English Language
+       SARG=/usr/bin/sarg
+     CONFIG=/etc/sarg.conf
+    HTMLOUT=/srv/www/sarg
+  PAGETITLE="Proxy report of $(hostname)"
+    LOGOIMG=/sarg/platform_suse.gif
+   LOGOLINK=
+      DAILY=Daily
+     WEEKLY=Weekly
+    MONTHLY=Monthly
+#EXCLUDELOG1="SARG: Nessun records trovato."
+#EXCLUDELOG2="SARG: Fine"
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+## Russian Language
+#       SARG="/usr/bin/sarg"
+#     CONFIG=/etc/sarg/sarg.conf
+#    HTMLOUT=/var/www/sarg-reports
+#  PAGETITLE="óÔÁÔÉÓÔÉËÁ ÓÅÒ×ÅÒÁ ÐÒÏËÓÉ Squid"   # russian koi8-r
+#    LOGOIMG=http://litek.ru/images/logotop.gif
+#   LOGOLINK=http://litek.ru
+#      DAILY="åÖÅÄÎÅ×ÎÁÑ"     # russian koi8-r
+#     WEEKLY="åÖÅÎÅÄÅÌØÎÁÑ"   # russian koi8-r
+#    MONTHLY="åÖÅÍÅÓÑÞÎÁÑ"    # russian koi8-r
+#EXCLUDELOG1="SARG: Records in file:"
+#EXCLUDELOG2="SARG: ïÔÞÅÔ ÕÓÐÅÛÎÏ ÓÇÅÎÅÒÉÒÏ×ÁÎ ×" # sarg.conf: language Russian_koi8
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+######################################################################
+## The configuration is end, so don't touch anything bellow
+
+# TEMP Files
+R=$RANDOM
+[ -n "$R" ] || R="$(od -An -d -N2 /dev/urandom | tr -d ' ')"
+TMPFILE=/tmp/sarg-reports.$R
+ ERRORS="${TMPFILE}.errors"
+
+# Date Calc
+MANUALDATE=$2
+case "$(uname)" in
+"FreeBSD")
+         TODAY=$(date +%d/%m/%Y)
+     YESTERDAY=$(date -v-1d +%d/%m/%Y)
+       WEEKAGO=$(date -v-1w +%d/%m/%Y)
+      MONTHAGO=$(date -v-1m +01/%m/%Y)-$(date -v-1m +31/%m/%Y)
+   ;;
+"OpenBSD")
+         TODAY=$(date +%d/%m/%Y)
+     YESTERDAY=$(date -r $((`date +%s` - 86400 )) +%d/%m/%Y)
+       WEEKAGO=$(date -r $((`date +%s` - 604800)) +%d/%m/%Y)
+      MONTHAGO=$(perl -e '@t=localtime(time); $y=$t[4]==0?$t[5]+1899:$t[5]+1900; $m=$t[4]==0?12:$t[4]; print "1/$m/$y-",$m==2?$y%4>0?28:29:$m==4||$m==6||$m==9||$m==11?30:31 ,"/$m/$y\n";')
+   ;;
+*)
+         TODAY=$(date --date "today" +%d/%m/%Y)
+     YESTERDAY=$(date --date "1 day ago" +%d/%m/%Y)
+       WEEKAGO=$(date --date "1 week ago" +%d/%m/%Y)
+      MONTHAGO=$(date --date "1 month ago" +01/%m/%Y)-$(date --date "1 month ago" +31/%m/%Y)
+   ;;
+esac
+
+# Fix for Red Hat 9 systems and coreutils prior to 5.0 version
+export LC_ALL=C
+
+# Main index.html creation
+create_index_html ()
+{
+  echo -e "\
+  <html>\n\
+  <head>\n\
+  <title>$PAGETITLE</title>\n\
+  </head>\n\
+  <body>\n\
+  <div align=center>\n\
+    <a href=$LOGOLINK><img border=0 src=$LOGOIMG></a>\n\
+    <table border=0 cellspacing=6 cellpadding=7>\n\
+      <tr>\n\
+        <th align=center nowrap><b><font face=Arial size=4 color=green>$PAGETITLE</font></b></th>\n\
+      </tr>\n\
+      <tr>\n\
+        <td align=center bgcolor=beige><font face=Arial size=3><a href=$DAILY>$DAILY</a></font></td>\n\
+      </tr>\n\
+      <tr>\n\
+        <td align=center bgcolor=beige><font face=Arial size=3><a href=$WEEKLY>$WEEKLY</a></font></td>\n\
+      </tr>\n\
+      <tr>\n\
+        <td align=center bgcolor=beige><font face=Arial size=3><a href=$MONTHLY>$MONTHLY</a></font></td>\n\
+      </tr>\n\
+    </table>\n\
+  </div>\n\
+  </body>\n\
+  </html>" > $HTMLOUT/index.html
+}
+
+
+# Functions
+exclude_from_log ()
+{
+  cat $ERRORS | grep -v "$EXCLUDELOG1" | grep -v "$EXCLUDELOG2"
+  rm -f $TMPFILE*
+}
+
+manual ()
+{
+  DAILYOUT=$HTMLOUT/$DAILY
+  mkdir -p $DAILYOUT
+  create_index_html
+  if [ -z "$MANUALDATE" ]
+    then
+      echo "No date given, please specify a valid date (DD/MM/YYYY)"
+    else
+      $SARG -f $CONFIG -d $MANUALDATE -o $DAILYOUT
+  fi
+}
+
+today ()
+{
+  DAILYOUT=$HTMLOUT/$DAILY
+  mkdir -p $DAILYOUT
+  create_index_html
+  $SARG -f $CONFIG -d $TODAY -o $DAILYOUT >$ERRORS 2>&1
+  exclude_from_log
+}
+
+daily ()
+{
+  DAILYOUT=$HTMLOUT/$DAILY
+  mkdir -p $DAILYOUT
+  create_index_html
+  $SARG -f $CONFIG -d $YESTERDAY -o $DAILYOUT >$ERRORS 2>&1
+  exclude_from_log
+}
+
+weekly ()
+{
+  WEEKLYOUT=$HTMLOUT/$WEEKLY
+  mkdir -p $WEEKLYOUT
+  create_index_html
+  $SARG -f $CONFIG -d $WEEKAGO-$YESTERDAY -o $WEEKLYOUT >$ERRORS 2>&1
+  exclude_from_log
+}
+
+monthly ()
+{
+  MONTHLYOUT=$HTMLOUT/$MONTHLY
+  mkdir -p $MONTHLYOUT
+  create_index_html
+  $SARG -f $CONFIG -d $MONTHAGO -o $MONTHLYOUT >$ERRORS 2>&1
+  exclude_from_log
+}
+
+case $1 in
+    manual)
+        manual
+        ;;
+    today)
+        today
+        ;;
+    daily)
+        daily
+        ;;
+    weekly)
+        weekly
+        ;;
+    monthly)
+        monthly
+        ;;
+     *)
+        echo "SARG - Daily / Weekly / Monthly - Squid proxy usage reports creation tool"
+        echo "Written by Ugo Viti <ugo.viti@initzero.it>"
+        echo "Version: $VER"
+        echo
+        echo "Usage: $0 [OPTIONS]"
+        echo
+        echo "Allowed options:"
+        echo "    manual,  Create Manual report"
+        echo "     today,  Create Today report"
+        echo "     daily,  Create Daily report"
+        echo "    weekly,  Create Weekly report"
+        echo "    montly,  Create Monthly report"
+        exit 0
+esac
+
+
+## HISTORY:
+# 20050502 - Stas Degteff added support for non latin Charset and added support for OpenBSD
+# 20030826 - FreeBSD support (thanks to martijn to let me coding on your FreeBSD server :-))
+# 20030715 - Some cleanups
+# 20030623 - Manual report creation
+# 20030620 - Main Index creation
+# 20030619 - Solved 'sort' bug on Red Hat 9 systems
+# 20030618 - First Version
+
+
+## TODO:
+# - Smarty weekly recognition...
+#   Like "begin of last week to end of last week",
+#   doesn't like this script do: "7 days ago to yesterday"
+# - Monthly recognition isn't so elegant (is very ugly, i know)
+# - Suggestions are welcome :-)
+# - If you Rotate the squid logs before sarg-reports will run,
+#   it will not create any html reports 
+#   (TIPS: Rotate the logs after sarg-reports)

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 3.0.2:
+  * Re-enable all translations.
+    As only the fully-translated messages are really used, there is
+    no harm in enabling the ones that are somewhat out-of-date,
+    either. Re-generated all the .po files, and added language
+    codes to the ones that were missing them.
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.0.1:
+  * Fix a typo that prevented switching of bad sector emulation.
+  * In CMake Replace whitespaces in custom target names with "-"
+    signs (silence CMP0037 warnings on CMake 3.2.2 and newer).
+
+-------------------------------------------------------------------
+Tue Oct 13 20:23:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Correct dependencies.
+- Change group to System/GUI/Other.
+
+-------------------------------------------------------------------
+Sun Jul 13 08:48:46 UTC 2014 - sor.alexei@meowr.ru
+
+- Initial package, version 3.0.0.

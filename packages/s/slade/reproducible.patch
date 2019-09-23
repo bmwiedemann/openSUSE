@@ -1,0 +1,24 @@
+From 74a3129429a8f99dfcac78ac676d2ca845e05af6 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Tue, 26 Jun 2018 12:36:57 +0200
+Subject: [PATCH] Do not save extra file attributes in .zip
+
+to make it easier to make a reproducible build
+See https://reproducible-builds.org/ for why this is good.
+---
+ dist/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dist/CMakeLists.txt b/dist/CMakeLists.txt
+index 842d3cb1..a7c617bd 100644
+--- a/dist/CMakeLists.txt
++++ b/dist/CMakeLists.txt
+@@ -4,7 +4,7 @@ find_program(ZIPTOOL_7Z_EXECUTABLE 7z "$ENV{ProgramFiles}/7-Zip")
+ if(ZIPTOOL_7Z_EXECUTABLE)
+ 	set(ZIP_COMMAND "${ZIPTOOL_7Z_EXECUTABLE}" u -tzip -r "${CMAKE_BINARY_DIR}/slade.pk3" .)
+ elseif(ZIPTOOL_ZIP_EXECUTABLE)
+-	set(ZIP_COMMAND "${ZIPTOOL_ZIP_EXECUTABLE}" -r "${CMAKE_BINARY_DIR}/slade.pk3" .)
++	set(ZIP_COMMAND "${ZIPTOOL_ZIP_EXECUTABLE}" -X -r "${CMAKE_BINARY_DIR}/slade.pk3" .)
+ else()
+ 	message(STATUS "no zip executable, slade.pk3 won't build")
+ endif()

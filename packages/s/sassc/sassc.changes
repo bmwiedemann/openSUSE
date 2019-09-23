@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Mon Mar 12 20:27:22 UTC 2018 - gutaper@gmail.com
+
+- New upstream release 3.5.0:
+
+   Features:
+
+   * Implement trailing commas in parameters and arguments (#2070, @xzyfer)
+   * Implement deprecation warning for ID strings that look like colors (#2302, @xzyfer)
+   * Implement content-exists function (#2266, @xzyfer)
+   * Implement support for passing var() to CSS functions (#2244, @xzyfer)
+   * Implement first class functions (#2277 #2275, @xzyfer)
+   * Implement nesting guard to avoid "out of stack space" (#2438, @mgreter)
+   * Implement exponents for numbers (#2465, @mgreter)
+   * Implement long file path support for Windows (#2477, @mgreter)
+   * Implement case modifier for attribute selector (#2509, @mgreter)
+   * Implement warning for double parent selectors (#2522, @mgreter)
+   * Implement support for custom property syntax (#2076, @xzyfer)
+   * Implement support for custom-property feature flag (#2076, @xzyfer)
+
+   Optimisations:
+
+   * Performance improvements (#2339, @mgreter)
+   * Fix memory leak by removing previously unused code (#2505, @mgreter)
+   * Fix memory leak of custom functions signature (#2553, @mgreter)
+
+   Community:
+
+   * Add libsass-python to Readme (#2546, @asottile)
+   * Update link to go-libsass (#2340 #2410, @drewwells)
+
+   Fixes:
+
+   * Fix media query stack and eval issue (#2341, @mgreter)
+   * Fix Attribute Selector equal compare operator (#2347, @mgreter)
+   * Fix segfault for varargs with non-string keys (#2352, @mgreter)
+   * Fix Element Selector compare operators (#2347, @mgreter)
+   * Fix compiler issue with spec regression on NetBSD 6.1 (#2357, @mgreter)
+   * Fix some segfaults caused by the parser being too forgiving (#2367, @xzyfer)
+   * Fix segfault with invalid map keys (#2368, @xzyfer)
+   * Fix null pointer dereference in css_error (#2369, @xzyfer)
+   * Fix bug when parsing selector schemas (#2371, @xzyfer)
+   * Fix null pointer dereference when parsing selector schemas (#2371, @2372)
+   * Fix .editorconfig (#2380, @brucek)
+   * Fix compiler issue with spec regression on NetBSD 6.1 (#2357, @mgreter)
+   * Fix segfault when extending pseudo selectors failed (#2366, @mgreter)
+   * Fix parser for urls looking like ruleset selectors (#2376, @mgreter)
+   * Fix use of non-portable std::to_string (#2385, @mgreter)
+   * Fix use of non-portable strdup (#2459, @asottile)
+   * Fix unary slash expressions (#2349 #2384, @mgreter)
+   * Fix missing error for trailing comma in selector list (#2365, @mgreter)
+   * Fix selector and binominal look ahead (#2346, @mgreter)
+   * Fix hex escape handling in interpolation (#2320, @mgreter)
+   * Fix wrong parsing of calc functions as number units (#2382, @mgreter)
+   * Fix incorrect comment evaluation for compressed output (#2359, @mgreter)
+   * Fix parent selector handling in selector schema (#2358, @mgreter)
+   * Fix parameter vararg and keyword handling (#2394, @mgreter)
+   * Fix a few minor memory leaks (#2400, @mgreter)
+   * Fix issue with invalid error indicator (#2404, @mgreter)
+   * Fix selector parsing and url regression (#2429, @mgreter)
+   * Fix null ptr segv on invalid vararg (#2437, @mgreter)
+   * Fix segfault in selector extend edge-case (#2437, @mgreter)
+   * Fix segfault in selector extend edge-case (#2437, @mgreter)
+   * Fix segfault in selector append edge-case (#2437, @mgreter)
+   * Fix ref-counted value handling in if function (#2437, @mgreter)
+   * Fix segfault in at-root cssize edge-case (#2439, @mgreter)
+   * Fix file content malloc to avoid reading beyond buffer (#2440, @mgreter)
+   * Fix case-sensitive lookup to named color map (#2462, @asottile)
+   * Fix shebang for tap-driver (#2466, @naroga)
+   * Fix segfault in parser edge case (#2446, @mgreter)
+   * Fix memory corruption on error in parse_selector_schema (#2484, @mgreter)
+   * Fix autoconf path for sassc tester (#2492, @mgreter)
+   * Fix output of invisible @support blocks (#2488, @mgreter)
+   * Fix to_value for bracketed lists (#2467, @mgreter)
+   * Fix propagation of named rest arguments (#2480, @mgreter)
+   * Fix @extend of wrapped selectors (#2468, @mgreter)
+   * Fix wrapped pseudo selector handling (#2464 #2383, @mgreter)
+   * Fix minor issue with attribute selector unification (#2053, @mgreter)
+   * Fix issue when passing restargs to call (#2472, @mgreter)
+   * Fix compressing of colors in selectors (#2232, @mgreter)
+   * Fix missing error on selector with invalid quote mark (#2082, @mgreter)
+   * Fix travis-ci mac OSX builds (#2527, @mgreter)
+   * Fix endless loop comparing Selector_List to List (#2516 #2517, @mgreter)
+   * Fix SmartOS/Solaris build regression (#2519, @mgreter)
+   * Fix to connect parent selector only once (#2520, @mgreter)
+   * Fix whitespace issue for wrapped selectors (#2366, @mgreter)
+   * Fix missing error if cwd goes missing (#2513, @mgreter)
+   * Fix missing error when mixin ruleset in root has parent selector (#2482, @mgreter)
+   * Fix sourcemap crutch once again (#2312, @mgreter)
+   * Fix parser state column following static values (#2542, @mgreter)
+   * Fix error indicator not being Unicode aware (#2404, @mgreter)
+   * Fix error sourcemaps not being fully Unicode aware (#2319, @mgreter)
+   * Fix some compiler warnings (#2547, @mgreter)
+   * Fix math with multiple units (#2549, @mgreter)
+   * Fix css test for interpolated numbers (#2560, @mgreter)
+   * Fix null pointer access in nesting check (sass/sassc#222 sass/sassc#223, @mgreter)
+   * Fix @else possibly producing invalid output (#2569, @xzyfer)
+   * Fix parsing of @supports declarations (#2452, @xzyfer)
+
+-------------------------------------------------------------------
+Tue Nov  7 17:50:20 UTC 2017 - gutaper@gmail.com
+
+- New upstream release 3.4.5:
+   
+   Features:
+
+   * Implement trailing commas in parameters and arguments
+   * Implement unary slash expressions
+
+   Fixes:
+   
+   * Fix Attribute Selector equal compare operator
+   * Fix segfault for varargs with non-string keys
+   * Fix Element Selector compare operators
+   * Fix compiler issue with spec regression on NetBSD 6.1
+   * Fix some segfaults caused by the parser being too forgiving
+   * Fix segfault with invalid map keys
+   * Fix null pointer dereference in css_error
+   * Fix bug when parsing selector schemas
+   * Fix null pointer dereference in parse_selector_schema
+   * Fix segfault when extending pseudo selectors failed
+   * Fix parser for urls looking like ruleset selectors
+   * Error for trailing rulesets comma
+   * Improve selector and binominal look ahead
+   * Improve hex escape handling in interpolation
+   * Fix wrong parsing of calc functions as number units
+   * Skip comment evaluation for compressed output
+   * Improve parent selector handling in selector schema
+   * Improve parameter vararg and keyword handling
+   * Hotfix to avoid invalid nested :not selectors
+   * Fix a few minor memory leaks
+
+-------------------------------------------------------------------
+Mon Feb 13 11:41:32 UTC 2017 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Remove `TODO` file since it has been removed by upstream.
+- Version bump to 3.4.2.
+  Upstream changelog:
+
+  Version 3.4.2
+  -------------
+
+  * Features
+
+    - Sass 3.4.23: Support url() with quotes in unknown directives
+      (@mgreter, #2243)
+
+  * Fixes
+
+    - Test bootstrap ignoring SASS_SPEC_PATH and SASS_SASSC_PATH
+      environment variables (@xzyfer, #2265)
+    - Incorrect equality of interpolated values (@mgreter, #2261)
+    - Incorrect error when @content is inside @at-root (@mgreter,
+      #2260)
+    - C-API copy_options function losing some options (@mgreter,
+      #2257)
+    - Segfault with calling calc (@mgreter, @xzyfer)
+
+  Version 3.4.1
+  -------------
+
+  * Features
+
+    - Add --sass flag for indented syntax support from stdin
+      (@docteurklein, #204)
+
+  * Fixes
+
+    - Ability to static compile VCR libs (@am11, #199)
+    - Sourcemap file not being written (@am11, #202)
+
+  Version 3.4.0
+  -------------
+
+  * Features
+
+    - Change output to binary mode (@mgreter, #170)
+    - Add .editorconfig (@nschonni, #184)
+    - Add Windows CI (@am11, #189)
+    - Remove -ldl flag for OpenBSD (@parhs, #197)
+    - Update CLA to match LibSass (@nschonni, #186)
+
+  * Fixes
+
+    - Automake compile on msys2 and mingw64 (@mgreter @aroig, #174)
+    - Hanging when called with no args or STDIN piped data (@uizfb,
+      #179)
+    - Misc fixes to build scripts (@nschonni, #184 #183)
+    - Remove old unreferenced files (@nschonni, #185)
+    - Memory leak by freeing options we allocated (@mgreter, #196)
+    - Clang warning (-Warray-bounds) (@mgreter, #198)
+
+-------------------------------------------------------------------
+Thu Nov 24 11:55:29 UTC 2016 - ronisbr@gmail.com
+
+- Change the group and description as per jengelh advice.
+  * The group was changed to Development/Tools as in Fedora;
+  * The description was changed based on the package in Debian.
+
+-------------------------------------------------------------------
+Wed Nov 23 16:56:49 UTC 2016 - ronisbr@gmail.com
+
+- Initial version
+

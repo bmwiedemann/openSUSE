@@ -1,0 +1,5 @@
+<package name="rubygem-web-console" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-web-console"/>
+</package>

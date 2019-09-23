@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3dc0004bed55f9778cd237352a5a473d</srcmd5>
+    <version>0.1</version>
+    <time>1478174371</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>434676</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>53017fc4c1be4b55f811788ceefc5276</srcmd5>
+    <version>0.1</version>
+    <time>1482785113</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>440577</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>831980da9e05a4b0d70652bcac711ec3</srcmd5>
+    <version>0.3</version>
+    <time>1521579134</time>
+    <user>dimstar_suse</user>
+    <comment>weekend gift for dimstar ... you need also the new inst-source-utils or it will fail</comment>
+    <requestid>587951</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>67ba65a4592127bc28cb69d019983d56</srcmd5>
+    <version>0.3</version>
+    <time>1521904265</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3
+  * add appdata-screenshots.tar and appdata-icons.tar.gz to repomd.xml</comment>
+    <requestid>589944</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>300480fc2cf744d9b4ab07f32a2dac43</srcmd5>
+    <version>0.3.1</version>
+    <time>1523127242</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to version 0.3.1
+  * adding translate EULA as well</comment>
+    <requestid>593951</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>86f33531c54105372523012b80647d7b</srcmd5>
+    <version>0.3.2</version>
+    <time>1524489911</time>
+    <user>dimstar_suse</user>
+    <comment>fix last submission</comment>
+    <requestid>597728</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0fd39964ddd561d433fd173e155c16ef</srcmd5>
+    <version>0.3.3</version>
+    <time>1524742510</time>
+    <user>dimstar_suse</user>
+    <comment>forward to Factory</comment>
+    <requestid>600764</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>06d598f33bd24b261b4e1b9798ea985e</srcmd5>
+    <version>0.3.4</version>
+    <time>1545222174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.4
+  * Add pattern-category (fate#323785)</comment>
+    <requestid>655521</requestid>
+  </revision>
+</revisionlist>

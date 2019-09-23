@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afbe47e095037ee38f6fb16a6bb61382</srcmd5>
+    <version>0.8</version>
+    <time>1545223778</time>
+    <user>dimstar_suse</user>
+    <comment>Full Syntax Tree for python</comment>
+    <requestid>652706</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>61c5a01159bfedf3474164f9fef1f00d</srcmd5>
+    <version>0.8</version>
+    <time>1548335667</time>
+    <user>dimstar_suse</user>
+    <comment>- Grammar fix.
+</comment>
+    <requestid>667874</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>158750e13872ba5e33373b5b5100b8a1</srcmd5>
+    <version>0.9</version>
+    <time>1553263243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9:
+  * BREAKING CHANGE: annotations are now member of {def,list,dict}_argument to flatten the data structure
+  * add support for ... in from import by bram
+  * add support for return annotation by bram
+  * add support for exec function by bram
+  * add support for variable annotation #145 by scottbelden and additional work by bram
+  * add support for *var expressions in tuple assignment by bram
+  * add support for raise from #120 by odcinek with additional work by bram
+  * add support for arglist usage in class definition inheritence by bram
+  * bug fix by 91e839a kyleatmakrs</comment>
+    <requestid>682174</requestid>
+  </revision>
+</revisionlist>

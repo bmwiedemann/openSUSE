@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdf9d3074c6e5fdd38a417a8181a2dc0</srcmd5>
+    <version>2.5.1</version>
+    <time>1493455965</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by recent versions of python-paver</comment>
+    <requestid>488042</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd346ea32adbb02bfcb4a6ec7f4881de</srcmd5>
+    <version>2.5.1</version>
+    <time>1544726487</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653978</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36f081abeca6ae66437295ba13b51fba</srcmd5>
+    <version>3.0.0</version>
+    <time>1554749580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Use pytest for testing
+  * Many many changes in git but no readable changelog</comment>
+    <requestid>691785</requestid>
+  </revision>
+</revisionlist>

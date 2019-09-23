@@ -1,0 +1,24 @@
+Index: smilutils/libkino/gnome-stubs.cc
+===================================================================
+--- smilutils/libkino/gnome-stubs.cc
++++ smilutils/libkino/gnome-stubs.cc	2009-08-24 14:11:51.000000000 +0200
+@@ -24,16 +24,16 @@
+ 
+ char *gnome_config_get_string( const char *path )
+ {
+-	char *ptr = strchr( path, '=' );
++	const char *ptr = strchr( path, '=' );
+ 	if ( ptr != NULL )
+ 		return strdup( ptr + 1 );
+ 	else
+ 		return NULL;
+ }
+ 
+-char *gnome_config_get_safe( const char *path )
++const char *gnome_config_get_safe( const char *path )
+ {
+-	char *ptr = strchr( path, '=' );
++	const char *ptr = strchr( path, '=' );
+ 	if ( ptr != NULL )
+ 		return ptr + 1;
+ 	else

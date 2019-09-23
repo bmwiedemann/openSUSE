@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Fri Sep 14 07:45:20 UTC 2018 - Yunhe Guo <yunhe.guo@protonmail.com>
+
+- Version 20180607 from GitHub master
+- Use hinted TrueType fonts
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:13 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr 19 12:32:50 UTC 2012 - pgajdos@suse.com
+
+- Apache-2.0 license
+- packaged LICENSE.txt
+
+-------------------------------------------------------------------
+Sat Feb  4 13:11:21 UTC 2012 - toms@opensuse.org
+
+- First public version (declared "1.0")
+

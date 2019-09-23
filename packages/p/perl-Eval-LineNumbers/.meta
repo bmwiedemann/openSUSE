@@ -1,0 +1,12 @@
+<package name="perl-Eval-LineNumbers" project="openSUSE:Factory">
+  <title>Add line numbers to eval'ed hereis docs</title>
+  <description>Add a &quot;#line &quot;this-file&quot; 392&quot; comment to hereis text that is going to be
+eval'ed so that error messages wil point back to the right place.
+Please note: when you embed &quot;\n&quot; in your code, it gets expanded in
+double-quote hereis documents so it will mess up your line numbering. Use
+&quot;\\n&quot; instead when you can.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Eval-LineNumbers"/>
+  <url>http://search.cpan.org/dist/Eval-LineNumbers</url>
+</package>

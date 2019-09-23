@@ -1,0 +1,61 @@
+<package name="perl-Mojo-SQLite" project="openSUSE:Factory">
+  <title>Tiny Mojolicious Wrapper for Sqlite</title>
+  <description>
+Mojo::SQLite is a tiny wrapper around DBD::SQLite that makes at
+https://www.sqlite.org/ a lot of fun to use with the at https://mojolico.us
+real-time web framework.
+
+Database and statement handles are cached automatically, so they can be
+reused transparently to increase performance. And you can handle connection
+timeouts gracefully by holding on to them only for short amounts of time.
+
+  use Mojolicious::Lite;
+  use Mojo::SQLite;
+
+  helper sqlite =&gt; sub { state $sql = Mojo::SQLite-&gt;new('sqlite:sqlite.db') };
+
+  get '/' =&gt; sub {
+    my $c  = shift;
+    my $db = $c-&gt;sqlite-&gt;db;
+    $c-&gt;render(json =&gt; $db-&gt;query('select datetime(&quot;now&quot;,&quot;localtime&quot;) as now')-&gt;hash);
+  };
+
+  app-&gt;start;
+
+All I/O and queries are performed synchronously. However, the &quot;Write-Ahead
+Log&quot; journal is enabled for all connections, allowing multiple processes to
+read and write concurrently to the same database file (but only one can
+write at a time). See http://sqlite.org/wal.html for more information.
+
+  # Performed concurrently
+  my $pid = fork || die $!;
+  say $sql-&gt;db-&gt;query('select datetime(&quot;now&quot;,&quot;localtime&quot;) as time')-&gt;hash-&gt;{time};
+  exit unless $pid;
+
+All cached database handles will be reset automatically if a new process
+has been forked, this allows multiple processes to share the same
+Mojo::SQLite object safely.
+
+Any database errors will throw an exception as 'RaiseError' is
+automatically enabled, so use 'eval' or Try::Tiny to catch them. This makes
+transactions with Mojo::SQLite::Database/&quot;begin&quot; easy.
+
+While passing a file path of ':memory:' (or a custom &quot;dsn&quot; with
+'mode=memory') will create a temporary database, in-memory databases cannot
+be shared between connections, so subsequent calls to &quot;db&quot; may return
+connections to completely different databases. For a temporary database
+that can be shared between connections and processes, pass a file path of
+':temp:' to store the database in a temporary directory (this is the
+default), or consider constructing a temporary directory yourself with
+File::Temp if you need to reuse the filename. A temporary directory allows
+SQLite to create at https://www.sqlite.org/tempfiles.html safely.
+
+  use File::Spec::Functions 'catfile';
+  use File::Temp;
+  use Mojo::SQLite;
+  my $tempdir = File::Temp-&gt;newdir; # Deleted when object goes out of scope
+  my $tempfile = catfile $tempdir, 'sqlite.db';
+  my $sql = Mojo::SQLite-&gt;new-&gt;from_filename($tempfile);
+  </description>
+  <devel project="devel:languages:perl" package="perl-Mojo-SQLite"/>
+</package>

@@ -1,0 +1,22 @@
+---
+ jack-dssi-host/jack-dssi-host.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/jack-dssi-host/jack-dssi-host.c
++++ b/jack-dssi-host/jack-dssi-host.c
+@@ -644,6 +644,7 @@
+ 			    myName, filename);
+ 		}
+ 		
++		closedir(subdir);
+ 		if (fork() == 0) {
+ 		    execlp(filename, filename, oscUrl, dllName, label, instanceTag, NULL);
+ 		    perror("exec failed");
+@@ -666,6 +667,7 @@
+     }
+     free(subpath);
+     free(dllBase);
++    closedir(subdir);
+ }
+ 
+ void

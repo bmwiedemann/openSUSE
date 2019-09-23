@@ -1,0 +1,70 @@
+From: Matthias Bach <marix@marix.org>
+Date: 2018-07-27 22:59:22 +0200
+Subject: Install ratbagd into sbindir
+Upstream: to be done
+
+Ratbagd requires to be run by root. It should thus live in the system binary
+directory.
+
+diff --git a/dbus/org.freedesktop.ratbag1.service.in b/dbus/org.freedesktop.ratbag1.service.in
+index aaa3b56..6569ead 100644
+--- a/dbus/org.freedesktop.ratbag1.service.in
++++ b/dbus/org.freedesktop.ratbag1.service.in
+@@ -1,5 +1,5 @@
+ [D-BUS Service]
+ Name=org.freedesktop.ratbag1
+-Exec=@bindir@/ratbagd
++Exec=@sbindir@/ratbagd
+ User=root
+ SystemdService=ratbagd.service
+diff --git a/meson.build b/meson.build
+index d0234cd..1ff3529 100644
+--- a/meson.build
++++ b/meson.build
+@@ -416,6 +416,7 @@ executable('ratbagd',
+ 	   dependencies : deps_ratbagd,
+ 	   include_directories : include_directories('src'),
+ 	   install : true,
++	   install_dir: get_option('sbindir'),
+ )
+ 
+ install_man('ratbagd/ratbagd.8')
+@@ -462,13 +464,13 @@ if enable_systemd
+ 	endif
+ endif
+ 
+-config_bindir = configuration_data()
+-config_bindir.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
++config_sbindir = configuration_data()
++config_sbindir.set('sbindir', join_paths(get_option('prefix'), get_option('sbindir')))
+ 
+ if enable_systemd
+ 	configure_file(input : 'ratbagd/ratbagd.service.in',
+ 			output : 'ratbagd.service',
+-			configuration : config_bindir,
++			configuration : config_sbindir,
+ 			install_dir : unitdir)
+ endif
+ 
+@@ -479,7 +481,7 @@ endif
+ 
+ configure_file(input : 'dbus/org.freedesktop.ratbag1.service.in',
+ 	       output : 'org.freedesktop.ratbag1.service',
+-	       configuration : config_bindir,
++	       configuration : config_sbindir,
+ 	       install_dir : join_paths(dbusdir, 'system-services'))
+ 
+ dbusgroup = get_option('dbus-group')
+diff --git a/ratbagd/ratbagd.service.in b/ratbagd/ratbagd.service.in
+index e6f6eb9..4ce2e00 100644
+--- a/ratbagd/ratbagd.service.in
++++ b/ratbagd/ratbagd.service.in
+@@ -4,7 +4,7 @@ Description=Daemon to introspect and modify configurable mice
+ [Service]
+ Type=dbus
+ BusName=org.freedesktop.ratbag1
+-ExecStart=@bindir@/ratbagd
++ExecStart=@sbindir@/ratbagd
+ Restart=on-abort
+ 
+ [Install]

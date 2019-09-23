@@ -1,0 +1,33 @@
+From 452627ce99f3fa180f85838b8208a3cb3fcf0b71 Mon Sep 17 00:00:00 2001
+From: Stefan Behnel <stefan_ml@behnel.de>
+Date: Sun, 27 Jan 2019 16:43:41 +0100
+Subject: [PATCH] Docs: switch from outdated "pngmath" sphinx package to
+ "imgmath", and use "svg" as output format. See #2818.
+
+---
+ docs/conf.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/docs/conf.py b/docs/conf.py
+index 10662e28ca..c20a57574e 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -41,7 +41,7 @@
+ extensions = [
+     'ipython_console_highlighting',
+     'cython_highlighting',
+-    'sphinx.ext.pngmath',
++    'sphinx.ext.imgmath',
+     'sphinx.ext.todo',
+     'sphinx.ext.intersphinx',
+     'sphinx.ext.autodoc'
+@@ -132,6 +132,9 @@
+ # If true, keep warnings as "system message" paragraphs in the built documents.
+ #keep_warnings = False
+ 
++# The output image format. The default is 'png'. It should be either 'png' or 'svg'.
++imgmath_image_format = "svg"
++
+ 
+ # -- Options for HTML output ---------------------------------------------------
+ 

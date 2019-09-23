@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6df00aa9c3f70f47f0e74821092fae9d</srcmd5>
+    <version>0.1.1</version>
+    <time>1558037194</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>702970</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29e9a90adc96c6b77a40b9ead55969be</srcmd5>
+    <version>0.1.2</version>
+    <time>1563993317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.2:
+  * Fix tests execution</comment>
+    <requestid>718079</requestid>
+  </revision>
+</revisionlist>

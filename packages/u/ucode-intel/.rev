@@ -1,0 +1,517 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0794c30669742ea2b9175c70d332e471</srcmd5>
+    <version>20130222</version>
+    <time>1374777351</time>
+    <user>coolo</user>
+    <comment>New package for microcode (replaces partially microcode_ctl)</comment>
+    <requestid>184288</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1b13c85c552d3fc740edb631f8790fd4</srcmd5>
+    <version>20130808</version>
+    <time>1378416424</time>
+    <user>coolo</user>
+    <comment>- ucode 20130808, as usual, no changelog available. (forwarded request 196951 from elvigia)</comment>
+    <requestid>197407</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1b13c85c552d3fc740edb631f8790fd4</srcmd5>
+    <version>20130808</version>
+    <time>1379664872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f126eb4c56c73c531e4fc962edc996b4</srcmd5>
+    <version>20130906</version>
+    <time>1380112787</time>
+    <user>coolo</user>
+    <comment>- ucode 20130906, no changelog available. (forwarded request 200115 from elvigia)</comment>
+    <requestid>200390</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d029d69b417e2be9219f808d97eab33d</srcmd5>
+    <version>20130906</version>
+    <time>1385562820</time>
+    <user>coolo</user>
+    <comment>- Correct Supplements string so that the package gets correctly installed
+  on machines with Intel CPUs
+  bnc#847158 (forwarded request 208267 from trenn)</comment>
+    <requestid>208646</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c98d5073fb6b1abaf68a01045a21ad5d</srcmd5>
+    <version>20130906</version>
+    <time>1386613101</time>
+    <user>coolo</user>
+    <comment>- Add mkinitrd script to add Intel microcode to initrd.
+  This is needed because microcode driver is built in or gets loaded
+  automatically via udev early. Therefore the microcode has to be available
+  in initrd already.
+  This must not be mixed up with early micorcode loading. This feature will
+  not be implemented via mkinitrd. Dracut is doing early microcode loading.
+- bnc#847158
+- mkinitrd scripts:
+    - mkinitrd_setup-intel_microcode.sh
+      Adding microcode to the initrd
+    - mkinitrd_boot-intel_microcode.sh
+      Triggering the reload at boot</comment>
+    <requestid>210022</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1d7cd2f73d27091d9151bc48a7dbe9d4</srcmd5>
+    <version>20130906</version>
+    <time>1387382150</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211210</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4f9f6f3da226ede852dd90178917735a</srcmd5>
+    <version>20140122</version>
+    <time>1392222376</time>
+    <user>coolo</user>
+    <comment>- ucode 20140122, no changelog available. (forwarded request 221775 from namtrac)</comment>
+    <requestid>221964</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b7f2d8b7807b00504445ee01049f5742</srcmd5>
+    <version>20140122</version>
+    <time>1397330927</time>
+    <user>coolo</user>
+    <comment>- Regenerate the initrd in %posttrans (fate#313506) (forwarded request 229523 from michal-m)</comment>
+    <requestid>229566</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2c19d9233c738e99cd04baa1df183bf2</srcmd5>
+    <version>20140430</version>
+    <time>1399377826</time>
+    <user>coolo</user>
+    <comment>- Update to Intel microcode version 20140430 (bnc#876073) (forwarded request 232748 from trenn)</comment>
+    <requestid>232749</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>49674fa767114e64762bf39d4b3157ad</srcmd5>
+    <version>20140430</version>
+    <time>1403508241</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238148</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b15216e9550ea9eb8c2ba51f6ea05d77</srcmd5>
+    <version>20140624</version>
+    <time>1404459283</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239308</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b15216e9550ea9eb8c2ba51f6ea05d77</srcmd5>
+    <version>20140624</version>
+    <time>1409303559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d5ed447e80e73b624c257fe29a1f0c9</srcmd5>
+    <version>20140913</version>
+    <time>1411370623</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250235</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>954be9f8fbdf73c7a8ffc818973fb13a</srcmd5>
+    <version>20140913</version>
+    <time>1422134453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282595</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1e6e8b8ae5036517f24b24946ad905d8</srcmd5>
+    <version>20150121</version>
+    <time>1426796695</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291436</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2ad9c94e67a5854a20e8b490a172d172</srcmd5>
+    <version>20150121</version>
+    <time>1446647627</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342120</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>77a84ba3d52edb6680233596f9e2244f</srcmd5>
+    <version>20151106</version>
+    <time>1447353639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343457</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1b0a338375685d3bd1c30fb82bf16f9a</srcmd5>
+    <version>20151106</version>
+    <time>1450695859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349030</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d5ec8c33020a854d1d8e8c00cfa376ce</srcmd5>
+    <version>20160607</version>
+    <time>1467205814</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404444</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1b0a338375685d3bd1c30fb82bf16f9a</srcmd5>
+    <version>20151106</version>
+    <time>1467383089</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, see boo#987358</comment>
+    <requestid>405914</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fbd57ad85a7d53114eedca59f7a6de05</srcmd5>
+    <version>20160714</version>
+    <time>1469628719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20160714.
+- Should fix bsc#987358, a bug which got introduced with the last
+  release.
+
+- Update to version 20160607, no changelog available</comment>
+    <requestid>412561</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0bd902c9843b651756193d90f24593f0</srcmd5>
+    <version>20160714</version>
+    <time>1473349146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>425177</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c87ab669d57ad4923ce974edeec11feb</srcmd5>
+    <version>20161104</version>
+    <time>1481153486</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444115</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>73f1ce468eeba697f6e77da26e273d59</srcmd5>
+    <version>20170511</version>
+    <time>1495442859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496761</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0dbc981e6a2ab233ca88f84129868b68</srcmd5>
+    <version>20170511</version>
+    <time>1498840965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507079</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3f5a3aa766d6836831377e7317ad492f</srcmd5>
+    <version>20170707</version>
+    <time>1500275469</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510136</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>871045b4fe4d05db7c528e4386119d15</srcmd5>
+    <version>20170707</version>
+    <time>1500456161</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511207</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>16634934ac43b93da1db804736a092cc</srcmd5>
+    <version>20170707</version>
+    <time>1500670207</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511622</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7ed97ff142292aff13e8ac8c5604fb5c</srcmd5>
+    <version>20171117</version>
+    <time>1511595845</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to microcode version: 20171117 (bsc#1068839)
+  -- New Platforms --
+  CFL U0 (06-9e-0a:22) 70
+  CFL B0 (06-9e-0b:2) 72
+  SKX H0 (06-55-04:b7) 2000035
+  GLK B0 (06-7a-01:1) 1e
+  APL Bx (06-5c-09:3) 2c
+  -- Updates --
+  KBL Y0 (06-8e-0a:c0) 66-&gt;70</comment>
+    <requestid>545182</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f3e1d44d812428d4e38ebd8742571987</srcmd5>
+    <version>20171117</version>
+    <time>1515158462</time>
+    <user>dimstar_suse</user>
+    <comment>- firmware-CVE-2017-5715.tar.gz: updates for:
+  HSX EP 000306F2
+  BDX E EP EP4S EX 000406F1
+  SKX H0 00050654
+  (bsc#1068032 CVE-2017-5715) (forwarded request 561626 from msmeissn)</comment>
+    <requestid>561627</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>dea21a0d3fa11bc996d0ffc3f327ce21</srcmd5>
+    <version>20180108</version>
+    <time>1515876558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563898</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f3e1d44d812428d4e38ebd8742571987</srcmd5>
+    <version>20171117</version>
+    <time>1516880452</time>
+    <user>dimstar_suse</user>
+    <comment>this reverts the borked ucode-intel firmwares</comment>
+    <requestid>569363</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>7ed97ff142292aff13e8ac8c5604fb5c</srcmd5>
+    <version>20171117</version>
+    <time>1517096394</time>
+    <user>dimstar_suse</user>
+    <comment>even more revert (one rev more)</comment>
+    <requestid>569860</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7f7ed56ff84a33607731c3aaa170deb5</srcmd5>
+    <version>20180312</version>
+    <time>1521052846</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to microcode version: 20180312 (bsc#1085207 CVE-2017-5715)
+  -- New Platforms --
+  BDX-DE EGW A0 6-56-5:10 e000009
+  SKX B1 6-55-3:97 1000140
+  -- Updates --
+  SNB D2 6-2a-7:12 29-&gt;2d
+  JKT C1 6-2d-6:6d 619-&gt;61c
+  JKT C2 6-2d-7:6d 710-&gt;713
+  IVB E2 6-3a-9:12 1c-&gt;1f
+  IVT C0 6-3e-4:ed 428-&gt;42c
+  IVT D1 6-3e-7:ed 70d-&gt;713
+  HSW Cx/Dx 6-3c-3:32 22-&gt;24
+  HSW-ULT Cx/Dx 6-45-1:72 20-&gt;23
+  CRW Cx 6-46-1:32 17-&gt;19
+  HSX C0 6-3f-2:6f 3a-&gt;3c
+  HSX-EX E0 6-3f-4:80 0f-&gt;11
+  BDW-U/Y E/F 6-3d-4:c0 25-&gt;2a
+  BDW-H E/G 6-47-1:22 17-&gt;1d
+  BDX-DE V0/V1 6-56-2:10 0f-&gt;15
+  BDW-DE V2 6-56-3:10 700000d-&gt;7000012
+  BDW-DE Y0 6-56-4:10 f00000a-&gt;f000011
+  SKL-U/Y D0 6-4e-3:c0 ba-&gt;c2
+  SKL R0 6-5e-3:36 ba-&gt;c2
+  KBL-U/Y H0 6-8e-9:c0 62-&gt;84
+  KBL B0 6-9e-9:2a 5e-&gt;84
+  CFL D0 6-8e-a:c0 70-&gt;84
+  CFL U0 6-9e-a:22 70-&gt;84
+  CFL B0 6-9e-b:02 72-&gt;84
+  SKX H0 6-55-4:b7 2000035-&gt;2000043</comment>
+    <requestid>586961</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d4606f03dd8bcca77f882dc3ab311481</srcmd5>
+    <version>20180312</version>
+    <time>1521716865</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 589788 from msmeissn)</comment>
+    <requestid>589789</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>822ed3e478e04cd41116e3bfb5f10cab</srcmd5>
+    <version>20180312</version>
+    <time>1523875736</time>
+    <user>dimstar_suse</user>
+    <comment>- next try to fix CPU detection modalias... The modalias
+  can only have 1 : (bsc#1084687)</comment>
+    <requestid>596377</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>53a1493ad273aa6593079215219c6f8e</srcmd5>
+    <version>20180425</version>
+    <time>1526041742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605741</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>c795ec75684704aed701f62abd70cb73</srcmd5>
+    <version>20180425</version>
+    <time>1526488981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609059</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e959eda8eecfc87a7453da3087c6a325</srcmd5>
+    <version>20180703</version>
+    <time>1530866538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20180703 release, for the listed CPU chipsets
+  this fixes CVE-2018-3640 (Spectre v3a) CVE-2018-3639 (Spectre v4).
+  (bsc#1100147 bsc#1087082 bsc#1087083)
+  https://downloadcenter.intel.com/download/27945/Linux-Processor-Microcode-Data-File
+  Following chipsets are fixed in this round:
+  Model        Stepping F-MO-S/PI      Old-&gt;New
+  ---- updated platforms ------------------------------------
+  SNB-EP       C1       6-2d-6/6d 0000061c-&gt;0000061d Xeon E5
+  SNB-EP       C2       6-2d-7/6d 00000713-&gt;00000714 Xeon E5
+  IVT          C0       6-3e-4/ed 0000042c-&gt;0000042d Xeon E5 v2; Core i7-4960X/4930K/4820K
+  IVT          D1       6-3e-7/ed 00000713-&gt;00000714 Xeon E5 v2
+  HSX-E/EP/4S  C0       6-3f-2/6f 0000003c-&gt;0000003d Xeon E5 v3
+  HSX-EX       E0       6-3f-4/80 00000011-&gt;00000012 Xeon E7 v3
+  SKX-SP/D/W/X H0       6-55-4/b7 02000043-&gt;0200004d Xeon Bronze 31xx, Silver 41xx, Gold 51xx/61xx Platinum 81xx, D/W-21xx; Core i9-7xxxX
+  BDX-DE       A1       6-56-5/10 0e000009-&gt;0e00000a Xeon D-15x3N
+  ---- intel-ucode-with-caveats/ ----------------------------
+  BDX-ML       B/M/R0   6-4f-1/ef 0b00002c-&gt;0b00002e Xeon E5/E7 v4; Core i7-69xx/68xx</comment>
+    <requestid>620721</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b4fd0eeb223a61153421ac18d681ace2</srcmd5>
+    <version>20180807</version>
+    <time>1534774736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20180807 release, for the listed CPU chipsets
+  this fixes CVE-2018-3640 (Spectre v3a) CVE-2018-3639 (Spectre v4).
+  (bsc#1104134 bsc#1087082 bsc#1087083)
+  Processor             Identifier     Version       Products
+  Model        Stepping F-MO-S/PI      Old-&gt;New
+  ---- new platforms ----------------------------------------
+  WSM-EP/WS    U1       6-2c-2/03           0000001f Xeon E/L/X56xx, W36xx
+  NHM-EX       D0       6-2e-6/04           0000000d Xeon E/L/X65xx/75xx
+  BXT          C0       6-5c-2/01           00000014 Atom T5500/5700
+  APL          E0       6-5c-a/03           0000000c Atom x5-E39xx
+  DVN          B0       6-5f-1/01           00000024 Atom C3xxx
+  ---- updated platforms ------------------------------------
+  NHM-EP/WS    D0       6-1a-5/03 00000019-&gt;0000001d Xeon E/L/X/W55xx
+  NHM          B1       6-1e-5/13 00000007-&gt;0000000a Core i7-8xx, i5-7xx; Xeon L3426, X24xx
+  WSM          B1       6-25-2/12 0000000e-&gt;00000011 Core i7-6xx, i5-6xx/4xxM, i3-5xx/3xxM, Pentium G69xx, Celeon P45xx; Xeon L3406
+  WSM          K0       6-25-5/92 00000004-&gt;00000007 Core i7-6xx, i5-6xx/5xx/4xx, i3-5xx/3xx, Pentium G69xx/P6xxx/U5xxx, Celeron P4xxx/U3xxx
+  SNB          D2       6-2a-7/12 0000002d-&gt;0000002e Core Gen2; Xeon E3
+  WSM-EX       A2       6-2f-2/05 00000037-&gt;0000003b Xeon E7
+  IVB          E2       6-3a-9/12 0000001f-&gt;00000020 Core Gen3 Mobile
+  HSW-H/S/E3   Cx/Dx    6-3c-3/32 00000024-&gt;00000025 Core Gen4 Desktop; Xeon E3 v3
+  BDW-U/Y      E/F      6-3d-4/c0 0000002a-&gt;0000002b Core Gen5 Mobile
+  HSW-ULT      Cx/Dx    6-45-1/72 00000023-&gt;00000024 Core Gen4 Mobile and derived Pentium/Celeron
+  HSW-H        Cx       6-46-1/32 00000019-&gt;0000001a Core Extreme i7-5xxxX
+  BDW-H/E3     E/G      6-47-1/22 0000001d-&gt;0000001e Core i5-5xxxR/C, i7-5xxxHQ/EQ; Xeon E3 v4
+  SKL-U/Y      D0       6-4e-3/c0 000000c2-&gt;000000c6 Core Gen6 Mobile
+  BDX-DE       V1       6-56-2/10 00000015-&gt;00000017 Xeon D-1520/40
+  BDX-DE       V2/3     6-56-3/10 07000012-&gt;07000013 Xeon D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+  BDX-DE       Y0       6-56-4/10 0f000011-&gt;0f000012 Xeon D-1557/59/67/71/77/81/87
+  APL          D0       6-5c-9/03 0000002c-&gt;00000032 Pentium N/J4xxx, Celeron N/J3xxx, Atom x5/7-E39xx
+  SKL-H/S/E3   R0       6-5e-3/36 000000c2-&gt;000000c6 Core Gen6; Xeon E3 v5</comment>
+    <requestid>628148</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d6836db5b428be0b47f9492d1f6a14cd</srcmd5>
+    <version>20180807a</version>
+    <time>1535705012</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20180807a, no change except licensing. (bsc#1104479)</comment>
+    <requestid>631398</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1f69350016c0bcaacbfc641552cd6e14</srcmd5>
+    <version>20190312</version>
+    <time>1552985827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20190312 release (bsc#1129231)
+  - Processor             Identifier     Version       Products
+  - Model        Stepping F-MO-S/PI      Old-&gt;New
+  - ---- new platforms ----------------------------------------
+  - AML-Y22      H0       6-8e-9/10           0000009e Core Gen8 Mobile
+  - WHL-U        W0       6-8e-b/d0           000000a4 Core Gen8 Mobile
+  - WHL-U        V0       6-8e-d/94           000000b2 Core Gen8 Mobile
+  - CFL-S        P0       6-9e-c/22           000000a2 Core Gen9 Desktop
+  - CFL-H        R0       6-9e-d/22           000000b0 Core Gen9 Mobile
+  - ---- updated platforms ------------------------------------
+  - HSX-E/EP     Cx/M1    6-3f-2/6f 0000003d-&gt;00000041 Core Gen4 X series; Xeon E5 v3
+  - HSX-EX       E0       6-3f-4/80 00000012-&gt;00000013 Xeon E7 v3
+  - SKX-SP       H0/M0/U0 6-55-4/b7 0200004d-&gt;0000005a Xeon Scalable
+  - SKX-D        M1       6-55-4/b7 0200004d-&gt;0000005a Xeon D-21xx
+  - BDX-DE       V1       6-56-2/10 00000017-&gt;00000019 Xeon D-1520/40
+  - BDX-DE       V2/3     6-56-3/10 07000013-&gt;07000016 Xeon D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+  - BDX-DE       Y0       6-56-4/10 0f000012-&gt;0f000014 Xeon D-1557/59/67/71/77/81/87
+  - BDX-NS       A0       6-56-5/10 0e00000a-&gt;0e00000c Xeon D-1513N/23/33/43/53
+  - APL          D0       6-5c-9/03 00000032-&gt;00000036 Pentium N/J4xxx, Celeron N/J3xxx, Atom x5/7-E39xx
+  - APL          E0       6-5c-a/03 0000000c-&gt;00000010 Atom x5/7-E39xx
+  - GLK          B0       6-7a-1/01 00000028-&gt;0000002c Pentium Silver N/J5xxx, Celeron N/J4xxx
+  - KBL-U/Y      H0       6-8e-9/c0 0000008e-&gt;0000009a Core Gen7 Mobile
+  - CFL-U43e     D0       6-8e-a/c0 00000096-&gt;0000009e Core Gen8 Mobile
+  - KBL-H/S/E3   B0       6-9e-9/2a 0000008e-&gt;0000009a Core Gen7; Xeon E3 v6
+  - CFL-H/S/E3   U0       6-9e-a/22 00000096-&gt;000000aa Core Gen8 Desktop, Mobile, Xeon E
+  - CFL-S B0 6-9e-b/02 0000008e-&gt;000000aa Core Gen8</comment>
+    <requestid>685087</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c09b098183e8ba09159bbb565ea9a77c</srcmd5>
+    <version>20190514</version>
+    <time>1558036940</time>
+    <user>dimstar_suse</user>
+    <comment>- Intel QSR 2019.1 Microcode release (bsc#1111331 CVE-2018-12126
+  CVE-2018-12130 CVE-2018-12127 CVE-2019-11091)
+  Processor             Identifier     Version       Products
+  Model        Stepping F-MO-S/PI      Old-&amp;gt;New
+  ---- new platforms ----------------------------------------
+  VLV          C0       6-37-8/02           00000838 Atom Z series
+  VLV          C0       6-37-8/0C           00000838 Celeron N2xxx, Pentium N35xx
+  VLV          D0       6-37-9/0F           0000090c Atom E38xx
+  CHV          C0       6-4c-3/01           00000368 Atom X series
+  CHV          D0       6-4c-4/01           00000411 Atom X series
+  CLX-SP       B1       6-55-7/bf           05000021 Xeon Scalable Gen2
+  ---- updated platforms ------------------------------------
+  SNB          D2/G1/Q0 6-2a-7/12 0000002e-&amp;gt;0000002f Core Gen2
+  IVB          E1/L1    6-3a-9/12 00000020-&amp;gt;00000021 Core Gen3
+  HSW          C0       6-3c-3/32 00000025-&amp;gt;00000027 Core Gen4
+  BDW-U/Y      E0/F0    6-3d-4/c0 0000002b-&amp;gt;0000002d Core Gen5
+  IVB-E/EP     C1/M1/S1 6-3e-4/ed 0000042e-&amp;gt;0000042f Core Gen3 X Series; Xeon E5 v2
+  IVB-EX       D1       6-3e-7/ed 00000714-&amp;gt;00000715 Xeon E7 v2
+  HSX-E/EP     Cx/M1    6-3f-2/6f 00000041-&amp;gt;00000043 Core Gen4 X series; Xeon E5 v3
+  HSX-EX       E0       6-3f-4/80 00000013-&amp;gt;00000014 Xeon E7 v3
+  HSW-U        C0/D0    6-45-1/72 00000024-&amp;gt;00000025 Core Gen4
+  HSW-H        C0       6-46-1/32 0000001a-&amp;gt;0000001b Core Gen4
+  BDW-H/E3     E0/G0    6-47-1/22 0000001e-&amp;gt;00000020 Core Gen5
+  SKL-U/Y      D0/K1    6-4e-3/c0 000000c6-&amp;gt;000000cc Core Gen6
+  BDX-ML       B0/M0/R0 6-4f-1/ef 0b00002e-&amp;gt;00000036 Xeon E5/E7 v4; Core i7-69xx/68xx
+  SKX-SP       H0/M0/U0 6-55-4/b7 0200005a-&amp;gt;0000005e Xeon Scalable
+  SKX-D        M1       6-55-4/b7 0200005a-&amp;gt;0000005e Xeon D-21xx
+  BDX-DE       V1       6-56-2/10 00000019-&amp;gt;0000001a Xeon D-1520/40
+  BDX-DE       V2/3     6-56-3/10 07000016-&amp;gt;07000017 Xeon D-1518/19/21/27/28/31/33/37/41/48, Pentium D1507/08/09/17/19
+  BDX-DE       Y0       6-56-4/10 0f000014-&amp;gt;0f000015 Xeon D-1557/59/67/71/77/81/87 (forwarded request 703130 from msmeissn)</comment>
+    <requestid>703131</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bafcf1e1cea8d09f3dd9a4709e265d5f</srcmd5>
+    <version>20190618</version>
+    <time>1564488127</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719407</requestid>
+  </revision>
+</revisionlist>

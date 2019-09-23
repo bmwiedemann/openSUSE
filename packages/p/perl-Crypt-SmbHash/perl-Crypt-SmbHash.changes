@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Apr 15 11:23:08 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Feb 27 06:47:02 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:21 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:37 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 18:26:26 CEST 2005 - cthiel@suse.de
+
+- update to version 0.12
+
+-------------------------------------------------------------------
+Thu Apr 22 11:32:58 CEST 2004 - rhafer@suse.de
+
+- initial version 
+

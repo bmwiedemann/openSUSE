@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:07:39 UTC 2019 - olaf@aepfle.de
+
+- Stick with opencv3
+
+-------------------------------------------------------------------
+Wed Jan  9 18:31:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing make call. Do not ignore errors from useradd.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Dec 10 10:58:33 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to current git
+- fix opencv build dependencies
+- new zeromq support
+
+-------------------------------------------------------------------
+Tue Jul 11 05:11:06 UTC 2017 - adrian@suse.de
+
+- initial package of forked version
+  (meanwhile the official release)
+

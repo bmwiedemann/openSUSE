@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!-- scala 2.10.0-RC3 build file by gil -->
+<!-- for rebuild only this scala components -->
+<project name="scala-components" basedir=".">
+      
+   <property name="version"               value="2.10.0-RC3"/>
+   <property name="lib.dir"               value="${basedir}/lib"/>
+   
+   <property name="fjbg.dir"              value="${basedir}/fjbg"/>
+   <property name="fjbg.src.dir"          value="${basedir}/src/fjbg"/>
+   <property name="fjbg.build.dir"        value="${fjbg.dir}/classes"/>
+   <property name="fjbg.jar"              value="${basedir}/lib/fjbg.jar"/>
+      
+   <property name="forkjoin.dir"          value="${basedir}/forkjoin"/>
+   <property name="forkjoin.src.dir"      value="${basedir}/src/forkjoin"/>
+   <property name="forkjoin.build.dir"    value="${forkjoin.dir}/classes"/>
+   <property name="forkjoin.jar"          value="${basedir}/lib/forkjoin.jar"/>
+      
+   <property name="msil.dir"              value="${basedir}/msil"/>
+   <property name="msil.src.dir"          value="${basedir}/src/msil"/>
+   <property name="msil.build.dir"        value="${msil.dir}/classes/msil"/>
+   <property name="msil.jar"              value="${basedir}/lib/msil.jar"/>
+      
+   <target name="build" 
+      depends="build.fjbg,build.forkjoin,build.msil" description="Compile the sources">
+   </target>
+      
+   <target name="dist" depends="clean,build"
+      description="generate the distribution" >
+   </target>
+      
+   <target name="clean">
+     <delete file="${fjbg.jar}" />
+     <delete file="${forkjoin.jar}" />
+     <delete file="${msil.jar}" />
+     <delete dir="${fjbg.dir}" />
+     <delete dir="${forkjoin.dir}" />
+     <delete dir="${msil.dir}" />
+   </target>
+      
+   <path id="scalac.classpath">
+    <fileset dir="/usr/share/java" includes="ant.jar"/>
+    <fileset dir="${lib.dir}" includes="scala-compiler.jar"/>
+    <fileset dir="${lib.dir}" includes="scala-library.jar"/>
+    <fileset dir="${lib.dir}" includes="scala-reflect.jar"/>
+    <fileset dir="${basedir}/lib" includes="fjbg.jar"/>
+    <fileset dir="${basedir}/lib" includes="forkjoin.jar"/>
+    <pathelement location="${msil.build.dir}"/>
+   </path>
+      
+   <target name="build.fjbg" description="Build Scala fjbg component">
+    <compile-javac
+      dirsrc="${fjbg.src.dir}"
+      destfile="${fjbg.build.dir}"/>
+      
+    <make-jar
+      basedir="${fjbg.build.dir}"
+      destfile="${fjbg.jar}"/>
+      
+   </target>
+      
+   <target name="build.forkjoin" description="Build Scala forkjoin component">
+    <compile-javac
+      dirsrc="${forkjoin.src.dir}"
+      destfile="${forkjoin.build.dir}"/>
+      
+    <make-jar
+      basedir="${forkjoin.build.dir}"
+      destfile="${forkjoin.jar}"/>
+      
+   </target>
+      
+   <target name="build.msil" description="Build Scala msil component">
+    <mkdir dir="${msil.build.dir}"/>
+    <compile-scala
+      dirsrc="${msil.src.dir}"
+      destfile="${msil.build.dir}" />
+      
+    <make-jar
+      basedir="${msil.build.dir}"
+      destfile="${msil.jar}"/>
+      
+   </target>
+      
+   <macrodef name="compile-javac">
+    <attribute name="destfile"/>
+    <attribute name="dirsrc"/>
+    <attribute name="excludes" default=""/>
+    <attribute name="includes" default=""/>
+    <attribute name="buildclasspath" default=""/>
+    <sequential>
+    <mkdir dir="@{destfile}"/>
+      <javac
+        srcdir="@{dirsrc}"
+        destdir="@{destfile}"
+        debug="true"
+        target="1.5" source="1.5">
+        <exclude name="@{excludes}"/>
+      </javac>
+    </sequential>
+   </macrodef>
+      
+   <taskdef name="scalac" classname="scala.tools.ant.sabbus.ScalacFork" classpathref="scalac.classpath"/>
+   <macrodef name="compile-scala">
+    <attribute name="destfile"/>
+    <attribute name="dirsrc"/>
+    <attribute name="excludes" default=""/>
+    <attribute name="includes" default=""/>
+    <attribute name="buildclasspath" default=""/>
+    <sequential>
+      <javac
+        srcdir="@{dirsrc}"
+        destdir="@{destfile}"
+        includes="**/*.java"
+        excludes="**/tests/**" 
+        debug="true"
+        target="1.5" source="1.5">
+      </javac>
+      <scalac
+        srcdir="@{dirsrc}"
+        destdir="@{destfile}"
+        compilerpathref="scalac.classpath">
+        <include name="**/*.scala"/>
+        <compilationpath>
+          <pathelement location="${msil.build.dir}"/>
+          <pathelement location="/usr/share/java/ant.jar"/>
+          <pathelement location="${lib.dir}/scala-compiler.jar"/>
+          <pathelement location="${lib.dir}/scala-library.jar"/>
+          <pathelement location="${lib.dir}/scala-reflect.jar"/>
+          <pathelement location="${basedir}/lib/fjbg.jar"/>
+          <pathelement location="${basedir}/lib/forkjoin.jar"/>
+        </compilationpath>
+      </scalac>
+    </sequential>
+   </macrodef>
+      
+   <macrodef name="make-jar">
+    <attribute name="destfile"/>
+    <attribute name="basedir"/>
+    <attribute name="excludes" default=""/>
+    <attribute name="includes" default="**"/>
+    <attribute name="resources" default=""/>
+    <attribute name="paramvalue" default=""/>
+    <sequential>
+      <jar destfile="@{destfile}"
+        basedir="@{basedir}"
+        includes="@{includes}">
+      </jar>
+    </sequential>
+  </macrodef>
+      
+</project>

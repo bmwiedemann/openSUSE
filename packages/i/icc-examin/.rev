@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8faf284a32da2b01f20da64613c5cb92</srcmd5>
+    <version>0.55</version>
+    <time>1400219782</time>
+    <user>coolo</user>
+    <comment>This package replaces icc_examin in order to synchronise with Debian package naming conventions. Spec is cleaned up. Obsoletes and Provides are added.</comment>
+    <requestid>234201</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8faf284a32da2b01f20da64613c5cb92</srcmd5>
+    <version>0.55</version>
+    <time>1409301204</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9ca29ad31d087dcb0915705f9f70aea</srcmd5>
+    <version>0.56</version>
+    <time>1485511492</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>448189</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>79891161e19f08d536d672404a2ceb38</srcmd5>
+    <version>0.56</version>
+    <time>1500804949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511935</requestid>
+  </revision>
+</revisionlist>

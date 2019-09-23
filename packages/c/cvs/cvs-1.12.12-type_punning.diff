@@ -1,0 +1,16 @@
+--- src/ls.c
++++ src/ls.c
+@@ -324,9 +324,11 @@
+ static void
+ ls_delproc (Node *p)
+ {
+-    dellist ((List **)&p->data);
+-}
++    union { void ** n; List **l; } l = { &p->data };
+ 
++    dellist (l.l);
++}
++        
+ 
+ 
+ /*

@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>307e8619d0fdc384eadda827f52713cc</srcmd5>
+    <version>1.014</version>
+    <time>1357648987</time>
+    <user>coolo</user>
+    <comment>More fonts.</comment>
+    <requestid>147141</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>307e8619d0fdc384eadda827f52713cc</srcmd5>
+    <version>1.014</version>
+    <time>1359108991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>307e8619d0fdc384eadda827f52713cc</srcmd5>
+    <version>1.014</version>
+    <time>1379662539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>307e8619d0fdc384eadda827f52713cc</srcmd5>
+    <version>1.014</version>
+    <time>1409301081</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Hiawatha Webserver (HTTP)</short>
+  <description>An advanced and secure webserver.</description>
+  <port protocol="tcp" port="80"/>
+</service>

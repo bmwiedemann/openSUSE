@@ -1,0 +1,3142 @@
+-------------------------------------------------------------------
+Thu Feb 21 19:38:18 UTC 2019 - mpost@suse.com
+
+- Now that IBM has the package on github, use a full source URL.
+- Change Pre-Req to Requires(pre) and (post), and remove dracut.
+- Changed the group for the hmcdrvfs package from Base:System to
+  Base/Filesystems
+- Institute the %autosetup macro.
+- Remove erroneous %dir entry for %_unitdir
+- Change bash-specific "==" tests in scriptlets with a more
+  generic "=".
+
+-------------------------------------------------------------------
+Thu Feb 14 23:53:57 UTC 2019 - mpost@suse.com
+
+- Modified the spec file to add a group named cpacfstats
+  (bsc#1123730)
+
+-------------------------------------------------------------------
+Mon Jan 28 17:38:15 UTC 2019 - mpost@suse.com
+
+- Added s390-tools-sles15sp1-zcrypt-refine-lszcrypt-man-page.patch
+  Added some explanations about the columns shown with the lszcrypt
+  verbose output.  (bsc#1123041)
+
+-------------------------------------------------------------------
+Thu Jan 24 04:43:39 UTC 2019 - mpost@suse.com
+
+- Updated the spec file to regenerate the initrd in the post, postun,
+  and poststrans scriptlets. (bsc#1112018)
+
+-------------------------------------------------------------------
+Tue Jan 15 21:37:32 UTC 2019 - mpost@suse.com
+
+- Enable cryptsetup now that version 2 is included in SLES15 SP1.
+  (Fate#325684)
+
+-------------------------------------------------------------------
+Mon Jan 14 17:03:37 UTC 2019 - mpost@suse.com
+
+- Added the following two patches from IBM (bsc#1121719):
+  * s390-tools-sles15sp1-01-zkey-Include-sbin-into-PATH-when-executing-commands.patch
+  * s390-tools-sles15sp1-zkey-Enhance-error-message-about-missing-CCA-library.patch
+- Added the following patch to correct a problem with CTC network
+  interfaces not coming up after a reboot (bsc#1119102)
+  * s390-tools-sles15sp1-zdev-Also-include-the-ctc-driver-in-the-initrd.patch
+
+-------------------------------------------------------------------
+Wed Jan  9 23:17:22 UTC 2019 - mpost@suse.com
+
+- Added s390-tools-sles15sp1-qethqoat-add-OSA-Express7S-support.patch
+  qethqoat: add OSA-Express7S support
+  (Fate#326805, bsc#1121222)
+- Modified the spec file to: (bsc#1119966)
+  * Add a group named zkeyadm
+  * Create directory /etc/zkey/repository
+  * Set the permissions on /etc/zkey and /etc/zkey/repository
+  * Added /usr/lib/modules-load.d/pkey.conf 
+- Made numerous changes to the spec file based on the output from
+  spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Dec  6 21:03:08 UTC 2018 - mpost@suse.com
+
+- Added the following patches for Fate#326825 (bsc#1113329)
+  I/O device pre-configuration
+  * s390-tools-sles15sp1-01-zdev-use-libutil-provided-path-functions.patch
+  * s390-tools-sles15sp1-02-zdev-Prepare-for-firmware-configuration-file-support.patch
+  * s390-tools-sles15sp1-03-zdev-Add-support-for-reading-firmware-configuration-.patch
+  * s390-tools-sles15sp1-04-zdev-Implement-no-settle.patch
+  * s390-tools-sles15sp1-05-zdev-Write-zfcp-lun-udev-rules-to-separate-files.patch
+  * s390-tools-sles15sp1-06-zdev-Add-support-for-handling-auto-configuration-dat.patch
+  * s390-tools-sles15sp1-07-zdev-Integrate-firmware-auto-configuration-with-drac.patch
+  * s390-tools-sles15sp1-08-zdev-Integrate-firmware-auto-configuration-with-init.patch
+  * s390-tools-sles15sp1-09-zdev-Implement-internal-device-attributes.patch
+  * s390-tools-sles15sp1-10-zdev-Implement-support-for-early-device-configuratio.patch
+  * s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
+- Removed the obsolete customize-zdev-root-update-script.patch
+- Replaced s390-tools-sles15-zdev-fix-qeth-BridgePort-and-VNICC-conflict-checking.patch
+  with s390-tools-sles15sp1-zdev-fix-qeth-BridgePort-and-VNICC-conflict-checking.patch
+  to fit the current version (bsc#1118618).
+
+-------------------------------------------------------------------
+Thu Nov 29 00:03:01 UTC 2018 - mpost@suse.com
+
+- Added the following patches for Fate#326862 (bsc#1113328)
+  zcrypt DD: introduce APQN tags to support deterministic driver binding
+  * s390-tools-sles15sp1-01-chzcrypt-Corrections-at-the-chzcrypt-man-page.patch
+  * s390-tools-sles15sp1-02-lszcrypt-support-for-alternate-zcrypt-device-drivers.patch
+- Added the following patches for Fate#326804 (bsc#1113330)
+  Extended access controls for AP queue
+  * s390-tools-sles15sp1-01-zcryptctl-new-tool-zcryptctl-for-multiple-zcrypt-node.patch
+
+-------------------------------------------------------------------
+Tue Nov 13 19:22:01 UTC 2018 - mpost@suse.com
+
+- Added s390-tools-sles15-zdev-fix-qeth-BridgePort-and-VNICC-conflict-checking.patch
+  (bsc#1112536)
+  zdev: qeth BridgePort and VNICC attribute conflict
+- Added the following patches for Fate#326376 (bsc#1113321)
+  PCI error reporting tool (zpcictl)
+  * s390-tools-sles15sp1-01-util_path-add-function-to-check-if-a-path-exists.patch
+  * s390-tools-sles15sp1-02-util_path-Add-description-for-util_path_exists.patch
+  * s390-tools-sles15sp1-03-util_path-Make-true-false-handling-consistent-with-o.patch
+  * s390-tools-sles15sp1-04-zpcictl-Introduce-new-tool-zpcictl.patch
+  * s390-tools-sles15sp1-05-zpcictl-include-sys-sysmacros.h-to-avoid-minor-major.patch
+  * s390-tools-sles15sp1-06-zpcictl-Rephrase-man-page-entries-and-tool-output.patch
+  * s390-tools-sles15sp1-07-zpcictl-Use-fopen-instead-of-open-for-writes.patch
+  * s390-tools-sles15sp1-08-zpcictl-Read-device-link-to-obtain-device-address.patch
+  * s390-tools-sles15sp1-09-zpcictl-Make-device-node-for-NVMe-optional.patch
+  * s390-tools-sles15sp1-10-zpcictl-Change-wording-of-man-page-and-help-output.patch
+- Added the following patches for Fate#325684 (bsc#1113323)
+  Protected key dm-crypt key management tool (crypto)
+  * s390-tools-sles15sp1-0001-zkey-Add-properties-file-handling-routines.patch
+  * s390-tools-sles15sp1-0002-zkey-Add-build-dependency-to-OpenSSL-libcrypto.patch
+  * s390-tools-sles15sp1-0003-zkey-Add-helper-functions-for-comma-separated-string.patch
+  * s390-tools-sles15sp1-0004-zkey-Externalize-secure-key-back-end-functions.patch
+  * s390-tools-sles15sp1-0005-zkey-Add-keystore-implementation.patch
+  * s390-tools-sles15sp1-0006-zkey-Add-keystore-related-commands.patch
+  * s390-tools-sles15sp1-0007-zkey-Create-key-repository-and-group-during-make-ins.patch
+  * s390-tools-sles15sp1-0008-zkey-Man-page-updates.patch
+  * s390-tools-sles15sp1-0009-zkey-let-packaging-create-the-zkeyadm-group-and-perm.patch
+  * s390-tools-sles15sp1-0010-zkey-Update-README-to-add-info-about-packaging-requi.patch
+- Added the following patches for Fate#326390 (bsc#1113353)
+  dm-crypt with protected keys - change master key tool 
+  * s390-tools-sles15sp1-0011-zkey-Typo-in-message.patch
+  * s390-tools-sles15sp1-0012-zkey-Fix-memory-leak.patch
+  * s390-tools-sles15sp1-0013-zkey-Fix-APQN-validation-routine.patch
+  * s390-tools-sles15sp1-0014-zkey-Fix-generate-and-import-leaving-key-in-an-incon.patch
+  * s390-tools-sles15sp1-0015-zkey-Add-zkey-cryptsetup-tool.patch
+  * s390-tools-sles15sp1-0016-zkey-Add-man-page-for-zkey-cryptsetup.patch
+  * s390-tools-sles15sp1-0017-zkey-Add-build-dependency-for-libcryptsetup-and-json.patch
+  * s390-tools-sles15sp1-0018-zkey-Add-key-verification-pattern-property.patch
+  * s390-tools-sles15sp1-0019-zkey-Add-volume-type-property-to-support-LUKS2-volum.patch
+- Added the following patches for Fate#325691 (bsc#1113324)
+  Add support for new crypto hardware
+  * s390-tools-sles15sp1-01-lszcrypt-CEX6S-exploitation.patch
+  * s390-tools-sles15sp1-02-lszcrypt-fix-date-and-wrong-indentation.patch
+- Added the following patches for Fate#326388 (bsc#1113331)
+  CPUMF Counters for z14
+  * s390-tools-sles15sp1-01-cpumf-Add-extended-counter-defintion-files-for-IBM-z.patch
+  * s390-tools-sles15sp1-02-cpumf-z14-split-counter-sets-according-to-CFVN-CSVN-.patch
+  * s390-tools-sles15sp1-03-cpumf-cpumf_helper-read-split-counter-sets-part-2-2.patch
+  * s390-tools-sles15sp1-04-cpumf-correct-z14-counter-number.patch
+  * s390-tools-sles15sp1-05-cpumf-add-missing-Description-tag-for-z13-z14-ctr-12.patch
+  * s390-tools-sles15sp1-06-cpumf-correct-counter-name-for-z13-and-z14.patch
+  * s390-tools-sles15sp1-07-cpumf-Add-IBM-z14-ZR1-to-the-CPU-Measurement-Facilit.patch
+- Added the following patch for Fate#326361 (bsc#1113333)
+  Collect NVMe-related debug data
+  * s390-tools-sles15sp1-dbginfo-gather-nvme-related-data.patch
+- Temporarily added "HAVE_CRYPTSETUP2=0" to the make and make install
+  commands, because a couple of Fate requests have not been approved
+  yet, resulting in build failure.
+- Added "Recommends: blktrace" to the spec file (bsc#1112855)
+- Changed remaining insserv references to systemd entries.
+- Changed the Group from the obsolete "System Environment/Base" to
+  "System/Base."
+
+-------------------------------------------------------------------
+Fri Aug 31 18:57:54 UTC 2018 - mpost@suse.com
+
+- Added the following patch to remove the call to zipl for bsc#1094354
+  * customize-zdev-root-update-script.patch
+- Modified ctc_configure to not pass a "protcol=" parameter when
+  configuring LCS devices. (bsc#1096520)
+- Added the following two patches for bsc#1098069
+  * dbginfo.sh: Extend data collection
+    s390-tools-sles15-dbginfo-add-data-for-ps-cpprot.patch
+  * mon_procd: fix parsing of /proc/<pid>/stat
+    s390-tools-sles15-mon_procd-fix-parsing-of-proc-pid-stat.patch
+- Added the following patches for "lstape, lsluns: handle non-zfcp;
+  lin_tape multiple paths" (bsc#1098069)
+  * s390-tools-sles15-1-lstape-fix-output-with-SCSI-lin_tape-and-multiple-pa.patch
+  * s390-tools-sles15-2-lstape-fix-to-prefer-sysfs-to-find-lin_tape-device-n.patch
+  * s390-tools-sles15-3-lstape-fix-output-without-SCSI-generic-sg.patch
+  * s390-tools-sles15-4-lsluns-fix-to-prevent-error-messages-if-there-are-no.patch
+  * s390-tools-sles15-5-lstape-fix-to-prevent-error-messages-if-there-are-no.patch
+  * s390-tools-sles15-6-lstape-fix-description-of-type-and-devbusid-filter-f.patch
+  * s390-tools-sles15-7-lstape-fix-SCSI-output-description-in-man-page.patch
+  * s390-tools-sles15-8-lstape-fix-SCSI-HBA-CCW-device-bus-ID-e.g.-for-virti.patch
+
+-------------------------------------------------------------------
+Tue Aug  7 04:44:12 UTC 2018 - mpost@suse.com
+
+- dasd_reload: Fixed several syntax errors. Changed the script to
+  ensure that the DASD volume are actually activated in device
+  number order. If an old 51-dasd-<ccw>.rules file is found,
+  rename it to obsolete-51-dasd-<ccw>.rules, and use chzdev to
+  generate a new rules file. (bsc#1103407)
+
+-------------------------------------------------------------------
+Mon Aug  6 12:42:14 CEST 2018 - hare@suse.de
+
+- dasd_reload: Check for 41-dasd-<type>-<ccw>.rules in addition
+  to the original 51-dasd-<ccw>.rules (bsc#1103407)
+
+-------------------------------------------------------------------
+Fri Jul 27 17:56:14 UTC 2018 - mpost@suse.com
+
+- Removed s390 from the ExclusiveArch parameter (bsc#1102906)
+
+-------------------------------------------------------------------
+Wed May 30 10:22:01 CEST 2018 - hare@suse.de
+
+- mark active_devices.txt as %config(noreplace) (bsc#1090213)
+
+-------------------------------------------------------------------
+Fri Apr  6 17:44:55 UTC 2018 - mpost@suse.com
+
+- Added s390-tools-sles15-hmcdrvfs-fix-parsing-of-link-count.patch
+  (bsc#1087452)
+  * hmcdrvfs: fix parsing of link count >= 1000
+
+-------------------------------------------------------------------
+Thu Mar 22 21:16:00 UTC 2018 - mpost@suse.com
+
+- Modified dasd_configure script to set a return code of 8 if a
+  DASD volume being brought online is not formatted. (bsc#1084503)
+
+-------------------------------------------------------------------
+Tue Dec 12 01:01:09 UTC 2017 - mpost@suse.com
+
+- Converted the following SysV init scripts to systemd unit files
+  and scripts (bsc#1050786):
+  * appldata
+  * hsnc
+  * vmlogrdr
+  * xpram
+
+-------------------------------------------------------------------
+Thu Dec  7 23:08:31 UTC 2017 - mpost@suse.com
+
+- Added the following two patches (bsc#1071166):
+  s390-tools-sles15-zdev-Enable-running-chzdev-from-unknown-root-devices.patch
+  s390-tools-sles15-zdev-Fix-zdev-dracut-module-aborting-on-unknown-root.patch
+
+-------------------------------------------------------------------
+Tue Dec  5 17:49:35 UTC 2017 - mpost@suse.com
+
+- Added the following patches (bsc#1070836):
+  s390-tools-sles15-cpuplugd-Improve-systemctl-start-error-handling.patch
+  s390-tools-sles15-mon_tools-Improve-systemctl-start-error-handling.patch
+  s390-tools-sles15-lsluns-do-not-scan-all-if-filters-match-nothing.patch
+  s390-tools-sles15-lsluns-do-not-print-confusing-messages-when-a-filter.patch
+  s390-tools-sles15-lsluns-fix-flawed-formatting-of-man-page.patch
+  s390-tools-sles15-lsluns-enhance-usage-statement-and-man-page.patch
+  s390-tools-sles15-lsluns-clarify-discovery-use-case-relation-to-NPIV-a.patch
+  s390-tools-sles15-lsluns-point-out-IBM-Storwize-configuration-requirem.patch
+  s390-tools-sles15-lsluns-document-restriction-to-zfcp-only-systems.patch
+  s390-tools-sles15-lsluns-complement-alternative-tools-with-lszdev.patch
+
+-------------------------------------------------------------------
+Tue Dec  5 15:46:44 UTC 2017 - mpost@suse.com
+
+- Added "--no-root-update" to all the chzdev calls in the following
+  scripts for bsc#1071165:
+  ctc_configure
+  dasd_configure
+  qeth_configure
+  zfcp_disk_configure
+  zfcp_host_configure
+
+-------------------------------------------------------------------
+Thu Nov 30 20:22:09 UTC 2017 - mpost@suse.com
+
+- Added the following patches (bsc#1068538)
+  * s390-tools-sles15-cpi-add-unit-install-section.patch
+  * s390-tools-sles15-zipl-remove-invalid-dasdview-command-line-option.patch
+  * s390-tools-sles15-ziomon-re-add-missing-line.patch
+- Modified s390-tools-sles15-zdev-Use-correct-path-to-vmcp-binary.patch to
+  point to the correct line in the common.mk file.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:41:27 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Nov 14 21:38:25 UTC 2017 - mpost@suse.com
+
+- Added "HAVE_DRACUT=1" to the make install command. This will
+  include the new dracut support module. (bsc#1068040)
+
+-------------------------------------------------------------------
+Tue Nov 14 03:19:55 UTC 2017 - mpost@suse.com
+
+- Added s390-tools-sles15-zdev-Use-correct-path-to-vmcp-binary.patch
+  zdev: Use correct path to vmcp binary (bsc#1055909)
+- Modified the spec file to also install /etc/cpuplugd.conf
+  (bsc#1066328)
+- Dropped installation of obsolete /etc/sysconfig/mon_statd.
+- Removed "-i" option from "fillup_only" macro for osasnmpd to get
+  rid of a warning message from RPM.
+
+-------------------------------------------------------------------
+Thu Nov  9 20:39:38 UTC 2017 - mpost@suse.com
+
+- Updated the cputype script to recognize the new IBM z14
+  processor (bsc#1049843).
+- Re-instated the new versions of ctc_configure, dasd_configure,
+  qeth_configure, zfcp_disk_configure, zfcp_host_configure.
+
+-------------------------------------------------------------------
+Wed Oct 25 17:21:30 UTC 2017 - mpost@suse.com
+
+- Modified s390-tools-sles15-Format-devices-in-parallel.patch to
+  reset the rc variable before using it again (bsc#1063393).
+- Reverted the changes to the *_configure scripts until
+  bsc#1064791 is fixed.
+
+-------------------------------------------------------------------
+Mon Oct 23 23:41:51 UTC 2017 - mpost@suse.com
+
+- Replaced the following SUSE-written scripts with wrappers that
+  call the IBM-provided chzdev command in s390-tools. (Fate#322268)
+  * ctc_configure
+  * dasd_configure
+  * qeth_configure
+  * zfcp_disk_configure
+  * zfcp_host_configure
+
+-------------------------------------------------------------------
+Wed Oct 18 16:22:27 UTC 2017 - mpost@suse.com
+
+- Deleted s390-tools-sles12-pardasdfmt.patch and replaced it with
+  the following patches (bsc#1063393):
+  * s390-tools-sles15-Allow-multiple-device-arguments.patch
+  * s390-tools-sles15-Drop-device_id-parameter.patch
+  * s390-tools-sles15-Fixup-dasdfmt_get_volser.patch
+  * s390-tools-sles15-Fixup-device-name-handling.patch
+  * s390-tools-sles15-Format-devices-in-parallel.patch
+  * s390-tools-sles15-Implement-f-for-backwards-compability.patch
+  * s390-tools-sles15-Implement-Y-yast_mode.patch
+- Reworked dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch to fit
+  on top of replacement patches.
+- Cleaned up the patch headers for the following:
+  * s390-tools-sles12-sysconfig-compatible-dumpconf.patch
+  * s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch
+- Added the following patches:
+  * s390-tools-sles15-Fix-truncation-warning.patch
+  * s390-tools-sles15-iucvterm-include-ctype-for-toupper.patch
+- Removed redundant %clean section. Replaced old RPM variables.
+- Removed %service* macros for iucvtty-login@.service and
+  ttyrun-getty@.service since systemd complained about them.
+- Replaced all fillup_and_insserv macros with fillup_only since
+  we weren't running the "insserv" part anyway.
+
+-------------------------------------------------------------------
+Thu Oct  5 20:47:52 UTC 2017 - mpost@suse.com
+
+- Modified mkdump perl script to work with the updated version
+  of the IBM tools dasdview, zipl and zgetdump. (bsc#1020336).
+  Also changed the method used to determine the maximum dump size
+  for SCSI devices.
+
+-------------------------------------------------------------------
+Wed Oct  4 19:45:29 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 2.1.0 (Fate#323291).
+  Changes from 2.0.0 to 2.1.0
+  * Added the following tools:
+    netboot: Scripts for building a PXE-style netboot image for KVM
+    90-cpi.rules/cpictl: New udev rule to update CPI when KVM is used
+  * Modified lsqeth/zdev to add VNIC Characteristics support
+  Bug fixes
+  * chzcrypt: Corrected handling of insufficient permissions
+  * cpacfstats: Add size setting to perf event
+  * fdasd: Skip partition check with the force option
+  * ttyrun: Fix deprecated BindTo usage in ttyrun-getty@.service.in
+  * lszcrypt: Fix core dump caused by stack overwrite
+  * lszcrypt: Fix random domain printout when no config available
+  * zdev: Fix segfault with unknown qeth attribute
+  * zdev: Fix IPv6 NDP proxy description
+  * zdev: Fix zdev dracut module temp file location
+  * zkey: Correctly detect abbreviated commands
+  * zkey: Validate XTS key: ignore domain and card
+  * zkey: Use octal values instead of S_IRWX* constants
+  * zkey: Properly set umask to prohibit permissions to group and others
+  * zkey: Add -ldl to LDLIBS (not LDFLAGS)
+  * znetconf: Re-add missing line in lsznet.raw
+  * Fix several gcc 7 warnings
+- Modified s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+  to apply cleanly to this version.
+- Removed the following obsolete patches:
+  * s390-tools-sles15-zgetdump-Fix-gcc-7-warning.patch
+  * s390-tools-sles15-lscss-Get-rid-of-gcc-7-buffer-truncation-warnings.patch
+  * s390-tools-sles15-Get-rid-of-gcc-7-fall-through-warnings.patch
+  * s390-tools-sles15-lszcrypt-Fix-core-dump-caused-by-stack-overwrite.patch
+  * s390-tools-sles15-dasdinfo-Fix-GCC-7-overflow-warning.patch
+
+-------------------------------------------------------------------
+Thu Sep  8 21:06:37 UTC 2017 - mpost@suse.com
+
+- Added the following patches (bsc#1056498)
+  - s390-tools-sles15-zgetdump-Fix-gcc-7-warning.patch
+  - s390-tools-sles15-lscss-Get-rid-of-gcc-7-buffer-truncation-warnings.patch
+  - s390-tools-sles15-Get-rid-of-gcc-7-fall-through-warnings.patch
+  - s390-tools-sles15-lszcrypt-Fix-core-dump-caused-by-stack-overwrite.patch
+  - s390-tools-sles15-dasdinfo-Fix-GCC-7-overflow-warning.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 20:01:35 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 2.0.0 (Fate#323291).
+  - Changes from 1.34.0 to 1.35.0
+    - cpuplugd: Make default config file location more distribution agnostic
+                Add systemd service unit to start/stop the cpuplug daemon
+                Add force-reload action to init script for LSB-compliance
+    - mon_statd: Add force-reload action to init script for LSB-compliance
+    - chiucvallow: corrected verification return code
+    - lczdev/chzdev: Add support for resolving iSCSI block devices
+    Bug fixes
+    - chzdev, lszdev: Fix incorrect zfcp module parameter name
+    - chreipl: Fix chreipl node for virtio devices
+    - libus2s: Fix busid parsing
+    - zipl/boot: Fix failed start subchannel in FBA loader
+  - Changes from 1.35.0 to 1.36.0
+    - chzdev/lszdev: Add device resolution for vlan and bonding devices
+    - dasdfmt: Add quick format support
+    - lsdasd/fdasd/dasdfmt/zdsfs: Add query host access to volume support
+    - zfcpdbf: Make timestamp the first field in record output
+               Exclude Payload hex field from log message record output
+               Add Area field to record output
+               Add missing header fields to area record output
+               Print the Record id field for Area area class records
+               Mark oldest and newest trace area records
+               Mark oldest and newest def_err pseudo area records
+               Mark oldest and newest foreign area records
+               Mark oldest and newest log message records
+               Add a warning about low resolution timestamps
+               Add Trace Area Statistics table to script output
+               Add time zone command line option
+               Add collection of domain xml files
+    Bug fixes
+    - zfcpdbf: Move and fix CPU id field output to print_header function
+               Include microseconds in warning threshold calculation
+               Fix parsing of precise syslog timestamps
+               Fix labels for REC ERP action status and ERP step fields
+  - Changes from 1.36.0 to 1.36.1
+    - zfcpdbf: Support basic HBA record type without warning
+               Restore tracing of handle for port and LUN with HBA records
+               Print full payload for all SAN traces (req, resp, iels)
+               Print payload length everywhere applicable
+               Disambiguate printing of payload record content
+    Bug fixes
+    - fdasd: Prevent buffer overflow
+    - znetconf: Fix detection of chpids as OSX instead of OSM
+  - Changes from 1.36.1 to 1.37.0
+     - Added dump2tar: sysfs collection helper for dbginfo.sh
+     - qethconf: Remove check for OSN-device
+     - znetconf: Remove OSN-support
+     - lsdasd/tunedasd: Add channel path aware erp
+     - zcrypt: Add multi domain support for zcrypt device driver
+     - scm: Reimplement lsscm in C
+     - chp: Reimplement chchp and lschp in C
+     - dbginfo.sh: Make use of sysinfo collection helper
+    Bug fixes
+    - zfcpdbf: Only cap SAN short payload if pl_len exists
+    - chzdev: Fix bug when configuring QETH devices
+    - libu2s: Prevent buffer overflow
+    - ziomon: No blktrace kill which can corrupt kernel blktrace state
+  - Changes from 1.37.0 to 1.37.1
+    - dbginfo.sh: Add Docker debug data
+    Bug fixes
+    - lsdasd: Replace continue with return
+    - lscss: Allow to specify devices from subchannel set 3
+    - mon_fsstatd: Only use physical filesystems
+                   Fix double free in error path
+    - mon_procd: Fix segmentation fault
+  - Changes from 1.37.1 to 1.38.0
+    - systemd: Add new units for cpi, dumpconf, mon_fsstatd, and mon_procd
+    - fdasd: Add new command action 'l' to list known partition types
+    - chmem: Try to online memory to zone movable
+             Starting with kernel 4.13 (commit f1dd2cd1), the default zone for
+             hotplug memory is changed from zone movable to zone normal. In order
+             to preserve the previous default behaviour, chmem will now always try
+             to set memory online to the zone movable, before trying to set it
+             online to the default zone.
+    - zfcpdbf: Print high part of "new" 64 bit SCSI LUN
+               Print payload with full FCP_RSP IU in SCSI trace records
+    - util_opt: Add command specific command line parsing
+    - util_rec: Implement util_rec_iterate() function
+    - util_rec: Record field values can be stored and processed in argz format
+    Bug fixes
+    - zipl/zgetdump: Add missing SCSI multipath dump information to man pages
+    - lsqeth: Fix attributes name: ipa -> ipa_takeover and parp -> rxip
+              Fix lsqeth output of ipa/vipa/rxip addresses of interfaces
+    - zfcpdbf: Fix payload length for zfcp_dbf_hba_bit_err
+    - chzdev: Add implicit qeth layer settings handling
+    - qethqoat: Fix OSA 6S detection
+  - Changes from 1.38.0 to 2.0.0 (also known as 1.39.0)
+    - IBM changed the license to MIT.
+    - Added zkey: Generate, re-encipher, and validate secure AES keys
+    - cpumf: Add hardware counters for z13 and z13s
+    - lscss: Reimplement lscss script in C
+    - lsqeth: Reimplement lsqeth script in C
+    Bug fixes
+    - lscpumf: Fix Perl warnings
+  - Removed the following obsolete patches:
+    s390-tools-sles12sp2-chiucvallow-verify.patch
+    s390-tools-sles12sp2-chreipl-virtio.patch
+    s390-tools-sles12sp2-chzdev-disable-root-update.patch
+    s390-tools-sles12sp2-feat-01-dasd-query-host.patch
+    s390-tools-sles12sp2-lscss-allow-to-specify-devices-from-ssid-3.patch
+    s390-tools-sles12sp2-zipl-fix-failed-start-subchannel.patch
+    s390-tools-sles12sp3-chmem-try-to-online-zone-movable.patch
+    s390-tools-sles12sp3-dasdfmt-01-Fix-behaviour-of-t-combined-with-y.patch
+    s390-tools-sles12sp3-dasdfmt-02-Fix-trailing-whitespace.patch
+    s390-tools-sles12sp3-dasdfmt-03-Apply-coding-convention.patch
+    s390-tools-sles12sp3-dasdfmt-04-Use-enhanced-DASD-information.patch
+    s390-tools-sles12sp3-dasdfmt-05-Refactor-do_format_dasd.patch
+    s390-tools-sles12sp3-dasdfmt-06-Make-the-IOCTL-BLKSSZGET-reusable.patch
+    s390-tools-sles12sp3-dasdfmt-07-Add-quick-format-support.patch
+    s390-tools-sles12sp3-dasdfmt-08-Make-progress-output-reusable-and-add-ETR.patch
+    s390-tools-sles12sp3-dasdfmt-09-Add-command-line-argument-check.patch
+    s390-tools-sles12sp3-dasdfmt-10-Add-expand-format-mode.patch
+    s390-tools-sles12sp3-dbginfo-01-libutil-Add-utility-functions.patch
+    s390-tools-sles12sp3-dbginfo-02-dump2tar-Add-sysfs-collection-helper-for-dbginfo.sh-v2.patch
+    s390-tools-sles12sp3-dbginfo-03-dbginfo.sh-Make-use-of-sysinfo-collection-helper.patch
+    s390-tools-sles12sp3-dbginfo-Collect-docker-debug-data.patch
+    s390-tools-sles12sp2-libu2s-Fix-busid-parsing.patch
+    s390-tools-sles12sp3-lsdasd-tunedasd-Add-channel-path-aware-erp.patch
+    s390-tools-sles12sp3-mon_fsstatd-fix-double-free-in-error-path-and-skip-virtual-fs.patch
+    s390-tools-sles12sp3-util_proc-fix-memory-allocation-error-messages.patch
+    s390-tools-sles12sp3-ziomon-no-blktrace-kill-which-can-corrupt-kernel-blk.patch
+- Added s390-tools-sles15-add--ldl-to-LDLIBS.patch to fix a problem with zkey/Makefile.
+
+-------------------------------------------------------------------
+Thu Sep  7 19:41:39 UTC 2017 - mpost@suse.com
+
+- Temporarily added BuildIgnore: gcc-PIE to the spec file to
+  avoid a problem with zipl not working. (bsc#1055343)
+
+-------------------------------------------------------------------
+Wed Jul 12 18:14:13 UTC 2017 - mpost@suse.com
+
+- Added s390-tools-sles12sp3-chmem-try-to-online-zone-movable.patch
+  (bsc#1048363).
+
+-------------------------------------------------------------------
+Mon Jul  3 17:29:19 CEST 2017 - ro@suse.de
+
+- Remove lsmem and chmem and their manpages from the package,
+  both tools have been added to util-linux-2.30 
+
+-------------------------------------------------------------------
+Wed May 31 21:26:50 UTC 2017 - mpost@suse.com
+
+- Made a number of modification to zpxe.rexx to
+  - Made several hard-coded values variables.
+  - Make it more obvious which default values can be modified
+  - Increased the default size of the FFFF VDISK (bsc#1038255)
+  - Don't execute the wait if "debug" was specified as a parm.
+  - Change nodebug variable name to debug for clarity, updated
+    logic as needed.
+
+-------------------------------------------------------------------
+Tue May 16 00:57:05 UTC 2017 - mpost@suse.com
+
+- Added s390-tools-sles12sp3-ziomon-no-blktrace-kill-which-can-corrupt-kernel-blk.patch
+  (bsc#1038861)
+
+-------------------------------------------------------------------
+Tue Apr 18 22:25:10 UTC 2017 - mpost@suse.com
+
+- Due to the change to qclib packaging, change BuildRequires
+  from qclib-devel to qclib-devel-static.
+
+-------------------------------------------------------------------
+Wed Feb 22 20:29:57 UTC 2017 - mpost@suse.com
+
+- Added the following patches (bsc#1026474)
+  - s390-tools-sles12sp3-mon_fsstatd-fix-double-free-in-error-path-and-skip-virtual-fs.patch
+  - s390-tools-sles12sp3-dbginfo-Collect-docker-debug-data.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 17:05:45 UTC 2017 - mpost@suse.com
+
+- Added s390-tools-sles12sp3-util_proc-fix-memory-allocation-error-messages.patch
+  (bsc#1025247)
+
+-------------------------------------------------------------------
+Thu Feb 16 21:06:41 UTC 2017 - mpost@suse.com
+
+- Added the following patches for Fate # 322377:
+  - s390-tools-sles12sp3-dbginfo-01-libutil-Add-utility-functions.patch
+  - s390-tools-sles12sp3-dbginfo-02-dump2tar-Add-sysfs-collection-helper-for-dbginfo.sh-v2.patch
+  - s390-tools-sles12sp3-dbginfo-03-dbginfo.sh-Make-use-of-sysinfo-collection-helper.patch
+
+- Added the following patches for Fate # 322374:
+  - s390-tools-sles12sp3-lsdasd-tunedasd-Add-channel-path-aware-erp.patch
+
+- Added the following patches for Fate # 321643:
+  - s390-tools-sles12sp3-dasdfmt-01-Fix-behaviour-of-t-combined-with-y.patch
+  - s390-tools-sles12sp3-dasdfmt-02-Fix-trailing-whitespace.patch
+  - s390-tools-sles12sp3-dasdfmt-03-Apply-coding-convention.patch
+  - s390-tools-sles12sp3-dasdfmt-04-Use-enhanced-DASD-information.patch
+  - s390-tools-sles12sp3-dasdfmt-05-Refactor-do_format_dasd.patch
+  - s390-tools-sles12sp3-dasdfmt-06-Make-the-IOCTL-BLKSSZGET-reusable.patch
+  - s390-tools-sles12sp3-dasdfmt-07-Add-quick-format-support.patch
+  - s390-tools-sles12sp3-dasdfmt-08-Make-progress-output-reusable-and-add-ETR.patch
+  - s390-tools-sles12sp3-dasdfmt-09-Add-command-line-argument-check.patch
+  - s390-tools-sles12sp3-dasdfmt-10-Add-expand-format-mode.patch
+
+-------------------------------------------------------------------
+Wed Feb  1 22:00:35 UTC 2017 - mpost@suse.com
+
+- Added s390-tools-sles12sp2-lscss-allow-to-specify-devices-from-ssid-3.patch
+  (bsc#1023022)
+
+-------------------------------------------------------------------
+Wed Dec 14 16:09:52 UTC 2016 - Thomas.Blume@suse.com
+
+- cio_ignore.service: change After dependency to local-fs.target to 
+  Before and remove Wants dependency (bsc#965263)
+
+-------------------------------------------------------------------
+Fri Sep 30 16:48:03 UTC 2016 - mpost@suse.com
+
+- Added s390-tools-sles12sp2-chzdev-disable-root-update.patch
+  (bsc#1002188)
+- Updated cputype to recognize z13s processors.
+- Updated boot.cpi to redirect stderr to /dev/null when trying to
+  set the CPI parameters. (bsc#997479)
+
+-------------------------------------------------------------------
+Wed Jul 20 19:03:26 UTC 2016 - mpost@suse.com
+
+- Added s390-tools-sles12sp2-chreipl-virtio.patch (bsc#989797)
+  chreipl/virtio: fix chreipl node for virtio-blk disks
+
+-------------------------------------------------------------------
+Fri Jul  1 16:37:29 UTC 2016 - mpost@suse.com
+
+- Added s390-tools-sles12sp2-zipl-fix-failed-start-subchannel.patch
+  (bsc#987385)
+- Modified lgr_check script to do a better job of checking:
+  - Disconnected state of the guest
+  - Whether a 3270 terminal is active
+  - Tape ASSIGNment
+
+-------------------------------------------------------------------
+Tue May 24 17:51:02 UTC 2016 - mpost@suse.com
+
+- Added the following files for Fate#318552 and Fate#320123
+  - detach_disks
+  - killcdl
+  - lgr_check
+  - sysconfig.virtsetup
+  - virtsetup.service
+  - virtsetup.sh
+- Added the following two patches (bsc#981427)
+  - s390-tools-sles12sp2-chiucvallow-verify.patch
+  - s390-tools-sles12sp2-libu2s-Fix-busid-parsing.patch
+- Some spec file cleanup of macro calls.
+
+-------------------------------------------------------------------
+Wed May 18 20:04:10 UTC 2016 - mpost@suse.com
+
+- Added s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+  (bsc#931634).
+
+-------------------------------------------------------------------
+Fri Apr 22 17:20:49 UTC 2016 - mpost@suse.com
+
+- Modified 59-zfcp-compat rules to include continuation characters
+  on rules that are continued across multiple lines (bsc#972110)
+- Added 59-dasd.rules-wait_for.patch (bsc#972110)
+- Don't install 60-readahead.rules (bsc#972110)
+- Removed redundant architecture check from the %prep section
+- Removed various %service_* calls for iucvtty-login@.service
+  and ttyrun-getty@.service because they generate "unit name is
+  not valid" messages from systemctl.
+
+-------------------------------------------------------------------
+Wed Mar 23 21:21:39 UTC 2016 - mpost@suse.com
+
+- Upgraded to version 1.34.0
+  Added libpfm-devel to the list of BuildRequires
+  Removed references to chzdev that was never implemented by IBM
+- Added 59-zfcp-compat.rules (bsc#972110)
+- Removed the following obsolete scripts/files
+  mkinitrd-boot-dasd.sh
+  mkinitrd-boot-qeth.sh
+  mkinitrd-boot-zfcp.sh
+  mkinitrd-setup-dasd.sh
+  mkinitrd-setup-qeth.sh
+  mkinitrd-setup-zfcp.sh
+  zfcpdump.config
+- Added s390-tools-sles12sp2-feat-01-dasd-query-host.patch (Fate#319604)
+- Reworked s390-tools-sles12-pardasdfmt.patch to fit.
+- Reworked dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch to fit.
+- Added file /etc/modprobe.d/90-s390-tools.conf to ensure
+  dasd_diag_mod and dasd_fba_mod kernel modules get loaded together
+  (bsc#966477).
+- Updated zfcp_san_disc so that breaking out of it won't leave
+  "well known LUNs" in use preventing others from using them.
+  (bsc#961372)
+- Removed the following obsolete patches
+  s390-tools-sles12-cpuplugd-allow-more-than-64-CPUs.patch
+  s390-tools-sles12-dasdstat-avoid-inconsistent-data.patch
+  s390-tools-sles12-dbginfo-collect-journalctl.patch
+  s390-tools-sles12-dbginfo-libvirt-multipath-extension.patch
+  s390-tools-sles12-dbginfo-option-for-output-directory.patch
+  s390-tools-sles12-dbginfo-q-v-nic.patch
+  s390-tools-sles12-dbginfo-systemd-data-collection.patch
+  s390-tools-sles12-dumpconf-fix-delay-minutes.patch
+  s390-tools-sles12-init-scripts-do-not-use-subsys.patch
+  s390-tools-sles12-ipl_tools-fcp-loadparm.patch
+  s390-tools-sles12-lsqeth-put-grep-regex-in-quotes.patch
+  s390-tools-sles12-lsreipl-fix-fcp-reipl-type.patch
+  s390-tools-sles12-lszcrypt-ep11-support.patch
+  s390-tools-sles12-qetharp-iface-arg-limit.patch
+  s390-tools-sles12-qetharp-q-format.patch
+  s390-tools-sles12-qethqoat-and-qetharp-return-codes-fixed.patch
+  s390-tools-sles12-qethqoat-fix-buffer-overflow-for-interface-parameter.patch
+  s390-tools-sles12-remove-FBA-detection-for-virtblk-devices.patch
+  s390-tools-sles12-systemd-iucvterm-units.patch
+  s390-tools-sles12-ziorep-busid-fix.patch
+  s390-tools-sles12-zipl-dump-part-check.patch
+  s390-tools-sles12-zipl-fix-kernel-parameter-line.patch
+  s390-tools-sles12-zipl-fix-parmline-zero-termination.patch
+  s390-tools-sles12-znetconf-r-format.patch
+  s390-tools-sles12sp1-cmsfs-fuse-time-fix.patch
+  s390-tools-sles12sp1-feat-01-hyptop-diag0c.patch
+  s390-tools-sles12sp1-feat-02-hyptop-lpar-smt.patch
+  s390-tools-sles12sp1-feat-03-zipl-mt-dump.patch
+  s390-tools-sles12sp1-feat-04-zipl-zgetdump-simd-dump.patch
+  s390-tools-sles12sp1-feat-05-cpumf.patch
+  s390-tools-sles12sp1-feat-06-lscpumf-disp-ctrs.patch
+  s390-tools-sles12sp1-feat-07-lscpumf-cf-sf-check.patch
+  s390-tools-sles12sp1-feat-08-chreipl-support-virtio_ccw.patch
+  s390-tools-sles12sp1-feat-09-lsqeth_display_switch_attrs.patch
+  s390-tools-sles12sp1-feat-10-qethqoat_OSA_Express_5S_support.patch
+  s390-tools-sles12sp1-feat-11-lszcrypt-CEX5S-support.patch
+  s390-tools-sles12sp1-feat-12-hmcdrvfs.patch
+  s390-tools-sles12sp1-lsluns-check-fcp-device-state.patch
+  s390-tools-sles12sp1-lszfcp-incorrect-device-types.patch
+  s390-tools-sles12sp1-znetconf-check-ccwgroup-devices-fix.patch
+
+-------------------------------------------------------------------
+Fri Nov  6 18:59:20 UTC 2015 - mpost@suse.com
+
+- Added 59-prng.rules so that /dev/prandom will have permissions
+  of 0444. This will allow anyone to access the CPACF hardware
+  pseudo-random number generator. (bsc#946349)
+- Updated the comments in 59-graf.rules to reflect the correct
+  location for the rule to be installed.
+
+-------------------------------------------------------------------
+Fri Nov  6 00:27:17 UTC 2015 - mpost@suse.com
+
+- Modified dasd_reload to take HyperPAV alias devices offline
+  before the "normal" DASD and base devices, and then activate
+  the "normal" DASD and base devices before the alias devices.
+  (bsc#942373).
+
+-------------------------------------------------------------------
+Fri Oct 30 22:47:12 UTC 2015 - mpost@suse.com
+
+- Updated read_values.c to point to the location IBM's makefile
+  for qclib puts the include file. (bsc#951518).
+- Added a filter to s390-tools-rpmlintrc to mask a warning
+  about read_values being statically linked. This was intentional
+  since we didn't want to include the qclib-devel shared library
+  in the distribution since this is the only programt that uses
+  qclib-devel.
+
+-------------------------------------------------------------------
+Fri Oct 23 16:12:53 CEST 2015 - hare@suse.de
+
+- Updated zfcp_host_configure to return '10' if the system
+  is set up for automatic LUN scanning (bsc#951547)
+
+-------------------------------------------------------------------
+Tue Oct 13 21:51:59 UTC 2015 - mpost@suse.com
+
+- Replaced read_values.c with a newer version that uses the
+  query capacity library (qclib) from IBM. (FATE#319342)
+
+-------------------------------------------------------------------
+Wed Sep  9 17:55:19 UTC 2015 - mpost@suse.com
+
+- Updated s390-tools-sles12-pardasdfmt.patch to fix error messages
+  that didn't have a "\n" on the end. (bsc#940818)
+- Updated the spec file to install 40-z90crypt.rules into 
+  /usr/lib/udev/rules.d/ (bsc#943777)
+- Added the following patches from IBM (bsc#944390)
+  - s390-tools-sles12sp1-lszfcp-incorrect-device-types.patch
+    lszfcp: display of incorrect device types
+  - s390-tools-sles12sp1-znetconf-check-ccwgroup-devices-fix.patch
+    znetconf: cannot handle that no device is there
+  - s390-tools-sles12sp1-lsluns-check-fcp-device-state.patch
+    lsluns: do not scan FCP devices no longer online or in bad state
+  - s390-tools-sles12sp1-cmsfs-fuse-time-fix.patch
+    cmsfs-fuse: Fix time stamp handling for data sets
+
+-------------------------------------------------------------------
+Wed Jul 22 19:17:39 UTC 2015 - mpost@suse.com
+
+- Removed s390-tools-sles12sp1-feat-13-lsdasd-add-path-information.patch
+  at the request of IBM. To be re-introduced for SLES12 SP2.
+- Added  s390-tools-sles12-dumpconf-fix-delay-minutes.patch (bsc#939054)
+
+-------------------------------------------------------------------
+Wed Jun 17 21:28:15 UTC 2015 - mpost@suse.com
+
+- Split out the SE/HMC file access pieces into a new sub-package
+  (bsc#934372).
+
+-------------------------------------------------------------------
+Thu Jun 11 22:07:37 UTC 2015 - mpost@suse.com
+
+-  Added the following feature updates for SLES12 SP1
+  - s390-tools-sles12sp1-feat-01-hyptop-diag0c.patch (bsc#934359, Fate#318069)
+    hyptop: Exploit diag 0c data
+  - s390-tools-sles12sp1-feat-02-hyptop-lpar-smt.patch (bsc#934324, Fate#318054)
+    hyptop: Support for SMT (SMT base support)
+  - s390-tools-sles12sp1-feat-03-zipl-mt-dump.patch (bsc#934371, Fate#318047)
+    zipl: Add MT dump support for zipl dump tools
+  - s390-tools-sles12sp1-feat-04-zipl-zgetdump-simd-dump.patch (bsc#934360, Fate#318057)
+    zipl: Add vector register support
+  - Add support for hardware sampling to the perf tool (bsc#934321, Fate#318025)
+    - s390-tools-sles12sp1-feat-05-cpumf.patch
+      s390/perf: add support for the CPU-measurement sampling Facility
+    - s390-tools-sles12sp1-feat-06-lscpumf-disp-ctrs.patch
+      cpumf: display counters only if the facility is available
+    - s390-tools-sles12sp1-feat-07-lscpumf-cf-sf-check.patch
+      cpumf: lscpumf erroneously reports sampling support
+  - s390-tools-sles12sp1-feat-08-chreipl-support-virtio_ccw.patch (bsc#934370, Fate#318962)
+    zipl/chreipl: Basic guest support for KVM hypervisors
+  - s390-tools-sles12sp1-feat-09-lsqeth_display_switch_attrs.patch (bsc#934364, Fate#318473)
+    lsqeth: Add support for switch port attributes
+  - s390-tools-sles12sp1-feat-10-qethqoat_OSA_Express_5S_support.patch (bsc#934350, Fate#318033)
+    qethqoat: OSA-Express5S Support
+  - s390-tools-sles12sp1-feat-11-lszcrypt-CEX5S-support.patch (bsc#934325, Fate#318044)
+    lszcrypt: Add support for CEX5S crypto adapters.
+  - s390-tools-sles12sp1-feat-12-hmcdrvfs.patch (bsc#934372, Fate#318067)
+    hmcdrvfs: SE/HMC file access
+  - s390-tools-sles12sp1-feat-13-lsdasd-add-path-information.patch (bsc#934352, Fate#318031)
+    lsdasd: add path information
+
+-------------------------------------------------------------------
+Thu Apr 23 20:54:09 UTC 2015 - mpost@suse.com
+
+- Added three IBM patches (bsc#924973)
+  - s390-tools-sles12-dbginfo-libvirt-multipath-extension.patch
+    dbginfo.sh: Extend data collection for libvirt and multipath
+  - s390-tools-sles12-dbginfo-q-v-nic.patch
+    dbginfo.sh: Query virtual network settings for VM guests
+  - s390-tools-sles12-ziorep-busid-fix.patch
+    ziomon/ziorep: fix wrong assumption of 0.0.xxxx busids
+
+-------------------------------------------------------------------
+Wed Mar 11 19:27:33 UTC 2015 - mpost@suse.com
+
+- Updated the cputype script to recognize the new z13 processor.
+- Modified read_values.c to handle additional values from
+  /proc/sysinfo and redirect an error message to stderr (bsc#919293)
+- Modified read_values.c to convert as much German to English as I could
+- Added read_values.8 man page (bsc#919293)
+- Added s390-tools-sles12-dasdstat-avoid-inconsistent-data.patch (bsc#920363)
+  dasdstat: avoid inconsistent data due to multiple reads/seeks
+- Added s390-tools-sles12-qethqoat-and-qetharp-return-codes-fixed.patch (bsc#920363)
+  qethqoat and qetharp: return codes fixed
+
+-------------------------------------------------------------------
+Mon Jan 19 18:53:34 UTC 2015 - mpost@suse.com
+
+- Added s390-tools-sles12-zipl-dump-part-check.patch (bsc#909524)
+  zipl dump tools: Fix end of partition check
+
+-------------------------------------------------------------------
+Wed Dec 10 22:36:09 UTC 2014 - mpost@suse.com
+
+- Added three IBM patches (bsc#903048)
+  - s390-tools-sles12-dbginfo-option-for-output-directory.patch
+    dbginfo.sh: Add option to specify directory for data collection
+  - s390-tools-sles12-dbginfo-systemd-data-collection.patch
+    dbginfo.sh: Improve data collection for systemd and lsdasd
+  - s390-tools-sles12-cpuplugd-allow-more-than-64-CPUs.patch
+    cpuplugd: allow more than 64 CPUs
+
+-------------------------------------------------------------------
+Thu Sep  4 19:01:52 UTC 2014 - mpost@suse.com
+
+- Modified zfcp_host_configure to write udev rules and update
+  /boot/zipl/active_devices.txt even if the HBA is already online.
+  (bnc#894229)
+- Modified zfcp_san_disc to properly filter for remote ports.
+  (bnc#868494)
+
+-------------------------------------------------------------------
+Wed Sep  3 17:08:55 UTC 2014 - mpost@suse.com
+
+- Added %conf /boot/zipl/active_devices.txt to the spec file.
+  (bnc#894480)
+
+-------------------------------------------------------------------
+Wed Sep  3 01:43:27 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile 
+
+-------------------------------------------------------------------
+Tue Sep  2 17:13:38 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-ipl_tools-fcp-loadparm.patch (bnc#894071)
+  ipl_tools: Add missing SCSI loadparm support
+
+-------------------------------------------------------------------
+Mon Aug 18 20:46:11 UTC 2014 - mpost@suse.com
+
+- Added read_values to the package (Fate#313462).
+  Changed license from GPL-2.0+ to "GPL-2.0+ and BSD2c"
+  (BSD 2-Clause License) to account for the new command.
+
+-------------------------------------------------------------------
+Wed Aug 13 16:08:27 UTC 2014 - mpost@suse.com
+
+- Modified dasd_reload script to deactivate any MD arrays before
+  trying to take any DASD offline. (bnc#876570)
+
+-------------------------------------------------------------------
+Mon Aug 11 16:01:12 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-zipl-fix-parmline-zero-termination.patch (bnc#891090)
+  zipl: fix zero termination of parmline
+
+-------------------------------------------------------------------
+Mon Jul 28 17:03:39 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-init-scripts-do-not-use-subsys.patch (bnc#888592)
+  init scripts: Do not use /var/lock/subsys
+
+-------------------------------------------------------------------
+Fri Jul 25 14:23:02 CEST 2014 - hare@suse.de
+
+- Fixup script issues in zfcp_san_disc (bnc#868494)
+
+-------------------------------------------------------------------
+Tue Jul 22 18:08:29 UTC 2014 - mpost@suse.com
+
+- Updated %post script to remove the warning about running zipl after
+  installing this package. That hasn't been necessary for quite a
+  while. (bnc#888248)
+
+-------------------------------------------------------------------
+Fri Jul 11 11:25:53 UTC 2014 - mpost@suse.com
+
+- Implement cio_ignore.service (bnc#882685, bnc#886833)
+  Added cio_ignore.service and setup_cio_ignore.sh
+  Fixup dependencies for cio_ignore service 
+  Fixup setup_cio_ignore.sh to correctly enable devices
+- Added s390-tools-sles12-remove-FBA-detection-for-virtblk-devices.patch
+  (bnc#883989)
+  zipl: remove heuristic FBA detection for virtblk devices
+- Updated mkdump script (bnc#884786):
+  - Don't create a file system on SCSI disks
+  - Use GPT partition tables instead of MSDOS to allow dumps > 2TB
+  - Use "zipl -d" instead of "zipl -D" for partition dumping
+- Added a check for the existence of /boot/zipl/active.devices.txt
+  before trying to write to it in:
+  ctc_configure, dasd_configure, qeth_configure, and
+  zfcp_host_configure.
+- Modified zfcp_host_configure to completely take the HBA offline
+  (bnc#872229).
+
+-------------------------------------------------------------------
+Wed Jul  9 14:57:31 UTC 2014 - jjolly@suse.com
+
+- Now obtaining zfcpdump-part.image from kernel-zfcpdump package
+
+-------------------------------------------------------------------
+Mon Jun 16 17:13:39 UTC 2014 - mpost@suse.com
+
+- Added a "udevadm settle" command to qeth_configure.
+
+-------------------------------------------------------------------
+Mon Jun 16 13:40:05 CEST 2014 - pth@suse.de
+
+- Merge the work of John and Mark.
+
+-------------------------------------------------------------------
+Fri Jun 13 23:34:58 UTC 2014 - mpost@suse.com
+
+- Updated the following scripts to add tracking for the devices
+  configured on the system for the cio_ignore kernel parameter:
+  - ctc_configure
+  - dasd_configure
+  - qeth_configure
+  - zfcp_host_configure 
+ - Added an empty /boot/zipl/active_devices.txt file for the 
+   tracking function (bnc#874902).
+
+-------------------------------------------------------------------
+Fri Jun 13 19:33:51 UTC 2014 - jjolly@suse.com
+
+- zfcpdump.config - Configuration for zfcpdump kernel build
+- series.conf - Added kernel build and removed post and postun
+  scripting to copy image
+
+-------------------------------------------------------------------
+Thu Jun 12 16:27:10 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-lsqeth-put-grep-regex-in-quotes.patch. (bnc#877138)
+  lsqeth: put grep regex in quotes
+
+-------------------------------------------------------------------
+Wed May 28 20:25:49 UTC 2014 - mpost@suse.com
+
+- Add s390-tools-sles12-qethqoat-fix-buffer-overflow-for-interface-parameter.patch
+  qethqoat: buffer overflow (bnc#880378)
+
+-------------------------------------------------------------------
+Tue May 13 19:45:59 UTC 2014 - mpost@suse.com
+
+- Removed all the patches related to the persistent device configuration
+  tools. The feature in FATE was withdrawn.
+    s390-tools-sles12-chzdev-creates-invalid-zFCP-udev-rules.patch
+    s390-tools-sles12-chzdev-fails-to-configure-IUCV.patch
+    s390-tools-sles12-chzdev-fails-to-group-layer-3-nics.patch
+    s390-tools-sles12-chzdev-fix-output.patch
+    s390-tools-sles12-chzdev-Improved-error-handling.patch
+    s390-tools-sles12-chzdev-lszdev-Compilation-warnings.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.1.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.2.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.3.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.4.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.5.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.6.patch
+    s390-tools-sles12-chzdev-lszdev-new-tools.7.patch
+    s390-tools-sles12-chzdev-lszdev-restore-makefile.patch
+    s390-tools-sles12-chzdev-lszdev-temp-fix.patch
+    s390-tools-sles12-chzdev-lszdev-temporary-makefile-revert.patch
+    s390-tools-sles12-chzdev-lun-and-wwpn-now-must-be-16-hex-digits.patch
+    s390-tools-sles12-chzdev-missing-online.patch
+    s390-tools-sles12-chzdev-optimize-css-search.patch
+    s390-tools-sles12-chzdev-revoke-to-specify-no-category.patch
+    s390-tools-sles12-chzdev-segfault-creating-netiucv-on-lpar.patch
+    s390-tools-sles12-chzdev-set-online-state-correctly.patch
+    s390-tools-sles12-chzdev-unable-to-enable-dasd-diag-access.patch
+    s390-tools-sles12-lszdev-chzdev-corrected-man-page.patch
+    s390-tools-sles12-lszdev-chzdev-misc-patches.patch
+    s390-tools-sles12-lszdev-corrected-device-lookup-for-btrfs.patch
+    s390-tools-sles12-lszdev-manual-page-update.patch
+    s390-tools-sles12-install-manpages.patch
+- Added patch s390-tools-sles12-systemd-iucvterm-units.patch (bnc#877346)
+  Removed iucvtty@.service file, since the above patch replaces it.
+- Added util-linux, gawk, and procps packages to the list of Requires
+  just to be safe (bnc#86736).
+
+-------------------------------------------------------------------
+Mon May  5 18:53:08 UTC 2014 - mpost@suse.com
+
+- Added the following patches (bnc#876334)
+  - s390-tools-sles12-lsreipl-fix-fcp-reipl-type.patch
+    lsreipl: Show "fcp" instead of "fcp_dump" for fcp re-IPL target
+  - s390-tools-sles12-chzdev-Improved-error-handling.patch
+    chzdev: Improved error handling
+  - s390-tools-sles12-lszdev-corrected-device-lookup-for-btrfs.patch
+    lszdev: corrected lookup for filesystem on btrfs
+  - s390-tools-sles12-chzdev-lun-and-wwpn-now-must-be-16-hex-digits.patch
+    chzdev: LUN and WWPN now must be 16 hex digits
+  - s390-tools-sles12-chzdev-revoke-to-specify-no-category.patch
+    chzdev: Revoke to specify no category if needed
+  - s390-tools-sles12-lszdev-chzdev-corrected-man-page.patch
+    lszdev/chzdev: Update man page description for FCP LUNs
+
+-------------------------------------------------------------------
+Mon Apr 21 16:28:01 UTC 2014 - mpost@suse.com
+
+- Added the following patches (bnc#874143)
+  - s390-tools-sles12-dbginfo-collect-journalctl.patch
+    dbginfo.sh: Add collection of journalctl
+  - s390-tools-sles12-chzdev-set-online-state-correctly.patch
+    chzdev: Did not get the online state correctly
+  - s390-tools-sles12-lszdev-chzdev-misc-patches.patch
+    lszdev/chzdev: Miscellaneous patches
+
+-------------------------------------------------------------------
+Mon Apr 14 06:18:41 UTC 2014 - mpost@suse.com
+
+- Added the following patches (bnc#873239)
+  - s390-tools-sles12-chzdev-fix-output.patch
+    chzdev: tools generates numerous error messages
+  - s390-tools-sles12-lszdev-manual-page-update.patch
+    lszdev: Update of the manpage
+  - s390-tools-sles12-chzdev-optimize-css-search.patch
+    chzdev: Performance optimization to get css information
+  - s390-tools-sles12-chzdev-missing-online.patch
+    chzdev: Add missing online attribute
+- Updated cputype to also display the IBM model number
+
+-------------------------------------------------------------------
+Thu Apr 10 19:09:22 UTC 2014 - mpost@suse.com
+
+- Added cputype and cputype.8. Fate#317195.
+- Updated and reformatted README.SUSE. It is no longer obsolete.
+- Check to see if systemd is running before executing
+  systemctl daemon-reload in %post and %postun.
+
+-------------------------------------------------------------------
+Mon Apr  7 19:50:41 UTC 2014 - mpost@suse.com
+
+- Moved the "Requires: perl" back to osasnmpd.
+- Added "Requires: perl-base" to the main package. (bnc#871830).
+
+-------------------------------------------------------------------
+Fri Apr  4 22:11:17 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-chzdev-segfault-creating-netiucv-on-lpar.patch
+  chzdev: Segfault when creating netiucv device in lpar (bnc#872092)
+
+-------------------------------------------------------------------
+Thu Apr  3 18:56:58 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-chzdev-creates-invalid-zFCP-udev-rules.patch
+  chzdev: invalid udev rules for zFCP (bnc#871292)
+- Added s390-tools-sles12-chzdev-fails-to-group-layer-3-nics.patch
+  chzdev: fails to create grouped Layer 3 NICs (bnc#871222) (bnc#871223)
+- Added s390-tools-sles12-chzdev-fails-to-configure-IUCV.patch
+  chzdev: fails to configure/deconfigure IUCV interfaces (bnc#871230)
+- Added s390-tools-sles12-chzdev-unable-to-enable-dasd-diag-access.patch
+  chzdev: fails to enable DIAG access mode for DASD (bnc#871226)
+- Added s390-tools-sles12-chzdev-lszdev-Compilation-warnings.patch
+  chzdev/lszdev: warnings about unused functions and others (bnc#871220)
+
+-------------------------------------------------------------------
+Mon Mar 31 15:49:52 UTC 2014 - mpost@suse.com
+
+- Modified the content of s390-tools-zdsfs.caution.txt slightly to
+  convey just where the zdsfs feature originated.
+- Added "SUSE-NonFree" as the license for the zdsfs sub-package to get
+  the caution displayed when the package is installed.
+
+-------------------------------------------------------------------
+Sat Mar 29 15:51:02 UTC 2014 - mpost@suse.com
+
+- Moved the "Requires: perl" from osasnmpd to the main package
+- Added, coreutils, rsync, and tar to the list of "Requires."
+
+-------------------------------------------------------------------
+Fri Mar 28 23:42:37 UTC 2014 - mpost@suse.com
+
+- Add s390-tools-sles12-qetharp-iface-arg-limit.patch (bnc#870948).
+  qetharp: limit interface name argument to 15 characters
+- Added s390-tools-sles12-chzdev-lszdev-new-tools.7.patch (bnc849864).
+  Reduced the number of supported devices and some options.
+  The tools have a stripped down but better tested functionality.
+
+-------------------------------------------------------------------
+Thu Mar 27 23:36:10 UTC 2014 - mpost@suse.com
+
+- Renamed the package containing zdsfs to s390-tools-zdsfs
+- Replaced the dummy LICENSE file with s390-tools-zdsfs.caution.txt
+- Modified the spec file to rename s390-tools-zdsfs.caution.txt to CAUTION
+  so it will get installed in /usr/share/doc/packages/s390-tools-zdsfs
+- Fixed a bug with iucv_configure that caused any IUCV interfaces past
+  iucv9 to be ignored.
+- Modified dasd_configure so that instead of simply exiting with a
+  return code of 8 when an unformatted DASD volume was found, it
+  would continue with writing the udev rules for it. (bnc#864719)
+
+-------------------------------------------------------------------
+Wed Mar 26 00:19:08 UTC 2014 - mpost@suse.com
+
+- Modified zfcp_san_disc to work with the output from the latest lsscsi
+  command. (bnc#864417)
+- Re-added DISTRELEASE=%{release} to the make and make install commands
+  in the spec file so that the version number output meets IBM's expectations.
+  (bnc#869982)
+
+-------------------------------------------------------------------
+Fri Mar  7 06:57:12 UTC 2014 - mpost@suse.com
+
+- Modified zfcp_san_disc to add a timing loop to wait for the remote
+  FCP port to appear in sysfs. (bnc#864119)
+- Moved the location of zipl.conf.sample from /etc/ to
+  /usr/share/doc/packages/s390-tools/ now that grub2 is the official
+  boot loader
+
+-------------------------------------------------------------------
+Fri Feb 28 20:06:14 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-chzdev-lszdev-new-tools.6.patch from IBM.
+  Many improvements on the formatting of the source files, new
+  options and man pages. Renamed scsi.c to zfcp.c and scsi.h to
+  zfcp.h. Cleaned up sources.
+
+-------------------------------------------------------------------
+Thu Feb 27 13:14:47 UTC 2014 - thardeck@suse.com
+
+- Added a short explanation to the iucvtty template header
+
+-------------------------------------------------------------------
+Sun Feb 23 21:30:34 UTC 2014 - thardeck@suse.com
+
+- Renamed iucvtty@hvc0.service to iucvtty@.service following the
+  getty template naming scheme
+- Added installation section to iucvtty@.service so a iucvtty
+  instance can be activated for example with
+  `systemctl enable iucvtty@lxterm1.service`
+- Prevented automatic creation of one default iucvtty instance
+
+-------------------------------------------------------------------
+Thu Feb 20 19:29:39 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-zipl-fix-kernel-parameter-line.patch (bnc#853930)
+  zipl: Fix potentially invalid argument in kernel parameter line.
+
+-------------------------------------------------------------------
+Tue Feb 18 18:21:38 UTC 2014 - mpost@suse.com
+
+- Updated zfcp_disk_configure and zfcp_san_disc to work with NPIV
+  and auto LUN scanning in newer kernels. (bnc#864119)
+
+-------------------------------------------------------------------
+Thu Feb 13 19:48:41 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-chzdev-lszdev-new-tools.5.patch from IBM.
+  This patch fixes problems with module configuration, check & diff.
+
+-------------------------------------------------------------------
+Tue Feb 11 19:10:15 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-chzdev-lszdev-temp-fix.patch to fix a
+  segfault until IBM can get an update out.
+
+-------------------------------------------------------------------
+Mon Feb 10 22:19:36 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-znetconf-r-format.patch (bnc#863076)
+  qetharp: Allow for 16-char network interface names
+- Added s390-tools-sles12-znetconf-r-format.patch (bnc#863076)
+  znetconf: Allow for 16-char network interface names
+
+-------------------------------------------------------------------
+Fri Feb  7 18:42:08 UTC 2014 - mpost@suse.com
+
+- Updated to s390-tools-1.24.1. This includes (and obsoletes) the
+  fixes included in s390-tools-sles12-fix-31bit-compile-warnings.patch
+  as well as the following which were found during the Alpha phase:
+    Changes of existing tools:
+    - dbginfo.sh: Cleanup messages of the script
+    - dbginfo.sh: Reduced log output for sysfs collection
+    - dbginfo.sh: Adding data collection from journalctl
+    Bug Fixes:
+    - lsdasd: Fix device selection for a given busid
+    - zipl dump tools: Fix dump device size detection
+    - zipl dump tools: Ensure that last progress message is printed
+    - zipl: Fix I/O error recovery
+    - zipl: Fix FBA boot
+    - znetconf, lsqeth: Allow for 16-char network interface names
+- Updated all patches to refer to 1.24.1 instead of 1.24.0
+- Updated s390-tools-sles12-pardasdfmt.patch to fit the new source code.
+
+-------------------------------------------------------------------
+Fri Feb  7 00:21:49 UTC 2014 - mpost@suse.com
+
+- Replaced s390-tools-sles12-chzdev-lszdev-new-tools.patch with the original
+  set of patches from IBM, now that everything compiles:
+  s390-tools-sles12-chzdev-lszdev-new-tools.1.patch
+  s390-tools-sles12-chzdev-lszdev-new-tools.2.patch
+  s390-tools-sles12-chzdev-lszdev-new-tools.3.patch
+- Added s390-tools-sles12-chzdev-lszdev-temporary-makefile-revert.patch and
+  s390-tools-sles12-chzdev-lszdev-restore-makefile.patch since the patches
+  as shipped from IBM are not being built against the current version of
+  the s390-tools source.
+- Added s390-tools-sles12-chzdev-lszdev-new-tools.4.patch from IBM.
+- Updated s390-tools-sles12-install-lszdev-manpage.patch to also 
+  install chzdev.8 and renamed it to s390-tools-sles12-install-manpages.patch
+  Also explicitly set the file permissions to 644.
+- Added %dir entries in the spec file for /var/adm/backup/chzdev
+  and /var/adm/backup/chzdev/udev
+- Removed s390-tools-sles12-chzdev-iucv-typo-fix.patch since the lastest
+  IBM update included the fix.
+
+-------------------------------------------------------------------
+Wed Feb  5 00:29:24 UTC 2014 - mpost@suse.com
+
+- Updated and re-added s390-tools-sles12-pardasdfmt.patch.
+- Modified mkdump.pl to not use the experimental "switch" feature.
+  (bnc#861954)
+- Modified s390-tools-sles12-zipl_boot_msg.patch to add an extra
+  blank line before and after the "note" to VM users to have it
+  look like it does today.
+- Added "ZFCPDUMP_DIR=/usr/lib/s390-tools/zfcpdump" to the make
+  command so that zfcpdump would look in the right directory.
+- Removed an unnecessary 
+  "mkdir -p $RPM_BUILD_ROOT%{_datadir}/s390-tools/zfcpdump" from
+  the spec file
+- Removed some of the new code from IBM for the Persistent Device
+  Configuration tool so that it would compile. This means that the
+  fixes for bnc#861579 and bnc#861581 can be deployed.
+- Added s390-tools-sles12-chzdev-iucv-typo-fix.patch to correct a typo
+  in a sysfs path name.
+
+-------------------------------------------------------------------
+Tue Jan 21 19:58:35 UTC 2014 - mpost@suse.com
+
+- Added dracut to the list of BuildRequires.
+- Commented out all references to mkinitrd, since we might not have
+  to do anything in that area with the introduction of dracut.
+
+-------------------------------------------------------------------
+Tue Jan 21 19:53:06 UTC 2014 - mpost@suse.com
+
+- Changed the licensing of mkdump.pl and mkdump.8 from "GPL2 or GPL3"
+  to GPL2 or later as requested.
+
+-------------------------------------------------------------------
+Wed Jan 15 17:51:43 UTC 2014 - mpost@suse.com
+
+- Added s390-tools-sles12-fix-31bit-compile-warnings.patch. (bnc#851123)
+
+-------------------------------------------------------------------
+Wed Dec 18 16:52:10 UTC 2013 - mpost@suse.com
+
+- Added s390-tools-sles12-lszcrypt-ep11-support.patch
+  lszcrypt: Support EP11 crypto adapters
+- Updated s390-tools-sles12-zipl_boot_msg.patch to fit new source.
+- Removed s390-tools-sles12-shorten-dump-msgs.patch.
+- Updated s390-tools-sles12-chzdev-lszdev-new-tools.patch to fit
+  new source.
+
+-------------------------------------------------------------------
+Thu Dec 12 17:00:54 UTC 2013 - mpost@suse.com
+
+- Added /usr/lib/systemd/system/iucvtty@.service for systemd support
+- Renamed sles12.chzdev.lszdev.addition.patch to 
+  s390-tools-sles12-chzdev-lszdev-new-tools.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 19:51:15 UTC 2013 - mpost@suse.com
+
+- First attempt at building s390-tools 1.24.0
+- Removed the blktrace_api.h as it is no longer needed.
+- Removed vmlogrdr.hotplug since that was for Linux 2.4 kernels.
+
+-------------------------------------------------------------------
+Fri Nov  8 21:45:33 UTC 2013 - mpost@suse.com
+
+- IBM s390-tools-1.15.0 Maintenance Patches (#2)
+  - s390-tools-sles11sp3-zipl-zfcpdump-possible-cpus.patch
+    zipl: Use "possible_cpus" kernel parameter
+  - s390-tools-sles11sp3-dbginfo-missing_man_page.patch
+    dbginfo.sh: Add missing man page
+- qeth_configure: Ensure any user-input hexidecimal numbers are in lower case. (bnc#829513)
+
+-------------------------------------------------------------------
+Fri Sep  6 17:01:23 UTC 2013 - mpost@suse.com
+
+-  [CIO] Add robustness against missing interrupts to non-path-grouped internal IO requests - s390-tools part (bnc#837742)
+  - s390-tools-sles11sp3-lscss-add_vpm.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 19:45:40 UTC 2013 - mpost@suse.com
+
+- IBM s390-tools-1.15.0 Maintenance Patches (#1) (bnc#824766)
+  - s390-tools-sles11sp3-zipl-mvdump-fix-force.patch
+    zipl: Fix zipl "--force" option for DASD multi-volume dump
+  - s390-tools-sles11sp3-zgetdump-elf-hdr-alloc-fix.patch
+    zgetdump: Fix ELF header size calculation
+
+-------------------------------------------------------------------
+Fri Aug  9 17:39:10 UTC 2013 - mpost@suse.com
+
+- IBM s390-tools-1.15.0 Maintenance Patches (#1) (bnc#824766)
+  - s390-tools-sles11sp3-dbginfo-handle-pipes-in-sysfs.patch
+    dbginfo.sh: Avoiding eclusion list for pipes in sysfs
+
+-------------------------------------------------------------------
+Wed Jul 31 21:20:29 UTC 2013 - mpost@suse.com
+
+- Updated ctc_configure, dasd_configure, iucv_configure, qeth_configure,
+  zfcp_disk_configure and zfcp_host_configure so that DEBUG is usable as
+  an environment variable, and not hardcoded in the script.
+- Updated ctc_configure to correct some typos.
+- Updated iucv_configure
+  - Changed all instances of ROUTER to PEER_USERID to better reflect
+    what the value respresents.
+  - Updated the _iucv_dev loops to point to $_iucv_dir/netiucv?* to avoid
+    picking up entries for the new hvc_iucv* consoles.  (bnc#749094)
+  - Convert the user-entered PEER_USERID to all upper case so the user
+    doesn't have to.  (bnc#749094)
+- Updated qeth_configure
+  - Changed all references of "control channel" to "data channel" to
+    match what it's called in the driver code and documentation.
+  - Fixed a few typos.
+- Updated zfcp_host_configure to add a missing udev rule. (bnc#830321)
+- Updated mkinitrd-setup-qeth.sh
+  - It now handles both VLAN and bonded channel interfaces
+  - Restructured the code to better handle the new functionality.
+- Updated zpxe.rexx to correct some whitespace inconsistencies and to
+  uncomment a screen clearing that wasn't desired during testing, and
+  left that way by mistake.
+- Modified %post script to wipe out any dangling symlinks before
+  creating new ones. (bnc#830288)
+- Added the shadow package to the RPM PreReq list. (bnc#832428)
+- Added man pages for ctc_configure, dasd_configure, iucv_configure,
+  qeth_configure, zfcp_disk_configure and zfcp_host_configure.
+
+-------------------------------------------------------------------
+Tue Jul 30 14:49:01 UTC 2013 - mpost@suse.com
+
+- Added the shadow package to the list of PreReqs, per problem report from
+  Duncan Mac-Vicar P.
+
+-------------------------------------------------------------------
+Thu Jun 13 18:33:14 UTC 2013 - mpost@suse.com
+
+- IBM s390-tools-1.15.0 Maintenance Patches (#1) (bnc#824766)
+  - dbginfo.sh: Improvements on logging, content and collecting sysfs.
+  - dbginfo.sh: enhancement for cryptograhic adapters
+
+-------------------------------------------------------------------
+Wed May  8 15:03:22 UTC 2013 - mpost@suse.com
+
+- Added udev rules (59-graf.rules) for 3270 devices. (bnc#792991)
+
+-------------------------------------------------------------------
+Thu May  2 16:03:07 UTC 2013 - mpost@suse.com
+
+- Updated qeth_configure to not create a udev entry for the layer2
+  attribute on OSN devices. OSN devices don't support Layer 2.  (bnc#788924)
+
+-------------------------------------------------------------------
+Fri Apr 26 21:41:37 UTC 2013 - mpost@suse.com
+
+- Enabled kdump over the network (bnc#807794)
+  - Updated mkinitrd-setup-qeth to look at $static_interfaces $dhcp_interfaces
+    instead of $interfaces.
+  - Changed installation location of mkinitrd-boot-qeth.sh and mkinitrd-setup-qeth.sh
+    to /lib/mkinitrd/scripts instead of /usr/lib/s390-tools/mkinitrd/scripts.
+
+-------------------------------------------------------------------
+Wed Apr 17 19:03:01 UTC 2013 - mpost@suse.com
+
+- Updated qeth_configure with the fix in bnc#794577, comment #9.
+
+-------------------------------------------------------------------
+Wed Apr 17 18:31:25 UTC 2013 - mpost@suse.com
+
+- IBM s390-tools-1.15.0 Maintenance Patches (#13) (bnc#815053)
+  - zfcpdbf: fix offset and length of fields in trace records with
+    s390-tools-sles11sp3-zfcpdbf-offset-length-fields-trace-records.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 19:50:38 UTC 2013 - mpost@suse.com
+
+- Updated mkinitrd-setup-dasd.sh script to include udev rules for DASD
+  in DIAG mode. (bnc#808256) 
+
+-------------------------------------------------------------------
+Tue Mar 26 16:59:03 UTC 2013 - mpost@suse.com
+
+- Updated zpxe.rexx file.
+  - Lots more comments and error checking
+  - Made it more in the style a z/VM systems programmer would expect.
+  - Made it more generic than just for Cobbler
+
+-------------------------------------------------------------------
+Fri Mar 22 20:36:13 UTC 2013 - mpost@suse.com
+
+- Updated License entries to GPL-2.0+ to conform with SPDX format (bnc#733581)
+
+-------------------------------------------------------------------
+Mon Mar 18 21:30:34 UTC 2013 - mpost@suse.com
+
+- Changed all comments and message output in zfcp_host_configure and zfcp_disk_configure wit
+h ZFCP to zFCP (3/18/2013)
+- Updated ctc_configure, dasd_configure, iucv_configure, qeth_configure, zfcp_disk_configure
+, zfcp_host_configure to replace $SYSFS with /sysfs in the one instance where $SYSFS would b
+e null.- 
+
+-------------------------------------------------------------------
+Fri Mar 15 10:57:54 UTC 2013 - rmilasan@suse.com
+
+- Add/change links in /dev/disk/by-id on 'change' and 'add' udev
+  trigger (bnc#808042).
+  add: s390-tools-sles11sp2-update-by_id-links-on-change-and-add-action.patch 
+
+-------------------------------------------------------------------
+Mon Feb 18 18:22:34 UTC 2013 - mpost@suse.com
+
+- Added s390-tools-sles11sp3-add_lsscm.patch (bnc#792709)
+
+-------------------------------------------------------------------
+Thu Feb  7 18:31:33 UTC 2013 - mpost@suse.com
+
+- Updated usage information on
+  - ctc_configure
+  - dasd_configure
+  - iucv_configure
+  - qeth_configure
+  - zfcp_disk_configure
+  - zfcp_host_configure (bnc#769561)
+- Fixed ctc_configure to not try to bind a CTC or LCS interface
+  to the right driver module if it already is bound to the right one.
+
+--------------------------------------------------------------------
+Wed Feb  6 23:55:53 UTC 2013 - mpost@suse.com
+
+- s390-tools SP2/SP3 patchset #12 (bnc#795513):
+  - ziomon: follow symlinks to find multipath devices
+  - dbginfo.sh: Improvements on data collection and speed
+  - zfcpdump: Release HSA early if Linux kernel supports it
+  - ziomon: cope with scsi disks not part of multipath device
+  - zfcpdbf: fix decoding of deferred errors
+
+-------------------------------------------------------------------
+Wed Jan 16 21:10:00 UTC 2013 - mpost@suse.com
+
+- lszcrypt: Add support for CEX4 crypto cards (bnc#794511, fate#314245)
+
+-------------------------------------------------------------------
+Mon Dec 10 14:46:11 UTC 2012 - uli@suse.com
+
+- Fuzzy live dump for System z (bnc#789801, fate#314099)
+- Add new zconf tool dasdstat (bnc#789803, fate#314076)
+- Allow SCM access via EADM subchannels (bnc#792709, fate#314244)
+- dasd: add safe offline interface (bnc#792967, fate#312679)
+
+-------------------------------------------------------------------
+Thu Dec  6 13:09:51 UTC 2012 - uli@suse.com
+
+- kdump: Add s390-tools kdump support (bnc#786472, fate#314079)
+
+-------------------------------------------------------------------
+Wed Nov 28 14:41:59 UTC 2012 - uli@suse.com
+
+- zfcp_san_disc: added fix for listing of LUNs on SVC/V7000 by
+  hare (bnc#742352)
+
+-------------------------------------------------------------------
+Thu Nov 22 14:13:20 UTC 2012 - uli@suse.com
+
+- qeth_configure: add option to udev rule if setting it succeeds,
+  not if it fails (bnc#744317)
+
+-------------------------------------------------------------------
+Fri Nov 16 14:24:02 UTC 2012 - uli@suse.com
+
+- zfcp_host_configure: handle non-numeric "online" argument
+  properly (bnc#769290)
+
+-------------------------------------------------------------------
+Thu Nov 15 14:00:00 UTC 2012 - uli@suse.com
+
+- *_configure: print meaningful error messages on failure
+  (bnc#746660)
+
+-------------------------------------------------------------------
+Thu Nov 15 13:50:06 UTC 2012 - uli@suse.com
+
+- s390-tools-1.15.0 Maintenance Patches #11 (bnc#780272)
+  - zipl: Flush disk buffers before installing IPL record
+
+-------------------------------------------------------------------
+Fri Jul 20 13:40:01 UTC 2012 - uli@suse.com
+
+- s390-tools-1.15.0 Maintenance Patches #10 (bnc#760339)
+  - ziomon: Fix handling of multiple multipath devices
+  - lsluns: Fix checks for scsi generic (sg) functionality.
+  - lsluns: Check SCSI registration in loop, after LUN0&WLUN unit_add
+
+-------------------------------------------------------------------
+Thu Apr 12 11:44:15 UTC 2012 - uli@suse.com
+
+- s390-tools-1.15.0 Maintenance Patches #9 (bnc#751477)
+  - cmsfs-fuse: Use pread/pwrite if mmap'ing the whole disk fails
+  - znetconf: layer autodetection not working for IP VSWITCH
+  - mon_statd: fix error "udevsettle: command not found"
+  - mon_statd: fix stopping of unused records
+
+-------------------------------------------------------------------
+Tue Mar 27 16:05:33 UTC 2012 - jjolly@suse.com
+
+- Added /sbin/udevadm settle to zfcp_disk_configure (bnc#593773)
+
+-------------------------------------------------------------------
+Mon Feb  6 10:35:41 CET 2012 - ihno@suse.de
+
+- Fix CTC device setup (reassigning channels from lcs to ctcm) (bnc#745034)
+
+-------------------------------------------------------------------
+Thu Feb  2 15:55:00 UTC 2012 - uli@suse.com
+
+- fix LCS device setup in ctc_configure (bnc#741071)
+- from SP1:
+  - updated qeth_configure and dasd_configure to support SUSE Studio Onsite
+    (bnc#699047)
+  - qeth_configure: Proper IP takeover during layer 3 operation (bnc#694124)
+
+-------------------------------------------------------------------
+Wed Feb  1 12:02:54 UTC 2012 - uli@suse.com
+
+- more fixes: (bnc#743407)
+  - qethconf: fix/improve IPv6 address handling
+  - znetconf: layer autodetection not working under z/VM 6.x
+
+-------------------------------------------------------------------
+Fri Jan 13 12:19:12 UTC 2012 - stefan.fent@suse.com
+
+- s390-tools-1.15.0 Maintenace Patches #7 (bnc #740749)
+  - ttyrun: Introduce verbose option for syslog messages
+  - HiperSockets Network Concentrator: correct warning
+  - HiperSockets Network Concentrator: adapt to kernel level 
+
+-------------------------------------------------------------------
+Thu Jan 12 21:59:49 UTC 2012 - jjolly@suse.com
+
+- qeth_configure: Added udevadm trigger to help rewrite necessary
+  network scripts (bnc#728059)
+
+-------------------------------------------------------------------
+Fri Dec 16 16:49:56 UTC 2011 - uli@suse.com
+
+- dasdfmt: use proper way to detect DASD cylinder count (bnc#733787)
+- build system fix (bnc#737189)
+
+-------------------------------------------------------------------
+Mon Dec  5 12:16:03 UTC 2011 - uli@suse.com
+
+- dasdfmt: fix cylinder count for large disks in YaST mode
+  (bnc#733787)
+
+-------------------------------------------------------------------
+Mon Dec  5 10:51:13 UTC 2011 - uli@suse.com
+
+- qetharp: Man page improvements (bnc#732669)
+
+-------------------------------------------------------------------
+Tue Nov 29 13:05:01 UTC 2011 - uli@suse.com
+
+- fix dasdfmt usage text (bnc#732503)
+
+-------------------------------------------------------------------
+Tue Nov  8 22:12:41 UTC 2011 - jjolly@suse.com
+
+- rules.xpram: Added rule to create xpram nodes for each slram
+  node (bnc#723521,LTC#75884)
+- rules.hw_random: Added rule to create hw_random node when hwrng
+  is created (bnc#724083,LTC#75951)
+
+-------------------------------------------------------------------
+Fri Nov  4 16:10:34 UTC 2011 - uli@suse.com
+
+- lsdasd: Improve performance when used with many DASDs (bnc#728041)
+
+-------------------------------------------------------------------
+Fri Nov  4 13:02:25 UTC 2011 - uli@suse.com
+
+- qeth_configure: recognize 1731/02 as qeth device (bnc#720082)
+
+-------------------------------------------------------------------
+Mon Oct 24 10:58:51 UTC 2011 - uli@suse.com
+
+- more fixes: (bnc#725132)
+  - zfcpdbf: Include and exclude messages display problem
+  - zfcpdbf: help option does not list version '-v' option
+  - cmsfs-fuse: Fix file size calculation for files larger than 2 GB
+  - cmsfs-fuse: Fix big write requests
+  - cmsfs-fuse: Multiple write requests for fixed record format files
+  - cmsfs-fuse: Fix EOF detection for fixed record format files
+  - zipl: fix scsi dump
+  - cmsfs-fuse: Fix block allocation on large disks
+  - cmsfs-fuse: Update the number of records on disk full condition
+  - cmsfs-fuse: Add support for FBA-512 disks
+  - dumpconf: Add full path of executable for killproc invocation
+  - zfcpdbf: Messages with round-trip processing timediff problem
+  - lsmem/chmem: Fix memory device size calculation
+
+-------------------------------------------------------------------
+Thu Oct 13 12:36:16 UTC 2011 - thardeck@suse.com
+
+- moved iucvconn_on_login from doc to /usr/bin 
+- added rcdumpconf link
+
+-------------------------------------------------------------------
+Fri Oct  7 14:08:38 UTC 2011 - uli@suse.com
+
+- more fixes: (bnc#722508)
+  - lsmem/chmem: Fix handling of memory holes
+  - dasdview: fix printing of random characters after busid
+
+-------------------------------------------------------------------
+Fri Sep 16 10:02:32 UTC 2011 - uli@suse.com
+
+- more fixes: (bnc#718024)
+  - qetharp: fix buffer overflow
+  - lsqeth: add hsuid attribute
+  - af_iucv manpage: add HiperSockets transport
+  - dbginfo.sh: does not run under kernel 3.x
+  - lsdasd,lscss: suppress error messages when working on unsettled
+    sysfs tree.
+  - lsluns: check for required SCSI generic (sg) functionality.
+  - zipl: Prevent unsupported parmfile address.
+
+-------------------------------------------------------------------
+Tue Sep  6 17:10:17 CEST 2011 - uli@suse.de
+
+- update dumpconf patches (bnc#716118)
+
+-------------------------------------------------------------------
+Mon Sep  5 16:23:53 CEST 2011 - uli@suse.de
+
+- update -> 1.15.0 (obsoletes most patches, bnc#unknown)
+
+-------------------------------------------------------------------
+Mon Aug 29 08:21:38 UTC 2011 - thardeck@suse.de
+
+- updated mkdump script
+  - fixed DASD dump device recognition (bnc#713801)
+  - fixed allow creating dump devices on unformatted DASDs (bnc#713677)
+- dumpconf restart doesn't trigger delay minutes
+  - s390-tools-sles11sp2-01-dumpconf-restart.patch
+- dumpconf support for eight vmcmd commands
+  - s390-tools-sles11sp2-02-dumpconf-8cmds.patch
+- updated dumpconf sysconfig accordingly
+  - s390-tools-sles11sp2-sysconfig-compatible-dumpconf.patch
+
+
+-------------------------------------------------------------------
+Tue Aug 12 09:44:54 UTC 2011 - thardeck@novell.com
+
+- added new mkdump script (fate#304024)
+  - mkdump.pl: new version - backward compatible with mkdump.sh
+  - s390-tools-sles11sp2-mkdump-manpage.patch: man page for mkdump
+- add sysconfig meta data to /etc/sysconfig/dumpconf
+  - s390-tools-sles11sp2-sysconfig-compatible-dumpconf.patch: add sysconfig
+    metadata to dumpconf
+
+-------------------------------------------------------------------
+Fri Aug 12 08:38:04 UTC 2011 - uli@suse.de
+
+- fdasd: fix generation of disk label for option 'auto' and 'config'
+  (bnc#708534)
+- restored corrupted patch s390-tools-sle11sp1-04-lscss-fix-tr-quoting.patch
+
+-------------------------------------------------------------------
+Wed Aug  3 11:37:22 CEST 2011 - hare@suse.de
+
+- qeth_configure: Properly deregister with collect during
+  chpid vary off (bnc#474627)
+
+-------------------------------------------------------------------
+Thu Jul 28 12:16:01 UTC 2011 - uli@suse.de
+
+- dasd_configure: deactivate DIAG mode properly when told to do so
+  (bnc#591037)
+
+-------------------------------------------------------------------
+Thu Jul 28 11:47:02 UTC 2011 - uli@suse.de
+
+- bug fixes (bnc#708534):
+  - cpuplugd: Fix check for existing variable names
+  - cpuplugd: Fix typos and wording in man page
+
+-------------------------------------------------------------------
+Fri Jul 22 11:28:55 UTC 2011 - uli@suse.de
+
+- hyptop didn't build because ncurses-devel was missing from
+  BuildRequires (bnc#698740)
+
+-------------------------------------------------------------------
+Thu Jul 14 13:56:45 CEST 2011 - uli@suse.de
+
+- build hyptop and cmsfs-fuse (bnc#698740)
+- maintenance patches (bnc#698755):
+  - dasdinfo: return error code in case of failure.
+  - lsluns: Fix showing all active LUNs not just well known LUNs.
+  - lsreipl: Prevent error messages for empty sysfs files
+  - cpuplugd: add cpu/cmm_min/max sanity checks
+  - cpuplugd: fix daemon startup race
+
+-------------------------------------------------------------------
+Tue Jun 20 15:39:12 CEST 2011 - thardeck@suse.de
+
+- added zpxe.rexx script (fate#312134)
+
+-------------------------------------------------------------------
+Tue Jun 14 15:32:29 CEST 2011 - uli@suse.de
+
+- s390-tools patchset #12 for SP2 (bnc#698740)
+  - s390-tools-12-sles11sp2-infrastructure.patch: Add infrastructure code
+    for new features
+  - s390-tools-12-sles11sp2-ttyrun.patch: ttyrun: run a program if a
+    terminal device is available (fate#312296)
+  - s390-tools-12-sles11sp2-hyptop.patch: hyptop: Show hypervisor
+    performance data on System z (fate#311766) 
+  - s390-tools-12-sles11sp2-chreipl-enhancements.patch: chreipl: Re-IPL tool
+    "chreipl" enhancements (fate#311861)
+  - s390-tools-12-sles11sp2-tunedasd-query-reservation-status.patch:
+    tunedasd: add new option -Q / --query_reserve (fate#311910)
+  - s390-tools-12-sles11sp2-znetconf-osxosm.patch: znetconf: support for OSA
+    CHPID types OSX and OSM (fate#311898)
+  - s390-tools-12-sles11sp2-use-cio_settle.patch: chccwdev,chchp: Use
+    /proc/cio_settle (fate#311763)
+  - s390-tools-12-sles11sp2-cio_ignore.patch: cio_ignore: manage the I/O
+    exclusion list (fate#311763)
+  - s390-tools-12-sles11sp2-qethconf-msgexpl.patch: qethconf: Indicate
+    command failure and show message list. (fate#312067)
+  - s390-tools-12-sles11sp2-zipl-calculate_ramdisk_address.patch: zipl:
+    Remove DEFAULT_RAMDISK_ADDRESS (fate#311877)
+  - s390-tools-12-sles11sp2-zipl-automenu.patch: zipl: Add support for
+    automatic menus (fate#311908)
+  - s390-tools-12-sles11sp2-fdasd-partition_types.patch: fdasd: Implement
+    new partition types (fate#311921)
+  - s390-tools-12-sles11sp2-qetharp-ipv6-support.patch: qetharp: support
+    ipv6 for query arp cache for HiperSockets (fate#311912)
+  - s390-tools-12-sles11sp2-zgetdump-zipl-mkdump.patch: zgetdump/zipl: Add
+    ELF dump support (needed for makedumpfile) (fate#311893, fate#311895)
+  - s390-tools-12-sles11sp2-dumpconf-prevent-loop.patch: dumpconf: Prevent
+    re-IPL loop for dump on panic. (fate#311757)
+  - s390-tools-12-sles11sp2-cmsfs-fuse.patch: cmsfs-fuse: support for CMS
+    EDF filesystems via fuse. (fate#311847, fate#311858)
+  - s390-tools-12-sles11sp2-cpuplugd-cmm-improvements.patch: cpuplugd:
+    Improve memory ballooning with cpuplugd (fate#312069)
+
+-------------------------------------------------------------------
+Tue May 10 15:32:37 UTC 2011 - jjolly@novell.com
+
+- s390-tools patchset #11 (bnc#689579)
+  - s390-tools-11-01-fdasd-buffer-overflow-in-error-message.patch:
+    fdasd: buffer overflow when writing to read-only device
+    (LTC#70680)
+  - s390-tools-11-02-cpuplugd-multiplication.patch: cpuplugd: Fix
+    incorrect multiplication in rules evaluation (LTC#71166)
+  - s390-tools-11-03-ziomon-outfile-invalid-option.patch: ziomon:
+    Option '--output' should be '--outfile' as documented
+    (LTC#71566)
+  - s390-tools-11-04-ziomon-debugfs-mount-path-checking.patch:
+    ziomon: Debugfs mount path check at /sys/kernel/debug
+    (LTC#71749)
+
+-------------------------------------------------------------------
+Tue Apr 26 22:46:39 UTC 2011 - jjolly@novell.com
+
+- fdasd: added -f options to force execution on non-dasd devices
+  (bnc#689018)
+
+-------------------------------------------------------------------
+Tue Feb 22 23:37:52 UTC 2011 - jjolly@novell.com
+
+- s390-tools patchset #10 (bnc#652287)
+  - s390-tools-10-01-ziomon-returncodes.patch: ziomon: ziomon
+    tools return 1 when using option -h, --help and -v (LTC#66507)
+  - s390-tools-10-02-qethconf-subchset.patch: qethconf: process
+    devices with subchannel set != 0 (LTC#66662)
+  - s390-tools-10-03-iucvtty-login-h.patch: iucvtty: do not
+    specify z/VM user ID as argument to login -h (LTC#66393)
+  - s390-tools-10-04-fdasd-format7-label.patch: fdasd/dasdfmt: fix
+    format 7 label (LTC#68122)
+  - s390-tools-10-05-cpuplugd-cmm_pages.patch: cpuplugd: cmm_pages
+    not set and restored correctly (LTC#68341)
+  - s390-tools-10-06-lsluns-svc.patch: lsluns: Fix LUN reporting
+    for SAN volume controller (SVC) (LTC#68559)
+  - s390-tools-10-07-lsluns-uppercase.patch: lsluns: Accept
+    uppercase and lowercase hex digits (LTC#68562)
+
+-------------------------------------------------------------------
+Tue Aug 10 15:18:56 CEST 2010 - jjolly@suse.de
+
+- s390-tools patchset #9 (bnc#621182)
+  - s390-tools-09-01-ts-shell-group-names.patch: ts-shell: do not
+    restrict group names to be alphanumeric (LTC#61504)
+  - s390-tools-09-02-znetconf-driveroption.patch: znetconf:
+    --drive|-d option returning "unknown driver" for qeth
+    (LTC#64732)
+  - s390-tools-09-03-cpuplugd-stack-smash.patch: cpuplugd: fix
+    stack overwrite (LTC#64733)
+  - s390-tools-09-04-zfcpdbf-dates.patch: zfcpdbf: Fix --dates
+    option (LTC#65405)
+  - s390-tools-09-05-cpuplugd-cmm-limits.patch: cpuplugd: fix
+    cmm_min/max limit checks (LTC#65220)
+  - s390-tools-09-06-cpuplugd-cpu_min.patch: cpuplugd: set cpu_min
+    to 1 by default (LTC#65224)
+  - s390-tools-09-07-lsluns-adapter-offline.patch: lsluns:
+    uninitialized value on adapter offline (LTC#65768)
+  - s390-tools-09-08-zfcpdbf-uninitialized.diff: zfcpdbf: Fix "Use
+    of uninitialized value" and output issues (LTC#65904)
+  - s390-tools-09-09-xcec-mc.patch: xcec-bridge: Fix multicast
+    forwarding (LTC#66141)
+
+-------------------------------------------------------------------
+Wed Jun  2 11:23:55 CEST 2010 - sf@suse.de
+
+- dasd_reload: iterate over all dasd udev-rules (bnc #606394)  
+
+-------------------------------------------------------------------
+Fri May  7 07:26:41 CEST 2010 - jjolly@suse.de
+
+- s390-tools-08-01-lsqeth-clear-print-array.patch: lsqeth: add
+  clearing of print array for every qeth device
+  (bnc#602015,LTC#63091)
+- dasd_configure: Properly handling exit when dasd status is
+  unformatted (bnc#601918)
+- dasdfmt.8: removed extra -P reference from man page (bnc#602003)
+
+-------------------------------------------------------------------
+Thu Apr 22 17:11:53 CEST 2010 - jjolly@suse.de
+
+- s390-tools-07-01-lsdasd-document-option-b.patch: lsdasd: add
+  missing description of option -b to man page
+  (bnc#597838,LTC#62575)
+- s390-tools-07-02-lsqeth-sysfs.patch: lsqeth: sysfs mount point
+  not determined (bnc#597838)
+
+-------------------------------------------------------------------
+Mon Apr 19 22:18:40 CEST 2010 - jjolly@suse.de
+
+- s390-tools-sles11sp1-lsmem-chmem-v2.patch: lsmem/chmem: Tools to
+  manage memory hotplug.
+
+-------------------------------------------------------------------
+Tue Apr 13 12:48:59 CEST 2010 - ihno@suse.de
+
+- disabled s390-tools-0001-Zipl-VirtIO-bootloader-code.patch
+
+-------------------------------------------------------------------
+Tue Apr 13 12:30:05 CEST 2010 - agraf@suse.de
+
+- s390-tools-0001-Zipl-VirtIO-bootloader-code.patch: disable stack
+  protector (bnc#594445)
+
+-------------------------------------------------------------------
+Fri Apr  9 07:44:50 CEST 2010 - jjolly@suse.de
+
+- s390-tools-0001-Zipl-VirtIO-bootloader-code.patch: enable virtio
+  bootloading (bnc#594445)
+
+-------------------------------------------------------------------
+Mon Mar 29 20:33:48 CEST 2010 - jjolly@suse.de
+
+- IBM 390-tools patchset #6 (bnc#591089)
+  - s390-tools-sles11sp1-06-01-ziomon_fix_df_output.patch: ziomon:
+    Fix 'df' command usage (LTC#61794)
+  - s390-tools-sles11sp1-06-02-ziomon_fix_wrong_install_path.patch:
+    ziomon: Remove check for ziorep_config availability (LTC#61801)
+  - s390-tools-sles11sp1-06-03-zipl-force-help.patch: zipl: Option
+    "--force" is not included in text for "--help" (LTC#61973)
+  - s390-tools-sles11sp1-06-04-ziomon-fix_multipathing.patch:
+    ziomon: Fix problem with multipath command output (LTC#61977)
+
+-------------------------------------------------------------------
+Fri Mar 12 04:48:06 CET 2010 - jjolly@suse.de
+
+- IBM s390-tools patchset #5 (bnc#587152)
+  - s390-tools-sles11sp1-05-01-zfcpdump-directio.patch:
+    zfcpdump: Use direct IO in order to increase dump speed
+  - s390-tools-sles11sp1-05-02-zipl_zfcp_partition.patch:
+    zipl: zfcp dump partition error
+
+-------------------------------------------------------------------
+Fri Mar 12 04:39:05 CET 2010 - jjolly@suse.de
+
+- zipl/zfcpdump: Use "cgroup_disable=memory" kernel parameter
+  (bnc#572716)
+
+-------------------------------------------------------------------
+Fri Mar 12 04:27:08 CET 2010 - jjolly@suse.de
+
+- mkswap.sh: Using udevadm instead of udevinfo (bnc#585130)
+
+-------------------------------------------------------------------
+Mon Feb 22 07:59:02 CET 2010 - jjolly@suse.de
+
+- vmconvert: Fix progress bar shows garbage (bnc#580976,LTC#60883)
+
+-------------------------------------------------------------------
+Fri Feb 19 22:05:22 CET 2010 - jjolly@suse.de
+
+- dasd_configure: do not set unformatted dasd offline (bnc#579584)
+
+-------------------------------------------------------------------
+Mon Feb  8 14:03:39 CET 2010 - uli@suse.de
+
+- dasd_configure: avoid unnecessary delays (bnc#561876)
+
+-------------------------------------------------------------------
+Tue Feb  2 11:55:58 CET 2010 - jjolly@suse.de
+
+- Patchset #3 (bnc#575676) including:
+  - s390-tools-sles11sp1-03-01-zipl-handle-ssch-status.patch: zipl:
+    handle status during IPL SSCH (LTC#59816)
+  - s390-tools-sles11sp1-03-02-chshut-disable-panic.patch: chshut:
+    Mismatch between man and -h (LTC#59864)
+  - s390-tools-sles11sp1-03-03-znetconf-chpidtypes-hex.patch:
+    znetconf: index into chpidtype lookup table must be hex.
+
+-------------------------------------------------------------------
+Mon Jan 25 17:16:44 CET 2010 - uli@suse.de
+
+- add error codes 7 (failed to activate) and 8 (not formatted)
+  to dasd_configure (bnc#561876)
+
+-------------------------------------------------------------------
+Mon Jan 25 16:59:12 CET 2010 - jjolly@suse.de
+
+- Add missing check and print NSS name in case an NSS has been
+  IPLed. (bnc#559509)
+  - Add missing NULL string termination when reading sysfs attributes
+  - Fix possible SIGSEGV for "chreipl node /dev/dasdxy"
+
+-------------------------------------------------------------------
+Mon Jan 25 10:54:05 CET 2010 - jjolly@suse.de
+
+- Patchset #2 (bnc#566684,LTC#59000) including:
+  - s390-tools-sle11sp1-01-znetconf-returncodes.patch
+  - s390-tools-sle11sp1-02-ziorep-returncodes.patch (LTC#59379)
+  - s390-tools-sle11sp1-03-lstape_returncodes.patch (LTC#59386)
+  - s390-tools-sle11sp1-04-lscss-fix-tr-quoting.patch
+  - s390-tools-sle11sp1-05-lsqeth-new-attributes.patch
+- Init info->yastmode in dasdfmt.c (bnc#571653,LTC#59524)
+- zfcpdump: removed static linking (bnc#572716)
+
+-------------------------------------------------------------------
+Tue Jan 12 12:58:03 CET 2010 - uli@suse.de
+
+- dasd_configure: give DASD some time to warm up (untested,
+  bnc#561876)
+
+-------------------------------------------------------------------
+Mon Dec  7 12:52:51 CET 2009 - hare@suse.de
+
+- zipl: Handle device-mapper devices (bnc#556208)
+
+-------------------------------------------------------------------
+Thu Dec  3 16:16:40 CET 2009 - jjolly@suse.de
+
+- s390-tools, 59-dasd.rules: fix path to vol_id (bnc#554038)
+- dasdview, fdasd: fix floating point error for unformatted devices
+  (bnc#554038)
+- ziomon: Fix multipath device detection (bnc#554038)
+- zipl: handle status during ipl (bnc#554038)
+
+-------------------------------------------------------------------
+Sat Nov 21 00:26:45 CET 2009 - jjolly@suse.de
+
+- Reverted last change in order to add s390-tools 1.8.2 features:
+  - tty terminal server over IUCV (bnc#546431,FATE#307002)
+  - Large Volume support (bnc#546431,FATE#307003)
+  - DS8000 Disk Encryption (bnc#546431,FATE#307004)
+    - show disk encryption status
+  - FICON - Format Record 0 on ECKD devices (bnc#546431,FATE#307012)
+  - FCP - Performance data reports (bnc#546431,FATE#307000)
+  - Automatic IPL after dump (bnc#546431,FATE#307009)
+  - Add vmconvert option to vmur tool (bnc#546431,FATE#307010)
+  - Automatic scan of network devices (bnc#546431,FATE#307016)
+- Bugfixes:
+  - general: Fix compile warnings & do minor bugfixes
+  - general: Adjust code to s390-tools upstream as far as possible
+  - lsreipl: Show defined vmcmd correctly
+  - fdasd:   Fix auto mode behavior
+  - general: Corrections to comply with SUSE rpmlint
+- Performance enhancements:
+  - dasd,zfcp: Add udev rule to set increased "default max readahead"
+
+-------------------------------------------------------------------
+Wed Nov 18 17:42:21 CET 2009 - uli@suse.de
+
+- update -> 1.8.1:
+  - IUCV terminal server (fate#307002)
+  - DASD large volume support (fate#307003)
+  - obsoletes a ton of patches
+
+-------------------------------------------------------------------
+Fri Nov  6 13:24:29 CET 2009 - hare@suse.de
+
+- Include mkinitrd scripts to setup qeth networking (bnc#541405)
+- Fixup vol_id pathname in mkdump.sh (bnc#505553)
+
+-------------------------------------------------------------------
+Sat Oct 17 06:06:07 CEST 2009 - jjolly@suse.de
+
+- Added s390-tools-sles11sp1-dasdfmt-norecord_r0.patch (bnc#477816)
+
+-------------------------------------------------------------------
+Mon Oct 12 18:20:03 CEST 2009 - jjolly@suse.de
+
+- s390-tools-02-cpuplugd-cmminit.patch: cpuplugd: fix cmm
+  configuration file value initialization parser
+  (bnc#519430,LTC#54629)
+- s390-tools-02-cpuplugd-limit.patch: cpuplugd: fix cmm_pages
+  allocation outside min and max range (bnc#519430,LTC#55472)
+- s390-tools-02-cpuplugd-parser.patch: cpuplugd: Daemon does not
+  work in a memplug only environment (bnc#519430,LTC#54285)
+- s390-tools-02-dasdinfo-fix-volume-serial.patch: dasdinfo: spaces
+  in volume serial break udev device links (bnc#519430,LTC#52881)
+- s390-tools-02-dbginfo-remove-cpint.patch: dbginfo.sh: remove
+  occurences of "cpint" (bnc#519430,LTC#54777)
+- s390-tools-02-zipl-fix-unsupported-device-driver.patch: zipl:
+  zipl does not exit for an unsupported device driver.
+  (bnc#519430,LTC#53660)
+
+-------------------------------------------------------------------
+Thu Apr 23 21:27:09 CEST 2009 - jjolly@suse.de
+
+- dasdro: Updated hcp to vmcp (bnc#492504)
+
+-------------------------------------------------------------------
+Tue Mar 31 23:16:37 CEST 2009 - jjolly@suse.de
+
+- s390-tools-01-dasdfmt-retry-reread-partition-table.patch:
+  dasdfmt: retry when BLKRRPART fails (bnc#486043,LTC#52233)
+- s390-tools-01-dasdinfo_sysfs.patch: dasdinfo: error with new
+  sysfs layout (bnc#486043,LTC#52309)
+- s390-tools-01-dasdview-fix-busid-lookup.patch: dasdview: fix
+  busid look-up (bnc#486043,LTC#52122)
+- s390-tools-01-fdasd-buffer-overflow.patch: fdasd: fix buffer
+  overflow for long device names (bnc#486043,LTC#51817)
+- s390-tools-01-ipl-panic.patch: lsshut: lsshut prints out an
+  unnecessary error message (bnc#486043)
+- s390-tools-01-ziomon-scsi-tapes.patch: ziomon: SCSI tapes do not
+  work (bnc#486043,LTC#51282)
+- s390-tools-01-zipl-fbadump-4gb.patch: zipl: FBA dump tool can
+  only dump up to 4GB. (bnc#486043,LTC#52257)
+
+-------------------------------------------------------------------
+Tue Feb 24 22:47:45 CET 2009 - ihno@suse.de
+
+- Add a check in dasd_configure to check environment (LPAR or z/VM)
+  (bnc#477705)
+- Add a general README.SUSE about commands provided by SUSE
+  (bnc#478009)
+- Fix online help of zfcp_san_disc and added online for some
+  other commands (bnc#471830)
+
+-------------------------------------------------------------------
+Thu Feb 19 14:36:07 CET 2009 - uli@suse.de
+
+- hsnc: pass OSA IF name to ip_watcher.pl (bnc#472366)
+
+-------------------------------------------------------------------
+Wed Feb 18 11:43:49 CET 2009 - hare@suse.de
+
+- Fix remaining reference to hard-coded ECKD in dasd_configure
+  (bnc#470408)
+
+-------------------------------------------------------------------
+Mon Feb  9 16:16:17 CET 2009 - uli@suse.de
+
+- dasdfmt: propagate child exit codes (bnc#459677)
+
+-------------------------------------------------------------------
+Fri Feb  6 15:44:35 CET 2009 - hare@suse.de
+
+- Return error code if sg_luns failed in zfcp_san_disc (bnc#472352)
+- Correctly configure FBA disks (bnc#470408)
+
+-------------------------------------------------------------------
+Thu Feb  5 13:53:28 CET 2009 - uli@suse.de
+
+- use sysfs instead of /proc/qeth (bnc#472366)
+
+-------------------------------------------------------------------
+Mon Jan 26 16:11:29 CET 2009 - hare@suse.de
+
+- Add %triggerin section to create zfcpdump correctly (bnc#446367)
+
+-------------------------------------------------------------------
+Fri Jan 23 14:33:19 CET 2009 - uli@suse.de
+
+- fix boot.cpi behavior (bnc#457208)
+- change CPI_SET default to yes (bnc#455978)
+
+-------------------------------------------------------------------
+Thu Jan 22 15:12:04 CET 2009 - jjolly@suse.de
+
+- Initialize error value to 0 (bnc#467275)
+
+-------------------------------------------------------------------
+Mon Jan 19 15:29:11 CET 2009 - uli@suse.de
+
+- run insserv on boot.cpi, write to set attribute to pass CPI
+  data (bnc#455978)
+
+-------------------------------------------------------------------
+Mon Jan 12 16:26:03 CET 2009 - jjolly@suse.de
+
+- Added /usr/sbin/osasnmpd link to /usr/sbin/osasnmpd-2.6
+  (bnc#458547)
+
+-------------------------------------------------------------------
+Fri Jan  9 17:51:07 CET 2009 - jjolly@suse.de
+
+- s390-tools-sles11-ziomon-fix-qdio-statistics.patch: Fix qdio
+  statistics (bnc#417514)
+
+-------------------------------------------------------------------
+Thu Dec 11 17:06:44 CET 2008 - hare@suse.de
+
+- Create /boot/zipl directory (bnc#457942)
+
+-------------------------------------------------------------------
+Thu Dec 11 12:30:02 CET 2008 - hare@suse.de
+
+- Update mkinitrd scripts for zfcpdump (bnc#446367)
+- Include patches from IBM (bnc#417514):
+  * Fix lszfcp -P after removal of a port
+  * Allow zfcpdump to work in more initrds
+  * tape390_display: Fix stack overwrite
+
+-------------------------------------------------------------------
+Wed Dec 10 20:15:11 CET 2008 - jjolly@suse.de
+
+- Remove -s option from install sections in Makefiles. (bnc#417514)
+
+-------------------------------------------------------------------
+Wed Dec 10 12:37:25 CET 2008 - hare@suse.de
+
+- Add mkinitrd requirement [bnc#457945]
+
+-------------------------------------------------------------------
+Mon Dec  8 17:42:51 CET 2008 - kukuk@suse.de
+
+- Re-enable ExclusiveArchs
+
+-------------------------------------------------------------------
+Fri Dec  5 16:07:01 CET 2008 - hare@suse.de
+
+- Generate zfcpdump image correctly
+
+-------------------------------------------------------------------
+Fri Dec  5 12:30:04 CET 2008 - hare@suse.de
+
+- Updated to official 1.8.0 tarball from IBM (bnc#417514)
+  * lsluns: Do not print full path of tool for error messages - only basename
+  * ipl_tools: Add some new error messages
+  * dumpconf: Adjust dumpconf init script to new lsdasd
+  * ziomon: File header comments cleanup
+  * dbginfo.sh: Collect more debug info
+  * lsdasd: Remove CVS $Revision entries
+  * lszfcp: Throw error message if no devices are configured
+  * Prevent daemons from starting in single user mode
+- Remove rpmlint patch
+- Generate correct udev rule for boot from zfcp (bnc#434648)
+
+-------------------------------------------------------------------
+Tue Dec  2 15:14:39 CET 2008 - uli@suse.de
+
+- fixed broken post/preun scripts (bnc#446367)
+
+-------------------------------------------------------------------
+Fri Nov 21 08:34:29 CET 2008 - hare@suse.de
+
+- Fixed typo in dasd_configure (bnc#446998)
+
+-------------------------------------------------------------------
+Thu Nov 20 08:32:38 CET 2008 - jjolly@suse.de
+
+- Moved creation/deletion of zfcpdump.{image,rd} into specfile
+  %post and %preun sections. (bnc#446367)
+
+-------------------------------------------------------------------
+Thu Nov 20 08:19:33 CET 2008 - jjolly@suse.de
+
+- Added script to mkdump.sh that creates zfcpdump.{image,rd}
+  (bnc#446427)
+
+-------------------------------------------------------------------
+Wed Nov 19 14:53:44 CET 2008 - jjolly@suse.de
+
+- Updated to 1.8.0 v8 tarball from IBM (bnc#417514)
+  - lstape: Fix problems with new sysfs layout.
+  - lszfcp: Update search for sysfs mount-point.
+  - zipl: Fix zipl build process: Copy only text section with objcopy.
+  - vmconvert: Remove leading newline for error messages.
+  - ipl_tools: Fix various parser problems.
+  - cpuplugd: Prevent compile warning.
+- Removed link error patch
+
+-------------------------------------------------------------------
+Fri Nov 14 16:18:51 CET 2008 - hare@suse.de
+
+- Install updated dasd udev rules (bnc#444688)
+- Update dasd_configure to call udevadm settle (bnc#444672)
+- Install zfcpdump mkinitrd scripts (FATE#304069)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:14:47 CET 2008 - hare@suse.de
+
+- Updated to 1.8.0 v7 tarball from IBM (bnc#417514)
+- Removed obsolete patches
+- rpmlint fixes
+
+-------------------------------------------------------------------
+Tue Nov 11 13:40:14 CET 2008 - hare@suse.de
+
+- Update zfcp_{disk,host}_configure to work with port
+  auto discovery (bnc#435640)
+- Fix zfcp_san_disc to remove the correct sg device
+
+-------------------------------------------------------------------
+Mon Nov 10 11:46:47 CET 2008 - hare@suse.de
+
+- Update zfcp_san_disc to check for WLUNs first (bnc#437633)
+
+-------------------------------------------------------------------
+Thu Nov  6 15:37:07 CET 2008 - uli@suse.de
+
+- with all the udev red tape, we forgot to actually set the port
+  number... (fate #304080)
+
+-------------------------------------------------------------------
+Tue Nov  4 10:35:34 CET 2008 - hare@suse.de
+
+- Wait for DASD to become online (bnc#436980)
+
+-------------------------------------------------------------------
+Mon Oct 27 14:04:32 CET 2008 - hare@suse.de
+
+- Update 59-dasd.rules (bnc#436980)
+- Use udevadm instead of udevsettle (bnc#437349)
+
+-------------------------------------------------------------------
+Mon Oct 27 13:34:40 CET 2008 - jjolly@suse.de
+
+- Updated to 1.8.0 v6 tarball from IBM (bnc#417514)
+
+-------------------------------------------------------------------
+Wed Oct 22 10:28:13 CEST 2008 - hare@suse.de
+
+- Update zfcp_san_disc to work with automatic port discovery
+  (bnc#433863)
+
+-------------------------------------------------------------------
+Mon Oct 20 15:49:33 CEST 2008 - uli@suse.de
+
+- restored change in qeth_configure from Sep 11 2008 that was
+  overwritten by checkin on Sep 23 2008 (bnc #436824)
+
+-------------------------------------------------------------------
+Tue Oct 14 13:15:14 CEST 2008 - uli@suse.de
+
+- restored change in dasdfmt from May 19 that was overwritten
+  by subsequent checkins (bnc #368595, #434223)
+
+-------------------------------------------------------------------
+Mon Oct 13 17:42:57 CEST 2008 - jjolly@suse.de
+
+- Updated to 1.8.0 v5 tarball from IBM (bnc#417514)
+
+-------------------------------------------------------------------
+Thu Oct  9 16:25:50 CEST 2008 - uli@suse.de
+
+- added init script setting CPI data (fate #304052)
+
+-------------------------------------------------------------------
+Fri Sep 26 15:07:01 CEST 2008 - jjolly@suse.de
+
+- Patched zipl/boot link to set build-id to none
+
+-------------------------------------------------------------------
+Wed Sep 24 17:48:19 CEST 2008 - jjolly@suse.de
+
+- Updated to 1.8.0 v4 of the tarball
+- Added the blktrace_api.h as it doesn't exist in
+  linux-kernel-headers at this time.
+
+-------------------------------------------------------------------
+Tue Sep 23 09:52:20 CEST 2008 - hare@suse.de
+
+- Fix qeth_configure to always set the 'layer2' attribute
+  (bnc#428352)
+- Update ctc_configure to set the protocol number correctly.
+
+-------------------------------------------------------------------
+Fri Sep 19 13:20:28 CEST 2008 - hare@suse.de
+
+- Update dasd_reload script to work with udev rules (bnc#427458)
+
+-------------------------------------------------------------------
+Thu Sep 18 17:39:46 CEST 2008 - jjolly@suse.de
+
+- Updated to 1.8.0 v3 of the tarball
+- Patched make to remove .note.gnu.build-id header during objcopy
+
+-------------------------------------------------------------------
+Thu Sep 11 15:45:57 CEST 2008 - uli@suse.de
+
+- qeth_configure: added -n option for specifying the port number
+  (fate #304080)
+
+-------------------------------------------------------------------
+Wed Sep  3 11:09:34 CEST 2008 - hare@suse.de
+
+- Call mkinitrd_setup during %post and %postun (bnc#413709)
+- Fix qeth_configure script
+- Fix iucv_configure script
+
+-------------------------------------------------------------------
+Tue Sep  2 18:08:41 CEST 2008 - jjolly@suse.de
+
+- Removed lib-zfcp-hbaapi to it's own package.
+- Update to 1.8.0
+
+-------------------------------------------------------------------
+Thu Aug  7 15:26:37 CEST 2008 - hare@suse.de
+
+- Update ctc_configure to use ctcm module instead of ctc
+
+-------------------------------------------------------------------
+Fri Jul 25 10:42:36 CEST 2008 - hare@suse.de
+
+- Add network configuration scripts (iucv|ctc|qeth)_configure
+- Include mkinitrd scriptlets.
+- Fix RPMLint warnings.
+
+-------------------------------------------------------------------
+Tue Jul 22 08:19:02 CEST 2008 - hare@suse.de
+
+- Compress s390-tools-1.7.0 with bzip2
+
+-------------------------------------------------------------------
+Mon Jul 21 16:15:57 CEST 2008 - hare@suse.de
+
+- Update to 1.7.0
+- Build fixes for autobuild
+- Build zfcpdump_v2 only
+
+-------------------------------------------------------------------
+Fri Jul 18 16:23:44 CEST 2008 - hare@suse.de
+
+- Backport from SLES10 SP2
+- Update dasd_configure and zfcp_disk_configure script
+
+-------------------------------------------------------------------
+Mon May 19 13:57:50 CEST 2008 - uli@suse.de
+
+- make old dasdfmt syntax work again (bnc#368595)
+
+-------------------------------------------------------------------
+Fri Apr 18 10:50:56 CEST 2008 - hare@suse.de
+
+- Update to 1.6.3-v10 (bnc#380728)
+  * cpuplugd: cpuplugd could not be stopped
+
+-------------------------------------------------------------------
+Fri Apr  4 09:57:25 CEST 2008 - hare@suse.de
+
+- Update to 1.6.3-v9 (bnc#376700)
+  * extend dasdinfo with a new compat-uid option
+  * cpuplugd: cpuplugd may loop on systems with only 1 cpu
+  * vmur: Fix man page
+
+-------------------------------------------------------------------
+Mon Mar 17 14:42:33 CET 2008 - hare@suse.de
+
+- Update to 1.6.3-v8 (bnc#354137)
+
+-------------------------------------------------------------------
+Mon Mar  3 15:02:07 CET 2008 - hare@suse.de
+
+- Fix build
+
+-------------------------------------------------------------------
+Thu Feb 28 16:34:49 CET 2008 - hare@suse.de
+
+- Update to 1.6.3-v7 (bnc#365614)
+- Update to libzfcp-hbaapi-1.4.2 (bnc#365612)
+
+-------------------------------------------------------------------
+Mon Feb 18 15:44:13 CET 2008 - hare@suse.de
+
+- update to 1.6.3-v6 tarball
+- Install cpuhotplugd (#341388, FATE#302806)
+- Add zfcp_san_disc script (#361848)
+
+-------------------------------------------------------------------
+Tue Jan 22 18:15:30 CET 2008 - jjolly@suse.de
+
+- update to 1.6.3-v3 tarbar (#355355)
+- added cpuplugd config file to package (#355355)
+
+-------------------------------------------------------------------
+Tue Nov 20 23:15:40 CET 2007 - jjolly@suse.de
+
+- update -> 1.6.3 (#341393)
+
+-------------------------------------------------------------------
+Thu Oct 11 19:01:42 CEST 2007 - jjolly@suse.de
+
+- Modified script to wait for hbaapi module to complete loading
+  (#332251)
+
+-------------------------------------------------------------------
+Wed Oct 10 14:51:22 CEST 2007 - jjolly@suse.de
+
+- Added zfcp_san_disc utility (#332458)
+
+-------------------------------------------------------------------
+Thu Sep 13 18:36:46 CEST 2007 - jjolly@suse.de
+
+- Added priority value for SWAPON within /etc/init.d/xpram
+  (#308074)
+
+-------------------------------------------------------------------
+Sat Jul 14 00:48:14 CEST 2007 - jjolly@suse.de
+
+- Correctly return error codes in mkdump.sh (#276429)
+
+-------------------------------------------------------------------
+Thu Mar  8 14:55:03 CET 2007 - hare@suse.de
+
+- Install mon_fsstatd correctly (#252115)
+
+-------------------------------------------------------------------
+Mon Mar  5 16:24:27 CET 2007 - hare@suse.de
+
+- update -> 1.6.0 
+  * Implement dasdinfo and supply own udev rules (#222326)
+- Fix major/minor number problem (#245342)
+- install mon_fsstatd sysconfig and init scripts
+
+-------------------------------------------------------------------
+Mon Feb 19 14:15:04 CET 2007 - uli@suse.de
+
+- update -> 1.6.0-v7 (documentation touchups, prevent fs corruption
+  when running zipl on linear dm targets)
+
+-------------------------------------------------------------------
+Fri Feb  2 14:07:46 CET 2007 - hare@suse.de
+
+- update -> 1.6.0-v5
+  * Expand S390_TOOLS_RELEASE macro correctly (#240667)
+  * Install the dumpconf utility
+- Fix compilation issues.
+
+-------------------------------------------------------------------
+Wed Jan 31 10:29:03 CET 2007 - hare@suse.de
+
+- update -> 1.6.0-v4: 
+  * tape390_crpyt: Enhanced error handling 
+  * New man page for /dev/prandom
+
+-------------------------------------------------------------------
+Fri Jan 19 15:59:50 CET 2007 - hare@suse.de
+
+- update -> 1.6.0-v3;
+  Fixup 3590 crypt support.
+
+-------------------------------------------------------------------
+Tue Jan 16 13:08:28 CET 2007 - hare@suse.de
+
+- zfcp_host_configure: modify the dev_loss_tmp setting
+  to 30 (bug #220556)
+
+-------------------------------------------------------------------
+Thu Jan 11 13:18:49 CET 2007 - uli@suse.de
+
+- update -> 1.6.0-v2
+- fixed regexes in zfcp_disk_configure (bug #185798)
+
+-------------------------------------------------------------------
+Fri Nov  3 15:01:14 CET 2006 - hare@suse.de
+
+- Fix build against new libsysfs.
+
+-------------------------------------------------------------------
+Mon Jun 19 17:01:59 CEST 2006 - hare@suse.de
+
+- zfcp_disk_configure: translate the entire WWPN
+  string (#185798 - LTC24706)
+
+-------------------------------------------------------------------
+Fri Jun  2 13:16:15 CEST 2006 - hare@suse.de
+
+- mkdump.sh: wait for udev to finish before continuing
+  (#163258 - LTC22904)
+
+-------------------------------------------------------------------
+Fri May 19 15:26:16 CEST 2006 - hare@suse.de
+
+- Fix build of zgetdump (#176334 - LTC23955)
+- Fix Makefile options
+- Fix error messages for zfcp_(disk|host)_configure
+  (#159552 - LTC22536)
+
+-------------------------------------------------------------------
+Thu May 18 11:44:12 CEST 2006 - hare@suse.de
+
+- mkdump.sh: fix check_devsize (#165818)
+
+-------------------------------------------------------------------
+Tue May  9 22:31:50 CEST 2006 - ihno@suse.de
+
+- fixed activation of XPRAM devices. (#161352)
+
+-------------------------------------------------------------------
+Fri Apr 28 13:51:23 CEST 2006 - hare@suse.de
+
+- mkdump.sh: use sfdisk instead of parted;
+  Fixup error messages (#165818)
+
+-------------------------------------------------------------------
+Fri Apr 21 15:38:31 CEST 2006 - hare@suse.de
+
+- dasd_configure: Remove hwcfg file on deconfiguring device even
+  if no ccw device exists.
+
+-------------------------------------------------------------------
+Wed Apr 19 22:14:54 CEST 2006 - ihno@suse.de
+
+- create mountpoint, if it does not exist (#157108)
+- force the creation of swap/filesystem (#161363)
+
+-------------------------------------------------------------------
+Thu Apr 13 16:06:31 CEST 2006 - uli@suse.de
+
+- dasdfmt: fixed man page, can now specify >1 device with -n,
+  support x.x.xxxx notation (bug #160058)
+
+-------------------------------------------------------------------
+Fri Apr  7 11:20:09 CEST 2006 - hare@suse.de
+
+- Fix zfcp_disk_configure again (#160161 - LTC22622)
+- mkdump.sh should wait for udev (#163258 - LTC22904)
+- Install all scripts with the rpm (#162939 - LTC22876)
+
+-------------------------------------------------------------------
+Fri Mar 24 16:28:30 CET 2006 - hare@suse.de
+
+- Update to s390-tools-1.5.3
+- Fix zipl boot message (#145612)
+- Fix zfcp_disk_configure to correctly deactivate disks
+  (#160161 - LTC22622)
+
+-------------------------------------------------------------------
+Thu Mar 23 16:39:39 CET 2006 - uli@suse.de
+
+- osasnmpd was inadvertently built for ucd-snmp; fixed
+  (bug #159501)
+
+-------------------------------------------------------------------
+Wed Feb 22 09:58:53 CET 2006 - hare@suse.de
+
+- Update to s390-tools-1.5.2
+- Update to lib-zfcp-hbaapi-1.4
+- dasd_configure should wait for udev before calling vmcp 
+  (#149490 - LTC21537)
+- Fix mkdump to not use blkid
+- Minor fixes to mkdump
+
+-------------------------------------------------------------------
+Wed Feb  8 12:40:32 CET 2006 - ihno@suse.de
+
+- fixed xpram to handle swap and
+  to keep the existing filesystem (#148662)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 17:02:32 CET 2006 - hare@suse.de
+
+- Unset DEBUG variable in dasd_configure
+- Use 'vmcp' command instead of deprecated 'hcp'
+
+-------------------------------------------------------------------
+Wed Jan 18 14:14:54 CET 2006 - hare@suse.de
+
+- Adding 'devs' to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Dec 15 16:35:12 CET 2005 - uli@suse.de
+
+- actually apply e2fsprogs patches
+- replace get_user macro in kernel with version from 2.6.15
+- fix C++ errors in vmconvert
+- create /boot/zipl directory
+
+-------------------------------------------------------------------
+Tue Dec  6 10:32:00 CET 2005 - hare@suse.de
+
+- Update package to SLES9 SP3 version.
+
+-------------------------------------------------------------------
+Fri Nov 11 11:41:01 CET 2005 - hare@suse.de
+
+- Write default values from zfcp_disk_configure (#120657 - LTC18813)
+- Update to lib-zfcp-hbaapi-1.3
+
+-------------------------------------------------------------------
+Tue Nov  8 23:19:37 CET 2005 - ihno@suse.de
+
+- Update to Developer Codedrop 1.5.1
+
+-------------------------------------------------------------------
+Tue Oct 25 08:52:23 CEST 2005 - hare@suse.de
+
+- Fixed inconsistencies with lsdasd man page and online help.
+- Check command line parameters of zfcpdbf for validity.
+
+-------------------------------------------------------------------
+Fri Oct 21 13:53:42 CEST 2005 - hare@suse.de
+
+- Fix dasd_configure to handle DIAG mode correctly
+  (bugs #120166, #129704).
+
+-------------------------------------------------------------------
+Tue Oct 18 17:25:47 CEST 2005 - uli@suse.de
+
+- start/killproc can't handle wrapper scripts; worked around
+  (bugs #127534, #127535)
+
+-------------------------------------------------------------------
+Thu Sep 29 14:30:18 CEST 2005 - hare@suse.de
+
+- Fix vmlogrdr init script (#118581).
+
+-------------------------------------------------------------------
+Fri Sep 23 15:45:36 CEST 2005 - hare@suse.de
+
+- Fix build of dasdfmt (#118027).
+- Use RPM_OPT_FLAGS for build
+
+-------------------------------------------------------------------
+Tue Sep 20 14:58:36 CEST 2005 - hare@suse.de
+
+- Update to s390-tools-1.5.0 (#117968).
+
+-------------------------------------------------------------------
+Thu Jun 30 18:32:45 CEST 2005 - uli@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Mon Jun 20 11:48:21 CEST 2005 - hare@suse.de
+
+- Update to s390-tools-1.4.1 (#88526).
+
+-------------------------------------------------------------------
+Wed Jun 15 16:59:48 CEST 2005 - uli@suse.de
+
+- add sysconfig file for osasnmpd parameters (bug #86631)
+- fixed assembler syntax in zipl (stricter checking in new gas)
+
+-------------------------------------------------------------------
+Wed Jun 15 16:17:25 CEST 2005 - yxu@suse.de
+
+- fix build with GCC4
+- add prebuild images and ramdisk for zfcp 
+
+-------------------------------------------------------------------
+Wed Jun 15 10:56:43 CEST 2005 - hare@suse.de
+
+- Fix start_hsnc.sh (#88526).
+
+-------------------------------------------------------------------
+Tue Apr 19 16:47:18 CEST 2005 - hare@suse.de
+
+- Update to s390-tools-1.4.0
+- Include lib-zfcp-hbaapi-1.2
+
+-------------------------------------------------------------------
+Fri Nov 26 16:51:34 CET 2004 - hare@suse.de
+
+- Added new CU types 2107 and 1750 to dasd_configure (#48587).
+
+-------------------------------------------------------------------
+Thu Nov 18 12:12:27 CET 2004 - hare@suse.de
+
+- Added /sbin/mkdump script for creating dump devices (#22182).
+
+-------------------------------------------------------------------
+Wed Nov 10 01:14:35 CET 2004 - ro@suse.de
+
+- fix typo in specfile
+
+-------------------------------------------------------------------
+Fri Nov  5 11:48:09 CET 2004 - hare@suse.de
+
+- Update to s390-tools-1.3.2
+- Fix output at formatting of >26 disks (#47699).
+
+-------------------------------------------------------------------
+Wed Jul 14 08:39:45 CEST 2004 - hare@suse.de
+
+- Fixed default polling interval for appldata (#42694).
+
+-------------------------------------------------------------------
+Mon Jul  5 15:21:46 CEST 2004 - uli@suse.de
+
+- rename osasnmpd-2.6 -> osasnmpd (bug #42588)
+
+-------------------------------------------------------------------
+Mon Jul  5 15:03:45 CEST 2004 - hare@suse.de
+
+- Fixed init-scripts for appldata (#42694).
+- Updated sysconfig files to correctly display variables.
+
+-------------------------------------------------------------------
+Tue Jun 15 15:46:57 CEST 2004 - hare@suse.de
+
+- Fix cpint usage in initrd (no hcp available).
+
+-------------------------------------------------------------------
+Mon Jun 14 19:57:10 CEST 2004 - ihno@suse.de
+
+- enabled and fixed osasnmpd generation (#41893)
+- removed unused patch (fix is part of update 9 june)
+
+-------------------------------------------------------------------
+Wed Jun  9 16:46:32 CEST 2004 - hare@suse.de
+
+- Update to s390-tools 1.3.1 (#41736).
+
+-------------------------------------------------------------------
+Mon Jun  7 16:25:56 CEST 2004 - uli@suse.de
+
+- added missing %fillup_prereq (bug #41732) 
+
+-------------------------------------------------------------------
+Fri Jun  4 11:29:16 CEST 2004 - hare@suse.de
+
+- Check read-only status from dasd_configure (#38817)
+
+-------------------------------------------------------------------
+Tue Jun  1 18:27:15 CEST 2004 - bk@suse.de
+
+- xpram script updated regarding checking of config settings(#40733)
+
+-------------------------------------------------------------------
+Tue Jun  1 16:05:11 CEST 2004 - uli@suse.de
+
+- dasdro: do not rely on automatic loading of cpint module (bug #38817)
+
+-------------------------------------------------------------------
+Thu May 27 21:16:37 CEST 2004 - ihno@suse.de
+
+- fixed uninitialized variable in fdasd (#40032)
+
+-------------------------------------------------------------------
+Wed May 26 17:28:57 CEST 2004 - hare@suse.de
+
+- Fixed dasd_reload script to correctly reload any
+  configured DASD devices.
+- Fixed zfcp_disk_configure to handle uppercase WWPNs
+- Fixed dasd_configure to correctly handle DIAG devices
+- Fixed dasd_configure to generate hwcfg files with correct
+  SCRIPTDOWN values.
+
+-------------------------------------------------------------------
+Tue May 25 16:39:35 CEST 2004 - hare@suse.de
+
+- Added dasd_reload script for YaST2.
+
+-------------------------------------------------------------------
+Tue May 18 17:16:14 CEST 2004 - uli@suse.de
+
+- fixed incorrect use of fillup_and_insserv (bug #40733) 
+
+-------------------------------------------------------------------
+Mon Apr 26 13:37:03 CEST 2004 - uli@suse.de
+
+- added dasdro script
+- fixed warning in e2fsprogs code 
+
+-------------------------------------------------------------------
+Mon Apr 26 09:37:35 CEST 2004 - hare@suse.de
+
+- Fixed dasd_configure to not write hwcfg file if the
+  directory does not exist (#39387)
+
+-------------------------------------------------------------------
+Fri Apr 23 16:38:17 CEST 2004 - hare@suse.de
+
+- Update to final version s390-tools-1.3.0 
+- Fixed zfcp_host_configure to use sh instead of bash
+- Fixed zfcp_disk_configure to not try to delete hwcfg-file
+  if the directory does not exist.
+
+-------------------------------------------------------------------
+Tue Apr  6 14:24:56 CEST 2004 - hare@suse.de
+
+- Update *_configure scripts to only write hwcfg files
+  if directory exists
+- Fix dasd_configure to load modules.
+
+-------------------------------------------------------------------
+Fri Apr  2 16:47:53 CEST 2004 - hare@suse.de
+
+- Fixed xpram startup script.
+
+-------------------------------------------------------------------
+Fri Mar 12 15:17:22 CET 2004 - uli@suse.de
+
+- made YaST mode easier to parse as reqd. by jsrain
+
+-------------------------------------------------------------------
+Fri Mar  5 15:58:20 CET 2004 - hare@suse.de
+
+- Update to pre-Lobster codedrop.
+- Added dasd/zfcp configuration scripts.
+- Update to allow for preconfigured builds.
+
+-------------------------------------------------------------------
+Fri Dec 19 16:16:50 CET 2003 - uli@suse.de
+
+- merged bk's changes from SLES8:
+  change hsnc to use sysconfig configuration style
+
+-------------------------------------------------------------------
+Wed Dec 17 16:37:05 CET 2003 - uli@suse.de
+
+- dasdfmt: added parallel formatting
+- dasdfmt: added easily parseable output mode ("YaST mode")
+
+-------------------------------------------------------------------
+Tue Dec 16 16:39:45 CET 2003 - bk@suse.de
+
+- fix path of snmp agent directory in the ucd-snmp case
+
+-------------------------------------------------------------------
+Fri Dec 12 16:58:23 CET 2003 - bk@suse.de
+
+- Version 1.2.3 with hsnc for SLES8(post-SP3-maint) and SLES9!
+- add rc script for the HiperSockets Network Concentrator(hsnc)
+- add spec support for using ucdsnmp on SLES8 and net-snmp on SLES9
+- add support to build the zfcpdump kernel in parallel using #jobs
+
+-------------------------------------------------------------------
+Fri Nov 28 16:19:49 CET 2003 - bk@suse.de
+
+- Update to version 1.2.3
+
+-------------------------------------------------------------------
+Fri Nov 21 17:07:14 CET 2003 - hare@suse.de
+
+- Added missing '-lwrap' to osasnmpd.
+
+-------------------------------------------------------------------
+Thu Nov 13 08:45:54 CET 2003 - hare@suse.de
+
+- Update to version 1.2.2
+- Checked in for STABLE / pre-SLES9.
+- Update to use net-snmp instead of ucdsnmp.
+
+-------------------------------------------------------------------
+Fri Oct 31 11:15:08 CET 2003 - ihno@suse.de
+
+- Update to zfcpdump to the one of version 1.2.2
+
+-------------------------------------------------------------------
+Tue Sep  2 18:27:41 CEST 2003 - hare@suse.de
+
+- Fixed changelog entry.
+
+-------------------------------------------------------------------
+Wed Aug 27 18:34:23 CEST 2003 - hare@suse.de
+
+- Fixed zipl to use the correct path for zfcpdump.[image|rd]
+  (Bugzilla #29147).
+
+-------------------------------------------------------------------
+Mon Jul 28 15:44:25 CEST 2003 - hare@suse.de
+
+- update from version 1.2.0 to 1.2.1
+  - Fixed zfcpdump with ext2 ramdisk
+
+-------------------------------------------------------------------
+Thu Jul 24 15:25:16 CEST 2003 - hare@suse.de
+
+- update from version 1.1.5 to 1.2.0
+  - new zfcpdump for dumping on FC devices
+  - zipl now handles config files internally
+  - removed parsecfg
+  - included linux-2.4.19, busybox and e2fsprogs for
+    zfcpdump building
+
+-------------------------------------------------------------------
+Wed Feb  5 15:52:31 CET 2003 - ihno@suse.de
+
+- update from version 1.1.3 to 1.1.5
+  - remote gcc3.3 warnings (tape390_display)
+  - fixed dasdfmt.8 manpage
+  - fixed "free track" handling of fdasd
+
+-------------------------------------------------------------------
+Wed Oct 23 15:24:03 CEST 2002 - bk@suse.de
+
+- add s390-tools-1.1.3-dasdviewfix.diff and manpage for /proc/chandev
+
+-------------------------------------------------------------------
+Fri Sep 27 10:53:02 CEST 2002 - bk@suse.de
+
+- fix error message which will confuse some clients for sure(IBM)
+
+-------------------------------------------------------------------
+Wed Aug 21 16:39:26 CEST 2002 - froh@suse.de
+
+- fix rcchandev to no longer source rc.config
+- update to s390-tools-1.1.3-may2002.tar.gz from 2002-08-08 drop:
+  *  osasnmpd: added new parameter '-x SOCKADDR'
+
+-------------------------------------------------------------------
+Thu Aug  1 16:58:28 CEST 2002 - bk@suse.de
+
+- update to s390-tools-1.1.2-may2002.tar.gz from 2002-07-31 drop
+- new subpackage osasmpd, only new files, so no split is possible.
+
+-------------------------------------------------------------------
+Mon Jul 15 18:45:56 CEST 2002 - bk@suse.de
+
+- back to static zipl directory and fix uninstall message for updates
+
+-------------------------------------------------------------------
+Fri Jul 12 00:45:24 CEST 2002 - bk@suse.de
+
+- loader uses versioned directory to avoid boot problems after update
+- fix lib64 build problem
+
+-------------------------------------------------------------------
+Tue Jun 11 18:42:55 CEST 2002 - bk@suse.de
+
+- update for ucdsnmp-4.2.5:
+  add tcpd to neededforbuild and add -lwarp to cflags of osasnmpd
+  define allow_severity and deny_severity for tcpd's libwrap
+
+-------------------------------------------------------------------
+Fri Jun  7 23:40:55 CEST 2002 - bk@suse.de
+
+- update to may2002 stream, version 1.1.1
+
+-------------------------------------------------------------------
+Thu Feb 28 11:48:40 CET 2002 - froh@suse.de
+
+- added silo.sh script for YaST1 from the old package s390utils to
+  drop that package.
+
+-------------------------------------------------------------------
+Mon Feb 11 18:56:25 CET 2002 - bk@suse.de
+
+- add s390-tools-5.diff to support newer kernels as well(2.4.17)
+
+-------------------------------------------------------------------
+Mon Jan 28 19:00:09 CET 2002 - bk@suse.de
+
+- install: add _lib support for lib64
+
+-------------------------------------------------------------------
+Fri Dec 14 18:57:31 CET 2001 - bk@suse.de
+
+- Update to the Dec12 2001 drop s390-tools (-2, -3 and -4) patches 
+- zipl.conf: fix target setting of dumptape, add missing dumpdasd
+
+-------------------------------------------------------------------
+Mon Nov 12 14:09:02 CET 2001 - bk@suse.de
+
+- add IBM diffs s390-tools-2.tar.gz and s390-tools-3.tar.gz
+
+-------------------------------------------------------------------
+Fri Oct 19 00:52:11 CEST 2001 - bk@suse.de
+
+- fix error with killing tail in rcchandev verbose-reload
+  /sbin/rcchandev: line 219: 15941 Terminated tail -0f /var/log/warn 1>&2
+  (shown in yast)
+
+-------------------------------------------------------------------
+Fri Oct 12 17:09:51 CEST 2001 - bk@suse.de
+
+- zipl.conf: change obsolete /boot/zilo-kernel to /boot/kernel
+
+-------------------------------------------------------------------
+Mon Sep 17 14:37:17 CEST 2001 - froh@suse.de
+
+- added the 2001-09-14 codedrop patches, which include these fixes:
+- fdasd:
+  - added VTOC format 5 & 7 DSCB support
+  - added command line batch options for one partition, for a config
+    file and to suppress messages
+  - fixed OS/390 data set name munging (no more blanks, no more
+    changes after deleting and re-creating a partition)
+  - read-only disk access now fails
+  - fixed free space detection while adding partitions
+  - added command 'r' to re-create the whole VTOC
+- dasdfmt:
+  - added VTOC format 7 DSCB support
+  - added blksize >4096 or <512 check (complain & fail)
+  - added marking of dasds as non-bootable during dasdfmt
+  - added Hashmarks (for 3270 terminals) and Progress bar
+- misc:
+  - added multi volume support for system dump (tape 3480/90)
+  - added Tape device display support to system dump
+  - added 64 bit support for dasd and tape dump.
+
+-------------------------------------------------------------------
+Wed Sep 12 18:54:42 CEST 2001 - bk@suse.de
+
+- Use the source of the 2001-08-20 codedrop for this version
+  and update the context of the zipl-reiserfs.diff acordingly.
+- Also use the original source, let the spec do the unpacking.
+  This is less error-prone than doing it by hand and is quicker
+  to check.
+
+-------------------------------------------------------------------
+Wed Aug 29 10:54:08 CEST 2001 - froh@suse.de
+
+- integrated 2.4.7-based codedrop, which adds a config file to fdisk
+
+-------------------------------------------------------------------
+Mon Aug 13 21:34:43 CEST 2001 - bk@suse.de
+
+- better mark /etc/chandev.conf not only %config but also noreplace.
+- patch zipl to work with reiserfs too.
+
+-------------------------------------------------------------------
+Fri Aug 10 20:13:29 CEST 2001 - bk@suse.de
+
+- fix no newline at end of /etc/chandev.conf bug and polish text
+- fix insserv recursion due to bogus syslog in Required-Start
+
+-------------------------------------------------------------------
+Tue Aug  7 16:06:50 CEST 2001 - froh@suse.de
+
+- cleaned up docu in /etc/chandev.conf
+
+-------------------------------------------------------------------
+Mon Aug  6 14:22:40 CEST 2001 - froh@suse.de
+
+- added support for /proc/chandev
+
+-------------------------------------------------------------------
+Thu Jul 19 20:50:28 CEST 2001 - bk@suse.de
+
+- added Provides: s390utils:/sbin/dasdfmt (split from s390utils)
+
+-------------------------------------------------------------------
+Fri Jul 13 18:31:30 CEST 2001 - mls@suse.de
+
+- fixed install section
+
+-------------------------------------------------------------------
+Fri Jul 13 16:15:33 CEST 2001 - bk@suse.de
+
+- new package based on s390utils
+

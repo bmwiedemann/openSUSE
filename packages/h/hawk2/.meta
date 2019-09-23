@@ -1,0 +1,9 @@
+<package name="hawk2" project="openSUSE:Factory">
+  <title>HA Web Konsole</title>
+  <description>A web-based GUI for managing and monitoring the Pacemaker
+High-Availability cluster resource manager.
+
+Authors: Tim Serong &lt;tserong@suse.com&gt;
+</description>
+  <devel project="network:ha-clustering:Factory" package="hawk2"/>
+</package>

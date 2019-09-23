@@ -1,0 +1,26 @@
+---
+ src/readelf.c |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- src/readelf.c
++++ src/readelf.c	2019-02-21 06:41:38.598573505 +0000
+@@ -810,7 +810,7 @@ do_core_note(struct magic_set *ms, unsig
+ 
+ 	default:
+ 		if (type == NT_PRPSINFO && *flags & FLAGS_IS_CORE) {
+-			size_t i, j;
++			size_t i, j, m = 0;
+ 			unsigned char c;
+ 			/*
+ 			 * Extract the program name.  We assume
+@@ -822,7 +822,9 @@ do_core_note(struct magic_set *ms, unsig
+ 			 * If the characters aren't all printable,
+ 			 * reject it.
+ 			 */
+-			for (i = 0; i < NOFFSETS; i++) {
++			if (os_style == OS_STYLE_SVR4)
++				m = 1;
++			for (i = m; i < NOFFSETS; i++) {
+ 				unsigned char *cname, *cp;
+ 				size_t reloffset = prpsoffsets(i);
+ 				size_t noffset = doff + reloffset;

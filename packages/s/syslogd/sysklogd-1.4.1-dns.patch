@@ -1,0 +1,459 @@
+--- Makefile
++++ Makefile	2003-06-02 12:30:18.000000000 +0000
+@@ -59,8 +59,8 @@ test: syslog_tst ksym oops_test tsyslogd
+ 
+ install: install_man install_exec
+ 
+-syslogd: syslogd.o pidfile.o
+-	${CC} ${LDFLAGS} -o syslogd syslogd.o pidfile.o ${LIBS}
++syslogd: syslogd.o pidfile.o resolve.o
++	${CC} ${LDFLAGS} -o syslogd syslogd.o pidfile.o resolve.o ${LIBS}
+ 
+ klogd:	klogd.o syslog.o pidfile.o ksym.o ksym_mod.o
+ 	${CC} ${LDFLAGS} -o klogd klogd.o syslog.o pidfile.o ksym.o \
+--- resolve.c
++++ resolve.c	2003-06-02 12:30:33.000000000 +0000
+@@ -0,0 +1,249 @@
++/*
++ * Resolve a hostname
++ *
++ * Copyright (C) 2003, SuSE Linux AG
++ * Written by okir@suse.de
++ */
++
++#include <sys/poll.h>
++#include <netdb.h>
++#include <string.h>
++#include <time.h>
++#include <malloc.h>
++#include <stdlib.h>
++#include <signal.h>
++#include <unistd.h>
++
++#if defined(__GLIBC__)
++#define dprintf mydprintf
++#endif /* __GLIBC__ */
++
++/* Number of times we retry resolving a name */
++#define RESOLVER_RETRIES	10
++/* Timeout between retries to resolve a name */
++#define RESOLVER_RETRY_TIME	(3 * 60)
++/* Time to wait for the sub-process comes up with an
++ * answer, before we suspend the entry */
++#define RESOLVER_WAIT_TIME	5
++
++struct res_name {
++	struct res_name *	next;
++	char *			name;
++	unsigned int		retries;
++	time_t			retry_time;
++	time_t			wait_time;
++	pid_t			process;
++	int			pipe;
++	struct sockaddr_storage	address;
++};
++
++extern void	dprintf(char *fmt, ...);
++static int	do_result(struct res_name *res);
++static void	do_query(int, int, const char *);
++
++static struct res_name *resolve;
++
++int
++resolve_name(const char *name, int family, struct sockaddr_storage *addr)
++{
++	struct res_name	*res;
++	int		fd[2];
++	pid_t		pid;
++	time_t		now;
++
++	time(&now);
++	for (res = resolve; res; res = res->next) {
++		if (!strcmp(res->name, name)) {
++			/* If there's still a sub-process
++			 * attached, see if it came up with an
++			 * answer in the meantime */
++			if (res->pipe >= 0)
++				do_result(res);
++			goto check_result;
++		}
++	}
++
++	res = (struct res_name *) calloc(1, sizeof(*res));
++	res->name = strdup(name);
++	res->retries = RESOLVER_RETRIES;
++	res->retry_time = now + RESOLVER_RETRY_TIME;
++	res->pipe = -1;
++	res->next = resolve;
++	resolve = res;
++
++retry:	res->retries -= 1;
++
++	dprintf("Trying to resolve \"%s\", attempt #%u\n",
++			res->name, RESOLVER_RETRIES - res->retries);
++
++	if (res->pipe >= 0) {
++		/* Make sure resolver subprocess is dead */
++		kill(res->process, SIGKILL);
++		close(res->pipe);
++		res->pipe = -1;
++	}
++
++	signal(SIGCHLD, SIG_IGN);
++	if (pipe(fd) < 0) {
++		/* log error? */
++		return -1;
++	}
++	if ((pid = fork()) < 0) {
++		/* log error? */
++		close(fd[0]);
++		close(fd[1]);
++		return -1;
++	}
++
++	if (pid == 0) {
++		close(fd[0]);
++		do_query(fd[1], family, res->name);
++		/* shouldn't return */
++		exit(1);
++	}
++
++	res->wait_time = now + RESOLVER_WAIT_TIME;
++	res->process = pid;
++	res->pipe = fd[0];
++	close(fd[1]);
++
++	/* Try to collect result within the next couple
++	 * of seconds */
++	do_result(res);
++
++check_result:
++	if (res->pipe >= 0) {
++		dprintf("%s: name resolution not complete, "
++			"waiting for resolver sub-process\n",
++			res->name);
++		return 0;
++	}
++
++	if (res->address.ss_family != AF_UNSPEC) {
++		*addr = res->address;
++		return 1;
++	}
++	if (res->retries == 0) {
++		dprintf("%s: too many failed attempts to resolve hostname, "
++			"given up.\n", res->name);
++		return -1;
++	}
++	if (res->retry_time > now) {
++		dprintf("%s: name resolution failed, "
++			"will retry in %d seconds\n",
++			res->name, res->retry_time - now);
++		return 0;
++	}
++	goto retry;
++}
++
++/*
++ * This function clears the resolver's internal state
++ * when syslogd received a SIGHUP
++ */
++void
++init_resolver(void)
++{
++	struct res_name	*res;
++
++	for (res = resolve; res; res = res->next) {
++		res->address.ss_family = AF_UNSPEC;
++		res->retries = RESOLVER_RETRIES;
++		res->retry_time = 0;
++	}
++}
++
++
++/*
++ * Collect result from sub-process
++ */
++int
++do_result(struct res_name *res)
++{
++	struct sockaddr_storage addr;
++	struct pollfd	_poll;
++	long		wait;
++	int		n;
++
++	if (res->pipe < 0)
++		return 0;
++
++	/* See if we should wait for the subprocess to come
++	 * up with an answer (the initial call to do_result
++	 * after starting the sub-process will always wait for
++	 * a few seconds to avoid losing messages) */
++	if ((wait = res->wait_time - time(NULL)) < 0)
++		wait = 0;
++
++	/* See if we get the resolver's result within the
++	 * next "wait" seconds. If not, let it continue in the
++	 * background */
++	_poll.fd = res->pipe;
++	_poll.events = POLLIN;
++	if (poll(&_poll, 1, wait * 1000) < 1)
++		return 0;
++
++	n = read(res->pipe, &addr, sizeof(addr));
++
++	/* child process has done its duty. */
++	kill(res->process, SIGKILL);
++	close(res->pipe);
++	res->process = 0;
++	res->pipe = -1;
++
++	if (n != sizeof(addr))
++		return -1;
++
++	res->address = addr;
++	if (addr.ss_family != AF_UNSPEC)
++		return 1;
++	return -1;
++}
++
++/*
++ * Sub-process performing lookup
++ */
++void
++do_query(int fd, int family, const char *name)
++{
++	struct sockaddr_storage ss;
++	struct addrinfo hints, *res;
++	int	r;
++
++	memset(&hints, 0, sizeof(hints));
++	hints.ai_socktype = SOCK_DGRAM;
++#ifdef notyet
++	/* XXX - specify AI_whatever for automatic v4-v6 mapping */
++#else
++	hints.ai_family = (family == AF_INET)? family : AF_UNSPEC;
++#endif
++
++	r = getaddrinfo(name, "syslog", &hints, &res);
++	if (r != 0) {
++		dprintf("failed to resolve \"%s\": %s\n",
++				name, gai_strerror(r));
++		exit(1);
++	}
++
++	memset(&ss, 0, sizeof(ss));
++
++	/* Do v4mapped v6 address (supported by recent glibcs
++	 * only) */
++	if (family == AF_INET6 && res->ai_family == AF_INET) {
++		struct sockaddr_in6 *six = (struct sockaddr_in6 *) &ss;
++		struct sockaddr_in  *sin = (struct sockaddr_in *) res->ai_addr;
++
++		six->sin6_family = AF_INET6;
++		six->sin6_port = sin->sin_port;
++		six->sin6_addr.s6_addr16[5] = 0xffff;
++		six->sin6_addr.s6_addr32[3] = sin->sin_addr.s_addr;
++	} else if (res->ai_addrlen > sizeof(ss)) {
++		dprintf("failed to resolve \"%s\": address too large\n",
++				name);
++		exit(1);
++	} else {
++		memcpy(&ss, res->ai_addr, res->ai_addrlen);
++	}
++	write(fd, &ss, sizeof(ss));
++	exit(0);
++}
+--- syslogd.c
++++ syslogd.c	2003-06-02 12:30:26.000000000 +0000
+@@ -628,14 +628,7 @@ struct filed {
+ 		struct {
+ 			char	f_hname[MAXHOSTNAMELEN+1];
+ #ifdef INET6
+-			union {
+-				struct sockaddr		sa;
+-				struct sockaddr_in	sin;
+-				struct sockaddr_in6	sin6;
+-			} f_sa;
+-#define f_addr  f_sa.sa
+-#define f_addr4 f_sa.sin
+-#define f_addr6 f_sa.sin6
++			struct sockaddr_storage	f_addr;
+ #else
+ 			struct sockaddr_in	f_addr;
+ #endif
+@@ -790,7 +783,7 @@ int decode(char *name, struct code *code
+ #if defined(__GLIBC__)
+ #define dprintf mydprintf
+ #endif /* __GLIBC__ */
+-static void dprintf(char *, ...);
++void dprintf(char *, ...);
+ static void allocate_log(void);
+ void sighup_handler();
+ 
+@@ -799,10 +792,8 @@ static int create_unix_socket(const char
+ #endif
+ #ifdef SYSLOG_INET
+ static int create_inet_socket();
+-#ifdef INET6
+-static void setup_inetaddr_all();
+-static const char *setup_inetaddr(struct filed *f);
+-#endif
++extern int resolve_name(const char *, int, struct sockaddr_storage *);
++extern void init_resolver(void);
+ #endif
+ 
+ int main(argc, argv)
+@@ -1337,63 +1328,6 @@ static int create_inet_socket()
+ 	return fd;
+ }
+ 
+-#ifdef INET6
+-
+-static void setup_inetaddr_all()
+-{
+-	struct filed *f;
+-#ifdef SYSV
+-	int lognum;
+-
+-	for (lognum = 0; lognum <= nlogs; lognum++) {
+-		f = &Files[lognum];
+-#else
+-	for (f = Files; f; f = f->f_next) {
+-#endif
+-		if (f->f_type == F_FORW_UNKN) {
+-			if (setup_inetaddr(f)) {
+-				f->f_prevcount = INET_RETRY_MAX;
+-				f->f_time = time( (time_t *)0 );
+-			} else {
+-				f->f_type = F_FORW;
+-			}
+-		}
+-	}
+-}
+-
+-static const char *setup_inetaddr(struct filed *f)
+-{
+-	struct addrinfo hints, *res;
+-	int error;
+-
+-	memset(&hints, 0, sizeof(hints));
+-	hints.ai_family = family == AF_INET6 ? AF_UNSPEC : AF_INET;
+-	hints.ai_socktype = SOCK_DGRAM;
+-	error = getaddrinfo(f->f_un.f_forw.f_hname, "syslog", &hints, &res);
+-	if (error) {
+-		return gai_strerror(error);
+-	}
+-	if (res->ai_addrlen > sizeof(f->f_un.f_forw.f_sa)) {
+-		freeaddrinfo(res);
+-		return "addrlen too large";
+-	}
+-	if (family == AF_INET6 && res->ai_family == AF_INET) {
+-		/* v4mapped addr */
+-		f->f_un.f_forw.f_addr.sa_family = AF_INET6;
+-		f->f_un.f_forw.f_addr6.sin6_port =
+-			((struct sockaddr_in *)res->ai_addr)->sin_port;
+-		f->f_un.f_forw.f_addr6.sin6_addr.s6_addr16[5] = 0xffff;
+-		memcpy(&f->f_un.f_forw.f_addr6.sin6_addr.s6_addr32[3],
+-			&((struct sockaddr_in *)res->ai_addr)->sin_addr,
+-			sizeof(struct in_addr));
+-	} else {
+-		memcpy(&f->f_un.f_forw.f_addr, res->ai_addr, res->ai_addrlen);
+-	}
+-	freeaddrinfo(res);
+-
+-	return NULL;
+-}
+-#endif /* end of INET6 */
+ #endif
+ 
+ char **
+@@ -1814,7 +1748,7 @@ void fprintlog(f, from, flags, msg)
+ 	char line[MAXLINE + 1];
+ 	time_t fwd_suspend;
+ #ifdef INET6
+-	const char *errmsg;
++	int reserr;
+ #else
+ 	struct hostent *hp;
+ #endif
+@@ -1883,38 +1817,21 @@ void fprintlog(f, from, flags, msg)
+ 	 */
+ 	case F_FORW_UNKN:
+ 		dprintf(" %s\n", f->f_un.f_forw.f_hname);
+-		fwd_suspend = time((time_t *) 0) - f->f_time;
+-		if ( fwd_suspend >= INET_SUSPEND_TIME ) {
+-			dprintf("Forwarding suspension to unknown over, retrying\n");
+-#ifdef INET6
+-			if ((errmsg = setup_inetaddr(f))) {
+-				dprintf("Failure: %s\n", errmsg);
+-#else
+-			if ( (hp = gethostbyname(f->f_un.f_forw.f_hname)) == NULL ) {
+-				dprintf("Failure: %s\n", sys_h_errlist[h_errno]);
+-#endif
+-				dprintf("Retries: %d\n", f->f_prevcount);
+-				if ( --f->f_prevcount < 0 ) {
+-					dprintf("Giving up.\n");
+-					f->f_type = F_UNUSED;
+-				}
+-				else
+-					dprintf("Left retries: %d\n", f->f_prevcount);
+-			}
+-			else {
+-			        dprintf("%s found, resuming.\n", f->f_un.f_forw.f_hname);
+-#ifndef INET6 /* not */
+-				memcpy((char *) &f->f_un.f_forw.f_addr.sin_addr, hp->h_addr, hp->h_length);
+-#endif
+-				f->f_prevcount = 0;
+-				f->f_type = F_FORW;
+-				goto f_forw;
+-			}
++		reserr = resolve_name(f->f_un.f_forw.f_hname,
++					family,
++					&f->f_un.f_forw.f_addr);
++		if (reserr > 0) {
++			dprintf("Successfully resolved hostname \"%s\"\n", f->f_un.f_forw.f_hname);
++			f->f_type = F_FORW;
++		} else if (reserr < 0) {
++			dprintf("Giving up on hostname \"%s\"\n", f->f_un.f_forw.f_hname);
++			f->f_type = F_UNUSED;
++			break;
++		} else {
++			/* Not yet - query in progress, or suspended */
++			break;
+ 		}
+-		else
+-			dprintf("Forwarding suspension not over, time " \
+-				"left: %d\n", INET_SUSPEND_TIME - fwd_suspend);
+-		break;
++		/* fallthrough */
+ 
+ 	case F_FORW:
+ 		/* 
+@@ -2544,6 +2461,7 @@ void init()
+ #endif
+ 
+ #ifdef SYSLOG_INET
++	init_resolver();
+ 	if (Forwarding || AcceptRemote) {
+ 		if (finet < 0) {
+ 			finet = create_inet_socket();
+@@ -2560,10 +2478,6 @@ void init()
+ 		InetInuse = 0;
+ 	}
+ 	inetm = finet;
+-#ifdef INET6
+-	if (finet >= 0)
+-		setup_inetaddr_all();
+-#endif
+ #endif
+ 
+ 	Initialized = 1;
+@@ -2923,7 +2837,7 @@ int decode(name, codetab)
+ 	return (-1);
+ }
+ 
+-static void dprintf(char *fmt, ...)
++void dprintf(char *fmt, ...)
+ 
+ {
+ 	va_list ap;

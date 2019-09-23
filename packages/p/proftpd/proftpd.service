@@ -1,0 +1,10 @@
+[Unit]
+Description=ProFTPd FTP server
+After=systemd-user-sessions.service network.target nss-lookup.target local-fs.target remote-fs.target
+
+[Service]
+ExecStart=/usr/sbin/proftpd --nodaemon
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

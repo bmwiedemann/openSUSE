@@ -1,0 +1,15 @@
+--- zanshin-0.4.1/CMakeLists.txt	2016-11-21 16:01:51.528098093 +0100
++++ zanshin-0.4.1.new/CMakeLists.txt	2016-11-21 16:01:34.876162691 +0100
+@@ -46,7 +46,11 @@ if(APPLE)
+ endif()
+ 
+ if(UNIX)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
++    if("${CMAKE_CXX_COMPILER_VERSION}" VERSION_LESS "5.0.0.0")
++       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
++    else()
++       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
++    endif()
+     set(CMAKE_CXX_STANDARD 14) # Enable C++14, with cmake >= 3.1
+     set(CMAKE_CXX_EXTENSIONS OFF) # Don't enable gcc-specific extensions
+ endif()

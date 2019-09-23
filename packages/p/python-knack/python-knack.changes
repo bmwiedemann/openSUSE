@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Wed Jul 24 08:22:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.3:
+  * Fixes issue where argument marked is_preview=True would not always be handled correctly.
+  * Fixes issue where ensuring a directory exists could cause a race condition.
+
+-------------------------------------------------------------------
+Fri May 24 12:36:58 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.6.2
+ * Adds ability to declare that command groups, commands, and arguments
+   are in a preview status and therefore might change or be removed.
+   This is done by passing the kwarg `is_preview=True`.
+ * Adds a generic `StatusTag` class to `knack.util` that allows you
+   to create your own colorized tags like `[Preview]` and `[Deprecated]`.
+ * When an incorrect command name is entered, Knack will now attempt
+   to suggest the closest alternative.
+
+-------------------------------------------------------------------
+Tue May 21 09:51:57 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.1:
+  * Always read from local for configured_default
+- from version 0.6.0
+  * Support local context chained config file
+
+-------------------------------------------------------------------
+Fri Apr 12 12:24:44 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.5.4
+  * Allows the loading of text files using @filename syntax.
+  * Adds the argument kwarg configured_default to support setting
+    argument defaults via the config file's [defaults] section or
+    an environment variable.
+
+-------------------------------------------------------------------
+Thu Mar 28 15:07:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.3:
+  * Removes an incorrect check when adding arguments.
+  * Updates usages of yaml.load to use yaml.safe_load.
+  * Fix issue with some scenarios (no args and --version)
+  * Adds support for positional arguments with the .positional helper method on ArgumentsContext.
+  * Removes the necessity for the type field in help.py. This information can be inferred from the class, so specifying it causes unnecessary crashes.
+  * Adds support for examining the result of a command after a call to invoke. The raw object, error (if any) an exit code are accessible.
+  * Fixes an issue with the default config directory. It use to be .cli and is now based on the CLI name.
+  * Adds ability to specify line width for help text display.
+  * Preserves logging verbosity and output format on the namespace for use by validators.
+  * Adds ability to set config file name.
+  * Fixes bug with argument deprecations.
+- Switch to github archive to run tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:51 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Oct  4 10:28:24 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.4.3
+  + Fixes issue where values were sometimes ignored when using
+    deprecated options regardless of which option was given.
+- from version 0.4.2
+  + Bug fixes: [output]: disable number parse on table mode PR #88
+- from version 0.4.1
+  + Version 0.4.0 introduced deprecation to Knack. This
+    release fixes a bug related to that.
+    * Ensures that the action kwarg is only set if the item is
+      deprecated. Previously it would set it to "None" which
+      would then override a pre-existing action like store_true.
+  + Version 0.4.0 also added the concept of the command group table
+    to the CommandsLoader class. This release corrects an issue
+    related to that:
+    * The command group table would only be filled by calls to create
+      CommandGroup classes. This resulted in some gaps in the command
+      group table.
+- from version 0.4.0
+  + Add mechanism to deprecate commands, command groups,
+    arguments and argument options.
+  + Improve help display support for Unicode.
+- from version 0.3.3
+  + expose a callback to let client side perform extra logics (#80)
+  + output: don't skip false value on auto-tabulating (#83)
+
+-------------------------------------------------------------------
+Wed May  2 13:54:59 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 0.3.2
+  + ArgumentsContext.ignore() should use hidden options_list (#76)
+  + Consolidate exception handling (#66)
+- Fix bogus comment in spec file
+
+-------------------------------------------------------------------
+Thu Feb  8 22:50:26 UTC 2018 - adrian.glaubitz@suse.com
+
+- Initial release
+  + Version 0.3.1

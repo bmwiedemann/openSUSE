@@ -1,0 +1,33 @@
+From 8cf4e9d0da6fd3ad794928faad8619aa66c3ddd3 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Wed, 26 Jul 2017 17:34:21 +0200
+Subject: [PATCH] Don't suggest to install libburn
+
+The message is actually misleading because k3b uses cdrskin which is
+packaged separately to libburn in openSUSE.
+
+Let's stick to prefer cdrecord for now.
+People who want to use cdrskin instead can still install it.
+(boo#1050715)
+---
+ src/k3bsystemproblemdialog.cpp | 6 ------
+ 1 file changed, 6 deletions(-)
+
+Index: k3b-17.11.80/src/k3bsystemproblemdialog.cpp
+===================================================================
+--- k3b-17.11.80.orig/src/k3bsystemproblemdialog.cpp
++++ k3b-17.11.80/src/k3bsystemproblemdialog.cpp
+@@ -293,13 +293,6 @@ void K3b::SystemProblemDialog::checkSyst
+ #endif
+         }
+ 
+-        if (!k3bcore->externalBinManager()->foundBin("cdrskin")) {
+-            problems.append(K3b::SystemProblem(K3b::SystemProblem::NON_CRITICAL,
+-                i18n("Unable to find %1 executable", QString("cdrskin")),
+-                i18n("Cdrskin can substitute for cdrecord with data and audio"
+-                     " CD, and for growisofs with DVD and BD."),
+-                i18n("Consider to install the libburn and cdrskin packages.")));
+-        }
+     }
+ 
+ 

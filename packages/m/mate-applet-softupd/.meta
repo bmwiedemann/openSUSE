@@ -1,0 +1,11 @@
+<package name="mate-applet-softupd" project="openSUSE:Factory">
+  <title>MATE panel applet for software update notifications</title>
+  <description>This is a MATE panel applet to notify when software updates are available.
+
+The notification is displayed in two ways:
+  1) by changing the icon of the applet.
+  2) by sending a notification to the notification-daemon.
+
+The information is obtained from PackageKit.</description>
+  <devel project="X11:MATE:Factory" package="mate-applet-softupd"/>
+</package>

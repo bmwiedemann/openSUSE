@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Wed Mar  4 15:56:01 UTC 2015 - dimstar@opensuse.org
+
+- Install COPYING as part of the lib package.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:50:24 UTC 2015 - dimstar@opensuse.org
+
+- Rename package to liblazy: the package name must not be following
+  the shared library packaging policy naming convention.
+- Create a proper SLPP package, splitting liblazy1 out (thus
+  keeping the same name for the 'actual' package). As a side-effect
+  this now renames liblazy1-devel back to liblazy-devel (which was
+  an error in a previous 'cleanup').
+
+-------------------------------------------------------------------
+Wed Oct  8 18:26:51 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags and sections.
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Dec 18 23:06:48 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- enable parallel build
+
+-------------------------------------------------------------------
+Sun May 11 12:20:07 CEST 2008 - coolo@suse.de
+
+- fix rename of xxbit packages
+
+-------------------------------------------------------------------
+Wed May  7 21:15:42 CEST 2008 - coolo@suse.de
+
+- 10.3 had 0.2 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Nov 22 21:10:33 CET 2007 - hmacht@suse.de
+
+- add Provides: and Obsoletes: due to package rename to liblazy1
+- use %configure
+- no longer use %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Nov 20 12:54:09 CET 2007 - hmacht@suse.de
+
+- rename package to liblazy1 due to packaging policy
+- update to version 0.2 due to gcc 4.3 consistency
+
+-------------------------------------------------------------------
+Thu Aug 16 17:19:48 CEST 2007 - hmacht@suse.de
+
+- fix PolicyKit related API 
+
+-------------------------------------------------------------------
+Wed Aug 15 15:57:17 CEST 2007 - hmacht@suse.de
+
+- update to v0.2 due to PolicyKit update (novell bug 299733):
+   - use new PolicyKit API >= 0.4
+   - fix bug that liblazy_hal_query_capability doesn't always
+     return 'false'
+   - add function to use private D-Bus connection so that apps
+     survive a D-Bus restart
+
+-------------------------------------------------------------------
+Fri Nov 17 16:57:03 CET 2006 - hmacht@suse.de
+
+- add more error handling (novell bug 220912) 
+
+-------------------------------------------------------------------
+Thu Oct 26 19:33:24 CEST 2006 - hmacht@suse.de
+
+- fix function to query privilege by uid
+- add function to query privilege of the _current_ user
+
+-------------------------------------------------------------------
+Wed Oct  4 15:05:17 CEST 2006 - hmacht@suse.de
+
+- link against libdbus-1.so
+
+-------------------------------------------------------------------
+Mon Oct  2 15:26:20 CEST 2006 - hmacht@suse.de
+
+- set given strlist pointer to NULL if call to getting string list
+  property from HAL fails
+- replace GPL COPYING file with LGPL COPYING file
+
+-------------------------------------------------------------------
+Wed Sep 27 21:03:17 CEST 2006 - hmacht@suse.de
+
+- initial checkin
+

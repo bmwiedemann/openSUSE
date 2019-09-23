@@ -1,0 +1,192 @@
+-------------------------------------------------------------------
+Sat Oct 27 02:34:49 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh patch-Makefile-ldflags.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Sat Oct 27 02:32:53 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 08.03.00.18
+  Due to some minor changes in the internal API, there were some
+  small changes in the source to accommodate the changes.
+
+-------------------------------------------------------------------
+Thu Oct 25 14:09:53 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Add build for PostgreSQL 11 and drop 9.3.
+- BuildRequire server-devel instead of devel.
+
+-------------------------------------------------------------------
+Thu Aug 10 16:59:39 UTC 2017 - mrueckert@suse.de
+
+- use _multibuild
+
+-------------------------------------------------------------------
+Tue Jul 25 14:06:34 UTC 2017 - bruno@ioda-net.ch
+
+- Packaging
+  + Make comment versionable
+  + Remove obsoleted macro (mkdir, install)
+  + Fix copyright line 
+
+-------------------------------------------------------------------
+Wed Jul 12 14:47:07 UTC 2017 - bruno@ioda-net.ch
+
+- Remove non maintained postgresql version 9.1 9.2
+
+-------------------------------------------------------------------
+Sat Jan 14 17:28:25 UTC 2017 - bruno@ioda-net.ch
+
+- Undo the rename of postgresql-plr.changes.in to make happy 
+  factory auto-bot 
+
+-------------------------------------------------------------------
+Wed Jan 11 17:13:28 UTC 2017 - bruno@ioda-net.ch
+
+- Update to 08.03.00.17 version - Bring support to postgresql96
+- Packaging
+  + Move source to github and adapt packaging for that
+  + Add plr-US.pdf as documentation, html being not delivered
+    Documentation is build outside of the package to avoid texlive
+  + Redone patch-Makefile-ldflags.patch to current sources
+  + Rename postgresql-plr.changes.in to postgresql-plr.changes to
+    ease osc vc edition, adapt pre_checking.sh to this change. 
+
+Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch
+-------------------------------------------------------------------
+
+- Fix postun/postin ldconfig call (see comment in sr#345782)
+
+-------------------------------------------------------------------
+Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
+
+- Update to last upstream tar.gz 
+  Due to missing root plr, and documentation (Conway)
+- Removed upgrade alter extension, this doesn't work yet
+
+-------------------------------------------------------------------
+Mon Feb  9 16:58:26 UTC 2015 - bruno@ioda-net.ch
+
+- Update to upstream 8.3.0.16
+
+   Update for PostgreSQL 9.5dev compatibility
+   Update copyrights
+   Add check and throw an error when don't have an expectedDesc.
+   Remove autocommit setting -- it has been removed in PostgreSQL 
+   9.5, and it has been ineffective for a long time. 
+     Reported by Peter E.
+   Fix RPM spec file (redhat)
+
+- Added support to postgresql94 packages
+- modified patches: redone for 8.0.16
+  * patch-Makefile-ldflags.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 19:38:09 UTC 2014 - bruno@ioda-net.ch
+
+- Revised year
+- Added pre_checkin.sh methode to create variant packages 
+
+-------------------------------------------------------------------
+Fri Dec  6 10:30:35 UTC 2013 - bruno@ioda-net.ch
+
+- Update to upstream 8.0.15
+ Update for PostgreSQL 9.3 compatibility
+ Ensure certain errors in R code do not crash postgres
+ Unbreak compilation with older versions of postgres not having rangetypes
+ Allow use of OUT parameters
+
+- modified patches: redone for 8.0.15
+  * patch-Makefile-ldflags.patch
+-------------------------------------------------------------------
+Mon Nov 18 15:50:05 UTC 2013 - bruno@ioda-net.ch
+
+- Packaging postgresql-plr 
+  Added postgresql-server as BuildRequires so rpmlint doesn't complain about
+  owner of postgresql base install directory
+
+-------------------------------------------------------------------
+Fri Sep 27 09:12:04 UTC 2013 - bruno@ioda-net.ch
+
+- split postgresql-plr to postgresql version aligned
+  postgresql91-plr linked to postgresql91
+  postgresql92-plr linked to postgresql92
+  postgresql93-plr linked to postgresql93
+
+-------------------------------------------------------------------
+Wed Jul 24 14:57:26 UTC 2013 - bruno@ioda-net.ch
+
+- Upgrade to 8.3.0.14
+  Update copyright for 2013
+  Remove hack to take signal back from R interpreter (Mark Kirkwood)
+  Set R_SignalHandlers = 0, the proper way to prevent R from taking signals in the first place (Mark Kirkwood)
+  Adjust RPM spec file
+  As of pg9.2 the syntax "LANGUAGE 'C'" no longer works. Use "LANGUAGE C" instead.
+  The MacPorts installation has the header filed distributed across two different directories, so there is no single "rincludedir" to query from pkg-config. Instead, do it the proper way and ask pkg-config for the cflags, which should work for all installation variants. (Peter Eisentraut)
+
+-------------------------------------------------------------------
+Wed Jan  2 14:32:34 UTC 2013 - darin@darins.net
+
+* Upgrade to 8.3.0.13.1
+ - Fix CREATE FUNCTION statements so that they work
+   with PostgreSQL 9.2.x 
+
+-------------------------------------------------------------------
+Mon Apr 16 18:19:12 UTC 2012 - bruno@ioda-net.ch
+
+- Make factory happy added R-base as Build-Require 
+
+-------------------------------------------------------------------
+Sun Apr  1 13:01:25 UTC 2012 - bruno@ioda-net.ch
+
+- Fix formatting & licence scheme
+
+-------------------------------------------------------------------
+Fri Mar 30 13:59:57 UTC 2012 - bruno@ioda-net.ch
+
+- Fix installation directory : goes to extension now 
+- Added missing expected plr.out to doc as sample howto
+
+-------------------------------------------------------------------
+Sat Mar  3 19:45:10 UTC 2012 - bruno@ioda-net.ch
+
+- Split documentation to postgresql-plr
+- Add more informations (first step and test to readme.SUSE)
+- Try to use -rpath (following darix advise) but no success 
+
+-------------------------------------------------------------------
+Mon Oct 17 05:52:14 UTC 2011 - bruno@ioda-net.ch
+
+* Upgrade to 8.3.0.13
+ - Fix Makefile so that msvc scripts can process it successfully
+ - Add support for pgsql 9.1 CREATE EXTENSION
+ - Put in safeguard to prevent attempted return of non-data (e.g. 
+   closure) types from R unless the pg return type is BYTEA
+ - Correct thinko from earlier pass-by-val array optimization
+ - Fix crashbug related to conversion of R data.frame to Postgres 
+   array on function return
+ - Add plr_version() function: outputs a version string
+ - New feature: allow PL/R functions to be declared and used 
+   as WINDOW functions
+ - Minor fixes for compiler warnings by updated gcc
+ - Fix missing calls to UNPROTECT. Report and patch by Ben Leiting.
+ - Take SIGINT back into Postgres control from R. Report and test case 
+   by Terry Schmitt.
+ - Don't try to free an array element value when the array element is NULL
+ - Allow pg.spi.prepare/pg.spi.execp to use parameters which are 1D arrays- 
+
+-------------------------------------------------------------------
+Fri Jun 17 08:53:01 UTC 2011 - bruno@ioda-net.ch
+
+- Fixed spurious perms
+
+-------------------------------------------------------------------
+Mon Jun 13 07:47:38 UTC 2011 - bruno@ioda-net.ch
+
+ - Try to fix folders installation
+
+-------------------------------------------------------------------
+Wed Jun  8 19:21:44 UTC 2011 - bruno@ioda-net.ch
+
+- First spec version for obs
+

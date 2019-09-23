@@ -1,0 +1,22 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: curlftpfs: sem_post needs -pthread
+
+curlftpfs calls sem_post, which needs to be built with -pthread
+ 
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ Makefile.am |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,7 +6,8 @@ DIST_SUBDIRS = $(SUBDIRS) tests
+ LIBICONV = @LIBICONV@
+ 
+ AM_CPPFLAGS = -DFUSE_USE_VERSION=26
+-AM_LDFLAGS = $(LIBICONV)
++AM_CFLAGS = -pthread
++AM_LDFLAGS = $(LIBICONV) -pthread
+ 
+ bin_PROGRAMS = curlftpfs
+ 

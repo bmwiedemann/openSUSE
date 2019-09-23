@@ -1,0 +1,435 @@
+-------------------------------------------------------------------
+Thu Jul 11 15:02:03 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.2.3:
+  * Articulations didn't play properly in MDL instruments
+  * Tuplets layout was broken in some cases
+  * Fingering jumped unpredictably in some cases
+  * Switching between workspaces erased the enabled plugins
+  * Bugfixes. For details see https://musescore.org/en/3.2.3
+- update correct-revision.patch
+
+-------------------------------------------------------------------
+Sun Jun 30 20:35:18 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.2.2:
+  + Most important improvements:
+    * Sticking (the process of assigning certain notes to either our
+      left or right hand) as a new command
+    * Make basic colors of the application including voice colors consistent
+    * 7/8 time signature was added to advanced workspace and master 
+      palette
+    * Avoid poor alignment of hairpins to dynamics bound to the segment
+      before hairpin start
+    * Add style settings allowing MDL templates to follow basic drum
+      line notation rules better
+    * Double/triple-clicking in a text editing mode now selects a
+      word/paragraph respectively
+  + Also numerous fixes, for details see github release page:
+    * https://github.com/musescore/MuseScore/releases
+- Update correct-revision.patch  
+
+-------------------------------------------------------------------
+Fri Jun  7 22:02:48 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.1.0:
+  New:
+  * Single-note dynamics playback - long notes can play dynamic changes
+  * Updated soundfont that supports single-note dynamics out of the box
+  * High quality soundfont with better strings and synth instruments
+    available as an extension in the Resource Manager
+  * Option to completely disable Auto Placement
+  * Elements can cross staves still participating in Auto Placement
+  * Half-time/Double-time feature that shortens and lengthens rhythms
+    on copy-pasting
+  * Linearization feature that unrolls all repeats
+  * Internal computational approach that allows creating 256th, 512th,
+    1024th notes and any kind of compound tuplets
+  * Online documentation for Plugin API is available
+  Further:
+  * Several improvements and a number of bugfixes
+- Update correct-revision.patch
+
+-------------------------------------------------------------------
+Fri Mar 15 18:48:42 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.0.5:
+  Improvements:
+  * The whole chord sounds when iterating over notes with left-right
+    arrows
+  * Support more properties for fingering
+  * Add more properties for Plugin API
+  * Optimise New Score Wizard start time and layout calculations
+  Fixes:
+  * MuseScore 3.0.4 crashed on startup on macOS
+  * Score margins and related staves positioning were calculated
+    incorrectly
+  * Spacers worked incorrectly when interacting with page borders
+  * Measure counting was wrong when setting a custom offset value
+  * Keyboard navigation in Single Page view worked incorrectly
+  * MuseScore crashed on finishing work on Windows
+  * MuseScore crashed when changing Time Signature in parts
+  * MuseScore crashed when selecting a bracket in edit mode
+
+-------------------------------------------------------------------
+Fri Mar  1 13:38:39 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.0.4:
+  Fixes:
+  * All instruments played as piano in some specific cases
+  * "Save online" login screen didn't work on Mac
+  * Removing section break crashed the editor in some cases
+  * Copying measure repeats didn't work
+  * Brass Quartet and Brass Quintet templates couldn't be opened
+- Update to 3.0.3:
+  New
+  * New crash report facility (this is disabled in our build for now)
+  Improvements
+  *  Whole score playback can be turned on when in the Part tab
+    using the mixer. Part playback works by default in in the Part tab
+  * Improved global performance
+  * Drag-and-drop user experience is improved
+  Fixes
+  * Caesuras and sections breaks didn't cause pauses in playback
+  * Some properties were not properly saved
+  * Fermatas over barlines could not be added
+  * Articulations could not be added to grace notes
+  * Redundant key/time signatures appeared in Page/Continuous view
+    and Parts
+  * Visibility was not properly applied
+  * Ties failed to be copied-pasted in a score with parts
+  *  Keyboard navigation in Continuous View was broken
+- Updated correct-revision.patch to reflect new version  
+
+-------------------------------------------------------------------
+Fri Feb 15 16:09:53 UTC 2019 - cornelis@solcon.nl
+
+- Update to 3.0.2:
+  * Improvements
+    + Reworked login screen when using Save Online allows signing in via 
+      Facebook and Google and creating an account from within the editor
+    + New easy fingering input mode and other fingering improvements
+  * Fixes
+    + Plugins framework didn't work
+    + Grace notes displayed the wrong size in TAB staves
+    + Default window size was too large on a multi-monitor setup
+    + Color was not available as a text style setting, including issues with 
+      coloring lyrics for different voices
+    + Slurs were not exported properly to MusicXML
+    + Tempo text was not imported properly from MusicXML
+- Updated correct-revision.patch
+
+-------------------------------------------------------------------
+Sat Jan 19 15:28:55 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.0.1:
+  * Improvements
+    + Redesign of New Score Wizard makes it easier to search 
+      templates, provides better score previews, and significantly 
+      improves accessibility for blind users
+    + Reworked Mixer UI allows minimizing and making it dockable
+    + Better automatic placement of hairpins and dynamics
+    + Better import of 2.X scores
+  * Fixes
+    + Properties were not saved properly in a number of cases
+    + Layout was broken after operations with measure rests and 
+      tuplets
+    + Time signatures appeared incorrectly in some cases and might 
+      lead to crash
+    + Using the implode tool on notes connected with slurs led to 
+      crashes
+    + Editing a barline was applied incorrectly
+    + Context menu on instrument names didn't appear
+    + Pages with landscape orientation were cropped when printing
+    + Playback went crazy on saving
+    + Tempo was applied incorrectly in certain cases involving 
+      fermatas
+    + Slurs were lost or detached in some cases
+    + Autoplacement couldn't be switched off for stems and arpeggio
+- Added correct-revision.patch: revision number in the source 
+  tarballs on github is wrong
+
+-------------------------------------------------------------------
+Fri Jan  4 14:35:14 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.0.0: A major feature release:
+  * Musical notation
+    + Automatic placement - potential collisions between elements 
+      are detected and resolved automatically, allowing you to easily 
+      create great-looking scores with little need for manual adjustment
+    + Improved parts facility - link parts to specific voices within 
+      a staff
+    + System dividers - automatically generate dividers between 
+      systems
+    + Staff type changes - change staff size, number of lines, and 
+      other properties mid-score
+    + Temporary and cutaway staves - staves may appear and disappear 
+      as needed, including the ability to have empty measures be 
+      completely invisible
+    + MuseJazz font - give all elements in your scores a handwritten 
+      appearance
+    + Named noteheads - automatically display pitch names in 
+      noteheads using a variety of different naming schemes
+  * Usability
+    + Tours - get online help automatically as you need it
+    + Timeline - navigate using a graphical overview of the music 
+      structure of your score that shows rehearsal marks, changes of 
+      tempo, key, and time signature, etc.
+    + Score comparison tool - easily view differences between 
+      versions of a score
+    + Single page mode - vertically scrolling view of your score
+    + Improved Inspector - control more element properties and set 
+      style defaults directly from the Inspector window, including new 
+      above/below placement settings
+    + Palette search - enter a search term to quickly find any 
+      symbol
+    + Timewise note input and editing - insert and deletes notes and 
+      rests within measures, automatically shifting subsequent music 
+      forwards or backwards
+    + Next/previous element - Alt+Right/Left shortcuts to navigate 
+      through each element of your score
+    + Auto-update - no longer necessary to download and install new 
+      versions from musescore.org
+  * Playback
+    + Improved Mixer - mute individual voices, collapse channels 
+      into a single column, assign MIDI ports and channels
+    + Improved Piano Roll Editor - easier control of the playback 
+      parameters of each note in your score
+    + Redesigned Play Panel - docked within main window
+- Removed no longer necessary remove_diff_match_patch.diff: the library
+  is replaced and removed because of a conflict in licensing.
+- Removed now included fix-build-qt512.patch
+
+-------------------------------------------------------------------
+Thu Dec 27 00:03:00 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-build-qt512.patch to fix build with Qt 5.12
+
+-------------------------------------------------------------------
+Mon Oct  1 09:22:01 UTC 2018 - cornelis@solcon.nl
+
+- Add remove_diff_match_patch.diff to solve license conflict: it
+  removes the Apache licensed diff_patch_match library.
+
+-------------------------------------------------------------------
+Mon Sep 17 07:38:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Do not run fdupes over
+  the default partition boundaries.
+
+-------------------------------------------------------------------
+Fri Sep 14 09:12:08 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Cleaned up spec file a bit.
+
+-------------------------------------------------------------------
+Wed Aug  8 16:43:33 UTC 2018 - dliw@posteo.net
+
+- Update to 2.3.2
+  * Release 2.3.2
+    Released 31 July 2018
+    For a complete description of what has changed for 2.3.2
+    see https://musescore.org/en/handbook/developers-handbook/release-notes/release-notes-musescore-232
+
+-------------------------------------------------------------------
+Mon Jul 30 21:00:23 UTC 2018 - dliw@posteo.net
+
+- Update to 2.3.1
+  * Release 2.3.1
+    Released 6 July 2018
+    For a complete description of what has changed for 2.3.1
+    see https://musescore.org/en/handbook/developers-handbook/release-notes/release-notes-musescore-231
+  * Release 2.3.0
+    Released 29 June 2018
+    For a complete description of what has changed for 2.3.0
+    see https://musescore.org/en/handbook/developers-handbook/release-notes/release-notes-musescore-23
+
+- Remove patch musescore-fix-include.patch (no longer needed)
+
+-------------------------------------------------------------------
+Sat Jun  9 14:10:47 UTC 2018 - dliw@posteo.net
+
+- Update to 2.2.1
+  * Release 2.2.1
+    Released 3 April 2018
+    For a complete description of what has changed for 2.2.1
+    see https://musescore.org/en/handbook/developers-handbook/release-notes/release-notes-musescore-221
+  * Release 2.2.0
+    Released 27 March 2018
+    For a complete description of what has changed for 2.2.0
+    see https://musescore.org/en/handbook/developers-handbook/release-notes/release-notes-musescore-22
+  * Release 2.1.0
+    Released 2 May 2017
+    For a complete description of what has changed for 2.1.0
+    see https://musescore.org/en/developers-handbook/release-notes/release-notes-musescore-2.1
+  * Release 2.0.3
+    Released 6 April 2017
+    For a complete description of what has changed for 2.0.3
+    see https://musescore.org/en/developers-handbook/release-notes/release-notes-musescore-2.0.3
+
+- Clean up spec file
+- Obsolete musescore-doc
+- Fix build with Qt >= 5.11
+  new patch musescore-fix-include.patch (from upstream)
+
+-------------------------------------------------------------------
+Fri Nov 13 19:21:57 UTC 2015 - cornelis@solcon.nl
+
+- add make-lame-optional.diff (backport from upstream) so that we
+  can build without lame
+- lowered Qt requires to 5.3.0 (as CMakefilelist has it)
+
+-------------------------------------------------------------------
+Tue Sep  1 21:33:25 UTC 2015 - wbauer@tmo.at
+
+- fix package dependencies (boo#943985)
+
+-------------------------------------------------------------------
+Tue Jul 21 16:17:32 UTC 2015 - cgardner@suse.com
+
+- Version 2.0.2, released July 2015.
+
+-------------------------------------------------------------------
+Wed Mar 25 13:03:52 UTC 2015 - cgardner@suse.com
+
+- Update to consistently require Qt5 (5.4.2) for all distros from this repo
+  to reduce problems with mismatched Qt libraries preventing mscore from loading
+
+-------------------------------------------------------------------
+Mon Mar 23 19:09:51 UTC 2015 - cgardner@suse.com
+
+- Version 2.0, released 23 March 2014.  See
+  http://musescore.org/en/node/50996 
+  This is the first major release of MuseScore since version 1.3
+
+-------------------------------------------------------------------
+Sun Oct 27 21:33:27 UTC 2013 - schoett@gmx.de
+
+- Install mime data file mscore.xml.
+
+-------------------------------------------------------------------
+Wed Feb 27 16:46:05 UTC 2013 - cgardner@suse.com
+
+- Version 1.3, released 27 Feb 2013.  See
+  http://musescore.org/en/developers-handbook/release-notes/release-notes-musescore-1.3
+  This release has a very limited number of bug fixes over 1.2.
+
+-------------------------------------------------------------------
+Thu Mar 15 02:30:49 UTC 2012 - cgardner@suse.com
+
+- Added /etc/modules-load.d/musescore.conf to load snd-seq on openSUSE 12+
+
+-------------------------------------------------------------------
+Tue Mar 13 16:57:26 UTC 2012 - cgardner@suse.com
+
+- Version 1.2, released 13 March 2012.  See 
+  http://musescore.org/en/developers-handbook/release-notes/release-notes-musescore-1.2
+  As usual, a few new features and many bugfixes.
+
+-------------------------------------------------------------------
+Thu Jul 28 16:41:57 UTC 2011 - cgardner@suse.com
+
+- Version 1.1, released 27 July 2011.  See 
+  http://musescore.org/en/developers-handbook/release-notes-musescore-1.1
+  Many new features, and more than 60 bugs fixed.
+
+-------------------------------------------------------------------
+Thu May 26 17:42:09 UTC 2011 - cgardner@suse.de
+
+- Fixed compiler problem introduced by gcc 4.6
+
+-------------------------------------------------------------------
+Tue Feb  8 21:18:18 UTC 2011 - cgardner@novell.com
+
+- Removed lilypond from BuildRequires.  It's clearly not needed.
+  Thanks to Nicolas Froment for pointing this out.
+
+-------------------------------------------------------------------
+Mon Feb  7 21:09:01 UTC 2011 - cgardner@novell.com
+
+- First major release, version 1.0.  See http://musescore.org/en/node/9020
+  Several new features, scores of bug fixes.
+
+-------------------------------------------------------------------
+Tue Oct  5 21:01:22 UTC 2010 - cgardner@novell.com
+
+- update to version 0.9.6.3, with the following bug fixes:
+    * fix #6775: Seg. fault by double clicking any element twice
+    * fix #7233: Transpose by diminished second doesn't work (0.9.6 branch regression)
+    * fix #7232: D.S. after coda sign freezes playback
+    * fix #7167: Time signature change causes triplets to corrupt score
+    * fix #7211: Copy/Paste notes over rest of diff. durations in staves
+    * fix #7142: Crescendo & delete measures problems
+    * fix #7197: MuseScore fails to open MSCZ files with capitals
+    * fix #6932: Changing notehead of a breve crash
+    * fix #7077: Applying double-note tremolo to dotted notes fails and alter measure duration
+    * fix #6937: Measure Properties should be modal dialog
+    * fix #6888: When exchanging voice, voice 1 is removed
+    * fix get keysig from plugin when concert pitch mode is set
+    * fix #6735: C# for AltoSax in default soundfont is silent
+    * add access to DPI and notehead, note boundingbox and note position from plugin framework
+    * fix #7150: Changing soundfont does not work for audio export
+
+-------------------------------------------------------------------
+Tue Sep 14 19:14:36 UTC 2010 - cgardner@novell.com
+
+- update to version 0.9.6.2, with the following bug fixes:
+  15.aug (la)
+      * fix #6658: Natural in every keysig on mac PPC
+      * fix #6508: Crash removing instrument with volta
+      * fix #6706: Crash when inserting slurs from palette while editing text
+      * fix #6740: Autosave works only the first time
+  10.aug (ws)
+      * fix repeat command (ctrl+r) for staves > 1
+  6.aug (ws)
+      * attempt to fix font problem (quarternote looks too big in text)
+  5.aug (la)
+      * fix #6479: Crash when closing score during playback
+      * fix #6505: Mixer is not refreshed when scores are switched
+  4.aug (la)
+      * fix #6597: Close/reload crash on XP
+      * fix #6624: Crash when deleting a tuplet from a MusicXML import
+      * fix cursor move on repeatmeasure in plugin framework
+      * fix instrument name containing flats for plugin framework
+  14.jul (ws)
+      * fix mouse wheel handling for mixer elements
+
+-------------------------------------------------------------------
+Thu Jul  8 02:38:56 UTC 2010 - cgardner@novell.com
+
+- update to version 0.9.6
+  "branched" to multimedia project.
+
+-------------------------------------------------------------------
+Thu Nov 26 14:43:09 CET 2009 - lars@linux-schulserver.de
+
+- update to version 0.9.5 
+
+-------------------------------------------------------------------
+Wed Nov 19 11:13:55 CET 2008 - lars@linux-schulserver.de
+
+- build for openSUSE-Education
+- fix some failures detected by rpmlint
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 CET 2008 - jvrdld <jvrdld@opensuse.org>
+
+- updated to version 0.9.3
+
+-------------------------------------------------------------------
+Sun Feb 10 00:00:00 CET 2008 - Carlos Goncalves <cgoncalves@opensuse.org>
+
+- updated to version 0.9.1
+
+-------------------------------------------------------------------
+Tue Jul 31 00:00:00 CET 2007 - Carlos Goncalves <cgoncalves@opensuse.org>
+
+- updated to version 0.6.1
+ * This is a bugfix release fixing the midi import crash and adding 
+   some small usability enhancements.
+
+-------------------------------------------------------------------
+Sun Jul 29 00:00:00 CET 2007 - Carlos Goncalves <cgoncalves@opensuse.org>
+
+- initial package
+

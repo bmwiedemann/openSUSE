@@ -1,0 +1,2 @@
+# Mentioning the name of the supported hardware in the Summary should not trigger a warning
+addFilter("solo.src: W: name-repeated-in-summary C Solo")

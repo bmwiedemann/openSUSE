@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3c4d2af5e75d9237da97c9568d87859</srcmd5>
+    <version>1.0.0</version>
+    <time>1445674989</time>
+    <user>coolo</user>
+    <comment>This is required by recent versions of python-unittest2, which is already in openSUSE:Factory.  It is the python 2 version of python3-linecache2, which is already in openSUSE:Factory.
+
+This should fix the license issues.</comment>
+    <requestid>339043</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>abed401125b661e154badcb740cc4bbc</srcmd5>
+    <version>1.0.0</version>
+    <time>1489020046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477102</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9cff599289efaddca4e525d3e2108ba4</srcmd5>
+    <version>1.0.0</version>
+    <time>1545866823</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659476</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0f2679e800238139a4789329ab489525</srcmd5>
+    <version>1.0.0</version>
+    <time>1548704789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666819</requestid>
+  </revision>
+</revisionlist>

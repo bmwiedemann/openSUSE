@@ -1,0 +1,355 @@
+-------------------------------------------------------------------
+Tue Feb 12 12:42:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- Remove all desktop requires as they just don't fit with the way
+  Tumbleweed moves. And most applications out there nowadays requiring
+  'lsb' don't really mean the standard, but some kind of base system
+  (see boo#1086166)
+
+-------------------------------------------------------------------
+Thu Mar 15 09:30:21 UTC 2018 - dimstar@opensuse.org
+
+- Drop the qt3 dependency: this is not really lsb(4) conform, but
+  it's the 2nd best thing we can do short of keeping Qt3 in the
+  products forever.
+
+-------------------------------------------------------------------
+Thu Aug 24 09:45:24 UTC 2017 - idonmez@suse.com
+
+- Fix missing double quote, unbreaks lsb_release 
+
+-------------------------------------------------------------------
+Tue Aug 15 09:34:08 CEST 2017 - kukuk@suse.de
+
+- Revert change from Nov 18, 2015: copying the data from
+  /etc/os-release to /etc/lsb-release does not work with a rolling
+  release like Tumbleweed [bsc#960501]
+
+-------------------------------------------------------------------
+Tue Feb  7 08:29:30 UTC 2017 - bg@suse.com
+
+- Make package build on s390x
+
+-------------------------------------------------------------------
+Wed Nov 18 13:33:47 UTC 2015 - jimmy@boombatower.com
+
+- Set optional variables in /etc/lsb-release form /etc/os-release provided by openSUSE-release:
+  - DISTRIB_ID
+  - DISTRIB_RELEASE
+  - DISTRIB_CODENAME
+  - DISTRIB_DESCRIPTION
+
+-------------------------------------------------------------------
+Tue Oct  1 07:01:56 UTC 2013 - pgajdos@suse.com
+
+- require libpng12-0 instead of libpng12
+
+-------------------------------------------------------------------
+Thu Sep 26 07:53:20 UTC 2013 - pgajdos@suse.com
+
+- require [bnc#807747]
+    /usr/bin/foomatic-rip
+    /usr/bin/gs
+    /usr/bin/xdg-desktop-icon
+    /usr/bin/xdg-desktop-menu
+    /usr/bin/xdg-email
+    /usr/bin/xdg-icon-resource
+    /usr/bin/xdg-mime
+    /usr/bin/xdg-open
+    /usr/bin/xdg-screensaver
+    Mesa-libGL1
+    libGLU1
+    libXt6
+    libXtst6
+    libasound2
+    libjpeg62
+    libpng12
+    libqt4
+    libqt4-sql
+    libqt4-x11
+    mozilla-nss
+
+-------------------------------------------------------------------
+Thu Jul 19 14:17:12 UTC 2012 - rmilasan@suse.com
+
+- Updated "Requires: python >= 2.7.3", rear can't be installed 
+  otherwise, due to conflics.
+
+-------------------------------------------------------------------
+Mon Feb  7 11:44:37 UTC 2011 - coolo@novell.com
+
+- no need to buildrequire libstdc++
+
+-------------------------------------------------------------------
+Mon Jul 20 15:08:27 CEST 2009 - kukuk@suse.de
+
+- Split off lsb-release [bnc#483655]
+
+-------------------------------------------------------------------
+Thu Jan 14 15:10:00 CEST 2009 - jdluhos@suse.cz
+
+- Upgraded to LSB 4.0
+
+-------------------------------------------------------------------
+Tue Jul 29 12:00:00 CEST 2007 - jdluhos@suse.cz
+
+- Adapted to LSB 3.2
+
+-------------------------------------------------------------------
+Sat Jun 10 14:20:43 CEST 2006 - kukuk@suse.de
+
+- Merge back wth lsb-desktop and set version of provides to 3.0
+
+-------------------------------------------------------------------
+Thu May 18 15:24:37 CEST 2006 - kukuk@suse.de
+
+- Move lsb-graphics part to lsb-desktop
+
+-------------------------------------------------------------------
+Tue May 16 16:17:06 CEST 2006 - kukuk@suse.de
+
+- Bump version number for LSB 3.1
+
+-------------------------------------------------------------------
+Wed Apr 26 11:42:56 CEST 2006 - ro@suse.de
+
+- requires xorg-x11-Mesa -> Mesa 
+
+-------------------------------------------------------------------
+Fri Feb 10 15:29:57 CET 2006 - kukuk@suse.de
+
+- Remove obsolete insserv call
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 17:12:01 CET 2005 - kukuk@suse.de
+
+- Fix typo in Requires list
+
+-------------------------------------------------------------------
+Wed Nov  2 09:44:36 CET 2005 - kukuk@suse.de
+
+- Add ed and mailx to requires [#131283]
+
+-------------------------------------------------------------------
+Fri Sep  9 11:44:44 CEST 2005 - aj@suse.de
+
+- s/target_arch/target_cpu/g; since the first is not defined
+  [#115915].
+
+-------------------------------------------------------------------
+Thu Jun  9 14:59:13 CEST 2005 - kukuk@suse.de
+
+- Fix specfile to work on SLES9
+
+-------------------------------------------------------------------
+Thu Apr 14 10:38:12 CEST 2005 - kukuk@suse.de
+
+- Adjust to current LSB 3.0 draft
+
+-------------------------------------------------------------------
+Mon Feb 28 15:07:56 CET 2005 - kukuk@suse.de
+
+- Remove makedev requirement and compatibility link
+
+-------------------------------------------------------------------
+Fri Jan  7 09:55:31 CET 2005 - kukuk@suse.de
+
+- Fix provides on PPC32
+
+-------------------------------------------------------------------
+Wed Dec 15 15:52:33 CET 2004 - kukuk@suse.de
+
+- Fix bi-arch provides on x86-64 and PPC64
+
+-------------------------------------------------------------------
+Mon Sep 13 14:44:45 CEST 2004 - kukuk@suse.de
+
+- Use "amd64" instead of "x86_64"
+
+-------------------------------------------------------------------
+Mon Sep  6 11:47:30 CEST 2004 - kukuk@suse.de
+
+- Fix macro names
+
+-------------------------------------------------------------------
+Tue Aug 31 16:45:26 CEST 2004 - kukuk@suse.de
+
+- Replace XFree86 -> xorg-x11
+
+-------------------------------------------------------------------
+Tue Jul 20 15:20:37 CEST 2004 - kukuk@suse.de
+
+- Implement LSB 2.0 requirements
+
+-------------------------------------------------------------------
+Mon May 24 14:12:47 CEST 2004 - kukuk@suse.de
+
+- Fix including of ld-lsb links on ppc64, s390x and x86-64
+
+-------------------------------------------------------------------
+Wed May  5 15:58:42 CEST 2004 - kukuk@suse.de
+
+- Rewrote handling of /etc/lsb-release and /etc/SuSE-release
+
+-------------------------------------------------------------------
+Thu Mar 25 16:51:01 CET 2004 - kukuk@suse.de
+
+- Add X11 Libraries to Requires
+
+-------------------------------------------------------------------
+Wed Mar 24 12:08:14 CET 2004 - kukuk@suse.de
+
+- Add init script to set NGROUPS_MAX LSB 1.3 conform
+
+-------------------------------------------------------------------
+Sat Mar 13 17:00:21 CET 2004 - kukuk@suse.de
+
+- Fix requirements
+
+-------------------------------------------------------------------
+Wed Feb 25 15:28:08 CET 2004 - hmacht@suse.de
+
+- building as nonroot-user
+
+-------------------------------------------------------------------
+Mon Sep  1 12:02:35 CEST 2003 - kukuk@suse.de
+
+- Use head -n 1 instead of head -1 [Bug #29624]
+
+-------------------------------------------------------------------
+Mon Jun 16 16:42:01 CEST 2003 - kukuk@suse.de
+
+- Make last change working
+
+-------------------------------------------------------------------
+Thu May 22 16:13:41 CEST 2003 - meissner@suse.de
+
+- on ppc64, include both ppc and ppc64 symlinks.
+
+-------------------------------------------------------------------
+Wed May 21 10:54:48 CEST 2003 - kukuk@suse.de
+
+- fix version number in release file
+
+-------------------------------------------------------------------
+Wed May  7 09:28:59 CEST 2003 - kukuk@suse.de
+
+- Change xdevel -> XFree86-devel
+
+-------------------------------------------------------------------
+Wed Apr 23 12:55:42 CEST 2003 - aj@suse.de
+
+- Add more missing ld-lsb-* links, create correct libdir.
+
+-------------------------------------------------------------------
+Thu Mar 20 09:49:11 CET 2003 - kukuk@suse.de
+
+- Add missing ld-lsb-* links
+
+-------------------------------------------------------------------
+Tue Feb 25 08:43:23 CET 2003 - kukuk@suse.de
+
+- Obsoletes lsb-runtime
+
+-------------------------------------------------------------------
+Wed Jan 15 15:04:33 CET 2003 - meissner@suse.de
+
+- Changed ppc and ia6r4 ld.so symlinks to wanted look.
+
+-------------------------------------------------------------------
+Sat Jan 11 12:05:58 CET 2003 - kukuk@suse.de
+
+- Add gettext to Requires for LSB 1.3 
+
+-------------------------------------------------------------------
+Fri Jan 10 16:28:46 CET 2003 - kukuk@suse.de
+
+- Don't require lsb-runtime, instead include symlink for ld-lsb
+  for ix86
+- Remove mh from requires
+
+-------------------------------------------------------------------
+Wed Oct 30 12:38:08 CET 2002 - meissner@suse.de
+
+- Added support for ppc32. Specify symlink for ld-lsb.so.1 for ppc.
+
+-------------------------------------------------------------------
+Sat Jul 27 14:04:45 CEST 2002 - kukuk@suse.de
+
+- Check for UnitedLinux if no SuSE-release file found
+
+-------------------------------------------------------------------
+Fri Jul  5 16:03:46 CEST 2002 - kukuk@suse.de
+
+- Create LSB entry in etc/lsb-release
+- Bump version number to 1.2
+
+-------------------------------------------------------------------
+Tue Mar  5 12:13:05 CET 2002 - kukuk@suse.de
+
+- Remove ld-lsb.so.1 link
+- Add requires for lsb-runtime
+
+-------------------------------------------------------------------
+Sun Feb 24 09:13:02 CET 2002 - kukuk@suse.de
+
+- Add xdevel to requires
+
+-------------------------------------------------------------------
+Wed Feb  6 17:08:09 CET 2002 - kukuk@suse.de
+
+- Add MAKEDEV compatibility link 
+
+-------------------------------------------------------------------
+Sat Jan 19 16:46:00 CET 2002 - kukuk@suse.de
+
+- Add glibc-i18ndata to requires to pass testsuite
+- Increase version number to 1.1
+
+-------------------------------------------------------------------
+Fri Jan  4 12:01:40 CET 2002 - kukuk@suse.de
+
+- Require all commands needed for LSB
+
+-------------------------------------------------------------------
+Fri Dec 14 16:35:28 CET 2001 - kukuk@suse.de
+
+- Increase version number to 1.0
+- Add pax to requires
+
+-------------------------------------------------------------------
+Tue Sep 18 19:44:13 CEST 2001 - kukuk@suse.de
+
+- Add expect to requires (not fixed in LSB-FHS 2.2)
+
+-------------------------------------------------------------------
+Wed Jan 17 16:37:35 CET 2001 - kukuk@suse.de
+
+- Remove tclx from requires (should be fixed in FHS 2.2)
+
+-------------------------------------------------------------------
+Fri Jan 12 12:44:27 CET 2001 - kukuk@suse.de
+
+- Add requires for FHS 2.1
+- Update to lsb_release 1.4
+
+-------------------------------------------------------------------
+Mon Nov 27 17:01:53 CET 2000 - kukuk@suse.de
+
+- Remove /etc/init.d symlink
+
+-------------------------------------------------------------------
+Wed Nov  1 18:32:54 CET 2000 - kukuk@suse.de
+
+- Update to lsb_release 1.3
+
+-------------------------------------------------------------------
+Mon Sep 18 14:14:20 CEST 2000 - kukuk@suse.de
+
+- Initial version
+

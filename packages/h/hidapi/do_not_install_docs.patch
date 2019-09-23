@@ -1,0 +1,19 @@
+diff --git a/Makefile.am b/Makefile.am
+index a6e47e8..dd92e87 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -43,14 +43,6 @@ endif
+ 
+ EXTRA_DIST = udev doxygen
+ 
+-dist_doc_DATA = \
+- README.md \
+- AUTHORS.txt \
+- LICENSE-bsd.txt \
+- LICENSE-gpl3.txt \
+- LICENSE-orig.txt \
+- LICENSE.txt
+-
+ SCMCLEAN_TARGETS= \
+  aclocal.m4 \
+  config.guess \

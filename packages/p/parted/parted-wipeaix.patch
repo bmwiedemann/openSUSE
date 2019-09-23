@@ -1,0 +1,26 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Subject: parted: dos: Wipe AIX FS signatures
+Patch-mainline: no, custom SUSE patch
+---
+ libparted/labels/dos.c |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+Index: parted-3.2/libparted/labels/dos.c
+===================================================================
+--- parted-3.2.orig/libparted/labels/dos.c
++++ parted-3.2/libparted/labels/dos.c
+@@ -1285,7 +1285,13 @@ msdos_write (const PedDisk* disk)
+ 		return 0;
+ 	DosRawTable *table = (DosRawTable *) s0;
+ 
+-	if (!table->boot_code[0]) {
++	/* either no bootrecord at all, or AIX IPL signature ... */
++	if ( (!table->boot_code[0]) ||
++			( table->boot_code[0] == (char) 0xc9 &&
++			  table->boot_code[1] == (char) 0xc2 &&
++			  table->boot_code[2] == (char) 0xd4 &&
++			  table->boot_code[3] == (char) 0xc1)
++			) {
+ 		memset (table->boot_code, 0, 512);
+ 		memcpy (table->boot_code, MBR_BOOT_CODE, sizeof (MBR_BOOT_CODE));
+ 	}

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09103644c13d91fb84e53d720b14a0cb</srcmd5>
+    <version>3.015</version>
+    <time>1537018488</time>
+    <user>maxlin_factory</user>
+    <comment>needed by Plugin-Status</comment>
+    <requestid>634226</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1bf9746196525e07950bf72ffc26863</srcmd5>
+    <version>4.005</version>
+    <time>1539251597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640428</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8186c099d7262163a31dbed521f00ad4</srcmd5>
+    <version>4.005</version>
+    <time>1541746434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647015</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1f6c1fda2f9b35e09c29a55813ab94c</srcmd5>
+    <version>4.007</version>
+    <time>1567679666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727955</requestid>
+  </revision>
+</revisionlist>

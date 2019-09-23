@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9b3695f11f38d2dfe674dfe4886fc76</srcmd5>
+    <version>6.00</version>
+    <time>1300454410</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64419 from user vitezslav_cizek
+</comment>
+    <requestid>64419</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0723e4c1cbe8c81e4970ce0a729e5155</srcmd5>
+    <version>6.00</version>
+    <time>1300454428</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64419
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03cbb8444282adfb56e89099a0e83ced</srcmd5>
+    <version>6.01</version>
+    <time>1314630644</time>
+    <user>saschpe</user>
+    <comment>update to 6.01</comment>
+    <requestid>80079</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>03cbb8444282adfb56e89099a0e83ced</srcmd5>
+    <version>6.01</version>
+    <time>1319182291</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>0f579c61438ceacdc895843cb2a596a8</srcmd5>
+    <version>6.01</version>
+    <time>1323193507</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>855ed7ded379b8a6e3d32b531d2cc67f</srcmd5>
+    <version>6.02</version>
+    <time>1329405729</time>
+    <user>coolo</user>
+    <comment>- updated to 6.02
+ * Don't disable blocking method [RT#72580]
+ * Don't stop on unrecognized Makefile.PL arguments [RT#68337]
+ * Document Net:HTTPS [RT#71599]</comment>
+    <requestid>104728</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>66d8c0c6b05e2bdace125fe864affa27</srcmd5>
+    <version>6.03</version>
+    <time>1329476878</time>
+    <user>coolo</user>
+    <comment>- updated to 6.03
+  Restore blocking override for Net::SSL [RT#72790]
+  Restore perl-5.6 compatiblity.</comment>
+    <requestid>105626</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>66d8c0c6b05e2bdace125fe864affa27</srcmd5>
+    <version>6.03</version>
+    <time>1340183889</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>66d8c0c6b05e2bdace125fe864affa27</srcmd5>
+    <version>6.03</version>
+    <time>1359109760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf8ac0362b63bd3118de6bc65944c6a7</srcmd5>
+    <version>6.06</version>
+    <time>1371221221</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178050 from coolo)</comment>
+    <requestid>178264</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>cf8ac0362b63bd3118de6bc65944c6a7</srcmd5>
+    <version>6.06</version>
+    <time>1379663787</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>cf8ac0362b63bd3118de6bc65944c6a7</srcmd5>
+    <version>6.06</version>
+    <time>1409302423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>09aaf23c0504277841e9d7df0af49554</srcmd5>
+    <version>6.07</version>
+    <time>1410967456</time>
+    <user>coolo</user>
+    <comment>- updated to 6.07
+ Jason Fesler (1):
+     Opportunistically use IO::Socket::IP or IO::Socket::INET6.
+     Properly parse IPv6 literal addreses with optional port numbers. [RT#75618]</comment>
+    <requestid>249272</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a75f66838a82ec03440db4ee7623c12</srcmd5>
+    <version>6.09</version>
+    <time>1432377735</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308318</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>33a73f24331d5c2b17e3578501939171</srcmd5>
+    <version>6.12</version>
+    <time>1484818831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449577</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d2e82bfe5401296795bfccbb3a656cdd</srcmd5>
+    <version>6.13</version>
+    <time>1487767498</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459309</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f864cc4e9cae3de73f87cb86f135ecf</srcmd5>
+    <version>6.14</version>
+    <time>1494096344</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492411</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf2790cac3cc63dd04002011a94613e9</srcmd5>
+    <version>6.15</version>
+    <time>1495883524</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495803</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>71b074d5dc85033f5e588a597664049d</srcmd5>
+    <version>6.16</version>
+    <time>1496821949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499922</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3aad2c5958709ca85ee6038c25068312</srcmd5>
+    <version>6.17</version>
+    <time>1504617225</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520458</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1e9fa41e4c62378aa4d206b3daa543b3</srcmd5>
+    <version>6.18</version>
+    <time>1526462632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606965</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>acbc499469f479fb641e275dfe160343</srcmd5>
+    <version>6.19</version>
+    <time>1558515022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703699</requestid>
+  </revision>
+</revisionlist>

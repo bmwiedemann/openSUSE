@@ -1,0 +1,33 @@
+--- modules/file-method.c	2007-02-07 10:30:15.000000000 +0200
++++ modules/file-method.c	2007-11-23 22:52:26.000000000 +0200
+@@ -2303,9 +2303,12 @@
+ 	gchar *full_name_source, *full_name_target;
+ 	struct stat s_source, s_target;
+ 	gint retval;
++ 	gboolean source_novfs;
++ 	gboolean target_novfs;
+ 
+ 	full_name_source = get_path_from_uri (source_uri);
+ 	retval = g_lstat (full_name_source, &s_source);
++ 	source_novfs = (strcmp(filesystem_type (full_name_source, full_name_source, &s_source), "novfs") == 0);
+ 	g_free (full_name_source);
+ 
+ 	if (retval != 0)
+@@ -2316,6 +2319,7 @@
+  
+ 	full_name_target = get_path_from_uri (target_uri);
+ 	retval = g_stat (full_name_target, &s_target);
++ 	target_novfs = (strcmp(filesystem_type (full_name_target, full_name_target, &s_target), "novfs") == 0);
+ 	g_free (full_name_target);
+ 
+ 	if (retval != 0)
+@@ -2323,6 +2327,9 @@
+ 
+ 	*same_fs_return = (s_source.st_dev == s_target.st_dev);
+ 
++ 	if (source_novfs && target_novfs)
++		*same_fs_return = FALSE;
++
+ 	return GNOME_VFS_OK;
+ }
+ 

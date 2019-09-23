@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Fri Jul 19 11:26:47 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.2.6.1
+  Installation path fixed 
+
+-------------------------------------------------------------------
+Tue Jul 16 13:06:40 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Categories fixed
+
+-------------------------------------------------------------------
+Sun Jul 14 21:16:48 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.2.6 
+- Macbook touchpad zooming of map issue fixed 
+- Belgium NMC opendata gribs can now be read by XyGrib 
+- GFS reflectivity added 
+- ECMWF ERA5 reanalysis data can now be read 
+- NOADD GFS Ensemble model can now be read 
+- Improvements in wave display 
+- utf-8 characters in file paths should be readable 
+- new icon
+- Many behind the scenes improvements and bug fixes 
+
+-------------------------------------------------------------------
+Thu Feb 21 13:25:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove marketing from descriptions.
+
+-------------------------------------------------------------------
+Thu Feb 21 11:42:29 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Wed Feb 20 21:12:52 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.2.4
+- New feature - Arome 0.025 deg regional model added
+- Grib grid only shown if there is weather display selected and z
+  zoom factor allows it (no more black out)
+- Many code improvements thanks to Didier
+- Bug fixes including crashes on closing POI Editor or opening MeteoTable
+
+-------------------------------------------------------------------
+Wed Jan  9 13:43:36 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.2.2 
+- New feature - Gust color map
+- Cloud display problems with ICON gribs is fixed.
+- Enforcement of minimum area for grib requests is fixed.
+- “Bad Request” errors are no longer returned on very small area requests.
+- Several other bugs were fixed and several code stability improvements were included.
+
+-------------------------------------------------------------------
+Wed Dec 19 09:19:18 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Merge packaging changes from Dominig ar Foll
+- Update to version 1.2.0
+
+-------------------------------------------------------------------
+Wed Jul 25 09:09:25 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.1.0
+- Update build system and dependencies
+
+-------------------------------------------------------------------
+Wed May 30 16:29:34 UTC 2018 - axel.braun@gmx.de
+
+- Version 1.0.1
+  Initial build on OBS
+  Copyright added to spec file
+
+
+Changes originated in zyGrib:
+
+-------------------------------------------------------------------
+Thu Mar  8 12:00:27 UTC 2018 - mpluskal@suse.com
+
+- Use gcc7 for Leap
+- Clean up spec file using spec-cleaner
+
+-------------------------------------------------------------------
+Sun Feb 12 13:57:16 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file:
+  * Use spec-cleaner
+  * Drop codelite builddependency which prevented buildning on SLE
+  * Force optflags on all targets
+
+-------------------------------------------------------------------
+Fri Dec  9 15:37:56 UTC 2016 - axel.braun@gmx.de
+
+- Version 8.0.1
+  * Bug fixed: inverted sea current arrows
+  * There was a problem with some dll in the Windows archive of the previous version.
+  * Read GRIB 2 files.
+  * Bug fixed: inverted sea current arrows.
+  * Display equivalent potential temperature théta-e at the surface and in altitude (calculated from the temperature, pressure and moisture if it is not present in the file).
+  * Faster calculation of the level lines.
+  * Ability to interrupt before the opening of a large file.
+  * Use QT version 5.
+  * Use g2clib NOAA's g2clib library for decoding the GRIB2 format.
+
+-------------------------------------------------------------------
+Tue Nov 11 11:36:49 UTC 2014 - axel.braun@gmx.de
+
+- Version 6.2.4
+- Source patch for qmake
+
+-------------------------------------------------------------------
+Sun Dec  1 15:34:34 UTC 2013 - axel.braun@gmx.de
+
+- New version 6.2.1
+
+x-------------------------------------------------------------------
+Sat Nov 16 16:37:14 UTC 2013 - axel.braun@gmx.de
+
+- Version 6.2.0, dependency on qwt removed
+
+-------------------------------------------------------------------
+Wed Oct 30 13:08:46 UTC 2013 - axel.braun@gmx.de
+
+- Version 6.1.4
+
+-------------------------------------------------------------------
+Tue Apr 23 14:51:20 UTC 2013 - axel.braun@gmx.de
+
+- version 6.1.3
+
+-------------------------------------------------------------------
+Thu Aug 16 14:34:21 UTC 2012 - axel.braun@gmx.de
+
+- release 6.0.0
+- changes to spec file for Fedora/RHEL build
+
+-------------------------------------------------------------------
+Wed Dec 21 13:04:16 UTC 2011 - idonmez@suse.com
+
+- Fix license
+
+-------------------------------------------------------------------
+Wed Dec 21 12:34:21 UTC 2011 - axel.braun@gmx.de
+
+- release 5.1.0
+
+-------------------------------------------------------------------
+Thu Sep 22 11:27:46 UTC 2011 - axel.braun@gmx.de
+
+- release 5.0.6
+
+-------------------------------------------------------------------
+Sun Aug 14 15:52:14 UTC 2011 - axel.braun@gmx.de
+
+- Initial build.
+
+-------------------------------------------------------------------
+Thu Apr 01 2010
+
+- Original Spec Build by "Brian K. White" <brian@aljex.com>

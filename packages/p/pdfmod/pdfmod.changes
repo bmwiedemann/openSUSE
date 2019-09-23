@@ -1,0 +1,196 @@
+-------------------------------------------------------------------
+Thu Sep  7 17:29:42 UTC 2017 - zaitor@opensuse.org
+
+- Replace gmime-sharp with mono(gmime-sharp) BuildRequires: Fix
+  build via the new compat package.
+
+-------------------------------------------------------------------
+Sat Oct  8 14:09:53 UTC 2016 - mailaender@opensuse.org
+
+- Add appdata.xml for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Tue Mar  8 21:56:12 UTC 2016 - dimstar@opensuse.org
+
+- Drop tango-icon-theme BuildRequires: not needed.
+
+-------------------------------------------------------------------
+Tue Jan 29 20:24:53 UTC 2013 - dimstar@opensuse.org
+
+- Add pdfmod-dotnet4.patch: Build for .Net 4.0 target.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:00:31 UTC 2012 - dimstar@opensuse.org
+
+- Replace gmime-2_4-sharp BuildRequires with gmime-sharp: we now
+  build against gmime 2.6.
+
+-------------------------------------------------------------------
+Sat Apr 30 12:57:03 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.1:
+  + Enhancements:
+    - bgo#630012: Make removing many pages much faster
+  + Bugs Fixed:
+    - bgo#631456: Fix being able to load files with : in their path
+    - Fix build on Mono 2.8
+    - bgo#633125: Don't crash if unable to save
+    - bgo#638852: Fix poppler-sharp.dll.config for NetBSD
+    - Fix scrolling the view while dragging
+    - bgo#642379: Don't crash if Outlines point to null
+    - bgo#597215: Fix issue with saving landscape pages
+    - bgo#631889: Fix crash on page click due to ExportImagesAction
+    - bgo#633123: Fix crash if Catalog.Outlines is PdfNull
+- Drop pdfmod-mono-2.8.patch: fixed upstream.
+- Add pdfmod-mono-2.10.patch: fix build with Mono 2.10.
+- Drop pdfmod-poppler-soname.patch and replace it with more logic:
+  + Add libpoppler-glib-devel BuildRequires
+  + Find the soname from libdir/libpoppler-glib.so and sed it into
+    poppler-sharp.dll.config
+- Replace the suse_version-based Requires on libpoppler-glib* with
+  an automatically detected libpoppler-glib* that is used at build
+  time.
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:39:44 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Add missing Recommends for lang subpackage.
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Thu Dec  9 00:20:00 CET 2010 - vuntz@opensuse.org
+
+- Add pdfmod-mono-2.8.patch to fix build with mono 2.8.
+
+-------------------------------------------------------------------
+Tue Oct 12 09:58:44 CEST 2010 - vuntz@opensuse.org
+
+- Add pdfmod-poppler-soname.patch to use the right soname of
+  libpoppler-glib on Factory/11.4.
+- Require libpoppler-glib5 on Factory/11.4.
+- Enable parallel build.
+
+-------------------------------------------------------------------
+Tue Sep 28 15:50:06 CDT 2010 - gburt@suse.de
+
+- Version 0.9.0
+  + Enhancements:
+    - Bookmarks support (bgo#627747)
+    - Make Export Images a page action
+    - Add zoom slider/buttons in bottom-right (bgo#614378,
+      bgo#628437)
+  + Bugs fixed:
+    - Allow compiling with external poppler-sharp
+    - Fix double-width page icon rendering (bgo#590744)
+    - Make SaveAs not require unsaved changes (bgo#628449)
+    - Fix crash with export images by escaping output path
+    - Better handling of files dropped from nautilus
+    - Avoid XDG-related crash in file chooser (bgo#619073)
+    - Mark missing string as translatable (bgo#618596)
+    - Escape directory and filenames properly before making them
+      (bgo#606432)
+    - Fix page tooltip logic
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 22 12:26:48 UTC 2010 - dimstar@opensuse.org
+
+- Switch to gmime 2.4: BuildRequire gmime-2_4-sharp instead of
+  gmime-sharp.
+
+-------------------------------------------------------------------
+Thu Aug 12 21:03:10 CEST 2010 - vuntz@opensuse.org
+
+- Remove unneeded BuildRequires: autoconf, automake, docbook_4,
+  libtool, make, perl-XML-Parser, pkgconfig, scrollkeeper.
+
+-------------------------------------------------------------------
+Thu May  6 18:21:10 PDT 2010 - gburt@suse.de
+
+- Version 0.8.3 - bug fix only release
+  + Release 0.8.2 should have required hyena 0.3
+- BuildRequire hyena > 0.3 as a consequence.
+
+-------------------------------------------------------------------
+Thu May  6 17:29:13 PDT 2010 - gburt@suse.de
+
+- Version 0.8.2 - bug fix only release
+  + Use the stock Dnd icons instead of thumbnails
+  + Add Documents and Download dirs to the shortcuts list in
+    chooser dialogs
+  + Fix a crash when the default RegionInfo is null (bgo#596912)
+  + Catch exceptions when inserting doc (bgo#614009)
+  + Raise Document.Changed after Save so '*' in Title goes away
+  + Fix issue with remembering last directory
+
+-------------------------------------------------------------------
+Wed Mar 24 11:44:24 PDT 2010 - gburt@suse.de
+
+- Version 0.8.1 - bug fix only release
+  + Fix InvalidCastException crash when opening some documents
+  + Remove gnome-sharp dep
+  + Several new and updated translations
+
+-------------------------------------------------------------------
+Wed Nov 11 17:23:33 PST 2009 - gburt@suse.de
+
+- Version 0.8
+  + Add * to beginning of window title when unsaved
+  + Can select more than one file in Open dialog
+  + shift-ctrl-z now also works for Redo
+  + Online docs now hosted on library.gnome.org
+  + Add Invert Selection action
+  + Launching with relative filepaths in args work
+  + Updates to 12 translations, including 4 new ones
+
+-------------------------------------------------------------------
+Wed Sep  9 13:33:54 PDT 2009 - gburt@suse.de
+
+- Version 0.7
+  + View Fullscreen option
+  + User docs translated into ca
+  + Build fixes for *bsd
+  + Update recent files list after opening a document
+  + libdir expansion issue fixed in Hyena, depend on 0.2
+
+-------------------------------------------------------------------
+Tue Aug 18 14:45:44 PDT 2009 - gburt@suse.de
+
+- Version 0.6 
+
+-------------------------------------------------------------------
+Fri Aug  7 11:33:36 PDT 2009 - gburt@suse.de
+
+- Version 0.5
+
+-------------------------------------------------------------------
+Tue Aug  4 10:25:13 PDT 2009 - gburt@suse.de
+
+- Version 0.4 
+
+-------------------------------------------------------------------
+Mon Jul 27 15:13:40 PDT 2009 - gburt@suse.de
+
+- Version 0.3
+
+-------------------------------------------------------------------
+Fri Jul 24 13:26:57 PDT 2009 - gburt@suse.de
+
+- Version 0.2 (bundling Mono.Data.Sqlite) 
+
+-------------------------------------------------------------------
+Thu Jul 23 22:24:34 PDT 2009 - gburt@suse.de
+
+- Initial version (0.1)

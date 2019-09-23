@@ -1,0 +1,6 @@
+# crosstool-ng will not be renamed crosstool-ng-devel.
+addFilter("W: devel-dependency glibc-devel-static")
+addFilter("E: devel-file-in-non-devel-package")
+
+# It's ok to have these scripts non-executable.
+addFilter("W: non-executable-script")

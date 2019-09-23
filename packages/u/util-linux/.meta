@@ -1,0 +1,7 @@
+<package name="util-linux" project="openSUSE:Factory">
+  <title>A collection of basic system utilities</title>
+  <description>This package contains a large variety of low-level system utilities
+that are necessary for a Linux system to function. It contains the
+mount program, the fdisk configuration tool, and more.</description>
+  <devel project="Base:System" package="util-linux"/>
+</package>

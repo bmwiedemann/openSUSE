@@ -1,0 +1,80 @@
+From e1ba32fec4be56064c32bf0c14bf52029726e61b Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sun, 7 Oct 2018 20:01:22 +0200
+Subject: [PATCH 13/35] i18n: fix few string puzzles
+
+---
+ src/dialogs/latexcommanddialog.cpp   | 6 ++++--
+ src/dialogs/pdf-wizard/pdfdialog.cpp | 4 ++--
+ src/dialogs/postscriptdialog.cpp     | 2 +-
+ src/dialogs/projectdialogs.cpp       | 2 +-
+ 4 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/src/dialogs/latexcommanddialog.cpp b/src/dialogs/latexcommanddialog.cpp
+index dfa8de00..2ff72f66 100644
+--- a/src/dialogs/latexcommanddialog.cpp
++++ b/src/dialogs/latexcommanddialog.cpp
+@@ -762,8 +762,10 @@ void LatexCommandsDialog::slotAccepted()
+ 
+ void LatexCommandsDialog::slotSetDefaults()
+ {
+-    QString mode = (getListviewMode() == lvEnvMode) ? i18n("'environment'") : i18n("'command'");
+-    if (KMessageBox::warningContinueCancel(this, i18n("All your %1 settings will be overwritten with the default settings, are you sure you want to continue?", mode)) == KMessageBox::Continue) {
++    const QString text = (getListviewMode() == lvEnvMode)
++        ? i18n("All your 'environment' settings will be overwritten with the default settings, are you sure you want to continue?")
++        : i18n("All your 'command' settings will be overwritten with the default settings, are you sure you want to continue?");
++    if (KMessageBox::warningContinueCancel(this, text) == KMessageBox::Continue) {
+         if (getListviewMode() == lvEnvMode) {
+             resetEnvironments();
+         }
+diff --git a/src/dialogs/pdf-wizard/pdfdialog.cpp b/src/dialogs/pdf-wizard/pdfdialog.cpp
+index c51d9ad1..f21f8446 100644
+--- a/src/dialogs/pdf-wizard/pdfdialog.cpp
++++ b/src/dialogs/pdf-wizard/pdfdialog.cpp
+@@ -404,7 +404,7 @@ void PdfDialog::setNumberOfPages(int numpages)
+ 
+         QString pages;
+         if ( m_encrypted )
+-            m_PdfDialog.m_lbPages->setText(pages.setNum(m_numpages)+"   "+i18n("(encrypted)"));
++            m_PdfDialog.m_lbPages->setText(i18nc("%1 is the number of pages", "%1 (encrypted)", QString::number(m_numpages)));
+         else
+             m_PdfDialog.m_lbPages->setText(pages.setNum(m_numpages));
+     }
+@@ -919,7 +919,7 @@ void PdfDialog::executeAction()
+ 
+     // output for log window
+     QString program = (m_execLatex) ? i18n("LaTeX with 'pdfpages' package") : i18n("pdftk");
+-    QString msg = i18n("Rearranging PDF file: ") + from.fileName();
++    QString msg = i18n("Rearranging PDF file: %1", from.fileName());
+     if (!to.fileName().isEmpty())
+         msg += " ---> " + to.fileName();
+     m_errorHandler->printMessage(KileTool::Info, msg, program);
+diff --git a/src/dialogs/postscriptdialog.cpp b/src/dialogs/postscriptdialog.cpp
+index d6fd61a2..4154e147 100644
+--- a/src/dialogs/postscriptdialog.cpp
++++ b/src/dialogs/postscriptdialog.cpp
+@@ -203,7 +203,7 @@ void PostscriptDialog::execute()
+         QFileInfo to(m_PostscriptDialog.m_edOutfile->lineEdit()->text());
+ 
+         // output for log window
+-        QString msg = i18n("rearrange ps file: ") + from.fileName();
++        QString msg = i18n("rearrange ps file: %1", from.fileName());
+         if (!to.fileName().isEmpty())
+             msg += " ---> " + to.fileName();
+         m_errorHandler->printMessage(KileTool::Info, msg, m_program);
+diff --git a/src/dialogs/projectdialogs.cpp b/src/dialogs/projectdialogs.cpp
+index c1b17cbf..38466b6b 100644
+--- a/src/dialogs/projectdialogs.cpp
++++ b/src/dialogs/projectdialogs.cpp
+@@ -154,7 +154,7 @@ bool KileProjectDialogBase::acceptUserExtensions()
+             QStringList list = m_val_extensions[i-1].split(' ');
+             for (it = list.constBegin(); it != list.constEnd(); ++it) {
+                 if (! reg.exactMatch(*it)) {
+-                    KMessageBox::error(this, i18n("Error in extension") + " '" + (*it) + "':\n" + i18n("All user-defined extensions should look like '.xyz'"), i18n("Invalid extension"));
++                    KMessageBox::error(this, i18n("Error in extension '%s':\nAll user-defined extensions should look like '.xyz'", *it), i18n("Invalid extension"));
+                     return false;
+                 }
+             }
+-- 
+2.20.1
+

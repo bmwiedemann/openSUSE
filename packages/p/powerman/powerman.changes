@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Wed Apr 25 09:48:37 UTC 2018 - eich@suse.com
+
+- For SLE-12 set user/group to daemon/root for backward
+  compatibility.
+
+-------------------------------------------------------------------
+Tue Aug 15 13:22:50 UTC 2017 - eich@suse.com
+
+- Minor specfile cosmetics:
+  * Simplified the entry for %{_sysconfdir}/powerman.
+
+-------------------------------------------------------------------
+Fri Aug 11 19:47:51 UTC 2017 - eich@suse.com
+
+- This package should not provide the user/group powerman
+  as it is the only user of this group: powermand runs as
+  this user/group and writes its data as this user/group.
+  This gives the sysadmin some control over who to give
+  access. There is no other application requiring this 
+  user/group.
+
+-------------------------------------------------------------------
+Fri Aug 11 18:04:54 UTC 2017 - eich@suse.com
+
+- run systemd-tmpfiles --create ... before starting service (bsc#1053481).
+
+-------------------------------------------------------------------
+Thu Jun 15 15:20:21 UTC 2017 - jjolly@suse.com
+
+- powerman service configured to start as powerman:powerman user
+  - Fixed autoconf files to allow for dynamic user and group in
+    powerman.service file
+    - service-dynamic-user-autofiles.patch
+  - Updated configure file with only necessary changes from
+    autoconf changes
+    - service-dynamic-user-configure.patch
+- Added %config to /etc/powerman/*.dev files
+
+-------------------------------------------------------------------
+Sun Apr  2 21:28:34 UTC 2017 - meissner@suse.com
+
+- prequire daemon user for new factory userhandling
+
+-------------------------------------------------------------------
+Wed Feb 15 17:24:43 UTC 2017 - eich@suse.com
+
+- Create /usr/lib/tmpfiles.d/powerman.conf:
+  Add systemd handling for temporary directory /var/run/powerman.
+
+-------------------------------------------------------------------
+Wed Jan  4 18:16:09 UTC 2017 - eich@suse.com
+
+- Added support for snmp, tcpwrappers and genders to be compatible
+  with the powerman package from openHPC.community (latter one is 
+  currently disabled).
+  To use tcpwrappers, they need to be enabled in /etc/powerman/powerman.conf
+  - the default is 'off'.
+- Don't create /run/powerman - systemd will do this for us.
+
+-------------------------------------------------------------------
+Fri Nov 13 18:40:43 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.3.24
+  * Don't package /var/run/powerman; let systemd manage it 
+		[TOSS-2987]
+  * Cleanup: drop trailing whitespace
+- Changes for 2.3.23
+  * Build: silence CC lines, fix AC_LANG_CONFTEST warnings, fix 
+		$(EXEEXT) warnings.
+	*	Build: install System V init scripts if 
+		--with-systemdsystemunitdir is not configured and include both 
+		in EXTRA_DIST.
+	* Build: re-enable 'make check' unit tests.
+	* Build: fix some 'make distcheck' issues, but until unit tests 
+		are fixed to find *.exp and *.conf files in $(srcdir), this will still fail.
+	* RPM: configure genders, httppower, snmppower, and tcp-wrappers 
+		unconditionally; update URL.
+- Cleanups spec file with spec-cleaner
+- Drop powerman.service and use bundled one
+
+-------------------------------------------------------------------
+Thu Mar 12 09:45:27 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.3.20
+  * add dist tag to release (TOSS-2667)
+  * Minor automake updates
+- Move to systemd
+- Remove unneeded patchs
+  * powerman-piddir.patch
+  * powerman-runlevel.patch
+- Update project and download Urls; project has moved to github
+- Some cleanup
+
+-------------------------------------------------------------------
+Mon Aug  4 16:54:41 UTC 2014 - sfalken@opensuse.org
+
+- Updates in 2.3.16
+  * Fix duplicate node name (Issue 35)
+    Pulled in another hotlist fix (Mark Grondona)
+  * Fix powerman stonith OFF should verify plug state (chaos bz 1439)
+- Updated powerman-pidfile.patch to reflect /run instead of /var/run
+   
+
+-------------------------------------------------------------------
+Wed Jul 30 02:43:19 UTC 2014 - sfalken@opensuse.org
+
+- Updated to 2.3.16
+  * Changed /var/run to /run in .spec to fix rpmlint check failures
+    Updated URL in .spec file
+  * Added:
+	powerman-2.3.16.tar.gz
+  * Removed:
+	powerman-2.3.9.tar.bz2
+  * Updated:
+	powerman.spec
+
+-------------------------------------------------------------------
+Thu Dec  8 13:04:25 UTC 2011 - coolo@suse.com
+
+- the COPYING is GPL-2.0+
+
+-------------------------------------------------------------------
+Thu Jul 28 19:29:35 CEST 2011 - sbrabec@suse.cz
+
+- Update to version 2.3.9:
+  * Add MIB support to snmppower.
+  * Add eaton-epdu-blue-switched.dev.
+  * Add support for SNMP power controllers.
+  * Add SNMP dev files for 8-port APC, 8-port Baytech, and 20 port
+    Eaton Revelation PDU.
+  * Add support for APC 7900 revision 3 firmware.
+  * Add support for Appro Greenblade.
+  * Add support for APC 7920.
+  * Add Support for ranged beacon on/off device scripts, and beacon
+    support for ipmipower.
+- Make heartbeat support optional as it is dropped now.
+
+-------------------------------------------------------------------
+Wed May 19 02:38:24 CEST 2010 - ro@suse.de
+
+- keep /var/run/powerman only as ghost in filelist
+  and create it in initscript if missing 
+
+-------------------------------------------------------------------
+Tue May 18 19:42:02 UTC 2010 - aj@suse.de
+
+- Add pkg-config as build requires.
+
+-------------------------------------------------------------------
+Fri Aug 14 15:00:56 CEST 2009 - sbrabec@suse.cz
+
+- PreReq fix.
+
+-------------------------------------------------------------------
+Mon Aug 10 17:24:08 CEST 2009 - sbrabec@suse.cz
+
+- New SuSE package, version 2.3.5.
+

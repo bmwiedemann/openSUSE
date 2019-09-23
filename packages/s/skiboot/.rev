@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb6b4a9e76f0a9fbd34386da497f22ff</srcmd5>
+    <version>5.1.8</version>
+    <time>1447234199</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>341236</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98949e1f3bfe524f47aabd8ebf766f40</srcmd5>
+    <version>5.1.12</version>
+    <time>1452027275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351624</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5bbfb6445b4a4439a8fdaccb529eaa3d</srcmd5>
+    <version>5.1.13</version>
+    <time>1455701057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356834</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b42f8166cbe82269f6adb1aeb36a1ff</srcmd5>
+    <version>5.2.0</version>
+    <time>1459238415</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop opal-prd.{service,socket}, use upstream one
+- Disable parallel builds
+  (see https://github.com/open-power/skiboot/issues/27) 
+
+- version update to 5.2.0 (FATE#320438)
+  - see https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.2.0.txt</comment>
+    <requestid>379326</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>27a9a5ffc0aacfe03958742154cc6e1d</srcmd5>
+    <version>5.2.0</version>
+    <time>1459508558</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable parallel build
+  0001-Make-links-target-reusable.patch</comment>
+    <requestid>381171</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f911cfd4d11c965b246ba73e545b4c5a</srcmd5>
+    <version>5.2.0</version>
+    <time>1466814041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402914</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1b4b2dc5c283b70a8e489b39e19d6e72</srcmd5>
+    <version>5.2.0</version>
+    <time>1471009406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418415</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ac2967ef82edb3a6588d18d002adbd8</srcmd5>
+    <version>5.5.0</version>
+    <time>1493363528</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487540</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1889065d324a40934dceef19b63cfd87</srcmd5>
+    <version>5.9.6</version>
+    <time>1513677567</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.9.6
+  - see https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-5.9.6.rst
+- add increase_dpath_string.patch</comment>
+    <requestid>558189</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a40844d8265815efe6c472d44cd75bda</srcmd5>
+    <version>5.10</version>
+    <time>1524576763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599872</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9173ddc0843381a054a9acb27fb9a62e</srcmd5>
+    <version>5.10</version>
+    <time>1548704979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669000</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>91a7e3f0dd973a5f23fdb02ecf7680bc</srcmd5>
+    <version>5.10</version>
+    <time>1549018068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670296</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3dfd23f5dec8d0be635465fc87642872</srcmd5>
+    <version>5.10</version>
+    <time>1550048677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673570</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7baa806ddeb32584ee74e8106eca640</srcmd5>
+    <version>6.2.1</version>
+    <time>1551284930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678040</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e0577fabb2e7c2a17aa64660707f5bfc</srcmd5>
+    <version>6.2.2</version>
+    <time>1552572097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684774</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a60b4b163b1a4541bff72d47f1e6c4d1</srcmd5>
+    <version>6.2.2</version>
+    <time>1563914357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717849</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9deca1aff17ba954005510f168804e2e</srcmd5>
+    <version>6.5</version>
+    <time>1566463952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724840</requestid>
+  </revision>
+</revisionlist>

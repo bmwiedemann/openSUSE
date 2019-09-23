@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac946e0f1c91260ef98f39a4a864a99b</srcmd5>
+    <version>0.7.3a1</version>
+    <time>1542281936</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for OpenAl</comment>
+    <requestid>646697</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01376353fc4dba6d2e25229109520c19</srcmd5>
+    <version>0.7.3a1</version>
+    <time>1548334971</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659290</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfcb348b15541b193b97b6a029004b1f</srcmd5>
+    <version>0.7.6a1</version>
+    <time>1551785097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.6a1:
+  * no upstream changelog</comment>
+    <requestid>681517</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e6cb4b8b96c274d36cb809fe85c6b0f</srcmd5>
+    <version>0.7.7a1</version>
+    <time>1553611288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.7a1:
+  * no upstream changelog</comment>
+    <requestid>685041</requestid>
+  </revision>
+</revisionlist>

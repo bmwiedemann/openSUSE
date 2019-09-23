@@ -1,0 +1,279 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>42dfa16d636533a2c80499e434f9c145</srcmd5>
+    <version>5.2</version>
+    <time>1168855016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="29">
+    <srcmd5>1b95e693e3b62d414675bfe6a63cc698</srcmd5>
+    <version>5.2</version>
+    <time>1175208135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="32">
+    <srcmd5>6ab0d6ebd0ef05da778f32e9e5b8cfbe</srcmd5>
+    <version>5.2</version>
+    <time>1177104461</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96053dbbf0abdf37d5d5860bd9ce307f</srcmd5>
+    <version>5.3.1</version>
+    <time>1178484652</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a87d1309db7fa75bea1e4e23ba613b8f</srcmd5>
+    <version>5.4</version>
+    <time>1186424971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="29">
+    <srcmd5>9959a2cb5d28d639f6de90a70eabc72f</srcmd5>
+    <version>5.4</version>
+    <time>1192750371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="36">
+    <srcmd5>fb2d4ec73829b53854fb987e69feb796</srcmd5>
+    <version>5.4</version>
+    <time>1193649838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>51e8e2bfaf6d445864f1f2f01917ed9d</srcmd5>
+    <version>5.5</version>
+    <time>1195680906</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="24">
+    <srcmd5>423a5af12928ebac62f425af041e0707</srcmd5>
+    <version>5.5</version>
+    <time>1202142811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="69">
+    <srcmd5>3d89a5bd390c292550e9b4738bee8968</srcmd5>
+    <version>5.5</version>
+    <time>1214255105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="89">
+    <srcmd5>27b481d4a10c875e78543b3638e03418</srcmd5>
+    <version>5.5</version>
+    <time>1218232116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="111">
+    <srcmd5>7e20c3012c216ab3ccff22f4834df0bb</srcmd5>
+    <version>5.5</version>
+    <time>1222790015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="113">
+    <srcmd5>7e20c3012c216ab3ccff22f4834df0bb</srcmd5>
+    <version>5.5</version>
+    <time>1222790015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="114">
+    <srcmd5>a0875f0481cac9a09d5a68b6059402b0</srcmd5>
+    <version>5.5</version>
+    <time>1268922976</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="116">
+    <srcmd5>a0875f0481cac9a09d5a68b6059402b0</srcmd5>
+    <version>5.5</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="117">
+    <srcmd5>a0875f0481cac9a09d5a68b6059402b0</srcmd5>
+    <version>5.5</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ceddebf5c6048d164870dd2cd8e965d4</srcmd5>
+    <version>5.10</version>
+    <time>1282919450</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/avrdude based on submit request 43400 from user jnweiger
+</comment>
+    <requestid>43400</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>ceddebf5c6048d164870dd2cd8e965d4</srcmd5>
+    <version>5.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>0509a0d7a14bf0e6e76eff0994e1048d</srcmd5>
+    <version>5.10</version>
+    <time>1303505734</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66970 from user coolo
+</comment>
+    <requestid>66970</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>d8c6eba16cfa3581348ead8516756269</srcmd5>
+    <version>5.10</version>
+    <time>1303505745</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 66970
+</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>f42149950746dbb00ecd3d908a10e7bf</srcmd5>
+    <version>5.10</version>
+    <time>1316459007</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82856 from jengelh)</comment>
+    <requestid>82860</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>f42149950746dbb00ecd3d908a10e7bf</srcmd5>
+    <version>5.10</version>
+    <time>1319181783</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>3b756a1b1cafb4fcf00aadb9f68ff44c</srcmd5>
+    <version>5.10</version>
+    <time>1323190805</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>3b756a1b1cafb4fcf00aadb9f68ff44c</srcmd5>
+    <version>5.10</version>
+    <time>1340183193</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c5a5ac9bd828e936ee25bc7a70353112</srcmd5>
+    <version>5.11</version>
+    <time>1353506225</time>
+    <user>coolo</user>
+    <comment>- retrying sr#110452, sr#141518, so that we can finally close bnc#736064
+- merged a commit that was only made to o:F
+
+- Reverted to version 5.11 -- the 5.11.1 tarball was missing.
+
+- Version 5.11.1 from savannah
+- Add libftdi1-devel to BuildRequires to support additional
+  programmers.
+
+- don't use download_files service - it breaks all the time
+- remove builddate from binary to avoid unnecessary republising
+
+- Version 5.11 from savannah
+
+- https://savannah.nongnu.org/patch/?7559
+  DTR/RTS twiddling didn't match the Arduino 'auto-reset' hardware
+  for the programmer type 'arduino'</comment>
+    <requestid>142228</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>98f8f959970e60bfc64d3dfd8d21cb6a</srcmd5>
+    <version>5.11.1</version>
+    <time>1355156129</time>
+    <user>coolo</user>
+    <comment>- Did not build.
+- 5.11 tar balls are now missing again. retrying with 5.11.1
+- typo in spec file fixed.
+
+- All this should have been part of my earlier submit sr#142228:
+  * obsoleted upstreamed patches: tn4313.diff, avrdude_butterfly_mk.patch
+  * pulled patch from o:F: avrdude-use-serial-device-for-serbb.patch
+  * dropped dubious patch: avrdude-5.5.usbtiny.64bit.patch</comment>
+    <requestid>144694</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>98f8f959970e60bfc64d3dfd8d21cb6a</srcmd5>
+    <version>5.11.1</version>
+    <time>1359108686</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>98f8f959970e60bfc64d3dfd8d21cb6a</srcmd5>
+    <version>5.11.1</version>
+    <time>1379662017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9d76a10ff12873fa7d7571756ab772b1</srcmd5>
+    <version>5.11svn.1275</version>
+    <time>1392184916</time>
+    <user>coolo</user>
+    <comment>- no longer use an URL for the source, since the tarball is generated 
+
+- set the _service to localonly
+
+- work around systemd-udev warnings, by moving comments in the
+  udev rules file to the beginning of a line.
+
+- Build the info file only, no PS/PDF documentation.
+- Don't require libftdi for older SUSE versions.
+
+- Build from svn snapshot (last official release is too old).
+- avrdude-use-serial-device-for-serbb.patch is no longer needed.
+- Add UDB IDs for Arduino Leonardo and LUFA ACM bootloaders.
+- Give access to programmer devices only to local users.
+- Build documentation from source instead of importing pre-built
+  html and pdf documentation.
+- Disable documentation building on releases older than 12.3 due
+  to texinfo problems.</comment>
+    <requestid>221384</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cb84bed0be45d302e8814f9698b033ac</srcmd5>
+    <version>6.1</version>
+    <time>1397041895</time>
+    <user>coolo</user>
+    <comment>Fix build. Include upstream tarball. (forwarded request 228901 from ptrommler)</comment>
+    <requestid>228912</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>cb84bed0be45d302e8814f9698b033ac</srcmd5>
+    <version>6.1</version>
+    <time>1409300542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5c2fb29191bb1a912d558880d4e33c65</srcmd5>
+    <version>6.3</version>
+    <time>1460482475</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385710</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f4d0156e382684a4a6bfe8a5c7ccd61c</srcmd5>
+    <version>6.3</version>
+    <time>1524144750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598015</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>4ea62e8d529fa9cb637e04423a731964</srcmd5>
+    <version>6.3</version>
+    <time>1552902218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685837</requestid>
+  </revision>
+</revisionlist>

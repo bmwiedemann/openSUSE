@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Wed Oct 10 16:19:40 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.2.3
+  * autogen: add default patch prefix
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Stop compiling empty sm_auth.c stub
+  * Fix callbacks signatures in libSM documentation
+  * Include unistd.h for getpid()
+  * Fix uuid_to_string(3) type
+  * Get rid of strcpy() in the HAVE_UUID_CREATE case
+  * Fixed out ouf boundary accesses.
+
+-------------------------------------------------------------------
+Thu Sep 12 17:35:18 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.2.2:
+  + Fix some clang warnings about integer size/sign conversions.
+  + Constify previous_id argument to SmcOpenConnection.
+  + autogen.sh: Implement GNOME Build API.
+  + configure: Remove AM_MAINTAINER_MODE.
+  + Remove unused TLI ("STREAMSCONN") code from libSM.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Apr 11 15:06:46 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.2.1:
+  + Fixes for issues found by static analysis & compiler warnings
+  + Documentation cleanups & improvements,
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Sun Feb 12 03:35:24 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libSM to libSM and utilize shlib policy
+
+-------------------------------------------------------------------
+Sun Nov 20 06:48:24 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Dec 21 02:42:05 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Wed Dec  1 14:03:15 UTC 2010 - sndirsch@novell.com
+
+- revert 'export only public API symbols' for consistency reasons;
+  now all these 'export only public API symbols' changes have been
+  reverted
+
+-------------------------------------------------------------------
+Tue Nov 30 14:19:32 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- export only public API symbols
+- disable silent rules, defeat the purpose of post build checks 
+
+-------------------------------------------------------------------
+Thu Oct 28 13:48:28 UTC 2010 - sndirsch@novell.com
+
+- libSM 1.2.0
+  * This release fixes a couple of bugs and includes a lot of work
+    from multiple people on the documentation to convert the
+    ancient troff scrolls to DocBook/XML. It also includes the
+    usual recent rounds of build configuration improvements and
+    janitorial cleanups.
+
+-------------------------------------------------------------------
+Fri Apr  2 17:53:14 CEST 2010 - sndirsch@suse.de
+
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Sat Aug  8 12:31:35 CEST 2009 - sndirsch@suse.de
+
+- libSM 1.1.1
+  * new release of libSM with quite a bit of code churn but no real
+    new feature.
+
+-------------------------------------------------------------------
+Sat May  2 14:42:17 CEST 2009 - eich@suse.de
+
+- revert static library and .la file removal
+  for SUSE versions <= 11.1.
+
+-------------------------------------------------------------------
+Tue Apr 21 21:05:37 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu Sep 11 14:20:49 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Fri Jul  4 04:53:37 CEST 2008 - sndirsch@suse.de
+
+- libSM 1.1.0
+  * bfo #14949: Don't use gethostbyname() for client IDs. 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Jan  2 02:48:58 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* error
+- add missing PreReq coreutils 
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:34 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Sun May 13 22:14:54 CEST 2007 - sndirsch@suse.de
+
+- update libSM to release 1.0.3
+  * This release just contains some code cleanups that decrease the
+    library size by a few KB.
+
+-------------------------------------------------------------------
+Sat Oct 14 06:05:47 CEST 2006 - sndirsch@suse.de
+
+- update to X.Org 7.2RC1 
+
+-------------------------------------------------------------------
+Wed Aug  2 16:11:59 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:14 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:40:55 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre
+
+-------------------------------------------------------------------
+Thu Jun 22 21:28:26 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

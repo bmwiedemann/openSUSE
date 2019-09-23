@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Thu Apr  6 05:28:28 UTC 2017 - coolo@suse.com
+
+- updated to 0.66
+   see /usr/share/doc/packages/perl-Data-Util/Changes
+
+  0.66 2017-04-05T17:09:54Z
+      - Fix tests of @INC issue on newer Perl
+
+-------------------------------------------------------------------
+Tue Aug  2 05:14:12 UTC 2016 - coolo@suse.com
+
+- updated to 0.65
+   see /usr/share/doc/packages/perl-Data-Util/Changes
+
+  0.65 2016-08-01T13:12:55Z
+      - Drop Perl 5.8 for maintenance
+      - Fix pure perl installation
+
+-------------------------------------------------------------------
+Sun Jul 24 05:13:57 UTC 2016 - coolo@suse.com
+
+- updated to 0.64
+   see /usr/share/doc/packages/perl-Data-Util/Changes
+
+  0.64 2016-07-23T15:13:01Z
+      - Fix on perl 5.22.x or higher versions
+      - Minilla migrate
+- remove upstream perl522.patch
+
+-------------------------------------------------------------------
+Thu Aug 27 13:51:06 UTC 2015 - hsk@imb-jena.de
+
+- added perl522.patch: patch from rt.cpan.org, #99097, to get
+  module built with perl-5.22
+
+-------------------------------------------------------------------
+Fri Mar  7 09:05:32 UTC 2014 - coolo@suse.com
+
+- updated to 0.63
+   - Fix a crash on perl 5.19.x (tokuhirom)
+
+-------------------------------------------------------------------
+Tue Jun  4 07:49:41 UTC 2013 - coolo@suse.com
+
+- updated to 0.62
+   - Fix a crash on perl 5.17.x (tokuhirom)
+   - Fix usage of get_code_ref() in SYNOPSIS (thanks to @toku_bass)
+   - No feature changes. Just upgraded Module::Install.
+
+-------------------------------------------------------------------
+Fri Nov 18 18:25:01 UTC 2011 - coolo@suse.com
+
+- update to 0.59
+  * Re-packaging with better dependencies and latest M::I
+
+-------------------------------------------------------------------
+Thu Jul 14 07:03:36 UTC 2011 - coolo@novell.com
+
+- updated to 0.58
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:40 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Oct 20 11:46:18 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- fixed deps
+- added examples to doc
+
+-------------------------------------------------------------------
+Wed Sep 15 21:20:52 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.58:
+  + Use GvCV_set() for newer perls
+- enabled tests again
+
+-------------------------------------------------------------------
+Sat Apr 10 10:18:45 UTC 2010 - lars@linux-schulserver.de
+
+- initial version 0.56
+- skipped make test temporary as this currently breaks the build

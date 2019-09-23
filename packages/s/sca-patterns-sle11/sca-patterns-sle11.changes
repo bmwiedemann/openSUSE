@@ -1,0 +1,1770 @@
+-------------------------------------------------------------------
+Mon Jun 11 18:11:24 UTC 2018 - jason.record@suse.com
+
+- New Security Announcement Patterns
+  sle11sp3/kernel_SUSE-SU-2018_1172-1_11.3.ltss.py
+  sle11sp3/patch_SUSE-SU-2018_1162-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2018_1203-1_11.3.ltss.py
+  sle11sp4/kernel_SUSE-SU-2018_1171-1_11.4.py
+  sle11sp4/patch_SUSE-SU-2018_1162-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2018_1181-1_11.4.py
+
+-------------------------------------------------------------------
+Wed May  2 18:29:34 UTC 2018 - jason.record@suse.com
+
+- Detects missing shim that fails upgrade
+  sle11all/shim-upgrade-7022915.py
+
+- New Security Announcement Patterns
+  sle11sp3/clamav_SUSE-SU-2018_0863-1_11.3.ltss.py
+  sle11sp3/glibc_SUSE-SU-2018_0565-1_11.3.ltss.py
+  sle11sp3/java_SUSE-SU-2018_0645-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2018_0660-1_11.3.ltss.py
+  sle11sp3/microcode_ctl_SUSE-SU-2018_0705-1_11.3.ltss.py
+  sle11sp3/php53_SUSE-SU-2018_0806-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2018_0678-1_11.3.ltss.py
+  sle11sp4/clamav_SUSE-SU-2018_0863-1_11.4.py
+  sle11sp4/coreutils_SUSE-SU-2018_0866-1_11.4.py
+  sle11sp4/glibc_SUSE-SU-2018_0565-1_11.4.py
+  sle11sp4/java_SUSE-SU-2018_0630-1_11.4.py
+  sle11sp4/kernel-rt_SUSE-SU-2018_0555-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2018_1080-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2018_1077-1_11.4.py
+  sle11sp4/libvirt_SUSE-SU-2018_0838-1_11.4.py
+  sle11sp4/microcode_ctl_SUSE-SU-2018_0705-1_11.4.py
+  sle11sp4/openssl_SUSE-SU-2018_0975-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2018_0806-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2018_0638-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Feb 21 00:15:27 UTC 2018 - jason.record@suse.com
+
+- New Security Announcement Patterns
+  sle11sp3/quagga_SUSE-SU-2018_0457-1_11.3.ltss.py
+  sle11sp4/quagga_SUSE-SU-2018_0457-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Feb  7 13:06:35 UTC 2018 - jason.record@suse.com
+
+- New Security Announcement Patterns
+  sle11sp3/bind_SUSE-SU-2018_0362-1_11.3.ltss.py
+  sle11sp3/mozillafirefox_SUSE-SU-2018_0361-1_11.3.ltss.py
+  sle11sp4/bind_SUSE-SU-2018_0362-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2018_0361-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Feb  2 21:02:34 UTC 2018 - jason.record@suse.com
+
+- New Security Announcement Patterns
+  sle11sp3/clamav_SUSE-SU-2018_0254-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2018_0171-1_11.3.ltss.py
+  sle11sp3/perl-xml-libxml_SUSE-SU-2018_0170-1_11.3.ltss.py
+  sle11sp4/clamav_SUSE-SU-2018_0254-1_11.4.py
+  sle11sp4/perl-xml-libxml_SUSE-SU-2018_0170-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Jan 19 21:40:55 UTC 2018 - jason.record@suse.com
+
+- New Security Announcement Patterns
+  sle11sp3/glibc_SUSE-SU-2018_0075-1_11.3.ltss.py
+  sle11sp3/java_SUSE-SU-2018_0061-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2018_0040-1_11.3.ltss.py
+  sle11sp3/microcode_ctl_SUSE-SU-2018_0068-1_11.3.ltss.py
+  sle11sp4/glibc_SUSE-SU-2018_0075-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2018_0131-1_11.4.py
+  sle11sp4/microcode_ctl_SUSE-SU-2018_0068-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Jan  8 17:54:34 UTC 2018 - jason.record@suse.com
+
+- New Security Announcement Pattern
+  sle11sp3/kvm_SUSE-SU-2018_0039-1_11.3.ltss.py
+
+-------------------------------------------------------------------
+Fri Jan  5 16:41:35 UTC 2018 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/java_SUSE-SU-2017_3369-1_11.3.ltss.py
+  sle11sp3/kvm_SUSE-SU-2017_3084-1_11.3.ltss.py
+  sle11sp3/microcode_ctl_SUSE-SU-2018_0009-1_11.3.ltss.py
+  sle11sp3/mozilla-nss_SUSE-SU-2017_2872-1_11.3.ltss.py
+  sle11sp3/mozilla-nss_SUSE-SU-2017_2872-2_11.3.ltss.py
+  sle11sp3/mozillafirefox_SUSE-SU-2017_3233-1_11.3.ltss.py
+  sle11sp3/mysql_SUSE-SU-2017_2996-1_11.3.ltss.py
+  sle11sp3/openvpn_SUSE-SU-2017_2838-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_2812-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_3212-1_11.3.ltss.py
+  sle11sp4/imagemagick_SUSE-SU-2017_3378-1_11.4.py
+  sle11sp4/intel-sinit_SUSE-SU-2017_3276-1_11.4.py
+  sle11sp4/java_SUSE-SU-2017_3440-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2017_3265-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2018_0011-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2017_2963-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2018_0019-1_11.4.py
+  sle11sp4/microcode_ctl_SUSE-SU-2018_0009-1_11.4.py
+  sle11sp4/mozilla-nss_SUSE-SU-2017_2872-1_11.4.py
+  sle11sp4/mozilla-nss_SUSE-SU-2017_2872-2_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2017_3233-1_11.4.py
+  sle11sp4/mysql_SUSE-SU-2017_2996-1_11.4.py
+  sle11sp4/ncurses_SUSE-SU-2017_3183-1_11.4.py
+  sle11sp4/openvpn_SUSE-SU-2017_2838-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_2815-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_3242-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Jan  2 19:32:37 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 18:44:57 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Thu Oct 19 17:00:14 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/kernel_SUSE-SU-2017_2725-1_11.3.ltss.py
+  sle11sp3/wpa_supplicant_SUSE-SU-2017_2752-1_11.3.ltss.py
+  sle11sp4/kernel_SUSE-SU-2017_2723-1_11.4.py
+  sle11sp4/wpa_supplicant_SUSE-SU-2017_2752-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Oct 11 20:33:50 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/dnsmasq_SUSE-SU-2017_2617-1_11.3.ltss.py
+  sle11sp3/emacs_SUSE-SU-2017_2532-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2017_2525-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_2611-1_11.3.ltss.py
+  sle11sp4/dnsmasq_SUSE-SU-2017_2619-1_11.4.py
+  sle11sp4/emacs_SUSE-SU-2017_2532-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2017_2548-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_2450-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Sep  8 22:51:01 UTC 2017 - jason.record@suse.com
+
+- Detect delayed NFS file listings (bsc#1048232)
+  sle11sp2/nfs-dirlist-7021345.py
+  sle11sp3/nfs-dirlist-7021345.py
+  sle11sp4/nfs-dirlist-7021345.py
+
+- New Security Patterns
+  sle11sp3/mozillafirefox_SUSE-SU-2017_2235-1_11.3.ltss.py
+  sle11sp3/mozillafirefox_SUSE-SU-2017_2302-1_11.3.ltss.py
+  sle11sp3/postgresql94_SUSE-SU-2017_2258-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_2339-1_11.3.ltss.py
+  sle11sp4/imagemagick_SUSE-SU-2017_2176-1_11.4.py
+  sle11sp4/java_SUSE-SU-2017_2281-1_11.4.py
+  sle11sp4/kernel-rt_SUSE-SU-2017_2389-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2017_2235-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2017_2302-1_11.4.py
+  sle11sp4/postgresql94_SUSE-SU-2017_2258-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Jul 24 16:56:36 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/bind_SUSE-SU-2017_1737-1_11.3.ltss.py
+  sle11sp3/glibc_SUSE-SU-2017_1621-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2017_1613-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2017_1706-1_11.3.ltss.py
+  sle11sp3/openvpn_SUSE-SU-2017_1642-1_11.3.ltss.py
+  sle11sp3/tomcat6_SUSE-SU-2017_1632-1_11.3.ltss.py
+  sle11sp3/unrar_SUSE-SU-2017_1760-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_1715-1_11.3.ltss.py
+  sle11sp3/xorg-x11-server_SUSE-SU-2017_1850-1_11.3.ltss.py
+  sle11sp4/bind_SUSE-SU-2017_1737-1_11.4.py
+  sle11sp4/glibc_SUSE-SU-2017_1621-1_11.4.py
+  sle11sp4/jakarta-taglibs-standard_SUSE-SU-2017_1701-1_11.4.py
+  sle11sp4/kernel-source_SUSE-SU-2017_1696-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2017_1628-1_11.4.py
+  sle11sp4/ncurses_SUSE-SU-2017_1790-1_11.4.py
+  sle11sp4/openvpn_SUSE-SU-2017_1642-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2017_1709-1_11.4.py
+  sle11sp4/spice_SUSE-SU-2017_1837-1_11.4.py
+  sle11sp4/tomcat6_SUSE-SU-2017_1632-1_11.4.py
+  sle11sp4/unrar_SUSE-SU-2017_1760-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_1770-1_11.4.py
+  sle11sp4/xorg-x11-server_SUSE-SU-2017_1850-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Jun 12 21:09:36 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/java_SUSE-SU-2017_1444-1_11.3.ltss.py
+  sle11sp3/rpcbind_SUSE-SU-2017_1468-1_11.3.ltss.py
+  sle11sp4/rpcbind_SUSE-SU-2017_1468-1_11.4.py
+  sle11sp4/strongswan_SUSE-SU-2017_1471-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Jun 12 21:05:20 UTC 2017 - jason.record@suse.com
+
+- Pattern for XFS corruption
+  sle11sp4/xfs-corruption-7020905.py
+
+-------------------------------------------------------------------
+Fri Jun  2 23:04:53 UTC 2017 - jason.record@suse.com
+
+- Added security patterns (bsc#1042514)
+
+-------------------------------------------------------------------
+Thu May 25 13:58:35 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/java_SUSE-SU-2017_1384-1_11.3.ltss.py
+  sle11sp3/samba_SUSE-SU-2017_1391-1_11.3.ltss.py
+  sle11sp4/java_SUSE-SU-2017_1387-1_11.4.py
+  sle11sp4/samba_SUSE-SU-2017_1391-1_11.4.py
+
+-------------------------------------------------------------------
+Thu May 18 15:50:50 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/ghostscript-library_SUSE-SU-2017_1322-1_11.3.ltss.py
+  sle11sp4/ghostscript-library_SUSE-SU-2017_1322-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2017_1301-1_11.4.py
+
+-------------------------------------------------------------------
+Wed May 10 20:19:51 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/mozilla-nss_SUSE-SU-2017_1175-1_11.3.ltss.py
+  sle11sp3/samba_SUSE-SU-2017_1216-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_1146-1_11.3.ltss.py
+  sle11sp4/ghostscript-library_SUSE-SU-2017_1153-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2017_1135-1_11.4.py
+  sle11sp4/mozilla-nss_SUSE-SU-2017_1175-1_11.4.py
+  sle11sp4/mysql_SUSE-SU-2017_1137-1_11.4.py
+  sle11sp4/samba_SUSE-SU-2017_1216-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_1145-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Apr 21 15:39:19 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/bind_SUSE-SU-2017_1027-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_1058-1_11.3.ltss.py
+  sle11sp4/bind_SUSE-SU-2017_1027-1_11.4.py
+  sle11sp4/jasper_SUSE-SU-2017_0946-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_1081-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Apr  4 14:28:53 UTC 2017 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/bind_SUSE-SU-2017_0112-1_11.2.ltss.py
+  sle11sp2/kernel_SUSE-SU-2017_0333-1_11.2.ltss.py
+  sle11sp3/bind_SUSE-SU-2017_0112-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2017_0494-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2017_0913-1_11.3.ltss.py
+  sle11sp3/mozillafirefox_SUSE-SU-2017_0426-1_11.3.ltss.py
+  sle11sp3/mozillafirefox_SUSE-SU-2017_0732-1_11.3.ltss.py
+  sle11sp3/mysql_SUSE-SU-2017_0408-1_11.3.ltss.py
+  sle11sp3/php53_SUSE-SU-2017_0568-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2017_0718-1_11.3.ltss.py
+  sle11sp4/bind_SUSE-SU-2017_0112-1_11.4.py
+  sle11sp4/gnutls_SUSE-SU-2017_0304-1_11.4.py
+  sle11sp4/gstreamer-0_10-plugins-good_SUSE-SU-2017_0225-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2017_0437-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2017_0912-1_11.4.py
+  sle11sp4/libvncserver_SUSE-SU-2017_0104-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2017_0426-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2017_0732-1_11.4.py
+  sle11sp4/mysql_SUSE-SU-2017_0408-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2017_0568-1_11.4.py
+  sle11sp4/samba_SUSE-SU-2017_0841-1_11.4.py
+  sle11sp4/spice_SUSE-SU-2017_0396-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2017_0647-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Dec 30 21:26:17 UTC 2016 - jason.record@suse.com
+
+- Checks for dual root users that interfere with iSCSI
+  sle11all/iscsi-dual-root-7018427.py
+- New Security Patterns
+  sle11sp2/kernel_SUSE-SU-2016_3252-1_11.2.ltss.py
+  sle11sp2/mozillafirefox_SUSE-SU-2016_3223-1_11.2.ltss.py
+  sle11sp3/kernel_SUSE-SU-2016_3248-1_11.3.ltss.py
+  sle11sp3/mozillafirefox_SUSE-SU-2016_3210-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2016_3273-1_11.3.ltss.py
+  sle11sp4/dnsmasq_SUSE-SU-2016_3199-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2016_3203-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2016_3210-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2016_3174-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2016_3221-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Dec 15 13:38:05 UTC 2016 - jrecord@suse.com
+
+- Pattern to detect insufficient /boot space for updates
+  sle11all/boot-space-7018350.py
+
+-------------------------------------------------------------------
+Wed Dec 14 16:47:10 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/java_SUSE-SU-2016_3040-1_11.2.ltss.py
+  sle11sp2/java_SUSE-SU-2016_3068-1_11.2.ltss.py
+  sle11sp2/mozilla-nss_SUSE-SU-2016_3105-1_11.2.ltss.py
+  sle11sp2/xen_SUSE-SU-2016_3044-1_11.2.ltss.py
+  sle11sp3/java_SUSE-SU-2016_3040-1_11.3.ltss.py
+  sle11sp3/java_SUSE-SU-2016_3068-1_11.3.ltss.py
+  sle11sp3/mozilla-nss_SUSE-SU-2016_3080-1_11.3.ltss.py
+  sle11sp4/imagemagick_SUSE-SU-2016_2964-1_11.4.py
+  sle11sp4/java_SUSE-SU-2016_3041-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2016_2976-1_11.4.py
+  sle11sp4/mozilla-nss_SUSE-SU-2016_3080-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Nov 29 20:38:12 UTC 2016 - jrecord@suse.com
+
+- New Security Pattern
+  sle11sp4/vim_SUSE-SU-2016_2938-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Nov 28 20:14:32 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/bind_SUSE-SU-2016_2706-1_11.2.ltss.py
+  sle11sp3/bind_SUSE-SU-2016_2706-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2016_1203-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2016_2245-1_11.3.ltss.py
+  sle11sp3/kernel_SUSE-SU-2016_2614-1_11.3.ltss.py
+  sle11sp3/xen_SUSE-SU-2016_2725-1_11.3.ltss.py
+  sle11sp4/bind_SUSE-SU-2016_2706-1_11.4.py
+  sle11sp4/curl_SUSE-SU-2016_2714-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2015_2339-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2016_0911-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2016_1672-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2016_2018-1_11.4.py
+  sle11sp4/kernel_SUSE-SU-2016_2585-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2016_2902-1_11.4.py
+  sle11sp4/mysql_SUSE-SU-2016_2780-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Oct 24 16:19:58 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/bind_SUSE-SU-2016_2405-1_11.2.py
+  sle11sp2/ghostscript-library_SUSE-SU-2016_2493-1_11.2.py
+  sle11sp2/java_SUSE-SU-2016_2348-1_11.2.py
+  sle11sp2/kernel_SUSE-SU-2016_2596-1_11.2.py
+  sle11sp2/mozillafirefox_SUSE-SU-2016_2431-1_11.2.py
+  sle11sp2/openssl_SUSE-SU-2016_2458-1_11.2.py
+  sle11sp2/php53_SUSE-SU-2016_2461-1_11.2.py
+  sle11sp2/xen_SUSE-SU-2016_2528-1_11.2.py
+  sle11sp3/bind_SUSE-SU-2016_2405-1_11.3.py
+  sle11sp3/ghostscript-library_SUSE-SU-2016_2493-1_11.3.py
+  sle11sp3/java_SUSE-SU-2016_2348-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2016_2513-1_11.3.py
+  sle11sp3/openssl_SUSE-SU-2016_2458-1_11.3.py
+  sle11sp3/php53_SUSE-SU-2016_2459-1_11.3.py
+  sle11sp4/bind_SUSE-SU-2016_2405-1_11.4.py
+  sle11sp4/ghostscript-library_SUSE-SU-2016_2493-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2016_2513-1_11.4.py
+  sle11sp4/openssl_SUSE-SU-2016_2458-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2016_2459-1_11.4.py
+  sle11sp4/postgresql94_SUSE-SU-2016_2418-1_11.4.py
+  sle11sp4/quagga_SUSE-SU-2016_2569-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2016_2507-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Sep 21 16:30:22 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/java_SUSE-SU-2016_2286-1_11.2.py
+  sle11sp2/php53_SUSE-SU-2016_2328-1_11.2.py
+  sle11sp3/java_SUSE-SU-2016_2286-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2016_2195-1_11.3.py
+  sle11sp3/mysql_SUSE-SU-2016_2343-1_11.3.py
+  sle11sp4/java_SUSE-SU-2016_2261-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2016_2195-1_11.4.py
+  sle11sp4/mysql_SUSE-SU-2016_2343-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Aug 23 21:15:36 UTC 2016 - jason.record@suse.com
+
+- VMware guest crashes with kernel BUG at blk-core.c:2392
+  sle11sp3/kernel-blkcore-7017971.py
+
+-------------------------------------------------------------------
+Tue Aug 23 15:47:48 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/bsdtar_SUSE-SU-2016_1939-1_11.2.py
+  sle11sp2/kernel_SUSE-SU-2016_2074-1_11.2.py
+  sle11sp2/mozillafirefox_SUSE-SU-2016_2061-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2016_2080-1_11.2.py
+  sle11sp3/bsdtar_SUSE-SU-2016_1939-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2016_1799-1_11.3.py
+  sle11sp3/xen_SUSE-SU-2016_1745-1_11.3.py
+  sle11sp4/bsdtar_SUSE-SU-2016_1939-1_11.4.py
+  sle11sp4/imagemagick_SUSE-SU-2016_1782-1_11.4.py
+  sle11sp4/kernel-rt_SUSE-SU-2016_1985-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2016_1785-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2016_1799-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2016_2013-1_11.4.py
+  sle11sp4/squid3_SUSE-SU-2016_1996-1_11.4.py
+  sle11sp4/squid3_SUSE-SU-2016_2089-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2016_2100-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Jul  5 22:32:38 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/kvm_SUSE-SU-2016_1698-1_11.3.py
+  sle11sp4/kernel-rt_SUSE-SU-2016_1707-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Jun 20 15:05:02 UTC 2016 - jason.record@suse.com
+
+- System may crash if the kernel module be2net is loaded
+  sle11sp4/be2net-x3850-7017676.py
+
+-------------------------------------------------------------------
+Fri Jun 17 16:30:13 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/imagemagick_SUSE-SU-2016_1610-1_11.2.py
+  sle11sp2/libxml2_SUSE-SU-2016_1604-1_11.2.py
+  sle11sp2/ntp_SUSE-SU-2016_1602-1_11.2.py
+  sle11sp3/imagemagick_SUSE-SU-2016_1610-1_11.3.py
+  sle11sp3/libxml2_SUSE-SU-2016_1604-1_11.3.py
+  sle11sp3/ntp_SUSE-SU-2016_1602-1_11.3.py
+  sle11sp4/imagemagick_SUSE-SU-2016_1610-1_11.4.py
+  sle11sp4/libxml2_SUSE-SU-2016_1604-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Jun 15 17:41:42 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp3/php53_SUSE-SU-2016_1581-1_11.3.py
+  sle11sp4/ntp_SUSE-SU-2016_1584-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2016_1581-1_11.4.py
+- Losing a single device with multipath-tools 0.4.9-112.1 leads to loss of complete LUN map
+  sle11sp4/mpio-path-failure-7017629.py
+
+-------------------------------------------------------------------
+Mon Jun 13 19:56:18 UTC 2016 - jason.record@suse.com
+
+- New Security Pattern
+  sle11sp4/expat_SUSE-SU-2016_1512-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Jun  3 16:32:52 UTC 2016 - jason.record@suse.com
+
+- New Security Patterns
+  sle11sp2/imagemagick_SUSE-SU-2016_1275-1_11.2.py
+  sle11sp2/imagemagick_SUSE-SU-2016_1301-1_11.2.py
+  sle11sp2/java_SUSE-SU-2016_1378-1_11.2.py
+  sle11sp2/java_SUSE-SU-2016_1379-1_11.2.py
+  sle11sp2/ntp_SUSE-SU-2016_1311-1_11.2.py
+  sle11sp2/ntp_SUSE-SU-2016_1471-1_11.2.py
+  sle11sp2/openssl_SUSE-SU-2016_1290-1_11.2.py
+  sle11sp3/compat-openssl097g_SUSE-SU-2016_1231-1_11.3.py
+  sle11sp3/firefox_SUSE-SU-2016_1374-1_11.3.py
+  sle11sp3/imagemagick_SUSE-SU-2016_1275-1_11.3.py
+  sle11sp3/imagemagick_SUSE-SU-2016_1301-1_11.3.py
+  sle11sp3/java_SUSE-SU-2016_1378-1_11.3.py
+  sle11sp3/java_SUSE-SU-2016_1379-1_11.3.py
+  sle11sp3/ntp_SUSE-SU-2016_1311-1_11.3.py
+  sle11sp3/ntp_SUSE-SU-2016_1471-1_11.3.py
+  sle11sp3/openssl_SUSE-SU-2016_1290-1_11.3.py
+  sle11sp4/compat-openssl097g_SUSE-SU-2016_1231-1_11.4.py
+  sle11sp4/cyrus-imapd_SUSE-SU-2016_1459-1_11.4.py
+  sle11sp4/firefox_SUSE-SU-2016_1374-1_11.4.py
+  sle11sp4/imagemagick_SUSE-SU-2016_1275-1_11.4.py
+  sle11sp4/imagemagick_SUSE-SU-2016_1301-1_11.4.py
+  sle11sp4/java_SUSE-SU-2016_1300-1_11.4.py
+  sle11sp4/mysql_SUSE-SU-2016_1279-1_11.4.py
+  sle11sp4/ntp_SUSE-SU-2016_1175-1_11.4.py
+  sle11sp4/ntp_SUSE-SU-2016_1278-1_11.4.py
+  sle11sp4/openssl_SUSE-SU-2016_1290-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Apr 26 16:12:16 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/xen_SUSE-SU-2016_1154-1_11.2.py
+  sle11sp4/php53_SUSE-SU-2016_1145-1_11.4.py
+
+- Detect sles11sp4 boot delay issue TID7017498
+  sle11sp4/boot-delay-7017498.py
+
+-------------------------------------------------------------------
+Fri Apr 22 15:25:45 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/samba_SUSE-SU-2016_1028-1_11.2.py
+  sle11sp3/samba_SUSE-SU-2016_1023-1_11.3.py
+  sle11sp4/kernel-rt_SUSE-SU-2016_1102-1_11.4.py
+  sle11sp4/samba_SUSE-SU-2016_1023-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Apr  7 18:50:14 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/bind_SUSE-SU-2016_0825-1_11.2.py
+  sle11sp2/firefox_SUSE-SU-2016_0909-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2016_0905-1_11.2.py
+  sle11sp3/bind_SUSE-SU-2016_0825-1_11.3.py
+  sle11sp3/firefox_SUSE-SU-2016_0777-1_11.3.py
+  sle11sp3/java_SUSE-SU-2016_0770-1_11.3.py
+  sle11sp4/bind_SUSE-SU-2016_0825-1_11.4.py
+  sle11sp4/firefox_SUSE-SU-2016_0777-1_11.4.py
+  sle11sp4/java_SUSE-SU-2016_0956-1_11.4.py
+  sle11sp4/samba_SUSE-SU-2016_0837-1_11.4.py
+  sle11sp4/tomcat6_SUSE-SU-2016_0839-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2016_0955-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Mar 14 18:08:39 UTC 2016 - jrecord@suse.com
+
+- New Security Pattern
+  sle11sp4/flash-player_SUSE-SU-2016_0716-1_11.4.py
+
+-------------------------------------------------------------------
+Tue Mar  8 17:40:59 UTC 2016 - jrecord@suse.com
+
+- New Security Pattern
+  sle11sp4/postgresql94_SUSE-SU-2016_0677-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Mar  3 20:53:48 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/openssl_SUSE-SU-2016_0624-1_11.2.py (DROWN)
+  sle11sp3/java_SUSE-SU-2016_0636-1_11.3.py
+  sle11sp3/openssl_SUSE-SU-2016_0624-1_11.3.py (DROWN)
+  sle11sp4/compat-openssl097g_SUSE-SU-2016_0631-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2016_0564-1_11.4.py
+  sle11sp4/openssl_SUSE-SU-2016_0624-1_11.4.py (DROWN)
+
+-------------------------------------------------------------------
+Tue Feb 23 19:42:29 UTC 2016 - jrecord@suse.com
+
+- Updated patterns (bsc#953203)
+
+-------------------------------------------------------------------
+Mon Feb 22 22:40:10 UTC 2016 - chamilton@suse.com
+
+- New Pattern
+  sle11sp4/ntp-hostname-943017.py
+
+-------------------------------------------------------------------
+Wed Feb 17 15:44:41 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/glibc_SUSE-SU-2016_0470-1_11.2.py
+  sle11sp2/java_SUSE-SU-2016_0431-1_11.2.py
+  sle11sp2/java_SUSE-SU-2016_0433-1_11.2.py
+  sle11sp3/glibc_SUSE-SU-2016_0472-1_11.3.py
+  sle11sp4/glibc_SUSE-SU-2016_0472-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Feb 10 21:10:23 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp3/java_SUSE-SU-2016_0269-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2016_0354-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2016_0334-1_11.3.py
+  sle11sp4/flash-player_SUSE-SU-2016_0400-1_11.4.py
+  sle11sp4/java_SUSE-SU-2016_0269-1_11.4.py
+  sle11sp4/java_SUSE-SU-2016_0399-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2016_0334-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Jan 27 18:27:10 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/bind_SUSE-SU-2016_0200-1_11.2.py
+  sle11sp3/bind_SUSE-SU-2016_0200-1_11.3.py
+  sle11sp3/openssh_SUSE-SU-2016_0119-1_11.3.py
+  sle11sp3/samba_SUSE-SU-2016_0164-1_11.3.py
+  sle11sp4/bind_SUSE-SU-2016_0200-1_11.4.py
+  sle11sp4/openssh_SUSE-SU-2016_0120-1_11.4.py
+  sle11sp4/samba_SUSE-SU-2016_0164-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Jan 27 18:04:08 UTC 2016 - jrecord@suse.com
+
+- New XFS Patterns
+  sle11sp3/xfs-zero-corruption-7017183.py
+  sle11sp4/xfs-zero-corruption-7017183.py
+
+-------------------------------------------------------------------
+Fri Jan  8 20:34:54 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/bind_SUSE-SU-2015_2340-1_11.2.py
+  sle11sp2/mozillafirefox_SUSE-SU-2015_2336-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2016_0032-1_11.2.py
+  sle11sp3/bind_SUSE-SU-2015_2340-1_11.3.py
+  sle11sp3/flash-player_SUSE-SU-2015_2402-1_11.3.py
+  sle11sp3/grub2_SUSE-SU-2015_2386-1_11.3.py
+  sle11sp3/kvm_SUSE-SU-2016_0020-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2015_2334-1_11.3.py
+  sle11sp4/bind_SUSE-SU-2015_2340-1_11.4.py
+  sle11sp4/flash-player_SUSE-SU-2015_2402-1_11.4.py
+  sle11sp4/grub2_SUSE-SU-2015_2385-1_11.4.py
+  sle11sp4/kernel-rt_SUSE-SU-2015_2350-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2016_0010-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2015_2334-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Dec 14 23:25:52 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/java_SUSE-SU-2015_2216-1_11.2.py
+  sle11sp3/flash-player_SUSE-SU-2015_2236-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_2216-1_11.3.py
+  sle11sp4/flash-player_SUSE-SU-2015_2236-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Dec  4 15:44:46 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/dhcpcd_SUSE-SU-2015_2174-1_11.2.py
+  sle11sp2/java_SUSE-SU-2015_2166-1_11.2.py
+  sle11sp3/dhcpcd_SUSE-SU-2015_2174-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_2166-1_11.3.py
+  sle11sp3/kernel_SUSE-SU-2015_2108-1_11.3.py
+  sle11sp4/dhcpcd_SUSE-SU-2015_2174-1_11.4.py
+  sle11sp4/java_SUSE-SU-2015_2182-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Nov 18 21:59:57 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/firefox_SUSE-SU-2015_1978-1_11.2.py
+  sle11sp2/xen_SUSE-SU-2015_1952-1_11.2.py
+  sle11sp3/firefox_SUSE-SU-2015_1981-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_1875-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_1875-2_11.3.py
+  sle11sp3/krb5_SUSE-SU-2015_1898-1_11.3.py
+  sle11sp3/xen_SUSE-SU-2015_1853-1_11.3.py
+  sle11sp4/firefox_SUSE-SU-2015_1981-1_11.4.py
+  sle11sp4/java_SUSE-SU-2015_1875-1_11.4.py
+  sle11sp4/java_SUSE-SU-2015_1875-2_11.4.py
+  sle11sp4/krb5_SUSE-SU-2015_1898-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2015_1894-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Oct 29 20:37:20 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp3/flash-player_SUSE-SU-2015_1742-1_11.3.py
+  sle11sp3/flash-player_SUSE-SU-2015_1771-1_11.3.py
+  sle11sp3/librsvg_SUSE-SU-2015_1785-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2015_1703-1_11.3.py
+  sle11sp3/php53_SUSE-SU-2015_1818-1_11.3.py
+  sle11sp4/flash-player_SUSE-SU-2015_1742-1_11.4.py
+  sle11sp4/flash-player_SUSE-SU-2015_1771-1_11.4.py
+  sle11sp4/librsvg_SUSE-SU-2015_1785-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2015_1703-1_11.4.py
+  sle11sp4/php53_SUSE-SU-2015_1818-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Oct  8 17:19:04 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/php5_SUSE-SU-2015_1701-1_11.2.py
+  sle11sp3/flash-player_SUSE-SU-2015_1614-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2015_1592-1_11.3.py
+  sle11sp3/kernel_SUSE-SU-2015_1611-1_11.3.py
+  sle11sp3/openssh_SUSE-SU-2015_1581-1_11.3.py
+  sle11sp4/flash-player_SUSE-SU-2015_1614-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Sep 17 20:50:00 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/bind_SUSE-SU-2015_1496-1_11.1.py
+  sle11sp1/java_SUSE-SU-2015_1509-1_11.1.py
+  sle11sp1/mozilla-nss_SUSE-SU-2015_1449-1_11.1.py
+  sle11sp1/mozillafirefox_SUSE-SU-2015_1504-1_11.1.py
+  sle11sp2/bind_SUSE-SU-2015_1480-1_11.2.py
+  sle11sp2/java_SUSE-SU-2015_1509-1_11.2.py
+  sle11sp2/kernel_SUSE-SU-2015_1478-1_11.2.py
+  sle11sp2/mozilla-nss_SUSE-SU-2015_1449-1_11.2.py
+  sle11sp2/mozillafirefox_SUSE-SU-2015_1504-1_11.2.py
+  sle11sp3/bind_SUSE-SU-2015_1480-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_1509-1_11.3.py
+  sle11sp3/kvm_SUSE-SU-2015_1472-1_11.3.py
+  sle11sp3/mozilla-nss_SUSE-SU-2015_1528-1_11.3.py
+  sle11sp3/xen_SUSE-SU-2015_1479-1_11.3.py
+  sle11sp3/xen_SUSE-SU-2015_1479-2_11.3.py
+  sle11sp4/bind_SUSE-SU-2015_1480-1_11.4.py
+  sle11sp4/kvm_SUSE-SU-2015_1455-1_11.4.py
+  sle11sp4/mozilla-nss_SUSE-SU-2015_1528-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Aug 27 19:12:59 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11all/acpi-50-7016776.py
+  sle11sp3/winbind-key-7016777.py
+
+-------------------------------------------------------------------
+Mon Aug 24 20:44:48 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/kvm_SUSE-SU-2015_1409-1_11.1.py
+  sle11sp1/xen_SUSE-SU-2015_1421-1_11.1.py
+  sle11sp2/kvm_SUSE-SU-2015_1426-1_11.2.py
+  sle11sp3/glibc_SUSE-SU-2015_1424-1_11.3.py
+  sle11sp4/glibc_SUSE-SU-2015_1424-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Aug 14 19:37:36 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp2/java_SUSE-SU-2015_1375-1_11.2.py
+  sle11sp3/flash-player_SUSE-SU-2015_1373-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_1375-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2015_1376-1_11.3.py
+  sle11sp3/mozillafirefox_SUSE-SU-2015_1380-1_11.3.py
+  sle11sp4/flash-player_SUSE-SU-2015_1373-1_11.4.py
+  sle11sp4/mozillafirefox_SUSE-SU-2015_1380-1_11.4.py
+
+-------------------------------------------------------------------
+Fri Jul 31 22:29:10 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/cifs-mount-7016703.py
+- New Security Pattern
+  sle11sp4/java_SUSE-SU-2015_1329-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Jul 30 20:29:38 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/bind_SUSE-SU-2015_1316-1_11.1.py
+  sle11sp2/bind_SUSE-SU-2015_1304-1_11.2.py
+  sle11sp3/bind_SUSE-SU-2015_1304-1_11.3.py
+  sle11sp4/bind_SUSE-SU-2015_1304-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Jul 30 16:32:02 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/mysql_SUSE-SU-2015_1177-2_11.1.py
+  sle11sp2/mysql_SUSE-SU-2015_1177-2_11.2.py
+  sle11sp3/MozillaFirefox_SUSE-SU-2015_1268-2_11.3.py
+  sle11sp3/flash-player_SUSE-SU-2015_1258-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_1320-1_11.3.py
+  sle11sp3/php_SUSE-SU-2015_1265-1_11.3.py
+  sle11sp4/MozillaFirefox_SUSE-SU-2015_1268-1_11.4.py
+  sle11sp4/MozillaFirefox_SUSE-SU-2015_1268-2_11.4.py
+  sle11sp4/flash-player_SUSE-SU-2015_1258-1_11.4.py
+  sle11sp4/java_SUSE-SU-2015_1320-1_11.4.py
+  sle11sp4/xen_SUSE-SU-2015_1299-1_11.4.py
+
+-------------------------------------------------------------------
+Thu Jul  9 15:27:58 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/openssl_SUSE-SU-2015_1184-1_11.1.py
+  sle11sp2/openssl_SUSE-SU-2015_1184-2_11.2.py
+  sle11sp3/bind_SUSE-SU-2015_1205-1_11.3.py
+  sle11sp3/flash-player_SUSE-SU-2015_1214-1_11.3.py
+  sle11sp3/mysql_SUSE-SU-2015_1177-1_11.3.py
+  sle11sp3/ntp_SUSE-SU-2015_1173-1_11.3.py
+  sle11sp3/openssl_SUSE-SU-2015_1182-2_11.3.py
+  sle11sp3/openssl_SUSE-SU-2015_1183-2_11.3.py
+  sle11sp4/flash-player_SUSE-SU-2015_1214-1_11.4.py
+
+-------------------------------------------------------------------
+Mon Jun 29 19:07:50 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/xen_SUSE-SU-2015_1156-1_11.1.py
+  sle11sp2/java_SUSE-SU-2015_1086-3_11.2.py
+  sle11sp2/xen_SUSE-SU-2015_1157-1_11.2.py
+  sle11sp3/java_SUSE-SU-2015_1086-4_11.3.py
+  sle11sp3/kvm_SUSE-SU-2015_1152-1_11.3.py
+
+-------------------------------------------------------------------
+Wed Jun 24 18:20:19 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/microcode-7016594.py
+
+-------------------------------------------------------------------
+Wed Jun 24 17:18:06 UTC 2015 - jrecord@suse.com
+
+- Added sle11sp4 for SLE11 SP4 patterns
+- New Security Pattern
+  sle11sp4/e2fsprogs_SUSE-SU-2015_1103-1_11.4.py
+
+-------------------------------------------------------------------
+Wed Jun 24 16:44:11 UTC 2015 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/java_SUSE-SU-2015_1086-1_11.1.py
+  sle11sp2/java_SUSE-SU-2015_1086-1_11.2.py
+  sle11sp3/cups_SUSE-SU-2015_1011-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_1086-2_11.3.py
+  sle11sp3/xen_SUSE-SU-2015_1045-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Jun  4 15:27:19 UTC 2015 - jrecord@suse.com
+
+- Added TID links
+  sle11sp1/leapsec-7016150.py
+  sle11sp2/leapsec-7016150.py
+
+-------------------------------------------------------------------
+Mon Jun  1 19:28:59 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/mozillafirefox_SUSE-SU-2015_0978-1_11.3.py
+
+-------------------------------------------------------------------
+Tue May 26 14:58:26 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/xen_SUSE-SU-2015_0940-1_11.1.py
+  sle11sp2/kvm_SUSE-SU-2015_0943-1_11.2.py
+  sle11sp2/xen_SUSE-SU-2015_0944-1_11.2.py
+  sle11sp3/mysql_SUSE-SU-2015_0946-1_11.3.py
+
+-------------------------------------------------------------------
+Fri May 22 18:07:23 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/kvm_SUSE-SU-2015_0929-1_11.1.py
+  sle11sp3/xen_SUSE-SU-2015_0927-1_11.3.py
+
+-------------------------------------------------------------------
+Thu May 21 16:58:44 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/gstreamer-0_10-plugins-bad_SUSE-SU-2015_0921-1_11.3.py
+
+-------------------------------------------------------------------
+Tue May 19 23:01:19 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/kvm_SUSE-SU-2015_0889-1_11.3.py
+
+-------------------------------------------------------------------
+Thu May 14 16:39:44 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/kvm_SUSE-SU-2015_0870-1_11.3.py
+
+-------------------------------------------------------------------
+Mon May 11 13:22:33 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/java_SUSE-SU-2015_0833-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Apr 30 17:32:52 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/smtdup-7016383.py
+
+-------------------------------------------------------------------
+Tue Apr 21 20:32:44 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/kernel-rt_SUSE-SU-2015_0736-1_11.3.py
+
+-------------------------------------------------------------------
+Sat Apr 18 15:53:06 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/flash-player_SUSE-SU-2015_0723-1_11.3.py
+
+-------------------------------------------------------------------
+Wed Apr 15 19:03:27 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/xorg-x11-libs_SUSE-SU-2015_0674-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Apr  2 16:19:24 UTC 2015 - jrecord@suse.com
+
+- Fixed vm.pagecache_limit in pagecache-7015898.py (bnc#925583)
+- New Pattern
+  sle11sp1/kernel_SUSE-SU-2015_0652-1_11.1.py
+
+-------------------------------------------------------------------
+Wed Apr  1 16:33:51 UTC 2015 - jrecord@suse.com
+
+- Additional Patterns
+  sle11all/qla2xxx-7016375.py
+  sle11sp3/nfs4-bnc924282.py
+
+-------------------------------------------------------------------
+Wed Apr  1 13:03:17 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/mozillafirefox_SUSE-SU-2015_0593-2_11.1.py
+  sle11sp2/mozillafirefox_SUSE-SU-2015_0593-2_11.2.py
+  sle11sp3/mysql_SUSE-SU-2015_0620-1_11.3.py
+
+-------------------------------------------------------------------
+Wed Mar 25 17:45:16 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/firefox_SUSE-SU-2015_0593-1_11.3.py
+  sle11sp3/kernel_SUSE-SU-2015_0581-1_11.3.py
+
+-------------------------------------------------------------------
+Mon Mar 23 22:21:39 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/bind_SUSE-SU-2015_0480-1_11.1.py
+  sle11sp2/kernel_SUSE-SU-2015_0481-1_11.2.py
+  sle11sp3/flash-player_SUSE-SU-2015_0493-1_11.3.py
+
+-------------------------------------------------------------------
+Sat Mar  7 15:04:02 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/firefox_SUSE-SU-2015_0447-1_11.1.py
+  sle11sp2/firefox_SUSE-SU-2015_0447-1_11.2.py
+  sle11sp3/firefox_SUSE-SU-2015_0446-1_11.3.py
+
+-------------------------------------------------------------------
+Fri Mar  6 21:34:42 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/php_SUSE-SU-2015_0436-1_11.3.py
+
+-------------------------------------------------------------------
+Fri Feb 27 23:13:19 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp1/java_SUSE-SU-2015_0392-1_11.1.py
+  sle11sp2/java_SUSE-SU-2015_0392-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2015_0386-1_11.2.py
+
+-------------------------------------------------------------------
+Thu Feb 26 14:51:04 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/samba_SUSE-SU-2015_0371-1_11.3.py
+
+-------------------------------------------------------------------
+Mon Feb 23 20:32:10 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp2/java_SUSE-SU-2015_0344-1_11.2.py
+  sle11sp3/java_SUSE-SU-2015_0343-1_11.3.py
+
+-------------------------------------------------------------------
+Fri Feb 20 18:14:35 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/clamav_SUSE-SU-2015_0298-1_11.1.py
+  sle11sp1/ntp_SUSE-SU-2015_0259-3_11.1.py
+  sle11sp2/bind_SUSE-SU-2015_0011-2_11.2.py
+  sle11sp2/clamav_SUSE-SU-2015_0298-1_11.2.py
+  sle11sp3/clamav_SUSE-SU-2015_0298-1_11.3.py
+  sle11sp3/java_SUSE-SU-2015_0336-1_11.3.py
+
+-------------------------------------------------------------------
+Fri Feb 13 21:21:41 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11all/vncjava8-7016151.py
+  sle11sp1/leapsec-7016150.py
+  sle11sp2/leapsec-7016150.py
+  sle11sp2/ntp_SUSE-SU-2015_0259-2_11.2.py
+  sle11sp3/flash-player-gnome,_SUSE-SU-2015_0239-1_11.3.py
+  sle11sp3/krb5_SUSE-SU-2015_0257-1_11.3.py
+  sle11sp3/ntp_SUSE-SU-2015_0259-1_11.3.py
+
+-------------------------------------------------------------------
+Sat Jan 31 16:50:35 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/firefox_SUSE-SU-2015_0180-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Jan 29 22:05:14 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11all/smtdup-7011387.py
+  sle11all/smtdup-7016109.py
+
+-------------------------------------------------------------------
+Thu Jan 29 17:54:47 UTC 2015 - jrecord@suse.com
+
+- Fixed glibc pattern links
+
+-------------------------------------------------------------------
+Thu Jan 29 16:34:46 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/firefox_SUSE-SU-2015_0173-1_11.1.py
+  sle11sp1/glibc_SUSE-SU-2015_0158-1_11.1.py
+  sle11sp2/firefox_SUSE-SU-2015_0173-1_11.2.py
+  sle11sp2/glibc_SUSE-SU-2015_0158-1_11.2.py
+  sle11sp3/flash-player_SUSE-SU-2015_0163-1_11.3.py
+  sle11sp3/glibc_SUSE-SU-2015_0158-1_11.3.py
+
+-------------------------------------------------------------------
+Mon Jan 26 23:13:08 UTC 2015 - jrecord@suse.com
+
+- New kernel patterns including real time kernels
+  sle11sp1/kernel_SUSE-SU-2012_0153-2_11.1.py
+  sle11sp3/kernel-rt_SUSE-SU-2013_1750-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2014_0537-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2014_0683-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2014_0796-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2014_0908-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2014_0909-1_11.3.py
+  sle11sp3/kernel-rt_SUSE-SU-2014_1695-2_11.3.py
+
+-------------------------------------------------------------------
+Mon Jan 26 16:30:55 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/flash-player_SUSE-SU-2015_0135-1_11.3.py
+  sle11sp3/vsftpd_SUSE-SU-2015_0136-1_11.3.py
+- Moved sle11sp3/hotmem-7015086.py to sle11all
+
+-------------------------------------------------------------------
+Fri Jan 23 17:29:27 UTC 2015 - jrecord@suse.com
+
+- Makefile includes obnew to commit changes to OBS
+
+-------------------------------------------------------------------
+Fri Jan 16 15:50:50 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/flash-player_SUSE-SU-2015_0062-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Jan 15 15:58:44 UTC 2015 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/xorg-x11-server_SUSE-SU-2015_0045-1_11.3.py
+
+-------------------------------------------------------------------
+Mon Jan  5 23:28:04 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/bind_SUSE-SU-2015_0011-1_11.3.py
+  sle11sp3/suseregister_SUSE-SU-2015_0010-1_11.3.py
+
+-------------------------------------------------------------------
+Wed Dec 24 19:43:03 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/kernel_SUSE-SU-2014_1698-1_11.1.py
+  sle11sp1/ntp_SUSE-SU-2014_1686-3_11.1.py
+  sle11sp2/kernel_SUSE-SU-2014_1698-1_11.2.py
+  sle11sp2/ntp_SUSE-SU-2014_1686-1_11.2.py
+  sle11sp3/kernel_SUSE-SU-2014_1693-1_11.3.py
+  sle11sp3/kernel_SUSE-SU-2014_1693-2_11.3.py
+  sle11sp3/kernel_SUSE-SU-2014_1695-1_11.3.py
+  sle11sp3/ntp_SUSE-SU-2014_1686-1_11.3.py
+  sle11sp3/popt_SUSE-SU-2014_1697-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Dec 16 15:30:25 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/flash-player_SUSE-SU-2014_1650-1_11.3.py
+
+-------------------------------------------------------------------
+Mon Dec 15 20:35:09 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/firefox_SUSE-SU-2014_1624-1_11.1.py
+  sle11sp2/firefox_SUSE-SU-2014_1624-1_11.2.py
+  sle11sp3/firefox_SUSE-SU-2014_1624-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Dec 11 19:37:58 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/shim_SUSE-SU-2014_1619-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Dec  9 17:43:00 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/openvpn_SUSE-SU-2014_1605-1_11.3.py
+  sle11sp3/smt-7015946.py
+
+-------------------------------------------------------------------
+Fri Dec  5 22:09:13 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/clamav_SUSE-SU-2014_1571-1_11.1.py
+  sle11sp2/clamav_SUSE-SU-2014_1571-1_11.2.py
+  sle11sp3/clamav_SUSE-SU-2014_1574-1_11.3.py
+
+-------------------------------------------------------------------
+Fri Dec  5 21:55:45 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/apache_SUSE-SU-2011_1000-1_11.1.py
+  sle11sp1/apache_SUSE-SU-2011_1215-1_11.1.py
+  sle11sp1/bind_SUSE-SU-2011_0759-1_11.1.py
+  sle11sp1/bind_SUSE-SU-2011_1268-1_11.1.py
+  sle11sp1/compat-openssl097g_SUSE-SU-2011_0847-1_11.1.py
+  sle11sp1/ecryptfs-utils_SUSE-SU-2011_0898-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2011_0727-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2011_0967-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2011_1096-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2011_1256-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2011_0614-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2011_0640-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2011_0894-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2011_1063-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2011_1244-1_11.1.py
+  sle11sp1/framework_SUSE-SU-2011_1185-1_11.1.py
+  sle11sp1/freetype2_SUSE-SU-2011_0853-1_11.1.py
+  sle11sp1/freetype2_SUSE-SU-2011_1307-1_11.1.py
+  sle11sp1/jasper_SUSE-SU-2011_1317-1_11.1.py
+  sle11sp1/java_SUSE-SU-2011_0632-1_11.1.py
+  sle11sp1/java_SUSE-SU-2011_0807-1_11.1.py
+  sle11sp1/java_SUSE-SU-2011_0966-1_11.1.py
+  sle11sp1/kernel_SUSE-SU-2011_0832-1_11.1.py
+  sle11sp1/kernel_SUSE-SU-2011_0984-2_11.1.py
+  sle11sp1/kernel_SUSE-SU-2011_1100-1_11.1.py
+  sle11sp1/kernel_SUSE-SU-2011_1319-1_11.1.py
+  sle11sp1/kernel_SUSE-SU-2011_1319-2_11.1.py
+  sle11sp1/kvm_SUSE-SU-2011_0806-1_11.1.py
+  sle11sp1/libfreebl3_SUSE-SU-2011_1042-2_11.1.py
+  sle11sp1/libgssglue_SUSE-SU-2011_0696-1_11.1.py
+  sle11sp1/libwebkit_SUSE-SU-2011_0857-1_11.1.py
+  sle11sp1/openssl-certs_SUSE-SU-2011_0995-1_11.1.py
+  sle11sp1/pam_SUSE-SU-2011_1207-1_11.1.py
+  sle11sp1/popt_SUSE-SU-2011_1140-1_11.1.py
+  sle11sp1/pure-ftpd_SUSE-SU-2011_1029-1_11.1.py
+  sle11sp1/quagga_SUSE-SU-2011_1075-1_11.1.py
+  sle11sp1/reader_SUSE-SU-2011_1239-1_11.1.py
+  sle11sp1/squid3_SUSE-SU-2011_1019-1_11.1.py
+  sle11sp1/vpnc_SUSE-SU-2011_0979-1_11.1.py
+  sle11sp1/wireshark_SUSE-SU-2011_1262-1_11.1.py
+  sle11sp1/x11_SUSE-SU-2011_1035-1_11.1.py
+  sle11sp1/xen_SUSE-SU-2011_0942-1_11.1.py
+  sle11sp1/xorg-x11-server_SUSE-SU-2011_1292-1_11.1.py
+
+-------------------------------------------------------------------
+Fri Dec  5 20:15:32 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/apache2_SUSE-SU-2012_0284-1_11.1.py
+  sle11sp1/bind_SUSE-SU-2012_0741-1_11.1.py
+  sle11sp1/bind_SUSE-SU-2012_1199-1_11.1.py
+  sle11sp1/dbus-1_SUSE-SU-2012_1155-2_11.1.py
+  sle11sp1/firefox_SUSE-SU-2012_0261-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2012_0303-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2012_0424-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2012_0580-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2012_0746-1_11.1.py
+  sle11sp1/firefox_SUSE-SU-2012_0896-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2012_0280-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2012_0332-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2012_0437-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2012_0592-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2012_0724-1_11.1.py
+  sle11sp1/flash-player_SUSE-SU-2012_1001-1_11.1.py
+  sle11sp1/freetype2_SUSE-SU-2012_0484-1_11.1.py
+  sle11sp1/gimp_SUSE-SU-2012_1029-1_11.1.py
+  sle11sp1/gimp_SUSE-SU-2012_1038-1_11.1.py
+  sle11sp1/glibc_SUSE-SU-2012_0033-1_11.1.py
+  sle11sp1/icedtea-web_SUSE-SU-2012_0979-1_11.1.py
+  sle11sp1/java_SUSE-SU-2012_0114-2_11.1.py
+  sle11sp1/java_SUSE-SU-2012_0122-2_11.1.py
+  sle11sp1/java_SUSE-SU-2012_0308-1_11.1.py
+  sle11sp1/java_SUSE-SU-2012_0603-1_11.1.py
+  sle11sp1/java_SUSE-SU-2012_0734-1_11.1.py
+  sle11sp1/java_SUSE-SU-2012_0762-1_11.1.py
+  sle11sp1/kerberos_SUSE-SU-2012_0018-1_11.1.py
+  sle11sp1/kerberos_SUSE-SU-2012_0050-1_11.1.py
+  sle11sp1/kernel_SUSE-SU-2012_0364-1_11.1.py
+  sle11sp1/libexif_SUSE-SU-2012_0903-1_11.1.py
+  sle11sp1/libpng_SUSE-SU-2012_0318-1_11.1.py
+  sle11sp1/libpurple_SUSE-SU-2012_0890-1_11.1.py
+  sle11sp1/libqt4_SUSE-SU-2012_0097-1_11.1.py
+  sle11sp1/libtiff_SUSE-SU-2012_0894-1_11.1.py
+  sle11sp1/libvorbis_SUSE-SU-2012_0326-1_11.1.py
+  sle11sp1/libxml2_SUSE-SU-2012_0117-1_11.1.py
+  sle11sp1/mysql_SUSE-SU-2012_0984-1_11.1.py
+  sle11sp1/openssl_Forbidden-1_11.1.py
+  sle11sp1/openssl_SUSE-SU-2012_0084-1_11.1.py
+  sle11sp1/openssl_SUSE-SU-2012_0623-1_11.1.py
+  sle11sp1/openssl_SUSE-SU-2012_0678-1_11.1.py
+  sle11sp1/php5_SUSE-SU-2012_0496-1_11.1.py
+  sle11sp1/php5_SUSE-SU-2012_0598-2_11.1.py
+  sle11sp1/php5_SUSE-SU-2012_0721-1_11.1.py
+  sle11sp1/php5_SUSE-SU-2012_1034-1_11.1.py
+  sle11sp1/pidgin-otr_SUSE-SU-2012_0703-1_11.1.py
+  sle11sp1/pidgin_SUSE-SU-2012_0782-1_11.1.py
+  sle11sp1/puppet_SUSE-SU-2012_0325-1_11.1.py
+  sle11sp1/puppet_SUSE-SU-2012_0983-1_11.1.py
+  sle11sp1/reader_SUSE-SU-2012_0086-1_11.1.py
+  sle11sp1/reader_SUSE-SU-2012_0522-1_11.1.py
+  sle11sp1/samba_SUSE-SU-2012_0500-1_11.1.py
+  sle11sp1/samba_SUSE-SU-2012_0575-1_11.1.py
+  sle11sp1/tomcat6_SUSE-SU-2012_0155-1_11.1.py
+  sle11sp1/xen_SUSE-SU-2012_0730-1_11.1.py
+  sle11sp1/xen_SUSE-SU-2012_1044-1_11.1.py
+  sle11sp1/xen_SUSE-SU-2012_1162-1_11.1.py
+  sle11sp1/xulrunner_SUSE-SU-2012_0198-1_11.1.py
+  sle11sp1/xulrunner_SUSE-SU-2012_0298-1_11.1.py
+  sle11sp2/bind_SUSE-SU-2012_0741-2_11.2.py
+  sle11sp2/bind_SUSE-SU-2012_1199-1_11.2.py
+  sle11sp2/compat-openssl097g_SUSE-SU-2012_1149-1_11.2.py
+  sle11sp2/dbus-1_SUSE-SU-2012_1155-1_11.2.py
+  sle11sp2/firefox_SUSE-SU-2012_0424-1_11.2.py
+  sle11sp2/firefox_SUSE-SU-2012_0580-1_11.2.py
+  sle11sp2/firefox_SUSE-SU-2012_0746-1_11.2.py
+  sle11sp2/firefox_SUSE-SU-2012_0896-1_11.2.py
+  sle11sp2/firefox_SUSE-SU-2012_1157-1_11.2.py
+  sle11sp2/flash-player_SUSE-SU-2012_0437-1_11.2.py
+  sle11sp2/flash-player_SUSE-SU-2012_0592-1_11.2.py
+  sle11sp2/flash-player_SUSE-SU-2012_0724-1_11.2.py
+  sle11sp2/flash-player_SUSE-SU-2012_1001-1_11.2.py
+  sle11sp2/freetype2_SUSE-SU-2012_0484-1_11.2.py
+  sle11sp2/ghostscript_SUSE-SU-2012_1222-1_11.2.py
+  sle11sp2/gimp_SUSE-SU-2012_1029-1_11.2.py
+  sle11sp2/gimp_SUSE-SU-2012_1038-1_11.2.py
+  sle11sp2/icedtea-web_SUSE-SU-2012_0979-1_11.2.py
+  sle11sp2/java_SUSE-SU-2012_0603-1_11.2.py
+  sle11sp2/java_SUSE-SU-2012_0734-1_11.2.py
+  sle11sp2/java_SUSE-SU-2012_0762-1_11.2.py
+  sle11sp2/java_SUSE-SU-2012_1177-1_11.2.py
+  sle11sp2/java_SUSE-SU-2012_1231-1_11.2.py
+  sle11sp2/java_SUSE-SU-2012_1265-1_11.2.py
+  sle11sp2/kvm_SUSE-SU-2012_1205-1_11.2.py
+  sle11sp2/libexif_SUSE-SU-2012_0903-1_11.2.py
+  sle11sp2/libpurple_SUSE-SU-2012_0890-1_11.2.py
+  sle11sp2/libtiff_SUSE-SU-2012_0894-1_11.2.py
+  sle11sp2/libvirt_SUSE-SU-2012_1043-1_11.2.py
+  sle11sp2/mysql_SUSE-SU-2012_0984-1_11.2.py
+  sle11sp2/openjdk_SUSE-SU-2012_1148-1_11.2.py
+  sle11sp2/openssl_SUSE-SU-2012_0623-1_11.2.py
+  sle11sp2/openssl_SUSE-SU-2012_0678-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_0472-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_0496-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_0598-2_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_0604-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_0721-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_0840-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_1033-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_1034-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_1156-1_11.2.py
+  sle11sp2/php5_SUSE-SU-2012_1156-2_11.2.py
+  sle11sp2/pidgin-otr_SUSE-SU-2012_0703-1_11.2.py
+  sle11sp2/pidgin_SUSE-SU-2012_0782-1_11.2.py
+  sle11sp2/puppet_SUSE-SU-2012_0983-1_11.2.py
+  sle11sp2/reader_SUSE-SU-2012_0522-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2012_0500-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2012_0502-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2012_0515-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2012_0573-1_11.2.py
+  sle11sp2/samba_SUSE-SU-2012_0575-1_11.2.py
+  sle11sp2/xen_SUSE-SU-2012_1132-1_11.2.py
+  sle11sp2/xrdp_SUSE-SU-2012_0927-1_11.2.py
+
+-------------------------------------------------------------------
+Thu Dec  4 23:05:55 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/java_SUSE-SU-2013_0440-3_11.1.py
+  sle11sp1/java_SUSE-SU-2013_0456-3_11.1.py
+  sle11sp1/postgresql_SUSE-SU-2013_0633-2_11.1.py
+  sle11sp2/firefox_SUSE-SU-2013_0470-1_11.2.py
+  sle11sp2/gnutls_SUSE-SU-2013_1060-1_11.2.py
+  sle11sp2/java_SUSE-SU-2013_0871-1_11.2.py
+  sle11sp2/kernel_SUSE-SU-2013_0759-2_11.2.py
+  sle11sp2/kernel_SUSE-SU-2013_0786-1_11.2.py
+
+-------------------------------------------------------------------
+Wed Dec  3 22:01:28 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/flash-player_SUSE-SU-2014_1545-1_11.3.py
+
+-------------------------------------------------------------------
+Mon Dec  1 20:47:42 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/Java_SUSE-SU-2014_1526-1_11.3.py
+  sle11sp3/mceivy-7004434.py
+
+-------------------------------------------------------------------
+Wed Nov 26 18:58:23 UTC 2014 - jrecord@suse.com
+
+- Fixed Docs link in apparmor-00002.pl
+
+-------------------------------------------------------------------
+Mon Nov 24 20:39:55 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp2/MozillaFirefox_SUSE-SU-2014_1458-2_11.2.py
+  sle11sp3/corepower-7015890.py
+
+-------------------------------------------------------------------
+Fri Nov 21 17:03:29 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/MozillaFirefox_SUSE-SU-2014_1458-1_11.1.py
+  sle11sp2/MozillaFirefox_SUSE-SU-2014_1385-1_11.2.py
+  sle11sp3/MozillaFirefox_SUSE-SU-2014_1385-1_11.3.py
+  sle11sp3/MozillaFirefox_SUSE-SU-2014_1458-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Nov 20 20:23:02 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/flash-player_SUSE-SU-2014_1442-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Nov 18 17:14:05 UTC 2014 - jrecord@suse.com
+
+- Fixed undefined variable use error in sle11all/fsaio-00002.pl
+- New Patterns
+  sle11sp1/OpenSSL_SUSE-SU-2014_1386-1_11.1.py
+  sle11sp1/wget_SUSE-SU-2014_1366-2_11.1.py
+  sle11sp2/OpenSSL_SUSE-SU-2014_1386-1_11.2.py
+  sle11sp2/wget_SUSE-SU-2014_1366-2_11.2.py
+  sle11sp3/pagecache-7015898.py
+
+-------------------------------------------------------------------
+Mon Nov 10 20:46:09 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11all/resolve-7015868.py
+
+-------------------------------------------------------------------
+Thu Nov  6 15:38:48 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/OpenSSL_SUSE-SU-2014_1361-1_11.3.py
+  sle11sp3/flash-player_SUSE-SU-2014_1360-1_11.3.py
+  sle11sp3/wget_SUSE-SU-2014_1366-1_11.3.py
+
+-------------------------------------------------------------------
+Wed Nov  5 00:13:27 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/wpa_supplicant_SUSE-SU-2014_1356-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Oct 30 15:52:51 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11all/numa-7015827.py
+
+-------------------------------------------------------------------
+Mon Oct 27 20:35:14 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/kernel_SUSE-SU-2014_1316-1_11.3.py
+  sle11sp3/kernel_SUSE-SU-2014_1319-1_11.3.py
+
+-------------------------------------------------------------------
+Wed Oct 15 20:06:14 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle11sp3/rsyslog_SUSE-SU-2014_1294-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Sep 30 21:59:13 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/mozilla-nss_SUSE-SU-2014_1220-3_11.1.py
+  sle11sp2/mozilla-nss_SUSE-SU-2014_1220-2_11.2.py
+
+-------------------------------------------------------------------
+Mon Sep 29 14:29:55 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/bash_SUSE-SU-2014_1247-1_11.1.py
+  sle11sp2/bash_SUSE-SU-2014_1247-1_11.2.py
+  sle11sp3/bash_SUSE-SU-2014_1247-1_11.3.py
+  sle11sp3/mozilla-nss_SUSE-SU-2014_1220-1_11.3.py
+  sle11sp3/wireshark_SUSE-SU-2014_1221-1_11.3.py
+
+-------------------------------------------------------------------
+Fri Sep 26 18:53:32 UTC 2014 - jrecord@suse.com
+
+- Update bash security patterns with TID and BUG
+
+-------------------------------------------------------------------
+Thu Sep 25 14:21:11 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/bash_SUSE-SU-2014_1212-1_11.1.py
+  sle11sp2/bash_SUSE-SU-2014_1213-1_11.2.py
+  sle11sp3/bash_SUSE-SU-2014_1213-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Sep 23 22:33:22 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11all/obsrepo-015683.py
+  sle11sp1/Kernel_SUSE-SU-2014_1138-1_11.1.py
+  sle11sp1/MozillaFirefox_SUSE-SU-2014_1112-2_11.1.py
+  sle11sp1/apache2_SUSE-SU-2014_1081-1_11.1.py
+  sle11sp1/glibc_SUSE-SU-2014_1122-1_11.1.py
+  sle11sp2/MozillaFirefox_SUSE-SU-2014_1112-1_11.2.py
+  sle11sp2/apache2_SUSE-SU-2014_1080-1_11.2.py
+  sle11sp2/glibc_SUSE-SU-2014_1129-1_11.2.py
+  sle11sp3/LibreOffice_SUSE-SU-2014_1116-1_11.3.py
+  sle11sp3/MozillaFirefox_SUSE-SU-2014_1107-1_11.3.py
+  sle11sp3/dbus-1_SUSE-SU-2014_1146-1_11.3.py
+  sle11sp3/flash-playe_SUSE-SU-2014_1124-1_11.3.py
+  sle11sp3/glibc_SUSE-SU-2014_1125-1_11.3.py
+  sle11sp3/procmail_SUSE-SU-2014_1137-1_11.3.py
+  sle11sp3/squid3_SUSE-SU-2014_1140-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Sep  9 23:07:08 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/NFS_Error88-7010007.py
+  sle11sp3/MySQL_SUSE-SU-2014_1072-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Aug 19 19:37:48 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/flash_SUSE-SU-2014_1035-1_11.3.py
+  sle11sp3/krb5_SUSE-SU-2014_1028-1_11.3.py
+
+-------------------------------------------------------------------
+Thu Aug 14 17:54:07 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/smbmmap-7015515.py
+
+-------------------------------------------------------------------
+Tue Aug 12 20:24:19 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/Firefox_SUSE-SU-2014_0960-1_11.1.py
+  sle11sp2/Firefox_SUSE-SU-2014_0960-1_11.2.py
+  sle11sp2/scale_rt_power-7015154_0.1.4.py
+  sle11sp3/Apache_SUSE-SU-2014_0967-1_11.3.py
+  sle11sp3/Firefox_SUSE-SU-2014_0960-1_11.3.py
+  sle11sp3/openjdk_SUSE-SU-2014_0961-1_11.3.py
+  sle11sp3/scale_rt_power-7015154_0.1.4.py
+
+-------------------------------------------------------------------
+Fri Aug  1 20:22:51 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp1/lzo_SUSE-SU-2014_0955-1_11.1.py
+  sle11sp2/lzo_SUSE-SU-2014_0955-1_11.2.py
+
+-------------------------------------------------------------------
+Wed Jul 30 21:20:31 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/libtasn1_SUSE-SU-2014_0931-1_11.3.py
+  sle11sp3/ppc64-diag_SUSE-SU-2014_0928-1_11.3.py
+
+-------------------------------------------------------------------
+Tue Jul 22 21:48:08 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/xen_kdump-7014586.py
+  sle11sp3/chipset-7014344.py
+  sle11sp3/gui-7015167.py
+  sle11sp2/chipset-7014344.py
+
+-------------------------------------------------------------------
+Thu Jul 17 22:22:46 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/lzo-SUSE-SU-2014_0904-1.py
+  sle11sp3/flash-SUSE-SU-2014_0897-1.py
+  sle11sp3/xalan-SUSE-SU-2014_0870-1.py
+  sle11sp3/kernel-SUSE-SU-2014_0910-1.py
+  sle11sp3/php53-SUSE-SU-2014_0869-1.py
+  sle11sp2/php5-SUSE-SU-2014_0868-1.py
+  sle11sp2/php53-SUSE-SU-2014_0869-1.py
+  sle11sp1/php5-SUSE-SU-2014_0873-2.py
+
+-------------------------------------------------------------------
+Mon Jul  7 16:14:57 UTC 2014 - jrecord@suse.com
+
+- Fixed invalid header processing in mntspace-00001.pl
+
+-------------------------------------------------------------------
+Thu Jun 26 16:46:14 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/novellui-SUSE-SU-2014_0847-1.pl
+  sle11sp1/firefox-SUSE-SU-2014_0824-2.pl
+  sle11sp2/firefox-SUSE-SU-2014_0824-3.pl
+  sle11sp3/firefox-SUSE-SU-2014_0824-1.pl
+
+-------------------------------------------------------------------
+Wed Jun 25 20:38:42 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/rxvt-SUSE-SU-2014_0838-1.pl
+  sle11sp3/flash-SUSE-SU-2014_0806-1.pl
+  sle11sp2/kernel-SUSE-SU-2014_0837-2.pl
+  sle11sp1/kernel-SUSE-SU-2014_0807-1.pl
+  sle11sp1/gnutls-SUSE-SU-2014_0788-1.pl
+  sle11sp2/gnutls-SUSE-SU-2014_0788-1.pl
+  sle11sp2/kernel-SUSE-SU-2014_0837-1.pl
+  sle11sp3/kernel-SUSE-SU-2014_0775-1.pl
+  sle11sp3/mysql-SUSE-SU-2014_0769-1.pl
+  sle11sp3/openssl_sm-SUSE-SU-2014_0762-1.pl
+  sle11sp1/openssl-SUSE-SU-2014_0761-1.pl
+  sle11sp2/openssl-SUSE-SU-2014_0761-1.pl
+  sle11sp3/openssl-SUSE-SU-2014_0759-1.pl
+  sle11sp3/gnutls-SUSE-SU-2014_0758-1.pl
+  sle11sp3/javaibm-SUSE-SU-2014_0728-3.pl
+  sle11sp3/javaibm-SUSE-SU-2014_0733-2.pl
+  sle11sp3/hyperv_kdump-7014585.py
+  sle11sp2/hyperv_kdump-7014585.py
+  sle11sp2/javaibm-SUSE-SU-2014_0733-1.pl
+  sle11sp2/javaibm-SUSE-SU-2014_0728-2.pl
+
+-------------------------------------------------------------------
+Thu Jun 12 18:45:55 UTC 2014 - jrecord@suse.com
+
+- Fixed invalid NTP fields in sle11all/ntp-00002.pl
+
+-------------------------------------------------------------------
+Mon Jun  2 19:09:15 UTC 2014 - jrecord@suse.com
+
+- Fixed calculation errors in sle11all/parted-00001.pl
+- New Patterns
+  sle11sp2/kernel-SUSE-SU-2014_0696-1.pl
+
+-------------------------------------------------------------------
+Thu May 22 23:55:07 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp2/nfs-7014392.py
+  sle11sp3/nfs-7014392.py
+  sle11sp2/audit-7014614.py
+  sle11sp3/audit-7014614.py
+  sle11sp3/hotmem-7015086.py
+  sle11sp2/bond-7014947.py
+  sle11sp3/bond-7014947.py
+
+-------------------------------------------------------------------
+Wed May 21 23:09:25 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp2/swapon-7010766.py
+  sle11all/vfx_inode_table_7015089.py
+
+-------------------------------------------------------------------
+Wed May 21 20:09:44 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/nagios-SUSE-SU-2014_0682-1.pl
+  sle11sp3/flash-SUSE-SU-2014_0671-1.pl
+  sle11sp3/javaopen-SUSE-SU-2014_0639-1.pl
+  sle11sp1/firefox-SUSE-SU-2014_0665-1.pl
+  sle11sp2/firefox-SUSE-SU-2014_0638-2.pl
+  sle11sp3/firefox-SUSE-SU-2014_0638-1.pl
+  sle11sp3/kvm-SUSE-SU-2014_0623-1.pl
+  sle11sp3/flash-SUSE-SU-2014_0605-1.pl
+  sle11sp3/kernel-SUSE-SU-2014_0667-1.pl
+  sle11all/strongswan-SUSE-SU-2014_0529-1.pl
+
+-------------------------------------------------------------------
+Wed May 20 11:40:47 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11sp3/jakarta-SUSE-SU-2014_0548-1.pl
+  sle11sp3/flash-SUSE-SU-2014_0535-1.pl
+  sle11sp3/kernel-SUSE-SU-2014_0531-1.pl
+  sle11sp2/puppet-SUSE-SU-2014_0510-1.pl
+  sle11sp3/puppet-SUSE-SU-2014_0510-1.pl
+  sle11sp3/samba-SUSE-SU-2014_0497-1.pl
+  sle11sp3/sudo-SUSE-SU-2014_0475-1.pl
+  sle11sp3/lighttpd-SUSE-SU-2014_0474-1.pl
+  sle11sp3/mutt-SUSE-SU-2014_0471-1.pl
+  sle11sp3/kernel-SUSE-SU-2014_0459-1.pl
+  sle11sp2/kernel-SUSE-SU-2014_0229-1.pl
+
+-------------------------------------------------------------------
+Mon May 19 21:13:16 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11all/sandy-7014951.py
+  sle11sp1/acpi-7010449.py
+  sle11sp2/acpi-7010449.py
+
+-------------------------------------------------------------------
+Fri May  2 13:59:13 UTC 2014 - jrecord@suse.com
+
+- Removed debug pattern
+
+-------------------------------------------------------------------
+Mon Apr 28 14:33:32 UTC 2014 - jrecord@suse.com
+
+- Removed obsolete pattern subscription-00002.pl (bnc#710068)
+- Removed obsolete pattern patches-00002.pl (bnc#710068)
+
+-------------------------------------------------------------------
+Fri Apr 25 20:38:11 UTC 2014 - jrecord@suse.com
+
+- Fixed mntspace-00001.pl df error handling
+- Fixed x-00003.pl non numeric comparison error
+
+-------------------------------------------------------------------
+Tue Apr 22 16:07:04 UTC 2014 - jrecord@suse.com
+
+- Fixed Use of uninitialized value in addition in bhc-cpucs-00001.pl
+- Fixed Argument "like:" isn't numeric in bhc-cpuint-00001.pl
+- Fixed Use of uninitialized value in pattern match in fsaio-00002.pl
+- Fixed Argument "" isn't numeric in fsaio-00001.pl
+- Fixed bhc-kerneltaint-00001.pl to check for invalid taint
+
+-------------------------------------------------------------------
+Wed Apr  9 17:57:53 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle11all/lastlogin-7014881.py
+  sle11sp3/mcelog_AMD-7013006.py
+
+-------------------------------------------------------------------
+Tue Apr  8 22:16:18 UTC 2014 - jrecord@suse.com
+
+- Removed LTSS tag in sle11sp3/xen-SUSE-SU-2014_0373-1.pl
+
+-------------------------------------------------------------------
+Mon Apr  7 15:39:25 UTC 2014 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp1/xen-SUSE-SU-2014_0446-1.pl
+  sle11sp2/xen-SUSE-SU-2014_0372-1.pl
+  sle11sp3/xen-SUSE-SU-2014_0373-1.pl
+  sle11sp3/flash-SUSE-SU-2014_0387-1.pl
+  sle11sp3/firefox-SUSE-SU-2014_0418-1.pl
+  sle11sp1/gnutls-SUSE-SU-2014_0322-1.pl
+  sle11sp2/gnutls-SUSE-SU-2014_0323-1.pl
+  sle11sp3/gnutls-SUSE-SU-2014_0319-1.pl
+
+-------------------------------------------------------------------
+Wed Apr  2 21:44:13 UTC 2014 - jrecord@suse.com
+
+- New Security Patterns
+  sle11sp3/flash-SUSE-SU-2014_0290-1.pl
+  sle11sp3/javaibm-SUSE-SU-2014_0266-3.pl
+  sle11sp1/javaibm-SUSE-SU-2014_0266-3.pl
+  sle11sp2/javaibm-SUSE-SU-2014_0266-2.pl
+  sle11sp2/firefox-SUSE-SU-2014_0248-2.pl
+  sle11sp1/firefox-SUSE-SU-2014_0248-2.pl
+  sle11sp3/firefox-SUSE-SU-2014_0248-1.pl
+  sle11sp3/javaibm-SUSE-SU-2014_0246-1.pl
+  sle11sp3/flash-SUSE-SU-2014_0221-1.pl
+  sle11sp2/flash-SUSE-SU-2014_0221-1.pl
+  sle11sp3/puppet-SUSE-SU-2014_0155-1.pl
+  sle11sp2/puppet-SUSE-SU-2014_0155-1.pl
+  sle11sp3/certs-SUSE-SU-2014_0025-1.pl
+  sle11sp2/certs-SUSE-SU-2014_0025-1.pl
+  sle11sp3/samba-SUSE-SU-2014_0024-1.pl
+  sle11sp2/samba-SUSE-SU-2014_0024-1.pl
+  sle11sp3/acroread-SUSE-SU-2013_1967-1.pl
+  sle11sp2/acroread-SUSE-SU-2013_1967-1.pl
+  sle11sp2/libfreebl3-SUSE-SU-2013_1920-1.pl
+  sle11sp3/firefox-SUSE-SU-2013_1919-1.pl
+  sle11sp3/flash-SUSE-SU-2013_1896-1.pl
+  sle11sp2/flash-SUSE-SU-2013_1896-1.pl
+  sle11sp3/ruby-SUSE-SU-2013_1828-1.pl
+  sle11sp2/ruby-SUSE-SU-2013_1828-1.pl
+  sle11sp3/mozilla-SUSE-SU-2013_1807-1.pl
+  sle11sp2/mozilla-SUSE-SU-2013_1807-1.pl
+  sle11sp1/mozilla-SUSE-SU-2013_1807-1.pl
+
+-------------------------------------------------------------------
+Mon Mar 31 20:50:49 UTC 2014 - jrecord@suse.com
+
+- New patterns
+  sle11sp3/oops-7014823.pl
+
+-------------------------------------------------------------------
+Fri Mar 21 18:40:31 UTC 2014 - jrecord@suse.com
+
+- Fixed spec macro
+
+-------------------------------------------------------------------
+Thu Mar 20 15:50:29 UTC 2014 - jrecord@suse.com
+
+- Removed duplicates with fdupes
+- Fixed FSF address in all patterns
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Thu Mar  6 18:04:16 UTC 2014 - jrecord@suse.com
+
+- New patterns
+  sle11sp2/ipset-7014180.py
+  sle11sp3/ipset-7014180.py
+  sle11all/reg-7014660.py
+  sle11all/chmod-7014410.py
+  sle11all/login-7014706.py
+
+-------------------------------------------------------------------
+Tue Mar  4 16:49:22 UTC 2014 - jrecord@suse.com
+
+- Fixed out of range index errors
+  sle11all/xfs-7014242.py
+  sle11sp2/xfs-7013481a.py
+  sle11sp3/xfs-7013481b.py
+  sle11all/bhc-memused-00001.pl
+
+-------------------------------------------------------------------
+Sat Feb  8 22:29:15 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 19:42:25 UTC 2014 - jrecord@suse.com
+
+- added
+  sle11all/net-7007649.py
+- includes pertinent patterns from sca-patterns-sleall
+- includes pertinent patterns from sca-patterns-samba
+- includes pertinent patterns from sca-patterns-basic
+
+-------------------------------------------------------------------
+Thu Jan 16 10:54:20 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Dec 20 10:54:20 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+- updated vmware-00001.pl link
+- added time consideration to lastdown-3301593.py
+- additional error checking in lastdown-3301593.py
+- added
+  tmp-7002723.py sleall
+  firefox-SUSE-SU-2013_1678-1a.pl sle11sp3
+  firefox-SUSE-SU-2013_1678-1b.pl sle11sp2
+  firefox-SUSE-SU-2013_1678-1c.pl sle11sp1
+  flash-SUSE-SU-2013_1716-1a.pl sle11sp3
+  flash-SUSE-SU-2013_1716-1b.pl sle11sp2
+  java-SUSE-SU-2013_1677-2a.pl sle11sp3
+  java-SUSE-SU-2013_1677-2b.pl sle11sp2
+  java-SUSE-SU-2013_1677-2c.pl sle11sp1
+  java-SUSE-SU-2013_1677-3a.pl sle11sp3
+  java-SUSE-SU-2013_1677-3b.pl sle11sp2
+  kdev-7003734.py sle11all
+  kernel-SUSE-SU-2013_1748-1.pl sle11sp2
+  kernel-SUSE-SU-2013_1749-1.pl sle11sp3
+  xfs-7013481a.py sle11sp2
+  xfs-7013481b.py sle11sp3
+  xfs-7014242.py sle11all
+

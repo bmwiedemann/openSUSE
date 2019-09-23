@@ -1,0 +1,7 @@
+<package name="vacuum-im" project="openSUSE:Factory">
+  <title>Crossplatform Jabber client written on Qt</title>
+  <description>The core program is just a plugin loader - all functionality is made
+available via plugins. This enforces modularity and ensures well defined
+component interaction via interfaces.</description>
+  <devel project="network" package="vacuum-im"/>
+</package>

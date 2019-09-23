@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Tue Jul 16 09:46:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.11
+   see /usr/share/doc/packages/perl-MooseX-Role-Parameterized/Changes
+
+  1.11      2019-07-16 01:33:16Z
+     - remove MooseX::Role::WithOverloading from test dependencies (RT#130075)
+
+-------------------------------------------------------------------
+Fri Apr 21 06:14:17 UTC 2017 - coolo@suse.com
+
+- updated to 1.10
+   see /usr/share/doc/packages/perl-MooseX-Role-Parameterized/Changes
+
+  1.10      2017-04-20 17:50:53Z
+     - add MooseX::Role::Parameterised as stub documentation, for
+       discoverability
+
+-------------------------------------------------------------------
+Sun Aug  7 05:57:53 UTC 2016 - coolo@suse.com
+
+- updated to 1.09
+   see /usr/share/doc/packages/perl-MooseX-Role-Parameterized/Changes
+
+  1.09      2016-08-07 01:20:31Z
+     - Give 'anonymous' generated roles names that are similar to the original
+       parameterized role so debug output is easier to read
+
+-------------------------------------------------------------------
+Tue Apr 14 20:53:38 UTC 2015 - coolo@suse.com
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-MooseX-Role-Parameterized/Changes
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.02
+     * set %INC entries in test to avoid failures with
+       Moose pre-2.11 (kentfrederic)
+         https://github.com/sartak/MooseX-Role-Parameterized/pull/7
+         https://rt.cpan.org/Ticket/Display.html?id=88593
+     * removed use of deprecated Class::MOP::load_class (ether)
+- remove outdated patch perl-MooseX-Role-Parameterized-old_Test_More.patch
+
+-------------------------------------------------------------------
+Mon Feb 27 10:09:25 UTC 2012 - coolo@suse.com
+
+- updated to 1.00
+   * MooseX::Role::Parameterized now depends on Moose 2.0300
+     released 2011-09-23 for its several core improvements, hence the
+     major version number bump.
+   * MXRP now uses the new meta_lookup feature added to Moose 2.0300
+     (specifically for MXRP) to avoid duplicating Moose-0.60-era
+     Moose::Role sugar. This means the error messages you get are
+     better, and there's a lot less ugly code in MXRP.
+   * Remove alias/excludes special case errors. They have long since been
+     replaced in core Moose by -alias and -excludes, and were finally
+     removed in Moose 2.0200.
+   * Expressly forbid using role { } inside role { } (which makes no
+     sense but I suppose you could accidentally trigger it)
+   * Documentation fix from cweyl@alumni.drew.edu
+     https://github.com/sartak/MooseX-Role-Parameterized/pull/5
+
+-------------------------------------------------------------------
+Mon Dec 19 15:38:03 UTC 2011 - coolo@suse.de
+
+- update to 0.27 
+    * Remove MooseX::Role::Parameterized::Meta::Parameter; instead,
+      the default for parameters of (is => 'ro') is set by the
+      "parameter" sugar. This removes an unnecessary metaclass and
+      removes weird edge cases caused by it. Please please please
+      report any breakage!
+
+-------------------------------------------------------------------
+Sat Jun  4 22:18:20 UTC 2011 - lars@linux-schulserver.de
+
+- fix build on distributions with old Test::More module
+  ( perl-MooseX-Role-Parameterized-old_Test_More.patch )
+
+-------------------------------------------------------------------
+Sun May  1 10:38:24 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.26
+      * make tests stop relying on a specific format for anon class/role names (doy)
+  
+      * Move the reinitialization hook from Role to Trait so hardcore hackers
+        (trait janitors) get the benefit too (doy)
+  
+      * Made MXRP more extensible by hooking into the role metaobject
+        reinitialization (doy)
+  
+      * Merry Christmas!
+      * Make MooseX::Role::Parameterized::Extending more instructive. Hopefully.
+  
+      * The test suite now uses Test::Fatal instead of Test::Exception (Karen
+        Etheridge).
+      * Fix Test::More dependency (reported by Father Chrysostomos) [rt.cpan.org #63222]
+  
+      * "package" arg can now tell generate_role to use a specific package (rjbs)
+  
+      * Minor test refactoring to fix blead support [rt.perl.org #78244]
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:51 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:37 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Jul 26 01:18:20 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.19)
+

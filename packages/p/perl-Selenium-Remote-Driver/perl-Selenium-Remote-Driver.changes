@@ -1,0 +1,296 @@
+-------------------------------------------------------------------
+Mon Sep 16 12:34:43 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Remove post_install (not needed anymore)
+
+-------------------------------------------------------------------
+Thu Sep 12 08:03:01 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.34
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.34   09-11-2019 TEODESIAN
+          [BUG FIXES]
+          - Remove .so files from Firefox lib tree to simplify CPAN RPM build tool chains
+
+-------------------------------------------------------------------
+Mon Jul 29 14:02:52 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Delete libibushandler.so also on x86: we don't have the old
+  libibus.so.2 available in the distro.
+
+-------------------------------------------------------------------
+Wed Jun 19 05:28:13 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.33   06-17-2019 TEODESIAN
+          [BUG FIXES]
+          - Add chrome shim to disable sandboxing by default so that Selenium::Chrome usage isn't broken by default
+          - Report failures to obtain sessions better
+
+-------------------------------------------------------------------
+Thu Jun 13 05:33:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.32   06-12-2019 TEODESIAN
+          [New Features]
+          - Add support for mozilla full pags screenshots
+          [BUG FIXES]
+          - Fix typo in WebElement drag() talking to action chains module.  No wonder that didn't work
+          - Don't auto-da-fe on Macos when shutting down the binary in direct drivers
+
+-------------------------------------------------------------------
+Wed Jan 23 13:25:11 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
+
+- Add lsof dependency which is required by version > 1.31 
+
+-------------------------------------------------------------------
+Mon Jan  7 06:36:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.31   01-06-2019 TEODESIAN
+          [BUG FIXES]
+          - Kill dangling driver processes in Selenium::Chrome/Firefox on unix hosts
+          - Adjust set_timeout to WC3 standard changing out from under us
+
+-------------------------------------------------------------------
+Tue Sep 18 05:55:26 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.30   09-17-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix broken name selector polyfill when using Selenium::Firefox directly
+          - Fix switch_to_frame(undef) brokenness due to unneeded polyfill
+          - Correct POD information about how to use raw firefox profiles
+          - Advertise Microsoft Browser Standalone Drivers (Edge, IE)
+
+-------------------------------------------------------------------
+Sat Aug 18 06:07:49 UTC 2018 - coolo@suse.com
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.29   08-17-2018 TEODESIAN
+          [New Features]
+          - Selenium::Edge and Test::Selenium::Edge now exist
+          - Pass caller argument array as final arg to error_handler callbacks
+          - Add child() and children() aliases to Selenium::Remote::WebElements
+          [BUG FIXES]
+          - Fixed Test::Selenium::* direct usage modules from getting undef method errors when acting on WebElements
+          - Fixed issue where capabilities could not be passed with Selenium::Firefox
+          - Make it actually possible for find_element_ok to fail without dying
+
+-------------------------------------------------------------------
+Wed Jun  6 06:01:58 UTC 2018 - coolo@suse.com
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.28   06-05-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix incorrect documentation of constructor fields.
+          - Remove bogus get_style header in WebElement POD.
+          - Fix chrome maximize() polyfill
+          - Adjust is_displayed to do appropriate "displayedness" checks when in WC3 mode.
+
+-------------------------------------------------------------------
+Mon Mar 26 05:56:25 UTC 2018 - coolo@suse.com
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.27   03-25-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix incorrect passing of capabilities to geckodriver which caused exceptions on instantiaion.
+          - Fix issue where <form> elements could not be submitted.
+          - Allow bypass of JSONWire emulation in Selenium::Remote::WebElement::get_attribute().
+
+-------------------------------------------------------------------
+Tue Feb 20 06:56:19 UTC 2018 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.26   02-19-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix issue where only <form> elements and not <input> elements could be submit()ted.
+          - Force chrome into using JSONWire style capabilities passing, as WC3 style is just horribly broken on chromedriver.
+          - Skip v1.25, because the PAUSE indexer apparently thinks 1.25 < 1.24
+
+-------------------------------------------------------------------
+Wed Feb 14 07:01:53 UTC 2018 - coolo@suse.com
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.24   02-12-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix issue where ID finder polyfills failed on IDs with dots (.) in them.
+          - Force fallback to JSONWire execute_script calls in chrome, they're not quite right in WC3 mode.
+
+-------------------------------------------------------------------
+Tue Jan 30 05:59:42 UTC 2018 - coolo@suse.com
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.23   01-29-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix issue on legacy chrome/driver with get/set window pos by forcing fallback to JSONWire methods.
+
+-------------------------------------------------------------------
+Mon Jan 29 20:18:27 UTC 2018 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.22   01-25-2018 TEODESIAN
+          [BUG FIXES]
+          - Fix issue where is_enabled() polyfill on WD3 servers was checking the wrong attribute.
+          - Fix issue where Firefox/Chrome capabilities were not correctly passed
+          - Make some JS polyfill failures non-fatal
+
+-------------------------------------------------------------------
+Sat Jan 20 07:18:29 UTC 2018 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+-------------------------------------------------------------------
+Sat May 27 06:33:45 UTC 2017 - coolo@suse.com
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.20   05-54-2017
+          [BUG FIXES]
+          - Shim use of name as find method for geckodriver
+          - Start up geckodriver/binary Firefox properly
+          - #309, #310: @syspete: Fix issues with dependencies
+          - #313, #312: @lukec: Handle saucelabs redirect during session create
+  
+          [NEW FEATURES]
+          - #307: @vitstradal: Re-use an existing session
+
+-------------------------------------------------------------------
+Mon Feb 13 13:04:25 UTC 2017 - coolo@suse.com
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.12   02-05-2017
+          [BUG FIXES]
+          - #303: Restore switchWindow functionality in Chrome
+  
+  1.11   02-01-2017
+          [NEW FEATURES]
+          - #298: @vkatsikaris: fixed ports option (long overdue on my part, thanks)!
+  
+          [BUG FIXES]
+          - #301: Update json parameter for switchWindow
+
+-------------------------------------------------------------------
+Mon Jan  9 11:14:52 UTC 2017 - coolo@suse.com
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.02   12-13-2016
+          (bundled firefox driver version: 3.0.0b2)
+  
+          [NEW FEATURES]
+          - #288: @vkatsikaris: Add context endpoints for Firefox
+  
+          [BUG FIXES]
+          - #279, #281: @richi235: Fix errors in IDE plugin script generator
+          - #291, #292, #299: Handle spec element key format
+  
+  1.00   09-01-2016
+          (bundled firefox driver version: 3.0.0b2)
+  
+          [BREAKING]
+          - For users of Selenium::Firefox, FF support defaults to v48;
+            if you have FF47 installed, your existing scripts will require
+            modification. See docs in Selenium::Firefox for more info.
+  
+          [NEW FEATURES]
+          - #271: Support geckodriver & FF48
+          - #260: Update firefox artifacts to 3.0.0b2 to support FF47
+          - #259: Allow users to pass in existing FF profile dir
+          - #276: Simplify recordings to enable easier releases
+  
+          [BUG FIXES]
+          - Encode Firefox profiles without newlines for Sel 3.0 compatibility
+          - #272: Remove unnecessary sleeps for successful waits
+          - #270: Fix bug in find_child_element default finder
+          - #263, #275: Address various documentation issues
+          - #253: Fix error_handler being called incorrectly
+  
+  0.2701 01-11-2016
+          (firefox driver version: 2.48.2)
+  
+          [BUG FIXES]
+          - #239: Respect existing prefs when using custom profile with Selenium::Firefox
+          - #238: Update firefox driver extension to latest 2.48.2
+          - #21: Update docs about using child finders with xpath
+  
+  0.27   08-30-2015
+          [NEW FEATURES]
+          - #219: Add `startup_timeout` to CanStartBinary role
+          - #211: @peroumal1: Document locator usage for Test::SRD functions
+  
+          [BUG FIXES]
+          - #215: Replace Time::Mock with the more reliable & tested Test::Time
+          - #212: @peroumal1: Fix bug in find_no_element_ok
+          - #209: @peroumal1: Make error_handler catch non-webdriver exceptions in Test::SRD
+          - #222: Describe demolish/destroy behavior.
+          - #226: Allow local file URLs for PAC url
+          - Stop trying to do things during global destruction
+  
+  0.26   05-16-2015
+          (selenium version: 2.45.0)
+  
+          [NEW FEATURES]
+          - #203: Allow users to install a custom error handler
+          - #204: Implement action chains
+  
+          [BUG FIXES]
+          - #147: Allow for inflation to a full Moose class
+          - #192: Stop assuming objects are around during global destruction
+          - #200: Fix undocumented upload_file endpoint bug for paths with ".."
+          - Refactor to remove some unnecessary dependencies
+  
+  0.25   03-24-2015
+          (selenium version: 2.45.0)
+  
+          [NEW FEATURES]
+          - #189 Start webdrivers directly, removing the need for the JRE. See
+             Selenium::Chrome, Selenium::Firefox, Selenium::PhantomJS.
+  
+          [BUG FIXES]
+          - #194, #195: @teodesian, @jamadam: fix undocumented upload file behavior
+
+-------------------------------------------------------------------
+Wed Apr  8 15:16:07 UTC 2015 - lnussel@suse.de
+
+- updated to 0.24
+  * #182 Non-crashing warn-instead-of-die parameter finders: find_element_by_class, etc
+  * #183 Convenience packages for starting up browsers: Selenium::Chrome, Selenium::Firefox, etc
+  * Provide wait_until utility functionality in Selenium::Waiter
+  * #184 Fix bug about reverting default finder in T:S:R:D
+
+
+-------------------------------------------------------------------
+Fri Feb 13 19:59:17 UTC 2015 - coolo@suse.com
+
+- initial package 0.23
+    * created by cpanspec 1.78.08
+

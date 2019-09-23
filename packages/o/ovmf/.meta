@@ -1,0 +1,5 @@
+<package name="ovmf" project="openSUSE:Factory">
+  <title>Open Virtual Machine Firmware</title>
+  <description>The Open Virtual Machine Firmware (OVMF) project aims to support firmware for Virtual Machines using the edk2 code base.</description>
+  <devel project="Virtualization" package="ovmf"/>
+</package>

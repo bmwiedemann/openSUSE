@@ -1,0 +1,505 @@
+From 54b6ba5f27dd9eb9ec2f1a41e7160964ab94451c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 23 Nov 2016 16:52:16 +0800
+Subject: [PATCH 11/11] Build tpm as module
+
+Rather than having tpm as permanent kernel feature that gets enabled and active
+unconditionally, it's more applicable to have it as external module that can be
+installed with --suse-enable-tpm option to grub2-install.
+
+This can provide some enhancement. First the core image size can be nearly the
+same when you don't need TPM, as it's controllable option now. Second the TPM
+device can be tested upon loading the module instead of on every measurement.
+Third is not to potentially break running system by forcing into the TPM after
+update, as it's still bleeding edge feature that could have side effect.
+
+---
+ grub-core/Makefile.core.def   |  24 +++-
+ grub-core/boot/i386/pc/boot.S |   1 -
+ grub-core/kern/efi/tpm.c      | 282 -----------------------------------------
+ grub-core/kern/i386/pc/tpm.c  | 132 --------------------
+ grub-core/kern/tpm.c          |  11 +-
+ grub-core/tpm/efi/tpm.c       | 283 ++++++++++++++++++++++++++++++++++++++++++
+ grub-core/tpm/i386/pc/tpm.c   | 144 +++++++++++++++++++++
+ include/grub/tpm.h            |  23 ++--
+ util/grub-install.c           |  16 ++-
+ 9 files changed, 479 insertions(+), 437 deletions(-)
+ delete mode 100644 grub-core/kern/efi/tpm.c
+ delete mode 100644 grub-core/kern/i386/pc/tpm.c
+ create mode 100644 grub-core/tpm/efi/tpm.c
+ create mode 100644 grub-core/tpm/i386/pc/tpm.c
+
+Index: grub-2.02~rc1/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.02~rc1.orig/grub-core/Makefile.core.def
++++ grub-2.02~rc1/grub-core/Makefile.core.def
+@@ -174,7 +174,6 @@ kernel = {
+   efi = term/efi/console.c;
+   efi = kern/acpi.c;
+   efi = kern/efi/acpi.c;
+-  efi = kern/efi/tpm.c;
+   i386_coreboot = kern/i386/pc/acpi.c;
+   i386_multiboot = kern/i386/pc/acpi.c;
+   i386_coreboot = kern/acpi.c;
+@@ -221,7 +220,6 @@ kernel = {
+ 
+   i386_pc = kern/i386/pc/init.c;
+   i386_pc = kern/i386/pc/mmap.c;
+-  i386_pc = kern/i386/pc/tpm.c;
+   i386_pc = term/i386/pc/console.c;
+ 
+   i386_qemu = bus/pci.c;
+@@ -395,6 +393,19 @@ image = {
+ };
+ 
+ image = {
++  name = boot_tpm;
++  i386_pc = boot/i386/pc/boot.S;
++
++  cppflags = '-DTPM=1';
++
++  i386_pc_ldflags = '$(TARGET_IMG_LDFLAGS)';
++  i386_pc_ldflags = '$(TARGET_IMG_BASE_LDOPT),0x7C00';
++
++  objcopyflags = '-O binary';
++  enable = i386_pc;
++};
++
++image = {
+   name = cdboot;
+ 
+   i386_pc = boot/i386/pc/cdboot.S;
+@@ -2369,3 +2380,12 @@ module = {
+   common = loader/i386/xen_file64.c;
+   extra_dist = loader/i386/xen_fileXX.c;
+ };
++
++module = {
++  name = tpm;
++  i386_pc = kern/i386/pc/tpm.c;
++  efi = kern/efi/tpm.c;
++
++  enable = i386_pc;
++  enable = efi;
++};
+Index: grub-2.02~rc1/grub-core/boot/i386/pc/boot.S
+===================================================================
+--- grub-2.02~rc1.orig/grub-core/boot/i386/pc/boot.S
++++ grub-2.02~rc1/grub-core/boot/i386/pc/boot.S
+@@ -24,7 +24,6 @@
+  *  defines for the code go here
+  */
+ 
+-#define TPM 1
+ 
+ 	/* Print message string */
+ #define MSG(x)	movw $x, %si; call LOCAL(message)
+Index: grub-2.02~rc1/grub-core/kern/efi/tpm.c
+===================================================================
+--- grub-2.02~rc1.orig/grub-core/kern/efi/tpm.c
++++ grub-2.02~rc1/grub-core/kern/efi/tpm.c
+@@ -7,6 +7,8 @@
+ #include <grub/tpm.h>
+ #include <grub/term.h>
+ 
++GRUB_MOD_LICENSE ("GPLv3+");
++
+ static grub_efi_guid_t tpm_guid = EFI_TPM_GUID;
+ static grub_efi_guid_t tpm2_guid = EFI_TPM2_GUID;
+ 
+@@ -70,21 +72,14 @@ static grub_efi_boolean_t grub_tpm_handl
+ }
+ 
+ static grub_err_t
+-grub_tpm1_execute(grub_efi_handle_t tpm_handle,
++grub_tpm1_execute(grub_efi_tpm_protocol_t *tpm,
+ 		  PassThroughToTPM_InputParamBlock *inbuf,
+ 		  PassThroughToTPM_OutputParamBlock *outbuf)
+ {
+   grub_efi_status_t status;
+-  grub_efi_tpm_protocol_t *tpm;
+   grub_uint32_t inhdrsize = sizeof(*inbuf) - sizeof(inbuf->TPMOperandIn);
+   grub_uint32_t outhdrsize = sizeof(*outbuf) - sizeof(outbuf->TPMOperandOut);
+ 
+-  tpm = grub_efi_open_protocol (tpm_handle, &tpm_guid,
+-				GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
+-
+-  if (!grub_tpm_present(tpm))
+-    return 0;
+-
+   /* UEFI TPM protocol takes the raw operand block, no param block header */
+   status = efi_call_5 (tpm->pass_through_to_tpm, tpm,
+ 		       inbuf->IPBLength - inhdrsize, inbuf->TPMOperandIn,
+@@ -107,21 +102,14 @@ grub_tpm1_execute(grub_efi_handle_t tpm_
+ }
+ 
+ static grub_err_t
+-grub_tpm2_execute(grub_efi_handle_t tpm_handle,
++grub_tpm2_execute(grub_efi_tpm2_protocol_t *tpm,
+ 		  PassThroughToTPM_InputParamBlock *inbuf,
+ 		  PassThroughToTPM_OutputParamBlock *outbuf)
+ {
+   grub_efi_status_t status;
+-  grub_efi_tpm2_protocol_t *tpm;
+   grub_uint32_t inhdrsize = sizeof(*inbuf) - sizeof(inbuf->TPMOperandIn);
+   grub_uint32_t outhdrsize = sizeof(*outbuf) - sizeof(outbuf->TPMOperandOut);
+ 
+-  tpm = grub_efi_open_protocol (tpm_handle, &tpm2_guid,
+-				GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
+-
+-  if (!grub_tpm2_present(tpm))
+-    return 0;
+-
+   /* UEFI TPM protocol takes the raw operand block, no param block header */
+   status = efi_call_5 (tpm->submit_command, tpm,
+ 		       inbuf->IPBLength - inhdrsize, inbuf->TPMOperandIn,
+@@ -143,42 +131,17 @@ grub_tpm2_execute(grub_efi_handle_t tpm_
+   }
+ }
+ 
+-grub_err_t
+-grub_tpm_execute(PassThroughToTPM_InputParamBlock *inbuf,
+-		 PassThroughToTPM_OutputParamBlock *outbuf)
+-{
+-  grub_efi_handle_t tpm_handle;
+-   grub_uint8_t protocol_version;
+-
+-  /* It's not a hard failure for there to be no TPM */
+-  if (!grub_tpm_handle_find(&tpm_handle, &protocol_version))
+-    return 0;
+-
+-  if (protocol_version == 1) {
+-    return grub_tpm1_execute(tpm_handle, inbuf, outbuf);
+-  } else {
+-    return grub_tpm2_execute(tpm_handle, inbuf, outbuf);
+-  }
+-}
+-
+ static grub_err_t
+-grub_tpm1_log_event(grub_efi_handle_t tpm_handle, unsigned char *buf,
++grub_tpm1_log_event(grub_efi_tpm_protocol_t *tpm, unsigned char *buf,
+ 		    grub_size_t size, grub_uint8_t pcr,
+ 		    const char *description)
+ {
+   TCG_PCR_EVENT *event;
+   grub_efi_status_t status;
+-  grub_efi_tpm_protocol_t *tpm;
+   grub_efi_physical_address_t lastevent;
+   grub_uint32_t algorithm;
+   grub_uint32_t eventnum = 0;
+ 
+-  tpm = grub_efi_open_protocol (tpm_handle, &tpm_guid,
+-				GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
+-
+-  if (!grub_tpm_present(tpm))
+-    return 0;
+-
+   event = grub_zalloc(sizeof (TCG_PCR_EVENT) + grub_strlen(description) + 1);
+   if (!event)
+     return grub_error (GRUB_ERR_OUT_OF_MEMORY,
+@@ -210,19 +173,12 @@ grub_tpm1_log_event(grub_efi_handle_t tp
+ }
+ 
+ static grub_err_t
+-grub_tpm2_log_event(grub_efi_handle_t tpm_handle, unsigned char *buf,
++grub_tpm2_log_event(grub_efi_tpm2_protocol_t *tpm, unsigned char *buf,
+ 		   grub_size_t size, grub_uint8_t pcr,
+ 		   const char *description)
+ {
+   EFI_TCG2_EVENT *event;
+   grub_efi_status_t status;
+-  grub_efi_tpm2_protocol_t *tpm;
+-
+-  tpm = grub_efi_open_protocol (tpm_handle, &tpm2_guid,
+-				GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
+-
+-  if (!grub_tpm2_present(tpm))
+-    return 0;
+ 
+   event = grub_zalloc(sizeof (EFI_TCG2_EVENT) + grub_strlen(description) + 1);
+   if (!event)
+@@ -255,19 +211,64 @@ grub_tpm2_log_event(grub_efi_handle_t tp
+   }
+ }
+ 
+-grub_err_t
++static grub_efi_tpm_protocol_t *tpm;
++static grub_efi_tpm2_protocol_t *tpm2;
++
++static grub_err_t
++grub_tpm_execute(PassThroughToTPM_InputParamBlock *inbuf,
++		 PassThroughToTPM_OutputParamBlock *outbuf)
++{
++  if (tpm)
++    return grub_tpm1_execute(tpm, inbuf, outbuf);
++  else if (tpm2)
++    return grub_tpm2_execute(tpm2, inbuf, outbuf);
++  return GRUB_ERR_NONE;
++}
++
++static grub_err_t
+ grub_tpm_log_event(unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
+ 		   const char *description)
+ {
++  if (tpm)
++    return grub_tpm1_log_event(tpm, buf, size, pcr, description);
++  else if (tpm2)
++    return grub_tpm2_log_event(tpm2, buf, size, pcr, description);
++  return GRUB_ERR_NONE;
++}
++
++static struct grub_tpm grub_efi_tpm =
++{
++  .log_event = grub_tpm_log_event,
++  .execute = grub_tpm_execute
++};
++
++GRUB_MOD_INIT (tpm)
++{
+   grub_efi_handle_t tpm_handle;
+   grub_efi_uint8_t protocol_version;
+ 
+-  if (!grub_tpm_handle_find(&tpm_handle, &protocol_version))
+-    return 0;
++  if (!grub_tpm_handle_find (&tpm_handle, &protocol_version))
++    return ;
+ 
+-  if (protocol_version == 1) {
+-    return grub_tpm1_log_event(tpm_handle, buf, size, pcr, description);
+-  } else {
+-    return grub_tpm2_log_event(tpm_handle, buf, size, pcr, description);
+-  }
++  if (protocol_version == 1)
++    {
++      tpm = grub_efi_open_protocol (tpm_handle, &tpm_guid,
++				    GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
++      if (tpm && grub_tpm_present(tpm))
++	grub_tpm = &grub_efi_tpm;
++    }
++  else
++    {
++      tpm2 = grub_efi_open_protocol (tpm_handle, &tpm2_guid,
++				     GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
++      if (tpm2 && grub_tpm2_present(tpm2))
++	grub_tpm = &grub_efi_tpm;
++    }
++}
++
++GRUB_MOD_FINI (tpm)
++{
++  grub_tpm = NULL;
++  tpm = NULL;
++  tpm2 = NULL;
+ }
+Index: grub-2.02~rc1/grub-core/kern/i386/pc/tpm.c
+===================================================================
+--- grub-2.02~rc1.orig/grub-core/kern/i386/pc/tpm.c
++++ grub-2.02~rc1/grub-core/kern/i386/pc/tpm.c
+@@ -4,12 +4,14 @@
+ #include <grub/tpm.h>
+ #include <grub/misc.h>
+ #include <grub/i386/pc/int.h>
++#include <grub/dl.h>
+ 
+-#define TCPA_MAGIC 0x41504354
++GRUB_MOD_LICENSE ("GPLv3+");
+ 
+-int tpm_present(void);
++#define TCPA_MAGIC 0x41504354
+ 
+-int tpm_present(void)
++static int
++tpm_present(void)
+ {
+   struct grub_bios_int_registers regs;
+ 
+@@ -24,16 +26,13 @@ int tpm_present(void)
+   return 0;
+ }
+ 
+-grub_err_t
++static grub_err_t
+ grub_tpm_execute(PassThroughToTPM_InputParamBlock *inbuf,
+ 		 PassThroughToTPM_OutputParamBlock *outbuf)
+ {
+   struct grub_bios_int_registers regs;
+   grub_addr_t inaddr, outaddr;
+ 
+-  if (!tpm_present())
+-    return 0;
+-
+   inaddr = (grub_addr_t) inbuf;
+   outaddr = (grub_addr_t) outbuf;
+   regs.flags = GRUB_CPU_INT_FLAGS_DEFAULT;
+@@ -80,7 +79,7 @@ typedef struct {
+ 	grub_uint8_t  hashvalue[20];
+ } GRUB_PACKED EventOutgoing;
+ 
+-grub_err_t
++static grub_err_t
+ grub_tpm_log_event(unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
+ 		   const char *description)
+ {
+@@ -90,9 +89,6 @@ grub_tpm_log_event(unsigned char *buf, g
+ 	Event *event;
+ 	grub_uint32_t datalength;
+ 
+-	if (!tpm_present())
+-		return 0;
+-
+ 	datalength = grub_strlen(description);
+ 	event = grub_zalloc(datalength + sizeof(Event));
+ 	if (!event)
+@@ -130,3 +126,19 @@ grub_tpm_log_event(unsigned char *buf, g
+ 
+ 	return 0;
+ }
++static struct grub_tpm grub_pc_tpm =
++{
++  .log_event = grub_tpm_log_event,
++  .execute = grub_tpm_execute
++};
++
++GRUB_MOD_INIT (tpm)
++{
++  if (tpm_present())
++    grub_tpm = &grub_pc_tpm;
++}
++
++GRUB_MOD_FINI (tpm)
++{
++  grub_tpm = NULL;
++}
+Index: grub-2.02~rc1/grub-core/kern/tpm.c
+===================================================================
+--- grub-2.02~rc1.orig/grub-core/kern/tpm.c
++++ grub-2.02~rc1/grub-core/kern/tpm.c
+@@ -5,15 +5,22 @@
+ #include <grub/tpm.h>
+ #include <grub/term.h>
+ 
++grub_tpm_t grub_tpm = NULL;
++
+ grub_err_t
+ grub_tpm_measure (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
+ 		  const char *kind, const char *description)
+ {
+   grub_err_t ret;
+-  char *desc = grub_xasprintf("%s %s", kind, description);
++  char *desc;
++
++  if (!grub_tpm)
++    return GRUB_ERR_NONE;
++
++  desc = grub_xasprintf("%s %s", kind, description);
+   if (!desc)
+     return GRUB_ERR_OUT_OF_MEMORY;
+-  ret = grub_tpm_log_event(buf, size, pcr, description);
++  ret = grub_tpm->log_event(buf, size, pcr, desc);
+   grub_free(desc);
+   return ret;
+ }
+Index: grub-2.02~rc1/include/grub/tpm.h
+===================================================================
+--- grub-2.02~rc1.orig/include/grub/tpm.h
++++ grub-2.02~rc1/include/grub/tpm.h
+@@ -69,21 +69,14 @@ typedef struct {
+ grub_err_t EXPORT_FUNC(grub_tpm_measure) (unsigned char *buf, grub_size_t size,
+ 					  grub_uint8_t pcr, const char *kind,
+ 					  const char *description);
+-#if defined (GRUB_MACHINE_EFI) || defined (GRUB_MACHINE_PCBIOS)
+-grub_err_t grub_tpm_execute(PassThroughToTPM_InputParamBlock *inbuf,
+-			    PassThroughToTPM_OutputParamBlock *outbuf);
+-grub_err_t grub_tpm_log_event(unsigned char *buf, grub_size_t size,
+-			      grub_uint8_t pcr, const char *description);
+-#else
+-static inline grub_err_t grub_tpm_execute(PassThroughToTPM_InputParamBlock *inbuf,
+-					  PassThroughToTPM_OutputParamBlock *outbuf) { return 0; };
+-static inline grub_err_t grub_tpm_log_event(unsigned char *buf,
+-					    grub_size_t size,
+-					    grub_uint8_t pcr,
+-					    const char *description)
++typedef struct grub_tpm
+ {
+-	return 0;
+-};
+-#endif
++  grub_err_t (*log_event)(unsigned char *buf, grub_size_t size,
++			grub_uint8_t pcr, const char *description);
++  grub_err_t (*execute)(PassThroughToTPM_InputParamBlock *inbuf,
++			  PassThroughToTPM_OutputParamBlock *outbuf);
++} *grub_tpm_t;
++
++extern grub_tpm_t EXPORT_VAR(grub_tpm);
+ 
+ #endif
+Index: grub-2.02~rc1/util/grub-install.c
+===================================================================
+--- grub-2.02~rc1.orig/util/grub-install.c
++++ grub-2.02~rc1/util/grub-install.c
+@@ -80,6 +80,7 @@ static char *label_color;
+ static char *label_bgcolor;
+ static char *product_version;
+ static int add_rs_codes = 1;
++static int suse_enable_tpm = 0;
+ 
+ enum
+   {
+@@ -106,6 +107,7 @@ enum
+     OPTION_DISK_MODULE,
+     OPTION_NO_BOOTSECTOR,
+     OPTION_NO_RS_CODES,
++    OPTION_SUSE_ENABLE_TPM,
+     OPTION_MACPPC_DIRECTORY,
+     OPTION_ZIPL_DIRECTORY,
+     OPTION_LABEL_FONT,
+@@ -231,6 +233,10 @@ argp_parser (int key, char *arg, struct
+       add_rs_codes = 0;
+       return 0;
+ 
++    case OPTION_SUSE_ENABLE_TPM:
++      suse_enable_tpm = 1;
++      return 0;
++
+     case OPTION_DEBUG:
+       verbosity++;
+       return 0;
+@@ -292,6 +298,7 @@ static struct argp_option options[] = {
+   {"no-rs-codes", OPTION_NO_RS_CODES, 0, 0,
+    N_("Do not apply any reed-solomon codes when embedding core.img. "
+       "This option is only available on x86 BIOS targets."), 0},
++  {"suse-enable-tpm", OPTION_SUSE_ENABLE_TPM, 0, 0, N_("install TPM modules"), 0},
+ 
+   {"debug", OPTION_DEBUG, 0, OPTION_HIDDEN, 0, 2},
+   {"no-floppy", OPTION_NO_FLOPPY, 0, OPTION_HIDDEN, 0, 2},
+@@ -1322,6 +1329,9 @@ main (int argc, char *argv[])
+   else if (disk_module && disk_module[0])
+     grub_install_push_module (disk_module);
+ 
++  if (suse_enable_tpm && (is_efi || platform == GRUB_INSTALL_PLATFORM_I386_PC))
++    grub_install_push_module ("tpm");
++
+   relative_grubdir = grub_make_system_path_relative_to_its_root (grubdir);
+   if (relative_grubdir[0] == '\0')
+     {
+@@ -1742,9 +1752,9 @@ main (int argc, char *argv[])
+       {
+ 	char *boot_img_src = grub_util_path_concat (2, 
+ 						  grub_install_source_directory,
+-						  "boot.img");
++						  suse_enable_tpm ? "boot_tpm.img" : "boot.img");
+ 	char *boot_img = grub_util_path_concat (2, platdir,
+-					      "boot.img");
++					      suse_enable_tpm ? "boot_tpm.img" : "boot.img");
+ 	grub_install_copy_file (boot_img_src, boot_img, 1);
+ 
+ 	grub_util_info ("%sgrub-bios-setup %s %s %s %s %s --directory='%s' --device-map='%s' '%s'",
+@@ -1762,7 +1772,7 @@ main (int argc, char *argv[])
+ 			
+ 	/*  Now perform the installation.  */
+ 	if (install_bootsector)
+-	  grub_util_bios_setup (platdir, "boot.img", "core.img",
++	  grub_util_bios_setup (platdir, suse_enable_tpm ? "boot_tpm.img" : "boot.img", "core.img",
+ 				install_drive, force,
+ 				fs_probe, allow_floppy, add_rs_codes);
+ 	break;

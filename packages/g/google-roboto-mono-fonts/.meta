@@ -1,0 +1,5 @@
+<package name="google-roboto-mono-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N:fonts" package="google-roboto-mono-fonts"/>
+</package>

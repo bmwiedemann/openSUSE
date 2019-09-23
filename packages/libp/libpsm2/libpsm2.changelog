@@ -1,0 +1,159 @@
+2016-09-21  Aravind Gopalakrishnan  <Aravind.Gopalakrishnan@intel.com>
+
+	Sync with wfr-psm 10.2 release codebase
+	This code surface corresponds to the 10.2 release
+	of PSM2. Changes in this patch include few bew
+	fixes and patches to improve performance for certain
+	workloads bt interleaving the RTS handling.
+
+	While at it, removing some unnecessary files whose
+	functionality have been moved.
+
+2016-07-12  Russell McGuire (rwmcguir)  <russell.w.mcguire@intel.com>
+
+	Update psm2_ep_close timeout handling
+	This change includes many patches for psm2_ep_close timeouts
+	   * Fixed timeout logic for IPS layer disconnects
+	   * Replaced usage of rand/srand/random with drand48_r
+	   * Cleanup of internal connection symbols names
+	   * Fix for amsh layer dropping disconnect packets
+	   * Fixed issue with spec file not obsoleting older rpm name
+	   * Update README for newer RPM names and usages
+	   * Reduce timeout scaling for dropped packets during psm2_ep_close
+	     for large scale jobs.
+
+2016-06-29  Russell McGuire (rwmcguir)  <russell.w.mcguire@intel.com>
+
+	Remove deprecated hfi1-spec* files
+	These files were left over after the rpm
+	rename from hfi1-psm to libpsm2.
+
+2016-06-30  Aravind Gopalakrishnan  <Aravind.Gopalakrishnan@intel.com>
+
+	Upstreaming /dev/hfi_N selection logic and some bug fixes
+	This change primarily includes the following patches to PSM2-
+	  * Remove usage of /dev/hfi
+	  * Logic to select correct /dev/hfi_N
+	  * Initialize frag_size in tidrecv array tidflows which
+	    fixes assertion hit on debug builds
+	  * Clear send_msgoff in req struct which fixes the hang
+	    while using OPCODE_SHORT messages repeatedly
+
+2016-06-27  Russell McGuire (rwmcguir)  <russell.w.mcguire@intel.com>
+
+	Update Makefile to use RELEASE_VER for rpm version
+	This change is to allow this git repo, to honor a
+	RELEASE_VER file for RPM naming convetion. This will be
+	used over counting the number of commits since the last
+	v<major>.<minor> tag in the repo.
+
+	Mostly this is added to allow internal and external
+	rpm naming syncronization with Intel IFS releases for OPA.
+
+2016-06-28  Aravind Gopalakrishnan  <Aravind.Gopalakrishnan@intel.com>
+
+	Sync with wfr-psm 10.1 branch
+	This corresponds to the 10.1 release surface
+
+2016-06-28  Paul Reger  <paul.j.reger@intel.com>
+
+	Adds many bug fixes, and heap debug code.
+	This surface corresponds to the code being upstreamed to Fedora.
+
+2016-06-23  pjreger  <paul.j.reger@intel.com>
+
+	Merge pull request #5 from LeviDettwyler/10.2
+	Fix for assertion failure seen in PSM_DEBUG builds
+
+2016-06-23  Levi Dettwyler  <levi.dettwyler@me.com>
+
+	Fix for assertion failure seen in PSM_DEBUG builds
+	Merging fix from internal repos to public github to correct tidflow frag_size assertion issue when running workloads with PSM_DEBUG builds.
+
+2016-05-06  Paul Reger  <paul.j.reger@intel.com>
+
+	First commit for v10.2 branch, and first commit for Fedora 25 support.
+
+2016-04-06  Paul Reger  <paul.j.reger@intel.com>
+
+	Adds many bug fixes, and heap debug code.  This surface corresponds to the code being upstreamed to Fedora.
+
+	Adding two bug fixes.  This surface corresonds to the 10.0.1 release.
+
+2016-03-03  Paul Reger  <paul.j.reger@intel.com>
+
+	Limit rpm builds of the psm library to the x86_64 architecture only.
+
+2016-03-02  Paul Reger  <paul.j.reger@intel.com>
+
+	Moved two unnecessary macros under PSM_DEBUG to fix build error on Fedora 24.
+
+2016-02-19  Paul Reger  <paul.j.reger@intel.com>
+
+	Update gitub to RELEASE-10.0 version includes:
+	- Primarily bug fixes
+	- One feature was added that includes a new hashing scheme for MQ's
+	- Performance enhancements
+
+2015-12-07  Paul Reger  <paul.j.reger@intel.com>
+
+	Update gitub to beta0, includes:
+	- Symbol renames from psm* to psm2* and PSM* to PSM2*,
+	- Compat library support added,
+	- Tid caching requires building and running with a driver
+	  that includes tid caching support.
+
+2015-09-23  nbwhite  <nathan.b.white@intel.com>
+
+	Merge pull request #2 from michich/no-exec-stack
+	prevent having executable stack
+
+2015-09-04  nbwhite  <nathan.b.white@intel.com>
+
+	Merge pull request #1 from michich/master
+	fix issues found during packaging for RHEL
+
+2015-09-01  Michal Schmidt  <mschmidt@redhat.com>
+
+	prevent having executable stack
+	Add .note.GNU-stack sections to objects compiled from assembly.
+	This allows libpsm2.so.2.0 to have non-executable stack.
+
+2015-08-25  Michal Schmidt  <mschmidt@redhat.com>
+
+	use pkg-config to find udev rules dir
+	and default to /lib/udev (for system rules) rather than /etc/udev (which
+	is for the local administrator).
+
+2015-08-12  Michal Schmidt  <mschmidt@redhat.com>
+
+	avoid calling memset with zero length
+	This avoids the following build error:
+
+	In file included from /usr/include/string.h:638:0,
+	                 from ./include/opa_user.h:77,
+	                 from psm_user.h:67,
+	                 from psm_diags.c:56:
+	In function 'memset',
+	    inlined from 'memcpy_check_one.constprop.4' at psm_diags.c:278:8,
+	    inlined from 'memcpy_check_size.constprop.2' at psm_diags.c:335:30,
+	    inlined from 'psmi_test_memcpy.constprop.1' at psm_diags.c:230:6,
+	    inlined from 'psmi_diags' at psm_diags.c:84:25:
+	/usr/include/bits/string3.h:81:30: error: call to
+	'__warn_memset_zero_len' declared with attribute warning: memset used
+	with constant zero length parameter; this could be due to transposed
+	parameters [-Werror]
+	       __warn_memset_zero_len ();
+	                              ^
+
+2015-08-12  Michal Schmidt  <mschmidt@redhat.com>
+
+	avoid executable flag on installed header files
+
+2015-07-23  Paul Reger  <paul.j.reger@intel.com>
+
+	Sync github to internal git repo.
+
+2015-07-15  nbwhite  <nathan.b.white@intel.com>
+
+	Initial commit

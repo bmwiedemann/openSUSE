@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aed5f9a71c1efa9af14ca7b46933a8ba</srcmd5>
+    <version>0.4</version>
+    <time>1384343073</time>
+    <user>coolo</user>
+    <comment>This package has been split from the official numpy tarball starting with the new numpy release (1.8.0).  The new version of python-numpy-doc will therefore not build without this package.</comment>
+    <requestid>205360</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>aed5f9a71c1efa9af14ca7b46933a8ba</srcmd5>
+    <version>0.4</version>
+    <time>1409302931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3ba84cc6609168624d33c0638c75c106</srcmd5>
+    <version>0.4</version>
+    <time>1416347105</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261624</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57541ff41ff2ae921e217f637fe14c80</srcmd5>
+    <version>0.5</version>
+    <time>1431668660</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307083</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>38232c6f32dbcd1031854dbee546eb33</srcmd5>
+    <version>0.6.0</version>
+    <time>1485250730</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451737</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f4c2d55397da1a9e328050f74f62828d</srcmd5>
+    <version>0.6.0</version>
+    <time>1495133482</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495755</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0abbca794cd17509599801a67b72f162</srcmd5>
+    <version>0.7.0</version>
+    <time>1507570850</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530436</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>41d42cd4ec0b375f42fe9bec5b5023fe</srcmd5>
+    <version>0.8.0</version>
+    <time>1525121816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602336</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b877bd252aeeb205683c6993e0174350</srcmd5>
+    <version>0.9.1</version>
+    <time>1563993322</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull both nose and pytest, just stick with pytest
+
+- Update to version 0.9.1
+  * Updating minimum sphinx version in setup.py
+- Update to version 0.9.0
+  * CI: bump minimum Sphinx version tested from 1.2.3 to 1.6.5
+  * report object name upon mangle_docstrings exception
+  * ENH: Just use obj
+  * FIX: Opt-in, test, uniform styling, css
+  * Add cross-reference links to parameter types
+  * ENH: Allow a trailing COMMA or PERIOD in a See Also function list block. 
+  * FIX parsing of type-only return params
+  * ENH: Added support for multiple functions+description
+  * ENH: accept autoclass member options
+  * Support Receives section for generator.send(...) params
+  * Use DEDUPLICATION_TAG to determine whether a citation node is
+    in a docstring
+  * ENH Only print the index if it is necessary.
+  * Clarify location of certain invalid docstrings.
+  * BUG: turn member descriptors into links 
+  * FIX: Escape chars in re
+  * MNT Fix collections.abc imports
+  * FIX pedantic handling of whitespace in reference regex
+  * FIX remove duplicated citation back-references
+  * Move arg and kwargs escaping to docscrape_sphinx
+  * Escape the * in *args and **kwargs</comment>
+    <requestid>718088</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6c19ef86899c89b95aedfe5a3f32495</srcmd5>
+    <version>1.6.1</version>
+    <time>1337005308</time>
+    <user>coolo</user>
+    <comment>add slf4j to Factory, needed for updated mysql-connector-java</comment>
+    <requestid>115823</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d6c19ef86899c89b95aedfe5a3f32495</srcmd5>
+    <version>1.6.1</version>
+    <time>1340184221</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d6c19ef86899c89b95aedfe5a3f32495</srcmd5>
+    <version>1.6.1</version>
+    <time>1359110413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3b435cf3910723f8caa7c8de318c7b69</srcmd5>
+    <version>1.6.1</version>
+    <time>1378899471</time>
+    <user>coolo</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198424</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ea9dd03fefd75ee30aa6da500e603485</srcmd5>
+    <version>1.6.1</version>
+    <time>1379319343</time>
+    <user>coolo</user>
+    <comment>- fix build with apache-commons-lang</comment>
+    <requestid>198914</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>ea9dd03fefd75ee30aa6da500e603485</srcmd5>
+    <version>1.6.1</version>
+    <time>1379664692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>aedb036dd3cb36e0bd88c42ed51f0b09</srcmd5>
+    <version>1.6.1</version>
+    <time>1379926959</time>
+    <user>coolo</user>
+    <comment>- self-provide osgi(slf4j.api) symbol</comment>
+    <requestid>199735</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>aedb036dd3cb36e0bd88c42ed51f0b09</srcmd5>
+    <version>1.6.1</version>
+    <time>1409303377</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>eb8616898c2e210805c0425ee34f986d</srcmd5>
+    <version>1.6.1</version>
+    <time>1409550985</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246837</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>f38cca1c2b034cd40564719d1d113758</srcmd5>
+    <version>1.6.1</version>
+    <time>1427983132</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292641</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d01f7b408f3afa8ba28329325f6d8416</srcmd5>
+    <version>1.7.12</version>
+    <time>1447353316</time>
+    <user>dimstar_suse</user>
+    <comment>- note:
+  slf4j-pom_xml.patch was removed (not relevant anymore)
+
+- remove all unnecessary maven depmap metadata
+
+- update to version 1.7.12</comment>
+    <requestid>343326</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>962927ff25d360c536a32dd68df09c51</srcmd5>
+    <version>1.7.12</version>
+    <time>1496230245</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove some not-needed deps</comment>
+    <requestid>496822</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>cad479bcfc874f676cbd945df1de2385</srcmd5>
+    <version>1.7.12</version>
+    <time>1505334152</time>
+    <user>dimstar_suse</user>
+    <comment>Fix building with jdk9</comment>
+    <requestid>522892</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>7e7e06b493eecdfaa2069d4d42349951</srcmd5>
+    <version>1.7.12</version>
+    <time>1508609987</time>
+    <user>dimstar_suse</user>
+    <comment>Use apache-commons-lang3 instead of apache-commons-lang3</comment>
+    <requestid>533363</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>654c6f42ef1037b5683a50e56a8acaba</srcmd5>
+    <version>1.7.12</version>
+    <time>1526646512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610260</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>594b76566a2037a68333831c4b18957d</srcmd5>
+    <version>1.7.12</version>
+    <time>1539869435</time>
+    <user>dimstar_suse</user>
+    <comment>Install maven fragments</comment>
+    <requestid>642071</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>22c21ad71e9cb4ff2ea2297767206fbd</srcmd5>
+    <version>1.7.25</version>
+    <time>1541666502</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645239</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>dc3caaa4fedc01bbd76c9481837ea14e</srcmd5>
+    <version>1.7.25</version>
+    <time>1551468403</time>
+    <user>coolo</user>
+    <comment>- Clean up the maven pom installation
+</comment>
+    <requestid>679899</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>fa41fd031576fdf0aa569df2df512d9d</srcmd5>
+    <version>1.7.25</version>
+    <time>1553809476</time>
+    <user>dimstar_suse</user>
+    <comment>Split in several packages + sources link</comment>
+    <requestid>688995</requestid>
+  </revision>
+</revisionlist>

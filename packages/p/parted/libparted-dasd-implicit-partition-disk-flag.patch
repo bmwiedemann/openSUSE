@@ -1,0 +1,130 @@
+From: Petr Uzel <petr.uzel@suse.cz>
+Subject: libparted: dasd: Add an implicit partition disk flag
+Patch-mainline: no, custom SUSE patch
+---
+ include/parted/disk.in.h |    4 +++-
+ libparted/disk.c         |    2 ++
+ libparted/labels/dasd.c  |   45 +++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 50 insertions(+), 1 deletion(-)
+
+Index: parted-3.1/include/parted/disk.in.h
+===================================================================
+--- parted-3.1.orig/include/parted/disk.in.h
++++ parted-3.1/include/parted/disk.in.h
+@@ -38,9 +38,11 @@ enum _PedDiskFlag {
+         PED_DISK_CYLINDER_ALIGNMENT=1,
+         /* This flag controls whether the boot flag of a GPT PMBR is set */
+         PED_DISK_GPT_PMBR_BOOT=2,
++	/* This flag indicates that there is an implicit (aka fake) partition on the DASD disk */
++	PED_DISK_DASD_IMPLICIT_PARTITION=3,
+ };
+ #define PED_DISK_FIRST_FLAG             PED_DISK_CYLINDER_ALIGNMENT
+-#define PED_DISK_LAST_FLAG              PED_DISK_GPT_PMBR_BOOT
++#define PED_DISK_LAST_FLAG              PED_DISK_DASD_IMPLICIT_PARTITION
+ 
+ /**
+  * Partition types
+Index: parted-3.1/libparted/disk.c
+===================================================================
+--- parted-3.1.orig/libparted/disk.c
++++ parted-3.1/libparted/disk.c
+@@ -838,6 +838,8 @@ ped_disk_flag_get_name(PedDiskFlag flag)
+                 return N_("cylinder_alignment");
+         case PED_DISK_GPT_PMBR_BOOT:
+                 return N_("pmbr_boot");
++	case PED_DISK_DASD_IMPLICIT_PARTITION:
++		return N_("implicit_partition_table");
+         default:
+                 ped_exception_throw (
+                         PED_EXCEPTION_BUG,
+Index: parted-3.1/libparted/labels/dasd.c
+===================================================================
+--- parted-3.1.orig/libparted/labels/dasd.c
++++ parted-3.1/libparted/labels/dasd.c
+@@ -73,6 +73,7 @@ typedef struct {
+ 	unsigned int format_type;
+ 	unsigned int label_block;
+ 	volume_label_t vlabel;
++	unsigned int has_implicit_partition;
+ } DasdDiskSpecific;
+ 
+ static int dasd_probe (const PedDevice *dev);
+@@ -107,6 +108,10 @@ static int dasd_partition_set_system (Pe
+ 									  const PedFileSystemType* fs_type);
+ static int dasd_alloc_metadata (PedDisk* disk);
+ 
++static int dasd_disk_set_flag (PedDisk *disk, PedDiskFlag flag, int state);
++static int dasd_disk_is_flag_available(const PedDisk *disk, PedDiskFlag flag);
++static int dasd_disk_get_flag (const PedDisk *disk, PedDiskFlag flag);
++
+ #include "pt-common.h"
+ PT_define_limit_functions (dasd)
+ 
+@@ -116,6 +121,9 @@ static PedDiskOps dasd_disk_ops = {
+ 
+ 	partition_set_name:	NULL,
+ 	partition_get_name:	NULL,
++	disk_set_flag:		dasd_disk_set_flag,
++	disk_get_flag:		dasd_disk_get_flag,
++	disk_is_flag_available:	dasd_disk_is_flag_available,
+ 
+ 	get_partition_alignment: dasd_get_partition_alignment,
+ 
+@@ -150,6 +158,8 @@ dasd_alloc (const PedDevice* dev)
+ 		return NULL;
+ 	}
+ 
++	disk_specific->has_implicit_partition = 0;
++
+ 	/* CDL format, newer */
+ 	disk_specific->format_type = 2;
+ 	disk_specific->label_block = 2;
+@@ -293,6 +303,7 @@ dasd_read (PedDisk* disk)
+ 			goto error_close_dev;
+ 
+ 		disk_specific->format_type = 1;
++		disk_specific->has_implicit_partition = 1;
+ 
+ 		/* Register implicit partition */
+ 		ped_disk_delete_all (disk);
+@@ -905,6 +916,40 @@ dasd_partition_enumerate (PedPartition*
+ }
+ 
+ static int
++dasd_disk_set_flag (PedDisk *disk, PedDiskFlag flag, int state)
++{
++	/* PED_DISK_DASD_IMPLICIT_PARTITION is immutable */
++	return 0;
++}
++
++static int
++dasd_disk_is_flag_available(const PedDisk *disk, PedDiskFlag flag)
++{
++	switch (flag)
++	{
++	case PED_DISK_DASD_IMPLICIT_PARTITION:
++		return 1;
++	default:
++		return 0;
++	}
++}
++
++static int
++dasd_disk_get_flag (const PedDisk *disk, PedDiskFlag flag)
++{
++	DasdDiskSpecific* disk_specific = disk->disk_specific;
++
++	switch (flag)
++	{
++	case PED_DISK_DASD_IMPLICIT_PARTITION:
++		return disk_specific->has_implicit_partition;
++		break;
++	default:
++		return 0;
++	}
++}
++
++static int
+ dasd_partition_set_system (PedPartition* part,
+                            const PedFileSystemType* fs_type)
+ {

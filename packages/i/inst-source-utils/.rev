@@ -1,0 +1,481 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20f0f97ea1b4e3820c798b2899c9a282</srcmd5>
+    <version>2008.7.21</version>
+    <time>1222093166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d52ed31af73a3ffda4a4b1a51242ab5</srcmd5>
+    <version>2008.9.26</version>
+    <time>1222482932</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fbd9db7d536ee19ecf96cc10240fcdd</srcmd5>
+    <version>2008.9.28</version>
+    <time>1222655700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>28bd7f9e1e31cdba77dd05b5d5365a2f</srcmd5>
+    <version>2008.9.30</version>
+    <time>1222828557</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0b407cf2b5e6066e8507ba0b38524f5</srcmd5>
+    <version>2008.10.6</version>
+    <time>1223382236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aee52812088c9dbfc650d15e2f8032e9</srcmd5>
+    <version>2008.10.8</version>
+    <time>1223519643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ebee55dc5f7fd0715a43b71025a7f931</srcmd5>
+    <version>2008.10.9</version>
+    <time>1223570755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>95a4da947b0db52797debf0700516c69</srcmd5>
+    <version>2008.10.16</version>
+    <time>1224169558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6a4d77bd7c2f3477f8e0cc693732add3</srcmd5>
+    <version>2008.10.16</version>
+    <time>1224180494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7785426a9701ebc8d83db74446af5ea2</srcmd5>
+    <version>2008.11.17</version>
+    <time>1226937832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0534f6f903a76085f071e52a7b46fdcf</srcmd5>
+    <version>2008.11.20</version>
+    <time>1227191476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4e95c61110f57f2ef89e454ac95e3502</srcmd5>
+    <version>2008.11.24</version>
+    <time>1227539305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dd13e1ccffabe677e2b45ab64263ecd3</srcmd5>
+    <version>2009.1.25</version>
+    <time>1232842630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9997dda1003a7a230b63780f0eea37ee</srcmd5>
+    <version>2009.2.26</version>
+    <time>1235615310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cbdcdfe5c39d647553dd236ba9342860</srcmd5>
+    <version>2009.3.8</version>
+    <time>1236554402</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3779265b763c701439107c9ffbf5535</srcmd5>
+    <version>2009.8.10</version>
+    <time>1249920216</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d6e8f2a7655827ad8c75317eaa659a7f</srcmd5>
+    <version>2009.10.13</version>
+    <time>1255446768</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d6e8f2a7655827ad8c75317eaa659a7f</srcmd5>
+    <version>2009.10.13</version>
+    <time>1255446768</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2389e5ecc1030f193c4a8b542ef6c03f</srcmd5>
+    <version>2009.11.2</version>
+    <time>1257174443</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/inst-source-utils based on submit request 23585 from user oertel
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>540dc49056745bfeb37c0359eeaa35cc</srcmd5>
+    <version>unknown</version>
+    <time>1259651330</time>
+    <user>adrianSuSE</user>
+    <comment>osc copypac from project:home:adrianSuSE:branches:openSUSE:Tools package:inst-source-utils revision:2</comment>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>1ae2b887d3de7103c582e50b9e81d7f3</srcmd5>
+    <version>2009.11.2</version>
+    <time>1259651503</time>
+    <user>adrianSuSE</user>
+    <comment>temp hotfix</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>2389e5ecc1030f193c4a8b542ef6c03f</srcmd5>
+    <version>2009.11.2</version>
+    <time>1259653763</time>
+    <user>adrianSuSE</user>
+    <comment> </comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a659bd65639d474794f2a936b51f8ea4</srcmd5>
+    <version>2010.1.27</version>
+    <time>1264614331</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/inst-source-utils based on submit request 30600 from user adrianSuSE
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ec0e8522bb111e20e7038b5dd108fd0d</srcmd5>
+    <version>2010.3.17</version>
+    <time>1268832550</time>
+    <user>autobuild</user>
+    <comment>Copy from openSUSE:Tools/inst-source-utils based on submit request 35036 from user oertel
+</comment>
+    <requestid>35036</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5425041757bf2f8b7c26b1f2db6342f2</srcmd5>
+    <version>2010.3.17</version>
+    <time>1268924024</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>5425041757bf2f8b7c26b1f2db6342f2</srcmd5>
+    <version>2010.3.17</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>5425041757bf2f8b7c26b1f2db6342f2</srcmd5>
+    <version>2010.3.17</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>5425041757bf2f8b7c26b1f2db6342f2</srcmd5>
+    <version>2010.3.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>39576a75996068081c198a8a77a539e5</srcmd5>
+    <version>2010.3.17</version>
+    <time>1304339307</time>
+    <user>saschpe</user>
+    <comment>- add option -D to use sha256 checksums in create_package_descr</comment>
+    <requestid>68720</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>31aaa7c6d2af5ddf692887d6531d0bb5</srcmd5>
+    <version>2011.4.28</version>
+    <time>1304339318</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68720
+</comment>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>11a9ddd438f3ba9476064330144b5d3f</srcmd5>
+    <version>2011.4.28</version>
+    <time>1304930572</time>
+    <user>saschpe</user>
+    <comment>- create_sha1sum and create_sha1sums now understand option &quot;-2&quot;
+  to use/create sha256sum(s) (forwarded request 69681 from oertel)</comment>
+    <requestid>69886</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fab761ec8600eb6410750f9d2925f87f</srcmd5>
+    <version>2011.5.5</version>
+    <time>1304930586</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69886
+</comment>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9030347d0b3cd9145414f38bbc20a29d</srcmd5>
+    <version>2011.5.5</version>
+    <time>1306315431</time>
+    <user>saschpe</user>
+    <comment>fix SHA256 media generation, urgently needed to fix our factory medias</comment>
+    <requestid>71234</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>48651d3ce7058e36a4cda57b501829c9</srcmd5>
+    <version>2011.5.25</version>
+    <time>1306315441</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71234
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b8b8f993300fcda1ffa0cd5ccfd83a4e</srcmd5>
+    <version>2011.10.14</version>
+    <time>1318762225</time>
+    <user>lrupp</user>
+    <comment>- handle spaces in path in create_package_descr (bnc#604730) (forwarded request 87903 from lrupp)</comment>
+    <requestid>87913</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>be1eb519e9499585bcc47c6bce547d4b</srcmd5>
+    <version>2011.10.16</version>
+    <time>1318797897</time>
+    <user>lrupp</user>
+    <comment>- to too much quoting in create_package_descr (forwarded request 88088 from lrupp)</comment>
+    <requestid>88090</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>be1eb519e9499585bcc47c6bce547d4b</srcmd5>
+    <version>2011.10.16</version>
+    <time>1319181989</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>4be976a1ec27178535a15854896baa6d</srcmd5>
+    <version>2011.10.16</version>
+    <time>1323191971</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>5e91e11977392efdeeed9f14688b5e23</srcmd5>
+    <version>2011.10.16</version>
+    <time>1328201860</time>
+    <user>coolo</user>
+    <comment>use CHECKSUMS filename for sha256 mode</comment>
+    <requestid>102471</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>804695ce27fa3267e0daaee66ee39752</srcmd5>
+    <version>2011.10.16</version>
+    <time>1330520872</time>
+    <user>coolo</user>
+    <comment>- mk_changelog: calculate time (two years ago) differently to
+  avoid error on leap days. (forwarded request 107520 from oertel)</comment>
+    <requestid>107521</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>804695ce27fa3267e0daaee66ee39752</srcmd5>
+    <version>2011.10.16</version>
+    <time>1340183462</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>7c56eabfe88e0802c22d52e24cee77e4</srcmd5>
+    <version>2011.10.16</version>
+    <time>1348380284</time>
+    <user>coolo</user>
+    <comment>- add recent fixes (forwarded request 134163 from oertel)</comment>
+    <requestid>135052</requestid>
+  </revision>
+  <revision rev="43" vrev="10">
+    <srcmd5>956f6ee07abf9cb88427ad72a214afc5</srcmd5>
+    <version>2011.10.16</version>
+    <time>1355473117</time>
+    <user>coolo</user>
+    <comment>- update create_md5sums to get the key files witout a pubring.gpg (forwarded request 144293 from oertel)</comment>
+    <requestid>144936</requestid>
+  </revision>
+  <revision rev="44" vrev="12">
+    <srcmd5>956f6ee07abf9cb88427ad72a214afc5</srcmd5>
+    <version>2011.10.16</version>
+    <time>1359109082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="13">
+    <srcmd5>e4bc0af1037559a12994eddf6db58f4c</srcmd5>
+    <version>2011.10.16</version>
+    <time>1359452796</time>
+    <user>coolo</user>
+    <comment>- use &quot;strict&quot; for create_package_descr
+- add support for -e (eula_dir) parameter in create_package_descr (forwarded request 149873 from oertel)</comment>
+    <requestid>149926</requestid>
+  </revision>
+  <revision rev="46" vrev="14">
+    <srcmd5>0832c9cd0ba7f7dcc43b22219bae825c</srcmd5>
+    <version>2011.10.16</version>
+    <time>1365139914</time>
+    <user>coolo</user>
+    <comment>- remove pdb code from create_package_descr
+- create_sha1sums: replace &quot;which&quot; by &quot;type -p&quot;
+- create_repo_for_patch.sh: same change
+- RPMQ: fix for name-version-release &gt; 64 characters (forwarded request 162374 from oertel)</comment>
+    <requestid>162376</requestid>
+  </revision>
+  <revision rev="47" vrev="16">
+    <srcmd5>0832c9cd0ba7f7dcc43b22219bae825c</srcmd5>
+    <version>2011.10.16</version>
+    <time>1379662671</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="17">
+    <srcmd5>d451a2d1a331a34bbff66d5abba8c885</srcmd5>
+    <version>2011.10.16</version>
+    <time>1379921564</time>
+    <user>coolo</user>
+    <comment>- also add Requires(pre) and Requires(post) to Prq sections (forwarded request 199828 from oertel)</comment>
+    <requestid>199852</requestid>
+  </revision>
+  <revision rev="49" vrev="18">
+    <srcmd5>23a71631175334ffa51bc7502e81f118</srcmd5>
+    <version>2011.10.16</version>
+    <time>1393600941</time>
+    <user>scarabeus_factory</user>
+    <comment>- fix typo in last change (forwarded request 223830 from oertel)</comment>
+    <requestid>223833</requestid>
+  </revision>
+  <revision rev="50" vrev="19">
+    <srcmd5>30fa37f872c809c7ef3d066b12434a93</srcmd5>
+    <version>2011.10.16</version>
+    <time>1394030201</time>
+    <user>scarabeus_factory</user>
+    <comment>- add ABXML.pm and ABStructured.pm
+- rewrite rezip_repo_rsyncable to keep checksum type 
+- add requires for perl-XML-Parser (forwarded request 224634 from oertel)</comment>
+    <requestid>224636</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a623a5b061612f2a2406abf3d031f1d6</srcmd5>
+    <version>2014.3.5</version>
+    <time>1394129894</time>
+    <user>coolo</user>
+    <comment>- bump version number and add automatic to pre_checkin.sh (forwarded request 224712 from oertel)</comment>
+    <requestid>224719</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>99db1cfcb43aa9cfcc5f22fdbf93743e</srcmd5>
+    <version>2014.3.14</version>
+    <time>1395156074</time>
+    <user>coolo</user>
+    <comment>- create_sha1sums: skip content file actions if content file
+  does not exist 
+
+- fix bogus code in rezip-repo-rsyncable (forwarded request 225948 from oertel)</comment>
+    <requestid>225949</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>dcbcf0bac7e397685e9a58ffbb94b369</srcmd5>
+    <version>2014.3.18</version>
+    <time>1395294813</time>
+    <user>coolo</user>
+    <comment>- update create_package_descr: fix utf8 handling thanks to mls (forwarded request 226616 from oertel)</comment>
+    <requestid>226618</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>dcbcf0bac7e397685e9a58ffbb94b369</srcmd5>
+    <version>2014.3.18</version>
+    <time>1409301231</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a258b8634969681cc22b67877852ca2f</srcmd5>
+    <version>2015.10.27</version>
+    <time>1446647467</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341658</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>eed7035ed443346f33596e0edde959c5</srcmd5>
+    <version>2015.12.9</version>
+    <time>1449995973</time>
+    <user>coolo</user>
+    <comment>- update rezip_repo_rsyncable again: fix up filenames if they
+  are checksum prefixed, do not change timestamps of the
+  files recompressed (bnc#958511) (forwarded request 348123 from oertel)</comment>
+    <requestid>348226</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>de75089b4bf4150a77fe4c9362d8b277</srcmd5>
+    <version>2016.5.2</version>
+    <time>1465129226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399522</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a9114b5bd419bd4178875100466f6fd8</srcmd5>
+    <version>2016.7.26</version>
+    <time>1470217229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415241</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>bc1c4c0ef91b8be50365ce87b3bfc288</srcmd5>
+    <version>2016.7.26</version>
+    <time>1502011857</time>
+    <user>maxlin_factory</user>
+    <comment>- drop requires for recode (forwarded request 512906 from oertel)</comment>
+    <requestid>512907</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f283854b0b5f2d99d0b9fb1b4002fd9f</srcmd5>
+    <version>2018.2.16</version>
+    <time>1520160686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580882</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>604964620e4f9830287e56adb08a7ad1</srcmd5>
+    <version>2018.03.13</version>
+    <time>1521579090</time>
+    <user>dimstar_suse</user>
+    <comment>add support for translated rpm-md data</comment>
+    <requestid>586411</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>06ab88d34a826ab01f6d8c2f28334ba9</srcmd5>
+    <version>2018.04.06</version>
+    <time>1523127236</time>
+    <user>dimstar_suse</user>
+    <comment>- add support for transalted EULA</comment>
+    <requestid>593950</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5e5c5f91375d4c7f86cbbd236358584d</srcmd5>
+    <version>2018.12.05</version>
+    <time>1544441253</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pattern-category (fate#323785)</comment>
+    <requestid>655352</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>2de1a5b9479d0e7de63f3e8680eef151</srcmd5>
+    <version>2018.12.10</version>
+    <time>1545222287</time>
+    <user>dimstar_suse</user>
+    <comment>
+this is fixing crashes during product build 
+(regression from change before)
+
+- add pattern-category also to susedata, not just susedata_i18n</comment>
+    <requestid>656866</requestid>
+  </revision>
+</revisionlist>

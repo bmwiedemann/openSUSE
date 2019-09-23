@@ -1,0 +1,1324 @@
+-------------------------------------------------------------------
+Fri Jun 14 12:11:18 UTC 2019 - Petr Tesarik <ptesarik@suse.com>
+
+- Bump to version 2.0.19
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.18..v2.0.19
+
+-------------------------------------------------------------------
+Mon Jan 14 15:47:10 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Nov  1 20:58:20 UTC 2018 - ptesarik@suse.com
+
+- Remove bogus Url RPM tag: The project does not have a home page.
+
+-------------------------------------------------------------------
+Thu Nov  1 14:58:41 UTC 2018 - ptesarik@suse.com
+
+- Bump to version 2.0.18
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.17..v2.0.18
+- Drop patches from upstream git:
+  * kexec-tools-fix-for-Unhandled-rela-relocation-R_X86_64_PLT32.patch
+- Remove the confusing kdump binary (no longer in upstream).
+
+-------------------------------------------------------------------
+Mon Sep 10 14:27:09 UTC 2018 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- kexec-tools-fix-for-Unhandled-rela-relocation-R_X86_64_PLT32.patch
+  Upstream backport.
+
+  In response to a change in binutils, commit b21ebf2fb4c
+  (x86: Treat R_X86_64_PLT32 as R_X86_64_PC32) was applied to
+  the linux kernel during the 4.16 development cycle and has
+  since been backported to earlier stable kernel series. The
+  change results in the failure message in $SUBJECT when
+  rebooting via kexec.
+
+  Fix this by replicating the change in kexec. 
+
+-------------------------------------------------------------------
+Thu Apr 19 11:54:10 UTC 2018 - ptesarik@suse.com
+
+- Bump to version 2.0.17
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.16..v2.0.17
+- Drop kexec-tools-xen-static.patch: upstream uses run-time dynamic
+  linking to address the same issue.
+- Drop all patches from upstream git:
+  * kexec-tools-add-a-helper-function-to-add-ranges.patch
+  * kexec-tools-ppc64-parse-ibm-dynamic-memory.patch
+  * kexec-tools-ppc64-leverage-kexec_file_load-support.patch
+  * kexec-tools-Return-ENOSYS-when-kexec-does-not-know.patch
+  * kexec-tools-Fix-option-checks-to-take-KEXEC_FILE_LOAD.patch
+  * kexec-tools-Do-not-special-case-the-s-option.patch
+  * kexec-tools-Add-option-to-revert-s.patch
+  * kexec-tools-Add-option-to-fall-back-to-KEXEC_LOAD.patch
+  * kexec-tools-Document-s-c-and-a-options-in-the-man-page.patch
+  * kexec-tools-fix-kexec-p-segfault.patch
+
+-------------------------------------------------------------------
+Thu Apr  5 11:12:53 UTC 2018 - ptesarik@suse.com
+
+- kexec-tools-vmcoreinfo-in-xen.patch: Revert "kexec-tools: Read
+  always one vmcoreinfo file" (bsc#1085626, bsc#951740).
+
+-------------------------------------------------------------------
+Thu Apr  5 09:05:11 UTC 2018 - ptesarik@suse.com
+
+- kexec-tools-fix-kexec-p-segfault.patch: Fix a segmentation fault
+  when trying to run "kexec -p" (bsc#1080916).
+
+-------------------------------------------------------------------
+Tue Apr  3 11:43:18 UTC 2018 - msuchanek@suse.com
+
+- kexec: add -a option to fall back to KEXEC_LOAD when KEXEC_FILE_LOAD is not
+  supported (bsc#1080916, boo#1076839).
+  * kexec-tools-Return-ENOSYS-when-kexec-does-not-know.patch
+  * kexec-tools-Fix-option-checks-to-take-KEXEC_FILE_LOAD.patch
+  * kexec-tools-Do-not-special-case-the-s-option.patch
+  * kexec-tools-Add-option-to-revert-s.patch
+  * kexec-tools-Add-option-to-fall-back-to-KEXEC_LOAD.patch
+  * kexec-tools-Document-s-c-and-a-options-in-the-man-page.patch
+- kexec-tools-ppc64-leverage-kexec_file_load-support.patch: kexec/ppc64:
+  leverage kexec_file_load support (bsc#1080916).
+
+-------------------------------------------------------------------
+Fri Feb 23 07:38:55 UTC 2018 - ptesarik@suse.com
+
+- kexec-tools-ppc64-parse-ibm-dynamic-memory.patch: kexec/ppc64:
+  add support to parse ibm, dynamic-memory-v2 property
+  (bsc#1081789, LTC#164625).
+- kexec-tools-add-a-helper-function-to-add-ranges.patch: kexec: add
+  a helper function to add ranges (bsc#1081789, LTC#164625).
+
+-------------------------------------------------------------------
+Fri Jan 19 12:59:56 UTC 2018 - tchvatal@suse.com
+
+- Create compat link for rckexec-loader systemd service
+- Convert the asciidoc file to normal man in order to drop asciidoc dep
+  * python2 only obsoletion and upstream has only raw manpages too
+- Properly state all post/postun dependencies (systemd, suse-module-tools)
+- There is no reason for exclusive arch if we state all archs
+- Bump to version 2.0.16
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.14..v2.0.16
+- Remove support for older products to trivialize spec file
+- Make sure to not pull python2 via asciidoc
+- Drop merged patch 0001-kexec-tools-2.0.14.git.patch
+- Drop all patches from upstream git:
+  * 0002-ppc64-Reduce-number-of-ELF-LOAD-segments.patch
+  * 0003-kexec-Increase-the-upper-limit-for-RAM-segments.patch
+  * 0004-alpha-add-missing-__NR_kexec_load-definition.patch
+  * 0005-kexec-implemented-XEN-KEXEC-STATUS-to-determine-if-a.patch
+  * 0006-kexec-Remove-redundant-space-from-help-message.patch
+  * 0007-purgatory-Add-purgatory.map-and-purgatory.ro.sym-to-.patch
+  * 0008-kexec-Add-option-to-get-crash-kernel-region-size.patch
+  * 0009-crashdump-arm-Add-get_crash_kernel_load_range-functi.patch
+  * 0010-crashdump-arm64-Add-get_crash_kernel_load_range-func.patch
+  * 0011-crashdump-cris-Add-get_crash_kernel_load_range-funct.patch
+  * 0012-crashdump-ia64-Add-get_crash_kernel_load_range-funct.patch
+  * 0013-crashdump-m68k-Add-get_crash_kernel_load_range-funct.patch
+  * 0014-crashdump-mips-Add-get_crash_kernel_load_range-funct.patch
+  * 0015-crashdump-ppc-Add-get_crash_kernel_load_range-functi.patch
+  * 0016-crashdump-ppc64-Add-get_crash_kernel_load_range-func.patch
+  * 0017-crashdump-s390-Add-get_crash_kernel_load_range-funct.patch
+  * 0018-crashdump-sh-Add-get_crash_kernel_load_range-functio.patch
+  * 0019-gitignore-add-two-generated-files-in-purgatory.patch
+  * 0020-Only-print-debug-message-when-failed-to-serach-for-k.patch
+  * 0021-build_mem_phdrs-check-if-p_paddr-is-invalid.patch
+  * 0022-uImage-fix-realloc-pointer-confusion.patch
+  * 0023-uImage-Fix-uImage_load-for-little-endian-machines.patch
+  * 0024-uImage-Add-new-IH_ARCH_xxx-definitions.patch
+  * 0025-uImage-use-char-instead-of-unsigned-char-for-uImage_.patch
+  * 0026-uImage-use-char-instead-of-unsigned-char-for-uImage_.patch
+  * 0027-arm64-add-uImage-support.patch
+  * 0028-vmcore-dmesg-Define-_GNU_SOURCE.patch
+  * 0029-Don-t-use-L-width-specifier-with-integer-values.patch
+  * 0030-x86-x86_64-Fix-format-warning-with-die.patch
+  * 0031-ppc-Fix-format-warning-with-die.patch
+  * 0032-crashdump-Remove-stray-get_crashkernel_region-declar.patch
+  * 0033-x86-Support-large-number-of-memory-ranges.patch
+  * 0034-Fix-broken-Xen-support-in-configure.ac.patch
+  * 0035-kexec-extend-the-semantics-of-kexec_iomem_for_each_l.patch
+  * 0036-kexec-generalize-and-rename-get_kernel_stext_sym.patch
+  * 0037-arm64-identify-PHYS_OFFSET-correctly.patch
+  * 0038-arm64-change-return-values-on-error-to-negative.patch
+  * 0039-arm64-kdump-identify-memory-regions.patch
+  * 0040-arm64-kdump-add-elf-core-header-segment.patch
+  * 0041-arm64-kdump-set-up-kernel-image-segment.patch
+  * 0042-arm64-kdump-set-up-other-segments.patch
+  * 0043-arm64-kdump-add-DT-properties-to-crash-dump-kernel-s.patch
+  * 0044-arm64-kdump-Add-support-for-binary-image-files.patch
+  * 0045-Handle-additional-e820-memmap-type-strings.patch
+  * 0046-powerpc-fix-command-line-overflow-error.patch
+  * 0047-fix-how-RMA-top-is-deduced.patch
+
+-------------------------------------------------------------------
+Mon Jan  8 15:14:57 UTC 2018 - msuchanek@suse.com
+
+- Fix kexec error on ppc64 (bsc#1074947).
+  0046-powerpc-fix-command-line-overflow-error.patch
+  0047-fix-how-RMA-top-is-deduced.patch
+
+-------------------------------------------------------------------
+Tue Oct 31 10:23:51 MDT 2017 - carnold@suse.com
+
+- With Xen 4.10 there is a new required library called xentoolcore
+  (bsc#1037779)
+  kexec-tools-xen-static.patch
+- Refreshed kexec-tools-disable-test.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 09:12:40 UTC 2017 - jengelh@inai.de
+
+- Remove redundant %clean section. Replace $RPM_* shell vars
+  by macros.
+- Rewrite summary line.
+
+-------------------------------------------------------------------
+Wed May 31 10:47:33 CEST 2017 - tiwai@suse.de
+
+- Update to version 2.0.14 (bsc#1039937, FATE#320672, FATE#320671)
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.13..v2.0.14
+- Backport upstream fixes  (bsc#1039937, FATE#320672, FATE#320671)
+  0001-kexec-tools-2.0.14.git.patch
+  0002-ppc64-Reduce-number-of-ELF-LOAD-segments.patch
+  0003-kexec-Increase-the-upper-limit-for-RAM-segments.patch
+  0004-alpha-add-missing-__NR_kexec_load-definition.patch
+  0005-kexec-implemented-XEN-KEXEC-STATUS-to-determine-if-a.patch
+  0006-kexec-Remove-redundant-space-from-help-message.patch
+  0007-purgatory-Add-purgatory.map-and-purgatory.ro.sym-to-.patch
+  0008-kexec-Add-option-to-get-crash-kernel-region-size.patch
+  0009-crashdump-arm-Add-get_crash_kernel_load_range-functi.patch
+  0010-crashdump-arm64-Add-get_crash_kernel_load_range-func.patch
+  0011-crashdump-cris-Add-get_crash_kernel_load_range-funct.patch
+  0012-crashdump-ia64-Add-get_crash_kernel_load_range-funct.patch
+  0013-crashdump-m68k-Add-get_crash_kernel_load_range-funct.patch
+  0014-crashdump-mips-Add-get_crash_kernel_load_range-funct.patch
+  0015-crashdump-ppc-Add-get_crash_kernel_load_range-functi.patch
+  0016-crashdump-ppc64-Add-get_crash_kernel_load_range-func.patch
+  0017-crashdump-s390-Add-get_crash_kernel_load_range-funct.patch
+  0018-crashdump-sh-Add-get_crash_kernel_load_range-functio.patch
+  0019-gitignore-add-two-generated-files-in-purgatory.patch
+  0020-Only-print-debug-message-when-failed-to-serach-for-k.patch
+  0021-build_mem_phdrs-check-if-p_paddr-is-invalid.patch
+  0022-uImage-fix-realloc-pointer-confusion.patch
+  0023-uImage-Fix-uImage_load-for-little-endian-machines.patch
+  0024-uImage-Add-new-IH_ARCH_xxx-definitions.patch
+  0025-uImage-use-char-instead-of-unsigned-char-for-uImage_.patch
+  0026-uImage-use-char-instead-of-unsigned-char-for-uImage_.patch
+  0027-arm64-add-uImage-support.patch
+  0028-vmcore-dmesg-Define-_GNU_SOURCE.patch
+  0029-Don-t-use-L-width-specifier-with-integer-values.patch
+  0030-x86-x86_64-Fix-format-warning-with-die.patch
+  0031-ppc-Fix-format-warning-with-die.patch
+  0032-crashdump-Remove-stray-get_crashkernel_region-declar.patch
+  0033-x86-Support-large-number-of-memory-ranges.patch
+  0034-Fix-broken-Xen-support-in-configure.ac.patch
+  0035-kexec-extend-the-semantics-of-kexec_iomem_for_each_l.patch
+  0036-kexec-generalize-and-rename-get_kernel_stext_sym.patch
+  0037-arm64-identify-PHYS_OFFSET-correctly.patch
+  0038-arm64-change-return-values-on-error-to-negative.patch
+  0039-arm64-kdump-identify-memory-regions.patch
+  0040-arm64-kdump-add-elf-core-header-segment.patch
+  0041-arm64-kdump-set-up-kernel-image-segment.patch
+  0042-arm64-kdump-set-up-other-segments.patch
+  0043-arm64-kdump-add-DT-properties-to-crash-dump-kernel-s.patch
+  0044-arm64-kdump-Add-support-for-binary-image-files.patch
+  0045-Handle-additional-e820-memmap-type-strings.patch
+- Refreshed patches:
+  kexec-tools-xen-static.patch
+  kexec-tools-xen-balloon-up.patch
+- Drop obsoleted arm64 patches:
+  kexec-tools-enable-aarch64-fixup.patch
+  kexec-tools-enable-aarch64.patch
+- Fix source URL, as ftp was discontinued on korg
+- Sync changelog with SLE12 packages
+
+-------------------------------------------------------------------
+Wed May 10 15:51:43 MDT 2017 - carnold@suse.com
+
+- kexec-tools-xen-static.patch: xen breaks kexec-tools build
+  (bsc#1037779)
+  See also matching fix in xen-devel package
+
+-------------------------------------------------------------------
+Tue Apr 11 14:27:09 UTC 2017 - bwiedemann@suse.com
+
+- fix kexec-bootloader with /boot partition (boo#1033599)
+
+-------------------------------------------------------------------
+Wed Feb 22 12:51:28 UTC 2017 - meissner@suse.com
+
+- Do not pull in gcc-PIE, as it breaks the static build in here.
+
+-------------------------------------------------------------------
+Mon Aug  8 10:47:36 UTC 2016 - ptesarik@suse.com
+
+- Update to version 2.0.13
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.12..v2.0.13
+
+- Refresh kexec-tools-enable-aarch64.patch
+
+-------------------------------------------------------------------
+Fri Jun 17 11:44:18 UTC 2016 - normand@linux.vnet.ibm.com
+
+-  remove sed line in spec for ppc64 about stack-protector
+   as now handled in Makefile.
+
+-------------------------------------------------------------------
+Fri Jun  3 18:16:51 UTC 2016 - tonyj@suse.com
+
+- Update to version 2.0.12 (FATE#320915, bsc#980545)
+  Changelog: http://git.kernel.org/cgit/utils/kernel/kexec/kexec-tools.git/log/?id=refs/tags/v2.0.10..v2.0.12
+
+  Drop following patches (upstream):
+   kexec-tools-load-crash-kernel-high.patch
+
+-  Fix pkg-config to check >= 4.7 rather than > 4.6 for xenlight
+
+-  Specifically name Files in specfile rather than using glob.
+
+-------------------------------------------------------------------
+Mon May 30 08:47:49 UTC 2016 - ptesarik@suse.com
+
+- kexec-tools-ppc64-reduce-elf-loads.patch: ppc64: Reduce number of
+  ELF LOAD segments (bsc#981339).
+
+-------------------------------------------------------------------
+Tue May  3 15:17:15 UTC 2016 - olaf@aepfle.de
+
+- Adjust linking to libxenctrl to xen-4.7 API (fate#319989)
+
+-------------------------------------------------------------------
+Thu Dec 10 16:33:20 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at postun (boo#958562)
+
+-------------------------------------------------------------------
+Mon Oct 26 09:33:04 UTC 2015 - ptesarik@suse.cz
+
+- kexec-tools-vmcoreinfo-in-xen.patch: Store XEN_VMCOREINFO in
+  panic kernel ELF notes.
+  (bsc#951740)
+
+-------------------------------------------------------------------
+Wed Oct 14 04:11:05 UTC 2015 - jlee@suse.com
+
+- kexec-tools-xen-inhibit-file-based-syscall.patch: To inhibit file
+  based syscall on XEN, using old syscall to load crash kernel.
+  (bsc#947172)
+
+-------------------------------------------------------------------
+Tue Oct  6 09:34:20 UTC 2015 - ptesarik@suse.com
+
+- kexec-tools-load-crash-kernel-high.patch: Load crash kernel high
+  on x86 (bsc#946365).
+
+-------------------------------------------------------------------
+Fri Jun 26 07:33:16 UTC 2015 - ptesarik@suse.cz
+
+- Upgrade to kexec-2.0.10: This is a feature release coinciding
+  with the release of the v4.1 Linux Kernel.
+- Refreshed patches:
+  * kexec-tools-xen-static.patch
+  * kexec-tools-xen-balloon-up.patch
+- Dropped patches (now upstream):
+  * kexec-tools-callback-function-proto.patch
+
+-------------------------------------------------------------------
+Mon May  4 08:36:01 UTC 2015 - jlee@suse.com
+
+- Add 'kexec-tools/kexec-tools-Provide-an-option-to-use-new-kexec-system-call.patch'
+  to support kdump on secure boot. (fate#315018, bnc#884453)
+
+-------------------------------------------------------------------
+Sun Mar 29 01:53:16 UTC 2015 - crrodriguez@opensuse.org
+
+- kexec tools are included in the default initrd, we need 
+  to regenerate if this package changes.
+
+-------------------------------------------------------------------
+Fri Mar 20 15:19:45 UTC 2015 - schwab@linux-m68k.org
+
+- Enable building on m68k
+
+-------------------------------------------------------------------
+Fri Feb 13 17:42:58 UTC 2015 - ptesarik@suse.cz
+
+- Upgrade to kexec-2.0.9: This is a bug-fix release coinciding with
+  the release of the v3.19 Linux Kernel.
+
+-------------------------------------------------------------------
+Fri Jan  9 02:13:57 UTC 2015 - tonyj@suse.com
+
+- Fix x86 callback prototypes (bnc#905090)
+  Add patch: kexec-tools-callback-function-proto.patch
+
+-------------------------------------------------------------------
+Thu Oct  9 16:38:05 UTC 2014 - ptesarik@suse.cz
+
+- Upgrade to kexec-2.0.8
+- Dropped patches (now upstream):
+  o kexec-tools-xen-e820-redefinition.patch
+  o kexec-tools-i386-bzimage_efi.patch
+  o kexec-tools-ppc64-purgatory-disabling-gcc-stack-protection.patch
+  o kexec-tools-zero-efi-info.patch
+  o kexec-tools-fs2dt-fix-endianess-issue-with-initrd-base-and-size.patch
+  o kexec-tools-ppc64-purgatory-device-tree-values-should-be-read-stored-in-big-endian.patch
+  o kexec-tools-kdump-fix-elf-header-endianess.patch
+
+-------------------------------------------------------------------
+Tue Aug 19 21:06:29 UTC 2014 - tonyj@suse.com
+
+- custom autoconf action was no longer setting HAVE_LIBXENCTRL (bnc#886873)
+
+-------------------------------------------------------------------
+Fri Aug 15 21:34:43 UTC 2014 - tonyj@suse.com
+
+- Do not package kdump.8 as it is only a placeholder, full man page is provided
+  by kdump package (bnc#892090)
+
+-------------------------------------------------------------------
+Sat Jul 26 14:53:22 UTC 2014 - tonyj@suse.com
+
+- Fix ELF header endianess for ppc64le kdump (bnc#888150)
+  New patch: kexec-tools-kdump-fix-elf-header-endianess.patch
+
+-------------------------------------------------------------------
+Sun Jul 20 19:49:17 UTC 2014 - p.drouand@gmail.com
+
+- Remove insserv dependency; the package doesn't provide any sysvinit
+  script
+
+-------------------------------------------------------------------
+Thu May  1 17:47:36 UTC 2014 - tonyj@suse.com
+
+- Device tree values should be big endian for ppc64le (bnc#875485)
+  New patch: kexec-tools-ppc64-purgatory-device-tree-values-should-be-read-stored-in-big-endian.patch
+
+-------------------------------------------------------------------
+Fri Apr 11 18:08:41 UTC 2014 - tonyj@suse.com
+
+- Expose flattened device trees (ppc64le) to new kexec'd kernel in Big Endian
+  format (bnc#873169)
+    New patch: kexec-tools-fs2dt-fix-endianess-issue-with-initrd-base-and-size.patch
+- Update patch headers to reflect upstream commit id's:
+    Change patch: kexec-tools-ppc64-purgatory-disabling-gcc-stack-protection.patch
+    Change patch: kexec-tools-zero-efi-info.patch
+
+-------------------------------------------------------------------
+Tue Mar 18 16:45:14 UTC 2014 - tonyj@suse.com
+
+- Reserve mmconf areas for kdump kernel via memmap=X$Y in cmdline
+  (bnc#819777 [original: bnc#804800]: fix still needed for SGI UV systems).
+  New patch: kexec-tools-set-mmconf-reserved.patch
+- Disable stack protector for ppc64le (bnc#869161)
+  New patch: kexec-tools-ppc64-purgatory-disabling-gcc-stack-protection.patch
+- Disable erroneous (efi memory descriptor version) message (bnc#867785c5)
+  New patch: kexec-tools-zero-efi-info.patch
+
+-------------------------------------------------------------------
+Thu Feb  6 01:14:24 UTC 2014 - tonyj@suse.com
+
+- Drop obsolete /etc/init.d/kexec (bnc# 862143).
+- Handle btrfs root subvolume (bnc# 862143c35)
+- Create kexec-load.service (bnc# 862143)
+- Update kexec-bootloader manpage (document reboot using kexec)
+- Remove old 11.1 conditionals
+- Update kexec-tools-i386-bzimage_efi.patch and
+  kexec-tools-xen-e820-redefinition.patch with upstream commit ids
+
+-------------------------------------------------------------------
+Wed Feb  5 17:53:56 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.0.5
+  Drop patch 'device-tree-buffer-overflows.patch' (upstream)
+  Drop patch '0001-kexec-fs2dt-fix-endianess-conversion.patch' (upstream)
+- Rename aarch64 patch to 'kexec-tools-enable-aarch64.patch' and rebase to 
+  version from Linaro git.
+- Add 'kexec-tools-enable-aarch64-fixup.patch' to solve arm libfdt breakage
+  with Linaro patch.
+- Enable ppc64le
+- Refresh patches for context.
+- Add following patches (pending upstream):
+  'kexec-tools-i386-bzimage_efi.patch' to fix i386 breakage.
+  'kexec-tools-xen-e820-redefinition.patch' to fix xen/820 breakage.
+
+-------------------------------------------------------------------
+Tue Feb  4 13:00:37 UTC 2014 - dmueller@suse.com
+
+- add 0001-kexec-fs2dt-fix-endianess-conversion.patch:
+  * fix ppc64 and arm
+- refresh device-tree-buffer-overflows.patch with the version
+  that went upstream
+
+-------------------------------------------------------------------
+Mon Feb  3 14:17:09 UTC 2014 - dmueller@suse.com
+
+- enable build for arm / aarch64 
+- add kexec-aarch64.patch
+- add device-tree-buffer-overflows.patch
+
+-------------------------------------------------------------------
+Thu Jan  9 21:04:46 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.0.4
+- Drop patches (mainline):
+	kexec-tools-fix-makefile-binaries.patch (aaedd532)
+	kexec-tools-fix-strncat.patch (d5efc524)
+	kexec-tools-no-vga-output.patch (f1facd4b)
+
+-------------------------------------------------------------------
+Sun Jan  5 08:06:01 UTC 2014 - coolo@suse.com
+
+- xen 4.4 is exclusive to 64bit archs, so don't require it
+
+-------------------------------------------------------------------
+Fri Dec  6 11:51:24 UTC 2013 - ptesarik@suse.cz
+
+- Remove double-packaging of /etc/init.d/kexec-tools, fixing build
+  errors on some targets, e.g. SLE-11.
+
+-------------------------------------------------------------------
+Thu Apr 11 06:37:22 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Oct 11 23:10:42 UTC 2012 - tonyj@suse.com
+
+- Update to kexec 2.0.3.  Drop unneeded patches.
+
+-------------------------------------------------------------------
+Thu Jun 14 16:23:58 CEST 2012 - ohering@suse.de
+
+- Fix xen cpuid() inline asm to not clobber stack's red zone 
+  See xen-unstable changeset 24344:72f4e4cb7440
+
+-------------------------------------------------------------------
+Thu Jun 14 11:26:16 CEST 2012 - ohering@suse.de
+
+- Balloon up in a Xen PVonHVM guest before kexec (bnc#694863)
+- Update xen_present check for xenfs in pv_ops kernel (bnc#694863)
+- Change xen_present hv check (bnc#658413)
+
+-------------------------------------------------------------------
+Fri Apr 20 16:19:26 UTC 2012 - rschweikert@suse.com
+
+- place binaries into /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Fri Dec  2 16:42:47 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Jul 10 23:48:14 CEST 2011 - meissner@suse.de
+
+- fixed strncat sizse argument on ppc
+
+-------------------------------------------------------------------
+Tue May 17 11:12:54 CEST 2011 - jslaby@suse.de
+
+- fix build with gcc that doesn't understand --no-undefined
+
+-------------------------------------------------------------------
+Sun Sep 12 07:26:33 UTC 2010 - bernhard@bwalle.de
+
+- Update to kexec-tools 2.0.2 (bug fix release). The complete
+  changelog can be viewed at
+  http://git.kernel.org/?p=utils/kernel/kexec/kexec-tools.git;a=shortlog;h=refs/tags/v2.0.2.
+- Drop kexec-tools-increase-kernel-text-size.diff: Mainline.
+
+-------------------------------------------------------------------
+Tue Mar 16 15:39:45 CET 2010 - ro@suse.de
+
+- disable autoreconf to fix build 
+- drop obsolete patch ARM_kexec-zImage-arm_page_to_unistd.diff
+
+-------------------------------------------------------------------
+Wed Feb 10 23:32:34 UTC 2010 - jengelh@medozas.de
+
+- Add ExclusiveArch to specfile according to source capabilities
+
+-------------------------------------------------------------------
+Sun Dec 20 17:33:50 CET 2009 - bernhard@bwalle.de
+
+- Update to kexec-tools 2.0.1 (bug fix release).
+- Drop following patches because they are upstream now (or the
+  problem is fixed otherwise upstream):
+  o kexec-tools-ia64-uncached-memory.diff
+  o kexec-tools-ia64-PA.diff
+  o kexec-tools-build-warnings.diff
+  o kexec-tools-ppc64-build-warnings.diff
+  o kexec-tools-ppc64-IBM-QS2x-blades.diff
+  o kexec-tools-ia64-kdump-PT_LOAD-order.diff
+  o kexec-tools-crash-memory-ranges-drconf.diff
+  o kexec-tools-add-usable-drconf-memory-node-to-device-tree.diff
+  o kexec-tools-get-details-dynamic-reconfiguration-memory-node.diff
+  o kexec-tools-get-details-dynamic-reconfiguration-memory-node.diff
+  o kexec-tools-device-tree-return.diff
+  o kexec-tools-ppc-check-flags.diff
+  o kexec-tools-spell.diff
+  o kexec-tools-proc-iomem-xen.diff
+  o kexec-tools-parse-iomem-single-warning.diff
+  o kexec-tools-exclude-gart.diff
+  o kexec-tools-ppc64-memory-ranges-dynamic.diff
+  o kexec-tools-ppc64-dynamic-fix-1.diff
+  o kexec-tools-ppc64-dynamic-fix-2.diff
+  o kexec-tools-ppc64-dynamic-fix-3.diff
+  o kexec-tools-ppc64-reinit.diff
+
+-------------------------------------------------------------------
+Mon Sep 21 13:20:37 UTC 2009 - jansimon.moeller@opensuse.org
+
+- fix build on arm. kexec-zImage-arm needed s#asm/page.h#unistd.h#
+
+-------------------------------------------------------------------
+Wed Aug 12 09:46:46 CEST 2009 - tiwai@suse.de
+
+- increase kernel text size to fix for 2.6.31 kernel (bnc#530240)
+
+-------------------------------------------------------------------
+Sun Jul 12 14:22:02 CEST 2009 - coolo@novell.com
+
+- disable as-needed to fix build
+
+-------------------------------------------------------------------
+Thu Feb  5 13:06:38 CET 2009 - bwalle@suse.de
+
+- Re-initialize drconf variables for PPC64 (bnc #468571).
+
+-------------------------------------------------------------------
+Wed Feb  4 12:23:50 CET 2009 - tiwai@suse.de
+
+- fix build failure due to missing xsltproc
+
+-------------------------------------------------------------------
+Fri Jan 16 18:57:47 CET 2009 - bwalle@suse.de
+
+- The dynamic reallocation for PPC64 broke kdump completely.
+  Fix the patch so that dynamic reallocation actually works
+  without memory corruption (bnc #466782).
+
+-------------------------------------------------------------------
+Fri Jan 16 15:11:37 CET 2009 - bwalle@suse.de
+
+- Add #!BuildIgnore on fop to speed up build (asciidoc don't
+  require fop for manpage generation).
+
+-------------------------------------------------------------------
+Wed Jan 07 14:30:47 CET 2009 - bwalle@suse.de
+
+- Allocate memory ranges dynamically on PPC64 (bnc #460752).
+
+-------------------------------------------------------------------
+Tue Dec 09 17:10:10 CET 2008 - bwalle@suse.de
+
+- Exclude GART memory from regions that must be written to the
+  dump file (bnc #457612).
+
+-------------------------------------------------------------------
+Wed Nov 26 10:05:49 CET 2008 - bwalle@suse.de
+
+- Fix compile warning.
+
+-------------------------------------------------------------------
+Mon Nov 24 23:00:59 CET 2008 - bwalle@suse.de
+
+- Read memory map from /proc/iomem instead of /sys/firmware/memmap
+  when running under Xen.
+- Build against libxenctl on i386 and x86-64 but link statically
+  to avoid runtime dependencies that would exist even on non-Xen
+  systems.
+
+-------------------------------------------------------------------
+Fri Nov 14 10:54:01 CET 2008 - bwalle@suse.de
+
+- Fix spell error in help output (bnc#444714).
+
+-------------------------------------------------------------------
+Sat Nov 01 17:01:14 CET 2008 - bwalle@suse.de
+
+- Don't print "setup_linux_vesafb" message on stderr.
+
+-------------------------------------------------------------------
+Mon Oct 27 10:25:42 CET 2008 - bwalle@suse.de
+
+- Update patch that checks for reserved and assigned bit flags on
+  the memory regions (bnc#438086).
+
+-------------------------------------------------------------------
+Sun Oct 26 18:11:02 CET 2008 - bwalle@suse.de
+
+- Clear grubonce after using in kexec-bootloader (bnc#438194).
+- Add rpmlint supression file.
+- Correct debugging output: Number of section was one too small
+  (last index != size of array).
+
+-------------------------------------------------------------------
+Fri Oct 24 14:17:21 CEST 2008 - bwalle@suse.de
+
+- Check for reserved and assigned bit flags on the memory regions
+  (bnc#438086).
+
+-------------------------------------------------------------------
+Sat Oct 18 22:25:59 CEST 2008 - bwalle@suse.de
+
+- Honor grubonce also when the 1st (== 0th) entry was chosen.
+
+-------------------------------------------------------------------
+Mon Oct 13 16:41:27 CEST 2008 - bwalle@suse.de
+
+- Fix runlevels (Default-Start, Default-Stop) in kexec.init.
+- Only load kexec kernel when kexec reboot is enabled when the
+  target runlevel is 6 (reboot) to avoid slowdown of shutdown in
+  that case.
+
+-------------------------------------------------------------------
+Thu Oct 09 19:00:04 CEST 2008 - bwalle@suse.de
+
+- PPC64: Use return value of count_dyn_reconf_memory_ranges().
+
+-------------------------------------------------------------------
+Thu Oct 09 18:39:45 CEST 2008 - bwalle@suse.de
+
+- Fix empty /proc/vmcore on PPC64 (bnc#431492).
+  o kexec/kdump: read crash memory ranges from drconf memory.
+  o kexec/kdump: add a new linux, usable-drconf-memory node to the
+    device tree.
+  o kexec/kdump: get details of ibm, dynamic-reconfiguration-memory
+    node of device tree.
+
+-------------------------------------------------------------------
+Thu Oct 09 15:47:46 CEST 2008 - bwalle@suse.de
+
+- Add newline in error message of "kexec-bootloader".
+- Add error handling when Bootloader::Tools::GetDefaultSection()
+  fails.
+
+-------------------------------------------------------------------
+Wed Oct 08 16:57:28 CEST 2008 - bwalle@suse.de
+
+- IA64: Order of operations bug in PT_LOAD segment reader.
+
+-------------------------------------------------------------------
+Wed Oct 08 16:29:33 CEST 2008 - bwalle@suse.de
+
+- ia64: Do not include uncached memory to vmcore.
+- ia64: Make PA() work for both physical identity-mapped virtual
+  addresses.
+- PPC64: Let kexec work on IBM QS2x blade servers
+- Fix build warnings.
+
+-------------------------------------------------------------------
+Mon Oct 06 17:32:56 CEST 2008 - bwalle@suse.de
+
+- Implement -h (help) option (bnc#432386).
+- Remove documentation of -o (options) option that never existed.
+
+-------------------------------------------------------------------
+Wed Aug 27 11:59:55 CEST 2008 - bwalle@suse.de
+
+- only install and build /etc/init.d/kexec with openSUSE 11.1 /
+  SLES 11 and later
+
+-------------------------------------------------------------------
+Sat Aug 16 11:04:55 CEST 2008 - bwalle@suse.de
+
+- mark /etc/init.d/kexec as %config
+- remove (empty) %preun
+
+-------------------------------------------------------------------
+Fri Aug 15 09:35:48 CEST 2008 - bwalle@suse.de
+
+- add /etc/init.d/kexec to be able to reboot with kexec(8)
+  (FATE#302238)
+
+-------------------------------------------------------------------
+Sat Jul 19 16:54:57 CEST 2008 - bwalle@suse.de
+
+- update to kexec-tools 2.0.0 (final)
+  o Allow BUILD_CFLAGS and TARGET_CFLAGS to be specified at
+    configure time
+
+-------------------------------------------------------------------
+Mon Jul 14 17:32:17 CEST 2008 - bwalle@suse.de
+
+- update to kexec-tools 2.0.0-rc1
+  o implement support for /sys/firmware/memmap interface
+  o Allow 32 bit kexec binary to boot kdump kernel on ppc64
+    architecture
+  o kexec/crashdump.c: remove file descriptor leaks; make
+    kdump_info argument to get_vmcoreinfo() const
+  o Fix implicit declaration of inb/outb
+  o EDD implementation
+  o Specify the arch on kexec_unload
+  o Update KEXEC_ARCH_* constants from Linux kernel headers
+  o lots of code cleanup
+  o Add --reuse-cmdline
+  o documentation update (manpage, boot protocol)
+  o ensure that extra rtas segment is a multiple of PAGE_SIZE
+  o Allow building for ppc32 platforms
+  o Die on early EOF in slurp_file, instead of infinite-looping
+  o Fix copy-paste bug: entry16 does not start at entry16_debug
+  o Fix undefined symbol errors on readw/writew: arch/io.h, not
+    sys/io.h
+  o extract vmcoreinfo from /proc/vmcore for Xen
+  o Give installed files user-writable permission
+  o Use separate CPPFLAGS and LDFLAGS for purgatory
+- dropped kexec-tools-fix-arch-on-unload: merged upstream
+- dropped kexec-tools-edd-fix: merged upstream
+- dropped kexec-tools-refactor-architecture-detection: merged
+  upstram
+- dropped kexec-tools.gcc-bug.patch: merged upstream
+- dropped kexec-tools.ppc32-64bit-purgatory.patch: merged upstream
+- kexec-tools-edd-support: merged upstream
+- kexec-tools-32bit-kexec-with-64bit-ppc64.patch: merged upstream
+- removed README.SUSE: information not necessary any more
+
+-------------------------------------------------------------------
+Thu Jul  3 14:39:02 CEST 2008 - bwalle@suse.de
+
+- fix 32 bit kexec to boot on 64 bit ppc64 (bnc#405015)
+
+-------------------------------------------------------------------
+Mon May 26 23:14:15 CEST 2008 - bwalle@suse.de
+
+- fix EDD support when the BIOS-reported length is smaller than
+  the sysfs raw_data size (bnc#388754)
+
+-------------------------------------------------------------------
+Mon May 26 14:15:00 CEST 2008 - bwalle@suse.de
+
+- fix kexec unload (rckdump stop) on ppc64 (bnc#394216)
+
+-------------------------------------------------------------------
+Tue May 13 15:19:58 CEST 2008 - bwalle@suse.de
+
+- implement EDD (bnc#383210)
+
+-------------------------------------------------------------------
+Mon Mar 24 23:38:05 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080324
+  o tarball update (version), no functional changes between
+    v20080318-rc and v20080324
+
+-------------------------------------------------------------------
+Tue Mar 18 09:20:47 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080318-rc
+  o ia64 kern_vaddr_start was calculated incorrectly
+  o ia64: make load_crashdump_segments 80col wide
+  o fix i386 EFI boot using efifb
+  o mipsel: mipsel port
+  o fix kexec-tools on x86_64 (see bnc#368138)
+  o fix valid_memory_range region merging
+  o arm: invalid initialisation of iomem in get_memory_ranges()
+  o arm: use proc_iomem()
+  o no machine machine to proc_iomem()
+
+-------------------------------------------------------------------
+Fri Mar 14 17:30:53 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080227-git
+  (current git snapshot, fixes x86_64, bnc#368138)
+- kexec-tools-portability-issue deleted: mainline
+
+-------------------------------------------------------------------
+Wed Feb 27 08:09:08 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080227
+  (only increased version number)
+
+-------------------------------------------------------------------
+Tue Feb 26 08:58:47 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080226-rc
+  o build: include configure and include/config.h.in in dist
+    tarball
+- adjusted kexec-tools-portability-issue to build without warnings
+  on 32 bit systems
+
+-------------------------------------------------------------------
+Thu Feb 21 10:55:57 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080221-rc
+  o Only include needed files in distribution tarball
+  o Clean up whitespace in include/x86/x86-linux.h
+  o Kexec command line length
+- removed kexec-longer-cmdline.diff: fixed mainline differently
+
+-------------------------------------------------------------------
+Wed Feb 20 08:30:37 CET 2008 - bwalle@suse.de
+
+- update to kexec-tools-testing v20080219-rc
+  o Fix the feature determining ELF32/ELF64 automatically
+  o Enable building a 32 bit binary for ppc64 platforms.
+  o Consolidate BOOTLOADER defines
+  o Use config.h for defines
+  o Add gamecube to config.h defines
+  o removed partially duplicated system headers
+  o Use general _SRCS and _OBJS, rather and _C_{SRCS, OBJS} and
+    _S_{SRCS, OBJS}
+  o build system fixes
+  o Add documentation on creating include/config.h.in to INSTALL
+  o Log unknown reloc name instead of its number
+  o Use zlib if present
+  o kexec buffer overflow on ppc platform
+  o sh: Remove hardcoded PAGE_SIZE in NetBSD loader
+  o Add ARM support to kexec
+  o Remove some extraneous whitespace
+  o kexec: Use target linker for purgatory
+- removed kexec-tools-elf32-elf64-fix: mainline
+- removed kexec-tools.ppc64-32bit-build.patch: mainline
+- removed kexec-tools.fread-buffer-overflow.patch: mainline
+
+-------------------------------------------------------------------
+Wed Jan 30 15:17:18 CET 2008 - sassmann@suse.de
+
+- fix fread buffer overflow on ppc
+
+-------------------------------------------------------------------
+Tue Jan 22 10:14:31 CET 2008 - ro@suse.de
+
+- update ppc buildreq
+
+-------------------------------------------------------------------
+Fri Nov 30 10:52:03 CET 2007 - bwalle@suse.de
+
+- fix a problem with automatic determination of ELF32/ELF64 on i386
+
+-------------------------------------------------------------------
+Tue Oct 30 08:46:49 CET 2007 - bwalle@suse.de
+
+- update to kexec-tools-testing 20071030
+  o vmcoreinfo's address and size
+
+-------------------------------------------------------------------
+Wed Oct 17 08:35:24 CEST 2007 - bwalle@suse.de
+
+- update to kexec-tools-testing v20071017-rc
+  o Set alternate location for /proc/iomem on ia64 xen
+  o debugging output improvements
+  o Handle malloc() failure in xen_get_nr_phys_cpus()
+  o Added generic --reuseinitrd option
+  o ppc64: fix device-tree mem node
+  o ppc64: fix misaligned cmdline
+  o ppc64: cleanup get_devtree_details
+  o ppc64: Add arch specific --reuseinitrd hooks
+  o ppc64: use kernels slave loop for purgatory
+  o ppc64: correct @ha relocation
+- remove kexec-tools.check_reuse_initrd-close.patch (merged
+  mainline)
+
+-------------------------------------------------------------------
+Thu Oct 11 16:48:58 CEST 2007 - bwalle@suse.de
+
+- remove kdump stuff from this package, that's now in the "kexec"
+  package
+
+-------------------------------------------------------------------
+Wed Aug 29 15:23:58 CEST 2007 - bwalle@suse.de
+
+- add reset_devices kernel parameter as default
+
+-------------------------------------------------------------------
+Sat Aug 25 22:37:42 CEST 2007 - olh@suse.de
+
+- do not require kdump-helpers on s390
+
+-------------------------------------------------------------------
+Fri Jul 27 14:56:14 CEST 2007 - bwalle@suse.de
+
+- update documentation for deleting all dumps (#302257)
+
+-------------------------------------------------------------------
+Tue Jul 17 07:25:19 CEST 2007 - olh@suse.de
+
+- workaround gcc code analyzing bug
+
+-------------------------------------------------------------------
+Mon Jul 16 15:33:22 CEST 2007 - olh@suse.de
+
+- update to kexec-tools-testing b84b87747a16f0afbef6f6802bb794a94f4961d9
+  build 32bit powerpc kexec binary for 64bit kernels
+
+-------------------------------------------------------------------
+Fri Jul  6 18:24:12 CEST 2007 - tiwai@suse.de
+
+- implement a simple status command for kdump init script
+
+-------------------------------------------------------------------
+Tue Jul  3 00:00:18 CEST 2007 - bwalle@suse.de
+
+- removed 'machvec=dig' workaround from the documentation since
+  this has been fixed in the kernel (#271158)
+
+-------------------------------------------------------------------
+Fri Jun 22 16:55:27 CEST 2007 - bwalle@suse.de
+
+- disable -fstack-protector on IA64 since the kdump kernel doesn't
+  boot with -fstack-protector enabled
+
+-------------------------------------------------------------------
+Thu Jun 21 16:27:33 CEST 2007 - bwalle@suse.de
+
+- kdump init script: fix handling of spaces in kernel type
+
+-------------------------------------------------------------------
+Wed Jun 13 16:51:53 CEST 2007 - bwalle@suse.de
+
+- remove KDUMP_KERNELVER="kdump" on x86_64 and i386 since there's
+  no special "kdump" kernel any more in the default configuration
+  (i.e. in the .spec file since it's different for the
+  architectures)
+
+-------------------------------------------------------------------
+Wed Jun 13 15:21:27 CEST 2007 - bwalle@suse.de
+
+- removed libelf as BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun 11 17:06:07 CEST 2007 - bwalle@suse.de
+
+- moved copying of dump file to an external package
+  "kdump-helpers"
+- moved kdump-helper which is needed to save dump in initrd
+  also to kdump-helpers package
+
+-------------------------------------------------------------------
+Tue Apr 24 17:08:20 CEST 2007 - olh@suse.de
+
+- update to current kexec-tools-testing
+  add PS3 patches
+
+-------------------------------------------------------------------
+Thu Apr 19 10:55:31 CEST 2007 - bwalle@suse.de
+
+- fixes in kdump-helper (update to 0.1.2):
+  o retrieve the disk size before mmap()
+  o return GENERAL_ERROR if the program cannot be opened
+  o use symbolic constants for exit values instead of magic numbers
+    now consistently
+  o check for correct return value of mmap() instead of NULL
+
+-------------------------------------------------------------------
+Fri Apr 13 13:55:45 CEST 2007 - bwalle@suse.de
+
+- improved documentation of KDUMP_DUMPDEV (#264050)
+
+-------------------------------------------------------------------
+Mon Apr  2 12:24:46 CEST 2007 - rguenther@suse.de
+
+- add zlib-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Mar 20 20:39:13 CET 2007 - bwalle@suse.de
+
+- fixed script to properly unload kdump on IA64 (where kdump
+  kernel is the normal kernel) (#256179)
+
+-------------------------------------------------------------------
+Mon Mar 19 10:58:10 CET 2007 - bwalle@suse.de
+
+- upgrade to latest snapshot
+  o [IA64] Use EFI_LOADER_DATA for ELF core header (-> needed
+    because kernel was updated to 2.6.21 on STABLE)
+  o include latest fixes
+
+-------------------------------------------------------------------
+Wed Mar 14 18:45:27 CET 2007 - tiwai@suse.de
+
+- add detailed description about dump triggering methods to
+  README.SUSE (#250134)
+
+-------------------------------------------------------------------
+Wed Mar 14 15:18:06 CET 2007 - tiwai@suse.de
+
+- improve the check of crash kernel in kdump init script (#252632)
+
+-------------------------------------------------------------------
+Fri Mar  9 21:34:36 CET 2007 - bwalle@suse.de
+
+- added hint that VGA console doesn't work (#253173)
+
+-------------------------------------------------------------------
+Thu Feb 15 13:44:01 CET 2007 - bwalle@suse.de
+
+- added setting to print the kdump command line to standard output
+- small improvement for the outut message while dumping: last
+  message always prints 100% if it was sucessful
+
+-------------------------------------------------------------------
+Wed Feb 14 17:16:33 CET 2007 - bwalle@suse.de
+
+- added KDUMP_VERBOSE option to print progress output while
+  dumping and to add the kexec call to system log
+- added maxcpus=1 as default for KDUMP_COMMANDLINE_APPEND on IA64
+- added --noio as default for KEXEC_OPTIONS on IA64
+
+-------------------------------------------------------------------
+Tue Feb 13 18:38:52 CET 2007 - bwalle@suse.de
+
+- align the both start and end address of the ELF core header
+  to EFI_PAGE_SIZE (4096) to fix wrong EFI memory maps
+  (#214865)
+
+-------------------------------------------------------------------
+Mon Feb 12 10:57:38 CET 2007 - bwalle@suse.de
+
+- fixed copying, blocksize was wrong (#243058)
+
+-------------------------------------------------------------------
+Sat Feb 10 10:49:31 CET 2007 - schwab@suse.de
+
+- Fix help string.
+
+-------------------------------------------------------------------
+Fri Feb  9 13:34:41 CET 2007 - bwalle@suse.de
+
+- fixed overflow error that prints the size from being printed
+  correctly if the size doesn't fit into an int (#243058)
+- improved error handling to make sure that a similar problem as
+  in #243058 will output a better error message
+
+-------------------------------------------------------------------
+Wed Feb  7 15:42:35 CET 2007 - bwalle@suse.de
+
+- don't refuse to deinstall kexec-tools if kdump was not configured
+  (#243081)
+- fixed documentation error (/var/log/dump instead of
+  /var/log/dumps in README.SUSE)
+  (#239506)
+
+-------------------------------------------------------------------
+Mon Feb  5 12:38:11 CET 2007 - tiwai@suse.de
+
+- updated to kexec-tools 2007.02.05:
+  * including last fixes
+  * fix for ppc64 dynamic memory range allocation (#242075)
+
+-------------------------------------------------------------------
+Fri Feb  2 16:46:35 CET 2007 - bwalle@suse.de
+
+- fixes overflow on large IA64 systems (#241544)
+- added KDUMP_COMMANDLINE_APPEND variable (#241607)
+- increase the command line size (#236828)
+
+-------------------------------------------------------------------
+Mon Jan 29 15:41:43 CET 2007 - olh@suse.de
+
+- do not unload kdump kernel during runlevel changes (#238733)
+
+-------------------------------------------------------------------
+Thu Jan 25 19:28:57 CET 2007 - bwalle@suse.de
+
+- added documentation for initrd-based kdump saving
+- fixed description of KDUMP_IMMEDIATE_REBOOT
+
+-------------------------------------------------------------------
+Wed Jan 24 12:04:55 CET 2007 - tiwai@suse.de
+
+- fix invalid /proc/vmcore on ppc64 (#238078).
+
+-------------------------------------------------------------------
+Thu Jan 18 15:22:25 CET 2007 - bwalle@suse.de
+
+- improved documentation as response to #226736
+
+-------------------------------------------------------------------
+Wed Jan 17 14:32:02 CET 2007 - bwalle@suse.de
+
+- implemented Initrd based kdump saving
+  (#301538)
+
+-------------------------------------------------------------------
+Wed Dec 20 10:59:26 CET 2006 - tiwai@suse.de
+
+- take kexec-tools-testing snapshot-20061219.
+  o ia64 support
+  o relocatable kernel support
+  o lots of cleanups/fixes
+- fix manpage and help about -u option (#208710)
+- ia64 kdump support (#214865, FATE#301433, FATE#301434)
+  o add boot argument "CRASH=1" to indicate the crash environment
+    (for kexec'ing with the same kernel)
+  o fix kdump init script for ia64, which has only vmlinuz and
+    uses the same kernel for kdump
+- reduce boot options for kdump kernel (#223500)
+
+-------------------------------------------------------------------
+Thu Jul 13 17:39:20 CEST 2006 - tiwai@suse.de
+
+- fixed the calculation of required disk space in kdump
+  init script (#192172)
+- fix the wrong usage of crash program in README.SUSE
+
+-------------------------------------------------------------------
+Thu Jun 22 15:23:22 CEST 2006 - tiwai@suse.de
+
+- fix kexec to reserve ACPI NVS area (#179093)
+- add more description about chkconfig and kdump service
+  (#183017)
+
+-------------------------------------------------------------------
+Fri Jun 16 12:24:03 CEST 2006 - tiwai@suse.de
+
+- add irqpoll boot option for i386 and x86_64 for more robust
+  kdump (#183017)
+
+-------------------------------------------------------------------
+Thu Jun  1 18:07:35 CEST 2006 - tiwai@suse.de
+
+- update README.SUSE for more precise description about crash
+  and debug kernel.
+
+-------------------------------------------------------------------
+Tue May 30 16:03:26 CEST 2006 - tiwai@suse.de
+
+- ppc64 kdump ELF header fix for power 4 box (#175128).
+
+-------------------------------------------------------------------
+Mon May 22 12:49:01 CEST 2006 - tiwai@suse.de
+
+- added the missing man page for kexec (#175084).
+- add sleep after reboot in kdump init script for avoiding
+  confliction with script single (#171332)
+
+-------------------------------------------------------------------
+Fri May 19 14:56:15 CEST 2006 - olh@suse.de
+
+- unconditionally add sysrq=1 for kdump boots, nothing to lose
+
+-------------------------------------------------------------------
+Fri May 19 13:57:15 CEST 2006 - olh@suse.de
+
+- remove crashkernel= cmdline also if only the size is given
+  handle m as well as M because memparse() handles both
+
+-------------------------------------------------------------------
+Tue May  2 16:18:57 CEST 2006 - tiwai@suse.de
+
+- update/improve README.SUSE
+- fix the default value in sysconfig.kdump
+- add elevator=deadline to the boot parameter of kdump kernel
+  to save memory footprint (#170591)
+
+-------------------------------------------------------------------
+Fri Apr 28 21:07:49 CEST 2006 - olh@suse.de
+
+- use df -P to print all data for a mount point in a single line
+  long device node names will cause 2 lines in df output
+
+-------------------------------------------------------------------
+Wed Apr 26 13:42:38 CEST 2006 - olh@suse.de
+
+- linux,platform properties were removed from kernel 2.6.17
+  assume non-LPAR if some properties do no exist in the device-tree
+  (164993 - LTC23056)
+
+-------------------------------------------------------------------
+Wed Apr 26 11:47:10 CEST 2006 - olh@suse.de
+
+- set /proc/sys/kernel/panic_on_oops to actually trigger a dump
+
+-------------------------------------------------------------------
+Wed Mar  8 23:10:24 CET 2006 - olh@suse.de
+
+- add --args-linux only on intel
+  copy vmcore with --sparse, maybe it saves a few bytes.
+
+-------------------------------------------------------------------
+Wed Feb 22 16:53:23 CET 2006 - tiwai@suse.de
+
+- updated to kdump7 patch.
+
+-------------------------------------------------------------------
+Wed Feb 15 11:23:45 CET 2006 - tiwai@suse.de
+
+- fixed gdb-kdump script (#151001)
+
+-------------------------------------------------------------------
+Mon Feb 13 15:09:58 CET 2006 - tiwai@suse.de
+
+- fix for ppc64 (#149576)
+
+-------------------------------------------------------------------
+Sun Feb 12 17:58:43 CET 2006 - tiwai@suse.de
+
+- added the system check before dumping
+- added README.SUSE
+- added gdb-kdump helper script
+
+-------------------------------------------------------------------
+Thu Feb  9 11:16:35 CET 2006 - tiwai@suse.de
+
+- fixed Default-Start in kdump init script.
+- fixed RequiredStart in sysconfig/kdump.
+
+-------------------------------------------------------------------
+Wed Feb  8 21:57:43 CET 2006 - tiwai@suse.de
+
+- changed the default values of KDUMP_IMMEDIATE_REBOOT and
+  KDUMP_RUNLEVEL (#149140).
+
+-------------------------------------------------------------------
+Tue Feb  7 13:16:25 CET 2006 - tiwai@suse.de
+
+- added missing preun and postun sections.
+
+-------------------------------------------------------------------
+Mon Feb  6 15:22:32 CET 2006 - tiwai@suse.de
+
+- fixed the messages from kdump to use suse rc macros
+- added $KDUMP_RUNLEVEL to /etc/sysconfig/kdump for specifying
+  the runlevel to boot kdump kernel.
+- added /sbin/rckdump
+- fixed a typo in kdump init script
+
+-------------------------------------------------------------------
+Fri Feb  3 16:20:13 CET 2006 - tiwai@suse.de
+
+- sync with mainstream dump6 patch:
+  most of ppc64 patches were merged there.
+  new fixes included: vmcore copy fix for x86_64 and ext_mem_k
+  calculation fix for i386
+- added KEXEC_TRANSFER sysconfig variable for user-defined
+  dump action.
+
+-------------------------------------------------------------------
+Fri Jan 27 12:13:59 CET 2006 - tiwai@suse.de
+
+- added kdump init script and sysconfig.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:11 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 15:02:24 CET 2006 - olh@suse.de
+
+- update ppc64 kdump support
+
+-------------------------------------------------------------------
+Thu Jan  5 16:37:12 CET 2006 - tiwai@suse.de
+
+- more fix for ppc64 kdump
+- fix malloc size
+
+-------------------------------------------------------------------
+Thu Dec 15 16:09:27 CET 2005 - tiwai@suse.de
+
+- use the latest kdump patch.
+
+-------------------------------------------------------------------
+Mon Dec 12 14:46:46 CET 2005 - tiwai@suse.de
+
+- initial version: 1.101
+

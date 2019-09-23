@@ -1,0 +1,12 @@
+Index: cups-filters-1.25.0/filter/pdf.cxx
+===================================================================
+--- cups-filters-1.25.0.orig/filter/pdf.cxx
++++ cups-filters-1.25.0/filter/pdf.cxx
+@@ -19,6 +19,7 @@
+ #include <config.h>
+ #include "pdf.h"
+ #include <vector>
++#include <cstring>
+ #include <string>
+ #include <qpdf/QPDF.hh>
+ #include <qpdf/QPDFObjectHandle.hh>

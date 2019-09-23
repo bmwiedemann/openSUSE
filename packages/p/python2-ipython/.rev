@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a4e8cac6a52bf829b0c95283cd2bdde</srcmd5>
+    <version>5.8.0</version>
+    <time>1558516390</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python-rpm-macros to simplify the spec file.
+- Avoid conflicts with old naming scheme due to python package naming changes.
+- Rename to to match python package naming guidelines.</comment>
+    <requestid>703539</requestid>
+  </revision>
+</revisionlist>

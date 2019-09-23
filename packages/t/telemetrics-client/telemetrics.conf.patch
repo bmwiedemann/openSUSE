@@ -1,0 +1,14 @@
+--- src/data/telemetrics.conf.in
++++ src/data/telemetrics.conf.in	2019/06/11 12:11:44
+@@ -61,9 +61,9 @@
+ # record server delivery enabled - when enabled records will be delivered
+ # to server otherwise records will be ignored. This configuration can be used
+ # with 'record_retention_enable' configuration value to keep records local only.
+-#record_server_delivery_enabled=true
++record_server_delivery_enabled=false
+ 
+ # record retention enabled - when enabled a copy of reported telemetry records
+ # will be kept locally. This configuration combined with 'record_server_delivery_enabled'
+ # value can be used to keep records local only.
+-#record_retention_enabled=false
++record_retention_enabled=true

@@ -1,0 +1,5 @@
+<package name="clanlib" project="openSUSE:Factory">
+  <title>A Portable Interface for Writing Games</title>
+  <description>ClanLib delivers a platform-independent interface for writing games.</description>
+  <devel project="games" package="clanlib"/>
+</package>

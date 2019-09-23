@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="37">
+    <srcmd5>8bf65fae5d97d8ed8768ca58939980cc</srcmd5>
+    <version>0.22</version>
+    <time>1187218443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="43">
+    <srcmd5>5cac3e7c521035bc737fb4ace677a810</srcmd5>
+    <version>0.22</version>
+    <time>1188568474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="140">
+    <srcmd5>dedb3033650fbfce1850ec0b61cd18c4</srcmd5>
+    <version>0.22</version>
+    <time>1219446064</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="150">
+    <srcmd5>0f948baad98278d5aaaeee5d92999c14</srcmd5>
+    <version>0.22</version>
+    <time>1221569415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="151">
+    <srcmd5>3a430ff7f813fe126cb260f8a8f2aa0e</srcmd5>
+    <version>0.22</version>
+    <time>1233019109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="153">
+    <srcmd5>3a430ff7f813fe126cb260f8a8f2aa0e</srcmd5>
+    <version>0.22</version>
+    <time>1233019109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="154">
+    <srcmd5>c020e936c2aa610f253618ec96aa2faf</srcmd5>
+    <version>0.22</version>
+    <time>1268924668</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="155">
+    <srcmd5>d4863b49c2fd303f270d60814c4be429</srcmd5>
+    <version>0.22</version>
+    <time>1275063646</time>
+    <user>autobuild</user>
+    <comment>Copy from mobile:synchronization:FACTORY/libopensync based on submit request 40813 from user coolo
+</comment>
+    <requestid>40813</requestid>
+  </revision>
+  <revision rev="9" vrev="157">
+    <srcmd5>d4863b49c2fd303f270d60814c4be429</srcmd5>
+    <version>0.22</version>
+    <time>1278667361</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="158">
+    <srcmd5>d4863b49c2fd303f270d60814c4be429</srcmd5>
+    <version>0.22</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="161">
+    <srcmd5>d4863b49c2fd303f270d60814c4be429</srcmd5>
+    <version>0.22</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="162">
+    <srcmd5>5a56630c6fa2bdaec8639ae2f2bdb9dd</srcmd5>
+    <version>0.22</version>
+    <time>1306145067</time>
+    <user>saschpe</user>
+    <comment>- Fixed compiler warnings about unused variables</comment>
+    <requestid>70827</requestid>
+  </revision>
+  <revision rev="13" vrev="163">
+    <srcmd5>e03a4546380ec15708d358f7ceb7fe39</srcmd5>
+    <version>0.22</version>
+    <time>1306145076</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70827
+</comment>
+  </revision>
+  <revision rev="14" vrev="164">
+    <srcmd5>fe256a038d77b43ce11c7a092b48dec5</srcmd5>
+    <version>0.22</version>
+    <time>1306485924</time>
+    <user>saschpe</user>
+    <comment>Support swig 2.x (forwarded request 71390 from namtrac)</comment>
+    <requestid>71523</requestid>
+  </revision>
+  <revision rev="15" vrev="165">
+    <srcmd5>4aa090b21f61bad3695810745f70f9ec</srcmd5>
+    <version>0.22</version>
+    <time>1306488633</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="167">
+    <srcmd5>4aa090b21f61bad3695810745f70f9ec</srcmd5>
+    <version>0.22</version>
+    <time>1319182118</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="168">
+    <srcmd5>d8c697df171084ad89034b8b2597a811</srcmd5>
+    <version>0.22</version>
+    <time>1321980485</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 92558 from coolo)</comment>
+    <requestid>93038</requestid>
+  </revision>
+  <revision rev="18" vrev="169">
+    <srcmd5>8f36ee543fec3c7fd8a5087ee4fffa59</srcmd5>
+    <version>0.22</version>
+    <time>1323192294</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="171">
+    <srcmd5>8f36ee543fec3c7fd8a5087ee4fffa59</srcmd5>
+    <version>0.22</version>
+    <time>1340183616</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="172">
+    <srcmd5>37395838be70edd6d3eaa5a0b1295bfb</srcmd5>
+    <version>0.22</version>
+    <time>1349945784</time>
+    <user>coolo</user>
+    <comment>- do not fail on deprecated glib functions (forwarded request 137522 from coolo)</comment>
+    <requestid>137791</requestid>
+  </revision>
+  <revision rev="21" vrev="174">
+    <srcmd5>37395838be70edd6d3eaa5a0b1295bfb</srcmd5>
+    <version>0.22</version>
+    <time>1359109318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="175">
+    <srcmd5>0abb5d570eb04c72711a32919d82e3fa</srcmd5>
+    <version>0.22</version>
+    <time>1372173271</time>
+    <user>coolo</user>
+    <comment>- libopensync-wrong-memset.patch: fix build with gcc 48
+  wrong use of memset. (forwarded request 179596 from elvigia)</comment>
+    <requestid>180821</requestid>
+  </revision>
+  <revision rev="23" vrev="177">
+    <srcmd5>0abb5d570eb04c72711a32919d82e3fa</srcmd5>
+    <version>0.22</version>
+    <time>1379663031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="179">
+    <srcmd5>0abb5d570eb04c72711a32919d82e3fa</srcmd5>
+    <version>0.22</version>
+    <time>1409301651</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="180">
+    <srcmd5>3b31ab3bf66db8461ae3fb6c3ea1e387</srcmd5>
+    <version>0.22</version>
+    <time>1467205791</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop useless --with-pic (it's only for static libs) (forwarded request 404060 from jengelh)</comment>
+    <requestid>404207</requestid>
+  </revision>
+  <revision rev="26" vrev="180">
+    <srcmd5>3b31ab3bf66db8461ae3fb6c3ea1e387</srcmd5>
+    <version>0.22</version>
+    <time>1489178630</time>
+    <user>dimstar_suse</user>
+    <comment>libopensync is not maintained for several years now. Project is dead.</comment>
+    <requestid>477298</requestid>
+  </revision>
+  <revision rev="27" vrev="180">
+    <srcmd5>3b31ab3bf66db8461ae3fb6c3ea1e387</srcmd5>
+    <version>0.22</version>
+    <time>1489576724</time>
+    <user>dimstar_suse</user>
+    <comment>Still needed by kdepim3</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,835 @@
+-------------------------------------------------------------------
+Thu Aug  8 09:15:58 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix parallel build:
+  * fix-parallel-build.patch
+
+-------------------------------------------------------------------
+Wed Apr  3 01:12:38 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Rewrite the spec and makefile to make it easier to contibute
+- Change the default plymouth theme to bgrt
+
+-------------------------------------------------------------------
+Wed Mar 13 08:54:44 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Replace font with font-size in YaST theming
+
+-------------------------------------------------------------------
+Thu Mar  7 09:32:54 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Fix systemd logo icons package
+
+-------------------------------------------------------------------
+Tue Feb 26 16:45:18 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Prevent tiny installation font (bsc#1124508)
+
+-------------------------------------------------------------------
+Tue Jan  1 11:37:11 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add LibreOffice branding
+
+-------------------------------------------------------------------
+Fri Dec 14 07:07:50 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Slim down plymouth branding by 100kb
+- Change fonts in installer to fit the branding
+
+-------------------------------------------------------------------
+Thu Nov 15 02:17:21 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Added systemd icons package before systemd 240
+- Fixed issues with YaST showing wrong size of icons for partitioner
+- Migrated YaST theme to using SVG images instead of PNG
+
+-------------------------------------------------------------------
+Sun Apr 29 23:15:34 UTC 2018 - hellcp@mailbox.org
+
+- Added 5K wallpaper
+
+-------------------------------------------------------------------
+Mon Apr 16 15:50:59 UTC 2018 - hellcp@mailbox.org
+
+- Don't hard-code the system role text color (bsc#1087399)
+
+-------------------------------------------------------------------
+Mon Mar 26 12:54:33 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 15.0:
+  * Better version with shadow
+  * Fix wrong frame of animation
+  * Fix for editable QComboBox (boo#1084816)
+  * Fixed lock in plymouth
+
+-------------------------------------------------------------------
+Fri Mar 16 10:33:03 UTC 2018 - dimstar@opensuse.org
+
+- Fixup gfxboot/config to show 'openSUSE Tumbleweed' instead of
+  'openSUSE Leap' by default (boo#1085569).
+
+-------------------------------------------------------------------
+Sat Mar 10 11:28:01 UTC 2018 - dimstar@opensuse.org
+
+- Update to git rev 521b8d:
+  + Generate wallpapers, instead of just copying.
+
+-------------------------------------------------------------------
+Wed Mar  7 13:07:06 UTC 2018 - dimstar@opensuse.org
+
+- Add icewm-theme-yast-installation sub package
+
+-------------------------------------------------------------------
+Wed Mar  7 09:19:57 UTC 2018 - dimstar@opensuse.org
+
+- Drop kde-branding-openSUSE: Only legacy KDE 4 files
+  * sysconfig.displaymanager-kdm
+  * kde-branding-openSUSE.spec
+  * kde-branding-openSUSE.changes
+
+-------------------------------------------------------------------
+Tue Mar  6 10:06:23 UTC 2018 - dimstar@opensuse.org
+
+- Update to git rev 14eaa1a:
+  + Use new desktop wallpaper.
+  + Updating plymouth and grub themes, xfce splash to fit new
+    branding guidelines.
+  + Add title properties to grub2 theme (boo#1076577).
+  + Added splash image for XFCE.
+  + Fixes to xfce splash, new yast theme, gfxboot.
+- Sync spec file with Leap; spec-cleaned.
+
+-------------------------------------------------------------------
+Wed Jan 24 09:26:38 UTC 2018 - dimstar@opensuse.org
+
+- Fixup product version for Leap based on sle_version, and for
+  Tumbleweed set it to 'openSUSE Tumbleweed'.
+
+-------------------------------------------------------------------
+Wed Nov  8 07:05:39 UTC 2017 - mchang@suse.com
+
+- Use %posttrans for initrd creation (bsc#1066666)
+
+-------------------------------------------------------------------
+Fri Jan 20 09:35:32 UTC 2017 - dleuenberger@suse.com
+
+- Also require grub2 when using the new update-bootloader-rpm-macros:
+  Otherwise the installer might install the branding package before
+  grub2, resulting in /etc/default/grub to not exist and the theme
+  failing to activate.
+
+-------------------------------------------------------------------
+Fri Jan 13 09:09:49 UTC 2017 - mchang@suse.com
+
+- Support %posttrans with macros provided by update-bootloader-rpm-macros
+  package (bsc#997317)
+
+-------------------------------------------------------------------
+Thu Nov 24 09:06:11 UTC 2016 - dmueller@suse.com
+
+- enable grub2-branding-openSUSE also for %%arm
+
+-------------------------------------------------------------------
+Wed Oct 19 18:47:58 UTC 2016 - fvogt@suse.com
+
+- Change version back to 13.3
+
+-------------------------------------------------------------------
+Tue Oct 18 07:53:19 UTC 2016 - coolo@suse.com
+
+- Update from git to get yast theme updates (pr#60)
+
+-------------------------------------------------------------------
+Mon Jun  6 12:45:20 UTC 2016 - fvogt@suse.com
+
+- Add yast2-qt-branding-openSUSE back and remove Supplements
+  - Much less breakage
+
+-------------------------------------------------------------------
+Mon May 30 06:52:11 UTC 2016 - fvogt@suse.com
+
+- Drop yast2-qt-branding-openSUSE (boo#955381)
+- Fix xfce4-splash-branding-openSUSE conflicts
+
+-------------------------------------------------------------------
+Fri Feb 19 10:05:49 UTC 2016 - dimstar@opensuse.org
+
+- grub2 theme: use blueish color for timeout bar. 
+
+-------------------------------------------------------------------
+Tue Feb 16 13:21:17 UTC 2016 - dimstar@opensuse.org
+
+- Update branding with final touches.
+- plymouth script: revert to single sized backround image. The
+  one in the current branding deck fades out to black.
+
+-------------------------------------------------------------------
+Mon Jan  4 13:17:31 UTC 2016 - dimstar@opensuse.org
+
+- Update plymouth script: loading different backgrounds based on
+  screen aspect ratio.
+
+-------------------------------------------------------------------
+Wed Dec 16 08:52:54 UTC 2015 - dimstar@opensuse.org
+
+- Update branding for Tumbleweed with new graphics.
+- Reuse .spec file from Leap branding package.
+
+-------------------------------------------------------------------
+Tue Feb 17 15:22:36 UTC 2015 - lnussel@suse.de
+
+- enable grub theme on aarch64
+
+-------------------------------------------------------------------
+Thu Nov 13 08:49:11 UTC 2014 - tittiatcoke@gmail.com
+
+- Update the tarball to fix the kde-branding patches for KDE 4.14.3
+
+-------------------------------------------------------------------
+Sat Nov 08 06:12:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun script
+
+-------------------------------------------------------------------
+Sat Oct 25 13:07:55 UTC 2014 - RBrownCCB@opensuse.org
+
+- Fix plymouth theme
+- Replace Grub2 and gfxboot themes with mint on black instead of
+  white on mint 
+
+-------------------------------------------------------------------
+Mon Oct 13 21:03:04 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update KSplash for 13.2 branding
+
+-------------------------------------------------------------------
+Sat Oct 11 11:32:41 UTC 2014 - matwey.kornilov@gmail.com
+
+- plymouth-plugin-label is not required anymore:
+  + https://github.com/openSUSE/branding/commit/e02d63e4ef11b7d9ec2e9a22326bfb83c1aba310
+  + http://lists.opensuse.org/opensuse-arm/2014-10/msg00032.html
+
+-------------------------------------------------------------------
+Mon Sep  8 06:12:40 UTC 2014 - coolo@suse.com
+
+update go git:
+- updated KDM theme for 13.2
+- reduced svg file size with Inkscape > Vacuum Defs
+
+-------------------------------------------------------------------
+Tue Sep  2 06:47:39 UTC 2014 - coolo@suse.com
+
+- fix merge conflicts
+
+-------------------------------------------------------------------
+Mon Sep 01 13:33:11 UTC 2014 - rbrownccb@opensuse.org
+
+- Lower openSUSE logo in grub2 by 5px to improve spacing under OS title
+
+-------------------------------------------------------------------
+Mon Sep 01 13:26:22 UTC 2014 - rbrownccb@opensuse.org
+
+- replace grub2 openSUSE logo with high resolution badge
+
+-------------------------------------------------------------------
+Mon Sep 01 12:58:55 UTC 2014 - rbrownccb@opensuse.org
+
+- add openSUSE logo to gfxboot images
+
+-------------------------------------------------------------------
+Mon Sep 01 08:47:14 UTC 2014 - rbrownccb@opensuse.org
+
+- new yast branding location now handled by git makefile, remove mv
+  from spec file
+
+-------------------------------------------------------------------
+Sun Aug 31 18:47:11 UTC 2014 - rbrownccb@opensuse.org
+
+- Initial openSUSE 13.2 branding
+
+-------------------------------------------------------------------
+Sat Aug 30 15:04:07 UTC 2014 - coolo@suse.com
+
+- yast branding needs to be installed in /usr/share/YaST2/theme/current
+  now
+
+-------------------------------------------------------------------
+Fri Apr 25 15:51:12 UTC 2014 - rbrownccb@opensuse.org
+
+- Update YaST installer look to similar to sle12
+
+-------------------------------------------------------------------
+Thu Feb 27 07:35:43 UTC 2014 - coolo@suse.com
+
+- set version to 13.2 - let the games begin
+
+-------------------------------------------------------------------
+Mon Oct  7 17:11:09 UTC 2013 - bruno@ioda-net.ch
+
+- Update for kdm : readd traditionnal username field
+  fix bnc#844247 for nis login
+  fix bnc#841719 clickable list again 
+
+-------------------------------------------------------------------
+Tue Oct  1 18:23:34 UTC 2013 - bruno@ioda-net.ch
+
+- Move tarball compression to xz and save 20% of space
+- github 13.1 Makefile adapted to new tar.xz 
+
+-------------------------------------------------------------------
+Mon Sep 30 14:50:48 UTC 2013 - bruno@ioda-net.ch
+
+- New tarball with fixes for userlist in kdm
+  https://github.com/Caig/branding/commit/c0e079b539b615ae393c912ba6e6c40116926291
+  bnc#842140
+
+-------------------------------------------------------------------
+Fri Sep 27 08:32:36 UTC 2013 - coolo@suse.com
+
+- remove workaround for bnc#782703
+
+-------------------------------------------------------------------
+Tue Sep 10 21:14:55 UTC 2013 - tittiatcoke@gmail.com
+
+- Add Requires(post): kdm for the kdm-branding to make sure that 
+  the configuration file kdmrc is installed before the branding 
+  is installed. This due to possible sequencing errors that could
+  end up with the wrong theme for kdm.
+
+-------------------------------------------------------------------
+Tue Sep 10 11:14:11 UTC 2013 - rbrownccb@opensuse.org
+
+- grub2: updated release number text
+  
+-------------------------------------------------------------------
+Sat Sep  7 17:10:08 UTC 2013 - tittiatcoke@gmail.com
+
+- Reduce the amount of KDM settings in sysconfig/displaymanager to
+  purely autologin. This enables that KDM can be configured again
+  through the normal KDE systemsettings module. (bnc#267903)
+
+-------------------------------------------------------------------
+Mon Sep  2 20:58:54 CEST 2013 - sbrabec@suse.cz
+
+- Rename branding file to SUSE-brand (FATE#316269).
+
+-------------------------------------------------------------------
+Tue Aug 27 15:07:42 UTC 2013 - coolo@suse.com
+
+- revert parts of fix for bnc#768686 to get installation steps
+  readable again
+- sync the 2 changes files with a pre_checkin.sh
+
+-------------------------------------------------------------------
+Fri Aug 16 07:35:57 UTC 2013 - bruno@ioda-net.ch
+
+- updated tar without gimp 
+
+-------------------------------------------------------------------
+Fri Aug 16 06:21:42 UTC 2013 - bruno@ioda-net.ch
+
+- gimp will be unbranded in 13.1, so cleanup of gimp 
+
+-------------------------------------------------------------------
+Fri Aug  2 10:18:46 UTC 2013 - coolo@suse.com
+
+- split kde and gimp branding into a spec file of it's own to leave
+  kde out of the Factory:Core project
+
+-------------------------------------------------------------------
+Wed Jul 24 18:41:06 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Drop kdm-branding-upstream BuildRequires, not needed since usage
+  of _kde_branding_version macro
+
+-------------------------------------------------------------------
+Tue Jul  2 12:30:08 UTC 2013 - tittiatcoke@gmail.com
+
+- Utilize the new variable _kde_branding_version for the provides/
+  requires of the KDE branding packages
+
+-------------------------------------------------------------------
+Wed Apr 24 13:23:26 UTC 2013 - aj@suse.com
+
+- Increase version to 13.1
+
+-------------------------------------------------------------------
+Thu Apr 18 14:18:54 UTC 2013 - coolo@suse.com
+
+- update from git to update kde patch
+
+-------------------------------------------------------------------
+Tue Apr  2 15:36:07 UTC 2013 - coolo@suse.com
+
+- add a conflict for other xfce4-splash-branding (otherproviders
+  not necessary in 12.1+)
+
+-------------------------------------------------------------------
+Tue Apr  2 07:14:21 UTC 2013 - coolo@suse.com
+
+- fix dir conflict with grub2
+
+-------------------------------------------------------------------
+Thu Feb 28 21:05:11 UTC 2013 - coolo@suse.com
+
+- fix the %post of plymouth branding to still set openSUSE default
+  even if in live cd buildenv (bnc#804321)
+
+-------------------------------------------------------------------
+Fri Feb 15 16:11:12 UTC 2013 - rbrownccb@opensuse.org
+
+- YaST installation hyperlink color darkened
+- Plymouth statup/shutdown progress fade tuned
+
+-------------------------------------------------------------------
+Thu Feb 14 09:21:15 UTC 2013 - coolo@suse.com
+
+- one more update for the kdm colors
+
+-------------------------------------------------------------------
+Wed Feb 13 18:45:49 UTC 2013 - aj@suse.com
+
+- Fix summary.
+
+-------------------------------------------------------------------
+Mon Feb 13 16:43:14 UTC 2013 - rbrownccb@opensuse.org
+
+- (KDM) added support for domain logins
+- (KDM) changed background color of userlist box
+
+-------------------------------------------------------------------
+Mon Feb 11 13:47:04 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Exclude upstream body-background
+
+-------------------------------------------------------------------
+Wed Feb 06 23:44:55 UTC 2013 - rbrownccb@opensuse.org
+
+- Final 12.3 kdelibs branding
+- Tuning to kdm branding
+
+-------------------------------------------------------------------
+Wed Feb 06 10:44:19 UTC 2013 - rbrownccb@opensuse.org
+
+- Optimised plymouth theme file sizes
+- gfxboot now using fifthleg font
+- YaST2 installer theme using 12.3 green
+
+-------------------------------------------------------------------
+Tue Feb 05 22:03:12 UTC 2013 - rbrownccb@opensuse.org
+
+- Cleaner plymouth boot theme with fade down on shutdown
+
+-------------------------------------------------------------------
+Tue Feb 05 13:59:11 UTC 2013 - rbrownccb@opensuse.org
+
+- Improved Grub 2 Theme (ilmehtar & anditosan)
+- Improved xfce splash (victorhck)
+- Updated gfxboot backgrounds (tux93)
+
+-------------------------------------------------------------------
+Wed Jan 30 21:04:11 UTC 2013 - rbrownccb@opensuse.org
+
+- Grub 2 Theme based on 12.3 grow design
+- gfxboot art based on 12.3 grow design
+- YaST installer art based on 12.3 grow design
+- xfce splash based on 12.3 grow design
+- gimp splash based on 12.3 grow design
+
+-------------------------------------------------------------------
+Tue Jan 22 00:04:13 UTC 2013 - rbrownccb@opensuse.org
+
+- Fix Plymouth 4:3 aspect ratio so it shows vine design
+
+-------------------------------------------------------------------
+Sat Jan 19 15:30:11 UTC 2013 - rbrownccb@opensuse.org
+
+- Plymouth now supports several aspect ratios
+
+-------------------------------------------------------------------
+Sat Jan 19 13:26:12 UTC 2013 - rbrownccb@opensuse.org
+
+- Update of plymouth theme for 12.3 based on grow design
+- Updated 12.3 KDM theme
+
+-------------------------------------------------------------------
+Thu Jan 10 09:41:57 UTC 2013 - coolo@suse.com
+
+- fix product version in gfxboot welcome screen
+
+-------------------------------------------------------------------
+Thu Jan 10 08:40:55 UTC 2013 - coolo@suse.com
+
+- update from git with kdm and kpslashx updates
+- remove more bootsplash
+
+-------------------------------------------------------------------
+Wed Jan  9 09:25:55 UTC 2013 - dmitry_r@opensuse.org
+
+- Restore gfxboot welcome text
+
+-------------------------------------------------------------------
+Sat Dec 22 20:27:11 UTC 2012 - rbrownccb@opensuse.org
+
+- Initial 12.3 branding based on the 'grow' design
+
+-------------------------------------------------------------------
+Thu Nov 22 09:36:13 UTC 2012 - coolo@suse.com
+
+- bump version to 12.3 and get rid of bootsplash theming
+
+-------------------------------------------------------------------
+Sat Nov 10 08:48:30 UTC 2012 - arvidjaar@gmail.com
+
+- remove reference to grub2-efi-mkconfig (bnc#782891)
+
+-------------------------------------------------------------------
+Fri Sep 28 09:20:45 UTC 2012 - coolo@suse.com
+
+- add a /usr/share/libyui/theme symlink as long as yast looks there
+  for themeing
+
+-------------------------------------------------------------------
+Sat Aug  4 07:25:56 UTC 2012 - dmitry_r@opensuse.org
+
+- Add new welcome text for install splash
+
+-------------------------------------------------------------------
+Fri Jul 27 09:36:42 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to the grub2 theme to include also the theming for 
+  the terminal windows (bnc#770107)
+
+-------------------------------------------------------------------
+Thu Jul 26 13:54:58 UTC 2012 - tittiatcoke@gmail.com
+
+- Add the openSUSE branding for the Plymouth bootsplash
+
+-------------------------------------------------------------------
+Mon Jul 16 14:52:20 CEST 2012 - snwint@suse.de
+
+- remove /boot/grub2/backgrounds
+
+-------------------------------------------------------------------
+Thu Jul 12 08:50:56 UTC 2012 - coolo@suse.com
+
+- let grub2-branding supplement grub2
+
+-------------------------------------------------------------------
+Wed Jul  4 08:35:25 UTC 2012 - mchang@suse.com
+
+- Fix grub2 config not update on UEFI system. (bnc#770031)
+
+-------------------------------------------------------------------
+Thu Jun 28 09:05:41 UTC 2012 - dmueller@suse.com
+
+- make grub2 branding optional (for arm)
+
+-------------------------------------------------------------------
+Fri Jun 22 16:10:52 CEST 2012 - snwint@suse.de
+
+- reworked grub2 branding packages and named them grub2-branding-XXX
+  (changes are in git tree)
+
+-------------------------------------------------------------------
+Sun Jun 17 06:07:23 UTC 2012 - bruno@ioda-net.ch
+
+- Fixed sources for grub2 (now in gitorious -art repo)
+- Removed patch for grub2 
+
+-------------------------------------------------------------------
+Fri Jun  8 10:30:42 UTC 2012 - mchang@suse.com
+
+- Add grub2-gfxconsole branding package
+
+-------------------------------------------------------------------
+Mon May 28 19:01:35 UTC 2012 - bruno@ioda-net.ch
+
+- Fixes for bnc#763262 kdm theme, panel is again png due to 
+  QSvgRender not able to handle full svg. 
+  Default themes is now called openSUSE in place of SUSE (also 
+  fixed in sysconfig/displaymanager
+
+- Fixes for ksplash-qml-openSUSE bnc#763266 : openSUSE logo now
+  stick to size in kdm for smooth transition. KDE animation position
+  at better place.
+
+-------------------------------------------------------------------
+Mon May 21 20:28:36 UTC 2012 - bruno@ioda-net.ch
+
+- Fixes for bnc #763266 about ksplash-qml-openSUSE (bad name & 
+  missing file main.qml
+
+- Fixes for bnc #763262 size of boxes and logo, background for
+  users list. 
+
+-------------------------------------------------------------------
+Sat May  5 15:56:42 UTC 2012 - bruno@ioda-net.ch
+
+- Add kdm branding for 12.2 
+
+-------------------------------------------------------------------
+Tue Apr 24 11:55:05 UTC 2012 - aj@suse.de
+
+- Add extra license for xfce subpackage (bnc#758793).
+
+-------------------------------------------------------------------
+Sun Apr 22 16:33:34 UTC 2012 - bruno@ioda-net.ch
+
+- Fully updated design for 12.2
+- ksplash-qml-suse added 
+
+-------------------------------------------------------------------
+Tue Apr 10 11:55:42 UTC 2012 - fisiu@opensuse.org
+
+- Update summaries in subpackages.
+
+-------------------------------------------------------------------
+Thu Feb  9 17:46:07 CET 2012 - tgoettlicher@suse.de
+
+- fix for bnc #742777: yast theme without background image
+
+-------------------------------------------------------------------
+Wed Feb  1 17:12:59 UTC 2012 - RBrownCCB@opensuse.org
+
+- initial update to 12.2 design
+
+-------------------------------------------------------------------
+Tue Nov 22 09:29:06 UTC 2011 - coolo@suse.com
+
+- bumb version
+
+-------------------------------------------------------------------
+Fri Nov 11 14:32:05 UTC 2011 - tgoettlicher@suse.com
+
+- fixed style of combo boxes (bnc# 725952) 
+
+-------------------------------------------------------------------
+Thu Oct 27 09:55:20 UTC 2011 - coolo@suse.com
+
+- fix one colour code for yast
+
+-------------------------------------------------------------------
+Wed Oct 19 15:39:28 UTC 2011 - tgoettlicher@suse.com
+
+- fixed colors of scollbars in installation
+
+-------------------------------------------------------------------
+Sun Oct 16 10:53:55 UTC 2011 - coolo@suse.com
+
+- readd gimp as buildreqiures
+
+-------------------------------------------------------------------
+Thu Oct 13 08:29:25 UTC 2011 - coolo@suse.com
+
+- let kdm-branding provide the same version as branding-upstream
+
+-------------------------------------------------------------------
+Wed Oct 12 15:29:20 UTC 2011 - vuntz@opensuse.org
+
+- Change gimp-branding-openSUSE packaging to not depend on the gimp
+  version, so we don't have to rebuild the package when gimp
+  changes.
+
+-------------------------------------------------------------------
+Mon Oct 10 13:13:40 UTC 2011 - coolo@suse.com
+
+- enable kdelibs diff now
+- add gimp branding
+
+-------------------------------------------------------------------
+Fri Oct  7 18:26:35 UTC 2011 - coolo@suse.com
+
+- add a COPYING for the xfce splash screen
+
+-------------------------------------------------------------------
+Fri Oct  7 11:15:36 UTC 2011 - coolo@suse.com
+
+- add branding for xfce4 splash screen
+
+-------------------------------------------------------------------
+Thu Oct  6 11:12:51 UTC 2011 - coolo@suse.com
+
+- prepare to patch kdelibs4 branding from upstream
+
+-------------------------------------------------------------------
+Thu Oct  6 10:07:03 UTC 2011 - vuntz@opensuse.org
+
+- Keep the touch required by update-alternatives here, instead of
+  moving it to the Makefile.
+- Move check logic to the Makefile.
+
+-------------------------------------------------------------------
+Thu Oct  6 09:59:51 UTC 2011 - coolo@suse.com
+
+- move install logic in the Makefile
+
+-------------------------------------------------------------------
+Wed Oct  5 08:59:37 UTC 2011 - vuntz@opensuse.org
+
+- Improve GNOME-related checks in %check so that they cover the
+  dynamic wallpaper and work with the new layout for static
+  wallpaper.
+
+-------------------------------------------------------------------
+Wed Oct  5 08:49:08 UTC 2011 - coolo@suse.com
+
+- Update openSUSE.tar.gz from git:
+  + More aspect ratios supported
+  + Updated dynamic GNOME wallpapers
+
+-------------------------------------------------------------------
+Tue Oct  4 15:03:37 UTC 2011 - vuntz@opensuse.org
+
+- Update openSUSE.tar.gz from git:
+  + Artwork has been updated.
+  + Progress bar in bootsplash got removed since systemd doesn't
+    support it.
+  + Now includes the files needed for GNOME wallpapers.
+- Create dynamic-wallpaper-branding-openSUSE subpackage:
+  + This contains the dynamic wallpaper as used in GNOME.
+  + This replaces (with appropriate Provides/Obsoletes) the
+    previous openSUSE-dynamic-wallpaper package we had.
+  + Install the files from the tarball needed for the dynamic
+    wallpaper.
+  + Use update-alternatives in %post/%postun of this subpackage to
+    override the default wallpaper in GNOME: we prefer the dynamic
+    version over the static one.
+- Drop wallpaper-branding-openSUSE.xml.in and
+  wallpaper-openSUSE-default-static.xml sources: they're now
+  shipped openSUSE.tar.gz, so we don't have to create them.
+- Move various consistency checks from %install to %check.
+
+-------------------------------------------------------------------
+Tue Oct  4 12:58:20 UTC 2011 - coolo@suse.com
+
+- provide susegreeter-branding
+
+-------------------------------------------------------------------
+Wed Sep 28 13:49:55 UTC 2011 - coolo@suse.com
+
+- use jpg as kdm background
+
+-------------------------------------------------------------------
+Wed Sep 28 13:16:24 UTC 2011 - coolo@suse.com
+
+- add kdm theme from Marcus
+
+-------------------------------------------------------------------
+Wed Sep 28 09:50:10 UTC 2011 - coolo@suse.com
+
+- adopt ksplashx to new logo position
+
+-------------------------------------------------------------------
+Tue Sep 27 20:33:57 UTC 2011 - coolo@suse.com
+
+- move ksplashx and kde wallpaper here too
+
+-------------------------------------------------------------------
+Tue Sep 27 14:49:43 UTC 2011 - coolo@suse.com
+
+- update bootsplash graphics
+
+-------------------------------------------------------------------
+Tue Sep 27 11:31:16 UTC 2011 - coolo@suse.com
+
+- fix %ifarch logic - and update to azul previews
+
+-------------------------------------------------------------------
+Mon Sep 26 12:32:01 UTC 2011 - vuntz@opensuse.org
+
+- Add missing update-alternatives Requires(post)/Requires(postun)
+  to wallpaper-branding-openSUSE, since this is now using
+  update-alternatives.
+
+-------------------------------------------------------------------
+Fri Sep 23 15:05:20 CEST 2011 - meissner@suse.de
+
+- gfxboot is only on x86_64 and %ix86
+
+-------------------------------------------------------------------
+Thu Sep 22 16:00:29 UTC 2011 - vuntz@opensuse.org
+
+- Import logic for the XML file used by GNOME to describe the
+  default wallpaper from desktop-data-openSUSE:
+  + Add wallpaper-branding-openSUSE.xml.in and
+    wallpaper-openSUSE-default-static.xml source files.
+  + Check in %install that wallpaper-openSUSE-default-static.xml
+    lists the right default wallpapers.
+  + Use update-alternatives in %post/%postun of
+    wallpaper-branding-openSUSE for the openSUSE-default.xml file.
+- Remove unneeded GraphicsMagick, fam, inkscape and php5
+  BuildRequires.
+- Add update-desktop-files and call %suse_update_desktop_file on
+  the .desktop files describing the wallpapers.
+
+-------------------------------------------------------------------
+Thu Sep 22 15:05:38 UTC 2011 - coolo@suse.com
+
+- fix backward compat
+
+-------------------------------------------------------------------
+Thu Sep 22 14:05:31 UTC 2011 - coolo@suse.com
+
+- move yast2-qt branding here
+
+-------------------------------------------------------------------
+Thu Sep 22 13:54:40 UTC 2011 - coolo@suse.com
+
+- integrate wallpaper logic here too
+
+-------------------------------------------------------------------
+Thu Sep 22 13:05:13 UTC 2011 - coolo@suse.com
+
+- move details logic into art's Makefile
+
+-------------------------------------------------------------------
+Wed Sep 21 14:40:43 UTC 2011 - coolo@suse.com
+
+- add gfxboot branding here
+
+-------------------------------------------------------------------
+Wed Sep 21 13:41:28 UTC 2011 - coolo@suse.com
+
+- add bootsplash branding here
+
+-------------------------------------------------------------------
+Sat Sep 10 12:37:01 UTC 2011 - coolo@suse.com
+
+- bump version
+
+-------------------------------------------------------------------
+Wed Oct  6 10:59:19 UTC 2010 - aj@suse.de
+
+- increase version number.
+
+-------------------------------------------------------------------
+Wed Jun 23 08:19:47 UTC 2010 - coolo@novell.com
+
+- increase version number
+
+-------------------------------------------------------------------
+Mon Feb  9 16:01:10 CET 2009 - coolo@suse.de
+
+- increase version number
+
+-------------------------------------------------------------------
+Sat Nov  1 22:04:19 CET 2008 - coolo@suse.de
+
+- increase version number
+
+-------------------------------------------------------------------
+Mon Oct  6 15:49:56 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Wed Apr  9 14:31:28 CEST 2008 - sbrabec@suse.cz
+
+- Added COPYING file (bnc#373602).
+
+-------------------------------------------------------------------
+Wed Mar 19 15:03:32 CET 2008 - sbrabec@suse.cz
+
+- New SuSE package (fate#301464, bnc#372275).
+

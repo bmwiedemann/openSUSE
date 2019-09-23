@@ -1,0 +1,473 @@
+-------------------------------------------------------------------
+Fri May 10 09:28:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Fri Jun 15 04:09:24 UTC 2018 - fezhang@suse.com
+
+- New version 0.23.12
+  * Fix compile error when PKCS#11 GNU calling convention enabled
+- Changelog from version 0.23.11
+  * trust: Add extractor for edk2/cacerts.bin
+  * modules: Add option to control module visibility from proxy
+  * trust: Prevent trust module being loaded by proxy module
+  * library: Use dedicated locale object for printing error
+  * Treat CKR_CRYPTOKI_ALREADY_INITIALIZED correctly
+  * Improve const correctness for P11KitUri
+  * PKCS#11 URI scheme comparison is now case insensitive
+- Drop p11-kit-biarch.patch: Obsolete since 0.23.10
+
+-------------------------------------------------------------------
+Tue Mar 27 08:33:43 UTC 2018 - lnussel@suse.de
+
+- New version 0.23.10
+  * New p11-kit server command
+  * The trust policy module now recognizes CKA_NSS_MOZILLA_CA_POLICY attribute
+  * New trust dump command
+  * New envvar P11_KIT_NO_USER_CONFIG to stop looking at user configurations
+  * trust: Respect anyExtendedKeyUsage in CA certificates
+  * Support x-init-reserved argument of C_Initialize() in remote modules
+  * install private executables in libexecdir, obsoletes p11-kit-biarch.patch
+- new server subpackage
+- change keyring to new maintainer Daiki Ueno
+
+-------------------------------------------------------------------
+Tue Mar 20 13:26:02 CET 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Tue Nov 22 14:57:50 CET 2016 - sbrabec@suse.com
+
+- 32-bit compatibility fixes:
+  * Add PKCS11 module to p11-kit-32bit (bsc#996047#c39)
+  * Add p11-kit-nss-trust-32bit NSS module
+  * Fix potential bi-arch issue with private binaries
+    (fdo#98817, p11-kit-biarch.patch)
+
+-------------------------------------------------------------------
+Mon Feb  8 21:25:45 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.23.2
+ * Fix forking issues with libffi
+ * Fix various crashes in corner cases
+ * Updated translations
+ * Build fixes
+- Make building more verbose
+- Enable tests
+- Small spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Mar  8 18:56:55 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.23.1 (stable)
+  * Use new PKCS#11 URI draft fields for URIs [fdo#86474 fdo#87582]
+  * Add pem-directory-hash extract format
+  * Build fixes
+- Remove 0001-trust-allow-to-also-add-openssl-style-hashes-to-pem-d.diff;
+  fixed on upstream release
+- Remove autoconf, automake and libtool require; unneeded dependencies
+- Add gtk-doc require; needed to build html documentation
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Mon Oct 13 16:09:09 UTC 2014 - lnussel@suse.de
+
+- remove patches:
+ * trust-Print-label-of-certificate-when-complaining-.patch
+ * trust-Dont-use-invalid-public-keys-for-looking-up-.patch
+
+- new version 0.20.7 (stable)
+ * New public pkcs11x.h header containing extensions [fdo#83495]
+ * Export necessary defines to lookup attached extensions [fdo#83495]
+ * Build fixes
+
+- new version 0.20.6 (stable)
+ * Make the p11-kit-proxy.so module respect critical = no [fdo#83651]
+ * Build fix for FreeBSD [fdo#75674]
+
+- new version 0.20.5 (stable)
+ * Don't use invalid keys for looking up stapled extensions [fdo#82328]
+ * Better error messages when invalid certificate extensions
+ * Fix parsing of some odd OpenSSL TRUSTED CERTIFICATE files
+ * Fix some leaks, and memory issues
+ * Silence some clang scanner warnings
+
+- new version 0.20.4 (stable)
+ * Don't complain about C_Finalize after a fork
+ * Fix typo
+
+-------------------------------------------------------------------
+Fri Aug 29 06:47:50 UTC 2014 - lnussel@suse.de
+
+- new version 0.20.3
+  * Fix problems reinitializing managed modules after fork
+  * Fix bad bookeeping when fail initializing one of the modules
+  * Fix case where module would be unloaded while in use [#74919]
+  * Remove assertions when module used before initialized [#74919]
+  * Fix handling of mmap failure and mapping empty files [#74773]
+  * Stable p11_kit_be_quiet() and p11_kit_be_loud() functions
+  * Require automake 1.12 or later
+  * Build fixes for Windows [#76594 #74149]
+- apply patches to avoid errors from certificates with invalid public key
+  (fdo#82328, bnc#890908,
+   trust-Dont-use-invalid-public-keys-for-looking-up-.patch,
+   trust-Print-label-of-certificate-when-complaining-.patch)
+
+-------------------------------------------------------------------
+Mon May 19 07:04:38 UTC 2014 - lnussel@suse.de
+
+- New version 0.20.2
+  * Fix bug where blacklist didn't affect extracted ca-anchors if the anchor
+    and blacklist were not in the same trust path (regression) [fdo#73558]
+  * Check for race in BasicConstraints stapled extension [fdo#69314]
+  * Build fixes and cleanup
+
+-------------------------------------------------------------------
+Tue Feb 11 12:53:06 UTC 2014 - meissner@suse.com
+
+- added .sig file. trying to locate source of the keyring.
+
+-------------------------------------------------------------------
+Fri Dec  6 09:31:32 UTC 2013 - lnussel@suse.de
+
+- trust: allow to also add openssl style hashes to pem-directory
+  0001-trust-allow-to-also-add-openssl-style-hashes-to-pem-d.diff
+
+-------------------------------------------------------------------
+Tue Sep 10 09:02:33 UTC 2013 - lnussel@suse.de
+
+- upgrade to 0.20.1 which is 0.19 declared stable
+ * Extract compat trust data after we've changes
+ * Skip compat extraction if running as non-root
+ * Better failure messages when removing anchors
+
+-------------------------------------------------------------------
+Fri Aug 30 12:33:32 UTC 2013 - lnussel@suse.de
+
+- new version 0.19.4
+ * 'trust anchor' now adds/removes certificate anchors
+ * 'trust list' lists trust policy stuff
+ * 'p11-kit extract' is now 'trust extract'
+ * 'p11-kit extract-trust' is now 'trust extract-compat'
+ * Workarounds for working on broken zfsonlinux.org [#68525]
+ * Add --with-module-config parameter to the configure script [#68122]
+ * Add support for removing stored PKCS#11 objects in trust module
+
+-------------------------------------------------------------------
+Thu Jul 25 09:06:51 UTC 2013 - lnussel@suse.de
+
+- new version 0.19.3
+ * Fix up problems with automake testing
+ * Fix a bunch of memory leaks in newly refactored code
+ * Don't use _GNU_SOURCE and the unportability it brings
+ * Add basic 'trust anchor' command to store a new anchor
+ * Support for writing out trust token objects
+ * Port to use CKA_PUBLIC_KEY_INFO and updated trust store spec
+ * Add option to use freebl for hashing
+ * Implement reloading of token data
+ * Fix warnings and possible minor bugs higlighted by code scanners
+ * Don't load configs in home directories when running setuid or setgid
+ * Support treating ~/.config as $XDG_CONFIG_HOME
+ * Use $XDG_DATA_HOME/pkcs11 as default user config directory
+ * Use $TMPDIR instead of $TEMP while testing
+ * Open files and fds with O_CLOEXEC
+ * Abort initialization if a critical module fails to load
+ * Don't use thread-unsafe functions: strerror, getpwuid
+ * Fix p11_kit_space_strlen() result when empty string
+ * Refactoring of where various components live
+
+-------------------------------------------------------------------
+Fri Jul  5 08:09:46 UTC 2013 - lnussel@suse.de
+
+- fix 32bit provides of libnssckbi.so
+- repace p11-kit-extract-trust with update-ca-certificates
+
+-------------------------------------------------------------------
+Fri Jun 28 09:30:03 UTC 2013 - lnussel@suse.de
+
+- provide libnssckbi.so to replace mozilla-nss-certs
+
+-------------------------------------------------------------------
+Mon Jun 24 13:08:21 UTC 2013 - lnussel@suse.de
+
+- add p11-kit-nss-trust subpackage that serves as drop-in
+  replacement for mozilla-nss-certs
+
+-------------------------------------------------------------------
+Wed Jun 19 09:24:45 UTC 2013 - lnussel@suse.de
+
+- use /etc/pki/trust and /usr/share/pki/trust as system CA
+  certificate store
+
+-------------------------------------------------------------------
+Mon May 27 14:40:57 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.19.1:
+  + Refactor API to be able to handle managed modules.
+  + Deprecate much of old p11-kit API.
+  + Implement concept of managed modules.
+  + Make C_CloseAllSessions function work for multiple callers.
+  + New dependency on libffi.
+  + Fix possible threading problems reported by hellgrind.
+  + Add log-calls option.
+  + Mark p11_kit_message() as a stable function.
+  + Use our own unit testing framework.
+- Add pkgconfig(libffi) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Tue May 14 18:27:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.18.2:
+  + Build fixes (fdo#64378)
+
+-------------------------------------------------------------------
+Mon May 13 21:13:20 UTC 2013 - dimstar@opensuse.org
+
+- Also provide p11-kit-32bit (in fact, the pkcs#11 modules)
+  (bnc#819246).
+
+-------------------------------------------------------------------
+Mon Apr 15 18:46:10 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.18.1:
+  + Put the external tools in $libdir/p11-kit.
+  + Documentation build fixes.
+
+-------------------------------------------------------------------
+Thu Apr  4 13:34:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.18.0:
+  + Fix use of trust module with gcr and empathy (fdo#62896).
+  + Further tweaks to trust module date parsing.
+  + Fix unaligned memory reads (fdo#62819).
+  + Win32 fixes (fdo#63062, fdo#63046).
+  + Debug and logging tweaks (fdo#62874).
+  + Other build fixes.
+
+-------------------------------------------------------------------
+Thu Mar 28 21:42:55 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.17.5:
+  + Don't try to guess at overflowing time values on 32-bit
+    systems (fdo#62825).
+  + Test fixes (fdo#927394).
+
+-------------------------------------------------------------------
+Thu Mar 21 08:10:37 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.17.4:
+  + Check for duplicate certificates in a token, warn and discard
+    (fdo#62548).
+  + Implement a proper index so we have decent load performance.
+
+-------------------------------------------------------------------
+Wed Mar 20 19:09:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.17.3:
+  + Use descriptive labels for the trust module tokens (fdo#62534).
+  + Remove the temporary built in distrust objects.
+  + Make extracted output directories and files read-only
+    (fdo#61898).
+  + Don't export unneccessary ABI.
+  + Build fixes (fdo#62479).
+
+-------------------------------------------------------------------
+Tue Mar 19 20:39:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.17.2:
+  + Fix build on 32-bit linux.
+  + Fix several crashers.
+- Changes from version 0.17.1:
+  + Support a p11-kit specific PKCS#11 attribute persistance format
+    (fdo#62156).
+  + Use the SHA1 hash of SPKI as the CKA_ID in the trust module by
+    default (fdo#62329).
+  + Refactor a trust builder which builds objects out of parsed
+    data (fdo#62329).
+  + Combine trust policy when extracting certificates (fdo#61497).
+  + The extract --comment option adds comments to PEM bundles
+    (fdo#62029).
+  + A new 'priority' config option for ordering modules
+    (fdo#61978).
+  + Make each configured path its own trust module token
+    (fdo#61499).
+  + Use --with-trust-paths to configure trust module (fdo#62327).
+  + Fix bug decoding some PEM files.
+  + Better debug output for trust module lookups.
+  + Work around bug in NSS when doing serial number lookups.
+  + Work around broken strndup() function in firefox.
+  + Fix the nickname for the distrusted attribute.
+  + Build fixes.
+- Add ca-certificates BuildRequires: needed to find the location of
+  the root certificates.
+
+-------------------------------------------------------------------
+Thu Mar 14 12:26:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.4:
+  + Display per command help again (fdo#62153).
+  + Don't always print tools debug output (fdo#62152).
+- Changes from version 0.16.3:
+  + When iterating don't skip tokens without the
+    CKF_TOKEN_INITIALIZED flag.
+  + Hardcode some distrust records for NSS temporarily.
+  + Parse global options better in the p11-kit command.
+  + Better debugging.
+- Changes from version 0.16.2:
+  + Fix regression in 'p11-kit extract --purpose' option
+    (fdo#62009)
+  + Documentation updates
+  + Build fixes (fdo#62001).
+- Changes from version 0.16.1:
+  + Don't break when cA field of BasicConstraints is missing
+    (fdo#61975).
+  + Documentation fixes and updates.
+  + p11-kit extract-trust is a placeholder script now.
+
+-------------------------------------------------------------------
+Tue Mar  5 13:36:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.0:
+  + Update the pkcs11.h header for new mechanisms
+  + Fix build and tests on mingw64 (ie: win32)
+  + Relicense LGPL code to BSD license
+  + Documentation tweaks
+  + Bugs fixed: fdo#61739, fdo#60894, fdo#61740, fdo#60792
+  + Updated translations.
+- Changes from version 0.15.2:
+  + Better define the libtasn1 dependency.
+  + Crasher and bug fixes.
+  + Build fixes.
+  + Updated translations.
+- Changes from version 0.15.1:
+  + Fix some memory leaks.
+  + Add a location for packages to drop module configs.
+  + Documentation updates and fixes.
+  + Add command line tool manual page.
+  + Remove unused err() function and friends.
+  + Move more code into common/ directory and refactor.
+  + Add a system trust policy module.
+  + Refactor how the p11-kit command line tool works.
+  + Add p11-kit extract and extract-trust commands.
+  + Don't complain if we cannot access ~/.pkcs11/pkcs11.conf.
+  + Refuse to load the p11-kit-proxy.so as a registered module.
+  + Don't fail initialization if last initialized module fails.
+
+-------------------------------------------------------------------
+Fri Sep  7 11:04:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14:
+  + Change default for user-config to merge
+  + Always URI-encode the 'id' attribute in PKCS#11 URIs
+  + Expect a .module extension on module configs
+  + Windows compatibility fixes
+  + Testing fixes
+  + Build fixes
+
+-------------------------------------------------------------------
+Mon Jul 23 06:26:02 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.13:
+  + Don't allow reading of PIN files larger than 4096 bytes
+  + If a module is not marked as critical then ignore init failure
+  + Use preconditions to check for input problems and out of memory
+  + Add enable-in and disable-in options to module config
+  + Fix the flags in pin.h
+  + Use gcc extensions to check varargs during compile
+  + Fix crasher when a duplicate module is present
+  + Fix broken hashmap behavior
+  + Testing fixes
+  + Win32 build fixes
+  + 'p11-kit -h' now works
+  + Documentation fixes
+
+-------------------------------------------------------------------
+Fri Mar  9 19:37:44 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.12:
+  + Build fix.
+
+-------------------------------------------------------------------
+Fri Feb 10 08:05:27 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11:
+  + Remove automatic reinitialization of PKCS#11 after fork
+
+-------------------------------------------------------------------
+Wed Jan  4 09:08:59 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.10:
+  + Build fixes, for windows, gcc 4.6.1.
+
+-------------------------------------------------------------------
+Tue Nov 15 10:18:49 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.9:
+  + p11-kit can't be used as a static library.
+  + Fix problems crashing when freeing TLS on windows.
+  + Add debug output to windows init and uninit of library.
+  +.Build fixes, especially for windows
+
+-------------------------------------------------------------------
+Thu Oct 27 21:53:33 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.8:
+  + Rename non-static functions to have a _p11_xxx prefix
+  + No concurrent calling of C_Initialize and C_Finalize
+  + Print more information in 'p11-kit -l'
+  + Initial port to win32
+  + Build and testing fixes.
+
+-------------------------------------------------------------------
+Tue Sep 27 19:24:59 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.7:
+  + Expand p11-kit config variables correctly in various build
+    scenarios
+  + Add test tool to print out error messages
+  + Build fix on FreeBSD
+
+-------------------------------------------------------------------
+Thu Sep 15 05:02:07 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6:
+  + Add concept of a default module directory from which modules
+    with relative paths are loaded.
+  + Renamed pkg-config variables to make it clearer what's what.
+
+-------------------------------------------------------------------
+Fri Sep  2 08:20:47 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.5:
+  + Fix crasher in p11_kit_registered_modules()
+  + Add 'critical' setting for modules, which defaults to 'no'
+  + Fix initialization issues in the proxy module
+
+-------------------------------------------------------------------
+Fri Aug 19 19:37:44 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.4:
+  + Fix endless loop if module forks during initialization
+  + Update PKCS#11 URI code for new draft of spec
+  + Don't fail when duplicate modules are configured
+  + Better debug output
+  + Add example configuration documentation
+  + Support whitespace in PKCS#11 URIs
+- Move the p11-kit.conf.example to the doc folder.
+
+-------------------------------------------------------------------
+Sat Jul 30 15:04:36 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.3:
+  + Rewrite hash table, and simplify licensing.
+  + Correct paths for p11-kit config files.
+  + Many build fixes and tweaks.
+- Remove Apache-2 part from License tag, as the code was rewritten.
+
+-------------------------------------------------------------------
+Mon Jul 25 15:35:57 CEST 2011 - vuntz@opensuse.org
+
+- Initial package (version 0.2).
+

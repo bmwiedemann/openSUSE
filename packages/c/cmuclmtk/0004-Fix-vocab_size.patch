@@ -1,0 +1,39 @@
+--- src/liblmest/load_lm.c
++++ src/liblmest/load_lm.c
+@@ -84,6 +84,7 @@
+ 	     char *lm_filename) {
+ 
+   int i;
++  wordid_t vocab_size;
+   ng->disc_meth=NULL;
+   ng->vocab_size = 0;
+   ng->bin_fp = rr_iopen(lm_filename);
+@@ -98,7 +99,8 @@
+   /* Scalar parameters */
+ 
+   rr_fread((char*)&ng->n,sizeof(unsigned short),1,ng->bin_fp,"n",0);
+-  rr_fread((char*)&ng->vocab_size,sizeof(wordid_t),1,ng->bin_fp,"vocab_size",0);
++  rr_fread((char*)&vocab_size,sizeof(wordid_t),1,ng->bin_fp,"vocab_size",0);
++  ng->vocab_size = (vocab_sz_t) vocab_size;
+   rr_fread((char*)&ng->no_of_ccs,sizeof(unsigned short),1,ng->bin_fp,"no_of_ccs",0);
+   rr_fread((char*)&ng->vocab_type,sizeof(unsigned short),1,ng->bin_fp,"vocab_type",0);
+ 
+--- src/liblmest/write_lms.c
++++ src/liblmest/write_lms.c
+@@ -432,6 +432,7 @@
+   int l_chunk;
+   int from_rec;
+   int i;
++  wordid_t vocab_size = (wordid_t)ng->vocab_size;
+ 
+   pc_message(verbosity,1,"Binary %d-gram language model will be written to %s\n",ng->n,ng->bin_filename);
+   
+@@ -442,7 +443,7 @@
+   rr_fwrite((char*)&ng->version,sizeof(int),1,ng->bin_fp,"version");
+   rr_fwrite((char*)&ng->n,sizeof(unsigned short),1,ng->bin_fp,"n");
+ 
+-  rr_fwrite((char*)&ng->vocab_size,sizeof(wordid_t),1,ng->bin_fp,"vocab_size");
++  rr_fwrite((char*)&vocab_size,sizeof(wordid_t),1,ng->bin_fp,"vocab_size");
+   rr_fwrite((char*)&ng->no_of_ccs,sizeof(unsigned short),1,ng->bin_fp,"no_of_ccs");
+   rr_fwrite((char*)&ng->vocab_type,sizeof(unsigned short),1,ng->bin_fp,"vocab_type");
+ 

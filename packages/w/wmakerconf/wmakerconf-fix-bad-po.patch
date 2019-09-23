@@ -1,0 +1,68 @@
+Index: po/tr.po
+===================================================================
+--- po/tr.po.orig
++++ po/tr.po
+@@ -1411,35 +1411,35 @@ msgstr "Yükleme öndizinlemesi verilmemiþ
+ msgid "Skip"
+ msgstr "Atla"
+ 
+-#: src/themebrowser.c:3274
+-#, c-format
+-msgid ""
+-"Can't unpack GNU zipped theme file\n"
+-"`%s'\n"
+-"to destiation file\n"
+-"`%s'\n"
+-"Please check `stderr' for more details."
+-msgstr ""
+-"GNU zipiyle sýkýþtýrýlmýþ dosyayý\n"
+-"hedef dosyasý olan\n"
+-"`%s''ye\n"
+-"açamadým\n"
+-"Hata kanalýna bakýp daha fazla bilgi edinebilirsin ."
++##: src/themebrowser.c:3274
++##, c-format
++#msgid ""
++#"Can't unpack GNU zipped theme file\n"
++#"`%s'\n"
++#"to destiation file\n"
++#"`%s'\n"
++#"Please check `stderr' for more details."
++#msgstr ""
++#"GNU zipiyle sýkýþtýrýlmýþ dosyayý\n"
++#"hedef dosyasý olan\n"
++#"`%s''ye\n"
++#"açamadým\n"
++#"Hata kanalýna bakýp daha fazla bilgi edinebilirsin ."
+ 
+-#: src/themebrowser.c:3304
+-#, c-format
+-msgid ""
+-"Can't unpack BZIP2 compressed theme file\n"
+-"`%s'\n"
+-"to destiation file\n"
+-"`%s'\n"
+-"Please check `stderr' for more details."
+-msgstr ""
+-"BZIP2'yle sýkýþtýrýlmýþ dosyayý\n"
+-"hedef dosyasý olan\n"
+-"`%s''ye\n"
+-"açamadým\n"
+-"Hata kanalýna bakýp daha fazla bilgi edinebilirsin ."
++##: src/themebrowser.c:3304
++##, c-format
++#msgid ""
++#"Can't unpack BZIP2 compressed theme file\n"
++#"`%s'\n"
++#"to destiation file\n"
++#"`%s'\n"
++#"Please check `stderr' for more details."
++#msgstr ""
++#"BZIP2'yle sýkýþtýrýlmýþ dosyayý\n"
++#"hedef dosyasý olan\n"
++#"`%s''ye\n"
++#"açamadým\n"
++#"Hata kanalýna bakýp daha fazla bilgi edinebilirsin ."
+ 
+ #: src/themebrowser.c:3337
+ #, c-format

@@ -1,0 +1,244 @@
+commit 621654abd1ca34a407d8033991659c45d42c3a4e
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Thu Aug 9 07:41:24 2018 +0200
+
+    openucx s390x support
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git config/m4/ucm.m4 config/m4/ucm.m4
+index 541bdb1322ce..4f89f6e02860 100644
+--- config/m4/ucm.m4
++++ config/m4/ucm.m4
+@@ -86,9 +86,19 @@ AC_CHECK_DECLS([SYS_ipc],
+                [ipc_hooks_happy=no],
+                [#include <sys/syscall.h>])
+ 
++SAVE_CFLAGS=$CFLAGS
++CFLAGS="$CLAGS -Isrc/"
++bistro_arch_happy=yes
++AC_CHECK_DECLS([ucm_bistro_patch],
++               [],
++               [ipc_hooks_happy=no],
++               [#include <ucm/bistro/bistro.h>])
++CFLAGS=$SAVE_CFLAGS
++
+ AS_IF([test "x$mmap_hooks_happy" == "xyes"],
+       AS_IF([test "x$ipc_hooks_happy" == "xyes" -o "x$shm_hooks_happy" == "xyes"],
+-            [bistro_hooks_happy=yes]))
++	    AS_IF([test "x$bistro_arch_happy" == "xyes"],
++      	    [bistro_hooks_happy=yes])))
+ 
+ AS_IF([test "x$bistro_hooks_happy" == "xyes"],
+       [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
+diff --git src/ucm/Makefile.am src/ucm/Makefile.am
+index 74090c4f2440..e466c13395b7 100644
+--- src/ucm/Makefile.am
++++ src/ucm/Makefile.am
+@@ -40,7 +40,8 @@ noinst_HEADERS = \
+ 	bistro/bistro.h \
+ 	bistro/bistro_x86_64.h \
+ 	bistro/bistro_aarch64.h \
+-	bistro/bistro_ppc64.h
++	bistro/bistro_ppc64.h \
++	bistro/bistro_s390x.h
+ 
+ if HAVE_CUDA
+ noinst_HEADERS += \
+diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
+index 16e988700c35..b4c2762fb5b2 100644
+--- src/ucm/bistro/bistro.h
++++ src/ucm/bistro/bistro.h
+@@ -20,6 +20,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
+ #  include "bistro_aarch64.h"
+ #elif defined(__x86_64__)
+ #  include "bistro_x86_64.h"
++#elif defined(__s390x__)
++#  include "bistro_s390x.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucm/bistro/bistro_s390x.h src/ucm/bistro/bistro_s390x.h
+new file mode 100644
+index 000000000000..334c0474e8b6
+--- /dev/null
++++ src/ucm/bistro/bistro_s390x.h
+@@ -0,0 +1,13 @@
++#ifndef UCM_BISTRO_BISTRO_S390X_H_
++#define UCM_BISTRO_BISTRO_S390X_H_
++
++#include <stdint.h>
++
++#include <ucs/type/status.h>
++#include <ucs/sys/compiler_def.h>
++
++#define UCM_BISTRO_PROLOGUE
++#define UCM_BISTRO_EPILOGUE
++
++
++#endif
+diff --git src/ucm/mmap/install.c src/ucm/mmap/install.c
+index ebf22aaa0415..80ed26838837 100644
+--- src/ucm/mmap/install.c
++++ src/ucm/mmap/install.c
+@@ -173,7 +173,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
+                 status = ucm_reloc_modify(&entry->patch);
+             } else {
+                 ucs_assert(ucm_mmap_hook_mode() == UCM_MMAP_HOOK_BISTRO);
++#if UCM_BISTRO_HOOKS
+                 status = ucm_bistro_patch(entry->patch.symbol, entry->patch.value, NULL);
++#else
++				status = UCS_ERR_UNSUPPORTED;
++#endif
+             }
+             if (status != UCS_OK) {
+                 ucm_warn("failed to install %s hook for '%s'",
+diff --git src/ucs/Makefile.am src/ucs/Makefile.am
+index f82540e775a4..592d89c51109 100644
+--- src/ucs/Makefile.am
++++ src/ucs/Makefile.am
+@@ -57,6 +57,8 @@ noinst_HEADERS = \
+ 	arch/generic/cpu.h \
+ 	arch/ppc64/bitops.h \
+ 	arch/ppc64/cpu.h \
++	arch/s390x/bitops.h \
++	arch/s390x/cpu.h \
+ 	arch/x86_64/atomic.h \
+ 	arch/x86_64/bitops.h \
+ 	arch/x86_64/cpu.h \
+diff --git src/ucs/arch/atomic.h src/ucs/arch/atomic.h
+index 0caea9b1f3ba..d9afa780bbc5 100644
+--- src/ucs/arch/atomic.h
++++ src/ucs/arch/atomic.h
+@@ -15,6 +15,8 @@
+ #  include "generic/atomic.h"
+ #elif defined(__aarch64__)
+ #  include "generic/atomic.h"
++#elif defined(__s390x__)
++#  include "generic/atomic.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
+index 2049b7c71c8a..a4eceeea52e7 100644
+--- src/ucs/arch/bitops.h
++++ src/ucs/arch/bitops.h
+@@ -14,6 +14,8 @@
+ #  include "ppc64/bitops.h"
+ #elif defined(__aarch64__)
+ #  include "aarch64/bitops.h"
++#elif defined(__s390x__)
++#  include "s390x/bitops.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
+index 58a83825ee4a..a30456ba441d 100644
+--- src/ucs/arch/cpu.h
++++ src/ucs/arch/cpu.h
+@@ -59,6 +59,8 @@ typedef enum ucs_cpu_flag {
+ #  include "ppc64/cpu.h"
+ #elif defined(__aarch64__)
+ #  include "aarch64/cpu.h"
++#elif defined(__s390x__)
++#  include "s390x/cpu.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/s390x/bitops.h src/ucs/arch/s390x/bitops.h
+new file mode 100644
+index 000000000000..39ad125107e9
+--- /dev/null
++++ src/ucs/arch/s390x/bitops.h
+@@ -0,0 +1,32 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2001-2015.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++#ifndef UCS_S390X_BITOPS_H_
++#define UCS_S390X_BITOPS_H_
++
++#include <stdint.h>
++
++
++static inline unsigned __ucs_ilog2_u32(uint32_t n)
++{
++	if (!n)
++		return 0;
++	return 31 - __builtin_clz(n);
++}
++
++static inline unsigned __ucs_ilog2_u64(uint64_t n)
++{
++	if (!n)
++		return 0;
++	return 63 - __builtin_clz(n);
++}
++
++static inline unsigned ucs_ffs64(uint64_t n)
++{
++    return __ucs_ilog2_u64(n & -n);
++}
++
++#endif
+diff --git src/ucs/arch/s390x/cpu.h src/ucs/arch/s390x/cpu.h
+new file mode 100644
+index 000000000000..b8ab713d6e21
+--- /dev/null
++++ src/ucs/arch/s390x/cpu.h
+@@ -0,0 +1,53 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2001-2013.  ALL RIGHTS RESERVED.
++* Copyright (C) ARM Ltd. 2016-2017.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++
++#ifndef UCS_S390X_CPU_H_
++#define UCS_S390X_CPU_H_
++
++#include <ucs/sys/compiler.h>
++#include <ucs/arch/generic/cpu.h>
++#include <stdint.h>
++
++
++#define UCS_ARCH_CACHE_LINE_SIZE 256
++
++/* Assume the worst - weak memory ordering */
++#define ucs_memory_bus_fence()        asm volatile (""::: "memory")
++#define ucs_memory_bus_store_fence()  ucs_memory_bus_fence()
++#define ucs_memory_bus_load_fence()   ucs_memory_bus_fence()
++#define ucs_memory_bus_wc_flush()     ucs_memory_bus_fence()
++#define ucs_memory_cpu_fence()        ucs_memory_bus_fence()
++#define ucs_memory_cpu_store_fence()  ucs_memory_bus_fence()
++#define ucs_memory_cpu_load_fence()   ucs_memory_bus_fence()
++#define ucs_memory_cpu_wc_fence()     ucs_memory_bus_fence()
++
++
++static inline uint64_t ucs_arch_read_hres_clock()
++{
++    unsigned long  clk;
++    asm volatile("stck %0" : "=Q" (clk) : : "cc");
++    return clk >> 2;
++}
++#define ucs_arch_get_clocks_per_sec ucs_arch_generic_get_clocks_per_sec
++
++
++static inline ucs_cpu_model_t ucs_arch_get_cpu_model()
++{
++    return UCS_CPU_MODEL_UNKNOWN;
++}
++
++static inline int ucs_arch_get_cpu_flag()
++{
++    return UCS_CPU_FLAG_UNKNOWN;
++}
++
++double ucs_arch_get_clocks_per_sec();
++
++#define ucs_arch_wait_mem ucs_arch_generic_wait_mem
++
++#endif

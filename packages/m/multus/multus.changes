@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Nov 27 17:08:00 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial version 3.1
+  * Update test.sh with coveralls job inclusion
+  * coveralls code coverage during Travis CI run, adds CI badges
+  * Fix glide.yaml
+  * fixing the cmddel fix code
+  * handling the multiple cmd del call from kubelet
+  * Add debug log for newly added functions.
+  * Convert bytes to string in Debugf()
+  * Add logging message for debug/error
+  * Enable hairpin in the multus config
+  * adding error checking in network status creation as well

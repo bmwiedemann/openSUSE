@@ -1,0 +1,5 @@
+<package name="deepin-terminal" project="openSUSE:Factory">
+  <title>Deepin Terminal</title>
+  <description>This is default terminal emulation application for Deepin.</description>
+  <devel project="X11:Deepin" package="deepin-terminal"/>
+</package>

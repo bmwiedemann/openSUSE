@@ -1,0 +1,140 @@
+In german there exist 'ue' as 'ue' like in 'Querformat' and 'aktuell'
+---
+ src/gv-i18n.h        |   16 ++++++++--------
+ src/nls/de.UTF-8.dat |   16 ++++++++--------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+--- src/gv-i18n.h
++++ src/gv-i18n.h	2018-03-12 13:33:20.430347250 +0000
+@@ -788,13 +788,13 @@ static String gv_nls_de_UTF_8_dat [] = {
+ "GV*miscMenu.unmark.label:		Demarkieren",
+ "GV*safer.label:		Safer",
+ "GV*saveMarked.label:			Markiertes speichern",
+-"GV*optiongvPopup*swapLandscape.label:	Swap Qürformat",
++"GV*optiongvPopup*swapLandscape.label:	Swap Querformat",
+ "GV*miscMenu.update.label:		Datei neu laden",
+ "GV*miscMenu.print_marked.label:		Markiertes drucken",
+ "GV*scalesLabel.label:			Vergrößerung",
+ "GV*x11alphadevLabel.label:		Antialias",
+ "GV*saveAll.label:			Alles speichern",
+-"GV*miscMenu.toggle_current.label:	Aktülle umschaltewn",
++"GV*miscMenu.toggle_current.label:	Aktuelle umschaltewn",
+ "GV*miscMenu.toggle_odd.label:		Gerade umschalten",
+ "GV*miscMenu.toggle_even.label:		Ungerade umschalten",
+ "GV*printCommandLabel.label:		Druckkommando",
+@@ -864,11 +864,11 @@ static String gv_nls_de_UTF_8_dat [] = {
+ "GV*antialias.Label:			Antialias",
+ "GV*show.Label:				Neu anzeigen",
+ "GV*stateButton.Label:			Status",
+-"GV*pageButton*current.Label:		Aktülle Markierung wechselnn",
++"GV*pageButton*current.Label:		Aktuelle Markierung wechselnn",
+ "GV*optionssetup.Label:			Allg. Einstellungen ...",
+ "GV*ascaleLabel.Label:			Beliebige Vergrößerung",
+ "GV*next.Label:				Nächste",
+-"GV*seascape.Label:			Alt. Qürformat",
++"GV*seascape.Label:			Alt. Querformat",
+ "GV*cancel.Label:			Abbrechen",
+ "GV*watch.Label:				Datei beobachten",
+ "GV*titleLabel.Label:			Titel anzeigen",
+@@ -879,7 +879,7 @@ static String gv_nls_de_UTF_8_dat [] = {
+ "GV*quit.Label:				Beenden",
+ "GV*nextPage.Label:			>>",
+ "GV*eof.Label:				EOF Kommenatre ignorieren",
+-"GV*landscape.Label:			Qürformat",
++"GV*landscape.Label:			Querformat",
+ "GV*printAllPages.Label:			Dokument drucken ...",
+ "GV*infoVerboseLabel.Label:			Info.Popup",
+ "GV*size.Label:				Automatische Größe",
+@@ -888,7 +888,7 @@ static String gv_nls_de_UTF_8_dat [] = {
+ "GV*saveMarkedPages.Label:		Markierte Seiten speichern ...",
+ "GV*pageButton*odd.Label:		Ungerade Markierungen wechseln",
+ "GV*optionsfs.Label:			Dateiauswahloptionen ...",
+-"GV*swap.Label:				Qürformat umschalten",
++"GV*swap.Label:				Querformat umschalten",
+ "GV*portrait.Label:			Hochformat",
+ "GV*watchFile.Label:			Datei beobachten",
+ "GV*gs.errors.none.Label:		Keine",
+@@ -918,14 +918,14 @@ static String gv_nls_de_UTF_8_dat [] = {
+ "GV*title.notitle.Label:			Kein Titel",
+ "GV*title.documenttitle.Label:		Dokumenttitel",
+ "GV*strings.saveMarkedPages:		Markiere Seiten speichern",
+-"GV*strings.saveCurrentPage:		Aktülle Seite speichern",
++"GV*strings.saveCurrentPage:		Aktuelle Seite speichern",
+ "GV*strings.saveDocument:		Dokument speichern",
+ "GV*strings.saveAsPDF:			Als PDF speichern",
+ "GV*strings.openFile:			Datei öffnen",
+ "GV*strings.passwordPrompt:		Passwort:",
+ "GV*strings.passwordRequired:		Passwort erforderlich",
+ "GV*strings.quitConfirm:			Wollen Sie wirklich GNU gv beenden?",
+-"GV*strings.putTexCommand:		Schreibe eine TeX-Anweisung an die aktülle Position",
++"GV*strings.putTexCommand:		Schreibe eine TeX-Anweisung an die aktuelle Position",
+ "GV*strings.texCommand:			TeX -Anweisung",
+ "GV*strings.stillInProgress:		Noch in Bearbeitung:",
+ "GV*strings.execOfFailed:		Ausführung von %s fehlgeschlagen",
+--- src/nls/de.UTF-8.dat
++++ src/nls/de.UTF-8.dat	2018-03-12 13:32:10.131633973 +0000
+@@ -45,13 +45,13 @@ GV*uncompressLabel.label:		Dekomprimiere
+ GV*miscMenu.unmark.label:		Demarkieren
+ GV*safer.label:		Safer
+ GV*saveMarked.label:			Markiertes speichern
+-GV*optiongvPopup*swapLandscape.label:	Swap Qürformat
++GV*optiongvPopup*swapLandscape.label:	Swap Querformat
+ GV*miscMenu.update.label:		Datei neu laden
+ GV*miscMenu.print_marked.label:		Markiertes drucken
+ GV*scalesLabel.label:			Vergrößerung
+ GV*x11alphadevLabel.label:		Antialias
+ GV*saveAll.label:			Alles speichern
+-GV*miscMenu.toggle_current.label:	Aktülle umschaltewn
++GV*miscMenu.toggle_current.label:	Aktuelle umschaltewn
+ GV*miscMenu.toggle_odd.label:		Gerade umschalten
+ GV*miscMenu.toggle_even.label:		Ungerade umschalten
+ GV*printCommandLabel.label:		Druckkommando
+@@ -123,11 +123,11 @@ GV*fileButton.Label:			Datei
+ GV*antialias.Label:			Antialias
+ GV*show.Label:				Neu anzeigen
+ GV*stateButton.Label:			Status
+-GV*pageButton*current.Label:		Aktülle Markierung wechselnn
++GV*pageButton*current.Label:		Aktuelle Markierung wechselnn
+ GV*optionssetup.Label:			Allg. Einstellungen ...
+ GV*ascaleLabel.Label:			Beliebige Vergrößerung
+ GV*next.Label:				Nächste
+-GV*seascape.Label:			Alt. Qürformat
++GV*seascape.Label:			Alt. Querformat
+ GV*cancel.Label:			Abbrechen
+ GV*watch.Label:				Datei beobachten
+ GV*titleLabel.Label:			Titel anzeigen
+@@ -138,7 +138,7 @@ GV*pageButton*even.Label:		Gerade Markie
+ GV*quit.Label:				Beenden
+ GV*nextPage.Label:			>>
+ GV*eof.Label:				EOF Kommenatre ignorieren
+-GV*landscape.Label:			Qürformat
++GV*landscape.Label:			Querformat
+ GV*printAllPages.Label:			Dokument drucken ...
+ GV*infoVerboseLabel.Label:			Info.Popup
+ GV*size.Label:				Automatische Größe
+@@ -147,7 +147,7 @@ GV*prev.Label:				Vorherige
+ GV*saveMarkedPages.Label:		Markierte Seiten speichern ...
+ GV*pageButton*odd.Label:		Ungerade Markierungen wechseln
+ GV*optionsfs.Label:			Dateiauswahloptionen ...
+-GV*swap.Label:				Qürformat umschalten
++GV*swap.Label:				Querformat umschalten
+ GV*portrait.Label:			Hochformat
+ GV*watchFile.Label:			Datei beobachten
+ GV*gs.errors.none.Label:		Keine
+@@ -177,14 +177,14 @@ GV*title.filename.Label:		Dateiname
+ GV*title.notitle.Label:			Kein Titel
+ GV*title.documenttitle.Label:		Dokumenttitel
+ GV*strings.saveMarkedPages:		Markiere Seiten speichern
+-GV*strings.saveCurrentPage:		Aktülle Seite speichern
++GV*strings.saveCurrentPage:		Aktuelle Seite speichern
+ GV*strings.saveDocument:		Dokument speichern
+ GV*strings.saveAsPDF:			Als PDF speichern
+ GV*strings.openFile:			Datei öffnen
+ GV*strings.passwordPrompt:		Passwort:
+ GV*strings.passwordRequired:		Passwort erforderlich
+ GV*strings.quitConfirm:			Wollen Sie wirklich GNU gv beenden?
+-GV*strings.putTexCommand:		Schreibe eine TeX-Anweisung an die aktülle Position
++GV*strings.putTexCommand:		Schreibe eine TeX-Anweisung an die aktuelle Position
+ GV*strings.texCommand:			TeX -Anweisung
+ GV*strings.stillInProgress:		Noch in Bearbeitung:
+ GV*strings.execOfFailed:		Ausführung von %s fehlgeschlagen

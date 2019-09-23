@@ -1,0 +1,32 @@
+diff --git a/tools/lib/NQP/Config/Rakudo.pm b/tools/lib/NQP/Config/Rakudo.pm
+index 90ee2a388..9d78c4995 100644
+--- a/tools/lib/NQP/Config/Rakudo.pm
++++ b/tools/lib/NQP/Config/Rakudo.pm
+@@ -356,16 +356,18 @@ sub configure_moar_backend {
+           . $self->c_escape_string( $config->{static_perl6_home} );
+     }
+ 
+-    # Strip rpath from ldflags so we can set it differently ourself.
+     $config->{ldflags} = $nqp_config->{'moar::ldflags'};
+-    $config->{ldflags} =~ s/\Q$nqp_config->{'moar::ldrpath'}\E ?//;
+-    $config->{ldflags} =~ s/\Q$nqp_config->{'moar::ldrpath_relocatable'}\E ?//;
+-    $config->{ldflags} .= ' '
+-      . (
+-          $config->{relocatable} eq 'reloc'
+-        ? $nqp_config->{'moar::ldrpath_relocatable'}
+-        : $nqp_config->{'moar::ldrpath'}
+-      );
++    # Strip rpath from ldflags so we can set it differently ourself.
++    if ($config->{prefix} ne '/usr') {
++        $config->{ldflags} =~ s/\Q$nqp_config->{'moar::ldrpath'}\E ?//;
++        $config->{ldflags} =~ s/\Q$nqp_config->{'moar::ldrpath_relocatable'}\E ?//;
++        $config->{ldflags} .= ' '
++          . (
++              $config->{relocatable} eq 'reloc'
++            ? $nqp_config->{'moar::ldrpath_relocatable'}
++            : ($nqp_config->{'moar::ldrpath'} =~ s!\A//!/!r)
++          );
++    }
+     $config->{ldlibs}          = $nqp_config->{'moar::ldlibs'};
+     $config->{'mingw_unicode'} = '';
+ 

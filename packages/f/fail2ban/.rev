@@ -1,0 +1,583 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>62250fd48d5b336e3d3268d01fa03d34</srcmd5>
+    <version>0.8.3</version>
+    <time>1234323138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>62250fd48d5b336e3d3268d01fa03d34</srcmd5>
+    <version>0.8.3</version>
+    <time>1234323138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f75bbbc4fb7db28a14b8f7885dd1e41a</srcmd5>
+    <version>0.8.4</version>
+    <time>1263307607</time>
+    <user>autobuild</user>
+    <comment>Copy from security/fail2ban based on submit request 29110 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6cc96c9b5ee4d58285685b9d6ae4800d</srcmd5>
+    <version>0.8.4</version>
+    <time>1268923511</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>af82abb524ca974fed1db91657dabcab</srcmd5>
+    <version>0.8.4</version>
+    <time>1273241382</time>
+    <user>autobuild</user>
+    <comment>Copy from security/fail2ban based on submit request 39531 from user coolo
+</comment>
+    <requestid>39531</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>af82abb524ca974fed1db91657dabcab</srcmd5>
+    <version>0.8.4</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>af82abb524ca974fed1db91657dabcab</srcmd5>
+    <version>0.8.4</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>772e6c1415fade5937eb17108f12d0e2</srcmd5>
+    <version>0.8.4</version>
+    <time>1280742444</time>
+    <user>autobuild</user>
+    <comment>Copy from security/fail2ban based on submit request 44089 from user elvigia
+</comment>
+    <requestid>44089</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>02f12e69d3bd8e9a04fc4cb8312dd858</srcmd5>
+    <version>0.8.4</version>
+    <time>1294666738</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57352 from user prusnak
+</comment>
+    <requestid>57352</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>5f82308806aaadb58f58e424bcd0b82c</srcmd5>
+    <version>0.8.4</version>
+    <time>1294666747</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57352
+</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>5f82308806aaadb58f58e424bcd0b82c</srcmd5>
+    <version>0.8.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>75e568f5acafe7c6a7deef641cc3ee5b</srcmd5>
+    <version>0.8.4</version>
+    <time>1314889181</time>
+    <user>saschpe</user>
+    <comment>- Use /var/run/fail2ban instead of /tmp for temp files in 
+  actions: see bugs.debian.org/544232, bnc#690853,
+  CVE-2009-5023</comment>
+    <requestid>80518</requestid>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>a139709e07bac9bf5f3f1dead394aecd</srcmd5>
+    <version>0.8.4</version>
+    <time>1314889193</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80518
+</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>755a65b19158dcf2bf4af49db7832357</srcmd5>
+    <version>0.8.4</version>
+    <time>1316681037</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83496 from jengelh)</comment>
+    <requestid>84234</requestid>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>755a65b19158dcf2bf4af49db7832357</srcmd5>
+    <version>0.8.4</version>
+    <time>1319181873</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>c88e6810c5afaefa2d534f65ba14d21a</srcmd5>
+    <version>0.8.5</version>
+    <time>1322134558</time>
+    <user>coolo</user>
+    <comment>Update to version 0.8.5. Fix bnc#537239 and bnc#730044. (forwarded request 92454 from leonardocf)</comment>
+    <requestid>93348</requestid>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>d36054a13bf11720f40867985adf3307</srcmd5>
+    <version>0.8.5</version>
+    <time>1323191341</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5bebfa87057604e533c47f5be29c8bf</srcmd5>
+    <version>0.8.6</version>
+    <time>1338903018</time>
+    <user>coolo</user>
+    <comment>Upgraded to latest version; seems to work :-) (forwarded request 123375 from weberho)</comment>
+    <requestid>123393</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f5bebfa87057604e533c47f5be29c8bf</srcmd5>
+    <version>0.8.6</version>
+    <time>1340183319</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>77ebcd43a479b134025f24e789a4ea70</srcmd5>
+    <version>0.8.6</version>
+    <time>1344369097</time>
+    <user>coolo</user>
+    <comment>this fixes the start and restart problems (a start restart fail) if fail2ban was not stopped nice and if the sock and pid file were not removed. (forwarded request 129475 from asemen)</comment>
+    <requestid>130285</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6d170aaa1ec00b8d767c71e48e51fed7</srcmd5>
+    <version>0.8.7.1</version>
+    <time>1349372330</time>
+    <user>coolo</user>
+    <comment>- use Source URL pointing to github
+
+- Do not longer replace main config-files
+- Use variables for directories in spec file
+
+- Added dependencies to python-pyinotifyi, python-gamin and iptables
+
+- Upgraded to version 0.8.7.1
+- Yaroslav Halchenko
+  * [e9762f3] Removed sneaked in comment on sys.path.insert
+    Tom Hendrikx &amp; Jeremy Olexa
+  * [0eaa4c2,444e4ac] Fix Gentoo init script: $opts variable is deprecated.
+    See http://forums.gentoo.org/viewtopic-t-899018.html
+- Chris Reffett
+  * [a018a26] Fixed addBannedIP to add enough failures to trigger a ban,
+    rather than just one failure.
+- Yaroslav Halchenko
+  * [4c76fb3] allow trailing white-spaces in lighttpd-auth.conf
+  * [25f1e8d] allow trailing whitespace in few missing it regexes for sshd.conf
+  * [ed16ecc] enforce &quot;ip&quot; field returned as str, not unicode so that log
+    message stays non-unicode. Close gh-32
+  * [b257be4] added %m-%d-%Y pattern + do not add %Y for Feb 29 fix if
+    already present in the pattern
+  * [47e956b] replace &quot;|&quot; with &quot;_&quot; in ipmasq-ZZZzzz|fail2ban.rul to be
+    friend to developers stuck with Windows (Closes gh-66)
+  * [80b191c] anchor grep regexp in actioncheck to not match partial names
+    of the jails (Closes: #672228) (Thanks Szépe Viktor for the report)
+- New features:
+- François Boulogne
+  * [a7cb20e..] add lighttpd-auth filter/jail</comment>
+    <requestid>136835</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f8b0287672e0999eb772a92d22b68050</srcmd5>
+    <version>0.8.7.1</version>
+    <time>1354711858</time>
+    <user>namtrac</user>
+    <comment>Fixed initscript as discussed in bnc#790557</comment>
+    <requestid>144032</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8052c9e31a430a9aae4e04a189cbe14c</srcmd5>
+    <version>0.8.8</version>
+    <time>1354885705</time>
+    <user>namtrac</user>
+    <comment>Upgraded to version 0.8.8 (forwarded request 144432 from weberho)</comment>
+    <requestid>144434</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>8052c9e31a430a9aae4e04a189cbe14c</srcmd5>
+    <version>0.8.8</version>
+    <time>1359108865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b877fb5b61f7f385f26b75b722ab8314</srcmd5>
+    <version>0.8.9</version>
+    <time>1368691929</time>
+    <user>coolo</user>
+    <comment>* Upgrade to version 0.8.9
+
+* Init-Script does no longer require $syslog to be started as file-base logging is the default. Synced with Debian script. (forwarded request 175692 from weberho)</comment>
+    <requestid>175693</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a8d219d393560799b28a1b481e1fa3f6</srcmd5>
+    <version>0.8.9</version>
+    <time>1370431678</time>
+    <user>coolo</user>
+    <comment>Included logrotate configuration for fail2ban (forwarded request 176913 from weberho)</comment>
+    <requestid>176914</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>67d8c981fdcf3d3b8459df14b36fb37a</srcmd5>
+    <version>0.8.10</version>
+    <time>1371217475</time>
+    <user>coolo</user>
+    <comment>Update to version 0.8.10
+Addresses a possible DoS. Closes gh-248, bnc#824710 (forwarded request 178857 from weberho)</comment>
+    <requestid>178858</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>67d8c981fdcf3d3b8459df14b36fb37a</srcmd5>
+    <version>0.8.10</version>
+    <time>1379662323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>e95c9af2276bda930d286778e20ab40b</srcmd5>
+    <version>0.8.10</version>
+    <time>1379945047</time>
+    <user>coolo</user>
+    <comment>I've added a systemd service file for openSUSE &gt;= 12.3.
+
+Previous systemd based versions would require an additional variant of the service file, because SuSEfirewall2.service (which is an ordering dependency) used to be named SuSEfirewall2_setup.service in these versions. I don't think it would be worth the trouble of adding yet another switch, but I can of course do so if desired. (forwarded request 199913 from marc_schuetz)</comment>
+    <requestid>200162</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b41e0bfd04759e8cf1e892ea28f2743a</srcmd5>
+    <version>0.8.11</version>
+    <time>1384854303</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 0.8.11 (forwarded request 207466 from weberho)</comment>
+    <requestid>207467</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e284fe4d74181a268e94415a38814d02</srcmd5>
+    <version>0.8.12</version>
+    <time>1391090076</time>
+    <user>coolo</user>
+    <comment>Security note: The update to version 0.8.11 has fixed two additional security
+issues: A remote unauthenticated attacker may cause arbitrary IP addresses to
+be blocked by Fail2ban causing legitimate users to be blocked from accessing
+services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
+(postfix) (forwarded request 215523 from weberho)</comment>
+    <requestid>215524</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>9745b7c5e726f4685562822966a28348</srcmd5>
+    <version>0.8.12</version>
+    <time>1399031717</time>
+    <user>coolo</user>
+    <comment>- Add a new subpackage to install systemd drop-ins that couple SuSEfirewall2 and fail2ban. (forwarded request 230864 from jengelh)</comment>
+    <requestid>231797</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b55b81d934628f0e9506e9d1962a9d0a</srcmd5>
+    <version>0.8.14</version>
+    <time>1408957427</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245652</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>b55b81d934628f0e9506e9d1962a9d0a</srcmd5>
+    <version>0.8.14</version>
+    <time>1409300855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>1254c9556916e3236ab3ee51f04115a6</srcmd5>
+    <version>0.8.14</version>
+    <time>1416823692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262031</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>20cb605a6d74dd2808b5a59aefda1309</srcmd5>
+    <version>0.8.14</version>
+    <time>1416994440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262999</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>07360b9ea4fc4fff3cf9d190e7406537</srcmd5>
+    <version>0.8.14</version>
+    <time>1423038709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283868</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>63c084c2d7c36b452c0af8e1648345ee</srcmd5>
+    <version>0.8.14</version>
+    <time>1429107853</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296083</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1141183c757e3ab34ba7361b0a9e05a2</srcmd5>
+    <version>0.9.2</version>
+    <time>1435870265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314806</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d729aa6def1071dfcf70016490d6ef05</srcmd5>
+    <version>0.9.3</version>
+    <time>1441727087</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329472</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>31b7d0bbc0d099977019bd9a690dc017</srcmd5>
+    <version>0.9.3</version>
+    <time>1443068161</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333139</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>66424b2bfda4575c7c0e1241abccb725</srcmd5>
+    <version>0.9.3</version>
+    <time>1455701074</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>358896</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fdbb968c29c00871dbb42c7e8227c5e7</srcmd5>
+    <version>0.9.4</version>
+    <time>1458120911</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369615</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>ee746e255f20e5be67bfd03963162827</srcmd5>
+    <version>0.9.4</version>
+    <time>1459002443</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>378462</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>135ca91c99bd3ad6a4f9534e3dbd749c</srcmd5>
+    <version>0.9.5</version>
+    <time>1469742454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415433</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>009c95467430e8cfd0e8623c617aae7d</srcmd5>
+    <version>0.9.6</version>
+    <time>1485862921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453007</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>e6732625a58c5cd2cbe5759d72492c88</srcmd5>
+    <version>0.9.6</version>
+    <time>1489345525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478640</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3340d8949ed0b801d39c5ba73ba271bd</srcmd5>
+    <version>0.9.7</version>
+    <time>1495011297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495374</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c79f8163d133f7f9c64bcd17378af4eb</srcmd5>
+    <version>0.9.7</version>
+    <time>1498551710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506342</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bcf50e012f163de41989fd6d8dd7fa3b</srcmd5>
+    <version>0.10.1</version>
+    <time>1509305079</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>537301</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>f03840046c3cfd3eaf866c55cc47c2e4</srcmd5>
+    <version>0.10.1</version>
+    <time>1511517337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544894</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>aac57c951127744dbc21fc6d4dd4638a</srcmd5>
+    <version>0.10.2</version>
+    <time>1519218701</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 0.10.2. Changelog:
+  https://github.com/fail2ban/fail2ban/blob/0.10.2/ChangeLog
+- rebased patch
+- Incompatibility list (compared to v.0.9):
+  * Filter (or `failregex`) internal capture-groups:
+    - If you've your own `failregex` or custom filters using conditional match `(?P=host)`, you should
+      rewrite the regex like in example below resp. using `(?:(?P=ip4)|(?P=ip6)` instead of `(?P=host)`
+      (or `(?:(?P=ip4)|(?P=ip6)|(?P=dns))` corresponding your `usedns` and `raw` settings).
+      Of course you can always define your own capture-group (like below `_cond_ip_`) to do this.
+      testln=&quot;1500000000 failure from 192.0.2.1: bad host 192.0.2.1&quot;
+      fail2ban-regex &quot;$testln&quot; &quot;^\s*failure from (?P&lt;_cond_ip_&gt;&lt;HOST&gt;): bad host (?P=_cond_ip_)$&quot;
+    - New internal groups (currently reserved for internal usage):
+      `ip4`, `ip6`, `dns`, `fid`, `fport`, additionally `user` and another captures in lower case if
+      mapping from tag `&lt;F-*&gt;` used in failregex (e. g. `user` by `&lt;F-USER&gt;`).
+  * v.0.10 uses more precise date template handling, that can be theoretically incompatible to some
+    user configurations resp. `datepattern`.
+  * Since v0.10 fail2ban supports the matching of the IPv6 addresses, but not all ban actions are
+    IPv6-capable now.
+- Incompatibility:
+  * The configuration for jails using banaction `pf` can be incompatible after upgrade, because pf-action uses
+    anchors now (see `action.d/pf.conf` for more information). If you want use obsolete handling without anchors,
+    just rewrite it in the `jail.local` by overwrite of `pfctl` parameter, e. g. like `banaction = pf[pfctl=&quot;pfctl&quot;]`. 
+- Fixes
+  * Fixed logging to systemd-journal: new logtarget value SYSOUT can be used instead of STDOUT, to avoid 
+    write of the time-stamp, if logging to systemd-journal from foreground mode (gh-1876)
+  * Fixed recognition of the new date-format on mysqld-auth filter (gh-1639)
+  * jail.conf: port `imap3` replaced with `imap` everywhere, since imap3 is not a standard port and old rarely 
+    (if ever) used and can missing on some systems (e. g. debian stretch), see gh-1942.
+  * config/paths-common.conf: added missing initial values (and small normalization in config/paths-*.conf)
+    in order to avoid errors while interpolating (e. g. starting with systemd-backend), see gh-1955.
+  * `action.d/pf.conf`: 
+    - fixed syntax error in achnor definition (documentation, see gh-1919);
+    - enclose ports in braces for multiport jails (see gh-1925);
+  * `action.d/firewallcmd-ipset.conf`: fixed create of set for ipv6 (missing `family inet6`, gh-1990)
+  * `filter.d/sshd.conf`:
+    - extended failregex for modes &quot;extra&quot;/&quot;aggressive&quot;: now finds all possible (also future)
+      forms of &quot;no matching (cipher|mac|MAC|compression method|key exchange method|host key type) found&quot;, 
+      see &quot;ssherr.c&quot; for all possible SSH_ERR_..._ALG_MATCH errors (gh-1943, gh-1944);
+    - fixed failregex in order to avoid banning of legitimate users with multiple public keys (gh-2014, gh-1263);
+- New Features
+  * datedetector: extended default date-patterns (allows extra space between the date and time stamps);
+    introduces 2 new format directives (with corresponding %Ex prefix for more precise parsing):
+    - %k - one- or two-digit number giving the hour of the day (0-23) on a 24-hour clock,
+      (corresponds %H, but allows space if not zero-padded).
+    - %l - one- or two-digit number giving the hour of the day (12-11) on a 12-hour clock,
+      (corresponds %I, but allows space if not zero-padded).
+  * `filter.d/exim.conf`: added mode `aggressive` to ban flood resp. DDOS-similar failures (gh-1983);
+- New Actions:
+  * `action.d/nginx-block-map.conf` - in order to ban not IP-related tickets via nginx (session blacklisting in
+     nginx-location with map-file);
+  - Enhancements
+    * jail.conf: extended with new parameter `mode` for the filters supporting it (gh-1988);
+    * action.d/pf.conf: extended with bulk-unban, command `actionflush` in order to flush all bans at once.
+    * Introduced new parameters for logging within fail2ban-server (gh-1980).
+      Usage `logtarget = target[facility=..., datetime=on|off, format=&quot;...&quot;]`:
+      - `facility` - specify syslog facility (default `daemon`, see https://docs.python.org/2/library/logging.handlers.html#sysloghandler
+        for the list of facilities);
+      - `datetime` - add date-time to the message (default on, ignored if `format` specified);
+      - `format` - specify own format how it will be logged, for example for short-log into STDOUT:
+        `fail2ban-server -f --logtarget 'stdout[format=&quot;%(relativeCreated)5d | %(message)s&quot;]' start`;
+    * Automatically recover or recreate corrupt persistent database (e. g. if failed to open with 
+     'database disk image is malformed'). Fail2ban will create a backup, try to repair the database,
+      if repair fails - recreate new database (gh-1465, gh-2004).
+</comment>
+    <requestid>578362</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0de5d42ef69abcb5c2a43949bdbd8a55</srcmd5>
+    <version>0.10.3.1</version>
+    <time>1524742638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599594</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4e265f9f180b825513b547577a95f03f</srcmd5>
+    <version>0.10.4</version>
+    <time>1550668399</time>
+    <user>maxlin_factory</user>
+    <comment>- ver. 0.10.4 (2018/10/04) - ten-four-on-due-date-ten-four
+  * https://github.com/fail2ban/fail2ban/blob/0.10.4/ChangeLog
+- Fixes
+  * `filter.d/dovecot.conf`: 
+    - failregex enhancement to catch sql password mismatch errors (gh-2153);
+    - disconnected with &quot;proxy dest auth failed&quot; (gh-2184);
+  * `filter.d/freeswitch.conf`:
+    - provide compatibility for log-format from gh-2193:
+      * extended with new default date-pattern `^(?:%%Y-)?%%m-%%d[ T]%%H:%%M:%%S(?:\.%%f)?` to cover
+        `YYYY-mm-dd HH:MM::SS.ms` as well as `mm-dd HH:MM::SS.ms` (so year is optional);
+      * more optional arguments in log-line (so accept [WARN] as well as [WARNING] and optional [SOFIA] hereafter);
+    - extended with mode parameter, allows to avoid matching of messages like `auth challenge (REGISTER)`
+      (see gh-2163) (currently `extra` as default to be backwards-compatible), see comments in filter
+      how to set it to mode `normal`.
+  * `filter.d/domino-smtp.conf`:
+    - recognizes failures logged using another format (something like session-id, IP enclosed in square brackets);
+    - failregex extended to catch connections rejected for policy reasons (gh-2228);
+  * `action.d/hostsdeny.conf`: fix parameter in config (dynamic parameters stating with '_' are protected 
+    and don't allowed in command-actions), see gh-2114;
+  * decoding stability fix by wrong encoded characters like utf-8 surrogate pairs, etc (gh-2171):
+    - fail2ban running in the preferred encoding now (as default encoding also within python 2.x), mostly
+      `UTF-8` in opposite to `ascii` previously, so minimizes influence of implicit conversions errors;
+    - actions: avoid possible conversion errors on wrong-chars by replace tags;
+    - database: improve adapter/converter handlers working on invalid characters in sense of json and/or sqlite-database;
+      additionally both are exception-safe now, so avoid possible locking of database (closes gh-2137);
+    - logging in fail2ban is process-wide exception-safe now.
+  * repaired start-time of initial seek to time (as well as other log-parsing related data), 
+    if parameter `logpath` specified before `findtime`, `backend`, `datepattern`, etc (gh-2173)
+  * systemd: fixed type error on option `journalflags`: an integer is required (gh-2125);
+- New Features
+  * new option `ignorecache` to improve performance of ignore failure check (using caching of `ignoreip`, 
+    `ignoreself` and `ignorecommand`), see `man jail.conf` for syntax-example;
+  * `ignorecommand` extended to use actions-similar replacement (capable to interpolate 
+    all possible tags like `&lt;ip-host&gt;`, `&lt;family&gt;`, `&lt;fid&gt;`, `F-USER` etc.)
+- Enhancements
+  * `filter.d/dovecot.conf`: extended with tags F-USER (and alternatives) to collect user-logins (gh-2168)
+  * since v.0.10.4, fail2ban-client, fail2ban-server and fail2ban-regex will return version without logo info,
+    additionally option `-V` can be used to get version in normalized machine-readable short format.
+- rebase patches
+  * fail2ban-opensuse-locations.patch
+  * fail2ban-opensuse-service.patch
+- add signature file
+</comment>
+    <requestid>677464</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>7d9d7123bf866ee9bbc371d6750a1acd</srcmd5>
+    <version>0.10.4</version>
+    <time>1560338271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709174</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>91f05c233e4db5dceae52484933e71d3</srcmd5>
+    <version>0.10.4</version>
+    <time>1565695393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722644</requestid>
+  </revision>
+</revisionlist>

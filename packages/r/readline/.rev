@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e82037c90ac4258a79a01206f3acb478</srcmd5>
+    <version>7.0</version>
+    <time>1521715962</time>
+    <user>dimstar_suse</user>
+    <comment>.</comment>
+    <requestid>588453</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6609296a9c5befb5de8b28d5bc21472c</srcmd5>
+    <version>7.0</version>
+    <time>1530087222</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch readline-7.0-screen.patch to be able to parse settings
+  in inputrc for all screen TERM variables starting with &quot;screen.&quot;
+  to fix boo#1095661</comment>
+    <requestid>616516</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a1fde0b9a33275602405ae4954e8bb0</srcmd5>
+    <version>7.0</version>
+    <time>1539250583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>640076</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>923a19534b1382e30d09afa244c64add</srcmd5>
+    <version>8.0</version>
+    <time>1548769055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to readline-8.0 final
+
+- Update to readline-8.0-rc1 for testing 
+
+- Update to readline-8.0-beta2 for testing
+  j. Readline now allows application-defined keymap names; there is a new public
+     function, rl_set_keymap_name(), to do that.
+  k. The &quot;Insert&quot; keypad key, if available, now puts readline into overwrite
+     mode.
+    readline-5.2-conf.patch
+- Port and modify patches
+  * readline-6.2-metamode.patch
+  * readline-6.3-input.dif
+  * readline-7.0-screen.patch
+  * readline-8.0.dif
+
+- Update to readline-8.0-beta for testing
+  a. Non-incremental vi-mode search (`N', `n') can search for a shell pattern, as
+     Posix specifies (uses fnmatch(3) if available).
+  b. There are new `next-screen-line' and `previous-screen-line' bindable
+     commands, which move the cursor to the same column in the next, or previous,
+     physical line, respectively.
+  c. There are default key bindings for control-arrow-key key combinations.
+  d. A negative argument (-N) to `quoted-insert' means to insert the next N
+     characters using quoted-insert.
+  e. New public function: rl_check_signals(), which allows applications to
+     respond to signals that readline catches while waiting for input using
+     a custom read function.
+  f. There is new support for conditionally testing the readline version in an
+     inputrc file, with a full set of arithmetic comparison operators available.</comment>
+    <requestid>664074</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8512f4c8c1adf086f96111c50f524a91</srcmd5>
+    <version>8.0</version>
+    <time>1567679456</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework patch readline-7.0-screen.patch again for bug boo#1143055
+  * Map all &quot;screen(-xxx)?.yyy(-zzz)?&quot; to &quot;screen&quot; as well as
+    map &quot;konsole(-xxx)?&quot; and &quot;gnome(-xxx)?&quot; to &quot;xterm&quot;
+
+- Add official patch readline80-001
+  The history file reading code doesn't close the file descriptor open to
+  the history file when it encounters a zero-length file.
+
+- Use FAT LTO objects in order to provide proper static library.</comment>
+    <requestid>723956</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d97307b8c73388dd30c8332fbc6974e3</srcmd5>
+    <version>8.0</version>
+    <time>1568983565</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729453</requestid>
+  </revision>
+</revisionlist>

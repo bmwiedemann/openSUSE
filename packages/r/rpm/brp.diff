@@ -1,0 +1,21 @@
+--- ./scripts/brp-strip-comment-note.orig	2017-08-10 08:08:07.150108692 +0000
++++ ./scripts/brp-strip-comment-note	2017-12-01 14:29:56.761975721 +0000
+@@ -16,6 +16,8 @@ esac
+ # for already stripped elf files in the build root
+ for f in `find "$RPM_BUILD_ROOT" -type f \( -perm -0100 -or -perm -0010 -or -perm -0001 \) -exec file {} \; | \
+         grep -v "^${RPM_BUILD_ROOT}/\?usr/lib/debug"  | \
++	grep -v ' shared object,' | \
++	grep -v '/lib/modules/' | \
+ 	sed -n -e 's/^\(.*\):[ 	]*ELF.*, stripped.*/\1/p'`; do
+ 	note="-R .note"
+ 	if $OBJDUMP -h $f | grep '^[ 	]*[0-9]*[ 	]*.note[ 	]' -A 1 | \
+--- ./scripts/brp-strip.orig	2017-08-10 08:08:07.150108692 +0000
++++ ./scripts/brp-strip	2017-12-01 14:29:56.761975721 +0000
+@@ -15,6 +15,7 @@ esac
+ for f in `find "$RPM_BUILD_ROOT" -type f \( -perm -0100 -or -perm -0010 -or -perm -0001 \) -exec file {} \; | \
+         grep -v "^${RPM_BUILD_ROOT}/\?usr/lib/debug"  | \
+ 	grep -v ' shared object,' | \
++	grep -v '/lib/modules/' | \
+ 	sed -n -e 's/^\(.*\):[ 	]*ELF.*, not stripped.*/\1/p'`; do
+ 	$STRIP -g "$f" || :
+ done

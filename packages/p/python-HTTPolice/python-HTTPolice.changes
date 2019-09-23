@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Jul 24 12:09:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.9.0
+  * Basic checks for most of the headers defined by WHATWG Fetch, 
+    such as Access-Control-Allow-Origin.
+  * Updated workarounds for HAR files exported from Chrome and Firefox.
+  * See upstream changelog for more 
+
+-------------------------------------------------------------------
+Tue May 14 17:33:35 UTC 2019 - Ethan Apodaca <eapodaca@suse.com>
+
+- Drop python2 support
+- Remove py34-no-singledispatch.patch
+- Replace brotlipy dependency with Brotli
+- Remove dependancies that are not needed to build.
+- Update to v0.8.0
+  * Changes
+    + Dropped Python 2 support. If you need it, use the older versions.
+    + HTTPolice no longer requires six nor singledispatch.
+    + HTTPolice now pulls in Google's Brotli instead of brotlipy,
+      but this is merely a packaging change; it can work with either.
+    + Notices 1299 and 1300 are no longer reported on Alt-Svc.
+
+-------------------------------------------------------------------
+Mon Feb 11 17:33:39 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix Python 3 tests
+- Add py34-no-singledispatch.patch to remove unnecessary 'singledispatch'
+  dependency, which is a backport from Python 3.4
+- Update to v0.7.0
+  * Changes
+    + Reflecting changes in RFC 8187 and RFC 8259,
+      notices 1253 (bad charset) and 1281 (bad encoding for JSON)
+      are now reported for all encodings other than UTF-8, and
+      notice 1255 (ISO-8859-1 in Content-Disposition) has been removed.
+  * Added
+    + Checks for quoted commas and semicolons that might confuse a naive parser
+      (notices 1299 and 1300).
+    + New checks for Link headers according to RFC 8288 (notices 1307,
+      1308, and 1309).
+    + Checks for immutable responses (notices 1301, 1302, and 1303).
+    + Early hints are now recognized (due to their idiosyncratic semantics,
+      they avoid many checks that are applied to all other responses).
+    + Checks for the Accept-Post header (notice 1310).
+    + Check for no Transfer-Encoding in response to HTTP/1.0 (notice 1306).
+    + Check for 100 (Continue) before switching protocols (notice 1305).
+    + Check that the sequence of responses to a request makes sense
+      (notice 1304).
+    + HAR files exported from Chrome and Insomnia are handled slightly better.
+  * Fixed
+    + Headers like Allow and Accept are now parsed more correctly
+      (RFC Errata 5257).
+    + gzip-encoded payloads are now decompressed more reliably.
+    + When analyzing TCP streams, HTTPolice now uses a stricter heuristic
+      for detecting HTTP/1.x streams, producing fewer spurious 1006/1009
+      notices.
+    + Notice 1291 (Preference-Applied needs Vary) is no longer reported
+      on responses to POST.
+- Use %license
+- Remove unnecessary build dependencies
+- Add more minimum versions
+
+-------------------------------------------------------------------
+Thu Nov 16 17:45:04 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

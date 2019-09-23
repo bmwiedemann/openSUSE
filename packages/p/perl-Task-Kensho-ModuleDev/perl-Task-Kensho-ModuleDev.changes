@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Mon May 23 12:48:30 UTC 2016 - coolo@suse.com
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-Task-Kensho-ModuleDev/Changes
+
+  0.39      2016-05-14
+            - WebDev: removed Dancer, added Dancer2
+            - OOP: added Moose, Moo and many related modules
+            - Exceptions: remove TryCatch
+            - Testing: remove Test::Most and Test::NoWarnings, added Test::Warnings
+            - Config: added JSON::MaybeXS
+
+-------------------------------------------------------------------
+Tue Sep 16 08:07:56 UTC 2014 - coolo@suse.com
+
+- updated to 0.38
+           - WebDev: Template::Toolkit is not indexed (see RT#92588) -
+             refer to Template instead
+           - subtask distributions now just use regular prereqs on their
+             component modules, rather than using optional_features metadata
+           - Task-Kensho now once again prompts at install time for each
+             subtask to be optionally installed
+ 
+ 0.37      2014-08-16
+           - ModuleDev: Switch Carp::Always over to Devel::Confess (per mst)
+           - ModuleDev: Add Data::Printer (per Sawyer X)
+           - ModuleDev: Add Devel::Dwarn (per mst)
+           - Toolchain: Add Pinto (per Sawyer X)
+           - Toolchain: Add App::FatPacker (per perigrin)
+
+-------------------------------------------------------------------
+Sat Mar 22 19:05:00 UTC 2014 - coolo@suse.com
+
+- updated to 0.36
+          - fix pod markup error in main Task::Kensho distribution
+          - module list revisions to CLI, Dates, Toolchain, WebCrawling,
+            WebDev
+
+-------------------------------------------------------------------
+Mon Feb 24 08:57:01 UTC 2014 - coolo@suse.com
+
+- updated to 0.35
+           - updated recommendations for Async, CLI, ModuleDev, Scalability,
+             WebDev
+ 
+ 0.34004   2014-01-22 (TRIAL RELEASE)
+           - still more pod and metadata tweaks
+ 
+ 0.34003   2014-01-22 (TRIAL RELEASE)
+           - more pod and metadata tweaks
+ 
+ 0.34002   2014-01-21 (TRIAL RELEASE)
+           - fix mangled abstract in META.*
+           - fixed missing list of recommendations in Task::Kensho pod
+ 
+ 0.34001   2014-01-21 (TRIAL RELEASE)
+           - fix munging of ::Hackery preamble into stopwords
+           - fixed bugtracker metadata (now indicating github issues)
+           - distributions split apart again, with new! and enhanced!
+             Dist::Zilla generation magic
+ 
+ 0.34      2013-08-20 01:27:07Z (TRIAL RELEASE)
+           - distributions reunified under Task-Kensho, and now auto-generated
+             from a master YAML file using Dist::Zilla
+ 
+ 0.33      2012-06-24
+           - Task::Kensho::Testing:
+             - Retired Test::Exception and replaced with Test::Fatal
+             - added Test::Deep, Test::Requires and Test::NoWarnings
+           - Task::Kensho::WebDev: added Plack
+ 
+ 0.32      2012-06-08
+           - Fix reference to Module::CoreList (RT#65948)
+           - Add Plack to Task::Kensho::WebDev
+ 
+ 0.31      2011-04-11
+           - Fix Task::Kensho::Logging version, thanks kent
+ 
+ 0.30      2011-04-11
+           - new group, Task::Kensho::Logging
+ 
+ 0.29      2011-03-25
+           - Task::Kensho::CLI: Fix Module::CoreList link in POD, thanks alister@alisterwest.com.
+           - Task::Kensho::WebCrawling: Bundle::LWP is gone; replace with
+             LWP::UserAgent. Thanks, kentnl@cpan.org.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:22 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Mar 26 11:23:10 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.28
+  * created by cpanspec 1.78.03
+
+-------------------------------------------------------------------
+Fri Jan 21 10:28:03 UTC 2011 - coolo@novell.com
+
+- initial package 0.27
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,187 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e47e7efcda9eab0e2410d06e25b852b</srcmd5>
+    <version>1.08</version>
+    <time>1168903916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="52">
+    <srcmd5>1a5986bca25a7cdc39dc7cf5acb1ed87</srcmd5>
+    <version>1.08</version>
+    <time>1192635530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="114">
+    <srcmd5>1a5986bca25a7cdc39dc7cf5acb1ed87</srcmd5>
+    <version>1.08</version>
+    <time>1192635530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="115">
+    <srcmd5>7218539f7b5bea90bed27e0832507183</srcmd5>
+    <version>1.08</version>
+    <time>1245276967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="116">
+    <srcmd5>8f844f2547c086d98719b1bc54a59b97</srcmd5>
+    <version>1.08</version>
+    <time>1248727000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="118">
+    <srcmd5>8f844f2547c086d98719b1bc54a59b97</srcmd5>
+    <version>1.08</version>
+    <time>1248727000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="119">
+    <srcmd5>c78be4fc84f97f63039c15741cb154a2</srcmd5>
+    <version>1.08</version>
+    <time>1263292469</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Pod-Coverage based on submit request 29274 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="120">
+    <srcmd5>ea47a1a581487964ce6753a0de0ebeb1</srcmd5>
+    <version>1.08</version>
+    <time>1268925623</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="122">
+    <srcmd5>ea47a1a581487964ce6753a0de0ebeb1</srcmd5>
+    <version>1.08</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="123">
+    <srcmd5>ea47a1a581487964ce6753a0de0ebeb1</srcmd5>
+    <version>1.08</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="124">
+    <srcmd5>765db0c737485446389aed98d650fbf9</srcmd5>
+    <version>1.08</version>
+    <time>1288264445</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51548 from user coolo
+</comment>
+    <requestid>51548</requestid>
+  </revision>
+  <revision rev="12" vrev="125">
+    <srcmd5>4bfe8f49cd613ebbc5424f023162fd1a</srcmd5>
+    <version>1.08</version>
+    <time>1288264451</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51548
+</comment>
+  </revision>
+  <revision rev="13" vrev="128">
+    <srcmd5>4bfe8f49cd613ebbc5424f023162fd1a</srcmd5>
+    <version>1.08</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="129">
+    <srcmd5>5dbbf54d5f38a7387e41eef64f668628</srcmd5>
+    <version>1.08</version>
+    <time>1301576991</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65651 from user coolo
+</comment>
+    <requestid>65651</requestid>
+  </revision>
+  <revision rev="15" vrev="130">
+    <srcmd5>dee72f3fa4cbd9eabc5776c4cb3137ed</srcmd5>
+    <version>1.08</version>
+    <time>1301577000</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65651
+</comment>
+  </revision>
+  <revision rev="16" vrev="132">
+    <srcmd5>dee72f3fa4cbd9eabc5776c4cb3137ed</srcmd5>
+    <version>1.08</version>
+    <time>1319182313</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="133">
+    <srcmd5>e0226b8de1f82919de0ac5012a95b5c5</srcmd5>
+    <version>1.08</version>
+    <time>1321876064</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92317</requestid>
+  </revision>
+  <revision rev="18" vrev="134">
+    <srcmd5>71f0ee794b5e8e8979d02a2dc42f8bbb</srcmd5>
+    <version>1.08</version>
+    <time>1325660474</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>98295</requestid>
+  </revision>
+  <revision rev="19" vrev="136">
+    <srcmd5>71f0ee794b5e8e8979d02a2dc42f8bbb</srcmd5>
+    <version>1.08</version>
+    <time>1340183934</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="138">
+    <srcmd5>71f0ee794b5e8e8979d02a2dc42f8bbb</srcmd5>
+    <version>1.08</version>
+    <time>1359109820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="140">
+    <srcmd5>71f0ee794b5e8e8979d02a2dc42f8bbb</srcmd5>
+    <version>1.08</version>
+    <time>1379663879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>acaa5cd89cebdd9df0dbd2bed392d8d1</srcmd5>
+    <version>1.10</version>
+    <time>1406521866</time>
+    <user>coolo</user>
+    <comment>- updated to 1.10
+     - Changed license to Artistic 2.0, at PETDANCE's request.
+     - Added README
+     - Moved Coverage.pm to lib/Test/Pod/Coverage.pm
+     - Min perl version now set to 5.006 in both code and dist metadata.
+       Addresses RT#21564 from ANDK++
+     - Added DESCRIPTION section to pod (RT#28715 JEREMIAH++),
+       and changed to a minimal SYNOPSIS, with everything else moved
+       to the DESCRIPTION.
+     - The &quot;no verbose&quot; tests in t/nosymbols.t weren't ensuring that the
+       tests were running with HARNESS_VERBOSE set to false. You could set
+       that true in your environment and break the test.
+       RT#53947 - thanks to Pete Armstrong.
+     - Makefile.PL: Ensured all prereqs listed in PREREQ_PM,
+       and TEST_REQUIRES set if a recent enough ExtUtils::MakeMaker.
+     - Added github repo to pod and dist metadata
+     - Deleted the old META.yml, so new MYMETA.{yml,json} will be generated.
+     - Reformatted as per CPAN::Changes::Spec
+ 
+ 1.09_01 2014-07-08 NEILB
+     - Specified license as 'Perl' in metadata, to match doc.
+     - All of the changes in 1.10 were first done in this developer release,
+       apart from the change to Artistic License 2.0.</comment>
+    <requestid>242339</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>acaa5cd89cebdd9df0dbd2bed392d8d1</srcmd5>
+    <version>1.10</version>
+    <time>1409302522</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

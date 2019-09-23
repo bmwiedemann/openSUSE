@@ -1,0 +1,1128 @@
+-------------------------------------------------------------------
+Mon May 13 12:13:03 UTC 2019 - plater <davejplater@gmail.com>
+
+- Fix build against glib2 >= 2.60.2 by manually adding:
+  -lglib-2.0 -lgobject-2.0 to the linker flags.
+
+-------------------------------------------------------------------
+Tue Oct 30 09:51:36 UTC 2018 - davejplater@gmail.com
+
+- Removed requirement for autotrace which was needed by mftrace
+  and replaced with potrace. See boo#1040278
+
+-------------------------------------------------------------------
+Tue May 15 09:50:17 UTC 2018 - davejplater@gmail.com
+
+- Fix boo#1093056 CVE-2018-10992 with Debian patch 
+  use_system_correctly.patch.
+- Added 0101-read_relocation_dir-in-lilypond_datadir-too.patch
+  hurd_file_name_support.patch
+  Issue-5243-3-More-conservative-parsing-of-textedit-URIs.diff
+  add_dircategories_to_documentation.patch
+  Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
+  add_set-global-fonts_function.patch
+  Issue-5243-2-Let-get-editor-use-shell-quote-argument.diff and
+  use_cstring_and_ctype_includes.patch from Debian.
+
+-------------------------------------------------------------------
+Mon Jun  5 13:03:55 UTC 2017 - j.mairboeck@gmail.com
+
+- Add Avoid-segfault-in-grob.cc-with-gcc-6.patch to fix crash on
+  newer systems with gcc 6 or newer. This also fixes the doc build.
+  The patch is from:
+  https://sourceforge.net/p/testlilyissues/issues/4814/
+  (upstream bug tracker).
+
+-------------------------------------------------------------------
+Thu Jun  1 11:07:13 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files (boo#1041090),
+  to override current timestamp and to not have random uniqueIds
+  to make build more reproducible
+
+-------------------------------------------------------------------
+Sun Mar  5 16:17:23 UTC 2017 - rpm@fthiessen.de
+
+- Use correct vim directory
+- Cleanup of the spec file
+  * Install info files correctly (fixes RPMLint warnings)
+
+-------------------------------------------------------------------
+Wed Jul  1 19:10:27 UTC 2015 - tjcw@physics.org
+
+- Add netpbm BuildRequires in all paths, to fix build break 
+
+-------------------------------------------------------------------
+Tue Feb 24 15:05:40 UTC 2015 - dimstar@opensuse.org
+
+- Add netpbm BuildRequires: needed for pngtopnm.
+
+-------------------------------------------------------------------
+Mon Mar 31 10:11:46 UTC 2014 - pgajdos@suse.com
+
+- updated to 2.18.2: This version provides a number of updates to 
+  2.18.0, including updated manuals.  We recommend all users to 
+  upgrade to this version.
+
+-------------------------------------------------------------------
+Thu Jan  2 11:44:55 UTC 2014 - pgajdos@suse.com
+
+- updated to 2.18.0:
+  * final release, see changelogs for beta versions
+- dropped use-recommended-freetype-include.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Dec 18 14:01:01 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.97:
+  * beta phase to 2.18
+  * bugfixes
+
+-------------------------------------------------------------------
+Wed Dec 11 19:39:03 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added use-recommended-freetype-include.patch -- Freetype upstream 
+  recommends using their macros together with ft2build include. 
+  Positive sideeffect is that this patch makes it build with both 
+  freetype2 2.5.1, and older version
+
+-------------------------------------------------------------------
+Tue Nov 26 12:00:11 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.96:
+  * beta phase to 2.18
+  * bugfixes
+
+-------------------------------------------------------------------
+Mon Sep  9 15:46:59 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.26:
+   * Decimal numbers can now be written directly in music, without a
+     hash sign.  Together with the previous change in the way object
+     properties are specified, the code to change the length of stems
+     has changed from this:
+          \override Stem #'length = #5.6
+          e' f' g' a'
+     to this:
+          \override Stem.length = 5.6
+          e' f' g' a'
+
+     One has to write a digit on both sides of the dot - values like
+     `4.' or `-.3' are not allowed.
+
+     Decimal fractions are also not accepted in `\chordmode'.
+
+   * A number of shorthands like `(', `)', `|', `[', `]', `~', `\(',
+     `\)' and others can now freely be redefined like normal commands.
+     An example would be
+
+          "\\{" = (
+          "\\}" = )
+          "(" = \melisma
+          ")" = \melismaEnd
+
+          \new Staff <<
+            \relative c' {
+              c8 \{ d e f \} % slurred
+              g ( a b c ) % no slur, but with melisma
+              c,1 \bar "|."
+             }
+             \addlyrics { Li -- ly -- pond. }
+          >>
+           [image of music]
+   * The articulation shorthand for `\staccatissimo' has been renamed
+     from `-|' to `-!'.
+
+   * Tempo change ranges are now written as `\tempo 4 = 60 - 68' rather
+     than `\tempo 4 = 60 ~ 68'.
+- make-doc-crash.patch upstreamed
+
+-------------------------------------------------------------------
+Tue Aug 13 07:52:45 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.24:
+  * bugfixes
+- make doc do not crash anymore
+  + lilypond-make-doc-crash.patch
+
+-------------------------------------------------------------------
+Tue Aug  6 13:35:41 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.23:
+  * bugfixes
+- removed python26.patch and gcc44-relocate.patch
+
+-------------------------------------------------------------------
+Wed Jun 12 09:22:56 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.20:
+   * Grob `OctavateEight' was renamed to `ClefModifier'.  Related
+     context properties were renamed from `xxxOctavationyyy' to
+     `xxxTranspositionyyy'.
+   * There is a new `\absolute' command explicitly marking music as
+     being entered in absolute pitch.  While this has been the default
+     previously, an explicit `\absolute' also prevents reinterpretation
+     when the passage is placed inside of `\relative':
+
+          \relative c { c'4 \absolute { f'' g'' } c }
+           [image of music]
+   * When `\relative' is used without an explicit reference pitch, the
+     reference pitch now is the middle of the first octave, making the
+     first entered pitch indistinguishable from absolute pitch.
+     Previously, omitting the reference pitch would have lead to a
+     default of `c''.  Since that choice was somewhat arbitrary,
+     recommended usage was to always specify the reference pitch.
+   * A new command `\single' can be used for converting a property
+     override into a tweak to be applied on a single music expression:
+
+          <a \single\voiceTwoStyle e' a>1
+           [image of music]
+   * Two ways of letting graphical objects not appear in the output are
+     overriding its `transparent' property with `#t' (retaining the
+     original spacing) or overriding its `stencil' property with `#f'
+     (not using any space at all).  Those two operations now have the
+     shorthands `\hide' and `\omit', respectively.  They can either be
+     given a music expression to tweak, or the name of a graphical
+     object for which an override should be created (for specifying
+     both, use `\single' on the override form):
+
+          \new Staff \with { \omit Clef }
+          \relative c'' <a e' \hide a>1
+           [image of music]
+   * A new command `\temporary' can be applied to overrides in order to
+     not have them replace previous property settings.  If a `\revert'
+     is applied to the same property subsequently, the previous setting
+     reappears:
+          \override NoteHead.color = #red c4
+          \override NoteHead.color = #green d
+          \revert NoteHead.color e2
+          \override NoteHead.color = #red c4
+          \temporary\override NoteHead.color = #green d
+          \revert NoteHead.color e
+          \revert NoteHead.color c
+           [image of music]
+     This is mainly useful for writing music functions that need to
+     have some property changed just for the duration of the function.
+   * `\tag', `\removeWithTag', and `\keepWithTag' can now accept a list
+     of symbols rather than just a single symbol for marking, removing,
+     and keeping music with any of multiple tags.  This is particularly
+     important for `\keepWithTag' since one cannot achieve the same
+     effect by using multiple consecutive `\keepWithTag' commands.
+   * The `-d old-relative' option has been removed.  Not actually
+     accessible from the command line any more, its remaining use was
+     for interpretating `\relative' in LilyPond files converted
+     automatically from version 1.8 or older.  It is unclear how much
+     of this was actually still operative.
+
+-------------------------------------------------------------------
+Wed Mar 27 10:51:23 UTC 2013 - pgajdos@suse.com
+
+- updated to 2.17.14:
+   * The meaning of `instrumentTransposition' has been reversed.  After
+          \set instrumentTransposition = #{ b #}
+     a written `c'' now sounds like `b'.  Previously, this would have
+     been the other way round.  This and the following change should
+     make dealing with transposing instruments more straightforward.
+
+   * The music generated by `\set' and `\override' commands is no
+     longer affected by `\transpose'.  The main consequence is that
+     `\transpose' will transpose audible/concert pitch and printed
+     pitch by the same amount even when the transposed music contains
+     `\transposition'.  Previously,
+          \transpose c' f' \transposition bes'
+     was equivalent to `\transposition f''.  Now it stays equivalent to
+     `\transposition bes''.
+
+   * Tuplets are now created with the `\tuplet' command, which takes a
+     fraction `T/N' to specify that T notes are played in the time
+     usually allowed for N. One `\tuplet' command can create several
+     tuplet groups if their duration is typed after the fraction.
+
+          \tuplet 3/2 { c8 d e } \tuplet 3/2 { f e d } c2
+          \tuplet 3/2 4 { c8 d e f e d } c2
+           [image of music]
+
+
+     The `\times' command with its inverted fraction order `N/T' is
+     still available.
+   etc. see NEWS.txt
+
+-------------------------------------------------------------------
+Mon Dec 31 14:25:31 UTC 2012 - pgajdos@suse.com
+
+- updated to 2.17.9:
+  * The `\clef' command supports optional octavation:
+
+          \clef "treble_(8)"
+          c2 c
+          \clef "bass^[15]"
+          c2 c
+   * The LilyPond syntax of dot-separated words `Voice.Accidental' has
+     been made interchangeable with `#'(Voice Accidental)', a Scheme
+     list of symbols.  As one result, code like
+     \override Voice.TextSpanner #'(bound-details left text) = "rit."
+     is now equivalent to
+     \override Voice.TextSpanner bound-details.left.text = "rit."
+     or even
+     \override #'(Voice TextSpanner) bound-details.left.text = "rit."
+  * Grob and grob property path no longer need to be specified as two
+     separate arguments to commands like `\override' and `\revert',
+     allowing for the syntax
+     \override Voice.TextSpanner.bound-details.left.text = "rit."
+     Since complementary music functions like `\overrideProperty'
+     cannot support forms with and without separating space at the same
+     time, using a single dotted path is now the preferred form.
+     Specifying grob path and grob property path separately, currently
+     still supported with `\override' and `\revert' for compatibility
+     reasons, is deprecated.
+   * Due to words now being accepted as symbol function arguments, the
+     interfaces of `\accidentalStyle', `\alterBroken', `\footnote' and
+     `\tweak' had to be redesigned where optional symbol arguments were
+     involved.  Please check the respective music function
+     documentation for details.
+   * Several commands now accept symbol lists (conveniently entered as
+     dot-separated words) for various kinds of arguments.  These
+     include `\accidentalStyle', `\alterBroken', `\footnote', `\hide',
+     `\omit', `\overrideProperty', `\shape', and `\tweak'.
+   * The bar line user interface has changed. Bar glyphs now resemble
+     the appearance of the bar line, so a left repeat sign has to be
+     coded as `.|:'. The command `\defineBarLine' provides an easy way
+     to define additional bar line styles.
+   * Accidentals in the key signature may be printed in octaves other
+     than their traditional positions, or in multiple octaves.
+
+-------------------------------------------------------------------
+Mon Nov 19 19:18:46 UTC 2012 - j.mairboeck@gmail.com
+
+- update to version 2.16.1
+- This is a bugfix update see :
+  http://code.google.com/p/lilypond/issues/list?can=1&q=Fixed_2_16_1
+
+-------------------------------------------------------------------
+Tue Aug 28 19:45:18 UTC 2012 - j.mairboeck@gmail.com
+
+- Re-add lilypond-doc.spec again to build the offline documentation
+  again. It has been adjusted for 2.16.0 from the latest revision 
+  where it was still part of and a bit cleaned up. Info pages are
+  excluded because they are part of the main package now.
+
+-------------------------------------------------------------------
+Sun Aug 26 14:24:20 UTC 2012 - davejplater@gmail.com
+
+- Update to release 2.16.0
+- See :
+  http://lilypond.org/doc/v2.16/Documentation/changes/index.html
+  For upstream changes.
+
+-------------------------------------------------------------------
+Tue Aug  7 14:40:27 UTC 2012 - pgajdos@suse.com
+
+- updated to 2.15.42:
+   * Support for Kievan square notation:
+
+          \new KievanVoice {
+            \cadenzaOn
+            c d e f g a bes
+            \bar "kievan"
+          }
+           [image of music]
+
+
+   * Augmentation dots now avoid the other voice in two-voice polyphony
+     so that users can move the `Dot_column_engraver' to set dots
+     independently for each `Voice'.
+
+          [image of music]
+
+
+   * A Scheme function to adjust the control points of curves such as
+     slurs and ties, developed by several users, is now included in
+     LilyPond.
+
+          g8->( bes,-.) d4
+          \shape Slur #'((-0.5 . 1.5) (-3 . 0) (0 . 0) (0 . 0))
+          g8->( bes,!-.) d4
+           [image of music]
+
+   * etc., see NEWS.txt
+
+-------------------------------------------------------------------
+Tue Jul 24 09:07:09 UTC 2012 - werner@suse.de
+
+- Make if build with latest TeXLive 2012 
+
+-------------------------------------------------------------------
+Mon Jun 25 13:29:33 UTC 2012 - pgajdos@suse.com
+
+- use Fedora spec file, updated to 2.15.40
+
+-------------------------------------------------------------------
+Sat Mar 17 16:38:54 UTC 2012 - davejplater@gmail.com
+
+- Split off documentation build to a separate linked package.
+
+-------------------------------------------------------------------
+Sat Mar 17 05:42:54 UTC 2012 - davejplater@gmail.com
+
+- Fixed rpmlint errors in post script and comment in preparation
+- to submit to factory see bnc#733730
+
+-------------------------------------------------------------------
+Thu Feb 23 14:24:33 UTC 2012 - j.mairboeck@gmail.com
+
+- Add Workaround for g++ bug #51323 in 12.1 (compiler flag
+  -fno-optimize-sibling-calls)
+- Use the guile1 patch only on Factory, on 12.1 guile1 provides
+  still guile-config and not guile1-config
+
+-------------------------------------------------------------------
+Fri Feb 10 12:36:11 UTC 2012 - coolo@suse.com
+
+- use original source
+
+-------------------------------------------------------------------
+Fri Feb 10 07:56:43 UTC 2012 - coolo@suse.com
+
+- do not hardcode library names that no longer exist
+
+-------------------------------------------------------------------
+Tue Feb  7 22:11:56 UTC 2012 - coolo@suse.com
+
+- trying to get the info symlink right
+
+-------------------------------------------------------------------
+Tue Feb  7 12:05:06 UTC 2012 - coolo@suse.com
+
+- take out the non-portable overwrite of brp scripts
+
+-------------------------------------------------------------------
+Tue Jan 31 12:05:30 UTC 2012 - coolo@suse.com
+
+- make use of guile1 instead of guile
+
+-------------------------------------------------------------------
+Tue Nov 29 12:19:27 UTC 2011 - davejplater@gmail.com
+
+- Created package guile1 to fix factory and 12.1 build.
+- Updated to release 12.14.2 and removed unnecessary patches, 
+  created lilypond-2.14.2-fsfaddr.patch.
+- For the many upstream changes use info lilypond-changes or visit
+  http://lilypond.org/doc/v2.14/Documentation/changes/index.html
+  2.14.2 contains minor bug fixes since 2.14.0
+
+-------------------------------------------------------------------
+Fri Dec 10 22:44:00 UTC 2010 - davejplater@gmail.com
+
+- Fixed factory documentation build problem due to
+  texlive-bin-2010-34.2 bibtex change in behaviour with patch from
+  lilypond git - lilypond-bib2html.patch.
+- The patch fixes the following issues :
+  With the latest update of TeX Live 2009, bibtex became a "safe"
+  command in that it cannot write output to any directory other than
+  (a) a subdirectory of the current directory
+  (b) a subdirectory of TEXMFOUTPUT
+  Setting TEXMFOUTPUT to the temporary directory permits bibtex to
+  write in that directory.
+  Additionally, use mkstemp() instead mktemp(), since the latter
+  function has been deprecated since Python 2.3.
+
+-------------------------------------------------------------------
+Thu Oct 14 15:20:10 UTC 2010 - davejplater@gmail.com
+
+- Removed droid-fonts to fix factory build with ghostscript 9
+  see bnc#646093
+
+-------------------------------------------------------------------
+Sun Apr 11 10:45:52 UTC 2010 - davejplater@gmail.com
+
+- Update URL: to the new lilypond website.
+
+-------------------------------------------------------------------
+Mon Feb 22 11:40:05 UTC 2010 - davejplater@gmail.com
+
+- Fixed gcc45 build failure with lilypond-2.12.3-gcc45fix.patch
+
+------------------------------------------------------------------
+Mon Feb 22 06:29:00 UTC 2010 - davejplater@gmail.com
+
+- Update to 2.12.3-2 to fix documentation issues.
+
+-------------------------------------------------------------------
+Sun Jan 17 14:48:17 UTC 2010 - davejplater@gmail.com
+
+- Added droid-fonts to build requirements
+
+-------------------------------------------------------------------
+Sun Jan 10 10:49:45 UTC 2010 - davejplater@gmail.com
+
+- Restored old documentation build from source and removed doc tarball
+- Worked around buld failure due to ghostscript seg fault see bnc#568280
+
+-------------------------------------------------------------------
+Mon Jan  4 07:46:57 UTC 2010 - davejplater@gmail.com
+
+- Fix info files with no DIR headers with patch 1 and 2
+- Unpack documentation in %prep stage to enable easy patching of info files
+
+-------------------------------------------------------------------
+Thu Dec 31 10:57:13 UTC 2009 - davejplater@gmail.com
+
+- Update to 2.12.3
+- Change documentation build for 11.2 onwards to noarch
+- *2009-12-15 Graham PercivalFix out-of-build compile for ja.  stable/2.12 release/2.12.3-1
+  *2009-12-09 Graham PercivalPossible dist-check fix for missing ja files.
+  *2009-09-26 Neil PuttockExclude headers/top-level markup when processing system... 
+  *2009-09-26 Jan NieuwenhuizenOnly delete intermediate file if it exists.  Works... 
+  *2009-09-16 Patrick McCartyconfigure: Match one PFB font if duplicates are found
+  *2009-09-16 Patrick McCartyFix `make install', and fix #812
+  *2009-09-16 Werner Lemberg[config] Use fc-list.
+  *2009-09-16 Werner Lemberg[configure]: Reject OTF versions from Century fonts... 
+  *2009-09-16 Patrick McCartyAutoconf: fix CFLAGS/CXXFLAGS recognition
+  *2009-09-16 Patrick McCartyFix build with Autoconf 2.64
+  *2009-09-12 Neil PuttockFix #743: Reinstate warnings for unterminated span... 
+  *2009-09-06 Joe NeemanFix cross-staff thinko.
+  *2009-07-25 Neil PuttockLSR: Update.
+  *2009-07-24 Neil PuttockRemove unused folder input/new/revised/. (cherry picked... 
+  *2009-07-20 Carl SorensenFix fret diagram xo string offsets
+  *2009-07-20 Carl SorensenAdjust FretBoards so all orientations share a common... 
+  *2009-07-20 Carl SorensenRefactor fret diagrams for simpler calls
+  *2009-07-20 Carl SorensenAdd regression test for fretboard orientation origins
+  *2009-07-20 Neil PuttockDOCS -- add NEWS items for fret diagrams
+  *2009-07-20 Mark PoleskyDocs: NR B.6 The Feta font: Rename nodes, fix whitespace.
+  *2009-07-20 Graham PercivalDoc: add Font to all font nodes (avoids potential confu... 
+  *2009-07-20 Mark PoleskyDocs: NR B.6 The Feta font: Add menu; separate into... 
+  *2009-07-20 Trevor DanielsDocs: NR Tweak command: can't be used to modify stems,
+  *2009-07-20 Mark PoleskyDocs: NR B.6 The Feta font: Organize glyph list.
+  *2009-07-20 Patrick McCartyTypo fix
+  *2009-07-20 Mark PoleskyDocs: NR 1.2.1 Durations: add 128th notes to examples.
+  *2009-07-20 Trevor DanielsDocs: AU 3.4: Improve convert-ly usage
+  *2009-07-20 Trevor DanielsDocs: AU 3.4 Clarify action of convert-ly -e
+  *2009-07-20 Trevor DanielsDocs: AU 3.4 Clarify Convert-ly
+  *2009-07-20 Mark PoleskyNR 4.4.3 (ex.1) \override -> \overrideProperty
+  *2009-07-20 Neil PuttockTypos.
+  *2009-07-20 Mark PoleskyTypo: @var{} -> @code{}.
+  *2009-07-20 Neil PuttockNitpick: ly:spanner-bound grob name slur -> spanner.
+  *2009-07-20 Reinhold KainhoferFix doc string
+  *2009-07-20 Neil PuttockConsider accidentals in optical spacing correction.
+  *2009-07-19 Joe NeemanFix 546.
+  *2009-07-19 Joe NeemanRefactor accidental-placement.
+  *2009-07-19 Joe NeemanStart to break Accidental_placement::calc_positioning_d... 
+  *2009-07-19 Neil PuttockMinor regtest correction.
+  *2009-07-19 Carl SorensenFix default measure length in beaming-pattern
+  *2009-07-19 Reinhold KainhoferMusicXML: Don't crash when a part is missing the id... 
+  *2009-07-19 Reinhold KainhoferMusicXML: Some more broken MusicXML applications (beami... 
+  *2009-07-19 Reinhold KainhoferMusicXML: Add exceptions for more broken MusicXML exporters
+  *2009-07-19 Neil Puttockmodified: Documentation/user/tutorial.itely
+  *2009-07-19 Jonathan KulpDocs: fix bison link in AU
+  *2009-07-19 Francisco VilaTypo.
+  *2009-07-19 KierenAdd docstrings to functions in music-functions-init... 
+  *2009-07-19 Francisco VilaTypo.
+  *2009-07-19 Jonathan KulpDocs: insert language @warning for non-default languages
+  *2009-07-19 Jonathan KulpDocs: added line specifying language \include files... 
+  *2009-07-19 Trevor DanielsDocs: NR 1.2.3 Fix @ref
+  *2009-07-19 Jonathan Kulpchanged \book to \score in running.itely
+  *2009-07-19 Neil PuttockClean formatting on ly/music-functions-init.ly
+  *2009-07-19 Andrew WilsonAdd doc strings for functions applyOutput to bar (inclu... 
+  *2009-07-19 Carl SorensenAdd internationalization to dosctring for table-of... 
+  *2009-07-19 Trevor DanielsDocs: NR 4.6.2: Explain effect of system-count
+  *2009-07-19 Carl SorensenDoc -- clarification to parenthesize by Jon Kulp, based... 
+  *2009-07-19 Trevor DanielsDocs: NR various: links to Stems
+  *2009-07-19 Trevor DanielsDocs: NR 1.2.4 Beams:  add note about beaming over... 
+  *2009-07-19 Trevor DanielsDocs: NR 1.8 Text: Clarify use of fetaBraces
+  *2009-07-19 Jonathan KulpDocs: typo
+  *2009-07-19 Patrick McCartyDocs: IR: fix documentation of 'style values
+  *2009-07-19 Neil PuttockFix LyricText alignment when ignoreMelismata = ##t.
+  *2009-07-18 Neil PuttockReally fix #741.
+  *2009-07-17 Patrick McCartyFix compile
+  *2009-07-17 John MandereauDocs makefiles: get rid of unconditional translations... 
+  *2009-07-17 John MandereauDocs: prepare direct translation of node names in Texin... 
+  *2009-07-17 John MandereauDocs: do not attempt a build of Japanese docs in PDF
+  *2009-07-17 John MandereauMake Perl treat all I/O streams as UTF-8
+  *2009-07-17 John MandereauDocs: move common files and factorize Texinfo macros
+  *2009-07-17 Carl SorensenEliminate unix-specific -u flags from internationalizat... 
+  *2009-07-17 Maximilian... Use hashlib instead of deprecated md5 module if Python... 
+  *2009-07-17 Neil PuttockFix #741 from Nicolas.
+  *2009-07-17 John MandereauTranslated docs: fix 'cp' error about multiple CSS... 
+  *2009-07-17 Reinhold Kainhofertexi2html: Don't break with the latest texi2html version
+  *2009-07-17 Patrick McCartyBackport some regression tests.  Fixes compile.
+  *2009-07-17 Patrick McCartyFix compile
+  *2009-07-17 Mark PoleskyRemove email address.
+  *2009-07-17 Neil PuttockRemove deprecated function ly:set-point-and-click.
+  *2009-07-17 Neil PuttockFix #767.
+  *2009-07-17 Jan NieuwenhuizenGenerate RELEASE_FILES in $(outdir). Fixes make dists... 
+  *2009-07-17 Neil PuttockFix #781.
+  *2009-07-17 Patrick McCartyFix #778
+  *2009-07-17 John MandereauGit command call fix (remove dash)
+  *2009-07-17 Joe NeemanAdd a regression test for 453.
+  *2009-07-17 Joe NeemanFix 453.
+  *2009-07-17 Graham PercivalRemove text files from makefile, I'm an idiot.
+  *2009-07-17 Graham PercivalDoc: Remove unneeded doc files (merged with CG).
+  *2009-07-17 Patrick McCartyFix crash when output-preview-framework is missing
+  *2009-07-17 Reinhold KainhoferDoc: Fix HTML output
+  *2009-07-17 Reinhold Kainhofertexi2html: Use only one <pre class="example"> for ... 
+  *2009-07-17 Reinhold KainhoferUse HTML tags, not XHTML tags like <br/> (HTML validato... 
+  *2009-07-17 Joe NeemanFix 541.
+  *2009-07-17 Joe NeemanFix memory leak of an Output_def.
+  *2009-07-17 Joe NeemanFix 739.
+  *2009-07-17 Joe NeemanFix 759.
+  *2009-07-17 Francisco VilaChange web target name to doc in various places
+  *2009-07-17 Reinhold KainhoferBetter detection which characters need to be quoted... 
+  *2009-07-17 John MandereauAdd support for texidocs in check-translation
+  *2009-07-17 Neil PuttockNitpick: make web -> make doc.
+- See http://git.savannah.gnu.org/gitweb/?p=lilypond.git;a=log;h=refs/tags/release/2.12.3-1
+  for more changes.
+ 
+-------------------------------------------------------------------
+Tue Nov  3 10:23:57 CET 2009 - pgajdos@suse.cz
+
+- Don't build documentation because of problems on x86_64.
+
+-------------------------------------------------------------------
+Sun May 10 15:15:01 2009 CET - janneke@gnu.org
+
+- Update to 2.12.2
+- Update build dependencies.
+- Add sensible description from Debian.
+- Update (quite stale) list of authors.
+- Fix licence: GPL version 2.
+- Remove configure options: --enable-shared --disable-optimising.
+- Fix images in info docs.
+
+-------------------------------------------------------------------
+Fri Feb 13 11:23:55 CET 2009 - pgajdos@suse.cz
+
+- build documentation [bnc#466437]
+
+-------------------------------------------------------------------
+Tue Jan 13 11:47:06 CET 2009 - pgajdos@suse.cz
+
+- updated to 2.12.1
+
+-------------------------------------------------------------------
+Thu Nov 13 14:42:37 CET 2008 - ro@suse.de
+
+- make sure trigger script exits with a 0 value 
+
+-------------------------------------------------------------------
+Tue Nov 27 20:43:25 CET 2007 - pcerny@suse.cz
+
+- upgrade to version 2.10.33
+- fixes for compiling with gcc 4.3
+
+-------------------------------------------------------------------
+Fri Aug 31 18:41:56 CEST 2007 - pcerny@suse.cz
+
+- corrected dependencies [#301504]
+- .spec file cleanup (unneeded dependencies, packaging hacks)
+
+-------------------------------------------------------------------
+Sat Aug 18 12:24:57 CEST 2007 - aj@suse.de
+
+- Require freetype2.
+
+-------------------------------------------------------------------
+Thu Aug 16 13:19:57 CEST 2007 - pcerny@suse.cz
+
+- update to 2.10.29 (new stable branch, see NEWS.txt for details)
+     * `lilypond-book' supports DocBook too.
+   * Balloon texts can be entered more ergonomically, and are no longer
+     clipped from the output.
+   * Slurs now avoid clefs and key changes.
+   * The `FretBoards' context will generate guitar frettings
+     automatically,
+   * Horizontal and vertical spacing are now done at the same time so
+     that pages are filled more evenly.
+   * The page breaking algorithm is capable of detecting page turns and
+     formatting the music accordingly.
+   * Guitar right hand fingerings may now also be added,
+   * By defining a clip region, a cutout EPS file of a number of
+     measures may be generated from the complete score.  Hence, it is
+     no longer necessary to create separate files to create extracts of
+     (long) scores.  An example is shown in
+     `input/regression/clip-systems.ly'.
+   * Lyric texts may include tie symbols by using the `~' symbol,
+   * Calculation of note head durations is now softcoded.
+   * Chords can now be partially tied,
+   * Lyric extenders now have tunable padding.
+   * Instrument changes are better supported: names in the margin can be
+     changed half-way during a staff, and cues are printed
+     automatically.
+   * Barlines can be dashed now,
+   * Grace notes may be forced to use floating spacing,
+   * Durations of grace notes are taken into account for spacing,
+   * Tuplet brackets can be made to run to prefatory matter or the next
+     note
+   * Falls and doits can be added to notes
+   * `lilypond-book' now includes support for PDFTeX.
+   * Nested tuplets can have different formatting for each nesting
+     level,
+   * New sections with different spacing parameters can be started with
+     `newSpacingSection'.  This is useful when there are sections with
+     a different notions of long and short notes.
+   * A new, automated testing technique has been added. It will detect
+     changes in the formatting automatically, which will make it easier
+     to spot regression errors in the future.
+   * Figured bass can also be added to `Staff' contexts directly. In
+     this case, their vertical position is adjusted automatically.
+   * Beams may be put on isolated stems, and beamlets may be paired by
+     setting the `max-beam-connect' property,
+   * Beaming patterns obey the `beatGrouping' property.
+   * With the command `\transposedCueDuring' a cue's transposition can
+     be changed locally.  This can be used to prevent excessive ledger
+     lines on cues.
+   * By setting `hairpinToBarline', hairpins will stop at the barline
+     preceding the ending note.
+   * Objects may be rotated using the `rotation' property.  [image of music]
+   * Hairpins now support circled tips (al niente notation).  [image of music]
+   * The MusicXML convertor has been sped up, and has rudimentary
+     support for percussion notation.  It will also condense multi-bar
+     rests to enable part extraction.
+   * The beam printing code has been completely rewritten, and now
+     includes support for feathered beaming,
+     Known bug: the \featherDuration command only works with very short
+     music snippets.
+   * The `\note' markup command now also accepts note head styles.
+   * Tie chord formatting also works with arpegiated ties.
+
+-------------------------------------------------------------------
+Sun Apr 22 22:47:51 CEST 2007 - ro@suse.de
+
+- use texlive for building 
+
+-------------------------------------------------------------------
+Fri Mar 30 12:10:53 CEST 2007 - coolo@suse.de
+
+- add flex and bison to BuildRequires.
+
+-------------------------------------------------------------------
+Mon Oct 23 18:15:21 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 2.8.7:
+  * New stable branch, see NEWS.txt for complete feature list.
+
+-------------------------------------------------------------------
+Fri Oct 13 13:58:03 CEST 2006 - aj@suse.de
+
+- Add guile-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Apr 19 11:02:20 CEST 2006 - pnemec@suse.cz
+
+- converted translations to utf8
+
+-------------------------------------------------------------------
+Wed Feb  8 00:45:32 CET 2006 - ro@suse.de
+
+- ignore errors adding dir to fontconfig for the moment 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 18:41:39 CET 2006 - sbrabec@suse.cz
+
+- Fixed line order in previous fix.
+
+-------------------------------------------------------------------
+Fri Jan 20 14:53:41 CET 2006 - sbrabec@suse.cz
+
+- Worked around bad info file path (#121977).
+
+-------------------------------------------------------------------
+Tue Jan 10 19:12:25 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.6.5.
+
+-------------------------------------------------------------------
+Tue Nov  8 12:16:39 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.6.4.
+- Fixed extra qualification errors.
+
+-------------------------------------------------------------------
+Wed Oct 19 15:00:52 CEST 2005 - ro@suse.de
+
+- remove dependency to scrollkeeper (not present everywhere)
+- fixed run-scrollkeeper hooks in postinstall 
+
+-------------------------------------------------------------------
+Thu Oct 13 15:42:22 CEST 2005 - ro@suse.de
+
+- also remove all fonts.cache-2 
+
+-------------------------------------------------------------------
+Fri Aug  5 12:47:38 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.6.3.
+
+-------------------------------------------------------------------
+Thu Apr 28 11:15:37 CEST 2005 - pmladek@suse.cz
+
+- fixed to build with gcc4
+- enabled parallel build with icecream
+- fixed to do not explicitly remove the BuildRoot in the install phase
+
+-------------------------------------------------------------------
+Tue Mar 15 18:29:17 CET 2005 - sbrabec@suse.cz
+
+- Fixed building of documentation (#71717).
+
+-------------------------------------------------------------------
+Tue Mar  1 19:29:24 CET 2005 - sbrabec@suse.cz
+
+- Fixed creation of latin1.enc with latest gs.
+- Symlink files to proper texmf hierarchy.
+- Configure texmf.cnf instead of setting profile.
+- Include ls-R file.
+
+-------------------------------------------------------------------
+Mon Feb 28 19:33:18 CET 2005 - sbrabec@suse.cz
+
+- Fixed profile scripts (#66754).
+
+-------------------------------------------------------------------
+Tue Feb 15 02:07:25 CET 2005 - ro@suse.de
+
+- hack to build with tetex-3.0 
+
+-------------------------------------------------------------------
+Wed Jan 26 15:18:35 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.4.4.
+
+-------------------------------------------------------------------
+Fri Jan 14 12:41:53 CET 2005 - ro@suse.de
+
+- fix mftrace calling options 
+
+-------------------------------------------------------------------
+Wed Aug 25 11:51:32 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.2.6.
+
+-------------------------------------------------------------------
+Tue Aug 24 18:44:22 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.2.5.
+
+-------------------------------------------------------------------
+Thu Aug 19 16:14:22 CEST 2004 - ro@suse.de
+
+- updated neededforbuild
+
+-------------------------------------------------------------------
+Thu Aug 19 11:50:06 CEST 2004 - ro@suse.de
+
+- PfaEdit has been renamed to fontforge
+
+-------------------------------------------------------------------
+Wed Apr 28 01:46:36 CEST 2004 - ro@suse.de
+
+- change return type of initmidi to void
+
+-------------------------------------------------------------------
+Tue Mar 23 17:12:14 CET 2004 - sbrabec@suse.cz
+
+- Fixed autogen.sh (fixes LILYPONDPREFIX problems, bug #35351).
+- Added PfaEdit to neededforbuild to simplify and autohint fonts.
+
+-------------------------------------------------------------------
+Mon Feb  9 01:30:50 CET 2004 - ro@suse.de
+
+- expand neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb 06 13:04:07 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.3.
+
+-------------------------------------------------------------------
+Sat Jan 10 10:52:57 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Aug 29 01:56:09 CEST 2003 - ro@suse.de
+
+- specify libdir for lib64
+
+-------------------------------------------------------------------
+Thu Aug 28 13:53:40 CEST 2003 - ro@suse.de
+
+- fixed problem with lilypond-internal texinfo page 
+
+-------------------------------------------------------------------
+Tue Aug 26 17:09:39 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.8.1.
+- Fixed problems with new bison and head/tail usage.
+
+-------------------------------------------------------------------
+Wed Jul  2 02:07:49 CEST 2003 - ro@suse.de
+
+- remove traces of buildroot from installed files
+
+-------------------------------------------------------------------
+Fri Jun 27 00:49:18 CEST 2003 - ro@suse.de
+
+- fix head and tail calling syntax in even more places ....
+
+-------------------------------------------------------------------
+Mon Jun 16 17:02:09 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Tue Jun 10 15:45:12 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Apr 11 00:43:59 CEST 2003 - ro@suse.de
+
+- fix deprecated head/tail calling syntax (-1) 
+
+-------------------------------------------------------------------
+Thu Feb 20 12:08:16 CET 2003 - ro@suse.de
+ 
+- try to solve the info mess with new approach
+  music-glossary get's it's own dir entry
+
+-------------------------------------------------------------------
+Tue Feb 18 16:43:41 CET 2003 - sbrabec@suse.cz
+
+- Added %install_info macros (bug #23437). Workaround problems of multi
+  file info dir section.
+
+-------------------------------------------------------------------
+Fri Feb  7 16:05:31 CET 2003 - ro@suse.de
+
+- added x-devel-packages to neededforbuild (for metafont run) 
+
+-------------------------------------------------------------------
+Thu Feb  6 01:42:55 CET 2003 - ro@suse.de
+
+- touch config.h again
+
+-------------------------------------------------------------------
+Thu Jan 30 22:05:22 CET 2003 - ro@suse.de
+
+- fixed configure.in
+  (and regenerated configure with archaic autoconf) 
+- fixed countless multiline string issues
+
+-------------------------------------------------------------------
+Wed Dec 04 12:26:43 CET 2002 - sbrabec@suse.cz
+
+- Updated to version 1.6.6. Use mftrace.
+
+-------------------------------------------------------------------
+Thu Nov 21 02:15:01 CET 2002 - ro@suse.de
+
+- fix build with current bison (missing semicolons) 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Mon Apr 15 17:52:16 CEST 2002 - pmladek@suse.cz
+
+- fixed to compile with gcc-3.1
+- patch gcc3.1-bug contains temporary fixes for gcc-3.1 bugs
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:06 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Sun Jan 27 12:25:28 CET 2002 - ro@suse.de
+
+- fixed to build with new bison 
+
+-------------------------------------------------------------------
+Thu Jan 17 11:04:43 CET 2002 - pmladek@suse.cz
+
+- updated to version 1.4.10
+- fixed lilypond-book.py for python-2.2
+- errors when compiling Documentation are not ignored again 
+
+-------------------------------------------------------------------
+Wed Jan 16 12:54:21 CET 2002 - ro@suse.de
+
+- ignore errors when compiling the Documentation
+  to make the package build
+  (broke with python2.2 in lilypond-book.py:
+     lilypond-block in texi target)
+
+-------------------------------------------------------------------
+Tue Dec 11 16:43:25 CET 2001 - pmladek@suse.cz
+
+- updated to version 1.4.9:
+	* many bug fixes
+- removed obsolete midi2ly patch
+- cleaned up specfile
+
+-------------------------------------------------------------------
+Tue Dec  4 16:47:18 CET 2001 - pmladek@suse.cz
+
+- fixed to compile with new bison (version 1.30)
+
+-------------------------------------------------------------------
+Tue Sep 11 15:10:59 CEST 2001 - pmladek@suse.cz
+
+- fixed midi2ly - do not print bad char ;
+- fixed documentation
+
+-------------------------------------------------------------------
+Fri Jul 20 14:04:15 CEST 2001 - pmladek@suse.cz
+
+- updated to vesion 1.4.5
+
+-------------------------------------------------------------------
+Fri Jul 20 12:06:42 CEST 2001 - kukuk@suse.de
+
+- changed neededforbuild <gs_fonts> to <ghostscript-fonts-std>
+- changed neededforbuild <gs_lib> to <ghostscript-library>
+- changed neededforbuild <gs_serv> to <ghostscript-serv>
+
+-------------------------------------------------------------------
+Tue Jul 10 16:41:53 CEST 2001 - pmladek@suse.cz
+
+- fixed profile scripts (bug #9324)
+
+-------------------------------------------------------------------
+Fri May 11 09:58:31 CEST 2001 - nadvornik@suse.cz
+
+- update to stable release 1.4.0
+- fixed requires and documentation
+
+-------------------------------------------------------------------
+Tue May  8 21:22:58 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Tue Apr 24 09:53:56 CEST 2001 - nadvornik@suse.cz
+
+- update to 1.3.150, this fixes bug #6701
+
+-------------------------------------------------------------------
+Wed Feb 28 09:09:10 CET 2001 - nadvornik@suse.cz
+
+- update to 1.3.132, fixed bug #6536
+- spec file cleanup
+
+-------------------------------------------------------------------
+Thu Nov 30 08:57:44 CET 2000 - ro@suse.de
+
+- neededforbuild libnetpb -> libnetpbm 
+
+-------------------------------------------------------------------
+Tue Nov 24 18:13:55 PST 2000 - lmarks@suse.com
+
+- Changed spec file so that package builds even if htmldoc fails.
+
+-------------------------------------------------------------------
+Fri Nov 24 01:01:32 CET 2000 - kukuk@suse.de
+
+- fix use of macros for mandir and infodir
+
+-------------------------------------------------------------------
+Thu Nov 23 18:11:43 CET 2000 - ro@suse.de
+
+- changelog dates fixed 
+
+-------------------------------------------------------------------
+Tue Nov 22 16:54:55 PST 2000 - lmarks@suse.com
+
+- Added small patch from devolpers.
+
+-------------------------------------------------------------------
+Tue Nov 21 16:29:55 PST 2000 - lmarks@suse.com
+
+- Lilypond 1.2.17 will not compile with Guile 1.4
+- Updated Lilpond to 1.3.108 
+- Used new spec file from make/out/lilpond.spec
+- moved man-pages and info-pages to /usr/share
+
+-------------------------------------------------------------------
+Mon Apr 10 22:14:35 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Thu Mar 16 13:40:47 CET 2000 - kukuk@suse.de
+
+- Use gs_serv, not gs_both (doesn't exist on all platforms)
+
+-------------------------------------------------------------------
+Wed Mar  1 18:50:03 CET 2000 - uli@suse.de
+
+- moved man pages to /usr/share
+
+-------------------------------------------------------------------
+Tue Dec 21 08:30:21 CET 1999 - ke@suse.de
+
+- add documentation (#271).
+
+-------------------------------------------------------------------
+Mon Dec 13 13:30:38 CET 1999 - ke@suse.de
+
+- update: 1.2.17.
+- compiler fix (thanks to schwab@suse.de).
+- #271.
+
+-------------------------------------------------------------------
+Mon Oct 25 17:04:54 CEST 1999 - ke@suse.de
+
+- update: 1.2.16.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Sep  6 23:47:06 CEST 1999 - ro@suse.de
+
+- update to 1.2.6 to make it compile with new guile
+- various fixes and one hack to make this compile at all 
+
+-------------------------------------------------------------------
+Sun Aug 22 11:32:19 MEST 1999 - ke@suse.de
+
+- provide /etc/profile.d scripts.
+- make lily.ps available (thanks to Ulrich Windl).
+
+-------------------------------------------------------------------
+Tue Aug 17 17:22:21 MEST 1999 - ke@suse.de
+
+- update: version 1.2.1.
+
+-------------------------------------------------------------------
+Thu Nov  5 16:14:59 MET 1998 - ke@suse.de
+
+- use the TDS and provide links from /usr/share/lilypond.
+- install examples via %doc.
+
+-------------------------------------------------------------------
+Wed Oct 28 11:09:41 MET 1998 - ke@suse.de
+
+- update: version 1.0.17.
+
+-------------------------------------------------------------------
+Fri Aug  7 15:29:50 MEST 1998 - ke@suse.de
+
+- initial package: version 1.0.0
+
+

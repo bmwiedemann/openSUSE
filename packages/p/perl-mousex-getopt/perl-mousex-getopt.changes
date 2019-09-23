@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Sep 11 12:23:07 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- support of Getopt::Long::Descriptive version 1.103 (91da15eed08ede5d7486ccc3eec9b70ae493d627.patch)
+
+-------------------------------------------------------------------
+Sat Aug 13 10:41:33 UTC 2016 - stephan.barth@suse.com
+
+- Update to version 0.37
+  Upstream switched from using Module::Build to Module::Build::Tiny
+  Changelog from upstream:
+  - Cope with GLD output changes in version 0.100 (#10, by pghmcfc)
+- Adapted %build and %install parameters to Module::Build::Tiny syntax which
+  needs leading --, e.g. '--destdir' instead of just 'destdir'
+- Fixed %description, which was a copy&paste of the summary
+
+-------------------------------------------------------------------
+Fri Apr 24 08:25:29 UTC 2015 - opensuse@dstoecker.de
+
+- update to 0.36
+
+-------------------------------------------------------------------
+Wed Mar 19 10:03:19 UTC 2014 - coolo@suse.com
+
+- initial package 0.35
+    * created by cpanspec 1.78.07
+

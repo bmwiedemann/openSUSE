@@ -1,0 +1,36 @@
+Index: batik-1.8/batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.bin.policy
+===================================================================
+--- batik-1.8.orig/batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.bin.policy
++++ batik-1.8/batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.bin.policy
+@@ -30,6 +30,11 @@ grant codeBase "${app.jar.base}/batik-ra
+   permission java.security.AllPermission;
+ };
+ 
++//new stuff
++grant codeBase "${app.jar.base}/batik-all.jar" {
++  permission java.security.AllPermission;
++};
++
+ grant codeBase "${app.jar.base}/lib/batik-ext.jar" {
+   permission java.security.AllPermission;
+ };
+Index: batik-1.8/batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.bin.policy
+===================================================================
+--- batik-1.8.orig/batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.bin.policy
++++ batik-1.8/batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.bin.policy
+@@ -34,6 +34,10 @@ grant codeBase "${app.jar.base}/batik-sq
+   permission java.security.AllPermission;
+ };
+ 
++grant codeBase "${app.jar.base}/batik-all.jar" {
++  permission java.security.AllPermission;
++};
++
+ grant codeBase "${app.jar.base}/lib/batik-ext.jar" {
+   permission java.security.AllPermission;
+ };
+@@ -108,4 +112,3 @@ grant codeBase "${app.jar.base}/lib/js.j
+ grant {
+   permission java.io.FilePermission "lib/batik-svg-dom.jar", "read";
+ };
+-

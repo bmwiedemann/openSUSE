@@ -1,0 +1,25 @@
+From: Wolfgang Bauer <wbauer@tmo.at>
+Subject: Don't use QOverload
+
+QOverload has been introduced in Qt 5.7.0.
+To fix the build on Leap 42.3 (which comes with Qt 5.6.2), revert this upstream change in 1.1.2.
+
+--- a/utils/vpiano/vpiano.cpp
++++ b/utils/vpiano/vpiano.cpp
+@@ -78,14 +78,8 @@
+     dlgConnections.setAdvanced(m_advanced);
+ 
+     if (m_midiIn != 0) {
+-        //connect(m_midiIn, SIGNAL(midiNoteOn(int,int,int)), SLOT(slotNoteOn(int,int,int)));
+-        //connect(m_midiIn, SIGNAL(midiNoteOff(int,int,int)), SLOT(slotNoteOff(int,int,int)));
+-        connect(m_midiIn, &MIDIInput::midiNoteOn,
+-                this, QOverload<int,int,int>::of(&VPiano::slotNoteOn),
+-                Qt::QueuedConnection);
+-        connect(m_midiIn, &MIDIInput::midiNoteOff,
+-                this, QOverload<int,int,int>::of(&VPiano::slotNoteOff),
+-                Qt::QueuedConnection);
++        connect(m_midiIn, SIGNAL(midiNoteOn(int,int,int)), SLOT(slotNoteOn(int,int,int)));
++        connect(m_midiIn, SIGNAL(midiNoteOff(int,int,int)), SLOT(slotNoteOff(int,int,int)));
+         if (!m_lastInputConnection.isEmpty()) {
+             m_midiIn->initialize(&settings);
+             m_midiIn->open(m_lastInputConnection);

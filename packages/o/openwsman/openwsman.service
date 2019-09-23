@@ -1,0 +1,10 @@
+[Unit]
+Description=Openwsman WS-Management Service
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/openwsmand -S
+
+[Install]
+WantedBy=multi-user.target

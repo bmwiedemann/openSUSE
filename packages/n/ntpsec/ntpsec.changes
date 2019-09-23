@@ -1,0 +1,1240 @@
+-------------------------------------------------------------------
+Sat Aug 17 17:29:59 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix build on Tumbleweed:
+  * Add ntpsec-1.1.6-update-waf.patch (picked from upstream).
+  * Disable LTO.
+- Actually remove ntp.firewall from sources.
+
+-------------------------------------------------------------------
+Thu Jul 11 10:56:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not install susefirewall2 service anymore
+- Update to 1.1.6:
+  * Fixes to NTS server list.
+  * Add ALPN for the NTS server, as required by the NTP draft.
+
+-------------------------------------------------------------------
+Mon Jul  1 08:31:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.4 should fix bsc#1138728:
+  * NTS is now implemented
+  * Lots of fixes and cleanups to PPS
+  * Lots of minor cleanups
+
+-------------------------------------------------------------------
+Wed Jan 16 10:16:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update requirement check for gpsd to less strict one
+
+-------------------------------------------------------------------
+Wed Jan 16 09:06:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.3 bsc#1122131 CVE-2019-6445 bsc#1122132 
+  CVE-2019-6442 bsc#1122134 CVE-2019-6444 bsc#1122144
+  CVE-2019-6443:
+  * Lots of typo fixes, documentation cleanups, test targets.
+
+-------------------------------------------------------------------
+Sun Oct 14 11:09:27 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 1.1.2:
+  * Use data minimization on client requests
+    https://datatracker.ietf.org/doc/draft-ietf-ntp-data-minimization/
+  * Support AES-128-CMAC for authentication
+    https://datatracker.ietf.org/doc/draft-ietf-ntp-mac/
+
+-------------------------------------------------------------------
+Fri Jun 29 08:57:44 UTC 2018 - tchvatal@suse.com
+
+- Update to 1.1.1:
+  * Log timestamps now include the year.  This is useful when
+    investigating bugs involving time-setting and -g.
+  * Many internal cleanups to clear the way for upcoming major features.
+    They should generally not be user visible.  Refer to the git-log if
+    you are interested.
+
+-------------------------------------------------------------------
+Thu Mar 29 10:43:16 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.1.0:
+  * Digests longer then 20 bytes will be truncated.
+  * We have merged NTP Classic's fix for CVE-2018-7182.
+  * we have dropped support for Broadcast servers.  We had kept it for
+    older desktop operating systems listening on the local network
+    broadcast domain, a use case that is now no longer in use at sane
+    enviroments, and no longer necessary for modern desktop OSs.
+  * It is now possible to unpeer refclocks using a type/unit specification
+    rather than a magic IP address.  This was the last obligatory use of
+    magic IP addresses in the configuration grammar.
+  * OpenBSD has been removed from the list of supported platforms for
+    ntpd. It will be restored if and when its clock API supports drift
+    adjustment via ntp_adjtime() or equivalent facility.
+  * Mac OS X support has been dropped pending the implementation of
+    ntp_adjtime(2).
+  * A bug that caused the rejection of 33% of packets from Amazon time
+    service has been fixed.
+
+-------------------------------------------------------------------
+Tue Nov 28 15:40:51 UTC 2017 - mpluskal@suse.com
+
+- Switch to python3
+
+-------------------------------------------------------------------
+Fri Nov 24 12:45:22 UTC 2017 - tchvatal@suse.com
+
+- Update to version 1.0.0 instead of git snapshot:
+  * mostly contains all the previously mentioned stuff nothing else
+    changed
+
+-------------------------------------------------------------------
+Sat Nov 11 07:38:37 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.9.7+git20171109.2d88a7d84:
+  * Remove two unnecessary functions.
+  * Changed MIB system to use seperate read/write callbacks
+  * Boolification.
+  * Nuke ifdefs for O_NONBLOCK and O_NOCTTY
+  * Drop use of pthread_addr
+  * Fixes instructions for disabling Apple NTP.
+  * Added MIB coverage
+  * Address GitLab issue #407: ntpdig/ntptime fails against some servers
+  * Removed obsolete MIB tree-list converters
+  * Changed ntpsnmpd to use the new MIB tree system
+  * Added walkMIBTree generator to replace previous MIB tree handlers
+  * Squelch a compiler warning.
+  * Address GitLab issue #406: ntpd build fails: ...
+  * Bump the minor version number.
+  * New syntax: unpeer clock <type> [unit <number>]
+  * In the config parser, factor out type/unit lookup into addr_from_typeunit()...
+  * No point in removing individual generic-driver modes...
+  * endian.h does not suffice, as there are no 64-bit primitives.
+  * Dead-code removal.
+  * Move some TOSO items that didn't land pre-1.0.
+  * Remove obsolete TODO items.
+  * De-dummyified several OIDs
+  * Added option to put a space between the value and unit in unitify()
+  * Typos in comments
+  * Some pep8/pyflakes cleanup
+  * First Mode 6 - SNMP contact
+  * Removed redundant, and non-coherent getNextOID() function from getOID()
+  * Added and used sendErrorPacket() method
+  * Added AgentX sessionID error check and response
+  * Added slots for agentx write callbacks
+  * Cleaned up and updated comments
+  * Expanded error checking for SNMP
+  * branch change
+  * Python 3 fix for test error
+  * Changed error handling in decode_packet to return remaining data
+  * Documentation fix
+  * Added doc files for ntpsnmpd
+  * Added ntpsnmpd in prototype state.
+  * Fully split SNMP uint32 vs int32 handlers
+  * Correct SNMP INTEGER value to be signed
+  * Changed new tests to only use assertEqual
+  * Added >= and <= comparison functions to OID class
+  * MIB tree/lists now have callback fields
+  * pep8/pyflakes fixes
+  * MIB tree/flat conversion functions now use OIDs instead of tuples
+  * PEP8: W291 trailing whitespace
+  * Move humanlogtime() to msyslog.c since it's only used there
+  * Added list conversion for Python 3 compatability
+  * Added MIB tree flattening and inflation functions
+  * Removed unused function humantime()
+  * In devel, turn release into a script generator.
+  * update NEWS file for new work
+  * version 1.0.0
+  * Fixes for release machinery.
+  * Removed temp debugging statement, changed constants to be 32-bit safe
+  * Added temporary debugging message to test_util (re:bug #404)
+  * Fixed test_summary to properly test last_sync field.
+  * Fixed test bug on Cent 6 32bit, also SyncPacket formatting typo
+  * Remove s historical remnant in the documentation.
+  * Added documentation and fixes for float tests
+  * Restored missing decimal fix, changed relevant tests to be float aware
+  * Restored previously removed tests, fixed math problem.
+  * Removed unnecessary tests that failed
+  * Banish GCC 6 warnings.
+  * Updated comments to document sys.stdout.encoding being fake news
+  * Possible fix for ntpq unicode issue
+- Rename python subpackage to python2
+
+-------------------------------------------------------------------
+Mon Oct 02 12:32:58 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20171002.c79bc6271:
+  * Fix a comment that became incorrect after the autonomy change.
+  * Fix GitLab issue #378: Misc warnings on RasPi
+  * Address GitLab issue #380: ntpq should not terminate with a traceback
+  * Attempt to suppress some compiler warnings.
+  * Don't build with -Wcast-align
+  * Fully disable -Wcast-align.
+  * Suppress another useless warning.
+  * Abandon -Wsign-conversion, it's too flaky to be useful.
+  * -Wsign-conversion is unreasonably difficult to stamp out.
+  * Revert "Attempt to suppress some compiler warnings."
+  * Restore build under clang.
+  * Finish rationalization of config block copy.
+  * Thinko fix.
+  * Trial implementation/docs of RFE: Add fudge option to server config
+  * Added tests for missing values in __parse_varlist
+  * Fixed broken test for cook()
+  * Added missing tests for several functions
+  * Explain a scenario in which bias configuration might be useful.
+  * Don't scale the bias report - use units of seconds.
+  * Addtress GitLab issue #381: simple mathematics
+  * Fixed / completed test for NTPStats.__init__()
+  * Change prettydate() to always emit UTC, for reproducibility.
+  * Fixes tests for cook() to match new prettydate()
+  * Address GitLab issue #383: ntpq: invalid file argument ignored
+  * Grammar
+  * Fix spelling of "received"
+  * Typo fix.
+  * Suppress a false-positive Coverity warning.
+  * branch change
+  * Finished tests for statfiles.py
+  * Revert "branch change", a temporary commit I forgot to rebase.
+  * Finished tests for statfiles.py (for real this time)
+  * pep8/pyflakes fixes to tests
+  * Formatting fixes for packet.py
+  * Formatting fixes for util.py
+  * Update NEWS file.
+  * Fix a linkcheck warning.
+  * Update idex-ignores.
+  * Typo fix.
+  * Removed ntpq packet dump comment from TODO because obsolete.
+  * refclock_nmea: check snprintf() return codes.
+  * refclock_nmea: fix a typo, and a long line.
+  * refclock_nmea: provisional fix for issue #62.
+  * Documentation updates.
+  * Doc polishing.
+  * Spelling/typos
+  * ntpq: do not query for bcastdelay removed in Dec 2016.
+  * Tore NTPStats.__init__() method into 3 separate methods, adjusted tests
+  * refclock_nmea: report device actually opened.
+  * refclock_nmea: add logging of NMEA PPS device name.
+  * refclock_nmea: remove trailing whitespace.
+  * refclock_nmea: better logging of NMEA open fail.
+  * refclock_ntpsec: missing braces...
+  * Address GitLab issue #388: Remove 'register' keyword
+  * refclock_nmea: set jitter high on NMEA timeout.
+  * Docs: add tally code to ntpq and ntpmon doc.
+  * ntp_proto: once a PPS got selected, it never got unselected!
+  * Attempted fix of trimble logging
+  * refclock_trimble: invalid UTC offset doesn't mean invalid packet
+  * refclock_trimble: fix classic bug 2659
+  * refclock_trimble: build Praecis SPSTAT message response in trimble_io
+  * refclock_trimble: use timecode packet's timestamp
+  * refclock_trimble: check serial parity
+  * refclock_trimble: require event polling for non-Thunderbolt receivers
+  * refclock_trimble: remove unused and unnecessary code
+  * refclock_trimble: improved debugging messages
+  * refclock_trimble: fix leap-scheduled detection, simplify polling
+  * refclock_trimble: add Thunderbolt holdover and stored position check
+  * refclock_trimble: configurable event trigger method
+  * refclock_trimble: print a debug message when no packets were decoded
+  * refclock_trimble: remove redundant debug messages
+  * refclock_trimble: fix for classic bug 1075
+  * refclock_trimble: improve 'no packets detected' message
+  * refclock_trimble: set dispersion
+  * refclock_trimble: use the median filter
+  * refclock_trimble: add log message topic labels
+  * refclock_trimble: check tcesetattr and ioctl results at startup
+  * refclock_trimble: pass 4-digit year through refclock_process()
+  * refclock_trimble: update documentation
+  * refclock_trimble: time2 sets holdover duration limit
+  * refclock_trimble: compat. with 'attempted fix of trimble logging'
+  * refclock_trimble: fix 'attempted fix of trimble logging'
+  * Documentation polishing.
+  * Documentation polishing.
+  * Fix generic refclock logging.
+  * Reduce memory usage by removing an unneeded strdup().
+  * Note that the TrueTime 468-DC mode is obsolete.
+  * Address GitLab issue #390: Need log message when the clock is stepped
+  * ntp.d: change .ntpd extention to .conf.
+  * In TrueTime driver, remove last remnants of OMEGA support.
+  * In TrueTime driver, remove GOES support (sats shut down in 2005).
+  * Documentation polishing.
+  * Remove Magnavox driver.
+  * Typo fix.
+  * Remove unused PLATFORM_OPENBSD config symbol.
+  * Remove unecessary estrdup() in NMEA refclock initialization.
+  * Note that on some HP-GPS devices the era can be reset.
+  * Mitigation strategy for clock rollovers.
+  * Markup fixes for generic clock driver HOWTO.
+  * In clock_sample(), prevent jitter from zeroing if all samples are bad.
+  * Use poll iburst in the sample config files; it works now.
+  * Typo fixes.
+  * Revise and update example config files.
+  * Address GitLab issue #392: combine /etc/ntp.d and /etc/ntp-conf.d
+  * Bugfix: enable reading config directory when there's no ntp.conf,
+  * Log all time steps (GitLab issue #390)
+  * Documentation polishing.
+  * More documentation polishing.
+  * packet.py tests now work with Python 3
+  * util.py tests now work with Python 3, fixed missing future division import
+  * Documentation polishing.
+  * refclock_trimble: fixes for debug print, comments, documentation
+  * Use ISO8061-format dates.
+  * ntpviz: add decode of PPS(x) refclock name
+  * ntpviz: add decode of NMEA(x) refclock names.
+  * Disables useless pyembed check and setup.
+  * Fixes incorrect Python library install locations.
+  * Fixes Python in-tree build setup.
+  * Suppresses wafhelpers .pyc files.
+  * Adds cleanup for incorrect Python library installs.
+  * Removes all PYTHONPATH references.
+  * Adds build-time warning when PYTHONPATH is set.
+  * Fixes misleading ntploggps error when GPSD not installed.
+  * Removes execute permissions from client and test sources.
+  * Repair the option tester.
+  * Renove a magic link obsolesced by PYTHONPATH changes.
+  * Fixed problem with python3 and python3.6 versions
+  * tests/option-tester.sh now gets ntpq from $build/main/ntpclients
+  * Restore accidentally removed creation of a magigic ntp/ link.
+  * ntpviz: Add Python 2.6 compatibily fix.
+  * ntpviz: Python 2.6 has no collections.Counter(), use defaultdict()
+  * ntpsweep: fix crash dump on Python 2.6.
+  * Adds test program to list Pythons and some of their parameters.
+  * ntpleapfetch: do not wait forever to read the remote leapfile.
+  * ntpleapfetch: allow sha1sum or shasum to be used.
+  * ntpleapfetch: It is only an error if the program does not continue.
+  * ntpleapfetch: fix chmod/chown on CentOS
+  * Fix for packet tests so they can run wiithout a tty
+  * Fix for missing socket.EAI_NODATA on FreeBSD
+  * Python library files don't need to be executable in the build tree
+  * Modify FixConfig to apply PREFIX to Python library paths.
+  * Changed OIDs to be classes instead of dicts
+  * Transplanted OID comparison function into OID class
+  * Converted Search Ranges to a class
+  * Converted Varbinds into a class
+  * Rearrangement of some functions, and pep8/pyflakex cleanup
+  * AgentX code and tests now work in python 3.
+  * Run python tests using gitlab ci IFF python >= 2.7
+  * Fixes unicode bug under python 3
+  * Removed obsolete comment regarding removal of IO wrappers
+  * Removed some single use variables from stringfiltcooker
+  * Changed unnecessesarily snarky and factually inaccurate comment.
+  * Restored IO wrapper for OSX ascii streams.
+  * Restored comment describing stream wrappers
+  * Remove 15 instances of make_wrapper(), none where ever used.
+  * ntpq: no need  to translate input, all input is ascii.
+  * ntpwait: remove unused/unneeded UTF-8 stuff.
+  * make-leap-seconds: remove latin-1 and UTF-8 cruft.
+  * ntpq: force utf-8 output in Python3.
+  * ntpq: remove debug print()
+  * Added python 2 utf-8 output enforcer
+  * ntpq: only import codecs on python2.
+  * Added function to replace UTF-8 units with ASCII-safe versions
+  * Changed ntpmon to detect the unicode-refusing encoding and compensate
+  * Removed forgotten debugging statement
+  * Generalized previous ntpmon fix to any non-UTF-8 encoding
+  * Fixed ntpmon unsupported locale bug
+  * Updated ntpmon documentation to include known unicode bug
+  * Removed forgotten debugging statement
+  * Possible fix for unicode/locale bug
+  * Added test for deunicode_units
+  * Added comments to some utility functions
+  * Added/adjusted comments in agentx
+  * Mostly resolve and document FHS conformance issue.
+  * Moved makeflags function from test_agentx.py to agentx.py
+  * Changed decode_pduheader to use makeflags()
+  * Added, tested, and put to use new flagbyte functions
+  * Typos in docs/driver_nmea.txt
+  * Polish library path resolution and docs.
+  * In the release script, isolate a parameter.
+  * Documentation polishing.
+  * Address GitLab issue #402: ntpdig: no fraction of seconds
+
+-------------------------------------------------------------------
+Wed Sep 06 11:21:13 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170906.6b1b54aee:
+  * Rationalize a configuration-block copy.
+  * Remove an obfuscatory macro.
+  * Address Gitlab issue #376: Need a symlink from ./tests/pylib/ntp
+  * Force struct pkt to maximum alignment on the host machine.
+  * Address GitLab issue #375: ntpd terminates unexpectedly
+  * It would be nice to put the NULL guard on the right line.
+  * Ignore ntp symlink at the third level as well
+  * docs/rollover.txt: Fix headers.
+  * Add python3 gitlab ci target
+  * Address GitLab issue #379: seccomp crashes ntpd
+  * Correct seccomp whitelist change in previous commit.
+    bsc#1057209
+
+-------------------------------------------------------------------
+Wed Sep  6 09:12:53 UTC 2017 - tchvatal@suse.com
+
+- Conflict and provide ntp-daemon instead of ntp directly
+
+-------------------------------------------------------------------
+Tue Sep  5 19:55:56 UTC 2017 - tchvatal@suse.com
+
+- Fix silently obsoleting ntp wrt bsc#1055821
+
+-------------------------------------------------------------------
+Tue Sep 05 11:40:32 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170905.2bd5e61d6:
+  * Too many members named 'count'. Distinguish one. No logic changes.
+  * Address GitLab issue #367: reslist counting wrong rule
+  * Documentation polishing.
+  * Create and document topic labels for log messages.
+  * Added tests for Authenticator()
+  * Added tests for maic contents of packet.py
+  * pylint: import print_function from future for python2/3
+  * pylint: remove unnecessary parenthesis
+  * Added tests for Packet(), tweaked Packet to not use magic number.
+  * TODO update - we now have a pointer to Debian packaging metadata.
+  * Add script useful for timing ntpd startup
+  * Fix for iburst on DNS for both server and pool
+  * Added tests for SyncPacket, tweaked SyncPacket
+  * Added tests and tweaks for ControlPacket()
+  * Address GitLab issue #237: documentation refclock pps missing unit description
+  * Address GitLab issue #368: warning on openbsd 6.0 with gcc 4.2.1
+  * Address GitLab issue #399: ntpq config command is config-from-file
+  * Fix a minor glitch in processing of config_from_file...
+  * Improve the ntpq help display.
+  * Typo fix.
+  * This is the spec file and README for creating an RPM package
+  * Comment polishing.
+  * Remove references to .refclockd extension, since that plan has been dropped.
+  * Documentation polishing.
+  * Expanded packet.py tests to test error handling.
+  * Added aliases for frequently used objects
+  * Moved slicedata() from agentx.py to util.py
+  * Pythonized __parse_varlist()
+  * Added comments and removed forgotten debugging statements
+  * Removed excess parentheses from former C macros
+  * Fixed scrambled data storage in SyncPacket()
+  * Changed multiplications by powers of 2 to shifts
+  * Fixed error in posix_to_ntp: it recieves floats so it can't shift
+  * Removed unused argument idx for ControlPacket.stats()
+  * ControlPacket() now consistently uses extension, not data
+  * Moved slicedata() test to test_util.py, expanded test for edge cases
+  * Rewrote dump_hex_printable() to be pythonic
+  * In pylib/util.py, refactor DNS lookup caching...
+  * Fixed mis-named variable
+  * Fixed string error in __parse_varlist
+  * Address GitLab issue #370: ntpq :config
+  * Cleaned up IfstatsSummary.summary() a bit
+  * Updated comments in __parse_varlist()
+  * Update phone number for USNO Colorado Springs, CO
+  * Fixed scrambled unit abbreviations
+  * Replaced magic number for keyid with MAX_KEYID
+  * Replaced decimal with hex number for better semantics.
+  * Address GitLab issue #371: ntpq ugly traceback
+  * Updare to porting guidelines.
+  * Narrow our depenency on nonstandard code.
+  * Comment polishing.
+  * Revert "Comment polishing." and "Narrow our depenency on nonstandard code."
+  * More thoughts on NTPv5.
+  * Changed incorrect if to elif
+  * Adjusted parentheses in __validate_packet version test
+  * Added tests for util.py/f8dot4 and f8dot3. Bugfix in f8dot3.
+  * Simplify passing configuration data to the peer-creation logic.
+  * Added tests for Cache(), Cache() now deletes expired entries.
+  * Necessary followup on previous commit.
+  * Documentation polishing.
+  * Platform-support update.
+  * Moved generally useful test jigs into jigs.py
+  * Added test for canonicalize_dns(), added necessary support to test jigs.
+  * Fix comment glitches.
+  * New documentation page om rollover problems
+  * Added stub test for termsize()
+  * Added separator comments for PeerStatusWord.__init__()
+  * Removed redundant assignments from PeerStatusWord.__init__()
+  * Swapped positions of reachable/unreachable assignments to match magic numbers
+  * Added tests for PeerStatusWord
+  * Removed clk_wander_threshold from PPM_VARS
+  * Added tests for cook()
+  * Allow refclock sample processing to use 4-digit year timestamps.
+  * Documentation followup on the autonomy fix.
+  * More followup on the autonomy change.
+  * Added test for termsize()
+  * Fixed test for rfc3339() to handle python3
+  * Simpler version of autonomy code - avoid CLOSETIME clipping.
+  * Restructure the peer block to keep the peerctl structure intact.
+  * Ensure that all members of a command-line configuration block are zeroed.
+  * Address GitLab issue #374: ntpmon crash with Server error code BADASSOC
+  * Added test for MRUSummary()
+  * Added test for ReslistSummary()
+  * Added test for IfstatsSummary()
+  * Fixed broken test for ReslistSummary()
+  * Fix signedness glitches.
+  * Add an overflow warning.
+  * Fix brown0paper-bag bug in clocktime computation.
+  * Added tests for PeerSummary()
+  * Show the actual C compiler/ld flag name in the configure output
+  * ./waf distclean is a built-in command, not a sub-type of build
+
+-------------------------------------------------------------------
+Fri Aug 18 07:56:34 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170817.d22a11af7:
+  * ntpmon: make MRUSummary() dynamic on terminal width, not hard 79.
+  * Partially address GitLab #212: waf needs some tlc
+  * Address GitLab issue #322: ntpwait should not terminate...
+  * Fix example to remove unsupported syntax.
+  * Dispel murkiness about the configurator restrict operation.
+  * Document a corber case in the behavior of ntpq -n.
+  * Address GitLab issue #277: 32 bit OS warnings
+  * Implement generation of CMAC keys for draft-ietf-ntp-mac-01.
+  * Record in NEWS that AES-CMAC authentication hashes are supported.
+  * Document new features.
+  * Don't duplicate the keyboard error handler in ntpwait.
+  * Address Gitlab issue #355: ntpq traceback on macOS
+  * Deal with the fact that unqualified except catches SystemExit.
+  * Documentation polishing.
+  * Revert broken CMAC implementation
+  * Address GitLab issue #58: GPSD_JSON doc does not match the code.
+  * Remove mislrading comments.
+  * Address GitLab issue #274: functions fail to inline
+  * Drop support for OS X 10.11.  Apple screwed this pooch too many different ways.
+  * Eliminate u_int, u_short, u_long. u_char homebrew types.
+  * Fix GitLab issue #357: mrulist crashes
+  * Address GitLab issue #214: waf "host" part of the build doesn't use our CFLAGS
+  * Replace an obsolete BDism: (caddr_t) becomes (void *).
+  * Minor changes to reduce dependence of Linuxisms and glibcisms.
+  * Replace deprecated usleep(3) with POSIX-compliant nanosleep(2).
+  * Document the assumptions behind our C dialect switches better.
+  * ntpwait: fix issues #358, return exit(2) on control-C
+  * Address GitLab issue #314: Forward-confirmed reverse DNS
+  * Address GitLab issue #359: Warning on Solaris with gcc in msyslog.c
+  * Document a minor limitation of ntpq :config.
+  * Add a warning that ntp.d support is unstable.
+  * Add pointer to Debian packaging metadata.
+  * Address GitLab issue #314: Forward-confirmed reverse DNS
+  * Make ntpwait in verbose mode report seconds elapsed to fix.
+  * Address GitLab issue #361: Warnings in ntp_loopfilter.c on Solaris...
+  * Address GitLab issue #356: reverse function for restrict
+  * Note that "config" and ":config" are now synpnymous under ntpq.
+  * Fix fatal error in config-directory code.
+  * Due to an obscure feature of ntpq syntax, config can't be mapped to :config...
+  * In ntpq, repair a bug in the interpretation of :config.
+  * Address remaing part of GitLab issue #348: unpeer failing on invalid hostname.
+  * Armor ntpwait's report of time to sync against NTP clock stepping, if we can.
+  * Add "Caveat for Crossbuilders" to INSTALL.
+  * util.py: Python 3 has no type long.
+  * Fix bad interaction between memory allocation code and restrict mode field.
+  * util.py: Python 3 has no type basestring.
+  * Another fix on Python 3 missing basestring and unicode()
+  * ntpmon: more unicode() removals.
+  * Document why our kuge for in-place testing fails under Python 3.
+  * ntpmon: Python 3 fix, remove uneeded/broken UTF-8 conversion.
+  * ntpwait: fix for Python3, %.1f time precision, pep8
+  * Typo
+  * PEP8 cleanup
+  * In pylib/util.py, use monoclock() for DNS timeouts.
+  * Fix typo in comment
+  * Address GitLab issue #365: linking fails on OSX 10.13 with Xcode 9
+  * Implement unrestrict with address and no flags to remove a rule.
+  * Documentation polishing.
+  * Document no-flag case of unrestrict.
+  * Documentation polishing.
+  * Partially address Gitlab issue #270: Loss of precision in step_systime()
+  * Remove repeated words in comment
+  * Added tests for packet.py/ControlSession()
+  * Follow up on doubletime_t change.
+  * Restore incrementing of some counters lost in the rotocol refactor.
+  * Avoid a core dump due to null peer during pool query.
+  * Avoid a Coverity warning.
+  * Address Gitlab issue $312: pyc generated files do not have...
+  * Ripped packet validation code out of getresponse into its own method.
+  * pep8/pyflakes tweaks
+
+-------------------------------------------------------------------
+Thu Aug 10 14:30:29 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170810.8273a59ac:
+  * Added /* SPECIAL DEBUG */ token to lines previously missed
+  * Solaris: Start to fix a893edc7fa5fdf05b7558c46b2e83db9c7a0881b
+  * libisc: remove code in $ifdef __hpux
+  * SO_TIMESTAMP, comment that macOS uses this packet option.
+  * libisc: Condition isc_netaddr_fromin6() and isc_netaddr_islinklocal()
+  * libisc: move libisc/net.c to libntp/isc_net.c
+  * libisc: move libisc/error.c to libntp/isc_error.c
+  * libisc: move libisc/interfaceiter.c to libntp/isc_interfaceiter.c
+  * libisc: p00f!
+  * waf: remove uused variable srcnode.
+  * Merge 3 #ifdef __linux sections
+  * remove some stray spaces.
+  * remove isc_mem.h and the sily macors it had.
+  * Merge refidsmear.h into net_fp.h
+  * move gpstolfp.c back into libparse
+  * Fixed logging bug in ntpq
+  * LISTs: remove 4 unused macros, comment out unused debug code.
+  * SHM: change implicit casts to explicit: (enum segstat_t)
+  * Sandbox: comment on odd Apple behavior.
+  * Change netof() to netof6().  IPv6 only.
+  * restrict: Ignore CIDR in restrict address.
+  * Replace "uint" with "unsigned int"
+  * Typo
+  * Properly set compatibility defines for Solaris
+  * Update capitalization of macOS to use new official style
+  * Update devel/TODO
+  * Add waf quirks to devel/TODO
+  * ntpq interactive switch shot by firing squad for redundancy
+  * More work on devel/TODO
+  * restrict: add CIDR notation.
+  * restrict: add short explanation of address/cidr notation.
+  * restrict: oddly restrict is documented two places.
+  * sandbox: add missing shmdt.
+  * Updated incompatibilities with info about ntpq -i option.
+  * Fix for "not in address table!", Issue #338
+  * Drop support for SO_BINTIME
+  * resrict: fix format warnings.
+  * More tweaks to devel/TODO
+  * An observation about performance.
+  * Make sure NTP_API is defined before checking the value
+  * docs, bsp, and info are not implemented waf commands
+  * seccomp: add a missing Gentoo ARM syscall.
+  * seccomp: improve mmap comment.
+  * seccomp: Make the #ifdef match the macro.
+  * Fix problems with ntpq debugging flags.
+  * Fixed missing information and incorrect formatting in ntpq docs.
+  * Fixed incorrect formatting fix
+  * Fix errors in ntpq argument handling and docs.
+  * Updated ntpq options description paragraph to reflect modern ntpq.
+  * ntpq now attempts to display srcadr if talking to NTPclassic
+  * Rename of ntpq long option log-to-file to logfile (same as ntpd)
+  * Add CentOS 6/7 jobs to GitLab CI pipeline
+  * Add Debian Wheezy to GitLab CI
+  * Add Fedora 24/25 to GitLab CI
+  * Generate documentation via GitLab pages
+  * Add ntpq packet dump to devel/TODO
+  * Add decimal gai error code to printout
+  * Fix for Issue #340, 100% CPU and segfaults
+  * Fixed missing address/hostname for pools that return "::"
+  * Partial fix for ntpmon crash
+  * Fixed ntpq debug command to not open a logfile on its own.
+  * Added logfile command to ntpq. Same function as -l option.
+  * Updated ntpq docs to reflect new logfile option.
+  * Remove last_ttl from struct endpt
+  * add packaging/ directory
+  * Add SUSE .spec file from open build service
+  * Added agentx library and tests
+  * Fixed ntpq usage message: still had a reference to the -i option.
+  * Add prlimit64 to seccomp list
+  * Added response error codes
+  * Changed ntpdig -p option to poll servers instead of limit server count
+  * ntpdig now properly accepts -g/--gap option
+  * Changed ntpdig -g to accept milliseconds, matching docs.
+  * AgentX x-coders now return dicts instead of unreadable tuple-forrests
+  * Added detection for cropped packets to decode_packet()
+  * Moved read_append() definition out of loop
+  * Adjusted sleep behavior to be more logical
+  * Remove stray semicolon in NS_PER_MS macro
+  * decode_searchrange_list can now handle lists without a null-OID terminator
+  * Fixes for searchrangelist, functions that use them, and tests
+  * Changed packet representation to classes.
+  * Added packetVars() and tests
+  * AgentX packets now have working __repr__ function, and tests
+  * rv: Always put space between flash code and flag names
+  * Added compareOID function and tests
+  * removed unneeded panens, make some indents standard (4 spaces).
+  * Fix more unstandard indents.
+  * A slightly tigher test for mode 6 data.
+  * Added little endian tests for all PDUs
+  * Added little endian tests where missing
+  * Added test_pducore test helper, tests are now shorter and more complete
+  * f8dot4() now supports Nan, and fewer returns.
+  * Fix sometimes not-initialized estdisp
+  * Address GitLab issue #330: no common notation for refclock
+  * Address GitLab issue #261: mru minage/maxage docs look incorrect
+  * Address GitLab issue #325: man ntpwait incomplete - exit status 2
+  * More input validation for PeerSummary.summary()
+  * Decode all(?) 'variables' sent to PeerSummary.session()
+  * Fix line too long for pep8
+  * Improve decode of rec and reftime.
+  * Tidy up an indent.
+  * Decode stratum only once
+  * PeerSummary.summary(): make sure all vars are intialized
+  * prettyinterval(): do not crash on bad input
+  * test variables['refid'] exists before using
+  * ntpmon: pep8 tweaks
+  * ntpq: sort imports
+  * ntpq: pep8 cleanup
+  * ntpdig: fix pep8 nit
+  * ntpkeygen: fix pep8 nit
+  * Added dolog and tests
+  * Add comments to unit strings
+  * Add wideremote to MRUSummary, like PEERSummary.
+  * Make f8dot3() not crash on bad input.
+  * Have f8dot4() and f8dot3() use string constants for signals.
+  * ntpmon: allow 'h' in addition to '?' to display help screen.
+  * More hardening for f8dot3() and f8dot4().
+  * ntpmon: rearrange peer detail a bit
+  * ntpmon: fix line overflow of version line
+  * ntpmon: make w tottle MRUSumary too
+  * Add ntp.util.stringfile() to pretty print filt*
+  * remove commas from ntpmon detail display.
+  * ntpmon detail, remove more commas.
+  * ntpmon: more detail view cleanup.
+  * ntpmon: fix overflow on version line
+  * Fixed severe oversite in dolog() and tests
+  * Logconversion
+  * Address Gitlab issue #327: documentation refclock pps missing unit description
+  * Address GitLab issue #285: Configure tests fail with old version of ld
+  * Address GitLab issue #326: Motorola GPSes reporting that it's 13 Oct 1997.
+  * Note in NTPsec changes file that restruct accepts CIDR notation.
+  * Fleshed out ntpmon's logging abilities
+  * Fixed packet log dump to repr() the data instead of vomiting
+  * Try 4 times to get Nonce.  Don't give up on first failure.
+  * INSTALL: typo.
+  * ntpmon detail mode styling
+  * Revert an attempted but failed workaround for a build bug on old OS X.
+  * Upgrade to waf 1.9.13.
+
+-------------------------------------------------------------------
+Sun Jul  2 08:46:11 UTC 2017 - tchvatal@suse.com
+
+- Add HUP call in logrotate postrotate. Thanks to Hall Murray for
+  spotting
+
+-------------------------------------------------------------------
+Wed Jun  7 12:18:08 UTC 2017 - tchvatal@suse.com
+
+- Enable more options and refclocks by default
+
+-------------------------------------------------------------------
+Wed Jun  7 12:01:11 UTC 2017 - tchvatal@suse.com
+
+- Add conflict even to utils package to make factory bot happy
+- Update to version 0.9.7+git20170607.7c0008c91:
+  * Address GitLab issue #316: "ntpd" dies unexpected unpeering a refclock
+  * Address GitLab issue #322: ntpwait should not terminate with a traceback at SIGINT
+  * Fix for issue #334 - restrictions using ephemeral copy of address.
+  * Another try at fixing issue #334
+  * Fix for Issue #335 (-Wsign-conversion)
+  * Fix for Issue #339 (-Wsign-conversion)
+
+-------------------------------------------------------------------
+Fri May 26 14:37:16 UTC 2017 - jengelh@inai.de
+
+- Fixup wording in description.
+
+-------------------------------------------------------------------
+Fri May 26 12:00:19 UTC 2017 - tchvatal@suse.com
+
+- Add conflicts and provides to allow it to live in Tumbleweed
+
+-------------------------------------------------------------------
+Thu May 25 08:21:41 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170525.464804153:
+  * Catch ntp.packet.ControlException in ntpwait
+  * ntpdig: Use python's built-in UTC offset variables since they handle DST
+  * Remove duplicate check for enabling of leap smear option
+  * libntp: make ntpcal_ntp64_to_date() static
+  * libntp: make ntpcal_days_in_months() static
+  * libntp: remove unused function: ntpcal_daysplit_to_date()
+  * libntp: remove unused function: ntpcal_daysec_to_tm()
+  * libntp: make get_ostime() static.
+  * libntp:  add missing static to atexit_ssl_cleanup()
+  * libntp: remove unused finction sockaddr_masktoprefixlen()
+  * libntp: move convertRefIDToLFP() into tests/libntp, make static.
+  * libntp: remove unused function ntp_be16enc()
+  * libntp: remive unused function ntp_be32enc()
+  * libntp: remove unused function ntp_be64enc()
+  * waf: show loccount in .waf help
+  * libntp: Move +ymd2yd() into ntp_calendar.c.
+  * libntp: make errno_to_str() and addto_syslog() static.
+  * libntp: make mvfprintf(0 static
+  * libntp: remove unused mfprintf()
+  * libntp: move msnprintf() to tests.  It was only a test helper.
+  * tests: rearrange to eliminate an #ifndef.
+  * libntp: move mstolfp() to be a test local.
+  * libntp: remove emalloc() which has been commented out for a while.
+  * libntp: remove unused ntp_gettime().
+  * libntp: make auth_moremem() static.
+  * libntp: move atolfp() to a static in tests.
+  * libparse: remove unused get_mbg_svno()
+  * libparse: make get_mbg_health() static
+  * libparse: make get_mbg_cfg() static.
+  * libparse: make get_mbg_tgps() static.
+  * libparse: make get_mbg_tm(0 static
+  * libparse: remopve unused get_mbg_ttm()
+  * libparse: remove unused get_mbg_synth()
+  * libparse: remove unused get_mbg_tzdl()
+  * libparse: add missing prototype for get_mbg_comparam().
+  * libparse: remove unused get_mbg_tzname()
+  * libparse: remove unused get_mbg_portparam()
+  * libparse: remove unused get_mbg_comparam()
+  * libparse; remove unused -get_mbg_eph()
+  * libparse: remove unused get_mbg_alm()
+  * libparse: remove unused get_mbg_iono()
+  * libparse: make parse_restart() static.
+  * libparse: remove unused parse_iopps()
+  * combine two copis of days_per_year() into one.
+  * libparse: remove unused syn_simple()
+  * libparse: make pps_simple() static.
+  * libparse: remove unused pps_zero()
+  * libparse: make implicit cast into explicit one.
+  * libparse: make 2 implicit conversions explcit.
+  * libntp: maike implicit conversion explicit.
+  * remove uslelss extern keytype_from_text()
+  * remove unused typedef and extern: pset_tod_using set_tod_using()
+  * ntpd: remove unused rereadkeys() and ntp_exit()
+  * ntpd: remove redudnat (void) cast on function returning void.
+  * remove two uneeded externs: octtoint() and ranp2()
+  * remove unused extern: clockname()
+  * libntp: make  syslog_fname and syslog_abs_fname static.
+  * remove two unused externs: ntp_tty_setup(), ntp_tty_ioctl()
+  * remove TTY define from header, put in the one place it is used.
+  * remove unused trimble_scmds[]
+  * libparse: remove unused array, and wrong file comment.
+  * remove unused extern: get_free_recv_buffer_alloc()
+  * mbg_gps166: remove lots of unused cruft.
+  * ascii.h: remove many unused defines.
+  * mbg_gps166: remove unused SYNTH stuff.
+  * mbg_gps166: remove unused header cruft.
+  * mbg_gps166: remove unused macro
+  * ntp_assert: remove Calypso support.
+  * tests; remove duplicate is_leapyear()
+  * ntpd.h: remove unused define.
+  * ntp_control: make ctlsysstatus() static.
+  * ntpd.h: remove unused define.
+  * ntp_io: remove unused interface_enumerate()
+  * ntp_io: make findbcastinter() static.
+  * ntp_io: don't duplicate latoa(pif) & localaddrtoa(pif)
+  * ntpd.h: remove unused sys_clocktime
+  * ntp_peer: make peer_reset() static
+  * ntpd.h: remove unused extern process_packet()
+  * ntp_proto: make clock_select() and leapsec static. Remove leapdif.
+  * ntp_proto: make sys_maxdist static, remove unused extern clear()
+  * ntp_control: make auth_timereset static, move reset_auth_stats()
+  * ntpd.h: remove unused extern record_crypto_stats()
+  * ntp_config: make cfg_tree_history static.
+  * ntp_control: make a bunch of counters static.
+  * ntp_loopfilter: make clock_minstep, clock_panic, and pll_status static.
+  * ntp_loopfilter: make state and ext_enable static.
+  * ntpd.h: remove unused extern last_time
+  * ntp_monitor: make mru_alloc static
+  * ntp_peer: make several variables static.
+  * ntp_peer: make several variables static.
+  * ntp_proto: make several variables static, and remove an unused one.
+  * ntp_io: make blockMask static.
+  * ntp_scanner: make conf_file_sum static.
+  * ntpd.h: remove 3 unused externs.
+  * ntpd.c: make droproot, user, group and chrootdir static.
+  * ntp_dns: remove unused define.
+  * ntp_proto: make some definitions static. remove 2 unused.
+  * ntp_peer: make ntohl_fp() static.
+  * change isleap_4() to is_leapyear().
+  * ntp_control: make a define static.
+  * ntp_time: make a define static.
+  * ntp.h: remove unused INADDR_NTP
+  * ntp_io: remove unused sau_from_netaddr()
+  * ntp_refclock: make refclock_setup() local.
+  * clk_meinberg: make MBG_EXTENDED static.
+  * replace duplicate S_PER_DAY with SECSPERDAY.
+  * replace duplicate S_PER_H with SECSPERHR.
+  * tests: remove yet another different leap year test.
+  * tests/calendar: fix coverity leak.
+  * tests: remove unused check_y2k, add those tests into calendar test.
+  * tests: don't test parse_to_unixtime() if no refclocks.
+  * ntpfrob: fix incorrect coverity override of real problem.
+  * keyword-gen: make some functions static.
+  * keyword-gen: fix memory leak, remove coverity overrides.
+  * ntpfrob: FreeBSD and NetBSD fail to define PPS_API_VERS publicly.
+
+-------------------------------------------------------------------
+Sun May 21 17:56:52 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.9.7+git20170521.fdb63ab2a:
+  * Add droproot support type to the configure summary report
+  * Check for libseccomp via pkg-config first, then fall back to a direct search
+
+-------------------------------------------------------------------
+Sat May 20 15:49:26 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170519.9b296f50d:
+  * libparse: add get_msb_ushort(), with tests.
+  * tests: use the right get_msb_*short()
+  * change "(unsigned short)getshort()' to get_msb_ushort()
+  * binio: move 2 private "static short getshort()" into one lib function.
+  * tests: add test for getmsb_short()
+  * remove pointless casts of (unsigned char*) to (unsigned char *).
+  * Peers display with raw address no longer forces 80 chars on wide terminals
+  * dolfptoa: fix a 32 bit warning that showed on RasPi.
+  * leapsec_query: removea 32-bit warning.
+  * process_control; silence a warning on 32-bit RasPi.
+  * process_control: fix two 32-bit warnings about signed-ness.
+  * onceore: remove pointless cast from long to ulong to long.
+  * refclock_jjy: convert several implicit casts to explicit.
+  * refclock_trimble: fix bad cast to (ulong).
+  * ntp_control: change implicit cast to explicit.
+  * refclock_oncore: change implicit cast to explicit.
+  * refclock_generic: change implicit cast to explcit.
+  * refclock_generic: change incorrect cast: sizeof not ulong.
+  * refclock_neoclock: chjange implicit casts to explicit.
+  * refclock_magnavox: change implicit acst top explicit.
+  * sht: change implicit cast to explicit.
+  * ntp_proto: Change several implicit casts to explicit.
+  * ntp_loopfilter: change implicit cast to explicit.
+  * refclock_shm: Change 4 implicit casts to explicit.
+  * ntp_proto: Change two implicit acsts to explcit.
+  * tests: fix type of free_recvbuffs()
+  * tests: change some implicit casts to explicit.
+  * If seccomp was requested but can't be found during configure, fail.
+  * seccomp now crashes if it doesn't work
+  * Added -a and -k options to ntpq.
+  * Added missing docs for new ntpq options.
+  * atolfp: fix a potential unintended sign conversion.
+  * hextolfp: fix a ptotential unintended sign conversion.
+  * refclock_gpsd: tv_nsec is long, not utin32_t.
+  * refclock_jjy: fix two sign conversion warnings.
+  * Typo in ntpq docs
+  * tests: time_t is not uint32_t.
+  * net_fp: remove two unused macros.
+  * jitter: fix signed, and unsigned, mixup
+  * refclock_generic: fix overagressive cast.
+  * refclock_generic: make some implicit casts explicit.
+  * tests: fix signed/unsigned confusion.
+  * refclock_gpsd: stop some unsigned/signed shuffling.
+  * refclock_generic: make an implicit cast explicit.
+  * Remove package hints for libcap2
+  * ntpviz: add skewness and kurtosis stats.
+
+-------------------------------------------------------------------
+Mon May 15 11:29:53 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.9.7+git20170515.aadc83545:
+  * ntpmon: Add "-n"/"--numeric" option
+  * Fixed division by zero error in ntpmon
+  * refclock_nmea: fix 4800 baud
+  * mrulist: Fix "kod" and "limited" error "Unknown parameter"
+  * mrulist: Make "resall" and "resany" hex instead of decimal
+  * ntptime: fix dumb macro name:  NS_PER_MS_FLOAT -> NS_PER_US_FLOAT
+  * Added encoding definitions to python files
+  * mrulist: Fix "sort=addr"/"sort=-addr" in Python 3
+  * Remove now unused python import
+  * pep8 fixes for ntpkeygen
+  * Fixed ntpq ifstat bug #280
+  * Address GitLab issue #289: ntpfrob/tickadj broken (warnings)...
+  * Fix a reversed conditionalization.
+  * Address GitLab issue #274: functions fail to inline
+  * Address GitLab issue #276: Tarball should include pre-built man pages
+  * Partially revert: cfe5c7122cc6905365a9d1396be6abd5ba59ff69
+  * Tweak for getting started after DNS lookup works.
+  * Fix dtolft() on NetBSD, issue 264
+  * Simplify FDF_RoundTrip
+  * packet auth: remove undocumented DEFFAULT_NTPKEYS.
+  * waf: pep8 fixes  pythonize-header
+  * waf: fix minor pep8 nits.
+  * waf: minor pep8 fixes in wscript's.
+  * waf: several minor pep8 fixes in wscript's.
+  * ntpviz: minor pep8 tweaks
+  * tests: minor pep8 tweaks.  BTW, this test has existing failures...
+  * Hack to dance around bug in older Bison.  Issue 287
+  * Address GitLab issue #296: compiler warning (gcc 7.0.1): lfpfunc.c
+  * Address GitLab issue #294: compiler warning (gcc 7.0.1): refclock_neoclock
+  * Address GitLab issue 295: compiler warning (gcc 7.0.1): ntp_loopfilter.c
+  * Fixes formatting error, and makes ifstats less brittle.
+  * waf: move alignment warnings back to --enable-debug-warnings
+  * Fix warning in refclock_oncore on FreeBSD
+  * Remove unused ENABLE_DNS_RETRY
+  * Address GitLab issue #263: Catchall for ntpq/ntpmon units problems
+  * mrufail: explain how to get mu on old xterm.
+  * waf: improve test for unsupported CC flags.
+  * waf: Add conditional -Wimplicit-fallthrough to --enable-debug-warnings.
+  * xterm/utf-8: explain need for LANG=en_US.utf8
+  * Fixed unicode errors in tests.
+  * Fix crash if NMEA driver can't open /dev/gpsx, Issue #299
+  * waf: add a test for nanotime(), for old macOS
+  * FALLTHRU: another test for issue #295
+  * Enable gcc:7 CI checks
+  * Handle more than ten interfaces in __ordlist().
+  * FALLTHRU: yet another try at pacifying gcc 7.1
+  * Fixed type bug in packet.py
+  * ifstats: fix dropping of valid interfaces.  Fixes #298
+  * LIB_BUFLENGTH: gcc complained that 128 was too short, increased to 192.
+  * Revert "LIB_BUFLENGTH: gcc complained that 128 was too short, increased to 192."
+  * sLog: 2nd try at fixing #293, make log buffers bigger.
+  * reflock_jjy: remove un-needed -1's on snprintf().
+  * FALLTHRU: llvm 8.0.0 does not understand __attribute__ ((fallthrough))
+  * FALLTHRU: try again, sadly gcc doc is inconsistent on the magic foo.
+  * FALLTHRU: fix issue #295, warnings on implicit fallthrough
+  * Changed ifstats en flag to be more robust
+  * Adjusted ifstats header spacing
+  * Patch from Takao abe adapted - prevents Coverity warnings.
+  * Documentation corrections from Takao Abe.
+  * FALLTHRU: only gcc > 6 understands __attribute__((fallthrough))
+  * Address Coverity CID 161765: Integer handling issues (SIGN_EXTENSION).
+  * Fix resource leaks in directory-walking code.
+  * Revert "Address Coverity CID 161765: Integer handling issues (SIGN_EXTENSION)."
+  * Added guards to command line args that take ints. Added guard function.
+  * Missed one!
+  * waf: add check to help().
+  * tests: add tests for get_lsb_long().
+  * tests: add tests for get_lsb_short().
+  * tests: add tests for get_msb_short)( and get_msb_long().
+  * tests: remove incorrect comment
+  * binio: remove 6 unused macros, 2 were broken.
+  * tests/binio: fix 2 tests, and comment them out.
+  * binio: change get_lsb_ulong() to get_lsb_int32()
+  * binio: remove unused, and broken, get_msb_long().
+  * binio: remove unused put_lsb_long()
+  * binio: remove unused put_msb_short().
+  * binio: remove unused put_msb_long()
+  * binio: rename get_lsb_short() to get_lsb_int16()
+  * tests: add tests for get_lsb_uint16() and get_lsb_uint32().
+  * binio: simplify get_lsb_int16(), all tests pass.
+  * tests: add tests for put_lsb_short()
+  * binio: rename put_lsb_short(,long() to put_lsb_uint16(,uint16_t)
+  * refclock_generic: change getshort() to remove pointless castings.
+  * Test results of test-options by running --version
+  * Tweak to mru list allocation doc
+  * Tweak warning messages when --enable-seccomp won't work
+  * Address Coverity CID 161762: Out-of-bounds read (OVERRUN)
+  * Address Issue #303: ntpq shell command unknown.
+  * Remove the Jupiter/Zodiac driver.  It cannot have worked since August 1999.
+  * Add inline help in ntpq for "units" subcommand
+  * Remove the shell command from ntpq.
+  * Simplify ntpq's do_EOF and do_exit functions
+  * Add peer depricated message
+  * Tweak comment in ntp_monitor, Issue #281
+  * Implement ENABLE_DNS_LOOKUP
+  * DNS bug fixing/cleanups
+  * Typo
+  * Add message when closing lots of files
+  * Update seccomp to work on ARM
+  * seccomp additions for Arch Linux, Issue #275
+
+-------------------------------------------------------------------
+Tue May  2 10:17:29 UTC 2017 - mpluskal@suse.com
+
+- Fix path to ntpd in provided unit file
+
+-------------------------------------------------------------------
+Tue May  2 10:06:18 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.9.7+git20170429.dcab3ef9b:
+  * Add a pivot-related bug warning.
+  * Typo fix.
+  * Add warnings about GPS wraparound.
+  * Revision of GPS rollover warning.
+  * ntpviz: change ppt to ‰ (millage symbol).
+  * ntpviz: glossary tweak.
+  * ntpviz: better define mu and some other items.
+  * ntpviz: comment typo
+  * Fix typos
+  * add GPS pivot entry to docs/ntpspeak.txt
+  * Fixed error in ntpq manpage
+  * Lexically split waf's cross compiling flags
+  * Cross-compiler also needs it's arguments split lexically...
+  * Fix typos in comments
+  * PEP8 fixes for calc_tickadj
+  * PEP8 fixes for make-leap-seconds.py
+  * Update a few more references ":config" -> "config"
+  * Add ntpq's ":config" -> "config" to the list of incompatible changes
+  * Stop using VCS_BASENAME since we really want the name of the project
+
+-------------------------------------------------------------------
+Tue Apr 25 06:58:54 UTC 2017 - tchvatal@suse.com
+
+- Adjust the spec for the bugfixes included upstream
+- Update to version 0.9.7+git20170425.f7104e3b9:
+  * systime: Fix comparing a double to zero.
+  * ntp_loopfilter: fix 4 comparisons of double to zero.
+  * ntp_conrol: fix comparing double to zero
+  * ntp_loopfilter: fix comparing double to zero.
+  * ntp_proto: fix comparing a double to zero.
+  * ntp_scanner: fix a double compared to zero.  Add fixme.
+  * magnavox: fix last two compare of double to a number.
+  * waf: -Wfloat-equal warning always on, no warnings now.
+  * waf: comment out: -Wbad-function-cast
+  * Rename EPOCH to BUILD_EPOCH to reduce ambiguity
+  * Remove an incorrect assertion from devel/packagers.txt.
+  * Eliminate wafhelpers.util
+  * PEP8 fixes
+  * Remove obsolete text.
+  * libisc/error: add two attribute((format)) tags.
+  * waf: remove -Wmissing-format-attribute
+  * Load waf's gnu_dirs module and use it for installation target directories
+  * Fixed warnings in ntpd/ntp_signd.c when ENABLE_MSSNTP is on
+  * Move wafhelpers/configure.py into wscript
+  * PEP8: indent to 4 spaces
+  * Eliminate parse_version() function
+  * We already import os, no need to import os.path.exists()...
+
+-------------------------------------------------------------------
+Sat Apr 22 16:39:04 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.9.7+git20170422.4162ff742:
+  * Typo
+  * Fix typo in etc/ntplogtemp.service
+  * waf: define EPOCH=[build-date], for reproducable builds.
+  * EPOCH: remove REPRO_DATE and NTPD_IGNORE_BUILD_DATE.
+  * ntpcal_get_build_date: now uses EPOCH.
+  * ntp_calendar: add missing return.
+  * magnavox: remove last __DATE__.
+  * EPOCH: remove all mention of __DATE__ and __TIME__
+  * EPOCH: add URL to reproduceable build information.
+  * Fix const warning from FreeBSD
+  * ntpviz: When Peer Offsets has more than 6 peers, place key below graph.
+  * libisc: mark two functions attribute const
+  * lib_srtbuf: note where an attribute const fails
+  * waf: remove annoying warning: -Wsuggest-attribute=const
+  * ntp_filegen: mark one attribute pure.
+  * ntp_leapsec: mark function attribute pure
+  * refclock_trimble: mark one function static and attribute pure
+  * libisc/assertions: fix possibly uninit variable.
+
+-------------------------------------------------------------------
+Wed Apr 19 12:18:21 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170419.bfac46769:
+  * Mark alt text for the ntpsec logo image as "alt"
+  * Address issue #268: Waf uses current date and time breaking repro builds
+  * Added poll to clock variables
+  * Add step for testing cx_Freeze to devel/pre-release.txt
+  * Remove useless load of bison in waf
+  * Tweak ntpq/peers printout to handle new DNS
+  * Restore cross-era interoperability via pivoting timestamps on build data.
+  * New systemd units to run NTPviz data gathering and graphing.
+  * DNS reworking was not 10 years ago.
+  * check_sanity() is now used in only 1 place. No need to keep it separate.
+  * Add Debian Jessie to the list of GitLab Pipeline targets
+  * Fixed lack of 4th digit in unitless display.
+  * Nailed missing clockvar units bug to the wall.
+  * Add configure-time warning about 32-bit time_t.
+
+-------------------------------------------------------------------
+Sat Apr 15 19:38:07 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170415.e3c051e3e:
+  * Allow exit if no DNS ntp_seccomp
+  * Attempt to address Gitlab issue #257: Warnings with clang 8...
+  * Add sodium installation to buildprep where needed.
+  * Improvements for systemd support from Tomáš Chvátal.
+  * Add instructions for setting up boot-time startup to INSTALLL...
+  * Address issue #239: pylib/packet.py should get key file location by reading ntp.conf
+  * Fixed ntpmon crash when detail mode active and peers display hidden
+  * Fix typos/grammar
+  * Revert "Add sodium installation to buildprep where needed."
+
+-------------------------------------------------------------------
+Thu Apr 13 20:01:01 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170413.25a240c2e:
+  * tests/decodenetnum: test for /etc/services and port names.
+
+-------------------------------------------------------------------
+Thu Apr 13 19:21:57 UTC 2017 - tchvatal@suse.com
+
+- Add netcfg dependency to fix tests
+- Also require the netcfg as without it some operations won't work
+
+-------------------------------------------------------------------
+Thu Apr 13 18:36:42 UTC 2017 - tchvatal@suse.com
+
+- Update to version 0.9.7+git20170413.c3e3769f9:
+  * Unit bug fixes
+  * waf: Prepend, anot append, computed CFLAGS.
+  * decodenetnum(): return more error codes.
+  * tests/leapsec: stop mising bools and ints
+
+-------------------------------------------------------------------
+Thu Apr 13 08:50:04 UTC 2017 - tchvatal@suse.com
+
+- Switch to git snapshot for now as we debug issues with upstream
+- Update to version 0.9.7+git20170412.f0451c5a8:
+  * libntp: fix format signs.
+  * fix format signedness.
+  * ntp_control: fix format signed-ness
+  * test/lfpfunc: make sure printf works on 32-bit.
+  * oncore: fix format signed-ness
+  * refclock_mode: fix format signed-ness
+  * jupiter: fix format signed-ness
+  * Formatting function changeover and associated fixes.
+  * refcklock_nmea: fix numerous format sin problems.
+  * Fix two format sign warnings.
+
+-------------------------------------------------------------------
+Thu Apr 13 08:39:18 UTC 2017 - tchvatal@suse.com
+
+- Do not use %license macro so we install on 42.1
+
+-------------------------------------------------------------------
+Wed Apr 12 21:08:13 UTC 2017 - tchvatal@suse.com
+
+- BuildRequire xsltproc
+
+-------------------------------------------------------------------
+Wed Apr 12 20:51:38 UTC 2017 - tchvatal@suse.com
+
+- Use internal waf so we can build on older distributions
+
+-------------------------------------------------------------------
+Wed Apr 12 20:38:22 UTC 2017 - tchvatal@suse.com
+
+- Enable gdb debugoutputs
+
+-------------------------------------------------------------------
+Sun Apr  9 09:13:52 UTC 2017 - mpluskal@suse.com
+
+- Enable mdns
+
+-------------------------------------------------------------------
+Fri Apr  7 14:03:04 UTC 2017 - tchvatal@suse.com
+
+- Switch to python2 as python3-gpsd does not exist (by upstream)
+  and we need those binaries to work
+
+-------------------------------------------------------------------
+Fri Apr  7 08:44:47 UTC 2017 - tchvatal@suse.com
+
+- Require python3-gps for ntploggps
+
+-------------------------------------------------------------------
+Thu Apr  6 19:39:26 UTC 2017 - tchvatal@suse.com
+
+- Fix python shebangs
+- Try to make pps-tools-devel included for hi-precision
+
+-------------------------------------------------------------------
+Thu Apr  6 19:17:56 UTC 2017 - mpluskal@suse.com
+
+- Update buildrequirements
+
+-------------------------------------------------------------------
+Thu Apr  6 17:49:00 UTC 2017 - tchvatal@suse.com
+
+- Add config from the ntp package ntp.conf
+- Split the python module and utils using it to separate pkgs
+
+-------------------------------------------------------------------
+Wed Apr  5 08:49:12 UTC 2017 - tchvatal@suse.com
+
+- Restrict version on the waf that is needed to build this
+
+-------------------------------------------------------------------
+Wed Apr  5 07:29:06 UTC 2017 - tchvatal@suse.com
+
+- Inherit items from ntp.spec:
+  * Add systemd services
+  * Add logrotate file
+  * Add firewall file
+- Enable testsuite (always returns 0 atm, 2 tests failing)
+- Create ntp user the same way as normal ntp does
+
+-------------------------------------------------------------------
+Wed Apr  5 07:16:20 UTC 2017 - tchvatal@suse.com
+
+- Version update to 0.9.7
+- Cleanup the deps a bit
+- Use system waf
+
+-------------------------------------------------------------------
+Mon Feb 13 13:52:43 UTC 2017 - michael@stroeder.com
+
+- update to 0.9.6
+
+-------------------------------------------------------------------
+Wed Dec  7 22:29:05 UTC 2016 - malcolmlewis@opensuse.org
+
+- Initial build.
+

@@ -1,0 +1,24 @@
+From e81051785f101f88b8ff373d9f0ee2358bfc5c25 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 2 Apr 2019 22:52:29 +0200
+Subject: [PATCH] Fix warnings.
+
+---
+ libindi/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libindi/CMakeLists.txt b/libindi/CMakeLists.txt
+index 4e6a9e1d..e52231ac 100644
+--- a/libindi/CMakeLists.txt
++++ b/libindi/CMakeLists.txt
+@@ -218,6 +218,7 @@ if (ANDROID)
+         set(CFITSIO_LIBRARIES ${CFITSIO_DIR}/libcfitsio.a)
+     endif ()
+ else ()
++    find_package(Qt5Core REQUIRED)
+     find_package(Qt5Network REQUIRED)
+     find_package(ZLIB REQUIRED)
+     find_package(CFITSIO REQUIRED)
+-- 
+2.21.0
+

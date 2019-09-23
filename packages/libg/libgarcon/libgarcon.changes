@@ -1,0 +1,282 @@
+-------------------------------------------------------------------
+Sat Jul 27 15:23:04 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.6.4
+  * Update gitignore
+  * Fix use after free crash (bxo#15679)
+  * Translation updates
+- Removed %defattr macros
+- Use %make_build
+
+-------------------------------------------------------------------
+Sun Jun 30 22:42:45 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.6.3
+  * Fix g_type_class_add_private deprecation in recent GLib
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Mar 16 13:46:13 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Switched URL and Source to https:// in the spec file.` 
+
+-------------------------------------------------------------------
+Wed Jan  2 16:33:36 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- update to version 0.6.2
+  - Fix some menu icons are too big (bxo#13785)
+  - Support composite XDG_CURRENT_DESKTOP (bxo#14137)
+  - Decrement allocation counter on item unref (bxo#12700)
+  - Replace hash table for application actions with a list
+  - Support for freedesktop Keyword item (bxo#10683)
+  - garcon-gtk2-1.pc should be optional.
+  - Fix documentation generation
+  - Fix make distcheck build
+  - Fix some autogen warnings
+  - Update dependencies and copyright
+  - Translation Updates
+ 
+-------------------------------------------------------------------
+Wed Jul 19 12:26:09 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.6.1
+  - Remove extraneous libxfce4ui-1 check
+  - Fix garcon-2 reference bxo#13543
+  - Drop libgarcon-2
+  - Make building garcon-gtk2 optional
+  - Translation updates
+
+-------------------------------------------------------------------
+Wed Jul 19 12:26:08 UTC 2017 - jengelh@inai.de
+
+- RPM group fix.
+- Run fdupes over all of /usr.
+
+-------------------------------------------------------------------
+Wed Apr 19 21:27:51 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.6.0
+  - Fix left-alignment of labels in menuitems
+  - garcon-gtk: Add an option to edit launchers
+  - Desktop actions custom icon support
+  - Show desktop actions in a submenu
+  - Added desktop actions support (bxo#11268)
+  - Don't add a placeholder menu (bxo#11626)
+  - Fix assertion 'GTK_IS_WIDGET (widget)' failed.
+  - Fix missing menus when all items are in submenus (bxo#11801)
+  - Translation updates
+
+-------------------------------------------------------------------
+Sun Dec 25 16:12:00 UTC 2016 - seife+obs@b1-systems.com
+
+- update to version 0.5.0
+  - port to GTK3
+- add libgarcon-2-0 subpackage with GTK3 version
+
+-------------------------------------------------------------------
+Sat Feb 28 21:13:31 UTC 2015 - gber@opensuse.org
+
+- update to version 0.4.0
+  - update intltool (bxo#8930)
+  - fix menu icons for misconfigured desktop files (bxo#10709)
+  - add case insensitive sorting to the menu (bxo#10594)
+  - don't force URLs to be opened in a web browser (bxo#10212)
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Apr 30 20:07:08 UTC 2014 - gber@opensuse.org
+
+- update to version 0.3.0
+  - avoid direct include of garcon-menu.h
+  - add garcon_set_environment_xdg() function
+  - add a garcon-gtk library for common gtk functions
+  - bail out of creating a directory menu if it doesn't have a name
+  - translation updates
+
+-------------------------------------------------------------------
+Sun May  5 19:17:57 UTC 2013 - gber@opensuse.org
+
+- update to version 0.2.1
+  - g_thread_init is deprecated since glib 2.32
+  - remove unmaintained translations
+  - fix deprecating warnings in tests
+  - use new mutex locking api if available
+  - autotools updates
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Apr 29 07:59:59 UTC 2012 - gber@opensuse.org
+
+- update to version 0.2.0
+  - updates for xfce4-run.desktop
+  - remove xfhelp4.desktop from the menu
+  - add debugging for file monitoring and reloading
+  - reduce signal emission on delete events
+  - translation updates
+- make libgarcon-1-0 depend on exo-tools, it uses exo-open for
+  Type=Link items
+- make libgarcon-branding-upstream depend on libxfce4ui-tools since
+  the included menu references xfce4-about.desktop
+
+-------------------------------------------------------------------
+Fri Apr 27 10:36:23 UTC 2012 - gber@opensuse.org
+
+- make the libgarcon-1-0 recommend -data which in turn requires
+  -branding rather than recommending -branding
+
+-------------------------------------------------------------------
+Sat Apr 14 14:37:29 UTC 2012 - gber@opensuse.org
+
+- make -branding packages depend on -data and not the other way
+  around
+- make libgarcon-1-0 recommend -branding
+
+-------------------------------------------------------------------
+Sat Apr 14 09:40:28 UTC 2012 - gber@opensuse.org
+
+- update to version 0.1.12
+  - add missing or fix incorrect licenses
+  - fix segfault if null is set
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Mar 31 09:15:50 UTC 2012 - gber@opensuse.org
+
+- update to version 0.1.11
+  - use applications-science icon for education directory
+  - translation updates
+
+-------------------------------------------------------------------
+Mon Mar 26 23:19:30 UTC 2012 - gber@opensuse.org
+
+- correct build dependencies
+- split off -lang and -data subpackages and move unversioned menu
+  data to the latter
+
+-------------------------------------------------------------------
+Sun Feb 12 22:38:22 UTC 2012 - gber@opensuse.org
+
+- update to version 0.1.10
+  - add hardware and personal directories
+  - support Link desktop types
+  - translation updates
+
+-------------------------------------------------------------------
+Fri Oct 14 15:56:18 UTC 2011 - gber@opensuse.org
+
+- recommend -doc subpackage
+
+-------------------------------------------------------------------
+Mon Sep 19 13:17:00 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.9
+  - rename Network category to Internet
+  - queue multiple reload-required signals
+  - speedup a number of critical code-paths
+  - use GSList instead of GList where possible
+  - Use XfceRc instead of GKeyFile, this makes garcon depend on
+    libxfce4util, but is faster and more memory efficient.
+  - return an error string instead of freeing it, causing a sefgault
+    in xfce4-panel
+  - do not decrement the internal refcount of items, this should
+    fixed the usage of <OnlyUnallocated/>
+  - translations updates
+
+-------------------------------------------------------------------
+Sun Jun 19 14:39:05 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.8
+  - removed the science toplevel category
+  - handle local desktop file loading directly
+  - bugfixes
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Apr 16 10:32:22 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.7
+  - respect XDG priorities when returning the menu file (bxo#7470)
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Apr  6 20:39:38 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.6
+  - add <DefaultMergeDirs/> to xfce-applications.menu
+  - also try the garcon install sysconfigdir for config lookups
+  - use Xdt macros for debugging and linker optimizations
+  - default menu prefix to "xfce-"
+  - bugfixes
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Jan 30 00:15:23 UTC 2011 - gber@opensuse.org
+
+- supplement libgarcon-1-0 not libgarcon
+
+-------------------------------------------------------------------
+Mon Jan 17 12:10:20 UTC 2011 - gber@opensuse.org
+
+- updated to version 0.1.5
+  - bugfixes
+
+-------------------------------------------------------------------
+Wed Jan  5 15:07:03 UTC 2011 - gber@opensuse.org
+
+- fixed typos
+- added -branding-upstream subpackage
+
+-------------------------------------------------------------------
+Fri Dec 24 12:09:39 UTC 2010 - gber@opensuse.org
+
+- show compiler output
+- remove unsupported locales
+
+-------------------------------------------------------------------
+Fri Dec 24 10:29:00 UTC 2010 - gber@opensuse.org
+
+- improved summries/descriptions
+- corrected categories
+
+-------------------------------------------------------------------
+Tue Dec 21 14:18:58 UTC 2010 - gber@opensuse.org
+
+- add support for X-SuSE-Unimportant
+
+-------------------------------------------------------------------
+Sun Dec  5 22:19:39 UTC 2010 - andrea@opensuse.org
+
+- update to 0.1.4 
+
+-------------------------------------------------------------------
+Wed Dec  1 18:12:44 UTC 2010 - prusnak@opensuse.org
+
+- use pkgconfig symbol in BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 30 23:04:58 UTC 2010 - andrea@opensuse.org
+
+- used some macros
+- fixed rpm groups
+
+-------------------------------------------------------------------
+Mon Nov  8 17:07:27 UTC 2010 - prusnak@opensuse.org
+
+- updated to 0.1.3
+- drop preamble.patch (included upstream)
+
+-------------------------------------------------------------------
+Mon Apr 26 15:46:19 CEST 2010 - prusnak@suse.cz
+
+- fix license in preamble (preamble.patch)
+
+-------------------------------------------------------------------
+Fri Mar 12 14:33:58 UTC 2010 - prusnak@suse.cz
+
+- updated to 0.1.1
+
+-------------------------------------------------------------------
+Fri Nov 13 19:46:04 CET 2009 - prusnak@suse.cz
+
+- created package (version 0.1.0)
+

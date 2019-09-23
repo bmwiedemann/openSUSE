@@ -1,0 +1,6 @@
+<package name="nip2" project="openSUSE:Factory">
+  <title></title>
+  <description>nip2 is a user interface for the VIPS image processing library.
+VIPS library is good with large images (images larger than the amount of RAM you have available), with many CPUs, for working with colour, for scientific analysis and for general research &amp;amp; development.</description>
+  <devel project="graphics" package="nip2"/>
+</package>

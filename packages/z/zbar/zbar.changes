@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Sat Jul  6 10:07:41 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.23:
+  * Support for Gtk3 (backward support with Gtk2 will be maintained.
+  * Support for Python 3 (backward support with Python2 will be maintained);
+  * Support for ZBar Gtk GObject Introspection (GIR). That allows using ZBar
+    Gtk3 widgets on any language that it is compatible with GIR, including
+    python 2 and python 3.
+- Switch from ImageMagick to GraphicsMagick, the latter has significantly
+  less build dependencies. As it is only used by the zbarimg tool to
+  load images, this does not affect users of the zbar library.
+- Update URL tag to point to the current upstream location
+
+-------------------------------------------------------------------
+Thu Mar 28 16:23:42 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.22:
+  * zbarcam-qt: allow changing resolutions in real time
+  * zbarcam-qt: better support ZBar options
+  * zbarcam-qt: do several visual improvements
+  * zbarcam-qt: make it remember the geometry
+  * zbarcam-qt: allow show/hide control and options bars
+  * zbarcam-qt: remember lastly used settings and camera controls
+  * zbarcam-qt: allow changing ZBar decode options via GUI
+  * Add API to allow get/set resolutions
+  * img_scanner: add handler for color-inverted codes
+  * img_scanner: fix get_config parameter validation
+  * scan_video: improve logic to remove duplicated/invalid devnodes
+  * symbol.c: fix symbol hash logic (prevents crash with QR options)
+  * configure.ac: fix an error at libv4l2 package check
+  * fix some typos
+  * exit gracefully when decoding split QR codes
+
+-------------------------------------------------------------------
+Fri Mar  8 17:31:33 UTC 2019 - olaf@aepfle.de
+
+- Use gcc7 in SLE_12
+
+-------------------------------------------------------------------
+Fri Feb 15 08:14:02 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.21:
+  * zbarcam-qt: allow selecting codes via GUI interface
+  * When both enabled, ISBN-13 has precedence over ISBN-10
+  * ZBar is now using Travis CI for continuous integration tests
+  * Convert INSTALL and README to markdown and update them
+  * Improve ZBar testing code and make easier to run the tests
+  * Fix build with Clang
+  * Add simple dbus IPC API to zbarcam.
+  * zbarimg: display only the compiled symbologies
+  * v4l2: make ZBar build and run on Kernels < 3.16
+  * configure.ac: The pdf417 code is incomplete. Warn about that
+  * Add Debian packaging and Travis CI configuration
+  * Add barcode examples for different supported symbologies
+  * Several improvements at the building system
+  * Add support for SQ code symbology
+  * v4l2: add fallback for systems without v4l2_ext_controls which field
+  * v4l2: use device_caps instead of capabilities
+  * v4l2: make v4l2_request_buffers() more generic
+  * release video buffers after probing and request them again when needed
+  * Ignore ENOTTY errors when calling VIDIOC_S_CROP
+  * doc/Makefile.am.inc: clean html generated files
+  * Add --disable-doc configure option to disable building docs
+  * Fix function protoype to be compatible with recent libjpeg
+  * Wrap logical not operations into parentheses
+  * INSTALL: warn that autoconf should be called before configure
+  * code128: fix error logic
+  * convert: ensure that it will not use a freed value
+  * zbar: use g_thread_new() instead of g_tread_create()
+  * zbargtk: add a missing break
+  * gtk/zbargtk: add a missing check if zbar->window is not null
+- Remove accidentaly introduced build dependency on python2
+- We no longer need to generate configure
+- Make building more verbose
+
+-------------------------------------------------------------------
+Wed Jan 23 16:13:22 UTC 2019 - info@paolostivanin.com
+
+- Update Zbar to v0.20.1
+  * switch from the old abandoned codebase to the new codebase
+    maintained by linuxtv.org
+  * improved v4l2 support
+  * compatible with Qt5
+  * various fixes
+- Removed fix_build.patch
+- Removed fix-gcc5.patch
+- Removed zbar-Qt5.patch
+- Removed fix-gcc8.patch
+
+-------------------------------------------------------------------
+Tue Apr 10 14:25:15 UTC 2018 - mliska@suse.cz
+
+- Add fix-gcc8.patch (boo#1088885).
+
+-------------------------------------------------------------------
+Wed Nov  1 14:50:59 UTC 2017 - mpluskal@suse.com
+
+- Drop python bindings and gtk support
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Aug  5 19:22:42 UTC 2017 - aloisio@gmx.com
+
+- Added zbar-Qt5.patch to build against Qt5
+
+-------------------------------------------------------------------
+Fri Feb  3 17:10:25 UTC 2017 - jengelh@inai.de
+
+- Compact and update descriptions
+
+-------------------------------------------------------------------
+Fri Feb  3 10:29:46 UTC 2017 - dimstar@opensuse.org
+
+- Properly packaeg %_defaultdocdir: new rpm versions no longer
+  implicitly add this to the packages.
+
+-------------------------------------------------------------------
+Fri Jul  1 09:05:12 UTC 2016 - dimstar@opensuse.org
+
+- Add baselibs.conf (boo#987287).
+
+-------------------------------------------------------------------
+Tue Jun 14 10:32:29 UTC 2016 - jengelh@inai.de
+
+- Ensure SONAME symlinks stay with the library
+
+-------------------------------------------------------------------
+Thu Jun  9 09:38:23 UTC 2016 - dimstar@opensuse.org
+
+- Add update.sh to the source list.
+
+-------------------------------------------------------------------
+Wed Jun  8 13:15:49 UTC 2016 - dimstar@opensuse.org
+
+- Cleanup specfile for inclusion into openSUSE:
+  + Use upstream provided tarball.
+  + The devel packages follow the library basename, not the shared
+    library packaging name (not parallel installable).
+  + Groups for SLPP packages is System/Libraries.
+  + The various devel-packages are auto-depending on each other
+    based on the .pc files.
+  + Move autoreconf call to build phase.
+  + Pass --disable-static to configure instead of deleting the
+    static libs in the end again.
+
+-------------------------------------------------------------------
+Thu Feb 28 17:29:29 UTC 2013 - opensuse@dstoecker.de
+
+- update to current mercurial code
+
+-------------------------------------------------------------------
+Mon Aug  6 17:19:54 UTC 2012 - opensuse@dstoecker.de
+
+- fix build, update to recent mercurial revision from 2012-08-06
+
+-------------------------------------------------------------------
+Sat Nov 19 23:06:38 UTC 2011 - opensuse@dstoecker.de
+
+- fix build for openSUSE 12.1 (update to Mercurial version from 2011-11-19)
+
+-------------------------------------------------------------------
+Fri Apr  2 15:45:58 UTC 2010 - cgoncalves@opensuse.org
+
+- initial package (version 0.10)
+

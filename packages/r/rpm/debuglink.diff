@@ -1,0 +1,11 @@
+--- ./scripts/find-debuginfo.sh.orig	2017-12-01 15:39:07.239994681 +0000
++++ ./scripts/find-debuginfo.sh	2017-12-01 15:39:34.942914702 +0000
+@@ -321,7 +321,7 @@ debug_link()
+ get_debugfn()
+ {
+   dn=$(dirname "${1#$RPM_BUILD_ROOT}")
+-  bn=$(basename "$1" .debug)${unique_debug_suffix}.debug
++  bn=$(basename "$1")${unique_debug_suffix}.debug
+   debugdn=${debugdir}${dn}
+   debugfn=${debugdn}/${bn}
+ }

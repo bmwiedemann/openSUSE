@@ -1,0 +1,26 @@
+Index: binutils/testsuite/binutils-all/windres/windres.exp
+===================================================================
+--- binutils/testsuite/binutils-all/windres/windres.exp.orig
++++ binutils/testsuite/binutils-all/windres/windres.exp
+@@ -36,6 +36,7 @@ set wr "$WINDRES --include-dir $srcdir/$
+ if [file exists "$srcdir/../../winsup/w32api/include"] {
+     set wr "$wr --include-dir $srcdir/../../winsup/w32api/include"
+ } else {
++    return
+     send_log "\nWarning: Assuming windres can find the win32 headers\n\n"
+ }
+ 
+Index: ld/testsuite/ld-srec/srec.exp
+===================================================================
+--- ld/testsuite/ld-srec/srec.exp.orig
++++ ld/testsuite/ld-srec/srec.exp
+@@ -20,6 +20,9 @@
+ # Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston,
+ # MA 02110-1301, USA.
+ 
++# Too fragile.
++return
++
+ # Get the offset from an S-record line to the start of the data.
+ 
+ proc srec_off { l } {

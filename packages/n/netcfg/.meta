@@ -1,0 +1,9 @@
+<package name="netcfg" project="openSUSE:Factory">
+  <title>Network Configuration Files in /etc</title>
+  <description>All of the basic configuration files for the network programs including
+/etc/aliases, /etc/protocols, and /etc/services.
+
+These are often used by network routines in the C library and therefore
+must be installed for all network programs.</description>
+  <devel project="Base:System" package="netcfg"/>
+</package>

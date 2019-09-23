@@ -1,0 +1,5 @@
+<package name="yuyo-gtk-theme" project="openSUSE:Factory">
+  <title>Yuyo Gtk Theme</title>
+  <description>Yuyo has light and dark variations and a flat style with crisp clean lines.</description>
+  <devel project="X11:common:Factory" package="yuyo-gtk-theme"/>
+</package>

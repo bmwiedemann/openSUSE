@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d59fa96588915cfb1c103ab36fd76608</srcmd5>
+    <version>0.7.1</version>
+    <time>1527675215</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-skylighting-core to the latest version.</comment>
+    <requestid>607885</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a44d8bcc3fd4c2ad3e504062dc40ac21</srcmd5>
+    <version>0.7.2</version>
+    <time>1532445714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update skylighting-core to version 0.7.2.
+  ## 0.7.2 -- 2018-06-08
+    * Update syntax definitions from upstream.
+    * Added support for POV-Ray syntax (#46).
+    * Display line numbers without absolute positioning (David
+      Baynard, #32).
+
+- Add skylighting-core at version 0.7.1.</comment>
+    <requestid>623855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>479edf75a5fae6db4080a6c1cd9877fc</srcmd5>
+    <version>0.7.3</version>
+    <time>1535963693</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>632487</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5170124302cb493e3c451cdfc7987fe</srcmd5>
+    <version>0.7.4</version>
+    <time>1540448331</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642896</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3be6c8c78dae7b0ae4673fdbc11840de</srcmd5>
+    <version>0.7.5</version>
+    <time>1544095017</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>653444</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73a3be288b026908a7a036b2b38e4c53</srcmd5>
+    <version>0.7.6</version>
+    <time>1550402432</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674308</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d8723516d08d99044408cf5df91439fa</srcmd5>
+    <version>0.7.7</version>
+    <time>1551883645</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681687</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c69e238f4316caf6ed6ef993dee11798</srcmd5>
+    <version>0.8.1.1</version>
+    <time>1560971508</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710640</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7bb1fa3d1733fee241d591b27f52d7cd</srcmd5>
+    <version>0.8.2</version>
+    <time>1564414013</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715420</requestid>
+  </revision>
+</revisionlist>

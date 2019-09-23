@@ -1,0 +1,1252 @@
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/ResolverCli.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/ResolverCli.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/ResolverCli.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/ResolverCli.java	2019-02-13 22:43:25.477815024 +0100
+@@ -15,15 +15,13 @@
+  */
+ package org.fedoraproject.xmvn.tools.resolve;
+ 
++import java.io.IOException;
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.List;
+ import java.util.stream.Collectors;
+ 
+-import javax.xml.bind.JAXBContext;
+-import javax.xml.bind.JAXBException;
+-import javax.xml.bind.Marshaller;
+-import javax.xml.bind.Unmarshaller;
++import javax.xml.stream.XMLStreamException;
+ 
+ import org.fedoraproject.xmvn.artifact.Artifact;
+ import org.fedoraproject.xmvn.artifact.DefaultArtifact;
+@@ -32,8 +30,8 @@
+ import org.fedoraproject.xmvn.resolver.ResolutionRequest;
+ import org.fedoraproject.xmvn.resolver.ResolutionResult;
+ import org.fedoraproject.xmvn.resolver.Resolver;
+-import org.fedoraproject.xmvn.tools.resolve.xml.CompoundRequest;
+-import org.fedoraproject.xmvn.tools.resolve.xml.CompoundResult;
++import org.fedoraproject.xmvn.tools.resolve.xml.ResolutionRequestListUnmarshaller;
++import org.fedoraproject.xmvn.tools.resolve.xml.ResolutionResultListMarshaller;
+ 
+ /**
+  * Resolve artifacts given on command line.
+@@ -53,14 +51,11 @@
+     }
+ 
+     private List<ResolutionRequest> parseRequests( ResolverCliRequest cli )
+-        throws JAXBException
++        throws IOException, XMLStreamException
+     {
+         if ( cli.isRaw() )
+         {
+-            JAXBContext jaxbContext = JAXBContext.newInstance( CompoundRequest.class );
+-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+-            CompoundRequest compoundRequest = (CompoundRequest) jaxbUnmarshaller.unmarshal( System.in );
+-            List<ResolutionRequest> requests = compoundRequest.getRequests();
++            List<ResolutionRequest> requests = new ResolutionRequestListUnmarshaller( System.in ).unmarshal();
+             return requests != null ? requests : Collections.<ResolutionRequest>emptyList();
+         }
+ 
+@@ -83,14 +78,11 @@
+     }
+ 
+     private void printResults( ResolverCliRequest cli, List<ResolutionResult> results )
+-        throws JAXBException
++        throws IOException, XMLStreamException
+     {
+         if ( cli.isRaw() )
+         {
+-            JAXBContext jaxbContext = JAXBContext.newInstance( CompoundResult.class );
+-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+-            jaxbMarshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true );
+-            jaxbMarshaller.marshal( new CompoundResult( results ), System.out );
++            new ResolutionResultListMarshaller( results ).marshal( System.out );
+         }
+         else if ( cli.isClasspath() )
+         {
+@@ -103,7 +95,7 @@
+     }
+ 
+     private void run( ResolverCliRequest cliRequest )
+-        throws JAXBException
++        throws IOException, XMLStreamException
+     {
+         try
+         {
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactBean.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactBean.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactBean.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactBean.java	2019-02-13 22:43:25.477815024 +0100
+@@ -15,16 +15,12 @@
+  */
+ package org.fedoraproject.xmvn.tools.resolve.xml;
+ 
+-import javax.xml.bind.annotation.XmlRootElement;
+-import javax.xml.bind.annotation.adapters.XmlAdapter;
+-
+ import org.fedoraproject.xmvn.artifact.Artifact;
+ import org.fedoraproject.xmvn.artifact.DefaultArtifact;
+ 
+ /**
+  * @author Mikolaj Izdebski
+  */
+-@XmlRootElement( name = "artifact" )
+ public class ArtifactBean
+ {
+     private String groupId;
+@@ -91,14 +87,12 @@
+      * @author Mikolaj Izdebski
+      */
+     public static class Adapter
+-        extends XmlAdapter<ArtifactBean, Artifact>
+     {
+         private static String nullify( String value, String defaultValue )
+         {
+             return value.equals( defaultValue ) ? null : value;
+         }
+ 
+-        @Override
+         public ArtifactBean marshal( Artifact artifact )
+             throws Exception
+         {
+@@ -113,7 +107,6 @@
+             return bean;
+         }
+ 
+-        @Override
+         public Artifact unmarshal( ArtifactBean bean )
+             throws Exception
+         {
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactUnmarshaller.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactUnmarshaller.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactUnmarshaller.java	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ArtifactUnmarshaller.java	2019-02-13 22:43:25.477815024 +0100
+@@ -0,0 +1,161 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.tools.resolve.xml;
++
++import java.io.IOException;
++import java.nio.file.Path;
++import java.nio.file.Paths;
++
++import javax.xml.stream.XMLEventReader;
++import javax.xml.stream.XMLStreamConstants;
++import javax.xml.stream.XMLStreamException;
++import javax.xml.stream.events.StartElement;
++import javax.xml.stream.events.XMLEvent;
++
++import org.fedoraproject.xmvn.artifact.Artifact;
++
++/**
++ * @author Marian Koncek
++ */
++class ArtifactUnmarshaller
++{
++    private XMLEventReader eventReader;
++
++    static class StringConstants
++    {
++        private static final String GROUP_ID = "groupId";
++
++        private static final String ARTIFACT_ID = "artifactId";
++
++        private static final String EXTENSION = "extension";
++
++        private static final String CLASSIFIER = "classifier";
++
++        private static final String VERSION = "version";
++
++        private static final String PATH = "path";
++    }
++
++    public ArtifactUnmarshaller( XMLEventReader eventReader )
++    {
++        this.eventReader = eventReader;
++    }
++
++    /**
++     * @return A String representation of the nested element or an empty string if end of section has been found
++     * @throws IOException
++     * @throws XMLStreamException
++     */
++    String readUntilEnd( String end )
++        throws XMLStreamException
++    {
++        StringBuffer stringBuffer = new StringBuffer();
++
++        while ( eventReader.hasNext() )
++        {
++            XMLEvent event = eventReader.nextEvent();
++
++            if ( event.getEventType() == XMLStreamConstants.CHARACTERS )
++            {
++                stringBuffer.append( event.asCharacters().getData() );
++            }
++            else if ( event.getEventType() == XMLStreamConstants.END_ELEMENT
++                && event.asEndElement().getName().getLocalPart().equals( end ) )
++            {
++                return stringBuffer.toString();
++            }
++        }
++
++        throw new XMLStreamException( "XML stream does not have a proper format" );
++    }
++
++    Artifact unmarshal()
++        throws XMLStreamException
++    {
++        ArtifactBean artifactBean = new ArtifactBean();
++        Path path = null;
++
++        while ( eventReader.hasNext() )
++        {
++            XMLEvent event = eventReader.nextEvent();
++
++            switch ( event.getEventType() )
++            {
++                case XMLStreamConstants.START_ELEMENT:
++                    StartElement startElement = event.asStartElement();
++                    String startName = startElement.getName().getLocalPart();
++
++                    switch ( startName )
++                    {
++                        case StringConstants.GROUP_ID:
++                            artifactBean.setGroupId( readUntilEnd( StringConstants.GROUP_ID ) );
++                            if ( artifactBean.getGroupId().isEmpty() )
++                            {
++                                throw new XMLStreamException( "Xml read error: groupId must not be empty" );
++                            }
++                            break;
++
++                        case StringConstants.ARTIFACT_ID:
++                            artifactBean.setArtifactId( readUntilEnd( StringConstants.ARTIFACT_ID ) );
++                            if ( artifactBean.getArtifactId().isEmpty() )
++                            {
++                                throw new XMLStreamException( "Xml read error: artifactId must not be empty" );
++                            }
++                            break;
++
++                        case StringConstants.EXTENSION:
++                            artifactBean.setExtension( readUntilEnd( StringConstants.EXTENSION ) );
++                            break;
++
++                        case StringConstants.CLASSIFIER:
++                            artifactBean.setClassifier( readUntilEnd( StringConstants.CLASSIFIER ) );
++                            break;
++
++                        case StringConstants.VERSION:
++                            artifactBean.setVersion( readUntilEnd( StringConstants.VERSION ) );
++                            break;
++
++                        case StringConstants.PATH:
++                            path = Paths.get( readUntilEnd( StringConstants.PATH ) );
++                            break;
++
++                        default:
++                            continue;
++                    }
++                    break;
++
++                case XMLStreamConstants.END_ELEMENT:
++                    if ( event.asEndElement().getName().getLocalPart().equals( "artifact" ) )
++                    {
++                        try
++                        {
++                            return new ArtifactBean.Adapter().unmarshal( artifactBean ).setPath( path );
++                        }
++                        catch ( Exception e )
++                        {
++                            throw new XMLStreamException( "XML stream does not have a proper format", e );
++                        }
++                    }
++                    break;
++
++                default:
++                    continue;
++            }
++        }
++
++        throw new XMLStreamException( "XML stream does not have a proper format" );
++    }
++}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundRequest.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundRequest.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundRequest.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundRequest.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,52 +0,0 @@
+-/*-
+- * Copyright (c) 2014-2017 Red Hat, Inc.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-package org.fedoraproject.xmvn.tools.resolve.xml;
+-
+-import java.util.List;
+-
+-import javax.xml.bind.annotation.XmlElement;
+-import javax.xml.bind.annotation.XmlRootElement;
+-
+-import org.fedoraproject.xmvn.resolver.ResolutionRequest;
+-
+-/**
+- * @author Mikolaj Izdebski
+- */
+-@XmlRootElement( name = "requests" )
+-public class CompoundRequest
+-{
+-    private List<ResolutionRequest> requests;
+-
+-    public CompoundRequest()
+-    {
+-    }
+-
+-    public CompoundRequest( List<ResolutionRequest> requests )
+-    {
+-        this.requests = requests;
+-    }
+-
+-    @XmlElement( name = "request" )
+-    public List<ResolutionRequest> getRequests()
+-    {
+-        return requests;
+-    }
+-
+-    public void setRequests( List<ResolutionRequest> requests )
+-    {
+-        this.requests = requests;
+-    }
+-}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundResult.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundResult.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundResult.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/CompoundResult.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,52 +0,0 @@
+-/*-
+- * Copyright (c) 2014-2017 Red Hat, Inc.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-package org.fedoraproject.xmvn.tools.resolve.xml;
+-
+-import java.util.List;
+-
+-import javax.xml.bind.annotation.XmlElement;
+-import javax.xml.bind.annotation.XmlRootElement;
+-
+-import org.fedoraproject.xmvn.resolver.ResolutionResult;
+-
+-/**
+- * @author Mikolaj Izdebski
+- */
+-@XmlRootElement( name = "results" )
+-public class CompoundResult
+-{
+-    private List<ResolutionResult> results;
+-
+-    public CompoundResult()
+-    {
+-    }
+-
+-    public CompoundResult( List<ResolutionResult> results )
+-    {
+-        this.results = results;
+-    }
+-
+-    @XmlElement( name = "result" )
+-    public List<ResolutionResult> getResults()
+-    {
+-        return results;
+-    }
+-
+-    public void setResults( List<ResolutionResult> results )
+-    {
+-        this.results = results;
+-    }
+-}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/package-info.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/package-info.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/package-info.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/package-info.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,29 +0,0 @@
+-/*-
+- * Copyright (c) 2014-2017 Red Hat, Inc.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-/**
+- * @author Mikolaj Izdebski
+- */
+-@XmlJavaTypeAdapters( { @XmlJavaTypeAdapter( value = ArtifactBean.Adapter.class, type = Artifact.class ),
+-    @XmlJavaTypeAdapter( value = ResolutionRequestBean.Adapter.class, type = ResolutionRequest.class ),
+-    @XmlJavaTypeAdapter( value = ResolutionResultBean.Adapter.class, type = ResolutionResult.class ) } )
+-package org.fedoraproject.xmvn.tools.resolve.xml;
+-
+-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
+-
+-import org.fedoraproject.xmvn.artifact.Artifact;
+-import org.fedoraproject.xmvn.resolver.ResolutionRequest;
+-import org.fedoraproject.xmvn.resolver.ResolutionResult;
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestBean.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestBean.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestBean.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestBean.java	2019-02-13 22:43:31.597842567 +0100
+@@ -15,16 +15,12 @@
+  */
+ package org.fedoraproject.xmvn.tools.resolve.xml;
+ 
+-import javax.xml.bind.annotation.XmlRootElement;
+-import javax.xml.bind.annotation.adapters.XmlAdapter;
+-
+ import org.fedoraproject.xmvn.artifact.Artifact;
+ import org.fedoraproject.xmvn.resolver.ResolutionRequest;
+ 
+ /**
+  * @author Mikolaj Izdebski
+  */
+-@XmlRootElement( name = "request" )
+ public class ResolutionRequestBean
+ {
+     private Artifact artifact;
+@@ -55,9 +51,7 @@
+      * @author Mikolaj Izdebski
+      */
+     public static class Adapter
+-        extends XmlAdapter<ResolutionRequestBean, ResolutionRequest>
+     {
+-        @Override
+         public ResolutionRequestBean marshal( ResolutionRequest request )
+             throws Exception
+         {
+@@ -69,7 +63,6 @@
+             return bean;
+         }
+ 
+-        @Override
+         public ResolutionRequest unmarshal( ResolutionRequestBean bean )
+             throws Exception
+         {
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestListUnmarshaller.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestListUnmarshaller.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestListUnmarshaller.java	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestListUnmarshaller.java	2019-02-13 22:43:31.597842567 +0100
+@@ -0,0 +1,105 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.tools.resolve.xml;
++
++import java.io.BufferedReader;
++import java.io.IOException;
++import java.io.InputStream;
++import java.io.InputStreamReader;
++import java.util.ArrayList;
++import java.util.List;
++
++import javax.xml.stream.XMLEventReader;
++import javax.xml.stream.XMLInputFactory;
++import javax.xml.stream.XMLStreamConstants;
++import javax.xml.stream.XMLStreamException;
++import javax.xml.stream.events.EndElement;
++import javax.xml.stream.events.StartElement;
++import javax.xml.stream.events.XMLEvent;
++
++import org.fedoraproject.xmvn.resolver.ResolutionRequest;
++
++/**
++ * @author Marian Koncek
++ */
++public class ResolutionRequestListUnmarshaller
++{
++    private InputStream inputStream;
++
++    public ResolutionRequestListUnmarshaller( InputStream inputStream )
++    {
++        this.inputStream = inputStream;
++    }
++
++    public List<ResolutionRequest> unmarshal()
++        throws IOException, XMLStreamException
++    {
++        List<ResolutionRequest> resolutionRequests = null;
++
++        try ( BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) ) )
++        {
++            XMLEventReader eventReader = XMLInputFactory.newInstance().createXMLEventReader( bufferedReader );
++
++            try
++            {
++                mainLoop: while ( eventReader.hasNext() )
++                {
++                    XMLEvent event = eventReader.nextEvent();
++
++                    switch ( event.getEventType() )
++                    {
++                        case XMLStreamConstants.START_ELEMENT:
++                            StartElement startElement = event.asStartElement();
++                            String startName = startElement.getName().getLocalPart();
++
++                            switch ( startName )
++                            {
++                                case "requests":
++                                    resolutionRequests = new ArrayList<ResolutionRequest>();
++                                    break;
++                                case "request":
++                                    resolutionRequests.add( new ResolutionRequestUnmarshaller( eventReader ).unmarshal() );
++                                    break;
++
++                                default:
++                                    continue;
++                            }
++                            break;
++
++                        case XMLStreamConstants.END_ELEMENT:
++                            EndElement endElement = event.asEndElement();
++                            String endName = endElement.getName().getLocalPart();
++
++                            if ( endName.equals( "requests" ) )
++                            {
++                                break mainLoop;
++                            }
++                            break;
++
++                        default:
++                            continue;
++                    }
++                }
++            }
++            finally
++            {
++                eventReader.close();
++            }
++        }
++
++        return resolutionRequests;
++    }
++}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshaller.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshaller.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshaller.java	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshaller.java	2019-02-13 22:43:31.597842567 +0100
+@@ -0,0 +1,98 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.tools.resolve.xml;
++
++import javax.xml.stream.XMLEventReader;
++import javax.xml.stream.XMLStreamConstants;
++import javax.xml.stream.XMLStreamException;
++import javax.xml.stream.events.StartElement;
++import javax.xml.stream.events.XMLEvent;
++
++import org.fedoraproject.xmvn.resolver.ResolutionRequest;
++
++/**
++ * @author Marian Koncek
++ */
++class ResolutionRequestUnmarshaller
++{
++    private XMLEventReader eventReader;
++
++    public ResolutionRequestUnmarshaller( XMLEventReader eventReader )
++    {
++        this.eventReader = eventReader;
++    }
++
++    ResolutionRequest unmarshal()
++        throws XMLStreamException
++    {
++        ResolutionRequestBean resolutionRequestBean = new ResolutionRequestBean();
++        boolean isPersistentFileNeeded = true;
++
++        while ( eventReader.hasNext() )
++        {
++            XMLEvent event = eventReader.nextEvent();
++
++            switch ( event.getEventType() )
++            {
++                case XMLStreamConstants.START_ELEMENT:
++                    StartElement startElement = event.asStartElement();
++                    String startName = startElement.getName().getLocalPart();
++
++                    switch ( startName )
++                    {
++                        case "artifact":
++                            resolutionRequestBean.setArtifact( new ArtifactUnmarshaller( eventReader ).unmarshal() );
++                            break;
++
++                        case "providerNeeded":
++                            resolutionRequestBean.setProviderNeeded( Boolean.valueOf( eventReader.nextEvent().asCharacters().getData() ) );
++                            break;
++
++                        case "persistentFileNeeded":
++                            isPersistentFileNeeded =
++                                Boolean.valueOf( eventReader.nextEvent().asCharacters().getData() );
++                            break;
++
++                        default:
++                            continue;
++                    }
++                    break;
++
++                case XMLStreamConstants.END_ELEMENT:
++                    if ( event.asEndElement().getName().getLocalPart().equals( "request" ) )
++                    {
++                        ResolutionRequest resolutionRequest;
++                        try
++                        {
++                            resolutionRequest = new ResolutionRequestBean.Adapter().unmarshal( resolutionRequestBean );
++                        }
++                        catch ( Exception e )
++                        {
++                            throw new XMLStreamException( "XML stream does not have a proper format", e );
++                        }
++                        resolutionRequest.setPersistentFileNeeded( isPersistentFileNeeded );
++                        return resolutionRequest;
++                    }
++                    break;
++
++                default:
++                    continue;
++            }
++        }
++
++        throw new XMLStreamException( "XML stream does not have a proper format" );
++    }
++}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultBean.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultBean.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultBean.java	2019-02-13 22:40:50.101115683 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultBean.java	2019-02-13 22:43:31.597842567 +0100
+@@ -18,15 +18,11 @@
+ import java.nio.file.Path;
+ import java.nio.file.Paths;
+ 
+-import javax.xml.bind.annotation.XmlRootElement;
+-import javax.xml.bind.annotation.adapters.XmlAdapter;
+-
+ import org.fedoraproject.xmvn.resolver.ResolutionResult;
+ 
+ /**
+  * @author Mikolaj Izdebski
+  */
+-@XmlRootElement( name = "result" )
+ public class ResolutionResultBean
+ {
+     private String artifactPath;
+@@ -81,9 +77,7 @@
+      * @author Mikolaj Izdebski
+      */
+     public static class Adapter
+-        extends XmlAdapter<ResolutionResultBean, ResolutionResult>
+     {
+-        @Override
+         public ResolutionResultBean marshal( ResolutionResult result )
+             throws Exception
+         {
+@@ -97,7 +91,6 @@
+             return bean;
+         }
+ 
+-        @Override
+         public ResolutionResult unmarshal( final ResolutionResultBean bean )
+             throws Exception
+         {
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultListMarshaller.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultListMarshaller.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultListMarshaller.java	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/main/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultListMarshaller.java	2019-02-13 22:43:31.597842567 +0100
+@@ -0,0 +1,114 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.tools.resolve.xml;
++
++import java.io.BufferedWriter;
++import java.io.IOException;
++import java.io.OutputStream;
++import java.io.OutputStreamWriter;
++import java.util.List;
++
++import javax.xml.stream.XMLOutputFactory;
++import javax.xml.stream.XMLStreamException;
++import javax.xml.stream.XMLStreamWriter;
++
++import org.fedoraproject.xmvn.resolver.ResolutionResult;
++
++/**
++ * @author Marian Koncek
++ */
++public class ResolutionResultListMarshaller
++{
++    private List<ResolutionResult> resolutionResults;
++
++    static class StringConstants
++    {
++        private static final String RESULT = "result";
++
++        private static final String ARTIFACT_PATH = "artifactPath";
++
++        private static final String PROVIDER = "provider";
++
++        private static final String COMPAT_VERSION = "compatVersion";
++
++        private static final String NAMESPACE = "namespace";
++    }
++
++    public ResolutionResultListMarshaller( List<ResolutionResult> resolutionResults )
++    {
++        this.resolutionResults = resolutionResults;
++    }
++
++    public void marshal( OutputStream stream )
++        throws IOException, XMLStreamException
++    {
++        try ( BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( stream ) ) )
++        {
++            XMLStreamWriter xsw = XMLOutputFactory.newInstance().createXMLStreamWriter( bw );
++
++            try
++            {
++                xsw.writeStartElement( "results" );
++
++                for ( ResolutionResult resolutionResult : resolutionResults )
++                {
++                    if ( resolutionResult == null )
++                    {
++                        continue;
++                    }
++
++                    xsw.writeStartElement( StringConstants.RESULT );
++
++                    if ( resolutionResult.getArtifactPath() != null )
++                    {
++                        xsw.writeStartElement( StringConstants.ARTIFACT_PATH );
++                        xsw.writeCharacters( resolutionResult.getArtifactPath().toString() );
++                        xsw.writeEndElement();
++                    }
++
++                    if ( resolutionResult.getProvider() != null )
++                    {
++                        xsw.writeStartElement( StringConstants.PROVIDER );
++                        xsw.writeCharacters( resolutionResult.getProvider() );
++                        xsw.writeEndElement();
++                    }
++
++                    if ( resolutionResult.getCompatVersion() != null )
++                    {
++                        xsw.writeStartElement( StringConstants.COMPAT_VERSION );
++                        xsw.writeCharacters( resolutionResult.getCompatVersion() );
++                        xsw.writeEndElement();
++                    }
++
++                    if ( resolutionResult.getNamespace() != null )
++                    {
++                        xsw.writeStartElement( StringConstants.NAMESPACE );
++                        xsw.writeCharacters( resolutionResult.getNamespace() );
++                        xsw.writeEndElement();
++                    }
++
++                    xsw.writeEndElement();
++                }
++
++                xsw.writeEndElement();
++            }
++            finally
++            {
++                xsw.close();
++            }
++        }
++    }
++}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshallerListTest.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshallerListTest.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshallerListTest.java	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionRequestUnmarshallerListTest.java	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,178 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.tools.resolve.xml;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertTrue;
++
++import java.io.FileInputStream;
++import java.io.IOException;
++import java.io.InputStream;
++import java.util.List;
++
++import javax.xml.stream.XMLStreamException;
++
++import org.junit.Test;
++
++import org.fedoraproject.xmvn.artifact.Artifact;
++import org.fedoraproject.xmvn.resolver.ResolutionRequest;
++
++/**
++ * @author Marian Koncek
++ */
++public class ResolutionRequestUnmarshallerListTest
++{
++    private final String resourcePath = "src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml";
++
++    @Test
++    public void testEmptierList()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-emptier-list.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            // The implementation may change. Any of the two results is correct.
++            assertTrue( list == null || list.isEmpty() );
++        }
++    }
++
++    @Test
++    public void testEmptyList()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-empty-list.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            // The implementation may change. Any of the two results is correct.
++            assertTrue( list == null || list.isEmpty() );
++        }
++    }
++
++    @Test
++    public void testFullArtifact()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-full-artifact.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            assertEquals( 1, list.size() );
++
++            Artifact artifact = list.get( 0 ).getArtifact();
++
++            assertEquals( "test1", artifact.getArtifactId() );
++            assertEquals( "test1", artifact.getGroupId() );
++            assertEquals( "test1", artifact.getExtension() );
++            assertEquals( "test1", artifact.getClassifier() );
++            assertEquals( "test1", artifact.getVersion() );
++            assertEquals( "/dev/null", artifact.getPath().toString() );
++        }
++    }
++
++    @Test
++    public void testFullRequests()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-full-requests.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            assertEquals( 6, list.size() );
++
++            assertEquals( true, list.get( 0 ).isProviderNeeded() );
++            assertEquals( true, list.get( 0 ).isPersistentFileNeeded() );
++
++            assertEquals( false, list.get( 1 ).isProviderNeeded() );
++            assertEquals( false, list.get( 1 ).isPersistentFileNeeded() );
++
++            assertEquals( false, list.get( 2 ).isProviderNeeded() );
++            assertEquals( true, list.get( 2 ).isPersistentFileNeeded() );
++
++            assertEquals( true, list.get( 3 ).isProviderNeeded() );
++            assertEquals( false, list.get( 3 ).isPersistentFileNeeded() );
++
++            assertEquals( true, list.get( 4 ).isPersistentFileNeeded() );
++
++            assertEquals( true, list.get( 5 ).isProviderNeeded() );
++        }
++    }
++
++    @Test
++    public void testIntegrationExample()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-integration-example.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            assertEquals( 2, list.size() );
++
++            assertEquals( "foobar", list.get( 0 ).getArtifact().getGroupId() );
++            assertEquals( "xyzzy", list.get( 0 ).getArtifact().getArtifactId() );
++
++            assertEquals( "junit", list.get( 1 ).getArtifact().getArtifactId() );
++            assertEquals( "junit", list.get( 1 ).getArtifact().getGroupId() );
++        }
++    }
++
++    @Test
++    public void testMinimalArtifacts()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-minimal-artifacts.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            assertEquals( 5, list.size() );
++
++            int artifactNum = 1;
++
++            for ( ResolutionRequest rr : list )
++            {
++                Artifact artifact = rr.getArtifact();
++
++                assertEquals( "test" + Integer.toString( artifactNum ), artifact.getArtifactId() );
++                assertEquals( "test" + Integer.toString( artifactNum ), artifact.getGroupId() );
++                ++artifactNum;
++            }
++        }
++    }
++
++    @Test
++    public void testNestedBrackets()
++        throws IOException, XMLStreamException
++    {
++        try ( InputStream is = new FileInputStream( resourcePath + "/test-nested-brackets.xml" ) )
++        {
++            List<ResolutionRequest> list = new ResolutionRequestListUnmarshaller( is ).unmarshal();
++
++            assertEquals( 1, list.size() );
++
++            assertEquals( false, list.get( 0 ).isPersistentFileNeeded() );
++
++            list.get( 0 ).getArtifact();
++            list.get( 0 ).getArtifact().getExtension();
++            assertEquals( "jar", list.get( 0 ).getArtifact().getExtension() );
++            assertEquals( "aliased-component-metadata", list.get( 0 ).getArtifact().getArtifactId() );
++            assertEquals( "any", list.get( 0 ).getArtifact().getVersion() );
++            assertEquals( "alias-test", list.get( 0 ).getArtifact().getGroupId() );
++
++            assertEquals( false, list.get( 0 ).isProviderNeeded() );
++        }
++    }
++}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultMarshallerListTest.java xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultMarshallerListTest.java
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultMarshallerListTest.java	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/java/org/fedoraproject/xmvn/tools/resolve/xml/ResolutionResultMarshallerListTest.java	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,78 @@
++/*-
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.fedoraproject.xmvn.tools.resolve.xml;
++
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
++
++import org.junit.Test;
++
++import org.fedoraproject.xmvn.resolver.ResolutionResult;
++
++/**
++ * @author Marian Koncek
++ */
++public class ResolutionResultMarshallerListTest
++{
++    @Test
++    public void testEmpty()
++        throws Exception
++    {
++        new ResolutionResultListMarshaller( Arrays.asList( new ResolutionResult[] { null } ) ).marshal( System.out );
++    }
++
++    @Test
++    public void testMultiple()
++        throws Exception
++    {
++        List<ResolutionResult> list = new ArrayList<>();
++
++        ResolutionResultBean temp;
++        temp = new ResolutionResultBean();
++        temp.setArtifactPath( "/dev/null" );
++        temp.setCompatVersion( "comp1" );
++        temp.setNamespace( "namespace1" );
++        temp.setProvider( "provider1" );
++        list.add( new ResolutionResultBean.Adapter().unmarshal( temp ) );
++
++        temp = new ResolutionResultBean();
++        temp.setArtifactPath( "/dev/null" );
++        temp.setCompatVersion( "comp2" );
++        temp.setNamespace( "namespace2" );
++        temp.setProvider( "provider2" );
++        list.add( new ResolutionResultBean.Adapter().unmarshal( temp ) );
++
++        list.add( null );
++
++        temp = new ResolutionResultBean();
++        temp.setArtifactPath( "/dev/null" );
++        temp.setCompatVersion( "comp3" );
++        temp.setNamespace( "namespace3" );
++        temp.setProvider( "provider3" );
++        list.add( new ResolutionResultBean.Adapter().unmarshal( temp ) );
++
++        new ResolutionResultListMarshaller( list ).marshal( System.out );
++    }
++
++    @Test
++    public void testSingle()
++        throws Exception
++    {
++        ResolutionResult rr = new ResolutionResultBean.Adapter().unmarshal( new ResolutionResultBean() );
++        new ResolutionResultListMarshaller( Arrays.asList( new ResolutionResult[] { rr } ) ).marshal( System.out );
++    }
++}
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-emptier-list.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-emptier-list.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-emptier-list.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-emptier-list.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1 @@
++<requests/>
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-empty-list.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-empty-list.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-empty-list.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-empty-list.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<requests>
++</requests>
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-artifact.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-artifact.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-artifact.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-artifact.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<requests>
++	<request>
++		<artifact>
++			<artifactId>test1</artifactId>
++			<groupId>test1</groupId>
++			<extension>test1</extension>
++			<classifier>test1</classifier>
++			<version>test1</version>
++			<path>/dev/null</path>
++		</artifact>
++	</request>
++</requests>
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-requests.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-requests.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-requests.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-full-requests.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,49 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<requests>
++	<request>
++		<artifact>
++			<artifactId>test1</artifactId>
++			<groupId>test1</groupId>
++		</artifact>
++		<providerNeeded>true</providerNeeded>
++		<persistentFileNeeded>true</persistentFileNeeded>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test2</artifactId>
++			<groupId>test2</groupId>
++		</artifact>
++		<providerNeeded>false</providerNeeded>
++		<persistentFileNeeded>false</persistentFileNeeded>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test3</artifactId>
++			<groupId>test3</groupId>
++		</artifact>
++		<providerNeeded>false</providerNeeded>
++		<persistentFileNeeded>true</persistentFileNeeded>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test4</artifactId>
++			<groupId>test4</groupId>
++		</artifact>
++		<providerNeeded>true</providerNeeded>
++		<persistentFileNeeded>false</persistentFileNeeded>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test5</artifactId>
++			<groupId>test5</groupId>
++		</artifact>
++		<persistentFileNeeded>true</persistentFileNeeded>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test6</artifactId>
++			<groupId>test6</groupId>
++		</artifact>
++		<providerNeeded>true</providerNeeded>
++	</request>
++</requests>
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-integration-example.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-integration-example.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-integration-example.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-integration-example.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,14 @@
++<requests>
++	<request>
++		<artifact>
++			<groupId>foobar</groupId>
++			<artifactId>xyzzy</artifactId>
++		</artifact>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>junit</artifactId>
++			<groupId>junit</groupId>
++		</artifact>
++	</request>
++</requests>
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-minimal-artifacts.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-minimal-artifacts.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-minimal-artifacts.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-minimal-artifacts.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,33 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<requests>
++	<request>
++		<artifact>
++			<artifactId>test1</artifactId>
++			<groupId>test1</groupId>
++		</artifact>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test2</artifactId>
++			<groupId>test2</groupId>
++		</artifact>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test3</artifactId>
++			<groupId>test3</groupId>
++		</artifact>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test4</artifactId>
++			<groupId>test4</groupId>
++		</artifact>
++	</request>
++	<request>
++		<artifact>
++			<artifactId>test5</artifactId>
++			<groupId>test5</groupId>
++		</artifact>
++	</request>
++</requests>
+diff -urEbwBN xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-nested-brackets.xml xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-nested-brackets.xml
+--- xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-nested-brackets.xml	1970-01-01 01:00:00.000000000 +0100
++++ xmvn-3.0.0/xmvn-tools/xmvn-resolve/src/test/resources/org/fedoraproject/xmvn/tools/resolve/xml/test-nested-brackets.xml	2019-02-13 22:43:33.765852321 +0100
+@@ -0,0 +1,15 @@
++<requests>
++	<![CDATA[ ]]>
++	<request>
++		<persistentFileNeeded>false</persistentFileNeeded>
++		<artifact>
++			<extension>jar</extension>
++			<artifactId>aliased-component-metadata</artifactId>
++			<classifier/>
++			<!-- huh -->
++			<version>any</version>
++			<groupId>alias-<![CDATA[test]]></groupId>
++		</artifact>
++		<providerNeeded><![CDATA[false]]></providerNeeded>
++	</request>
++</requests>

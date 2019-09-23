@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e564a3f2b6eda301250ed6d66d6dfa16</srcmd5>
+    <version>3.2.4</version>
+    <time>1540988295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645505</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a13d4f991c88865c8b53bf78a091850c</srcmd5>
+    <version>3.3.0</version>
+    <time>1559375221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Use constant time string comparisons #82 (commit1, commit2) (thanks Brendan Long!)
+  * Edited and changed the usage of JWT, because in fact the code and documentation uses JWS tokens. #79 (commit) (thanks unuseless!)
+  * Documentation improvements #77 (commit)</comment>
+    <requestid>705806</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Wed May 23 15:54:48 UTC 2018 - mstaudt@suse.com
+
+- Fix build with Xorg server 1.20 by updating to current Git.
+
+U_06-Remove-reference-to-virtualFrom.patch
+U_07-xf86-video-sis-remove-the-GlxSetVisualConfigs-stub-and-friends.patch
+
+-------------------------------------------------------------------
+Mon May 29 14:34:29 UTC 2017 - sndirsch@suse.com
+
+- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041339)
+
+-------------------------------------------------------------------
+Thu Jan 19 13:24:52 UTC 2017 - sndirsch@suse.com
+
+- Update to version 0.10.9
+  * Adapt Block/WakeupHandler signature for ABI 23
+  * Fix arguments for miSetPointerPosition.
+- supersedes U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+
+-------------------------------------------------------------------
+Wed Nov 30 16:34:20 UTC 2016 - sndirsch@suse.com
+
+- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+  * Adapt Block/WakeupHandler signature for ABI 23 
+
+-------------------------------------------------------------------
+Sun Sep 27 10:51:05 UTC 2015 - mpluskal@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Tue Sep  1 08:04:19 UTC 2015 - sndirsch@suse.com
+
+- Update to version 0.10.8:
+  * Remove mibstore.h
+  * Stop including xf86Priv.h
+  * Fix HDisplay/VDisplay typos
+  * Remove upload / download EXA hooks
+  * sis: fix build against latest xserver
+  * sis: more build fixes against master X server.
+  * sis: force build, who uses this crazy code anyways
+  * Replace xf86UnMapVidMem with pci_device_unmap_range
+  * Fix format-security warnings
+- supersedes patches:
+  * U_Remove-mibstore.h.patch
+  * U_Replace-xf86UnMapVidMem-with-pci_device_unmap_range.patch
+  * U_Stop-including-xf86Priv.h.patch
+  * U_sis-fix-build-against-latest-xserver.patch
+  * U_sis-more-build-fixes-against-master-X-server.patch
+  * u_Fixed-build-with-INPUT_API-19.patch
+
+-------------------------------------------------------------------
+Fri Feb  6 13:27:22 UTC 2015 - sndirsch@suse.com
+
+- U_sis-fix-build-against-latest-xserver.patch/
+  U_sis-more-build-fixes-against-master-X-server.patch
+  * fixes build against xorg-server 1.17 
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:43 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Sun Apr  7 11:36:06 UTC 2013 - sndirsch@suse.com
+
+- u_Fixed-build-with-INPUT_API-19.patch
+  * Added dummy parameters to miPointerSetPosition(...) to fix
+    build with INPUT_API >= 19.
+
+-------------------------------------------------------------------
+Thu Mar 21 14:54:10 UTC 2013 - sndirsch@suse.com
+
+- Add mibstore.patch, fixes build with xorg-server 1.14 
+- Replace xf86UnMapVidMem with pci_device_unmap_range
+- Stop including xf86Priv.h
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Sun Sep  2 20:58:58 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.10.7:
+  + Add xaa configure support.
+  + Fix build against older servers.
+  + Port to new compat API.
+
+-------------------------------------------------------------------
+Fri Jun  1 09:43:47 UTC 2012 - sndirsch@suse.com
+
+- remove hw supplements (bnc#764395) 
+
+-------------------------------------------------------------------
+Wed May 23 00:03:02 UTC 2012 - crrodriguez@opensuse.org
+
+- Add supplements so the driver is picked automatically
+  by the package manager if the user has suitable hardware.
+
+-------------------------------------------------------------------
+Mon Apr 30 08:21:40 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause and MIT
+  See COPYING
+
+-------------------------------------------------------------------
+Thu Apr 19 11:25:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.10.4:
+  + Fix build with XInput version 12
+  + Untangle XF86DRI from the driver-specific DRI define
+  + Use miPointerSetPosition, not miPointerAbsoluteCursor
+  + Fall back to shadowfb if XAA is unavailable
+  + Build fix for older servers (error: conflicting types for
+    'pciTag')
+  + Convert use of LookupWindow to dixLookupWindow
+  + Build fix for ABI Version 12
+- Use %x11_abi_videodrv_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-sis from xorg-x11-driver-video.
+  Initial version: 0.10.3.
+

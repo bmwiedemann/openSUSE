@@ -1,0 +1,20 @@
+Index: lynis
+===================================================================
+--- lynis.orig	2018-01-26 18:04:08.168685204 +0100
++++ lynis	2018-01-26 18:04:11.584718885 +0100
+@@ -929,7 +929,14 @@ ${NORMAL}
+                            mail_messaging firewalls webservers ssh snmp databases ldap php squid logging \
+                            insecure_services banners scheduling accounting time crypto virtualization containers \
+                            mac_frameworks file_integrity tooling malware file_permissions homedirs \
+-                           kernel_hardening hardening"
++                           kernel_hardening hardening \
++                           system_dbus \
++                           users_wo_password \
++                           binary_rpath \
++                           tmp_symlinks \
++                           file_permissions_ww \
++                           system_proc \
++                           network_allowed_ports"
+         else
+             INCLUDE_TESTS="${TEST_GROUP_TO_CHECK}"
+             LogText "Info: only performing tests from groups: ${TEST_GROUP_TO_CHECK}"

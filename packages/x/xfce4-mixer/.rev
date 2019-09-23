@@ -1,0 +1,349 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>217f272e244731f04ebb85106f752893</srcmd5>
+    <version>4.4.0</version>
+    <time>1174790599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1262ee40b84398fb1bc0e148ae4b2387</srcmd5>
+    <version>4.4.1</version>
+    <time>1176413089</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ae40e882bf00a57867926c036f5d016c</srcmd5>
+    <version>4.4.1</version>
+    <time>1176850271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>a14518d0b31613e0f42683120fe070f5</srcmd5>
+    <version>4.4.1</version>
+    <time>1177543203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>e624b44e0a91bfd85e93bdedf2d0b4e2</srcmd5>
+    <version>4.4.1</version>
+    <time>1178095178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="29">
+    <srcmd5>350f34638dd7fceb798432a3f1eb4c3b</srcmd5>
+    <version>4.4.1</version>
+    <time>1182360558</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="67">
+    <srcmd5>cf29d4369000d9c263c5e7dac3dcb11c</srcmd5>
+    <version>4.4.1</version>
+    <time>1193069180</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>11a14add800430c32e4e075bf56a6f47</srcmd5>
+    <version>4.4.2</version>
+    <time>1196722447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="101">
+    <srcmd5>11a14add800430c32e4e075bf56a6f47</srcmd5>
+    <version>4.4.2</version>
+    <time>1196722447</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c531f30e5ceb5fc2abf131f180b2ba0d</srcmd5>
+    <version>4.4.3</version>
+    <time>1225929740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c1411175024b10d35e2a036ea6dd68b8</srcmd5>
+    <version>4.6.0</version>
+    <time>1236555056</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4490586550439c56dc9c2386c70f40e9</srcmd5>
+    <version>4.6.1</version>
+    <time>1240867019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>4490586550439c56dc9c2386c70f40e9</srcmd5>
+    <version>4.6.1</version>
+    <time>1240867019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>38c22f29f5c1364d9d07e678ddee935e</srcmd5>
+    <version>4.6.1</version>
+    <time>1265280665</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/xfce4-mixer based on submit request 31399 from user prusnak
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>65242626f65ebc4818cf97929e30c47e</srcmd5>
+    <version>4.6.1</version>
+    <time>1268926579</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>65242626f65ebc4818cf97929e30c47e</srcmd5>
+    <version>4.6.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>65242626f65ebc4818cf97929e30c47e</srcmd5>
+    <version>4.6.1</version>
+    <time>1278678626</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>11946a99e291e89bffa8c25c1b81f0ee</srcmd5>
+    <version>4.6.1</version>
+    <time>1292856492</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56161 from user prusnak
+</comment>
+    <requestid>56161</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>587714557c7ebb2f97ac144906a98e52</srcmd5>
+    <version>4.6.1</version>
+    <time>1292856503</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56161
+</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>ebd2d6683c71d3b6e5c7902f424a7f7a</srcmd5>
+    <version>4.6.1</version>
+    <time>1295023418</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57399 from user gberh
+</comment>
+    <requestid>57399</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>1bf3e4f0f1058fb0479cc35c649dc72d</srcmd5>
+    <version>4.6.1</version>
+    <time>1295023425</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57399
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d05fddcbc4c0820f199c1ef6a0c1207b</srcmd5>
+    <version>4.6.1.99_git20110203</version>
+    <time>1296843009</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60001 from user gberh
+</comment>
+    <requestid>60001</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>5135b0528af12e42a3280a9a5db64af4</srcmd5>
+    <version>4.6.1.99_git20110203</version>
+    <time>1296843016</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60001
+</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>5135b0528af12e42a3280a9a5db64af4</srcmd5>
+    <version>4.6.1.99_git20110203</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>5d7c28a2c65d26b5de9f542c705c4fc8</srcmd5>
+    <version>4.6.1.99_git20110203</version>
+    <time>1298031566</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61710 from user gberh
+</comment>
+    <requestid>61710</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>73ec37a7f74fd2ee8dba767c453dd7fd</srcmd5>
+    <version>4.6.1.99_git20110203</version>
+    <time>1298031572</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61710
+</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>b91f7ba2291c696ab81abd2dc02dd95a</srcmd5>
+    <version>4.8.0</version>
+    <time>1315238241</time>
+    <user>lrupp</user>
+    <comment>- update to version 4.8.0
+  - Fix too small plugin button in the new panel.
+  - Ellipsize sound card names in the combo box (bug #6671).
+  - Remove deprecated Encoding key from desktop files.
+  - Port to libxfce4ui.
+  - Fix wrong use of GTK+ causing the panel plugin volume to be set no higher
+    than 90% (bug #5243).
+  - Fixed a lot of compiler warnnings and errors.
+  - Updated translations: Dutch, English (United Kingdom), Galician, Greek,
+    Italian, Kazakh, Portuguese, Romanian, Russian, Sinhala, Turkish, 
+    Uyghur and more.</comment>
+    <requestid>80735</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>ae30994654f4998beb908faaf3e3e7bd</srcmd5>
+    <version>4.8.0</version>
+    <time>1315238251</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80735
+</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>ae30994654f4998beb908faaf3e3e7bd</srcmd5>
+    <version>4.8.0</version>
+    <time>1319182587</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>039545fa9ee52e5939464630b09ed1a0</srcmd5>
+    <version>4.8.0</version>
+    <time>1323195276</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>3f490bb25bcff91bf0be2633ec4a8f42</srcmd5>
+    <version>4.8.0</version>
+    <time>1334824875</time>
+    <user>coolo</user>
+    <comment>- specfile cleanup
+- correct dependencies
+- split off -lang subpackage</comment>
+    <requestid>112522</requestid>
+  </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>3f490bb25bcff91bf0be2633ec4a8f42</srcmd5>
+    <version>4.8.0</version>
+    <time>1340184353</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>94bdd80ea81a15c47fdccf08cb657896</srcmd5>
+    <version>4.9.0</version>
+    <time>1349252248</time>
+    <user>coolo</user>
+    <comment>- added xfce4-mixer-do-not-use-glib-2.30-symbols.patch in order to
+  not use symbols that are only available in glib &gt; 2.30.0
+  (backported from upstream git)
+- added compatibility symlink for the panel plugin to ease the
+  migration
+
+- update to version 4.9.0
+  - use standard icons where possible
+  - support xfce4-panel 4.10 with its deskbar mode
+  - handle unconfigured state more gracefully
+  - mute a track when the volume is set to 0% and unmute when set
+    to a higher value
+  - add global keyboard shortcuts for raising and lowering the
+    volume as well as muting
+  - store settings in xfconf and keep them in sync
+  - populate the mixer with whitelisted controls in the absence of
+    an existing configuration
+  - add a popup with a scale for setting the volume to the panel
+    plugin which is opened on left click, allow running the
+    user-defined command previously bound to left click from the
+    panel plugin context menu instead
+  - make xfce4-mixer a singleton application
+  - add runtime debugging mode to both the mixer and the panel
+    plugin
+  - add man page for xfce4-mixer
+  - handle identically named tracks and tracks which are read-only
+    or have no mute or record functionality
+- added xfce4-mixer-fix-typo to correct a typo causing build
+  failures with glib &lt; 2.32.0 (backported from upstream git)</comment>
+    <requestid>136274</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>504d092c9c3a26e3db68ce991b8c1985</srcmd5>
+    <version>4.10.0</version>
+    <time>1349948056</time>
+    <user>coolo</user>
+    <comment>- update to version 4.10.0
+  - do not use G_VALUE_INIT which is only available in glib &gt;= 2.30
+  - translation updates
+- drop obsolete xfce4-mixer-do-not-use-glib-2.30-symbols.patch and
+  xfce4-mixer-fix-typo.patch</comment>
+    <requestid>137755</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>27116fa29666e6071b4b7e9960268d83</srcmd5>
+    <version>4.10.0</version>
+    <time>1350046122</time>
+    <user>coolo</user>
+    <comment>- added xfce4-mixer-fix-default-window-size.patch in order to
+  initialize window width and height to default values</comment>
+    <requestid>137913</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>728ac01687f010dd440c5c2260cf0483</srcmd5>
+    <version>4.10.0</version>
+    <time>1358690156</time>
+    <user>coolo</user>
+    <comment>- remove compat symlink causing the plugin to show up twice</comment>
+    <requestid>148981</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>728ac01687f010dd440c5c2260cf0483</srcmd5>
+    <version>4.10.0</version>
+    <time>1359110622</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>728ac01687f010dd440c5c2260cf0483</srcmd5>
+    <version>4.10.0</version>
+    <time>1379665039</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="9">
+    <srcmd5>728ac01687f010dd440c5c2260cf0483</srcmd5>
+    <version>4.10.0</version>
+    <time>1409303725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>44f21a749c39543a70fe12d82a9187c9</srcmd5>
+    <version>4.11.0</version>
+    <time>1425891965</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.12</comment>
+    <requestid>289367</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>d353d4310c30c8103011cf903c36a8d9</srcmd5>
+    <version>4.11.0</version>
+    <time>1485512138</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452433</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>c5e7f601d9a2bbb7280fa333020b0ca1</srcmd5>
+    <version>4.11.0</version>
+    <time>1565963473</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project X11:xfce</comment>
+    <requestid>723990</requestid>
+  </revision>
+</revisionlist>

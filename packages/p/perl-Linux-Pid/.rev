@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d6cf4f7d25fe6fc53897e4e0797b3d5</srcmd5>
+    <version>0.04</version>
+    <time>1408957406</time>
+    <user>coolo</user>
+    <comment>This package is needed by Apache2::SizeLimit from apache2-mod_perl
+(bnc#888117)
+See also https://build.opensuse.org/request/show/243372</comment>
+    <requestid>245549</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4d6cf4f7d25fe6fc53897e4e0797b3d5</srcmd5>
+    <version>0.04</version>
+    <time>1409302354</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,1433 @@
+-------------------------------------------------------------------
+Fri May 31 13:54:16 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 3.0.28
+  + ZBX-15915 Fixed linking error if round() is undefined
+  + ZBX-16074 Added file revision number generation for compilation on ms windows
+  + ZBX-11284 Removed sid url argument for form cancel buttons
+  + ZBX-15416 Fixed locale validation in user create and update api methods  
+
+-------------------------------------------------------------------
+Wed Apr 24 13:58:50 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 3.0.27
+- bugfix release;
+  + ZBX-16019 Fixed host.conn, host.ip, ipaddress and host.dns macros
+    expansion in global scripts
+  + ZBX-15674 Fixed map status to be displayed ok if there
+    are no problem in submaps
+  + ZBX-2494 Fixed sorting of items, item prototypes, lld rules and
+    screens to avoid deadlocks in database between server and frontend
+  + ZBX-10404 Fixed password being passed in plain text
+    in media type edit form
+  + ZBX-15721 Fixed escaping of control characters in json encoder
+  + ZBX-15937 Fixed agent startup problem in win 2008 r2 w/o sp1 by
+     merging zbx-15728
+  + ZBX-15588 Fixed function names that are written to the log
+    file when using log_level_debug
+  + ZBX-15870 Fixed redundant jsloader loading in login page
+  + ZBX-15913 Fixed possible crash when sending custom alerts
+  + ZBX-13347 Fixed possible crash in history syncer process
+     when processing discovered item value  
+
+-------------------------------------------------------------------
+Wed Mar 27 10:05:47 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 3.0.26
+- bugfix release;
+  + ZBX-15867 fixed invalid DNS being accepted when receiving discovery
+    contents from Zabbix proxy
+  + ZBX-15552 fixed compilation with LibreSSL as OpenSSL replacement
+    and OpenSSL without PSK support
+  + ZBX-15788 fixed crash when substituting LLD macros in calculated
+    item formula expression
+  + ZBX-15670 fixed inefficient vmware eventlog downloading
+  + ZBX-14858 fixed processing of unlimited vmware maxQueryMetrics value
+  + ZBX-10496 fixed links to installation instructions in README file
+  + ZBX-15494 fixed handling numbers that written in scientific notation
+  + ZBX-15316 fixed problem with socket inheritance preventing Windows
+    agent from restarting under certain circumstances  
+
+-------------------------------------------------------------------
+Fri Mar 22 12:59:58 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- added patch zabbix-3.0.25-new-m4-pgsql.patch to mitigate postgresql-devel separation into
+  devel and server-devel packages in openSUSE:Factory
+
+-------------------------------------------------------------------
+Tue Jan 29 08:49:04 UTC 2019 - boris@steki.net
+
+- updated to latest release 3.0.25
+- bugfix release - bugs fixed;
+  + ZBX-15220 fixed displaying of last value for values received in the same second
+  + ZBX-15460 reset agent availability when host status changes,
+    e.g., when host gets disabled
+  + ZBX-11761 added warnings in case of TLS identity mismatch
+  + ZBX-15355 fixed undefined index in configuration.import API call
+  + ZBX-15354 fixed undefined index in API calls without "auth" parameter
+  + ZBX-14331 fixed error allowing users to change type of
+    a host interface that already has items attached
+  + ZBX-15313 fixed unit suffix support in calculated item expressions
+  + ZBX-14592 fixed calculation of SLA and availability report
+    when problem has negative duration
+  + ZBX-15156 fixed undefined offset error in host screen with web item
+  + ZBX-14624 fixed agent collector not releasing connection to missing/removed disk devices
+  + ZBX-14604 fixed displaying of the graph name on screens
+  + ZBX-15233 renamed fuzzytime() function description in dropdown list
+  + ZBX-12801 excluded zabbix_sender.dll from MS Windows builds with TLS
+  + ZBX-15260 improved misleading warning message when agent fails
+    to find log file during processing logrt[] item
+  + ZBX-15206 fixed deprecated net-snmp attribute
+  + ZBX-15238 fixed updating nextcheck time in discovery rules to
+    avoid overlaps between discovery executions
+  + ZBX-8383 updated Tomcat template for compatibility with recent Tomcat versions,
+   fixed constraint error when importing new data.tmpl
+  + ZBX-14606 removed strict-transport-security header from frontend
+  + ZBX-14977 fixed creation of unneeded database record if host prototype
+    inventory mode is disabled; fixed validation for host and host prototype inventory mode
+  + ZBX-15146 fixed SQL error occurred when too long IP address is attempted to be written in database  
+
+-------------------------------------------------------------------
+Tue Dec 11 01:57:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- POSIX compliant scriptlets must use chown "A:B", not "A.B".
+- Do not let fdupes run across common partitions/subvolumes.
+
+-------------------------------------------------------------------
+Fri Nov 30 15:20:52 UTC 2018 - boris@steki.net
+
+- fixed spec file to required correct php version 
+
+-------------------------------------------------------------------
+Mon Nov 26 14:47:01 UTC 2018 - boris@steki.net
+
+- updated to latest release 3.0.24
+- added feature:
+  + ZBXNEXT-4841 removed hardcoded location for iconv.h; 
+    thanks to Helmut Grohne for the patch
+  + ZBXNEXT-3047 fixed compilation errors on Windows platform
+    with static OpenSSL libraries
+  + ZBXNEXT-4836 added license information and OpenSSL linking exception to README
+    file, show crypto library version when started with '-V' - Bug fixes:
+- bugfixes:
+  + ZBX-14635 fixed rare LLD failures when moving host between groups
+  + ZBX-13719 fixed loss of calc_fnc index in graph edit form
+  + ZBX-13009 fixed percentage calculation on availability reports list page
+  + ZBX-15132 backported daylight saving related scheduled checks fix from
+    ZBX-12965 BX-14899 fixed wrong net.tcp.listen values on obsolete Linux systems
+  + ZBX-15142 fixed time format for vmware performance counters query
+  + ZBX-14833 fixed selectHosts option in dservice.get API method to return
+    the list of hosts by IP and proxy
+  + ZBX-15062 fixed binary heap trying to reallocate slots on every insert
+  + ZBX-14805 fixed unauthorized request error when resetting
+    filter after enabling/disabling elements
+  + ZBX-14758 fixed encoding for cookie names and values
+  + ZBX-14691 fixed faulty behaviour of mandatory fields in Trigger expression form
+  + ZBX-13505 fixed link coloring in map when related trigger is not monitored
+  + ZBX-14953 fixed not closed connection with vmware at the end of update session via a call to Logout()
+  + ZBX-14966 removed the notes about sqlite from zabbix_server.conf
+  + ZBX-14422 fixed SQL queries being logged when accessing API,
+    even if debug mode is disabled
+  + ZBX-15027 fixed startup failures due to orphaned or zombie processes
+    remaining when zabbix daemon is terminated during startup 
+
+-------------------------------------------------------------------
+Tue Nov  6 15:35:12 UTC 2018 - boris@steki.net
+
+- updated to latest release 3.0.23
+  + added feature:
+    * ZBXNEXT-4782 improve out of memory error message by adding
+      statistics and backtrace; improve something impossible has
+      just happened error message by adding backtrace
+- Bug Fixes:
+  + ZBX-14779 extended support of system.stat[ent], system.stat[cpu,pc],
+    system.stat[cpu,ec] on IBM AIX to LPAR type 'dedicated'
+  + ZBX-14851 fixed the host visible name in the event details/messages
+    from server when using long utf8 text
+  + ZBX-14972 fixed the case where data from non-monitored VMware
+    services are not removed from vmware cache
+  + ZBX-14856	added support for OpenSSL 1.1.1
+  + ZBX-14971	added note on runtime control with PID numbers larger
+    than 65535 to server, proxy and agentd help messages and man pages
+  + ZBX-14734	fixed the verification of the assignment of two web
+    checks with the same name from different templates to one host
+  + ZBX-14749	fixed cloning inherited host prototype on host
+  + ZBX-14663	fixed calculation of Y zero position in graph
+  + ZBX-14811	fixed color of the host name in the title of the Screens
+  + ZBX-14776	fixed sorting when changing status of media type
+  + ZBX-14757	fixed fields becoming writable upon form refresh
+    in host prototype form
+  + ZBX-14689	fixed updating of the Graph list of host when
+    selecting a group of hosts
+  + ZBX-14803	fixed incorrect profile update causing page 
+    filter to sometimes show duplicate values
+  + ZBX-14727	fixed selection of data for trigger overview,
+    data overview and graphs if first drop down entry is "none"
+  + ZBX-14650	fixed web.page.regexp item parameters description
+  + ZBX-14882	fixed crash in vmware collector when receiving invalid xml
+  + ZBX-14853	fixed error of vmware items caused 
+    by misconfigured vmware maxQueryMetrics parameter
+  + ZBX-14845	fixed filter in triggers status page not
+    being reset when navigating from dashboard and host inventory 
+
+-------------------------------------------------------------------
+Tue Sep 25 15:03:32 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions and also trim marketing wording.
+
+-------------------------------------------------------------------
+Tue Sep 25 09:06:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove strange self-conflicts.
+- Set bash-completion to noarch and suitable RPM group.
+
+-------------------------------------------------------------------
+Mon Sep 24 16:28:29 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove redundant %clean section.
+- Replace %__-type macro indirections.
+- Remove one idempotent %if..%endif guard.
+- Do not ignore failures from user/group creation.
+
+-------------------------------------------------------------------
+Mon Sep 24 11:21:55 UTC 2018 - Boris Manojlovic <boris@steki.net>
+
+- update to latest release 3.0.22
+- bug fixes: 
+  * ZBX-14496 fixed unauthorized request error when sorting list after
+    enabling/disabling elements
+  * ZBX-14614 fixed server template linking with triggers having
+    no dependencies
+  * ZBX-6565,ZBX-13645,ZBX-14559 fixed agent on AIX 6.1 TL0, 7.1 TL0:
+    system.stat[memory,avm], compilation, crash on net.dns[] items
+  * ZBX-13015 fixed X axis labels with DST transition in
+    the displayed period
+  * ZBX-14778 fixed housekeeper attempting to remove history
+    of discovery rules/prototypes
+  * ZBX-14775 fixed configuration of the maximum available count
+    of aggregated metrics in a single request to vmware vCenter
+  * ZBX-14676 fixed displaying links containing UTF-8 characters
+  * ZBX-14677 fixed vmware performance counter retrieval on
+    installations with large number of datastores
+  * ZBX-12293 renamed trigger functions by adding function name at the
+    beginning and removing the operator and "N" and placing operator in a
+    separate field allowing two new operators "<=" and ">=" for selection
+  * ZBX-14593 fixed error message for invalid vmware endpoint
+  * ZBX-14614 fixed trigger dependency link to the template instead of the
+    host during the discovery action
+  * ZBX-372 added "zone" parameter to proc.num[] item for Solaris
+  * ZBX-14410 fixed output of information about the error for expressions
+    with functions of triggers or calculated items
+  * ZBX-14433 fixed several problems in displaying of X axis on the graphs 
+
+-------------------------------------------------------------------
+Mon Sep 24 11:12:58 UTC 2018 - Boris Manojlovic <boris@steki.net>
+
+- removal of iksemel/jabber support 
+
+-------------------------------------------------------------------
+Sun Aug 19 08:58:28 UTC 2018 - uhaider.msee15seecs@seecs.edu.pk
+
+-Fix bnc#1105278
+-Fixes the zabbix apache configuration file as both apache2.2 and 
+ apache2.4 configurations were used in same if statement
+
+-------------------------------------------------------------------
+Tue Aug  7 05:29:03 UTC 2018 - boris@steki.net
+
+- update to latest 3.0.20
+- Bug fixes:
+
+  * ZBX-14548 fixed the disk usage counters reading for ESX/ESXi hosts
+  * ZBX-9236 fixed timeselector period used to select 'all' values of
+    particular item
+  * ZBX-13393 fixed agent compilation error on AlphaServer Tru64 5.1B
+  * ZBX-14566 fixed possible data loss due to MariaDB server restart
+  * ZBX-13010 fixed crash of poller processes in ODBC checks,
+    simplified code
+  * ZBX-14491 fixed link "show value mappings", which leads to no
+    permission page
+  * ZBX-12380 improved function parameter parsing for trigger functions
+  * ZBX-14432 removed redundant code in event details screen
+  * ZBX-14410 improved error message handling in zbx_function_find()
+  * ZBX-12104 added limit ZBX_HISTORY_PERIOD for {ITEM.VALUE} macro
+    resolving in trigger name
+  * ZBX-14402 fixed internal item parameter that does not match
+    documentation
+
+-------------------------------------------------------------------
+Tue Jun  5 08:44:45 UTC 2018 - boris@steki.net
+
+- update to latest release 3.0.18
+- Bug Fixes:
+  * ZBX-13549 fixed displaying of not monitored triggers in maps
+  * ZBX-14333 fixed {ESC.HISTORY} and action log not to display colon
+    without target host when executed on Zabbix server
+  * ZBX-13043 removed error message for when user has defined
+    media but all of them are disabled
+  * ZBX-13774 fixed creating and updating items with multiple specific
+    scheduling intervals
+  * ZBX-12175 fixed subfilter entries with long names going off the screen
+  * ZBX-12644 fixed filter being partially reset when using pagination
+    in availability report page
+  * ZBX-12882 fixed in popup window being allowed to select applications
+    from different hosts when editing item mass update form
+  * ZBX-13788 fixed host availability stuck in unknown state after proxy changes
+  * ZBX-12372 fixed duplication of prefix "/" for second parameter
+    "path" in items "web.page.*"
+  * ZBX-13781 fixed possible crash in the function "web.page.get" of Zabbix Agentd
+  * ZBX-14336 fixed persistent xss vulnerability in services
+  * ZBX-12425 fixed selection of web items in the "Plain text" screen element
+  * ZBX-13781 fixed CRLF injection in Zabbix Agentd
+  * ZBX-13766 fixed comparison of two large float numbers in expressions
+  * ZBX-13481 fixed incorrect parsing of BITS data type in SNMP response
+  * ZBX-13742 fixed parsing of the operator "not" in trigger expression
+  * ZBX-13680 fixed action not being cloned due to existing operation
+    id being submitted
+  * ZBX-13660 fixed data types passed to is_ushort() for converting
+    PID, port and process number
+  * ZBX-12935,ZBX-13539 fixed displaying of floating point values
+    under the "Latest data" page
+  * ZBX-13500 fixed fractional values in triggers being misinterpreted
+    without a leading 0
+  * ZBX-13561 fixed incorrectly displayed pie graph when first item has no data
+
+-------------------------------------------------------------------
+Wed Apr 11 06:55:19 UTC 2018 - boris@steki.net
+
+- updated to latest release 3.0.16
+- Bug Fixes:
+  * ZBX-13542 fixed http steps on template not inheriting hosts
+    application setting
+  * ZBX-13339 improved deallocation of memory
+  * ZBX-13412 fixed JS error and wrong form behaviour when changing
+    item type, type of information, data type
+  * ZBX-13257 fixed display of the latest item in Audit log
+  * ZBX-13351 improved OpenSSL error messages
+  * ZBX-13362 fixed potentially wrong rows deleting
+    by housekeeper in PostgreSQL
+  * ZBX-13472 fixed description of "Server" and "ServerActive"
+    configuration options
+  * ZBX-13455 added frontend error message when templates
+    cannot be linked to LLD host
+  * ZBX-13434 fixed incorrect trigger dependencies being set after copying
+    triggers to multiple hosts; thanks to Kotaro Miyashita for the patch
+  * ZBX-13342 fixed order by query in frontend Maintenance tab
+  * ZBX-6167 fixed partial updating in maintenance.update
+  * ZBX-13062 banned using of mutex in threads of metrics collection
+  * ZBX-13236 fixed error message of function parameters parse  
+
+-------------------------------------------------------------------
+Mon Mar  5 12:20:15 UTC 2018 - boris@steki.net
+
+- updated to latest release 3.0.15
+- bug fixes
+  * ZBX-13398 fixed configure script for Debian GNU/Linux "buster" and "sid"
+    to work with PostgreSQL
+  * ZBX-13441 fixed crashes in case of failures (e.g. timeouts) during VMware
+    hypervisor discovery
+  * ZBX-12643 improved error log message in case Zabbix server database
+    cannot be used due to empty "users" table
+  * ZBX-13325 fixed trend.get() method with Oracle backend
+  * ZBX-13055 fixed problems with DNS resolver interface on NetBSD
+  * ZBX-13345 removed SID from URL in screen edit mode
+  * ZBX-13246 fixed processing of command line arguments which are longer
+    than 2KB for proc.num and proc.mem items on AIX
+  * ZBX-13254 fixed 'skip' parameter behaviour for log[], log.count[],
+    logrt[], logrt.count[] items in case log files initially do not exist
+  * ZBX-13253 fixed losing the 1st record by log[] and logrt[] items if
+    'skip' parameter is used and log file initially is empty
+  * ZBX-12991 removed default values for "active_since" and "active_till"
+    fields in maintenance.create API method
+  * ZBX-11305 fixed color and label for event status on event details page
+  * ZBX-13085 fixed trigger mass update form redirect to trigger list on
+    attempt to attach dependent trigger if there was errors in previous
+    submit attempts
+  * ZBX-13078 fixed javascript error in user group permission granting popup
+
+-------------------------------------------------------------------
+Fri Dec 29 12:56:30 UTC 2017 - boris@steki.net
+
+- updated to latest release 3.0.14
+- New Features and Improvements
+  * [ZBX-12825] implemented delayed URL validation;
+    enabled user macros containing URLs as valid;
+    made URL validation as optional; improved URL validation
+- Bug Fixes
+  * [ZBX-13181] fixed database configuration error reporting and
+    message filtering when messages are received from clear_messages function
+  * [ZBX-13024] fixed parsing "request" parameter for URLs without input parameters
+  * [ZBX-12856] fixed empty host filter when adding dependent
+    trigger in trigger edit form
+  * [ZBX-13042] fixed unclickable template link on host items list page
+  * [ZBX-12925] fixed logic of commit/rollback operations
+  * [ZBX-13088] fixed incomplete data in notification reports
+    for yearly report types
+  * [ZBX-12884] fixed misleading permissions visualization in user form
+    for host groups and hosts lists
+  * [ZBX-12887] fixed alert error message visibility to unrelated users
+  * [ZBX-12497] improved VMware event log data collection and processing
+  * [ZBX-8054] relieved windows agent of dependency on MFC
+  * [ZBX-13024] fixed missed url search part in request login parameter
+  * [ZBX-13044] fixed undefined index when setting strict-transport-security
+    http header
+  * [ZBX-12897] fixed error causing empty list in popup window when opened
+    from page having host group filter
+  * [ZBX-12232] fixed mysql m4 configuration script for mariadb C connector
+  * [ZBX-12247] fixed multiselect not showing results for read-only
+    objects in screen configuration
+  * [ZBX-13016] fixed warning message shown by deprecated PHP 7.2 function create_function()
+  * [ZBX-12130] fixed max length validation in textarea fields
+  * [ZBX-8049] fixed zabbix[java,,ping] to stay supported when java gateway is down
+  * [ZBX-12971] fixed possibility of host availability being stuck
+    in unknown state when monitoring though proxy
+  * [ZBX-12655] added filter on event details page to show messages
+    sent to users only from same groups
+  * [ZBX-12856] fixed wrong default value for host filter when adding
+    dependent trigger in trigger edit form
+  * [ZBX-9567] added missing fields to webscenario data handling
+  * [ZBX-11051] fixed displaying highest severity when dashboard
+    filter options contain unacknowledged only
+  * [ZBX-10710] fixed CPU guest time utilization accounting in Linux
+
+-------------------------------------------------------------------
+Fri Nov 10 09:18:10 UTC 2017 - boris@steki.net
+
+- updated to latest release 3.0.13
+- New Features and Improvements
+  + [ZBXNEXT-1421] added service sorting by name if multiple services has same 'sortorder' value
+  + [ZBXNEXT-4081] improved error message for case when none of supported database modules exists
+- Bug Fixes
+  + [DEV-593] fixed multiple security issues
+  + [ZBX-12854] fixed crash of VMware collector with DebugLevel=4
+  + [ZBX-11902] fixed CPU count for LPAR partitions in IBM AIX
+  + [ZBX-12260] fixed windows agent to support UTF-16LE, UCS-2, UCS-2LE encodings
+  + [ZBX-12722] fixed scrollbar causing a JS error in "500 latest values" page due to unnecessarily initialization
+  + [ZBX-12710] fixed OS type detection logic
+  + [ZBX-12543] fixed problems with session management
+  + [ZBX-12259] added an informative warning about lack of data for macros used in LLD rule filter
+
+ 
+
+-------------------------------------------------------------------
+Tue Oct 17 14:53:16 UTC 2017 - boris@steki.net
+
+- updated to latest release 3.0.12
+  + [ZBXNEXT-1862] modified server, proxy and agent to follow changes in /etc/resolv.conf
+
+- Bug Fixes
+  +  [ZBX-12788] fixed error when template is added to hosts via mass update form
+  +  [ZBX-12666] fixed ETag comparison check in jsLoader for web server with enabled compression
+  +  [ZBX-6669] fixed use of current host as filter when selecting items for graph forms and trigger forms
+  +  [ZBX-10547] fixed IT services calculation in parallel transactions not seeing each
+     other changes when calculating common parent service
+  +  [ZBX-12441] fixed user permission check for macros containing user personal information in notification messages
+  +  [ZBX-12191] fixed start time and timeline period in events screen when switching to next pages
+  +  [ZBX-12779] fixed detection of PostgreSQL 10
+  +  [ZBX-12281] fixed simultaneous sending of the same history data from passive proxy
+  +  [ZBX-12770] fixed links in select popup for user groups; updated group selection field in Administration->Users
+  +  [ZBX-8277] improved performance of hostgeneral.unlink() method; fixed SQL statement
+  +  [ZBX-10754] fixed inheritance of template properties in web scenarios
+  +  [ZBX-12727] fixed response for script.get() method with "editable" flag
+  +  [ZBX-12727] fixed dcheck.get(), dhost.get() and dservice.get() permission checks for admin users; related  
+
+-------------------------------------------------------------------
+Mon Oct  2 09:37:13 UTC 2017 - boris@steki.net
+
+- updated to latest release 3.0.11
+  + [ZBX-1357] enabled Turkish translation to be displayed by default
+  + [ZBX-1357] updated Czech, English (United States), French, Italian,
+    Japanese, Korean, Russian, Turkish translations; thanks to Zabbix translators
+
+- Bug fixes
+  + [ZBX-11675] fixed crash that could occur during connection failures to MySQL
+  + [ZBX-12617] fixed sorting by host name for items on availability report page
+  + [ZBX-12696] fixed trigger not being calculated for newly received item values
+    if last one of those is unsupported value
+  + [ZBX-12548] fixed notification sound not being played for message with timeout
+    set to greater than minute
+  + [ZBX-12653] fixed heap corruption in Windows agent; thanks to Ronnie Kaech for the patch
+  + [ZBX-12660] fixed result of hostinterface.replacehostinterfaces method
+  + [ZBX-12469] added new context for 'Second' string to be properly translated in maintenance period form
+  + [ZBX-12493] fixed address and ports array size in zbx_init_ipmi_host() to match OpenIPMI internals
+  + [ZBX-12623] fixed label macro resolving in maps
+  + [ZBX-11042] allowed libcurl to choose SMTP authentication mechanism other than PLAIN
+  + [ZBX-8997] fixed trigger expression validation test form
+  + [ZBX-12545] fixed undefined index error on latest data page when host was deleted in another session
+  + [ZBX-12416] optimized data selection of user preferences stored in profiles
+  + [ZBX-11607] fixed a rounding of large unsigned numbers
+  + [ZBX-12404] fixed visibility of item data first row for 'latest data' page and 'audit log' page
+  + [ZBX-12463] fixed undefined index error in "Last 20 issues"
+  + [ZBX-12186] fixed parallel processing of multiple values for same lld rule
+  + [ZBX-11887] fixed improper DB::refreshIds() call when selected row is locked
+  + [ZBX-12022] fixed trigger resolving in services configuration; fixed popup window size
+  + [ZBX-12429] fixed template replacement in mass update form
+  + [ZBX-12396] fixed an error in screens if screen trigger overview element contains deleted host group
+  + [ZBX-12439] fixed macro name field length in host configuration form
+  + [ZBX-10820] fixed potential loss of data when server/proxy processes zabbix_sender data
+  + [ZBX-12446] fixed discovery and auto registration to accept empty DNS names
+  + [ZBX-12224] fixed connection to Oracle database when database server gives out warnings
+  + [ZBX-12195] fixed contamination of script output with Zabbix'es own log
+     messages when logging level is set to 4 or 5 and LogType=console
+  + [ZBX-12270] fixed processing of AIX item 'system.stat[ent]' in agent; thanks to Marc for patch
+  + [ZBX-12277] fixed trigger expression test form incorrectly replacing macros
+
+
+-------------------------------------------------------------------
+Sun Jul 16 09:14:18 UTC 2017 - boris@steki.net
+
+- updated to latest release 3.0.10
++ New Features and Improvements
+  * [ZBX-1357] updated Chinese (China), Czech, English (United States),
+    Korean, Romanian, Ukrainian, Vietnamese translations;
+    thanks to Zabbix translators
+  * [ZBXNEXT-3659] reduced cache locking time
+    during configuration synchronization
+
++ Bug Fixes
+
+  * [ZBX-12349] fixed security vulnerability with execution
+    of the remote commands on server; thanks to 
+    MATSUDA Daiki, Ron Waisberg for report
+  * [ZBX-12231] fixed memory leak in agent if log[], logrt[] items
+    use global regexps with multiple subexpressions
+  * [ZBX-12187] fixed memory leak when using UserParameter with
+    suppressed characters passed in arguments
+  * [ZBX-12328] fixed collecting value of VMware host memory balloon size
+  * [ZBX-12305] fixed incorrectly escaped IT Service parent name
+  * [ZBX-11812] fixed sorting of host interfaces;
+    fixed selection of the default host interface
+  * [ZBX-11277] fixed update in mass update form
+    when inventory mode is not set explicitly
+  * [ZBX-10999] fixed user's access level to display popup content
+  * [ZBX-9213] removed link from uneditable template
+    and host names in all configuration sections
+  * [ZBX-6533] improved LDAP authentication module status check
+    for authentication form
+  * [ZBX-12019] fixed incorrectly displayed calendar date in
+    maintenance edit form
+  * [ZBX-11304] fixed trigger wizard expressions sorting as
+    well as wizard crash due incorrect expression removal
+  * [ZBX-12023] fixed permission issue with event.get method
+  * [ZBX-12226] fixed configuration synchronization with Oracle databases
+  * [ZBX-12046] fixed handling of database failure during ID selection
+  * [ZBX-11683] fixed problem with lost IDs of unlinkable templates
+  * [ZBX-12142] fixed Oracle batch insert return value
+  * [ZBX-10546] fixed undefined index error in host import form
+    while importing templates
+  * [ZBX-11285] fixed cookie vulnerability for tabbed forms
+  * [ZBX-11486] fixed duplicated error messages in screens section
+  * [ZBX-10807] fixed wrongly displayed field in item prototype form
+  * [ZBX-11549] fixed 'numeric value' error in dashboard for php 7
+  * [ZBX-11559] fixed jquery binded function call on form submit
+  * [ZBX-11405] fixed conditions to display treeview
+    button in triggers section
+  * [ZBX-12012] fixed resolving of Critical and Verbose event
+    log levels by {ITEM.LOG.SEVERITY} macro
+  * [ZBX-12093] fixed removing of applications that are
+    created from application prototypes
+  * [ZBX-10253] fixed translation string and validation
+    of TLS settings in host.create(), host.update() and host.massUpdate()
+     methods; added variables to hosts array required by CHost::validateUpdate() method
+  * [ZBX-12100] fixed new line handling in SSH agent with numeric type of information
+  * [ZBX-9958] fixed wrongly displayed list view after mass update failure
+ 
+
+-------------------------------------------------------------------
+Fri Apr 21 08:40:16 UTC 2017 - boris@steki.net
+
+- updated to version 3.0.9
+  + [ZBX-11024] fixed popup window size in actions configuration form
+  + [ZBX-10997] fixed usage of wrong API in screen constructor
+  + [ZBX-11477] fixed lost user name in profile title
+  + [ZBX-10373] fixed check for screen items overlap
+  + [ZBX-11889] fixed lastaccess update for passive proxy
+  + [ZBX-11960] fixed interface dragging in host edit page
+    in Chrome browser
+  + [ZBX-11345] fixed webscenario update error when step does not exist
+  + [ZBX-11975] fixed undefined index error in web scenario step creation
+  + [ZBX-11980] fixed incorrect type handling in SSH checks
+  + [ZBX-11959] fixed memory leak in the agent on OpenBSD,
+    FreeBSD and NetBSD
+  + [ZBX-11984] fixed host hyperlink style on event details page
+  + [ZBX-11807] fixed poller stalling due to incorrect handling
+    of unixODBC library
+  + [ZBX-9358] improved randomness in session ID generation
+  + [ZBX-11933] added fullscreen parameter in link to submap in maps
+  + [ZBX-11893] fixed permission issue, when importing hosts that are
+    monitored by proxy by Zabbix Admin type user
+  + [ZBX-11905] fixed redirect to original requested page after login
+  + [ZBX-11864] fixed formatting of URLs if an IPv6 is used
+    in simple HTTPS checks
+  + [ZBX-6851] fixed zero number display in Event ID column
+    in windows eventlog history
+  + [ZBX-11624] fixed undefined index error for regular expressions form
+  + [ZBX-11855] fixed data truncation when escaping strings that
+    contain carriage return
+  + [ZBX-11758] fixed crash in web monitoring when variable is empty
+    or the first step was called regexp function on Solaris
+  + [ZBX-11765] fixed incorrect rollback in process
+    of escalation for DB2 database
+ 
+
+-------------------------------------------------------------------
+Sun Dec 25 19:21:35 UTC 2016 - boris@steki.net
+
+- updated to version 3.0.7
+- bugfix release for more info which bugs are fixed please look at
+  http://www.zabbix.com/rn3.0.7 
+
+-------------------------------------------------------------------
+Tue Dec 13 00:03:48 UTC 2016 - boris@steki.net
+
+- updated to version 3.0.6 from 3.0.4
+  + added vmware.hv.datastore.size keys for VMware datastore
+    capacity monitoring
+  + improved performance by not inserting events of auto
+    registration if no such action was enabled, insert/update/select
+    in a bulk on auto registration data from proxy
+  + added new key for virtual memory monitoring on Windows
+  + added rollup health sensor item to vmware hypervisor template
+  + added support for suffixed and negative trigger function parameters
+  + improved concurrent VMware item polling speed,
+    reduced size of cached VMware data
+  + increased width of input fields
+  + removed value length limitation in zabbix_sender
+    when reading data from file/stream
+- more info which bugs are fixed can be found at
+  http://www.zabbix.com/rn3.0.6 and http://www.zabbix.com/rn3.0.5
+
+-------------------------------------------------------------------
+Mon Jul 25 17:20:08 UTC 2016 - boris@steki.net
+
+- Security update [ZBX-11023] fixed SQL injection vulnerability
+  in "Latest data" page;
+- added script name and command into a script execution form
+- updated translations
+- for more info please look at http://www.zabbix.com/rn3.0.4.php
+
+
+-------------------------------------------------------------------
+Mon Jul  4 21:53:07 UTC 2016 - boris@steki.net
+
+- updated location of pid and log files for subpackages boo#987483 
+
+-------------------------------------------------------------------
+Wed Apr 20 14:49:18 UTC 2016 - boris@steki.net
+
+- updated to stable release 3.0.2
+  + bug fix release most notable bugs bellow
+    for more info please look at http://www.zabbix.com/rn3.0.2.php
+  + fixed crash in agent collector
+  + fixed possible crash in memory syncer
+  + found and fixed memory leaks
+- improvements:
+  + replaced user macro cache with expanded trigger expression caching
+  + updated translations
+  + added disabling of [-] or [+] buttons when screen column
+    or row cannot be removed or added
+  + improved XML import validation
+
+-------------------------------------------------------------------
+Sun Feb 28 13:52:35 UTC 2016 - boris@steki.net
+
+- updated to release version 3.0.1
+  + bug fix release
+  + [ZBX-10441] fixed visibility of "Audit" and "Action log"
+    pages for "Zabbix Admin" users
+  + [ZBX-10291] fixed server crash in escalator process if escalation
+    is in progress and action is deleted
+  + [ZBX-10427] fixed "Undefined variable" errors in "Host status" widget
+  + [ZBX-10399] fixed "undefined index" errors with broken value maps
+  + [ZBX-10415] fixed host availabilty update errors on Oracle database
+  + [ZBX-10398] fixed misplaced "Edit screen" and "Edit slide show"
+    buttons when screen is having dynamic elements
+  + [ZBX-10405] fixed history cache shared memory leak when processing
+    log item meta values
+  + [ZBX-10341] fixed template screen import
+  + [ZBX-10366] fixed parsing of VMware responses containing too deep XML data
+  + [ZBX-10311] fixed user media edition by guest with Zabbix
+    super admin user type
+  + [ZBX-9984] fixed incorrect template listing in linking form
+  + [ZBX-10238] fixed error message when linking two templates
+     with same item keys
+  + [ZBX-10319] fixed graphs consuming 100% CPU when given incorrect
+    "stime" parameter in URL
+
+
+-------------------------------------------------------------------
+Tue Feb 16 17:29:34 UTC 2016 - boris@steki.net
+
+- updated zabbix-bash-completion to 3.0-1.0 
+
+-------------------------------------------------------------------
+Tue Feb 16 08:19:43 UTC 2016 - boris@steki.net
+
+- updated to released version 3.0
+  + Redesign of Zabbix front-end
+  + Encryption and authentication
+  + Forecasting and trend prediction
+  + Ready for business checks
+  + Support of private and public maps, screens and slideshows
+  + Defining dependencies between trigger prototypes
+  + Linking to applications based on discovery values
+  + Multiple OID support in SNMP discovery
+  + Ability to graph log items
+  + Added support of context for user macros
+  + Resolution of user macros made transparent
+  + SMTP authentication options
+  + Multiple escalator support
+  + VMware monitoring improvements
+  + Dropping IE8 support
+  + Filtering options
+  + Mass editing buttons instead of dropdown
+  + User agent options in web monitoring
+  + XML import/export (value maps)
+  + Zabbix API improvements (value maps)
+  + Miscellaneous front-end improvements: paging, mass ops etc
+  + Forced housekeeper execution
+  + Default configuration file improvements
+  + Performance improvements
+  + Value cache improvements
+  + Ability to run Zabbix daemons in foreground
+  + Zabbix agent crash log on Windows platforms
+  + TCP connection timeout on Windows platforms
+  + Support for IPv6 addresses in Java gateway
+  + Proxy configuration size increase
+  + Logging IP addresses of incoming/outgoing connections
+    between Zabbix server and Zabbix proxy
+  + Setting DebugLevel=5 in daemon configuration file
+  + Database recovery message on DebugLevel=2
+  + Macro improvements
+  + New value maps (HTTP responce codes)
+  + Dropped support of zabbix_agent binary
+  + Item changes/improvements
+  + Commandline utilities improvements (zabbix_get)
+  + Updated translations
+- For more info and explained bulletpoints please look at
+  /usr/share/doc/packages/zabbix*/rn3.0.0.html
+
+-------------------------------------------------------------------
+Tue Jan 26 13:16:28 UTC 2016 - boris@steki.net
+
+- enabled compilation with openssl to provide TLS support between
+  clients and server communication 
+
+-------------------------------------------------------------------
+Thu Jan 21 09:38:58 UTC 2016 - boris@steki.net
+
+- update to first beta release of version 3 zabbix-3.0.0beta1
+
+-------------------------------------------------------------------
+Wed Jan 13 20:09:37 UTC 2016 - boris@steki.net
+
+- updated to zabbix-3.0.0alpha6
+- dropped zabbix_agent - the inetd version of Zabbix agent
+- for list of bugs closed please look at rn3.0.0alpha6.html file
+  in this package 
+
+-------------------------------------------------------------------
+Fri Nov  6 14:34:41 UTC 2015 - boris@steki.net
+
+- updated to zabbix-3.0.0alpha4
+- for list of bugs closed please look at rn3.0.0alpha4.html file 
+  in this package 
+
+-------------------------------------------------------------------
+Mon Nov  2 16:44:19 UTC 2015 - boris@steki.net
+
+- updated patch for foreground run (systemd support) 
+  zabbix-3.0.0-run_foreground.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 16:14:46 UTC 2015 - boris@steki.net
+
+- initial packaging of 3.0.0 alpha3 
+
+-------------------------------------------------------------------
+Mon Aug 10 11:06:34 UTC 2015 - richlv@nakts.net
+
+- made foreground patch apply cleanly to 2.4.6
+
+-------------------------------------------------------------------
+Mon Aug 10 10:08:28 UTC 2015 - richlv@nakts.net
+
+- updated to latest upstream release 2.4.5
+  + Czech translation displayed in the language dropdown
+  + net.tcp.service[ntp] works over UDP now
+  + for a full list of fixes see http://www.zabbix.com/rn2.4.6.php
+
+-------------------------------------------------------------------
+Thu Apr 23 07:40:51 UTC 2015 - richlv@nakts.net
+
+- updated to latest upstream release 2.4.5
+  + timeout configuration parameter for Java gateway
+  + fixed SMS sending with Teltonika and Huawei modems
+  + fixed inability to enable/disable LLD-created triggers
+  + for a full list of fixes see http://www.zabbix.com/rn2.4.5.php
+
+-------------------------------------------------------------------
+Thu Apr  2 17:01:32 UTC 2015 - richlv@nakts.net
+
+- for java gateway, require at least version 1.6 of java-devel
+
+-------------------------------------------------------------------
+Thu Apr  2 15:34:23 UTC 2015 - richlv@nakts.net
+
+- fix inability to skip building Java gateway
+
+-------------------------------------------------------------------
+Thu Apr  2 12:55:11 UTC 2015 - richlv@nakts.net
+
+- define bash completion version only once
+- link to bash completion source
+- use tar.gz instead of zip, not requiring unzip anymore
+
+-------------------------------------------------------------------
+Mon Mar 30 12:40:43 UTC 2015 - richlv@nakts.net
+
+- added bash completion package
+
+-------------------------------------------------------------------
+Mon Mar 30 10:19:44 UTC 2015 - richlv@nakts.net 
+
+- removed non-existent --with-vmware configure flag
+
+-------------------------------------------------------------------
+Wed Feb 25 13:11:37 UTC 2015 - boris@steki.net
+
+- updated to latest release 2.4.4
+  + Improved performance for VMWare monitoring
+  + Support for extended IP ranges
+  + Updated translations
+  + Bugfixes for full list go to http://www.zabbix.com/rn2.4.4.php
+
+-------------------------------------------------------------------
+Thu Dec 18 15:02:49 UTC 2014 - boris@steki.net
+
+- fix building with net-snmp on SLE 10 broken by bad m4 macro 
+
+-------------------------------------------------------------------
+Mon Dec 15 16:13:10 UTC 2014 - boris@steki.net
+
+- updated to latest upstream version 2.4.3
+  + Added support for SNMP values of type OID.
+  + bugfixes for full list look at http://www.zabbix.com/rn2.4.3.php
+ 
+
+-------------------------------------------------------------------
+Wed Nov  5 10:28:03 UTC 2014 - boris@steki.net
+
+- updated to latest upstream version 2.4.2
+  + Increased limitation of command length for remote commands with agent. 
+  + Updated translations
+  + bugfixes for more info go to:
+    http://www.zabbix.com/rn2.4.2.php 
+
+-------------------------------------------------------------------
+Fri Oct 10 01:35:24 UTC 2014 - richlv@nakts.net
+
+- added IPV6 localhost IP access handling for Apache 2.2
+
+-------------------------------------------------------------------
+Wed Oct  8 08:24:35 UTC 2014 - boris@steki.net
+
+- updated to latest upstream version 2.4.1
+  + performance improvements
+  + updated translations
+  + bugfixes (please look at http://www.zabbix.com/rn2.4.1.php for more info)
+
+-------------------------------------------------------------------
+Fri Oct 03 10:09:51 UTC 2014 - robin.roevens@uza.be
+
+- fixed init.d script for zabbix-proxy to use correct user/group zabbixs
+
+-------------------------------------------------------------------
+Fri Sep 19 13:38:51 UTC 2014 - boris@steki.net
+
+- fixed mysql socket location
+- added IPV6 localhost IP access handling
+- corrected spelling of SUSE in README.SUSE
+- general cleanup of spec file
+
+-------------------------------------------------------------------
+Thu Sep 11 09:04:40 UTC 2014 - boris@steki.net
+
+- initial packaging of new 2.4.0 release
+- major changes are as follow:
+  + Multiple filters for low level discovery
+  + Node-based distributed monitoring removed
+  + One-click creation of ad-hoc graphs
+  + More advanced WEB monitoring
+  + More details about unsupported agent items
+  + More efficient JSON formatting
+  + Macro improvements
+  + Control of SNMP bulk requests
+  + Better syntax for trigger expressions
+  + API improvements
+  + Unified date and time format
+  + Global search by technical name
+  + Application filter for maps
+  + Screen-related improvements
+  + Responsible action shown in action log
+  + Description field added
+  + Trigger dependencies shown as links
+  + Option to see problems only in trigger status page
+  + More filtering options in trigger status page
+  + Maintenance period sorting
+  + Host menu changes
+  + Dropping green status icons in listings
+  + Changing uploaded image type disallowed
+  + Ability to include specific files from Include directory
+  + Log file handling
+  + Handling automatically discovered hosts
+  + Clear separation of operations in the front-end
+  + Additional options for XML import
+  + Flexible action conditions
+  + Increased size of host-related fields
+  + Runtime control of log level
+  + Delayed execution of housekeeper
+  + Automatic discovery of CPUs
+  + More strict validation of configuration parameters
+- for full changelog read http://www.zabbix.com/rn2.4.0.php and
+  for your convinience it is stored in this package in
+  /usr/share/doc/packages/zabbix24/rn2.4.0.html
+
+-------------------------------------------------------------------
+Wed Aug 27 15:23:13 UTC 2014 - boris@steki.net
+
+- added export NO_BRP_CHECK_BYTECODE_VERSION=true for SLE11 target 
+
+-------------------------------------------------------------------
+Wed Aug 27 13:43:29 UTC 2014 - boris@steki.net
+
+- updated to latest upstream release 2.2.6
+- Cloning a host or template will also clone linked web scenarios
+- Improved performance of deleting triggers by API and
+  server - events will be deleted only by the housekeeper.
+- bugfixes:
+ 	for full list go to http://www.zabbix.com/rn2.2.6.php
+
+-------------------------------------------------------------------
+Wed Aug  6 12:35:42 UTC 2014 - boris@steki.net
+
+- real systemd support (foreground patch applied)
+
+-------------------------------------------------------------------
+Thu Jul 17 14:29:57 UTC 2014 - boris@steki.net
+
+- fixed XXE vulnerability on XML import using obsolete libxml versions
+- prepared frontend for mbstring.internal_encoding ini option deprecation in php 5.6+
+- bugfixes:
+	full list at http://www.zabbix.com/rn2.2.5.php 
+
+-------------------------------------------------------------------
+Wed Jul  2 08:56:27 UTC 2014 - boris@steki.net
+
+- fix permissions issue with updating package from 2.2.2 (bnc#883601)
+
+-------------------------------------------------------------------
+Tue Jun 24 07:42:07 UTC 2014 - boris@steki.net
+
+- Improved usability of the WEB front-end
+- Performance improvements
+- Updated translations
+- bugfixes for complete list go to:
+  http://www.zabbix.com/rn2.2.4.php 
+
+-------------------------------------------------------------------
+Tue Jun  3 12:29:08 UTC 2014 - boris@steki.net
+
+- fixed separation of users for agent and server processes 
+- fixed %_rundir handling (backport for older)
+
+-------------------------------------------------------------------
+Wed Apr  9 12:30:27 UTC 2014 - boris@steki.net
+
+- updated to latest upstream version 2.2.3
+  - SNMP monitoring performance is significantly improved by
+    introducing bulk requests with at most 128 items.
+  - Much better performance with Oracle backend
+  - Increased maximum cache size limit to 8GB
+  - Improvements:
+    * [ZBXNEXT-2137] increased maximum cache size limit to 8gb
+    * [ZBXNEXT-166] implemented variable binding for bulk
+      inserts with Oracle database
+    * [ZBXNEXT-98] implemented bulk requests for SNMP monitoring
+    * [ZBXNEXT-1889] made startup.sh and shutdown.sh scripts
+      for Java gateway work in /bin/sh
+    * [ZBX-7597] added description of the returned value types to
+      the agentd manpage
+  - a lot of bugfixes look at http://www.zabbix.com/rn2.2.3.php
+    for exact list of fixes 
+
+-------------------------------------------------------------------
+Tue Mar  4 10:27:17 UTC 2014 - boris@steki.net
+
+- added missing firewall definition for zabbix-proxy 
+
+-------------------------------------------------------------------
+Mon Mar  3 10:29:30 UTC 2014 - boris@steki.net
+
+- fixed broken handling of SLE ghost with update-alternatives
+- fixed sysvinit script for agent to run with different system user
+
+-------------------------------------------------------------------
+Thu Feb 13 10:11:20 UTC 2014 - boris@steki.net
+
+- updated to latest upstream version 2.2.2
+  - [ZBX-7703] fixed being able to switch users without proper
+    credentials when using HTTP authentication; reference CVE-2014-1682
+  - [ZBX-6721] fixed LDAP authentication; reference CVE-2013-5572
+  - [ZBX-7693] fixed admin user being able to update media for
+    other users; reference CVE-2014-1685
+  - Synchronize ICMP checks based on item interface. This should
+    reduce the number of fping invocations in most cases.
+  - Added HOST.PORT macro support to internal/trigger based
+    notifications and also to trigger names/descriptions
+
+-------------------------------------------------------------------
+Sun Feb  9 17:38:21 UTC 2014 - f_koch@gmx.de
+
+- do not hardcode a dependency to postgresql in 
+  zabbix-proxy.service
+
+-------------------------------------------------------------------
+Mon Jan 31 10:06:23 UTC 2014 - robin.roevens@uza.be
+
+- added support for ODBC, enabled --with-unixodbc configure flag
+
+------------------------------------------------------------------
+Wed Jan 29 14:17:04 UTC 2014 - boris@steki.net
+
+- updated requirement for php in php frontend for SLE 11 platform
+  referencing bnc#859878
+
+-------------------------------------------------------------------
+Wed Jan  8 10:06:24 UTC 2014 - boris@steki.net
+
+- updated to latest upstream version 2.2.1
+  - fixed remote command execution from Zabbix server if flexible
+    user parameters are configured; thanks to Recurity Labs Team
+    for the report; reference CVE-2013-6824
+- everybody should upgrade as soon as possible 
+
+-------------------------------------------------------------------
+Fri Jan  3 22:52:03 CET 2014 - boris@steki.net
+
+- updated to latest upstream version 2.2.0
+- This is major update please read release notes online at:
+  http://www.zabbix.com/rn2.2.0.php or copy of it in
+  /usr/src/doc/packages/zabbix-server/rn2.2.0.php
+  * Performance improvements 
+  * Monitoring of vCenter and vSphere
+  * Loadable modules
+  * Removed support of unknown events
+  * Applications are allowed to be inherited from different templates
+  * Internal events
+  * Automatic database upgrade
+  * Fine grained control of housekeeper
+  * Processing of macros
+  * User permissions
+  * Increased maximum number of objects
+  * Added support of host prototypes for low level discovery.
+  * Zabbix API related improvements
+  * WEB monitoring related improvements
+  * Better monitoring of proxies
+  * Monitoring using WMI
+  * SNMP related improvements
+  * IPMI related improvements
+  * Front-end related improvements
+  * Agent related improvements
+  * Discovery and auto-registration
+  * Visibility of current Zabbix process activity
+
+-------------------------------------------------------------------
+Tue Dec  3 14:27:36 UTC 2013 - boris@steki.net
+
+- security update covering CVE-2013-6824
+
+-------------------------------------------------------------------
+Wed Oct  9 12:45:37 UTC 2013 - boris@steki.net
+
+- updated to latest upstream version 2.0.9
+- Improvements
+  * Performance of graph rendering was much improved by faster
+    working SQL statements, significantly (up to 100-1000x)
+    improving the loading times with all databases.
+  * updated translations
+  * upgraded the bundled DejaVu font from 2.33 to 2.34
+- Bugfixes
+  * [ZBX-7036] fixed "Discovery status" widget being displayed on
+    top of a customized dashboard when enabling a discovery rule
+  * [ZBX-3878] fixed not being able to move dashboard widget the second time
+  * [ZBX-2616] upgraded the bundled DejaVu font from 2.33 to 2.34
+  * [ZBX-1357] updated Brazilian Portuguese, Chinese (China),
+    Italian, Lithuanian, Romanian and Slovak translations; thanks to Zabbix translators
+  * [ZBX-7091] fixed SQL injection vulnerabilities in page filtering; thanks
+    to Bernhard Schildendorfer from SEC Consult for the report
+  * [ZBX-7091] fixed SQL inection vulnerabilities dashboard favourite
+    managing; thanks to Lincoln, a member of Corelan Team, for the report
+  * [ZBX-3878] fixed memory leaks in slide shows
+  * [ZBX-6950] fixed termination character sequence for
+    smtp connection termination
+  * [ZBX-6952] fixed XSS vulnerability in user themes,
+    thanks to Lincoln and Bernhard Schildendorfer for reporting
+  * [ZBX-6992] fixed PostreSQL query errors due to missing "AS"
+    keyword for aggregate functions in Monitoring > IT Services
+  * [ZBX-6804] much faster graphs; optimized min item clock
+    calculation for graph; thanks to Volker Fröhlich
+  * [ZBX-6902] reverting Solaris system.swap.size calculation
+    from "swap -s" (used in 2.0.7, 2.0.8) to "swap -l"-like algorithm (as in 2.0.6)
+  * [ZBX-6936] fixed MySQL errors when updating configuration of the proxy
+  * [ZBX-6929] fixed updating of lastlogsize and mtime in the proxy's database
+  * [ZBX-6923] fixed mass delete in template list, 'Delete selected' and
+    'Delete selected with linked elements' functions
+  * [ZBX-6922] fixed host interface importing
+  * [ZBX-6249] fixed data loss in proxy "Data sender" process caused by
+    unfinished transactions; thanks to MATSUDA Daiki for patch
+  * [ZBXNEXT-1056] improved active checks error messages
+- More information at http://www.zabbix.com/rn2.0.9.php
+
+-------------------------------------------------------------------
+Fri Oct  4 09:44:10 UTC 2013 - boris@steki.net
+
+- security patch covering CVE-2013-5743 applied 
+
+-------------------------------------------------------------------
+Fri Aug 23 14:56:50 UTC 2013 - boris@steki.net
+
+- updated to latest upstream version 2.0.8
+- Improvements
+  * [ZBXNEXT-1405] added IP to the warning about ignored messages because of their size
+  * [ZBX-1357] updated Dutch translation; thanks to Zabbix translators
+- Bugfixes
+  * [ZBX-6889] fixed processing of availability data by the server
+  * [ZBXNEXT-1405] added IP to the warning about ignored messages because of their size
+  * [ZBX-1357] updated Dutch translation; thanks to Zabbix translators
+  * [ZBX-6746] fixed template linking to proxy if the agent with the same name is auto-registered
+  * [ZBX-6840] fixed undefined indexes for triggers in Monitoring > Maps and Dashboard
+  * [ZBX-6672] fixed windows agent performance counters being capped to 100
+  * [ZBX-6831] fixed webtest item conversion in 1.8->2.0 database upgrade patch for mysql
+  * [ZBX-6527] fixed proc.mem calculations with getprocs() for AIX
+  * [ZBX-5924] fixed curl verify host option setting in ez texting
+  * [ZBX-6798] improved error messages from UnixODBC library for Database Monitor items
+  * [ZBX-6797] added configurable ODBC login timeout
+
+
+-------------------------------------------------------------------
+Fri Aug  2 23:50:34 UTC 2013 - boris@steki.net
+
+- updated to latest upstream version 2.0.7
+  - Performance improvements:
+    Performance of Oracle back-end was significantly improved.
+    Also improved performance of updating configuration cache
+    and various places in the WEB interface.
+  - Updated translations
+  - Improvements:
+    [ZBX-6708] reduced configuration locking when calculating
+    item queue
+    [ZBX-6683] removed string pool semaphore; increased configuration
+    cache update performance
+    [ZBX-6603] improved CTrigger lastEvents parameter performance
+    [ZBX-6603] improved performance for dbConditionInt() function
+    [ZBX-6407] improved data retrieval performance for CTrigger get()
+    with post SQL filtering
+    [ZBX-6493] improved performance when working with Oracle
+    by changing memory based prefetch to rows based
+    [ZBX-1357] updated Brazilian Portuguese, Chinese (China), Latvian,
+    Polish, Slovak, Spanish and Turkish translations;
+    thanks to Zabbix translators
+  ** Bug fixes and more info at http://www.zabbix.com/rn2.0.7.php
+
+-------------------------------------------------------------------
+Mon Apr 22 21:35:08 UTC 2013 - boris@steki.net
+
+- updated to latest upstream 2.0.6
+  - Performance of low level discovery was significantly improved
+    especially in case of large number of discovered devices.
+    Also improved performance of "System status" and
+    "Last issues" in the Dashboard. 
+  - Updated translations
+  ** Bug fixes and more info at http://www.zabbix.com/rn2.0.6.php
+
+-------------------------------------------------------------------
+Thu Apr 18 09:35:15 UTC 2013 - boris@steki.net
+
+- memory leak from setproctitle patch fixed
+  users should upgrade as soon as possible 
+
+-------------------------------------------------------------------
+Tue Feb 26 10:56:04 UTC 2013 - boris@steki.net
+
+- update to latest upstream 2.0.5:
+  - Increased available range for configuration parameters
+  - Improved performance of SNMP dynamic index
+  - Improved performance with Oracle backend
+  - Updated translations
+  ** Bug fixes and more info at http://www.zabbix.com/rn2.0.5.php 
+
+-------------------------------------------------------------------
+Mon Dec 10 13:03:30 UTC 2012 - boris@steki.net
+
+- update to upstream 2.0.4:
+  - translations
+  - added support of {HOST.HOST}, {HOST.NAME}, {HOST.IP}, {HOST.DNS} and
+    {HOST.CONN} macros in "params" field for SSH, Telnet and DB monitor item
+  - renamed macro {TRIGGER.COMMENT} to {TRIGGER.DESCRIPTION}
+  - bug fixes for more information please look at http://www.zabbix.com/rn2.0.4.php
+
+-------------------------------------------------------------------
+Sun Dec  2 11:37:54 UTC 2012 - boris@steki.net
+
+- added patch fixing nonvoid-returns
+
+-------------------------------------------------------------------
+Mon Nov 26 14:51:01 UTC 2012 - boris@steki.net
+
+- added local patch to set proc command name
+  it is limited functionality (16 chars max) 
+
+-------------------------------------------------------------------
+Thu Oct  4 16:59:33 UTC 2012 - boris@steki.net
+
+- update to upstream 2.0.3:
+  - Flicker free screens - ajax based reload of elements
+  - Updated translations
+  - fix jmx startup script
+  ** list of fixed bugs at http://www.zabbix.com/rn2.0.3.php 
+
+-------------------------------------------------------------------
+Tue Jul 31 14:05:12 UTC 2012 - boris@steki.net
+
+- update to upstream 2.0.2:
+  - Updated translations 
+  - bugfixes for list of issues
+  - added java jmx packaging
+  ** http://www.zabbix.com/rn2.0.2.php
+
+-------------------------------------------------------------------
+Fri Jun 29 13:40:55 UTC 2012 - boris@steki.net
+
+- update to upstream 2.0.1:
+  - fixed broken IT Services
+  - Added server availability check
+  - Increased max number of monitored volumes 
+  ** bugfixes http://www.zabbix.com/rn2.0.1rc2.php
+
+-------------------------------------------------------------------
+Tue Jun 26 12:24:10 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.0.0:
+  - Added direct SNMP trap monitoring
+  - Support of automatic selection of map icons
+  - Host profiles renamed to inventory
+  - Performance improvements
+  - New set of default templates
+  - Automatic collection of host profile data
+  - Enhanced auto-discovery
+  - WEB monitoring by proxies
+  - Support of visible host and template name
+  - And many more, please read release notes at
+    http://www.zabbix.com/rn2.0.0.php
+- Removed unnecessary patch zabbix-1.8.7-as-needed.patch.
+
+-------------------------------------------------------------------
+Sun May 20 08:43:41 UTC 2012 - boris@steki.net
+
+- updated to latest usptream 1.8.13
+  - Multiple server support in active agent
+  - Frontend improvements
+  - Daemon improvements
+  - New agent check
+  ** bugfixes http://www.zabbix.com/rn1.8.13.php
+  ** bugfixes http://www.zabbix.com/rn1.8.12.php
+
+-------------------------------------------------------------------
+Tue Mar 27 14:06:51 UTC 2012 - boris@steki.net
+
+- updated to latest usptream 1.8.11
+  - Improved SNMP related error messages
+  - Global script error messages now suggest possible causes of the problem. 
+  - Updated translations
+  - Daemon improvements
+  ** Mostly bugfix release please read more at
+   http://www.zabbix.com/rn1.8.11.php 
+
+-------------------------------------------------------------------
+Thu Jan  5 14:13:18 UTC 2012 - boris@steki.net
+
+- updated to latest upstream 1.8.10
+  - implemented the screen item API
+  - made dashboard and slideshow popup menus have dynamic width
+  - added an error message when trying to delete an item, 
+    that's being used as a min/max Y axis value for graphs
+  - updated translations
+  - fixed multiple XSS issues
+  ** Mostly bugfix release please read more at 
+   http://www.zabbix.com/rn1.8.10.php
+
+-------------------------------------------------------------------
+Fri Nov 25 22:38:54 UTC 2011 - boris@steki.net
+
+- updated to latest upstream 1.8.9
+  * Support for PostgreSQL 9.1 was added
+  * Translations added (Brazilian Portuguese)
+  * PostgreSQL support changed from 7.0.2 and later to 7.4 and later.
+  * [Server] Improved log messages
+  * [Server] Acknowledge synchronisation in distributed mode
+  * [Server] Waiting for database to appear upon startup
+  ** Bugfixes and more info http://www.zabbix.com/rn1.8.9.php 
+
+-------------------------------------------------------------------
+Tue Nov  8 13:16:40 UTC 2011 - boris@steki.net
+
+- fixed bug with apache2 config where it would not allow access
+  to /zabbix/config.php because of DirectoryMatch directive 
+
+-------------------------------------------------------------------
+Wed Sep 28 15:52:15 UTC 2011 - boris@steki.net
+
+- Fixed long standing AS_NEEDED export
+- Added manual pages for most binaries
+- Added IPV6 support on supported systems
+- updated to upstream 1.8.8
+  * Improved performance of trigger evaluation
+  * New option to show items without data
+  * Changed API search wildcard
+    API search wildcard was changed from "%" to more traditional "*".
+  ** Bugfixes and more info http://www.zabbix.com/rn1.8.8.php 
+
+-------------------------------------------------------------------
+Fri Sep 16 15:26:48 UTC 2011 - boris@steki.net
+
+- fixed unnecessary linking to libsqlite3 of agent and proxy binaries 
+
+-------------------------------------------------------------------
+Thu Sep 15 14:38:46 UTC 2011 - boris@steki.net
+
+- updated to build on openSUSE_Factory
+- updated to upstream 1.8.7  
+  * Improved time picker
+  * New action will contain two conditions be default: 
+    "Trigger value = Problem" and "Not in maintenance"
+  ** Many bugfixes see http://www.zabbix.com/rn1.8.7.php
+-------------------------------------------------------------------
+Fri May 13 19:05:54 UTC 2011 - jcnengel@googlemail.com
+
+- Updated to upstream 1.8.5
+  * Network maps improvements
+  * Monitoring of Zabbix performance
+  * New trigger functions
+  ** Many bugfixes see http://www.zabbix.com/rn1.8.5.php
+
+-------------------------------------------------------------------
+Wed Feb  9 15:21:13 UTC 2011 - boris@steki.net
+
+- Updated to upstream 1.8.4
+  * More consistent Zabbix API
+  * Support of DB2 as backend database
+  * NTLM authentication for WEB monitoring
+  * Enhanced user macros
+  * Web Frontend improvements
+  ** Many bugfixes see http://www.zabbix.com/rn1.8.4.php for full list
+
+-------------------------------------------------------------------
+Mon Aug 16 21:48:51 UTC 2010 - boris@steki.net
+
+- Fixed apache2-zabbix.conf to deny access to php classes as
+  .htaccess files were not really parsed (security fix)
+- Fixed init scripts to chown /var/run/zabbix to user zabbix
+- Updated to upstream 1.8.3
+  * Passive mode for Proxies
+  * Improved Server and Proxy performance
+  * More options for the Dashboard
+  * Better search
+  * Front-end improvements
+  * Reworked configuration section
+  * Support of global notifications
+  ** Many bugfixes see http://www.zabbix.com/rn1.8.3.php for full list 
+
+-------------------------------------------------------------------
+Mon Jul  5 00:58:43 UTC 2010 - bitshuffler #suse@irc.freenode.org
+
+- Mark /var/run/zabbix with %ghost and create it in the init files
+
+-------------------------------------------------------------------
+Sat Apr  3 15:01:59 UTC 2010 - bitshuffler #suse@irc.freenode.org
+
+- Added jabber support and cleaned the spec a bit
+
+-------------------------------------------------------------------
+Thu Apr  1 02:16:16 CEST 2010 - boris@steki.net
+
+- Removed detection of suse version from Buildrequires sections
+
+-------------------------------------------------------------------
+Mon Mar 29 20:11:53 CEST 2010 - boris@steki.net
+
+- added SUSE_ASNEEDED
+- Added ldap, openmpi and libssh into default server configuration
+- Updated to 1.8.2
+  * Frontend changes
+    * Dashboard filtering
+    * Time period selector changes
+    * Map and screen exporting and importing
+    * More configurability for "Status of triggers" screen element
+    * Translation updates
+    * Frontend requirement changes
+    * Miscellaneous frontend changes
+    * Improved triggers
+    * Time-shifting in triggers
+    * Additional suffixes in trigger expressions
+    * Improved items
+    * New configuration parameters
+    * Performance improvements
+    * More robust escalation module
+    * Improved zabbix_sender
+
+-------------------------------------------------------------------
+Thu Jan 28 09:29:44 UTC 2010 - stephan.duehr@dass-it.de
+
+- Updated to 1.8.1
+
+-------------------------------------------------------------------
+Fri Dec 18 15:20:07 UTC 2009 - boris@steki.net
+
+- Added default Apache config
+
+-------------------------------------------------------------------
+Thu Dec 17 13:46:44 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.8
+
+-------------------------------------------------------------------
+Sun Nov 15 23:51:00 CEST 2009 - stephan.duehr@dass-it.de
+
+- Updated to 1.6.7
+- removed --enable-ipv6 from spec file, because there's no fping6
+  for any SUSE distribution
+- changed init scripts to only read PidFile from config instead
+  of sourcing the whole config, because it is not necessarily
+  shell syntax compatible.
+
+-------------------------------------------------------------------
+Fri Oct 23 15:54:45 CEST 2009 - randybb@gmail.com
+
+- Fixed configuration filename for zabbix-proxy
+
+-------------------------------------------------------------------
+Fri Oct 16 17:03:59 CEST 2009 - stephan.duehr@dass-it.de
+
+- Updated to 1.6.6
+
+-------------------------------------------------------------------
+Thu Oct  8 10:29:59 CEST 2009 - mhrusecky@suse.cz
+
+- Fixed build on Factory
+
+-------------------------------------------------------------------
+Wed Jun 17 21:33:38 CEST 2009 - bitshuffler #suse@irc.freenode.org
+
+- Updated to 1.6.5
+

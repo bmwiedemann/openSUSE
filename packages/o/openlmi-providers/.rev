@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>79553c00b22316a88fb9c1675fb5e518</srcmd5>
+    <version>0.2.0</version>
+    <time>1382035069</time>
+    <user>scarabeus_factory</user>
+    <comment>resubmitting HEAD</comment>
+    <requestid>198479</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fb8bc3d543bd4845f8f5dfebdfbb85d9</srcmd5>
+    <version>unknown</version>
+    <time>1400356016</time>
+    <user>coolo</user>
+    <comment>- disable build of fan provider on s390x
+
+- prevent empty body for rpm macro, use %{nil} instead
+
+- fix pre/post scripts to install/remove tog-pegasus specific
+  files only if tog-pegasus is actually installed.
+
+- don't build openlmi-realmd for openSUSE &gt; 13.1 or SLES.
+
+- don't build openlmi-pcp for openSUSE &gt; 13.1 or SLES.
+
+- don't require openlmi-storage for openSUSE &gt; 13.1 or SLES.
+
+- drop FindCMPI.cmake and FindKonkretCMPI.cmake from devel package,
+  both are already in konkretcmpi-devel
+
+- disable openlmi-fan on systems without libsensors
+
+- SLE-12: FATE 316180
+
+- Update to 0.4.2
+  * Soname of libopenlmiindmanager.so changes from .0 to .1
+    - we removed couple of symbols we do not want to be used
+      externally. Recompilation of any 3rd party Indication
+      Manager users is necessary.
+  * Fixed some of race conditions in Indication Manager.
+  * openlmi-mof-register is now able to re-register all registered
+    providers to newly installed CIMOM (both SFCB and Pegasus are
+    supported).
+  * Many other bugfixes and small improvements. Refer to git log of</comment>
+    <requestid>234259</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7ea4c1c76f4a95ee3d27923ff2d09510</srcmd5>
+    <version>unknown</version>
+    <time>1400682013</time>
+    <user>coolo</user>
+    <comment>- fix group of -devel packages
+- add %defattr
+- run fdupes</comment>
+    <requestid>234776</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>7ea4c1c76f4a95ee3d27923ff2d09510</srcmd5>
+    <version>unknown</version>
+    <time>1409302040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8e8c0b0e13bd9d230c31c0611d3cefec</srcmd5>
+    <version>unknown</version>
+    <time>1426680335</time>
+    <user>dimstar_suse</user>
+    <comment>- disable realmd (bsc#916766, bsc#916767)
+
+- require openlmi-pegasus-compat on SUSE.
+
+- prefer sblim-sfcb as cim-server on SUSE.
+
+- disable openlmi-devassistant on SUSE.
+
+- don't require openlmi-storage or -networking on SUSE.
+
+- fix tog-pegasus dependency for openlmi and scripts
+
+- Dropped openlmi-providers-rpmlintrc builds fine without it
+  And its presence was blocking acceptance to openSUSE:Factory 
+
+- Update to 0.6.0
+  * New provider: SELinux.
+  * Software provider rewritten in C using PackageKit.
+  * Documentation reworked to have same look&amp;feel for all OpenLMI
+    providers.
+  * Instantiable services support in Service provider.
+  * Hardware provider capabilities extended (battery and bios
+    information).
+  * timedated support in Locale provider.
+  * Bugfixes and minor improvements.
+- Renamed patches
+  0001-No-libexec-in-SUSE.patch renamed to
+    0001-cimprovagt-is-under-usr-sbin-on-SUSE.patch
+  0003-Run-dmidecode-with-full-path.patch to
+    0002-Run-dmidecode-with-full-path.patch</comment>
+    <requestid>290997</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>3bd397a7cc091aecf6162828239da65f</srcmd5>
+    <version>unknown</version>
+    <time>1427274089</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tog-pegasus specific pathes
+  rename 0001-cimprovagt-is-under-usr-sbin-on-SUSE.patch
+   to 0001-cimprovagt-is-under-usr-lib-pegasus-on-SUSE.patch
+  rename 0003-Install-cimprovagt-scripts-into-usr-share-Pegasus-sc.patch
+   to 0003-Install-cimprovagt-scripts-into-usr-share-openlmi-pr.patch</comment>
+    <requestid>292669</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>19a8d7268cd496b47170f22e73633a80</srcmd5>
+    <version>unknown</version>
+    <time>1427983392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>293713</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>b1640840ab33da779a31e1472e754270</srcmd5>
+    <version>unknown</version>
+    <time>1498120832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505493</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>42f2be6ef0ecb89cfe7e448888e76bab</srcmd5>
+    <version>unknown</version>
+    <time>1512734343</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove listing of /usr/com directory line</comment>
+    <requestid>554764</requestid>
+  </revision>
+</revisionlist>

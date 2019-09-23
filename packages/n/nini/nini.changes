@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Apr  6 12:23:49 UTC 2012 - vuntz@opensuse.org
+
+- Fix pkg-config file generated in %build to reference the full
+  path for Nini.dll in Libs. Else, it's useless.
+
+-------------------------------------------------------------------
+Fri Jun 17 05:11:31 CEST 2011 - vuntz@opensuse.org
+
+- Import package from the build service (version 1.1.0).
+- Cleanup for inclusion in Factory.
+

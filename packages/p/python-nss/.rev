@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbba7fad90d4c47f73211ddd45095531</srcmd5>
+    <version>0.16.0</version>
+    <time>1434383254</time>
+    <user>dimstar_suse</user>
+    <comment>New package - a python binding for NSS (Network Security Services) and NSPR (Netscape Portable Runtime).</comment>
+    <requestid>309888</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c5b0318948de38467f1571969f9ecdc</srcmd5>
+    <version>1.0.1</version>
+    <time>1525779404</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SOURCE link to be fetchable
+
+- update to 1.0.1
+  see installed /usr/share/doc/packages/python*-nss/ChangeLog
+
+- convert so single spec</comment>
+    <requestid>603103</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b41edb56b767f3dffd52fb8f95549d5</srcmd5>
+    <version>1.0.1</version>
+    <time>1551687102</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests.</comment>
+    <requestid>680645</requestid>
+  </revision>
+</revisionlist>

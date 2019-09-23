@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Thu Mar  6 19:58:16 UTC 2014 - aj@ajaissle.de
+
+- Spec cleanup
+- Renamed README.SuSE to README.SUSE
+- Moved the configuration section of the file INSTALL to README.SUSE
+- Added AUTHORS file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 22 15:42:42 CET 2005 - lmuelle@suse.de
+
+- Fix two subscript out of range errors found by the Intel C compiler; bnc
+  [#134890]
+- Fix one signedness warning.
+
+-------------------------------------------------------------------
+Tue Nov  8 14:45:07 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Aug 16 13:17:33 CEST 2002 - ro@suse.de
+
+- removed empty post/postun scripts (#18007) 
+
+-------------------------------------------------------------------
+Fri Jun 21 14:12:54 CEST 2002 - ro@suse.de
+
+- use -fPIC to build shared lib 
+
+-------------------------------------------------------------------
+Fri Apr 19 21:49:28 CEST 2002 - lmuelle@suse.de
+
+- Initial SuSE package

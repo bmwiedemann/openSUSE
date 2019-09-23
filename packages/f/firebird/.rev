@@ -1,0 +1,431 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abb70ac5c589b5b545d782b1bea619ae</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1251822632</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database/firebird based on submit request 19442 from user pmakowski
+</comment>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>abb70ac5c589b5b545d782b1bea619ae</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1251822632</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database/firebird based on submit request 19442 from user pmakowski
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4d86a07bbf2fed1ea006b63d834db555</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1268923536</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>746806d9b0c5b91e332d23263665a5dc</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1270085252</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database/firebird based on submit request 36175 from user pmakowski
+</comment>
+    <requestid>36175</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>54cfac9dad8a54bb2478bb71bcefdcd8</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1273239654</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database/firebird based on submit request 39532 from user pmakowski
+</comment>
+    <requestid>39532</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>07e3a60fff056d37040874cbebc969ed</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1273681577</time>
+    <user>autobuild</user>
+    <comment>Copy from server:database/firebird based on submit request 39829 from user pmakowski
+</comment>
+    <requestid>39829</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>07e3a60fff056d37040874cbebc969ed</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>07e3a60fff056d37040874cbebc969ed</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>bd913a779e5dfd7cf9f85432e442881d</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1288965489</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52137 from user prusnak
+</comment>
+    <requestid>52137</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>5b22c068f54ca5f3693e63d716cd80aa</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1288965499</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52137
+</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>5b22c068f54ca5f3693e63d716cd80aa</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>4bc93997e89b448ef84e77d69ecad727</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1298455012</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62602 from user pmakowski
+</comment>
+    <requestid>62602</requestid>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>fb728811a794e064521a237d1013424d</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1298455019</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62602
+</comment>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>a6b64391a60828e26386cd6b86bf10f5</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1307626802</time>
+    <user>darix</user>
+    <comment>Fixup to the previous fixup for update-alternatives. I did not add more .changes entries, as this should apparently have been part of the last submit / changes. For some reason though the build did not fail before it went to sever:database. If you really need .changes, let me know. (forwarded request 72425 from dimstar)</comment>
+    <requestid>73039</requestid>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>f4b68ebb6a8542082cd515b2010cea41</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1307626813</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 73039
+</comment>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>23a6c1654dd79f8e26086db9c5cb86e1</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1310565780</time>
+    <user>saschpe</user>
+    <comment>Use /usr/lib/tmpfiles.d instead of /etc/tmpfiles.d. (forwarded request 75501 from a_jaeger)</comment>
+    <requestid>76169</requestid>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>530d5c7d038fa073505852d83b763ad9</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1310565793</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76169
+</comment>
+  </revision>
+  <revision rev="18" vrev="23">
+    <srcmd5>530d5c7d038fa073505852d83b763ad9</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1319181878</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="24">
+    <srcmd5>60460be0112716787702ceed75a0646b</srcmd5>
+    <version>2.1.3.18185.0</version>
+    <time>1323265059</time>
+    <user>coolo</user>
+    <comment>Do not package files twice.;Remove tmpdirs.d support, handle install. (forwarded request 95511 from a_jaeger)</comment>
+    <requestid>95673</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>150405a8bbaabbd78f0a728e92a62cdc</srcmd5>
+    <version>2.1.4.18393.0</version>
+    <time>1334927615</time>
+    <user>coolo</user>
+    <comment>Remove merged file. (forwarded request 113865 from a_jaeger)</comment>
+    <requestid>113867</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ac63d335ba92cc6af082d2281c5889ad</srcmd5>
+    <version>2.5.2.26488</version>
+    <time>1338284243</time>
+    <user>coolo</user>
+    <comment>upgrade to Firebird 2.5
+
+Changes against the original submit request:
+- removed extern/SfIO from source tarball
+- fixed broken isql history with libedit 3.0
+- updated License tags according to http://license.opensuse.org/</comment>
+    <requestid>122285</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f0853117cac3d443bb9742c81834cdd6</srcmd5>
+    <version>2.5.2.26494</version>
+    <time>1339352137</time>
+    <user>coolo</user>
+    <comment>- update to upstream version 2.5.2.25494
+- isql: fix output if charset is different from locale
+- isql: fix buffer overflow if column width set wider than its natural size</comment>
+    <requestid>124024</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f0853117cac3d443bb9742c81834cdd6</srcmd5>
+    <version>2.5.2.26494</version>
+    <time>1340183329</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>fb45e58315bf9e04b5ca9bb816959e13</srcmd5>
+    <version>2.5.2.26494</version>
+    <time>1343138921</time>
+    <user>coolo</user>
+    <comment>- don't start the daemon in runlevel 2
+- add README.SUSE</comment>
+    <requestid>128822</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>083b33b956e3e69566f89c038955616c</srcmd5>
+    <version>2.5.2.26494</version>
+    <time>1343632294</time>
+    <user>coolo</user>
+    <comment>- add libatomic-ops-devel on non x86 arches
+- set libdir on powerpc correctly
+
+- add libatomic-ops-devel on non x86 arches
+- set libdir on powerpc correctly (forwarded request 128981 from k0da)</comment>
+    <requestid>128984</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>14aad7838bb5515c341bfdef12aead54</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1352732684</time>
+    <user>coolo</user>
+    <comment>- update to 2.5.2 final
+- fix broken unicode locales (bnc#789171)</comment>
+    <requestid>140906</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>14aad7838bb5515c341bfdef12aead54</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1359108879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>ac2945a5fa2db1f11fb0b73e1a4d4962</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1359462407</time>
+    <user>coolo</user>
+    <comment>- fix license string (forwarded request 149949 from coolo)</comment>
+    <requestid>149962</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>e1b95f95a6ccf758a75fed2290f906c9</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1362773029</time>
+    <user>coolo</user>
+    <comment>- fix remote stack overflow (bnc#808268, CVE-2013-2492)</comment>
+    <requestid>158014</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>3fb1b1eaae9aa503be0090bb92380122</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1370425888</time>
+    <user>coolo</user>
+    <comment>- resolve file conflicts between packages
+- fix build on aarch64 (64-bit ARM)</comment>
+    <requestid>177203</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>ec58f367fedb6ea045b0892737cdaea1</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1379076389</time>
+    <user>scarabeus_factory</user>
+    <comment>fix fbembed.pc file to link with -lfbembed instead of -lfbclient</comment>
+    <requestid>198886</requestid>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>ec58f367fedb6ea045b0892737cdaea1</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1379662343</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="10">
+    <srcmd5>441c22e0ed067d49174c334d7c583407</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1386612599</time>
+    <user>coolo</user>
+    <comment>Please forward to factory.
+- adapt for ppc64le (forwarded request 209776 from matz2)</comment>
+    <requestid>210002</requestid>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>a52db5e52002d5108bb53d8cc591bd8f</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1387823549</time>
+    <user>coolo</user>
+    <comment>- m68k-support.patch: add support for m68k (forwarded request 211422 from Andreas_Schwab)</comment>
+    <requestid>212029</requestid>
+  </revision>
+  <revision rev="35" vrev="12">
+    <srcmd5>4755063ddc4eee4ee33e8a52a6684376</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1393705206</time>
+    <user>coolo</user>
+    <comment>- firebird-s390x-fix_libdir.patch: s390x uses lib64 
+
+- adapt for ppc64le
+
+- firebird-s390x-fix_libdir.patch: s390x uses lib64 (forwarded request 222561 from oertel)</comment>
+    <requestid>224199</requestid>
+  </revision>
+  <revision rev="36" vrev="13">
+    <srcmd5>1178e80146e2f153f16cc0bdbc1026c3</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1404973485</time>
+    <user>coolo</user>
+    <comment>- install init script as executable
+- fix the script</comment>
+    <requestid>239757</requestid>
+  </revision>
+  <revision rev="37" vrev="15">
+    <srcmd5>1178e80146e2f153f16cc0bdbc1026c3</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1409300879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>8f59a27d187eae1699e5255a77da29a5</srcmd5>
+    <version>2.5.2.26539</version>
+    <time>1416994355</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>262823</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>36cd7c4a4ffdd90041aa9238733f8e2a</srcmd5>
+    <version>2.5.4.26821</version>
+    <time>1418978482</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to upstream version 2.5.4.26821
+- server crash by malformed packet (bnc#908127, CORE-4029, CORE-4030)
+- removed patches merged into upstream
+- replace remaining patches by git based ones
+- use xz compressed tarball</comment>
+    <requestid>264372</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>00436f38f0656e609c72ad51c7e43a08</srcmd5>
+    <version>2.5.4.26856</version>
+    <time>1438794807</time>
+    <user>coolo</user>
+    <comment>- upgrade to upstream version 2.5.4 (final)
+- few importang post-2.5.4 fixes
+- C++11 compatibility fixes from LibreOffice
+- fix baselibs.conf to build libfbembed2_5-32bit</comment>
+    <requestid>318960</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>41ad8798a8f69b9ae0ae5819d554ed66</srcmd5>
+    <version>2.5.4.26856</version>
+    <time>1456924841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361925</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b9cbe3750e78521c8db3a3425b229f6a</srcmd5>
+    <version>3.0.0.32483</version>
+    <time>1468486127</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to upstream version 3.0.0
+- supersedes SR#400458 (not sure if I have rights to it)
+- should wait for SR#405656 (would break LibreOffice build otherwise)
+- once accepted, firebird-classic package should be deleted</comment>
+    <requestid>405822</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a90e017a1e23aa0861356e5cae3f78e8</srcmd5>
+    <version>3.0.1.32609</version>
+    <time>1476409035</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433683</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>057d448299b824efabd8a7053bf41a26</srcmd5>
+    <version>3.0.1.32609</version>
+    <time>1486773128</time>
+    <user>dimstar_suse</user>
+    <comment>- fix security vulnerability (bsc#1023990)</comment>
+    <requestid>455285</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>1dfc372c27ac85b0698f4bc046336e0c</srcmd5>
+    <version>3.0.1.32609</version>
+    <time>1487767909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459232</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>94ef729848ac6bc28e73cd635fe16f45</srcmd5>
+    <version>3.0.2.32703</version>
+    <time>1499162081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to point release 3.0.2 (plus few important post-3.0.2 fixes)
+- build without &quot;--disable-binreloc&quot;, no longer needed
+- add a check for presence of extern/SfIO files (need to be removed for legal reasons)</comment>
+    <requestid>507385</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f99a94c16960621e5479bd901b431638</srcmd5>
+    <version>3.0.2.32703</version>
+    <time>1515505735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561703</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b3afd5ec454f65215d4a66b72d0c0c5c</srcmd5>
+    <version>3.0.3.32900</version>
+    <time>1522503325</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.3 point release
+- handle distributions where xinetd is not guaranteed to be installed or
+  even not available at all</comment>
+    <requestid>591877</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>6f46f344a608452d82a9b618d70c146a</srcmd5>
+    <version>3.0.3.32900</version>
+    <time>1531232028</time>
+    <user>dimstar_suse</user>
+    <comment>- replace the old ICU patch by upstream solution and a simple patch adding
+  also &quot;suse%d.%d&quot; pattern to make firebird work with upcoming icu update</comment>
+    <requestid>621129</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>13808b7845d8be681c6e5e340e458540</srcmd5>
+    <version>3.0.4.33054</version>
+    <time>1543399826</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.4 point release</comment>
+    <requestid>651958</requestid>
+  </revision>
+</revisionlist>

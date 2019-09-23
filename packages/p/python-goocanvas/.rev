@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b505437acc3dd33d48ab252780fe0356</srcmd5>
+    <version>0.9.0</version>
+    <time>1197431113</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f23d59ea41ff999b6cd2afd48260aa4</srcmd5>
+    <version>0.10.0</version>
+    <time>1215554445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e5424e4760077f185bfb9e501cadbc3a</srcmd5>
+    <version>0.14.0</version>
+    <time>1238021024</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b29cc6bf2dc9973e593519f68752f504</srcmd5>
+    <version>0.14.1</version>
+    <time>1242853078</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b29cc6bf2dc9973e593519f68752f504</srcmd5>
+    <version>0.14.1</version>
+    <time>1242853078</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>58522b61dd2d804f90e8deaac466bc2a</srcmd5>
+    <version>0.14.1</version>
+    <time>1268925850</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>58522b61dd2d804f90e8deaac466bc2a</srcmd5>
+    <version>0.14.1</version>
+    <time>1278667384</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>58522b61dd2d804f90e8deaac466bc2a</srcmd5>
+    <version>0.14.1</version>
+    <time>1278678614</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>58522b61dd2d804f90e8deaac466bc2a</srcmd5>
+    <version>0.14.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>ca2031570a4fffea7ba583a13588e7d5</srcmd5>
+    <version>0.14.1</version>
+    <time>1306766548</time>
+    <user>darix</user>
+    <comment>Split out a -devel package... yeah yeah.. one file in a package... but it references pygtk-2.0... thus when installing python-goocanvas, you get the entire gtk2 stack dragged in (forwarded request 71855 from dimstar)</comment>
+    <requestid>72051</requestid>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>fd12bccc61f20c1cc72186160736c189</srcmd5>
+    <version>0.14.1</version>
+    <time>1306766560</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 72051
+</comment>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>f3a041696a58e72096f767d2e49cb4e4</srcmd5>
+    <version>0.14.1</version>
+    <time>1307353758</time>
+    <user>saschpe</user>
+    <comment>Get ready for addition of gtk3-powered goocanvas</comment>
+    <requestid>72449</requestid>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>f99578a4ee70e80ee082b7bdfa3d6dcd</srcmd5>
+    <version>0.14.1</version>
+    <time>1307353770</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72449
+</comment>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>f99578a4ee70e80ee082b7bdfa3d6dcd</srcmd5>
+    <version>0.14.1</version>
+    <time>1319182391</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>d4f545611c47c1fd97ead4ba883a5490</srcmd5>
+    <version>0.14.1</version>
+    <time>1322501219</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93801 from coolo)</comment>
+    <requestid>93929</requestid>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>b41f829b225099fa3b9c2da526f18bc3</srcmd5>
+    <version>0.14.1</version>
+    <time>1323194146</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>b41f829b225099fa3b9c2da526f18bc3</srcmd5>
+    <version>0.14.1</version>
+    <time>1340184057</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>b41f829b225099fa3b9c2da526f18bc3</srcmd5>
+    <version>0.14.1</version>
+    <time>1359110041</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>5aac95af3d17a9e14fd722999e77855d</srcmd5>
+    <version>0.14.1</version>
+    <time>1362732192</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+
+consolidate (forwarded request 157627 from dimstar)</comment>
+    <requestid>157837</requestid>
+  </revision>
+  <revision rev="20" vrev="25">
+    <srcmd5>5aac95af3d17a9e14fd722999e77855d</srcmd5>
+    <version>0.14.1</version>
+    <time>1379664187</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="27">
+    <srcmd5>5aac95af3d17a9e14fd722999e77855d</srcmd5>
+    <version>0.14.1</version>
+    <time>1409302879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="28">
+    <srcmd5>df5ddd95b1d19b27b8931d60e6f05bd8</srcmd5>
+    <version>0.14.1</version>
+    <time>1520415355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583093</requestid>
+  </revision>
+  <revision rev="23" vrev="29">
+    <srcmd5>ed1d7ac77bc9e65916cdacc2f92e5481</srcmd5>
+    <version>0.14.1</version>
+    <time>1540819395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645241</requestid>
+  </revision>
+  <revision rev="24" vrev="30">
+    <srcmd5>d0303749fcb310d8c2e70de8fbefc286</srcmd5>
+    <version>0.14.1</version>
+    <time>1546946913</time>
+    <user>dimstar_suse</user>
+    <comment>- Converted to singlespec.
+</comment>
+    <requestid>663097</requestid>
+  </revision>
+  <revision rev="25" vrev="31">
+    <srcmd5>04a5163b01271dbe71d71d940b57785b</srcmd5>
+    <version>0.14.1</version>
+    <time>1548704892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668732</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,641 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>89d085e7c7be9920a7349554c71d7ec5</srcmd5>
+    <version>6.14.00</version>
+    <time>1166483880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>7898609b5d089bf36b66bb9b08c968b2</srcmd5>
+    <version>6.14.00</version>
+    <time>1172513129</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="54">
+    <srcmd5>d9a140b6489ef618bcdf8785a5b7104e</srcmd5>
+    <version>6.14.00</version>
+    <time>1175163042</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>26510e8c80a74b6d6bdd0f6dd50d8cdd</srcmd5>
+    <version>6.15.00</version>
+    <time>1184601324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>49930b835f5d7c6d3030b9aaaa4b0df7</srcmd5>
+    <version>6.15.00</version>
+    <time>1185034295</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>fb4933db27f3a8d3068f4f02f0e8add2</srcmd5>
+    <version>6.15.00</version>
+    <time>1185219092</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="15">
+    <srcmd5>7fd4a6b1027d89a9f2b70f0a22d05984</srcmd5>
+    <version>6.15.00</version>
+    <time>1188321671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="22">
+    <srcmd5>de5613fef20700d67b92902f9c4d5436</srcmd5>
+    <version>6.15.00</version>
+    <time>1192227173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="25">
+    <srcmd5>fc9840a9d596e750645a1c902e8f7f1c</srcmd5>
+    <version>6.15.00</version>
+    <time>1192495073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="35">
+    <srcmd5>2168c875c41c4e3f7638b13ea513cf0b</srcmd5>
+    <version>6.15.00</version>
+    <time>1198165544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="65">
+    <srcmd5>fffa66188d1431fb740267245558d640</srcmd5>
+    <version>6.15.00</version>
+    <time>1214263785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="89">
+    <srcmd5>739904647ca0034e31f2e9d603bfb41a</srcmd5>
+    <version>6.15.00</version>
+    <time>1223312986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="90">
+    <srcmd5>cbc8f1e225bdc73787bb9741709a33f8</srcmd5>
+    <version>6.15.00</version>
+    <time>1223484082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="91">
+    <srcmd5>414f44fe98718b85942a98d744ad995a</srcmd5>
+    <version>6.15.00</version>
+    <time>1224694367</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="92">
+    <srcmd5>1e4658d03423bb06e8a40af3c6f2d6e5</srcmd5>
+    <version>6.15.00</version>
+    <time>1226069446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="93">
+    <srcmd5>d7b74f759b5b6ea39b757b6fee390753</srcmd5>
+    <version>6.15.00</version>
+    <time>1227884775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="94">
+    <srcmd5>0ca2f26c2ccfc17a03f77a2a80979928</srcmd5>
+    <version>6.15.00</version>
+    <time>1232626737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e3b04ce3984bb4a60cd4836d25e5c219</srcmd5>
+    <version>6.16.00</version>
+    <time>1238004028</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e233f32cd9e4e99caad525dd71e2d0c2</srcmd5>
+    <version>6.16.00</version>
+    <time>1238601448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>0679332e8a3d46d07c8a21237bbff162</srcmd5>
+    <version>6.16.00</version>
+    <time>1246289295</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>d2143dcd3d50ca9174d11a6f8091e35d</srcmd5>
+    <version>6.16.00</version>
+    <time>1250255390</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 17763 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>d2143dcd3d50ca9174d11a6f8091e35d</srcmd5>
+    <version>6.16.00</version>
+    <time>1250255390</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 17763 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>5878020ddab9ff3330367aaabe177f48</srcmd5>
+    <version>6.16.00</version>
+    <time>1259925689</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 25414 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>0075489a92f80a1d2d182f36402d343a</srcmd5>
+    <version>6.16.00</version>
+    <time>1260957042</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 26655 from user coolo
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b63ebb2502b522d2a96e5d7e3c8c2858</srcmd5>
+    <version>6.17.00</version>
+    <time>1266508791</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 32629 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>420939361d29f1a555c215f4dfd7a508</srcmd5>
+    <version>6.17.00</version>
+    <time>1268069139</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 34249 from user WernerFink
+</comment>
+    <requestid>34249</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d9580216e8b6e6eeabcd5488f0bac743</srcmd5>
+    <version>6.17.00</version>
+    <time>1268842834</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 35044 from user WernerFink
+</comment>
+    <requestid>35044</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>3a097dd0730218a26c24623c4d1a52f7</srcmd5>
+    <version>6.17.00</version>
+    <time>1268926305</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>bffc5654d76c7d242b3c61185da1192b</srcmd5>
+    <version>6.17.00</version>
+    <time>1276468052</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/tcsh based on submit request 41363 from user WernerFink
+</comment>
+    <requestid>41363</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>bffc5654d76c7d242b3c61185da1192b</srcmd5>
+    <version>6.17.00</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>bffc5654d76c7d242b3c61185da1192b</srcmd5>
+    <version>6.17.00</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>0babcef77815926a16a38fbfef2a6b67</srcmd5>
+    <version>6.17.02</version>
+    <time>1292850254</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56408 from user WernerFink
+</comment>
+    <requestid>56408</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>e21dfbf4d281256e9a107bd13cb93db7</srcmd5>
+    <version>6.17.02</version>
+    <time>1292850261</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56408
+</comment>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>9a4e70185e3f1a685791521a79eb0af6</srcmd5>
+    <version>6.17.02</version>
+    <time>1297113226</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60209 from user WernerFink
+</comment>
+    <requestid>60209</requestid>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>f7b2913dd29b9e98cd258d15b00ee2c3</srcmd5>
+    <version>6.17.02</version>
+    <time>1297113236</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60209
+</comment>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>f7b2913dd29b9e98cd258d15b00ee2c3</srcmd5>
+    <version>6.17.02</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="37" vrev="11">
+    <srcmd5>2a15bde4722cc87401ac934b93f20e8c</srcmd5>
+    <version>6.17.02</version>
+    <time>1298969651</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63011 from user WernerFink
+</comment>
+    <requestid>63011</requestid>
+  </revision>
+  <revision rev="38" vrev="12">
+    <srcmd5>e4eea9b85bdd1ae1cfdbcde08b194ab4</srcmd5>
+    <version>6.17.02</version>
+    <time>1298969664</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63011
+</comment>
+  </revision>
+  <revision rev="39" vrev="14">
+    <srcmd5>e4eea9b85bdd1ae1cfdbcde08b194ab4</srcmd5>
+    <version>6.17.02</version>
+    <time>1319182509</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="40" vrev="15">
+    <srcmd5>0582d90d10c721ebb5b3615c5cdaaf96</srcmd5>
+    <version>6.17.02</version>
+    <time>1321460509</time>
+    <user>coolo</user>
+    <comment>- Use libtinfo if available otherwise libncurses (required due
+  bnc #729226)</comment>
+    <requestid>91784</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bc99af2a9213e0c9906fbcffae46c94c</srcmd5>
+    <version>6.17.06</version>
+    <time>1321876282</time>
+    <user>coolo</user>
+    <comment>- Increase size of hash table for runtime linker a lot 
+
+- Split off tcsh-lang as its own package
+- Make language catalogs work that is use tcsh instead of tcsh.cat
+  as this is the system default 
+
+- Update to tcsh minor version V6.17.06
+  * PR/110: Add $anyerror to select behavior. Default to the new one.
+  * Don't try to spell commands that are correct (Rouben Rostamian)
+    [./tcsh -f; set path=($path 2); mkdir foo2; cd foo2; touch foo;
+     chmod +x foo; set correct=cmd; ./foo -&gt; ../foo]
+  * Don't push the syntax struct on the cleanup stack, because on foo;bar
+    if foo fails, we will free bar prematurely (Ben Miller)
+  * Avoid infinite loop while trying to print the pid of a dying process
+    to a closed file (Bob Arendt)
+  * Handle completion of ${ variables (Anthony Mallet)
+  * Add --disable-nls-catalogs (Corinna Vinschen)
+  * convert message catalogs to UTF-8 (Werner Fink)
+  * check that the NLS path works before setting $NLSPATH.
+  * use SYSMALLOC for GLIBC (Werner Fink)
+  * use mallinfo for SYSMALLOC (Corinna Vinschen)
+  * Use mkstemp() if there for here docs (Werner Fink)
+  * Fix handling of errors and exit values in builtins (Werner Fink)
+  * Better pty name detection (Werner Fink)
+  * Enable NLS catalogs on Cygwin (Corinna Vinschen)
+  * NLSPATH handling fixes (Corinna Vinschen)
+  * Avoid infrequent exit when tcsh cd's into a non-existent directory
+    https://bugzilla.novell.com/show_bug.cgi?id=293395 (Werner Fink)
+  * Don't try to spell check full path binaries that are correct because
+    they can cause hangs when other nfs partitions are hung. (Werner Fink)</comment>
+    <requestid>92396</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c47a5bae106b71b693d8cf7a3041ec1d</srcmd5>
+    <version>6.17.06</version>
+    <time>1323194867</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>79be2878f9d511ff56370ce07dd0837a</srcmd5>
+    <version>6.18.00</version>
+    <time>1326796514</time>
+    <user>coolo</user>
+    <comment>- Update to tcsh ifinal version V6.18.00
+ * remove unused variables.
+ * Make gethost use definitions for x __x__ and __x automatically.
+ * More utmp fixes
+
+- Update to tcsh minor version V6.17.10
+ * Add more FreeBSD/NetBSD machines
+ * Add portability wrapper for gencat
+ * Fix warning for write in SYSMALLOC systems.
+ * revert gencat handling to pre-cygwin fixes (without the env settings)
+ * remove stray endutent()
+ * Remove - from gencat
+ * Provide support for malloc_usable_size() so that linux works again
+   without SYSMALLOC
+ * Add support for FreeBSD's utmpx.
+ * Fix debian bug #645238: tcsh segfaults when prompt includes %j and
+   there are more than 10 jobs.
+ * PR/155: Default $anyerror to set for backward compatibility
+ * PR/149: Don't print -1 in %j (Vojtech Vitek)
+ * handle -- on chdir commands as the end of options processing so that
+   they can process a directory like -x without resorting to ./-x
+   (Andrew Stevenson)
+ * Handle write(2) returning ENOENT from SoFS, thanks ++HAL (Robert Byrnes)
+ * PR/38: Null check for jobs (Kurt Miller)
+ * Fix spelling correction correcting ./foo -&gt; ../foo2 (jean-luc leger)
+ * PR/120: string0 in filetest does not have enough space.</comment>
+    <requestid>100233</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>3606517625d457c9e3c8d50290fd25c3</srcmd5>
+    <version>6.18.00</version>
+    <time>1330151506</time>
+    <user>coolo</user>
+    <comment>- Update tcsh to patch level 6.18.01 - 20120214
+ * fix interruptible wait again
+ * ignore bogus compiler overflow message
+ * cleanup ifdefs in utmp code, and provide default array entries
+ * Ignore #machine entries in host.defs
+ * Detect missing ) in gethost.c (Corinna Vinschen)
+ 
+
+- Update to tcsh final version V6.18.00</comment>
+    <requestid>106826</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>5f4019fbfdcccb5884a4b1d41536bb54</srcmd5>
+    <version>6.18.00</version>
+    <time>1336653272</time>
+    <user>coolo</user>
+    <comment>- Fix tcsh segfaults in bb_cleanup() (bnc#761353)</comment>
+    <requestid>120566</requestid>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>5f4019fbfdcccb5884a4b1d41536bb54</srcmd5>
+    <version>6.18.00</version>
+    <time>1340184262</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>5f4019fbfdcccb5884a4b1d41536bb54</srcmd5>
+    <version>6.18.00</version>
+    <time>1359110468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3f82a5d692c47d0f2bed08f5fbac4570</srcmd5>
+    <version>6.18.01</version>
+    <time>1375905634</time>
+    <user>coolo</user>
+    <comment>- Update to tcsh bug fix version V6.18.01 
+- Remove patch tcsh-6.18.01.patch as not required anymore
+- Add patch tcsh-6.18.01-metakey.patch to make meta key work</comment>
+    <requestid>186103</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>3f82a5d692c47d0f2bed08f5fbac4570</srcmd5>
+    <version>6.18.01</version>
+    <time>1379664779</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>f2c956dd7599b7feb41421124f66f4f6</srcmd5>
+    <version>6.18.01</version>
+    <time>1382515894</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204355</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>f2c956dd7599b7feb41421124f66f4f6</srcmd5>
+    <version>6.18.01</version>
+    <time>1409303459</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>853665c61d1150922b4553aed710df9b</srcmd5>
+    <version>6.18.01</version>
+    <time>1422026372</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282354</requestid>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>5982ec24bb17981eb28a75366a9b1f21</srcmd5>
+    <version>6.18.01</version>
+    <time>1422790189</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tcsh checks but be aware that this can not be done in parallel
+- Backup tcsh-6.15.00-blanks.dif away before update a working copy
+
+- Cleanup with spec-cleaner to order header data
+- Use %lang_package macro to remove redundant stuff
+- Drop unused patch tcsh-6.15.00-blanks.dif
+- Run make with more threads
+- Move the commented check to check section to silence rpmlint</comment>
+    <requestid>283466</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>86a67f2edf076aa70cc266ea2b14a31d</srcmd5>
+    <version>6.18.04</version>
+    <time>1430983266</time>
+    <user>coolo</user>
+    <comment>- Update tcsh to patch level 6.18.04 - 20150504
+  * revert fix echo &quot;\1&quot;, it is incorrect.
+  * revert fix to PR/437, breaks short strings.
+
+- Update tcsh to patch level 6.18.03 - 20150503
+  * PR/437: Nakajima Akira: Fix segmentation fault reading input files
+  * PR/291: Print job status messages to stderr.
+  * Fridolin Pokorny NUL in `` does not mean EOF.
+  * Pavel Raiskup fix hang with:
+        while (1)
+           ( date &amp; ; wait )
+        end
+  * Add cdtohome special variable (Martin Tournoij)
+  * Fix root prompt char for windows (Corinna Vinschen)
+  * For &quot;next&quot; completion matches only consider exact matches of the
+    previous word (Jamie Landeg-Jones)
+  * Fix echo &quot;\1&quot; for echo_style=both where the first character was
+    not processed properly (Gary Duzan)
+- Remove patches now upstream
+  * tcsh-6.18.01-blk_buf.patch
+  * tcsh-6.18.01-metakey.patch
+- Rename patches
+  tcsh-6.17.03-colorls.dif becomes tcsh-6.18.03-colorls.dif
+  tcsh-6.17.10-catalogs.dif becomes tcsh-6.18.03-catalogs.dif
+  tcsh-6.18.00-history-file-locking.patch becomes tcsh-6.18.03-history-file-locking.patch
+  tcsh-6.18.01-history-merge.dif becomes tcsh-6.18.03-history-merge.dif
+  tcsh-6.18.00.dif becomes tcsh-6.18.03.dif</comment>
+    <requestid>305481</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a480b5c0661df571c8428b9454afd134</srcmd5>
+    <version>6.18.05</version>
+    <time>1431676494</time>
+    <user>coolo</user>
+    <comment>- Update tcsh to patch level 6.18.05 - 20150510
+ * fix reseting when interrupted inside an eval &quot;eval sleep 10^C&quot;
+   (paulo.cesar.pereira.de.andrade)
+ * rename handle_intr -&gt; handle_interrupt as originally intended.
+   fix input tests that need stdin on a tty</comment>
+    <requestid>306382</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>31d866f59f4d33c4ed02eaf94c65f8ba</srcmd5>
+    <version>6.19.00</version>
+    <time>1460358682</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>385308</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>8e1fd619df7a67aafc711809b0f8040b</srcmd5>
+    <version>6.19.00</version>
+    <time>1467359725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404811</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>92110e0f5cc1f30c5754f936cc3673b4</srcmd5>
+    <version>6.20.00</version>
+    <time>1480692997</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.20-rmstar.patch from mailing list to restore
+  the correct behaviour of `rm *' if rmstar is set
+
+- Update to tcsh bug fix version V6.20.00 - 20161124
+  * Don't resize the screen if it did not change size.
+  * restore file description when cleaning up after eval:
+        repeat 99 time
+  * PR/572: Fix $SHLVL issue when exec'ing subshells.
+  * PR/403: Fix backquote expansion for multi-byte character sets.
+  * Fix drawing issu with multi-line prompt (Kensuke Iwahashi/David Kaspar)
+  * always send prusage to stdout.
+  * PR/526: Fix double \\ printing from previous fix in history expansion.
+  * Android updates from Corinna Vinschen
+  * PR/526: Quote backslashes properly so they can be preserved in ``
+     expansions
+  * Fix memory leak for paraml
+  * Add notempty and ask values for the noclobber setting (Martin Tournoij)
+  * more correct $wordchars for vimode (Luke Mewburn)
+  * expose VImode in $vimode (Luke Mewburn)
+  * display what the compiled in editor is in bindkey -d (Luke Mewburn)
+  * run-fg-editor improvements and documentation (Luke Mewburn)
+  * Fix parsing of 'if (cond)then' (Fridolin Pokorny)
+  * PR/437: Fix handling of invalid unicode characters.
+  * PR/451: Fix error messages containing %c to be always '%c'
+- Rename patch tcsh-6.18.03.dif which becomes tcsh-6.20.00.dif now
+- Drop patch union-wait.patch as now upstream
+- Modify patches
+    tcsh-6.15.00-pipe.dif
+    tcsh-6.17.06-dspmbyte.dif
+    tcsh-6.18.03-colorls.dif</comment>
+    <requestid>443022</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>be1610ba42f87e5c526b3d257e9fe2ae</srcmd5>
+    <version>6.20.00</version>
+    <time>1481459043</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.20-ptr-update.patch from mailing list to correct
+  updating pointers to a reallocated buffer of of linked list elements 
+- Remove --hash-size options as there is no any change in the final
+  binary nor library anymore</comment>
+    <requestid>444712</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>d59cbcba6dfc168331493e3ce1e5add4</srcmd5>
+    <version>6.20.00</version>
+    <time>1485862448</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452710</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>5cac8fe21140a24f4b344d4f32e9579c</srcmd5>
+    <version>6.20.00</version>
+    <time>1493880767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.20.00-8bit-cmdkeys.patch
+  Do not convert current used control bytes into wide characters 
+- Extend bindkey.tcsh with 8-bit controls key escape sequences</comment>
+    <requestid>491781</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>0a500cb6ddc15ea54eb1c638e93afdcc</srcmd5>
+    <version>6.20.00</version>
+    <time>1502186265</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch tcsh-6.20.00-avoid-dotlock-for-fcntl.patch as we are
+  using fcntl's F_SETLKW patches for locking therefore avoid dot
+  file locking without holding a file descriptor as otherwise we
+  migth not be able to open the history file after a crash or if
+  a killall had been used during reboot.
+
+- Add patch tcsh-closem.patch to fix a long standing misbehaviour
+  of upstram tcsh whic his that it close sockets which do not
+  belong to it (bsc#1028864)</comment>
+    <requestid>511380</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>e9502eb819351fdf0c22c5e6f87b3adb</srcmd5>
+    <version>6.21.00</version>
+    <time>1557833368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh bug fix version V6.21.00 - 20190508
+  *. Abort history loading on words and lines too long
+     https://bugzilla.redhat.com/show_bug.cgi?id=1598502
+  * Introduce GetCmdChar() to avoid open coding array access.
+  * make closem() not close sockets so as not to affect nss_ldap.
+     tcsh never creates sockets so that's ok (Miloslav Trmac)
+  * Make rmstar work with aliased rm
+  * convert match() from recursive to backtracking.
+  * Handle 8 bit characters in bindkey (Werner Fink)
+  * Look for tgetent in libtinfo as well (Werner Fink)
+  * Don't play pointer tricks that are undefined in modern c (Brooks Davis)
+  * Fix out of bounds read (Brooks Davis)
+  * Fix type of read in prompt confirmation (eg. rmstar) (David Kaspar)
+  * Delay arginp parsing
+- Drop patches now upstream
+  * tcsh-6.20-ptr-update.patch
+  * tcsh-6.20-rmstar.patch
+  * tcsh-6.20.00-8bit-cmdkeys.patch
+  * tcsh-6.20.00-postcmd.patch
+  * tcsh-closem.patch
+- Port patches
+  * tcsh-6.15.00-pipe.dif
+  * tcsh-6.16.00-norm-cmd.dif
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-catalogs.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.18.03-history-file-locking.patch
+  * tcsh-6.18.03-history-merge.dif
+  * tcsh-6.19.00-history-file-locking-order.patch
+  * tcsh-6.20.00-avoid-dotlock-for-fcntl.patch</comment>
+    <requestid>701745</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>523ca807c77055e37146293f3f04060e</srcmd5>
+    <version>6.21.00</version>
+    <time>1567423318</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727010</requestid>
+  </revision>
+</revisionlist>

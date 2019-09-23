@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Mon Jul 25 14:25:53 UTC 2016 - fvogt@suse.com
+
+- Use update-xml-catalog
+
+-------------------------------------------------------------------
+Mon Jan 21 16:47:19 UTC 2013 - ke@suse.de
+
+- Install xhtml-mat-svg DTD and provide catalog entries (bnc#799075).
+
+-------------------------------------------------------------------
+Wed Nov 17 13:56:05 CET 2010 - ke@suse.de
+
+- Add missing systemID for 1.1 (bnc#652205).
+
+-------------------------------------------------------------------
+Tue Mar 10 15:00:58 CET 2009 - ke@suse.de
+
+- Also resolve "-//W3C//ELEMENTS XHTML" and "-//W3C//ENTITIES XHTML";
+  reported by Thomas Schraitle (bnc#433355).
+
+-------------------------------------------------------------------
+Thu Mar  5 16:24:11 CET 2009 - ro@suse.de
+
+- try to fix build 
+
+-------------------------------------------------------------------
+Thu Jan 11 15:06:56 CET 2007 - ke@suse.de
+
+- Remove /usr/share/xml from the files list.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 29 00:10:58 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Mar  9 15:55:59 CET 2005 - ke@suse.de
+
+- Add edit-xml-catalog as "PreReq:"; reported by Thomas Schmidt [#
+  71811].
+
+-------------------------------------------------------------------
+Wed Feb 11 18:31:30 CET 2004 - ke@suse.de
+
+- Finally, move DTDs to /usr/share/xml/xhtml/schema/dtd.
+
+-------------------------------------------------------------------
+Thu Jan 29 14:39:50 CET 2004 - ke@suse.de
+
+- Adjust directories according to FHS 2.3:
+  * Move XML DTDs to /usr/share/xml/xhtml.
+  * Keep CATALOG.* files in /usr/share/sgml for the time being.
+  * Improve XML catalog (/etc/xml/xhtml/xml).
+
+-------------------------------------------------------------------
+Mon Jun 16 13:23:08 CEST 2003 - ke@suse.de
+
+- Update XHTMLplusMathMLplusSVG to 20020809.
+
+-------------------------------------------------------------------
+Mon Jun 16 13:13:08 CEST 2003 - ke@suse.de
+
+- Add missing directory.
+
+-------------------------------------------------------------------
+Tue Jun 10 13:57:34 CEST 2003 - coolo@suse.de
+
+- fix syntax errors
+- removed exit 0
+
+-------------------------------------------------------------------
+Mon Jun  2 16:12:27 CEST 2003 - ke@suse.de
+
+- Create proper links in docdir; reported by Stephan Kulow.
+- Use edit-xml-catalog in %post/%postun for managing /etc/xml/catalog.
+
+-------------------------------------------------------------------
+Mon Feb 24 13:44:42 CET 2003 - ke@suse.de
+
+- In %post drop brain dead file check which cause re-creation of an
+  empty xml catalog file; reported by Thomas Schraitle [# 24186].
+
+-------------------------------------------------------------------
+Tue Dec 10 16:00:52 CET 2002 - ke@suse.de
+
+- Register SGML catalogs using sgml-register-catalog; related to bug
+  [# 12050].
+- Move docs to the documentation area.
+
+-------------------------------------------------------------------
+Mon Jun 24 00:56:44 CEST 2002 - ro@suse.de
+
+- fixed directory permissions 
+
+-------------------------------------------------------------------
+Mon May  6 13:28:51 CEST 2002 - ke@suse.de
+
+- Add libxml2 to 'neededforbuild'.
+- Add XHTMLplusMathMLplusSVG.tgz (we'll install it later).
+- Provide more catalogs for modularized DTDs.
+
+-------------------------------------------------------------------
+Mon Aug 27 09:48:36 CEST 2001 - ke@suse.de
+
+- Update xhtml-modularization and xhtml11.
+- Cleanup spec file.
+- Add sgml-skel to 'neededforbuild'.
+
+-------------------------------------------------------------------
+Mon Mar 19 12:07:13 CET 2001 - ke@suse.de
+
+- Add install-dtd.sh.
+- Provide convenience links for DTDs and Entities using install-dtd.sh.
+- Move all the data from /usr/share/sgml/xhtml-1.0 into
+  /usr/share/sgml/xhtml/xhtml-1.0.
+
+-------------------------------------------------------------------
+Wed Mar 14 12:08:12 CET 2001 - ke@suse.de
+
+- New package (partly take over from html_dtd).
+
+

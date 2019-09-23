@@ -1,0 +1,299 @@
+-------------------------------------------------------------------
+Thu Aug 15 16:41:03 CEST 2019 - kukuk@suse.de
+
+- Add dialog to configure salt-minion where needed [bsc#1145768]
+- Require yast2-caasp >= 4.2.1
+- 20190815
+
+-------------------------------------------------------------------
+Wed Jul 31 14:51:52 CEST 2019 - kukuk@suse.de
+
+- Remove unneeded entries
+- Add /usr/local subvolume to all system roles
+- Add kubic loadbalancer system role [boo#1143682]
+- Move MicroOS system role to the end, it's not the default
+  and the less used entry
+- 20190731
+
+-------------------------------------------------------------------
+Wed Jun 19 13:55:23 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add /boot/writable subvolume [boo#1138725]
+- 20190619
+
+-------------------------------------------------------------------
+Thu Jun 13 14:57:51 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add srv as a subvolume [boo#1132436]
+- Select product on installation [boo#1124590]
+- Remove (Alpha) tags from kubic roles [boo#1138180]
+- Fix kubic_admin role description [boo#1135973]
+- 20190613
+
+-------------------------------------------------------------------
+Mon Jun 03 12:43:53 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Fix kubic_admin role service name [boo#1135980]
+- 20190603
+
+-------------------------------------------------------------------
+Tue May 07 14:46:12 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add kubic_worker and kubic_admin roles [boo#1134332]
+- 20190507
+
+-------------------------------------------------------------------
+Tue Apr 16 14:22:53 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Replace micro_os_role and description to be consistent with MicroOS media [boo#1131700]
+- 20190416
+
+-------------------------------------------------------------------
+Mon Apr 08 09:47:52 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Fix kubeadm role to use correct patterns-microos pattern names [boo#1131700]
+- 20190405
+
+-------------------------------------------------------------------
+Fri Apr 05 12:47:11 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Use new patterns-microos pattern names [boo#1131700]
+- 20190405
+
+-------------------------------------------------------------------
+Fri Mar 15 15:36:31 UTC 2019 - David Díaz <dgonzalez@suse.com>
+
+- Set language as readonly (bsc#1121256)
+- 20190315
+
+-------------------------------------------------------------------
+Tue Mar 12 11:49:59 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Changed product_license_dir define from /etc/YaST2/licenses/base/
+  to /usr/share/licenses/product/base/, see jsc#SLE-3067, FATE#324053
+
+-------------------------------------------------------------------
+Tue Mar 05 13:41:53 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Use new MicroOS-defaults pattern [boo#1127941]
+- 20190305
+
+-------------------------------------------------------------------
+Tue Feb 19 14:06:11 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Remove docker from MicroOS System Role
+- Use new container-runtime-kubernetes pattern in kubeadm role
+- Correct role descriptions
+- [boo#1125949]
+- 20190219
+
+-------------------------------------------------------------------
+Wed Feb 06 09:36:35 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Don't show addon step by default (boo#1123481)
+- 20190206
+
+-------------------------------------------------------------------
+Tue Jan 29 10:40:11 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Add support for additional repos with addon= (boo#1123481)
+- 20190129
+
+-------------------------------------------------------------------
+Tue Jan 08 16:57:53 UTC 2019 - Richard Brown <rbrown@suse.de>
+
+- Fit microOS on 20GB disks, kubeadm on 30GB (boo#1119288)
+- 20190108
+
+-------------------------------------------------------------------
+Tue Dec 11 15:46:13 UTC 2018 - Richard Brown <rbrown@suse.de>
+
+- Add container-runtime-config pattern to MicroOS role (boo#1119153)
+- 20181211
+
+-------------------------------------------------------------------
+Thu Nov 29 13:51:50 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Update yast2-theme dependency (boo#1108422)
+- 20181129
+
+-------------------------------------------------------------------
+Wed Nov 14 15:10:11 UTC 2018 - rbrown@suse.de
+
+- Remove /cloud-init-config subvolume (bsc#1107283)
+- version 20181115
+
+-------------------------------------------------------------------
+Wed Nov 14 08:08:36 UTC 2018 - lslezak@suse.cz
+
+- Use the *.opensuse.pool.ntp.org fallback when an NTP server
+  is not set in the DHCP response (bsc#1114818)
+- Use a date based versioning (the Leap schema does not make sense
+  for the Tumbleweed based Kubic)
+- version 20181114
+
+-------------------------------------------------------------------
+Fri Oct 26 15:36:28 UTC 2018 - lslezak@suse.cz
+
+- Display a new dialog when selecting the Kubeadm role
+  (FATE#325834)
+- Removed the SLE/CaaSP handling, this is just an openSUSE package
+- Use %license for the license file
+- 15.1.7
+
+-------------------------------------------------------------------
+Tue Aug 21 15:32:55 UTC 2018 - rbrown@suse.com
+
+- Run partition proposal before bootloader proposal (boo#1099762)
+- 15.1.6
+
+-------------------------------------------------------------------
+Tue Aug 14 17:32:21 UTC 2018 - rbrown@suse.com
+
+- Make crio default, docker as alternative runtime (boo#1104821)
+- 15.1.5
+
+-------------------------------------------------------------------
+Mon Aug 06 15:16:11 UTC 2018 - rbrown@suse.com
+
+- Remove invalid copy_on_write for /var partition (boo#1103906)
+- 15.1.4
+
+-------------------------------------------------------------------
+Mon Aug 06 12:21:34 UTC 2018 - rbrown@suse.com
+
+- Remove 'old' SUSE CaaS stack system roles (boo#1103906)
+- Introduce new kubeadm system role
+- Introduce new /var partition for multiple container runtimes
+- 15.1.3
+
+-------------------------------------------------------------------
+Fri Jun 29 08:33:55 UTC 2018 - rbrown@suse.com
+
+- Run software proposal module last to ensure other modules can
+  influence software selection correctly
+- 15.1.2
+
+-------------------------------------------------------------------
+Mon Jun 25 13:08:10 UTC 2018 - rbrown@suse.com
+
+- Remove partioning from install workflow, add it to summary
+  (boo#1099005)
+- 15.1.1
+
+-------------------------------------------------------------------
+Wed Jun 20 11:43:19 UTC 2018 - lslezak@suse.cz
+
+- yast2-registration and yast2-caasp are not used in openSUSE
+  Kubic, remove the dependencies (also fixes the build on i586
+  where these packages are not available)
+- 15.1.0
+
+-------------------------------------------------------------------
+Thu Jun 14 09:26:12 UTC 2018 - rbrown@suse.com
+
+- Start chronyd on Admin System Role (boo#1097625)
+- 15.0.14
+
+-------------------------------------------------------------------
+Wed May 16 12:27:44 UTC 2018 - rbrown@suse.com
+
+- Start systemd-timesyncd on Worker System Role (boo#1087685)
+- Correct System Role descriptions (boo#1091296)
+- 15.0.13
+
+-------------------------------------------------------------------
+Fri May 11 08:52:11 UTC 2018 - rbrown@suse.com
+
+- Use systemd syntax for UTC timezone reference (boo#1090913)
+- 15.0.12
+
+-------------------------------------------------------------------
+Tue May 08 16:31:55 UTC 2018 - rbrown@suse.com
+
+- Set Global/UTC as default timezone (boo#1090913)
+- 15.0.11
+
+-------------------------------------------------------------------
+Tue May 08 15:41:12 UTC 2018 - rbrown@suse.com
+
+- Add /opt subvolume (boo#1092174)
+- Run activate.sh as systemd service on admin role (boo#1087685)
+- 15.0.10
+
+-------------------------------------------------------------------
+Mon Apr 23 14:01:01 UTC 2018 - rbrown@suse.com
+
+- Make timezone editable (boo#1090536)
+- 15.0.9
+
+-------------------------------------------------------------------
+Thu Apr 19 14:33:31 UTC 2018 - rbrown@suse.com
+
+- Add network & timezone to proposal (boo#1088456)
+- Remnove autoupdate from workflow
+- 15.0.8
+
+-------------------------------------------------------------------
+Mon Apr 16 08:21:22 UTC 2018 - rbrown@suse.com
+
+- Add new container-runtime pattern to system roles (boo#1089649)
+- 15.0.7
+
+-------------------------------------------------------------------
+Fri Apr  6 14:20:55 UTC 2018 - rbrown@suse.com
+
+- Various changes to installation proposal summary (boo#1088456)
+- Add kdump module
+- Remove SSH/Firewall module
+- Remove Default SystemD Target module
+- Always propose full disk allocation
+- 15.0.6
+
+-------------------------------------------------------------------
+Thu Mar 29 07:28:11 UTC 2018 - rbrown@suse.com
+
+- Allow installation proposal configuration (boo#1087392)
+- 15.0.5
+
+-------------------------------------------------------------------
+Tue Mar 27 11:32:15 UTC 2018 - rbrown@suse.com
+
+- Implement multi-stage installation workflow (boo#1084466)
+- Evaluate partitions after chosing system role (boo#1085619)
+- Switch language layout in correct order (boo#1086749)
+- Remove registration field (boo#1048738)
+- 15.0.4
+
+-------------------------------------------------------------------
+Tue Mar 13 15:29:10 UTC 2018 - rbrown@suse.com
+
+- Replace root_subvolume_read_only with btrfs_read_only (related
+  to bsc#1079000).
+- 15.0.3
+
+-------------------------------------------------------------------
+Mon Mar 12 15:55:32 UTC 2018 - rbrown@suse.com
+
+- Resolve invalid entries for new system roles (bsc#1083909)
+- 15.0.2
+
+-------------------------------------------------------------------
+Tue Mar  6 12:43:11 UTC 2018 - rbrown@suse.com
+
+- Remove obsolete POTFILES
+- Correct default partition size to be MicroOS and carry exceptions
+  in other system roles
+- Various other restructuring as a result of in MicroOS as default
+- (bsc#1083909)
+- 15.0.1
+
+-------------------------------------------------------------------
+Wed Feb 21 15:05:21 UTC 2018 - rbrown@suse.com
+
+- Initial Version (fork from skelcd-control-CAASP)
+- ReOrder system_roles to make MicroOS default
+- Rename Plain System Role
+- Mark Dashboard and Worker roles as [Alpha]
+- (bsc#1082038)
+- 15.0.0

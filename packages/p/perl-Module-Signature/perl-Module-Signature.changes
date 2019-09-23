@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Thu Aug 30 05:38:05 UTC 2018 - coolo@suse.com
+
+- updated to 0.83
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.83 - Wed Aug 29 17:33:12 JST 2018]
+  
+  * Update META.yml.
+
+-------------------------------------------------------------------
+Mon Aug 27 05:39:24 UTC 2018 - coolo@suse.com
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.82 - Sun Aug 26 23:00:04 CST 2018]
+  
+  * Fix CRLF handling on Win32. (@niklasholm)
+  
+  * Default to SHA256 on new hashes as SHA1 is deprecated. (@niklasholm)
+
+-------------------------------------------------------------------
+Tue Oct  3 07:30:32 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Tue Sep  6 05:37:48 UTC 2016 - coolo@suse.com
+
+- updated to 0.81
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+-------------------------------------------------------------------
+Sun Jun 12 13:21:10 UTC 2016 - coolo@suse.com
+
+- updated to 0.80
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+-------------------------------------------------------------------
+Fri Jan  8 21:29:31 UTC 2016 - chris@computersalat.de
+
+- update changelog
+  * add missing CVE tags for 0.78 changes (boo#928382)
+
+-------------------------------------------------------------------
+Tue May 19 08:27:48 UTC 2015 - coolo@suse.com
+
+- updated to 0.79
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.79 - Mon May 18 23:02:11 CST 2015]
+  
+  * Restore "cpansign --skip" functionality.
+  
+    Contributed by: CLOOS
+
+-------------------------------------------------------------------
+Fri Apr 17 09:13:22 UTC 2015 - coolo@suse.com
+
+- updated to 0.78
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.78 - Thu Apr  9 16:58:27 CST 2015]
+  
+  * Fix verify() use from cpanm and CPAN.pm.
+  
+    Contributed by: ANDK
+  
+  [Changes for 0.77 - Wed Apr  8 19:36:50 CST 2015]
+  
+  * Include the latest public keys of PAUSE, ANDK and AUDREYT.
+  
+  * Clarify scripts/cpansign copyright to CC0.
+  
+    Reported by: @pghmcfc
+  
+  [Changes for 0.76 - Wed Apr  8 18:05:48 CST 2015]
+  
+  * Fix signature tests by defaulting to verify(skip=>1)
+    when $ENV{TEST_SIGNATURE} is true.
+  
+    Reported by: @pghmcfc
+  
+  [Changes for 0.75 - Tue Apr  7 04:56:09 CST 2015]
+  
+  Two more issues reported by John Lightsey:
+  
+  * Update ChangeLog.
+  
+  * More protection of @INC from relative paths. (CVE-2015-3409)
+  
+  Fix various issues reported by John Lightsey:
+  
+  [Changes for 0.74 - Tue Apr  7 02:39:14 CST 2015]
+  
+  Fix various issues reported by John Lightsey:
+  
+  * Fix GPG signature parsing logic. (CVE-2015-3406)
+  
+  * MANIFEST.SKIP is no longer consulted unless --skip is given. (CVE-2015-3407)
+  
+  * Properly use open() modes to avoid injection attacks. (CVE-2015-3408)
+
+-------------------------------------------------------------------
+Sun Aug  4 15:26:25 UTC 2013 - coolo@suse.com
+
+- fix souce url
+
+-------------------------------------------------------------------
+Wed Jul  3 19:14:29 UTC 2013 - chris@computersalat.de
+
+- update to 0.73
+  * fix for bnc#828010 (CVE-2013-2145)
+    https://bugzilla.novell.com/process_bug.cgi
+    https://bugzilla.redhat.com/show_bug.cgi?id=971096
+  * Properly redo the previous fix using File::Spec->file_name_is_absolute.
+- [Changes for 0.72 - Wed Jun  5 23:19:02 CST 2013]
+  * Only allow loading Digest::* from absolute paths in @INC,
+    by ensuring they begin with \ or / characters.
+    Contributed by: Florian Weimer (CVE-2013-2145)
+- [Changes for 0.71 - Tue Jun  4 18:24:10 CST 2013]
+  * Constrain the user-specified digest name to /^\w+\d+$/.
+  * Avoid loading Digest::* from relative paths in @INC.
+    Contributed by: Florian Weimer (CVE-2013-2145)
+- [Changes for 0.70 - Thu Nov 29 01:45:54 CST 2012]
+  * Don't check gpg version if gpg does not exist.
+    This avoids unnecessary warnings during installation
+    when gpg executable is not installed.
+    Contributed by: Kenichi Ishigaki
+- [Changes for 0.69 - Fri Nov  2 23:04:19 CST 2012]
+  * Support for gpg under these alternate names:
+    gpg gpg2 gnupg gnupg2
+    Contributed by: Michael Schwern
+
+-------------------------------------------------------------------
+Mon Dec 19 08:35:22 UTC 2011 - cfarrell@suse.com
+
+- license update: CC0-1.0 and (GPL-1.0+ or Artistic-1.0)
+  License purports to be CC zero, not CC-BY. Also, see the script/cpansign
+  and Module/Signature (line 88+) files for Perl licenses
+
+-------------------------------------------------------------------
+Thu Dec 15 09:56:56 UTC 2011 - coolo@suse.com
+
+- regenerate with cpanspec to fix requires/buildrequires
+
+-------------------------------------------------------------------
+Wed Dec 14 12:14:47 UTC 2011 - coolo@suse.com
+
+- update to 0.68
+ * Fix breakage introduced by 0.67 (Andreas König).
+ * Better handling of \r (Andreas König, Zefram)
+
+-------------------------------------------------------------------
+Wed Dec 14 12:12:55 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:34 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Sep  8 21:51:34 UTC 2010 - chris@computersalat.de
+
+- update to 0.66
+  * Fix incompatibility with EU::Manifest 1.54 to 1.57
+    (Paul Howarth) (Closes RT#61124).
+
+-------------------------------------------------------------------
+Sat Sep  4 17:36:16 UTC 2010 - chris@computersalat.de
+
+- update to 0.65
+  * Skip MYMETA (Alexandr Ciornii)
+
+-------------------------------------------------------------------
+Sat Jul 24 12:56:18 UTC 2010 - chris@computersalat.de
+
+- removed UTF-8 chars from changes
+
+-------------------------------------------------------------------
+Wed Jul 21 14:51:26 UTC 2010 - chris@computersalat.de
+
+- update to 0.64
+  * Avoid creating gnupg configuration files for the user invoking Makefile.PL
+    (Closes RT#41978).
+  * Correctly detect the version of gnupg on cygwin and add tests for it
+    (Paul Fenwick) (Closes RT#39258).
+- [Changes for 0.63 - Sun, 28 Mar 2010 04:46:27 +0100]
+  * Fix diagnostic message from Makefile.PL when the user dosn't have gnupg or
+    Crypt::OpenPGP (miyagawa).
+- [Changes for 0.62 - Tue, 23 Mar 2010 22:17:39 +0100]
+  * Change the default keyserver from the outdated pgp.mit.edu to
+    pool.sks-keyservers.net.
+- [Changes for 0.61 - Thu, 19 Mov 2009 00:56:41 CST]
+  * Added "=encoding utf8" to POD to fix author name display.
+    No functional changes.
+- [Changes for 0.60 - Mon, 16 Nov 2009 22:48:54 CST]
+  * LICENSING CHANGE: This compilation and all individual files in it
+    are now under the nullary CC0 1.0 Universal terms:
+    To the extent possible under law, <cpan@audreyt.org> has waived all
+    copyright and related or neighboring rights to Module-Signature.
+  * Updated Module::Install to 0.91, prompted by Florian Ragwitz.
+- recreated by cpanspec 1.78
+- noarch pkg
+
+-------------------------------------------------------------------
+Sat Jul 25 19:41:01 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 27 13:23:40 CEST 2009 - chris@computersalat.de
+
+- fixed deps
+  o changed Digest::SHA1 to Digest::SHA
+
+-------------------------------------------------------------------
+Fri Jun 26 14:43:23 CEST 2009 - chris@computersalat.de
+
+- initial package 0.55
+

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Aug  9 14:25:33 UTC 2018 - rpm@fthiessen.de
+
+- Added keyring to validate gpg signature of the source.
+- Update to 1.0.4:
+ * fix int overflow in ellipseRGBA for large radii
+ * fix aaline wrong direction hline bug
+ * fix off-by-1 error in rotateSurface90Degrees
+ * fix to rotozoomSurfaceSizeTrig
+ * fix for special case of roundedBoxRGBA
+
+-------------------------------------------------------------------
+Thu Dec 18 09:46:46 UTC 2014 - jengelh@inai.de
+
+- Remove SDL2_gfx obsoletes (we never had packages of that name).
+  Copy current Provides to baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Jun 25 12:35:38 UTC 2014 - jengelh@inai.de
+
+- Disable MMX not only on i586, but also ppc64, armv7l, etc.
+
+-------------------------------------------------------------------
+Tue Jun 17 09:01:15 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.0.1
+* Various minor and major fixes to drawing algorithms
+* Use of the SDLTest library for tests
+* pkg-config support.
+- Only disable MMX for i586 (x86_64 has it implied)
+
+-------------------------------------------------------------------
+Mon Nov 11 04:00:40 UTC 2013 - jengelh@inai.de
+
+- Set RPM groups to the same values as on the main SDL packages
+- Own /usr/include/SDL2 as well
+
+-------------------------------------------------------------------
+Mon Oct 28 17:37:37 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 1.0.0)
+  - based on SDL_gfx package
+

@@ -1,0 +1,478 @@
+<revisionlist>
+  <revision rev="1" vrev="76">
+    <srcmd5>4d49286d28d2de274bf623a27e5abfc1</srcmd5>
+    <version>0.1</version>
+    <time>1168012344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="79">
+    <srcmd5>82437eb4d86406a746db0163a56b9184</srcmd5>
+    <version>0.1</version>
+    <time>1169513476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="80">
+    <srcmd5>1d6bbcfa10d576bb8c6fc5308a116d1c</srcmd5>
+    <version>0.1</version>
+    <time>1169584837</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="83">
+    <srcmd5>338dbb698a4f32ccbc06f4dbe1d43338</srcmd5>
+    <version>0.1</version>
+    <time>1171483273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="84">
+    <srcmd5>5083d2b66383e3ee8ef8fb7be90dda10</srcmd5>
+    <version>0.1</version>
+    <time>1172400283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="90">
+    <srcmd5>a4699b19901091d7654630ce904e9818</srcmd5>
+    <version>0.1</version>
+    <time>1176390146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="92">
+    <srcmd5>5a876aa7a0d4885a6c3cb8977ccec1fc</srcmd5>
+    <version>0.1</version>
+    <time>1177362750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="106">
+    <srcmd5>1d67997df0b2289a41c0aa6842c3639f</srcmd5>
+    <version>0.1</version>
+    <time>1181773043</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="111">
+    <srcmd5>8fabd869b3cb61978983ebcdcf5e3946</srcmd5>
+    <version>0.1</version>
+    <time>1184629934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="116">
+    <srcmd5>1b572eb9b186100aa7f36295a296ea43</srcmd5>
+    <version>0.1</version>
+    <time>1186167183</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="121">
+    <srcmd5>0b78f58759132f8fe20ae93873dabaa0</srcmd5>
+    <version>0.1</version>
+    <time>1187905449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="124">
+    <srcmd5>5bb5cec9ef62451e0229382593615b89</srcmd5>
+    <version>0.1</version>
+    <time>1188225996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="127">
+    <srcmd5>a70ee6e85f9b66efaf6557f94404a07d</srcmd5>
+    <version>0.1</version>
+    <time>1189418758</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="131">
+    <srcmd5>bcf94860ab3b2590d693db3b7c564dad</srcmd5>
+    <version>0.1</version>
+    <time>1190221383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="134">
+    <srcmd5>a7a68a54aedafe5ba15eec77a86c0b7a</srcmd5>
+    <version>0.1</version>
+    <time>1191365027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="159">
+    <srcmd5>60b1540aa3fa8054f57e527cd69a394d</srcmd5>
+    <version>0.1</version>
+    <time>1205932928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="166">
+    <srcmd5>2233beb93e9291600ea6c706d568bd54</srcmd5>
+    <version>0.1</version>
+    <time>1208795617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="168">
+    <srcmd5>765d8474d9fd49f7cb380533de8929cb</srcmd5>
+    <version>0.1</version>
+    <time>1209128034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="171">
+    <srcmd5>d82d3a5fb91917eb638b82d820b0df67</srcmd5>
+    <version>0.1</version>
+    <time>1209939897</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="175">
+    <srcmd5>53472b1fe0cc99d387c58e1ed16548be</srcmd5>
+    <version>0.1</version>
+    <time>1210378310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="178">
+    <srcmd5>51d5e742f9c50be09b3835e2cdbb7ce4</srcmd5>
+    <version>0.1</version>
+    <time>1211555177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="198">
+    <srcmd5>f80f4c1578da043b94fcb3e459055e86</srcmd5>
+    <version>0.1</version>
+    <time>1219353828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="208">
+    <srcmd5>ccc859b4495351a52a5dbe15bd772f93</srcmd5>
+    <version>0.1</version>
+    <time>1222267290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="209">
+    <srcmd5>a3e9692da5446f5101c95797dd7f5144</srcmd5>
+    <version>0.1</version>
+    <time>1223482800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="210">
+    <srcmd5>5f1d1aeccde22d79cc659d20fd066852</srcmd5>
+    <version>0.1</version>
+    <time>1224691076</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="211">
+    <srcmd5>8ee95baf7648218fa3f72aa799a87e39</srcmd5>
+    <version>0.1</version>
+    <time>1226066968</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="212">
+    <srcmd5>a96d7f6310388d21c3cb35e8eacc423b</srcmd5>
+    <version>0.1</version>
+    <time>1227425907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="213">
+    <srcmd5>7262435680e08023c4b21e4d758a1e34</srcmd5>
+    <version>0.1</version>
+    <time>1233270851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="216">
+    <srcmd5>6a668fdb6a964087781c4b27db6a6a8c</srcmd5>
+    <version>0.1</version>
+    <time>1233963466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="218">
+    <srcmd5>e73e3b823cc85ecd17b017b7f79f91ed</srcmd5>
+    <version>0.1</version>
+    <time>1235078626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="220">
+    <srcmd5>384a2e149120ca304c7d24b21f411975</srcmd5>
+    <version>0.1</version>
+    <time>1244234899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="221">
+    <srcmd5>b8cbe85cfd626ba342c8eac1f2b539c2</srcmd5>
+    <version>0.1</version>
+    <time>1246633658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="222">
+    <srcmd5>9d8dded3dafce378566434abc47dde19</srcmd5>
+    <version>0.1</version>
+    <time>1252579272</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 20232 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="34" vrev="224">
+    <srcmd5>9d8dded3dafce378566434abc47dde19</srcmd5>
+    <version>0.1</version>
+    <time>1252579272</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 20232 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>20b7bcf310bc5d73eaf62dc08d0c8dfd</srcmd5>
+    <version>11.2</version>
+    <time>1256077647</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 22596 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>eb1d5e924b65bff2a4805dcfd3003bd4</srcmd5>
+    <version>11.2</version>
+    <time>1256208250</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 22751 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>6f8ae2b85c69e1c4e4ae6365de801e17</srcmd5>
+    <version>11.2</version>
+    <time>1256918129</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 23443 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>9de231ca5aaee945c7b2d04985a5439c</srcmd5>
+    <version>11.2</version>
+    <time>1268923797</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6c6e2a6d83d5f9cbc01ab83792b15d40</srcmd5>
+    <version>11.3</version>
+    <time>1270084054</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 36327 from user vuntz
+</comment>
+    <requestid>36327</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>74c00a34540a59fac22530da6b98926a</srcmd5>
+    <version>11.3</version>
+    <time>1275495040</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 40958 from user sbrabec
+</comment>
+    <requestid>40958</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>29496dd497bb7b7410d0da4d21f823b5</srcmd5>
+    <version>11.3</version>
+    <time>1276833743</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 41617 from user sbrabec
+</comment>
+    <requestid>41617</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>29496dd497bb7b7410d0da4d21f823b5</srcmd5>
+    <version>11.3</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>29496dd497bb7b7410d0da4d21f823b5</srcmd5>
+    <version>11.3</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>ccf3f5eddef051abc1bc3f9cd28d1fa9</srcmd5>
+    <version>unknown</version>
+    <time>1284369442</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-patch-translation based on submit request 47754 from user vuntz
+</comment>
+    <requestid>47754</requestid>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>566cf67423a7282ceb11fb511a548e65</srcmd5>
+    <version>11.3</version>
+    <time>1290785962</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53883 from user sbrabec
+</comment>
+    <requestid>53883</requestid>
+  </revision>
+  <revision rev="46" vrev="8">
+    <srcmd5>fee2b75c358478607dd65e418e2a01ef</srcmd5>
+    <version>11.3</version>
+    <time>1290785967</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53883
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0d3ef0b26ce96c2836cb9bbc8a5e3803</srcmd5>
+    <version>11.4</version>
+    <time>1297387343</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60317 from user sbrabec
+</comment>
+    <requestid>60317</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2752ecc2c87e348bc94a5a9735c55fb5</srcmd5>
+    <version>11.4</version>
+    <time>1297387446</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60317
+</comment>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>2752ecc2c87e348bc94a5a9735c55fb5</srcmd5>
+    <version>11.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b703ace82b9b6b449df24e7817494cf5</srcmd5>
+    <version>12.1</version>
+    <time>1308821963</time>
+    <user>saschpe</user>
+    <comment>- Updated da, de, es, fi, fr, gl, hr, hu, it, ja, km, lt, nb, nl,
+  pl, pt_BR, ro, ru, wa.
+- Updated for the latest Factory.</comment>
+    <requestid>74318</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>fc06610213dd60e0efc799d75abdb28a</srcmd5>
+    <version>12.1</version>
+    <time>1318761957</time>
+    <user>lrupp</user>
+    <comment>- Added several packages with strings in patches (9 new strings).
+- Updated el, hu, it, km, pl, pt_BR, zh_TW. (forwarded request 87899 from sbrabec)</comment>
+    <requestid>87963</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>fc06610213dd60e0efc799d75abdb28a</srcmd5>
+    <version>12.1</version>
+    <time>1319181922</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>568b83a5144b58325022ddff08223422</srcmd5>
+    <version>12.1</version>
+    <time>1319453135</time>
+    <user>coolo</user>
+    <comment>- Updated da, el, fr, hu, it, ja, nb, nl, pl, ru.
+- Fix of update-solve-upload-conflict supplementary script. (forwarded request 88859 from sbrabec)</comment>
+    <requestid>89018</requestid>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>28c7e0d4f0b42a87b0f8dc99b9925282</srcmd5>
+    <version>12.1</version>
+    <time>1323191663</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>28c7e0d4f0b42a87b0f8dc99b9925282</srcmd5>
+    <version>12.1</version>
+    <time>1340183384</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>b175aa91f954e5e4ecb264a0bf6d450e</srcmd5>
+    <version>12.2</version>
+    <time>1344417044</time>
+    <user>coolo</user>
+    <comment>- Updated ar, cs, de, el, es, fi, fr, gl, hu, km, lt, nb, pl, pt,
+  pt_BR, ro, zh_CN, zh_TW.
+- Migrate to svn.opensuse.org. (forwarded request 130328 from dimstar)</comment>
+    <requestid>130368</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bb4af7d373b1e8e73e6e3f7763aecd97</srcmd5>
+    <version>12.3</version>
+    <time>1357813381</time>
+    <user>coolo</user>
+    <comment>- Updated ar, fr, hu, lt, pl, ro, wa.
+- Updated for the latest Factory (0 new strings, 3 obsolete). (forwarded request 147580 from dimstar)</comment>
+    <requestid>147770</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>45befbf58070c8395fe27ee4322854cb</srcmd5>
+    <version>12.3</version>
+    <time>1358680551</time>
+    <user>coolo</user>
+    <comment>- Updated pl, ro.
+- Allow to set translation domain. (forwarded request 149153 from sbrabec)</comment>
+    <requestid>149165</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>45befbf58070c8395fe27ee4322854cb</srcmd5>
+    <version>12.3</version>
+    <time>1359108963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>af819ac20e4103ea527f9efb3bac9202</srcmd5>
+    <version>12.3</version>
+    <time>1360683535</time>
+    <user>coolo</user>
+    <comment>- Updated pl, ro. (forwarded request 155153 from dimstar)</comment>
+    <requestid>155212</requestid>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>da881edb88fd3c386e9802dd144fcb7c</srcmd5>
+    <version>12.3</version>
+    <time>1364239479</time>
+    <user>coolo</user>
+    <comment>- Added gstreamer (no new strings). (forwarded request 160517 from sbrabec)</comment>
+    <requestid>160838</requestid>
+  </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>da881edb88fd3c386e9802dd144fcb7c</srcmd5>
+    <version>12.3</version>
+    <time>1379662498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="9">
+    <srcmd5>50bdf1a5437b9cd0514fdc8e93ff2d39</srcmd5>
+    <version>12.3</version>
+    <time>1382259084</time>
+    <user>scarabeus_factory</user>
+    <comment>- Updated pl, ro, zh_CN.
+
+Intended for both Factory and 13.1. (forwarded request 203836 from sbrabec)</comment>
+    <requestid>203997</requestid>
+  </revision>
+  <revision rev="64" vrev="11">
+    <srcmd5>50bdf1a5437b9cd0514fdc8e93ff2d39</srcmd5>
+    <version>12.3</version>
+    <time>1409301034</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>57dc56c775703df3b9643e07cbee840c</srcmd5>
+    <version>13.2</version>
+    <time>1410326885</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247989</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>1942ae7051d1d2552299157115e45b9a</srcmd5>
+    <version>13.2</version>
+    <time>1520502263</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581096 from dimstar)</comment>
+    <requestid>582740</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d7dfff9e6116905262bb1062203ac209</srcmd5>
+    <version>15.0</version>
+    <time>1520853023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584551</requestid>
+  </revision>
+</revisionlist>

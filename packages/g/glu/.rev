@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7341cb7e69190bfc36d5da0b1681b7c2</srcmd5>
+    <version>9.0.0</version>
+    <time>1347960457</time>
+    <user>coolo</user>
+    <comment>created package</comment>
+    <requestid>134807</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>98db1ae093121c7c6f25b2c7b0dc8f93</srcmd5>
+    <version>9.0.0</version>
+    <time>1348574245</time>
+    <user>coolo</user>
+    <comment>- fixed and simplified BuildRequires</comment>
+    <requestid>135766</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0881302c5b6c82778237409b2b99eea</srcmd5>
+    <version>9.0.0</version>
+    <time>1351266391</time>
+    <user>coolo</user>
+    <comment>- Add Obsoletes/Provides for Mesa-libGLU1
+- Avoid running configure twice (forwarded request 138907 from jengelh)</comment>
+    <requestid>139278</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e0881302c5b6c82778237409b2b99eea</srcmd5>
+    <version>9.0.0</version>
+    <time>1359108945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>6914ffb4b3979bac77a6731b664e0e3b</srcmd5>
+    <version>9.0.0</version>
+    <time>1363947477</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160076</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>6914ffb4b3979bac77a6731b664e0e3b</srcmd5>
+    <version>9.0.0</version>
+    <time>1379662466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>6914ffb4b3979bac77a6731b664e0e3b</srcmd5>
+    <version>9.0.0</version>
+    <time>1409301004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>f08762e4d848d11be520b79d37861197</srcmd5>
+    <version>9.0.0</version>
+    <time>1414744754</time>
+    <user>coolo</user>
+    <comment>- fixed buildrequires: pkgconfig(dri) -&gt; pkgconfig(gl) 
+- added baselibs.conf as source to specfile</comment>
+    <requestid>258490</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>3aba36f9a58a568da71a0f5426bf11cd</srcmd5>
+    <version>9.0.0</version>
+    <time>1469628408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>412121</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>1b1e0797a01c81946d1839c4c6fc401c</srcmd5>
+    <version>9.0.0</version>
+    <time>1496533525</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #315643-315645, 319159-319161, 319618 (bsc#1041327)</comment>
+    <requestid>499138</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>573e836fad43d34d5218cd707916fe71</srcmd5>
+    <version>9.0.1</version>
+    <time>1564302068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.1
+  * libutils/mipmap.c: Fixed possible memory leak
+  * pkgconfig: Include -I path for glu itself
+  * Remove all uses of the register keyword.
+  * Add -D(N)DEBUG to CFLAGS dependent on --enable-debug
+  * libutil: Include stddef.h for NULL
+  * glu: initialize PriorityQ::order field to NULL in pqNewPriorityQ()
+- supersedes U_Add-D-N-DEBUG-to-CFLAGS-dependent-on-enable-debug.patch</comment>
+    <requestid>718250</requestid>
+  </revision>
+</revisionlist>

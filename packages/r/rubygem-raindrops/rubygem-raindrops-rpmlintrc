@@ -1,0 +1,3 @@
+addFilter("devel-file-in-non-devel-package")
+addFilter("summary-not-capitalized")
+addFilter("hidden-file-or-dir")

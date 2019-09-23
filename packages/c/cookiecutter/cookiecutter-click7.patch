@@ -1,0 +1,41 @@
+From 877f4f1da68aa292ec44acab0ec4d76359a1f375 Mon Sep 17 00:00:00 2001
+From: Jai Ram Rideout <jai.rideout@gmail.com>
+Date: Fri, 28 Sep 2018 12:51:53 -0700
+Subject: [PATCH] Update unit tests for Click 7.0
+
+Fixed two unit tests that fail with Click 7.0 (see #1109 for details).
+
+Fixes #1109.
+
+The tests now pass with Click 7.0, but will fail with older versions of Click due to small differences in usage error messages. Do the tests need to pass with all supported versions of Click (>=5.0) or is it sufficient to have them pass with the latest supported version of Click?
+---
+ tests/test_cli.py                     | 2 +-
+ tests/test_cookiecutter_invocation.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: cookiecutter-1.6.0/tests/test_cli.py
+===================================================================
+--- cookiecutter-1.6.0.orig/tests/test_cli.py
++++ cookiecutter-1.6.0/tests/test_cli.py
+@@ -387,7 +387,7 @@ def test_cli_extra_context_invalid_forma
+         'ExtraContextWithNoEqualsSoInvalid',
+     )
+     assert result.exit_code == 2
+-    assert 'Error: Invalid value for "extra_context"' in result.output
++    assert 'Error: Invalid value for "[EXTRA_CONTEXT]..."' in result.output
+     assert 'should contain items of the form key=value' in result.output
+ 
+ 
+Index: cookiecutter-1.6.0/tests/test_cookiecutter_invocation.py
+===================================================================
+--- cookiecutter-1.6.0.orig/tests/test_cookiecutter_invocation.py
++++ cookiecutter-1.6.0/tests/test_cookiecutter_invocation.py
+@@ -21,7 +21,7 @@ def test_should_raise_error_without_temp
+         subprocess.check_call(['python3', '-m', 'cookiecutter.cli'])
+ 
+     _, err = capfd.readouterr()
+-    exp_message = 'Error: Missing argument "template".'
++    exp_message = 'Error: Missing argument "TEMPLATE".'
+     assert exp_message in err
+ 
+ 

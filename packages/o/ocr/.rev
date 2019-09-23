@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b76ad187cc4eb96de02d46defe62bb6</srcmd5>
+    <version>1.0.1</version>
+    <time>1550151389</time>
+    <user>dimstar_suse</user>
+    <comment>FATE#324154: [HPC Module] Add ocr to the HPC Module</comment>
+    <requestid>674845</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0fb6fd070b338ef54bd97281c57ac723</srcmd5>
+    <version>1.0.1</version>
+    <time>1551113607</time>
+    <user>coolo</user>
+    <comment>- Add ORC_BIN to environment variable with module file (bsc#1125822).
+
+- Add reproducible.patch to sort input file list
+  to make the build reproducible (boo#1041090)
+
+- Remove suse-hpc as requires (should be buildrequires only)
+  (bsc#676571).</comment>
+    <requestid>678159</requestid>
+  </revision>
+</revisionlist>

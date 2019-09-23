@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Remove pk files older than 20 days
+# Remove tfm files older than 60 days
+# Remove source files older than 60 days
+# Remove crap
+# Call texhash
+#
+
+test -r /etc/sysconfig/texlive && . /etc/sysconfig/texlive
+
+OLDIFS=$IFS; IFS=':;'
+VARTEXFONTS="$(kpsewhich --expand-var '$VARTEXFONTS' 2> /dev/null)"
+IFS=$OLDIFS
+
+if test "$CLEAR_TEXMF_FONTS" = "yes" -a -n "$VARTEXFONTS" -a -x /usr/bin/safe-rm ; then
+    for p in $VARTEXFONTS ; do
+	test -d $p/pk/	    && find $p/pk/	-type f -and -atime +20 -print0
+	test -d $p/tfm/	    && find $p/tfm/	-type f -and -atime +60 -print0
+	test -d $p/source/  && find $p/source/	-type f -and -atime +60 -print0
+    done > >(exec -a xargs xargs -r -L100 -0 -- /usr/bin/safe-rm)
+fi
+if test -n "$VARTEXFONTS" -a -x /usr/bin/safe-rmdir ; then
+    for p in $VARTEXFONTS ; do
+	test -d $p/pk/	    && find $p/pk/	-type f -and -not -name '*.*pk'
+	test -d $p/tfm/	    && find $p/tfm/	-type f -and -not -name '*.tfm'
+	test -d $p/source/  && find $p/source/	-type f -and -not -name '*.mf'
+	test -d $p/	    && find $p/		-type f -and -path '*/[^[:alnum:]]*'
+    done > >(exec -a xargs xargs -r -L100 -0 -- /usr/bin/safe-rm)
+    for p in $VARTEXFONTS ; do
+	test -d $p/ && find $p/ -depth -type d -and -path '*/[^[:alnum:]]*'
+    done > >(exec -a xargs xargs -r -L100 -0 -- /usr/bin/safe-rmdir)
+fi
+
+#
+# Update the ls-R's
+#
+mktexlsr > /dev/null
+
+#
+exit 0

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Dec  6 09:25:19 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Remove false information from description - xxHash does not
+  derive from Argon2 algorithm.
+
+-------------------------------------------------------------------
+Mon Dec  3 21:20:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description
+
+-------------------------------------------------------------------
+Tue Oct 16 20:10:06 UTC 2018 - t.gruner@katodev.de
+
+- update to version 0.6.5
+  -  Improved performance on small keys, thanks to suggestions from Jens Bauer
+  -  New build macro, XXH_INLINE_ALL, extremely effective for small keys of fixed length (see this article for details)
+  -  XXH32() : better performance on OS-X clang by disabling auto-vectorization
+  -  Improved benchmark measurements accuracy on small keys
+  -  Included xxHash specification document
+
+-------------------------------------------------------------------
+Sun Jan 21 18:49:27 UTC 2018 - bugs@vdm-design.de
+
+- Initial package of version 0.6.4

@@ -1,0 +1,5 @@
+<package name="python-poppler-qt5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="python-poppler-qt5"/>
+</package>

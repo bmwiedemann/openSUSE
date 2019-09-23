@@ -1,0 +1,25 @@
+From b338aa240d3893f6ffc27573686c08246531e881 Mon Sep 17 00:00:00 2001
+From: Sergey Ilinykh <rion4ik@gmail.com>
+Date: Thu, 28 Mar 2019 14:47:37 +0300
+Subject: [PATCH 3/3] Generate Qt 5.12.1+ compatible qt_Qt5Keychain.pri
+
+As mentioned in https://github.com/frankosterfeld/qtkeychain/issues/141
+---
+ cmake/Modules/ECMGeneratePriFile.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/Modules/ECMGeneratePriFile.cmake b/cmake/Modules/ECMGeneratePriFile.cmake
+index a64fa62..8e00c10 100644
+--- a/cmake/Modules/ECMGeneratePriFile.cmake
++++ b/cmake/Modules/ECMGeneratePriFile.cmake
+@@ -187,6 +187,7 @@ QT.${PRI_TARGET_BASENAME}.MAJOR_VERSION = ${PROJECT_VERSION_MAJOR}
+ QT.${PRI_TARGET_BASENAME}.MINOR_VERSION = ${PROJECT_VERSION_MINOR}
+ QT.${PRI_TARGET_BASENAME}.PATCH_VERSION = ${PROJECT_VERSION_PATCH}
+ QT.${PRI_TARGET_BASENAME}.name = ${PRI_TARGET_LIBNAME}
++QT.${PRI_TARGET_BASENAME}.module = ${PRI_TARGET_LIBNAME}
+ QT.${PRI_TARGET_BASENAME}.defines = ${PRI_TARGET_DEFINES}
+ QT.${PRI_TARGET_BASENAME}.includes = ${PRI_TARGET_INCLUDES}
+ QT.${PRI_TARGET_BASENAME}.private_includes =
+-- 
+2.21.0
+

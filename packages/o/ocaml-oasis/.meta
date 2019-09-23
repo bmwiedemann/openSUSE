@@ -1,0 +1,10 @@
+<package name="ocaml-oasis" project="openSUSE:Factory">
+  <title>Architecture for building OCaml libraries and applications</title>
+  <description>OASIS generates a full configure, build and install system for your
+application. It starts with a simple `_oasis` file at the toplevel of
+your project and creates everything required.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-oasis"/>
+  <url>http://oasis.forge.ocamlcore.org/</url>
+</package>

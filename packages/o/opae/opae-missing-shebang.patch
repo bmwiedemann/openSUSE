@@ -1,0 +1,241 @@
+commit 49a92efc7886143286157cd0f68f2f634dc1a721
+Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Date:   Wed Sep 6 10:06:23 2017 +0200
+
+    opae missing shebang
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+
+diff --git ase/scripts/generate_ase_environment.py ase/scripts/generate_ase_environment.py
+index d57c5bb9ca94..b7b9dabf04c3 100755
+--- ase/scripts/generate_ase_environment.py
++++ ase/scripts/generate_ase_environment.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2013-2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git ase/scripts/ipc_clean.py ase/scripts/ipc_clean.py
+index 2ca3f985afb5..85f653a992a8 100755
+--- ase/scripts/ipc_clean.py
++++ ase/scripts/ipc_clean.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2013-2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git cmake/modules/packaging.cmake cmake/modules/packaging.cmake
+index bd8dacbdaac9..5316221eabcb 100644
+--- cmake/modules/packaging.cmake
++++ cmake/modules/packaging.cmake
+@@ -83,7 +83,7 @@ macro(CREATE_PYTHONE_EXE EXE_NAME)
+     set(PACKAGER_BIN ${PROJECT_BINARY_DIR}/bin/${EXE_NAME})
+     set(ZIP_STR 
+         "zip -qr ${CMAKE_CURRENT_BINARY_DIR}/${EXE_NAME}.zip ${PYTHON_SRC}")   
+-    set(ECHO_STR "echo '#!/usr/bin/env python ' | 
++    set(ECHO_STR "echo '#!/usr/bin/python3 ' | 
+         cat - ${CMAKE_CURRENT_BINARY_DIR}/${EXE_NAME}.zip > ${PACKAGER_BIN}")
+        
+     execute_process(COMMAND sh -c ${ZIP_STR} 
+diff --git platforms/scripts/afu_platform_config platforms/scripts/afu_platform_config
+index 4f037f271ef9..034e012cd900 100755
+--- platforms/scripts/afu_platform_config
++++ platforms/scripts/afu_platform_config
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ #
+ # Copyright (c) 2017, Intel Corporation
+diff --git platforms/scripts/rtl_src_config platforms/scripts/rtl_src_config
+index 86257e0ec8d0..e8015bb645a0 100755
+--- platforms/scripts/rtl_src_config
++++ platforms/scripts/rtl_src_config
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ #
+ # Consume a file with a list of source files, include paths and preprocessor
+diff --git tools/fpgabist/bist_common.py tools/fpgabist/bist_common.py
+index a6edcb3cd48a..c6e2e90b7c12 100644
+--- tools/fpgabist/bist_common.py
++++ tools/fpgabist/bist_common.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgabist/bist_dma.py tools/fpgabist/bist_dma.py
+index 34f5e1c8062d..24d093323c10 100644
+--- tools/fpgabist/bist_dma.py
++++ tools/fpgabist/bist_dma.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgabist/bist_nlb3.py tools/fpgabist/bist_nlb3.py
+index 255c680394f3..735b29568127 100644
+--- tools/fpgabist/bist_nlb3.py
++++ tools/fpgabist/bist_nlb3.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgabist/fpgabist tools/fpgabist/fpgabist
+index 4f4e8187ccdb..0dc94b6d6511 100755
+--- tools/fpgabist/fpgabist
++++ tools/fpgabist/fpgabist
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgadiag/fpgadiag tools/fpgadiag/fpgadiag
+index 93f5b536ba84..c8a1c17abd21 100755
+--- tools/fpgadiag/fpgadiag
++++ tools/fpgadiag/fpgadiag
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgadiag/mux.py tools/fpgadiag/mux.py
+index 7a97cc4f9f60..e23c3445533c 100644
+--- tools/fpgadiag/mux.py
++++ tools/fpgadiag/mux.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgaflash/fpgaflash tools/fpgaflash/fpgaflash
+index 8db96aac2e8d..1340afe3a62d 100755
+--- tools/fpgaflash/fpgaflash
++++ tools/fpgaflash/fpgaflash
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpga_common.py tools/fpgainfo/fpga_common.py
+index dc87ab992ad0..b0d4bceee247 100644
+--- tools/fpgainfo/fpga_common.py
++++ tools/fpgainfo/fpga_common.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpga_fmeinfo.py tools/fpgainfo/fpga_fmeinfo.py
+index ef4b4f2919cc..dce5bd302341 100644
+--- tools/fpgainfo/fpga_fmeinfo.py
++++ tools/fpgainfo/fpga_fmeinfo.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpga_portinfo.py tools/fpgainfo/fpga_portinfo.py
+index 2e507fe6f28f..2d63b245edcd 100644
+--- tools/fpgainfo/fpga_portinfo.py
++++ tools/fpgainfo/fpga_portinfo.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpgaerr.py tools/fpgainfo/fpgaerr.py
+index a580f8059421..f1ff29e97186 100644
+--- tools/fpgainfo/fpgaerr.py
++++ tools/fpgainfo/fpgaerr.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpgainfo tools/fpgainfo/fpgainfo
+index f8a95aad7799..f207d693bdef 100755
+--- tools/fpgainfo/fpgainfo
++++ tools/fpgainfo/fpgainfo
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpgapwr.py tools/fpgainfo/fpgapwr.py
+index d95a02009601..76c46ca000fe 100644
+--- tools/fpgainfo/fpgapwr.py
++++ tools/fpgainfo/fpgapwr.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/fpgatemp.py tools/fpgainfo/fpgatemp.py
+index 313d4ffc27e4..8e9dda8e90af 100644
+--- tools/fpgainfo/fpgatemp.py
++++ tools/fpgainfo/fpgatemp.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgainfo/sysfs.py tools/fpgainfo/sysfs.py
+index 1d1a4746d15f..2b148e10d74c 100644
+--- tools/fpgainfo/sysfs.py
++++ tools/fpgainfo/sysfs.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ ##
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/fpgaport/fpgaport tools/fpgaport/fpgaport
+index af0beafdcb57..bbb47654c873 100644
+--- tools/fpgaport/fpgaport
++++ tools/fpgaport/fpgaport
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/packager/Makefile tools/packager/Makefile
+index fd3c2815bd00..cbc85bc91df4 100644
+--- tools/packager/Makefile
++++ tools/packager/Makefile
+@@ -31,7 +31,7 @@ packager_zip: $(PACKAGER_TARGET_ZIP)
+ $(PACKAGER_TARGET_ZIP): $(PACKAGER_WORK_ZIP)
+ 	mkdir -p $(PACKAGER_DEST_DIR)
+ 	rm -f $(PACKAGER_TARGET_ZIP)
+-	echo '#!/usr/bin/env python' | cat - $(PACKAGER_WORK_ZIP) > $(PACKAGER_TARGET_ZIP)
++	echo '#!/usr/bin/python3' | cat - $(PACKAGER_WORK_ZIP) > $(PACKAGER_TARGET_ZIP)
+ 	chmod +x $(PACKAGER_TARGET_ZIP)
+ 
+ $(PACKAGER_WORK_ZIP): $(PACKAGER_FILES_WORK_DIR)
+diff --git tools/packager/packager.py tools/packager/packager.py
+index acae8c7ba42b..e74f3d39d1e9 100755
+--- tools/packager/packager.py
++++ tools/packager/packager.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without

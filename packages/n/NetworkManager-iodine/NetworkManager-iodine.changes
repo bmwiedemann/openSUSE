@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Sat Apr 14 20:42:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Following changes in NetworkManager: pass without-libnm-glib to
+  configure, no longer build deprecated libnm-glib support.
+- Following the above changes: Drop no longer needed
+  pkgconfig(NetworkManager), pkgconfig(libnm-glib),
+  pkgconfig(libnm-glib-vpn), pkgconfig(libnm-gtk) and
+  pkgconfig(libnm-util) BuildRequires.
+- Drop unnneeded NetworkManager-gnome Requires from gnome
+  sub-package, it is not longer of use for us.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:40 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Aug 29 10:28:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.2.0:
+  + Add appdata file.
+  + build: don't include the full path to a plugin by default.
+- Changes from version 1.1.0:
+  + Port to libnm.
+  + Updated translations.
+- Add pkgconfig(libnm), pkgconfig(libnma), pkgconfig(libnm-util),
+  pkgconfig(libnm-glib) and pkgconfig(libnm-glib-vpn)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Sun Oct 12 17:23:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.0.5:
+  + Use libsecret.
+  + Use libnm-gtk.
+  + Updated translations.
+- Add pkgconfig(libnm-gtk) BuildRequires: new dependency.
+- Replace pkgconfig(gnome-keyring-1) BuildRequires with
+  pkgconfig(libsecret-1), following upstream.
+
+-------------------------------------------------------------------
+Tue Feb 19 21:53:32 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.0.4:
+  + Check password write result to avoid warning.
+  + Remove unused define.
+  + Log connection information at message level.
+  + Removed markup from UI file.
+  + Add external ui support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  6 18:55:51 UTC 2012 - malcolmlewis@opensuse.org
+
+- Initial build.
+

@@ -1,0 +1,38 @@
+diff -ur luvcview-20070512.orig/luvcview.c luvcview-20070512/luvcview.c
+--- luvcview-20070512.orig/luvcview.c	2011-07-07 12:27:31.814089063 +0200
++++ luvcview-20070512/luvcview.c	2011-07-07 12:37:58.042088992 +0200
+@@ -33,7 +33,8 @@
+ #include <SDL/SDL_thread.h>
+ #include <SDL/SDL_audio.h>
+ #include <SDL/SDL_timer.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
++#include <linux/videodev2.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <errno.h>
+diff -ur luvcview-20070512.orig/uvcvideo.h luvcview-20070512/uvcvideo.h
+--- luvcview-20070512.orig/uvcvideo.h	2011-07-07 12:27:31.814089063 +0200
++++ luvcview-20070512/uvcvideo.h	2011-07-07 12:27:59.861089061 +0200
+@@ -2,7 +2,7 @@
+ #define _USB_VIDEO_H_
+ 
+ #include <linux/kernel.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ 
+ /* Compatibility */
+ #include "uvc_compat.h"
+diff -ur luvcview-20070512.orig/v4l2uvc.h luvcview-20070512/v4l2uvc.h
+--- luvcview-20070512.orig/v4l2uvc.h	2011-07-07 12:27:31.814089063 +0200
++++ luvcview-20070512/v4l2uvc.h	2011-07-07 12:31:34.604089036 +0200
+@@ -29,7 +29,8 @@
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <sys/select.h>
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
++#include <linux/videodev2.h>
+ #include "avilib.h"
+ 
+ #include "uvcvideo.h"

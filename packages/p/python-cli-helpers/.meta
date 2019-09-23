@@ -1,0 +1,6 @@
+<package name="python-cli-helpers" project="openSUSE:Factory">
+  <title></title>
+  <description>CLI Helpers is a Python package that makes it easy to perform common tasks when
+building command-line apps. It's a helper library for command-line interfaces.</description>
+  <devel project="devel:languages:python" package="python-cli-helpers"/>
+</package>

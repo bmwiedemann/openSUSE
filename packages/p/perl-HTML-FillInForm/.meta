@@ -1,0 +1,7 @@
+<package name="perl-HTML-FillInForm" project="openSUSE:Factory">
+  <title>Perl module HTML::FillInForm</title>
+  <description>This module automatically inserts data from a previous HTML form into
+the HTML input and select tags. It is a subclass of HTML::Parser and
+uses it to parse the HTML and insert the values into the form tags.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-FillInForm"/>
+</package>

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Dec  1 06:55:32 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Jul 15 11:30:28 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps, provides
+    disabled other pkg perl-Class-Accessor-Chained-Fast
+- some rpmlint fixes
+  o no-dependency-on perl-base
+

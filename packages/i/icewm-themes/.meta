@@ -1,0 +1,7 @@
+<package name="icewm-themes" project="openSUSE:Factory">
+  <title>Themes for the IceWM Window Manager</title>
+  <description>This package contains a collection of themes for the popular IceWM
+window manager. Most of them have been taken from the original 0.9.42
+themes package. Others have been taken from http://icewm.themes.org.</description>
+  <devel project="X11:windowmanagers" package="icewm-themes"/>
+</package>

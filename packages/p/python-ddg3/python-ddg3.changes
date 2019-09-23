@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Nov  8 15:13:00 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require python-requests instead of BuildRequiring it
+
+-------------------------------------------------------------------
+Sun Nov  4 17:42:19 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-ddg3 . Upstream doesn't provide a release
+  neither in github nor pypi, so this takes the sources from github
+  and use the internal version, 0.6.6 .

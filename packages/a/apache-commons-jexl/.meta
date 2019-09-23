@@ -1,0 +1,5 @@
+<package name="apache-commons-jexl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="apache-commons-jexl"/>
+</package>

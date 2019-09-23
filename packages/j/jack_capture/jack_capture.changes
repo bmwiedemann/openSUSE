@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Aug 29 04:16:06 UTC 2018 - sflees@suse.de
+
+- Fix rpm group
+- Run spec_cleaner
+
+-------------------------------------------------------------------
+Sun Sep 21 08:57:52 UTC 2014 - edogawa@aon.at
+
+- revived old jacklab rpm, updated to version 0.9.71
+
+-------------------------------------------------------------------
+Sun Aug 13 2006 - r.neike@gmx.de
+
+- initial rpm (0.3.7-0.jacklab.1)
+

@@ -1,0 +1,74 @@
+---
+ bash_completion |   47 ++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 46 insertions(+), 1 deletion(-)
+
+--- bash_completion
++++ bash_completion	2017-07-04 07:44:47.556933294 +0000
+@@ -551,6 +551,7 @@ _filedir()
+     local IFS=$'\n'
+ 
+     _tilde "$cur" || return
++    _dollar "$cur" || return
+ 
+     local -a toks
+     local x tmp
+@@ -979,6 +980,41 @@ _tilde()
+     return $result
+ }
+ 
++# Perform dollar ($) completion
++# @return  True (0) if completion needs further processing,
++#          False (> 0) if dollar is followed by a valid username, completions
++#          are put in COMPREPLY and no further processing is necessary.
++_dollar()
++{
++    local s=""
++    local -i glob=0
++
++    shopt -q extglob && let glob++
++    ((glob == 0)) && shopt -s extglob
++
++    [[ "$COMP_LINE" == cd* ]] && s="/"
++
++    case "$1" in
++    \$\(*|\`*)
++        COMPREPLY=($(compgen -c -P '$(' -S ")$s" -- ${1#??})) ;;
++    \$\{*)
++        COMPREPLY=($(compgen -v -P '${' -S "}$s" -- ${1#??})) ;;
++    \$*)
++        COMPREPLY=($(compgen -v -P '$' ${s:+-S $s} -- ${1#?})) ;;
++    *)
++        ((glob == 0)) && shopt -u extglob
++        return 0
++    esac
++
++    if ((${#COMPREPLY[@]} > 0)) ; then
++        ((${#COMPREPLY[@]} == 1)) && eval COMPREPLY=\(${COMPREPLY[@]}\)
++    else
++        eval COMPREPLY=\(${1}\)
++    fi
++
++    ((glob == 0)) && shopt -u extglob
++    return ${#COMPREPLY[@]}
++}
+ 
+ # Expand variable starting with tilde (~)
+ # We want to expand ~foo/... to /home/foo/... to avoid problems when
+@@ -1666,7 +1702,16 @@ complete -F _known_hosts traceroute trac
+ _cd()
+ {
+     local cur prev words cword
+-    _init_completion || return
++    _init_completion || {
++        if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
++            local i=${COMPREPLY[0]}
++            if [[ "$i" == "$cur" && $i != "*/" ]]; then
++                _dollar "$i" || return
++                COMPREPLY[0]="${i%%/}/"
++            fi
++        fi
++        return
++    }
+ 
+     local IFS=$'\n' i j k
+ 

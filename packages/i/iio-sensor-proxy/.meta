@@ -1,0 +1,5 @@
+<package name="iio-sensor-proxy" project="openSUSE:Factory">
+  <title>iio-sensor-proxy</title>
+  <description>This proxy reads sensor data from the IIO subsystem and serves to the input subsystem</description>
+  <devel project="hardware" package="iio-sensor-proxy"/>
+</package>

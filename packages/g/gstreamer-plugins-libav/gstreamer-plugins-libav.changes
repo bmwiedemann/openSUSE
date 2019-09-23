@@ -1,0 +1,691 @@
+-------------------------------------------------------------------
+Sun Jun 16 21:44:07 UTC 2019 - mgorse@suse.com
+
+- Update to version 1.16.0: 
+  + Highlights
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support, as
+      well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+    - Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.  
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin (msdk):
+      dmabuf import/export for zero-copy integration with other
+      components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element that
+      allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements
+- Drop gst-libav-port-ffmpeg4.patch: fixed upstream.
+- Require libavcodec 58, per configure.ac.
+
+-------------------------------------------------------------------
+Fri May 31 22:25:25 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + libav: Update internal snapshot to ffmpeg n3.4.6.
+  + avdemux: fix negative pts if start_time is bigger than the ts.
+
+-------------------------------------------------------------------
+Wed Oct  3 15:48:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.4:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:29:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Mon Jul 23 17:04:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + Update docs.
+  + libav: Fix symbol redefine build error.
+  + avdemux: fix memory leaks.
+- Rebase gst-libav-port-ffmpeg4.patch with quilt.
+
+-------------------------------------------------------------------
+Sun May 20 09:46:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+
+-------------------------------------------------------------------
+Tue May  8 19:59:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gst-libav-port-ffmpeg4.patch: Port to ffmpeg 4.0. No longer
+  use explicit ffmpeg3 versions (bgo#792900).
+
+-------------------------------------------------------------------
+Fri May  4 14:03:47 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Sun Apr 22 23:35:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Explicitly version pkgconfig(libavcodec), pkgconfig(libavfilter),
+  pkgconfig(libavformat), pkgconfig(libavutil) and
+  pkgconfig(libswscale) BuildRequires to less than the symbol
+  versions provided by ffmpeg4 branch until upstream catches up.
+  Currently provided by new ffmpeg3 compatability package.
+
+-------------------------------------------------------------------
+Mon Apr 16 21:51:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec;
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 29 13:14:13 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + Bugs fixed: bgo#791783, bgo#789379, bgo#788481.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:46 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 26 17:09:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Add conditional libavcodec.so(unrestricted) Requires, pull in the
+  full codecpack when installing package from third party repos who
+  build libavcodec.
+
+-------------------------------------------------------------------
+Thu Dec 14 00:13:34 UTC 2017 - zaitor@opensuse.org
+
+- Drop gst-libav-ffmpeg-3.4-hackfix.patch: Workaround applied
+  upstream in ffmpeg.
+
+-------------------------------------------------------------------
+Mon Dec 11 12:53:29 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + libav: Update to ffmpeg n3.3.5.
+  + Bugs fixed: bgo#787795.
+- Drop gstreamer-plugins-libav-avdemux-reset.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Nov 10 20:35:21 UTC 2017 - zaitor@opensuse.org
+
+- Add gstreamer-plugins-libav-avdemux-reset.patch: avdemux: reset
+  to 0 negative pts for us pts are unsigned so reset to 0 negative
+  pts returned from libav. This is better than outputs completly
+  wrong timestamps (bgo#787795).
+- Split out doc sub-package.
+- Cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov 10 11:47:57 UTC 2017 - zaitor@opensuse.org
+
+- Add gst-libav-ffmpeg-3.4-hackfix.patch: Workaround api change in
+  ffmpeg 3.4 and newer (bgo#789193).
+
+-------------------------------------------------------------------
+Mon Sep 18 21:49:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Bugs fixed: bgo#784735.
+
+-------------------------------------------------------------------
+Sat Jul 15 10:21:46 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.12.2:
+  + avmux: Blacklist scc muxer.
+- Remove the embedded libav sources to ensure we only use the
+  system provided (and legally validated) ffmpeg libs.
+
+-------------------------------------------------------------------
+Wed Jun 21 09:02:18 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + Bugs fixed: bgo#694416, bgo#782700.
+- Drop gst-libav-disable-cuvid-codecs.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun  7 08:46:34 UTC 2017 - davejplater@gmail.com
+
+- Add patch gst-libav-disable-cuvid-codecs.patch fixes boo#1039163.
+
+-------------------------------------------------------------------
+Tue May  9 12:04:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + No changes, stable bump only.
+- Changes from version 1.11.91:
+  + libav: Update to ffmpeg n3.3.
+  + avaudenc/dec: Blacklist more PCM decoders/encoders.
+- Changes from version 1.11.90:
+  + Bugs fixed: bgo#767938, bgo#780317.
+- Stop passing --disable-fatal-warnings to configure, not needed on
+  stable releases.
+
+-------------------------------------------------------------------
+Fri Feb 24 23:59:01 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + libav: Update to ffmpeg n3.2.4.
+  + Meson build fixes.
+
+-------------------------------------------------------------------
+Thu Feb 23 23:30:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + Bugs fixed: bgo#750882, bgo#773672, bgo#776700.
+- Temporarily pass --disable-fatal-warnings to configure, needed
+  since we are on the unstable branch.
+
+-------------------------------------------------------------------
+Thu Feb 23 19:50:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4:
+  + Update internal ffmpeg to 3.2.4.
+
+-------------------------------------------------------------------
+Thu Feb  9 18:41:44 UTC 2017 - zaitor@opensuse.org
+
+- Require building against at least ffmpeg 3.0 (bgo#778283).
+
+-------------------------------------------------------------------
+Mon Jan 30 17:42:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + Bugs fixed: bgo#775516.
+
+-------------------------------------------------------------------
+Fri Dec  9 21:12:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + libav: Update to ffmpeg n3.2.1.
+  + meson: update version.
+- Changes from version 1.10.1:
+  + Bugs fixed: bgo#774215, bgo#774278, bgo#774398.
+- Changes from version 1.10.0:
+  + Various bug fixes.
+
+-------------------------------------------------------------------
+Thu Sep 22 17:17:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3:
+  + libgstlibav fails on Linux (bgo#769809).
+- Tweak summary to avoid a pointless rpmlint warning.
+
+-------------------------------------------------------------------
+Fri Jul 29 08:37:33 UTC 2016 - jengelh@inai.de
+
+- Improve summary/description
+
+-------------------------------------------------------------------
+Wed Jun 15 14:18:30 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.2:
+  + bgo#760266: avenc_mpeg4/mpeg2video: Segmentation fault when
+    stopping the pipeline.
+  + bgo#765797: avauddec: a/v sync issues with broken streams.
+  + bgo#766362: avvidec: Report the latency once we're fully
+    configured.
+
+-------------------------------------------------------------------
+Tue May  3 08:40:42 UTC 2016 - zaitor@opensuse.org
+
+- Disable gstreamer-plugins-libav-automake_version.patch: We have
+  no need for it currently. At the same time replace automake and
+  autoconf for libtool BuildRequires.
+- Drop libva-devel and libvdpau-devel BuildRequires: vaapi and
+  vdpau support in gstreamer universe is provided by
+  gstreamer-plugins-vaapi (in conjecture with libva-vdpau-driver if
+  using nvidia binary driver), and pulling these into buildroot
+  serves no purpose.
+- Add a gstreamer Supplements: Help pull in this package as long as
+  gstreamer is installed.
+
+-------------------------------------------------------------------
+Thu Apr 21 08:19:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + bgo#765319: avdeinterlace: only green screen since 1.7.2.
+
+-------------------------------------------------------------------
+Wed Apr 20 18:31:24 UTC 2016 - develop7@develop7.info
+
+- Depend on appropriate gstreamer to prevent installing
+  gstreamer-plugins-libav-1.8.x in systems with gstreamer < 1.8.x.
+
+-------------------------------------------------------------------
+Fri Apr 15 13:09:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + 'configure' using system libav always fails with "Uncompatible
+    libavcodec found" (bgo#763940).
+  + Bugs fixed: bgo#757498.
+- Drop avdeinterlace-Chain-up-to-parent-class-dispose.patch,
+  avdeinterlace-Port-non-deprecated-AVFilter-API.patch,
+  libav-Bitrate-field-changed-from-int-to-int64t-fix.patch and
+  libav-Remove-usage-of-deprecated-API.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 29 12:12:17 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Added avdeinterlace-Chain-up-to-parent-class-dispose.patch,
+  avdeinterlace-Port-non-deprecated-AVFilter-API.patch,
+  libav-Bitrate-field-changed-from-int-to-int64t-fix.patch and
+  libav-Remove-usage-of-deprecated-API.patch to build against
+  ffmpeg-3.0 libraries (found on GNOME Bugzilla, see bgo#757498).
+- Added gstreamer-plugins-libav-automake_version.patch to enable
+  build with automake 1.13.
+
+-------------------------------------------------------------------
+Fri Feb 19 12:31:41 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Build shared against ffmpeg-2.8 libraries.
+
+-------------------------------------------------------------------
+Fri Jan 22 15:01:27 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 1.6.3:
+  + avviddec: remove realvideo slice_offset handling.
+  + avcodecmap: Add special mapping for mono channel layouts.
+  + libav: Update to ffmpeg n2.8.5.
+- Changes from version 1.6.2: 
+  + libav: Update to n2.8.3.
+  + avviddec: Make sure to use a buffer pool with the correct
+    width/height configured on it for pushing buffers downstream.
+  + avviddec: Fix structure memory leak.
+  + avviddec: Don't fallback on allocation failure.
+  + avvidenc: Fix frame memory leak.
+  + avdemux: Fix string memory leaks.
+
+-------------------------------------------------------------------
+Tue Nov 24 15:45:24 UTC 2015 - malcolmlewis@opensuse.org
+
+- Move license back to gpl for better support.
+- Add xz to build requires for lzma support.
+
+-------------------------------------------------------------------
+Thu Nov 19 20:56:14 UTC 2015 - malcolmlewis@opensuse.org
+
+- Update to version 1.6.1:
+  + avviddec: Fix bufferpool config double free by taking a copy as
+    needed.
+  + libav: Update to n2.8.1.
+  + avviddec: only free config when pool doesn't take ownership
+    (CID#1320708).
+  + avcodecmap: Don't allocate dummy codec data anymore, it causes
+    crashes nowadays.
+  + avvidenc: Pass the correct user_data to
+    gst_buffer_new_wrapped_full().
+- Changes from version 1.6.0:
+  + No changes, just a version bump.
+- Changes from version 1.5.91:
+  + avvidec: increase default alignment to 32 bytes (bgo#754120).
+  + avvideodec: ensure required mem alignment fixing avdec_h265
+    crashes with ximagesink/glimagesink (bgo#754120).
+  + libav: Update to ffmpeg n2.8 (bgo#754920).
+  + avvid/audenc: Set some tags in the output for downstream's
+    info.
+  + avviddec: Fix pool reallocation logic (bgo#753869).
+- Changes from version 1.5.90:
+  + aviddec: Re-enable direct rendering (bgo#752802).
+  + avvidenc: use template subset check for accept-caps.
+  + avaudenc: use pad template caps for accept-caps.
+  + avaudenc: remove useless getcaps method.
+  + avvidenc: remove useless getcaps method.
+  + avauddec: let audiodecoder call the default pad query handler.
+  + avviddec: let videodecoder call the default pad query handler.
+  + libav: Update to n2.7.2
+  + avviddec: use template caps intersection for accept-caps
+    (bgo#753623).
+  + avauddec: use template caps intersection for accept-caps
+    (bgo#753623).
+  + Map ffmpeg metadata to GStreamer tags (bgo#566605).
+  + avviddec: Remove unused force parameter.
+  + avviddec: Use caps-like size in get_buffer2().
+  + avviddec: Reset current_dr on close and when not chosing it
+    (bgo#753189).
+  + avviddec: Disable direct rendering (bgo#752802).
+  + avviddec: Get code out of loop.
+  + avviddec: Only create the AVBuffer once the stride is
+    validated.
+  + avviddec: Re-enable direct rendering.
+  + avauddec: Read channels from the channels field (bgo#752186).
+  + avviddec: Ignore negotiation error on shutdown (bgo#752800).
+  + avauddec: Access field using accessors.
+  + Add support for musepack (mpc) sv8 audio (bgo#732682).
+  + avviddec: fix slice_offset memory leak (bgo#752404).
+  + Update mailing list in doap file.
+  + Make the LGPL build the default and require --enable-gpl to
+    build a GPL licensed version.
+  + avmux: Blacklist some subtitle and adaptive streaming muxers'
+  + Switch from libav v11.4 to ffmpeg n2.7.1 (bgo#751607).
+  + avaudenc: Remember how many samples the codec consumed for
+    telling the base class.
+  + avauddec: Ensure input buffers have
+    FF_INPUT_BUFFER_PADDING_SIZE padding, which is required by
+    avcodec_decode_audio4 ().
+  + avmux: Ignore stream_segment,ssegment muxer that is provided by
+    ffmpeg.
+  + avvidenc: Fix compiler warning.
+  + avvidenc: Set AVFrame flags for interlacing per frame and not
+    in set_format().
+  + av{aud,vid}enc: Create wrapped output buffers with
+    GST_MEMORY_FLAG_READONLY.
+  + avvidenc: Properly wrap and free the output AVPackets generated
+    during draining.
+  + avvidenc: Make sure to keep input data alive until libav is
+    done with it.
+  + avaudenc: Make sure to keep input data alive until libav is
+    done with it.
+  + av{aud,vid}enc: Stop using deprecated AVFrame APIs.
+  + avauddec: Remove custom buffer allocation function.
+  + avauddec: Use undeprecated AVFrame API.
+  + avviddec: Free frame before the codec is freed.
+  + avviddec: Use undeprecated AVFrame API and unref frame once
+    we're done with it.
+  + avauddec: Negotiate based on the AVFrame instead of just the
+    AVCodecContext.
+  + avviddec: Use the new get_buffer2() API instead of the
+    deprecated APIs.
+  + avviddec: Also proxy the data/size pointers for our wrapper
+    AVBufferRef.
+  + codecmap: add vp9 mapping.
+  + avviddec: Wrap the original AVBufferRef in our own buffer for
+    the destroy function.
+  + avviddec: libav will already copy the reordered_opaque pointer
+    for us.
+  + avviddec: Negotiate based on the AVFrame information, not the
+    context information (bgo#750865).
+- Changes from version 1.5.2:
+  + avcodec: Check against codec format list (bgo#750398).
+  + viddec: Replicate any 3D/multiview info from input caps onto
+    output.
+  + docs: remove variables that we define in the snippet from
+    common.
+- Changes from version 1.5.1:
+  + avviddec: Release stream lock while calling
+    avcodec_decode_video2() (bgo#726020).
+  + avviddec: Post error message before returning a flow error.
+  + check: Use GST_CHECK_MAIN () macro everywhere.
+  + Makefile.am: Make top-level 'check-torture' and
+    'check-valgrind' targets functional
+  + avcodecmap: Use video/x-cavs mime type instead of
+    video/x-gst-av-cavs (bgo#727731).
+  + configure: don't disable Chinese AVS (cavs) decoder
+    (bgo#727731).
+  + avauddev: Unref decoded AVFrame after we're done with it.
+  + libav: Update to v11.4.
+  + configure: bump automake requirement to 1.14 and autoconf to
+    2.69 (bgo#747624).
+  + avdemux: resurrect some flow return handling (bgo#744572).
+  + libav: Update to v11.3.
+  + avdemux: fix double semicolon.
+  + libav: Add support for 10 bit planar AYUV formats.
+  + libav: Change from deprecated PIX_FMT_* to AV_PIX_FMT_*.
+  + avviddec: Don't copy padding if handling a frame failed.
+  + avviddec: If a flow return during draining is not OK, don't
+    drain any further.
+  + avviddec: Error out if we try to allocate a buffer without
+    being negotiated.
+  + avdemux: remove duplicate goto block.
+  + avdemux: check AVIO Context has been allocated.
+  + gstavviddec: Add drain() vfunc implementation that does the
+    same as finish() (bgo#734617).
+  + avviddec: Implement SKIP and new SKIP_KEY_UNITS_ONLY flags
+    (bgo#735666).
+  + libav: Update to v11.2.
+  + av: use GMutex instead of deprecated GStaticMutex (bgo#740822).
+- Drop enable-vdpau.patch, see boo#951150.
+- Update license change to LGPL-2.1+.
+
+-------------------------------------------------------------------
+Fri Dec 26 11:22:20 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.5:
+  + videodec: Ensure update_pool is initialized.
+
+-------------------------------------------------------------------
+Fri Nov 14 11:58:14 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + No changes, version bump to keep in sync with gst-suite.
+
+-------------------------------------------------------------------
+Sat Oct  4 08:15:47 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.3:
+  + avauddec: Keep draining buffers from libav until libav says so.
+- Changes from version 1.4.2:
+  + avviddec:
+    - After draining frames, flush the libav decoder.
+    - Keep draining buffers from libav until libav says so.
+  + libav: Update to v10.5.
+
+-------------------------------------------------------------------
+Thu Aug 28 20:28:34 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + avvidec: Decoded frames lost on EOS (bgo#734608).
+  + libav: Update to v10.4.
+
+-------------------------------------------------------------------
+Tue Jul 22 18:02:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.0:
+  + The stable 1.4 release series is API and ABI compatible with
+    1.0.x, 1.2.x and any other 1.x release series in the future.
+    Compared to 1.2.x it contains some new features and more
+    intrusive changes that were considered too risky as a bugfix.
+  + libav: Update to v10.2.
+  + Add the now built html help files to doc.
+
+-------------------------------------------------------------------
+Sun May  4 08:37:58 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.4:
+  + Bugs fixed: avdec_h264, matroskademux: crash while seeking
+    (bgo#727779).
+
+-------------------------------------------------------------------
+Sun Feb  9 20:42:16 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.3:
+  + Bugs fixed: bgo#696495, bgo#722672, bgo#722672.
+- Changes from version 1.2.2:
+  + Bugs fixed: bgo#691617, bgo#693772, bgo#697806, bgo#704161.
+
+-------------------------------------------------------------------
+Mon Dec  2 16:41:32 CST 2013 - hillwood@linuxfans.org
+
+- enable vdpau and vaapi for x86, add enable-vdpau.patch.
+
+-------------------------------------------------------------------
+Tue Nov 19 12:26:57 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.2.1
+
+-------------------------------------------------------------------
+Sat Nov  9 11:23:19 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.2.0
+  * It continues using the internal libav copy. It may contain
+    security bugs.
+
+-------------------------------------------------------------------
+Sat Aug 31 13:10:06 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.10:
+  + Fix bz2 configure check for Windows.
+- Changes from version 1.0.9:
+  + Enable SIMD optimizations on OS/X, improving performance a lot
+    in many cases.
+  + Bugs fixed: bgo#704442.
+- Changes from version 1.0.8:
+  + gst-libav: internal libav snapshot version bumped to v0.8.8.
+- Changes from version 1.0.7:
+  + Update to libav 0.8.6.
+  + Bugs fixed: bgo#697548, bgo#697617.
+- Changes from version 1.0.6:
+  + avviddec: fix H.264 decoding errors in some files by disabling
+    multi-threaded decoding.
+  + libav:
+    - Fix checks for internal libav configure options.
+    - Update to 0.8.5 release.
+  + Bugs fixed: bgo#691723, bgo#694230.
+- Changes from version 1.0.5:
+  + Pass CC, LD, AS, AR and NM to the libav configure if set.
+- Changes from version 1.0.4:
+  + G.726 decoder fixes.
+  + Bugs fixed: bgo#689975.
+- Changes from version 1.0.3:
+  + avcodecmap: Y41B is YUV411P, not YUV410P.
+- Changes from version 1.02:
+  + Update internal libav snapshot to 0.8.4 release which includes
+    many crasher and CVE fixes.
+- Add pkgconfig(bzip2) BuildRequires, in order to support bz2
+  tracks via the matroska demuxer.
+- Explicitly list built plugins, so we don't loose any on updates.
+
+-------------------------------------------------------------------
+Thu Oct 11 10:08:41 UTC 2012 - reddwarf@opensuse.org
+
+- Initial version
+

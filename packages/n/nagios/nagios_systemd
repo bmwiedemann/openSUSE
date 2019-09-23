@@ -1,0 +1,93 @@
+#! /bin/sh
+# Copyright (c) 2014 SUSE Linux GmbH, Germany.
+# Author: Lars Vogdt
+# 
+# /usr/sbin/rcnagios
+#
+# Systemd enhancements script for nagios
+#
+
+. /etc/rc.status
+
+NAGIOS_BIN='/usr/sbin/nagios'
+NAGIOS_CFG='/etc/nagios/nagios.cfg'
+NAGIOS_PIDFILE='/var/run/nagios/nagios.pid'
+NAGIOS_CFG_ERR_LOG='/var/log/nagios/config.err'
+
+# Read config and log errors in logfile
+config_check () {
+    case "$1" in
+        verbose)
+            $NAGIOS_BIN -v "$NAGIOS_CFG" >"$NAGIOS_CFG_ERR_LOG" 2>&1
+            if [ $? -eq 0 ]; then
+                return 0
+            else
+                return 1
+            fi
+        ;;
+        *)   
+            $NAGIOS_BIN -v "$NAGIOS_CFG" >/dev/null 2>&1
+            if [ $? -eq 0 ]; then
+                return 0
+            else
+                $NAGIOS_BIN -v "$NAGIOS_CFG" >"$NAGIOS_CFG_ERR_LOG" 2>&1
+                return 1
+            fi
+        ;;
+    esac
+}
+
+# grab a config option 
+get_var() {
+	if [ -n "$2" ]; then
+		set -- `grep ^$1 $2 | sed 's@=@ @' | tr -d '[:cntrl:]'`
+	else
+		set -- `grep ^$1 "$NAGIOS_CFG" | sed 's@=@ @' | tr -d '[:cntrl:]'`
+	fi
+	shift # remove first ARG => search-string
+	echo $*
+}
+
+# Check for missing binaries (stale symlinks should not happen)
+# Note: Special treatment of stop for LSB conformance
+test -x "$NAGIOS_BIN" || { echo "$NAGIOS_BIN not installed or not executable.";
+    if [ "$1" = "stop" ]; then exit 0;
+    else exit 5; fi; }
+
+# Check for existence of needed config file
+test -r "$NAGIOS_CFG" || { echo "$NAGIOS_CFG not existing or readable.";
+    if [ "$1" = "stop" ]; then exit 0;
+    else exit 6; fi; }
+
+# Reset status of this service
+rc_reset
+
+case "$1" in
+    check)
+        echo -n "Starting configuration check "
+        config_check
+        if [ $? -eq 0 ]; then
+            echo "- passed configuration check"
+            test -f $NAGIOS_CFG_ERR_LOG && rm $NAGIOS_CFG_ERR_LOG
+            rc_reset
+        else
+            echo "- detected Error in configuration files"
+            echo "Please read $NAGIOS_CFG_ERR_LOG"
+            rc_failed
+        fi
+        rc_status -v
+    ;;
+    check_verbose)
+        echo "Running verbose configuration check..."
+        config_check verbose
+        exitcode=$?
+        cat "$NAGIOS_CFG_ERR_LOG"
+        rc_failed $exitcode
+        rc_status -v
+        rc_exit
+    ;;
+    *)
+		/bin/systemctl $* nagios.service
+        ;;
+esac
+rc_exit

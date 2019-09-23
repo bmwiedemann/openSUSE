@@ -1,0 +1,50 @@
+Subject: zdev: Add support for handling I/O configuration data
+From: Peter Oberparleiter <oberpar@linux.ibm.com>
+
+Summary:     zdev: Add support for handling I/O configuration data
+Description: LPARs that are running in IBM Dynamic Partition Manager (DPM) mode
+             can access a firmware-generated I/O configuration data file that
+             contains s390-specific information about available I/O devices
+             such as qeth device numbers and parameters, and FCP device IDs.
+
+             This data file is intended to remove the need for users to
+             manually enter the corresponding device data during installation.
+
+             Linux kernels with the corresponding support make the I/O
+             configuration data available at the following location:
+
+               /sys/firmware/sclp_sd/config/data
+
+             This patch set adds support for handling this data file using the
+             chzdev and lszdev tools:
+
+               - I/O configuration data can be applied using chzdev's --import
+                 option
+               - Initial RAM-Disk scripts automatically apply the
+                 I/O configuration data to the system configuration
+               - lszdev can be used to display the applied auto-configuration
+                 data
+               - chzdev can be used to manually override the
+                 auto-configuration data
+
+Upstream-ID: -
+Problem-ID:  LS1604
+
+Signed-off-by: Peter Oberparleiter <oberpar@linux.ibm.com>
+---
+ zdev/src/zdev-root-update.dracut |    6 ------
+ 1 file changed, 6 deletions(-)
+
+--- a/zdev/src/zdev-root-update.dracut
++++ b/zdev/src/zdev-root-update.dracut
+@@ -20,10 +20,4 @@ dracut -f || {
+ 	exit 1
+ }
+ 
+-echo "Installing IPL record"
+-zipl --noninteractive || {
+-	echo "${TOOLNAME}: Error: Could not install IPL record" >&2
+-	exit 1
+-}
+-
+ exit 0

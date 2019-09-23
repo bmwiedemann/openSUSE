@@ -1,0 +1,11 @@
+[Unit]
+Description=netflow accounting daemon
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/nfacctd
+ExecStart=/usr/sbin/nfacctd -f ${NFACCTD_CONF} $DAEMON_OPTS
+
+[Install]
+WantedBy=multi-user.target

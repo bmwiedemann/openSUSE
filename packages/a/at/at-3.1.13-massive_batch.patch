@@ -1,0 +1,59 @@
+Index: atd.c
+===================================================================
+--- atd.c.orig
++++ atd.c
+@@ -108,9 +108,10 @@ static char *namep;
+ static double load_avg = LOADAVG_MX;
+ static time_t now;
+ static time_t last_chg;
+-static int nothing_to_do;
++static int nothing_to_do = 0;
+ unsigned int batch_interval;
+ static int run_as_daemon = 0;
++static int hupped = 0;
+ 
+ static volatile sig_atomic_t term_signal = 0;
+ 
+@@ -141,10 +142,10 @@ set_term(int dummy)
+     return;
+ }
+ 
+-RETSIGTYPE 
+-sdummy(int dummy)
++RETSIGTYPE
++set_hup(int dummy)
+ {
+-    /* Empty signal handler */
++    hupped = 1;
+     nothing_to_do = 0;
+     return;
+ }
+@@ -647,6 +648,7 @@ run_loop()
+ 	return next_job;
+     last_chg = buf.st_mtime;
+ 
++    hupped = 0;
+     if ((spool = opendir(".")) == NULL)
+ 	perr("Cannot read " ATJOB_DIR);
+ 
+@@ -898,7 +900,7 @@ main(int argc, char *argv[])
+      */
+ 
+     sigaction(SIGHUP, NULL, &act);
+-    act.sa_handler = sdummy;
++    act.sa_handler = set_hup;
+     sigaction(SIGHUP, &act, NULL);
+ 
+     sigaction(SIGTERM, NULL, &act);
+@@ -914,9 +916,10 @@ main(int argc, char *argv[])
+     do {
+ 	now = time(NULL);
+ 	next_invocation = run_loop();
+-	if (next_invocation > now) {
++	if ((next_invocation > now) && (!hupped)) {
+ 	    sleep(next_invocation - now);
+ 	}
++	hupped = 0;
+     } while (!term_signal);
+     daemon_cleanup();
+     exit(EXIT_SUCCESS);

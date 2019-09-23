@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e0af0f80b9ac0b98182b154a47f8e82d</srcmd5>
+    <version>1.1</version>
+    <time>1242858797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>e0af0f80b9ac0b98182b154a47f8e82d</srcmd5>
+    <version>1.1</version>
+    <time>1242858797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0f1172303d704bddf48b473827d5196e</srcmd5>
+    <version>1.1</version>
+    <time>1268926627</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>0f1172303d704bddf48b473827d5196e</srcmd5>
+    <version>1.1</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0f1172303d704bddf48b473827d5196e</srcmd5>
+    <version>1.1</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>0f1172303d704bddf48b473827d5196e</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>0f1172303d704bddf48b473827d5196e</srcmd5>
+    <version>1.1</version>
+    <time>1319182602</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>5a19a9ffabc9c45cf034d5d445a89872</srcmd5>
+    <version>1.1</version>
+    <time>1323195396</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>5a19a9ffabc9c45cf034d5d445a89872</srcmd5>
+    <version>1.1</version>
+    <time>1340184373</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>5a19a9ffabc9c45cf034d5d445a89872</srcmd5>
+    <version>1.1</version>
+    <time>1359110659</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>caa815c04af4bda3e86b39bfeffdde87</srcmd5>
+    <version>1.1</version>
+    <time>1378985204</time>
+    <user>scarabeus_factory</user>
+    <comment>- use add_maven_depmap from javapackages-tools
+- fix a build with java7
+  * encoding.patch
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>198455</requestid>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>caa815c04af4bda3e86b39bfeffdde87</srcmd5>
+    <version>1.1</version>
+    <time>1379665087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="22">
+    <srcmd5>2a8c50ad86fa8e7aad88c3bdfc4030db</srcmd5>
+    <version>1.1</version>
+    <time>1404161426</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238918</requestid>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>2a8c50ad86fa8e7aad88c3bdfc4030db</srcmd5>
+    <version>1.1</version>
+    <time>1409303775</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>ae2ce1d4bb022206e0737e8f312c0a2b</srcmd5>
+    <version>1.1</version>
+    <time>1427983195</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292651</requestid>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>30d5eeb9751641dfd7d8c7285cf2b056</srcmd5>
+    <version>1.1</version>
+    <time>1495442847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496678</requestid>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>f1f91eda2a515faab293d4eb4b5daa6e</srcmd5>
+    <version>1.1</version>
+    <time>1501146774</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512679</requestid>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>33315d3f605cc18b182ed78981c7f558</srcmd5>
+    <version>1.1</version>
+    <time>1505920360</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527334</requestid>
+  </revision>
+</revisionlist>

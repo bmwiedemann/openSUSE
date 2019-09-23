@@ -1,0 +1,73 @@
+https://bugzilla.samba.org/show_bug.cgi?id=12522#c2
+
+Index: rsync.h
+===================================================================
+--- rsync.h.orig
++++ rsync.h
+@@ -167,6 +167,7 @@
+ #define ATTRS_SKIP_MTIME	(1<<1)
+ #define ATTRS_SET_NANO		(1<<2)
+ 
++#define MSG_FLUSH	2
+ #define FULL_FLUSH	1
+ #define NORMAL_FLUSH	0
+ 
+Index: io.c
+===================================================================
+--- io.c.orig
++++ io.c
+@@ -1994,10 +1994,11 @@ static void sleep_for_bwlimit(int bytes_
+ void io_flush(int flush_it_all)
+ {
+ 	if (iobuf.out.len > iobuf.out_empty_len) {
+-		if (flush_it_all) /* FULL_FLUSH: flush everything in the output buffers */
++		if (flush_it_all == FULL_FLUSH)        /* flush everything in the output buffers */
+ 			perform_io(iobuf.out.size - iobuf.out_empty_len, PIO_NEED_OUTROOM);
+-		else /* NORMAL_FLUSH: flush at least 1 byte */
++		else if (flush_it_all == NORMAL_FLUSH) /* flush at least 1 byte */
+ 			perform_io(iobuf.out.size - iobuf.out.len + 1, PIO_NEED_OUTROOM);
++		                                       /* MSG_FLUSH: flush iobuf.msg only */
+ 	}
+ 	if (iobuf.msg.len)
+ 		perform_io(iobuf.msg.size, PIO_NEED_MSGROOM);
+Index: cleanup.c
+===================================================================
+--- cleanup.c.orig
++++ cleanup.c
+@@ -26,6 +26,7 @@ extern int dry_run;
+ extern int am_server;
+ extern int am_daemon;
+ extern int am_receiver;
++extern int am_sender;
+ extern int io_error;
+ extern int keep_partial;
+ extern int got_xfer_error;
+@@ -243,15 +244,21 @@ NORETURN void _exit_cleanup(int code, co
+ 		switch_step++;
+ 
+ 		if (exit_code && exit_code != RERR_SOCKETIO && exit_code != RERR_STREAMIO && exit_code != RERR_SIGNAL1
+-		 && exit_code != RERR_TIMEOUT && !shutting_down && (protocol_version >= 31 || am_receiver)) {
+-			if (line > 0) {
+-				if (DEBUG_GTE(EXIT, 3)) {
+-					rprintf(FINFO, "[%s] sending MSG_ERROR_EXIT with exit_code %d\n",
+-						who_am_i(), exit_code);
++		 && exit_code != RERR_TIMEOUT && !shutting_down) {
++			if (protocol_version >= 31 || am_receiver) {
++				if (line > 0) {
++					if (DEBUG_GTE(EXIT, 3)) {
++						rprintf(FINFO, "[%s] sending MSG_ERROR_EXIT with exit_code %d\n",
++							who_am_i(), exit_code);
++					}
++					send_msg_int(MSG_ERROR_EXIT, exit_code);
+ 				}
+-				send_msg_int(MSG_ERROR_EXIT, exit_code);
++				if (!am_sender)
++					io_flush(MSG_FLUSH); /* Be sure to send all messages */
++				noop_io_until_death();
+ 			}
+-			noop_io_until_death();
++			else if (!am_sender)
++				io_flush(MSG_FLUSH); /* Be sure to send all messages */
+ 		}
+ 
+ 		/* FALLTHROUGH */

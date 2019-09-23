@@ -1,0 +1,7 @@
+<package name="maelstrom" project="openSUSE:Factory">
+  <title>A High Quality Asteroids Clone</title>
+  <description>You are on space patrol. Blast asteroids, fight UFOs, and get extra weapons. Beware of supernovae and black holes.
+</description>
+  <devel project="games" package="maelstrom"/>
+  <url>http://www.devolution.com/~slouken/Maelstrom</url>
+</package>

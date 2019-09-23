@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e65b377e713c8f6efbab30caebaf269</srcmd5>
+    <version>0.8.0</version>
+    <time>1518281883</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for Request#573530
+
+- fix filename of changes file
+- Initial package
+</comment>
+    <requestid>574320</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41459c710117f82a904506c51b0dde77</srcmd5>
+    <version>0.8.0</version>
+    <time>1518950735</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>577610</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>40e751698821cca7f3740a8d71d0c73b</srcmd5>
+    <version>0.8.0</version>
+    <time>1545648325</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659726</requestid>
+  </revision>
+</revisionlist>

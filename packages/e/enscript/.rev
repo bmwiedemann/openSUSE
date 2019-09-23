@@ -1,0 +1,236 @@
+<revisionlist>
+  <revision rev="1" vrev="35">
+    <srcmd5>320031e59cae9c527609f1f4ec203539</srcmd5>
+    <version>1.6.4</version>
+    <time>1168902697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="85">
+    <srcmd5>e5fbb0958b56238612c04107c0fa58ac</srcmd5>
+    <version>1.6.4</version>
+    <time>1191967314</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="107">
+    <srcmd5>32fe1ab7e620d2b59d7cbc4daf851abc</srcmd5>
+    <version>1.6.4</version>
+    <time>1203955587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="129">
+    <srcmd5>009083657d5fc84c3d79bacc3ff7295a</srcmd5>
+    <version>1.6.4</version>
+    <time>1216148772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="151">
+    <srcmd5>cb7bdaef784b112507d0387a6e2c5c93</srcmd5>
+    <version>1.6.4</version>
+    <time>1224855825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="152">
+    <srcmd5>ee8f7444d13edb7735ddbb416ad5f444</srcmd5>
+    <version>1.6.4</version>
+    <time>1225710191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="153">
+    <srcmd5>9bb89bd13047d1708b24e9c50a368b91</srcmd5>
+    <version>1.6.4</version>
+    <time>1234744346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="154">
+    <srcmd5>2399283870009ec479547e0d8f95ab42</srcmd5>
+    <version>1.6.4</version>
+    <time>1235663138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="155">
+    <srcmd5>1c582377eaa804fec691cc9fc59fe934</srcmd5>
+    <version>1.6.4</version>
+    <time>1235747533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="156">
+    <srcmd5>d37c3a8c09de6541547d526a0ca09712</srcmd5>
+    <version>1.6.4</version>
+    <time>1248373409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="157">
+    <srcmd5>1c788998d95a28206b929bdca9bd5f31</srcmd5>
+    <version>1.6.4</version>
+    <time>1252580290</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/enscript based on submit request 20228 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="12" vrev="159">
+    <srcmd5>1c788998d95a28206b929bdca9bd5f31</srcmd5>
+    <version>1.6.4</version>
+    <time>1252580290</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/enscript based on submit request 20228 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="13" vrev="160">
+    <srcmd5>80ec6a640d544e77c61f02829f7d7610</srcmd5>
+    <version>1.6.4</version>
+    <time>1260956447</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/enscript based on submit request 26662 from user coolo
+</comment>
+  </revision>
+  <revision rev="14" vrev="161">
+    <srcmd5>24ca2e4fa50a00ce3f9bbf4e58c3ec6e</srcmd5>
+    <version>1.6.4</version>
+    <time>1268923469</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="162">
+    <srcmd5>c98de1fbd7ce522681e2c10991f3f94e</srcmd5>
+    <version>1.6.4</version>
+    <time>1273681411</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/enscript based on submit request 39754 from user WernerFink
+</comment>
+    <requestid>39754</requestid>
+  </revision>
+  <revision rev="16" vrev="164">
+    <srcmd5>c98de1fbd7ce522681e2c10991f3f94e</srcmd5>
+    <version>1.6.4</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="165">
+    <srcmd5>c98de1fbd7ce522681e2c10991f3f94e</srcmd5>
+    <version>1.6.4</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="168">
+    <srcmd5>c98de1fbd7ce522681e2c10991f3f94e</srcmd5>
+    <version>1.6.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="169">
+    <srcmd5>4a296c3637e075a5f14433a136824074</srcmd5>
+    <version>1.6.4</version>
+    <time>1316445194</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83437 from jengelh)</comment>
+    <requestid>83557</requestid>
+  </revision>
+  <revision rev="20" vrev="171">
+    <srcmd5>4a296c3637e075a5f14433a136824074</srcmd5>
+    <version>1.6.4</version>
+    <time>1319181866</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="172">
+    <srcmd5>b88bf7dfa99504870608c607a47531e9</srcmd5>
+    <version>1.6.4</version>
+    <time>1323341307</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94784 from coolo)</comment>
+    <requestid>95257</requestid>
+  </revision>
+  <revision rev="22" vrev="173">
+    <srcmd5>c7278c7dcdb5dbb79a1088ebd928702f</srcmd5>
+    <version>1.6.4</version>
+    <time>1338476600</time>
+    <user>coolo</user>
+    <comment>http://lists.opensuse.org/opensuse-factory/2012-05/msg00752.html
+- Resolve absence of AM_C_PROTOTYPES in new automake-1.12 (forwarded request 122803 from jengelh)</comment>
+    <requestid>122804</requestid>
+  </revision>
+  <revision rev="23" vrev="175">
+    <srcmd5>c7278c7dcdb5dbb79a1088ebd928702f</srcmd5>
+    <version>1.6.4</version>
+    <time>1340183306</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="177">
+    <srcmd5>c7278c7dcdb5dbb79a1088ebd928702f</srcmd5>
+    <version>1.6.4</version>
+    <time>1359108851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="178">
+    <srcmd5>81bca8e1770d98897d1148fbdb63c80d</srcmd5>
+    <version>1.6.4</version>
+    <time>1367221973</time>
+    <user>coolo</user>
+    <comment>- Added makeinfo BuildRequire to fix build with new automake (forwarded request 173446 from m_meister)</comment>
+    <requestid>173643</requestid>
+  </revision>
+  <revision rev="26" vrev="179">
+    <srcmd5>c3d5698992157393bc824230f6c54c5b</srcmd5>
+    <version>1.6.4</version>
+    <time>1372145021</time>
+    <user>coolo</user>
+    <comment>- Make spaces in file name work (bnc#824441)</comment>
+    <requestid>180716</requestid>
+  </revision>
+  <revision rev="27" vrev="181">
+    <srcmd5>c3d5698992157393bc824230f6c54c5b</srcmd5>
+    <version>1.6.4</version>
+    <time>1379662295</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="183">
+    <srcmd5>c3d5698992157393bc824230f6c54c5b</srcmd5>
+    <version>1.6.4</version>
+    <time>1409300831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>af717eaf3787ae2346847cd40516c6b5</srcmd5>
+    <version>1.6.6</version>
+    <time>1516803926</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing scan vor LC_PAPER in patch enscript-1.6.6-encoding+paper.patch 
+
+- Add enscript-1.6.6-ghostscript.patch to get correct support for
+  ghostscript back 
+
+- Add enscript-1.6.6-silent-warns.patch to silent gcc 
+- Move %install_info_delete from %postun to %preun
+
+- Add patch enscript-1.6.6-helper-apps.patch to mention
+  helper app support again
+
+- Add patch enscript-1.6.6-mailto.patch to get mailto support with
+  optional address back
+
+- Add patch enscript-1.6.6-encoding+paper.patch to get better
+  encoding and automatic paper size support back
+
+- Add patch enscript-1.6.6-euro+baltic.patch to get support for the
+  Euro symbol as well as the Baltic language support back 
+
+- update to 1.6.6
+  * Add afm/MustRead.html, containing licensing information for
+    Adobe AFM files. 
+  * Sync all translations from the Translation Project. Visit
+    http://translationproject.org/ to help translate Enscript
+  * Add documented but missing '-w' option as an alias for
+    '--language'
+  * Apply sliceprint patch from Debian
+- includes 1.6.5.2:
+  * Fix CFG_FATAL macro in util.c-- prevents a segfault when the</comment>
+    <requestid>568705</requestid>
+  </revision>
+</revisionlist>

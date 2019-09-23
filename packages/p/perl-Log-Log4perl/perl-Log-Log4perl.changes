@@ -1,0 +1,533 @@
+-------------------------------------------------------------------
+Wed Feb 22 06:47:37 UTC 2017 - coolo@suse.com
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.49 (2017/02/20)
+     *    (ms) Adapted to perl 5.24 which balks at syswrite/utf8:
+            https://github.com/mschilli/log4perl/issues/78
+
+-------------------------------------------------------------------
+Wed Nov 16 06:43:11 UTC 2016 - coolo@suse.com
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.48 (2016/11/14)
+     *    (ms) [rt.cpan.org #117377] Moved PatternLayout's documentation of
+               DateFormat features to DateFormat.pm to avoid duplication 
+               and keep the two parts consistent, as suggested by Max Carey.
+     *    (ms) [rt.cpan.org #114822] Split two lines with CVS-sensitive 
+               $Log.. variables into two parts.
+     *    (ms) Semaphore issue fixed in Synchronized (reported by 
+               Siarhei Kuchynski and Martin Köhler):
+            https://github.com/mschilli/log4perl/issues/72
+     *    (ms) header_text now works with syswrite (reported by Tom Metro):
+            https://github.com/mschilli/log4perl/issues/73
+
+-------------------------------------------------------------------
+Sun Mar 20 10:16:58 UTC 2016 - coolo@suse.com
+
+- updated to 1.47
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.47 (2016/03/17)
+     *    (ms) [rt.cpan.org #102647] Slaven Rezic fixed a test
+               case for file permissions
+     *    (ms) Fixed synopsis code in Log::Log4perl::Appender::DBI, 
+               reported by Chris Collins.
+     *    (ms) Added suggestion by Dylan Doxey to test for both MSWin32 and
+               cygwin to detect windows-like systems for which tests need
+               to be skipped.
+     *    (ms) [rt.cpan.org #110915] Fixed "Redundant argument in sprintf" 
+               warning caused by DateFormat.pm with %d{Z} placeholders, 
+               reported by Alexander Hartmaier.
+     *    (ms) [rt.cpan.org #110512] Felix Ostmann fixed a broken error
+               message raised when a boolean filter can't be found.
+     *    (ms) All hash traversals in Config.pm now done via "sort keys"
+               to make sure we can reliably reproduce potential problems.
+
+-------------------------------------------------------------------
+Sun Sep  6 08:46:05 UTC 2015 - coolo@suse.com
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+-------------------------------------------------------------------
+Wed May 30 11:18:04 UTC 2012 - coolo@suse.com
+
+- updated to 1.36
+   *    (ms) [rt.cpan.org #74833] Reini Urban fixed "defined @array" for
+             perl 5.16
+   *    (ms) [rt.cpan.org #74836] Cope with Carp's questionable decision to
+             add a trailing dot to its messages.
+
+   *    (ms) [rt.cpan.org #73462] Changed logwarn/logcluck/logcarp/error_warn 
+             to warn() unconditionally and send the message to log4perl which
+             will log it only if the log level conditions are met.
+   *    (ms) [rt.cpan.org #73598] Gerda Shank reported test suite problems
+             with DBD::CSV-0.26. Bumped up to DBD::CSV-0.33 if installed.
+
+-------------------------------------------------------------------
+Mon Dec 19 15:41:54 UTC 2011 - coolo@suse.de
+
+- update to 1.34
+   *    (ms) InternalDebug now replaces all instances of INTERNAL_DEBUG,
+             not just the first one.
+   *    (ms) Added test case for get_logger() with a ref() on the actual
+             object instead of on a static category. Updated docs.
+   *    (ms) %d{e} in PatternLayout now returns epoch seconds
+   *    (ms) [RT#72056] Messages blocked by an appender threshold are no
+             longer passed on to the L4p::Appender::Buffer as undefined
+             entries.
+
+-------------------------------------------------------------------
+Tue Aug 23 13:33:38 UTC 2011 - chris@computersalat.de
+
+- update to 1.33
+   *    (ms) [RT 67132] Applied patch by Darin McBride to allow for
+             empty syswrite messages in the file appender.
+   *    (ms) [RT 68105] Fixed init-hash handling of subroutine references,
+             reported by Frew Schmidt.
+   *    (ms) Mike Schwern noticed confusing DESTROY calls to clean up loggers 
+             and appenders (http://stackoverflow.com/questions/5914088 and
+             https://github.com/mschilli/log4perl/issues/7), so I put on my 
+             hazmat suit and cleaned it up. Now perl's garbage collector takes 
+             care of disposing of logger and appender carcasses.
+   *    (ms) Added Log::Log4perl->remove_logger($logger) to remove a logger
+             from the system.
+
+- 1.32 (2011/02/26)
+   *    (ms) Fixed %T caller_depth with wrapper_register(), reported
+             by David Christensen.
+   *    (ms) [RT 63053] Fixed for qw() {} deprecated (Todd Rinaldo)
+   *    (ms) [RT 62674] Fixed call to deprecated form of UNIVERSAL::can (Karen
+             Etheridge).
+   *    (ms) [RT 62896] Log::Log4perl::Appender::ScreenColoredLevels now 
+             inherits from Log::Log4perl::Appender::Screen and therefore
+             supports the utf8 flag.
+   *    (ms) [RT 64318] Andrew Sayers provided a better error message for
+             "threshold needs to be uppercase".
+   *    (ms) CharleyDixon fixed LOGWARN when :no_extra_logdie_message is 
+             in use to no longer exit().
+
+- 1.31 (2010/10/27)
+  *     (ms) Fixed the number of skipped tests for Windows for previous fix
+             of [RT 60665].
+
+- 1.30 (2010/08/30)
+   *    (ms) [RT 60665] HUP handlers are stacked on top of each other now,
+             to make sure that multiple file appenders recreate multiple
+             files and not just one (patch provided by Karen Etheridge).
+   *    (ms) [RT 60197] Fixed uninitialized value warnings with
+             the multiline appender and provided a test case (patch provided
+             by Karen Etheridge)
+   *    (ms) [rt.cpan.org #59617] Fixed system-wide threshold without appender
+             thresholds. Bug reported by Dmitry Bigunyak.
+   *    (ms) [rt.cpan.org #24884] Using require() instead of incomplete
+             logic in L4p::Util::module_available(). local __DIE__
+             handler takes care of user-defined __DIE__ handlers 
+             ignoring $^S (suggested by Eric Wilhelm and others).
+   *    (ms) [rt.cpan.org #60386] Fixed init_and_watch() which 
+             double-bumped the caller_level and led to uninitialized 
+             values in the pattern layout. Thanks to Mitja Bartsch for 
+             the report.
+   *    (ms) Applied patch by Karsten SilkenbÃ¤umer to add an optional
+             $log_dispatch_level to create_custom_level(). Updated 
+             documentation.
+- fix deps
+  * Req: perl(File::Spec) >= 0.82
+    Req: perl(Test::More) >= 0.45
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:26 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Jul 19 15:08:00 UTC 2010 - chris@computersalat.de
+
+update to 1.29
+  *    (ms) Added documentation on how to use Log4perl's :easy macros
+            with Catalyst in Log::Log4perl::Catalyst.
+  *    (ms) wrapper_register() now deals with caller_depth automatically.
+            Backwards compatibility with old wrapper classes using 
+            caller_depth directly is provided. Documentation has been 
+            updated.
+  *    (ms) Felix Antonius Wilhelm Ostmann reported Resurrector.pm 
+            crashes, fixed as suggested by setting the %INC value to 
+            the module path.
+  *    (ms) Another caller_depth fix in Log::Log4perl::Catalyst.
+  *    (ms) Fixed logdie() caller_depth bug reported by Rob Retter.
+  *    (ms) [RT 56145] Saving errstr in DBI appender to survive ping()
+  *    (ms) Added INTERNAL_DEBUG env variable to test suite triggering
+            all _INTERNAL_DEBUG statements to be printed for better
+            error diagnosis on misbehaving systems.
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Tue Apr  6 17:02:39 UTC 2010 - chris@computersalat.de
+
+- fix build cycle
+  o disbled Build-/Req Log-Dispatch-FileRotate
+
+-------------------------------------------------------------------
+Wed Mar 10 21:51:02 UTC 2010 - chris@computersalat.de
+
+- update to 1.28
+   *    (ms) Fixed caller stack with Buffer composite appender
+   *    (ms) Fixed 'local caller_depth' error in various places. First
+             localizing a variable and then increasing it is incorrect,
+             as this ignores previous settings. The correct way of
+             increasing the caller level is: 'local depth = depth + 1'.
+   *    (ms) Added Log::Log4perl::Catalyst for use in Catalyst applications.
+- clenaup spec
+  o deps perl-macros
+
+-------------------------------------------------------------------
+Tue Feb 16 14:08:21 UTC 2010 - coolo@novell.com
+
+- update to 1.27 
+   *  (ms) ***WARNING: This might break backward compatibility
+                        with some wrapper classes.
+             [RT 52913] Fixed category fetching in
+             wrapper classes (reported by Martin Evans). Wrapper classes
+             now need to call Log::Log4perl->wrapper_register to adapt
+             get_logger() category fetching. Detailed docs under
+             "Using Log::Log4perl with wrapper functions and classes"
+   *    (ms) Made meta tag compatible with MakeMaker versions < 6.50
+        (ms) [RT 52083] Fixed manifest glitch from 1.26 (reported by
+             Lars Thegler).
+   *    (ms) Added note to FAQ on 'no init happened' warnings for API
+             initializations, as suggested by Malcolm Nooning.
+   *    (ms) Applied patch by Christopher Mckay which sets
+             Log4perl::Logger::INITIALIZED only if it's fully initialized.
+   *    (ms) Emmanuel Rodriguez suggested changing TestBuffer's reset()
+             method to leave the logger population alone. Added clear()
+             to accomodate the need for a single buffer reset.
+   *    (ms) Xavier Caron added %p{1} to allow abbreviated priority
+             strings in the pattern layout.
+   *    (ms) Redid composite appenders to address problems with incorrect
+             caller() data. L4p now supports a $cache parameter to be
+             passed to the log() function, which stores the completely
+             rendered message and can be passed to log_cached() later on.
+
+-------------------------------------------------------------------
+Sat Dec 12 21:33:53 UTC 2009 - chris@computersalat.de
+
+- update to 1.26
+    *   (ms) [RT 50495] Perl code in the config file is now evaluated/
+             compiled after the configuration parser has done its work, 
+             opening up Perl subroutines to all configuration parsers, not
+             just PropertyConfigurator. Configuration subs for cspecs, 
+             filter, warp_message and appender triggers are sheltered. 
+             The previous, flawed implementation surfaced while using 
+             a 'trigger' category, reported by Olivier Bilodeau.
+    *   (ms) [RT 50090] Added non-portable linebreaks to PatternLayout
+             (requested by ZdenÄ›k Juran).
+    *   (ms) [RT 50094] Docfix for PatternLayout in main manpage (spotted
+             by Peter Rabbitson).
+    *   (ms) [RT 28679] Added exists() to "Threshold" keyword uppercase 
+             check.
+    *   (ms) Took out Class::Prototyped testcase after it got all weird
+             and introduced backward-incompatible changes.
+1.25 (2009/09/27)
+    *   (ms) Appender::File is now closing (or sysclosing) the file
+             on file_close() instead of just undef'ing the handle.
+    *   (ms) Added l4p-tmpl helper script to help whipping up a new
+             log4perl configuration file.
+    *   (ms) Fixed uninitialized warning on XML configuration files,
+             reported by jbkilian on the sourceforge mailing list.
+    *   (ms) Applied patch [RT 43426] by AFF <aff@cpan.org> to have 
+             appender_thresholds_adjust return number of appenders changed.
+    *   (ms) [RT 34400] New :nostrict target which allows redefining a 
+             category within a Log4perl configuration file without error
+             or even a warning.
+    *   (ms) [RT 34401] Applied patch by Jae Gangemi, who fixed
+             code references in @INC on Win32 systems. 
+    *   (ms) [RT 32259] Patternlayout now supports %R, which returns the
+             number of milliseconds elapsed from last logging event to
+             the current logging event (thanks to Emmanuel Rodriguez for
+             the patch).
+    *   (ms) [RT 30899] Color configuration and attribute support 
+             added to ScreenColoredLevels appender by Jason Kohles.
+    *   (ms) [RT 28987] If UNIVERSAL is available, appender existence is
+             now verified by checking can() on the appender's new() 
+             method (applied modified patch by Gabriel Berriz).
+- cleanup spec
+  * define cpan_name
+  * sort tags
+  * fix build-/deps
+  * fix file perm
+- added perl-macros
+  * perl_gen_filelist
+
+-------------------------------------------------------------------
+Mon Jul 13 11:17:36 CEST 2009 - ug@suse.de
+
+- update to 1.24
+    *   (ms) Fixed bug with Log::Log4perl::Util::tmpfile_name which 
+             surfaced on VMS, reported by Ben Humphreys.
+    *   (ms) Fixed system-wide threshold to no longer lower appender 
+             thresholds. Bug reported by Jean-Denis Muys.
+    *   (ms) Added benchmark to determine impact of eval-free handlers
+    *   (ms) Merged with eval_free branch. Now there are no more 
+             eval("") statements left in the code, making it much easier 
+             to debug. Performance on init() is about the same, performance 
+             on init_and_watch() (noops and logged statements alike) is 
+             25% slower but still in the range of 400,000/sec on my 
+             1.80Ghz CPU.
+    *   (ms) DBI-1.608 removed a DBD::File 'feature' that allowed leaving
+             out parameters in a bound execute(). This caused the test
+             suite to fail
+             number of parameters every time.
+    *   (ms) Better error message in the DBI appender on bad SQL, missing
+             bind parameters, or other execute() errors.
+    *   (ms) Made DBI test suite more robust against preexisting conditions
+    *   (ms) Added force_next_check() for init_and_watch(), cleaned up
+             Config::Watcher code.
+    *   (ms) Fixed test suite to run on Strawberry Perl on Win32 (reported
+             by kmx on https://rt.cpan.org/Ticket/Display.html?id=45983)
+    *   (ms) Added 'utf8' option to screen appender and easy mode, some of
+             it suggested in 
+             http://rt.cpan.org/Public/Bug/Display.html?id=36673 by
+             Shantanu Bhadoria.
+    *   (ms) is_xxx() returned true prior to L4p initialization. Fixed it
+             and adapted test suite.
+    *   (ms) Added test cases on syswrite in recreate mode
+    *   (ms) Applied patch by Jens Berthold <log4perl@jebecs.de> to
+             avoid semaphore cleanup in spawned children.
+    *   (ms) Added %m{chomp} feature, 'message_chomp_before_newline' option,
+             and documentation on newlines and logging messages, all 
+             suggested by Tim Bunce (see PatternLayout).
+
+-------------------------------------------------------------------
+Thu Feb 12 12:24:30 CET 2009 - ro@suse.de
+
+- update to 1.20
+  * Using semctl to reset the value of the semaphore in the
+    Synchronized appender to prevent "Numerical result out of
+    range" problem caused by an unbalanced SEM_UNDO when
+    incrementing it. Reported by John Little.
+  * Added parameters in curly braces to cspecs in PatternLayout.
+  * As explained in  http://rt.cpan.org/Ticket/Display.html?id=41505
+    the latest LWP release (5.822) got rid of all of its internal
+    debugging functions, making infiltrate_lwp() and its test
+    case useless. Disabling it for LWP>=5.822.
+
+- update to 1.19
+  * Applied patch by Peter Rabbitson, which fixes the caller()
+    level when calling get_logger() on a subclass of Log4perl.
+  * Added documentation on is_xxx() methods and clarified that
+    it doesn't necessarily mean that a message gets logged if
+    they're returning true (requested by Conway Allen via
+    [rt.cpan.org #39085].
+  * Applied patch by Lee Johnson to appender_by_name() to allow
+    for undefined appender names without issuing a warning,
+    which was occurring with Catalyst::Log4perl.
+  * Added docs on numerical levels and level strings in
+    Log::Log4perl::Level.
+  * Applied patch by Anthony Foiani for support of literal
+    text in DateFormat format strings.
+
+-------------------------------------------------------------------
+Tue Sep 16 18:56:22 CEST 2008 - lrupp@suse.de
+
+- fix rpmlint errors
+
+-------------------------------------------------------------------
+Fri Sep  5 16:12:29 CEST 2008 - ug@suse.de
+
+* Added explanation that categories and loggers are the same
+  thing (thanks to Rabbit).
+* Fixed t/053Resurrect to work with 5.005_03
+* Added preinit_callback function for init_and_watch()
+* Applied patch by Andy Grundman which speeds up is_LEVEL()
+  calls by skipping unnecessary string concatenations 
+  (http://rt.cpan.org/Ticket/Display.html?id=38537).
+* Applied patch by Jae Gangemi addding a no_warning option to the
+  socket appender
+  (http://rt.cpan.org/Ticket/Display.html?id=34399).
+* Fixed test suite to run on Strawberry Perl on Win32.
+* Added 'l4p' as a valid prefix in configuration files (equal
+  to 'log4j' and 'log4perl' now).
+* Changed appender destruction during cleanup to show warning
+  messages thrown by destructors. Previously L4p ignored these
+  messages which caused failed DB flushes to go unnoticed with
+  the DB appender.
+* Added explanation for Log4perl messages during global 
+  destruction to FAQ.
+* Corrected 'Trapper' listing in FAQ, thanks to Christian Reiber.
+* Applied patch by Mitchell Perilstein for 5.005it and the
+  two-argument binmode() that 5.005 doesn't support.
+  (http://rt.cpan.org/Ticket/Display.html?id=34051)
+* Applied patch by Emmanuel Rodriguez (POTYL) doing away with 
+  hard-coded line numbers in 024WarnDieCarp.t to make it work
+  cpan2rpm for building RPM packages 
+  (http://rt.cpan.org/Public/Bug/Display.html?id=35370)
+* Fixed recreate_check_interval = 0 bug reported by 
+  Bill Moseley.
+* Added 'header_text' parameter to the file appender to 
+  have it write a header every time it opens (or re-opens)
+  a new log file (suggested by Steven Lembark).
+* version 1.18
+
+-------------------------------------------------------------------
+Fri Apr  4 11:20:41 CEST 2008 - ug@suse.de
+
+- version update from 1.12 to 1.15
+- appender_thresholds_adjust() with a parameter of 0 now
+  does nothing (requested by Oliver Koch).
+- Added 'defer_connection' to Socket appender so it's more useful
+  under Apache.
+- [rt.cpan.org #32738] fixed caller_depth for error_warn()
+  (reported by Felix Antonius Wilhelm Ostmann)
+- [rt.cpan.org #32942] fixed get_logger() for subclassed Log4perl
+  (reported by Felix Antonius Wilhelm Ostmann)
+- Fixed test suite bug which surfaced in Darwin because temporary
+  files contain '++' which freaked out the sloppy regex match.
+- Better handling of empty config files (reported by Robert Raisch)
+- Rewrote the Synchronized appender to use semaphores exclusivly
+  (got rid of IPC::Shareable).
+- Added Log::Log4perl::Util::Semaphore for easy semop handling
+  Fixed t/026FileApp.t to work on MSWin32.
+- Another doc fix by Craig
+- Applied Fedora 7 patches
+- Added create_at_logtime option to file appender
+- Added trace level color (yellow) in ScreenColoredLevels
+  appender as suggested by Arvind Jayaprakash in
+
+-------------------------------------------------------------------
+Mon Jul 16 12:00:29 CEST 2007 - ug@suse.de
+
+- version update from 1.07 to 1.12
+- Added Log::Log4perl::Resurrector to resurrect commented-out
+  Log4perl statements in all subsequently loaded modules (allows
+  for deploying L4p-enabled CPAN modules without requiring L4p).
+- Added ALWAYS easy mode macro (level=OFF)
+- Fixed logconfess() frame level bug reported by Ali Mesdaq.
+  Added test case.
+- Added PatternLayout::Multiline code by Cory Bennett to 
+  render multiline messages.
+- Added log level TRACE (lets through even more messages
+  than DEBUG) (suggested by Craig).
+- Added 'syswrite' flag to file appender to have it use
+  'syswrite' instead of 'print', avoiding buffered or
+  interleaving messages originating from different processes
+  (thanks to Evan Miller).
+- Nikita Dedik pointed out that Saturday is missing from 
+  @Log::Log4perl::DateFormat::WEEK_DAYS
+- Scott Cline noticed a potential problem with the DBI
+  appender reconnection logic in 'buffered' mode. Applied
+  a patch.
+- Changed DBI reconnect logic to perform even if the DB
+  is pingable again.
+- Applied code by Valerio Valdez Paolini with modifications
+  to PropertyConfigurator.pm to allow pulling values from
+  the property configurator by path.
+- Added $^S check to FAQ, as suggested by J. David Blackstone.
+- Applied Robert Jacobson's patch for the "DDD" formatter
+  in L4p::DateFormats, which now formats the day-of-year values
+  numerically and precedes them with zeroes if necessary.
+- Added %M{x} PatternLayout notation as requested by
+  Ankur Gupta.
+- Another Win32 test suite fix, no longer deleting an open
+  file but moving it aside (rt.cpan:23520).
+- Applied test suite patch by Lars Thegler for 
+  ancient perl 5.005_03.
+- Applied patch by Jeremy Bopp to fix test suite running
+  under Cygwin.
+- Fixed documentation bug in L4p:Appender::File,
+  s/recreate_signal/recreate_check_signal. Thanks to
+  Todd Chapman and Robert Jacobson for reporting this.
+- Fixed init(), which now deletes any config file watchers 
+  left over from previous init_and_watch() calls. Reported
+  by Andreas Koenig who saw sporadic errors in the test suite, 
+  thanks!
+
+-------------------------------------------------------------------
+Wed Oct 25 09:26:39 CEST 2006 - ug@suse.de
+
+- version update from 1.02 to 1.07
+- minor bugfixes
+- documentation enhanced
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 10:49:50 CET 2006 - ug@suse.de
+
+- version update from 1.01 to 1.02
+
+-------------------------------------------------------------------
+Mon Dec 12 12:35:36 CET 2005 - ug@suse.de
+
+- version update from 0.52 to 1.01
+
+-------------------------------------------------------------------
+Wed Sep 28 22:11:55 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Jul 13 11:33:26 CEST 2005 - ug@suse.de
+
+- version update from 0.51 to 0.52
+- DateFormat.pm fix for 3-letter month abbreviations
+- shortcut to simulate Apache's log format
+- better error message when a logger is defined 
+  twice in a config.
+
+-------------------------------------------------------------------
+Fri Jan 21 11:29:49 CET 2005 - ug@suse.de
+
+- version update from 0.47 to 0.51
+- Added umask option to file appender
+- Added remove_appender() and eradicate_appender() method
+- Added a generic buffered composite appender, L4p::Appender::Buffer
+- Added ':resurrect' source filter
+- Added 'appender_by_name()
+- Added convenience function appender_thresholds_adjust()
+- Added ScreenANSIColor appender to colorize messages
+- New interface for custom config parsers.
+- tons of fixes
+
+-------------------------------------------------------------------
+Fri Aug 20 11:29:03 CEST 2004 - ug@suse.de
+
+- version update from 0.42 to 0.47
+- added filename() method to L4P::Appender::File
+- added RRDs appender Log::Log4perl::Appender::RRDs
+- Added a cleanup() function to Logger.pm
+- make the socket appender more forgiving. New option
+  "silent_recovery" will silently ignore errors 
+- added Log::Log4perl::infiltrate_lwp() to make LWP::UserAgent
+  play in the L4p framework upon request
+- tons of fixes
+
+-------------------------------------------------------------------
+Fri Feb 27 15:16:40 CET 2004 - ug@suse.de
+
+- version update from 0.36 to 0.42
+
+-------------------------------------------------------------------
+Mon Aug 25 14:15:48 CEST 2003 - ro@suse.de
+
+- remove man3 dir from filelist (already in filesystem.rpm)
+
+-------------------------------------------------------------------
+Mon Aug 25 13:57:35 CEST 2003 - ro@suse.de
+
+- removed noarch: perl modules always have arch in the path 
+
+-------------------------------------------------------------------
+Mon Aug 25 13:42:05 CEST 2003 - ug@suse.de
+
+- initial package
+

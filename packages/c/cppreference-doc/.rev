@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e37a56dccd075df1e4435a17f705dc27</srcmd5>
+    <version>20180311</version>
+    <time>1526371445</time>
+    <user>dimstar_suse</user>
+    <comment>Cppreference is a complete online reference for the C and C++ languages and standard libraries, i.e. a more convenient version of the C and C++ standards. This package provides an offline mirror of the reference.
+</comment>
+    <requestid>602314</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7b55029bb68919b0647c679175e2a267</srcmd5>
+    <version>20180311</version>
+    <time>1555488574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694764</requestid>
+  </revision>
+</revisionlist>

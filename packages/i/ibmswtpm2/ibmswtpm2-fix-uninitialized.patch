@@ -1,0 +1,20 @@
+--- ibmswtpm2-1332/src/TcpServerPosix.c~	2018-09-07 16:20:51.000000000 +0200
++++ ibmswtpm2-1332/src/TcpServerPosix.c	2019-07-04 19:58:14.736607559 +0200
+@@ -292,7 +292,7 @@
+     int                  res, i;
+     int                  nSock = 0;
+     socklen_t            length[2];
+-    BOOL                 continueServing;
++    BOOL                 continueServing = 0;
+ 
+     if (CreateSocket(PortNumber, &listenSocket[nSock], &length[nSock],
+ 		     AF_INET) == 0) {
+@@ -424,7 +424,7 @@
+     int                  res, i;
+     int                  nSock = 0;
+     socklen_t            length[2];
+-    BOOL 		continueServing;
++    BOOL 		continueServing = 0;
+     
+     if (CreateSocket(*PortNumber, &listenSocket[nSock], &length[nSock],
+ 		     AF_INET) == 0) {

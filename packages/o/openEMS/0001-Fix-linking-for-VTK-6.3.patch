@@ -1,0 +1,29 @@
+From d6daf5b062be05db00949b4097a46c9eb9b5531f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 27 Dec 2017 08:33:21 +0100
+Subject: [PATCH] Fix linking for VTK >= 6.3
+
+---
+ CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 898f280..2e860b7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -125,8 +125,11 @@ find_package(Boost 1.46 COMPONENTS
+ if (WIN32)
+     find_package(VTK 6.1 REQUIRED)
+ else()
++    find_package(VTK COMPONENTS vtkIOXML vtkIOGeometry vtkIOLegacy vtkIOPLY NO_MODULE)
+     # prefer >=6.1, fallback to >=5.4
+-    find_package(VTK 6.1 COMPONENTS vtkIOXML vtkIOGeometry vtkIOLegacy vtkIOPLY NO_MODULE)
++    IF (NOT ${VTK_FOUND})
++       find_package(VTK 6.1 COMPONENTS vtkIOXML vtkIOGeometry vtkIOLegacy vtkIOPLY NO_MODULE)
++    endif()
+     IF (NOT ${VTK_FOUND})
+         find_package(VTK REQUIRED)
+     endif()
+-- 
+2.19.2
+

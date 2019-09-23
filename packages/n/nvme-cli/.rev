@@ -1,0 +1,384 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a24ccb4c6d9ccd22c6d51db366664c8</srcmd5>
+    <version>0.3</version>
+    <time>1455610706</time>
+    <user>dimstar_suse</user>
+    <comment>New package nvme-cli, see http://lists.opensuse.org/opensuse-factory/2016-02/msg00318.html</comment>
+    <requestid>358864</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>28ef313ffc9fb2eceec2e51ce0ec3aac</srcmd5>
+    <version>0.3</version>
+    <time>1456127874</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix display of version number (boo#966740) (forwarded request 360273 from morbidrsa)</comment>
+    <requestid>360274</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2aea106347e3fd9c9410eb2d590e5ba5</srcmd5>
+    <version>0.4</version>
+    <time>1456924900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release v0.4 (forwarded request 364061 from morbidrsa)</comment>
+    <requestid>364064</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>287e0af972eae0aad38e94b5a3db2d63</srcmd5>
+    <version>0.5</version>
+    <time>1458333778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release v0.5
+    The v0.4 breakage should all be resolved now. Tagging release
+    v0.5, and back to stability. (forwarded request 374802 from morbidrsa)</comment>
+    <requestid>374808</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0861b169d664c489ceb009a2a9793ea0</srcmd5>
+    <version>0.5</version>
+    <time>1461855239</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude build on s390x (FATE#319560) (forwarded request 389735 from morbidrsa)</comment>
+    <requestid>389738</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ff36ffe8548c39367cbd04019f8af90</srcmd5>
+    <version>0.7</version>
+    <time>1465336017</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399644</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5ff6b5f23eab18a08acfb010311f1ff</srcmd5>
+    <version>0.8</version>
+    <time>1472111789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421065</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3411d25aa17fbb08e7e4fddcf30f82c4</srcmd5>
+    <version>0.8</version>
+    <time>1473241480</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't map controller registers in 'list' command (boo#986891)
+  + remove-version-from-list.patch (forwarded request 424189 from morbidrsa)</comment>
+    <requestid>424317</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd4bdc2c8642c7508f7e8779ac58ca71</srcmd5>
+    <version>0.9</version>
+    <time>1474116022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428063</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fe0e14c660559dbfcbb79b32c44a17f6</srcmd5>
+    <version>1.1</version>
+    <time>1489345387</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477563</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>28a6102a288354ce3bd281b5ebe197d1</srcmd5>
+    <version>1.2</version>
+    <time>1493235807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490164</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d8a306a76a03bfda4d487d203ffb312f</srcmd5>
+    <version>1.2</version>
+    <time>1494938713</time>
+    <user>dimstar_suse</user>
+    <comment>- Add possibility to change queue depth at connect time (bsc#1037297)
+  + 0001-fabrics-add-option-to-override-drivers-queue-depth.patch
+  + 0002-fabrics-add-option-to-override-drivers-queue-depth-a.patch (forwarded request 494787 from morbidrsa)</comment>
+    <requestid>494788</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>93897fb1ba653045425713457d36fd30</srcmd5>
+    <version>1.2</version>
+    <time>1497518706</time>
+    <user>dimstar_suse</user>
+    <comment>- Add NVMe over Fabrics specific id-ctrl fields (bsc#1037293)
+  + add-missing-nvme_id_crtl-fileds.patch
+  + 0003-nvme-cli-show-more-fields-for-id-ctrl.patch
+  + 0004-nvme-cli-id-ctrl-display-additional-fields.patch (forwarded request 503608 from morbidrsa)</comment>
+    <requestid>503609</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e1183abc95f8d66f9c6c0bfa10fbd6f9</srcmd5>
+    <version>1.2</version>
+    <time>1497944377</time>
+    <user>dimstar_suse</user>
+    <comment>-  Also re-build documentation on each build (bsc#1037297) (forwarded request 504129 from morbidrsa)</comment>
+    <requestid>504130</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>83d188b2d01f1b3d1312bb42f8173dd0</srcmd5>
+    <version>1.2</version>
+    <time>1498485416</time>
+    <user>dimstar_suse</user>
+    <comment>Fix scriptlets. (forwarded request 506235 from morbidrsa)</comment>
+    <requestid>506236</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8a2339c835740036e8c06812ca79ca41</srcmd5>
+    <version>1.2</version>
+    <time>1498995499</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hostid option to connect command (bsc#1045293)
+  + 0006-fabrics-add-hostid-option-to-connect-command.patch (forwarded request 507375 from morbidrsa)</comment>
+    <requestid>507379</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>ea85363fb75243eec8d0f17505401138</srcmd5>
+    <version>1.2</version>
+    <time>1504206230</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix hostid parsing (bsc#1049272)
+  + 0007-nvme-cli-fix-connecting-failure-due-to-invalid-uuid-format.patch (forwarded request 519918 from morbidrsa)</comment>
+    <requestid>519919</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>2b60613ef34da6e1f2c52ee968e1d2cf</srcmd5>
+    <version>1.2</version>
+    <time>1508316840</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate Spec compliant UUID NQNs (bsc#1057498) (forwarded request 534386 from morbidrsa)</comment>
+    <requestid>534387</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>25351b9ad02d1fa5d763b5722931ae53</srcmd5>
+    <version>1.4</version>
+    <time>1508336208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.4 (FATE#322735):
+  * Fixup Security send/recv to read data from disk
+  * Unbreak RPM build after bash completion files were moved in 7e4c7596
+  * fabrics: Fix disconnect_by_device from disconnecting instance 0 on error
+  * lightnvm: allow to init target on factory mode
+  * Fixed problem with security-recv binary output not working correctly
+  * nvme-cli: return 0 if disconnect operation with cfg.nqn successfully
+  * Fix compile for 32-bit
+  * nvme-cli: Fix build on aarch64-linux-android-4.9
+  * nvme-cli: Huawei plug-in.
+  * nvme-print: Fix line spacing on -H option
+  * id-ctrl: remove new lines from json output
+  * nvme-list: print empty lists when no devices are present
+  * fabrics: add option to override drivers queue depth
+  * nvme-cli: nvme-intel implement json output for smart-log
+  * nvme-cli: Add parsing support for noiob
+  * Fix potential device string truncation
+  * fabrics: add option to override drivers queue depth also for connect-all command
+  * Regenerate man-pages
+  * Release v1.3
+  * nvme-print: Free only top-level json objects
+  * fix use-after-free in pci.ids parsing
+  * nvme-cli: add fields into identify controller data structure
+  * nvme-cli: show more fields for id-ctrl
+  * nvme-cli: id-ctrl: display additional fields
+  * Show help when no or an invalid device is given
+  * nvme-cli: add id-ctrl for nvme-huawei plug-in.
+  * Fix spelling errors
+  * fabrics: add hostid option to connect command
+  * nvme-cli: add ns-descs subcommand (forwarded request 534900 from morbidrsa)</comment>
+    <requestid>534901</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>06b9105a8c6c437c18fe4f0385c1752f</srcmd5>
+    <version>1.4</version>
+    <time>1508946447</time>
+    <user>dimstar_suse</user>
+    <comment>remove time-sensitive wording
+(yesterday's &quot;new&quot;, &quot;fast&quot;, etc. is tomorrow's old and slow :-p) (forwarded request 536372 from jengelh)</comment>
+    <requestid>536377</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>2ef4930859d2e7ef623a97d7d5dd3f33</srcmd5>
+    <version>1.4</version>
+    <time>1513343150</time>
+    <user>dimstar_suse</user>
+    <comment>- Add list-subs subcommand (bsc#1072813)
+  + 0001-nvme-Introduce-new-list-subsys-command.patch (forwarded request 556890 from morbidrsa)</comment>
+    <requestid>556892</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>20cbd86b598a5e2027b80eddf5554a98</srcmd5>
+    <version>1.5</version>
+    <time>1515623884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.5 (FATE#322735):
+  * Remove upstreamed patches:
+    - 0001-nvme-Introduce-new-list-subsys-command.patch
+    - 0009-fabrics-also-set-queue_size-and-nr_io_queues-on-conn.patch
+  * fabrics: also set queue_size and nr_io_queues on connect-all connects
+  * nvme-cli: add duplicate_connect parameter support
+  * nvme-cli : wdc-plugin Add support for WDC SN100 and SN200 devices.
+  * Add AEN decoder helper to get-log
+  * Regen documentation
+  * Add Nix(OS) install instructions to the README
+  * Fix the Markdown code for the Alpine install instructions
+  * nvme-cli: make address print format more human-readable
+  * intel-nvme: Fix compiler errors and warnings
+  * Include sizing data in json output that's already included in the non-json results.
+  * Cleanup variable definitions
+  * Add command effects log page
+  * Increase default format timeout
+  * Revert &quot;nvme-cli: add duplicate_connect parameter support&quot;
+  * nvme-cli: add duplicate_connect parameter support
+  * nvme-cli: fix wrong bitmask in number of rpmb units.
+  * nvme-cli: make command description const
+  * nvme/id-ns: do not try to get namespace id from non-block device.
+  * Fix typo in previous commit
+  * Fix long suffix parse on 32-bit machines
+  * Nitpicked a printing alignment issue with the id-ns vendor specific field
+  * Avoid unnecessary abbreviation.
+  * nvme/flush: explicitely close file descriptor
+  * Fix memory leak
+  * Add 'DEAC' support to write-zeroes command
+  * Rebuild documentation (forwarded request 563245 from morbidrsa)</comment>
+    <requestid>563246</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>756d8c8af09fe7e6aa0e64b1a10fd04f</srcmd5>
+    <version>1.5</version>
+    <time>1518601896</time>
+    <user>dimstar_suse</user>
+    <comment>- Add NetApp vendor plugin (bsc#1080672) 
+  + 0001-nvme-cli-add-NetApp-plugin.patch
+  + 0002-nvme-cli-add-netapp-smdevices-man-page.patch (forwarded request 576273 from morbidrsa)</comment>
+    <requestid>576274</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>aa2bd853165cbb12f538073ca75547c2</srcmd5>
+    <version>1.5</version>
+    <time>1522935227</time>
+    <user>dimstar_suse</user>
+    <comment>- Make log identifier a required parameter (bsc#1086240)
+  + 0003-get-log-Make-log-identifier-a-required-parameter.patch (forwarded request 593524 from morbidrsa)</comment>
+    <requestid>593537</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>7e41e13dce4694b0263c6f59d3de5d2a</srcmd5>
+    <version>1.5</version>
+    <time>1523875721</time>
+    <user>dimstar_suse</user>
+    <comment>Add newline after patch to nvme-cli.changes (forwarded request 596314 from morbidrsa)</comment>
+    <requestid>596316</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>29681aa7f348baf1c590b609a2c9e078</srcmd5>
+    <version>1.5</version>
+    <time>1525779456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604707</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>98cd6ccb479c2d40ddf2b5b3ba872328</srcmd5>
+    <version>1.6</version>
+    <time>1539869720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.6 (FATE#326139, FATE#326434, FATE#326558):
+  * Release 1.6
+  * lightnvm: fix type coercion
+  * fix reservation report 0's based dword count
+  * nvme.c, list_ns: use le32_to_cpu in display
+  * nvme-cli: adjust memset size for data buffer in submit_io
+  * fabrics: omit newline character when reading nvme host nqn
+  * fabrics: fail early if argconfig_parse failed
+  * nvme-cli: print firmware activation notices support bit to id_ctrl
+  * nvme-cli: add support of RAE
+  * Add a single get-property command for NVMeOF.
+  * nvme-ioctl.c : nvme_get_properties(): fix 64bit offset advance
+  * nvme-cli: add support for DLFEAT
+  * intel: fix latency stats printing
+  * Update doc
+  * nvme-cli: add changed-ns-list-log documentation
+  * nvme-cli: add changed log ns support
+  * NVMe-CLI Fix id-ns fpi field when Human Readable option selected.
+  * Fix format specifier for 32-bit
+  * Fix json output of 128-bit numbers
+  * Replace host-gen telemetry short-option 'h' with 'g'
+  * Add man pages for new device self test commands
+  * Updating version to 1.1
+  * nvme-cli: Implement printing get NOPSC feature
+  * nvme-cli: Implement printing the get Keep Alive Timer feature
+  * nvme-cli: Implement printing the get host controlled thermal management feature.
+  * nvme-cli: Implement printing the get timestamp feature.
+  * Adding ppc big endian support
+  * Revert &quot;nvme-cli: Wait for device file if not present after successful add_ctrl&quot;
+  * Revert &quot;nvme-cli: Add ioctl retry support for &quot;connect-all&quot;&quot; (forwarded request 642268 from morbidrsa)</comment>
+    <requestid>642655</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0ed2d0dea8c8c6ab24c0052291beaad1</srcmd5>
+    <version>1.6</version>
+    <time>1540200235</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changelog with SLE15 changelog. (forwarded request 643134 from morbidrsa)</comment>
+    <requestid>643135</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>34c04b14931b3fe2a56c581afd7009b0</srcmd5>
+    <version>1.7</version>
+    <time>1548705003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669109</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>795607b10d231924141f01e615983686</srcmd5>
+    <version>1.7</version>
+    <time>1550048723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673599</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>a0574605ed21137e710cd0d5b5ac57c6</srcmd5>
+    <version>1.7</version>
+    <time>1554189492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689771</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>33b4c025f61032fabd935a7526b0caaa</srcmd5>
+    <version>1.7</version>
+    <time>1557141489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699825</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>712e876253dcc79e1ef7c5247ddc03c8</srcmd5>
+    <version>1.8.1+git41.2c43c51</version>
+    <time>1557915882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702761</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b3f63eedd25e70786b42fa8c73277495</srcmd5>
+    <version>1.8.1+git64.b969cf0</version>
+    <time>1558938984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704985</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>96c1356db42a8688c71b920934a11157</srcmd5>
+    <version>1.8.1+git135.9bab71e</version>
+    <time>1564483055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719004</requestid>
+  </revision>
+</revisionlist>

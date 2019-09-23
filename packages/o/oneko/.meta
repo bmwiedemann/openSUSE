@@ -1,0 +1,7 @@
+<package name="oneko" project="openSUSE:Factory">
+  <title>A Cat Catches Your Mouse</title>
+  <description>A nice program that changes your cursor into a cat playing with your
+mouse cursor.  The manual page shows more possibilities to change your
+cursor.</description>
+  <devel project="X11:Utilities" package="oneko"/>
+</package>

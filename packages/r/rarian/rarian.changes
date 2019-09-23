@@ -1,0 +1,256 @@
+-------------------------------------------------------------------
+Wed Jul 10 12:16:13 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Fix strange double | factory build error with autotools.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:36:54 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Mon Sep 18 14:28:54 UTC 2017 - dimstar@opensuse.org
+
+- Run spec-cleaner: resort the various sections.
+- Fix file lists, owning /etc/alternatives/* as ghost and real
+  files in /usr/bin (boo#994269).
+- Add rpmlintrc: Filter no-manual-page-for-binary and
+  self-obsoletion, which is intentional, based on the versions
+  simulated vs the last version of scrollkeeper we shipped.
+
+-------------------------------------------------------------------
+Tue Jan 17 11:07:50 UTC 2017 - olaf@aepfle.de
+
+- Reword and improve Summary and description.
+- Remove clean section.
+- Remove shell dependency in pre/post scripts.
+- Remove stale PreReq workaround.
+
+-------------------------------------------------------------------
+Thu Dec 26 13:26:49 UTC 2013 - dimstar@opensuse.org
+
+- Register / deregister Scrollkeeper DTD from the XML Catalog on
+  installation / removal.
+
+-------------------------------------------------------------------
+Wed Dec 18 15:47:53 UTC 2013 - dimstar@opensuse.org
+
+- Add scrollkeeper-omf.dtd to rarian-scrollkeeper-compat package:
+  ensure the DTD remains known, despite scrollkeeper no longer
+  being used.
+
+-------------------------------------------------------------------
+Fri Dec  6 18:30:57 UTC 2013 - dimstar@opensuse.org
+
+- Provide and obsolete scrollkeeper by rarian-compat: scrollkeeper
+  has not been in development for 10 yeats and rarian is meant to
+  be a drop-in replacement.
+
+-------------------------------------------------------------------
+Wed Oct  2 17:53:41 UTC 2013 - dimstar@opensuse.org
+
+- Own links created by update-alternatives as %ghost (bnc#823377).
+
+-------------------------------------------------------------------
+Fri Mar 29 21:58:24 UTC 2013 - dimstar@opensuse.org
+
+- Use full URL for source
+
+-------------------------------------------------------------------
+Fri Mar  1 12:35:14 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Wed Jan 26 23:54:28 CET 2011 - vuntz@opensuse.org
+
+- Add rarian-no-warning-localized-icon.patch to not display
+  warnings for localized icons in .desktop files.
+
+-------------------------------------------------------------------
+Tue Jan 11 19:31:09 CET 2011 - hpj@novell.com
+
+- Update rarian-0.5.6-reg-parse-bugs.patch and
+  rarian-opensuse-manuals.patch to correctly handle very long lines
+  of input text and prevent crashes.
+
+-------------------------------------------------------------------
+Mon Dec  7 13:41:24 CET 2009 - vuntz@opensuse.org
+
+- Rework the update-alternatives part to be correctly handle
+  package upgrades. Note that we need a %posttrans to work around
+  bugs in previously installed packages.
+
+-------------------------------------------------------------------
+Fri Oct  2 14:52:19 CEST 2009 - vuntz@opensuse.org
+
+- Add rarian-no-info.patch to fix a crash of yelp on the livecd
+  because there's no info file. Fix bnc#543130.
+- Add rarian-quiet.patch to remove some debug output.
+
+-------------------------------------------------------------------
+Thu May 28 18:11:00 CEST 2009 - vuntz@novell.com
+
+- Add a scrollkeeper-compat package for scrollkeeper compatbility
+  binaries.
+- Remove useless AutoReqProv: it's default now.
+- Remove --disable-scrollkeeper-compat from configure.
+- Use update-alternatives for the scrollkeeper tools so that
+  scrollkeeper and rarian-scrollkeeper-compat can both be
+  installed.
+- Remove empty AUTHORS file.
+
+-------------------------------------------------------------------
+Fri Oct 31 06:27:01 CET 2008 - vuntz@novell.com
+
+- Update rarian-opensuse-manuals.patch: no need to output an error
+  for many localized files we won't file anyway.
+- Add rarian-no-warning-X-lines.patch to make rarian not output
+  a warning for lines starting with X-.
+- Add rarian-no-warning-desktop-entry.patch to make rarian not
+  output a warning for standard .desktop entry keys (since we make
+  it parse the .desktop files).
+
+-------------------------------------------------------------------
+Thu Sep 18 15:27:58 EDT 2008 - jpr@novell.com
+
+- Remove parts of rarian-0.5.6-reg-parse-bugs.patch that are being
+  applied upstream now and were causing a crash
+
+-------------------------------------------------------------------
+Wed Sep 10 16:38:31 CDT 2008 - maw@suse.de
+
+- Update to version 0.8.1:
+  + Bugs fixed: bfo#15755, bfo#15654, bfo#15274, bfo#11839,
+    bfo#14872, and bfo#12515.
+
+-------------------------------------------------------------------
+Sat Jul  5 07:32:47 CEST 2008 - crrodriguez@suse.de
+
+- disable unusable static libraries 
+
+-------------------------------------------------------------------
+Mon Jun 16 20:41:55 CEST 2008 - maw@suse.de
+
+- Update to version 0.8.0:
+  + Remove extraneous debug output
+  + Improve categorization.
+
+-------------------------------------------------------------------
+Wed May  7 13:50:35 CEST 2008 - vuntz@suse.de
+
+- Add rarian-help-bundle.patch to fetch help from
+  /usr/share/gnome/help-bundle when it's living there. 
+
+-------------------------------------------------------------------
+Wed May  7 08:07:50 CEST 2008 - coolo@suse.de
+
+- return in non-void functions
+
+-------------------------------------------------------------------
+Thu Apr 24 14:20:47 CEST 2008 - vuntz@suse.de
+
+- Add rarian-opensuse-manuals.patch to list openSUSE manuals. This
+  is a temporary fix, until we can get the manuals packages to
+  install rarian metadata files.
+
+-------------------------------------------------------------------
+Wed Apr 23 01:56:29 CEST 2008 - vuntz@suse.de
+
+- Update rarian-0.5.6-docs-from-desktop-entries-and-bundles.patch
+  to use help: URI instead of ghelp: URI when creating an entry
+  from a desktop file. Yelp won't understand those ghelp: URI, so
+  the change is required.
+
+-------------------------------------------------------------------
+Wed Mar  5 16:15:07 CET 2008 - maw@suse.de
+
+- Update to version 0.7.1:
+  + Add LZMA support
+  + Make attributes insensitive to ordering
+  + Add new attributes for hidden (NoDisplay) and default section
+    (DocDefaultSection) to the .document file parsing
+  + Increase strictness of parsing in line with the spec
+  + omf files now return (approximate) fd.o categories
+  + Add new requirement to define I_KNOW_RARIAN_0_8_IS_UNSTABLE
+    before use
+  + rarian.h is now a general inclusion guard and main functions
+    have moved to rarian-main.h
+  + Update example program to use new features
+  + Bugs fixed: bfo#13201 and bfo#12279
+  + Many other minor errors and warnings fixed too.
+
+-------------------------------------------------------------------
+Wed Sep 19 15:03:59 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 0.6.0:
+  * Only export required symbols
+  * Fix build on OSX and Solaris
+  * Various crash fixes in .document files
+  * Make sk-config return decent results when OMF reading is
+    enabled
+  * Fix silly spelling errors
+  * Fix copyright headers
+  * Fallback languages now work correctly
+  * Fix potential off-by-one issue in sk-preinstall
+
+-------------------------------------------------------------------
+Fri Sep 14 03:13:24 CEST 2007 - hpj@suse.de
+
+- Add --disable-scrollkeeper-compat flag, so we don't get binaries
+  that conflict with scrollkeeper's.
+
+-------------------------------------------------------------------
+Mon Sep 10 20:14:53 CEST 2007 - maw@suse.de
+
+- Update to version 0.5.8:
+  + Misc. changes
+  + Bugs (bugs.freedesktop.org) fixed: #11976, #11957, #11896,
+    #11901, and #11799
+- Remove abuild.patch, as this release makes it unnecessary
+- Remove some comments inadvertently left behind during a prior
+  change.
+
+-------------------------------------------------------------------
+Mon Sep 10 06:57:54 CEST 2007 - hpj@suse.de
+
+- Amend rarian-0.5.6-eof-crash.patch to prevent a buffer overrun
+  crash, a file descriptor leak, and a failure the check the
+  return value from a fopen() call leading to another crash. The
+  problems appear in the same function as the EOF crash, so I
+  rolled them into the same patch.
+- Rename rarian-0.5.6-eof-crash.patch to
+  rarian-0.5.6-reg-parse-bugs.patch.
+
+-------------------------------------------------------------------
+Wed Sep  5 00:23:37 CEST 2007 - maw@suse.de
+
+- Respin rarian-0.5.6-docs-from-desktop-entries.patch, teaching
+  rarian to look inside help-bundle in addition to help
+  subdirectories; rename it to
+  rarian-0.5.6-docs-from-desktop-entries-and-bundles.patch
+  (#307213).
+
+-------------------------------------------------------------------
+Sat Sep  1 06:51:24 CEST 2007 - hpj@suse.de
+
+- Add rarian-0.5.6-eof-crash.patch (bugs.freedesktop.org #12131).
+- Add rarian-0.5.6-identifier-basename-crash.patch
+  (bugs.freedesktop.org #12226).
+- Add rarian-0.5.6-docs-from-desktop-entries.patch, which lets us
+  find documentation specified by applications' .desktop files.
+
+-------------------------------------------------------------------
+Fri Aug  3 23:49:35 CEST 2007 - maw@suse.de
+
+- BuildRequire gcc-c++ and pkg-config
+- s#%run_ldconfig#/sbin/ldconfig# in %post and add it to %postun
+- Add abuild.patch
+- Let rpm figure out Requires.
+- Split off a -devel subpackage
+- Minor specfile cleanups.
+
+-------------------------------------------------------------------
+Fri Aug  3 22:39:41 CEST 2007 - mauro@suse.de
+
+- New package: version 0.5.6

@@ -1,0 +1,165 @@
+-------------------------------------------------------------------
+Mon Jun  4 14:49:12 UTC 2018 - dimstar@opensuse.org
+
+- BuildRequires p7zip-full, now that 7z was split out.
+
+-------------------------------------------------------------------
+Wed Mar 21 09:20:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 10.1:
+  + Firefox: multiple fixes of GNOME Shell extensions
+    synchronization.
+  + Firefox 56 is minimum supported version now. ESR users should
+    use browser extension version 10.0.1.
+  + Known issues:
+    - In Firefox with enabled synchronization of GNOME Shell
+      extensions all Shell extensions may be removed after screen
+      got locked because of missed support of "locked" idle state
+      in WebExtensions API implementation.
+    - Chrome extension may be auto uninstalled after upgrade to
+      connector version 10. It can be restored using inline
+      installation link at https://extensions.gnome.org or using
+      Chrome Store.
+    - Firefox can consume a lot of CPU and sometime crash on quit
+      because of Mozilla's bug bmo#1349874.
+  + Updated translations.
+- Stop using source service, upstream now does regular releases.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 05 09:38:48 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 10:
+  + FreeBSD is supported again.
+  + Enabled GNOME Shell extensions synchronization in Firefox.
+  + Added option to check updates of enabled only GNOME Shell
+    extensions.
+  + Added GNOME proxy support for update checks.
+  + Update errors will not produce desktop notifications anymore.
+    All errors now goes to browser console.
+  + Chrome managed policies no longer got installed so browser
+    extensions will not be force installed along with connector.
+  + It's possible to use inline installation of browser extensions
+    through https://extensions.gnome.org website now.
+  + Added light icon for dark browser themes. Use options page to
+    switch icon.
+  + Various fixes for options page in Firefox.
+  + Updated translations.
+- Drop chrome-gnome-shell-nb-translation.patch: Fixed upstream.
+- No longer rm chrome-gnome-shell.json, upstream stopped installing
+  it.
+
+-------------------------------------------------------------------
+Fri Nov 24 20:08:05 UTC 2017 - zaitor@opensuse.org
+
+- Add chrome-gnome-shell-nb-translation.patch: Add Norwegian
+  Bokmål translation.
+
+-------------------------------------------------------------------
+Mon Nov  6 11:31:24 UTC 2017 - dimstar@opensuse.org
+
+- Allow the plugin to be disabled by removing the force-enabled
+  policy from upstream (boo#1061278).
+
+-------------------------------------------------------------------
+Thu Nov  2 16:01:28 UTC 2017 - dimstar@opensuse.org
+
+- Port to python3:
+  + BuildRequire python3-base: /usr/bin/python3 is not implicit
+    available in the buildroot yet.
+  + Replace python-requests Requires with python3-requests.
+  + Pass -DPYTHON_EXECUTABLE to cmake, pointing to
+    /usr/bin/python3.
+- Drop icon_theme_cache_post/postun scriptlets: no longer needed,
+  since file triggers hancdle icon cache updates now.
+- Add gobject-introspection BuildRequires: allow rpm to find/add
+  typelib() dependencies.
+
+-------------------------------------------------------------------
+Thu May 18 18:54:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 9:
+  + connector:
+    - Handle command line argument outside of GApplication.
+    - Fix gsettings GNOME Shell schema lookup.
+    - Fixed possible AttributeError.
+    - Fixed Ctrl spelling.
+  + compatibility:
+    - Fixed external messaging for Firefox 54.
+    - Updated to Firefox 52.
+  + Removed redundant line forgotten in previous commit.
+  + firefox:
+    - Restrict maximum version to 53.
+    - Show usefull error message in case native connector not
+      installed.
+  + api: show errror instead of warning in case initialization
+    failure.
+  + Improved error handling when GNOME Shell is not installed or
+    not running.
+  + options: allow html in error messages.
+  + sync:
+    - Avoid synchronization of disabled extensions during sleep
+      state.
+    - Increased idle queue timeout.
+  + update-check: make python-requests dependency optional.
+  + constants: drop old string.
+  + doap: fix JavaScript spelling.
+  + extension: open Shell extensions website on icon click.
+  + i18n:
+    - Regenerate template.
+    - Explicitly distinguish "browser extension" and "Shell
+      extension".
+    - Fix error message.
+    - Update list of supported locales.
+    - Regenerate locales.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 04 09:30:18 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 8.2:
+  + ubuntu:
+    - Added control.in that is needed for gnome-pkg-tools.
+    - Fixed python 3 detection.
+  + notifications: Fixed inter-frame communication.
+  + api:
+    - Do not expose api if GNOME Shell is not running.
+    - Do not expose api version on initialize failure.
+  + update-check: Fixed in-frame communication.
+  + i18n: Regenerate locales.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 12 20:30:33 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 8.1:
+  + Added check to make sure that "enabled-extensions" GNOME Shell
+    setting does not contains duplicated values (bgo#777650).
+  + Fixed error that breaks update check if there was extension
+    installed without "version" key in manifest.
+  + Fixed error that prevents error message to be shown when update
+    check is failed.
+  + Fixed connector segfault on browser close.
+  + Fixed possible error in synchronization process that may delete
+    some extensions.
+  + Updated translations.
+- Drop chrome-gnome-shell-commit-dca4a35.patch: Fixed upstream.
+- Use conditional to allow packaging for older versions of
+  openSUSE.
+
+-------------------------------------------------------------------
+Sat Feb  4 22:17:34 UTC 2017 - duncansreeves@gmail.com
+
+- Added chrome-gnome-shell-commit-dca4a35.patch: Fix connector: do
+  not use get_dbus_connection after GApplication was released
+  (gh#nE0sIghT/chrome-gnome-shell-mirror#27).
+
+-------------------------------------------------------------------
+Wed Jan 25 10:02:13 UTC 2017 - dimstar@opensuse.org
+
+- Initial package, version 8.
+

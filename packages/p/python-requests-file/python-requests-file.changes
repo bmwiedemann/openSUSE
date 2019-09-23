@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:53:43 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Jan  6 05:26:44 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 1.4.3:
+  * Skip the permissions test when running as root
+  * Handle missing locale in tests
+
+-------------------------------------------------------------------
+Thu May 11 01:28:32 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Fix source URL.
+- Update to version 1.4.2
+  * Set the response URL to the request URL
+- Update to version 1.4.1
+  * Add a wheel distribution
+
+-------------------------------------------------------------------
+Tue Feb  2 19:17:40 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

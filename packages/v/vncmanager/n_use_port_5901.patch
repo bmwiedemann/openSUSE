@@ -1,0 +1,16 @@
+Matches the default port used by tigervnc xinetd service.
+Index: vncmanager-0.9.0/vncmanager.conf
+===================================================================
+--- vncmanager-0.9.0.orig/vncmanager.conf
++++ vncmanager-0.9.0/vncmanager.conf
+@@ -6,8 +6,8 @@
+ 
+ # Port ot listen on.
+ # Default: 5900
+-#
+-# port = 5900
++
++port = 5901
+ 
+ # VNC security types.
+ # Comma separated list of allowed types. Order determines priority - VNC clients normally choose the first type they support.

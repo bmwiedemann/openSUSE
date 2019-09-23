@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42bc83a38e4a69315185fc70d95bb723</srcmd5>
+    <version>0.37</version>
+    <time>1539013726</time>
+    <user>dimstar_suse</user>
+    <comment>Check MANIFEST.in in a Python source package for completeness
+
+Needed for python3-jupyter_ipython</comment>
+    <requestid>640485</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88678c67801bff3da9ed7f4f1477f8c3</srcmd5>
+    <version>0.38</version>
+    <time>1557751797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701746</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e59b09c91818d33b783397439786fbd8</srcmd5>
+    <version>0.38</version>
+    <time>1558037349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703235</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0163f3366abcfc7adc396ceaac2b069</srcmd5>
+    <version>0.39</version>
+    <time>1569233388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.39:
+  * You can now use check-manifest as a pre-commit hook (#100).</comment>
+    <requestid>730680</requestid>
+  </revision>
+</revisionlist>

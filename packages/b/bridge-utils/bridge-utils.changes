@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Tue Sep 10 20:26:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Tue Oct 18 14:06:26 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.6:
+  * Various tiny fixes, nothing ground breaking
+- Refresh patch bridge-utils-1.5-ip6.patch (fuzz)
+
+-------------------------------------------------------------------
+Thu Dec  3 10:09:17 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Remove the /sbin/ link, it should not be needed.
+  Lets see what breaks, people should migrate to bridge anwyay
+
+-------------------------------------------------------------------
+Mon May 27 10:37:08 CEST 2013 - mhrusecky@suse.cz
+
+- added missing include to fix build in factory
+  bridge-utils-1.5-ip6.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 08:26:47 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Feb  2 11:10:30 UTC 2012 - rschweikert@suse.com
+
+- Create -devel package to fix rpmlint errors
+- Keep the binary in /usr/sbin, create link to /sbin (UsrMerge project)
+  This does not effect resolution of #707837 as /sbin/brctl can still be
+  found. systemd properly supports separate /usr
+
+-------------------------------------------------------------------
+Fri Dec  2 07:30:35 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 20:44:16 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Aug 30 18:35:51 UTC 2011 - andrea.turrini@gmail.com
+
+- removed duplicated "Authors:" from description of bridge-utils.spec
+
+-------------------------------------------------------------------
+Mon Jul 25 14:16:57 CST 2011 - lidongyang@novell.com
+- bnc#707837 - network:utilities/bridge-utils: Bug in Factory 12.1
+  brctl has changed from /sbin to /usr/sbin
+  revert the changes made to %install section of the spec file
+
+-------------------------------------------------------------------
+Wed Jun  8 14:22:43 CST 2011 - lidongyang@novell.com
+
+- update to 1.5
+
+-------------------------------------------------------------------
+Sun Dec 20 14:06:42 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue May  6 08:52:32 CEST 2008 - crrodriguez@suse.de
+
+- fix for Feature No 300498 , use RPM_OPT_FLAGS everywhere. 
+
+-------------------------------------------------------------------
+Wed Jan  9 11:04:59 CET 2008 - prusnak@suse.cz
+
+- update to 1.4
+
+-------------------------------------------------------------------
+Tue Oct 17 18:37:46 CEST 2006 - mjancar@suse.cz
+
+- update to 1.2
+  * Fixed bug where setting port priority set path cost instead
+
+-------------------------------------------------------------------
+Tue Aug  8 00:49:53 CEST 2006 - ro@suse.de
+
+- define HZ to sysconf(_SC_CLK_TCK) if not defined 
+
+-------------------------------------------------------------------
+Thu Jul 27 15:32:52 CEST 2006 - mjancar@suse.cz
+
+- update to 1.1
+  * Change to use libsysfs 2.0
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 12:56:40 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Mon Aug  1 17:14:48 CEST 2005 - mjancar@suse.cz
+
+- update to 1.0.6
+
+-------------------------------------------------------------------
+Thu Nov 11 12:46:29 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Fri Aug 13 15:45:09 CEST 2004 - mjancar@suse.cz
+
+- update to 1.0.4
+
+-------------------------------------------------------------------
+Fri Jun 20 15:16:48 CEST 2003 - mjancar@suse.cz
+
+- initial version 0.9.6
+

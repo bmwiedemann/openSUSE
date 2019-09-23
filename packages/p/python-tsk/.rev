@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7dde4a75bd8a410f84de2de21443fa5f</srcmd5>
+    <version>0~20130910</version>
+    <time>1380218388</time>
+    <user>coolo</user>
+    <comment>License issue BNC#839248 resolved.  libtalloc removed from package and class.c file relicensed by upstream author as Apache-2.0
+
+python bindings for sleuthkit.  Required by plaso.</comment>
+    <requestid>198403</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e61c5888b9ceaa436dc5d68232adae5</srcmd5>
+    <version>0~20140506</version>
+    <time>1408021096</time>
+    <user>lnussel</user>
+    <comment>Depends on SR#244639</comment>
+    <requestid>244640</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ddfb17deea7ba90270aee2c934527c9d</srcmd5>
+    <version>0~20140506</version>
+    <time>1408524670</time>
+    <user>lnussel</user>
+    <comment>Trivial new Provides to conform with upstream &quot;requires&quot; statements.</comment>
+    <requestid>245140</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ddfb17deea7ba90270aee2c934527c9d</srcmd5>
+    <version>0~20140506</version>
+    <time>1409303009</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edf1353136a77c36574c4cd5da91063b</srcmd5>
+    <version>0~20170128</version>
+    <time>1489345344</time>
+    <user>dimstar_suse</user>
+    <comment>Update to be compatible with Sleuthkit 4.4</comment>
+    <requestid>477360</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e556d9356893868faed61e101b0559b</srcmd5>
+    <version>0~20170802</version>
+    <time>1508434334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170802
+- implement python singlespec syntax
+- add LGPL-3.0+ for the included talloc library
+- update to v0~20170128
+	* Syncs up with recent Sleuthkit versions
+	* required by python-plaso 1.5.1 support of Sleuthkit 4.4.0
+	* fails to build with Leap 42.1 and older
+	* the only known consumer of python-tsk v0~20170128 is python-plaso v1.5.1
+	* both python-tsk v0~20170128 and python-plaso v1.5.1 will only be supported on Leap 42.2 and newer
+- add a patch to keep setup.py from attempting to build internal talloc lib
+- prepare to add python3 support
+- add Provides pytsk3 as used by python-plaso 1.5.1
+- add &quot;Provides: pytsk&quot;  -  pytsk is now in use by upstream dependencies
+- update to v0~20140506
+   * This is just a wrapper for libtsk10, upstream did not provide any release notes
+- Address legal issues raised in BNC#839248
+- update to latest version in source repo (as of 9/10/2013)
+   * now uses libtalloc shared library if available
+   * remaining GPL licenses changed to Apache-2.0 with permission of relevant copyright holder
+- added BuildRequires libtalloc-devel to allow shared library to be used
+- added rm -rf talloc and talloc.new to highlight they are not used in the build
+- fix BuildRequires
+  * remove spurious pcre-devel
+  * add gcc-c++
+- update to latest version in source repo
+- per author, sleuthkit-devel 4.1 compatibility is only in the source repo 
+- change version from 0.0.0~ to 0~
+- initial package
+</comment>
+    <requestid>533534</requestid>
+  </revision>
+</revisionlist>

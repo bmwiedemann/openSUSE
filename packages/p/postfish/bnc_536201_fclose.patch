@@ -1,0 +1,10 @@
+--- postfish/mainpanel.c.orig	2007-10-10 16:43:19.000000000 +0200
++++ postfish/mainpanel.c	2009-09-10 14:31:07.595761000 +0200
+@@ -1240,6 +1240,7 @@ static gboolean async_event_handle(GIOCh
+ static int look_for_gtkrc(char *filename){
+   FILE *f=fopen(filename,"r");
+   if(!f)return 0;
++  fclose(f);	// the above was just an access() test, wasn't it?
+   fprintf(stderr,"Loading postfish-gtkrc file found at %s\n",filename);
+   gtk_rc_add_default_file(filename);
+   return 1;

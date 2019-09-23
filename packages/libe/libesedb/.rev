@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cedfc3c40a08ebbcd44b53dbecf8a24</srcmd5>
+    <version>0~20140803</version>
+    <time>1408957502</time>
+    <user>coolo</user>
+    <comment>New package to parse Microsoft EDB files.  Used during computer forensic analysis.</comment>
+    <requestid>246116</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7cedfc3c40a08ebbcd44b53dbecf8a24</srcmd5>
+    <version>0~20140803</version>
+    <time>1409301548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>133cdfb21ac83dea1b75793fa35b365f</srcmd5>
+    <version>0~20141110</version>
+    <time>1422626714</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282348</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>496e0fd68434e9813802a1541253c118</srcmd5>
+    <version>0~20151213</version>
+    <time>1455021149</time>
+    <user>dimstar_suse</user>
+    <comment>update to v0~20151213</comment>
+    <requestid>358270</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>273d49f7f8ffe5e814185b19874b1d71</srcmd5>
+    <version>0~20181229</version>
+    <time>1560337766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696085</requestid>
+  </revision>
+</revisionlist>

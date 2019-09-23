@@ -1,0 +1,26 @@
+From 9362fa70eaa37250afd5b36adb68295b54ae5c99 Mon Sep 17 00:00:00 2001
+From: Federico Fissore <federico@fissore.org>
+Date: Mon, 5 Oct 2015 11:27:36 +0200
+Subject: [PATCH 02/19] Making "inline" behave like an attribute. Fixes #1
+
+---
+ c.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/c.c b/c.c
+index ccca3a4..af46dc4 100644
+--- a/c.c
++++ b/c.c
+@@ -1732,7 +1732,8 @@ static void processToken (tokenInfo *const token, statementInfo *const st)
+ 
+ 		case KEYWORD_NONE:      processName (st);                       break;
+ 		case KEYWORD_ABSTRACT:  st->implementation = IMP_ABSTRACT;      break;
+-		case KEYWORD_ATTRIBUTE: skipParens (); initToken (token);       break;
++		case KEYWORD_ATTRIBUTE:
++		case KEYWORD_INLINE:    skipParens (); initToken (token);       break;
+ 		case KEYWORD_BIND:      st->declaration = DECL_BASE;            break;
+ 		case KEYWORD_BIT:       st->declaration = DECL_BASE;            break;
+ 		case KEYWORD_CATCH:     skipParens (); skipBraces ();           break;
+-- 
+2.11.0
+

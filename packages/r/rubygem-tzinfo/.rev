@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6675a97e2fe3e176893432eee0471688</srcmd5>
+    <version>0.3.30</version>
+    <time>1334217045</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>113099</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1abfce7d6dc720449c8731fd2e63dcde</srcmd5>
+    <version>0.3.33</version>
+    <time>1334692955</time>
+    <user>coolo</user>
+    <comment> (forwarded request 114089 from coolo)</comment>
+    <requestid>114124</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1abfce7d6dc720449c8731fd2e63dcde</srcmd5>
+    <version>0.3.33</version>
+    <time>1340184178</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>579e557fe5faefd683de718f3c19a346</srcmd5>
+    <version>0.3.33</version>
+    <time>1344111871</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>129944</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3599a6dcd1cc70595a82ffc9ceb66a38</srcmd5>
+    <version>0.3.34</version>
+    <time>1352093609</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140078</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6b4c9ae93ce90383124a85d439040b45</srcmd5>
+    <version>0.3.35</version>
+    <time>1352720433</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140903</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6b4c9ae93ce90383124a85d439040b45</srcmd5>
+    <version>0.3.35</version>
+    <time>1359110353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0103aee659d7dc6de3fa48ef16c8e6d7</srcmd5>
+    <version>0.3.36</version>
+    <time>1362995284</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158226</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d4701ce76dd4be8a6fbd890d9bb0f52</srcmd5>
+    <version>0.3.37</version>
+    <time>1364277732</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160867</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9feef375a40cc8731223e2b8e6b9aab</srcmd5>
+    <version>1.0.0</version>
+    <time>1370453681</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.0.0
+ * Allow TZInfo to be used with different data sources instead of just the
+   built-in Ruby module data files.
+ * Include a data source that allows TZInfo to load data from the binary
+   zoneinfo files produced by zic and included with many Linux and Unix-like
+   distributions.
+ * Remove the definition and index Ruby modules from TZInfo and move them into
+   a separate TZInfo::Data library (available as the tzinfo-data gem).
+ * Default to using the TZInfo::Data library as the data source if it is 
+   installed, otherwise use zoneinfo files instead.
+ * Preserve the nanoseconds of local timezone Time objects when performing 
+   conversions (issue #29705).
+ * Don't add the tzinfo lib directory to the search path when requiring 'tzinfo'.
+   The tzinfo lib directory must now be in the search path before 'tzinfo' is
+   required.
+ * Add utc_start_time, utc_end_time, local_start_time and local_end_time instance
+   methods to TimezonePeriod. These return an identical value as the existing
+   utc_start, utc_end, local_start and local_end methods, but return Time
+   instances instead of DateTime.
+ * Make the start_transition, end_transition and offset properties of
+   TimezonePeriod protected. To access properties of the period, callers should
+   use other TimezonePeriod instance methods instead (issue #7655).</comment>
+    <requestid>177319</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ea4aa3bc07699d3ede9ff902be7b9679</srcmd5>
+    <version>1.0.1</version>
+    <time>1374759540</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184002</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ea4aa3bc07699d3ede9ff902be7b9679</srcmd5>
+    <version>1.0.1</version>
+    <time>1379664586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3d5e0eff8415ee60773eda2bc9945f51</srcmd5>
+    <version>1.1.0</version>
+    <time>1382353489</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202918</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>88f81b81656913980e864b1bbd402a6a</srcmd5>
+    <version>1.1.0</version>
+    <time>1400734685</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234977</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>88f81b81656913980e864b1bbd402a6a</srcmd5>
+    <version>1.1.0</version>
+    <time>1409303297</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a86652d735ea812093bccb8d69750315</srcmd5>
+    <version>1.2.2</version>
+    <time>1413263495</time>
+    <user>coolo</user>
+    <comment>- port MANUAL to gem2rpm.yml
+
+- updated to version 1.2.2
+ * Fix an error with duplicates being returned by Timezone#all_country_zones
+   and Timezone#all_country_zone_identifiers when used with tzinfo-data
+   v1.2014.6 or later.
+ * Use the zone1970.tab file for country timezone data if it is found in the
+   zoneinfo directory (and fallback to zone.tab if not). zone1970.tab was added
+   in tzdata 2014f. zone.tab is now deprecated.
+ 
+ 
+ Version 1.2.1 - 1-Jun-2014
+ --------------------------
+ 
+ * Support zoneinfo files generated with zic version 2014c and later.
+ * On platforms that only support positive 32-bit timestamps, ensure that
+   conversions are accurate from the epoch instead of just from the first
+   transition after the epoch.
+ * Minor documentation improvements.
+ 
+ 
+ Version 1.2.0 - 26-May-2014
+ ---------------------------
+ 
+ * Raise the minimum supported Ruby version to 1.8.7.
+ * Support loading system zoneinfo data on FreeBSD, OpenBSD and Solaris.
+   Resolves #15.
+ * Add canonical_identifier and canonical_zone methods to Timezone. Resolves #16.
+ * Add a link to a DataSourceNotFound help page in the TZInfo::DataSourceNotFound
+   exception message.</comment>
+    <requestid>255327</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>bf619d02dac06c913c7f1eae05f28bff</srcmd5>
+    <version>1.2.2</version>
+    <time>1413616176</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257376</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf612657679dfacb2ed0034ac8584fee</srcmd5>
+    <version>1.2.3</version>
+    <time>1491895994</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482693</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4032bcc540a4315b277e1ab54f56899d</srcmd5>
+    <version>1.2.4</version>
+    <time>1509722909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538474</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2d46abfe244d43465ff110871afc0396</srcmd5>
+    <version>1.2.5</version>
+    <time>1518813823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577000</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b459b098296cc0b3a4da704121c433b9</srcmd5>
+    <version>2.0.0</version>
+    <time>1548064459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666102</requestid>
+  </revision>
+</revisionlist>

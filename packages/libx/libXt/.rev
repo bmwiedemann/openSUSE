@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fd24b82a18c7597c7b4eea00f49cd66</srcmd5>
+    <version>1.0.9</version>
+    <time>1329476703</time>
+    <user>coolo</user>
+    <comment>- Rename xorg-x11-libXt to libXt and utilize shlib policy</comment>
+    <requestid>105473</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bed20c65e1b64a99f03a57861892f7a</srcmd5>
+    <version>1.1.3</version>
+    <time>1336471087</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115363</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7bed20c65e1b64a99f03a57861892f7a</srcmd5>
+    <version>1.1.3</version>
+    <time>1340183560</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7bed20c65e1b64a99f03a57861892f7a</srcmd5>
+    <version>1.1.3</version>
+    <time>1359109236</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>8f8ec009b81160d82de23a06b3d19e5e</srcmd5>
+    <version>1.1.3</version>
+    <time>1363949975</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160105</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d52517305ae9baec7fa8c6caf1d65bce</srcmd5>
+    <version>1.1.4</version>
+    <time>1370426255</time>
+    <user>coolo</user>
+    <comment>Update to version 1.1.4 (forwarded request 177138 from tobijk)</comment>
+    <requestid>177154</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d52517305ae9baec7fa8c6caf1d65bce</srcmd5>
+    <version>1.1.4</version>
+    <time>1379662889</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d52517305ae9baec7fa8c6caf1d65bce</srcmd5>
+    <version>1.1.4</version>
+    <time>1409301492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e65013d6e001f0290129f3a8ac1a4225</srcmd5>
+    <version>1.1.5</version>
+    <time>1430891294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Revert &quot;Avoid shadowing variables.&quot;
+  * If CFLAGS_FOR_BUILD is not set, include CWARNFLAGS in default value
+  * makestrs: use strchr() instead of index()
+  * makestrs: Replace malloc()+strcpy() calls with strdup() calls
+  * makestrs: Replace strcpy()+strcat() calls with snprintf() calls
+  * makestrs: Use asprintf() if available
+  * unifdef -UCRAY -UCRAY2
+  * Use $(MKDIR_P) in Makefile.am for better code portability
+  * Include direct.h header for _getdrives() on Win32
+  * Include unistd.h for getpid()
+  * asprintf needs _GNU_SOURCE on some platforms
+  * Fix cross-compilation
+  * Add missing comma to fix DEBUG build.
+  * Use appropriate variable type for vsnprintf return value.
+  * Mark non-returning function with appropriate attribute.
+  * Ignore test-driver from automake-1.13.
+  * Avoid shadowing variables.
+  * Fix char vs. unsigned char warnings.
+  * Use string.h instead of X11/Xos.h.
+  * Fix _XtInherit on x86_64 Windows</comment>
+    <requestid>305329</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1b95d20bc1be2126a49ac8b4a4ecd3bf</srcmd5>
+    <version>1.1.5</version>
+    <time>1512041607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544431</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e72537df84c2f4138b5b51b57425e637</srcmd5>
+    <version>1.2.0</version>
+    <time>1562590927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  * bug fixes 
+- supersedes U_libXt_code-cleanup.patch</comment>
+    <requestid>713196</requestid>
+  </revision>
+</revisionlist>

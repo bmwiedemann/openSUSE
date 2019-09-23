@@ -1,0 +1,31 @@
+README Datei für OTRS::ITSM
+
+Das Paket otrs-itsm enhält alle notwendigen Module, um Ihre OTRS Installation
+mit ITSM zu erweitern.
+
+Hierbei sollten sie folgendes beachten:
+
+- mit der Installation dieses Pakets wird die Datei
+  @OTRS_ROOT@/Kernel/Config/Files/ZZZAuto.pm hinzugefügt, welches ein lokales
+  Repository zur Installation von OTRS::ITSM Modulen zur Verfügung stellt.
+  Somit muß das OTRS System nicht zwingend eine Verbindung zum Internet haben.
+
+- Falls sie OTRS bereits schon länger in Verwendung haben und auch Anpassungen
+  vorgenommen haben,dann sollten Sie das lokale Repository via SysConfig
+  hinzufügen.
+  -> gehen SIe in den Admin Bereich:
+  -> wählen Sie SysConfig
+  -> wählen Sie bei der Gruppenauswahl "Framework (324)"
+  -> im erscheinenden Ergebnis wählen Sie "Core::Package"
+  -> Config Einstellungen: Framework -> Core::Package
+    o aktivieren Sie "Package::RepositoryAccessRegExp:" und belassen Sie
+      den (Default: 127\.0\.0\.1) Wert
+    o fügen Sie bei "Package::RepositoryList:" ein neues Repository hinzu
+      Schlüssel: file://@OTRS_ROOT@/itsm/packages4/
+      Inhalt: [--OTRS::ITSM local repo]
+  -> klicken Sie auf Aktualisieren
+
+  Sie können nun in der "Paket Verwaltung" als Quelle "[--OTRS::ITSM local repo]"
+  auswählen, um OTRS::ITSM zu installieren.
+
+Viel Spaß mit OTRS::ITSM

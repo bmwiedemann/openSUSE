@@ -1,0 +1,13 @@
+diff --git a/QGCSetup.pri b/QGCSetup.pri
+index a44926f73..aed9c3ab0 100644
+--- a/QGCSetup.pri
++++ b/QGCSetup.pri
+@@ -97,7 +97,7 @@ WindowsBuild {
+     QMAKE_POST_LINK += $$escape_expand(\\n) $$QT_BIN_DIR\\windeployqt --no-compiler-runtime --qmldir=$${BASEDIR_WIN}\\src $${DEPLOY_TARGET}
+ }
+ 
+-LinuxBuild {
++DisabledLinuxBuild {
+     QMAKE_POST_LINK += && mkdir -p $$DESTDIR/Qt/libs && mkdir -p $$DESTDIR/Qt/plugins
+ 
+     # QT_INSTALL_LIBS

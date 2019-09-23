@@ -1,0 +1,85 @@
+---
+ sh.c |   57 +++++++++++++++++++++++++++++++++------------------------
+ 1 file changed, 33 insertions(+), 24 deletions(-)
+
+--- sh.c
++++ sh.c	2016-11-25 08:05:00.501610199 +0000
+@@ -1541,18 +1541,18 @@ int
+ #endif /*WINNT_NATIVE*/
+ srcfile(const char *f, int onlyown, int flg, Char **av)
+ {
+-    int *unit;
++    int unit, *hd = NULL;
+ 
+-    unit = xmalloc(sizeof(*unit));
+-    cleanup_push(unit, xfree);
+-    *unit = xopen(f, O_LARGEFILE |
++    unit = xopen(f, O_LARGEFILE |
+ 		    ((flg & HIST_FILE_WRLCK) ? (O_CREAT|O_RDWR) : O_RDONLY), 0600);
+-    if (*unit == -1)
++    if (unit < 0)
+ 	return 0; /* Error. */
+ 
+-    cleanup_push(unit, open_cleanup);
+-    *unit = dmove(*unit, -1);
+-    (void) close_on_exec(*unit, 1);
++    cleanup_push(&unit, open_cleanup);
++    unit = dmove(unit, -1);
++    cleanup_ignore(&unit);
++    cleanup_until(&unit);
++    (void) close_on_exec(unit, 1);
+ 
+     if (flg & (HIST_FILE_WRLCK | HIST_FILE_RDLCK)) {
+ 	struct flock fl;
+@@ -1562,26 +1562,35 @@ srcfile(const char *f, int onlyown, int
+ 	fl.l_start = 0;
+ 	fl.l_len = 0;
+ 
+-	cleanup_push(unit, fcntl_cleanup);
+-	if (fcntl(*unit, F_SETLKW, &fl) == -1)
+-	    cleanup_ignore(unit);
+-    }
++	hd = xmalloc(sizeof(*hd));
++	cleanup_push(hd, xfree);
+ 
+-    srcunit(*unit, onlyown, flg, av);
++	*hd = fcntl(unit, F_DUPFD_CLOEXEC, FSAFE+1);
++	cleanup_push(hd, open_cleanup);
+ 
+-    /* Unlock the unit, if we don't want to leave it locked (or open). */
+-    if ((flg & (HIST_FILE_WRLCK | HIST_FILE_RDLCK)) &&
+-        (!(flg & HIST_FILE_LOCK) || !(flg & HIST_FILE_OPEN)))
+-	cleanup_until(unit); /* fcntl_cleanup */
+-
+-    /* Close the unit, if we don't want to leave it open. */
+-    if (!(flg & HIST_FILE_OPEN)) {
+-	cleanup_until(unit); /* open_cleanup */
+-	cleanup_until(unit); /* xfree */
+-	return -1; /* Not error but invalid file descriptor. */
++	fcntl(*hd, F_SETLKW, &fl);
++	cleanup_push(hd, fcntl_cleanup);
+     }
+ 
+-    return *unit; /* File descriptor (fd > FSAFE). */
++    cleanup_push(&unit, open_cleanup);
++    /*
++     * This one *does* do a cleanup_until() hence a open_cleanup()
++     * therefore use a duplicated fd to lock/unlock the history file
++     */
++    srcunit(unit, onlyown, flg, av);
++    cleanup_until(&unit);	/* Close the official unit. */
++
++    if (!hd)
++	return -1;		/* Not error but invalid file descriptor. */
++
++    if ((flg & HIST_FILE_OPEN) && (flg & HIST_FILE_LOCK))
++	return -1;
++
++    cleanup_until(hd);		/* fcntl_cleanup */
++    cleanup_until(hd);		/* open_cleanup */
++    cleanup_until(hd);		/* xfree */
++
++    return unit;		/* File descriptor (fd > FSAFE). */
+ }
+ 
+ 

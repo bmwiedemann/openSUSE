@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>8f9fa6603c2be94251e18590d95ab933</srcmd5>
+    <version>1</version>
+    <time>1194320607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>8271402565573c4d3e874042bf372659</srcmd5>
+    <version>1</version>
+    <time>1194565201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="64">
+    <srcmd5>8271402565573c4d3e874042bf372659</srcmd5>
+    <version>1</version>
+    <time>1194565201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eae1edacda077315b80911fd04a96340</srcmd5>
+    <version>1.0.0</version>
+    <time>1226940727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2548c510dd7d0aaab63ff35bfac866cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1244828828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>2548c510dd7d0aaab63ff35bfac866cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1244828828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>13623f747c4b4045312d18bffbd531f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1256036168</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS Devel:LLDC:SLE-10-SP3/ptpd based on submit request 2261 from user tsariounov
+</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b80c3e8b1b554c15bdb2cb375e9dff94</srcmd5>
+    <version>1.0.0</version>
+    <time>1268925808</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>b80c3e8b1b554c15bdb2cb375e9dff94</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>b80c3e8b1b554c15bdb2cb375e9dff94</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>b80c3e8b1b554c15bdb2cb375e9dff94</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>b80c3e8b1b554c15bdb2cb375e9dff94</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182374</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5972f56d48a82f551569809b369d07d2</srcmd5>
+    <version>1.1.0</version>
+    <time>1319823748</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>89582</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b24892ca383a9996f19839500cfba1bd</srcmd5>
+    <version>1.1.0</version>
+    <time>1323194027</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>b24892ca383a9996f19839500cfba1bd</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184023</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>b24892ca383a9996f19839500cfba1bd</srcmd5>
+    <version>1.1.0</version>
+    <time>1359109964</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>b24892ca383a9996f19839500cfba1bd</srcmd5>
+    <version>1.1.0</version>
+    <time>1379664084</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>b24892ca383a9996f19839500cfba1bd</srcmd5>
+    <version>1.1.0</version>
+    <time>1409302765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4b3907c963d79fa312a97a7c0721a667</srcmd5>
+    <version>2.3.0</version>
+    <time>1433832570</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311137</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>340df07347f102a9e08f1983ce9ed2c5</srcmd5>
+    <version>2.3.1</version>
+    <time>1463498116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1
+  * see attached Changelog for full list of changes
+- Update project and download url
+- Small spec file cleanups</comment>
+    <requestid>395090</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e491ed378921b022d8c664b166ee09f5</srcmd5>
+    <version>2.3.1</version>
+    <time>1468482623</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with latest net-snmp
+  * ptpd2-net-snmp_U64.patch</comment>
+    <requestid>408255</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b57cac35760155f78564760dc71ef731</srcmd5>
+    <version>2.3.1</version>
+    <time>1511595736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544871</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>7731446e7f768a14f2dc9d818c227715</srcmd5>
+    <version>2.3.1</version>
+    <time>1516880499</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct executable path in service file (bsc#1076900)</comment>
+    <requestid>569434</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>90efdd724f06941f846257f75b621eda</srcmd5>
+    <version>2.3.1</version>
+    <time>1520588784</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate default config during build</comment>
+    <requestid>584431</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>110b388795058e76d186062f058ea497</srcmd5>
+    <version>2.3.1</version>
+    <time>1542889609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650724</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>f323a27bc44c0d963d6a3b8eb69d6da8</srcmd5>
+    <version>2.3.1</version>
+    <time>1543311773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651968</requestid>
+  </revision>
+</revisionlist>

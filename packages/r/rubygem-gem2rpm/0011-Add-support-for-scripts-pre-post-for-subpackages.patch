@@ -1,0 +1,44 @@
+From 0ee368bc6c4ea35d233dadbe1f2c7048a99d3dc4 Mon Sep 17 00:00:00 2001
+From: Theo chatzimichos <tampakrap@opensuse.org>
+Date: Fri, 5 Dec 2014 17:11:47 +0200
+Subject: [PATCH 11/32] Add support for :scripts: (pre/post) for subpackages
+
+With this commit we can add pre/post/(etc) scripts in gem2rpm.yml for
+subpackages, as in the example below:
+
+:custom_pkgs:
+  apache:
+    :scripts:
+      :pre: |-
+        some_command
+      :post:
+        another_command
+---
+ templates/opensuse.spec.erb | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
+index 8bc281c..af04eaf 100644
+--- a/templates/opensuse.spec.erb
++++ b/templates/opensuse.spec.erb
+@@ -209,6 +209,17 @@ This package holds the <%= custom_pkg_name %> sub package for <%= spec.name -%>
+ %defattr(-,root,root,-)
+ <%= data[:filelist] %>
+ 
++<% if data[:scripts]
++      if data[:scripts].is_a? Hash
++        data[:scripts].each do |section, content| -%>
++%<%=section %> <%=custom_pkg_name %>
++<%= content %>
++
++<%      end
++      end
++   end
++-%>
++
+ <%   end
+    end
+ -%>
+-- 
+2.20.1
+

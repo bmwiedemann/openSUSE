@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e934db48df586377c0595d31d869d1f</srcmd5>
+    <version>1.7.4</version>
+    <time>1548063948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662760</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7903878a7e8c694eb3d97c170f237d3b</srcmd5>
+    <version>1.8.0</version>
+    <time>1550220939</time>
+    <user>dimstar_suse</user>
+    <comment>Elixir 1.8.0</comment>
+    <requestid>669065</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ddbe5f733ee4b8fd69b59c1c196e0af</srcmd5>
+    <version>1.8.1</version>
+    <time>1550668325</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677393</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>360c83f98c3b28d784652a9b4a627602</srcmd5>
+    <version>1.8.1</version>
+    <time>1552572023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684700</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f20e0d31e87647fc9a14cb45e873e22a</srcmd5>
+    <version>1.8.2</version>
+    <time>1559375175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705610</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12c2acee56c1fd12bd9416f4ac460499</srcmd5>
+    <version>1.9.0</version>
+    <time>1566665470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725818</requestid>
+  </revision>
+</revisionlist>

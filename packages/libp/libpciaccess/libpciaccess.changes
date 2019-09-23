@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Mon Jul 22 15:02:17 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.16
+  * This release brings a compilation fix on 32-bit arm with newer
+    glibc, and fixes the raw x86 backend's memory mapping to handle
+    writes correctly.
+
+-------------------------------------------------------------------
+Fri Jul 12 10:35:30 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.15
+  * Updates for FreeBSD and Hurd support
+  * Fixed multifunction bridge enumeration
+  * Fixed a crash when no PCI bus exists
+
+-------------------------------------------------------------------
+Mon Oct 23 18:22:58 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 0.14:
+  This release adds support for 32-bit PCI domain IDs, which are common in
+  virtualized environments. This support has been tested on Linux, and probably
+  also "just works" on FreeBSD and Solaris, to the extent that the underlying
+  OS supports it.
+
+-------------------------------------------------------------------
+Sat Apr  8 12:47:00 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 0.13.5:
+  This release includes musl build fixes, improvements to the
+  Solaris backend and allows parsing separate sysfs files rather
+  than reading the config file on newer kernels.
+
+-------------------------------------------------------------------
+Mon May  4 14:08:32 UTC 2015 - sndirsch@suse.com
+
+-  Update to version 0.13.4
+   * Add missing guards around config.h inclusion
+   * Check for __linux__ instead of linux during compilation
+   * Include the POSIX fcntl.h instead of sys/fcntl.h
+   * Include config.h before any other headers.
+   * Bug 89151: Fix build on NetBSD/alpha and NetBSD/sparc64.
+
+-------------------------------------------------------------------
+Mon Feb  9 12:56:45 UTC 2015 - sndirsch@suse.com
+
+- Update to version 0.13.3
+  * This release provides a number of platform-specific improvements
+    for various platforms, including Linux, Solaris, OpenBSD, NetBSD,
+    and Hurd, plus the addition of some support for Cygwin.
+- added baselibs.conf as source to specfile in order to make factory
+  checkin policy happy
+
+-------------------------------------------------------------------
+Sat Aug 17 22:19:13 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.13.2:
+  + Fix Sun bug #7035791: scanpci should report 64 bit registers.
+  + Resync COPYING file with copyrights/licenses from code.
+  + pci_device_solx_devfs_probe: implicit conversion changes
+    signedness warnings.
+  + pci_device_solx_devfs_read: fix sign conversion/comparison
+    warnings.
+  + Support more pci functions on NetBSD.
+  + Update NetBSD support and fix build on NetBSD-4.
+  + Enable boot_vga support only if WSDISPLAYIO_GET_BUSID is
+    defined. Fixes build on NetBSD-5.
+  + Add legacy IO routines for FreeBSD (fdo#63583).
+  + pci_id_file_open: move variable inside the #ifndef that uses
+    it.
+  + Define PCI_MATCH_ANY as an unsigned int.
+  + Move 'const' to correct place, so it has meaning.
+  + Protect config.h like usual.
+  + autogen.sh: Implement GNOME Build API
+  + configure: Remove AM_MAINTAINER_MODE
+  + PCI: set correct mask value when matching for bridges.
+  + scanpci: print meaningful info on BASEROM
+  + libpciaccess:
+    - sparc rom read fix
+    - implementation of boot_vga in Solaris
+    - fix memory usage errors
+  + Implement legacy io & map for x86 backend
+  + Solaris: 
+    - Refactor pci_device_solx_devfs_map_range to reduce code
+      duplication.
+    - Implement map_legacy & legacy_io functions.
+    - Probe improvement.
+    - Add domain support for sparc platform.
+    - Remove #defines for Ultra 45 southbridge device ids.
+  
+-------------------------------------------------------------------
+Fri Aug  2 12:38:30 UTC 2013 - sndirsch@suse.com
+
+- u_libpciaccess-vgaarb-add-function-to-get-default-vga-device-and-it.patch:
+  Reenable default device when shutting down VGA arbitration.
+  (bnc#714677, bnc#832973).
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Thu Apr 12 07:13:04 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.13.1:
+  + linux: Fix out[bwl] macros on non-I/O architectures
+  + Fix pci_io_handle allocation routines to provide sound stable
+    memory allocation
+  + Fix in OpenBSD support
+- Changes from version 0.13:
+  + linux: Don't use /dev/port
+  + Use O_CLOEXEC for internal file descriptors
+  + delete_io_handle: fix deletion of last handle causing crash
+  + Fix leak and compiler warnings
+  + Improvements to OpenBSD and Solaris support
+
+-------------------------------------------------------------------
+Mon Feb 13 02:40:46 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 0.12.902
+* ships new map_legacy APIs required by the current development
+  version of xorg-server as well as miscelaneous bug fixes.  
+- Rename main package from libpciaccess0 to libpciaccess.
+  Do away with the 0 in libpciaccess0-devel, since the devel
+  package is not actually versioned and only one can be installed.
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Jan 10 11:47:22 UTC 2012 - sndirsch@suse.com
+
+- added libtool to Buildrequires to fix build on factory 
+
+-------------------------------------------------------------------
+Thu Dec  1 17:06:34 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov  2 13:27:29 UTC 2011 - eich@suse.com
+
+- Add ./ to the %_configure define - just to be on the safe side. 
+
+-------------------------------------------------------------------
+Tue Nov  1 13:30:06 UTC 2011 - johannesobermayr@gmx.de
+
+- update to 0.12.901
+  * use autogen.sh not ./configure
+  * needs pkgconfig(xorg-macros) >= 1.8
+  * general X11 is 7.6 not 7.4
+
+-------------------------------------------------------------------
+Tue Aug 30 12:47:57 UTC 2011 - sndirsch@suse.com
+
+- created package 
+

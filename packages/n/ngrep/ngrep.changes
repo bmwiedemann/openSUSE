@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sun Dec 31 22:47:39 UTC 2017 - avindra@opensuse.org
+
+- Update to version 1.47
+  * Fix "no VLAN support for XXX"-related problems
+  * Fix truncated/garbled output (e.g. SIP over SLL/Linux cooked
+    sockets)
+  * Change exit behavior to match BSD & GNU grep (see manpage)
+  * Add Solaris IPnet support
+  * Update to use 32bit values where relevant
+  * Emit frame # in header, useful for reference/analysis
+  * Emit total received, matched upon exit (dropped unreliable
+    PCAP stats)
+  * Import debian patches related to autotools, manpage, and
+    compilation on other platforms
+  * Fix build clean/distclean when not linked against provided
+    GNU regex
+  * Fix build --enable/--disable flag processing
+  * Update to latest autotools (2017)
+  * Fix building under MS VS2012 / Win32
+- cleanup with spec-cleaner
+- drop 10_man-fixes.diff
+  * upstreamed in 8e5187def73abd624c10ed37d42b7416e4a1ce97
+- tcpkill compilation disabled due to incompatiblity with modern
+  libnet
+- remove future tense in description
+
+-------------------------------------------------------------------
+Wed Mar 15 18:26:24 UTC 2017 - dimstar@opensuse.org
+
+- Dol not pass --disable-pcap-restart to configure: this is the
+  default and the configure check is quite broken in processing it:
+  --disable-pcap-restarted is treated equal to --enable-pcap-restart.
+
+-------------------------------------------------------------------
+Tue Dec  1 18:29:35 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.46.1
+  * actual bugfix for the VLAN parsing issue.  prior version 1.46 expanded
+    the BPF filter to include IPv4/6 traffic, but the offset calculation
+    forgot to account for the variable presence of VLAN headers.  now
+    ngrep detects VLAN frames in every packet and adjusts the offset on
+    the fly.
+- Changes from version 1.46
+  * configure.in: re-organized, in part t  * sync with downstream patches
+    (which were never sent upstream)
+  * configure.in: removed included PCRE library, now builds against system
+    version when specified (default is included GNU Regex)
+  * configure.in: fixed duplicate PCAP header check, which broke with the
+    release of libpcap 1.0
+  * configure.in: prefixed all tack-on autoconf variables from _FO  * -> EXTRA_FOO
+  * Makefile.in: capitulated t  * Debian: use tar.gz instead of tar.bz2
+  * ngrep.c: Call setlocale t  * make isprint() work based on current
+    locale (bdo#307496).
+  * include tcpkill functionality (-K), a long-standing downstream patch
+    under Debian
+  * updated t  * latest autoconf
+  * updated copyrights t  * 2014
+- Remove obsolete patches
+  * 10_debian-build.diff
+  * 20_setlocale.diff
+  * 40_ipv6-offsets.diff
+- Update project Url
+- Use download Url
+- Enable tcpkill function with "--enable-tcpkill" configure switch
+  and add libnet-devel build dependency for openSUSE > 12.1
+
+-------------------------------------------------------------------
+Sun Jul 13 21:03:24 UTC 2014 - adam@mizerski.pl
+
+- Copied debian patches
+  - 10_debian-build.diff
+  - 10_man-fixes.diff
+  - 20_setlocale.diff
+  - 40_ipv6-offsets.diff
+- Fixed pcap usage. See
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=546596
+- Enabled IPv6 support.
+- Usage of system provided pcre library.
+- Disabled automatic stripping of executable.
+- Added CHANGES.txt CREDITS.txt README.txt and LICENSE.txt files
+  to packaged documentation.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Thu May 31 11:42:56 UTC 2012 - pcerny@suse.com
+
+- corrected licence
+
+-------------------------------------------------------------------
+Tue Aug 26 00:00:00 UTC 2008 - lchiquitto@novell.com
+
+- First version (1.45)
+

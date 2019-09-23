@@ -1,0 +1,128 @@
+#define copyright /*     -*- coding: euc-jp -*-
+#
+#  Copyright 1993 NEC Corporation, Tokyo, Japan.
+# 
+#  Permission to use, copy, modify, distribute and sell this software
+#  and its documentation for any purpose is hereby granted without
+#  fee, provided that the above copyright notice appear in all copies
+#  and that both that copyright notice and this permission notice
+#  appear in supporting documentation, and that the name of NEC
+#  Corporation not be used in advertising or publicity pertaining to
+#  distribution of the software without specific, written prior
+#  permission.  NEC Corporation makes no representations about the
+#  suitability of this software for any purpose.  It is provided "as
+#  is" without express or implied warranty.
+# 
+#  NEC CORPORATION DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+#  INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN 
+#  NO EVENT SHALL NEC CORPORATION BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+#  CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF 
+#  USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR 
+#  OTHER TORTUOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
+#  PERFORMANCE OF THIS SOFTWARE. 
+#
+#  Newly created to fit the layout according to the "JIS X 6002-1985" standard.
+#  This layout is described in Ken Lundes book
+#  "CJK Information processing", page 246 ff (ISBN 1-56592-224-7)
+#  The Japanese keyboards I have are exactly like that.
+#
+#  (Thu Sep 19 00:25:30 2002  Mike Fabian  <mfabian@suse.de>)
+# 
+# $Id: .canna-jisx6002.ctd,v 1.2 2002/10/23 03:47:12 mfabian Exp $ 
+# */
+
+#define apostrophe \047
+
+1	ぬ
+2	\0	ふ
+ふ@	ぶ
+ふ[	ぷ
+3	あ
+\#	ぁ
+4	う
+$	ぅ
+5	え
+%	ぇ
+6	お
+&	ぉ
+7	や
+apostrophe	ゃ
+8	ゆ
+(	ゅ
+9	よ
+)	ょ
+0	わ
+~	を
+-	\0	ほ
+ほ@	ぼ
+ほ[     ぽ
+=	ー
+^	\0	へ
+へ@	べ
+へ[	ぺ
+q	\0	た
+た@	だ
+w	\0	て
+て@	で
+e	い
+E	ぃ
+r	\0	す
+す@	ず
+t	\0	か
+か@	が
+y	ん
+u	な
+i	に
+o	ら
+p	\0	せ
+せ@	ぜ
+P       『
+@	゛
+[	゜
+{	「
+a	\0	ち
+ち@	ぢ
+s	\0	と
+と@	ど
+d	\0	し
+し@	じ
+f	\0	は
+は@	ば
+は[	ぱ
+g	\0	き
+き@	ぎ
+h	\0	く
+く@	ぐ
+j	ま
+k	の
+l	り
+;	れ
++	』
+:	\0	け
+け@	げ
+*	ヶ
+]	む
+}	」
+z	\0	つ
+つ@	づ
+Z	っ
+x	\0	さ
+さ@	ざ
+c	\0	そ
+そ@	ぞ
+v	\0	ひ
+ひ@	び
+ひ[	ぴ
+b	\0	こ
+こ@	ご
+n	み
+m	も
+,	ね
+<	、
+.	る
+>	。
+/	め
+?	・
+\\	ろ
+_	ー
+|	ー

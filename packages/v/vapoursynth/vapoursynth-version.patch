@@ -1,0 +1,12 @@
+diff -urEbw vapoursynth-R47/Makefile.am vapoursynth-R47.new/Makefile.am
+--- vapoursynth-R47/Makefile.am	2019-08-02 19:47:15.000000000 +0200
++++ vapoursynth-R47.new/Makefile.am	2019-08-05 09:18:37.690018923 +0200
+@@ -71,7 +71,7 @@
+ 
+ pkgconfig_DATA += pc/vapoursynth.pc
+ 
+-libvapoursynth_la_LDFLAGS = -no-undefined -avoid-version
++libvapoursynth_la_LDFLAGS = -no-undefined -release $(PACKAGE_VERSION)
+ libvapoursynth_la_CPPFLAGS = $(ZIMG_CFLAGS) -DVS_PATH_PLUGINDIR='"$(PLUGINDIR)"'
+ libvapoursynth_la_LIBADD = $(ZIMG_LIBS) $(DLOPENLIB) libexprfilter.la
+ 

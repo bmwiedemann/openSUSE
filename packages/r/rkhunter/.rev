@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c173bbea8b7d3e75ddd6ccf1d274409</srcmd5>
+    <version>1.3.8</version>
+    <time>1313055077</time>
+    <user>saschpe</user>
+    <comment>outsourced from openSUSE:Factory:Contrib</comment>
+    <requestid>78046</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>907ead6fb2f47f06931f470db07c1ee0</srcmd5>
+    <version>1.3.8</version>
+    <time>1313055089</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78046
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5f6e18d2f7713ef92cac4c98c027cfb5</srcmd5>
+    <version>1.3.8</version>
+    <time>1316766828</time>
+    <user>saschpe</user>
+    <comment>fixed Bug bnc#71773</comment>
+    <requestid>84495</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5f6e18d2f7713ef92cac4c98c027cfb5</srcmd5>
+    <version>1.3.8</version>
+    <time>1319182427</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>86b178959fc21c1b3d5794297a628f9d</srcmd5>
+    <version>1.3.8</version>
+    <time>1323194408</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7f4c57d3161390d851078d6d9440e68</srcmd5>
+    <version>1.4.0</version>
+    <time>1337667533</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121602</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f7f4c57d3161390d851078d6d9440e68</srcmd5>
+    <version>1.4.0</version>
+    <time>1340184145</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f7f4c57d3161390d851078d6d9440e68</srcmd5>
+    <version>1.4.0</version>
+    <time>1359110290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>6f425632e331daf0fa96d19e976612e4</srcmd5>
+    <version>1.4.0</version>
+    <time>1364309954</time>
+    <user>coolo</user>
+    <comment>- Add aarch64 to the list of lib64 platforms (forwarded request 161083 from Andreas_Schwab)</comment>
+    <requestid>161112</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>6b0f4dd077b381ddf776d48d6c85915d</srcmd5>
+    <version>1.4.0</version>
+    <time>1372743810</time>
+    <user>coolo</user>
+    <comment>Added /dev/.sysconfig/* to the whitelist</comment>
+    <requestid>181711</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>6b0f4dd077b381ddf776d48d6c85915d</srcmd5>
+    <version>1.4.0</version>
+    <time>1379664458</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>f08a3d40afa9eb6ecef08f97e56459ee</srcmd5>
+    <version>1.4.0</version>
+    <time>1389708619</time>
+    <user>coolo</user>
+    <comment>- handle current lib64 platforms, added ppc64le and s390x.</comment>
+    <requestid>213567</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>f08a3d40afa9eb6ecef08f97e56459ee</srcmd5>
+    <version>1.4.0</version>
+    <time>1409303190</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b506d41a26f60f378ade66133e5523d1</srcmd5>
+    <version>1.4.2</version>
+    <time>1415289033</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259875</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>851512508b4a75d07d17bef3eb0bd088</srcmd5>
+    <version>1.4.2</version>
+    <time>1428652452</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295100</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>21ecaf8ea2a0c552f503e5f7accbe831</srcmd5>
+    <version>1.4.2</version>
+    <time>1431365977</time>
+    <user>coolo</user>
+    <comment>Update rpm to make use of new feature of using a config dir.
+Fix APPEND_LOG being off in 1.4.2 rpm.
+
+This package needs to be relased for oS 13.2 etc. See bnc#930331
+
+- Fix spec obliterating PKGMGR_NO_VRFY. This fixes bnc#926624
+- Create /etc/rkhunter.d and put config added by rpm in a file in it.
+- Fix hideous way of spec adding config variables to a file.
+- Default config file changed so APPEND_LOG was no longer activated.
+  Add to /etc/rkhunter.d/00-opensuse.conf (forwarded request 306174 from volkerkuhlmann)</comment>
+    <requestid>306314</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d05dfc26251dfc077fe07904119528fe</srcmd5>
+    <version>1.4.2</version>
+    <time>1451390399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351049</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>a17cacdbc258a5148abff68bc73a926a</srcmd5>
+    <version>1.4.2</version>
+    <time>1456821882</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362714</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>fb94908d499128f054b2e17411203ea5</srcmd5>
+    <version>1.4.2</version>
+    <time>1478952100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438016</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>73631ed774001311ad44612a2c9ce23b</srcmd5>
+    <version>1.4.2</version>
+    <time>1493103540</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490277</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0b43d6b8670187fb5a1a2d789a063c66</srcmd5>
+    <version>1.4.4</version>
+    <time>1499152331</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507930</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>43e7d183eba159e43c8385424422b39c</srcmd5>
+    <version>1.4.4</version>
+    <time>1511817357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545264</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b38bc6f5e72e2986802f8531776fdc10</srcmd5>
+    <version>1.4.6</version>
+    <time>1537882991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637741</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c670dad4950c9a4ea598c4401e6e0f44</srcmd5>
+    <version>1.4.6</version>
+    <time>1539093258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640774</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>840e576987314d75b399a99b07ae857e</srcmd5>
+    <version>1.4.6</version>
+    <time>1555237350</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate rkhunter.conf.local to prevent hash error for 
+  rkhunter.conf.
+- Remove some rpmlint-erros. (forwarded request 693322 from ecsos)</comment>
+    <requestid>693631</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>818c0cee95f707d39c504b5bb087a41d</srcmd5>
+    <version>1.4.6</version>
+    <time>1566665174</time>
+    <user>dimstar_suse</user>
+    <comment>- package the /etc/cron.daily instead of buildrequire cron
+
+- BuildRequire cron, as this contains now the cron directories</comment>
+    <requestid>725634</requestid>
+  </revision>
+</revisionlist>

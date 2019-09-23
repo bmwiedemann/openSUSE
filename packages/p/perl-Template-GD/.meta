@@ -1,0 +1,6 @@
+<package name="perl-Template-GD" project="openSUSE:Factory">
+  <title>GD plugin(s) for the Template Toolkit</title>
+  <description>The Template-GD distribution provides a number of Template Toolkit plugin modules to interface with Lincoln Stein's GD modules. These in turn provide an interface to Thomas Boutell's GD graphics library.
+  </description>
+  <devel project="devel:languages:perl" package="perl-Template-GD"/>
+</package>

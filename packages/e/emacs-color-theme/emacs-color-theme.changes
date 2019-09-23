@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Mar 13 21:01:07 UTC 2017 - bosim@opensuse.org
+
+- Added proper license (GPL-2.0+, not GPL-2.0).
+- Added BuildArch: noarch.
+
+-------------------------------------------------------------------
+Mon Mar 13 17:09:06 UTC 2017 - bosim@opensuse.org
+
+- Added changelog, doing actual build of package.
+- Added patch (make.patch) that ensures the build runs without 
+  errors.
+
+-------------------------------------------------------------------
+
+Thu Apr 16 00:00:00 UTC 2015 - bo@geekworld.dk
+- Initial version
+

@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Fri May 31 08:12:20 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r271793).
+
+-------------------------------------------------------------------
+Thu May 30 12:37:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Strip -flto from $optflags.
+
+-------------------------------------------------------------------
+Fri May  3 08:39:53 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r270841).
+  * Includes gcc8-pr89752.patch.
+
+-------------------------------------------------------------------
+Mon Mar 25 11:12:03 UTC 2019 - rguenther@suse.com
+
+- Add gcc8-pr89752.patch fixing an ICE compiling tensorflow on
+  aarch64 [bsc#1129389].
+- Change URLs to use https.
+
+-------------------------------------------------------------------
+Tue Mar  5 08:28:21 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r269383).
+  * Includes fix for PR89505.  [bsc#1127857]
+
+-------------------------------------------------------------------
+Wed Feb 27 12:06:48 UTC 2019 - rguenther@suse.com
+
+- Add gcc8-reproducible-builds-buildid-for-checksum.patch to make
+  builds without profiling reproducible.
+
+-------------------------------------------------------------------
+Tue Feb 26 08:10:31 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r269200).
+  * Includes GCC 8.3 release.  [bsc#1127260]
+- Disable address-space randomization for profiledbootstrap.
+- Add gcc8-reproducible-builds.patch to improve build reproducability.
+
+-------------------------------------------------------------------
+Tue Feb  5 08:44:06 UTC 2019 - rguenther@suse.com
+
+- Guard profiledbootstrap with %do_profiling.
+
+-------------------------------------------------------------------
+Mon Feb  4 11:09:54 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r268506).
+  * Includes fix for PR88782, a libstdc++ ABI issue.  [bnc#1124140]
+
+-------------------------------------------------------------------
+Mon Jan  7 08:36:40 UTC 2019 - rguenther@suse.com
+
+- Update gcc44-rename-info-files.patch to adjust gnat manual
+  entries in the info directory.  [bnc#1114592]
+
+-------------------------------------------------------------------
+Thu Jan  3 10:47:14 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r267546).
+  * Includes backport of asm inline.
+
+-------------------------------------------------------------------
+Thu Nov  8 15:27:33 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r265901).
+  * Includes fix for PR87859.  [bnc#1115229]
+  * Includes fix for the PR86751 ABI break, removing gcc8-pr86751.patch.
+
+-------------------------------------------------------------------
+Wed Oct 31 10:34:12 UTC 2018 - rguenther@suse.com
+
+- Add gcc8-pr86751.patch, revert fix for PR86751 which breaks the ABI.
+
+-------------------------------------------------------------------
+Thu Oct 25 14:32:52 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r265487).
+  * Pulls in libbacktrace fix.  [bnc#1112690]
+- Add gcc8-pr87642.patch to fix multibyte thousands separator printing.
+  [bnc#1112361]
+
+-------------------------------------------------------------------
+Thu Sep 13 12:27:43 UTC 2018 - rguenther@suse.com
+
+- Fix AVR configuration to not use __cxa_atexit or libstdc++ headers.
+  Point to /usr/avr/sys-root/include as system header include directory.
+
+-------------------------------------------------------------------
+Fri Aug 31 08:55:23 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r264010).
+  * GCC 8 Toolchain Module state.  [bnc#1102564] [fate#326486]
+
+-------------------------------------------------------------------
+Fri Aug 17 08:33:45 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r263610).
+  * Includes GCC 8.2 release.
+  * Includes fix for build with ISL 0.20.
+
+-------------------------------------------------------------------
+Thu Jul 19 09:14:14 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r262873).
+  * Includes fix to no longer try linking -lieee with -mieee-fp.
+    [bnc#1084842]
+  * Includes changes up to GCC 8.2 RC1.
+
+-------------------------------------------------------------------
+Thu Jun 14 07:56:13 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r261583).
+  * Includes fix for C++ ABI issue with passing a class with a
+    trivial move constructor and deleted copy constructor.
+    [GCC#86094]
+
+-------------------------------------------------------------------
+Tue Jun 12 09:04:34 UTC 2018 - schwab@suse.de
+
+- riscv-builtin-eh-return.patch: Don't clobber retval when
+  __builtin_eh_return called
+
+-------------------------------------------------------------------
+Wed May 23 09:22:07 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r260570).
+  * Adds fix for qtscript miscompile.
+  * Avoids bogus strict-overflow warnings.  [bnc#1094222]
+
+-------------------------------------------------------------------
+Sat May 12 21:37:09 UTC 2018 - afaerber@suse.de
+
+- Add riscv64-elf cross target.
+  Suffix has become necessary to distinguish from openSUSE target.
+
+-------------------------------------------------------------------
+Wed May  9 07:25:02 UTC 2018 - schwab@suse.de
+
+- libffi-riscv.patch: Backport of RISC-V support for libffi
+
+-------------------------------------------------------------------
+Wed May  2 09:38:37 UTC 2018 - rguenther@suse.com
+
+- Update to GCC 8.1 release.
+
+-------------------------------------------------------------------
+Mon Apr 30 07:20:55 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r259752).
+  * GCC 8.1 second release candidate.
+
+-------------------------------------------------------------------
+Wed Apr 25 08:24:58 UTC 2018 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r259636).
+  * GCC 8.1 first release candidate.
+  * package x86_64 movdirintrin.h
+
+-------------------------------------------------------------------
+Wed Apr 18 14:05:21 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r259467).
+
+-------------------------------------------------------------------
+Wed Apr 11 07:23:30 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r259308).
+  * contains fix for ios_base::failure ABI breakage.  [bnc#1087550]
+- Remove now obsolete gcc7-bnc1087550.diff.
+
+-------------------------------------------------------------------
+Mon Apr  9 13:48:24 UTC 2018 - rguenther@suse.com
+
+- Set SUSE_ASNEEDED to zero during %install so libasan keeps its
+  NEEDED entry for libstdc++.so.  [GCC#84428]
+
+-------------------------------------------------------------------
+Fri Apr  6 09:07:30 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r259162).
+- Enable --enable-fix-cortex-a53-835769 for aarch64.
+- Add gcc7-bnc1087550.diff to revert the ios_base::failure ABI
+  back to compatible behavior with the default ABI.  [bnc#1087550]
+
+-------------------------------------------------------------------
+Tue Apr  3 08:18:28 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r259024).
+  * Includes gcc8-pr84990.patch.
+- Enable --enable-fix-cortex-a53-843419 for aarch64.  [bnc#1084812]
+
+-------------------------------------------------------------------
+Tue Mar 20 09:20:25 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r258674).
+  * Add gcc8-pr84990.patch to fix bootstrap with Ada.
+- Switch to release-checking builds.
+
+-------------------------------------------------------------------
+Mon Mar 12 09:37:26 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r258445).
+
+-------------------------------------------------------------------
+Thu Mar  8 14:57:27 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r258365).
+  * adds pconfigintrin.h and wbnoinvdintrin.h intrinsic headers
+    for x86
+
+-------------------------------------------------------------------
+Mon Mar  5 12:55:09 UTC 2018 - schwab@suse.de
+
+- Add riscv64 cross compiler
+
+-------------------------------------------------------------------
+Thu Mar  1 13:09:05 UTC 2018 - rguenther@suse.com
+
+- Fix nvptx offload target compiler install so GCC can pick up
+  required files.  Split out the newlib part into cross-nvptx-newlib8-devel
+  and avoid conflicts with GCC 7 variant via Provides/Conflicts
+  of cross-nvptx-newlib-devel.
+
+-------------------------------------------------------------------
+Mon Feb 26 09:12:03 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r257983).
+- Add conflicts to non-bootstrap variant for cross packages to silence
+  repo-checker.
+- Amend gcc48-remove-mpfr-2.4.0-requirement.patch to fix build on SLE11.
+
+-------------------------------------------------------------------
+Fri Feb  9 07:57:38 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r257516). 
+- Use %{?_smp_mflags} everywhere.
+- Update _constraints to bump physicalmemory and general simplification.
+
+-------------------------------------------------------------------
+Wed Jan 31 13:23:28 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r257232).
+- Merge cross compiler packaging changes from GCC 7 again.
+
+-------------------------------------------------------------------
+Mon Jan 22 12:25:54 UTC 2018 - rguenther@suse.com
+
+- Move misplaced %endif
+
+-------------------------------------------------------------------
+Mon Jan 15 09:39:28 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r256686).
+- Merge cross compiler changes from GCC 7.
+- Bump libgo SO version again.
+
+-------------------------------------------------------------------
+Fri Jan  5 00:52:33 UTC 2018 - afaerber@suse.de
+
+- Prepare for disabling C++ for cross-compilers
+
+-------------------------------------------------------------------
+Tue Jan  2 14:54:35 UTC 2018 - mliska@suse.cz
+
+- Remove not used todo.patch.
+
+-------------------------------------------------------------------
+Tue Jan  2 08:35:19 UTC 2018 - rguenther@suse.com
+
+- Update to SVN trunk head (r256068).
+- Fix lsan_preinit packaging on ppc.
+- More x86_64 intrinsic headers.
+
+-------------------------------------------------------------------
+Mon Dec 18 08:41:31 UTC 2017 - rguenther@suse.com
+
+- Update to SVN trunk head (r255776).
+- Merge cross changes from gcc7 package, adding gcc7-avoid-fixinc-error.diff.
+- Remove Cilk+ packaging stuff since the feature has been removed.
+- Add gcc8-testresults-rpmlintrc to fix build.
+
+-------------------------------------------------------------------
+Tue Nov 21 14:08:27 UTC 2017 - rguenther@suse.com
+
+- Disable Intel CET for building target libraries.
+
+-------------------------------------------------------------------
+Thu Nov 16 09:36:06 UTC 2017 - mliska@suse.cz
+
+- New package, inherits from gcc7 
+  * gcc-dir-version.patch, drop patchlevel from install directory names
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs file
+  that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not slow down
+  Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr for ppc,
+    just a testcase
+  * gcc44-textdomain.patch, make translation files version specific and
+  adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files when
+  renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed libstdc++
+  html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with earlier
+  mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with host gcc 4.3
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes new warning
+  from -Wextra
+- Drops
+  * gcc7-stack-probe.diff in favor of upstream implementation
+  * gcc7-pr81481.diff which is now upstream

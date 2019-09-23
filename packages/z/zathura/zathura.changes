@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Fri Apr 26 22:25:40 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- Resolve shell completion via "Supplements:", i.e. bash/zsh completion are recommends if and only if the shells are installed as well.
+
+-------------------------------------------------------------------
+Mon Feb  4 10:01:03 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.4.3 
+* Various fixes and improvements
+* Add bash and zsh completions
+* Add RTL layout of pages
+
+-------------------------------------------------------------------
+Wed Aug  8 17:06:20 UTC 2018 - jengelh@inai.de
+
+- Trim exaggerations from description.
+
+-------------------------------------------------------------------
+Wed May 23 08:56:29 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.4.0
+* move to meson build system
+* Port to newer libsynctex
+* Improved HiDPI support
+* Display page labels
+
+-------------------------------------------------------------------
+Fri Jan 26 14:13:33 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.3.8
+* Fix memory leaks
+* Rework plugin initialization
+
+-------------------------------------------------------------------
+Sun Feb  5 19:00:06 UTC 2017 - mimi.vx@gmail.com
+
+- update to 0.3.7
+* Improved logging
+* Improve page mode toggling
+* Several fixes and improvements
+* Updated translations
+
+-------------------------------------------------------------------
+Thu Jun  2 11:53:58 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.3.6
+* Parallel build of manpages
+* Several fixes and improvements
+
+-------------------------------------------------------------------
+Sun Mar 20 11:38:05 UTC 2016 - mimi.vx@gmail.com
+
+- added libsynctex support on openSUSE:Tumbleweed
+
+-------------------------------------------------------------------
+Tue Feb 23 17:50:16 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.3.5
+* Build even without SyncTex
+* Children should not fork
+* Recent files support
+* Substitute home with tilde
+* Open URLs
+
+-------------------------------------------------------------------
+Sun May 10 20:31:31 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.3.3
+- Store tmp files in only one location
+- Print target selection
+- Fix dual page render breakage of adjust_window
+- Update translations
+- Update buld system
+
+-------------------------------------------------------------------
+Wed Nov 12 08:57:43 UTC 2014 - mimi.vx@gmail.com
+
+- Update to upstream version 0.3.2
+- resolve memory leak while reloading file
+- Prevent segmentation fault when smooth zooming with mouse
+- Cache thumbnails to support smooth zooming
+- Check scale value correctness
+- Update build system
+- Update translations
+
+-------------------------------------------------------------------
+Tue Oct 28 16:25:59 UTC 2014 - mimi.vx@gmail.com
+
+- change library Zlib
+
+-------------------------------------------------------------------
+Mon Oct 27 13:37:41 UTC 2014 - tchvatal@suse.com
+
+- Disable stripping.
+
+-------------------------------------------------------------------
+Fri Oct 24 21:15:53 UTC 2014 - mimi.vx@gmail.com
+
+- Bump to 0.3.1
+- Segmentation fault caused by bidirectional scrolling
+- Add SyntaxView
+
+-------------------------------------------------------------------
+Thu Oct 23 14:53:33 UTC 2014 - mimi.vx@gmail.com
+
+- remove unneed deps 
+
+-------------------------------------------------------------------
+Thu Oct 23 12:20:38 UTC 2014 - mimi.vx@gmail.com
+
+- change make comand
+- add one file
+
+-------------------------------------------------------------------
+Tue Oct 21 13:41:12 UTC 2014 - mimi.vx@gmail.com
+
+- change minimal version of giara 
+
+-------------------------------------------------------------------
+Tue Oct 21 13:26:52 UTC 2014 - mimi.vx@gmail.com
+
+- change extension im man page 
+
+-------------------------------------------------------------------
+Tue Oct 21 12:20:12 UTC 2014 - mimi.vx@gmail.com
+
+- updated  last upstream version 0.3.0
+  - taken from home:AndnoVember:test
+  - complete changelog http://pwmt.org/projects/zathura/changelog/
+
+-------------------------------------------------------------------
+Sat May 12 18:37:46 UTC 2012 - seiler@b1-systems.de
+
+- removed unneed autcommented lines
+- added RPM Optflags to gcc CFLAGS
+- removed duplicate file listing in %files section
+- added Variable $LIBDIR=%{_libdir} to the make install command
+- replaced update-desktop-database with macros
+
+-------------------------------------------------------------------
+Wed Apr 25 15:01:48 UTC 2012 - seiler@b1-systems.de
+
+- initial package/commit
+

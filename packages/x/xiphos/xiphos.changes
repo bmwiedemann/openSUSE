@@ -1,0 +1,608 @@
+-------------------------------------------------------------------
+Wed Sep 11 10:14:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add conditional variant of suse_update_desktop_file for Factory
+  and newer versions of openSUSE, fixes build in Factory.
+- Add conditional xiphos-build-without-scrollkeeper.patch and
+  xiphos-remove-gconf-2.0.patch, make scrollkeeper and
+  pkgconfig(gconf-2.0) BuildRequires conditional. No longer depend
+  on scrollkeeper and gconf in Factory and newer versions of
+  openSUSE. Patches borrowed from debian.
+
+-------------------------------------------------------------------
+Sun Aug 12 09:05:03 UTC 2018 - kkirill@opensuse.org
+
+- Update to version 4.1.0:
+  + #753 Unexpected Search Results
+  + #783 Add support for ancillary configuration files to unlock modules from STEP Bible
+  + #809 Using meson to build xiphos
+  + #823 Flatpak available on Flathub
+  + #828 #873 find dialog has an unknown button.
+  + #830 Add header lines to adv.search export
+  + #831 Module Manager problems in 4.0.7 (Ubuntu Linux)
+  + #834 libwebkitgtk-3.0-0 which is deprecated
+  + #836 Replace lucene with soundex
+  + #838 Modules - About - Copy
+  + #843 Xiphos hates superscripts
+  + #845 show pre-chapter/-book material with italics
+  + #846 can't handle OT quote display variant
+  + #847 Compilation failed on Ubuntu 16.04
+  + #848 Xiphos doesn't use non-break space
+  + #850 Lack of space in the "about" module window
+  + #851 corrected use of verse number in chapter export
+  + #853 unexpected file list at the previewer pane
+  + #854 UI cut off on left side
+  + #855 Xiphos crashes at first start (with workaround)
+  + #857 Show the text of all the verses of a xref
+  + #858 Detached sidebar empty
+  + #861 Need help compiling 4.0.7
+  + #862 Please update your translation tools
+  + #864 Cannot compile through AUR
+  + #869 Advanced search crashes if using custom list for second/third/etc. time
+  + #870 Advanced search, exact phrase fails due to notes
+  + #871 Update dependencies
+  + #872 Bible showing weird characters
+  + #874 use gtkbox to replace gtk{v,h}box for xi-splash.ui
+  + #875 use gtkgrid to replace gtktable in edit_link_dialog.xml
+  + #876 #860 fixed gtk_font_button_get(set)_font_name deprecated
+  + #877 remove repeated arrow display
+  + #878 Xiphos website needs updating
+  + #881 #882 Wayland use under Gnome 3.26 or above leads to crash on Navbar click
+  + #887 Add keyboard-only BibleSync navigation
+  + #888 update biblesync glue for biblesync 1.2.0
+  + biblesync: avoid versekey data corruption by using a copy -- orig. is destroyed.
+  + biblesync: tell user exactly once that others are xmitting unknown bible modnames.
+  + translation updates
+  + compatibility update for sword 1.8
+  + added gtk version checks and fixed numerous gtk deprecations.
+
+-------------------------------------------------------------------
+Mon Sep 25 22:25:17 UTC 2017 - kkirill@opensuse.org
+
+- Update to version 4.0.7:
+  + changed module option Glosses to default on.
+  + added config support, MinimumVersion: ignore modules newer than Sword itself.
+  + updated French and traditional Chinese translations.
+  + fixed dbus linkage failure due to insanity in latest release (rawhide).
+  + #524 fix use of fonts whose names end in digits.
+  + #725 add book/chapter journal template.
+  + #739 click verse text before/after chapter to navigate across chapters.
+  + #788 use saved status of detached sidebar.
+  + #791 add maximized detached window of current bible on F11.
+  + #821 update installation instructions (ubuntu).
+  + #822 prefs option not to use alternating fg/bg in parallel displays.
+
+-------------------------------------------------------------------
+Sun Aug 20 14:51:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 4.0.6:
+  + Fixed longstanding display problem with webkit2 (now req'd for
+    fedora).
+  + Added alt-L toggle lemma.
+  + Added View Xiphos Releases to Help menu.
+  + Fixed biblesync passphrase preservation.
+  + Internal:
+    - Removed all ancient ImageMagick references.
+    - Removed HAVE_GTK_xxx in favor of GTK_VERSION_CHECK.
+    - Fixed wk2 search result.
+  + Updated translations.
+- Drop xiphos-fix-missing-return.patch and
+  xiphos-man-page-xiphos-nav.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jun  4 20:16:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 4.0.5:
+  + ReadAloud: Speak verse# only if we are showing verse#s in text
+    as well.
+  + Fix crash caused by lack of collator during mod.mgr in first
+    run.
+- Run spec-cleaner.
+- Drop conditionals for other distros and old unsupported
+  openSUSE/SLE.
+- Pkgconfigify BuildRequires, drop obsolete ones.
+- Build for gtk3 only.
+- Following the above, remove webkitgtk3-devel BuildRequires and
+  add pkgconfig(webkit2gtk-4.0) and stop passing
+  --enable-webkit-editor and pass --enable-webkit2instead.
+- Add docbook-utils-minimal BuildRequrires to build docbock2man
+  support.
+- Add xiphos-fix-missing-return.patch: Fix missing return in
+  non-void function, patch from upstream git.
+- Add xiphos-man-page-xiphos-nav.patch: Add missing man page, patch
+  from upstream git.
+- Apply fdupes macro, silence rpmlint about duplicate files.
+- Add lang-package macro, split out lang-package.
+
+-------------------------------------------------------------------
+Wed Mar 15 23:14:12 UTC 2017 - kkirill@opensuse.org
+
+- added Xiphos.ogg (the pronunciation of the application name)
+  explicitly to %doc to fix build failures
+
+-------------------------------------------------------------------
+Sat Sep  5 09:15:30 UTC 2015 - kkirill@opensuse.org
+
+- update to 4.0.4
+  + Implemented dynamic allocation enhancement to replace survivability fix.
+  + Updated language abbreviations to eliminate unknowns.
+  + Fixed module installation messages so they are not lost.
+  + Fixed abbrev support, to show abbrevs in all non-essential contexts.
+  + Fixed maximization restoral (mostly gtk3; partial for gtk2).
+- release notes for 4.0.3:
+  + Fixed a small hard limit on the number of language groups that
+    can be supported.
+
+-------------------------------------------------------------------
+Sat May  9 09:03:22 UTC 2015 - kkirill@opensuse.org
+
+- update to 4.0.2
+  + Fixed memory management error in the editor
+- release notes for 4.0.1:
+  + Completed webkit editor, due to replace gtkhtml editor.
+  + Added Abbreviation module configuration support.
+  + Added Glosses (Ruby) and Morpheme Segmentation display support.
+  + Added obsolete module audit, during install and on maintenance page.
+  + Added more informative "About" for modules.
+  + Added status bar en/disable.
+  + Removed BibleSync from Xiphos' source tree. It must be referenced as a
+    proper library.
+  + Fixed studypad directory choice.
+  + Fixed mis-handling of unreal "multiple verse" reference in URL handling.
+  + Fixed editor's mis-handling of the link editor subdialog.
+  + Huge GTK3 compatibility cleanliness hackery.
+  + WebKit2 compatibility hackery.
+  + Fix compiler flag choices.
+  + Numerous code internals updates due to cppcheck(1) diagnostics.
+
+-------------------------------------------------------------------
+Sun Dec 28 01:26:49 UTC 2014 - lars@linux-schulserver.de
+
+- update to 4.0.0:
+  + Bug#508 + feat.req#133: Added alternate versification support (av11n):
+    Xiphos understands book/chapter/verse (BCV) schemes other than KJV.
+    See especially module KJVA's deuterocanon between Malachi and Matthew.
+    Related:
+    - The navbar is blanked and the pane states "This module has no
+      content at this point" if a tab is selected with no content at the
+      current verse indication, e.g. when reading in one tab with an
+      Apocrypha Bible and then selecting a different non-Apocrypha tab,
+      particularly when using Linked Tabs (see View menu).
+  + Added module-specific CSS support.  This uses configuration directive
+    "PreferredCSSXHTML=style.css", naming a file in the DataPath
+    directory.  If present, the file's content is included when rendering
+    the pane.
+  + Added default CSS support.  Use ~/.xiphos/default-style.css but be
+    aware that this has effects on all displayed modules.
+  + Added direct load of history from verse list contents (right-click),
+    plus direct load of verse list from history contents (history menu).
+  + Added Feature=NoParagraphs support, default for verse-per-line.
+  + Added OSISXlit and OSISEnum global filter configuration support.
+  + Added preservation of CipherKey value for re-use when updating a module.
+  + Added xiphos.appdata.xml (/usr/share/appdata) for...well, advertising.
+  + Added --chatty configure flag to distinguish tracing from debug build.
+  + Changed options to default on for Hebrew vowel points, Hebrew
+    cantillation, and Greek accents.
+  + Updated navbar behavior: All books potentially available within the
+    module's versification are included.  Formerly, books lacking content
+    at 1:1 were excluded.
+  + Updated manual text for a couple feature requests.
+  + Fixed personal commentary dump, which stopped working in recent Sword.
+  + Fixed 1st-time mod.mgr to include Crosswire repo name.
+  + Fixed main window internal geometry save on quit.
+  + Fixed mod.mgr "button bobble" preventing expand/collapse of mod.tree.
+  + Fixed bug#513, stop crash on repeated tab deletion.
+  + Fixed crash caused by having a (lexdict|genbook) without (dict|book) key.
+  + Fixed incompatibility with GTK3.14's unstable interface, preventing
+    Preferences window from opening.  Fixed many related incompatibilities.
+  + Fixed several inconsistencies between main & parallel views.
+  + Fixed inadvertent realignment-induced re-navigation.
+  + Cleaned up internal settings structures.
+  + Updated BibleSync interface in accordance with 1.1's updated params.
+- added /usr/share/appdata/xiphos.appdata.xml
+
+-------------------------------------------------------------------
+Thu Sep  4 18:51:52 UTC 2014 - kkirill@opensuse.org
+
+- update to 3.2.2: this is a cosmetic/clean-up release. No new
+  capability is present.  
+  + Building against GTK3 (i.e. waf configure --gtk=3) should once again
+    be reasonable.  Generally, GTK3 will require --enable-webkit-editor,
+    because the older editor seems not fully de-lintable for GTK3.
+  + Internal use of generic warnings has been updated to re-introduce
+    "modal" warnings, i.e. user acknowledgement before Xiphos proceeds.
+    This is necessary for e.g. startup catastrophes, where the warning
+    dialog must appear and remain for user ACK before the program exits.
+  + Added statusbar acknowledgement of alt-[SRM] display modifiers, as well
+    as BibleSync keyboard navigation.
+  + The Preferences page for BibleSync has been de-cluttered somewhat.
+  + A build complaint from very new compilers has been fixed.
+- release notes for 3.2.1: this release has drastic forward movement
+  in BibleSync plus a number of bug fixes
+  + BibleSync is no longer integral to Xiphos alone; it has been separated
+    into its own library, to make it available for other Bible programs.
+    There is some activity toward integrating it into others already.
+  + BibleSync has gained a number of features, both in the library itself
+    and in how Xiphos uses it.  It now uses its own Preferences page, due to
+    additional features and complexity.  Notably, BibleSync operates using
+    speaker beacons, limiting the trouble that can be caused by either
+    inadvertent or malicious navigation by others.
+  + BibleSync in Xiphos 3.2.1 will not interoperate with 3.2.0.  The
+    addition of speaker beacons means that 3.2.0 will not recognize or
+    generate them, and 3.2.1 will not recognize a speaker without them.
+    (As applied to BibleSync 1.0.0 -vs- 1.0.1 differences.)
+  + Fixed a very old error regarding inconsistent internal use of the
+    scripture cross-reference option.
+  + Consequent to that xref bug fix, exported content correctly no longer
+    contains either footnotes or xrefs.
+  + Persistent difficulties with module archive have been resolved.
+  + Generic warning dialogs, used all over the place, have been replaced
+    with a non-modal method that is not troublesome in the face of timing
+    constraints.
+  + Added populating the verse list directly from a dialog (context menu).
+- release notes for 3.2.0: this release is to accommodate one
+  late-arriving Sword engine change and to support generalized companion
+  modules.  It also provides the first implementation of BibleSync,
+  a shared navigation protocol specification for Bible programs, details
+  of which we are sharing with other programs' authors and hope to see
+  being made available soon. Also, several urgent bugfixes have been made.
+  + New BibleSync subsystem: Multicast group navigation with glue on
+    navigation reception and transmission when navigating locally.
+  + Preferences added to support BibleSync options: mode enable, navigation
+    style choice, and activity tracing and privacy toggle options.
+  + Updated companion modules (conf directive Companion=Abc,Def,Xyz) for
+    Bibles and commentaries so as to allow arbitrary sets where the 1st
+    opens in the main window and the rest open in detached windows.  This is
+    important for organizations such as Wycliffe who produce grouped
+    modules, useful in such a manner.
+  + Added kbd toggles alt-S (Strong's), alt-M (morphology), alt-R (red words).
+  + Heading generation changed in line with Sword 1.7.3's new internals.
+  + Fixed crash on unparseable xref module content.
+  + Fixed crash on copy/export.
+  + Fixed crash on bogus middle-click on multi-ref bookmark.
+  + Fixed module manager column width setting.
+  + Fixed module manager archive function.
+  + Fixed NASB-specific lexica references for forthcoming NASB release.
+  + Removed gconf query.
+
+-------------------------------------------------------------------
+Sun Feb  2 16:13:41 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.1.6:
+  + The existence and placement of Preferences, Module Manager, and
+    Advanced Search windows is saved.
+  + Major compatibility changes for the underlying Sword interface,
+    especially renderText() and its minions.
+  + Live chat nick selection identifies user's platform and Xiphos
+    version.
+  + Manual updates to reflect recent additions (eg. Alt-A
+    [annotate]).
+  + Journals can be opened in regular display detached window (not
+    editor).
+  + "Friendly" (abbreviation) month names for devotional use in the
+    dictionary pane.
+  + Export off-by-one error when crossing chapter boundary is fixed.
+    Export also made somewhat more general and featureful.
+    3.1.5's missing export submenu is back.
+  + Addition of repository support for HTTP, HTTPS, and SFTP.
+  + Version differences in dbus IPC (xiphos-nav) have been
+    homogenized.   
+  + Build inconsistencies across Linux distributions are fixed.
+  + Removed last vestiges of unneeded, defunct KJV pilcrow (¶)
+    handling.
+  + A number of updates to native language support for module tree
+    lists.
+  + Sword's OSISVariants now works (had never been added since
+    Sword's OSIS support came into existence).
+  + Xiphos internals have moved forward to Sword's XHTML interface,
+    leaving behind the old HTMLHREF interface.  Many consequent
+    internal changes.
+  + Unicode punctuation is no longer mis-spoken in ReadAloud.
+  + The last of the historic gtkhtml3 support has been removed,
+    other than the editor component in GTK2: Xiphos depends
+    exclusively on webkit. This is Xiphos' 5th display engine.
+    We do not intend to change it ever again.
+- Stop passing --backend=webkit to configure, no longer needed, nor
+  reqcognized.
+
+-------------------------------------------------------------------
+Mon Dec 16 01:22:55 UTC 2013 - zaitor@opensuse.org
+
+- Own %{_datadir}/omf: scrollkeeper used to own this, but with the
+  switch to rarian we have to care of it ourselves.
+
+-------------------------------------------------------------------
+Sun Sep  8 18:48:05 UTC 2013 - kkirill@opensuse.org
+
+- updated to 3.1.5:
+  + The WebKit display driver.
+  + GTK3 compatibility.
+  + Module-internal footnote & xref numbering/lettering is respected.
+  + Display of headings, footnotes, xrefs, and red words all default On.
+  + Image content is resized in parallel windows and the previewer.
+  + Module lists include modules' 1-line descriptions as well as short names.
+  + Verse numbers will no longer be "widowed" (left alone at the end of a
+    line) by being forced to combine against the first word of their verse.
+  + Verse number display is configurable: bold, brackets, superscripts.
+  + RtoL consistency improvements.
+  + Studypad save respects its default directory specification.
+  + Base font is respected in all parallel views.
+  + Font selection order has been fixed: Any user specification (per module
+    or per language) supercedes module configuration file specification.
+  + In export, avoid more than one dialog, ever, about checking a module's
+    license, and change copy/export defaults to plaintext and 1 verse.
+  + Ctrl-0 (zero) forces base font size to 0.
+  + Ctrl-[1-9] selects the Nth tab.
+  + Countless internal module, cache, font, and display fixes.
+- added dependency on sword package (it contains sword global configurations)
+
+-------------------------------------------------------------------
+Tue Oct 11 23:29:36 UTC 2011 - kirill.kirillov@gmail.com
+
+- updated to 20111010svn4310 to fix crash under oS 12.1 Beta 1
+
+-------------------------------------------------------------------
+Mon Sep 19 22:16:18 UTC 2011 - kirill.kirillov@gmail.com
+
+- updated license to GPLv2 (fixed bnc#718902)
+
+-------------------------------------------------------------------
+Sun Sep 18 18:30:18 UTC 2011 - kirill.kirillov@gmail.com
+
+- updated to 20110627svn4220 to have webkit backend and gtk3
+  support
+- added xiphos-3.1.4-add-gconf-2.0-pkgconfig.patch (thanks to
+  Nelson Marques)
+
+-------------------------------------------------------------------
+Sat Jun 18 22:55:50 UTC 2011 - kirill.kirillov@gmail.com
+
+- use gtkhtml instead of gtkmozembed to fix crash just after start
+
+-------------------------------------------------------------------
+Sat Dec 18 19:12:48 UTC 2010 - lars@linux-schulserver.de
+
+- update to 3.1.4:
+  + Many smaller issues that have been waiting for a long time have been
+    implemented. Again, classified as new, enhancements, and fixes.
+    Please have a look at /usr/share/doc/packages/xiphos/ChangeLog 
+    for details
+- package xiphos manpage
+
+-------------------------------------------------------------------
+Sun Mar 28 21:52:25 UTC 2010 - lars@linux-schulserver.de
+
+- update to 3.1.3:
+  + Bug reports addressed since 3.1.2:
+.  2915026  Right to Left Languages - Display
+.  2915912  RToL toolbar number order
+.  2918463  crash detected in Fedora 12 xiphos-3.1.1
+.  2924074  verse selection causes scroll-to-top
+.  2928849  Parallel views (reset) problem
+.  2936311  Add Link action not able to use bible:// for verse links
+.  2941678  Book name up arrow
+.  2941684  Small caps in "LORD"
+.  2943173  freeaddrinfo (win2k compatibility - dropped)
+.  2951941  Turkish Ubuntu blocks display of Old Testament books
+.  2956797  Xiphos crashes when trying to edit
+.  2958644  Nautilus?  -  Xiphos doesn't show bible text
+.  2936311  Add Link action not able to use bible:// for verse links
+.  2961704  crash detected in xiphos-3.1.2 module manager
+.  2972686  Arabic is not right-aligned
+  + Feature requests closed:
+   2781509  Export->Copy HTML doesn't work properly
+   2791414  Parallel View tab should behave like a real tab
+   2791621  Biblical resource in seperate window: synchronize from/with?
+   2795762  Reference bar: Choosing a book name
+   2799867  Increase reducing of window sizes
+   2893826  Versification in the Psalms
+   2902403  How to install for other than listed OS
+   2907492  Interlinear commentary
+   2925935  One Year Daily reading Schedule
+   2928388  personal note deletion
+   2932551  Shortcut Keys
+- removed outdated --enable-gtkhtml
+- enabled with-gecko (and build against gecko-sdk)
+- removed outdated openSUSE versions
+
+-------------------------------------------------------------------
+Thu Aug 13 01:52:41 CEST 2009 - kirill.kirillov@gmail.com
+
+- update to 3.1.1
+  + The Help->Chat interface had to change 
+  + Per-verse user annotations ("inline marking")
+  + There is a new geography interface through BibleMap.org
+  + Module manager now can do automatic repository discovery
+  + The verse navbar now has normal relief on book/chapter/verse.
+  + A failure to redisplay properly after loading a tab set is fixed.
+  + Freakish European keyboard Ctrl +/- should now work.
+  + Some fixes were applied to journal/prayerlist editing.
+  + If the sidebar is detached, it now gets a title bar name.
+  + Bugfixes to the logic which preserves tab names as they are added
+     or deleted.
+  + New Slovak translation.
+  + Strong's markup is now handled in pre-verse headers.
+  + Ctrl-F4 will delete a tab.
+  + Many other fixes and improvements
+- changes for 3.1.0
+  + The module manager is no longer modal
+  + New interface translations: Norwegian and Welsh
+  + Improved bookmark support
+  + 'j' and 'k' have been added for keyboard-driven verse selection.
+  + Many other fixes and improvements
+
+-------------------------------------------------------------------
+Wed Jul 22 23:46:28 CEST 2009 - lars@linux-schulserver.de
+
+- added virtual provides: sword-frontend
+
+-------------------------------------------------------------------
+Fri Mar 20 00:53:16 MSK 2009 - kirill.kirillov@gmail.com
+
+- update to 3.0.1
+  + Added transliteration support from non-Latin character sets.
+  + Fixed a crash-inducing bug in detached ("free-floating") Bible
+    and commentary windows, from context menu synchronization. This
+    was redundant with the sync button in upper left, so the menu
+    item was removed, and a glitch in the sync button's use was fixed.
+  + Sidebar module list entries can be expanded by clicking anywhere
+    on the row.
+  + Only when not using tabbed browsing, a crash on history usage was
+    stopped, though a full fix for tab-less history access is pending.
+  + A PDF version of the manual is included.
+  + Fixed a disappearing-button problem in the module manager, as well
+    as several instances of faulty mutex usage.
+- changes for 3.0.0 (Xiphos begins life, as the former GnomeSword)
+  + Invocation of the editor (personal commentary, prayer list/journal) 
+    will induce several harmless warning messages to occur.
+  + A fabulous new look, with the support of professional graphics
+    designers having done a facelift of our graphics
+  + Standard module repository setup for first-time users
+  + Image resize enabled by default
+  + Commentary-by-chapter display, as a commentary module option,
+    rather than just per-verse commentary.
+  + Consistent dialog usages: Y/N questions and file browsers.
+  + Module manager: Remembers previous settings. New remote source is
+    set as current. Tooltips over icons in module manager lists.
+    Visual improvements by showing repository in use and separating
+    full module lists from limited update/uninstalled lists. Now
+    functions correctly with both shared and personal storage areas.
+  + Compatibility with forthcoming Sword engine updates for dynamic
+    versification ("dv11n"). Future modules will support e.g.
+    deuterocanonical books in Catholic Bibles. 
+  + More uniform module option support in parallel window.
+  + Dictionary links auto-display in the previewer, after the
+    fashion of Strong's and morphology references.
+  + Better Help menu selections: Online chat support, bug reporting,
+    mailing list pointers.
+  + Better search term highlighting in both sidebar and dialog search.
+  + Double-click navigation of search results entries.
+  + Improved/fixed search abort.  Assume "AND" semantic for sidebar
+    multiple word search.
+  + Countless internal cleanups, efficiency improvements, and
+    bugfixes, the need for many of which was exposed by the Windows
+    port effort.
+  + Additions to the manual, especially for instruction on original
+    language research and how to get help
+  + Better integration of image support with ImageMagick libraries.
+  + Respect for configuration-specified font choices (Font= and
+    Fontsize= in module configuration files).
+  + Improvements to build-time configuration support.
+  + Fixed fast search ("lucene") index creation. 
+
+-------------------------------------------------------------------
+Tue Dec 30 21:16:59 CET 2008 - lars@linux-schulserver.de
+
+- disable post-build-checks: fixes need too long
+- fix desktop entry
+
+-------------------------------------------------------------------
+Thu Nov  6 14:55:51 CET 2008 - lars@linux-schulserver.de
+
+- update to 2.4.1:
+  + GnomeSword now takes control of sword:// URLs without asking any
+    question, iff there was previously no handler for them.  (In a
+    debug build, the question is still asked, but with better phrasing.)
+  + Intermediate module paths for prayer lists are properly constructed.
+  + GnomeSword can be built under Solaris (--enable-gtkhtml only).
+  + Ctrl-F "find" capability: Without a Bible pane, it operates in
+    comm/book pane; without that, it operates in dictionary pane.
+  + Advanced Search provides search term highlight in result preview.
+    Also, the Find button toggles to Stop during a search.
+  + New icons, courtesy of Simon Meers.
+  + Module configuration default font specifications.  If a configuration
+    contains "Font=Some Font Name" or "Fontsize=+2", GnomeSword will
+    respect that as a default.  The user can change it of course, but any
+    time the user resorts to default font name or +0 size, module
+    configuration takes over.
+  + Companion modules: If a Bible or commentary has configuration file
+    element Companion=OtherModule, then GnomeSword will offer to open
+    that module as well when opening the first module.
+  + F1-F4 provide help, preferences, advanced search, and module manager.
+  + fixed: 2163853  Scrolling Issues
+  + fixed: 2186692  GnomeSword cannot create module's path
+  + fixed: 2190241  keys should work normally
+  + fixed: 2121811  DRC and Vulgate are not Correct
+
+-------------------------------------------------------------------
+Fri Oct 31 01:20:00 MSK 2008 - kirill.kirillov@gmail.com
+
+-update to 2.4.0:
+  + fixed bugs: 2036800, 2040344, 2040347, 2069455, 2069476, 2079930
+    2084401, 2105812
+  + closed feature request: 2056615 
+  + Journal/prayer list support is enabled by default.
+  + Selecting choices for Strong's modules is now complete, and Preferences
+    comboboxes have gained an instructive "--Select--" first entry.
+  + New translations, Swedish and Hebrew.
+  + Sort capability in mod.mgr has been disabled (contextually pointless).
+  + Module deletions are reflected immediately in list on completion.
+  + An error in tab labeling has been fixed.
+  + Phrasing in several areas was improved for translation ease and clarity.
+  + Ctrl-plus/minus change the base font size.
+  + Naming change: "Pinned" tabs => "linked" tabs.
+  + '_' is accepted in module naming (journals/prayer lists/pers.comm).
+  + Search results are clearable in advanced search.
+  + Mouse activity is ignored during long-running mod.mgr actions.
+  + An ancient mem.alloc glitch in genbook modnames was fixed.
+  + The passage exporter is enabled by default; --enable-exporter is no
+    longer needed.
+  + The Help menu contains a reference to Translation, to solicit others'
+    help in making GnomeSword more accessible to more language groups.
+  + Navbar load glitch when switching between 1- and 2-testament Bibles
+    has been fixed.
+
+-------------------------------------------------------------------
+Tue Aug  5 10:21:40 CEST 2008 - lars@linux-schulserver.de
+
+- update to 2.3.6:
+  + fixed bugs: 1973928, 1994431, 2033166
+  + closed feature requests: 1991842, 2009885
+  + In the module manager, along with the usual per-module-type
+    categorization of modules, the mod.mgr also produces a parallel
+    per-availability categorization, for updated and uninstalled
+    modules.  This makes it easier to find new stuff, rather than 
+    having to crawl through all the per-type listings.
+  + General books' bookmarks are generated using the key text rather
+    than an arcane internal numeric module offset.
+  + Devotionals open to today's MM.DD key, rather than attempting
+    (and always failing) to open on the current dictionary key.
+  + Genbook navbar tooltips have been made a bit more understandable
+  + Main verse navigation has keyboard shorcuts on variations of N/P
+  + The personal commentary editor can be invoked with Alt-Z.
+  + Locked modules' cipher keys are stored correctly.
+  + Image, Map, and Daily Devotional modules no longer appear in more
+    than one module list.
+  + Prayer lists have expanded to include a general journal concept; a
+    few crash bugs have been fixed, and templates for journals & topical
+    outlines are available.  These user-editable modules seem now to be
+    suitable for general user-driven module creation in genbook format.
+
+-------------------------------------------------------------------
+Thu Jun 12 17:33:51 CEST 2008 - lars@linux-schulserver.de
+
+- added 
+  Recommends:     sword-bible
+  Recommends:     sword-commentary
+
+-------------------------------------------------------------------
+Mon Jun  9 20:06:00 CEST 2008 - lars@linux-schulserver.de
+
+- update to 2.3.4:
+  + bugfix release
+  + prayer list support
+  + passage exporter
+- fixes OS-Edu #59
+
+-------------------------------------------------------------------
+Mon May 19 19:16:52 CEST 2008 - lars@linux-schulserver.de
+
+- cleanup requires
+- use suse_update_desktop_file
+- fix rpm group
+
+-------------------------------------------------------------------
+Tue Dec 25 18:16:46 CET 2007 - lars@linux-schulserver.de
+
+- initial package 2.3.1
+

@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03950fdc1337bcf0b98b7b233df6de05</srcmd5>
+    <version>0.009013</version>
+    <time>1326796475</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99762</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>03950fdc1337bcf0b98b7b233df6de05</srcmd5>
+    <version>0.009013</version>
+    <time>1340183878</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>03950fdc1337bcf0b98b7b233df6de05</srcmd5>
+    <version>0.009013</version>
+    <time>1359109742</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87596d9e02553853b11dd38d9bb71c4e</srcmd5>
+    <version>1.002000</version>
+    <time>1372413201</time>
+    <user>coolo</user>
+    <comment>- updated to 1.002000</comment>
+    <requestid>181004</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec8970422708091e93f91991486a9191</srcmd5>
+    <version>1.003000</version>
+    <time>1375112991</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184511</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ec8970422708091e93f91991486a9191</srcmd5>
+    <version>1.003000</version>
+    <time>1379663751</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4150078276d40b56792913c6753d2ef</srcmd5>
+    <version>1.003001</version>
+    <time>1381127509</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202445</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>307e28aba921e6b3623778bb0783ed94</srcmd5>
+    <version>1.005000</version>
+    <time>1406645292</time>
+    <user>coolo</user>
+    <comment>- updated to 1.005000
+   - add qsub to Sub::Quote as a prototyped alternative to quote_sub, accepting
+     only the sub body
+   - avoid testing UTF-8 on perl 5.6
+ 
+ 1.004006 - 2014-05-27
+   - fix quotify for characters in the \x80-\xFF range when used under the utf8
+     pragma.  Also fixes some cases of constructor generation with the pragma.
+ 
+ 1.004005 - 2014-05-23
+   - releasing 1.004_004 as stable
+ 
+ 1.004_004 - 2014-05-12
+   - stop internally depending on Moo::Object::new including all inputs in
+     constructed object
+   - be more careful when munging code for inlining
+   - fix maintaining source of quoted sub for lifetime of sub
+   - redo foreign C3 compatibility, fixing constructors without changing behavior
+     for Moo constructors
+   - don't build Moose metaclass when checking Moo classes with -&gt;is_role
+   - include Sub::Name in recommendations metadata
+ 
+ 1.004_003 - 2014-04-13
+   - always maintain source of quoted subs for the lifetime of the sub
+   - fix Sub::Quote and Sub::Defer leaking memory
+   - Class::XSAccessor is now listed as a recommended prerequisite
+   - fix generating a subclass with roles when using a non-standard accessor
+   - use alternate quoting routine, which is faster and saves memory by not
+     loading B.pm
+   - fix default of undef</comment>
+    <requestid>242675</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>307e28aba921e6b3623778bb0783ed94</srcmd5>
+    <version>1.005000</version>
+    <time>1409302390</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bcb3a232fcc693ff20da43b52e0897ec</srcmd5>
+    <version>1.006000</version>
+    <time>1411020051</time>
+    <user>coolo</user>
+    <comment>- updated to 1.006000
+   - support coerce =&gt; 1 in attributes, taking the coercion from the isa option
+     if it is an object that supports the coerce or coercion method.
+   - add attribute information to type check errors by trapping with an eval
+     rather than overriding the global __DIE__ handler
+   - bump Module::Runtime prerequisite to fix error messages when there is a
+     missing module used by a role loaded using 'with' or similar (rt#97669)</comment>
+    <requestid>250011</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b246db48b56f4605f5b9c4f7af8aaa04</srcmd5>
+    <version>1.006001</version>
+    <time>1415953138</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.006001
+   - Name the -&gt;DOES method installed by Role::Tiny
+   - don't apply threading workarounds on non-threaded perls, even if module for
+     it is loaded by something
+   - avoid loading base.pm and just set @ISA manually
+   - fix some Pod links to Class::Method::Modifiers
+   - fix applying roles with multiple attributes with defaults to objects
+     (RT#99217)
+   - fix Moose inheriting from a Moo class that inherits from a non-M* class
+     when the Moose class is not made immutable
+   - fix -&gt;does method on Moose child classes of Moo classes</comment>
+    <requestid>261206</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d33177ddc43d1f33bd2506d9a95ad18f</srcmd5>
+    <version>2.000001</version>
+    <time>1429186467</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297100</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d235366784b2374736a5e4bac14d08ea</srcmd5>
+    <version>2.000002</version>
+    <time>1438421808</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318724</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>796c877e3c64ed918b884e7d6b17cb98</srcmd5>
+    <version>2.001001</version>
+    <time>1457533053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368028</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>965131222b8b839d394a6f2ff396faf2</srcmd5>
+    <version>2.002002</version>
+    <time>1466814263</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404395</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7b96f9bff513311e1434f72820903389</srcmd5>
+    <version>2.002004</version>
+    <time>1468360277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406460</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6dcd625e10d330750c09a43539e113b9</srcmd5>
+    <version>2.002005</version>
+    <time>1480019038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441379</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d1097db066cbdeeb4ce4d7e78056e2f</srcmd5>
+    <version>2.003000</version>
+    <time>1485042563</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449818</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d399b5011ba08125e52cdf23b29e175b</srcmd5>
+    <version>2.003001</version>
+    <time>1489415610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478925</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d54c4ac0e38cc5a4ce94a82664991f86</srcmd5>
+    <version>2.003002</version>
+    <time>1491567647</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483264</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e318a08079574bf0407206f898d40b93</srcmd5>
+    <version>2.003004</version>
+    <time>1515505848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555055</requestid>
+  </revision>
+</revisionlist>

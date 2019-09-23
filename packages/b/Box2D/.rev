@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb9640fa6d10191e345c6fb59abd3547</srcmd5>
+    <version>2.3.1</version>
+    <time>1471249889</time>
+    <user>dimstar_suse</user>
+    <comment>Box2D is an open source C++ engine for simulating rigid bodies in 2D. Box2D is developed by Erin Catto and has the zlib license.
+It's a necessary dependency for qml-box2d and thus newer gcompris-qt</comment>
+    <requestid>418983</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>818f4f59b10389200e9dcf36264509a7</srcmd5>
+    <version>2.3.1</version>
+    <time>1472111786</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>420983</requestid>
+  </revision>
+</revisionlist>

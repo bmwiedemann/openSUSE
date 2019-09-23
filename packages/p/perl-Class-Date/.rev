@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3494e9b8517921b9de5b9fc21dc452a8</srcmd5>
+    <version>1.1.9</version>
+    <time>1168903798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>483d031c4443a75939494022a0e2022c</srcmd5>
+    <version>1.1.9</version>
+    <time>1215553241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="124">
+    <srcmd5>a96dc84771b9ea264880591116760e6d</srcmd5>
+    <version>1.1.9</version>
+    <time>1245337167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="125">
+    <srcmd5>9793b468969a267204b0c91fc39593ca</srcmd5>
+    <version>1.1.9</version>
+    <time>1248448020</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="126">
+    <srcmd5>269623e1f41c4722f4bca6485bdc4db1</srcmd5>
+    <version>1.1.9</version>
+    <time>1248730735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="128">
+    <srcmd5>269623e1f41c4722f4bca6485bdc4db1</srcmd5>
+    <version>1.1.9</version>
+    <time>1248730735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="129">
+    <srcmd5>b836313de3bd06e98ff112c8105fb628</srcmd5>
+    <version>1.1.9</version>
+    <time>1263302339</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Date based on submit request 29220 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="130">
+    <srcmd5>0ebdc731213c85cb73179534bc25ea5a</srcmd5>
+    <version>1.1.9</version>
+    <time>1268925385</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="132">
+    <srcmd5>0ebdc731213c85cb73179534bc25ea5a</srcmd5>
+    <version>1.1.9</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="133">
+    <srcmd5>0ebdc731213c85cb73179534bc25ea5a</srcmd5>
+    <version>1.1.9</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e35c2cba701942b1350b6ad7b010c221</srcmd5>
+    <version>1.1.10</version>
+    <time>1279564635</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Date based on submit request 43345 from user anicka
+</comment>
+    <requestid>43345</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>04e085983a512b81a6a538f7bb72df8a</srcmd5>
+    <version>1.1.10</version>
+    <time>1291581622</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54486 from user coolo
+</comment>
+    <requestid>54486</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>884487845de7656aefadfebca3fbd2cd</srcmd5>
+    <version>1.1.10</version>
+    <time>1291581629</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54486
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>884487845de7656aefadfebca3fbd2cd</srcmd5>
+    <version>1.1.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>884487845de7656aefadfebca3fbd2cd</srcmd5>
+    <version>1.1.10</version>
+    <time>1319182247</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>b231ce35764dc8b04dcf22b87d75f176</srcmd5>
+    <version>1.1.10</version>
+    <time>1321875378</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92246</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>ba62483cf3b23d114ec714e2cabc6dc1</srcmd5>
+    <version>1.1.10</version>
+    <time>1323193116</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>ba62483cf3b23d114ec714e2cabc6dc1</srcmd5>
+    <version>1.1.10</version>
+    <time>1340183807</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>ba62483cf3b23d114ec714e2cabc6dc1</srcmd5>
+    <version>1.1.10</version>
+    <time>1359109615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>ee0628908f4250e4567db7b8804b147d</srcmd5>
+    <version>1.1.10</version>
+    <time>1362120040</time>
+    <user>coolo</user>
+    <comment>ciaran wants it with 'or' now</comment>
+    <requestid>156739</requestid>
+  </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>ee0628908f4250e4567db7b8804b147d</srcmd5>
+    <version>1.1.10</version>
+    <time>1379663581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>ee0628908f4250e4567db7b8804b147d</srcmd5>
+    <version>1.1.10</version>
+    <time>1409302197</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>00d92770f21446f93e5f350857aa03a3</srcmd5>
+    <version>1.1.15</version>
+    <time>1410967565</time>
+    <user>coolo</user>
+    <comment>- updated to 1.1.15
+     - Move Date/Const.pm to lib/Calss/Date/
+     - Move Class::Date::Invalid and Class::Date::Rel to their own files in lib/Class/Date/
+     - Require Scalar::Util and remove work-around lack of Scalar::Util
+     - Require Env::C
+ 
+ 1.1.13 Fri May  2 08:32:15 2014
+     - Use Test::More for testing
+ 
+ 1.1.12 Wed Apr 30 08:44:29 2014
+     - Fixing MANIFEST.SKIP to include Makefile.PL and exclue MYMETA files.
+ 
+ 1.1.11 Wed Apr 30 06:56:24 2014
+     - Convert the pod to UTF8 and add =encoding RT #94657 
+     - Minumum version of perl is not 5.006
+     - Makefile updated
+     - New maintainer: Gabor Szabo
+- remove Class-Date-1.1.10.diff</comment>
+    <requestid>249373</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1de0df21d5eb2aa44a3a15a09dd7b35e</srcmd5>
+    <version>1.1.17</version>
+    <time>1537018714</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635485</requestid>
+  </revision>
+</revisionlist>

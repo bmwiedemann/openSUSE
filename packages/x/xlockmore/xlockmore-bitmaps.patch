@@ -1,0 +1,15 @@
+Index: xlock/XLock.ad
+===================================================================
+--- xlock/XLock.ad.orig
++++ xlock/XLock.ad
+@@ -79,8 +79,8 @@ XLock.messagefont: -*-times-*-*-*-*-18-*
+ !XLock.messagefont: *8x16*
+ 
+ ! For modes with images
+-!XLock.*.bitmap: bitmaps/m-xlock.xbm
+-!XLock.*.bitmap: pixmaps/m-xlock.xpm
++XLock.*.bitmap: /usr/include/X11/bitmaps/m-xlock.xbm
++XLock.*.bitmap: /usr/include/X11/pixmaps/m-xlock.xpm
+ !XLock.*.bitmap: /usr/lib/X11/xlock/bitmaps
+ 
+ ! For mailbox check application

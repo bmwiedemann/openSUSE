@@ -1,0 +1,42 @@
+Index: LVM2.2.02.178/configure
+===================================================================
+--- LVM2.2.02.178.orig/configure
++++ LVM2.2.02.178/configure
+@@ -10888,8 +10888,6 @@ if [ `expr x"$CLVMD" : '.*corosync.*'` !
+ fi
+ 
+ ################################################################################
+-if test "$CLVMD" != none; then
+-
+ # Check whether --with-clvmd-pidfile was given.
+ if test "${with_clvmd_pidfile+set}" = set; then :
+   withval=$with_clvmd_pidfile; CLVMD_PIDFILE=$withval
+@@ -10902,8 +10900,6 @@ cat >>confdefs.h <<_ACEOF
+ #define CLVMD_PIDFILE "$CLVMD_PIDFILE"
+ _ACEOF
+ 
+-fi
+-
+ ################################################################################
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to build cluster mirror log daemon" >&5
+ $as_echo_n "checking whether to build cluster mirror log daemon... " >&6; }
+Index: LVM2.2.02.178/configure.ac
+===================================================================
+--- LVM2.2.02.178.orig/configure.ac
++++ LVM2.2.02.178/configure.ac
+@@ -959,7 +959,6 @@ fi
+ 
+ ################################################################################
+ dnl -- clvmd pidfile
+-if test "$CLVMD" != none; then
+ 	AC_ARG_WITH(clvmd-pidfile,
+ 		    AC_HELP_STRING([--with-clvmd-pidfile=PATH],
+ 				   [clvmd pidfile [PID_DIR/clvmd.pid]]),
+@@ -967,7 +966,6 @@ if test "$CLVMD" != none; then
+ 		    CLVMD_PIDFILE="$DEFAULT_PID_DIR/clvmd.pid")
+ 	AC_DEFINE_UNQUOTED(CLVMD_PIDFILE, ["$CLVMD_PIDFILE"],
+ 			   [Path to clvmd pidfile.])
+-fi
+ 
+ ################################################################################
+ dnl -- Build cluster mirror log daemon

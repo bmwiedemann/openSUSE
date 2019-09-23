@@ -1,0 +1,704 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59cee767bd8bcd2088115eec916f5103</srcmd5>
+    <version>5.4.rc2</version>
+    <time>1168903597</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>67bd34ae3817d3afc8908df62b97c2e2</srcmd5>
+    <version>5.4.1</version>
+    <time>1186418927</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="31">
+    <srcmd5>56301f9e1b6238f0d06ada1a3cf9cf1c</srcmd5>
+    <version>5.4.1</version>
+    <time>1194015702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="58">
+    <srcmd5>73d20b50cb005880a8fadce526281116</srcmd5>
+    <version>5.4.1</version>
+    <time>1206545120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="64">
+    <srcmd5>77a411aa8ae63749b70caebacbaf6a76</srcmd5>
+    <version>5.4.1</version>
+    <time>1207832457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="92">
+    <srcmd5>5b7731048b0ccb1350b2b6d50120ab2b</srcmd5>
+    <version>5.4.1</version>
+    <time>1219447378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="95">
+    <srcmd5>a218c841e80137be04e3dd2e63cb87f6</srcmd5>
+    <version>5.4.1</version>
+    <time>1219709858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>365e56a01f500b37aeff1797c2d0951e</srcmd5>
+    <version>5.4.2</version>
+    <time>1220883812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a837da36f42ff67e167a87d315e65922</srcmd5>
+    <version>5.4.2</version>
+    <time>1221261189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>9f7a01339ac95f83ea27e3ff01022828</srcmd5>
+    <version>5.4.2</version>
+    <time>1222269308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>a4d95c2e7a22e6a4202795cd5945326c</srcmd5>
+    <version>5.4.2</version>
+    <time>1224692888</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>06dd795c7e559392da584543b71b037f</srcmd5>
+    <version>5.4.2</version>
+    <time>1224881313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>94c3a1abf7a497227fbd11b0bddc54f9</srcmd5>
+    <version>5.4.2</version>
+    <time>1225637067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>34cacf48c8499cf12633ef3ec9d09196</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1226070198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>96f3d4eb4bfa58779b924171f9c6b2ab</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1226939445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4822b8c0d33d330f70cf0364da6c08c6</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1227192962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>c1b27c31f704c029b45eb853dede1c15</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1227278285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>e634223c4005a9eb87e93be12abd0d7f</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1229342508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>4118b391a4232726171ed49271fa5da7</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1232644710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>52d4baced69be14bd5993bfd1ac8481f</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1251411185</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hennevogel:TODO/net-snmp based on submit request 18809 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>a2d691f42cd7db332c93b0d5dd810673</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1251745661</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hennevogel:TODO/net-snmp based on submit request 19265 from user coolo
+</comment>
+  </revision>
+  <revision rev="22" vrev="12">
+    <srcmd5>a2d691f42cd7db332c93b0d5dd810673</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1251745661</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hennevogel:TODO/net-snmp based on submit request 19265 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1374cb4d9a641f1520e806b9c8dba472</srcmd5>
+    <version>5.5</version>
+    <time>1264069710</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hennevogel:TODO/net-snmp based on submit request 29044 from user coolo
+</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>062db930f94c0838eddb5c5d03247079</srcmd5>
+    <version>5.5</version>
+    <time>1265375325</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 31537 from user leonardocf
+</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>7bab46c4854783430ac6ec1cb7c2a536</srcmd5>
+    <version>5.5</version>
+    <time>1267751941</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 34022 from user coolo
+</comment>
+    <requestid>34022</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>755eaea3c20c39b681c9dc0c6c56ebdb</srcmd5>
+    <version>5.5</version>
+    <time>1267955927</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 34198 from user leonardocf
+</comment>
+    <requestid>34198</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>0622b72172a3b508fe7a347620ce8ee8</srcmd5>
+    <version>5.5</version>
+    <time>1268925069</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>5cc9124cac32409c020246a6f74af789</srcmd5>
+    <version>5.5</version>
+    <time>1270666821</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 37126 from user leonardocf
+</comment>
+    <requestid>37126</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>2d89efb30dd074d81eac21538307fb0b</srcmd5>
+    <version>5.5</version>
+    <time>1274208049</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 40231 from user coolo
+</comment>
+    <requestid>40231</requestid>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>3d713647e0cfd63b99b56e73ce099110</srcmd5>
+    <version>5.5</version>
+    <time>1277136146</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 41743 from user leonardocf
+</comment>
+    <requestid>41743</requestid>
+  </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>3d713647e0cfd63b99b56e73ce099110</srcmd5>
+    <version>5.5</version>
+    <time>1278667370</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>3d713647e0cfd63b99b56e73ce099110</srcmd5>
+    <version>5.5</version>
+    <time>1278678600</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>326c054f7aada5ce6e076d4de37cfbc5</srcmd5>
+    <version>5.5</version>
+    <time>1286400389</time>
+    <user>autobuild</user>
+    <comment>Copy from net-snmp:factory/net-snmp based on submit request 49877 from user coolo
+</comment>
+    <requestid>49877</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5875ca5a77f02afcc63299aeb23a23bb</srcmd5>
+    <version>5.6</version>
+    <time>1288262464</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51508 from user leonardocf
+</comment>
+    <requestid>51508</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>1d0816a5a4b1ef60f0a8cb7d509aba5f</srcmd5>
+    <version>5.6</version>
+    <time>1288262468</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51508
+</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>8a8036b329e67e826e2a16541f5f74f9</srcmd5>
+    <version>5.6</version>
+    <time>1288692679</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51932 from user leonardocf
+</comment>
+    <requestid>51932</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>3555853b02b92473c8fe1edf799ac600</srcmd5>
+    <version>5.6</version>
+    <time>1288692686</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51932
+</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>12903f9ba2b7a0a47fa8e45cfcca5181</srcmd5>
+    <version>5.6</version>
+    <time>1291160731</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54207 from user leonardocf
+</comment>
+    <requestid>54207</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>1957abe283cdfcf9064d09e0b9737606</srcmd5>
+    <version>5.6</version>
+    <time>1291160737</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54207
+</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d7fc8c8e646943922eae99077030cde7</srcmd5>
+    <version>5.6.1</version>
+    <time>1294239667</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57103 from user leonardocf
+</comment>
+    <requestid>57103</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c6cce1baa4ce31837bea16f7d6158bf9</srcmd5>
+    <version>5.6.1</version>
+    <time>1294239686</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57103
+</comment>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>c6cce1baa4ce31837bea16f7d6158bf9</srcmd5>
+    <version>5.6.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>5f849ac18ab1e4e859a5633ef4763fe5</srcmd5>
+    <version>5.6.1</version>
+    <time>1302784376</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67275 from user coolo
+</comment>
+    <requestid>67275</requestid>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>38294861dc964095939e2ff84842b0a4</srcmd5>
+    <version>5.6.1</version>
+    <time>1302784386</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67275
+</comment>
+  </revision>
+  <revision rev="45" vrev="8">
+    <srcmd5>6cab6a79a4079522f9c07e65f7209931</srcmd5>
+    <version>5.6.1</version>
+    <time>1305556356</time>
+    <user>saschpe</user>
+    <comment>Update upstream patches from branch V5-6-patches to 20110512.</comment>
+    <requestid>70327</requestid>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>e0e12ff0bdbb95b389cfc88541ca302c</srcmd5>
+    <version>5.6.1</version>
+    <time>1305556367</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70327
+</comment>
+  </revision>
+  <revision rev="47" vrev="10">
+    <srcmd5>52d71d8f5229dfc03e1d6cad0451fba6</srcmd5>
+    <version>5.6.1</version>
+    <time>1305813983</time>
+    <user>azouhr</user>
+    <comment>-&gt; (forwarded request 70703 from mlschroe)</comment>
+    <requestid>70705</requestid>
+  </revision>
+  <revision rev="48" vrev="11">
+    <srcmd5>a9f4bca7f4206cb0f6b62663051dee04</srcmd5>
+    <version>5.6.1</version>
+    <time>1305813996</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 70705
+</comment>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>6ee193735a3678c78bbe1447aeeef7e4</srcmd5>
+    <version>5.7</version>
+    <time>1314871679</time>
+    <user>saschpe</user>
+    <comment>Update to version 5.7.</comment>
+    <requestid>80156</requestid>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>8f30506167429ed71d1170f8fb68543c</srcmd5>
+    <version>5.7</version>
+    <time>1314871691</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80156
+</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ab67119b6f76dc01f88b701a84a19401</srcmd5>
+    <version>5.7.1</version>
+    <time>1316005235</time>
+    <user>saschpe</user>
+    <comment>Update to version 5.7.1-rc1, so we can ship 5.7.1-final with openSUSE 12.1.</comment>
+    <requestid>82014</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>1d71b78094b1f04659c7071adc7962db</srcmd5>
+    <version>5.7.1</version>
+    <time>1317293580</time>
+    <user>saschpe</user>
+    <comment>Update to version 5.7.1.</comment>
+    <requestid>85368</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>1d71b78094b1f04659c7071adc7962db</srcmd5>
+    <version>5.7.1</version>
+    <time>1319182197</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>a3cee5ae1e2dc09c71b4799f2310b17a</srcmd5>
+    <version>5.7.1</version>
+    <time>1319552332</time>
+    <user>coolo</user>
+    <comment>Add some stability fixes from upstream (bnc#725766).</comment>
+    <requestid>89042</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>67e9fa178d3198a756918e3c70f20cb1</srcmd5>
+    <version>5.7.1</version>
+    <time>1332752616</time>
+    <user>coolo</user>
+    <comment>Add fixes for bnc#707636 and bnc#750704.</comment>
+    <requestid>110576</requestid>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>8ada113324aa3e02b62e83ba091d9e45</srcmd5>
+    <version>5.7.1</version>
+    <time>1334692804</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113786</requestid>
+  </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>00773b069374caf2366abec7bbac8c4b</srcmd5>
+    <version>5.7.1</version>
+    <time>1337163972</time>
+    <user>coolo</user>
+    <comment>Add fix for bnc#759352 (CVE-2012-2141).</comment>
+    <requestid>120977</requestid>
+  </revision>
+  <revision rev="58" vrev="10">
+    <srcmd5>00773b069374caf2366abec7bbac8c4b</srcmd5>
+    <version>5.7.1</version>
+    <time>1340183727</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="59" vrev="11">
+    <srcmd5>fab2eeb80a8e441635d14793ae600998</srcmd5>
+    <version>5.7.1</version>
+    <time>1348574377</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135581</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6541f504382e4e84bb783f27d5cc2704</srcmd5>
+    <version>5.7.2</version>
+    <time>1351837872</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139446</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>f24ee7a0326c265d6d682b925f467f14</srcmd5>
+    <version>5.7.2</version>
+    <time>1355997777</time>
+    <user>coolo</user>
+    <comment>Add fix for bnc#793548. (forwarded request 145863 from leonardocf)</comment>
+    <requestid>145865</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>f24ee7a0326c265d6d682b925f467f14</srcmd5>
+    <version>5.7.2</version>
+    <time>1359109496</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>63254eae2f167ce409b4d957c713018d</srcmd5>
+    <version>5.7.2</version>
+    <time>1366177272</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 170849 from namtrac)</comment>
+    <requestid>170886</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>01b05cca790f499761de4981d4b8a07c</srcmd5>
+    <version>5.7.2</version>
+    <time>1369641275</time>
+    <user>coolo</user>
+    <comment>- Disable parallelism during build. The dependencies between the
+  Perl module and libnetsnmp are not defined correctly and might
+  result in broken linkage (bnc#819497, bnc#818907) (forwarded request 176143 from leonardocf)</comment>
+    <requestid>176144</requestid>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>bfae778ef40d7b21225634f1818dadac</srcmd5>
+    <version>5.7.2</version>
+    <time>1374156421</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183515</requestid>
+  </revision>
+  <revision rev="66" vrev="8">
+    <srcmd5>963123f9cbb2c0623796a68fb124b63c</srcmd5>
+    <version>5.7.2</version>
+    <time>1374757823</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184004</requestid>
+  </revision>
+  <revision rev="67" vrev="10">
+    <srcmd5>963123f9cbb2c0623796a68fb124b63c</srcmd5>
+    <version>5.7.2</version>
+    <time>1379663353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="68" vrev="11">
+    <srcmd5>b85453d0d3ca4703f9c92de5bf40a17b</srcmd5>
+    <version>5.7.2</version>
+    <time>1393453235</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223849</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>99136725c9c335c61a9a6ff7a45ad281</srcmd5>
+    <version>5.7.2.1</version>
+    <time>1400783899</time>
+    <user>coolo</user>
+    <comment>- recompress .tar.gz - it has trailing garbage, hope we can readd
+  source url on next update
+
+- update to upstream version 5.7.2.1, fixing one security issue:
+  * A denial of service attack vector was discovered on the Linux
+    implementation of the ICMP-MIB. (CVE-2014-2284, bnc#866942)
+
+- net-snmp-5.7.2-fix-mib-representation-of-timeout-values.patch:
+  fix mib representation of timeout values (bnc#833153) 
+
+- use _rundir macro</comment>
+    <requestid>234469</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>86d24f5f7d531362c47c6550d75a611b</srcmd5>
+    <version>5.7.2.1</version>
+    <time>1404972999</time>
+    <user>coolo</user>
+    <comment>- merge some old fixes from SLE 11:
+  * init script should provide snmpd. (bnc#466805) 
+  * stop all snmp agents when stopping the daemon. (bnc#473328) (forwarded request 238408 from leonardocf)</comment>
+    <requestid>239289</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>86d24f5f7d531362c47c6550d75a611b</srcmd5>
+    <version>5.7.2.1</version>
+    <time>1409301965</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>1fa67e8c85beeb89560fbf5e9d72c3bb</srcmd5>
+    <version>5.7.2.1</version>
+    <time>1410967463</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249293</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e4a1545d9cf8292ffc1f03dc676de171</srcmd5>
+    <version>5.7.3</version>
+    <time>1411556949</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250674</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>3d6102fb58a140c458c84b950c5d8081</srcmd5>
+    <version>5.7.3</version>
+    <time>1419546099</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266308</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>e6e8d58c313b020b851372a03d142fc2</srcmd5>
+    <version>5.7.3</version>
+    <time>1437477981</time>
+    <user>coolo</user>
+    <comment>changes file modificatons after factory-auto reject (forwarded request 317256 from abergmann)</comment>
+    <requestid>317257</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>50d1d33b2225857bd9bcee3e1a42a0e5</srcmd5>
+    <version>5.7.3</version>
+    <time>1437724675</time>
+    <user>coolo</user>
+    <comment>- Request pkgconfig(libssl) instead of openssl-devel to support
+  using LibreSSL as well. (forwarded request 317959 from jengelh)</comment>
+    <requestid>318082</requestid>
+  </revision>
+  <revision rev="77" vrev="5">
+    <srcmd5>1de35b2ccdebdb8b2496879b5194bd26</srcmd5>
+    <version>5.7.3</version>
+    <time>1442130161</time>
+    <user>dimstar_suse</user>
+    <comment>- reenabled md5 and des, as some tools build against it and need
+  the methods :( (forwarded request 328750 from msmeissn)</comment>
+    <requestid>328754</requestid>
+  </revision>
+  <revision rev="78" vrev="6">
+    <srcmd5>f6b12033e214eac33d242b785ca7c520</srcmd5>
+    <version>5.7.3</version>
+    <time>1456733497</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with GNU grep 2.23, use grep -a to force text matching (forwarded request 359554 from AndreasStieger)</comment>
+    <requestid>361433</requestid>
+  </revision>
+  <revision rev="79" vrev="7">
+    <srcmd5>065d2d6c07cbb3f12a5205df089dd770</srcmd5>
+    <version>5.7.3</version>
+    <time>1460480422</time>
+    <user>dimstar_suse</user>
+    <comment>removing md5 and des disablement
+(changes entry exited already bsc#944302) (forwarded request 386328 from abergmann)</comment>
+    <requestid>386493</requestid>
+  </revision>
+  <revision rev="80" vrev="8">
+    <srcmd5>c49b285e10f5fd04fe5de34a0d4129c0</srcmd5>
+    <version>5.7.3</version>
+    <time>1464689306</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with perl 5.24 - tested locally as a build against openSUSE:Factory:Staging:B (forwarded request 397205 from dimstar)</comment>
+    <requestid>397352</requestid>
+  </revision>
+  <revision rev="81" vrev="9">
+    <srcmd5>9a78a48df05da756b7bc580d35b31ebe</srcmd5>
+    <version>5.7.3</version>
+    <time>1498045921</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 504043 from msmeissn)</comment>
+    <requestid>504649</requestid>
+  </revision>
+  <revision rev="82" vrev="10">
+    <srcmd5>0a048c18d3b1646ce76baa9bb852811b</srcmd5>
+    <version>5.7.3</version>
+    <time>1511595683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544977</requestid>
+  </revision>
+  <revision rev="83" vrev="11">
+    <srcmd5>6355f698515f9e8fc4930f53dbffbfd3</srcmd5>
+    <version>5.7.3</version>
+    <time>1513851815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557777</requestid>
+  </revision>
+  <revision rev="84" vrev="12">
+    <srcmd5>6c09232b5196e389cd41dcab476435cb</srcmd5>
+    <version>5.7.3</version>
+    <time>1517606464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571968</requestid>
+  </revision>
+  <revision rev="85" vrev="13">
+    <srcmd5>dbea27e7b492da409d0dfad3618d9a1d</srcmd5>
+    <version>5.7.3</version>
+    <time>1524742389</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix permissions on unit files wrt bsc#1087977
+- Remove executable flags from systemd service files (bsc#1089295).
+- Use %license (boo#1082318)</comment>
+    <requestid>599143</requestid>
+  </revision>
+  <revision rev="86" vrev="14">
+    <srcmd5>66893291e85bc47dfa4b018c25ae3d5f</srcmd5>
+    <version>5.7.3</version>
+    <time>1529919272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618442</requestid>
+  </revision>
+  <revision rev="87" vrev="15">
+    <srcmd5>df71a112cf9e895847d8160840c33fd4</srcmd5>
+    <version>5.7.3</version>
+    <time>1539342475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640769</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>02f450711ce3fab41ea140ec912f9bda</srcmd5>
+    <version>5.8</version>
+    <time>1540447865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642087</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>0ed294e8af47021c7c16b07cc5754273</srcmd5>
+    <version>5.8</version>
+    <time>1552380574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683525</requestid>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>e8469054df38a321509cd64f165b5f60</srcmd5>
+    <version>5.8</version>
+    <time>1564996655</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Lustre filesystem support (bsc#1140341).
+  Add net-snmp-5.8-add-lustre-fs-support.patch</comment>
+    <requestid>713858</requestid>
+  </revision>
+</revisionlist>

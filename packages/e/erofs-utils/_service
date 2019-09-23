@@ -1,0 +1,14 @@
+<services>
+	<service mode="disabled" name="tar_scm">
+		<param name="url">https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/</param>
+		<param name="scm">git</param>
+		<param name="revision">erofs-utils_20190826</param>
+		<param name="parent-tag">589ab3accd0908f4664c839c6a3a320fa56346ec</param>
+		<param name="versionformat">0.1+20190826</param>
+	</service>
+	<service mode="disabled" name="recompress">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service mode="disabled" name="set_version"/>
+</services>

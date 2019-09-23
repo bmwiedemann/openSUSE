@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a05d7d8a2cf51ef0a52c23972f9b0e24</srcmd5>
+    <version>0.4</version>
+    <time>1541865505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645730</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d4f2f75222e97fdd96abbfdb9db0eef</srcmd5>
+    <version>0.4</version>
+    <time>1542889615</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RAS syndrome. Expand &quot;APIC&quot;.</comment>
+    <requestid>650731</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8243ae52a1c4e39b7a49a4c9a4b5cfe1</srcmd5>
+    <version>0.4</version>
+    <time>1554114933</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require python-deepdiff, such package does not exist
+
+- Remove runtime dependencies from the library:
+  * remove-app-dependency.patch
+- Add NOTICE to %license
+- Create sub-packages -doc, -doc-applications and -doc-samples</comment>
+    <requestid>689282</requestid>
+  </revision>
+</revisionlist>

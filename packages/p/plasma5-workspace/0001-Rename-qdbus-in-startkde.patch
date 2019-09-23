@@ -1,0 +1,102 @@
+Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/startkde/startkde.cmake
+===================================================================
+--- plasma-workspace-5.15.80git.20190309T171418~4ede2e10.orig/startkde/startkde.cmake	2019-03-09 17:14:18.000000000 +0100
++++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/startkde/startkde.cmake	2019-03-10 14:10:17.814466955 +0100
+@@ -258,7 +258,7 @@
+   exit 1
+ fi
+ 
+-qdbus org.kde.KSplash /KSplash org.kde.KSplash.setStage kinit &
++qdbus-qt5 org.kde.KSplash /KSplash org.kde.KSplash.setStage kinit &
+ 
+ # finally, give the session control to the session manager
+ # see kdebase/ksmserver for the description of the rest of the startup sequence
+@@ -292,13 +292,13 @@
+     # wait for remaining drkonqi instances with timeout (in seconds)
+     wait_drkonqi_timeout=`kreadconfig5 --file startkderc --group WaitForDrKonqi --key Timeout --default 900`
+     wait_drkonqi_counter=0
+-    while qdbus | grep "^[^w]*org.kde.drkonqi" > /dev/null ; do
++    while qdbus-qt5 | grep "^[^w]*org.kde.drkonqi" > /dev/null ; do
+         sleep 5
+         wait_drkonqi_counter=$((wait_drkonqi_counter+5))
+         if test "$wait_drkonqi_counter" -ge "$wait_drkonqi_timeout" ; then
+             # ask remaining drkonqis to die in a graceful way
+-            qdbus | grep 'org.kde.drkonqi-' | while read address ; do
+-                qdbus "$address" "/MainApplication" "quit"
++            qdbus-qt5 | grep 'org.kde.drkonqi-' | while read address ; do
++                qdbus-qt5 "$address" "/MainApplication" "quit"
+             done
+             break
+         fi
+Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/startkde/startplasma.cmake
+===================================================================
+--- plasma-workspace-5.15.80git.20190309T171418~4ede2e10.orig/startkde/startplasma.cmake	2019-03-09 17:14:18.000000000 +0100
++++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/startkde/startplasma.cmake	2019-03-10 14:10:17.814466955 +0100
+@@ -99,7 +99,7 @@
+   exit 1
+ fi
+ 
+-qdbus org.kde.KSplash /KSplash org.kde.KSplash.setStage kinit &
++qdbus-qt5 org.kde.KSplash /KSplash org.kde.KSplash.setStage kinit &
+ 
+ # finally, give the session control to the session manager
+ # see kdebase/ksmserver for the description of the rest of the startup sequence
+@@ -131,13 +131,13 @@
+     # wait for remaining drkonqi instances with timeout (in seconds)
+     wait_drkonqi_timeout=`kreadconfig5 --file startkderc --group WaitForDrKonqi --key Timeout --default 900`
+     wait_drkonqi_counter=0
+-    while qdbus | grep "^[^w]*org.kde.drkonqi" > /dev/null ; do
++    while qdbus-qt5 | grep "^[^w]*org.kde.drkonqi" > /dev/null ; do
+         sleep 5
+         wait_drkonqi_counter=$((wait_drkonqi_counter+5))
+         if test "$wait_drkonqi_counter" -ge "$wait_drkonqi_timeout" ; then
+             # ask remaining drkonqis to die in a graceful way
+-            qdbus | grep 'org.kde.drkonqi-' | while read address ; do
+-                qdbus "$address" "/MainApplication" "quit"
++            qdbus-qt5 | grep 'org.kde.drkonqi-' | while read address ; do
++                qdbus-qt5 "$address" "/MainApplication" "quit"
+             done
+             break
+         fi
+Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/startkde/startplasmacompositor.cmake
+===================================================================
+--- plasma-workspace-5.15.80git.20190309T171418~4ede2e10.orig/startkde/startplasmacompositor.cmake	2019-03-09 17:14:18.000000000 +0100
++++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/startkde/startplasmacompositor.cmake	2019-03-10 14:10:17.814466955 +0100
+@@ -120,12 +120,12 @@
+ 
+ # Get a property value from org.freedesktop.locale1
+ queryLocale1() {
+-    qdbus --system org.freedesktop.locale1 /org/freedesktop/locale1 "$1"
++    qdbus-qt5 --system org.freedesktop.locale1 /org/freedesktop/locale1 "$1"
+ }
+ 
+ # Query whether org.freedesktop.locale1 is available. If it is, try to
+ # set XKB_DEFAULT_{MODEL,LAYOUT,VARIANT,OPTIONS} accordingly.
+-if qdbus --system org.freedesktop.locale1 >/dev/null 2>/dev/null; then
++if qdbus-qt5 --system org.freedesktop.locale1 >/dev/null 2>/dev/null; then
+     # Do not overwrite existing values. There is no point in setting only some
+     # of them as then they would not match anymore.
+     if [ -z "${XKB_DEFAULT_MODEL}" -a -z "${XKB_DEFAULT_LAYOUT}" -a \
+@@ -175,10 +175,10 @@
+ export XDG_DATA_DIRS
+ 
+ # Make sure that D-Bus is running
+-if qdbus >/dev/null 2>/dev/null; then
++if qdbus-qt5 >/dev/null 2>/dev/null; then
+     : # ok
+ else
+-    echo 'startplasmacompositor: Could not start D-Bus. Can you call qdbus?'  1>&2
++    echo 'startplasmacompositor: Could not start D-Bus. Can you call qdbus-qt5?'  1>&2
+     test -n "$ksplash_pid" && kill "$ksplash_pid" 2>/dev/null
+     exit 1
+ fi
+Index: plasma-workspace-5.15.80git.20190309T171418~4ede2e10/wallpapers/image/wallpaper.knsrc
+===================================================================
+--- plasma-workspace-5.15.80git.20190309T171418~4ede2e10.orig/wallpapers/image/wallpaper.knsrc	2019-03-09 17:14:18.000000000 +0100
++++ plasma-workspace-5.15.80git.20190309T171418~4ede2e10/wallpapers/image/wallpaper.knsrc	2019-03-10 14:10:17.814466955 +0100
+@@ -43,4 +43,4 @@
+ StandardResource=wallpaper
+ Uncompress=archive
+ 
+-AdoptionCommand=qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'for (var i in desktops()) { d = desktops()[i]; d.wallpaperPlugin = "org.kde.image"; d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"]; d.writeConfig("Image", "%f") }'
++AdoptionCommand=qdbus-qt5 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'for (var i in desktops()) { d = desktops()[i]; d.wallpaperPlugin = "org.kde.image"; d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"]; d.writeConfig("Image", "%f") }'

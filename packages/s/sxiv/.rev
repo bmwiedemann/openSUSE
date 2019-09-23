@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc2f3f15895095adad81e2398a59621c</srcmd5>
+    <version>24</version>
+    <time>1521405871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v24
+  * Automatically reload the current image whenever it changes
+  * Support embedding into other X windows with -e (e.g. tabbed)
+  * New option -p prevents cache and temporary file creation
+  * Simpler mouse mappings, most basic features are accessible with
+    only a mouse (navigate, zoom, pan)
+- rebase sxiv.desktop.patch
+- rebase sxiv.makefile.patch
+- cleanup with spec-cleaner
+- use %autosetup macro
+- Initial build
+</comment>
+    <requestid>586501</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24b21bf08e7b054198f7852191adc2c1</srcmd5>
+    <version>24</version>
+    <time>1521579626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588703</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ea7f99a63afac4c5a9988543d03930fa</srcmd5>
+    <version>24</version>
+    <time>1534543410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629447</requestid>
+  </revision>
+</revisionlist>

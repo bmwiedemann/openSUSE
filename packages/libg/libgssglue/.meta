@@ -1,0 +1,7 @@
+<package name="libgssglue" project="openSUSE:Factory">
+  <title>Generic GSSAPI Library</title>
+  <description>This library exports a gssapi interface, but does not implement any
+gssapi mechanisms itself. Instead it calls gssapi routines in other
+libraries, depending on the mechanism.</description>
+  <devel project="Base:System" package="libgssglue"/>
+</package>

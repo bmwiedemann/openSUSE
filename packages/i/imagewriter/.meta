@@ -1,0 +1,5 @@
+<package name="imagewriter" project="openSUSE:Factory">
+  <title>SUSE Studio Imagewriter</title>
+  <description>Graphical image writer application</description>
+  <devel project="SUSE:SUSEStudio" package="imagewriter"/>
+</package>

@@ -1,0 +1,255 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>816e08d78a74c12cec25463b8cfbecc6</srcmd5>
+    <version>0.9.21</version>
+    <time>1354888184</time>
+    <user>namtrac</user>
+    <comment>bzr testing dependency</comment>
+    <requestid>144394</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1ef45ae11759b2ef3db7792fc2ff30e</srcmd5>
+    <version>0.9.24</version>
+    <time>1358198779</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.24:
+  * testtools.run discover will now sort the tests it discovered. This is a 
+    workaround for http://bugs.python.org/issue16709. Non-standard test suites
+    are preserved, and their sort_tests() method called (if they have such an
+    attribute). testtools.testsuite.sorted_tests(suite, True) can be used by
+    such suites to do a local sort.
+  * ThreadsafeForwardingResult now defines a stub progress method, which
+    fixes testr run of streams containing progress markers (by discarding the 
+    progress data).
+- Changes from version 0.9.23:
+  * run.TestToolsTestRunner now accepts the verbosity, buffer and failfast
+    arguments the upstream python TestProgram code wants to give it, making it
+    possible to support them in a compatible fashion. (Robert Collins)
+  * testtools.run now supports the -f or --failfast parameter.
+    Previously it was advertised in the help but ignored.
+  * AnyMatch added, a new matcher that matches when any item in a collection
+    matches the given matcher.
+  * Spelling corrections to documentation.
+  * TestProgram now has a sane default for its testRunner argument.
+  * The test suite passes on Python 3 again.
+- Changes from version 0.9.22:
+  * content_from_file and content_from_stream now accept seek_offset and
+    seek_whence parameters allowing them to be used to grab less than the full
+    stream, or to be used with StringIO streams.
+
+  * DirContains correctly exposed, after being accidentally hidden in the
+    - MatchesDict, match every key in a dictionary with a key in a
+    - ContainsDict, every key in a dictionary of matchers must be
+    - ContainedByDict, every key in a dictionary must be found in
+  testtools.matchers package and was thus completely broken.  This release</comment>
+    <requestid>148409</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d7a3247cf26f06ffe093a174f7e0cf68</srcmd5>
+    <version>0.9.24</version>
+    <time>1358690004</time>
+    <user>coolo</user>
+    <comment>Add python3 support (forwarded request 148621 from posophe)</comment>
+    <requestid>148956</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d7a3247cf26f06ffe093a174f7e0cf68</srcmd5>
+    <version>0.9.24</version>
+    <time>1359110131</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f93d4a4c3841cf34ff82f6ae0db067b</srcmd5>
+    <version>0.9.30</version>
+    <time>1366955112</time>
+    <user>coolo</user>
+    <comment>fix url source (forwarded request 172986 from posophe)</comment>
+    <requestid>173018</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>75887171e19f3b5d1d7681301e8269e7</srcmd5>
+    <version>0.9.30</version>
+    <time>1367904853</time>
+    <user>coolo</user>
+    <comment>- add python-mmimeparse dependency (forwarded request 174622 from dirkmueller)</comment>
+    <requestid>174646</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>307935db2fa140551a7eca07cdcf2f91</srcmd5>
+    <version>0.9.32</version>
+    <time>1372136379</time>
+    <user>coolo</user>
+    <comment>- Use upstream URL
+- Run testsuite
+- Update to version 0.9.32:
+  + Stacktrace filtering no longer hides unittest frames that are surrounded by
+    user frames. We will reenable this when we figure out a better algorithm for
+    retaining meaning. (Robert Collins, #1188420)
+  + The compatibility code for skipped tests with unittest2 was broken.
+    (Robert Collins, #1190951)
+  + Various documentation improvements (Clint Byrum, Xiao Hanyu).
+- Changes from version 0.9.31:
+  + ExpectedException now accepts a msg parameter for describing an error,
+    much the same as assertEquals etc. (Robert Collins)</comment>
+    <requestid>180410</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ae3d431978c9ba0535fd3be4da713929</srcmd5>
+    <version>0.9.32</version>
+    <time>1372173551</time>
+    <user>coolo</user>
+    <comment>- Introduce a build conditional for running tests to break build cycle
+  with python-extras</comment>
+    <requestid>180851</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ae3d431978c9ba0535fd3be4da713929</srcmd5>
+    <version>0.9.32</version>
+    <time>1379664298</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bfdec418533d99c5ab9c77991bbd2061</srcmd5>
+    <version>0.9.33</version>
+    <time>1384768446</time>
+    <user>scarabeus_factory</user>
+    <comment>update to version 0.9.33 (forwarded request 207342 from posophe)</comment>
+    <requestid>207343</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>07af3bd70702b15f307423d89a60deda</srcmd5>
+    <version>0.9.34</version>
+    <time>1389881592</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.34:
+ * Added ability for ``testtools.TestCase`` instances to force a test to
+  fail, even if no assertions failed. (Thomi Richards)
+ * Added ``testtools.content.StacktraceContent``, a content object that
+  automatically creates a ``StackLinesContent`` object containing the current
+  stack trace. (Thomi Richards)
+ * ``AnyMatch`` is now exported properly in ``testtools.matchers``.
+  (Robert Collins, Rob Kennedy, github #44)
+ * Network tests now bind to 127.0.0.1 to avoid (even temporary) network
+   visible ports. (Benedikt Morbach, github #46)
+
+- Revert back
+
+- Totally disable testing to bootstrap ppc64. Actually the build conditional is
+  supposed to do just that. (forwarded request 213713 from dirkmueller)</comment>
+    <requestid>213774</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7503717abcf5d653333ec1885c2cd54a</srcmd5>
+    <version>0.9.35</version>
+    <time>1391030530</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.35:
+  * Removed a number of code paths where Python 2.4 and Python 2.5 were
+    explicitly handled. (Daniel Watkins)
+  * Added the ``testtools.TestCase.expectThat`` method, which implements
+    delayed assertions. (Thomi Richards)
+  * Docs are now built as part of the Travis-CI build, reducing the chance of
+    Read The Docs being broken accidentally. (Daniel Watkins, #1158773) (forwarded request 215507 from dirkmueller)</comment>
+    <requestid>215509</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7503717abcf5d653333ec1885c2cd54a</srcmd5>
+    <version>0.9.35</version>
+    <time>1409303005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4568b368b5657ce9bc6adf3938bd399d</srcmd5>
+    <version>1.1.0</version>
+    <time>1410967616</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249856</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b20b1fe0ecfc2bccf65e40396956b6c9</srcmd5>
+    <version>1.5.0</version>
+    <time>1418112866</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>264479</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4b19a37c73dc2fc412c84b51f4d5d578</srcmd5>
+    <version>2.2.0</version>
+    <time>1475055024</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424264</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>50e004051043f8cd21423bddd297e9a4</srcmd5>
+    <version>2.2.0</version>
+    <time>1491469220</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>461309</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>15e8bfbda6d3f36e1604bf71147f92ff</srcmd5>
+    <version>2.2.0</version>
+    <time>1494088014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487995</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>46d2e9f061680f3c33ceec48399527be</srcmd5>
+    <version>2.2.0</version>
+    <time>1495469305</time>
+    <user>dimstar_suse</user>
+    <comment>- Require python-unittest2 only for python2</comment>
+    <requestid>497138</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>1e2d6bfc2960ac978a3d63abb629fdf9</srcmd5>
+    <version>2.2.0</version>
+    <time>1496225968</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499451</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1aa94d064898254d3ddd6c2791e73baf</srcmd5>
+    <version>2.3.0</version>
+    <time>1499754296</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507964</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>eeb7eba1dcd30415698c2529c152db58</srcmd5>
+    <version>2.3.0</version>
+    <time>1520253418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580793</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>86ac4b2ec321fcec8ba984a00ab67283</srcmd5>
+    <version>2.3.0</version>
+    <time>1520588729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584290</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>d4c670af096074edc13db0602164ec30</srcmd5>
+    <version>2.3.0</version>
+    <time>1534321855</time>
+    <user>dimstar_suse</user>
+    <comment>- Really run the tests
+- Add patch to build with python 3.7:
+  * testtools-py37.patch
+</comment>
+    <requestid>628734</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,289 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4dd61946c364c3841d2d9fc99b7a00fd</srcmd5>
+    <version>0.7.0</version>
+    <time>1307448136</time>
+    <user>azouhr</user>
+    <comment></comment>
+    <requestid>71062</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ffadc6c5a2de1e0d4c2d18a05c6ac70</srcmd5>
+    <version>0.7.0</version>
+    <time>1307448149</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 71062
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6eb9a41082ae8355fead3060006e2cd5</srcmd5>
+    <version>0.7.1</version>
+    <time>1311080496</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>75201</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be6fd0af4cc19dfb743a7e4552c0322e</srcmd5>
+    <version>0.7.1</version>
+    <time>1311080504</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 75201
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c59cc9da219892c48356a3bd71d278cd</srcmd5>
+    <version>0.8.0</version>
+    <time>1317024861</time>
+    <user>saschpe</user>
+    <comment>- Update to version 0.8.0:
+  * web: Use correct result MIME types.
+  * pack: Cache binary SHA of unpacked objects.
+  - See upstream git for more details...</comment>
+    <requestid>83880</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c59cc9da219892c48356a3bd71d278cd</srcmd5>
+    <version>0.8.0</version>
+    <time>1319182388</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ec00523b2fc87ce366f0fd2a807ea086</srcmd5>
+    <version>0.8.0</version>
+    <time>1323194133</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>ec00523b2fc87ce366f0fd2a807ea086</srcmd5>
+    <version>0.8.0</version>
+    <time>1340184050</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5acf1110c56794876eba7d8806cc75c8</srcmd5>
+    <version>0.8.6</version>
+    <time>1353846522</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.6:
+  + dulwich.__init__ no longer imports client, protocol, repo and
+    server modules. (Jelmer Vernooij)
+  + ConfigDict now behaves more like a dictionary.
+    (Adam 'Cezar' Jenkins, issue #58)
+  + HTTPGitApplication now takes an optional
+    fallback_app argument. (Jonas Haag, issue #67)
+  + Support for large pack index files. (Jameson Nash)
+  + Make index entry tests a little bit less strict, to cope with
+    slightly different behaviour on various platforms.
+    (Jelmer Vernooij)
+  + setup.py test (available when setuptools is installed) now
+    runs all tests, not just the basic unit tests.
+    (Jelmer Vernooij)
+  + Commit._deserialize now actually deserializes the current state rather than
+    the previous one. (Yifan Zhang, issue #59)
+  + Handle None elements in lists of TreeChange objects. (Alex Holmes)
+  + Support cloning repositories without HEAD set.
+    (D-Key, Jelmer Vernooij, issue #69)
+  + Support MemoryRepo.get_config. (Jelmer Vernooij)
+  + In get_transport_and_path, pass extra keyword arguments on to
+    HttpGitClient. (Jelmer Vernooij)
+- Changes from version 0.8.5:
+  + Avoid use of 'with' in dulwich.index. (Jelmer Vernooij)
+  + Be a little bit strict about OS behaviour in index tests.
+    Should fix the tests on Debian GNU/kFreeBSD. (Jelmer Vernooij)
+- See NEWS file for more changes</comment>
+    <requestid>142565</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5acf1110c56794876eba7d8806cc75c8</srcmd5>
+    <version>0.8.6</version>
+    <time>1359110026</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5acf1110c56794876eba7d8806cc75c8</srcmd5>
+    <version>0.8.6</version>
+    <time>1379664171</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>93deee2f73e7a0293a89e917dd2a5201</srcmd5>
+    <version>0.9.3</version>
+    <time>1383324142</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix download Url (forwarded request 205536 from posophe)</comment>
+    <requestid>205537</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>93deee2f73e7a0293a89e917dd2a5201</srcmd5>
+    <version>0.9.3</version>
+    <time>1409302863</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>977a169e015bc56d7ac49a544c0631d4</srcmd5>
+    <version>0.9.8</version>
+    <time>1424779361</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287343</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1fe3ddcae5ecb2d0fd09bdc6955e3b9a</srcmd5>
+    <version>0.10.1a</version>
+    <time>1431668635</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306671</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5aa49863ad4de3a41691be62b4481820</srcmd5>
+    <version>0.11.2</version>
+    <time>1451674037</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349373</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0136f5695c9003e061d07b9376ff797f</srcmd5>
+    <version>0.12.0</version>
+    <time>1453280061</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353641</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1279040e0c01349969c7b839ddb121a3</srcmd5>
+    <version>0.12.0</version>
+    <time>1471428335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419482</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3d06e187ea3eb5f8e74c43ba86ed481a</srcmd5>
+    <version>0.16.3</version>
+    <time>1485383193</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.3:
+ IMPROVEMENTS
+  * Fixed failing test-cases on windows.
+    (Koen Martens)
+  * Add support for worktrees. See `git-worktree(1)` and
+    `gitrepository-layout(5)`. (Laurent Rineau)
+  * Add support for `commondir` file in Git control
+    directories. (Laurent Rineau)
+  * Add support for passwords in HTTP URLs.
+    (Jon Bain, Mika Mäenpää)
+  * Add `release_robot` script to contrib,
+    allowing easy finding of current version based on Git tags.
+    (Mark Mikofski)
+  * Add ``Blob.splitlines`` method.
+    (Jelmer Vernooij)
+  * Add `dulwich.config.parse_submodules` function.
+  * Add `RefsContainer.follow` method. (#438)
+  * Support `ssh://` URLs in get_transport_and_path_from_url().
+    (Jelmer Vernooĳ, #402)
+  * Support missing empty line after headers in Git commits and tags.
+    (Nicolas Dandrimont, #413)
+  * Fix `dulwich.porcelain.status` when used in empty trees.
+    (Jelmer Vernooĳ, #415)
+  * Return copies of objects in MemoryObjectStore rather than
+    references, making the behaviour more consistent with that of
+    DiskObjectStore. (Félix Mattrat, Jelmer Vernooĳ)
+  * Fix ``dulwich.web`` on Python3. (#295, Jonas Haag)
+  * Many bugfixes, see NEWS file for details
+ CHANGES
+  * Changed license from &quot;GNU General Public License, version 2.0 or later&quot;</comment>
+    <requestid>451239</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>23794b53938d5a9d370145579c185279</srcmd5>
+    <version>0.16.3</version>
+    <time>1486635442</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455266</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b1ac32766ca190aa69e3b290830b23d8</srcmd5>
+    <version>0.17.2</version>
+    <time>1495011252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494942</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>76b592f4944fbec97f17ba82114cab27</srcmd5>
+    <version>0.17.3</version>
+    <time>1502629083</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515871</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2394a4e53170e976b39490b35e2132b8</srcmd5>
+    <version>0.17.3</version>
+    <time>1505920074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526919</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>df753b3d6a09ae6944e5e3e59ac01f06</srcmd5>
+    <version>0.18.5</version>
+    <time>1510045526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.5 (bsc#1066430)
+  + No detailed upstream release notes
+  + Commit history https://www.dulwich.io/code/dulwich/</comment>
+    <requestid>539416</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>cf33045511ee12605661eff66c31af27</srcmd5>
+    <version>0.18.5</version>
+    <time>1531135639</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620963</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>45ad71f97f1798f4507c168e7fe3fd7f</srcmd5>
+    <version>0.19.11</version>
+    <time>1553888112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.11:
+  * too many changes to enumerate, see NEWS
+- Drop docu subpackage as it needs many more sphinx modules</comment>
+    <requestid>685050</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>f0b8653c20c8b2c2d2b4017ea40ae710</srcmd5>
+    <version>0.19.11</version>
+    <time>1556915697</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Recommends for python-gpg and python-fastimport. Both are
+  optional requirements</comment>
+    <requestid>698063</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3e4110862f6b6e78b34fd161c34af2ef</srcmd5>
+    <version>0.19.13</version>
+    <time>1568720181</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.19.13:
+  * Don't trust modes if they can't be modified after a file has been created.
+  * Implement ``RefsContainer.__iter__``
+  * Mark ``.git`` directories as hidden on Windows.
+  * Return a 404 not found error when repository is not found.
+  * Add a basic ``porcelain.clean``.
+  * Update directory detection for `get_unstaged_changes` for Python 3.
+  * Avoid ``PermissionError``, since it is Python3-specific.</comment>
+    <requestid>730633</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+addFilter("init-script-without-%stop_on_removal-preun /etc/init.d/raw")
+addFilter("init-script-without-%restart_on_update-postun /etc/init.d/raw")
+addFilter("incoherent-init-script-name raw")
+addFilter("no-reload-entry /etc/init.d/raw")
+# There is no egrep(1) used -> False positive
+addFilter("deprecated-grep")
+# Both pam configs for su and su-l are marked as noreplace 
+addFilter(".*W:.*files-duplicate.*/pam/su.*/pam.d/su-l.*")
+# Useless warning as the /usr/bin variants are known
+addFilter(".*W:.*permissions-symlink.*/bin/su.*")
+addFilter(".*W:.*permissions-symlink.*/bin/umount.*")
+addFilter(".*W:.*permissions-symlink.*/bin/mount.*")
+# UGLY HACK: rpmlint falsely declares problems with files-attr-not-set
+addFilter("W: files-attr-not-set")

@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Mon Mar 11 21:33:19 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Requires: upower added
+
+-------------------------------------------------------------------
+Fri Mar  1 09:57:32 UTC 2019 - mvetter@suse.com
+
+- Update to 0.14.1:
+  * Only translations was changed
+
+-------------------------------------------------------------------
+Thu Jan 31 10:18:48 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Don't use automatic string conversions
+  * Improved cmake scripting
+    - set cmake_minimum_required to 3.1.0
+    - removed locale compile definitons
+  * Moved translations from lxqt-l10n back to lxqt-powermanagement
+    - removed obsolete translation fuctionality
+    - Added translation promo in README.md
+  * Translation updates
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 15:11:24 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * Add support for turning monitor(s) off
+
+-------------------------------------------------------------------
+Mon Oct 23 11:21:56 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set patch version
+  * Spell check (add "," and "-")
+  * Don't export github templates
+  * Adding missing "Comment" section to .desktop files. Fix for https://github.com/lxde/lxqt/issues/1339
+  * Added Lithuanian language
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-powermanagement: set Qt::AA_UseHighDpiPixmaps to true
+  * Added QCommandLineParser and basic cli interface to lxqt-config-powermanagement and lxqt-powermanagement
+  * Added default CMAKE_BUILD_TYPE and LXQT_POWERMANAGEMENT_PATCH_VERSION
+  * added *pl.desktop
+  * Fixes a FTBFS in superbuild mode
+  * Added merged autostart to CMakeLists.txt
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Update desktop entries and Replace fr_FR by fr
+  * Move Italian desktop entry to correct path
+  * Update Greek translation (el) Remove country variant from language code
+  * Rename LxQt to LXQt everywhere
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Updates the build system to use the Targets infrastructure
+  * Rename Power Management module name again
+  * Rename LXQt Power Management module name
+  * Drops hardcoded /etc/xdg paths
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Portuguese update for .desktop files
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * remove dead template lines switch OnlyShowIn from Razor -> LXQt stringchanges LxQt -> LXQt
+  * Renamed lxqt-autosuspend.desktop.in --> lxqt-powermanagement.desktop.in
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Default to no action if the action is not specified in the config file
+  * BatteryWatcher: Fix indentation
+  * Bump year
+- Remove post and postun
+
+-------------------------------------------------------------------
+Fri Feb 24 01:28:31 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.1:
+  * Add lxqt-config-powermanagement_da.desktop
+  * Create lxqt-config-powermanagement_fr.desktop
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#43)
+
+-------------------------------------------------------------------
+Sat Sep 24 21:37:37 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * README.md: Replace dependency XCB with KIdleTime
+  * Idleness Watcher: rely on KIdleTime instead of XCB (#33)
+  * fix indents
+  * Update and extend README.md
+  * Add Catalan translation
+  * Add Arabic Translation for Desktop File
+  * I18N: Fix Plural Strings (#38)
+  * Removes the QEventLoop from the Watcher class
+  * build: Use external translations
+  * ts-files removal (#34)
+  * Bump year Fix licenses, lxqt-powermanagement is LGPL only
+  * Fix source language in Italian translation file
+  * Italian translation update
+  * Update Russian translation Remove ru_RU files
+  * Fix typo in Greek translation
+  * update: lxqt-powermanagement_hu.ts
+  * Add German translation
+- Add keyring
+- Remove BuildRequirs pkgconfig(xcb), got replaced by KF5IdleTime
+
+-------------------------------------------------------------------
+Fri Nov  6 16:25:33 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now.
+
+-------------------------------------------------------------------
+Sat Feb 21 18:01:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- lxqt-powermanagement is using private QPA API, which can, and
+  does break BC even in point releases, so we need to hardcode
+  libQt5Gui5 version
+
+-------------------------------------------------------------------
+Fri Feb 20 20:41:55 UTC 2015 - sfalken@opensuse.org
+
+- Changed %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 21:22:35 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 0.9.0
+- Added -lang Subpackage
+- Added Patch
+  + fix_desktop_categories.patch to clear rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Jan 26 00:11:53 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to enable Fedora builds 
+
+-------------------------------------------------------------------
+Tue Nov 11 08:52:30 UTC 2014 - andrea@opensuse.org
+
+- Added license and other documentation
+
+-------------------------------------------------------------------
+Sat Oct 25 11:49:40 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.0 
+
+-------------------------------------------------------------------
+Tue May 13 16:59:31 UTC 2014 - sfalken@opensuse.org
+
+- Specfile and Patch cleanup 
+
+-------------------------------------------------------------------
+Mon May 12 16:21:04 UTC 2014 - sfalken@opensuse.org
+
+- removed fedora spec, split into subproject
+  Del:  lxqt-powermanagement-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Sat May 10 21:23:27 UTC 2014 - sfalken@opensuse.org
+
+- Ran spec-cleaner on openSUSE spec 
+
+-------------------------------------------------------------------
+Fri May  9 23:06:37 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  lxqt-powermanagement-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 20:14:26 UTC 2014 - sfalken@opensuse.org
+
+- Added patch to fix random data error in idlenesswatcher.cpp
+  Add:  0003-fix_idlenesswatcher_cpp.patch 
+
+-------------------------------------------------------------------
+Fri May  9 17:39:50 UTC 2014 - sfalken@opensuse.org
+
+- Added patches to fix bad includes in sources
+  Add:  0001-fix_lid_cpp.patch
+  Add:  0002-fix_lidwatcher_cpp.patch 
+
+-------------------------------------------------------------------
+Fri May  9 16:49:55 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  lxqt-powermanagement-0.7.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Fri Apr  4 00:42:15 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-powermanagement.spec
+  Add: lxqt-powermanagement.changes 
+

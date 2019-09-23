@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Wed Sep 11 11:30:49 UTC 2013 - pgajdos@suse.com
+
+- detect libsmbclient
+
+-------------------------------------------------------------------
+Sat May 26 16:20:09 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+
+-------------------------------------------------------------------
+Thu Dec  1 16:56:33 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Mar 22 05:12:50 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Mon Jan 26 17:08:32 CET 2009 - mszeredi@suse.de
+
+- Fix crash by running in single threaded mode (bnc#467184)
+
+-------------------------------------------------------------------
+Fri Nov 23 12:45:07 CET 2007 - mszeredi@suse.de
+
+- update to version 0.8.7 (fixes #338527)
+- fix searching for fusesmb.cache in path
+
+-------------------------------------------------------------------
+Fri Aug 10 19:34:35 CEST 2007 - bk@suse.de
+
+- Add "Requires: fuse" to ensure that fuse is present (285101#c29)
+- Remove empty NEWS file and symlink COPYING file from licenses
+
+-------------------------------------------------------------------
+Tue May  9 11:23:39 CEST 2006 - cthiel@suse.de
+
+- update to version 0.8.5 (fixes licensing)
+
+-------------------------------------------------------------------
+Sun Apr 23 22:57:04 CEST 2006 - cthiel@suse.de
+
+- initial package (version 0.8.4)
+

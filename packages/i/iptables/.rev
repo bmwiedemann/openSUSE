@@ -1,0 +1,580 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>092d65449077aaf8c95a08a941c6fa6b</srcmd5>
+    <version>1.3.7</version>
+    <time>1167872188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>12b3a393b50665885e8c22d8b4acd7e7</srcmd5>
+    <version>1.3.7</version>
+    <time>1168361130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>ddd4efbc70ac6809db813155a4cfffb9</srcmd5>
+    <version>1.3.7</version>
+    <time>1173919235</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="21">
+    <srcmd5>0f0e511704d845b9f5e8e4f7b5530d9d</srcmd5>
+    <version>1.3.7</version>
+    <time>1178716491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80816c6c0df7bd1f0952b12adac889c5</srcmd5>
+    <version>1.3.8</version>
+    <time>1185493514</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>70e03f22f101df6ba903d0e0210385c0</srcmd5>
+    <version>1.3.8</version>
+    <time>1186062883</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c86a172c0f9a6ae392b586a4822737f</srcmd5>
+    <version>1.4.0</version>
+    <time>1199926473</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d1802403b3e0ae4513f4c1596d45557</srcmd5>
+    <version>1.4.1.91</version>
+    <time>1221266111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf6e514c5b19b91d65e6019bde6c0688</srcmd5>
+    <version>1.4.2</version>
+    <time>1232326929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d5f0ae0b97f4a671480b93e7c9039a96</srcmd5>
+    <version>1.4.3.2</version>
+    <time>1240532644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a43999aaac98c0598e9b26bb30948d54</srcmd5>
+    <version>1.4.3.2</version>
+    <time>1242424081</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d388b8f44216b3c959c16fb2041ca46f</srcmd5>
+    <version>1.4.4</version>
+    <time>1245246213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>fa658ffb2bef755c84537ebd8e0e9f29</srcmd5>
+    <version>1.4.4</version>
+    <time>1245281763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f28e4fa4295e50fce5550585351eafe7</srcmd5>
+    <version>1.4.4</version>
+    <time>1247844982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>f28e4fa4295e50fce5550585351eafe7</srcmd5>
+    <version>1.4.4</version>
+    <time>1247844982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>de5f9fa604aab11dadd967c4c26bbd40</srcmd5>
+    <version>1.4.4</version>
+    <time>1258377984</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/iptables based on submit request 24177 from user puzel
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>90916333b6c22aae687741e01c628b4f</srcmd5>
+    <version>1.4.6</version>
+    <time>1261826097</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/iptables based on submit request 27487 from user puzel
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ee05ca45bdfc6640c8ba1ec329c399f2</srcmd5>
+    <version>1.4.6</version>
+    <time>1262518340</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/iptables based on submit request 27905 from user puzel
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7f49e97698760cad92b729052dc5896a</srcmd5>
+    <version>1.4.6+git9</version>
+    <time>1266884337</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/iptables based on submit request 33133 from user msmeissn
+</comment>
+    <requestid>33133</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4885b009fc4f3704eaad58891a8a4dbd</srcmd5>
+    <version>1.4.7</version>
+    <time>1267955792</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/iptables based on submit request 34217 from user coolo
+</comment>
+    <requestid>34217</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2d1d42f06daf4adebcec9672abff177c</srcmd5>
+    <version>1.4.7</version>
+    <time>1268924037</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>8267c199cae262bf435099825eebf00a</srcmd5>
+    <version>1.4.7</version>
+    <time>1272122629</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/iptables based on submit request 38743 from user coolo
+</comment>
+    <requestid>38743</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8e7c5be0115baa450d1c8546ce2f2de2</srcmd5>
+    <version>1.4.8</version>
+    <time>1275060186</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/iptables based on submit request 40795 from user jengelh
+</comment>
+    <requestid>40795</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8e7c5be0115baa450d1c8546ce2f2de2</srcmd5>
+    <version>1.4.8</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8e7c5be0115baa450d1c8546ce2f2de2</srcmd5>
+    <version>1.4.8</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1dc8d9a14157b7a5e4e4ef9aa24c9333</srcmd5>
+    <version>1.4.9</version>
+    <time>1280955764</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/iptables based on submit request 44493 from user puzel
+</comment>
+    <requestid>44493</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>50ad7286ecd0e49ca0bf393de82e1f29</srcmd5>
+    <version>1.4.9.1</version>
+    <time>1281368706</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/iptables based on submit request 44964 from user puzel
+</comment>
+    <requestid>44964</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d357de6eee6586f2ba395301da067462</srcmd5>
+    <version>1.4.10</version>
+    <time>1288694318</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51717 from user jengelh
+</comment>
+    <requestid>51717</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>32c9293cd61fa6242b3a19a2f3bdf2f1</srcmd5>
+    <version>1.4.10</version>
+    <time>1288694326</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51717
+</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>32c9293cd61fa6242b3a19a2f3bdf2f1</srcmd5>
+    <version>1.4.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3e432ab76d311eb43b3c6a6caf85ec00</srcmd5>
+    <version>1.4.11</version>
+    <time>1306839730</time>
+    <user>saschpe</user>
+    <comment>- Update to new upstream release 1.4.11
+* stricter option parsing
+* support for the current xt_SET target as contained in 2.6.39
+* support for the new xt_devgroup match
+* support for the new xt_AUDIT target
+* support for a new NFQUEUE bypass option, allowing to bypass the
+  queue if no userspace listener is present
+* a new iptables option &quot;-C&quot; to check for existence of a rules
+- Fixes on top
+* allow negation of --uid-owner/--gid-owner again
+* fix installation of symlinks
+- Run spec-beautifier</comment>
+    <requestid>71968</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a2efeb4e483b06ec8c2aa04d2c14c8b4</srcmd5>
+    <version>1.4.11</version>
+    <time>1306839741</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71968
+</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>374bef51a23a6a91a22a054b9da520b0</srcmd5>
+    <version>1.4.12</version>
+    <time>1311663477</time>
+    <user>saschpe</user>
+    <comment>- Update to new upstream release 1.4.12
+* Include lost match/target descriptions in manpage again
+* libxt_LOG: fix ignorance of all but the last flag
+* libxt_HL: restore hl-* option names
+* libxt_hashlimit: use a more obvious expiry value by default
+* libxt_RATEEST: fix find-and-delete of rules with -j RATEEST
+* ipv4: restore negation for the -f option
+* Reject empty host specifications (e.g. -s &quot;&quot;)
+* libxt_conntrack: restore network byteordering for ABI v1 &amp; v2
+* Documentation updates</comment>
+    <requestid>77018</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>be53e9a086f5982cc52949252d8e46ab</srcmd5>
+    <version>1.4.12</version>
+    <time>1311663488</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77018
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>39ce4907763f4092429f7398826946b8</srcmd5>
+    <version>1.4.12.1</version>
+    <time>1315233115</time>
+    <user>lrupp</user>
+    <comment>- Update to new upstream release 1.4.12.1
+* regression fixes for the new (stricter) command-line parser
+- restore --includedir= in spec file
+- Put libxtables into its own subpackage so that one does not need
+  a lockstep update of iproute2 on a new iptables package
+- Remove redundant fields (Autoreqprov defaults to on, License is
+  inherited from main package)</comment>
+    <requestid>80675</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d1c85bdbda2b2b5adbe7a3c7fa6928ba</srcmd5>
+    <version>1.4.12.1</version>
+    <time>1315233125</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80675
+</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8b2655d82c73fa8037b067c5d72e2664</srcmd5>
+    <version>1.4.12.1+16</version>
+    <time>1317771941</time>
+    <user>oertel</user>
+    <comment>- Update to a newer git snapshot of the stable branch
+  (to v1.4.12.1-16-gd2b0eaa)
+* resolve failure to load extensions that depend on libm.so
+- rediff of iptables-batch due to fuzz
+- relax runtime requires</comment>
+    <requestid>86604</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>8b2655d82c73fa8037b067c5d72e2664</srcmd5>
+    <version>1.4.12.1+16</version>
+    <time>1319181992</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>60beab01ccec190e93b48006042f2edf</srcmd5>
+    <version>1.4.12.1+16</version>
+    <time>1325348369</time>
+    <user>coolo</user>
+    <comment>- iptables-apply-mktemp-fix.patch (bnc#730161) 
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>98346</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>365382d45557155b623ee4789ce99a77</srcmd5>
+    <version>1.4.12.90</version>
+    <time>1325846694</time>
+    <user>coolo</user>
+    <comment>- Update to newer git snapshot (v1.4.12.2-28-g2117f2b,
+  but master branch), tag locally as 1.4.12.90.
+* ships missing pkgconfig files, compile fix for libnfnetlink
+* libxt_NFQUEUE: fix --queue-bypass ipt-save output
+* libxt_connbytes: fix handling of --connbytes FROM
+* libxt_recent: Add support for --reap option
+- split iptables-devel into libiptc-devel and libxtables-devel</comment>
+    <requestid>98813</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3fb3eb123a30965895fa9912c67f4899</srcmd5>
+    <version>1.4.13</version>
+    <time>1332999777</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.13
+* Add the rpfilter, nfacct and IPv6 ECN extensions</comment>
+    <requestid>111437</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>772d2e37eeec6a1ebb29ee0fd795badb</srcmd5>
+    <version>1.4.14</version>
+    <time>1338284343</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.14
+* Support for the new cttimeout infrastructure. This allows you to
+  attach specific timeout policies to flow via iptables CT target.</comment>
+    <requestid>122510</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>772d2e37eeec6a1ebb29ee0fd795badb</srcmd5>
+    <version>1.4.14</version>
+    <time>1340183466</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>89f98e981a230a6d7e0f856c46d91e35</srcmd5>
+    <version>1.4.15</version>
+    <time>1344064614</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.15
+* libxt_recent: add --mask netmask
+* libxt_hashlimit: add support for byte-based operation</comment>
+    <requestid>129443</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>211afb34014220b2e38308b66a3fe169</srcmd5>
+    <version>1.4.16.3</version>
+    <time>1351264121</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.16.3
+* This release includes aliasing support which translates command
+  lines using obsolete extensions into new ones. The option parser
+  now flags illegal negative numbers in some more extensions.
+  A division by zero was resolved in libxt_limit as well.</comment>
+    <requestid>139361</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>cf5dece20ede50f994a9971e806e59c7</srcmd5>
+    <version>1.4.16.3</version>
+    <time>1353133503</time>
+    <user>coolo</user>
+    <comment>- list all required binaries explicitly to make sure all of them are actually
+  compiled (forwarded request 141448 from lnussel)</comment>
+    <requestid>141522</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>c74a89f8f6c7e04a5834bcb5d6a746f2</srcmd5>
+    <version>1.4.16.3</version>
+    <time>1355473270</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144977</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>c74a89f8f6c7e04a5834bcb5d6a746f2</srcmd5>
+    <version>1.4.16.3</version>
+    <time>1359109088</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8644f66c118dc93f9be5dd0782001c53</srcmd5>
+    <version>1.4.18</version>
+    <time>1363947566</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0 and Artistic-2.0
+GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ files. Also, aggregation of Artistic-2.0 content (forwarded request 160173 from babelworx)</comment>
+    <requestid>160175</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>2b8ecdf85133907c244da62812a93ed9</srcmd5>
+    <version>1.4.18</version>
+    <time>1366214089</time>
+    <user>coolo</user>
+    <comment>- libxt_state.so symlink was not installed (bnc#815182); fix by
+  removing 0001-build-also-use-libtool-for-install-stage.patch,
+  removing 0001-build-do-not-dereference-symlinks-on-installation.patch,
+  adding 0001-libip6t_NETMAP-Use-xtables_ip6mask_to_cidr-and-get-r.patch,
+  adding 0001-Revert-build-resolve-link-failure-for-ip6t_NETMAP.patch</comment>
+    <requestid>170988</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>db5fb3bf5bcbb9e4e4be469234ed2082</srcmd5>
+    <version>1.4.19.1</version>
+    <time>1370447004</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.19.1
+* New connlabel and bpf matches
+- Remove 0001-Revert-build-resolve-link-failure-for-ip6t_NETMAP.patch,
+  0001-libip6t_NETMAP-Use-xtables_ip6mask_to_cidr-and-get-r.patch
+  (are upstream)</comment>
+    <requestid>177745</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>db5fb3bf5bcbb9e4e4be469234ed2082</srcmd5>
+    <version>1.4.19.1</version>
+    <time>1379662679</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cf1146d3a489407ab8a9b0125cd0d275</srcmd5>
+    <version>1.4.20</version>
+    <time>1381222320</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202575</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e95694b650043a82de5df5f8cb23a484</srcmd5>
+    <version>1.4.21</version>
+    <time>1385391747</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.4.21
+* --nowildcard option for xt_socket, available since Linux kernel 3.11
+* SYNPROXY support, available since Linux kernel 3.12</comment>
+    <requestid>208272</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>73d8b4f788ec392037067d8d9ba8b824</srcmd5>
+    <version>1.4.21</version>
+    <time>1398533639</time>
+    <user>coolo</user>
+    <comment>- remove dependency on gpg-offline (blocks rebuilds and
+  tarball integrity is checked by source-validator anyway) (forwarded request 231251 from dirkmueller)</comment>
+    <requestid>231277</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>73d8b4f788ec392037067d8d9ba8b824</srcmd5>
+    <version>1.4.21</version>
+    <time>1409301242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5934bc4c6fc4fe513286951af5b2b5bd</srcmd5>
+    <version>1.6.0~</version>
+    <time>1449383206</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>346839</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>29f4c17285d73c64297864d3f170eafe</srcmd5>
+    <version>1.6.0</version>
+    <time>1451895589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350810</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>b0e040a8301413e987025d380ea00f70</srcmd5>
+    <version>1.6.1</version>
+    <time>1486548068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.6.1</comment>
+    <requestid>454803</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c86f9fcc739efe0956b6bd916b42d740</srcmd5>
+    <version>1.6.2</version>
+    <time>1518281706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.6.2</comment>
+    <requestid>573925</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>5f588240d7297d88941f4e951f0cedda</srcmd5>
+    <version>1.6.2</version>
+    <time>1521579309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586249</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>f9aaacc825f5e41662ee54e9d4c50a30</srcmd5>
+    <version>1.6.2</version>
+    <time>1527605165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612202</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0520c6a541249cf6c31ebe6cc17540a6</srcmd5>
+    <version>1.8.0.g85</version>
+    <time>1538374504</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>637189</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>06d10abe7353f0b833ad4b8db8d9c93e</srcmd5>
+    <version>1.8.0.g85</version>
+    <time>1538672249</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639348</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>628f8b7dc8a3c66e32e5f4d557529f04</srcmd5>
+    <version>1.8.1</version>
+    <time>1541513523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.1</comment>
+    <requestid>645457</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>79346a512ba2f006dd938837135be647</srcmd5>
+    <version>1.8.2</version>
+    <time>1542579713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.2</comment>
+    <requestid>648729</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>b49a3055276acc423fbea49f7ff336cc</srcmd5>
+    <version>1.8.2</version>
+    <time>1554712380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691534</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>8258e86284a96cbe27a43f2945b5780f</srcmd5>
+    <version>1.8.3</version>
+    <time>1560337111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.3</comment>
+    <requestid>705874</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>058d93c6fcc578376c1a00ebeb0f9d80</srcmd5>
+    <version>1.8.3</version>
+    <time>1568983629</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729482</requestid>
+  </revision>
+</revisionlist>

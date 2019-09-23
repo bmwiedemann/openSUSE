@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Fri Dec  2 07:48:25 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 13:20:53 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Sep 10 00:52:23 CEST 2004 - poeml@suse.de
+
+- fix parsing of IP header and data packages for output of
+  tcpdump-3.8.[23] [#44946], and apply the fix on 9.2 or newer
+- apply previous patch on 9.1 or newer
+
+-------------------------------------------------------------------
+Mon May 10 13:30:22 CEST 2004 - poeml@suse.de
+
+- fix parsing of IP header for output of tcpdump-3.8.1 [#38528]
+
+-------------------------------------------------------------------
+Wed Mar  3 16:29:31 CET 2004 - poeml@suse.de
+
+- update dhcpdump to 1.5
+  - Option 82, submitted by Phil Pennock <pdp@nl.demon.net>
+  - Add fflush(), submitted by Gary Colman <gary@colmans.net>
+  - Fix problem with padding, they were not handled properly
+    and caused old memory to be reused.
+- compile with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Thu Jul 24 23:08:10 CEST 2003 - poeml@suse.de
+
+- update dhcpdump to 1.5. Rephrased changelog:
+  - better input checking regarding validity of the header of the UDP packet
+  - Added some DHCP options from the INIA website (not all are parsed yet)
+  - added chaddr filter, contributed by Peter Apian-Bennewitz
+  - client-identifier is now printed as long as it is.
+  - autoconfiscated
+- update dhcping to 1.2 (no significant changes)
+- install CHANGES and other accompanying files
+- use %defattr
+- re-create man pages
+
+-------------------------------------------------------------------
+Fri Aug 24 03:02:49 CEST 2001 - poeml@suse.de
+
+- update dhcpdump to 1.2 and dhcping to 1.1
+
+-------------------------------------------------------------------
+Wed Mar 21 02:46:38 CET 2001 - poeml@suse.de
+
+- new package
+

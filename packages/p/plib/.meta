@@ -1,0 +1,17 @@
+<package name="plib" project="openSUSE:Factory">
+  <title>A collection of useful Game libraries</title>
+  <description>Plib contains a selection of libraries, that can be helpful for 3D game
+programming. It contains the following libraries:
+
+o JS  - A Joystick interface
+
+o PUI - A simple GUI built on top of OpenGL
+
+o SG  - Some Standard Geometry functions
+
+o SL  - A Games-oriented Sound Library
+
+o SSG - A Simple Scene Graph API built on top of OpenGL
+</description>
+  <devel project="games" package="plib"/>
+</package>

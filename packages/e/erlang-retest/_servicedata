@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">https://github.com/dizzyd/retest</param>
+          <param name="changesrevision">deccad4d82fc51d08ba554893491c7d9f253c196</param></service><service name="tar_scm">
+                <param name="url">https://github.com/rebar/retest</param>
+              <param name="changesrevision">3b7fd49fd942631f4228d31f6430921675853a3d</param></service></servicedata>

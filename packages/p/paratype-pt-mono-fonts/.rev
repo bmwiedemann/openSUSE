@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d43b9b8306a449c2a280b91fba1727eb</srcmd5>
+    <version>1.000OFL</version>
+    <time>1327484386</time>
+    <user>coolo</user>
+    <comment>One more cyrillic font to complete paratype fonts family.</comment>
+    <requestid>100947</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6895a91f59b3411083d4858e232f4d83</srcmd5>
+    <version>1.001OFL</version>
+    <time>1327922840</time>
+    <user>coolo</user>
+    <comment>Update to 1.001.</comment>
+    <requestid>101902</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b33c98b9f4fe33e68b7775b9b7ff84e</srcmd5>
+    <version>1.002OFL</version>
+    <time>1333026223</time>
+    <user>coolo</user>
+    <comment>added bold style</comment>
+    <requestid>111837</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7b02b98094e819221c07734a879a6efa</srcmd5>
+    <version>1.002OFL</version>
+    <time>1338017269</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122174</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>7b02b98094e819221c07734a879a6efa</srcmd5>
+    <version>1.002OFL</version>
+    <time>1340183776</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>19d3515a559f54d4be5c9d4c235e25be</srcmd5>
+    <version>1.002OFL</version>
+    <time>1347618797</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133975</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>19d3515a559f54d4be5c9d4c235e25be</srcmd5>
+    <version>1.002OFL</version>
+    <time>1359109573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>19d3515a559f54d4be5c9d4c235e25be</srcmd5>
+    <version>1.002OFL</version>
+    <time>1379663500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75f3d7c4eaa68d6ffeea465b43fe66c6</srcmd5>
+    <version>1.003OFL</version>
+    <time>1407744472</time>
+    <user>lnussel</user>
+    <comment>update to 1.003OFL</comment>
+    <requestid>244130</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>75f3d7c4eaa68d6ffeea465b43fe66c6</srcmd5>
+    <version>1.003OFL</version>
+    <time>1409302111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

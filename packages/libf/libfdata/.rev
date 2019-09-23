@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d331404251c1e1d0a43864ebb456abb</srcmd5>
+    <version>0~20150104</version>
+    <time>1422626261</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to staging D.  libcstring is a dependency and is currently in staging D.</comment>
+    <requestid>280477</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85d182f09cbae7ad6b584c9b19224cd2</srcmd5>
+    <version>0~20150825</version>
+    <time>1454628719</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357452</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>838d3041928bddd8853cbd447bc648dd</srcmd5>
+    <version>0~20170112</version>
+    <time>1487681318</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458582</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>726fc3c957a9fad707e24684660d1d52</srcmd5>
+    <version>0~20181124</version>
+    <time>1560337739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695365</requestid>
+  </revision>
+</revisionlist>

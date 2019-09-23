@@ -1,0 +1,382 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ea4ad82120f67f61858d45cb181aec8</srcmd5>
+    <version>2012</version>
+    <time>1342769721</time>
+    <user>coolo</user>
+    <comment>texlive</comment>
+    <requestid>128410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e8635b3f4420bbc0ac82cb171487419</srcmd5>
+    <version>2012</version>
+    <time>1347975954</time>
+    <user>coolo</user>
+    <comment>Use disturl for rpmbuild runs</comment>
+    <requestid>134273</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7bd5d863e0f0c7f9e7e4abeb9af2b5f3</srcmd5>
+    <version>2012</version>
+    <time>1349853688</time>
+    <user>coolo</user>
+    <comment>- Add require texlive-metapost for texlive-dvips
+- Add some more requires for latex-bin
+- Add require pdftex.def for texlive-pdftex
+- Do not reqiure package pgfmath in pgffor.sty (bnc#783252)</comment>
+    <requestid>137575</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7bd5d863e0f0c7f9e7e4abeb9af2b5f3</srcmd5>
+    <version>2012</version>
+    <time>1359110477</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>728a9e5ac7404ab37ecf5d3782ea0b70</srcmd5>
+    <version>2012</version>
+    <time>1360230592</time>
+    <user>coolo</user>
+    <comment>Work around missing support of %posttrans scriptlets in libzypp due missing rpm option for not to execute those scriptlets (bnc#773575)</comment>
+    <requestid>151361</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>dd093fa0e71a1e8141773a0838755494</srcmd5>
+    <version>2012</version>
+    <time>1365140250</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162435</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>bce217541e604ae0b280217cb5396de3</srcmd5>
+    <version>2012</version>
+    <time>1371156316</time>
+    <user>coolo</user>
+    <comment>- As lcdf-typetools does not support kpathsea nor search below
+  texmf tree build the texlive-lcdftypetools(-bin) packages again
+  and let them conflict with the lcdf-typetools package.
+
+- Asymptote binaries may have the same version as the format files
+  of the asymptote package it self (bnc#813032)</comment>
+    <requestid>174723</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>4bf49e8df0b331fc75750ee57ba9a209</srcmd5>
+    <version>2012</version>
+    <time>1374671624</time>
+    <user>coolo</user>
+    <comment>fix build</comment>
+    <requestid>184138</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>10065d87a97522659e69588b581abfa5</srcmd5>
+    <version>2012</version>
+    <time>1378988102</time>
+    <user>scarabeus_factory</user>
+    <comment>- Change /bin/env to /usr/bin/env in latexdiff tool below doc 
+
+- Be aware that the package texlive-ascii-font is the former
+  texlive-ascii
+
+- Do not override TEXMFLOCAL with TEXMFMAIN as this is now TEXMFDIST 
+
+- Drop dependency freeglut-devel of texlive-asymptote (bnc#833498)
+
+- Make sure that TEXMFMAIN is /usr/share/texmf now 
+- Replace texmf.cnf if really required that is do not install
+  as .rpmnew but move the old to .rpmold
+
+- Move leipzig.tex from doc/latex/leipzig/leipzig.tex to 
+  tex/latex/leipzig/leipzig.tex
+
+- Update to TeXLive 2013 (timestamp 20130620)
+  + Distribution layout: the top-level texmf/ directory has been
+    merged into texmf-dist/, for simplicity. Both the TEXMFMAIN
+    and TEXMFDIST Kpathsea variables now point to texmf-dist.
+  + Many small language collections have been merged together,
+    to simplify installation.
+  + MetaPost: native support for PNG output and floating-point
+    (IEEE double) has been added.
+  + LuaTEX: updated to Lua 5.2, and includes a new library
+    (pdfscanner) to process external PDF page content, among
+    much else (see its web pages).
+  + XeTEX (also see its web pages for more):
+    The HarfBuzz library now used for font layout instead of ICU.
+    Graphite2 and HarfBuzz are used instead of SilGraphite for Graphite layout.</comment>
+    <requestid>198337</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>10065d87a97522659e69588b581abfa5</srcmd5>
+    <version>2012</version>
+    <time>1379664795</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>0125cf9cc1dfac399584573562358986</srcmd5>
+    <version>2012</version>
+    <time>1380299525</time>
+    <user>coolo</user>
+    <comment>- Be aware that texlive scripts are now in the packages them self</comment>
+    <requestid>200526</requestid>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>d2f456a7c6a93bc0c84746edb30d4b98</srcmd5>
+    <version>2012</version>
+    <time>1383811845</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205835</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>a0df52b22cc6810d4e0e7b2b1964d0b6</srcmd5>
+    <version>2012</version>
+    <time>1395610226</time>
+    <user>scarabeus_factory</user>
+    <comment>- Remove superfluous xfs dependcies</comment>
+    <requestid>227029</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>6a5783abfb38aeff66b48ad6944433e8</srcmd5>
+    <version>2012</version>
+    <time>1403070565</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236805</requestid>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>6a5783abfb38aeff66b48ad6944433e8</srcmd5>
+    <version>2012</version>
+    <time>1409303476</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>386469e2a8003f582970632b53dbefad</srcmd5>
+    <version>unknown</version>
+    <time>1424779153</time>
+    <user>dimstar_suse</user>
+    <comment>trying the bots</comment>
+    <requestid>287125</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>38058e3c938f7c16dc7e8725f3032c06</srcmd5>
+    <version>unknown</version>
+    <time>1429948210</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298620</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>3f698a8edd119412d5f9ffa5ffc1aa7e</srcmd5>
+    <version>unknown</version>
+    <time>1458228674</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch bbold_bbold11.dif move from texlive-specs-c to texlive-specs-b 
+
+- Let texlive-ps2pk-bin Obsoletes texlive-ps2pkm-bin (boo#965472)
+
+- Add both texlive.infra and texlive.infra.doc as these provides
+  some perl module files used by fmtutil.pl 
+
+- Also enforce fmtutil.pl to use FHS as then it will find mktexlsr.pl
+  boo#965151 
+- Make sure that mktexlsr.pl knows about mktex group
+
+- Fix bug boo#965151 that is wrong perl syntax 
+
+- Update to TeXLive 2015 (timestamp 20150521 revision 26946)
+  * Allow boot strapping by adding BuildIgnore for texlive
+  * Modify kpathsea_cnf.dif
+  * Remove leipzig.moves
+  * Modify luaotfload_varfonts.dif
+  * Modify musixtex_various.dif
+  * Modify tetex_scripts.dif
+  * Modify tex4ht_env.dif
+  * Modify texconfig_scripts.dif</comment>
+    <requestid>358547</requestid>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>fb40a3a992e0742e51ff7b85d370586e</srcmd5>
+    <version>unknown</version>
+    <time>1461334750</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>384612</requestid>
+  </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>204c710443d00327465ce8f1832ae384</srcmd5>
+    <version>unknown</version>
+    <time>1469530683</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415041</requestid>
+  </revision>
+  <revision rev="21" vrev="24">
+    <srcmd5>83c484f85a468a2eec9c8a646ca8a31b</srcmd5>
+    <version>unknown</version>
+    <time>1471852838</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>419919</requestid>
+  </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>7e5a1dbd3a99211573d1c12f22eda376</srcmd5>
+    <version>unknown</version>
+    <time>1475749960</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433178</requestid>
+  </revision>
+  <revision rev="23" vrev="26">
+    <srcmd5>e37a9b3680adffccf2282679e2d807fc</srcmd5>
+    <version>unknown</version>
+    <time>1480692704</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442407</requestid>
+  </revision>
+  <revision rev="24" vrev="27">
+    <srcmd5>8789c9817c7dfa5cd97c93e85131df35</srcmd5>
+    <version>unknown</version>
+    <time>1481886006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>445758</requestid>
+  </revision>
+  <revision rev="25" vrev="28">
+    <srcmd5>5da0455979f38fdca33385f649388bac</srcmd5>
+    <version>unknown</version>
+    <time>1496926434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>500699</requestid>
+  </revision>
+  <revision rev="26" vrev="29">
+    <srcmd5>9dc6143c4a71b4d54a5c6c0498d48433</srcmd5>
+    <version>unknown</version>
+    <time>1498411275</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed version for openSUSE:Factory:Staging:K</comment>
+    <requestid>504789</requestid>
+  </revision>
+  <revision rev="27" vrev="30">
+    <srcmd5>02065de09d930e2852cc2867ac720640</srcmd5>
+    <version>unknown</version>
+    <time>1500275069</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate/remove specific formats at installation/erease of a
+  package (boo#1046277)
+
+- Fix some descriptions of PostScript Type 1 binary files (boo#1046104) 
+
+- Yet an other move for texlive-pas-cours that is move
+  doc/latex/pas-cours/macro-calculs.tex to tex/latex/pas-cours/
+
+- Avoid to depend on optional milog.cfg
+- texlive-milog does replace mathgl-tex 
+
+- Do not require own provided perl modules for latexindent 
+
+- Change left over texlive-pdftex-def for texlive-latex-bin</comment>
+    <requestid>509709</requestid>
+  </revision>
+  <revision rev="28" vrev="31">
+    <srcmd5>31f9a1132c8023b0b94a59d45656f7da</srcmd5>
+    <version>unknown</version>
+    <time>1508197575</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533099</requestid>
+  </revision>
+  <revision rev="29" vrev="32">
+    <srcmd5>e7b7b6446b4559c9a6d7f90e559edbce</srcmd5>
+    <version>unknown</version>
+    <time>1508609861</time>
+    <user>dimstar_suse</user>
+    <comment>- Use chkfont.c compiled as vffont to add mapfont tfm files to
+  required files as well (boo#1063771)</comment>
+    <requestid>535201</requestid>
+  </revision>
+  <revision rev="30" vrev="33">
+    <srcmd5>538bd63c4fa22444462b7147f4b048eb</srcmd5>
+    <version>unknown</version>
+    <time>1513453715</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable by a build conditions using zypper way of posttrans scripts
+  as we already use %posttrans. Nevertheless correct naming scheme
+  (boo#1069445)</comment>
+    <requestid>557091</requestid>
+  </revision>
+  <revision rev="31" vrev="34">
+    <srcmd5>79ea771c403cedaae6efaebc0590da7c</srcmd5>
+    <version>unknown</version>
+    <time>1515875817</time>
+    <user>dimstar_suse</user>
+    <comment>- If zypper way of posttrans scripts are disabled do use the rpm
+  %posttrans scriptlets (boo#1074128)</comment>
+    <requestid>562516</requestid>
+  </revision>
+  <revision rev="32" vrev="35">
+    <srcmd5>473082439cbe1044e9c637c9902efe66</srcmd5>
+    <version>unknown</version>
+    <time>1516971438</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch over to python 3 (boo#1077170)
+
+- Avoid nasty warning about missing batchmode in ENVironment</comment>
+    <requestid>568897</requestid>
+  </revision>
+  <revision rev="33" vrev="36">
+    <srcmd5>2070092969d2e044090463f32231a9a8</srcmd5>
+    <version>unknown</version>
+    <time>1518023709</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid broken scripts due former env correction, only repair
+  those scripts where the shebang exists</comment>
+    <requestid>573352</requestid>
+  </revision>
+  <revision rev="34" vrev="37">
+    <srcmd5>789a6c708f2a09eeae9626bc8682a6b5</srcmd5>
+    <version>unknown</version>
+    <time>1521715986</time>
+    <user>dimstar_suse</user>
+    <comment>- Use font-config macros (boo#1083212) *with* xorg-x11-fonts-core
+  (for encodings), mkfontdir (ditto), and mkfontscale</comment>
+    <requestid>585982</requestid>
+  </revision>
+  <revision rev="35" vrev="38">
+    <srcmd5>67552fc29c91c798547e9e517a4ff58d</srcmd5>
+    <version>unknown</version>
+    <time>1526371084</time>
+    <user>dimstar_suse</user>
+    <comment>TeXLive 2018</comment>
+    <requestid>603644</requestid>
+  </revision>
+  <revision rev="36" vrev="39">
+    <srcmd5>e91bd12725a55ecb24df4f5ee49f49c2</srcmd5>
+    <version>unknown</version>
+    <time>1533214459</time>
+    <user>dimstar_suse</user>
+    <comment>Map many Language Description Files (ldf) to know hypen-packages (boo#1099475)</comment>
+    <requestid>626892</requestid>
+  </revision>
+  <revision rev="37" vrev="40">
+    <srcmd5>e7e752874438a244bf643c14848f8702</srcmd5>
+    <version>unknown</version>
+    <time>1563018102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>709699</requestid>
+  </revision>
+  <revision rev="38" vrev="41">
+    <srcmd5>b11a0bb783724fba3e733c64f371613f</srcmd5>
+    <version>unknown</version>
+    <time>1567090577</time>
+    <user>dimstar_suse</user>
+    <comment>Add updmap-map_roboto.dif to update encoding mappings (boo#1143065)</comment>
+    <requestid>725594</requestid>
+  </revision>
+</revisionlist>

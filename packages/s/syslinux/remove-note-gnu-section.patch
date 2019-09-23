@@ -1,0 +1,13 @@
+diff --git a/mbr/Makefile b/mbr/Makefile
+index be2bded7..59e06915 100644
+--- a/mbr/Makefile
++++ b/mbr/Makefile
+@@ -36,7 +36,7 @@
+ 	$(LD) $(LDFLAGS) -T mbr.ld -e _start -o $@ $<
+ 
+ %.bin: %.elf checksize.pl
+-	$(OBJCOPY) -O binary $< $@
++	$(OBJCOPY) -O binary --remove-section .note.gnu.property $< $@
+ 	$(PERL) checksize.pl $@
+ 	$(CHMOD) -x $@
+ 

@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Fri Feb  2 06:00:29 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Actually remove bundled zlib and use system zlib. Also fixes problems
+  when trying to use system zlib while mozjs38-devel is installed
+  (two zlib.h instances with conflicting definitions)
+
+-------------------------------------------------------------------
+Tue Feb 21 08:35:14 UTC 2017 - wr@rosenauer.org
+
+- update RPM group for main package for consistency
+
+-------------------------------------------------------------------
+Mon Feb 20 13:28:16 UTC 2017 - wr@rosenauer.org
+
+- change pkg-config name from js to mozjs-38
+
+-------------------------------------------------------------------
+Sun Feb 19 18:42:11 UTC 2017 - wr@rosenauer.org
+
+- fix configure with for sed >= 4.3 (boo#1020631) (mozilla-sed43.patch)
+
+-------------------------------------------------------------------
+Mon Aug 22 16:26:18 UTC 2016 - normand@linux.vnet.ibm.com
+
+- devel package should not symlink to build directory boo#992065
+
+-------------------------------------------------------------------
+Fri Jul 29 15:29:23 UTC 2016 - normand@linux.vnet.ibm.com
+
+- add _constraints for 7GB memory for ppc64le in Factory:PowerPC
+
+-------------------------------------------------------------------
+Mon Jun 13 17:13:12 UTC 2016 - agraf@suse.com
+
+- Fix 48 virtual address space systems like upstream (bsc#984126)
+  (mozjs-support-48bit-va.patch)
+
+-------------------------------------------------------------------
+Fri Nov  6 17:17:49 UTC 2015 - normand@linux.vnet.ibm.com
+
+- three patches added to avoid build errors from initial rc0
+  mozjs38_missing_zlib_moz_build.patch
+  mozjs38_avoid_strncat_warning_inline.patch
+  mozjs38_missing_python_before_milestone_call
+
+-------------------------------------------------------------------
+Fri Nov  6 15:44:37 UTC 2015 - normand@linux.vnet.ibm.com
+
+- first version of mozjs38 that is still beta from
+  https://people.mozilla.org/~sstangl/mozjs-38.2.1.rc0.tar.bz2
+

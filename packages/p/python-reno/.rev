@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15922b18b96dd1412b18993ebc170749</srcmd5>
+    <version>1.5.0</version>
+    <time>1457353432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>363335</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b7a1cbbc50164710a96028b7e9f96f9</srcmd5>
+    <version>1.6.2</version>
+    <time>1465336169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400240</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6566d2d6d05c1434c1cb09473070f3fe</srcmd5>
+    <version>1.8.0</version>
+    <time>1472246272</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422103</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a7f90ef6fe312bb6672bdee290c881f4</srcmd5>
+    <version>2.4.1</version>
+    <time>1502562332</time>
+    <user>maxlin_factory</user>
+    <comment>- update to version 2.4.1
+  - add function for reducing change list to operations
+  - sphinxext: Include branch information in source name
+  - Properly declare dependency on six
+  - return the name of the cache file created
+  - Have import order follow standard and fix misspelling
+  - Remove discover from test-requirements
+  - Replace LOG.wirn with LOG.warning
+  - Support to set a custom template used to create new notes
+  - set up logging in the sphinx extension
+  - set relnotesdir to default inside config
+  - Changed the link to home-page
+  - Show team and repo badges on README
+  - Using fixtures.MockPatch instead of mockpatch.Patch
+  - clarify automatic inclusion of prelude section
+  - update release notes
+  - let the Config object give us the path to the notes
+  - define Config class
+  - logging improvements
+  - trim Newton history to avoid duplication
+  - use dulwich to find the current version on a branch
+  - fix a problem scanning for the base of a branch with no tag
+  - Wrap template at ~79 characters
+  - add filename and sha in comments in report output
+  - Add YAML configuration parsing
+  - Document how reno handles eol branches in config
+  - add a --title option to the report command
+  - doc: Document the available configuration options
+  - Remove oslotest from test-requirements.txt
+  - add a lint command</comment>
+    <requestid>514635</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>669c62bc374114220e13f5431dac4fa5</srcmd5>
+    <version>2.6.0</version>
+    <time>1512651220</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0
+  - remove some duplication in ChangeTracker
+  - Replace http with https
+  - Add user details for editing stable branch notes
+  - switch from oslosphinx to openstackdocstheme
+  - Update documention link for doc migration
+  - loader: Extract cache filename from config object
+  - expand examples in documentation
+  - ignore changes until the file is added within the scanned range
+  - fix release note markup
+  - Allow users to change prelude section name
+  - Block comment should start with '# '
+  - Clean up rendered HTML with openstackdocstheme
+  - update bindep list
+  - requirements: Stop requiring a specific pbr version
+  - Move notesdir default to 'defaults' module
+  - Remove Babel from setup.cfg and requirements
+  - rearrange the existing docs to follow the new standard layout
+  - Support repodir config files
+  - add release note for scanner fix
+  - Add option to create release note from user-provided template
+  - update ref search logic for zuulv3 CI layout
+  - release note for zuulv3 fix
+  - allow release notes sections to be single strings
+  - add option for ignoring some notes files</comment>
+    <requestid>548450</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>19d508e4dc90adbe5eb4971b5cabca9c</srcmd5>
+    <version>2.7.0</version>
+    <time>1519683951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.7.0
+  - improve output messages
+  - add an internal sphinx extension to show the configuration defaults
+  - support scanning closed stable branches
+  - define options with help text</comment>
+    <requestid>580045</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a7fd76244c97c6d8659362b938c8cd9</srcmd5>
+    <version>2.11.3</version>
+    <time>1560862239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.11.3 (bsc#1137659)
+  - Streamline published release notes
+  - switch doc and pypi jobs to use python3
+  - Migrate the link of bug report button to storyboard
+  - update sphinx to at least 1.6.1
+  - include the branch name in anchors to make them more unique
+  - add lower-constraints tox environment and job
+  - Update the min version of tox to 2.0
+  - cleanups for dev workflow descriptions
+  - Add python 3.6 unit test job
+  - import zuul job settings from project-config
+  - Collapse Unreleased and Mainline sections
+  - add unreleased_version_title configuration option
+  - trivial change to contributing instructions
+  - refactor handling of missing config files for better testing
+  - Change openstack-dev to openstack-discuss
+  - update the oudated URL in doc
+  - preserve the order of tags when reading the cache file
+  - Enhance the travis hack
+  - only override config values from command line if they are actually set
+  - move sphinx flags to tox.ini
+  - report line numbers for generated content more accurately
+  - Update links in README
+  - Switch to use stestr for unit test
+  - update bug report URLs to use storyboard
+  - sphinxext: Use 'sphinx.util.logging'
+  - sphinxext: Use unicode_literals
+  - Fix traceback when no args are passed to reno
+  - tests: Use mock decorator instead of context manager
+  - Integrate a setuptools command</comment>
+    <requestid>709595</requestid>
+  </revision>
+</revisionlist>

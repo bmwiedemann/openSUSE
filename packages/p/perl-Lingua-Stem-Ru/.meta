@@ -1,0 +1,13 @@
+<package name="perl-Lingua-Stem-Ru" project="openSUSE:Factory">
+  <title>Porter's stemming algorithm for Russian (KOI8-R only)</title>
+  <description>This module applies the Porter Stemming Algorithm to its parameters,
+returning the stemmed words.
+
+Authors:
+--------
+    Aleksandr Guidrevitch &lt;pillgrim@mail.ru&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Lingua-Stem-Ru"/>
+  <url>http://search.cpan.org/dist/Lingua-Stem-Ru/</url>
+</package>

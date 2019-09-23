@@ -1,0 +1,5 @@
+<package name="python-pytest-lazy-fixture" project="openSUSE:Factory">
+  <title></title>
+  <description>Helper to use fixtures in pytest.markparametrize</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-lazy-fixture"/>
+</package>

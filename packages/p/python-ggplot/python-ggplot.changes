@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Jun  7 20:40:15 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Add license file
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Aug 17 15:54:02 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 0.11.5
+  * got rid of things that don't work
+  * eliminated really stupid code that was trying to mimic R
+  * added tests for data formatting/grouping
+  * removed "visual tests"
+  * fixed facet_wrap and facet_grid so they actually do that
+    they're supposed to
+  * removed half-baked geoms and stats
+  * simplified stat_* functions
+  * added pigeons and chopsticks datasets
+
+-------------------------------------------------------------------
+Fri Aug 29 11:51:36 UTC 2014 - toddrme2178@gmail.com
+
+- Initial version
+

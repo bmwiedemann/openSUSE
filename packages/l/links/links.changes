@@ -1,0 +1,532 @@
+-------------------------------------------------------------------
+Sun Sep  8 08:27:25 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- links 2.20.1:
+  * libevent bug fixes
+- includes changes from 2.20:
+  * Security bug fixed: when links was connected to tor, it would
+    send real dns requests outside the tor network when the
+    displayed page contains link elements with rel=dns-prefetch
+    boo#1149886
+  * stability improvements
+  * file urls support local hostnames
+  * mouse support improvement
+  * improve interaction with Google
+  * Support the zstd compression algorithm
+  * Use proper cookie expiry
+
+-------------------------------------------------------------------
+Fri Apr 05 00:59:34 UTC 2019 - seanlew@opensuse.org
+
+- links 2.19
+  * Fixed a crash on invalidn IDN URLs
+  * Make font selection possible via fontconfig
+  * Show certificate authority in Document info box
+  * Use international error messages
+  * The -dump switch didn't report errors on stdout write
+
+-------------------------------------------------------------------
+Fri Jan 18 06:34:48 UTC 2019 - seanlew@opensuse.org
+
+- links 2.18
+  * Automatically enable tor mode when the socks port is 9050
+  * When in tor mode, invert colors on top line and bottom line
+  * Fix an incorrect shift in write_ev_queue 
+  * Fix runtime error sanitizer warning
+  * Add a menu entry to save and load a clipboard
+  * Don't synch with Xserver on every pixmap load
+  * Fix "Network Options" bug that caused a timeout
+  * Fix a possible integer overflow in decoder_memory_expand
+  * Fix possible pointer arithmetics bug if os allocated few bytes
+  * Add a button to never accept invalid certs for a given server
+  * Fix incorrect strings -html-t-text-color
+  * Add ascii replacement of Romanian S and T with comma
+  * Fix a bug when IPv6 control connection to ftp server fails
+  
+-------------------------------------------------------------------
+Sat Sep 22 04:57:03 UTC 2018 - sean@suspend.net
+
+- links 2.17
+  * Fix vrifying SSL certificates for numeric IPv6 addresses
+  * Delete the option -ftp.fast - it doesn't always work and ftp performance is not an issue anymore
+  * Add bold and monospaced Turkish letter 'i' without a dot
+  * On OS/2 allocate OpenSSL memory fro the lower heap. It fixes SSL on systems with old 16-bit TCP/IP stack
+  * Fix IPv6 on OpenVMS Alpha
+  * Support mouse scroll wheel in textarea
+  * Delete the option -http-bugs.bug-302-redirect - RFC7231 allows the "buggy" behavior and defines new codes 307 and 308 that retain the post data
+  * X11 - fixed colormap leak when creating a new window
+  * Fixed an infinite loop that happened in graphics mode if the user clicked on OK in "Miscellaneous options" dialog and more than one windows were open. This bug was introduced in Links 2.15
+  * Support 6x6x6 RGB palette in 256-bit color mode on framebuffer
+  * Implement dithering properly on OS/2 in 15-bit and 16-bit color mode. In 8-bit mode, Links may optionally use a private palette - it improves visual quality of Links images, but degrades visual quality of other concurrently running programs.
+  * Improve scrolling smoothness when the user drags the whole document
+  * On OS/2, allocate large memory blocks directly (not with malloc). It reduces memory waste
+  * Fixed a bug that setting terminal title and resizing a terminal didn't work on OS/2 and Windows. The bug was introduced in Links 2.16 when shutting up coverity warnings
+  * Set link color to yellow by default
+  * Delete the option -http-bugs.bug-post-no-keepalive. It was needed in 1999 to avoid some bug in some http server and it is not needed anymore
+  * Trust Content-Length on HTTP/1.0 redirect requests. This fixes hangs with misbehaving servers that honor Connection:keep-alive but send out HTTP/1.0 reply without Connection: keep-alive. Links thought that they don't support keep-alive and waited for the connection to close (for example http://www.raspberrypi.org)
+  * Use keys 'H' and 'L' to select the top and bottom link on the current page
+
+-------------------------------------------------------------------
+Sat Jun 30 16:05:23 UTC 2018 - astieger@suse.com
+
+- links 2.16:
+  * Improve handling of the DELETE key
+  * Implement the bracketed paste mode
+  * Fix various bugs found by coverity
+  * Fix a crash in proxy authentication code
+  * Fixed internal error "invalid set_handlers call" on framebuffer
+    if links is suspend and terminate at the same time
+
+-------------------------------------------------------------------
+Sat Mar 24 19:38:59 UTC 2018 - astieger@suse.com
+
+- links 2.15:
+  * Rewrite google docs URLs to the download link, so that the file
+    can be viewed in external viewer
+  * Add the list of domains for which proxy is not used
+  * Temporarily replace the stderr handle with /dev/null when
+    decoding png or svg images because the libraries may write to
+    stderr
+  * Fix improper restarts of connection when http compression is 
+    used
+  * Free cache when using the -source flag, so that memory
+    consumption is not dependent on downloaded file size
+  * Do not download compressed files. When the server returns
+    compressed file and we are downloading, restart the connection
+    without compression.
+  * Allow browsing files containing characters < 32 in the filename
+  * Limit the number of OpenMP threads to 8
+  * Fix premature call to OPENSSL_cleanup while some SSL objects
+    could still exist
+  * Enable -ftree-vectorize and -ffast-math for GCC, so that it uses
+    vector instructions. It improves performance of image scaler.
+  * Support international domain names
+  * Fix reordering of blocked URLs each time options were saved and
+    loaded
+  * Fix reading one byte beyond allocated space in case of corrupted
+    UTF-8 data - CVE-2017-11114 bsc#1051448
+  * Support the brotli compression algorithm using libbrotli
+  * Support lzip compression
+  * Add a new main menu item 'Windows' for switching windows on
+    framebuffer
+  * Fix an internal error if the gpm server is terminated while
+    links is running on a framebuffer
+  * Use fsync() when writing the bookmarks or settings
+  * Clear host entry in DNS cache when connection failed
+  * Use built-in SSL certificates
+  * Encode strings to UTF-8 when storing them in a history, it fixes
+    a bug when browsing the history if Links is run on multiple
+    terminals with different character sets
+  * Use absolute time when calculating the time to flush DNS cache, 
+    HTTPS session cache and keepalive connection cache, so that the
+    cache gets flushed when the machine is kept suspended for a
+    long time.
+  * Report IP addresses in the "Document info" box.
+  * Implement a small connection timeout when connecting to a host
+    with multiple addresses, so that there is faster fallback from
+    IPv6 to IPv4.
+  * Replace OpenSSL malloc functions with CRYPTO_set_mem_functions,
+    so that when malloc returns NULL, we can free some cached data
+    and retry
+  * Removed special handling of ".onion" addresses
+  * Avoid memcpy with NULL source argument and zero length
+  * Make the "dns-prefetch" link prefetch just dns, not the whole
+    document
+  * Use OpenSSL functions X509_check_host and X509_check_ip if
+    available
+  * Report status when formatting document or searching
+  * Use session cache on https
+
+-------------------------------------------------------------------
+Wed Jun 28 10:17:19 UTC 2017 - tchvatal@suse.com
+
+- Remove directfb support in order we could remove directfb from
+  distribution
+
+-------------------------------------------------------------------
+Thu Jun 15 20:10:14 UTC 2017 - astieger@suse.com
+
+- links 2.14:
+  * Limit keepalive of ciphers with 64-bit block size to mitigate
+    the SWEET32 attack bsc#1022469
+  * Report home directory in the "Version" window
+  * Improved tor hardening
+  * Use keys 'P' and 'L' to scroll up and down
+  * Fix a memory leak when copying the current url to clipboard
+  * Fix crash when the user pressed Ctrl-G on a form field
+  * Workaround for a bug in librsvg that makes mathematics on
+    Wikipedia unreadable
+  * Support fourth and fifth mouse button in gpm and framebuffer
+  * Fixed bugs when downgrading SSL connection while https proxy or
+    socks proxy is used
+  * Security bug fixed: Don't load or render the content of
+    "407 Proxy Authentication Required" reply when using https
+    proxy. This avoids the FalseCONNECT attack. bsc#1022468
+    Also, don't allow 401 and 407 responses to set cookies.
+  * Pop openssl error stack on every error - make sure that SSL
+    errors on one connection do not affect other connections
+  * Never select directfb driver automatically unless started with
+    the '-driver directfb' option
+- previously patched:
+  * Disable SSL compression to avoid the CRIME attack bsc#1022469
+    drop links-nosslcomp.patch
+
+-------------------------------------------------------------------
+Sat Aug  6 08:25:22 UTC 2016 - astieger@suse.com
+
+- links 2.13:
+  * Page up and page down scroll slightly less than a page
+  * Use domain list from publicsuffix.org to prevent setting
+    cookies on public domains.
+  * Fix bug that allowed bla.com to register cookie for la.com or a.com
+  * Fixed a bug in the X driver that characters with unicode codes
+    128-255 could not be entered with some locales
+  * Security bug fixed: Use separate unix domain socket for anonymous
+    instances, so that the anonymous instance won't connect to non-anonymous
+    one [boo#992495]
+  * <samp> element
+  * In case of certification verification failure, don't pop up multiple
+    dialog windows asking for the same server
+  * Do not lookup .onion addresses directly, as specified by rfc7686
+  * Updated Polish Translation
+  * Security enhancement: Warn if the SSL/TLS method was downgraded
+
+-------------------------------------------------------------------
+Mon Sep 21 12:50:36 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 2.12:
+  * Verify ssl certificates bnc#946065
+  * Warn if server uses SSL2 or SSL3 protocol
+  * Support SSL client certificates
+- Remove obsolete patch:
+  * links-no-date-time.patch
+- Rebase patch:
+  * links-nosslcomp.patch
+
+-------------------------------------------------------------------
+Tue Jul 21 20:33:10 UTC 2015 - astieger@suse.com
+
+- update to 2.10:
+  * SVG support using the rsvg library
+  * Attach to existing links instance instead of creating a new
+    instance
+  * Detect image type based on the first few bytes rather than on 
+    content-type
+  * Use OpenMP in the image scaler
+  * Preallocate downloaded files on Linux
+  * Support libevent and libev
+  * SSL SNI no enabled upstream, remove links-sni.patch
+  * Support keepalive on https connections
+
+-------------------------------------------------------------------
+Fri Dec 26 12:19:50 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 2.9:
+  * Work around some screen-corruption bugs in the OpenVMS terminal driver
+  * Support mouse wheel in framebuffer (unfortunatelly we can't support it
+    in text mode because when we instruct gpm to send us the wheel event,
+     gpm stops drawing the cursor when the mouse is moved).
+  * Pring "^" and "_" for <sub> and <sup> tags in text mode
+  * An option to fake Firefox in the HTTP header. It modifies User-Agent and
+    several other options to be more Firefox-like. This option is also
+    automatically turned on when "Connect only via proxies or Socks (useful
+    for tor)" is selected. It makes it safer to use Links with tor.
+  * Fixed quadratic complexity in the text renderer when exteremely long
+    lines were used
+  * Do not print the character 0x9b if the display character set doesn't
+    have it, because it is interpreted as a control character on the Linux
+    console
+  * An option to break long lines in <pre> sections
+  * Consume less memory when 8-bit gamma correction is used
+  * Updated the list of top level domains
+  * Use malloc_trim to return unused memory to the system
+  * Support RFC5987 for filenames
+  * Support StaticColor in the X-window driver
+  * Fix crash on OS/2 if image is wider than 10921 pixels
+  * Use clock_gettime if available
+  * The ability to set screen margins for text mode and framebuffer
+  * Fix palette corruption on framebuffer when links instance was terminated
+    while it was not active
+  * Improve the gif decoder to accept more images
+  * Increase the amount of data read from the socket, it improves speed when
+    loading big images
+  * Accept "text/xml" as html type
+
+-------------------------------------------------------------------
+Fri Dec 26 12:11:19 UTC 2014 - tchvatal@suse.com
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct  2 22:06:19 UTC 2013 - andreas.stieger@gmx.de
+
+- version 2.8
+  * Fixed a memory leak if TIFF download was interrupted
+  * Do not save lines starting with space to URL history on the disk
+  * Do not misreport Date header value as last-modified date
+    in the info box popping up on "=".
+  * New graphics glyphs
+  * Fixed file 045e.png. It was not compatible with libpng-1.6
+  * Test integers addition for overflow. This fixes possible crashes 
+    due to overflows, they could possibly be security-sensitive.
+  * Fixed a bug in Xwindow driver when images larger than 65536
+    pixels were used
+  * Fixed some integer overflows when scaling images larger than 
+    65536 pixels
+  * Fixed invalid pointer comparison (comparing if NULL is smaller
+    than non-NULL pointer) that could result in failures with certain
+    compilers
+  * Fixed an internal error in decompressed file cache if Links
+    was running out of memory and was freeing cached data
+  * An option that allows the user not to save URL history
+  * An option to send do not track request
+  * Reduced CPU consumption when downloading big files
+  * Fixed a crash if the user selects "Save as" and the document has 
+    no header (the bug was introduced in Links 2.7pre1)
+  * Parse FTP directories on VMS FTP server
+  * Use a blocking pipe when communicating with the dns process, it
+    fixes a possible error when system pipe buffer is too small
+  * data: url
+  * Accept color in #xxx format (besides usual #xxxxxx)
+  * Fixed an infinite retry loop when the server terminates
+    connection prematurely
+  * Fixed some races in the framebuffer driver that could result in
+    display corruption if the user is switching virtual consoles too
+    quickly
+  * Don't save URLs with password to history file on a disk
+  * Fixed a rare bug where image alpha channel was not applied
+    correctly
+- package calibration pattern and other documentation files
+- updated patches for upstream changes:
+  * configure.diff
+  * links-nosslcomp.patch
+  * links-sni.patch
+- support simultaneous build jobs
+
+-------------------------------------------------------------------
+Thu Aug 22 20:06:22 UTC 2013 - crrodriguez@opensuse.org
+
+- links-no-date-time.patch: Supress usage of __DATE__ and 
+  __TIME__ macros  build-compare should be happy now.
+
+-------------------------------------------------------------------
+Thu Aug 22 19:40:59 UTC 2013 - crrodriguez@opensuse.org
+
+- version 2.7
+* support ipv6
+* Fix memory leak in ftp
+* support HTTPS proxy
+- Update spec file URL section.
+- Fix buildRequires, add support for lzma and bzip2, just use
+  pkgconfig(x11) instead of xorg-x11-devel
+
+-------------------------------------------------------------------
+Sun Jul 28 22:39:15 UTC 2013 - crrodriguez@opensuse.org
+
+- Silly me tried to connect to a HTTPS host that uses 
+  Server Name Indication (SNI) expecting it
+  to do something sane, of course, it did not work.
+  links-sni.patch: fix that.
+
+
+-------------------------------------------------------------------
+Mon Feb 11 01:25:09 UTC 2013 - crrodriguez@opensuse.org
+
+- Extend configure.diff so _GNU_SOURCE and largefile Support
+ is tested properly
+
+- expand inks-nosslcomp.patch to fix other misuses of the openssl
+  API including TLSv1 being disabled (with the wrong API too)
+
+- build with SSL_NO_INTERN so we can escape ABI breaks in future 
+  openSSL versions
+
+-------------------------------------------------------------------
+Mon Feb 11 00:24:37 UTC 2013 - crrodriguez@opensuse.org
+
+- links was used to demonstrate bnc#803004 
+   "openSSL 1.0.1d breaks most, if not all, SSL connections" 
+It also turns out that links is not doing SSL stuff quite right..
+HTTPS clients must not negotiate SSL compression which is compromised
+since CVE-2012-4929 (aka. the CRIME attack) and should not even
+try to use SSLv2 either which is broken since a very long time
+(links-nosslcomp.patch)
+
+-------------------------------------------------------------------
+Tue May 15 08:45:10 UTC 2012 - bg@suse.com
+
+- updated to 2.6
+  * Fixed integer overflows if file cache has more than 2GB
+  * Continue downloads to partially downloaded file
+  * Reload bookmarks if some other Links instance changes them
+  * Fix for big endian Xserver
+  * Fixed several inefficiencies
+  * Lots more fixes, see ChangeLog
+  * This also fixes bnc#756403
+
+-------------------------------------------------------------------
+Mon Jan 16 08:31:29 UTC 2012 - pgajdos@suse.cz
+
+- updated to 2.5
+  * obsoletes libpng15.patch
+  * Support lzma compression
+  * Implemented forward history
+  * Removed save bookmarks menu option, bookmarks are saved always when
+    closing bookmark window
+  * Recognise tgz extension
+  * Do not send '#' in the url when downloading
+  * etc, see ChangeLog
+
+-------------------------------------------------------------------
+Fri Jan  6 16:06:39 UTC 2012 - pgajdos@suse.com
+
+- build also for libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Fri Dec  2 15:54:44 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Sep 22 05:43:51 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Restore mssing mouse and tiff support 
+
+-------------------------------------------------------------------
+Fri Aug  7 11:39:50 CEST 2009 - bg@suse.de
+
+- update to version 2.2
+  - lots of bugfixes
+  - Support HTTP/0.9
+  - translation update for french and swiss german
+  - also fixes bug #262302
+  - for a detailed list, see http://links.twibright.com/download/ChangeLog
+- remove javascript, because it is broken anyways.
+
+-------------------------------------------------------------------
+Mon Jun  2 01:05:47 CEST 2008 - crrodriguez@suse.de
+
+- needs fno-strict-aliasing 
+
+-------------------------------------------------------------------
+Wed Aug 22 12:20:25 CEST 2007 - bg@suse.de
+
+- update to version 2.1pre30
+  o Fixed security bug: special characters in URL could be passed to a
+    shell when spawning user viewer
+
+-------------------------------------------------------------------
+Fri Aug 10 16:00:19 CEST 2007 - bg@suse.de
+
+- update to version 2.1pre29
+  o several fixes
+  o updates of translations
+  o http://user:password@host/ possible now
+  o Allowed download of files larger than 2G
+  o Accept urls http://host.domain#position
+  o Removed SDL support
+  o readded javascript needed for blinux (was removed in this version)
+
+-------------------------------------------------------------------
+Fri Feb  9 01:24:31 CET 2007 - ro@suse.de
+
+- fix build as non-root 
+
+-------------------------------------------------------------------
+Fri Nov 17 15:19:46 CET 2006 - bg@suse.de
+
+- disable smb protocol in url.c. Fix Bug #221645.
+
+-------------------------------------------------------------------
+Tue Oct 17 00:19:16 CEST 2006 - ro@suse.de
+
+- use DirectFB-devel in BuildRequires 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 14:49:09 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Thu Sep 22 09:56:47 CEST 2005 - bg@suse.de
+
+- update to version 2.1pre18
+- fixing compiler warnings
+
+-------------------------------------------------------------------
+Mon Feb 28 13:52:31 CET 2005 - bg@suse.de
+
+- update to version 2.1pre17
+
+-------------------------------------------------------------------
+Fri Feb  4 13:07:47 CET 2005 - bg@suse.de
+
+- update to version 2.1pre16
+- fixed compiler warnings
+
+-------------------------------------------------------------------
+Thu Jul 29 10:12:14 CEST 2004 - bg@suse.de
+
+- update to version 2.1pre15
+
+-------------------------------------------------------------------
+Tue Feb  3 13:55:49 CET 2004 - bg@suse.de
+
+- fixed compiler warnings
+
+-------------------------------------------------------------------
+Fri Jan  9 13:51:53 CET 2004 - bg@suse.de
+
+- update to version 2.1pre14
+- enabled framebuffer
+
+-------------------------------------------------------------------
+Mon Jun  2 10:25:54 CEST 2003 - bg@suse.de
+
+- update to version 2.1pre11
+- broken cookies (www.sueddeutsche.de) don't crash links anymore
+- navigation with keyborad arrows now works in graphical mode as
+  well. 
+
+-------------------------------------------------------------------
+Wed Feb 12 09:52:23 CET 2003 - bg@suse.de
+
+- update to version 2.1pre7
+
+-------------------------------------------------------------------
+Wed Sep 18 01:48:26 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides
+
+-------------------------------------------------------------------
+Tue Aug  6 15:19:20 CEST 2002 - bg@suse.de
+
+- update to version 2.1pre2
+- added graphics support 
+
+-------------------------------------------------------------------
+Mon Sep  3 09:35:10 CEST 2001 - bg@suse.de
+
+- update to version 0.96
+- SSL connections are now possible
+- lots of translation updates
+
+-------------------------------------------------------------------
+Thu Aug 24 16:34:37 CEST 2000 - bg@suse.de
+
+- new Version 0.92
+- added patch for dummy java-script
+- added patch for saving cookies 
+- added BuildRoot
+
+-------------------------------------------------------------------
+Tue May 30 16:43:04 CEST 2000 - bg@suse.de
+
+- initial release
+

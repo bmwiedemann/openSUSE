@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sat Mar  9 16:00:10 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.0.4:
+  * Theano is now compatible with NumPy 1.16.
+
+-------------------------------------------------------------------
+Thu Dec  6 12:39:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim comparison that has no reference model named.
+
+-------------------------------------------------------------------
+Sun Dec 17 02:24:11 UTC 2017 - arun@gmx.de
+
+- converted to single spec:
+  + added obsolete for python2
+  + install binaries as python3_only
+  + use of rpm-macros for 2&3
+
+-------------------------------------------------------------------
+Sat Feb 11 21:45:20 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source URL
+- Add license and basic doc files
+- Implement update-alternatives
+
+-------------------------------------------------------------------
+Tue Aug 23 14:39:06 UTC 2016 - jmatejek@suse.com
+
+- update to 0.8.2
+    * improved source packaging
+    * renewed development
+    * python2/3 compatibility
+    * performance improvements
+    * new GPU backends
+- dropped doc subpackage as the source is no longer configured
+  to rebuild the docs
+- cleared out Requires and BuildRequires list
+- do not delete first line of every .py file (fixes boo#994408)
+
+
+-------------------------------------------------------------------
+Sat Jul 26 09:03:53 UTC 2014 - scorot@free.fr
+
+- version 0.6.0 git 20140726
+  * Many updates and bug fixes since 0.5.0, for a full list of
+    changes see https://pypi.python.org/pypi/Theano/
+- package is now noarch except for SLE 11
+- update rpmlintrc file
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:01 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Jun 20 21:26:20 UTC 2012 - scorot@free.fr
+
+- fix wrong characters in package description 
+
+-------------------------------------------------------------------
+Wed Jun 20 20:53:35 UTC 2012 - scorot@free.fr
+
+- rename package to match the upstream name an modify spec file
+  accordingly
+- fix bytecode mtime inconsistency
+
+-------------------------------------------------------------------
+Sun Jun 17 20:55:10 UTC 2012 - scorot@free.fr
+
+- do not define %%DOCDIR but use %%_defaultdocdir instead
+- update to git snapshot 20120617
+ * No changelog available 
+
+-------------------------------------------------------------------
+Sun Jun 17 14:06:11 UTC 2012 - scorot@free.fr
+
+- spec file cleanup 
+- do not require nvidia-cuda-toolkit
+
+-------------------------------------------------------------------
+Sun May 13 09:57:07 UTC 2012 - scorot@free.fr
+
+- spec file cleanup
+- checkout upstream git 20120513 
+
+-------------------------------------------------------------------
+Sat Feb 18 18:44:54 UTC 2012 - scorot@free.fr
+
+- update to version 0.5.0.git20120218 
+

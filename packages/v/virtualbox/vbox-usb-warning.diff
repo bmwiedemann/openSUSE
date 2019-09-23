@@ -1,0 +1,77 @@
+Index: VirtualBox-5.1.22/src/apps/Makefile.kmk
+===================================================================
+--- VirtualBox-5.1.22.orig/src/apps/Makefile.kmk
++++ VirtualBox-5.1.22/src/apps/Makefile.kmk
+@@ -31,5 +31,7 @@ endif
+
+ include $(PATH_SUB_CURRENT)/VBoxPermissionMessage/Makefile.kmk
+
++include $(PATH_SUB_CURRENT)/VBoxUSB_DevRules/Makefile.kmk
++
+ include $(FILE_KBUILD_SUB_FOOTER)
+
+Index: VirtualBox-5.1.22/src/apps/VBoxUSB_DevRules/Makefile.kmk
+===================================================================
+--- /dev/null
++++ VirtualBox-5.1.22/src/apps/VBoxUSB_DevRules/Makefile.kmk
+@@ -0,0 +1,30 @@
++# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
++## @file
++#
++# VBoxUSB_DevRules is wrapper for suse users
++#
++# This file is part of VirtualBox Open Source Edition (OSE), as
++# available from http://www.virtualbox.org. This file is free software;
++# you can redistribute it and/or modify it under the terms of the GNU
++# General Public License (GPL) as published by the Free Software
++# Foundation, in version 2 as it comes in the "COPYING" file of the
++# VirtualBox OSE distribution. VirtualBox OSE is distributed in the
++# hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
++#
++
++
++SUB_DEPTH = ../../..
++include $(KBUILD_PATH)/subheader.kmk
++
++PROGRAMS += VBoxUSB_DevRules
++
++VBoxUSB_DevRules_TEMPLATE = VBOXQTGUIEXE
++VBoxUSB_DevRules_SOURCES = VBoxUSB_DevRules.cpp
++VBoxUSB_DevRules_QT_MODULES = Core Gui
++VBoxUSB_DevRules_QT_MODULES += Widgets
++
++#INSTALLS += VBoxUSB_DevRules
++
++include $(KBUILD_PATH)/subfooter.kmk
++
++
+Index: VirtualBox-5.1.22/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
+===================================================================
+--- /dev/null
++++ VirtualBox-5.1.22/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
+@@ -0,0 +1,25 @@
++#include <QtWidgets/QApplication>
++#include <QtWidgets/QMessageBox>
++#include <QtWidgets/QPushButton>+
++int main(int argc, char *argv[])
++{
++        QApplication app(argc, argv);
++        QMessageBox msgBox;
++	QPushButton *myYesButton = msgBox.addButton("Enable", QMessageBox::YesRole);
++	QPushButton *myNoButton = msgBox.addButton("Disable", QMessageBox::NoRole);
++	msgBox.setWindowTitle(QObject::tr("USB Rules and Permissions !"));
++        msgBox.setText(QObject::tr("USB passthrough requires read/write access to USB devices. "
++			"As a result, it opens a security hole.\n\n"
++			"Nonetheless, this feature is extremely useful and it may be worth the security risk. "
++			"Thus the code defaults to enabling it.\n\nIf you agree that the risk is acceptable, then click 'Enable'.\n"
++			"You will not be asked this question again when VB is updated. If you later change your mind, run 'rm ~/.vbox/*'\n\n"
++			"If you wish to disable USB passthrough to plug the security hole, then click 'Disable'. "
++			"You will be asked for the system password, and /etc/udev/rules.d/60-vboxdrv.rules will be changed.\n\n"
++			"These changes cannot be preserved through VB updates, thus this screen will be displayed again at that time."));
++	msgBox.exec();
++        app.quit();
++	if (msgBox.clickedButton() == myYesButton)
++		return 0;
++        return 1;
++}
++

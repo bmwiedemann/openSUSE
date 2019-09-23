@@ -1,0 +1,12 @@
+[Unit]
+Description=Varnish log generator
+Requires=varnish.service
+#After= is not required
+
+[Service]
+EnvironmentFile=/etc/sysconfig/varnish
+PIDFile=/var/run/varnishlog.pid
+ExecStart=/usr/sbin/varnishncsa -P /var/run/varnishlog.pid $VARNISHLOG_PARAMS
+
+[Install]
+WantedBy=multi-user.target

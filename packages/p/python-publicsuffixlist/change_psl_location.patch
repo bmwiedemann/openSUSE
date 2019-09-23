@@ -1,0 +1,11 @@
+--- publicsuffixlist-0.5.1/publicsuffixlist/__init__.py	2018-03-31 04:11:06.000000000 +0200
++++ publicsuffixlist-0.5.1/publicsuffixlist/__init__.py	2018-05-14 11:35:04.328909547 +0200
+@@ -16,7 +16,7 @@
+ 
+ PSLURL = "https://publicsuffix.org/list/public_suffix_list.dat"
+ 
+-PSLFILE = os.path.join(os.path.dirname(__file__), "public_suffix_list.dat")
++PSLFILE = "/usr/share/publicsuffix/public_suffix_list.dat"
+ 
+ if sys.version_info >= (3, ):
+     # python3.x

@@ -1,0 +1,335 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>a9ab41aa96e6885cad893770f0479119</srcmd5>
+    <version>2.0.32</version>
+    <time>1217904181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1cd72c11b8e1be1820e9b6b85252c549</srcmd5>
+    <version>2.0.32</version>
+    <time>1219426205</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>412b76b10a5110ef573160bbe40b2316</srcmd5>
+    <version>2.0.32</version>
+    <time>1222209310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>20c76dd3273da0c7f95142901e751497</srcmd5>
+    <version>2.0.32</version>
+    <time>1224717857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d029ded960a4ea00085c9476f87f126a</srcmd5>
+    <version>2.0.34</version>
+    <time>1232328168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>42fb7d0288f16023a8f742f58408cbbe</srcmd5>
+    <version>2.0.34</version>
+    <time>1245366261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea1af6abb2bf311f57e2ae5cdef3688a</srcmd5>
+    <version>2.0.36</version>
+    <time>1246277710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ea1af6abb2bf311f57e2ae5cdef3688a</srcmd5>
+    <version>2.0.36</version>
+    <time>1246277710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>895b37b665319317516b11b72ebdf222</srcmd5>
+    <version>2.0.36</version>
+    <time>1263478740</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/libsepol based on submit request 29157 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b091ff94e32705ca3771a300d0bd51e8</srcmd5>
+    <version>2.0.36</version>
+    <time>1265911432</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/libsepol based on submit request 31769 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8fac05ada1b5804cf235469e2b7a48e8</srcmd5>
+    <version>2.0.41</version>
+    <time>1268411729</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/libsepol based on submit request 34371 from user prusnak
+</comment>
+    <requestid>34371</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bddb7dc9ed95887fd08ee5e5823d8dc0</srcmd5>
+    <version>2.0.41</version>
+    <time>1268924722</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5494c0428277f822d654dd564b4413c1</srcmd5>
+    <version>2.0.41</version>
+    <time>1272120890</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/libsepol based on submit request 38727 from user coolo
+</comment>
+    <requestid>38727</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>5494c0428277f822d654dd564b4413c1</srcmd5>
+    <version>2.0.41</version>
+    <time>1278667363</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>5494c0428277f822d654dd564b4413c1</srcmd5>
+    <version>2.0.41</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>4fcdc65723dc4f80c3302cc400eb7421</srcmd5>
+    <version>2.0.41</version>
+    <time>1279896959</time>
+    <user>autobuild</user>
+    <comment>Copy from security:SELinux/libsepol based on submit request 43717 from user coolo
+</comment>
+    <requestid>43717</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>4fcdc65723dc4f80c3302cc400eb7421</srcmd5>
+    <version>2.0.41</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>498b370452ed9c5d6564d6298e7acb1f</srcmd5>
+    <version>2.0.41</version>
+    <time>1317941368</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86732 from uli_suse)</comment>
+    <requestid>86936</requestid>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>498b370452ed9c5d6564d6298e7acb1f</srcmd5>
+    <version>2.0.41</version>
+    <time>1319182135</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>7fd13c74106634fc1ff17f7d3952da7e</srcmd5>
+    <version>2.0.41</version>
+    <time>1323192338</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>7fd13c74106634fc1ff17f7d3952da7e</srcmd5>
+    <version>2.0.41</version>
+    <time>1340183636</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e9c2b833c8435aa44f20106da4a51296</srcmd5>
+    <version>2.1.4</version>
+    <time>1344618127</time>
+    <user>namtrac</user>
+    <comment>- updated to 2.1.4
+  - lots of updates</comment>
+    <requestid>130338</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d5b904f81541152e9cadacd517519968</srcmd5>
+    <version>2.1.4</version>
+    <time>1351337023</time>
+    <user>coolo</user>
+    <comment>- skip roles which are out of scope when expanding attributes
+- needed for building selinux-policy (forwarded request 139269 from vitezslav_cizek)</comment>
+    <requestid>139303</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>07622e18adbc59e71f9c104bdd3b2286</srcmd5>
+    <version>2.1.8</version>
+    <time>1355474421</time>
+    <user>coolo</user>
+    <comment>update to 2.1.8 (forwarded request 145006 from posophe)</comment>
+    <requestid>145024</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>07622e18adbc59e71f9c104bdd3b2286</srcmd5>
+    <version>2.1.8</version>
+    <time>1359109353</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>9413fda9cec2f1fa295ce9d102bb638b</srcmd5>
+    <version>2.1.8</version>
+    <time>1362736447</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157815</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5624fa1b7b7e3a5c76bb4699f26ec10c</srcmd5>
+    <version>2.1.9</version>
+    <time>1365174289</time>
+    <user>coolo</user>
+    <comment>- fixed source url
+
+- update to 2.1.9
+  * filename_trans: use some better sorting to compare and merge
+  * coverity fixes
+  * implement default type policy syntax
+  * Fix memory leak issues found by Klocwork
+- added libsepol-rhat.patch</comment>
+    <requestid>162718</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>d4531ce221ab9b2eb9845cf0e4f5d046</srcmd5>
+    <version>2.1.9</version>
+    <time>1365337402</time>
+    <user>coolo</user>
+    <comment>- remove a debugging artifact in spec (forwarded request 162888 from vitezslav_cizek)</comment>
+    <requestid>162975</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>fadab5303820cc1b36bf7eee0bd18c97</srcmd5>
+    <version>2.1.9</version>
+    <time>1372145832</time>
+    <user>coolo</user>
+    <comment>- Build with LFS_CFLAGS for 32 bit archs (forwarded request 180520 from elvigia)</comment>
+    <requestid>180752</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>55cce39c4716086d5789ab7d11c973de</srcmd5>
+    <version>2.1.9</version>
+    <time>1372743545</time>
+    <user>coolo</user>
+    <comment>- change the source url to the official 2.1.9 release tarball (forwarded request 181177 from vitezslav_cizek)</comment>
+    <requestid>181587</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>55cce39c4716086d5789ab7d11c973de</srcmd5>
+    <version>2.1.9</version>
+    <time>1379663088</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b45f605e511c9b79aef75b73e30867f1</srcmd5>
+    <version>2.2</version>
+    <time>1383831894</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2
+  * Allow constraint denial cause to be determined
+	  - Add kernel policy version 29.
+	  - Add modular policy version 17.
+	  - Add sepol_compute_av_reason_buffer(), sepol_string_to_security
+       _class(), sepol_string_to_av_perm().
+  * Support overriding Makefile RANLIB
+  * Fix man pages
+- Remove libsepol-rhat.patch; merged on upstream (forwarded request 205364 from posophe)</comment>
+    <requestid>206077</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5c29675b96035a1623083f022b27d1d6</srcmd5>
+    <version>2.3</version>
+    <time>1400783915</time>
+    <user>coolo</user>
+    <comment>update to version 2.3</comment>
+    <requestid>234709</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>5c29675b96035a1623083f022b27d1d6</srcmd5>
+    <version>2.3</version>
+    <time>1409301711</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0e2494e3881606799efc73a1182020ef</srcmd5>
+    <version>2.5</version>
+    <time>1468869439</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408692</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>bc482ce1c65cbd7b97ea055dfb3da7bc</srcmd5>
+    <version>2.5</version>
+    <time>1470216992</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415253</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4e11862a35008dc9b06707a057aa7f60</srcmd5>
+    <version>2.6</version>
+    <time>1512546410</time>
+    <user>dimstar_suse</user>
+    <comment>please combine checkpolicy libselinux libsemanage libsepol policycoreutils</comment>
+    <requestid>545899</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c4f552e63cba07727758f2efe65da3fa</srcmd5>
+    <version>2.7</version>
+    <time>1527673202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611483</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9704821e490258c3463de5d9954e3781</srcmd5>
+    <version>2.8</version>
+    <time>1543223629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651127</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>e8c6cc5f743043dbb2821ae6e20bd911</srcmd5>
+    <version>2.8</version>
+    <time>1545222179</time>
+    <user>dimstar_suse</user>
+    <comment>Added additional details to the changes file
+
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20180524/RELEASE-20180524.txt
+  For changes please see
+  https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt</comment>
+    <requestid>655714</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f0109c63e37dd32d11ddc36da2e6691d</srcmd5>
+    <version>2.9</version>
+    <time>1553435721</time>
+    <user>dimstar_suse</user>
+    <comment>please stage checkpolicy libselinux libsemanage libsepol mcstrans policycoreutils restorecond together</comment>
+    <requestid>687216</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>ae49c5eeb1ae76b6c5afc2da8b88b379</srcmd5>
+    <version>2.9</version>
+    <time>1562591321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712736</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Sun Jul 21 18:34:29 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Require proj 6.0 also for devel package so it matches the
+  build requirements
+
+-------------------------------------------------------------------
+Tue Apr  2 11:27:36 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 1.5.1 (support gdal 2.4.1)
+- Remove merged upstream patch f4956251.patch 
+
+-------------------------------------------------------------------
+Mon Mar 25 18:42:34 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add upstream patch f4956251.patch to make it useable with gdal
+  2.4.1
+- Upstream issue https://github.com/OSGeo/libgeotiff/issues/14
+  Simplify fixing file (all are utf-8 ok) just CRLF
+
+-------------------------------------------------------------------
+Sun Mar 24 10:14:03 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 1.5.
+  + Require PROJ >= 6 dependency
+  + Remove all CSV files used by geo_normalize API, libgeotiff now
+    relies on PROJ database for EPSG CRS definitions.
+  + geo_normalize.c: SetGTParmIds(): use 
+    ProjStraightVertPoleLongGeoKey for CT_PolarStereographic
+  + geo_normalize.c: report StdParallel1 for Mercator_2SP when a 
+    PCS code is used
+  + geo_normalize.c: fix support for Laborde Oblique Mercator
+  + listgeo: use PROJ database to display non-hardcoded values of
+    a number of keys
+- Packaging
+  + Remove unneeded patches e5cf016.patch 7425a7f.patch
+  + Move URL & source to https
+
+-------------------------------------------------------------------
+Fri Mar 15 19:58:50 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix version 1.4.3
+- Add upstream patches (proj6 support and build fix)
+  + e5cf016.patch
+  + 7425a7f.patch
+- Packaging: spec-cleaner minimal
+
+-------------------------------------------------------------------
+Tue May 29 08:51:01 UTC 2018 - mpluskal@suse.com
+
+- Fix incorrect library (boo#1094802)
+
+-------------------------------------------------------------------
+Sun Mar 12 12:42:35 UTC 2017 - mpluskal@suse.com
+
+- Small packaging cleanup
+- Prepare version update for Leap and backports (boo#1029595)
+
+-------------------------------------------------------------------
+Sat Oct  1 09:00:00 UTC 2016 - tzotsos@opensuse.org
+
+- Update to 1.4.2
+  * update to EPSG v8.9 database
+  * cleanups and security fixes
+
+-------------------------------------------------------------------
+Fri Sep 30 21:00:00 UTC 2016 - tzotsos@opensuse.org
+
+- Switched download link to OSGeo server
+
+-------------------------------------------------------------------
+Tue Jul  5 20:35:48 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Group tag.
+
+-------------------------------------------------------------------
+Sat May  9 09:05:53 UTC 2015 - mpluskal@suse.com
+
+- Do not build or ship static libraries and .la files
+- Remove useless conditions
+
+-------------------------------------------------------------------
+Sat Jan 31 17:38:30 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file using spec-cleaner
+- Remove commented out patch
+- Add build dependency on graphviz to enable images in
+  documentation
+- Add build dependency on pkg-config to enable dependency generation
+  of .pc file
+- Update to 1.4.1
+   * CMake: Fix up SONAME and VERSION to better
+     match configure.ac
+   * csv/datum_shift_pref.csv: revert change in preferred datum shift
+     for Pulkovo 1942(58) related to ticket #1851 - not appropriate.
+   * Preparing 1.4.1 release.
+   * csv/datum_shift_pref.csv: Update Pulkova 1942(58) to use a
+     particular transformation (#52).
+   * bin/geotifcp.c: added B, L, C and M flags from tiffcp (#68)"
+   * geo_print.c: clarify that the buffer passed to read methods is only
+     guaranteed to be 1024 bytes long (#62).
+   * CMake: Support for INCODE build. If you need INCODE support,
+     with the definitions compiled into headers, use CMake as your
+     configuration/build platform.
+   * csv: Override three Brazilian datum shifts on behalf of Daniel
+     Miranda and the OSGeo Brazilian Chapter.
+   * csv: Upgrade to EPSG 8.5
+   * INCODE: Adapt Ben Adler's patch in #66 to add INCODE support to the
+     CMake configuration
+   * geo_normalize.c: #59, better Mercator_2SP support
+   * geotifcp: Do not segfault when a TIFF file has WhitePoint set #65
+   * geo_names.c: fix #67 -- add VerticalUnitsGeoKey
+   * add_esri_column.py: manually replace D_SIRGAS-Chile by D_Peru96 for GCS_Peru96. Likely an error in the FileGDB SDK db (#63)
+   * csv: Upgrade to EPSG 8.4
+   * tiffcp: Add bigtiff output support with the -8 flag like tiffcp.  Contributed by
+     Mohannad Al-Durgham (nwgeo.com).
+   * csv: Upgrade to EPSG 8.2
+   * csv/datum_shift_pref.csv: Force OSGB 1936 preferred datum shift.
+     (http://trac.osgeo.org/gdal/ticket/4597)
+
+-------------------------------------------------------------------
+Fri Jun 15 21:29:10 UTC 2012 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Fix in pkgconfig file
+
+-------------------------------------------------------------------
+Sat May 26 14:02:02 UTC 2012 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Updated to 1.4.0
+
+-------------------------------------------------------------------
+Thu Mar 22 10:29:24 UTC 2012 - Michael Behrisch <behrisch@users.sf.net>
+
+- added gcc build dependency
+- removed unneeded data dir fix for non-Suse
+
+-------------------------------------------------------------------
+Mon Apr 11 11:23:00 UTC 2011 - Rene van Paassen<rene.vanpaassen@gmail.com>
+
+- removed now superfluous "%exclude %{_libdir}/debug" for i586
+
+-------------------------------------------------------------------
+Sat Apr  9 14:49:32 CEST 2011 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix 64 bit issues, enable debug
+
+-------------------------------------------------------------------
+Thu Jul  8 12:00:00 UTC 2010 - Dirk Stöcker <opensuse@dstoecker.de> 1.3.0
+
+- Updated to 1.3.0
+
+-------------------------------------------------------------------
+Fri Jun 26 12:00:00 UTC 2009 - Dirk Stöcker <opensuse@dstoecker.de> 1.2.5
+
+- Updated to 1.2.5
+- Using parts of spec file from PackMan for improved quality
+
+-------------------------------------------------------------------
+Mon Jun  9 12:00:00 UTC 2008 - Dirk Stöcker <opensuse@dstoecker.de> 1.2.4
+
+- SPEC file created for openSUSE build service
+
+-------------------------------------------------------------------
+Sat Jul 14 10:48:52 UTC 2007 - judas_iscariote@shorewall.net
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Mon Jun 19 12:00:00 UTC 2006 - Tim Fischer
+
+- SPEC file created for SUSE 10.1

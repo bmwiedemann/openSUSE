@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Mar 26 13:59:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.2.0:
+  * Add a new ENABLE_CONNECT_PROTOCOL settings paramter.
+  * Fix collections.abc deprecation.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Feb 25 16:45:50 UTC 2018 - aloisio@gmx.com
+
+- Update to version 5.1.0
+  API Changes (Backward-compatible)**
+  * Added support for ``DataFrame.data`` being a ``memoryview``
+    object.
+
+-------------------------------------------------------------------
+Sat Apr 22 12:10:15 UTC 2017 - aloisio@gmx.com
+
+- Update to version 5.0.0
+  Backwards Incompatible API Changes:
+  * Added support for unknown extension frames. These will be
+    returned in the new ExtensionFrame object. The flag information
+    for these frames is persisted in flag_byte if needed.
+- Enabled tests
+- Fixed source URL
+
+-------------------------------------------------------------------
+Mon Mar  6 19:04:06 UTC 2017 - aloisio@gmx.com
+
+- Update to version 4.0.2
+  * Fixed AltSvc stream association, which was incorrectly set 
+    to ``'both'``: should have been ``'either'``.
+  * Fixed a bug where stream IDs on received frames were 
+    allowed to be 32-bit, instead of 31-bit.
+  * Fixed a bug with frames that had the ``PADDING`` flag set 
+    but zero-length padding, whose flow-controlled length was
+    calculated wrongly.
+  * Miscellaneous performance improvements to serialization 
+    and parsing logic.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Thu Feb  2 23:14:46 UTC 2017 - aloisio@gmx.com
+
+- Initial package (4.0.1)
+

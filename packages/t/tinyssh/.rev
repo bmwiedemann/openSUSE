@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>219dd53e6b925c74db5425472421aad5</srcmd5>
+    <version>20180201</version>
+    <time>1518281872</time>
+    <user>dimstar_suse</user>
+    <comment>Minimalistic SSH server which implements only a subset of SSHv2 features</comment>
+    <requestid>573712</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9aa55d588972a622d90c643893d10cd6</srcmd5>
+    <version>20181206</version>
+    <time>1544264519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656076</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25dee75d9da2bd22384cc68097dfaa75</srcmd5>
+    <version>20190101</version>
+    <time>1546535252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662357</requestid>
+  </revision>
+</revisionlist>

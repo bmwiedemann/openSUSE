@@ -1,0 +1,21 @@
+Index: OpenIPMI-2.0.25/configure.ac
+===================================================================
+--- OpenIPMI-2.0.25.orig/configure.ac	2018-09-07 14:00:41.233081707 +0200
++++ OpenIPMI-2.0.25/configure.ac	2018-09-07 14:07:26.444083374 +0200
+@@ -716,11 +716,14 @@ AC_HAVE_FUNCS(syslog)
+ DIA=
+ AC_PATH_PROG(diaprog, dia)
+ if test "x$diaprog" != "x"; then
+-   diaver=`$diaprog --version 2>&1 | sed 's/Dia version \([[^,]]*\), .*$/\1/'`
++   diaver=`$diaprog --version 2>&1 | sed 's/Dia version \([^,]]*\), .*$/\1/'`
+    tmp=`echo $diaver | sed 's/^[[0-9.]]\+$//'`
+    if test "x$diaver" = "x" -o "x$tmp" != 'x'; then
+-      # Couldn't get the dia version, give up.
++      # Couldn't get the dia version, guess we have a latest one.
+       echo "Couldn't determine the dia version from '$diaver'"
++      echo "Assuming Dia version 0.94 or newer"
++      DIA_FILTER_NAME=--filter
++      DIA="$diaprog"
+    else
+       DIA="$diaprog"
+       diaver_major=`echo $diaver | sed 's/\.[[0-9.]]\+$//'`

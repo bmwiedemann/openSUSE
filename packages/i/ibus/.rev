@@ -1,0 +1,819 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a65f4f5921c25b32b80dde98c7e5fe7</srcmd5>
+    <version>1.2.0.20100111</version>
+    <time>1269623103</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus based on submit request 35858 from user tiwai
+</comment>
+    <requestid>35858</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a65f4f5921c25b32b80dde98c7e5fe7</srcmd5>
+    <version>1.2.0.20100111</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a65f4f5921c25b32b80dde98c7e5fe7</srcmd5>
+    <version>1.2.0.20100111</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f30c30bbc81e5037b6bdbe4921baa7a1</srcmd5>
+    <version>1.3.6</version>
+    <time>1286484125</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus based on submit request 49892 from user coolo
+</comment>
+    <requestid>49892</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d2b875613d022c34c17530948ba7ac6c</srcmd5>
+    <version>1.3.8</version>
+    <time>1290250573</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53421 from user coolo
+</comment>
+    <requestid>53421</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>80212772aec18fa1f44aeb80e575e23e</srcmd5>
+    <version>1.3.8</version>
+    <time>1290250588</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53421
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>80212772aec18fa1f44aeb80e575e23e</srcmd5>
+    <version>1.3.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>3a997e04097310d7e68d1aa61d078c6c</srcmd5>
+    <version>1.3.8</version>
+    <time>1300095364</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63929 from user tiwai
+</comment>
+    <requestid>63929</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>ca40940b577e5f7957bd9f499b193009</srcmd5>
+    <version>1.3.8</version>
+    <time>1300095374</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63929
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2baef1e171ae9ddaeabb0f5d910b4a9c</srcmd5>
+    <version>1.3.9</version>
+    <time>1309174458</time>
+    <user>saschpe</user>
+    <comment>- Change files in package, some should move to devel subpackage and libibus package
+
+- Fix xim.d locale directories of ja and ko
+- Add xim.d selections for more locales to replace with SCIM
+
+- Add provides tag for supported locales (ja, ko, zh)
+- Add proper supplements tags to gtk immodule packages
+
+- Update to ibus 1.3.9
+- Set priority to 40, if we want to use ibus as default input method,
+  better use a lower priority, so if any other input method framework
+  installed, system can use other input method instead.
+- Update README
+- Remove kimpanel script from start up script
+- Add gtk3 immodule</comment>
+    <requestid>74618</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2af3def64d6ce15a79a31f68357aa4a1</srcmd5>
+    <version>1.3.9</version>
+    <time>1309174471</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74618
+</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>35bbc20e054d3c7c5aa70f5be6d5fbba</srcmd5>
+    <version>1.3.9</version>
+    <time>1309181459</time>
+    <user>saschpe</user>
+    <comment>- dropped the dependencies with release number
+- simplify for passing gtk3 configure option</comment>
+    <requestid>74652</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>cc4eece5b54b99bc4d4357a88efd6f8d</srcmd5>
+    <version>1.3.9</version>
+    <time>1309181472</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74652
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f39cf0894cbb0b6bbf1705b833115b2c</srcmd5>
+    <version>1.3.9</version>
+    <time>1312880070</time>
+    <user>saschpe</user>
+    <comment>- Fix baselibs.conf to update GTK immodule cache properly for
+  ibus-gtk-32bit and ibus-gtk3-32bit packages, too
+- Clean up spec file</comment>
+    <requestid>78327</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>3f6d0a1b7e2b35fe8f2b53314967af04</srcmd5>
+    <version>1.3.9</version>
+    <time>1312880078</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78327
+</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>4c8190403c11cd9c71d2ffbef1cdd987</srcmd5>
+    <version>1.3.9</version>
+    <time>1316460186</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>83036</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>620abb1846a293f118d604d54b5727c5</srcmd5>
+    <version>1.4.0</version>
+    <time>1318503077</time>
+    <user>lrupp</user>
+    <comment>- Add obsoletes for libibus2-32bit in baselibs.conf
+
+- update to 1.4.0
+    * Status icon for GNOME 3 (bug#723591)</comment>
+    <requestid>87659</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>620abb1846a293f118d604d54b5727c5</srcmd5>
+    <version>1.4.0</version>
+    <time>1319181978</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>e557e1af8df26969d06456107ecd8cfd</srcmd5>
+    <version>1.4.0</version>
+    <time>1323191919</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>0150681a353ceb7915a65f67e6f415ce</srcmd5>
+    <version>1.4.0</version>
+    <time>1327583110</time>
+    <user>coolo</user>
+    <comment>Split typelib file in its own subpackage, following new typelib packaging policy (forwarded request 101299 from vuntz)</comment>
+    <requestid>101429</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>532f28d174eb3e1850f6447530999278</srcmd5>
+    <version>1.4.0</version>
+    <time>1329405392</time>
+    <user>coolo</user>
+    <comment>fix bnc#746612 (forwarded request 104872 from ftake)</comment>
+    <requestid>105233</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>78858c9c766a6e6f6718434871d5d42a</srcmd5>
+    <version>1.4.1</version>
+    <time>1331232228</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.1
+Fix several RPMLINT report warnings
+Fix FSF-address warnings in RPMLINT report</comment>
+    <requestid>108396</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>05985737b423868632e524f2b46f37bc</srcmd5>
+    <version>1.4.1</version>
+    <time>1337577922</time>
+    <user>coolo</user>
+    <comment>- mkdir target directory before link, fix build error in Factory (forwarded request 121298 from swyear)</comment>
+    <requestid>121300</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>05985737b423868632e524f2b46f37bc</srcmd5>
+    <version>1.4.1</version>
+    <time>1340183446</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>2dba14364b00499dc4d7d3861724d3ec</srcmd5>
+    <version>1.4.1</version>
+    <time>1340620268</time>
+    <user>coolo</user>
+    <comment>- Move the strict dependency on libibus-1_0-0 to ibus main package;
+  otherwise user may get the inconsistent setups</comment>
+    <requestid>125568</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>19b29220e131e02bb859e45650825bb1</srcmd5>
+    <version>1.4.2</version>
+    <time>1345983713</time>
+    <user>namtrac</user>
+    <comment>update to 1.4.2</comment>
+    <requestid>131696</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>77b86c4bd7835a3d68add1b35355e451</srcmd5>
+    <version>1.4.2</version>
+    <time>1351091068</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139146</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>e51052da3e4289a44f6ff3e5dd7e7542</srcmd5>
+    <version>1.4.2</version>
+    <time>1357853283</time>
+    <user>coolo</user>
+    <comment>- add ibus-fix-docs-build-error.patch: to fix build error
+  in Factory (forwarded request 147906 from ftake)</comment>
+    <requestid>147932</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>e51052da3e4289a44f6ff3e5dd7e7542</srcmd5>
+    <version>1.4.2</version>
+    <time>1359109060</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>ef629f3ac2efa5db9e488ec1125095c0</srcmd5>
+    <version>1.4.2</version>
+    <time>1360611959</time>
+    <user>coolo</user>
+    <comment>- fix bnc#802967
+  * fix ibus's tray icon can't show in gnome-shell 3.6 for openSUSE 12.3,
+    add ibus-fix-tray-icon-on-gnome-3.6.patch (forwarded request 154982 from hillwood)</comment>
+    <requestid>155027</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>7c1694544a8eacab13ab21e73d740f49</srcmd5>
+    <version>1.4.2</version>
+    <time>1361439213</time>
+    <user>coolo</user>
+    <comment>Add a shell extension for GNOME 3.6 (forwarded request 155901 from ftake)</comment>
+    <requestid>155942</requestid>
+  </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>9294f8d0c99c14f4bc0e6dc51998e203</srcmd5>
+    <version>1.4.2</version>
+    <time>1364896324</time>
+    <user>coolo</user>
+    <comment> (forwarded request 161658 from MargueriteSu)</comment>
+    <requestid>161659</requestid>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>45bebf261c46679114d90d9b2a63962a</srcmd5>
+    <version>1.4.2</version>
+    <time>1364986424</time>
+    <user>coolo</user>
+    <comment>following a comment to bnc#812298 (forwarded request 162318 from ftake)</comment>
+    <requestid>162322</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>93c693abdaa80a969efd9dc227fe9cfd</srcmd5>
+    <version>1.5.2</version>
+    <time>1373228284</time>
+    <user>coolo</user>
+    <comment>- Merge branches on M17N:Devel and home:dimstar:branches:GNOME:Factory
+  * Merge changelog and spec written by dimstar@opensuse.org
+- Update to 1.5.2 by hillwood@linuxfans.org
+  * Implement use-system-keyboard-layout
+  * Fix crash of ibus-setup
+- Update to 1.5.1 by hillwood@linuxfans.org
+  * Add fr(bepo) XKB engine
+  * Fix crash 
+- Update to 1.5.0 by douglarek@outlook.com 
+  * Renew IM-switch UI, logic, and shortcut customization
+  * Integrate XKB keyboard layouts into IME. Now ibus can manage both
+    IME and XKB layouts seamlessly
+  * Improve ibus performance by replace some python components with
+    vala implementations
+  * Improve gobject-introspection support
+  * Improve vala language support
+  * New functions to restrict config signal: ibus_config_watch/unwatch
+  * Remove gnome-icon-theme-legacy dependency. 
+  * Add version property in IBusEngineDesc. 
+  * Add IBusProperty.symbol for the short label. 
+  * Support dconf 0.13.4
+  * Add ibus command line tool 
+  * Improve unit test
+  * ibus-daemon now monitors .xml files by default
+  * &quot;make check&quot; does not require &quot;make install&quot; 
+  * Support out-of-tree build
+  * pygobject override is added to help migrate from the old python binding.
+  * Many bug fixings.
+- Switch to dconf from GConf
+- Add python bindings (forwarded request 182422 from ftake)</comment>
+    <requestid>182429</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>6da6ae833d848b46a6952f0f4ab5713c</srcmd5>
+    <version>1.5.2</version>
+    <time>1373654807</time>
+    <user>coolo</user>
+    <comment>- Fix cursor following problem in KDE4 for libreoffice</comment>
+    <requestid>182727</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b1bc6ccb87f671dc6221ea66b9bb4dfe</srcmd5>
+    <version>1.5.3</version>
+    <time>1375371227</time>
+    <user>coolo</user>
+    <comment>upstream update. (forwarded request 185285 from ftake)</comment>
+    <requestid>185348</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>175459c2de0346f187e796603b61276d</srcmd5>
+    <version>1.5.3</version>
+    <time>1379076325</time>
+    <user>scarabeus_factory</user>
+    <comment>improve distribution integration by adding patches used in Fedora, Debian, and Ubuntu. (forwarded request 198743 from ftake)</comment>
+    <requestid>198800</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>a2b463697e0bff6fab22ddd1ab8bbf25</srcmd5>
+    <version>1.5.3</version>
+    <time>1379178603</time>
+    <user>scarabeus_factory</user>
+    <comment>fix regression caused by the previous update. (forwarded request 199010 from ftake)</comment>
+    <requestid>199011</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>a2b463697e0bff6fab22ddd1ab8bbf25</srcmd5>
+    <version>1.5.3</version>
+    <time>1379662634</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>39f6217ef667266061084c3368e07afd</srcmd5>
+    <version>1.5.4</version>
+    <time>1381222311</time>
+    <user>scarabeus_factory</user>
+    <comment>Please pick this package for 13.1.
+
+Update to 1.5.4 which includes bug fix and re-implementation of feature that was in openSUSE 12.3.
+
+This update also contains a patch for usability improvement for 13.1. (forwarded request 202437 from ftake)</comment>
+    <requestid>202441</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>38ed8630de9d81a0ad12fca3d2b43672</srcmd5>
+    <version>1.5.4</version>
+    <time>1381501514</time>
+    <user>scarabeus_factory</user>
+    <comment>fix bug in the patch added by the previous commit (forwarded request 202973 from ftake)</comment>
+    <requestid>202974</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>5e36489bc3dcd7de8e5463c90ef39d93</srcmd5>
+    <version>1.5.4</version>
+    <time>1382012160</time>
+    <user>scarabeus_factory</user>
+    <comment>give ibus systray icon a better look in kde. (forwarded request 203558 from MargueriteSu)</comment>
+    <requestid>203559</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>db246aaf4f21682efeb386ae6efefb78</srcmd5>
+    <version>1.5.4</version>
+    <time>1383324113</time>
+    <user>scarabeus_factory</user>
+    <comment>- Always-save-the-content-type-cache-for-gnome-shell-p.patch:
+  This is an additional fix patch for ibus to avoid the wrong
+  IBus.InputPurpose.PASSWORD advertisement, which leads to the
+  password text appearance on GNOME3 (bnc#847718) (forwarded request 205368 from tiwai)</comment>
+    <requestid>205379</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>30c616d817a9947377effc0d5ede6dfa</srcmd5>
+    <version>1.5.4</version>
+    <time>1384700286</time>
+    <user>coolo</user>
+    <comment>- Add missing python-gobject dependency (bnc#850792) (forwarded request 207105 from jengelh)</comment>
+    <requestid>207107</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>f52c6ec5a296fb06767527be7fb720a6</srcmd5>
+    <version>1.5.4</version>
+    <time>1385442607</time>
+    <user>coolo</user>
+    <comment>- Better way to fix cursor following problem (on_the_spot bug) 
+  under libreoffice-kde4 (bnc#851982). (forwarded request 208285 from hillwood)</comment>
+    <requestid>208288</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>462eecbebae4e187fcdd0bcf6a247fa1</srcmd5>
+    <version>1.5.5</version>
+    <time>1391077583</time>
+    <user>coolo</user>
+    <comment>upstream update to 1.5.5 (forwarded request 215558 from ftake)</comment>
+    <requestid>215589</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>09b8258c3d4013c039b31677af792388</srcmd5>
+    <version>1.5.5</version>
+    <time>1392113003</time>
+    <user>coolo</user>
+    <comment>- Do not requires gobject-introspection, it is not needed to run
+  ibus, python-gobject is enough. (forwarded request 221580 from fcrozat)</comment>
+    <requestid>221590</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>1dc3bb68e6c9efbe0710a8ab08f0d07f</srcmd5>
+    <version>1.5.5</version>
+    <time>1392447905</time>
+    <user>coolo</user>
+    <comment>- Fix *-32bit post and postun calls for gtk-query-immodules-2 on
+  openSUSE 13.1 and later (bnc#845860) (forwarded request 222322 from tiwai)</comment>
+    <requestid>222327</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>cfee3115f95d566f1d7010d9c3840368</srcmd5>
+    <version>1.5.5</version>
+    <time>1395148443</time>
+    <user>coolo</user>
+    <comment>- Clean-up dependencies: add librsvg2 (needed by ibus), dropped
+  notification-daemon, python-gtk, python-notify (not needed with
+  switch to pygobject), typelib-1_0-Gtk-2_0, typelib-1_0-Gtk-3_0
+  (no need to hardcode, bnc#868657) (forwarded request 226435 from fcrozat)</comment>
+    <requestid>226440</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fc52386f0a746f1a04958f8379db86cc</srcmd5>
+    <version>1.5.6</version>
+    <time>1395295553</time>
+    <user>coolo</user>
+    <comment>fix typo in changes (forwarded request 226660 from ftake)</comment>
+    <requestid>226661</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>378f734a2abf7eb5b73aa7532c0032f5</srcmd5>
+    <version>1.5.6</version>
+    <time>1400742277</time>
+    <user>coolo</user>
+    <comment>- Fix the lost XIM input after GNOME screen lock (bnc#874969):
+  ibus-xim-fix-re-focus-after-lock.patch (forwarded request 234941 from tiwai)</comment>
+    <requestid>234994</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fa4e1574f985a388f8421031a74a2221</srcmd5>
+    <version>1.5.7</version>
+    <time>1403070554</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236494</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0ed70ebb5ae2592e8d7dcb5c3a9d2923</srcmd5>
+    <version>1.5.8</version>
+    <time>1406645269</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242626</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>83ab122ce3002c25c0a84c0763bbecef</srcmd5>
+    <version>1.5.8</version>
+    <time>1407227053</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243310</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>2c9c3177eaaef4dcc7af42632c3d4e2e</srcmd5>
+    <version>1.5.8</version>
+    <time>1407753024</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243985</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>161f98b313bf9cda3e8ec4cc5c367147</srcmd5>
+    <version>1.5.8</version>
+    <time>1407942474</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244241</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>161f98b313bf9cda3e8ec4cc5c367147</srcmd5>
+    <version>1.5.8</version>
+    <time>1409301192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>d13df8ece0785f0bddb887d695ff7056</srcmd5>
+    <version>1.5.8</version>
+    <time>1409725808</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246465</requestid>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>59f34f9fad575e17ffc80362c098089d</srcmd5>
+    <version>1.5.8</version>
+    <time>1410080916</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247766</requestid>
+  </revision>
+  <revision rev="60" vrev="9">
+    <srcmd5>ec898922693c237fe7b3009e4616d3da</srcmd5>
+    <version>1.5.8</version>
+    <time>1410361274</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248083</requestid>
+  </revision>
+  <revision rev="61" vrev="10">
+    <srcmd5>d5313bfd5fdb23cf480773087bdb4207</srcmd5>
+    <version>1.5.8</version>
+    <time>1413048362</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254749</requestid>
+  </revision>
+  <revision rev="62" vrev="11">
+    <srcmd5>ce24d127e0783349c588f9daf6a9c7e0</srcmd5>
+    <version>1.5.8</version>
+    <time>1413263347</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255594</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>29635fc4212469de33f5c4376c8b207f</srcmd5>
+    <version>1.5.9</version>
+    <time>1413384079</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256527</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>bad1d929f67bdc2689ebffcbb0da8ee3</srcmd5>
+    <version>1.5.9</version>
+    <time>1416824083</time>
+    <user>dimstar_suse</user>
+    <comment>- disable parallel build for install - not much gain and makes it
+  less reliable</comment>
+    <requestid>262712</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>0171b61b0c24a2c1dc8724301e192145</srcmd5>
+    <version>1.5.9</version>
+    <time>1422216969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282739</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a9a26607f1f6bbe71e9ae34b9b94c32a</srcmd5>
+    <version>1.5.10</version>
+    <time>1426485287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290691</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>27fd32884d8acc34dd2d3957a68ced09</srcmd5>
+    <version>1.5.10</version>
+    <time>1428272673</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294202</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>261cae8232ca28a5147de1af4e9cc9fb</srcmd5>
+    <version>1.5.11</version>
+    <time>1439384945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321626</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>916007aa44b2e31414c2d74f8777c2dc</srcmd5>
+    <version>1.5.11</version>
+    <time>1456924725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362636</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>cc53907cf56ea4928943626367665797</srcmd5>
+    <version>1.5.11</version>
+    <time>1457179529</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>366054</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>7ee1abc91f8f6b6d0bc71a8cfdf6098a</srcmd5>
+    <version>1.5.11</version>
+    <time>1459237930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>380190</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>5d108eda3e34bd136aae814baf54c668</srcmd5>
+    <version>1.5.13</version>
+    <time>1462051690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390784</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f03f88678a22bb8c36b82656979e820c</srcmd5>
+    <version>1.5.14</version>
+    <time>1483554482</time>
+    <user>lnussel_factory</user>
+    <comment>- Disable emoji dict build. (forwarded request 448003 from hillwood)</comment>
+    <requestid>448007</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>57d39b41506e512979a349583972d335</srcmd5>
+    <version>1.5.14</version>
+    <time>1490220146</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479039</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ee6c83fa7e2679d4f52a21eaf112c24d</srcmd5>
+    <version>1.5.16</version>
+    <time>1496392247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498363</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>f6a8135477402864ee622f9721007855</srcmd5>
+    <version>1.5.16</version>
+    <time>1497687685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503478</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>d96a907b5533191ba8099606141e60ba</srcmd5>
+    <version>1.5.16</version>
+    <time>1502186728</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512205</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>f839259cb95401b52c140eed492face4</srcmd5>
+    <version>1.5.16</version>
+    <time>1504620440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519666</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bbcc5024b1858279c07d9c585967e93e</srcmd5>
+    <version>1.5.17</version>
+    <time>1510406157</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 539421 from hillwood)</comment>
+    <requestid>539422</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>fd974aa5ccb6fdd6053acb0f7b26789e</srcmd5>
+    <version>1.5.17</version>
+    <time>1517234200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558840</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>e84e59e65f36bc87182570bced1554d9</srcmd5>
+    <version>1.5.17</version>
+    <time>1517668535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570643</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b63a2152c5220ae690cabe3d24bf119a</srcmd5>
+    <version>1.5.18</version>
+    <time>1520852631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583729</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>1b38d6e5a99948b2b4b9b399adcfad4c</srcmd5>
+    <version>1.5.18</version>
+    <time>1523447267</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594689</requestid>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>1687590d2aa027d530feef7e49ac884d</srcmd5>
+    <version>1.5.18</version>
+    <time>1524400745</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 599669 from hillwood)</comment>
+    <requestid>599670</requestid>
+  </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>28ccf20225723adbea9164529e49aab5</srcmd5>
+    <version>1.5.18</version>
+    <time>1527001312</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording from descriptions.
+- Update Summaries and RPM groups. (forwarded request 610236 from jengelh)</comment>
+    <requestid>610982</requestid>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>4a54566366c865516f1513336fcb47b5</srcmd5>
+    <version>1.5.18</version>
+    <time>1528195837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613714</requestid>
+  </revision>
+  <revision rev="87" vrev="6">
+    <srcmd5>d160167e5ae9b85df5a097324a37c81c</srcmd5>
+    <version>1.5.18</version>
+    <time>1532361486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624340</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b4b35a851b558389213dd65d53965060</srcmd5>
+    <version>1.5.19</version>
+    <time>1537263659</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635269</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>fa731ae3c76d8e3938edbf3670639188</srcmd5>
+    <version>1.5.19</version>
+    <time>1545866586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657572</requestid>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>bb826f0fa63816f3786942977486e9da</srcmd5>
+    <version>1.5.19</version>
+    <time>1551468504</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679057</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>75a4687edc0b3a8c8a8fc871be793bf5</srcmd5>
+    <version>1.5.20</version>
+    <time>1552048128</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 681592 from hillwood)</comment>
+    <requestid>681593</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>64c29d96aaf1f94058c7c890881c3ef9</srcmd5>
+    <version>1.5.20</version>
+    <time>1557472228</time>
+    <user>dimstar_suse</user>
+    <comment>Move RPM macros to %_rpmmacrodir. (forwarded request 701537 from dimstar)</comment>
+    <requestid>701577</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>f8b22ff964a91198ba544748703e4df7</srcmd5>
+    <version>1.5.21</version>
+    <time>1567848620</time>
+    <user>dimstar_suse</user>
+    <comment>upstream update to 1.5.21 (forwarded request 727520 from ftake)</comment>
+    <requestid>727941</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>1cd2cda726986a4df8cfc93d07d49938</srcmd5>
+    <version>1.5.21</version>
+    <time>1568190234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729101</requestid>
+  </revision>
+</revisionlist>

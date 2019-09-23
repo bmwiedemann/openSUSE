@@ -1,0 +1,5 @@
+<package name="easy-rsa" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:vpn" package="easy-rsa"/>
+</package>

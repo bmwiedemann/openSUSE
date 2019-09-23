@@ -1,0 +1,16 @@
+Not sure for what exactly this could be
+
+
+Index: OpenIPMI-2.0.25/swig/OpenIPMI.i
+===================================================================
+--- OpenIPMI-2.0.25.orig/swig/OpenIPMI.i	2018-06-20 15:53:54.000000000 +0200
++++ OpenIPMI-2.0.25/swig/OpenIPMI.i	2018-08-27 16:31:55.632653896 +0200
+@@ -2704,7 +2704,7 @@ sol_data_received_cb(ipmi_sol_conn_t *co
+     int         rv = 0;
+ 
+     conn_ref = swig_make_ref(conn, ipmi_sol_conn_t);
+-    swig_call_cb_rv('i', &rv, cb, "sol_data_received", "%p%*b",
++    swig_call_cb_rv('i', &rv, cb, "sol_data_received", "%p%*s",
+ 		    &conn_ref, count, buf);
+     swig_free_ref_check(conn_ref, ipmi_sol_conn_t);
+     return rv;

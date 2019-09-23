@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Nov 17 13:41:10 UTC 2011 - coolo@suse.com
+
+- regenerate spec file
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:17 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:38:01 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 28 19:24:08 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+
+-------------------------------------------------------------------
+Fri Aug 15 19:40:12 CEST 2008 - lrupp@suse.de
+
+- provide perl-GD-Barcode-UPCE
+
+-------------------------------------------------------------------
+Tue Jul 24 10:11:38 CEST 2007 - lrupp@suse.de
+
+- initial version 1.15
+

@@ -1,0 +1,18 @@
+--- bindings/Python/src/pisock_wrap.c
++++ bindings/Python/src/pisock_wrap.c
+@@ -5834,7 +5834,6 @@
+     arg1 = &temp1;
+     
+     if(!PyArg_ParseTuple(args,(char *)":delete_PilotUser")) goto fail;
+-    free((char *) arg1);
+     
+     Py_INCREF(Py_None); resultobj = Py_None;
+     
+@@ -6344,7 +6343,6 @@
+     arg1 = &temp1;
+     
+     if(!PyArg_ParseTuple(args,(char *)":delete_SysInfo")) goto fail;
+-    free((char *) arg1);
+     
+     Py_INCREF(Py_None); resultobj = Py_None;
+     

@@ -1,0 +1,1243 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56610ac28d4df6346c99e1a266684a5a</srcmd5>
+    <version>0.8.0</version>
+    <time>1415866641</time>
+    <user>dimstar_suse</user>
+    <comment>core lxde package</comment>
+    <requestid>260899</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0d668f2a861bbd47151484745c40aa47</srcmd5>
+    <version>0.8.0</version>
+    <time>1422959981</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283581</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8261536a45b997f5a272a11dd83e3b42</srcmd5>
+    <version>0.9.0</version>
+    <time>1424117305</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>284986</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>83f70bb3054fd6e2e8de893dff3141f7</srcmd5>
+    <version>0.9.0</version>
+    <time>1424827037</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed %build and %install to used cmake macros (forwarded request 287074 from sfalken)</comment>
+    <requestid>287397</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa38a3a70326acc151df6982fa6d4734</srcmd5>
+    <version>0.10.0</version>
+    <time>1447454142</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343357</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7b76ad183635c370076797232512ff5</srcmd5>
+    <version>0.11.0</version>
+    <time>1475750667</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432282</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f1bb7f3531c17b42022ca032634110b</srcmd5>
+    <version>0.11.1</version>
+    <time>1489415537</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460152</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f668fdd0ec514f115d22e5cbfeafd43b</srcmd5>
+    <version>0.11.1</version>
+    <time>1505335095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>525868</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb3e64e0723bdf60c076ef14d83148fa</srcmd5>
+    <version>0.12.0</version>
+    <time>1508876599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Set patch version
+  * lxqt-session: Unify arguments parsing
+  * Don't export github templates
+  * Add/Update Lithuanian language
+  * c'n'p bug
+  * add basic cli to lxqt-session
+  * lxqt-session: Provide reboot/powerOff methods
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-session: set Qt::AA_UseHighDpiPixmaps to true
+  * lxqt-leave: set Qt::AA_UseHighDpiPixmaps to true
+  * improved --version
+  * Added QCommandLineParser and basic cli interface to lxqt-conf-session
+  * Added default CMAKE_BUILD_TYPE and LXQT_SESSION_PATCH_VERSION
+  * String encoding (#103)
+  * Fixes a FTBFS in superbuild mode (#102)
+  * lxqt-leave: Fix &quot;disabled items&quot; key navigation
+  * Address &quot;unused parameter&quot; compiler warnings
+  * lxqt-leave: Redesign dialog for good key navigation
+  * Removed superfluous include(LXQtTranslateDesktop)
+  * fixed config/CMakeLists.txt
+  * Merged relevant parts of CMakeLists.txt.lxqt-common into CMakeLists.txt
+  * Rename CMakeLists.txt -&gt; CMakeLists.txt.lxqt-common
+  * Add Basque translation of lxqt-leave and update Basque translation of lxqt-config-session
+  * leavedialog: Use &quot;expected&quot; tab order
+  * LeaveDialog: Accept enter key for action/cancel firing
+  * LeaveDialog: Use &quot;override&quot; keyword
+  * leavedialog: Don't trigger &quot;cancel&quot; on Enter
+  * LeaveDialog: Use correct method
+  * startlxqt: Consider $XDG_RUNTIME_DIR/bus for DBus
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Bump year
+  * Update desktop entries and Replace fr_FR by fr
+  * Use the LXQtConfigVars module
+  * Fixed typo
+  * Remove cpack (#61)
+  * startlxqt: Consider LXQT_DEFAULT_OPENBOX_CONFIG
+  * startlxqt: Honor the pre-defined SAL_USE_VLCPLUGIN
+  * Replace lxqt-rc.xml with latest openbox version
+  * startlxqt: Consider pre-exising LXDE OB config also
+  * build: Revert @6d6d2bef54
+  * build: Add xmessage as &quot;dependency&quot;
+  * Openbox: Fix informational message about adoption of rc.xml
+  * lxqt-rc.xml: Change default config install path
+  * startlxqt: Copy existing openbox config preferably
+  * Improves changed Openbox default path startup message (#51)
+  * Disable gtk+ 3 overlay scrollbars by default.
+  * Don't add XDG_DATA_HOME to XDG_DATA_DIRS (#47)
+  * Message about Openbox default path changed.
+  * Warning message about openbox settings path changed.
+  * startlxqt: Force XDG_CONFIG_DIRS to contain @LXQT_ETC_XDG_DIR@
+  * Copy openbox defaults at session start.
+  * Rename openbox/rc.xml to openbox/lxqt-openbox-rc.xml
+  * Openbox aero snap using mouse wheel over title bar.
+  * Settings Openbox updated.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * CMakeLists: Use LXQT_GRAPHICS_DIR for graphics
+  * Add startlxqt man page
+  * Fixes #807 – Add XDG_CACHE_HOME definition
+  * startlxqt: optimization of XDG_DATA_DIRS
+  * corrected indentation
+  * startlxqt: Set proper prefix for XDG_DATA_DIRS
+  * Update Greek translation (el) Remove country variant from language code
+  * Rename LxQt to LXQt everywhere
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Removes no added value comments
+  * Adds double quotes to everything that may break
+  * Use GNUINnstallDirs
+  * Updates the build system to use the Targets infrastructure
+  * Enable the &quot;leave confirmation dialog&quot; by default
+  * TryExec to detect proper installed lxqt-session
+  * Uniforms indentation
+  * Sets env variable XDG_CONFIG_DIRS
+  * Drops hardcoded /etc/xdg paths
+  * Set LibreOffice's plugin env var to kde4
+  * config: auto-detect succesfully kwin on recent kwin versions
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Adds an scalable start-here-lxqt icon
+  * use LXQt-specific menu file
+  * Renames some .desktop files
+  * Portuguese update for .desktop files
+  * - Unify naming for a unique lxqt. No more suffixes
+  * Make frost the default theme
+  * Defines XDG_DATA_HOME and XDG_DATA_DIRS environment variables
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * Clean up CMakeLists.txt and drop Qt 4 support
+  * Set environment variable GTK_CSD=0 to turn off the default client side decoration for gtk+ 3 programs. (This will not always work if a gtk+3 program explicitly sets a title bar and turns on CSD.)
+  * Add some more default values for Qt settings.
+  * Update default config file.
+  * Add Qt5 support.
+  * Support Qt5 platform plugin and add some more comments.
+  * Remove XDG_CURRENT_DESKTOP=Razor from environment variables.
+  * Set XDG_CURRENT_DESKTOP to LXQt
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Use LXQt as desktop name
+  * Add CPack rules for creating tarball
+  * Add session.conf and windowmanagers.conf.
+  * Change XDG_CURRENT_DESKTOP to Razor for now. (May rename to LxQt or something else in the future.)
+  * Export environment varialbe QT_PLATFORM_PLUGIN=lxqt to let all Qt programs load lxqt-qtplugin and apply lxqt settings.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Run lxde-qt with XDG_CURRENT_DESKTOP=RAZOR
+  * Fix renaming bugs, replacing lxqt-qt with lxde-qt
+  * Finish the crazy razor=&gt;lxqt renaming tasks.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Remove custom openbox config file in desktop.conf temporarily until lxsession is fixed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel &amp; lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+- Remove because contained in new release:
+  * lxqt-session-0.11.1-add-poweroff.patch
+  * lxqt-session-0.11.1-string-encoding.patch
+- boo#1044483:
+  * Add lxqt-session-0.11.1-string-encoding.patch
+    to have new string encoding
+  * Add lxqt-session-0.11.1-add-poweroff.patch
+    add option to power off
+- Update to 0.11.1:
+  * Adds an nullptr check when restarting a module (#90)
+  * Fixes a session logout crash (#88)
+  * Updated da.desktop files and removed da_DK.desktop files
+  * Moves FindUDev to the lxqt-build-tools repo
+  * Reworks X11 CMake libraries
+  * Removes all XCB stuff from CMake
+  * Update french desktop entries
+  * lxqt-config-session: Use localized comment
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#83)
+- Update to 0.11.0:
+  * lockscreenmanager: always listen to the session provider's lock signal (#79)
+  * Update Polish translation
+  * Add README.md
+  * lxqt-config-session: Warn about restart required when removing env variable
+  * Add Catalan translations
+  * lockscreenmanager: use categorized logger
+  * Make screen locking before power actions optional
+  * Add and Update Arabic Translations for Desktop Files
+  * lxqt-session: Replace qCInfo() by qCWarning()
+  * Adds an WITH_LIBUDEV CMake option (#74)
+  * lockscreenmanager: add more log messages
+  * Add logic to lock screen before system sleeps
+  * lxqt-session: Use QLoggingCategory for logging/debug
+  * lxqt-session: Use the base name to compare Wm's names
+  * build: Use external translations
+  * ts-files removal (#72)
+  * Use const references with the foreach iterator
+  * leave: ask or not for confirmation from main dialog
+  * Adjust config dialog's size on startup
+  * Make it compile using QT_USE_QSTRINGBUILDER
+  * Fix lxqt-leave tab order
+  * lxqt-session doesn't copy openbox defaults at session start. startlxqt from lxqt-common will copy it.
+  * fixup...centering &amp; spacing
+  * leave: do not set maximum size as minimum size
+  * Use XdgDir to find default path.
+  * Openbox default settings removed.
+  * Load LXQt default settings for Openbox.
+  * UserLocations: An user entered empty string represents the default value
+  * lxqt-config-session: Adds tooltips to the User Directories edits
+  * lxqt-config-session: Replaces Locations by User Directories
+  * Bump year Fix used licenses. lxqt-session is LGPL only
+  * Re-arrange the buttons
+  * lxqt-leave: Reworks window flags
+  * lxqt-leave: Make all buttons of equal width
+  * lxqt-leave: Center the dialog relative to the screen
+  * lxqt-leave: Removes window border and makes it stay on top
+  * lxqt-leave: Make the icons bigger and improves button alignement
+  * Updated german translation.
+  * Fix realloc() usage Check malloc() call result against NULL
+  * Add HR translations
+  * lxqt-session: Update man pages and make session the overview
+  * Update italian translation
+  * Updated Russian translations Removed ru_RU files
+  * Makes the dependency on xdg-user-dirs-update explicit
+  * Fix ending session and stopping modules
+  * upd: lxqt-config-session_hu.ts del: lxt-config-session_hu_HU.ts
+  * Fix desktop file
+  * Make desktop files valid
+  * CMakeLists.txt: Add cmake minimum required version
+- Add keyring
+- Remove 0001-Make-desktop-files-valid.patch: upstreamed
+- Remove 0002-Fix-desktop-file.patch: upstreamed
+- Upstream release 0.10.0
+- Adding patches to make desktop files valid:
+ * 0001-Make-desktop-files-valid.patch
+ * 0002-Fix-desktop-file.patch
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now.
+- Changed %build and %install to used cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added Patch
+  + fix_desktop_categories.patch - fixes category definitions to
+comply with openSUSE policy
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0
+- Specfile Cleanup 
+-  Removed fedora specfile, split into subproject
+   Del: lxqt-session-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-session-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-session-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-session.spec
+  Add: lxqt-session.changes 
+</comment>
+    <requestid>535982</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>114d979de1f2eef56ffcfba208321259</srcmd5>
+    <version>0.12.0</version>
+    <time>1508970925</time>
+    <user>dimstar_suse</user>
+    <comment>- Add default-xsession which fvogt@suse.com added to
+  (now deprecated) lxqt-common in the past
+- Update to 0.12.0:
+  * Set patch version
+  * lxqt-session: Unify arguments parsing
+  * Don't export github templates
+  * Add/Update Lithuanian language
+  * c'n'p bug
+  * add basic cli to lxqt-session
+  * lxqt-session: Provide reboot/powerOff methods
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-session: set Qt::AA_UseHighDpiPixmaps to true
+  * lxqt-leave: set Qt::AA_UseHighDpiPixmaps to true
+  * improved --version
+  * Added QCommandLineParser and basic cli interface to lxqt-conf-session
+  * Added default CMAKE_BUILD_TYPE and LXQT_SESSION_PATCH_VERSION
+  * String encoding (#103)
+  * Fixes a FTBFS in superbuild mode (#102)
+  * lxqt-leave: Fix &quot;disabled items&quot; key navigation
+  * Address &quot;unused parameter&quot; compiler warnings
+  * lxqt-leave: Redesign dialog for good key navigation
+  * Removed superfluous include(LXQtTranslateDesktop)
+  * fixed config/CMakeLists.txt
+  * Merged relevant parts of CMakeLists.txt.lxqt-common into CMakeLists.txt
+  * Rename CMakeLists.txt -&gt; CMakeLists.txt.lxqt-common
+  * Add Basque translation of lxqt-leave and update Basque translation of lxqt-config-session
+  * leavedialog: Use &quot;expected&quot; tab order
+  * LeaveDialog: Accept enter key for action/cancel firing
+  * LeaveDialog: Use &quot;override&quot; keyword
+  * leavedialog: Don't trigger &quot;cancel&quot; on Enter
+  * LeaveDialog: Use correct method
+  * startlxqt: Consider $XDG_RUNTIME_DIR/bus for DBus
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Bump year
+  * Update desktop entries and Replace fr_FR by fr
+  * Use the LXQtConfigVars module
+  * Fixed typo
+  * Remove cpack (#61)
+  * startlxqt: Consider LXQT_DEFAULT_OPENBOX_CONFIG
+  * startlxqt: Honor the pre-defined SAL_USE_VLCPLUGIN
+  * Replace lxqt-rc.xml with latest openbox version
+  * startlxqt: Consider pre-exising LXDE OB config also
+  * build: Revert @6d6d2bef54
+  * build: Add xmessage as &quot;dependency&quot;
+  * Openbox: Fix informational message about adoption of rc.xml
+  * lxqt-rc.xml: Change default config install path
+  * startlxqt: Copy existing openbox config preferably
+  * Improves changed Openbox default path startup message (#51)
+  * Disable gtk+ 3 overlay scrollbars by default.
+  * Don't add XDG_DATA_HOME to XDG_DATA_DIRS (#47)
+  * Message about Openbox default path changed.
+  * Warning message about openbox settings path changed.
+  * startlxqt: Force XDG_CONFIG_DIRS to contain @LXQT_ETC_XDG_DIR@
+  * Copy openbox defaults at session start.
+  * Rename openbox/rc.xml to openbox/lxqt-openbox-rc.xml
+  * Openbox aero snap using mouse wheel over title bar.
+  * Settings Openbox updated.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * CMakeLists: Use LXQT_GRAPHICS_DIR for graphics
+  * Add startlxqt man page
+  * Fixes #807 – Add XDG_CACHE_HOME definition
+  * startlxqt: optimization of XDG_DATA_DIRS
+  * corrected indentation
+  * startlxqt: Set proper prefix for XDG_DATA_DIRS
+  * Update Greek translation (el) Remove country variant from language code
+  * Rename LxQt to LXQt everywhere
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Removes no added value comments
+  * Adds double quotes to everything that may break
+  * Use GNUINnstallDirs
+  * Updates the build system to use the Targets infrastructure
+  * Enable the &quot;leave confirmation dialog&quot; by default
+  * TryExec to detect proper installed lxqt-session
+  * Uniforms indentation
+  * Sets env variable XDG_CONFIG_DIRS
+  * Drops hardcoded /etc/xdg paths
+  * Set LibreOffice's plugin env var to kde4
+  * config: auto-detect succesfully kwin on recent kwin versions
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Adds an scalable start-here-lxqt icon
+  * use LXQt-specific menu file
+  * Renames some .desktop files
+  * Portuguese update for .desktop files
+  * - Unify naming for a unique lxqt. No more suffixes
+  * Make frost the default theme
+  * Defines XDG_DATA_HOME and XDG_DATA_DIRS environment variables
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * Clean up CMakeLists.txt and drop Qt 4 support
+  * Set environment variable GTK_CSD=0 to turn off the default client side decoration for gtk+ 3 programs. (This will not always work if a gtk+3 program explicitly sets a title bar and turns on CSD.)
+  * Add some more default values for Qt settings.
+  * Update default config file.
+  * Add Qt5 support.
+  * Support Qt5 platform plugin and add some more comments.
+  * Remove XDG_CURRENT_DESKTOP=Razor from environment variables.
+  * Set XDG_CURRENT_DESKTOP to LXQt
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Use LXQt as desktop name
+  * Add CPack rules for creating tarball
+  * Add session.conf and windowmanagers.conf.
+  * Change XDG_CURRENT_DESKTOP to Razor for now. (May rename to LxQt or something else in the future.)
+  * Export environment varialbe QT_PLATFORM_PLUGIN=lxqt to let all Qt programs load lxqt-qtplugin and apply lxqt settings.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Run lxde-qt with XDG_CURRENT_DESKTOP=RAZOR
+  * Fix renaming bugs, replacing lxqt-qt with lxde-qt
+  * Finish the crazy razor=&gt;lxqt renaming tasks.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Remove custom openbox config file in desktop.conf temporarily until lxsession is fixed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel &amp; lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+- Remove because contained in new release:
+  * lxqt-session-0.11.1-add-poweroff.patch
+  * lxqt-session-0.11.1-string-encoding.patch
+- boo#1044483:
+  * Add lxqt-session-0.11.1-string-encoding.patch
+    to have new string encoding
+  * Add lxqt-session-0.11.1-add-poweroff.patch
+    add option to power off
+- Update to 0.11.1:
+  * Adds an nullptr check when restarting a module (#90)
+  * Fixes a session logout crash (#88)
+  * Updated da.desktop files and removed da_DK.desktop files
+  * Moves FindUDev to the lxqt-build-tools repo
+  * Reworks X11 CMake libraries
+  * Removes all XCB stuff from CMake
+  * Update french desktop entries
+  * lxqt-config-session: Use localized comment
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#83)
+- Update to 0.11.0:
+  * lockscreenmanager: always listen to the session provider's lock signal (#79)
+  * Update Polish translation
+  * Add README.md
+  * lxqt-config-session: Warn about restart required when removing env variable
+  * Add Catalan translations
+  * lockscreenmanager: use categorized logger
+  * Make screen locking before power actions optional
+  * Add and Update Arabic Translations for Desktop Files
+  * lxqt-session: Replace qCInfo() by qCWarning()
+  * Adds an WITH_LIBUDEV CMake option (#74)
+  * lockscreenmanager: add more log messages
+  * Add logic to lock screen before system sleeps
+  * lxqt-session: Use QLoggingCategory for logging/debug
+  * lxqt-session: Use the base name to compare Wm's names
+  * build: Use external translations
+  * ts-files removal (#72)
+  * Use const references with the foreach iterator
+  * leave: ask or not for confirmation from main dialog
+  * Adjust config dialog's size on startup
+  * Make it compile using QT_USE_QSTRINGBUILDER
+  * Fix lxqt-leave tab order
+  * lxqt-session doesn't copy openbox defaults at session start. startlxqt from lxqt-common will copy it.
+  * fixup...centering &amp; spacing
+  * leave: do not set maximum size as minimum size
+  * Use XdgDir to find default path.
+  * Openbox default settings removed.
+  * Load LXQt default settings for Openbox.
+  * UserLocations: An user entered empty string represents the default value
+  * lxqt-config-session: Adds tooltips to the User Directories edits
+  * lxqt-config-session: Replaces Locations by User Directories
+  * Bump year Fix used licenses. lxqt-session is LGPL only
+  * Re-arrange the buttons
+  * lxqt-leave: Reworks window flags
+  * lxqt-leave: Make all buttons of equal width
+  * lxqt-leave: Center the dialog relative to the screen
+  * lxqt-leave: Removes window border and makes it stay on top
+  * lxqt-leave: Make the icons bigger and improves button alignement
+  * Updated german translation.
+  * Fix realloc() usage Check malloc() call result against NULL
+  * Add HR translations
+  * lxqt-session: Update man pages and make session the overview
+  * Update italian translation
+  * Updated Russian translations Removed ru_RU files
+  * Makes the dependency on xdg-user-dirs-update explicit
+  * Fix ending session and stopping modules
+  * upd: lxqt-config-session_hu.ts del: lxt-config-session_hu_HU.ts
+  * Fix desktop file
+  * Make desktop files valid
+  * CMakeLists.txt: Add cmake minimum required version
+- Add keyring
+- Remove 0001-Make-desktop-files-valid.patch: upstreamed
+- Remove 0002-Fix-desktop-file.patch: upstreamed
+- Upstream release 0.10.0
+- Adding patches to make desktop files valid:
+ * 0001-Make-desktop-files-valid.patch
+ * 0002-Fix-desktop-file.patch
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now.
+- Changed %build and %install to used cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added Patch
+  + fix_desktop_categories.patch - fixes category definitions to
+comply with openSUSE policy
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0
+- Specfile Cleanup 
+-  Removed fedora specfile, split into subproject
+   Del: lxqt-session-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-session-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-session-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-session.spec
+  Add: lxqt-session.changes 
+</comment>
+    <requestid>536629</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d34e118d7f3bccd2ba2e29fd408bc92d</srcmd5>
+    <version>0.12.0</version>
+    <time>1525960188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605636</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>05eb97207a22d9ccc1f8c5fee1e42f45</srcmd5>
+    <version>0.13.0</version>
+    <time>1530304274</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete lxqt-l10n: its not needed for 0.13.0
+  All packages now contain the translations themselves
+
+- Update to 0.13.0:
+  * Better support for *BSD world by changed usage of libudev
+  * Use more directories for searching defaults (add /usr/share &amp; /etc into XDG_CONFIG_DIRS)</comment>
+    <requestid>618056</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>95a01731f97e5c5679dd76904b35753c</srcmd5>
+    <version>0.13.0</version>
+    <time>1532445957</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1099800: Various LXQt components weren't able to find
+  their config files
+- Add lxqt-0.13.0-xdg-config-dir.patch
+- Obsolete lxqt-l10n: its not needed for 0.13.0
+  All packages now contain the translations themselves
+- Update to 0.13.0:
+  * Better support for *BSD world by changed usage of libudev
+  * Use more directories for searching defaults (add /usr/share &amp; /etc into XDG_CONFIG_DIRS)
+- Don't use %fdupes -s as symlinks in the xsession directory have a
+  special meaning (boo#1092251)
+- Add default-xsession which fvogt@suse.com added to
+  (now deprecated) lxqt-common in the past
+- Update to 0.12.0:
+  * Set patch version
+  * lxqt-session: Unify arguments parsing
+  * Don't export github templates
+  * Add/Update Lithuanian language
+  * c'n'p bug
+  * add basic cli to lxqt-session
+  * lxqt-session: Provide reboot/powerOff methods
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-session: set Qt::AA_UseHighDpiPixmaps to true
+  * lxqt-leave: set Qt::AA_UseHighDpiPixmaps to true
+  * improved --version
+  * Added QCommandLineParser and basic cli interface to lxqt-conf-session
+  * Added default CMAKE_BUILD_TYPE and LXQT_SESSION_PATCH_VERSION
+  * String encoding (#103)
+  * Fixes a FTBFS in superbuild mode (#102)
+  * lxqt-leave: Fix &quot;disabled items&quot; key navigation
+  * Address &quot;unused parameter&quot; compiler warnings
+  * lxqt-leave: Redesign dialog for good key navigation
+  * Removed superfluous include(LXQtTranslateDesktop)
+  * fixed config/CMakeLists.txt
+  * Merged relevant parts of CMakeLists.txt.lxqt-common into CMakeLists.txt
+  * Rename CMakeLists.txt -&gt; CMakeLists.txt.lxqt-common
+  * Add Basque translation of lxqt-leave and update Basque translation of lxqt-config-session
+  * leavedialog: Use &quot;expected&quot; tab order
+  * LeaveDialog: Accept enter key for action/cancel firing
+  * LeaveDialog: Use &quot;override&quot; keyword
+  * leavedialog: Don't trigger &quot;cancel&quot; on Enter
+  * LeaveDialog: Use correct method
+  * startlxqt: Consider $XDG_RUNTIME_DIR/bus for DBus
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Bump year
+  * Update desktop entries and Replace fr_FR by fr
+  * Use the LXQtConfigVars module
+  * Fixed typo
+  * Remove cpack (#61)
+  * startlxqt: Consider LXQT_DEFAULT_OPENBOX_CONFIG
+  * startlxqt: Honor the pre-defined SAL_USE_VLCPLUGIN
+  * Replace lxqt-rc.xml with latest openbox version
+  * startlxqt: Consider pre-exising LXDE OB config also
+  * build: Revert @6d6d2bef54
+  * build: Add xmessage as &quot;dependency&quot;
+  * Openbox: Fix informational message about adoption of rc.xml
+  * lxqt-rc.xml: Change default config install path
+  * startlxqt: Copy existing openbox config preferably
+  * Improves changed Openbox default path startup message (#51)
+  * Disable gtk+ 3 overlay scrollbars by default.
+  * Don't add XDG_DATA_HOME to XDG_DATA_DIRS (#47)
+  * Message about Openbox default path changed.
+  * Warning message about openbox settings path changed.
+  * startlxqt: Force XDG_CONFIG_DIRS to contain @LXQT_ETC_XDG_DIR@
+  * Copy openbox defaults at session start.
+  * Rename openbox/rc.xml to openbox/lxqt-openbox-rc.xml
+  * Openbox aero snap using mouse wheel over title bar.
+  * Settings Openbox updated.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * CMakeLists: Use LXQT_GRAPHICS_DIR for graphics
+  * Add startlxqt man page
+  * Fixes #807 – Add XDG_CACHE_HOME definition
+  * startlxqt: optimization of XDG_DATA_DIRS
+  * corrected indentation
+  * startlxqt: Set proper prefix for XDG_DATA_DIRS
+  * Update Greek translation (el) Remove country variant from language code
+  * Rename LxQt to LXQt everywhere
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Removes no added value comments
+  * Adds double quotes to everything that may break
+  * Use GNUINnstallDirs
+  * Updates the build system to use the Targets infrastructure
+  * Enable the &quot;leave confirmation dialog&quot; by default
+  * TryExec to detect proper installed lxqt-session
+  * Uniforms indentation
+  * Sets env variable XDG_CONFIG_DIRS
+  * Drops hardcoded /etc/xdg paths
+  * Set LibreOffice's plugin env var to kde4
+  * config: auto-detect succesfully kwin on recent kwin versions
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Adds an scalable start-here-lxqt icon
+  * use LXQt-specific menu file
+  * Renames some .desktop files
+  * Portuguese update for .desktop files
+  * - Unify naming for a unique lxqt. No more suffixes
+  * Make frost the default theme
+  * Defines XDG_DATA_HOME and XDG_DATA_DIRS environment variables
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * Clean up CMakeLists.txt and drop Qt 4 support
+  * Set environment variable GTK_CSD=0 to turn off the default client side decoration for gtk+ 3 programs. (This will not always work if a gtk+3 program explicitly sets a title bar and turns on CSD.)
+  * Add some more default values for Qt settings.
+  * Update default config file.
+  * Add Qt5 support.
+  * Support Qt5 platform plugin and add some more comments.
+  * Remove XDG_CURRENT_DESKTOP=Razor from environment variables.
+  * Set XDG_CURRENT_DESKTOP to LXQt
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Use LXQt as desktop name
+  * Add CPack rules for creating tarball
+  * Add session.conf and windowmanagers.conf.
+  * Change XDG_CURRENT_DESKTOP to Razor for now. (May rename to LxQt or something else in the future.)
+  * Export environment varialbe QT_PLATFORM_PLUGIN=lxqt to let all Qt programs load lxqt-qtplugin and apply lxqt settings.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Run lxde-qt with XDG_CURRENT_DESKTOP=RAZOR
+  * Fix renaming bugs, replacing lxqt-qt with lxde-qt
+  * Finish the crazy razor=&gt;lxqt renaming tasks.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Remove custom openbox config file in desktop.conf temporarily until lxsession is fixed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel &amp; lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+- Remove because contained in new release:
+  * lxqt-session-0.11.1-add-poweroff.patch
+  * lxqt-session-0.11.1-string-encoding.patch
+- boo#1044483:
+  * Add lxqt-session-0.11.1-string-encoding.patch
+    to have new string encoding
+  * Add lxqt-session-0.11.1-add-poweroff.patch
+    add option to power off
+- Update to 0.11.1:
+  * Adds an nullptr check when restarting a module (#90)
+  * Fixes a session logout crash (#88)
+  * Updated da.desktop files and removed da_DK.desktop files
+  * Moves FindUDev to the lxqt-build-tools repo
+  * Reworks X11 CMake libraries
+  * Removes all XCB stuff from CMake
+  * Update french desktop entries
+  * lxqt-config-session: Use localized comment
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#83)
+- Update to 0.11.0:
+  * lockscreenmanager: always listen to the session provider's lock signal (#79)
+  * Update Polish translation
+  * Add README.md
+  * lxqt-config-session: Warn about restart required when removing env variable
+  * Add Catalan translations
+  * lockscreenmanager: use categorized logger
+  * Make screen locking before power actions optional
+  * Add and Update Arabic Translations for Desktop Files
+  * lxqt-session: Replace qCInfo() by qCWarning()
+  * Adds an WITH_LIBUDEV CMake option (#74)
+  * lockscreenmanager: add more log messages
+  * Add logic to lock screen before system sleeps
+  * lxqt-session: Use QLoggingCategory for logging/debug
+  * lxqt-session: Use the base name to compare Wm's names
+  * build: Use external translations
+  * ts-files removal (#72)
+  * Use const references with the foreach iterator
+  * leave: ask or not for confirmation from main dialog
+  * Adjust config dialog's size on startup
+  * Make it compile using QT_USE_QSTRINGBUILDER
+  * Fix lxqt-leave tab order
+  * lxqt-session doesn't copy openbox defaults at session start. startlxqt from lxqt-common will copy it.
+  * fixup...centering &amp; spacing
+  * leave: do not set maximum size as minimum size
+  * Use XdgDir to find default path.
+  * Openbox default settings removed.
+  * Load LXQt default settings for Openbox.
+  * UserLocations: An user entered empty string represents the default value
+  * lxqt-config-session: Adds tooltips to the User Directories edits
+  * lxqt-config-session: Replaces Locations by User Directories
+  * Bump year Fix used licenses. lxqt-session is LGPL only
+  * Re-arrange the buttons
+  * lxqt-leave: Reworks window flags
+  * lxqt-leave: Make all buttons of equal width
+  * lxqt-leave: Center the dialog relative to the screen
+  * lxqt-leave: Removes window border and makes it stay on top
+  * lxqt-leave: Make the icons bigger and improves button alignement
+  * Updated german translation.
+  * Fix realloc() usage Check malloc() call result against NULL
+  * Add HR translations
+  * lxqt-session: Update man pages and make session the overview
+  * Update italian translation
+  * Updated Russian translations Removed ru_RU files
+  * Makes the dependency on xdg-user-dirs-update explicit
+  * Fix ending session and stopping modules
+  * upd: lxqt-config-session_hu.ts del: lxt-config-session_hu_HU.ts
+  * Fix desktop file
+  * Make desktop files valid
+  * CMakeLists.txt: Add cmake minimum required version
+- Add keyring
+- Remove 0001-Make-desktop-files-valid.patch: upstreamed
+- Remove 0002-Fix-desktop-file.patch: upstreamed
+- Upstream release 0.10.0
+- Adding patches to make desktop files valid:
+ * 0001-Make-desktop-files-valid.patch
+ * 0002-Fix-desktop-file.patch
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now.
+- Changed %build and %install to used cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added Patch
+  + fix_desktop_categories.patch - fixes category definitions to
+comply with openSUSE policy
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0
+- Specfile Cleanup 
+-  Removed fedora specfile, split into subproject
+   Del: lxqt-session-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-session-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-session-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-session.spec
+  Add: lxqt-session.changes 
+</comment>
+    <requestid>624971</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d5e0f68dc301aaa14ded749d47dbc096</srcmd5>
+    <version>0.13.0</version>
+    <time>1540451405</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1112961: Use Paper icon theme
+  It gets installed through a Requires in patterns-lxqt
+- Add lxqt-session-papericontheme.patch
+- bsc#1099800: Various LXQt components weren't able to find
+  their config files
+- Add lxqt-0.13.0-xdg-config-dir.patch
+- Obsolete lxqt-l10n: its not needed for 0.13.0
+  All packages now contain the translations themselves
+- Update to 0.13.0:
+  * Better support for *BSD world by changed usage of libudev
+  * Use more directories for searching defaults (add /usr/share &amp; /etc into XDG_CONFIG_DIRS)
+- Don't use %fdupes -s as symlinks in the xsession directory have a
+  special meaning (boo#1092251)
+- Add default-xsession which fvogt@suse.com added to
+  (now deprecated) lxqt-common in the past
+- Update to 0.12.0:
+  * Set patch version
+  * lxqt-session: Unify arguments parsing
+  * Don't export github templates
+  * Add/Update Lithuanian language
+  * c'n'p bug
+  * add basic cli to lxqt-session
+  * lxqt-session: Provide reboot/powerOff methods
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-session: set Qt::AA_UseHighDpiPixmaps to true
+  * lxqt-leave: set Qt::AA_UseHighDpiPixmaps to true
+  * improved --version
+  * Added QCommandLineParser and basic cli interface to lxqt-conf-session
+  * Added default CMAKE_BUILD_TYPE and LXQT_SESSION_PATCH_VERSION
+  * String encoding (#103)
+  * Fixes a FTBFS in superbuild mode (#102)
+  * lxqt-leave: Fix &quot;disabled items&quot; key navigation
+  * Address &quot;unused parameter&quot; compiler warnings
+  * lxqt-leave: Redesign dialog for good key navigation
+  * Removed superfluous include(LXQtTranslateDesktop)
+  * fixed config/CMakeLists.txt
+  * Merged relevant parts of CMakeLists.txt.lxqt-common into CMakeLists.txt
+  * Rename CMakeLists.txt -&gt; CMakeLists.txt.lxqt-common
+  * Add Basque translation of lxqt-leave and update Basque translation of lxqt-config-session
+  * leavedialog: Use &quot;expected&quot; tab order
+  * LeaveDialog: Accept enter key for action/cancel firing
+  * LeaveDialog: Use &quot;override&quot; keyword
+  * leavedialog: Don't trigger &quot;cancel&quot; on Enter
+  * LeaveDialog: Use correct method
+  * startlxqt: Consider $XDG_RUNTIME_DIR/bus for DBus
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Bump year
+  * Update desktop entries and Replace fr_FR by fr
+  * Use the LXQtConfigVars module
+  * Fixed typo
+  * Remove cpack (#61)
+  * startlxqt: Consider LXQT_DEFAULT_OPENBOX_CONFIG
+  * startlxqt: Honor the pre-defined SAL_USE_VLCPLUGIN
+  * Replace lxqt-rc.xml with latest openbox version
+  * startlxqt: Consider pre-exising LXDE OB config also
+  * build: Revert @6d6d2bef54
+  * build: Add xmessage as &quot;dependency&quot;
+  * Openbox: Fix informational message about adoption of rc.xml
+  * lxqt-rc.xml: Change default config install path
+  * startlxqt: Copy existing openbox config preferably
+  * Improves changed Openbox default path startup message (#51)
+  * Disable gtk+ 3 overlay scrollbars by default.
+  * Don't add XDG_DATA_HOME to XDG_DATA_DIRS (#47)
+  * Message about Openbox default path changed.
+  * Warning message about openbox settings path changed.
+  * startlxqt: Force XDG_CONFIG_DIRS to contain @LXQT_ETC_XDG_DIR@
+  * Copy openbox defaults at session start.
+  * Rename openbox/rc.xml to openbox/lxqt-openbox-rc.xml
+  * Openbox aero snap using mouse wheel over title bar.
+  * Settings Openbox updated.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * CMakeLists: Use LXQT_GRAPHICS_DIR for graphics
+  * Add startlxqt man page
+  * Fixes #807 – Add XDG_CACHE_HOME definition
+  * startlxqt: optimization of XDG_DATA_DIRS
+  * corrected indentation
+  * startlxqt: Set proper prefix for XDG_DATA_DIRS
+  * Update Greek translation (el) Remove country variant from language code
+  * Rename LxQt to LXQt everywhere
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Removes no added value comments
+  * Adds double quotes to everything that may break
+  * Use GNUINnstallDirs
+  * Updates the build system to use the Targets infrastructure
+  * Enable the &quot;leave confirmation dialog&quot; by default
+  * TryExec to detect proper installed lxqt-session
+  * Uniforms indentation
+  * Sets env variable XDG_CONFIG_DIRS
+  * Drops hardcoded /etc/xdg paths
+  * Set LibreOffice's plugin env var to kde4
+  * config: auto-detect succesfully kwin on recent kwin versions
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Adds an scalable start-here-lxqt icon
+  * use LXQt-specific menu file
+  * Renames some .desktop files
+  * Portuguese update for .desktop files
+  * - Unify naming for a unique lxqt. No more suffixes
+  * Make frost the default theme
+  * Defines XDG_DATA_HOME and XDG_DATA_DIRS environment variables
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * Clean up CMakeLists.txt and drop Qt 4 support
+  * Set environment variable GTK_CSD=0 to turn off the default client side decoration for gtk+ 3 programs. (This will not always work if a gtk+3 program explicitly sets a title bar and turns on CSD.)
+  * Add some more default values for Qt settings.
+  * Update default config file.
+  * Add Qt5 support.
+  * Support Qt5 platform plugin and add some more comments.
+  * Remove XDG_CURRENT_DESKTOP=Razor from environment variables.
+  * Set XDG_CURRENT_DESKTOP to LXQt
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Use LXQt as desktop name
+  * Add CPack rules for creating tarball
+  * Add session.conf and windowmanagers.conf.
+  * Change XDG_CURRENT_DESKTOP to Razor for now. (May rename to LxQt or something else in the future.)
+  * Export environment varialbe QT_PLATFORM_PLUGIN=lxqt to let all Qt programs load lxqt-qtplugin and apply lxqt settings.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Run lxde-qt with XDG_CURRENT_DESKTOP=RAZOR
+  * Fix renaming bugs, replacing lxqt-qt with lxde-qt
+  * Finish the crazy razor=&gt;lxqt renaming tasks.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Remove custom openbox config file in desktop.conf temporarily until lxsession is fixed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel &amp; lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+- Remove because contained in new release:
+  * lxqt-session-0.11.1-add-poweroff.patch
+  * lxqt-session-0.11.1-string-encoding.patch
+- boo#1044483:
+  * Add lxqt-session-0.11.1-string-encoding.patch
+    to have new string encoding
+  * Add lxqt-session-0.11.1-add-poweroff.patch
+    add option to power off
+- Update to 0.11.1:
+  * Adds an nullptr check when restarting a module (#90)
+  * Fixes a session logout crash (#88)
+  * Updated da.desktop files and removed da_DK.desktop files
+  * Moves FindUDev to the lxqt-build-tools repo
+  * Reworks X11 CMake libraries
+  * Removes all XCB stuff from CMake
+  * Update french desktop entries
+  * lxqt-config-session: Use localized comment
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#83)
+- Update to 0.11.0:
+  * lockscreenmanager: always listen to the session provider's lock signal (#79)
+  * Update Polish translation
+  * Add README.md
+  * lxqt-config-session: Warn about restart required when removing env variable
+  * Add Catalan translations
+  * lockscreenmanager: use categorized logger
+  * Make screen locking before power actions optional
+  * Add and Update Arabic Translations for Desktop Files
+  * lxqt-session: Replace qCInfo() by qCWarning()
+  * Adds an WITH_LIBUDEV CMake option (#74)
+  * lockscreenmanager: add more log messages
+  * Add logic to lock screen before system sleeps
+  * lxqt-session: Use QLoggingCategory for logging/debug
+  * lxqt-session: Use the base name to compare Wm's names
+  * build: Use external translations
+  * ts-files removal (#72)
+  * Use const references with the foreach iterator
+  * leave: ask or not for confirmation from main dialog
+  * Adjust config dialog's size on startup
+  * Make it compile using QT_USE_QSTRINGBUILDER
+  * Fix lxqt-leave tab order
+  * lxqt-session doesn't copy openbox defaults at session start. startlxqt from lxqt-common will copy it.
+  * fixup...centering &amp; spacing
+  * leave: do not set maximum size as minimum size
+  * Use XdgDir to find default path.
+  * Openbox default settings removed.
+  * Load LXQt default settings for Openbox.
+  * UserLocations: An user entered empty string represents the default value
+  * lxqt-config-session: Adds tooltips to the User Directories edits
+  * lxqt-config-session: Replaces Locations by User Directories
+  * Bump year Fix used licenses. lxqt-session is LGPL only
+  * Re-arrange the buttons
+  * lxqt-leave: Reworks window flags
+  * lxqt-leave: Make all buttons of equal width
+  * lxqt-leave: Center the dialog relative to the screen
+  * lxqt-leave: Removes window border and makes it stay on top
+  * lxqt-leave: Make the icons bigger and improves button alignement
+  * Updated german translation.
+  * Fix realloc() usage Check malloc() call result against NULL
+  * Add HR translations
+  * lxqt-session: Update man pages and make session the overview
+  * Update italian translation
+  * Updated Russian translations Removed ru_RU files
+  * Makes the dependency on xdg-user-dirs-update explicit
+  * Fix ending session and stopping modules
+  * upd: lxqt-config-session_hu.ts del: lxt-config-session_hu_HU.ts
+  * Fix desktop file
+  * Make desktop files valid
+  * CMakeLists.txt: Add cmake minimum required version
+- Add keyring
+- Remove 0001-Make-desktop-files-valid.patch: upstreamed
+- Remove 0002-Fix-desktop-file.patch: upstreamed
+- Upstream release 0.10.0
+- Adding patches to make desktop files valid:
+ * 0001-Make-desktop-files-valid.patch
+ * 0002-Fix-desktop-file.patch
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now.
+- Changed %build and %install to used cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added Patch
+  + fix_desktop_categories.patch - fixes category definitions to
+comply with openSUSE policy
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0
+- Specfile Cleanup 
+-  Removed fedora specfile, split into subproject
+   Del: lxqt-session-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-session-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-session-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-session.spec
+  Add: lxqt-session.changes 
+</comment>
+    <requestid>644002</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>18b6eadd5564e18c103d9bab3012ffa7</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113379</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Completed our WM list
+  * Don’t default on Openbox, make the automatic WM
+    selection more reliable
+- Move translation from lxqt-l10n into package
+- bsc#1112961: Use Paper icon theme
+  It gets installed through a Requires in patterns-lxqt
+- Add lxqt-session-papericontheme.patch
+- bsc#1099800: Various LXQt components weren't able to find
+  their config files
+- Add lxqt-0.13.0-xdg-config-dir.patch
+- Obsolete lxqt-l10n: its not needed for 0.13.0
+  All packages now contain the translations themselves
+- Update to 0.13.0:
+  * Better support for *BSD world by changed usage of libudev
+  * Use more directories for searching defaults (add /usr/share &amp; /etc into XDG_CONFIG_DIRS)
+- Don't use %fdupes -s as symlinks in the xsession directory have a
+  special meaning (boo#1092251)
+- Add default-xsession which fvogt@suse.com added to
+  (now deprecated) lxqt-common in the past
+- Update to 0.12.0:
+  * Set patch version
+  * lxqt-session: Unify arguments parsing
+  * Don't export github templates
+  * Add/Update Lithuanian language
+  * c'n'p bug
+  * add basic cli to lxqt-session
+  * lxqt-session: Provide reboot/powerOff methods
+  * Drops Qt5Core_VERSION_STRING
+  * lxqt-config-session: set Qt::AA_UseHighDpiPixmaps to true
+  * lxqt-leave: set Qt::AA_UseHighDpiPixmaps to true
+  * improved --version
+  * Added QCommandLineParser and basic cli interface to lxqt-conf-session
+  * Added default CMAKE_BUILD_TYPE and LXQT_SESSION_PATCH_VERSION
+  * String encoding (#103)
+  * Fixes a FTBFS in superbuild mode (#102)
+  * lxqt-leave: Fix &quot;disabled items&quot; key navigation
+  * Address &quot;unused parameter&quot; compiler warnings
+  * lxqt-leave: Redesign dialog for good key navigation
+  * Removed superfluous include(LXQtTranslateDesktop)
+  * fixed config/CMakeLists.txt
+  * Merged relevant parts of CMakeLists.txt.lxqt-common into CMakeLists.txt
+  * Rename CMakeLists.txt -&gt; CMakeLists.txt.lxqt-common
+  * Add Basque translation of lxqt-leave and update Basque translation of lxqt-config-session
+  * leavedialog: Use &quot;expected&quot; tab order
+  * LeaveDialog: Accept enter key for action/cancel firing
+  * LeaveDialog: Use &quot;override&quot; keyword
+  * leavedialog: Don't trigger &quot;cancel&quot; on Enter
+  * LeaveDialog: Use correct method
+  * startlxqt: Consider $XDG_RUNTIME_DIR/bus for DBus
+  * Updated *_da.desktop files and removed *_da_DK.desktop files
+  * Bump year
+  * Update desktop entries and Replace fr_FR by fr
+  * Use the LXQtConfigVars module
+  * Fixed typo
+  * Remove cpack (#61)
+  * startlxqt: Consider LXQT_DEFAULT_OPENBOX_CONFIG
+  * startlxqt: Honor the pre-defined SAL_USE_VLCPLUGIN
+  * Replace lxqt-rc.xml with latest openbox version
+  * startlxqt: Consider pre-exising LXDE OB config also
+  * build: Revert @6d6d2bef54
+  * build: Add xmessage as &quot;dependency&quot;
+  * Openbox: Fix informational message about adoption of rc.xml
+  * lxqt-rc.xml: Change default config install path
+  * startlxqt: Copy existing openbox config preferably
+  * Improves changed Openbox default path startup message (#51)
+  * Disable gtk+ 3 overlay scrollbars by default.
+  * Don't add XDG_DATA_HOME to XDG_DATA_DIRS (#47)
+  * Message about Openbox default path changed.
+  * Warning message about openbox settings path changed.
+  * startlxqt: Force XDG_CONFIG_DIRS to contain @LXQT_ETC_XDG_DIR@
+  * Copy openbox defaults at session start.
+  * Rename openbox/rc.xml to openbox/lxqt-openbox-rc.xml
+  * Openbox aero snap using mouse wheel over title bar.
+  * Settings Openbox updated.
+  * Default key shortcuts added to lxqt-globalkeysd.
+  * CMakeLists: Use LXQT_GRAPHICS_DIR for graphics
+  * Add startlxqt man page
+  * Fixes #807 – Add XDG_CACHE_HOME definition
+  * startlxqt: optimization of XDG_DATA_DIRS
+  * corrected indentation
+  * startlxqt: Set proper prefix for XDG_DATA_DIRS
+  * Update Greek translation (el) Remove country variant from language code
+  * Rename LxQt to LXQt everywhere
+  * CMake: Adds Runtime and Devel install COMPONENTs
+  * Coding style changes
+  * Removes no added value comments
+  * Adds double quotes to everything that may break
+  * Use GNUINnstallDirs
+  * Updates the build system to use the Targets infrastructure
+  * Enable the &quot;leave confirmation dialog&quot; by default
+  * TryExec to detect proper installed lxqt-session
+  * Uniforms indentation
+  * Sets env variable XDG_CONFIG_DIRS
+  * Drops hardcoded /etc/xdg paths
+  * Set LibreOffice's plugin env var to kde4
+  * config: auto-detect succesfully kwin on recent kwin versions
+  * Updated german translation, replaced Qt4 by Qt in all xsession/translations
+  * Adds an scalable start-here-lxqt icon
+  * use LXQt-specific menu file
+  * Renames some .desktop files
+  * Portuguese update for .desktop files
+  * - Unify naming for a unique lxqt. No more suffixes
+  * Make frost the default theme
+  * Defines XDG_DATA_HOME and XDG_DATA_DIRS environment variables
+  * Updates translations infrastructure
+  * Update the required minimum cmake version
+  * Clean up CMakeLists.txt and drop Qt 4 support
+  * Set environment variable GTK_CSD=0 to turn off the default client side decoration for gtk+ 3 programs. (This will not always work if a gtk+3 program explicitly sets a title bar and turns on CSD.)
+  * Add some more default values for Qt settings.
+  * Update default config file.
+  * Add Qt5 support.
+  * Support Qt5 platform plugin and add some more comments.
+  * Remove XDG_CURRENT_DESKTOP=Razor from environment variables.
+  * Set XDG_CURRENT_DESKTOP to LXQt
+  * remove dead template lines switch OnlyShowIn from Razor -&gt; LXQt stringchanges LxQt -&gt; LXQt
+  * Use LXQt as desktop name
+  * Add CPack rules for creating tarball
+  * Add session.conf and windowmanagers.conf.
+  * Change XDG_CURRENT_DESKTOP to Razor for now. (May rename to LxQt or something else in the future.)
+  * Export environment varialbe QT_PLATFORM_PLUGIN=lxqt to let all Qt programs load lxqt-qtplugin and apply lxqt settings.
+  * Support lxqt-session and add necessary xdg autostart desktop entry files.
+  * Run lxde-qt with XDG_CURRENT_DESKTOP=RAZOR
+  * Fix renaming bugs, replacing lxqt-qt with lxde-qt
+  * Finish the crazy razor=&gt;lxqt renaming tasks.
+  * Rename dirs and replace razor with lxqt. Install lxqt.conf to /etc/xdg/lxqt and provide theme config.
+  * Properly set default wallpaper for pcmanfm-qt. Comment out openbox config handling in startlxde-qt since it's not needed.
+  * Remove custom openbox config file in desktop.conf temporarily until lxsession is fixed.
+  * Fix file paths, replacing razor with lxqt. * Remove Alt+F2 and Ctrl+Esc from openbox config file to avoid conflicts with lxqt-panel &amp; lxqt-globalkeys.
+  * Add default configuration files for lxde-qt session.
+- Remove because contained in new release:
+  * lxqt-session-0.11.1-add-poweroff.patch
+  * lxqt-session-0.11.1-string-encoding.patch
+- boo#1044483:
+  * Add lxqt-session-0.11.1-string-encoding.patch
+    to have new string encoding
+  * Add lxqt-session-0.11.1-add-poweroff.patch
+    add option to power off
+- Update to 0.11.1:
+  * Adds an nullptr check when restarting a module (#90)
+  * Fixes a session logout crash (#88)
+  * Updated da.desktop files and removed da_DK.desktop files
+  * Moves FindUDev to the lxqt-build-tools repo
+  * Reworks X11 CMake libraries
+  * Removes all XCB stuff from CMake
+  * Update french desktop entries
+  * lxqt-config-session: Use localized comment
+  * Make CMakeLists.txt more uniform.
+  * Remove cpack (#83)
+- Update to 0.11.0:
+  * lockscreenmanager: always listen to the session provider's lock signal (#79)
+  * Update Polish translation
+  * Add README.md
+  * lxqt-config-session: Warn about restart required when removing env variable
+  * Add Catalan translations
+  * lockscreenmanager: use categorized logger
+  * Make screen locking before power actions optional
+  * Add and Update Arabic Translations for Desktop Files
+  * lxqt-session: Replace qCInfo() by qCWarning()
+  * Adds an WITH_LIBUDEV CMake option (#74)
+  * lockscreenmanager: add more log messages
+  * Add logic to lock screen before system sleeps
+  * lxqt-session: Use QLoggingCategory for logging/debug
+  * lxqt-session: Use the base name to compare Wm's names
+  * build: Use external translations
+  * ts-files removal (#72)
+  * Use const references with the foreach iterator
+  * leave: ask or not for confirmation from main dialog
+  * Adjust config dialog's size on startup
+  * Make it compile using QT_USE_QSTRINGBUILDER
+  * Fix lxqt-leave tab order
+  * lxqt-session doesn't copy openbox defaults at session start. startlxqt from lxqt-common will copy it.
+  * fixup...centering &amp; spacing
+  * leave: do not set maximum size as minimum size
+  * Use XdgDir to find default path.
+  * Openbox default settings removed.
+  * Load LXQt default settings for Openbox.
+  * UserLocations: An user entered empty string represents the default value
+  * lxqt-config-session: Adds tooltips to the User Directories edits
+  * lxqt-config-session: Replaces Locations by User Directories
+  * Bump year Fix used licenses. lxqt-session is LGPL only
+  * Re-arrange the buttons
+  * lxqt-leave: Reworks window flags
+  * lxqt-leave: Make all buttons of equal width
+  * lxqt-leave: Center the dialog relative to the screen
+  * lxqt-leave: Removes window border and makes it stay on top
+  * lxqt-leave: Make the icons bigger and improves button alignement
+  * Updated german translation.
+  * Fix realloc() usage Check malloc() call result against NULL
+  * Add HR translations
+  * lxqt-session: Update man pages and make session the overview
+  * Update italian translation
+  * Updated Russian translations Removed ru_RU files
+  * Makes the dependency on xdg-user-dirs-update explicit
+  * Fix ending session and stopping modules
+  * upd: lxqt-config-session_hu.ts del: lxt-config-session_hu_HU.ts
+  * Fix desktop file
+  * Make desktop files valid
+  * CMakeLists.txt: Add cmake minimum required version
+- Add keyring
+- Remove 0001-Make-desktop-files-valid.patch: upstreamed
+- Remove 0002-Fix-desktop-file.patch: upstreamed
+- Upstream release 0.10.0
+- Adding patches to make desktop files valid:
+ * 0001-Make-desktop-files-valid.patch
+ * 0002-Fix-desktop-file.patch
+- Removing patches:
+ * fix_desktop_categories.patch - Using sed in spec file now.
+- Changed %build and %install to used cmake macros 
+- New upstream version 0.9.0
+- Added -lang subpackage
+- Added Patch
+  + fix_desktop_categories.patch - fixes category definitions to
+comply with openSUSE policy
+- Added conditionals to enable Fedora builds 
+- new upstream version 0.8.0
+- Specfile Cleanup 
+-  Removed fedora specfile, split into subproject
+   Del: lxqt-session-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add:  lxqt-session-Fedora_20.spec 
+- Added tarball for new stable release
+  Add:  lxqt-session-0.7.0.tar.xz
+  Del:  _service 
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-session.spec
+  Add: lxqt-session.changes 
+</comment>
+    <requestid>670395</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2b19ebe0221812b4a34b55bfef4300c6</srcmd5>
+    <version>0.14.0</version>
+    <time>1551276633</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1127043: Use Openbox as default WM
+  0.14.0 removed Openbox as default WM from session config.
+  At the same time if more than one WM is present at first start,
+  a WM chooser dialog is shown. We want Openbox to stay the default
+  WM even though we have it only as Recommends.
+- Add lxqt-session-default_wm.patch</comment>
+    <requestid>679782</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a49cb9ae057d454928beeb67886fc85c</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680423</requestid>
+  </revision>
+</revisionlist>

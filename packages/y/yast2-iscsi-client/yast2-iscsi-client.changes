@@ -1,0 +1,1035 @@
+-------------------------------------------------------------------
+Thu Aug 22 16:57:36 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.2
+
+-------------------------------------------------------------------
+Fri May 31 12:31:43 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.1
+
+-------------------------------------------------------------------
+Thu May 16 11:17:12 UTC 2019 - Steffen Winterfeldt <snwint@suse.com>
+
+- iscsiadm may have exit code 21 on success (bsc#1131049)
+- 4.2.0
+
+-------------------------------------------------------------------
+Wed Mar 27 11:44:33 UTC 2019 - jsrain@suse.cz
+
+- further fixes of iscsiadm output parsing (bsc#1129946)
+- 4.1.7
+
+-------------------------------------------------------------------
+Mon Mar  4 13:36:13 UTC 2019 - jsrain@suse.cz
+
+- fixed parsing of iscsiadm -m node -P 1 (bsc#1121806)
+- 4.1.6
+
+-------------------------------------------------------------------
+Fri Mar  1 13:36:35 UTC 2019 - snwint@suse.com
+
+- fix iBFT handling (bsc#1119698)
+- 4.1.5
+
+-------------------------------------------------------------------
+Thu Dec 13 16:42:21 UTC 2018 - jreidinger@suse.com
+
+- always use absolute path to binaries (bsc#1118291)
+- properly escape shell arguments (bsc#1118291)
+- 4.1.4
+
+-------------------------------------------------------------------
+Sun Nov 25 00:21:37 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.3
+
+-------------------------------------------------------------------
+Fri Nov 09 12:34:19 CET 2018 - aschnell@suse.com
+
+- removed onboot startup mode for LUNs on S/390 (bsc#1045139)
+- 4.1.2
+
+-------------------------------------------------------------------
+Tue Nov 06 10:00:14 CET 2018 - aschnell@suse.com
+
+- enable rubocop
+
+-------------------------------------------------------------------
+Tue Oct 16 15:33:19 CEST 2018 - schubi@suse.de
+
+-  Added license file to spec.
+
+-------------------------------------------------------------------
+Thu Aug 16 14:50:34 UTC 2018 - dgonzalez@suse.com
+
+- Update calls to YaST2 services classes (related to fate#319428)
+- 4.1.1
+
+-------------------------------------------------------------------
+Tue Aug  7 11:52:21 UTC 2018 - dgonzalez@suse.com
+
+- Use Yast2::ServiceWidget to manage the service status
+  (part of fate#319428)
+- 4.1.0
+
+-------------------------------------------------------------------
+Fri Aug  3 11:56:56 UTC 2018 - dgonzalez@suse.com
+
+- Fix detection of service current status (bsc#1103681).
+- 4.0.2
+
+-------------------------------------------------------------------
+Wed Jun 27 12:40:11 CEST 2018 - schubi@suse.de
+
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.1
+
+-------------------------------------------------------------------
+Fri Apr  6 18:51:37 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Thu Feb 22 17:25:23 CEST 2017 - lszhu@suse.com
+
+- Fate#318832, redesign authentication UI and online help.
+- 3.1.30
+
+-------------------------------------------------------------------
+Thu Jun 23 11:46:46 CEST 2016 - gs@suse.de
+
+- don't treat the attempt to login twice to a target as an error,
+  report a warning if login fails for other reasons (bsc#981693)
+- 3.1.29
+
+-------------------------------------------------------------------
+Tue Jun  7 10:45:54 UTC 2016 - igonzalezsosa@suse.com
+
+- Stop generating autodocs (fate#320356)
+- 3.1.28
+
+-------------------------------------------------------------------
+Tue May  3 14:01:09 CEST 2016 - gs@suse.de
+
+- set user and password correctly for global authentication
+  (bsc#978183), improve error handling (bsc#959292)
+- 3.1.27
+
+-------------------------------------------------------------------
+Thu Mar 10 09:19:54 CET 2016 - gs@suse.de
+
+- show correct error message if host name isn't found (bsc#959292)
+- 3.1.26
+
+-------------------------------------------------------------------
+Tue Feb 16 11:28:14 CET 2016 - gs@suse.de
+
+- fix syntax error in "publish" section of IscsiClientLib.rb
+- 3.1.25 
+
+-------------------------------------------------------------------
+Tue Feb  9 15:23:12 CET 2016 - gs@suse.de
+
+- display startup mode "onboot" for iBFT sessions and don't allow
+  to change the mode on 'Edit' screen (bnc#954509)
+- 3.1.24
+
+-------------------------------------------------------------------
+Thu Jul 30 12:06:28 CEST 2015 - gs@suse.de
+
+- show error popup if target connection failed (bsc#9339537)
+- rename Log In/Log Out to Connect/Disconnect (bsc#939529)
+- 3.1.23
+
+-------------------------------------------------------------------
+Thu Jun 18 14:22:05 CEST 2015 - gs@suse.de
+
+- warn only once about non-standard initiator name (bsc#926621)
+- improve help text concerning re-discovery of targets and 
+  start-up mode (bsc#924502, bsc#924691, bsc#924693) and about
+  authentication settings (bsc#924685)
+- 3.1.22
+
+-------------------------------------------------------------------
+Fri Feb  6 13:02:45 UTC 2015 - ancor@suse.com
+
+- The unit tests are now compatible with RSpec 3 (bnc#916364)
+- 3.1.21
+
+-------------------------------------------------------------------
+Thu Dec  4 09:50:18 UTC 2014 - jreidinger@suse.com
+
+- remove X-KDE-Library from desktop file (bnc#899104)
+
+-------------------------------------------------------------------
+Thu Nov  6 15:41:25 CET 2014 - gs@suse.de
+
+- don't change startup mode for already connected targets when
+  using the 'Add' button on 'Connected Targets' tab (bnc #886796)
+- 3.1.19
+
+-------------------------------------------------------------------
+Wed Oct 22 13:52:08 UTC 2014 - lslezak@suse.cz
+
+- removed unnecessary BuildRequires dependencies
+- 3.1.18
+
+-------------------------------------------------------------------
+Thu Sep 18 09:39:02 CEST 2014 - gs@suse.de
+
+- Add IP and port to 'isns' discovery command (bnc #897247)
+- 3.1.17
+
+-------------------------------------------------------------------
+Thu Sep  4 12:21:49 UTC 2014 - mvidner@suse.com
+
+- Use a more flexible rubygem requirement syntax (bnc#895069)
+- 3.1.16
+
+-------------------------------------------------------------------
+Mon Aug 18 16:08:27 CEST 2014 - locilka@suse.com
+
+- Updating the node DB while using authentication (bnc#889967
+  comment#10)
+- 3.1.15
+
+-------------------------------------------------------------------
+Thu Jul  3 11:04:01 CEST 2014 - gs@suse.de
+
+- convert result of command call correctly (related to bnc #884761)
+- 3.1.14 
+
+-------------------------------------------------------------------
+Wed Jul  2 13:21:29 CEST 2014 - gs@suse.de
+
+- start and restart daemon 'iscsid' manually during installation
+  (bnc #884761)
+- 3.1.13
+
+-------------------------------------------------------------------
+Wed Jun 11 14:50:01 CEST 2014 - gs@suse.de
+
+- allow AutoYaST installation on iSCSI disks with BIOS boot support
+  (bnc #878061)
+- 3.1.12 
+
+-------------------------------------------------------------------
+Tue Jun 10 15:00:18 CEST 2014 - gs@suse.de
+
+- ensure installation of package 'iscsiuio', start 'isciuio' service
+  resp. socket (bnc #874795, bnc #881543)
+- 3.1.11
+
+-------------------------------------------------------------------
+Wed Jun  4 13:18:11 CEST 2014 - gs@suse.de
+
+- mark offload card values for translation (bnc #877920)
+- 3.1.10
+
+-------------------------------------------------------------------
+Mon May 19 12:20:59 CEST 2014 - gs@suse.de
+
+- enable service 'iscsid' (additionally to socket)
+- 3.1.9 
+
+-------------------------------------------------------------------
+Tue May  6 13:00:25 CEST 2014 - gs@suse.de
+
+- avoid title on the left in installation workflow (bnc #868859)
+- 3.1.8
+
+-------------------------------------------------------------------
+Fri May  2 13:57:34 CEST 2014 - gs@suse.de
+
+- try auto login to target when called from partitioner
+  (bnc #876104)
+- 3.1.7
+
+-------------------------------------------------------------------
+Mon Apr 14 12:28:33 CEST 2014 - gs@suse.de
+
+- reintroduce exception in case of socket not found
+  (Requires: open-iscsi is bug-fix for bnc #872049)
+- 3.1.6
+
+-------------------------------------------------------------------
+Tue Apr  8 14:37:23 CEST 2014 - gs@suse.de
+
+- don't throw exception if socket not found (bnc #872049)
+- add Requires: open-iscsi to spec-file
+- 3.1.5
+
+-------------------------------------------------------------------
+Tue Apr  1 11:25:37 CEST 2014 - gs@suse.de
+
+- allow non-standard iqn (bnc #868220)
+
+-------------------------------------------------------------------
+Fri Mar 14 10:47:43 CET 2014 - gs@suse.de
+
+- start iscsid socket and iscsi service correctly
+  (bnc #867378, bnc #853300)
+- 3.1.4
+
+-------------------------------------------------------------------
+Wed Jan 22 14:16:37 CET 2014 - gs@suse.de
+
+- detect persistent portal correctly (bnc#856494)
+- 3.1.3
+
+-------------------------------------------------------------------
+Wed Nov 27 13:21:24 CET 2013 - gs@suse.de
+
+- improve IPv6 support: filter out Scope:Link IPv6 addresses
+- 3.1.2
+
+-------------------------------------------------------------------
+Tue Nov 12 14:29:00 CET 2013 - gs@suse.de
+
+- add IPv6 support (fate #316261)
+- 3.1.1 
+
+-------------------------------------------------------------------
+Wed Sep 18 16:40:45 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Wed Jul 31 08:31:18 UTC 2013 - yast-devel@opensuse.org
+
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+
+-------------------------------------------------------------------
+Mon Feb 25 11:20:22 CET 2013 - fehr@suse.de
+
+- version 2.23.4
+- fix ycp syntax error (bnc#805399)
+
+-------------------------------------------------------------------
+Tue Feb  5 14:52:23 CET 2013 - fehr@suse.de
+
+- version 2.23.3
+- use startIScsid() in autoyast client (bnc#802060)
+
+-------------------------------------------------------------------
+Wed Jan 16 10:43:58 CET 2013 - locilka@suse.com
+
+- version 2.23.2
+- Unrelated testsuite that tested Service.ycp moved to yast2.rpm
+
+-------------------------------------------------------------------
+Thu Jan  3 15:28:01 UTC 2013 - locilka@suse.com
+
+- version 2.23.1
+- Testsuites adapted to switching Service module to systemd
+  (yast2-2.23.15)
+
+-------------------------------------------------------------------
+Tue Dec 18 12:57:18 CET 2012 - fehr@suse.de
+
+- version 2.23.0
+- do not write iscsi-client section to autoinst.xml if no iscsi 
+  targets are defined (bnc#792071)
+
+-------------------------------------------------------------------
+Wed May  2 11:30:00 CEST 2012 - fehr@suse.de
+
+- version 2.22.2
+- set length proportion between username/password to 2:1 (bnc#760072)
+- add missing field to table header (bnc#760072)
+
+-------------------------------------------------------------------
+Tue Apr 10 17:36:36 CEST 2012 - fehr@suse.de
+
+- version 2.22.1
+- Changed license to GPL 2.0
+
+-------------------------------------------------------------------
+Thu Mar 29 15:15:41 CEST 2012 - jsuchome@suse.cz
+
+- merged proofed texts
+
+-------------------------------------------------------------------
+Wed Mar 21 11:48:21 CET 2012 - fehr@suse.de
+
+- change potential race of chmod after file create (bnc#753129)
+
+-------------------------------------------------------------------
+Wed Feb 15 11:36:05 CET 2012 - fehr@suse.de
+
+- version 2.22.0
+
+-------------------------------------------------------------------
+Mon Feb  6 14:05:22 CET 2012 - fehr@suse.de
+
+- change detection of qla iscsi devices (bnc#745201)
+
+-------------------------------------------------------------------
+Thu Feb  2 16:03:22 CET 2012 - fehr@suse.de
+
+- call "iscsiadm -m iface" if /etc/iscsi/ifaces is empty (bnc#742570)
+
+-------------------------------------------------------------------
+Wed Feb  1 19:34:51 CET 2012 - fehr@suse.de
+
+- create /etc/iscsi to prevent crash if nonexistant (bnc#742570)
+- prevent calling getiBFT() before open-iscsi install (bnc#725833)
+
+-------------------------------------------------------------------
+Thu Jan 12 11:28:17 CET 2012 - fehr@suse.de
+
+- remove portal group from target portal (bnc#738037)
+
+-------------------------------------------------------------------
+Tue Dec  6 18:22:15 UTC 2011 - per@opensuse.org 
+
+- fix parsing of iscsiadm output in IscsiClientLib.ycp (bnc#725182)
+
+-------------------------------------------------------------------
+Mon Nov 28 16:35:51 CET 2011 - aschnell@suse.de
+
+- fixed module names
+
+-------------------------------------------------------------------
+Thu Nov  3 13:06:10 CET 2011  - fehr@suse.de
+
+- 2.21.9
+- call discovery with "-t fw" if "-t st" does not provide any
+  targets (bnc#725833)
+
+-------------------------------------------------------------------
+Thu Oct 27 11:41:58 CEST 2011 - fehr@suse.de
+
+- 2.21.8
+- adapt to changed name of start scripts open-iscsi -> iscsid 
+  (bnc#661401)
+
+-------------------------------------------------------------------
+Wed Oct 26 15:26:38 CEST 2011 - fehr@suse.de
+
+- adapt to changed output of iscsi_offload script (bnc#725833)
+
+-------------------------------------------------------------------
+Thu Oct 20 14:57:42 CEST 2011 - fehr@suse.de
+
+- 2.21.7
+- load hardware modules needed for iscsi offload like bnx2i, cxgb3i
+  and be2iscsi before autoLogOn() call (bnc#718014)
+
+-------------------------------------------------------------------
+Mon Oct 10 15:13:28 CEST 2011 - fehr@suse.de
+
+- 2.21.6
+- add qla3xxx to modules supporting qla iscsi offload (bnc#723014)
+
+-------------------------------------------------------------------
+Wed Sep 28 09:31:32 CEST 2011 - visnov@suse.cz
+
+- set dialog title
+- 2.21.5
+
+-------------------------------------------------------------------
+Mon Sep 19 14:42:58 CEST 2011 - visnov@suse.cz
+
+- remove dependency on Wizard_hw
+- 2.21.4 
+
+-------------------------------------------------------------------
+Mon Sep 12 13:40:54 UTC 2011 - lslezak@suse.cz
+
+- updated testsuite (systemd support) (bnc#664548)
+- 2.21.3
+
+-------------------------------------------------------------------
+Fri Aug  5 12:32:45 CEST 2011 - tgoettlicher@suse.de
+
+- fixed .desktop file (bnc #681249)
+- 2.21.2
+
+-------------------------------------------------------------------
+Thu Jul 28 12:17:34 CEST 2011 - fehr@suse.de
+
+- adapt to work with iscsi_offload script in open-iscsi
+
+-------------------------------------------------------------------
+Tue Jul 12 18:13:53 CEST 2011 - fehr@suse.de
+
+- delay offload initialisation into init function
+- fix offload init from old autoyast xml files (bnc#703485)
+- 2.21.1
+
+-------------------------------------------------------------------
+Thu May 12 14:20:50 CEST 2011 - fehr@suse.de
+
+- implement support for iSCSI offload cards (fate#311711)
+- 2.21.0 
+
+-------------------------------------------------------------------
+Tue Mar  1 16:24:05 CET 2011 - jsrain@suse.cz
+
+- assure required packages are installed via AutoYaST (bnc#670863)
+
+-------------------------------------------------------------------
+Wed Jan 19 14:03:26 CET 2011 - jsrain@suse.cz
+
+- adaptations for unattended migration (fate#310481)
+- 2.20.0
+
+-------------------------------------------------------------------
+Fri Jul 30 11:19:48 CEST 2010 - mzugec@suse.cz
+
+- login into multipath (bnc#599818)
+- 2.19.7 
+
+-------------------------------------------------------------------
+Mon May 24 15:03:36 CEST 2010 - mzugec@suse.cz
+
+- summary overview for autoyast (bnc#581682)
+- 2.19.6
+
+-------------------------------------------------------------------
+Tue May 11 13:48:12 CEST 2010 - mzugec@suse.cz
+
+- delete discovered targets (bnc#667375)
+- 2.19.5 
+
+-------------------------------------------------------------------
+Tue Apr 13 12:04:09 CEST 2010 - mzugec@suse.cz
+
+- run iscsid in foreground (bnc#589064)
+- 2.19.4 
+
+-------------------------------------------------------------------
+Tue Mar 23 09:57:19 CET 2010 - mzugec@suse.cz
+
+- read iBFT before start daemon (bnc#573864)
+- 2.19.3 
+
+-------------------------------------------------------------------
+Thu Mar 11 12:57:53 CET 2010 - mzugec@suse.cz
+
+- helptext typo (bnc#585387)
+- 2.19.2 
+
+-------------------------------------------------------------------
+Wed Mar  3 10:45:42 CET 2010 - mzugec@suse.cz
+
+- disable iBFT for non-x86 architecture (bnc#582615)
+- 2.19.1 
+
+-------------------------------------------------------------------
+Tue Feb  9 13:19:16 CET 2010 - mzugec@suse.cz
+
+- wait when start iscsid (bnc#570678)
+- 2.19.0 
+
+------------------------------------------------------------------
+Wed Jan 13 18:56:03 CET 2010 - kmachalkova@suse.cz
+
+- Adjusted .desktop file(s) to wrap /sbin/yast2/ calls in xdg-su
+  where root privileges are needed, removed X-KDE-SubstituteUID key 
+  (bnc#540627)
+
+-------------------------------------------------------------------
+Tue Sep 29 16:22:58 CEST 2009 - mzugec@suse.cz
+
+- L3: safely parse iBFT values (bnc#541400)
+- 2.18.9 
+
+-------------------------------------------------------------------
+Fri May 29 11:43:21 CEST 2009 - mzugec@suse.cz
+
+- startup options documented in helptext (bnc#507004)
+- 2.18.8 
+
+-------------------------------------------------------------------
+Tue Apr 21 09:23:21 CEST 2009 - mzugec@suse.cz
+
+- changed dialogs workflow to allow to edit authentication for
+ connection (fate#305306)
+- 2.18.7 
+
+-------------------------------------------------------------------
+Mon Mar 16 15:20:15 CET 2009 - mzugec@suse.cz
+
+- reload service when initiatorname is changed to re-read new value
+ (bnc#482429) 
+- 2.18.6
+
+-------------------------------------------------------------------
+Tue Mar 10 10:24:11 CET 2009 - mzugec@suse.cz
+
+- hide iBFT passwords (bnc#426945)
+- 2.18.5 
+
+-------------------------------------------------------------------
+Fri Mar  6 09:25:13 CET 2009 - mzugec@suse.cz
+
+- start iscsid during autoyast installation (bnc#482429)
+- 2.18.4 
+
+-------------------------------------------------------------------
+Tue Mar  3 10:28:27 CET 2009 - mzugec@suse.cz
+
+- added X-SuSE-YaST-AutoInstSchema into desktop file (bnc#480466)
+- 2.18.3 
+
+-------------------------------------------------------------------
+Tue Feb 24 12:24:55 CET 2009 - mzugec@suse.cz
+
+- toggle between "manual", "automatic", "onboot" (bnc#457252)
+- 2.18.2 
+
+-------------------------------------------------------------------
+Mon Jan 26 14:42:53 CET 2009 - mzugec@suse.cz
+
+- button labeling (bnc#440542)
+- 2.18.1 
+
+-------------------------------------------------------------------
+Mon Jan 19 16:59:21 CET 2009 - mzugec@suse.cz
+
+- fixed check InitiatorName function (bnc#460176)
+- 2.18.0 
+
+-------------------------------------------------------------------
+Wed Dec  3 15:19:53 CET 2008 - mzugec@suse.cz
+
+- adapt to new iBFT (bnc#443531)
+- 2.17.6 
+
+-------------------------------------------------------------------
+Mon Dec  1 13:44:58 CET 2008 - mzugec@suse.cz
+
+- use startup onboot instead of automatic (bnc#449108)
+- 2.17.5 
+
+-------------------------------------------------------------------
+Tue Nov 18 15:37:55 CET 2008 - ug@suse.de
+
+- rnc file added
+
+-------------------------------------------------------------------
+Wed Nov 12 16:14:39 CET 2008 - mzugec@suse.cz
+
+- use "iscsiadm -m fw" instead of fwparam_ibft (bnc#443531)
+- 2.17.4 
+
+-------------------------------------------------------------------
+Thu Oct 30 10:21:24 CET 2008 - mzugec@suse.cz
+
+- fixed problem with selected item (bnc#434965)
+- 2.17.3 
+
+-------------------------------------------------------------------
+Mon Sep  8 12:58:06 CEST 2008 - mzugec@suse.cz
+
+- proofread
+- 2.17.2 
+
+-------------------------------------------------------------------
+Thu Jul 10 15:49:59 CEST 2008 - mzugec@suse.de
+
+- when Log on, do startup automatic by default (bnc#400610)
+- improved InitiatorName validator
+- 2.17.1 
+
+-------------------------------------------------------------------
+Thu Jul 10 13:33:46 CEST 2008 - mzugec@suse.de
+
+- fixed text in Write dialog (bnc#393929)
+- fixed InitiatorName validation (bnc#406726)
+- 2.17.0 
+
+-------------------------------------------------------------------
+Thu May 22 18:08:27 CEST 2008 - locilka@suse.cz
+
+- Not only open-iscsi, but also boot.open-iscsi service should be
+  enabled (bnc #393057).
+- Fixed testsuite.
+- 2.16.14
+
+-------------------------------------------------------------------
+Thu May 22 16:38:11 CEST 2008 - mzugec@suse.cz
+
+- fixed configuration copying during installation 
+
+-------------------------------------------------------------------
+Thu May 22 16:13:03 CEST 2008 - mzugec@suse.cz
+
+- install open-iscsi when needed (bnc#393057)
+- 2.16.13 
+
+-------------------------------------------------------------------
+Wed May 21 17:27:16 CEST 2008 - mzugec@suse.cz
+
+- enable open-iscsi service if at least one session exists 
+(bnc#393057)
+- 2.16.12 
+
+-------------------------------------------------------------------
+Wed May 21 16:46:21 CEST 2008 - mzugec@suse.cz
+
+- don't install open-iscsi when run by storage (bnc#392976)
+- start iscsid also when run by storage (bnc#392981)
+- 2.16.11 
+
+-------------------------------------------------------------------
+Fri May 16 16:40:22 CEST 2008 - jsrain@suse.cz
+
+- added categories Settings and System into desktop file
+  (bnc #382778)
+
+-------------------------------------------------------------------
+Fri Apr 18 14:37:28 CEST 2008 - jsrain@suse.cz
+
+- merged texts from proofread
+- 2.16.10
+
+-------------------------------------------------------------------
+Mon Mar 17 12:43:32 CET 2008 - jsrain@suse.cz
+
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+- 2.16.9
+
+-------------------------------------------------------------------
+Sat Mar 15 17:03:37 CET 2008 - mzugec@suse.de
+
+- improved initiatorname validation (bnc#369985)
+- 2.16.8 
+
+-------------------------------------------------------------------
+Mon Mar 10 18:20:19 CET 2008 - mzugec@suse.de
+
+- show initiatorname tab as default during installation (bnc#368644)
+- 2.16.7 
+
+-------------------------------------------------------------------
+Mon Mar 10 12:06:17 CET 2008 - mzugec@suse.de
+
+- fixed autoyast problem (bnc#367300)
+- 2.16.6 
+
+-------------------------------------------------------------------
+Tue Feb 19 10:55:01 CET 2008 - mzugec@suse.de
+
+- fixed build 
+
+-------------------------------------------------------------------
+Fri Feb 15 17:22:40 CET 2008 - mzugec@suse.de
+
+- fixed button labels (bnc#361028)
+- 2.16.5 
+
+-------------------------------------------------------------------
+Thu Feb 14 12:07:59 CET 2008 - mzugec@suse.de
+
+- test if network is running (bnc#360571)
+- 2.16.4 
+
+-------------------------------------------------------------------
+Fri Feb  8 17:03:25 CET 2008 - mzugec@suse.cz
+
+- space in InitiatorName (bnc#359967)
+- 2.16.3 
+
+-------------------------------------------------------------------
+Tue Nov 20 16:08:50 CET 2007 - mzugec@suse.cz
+
+- moved some functions to IscsiClientLib
+- 2.16.2 
+
+-------------------------------------------------------------------
+Fri Nov 16 16:26:30 CET 2007 - mzugec@suse.cz
+
+- fixed autoyast export 
+
+-------------------------------------------------------------------
+Wed Nov 14 13:37:09 CET 2007 - mzugec@suse.cz
+
+- FaTE #302081 - autoYaST support
+- 2.16.1 
+
+-------------------------------------------------------------------
+Tue Sep 25 14:54:57 CEST 2007 - mzugec@suse.cz
+
+- possible to use portal hostname instead of IP
+- 2.16.0 
+
+-------------------------------------------------------------------
+Fri Jul 27 17:11:42 CEST 2007 - mzugec@suse.cz
+
+- support for iSNS (fate #302083)
+- 2.15.2 
+
+-------------------------------------------------------------------
+Wed Jun 13 18:26:24 CEST 2007 - mzugec@suse.cz
+
+- added validator for InitiatorName (#245364)
+- 2.15.1 
+
+-------------------------------------------------------------------
+Fri May 11 16:05:00 CEST 2007 - mzugec@suse.cz
+
+- tested and fixed with iBFT card hardware (#256227)
+- fixed discovered table
+- 2.15.0 
+
+-------------------------------------------------------------------
+Mon Apr 16 18:06:01 CEST 2007 - mzugec@suse.cz
+
+- bugfix for checkInitiatorname (#264818)
+- 2.14.10 
+
+-------------------------------------------------------------------
+Mon Mar 26 12:58:46 CEST 2007 - mzugec@suse.cz
+
+- auto log on when needed parameters read from iBFT card (#256227)
+- 2.14.9 
+
+-------------------------------------------------------------------
+Mon Mar 12 15:19:36 CET 2007 - mzugec@suse.cz
+
+- restart iscsid when InitiatorName is changed (#244385) 
+
+-------------------------------------------------------------------
+Mon Mar 12 13:50:38 CET 2007 - mzugec@suse.cz
+
+- yast2-iscsi-client requires yast2-packager (#253522) 
+
+-------------------------------------------------------------------
+Wed Mar  7 19:20:56 CET 2007 - mzugec@suse.cz
+
+- improved parsing of iscsiadm output 
+
+-------------------------------------------------------------------
+Wed Feb 28 14:02:09 CET 2007 - mzugec@suse.cz
+
+- Specified initiatorname not used (#244385)
+- 2.14.6 
+
+-------------------------------------------------------------------
+Mon Feb 26 16:08:07 CET 2007 - mzugec@suse.cz
+
+- parsing initiatorname.iscsi file fixed (#244767) 
+- 2.14.5
+
+-------------------------------------------------------------------
+Wed Feb 14 19:00:23 CET 2007 - mzugec@suse.de
+
+- lost chars from user input caused by #245476 (#244388)
+- InitiatorName is not saved when exiting dialog (#244385)
+- InitiatorName widget has entire contents of file (#244767)
+- 2.14.4 
+
+-------------------------------------------------------------------
+Wed Feb  7 16:16:03 CET 2007 - mzugec@suse.de
+
+- quote dirpath (#242989)
+- 2.14.3 
+
+-------------------------------------------------------------------
+Tue Feb  6 10:51:37 CET 2007 - mzugec@suse.de
+
+- wrong initiatorname.iscsi path (#238738)
+- no feedback from SaveName button (#239344)
+- allow define of initiator (#232501)
+- 2.14.2
+
+-------------------------------------------------------------------
+Mon Jan 22 09:13:50 CET 2007 - mzugec@suse.cz
+
+- fate #300684 - support for iBFT 
+
+-------------------------------------------------------------------
+Mon Oct 23 17:58:05 CEST 2006 - mzugec@suse.cz
+
+- fixed #211890 - wrong handling .target.bash
+- 2.14.0 
+
+-------------------------------------------------------------------
+Fri Jun  9 18:29:16 CEST 2006 - mzugec@suse.cz
+
+- fixed #disable Connect button when already connected target is selected 
+
+-------------------------------------------------------------------
+Thu Jun  8 15:38:37 CEST 2006 - mzugec@suse.cz
+
+- fixed #179013 - gets confused if the target names are similar
+
+-------------------------------------------------------------------
+Thu Jun  8 11:28:21 CEST 2006 - mzugec@suse.cz
+
+- fixed #180985 - staying current row in connected dialog
+
+-------------------------------------------------------------------
+Thu May 25 18:17:55 CEST 2006 - mzugec@suse.cz
+
+- fixed #149055 - iscsi client login always asks for credentials
+
+-------------------------------------------------------------------
+Thu May  4 14:03:29 CEST 2006 - mzugec@suse.cz
+
+- proofread 
+
+-------------------------------------------------------------------
+Mon Apr 24 08:37:29 CEST 2006 - mzugec@suse.cz
+
+- testsuite 
+
+-------------------------------------------------------------------
+Mon Apr 24 08:36:53 CEST 2006 - mzugec@suse.cz
+
+- comments, logs 
+
+-------------------------------------------------------------------
+Fri Apr  7 08:12:03 CEST 2006 - mzugec@suse.cz
+
+- fixed #156838 - yast-iscsi-client shutting down the open-iscsi initiator when it shouldn't 
+
+-------------------------------------------------------------------
+Wed Apr  5 18:00:45 CEST 2006 - mzugec@suse.cz
+
+- fixed #163299 - Iscsi -> iSCSI 
+
+-------------------------------------------------------------------
+Thu Mar 23 15:47:29 CET 2006 - mzugec@suse.cz
+
+- fixed #160315 - check if user is root
+
+-------------------------------------------------------------------
+Thu Mar 23 13:24:48 CET 2006 - mzugec@suse.cz
+
+- fixed #158539 - possibility to remove target 
+
+-------------------------------------------------------------------
+Tue Mar 21 09:54:21 CET 2006 - mzugec@suse.cz
+
+- fixed #159666 - move to net services group 
+
+-------------------------------------------------------------------
+Mon Mar 13 18:31:54 CET 2006 - mzugec@suse.cz
+
+- fixed #157634 - install package 
+
+-------------------------------------------------------------------
+Mon Mar 13 11:17:58 CET 2006 - mzugec@suse.cz
+
+- fixed #156838 - startup problem
+
+-------------------------------------------------------------------
+Mon Mar  6 09:48:30 CET 2006 - mzugec@suse.cz
+
+- #155273  - IscsiClient -> Iscsi Initiator
+
+-------------------------------------------------------------------
+Tue Feb 28 16:26:29 CET 2006 - mzugec@suse.cz
+
+- fixed #154123 create /etc/initiatorname.iscsi in installation 
+
+-------------------------------------------------------------------
+Mon Feb 20 10:57:22 CET 2006 - mzugec@suse.cz
+
+- fixed #148949 - Global->Service + proofread 
+
+-------------------------------------------------------------------
+Fri Feb 17 18:02:22 CET 2006 - mzugec@suse.cz
+
+- fixed #151868 - authentication into target 
+
+-------------------------------------------------------------------
+Fri Feb 17 07:18:02 CET 2006 - ihno@suse.de
+
+- Adding warning in help according to feature 300437
+
+-------------------------------------------------------------------
+Wed Feb 15 12:38:14 CET 2006 - mzugec@suse.cz
+
+- correction of #149934 (ingoing vs outgoing) 
+
+-------------------------------------------------------------------
+Mon Feb 13 16:46:36 CET 2006 - mzugec@suse.cz
+
+- fixed #149934 - authentication in discovery 
+
+-------------------------------------------------------------------
+Fri Feb 10 13:30:37 CET 2006 - mzugec@suse.cz
+
+- fixed #148960 - rename button labels 
+
+-------------------------------------------------------------------
+Thu Feb  9 11:39:19 CET 2006 - mzugec@suse.cz
+
+- fixed #149060 - remove firewall component 
+
+-------------------------------------------------------------------
+Thu Feb  9 11:38:11 CET 2006 - mzugec@suse.cz
+
+- fixed #148672 - start init.d script 
+
+-------------------------------------------------------------------
+Tue Feb  7 17:24:08 CET 2006 - mzugec@suse.cz
+
+- fixed #148665 - ask to install open-iscsi 
+
+-------------------------------------------------------------------
+Tue Feb  7 15:39:15 CET 2006 - mzugec@suse.cz
+
+- proofread 
+
+-------------------------------------------------------------------
+Tue Jan 31 09:56:48 CET 2006 - mzugec@suse.cz
+
+- add helps
+
+-------------------------------------------------------------------
+Mon Jan 30 19:23:40 CET 2006 - mzugec@suse.cz
+
+- fixed authentication problems 
+
+-------------------------------------------------------------------
+Tue Jan 24 11:49:09 CET 2006 - mzugec@suse.cz
+
+- handle for init stage
+
+-------------------------------------------------------------------
+Tue Jan 24 10:39:54 CET 2006 - jsrain@suse.cz
+
+- added copying configuration to system during installation
+
+-------------------------------------------------------------------
+Mon Jan 23 18:09:49 CET 2006 - mzugec@suse.cz
+
+- check exceptions 
+
+-------------------------------------------------------------------
+Fri Jan 20 17:50:44 CET 2006 - mzugec@suse.cz
+
+- clean subversion 
+
+-------------------------------------------------------------------
+Fri Jan 20 17:31:57 CET 2006 - mzugec@suse.cz
+
+- install package 
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:03 CET 2006 - mzugec@suse.cz
+
+- change version number
+
+-------------------------------------------------------------------
+Fri Jan  6 18:10:10 2006 - mzugec@suse.cz
+
+- initial version

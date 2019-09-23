@@ -1,0 +1,11 @@
+--- a/ml_curses.c
++++ b/ml_curses.c
+@@ -74,7 +74,7 @@
+     Store_field(ret,2,Val_int(z)); \
+     CAMLreturn(ret); }
+ #define r_string(f)	\
+-  { char *ret=f; \
++  { const char *ret=f; \
+     if(ret==NULL) failwith("Null pointer"); \
+     CAMLreturn(copy_string(ret)); }
+ 

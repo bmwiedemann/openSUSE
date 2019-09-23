@@ -1,0 +1,195 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0cf9de38acee0bc9cc27309ccea366c4</srcmd5>
+    <version>0.4003</version>
+    <time>1352562940</time>
+    <user>coolo</user>
+    <comment>Required for perl-SDL</comment>
+    <requestid>139404</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0cf9de38acee0bc9cc27309ccea366c4</srcmd5>
+    <version>0.4003</version>
+    <time>1359109738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ab4a0e69c99585fc0dc841f867f1782</srcmd5>
+    <version>0.4005</version>
+    <time>1371221211</time>
+    <user>coolo</user>
+    <comment>- updated to 0.4005
+   [ENHANCEMENTS]
+ 
+   - Added --pureperl-only support
+ 
+   [BUG FIXES]
+ 
+   - #72176: pod2html will fail with an empty podpath in some cases. [Phillip Moore]
+ 
+   - Fix links between modules in HTML docs output [Michael Wild, Leon Timmermans]
+ 
+   [BUG FIXES]
+ 
+   - Minor VMS fix for @INC [Craig Berry]
+ 
+   [ENHANCEMENTS]
+ 
+   - test_requires support has been added [Matsuno Tokuhiro]</comment>
+    <requestid>178564</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>984c9475af22b3afe2f73bebbbaf6475</srcmd5>
+    <version>0.4005</version>
+    <time>1372438521</time>
+    <user>coolo</user>
+    <comment>- add more of the required modules
+
+- added perl(Module::Metadata) as dependency</comment>
+    <requestid>181148</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>984c9475af22b3afe2f73bebbbaf6475</srcmd5>
+    <version>0.4005</version>
+    <time>1379663745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea796c4ee9ac76cdebf36ce5065780d8</srcmd5>
+    <version>0.4007</version>
+    <time>1381748721</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202765</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afa3502cf101c071b1436e06a986ec50</srcmd5>
+    <version>0.4203</version>
+    <time>1386693877</time>
+    <user>coolo</user>
+    <comment>- updated to 0.4203
+   [BUG FIXES]
+   - Map recommends back to runtime recommends [Leon Timmermans]
+   - Map restrictive license to restricted in meta 2.0 [Leon Timmermans]
+   - Don't merge prereqs from meta to mymeta [Leon Timmermans]
+   - Prefer META.json over META.yml [Leon Timmermans]
+   - Do not set provides in metadata if no_index is set [Leon Timmermans]
+   - Lowercase license in fallback logic [Leon Timmermans]
+ 
+   [ENHANCEMENTS]
+   - Converted to using Meta 2.0</comment>
+    <requestid>210117</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6734ed98d7f9de7c30b936094ccb3965</srcmd5>
+    <version>0.4204</version>
+    <time>1390380262</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214450</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>30b12aa0fcb3fdc143918f4b29c3c9bd</srcmd5>
+    <version>0.4205</version>
+    <time>1392806174</time>
+    <user>coolo</user>
+    <comment>- update to 0.4205:
+  [BUG FIXES]
+  - FIX license code regression for artistic license
+  - Don't swallow ExtUtils::CBuilder loading errors
+  - Handle testing on cross-compile builds
+  - Protect against platforms without getpw{nam,uid}</comment>
+    <requestid>222504</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>30b12aa0fcb3fdc143918f4b29c3c9bd</srcmd5>
+    <version>0.4205</version>
+    <time>1409302380</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>da5232d73b8725a1cc9000d69d000c5a</srcmd5>
+    <version>0.4210</version>
+    <time>1419809593</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266279</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ae64320f68ae6ad9e5a274e2ea40a6b</srcmd5>
+    <version>0.4211</version>
+    <time>1423214276</time>
+    <user>dimstar_suse</user>
+    <comment>- add make-builds-reproducible.patch to sort the config data
+
+- updated to 0.4211
+   [BUG FIXES]
+   - Fix t/actions/installdeps.t to work on &quot;perl in space&quot; [Ed J]
+   - Stop using version-&gt;normal(); prefer stringify() [John Peacock]
+ 
+   [DEPRECATIONS]
+   - inc::latest has been split out to a separate distribution on CPAN.
+     It is an optional prerequisite, only needed for the experimental
+     bundling feature.</comment>
+    <requestid>283922</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>08b1b821c44bdb92e9b7dade6f603c1a</srcmd5>
+    <version>0.421100</version>
+    <time>1429989374</time>
+    <user>coolo</user>
+    <comment>- expanding the version to 6 digits after . - to avoid version mismatches</comment>
+    <requestid>297277</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5058ea6668ff6b80f91d5f6d2c3c86f</srcmd5>
+    <version>0.421200</version>
+    <time>1432156919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307679</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>005aa4ce881a78d03899ff33f83635c8</srcmd5>
+    <version>0.421800</version>
+    <time>1464689294</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>395028</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>265bef5188f12f4596f5995cf95378ef</srcmd5>
+    <version>0.422000</version>
+    <time>1471855752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419850</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c69f58b6d6971321b90b65694374ddd6</srcmd5>
+    <version>0.422200</version>
+    <time>1491907333</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486145</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8cce51d65a496a08f2f4aa5a29e008af</srcmd5>
+    <version>0.422400</version>
+    <time>1496821944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499919</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7c16504dd7cce4588f74a1e88d6ab82b</srcmd5>
+    <version>0.422900</version>
+    <time>1555588523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694713</requestid>
+  </revision>
+</revisionlist>

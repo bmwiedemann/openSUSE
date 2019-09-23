@@ -1,0 +1,1033 @@
+-------------------------------------------------------------------
+Thu Sep  5 13:17:58 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Apply the change on Jun. 22 again, reverted by the previous
+  change
+- Stop exporting OOO_FORCE_DESKTOP (boo#1042136)
+  * KDE4 LibreOffice VCL plugin was removed from upstream
+  * New KDE5/Qt5 VCL plugin supporting Qt IM Module will be
+    available
+  * Note only LibreOffice KDE5/Qt5 >= 6.3 supports Qt IM module
+    - For older version, please export OOO_FORCE_DESKTOP=gnome
+      in ~/.profile
+
+-------------------------------------------------------------------
+Thu Aug 29 16:22:00 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 1.5.21
+  * Enable to run ibus-setup with a different python
+  * Update ibusunicodegen.h for Unicode UCD 12.0
+  * Add ibus.its for IME's component files
+  * Make ISO 639 language names with title
+  * Keep preedit cursor_pos and visible in clearing preedit text
+  * Support long sequences and multiple output characters for
+    compose table
+    - fix boo#1138123
+  * Exit ibus-daemon with parent's death
+  * Update Wayland input-method protocol to unstable v1
+  * Indistinguishable address of ibus-daemon
+  * Update LOCALES_STRING
+  * Fix typos
+- Drop ibus-fix-check-abs-icon-path-support.patch
+  * not necessary anymore since the current Qt is enough new
+
+-------------------------------------------------------------------
+Sat Jun 22 13:13:33 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Stop exporting OOO_FORCE_DESKTOP (boo#1042136)
+  * KDE4 LibreOffice VCL plugin was removed from upstream
+  * New KDE5/Qt5 VCL plugin supporting Qt IM Module will be
+    available
+
+-------------------------------------------------------------------
+Wed May  8 09:40:05 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Mon Mar  4 15:48:52 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix boo#1127711
+  * Remove nodejs-emojione form BuildRequires 
+
+-------------------------------------------------------------------
+Sat Mar  2 07:19:12 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 1.5.20
+  * Support Shift-Space to insert a Space on Emojier preedit
+  * Do not add emojis in compose category to emoji variants
+  * Implement mouse click with Hangul in ibus side
+  * Delete Gconf dependencies and migrate intool to gettext
+  * Do not delete IBUS_CAP_SURROUNDING_TEXT
+  * Show compose preedit with custom compose file
+  * Fix Atom and Slack for Flatpak
+  * Delete Super-space notification
+  * Use ISO 639-3 to have names for more languages
+  * introspection: Tell the GI scanner to include the C headers
+  * Add Uzbek layouts
+  * Allow using non-abstract UNIX domain sockets
+  * Fix minor build problems, bugs, and typos 
+
+-------------------------------------------------------------------
+Mon Feb 25 15:33:01 UTC 2019 - ftake@geeko.jp
+
+- Fix boo#1126011: fix unexpected LibreOffice's dependency on IBus
+  * Remove "Supplements" for libreoffice-gnome
+
+-------------------------------------------------------------------
+Tue Sep 18 09:04:44 UTC 2018 - schwab@suse.de
+
+- Disable emoji support on armv6l, ppc and riscv64, which have no nodejs
+  support
+
+-------------------------------------------------------------------
+Tue Sep  4 15:37:13 UTC 2018 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 1.5.19
+  * IBUS_DISCARD_PASSWORD variable for the workaround of the
+    password popup problem in Firefox and Chrome under GNOME X11
+  * Emoji feature improvements:
+    Move input focus on Emojier to engines' preedit
+    Show previous emojis with "history" annotation
+    Add num pad Enter, Down, Up, Left, Right on Emojier
+    Fix SEGV in IBusEngine if no emoji shortcut keyis
+  * Compose key feature:
+    Enable preedit for compose keys
+  * Bug fixes and code improvements
+- Drop ibus-force-python3.patch
+  * merged by upstream
+- Remove ibus-python3
+  * Upstream will not maintain it for Python 3 anymore
+  * Drop ibus-python3-migration.patch
+
+-------------------------------------------------------------------
+Fri Jul 20 15:40:24 UTC 2018 - tchvatal@suse.com
+
+- Do not hardcode python in 3.6 version, they change so use wildcards
+
+-------------------------------------------------------------------
+Fri Jun  1 21:47:54 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace python3-gobject2-devel and python3-gobject2 with
+  python3-gobject-devel and python3-gobject BuildRequires and
+  Requires.
+- Drop gconf2-devel BuildRequires: No longer needed, nor used.
+
+-------------------------------------------------------------------
+Fri May 18 07:33:49 UTC 2018 - jengelh@inai.de
+
+- Trim filler wording from descriptions.
+- Update Summaries and RPM groups.
+
+-------------------------------------------------------------------
+Thu Apr 19 13:57:45 UTC 2018 - hillwood@opensuse.org
+
+- Fix filelist for SLE.
+
+-------------------------------------------------------------------
+Tue Mar  6 06:32:14 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 1.5.18
+  * tools: Do not change keymaps with 'use-system-keyboard-layout'
+  * src: Fix GVariant leaks (Carlos Garnacho)
+  * src: Added some error handlings from a code review
+  * src: Add libgobject.so to LDADD for Debian libtool (Danny)
+  * src: Reintroduce the hex mode keybind with an environment variable (Aaron Muir Hamilton)
+  * ui/gtk3: Translate input method name in ibus (Peng Wu)
+  * Added DBus filtering against malware
+  * Implement Unicode choice on Emojier
+  * Implement ibus-extension-gtk3 for the global keybinding 
+  * Disable panel extension for 'gdm' and 'liveuser' user
+  * ui/gtk3: Set title string in gnome-shell
+  * Add ISSUE_TEMPLATE
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Jan 25 06:27:27 UTC 2018 - qzhao@suse.com
+
+- Change xim.d-ibus-121: Unset LC_CTYPE to make LANG variable 
+  can change system locale successful(boo#1076854).
+
+-------------------------------------------------------------------
+Mon Jan  8 11:43:48 UTC 2018 - tchvatal@suse.com
+
+- Do not condition sources they all need to be present in src rpm
+- Add conditionals for python2 and python3
+- Use full url for github downloads instead of handmade tarball
+- Use make_install macro
+- Apply py3 enablement patches everywhere, no effect on py2 code
+- Drop python3 split spec file as it is not needed and use only
+  python3
+  * As there are no dependent packages on python-ibus directly
+    people should repoint their scripts to the python3 variant
+  * Makefiles do not allow building both at once so stick only
+    with py3 as we are disabling python2 slowly anyway
+- Drop 12.2 KDE icons as the codestreams are long out of support
+- Drop the kde4 icons too as we are plasma5 based now and enable
+  appindicator integration for plasma5 conditionaly under KDE
+  condition
+
+-------------------------------------------------------------------
+Tue Dec 19 14:50:21 UTC 2017 - ftake@geeko.jp
+
+- Fix boo#1073524: IBus does not work on Qt5 applicatin under
+  Qt5 only environment
+  * do not set QT_IM_MODULE=xim for Qt5 applications
+  * use QT4_IM_MODULE for Qt4 applications
+
+-------------------------------------------------------------------
+Sun Nov 19 13:56:06 UTC 2017 - hillwood@opensuse.org
+
+- Enable emoji support for openSUSE.
+- Use %fdupes in python3-ibus.
+
+-------------------------------------------------------------------
+Sat Nov  4 08:34:08 UTC 2017 - hillwood@opensuse.org
+
+- Enable python3 build
+
+-------------------------------------------------------------------
+Sat Oct 28 15:05:56 UTC 2017 - ftake@geeko.jp
+
+- Update to 1.5.17
+  * ui/gtk3: Emojier supports Ctrl-c,v,x and Ctrl-Shift-c
+  * Make all emoji dicts for fully qualified
+  * ui/gtk3: Fix SEGV of Emojier on de_DE.UTF-8
+  * ui/gtk3: Do not activate emoji cells on mouse until mouse moves
+  * ui/gtk3: Fix SEGV of XKeysymToKeycode() on Wayland
+  * client/gtk2: include the scaling factor in Wayland
+  * Add IBus portal service to support Flatpack
+  * ui/gtk3: Switcher should ignore mouse until it moves
+  * client/gtk2: Do not send key events to GtkIMContextSimple
+  * ui/gtk3: Fix PropertyPanel position in workarea
+  * ui/gtk3: Fix to enable menu button on PropertyPanel
+  * ui/gtk3: Increase timeout of window filter in PropertyPanel
+  * ui/gtk3: Unset GDK_CORE_DEVICE_EVENTS
+  * ui/gtk3: Unref Panel and Indicator when double panels run
+  * engine: Add Malay and Mongolian keymaps
+  * Update translations
+
+-------------------------------------------------------------------
+Tue Aug 29 12:38:07 UTC 2017 - alarrosa@suse.com
+
+- Don't build the branding-openSUSE-KDE package on SLE 
+
+-------------------------------------------------------------------
+Sun Jul 23 15:14:29 UTC 2017 - ftake@geeko.jp
+
+- Fix boo#1047912: ibus-setup crashes on Tumbleweed
+  * fix missing dependency on python?-gobject-Gdk
+
+-------------------------------------------------------------------
+Sat May 27 12:21:30 UTC 2017 - qzhao@suse.com
+
+- Update ibus.spec: copy auto-start files to SOURCE directory
+  to enable modifications before compile.
+- Add ibus-disable-engines-preload-in-GNOME.patch: Disable load
+  preload-engines actions in SLE, which is unnecessary for mono IMF
+  in SLE and may cause CJK user login failed (bsc#1036729).
+
+-------------------------------------------------------------------
+Wed May 24 14:00:34 UTC 2017 - ftake@geeko.jp
+
+- Update to 1.5.16
+  * Implement shortcut keys on emoji dialog
+  * Move language settings from IBusEmojier to ibus-setup
+  * Improve `ibus emoji` command to work on Wayland
+  * Emoji-related improvements
+  * Add man page of `ibus emoji` command
+- Update to 1.5.15
+  * Fix memory leaks
+  * Fix warnings during resizing panel
+  * Improve emoji lookup window
+  * Support scrill event in GTK3 candidate panel
+  * Avoid emoji typing during Unicode typing
+  * Fix potential buffer overrun in CreateNestedListi()
+  * Set emoji preview text on font setting
+  * Add `ibus emoji` command
+- Clean up spec file
+
+-------------------------------------------------------------------
+Sun Mar 12 14:41:40 UTC 2017 - dimstar@opensuse.org
+
+- Drop ibus-vala-0.36.patch: No longer needed, since vala 0.36
+  re-introduced the compatibility layer.
+
+-------------------------------------------------------------------
+Wed Mar  1 14:25:29 UTC 2017 - zaitor@opensuse.org
+
+- Drop ibus-vala-0.18.patch: No longer needed.
+
+-------------------------------------------------------------------
+Wed Mar  1 13:16:08 UTC 2017 - dimstar@opensuse.org
+
+- Add ibus-vala-0.36.patch: Fix build with vala 0.36, which is
+  stricter in its binding usage. Patch only respective vala
+  versions.
+
+-------------------------------------------------------------------
+Wed Dec 28 15:04:47 UTC 2016 - hillwood@opensuse.org
+
+- Disable emoji dict build.
+
+-------------------------------------------------------------------
+Thu Aug 25 02:40:50 UTC 2016 - hillwood@opensuse.org
+
+- Update to 1.5.14
+  * Don't warn if DISPLAY is not set.
+  * Install a DBus service file
+  * configure: don't hardcode pkg-config
+  * conf/gconf: Fix SEGV in ibus_config_gconf_get_values
+  * client/gtk2: Fix SEGV with Wayland display
+  * ui/gtk3: Fix panel CSS format for GTK 3.20
+  * engine: Implement Emoji typing with XKB engines
+  * engine: Add emoji-list.html
+  * engine: Use annotations/en.xml from unocode.org but not
+    emoji-list.html
+  * Fix typo in configure.ac
+  * tests/ibus-engine-switch: Don't try to remove non-existing GSource
+  * Fix make dist
+  * Fix Croatian language code in simple.xml
+  * Replace deprecated GSimpleAsyncResult with GTask since GLib 2.46
+
+-------------------------------------------------------------------
+Mon Apr 18 14:40:35 UTC 2016 - ftake@geeko.jp
+
+- Upstream update to 1.5.13
+  * Add SetCursorLocationRelative D-Bus method
+- Upstream update to 1.5.12
+  * Fix ibus-daemon does not update user cache
+  * Fix lookup window on a secondary monitor cannot get its correct
+    size
+  * Fix default position of property panel under multi monitor
+    environments
+  * Change language code from ISO 939-2 to ISO 639-1
+  * Fix minor bugs
+
+-------------------------------------------------------------------
+Mon Apr 18 13:51:12 UTC 2016 - ftake@geeko.jp
+
+- Drop show-input-mode-icon.patch
+  * this feature has been reimplemented in another approach
+
+-------------------------------------------------------------------
+Wed Apr 13 16:47:52 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Own all oxygen icon subdirs, starting with KF 5.21.0, oxygen is
+  no longer installed to the same location
+
+-------------------------------------------------------------------
+Wed Mar 23 10:29:32 UTC 2016 - fcrozat@suse.com
+
+- Do not apply SLE patches on openSUSE 13.2.
+- Drop ibus-adapt-new-vala.patch, not needed after all with vala
+  0.32.
+
+--------------------------------------------------------------------
+Mon Feb 28 17:59:28 CET 2016 - qzhao@suse.com
+
+- Add ibus-adapt-new-vala.patch: Fix ibus compile error under
+  new vala compiler in SLE Desktop 12 SP2.
+
+--------------------------------------------------------------------
+Mon Feb 28 15:57:01 CET 2016 - qzhao@suse.com
+
+- Update ibus.spec: Add "Conflicts: fcitx" tag in SLE,
+  This can help to keep old fcitx input-frame for people
+  who updated from SLE-12-SP0 to SP1, means to avoid the exception
+  which was brought by FATE#319095.
+
+-------------------------------------------------------------------
+Mon Feb 28 14:57:01 CET 2016 - sbrabec@suse.com
+
+- Add support for translation-update-upstream (dummy bsc#933411).
+
+-------------------------------------------------------------------
+Mon Feb 28 12:20:10 CET 2016 - qzhao@suse.com
+
+- Add setup-switch-im.patch: In SLE, if user launch ibus-setup
+  without ibus service daemon running, it will warn the user and
+  switch current input-frame to ibus by setting an environment
+  variable. Note, the setting will make effect the next time this
+  user login to desktop (bsc#899259).
+
+-------------------------------------------------------------------
+Mon Feb 28 10:30:20 CET 2016 - qzhao@suse.com
+
+- Add hide-setup-menu.patch: Remove ibus-setup.desktop entry in
+  SLE from desktop main menu, So it will only be launched from
+  desktop indicator field now.
+  This action is for insure ibus-setup runs with ibus-daemon in
+  background everytime (bsc#899259).
+
+-------------------------------------------------------------------
+Wed Feb 24 11:01:08 CET 2016 - tiwai@suse.de
+
+- Fix the invocation of ibus service for KDE, etc (boo#968486):
+  for DEs known to support autostart (KDE, XFCE and LXCE), ibus is
+  now started via XDG autostart for avoiding the race.  This should
+  fix the missing ibus service.  For other DEs, ibus is still
+  started in xim script, but with a slight (two seconds) delay for
+  avoiding the race, too.
+
+  Along with the change, INPUT_METHOD environment variable is set
+  explicitly in xim script at startup; this is referred in XDG
+  autostart so that it won't be executed when other IM is chosen.
+
+  Last but not least, the explicit dbus-launch invocation is dropped,
+  as it's known to conflict with DE's own startup of dbus
+
+-------------------------------------------------------------------
+Mon Aug 10 05:03:43 UTC 2015 - ftake@geeko.jp
+
+- Update to 1.5.11
+  * Add Swedish svdvorak layout support
+  * Improve UI of ibus-setup
+  * Show property panel at bottom right under KDE
+  * Enable absolute path to icon for appindicator
+  * Support showing language icon and a property for Plasma 5
+  * Use GTK 3 for xim
+  * Load locale compose files dynamically
+  * Enable sync mode for xim
+  * Support vertical writing
+- Enable appindicator status icon for SLE12 and Leap 42.1
+  (boo#939506)
+- Remove a bashism from /etc/xim.d/ibus (boo#941052)
+- Requires newer vala compiler
+  * Cannot compile with an incompatible return type error
+  * 13.1 support should be dropped after the cause is confirmed
+- Drop appindicator-absolute-icon-path.patch
+  * Merged by upstream
+- Add ibus-fix-check-abs-icon-path-support.patch
+  * Allows to force absolute path regardless of Qt version
+- Refresh show-input-mode-icon.patch
+  * Do not scale up icon for the new appindicator status icon
+
+-------------------------------------------------------------------
+Sat Mar 28 09:30:59 UTC 2015 - ftake@geeko.jp
+
+- Fix boo#924696: settings of ibus engines are not saved
+  * Remove inappropriate %ghost from the dconf files
+- Disable appindicator for 13.1
+  * It requires Qt 5.3 to show icons specified by absolute path
+
+-------------------------------------------------------------------
+Thu Mar 12 15:27:11 UTC 2015 - ftake@geeko.jp
+
+- Update to 1.5.10
+  * Fix losing focus in/out on Google Chrome
+  * Fix SEGV of ibus-ui-gtk3 caused by inappropriate 'preload-engines'
+  * ibus-setup tries C locale to support environment without
+    en_US.UTF-8
+  * Remove "Release" modifier key from ibus-setup
+  * Show language rather than layout for xkb panel icon
+  * Track window property offsets correctly
+  * Add IBus panel icon for Plasma 5 desktop
+  * Minor bug fixes
+- Update show-input-mode-icon.patch
+  * Support the new panel icon
+- Add appindicator-absolute-icon-path.patch
+  * Show icons installed out of theme directories
+
+-------------------------------------------------------------------
+Sat Jan 24 14:44:45 UTC 2015 - antoine.belvire@laposte.net
+
+- modify xim.d-ibus-121: remove obsolete 'PATH=$OLD_PATH' which
+  causes loss of the PATH variable when sourced
+
+-------------------------------------------------------------------
+Sat Nov 22 18:09:38 UTC 2014 - coolo@suse.com
+
+- disable parallel build for install - not much gain and makes it
+  less reliable
+
+-------------------------------------------------------------------
+Tue Oct 14 06:07:18 UTC 2014 - hillwood@linuxfans.org
+
+- Update to 1.5.9
+  * Enable preedit color on external preedit window with x11 applications.
+  * Do not fail ibus-setup when en_US.UTF-8 is not installed.
+  * Fix compose keys in French layout bepo variant.
+
+-------------------------------------------------------------------
+Mon Oct 13 09:18:34 UTC 2014 - gber@opensuse.org
+
+- use desktop file categories Settings;DesktopSettings instead of
+  System
+
+-------------------------------------------------------------------
+Wed Oct  8 14:01:39 UTC 2014 - ftake@geeko.jp
+
+- Add im-engines-precede-xkb.patch
+  * allow users to use an IM engine without any operation
+- Update the launch script
+  * remove the obsolete part for SKIM (bnc#860486)
+  * do not set OOO_FORCE_DESKTOP=gnome
+    if libreoffice-gnome is not installed (bnc#899045)
+
+-------------------------------------------------------------------
+Mon Sep  8 16:39:26 UTC 2014 - fcrozat@suse.com
+
+- Do not suggest to install ibus when installing
+  libreoffice/libreoffice-gnome on SLE12.
+
+-------------------------------------------------------------------
+Fri Sep  5 18:32:14 UTC 2014 - i@marguerite.su
+
+- properly disable python3 builds:
+  * ibus itself isn't python3 ready, its python module is totally
+    not usable under python3.
+- move some Obsoletes to the correct sub-package.
+
+-------------------------------------------------------------------
+Sun Aug 31 13:13:17 UTC 2014 - hillwood@linuxfans.org
+
+- Fix bnc#893271. Keep python-ibus.
+
+-------------------------------------------------------------------
+Sat Aug 30 17:45:15 UTC 2014 - i@marguerite.su
+
+- Add patch: ibus-python3-migration.patch
+  * I didn't do the hard "port", just simple 2to3 tasks.
+  * it'll remove "blockage" or python3-ibus is totally unusable.
+
+-------------------------------------------------------------------
+Tue Aug 26 08:15:16 UTC 2014 - fcrozat@suse.com
+
+- Do not only requires typelib-1_0-Gtk-3_0 when building with
+  python3.
+
+-------------------------------------------------------------------
+Fri Aug 22 12:49:54 UTC 2014 - fcrozat@suse.com
+
+- Update ibus xim script to properly detect GNOME 3.12+ and to use
+  ibus default configuration on first startup of GNOME (bnc#862589
+  internal), with help from Takashi Iwai.
+
+-------------------------------------------------------------------
+Mon Aug 11 15:03:41 CEST 2014 - fcrozat@suse.com
+
+- Fix default category for ibus-setup.desktop.
+
+-------------------------------------------------------------------
+Tue Aug  5 08:48:21 UTC 2014 - fcrozat@suse.com
+
+- Do not build with python3 or wayland on SLE12.
+- Fix file list when building with python2.
+
+-------------------------------------------------------------------
+Thu Jul 31 12:07:24 UTC 2014 - ftake@geeko.jp
+
+- remove patches merged by upstream
+  * add-libgnomekbd-and-load-preload-engines.patch
+  * reload-preload-engines-until-users-customize-the-list.patch
+- obsoletes python-ibus when packaged for Python 3
+
+-------------------------------------------------------------------
+Sun Jul 27 15:15:28 UTC 2014 - i@marguerite.su
+
+- fix hillwood's timestamp in changelog
+- add two more macros to macros.ibus
+
+-------------------------------------------------------------------
+Sat Jul 26 18:01:19 UTC 2014 - i@marguerite.su
+
+- update version 1.5.8
+  * Set max-width-chars property in ibus-setup wrapped GtkLabel
+  * Add German (nodeadkeys) keymap in simple.xml
+  * Delete Korean keymap
+  * Let ibus-ui-gtk3 not to show zero-lenght preedit text
+  * Fix many memory leaks provided by Christophe Fergeau
+  * Add Polish (qwertz) keymap in simple.xml
+  * Fix escape key with Ctrl+Shift+U ISO
+  * Update ibuscomposetable.h for pt-br
+  * Set up ibus engines when users log into the session for the first time
+  * Do not sort ibus engines when they are saved by ibus-setup
+  * Update IBusKeymap jp
+  * Run xmodmap after run setxkbmap -l layout
+  * Add ibus reset-config and read-config sub-commands
+  * Fix ibus-setup SEGV in enginetreeview.py
+  * Fix deprecated warnings with python3-gobject 3.13.3
+  * Export the 'IBUS_SETUP_XID' environment variable for each engine setup
+  * Fix deprecated gtk3 GtkMisc, GtkAlignment and vala Gdk.X11Display
+  * Enhance UI to add engines on ibus-setup
+- mask add-libgnomekbd-and-load-preload-engines.patch and
+  reload-preload-engines-until-users-customize-the-list.patch
+  * upstream may have fixed these issues as these patches are issued
+    on May 7th.
+- use python3 to build ibus, as hillwood switched ibus-table to python3
+  * add ibus-force-python3.patch, because ibus will use python3 to build
+    ibus-setup and bindings only when PYTHON2 variable is empty. And fix
+    'print sysconfig.PREFIX' syntax errors in python-config.py.
+- add ibus-vala-0.18.patch to fix build for openSUSE 12.3
+
+-------------------------------------------------------------------
+Sat Jul 26 17:32:07 UTC 2014 - i@marguerite.su
+
+- clean specfile with service and spec-cleaner
+  * don't use vague wildcards aggresively in %%files section
+- add macros.ibus to ease packaging
+
+-------------------------------------------------------------------
+Thu Jul 26 12:24:17 UTC 2014 - hillwood@linuxfans.org
+
+- Enable wayland support
+
+-------------------------------------------------------------------
+Thu Jun  5 12:06:53 UTC 2014 - ftake@geeko.jp
+
+- Update to 1.5.7
+  * Add Czech (qwerty) keymap
+  * Enables to get current input context from panels
+  * Fix leakage in ibus_get_local_machine_id()
+  * Do not show Property Panel by default
+  * Focus-in events do not move Property Panel
+    if the panel is configured to be always shown
+
+-------------------------------------------------------------------
+Tue May 20 15:28:40 CEST 2014 - tiwai@suse.de
+
+- Fix the lost XIM input after GNOME screen lock (bnc#874969):
+  ibus-xim-fix-re-focus-after-lock.patch
+
+-------------------------------------------------------------------
+Wed May 14 08:04:18 UTC 2014 - cxiong@suse.com
+
+- Let GNOME 3 handles ibus startup&setup. (bnc#873016)
+  * Changed xim.d-ibus-121.
+  * Reformatting the latter part of the xim.d-ibus-121.
+
+-------------------------------------------------------------------
+Mon Mar 17 15:37:25 UTC 2014 - ftake@geeko.jp
+
+- Update to 1.5.6
+  * Support python3 (not enabled for this package)
+  * Fix Property Panel is sometimes not shown when the focus is changed
+  * Let Property Panel not to follow cursor if it is always shown
+  * Fix a build error of Gdk.EventKey with vala 0.23.2
+  * Use XKB layout strings instead of the ibus-keyboard icon on the panel
+- Update reload-preload-engines-until-users-customize-the-list.patch
+- Update ibus-python-install-dir.patch
+  * modify Python 2 path in configure.ac instead of Makefile.am
+- Refresh add-libgnomekbd-and-load-preload-engines.patch
+
+-------------------------------------------------------------------
+Mon Mar 17 12:29:40 UTC 2014 - fcrozat@suse.com
+
+- Clean-up dependencies: add librsvg2 (needed by ibus), dropped
+  notification-daemon, python-gtk, python-notify (not needed with
+  switch to pygobject), typelib-1_0-Gtk-2_0, typelib-1_0-Gtk-3_0
+  (no need to hardcode, bnc#868657)
+
+-------------------------------------------------------------------
+Fri Feb 14 12:10:13 CET 2014 - tiwai@suse.de
+
+- Fix *-32bit post and postun calls for gtk-query-immodules-2 on
+  openSUSE 13.1 and later (bnc#845860)
+
+-------------------------------------------------------------------
+Mon Feb 10 09:48:56 UTC 2014 - fcrozat@suse.com
+
+- Do not requires gobject-introspection, it is not needed to run
+  ibus, python-gobject is enough.
+
+-------------------------------------------------------------------
+Mon Jan 27 16:49:27 UTC 2014 - ftake@geeko.jp
+
+- Update to 1.5.5
+  * Add Property Panel showing IME properties
+  * Add French layout variant “oss” and the Slovak qwerty layout
+  * Support customizing the look-up-table orientation of ibus-ui-gtk3.
+  * Update en-us compose table and add locale tables for xkb engines
+  * Delete the up/down buttons and the message about them on ibus-setup.
+  * Fix candidate panel placed out of screen
+  * Remove -Werror in autogen.sh
+- Remove Always-save-the-content-type-cache-for-gnome-shell-p.patch
+  * mergerd by upstream
+- Refresh show-input-mode-icon.patch
+- Update reload-preload-engines-until-users-customize-the-list.patch
+  and add-libgnomekbd-and-load-preload-engines.patch
+  * fix ibus-ui-gtk3 crashes if layout is en_intl (bnc#859354)
+
+-------------------------------------------------------------------
+Mon Nov 25 13:50:12 UTC 2013 - hillwood@linuxfans.org
+
+- Better way to fix cursor following problem (on_the_spot bug)
+  under libreoffice-kde4 (bnc#851982).
+
+-------------------------------------------------------------------
+Sat Nov 16 06:57:33 UTC 2013 - jengelh@inai.de
+
+- Add missing python-gobject dependency (bnc#850792)
+
+-------------------------------------------------------------------
+Thu Oct 31 14:46:37 CET 2013 - tiwai@suse.de
+
+- Always-save-the-content-type-cache-for-gnome-shell-p.patch:
+  This is an additional fix patch for ibus to avoid the wrong
+  IBus.InputPurpose.PASSWORD advertisement, which leads to the
+  password text appearance on GNOME3 (bnc#847718)
+
+-------------------------------------------------------------------
+Thu Oct 17 07:13:31 UTC 2013 - i@marguerite.su
+
+- add a branding-openSUSE-KDE subpackage.
+  * provides kde monochrome icons for 13.1 default KDE theme.
+- port fix for bnc#820218 here
+  * ibus qt tray icon is not in keeping with KDE monochrome icon look.
+
+-------------------------------------------------------------------
+Mon Oct 14 01:22:41 UTC 2013 - hillwood@linuxfans.org
+
+- Obsoletes libibus-1_0-0
+
+-------------------------------------------------------------------
+Thu Oct 10 17:50:08 UTC 2013 - ftake@geeko.jp
+
+- Update show-input-mode-icon.patch
+  * fix ibus-ui-gtk3 hangs up
+  * fix icons are cropped on KDE
+
+-------------------------------------------------------------------
+Sun Oct  6 13:43:39 UTC 2013 - ftake@geeko.jp
+
+- Update to 1.5.4
+  * Add "address" command to command line interface
+  * Support content-type of input context
+  * Replace ibus-config with gsettings
+  * Support using a different IM engine state for each window
+  * Support show-icon-on-systray in ibus-ui-gtk3
+  * Fix no output when ibus-daemon is runnin on another display
+  * Update translations and fix build errors
+- Add show-input-mode-icon.patch
+  * workaround for the current input mode is not shown on DEs
+    other than GNOME
+- Rename and refresh patches
+  * add-libgnomekbd-and-load-preload-engines.patch
+  * reload-preload-engines-until-users-customize-the-list.patch
+- Fix ibus-lang is not installed
+- Fix warning by "touch /etc/dconf/db/ibus" for 12.3 and later
+
+-------------------------------------------------------------------
+Fri Sep 13 13:49:44 UTC 2013 - ftake@geeko.jp
+
+- Fix dconf schema was not updated for automatic configuration
+- Fix 00-upstream-settings was wrongly marked as %config
+- Fix /etc/dconf/db/ibus was not owned by package
+- Add %if %endif for automatic configuration
+
+-------------------------------------------------------------------
+Thu Sep 12 17:29:24 UTC 2013 - ftake@geeko.jp
+
+- Add patches to configure ibus automatically according to the
+  current environment at the first login
+  * Add reload-preload-engines-until-users-customize-the-list-95fd937e.patch
+  * Add add-libgnomekbd-and-load-preload-engines-69171c9c.patch
+- Enable the surrounding text feature
+
+-------------------------------------------------------------------
+Tue Jul 30 17:19:47 UTC 2013 - ftake@geeko.jp
+
+- Update to 1.5.3
+  * Add embed_preedit_text
+  * Disable IM on lock screen
+  * Change defalut triggers key to <Super>space
+  * Add man files
+  * Delete ibus.desktop
+  * Add Norwegian keyboard
+  * Update UI, improve performance, fix build problems
+
+-------------------------------------------------------------------
+Tue Jul  9 14:23:47 UTC 2013 - hillwood@linuxfans.org
+
+- Fix cursor following problem in KDE4 for libreoffice
+
+-------------------------------------------------------------------
+Thu Jul  4 15:41:12 UTC 2013 - ftake@geeko.jp
+
+- Merge branches on M17N:Devel and home:dimstar:branches:GNOME:Factory
+  * Merge changelog and spec written by dimstar@opensuse.org
+- Update to 1.5.2 by hillwood@linuxfans.org
+  * Implement use-system-keyboard-layout
+  * Fix crash of ibus-setup
+- Update to 1.5.1 by hillwood@linuxfans.org
+  * Add fr(bepo) XKB engine
+  * Fix crash
+- Update to 1.5.0 by douglarek@outlook.com
+  * Renew IM-switch UI, logic, and shortcut customization
+  * Integrate XKB keyboard layouts into IME. Now ibus can manage both
+    IME and XKB layouts seamlessly
+  * Improve ibus performance by replace some python components with
+    vala implementations
+  * Improve gobject-introspection support
+  * Improve vala language support
+  * New functions to restrict config signal: ibus_config_watch/unwatch
+  * Remove gnome-icon-theme-legacy dependency.
+  * Add version property in IBusEngineDesc.
+  * Add IBusProperty.symbol for the short label.
+  * Support dconf 0.13.4
+  * Add ibus command line tool
+  * Improve unit test
+  * ibus-daemon now monitors .xml files by default
+  * "make check" does not require "make install"
+  * Support out-of-tree build
+  * pygobject override is added to help migrate from the old python binding.
+  * Many bug fixings.
+- Switch to dconf from GConf
+- Add python bindings
+- Add vala bindings
+- Drop obsoleted patches:
+  * ibus-fix-default-preload-engines.patch
+  * ibus-fix-docs-build-error.patch
+  * ibus-fix-tray-icon-on-gnome-3.6.patch
+  * ibus_indicator-14.patch
+- Obsoletes ibus-gnome-shell
+- Separate translation files into ibus-lang
+- Rename libibus-1_0-0 subpackage to libibus-1_0-5, following
+  upstreams soname change.
+- Clean up spec file
+  * remove special cases for 11.4 and 12.1
+
+-------------------------------------------------------------------
+Tue Apr  2 17:49:53 UTC 2013 - ftake@geeko.jp
+
+- add "Supplements" tag to ibus-gnome-shell
+
+-------------------------------------------------------------------
+Thu Mar 28 18:26:44 UTC 2013 - i@marguerite.su
+
+- fix a typo in Group
+- fix python-bytecode-inconsistent-mtime
+
+-------------------------------------------------------------------
+Thu Mar 28 15:32:19 UTC 2013 - jengelh@inai.de
+
+- Put gnome-shell integration files into separate package because
+  these (since openSUSE 12.3) pull in a lot of new unwanted packages
+  on a GNOME-less system compared to 12.2. (bnc#812298)
+- Set versions on BuildRequires according to configure.ac
+- Use more robust make install call
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Sat Feb 16 15:59:12 UTC 2013 - ftake@geeko.jp
+
+- better solution for bnc#802967
+  * add ibus_indicator-14.patch: a shell extension for GNOME 3.6
+  * update ibus-fix-tray-icon-on-gnome-3.6.patch
+
+-------------------------------------------------------------------
+Sat Feb  9 03:13:13 UTC 2013 - hillwood@linuxfans.org
+
+- fix bnc#802967
+  * fix ibus's tray icon can't show in gnome-shell 3.6 for openSUSE 12.3,
+    add ibus-fix-tray-icon-on-gnome-3.6.patch
+
+-------------------------------------------------------------------
+Thu Jan 10 12:50:49 UTC 2013 - ftake@geeko.jp
+
+- add ibus-fix-docs-build-error.patch: to fix build error
+  in Factory
+
+-------------------------------------------------------------------
+Wed Oct 17 04:20:14 UTC 2012 - douglarek@outlook.com
+
+-  .spec file optimization
+
+   * remove commented patch lines
+   * use `make %{?_smp_mflags}` instead of `make %{?jobs:-j%jobs}`
+     see: http://en.opensuse.org/openSUSE:Specfile_guidelines#Parallel_make
+
+-------------------------------------------------------------------
+Sat Aug 25 12:25:17 UTC 2012 - hillwood@linuxfans.org
+
+- update to 1.4.2
+  Some bug fixings
+
+-------------------------------------------------------------------
+Mon Jun 18 10:59:35 CEST 2012 - tiwai@suse.de
+
+- Move the strict dependency on libibus-1_0-0 to ibus main package;
+  otherwise user may get the inconsistent setups
+
+-------------------------------------------------------------------
+Thu May 17 07:11:11 UTC 2012 - swyear@gmail.com
+
+- remove soft link in RPM_BUILD_ROOT
+
+-------------------------------------------------------------------
+Thu May 17 06:10:46 UTC 2012 - swyear@gmail.com
+
+- mkdir target directory before link
+
+-------------------------------------------------------------------
+Thu May 17 05:49:31 UTC 2012 - swyear@gmail.com
+
+- fix build error in Factory: ln should be done in buildroot
+
+-------------------------------------------------------------------
+Wed Mar  7 13:54:43 UTC 2012 - hillwood@linuxfans.org
+
+- Fix FSF-address warnings in RPMLINT report
+
+-------------------------------------------------------------------
+Wed Mar 07 04:27:57 UTC 2012 - hillwood@linuxfans.org
+
+- Update to 1.4.1
+   * Many bug fixings
+- Fix several RPMLINT report warnings
+
+-------------------------------------------------------------------
+Sun Feb 12 17:29:16 UTC 2012 - ftake@geeko.jp
+
+- Fix problem default preload engines do not work (bnc#746612)
+- Fix slow down issue after "source xim.d/ibus" in a SSH session
+
+-------------------------------------------------------------------
+Tue Jan 24 10:12:30 UTC 2012 - vuntz@opensuse.org
+
+- Split typelib file into typelib-1_0-IBus-1_0 subpackage.
+- Add typelib-1_0-IBus-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Thu Oct 13 11:42:01 CEST 2011 - tiwai@suse.de
+
+- Add obsoletes for libibus2-32bit in baselibs.conf
+
+-------------------------------------------------------------------
+Wed Oct 12 12:50:19 UTC 2011 - ftake@geeko.jp
+
+- update to 1.4.0
+    * Status icon for GNOME 3 (bug#723591)
+
+-------------------------------------------------------------------
+Tue Sep  6 17:17:56 UTC 2011 - ftake@geeko.jp
+
+- Fix xim.d/ibus to launch D-Bus daemon (only for newer D-Bus)
+
+-------------------------------------------------------------------
+Mon Aug  8 16:34:13 CEST 2011 - tiwai@suse.de
+
+- Fix baselibs.conf to update GTK immodule cache properly for
+  ibus-gtk-32bit and ibus-gtk3-32bit packages, too
+- Clean up spec file
+
+-------------------------------------------------------------------
+Mon Jun 27 14:21:46 CEST 2011 - tiwai@suse.de
+
+- dropped the dependencies with release number
+- simplify for passing gtk3 configure option
+
+-------------------------------------------------------------------
+Sun Jun 19 12:43:54 UTC 2011 - swyear@gmail.com
+
+- Change files in package, some should move to devel subpackage and libibus package
+
+-------------------------------------------------------------------
+Thu Jun 16 07:37:21 CEST 2011 - tiwai@suse.de
+
+- Fix xim.d locale directories of ja and ko
+- Add xim.d selections for more locales to replace with SCIM
+
+-------------------------------------------------------------------
+Wed Jun 15 11:50:47 CEST 2011 - tiwai@suse.de
+
+- Add provides tag for supported locales (ja, ko, zh)
+- Add proper supplements tags to gtk immodule packages
+
+-------------------------------------------------------------------
+Mon Jun 13 16:15:29 UTC 2011 - swyear@gmail.com
+
+- Update to ibus 1.3.9
+- Set priority to 40, if we want to use ibus as default input method,
+  better use a lower priority, so if any other input method framework
+  installed, system can use other input method instead.
+- Update README
+- Remove kimpanel script from start up script
+- Add gtk3 immodule
+
+-------------------------------------------------------------------
+Wed Mar  9 11:58:08 CET 2011 - tiwai@suse.de
+
+- Fix post scripts to use new gtk2_immodule_* macros (bnc#678080)
+
+-------------------------------------------------------------------
+Wed Nov 17 08:44:04 UTC 2010 - mxwu@novell.com
+
+- Upgrade to ibus 1.3.8:
+    * Fix CPU 100% usage with signal.SIGCHLD
+    * Destroy existing connection before creating a new
+      connection, and only create the fake context once.
+    * Move the candidate window just above the cursor
+      when the window and a preedit string overlap.
+    * Enable key snooper by default again
+    * Always consume the hotkey, even if the hotkey
+      associated engine already activated.
+    * Fix race condition in bus_ibus_impl_create_engine()
+    * Fix a build error of IBus-1.0.gir with gobject-introspection 0.9.6
+    * Implement stress tool for ibus.
+    * Fix a build error with GTK3 gdkkeysyms.h
+    * Add time info in log message from satorux@chromium.org
+    * Fix memory leak in ibus_input_context_process_key_event by Fujiwarat
+    * Fix segv in bus_engine_proxy_process_key_event_reply_cb
+    * Fix property issue.
+    * Updated many translations.
+
+-------------------------------------------------------------------
+Tue Jul 13 07:44:40 UTC 2010 - mxwu@novell.com
+
+- Add ibus-disable-portability-check.patch
+  * Disable automake's portability check, make OBS happy.
+
+-------------------------------------------------------------------
+Mon Jul 12 08:49:24 UTC 2010 - mxwu@novell.com
+
+- Upgrade to 1.3.6:
+  * Support gtk3
+  * Support gobject-introspection
+  * Support vala language
+  * Fix some bugs
+
+-------------------------------------------------------------------
+Tue May 11 10:00:07 UTC 2010 - mxwu@novell.com
+
+- Upgrade to 1.3.3:
+  * Add configure option to disable key snooper in gtk im context
+  * Fix a crash in ibus-x11
+  * Fix a crash in ibus-daemon
+  * For show language bar option, use {Embedded in menu} to replace {Never}.
+  * Update some translation files
+  * Fix crash if ibus loads engine.xml failed
+  * Fix focus problems
+  * Does not hard code iso-codes location
+  * Fix link problem with binutils-gold
+  * Updated translations
+  * Optimize database query method for better performance
+  * Many bug fixing
+  * use floating IBusObject
+  * support share one global engine in all applications
+  * some ui improvements
+  * many bug fixing
+
+-------------------------------------------------------------------
+Fri Mar 26 17:18:38 CET 2010 - tiwai@suse.de
+
+- move post scriptlets to install
+
+-------------------------------------------------------------------
+Wed Mar 24 12:35:15 CET 2010 - tiwai@suse.de
+
+- Split libibus1 subpackage
+- Misc clean-ups in spec file, avoid unnecessary workarounds
+
+-------------------------------------------------------------------
+Thu Jan 28 10:36:38 UTC 2010 - mxwu@novell.com
+
+- Add ibus-python-install-dir.patch
+  - Fix the installing path on X86_64
+
+-------------------------------------------------------------------
+Thu Jan 28 07:41:08 UTC 2010 - mxwu@novell.com
+
+- Initial import
+

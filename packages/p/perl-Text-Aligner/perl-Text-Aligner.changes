@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu May  5 10:17:41 UTC 2016 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Text-Aligner/Changes
+
+  0.13  2016-04-17
+        - Eliminate a warning "Negative repeat count does nothing" in recent
+        perl5s in the test suite.
+              - https://rt.cpan.org/Ticket/Display.html?id=113841
+              - Thanks to KENTNL for the report and SREZIC for some guidance.
+
+-------------------------------------------------------------------
+Tue Feb 10 13:43:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.12
+       - Relicensed under the ISC license (with ANNO's permission).
+       - Better documentation.
+ 
+ 0.11  2014-10-10
+       - More meaningful README.
+             - https://rt.cpan.org/Public/Bug/Display.html?id=99412
+             - Thanks to MITHALDU for the report.
+
+-------------------------------------------------------------------
+Tue Mar  4 20:23:53 UTC 2014 - tchvatal@suse.com
+
+- Clean up with spec-cleaner
+- Version bump to 0.10:
+  * update download url
+  * Now requiring Term::ANSIColor version 2.02.
+  * Remove some *~ files.
+  * Convert to Dist-Zilla / dist.ini for better CPANTS Kwalitee.
+  * Various changes were involved.
+  * Correct typos.
+
+-------------------------------------------------------------------
+Tue Apr 26 18:25:16 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.07
+  One colorskip-dependent test moved into skip block as per rt. #61276
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:41 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:17 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Aug 29 06:39:16 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.06)
+

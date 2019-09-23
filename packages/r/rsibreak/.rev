@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a01e3eb36bbc2d0f26b7213b7fef3d9</srcmd5>
+    <version>0.8.0</version>
+    <time>1168904127</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9fdc527ed6b363dbc171f321b925dde2</srcmd5>
+    <version>0.8.9+0.9.0_b3</version>
+    <time>1216676755</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>29f0946f09349c11e0c8901528be7df0</srcmd5>
+    <version>0.8.9+0.9.0_b4</version>
+    <time>1223909707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e112ab18f92624a70d6f9261e2519597</srcmd5>
+    <version>0.8.9+0.9.0_b4</version>
+    <time>1224693973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>269dc59cb82ec9c2ed36c66066929517</srcmd5>
+    <version>0.8.9+0.9.0_b5</version>
+    <time>1226069275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>af367e96e11ac32feba4c8722a39235d</srcmd5>
+    <version>0.8.9+0.9.0_b5</version>
+    <time>1226273855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ae8c9f5abfd1f2e85c8e0db447608784</srcmd5>
+    <version>0.9.0</version>
+    <time>1227871505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>93e985eee9e6c919d18cb9263ebaa891</srcmd5>
+    <version>0.9.0</version>
+    <time>1232410773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>61accf772283879e850f116db8c43c7b</srcmd5>
+    <version>0.9.0</version>
+    <time>1240788448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>29251c4c935ca1ca8c8df6dce03d107f</srcmd5>
+    <version>0.9.0</version>
+    <time>1241787103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f55581c16b0b791e183bb768e4a752bf</srcmd5>
+    <version>0.10</version>
+    <time>1248541133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f55581c16b0b791e183bb768e4a752bf</srcmd5>
+    <version>0.10</version>
+    <time>1248541133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>4a3e0ab5e86934da865f66c38a1237f1</srcmd5>
+    <version>0.10</version>
+    <time>1266508462</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/rsibreak based on submit request 32627 from user llunak
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>33093de8ed52a82220be3afe96d63d92</srcmd5>
+    <version>0.10</version>
+    <time>1268926004</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>33093de8ed52a82220be3afe96d63d92</srcmd5>
+    <version>0.10</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>33093de8ed52a82220be3afe96d63d92</srcmd5>
+    <version>0.10</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7e2b47858afb9bd7315b67a44c8e61e2</srcmd5>
+    <version>0.11</version>
+    <time>1295288511</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58327 from user wstephenson
+</comment>
+    <requestid>58327</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>147241c697a6f4de910ef0d919076bd7</srcmd5>
+    <version>0.11</version>
+    <time>1295288522</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58327
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>147241c697a6f4de910ef0d919076bd7</srcmd5>
+    <version>0.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>f29f3463f4375b1876ba1731f0eb992e</srcmd5>
+    <version>0.11</version>
+    <time>1314781158</time>
+    <user>saschpe</user>
+    <comment>few fixes for RPMLINT warnings and clean up the specfile formatting (forwarded request 80159 from mlin7442)</comment>
+    <requestid>80164</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>e3d6475ed23ee78daeee72091215cd54</srcmd5>
+    <version>0.11</version>
+    <time>1314781165</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80164
+</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>04c2a32a047f496d470bdb5f721d943c</srcmd5>
+    <version>0.11</version>
+    <time>1316504181</time>
+    <user>lrupp</user>
+    <comment>- Recommend the -lang package 
+
+- Removed test for obsolete openSUSE version (fix for RPMLINT warning)
+- Split doc package (fix for RPMLINT warning)
+- Split lang package (fix for RPMLINT warning)
+- Cleaned up spec file formatting</comment>
+    <requestid>83646</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>04c2a32a047f496d470bdb5f721d943c</srcmd5>
+    <version>0.11</version>
+    <time>1319182431</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>1b04cc648425c18834d1c7b0ccff503c</srcmd5>
+    <version>0.11</version>
+    <time>1323194441</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>1b04cc648425c18834d1c7b0ccff503c</srcmd5>
+    <version>0.11</version>
+    <time>1340184150</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>1b04cc648425c18834d1c7b0ccff503c</srcmd5>
+    <version>0.11</version>
+    <time>1359110297</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="17">
+    <srcmd5>84751653fbaadecf17f4f4b719838acb</srcmd5>
+    <version>0.11</version>
+    <time>1374758231</time>
+    <user>coolo</user>
+    <comment>BuildRequire only libkde4-devel, instead of kdebase4-workspace-devel, avoids rebuilds, and not required (forwarded request 184271 from sumski)</comment>
+    <requestid>184272</requestid>
+  </revision>
+  <revision rev="28" vrev="19">
+    <srcmd5>84751653fbaadecf17f4f4b719838acb</srcmd5>
+    <version>0.11</version>
+    <time>1379664475</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="21">
+    <srcmd5>84751653fbaadecf17f4f4b719838acb</srcmd5>
+    <version>0.11</version>
+    <time>1409303202</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>851b48b01bb534544a6d4b73fe351232</srcmd5>
+    <version>0.12</version>
+    <time>1447234294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343328</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>db8968417b38d44d3fb0dc38e95555ab</srcmd5>
+    <version>0.12.3</version>
+    <time>1472026094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417701</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d73cd58c7fa4cad09221e5ce9c935bbd</srcmd5>
+    <version>0.12.7</version>
+    <time>1494088237</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492921</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>489fec7f4a82da80c5236c6b75900b9e</srcmd5>
+    <version>0.12.8</version>
+    <time>1518514338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575951</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>420b977a61f992beacbbf5c1b7a0b33c</srcmd5>
+    <version>0.12.9</version>
+    <time>1539251698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640813</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>709ddeb9ad2cdeb153c64a0114493de3</srcmd5>
+    <version>0.12.10</version>
+    <time>1561049790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711031</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>65678121b9b95bb16037ff129f47f36f</srcmd5>
+    <version>0.12.10</version>
+    <time>1563701582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712679</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bbc5726a5ca0521bc03f2f9e692fcd3b</srcmd5>
+    <version>0.12.11</version>
+    <time>1569235144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732337</requestid>
+  </revision>
+</revisionlist>

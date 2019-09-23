@@ -1,0 +1,28 @@
+Index: rarian-0.8.1/librarian/rarian-reg-full.c
+===================================================================
+--- rarian-0.8.1.orig/librarian/rarian-reg-full.c
++++ rarian-0.8.1/librarian/rarian-reg-full.c
+@@ -338,7 +338,8 @@ process_pair_full (RrnRegFull *reg, char
+     }
+   } else if (!strcmp (key, "Icon")){
+     reg->icon = strdup (value);
+-  } else if (!strncmp (key, "X-", 2)) {
++  } else if (!strncmp (key, "X-", 2) ||
++             !strncmp (key, "Icon[", 5)) {
+     /* ignore */
+   } else {
+     fprintf (stderr, "WARNING: Unknown element %s: %s\n", key, value);
+Index: rarian-0.8.1/librarian/rarian-reg-utils.c
+===================================================================
+--- rarian-0.8.1.orig/librarian/rarian-reg-utils.c
++++ rarian-0.8.1/librarian/rarian-reg-utils.c
+@@ -536,7 +536,8 @@ process_pair (RrnReg *reg, char *key, ch
+              !strcmp  (key, "Version") ||
+              0) {
+     /* ignore */
+-  } else if (!strncmp (key, "X-", 2)) {
++  } else if (!strncmp (key, "X-", 2) ||
++             !strncmp (key, "Icon[", 5)) {
+     /* ignore */
+   } else {
+     fprintf (stderr, "WARNING: Unknown element %s: %s\n", key, value);

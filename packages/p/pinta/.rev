@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb6fc6376bba02f9d4a561848c70b983</srcmd5>
+    <version>0.3</version>
+    <time>1275065814</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Community/pinta based on submit request 40605 from user ajorgensen
+</comment>
+    <requestid>40605</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cb6fc6376bba02f9d4a561848c70b983</srcmd5>
+    <version>0.3</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cb6fc6376bba02f9d4a561848c70b983</srcmd5>
+    <version>0.3</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>622241112d81fa910296dac1b71584b9</srcmd5>
+    <version>0.4</version>
+    <time>1286398171</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Community/pinta based on submit request 49883 from user coolo
+</comment>
+    <requestid>49883</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f94517d0b963e55ab4f2a686267b79f4</srcmd5>
+    <version>0.6</version>
+    <time>1297508172</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60543 from user ajorgensen
+</comment>
+    <requestid>60543</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>49dd6d35f6746fd4c9aa6d44ea330430</srcmd5>
+    <version>0.6</version>
+    <time>1297508188</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60543
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>49dd6d35f6746fd4c9aa6d44ea330430</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>53fd360d39234d90287cb72ee1aa4cdb</srcmd5>
+    <version>1.0</version>
+    <time>1304675478</time>
+    <user>saschpe</user>
+    <comment>1.0</comment>
+    <requestid>68731</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>edcc89881f389cff7ac410d90a3c0168</srcmd5>
+    <version>1.0</version>
+    <time>1304675495</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68731
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>edcc89881f389cff7ac410d90a3c0168</srcmd5>
+    <version>1.0</version>
+    <time>1319182359</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>6247916ffab069504b4077c40ea9ff4b</srcmd5>
+    <version>1.0</version>
+    <time>1323193914</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>452efd1dd592d62dfd2be82d3d152436</srcmd5>
+    <version>1.1</version>
+    <time>1337955501</time>
+    <user>coolo</user>
+    <comment>version update 1.1 (forwarded request 114334 from MargueriteSu)</comment>
+    <requestid>122227</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>452efd1dd592d62dfd2be82d3d152436</srcmd5>
+    <version>1.1</version>
+    <time>1340184003</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3214b595d7d0a12757b0589dffbe38db</srcmd5>
+    <version>1.4</version>
+    <time>1349250926</time>
+    <user>coolo</user>
+    <comment> (forwarded request 136255 from MargueriteSu)</comment>
+    <requestid>136259</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3214b595d7d0a12757b0589dffbe38db</srcmd5>
+    <version>1.4</version>
+    <time>1359109928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>3214b595d7d0a12757b0589dffbe38db</srcmd5>
+    <version>1.4</version>
+    <time>1379664033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>c8b864d39d966633a0f8f28656e43f23</srcmd5>
+    <version>1.4</version>
+    <time>1397626517</time>
+    <user>coolo</user>
+    <comment>resubmit</comment>
+    <requestid>230171</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d92edfd5d486c96948f07b27827668cb</srcmd5>
+    <version>1.5</version>
+    <time>1401208210</time>
+    <user>coolo</user>
+    <comment>new upstream release (forwarded request 235455 from develop7)</comment>
+    <requestid>235492</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>d92edfd5d486c96948f07b27827668cb</srcmd5>
+    <version>1.5</version>
+    <time>1409302705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>093d577547d7ff8123d6baacf6311fee</srcmd5>
+    <version>1.6</version>
+    <time>1425566607</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289290</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>716b9e32bc7ed2a8c6de487fb4dea266</srcmd5>
+    <version>1.6</version>
+    <time>1434133877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311626</requestid>
+  </revision>
+</revisionlist>

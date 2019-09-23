@@ -1,0 +1,9 @@
+<package name="unifdef" project="openSUSE:Factory">
+  <title>Removes ifdefs from C files</title>
+  <description>Unifdef is useful for removing ifdef'ed lines from a file while
+otherwise leaving the file alone.  Unifdef acts on #ifdef, #ifndef,
+#else, and #endif lines, and it knows only enough about C to know when
+one of these is inactive because it is inside a comment, or a single or
+double quote.</description>
+  <devel project="devel:tools" package="unifdef"/>
+</package>

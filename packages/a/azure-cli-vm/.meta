@@ -1,0 +1,11 @@
+<package name="azure-cli-vm" project="openSUSE:Factory">
+  <title>Microsoft Azure CLI 'vm' Command Module</title>
+  <description>Microsoft Azure CLI 'vm' Command Module
+
+This package is for the 'vm' module.
+i.e. 'az vm'
+
+</description>
+  <devel project="Cloud:Tools" package="azure-cli-vm"/>
+  <url>https://github.com/Azure/azure-cli</url>
+</package>

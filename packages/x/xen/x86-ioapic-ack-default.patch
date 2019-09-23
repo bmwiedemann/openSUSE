@@ -1,0 +1,18 @@
+Change default IO-APIC ack mode for single IO-APIC systems to old-style.
+
+Index: xen-4.10.0-testing/xen/arch/x86/io_apic.c
+===================================================================
+--- xen-4.10.0-testing.orig/xen/arch/x86/io_apic.c
++++ xen-4.10.0-testing/xen/arch/x86/io_apic.c
+@@ -2029,7 +2029,10 @@ void __init setup_IO_APIC(void)
+         io_apic_irqs = ~PIC_IRQS;
+ 
+     printk("ENABLING IO-APIC IRQs\n");
+-    printk(" -> Using %s ACK method\n", ioapic_ack_new ? "new" : "old");
++    if (!directed_eoi_enabled && !ioapic_ack_forced) {
++        ioapic_ack_new = (nr_ioapics > 1);
++        printk(" -> Using %s ACK method\n", ioapic_ack_new ? "new" : "old");
++    }
+ 
+     if (ioapic_ack_new) {
+         ioapic_level_type.ack = irq_complete_move;

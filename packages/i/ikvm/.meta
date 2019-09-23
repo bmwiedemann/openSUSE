@@ -1,0 +1,8 @@
+<package name="ikvm" project="openSUSE:Factory">
+  <title>A JVM Based on the Mono Runtime</title>
+  <description>This package provides IKVM.NET, an open source Java compatibility layer
+for Mono, which includes a Virtual Machine, a bytecode compiler, and
+various class libraries for Java, as well as tools for Java and Mono
+interoperability.</description>
+  <devel project="Mono:Factory" package="ikvm"/>
+</package>

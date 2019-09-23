@@ -1,0 +1,5 @@
+<package name="vegastrike-music" project="openSUSE:Factory">
+  <title>Music for Vega Strike</title>
+  <description>Music for Vega Strike, a GPL 3D OpenGL Action RPG space sim that allows a player to trade and bounty hunt. This archive contains the music files necessary to hear music in VegaStrike. These files are *not* essential to play the game.</description>
+  <devel project="games" package="vegastrike-music"/>
+</package>

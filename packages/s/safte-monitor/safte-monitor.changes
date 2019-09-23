@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:41:44 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Mar 15 20:06:24 UTC 2017 - sfalken@opensuse.org
+
+- Added explicit BuildRequires: m4, to clear builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Fri Aug  1 02:42:38 UTC 2014 - sfalken@opensuse.org
+
+- Modified paths to use /run for statedir instead of /var/run to clear 
+  rpmlint check failures in os:Factory
+- Modified:
+    safte-monitor-create-state-run-dir-on-init.patch
+     
+
+-------------------------------------------------------------------
+Thu Oct 18 00:20:30 UTC 2012 - lduncan@suse.com
+
+- Add safte-monitor-create-state-run-dir-on-init.patch: create
+  /var/run/safte-monitor at service start time instead of install
+  time. (bnc#710293)
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Tue Jun 16 07:29:14 CEST 2009 - coolo@novell.com
+
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Thu Aug 28 23:14:25 CEST 2008 - cthiel@suse.de
+
+- fix build script
+
+-------------------------------------------------------------------
+Thu Aug  9 22:47:03 CEST 2007 - olh@suse.de
+
+- update ioctl arguments, the size arg is not sizeof() anymore
+
+-------------------------------------------------------------------
+Mon Jun 18 16:48:16 CEST 2007 - dmueller@suse.de
+
+- fix init script dependencies
+
+-------------------------------------------------------------------
+Tue Sep 12 18:37:14 CEST 2006 - ro@suse.de
+
+- fix another case of non-void function returning void 
+
+-------------------------------------------------------------------
+Tue Jul  4 09:22:05 CEST 2006 - aj@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Sat May 27 19:21:08 CEST 2006 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun 17 14:51:15 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS, add include string.h in one place.
+
+-------------------------------------------------------------------
+Sun Jan 11 09:48:21 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Sep  2 19:10:46 CEST 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#28930]
+
+-------------------------------------------------------------------
+Mon Jun  2 10:30:08 CEST 2003 - ro@suse.de
+
+- correctly install alert script 
+
+-------------------------------------------------------------------
+Thu Feb 20 11:59:44 CET 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#22680]
+- Only setup and patch in %prep
+
+-------------------------------------------------------------------
+Fri Aug 30 17:49:18 MEST 2002 - garloff@suse.de
+
+- Add comment to SAFTEMONITOR_OPTIONS sysconfig variable (#18656)
+
+-------------------------------------------------------------------
+Mon Aug 19 02:37:53 MEST 2002 - garloff@suse.de
+
+- Add %fillup_prereq and %insserv_prereq (bug #17976)
+
+-------------------------------------------------------------------
+Wed Aug  7 10:24:56 MEST 2002 - garloff@suse.de
+
+- Renamed package to safte-monitor (trademark issues)
+- Update to version 0.0.5
+
+-------------------------------------------------------------------
+Thu May  9 20:09:41 MEST 2002 - garloff@suse.de
+
+- Build package from saftemon-0.0.4
+- Fix init script and sysconfig file to match SuSE conventions
+- Move alert script to /etc/saftemon/alert
+

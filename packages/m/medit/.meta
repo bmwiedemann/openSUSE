@@ -1,0 +1,16 @@
+<package name="medit" project="openSUSE:Factory">
+  <title>medit</title>
+  <description>Multiplatform GTK text editor.
+ 
+It's features:
+* Configurable syntax highlighting.
+* Configurable keyboard accelerators.
+* Multiplatform - works both on unix and windows.
+* Plugins: can be written in C or Python.
+* Configurable tools available from the main
+  and context menus. They can bewritten in Python,
+  Lua, or it can be a shell script.
+* Regular expression search/replace, grep and find
+  frontends, builtin file selector, etc.</description>
+  <devel project="editors" package="medit"/>
+</package>

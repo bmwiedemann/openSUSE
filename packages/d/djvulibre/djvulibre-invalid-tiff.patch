@@ -1,0 +1,13 @@
+diff --git a/tools/cjb2.cpp b/tools/cjb2.cpp
+index 3da3ea8..701238d 100644
+--- a/tools/cjb2.cpp
++++ b/tools/cjb2.cpp
+@@ -744,6 +744,8 @@ read_tiff(CCImage &rimg, ByteStream *bs, cjb2opts &opts)
+                               readproc, writeproc, seekproc,
+                               closeproc, sizeproc, 
+                               mapproc, unmapproc );
++  if (! tiff)
++    G_THROW("Tiff image is corrupted (cannot open)");
+   // bitonal
+   uint16 bps = 0, spp = 0;
+   TIFFGetFieldDefaulted(tiff, TIFFTAG_BITSPERSAMPLE, &bps);

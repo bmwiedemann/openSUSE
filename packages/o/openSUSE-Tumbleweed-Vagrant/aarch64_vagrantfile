@@ -1,0 +1,15 @@
+Vagrant.configure("2") do |config|
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.driver = "kvm"
+    libvirt.host = 'localhost'
+    libvirt.uri = 'qemu:///system'
+    libvirt.host = "master"
+    libvirt.features = ["apic"]
+    libvirt.loader = "/usr/share/qemu/aavmf-aarch64-code.bin"
+    libvirt.video_type = "vga"
+    libvirt.cpu_mode = "host-passthrough"
+    libvirt.machine_type = "virt-3.1"
+    libvirt.emulator_path = "/usr/bin/qemu-system-aarch64"
+  end
+end

@@ -1,0 +1,5 @@
+<package name="R-yaml" project="openSUSE:Factory">
+  <title></title>
+  <description>Methods to convert R data to YAML and back</description>
+  <devel project="devel:languages:R:released" package="R-yaml"/>
+</package>

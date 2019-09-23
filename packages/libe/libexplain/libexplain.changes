@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Nov 26 08:44:27 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update license information
+
+-------------------------------------------------------------------
+Fri Nov 16 09:13:26 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Nov 15 13:59:05 UTC 2018 - jkohoutek@suse.com
+
+- Fixed missing clockid_t definition
+  * libexplain-1.4-missing-defines.patch
+
+-------------------------------------------------------------------
+Mon Apr 11 12:01:59 UTC 2016 - mpluskal@suse.com
+
+- Fix building with kernel-4.5 and later
+  * libexplain-1.4-missing-defines.patch
+- Fix rpm group
+
+-------------------------------------------------------------------
+Mon Apr 13 07:02:44 UTC 2015 - mpluskal@suse.com
+
+- Initial package for version 1.4
+- Use patches from fedora
+  * libexplain-1.4-largefile.patch 
+  * libexplain-1.4-syscall.patch 

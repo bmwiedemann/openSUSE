@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21647c48efba1b3b85b72ca5f746d249</srcmd5>
+    <version>20171215</version>
+    <time>1516634250</time>
+    <user>dimstar_suse</user>
+    <comment>new package to factory.
+
+Neomutt is a fork of mutt and provides same functionality, but wants to be more
+open to development and feature rich. The codebase of the two projects has
+diverged substantially and it's not feasible to keep neomutt patch hidden
+inside our mutt package.
+
+Besides the packaging/patch, the mutt project does not want to see neomutt
+patch being applied to mutt and still calling the package 'mutt' by the
+distros. This has been made clear when neomutt was added to Debian
+(https://marc.info/?l=mutt-users&amp;m=149875493532305&amp;w=2 ,
+https://marc.info/?l=mutt-users&amp;m=149886522430053&amp;w=2 ).
+
+The two packages can be installed in parallel and use different config files,
+so there is no usability hurdle for existing mutt users.
+~
+</comment>
+    <requestid>565772</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>77f298511c3c4d971191fbb30a85ccbc</srcmd5>
+    <version>20180223</version>
+    <time>1519683872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579482</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6e4b686be17cf0afd3671e136d3c003d</srcmd5>
+    <version>20180223</version>
+    <time>1519902469</time>
+    <user>dimstar_suse</user>
+    <comment>- spec cleanup
+- move manual.txt from neomutt-doc as it's bound to F1 key (forwarded request 581014 from dsterba)</comment>
+    <requestid>581015</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>adf286a95237b57c48ed42104ebef2eb</srcmd5>
+    <version>20180323</version>
+    <time>1522062599</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20180323 (forwarded request 590746 from dsterba)</comment>
+    <requestid>590747</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d531a3c1318584a568bf8a671b1b92a5</srcmd5>
+    <version>20180512</version>
+    <time>1527583058</time>
+    <user>dimstar_suse</user>
+    <comment>- spec cleanup
+- update to 20180512</comment>
+    <requestid>611048</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a84e469abd1dd770135e9a9a92c4437</srcmd5>
+    <version>20180622</version>
+    <time>1530087685</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: move license files to the main package
+- update to 20180622 (forwarded request 618955 from dsterba)</comment>
+    <requestid>618956</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>383fccad1446eca9cc7b1c0ddcb5b95f</srcmd5>
+    <version>20180716</version>
+    <time>1531947434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623631</requestid>
+  </revision>
+</revisionlist>

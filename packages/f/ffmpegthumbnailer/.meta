@@ -1,0 +1,5 @@
+<package name="ffmpegthumbnailer" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="ffmpegthumbnailer"/>
+</package>

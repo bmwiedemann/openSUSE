@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>212d3a73d7c3cc12cde9c1237d726c90</srcmd5>
+    <version>1.4.9.1</version>
+    <time>1428652447</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull benchmark</comment>
+    <requestid>295097</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b8207bb82c1529349577d63cefa273c7</srcmd5>
+    <version>1.4.9.1</version>
+    <time>1467705122</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on some architectures:
+  * make-dofile-global.patch
+- Add manpage</comment>
+    <requestid>406116</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>88fbf445333b3f19af060f221ca6a237</srcmd5>
+    <version>1.4.9.1</version>
+    <time>1491896332</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>484247</requestid>
+  </revision>
+</revisionlist>

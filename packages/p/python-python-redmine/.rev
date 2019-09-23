@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f1aae301b18f53cd1a257a9aee8c240</srcmd5>
+    <version>2.2.1</version>
+    <time>1551468641</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.1
+  Bugfixes:
+  * ProjectMembership resource ``group`` attribute was returned as
+    a dict instead of being converted to Resource object
+- Update to version 2.2.0
+  Improvements:
+  * ``PerformanceWarning`` will be issued when Python-Redmine does
+    some unnecessary work under the hood to fix the clients code
+    problems
+  Changes:
+  * *Backwards Incompatible:* Removed vendored Requests package
+    and make it an external dependency as Requests did the same with
+    it's own dependencies
+  * *Backwards Incompatible:* Removed Python 2.6 and 3.3 support as
+    they're not supported by Requests anymore
+  Bugfixes:
+  * ``Redmine.upload()`` fails under certain circumstances when used
+    with a file-like object and it contains unicode instead of bytes
+  * - ``Redmine.session()`` doesn't restore previous engine if fails
+- Update patch:
+  * python-python-redmine-use-system-requests.patch
+- Use %license for license install
+- Initial package, version 2.0.2
+- Add patch:
+  * python-python-redmine-use-system-requests.patch
+</comment>
+    <requestid>680144</requestid>
+  </revision>
+</revisionlist>

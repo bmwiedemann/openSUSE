@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Oct 12 17:39:36 UTC 2017 - sndirsch@suse.com
+
+- added COPYING to %doc
+
+-------------------------------------------------------------------
+Thu Oct 12 03:53:35 UTC 2017 - sndirsch@suse.com
+
+- mention baselibs.conf as source in specfile 
+
+-------------------------------------------------------------------
+Wed Oct 11 22:52:40 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.2:
+  Version 1.2 of the X-Resource extension (added in xserver 1.13) added some
+  new requests allowing inspection of every resource for a client, the bytes
+  used per resource, and the PIDs of local clients.
+  This is the release for the corresponding client library.
+
+-------------------------------------------------------------------
+Sat Jun  1 19:54:00 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.7:
+  This release primarily provides the fix for the recently announced
+  security vulnerability CVE-2013-1988, along with improved compatibility
+  with future automake releases.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Apr 11 15:12:22 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.6:
+  + Janitorial cleanups
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages

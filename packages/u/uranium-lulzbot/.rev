@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>052557ebc49e412f4001d92f99a4c6de</srcmd5>
+    <version>3.2.16</version>
+    <time>1524238018</time>
+    <user>dimstar_suse</user>
+    <comment>For openSUSE:Factory:Staging:adi:21</comment>
+    <requestid>596112</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>037f2e0eaafe06652c95a10ccd38c749</srcmd5>
+    <version>3.2.20</version>
+    <time>1526372148</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>607039</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1574ddf5740a8c539e558cdfea9db103</srcmd5>
+    <version>3.2.22</version>
+    <time>1531379927</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621913</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1237253cf0b14037922ee7af2a242f3b</srcmd5>
+    <version>3.2.23</version>
+    <time>1532293465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624276</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7275e9d414e37e68495ffa3b52f9e904</srcmd5>
+    <version>3.2.24</version>
+    <time>1533549289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.24
+  * rotate tool updates</comment>
+    <requestid>627595</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe7734525f7d46ffac77f8b5f7ea52f7</srcmd5>
+    <version>3.2.28</version>
+    <time>1537964626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.28
+  * fixing rotation and duplicate model selection</comment>
+    <requestid>638244</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f7bda979b7d7b329133364ed2daeb01</srcmd5>
+    <version>3.6.4</version>
+    <time>1551113538</time>
+    <user>coolo</user>
+    <comment>cura version update</comment>
+    <requestid>677901</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a4c2e9eac2fb090459cb99b69464d0c</srcmd5>
+    <version>3.6.5</version>
+    <time>1554833927</time>
+    <user>dimstar_suse</user>
+    <comment>3.6.5 update</comment>
+    <requestid>692491</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56100c29d66bb5478e72f9c93c17b6d4</srcmd5>
+    <version>3.6.9</version>
+    <time>1560800016</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>705774</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>050a2745de8fc1d424433fda54f356cd</srcmd5>
+    <version>3.6.10</version>
+    <time>1561557869</time>
+    <user>dimstar_suse</user>
+    <comment>version 3.6.10</comment>
+    <requestid>712057</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>05c2aabea3fb9f31624438a696cd0113</srcmd5>
+    <version>3.6.18</version>
+    <time>1565963500</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>724032</requestid>
+  </revision>
+</revisionlist>

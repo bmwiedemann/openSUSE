@@ -1,0 +1,25 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-02-19 07:16:45.000000000 +0100
+
+---
+ src/version.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: prboom2-2.5.1.5+svn4532/src/version.c
+===================================================================
+--- prboom2-2.5.1.5+svn4532.orig/src/version.c
++++ prboom2-2.5.1.5+svn4532/src/version.c
+@@ -37,11 +37,11 @@
+ #include "version.h"
+ 
+ #ifndef BUILD_DATE
+-#define BUILD_DATE __DATE__
++#define BUILD_DATE ""
+ #endif
+ 
+ #ifndef BUILD_TIME
+-#define BUILD_TIME __TIME__
++#define BUILD_TIME ""
+ #endif
+ 
+ const char version_date[] = BUILD_DATE " " BUILD_TIME;

@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a09951a17d1c02ef8028ab4c0c65fd9</srcmd5>
+    <version>4.0.6</version>
+    <time>1363940498</time>
+    <user>coolo</user>
+    <comment>Useful zope component</comment>
+    <requestid>159554</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2a09951a17d1c02ef8028ab4c0c65fd9</srcmd5>
+    <version>4.0.6</version>
+    <time>1379664323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4e184231724c3a8444a9e40eb7c41678</srcmd5>
+    <version>4.0.6</version>
+    <time>1379926792</time>
+    <user>coolo</user>
+    <comment>- generate documentation in separate -doc file
+- enable tests (run tests on source tree) (forwarded request 184852 from frispete)</comment>
+    <requestid>184931</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>df82474c530c46601f0ce12b7d875767</srcmd5>
+    <version>4.0.6</version>
+    <time>1382693814</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204694</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>df82474c530c46601f0ce12b7d875767</srcmd5>
+    <version>4.0.6</version>
+    <time>1409303031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea9de8e2919261bdcb0b64eb2fc8f0e9</srcmd5>
+    <version>4.0.7</version>
+    <time>1432072041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307906</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a76bda1ad986b1e5af5646a92cadc9e</srcmd5>
+    <version>4.0.7</version>
+    <time>1441726755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328797</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>054d10136303e1c4b1a816463840dc99</srcmd5>
+    <version>4.1.0</version>
+    <time>1499510046</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unneeded _multibuild
+- Update to version 4.1.0
+- Split -doc into separate package and put tests there</comment>
+    <requestid>508150</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0b9d2f06b7615c31f841eee902d27cb8</srcmd5>
+    <version>4.1.0</version>
+    <time>1544726786</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654090</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d21aabf285a9477347ac5974fa7e8673</srcmd5>
+    <version>4.3</version>
+    <time>1554833807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3
+  * Add support for Python 3.6 and 3.7.
+  * Drop support for Python 3.3.
+  * Fix handling of unicode supplemental traceback information on 
+    Python 2.
+- drop *-doc subpackage, use multibuild instead</comment>
+    <requestid>691727</requestid>
+  </revision>
+</revisionlist>

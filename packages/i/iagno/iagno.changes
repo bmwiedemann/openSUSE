@@ -1,0 +1,474 @@
+-------------------------------------------------------------------
+Mon Mar 11 17:46:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Unfullscreen button added.
+  + Added some keyboard shortcuts to improve the keyboard play when
+    using some locales.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 21 16:46:21 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + The user can now display the final state of the game, by
+    undoing after (or during) the final animation; and this
+    animation is also more reliable (it was randomly failing).
+    Also, the Adwaita (blue) theme that is used as default already
+    if the user changes GNOME settings to always use dark theme is
+    now also default when the Gtk theme is Adwaita-dark. Other than
+    that, many code cleanings and various small fixes (highlight,
+    focus).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 18 22:38:39 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + Iagno switched to Meson.
+  + Use the org.gnome.Reversi application-id.
+  + Updated translations.
+- Switch to meson build system, add meson BuildRequires and macros.
+- Add itstool and vala BuildRequires: New dependencies.
+- Add explicit pkgconfig(gio-2.0) and pkgconfig(libcanberra)
+  BuildRequires: align with what meson checks for.
+- Drop obsolete hicolor-icon-theme and yelp-tools BuildRequires: No
+  longer needed.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:43:06 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.4:
+  + The application menu has been retired and replaced by an
+    hamburger menu.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  7 20:02:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.0:
+  + Some Gitlab-migration-related.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 15 23:29:37 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+- Update URL tag to https://wiki.gnome.org/Apps/Iagno: the current
+  Iagno's web page.
+- Drop:
+  + intltool BuildRequires as upstream ported to Gettext.
+  + update-desktop-files BuildRequires and suse_update_desktop_file
+    macro: they are no longer required.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:30 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  2 03:33:33 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Some now-unused files removed.
+  + Updated translations.
+- Drop %glib2_gsettings_schema_requires, %glib2_gsettings_schema_*,
+  %desktop_database_* and %icon_theme_cache_* post/postun macros:
+  functionality now covered by file triggers.
+
+-------------------------------------------------------------------
+Tue Sep 20 16:30:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.22.0:
+  + Some AppData fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 13 20:21:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 30 10:15:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:40:20 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.90:
+  + Update appdata.
+  + Simplify style-checker enabling code.
+  + Fix style-checker with new libgnome-games-support.
+  + Add Language headers to po files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May 10 17:37:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 14 16:38:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:33:48 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:14:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.19.92:
+  + The “valign” property of some buttons of the headerbar has been
+    set to “center”, to look better on some rare configurations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  1 10:42:40 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 21:55:15 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.19.90:
+  + The “Black and White” (high_contrast) theme has evolved to look
+    good when used with the new GTK+ theme “HighContrastInverse”,
+    and is set as the default for it.
+  + Updates of the metadata files (AppData and Doap).
+  + Add a code style checker.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 24 01:38:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.19.1:
+  + Adaptation to current CSS-nodes (will break again).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Nov 12 09:28:11 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.2:
+  + Update CSS for uses with newer Gtk+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 17:58:46 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Better error message.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 21 12:33:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 07:37:27 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Fix dragging the window after clicking the game view.
+
+-------------------------------------------------------------------
+Wed Sep  2 09:01:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 18 08:40:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + Add support for rounded-squared tiles in themes.
+  + Update screenshots in help.
+  + Print --version output on stdout.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 28 18:52:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Add keyboard support.
+  + Update drawing function.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:14:43 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.1:
+  + Temporarily remove Sun and Star theme, that causes a memory
+    leak.
+  + HighContrast icons removed (as the symbolic one is now used).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 13:09:40 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:45:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.92:
+  + Add symbolic icon.
+  + Don't crash when closing.
+  + Restore the hack that makes the new-game screen work correctly.
+  + Better code for command-line options.
+  + Introduce one (two) CSS hack(s) for a weird HighContrast
+    (non-)behaviour.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:25:00 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.91:
+  + Big code reorganisation, correcting some weird bugs,
+    including a crasher.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 09:35:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90.2:
+  + Real fix that makes themes work.
+
+-------------------------------------------------------------------
+Tue Feb 17 09:30:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.15.90.1:
+  + Fix distcheck.
+- Changes from version 3.15.90:
+  + Scoreboard that changes with the theme.
+  + New themes' dialog, new themes.
+  + Implement new design for new game screen.
+  + Switch from appdata-tools to appstream-utils.
+  + Updated translations.
+- Change license to GPL-3.0, following upstreams relicensing.
+
+-------------------------------------------------------------------
+Tue Nov 18 17:02:29 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.15.1:
+  + Make the background green and thicken the grid.
+  + Use piece images instead of text in the scoreboard.
+  + Add a new game screen.
+  + The AI is now much weaker on level one.
+  + The AI no longer blocks the UI thread to think.
+  + The AI takes more time to move when only one spot remains.
+  + Move sound preference to the app menu.
+  + Add ability to change board size with command line.
+  + Add alternative starting position command line switch.
+  + Accept right clicks as input, since why not?
+  + Code cleanups.
+  + Very many internal changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 12 15:35:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 10 06:35:09 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.1:
+  + The level one AI is now much easier.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:21:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 15:59:31 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.13.91:
+  + AI fixes and improvements, hopefully.
+  + Never create multiple preferences dialogs.
+  + Restore <ctrl>Z shortcut for undo move.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 22:28:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Distribute HighContrast icons.
+  + Disallow undo if only computer has moved.
+  + Use an AspectFrame to ensure all looks good.
+  + Update man page.
+  + Updated translations.
+- Build HighContrast icon cache in post/postun.
+
+-------------------------------------------------------------------
+Mon Jul 21 11:08:37 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.4:
+  + Use a text label for the new game button.
+  + Use header bar on preferences dialog.
+  + Use better window title for preferences dialog.
+  + Preferences dialog changes.
+  + Do not allow computer vs. computer games.
+  + Add some new command line options.
+  + Add a jumplist to the desktop file.
+  + Window layout tweaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 17 08:15:23 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 14 19:16:49 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 24 18:45:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Fix some bugs with the user help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 08:25:08 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.92:
+  + Fix padding around scoreboard.
+  + Attempt to center the board using wide window sizes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 17 09:50:02 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.11.90:
+  + Now uses a header bar.
+  + Removed the info bar. Messages are now displayed in the header
+    bar instead.
+  + Undo Move has moved from the app menu to the header bar.
+  + The grid is now solid and mandatory, and sits on the left side
+    of the window.
+  + A new game button now appears in the window after the game is
+    complete.
+  + Flip final result preference removed; this is now mandatory.
+  + The computer now moves more slowly, to avoid overwhelming the
+    player.
+  + Iagno can be started with -f or --fast-mode to avoid this
+    delay.
+  + Many older themes have been removed.
+  + Updated man page
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 19 20:00:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 30 18:56:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.1:
+  + Make the AI play much slower to give the game a more natural
+    tempo.
+  + Fix serious bug affecting the performance of the AI.
+  + Miscellaneous code cleanups.
+  + Add some simple test cases.
+  + Appdata is now translatable.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 13 11:10:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.1:
+  + Fix crazy computers when starting a new game in computer vs.
+    computer mode.
+  + Fix bug affecting the correctness of the computer's choice of
+    moves.
+  + Fix additional low-level issues triggered by computer search,
+    including one that caused the piece flip sound to play many
+    times in close succession.
+  + Fix undo after having passed.
+  + Fix infobar disappearing if intended to be displayed two moves
+    in a row.
+  + Fix piece flipped sound improperly playing at the start of the
+    game.
+  + Reallow undo after the game has ended.
+  + Add delay between last move and final flip to prevent the
+    scenario where it appears the last player placed a piece of the
+    wrong color.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 23 07:09:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Stable release, no changes.
+
+-------------------------------------------------------------------
+Tue Sep 17 06:56:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.92:
+  + Show the grid by default so the edges of the board are clear.
+  + Fix hang after many pieces have been placed on the board.
+  + Fix hang when neither player has a valid move.
+  + Prohibit Undo after the game has ended.
+
+-------------------------------------------------------------------
+Tue Sep  3 06:46:05 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Add an AppData file.
+
+-------------------------------------------------------------------
+Sat Aug 24 09:54:24 UTC 2013 - zaitor@opensuse.org
+
+- Add fdupes buildrequires, and use fdupes macro to get rid of
+  duplicate help files. 
+
+-------------------------------------------------------------------
+Wed Aug 21 13:58:48 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.90:
+  + Alphabetize theme selection in Preferences.
+  + Display the correct score at the end of the game.
+  + Fix two broken links in user help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 15 17:56:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 27 07:40:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Merge themes from extras module.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 20:16:14 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 3.7.90: split-off from gnome-games. 
+

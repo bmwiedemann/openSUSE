@@ -1,0 +1,78 @@
+#!/bin/bash
+#############################################################
+# Name:        Supportconfig Plugin for QEMU/KVM
+# Description: Gathers important troubleshooting information
+#              about QEMU
+# Author:      Jim Fehlig <jfehlig@suse.com>
+#############################################################
+
+RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
+
+if [ -s $RCFILE ]; then
+    if ! source $RCFILE; then
+        echo "ERROR: Initializing resource file: $RCFILE" >&2
+        exit 1
+    fi
+fi
+
+rpm_verify() {
+    thisrpm="$1"
+    local ret=0
+
+    echo
+    echo "#==[ Validating RPM ]=================================#"
+    if rpm -q "$thisrpm" >/dev/null 2>&1; then
+        echo "# rpm -V $thisrpm"
+
+        if rpm -V "$thisrpm"; then
+            echo "Status: Passed"
+        else
+            echo "Status: WARNING"
+        fi
+    else
+        echo "package $thisrpm is not installed"
+	ret=1
+    fi
+    echo
+    return $ret
+}
+
+if ! rpm_verify qemu; then
+    echo "Skipped"
+    exit 0
+fi
+
+# skip if the host is xen
+echo "#==[ Checking if booted Xen ]=================================#"
+if [ -d /proc/xen ] && [ -e /proc/xen/capabilities ] && [ `cat /proc/xen/capabilities` = "control_d" ]; then
+    echo "Yes"
+    echo "Skipped"
+    exit 0
+else
+    echo "No"
+    echo
+fi
+
+# basic system information
+plugin_command "uname -r"
+plugin_command "lscpu"
+plugin_command "kvm_stat -1"
+plugin_command "lsmod | grep ^kvm"
+for MODULE in `lsmod | grep ^kvm | cut -d ' ' -f 1`; do
+    plugin_command "modinfo $MODULE"
+done
+plugin_command "ps -ef | grep qemu"
+
+# list contents of common config and image directories
+plugin_command "ls -alR /var/lib/kvm/images/"
+
+# network-related info often useful for debugging
+if [ systemctl is-enabled NetworkManager.service 2>&1 > /dev/null ]; then
+    echo "NOTE: NetworkManager should not be enabled on a KVM host"
+fi
+plugin_command "route -n"
+plugin_command "arp -v"
+plugin_command "ip link show type bridge"
+plugin_command "bridge link show"
+
+echo "Done"

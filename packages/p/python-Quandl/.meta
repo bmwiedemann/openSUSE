@@ -1,0 +1,11 @@
+<package name="python-Quandl" project="openSUSE:Factory">
+  <title>Package for quandl API access</title>
+  <description>Official Python library for Quandl's RESTful API.
+
+</description>
+  <devel project="devel:languages:python" package="python-Quandl"/>
+  <build>
+    <disable/>
+  </build>
+  <url>https://github.com/quandl/quandl-python</url>
+</package>

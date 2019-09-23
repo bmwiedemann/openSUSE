@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Sun Mar 17 14:57:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description and fixup some
+  spelling/grammar issues.
+
+-------------------------------------------------------------------
+Thu Feb 28 15:20:17 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.12.16
+  * DeprecationWarning: Flags not at the start of the expression
+  * Some modules set __file__ as None 
+  * gevent-1.3.0 removes 'fast' wsgi implementation.
+
+-------------------------------------------------------------------
+Wed Mar 29 15:24:50 UTC 2017 - toddrme2178@gmail.com
+
+- update pdf doc file.
+
+-------------------------------------------------------------------
+Thu Mar 23 18:09:54 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- use automation for docs
+- update to 0.12.13
+  * bugfix release
+  * fixed TypeError on unicode WSGI headers
+  * fixed get_header on FileUpload
+  * fixed crlf header injection (CVE-2016-9964)
+  * switch to setuptools for build
+  * allow multiline dict/list/set comprehensions in templates
+  * allow unicode keys in ConfigDict
+
+-------------------------------------------------------------------
+Sun Apr 26 18:21:13 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.12.8: no upstream changelog
+- update bottle-docs.pdf
+- point the source URL of the pdf to the project homepage
+- create of separate subpackage for the pdf documentation
+
+-------------------------------------------------------------------
+Tue May 20 12:20:37 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 0.12.7
+  * No upstream changelog
+- Update to 0.12
+  * New SimpleTemplate parser implementation
+    * Support for multi-line code blocks (<% ... %>). 
+    * The keywords include and rebase are functions now
+      and can accept variable template names.
+  * The new BaseRequest.route() property returns the Route
+    that originally matched the request.
+  * Removed the BaseRequest.MAX_PARAMS limit. 
+    The hash collision bug in CPythons dict() implementation was 
+    fixed over a year ago. If you are still using Python 2.5 in 
+    production, consider upgrading or at least make sure that you 
+    get security fixed from your distributor.
+  * New ConfigDict API (see Configuration (DRAFT))
+
+-------------------------------------------------------------------
+Tue Sep 17 19:50:09 UTC 2013 - os-dev@jacraig.com
+
+- Update to 0.11.6:
+  * Fix content-type header in mounted apps
+- Changes from 0.11.5:
+  * Update HTTPResponse call when mounting apps
+  * BUg fix: Some cookies are lost when using mount()
+
+-------------------------------------------------------------------
+Thu Nov 22 13:35:28 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.11.4:
+  + Upstream provides no changelog
+- Changes from version 0.11:
+  + Native support for Python 2.x and 3.x syntax. No need to run 2to3 anymore.
+  + Support for partial downloads (Range header) in static_file().
+  + The new ResourceManager interface helps locating files bundled with an
+    application.
+  + Added a server adapter for waitress.
+  + New Bottle.merge() method to install all routes from one application
+    into another.
+  + New BaseRequest.app property to get the application object that
+    handles a request.
+  + Added FormsDict.decode() to get an all-unicode version (needed by WTForms).
+  + MultiDict and subclasses are now pickle-able.
+  + Response.status is a read-write property that can be assigned either a
+    numeric status code or a status string with a reason phrase (200 OK). The
+    return value is now a string to better match existing APIs (WebOb,
+    werkzeug). To be absolutely clear, you can use the read-only properties
+    BaseResponse.status_code and BaseResponse.status_line.
+  + SimpleTALTemplate is now deprecating. There seems to be no demand.
+
+-------------------------------------------------------------------
+Wed Aug 15 03:24:14 UTC 2012 - highwaystar.ru@gmail.com
+
+- updated to 0.10.11
+- python3 package added
+- spec improved (files section) 
+
+-------------------------------------------------------------------
+Mon Mar 12 20:46:22 UTC 2012 - saschpe@gmx.de
+
+- update to version 0.10.9
+
+-------------------------------------------------------------------
+Fri Sep 23 13:53:20 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.9.6
+- Removed file LICENSE, upstream now has LICENSE.txt
+
+-------------------------------------------------------------------
+Fri Nov 19 10:38:29 UTC 2010 - cfarrell@novell.com
+
+- Added LICENSE and bottle-docs.pdf.
+- Removed dead symlink README 
+
+-------------------------------------------------------------------
+Fri Nov 19 09:21:46 UTC 2010 - cfarrell@novell.com
+
+- Initial build 
+

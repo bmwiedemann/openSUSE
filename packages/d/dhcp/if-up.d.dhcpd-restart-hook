@@ -1,0 +1,159 @@
+#! /bin/bash
+#
+# dhcpd-restart-hook - script to restart dhcpd on virtual interfaces
+#
+# Copyright (C) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
+#
+# Author(s): Marius Tomaschewski <mt@suse.de>, 2009
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# version 2 as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <http://www.gnu.org/licenses/>
+#
+# Please send feedback via http://www.suse.de/feedback
+#
+
+set -e
+
+unset ${!LC_*} LANUGUAGE
+export LANG=POSIX
+export PATH=/sbin:/usr/sbin:/usr/bin:/bin
+
+SCRIPTNAME=${0##*/}
+
+usage () {
+        echo "usage: $SCRIPTNAME [<config>] <interface> [-o <options>]"
+        echo ""
+        echo "Any options are ignored"
+        exit $R_USAGE
+}
+
+R_INTERNAL=1      # internal error, e.g. no config or missing scripts
+cd /etc/sysconfig/network || exit $R_INTERNAL
+
+case $1 in ""|-h|*help*) usage ;; esac
+INTERFACE="$1"
+if test "x$2" != x -a "x$2" != "x-o" ; then
+        CONFIG=$INTERFACE
+        INTERFACE="$2"
+else
+        CONFIG=$INTERFACE
+fi
+
+
+. /etc/sysconfig/network/config
+if test -f /etc/sysconfig/network/scripts/functions ; then
+	.  /etc/sysconfig/network/scripts/functions
+fi
+
+. /etc/sysconfig/dhcpd                   2>/dev/null
+. /etc/sysconfig/network/ifcfg-"$CONFIG" 2>/dev/null || true
+
+: ${DHCPD_IFUP_RESTART:=auto}
+: ${DHCPD6_IFUP_RESTART:=auto}
+
+iface_needs_restart()
+{
+        test -d /sys/class/net/$1/bridge  -o \
+             -d /sys/class/net/$1/bonding -o \
+             -f /proc/net/vlan/$1
+}
+
+dhcpv4_server_restart()
+{
+        #
+        # don't do anything if we are disabled either
+        # in the /etc/sysconfig/dhcpd or per interface
+        # in the /etc/sysconfig/network/ifcfg-"$CONFIG"
+        #
+        test "$DHCPD_IFUP_RESTART" = no && return 0
+
+        # don't restart for loopback interface
+        case $INTERFACE in (lo) return 0 ;; esac
+
+        restart_needed=$DHCPD_IFUP_RESTART
+        if test -n "$DHCPD_INTERFACE" \
+                -a "$restart_needed" != yes ;
+        then
+                for I in $DHCPD_INTERFACE ; do
+                        test -n "$I" || continue
+
+                        # don't restart when _one_ involved
+                        # interface is not available/up yet
+                        is_iface_up $I || return 0
+
+                        # check if this interface is involved
+                        if test "$I" = "$INTERFACE" ; then
+
+                                # check if a restart is needed
+                                if iface_needs_restart $I ; then
+                                        restart_needed=yes
+                                fi
+                        fi
+                done
+        fi
+
+        if test "$restart_needed" = yes ; then
+                /etc/init.d/dhcpd try-restart
+        fi
+}
+dhcpv6_server_restart()
+{
+        #
+        # don't do anything if we are disabled either
+        # in the /etc/sysconfig/dhcpd or per interface
+        # in the /etc/sysconfig/network/ifcfg-"$CONFIG"
+        #
+        test "$DHCPD6_IFUP_RESTART" = no && return 0
+
+        # don't restart for loopback interface
+        case $INTERFACE in (lo) return 0 ;; esac
+
+        restart_needed=$DHCPD6_IFUP_RESTART
+        if test -n "$DHCPD6_INTERFACE" \
+                -a "$restart_needed" != yes ;
+        then
+                for I in $DHCPD6_INTERFACE ; do
+                        test -n "$I" || continue
+
+                        # don't restart when _one_ involved
+                        # interface is not available/up yet
+                        is_iface_up $I || return 0
+
+                        # check if this interface is involved
+                        if test "$I" = "$INTERFACE" ; then
+
+                                # check if a restart is needed
+                                if iface_needs_restart $I ; then
+                                        restart_needed=yes
+                                fi
+                        fi
+                done
+        fi
+
+        if test "$restart_needed" = yes ; then
+                /etc/init.d/dhcpd6 try-restart
+        fi
+}
+
+case "$0" in
+*if-up.d*)
+	dhcpv4_server_restart
+	dhcpv6_server_restart
+;;
+*if-down.d*)
+        # don't do anything
+;;
+*)
+        echo "$SCRIPTNAME: don't know what to do" >&2
+;;
+esac
+

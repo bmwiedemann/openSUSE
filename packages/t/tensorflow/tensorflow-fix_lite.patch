@@ -1,0 +1,16 @@
+--- tensorflow-1.13.1/tensorflow/lite/tools/make/Makefile.orig	2019-06-04 13:13:08.329080620 +0200
++++ tensorflow-1.13.1/tensorflow/lite/tools/make/Makefile	2019-06-04 16:05:13.325963284 +0200
+@@ -38,11 +38,12 @@ INCLUDES := \
+ -I$(OBJDIR)
+ # This is at the end so any globally-installed frameworks like protobuf don't
+ # override local versions in the source tree.
+-INCLUDES += -I/usr/local/include
++INCLUDES += -I/usr/include
+ 
+ # These are the default libraries needed, but they can be added to or
+ # overridden by the platform-specific settings in target makefiles.
+ LIBS := \
++-lflatbuffers \
+ -lstdc++ \
+ -lpthread \
+ -lm \

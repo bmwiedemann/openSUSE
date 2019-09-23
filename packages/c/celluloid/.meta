@@ -1,0 +1,8 @@
+<package name="celluloid" project="openSUSE:Factory">
+  <title>Simple GTK+ frontend for MPV</title>
+  <description>Celluloid is a simple GTK+ frontend for MPV.
+
+</description>
+  <devel project="multimedia:apps" package="celluloid"/>
+  <url>https://celluloid-player.github.io</url>
+</package>

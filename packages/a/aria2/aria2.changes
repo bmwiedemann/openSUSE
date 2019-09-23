@@ -1,0 +1,1786 @@
+-------------------------------------------------------------------
+Wed Jan  9 13:47:29 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix CVE-2019-3500 boo#1120488
+  * aria2-CVE-2019-3500.patch
+- Move bash completion to better location
+
+-------------------------------------------------------------------
+Thu May 17 00:23:51 UTC 2018 - avindra@opensuse.org
+
+- Update to version 1.34.0
+  * UnknownLengthPieceStorage: return piece length show something
+    in console status when downloading items with unknown content length
+  * Fix bug that signal handler does not work with libaria2 when
+    aria2::RUN_ONCE is passed to aria2::run().
+  * Retry on HTTP 502
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 13 09:26:14 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.33.1:
+  * This release fixes a bug that causes high CPU usage in mingw
+    build.
+
+-------------------------------------------------------------------
+Thu Oct 19 07:50:10 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.33.0:
+  * libaria2: Return last error code from
+    DownloadHandle::getErrorCode
+  * libuv: use pkg-config
+  * Add --peer-agent option
+  * Add --bt-load-saved-metadata option
+  * Don't save control file if --auto-save-interval is 0.
+  * Fix infinite loop bug when file is not found
+
+-------------------------------------------------------------------
+Fri May 19 08:43:41 UTC 2017 - petr@cervinka.net
+
+- Version bump to 1.32.0
+  * Clarify --max-concurrent-downloads option
+  * Fix compile error with toolchain which lacks IPV6_TCLASS
+  * Log directed URI in notice log level
+  * Spelling and typo fixes
+  * Remove unused Android parts
+  * Save control file early
+  * Update links in Dockerfile.raspberrypi
+  * Propagate disk full error on pre-allocation to last error code
+
+-------------------------------------------------------------------
+Wed Mar  8 22:05:35 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files section to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Thu Jan 19 13:32:33 UTC 2017 - dasantiago@suse.com
+
+- Version bump to 1.31.0
+  * Better error message when local file status cannot be retrieved
+  * Fix assertion failure in SimpleRandomizer::getRandomBytes
+  * Add option content-disposition-default-utf8
+
+-------------------------------------------------------------------
+Sat Dec 17 16:03:55 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.30.0:
+  * Fix bug that --disable-websocket causes build error
+  * Fix bug that lower bound of optimize-concurrent-downloads becomes 1
+  * Print DHT nodes with -S option
+  * Take into account address family when resolving DHT node address
+  * Allow block device file to -i option
+  * Expand ${HOME} to user's home directory in several options
+  * The following options implement this substitution:
+    --ca-certificate
+    ---certificate
+    --dht-file-path
+    --dht-file-path6
+    ---dir
+    --input-file
+    --load-cookies
+    --log
+    --metalink-file
+    --netrc-path
+    --on-bt-download-complete
+    --on-download-complete
+    --on-download-error
+    --on-download-start
+    --on-download-stop
+    --on-download_pause
+    --out
+    --private-key
+    --rpc-certificate
+    --rpc-private-key
+    --save-cookies
+    --save-session
+    --server-stat-if
+    --server-stat-of
+    --torrent-file
+  * Document that libaria2 is not thread safe
+- Fix typos in changelog
+
+-------------------------------------------------------------------
+Thu Nov 17 17:51:29 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.29.0:
+  * WinTLS: Fix busy loop on write error
+  * Support 1xx non-final response
+  * Update wslay
+  * Don't download piece which is filtered out (e.g., --select-file)
+
+-------------------------------------------------------------------
+Tue Oct 18 22:28:05 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.28.0:
+  * Restore LTLIBINTL in src/Makefile.am
+  * Add --keep-unfinished-download-result option
+  * Fix -Wexpansion-to-defined warning with clang-3.9
+  * Fix bug that file name is not logged with --conditional-get
+
+-------------------------------------------------------------------
+Mon Oct  3 19:09:07 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.27.1:
+  * Add missing libssl_compat.h to SRCS
+- Changes for version 1.27.0:
+  * Fix possible cause of crash if UDP tracker is used
+  * Remove custom ftruncate64 for Android
+  * The latest NDK versions support ftruncate64, so building a
+    local copy of ftruncate64 is no longer needed.
+  * Also, the arm and x86 builds of ftruncate64 failed when
+    targeting API level 21 or higher, as they include which are not
+    present starting from API level 21.
+  * Fix typo found by Debian's Lintian
+  * Add --save-not-found option
+  * Compile with openssl 1.1.0
+
+-------------------------------------------------------------------
+Thu Sep  1 07:40:55 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.26.1:
+  * Make assertion hold 
+
+-------------------------------------------------------------------
+Sun Aug 21 10:47:01 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.26.0:
+  * aria2mon: Replace client.call with local method
+  * Reorder a note section in aria2c.rst
+  * bash_completion: Add missing options which takes one of
+    pre-defined values
+  * Replace "/" with "-" in magnet dn name when used as in-memory
+    download name
+  * Fix Dockerfile.raspberrypi to correctly decompress expat
+    archive
+  * Enable ccache in travis-ci
+  * Enable OSX/macOS build for travis
+  * Better auto-renaming
+  * Log number of items loaded from input file
+  * Link external libraries to libaria2 with --enable-libaria2
+  * Allow seconds for seed-time (fractional minutes)
+- Drop no longer needed aria2-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Wed Jul 27 22:04:15 UTC 2016 - jengelh@inai.de
+
+- Trim filler phrases from description.
+  Explicitly add BR:pkgconfig so pkgconfigdeps.sh can autocreate
+  pkgconfig() symbols.
+
+-------------------------------------------------------------------
+Mon Jul 25 13:57:04 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.25.0:
+  * Update third-party libraries for binary releases
+  * Send have message without too much delay
+  * Also send bitfield rather than have messages if bitfield 
+    message is equal to or less than the sum of have messages 
+    which otherwise would be sent.
+  * Fix bug that causes bogus EOF connection failure in BitTorrent 
+    downloads
+  * Fix frequent interested/not interested message transmission
+  * Fix frequent choke/unchoke message transmission
+  * Try to use available URI if all pooled requests are sleeping
+  * Update expat in OSX build
+  * aria2mon: Add --secret option
+  * Set server status error on network failure in server
+    performance profile
+  * Disable AI_ADDRCONFIG if no IPv4/IPv6 address is configured for
+    any interface
+  * Russian manual: Update aria2c.rst
+  * Apply --retry-wait on 503 only
+  * Ensure that lowest speed check is done even when download speed 
+    is 0
+  * Document that -o is always relative to -d option
+  * Allow larger ut_metadata size
+  * mingw: Change FD_SETSIZE to 32768
+  * Fix compile error on OS X
+- Add aria2-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Sat Jun 18 10:02:37 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.24.0:
+  * BitTorrent: Allow 32KiB request
+  * Don't unchoke peer which is not interested in us
+  * Fix bug that evaluation of Peer::amChoking is negated
+  * Faster seed/download on fast connection
+  * Increase DHT task concurrency to 15
+  * Fixed mmap failure check with MAP_FAILED flag
+  * Added file size overflow check for mmap on 32bit os
+  * Use standard percent-encode for tracker request query
+  * mingw32: Gain privilege before opening files
+  * Restart active download to apply previously not applicable
+    options
+
+-------------------------------------------------------------------
+Tue May 17 08:16:35 UTC 2016 - mpluskal@suse.com
+
+- Update to version 1.23.0:
+  * Simplify cache write
+  * Allow subsecond value in ns cookie.txt file's expiry time field
+  * Adjust chromium cookie time
+  * import-po: iterate on glob, not ls output
+  * Add --stderr option to redirect all stdout log output to stderr
+  * Add "hide" to --download-result option
+  * Fix downloaded metaurl torrent filename
+  * Add a little bit of color to have a better visual of important 
+    informations
+  * Update README URLs based on HTTP redirects
+  * Relocate from github.com/tatsuhiro-t/aria2 to 
+    github.com/aria2/aria2
+  * mingw: Defer the falloc warning until falloc is specified by 
+    option
+  * Add bittorrent key to aria2.tellStopped status
+  * Addsystem.listNotifications RPC method
+  * Report CheckIntegrity info in tellStatus
+- Update download url
+
+-------------------------------------------------------------------
+Sat Apr 30 23:25:52 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.22.0:
+  * Add description about possible fragmentation with
+    --file-allocation=trunc.
+  * Make single-entry metalink download with multi-file torrent
+    work.
+  * Add all contributor's names in AUTHORS.
+  * Ignore floating number in torrent file.
+  * Added support for a dynamic management of the number of
+    concurrent downloads as a function of the overall bandwidth
+    observed. This change adds --optimize-concurrent-downloads
+    option.
+  * Add --stream-piece-selector=random.
+
+-------------------------------------------------------------------
+Thu Mar 31 20:24:17 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.21.0
+  * SessionSerializer: Fix bug that pause=true is added to wrong 
+    item
+  * Add "following" to aria2.tellStatus response key as reverse 
+    link for followedBy
+  * mingw: Add warning for falloc
+  * Update ciphers in AppleTLS
+  * OSX: Enable libssh2 and sftp
+  * Update OSX dependencies
+  * Fix compile error without TLS support
+  * Add support for using gnutls system wide crypto policy
+- Update project url
+
+-------------------------------------------------------------------
+Sun Mar  6 08:33:14 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.20.0
+  * src/WinConsoleFile.cc: fix colour
+  * configure.ac: fix autoreconf error
+  * Don't inherit file descriptor to child process
+  * Update Russian version documentation
+  * Add "seeder" key to tellStatus RPC response
+  * WinTLS: Fix hang because of buffered received data
+  * Add --max-mmap-limit option
+  * mingw: Use SetFileValidData to make --file-allocation=falloc
+    work
+  * Retry with 504 status code
+  * Increase DHT transaction ID from 2 to 4 bytes to avoid conflict
+  * Update wslay
+  * Add --enable-werror option to configure to enable warning flags
+  * Don't modify user variables (e.g., CFLAGS, LIBS, etc)
+  * Improve error message when loading pkcs12 file failed
+  * Updated dependency and source url's
+  * Reduce delay in tracker request
+  * Disable IPv6 on non-async NameResolver if configuration wants
+  * Fix mysterious 1 second delay with async DNS
+  * Fix bug that UDP port was incorrectly used in UDP tracker 
+    announce request
+  * Refactor HttpRequest
+  * Send Want-Digest as per RFC 3230
+  * Try all found address set to bind sockets with 
+    --multiple-interface
+  * Replace sourceforge references with aria2.github.io
+  * Add system.listMethods RPC method
+  * Support content-range from non-compliant server
+  * Reduce UDP tracker request timeout
+  * Apply --retry-wait when retrying after 404
+- Spec file cleanup
+  * Dependencies updated
+  * Install localised manpages
+  * Simplify conditions
+
+-------------------------------------------------------------------
+Sun Dec  6 16:40:34 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.19.3
+  * Fix bug that pause/unpause seeding torrent prevents new 
+		downloads from starting
+	* Add --bt-enable-hook-after-hash-check option
+	* Add --socket-recv-buffer-size option
+	* Set the maximum socket receive buffer in bytes. Specifing 0 
+		will disable this option. This value will be set to socket file 
+		descriptor using SO_RCVBUF socket option with setsockopt() call.
+	* Disable --deferred-input when --save-session is used together
+	* base32: decode lowercased characters as well
+	* Send the last error message as part of tellStatus RPC response
+	* Don't enable mmap if file allocation is disabled
+	* Evict timed out pooled socket periodically
+	* Don't write control file if content is not changed from 
+		previous one
+	* Remove content-length and content-range if transfer-encoding 
+		is given
+	* Retry after 404 status if --max-file-not-found > 0
+- Build shared library
+
+-------------------------------------------------------------------
+Sat Nov 21 10:47:45 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.19.2
+  * Fix bug that progress summary is not shown timely
+- Changes for 1.19.1
+	* Update README.android
+	* Providing some workarounds about CA certificates and standard 
+		output
+	* Return 400 HTTP status code if exception was caught while 
+		executing RPC method
+	* Fix on-download-error is executed even if download succeeded
+	* Increase --select-file upper bound to 1m for torrent 
+		containing lots of files
+	* Fix busy loop with --dry-run and 4xx response for URI listed 
+		in metalink
+	* Make LibuvEventPoll compatible with the latest libuv again
+	* gnutls: Allow SIGN-RSA-SHA1 for compatibility reason
+	* Make script compatible with both Python 2 and 3
+	* Make config and cache files conform to XDG
+	* ftp, sftp: Fix heap-after-free bug on exception
+	* ftp: Fix timeout when reusing FTP connection
+- Update download url
+
+-------------------------------------------------------------------
+Mon Aug  3 22:22:42 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.19.0
+  * android: Build and link with zlib Previously, we linked with 
+    zlib shipped with NDK, but it seems this is not part of NDK 
+    API, and thus could break our app.
+  * Allow netrc-path to be specified in the config file Adds 
+    --netrc-path to override default .netrc search path.
+  * Exit with 32 status code if checksum verification failed
+  * Add SFTP support using libssh2 aria2 can now download files 
+    via sftp protocol: aria2c sftp://.... --ssh-host-key-md option 
+    is added to specify expected server's fingerprint.
+  * Added Dockerfile to cross complile aria2 for RaspberryPI (armhf)
+  * multiple interface support for link aggregation Adds 
+    --multiple-interface option.  Patch from Sarim Khan
+  * Run on-bt-download-complete command when -V reports download 
+    finished
+  * Use dedicated DiskWriter in MultiDiskFileAllocationIterator 
+    We have to use dedicated DiskWriter instead of 
+    (*entryItr_)->getDiskWriter().  This is because 
+    SingleFileAllocationIterator cannot reopen file if file is 
+    closed by OpenedFileCounter.
+  * Fix getrandom for system with libc not including errno or 
+    systems not supporting ENOSYS in the first place.
+  * Don't send back rpc-secret option value in 
+    aria2.getGlobalOption RPC method
+  * Make libuv default off
+  * Fixed slow RPC response
+  * Fix getrandom interface detection
+- Enable ssh suport using libssh2
+
+-------------------------------------------------------------------
+Sun Apr 26 20:04:40 UTC 2015 - mpluskal@suse.com
+
+- Add dependency on libuv for current Tumbleweed
+- Remove _DATE_ and _TIME_
+
+-------------------------------------------------------------------
+Tue Apr 14 19:31:52 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.18.10:
+  * Add encoding specifier to Russian man page
+    Fixes GH-341
+  * Mingw: Use _wgetenv to get user's home directory
+    Fixes GH-342
+  * Handle linux getrandom returning EINTR on interrupts/signals
+    Fixes GH-336
+- additional changes from 1.18.9:
+  * Support HTTP date ending "+0000" as well as "GMT".
+    Closes GH-330
+  * Revise getRandom facilities
+    Closes GH-320
+  * Added debug log of all Metalink URLs with final priorities
+  * Use gcc-4.9 and android-16 API level for android build
+  * Add --bt-force-encryption option
+  * TLS: Fix memory leak with OpenSSL
+  * Warn about insecure SSL connections.
+    Fixed GH-313
+  * Add --min-tls-version option
+  * LibsslTLSContext: Disable SSLv3 and enable ECDHE cipher suites
+  * Add Dockerfile.mingw
+  * Fix crash when JSON batch response vector is empty
+  * Fix doc: Wrong rpc secret token prefix
+  * Add --bt-detach-seed-only option
+  * mingw: Use MoveFileExW for better atomic move
+  * Work around libintl's vprintf macro messing with
+    OutputFile::vprintf
+  * Fix crash on OSX when proxy is used
+    See GH-275
+  * Support Adler32 checksum
+
+-------------------------------------------------------------------
+Wed Dec 17 10:12:43 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.18.8
+  + WinTLS: Fix abrupt connection closing and closing in general.
+  + Fixes GH-277
+  + LibsslTLSSession: Treat 0 from readData as EOF
+  + Enable dynamicbase and nxcompat in Windows binaries
+  + Fix crash in OpenedFileCounter::ensureMaxOpenFileLimit()
+  + The crash happens if PieceStorage and/or DiskAdaptor are not 
+    initialized in one of active RequestGroups.
+  + mingw32: Fix bug that aria2 does not read piped stdin
+  + Fix std::length_error when no_proxy is used
+  + This is regression introduced in 8cada497.
+  + Try to set sane limits for RLIMIT_NO_FILE
+    E.g. on OSX the default is 256, which isn't exactly compatible
+    with torrent downloads.
+    Closes GH-257
+  + Delay auth failures instead of PBKDF2
+    Closes GH-256
+- Split out language files and recommend the subpackage 
+
+-------------------------------------------------------------------
+Fri Jul 11 15:44:58 UTC 2014 - reddwarf@opensuse.org
+
+- Update to aria2 1.18.5
+  * Ignore error when setting DSCP value
+- Update to aria2 1.18.4
+  * Added support for RPC channel encryption in aria2rpc
+  * Add aria2.saveSession RPC method
+  * Add numStoppedTotal key to aria2.getGlobalStat() RPC method response
+  * Better handling of 30x HTTP status codes
+  * Implement new RPC authorization using --rpc-secret option
+  * Add --enable-color option to enable/disable terminal color output
+  * Add DSCP support
+  * gnutls: Don't fail handshake if returned error is not fatal
+  * Add workaround GnuTLS bug with OCSP status extension and
+    non-blocking socket
+  * Make GnuTLS log level dependent on the aria2 ones
+- Remove ca-certificates requirement. It conflicted with the same recommendation
+- Stop specifying a CA bundle. Let the SSL library use the "system" one.
+
+-------------------------------------------------------------------
+Sun Jan 05 21:28:38 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 1.18.3:
+  * fix crash if unpause failed before assigning BtProgressInfoFile object
+  * fix bug that numOpenFile_ is not reduced when MultiDiskAdaptor is deleted;
+    this bug caused assertion error in RequestGroupMan::ensureMaxOpenFileLimit
+
+-------------------------------------------------------------------
+Sat Jan 04 17:45:54 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 1.18.2:
+  * fix crash when metaurl contains unsupported URI or text
+  * fix bad fork() return value handling
+  * use some colors in progress reports (where available)
+  * limit number of opened file globally with --bt-max-open-files option
+  * don't fail multiple concurrent dl same file if auto-file-renaming is
+    enabled
+- add /etc/ssl/ca-bundle.pem as the CA bundle for aria2, and add a
+  recommends for ca-certificates
+
+-------------------------------------------------------------------
+Sat Nov  2 21:23:47 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.18.1
+  * LibsslTLSContext: Remove weak cipher suite
+  * AppleTLS: Enable --certificate
+  * util::percentEncodeMini: Fix regression bug removed unsignedness
+  * Log exception; throw error if loading private key and/or certificate
+    failed
+  * Provide internal ARC4 implementation
+  * Internal implementation of DHKeyExchange
+  * PKCS12 support in --certificate and --rpc-certificate options.
+  * Add --disable-ssl configure option
+  * Add internal md5 and sha1 message digests
+  * Fix AppleMessageDigestImpl use with large data
+  * Set old cookie's creation-time to new cookie on replacement
+  * Fix link error with Android NDK r9
+
+-------------------------------------------------------------------
+Wed Sep 11 16:47:49 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.18.0
+  * Use AM subdir-objects
+  * AM_SILENT_RULES([yes]) with backwards-compatiblity
+  * Fix automake-1.14 am_aux_dir
+  * Require external gettext for --enable-nls
+  * Make AX_CXX_COMPILE_STDCXX_11 test for -stdlib=libc++ via std::shared_ptr
+  * Make the configure check for C++11 compiler mandatory
+  * Always build doc/manual-src
+  * Implement a simple resource lock (threading)
+  * Check for sphinx-build during configure
+  * Add --with-disk-cache configure option
+  * Change defaults: Enable 16M disk cache by default.
+  * Always save control file if --force-save is given
+  * Set log level DEBUG for unittests
+  * Check that C++ compiler supports override keyword
+  * Use AX_CXX_COMPILE_STDCXX_11 macro to detect C++0x/C++11 support in
+    compiler
+  * Require -std=c++11 and use std::shared_ptr instead of SharedHandle
+  * Join URI on redirect
+  * Send HAVE message to the peer which the piece is downloaded from
+  * Improvements to --follow-torrent=false documentation.
+  * SessionSerializer: Truly unique URIs
+  * Make getOption RPC method return option for stopped downloads
+  * SessionSerializer: Save spent URIs as well as remaining ones
+- Remove support for end of life openSUSE versions (<= 12.1)
+
+-------------------------------------------------------------------
+Fri Jun  7 11:41:50 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.17.1
+  * Add code to detect rst2html.py or rst2html
+  * Enable multicast loopback in BitTorrent local peer discovery
+  * Enable TLS1.1 with gnutls build
+  * Check zlib availability usin AC_CHECK_LIB
+  * Treat response is completed if EOF is received before streamFilter
+    completes
+  * uitos: Fix off-by-one error bug
+  * Add configure support for linking tcmalloc_minimal and/or jemalloc
+  * Close GZipFiles in the d'tor
+  * Add libaria2, C++ library interface to aria2 (not built)
+  * Add missing check for sigaction
+  * Fix cached data is not flushed when downloaded data is less than
+    16KiB
+  * LibUV: Implement LibuvEventPoll
+
+-------------------------------------------------------------------
+Mon May  6 11:57:22 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.17.0
+  * Updated Russian manual
+  * Updated Portuguese manual
+  * Append --static to pkg-config arguments when ARIA2_STATIC=yes
+  * Save options directly specified for download in --save-session
+  * Save URI returned only from FileEntry::getRemainingUris()
+  * Print linked 3rd party libraries with version in aria2c -v output
+  * Use info level log for system trusted ca imports failure
+  * Remove deprecated options: --enable-direct-io and --metalink-servers
+  * Deprecate --enable-async-dns6
+  * Fix uninitialized UDPTrackerClient::numWatchers_
+  * Implement simple Happy Eyeballs for HTTP/FTP downloads
+  * Parallel A and AAAA record lookups with c-ares
+
+-------------------------------------------------------------------
+Mon Mar 25 09:29:28 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 1.16.5:
+  This release fixes the bug that invalid range error is thrown when
+  requesting range starts from 0 in HTTP download.
+
+- changes from 1.16.4:
+  This release fixes the bug that active downloads are not saved with
+  --save-session-interval and the bug that aria2 hangs when size of
+  download result exceeds its maximum. BitTorrent UDP tracker support
+  was added. If the filename specified using --save-session ends with
+  ".gz", aria2 stores the session file in gzipped form. The -i option
+  can handle this gzipped file as well as plain text file.
+
+-------------------------------------------------------------------
+Tue Feb 19 17:45:01 UTC 2013 - reddwarf@opensuse.org
+
+- update to 1.16.3
+  * Fix invalid iterator handling when deleting RequestGroup
+  * Check SSL_OP_NO_COMPRESSION is available before using it
+  * Fix bug returnPeer is not called if sequence_ == INITIATOR_SEND_KEY
+  * Accept k and m as well as K and M in util::getRealSize()
+  * Added --save-session-interval option
+  * Use request URI as referer if --referer="*" is given
+  * Log warn if unknown option is found in config file or -i file
+  * Added --console-log-level option
+
+-------------------------------------------------------------------
+Thu Dec 27 23:03:44 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 1.16.1
+  * adds the ability to persist GID across sessions
+  * now GID is 64 bits binary data and represented by 16 characters
+    hex string in RPC query
+  * the disk cache feature was added
+  * the console readout was redesigned
+
+-------------------------------------------------------------------
+Sun Dec 02 09:50:01 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.16.0:
+  * adds SSL/TLS encryption support in RPC transport
+  * the new RPC method aria2.appendUri is added, which is a wrapper to
+    aria2.changeUri
+  * the Content-Disposition parser is now RFC 6266 conformant
+  * the resource leak in XmlParser, JSON and Bencode parser was fixed
+  * the uploaded data size calculation bug was fixed
+
+-------------------------------------------------------------------
+Tue Oct 23 23:04:40 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 1.15.2:
+  Fixes several critical bugs. It also adds new features such as
+  TLS SNI and CORS support. The --file--allocation option now take
+  another value trunc. The new option --enalbe-mmap was added.
+  aria2 now uses system-wide SSL/TLS certificates by default, which
+  eliminates the requirement to specify --ca-certificate option.
+- Remove aria2-1.15.1-system_certificates.patch. Applied upstream.
+- Remove autotools BuildRequires since we don't have patches any more.
+
+-------------------------------------------------------------------
+Thu Jul  5 19:05:45 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0-with-openssl-exception
+  SPDX format for this license - which has an openssl exception
+
+-------------------------------------------------------------------
+Fri Jun 29 12:24:33 UTC 2012 - reddwarf@opensuse.org
+
+- Remove aria2-atoi.patch, aria2-cares-lib64.patch and
+  aria2-cares-static.patch
+- Run spec-cleaner
+- Use xml2 instead of expat as prefered by upstream
+- Add GnuTLS support
+- Merge bash-completion support into the main package
+- Change license tag to GPL-2.0+ since it doesn't use OpenSSL
+- Use pkgconfig() style BuildRequires
+- Add aria2-1.15.1-system_certificates.patch
+
+-------------------------------------------------------------------
+Fri Jun 29 10:19:20 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 1.15.1:
+  + Return appropriate HTTP status code on RPC failure.  In this
+    change, we return 404 if the request path is neither /json-rpc
+    nor /rpc. If XML feature is not enabled and /rpc is requested,
+    return 404.  If XML parser failed, return 400. JSON parser
+    failure has been handled well in the existing code.
+  + Ignore unacceptable options in RPC request instead of throwing
+    error. This change allows RPC client to send same options for
+    the different type of downloads.
+  + Handle sockaddr_in.sin_len and sockaddr_in6.sin6_len.  Check
+    sockaddr_in.sin_len and sockaddr_in6.sin6_len are available and
+    assign values to them properly.  This change fixes unit test
+    error and most error related to getnameinfo() on netbsd.
+  + Removed dependency on inet_aton.  Implemented inetPton as a
+    replacement of inet_aton. inetPton is implemented using
+    net::getBinAddr.  This change fixes bug#3525424.
+  + Added --with-bashcompletiondir configure option.  By default,
+    bash_completion file named aria2c is installed to the directory
+    $prefix/share/doc/aria2/bash_completion.  To change the install
+    directory of the file, use --with-bashcompletiondir option.
+  + Converted README.asciidoc into README.rst
+  + Use Sphinx for aria2 manual page documentation.  The source
+    files for manual pages are placed under doc/manual-src.  The
+    manual pages are generated under doc/manual-src/$LANG/_build.
+    The HTML version manual page was dropped from the distribution
+    archive.
+  + Fixed the bug which prevents --bt-lpd-interface from working.
+    Fixes bug#3520125
+- Remove support for old distributions
+
+-------------------------------------------------------------------
+Mon Apr  9 12:15:39 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.15.0:
+  + Use CreateProcessW instead of CreateProcessA in MinGW build.
+    This means filename is now passed as wchar string, not UTF-8
+    encoded char string.
+  + Check with pkg-config only: c-ares, openssl, sqlite3 and zlib.
+  + Fixed compile error with i686-w64-mingw32 and
+    x86_64-w64-mingw32 cross compilers.
+  + Get the home directory of the effective user ID using
+    getpwuid() if $HOME is not defined.
+  + Don't use locale dependent toupper and tolower.
+  + Rewritten TLS hostname check based on RFC 6125 for both GNUTLS
+    and OpenSSL builds.
+  + Added --bt-remove-unselected-file option.  Removes the
+    unselected files when download is completed in BitTorrent. To
+    select files, use --select-file option. If it is not used, all
+    files are assumed to be selected. Please use this option with
+    care because it will actually remove files from your disk.
+    This option is default to false.
+  + Fixed compile error on Open Solaris. Fixes bug#3497518
+  + Added JSON-RPC over WebSocket.
+  + Fixed assertion failure if Chunked encoding along with
+    Content-Length is used.
+  + Fixed clang and gcc-4.7 warning and errors.
+  + Fixed the bug that aria2 cannot read line longer than 4096
+    bytes from the file specified by --input-file option
+    (sf#3495336).
+- Drop aria2-1.14.2-gcc47.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar 20 21:44:22 UTC 2012 - boris@steki.net
+
+- Add aria2-1.14.2-gcc47.patch: Fix build with gcc 4.7
+
+-------------------------------------------------------------------
+Tue Mar 13 08:32:18 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-GPL-2.0+-with-openssl-exception
+  Package expressly allows linking against openSSL
+
+-------------------------------------------------------------------
+Wed Feb 29 18:56:56 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.14.2:
+  * only accepts 32 bit integer values from int and i4 elements in XML-RPC;
+    fixed overflow bug in aria2.tellWaiting and aria2.tellStopped RPC methods
+  * updated Spanish, Italian, Russian and Chinese (Simplified) translations
+  * fixed the bug that aria2 does not listen on address given in --interface
+  * check scheme part in redirected URI more strictly: the previous
+    implementation mistakenly sees '/abspath?uri=http://foo' as an absolute URI
+    because it contains '://', but actually it is not; this change checks
+    scheme part is constructed in the allowed character set described in RFC
+    3986 Section 3.1
+  * allow missing params in XML-RPC request
+  * fixed "Max payload length exceeded or invalid" error when the number of
+    pieces is very large
+  * added --deferred-input option; if true is given to --deferred-input option,
+    aria2 does not read all URIs and options from file specified by -i option
+    at startup, but it reads one by one when it needs later; this may reduce
+    memory usage if input file contains a lot of URIs to download; if false is
+    given, aria2 reads all URIs and options at startup;tThis option defaults to
+    false
+
+-------------------------------------------------------------------
+Sat Feb 18 11:04:36 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.14.1:
+  + This version fixes the bug that prevents the --checksum option
+    from working correctly.
+  + It also fixes the bug where a log file was not created if a
+    warn level log was created before the log file was opened.
+  + Now aria2 doesn't assume the download has completed just 
+    because file size matched. The old behavior is problematic,
+    because aria2 just assumes the download is completed, but in
+    reality it is not. 
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:29 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Mon Dec 26 11:06:49 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.14.0:
+ * updated Chinese (Simplified), Spanish, French and Russian translations
+ * ignore peer which possibly sent bad data in next few minutes. In aria2, one
+   piece is downloaded from several peers, so when hash check failed for that
+   piece, it cannot determine which peer(s) sent bad data. So, we ignore peer
+   who sent last block of data in random minutes. We use randomized timeout
+   because all peers get waken up at the almost same time.
+ * Added suggestion for unknown/ambiguous options. The help messages shown when
+   argument error were redesigned and less verbose now. When unknown or
+   ambiguous option is given, show suggestions like "Did you mean...". Some
+   constant values related to levenstein distance are borrowed from git help.c.
+ * Added --stop-with-process=PID option. This feature stops application when
+   process PID is not running. This is useful if aria2 process is forked from a
+   parent process. The parent process can fork aria2 with its own pid and when
+   parent process exits for some reason, aria2 can detect it and shutdown
+   itself.
+ * Support IPv6 address for FTP via HTTP tunneling.
+ * The previous implementation could not handle the situation when user,
+   password and proxy URI is given various order. Now we just set rules:
+   username set in --*-proxy-user overrides username in --*-proxy option, no
+   matter in any order username, password and proxy URI are parsed. Likewise,
+   password set in --*--proxy-passwd overrides password in --*-proxy option.
+ * Changed format of ETA. Now no leading 0 is used. If hour part and/or min
+   part is non-zero, and sec part is 0, sec part is omitted, like this "1h3m".
+ * Rewritten Metalink XML parser. Now we don't strip white spaces while parsing
+   Metalink V3 document.
+ * Now xml attribute and characters in RPC request is not stripped at all.
+ * Fixed bug that some information such as port number is lost if redirect URI
+   contains only path component.
+ * Apply PREF_MAX_CONNECTION_PER_SERVER to BitTorrent WEB Seeding hosts.
+ * Reuse in-flight and pooled URIs when a download is paused.
+ * Deprecated --metalink-server option. Use --split option instead.
+ * Made max value of --select-file to 65535
+ * Use same domain-match algorithm for no-proxy and netrc. Now "example.org"
+   does not domain-match ".example.org" in both functions.
+ * For waiting or paused downloads, the options listed in Input File subsection
+   in man page are available in aria2.changeOption RPC method, except for
+   following options: dry-run, metalink-base-uri, parameterized-uri, pause and
+   piece_length.
+ * Made --download-result, --save-session, --server-stat-of and --save-cookies
+   option available in aria2.changeGlobalOption. In addition to them, the
+   options listed in Input File subsection in man page are also available,
+   except for following options: checksum, index-out, out, pause and
+   select-file.
+ * Made --uri-selector option available in -i list.
+ * Support IPv6 literal address in proxy option.
+ * Support IPv6 CIDR block in --http-no-proxy option.
+ * HttpProxyOptionHandler: Enclose hostname with square brackets if hostname is
+   IPv6 numeric address.
+
+-------------------------------------------------------------------
+Fri Oct 14 22:08:37 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.13.0:
+  * fixes libgcrypt version check error
+  * now returns error response if RPC request parameter has wrong type
+  * on >= 12.1, aria2 uses libnettle and libgmp instead of libgcrypt
+  * added --piece-length option: sets a piece length for HTTP/FTP downloads; is
+    the boundary when aria2 splits a file; all splits occur at multiple of this
+    length; will be ignored in BitTorrent downloads and if Metalink file
+    contains piece hashes
+ * cleanup log message for binding server socket
+ * recognize tab as white space before option in -i list
+ * added geom parameter to --stream-piece-selector option: if 'geom' is given,
+   at the beginning aria2 selects piece which has minimum index like 'inorder',
+   but it exponentially increasingly keeps space from previously selected
+   piece; will reduce the number of establishing connection and at the same
+   time it will download the beginning part of the file first; useful to view
+   movie while downloading it
+ * added completedLength response key in aria2.getFiles RPC method
+ * added #checksum help tag.
+ * added --checksum and --checksum=TYPE=DIGEST option: sets checksum; TYPE is
+   hash type; supported hash type is listed in "Hash Algorithms" in "aria2c
+   -v"; DIGEST is hex digest; applies only to HTTP(S)/FTP downloads
+ * added --hash-check-only opiton: if true is given, after hash check using
+   --check-integrity option, abort download whether or not download is
+   complete; default is false
+ * added --download-result option: changes the way "Download Results" is formatted
+ * added --rpc-allow-origin-all option: adds Access-Control-Allow-Origin header
+   field with value '*' to the RPC response
+ * ignore --out option supplied in command-line if -i is used; can still use
+   out option in the text file specified in -i
+ * disable SSLv2 by default and optimize memory usage
+ * added libnettle and libgmp support
+
+-------------------------------------------------------------------
+Sat Sep 17 12:13:00 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Aug 03 23:27:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.12.1:
+  * adds RFC 6249 Metalink/HTTP support
+  * current implementation only uses rel=duplicate links
+  * --enable-direct-io option was deprecated because of performance issue
+  * since recent GnuTLS uses libnettle as default instead of libgcrypt, this
+    release added initialization code for libgcrypt
+  * Initialize libgcrypt.  We relied initialization of libgcrypt on
+    gnutls_global_init(), but recent change in gnutls, which changes default
+    crypto backend from libgcrypt to libnettle, leaves libgcrypt uninitialized
+    if it uses libnettle as backend (and this is likely because libnettle is
+    chosen by default). To fix this issue, we simply initialize libgcrypt on our
+    own.
+  * Throw exception with error message if gnutls_global_init() failed.
+  * Implemented Metalink/HTTP. Link header fields from first Metalink server is
+    utilized as described in rfc6249. We only set digest from Digest header
+    field to DownloadContext only when PieceStorage is not initialized(in other
+    words, before file size is known). After PieceStorage is initialized, Digest
+    header field is used to check the value is the same in digest in
+    DownloadContext. Current implementation only handles rel=duplicate.
+  * Remove Metalink content-type after first server response.
+  * Updated Russian translation of aria2 man page.
+  * Fixed the bug due to dangling pointers in RequestGroup.
+  * Added log message to clarify error for BitTorrent server socket.
+  * Added #deprecated help tag.
+  * Removed deprecated options: --enable-xml-rpc, --xml-rpc-listen-all,
+    --xml-rpc-listen-port, --xml-rpc-max-request-size, --xml-rpc-user,
+    --xml-rpc-passwd.
+  * Removed use of O_DIRECT because of performance issue.  Deprecated
+    --enable-direct-io option.
+  * Increased the maximum number of in-flight request in BitTorrent.
+  * Added --log option to aria2rpc
+
+-------------------------------------------------------------------
+Thu Jun 30 21:52:54 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.12.0:
+  * Use ServerStat to find faster server. This is useful when several downloads
+    were started in parallel, but one download is slow and the other downloads
+    have completed. Then aria2 knows which servers are fast by the results of
+    completed downloads, and check the available URIs of slow downloads to see
+    faster server is available there. If so, use it instead of current slow one
+    to make download faster.
+  * Added Russian translation of man page and HTML manual.
+  * Added aria2.getGlobalStat RPC method. It returns overall download/upload
+    speed and the number of active/stopped/waiting downloads.
+  * Added --pause option.  This option pauses download after added. This option
+    is effective only when --enable-rpc=true is given. When --save-session
+    option is used and there are paused downloads, they are saved with
+    --pause=true so that it will become paused state when the session is
+    recovered.
+  * Abort aria2 if it could not setup any RPC server.
+  * Added --truncate-console-readout option.  This option truncates console
+    readout to fit in a single line. This is default. Give false value to this
+    option to tell aria2 not to truncate console readout.
+  * Cache and reuse RpcMethod objects.
+  * Allowed missing params in system.multicall RPC method.
+  * Added --stream-piece-selector option. This option specifies piece selection
+    algorithm used in HTTP/FTP download. Piece means fixed length segment which
+    is downloaded in parallel in segmented download. If 'default' is given,
+    aria2 selects piece so that it reduces the number of establishing
+    connection. This is reasonable default behaviour because establishing
+    connection is an expensive operation.  If 'inorder' is given, aria2 selects
+    piece which has minimum index. Index=0 means first of the file. This will
+    be useful to view movie while downloading it. --enable-http-pipelining
+    option may be useful to reduce reconnection overhead.  Please note that
+    aria2 honors --min-split-size option, so it will be necessary to specify a
+    reasonable value to --min-split-size option.
+  * Removed unnecessary template parameter from std::make_pair call.
+  * Only percent-encode non-printable ASCII chars(0x00-0x1f), non-ASCII
+    chars(>0x7f), ' ', '"', '<' and '>' for URIs supplied by user and remote
+    server(usually Location header field).
+  * Don't throw exception if Z_BUF_ERROR is encountered in GZipEncoder. This
+    fixed the bug that compressed RPC request failed.
+  * Don't save removed download in --save-session text file. Now stat column of
+    removed downloads in Download Results is 'RM' instead of INPR.
+
+-------------------------------------------------------------------
+Sun May 22 10:51:15 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.11.2:
+ * Updated Japanese, Spanish and Simplified Chinese translation
+ * Eliminated few seconds delay when downloads stop or pause
+ * Added --metalink-base-uri option.  --metalink-uri option specifies
+   base URI to resolve relative URI in metalink file stored in local
+   disk. If URI points to a directory, URI must end with '/'.
+ * Fixed the bug that the message "Loaded cookies from ..." appears
+   when loading cookies from that file failed.
+ * Support relative URI in Metalink file.  If relative URI is found in
+   Metalink file, aria2 resolves its full URI contatenating the URI
+   from which Metalink file is retrieved and relative URI in Metalink
+   file. This feature is not available if Metalink file in local disk
+   is specified in command line.
+ * Erase user and password specified in command-line from argv.  The
+   user and password is masked with '*'.
+ * If no data type tag is used in XML-RPC, treat the data as string.
+
+- changes from 1.11.1:
+ * Added --show-console-readout option. This option toggles
+   appearance of console readout.
+
+-------------------------------------------------------------------
+Fri Mar 18 20:52:26 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.11.0:
+  * adds a JSON-RPC interface
+  * 2 new options were added:
+    + --retry-wait
+    + --async-dns-server
+  * fixes the bug that caused a segmentation fault when unpausing downloads in
+  * some situations
+
+-------------------------------------------------------------------
+Thu Jan 20 01:34:05 UTC 2011 - pascal.bleser@opensuse.org
+
+- split out bash completion support into aria2-bash-completion package
+- aria2-bash-completion requires bash-completion to function properly
+
+-------------------------------------------------------------------
+Mon Jan 10 09:45:32 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.10.9:
+  * fixes the bug in which aria2 wrongly determines a peer as a seeder and
+    drops connection in the seed state
+  * some improvements and bug fixes in the BitTorrent implementation were made:
+    + bump up DHT version number to 3
+    + don't try legacy BitTorrent handshake when first connection attempt timed out
+    + don't send announce_peer message with empty token in DHTPeerLookupTask;
+      replace old node ID with new node ID when response message is received in
+      DHTAbstractNodeLookupTask
+    + drop old node from DHT routing table if node ID has changed
+    + drop connection if client and peer are both seeders
+    + fixed the bug that peer is marked as seeder whenever it sends extension
+      handshake with metadata size
+
+-------------------------------------------------------------------
+Tue Dec 21 23:23:27 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.8:
+  * fixes compile error that occurs when the system does not have fallocate()
+    but has posix_fallocate()
+
+-------------------------------------------------------------------
+Sun Dec  5 10:22:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.7:
+  * fixes the bug that causes a memory leak when parsing Metalink document
+  * adds several exit status codes to help identify the cause of an error
+  * the --max-connection-per-server option now works with Metalink
+  * aria2 now passes the number of files and file path in addition to the GID
+    to commands specified in the --on-download-* options
+  * a bash_completion file for aria2c is now included in the distribution
+
+-------------------------------------------------------------------
+Tue Nov  2 00:00:30 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.6:
+  * fixes the bug that prevented downloading files larger than 4GB on 32-bit
+    systems
+  * fixes the bug that prevented the dht.dat file from being saved
+  * improper use of the return value of vsnprintf was fixed, which caused
+    segmentation fault when formatting strings more than 1024 characters long
+
+-------------------------------------------------------------------
+Fri Oct 22 07:30:22 UTC 2010 - pascal.bleser@opensuse.org
+
+- update 1.10.5:
+  * fixes the bug in which file allocation is enabled in HTTP even if
+    --file-allocation=none is specified
+
+-------------------------------------------------------------------
+Tue Oct 12 14:18:34 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.4:
+  * fixes the bug in which aria2 hangs when the FTP server does not send the
+    "226 Transfer Complete" message
+  * fixes the bug in which the time used in file allocation is taken into
+    account when calculating download speed
+  * non UTF-8 filenames are now percent-encoded
+  * the comments and name in the .torrent file in an XML-RPC response are also
+    percent-encoded if they are not UTF-8
+  * a warning message when CA certificates are not imported is not printed in
+    the console; instead, it is shown when a certificate verification error
+    actually occurs
+
+-------------------------------------------------------------------
+Sun Sep 19 11:04:12 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags for build
+
+-------------------------------------------------------------------
+Wed Sep 15 17:48:02 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.3:
+  * adds the short option -x for the --max-connection-per-server option and -k
+    for the --min-split-size option
+  * adds the --max-download-result=NUM option: this option sets the maximum
+    number of download results kept in memory, and the default value is 1000
+  * --max-connection-per-server now accepts values up to 16
+  * the "@" character is now allowed in a username embedded in a URI
+  * fixes the bug in which aria2 reports an error and exits with non-zero
+    status when a file is already downloaded and a checksum is available
+
+- changes from 1.10.2:
+  * fixes the bug that prevented HTTP redirect from working when multiple files
+    were downloaded from the same host at the same time
+  * for netrc, aria2 now performs a domain match if the machine name defined in
+    .netrc starts with "."
+
+-------------------------------------------------------------------
+Sun Aug 29 16:26:42 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.1:
+  * adds IPv6 support for FTP, BitTorrent, and BitTorrent DHT
+  * for FTP, EPSV and EPRT command support was added
+  * enabling IPv6 DHT requires several new options
+  * aria2 now listens on both IPv4 and IPv6 sockets for BitTorrent, its DHT and
+    XML-RPC; aria2 uses the same port for both IPv4 and IPv6
+  * the ability to add and remove BitTorrent tracker announce URIs was added
+  * the link error for FallocFileAllocationIterator was fixed
+
+-------------------------------------------------------------------
+Mon Jul 19 19:17:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.10.0:
+  * adds an option to limit the number of connections to the same host in each
+    download
+  * aria2 now chooses the server which is least used in the aria2c instance
+  * adds Chromium cookie support
+  * adds HTTP only conditional download support in which a file is downloaded
+    only when the local file is older than the remote file
+  * aria2 now can handle %2F in FTP URI properly
+  * the HTTP/1.1 chunked decoder was fixed
+  * aria2 uses fallocate by default if it is usable
+
+-------------------------------------------------------------------
+Mon Jun 28 20:04:24 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.9.5:
+  * fixes the bug that caused corrupted files
+  * also fixes an assertion error in the DefaultPeerStorage class
+  * aria2 no longer resets the referer to the empty string on redirect
+  * the log and log-level options can be used in the aria2.changeGlobalOption
+    XML-RPC method: this means you can dynamically start or stop logging and
+    change log file and log level
+
+-------------------------------------------------------------------
+Sun Jun  6 07:54:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.9.4:
+  * fixes the bug where connection reuse on FTP did not work if the
+    FTP server changed the root directory based on account
+  * fixes the bug where reading a Metalink document from a pipe
+    (the -M- option) does not work when aria2 is built with expat
+    or old libxml2 (2.7.6 or earlier)
+  * now aria2 does not emit an error if the given Metalink document
+    is empty (no file element)
+  * the response of the aria2.tellStopped XML-RPC method now has
+    more information: totalLength, completedLength, uploadLength,
+    bitfield, and so on.
+
+-------------------------------------------------------------------
+Sun May  9 12:10:21 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.9.3:
+  * fixes the bug in which aria2 cuts a filename after a ";"
+    character if the filename in the Content-Disposition header
+    includes a ";" character
+  * fixes the bug in which the name attribute of the file element
+    in a Metalink file is not properly sanitized
+
+-------------------------------------------------------------------
+Wed Apr 28 19:19:06 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.9.2:
+  * adds poll() support for socket event notification to eliminate
+    the limitation to 1024 file descriptors of the select() call
+  * fixes the bug in which the aria2.unpause and aria2.unpauseAll
+    XML-RPC methods fail when -s1 is given in a command-line
+    argument
+
+-------------------------------------------------------------------
+Wed Apr 14 21:50:25 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.9.1:
+  * adds ability to save unfinished downloads as a text file: the
+    file can be read with the -i option on restart
+  * adds the ability to download files from scratch when 'resume'
+    is not supported by the remote server
+  * new XML-RPC methods were added: aria2.pause, aria2.unpause,
+    aria2.shutdown, and their families
+  * the new exit status code '8' was added
+
+-------------------------------------------------------------------
+Sun Apr  4 14:11:53 UTC 2010 - crrodriguez@opensuse.org
+
+- enable c-ares support in 11.3 only.
+
+-------------------------------------------------------------------
+Fri Mar 12 20:33:21 UTC 2010 - poeml@cmdline.net
+
+- update to 1.9.0:
+  This release adds Metalink4 support and BitTorrent Local Peer
+  Discovery.  aria2.changeUri XML-RPC method was added. It enables you
+  to add/remove URIs to existing downloads dynamically.  The user and
+  password for proxy server now can be specified in command-line
+  separately.  We refactored the code based on profiler results, so
+  aria2 now runs more efficiently than ever. Russian and Simplified
+  Chinese translation were updated.
+  * Resurrected --http-proxy-user and --http-proxy-passwd option.
+    Added --https-proxy-user, --https-proxy-passwd, --ftp-proxy-user,
+    --ftp-proxy-passwd, --all-proxy-user, --all-proxy-passwd option.
+  * Updated Russian and Simplified Chinese translation.
+  * Added --reuse-uri option. This option has existed quite long, but
+    been hidden.
+  * Fixed the bug that filename is percent encoded where it must be
+    percent decoded in sendMdtm().
+  * Added getServers XML-RPC method. It returns currently connected
+    HTTP(S)/FTP server and download speed, etc.
+  * Added 'status' key to the response of getUri XML-RPC method.
+  * Added changeUri XML-RPC method.  This method removes/adds URIs
+    dynamically.
+  * Replaced null or control characters in file path with '_'.  For
+    MinGW32 build, additional characters which is not allowed in
+    Windows kernel are also replaced. util::detectDirTraversal() now
+    returns true if given string contains null or control characters.
+  * Discard torrent file if path data in it contains directory
+    traversal directives.  Discard metalink:file element in Metalink3
+    format if its name attribute contains directory traversal
+    directives.  Ignore name attribute of metalink:signature element in
+    Metalink3 format if it contains directory traversal directives.
+  * Added Metalink4 support. Files with same metaurl are
+    grouped and downloaded in one RequestGroup.
+  * Added --bt-lpd-interface option to specify the interface to use for
+    Local Peer Discovery. LpdMessageDispatcher object now has its own
+    socket. LpdMessageReceiver's socket is binded to multicast address
+    to only receive multicast packets.
+  * Added Local Peer Discovery. It is disabled by default. Use
+    --bt-enable-lpd to enable the function.
+
+-------------------------------------------------------------------
+Mon Feb 22 12:54:15 CET 2010 - meissner@suse.de
+
+- run make check
+- fixed macro usage to work with the macros not defined
+
+-------------------------------------------------------------------
+Sun Feb 21 19:15:03 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.8.3:
+  * fixes the bug in which --file-allocation=falloc didn't work
+    with single file download
+  * fixes the bug in which the return value of aria2 was unreliable
+    if an error occurred before download begins
+  * when custom request headers are specified by the --header
+    option, they now override built-in headers if they have same
+    name
+
+-------------------------------------------------------------------
+Thu Feb  4 00:01:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.8.2:
+  * fixes the bug that causes segmentation fault with the
+    --max-file-not-found option involved
+  * now aria2 can handle a redirected URI which is not properly
+    percent encoded
+  * the 'bittorrent' key was added to the response of the
+    tellStatus XML-RPC method; the associated value of the key is
+    a struct and contains data retrieved from a .torrent file, such
+    as name, announce-list, comment, etc
+
+-------------------------------------------------------------------
+Sat Jan 23 20:16:44 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.8.1:
+  * fixes the bug that causes a segmentation fault if unknown
+    options exist in the aria2.conf file and the user cannot
+    include an empty line in aria2.conf
+  * the following new command line options were added:
+    + --http-no-cache
+    + --bt-metadata-only
+    + --human-readable
+  * the aria2.getSessionInfo XML-RPC method was added
+  * the "dir" and "files" keys were added to the response struct
+    of the aria2.tellStatus XML-RPC method
+  * aria2 now returns a gzip compressed XML-RPC response if the
+    XML-RPC client accepts gzip content encoding
+
+-------------------------------------------------------------------
+Sun Dec 27 18:30:07 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.8.0:
+  * new XML-RPC methods were added:
+    + aria2.getOption
+    + aria2.getGetGlobalOption
+    + aria2.changePosition
+    + aria2.tellStopped
+    + system.multicall
+  * adds --bt-save-metadata option: saves metadata as a .torrent
+    file; has effect only when a BitTorrent Magnet URI is used
+
+-------------------------------------------------------------------
+Mon Dec 14 09:44:28 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.2:
+  * fixes bug in which aria2 listens to the wrong port in
+    BitTorrent/FTP downloads when the --interface option is used
+  * if --metalink-file='-' is given, aria2 now reads the Metalink
+    file from stdin
+  * the magnet URI is printed in the output of the -S option
+  * DHT is now enabled by default; DHT doesn't start when aria2 is
+    only handling HTTP and FTP downloads; when the first torrent
+    download begins, aria2 initiates DHT functionality; after that,
+    DHT runs until aria2 exits
+
+- enable sqlite3 support
+
+-------------------------------------------------------------------
+Mon Dec  7 22:37:36 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.1:
+  * fixed a bug with --bt-prioritize-piece=tail not working
+
+-------------------------------------------------------------------
+Sun Dec  6 20:01:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.7.0:
+  * adds BitTorrent Magnet URI support
+  * add ability to bind to a particular interface
+  * add disabling IPv6
+  * add prioritizing pieces in BitTorrent download
+  * the --http-auth-scheme option was removed since it is useless
+  * updated Russian, Ukrainian, German, and French translations
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:05 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Nov  2 17:06:28 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.6.3:
+  * fixes reported bugs
+  * updates translations
+
+-------------------------------------------------------------------
+Mon Nov  2 09:01:29 UTC 2009 - lnussel@suse.de
+
+- fix format string problem (bnc#547318, CVE-2009-3617)
+
+-------------------------------------------------------------------
+Sat Oct 10 19:27:39 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.6.2:
+  * fixes a segmentation fault which occurred if the URI to
+    download contains a printf format string and logging is enabled
+  * the Ukrainian translation was updated
+
+-------------------------------------------------------------------
+Thu Oct  8 22:13:35 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.6.1:
+  * fixes a memory leak in HTTP/FTP downloading
+  * fixes a bug where the option values changed by XML-RPC
+    changeOption and changeGlobalOption methods are cleared
+  * now User-agent and Peer ID include version numbers
+  * Simplified Chinese translations have been updated
+
+- changes from 1.6.0:
+  * changes the default behavior of XML-RPC server: now it listens
+    only on the local loopback interface by default for security
+    reasons; if you want to connect to aria2c from remote hosts,
+    use the --xml-rpc-listen-all option
+  * the XML-RPC client sample scripts written in Ruby are now
+    included in the archive under the doc/xmlrpc directory
+  * the help category tags are now start "#" to distinguish them
+    from keyword search
+  * the --retry-wait option was removed because it doesn't work
+    properly under the architecture
+  * Bulgarian, Russian, Slovak, and Japanese translations have
+    been updated
+
+-------------------------------------------------------------------
+Sat Aug 22 03:22:12 CEST 2009 - poeml@suse.de
+
+- update to 1.5.2:
+  This release fixes the bug that when the first attempt to establishing
+  connection fails, aria2 don't try to connect another address and a
+  download immediately fails.  -S output was enhanced: exact file size
+  is now printed. For -S with torrent file, meta data such as comment,
+  comment.utf-8, created by and creation date are now printed. Ukrainian
+  and Russian translations were updated.
+  See also http://bugzilla.novell.com/show_bug.cgi?id=532575.
+
+-------------------------------------------------------------------
+Mon Aug 17 16:04:40 CEST 2009 - poeml@suse.de
+
+- remove obsolete patch aria2-large_ftp.patch
+
+-------------------------------------------------------------------
+Sun Jul 26 21:18:35 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.5.1:
+  * fixes a linker error in unit test code on 32-bit systems
+  * file I/O error handling was written
+
+-------------------------------------------------------------------
+Sat Jul 18 19:00:07 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.5.0:
+  * adds Web seeding support for multi-file torrents
+  * a --bt-stop-timeout option was added
+  * aria2 now tries all resolved addresses to connect to remote HTTP(S)/FTP
+    servers until it is connected
+  * for XML-RPC, two new methods were added: aria2.tellWaiting and
+    aria2.getVersion
+  * --use-head is now disabled by default since the HEAD request causes
+    problems with some Web sites
+  * the Russian, Italian, Danish, Bulgarian, Japanese, and Ukrainian
+    translations were updated
+
+-------------------------------------------------------------------
+Thu Jun 25 19:02:54 CEST 2009 - poeml@suse.de
+
+- remove --without-libares from the configure options, which isn't
+  recognized (anymore). There's --without-libcares, instead, which
+  is already in use.
+
+-------------------------------------------------------------------
+Sun Jun  7 22:37:03 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.4.1:
+  * the aria2.tellStatus XML-RPC method now returns "uploadLength" and
+    "numSeeders"
+  * the Ukrainian translation was updated
+
+-------------------------------------------------------------------
+Sun May 31 21:33:33 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.4.0:
+  * adds an XML-RPC interface: the current XML-RPC API allows users to add
+    HTTP(S)/FTP/torrent/Metalink download and change options dynamically: the
+    APIs such as reporting download progress, file paths, URIs, and peer
+    information are also available
+  * adds the ability to run a command when a download is started/stopped
+  * adds the ability to save cookies
+  * the console readout was slightly updated and now includes the number of
+    seeders the client has connected to
+  * a Slovak translation was added
+  * ukrainian and Brazilian Portuguese translation were updated
+
+-------------------------------------------------------------------
+Fri May  8 17:56:07 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.3.3:
+  * fixes the bug in which the --check-integrity option doesn't
+    work properly if a file including the last piece is missing
+  * the internal receive buffer was increased for FTP in order to
+    receive big banners
+  * the Ukrainian, Russian, and Simplified Chinese translations
+    were updated
+
+-------------------------------------------------------------------
+Fri May  1 00:00:22 CEST 2009 - pascal.bleser@opensuse.org
+
+- added patch by Rudi Oertel to avoid crashes with FTP banner sizes
+  larget than 4kb (now handles 64kb), sent upstream:
+  https://sourceforge.net/tracker/?func=detail&aid=2784659&group_id=159897&atid=813675
+
+-------------------------------------------------------------------
+Tue Apr 28 23:24:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.3.2:
+  * fixes the bug that prevents certain BitTorrent downloads from
+    finishing
+  * fixes a possible segmentation fault when gzip decoding is
+    involved
+  * fixes an infinite loop bug if the last "0" chunk-size marker is
+    not received in chunked encoding transfer
+  * aria2 now supports Web seeding (HTTP seeding) for a single file
+    torrent
+  * the Ukrainian translation was updated
+
+-------------------------------------------------------------------
+Mon Apr 13 02:14:12 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.3.1:
+  * fixes a bug where aria2 incorrectly determined that the
+    specified share ratio was reached because of miscalculation of
+    upload bytes
+  * fixes a bug where the upload limit exceeded the value specified
+    in the --seed-ratio option depending on the timing of the
+    execution of SeedCheckCommand
+
+-------------------------------------------------------------------
+Wed Apr  1 19:53:05 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.3.0:
+  * performance optimizations
+  * adds the ability to specify the output filenames in BitTorrent
+    downloads
+  * adds the option to limit overall download speed
+  * adds a dry run mode
+  * adds the file allocation mode 'falloc'
+  * the -i list option can now take new options: select-file and
+    index-out
+  * the default behavior of sending HTTP Authorization header is
+    reverted back to version 1.1.2 style
+  * you can now seed read-only files in BitTorrent
+  * Indonesian, Russian, Italian, Ukrainian, Simplified Chinese,
+    Japanese, Spanish, and Norwegian Nynorsk translations were
+    updated
+
+-------------------------------------------------------------------
+Fri Mar  6 16:56:02 CET 2009 - poeml@suse.de
+
+- add patch for failing download when the adaptive URI selector is
+  used (https://sourceforge.net/support/tracker.php?aid=2666026)
+
+-------------------------------------------------------------------
+Mon Feb 16 19:38:32 CET 2009 - poeml@suse.de
+
+- update to 1.2.0 release
+  The list of changes is mainly as given below, plus bugfixes.
+
+-------------------------------------------------------------------
+Wed Feb 11 19:16:08 CET 2009 - poeml@suse.de
+
+- update to beta release 1.2.0b+20090210:
+  This release adds the AdaptiveURISelector from Mandriva developers and
+  changes the default value of --proxy-method option from 'tunnel' to
+  'get'. The several BitTorrent options were added: limiting the number
+  of peers, choosing port randomly from specified range, a toggle to
+  seed after successful hash check and specifying IP address to report
+  to a tracker. Hash checking is now done sequentially rather than
+  simultaneously.  HTTP Authorization was also refined so that now
+  authorization header is sent to the server only when it is
+  requested(there are some exceptions, see Changes below). aria2 now
+  returns exit code depending on the last error. All exit codes are
+  documented in man page.  This release also adds experimental built-in
+  HTTP server which provides the current download progress in plain
+  html.
+
+-------------------------------------------------------------------
+Mon Dec 29 21:45:42 CET 2008 - pascal.bleser@opensuse.org
+
+- update to 1.1.2:
+  + fixes a bug where BitTorrent download didn't finish when a
+    REJECT message was received before a CHOKE message
+  + the --use-head option was added to toggle whether the HEAD
+    method should be used in the first HTTP request
+  + to use GET method as the first request, give --use-head=false
+    to aria2c
+
+- changes from 1.1.1:
+  + fixes the bug where --summary-interval=0 didn't work
+
+-------------------------------------------------------------------
+Tue Dec 23 21:46:11 CET 2008 - pascal.bleser@opensuse.org
+
+- update to 1.1.0:
+  + fixes many bugs such as a buggy HTTP pipelining implementation
+    that leads to corrupted downloads, bad cookie handling, and
+    sending of badly formed URIs to the tracker
+  + the --max-overall-upload-limit option was added to control
+    overall (not per torrent) upload speed
+  + the gettext package name was changed from "aria2c" to "aria2":
+    this changes the installation directory of the documents and
+    the translation files (*.mo)
+
+-------------------------------------------------------------------
+Tue Nov 25 07:36:43 CET 2008 - pascal.bleser@opensuse.org
+
+- update to 1.0.1:
+ + fixes a bug that caused floating point exceptions when the -T
+   option is used without URIs
+ + now using The HEAD method to get size information from a Web
+   server
+ + Ukrainian and Norwegian Nynorsk translations were updated
+
+-------------------------------------------------------------------
+Tue Nov 18 23:46:03 CET 2008 - pascal.bleser@opensuse.org
+
+- update to 1.0.0:
+ + adds the ability to verify peers using given trusted CA
+   certificates and client certificate authentication in HTTPS
+ + adds the ability to form a persistent connection using a proxy
+   and support for well-known environment variables for proxy
+   settings were also added
+ + fixes the bug that caused a segmentation fault during seeding
+ + now users can specify output the filename and directory in the
+   input file
+ + the average download speed are now printed in Download results
+ + the following options are now enabled by default: --ftp-pasv and
+   --enable-direct-io
+
+-------------------------------------------------------------------
+Sun Oct 19 22:32:04 CEST 2008 - pascal.bleser@opensuse.org
+
+- update to 0.16.2:
+ + fixes the bug that caused aria2 to abort when it receives a
+   BitTorrent request message that requests data larger than 16KiB
+ + Serbian translation was added
+ + Ukrainian translation was updated
+
+-------------------------------------------------------------------
+Wed Oct 15 02:18:03 CEST 2008 - poeml@suse.de
+
+- Pascal's changes reviewed by me as required by Factory policy.
+
+-------------------------------------------------------------------
+Tue Oct 14 20:54:22 CEST 2008 - pascal.bleser@opensuse.org
+
+- update to 0.16.1:
+  + adds a --dht-file-path option to change the dht.dat file
+  + adds an --auto-save-interval option to change the interval for
+    saving a control file (*.aria2)
+  + fixes the bug where the last byte in a URL was not encoded
+  + Ukrainian, Vietnamese, and Traditional Chinese translations
+    were added
+
+-------------------------------------------------------------------
+Mon Oct 13 20:56:40 CEST 2008 - poeml@suse.de
+
+- Pascal's changes reviewed by me as required by Factory policy.
+
+-------------------------------------------------------------------
+Mon Oct  6 18:29:20 CEST 2008 - pascal.bleser@opensuse.org
+
+- update to 0.16:
+  + add Firefox3 Cookie support
+  + add ability to select the fastest server(URI) using the
+    download speed observed in the previous downloads
+  + add ability to get a timestamp from a remote server and apply
+    it to a local file
+  + add an option to specify the connect timeout
+  + now uses netrc for HTTP
+
+-------------------------------------------------------------------
+Sat Sep  6 21:46:55 CEST 2008 - pascal.bleser@opensuse.org
+
+- update to 0.15.3:
+  + fixed chunk checksum validation cannot detect trailing garbage
+    data; BUG#2074141
+  + made files whose name ends with ".gz", ".tgz" not inflated by
+    Content Encoding Decoder
+  + fixed infinite loop bug in FTP when SIZE command failed
+  + contact tracker frequently when the number of connections are
+    0 and is not finished yet
+  + added -lrt to LIBCARES_LIBS if -lrt is needed to link program
+    with -lcares
+  + if an error occurred with a URI, remove identical URI from
+    remaining URI list
+  + added Turkish translation
+  + updated German and Russian translations
+- dropped patch8 gzip_in_metalink.patch, merged upstream
+
+-------------------------------------------------------------------
+Mon Sep  1 22:05:58 CEST 2008 - poeml@suse.de
+
+- add patch r679(stable-0.15 branch)
+  fixes segmentation fault when Metalink file contains gzipped
+  file and its filesize is provided.
+
+-------------------------------------------------------------------
+Fri Aug 15 22:21:44 CEST 2008 - pascal.bleser@opensuse.org
+
+- update to 0.15.2:
+  + fixed memory leak
+  + removed max chunk size check:
+    http://sourceforge.net/tracker/index.php?func=detail&aid=2040169&group_id=159897&atid=813673
+  + fixed unmatched malloc/free
+  + now aria2 uses name attribute in Metalink as local filename
+    in BitTorrent downloads:
+    http://sourceforge.net/tracker/index.php?func=detail&aid=2033999&group_id=159897&atid=813673
+  + fixed occasional assertion failure in PieceSegment
+  + fixed man page: --follow-bittorrent should be --follow-torrent
+  + added Danish and Greek translations
+  + updated Catalan, Norwegian Nynorsk and Spanish translations
+
+-------------------------------------------------------------------
+Fri Aug 15 16:23:43 CEST 2008 - poeml@suse.de
+
+- remove hardcoded %debug_package
+- expand tabs in spec file header
+- indent some macros at the top which break the internal
+  check_if_valid_source_dir tool
+
+-------------------------------------------------------------------
+Fri Aug 15 14:08:52 CEST 2008 - poeml@suse.de
+
+- initial submission to openSUSE Factory. 
+  Previous changelog:
+
+  | * Mon Aug  4 2008 Peter Poeml <poeml@suse.de> 0.15.1+1
+  | - new upstream version 0.15.1+1:
+  |   * Fixed the bug that causes segmentaion fault when resuming download
+  |     using metalink without size tag. Reproducible only using HTTP URI.
+  | - a buglet in the configure script causes this directive to cause the
+  |   opposite, so comment out the "--enable-metalink"
+  | * Thu Jul 31 2008 Pascal Bleser <guru@unixtech.be> 0.15.1
+  | - new upstream version:
+  |   * fixes broken gzip inflation
+  |   * lowers CPU usage
+  |   * other minor fixes
+  |   * Bulgarian and French translations were updated
+  | * Wed Jul 23 2008 Pascal Bleser <guru@unixtech.be> 0.15.0
+  | - new upstream version:
+  |   * adds HTTP gzip content encoding support
+  |   * adds the ability to save a signature in Metalink as a file
+  |   * adds the option to skip hash checking in BitTorrent seeding
+  |   * adds support for FTP servers that don't support the SIZE/REST command
+  |   * a Bulgarian translation was added
+  | * Sat Jun 21 2008 Pascal Bleser <guru@unixtech.be> 0.14.0
+  | - new upstream version:
+  |   * adds epoll support for Linux
+  |   * adds the ability to limit the number of files to be opened to support more than 1024 files in a multi-file torrent
+  |   * several bugs in BitTorrent downloads are fixed
+  |   * from this release, aria2 downloads a file using 5 connections in HTTP/FTP by default, and the behavior of the -s option has changed
+  | * Sun May 25 2008 Pascal Bleser <guru@unixtech.be> 0.13.2
+  | - new upstream version:
+  |   * adds the ability to specify any number of URIs, torrents, and metalinks in a command-line
+  |   * adds option to set user-defined HTTP headers
+  |   * adds support for transparent Metalink and connection reuse for HTTP/FTP downloads
+  |   * adds output at given interval of a download progress summary
+  |   * adds option to suppress any console output
+  | * Tue May 20 2008 Pascal Bleser <guru@unixtech.be> 0.13.1+2
+  | - new upstream version
+  | * Mon Apr 28 2008 Pascal Bleser <guru@unixtech.be> 0.13.1
+  | - bumped up in-tree libxml2 to 2.6.32
+  | * Sat Mar 15 2008 Pascal Bleser <guru@unixtech.be> 0.13.1
+  | - new upstream version
+  | * Sat Mar  1 2008 Pascal Bleser <guru@unixtech.be> 0.13.0
+  | - new upstream version
+  | * Fri Feb 15 2008 Pascal Bleser <guru@unixtech.be> 0.12.1+1
+  | - new upstream version
+  | * Tue Feb 12 2008 Pascal Bleser <guru@unixtech.be> 0.12.1
+  | - bumped intree libxml2 to latest 2.6.31
+  | - new upstream version
+  | * Sun Dec 30 2007 Pascal Bleser <guru@unixtech.be> 0.12.0
+  | - fixed build on Factory
+  | * Sun Dec  9 2007 Pascal Bleser <guru@unixtech.be> 0.12.0
+  | - new upstream version
+  | * Sat Nov 17 2007 Pascal Bleser <guru@unixtech.be> 0.11.5
+  | - new upstream version
+  | * Sun Oct 28 2007 Pascal Bleser <guru@unixtech.be> 0.11.4
+  | - don't use intree libxml2 on openSUSE 10.3, as 10.3 ships a sufficiently recent libxml2-2.6.30
+  | - new upstream version
+  | * Mon Sep 10 2007 Pascal Bleser <guru@unixtech.be> 0.11.3
+  | - new upstream version
+  | * Sat Sep  8 2007 Pascal Bleser <guru@unixtech.be> 0.11.2
+  | - moved to openSUSE Build Service
+  | * Fri Aug 24 2007 Pascal Bleser <guru@unixtech.be> 0.11.2-2
+  | - built against c-ares 1.4.0
+  | - bumped in-tree libxml2 to 2.6.30
+  | * Thu Aug  9 2007 Pascal Bleser <guru@unixtech.be> 0.11.2-1
+  | - bumped in-tree libxml2 to 2.6.29
+  | - new upstream version
+  | * Tue Jun 12 2007 Pascal Bleser <guru@unixtech.be> 0.11.0-1
+  | - new upstream version
+  | * Fri Apr 27 2007 Pascal Bleser <guru@unixtech.be> 0.10.2.1-1
+  | - new upstream version
+  | * Wed Apr 18 2007 Pascal Bleser <guru@unixtech.be> 0.10.2-2
+  | - update in-tree libxml2 version to 2.6.28
+  | * Wed Mar 28 2007 Pascal Bleser <guru@unixtech.be> 0.10.2-1
+  | - new upstream version
+  | - CHANGES: adds netrc support
+  | - CHANGES: adds user configuration file support
+  | - CHANGES: adds the ability to change user-agent
+  | - CHANGES: adds the ability to resume downloading a partially downloaded file by other programs that download files sequentially from the beginning
+  | - CHANGES: numerous improvements and bugfixes have also been made
+  | * Wed Feb  7 2007 Pascal Bleser <guru@unixtech.be> 0.10.1-1
+  | - new upstream version
+  | * Fri Feb  2 2007 Pascal Bleser <guru@unixtech.be> 0.10.0.1-1
+  | - new upstream version
+  | * Sun Jan 28 2007 Pascal Bleser <guru@unixtech.be> 0.10.0-1
+  | - bundle libxml2 on SUSE < 10.0 to avoid forcing an upgrade that breaks stuff
+  | - new upstream version
+  | * Thu Dec  7 2006 Pascal Bleser <guru@unixtech.be> 0.9.0-2
+  | - statically link libcares
+  | * Wed Nov  8 2006 Pascal Bleser <guru@unixtech.be> 0.9.0-1
+  | - new upstream version
+  | * Sun Oct  1 2006 Pascal Bleser <guru@unixtech.be> 0.8.1-1
+  | - new upstream version
+  | * Sun Sep 24 2006 Pascal Bleser <guru@unixtech.be> 0.8.0-1
+  | - new upstream version
+  | * Tue Aug 29 2006 Pascal Bleser <guru@unixtech.be> 0.7.3-1
+  | - added missing buildrequires for libgcrypt-devel
+  | - new upstream version
+  | * Mon Aug 21 2006 Pascal Bleser <guru@unixtech.be> 0.7.2-1
+  | - new upstream version
+  | * Mon Aug 14 2006 Pascal Bleser <guru@unixtech.be> 0.7.1-1
+  | - add buildrequiers for c-ares[-devel] to support async DNS
+  | - new upstream version
+  | * Tue Aug  8 2006 Pascal Bleser <guru@unixtech.be> 0.7.0-1
+  | - new upstream version
+  | * Fri Jul 21 2006 Pascal Bleser <guru@unixtech.be> 0.6.0-1
+  | - new upstream version
+  | * Sun Jun 25 2006 Pascal Bleser <guru@unixtech.be> 0.5.2-1
+  | - new upstream version
+  | * Sun Jun 18 2006 Pascal Bleser <guru@unixtech.be> 0.5.1-1
+  | - dropped patch, has been sent and merged upstream
+  | - new upstream version
+  | * Fri May 26 2006 Pascal Bleser <guru@unixtech.be> 0.5.0-1
+  | - new upstream version
+  | * Sun Apr 30 2006 Pascal Bleser <guru@unixtech.be> 0.4.1-1
+  | - moved autoreconf and configure to build section
+  | - new upstream version
+  | * Fri Apr 21 2006 Pascal Bleser <guru@unixtech.be> 0.4.0-1
+  | - added binary stripping for SUSE < 9.3
+  | - new upstream version
+  | - removed Distribution and Packager, injected by rpmmacros
+  | * Sat Apr  1 2006 Pascal Bleser <guru@unixtech.be> 0.3.2-1
+  | - added gnutls support, used by default, rebuild with --with openssl to use openssl instead
+  | - new upstream version
+  | * Fri Mar 24 2006 Pascal Bleser <guru@unixtech.be> 0.3.1-1
+  | - new package
+

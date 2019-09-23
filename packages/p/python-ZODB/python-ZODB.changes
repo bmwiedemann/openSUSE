@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Mar  4 14:15:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.5.1:
+  * Add support for Python 3.7.
+  * Bump the dependency on zodbpickle to at least 1.0.1. This is required to avoid a memory leak on Python 2.7. See issue 203.
+  * Bump the dependency on persistent to at least 4.4.0.
+  * Make the internal support functions for dealing with OIDs (p64 and u64) somewhat faster and raise more informative exceptions on certain types of bad input. See issue 216.
+  * Remove support for python setup.py test. It hadn't been working for some time. See issue #218.
+  * Make the tests run faster by avoiding calls to time.sleep().
+- Drop no longer needed python-ZODB-testsuite.patch
+
+-------------------------------------------------------------------
+Thu Jul 26 10:43:46 UTC 2018 - tchvatal@suse.com
+
+- Disable tests for now as 16 of them fail
+
+-------------------------------------------------------------------
+Thu Jul 26 10:33:16 UTC 2018 - tchvatal@suse.com
+
+- Add patch to fix testsuite execution:
+  * python-ZODB-testsuite.patch
+
+-------------------------------------------------------------------
+Thu Jul 26 10:16:02 UTC 2018 - tchvatal@suse.com
+
+- Version update to 5.4.0:
+  * Dropped support for py3.3 and added support for new ones
+  * ZODB now uses pickle protocol 3 for both Python 2 and Python 3.
+  * The zodbpickle package provides a zodbpickle.binary string type that should be used in Python 2 to cause binary strings to be saved in a pickle binary format, so they can be loaded correctly in Python 3. Pickle protocol 3 is needed for this to work correctly.
+  * Object identifiers in persistent references are saved as zodbpickle.binary strings in Python 2, so that they are loaded correctly in Python 3.
+  * If an object is missing from the index while packing a FileStorage, report its full oid.
+  * Storage imports are a bit faster.
+  * Storages can be important from non-seekable sources, like file-wrapped pipes.
+
+-------------------------------------------------------------------
+Fri Aug 25 11:55:40 UTC 2017 - toddrme2178@gmail.com
+
+- Fix doc package dependencies
+
+-------------------------------------------------------------------
+Tue Aug 15 15:25:19 UTC 2017 - toddrme2178@gmail.com
+
+- Fix doc package dependency problem
+
+-------------------------------------------------------------------
+Sat Jul  8 07:07:44 UTC 2017 - aloisio@gmx.com
+
+- Update to 5.2.4 (see CHANGES.rst)
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri May 15 10:52:45 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 4.1.0:
+  * Fix registration of custom logging level names ("BLATHER",
+    "TRACE). We have been registering them in the wrong order since
+    2004. Before Python 3.4, the stdlib logging module masked the
+    error by registering them in both directions.
+  * Add support for Python 3.4.
+- additional changes from version 4.0.1:
+  * Fix POSKeyError during transaction.commit when after
+    savepoint.rollback. see #16
+  * Ensure that the pickler used in PyPy always has a persistent_id
+    attribute (inst_persistent_id is not present on the pure-Python
+    pickler). (PR #17)
+  * Provide better error reporting when trying to load an object on
+    a closed connection.
+- drop fix-for-upstream-test.patch: fixed upstream
+- delete backup files in sources
+- remove unwanted shebang in python file
+- do not set the executable bit of python files
+- pass -q to the test to avoid spamming the build log
+
+-------------------------------------------------------------------
+Sat Feb  1 21:17:50 UTC 2014 - os-dev@jacraig.com
+
+- Add patch to fix test during build.  This is fixed upstream for next release.
+- Update old package URL.
+- Update to 4.0.0 (minor changes from git commit log):
+  * Try invoking parent close() via super(), hoping to squash ResourceWarning.
+    Also, avoid shadowing the 'file' builtin / alias with locals.
+  * Bend over backward to avoid ResourceWarnings.
+  * Use os.pathsep when constructing $PYTHONPATH (fix test failure on Windows).
+  * Update to latest 2.2.0 bootstrap.py
+  * Correctly quote Windows pathnames
+
+-------------------------------------------------------------------
+Sat Aug  3 20:34:31 UTC 2013 - hpj@urpla.net
+
+- version 4.0.0b3: initial build
+

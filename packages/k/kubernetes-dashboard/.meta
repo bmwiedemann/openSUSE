@@ -1,0 +1,5 @@
+<package name="kubernetes-dashboard" project="openSUSE:Factory">
+  <title>Kubernetes Dashboard</title>
+  <description>General-purpose web UI for Kubernetes clusters</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="kubernetes-dashboard"/>
+</package>

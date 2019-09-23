@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Mar 11 12:29:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Respect optflags
+- Update to 0.1 release:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Dec  4 11:49:37 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Rewrite description to resolve ambiguities introduced by
+  suffixed "by .." and "with .." clauses. (Trim author info as is
+  customary, too.)
+
+-------------------------------------------------------------------
+Fri Nov 16 17:27:45 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

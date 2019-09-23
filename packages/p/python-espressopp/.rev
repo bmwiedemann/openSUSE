@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1257eb2a389529058c8a1f625dac621</srcmd5>
+    <version>1.9.4</version>
+    <time>1485512057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>452256</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ab3f69f1f0362fd679757f20684da18</srcmd5>
+    <version>1.9.5</version>
+    <time>1507897204</time>
+    <user>dimstar_suse</user>
+    <comment>- split boost-devel into libboost-* (bug #1062795)
+- version bumped to v1.9.5
+  * many fixes: https://github.com/espressopp/espressopp/compare/v1.9.4...v1.9.5
+  * drop 141.patch - got merged upstream
+</comment>
+    <requestid>533734</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1051d6acf33455c57d3e9351a7cae004</srcmd5>
+    <version>1.9.5</version>
+    <time>1509036277</time>
+    <user>dimstar_suse</user>
+    <comment>- adapt to new openlmi package - source mpivars.h during build
+</comment>
+    <requestid>536576</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>568ac5f0f1caccff1223c81cec4f06d6</srcmd5>
+    <version>2.0</version>
+    <time>1531947385</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to v2.0 (boo#1089815)
+  * many fixes: https://github.com/espressopp/espressopp/compare/v1.9.5...v2.0
+  * added 229.patch from pull request 229 to fix build with boost-1.67
+</comment>
+    <requestid>623508</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9c398b786af7bd685eea44cfce70517b</srcmd5>
+    <version>2.0</version>
+    <time>1548335683</time>
+    <user>dimstar_suse</user>
+    <comment>- Use license tag
+- Various dependency and spec file formatting cleanups
+</comment>
+    <requestid>667882</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38e619a06c323a4a29dcbd9f1fb6a5ea</srcmd5>
+    <version>0.9.2</version>
+    <time>1402947273</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>236718</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>38e619a06c323a4a29dcbd9f1fb6a5ea</srcmd5>
+    <version>0.9.2</version>
+    <time>1409303387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d18e0fca5fa9c9920dc23c040e802c14</srcmd5>
+    <version>1.0.1</version>
+    <time>1566551322</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.1</comment>
+    <requestid>725367</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b12e59a4546ca2cb6d4e683965fdbf88</srcmd5>
+    <version>1.0.1</version>
+    <time>1568805246</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix icon theme for battery level
+  + Added 0001-data-fix-icon-theme-for-battery-level.patch
+- Fix battery status notifaction parsing
+  + Added 0005-notifications-fix-battery-status-notification-parsin.patch
+</comment>
+    <requestid>731587</requestid>
+  </revision>
+</revisionlist>

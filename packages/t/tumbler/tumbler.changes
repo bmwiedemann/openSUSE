@@ -1,0 +1,333 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:52:24 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
+Mon Aug 12 09:18:05 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.2.7
+  * Translation updates
+- Cleaned up spec file
+
+-------------------------------------------------------------------
+Sun Jul 28 15:16:21 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.2.6
+  * Translation updates
+
+-------------------------------------------------------------------
+Sun Jun 30 11:10:04 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.2.5
+  * Translation updates
+- Removed unneeded BuildRoot
+
+-------------------------------------------------------------------
+Wed Jun  5 06:22:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added OBS service file to fetch git master sources when needed
+
+-------------------------------------------------------------------
+Sun Jun  2 07:03:55 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace pkgconfig(liopenraw-gnome-1.0) BuildRequires with
+  libopenraw-devel: the .pc file changed name between 0.0.x and
+  0.1.x. Requiring the generic -devel name is easier than following
+  upstreams namechanges.
+- In case we build against libopenraw-gnome-0.1, update the build
+  system to look for the right pc file using sed.
+
+-------------------------------------------------------------------
+Fri May 17 20:28:30 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to version 0.2.4
+  - Check for sparse video files only on plugin side
+  - Set Max file sizes
+  - Add Fujifilm RAF support (bxo#14522)
+  - Add more media types for audio cover thumbnails (bxo#12041)
+  - Fix a typo in desktop-thumbnailer-provider.c (bxo#14925)
+  - Update URLs in README and configure.ac
+  - Fix g_type_class_add_private is deprecated
+  - Bump glib version
+  - Translation Updates
+- Added bcond to build with sources from git master branch
+- Switched to %autosetup for simpler maintenance
+- Switch urls to https://
+- Cleaned up spec file
+
+-------------------------------------------------------------------
+Sat Sep 15 09:55:51 UTC 2018 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 0.2.3
+  - Test sparse files only for regular files (bxo#14693).
+  - Fix uninitialized variable (bxo#14688)
+  - Added check to avoid sparse files, that cause high cpu and
+    memory load. (bxo#12259).
+  - Use hash table to avoid scanning xdg user path twice when
+    searching for desktop thumbnailers.
+  - Close desktop thumbnailers directory when done from it.
+  - Accept network paths in ffmpeg thumbnailer plugin.
+  - Use pkg-config to find FreeType > 2.9.1.
+  - Translation Updates
+
+-------------------------------------------------------------------
+Sun Apr  8 16:45:33 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 0.2.1
+  - Handle 0 mtime threshold on Cleanup DBus method. This fixes
+    running across all thumbnails that was causing very high I/O
+    bandwidth usage when a file with a thumbnail gets deleted. (On
+    dbus Cleanup method). bxo#9231
+
+-------------------------------------------------------------------
+Sat Nov 18 10:58:15 UTC 2017 - seife+obs@b1-systems.com
+
+- add explicit libtumbler versioned dependency to tumbler
+
+-------------------------------------------------------------------
+Fri Nov 17 20:56:56 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.2.0
+  - Stable release of tumbler ported to GDbus
+- 0.1.92:
+  - Add support for loading thumbnailers from *.thumbnailer files
+    (enhancement bug bxo#7475)
+- 0.1.90:
+  - Tumbler relies now on gdbus instead of dbus-glib
+- 0.1.32:
+  - bxo#13618 avoid loading specialized tumbnailers twice on system
+    with duplicate path entry in $XDG_DATA_HOME (causes assertion
+    failure)
+  - bxo#13360 don't close GdkPixbufLoader on error (causes sigabrt)
+  - bxo#13240 fix typo in exif tag for image height
+
+-------------------------------------------------------------------
+Sat Feb 28 21:47:18 UTC 2015 - gber@opensuse.org
+
+- update to version 0.1.31
+  - use $XDG_CACHE_HOME/thumbnails as per spec change (bxo#10613)
+  - move xdt m4 macros into separate directory
+  - update xdt m4 macros
+  - bump autotools requirements
+  - fix IT_PROG_INTLTOOL warning
+  - fix all m4 warnings
+  - enable support for video/webm in ffmpeg thumbnailer plugin
+    (bxo#10360)
+  - translation updates
+
+-------------------------------------------------------------------
+Mon May 26 14:26:45 UTC 2014 - gber@opensuse.org
+
+- update to version 0.1.30
+  - only enable keepalive in curl >= 7.25
+  - support move/copy operations on directories in the cache
+  - send the cache operation replies after they are completed
+  - translation updates
+
+-------------------------------------------------------------------
+Sun May  5 20:00:36 UTC 2013 - gber@opensuse.org
+
+- update to version 0.1.29
+  - fix memory corruption on 64bit
+  - translation updates
+
+-------------------------------------------------------------------
+Sun May  5 18:51:44 UTC 2013 - gber@opensuse.org
+
+- update to version 0.1.28
+  - set nice value of tumblerd to 19
+  - fix rendering from pdfs with thumbnail
+  - add more supported types for gst thumbnailer
+  - some additional debug checks for bug #9766 and minor
+    optimizations
+  - fix deprecating warning with glib 2.36
+  - include string.h
+  - translation updates
+- remove obsolete tumbler-libpng16.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 11:36:57 UTC 2013 - pgajdos@suse.com
+
+- build also with libpng16
+  * libpng16.patch
+
+-------------------------------------------------------------------
+Tue Jan 15 15:49:21 UTC 2013 - gber@opensuse.org
+
+- build the OMDB cover thumbnailer (although disabled by default
+  for privacy reasons)
+
+-------------------------------------------------------------------
+Sat Jan 12 15:00:04 UTC 2013 - gber@opensuse.org
+
+- update to version 0.1.27
+  - autotools updates
+  - remove unmaintained translations
+  - fix build when using -Wl,-z,defs
+  - add cover-thumbnailer for movies
+  - add config file system to control thumbnailing plugins
+  - release thumbnail in gst thumbnailer
+
+-------------------------------------------------------------------
+Mon Dec 17 23:21:52 UTC 2012 - gber@opensuse.org
+
+- update to version 0.1.26
+  - remove INSTALL
+  - directly render the capture in the correct size
+  - new gstreamer thumbnailer based on totem-thumbnailer
+  - disable http and cdda schemes as well
+  - add support for MPEG2 transport streams
+  - rotate jpeg thumbnails
+  - plug small leak
+  - don't use collate to check strings
+  - release lifecycle manager during early exit
+  - don't abort with warnings in debug mode
+  - clear 2.32 mutex memory leak
+  - drop unneeded vfs schemes
+  - work with an array to store the strings
+  - don't use GString for a simple concat
+  - make registry dump a bit smaller
+  - don't use deprecated glib 2.32 API
+  - rotate pixbuf loader images
+  - translation updates
+
+-------------------------------------------------------------------
+Sun Apr 29 08:38:15 UTC 2012 - gber@opensuse.org
+
+- update to version 0.1.25
+  - remove some unused m4 macros
+  - add or fix missing licenses
+  - translation updates
+
+-------------------------------------------------------------------
+Sat Mar 31 09:17:09 UTC 2012 - gber@opensuse.org
+
+- update to version 0.1.24
+  - link all plugins that use rint() against libm
+  - call dbus_g_thread_init() to fix threading issues
+  - add application/vnd.rn-realmedia to the ffmpeg plugin
+  - explicitly link against gmodule
+  - avoid accessing list elements after they have been freed
+  - make sure to include PLATFORM flags everywhere
+  - translation updates
+
+-------------------------------------------------------------------
+Tue Mar 27 14:43:52 UTC 2012 - gber@opensuse.org
+
+- split of -lang and shared library subpackages in order to comply
+  with the shread library packaging policy
+- enable ODF and RAW plugins and add the option to build the ffmpeg
+  plugin
+- correct dependencies
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:17 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Dec  4 14:08:59 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.23
+  - fix generation of video images by starting the pipeline
+  - add an ODF thumbnailer plugin
+  - add support for OpenRaster images in the ODF thumbnailer
+  - add a raw image thumbnailer plugin
+  - exit the xdg thumbnailer nicely with corrupt png files
+  - avoid huge thumbnails from libjpeg
+  - optimize the pixbuf thumbnailer
+  - bugfixes
+  - translation updates
+- dropped obsolete tumbler-0.1.22-fix-video-thumbnails.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 14:04:16 UTC 2011 - gber@opensuse.org
+
+- added tumbler-0.1.22-fix-video-thumbnails.patch in order to fix
+  the generation of video images by starting the pipeline
+- build the gstreamer plugin now that it actually works
+
+-------------------------------------------------------------------
+Wed Sep 21 07:06:26 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.22
+  - add coding style documentation
+  - add a GStreamer-based thumbnailer for video thumbnails
+  - avoid GdkPixbuf functions deprecated in poppler >= 0.17
+  - translation updates
+- dropped obsolete tumbler-poppler-0.18.patch,
+  tumbler-poppler-0.18-bis.patch
+
+-------------------------------------------------------------------
+Tue Sep 20 09:11:44 UTC 2011 - vuntz@opensuse.org
+
+- Add tumbler-poppler-0.18.patch: fix build with poppler 0.17/0.18.
+  Patch taken from git.
+- Add tumbler-poppler-0.18-bis.patch: second part of the fix, not
+  in git yet.
+
+-------------------------------------------------------------------
+Fri Feb 18 13:04:34 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.21
+  - version bump to override incompatibly versioned packages for
+    Maemo
+  - quit tumbler after at least 5 minutes of inactivity
+  - update to latest revision of the thumbnail management D-Bus
+    specification where Cleanup() takes an array of base URIs
+    instead of just one
+  - translation updates
+
+-------------------------------------------------------------------
+Mon Jan 17 12:28:24 UTC 2011 - gber@opensuse.org
+
+- update to version 0.1.6
+  - bugfixes
+
+-------------------------------------------------------------------
+Sun Dec 26 20:19:11 UTC 2010 - gber@opensuse.org
+
+- corrected license
+- corrected groups
+- improved summaries
+- show compiler output
+- remove unsupported locales
+- enabled plugins:
+  - GdkPixbuf thumbnailer
+  - FreeType font thumbnailer
+  - JPEG thumbnailer with EXIF support
+  - PDF/PS thumbnailer plugin
+  - Freedesktop.org cache
+
+-------------------------------------------------------------------
+Thu Dec  2 13:40:00 UTC 2010 - prusnak@opensuse.org
+
+- updated to 0.1.4
+  - Use LGPL instead of GPL license headers in the library (bug #6781).
+- updated to 0.1.3
+  - Link plugins against libtumbler-1. Should fix builds with
+    --as-needed.
+  - Move tumblerd into $libdir/tumbler-1.
+  - Add support for arbitrary URI shemes in the poppler plugin.
+  - Translation updates: Basque, Indonesian, Swedish, German, Russian,
+    Galician, Uyghur, Chinese (Taiwan), Ukrainian, Finnish, Catalan
+    (Valencian), Danish, Japanese, Kazakh, Italian, Portuguese,
+- updated to 0.1.2
+  - Add a new PDF/PostScript thumbnailer plugin based on poppler.
+  - Add a new video thumbnailer plugin using libffmpegthumbnailer.
+  - Handle missing URIs/MIME types in thumbnailer requests by reporting
+    them back to the client application as an error.
+  - Don't use dbus_connection_send from threads. Use g_idle_add()
+    instead.
+  - Improve tumblerd's startup significantly by optimizing the code
+    dealing with updating the supported URI schemes and MIME types.
+  - Avoid compiler warnings due to global name shadowing.
+  - Translation updates: Traditional Chinese, Punjabi, Bengali, Sinhala,
+    French, Chinese (China) and more.
+
+-------------------------------------------------------------------
+Wed Jan 13 13:08:10 UTC 2010 - prusnak@suse.cz
+
+- created package (version 0.1.1)
+

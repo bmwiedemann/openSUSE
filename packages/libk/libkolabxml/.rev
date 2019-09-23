@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f59eaa4df677dbb30fc23ee1c78e0183</srcmd5>
+    <version>0.8.1</version>
+    <time>1347702780</time>
+    <user>namtrac</user>
+    <comment>Add libkolabxml. A new build dependency needed by kdepim-runtime &gt; 4.9</comment>
+    <requestid>133841</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b0391abd11b6d38d4edac9deb1c2cac</srcmd5>
+    <version>0.8.1</version>
+    <time>1354096270</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143298</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>496333cfb8f0c489c39b9aacb56b0189</srcmd5>
+    <version>0.8.1</version>
+    <time>1358417803</time>
+    <user>coolo</user>
+    <comment>- Fixed php bindings
+- Updated the changelog to mention the patch fix_php5_bindings.diff</comment>
+    <requestid>148632</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>496333cfb8f0c489c39b9aacb56b0189</srcmd5>
+    <version>0.8.1</version>
+    <time>1359109296</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa3602fe6e287af5201849ddb546b030</srcmd5>
+    <version>0.8.3</version>
+    <time>1362119112</time>
+    <user>coolo</user>
+    <comment>New upstream version 0.8.3 (forwarded request 156665 from aeneas_jaissle)</comment>
+    <requestid>156811</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>49e53a655af87c5c70476acced1c6587</srcmd5>
+    <version>0.8.3</version>
+    <time>1366811779</time>
+    <user>coolo</user>
+    <comment>- Added fix_uuid_includes_SLE.diff
+- removed sed command to fix uuid includes
+- Patch only sles_version == 11 (forwarded request 173122 from aeneas_jaissle)</comment>
+    <requestid>173152</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>63933ad2db5dc1d1dfbe66199b43a5fc</srcmd5>
+    <version>0.8.4</version>
+    <time>1368720111</time>
+    <user>coolo</user>
+    <comment>New upstream version, removed patch (forwarded request 173994 from aeneas_jaissle)</comment>
+    <requestid>174798</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>95b005a6aa7adc42a977b76fda48e5fa</srcmd5>
+    <version>0.8.4</version>
+    <time>1371792864</time>
+    <user>coolo</user>
+    <comment>- Make mono bindings optional (forwarded request 180031 from Andreas_Schwab)</comment>
+    <requestid>180236</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4fa52ba4e886a0198ab875f34f23864f</srcmd5>
+    <version>0.8.4</version>
+    <time>1373470040</time>
+    <user>coolo</user>
+    <comment>Spec file cleanup (forwarded request 181667 from aeneas_jaissle)</comment>
+    <requestid>182708</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>0a2d2cb0954a6b778e17c76db82c31bb</srcmd5>
+    <version>0.8.4</version>
+    <time>1379318651</time>
+    <user>coolo</user>
+    <comment>Fix build for Factory - make java subpackage owns %_libdir/java</comment>
+    <requestid>199154</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>0a2d2cb0954a6b778e17c76db82c31bb</srcmd5>
+    <version>0.8.4</version>
+    <time>1379662991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>48c1d4fe52edae6e96b816e6aa255406</srcmd5>
+    <version>1.0.1</version>
+    <time>1388757207</time>
+    <user>scarabeus_factory</user>
+    <comment>Thu Nov 21 13:16:57 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 1.0.1
+- soname changed from 0 to 1
+
+
+Wed Nov 20 22:55:47 UTC 2013 - aj@ajaissle.de
+
+- New upstream release 0.8.5
+- csharp_bindings.diff: Fix csharp bindings
+
+
+Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
+
+- Bindings require libkolabxml</comment>
+    <requestid>212673</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>fcdd830c1dcf447198866fa93a7e7e32</srcmd5>
+    <version>1.0.1</version>
+    <time>1391240626</time>
+    <user>coolo</user>
+    <comment> (forwarded request 215019 from aeneas_jaissle)</comment>
+    <requestid>220516</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>855cf662cb369648fa1da328d262ea70</srcmd5>
+    <version>1.0.1</version>
+    <time>1407744418</time>
+    <user>lnussel</user>
+    <comment>Forward request 243639: Fix build with xsd 4.0.0</comment>
+    <requestid>243928</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>855cf662cb369648fa1da328d262ea70</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>72eac16add2bc96d05ef4d203bb90977</srcmd5>
+    <version>1.0.2</version>
+    <time>1409638927</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246986</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fdb5d9504ae4ca3747cbabd25205aa00</srcmd5>
+    <version>1.0.3</version>
+    <time>1418737854</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264805</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0a816e92be90715f742868482a64ad6c</srcmd5>
+    <version>1.1.0</version>
+    <time>1428272637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294106</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a843c927a4c488f5f08ced4104102dc7</srcmd5>
+    <version>1.1.1</version>
+    <time>1452377397</time>
+    <user>dimstar_suse</user>
+    <comment>required by newer libkolab-qt5</comment>
+    <requestid>352451</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d6799fde25bb000e0c25d20f23afb4c2</srcmd5>
+    <version>1.1.2</version>
+    <time>1453507502</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>354148</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>4c89e7560b5b0a701320a5b5267df4d5</srcmd5>
+    <version>1.1.2</version>
+    <time>1470657049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414546</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ab83ed5ebcaf89433f825586aae1d617</srcmd5>
+    <version>1.1.6</version>
+    <time>1480584278</time>
+    <user>dimstar_suse</user>
+    <comment>- disable parallel build to hopefully fix random build failures
+
+- New upstream release 1.1.6
+  + The created date is optional
+- New upstream release 1.1.5
+  + Support audio alarms without an attachment
+- New upstream release 1.1.4
+  + The tests require valid created dates
+- New upstream release 1.1.3
+  + The &quot;created&quot; property must be a UTC date-time</comment>
+    <requestid>441925</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1b1b61e66b75260f900dda2aa491bd16</srcmd5>
+    <version>1.1.6</version>
+    <time>1486547255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454508</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4a42dafdee267eb090a9a522319916ca</srcmd5>
+    <version>1.1.6</version>
+    <time>1486773490</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455577</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>718ec1c9d8bd081c8610a9dfca753628</srcmd5>
+    <version>1.1.6</version>
+    <time>1486968338</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libboost_Date_time-devel and libboost_chrono-devel to 
+  requirements to make them explicit (implicitly required by 
+  libboost_thread)</comment>
+    <requestid>456440</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>b1f1060283312e12d7c71207111bc6c3</srcmd5>
+    <version>1.1.6</version>
+    <time>1487260077</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457025</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>6ffb4474b103a49dd976be59d303470e</srcmd5>
+    <version>1.1.6</version>
+    <time>1505333859</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patches to build against sle11:
+  * libkolabxml-0.8.3_fix_uuid_includes_SLE.patch
+  * libkolabxml-1.0.1_no-maybe-uninitialized.patch
+- Remove few sle11/old openSUSE conditions to make it more readable
+- Disable php on TW as php7 is not supported by the code and php5
+  is removed (forwarded request 517370 from scarabeus_iv)</comment>
+    <requestid>517374</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>c979a2d5e76736e3981110c39393c1fd</srcmd5>
+    <version>1.1.6</version>
+    <time>1507196921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530677</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>f9dcac984710d6c5eb22540a5ac18534</srcmd5>
+    <version>1.1.6</version>
+    <time>1555488256</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure libxerces-c-devel is installed before using
+  libkolabxml-devel.</comment>
+    <requestid>693120</requestid>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>0be8d034ab3f7c43654e7d60a8ce816b</srcmd5>
+    <version>1.1.6</version>
+    <time>1568804872</time>
+    <user>maxlin_factory</user>
+    <comment>add 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch.</comment>
+    <requestid>731590</requestid>
+  </revision>
+</revisionlist>

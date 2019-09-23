@@ -1,0 +1,1480 @@
+<revisionlist>
+  <revision rev="1" vrev="12">
+    <srcmd5>fe6f312c335e25e980757adb38cec630</srcmd5>
+    <version>7.15.5</version>
+    <time>1168902501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a55e5045ae0ee405c98126695bbd9a62</srcmd5>
+    <version>7.16.0</version>
+    <time>1170429002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5183afa6a32f4d6a84966135551c6704</srcmd5>
+    <version>7.16.1</version>
+    <time>1171646449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>bd335986d7dbcd46c330b6775a82d34c</srcmd5>
+    <version>7.16.1</version>
+    <time>1175421976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>7237293314563897917a24b677d800bf</srcmd5>
+    <version>7.16.1</version>
+    <time>1176390735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>50beebc9219f04e2203ca56b2cd7e706</srcmd5>
+    <version>7.16.1</version>
+    <time>1176716487</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="16">
+    <srcmd5>10ca1f2bb4faf484046a87ab34639264</srcmd5>
+    <version>7.16.1</version>
+    <time>1178464337</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32c218b9f1d7a6bfa9169b5dee8e891c</srcmd5>
+    <version>7.16.2</version>
+    <time>1179934635</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c4657287b3db2356a5564d3c9be68712</srcmd5>
+    <version>7.16.2</version>
+    <time>1180897899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>cc5188e7487ebb8a4b3baf849dc7a506</srcmd5>
+    <version>7.16.2</version>
+    <time>1180997210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6f18d611733f184f9c7ddd30c0c4d8ec</srcmd5>
+    <version>7.16.3</version>
+    <time>1184081105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fcc6180d34410cc9a09a105d379e062c</srcmd5>
+    <version>7.16.4</version>
+    <time>1186148476</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>1620562f898286e5e3b6da7be248632a</srcmd5>
+    <version>7.16.4</version>
+    <time>1188567454</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>ecc727843628bdca86f750e3654b3f98</srcmd5>
+    <version>7.16.4</version>
+    <time>1189778671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ed077acf4484a466c0ddb12a1adf22f8</srcmd5>
+    <version>7.17.0</version>
+    <time>1191941858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>881508a72a303b3c1c97c5a8f757a3c8</srcmd5>
+    <version>7.17.0</version>
+    <time>1192126200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5761cf7d50a6347d0ec2154ea8f83f2c</srcmd5>
+    <version>7.17.1</version>
+    <time>1193845903</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>f12d8d51b5a452ff811653a2ab1b461e</srcmd5>
+    <version>7.17.1</version>
+    <time>1195463969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>08a2e48d483f1c38ed34f611099802d2</srcmd5>
+    <version>7.17.1</version>
+    <time>1197479145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cc09a0f13515b637343aa8ae1bd8eaa8</srcmd5>
+    <version>7.18.0</version>
+    <time>1201712660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>e478bcc84373ef0e425fa72e3073c9f9</srcmd5>
+    <version>7.18.0</version>
+    <time>1202489650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>f2e33f92dde4d46edd654ab5226751dc</srcmd5>
+    <version>7.18.0</version>
+    <time>1203955418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>c88f9e41afe6a5a1e59cf28b772f9ff4</srcmd5>
+    <version>7.18.0</version>
+    <time>1204919699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>3430d198fe308840a62a349fff389bd1</srcmd5>
+    <version>7.18.0</version>
+    <time>1205167434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f290c507163665d69d8e79ab62591be3</srcmd5>
+    <version>7.18.1</version>
+    <time>1207168776</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>7d4c585acd7b618ff6c93628895fbf8d</srcmd5>
+    <version>7.18.1</version>
+    <time>1207825899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>23514e436d836602786fa8e7a59b1043</srcmd5>
+    <version>7.18.1</version>
+    <time>1208025108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>7fb3e175ca50f3e6b7c175ce34dad21d</srcmd5>
+    <version>7.18.1</version>
+    <time>1209390839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>c123cc81936d28c5582a18beac394f84</srcmd5>
+    <version>7.18.1</version>
+    <time>1211050542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a117709993e7986191836a8d7e68281b</srcmd5>
+    <version>7.18.2</version>
+    <time>1215217362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ef603642093e15ba32f87563c2ae8efd</srcmd5>
+    <version>7.19.0</version>
+    <time>1220646385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>63de3288b230a1eb09c3745453b51dcd</srcmd5>
+    <version>7.19.0</version>
+    <time>1221256391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="9">
+    <srcmd5>9ed7149821e957728b1c8c4dd12030db</srcmd5>
+    <version>7.19.0</version>
+    <time>1221473617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>771f822a6859341741377c4f98b1a286</srcmd5>
+    <version>7.19.0</version>
+    <time>1225636655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>5b64b3131d5e3e1667c3d7edcc18dfbe</srcmd5>
+    <version>7.19.0</version>
+    <time>1229340251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1fb46d8eb3788bc6ab3f1b4493b1d575</srcmd5>
+    <version>7.19.4</version>
+    <time>1236114772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>fafaddaef7a0d8c6c573960a088fcb09</srcmd5>
+    <version>7.19.4</version>
+    <time>1236554302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6f2fe66de90822b75ec0ecaa11f7df60</srcmd5>
+    <version>7.19.5</version>
+    <time>1242767691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>da086990d8a0b77a7455ff6e48bb9a06</srcmd5>
+    <version>7.19.6</version>
+    <time>1250198909</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 17741 from user michal-m
+</comment>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>da086990d8a0b77a7455ff6e48bb9a06</srcmd5>
+    <version>7.19.6</version>
+    <time>1250198909</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 17741 from user michal-m
+</comment>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>e894ed3c5234c97727a4721493cb246b</srcmd5>
+    <version>7.19.6</version>
+    <time>1263482816</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 29104 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c345689f124c393a7b9c428fef0c18dd</srcmd5>
+    <version>7.19.7</version>
+    <time>1264776963</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 30494 from user michal-m
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0bb5d0495bde24798a2247753bd0e894</srcmd5>
+    <version>7.20.0</version>
+    <time>1266499866</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 32593 from user michal-m
+</comment>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>cdef324b17218cce05c512610aec63c7</srcmd5>
+    <version>7.20.0</version>
+    <time>1268923276</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>c513b749f5499bcd7a35e4c1d985762f</srcmd5>
+    <version>7.20.0</version>
+    <time>1268951396</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 35079 from user coolo
+</comment>
+    <requestid>35079</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>b55786a3e4e738d14b0e7d6e7cfbd39d</srcmd5>
+    <version>7.20.0</version>
+    <time>1269616621</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 35801 from user coolo
+</comment>
+    <requestid>35801</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4e51c11bdb64bbbc8f27db0c94f33821</srcmd5>
+    <version>7.20.1</version>
+    <time>1272121637</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 38688 from user coolo
+</comment>
+    <requestid>38688</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a10dd965e3cbf052d98ec9246b8cc125</srcmd5>
+    <version>7.20.1</version>
+    <time>1275495064</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 40967 from user michal-m
+</comment>
+    <requestid>40967</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>b07ef77cf22b30781f5e7d716f5070be</srcmd5>
+    <version>7.20.1</version>
+    <time>1276833514</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/curl based on submit request 41607 from user elvigia
+</comment>
+    <requestid>41607</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>b07ef77cf22b30781f5e7d716f5070be</srcmd5>
+    <version>7.20.1</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>b07ef77cf22b30781f5e7d716f5070be</srcmd5>
+    <version>7.20.1</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>9f45878951b89a3df8e1ccae849f42b7</srcmd5>
+    <version>7.21.2</version>
+    <time>1287834086</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51276 from user elvigia
+</comment>
+    <requestid>51276</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>6f640817f2d55a99c8c9acebe04791fd</srcmd5>
+    <version>7.21.2</version>
+    <time>1287834106</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51276
+</comment>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>764bda231f32b24cb9fbf82aaadbce25</srcmd5>
+    <version>7.21.2</version>
+    <time>1288022392</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51348 from user coolo
+</comment>
+    <requestid>51348</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>c68e4e3819721c69ad37585f0bed6d14</srcmd5>
+    <version>7.21.2</version>
+    <time>1288022398</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51348
+</comment>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>85bae40c0f117a9bfe64c482db8ce3f3</srcmd5>
+    <version>7.21.2</version>
+    <time>1289532505</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>c68e4e3819721c69ad37585f0bed6d14</srcmd5>
+    <version>7.21.2</version>
+    <time>1289569339</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="58" vrev="11">
+    <srcmd5>c68e4e3819721c69ad37585f0bed6d14</srcmd5>
+    <version>7.21.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>d4fe72e85980e99191e58eda3a1b7f04</srcmd5>
+    <version>7.21.7</version>
+    <time>1312380204</time>
+    <user>saschpe</user>
+    <comment>- remove support for old suse_versions
+
+- Update to 7.21.7:
+  - Fix libcurl inappropriate GSSAPI delegation. Full details at
+    http://curl.haxx.se/docs/adv_20110623.html
+  - Some other minor fixes.
+- Use the lzma compressed tarball provided upstreams.
+
+- remove unintented LDFLAGS from the spec file 
+
+- Update to 7.21.6
+* curl-config: fix --version 
+* use HTTPS properly after CONNECT
+* SFTP: close file before post quote operations
+
+- bnc#598574 has been fixed in upstream commit  8ab137b2bc9630ce20f4
+ already, so enable c-ares support again.
+
+- Support openSSL compiled without SSLv2 support
+- Update to version 7.21.4
+  * SMTP: add brackets for MAIL FROM
+  * multi: connect fail =&gt; use next IP address
+  * pubkey_show: allocate buffer to fit any-size result
+  * Curl_do: avoid using stale conn pointer
+  * tftpd test server: avoid buffer overflow report from glibc
+  * OpenSSL get_cert_chain: support larger data sets
+  * SCP/SFTP transfers: acknowledge speedcheck
+  * connect problem: use UDP correctly
+  * OpenSSL: improved error message on SSL_CTX_new failures
+  * HTTP: memory leak on multiple Location:</comment>
+    <requestid>77837</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>e9028c39e227fc218a9368eddea50305</srcmd5>
+    <version>7.21.7</version>
+    <time>1312380220</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77837
+</comment>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>0643bbaad9557a592e0eaac3ceb720cf</srcmd5>
+    <version>7.21.7</version>
+    <time>1313409992</time>
+    <user>saschpe</user>
+    <comment>- Use SSL_MODE_RELEASE_BUFFERS if available, accepted 
+  in upstream as commit 3d919440c80333c496fb (forwarded request 78841 from elvigia)</comment>
+    <requestid>78849</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>f21fc16526c04ad8866290cc9a8e6e57</srcmd5>
+    <version>7.21.7</version>
+    <time>1313410001</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78849
+</comment>
+  </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>c17c303a51046ff5fbc0893727ee46d6</srcmd5>
+    <version>7.21.7</version>
+    <time>1316440702</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83159 from jengelh)</comment>
+    <requestid>83163</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5179950d88026cd78bfc8d5cd012996f</srcmd5>
+    <version>7.22.0</version>
+    <time>1317771917</time>
+    <user>oertel</user>
+    <comment>Update to 7.22.0 (forwarded request 86267 from dimstar)</comment>
+    <requestid>86272</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>5179950d88026cd78bfc8d5cd012996f</srcmd5>
+    <version>7.22.0</version>
+    <time>1319181838</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>3a3d5f073b684bfb7809cfd34143dfca</srcmd5>
+    <version>7.23.1</version>
+    <time>1322814380</time>
+    <user>coolo</user>
+    <comment>- Use O_CLOEXEC in library code. (forwarded request 94633 from elvigia)</comment>
+    <requestid>94634</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>370a55c01173161d5fe8f7cbbe9aa1c4</srcmd5>
+    <version>7.23.1</version>
+    <time>1323191104</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>d706db672d70cab11214fd8e5bd364ac</srcmd5>
+    <version>7.23.1</version>
+    <time>1325348357</time>
+    <user>coolo</user>
+    <comment>- Package /usr/share/aclocal to avoid build dependency on automake. (forwarded request 98350 from michal-m)</comment>
+    <requestid>98362</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>d5fabda8aaf4ec67858d37eb79a3c7ac</srcmd5>
+    <version>7.24.0</version>
+    <time>1328260929</time>
+    <user>coolo</user>
+    <comment>- Update to version curl 7.24.0
+- refresh patches to fix broken build (forwarded request 102532 from elvigia)</comment>
+    <requestid>102533</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>b7947d0712799d8a51902fa489a643f3</srcmd5>
+    <version>7.24.0</version>
+    <time>1328890342</time>
+    <user>coolo</user>
+    <comment>- Problem with the c-ares backend, workaround for [bnc#745534] (forwarded request 103144 from elvigia)</comment>
+    <requestid>103145</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f978bab024e6e01a179606978c02efac</srcmd5>
+    <version>7.25.0</version>
+    <time>1337580388</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 7.25.0
+* Added CURLOPT_TCP_KEEPALIVE, CURLOPT_TCP_KEEPIDLE,
+  CURLOPT_TCP_KEEPINTVL
+* use new library-side TCP_KEEPALIVE options
+* Added a new CURLOPT_MAIL_AUTH option
+* Added support for --mail-auth
+* (for more see the shipped CHANGES file) (forwarded request 120863 from jengelh)</comment>
+    <requestid>120875</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>f978bab024e6e01a179606978c02efac</srcmd5>
+    <version>7.25.0</version>
+    <time>1340183265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>02475d843776594c6b94922e39d396f1</srcmd5>
+    <version>7.25.0</version>
+    <time>1342087904</time>
+    <user>namtrac</user>
+    <comment>define _GNU_SOURCE for oS/SLES &lt;= 11.4, as O_CLOEXEC is
+defined inside a ifdef __USE_GNU (forwarded request 127418 from dnh)</comment>
+    <requestid>127423</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>124c1111cc7c6792a89b07e64e67e9c7</srcmd5>
+    <version>7.27.0</version>
+    <time>1343671941</time>
+    <user>coolo</user>
+    <comment>- Curl 7.27.0
+* support metalinks
+* Add sasl authentication support
+* various bugfixes
+- Fix previous change, _GNU_SOURCE --&gt; AC_USE_SYSTEM_EXTENSIONS (forwarded request 129235 from elvigia)</comment>
+    <requestid>129250</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>6d9753495d731367a06f330b61e05d06</srcmd5>
+    <version>7.27.0</version>
+    <time>1352562938</time>
+    <user>coolo</user>
+    <comment>- added curl-ftp-prevent-the-multi-interface-from-blocking.patch in
+  order to prevent the multi interface from blocking when using ftp
+  and the remote end responds very slowly (sf#3579064) (forwarded request 140140 from gberh)</comment>
+    <requestid>140295</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>a3426f36780ca55166d89c49b6fbf35d</srcmd5>
+    <version>7.28.1</version>
+    <time>1353597116</time>
+    <user>coolo</user>
+    <comment>- Curl 7.28.1
+* FTP: prevent the multi interface from blocking Obsoletes
+  curl-ftp-prevent-the-multi-interface-from-blocking.patch
+* don't send '#' fragments when using proxy
+* OpenSSL: Disable SSL/TLS compression - avoid the &quot;CRIME&quot; attack
+* TFTP: handle resend
+* memory leak: CURLOPT_RESOLVE with multi interface
+* SSL: Several SSL-backend related fixes (forwarded request 142224 from elvigia)</comment>
+    <requestid>142278</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>bdc23c64f956718c169fea3305a774bb</srcmd5>
+    <version>7.28.1</version>
+    <time>1355910713</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143883 from sbrabec)</comment>
+    <requestid>145727</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>3cd78e154d72094192170d5fd4f5128a</srcmd5>
+    <version>7.28.1</version>
+    <time>1357998630</time>
+    <user>coolo</user>
+    <comment>- Break build loop and make GPG signature verification optional. (forwarded request 148130 from sbrabec)</comment>
+    <requestid>148131</requestid>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>3cd78e154d72094192170d5fd4f5128a</srcmd5>
+    <version>7.28.1</version>
+    <time>1359108791</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="6">
+    <srcmd5>074332db24565a9bae55892d21076e69</srcmd5>
+    <version>7.28.1</version>
+    <time>1360242961</time>
+    <user>coolo</user>
+    <comment>- fixed CVE-2013-0249 (bnc#802411)
+- refreshed patches (forwarded request 151574 from vitezslav_cizek)</comment>
+    <requestid>151580</requestid>
+  </revision>
+  <revision rev="81" vrev="7">
+    <srcmd5>8a57a690dafc7bb57b1a8e4b190c140f</srcmd5>
+    <version>7.28.1</version>
+    <time>1361191583</time>
+    <user>coolo</user>
+    <comment>Fixup .changes entry - Require patch name in .changes (forwarded request 155702 from dimstar)</comment>
+    <requestid>155712</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>19d91c0b29061bc1c8b50d098cb61b3b</srcmd5>
+    <version>7.30.0</version>
+    <time>1365927207</time>
+    <user>coolo</user>
+    <comment>- update to 7.30.0
+  includes security fixes for CVE-2013-0249 and CVE-2013-1944
+  (bugs bnc#814655 and bnc#802411 respectively)
+  (dropped curl-CVE-2013-0249.patch)
+- Changes:
+  imap: Changed response tag generation to be completely unique
+  imap: Added support for SASL-IR extension
+  imap: Added support for the list command
+  imap: Added support for the append command
+  imap: Added custom request parsing
+  imap: Added support to the fetch command for UID and SECTION properties
+  imap: Added parsing and verification of the UIDVALIDITY mailbox attribute
+  imap/pop3/smtp: Added support for the STARTTLS capability
+  checksrc: ban use of sprintf, vsprintf, strcat, strncat and gets
+  curl_global_init() now accepts the CURL_GLOBAL_ACK_EINTR flag
+  Added CURLMOPT_MAX_HOST_CONNECTIONS, CURLMOPT_MAX_TOTAL_CONNECTIONS
+    for new multi interface connection handling
+  Added CURLMOPT_MAX_PIPELINE_LENGTH, CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE,
+    CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE, CURLMOPT_PIPELINING_SITE_BL
+    and CURLMOPT_PIPELI NING_SERVER_BL for new pipelining control
+  test: offer &quot;automake&quot; output and check for perl better
+  always-multi: always use non-blocking internals
+  imap: Added support for sasl digest-md5 authentication
+  imap: Added support for sasl cram-md5 authentication
+  imap: Added support for sasl ntlm authentication
+  imap: Added support for sasl login authentication
+  imap: Added support for sasl plain text authentication
+  imap: Added support for login disabled server capability
+  mk-ca-bundle: add -f, support passing to stdout and more
+  writeout: -w now supports remote_ip/port and local_ip/port (forwarded request 163742 from vitezslav_cizek)</comment>
+    <requestid>163893</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>7f93fd3f6f044df59b23f3014ca65bcb</srcmd5>
+    <version>7.31.0</version>
+    <time>1372270639</time>
+    <user>coolo</user>
+    <comment>- update to 7.31.0
+  * includes fix for CVE-2013-2174 (bnc#824517)
+  * SECURITY VULNERABILITY: curl_easy_unescape() may parse data
+    beyond the end of the input buffer [26]
+  * Changes:
+    darwinssl: add TLS session resumption
+    darwinssl: add TLS crypto authentication
+    imap/pop3/smtp: Added support for ;auth= in the URL
+    imap/pop3/smtp: Added support for ;auth= to CURLOPT_USERPWD
+    usercertinmem.c: add example showing user cert in memory
+    url: Added smtp and pop3 hostnames to the protocol detection list
+    imap/pop3/smtp: Added support for enabling the SASL initial response
+    curl -E: allow to use ':' in certificate nicknames (forwarded request 180754 from vitezslav_cizek)</comment>
+    <requestid>180799</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>17a39cb289c0fbdca1823edd5bf0421f</srcmd5>
+    <version>7.31.0</version>
+    <time>1372740306</time>
+    <user>coolo</user>
+    <comment>- avoid cycle between curl and krb5 by using krb5-mini-devel (forwarded request 181705 from coolo)</comment>
+    <requestid>181709</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>265659461f0ad3ed2b2fee7355d82c6d</srcmd5>
+    <version>7.32.0</version>
+    <time>1376384918</time>
+    <user>scarabeus_factory</user>
+    <comment>- curl 7.32.0 
+* curl: allow timeouts to accept decimal values 
+* CURLOPT_XFERINFOFUNCTION: introducing a new progress callback 
+* SIGPIPE: ignored while inside the library
+* OpenSSL: check for read errors
+* configure: automake 1.14 compatibility tweak 
+* curl_multi_wait: set revents for extra fds 
+* global dns cache: didn't work (regression) 
+* mk-ca-bundle.1: don't install on make install (forwarded request 186690 from elvigia)</comment>
+    <requestid>186691</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>265659461f0ad3ed2b2fee7355d82c6d</srcmd5>
+    <version>7.32.0</version>
+    <time>1379662192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>82955286809c1b38603da05b3c76d5ac</srcmd5>
+    <version>7.33.0</version>
+    <time>1385792698</time>
+    <user>coolo</user>
+    <comment>- update to 7.33.0
+  * fixes CVE-2013-4545 (bnc#849596)
+    = curl: ssl cert checks unclear behaviour
+  o test code for testing the event based API
+  o CURLM_ADDED_ALREADY: new error code
+  o test TFTP server: support &quot;writedelay&quot; within &lt;servercmd&gt;
+  o krb4 support has been removed
+  o imap/pop3/smtp: added basic SASL XOAUTH2 support
+  o Pass password to OpenSSL engine by user interface
+  o c-ares: Add support for various DNS binding options
+  o cookies: add expiration
+  o curl: added --oauth2-bearer option (forwarded request 208925 from vitezslav_cizek)</comment>
+    <requestid>208934</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b409883c2c0cf9aff9502214197c2987</srcmd5>
+    <version>7.35.0</version>
+    <time>1391777339</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 7.35.0
+  * security fix:
+    CVE-2014-0015: re-use of wrong HTTP NTLM connection (bnc#858673)
+  * changes:
+    imap/pop3/smtp: Added support for SASL authentication downgrades
+    imap/pop3/smtp: Extended the login options to support multiple auth mechanisms
+    TheArtOfHttpScripting: major update, converted layout and more
+    mprintf: Added support for I, I32 and I64 size specifiers
+    makefile: Added support for VC7, VC11 and VC12
+    SSL: protocol version can be specified more precisely
+    imap/pop3/smtp: Added graceful cancellation of SASL authentication
+    Add &quot;Happy Eyeballs&quot; for IPv4/IPv6 dual connect attempts
+    base64: Added validation of base64 input strings when decoding
+    curl_easy_setopt: Added the ability to set the login options separately
+    smtp: Added support for additional SMTP commands
+    curl_easy_getinfo: Added CURLINFO_TLS_SESSION for accessing TLS internals
+    nss: allow to use TLS &gt; 1.0 if built against recent NSS
+    SECURITY: added this document to describe our security processes
+    parseconfig: warn if unquoted white spaces are detected
+ * and many bugfixes
+- fix test failure because of an expired cookie (bnc#862144)
+  * added curl-test172_cookie_expiration.patch
+- refresh libcurl-ocloexec.patch (forwarded request 220853 from vitezslav_cizek)</comment>
+    <requestid>220950</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>417c0deb02a7d692496dd5252bf8925f</srcmd5>
+    <version>7.35.0</version>
+    <time>1394901353</time>
+    <user>coolo</user>
+    <comment>- Disable BuildRequires for openssh, only needed for test suite,
+  but the test suite isn't able to start sshd anyways.
+  Solves the problem that openssh checkins triggers a nearly full
+  rebuild, too.
+[Discussed with Marcus Meissner] (forwarded request 225808 from kukuk)</comment>
+    <requestid>225811</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ed971e26fb900c9c5d7551bb8c637910</srcmd5>
+    <version>7.36.0</version>
+    <time>1397450542</time>
+    <user>coolo</user>
+    <comment>- remove the useless BuildRequires that were meant for debugging only (forwarded request 229687 from vitezslav_cizek)</comment>
+    <requestid>229876</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>32dc772ef3d8ffd2398f792afdbf1d73</srcmd5>
+    <version>7.37.0</version>
+    <time>1403176793</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237265</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>32dc772ef3d8ffd2398f792afdbf1d73</srcmd5>
+    <version>7.37.0</version>
+    <time>1409300727</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>aa5cc4ec3d78b63453208fe56dfbb4a4</srcmd5>
+    <version>7.37.1</version>
+    <time>1409583534</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246971</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>228d0e17a972aa771019a5aada57db2a</srcmd5>
+    <version>7.38.0</version>
+    <time>1410528304</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248334</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>61c1691dda5110686d1d988ce7f11fc8</srcmd5>
+    <version>7.38.0</version>
+    <time>1414613343</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258129</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>f82295225fb6b60d0f8472a70f082593</srcmd5>
+    <version>7.39.0</version>
+    <time>1416824067</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261830</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>0c9c80c731e10ca5622417f5ea6cdb2c</srcmd5>
+    <version>7.39.0</version>
+    <time>1420429374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>267038</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>f0ddf26e9a753af5d28b4f5a60a3d6d4</srcmd5>
+    <version>7.40.0</version>
+    <time>1420927608</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280347</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>1d94740825081591ee260ba239ecec28</srcmd5>
+    <version>7.40.0</version>
+    <time>1424255876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286230</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>ef79fa9e998b82fdd4ba4e2737e50acc</srcmd5>
+    <version>7.41.0</version>
+    <time>1425218284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287868</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>d267c7aff59b142cdc4c0835d7493a3f</srcmd5>
+    <version>7.41.0</version>
+    <time>1428064319</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293697</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>c80ad0a1a7ac117b43b63d88c45d7509</srcmd5>
+    <version>7.42.0</version>
+    <time>1429973141</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298504</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>d5261f495ef3f77fc6ad20b522616e2d</srcmd5>
+    <version>7.42.1</version>
+    <time>1430595013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304674</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>08bd09be86508002af1307aac82d3031</srcmd5>
+    <version>7.43.0</version>
+    <time>1436111916</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314966</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>1647cd90d15d5e787786aebf1443dac4</srcmd5>
+    <version>7.43.0</version>
+    <time>1439482174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321837</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>bcd3f31b27b68aaf526335eeef482580</srcmd5>
+    <version>7.44.0</version>
+    <time>1439825132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323094</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>681bbf6846b327a87c33cd2c031325fa</srcmd5>
+    <version>7.45.0</version>
+    <time>1445860037</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339794</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>117bd5c2b47af1ac6dd0cce71897e8c9</srcmd5>
+    <version>7.46.0</version>
+    <time>1449686484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.46.0
+  * Added CURLOPT_STREAM_DEPENDS
+  * Added CURLOPT_STREAM_DEPENDS_E
+  * Added CURLOPT_STREAM_WEIGHT
+  * Added CURLFORM_CONTENTLEN
+  * oauth2: Added support for OAUTHBEARER SASL mechanism to IMAP,
+    POP3 and SNMP
+* Many bugfixes, see http://curl.haxx.se/changes.html#7_46_0 for the
+  complete list.</comment>
+    <requestid>347176</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>d996867f8e0fc3039af96f86b5ec0bd2</srcmd5>
+    <version>7.46.0</version>
+    <time>1452263963</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix path to curl in zsh.pl to unbreak _curl completion
+  * curl-fix-zsh-completion.patch</comment>
+    <requestid>352284</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>228b7d1f2076524a69aeeb6491098d73</srcmd5>
+    <version>7.47.0</version>
+    <time>1454491064</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357070</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>8fea1b9fdfd43877413ad3cc644bc65c</srcmd5>
+    <version>7.47.1</version>
+    <time>1459238137</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379275</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>e9aa8213aa97c4dff7e48f670981d0f0</srcmd5>
+    <version>7.48.0</version>
+    <time>1459936215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.48.0
+  * configure: --with-ca-fallback: use built-in TLS CA fallback
+  * TFTP: add --tftp-no-options to expose CURLOPT_TFTP_NO_OPTIONS
+  * getinfo: CURLINFO_TLS_SSL_PTR supersedes CURLINFO_TLS_SESSION
+  * Lots of bugfixes, see https://curl.haxx.se/changes.html#7_48_0
+- Drop curl-7.41.0-use-openssl-s-built-in-verify-path-as-fallback.diff,
+  superseded by --with-ca-fallback configure option.</comment>
+    <requestid>382629</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>094640bc982bfe9cbb0e94211a9902d5</srcmd5>
+    <version>7.48.0</version>
+    <time>1463038380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394306</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>50e492f6e6169ed0fa05427ae8d18d06</srcmd5>
+    <version>7.48.0</version>
+    <time>1465750339</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on libssh2 &gt;= 1.6.0 since curl depends on the
+  libssh2_scp_recv2 symbol now. Fixes boo#983170</comment>
+    <requestid>400210</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>65ce71023e51d94caa7bd1b874b811a4</srcmd5>
+    <version>7.49.1</version>
+    <time>1467205314</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402957</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>f2d100b5cd3a2a479dd117af02176713</srcmd5>
+    <version>7.50.1</version>
+    <time>1471009027</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.50.1
+  Bugfixes:
+  * TLS: switch off SSL session id when client cert is used
+  * TLS: only reuse connections with the same client cert
+  * curl_multi_cleanup: clear connection pointer for easy handles
+  * include the CURLINFO_HTTP_VERSION man page into the release tarball
+  * include the http2-server.pl script in the release tarball
+  * test558: fix test by stripping file paths from FD lines
+  * spnego: Corrected miss-placed * in Curl_auth_spnego_cleanup() declaration
+  * tests: Fix for http/2 feature
+  * cmake: Fix for schannel support
+  * curl.h: make public types void * again
+  * win32: fix a potential memory leak in Curl_load_library
+  * travis: fix OSX build by re-installing libtool
+  * mbedtls: Fix debug function name 
+- removed 0001-tests-distribute-the-http2-server.pl-script-too.patch
+
+- update to 7.50.0
+  Changes:
+  * http: add CURLINFO_HTTP_VERSION and %{http_version}
+  Bugfixes:
+  * openssl: fix build with OPENSSL_NO_COMP
+  * cmake: Added missing mbedTLS support
+  * URL parser: allow URLs to use one, two or three slashes
+  * curl: fix -q [regression]
+  * openssl: Use correct buffer sizes for error messages
+  * curl: fix SIGSEGV while parsing URL with too many globs
+  * vtls: fix ssl session cache race condition
+  * http: Fix HTTP/2 connection reuse [regression]
+  * checksrc: Add LoadLibrary to the banned functions list</comment>
+    <requestid>417094</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>e91cad458dcf7c496db81181fb5eae98</srcmd5>
+    <version>7.50.2</version>
+    <time>1473679430</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.50.2
+  Bugfixes:
+  * mbedtls: Added support for NTLM
+  * SSH: fixed SFTP/SCP transfer problems
+  * multi: make Curl_expire() work with 0 ms timeouts
+  * mk-ca-bundle.pl: -m keeps ca cert meta data in output
+  * TFTP: Fix upload problem with piped input
+  * CURLOPT_TCP_NODELAY: now enabled by default
+  * mbedtls: set verbose TLS debug when MBEDTLS_DEBUG is defined
+  * http2: always wait for readable socket
+  * cmake: Enable win32 large file support by default
+  * cmake: Enable win32 threaded resolver by default
+  * winbuild: Avoid setting redundant CFLAGS to compile commands
+  * curl.h: make CURL_NO_OLDIES define CURL_STRICTER
+  * docs: make more markdown files use .md extension
+  * docs: CONTRIBUTE and LICENSE-MIXING were converted to markdown
+  * winbuild: Allow changing C compiler via environment variable CC
+  * rtsp: accept any RTSP session id
+  * HTTP: retry failed HEAD requests on reused connections too
+  * configure: add zlib search with pkg-config
+  * openssl: accept subjectAltName iPAddress if no dNSName match
+  * MANUAL: Remove invalid link to LDAP documentation
+  * socks: improved connection procedure
+  * proxy: reject attempts to use unsupported proxy schemes
+  * proxy: bring back use of &quot;Proxy-Connection:&quot;
+  * curl: allow &quot;pkcs11:&quot; prefix for client certificates
+  * spnego_sspi: fix memory leak in case *outlen is zero
+  * SOCKS: improve verbose output of SOCKS5 connection sequence
+  * SOCKS: display the hostname returned by the SOCKS5 proxy server
+  * http/sasl: Query authentication mechanism supported by SSPI before using</comment>
+    <requestid>425624</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>e78b4e48299425d346c766983de43378</srcmd5>
+    <version>7.50.3</version>
+    <time>1474115551</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.50.3
+   Bugfixes:
+   * CVE-2016-7167: escape and unescape integer overflows
+   * mk-ca-bundle.pl: use SHA256 instead of SHA1
+   * checksrc: detect strtok() use
+   * errors: new alias CURLE_WEIRD_SERVER_REPLY
+   * http2: support &gt; 64bit sized uploads
+   * openssl: fix bad memory free (regression)
+   * CMake: hide private library symbols
+   * http: refuse to pass on response body when NO_NODY is set
+   * cmake: fix curl-config --static-libs
+   * mbedtls: switch off NTLM in build if md4 isn't available
+   * curl: --create-dirs on windows groks both forward and
+     backward slashes</comment>
+    <requestid>427465</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>0cea1f3d393138591fc05e6db991e2e1</srcmd5>
+    <version>7.51.0</version>
+    <time>1478174185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.51.0
+  Changes:
+  * nss: additional cipher suites are now accepted by
+    CURLOPT_SSL_CIPHER_LIST
+  * New option: CURLOPT_KEEP_SENDING_ON_ERROR 
+  Bugfixes:
+  * CVE-2016-8615: cookie injection for other servers
+  * CVE-2016-8616: case insensitive password comparison
+  * CVE-2016-8617: OOB write via unchecked multiplication
+  * CVE-2016-8618: double-free in curl_maprintf
+  * CVE-2016-8619: double-free in krb5 code
+  * CVE-2016-8620: glob parser write/read out of bounds
+  * CVE-2016-8621: curl_getdate read out of bounds
+  * CVE-2016-8622: URL unescape heap overflow via integer truncation
+  * CVE-2016-8623: Use-after-free via shared cookies
+  * CVE-2016-8624: invalid URL parsing with '#'
+  * CVE-2016-8625: IDNA 2003 makes curl use wrong host
+  * openssl: fix per-thread memory leak using 1.0.1 or 1.0.2
+  * http: accept &quot;Transfer-Encoding: chunked&quot; for HTTP/2 as well
+  * LICENSE-MIXING.md: update with mbedTLS dual licensing
+  * examples/imap-append: Set size of data to be uploaded
+  * test2048: fix url
+  * darwinssl: disable RC4 cipher-suite support
+  * CURLOPT_PINNEDPUBLICKEY.3: fix the AVAILABILITY formatting
+  * openssl: don’t call CRYTPO_cleanup_all_ex_data
+  * libressl: fix version output
+  * easy: Reset all statistical session info in curl_easy_reset
+  * curl_global_cleanup.3: don't unload the lib with sub threads running
+  * dist: add CurlSymbolHiding.cmake to the tarball
+  * docs: Remove that --proto is just used for initial retrieval</comment>
+    <requestid>438231</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>d7d6f7cef15b6848a79aeafbe1d8c9f9</srcmd5>
+    <version>7.52.1</version>
+    <time>1482784694</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 7.52.1
+  Bugfixes:
+  * CVE-2016-9594: unititialized random bsc#1016738
+
+- Update to 7.52.0
+  Changes:
+  * nss: map CURL_SSLVERSION_DEFAULT to NSS default
+  * vtls: support TLS 1.3 via CURL_SSLVERSION_TLSv1_3
+  * curl: introduce the --tlsv1.3 option to force TLS 1.3
+  * curl: Add --retry-connrefused
+  * proxy: Support HTTPS proxy and SOCKS+HTTP(s)
+  * add CURLINFO_SCHEME, CURLINFO_PROTOCOL, and %{scheme}
+  * curl: add --fail-early 
+  Bugfixes:
+  * CVE-2016-9586: printf floating point buffer overflow
+  * curl -w: added more decimal digits to timing counters
+  * easy: Initialize info variables on easy init and duphandle
+  * http2: Don't send header fields prohibited by HTTP/2 spec
+  * ssh: check md5 fingerprints case insensitively (regression)
+  * openssl: initial TLS 1.3 adaptions
+  * SPNEGO: Fix memory leak when authentication fails
+  * realloc: use Curl_saferealloc to avoid common mistakes
+  * openssl: make sure to fail in the unlikely event that PRNG
+    seeding fails
+  * URL-parser: for file://[host]/ URLs, the [host] must be localhost
+  * timeval: prefer time_t to hold seconds instead of long
+  * glob: fix [a-c] globbing regression
+  * curl.1: Clarify --dump-header only writes received headers
+  * http2: Fix address sanitizer memcpy warning
+  * http2: Use huge HTTP/2 windows</comment>
+    <requestid>447465</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>b5ec51211c5a6341132cecee7dee718f</srcmd5>
+    <version>7.52.1</version>
+    <time>1486548111</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454875</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>926f5492350f7beecb8c47bbe489f808</srcmd5>
+    <version>7.53.1</version>
+    <time>1488125035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.53.1
+  Bugfixes:
+  * url: Improve CURLOPT_PROXY_CAPATH error handling
+  * urldata: include curl_sspi.h when Windows SSPI is enabled
+  * formdata: check for EOF when reading from stdin
+  * tests: Set CHARSET &amp; LANG to UTF-8 in 1035, 2046 and 2047
+  * url: Default the proxy CA bundle location to CURL_CA_BUNDLE
+  * rand: added missing #ifdef HAVE_FCNTL_H around fcntl.h header
+
+- Update to 7.53.0
+  Changes:
+  * unix_socket: added --abstract-unix-socket and
+    CURLOPT_ABSTRACT_UNIX_SOCKET
+  * CURLOPT_BUFFERSIZE: support enlarging receive buffer
+  Bugfixes:
+  * CVE-2017-2629: make SSL_VERIFYSTATUS work again
+  * gnutls-random: check return code for failed random
+  * openssl-random: check return code when asking for random
+  * http: remove &quot;Curl_http_done: called premature&quot; message
+  * cyassl: use time_t instead of long for timeout
+  * build-wolfssl: Sync config with wolfSSL 3.10
+  * ftp-gss: check for init before use
+  * configure: accept --with-libidn2 instead
+  * ftp: failure to resolve proxy should return that error code
+  * curl.1: add three more exit codes
+  * docs/ciphers: link to our own new page about ciphers
+  * vtls: s/SSLEAY/OPENSSL - fixes multi_socket timeouts with openssl
+  * darwinssl: fix iOS build
+  * darwinssl: fix CFArrayRef leak
+  * cmake: use crypt32.lib when building with OpenSSL on windows</comment>
+    <requestid>460180</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>bc97fb4243bf108d595b822330307143</srcmd5>
+    <version>7.54.0</version>
+    <time>1493819503</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489265</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>fa243b6654089805d0bd4b5dff71dc04</srcmd5>
+    <version>7.54.1</version>
+    <time>1498741229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506883</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>87346cd53897051eb6942158184de97d</srcmd5>
+    <version>7.55.0</version>
+    <time>1503591644</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515970</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>d6e269113f26d53b28f0caf7356cb650</srcmd5>
+    <version>7.55.0</version>
+    <time>1504520432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519611</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>4ed6cc5a9c4cf3ba5f6b5b09bec559dc</srcmd5>
+    <version>7.56.0</version>
+    <time>1508508667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532979</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>b0a0ea4801cd4e3e70005e58d8f8f6be</srcmd5>
+    <version>7.56.1</version>
+    <time>1509036004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535954</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>38c55cc54658c33de483cbe1eb4718f9</srcmd5>
+    <version>7.57.0</version>
+    <time>1512292173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546406</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>feff4dd489a5b57693a6c73c0f45448a</srcmd5>
+    <version>7.57.0</version>
+    <time>1515875655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563229</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>13bafb1b36b4529879a3e3314867fcb6</srcmd5>
+    <version>7.58.0</version>
+    <time>1518950454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569559</requestid>
+  </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>048bfd8df80f1b5dcb07d12379e6260e</srcmd5>
+    <version>7.58.0</version>
+    <time>1519557538</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort a bit with spec-cleaner
+- Install license with the library
+
+  * Added patch ignore_runtests_failure.patch
+- Sort a bit with spec-cleaner
+- Install license with the library</comment>
+    <requestid>578303</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>5288134231bc206e377f499e793bebbe</srcmd5>
+    <version>7.59.0</version>
+    <time>1521498694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587006</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>34d29692ab8b825b88d48529543ab420</srcmd5>
+    <version>7.60.0</version>
+    <time>1527605148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610352</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>33bd559297cccb61d7bf9e087ceb77d4</srcmd5>
+    <version>7.61.0</version>
+    <time>1532681499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623486</requestid>
+  </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>8f2f1af20140516d84ccd7e8018c9245</srcmd5>
+    <version>7.61.0</version>
+    <time>1535440995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630910</requestid>
+  </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>c96b3acf2d0e3c08ba7b7a9a5e1aebbd</srcmd5>
+    <version>7.61.0</version>
+    <time>1535705218</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>632185</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>d5e2cf7d67fc38dff0cb610e1582b29f</srcmd5>
+    <version>7.61.1</version>
+    <time>1536327275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633271</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>9caffca6f6dbcec6184d25414a523c6a</srcmd5>
+    <version>7.62.0</version>
+    <time>1541514411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645714</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>5b3db6ef475bf911075174d97f0388c1</srcmd5>
+    <version>7.63.0</version>
+    <time>1546535014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661567</requestid>
+  </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>e270249caeb87fb859ad3f95780be11e</srcmd5>
+    <version>7.63.0</version>
+    <time>1548452500</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide libcurl4 = %version in the mini library package
+
+- Update to version 7.63.0
+  Changes:
+  * curl: add %{stderr} and %{stdout} for --write-out
+  * curl: add undocumented option --dump-module-paths for w32
+  * setopt: add CURLOPT_CURLU
+  Bugfixes:
+  * (lib)curl.rc: fixup for minor bugs
+  * CURLINFO_REDIRECT_URL: extract the Location: header field unvalidated
+  * CURLOPT_HEADERFUNCTION.3: match 'nitems' name in synopsis/desc
+  * CURLOPT_WRITEFUNCTION.3: spell out that it gets called many times
+  * Curl_follow: accept non-supported schemes for &quot;fake&quot; redirects
+  * KNOWN_BUGS: add --proxy-any connection issue
+  * NTLM: Remove redundant ifdef USE_OPENSSL
+  * NTLM: force the connection to HTTP/1.1
+  * OS400: add URL API ccsid wrappers and sync ILE/RPG bindings
+  * SECURITY-PROCESS: bountygraph shuts down again
+  * TODO: Have the URL API offer IDN decoding
+  * ares: remove fd from multi fd set when ares is about to close the fd
+  * axtls: removed
+  * checksrc: add COPYRIGHTYEAR check
+  * cmake: fix MIT/Heimdal Kerberos detection
+  * configure: include all libraries in ssl-libs fetch
+  * configure: show CFLAGS, LDFLAGS etc in summary
+  * connect: fix building for recent versions of Minix
+  * cookies: create the cookiejar even if no cookies to save
+  * cookies: expire &quot;Max-Age=0&quot; immediately
+  * curl: --local-port range was not &quot;including&quot;
+  * curl: fix --local-port integer overflow</comment>
+    <requestid>667017</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>23e467700445716c0de4e8e1760eca67</srcmd5>
+    <version>7.64.0</version>
+    <time>1551468360</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679773</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>cdb2c7fb1724ac1836c9cf93d536e65a</srcmd5>
+    <version>7.64.0</version>
+    <time>1552299260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682978</requestid>
+  </revision>
+  <revision rev="144" vrev="3">
+    <srcmd5>7dcf2eec54d4b942bd9bf616544ce77c</srcmd5>
+    <version>7.64.0</version>
+    <time>1553699516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686085</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>482f26094dc6417b570e309cc4878a00</srcmd5>
+    <version>7.64.1</version>
+    <time>1555321823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693004</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>a4ad6d2c2ccbc7f2715ee5edb4a3522f</srcmd5>
+    <version>7.65.0</version>
+    <time>1558783197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704820</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>0738966c431ec512d577d70a1dcd4aad</srcmd5>
+    <version>7.65.1</version>
+    <time>1560458161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708007</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0c1aa7fc4454e44dde66da36650a334f</srcmd5>
+    <version>7.65.3</version>
+    <time>1564137256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717100</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>bb5281ae67102d3fdaecb20bb79e4218</srcmd5>
+    <version>7.66.0</version>
+    <time>1568900971</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730096</requestid>
+  </revision>
+</revisionlist>

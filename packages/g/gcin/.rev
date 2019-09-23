@@ -1,0 +1,325 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b23ecde4c85ba29dcd0bbe7af08dbd0</srcmd5>
+    <version>2.7.5</version>
+    <time>1335165177</time>
+    <user>coolo</user>
+    <comment>Fix gnome 3 panel postin script</comment>
+    <requestid>112295</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4279afbc9be3060170050d0a70418f46</srcmd5>
+    <version>2.7.5</version>
+    <time>1337004853</time>
+    <user>coolo</user>
+    <comment> (forwarded request 120810 from MargueriteSu)</comment>
+    <requestid>120870</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6496183de0ed808db7631db2f635aa99</srcmd5>
+    <version>2.7.5</version>
+    <time>1338903064</time>
+    <user>coolo</user>
+    <comment>fix sles builds (forwarded request 123486 from MargueriteSu)</comment>
+    <requestid>123510</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6496183de0ed808db7631db2f635aa99</srcmd5>
+    <version>2.7.5</version>
+    <time>1340183351</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>3317060efbca7155f4d020081cdf5631</srcmd5>
+    <version>2.7.5</version>
+    <time>1349673083</time>
+    <user>coolo</user>
+    <comment>- Better detect for architecture specific libdir (forwarded request 137264 from k0da)</comment>
+    <requestid>137265</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00b5b7c8dc5283a4c31735cde8c0ccec</srcmd5>
+    <version>2.7.9</version>
+    <time>1352822582</time>
+    <user>coolo</user>
+    <comment>-remove gcin-libdir.patch, upstream had solved the bug (forwarded request 140598 from swyear)</comment>
+    <requestid>140602</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d722fc6be28b8247f5a02f3c9915551c</srcmd5>
+    <version>2.7.9</version>
+    <time>1354885723</time>
+    <user>namtrac</user>
+    <comment>- readd a new gcin-libdir.patch as the bug was fixed only for
+  strange subforms of x86_64 and not all other platforms. (forwarded request 144482 from msmeissn)</comment>
+    <requestid>144484</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>72b4a07b7028aa17a9ee8235f5443f88</srcmd5>
+    <version>2.7.9</version>
+    <time>1358889706</time>
+    <user>coolo</user>
+    <comment>- Add libreoffice-gnome dependency as Recommends,
+  so you will not install the whole office suite for gcin.
+- Remove Requires gcin-anthy-module,
+  most of the user don't need to input Japanese characters.
+- modify xim.d-gcin to test if libreoffice-gnome was installed
+- add a section about libreoffice-kde4's problem and workaround
+  in gcin-README.suse 
+
+- test remove libreoffice-gnome dependency (forwarded request 149292 from swyear)</comment>
+    <requestid>149369</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>72b4a07b7028aa17a9ee8235f5443f88</srcmd5>
+    <version>2.7.9</version>
+    <time>1359108906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f9ebbb591fa2f02fd095f0fb794b0bd9</srcmd5>
+    <version>2.8.0</version>
+    <time>1362031683</time>
+    <user>coolo</user>
+    <comment>- remove patch configure146p12.diff, use --doc_version_dir=N instead
+
+- Update to 2.8.0
+- fix gtk_show_uri in Ubuntu, gcin will now open uri with gcin's own 
+  script
+- fix pop-up status position
+- Tray/OSD icon of Capslock status
+- more bug fix and new features (forwarded request 156385 from swyear)</comment>
+    <requestid>156530</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5606a76ff3afab18e3f30a67db37c7a8</srcmd5>
+    <version>2.8.0</version>
+    <time>1374156412</time>
+    <user>coolo</user>
+    <comment>- remove qt3 support, long dead</comment>
+    <requestid>183502</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0021af2f7bbfd303a8cb88f15fd95798</srcmd5>
+    <version>2.8.1</version>
+    <time>1375112478</time>
+    <user>coolo</user>
+    <comment>- Update to 2.8.1
+- Refresh icon_path.diff (forwarded request 184410 from gary_lin)</comment>
+    <requestid>184475</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0021af2f7bbfd303a8cb88f15fd95798</srcmd5>
+    <version>2.8.1</version>
+    <time>1379662391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>bda95ad94f5d367c0afd35e73078d44f</srcmd5>
+    <version>2.8.1</version>
+    <time>1380895090</time>
+    <user>scarabeus_factory</user>
+    <comment>now it should be okay. 13.1 pickable.</comment>
+    <requestid>202148</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>ab2130eae33a799745729c0aef5ca4f2</srcmd5>
+    <version>2.8.1</version>
+    <time>1384768376</time>
+    <user>scarabeus_factory</user>
+    <comment>- test remove gtk2(3) scriptlets in spec file, use macro (same as fcitx)
+  instead, to fix gtk-immodule problems (forwarded request 207413 from swyear)</comment>
+    <requestid>207418</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>65e8236666c6ce74bca8e6775059f761</srcmd5>
+    <version>2.8.1</version>
+    <time>1385313090</time>
+    <user>coolo</user>
+    <comment>- modify baselibs.conf  
+
+- fix gcin can't on_the_spot, because libreoffice-gnome's lib name changed
+  remove the test to force OOO_FORCE_DESKTOP=gnome (forwarded request 208090 from swyear)</comment>
+    <requestid>208091</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>e82841f139dba44bcf6b9b045034b944</srcmd5>
+    <version>2.8.1</version>
+    <time>1385653853</time>
+    <user>coolo</user>
+    <comment>- add doc_dir.diff patch to fix doc path
+  this path is used to open doc from gcin-tools (forwarded request 208758 from swyear)</comment>
+    <requestid>208759</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>f4e55ecd61f4097f8d6c66604ada92ea</srcmd5>
+    <version>2.8.1</version>
+    <time>1389799497</time>
+    <user>coolo</user>
+    <comment>- fix the deadlock between gnome-shell (bnc#858193)
+
+- keep the debug symbols
+
+- fix the Makefile dependency for parallel compiling (forwarded request 213661 from gary_lin)</comment>
+    <requestid>213934</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1a5eb831b8072467522cfdd846d7e854</srcmd5>
+    <version>2.8.2</version>
+    <time>1400173852</time>
+    <user>coolo</user>
+    <comment>- Update to 2.8.2
+- refresh patches
+- drop upstreamed gcin-bnc858193-fixes-frozen-gnome-shell.patch (forwarded request 233821 from gary_lin)</comment>
+    <requestid>233883</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>1a5eb831b8072467522cfdd846d7e854</srcmd5>
+    <version>2.8.2</version>
+    <time>1409300925</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e88ae2febc0ec6e27b95669655b92c21</srcmd5>
+    <version>2.8.3</version>
+    <time>1426064245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289844</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>15b0e44a9c588db6d4832d0d4397d2d3</srcmd5>
+    <version>2.8.3</version>
+    <time>1433145134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309269</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ae79d7370574b70a66ce8c3aa011ff29</srcmd5>
+    <version>2.8.3</version>
+    <time>1441727088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329476</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>0aa81f045288eb698778279bb3cec3cd</srcmd5>
+    <version>2.8.3</version>
+    <time>1444130699</time>
+    <user>dimstar_suse</user>
+    <comment>[NOTE: this is resubmit of 334873 after updating the changelog comment]
+
+- Add gcin-qt5-immodule, libappindicator3-1 as runtime dependencies
+  for Plasma 5 (the program does own binding with dlsym())</comment>
+    <requestid>334942</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>20923aabe8f7ca7bd3f5cf75e220a29d</srcmd5>
+    <version>2.8.4</version>
+    <time>1445796800</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340562</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8fd27bc794f4a829d95d5be9010ee8d5</srcmd5>
+    <version>2.8.4</version>
+    <time>1446049819</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340914</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>a9ea1472d7862a9759abef1a0186d040</srcmd5>
+    <version>2.8.4</version>
+    <time>1466325734</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400601</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>bf6a963238cb3e54382caa174154db1f</srcmd5>
+    <version>2.8.4</version>
+    <time>1473679556</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426122</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>5b5f10ba6fcf3d914c5060cdc01256ad</srcmd5>
+    <version>2.8.4</version>
+    <time>1476351139</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434388</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ec10c8f62feec0d30f5801f139b040af</srcmd5>
+    <version>2.8.5</version>
+    <time>1487901265</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455619</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>8825f2976e5e2301bf156a079dcf5d6e</srcmd5>
+    <version>2.8.5</version>
+    <time>1488560094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461871</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>230155c894ad431fdd66503c7f79edf1</srcmd5>
+    <version>2.8.5</version>
+    <time>1498046288</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505185</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>8ea5b9d710a8340d66b23c2930d7619a</srcmd5>
+    <version>2.8.5</version>
+    <time>1504617545</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520955</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7875df0414d617f73445146410585397</srcmd5>
+    <version>2.8.6</version>
+    <time>1527583415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612108</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d188d3e78440c07ab7be6c4c23230a27</srcmd5>
+    <version>2.8.8</version>
+    <time>1545996933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661560</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8e3568a1a9d2e567f01201267b51820d</srcmd5>
+    <version>2.8.9</version>
+    <time>1554189727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690307</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>312adfdeaf932227da72ff71ab71a736</srcmd5>
+    <version>2.8.9</version>
+    <time>1555574252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695394</requestid>
+  </revision>
+</revisionlist>

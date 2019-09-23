@@ -1,0 +1,10 @@
+--- JGroups-2.6.10.merge.src/build.xml	2017-09-19 09:56:25.272837434 +0200
++++ JGroups-2.6.10.merge.src/build.xml	2017-09-19 09:57:04.904838110 +0200
+@@ -82,7 +82,6 @@
+             depends="prepare"
+             description="Compiles are Java files">
+         <javac destdir="${compile.dir}"
+-               source="1.5"
+                classpathref="jg.classpath"
+                debug="on"
+                deprecation="off"

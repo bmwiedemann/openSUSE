@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c61ba04f643dee82caf6e309bc995fe</srcmd5>
+    <version>0.4.1</version>
+    <time>1506453254</time>
+    <user>dimstar_suse</user>
+    <comment>Rename python-gnupg to follow python package naming rules</comment>
+    <requestid>521752</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>74d5c9c28f11136ac417efd4be134d61</srcmd5>
+    <version>0.4.1</version>
+    <time>1507896974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533144</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bd037c2fb07f0ba8646fd93d2658b6d</srcmd5>
+    <version>0.4.3</version>
+    <time>1529402376</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616620</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>357af976ade8f4a7a8ae2cb8db63588f</srcmd5>
+    <version>0.4.3</version>
+    <time>1545648154</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659613</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16c2594af6f1cb3759e5a2e015409c34</srcmd5>
+    <version>0.4.4</version>
+    <time>1548452651</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+
+- Update to 0.4.4:
+  * Changed how any return value from the ``on_data`` callable is processed. In
+    earlier versions, the return value was ignored. In this version, if the
+    return value is ``False``, the data received from ``gpg`` is not buffered.
+    Otherwise (if the value is ``None`` or ``True``, for example), the data is
+    buffered as normal. This functionality can be used to do your own
+    buffering, or to prevent buffering altogether.  The ``on_data`` callable is
+    also called once with an empty byte-string to signal the end of data from
+    ``gpg``.
+  * Added an additional attribute ``check_fingerprint_collisions`` to
+    ``GPG`` instances, which defaults to ``False``. It seems that ``gpg`` is
+    happy to have duplicate keys and fingerprints in a keyring, so we can't be
+    too strict. A user can set this attribute of an instance to ``True`` to
+    trigger a check for collisions.
+  * With GnuPG 2.2.7 or later, provide the fingerprint of a signing key for a
+    failed signature verification, if available.
+  * For verification where multiple signatures are involved, a mapping of
+    signature_ids to fingerprint, keyid, username, creation date, creation
+    timestamp and expiry timestamp is provided.
+  * Added a check to disallow certain control characters ('\r', '\n', NUL) in
+    passphrases.</comment>
+    <requestid>668267</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc59ac14b7ef2f5e8198451798a9018a</srcmd5>
+    <version>0.4.4</version>
+    <time>1549017927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669857</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>54c7dc54937c82703598a2eebc46c3b9</srcmd5>
+    <version>0.4.4</version>
+    <time>1555574176</time>
+    <user>dimstar_suse</user>
+    <comment>Switch to pytest runner, which seems to be a way more stable in
+providing the results. (forwarded request 695023 from mcepl)</comment>
+    <requestid>695024</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>421d829598189247c8dc86c61de9d036</srcmd5>
+    <version>0.4.5</version>
+    <time>1568190968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.5:
+  * various bugfixes</comment>
+    <requestid>729817</requestid>
+  </revision>
+</revisionlist>

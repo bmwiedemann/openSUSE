@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1213b2c2b15df54cd882cd202dbae6a</srcmd5>
+    <version>0.4.2</version>
+    <time>1548452639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions.
+- Enable building share library again (also fixes build)
+- Remove project.diff and move content into changes file
+- Update to fifengine 0.4.2
+  * Compatiblity with fifechan 0.1.5
+  * Python bindings are now provided for Python 3
+  * Joystick and Gamepad support
+- Ship both, Python 3 and Python 2 bindings to not instantly break
+  all downstream packages.
+- Dropped installation-directories.patch which has been integrated
+  upstream.
+- Dropped install-rocket-header.patch which has been integrated
+  upstream.
+- Dropped link-cegui.patch which has been integrated
+  upstream.
+- Update to version 0.4.1
+- Now build with cmake instead of scons
+- Added patches from upstream: install-rocket-header.patch,
+  installation-directories.patch and link-cegui.patch
+- FIFE is incompatible with swig version 3
+</comment>
+    <requestid>667852</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>74eb12c7dbaa891ff9c2ee1e4a247bb9</srcmd5>
+    <version>0.4.2</version>
+    <time>1549286765</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671002</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>882d3c61d72a8ba705a1af4953dda811</srcmd5>
+    <version>0.4.2</version>
+    <time>1550668408</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677473</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9b483c54e7c6e9dfd13f9e741d15f974</srcmd5>
+    <version>0.4.2</version>
+    <time>1568901105</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731778</requestid>
+  </revision>
+</revisionlist>

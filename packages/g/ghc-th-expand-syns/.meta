@@ -1,0 +1,5 @@
+<package name="ghc-th-expand-syns" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-th-expand-syns"/>
+</package>

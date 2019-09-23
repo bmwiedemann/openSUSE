@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue May 22 21:18:32 UTC 2012 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-2.0+
+  SPDX format. Note that this is _not_ the standard perl license (GPL-1.0+)
+
+-------------------------------------------------------------------
+Thu Apr 21 04:51:25 UTC 2011 - coolo@opensuse.org
+
+- initial package 3.03
+    * created by cpanspec 1.78.04
+

@@ -1,0 +1,5 @@
+<package name="ecwolf" project="openSUSE:Factory">
+  <title>ECWolf</title>
+  <description>ECWolf is a faithful opensource reimplementation of Wolfenstein3D engine, and supports official games as well as some spin offs</description>
+  <devel project="games" package="ecwolf"/>
+</package>

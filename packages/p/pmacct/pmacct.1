@@ -1,0 +1,121 @@
+.\" Initial compilation manufacture around midnight
+.\" at the end of March 10th, 2011.
+
+.TH "pmacct" "1" "March 2011" "0.12.1" "pmacct"
+.SH NAME
+pmacct \- frontend to pmacctd.
+.SH SYNOPSIS
+.B pmacct
+\fIquery\fR
+.SH DESCRIPTION
+.B pmacct
+is a frontend to
+.BR pmacctd (8)
+when used in volatile memory mode.
+.PP
+The type of query is specified using options.
+At least one of the options
+\fB\-C\fR, \fB\-c\fR, \fB\-e\fR, \fB\-s\fR, or \fB\-t\fR
+is mandatory, but with \fB\-c\fR either of \fB\-M\fR or
+\fB\-N\fR must be used for further specification.
+
+.SH OPTIONS
+For displaying data either of these options are used:
+.TP
+\fB\-s\fR
+Show full statistics.
+.TP
+\fB\-c \fI aggregate\fR
+Specify primitives in a match aggregation, in order to present 
+partial statistics. Either \fB\-M\fR or \fB\-N\fR must be used
+to specify matching data for this option. Here \fI aggregate\fR
+is a comma separated string constructed from the following
+identifiers, in arbitrary order:
+
+src_mac, dst_mac, vlan, src_host, dst_host, src_net, dst_net,
+src_mask, dst_mask, src_port, dst_port, tos, proto, src_as,
+dst_as, sum_mac, sum_host, sum_net, sum_as, sum_port, in_iface,
+out_iface, tag, tag2, flows, class, std_comm, ext_comm, as_path,
+peer_src_ip, peer_dst_ip, peer_src_as, peer_dst_as, src_as_path,
+src_std_comm, src_med, src_ext_comm, src_local_pref, is_symmetric.
+
+Only entries which match the aggregate are printed.
+.PP
+Management of the server daemon is offered by three options:
+
+.TP
+\fB\-e\fR
+Clear all statistics. For a partial clear, see \fB\-r\fR.
+.TP
+\fB\-t\fR
+Show memory table status.
+.TP
+\fB\-C\fR
+Show a table of all active classifiers.
+
+.SH MODIFIERS
+The primary options above can be influenced by some secondary options:
+.TP
+\fB\-p \fR \fI file\fR
+Unix socket location for client\-server communication. Default is
+\fI/tmp/collect.pipe\fR.
+.TP
+\fB\-a\fR
+Display all table fields, even currently unused fields.
+.TP
+\fB\-S\fR
+Calculate a summed total of all counters, instead of returning
+a counter for each individual match; applies to \fB\-N\fR.
+.TP
+\fB\-n\fR {bytes|packets|flows|all}
+Select which counters to print. This applies only to \fB\-N\fR.
+.TP
+\fB\-T\fR {bytes|packets|flows}
+Output statistics ordered by decreasing value of the indicated field.
+This option applies to \fB\-M\fR and to \fB\-s\fR.
+.TP
+\fB\-r\fR
+Reset counters in the present selection after printing their values.
+The option applies only to \fB\-M\fR and to \fB\-N\fR.
+.TP
+\fB\-l\fR
+Perform a locking on the table.
+
+.TP
+\fB\-M\fR {\fImatch_data\fR | file:\fIfilename\fR}
+Print a formatted table for all entries matching the given data.
+An aggregation must be specified using \fB\-c\fR, and the field
+order given there must be observed when stating the data here.
+The output can be influenced using \fB\-T\fR.
+.IP
+Here \fImatch_data\fR is a number of substrings separated by
+semicolon, each substring being a comma separated list of acceptable
+values in a match aggregation. A wildcard \'*\' can be used
+to match any value in a specific field.
+.IP
+As an alternative, a location \fIfilename\fR of a file can be
+specified. This file provides the substrings mentioned above
+as separate lines. The prefix \'file:\' is a verbatim marker.
+
+.TP
+\fB\-N \fI {\fImatch_data\fR | file:\fIfilename\fT}
+Print counters only, no text fields, header, or footer.
+This presupposes \fB\-c\fR, and can be influenced by \fB\-n\fR
+and \fB\-S\fR.  The arguments are identical to those for \fB\-M\fR.
+
+.SH EXAMPLES
+The file
+.I /usr/share/doc/pmacct/EXAMPLES.gz
+contains suggestions prepared by the upstream author.
+
+.PP
+For suggestions, critisism, and bugs, get in contact with
+Paolo Lucente <paolo@pmacct.net>.
+
+.SH "SEE ALSO"
+.BR pmacctd (8)
+
+.SH AUTHOR
+This text was originally compiled by Mats Erik Andersson
+for the Debian project, but may be distributed for other
+uses under the same licensing as the software itself.

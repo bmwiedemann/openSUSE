@@ -1,0 +1,343 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4927501a3fd0aee5682a58046ff969d8</srcmd5>
+    <version>2.0.7</version>
+    <time>1339574744</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>124771</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4927501a3fd0aee5682a58046ff969d8</srcmd5>
+    <version>2.0.7</version>
+    <time>1340184257</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>957dda71a537910e1942dc5ea140e703</srcmd5>
+    <version>2.0.7</version>
+    <time>1347883871</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134096</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2dce0a283ead15d5c1ae39677dd751af</srcmd5>
+    <version>2.0.8</version>
+    <time>1354712977</time>
+    <user>namtrac</user>
+    <comment>- Update to 2.0.8.
+  + Convert error cecking macros into fns
+  + don't allow a talloc_pool inside a talloc_pool.
+  + use a struct for pool headers.
+  + remove unused variables
+  + Update doxygen config.
+  + Slightly simplify talloc_unlink
+  + Only check for pkg-config file when checking for system talloc.
+  + fix a comment typo
+  + simplifiy the logic to build talloc_testsuite in the standalone build</comment>
+    <requestid>143821</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2dce0a283ead15d5c1ae39677dd751af</srcmd5>
+    <version>2.0.8</version>
+    <time>1359110462</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f59c1ea41ce9d4ebeee66cd4f1db9465</srcmd5>
+    <version>2.0.8</version>
+    <time>1373542468</time>
+    <user>coolo</user>
+    <comment>- BuildIgnore python to avoid build cycle (forwarded request 182397 from coolo)</comment>
+    <requestid>182715</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3f05b32af9f68d013d98203f57938e9b</srcmd5>
+    <version>2.0.8</version>
+    <time>1375288238</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185003</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b25c4cf7fb9d32b9d4ad26ba43a58297</srcmd5>
+    <version>2.0.8</version>
+    <time>1377856262</time>
+    <user>coolo</user>
+    <comment>- PreReq /sbin/ldconfig from pytalloc.
+
+- Add pytalloc to baselibs.conf.</comment>
+    <requestid>196775</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>b25c4cf7fb9d32b9d4ad26ba43a58297</srcmd5>
+    <version>2.0.8</version>
+    <time>1379664766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11e47977fcf6175c929e3ccfd32570dd</srcmd5>
+    <version>2.1.0</version>
+    <time>1386569968</time>
+    <user>coolo</user>
+    <comment>- Update to 2.1.0.
+  + Add talloc_pooled_object and test it
+  + Allow nested pools
+  + Add a separate pool size
+  + Put pool-specific data before the chunk
+  + Introduce __talloc_with_prefix
+  + Decouple the dual use of chunk-&gt;pool
+  + Only provide the --enable-talloc-compat1 in standalone build
+  + Simplify _talloc_free_poolmem a bit
+
+- Verify source tar ball gpg signature.</comment>
+    <requestid>209668</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>de36ca0cc0656587c73ee43ea3db5f9b</srcmd5>
+    <version>2.1.0</version>
+    <time>1399051323</time>
+    <user>coolo</user>
+    <comment>Remove dependency on gpg-offline to reduce rebuild times; signature checking
+is implemented already in the source validator.</comment>
+    <requestid>231817</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>52489620209f87189c74cd20e7f32768</srcmd5>
+    <version>2.1.0</version>
+    <time>1400742270</time>
+    <user>coolo</user>
+    <comment>Remove dependency on doxygen. Doxygen is only used for generating
+the html documentation, but the html documentation was not
+actually packaged, so there is no point in running it.</comment>
+    <requestid>234837</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aad32a0c7fd72016c074afa4c0c29132</srcmd5>
+    <version>2.1.1</version>
+    <time>1401092859</time>
+    <user>coolo</user>
+    <comment>- Require pkg-config from the devel packages.
+
+- Update to 2.1.1.
+  + documentation updates
+  + a fix for pytalloc-util.pc
+  + performance improvements here and there
+  + fixed compiler warnings</comment>
+    <requestid>235285</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>aad32a0c7fd72016c074afa4c0c29132</srcmd5>
+    <version>2.1.1</version>
+    <time>1409303449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>5fb222cd9d2db491857bcbf38bd6b201</srcmd5>
+    <version>2.1.1</version>
+    <time>1415636874</time>
+    <user>dimstar_suse</user>
+    <comment>Use the upstream tar ball, as signature verification is now able to handle
+compressed archives.</comment>
+    <requestid>260074</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ecb8876d2ca3900a8857a53b27b2848f</srcmd5>
+    <version>2.1.2</version>
+    <time>1429657886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.2.
+  + fix _talloc_total_limit_size prototype
+  + build: improve detection of srcdir</comment>
+    <requestid>297171</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f14ec29ffec3f8d10b4f4aba5eaf7d96</srcmd5>
+    <version>2.1.2</version>
+    <time>1434003664</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311335</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d48b2ce7a4e77d796c5ef8811e99cef1</srcmd5>
+    <version>2.1.3</version>
+    <time>1437980965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.3; (bsc#939051).
+  + improved python3 bindings
+  + documentation fixes regarding talloc_reference() and talloc_unlink()</comment>
+    <requestid>317881</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5e06066750e213f02dc4e18f2cdf2f43</srcmd5>
+    <version>2.1.3</version>
+    <time>1441822819</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329603</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2dd81b9d3b8f840ba6bddaa18e817eab</srcmd5>
+    <version>2.1.3</version>
+    <time>1442638418</time>
+    <user>coolo</user>
+    <comment>Update the Samba Library Distribution Key file 'talloc.keyring';
+(bso#945116).</comment>
+    <requestid>330105</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>929aa5af9ee683919383ed86b198acc2</srcmd5>
+    <version>2.1.4</version>
+    <time>1446049798</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3-talloc and python3-talloc-devel; (bsc#951911).
+
+- Rename pytalloc to python-talloc.
+
+- Update to 2.1.4; (bsc#951660).
+  + Test that talloc magic differs between processes.
+  + Increment minor version due to added talloc_test_get_magic.
+  + Provide tests access to talloc_magic.
+  + Test magic protection measures.</comment>
+    <requestid>340886</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7e572bb22c3fe555d44dfa780fdeaef2</srcmd5>
+    <version>2.1.4</version>
+    <time>1447146099</time>
+    <user>dimstar_suse</user>
+    <comment>Fix copy'n'paste mistake in the change log
+
+- Point LD_LIBRARY_PATH to the just-built libraries while calling make test.
+- Create a 2nd talloc-man spec-file to avoid a build cycle.
+- Recommend to install talloc-man from libtalloc-devel.
+
+- Add doxygen at build time to add the development documentation.
+- Disable rpath-install and silent-rules while configure.</comment>
+    <requestid>343013</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>80a30ac488c2d43ee189abbf1cf1f4ae</srcmd5>
+    <version>2.1.5</version>
+    <time>1448400056</time>
+    <user>coolo</user>
+    <comment>- Update to 2.1.5; (bsc#954658).
+  + Minor build fixes</comment>
+    <requestid>343926</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b746a2374b5c4cdc992b924b61de451f</srcmd5>
+    <version>2.1.5</version>
+    <time>1456433969</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360747</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>3652494df7eecc918dee200d29ee0c4c</srcmd5>
+    <version>2.1.5</version>
+    <time>1457945804</time>
+    <user>dimstar_suse</user>
+    <comment>Add talloc-python3.5-fix-soabi_name.patch: Do not change x86_64 to
+x86-64 when building with python 3.5.</comment>
+    <requestid>368613</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7baa01cab87e8a8451e8b62e977afe83</srcmd5>
+    <version>2.1.6</version>
+    <time>1458470929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.6; (bsc#954658).
+  + pytalloc: Add new BaseObject
+  + pytalloc: add a _pytalloc_get_type() helper function and generate
+    PyExc_TypeError on mismatch
+  + talloc: add _pytalloc_get_ptr/_pytalloc_get_mem_ctx helper functions
+  + Improve testsuite by avoiding path issues
+  + Only set public headers field when installing as a public library
+  + Fix a documentation typo</comment>
+    <requestid>373827</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a8f25f5931447386e3e518c21f6f497b</srcmd5>
+    <version>2.1.8</version>
+    <time>1478167848</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433656</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ab0f36de533c497a6def10a297b354ea</srcmd5>
+    <version>2.1.9</version>
+    <time>1492417320</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.1.9; (bsc#1032915).
+  + fix some coverity defects
+  + fix TALLOC_VERSION_MINOR and talloc_version_minor()
+  + add new tests
+  + add pytalloc_get_type()
+  + add pytalloc_GenericObject_{steal,reference}[_ex]()
+
+- Update to version 2.1.8.
+  + performance improvements
+  + Fix memory leak when destructors reparent children; (bso#11901).
+
+- sle11-remove-unknown-compiler-options.patch: build SLE11 and earlier
+  without -Wno-format-length.
+
+- Update to version 2.1.9; (bsc#1032915).
+  + fix some coverity defects
+  + fix TALLOC_VERSION_MINOR and talloc_version_minor()
+  + add new tests
+  + add pytalloc_get_type()
+  + add pytalloc_GenericObject_{steal,reference}[_ex]()
+
+- Provide python-talloc and python-talloc-devel; (bsc#966523).</comment>
+    <requestid>487099</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a1de822f5d721cb751f8d0fc5eef9fb9</srcmd5>
+    <version>2.1.10</version>
+    <time>1508946376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532690</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f6a77b319d8616f7375805c9804ca990</srcmd5>
+    <version>2.1.11</version>
+    <time>1522833197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593144</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>584af4a7866bb70e4e111fd812b3dc6a</srcmd5>
+    <version>2.1.13</version>
+    <time>1523956289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595316</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1610b4f017e6cf9178ee8c5af6fc3857</srcmd5>
+    <version>2.1.14</version>
+    <time>1533887121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628233</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1ce91fcf5a5699792ebc17c5146ae964</srcmd5>
+    <version>2.1.16</version>
+    <time>1556311471</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696795</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48713b8b3009da328f5f98dc4ee6268d</srcmd5>
+    <version>0.0.16</version>
+    <time>1406556728</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>242464</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>48713b8b3009da328f5f98dc4ee6268d</srcmd5>
+    <version>0.0.16</version>
+    <time>1409301909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>edcf3faf58583354fc31e4967f17592c</srcmd5>
+    <version>0.0.17.1</version>
+    <time>1409998723</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247680</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1205887f0d3efa0727394dedf1b6543b</srcmd5>
+    <version>0.0.17.1</version>
+    <time>1430132710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304035</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>994673e1a2cad7064f378c95dc51913a</srcmd5>
+    <version>0.0.18</version>
+    <time>1446049834</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341054</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0e270cfb3dce67d13bc8ac3dedc4508f</srcmd5>
+    <version>0.0.18</version>
+    <time>1448400813</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344933</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6c1fbfc73bde93aef094504db2cebe2b</srcmd5>
+    <version>0.0.18</version>
+    <time>1467205790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404099</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8263f64ce8b97eaab441791830afb7ae</srcmd5>
+    <version>0.0.19.1</version>
+    <time>1533292524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626738</requestid>
+  </revision>
+</revisionlist>

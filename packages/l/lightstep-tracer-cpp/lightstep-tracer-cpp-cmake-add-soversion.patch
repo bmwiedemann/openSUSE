@@ -1,0 +1,27 @@
+From 73e22db28728a2979ec90e18606f162d676a29aa Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@suse.de>
+Date: Tue, 11 Dec 2018 18:22:11 +0100
+Subject: [PATCH 1/2] cmake: Add SOVERSION property to the library
+
+SOVERSION property creates `so.0` files, not only `.so`.
+
+Signed-off-by: Michal Rostecki <mrostecki@suse.de>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dc3639f..29b427e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -204,6 +204,7 @@ if (BUILD_SHARED_LIBS)
+     _apply_clang_tidy_if_available(lightstep_tracer)
+   endif()
+   target_link_libraries(lightstep_tracer ${LIGHTSTEP_LINK_LIBRARIES})
++  set_target_properties(lightstep_tracer PROPERTIES SOVERSION ${LIGHTSTEP_VERSION_MAJOR})
+   install(TARGETS lightstep_tracer
+           LIBRARY DESTINATION lib)
+ endif()
+-- 
+2.19.2
+

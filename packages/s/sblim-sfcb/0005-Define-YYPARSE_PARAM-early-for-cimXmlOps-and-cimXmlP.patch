@@ -1,0 +1,26 @@
+From 79a7f98644c09cd4f49a0a72d12033973ee8f8b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 16 Jul 2013 11:17:01 +0200
+Subject: [PATCH 05/25] Define YYPARSE_PARAM early for cimXmlOps and
+ cimXmlParser
+
+---
+ cimXmlParser.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/cimXmlParser.h b/cimXmlParser.h
+index 3a89cd1772b2..786a2703e0ea 100644
+--- a/cimXmlParser.h
++++ b/cimXmlParser.h
+@@ -35,6 +35,8 @@
+ #include <providerMgr.h>
+ #include "cimRequest.h"
+ 
++#define YYPARSE_PARAM parm
++
+ // TODO these need to be defined in cmpidt.h in cmpi-base...
+ #   define CMPI_FLAG_ContinueOnError        16
+ #   define CMPI_FLAG_ReturnQueryResultClass 32
+-- 
+2.15.0
+

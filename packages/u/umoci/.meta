@@ -1,0 +1,11 @@
+<package name="umoci" project="openSUSE:Factory">
+  <title>umoci</title>
+  <description>umoci modifies Open Container images.
+
+umoci intends to be a complete manipulation tool for OCI images. In particular,
+it should be seen as a more end-user-focused version of the oci-image-tools
+provided by the OCI. The hope is that all of this tooling will eventually be
+merged with the upstream repository, so that it is always kept up-to-date by
+the Open Container Initiative community.</description>
+  <devel project="Virtualization:containers" package="umoci"/>
+</package>

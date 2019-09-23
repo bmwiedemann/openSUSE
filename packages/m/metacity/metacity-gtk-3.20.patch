@@ -1,0 +1,188 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -89,7 +89,7 @@ dnl Check for required packages
+ dnl **************************************************************************
+ 
+ GLIB_REQUIRED_VERSION=2.44.0
+-GTK_REQUIRED_VERSION=3.22.0
++GTK_REQUIRED_VERSION=3.20.0
+ PANGO_REQUIRED_VERSION=1.2.0
+ XCOMPOSITE_REQUIRED_VERSION=0.3
+ 
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -1973,8 +1973,13 @@ event_callback (XEvent   *event,
+               if (meta_prefs_get_raise_on_click ())
+                 meta_window_raise (window);
+ 
++#if GTK_CHECK_VERSION (3, 22, 0)
+               rect.x = event->xbutton.x;
+               rect.y = event->xbutton.y;
++#else
++              rect.x = event->xbutton.x_root;
++              rect.y = event->xbutton.y_root;
++#endif
+               rect.width = 0;
+               rect.height = 0;
+ 
+--- a/src/core/keybindings.c
++++ b/src/core/keybindings.c
+@@ -2803,6 +2803,7 @@ handle_activate_window_menu (MetaDisplay
+       GdkRectangle rect;
+       GdkEvent *gdk_event;
+ 
++#if GTK_CHECK_VERSION (3, 22, 0)
+       if (display->focus_window->frame)
+         {
+           rect.x = display->focus_window->rect.x;
+@@ -2816,6 +2817,15 @@ handle_activate_window_menu (MetaDisplay
+ 
+       rect.width = display->focus_window->rect.width;
+       rect.height = 0;
++#else
++      meta_window_get_position (display->focus_window, &rect.x, &rect.y);
++
++      if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
++        rect.x += display->focus_window->rect.width;
++
++      rect.width = 0;
++      rect.height = 0;
++#endif
+ 
+       if (meta_window_is_client_decorated (display->focus_window))
+         {
+--- a/src/ui/fixedtip.c
++++ b/src/ui/fixedtip.c
+@@ -36,12 +36,24 @@ get_monitor_geometry (gint          root
+                       GdkRectangle *geometry)
+ {
+   GdkDisplay *display;
++#if GTK_CHECK_VERSION (3, 22, 0)
+   GdkMonitor *monitor;
++#else
++  GdkScreen *screen;
++  int monitor;
++#endif
+ 
+   display = gdk_display_get_default ();
++#if GTK_CHECK_VERSION (3, 22, 0)
+   monitor = gdk_display_get_monitor_at_point (display, root_x, root_y);
+ 
+   gdk_monitor_get_geometry (monitor, geometry);
++#else
++  screen = gdk_display_get_default_screen (display);
++  monitor = gdk_screen_get_monitor_at_point (screen, root_x, root_y);
++
++  gdk_screen_get_monitor_geometry (screen, monitor, geometry);
++#endif
+ }
+ 
+ void
+--- a/src/ui/frames.c
++++ b/src/ui/frames.c
+@@ -1663,8 +1663,13 @@ meta_frame_titlebar_event (MetaFrames
+       {
+         GdkRectangle rect;
+ 
++#if GTK_CHECK_VERSION (3, 22, 0)
+         rect.x = event->x;
+         rect.y = event->y;
++#else
++        rect.x = event->x_root;
++        rect.y = event->y_root;
++#endif
+         rect.width = 0;
+         rect.height = 0;
+ 
+@@ -1834,6 +1839,15 @@ meta_frames_button_press_event (GtkWidge
+               return FALSE;
+             }
+ 
++#if !GTK_CHECK_VERSION (3, 22, 0)
++          rect.x += event->x_root - event->x;
++          rect.y += rect.height + event->y_root - event->y;
++
++          /* Align to the right end of the menu rectangle if RTL */
++          if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
++            rect.x += rect.width;
++#endif
++
+           frame->ignore_leave_notify = TRUE;
+           meta_core_show_window_menu (frames->xdisplay,
+                                       frame->xwindow,
+--- a/src/ui/menu.c
++++ b/src/ui/menu.c
+@@ -444,11 +444,39 @@ meta_window_menu_new   (MetaFrames
+   return menu;
+ }
+ 
++#if !GTK_CHECK_VERSION (3, 22, 0)
++static void
++popup_position_func (GtkMenu  *menu,
++                     gint     *x,
++                     gint     *y,
++                     gboolean *push_in,
++                     gpointer  user_data)
++{
++  GtkRequisition req;
++  GdkPoint *pos;
++
++  pos = user_data;
++
++  gtk_widget_get_preferred_size (GTK_WIDGET (menu), &req, NULL);
++
++  *x = pos->x;
++  *y = pos->y;
++
++  if (meta_ui_get_direction() == META_UI_DIRECTION_RTL)
++    *x = MAX (0, *x - req.width);
++
++  /* Ensure onscreen */
++  *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
++  *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
++}
++#endif
++
+ void
+ meta_window_menu_popup (MetaWindowMenu     *menu,
+                         const GdkRectangle *rect,
+                         const GdkEvent     *event)
+ {
++#if GTK_CHECK_VERSION (3, 22, 0)
+   GdkEventAny *any;
+ 
+   any = (GdkEventAny *) event;
+@@ -458,6 +486,33 @@ meta_window_menu_popup (MetaWindowMenu
+                           GDK_GRAVITY_SOUTH_WEST,
+                           GDK_GRAVITY_NORTH_WEST,
+                           event);
++#else
++  GdkPoint *pt;
++  int button;
++  guint32 timestamp;
++
++  pt = g_new (GdkPoint, 1);
++
++  g_object_set_data_full (G_OBJECT (menu->menu), "destroy-point", pt, g_free);
++
++  pt->x = rect->x;
++  pt->y = rect->y;
++
++  if (event->type == GDK_KEY_PRESS)
++    {
++      button = 0;
++      timestamp = ((GdkEventKey *) event)->time;
++    }
++  else
++    {
++      button = ((GdkEventButton *) event)->button;
++      timestamp = ((GdkEventButton *) event)->time;
++    }
++
++  gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
++                  popup_position_func, pt,
++                  button, timestamp);
++#endif
+ 
+   if (!gtk_widget_get_visible (menu->menu))
+     {

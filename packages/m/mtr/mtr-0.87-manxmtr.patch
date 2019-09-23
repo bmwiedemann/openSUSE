@@ -1,0 +1,181 @@
+diff -urN mtr-0.92.orig/xmtr.8 mtr-0.92/xmtr.8
+--- mtr-0.92.orig/xmtr.8	2017-07-03 13:46:24.869651206 +0200
++++ mtr-0.92/xmtr.8	2017-07-03 13:47:36.725650110 +0200
+@@ -1,8 +1,8 @@
+-.TH MTR 8 "0.87.203-0e5e" "mtr" "System Administration"
++.TH MTR 8 "0.87.203-0e5e" "xmtr" "System Administration"
+ .SH NAME
+-mtr \- a network diagnostic tool
++xmtr \- a network diagnostic tool
+ .SH SYNOPSIS
+-.B mtr
++.B xmtr
+ [\c
+ .BR \-4 |\c
+ .B \-6\c
+@@ -111,7 +111,7 @@
+ ]
+ .I HOSTNAME
+ .SH DESCRIPTION
+-.B mtr 
++.B xmtr 
+ combines the functionality of the 
+ .B traceroute
+ and 
+@@ -119,15 +119,15 @@
+ programs in a single network diagnostic tool.
+ .PP
+ As 
+-.B mtr 
++.B xmtr 
+ starts, it investigates the network connection between the host 
+-.B mtr
++.B xmtr
+ runs on and 
+ .BR HOSTNAME
+ by sending packets with purposely low TTLs.  It continues to send
+ packets with low TTL, noting the response time of the intervening
+ routers.  This allows 
+-.B mtr 
++.B xmtr 
+ to print the response percentage and response times of the internet
+ route to 
+ .BR HOSTNAME . 
+@@ -142,7 +142,7 @@
+ Print the summary of command line argument options.
+ .TP
+ .B \-v\fR, \fB\-\-version
+-Print the installed version of mtr.  
++Print the installed version of xmtr.  
+ .TP
+ .B \-4
+ Use IPv4 only.
+@@ -155,11 +155,11 @@
+ .TP
+ .B \-r\fR, \fB\-\-report
+ This option puts 
+-.B mtr
++.B xmtr
+ into 
+ .B report
+ mode.  When in this mode,
+-.B mtr
++.B xmtr
+ will run for the number of cycles specified by the 
+ .B \-c
+ option, and then print statistics and exit.  
+@@ -167,30 +167,30 @@
+ \c
+ This mode is useful for generating statistics about network quality.  
+ Note that each running instance of 
+-.B mtr
++.B xmtr
+ generates a significant amount of network traffic.  Using 
+-.B mtr
++.B xmtr
+ to measure the quality of your network may result in decreased
+ network performance.  
+ .TP
+ .B \-w\fR, \fB\-\-report\-wide
+ This option puts 
+-.B mtr
++.B xmtr
+ into 
+ .B wide report
+ mode.  When in this mode,
+-.B mtr
++.B xmtr
+ will not cut hostnames in the report. 
+ .TP
+ .B \-x\fR, \fB\-\-xml
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to use the xml output format.  This format is better suited for
+ automated processing of the measurement results.
+ .TP
+ .B \-t\fR, \fB\-\-curses
+ Use this option to force 
+-.B mtr 
++.B xmtr 
+ to use the curses based terminal
+ interface (if available).
+ In case the list of hops exceeds the 
+@@ -212,10 +212,10 @@
+ .TP
+ .B \-g\fR, \fB\-\-gtk
+ Use this option to force
+-.B mtr 
++.B xmtr 
+ to use the GTK+ based X11 window interface (if available).  
+ GTK+ must have been available on the system when 
+-.B mtr 
++.B xmtr 
+ was built for this to work.  See the GTK+ web page at 
+ .UR http://\:www.\:gtk.\:org/
+ .UE
+@@ -261,24 +261,24 @@
+ .TP
+ .B \-j\fR, \fB\-\-json
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to use the JSON output format.  This format is better suited for
+ automated processing of the measurement results.
+ .TP
+ .B \-p\fR, \fB\-\-split
+ Use this option to set
+-.B mtr 
++.B xmtr 
+ to spit out a format that is suitable for a split-user interface.
+ .TP
+ .B \-n\fR, \fB\-\-no\-dns
+ Use this option to force 
+-.B mtr 
++.B xmtr 
+ to display numeric IP numbers and not try to resolve the
+ host names. 
+ .TP
+ .B \-b\fR, \fB\-\-show\-ips
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to display both the host names and numeric IP numbers.  In split mode
+ this adds an extra field to the output.  In report mode, there is usually
+ too little space to add the IPs, and they will be truncated.  Use the
+@@ -373,7 +373,7 @@
+ .TP
+ .B \-e\fR, \fB\-\-mpls
+ Use this option to tell 
+-.B mtr 
++.B xmtr 
+ to display information from ICMP extensions for MPLS (RFC 4950)
+ that are encoded in the response packets.
+ .TP
+@@ -425,7 +425,7 @@
+ .BR socket (7)
+ for full description of this socket option.
+ .SH ENVIRONMENT
+-.B mtr
++.B xmtr
+ recognizes a few environment variables.
+ .TP
+ .B MTR_OPTIONS
+@@ -438,7 +438,7 @@
+ Example:
+ 
+ .BI MTR_OPTIONS ="-4\ -c\ 1"
+-.B mtr
++.B xmtr
+ .I \-6\ localhost
+ 
+ would send one probe (because of
+@@ -470,7 +470,7 @@
+ Some modern routers give a lower priority to ICMP ECHO packets than 
+ to other network traffic.  Consequently, the reliability of these
+ routers reported by 
+-.B mtr
++.B xmtr
+ will be significantly lower than the actual reliability of 
+ these routers.  
+ .SH CONTACT INFORMATION

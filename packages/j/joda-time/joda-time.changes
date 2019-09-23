@@ -1,0 +1,192 @@
+-------------------------------------------------------------------
+Wed Feb  6 12:28:46 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.10.1
+  * Fix time-zone compiler for Namibia. Fixes #485.
+  * Fix time-zone compiler for Tokyo. 
+  * Handle negative SAVE values in tzdb.
+  * Add Instant.EPOCH. See #472.
+  * Clarify negative durations. See #465.
+  * Add Instant.ofEpochMilli(). Add Instant.ofEpochSecond().
+    Fixes #458.
+  * Add automatic module name for Java SE 9.
+  * Add Kazakh language translations. Fixes #446
+  * Avoid double addition when using lenient chronology. Fixes #432.
+  * Clarify Period.fieldDifference() Javadoc.
+  * Clarify Instant.withMillis() Javadoc. Fixes jodaorg.github.io#5
+  * Add ZoneInfoProvider() constructor.
+  * Optimise release process.
+  * DateTimeZone data updated to version 2017b.
+  * Handle plus/minus of Integer.MIN_VALUE/MAX_VALUE months
+    correctly. Fixes #418.
+  * Clarify time fields are based on the local time-line.
+    Fixes #415.
+  * Fix spelling mistakes. Fixes #412.
+  * Fix DateTimePrinterInternalPinter that outputs data twice.
+    Fixes #409.
+  * Support conversion of old TimeZone where name has digits other
+    than ASCII [#381]
+  * Add Norwegian period translations [#378]
+  * Add Duration.dividedBy(long,RoundingMode) [#69, #379]
+  * Fixed bug where clock read twice when comparing two nulls in
+    DateTimeComparator [#404]
+  * Fixed minor issues with historic time-zone data [#373]
+  * Fix bug in time-zone binary search [#332, #386] The fix in
+    v2.9.2  caused problems when the time-zone being parsed was not
+    the last element in the input string. New approach uses a
+    different approach to the problem.
+  * Update tests for JDK 9 [#394]
+  * Close buffered reader correctly in zone info compiler [#396]
+  * Handle locale correctly zone info compiler [#397]
+  * Loading time-zone provider now occurs in a privileged block
+    [#327, #375]
+  * Make DateTimeUtils.SYSTEM_MILLIS_PROVIDER public [#357]
+  * Fix bug when adding months at the maximum limits of integer
+    [#361]
+  * Add Turkish period translations [#364]
+  * Fix bug in time-zone binary search [#332]
+  * Minor fixes to code internals [#339, #326, #344, #350, #343]
+  * Better document behaviour [#325]
+  * Fix bug introduced by Long.MIN_VALUE and Long.MAX_VALUE changes
+    [#328]
+  * Faster parsing of time-zone identifiers [#282]
+  * Added Interval.parseWithOffset(String) [#299, #296] Provides a
+    way to parse the fixed offset in an interval string
+  * Add DateTimeFormatter methods for StringBuilder [#298]
+  * Add Russian period translations [#320]
+  * Add Italian period translations [#312]
+  * Add Czech period translations [#313]
+  * Clarify that PeriodFormatterBuilder is in an invalid state once
+    built [#309]
+  * Allow DateTime and Interval to refer to values at Long.MIN_VALUE
+    and Long.MAX_VALUE [#297, #190] A DateTime may be created with
+    any millisecond value, however at the very edges there may be
+    some undesirable effects, for example always using UTC instead
+    of the time-zone
+  * Better error message for malformed tzdb files [#319]
+  * Better error message for interval constructor [#321]
+  * Fixed to handle JDK 8u60 [#288, #291] Without this fix,
+    formatting a time-zone will print "+00:00" instead of "GMT" for
+    the GMT time-zone
+  * Fix parsing of basic form ISO style where year has unnecessary
+    plus sign [#86] For example, +20151030 will now be correctly
+    parsed as year 2015.
+  * Fix overflow bug in intervals [#315]
+- Removed patches:
+  * joda-time-1.6-sourcetarget.patch
+    + correct source and target levels specified in the ant
+	  build.xml file
+  * joda-time-use-system-junit.patch
+    + not needed any more, since we are not running tests for the
+	  while
+- Added patch:
+  + joda-time-fix-tests.patch
+    + fix java version parsing for versions > 9
+- DateTimeZone data updated to version 2018i
+- Add build.xml file to allow build with ant
+
+-------------------------------------------------------------------
+Mon Nov 19 17:20:45 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom file and register joda-time as a maven artifact
+
+-------------------------------------------------------------------
+Tue Sep 19 09:33:47 UTC 2017 - fstrba@suse.com
+
+- Added patch:
+  * joda-time-1.6-sourcetarget.patch
+    + make compile.source and compile.target properties that can be
+      specified on command-line
+- Build with java source and target level 1.6 in order to allow
+  building with jdk9
+
+-------------------------------------------------------------------
+Tue Jul  8 10:55:07 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-nodeps.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:05 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Apr 29 00:59:20 CEST 2010 - ro@suse.de
+
+- update timezone data to current 2010h 
+
+-------------------------------------------------------------------
+Thu Apr 29 00:56:26 CEST 2010 - ro@suse.de
+
+- remove needless buildroot cleaning st start of install section 
+
+-------------------------------------------------------------------
+Fri Jul 24 00:00:00 CET 2009 - rel-eng@lists.fedoraproject.org
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Feb 25 00:00:00 CET 2009 - rel-eng@lists.fedoraproject.org
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Dec 12 00:00:00 CET 2008 - konrad@tylerc.org
+
+- New upstream version (1.6).
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 CET 2008 - konrad@tylerc.org
+
+- New tzdata.
+
+-------------------------------------------------------------------
+Mon Oct 13 00:00:00 CET 2008 - konrad@tylerc.org
+
+- New tzdata (2008g).
+
+-------------------------------------------------------------------
+Sat Aug 23 00:00:00 CET 2008 - konrad@tylerc.org
+
+- New version with new tzdata (2008e).
+
+-------------------------------------------------------------------
+Sat Jul 19 00:00:00 CET 2008 - konrad@tylerc.org
+
+- New version with new tzdata (2008d).
+
+-------------------------------------------------------------------
+Mon Jun 09 00:00:00 CET 2008 - konrad@tylerc.org
+
+- New version with new tzdata (2008c).
+
+-------------------------------------------------------------------
+Sun Apr 06 00:00:00 CET 2008 - konrad@tylerc.org
+
+- Don't compile GCJ bits yet as we hit some GCJ bug.
+
+-------------------------------------------------------------------
+Sat Apr 05 00:00:00 CET 2008 - konrad@tylerc.org
+
+- Update to tzdata2008b.
+- Use unversioned jar.
+- Some small things to comply with Java Packaging Guidelines.
+- GCJ support.
+
+-------------------------------------------------------------------
+Mon Mar 17 00:00:00 CET 2008 - konrad@tylerc.org
+
+- Many small changes from bz# 436239 comment 6.
+- Change -javadocs to -javadoc in accordance with java packaging
+  guidelines draft.
+
+-------------------------------------------------------------------
+Sun Mar 16 00:00:00 CET 2008 - konrad@tylerc.org
+
+- Use system junit via Mamoru Tasaka's patch.
+
+-------------------------------------------------------------------
+Mon Mar 03 00:00:00 CET 2008 - konrad@tylerc.org
+
+- Initial package.
+

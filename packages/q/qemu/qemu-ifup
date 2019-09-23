@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# sample bridge qemu-ifup script
+
+echo 'configuring qemu network with bridge for' $*
+
+# If bridge is not specified, try device with default route.
+bridge=$2
+if [ -z "$bridge" ]; then
+    bridge=$(/usr/sbin/ip route list | /usr/bin/awk '/^default / { print $5 }')
+fi
+
+# Exit if $bridge is not a bridge. Exit with 0 status
+# so qemu process is not terminated and provide message
+# about failure to setup network.
+if [ ! -e "/sys/class/net/${bridge}/bridge" ]
+then
+   echo "WARNING! ${bridge} is not a bridge.  qemu-ifup exiting.  VM may not have a functioning networking stack."
+   exit 0
+fi
+
+/usr/sbin/ip link set $1 up
+/usr/sbin/ip link set $1 master $bridge || true

@@ -1,0 +1,8 @@
+RKHUNTER FAQ
+The new Rootkit Hunter FAQ is located at:
+ http://sourceforge.net/docman/display_doc.php?docid=35179&group_id=155034
+
+DATABASE UPDATES
+To be able to run automatic database update, you will need to install wget 
+and set the DB_UPDATE variable to "yes".
+

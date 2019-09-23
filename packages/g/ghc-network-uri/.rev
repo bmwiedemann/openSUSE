@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3a5d39a648ead19b232fbbb40c9aa00</srcmd5>
+    <version>2.6.0.3</version>
+    <time>1432723339</time>
+    <user>dimstar_suse</user>
+    <comment>network-uri package splitted from ghc-network</comment>
+    <requestid>306774</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a25d80ca87e87c89dffb5a9ee63968c3</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1459002366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.1.0 (forwarded request 377121 from mimi_vx)</comment>
+    <requestid>377124</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7c295bbc89267821ca3328a9a0ee99b5</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1469081668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411636</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>15ef803bf68af0a46678e2e93b4e6374</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1498120700</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504088</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>4028236c5de53756d1b591eb772ad742</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1505505674</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525080</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>067ce172597eae8c3b31e10db24849b0</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1527675574</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609795</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>54e22a1d2f9e754de8839ca299fafc5d</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1532445630</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 2.6.1.0
+- update to 2.6.0.3</comment>
+    <requestid>623818</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>67f3cfe671ad2f282df5bfb5fc20b0e9</srcmd5>
+    <version>2.6.1.0</version>
+    <time>1540448870</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643427</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>123cb79b55b8b0a6a8b877864e16ed1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1336471182</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115388</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>123cb79b55b8b0a6a8b877864e16ed1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1340184211</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>123cb79b55b8b0a6a8b877864e16ed1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110398</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>123cb79b55b8b0a6a8b877864e16ed1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1379664653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>123cb79b55b8b0a6a8b877864e16ed1d</srcmd5>
+    <version>1.3.0</version>
+    <time>1409303354</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75639cae596d46aefa4919a802ca8d5b</srcmd5>
+    <version>1.3.1</version>
+    <time>1430132330</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 1.3.1:
+   * Move global rules variable into applyRules, the only function that uses it
+   * Make len a size_t instead of converting back &amp; forth to an int
+   * Use C99 struct initializer for cmdNames in applyComponentNames
+   * config: Add missing AC_CONFIG_SRCDIR
+   * configure: Drop AM_MAINTAINER_MODE
+   * autogen.sh: Honor NOCONFIGURE=1
+   * Printing the program's version number on -version.
+   * Fixing a small mistake in the man page -- s/comp/map/.
+   * Ensure consistency between the manpage and the output of the -h option</comment>
+    <requestid>303652</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>71ea4a01661eb8d9a761f9a86b8c882a</srcmd5>
+    <version>1.3.2</version>
+    <time>1563366169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2
+  * Correct error messages for missing/invalid file passed to -config
+  * Update configure.ac bug URL for gitlab migration
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * autogen: add default patch prefix
+  * Update README for gitlab migration</comment>
+    <requestid>715445</requestid>
+  </revision>
+</revisionlist>

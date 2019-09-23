@@ -1,0 +1,318 @@
+-------------------------------------------------------------------
+Mon Mar 18 14:32:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic (useless in the face of --disable-static).
+- Proper Group: tag for librecode.
+
+-------------------------------------------------------------------
+Fri Mar  8 09:43:49 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- remove unrecognized options from configure: --without-included-gettext
+
+-------------------------------------------------------------------
+Fri Mar  8 09:35:37 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- clean up spec according spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar  8 09:22:38 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- use preun for install_info_delete
+
+-------------------------------------------------------------------
+Thu Mar  7 11:55:44 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- split out shared library
+- use spec-cleaner
+
+-------------------------------------------------------------------
+Sat Feb 23 18:30:00 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- use "%license COPYING COPYING-LIB" 
+- remove the %defattr lines
+
+-------------------------------------------------------------------
+Tue Jan 29 12:19:44 UTC 2019 - vetter@physik.uni-wuerzburg.de
+
+- update to version 3.7.1 from https://github.com/rrthomas/recode
+
+-------------------------------------------------------------------
+Wed Mar  6 15:32:44 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with automake 1.13.1
+
+-------------------------------------------------------------------
+Fri Feb  1 12:03:13 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Jun  6 16:01:50 CEST 2012 - meissner@suse.de
+
+- fix build with new automake
+
+-------------------------------------------------------------------
+Mon Feb 13 10:54:26 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Dec 15 20:11:48 UTC 2011 - aj@suse.de
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Nov 23 12:47:05 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Dec 30 15:28:46 UTC 2010 - vcizek@novell.com
+
+- fix for segfault bnc#503437
+- see comment in the patch file 
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Mar  5 15:42:01 UTC 2010 - puzel@novell.com
+
+- add recode-3.6-fix-flex-m4.patch - fix build 
+  - see comment in the patch
+
+-------------------------------------------------------------------
+Sat Dec 19 20:17:48 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:43 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:54:31 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf 
+
+-------------------------------------------------------------------
+Wed Sep  3 11:03:01 CEST 2008 - crrodriguez@suse.de
+
+- disable static libraries 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Wed Mar 12 10:45:27 CET 2008 - schwab@suse.de
+
+- Fix memory leak.
+
+-------------------------------------------------------------------
+Thu Feb 21 20:36:30 CET 2008 - crrodriguez@suse.de
+
+- remove librecode.la that has empty dependency_libs
+- use find_lang macro 
+
+-------------------------------------------------------------------
+Tue Oct 23 22:55:20 CEST 2007 - meissner@suse.de
+
+- fixed gcc 4.3 problem
+
+-------------------------------------------------------------------
+Wed Jan 25 21:30:54 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 12 23:25:06 CEST 2005 - ro@suse.de
+
+- fix build with current gettext 
+
+-------------------------------------------------------------------
+Sat Jan 10 15:13:17 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Thu Feb 13 01:22:39 CET 2003 - mmj@suse.de
+
+- Use %install_info macro [#23453]
+
+-------------------------------------------------------------------
+Fri Aug 30 19:13:43 CEST 2002 - pmladek@suse.cz
+
+- fixed dependency of the devel subpackage on the main package (used %version)
+- aplied Debian's patch which fixes recode_buffer_to_buffer which failed
+  for certain 1-step recodes [#11503]
+
+-------------------------------------------------------------------
+Sun Jul 28 13:51:38 CEST 2002 - kukuk@suse.de
+
+- remove unused diffutils from neededforbuild
+
+-------------------------------------------------------------------
+Fri Mar 29 17:57:51 CET 2002 - pmladek@suse.cz
+
+- fixed to compile with autoconf-2.53
+
+-------------------------------------------------------------------
+Tue Feb  5 17:55:43 CET 2002 - rvasice@suse.cz
+
+- fix locale bug #12817
+
+-------------------------------------------------------------------
+Fri Jan 11 14:36:00 CET 2002 - schwab@suse.de
+
+- Use gettext from libc.
+
+-------------------------------------------------------------------
+Mon Oct  8 17:01:59 CEST 2001 - schwab@suse.de
+
+- Fix infinite loop in iconv wrapper.
+- Reenable testsuite on all architectures.
+
+-------------------------------------------------------------------
+Mon Oct  8 14:05:07 CEST 2001 - schwab@suse.de
+
+- Fix bounds computation in guarantee_nul_terminator.
+
+-------------------------------------------------------------------
+Tue Jul  3 18:50:25 CEST 2001 - ro@suse.de
+
+- don't call make check for other archs 
+
+-------------------------------------------------------------------
+Tue Jul  3 15:53:11 CEST 2001 - olh@suse.de
+
+- dont call make check on ppc, it eats your disk space
+
+-------------------------------------------------------------------
+Mon Jul  2 14:00:30 CEST 2001 - cihlar@suse.cz
+
+- update to version 3.6
+- clean up spec file
+
+-------------------------------------------------------------------
+Mon Jun 18 20:33:24 CEST 2001 - schwab@suse.de
+
+- Call aclocal to get new libtool macros.
+- Fix missing return value.
+
+-------------------------------------------------------------------
+Mon Jun 11 16:14:23 CEST 2001 - pblaha@suse.cz
+
+- add libtoolize --force for build 
+
+-------------------------------------------------------------------
+Wed May  9 21:50:48 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Apr 23 11:23:33 CEST 2001 - pblaha@suse.cz
+
+- fix compilation on axp
+- fix name for catalog messages  *.mo  
+
+-------------------------------------------------------------------
+Mon Mar  5 15:58:29 CET 2001 - pblaha@suse.cz
+
+- move info back from recode-devel -> recode 
+
+-------------------------------------------------------------------
+Wed Dec  6 19:22:30 CET 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Tue Dec  5 11:33:40 CET 2000 - uli@suse.de
+
+- added diffutils to neededforbuild
+
+-------------------------------------------------------------------
+Tue Nov 21 19:13:19 CET 2000 - kukuk@suse.de
+
+- Use macros to support multilib plattforms
+
+-------------------------------------------------------------------
+Mon Nov 20 12:30:19 CET 2000 - pblaha@suse.cz
+
+- moved .so link to devel 
+
+-------------------------------------------------------------------
+Mon Nov 13 16:53:30 CET 2000 - pblaha@suse.cz
+
+- split to devel and created czech locales 
+
+-------------------------------------------------------------------
+Mon Jul 24 19:20:23 CEST 2000 - schwab@suse.de
+
+- Fix even more memory leaks.
+
+-------------------------------------------------------------------
+Wed Jul 12 13:32:05 CEST 2000 - bubnikv@suse.cz
+
+- Fix more memory leaks (patch from Christian.Lorenz@suse.de).
+
+-------------------------------------------------------------------
+Mon Apr  3 16:30:41 CEST 2000 - schwab@suse.de
+
+- Fix more memory leaks.
+
+-------------------------------------------------------------------
+Mon Mar 13 18:24:02 CET 2000 - schwab@suse.de
+
+- Fix some memory leaks.
+
+-------------------------------------------------------------------
+Wed Mar  1 09:51:42 CET 2000 - ke@suse.de
+
+- add patch to improve lat1..texi.
+
+-------------------------------------------------------------------
+Tue Feb 22 00:30:17 CET 2000 - ro@suse.de
+
+- include the shared recode-lib (since the binary is linked against it) 
+
+-------------------------------------------------------------------
+Sun Feb 20 16:40:47 CET 2000 - ke@suse.de
+
+- general spec file cleanup:
+- get rid of Makefile.Linux.
+- add group and URL tag.
+- use various macros (%{_mandir}, %{_infodir}).
+- install %doc files.
+- run `make check.'
+
+-------------------------------------------------------------------
+Tue Sep 21 12:29:13 CEST 1999 - schwab@suse.de
+
+- Preserve file permissions
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Jul 19 09:27:00 MEST 1999 - florian@suse.de
+
+- update to recode 3.5
+

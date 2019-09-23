@@ -1,0 +1,103 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2017-07-28 17:05:35 +0200
+Subject: Modifications for the -qt5 package
+
+Don't build libraries and rely on those supplied by the
+regular (GTK+) package.
+Also change a few filenames to avoid collisions.
+
+Index: guvcview-src-2.0.6/Makefile.am
+===================================================================
+--- guvcview-src-2.0.6.orig/Makefile.am
++++ guvcview-src-2.0.6/Makefile.am
+@@ -1,13 +1,8 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = gview_v4l2core \
+-		  gview_audio \
+-		  gview_render \
+-		  gview_encoder \
+-          guvcview \
++SUBDIRS = guvcview \
+           data \
+-          po \
+-          po/gview_v4l2core
++          po
+ 
+ #Distribute these directories:
+ DIST_SUBDIRS =  gview_v4l2core \
+@@ -19,12 +14,6 @@ DIST_SUBDIRS =  gview_v4l2core \
+ 				po \
+ 				po/gview_v4l2core
+ 
+-pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfig_DATA = pkgconfig/libgviewv4l2core.pc \
+-				 pkgconfig/libgviewaudio.pc \
+-				 pkgconfig/libgviewrender.pc \
+-				 pkgconfig/libgviewencoder.pc
+-
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ EXTRA_DIST = bootstrap.sh
+Index: guvcview-src-2.0.6/guvcview/Makefile.am
+===================================================================
+--- guvcview-src-2.0.6.orig/guvcview/Makefile.am
++++ guvcview-src-2.0.6/guvcview/Makefile.am
+@@ -57,14 +57,14 @@ guvcview_CPPFLAGS = $(guvcview_CFLAGS) \
+ 					-fPIC
+ endif
+ 
+-guvcview_LDFLAGS = $(LIBINTL)
++guvcview_LDFLAGS = $(LIBINTL) \
++				$(shell pkg-config --libs libgviewv4l2core) \
++                                $(shell pkg-config --libs libgviewrender) \
++                                $(shell pkg-config --libs libgviewaudio) \
++                                $(shell pkg-config --libs libgviewencoder)
+ 
+-guvcview_LDADD = ../gview_v4l2core/$(GVIEWV4L2CORE_LIBRARY_NAME).la \
+-				../gview_render/$(GVIEWRENDER_LIBRARY_NAME).la \
+-				../gview_audio/$(GVIEWAUDIO_LIBRARY_NAME).la \
+-				../gview_encoder/$(GVIEWENCODER_LIBRARY_NAME).la \
+-				$(PTHREAD_LIBS) \
+-				-lm
++guvcview_LDADD = -lpthread \
++		-lm
+ if HAVE_GTK3
+ guvcview_LDADD += $(GUIGTK3_LIBS)
+ endif
+Index: guvcview-src-2.0.6/data/icons/Makefile.am
+===================================================================
+--- guvcview-src-2.0.6.orig/data/icons/Makefile.am
++++ guvcview-src-2.0.6/data/icons/Makefile.am
+@@ -1,4 +1,4 @@
+-iconsdir = ${datadir}/pixmaps/guvcview
++iconsdir = ${datadir}/pixmaps/guvcview-qt5
+ appicondir = ${datadir}/pixmaps
+ icons_DATA = \
+ 		camera.png\
+@@ -12,7 +12,8 @@ appicon_DATA = guvcview.png
+ 
+ gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/pixmaps/guvcview/
+ 
+-install-data-hook: update-icon-cache
++install-data-hook:
++		mv $(DESTDIR)/$(appicondir)/guvcview.png $(DESTDIR)/$(appicondir)/guvcview-qt5.png
+ uninstall-hook: update-icon-cache
+ update-icon-cache:
+ 	@-if test -z "$(DESTDIR)"; then \
+Index: guvcview-src-2.0.6/configure.ac
+===================================================================
+--- guvcview-src-2.0.6.orig/configure.ac
++++ guvcview-src-2.0.6/configure.ac
+@@ -73,9 +73,9 @@ GETTEXT_PACKAGE_V4L2CORE=gview_v4l2core
+ AC_SUBST(GETTEXT_PACKAGE_V4L2CORE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE_V4L2CORE,"$GETTEXT_PACKAGE_V4L2CORE", [gview_v4l2core])
+ 
+-GETTEXT_PACKAGE=guvcview
++GETTEXT_PACKAGE=guvcview-qt5
+ AC_SUBST(GETTEXT_PACKAGE)
+-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [guvcview])
++AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [guvcview-qt5])
+ 
+ IT_PROG_INTLTOOL([0.40])
+ IT_PO_SUBDIR(po/gview_v4l2core)

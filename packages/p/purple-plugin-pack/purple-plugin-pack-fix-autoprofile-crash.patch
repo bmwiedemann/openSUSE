@@ -1,0 +1,11 @@
+--- a/autoprofile/comp_uptime.c
++++ b/autoprofile/comp_uptime.c
+@@ -35,7 +35,7 @@ char *uptime_generate (struct widget *w)
+   char *p_character, *colon_character, *comma_character, *m_character;
+   GError *return_error;
+ 
+-  line = N_("uptime");
++  line = "env LC_MESSAGES=C uptime";
+ 
+   exec = g_spawn_command_line_sync (line, 
+     &out, NULL, NULL, &return_error);

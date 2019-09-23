@@ -1,0 +1,7 @@
+<package name="gnokii" project="openSUSE:Factory">
+  <title>Nokia Connectivity Program</title>
+  <description>gnokii is a package of programs for communicating with a Nokia cellular
+phone in Linux. Read the READMEs in /usr/share/doc/packages/gnokii to
+find out which models are supported.</description>
+  <devel project="GNOME:Apps" package="gnokii"/>
+</package>

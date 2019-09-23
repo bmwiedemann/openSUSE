@@ -1,0 +1,367 @@
+-------------------------------------------------------------------
+Sun Aug 18 12:20:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+-  Restore backend subpackages accidentally removed by previous Jul 8
+   SR: 
+   - Split backends into subpackages to prevent hard dependency
+     to backends and make application more lightweight
+   - Dropped xreader-backends package (obsolete)
+
+-------------------------------------------------------------------
+Sun Jul 28 04:04:56 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 2.2.2:
+  * libview: Allow printing to all formats supported by backend
+  * fix #239 Printing issue: Incorrect centering while printing
+
+-------------------------------------------------------------------
+Mon Jul  8 02:51:44 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.2.1:
+  * Remove patch xreader-fix-func-type.patch is no longer needed
+  * meson: Fix libexec (#319)
+  * build: Fix gir package
+  * Fix some warnings when building xreader 2.0.2 (#265)
+  * CI: Remove Mint 18
+  * port to meson (#269)
+  * Build: Fix Debian Stretch build
+  * Take device scale factor into account for zoom (#277)
+  * Update readme for meson changes (#284)
+  * meson: change 'debug' option to 'enable_debug' to avoid collisions (#285)
+  * Remove leftover code
+  * view: Fix whitespace issues
+  * ev-window: Fix incompatible pointer type issues
+  * ATRIL BACKPORTS: a11y: Do not use AtkFactory to create the EvViewAccessible
+  * ATRIL BACKPORTS: libview: Rename EvView coordinate transformation functions
+  * ATRIL BACKPORTS: ev-view-accessible: Use _ev_view_transform_view_point_to_doc_point()
+  * ATRIL BACKPORTS: ev-view-accessible: Use _ev_view_transform_doc_rect_to_view_rect()
+  * ATRIL BACKPORTS: ev-view: Inlcude ev-jobs in ev-view.h
+  * ATRIL BACKPORTS: libdocument: Add length and nth methods to EvMappingList
+  * ATRIL BACKPORTS: libview: Implement AtkHypertext interface
+  * ATRIL BACKPORTS: libview: Make EvLinkAccessible implement AtkAction
+  * ATRIL BACKPORTS: ev-view-accessible: Add helper function to get text before, at or after offset
+  * ATRIL BACKPORTS: ev-view-accessible: Fix some coding style issues
+  * Meson fixups (#293)
+  * libdocument: Fix handling of mime-type aliases (#292)
+  * ATRIL BACKPORTS: Add missing comma.
+  * sidebar-thumbnails: clean up cancel_running_jobs
+  * ATRIL BACKPORTS: sidebar-thumbnails: preload one extra visible range while scrolling
+  * ATRIL BACKPORTS: EvPixbufCache: Handle backends that don't render a selection
+  * Fix some compile time warnings
+  * EVINCE BACKPORTS: libview: Reset `pressed_button` when starting Drag and Drop (#301)
+  * build: Fix compiling with disabled epub (#308)
+  * Fix text selection in HiDPI (#302)
+  * Add optional zoom level selector. (#305)
+  * epub backend: make mathjax directory a configure-time option (#297)
+  * Make help files optional (#311)
+  * shell: Add a ctrl+q shortcut to close all open windows (#312)
+  * shell: Add a 'No recent documents' screen (#313)
+  * EVINCE BACKPORTS: shell: forward accels to the focused widget (#315)
+  * l10n: Update POT
+  * Build: Fix l10n
+  * libdocument: Return default DPI on failure (#316)
+  * xreaderd logging (#318) 
+
+-------------------------------------------------------------------
+Wed Mar 13 01:25:48 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed Obsoletes xreader-backends
+
+-------------------------------------------------------------------
+Tue Mar 12 14:24:37 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Split backends into subpackages to prevent hard-dependency
+  build failures
+- Dropped xreader-backends package
+
+-------------------------------------------------------------------
+Fri Jul 20 09:32:54 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.5:
+  * Fix thumbnail creation.
+  * sidebar-thumbnails: Fix clunky scrolling.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.4:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.3:
+  * Fix a crash in libpdfdocument when opening a specific PDF.
+
+-------------------------------------------------------------------
+Sat May 26 10:16:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.8.1 (changes since 1.6.2):
+  * Bump xapp requirement to 1.1.0
+  * Add Remove Annotation.
+  * Correct sidebar refresh after removing annotation.
+  * Code style: Fix ev-application and ev-window.
+  * shell: Use g_printerr instead of g_warning
+  * shell: Port to GtkApplication.
+  * daemon: Port to GApplication.
+  * Recent view.
+  * Add a preferences dialogue and optional toolbar buttons.
+  * Fix Ctrl+A selecting the entire document when focus is on a
+    text entry.
+  * ev-recent-view: General cleanup.
+  * Sidebar: Add a close button.
+  * Fix crash when opening an already open document twice.
+  * Fix Epub thumbnails.
+  * Allow to save epub documents.
+  * Add the ability to zoom in/out thumbnails.
+  * Add smooth scrolling.
+  * Thumbnail zoom buttons: Reorder, use symbolic and rename the
+    tooltips.
+  * Fix changing page in Page View after zooming out.
+  * ev-sidebar: Don't set the relief on the select button to NONE.
+  * Bug fixes.
+  * Add a shortcut for continuous mode.
+  * Remove caja/nemo extensions.
+- Add xreader-fix-func-type.patch: Fix function type to fix a
+  warning in libview/ev-view.c.
+- Drop packages for Caja and Nemo extensions.
+
+-------------------------------------------------------------------
+Sun Dec 24 10:19:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.2:
+  * configure.ac: Use a major.minor version only for API, this
+    broke loading of introspection otherwise, which seems to expect
+    only the *-1.5.typelib.
+  * Fix searching for a word that is a continuation of a
+    non-existent word (gh#linuxmint/xreader#135).
+
+-------------------------------------------------------------------
+Fri Nov 24 20:58:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Nov  4 10:10:46 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.6.0:
+  * Document that libcaja-extension is required.
+  * ATRIL BACKPORTS: comics: Make the files containing
+    "--checkpoint-action=" unsupported (#158)
+  * previewer: Use GResource for data files.
+  * shell: Use GResource for data files.
+  * Move custom css to a file compiled as a gresource.
+  * ev-view: Fix the Eview background colour, page borders and
+    shadow.
+  * Fix too bright selection colour during opened context menu.
+  * Revert "sometimes info->linearized is not a string" and
+    "crash on g_free the address 0 or 1".
+  * Avoid deprecated gtk_misc_set_alignment.
+  * zoom-control.c: Don't use deprecated
+    gtk_combo_box_set_focus_on_click.
+  * docs: Add missing EvAnnotation API to sections.txt.
+  * eggfindbar: Don't use deprecated GtkAlignment.
+  * password-view: Don't use deprecated GtkAlignment.
+  * password-view: Replace some GtkStock deprecations.
+  * message-area: Replace some GtkStock deprecations.
+  * ev-view: Avoid deprecated gtk_drag_begin.
+  * shell: Remove unused code from utils.
+  * build: Require cairo >= 1.14.0 and drop some old code.
+  * Switch zoom buttons in toolbar.
+  * Add zoom reset.
+  * Move history actions from toolbar to Go menu, bring back
+    navigation buttons in the toolbar.
+  * Fix typo in previous commit.
+  * shell: Use gdbus-codegen for the org.x.reader.Application
+    interface.
+  * shell: Use gdbus-codegen for the org.x.reader.Window interface.
+  * daemon: Use gdbus-codegen for the org.x.reader.Daemon
+    interface.
+  * Make 100% zoom level be real life size.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jun 28 19:20:44 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.4:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.3:
+  * shell: Make main window title translatable
+    (gh#linuxmint/xreader#39).
+  * Fix "Having selected text leads to high cpu load".
+  * Fix for "Inverted Colours won't be saved by Save Current
+    Settings as Default"
+  * Build: Remove unnecessary ev_get_locale_dir().
+  * Branding: Use a generic application name.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.2:
+  * Fix gtk-doc with no Caja or no Nemo extension building.
+  * Update translations.
+- Remove xreader-fix-nocaja-build.patch: merged upstream.
+
+-------------------------------------------------------------------
+Wed May 10 08:31:40 UTC 2017 - jengelh@inai.de
+
+- Update descriptions from current homepage
+
+-------------------------------------------------------------------
+Sun May  7 11:23:03 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.1 (changes since 1.2.2):
+  * Documentation: Add INSTALL, update README.
+  * document-model: Make dual mode and dual mode odd page left
+    mutally exclusive.
+  * Split dual mode option into dual mode with odd and even pages
+    on the left.
+  * Fix case sensitive searching for PDF.
+  * Bump poppler version requirement to 0.22.0.
+  * comics: Properly open files with special characters in path.
+  * comics: Fix MIME type comparisons.
+  * comics: Support application/vnd.comicbook+zip MIME type.
+  * djvu: Remove unneeded assignment.
+  * tiff: Use function from cairo >= 1.6 unconditionally.
+  * Add some missing contextual information for translators.
+  * djvu: Support the image/vnd.djvu+multipage MIME type.
+  * thumbnailer: Skip epub files.
+  * Removed deprecated GTK_POLICY_AUTOMATIC.
+  * Fix a crash when running with the Broadway Gdk backend.
+  * ev-window.c: Remove some gtk version checks.
+  * ev-window: Swap out the EggEditable toolbar for a normal
+    toolbar.
+  * Convert all icons to symbolics.
+  * Tweak the fullscreen tool bar to match the style of the main
+    tool bar a bit better.
+  * annotation-window: Fix the sizes of close and resize icons.
+  * build: --disable-caja and --disable-nemo are no longer ignored.
+  * libdocument: Add deprecation macros.
+  * libdocument: Use the new deprecation macros.
+  * libdocument: Add EvAnnotation API using GdkRGBA.
+  * shell: Use GdkRGBA for annotations.
+  * ev-annotation: Use correct variable names in function prototype.
+  * libview: Don't change the font colour of the annotation window.
+  * libview: Fix focus on ev_annotation_window.
+  * libview: fix annotation window focus change after creation.
+  * ev-view: Add pinch/zoom gesture to handle document zooming.
+  * ev-view: explicitly require a GtkScrolledWindow as the parent
+    widget.
+  * ev-view: Add pan gesture to switch page.
+  * libview: Ctrl+mouse wheel zoom should be pointer-centred, not
+    window-centred.
+  * Remove unneeded pkgconfig checks.
+  * ev-annotation-window: Fix setting the colour of the window
+    border.
+  * annotation-properties-dialog: Don't use a header bar.
+  * Add a new EvToolbar.
+  * ev-window.c: Simplify an if/else.
+  * shell: Remove metadata migration code.
+  * annotations-sidebar: Clean up the styling.
+  * bookmarks-sidebar: Clean up the styling.
+  * ev-sidebar: Do a bit of restyling.
+  * sidebar-layers: Make it actually usable.
+  * ev-page-action-widget: Allow changing pages with mouse wheel
+    scrolling.
+  * ev-page-action-widget: Update the page number when unfocused.
+  * shell: Replace deprecated function call inside the GTK+3 code
+    block.
+  * cut-n-paste: Set vertical box to be homogeneous in the GTK+3
+    code too.
+  * ev-view: Properly declare a function.
+  * shell: Ditch gimpcellrenderertoggle.
+  * toolbar: Make further improvements.
+  * Fix for bug #92: Segfault if djvu file gets clicked/moved.
+  * djvu: Make empty pages white.
+  * djvu: Use dpi of pages to compute scaling factor.
+  * djvu: Enable selection highlighting.
+  * comics backend: Add support for unarchiver (unar and lsar).
+  * Force the X11 Gdk backend.
+  * First page should not reloaded.
+  * Previously opened page incorrectly restored if it was the last
+    one.
+  * Remove the GTK+2 code.
+  * l10n: Update POT file.
+  * Update translations.
+- Add xreader-fix-nocaja-build.patch: Fix building with no Caja.
+
+-------------------------------------------------------------------
+Wed Mar 29 22:12:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Add the missing Gtk2 build dependency.
+
+-------------------------------------------------------------------
+Thu Dec 15 19:24:15 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.2:
+  * Update translations.
+
+-------------------------------------------------------------------
+Thu Nov 10 09:32:16 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.2.0:
+  * See /usr/share/doc/packages/xreader/changelog
+
+-------------------------------------------------------------------
+Mon Jun 27 20:21:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.8:
+  * Fix not saving changes to a dropdown in an embedded form.
+  * Remove pixbuf from list of menu keywords.
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Jun 22 12:01:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.7:
+  * Fix Presentation and Zoom buttons greyed out, if no document
+    has been loaded.
+  * Show application name in about dialog.
+
+-------------------------------------------------------------------
+Tue May 24 16:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.6:
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue May 17 11:12:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5 (changes since 1.0.3):
+  * Fix segfault when opening properties of a PDF file (from the
+    reader).
+
+-------------------------------------------------------------------
+Wed Apr 27 16:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.3 (changes since 1.0.1):
+  * Remove Nemo extension .la files.
+  * Don't use gi typelibdir for nemo extension path, use
+    libnemo-extension libdir instead.
+  * Fix WebKit detection.
+  * Fix wrong return type in ev-page-action-widget.c.
+  * Update translations.
+- Remove xreader-fix-epub.patch, xreader-fix-func-decl.patch: merged
+  upstream.
+
+-------------------------------------------------------------------
+Wed Feb 10 08:43:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package, based on atril's package.

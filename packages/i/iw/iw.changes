@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Mon Aug 12 14:42:54 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- Update to version 5.3
+  * info: update extended feature list
+  * info: macro-ify ext_feat_print()
+  * util: update command list
+  * iw: print HE capabilities
+  * iw: really fix build
+  * iw: add HE support to station dump call
+  * cac: fix error handling in channel parsing
+  * nan: fix memory leak
+  * mesh: initialize err in set_interface_meshparam()
+  * iw: fix fp handling inside handle_vendor
+  * iw: fix memory leaks inside handle_scan
+  * iw: fix memory leak inside parse_sched_scan
+  * iw: fix fd leak inside handle_netns
+  * iw: fix memory leak inside handle_cac
+  * iw: fix endless loop inside handle_mgmt_dump
+  * iw: fix memory leak inside register_mgmt_frame
+  * iw: add version.o to objects
+  * iw: include all C files into the binary
+  * iw: change __cmd section scheme to fit gcc/clang
+  * iw: Add support for controlling tx power for per station
+  * iw: add command to inject a frame via direct mesh link to mesh peer
+  * iw: print 4ADDR attribute when dumping interface
+  * iw: small cleanup for the sizer code
+  * iw: fix cmd_size determination with LTO
+  * iw: Print airtime fairness feature
+  * iw: Add command to set airtime weight
+  * iw: Add printing of station tx duration and airtim
+
+-------------------------------------------------------------------
+Sun Feb 24 06:37:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 5.0.1
+  * Fixed typo introduced by previous change
+  * Re-added DEPEND line
+
+-------------------------------------------------------------------
+Thu Feb 07 15:36:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 5.0
+  * Bump compat level to 12
+  * Bump Standards-Version to 4.3.0
+  * d/gbp.conf: upstreambranch = upstream/latest
+
+-------------------------------------------------------------------
+Thu Aug  9 22:38:10 UTC 2018 - rpm@fthiessen.de
+
+- Update to version 4.14
+  * Support all new kernel features of kernel 4.14
+  * iw: add support for mfp
+  * iw: ap: don't return -EPERM
+  * iw: ap: support hidden/zeroed SSID
+  * iw: ap: add support for passing a proper chandef
+  * iw: Add support for start/stop AP
+  * iw: print missing extended capabilities
+  * iw: allow CCMP-128/GCMP-128 as CCMP/GCMP aliases
+  * iw: add support for WPA2 PSK CCMP / GCMP association
+  * iw: add command to register and dump mgmt frames
+  * iw: define SOL_NETLINK if it isn't
+  * iw: add extack support
+  * iw: Fix bitrate output when no rate info found
+  * iw: parse_freqs: check how many center frequencies to expect
+  * iw: split str_to_bw() from parse_freqs()
+  * Print frequency of radar events.
+  * Add commands to send CSA
+  * Add cac command to allow clearing channels
+  * mesh: Use common freqchan helper for joining a mesh
+  * ibss: Use common freqchan helper for joining an ibss
+  * phy: Use common freqchan helper for setting the operating channel
+  * util: Add generic frequency/channel command line handler
+
+-------------------------------------------------------------------
+Fri Jan  6 09:48:46 UTC 2017 - mpluskal@suse.com
+
+- Update to version 4.9
+  * Support all new kernel features of kernel 4.9
+
+-------------------------------------------------------------------
+Sun Jun 12 15:44:40 UTC 2016 - mpluskal@suse.com
+
+- Update to version 4.7:
+  * Support all new kernel features upto 4.7
+
+-------------------------------------------------------------------
+Mon Sep 28 09:52:13 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.3
+  * Support all new kernel features upto 4.3
+
+-------------------------------------------------------------------
+Sat Sep  5 09:12:33 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.1
+  * Support all new kernel features upto 4.1
+
+-------------------------------------------------------------------
+Fri Apr  3 08:21:13 UTC 2015 - mpluskal@suse.com
+
+- Update to version 4.0
+  * Support all new kernel features upto 4.0
+- Cleanup spec file with spec-cleaner
+- User url for source
+
+-------------------------------------------------------------------
+Sat Oct 18 22:25:02 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- Upgrade to version 3.17
+  * Support all new kernel features upto 3.17
+- Drop unneded BuildRequires: kernel-source
+
+-------------------------------------------------------------------
+Mon Nov 25 04:27:32 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to version 3.11, matching with features in the
+  same kernel version.
+- build with libnl-3.0, as usual this "kernel style" hand written 
+  makefiles are total crap so extra cflags are needed.
+
+-------------------------------------------------------------------
+Mon Dec  3 19:46:15 UTC 2012 - cfarrell@suse.com
+
+- license update: ISC
+  Look at the license file in the sources
+
+-------------------------------------------------------------------
+Sat Nov 24 21:01:38 UTC 2012 - schwab@linux-m68k.org
+
+- Upgrade to version 3.7
+  * Support all new kernel features upto 3.7
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+
+-------------------------------------------------------------------
+Tue Mar 29 11:42:30 CEST 2011 - vlado@suse.cz
+
+- upgrade to version 0.9.22 
+     * bugfixes
+     * P2P information
+     * 4addr support
+     * WDS support
+     * IBSS improvements
+     * mesh improvements, support for mesh join/leave
+     * parse MMIC failure event
+
+-------------------------------------------------------------------
+Wed Jan  6 18:03:23 CET 2010 - sbrabec@suse.cz
+
+- Updated to version 0.9.18:
+  * reworked the classifier interface
+  * bug fixes
+- Install documentation files.
+- Enabled parallel build.
+- Removed .config file that just included non-existing directory.
+- Use correct CFLAGS.
+
+-------------------------------------------------------------------
+Tue Jul 28 21:52:51 CEST 2009 - aj@suse.de
+
+- Update to 0.9.15:
+  * support "iw dev ... set type ..."
+  * update nl80211.h
+  * adjust to new ibss API
+  * add "dev" command to list all wireless interfaces
+  * add plain "scan" command that triggers, waits and dumps
+  * allow netlink-less commands and section commands with subsections
+
+-------------------------------------------------------------------
+Fri Mar 27 09:18:00 CET 2009 - hschaa@suse.de
+
+- Update to 0.9.11
+  * iw: add get regulatory domain support
+  * iw: align output for HT capabilities
+  * iw: add MCS set parsing
+  * iw: report if no supported version of libnl is found
+  * mesh parameter list improvements
+  * change link order - it matters for help output
+  * iw: rename nl_handle to nl_sock for libnl-2.0
+  * update nl80211.h
+  * make all objects depend on nl80211.h
+
+-------------------------------------------------------------------
+Mon Feb  9 12:00:46 CET 2009 - hschaa@suse.de
+
+- Update to 0.9.9
+  * RTFM link for ap/master modes
+  * add commas to see also section
+  * iw: fix typo, add few references
+  * include netlink/netlink.h
+  * suppress flags on disabled channels
+  * bump to 0.9.8
+  * iw: Fix regression in mesh_param input parsing
+  * Do not set -O2 -g CFLAGS if CFLAGS are already defined (in the env).
+  * correct man page a little
+  * evaluate pkg-config only once
+  * allow linking against libnl 2.0
+  * allow compilation using --as-needed
+  * add station bitrate information
+  * update nl80211.h, adjust phy.c for new API
+  * print unknown events
+  * fix sparse warnings
+  * remove obsolete build information
+  * bump version to 0.9.7
+  * add and use ARRAY_SIZE
+  * show channels and allow setting frequency by channel
+  * add frequency command
+  * update nl80211.h from current wireless-testing kernel
+  * license under ISC
+  * don't print string directly
+  * Report max TX power from NL80211_BAND_ATTR_FREQS
+  * add note to readme about maintenance, patch sending
+  * Trivial patch for easier packaging of iw
+- Remove obsolete patches
+
+-------------------------------------------------------------------
+Sat Dec 13 10:49:18 CET 2008 - schwab@suse.de
+
+- Fix exit code.
+
+-------------------------------------------------------------------
+Thu Sep 18 09:50:06 CEST 2008 - hschaa@suse.de
+
+- Fix build
+- Update to official release 0.9.4
+- Add fix_supported_iftypes.diff and fix_reg_dom.diff to allow
+  build against 2.6.27
+
+-------------------------------------------------------------------
+Thu Jul 24 09:10:06 CEST 2008 - hschaa@suse.de
+
+- Initial package
+

@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Fri May 24 03:18:15 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.10.3
+  + Exit gpg-agent after repokey import (rh#1650266)
+  + Make sure to check next transfer if current zck transfer already exists (rh#1706627)
+
+-------------------------------------------------------------------
+Sun May 12 02:58:52 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.10.2
+  + Fix librepo isn't able to load zchunk files from next server on failure (rh#1706321)
+
+-------------------------------------------------------------------
+Fri May 10 14:21:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.10.1
+  + Clean up target->curl_handle rather than target->handle (rh#1694411)
+  + Add an option to preserve timestamps of the downloaded files (rh#1688537)
+  + Fix fetching repositories supplied by SUSE Customer Center
+  + [tests] Wait for server to start instead of doing arbitrary sleep
+- Drop patch included in this release
+  * Patch: librepo-PR148-clean-up-curl-target_handle.patch
+- Disable executing test suite on ARM and RISC-V due to performance issues with builders
+
+-------------------------------------------------------------------
+Sun Mar 31 18:26:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to fix fetching zck-compressed repos (rh#1694411)
+  * Patch: librepo-PR148-clean-up-curl-target_handle.patch
+
+-------------------------------------------------------------------
+Sun Mar 31 15:04:35 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.9.6
+  + Fix progress reporting with zchunk files
+  + Reduce download delays by using still_running correctly
+  + Improve error handling, cleanup
+  + Simplified lr_perform()'s loop to prevent busy wait
+  + Require libcurl >= 7.28.0
+- Drop patch included in this release
+  * Patch: PR138-Fix-progress-reporting-with-zchunk-files.patch
+
+-------------------------------------------------------------------
+Sun Feb  3 17:23:59 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.9.3
+  + Replace expat with libxml2
+  + Support using python-gpg instead of pygpgme
+  + Fix major performance regression with libcurl-7.61.1
+  + Add zchunk support
+- Drop patch for backported fix that is part of this release
+  * Patch: 0001-stop-requiring-attr-xattr.patch
+- Add patch proposed upstream to fix progress reporting for zck
+  * Patch: PR138-Fix-progress-reporting-with-zchunk-files.patch
+- Fix RPM group and description for Python 3 subpackage
+- Drop Python 2 subpackage
+
+-------------------------------------------------------------------
+Thu Sep 13 13:57:02 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM groups. Update descriptions so that librepo0
+  (which is going to be installed most of the time) has something
+  halfway useful.
+
+-------------------------------------------------------------------
+Thu Sep 13 11:19:32 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix from upstream to use glibc's xattr instead of libattr
+  * Add patch: 0001-stop-requiring-attr-xattr.patch
+- Use full author identities in changelog entries
+
+-------------------------------------------------------------------
+Thu Jan  4 00:45:16 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.8.1
+  + Fix memory leaks in Python bindings (gh#rpm-software-management/librepo#83)
+  + Fix HTTP header checking to work with proxies (gh#rpm-software-management/librepo#86)
+  + Change connection and low-speed default timeouts to sync with DNF/Yum
+  + Fix max download speed from repo (rh#1227921)
+
+-------------------------------------------------------------------
+Sun Aug 13 17:13:45 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Disable running unit tests by default because of random pygpgme failures
+
+-------------------------------------------------------------------
+Mon Feb 20 14:35:02 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.7.20
+
+-------------------------------------------------------------------
+Mon Feb  1 06:28:16 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Use SUSE-specific groups and tags
+
+-------------------------------------------------------------------
+Mon Feb  1 06:15:57 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging of librepo derived from Mageia packaging
+

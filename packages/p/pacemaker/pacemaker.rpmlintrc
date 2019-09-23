@@ -1,0 +1,4 @@
+addFilter("script-without-shebang /usr/share/pacemaker/.*\.rng")
+addFilter("script-without-shebang /usr/share/pacemaker/.*\.dtd")
+addFilter("script-without-shebang /usr/share/pacemaker/.*\.xsl")
+addFilter("non-executable-script /usr/share/pacemaker/cts/")

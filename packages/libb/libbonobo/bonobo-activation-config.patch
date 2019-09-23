@@ -1,0 +1,15 @@
+Include /usr/local directories to bonobo activation configuration.
+Note: Default directory is included by default as the last in the list.
+================================================================================
+Index: bonobo-activation-config.xml
+===================================================================
+--- bonobo-activation-config.xml.orig
++++ bonobo-activation-config.xml
+@@ -3,6 +3,7 @@
+ <oafconfig>
+ 
+ <searchpath>
++    <item>/usr/local/lib/bonobo/servers</item>
+     <!-- Examples: -->
+     <!-- <item>/opt/gnome2/lib/bonobo/servers</item> -->
+     <!-- <item>/usr/local/gnome2/lib/bonobo/servers</item> -->

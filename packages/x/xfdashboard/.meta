@@ -1,0 +1,6 @@
+<package name="xfdashboard" project="openSUSE:Factory">
+  <title></title>
+  <description>Maybe a Gnome shell like dashboard for Xfce.</description>
+  <devel project="X11:xfce" package="xfdashboard"/>
+  <url>http://xfdashboard.froevel.de</url>
+</package>

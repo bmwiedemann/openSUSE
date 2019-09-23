@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Mon Oct 13 05:43:00 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:41 UTC 2014 - coolo@suse.com
+
+- updated to version 3.1.5
+  - Add support for Ruby 2.1 in compiled Windows binaries
+  - Rename gem from "bcrypt-ruby" to just "bcrypt". [GH #86 by @sferik]
+
+-------------------------------------------------------------------
+Sat Feb 15 16:09:11 UTC 2014 - kkaempf@suse.com
+
+- add ruby-devel buildrequires
+
+-------------------------------------------------------------------
+Mon Jan 20 12:01:29 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Fri Aug 30 10:00:28 UTC 2013 - coolo@suse.com
+
+- updated to version 3.1.2
+  - Add support for Ruby 1.8 and 2.0 (in addition to 1.9) in compiled Windows binaries
+  - Add support for 64-bit Windows
+
+-------------------------------------------------------------------
+Tue Jul 30 16:00:14 UTC 2013 - coolo@suse.com
+
+- updated to version 3.1.1
+  - Add BCrypt::Password.valid_hash?(str) to check if a string is a valid bcrypt password hash
+  - BCrypt::Password cost should be set to DEFAULT_COST if nil
+  - Add BCrypt::Engine.cost attribute for getting/setting a default cost externally
+  - Remove support for Ruby 1.8 in compiled win32 binaries
+
+-------------------------------------------------------------------
+Wed Aug  1 05:02:11 UTC 2012 - coolo@suse.com
+
+- updated to version 3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 31 12:49:34 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions
+
+-------------------------------------------------------------------
+Wed Jan 18 15:02:24 UTC 2012 - mrueckert@suse.de
+
+- also add single digit provides
+
+-------------------------------------------------------------------
+Wed Aug 31 04:03:32 UTC 2011 - fcastelli@suse.com
+
+- update to 3.0.0
+
+-------------------------------------------------------------------
+Mon Jul 25 13:25:13 UTC 2011 - cmessel@novell.com
+
+- update to MIT license
+
+-------------------------------------------------------------------
+Mon Jun 20 19:16:49 UTC 2011 - mrueckert@suse.de
+
+- fix license
+- added rubygem-bcrypt-ruby-2_1 provides for rails 3.1
+- split out doc and testsuite subpackages
+
+-------------------------------------------------------------------
+Tue Mar 29 14:05:53 UTC 2011 - kkaempf@novell.com
+
+- update to 2.1.4
+
+-------------------------------------------------------------------
+Wed Jun 16 15:19:42 UTC 2010 - mrueckert@suse.de
+
+- initial package
+

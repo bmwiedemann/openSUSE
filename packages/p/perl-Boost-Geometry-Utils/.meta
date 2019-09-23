@@ -1,0 +1,5 @@
+<package name="perl-Boost-Geometry-Utils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Boost-Geometry-Utils"/>
+</package>

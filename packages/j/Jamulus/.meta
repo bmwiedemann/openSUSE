@@ -1,0 +1,11 @@
+<package name="Jamulus" project="openSUSE:Factory">
+  <title>Low-latency internet connection tool for real-time jam sessions</title>
+  <description>The Jamulus software enables musicians to perform real-time jam sessions over
+the internet. There is one server running the Jamulus server software which
+collects the audio data from each Jamulus client software, mixes the audio data
+and sends the mix back to each client.
+
+</description>
+  <devel project="multimedia:apps" package="Jamulus"/>
+  <url>http://llcon.sourceforge.net</url>
+</package>

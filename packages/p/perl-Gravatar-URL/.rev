@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>883f6e8a0301ceda584a88a818e2f0cb</srcmd5>
+    <version>1.04</version>
+    <time>1302771347</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66729 from user babelworx
+</comment>
+    <requestid>66729</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ccb7ed096438374a9454b6a72e89b34</srcmd5>
+    <version>1.04</version>
+    <time>1302771362</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66729
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>de7e969d696ce624cf4d2ea551e99348</srcmd5>
+    <version>1.04</version>
+    <time>1306853725</time>
+    <user>saschpe</user>
+    <comment>- regenerate with newest cpanspec</comment>
+    <requestid>72110</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e6884484aba96c7819244c4961576166</srcmd5>
+    <version>1.04</version>
+    <time>1306853733</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72110
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e6884484aba96c7819244c4961576166</srcmd5>
+    <version>1.04</version>
+    <time>1319182272</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e65b5a4567fe98a78fa28ead5240c968</srcmd5>
+    <version>1.05</version>
+    <time>1323265145</time>
+    <user>coolo</user>
+    <comment>- update to 1.05
+    Security fix
+    * Sanitize DNS results in Libravatar::URL</comment>
+    <requestid>94970</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>509e38b3777714314947a2ddfcd469b7</srcmd5>
+    <version>1.05</version>
+    <time>1329242699</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104447 from coolo)</comment>
+    <requestid>104674</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>393348128d965b6d9d54985081b268a9</srcmd5>
+    <version>1.06</version>
+    <time>1338476901</time>
+    <user>coolo</user>
+    <comment>- updated to 1.06
+    Bug fixes
+    * Fixed some undef warnings during sanitization.
+    Test fixes
+    * Adapt to changes in Carp 1.25 [RT#75523]</comment>
+    <requestid>122766</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>393348128d965b6d9d54985081b268a9</srcmd5>
+    <version>1.06</version>
+    <time>1340183849</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>393348128d965b6d9d54985081b268a9</srcmd5>
+    <version>1.06</version>
+    <time>1359109684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>393348128d965b6d9d54985081b268a9</srcmd5>
+    <version>1.06</version>
+    <time>1379663692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>393348128d965b6d9d54985081b268a9</srcmd5>
+    <version>1.06</version>
+    <time>1409302314</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4d08dbf9e7a1da6bb6809a9217c56c0a</srcmd5>
+    <version>1.07</version>
+    <time>1498485119</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433927</requestid>
+  </revision>
+</revisionlist>

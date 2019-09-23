@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Thu Dec  6 00:19:42 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use %make_install.
+
+-------------------------------------------------------------------
+Wed Dec  5 05:27:04 UTC 2018 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 0.7.0
+  * Add bash completion support
+  * Fix compilation with musl libc, CentOS, or GCC 7+
+  * Support for PowerPC and aarch64
+- Drop patches
+  0001-Placate-a-gcc7-warning.patch
+  0002-Include-sysmacros.h.patch
+  0003-Build-with-fstrict-aliasing.patch
+
+-------------------------------------------------------------------
+Fri Mar 17 23:55:29 UTC 2017 - 9@cirno.systems
+
+- Fix build on Factory, CentOS and RHEL (cherry-picked)
+  0001-Placate-a-gcc7-warning.patch
+  0002-Include-sysmacros.h.patch
+  0003-Build-with-fstrict-aliasing.patch
+
+-------------------------------------------------------------------
+Sun Mar 15 21:31:02 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.6.2
+  * Fix tty-stealing on i386
+- Changes from version 0.6.1
+  * Fix compilation when chown is declared as `warn_unused_result``
+- Changes from version 0.6
+  * Add -T ("tty-stealing") mode, which works on processes with children.
+    See https://blog.nelhage.com/2014/08/new-reptyr-feature-tty-stealing/
+  * Added FreeBSD support
+  * Minor bugfixes
+- Use download Url as source
+- Little packaging improvements
+
+-------------------------------------------------------------------
+Fri Dec 20 18:49:10 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.5:
+  + Add an early check and error if attaching a process with
+    children.
+- Changes from version 0.4:
+  + Add support for scripting with the -l flag.
+  + Add a French translation of the man page.
+  + Add a -V flag.
+
+-------------------------------------------------------------------
+Mon Dec 17 09:54:46 UTC 2012 - dvaleev@suse.com
+
+- Set ExclusiveArch to x86 and ARM
+  see ptrace.c:88 
+
+-------------------------------------------------------------------
+Thu Apr 26 12:12:41 UTC 2012 - luck3r@phicode.de
+
+-bump version to git HEAD (0.3dev, d69f9d220d) 
+
+-------------------------------------------------------------------
+Tue Mar 13 06:19:36 UTC 2012 - mrdocs@opensuse.org
+
+-fix CLFAGS
+
+-------------------------------------------------------------------
+Tue Mar 13 05:59:14 UTC 2012 - mrdocs@opensuse.org
+
+-fix copyright in the spec file
+
+-------------------------------------------------------------------
+Sat Feb 11 19:36:29 UTC 2012 - mrdocs@opensuse.org
+
+-fix License to be spdx correct
+
+-------------------------------------------------------------------
+Fri Nov 25 21:09:24 UTC 2011 - luck3r@phicode.de
+
+- initial package, version 0.3
+

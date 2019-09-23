@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e287638b728c06828cf192f4f0b36987</srcmd5>
+    <version>0.1.0.0</version>
+    <time>1486773788</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission of this package</comment>
+    <requestid>455061</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4ecd98f24f9a64f2d2b180c0b25b936</srcmd5>
+    <version>0.1.0.0</version>
+    <time>1492011247</time>
+    <user>maxlin_factory</user>
+    <comment>(re-)submit package with improved summary and description</comment>
+    <requestid>484205</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91dcf38c4a38ba0084b2b4b3faecaf32</srcmd5>
+    <version>0.2.2.0</version>
+    <time>1527675307</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-typed-process to the latest version.</comment>
+    <requestid>607912</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b2250c1de91578af8be7833a39f41c6b</srcmd5>
+    <version>0.2.2.0</version>
+    <time>1532161441</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623882</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>661561e7974fb78ec371799dad0fe03e</srcmd5>
+    <version>0.2.3.0</version>
+    <time>1534774856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update typed-process to version 0.2.3.0.
+  ## 0.2.3.0
+  * Add support for the single-threaded runtime via polling</comment>
+    <requestid>630374</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1dd9b72c794cd2e9550a3f1c95e81cdc</srcmd5>
+    <version>0.2.3.0</version>
+    <time>1540451201</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643481</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bad5e980aa4928ca0c705cced1a33103</srcmd5>
+    <version>0.2.4.0</version>
+    <time>1548452616</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667145</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bbf0173bbbb25f7611864fbb42aa4329</srcmd5>
+    <version>0.2.4.1</version>
+    <time>1560338333</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>709205</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3f6872a3a43232ca4aac1ee91f63c2b</srcmd5>
+    <version>0.2.5.0</version>
+    <time>1561882905</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>712506</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>54750a9ac0599674d494101a3198af39</srcmd5>
+    <version>0.2.6.0</version>
+    <time>1564414028</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>715422</requestid>
+  </revision>
+</revisionlist>

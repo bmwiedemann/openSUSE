@@ -1,0 +1,359 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>dad94eb1c90f0f7a4c548f661e9f283f</srcmd5>
+    <version>0.4.10</version>
+    <time>1177123333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4101267d2f11832a9ce58f6223388933</srcmd5>
+    <version>0.4.12</version>
+    <time>1177363340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e2ceb0489e85751cd63500c3a26c500</srcmd5>
+    <version>0.4.13</version>
+    <time>1186154542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6b181514e9cb8f44401157768686f98f</srcmd5>
+    <version>0.4.13</version>
+    <time>1186759044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>57c492f1556a9b17738d509616ae3361</srcmd5>
+    <version>0.4.13</version>
+    <time>1192134025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="34">
+    <srcmd5>8521113003f5dd516295720a7ea3a7c3</srcmd5>
+    <version>0.4.13</version>
+    <time>1192495025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="37">
+    <srcmd5>81e66847907f73e68346568f50b581a4</srcmd5>
+    <version>0.4.13</version>
+    <time>1192761875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>935c6776d65197e81058ec477c829297</srcmd5>
+    <version>0.4.14</version>
+    <time>1199379523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>9b1d07d40cc7f071a46ebae4e0a5e5d9</srcmd5>
+    <version>0.4.14</version>
+    <time>1199930704</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="42">
+    <srcmd5>dfe1459d0eebe3be2c5804c56f264acf</srcmd5>
+    <version>0.4.14</version>
+    <time>1207834326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="60">
+    <srcmd5>7ac21343c8aa11031e1e760fe35c57b3</srcmd5>
+    <version>0.4.14</version>
+    <time>1212533241</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1e54cc5abbdec7159b53cc63309c282c</srcmd5>
+    <version>0.4.15</version>
+    <time>1222270214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="106">
+    <srcmd5>1e54cc5abbdec7159b53cc63309c282c</srcmd5>
+    <version>0.4.15</version>
+    <time>1222270214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="107">
+    <srcmd5>99378b58ab72ea35087354403c9b7ad1</srcmd5>
+    <version>0.4.15</version>
+    <time>1223483803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="108">
+    <srcmd5>52e0c3f80eda9320f5793ac57f4e6053</srcmd5>
+    <version>0.4.15</version>
+    <time>1224018107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="109">
+    <srcmd5>6e1f62e3561fc607771b3970dbdd5053</srcmd5>
+    <version>0.4.15</version>
+    <time>1227884592</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="110">
+    <srcmd5>a2d04e734f88cdce247ac35e0ef1a5e7</srcmd5>
+    <version>0.4.15</version>
+    <time>1228318841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="111">
+    <srcmd5>32024fe98e5b0edbe8bd576ee3b0ccd2</srcmd5>
+    <version>0.4.15</version>
+    <time>1231801416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="112">
+    <srcmd5>14beb3cc6dae446d55fe904f0b428a7e</srcmd5>
+    <version>0.4.15</version>
+    <time>1231894666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="113">
+    <srcmd5>a358739a94fdd431fabe1770047c0abb</srcmd5>
+    <version>0.4.15</version>
+    <time>1232327956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="114">
+    <srcmd5>18af5aed2b62b321ad3c310059f222bf</srcmd5>
+    <version>0.4.15</version>
+    <time>1236012828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="115">
+    <srcmd5>2d134af99f2e6fe7f3cbc810607b5a73</srcmd5>
+    <version>0.4.15</version>
+    <time>1245466815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="117">
+    <srcmd5>2d134af99f2e6fe7f3cbc810607b5a73</srcmd5>
+    <version>0.4.15</version>
+    <time>1245466815</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="118">
+    <srcmd5>4d5d870a1d9f490db4ed5c8e752f5157</srcmd5>
+    <version>0.4.15</version>
+    <time>1265281039</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/scim-bridge based on submit request 31517 from user coolo
+</comment>
+  </revision>
+  <revision rev="25" vrev="119">
+    <srcmd5>6036acb9ec9f7ba810b60aa59439caca</srcmd5>
+    <version>0.4.15</version>
+    <time>1266974804</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/scim-bridge based on submit request 33079 from user coolo
+</comment>
+    <requestid>33079</requestid>
+  </revision>
+  <revision rev="26" vrev="120">
+    <srcmd5>d0b327431c23dd54bc8fe23831b24f97</srcmd5>
+    <version>0.4.15</version>
+    <time>1268926090</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="27" vrev="122">
+    <srcmd5>d0b327431c23dd54bc8fe23831b24f97</srcmd5>
+    <version>0.4.15</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="123">
+    <srcmd5>d0b327431c23dd54bc8fe23831b24f97</srcmd5>
+    <version>0.4.15</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="126">
+    <srcmd5>d0b327431c23dd54bc8fe23831b24f97</srcmd5>
+    <version>0.4.15</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="127">
+    <srcmd5>69359709b14951cb0761c6943df4ede5</srcmd5>
+    <version>0.4.15</version>
+    <time>1300097312</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63927 from user tiwai
+</comment>
+    <requestid>63927</requestid>
+  </revision>
+  <revision rev="31" vrev="128">
+    <srcmd5>f232184de46ab5941f0a5bc4cbd37b34</srcmd5>
+    <version>0.4.15</version>
+    <time>1300097320</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63927
+</comment>
+  </revision>
+  <revision rev="32" vrev="129">
+    <srcmd5>928fda79e0c645e19ebd82a65eabfe33</srcmd5>
+    <version>0.4.15</version>
+    <time>1304684879</time>
+    <user>saschpe</user>
+    <comment>- scim-bridge-reregister-type-module-if-reload.patch 
+  Fix bnc#680430 - SCIM is not usable in firefox. This patch 
+  will re-register the type once type module get reloaded.</comment>
+    <requestid>69754</requestid>
+  </revision>
+  <revision rev="33" vrev="130">
+    <srcmd5>f6cd2d1ac88474863fea308241c8839d</srcmd5>
+    <version>0.4.15</version>
+    <time>1304684893</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69754
+</comment>
+  </revision>
+  <revision rev="34" vrev="128">
+    <srcmd5>bc75b7676513928862ef9fadfa843faf</srcmd5>
+    <version>0.4.16</version>
+    <time>1318428934</time>
+    <user>lrupp</user>
+    <comment>- update to 0.4.16
+- remove patches merged to upstream</comment>
+    <requestid>87464</requestid>
+  </revision>
+  <revision rev="35" vrev="130">
+    <srcmd5>bc75b7676513928862ef9fadfa843faf</srcmd5>
+    <version>0.4.16</version>
+    <time>1319182453</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="131">
+    <srcmd5>bf938899ab40b65d4704bf74d8df72ee</srcmd5>
+    <version>0.4.16</version>
+    <time>1319868064</time>
+    <user>coolo</user>
+    <comment>- Add the fallback to xim for GTK3 (bnc#723382)</comment>
+    <requestid>89718</requestid>
+  </revision>
+  <revision rev="37" vrev="132">
+    <srcmd5>ff490407b038abb38eb4d3617e798c98</srcmd5>
+    <version>0.4.16</version>
+    <time>1322481431</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93809 from coolo)</comment>
+    <requestid>93839</requestid>
+  </revision>
+  <revision rev="38" vrev="133">
+    <srcmd5>0793c00a6a1043113e2ff32fbb08eae0</srcmd5>
+    <version>0.4.16</version>
+    <time>1323194527</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="134">
+    <srcmd5>159900d3325b28fa03a7cd3a506c8785</srcmd5>
+    <version>0.4.16</version>
+    <time>1328202027</time>
+    <user>coolo</user>
+    <comment>- Fix the parsing of $DISPLAY variable with VNC HOST::PORT syntax
+  (bnc#738627)</comment>
+    <requestid>102391</requestid>
+  </revision>
+  <revision rev="40" vrev="135">
+    <srcmd5>efffb2e354deca2c40de26ecf14390d3</srcmd5>
+    <version>0.4.16</version>
+    <time>1332752856</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110891 from dimstar)</comment>
+    <requestid>110895</requestid>
+  </revision>
+  <revision rev="41" vrev="136">
+    <srcmd5>5f4b15f2fb9d0426f0f9c18b0d18cde9</srcmd5>
+    <version>0.4.16</version>
+    <time>1339352378</time>
+    <user>coolo</user>
+    <comment>- Should we remove &quot;Provides: locale(scim:ja;ko)&quot; as well?
+- remove &quot;Provides: locale(scim:zh)&quot; from spec (forwarded request 124002 from swyear)</comment>
+    <requestid>124011</requestid>
+  </revision>
+  <revision rev="42" vrev="138">
+    <srcmd5>5f4b15f2fb9d0426f0f9c18b0d18cde9</srcmd5>
+    <version>0.4.16</version>
+    <time>1340184198</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="43" vrev="139">
+    <srcmd5>6855fc4408aeb9a017e6581d563bfa92</srcmd5>
+    <version>0.4.16</version>
+    <time>1347619052</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>133820</requestid>
+  </revision>
+  <revision rev="44" vrev="141">
+    <srcmd5>6855fc4408aeb9a017e6581d563bfa92</srcmd5>
+    <version>0.4.16</version>
+    <time>1359110382</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="143">
+    <srcmd5>6855fc4408aeb9a017e6581d563bfa92</srcmd5>
+    <version>0.4.16</version>
+    <time>1379664627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="144">
+    <srcmd5>8a53c4963752509894649072fcde48df</srcmd5>
+    <version>0.4.16</version>
+    <time>1398499906</time>
+    <user>coolo</user>
+    <comment>- remove dependency on qt3 (forwarded request 231368 from dirkmueller)</comment>
+    <requestid>231371</requestid>
+  </revision>
+  <revision rev="47" vrev="146">
+    <srcmd5>8a53c4963752509894649072fcde48df</srcmd5>
+    <version>0.4.16</version>
+    <time>1409303330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="147">
+    <srcmd5>f403559fe818679784d452bb91c94ac3</srcmd5>
+    <version>0.4.16</version>
+    <time>1443585062</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>332974</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>dbd98a3048cad27dc4dc9ccb50385b4d</srcmd5>
+    <version>0.4.17</version>
+    <time>1502186370</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514901</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a73797a03d6a840e35d88418a7efad42</srcmd5>
+    <version>0.4.17</version>
+    <time>1565179221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721309</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>dad90264f4c83e3957d6f275111310df</srcmd5>
+    <version>0.4.17</version>
+    <time>1567010145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726542</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,584 @@
+-------------------------------------------------------------------
+Wed Mar 20 13:53:50 CET 2019 - ro@suse.de
+
+- update to usbutils 010
+  * usbreset.c: add missing <stdlib.h> include
+  * Do not create and install usbutils.pc
+  * fix dump_videocontrol_interface for unitialized variable usage
+  * Add correct SPDX license identifiers to all files
+  * Add SPDX identifiers on files that did not have a specific license.
+  * wTotalLength should be printed as a hex number
+  * usbmisc: fix up some strncpy() issues
+  * lsusb-t: fix up error with readlink()
+  * lsusb.py.in: add proper SPDX license identifier
+  * usb-devices: reword the copyright identifier
+  * LICENSES: move the GPL 2 license to the LICENSES directory
+  * LICENSES/GPL-3.0.txt: add the file
+  * lsusb.h: add copyright notice
+  * lsusb-t: add copyright info
+  * bom.spdx: Add bill of materials file in SPDX format.
+  * ChangeLog: remove it.
+  * AUTHORS: remove file
+  * do_release: drop file
+  * NEWS: add SPDX header and comment
+  * autogen.sh: add SPDX and copyright header
+  * list.h: add copyright information
+  * travis-autogen.sh: add SPDX and copyright information.
+  * INSTALL: remove the file, it's boiler-plate
+  * configure.ac: add SPDX and copyright
+  * man pages: add SPDX and copyright information
+  * Makefile.am: add SPDX and copyright information
+  * .gitmodules: add SPDX and copyright lines
+  * lsusb.py.in: fix up Copyright strings
+  * usbreset.c: add Alan's copyright
+  * .travis.yml: add correct SPDX and copyright notices
+  * bom.spdx: update with latest copyright and SPDX identifier additions
+  * README.md: move the README file to markdown
+  * README.md: fix fomatting
+  * bom.spdx: upate with README -> README.md change
+  * lsusb.py: convert to python3
+  * lsusb: Split subtype mapping out of AudioControl interface handling.
+  * lsusb: Add declarative definitions for UAC1 and UAC2 descriptors.
+  * lsusb: Add code to dump descriptor data using descriptor definition.
+  * lsusb: Switch to descriptor-definition based dump for UAC1 and UAC2.
+  * lsusb: Add descriptor definitions for UAC3.
+  * lsusb: Add initial support for USB Audio Device Class 3.
+  * lsusb: Add descriptor definition for USB3 BOS Configuration Summary.
+  * lsusb: Dump USB3 BOS Configuration Summary Descriptor.
+  * lsusb: Squash Wpointer-compare warning.
+  * lsusb: Remove unused function.
+  * lsusb: Fix array entry count for variable sized entries.
+  * Makefile.am: Include usbreset.c in the release tarball
+  * lsusb: Dump UVC Stream based payload descriptor.
+ 
+
+-------------------------------------------------------------------
+Tue Mar 13 15:35:44 UTC 2018 - mpluskal@suse.com
+
+- Use usb ids from hwdata
+- Modernise spec file with spec-cleaner
+- Make building more verbose
+
+-------------------------------------------------------------------
+Sat Feb  3 20:10:23 UTC 2018 - avindra@opensuse.org
+
+- Update to usbutils 009
+  * usbreset: coding style
+  * Don't use C99-ism
+  * usbhid-dump: update submodule to latest version
+  * add usbreset.c example program
+  * update usbhid-dump to latest
+  * lsusb.py: Don't dump a trace dump if usb.ids is not present
+  * USB: usb-devices: Interface number can be a string
+  * autogen.sh: checkout usbhid-dump
+  * lsusb: add support for the Encoding Unit Desc for uvc 1.5
+    device
+  * lsusb: fix alignment for Video Streaming interface desc
+  * lsusb: parse additional control fileds in USB video control
+    interfaces for UVC1.5
+  * lsusb: proper display hexadecimal value for UVC control
+    interface
+  * usbreset.c: import usability improvements from OpenWrt
+  * Update lsusb.c
+  * Un-indent bVariableSize for Frame-Based Format descriptors
+  * Makefile: install pkgconfig file to arch-dependent location
+  * lsusb: Allocate the BOS descriptor buffer dynamically
+  * lsusb: Add support for the USB 3.1 SuperSpeedPlus device
+    capability desc
+  * lsusb: Fix issue with lengthy string descriptors
+  * lsusb: Added support for Billboard Capability descriptor
+  * Update usbhid-dump repo URL
+  * Update usbhid-dump to v1.4
+  * configure: remove summary about unused USE_ZLIB
+  * drop unused input file for usb.ids update script
+  * substitute usb.id location in lsusb Python script
+  * lsusb: remove unused variable procbususb
+  * lsusb: Report correct MaxPower for USB 3.0 devices
+  * lsusb: Request proper descriptor type for USB 3.1
+  * lsusb: Store link state descriptions without preceding
+    space
+  * build: Request at least libusb 1.0.9
+  * Added support for Platform Device Capability descriptor
+  * lsusb: change endianness of first three fields when printing
+    UUID/GUIDs.
+  * lsusb: Fix UVC STILL_IMAGE_FRAME descriptor
+  * lsusb: Fix UVC VideoStreaming interface header descriptor
+  * lsusb: Fix UVC OUTPUT_TERMINAL descriptor
+  * lsusb: print WebUSB platform descriptor
+  * travis-ci: add control files borrowed from libusb
+  * travis-ci: cleanup before second run
+  * travis-ci: rework travis-autogen.sh
+- add fix-shebang.patch
+
+-------------------------------------------------------------------
+Mon Nov 24 09:18:59 UTC 2014 - olaf@aepfle.de
+
+- BuildRequire at least libudev >= 196
+
+-------------------------------------------------------------------
+Sat Nov 22 16:43:17 UTC 2014 - crrodriguez@opensuse.org
+
+- Update to usbutils 008
+* most important change is that lsusb switched to use
+  the udev hardware database instead of the usb.ids file
+* lsusb: Reports if USB2.0 port is on L1 state
+* lsusb: Reports devices that support BESL on USB2.0
+* dump_ccid_device: fix a typo
+* lsusb: fix incorrect printf() for CAPS
+* lsusb-t: handle problem if there is no usb bus list
+* Ignore invalid string descriptors
+* usb-devices: hexadecimal bInterfaceNumber handling
+
+-------------------------------------------------------------------
+Tue Jul 30 16:14:30 UTC 2013 - sweet_f_a@gmx.de
+
+- update to usbutils 007
+  * usb-devices: correctly quote driver path
+  * lsusb: decode CDC MBIM descriptor
+  * lsusb: decode CDC NCM functional descriptor
+  * lsusb: decode CDC Command Set descriptor
+  * usb-devices: avoid numbers being seen as octal by printf
+  * lsusb: parse bmFormats inside UAC2 interface headers as hex
+  * remove devtree logic
+  * Fix lsusb -t potentially not listing all devices
+  * lsusb-t: make sure that interfaces are added to lists only once
+  * lsusb: Fix USB 3.0 link state reporting.
+  * lsusb: Fix bug in USB 2.0 extended caps descriptor.
+  * lsusb: Parse misplaced UAC1 AudioControl Endpoint Descriptor
+  * lsusb: Support non-ASCII string descriptors.
+- update usb.ids
+- remove config-guess-sub-update.patch
+ 
+-------------------------------------------------------------------
+Fri Apr  5 10:04:21 UTC 2013 - idonmez@suse.com
+
+- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Feb 17 18:35:49 UTC 2013 - schwab@suse.de
+
+- config-guess-sub-update.patch:
+  Update config.guess/sub for aarch64
+
+-------------------------------------------------------------------
+Sat Jan 19 14:31:50 UTC 2013 - crrodriguez@opensuse.org
+
+- usbutils 006 
+* update usbhid-dump to 1.3
+* Fix Possible buffer overflow when using SYSFS_STR
+* Wrong shifting of bmMPEGFeatures byte Buffer overun
+- Update usb.ids
+
+-------------------------------------------------------------------
+Fri Aug 12 21:29:56 UTC 2011 - gregkh@suse.de
+- usbutils 004
+  - fixes bnc#705562 and a number of other minor things.
+- updated usb.ids file
+
+-------------------------------------------------------------------
+Thu Mar 17 23:44:50 UTC 2011 - gregkh@suse.de
+
+- usbutils 002
+	Diego Elio Pettenò (2):
+	      Simplify the configure script.
+	      Print device class descriptors like it's done 
+              for interface descriptors.
+
+	Greg Kroah-Hartman (2):
+	      Updated version of lsusb.py from Kurt Garloff.
+	      add lsusb.py to the bin files
+
+-------------------------------------------------------------------
+Tue Dec 14 16:48:04 PST 2010 - gregkh@suse.de
+
+- update to 001
+  - now using libusb-1_0
+
+-------------------------------------------------------------------
+Tue Dec 14 21:42:22 UTC 2010 - gregkh@suse.de
+
+- update to 0.91
+- usb.ids updated from linux-usb.org
+
+-------------------------------------------------------------------
+Wed Sep 29 00:12:12 CEST 2010 - ro@suse.de
+
+- add current file usb.ids as created by included script
+  update-usbids.sh
+
+-------------------------------------------------------------------
+Wed Sep 29 00:05:01 CEST 2010 - ro@suse.de
+
+- update to 0.86
+  - HID device robust fix
+  - usb-devices bugfixes
+  - usb.ids updated
+
+-------------------------------------------------------------------
+Sun Jul  5 15:04:35 CEST 2009 - kay.sievers@novell.com
+
+- new upstream release 0.84
+  usb.ids updated
+  fix HID descriptor dumps
+
+-------------------------------------------------------------------
+Fri Jun 19 23:45:29 CEST 2009 - kay.sievers@novell.com
+
+- new upstream release 0.82
+
+-------------------------------------------------------------------
+Mon Nov 24 08:21:16 CET 2008 - olh@suse.de
+
+- update usb.ids to 2008/09/21 status
+
+-------------------------------------------------------------------
+Fri Oct 24 11:41:21 CEST 2008 - olh@suse.de
+
+- use built-in libusb-0.1.2 until lsusb uses libusb1,
+  libusb-compat is not compatible enough (bnc#435799)
+
+-------------------------------------------------------------------
+Thu Oct 23 11:07:00 CEST 2008 - olh@suse.de
+
+- update usb.ids to 2008/08/29 status
+
+-------------------------------------------------------------------
+Tue May 27 09:21:22 CEST 2008 - olh@suse.de
+
+- update usb.ids to 2008/05/12 status
+
+-------------------------------------------------------------------
+Sat Apr  5 23:12:51 CEST 2008 - bwalle@suse.de
+
+- update usbutils to 0.73
+  o Stop hiding unrecognized/misplaced class specific descriptors.
+    Don't require compressed format for usb.ids files; when an
+    uncompressed one is there (probably installed by hand), prefer
+    it.
+  o Fix the offsets for the video class descriptors.
+  o use correct endpoint maxpacket mask
+  o bugfix GUID printing; byteorder matches rfc 4122 
+  o handle another cdc descriptor type; endianness fix for config
+    descriptor length and endpoint maxpacket
+- update usb.ids to 2008/04/05 status
+
+-------------------------------------------------------------------
+Wed Mar 19 16:36:33 CET 2008 - olh@suse.de
+
+- update usb.ids to 2008/03/11 status
+  lsusb.c: fix minor layout glitch
+
+-------------------------------------------------------------------
+Tue Nov 27 15:24:15 CET 2007 - olh@suse.de
+
+- update usb.ids to 2007/11/27 status
+  lsusb.c: Stop hiding unrecognized/misplaced class specific
+           descriptors.  Don't require compressed format for usb.ids
+           files; when an uncompressed one is there (probably installed
+           by hand), prefer it.
+  lsusb.c: Fix the offsets for the video class descriptors.
+  lsusb.c: use correct endpoint maxpacket mask
+
+-------------------------------------------------------------------
+Mon Nov 26 16:04:35 CET 2007 - olh@suse.de
+
+- update usb.ids to 2007/11/19 status
+  remove references to /proc from lsusb.8 (343938)
+
+-------------------------------------------------------------------
+Thu Jun 21 14:28:54 CEST 2007 - olh@suse.de
+
+- fix string parsing with -s (285934)
+
+-------------------------------------------------------------------
+Thu Jun 21 10:56:22 CEST 2007 - olh@suse.de
+
+- do not open /usr/share/usb.ids.gz twice
+- remove COPYING file, read licenses.rpm to get the idea
+
+-------------------------------------------------------------------
+Thu Jun 21 09:55:45 CEST 2007 - olh@suse.de
+
+- lsusb.c: bugfix GUID printing; byteorder matches rfc 4122 
+- lsusb.c: handle another cdc descriptor type; endianness fix
+           for config descriptor length and endpoint maxpacket
+- usb.ids: update to current version
+
+-------------------------------------------------------------------
+Wed May 16 21:32:29 CEST 2007 - olh@suse.de
+
+- Buildrequires libusb -> libusb-devel
+
+-------------------------------------------------------------------
+Wed Aug 16 09:59:29 CEST 2006 - olh@suse.de
+
+- new lsusb -t output (186897)
+- run autoreconf -fi
+
+-------------------------------------------------------------------
+Sun Jul 23 09:51:11 CEST 2006 - olh@suse.de
+
+- update usb.ids to 2006/07/13 status
+
+-------------------------------------------------------------------
+Sun Mar  5 18:27:50 CET 2006 - olh@suse.de
+
+- version to 0.72
+  (HID) prettyprinting of Unit and Unit Exponent Global items
+  update video support, show camera info
+  allow longer variable length bitfields in hub descriptors;
+  ignore all clearly-broken hub descriptors
+- use usb.ids from package
+
+-------------------------------------------------------------------
+Fri Feb  3 14:54:31 CET 2006 - olh@suse.de
+
+- lsusb.c (dump_hub): Format string fix.
+          (do_hub): Allocate enough space for the hub descriptor.
+          Check return value in different way.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec  9 14:07:54 CET 2005 - olh@suse.de
+
+- remove resmgr from neededforbuild
+
+-------------------------------------------------------------------
+Thu Dec  8 18:56:21 CET 2005 - olh@suse.de
+
+- update usb.ids to 2005/11/19 status
+  provide lsusb also in /usr/bin/
+  lsusb.c: better diagnostics for invalid CDC descriptors
+  lsusb.c: add Video Class support, standard GUID printing
+  lsusb.c: dump device status; start dumping wireless info.  don't
+  yet dump security, BOS, "endpoint companion", or other new
+  descriptors.  (Security can work without wireles support...)
+
+-------------------------------------------------------------------
+Mon Sep  5 23:20:55 CEST 2005 - olh@suse.de
+
+- update usb.ids to 2005/09/04 status (#115202)
+
+-------------------------------------------------------------------
+Wed Aug 24 11:38:18 CEST 2005 - olh@suse.de
+
+- remove duplicate line (#112649)
+
+-------------------------------------------------------------------
+Wed Aug 10 18:35:43 CEST 2005 - olh@suse.de
+
+- update usb.ids to 2005/08/05 status
+
+-------------------------------------------------------------------
+Thu Jun 23 19:07:55 CEST 2005 - olh@suse.de
+
+- update usb.ids to 2005/06/20 status
+  lsusb is now in /usr/sbin, libusb is also in /usr/lib
+  lsusb.c: correct dump of CCID supported voltages
+
+-------------------------------------------------------------------
+Tue May 17 08:55:49 CEST 2005 - olh@suse.de
+
+- bump version to 0.71
+
+-------------------------------------------------------------------
+Fri Apr 29 11:06:40 CEST 2005 - olh@suse.de
+
+- update usb.ids to 2005/04/08 status
+  lsusb.c: add some more CDC WHCM dumping, matching a Sony 3G phone
+  lsusb.c: disallow decimal product and vendor codes (hex only)
+- add patch to make lsusb read /proc entries correctly
+  directories in /proc/bus/usb/ are all decimal,
+  but lsusb parses them as octal. (#77718)
+- fix a few compile warnings
+
+-------------------------------------------------------------------
+Mon Mar 14 17:32:11 CET 2005 - olh@suse.de
+
+- update usb.ids to 2005/03/13 status
+
+-------------------------------------------------------------------
+Mon Mar  7 14:15:27 CET 2005 - olh@suse.de
+
+- update usb.ids to 2005/02/24 status
+  add simple CDC MDLM descriptor dumping to lsusb
+
+-------------------------------------------------------------------
+Thu Feb 17 20:59:01 CET 2005 - olh@suse.de
+
+- update usb.ids to 2005/02/09 status
+
+-------------------------------------------------------------------
+Mon Jan 31 08:04:10 CET 2005 - olh@suse.de
+
+- update to 0.70 final
+
+-------------------------------------------------------------------
+Thu Jan 27 11:27:42 CET 2005 - olh@suse.de
+
+- update to current cvs, automake fixes
+
+-------------------------------------------------------------------
+Sun Jan 23 11:52:57 CET 2005 - olh@suse.de
+
+- update to current cvs, version 0.70
+
+-------------------------------------------------------------------
+Mon Jan 10 11:49:25 CET 2005 - olh@suse.de
+
+- update usb.ids to 2005/01/06 status
+  update lsusb to current cvs
+  * handle more descriptors;
+    misplaced comm descriptors get interpreted;
+    minor formatting updates;
+    bugfixes for reading HID descriptors
+    add a warning when those HID descriptors aren't available.
+
+-------------------------------------------------------------------
+Sun Oct 17 17:17:34 CEST 2004 - olh@suse.de
+
+- update usb.ids to 2004/09/23 status
+  update lsusb to current cvs
+
+-------------------------------------------------------------------
+Fri Aug 27 15:00:33 CEST 2004 - olh@suse.de
+
+- update usb.ids to 2004/04/30 status
+
+-------------------------------------------------------------------
+Wed Apr 21 23:52:59 CEST 2004 - olh@suse.de
+
+- update to current cvs, drop usbmodules, build with libusb
+
+-------------------------------------------------------------------
+Sun Jan 11 12:50:29 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sun Sep  7 17:25:49 CEST 2003 - olh@suse.de
+
+- introduce /etc/usbmodules.blacklist.conf
+  skip poking in /proc/bus/usb/*/* if a matching entry exists
+  add usbmodules --showdriver /proc/bus/usb/*/*
+
+-------------------------------------------------------------------
+Sat Sep  6 17:32:24 CEST 2003 - olh@suse.de
+
+- update usb.ids to 2003/09/04 status
+
+-------------------------------------------------------------------
+Mon Aug 25 13:16:27 CEST 2003 - adrian@suse.de
+
+- Provide usb for update
+
+-------------------------------------------------------------------
+Sat Aug  9 17:45:58 CEST 2003 - olh@suse.de
+
+- update usb.ids to 2003/06/20 status
+  use kernel headers for module information
+
+-------------------------------------------------------------------
+Thu Jun  5 16:13:11 CEST 2003 - ro@suse.de
+
+- include linux/types.h before linux/usb.h 
+
+-------------------------------------------------------------------
+Sat May 17 12:31:45 CEST 2003 - olh@suse.de
+
+- update usb.ids to 2003/03/13 status
+  workaound broken rpm4 checks
+
+-------------------------------------------------------------------
+Mon Mar 17 10:58:34 CET 2003 - olh@suse.de
+
+- update usb.ids to 2003/03/13 status
+
+-------------------------------------------------------------------
+Fri Feb  7 13:07:38 CET 2003 - olh@suse.de
+
+- update usb.ids to 2003/02/05 status
+
+-------------------------------------------------------------------
+Sat Feb  1 11:51:53 CET 2003 - olh@suse.de
+
+- update usb.ids to 20030114 status
+
+-------------------------------------------------------------------
+Tue Dec 10 16:00:58 CET 2002 - schwab@suse.de
+
+- Only swap usb device descriptor read from /proc, not the raw usb
+  packets.
+
+-------------------------------------------------------------------
+Sat Sep 28 15:06:22 CEST 2002 - olh@suse.de
+
+- update to 0.11
+  byswap bcdUSB,idVendor,idProduct,bcdDevice on big endian
+
+-------------------------------------------------------------------
+Sun Aug  4 13:38:51 CEST 2002 - olh@suse.de
+
+- update usb.ids, dont mark it as config in specfile
+
+-------------------------------------------------------------------
+Tue Jul 23 22:41:52 CEST 2002 - olh@suse.de
+
+- fix usb.ids
+  reenable usbmodules, might be useable with new hotplug
+
+-------------------------------------------------------------------
+Thu Jul 11 17:01:30 CEST 2002 - olh@suse.de
+
+- rename usbmodules to usbmodules.obsolete
+
+-------------------------------------------------------------------
+Wed Jul 10 08:53:41 CEST 2002 - olh@suse.de
+
+- update to version 0.10, update usb.ids
+
+-------------------------------------------------------------------
+Sat May  4 17:28:13 CEST 2002 - olh@suse.de
+
+- workaround broken lib64 detection
+  update usb.ids
+
+-------------------------------------------------------------------
+Thu Feb 28 13:38:18 CET 2002 - olh@suse.de
+
+- update to latest http://www.linux-usb.org/usb.ids (#14046)
+  update url in specfile
+
+-------------------------------------------------------------------
+Mon Sep 24 12:01:26 CEST 2001 - olh@suse.de
+
+- update usb.ids from http://www.linux-usb.org/
+
+-------------------------------------------------------------------
+Mon Sep 24 11:58:20 CEST 2001 - olh@suse.de
+
+- fix usb.ids (#11201)
+
+-------------------------------------------------------------------
+Mon Sep  3 19:58:17 CEST 2001 - olh@suse.de
+
+- readd to distribution for series ap
+  update to 0.8 for hotplug, usbmodules is needed
+  dont use libs, they are in libusb
+  add current usb.ids from linux-usb.org
+
+-------------------------------------------------------------------
+Tue Dec  5 16:10:56 CET 2000 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Thu Nov 30 16:54:45 CET 2000 - olaf@suse.de
+
+- add usbutils 0.7 to SuSE dist, will replace the usb.rpm
+

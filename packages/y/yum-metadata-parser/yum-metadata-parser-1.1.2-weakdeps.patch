@@ -1,0 +1,148 @@
+--- ./db.c.orig	2014-02-24 16:09:28.394182339 +0000
++++ ./db.c	2014-02-24 16:10:48.672182197 +0000
+@@ -398,7 +398,8 @@ yum_db_create_primary_tables (sqlite3 *d
+         "  release TEXT,"
+         "  pkgKey INTEGER %s)";
+ 
+-    const char *deps[] = { "requires", "provides", "conflicts", "obsoletes", NULL };
++    const char *deps[] = { "requires", "provides", "conflicts", "obsoletes",
++			   "suggests", "enhances", "recommends", "supplements", NULL };
+     int i;
+ 
+     const char *pkgindexsql = "CREATE INDEX pkg%s on %s (pkgKey)";
+@@ -456,6 +457,10 @@ yum_db_create_primary_tables (sqlite3 *d
+         "    DELETE FROM provides WHERE pkgKey = old.pkgKey;"
+         "    DELETE FROM conflicts WHERE pkgKey = old.pkgKey;"
+         "    DELETE FROM obsoletes WHERE pkgKey = old.pkgKey;"
++        "    DELETE FROM suggests WHERE pkgKey = old.pkgKey;"
++        "    DELETE FROM enhances WHERE pkgKey = old.pkgKey;"
++        "    DELETE FROM recommends WHERE pkgKey = old.pkgKey;"
++        "    DELETE FROM supplements WHERE pkgKey = old.pkgKey;"
+         "  END;";
+ 
+     rc = sqlite3_exec (db, sql, NULL, NULL, NULL);
+--- ./package.c.orig	2014-02-24 16:09:40.514182318 +0000
++++ ./package.c	2014-02-24 16:13:25.480181919 +0000
+@@ -85,6 +85,26 @@ package_free (Package *package)
+         g_slist_free (package->obsoletes);
+     }
+ 
++    if (package->suggests) {
++        g_slist_foreach (package->suggests, (GFunc) g_free, NULL);
++        g_slist_free (package->suggests);
++    }
++
++    if (package->enhances) {
++        g_slist_foreach (package->enhances, (GFunc) g_free, NULL);
++        g_slist_free (package->enhances);
++    }
++
++    if (package->recommends) {
++        g_slist_foreach (package->recommends, (GFunc) g_free, NULL);
++        g_slist_free (package->recommends);
++    }
++
++    if (package->supplements) {
++        g_slist_foreach (package->supplements, (GFunc) g_free, NULL);
++        g_slist_free (package->supplements);
++    }
++
+     if (package->files) {
+         g_slist_foreach (package->files, (GFunc) g_free, NULL);
+         g_slist_free (package->files);
+--- ./package.h.orig	2014-02-24 16:09:34.890182327 +0000
++++ ./package.h	2014-02-24 16:11:09.288182160 +0000
+@@ -72,6 +72,10 @@ typedef struct {
+     GSList *provides;
+     GSList *conflicts;
+     GSList *obsoletes;
++    GSList *suggests;
++    GSList *enhances;
++    GSList *recommends;
++    GSList *supplements;
+ 
+     GSList *files;
+     GSList *changelogs;
+--- ./sqlitecache.c.orig	2014-02-24 16:09:57.235182288 +0000
++++ ./sqlitecache.c	2014-02-24 16:17:07.753181526 +0000
+@@ -152,6 +152,10 @@ typedef struct {
+     sqlite3_stmt *provides_handle;
+     sqlite3_stmt *conflicts_handle;
+     sqlite3_stmt *obsoletes_handle;
++    sqlite3_stmt *suggests_handle;
++    sqlite3_stmt *enhances_handle;
++    sqlite3_stmt *recommends_handle;
++    sqlite3_stmt *supplements_handle;
+     sqlite3_stmt *files_handle;
+ } PackageWriterInfo;
+ 
+@@ -175,6 +179,18 @@ package_writer_info_init (UpdateInfo *up
+     info->obsoletes_handle = yum_db_dependency_prepare (db, "obsoletes", err);
+     if (*err)
+         return;
++    info->suggests_handle = yum_db_dependency_prepare (db, "suggests", err);
++    if (*err)
++        return;
++    info->enhances_handle = yum_db_dependency_prepare (db, "enhances", err);
++    if (*err)
++        return;
++    info->recommends_handle = yum_db_dependency_prepare (db, "recommends", err);
++    if (*err)
++        return;
++    info->supplements_handle = yum_db_dependency_prepare (db, "supplements", err);
++    if (*err)
++        return;
+     info->files_handle = yum_db_file_prepare (db, err);
+ }
+ 
+@@ -226,6 +242,14 @@ write_package_to_db (UpdateInfo *update_
+                 package->pkgKey, package->conflicts);
+     write_deps (update_info->db, info->obsoletes_handle,
+                 package->pkgKey, package->obsoletes);
++    write_deps (update_info->db, info->suggests_handle,
++                package->pkgKey, package->suggests);
++    write_deps (update_info->db, info->enhances_handle,
++                package->pkgKey, package->enhances);
++    write_deps (update_info->db, info->recommends_handle,
++                package->pkgKey, package->recommends);
++    write_deps (update_info->db, info->supplements_handle,
++                package->pkgKey, package->supplements);
+ 
+     write_files (update_info->db, info->files_handle, package);
+ }
+@@ -245,6 +269,14 @@ package_writer_info_clean (UpdateInfo *u
+         sqlite3_finalize (info->conflicts_handle);
+     if (info->obsoletes_handle)
+         sqlite3_finalize (info->obsoletes_handle);
++    if (info->suggests_handle)
++        sqlite3_finalize (info->suggests_handle);
++    if (info->enhances_handle)
++        sqlite3_finalize (info->enhances_handle);
++    if (info->recommends_handle)
++        sqlite3_finalize (info->recommends_handle);
++    if (info->supplements_handle)
++        sqlite3_finalize (info->supplements_handle);
+     if (info->files_handle)
+         sqlite3_finalize (info->files_handle);
+ }
+--- ./xml-parser.c.orig	2014-02-24 16:09:48.186182304 +0000
++++ ./xml-parser.c	2014-02-24 16:12:19.537182036 +0000
+@@ -244,6 +244,18 @@ primary_parser_format_start (PrimarySAXC
+     } else if (!strcmp (name, "rpm:conflicts")) {
+         ctx->state = PRIMARY_PARSER_DEP;
+         ctx->current_dep_list = &sctx->current_package->conflicts;
++    } else if (!strcmp (name, "rpm:suggests")) {
++        ctx->state = PRIMARY_PARSER_DEP;
++        ctx->current_dep_list = &sctx->current_package->suggests;
++    } else if (!strcmp (name, "rpm:enhances")) {
++        ctx->state = PRIMARY_PARSER_DEP;
++        ctx->current_dep_list = &sctx->current_package->enhances;
++    } else if (!strcmp (name, "rpm:recommends")) {
++        ctx->state = PRIMARY_PARSER_DEP;
++        ctx->current_dep_list = &sctx->current_package->recommends;
++    } else if (!strcmp (name, "rpm:supplements")) {
++        ctx->state = PRIMARY_PARSER_DEP;
++        ctx->current_dep_list = &sctx->current_package->supplements;
+     }
+ 
+     else if (!strcmp (name, "file")) {

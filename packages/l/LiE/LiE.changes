@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Oct  2 04:14:37 UTC 2017 - bwiedemann@suse.com
+
+- Add LiE-2.2.2-memory-init.patch to make build more reproducible
+  (boo#1061220)
+
+-------------------------------------------------------------------
+Tue Mar 14 14:21:20 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly package files copied into _docdir: rpm 4.13 no longer
+  implicitly packages those files.
+
+-------------------------------------------------------------------
+Wed Apr 30 19:45:41 UTC 2014 - andreas.stieger@gmx.de
+
+- add LiE-2.2.2-date-time.patch to fix file-contains-date-and-time
+  warning and prevent unneccessary rebuilds
+
+-------------------------------------------------------------------
+Thu Dec 12 19:53:50 UTC 2013 - badshah400@gmail.com
+
+- Initial version
+

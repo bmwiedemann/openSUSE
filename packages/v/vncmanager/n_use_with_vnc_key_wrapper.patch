@@ -1,0 +1,14 @@
+Use Xvnc's with-vnc-key wrapper to create key and certificate on first use.
+Index: vncmanager-1.0.1/vncmanager.service.in
+===================================================================
+--- vncmanager-1.0.1.orig/vncmanager.service.in
++++ vncmanager-1.0.1/vncmanager.service.in
+@@ -4,7 +4,7 @@ After=network.target
+ 
+ [Service]
+ User=vnc
+-ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/vncmanager
++ExecStart=/usr/lib/vnc/with-vnc-key.sh @CMAKE_INSTALL_FULL_BINDIR@/vncmanager
+ 
+ [Install]
+ WantedBy=multi-user.target

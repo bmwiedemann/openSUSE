@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e76ad20daee73d97f8fa1d5eb9ccabe</srcmd5>
+    <version>0.2.1</version>
+    <time>1367238686</time>
+    <user>coolo</user>
+    <comment>OpenStack dependency</comment>
+    <requestid>173142</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4e4d0773c7437016aaa94fe2753aa0f5</srcmd5>
+    <version>0.2.1</version>
+    <time>1371652778</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179889</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4e4d0773c7437016aaa94fe2753aa0f5</srcmd5>
+    <version>0.2.1</version>
+    <time>1379664217</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f8b19050a7035e45851826831c676cd6</srcmd5>
+    <version>0.2.1</version>
+    <time>1382692897</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204593</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f8b19050a7035e45851826831c676cd6</srcmd5>
+    <version>0.2.1</version>
+    <time>1409302915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9758640adcb63cb1a398d05a4ce6966b</srcmd5>
+    <version>0.3</version>
+    <time>1431673383</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306663</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b338695a246c1c7f74f5daa015ec9bd8</srcmd5>
+    <version>0.6.1</version>
+    <time>1492617393</time>
+    <user>dimstar_suse</user>
+    <comment>- update for singlespec
+- enable tests (forwarded request 479715 from matejcik)</comment>
+    <requestid>479716</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e95b821cca03d2d73cc176f95a6929c5</srcmd5>
+    <version>0.6.1</version>
+    <time>1562590922</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the test run with new pytest</comment>
+    <requestid>713189</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,311 @@
+-------------------------------------------------------------------
+Sat Feb 24 16:35:12 UTC 2018 - crrodriguez@opensuse.org
+
+- Fix BuildRequires so it lists all the needed, specific 
+  libraries.
+
+-------------------------------------------------------------------
+Sat Nov 11 16:15:54 UTC 2017 - badshah400@gmail.com
+
+- Switch BuildRequires to pkgconfig based ones wherever possible.
+
+-------------------------------------------------------------------
+Sat Sep 30 22:46:21 UTC 2017 - badshah400@gmail.com
+
+- Add xournal-fix-strokes-on-Lenovo-active-pen.patch: Fix strokes
+  with Lenovo active pen 2; patches taken from upstream git.
+
+-------------------------------------------------------------------
+Thu Jul 20 22:41:05 UTC 2017 - rpm@fthiessen.de
+
+- Dropped upstream merged xournal-german-translation.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 21:29:14 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.4.8.2016:
+  * Pen and touchscreen input handling bugfixes (bug #136 and
+    others).
+  * Fix a minor bug with save file paths in Windows.
+  * Use GDK macros (not WIN32) to disable X11-specific code (T.
+    Schoonjans)
+  * Export to PDF and printing: fix resolution loss on some pdf
+    backgrounds.
+  * Disable xinput during modal dialog boxes (bug #159).
+  * Avoid data corruption when exporting to overwrite a PDF.
+  * Fix path search order for toolbar bitmaps.
+  * Text and image tools activate on button release instead of
+    button press to avoid subsequent confusion between clicks in
+    toolbar and drawing area.
+  * Fix "pen disable touch" when touchscreen sends prox events.
+  * Fix crash when pasting text or images via xclip (bug #171).
+  * Add space and shift-space bindings to page down/up.
+  * Add A5 paper.
+  * Config option to export successive layers to separate PDF.
+    pages.
+  * Config option to create new file when trying to open
+    non-existent .xoj.
+  * Updated translations.
+- Use full URL for source tarball.
+- Drop xournal-decl-spec.patch; upstreamed.
+- Minor rebase of patches where needed.
+
+-------------------------------------------------------------------
+Mon Jun 12 15:52:41 UTC 2017 - rpm@fthiessen.de
+
+- Fixed build with Tumbleweed by adding xournal-decl-spec.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 15:00:53 UTC 2016 - sknorr@suse.com
+
+- Improve package description
+
+-------------------------------------------------------------------
+Fri Aug  5 18:55:16 UTC 2016 - rpm@fthiessen.de
+
+- Some cleanup on the spec-file.
+
+-------------------------------------------------------------------
+Fri Aug  5 06:44:40 UTC 2016 - badshah400@gmail.com
+
+- Add xournal-appdata.patch to add, translate and install appdata
+  file for application, this makes xournal show up in appstores
+  like GNOME Software and KDE Discover; run intltoolize to
+  translate appdata file.
+
+-------------------------------------------------------------------
+Mon Jul  6 01:42:22 UTC 2015 - badshah400@gmail.com
+
+- Use upstream command to install desktop entries, mimetypes
+  and icons.
+- Generate and install hires icons into hicolor directory (needed
+  on HiDPI displays).
+- Use appropriate post-scripts to update desstop menu database,
+  mime cache and icon-theme.
+- Drop external .desktop file and icon, and use upstream bundled
+  ones.
+
+Sun Mar 22 20:00:03 UTC 2015 - rpm@fthiessen.de
+-------------------------------------------------------------------
+
+- Improved spec file (requirements)
+
+-------------------------------------------------------------------
+Tue Mar  3 17:27:02 UTC 2015 - rpm@fthiessen.de
+
+- Added some patches
+ * Missing German translation: xournal-german-translation.patch
+ * Window title format is corrected: xournal-Improve-window-title.patch
+- incorrect-fsf-address warning is reported upstream (Bug #151)
+
+-------------------------------------------------------------------
+Tue Mar 3 02:25:00 UTC 2015 - rpm@fthiessen.de
+
+- Updated to 0.4.8
+- removed outdated patch (now included in xournal)
+  * xournal-large-pen-cursor.patch
+
+-------------------------------------------------------------------
+Mon Mar 2 11:31:30 UTC 2015 - rpm@fthiessen.de
+
+- slightly modified changlog, so factory auto review does not grumble anymore.
+ * Added patch references
+
+-------------------------------------------------------------------
+Wed Jul 24 07:18:40 UTC 2013 - Rene.vanPaassen@gmail.com
+
+- have the large pen cursor option updated in the interface after defaults
+  loaded 
+
+-------------------------------------------------------------------
+Tue Jul 23 16:04:50 UTC 2013 - Rene.vanPaassen@gmail.com
+
+- don't need libgnomeprintui 
+
+-------------------------------------------------------------------
+Tue Jul 23 14:31:31 UTC 2013 - Rene.vanPaassen@gmail.com
+
+- update to 0.4.7, and add a patch to optionally select a larger cursor 
+ * xournal-large-pen-cursor.patch
+- added patch for fixing implicit functions
+ * xournal-implicit-funcs.patch
+- removed unneeded patches (which are now included in xournal)
+ * xournal-automake-1.13.patch
+ * xournal-poppler-0.18.patch
+ * xournal-unistd-decl.diff
+ * xournal-no-copy-dt-needed-entries.patch
+-------------------------------------------------------------------
+Wed Mar 13 12:38:31 CET 2013 - pgajdos@suse.cz
+
+- builds with automake 1.13
+  * automake-1.13.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 10:26:04 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Sep 20 10:40:10 UTC 2011 - vuntz@opensuse.org
+
+- Add xournal-poppler-0.18.patch: fix build with poppler 0.18.
+  Taken from CVS.
+
+-------------------------------------------------------------------
+Fri Sep 16 22:15:39 UTC 2011 - suse-tux@gmx.de
+
+- added "-lm" to no-copy-dt-needed-entries.patch (fix factory build)
+
+-------------------------------------------------------------------
+Tue Aug 30 10:32:15 UTC 2011 - pgajdos@suse.com
+
+- build with --no-copy-dt-needed-entries
+  * no-copy-dt-needed-entries.patch
+
+-------------------------------------------------------------------
+Fri May 14 07:04:54 UTC 2010 - prusnak@suse.cz
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Fri May  7 11:59:14 CEST 2010 - sharms@ubuntu.com
+
+- Update to version 0.4.5:
+  - bugfixes for GTK+ 2.16/2.17 issues with xinput events
+  - various minor UI bugfixes
+  - gettext internationalization (contributed by David Planella)
+  - Catalan translation (by David Planella), French translation
+  - use poppler instead of pdftoppm to render PDF backgrounds 
+    (after patches by Mike Ter Louw and Bob McElrath)
+  - various improvements to UI and to key bindings (including
+    patches by Bob McElrath and Lu Zhihe)
+  - use gtk-print instead of libgnomeprint for printing
+  - custom color chooser (patch contributed by Alex Ray)
+  - option to have tablet buttons toggle the mapping rather than draw
+  - paper color chooser (after a patch by Ole Joergen Broenner)
+  - remove binary installer (due to binary incompatibilities)
+  - UPDATED DEPENDENCIES: need gtk+ 2.10, poppler-glib 0.5.4
+
+-------------------------------------------------------------------
+Fri Apr 11 13:05:43 CEST 2008 - dkukawka@suse.de
+
+- updated to new 0.4.2.1:
+  - bugfix for #1926757 (crash upon pasting variable-width stroke)
+  - bugfix: set ruler/recognizer setting to default upon switching 
+    tools 
+  - bugfixes for X.org 7.3; allow XInput and core events in reverse 
+    order
+  - resize selection 
+  - pressure sensitive pen (variable stroke width) 
+  - geometric shape recognizer (see manual)
+  - clean up compiler warnings (patch contributed by Danny Kukawka)
+- removed upstream gone patches:
+  - xournal-fix-compilerWarnings.diff
+  - xournal-retval.patch
+
+-------------------------------------------------------------------
+Thu Sep 27 12:57:21 CEST 2007 - dkukawka@suse.de
+
+- updated to new upstream version 0.4.1:
+  - bugfix: compatibility with new versions of pdftoppm 
+  - GTK+ 2.11 event processing bugfix
+  - minor bugfixes: hand tool, handling of filenames containing '&'
+  - desktop and MIME files + updated installer
+  - config options: left-handed scrollbar, hide some menu items 
+    (customizable in config file), auto-save preferences
+  - bugfixes for GTK+ 2.11 behavior 
+  - text tool (handles most TrueType and Type1 fonts)
+  - font selection dialog and button
+  - keyboard mappings (arrow keys)
+  - menu mnemonics and shortcuts 
+  - more responsive hand tool
+  - bugfix for GTK+ 2.11 XInput behavior 
+  - various minor bugfixes and enhancements
+- added patch:
+  - xournal-fix-compilerWarnings.diff (fix really many compiler
+    warnings and 64bit issues)
+
+-------------------------------------------------------------------
+Thu Mar  8 11:23:00 CET 2007 - dkukawka@suse.de
+
+- updated to new upstream version 0.3.3:
+  - bugfix: upon loading a new file, zoom is set to default 
+    startup zoom
+  - config option to allow input from a mouse or other core pointer 
+    device
+  - config file entry to specify a default location for open/save
+    (patch contributed by Andy Neitzke)
+  - config file entries to customize visibility and position of 
+    toolbars
+  - icon (thanks to Michele Codutti)
+- added new icon for the desktop file
+
+-------------------------------------------------------------------
+Mon Jan  8 19:47:05 CET 2007 - dkukawka@suse.de
+
+- updated to new upstream version 0.3.2:
+  - preferences file and Save Preferences command
+  - extra customization (via preferences file)
+  - minor UI changes (patch contributed by Eduardo de Barros Lima)
+  - hand tool (partially contributed by Vincenzo Ciancia)
+  - a few bugfixes in rendering of bitmap backgrounds
+  - fixed a file format bug on systems with non-standard numeric 
+    locale (bug reported by Gert Renckens)
+- fixed b.n.c #222484 
+
+-------------------------------------------------------------------
+Sun Nov 12 18:21:20 CET 2006 - stbinner@suse.de
+
+- don't repeat Name in GenericName field within .desktop file
+
+-------------------------------------------------------------------
+Wed Sep 13 02:26:11 CEST 2006 - ro@suse.de
+
+- fix a missing return value in nonvoid function 
+
+-------------------------------------------------------------------
+Wed Jul 26 10:32:19 CEST 2006 - dkukawka@suse.de
+
+- updated to current upstream version 0.3:
+  - new PDF rendering engine: export to PDF generates optimized files
+    (smaller and more accurate)
+  - export to PDF handles PDF backgrounds (up to PDF-1.4) natively
+    (without conversion to bitmap)
+  - default thickness of erasers and highlighters slightly increased
+  - zoom dialog box with input box and "fit to page height" option
+  - file format documentation added to the user's manual
+ 
+-------------------------------------------------------------------
+Mon Jul  3 12:11:54 CEST 2006 - dkukawka@suse.de
+
+- updated to current upstream version 0.2.2:
+  * Version 0.2.2 (Jun 5, 2006):
+    - mapping of tools to stylus buttons (the options menu has new 
+      entries to allow the mapping of buttons 2 and 3 to arbitrary 
+      tools; the tools menu and toolbar affect the settings for 
+      button 1) (see manual)
+    - moving selection by drag-and-drop works across page 
+      boundaries 
+    - vertical space tool can move items to next page (only when 
+      the entire block being moved has crossed the page boundary; 
+      items on the new page are not moved) - "apply to all pages"
+      is now a toggle button affecting the behavior of paper size, 
+      color, and style commands
+    - change in the behavior of the selection upon switching 
+      between tools
+  * Version 0.2.1 (Jun 3, 2006):
+    - recently used files listed in file menu
+    - can change color or thickness of pen strokes in selection
+    - function to apply paper style to all pages
+    - can specify on command line a PDF file to annotate
+    - suggest a derived file name for PDF annotation
+    - speed up switching between pages
+    - fixed a bug in XInput initialization (thanks to Luca de Cicco)
+    - fixed a bug in print ranges (thanks to Mathieu Bouchard)
+    - fixed a refresh bug in rescaling bitmap backgrounds
+
+-------------------------------------------------------------------
+Thu Feb  2 15:03:35 CET 2006 - dkukawka@suse.de
+
+- init version 0.2 
+  - added icon and desktop file

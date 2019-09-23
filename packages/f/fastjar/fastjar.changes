@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Fri May 19 14:14:56 UTC 2017 - tchvatal@suse.com
+
+- Apply patches from debian to be up-par:
+  * fix-update-mode.diff
+  * jartool.diff
+- Remove patch fastjar-0.98-fix.patch
+  * Merged in jartool.diff
+- Remove patch fastjar-0.98-directory-traversal.patch
+  * Merged in jartool.diff
+
+-------------------------------------------------------------------
+Sun Apr 12 09:30:44 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clenaner
+- Correct info scriplet requirements
+
+-------------------------------------------------------------------
+Tue Mar 26 13:15:44 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Tue May 25 13:06:58 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#607043 - fastjar directory traversal
+
+-------------------------------------------------------------------
+Mon Mar  1 14:56:17 CET 2010 - rguenther@novell.com
+
+- Update to 0.98
+  - added support for -J and @file options.
+  - fixed file name extraction, so that it can now be used during OpenJDK build.
+- Fix unterminated filenames on archive update.
+
+-------------------------------------------------------------------
+Wed Aug 13 11:40:15 CEST 2008 - mvyskocil@suse.cz
+
+- Update to 0.95
+  - included an fix of a directory traversal to parents of the extraction root.
+  - some fixes in build system - Makefile.{am,in}, configure.ac, ...
+  - enable fastjar to update an existing .jar with an META-INF/INDEX.LIST aka
+    -i support. Still, it doesn't process the MANIFEST.MF to index files
+    coming from dependant archives.
+  - use '\n' instead of '\0' before adding the index to the jar file to avoid
+    having a zero byte at the end of the index file.
+  - Fallback on the method used for non-seekable files when reading the
+    central-header-end section does not work, i.e. in archives with a zipfile
+    comment at the end.
+  - Added support for native libraries for libfastjar.
+  - jartool.c: Include regex.h, as recommended by  gnulib-tool for the gnulib
+    getopt functionality
+
+-------------------------------------------------------------------
+Thu Mar 29 10:43:13 CEST 2007 - rguenther@suse.de
+
+- Add zlib-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon Aug  7 10:07:33 CEST 2006 - rguenther@suse.de
+
+- Update fix for 191845 to upstream version.
+
+-------------------------------------------------------------------
+Wed Jul 12 17:14:40 CEST 2006 - rguenther@suse.de
+
+- Fix 191845, directory traversal on unpacking.
+
+-------------------------------------------------------------------
+Mon May 29 11:26:18 CEST 2006 - rguenther@suse.de
+
+- New fastjar package from savannah sources.
+

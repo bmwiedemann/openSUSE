@@ -1,0 +1,27 @@
+commit f4debdce3de8da1bd401d8542c5acbfaa0982b76
+Author: Bernhard M. Wiedemann <githubbmw@lsmod.de>
+Date:   Wed Jan 25 03:52:14 2017 +0000
+
+    allow to override build date
+    
+    to enable reproducible builds.
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+
+Index: pgm/version_generator.py
+===================================================================
+--- pgm.orig/version_generator.py
++++ pgm/version_generator.py
+@@ -4,8 +4,9 @@ import os
+ import platform
+ import time
+ 
+-build_date = time.strftime ("%Y-%m-%d")
+-build_time = time.strftime ("%H:%M:%S")
++timestamp = time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
++build_date = time.strftime ("%Y-%m-%d", timestamp)
++build_time = time.strftime ("%H:%M:%S", timestamp)
+ build_rev = filter (str.isdigit, "$Revision$")
+ 
+ print """

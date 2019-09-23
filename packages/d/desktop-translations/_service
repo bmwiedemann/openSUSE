@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/openSUSE/desktop-file-translations.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">%cd.%h</param>
+    <param name="versionprefix">84.87</param>
+    <param name="changesgenerate">enable</param>
+<param name="changesauthor">opensuse-packaging@opensuse.org</param>
+<param name="revision">refs/heads/master</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

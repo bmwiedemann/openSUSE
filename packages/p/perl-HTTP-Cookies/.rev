@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>405e5c283cbda1c8d4e9203cebf2464c</srcmd5>
+    <version>6.00</version>
+    <time>1300455215</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64413 from user vitezslav_cizek
+</comment>
+    <requestid>64413</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a2dc1bf45900e274cf43b9ce14af00ce</srcmd5>
+    <version>6.00</version>
+    <time>1300455225</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64413
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a2dc1bf45900e274cf43b9ce14af00ce</srcmd5>
+    <version>6.00</version>
+    <time>1319182275</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d484c46f398309a3becf1e3ead580709</srcmd5>
+    <version>6.00</version>
+    <time>1323193362</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d228a8f5b09c82cd0ac23b94efcf57b</srcmd5>
+    <version>6.01</version>
+    <time>1329476860</time>
+    <user>coolo</user>
+    <comment>- updated to 6.01
+  * Restore 5.8.1 compatiblity.</comment>
+    <requestid>105585</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5d228a8f5b09c82cd0ac23b94efcf57b</srcmd5>
+    <version>6.01</version>
+    <time>1340183854</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>5d228a8f5b09c82cd0ac23b94efcf57b</srcmd5>
+    <version>6.01</version>
+    <time>1359109695</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>5d228a8f5b09c82cd0ac23b94efcf57b</srcmd5>
+    <version>6.01</version>
+    <time>1379663703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>5d228a8f5b09c82cd0ac23b94efcf57b</srcmd5>
+    <version>6.01</version>
+    <time>1409302324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d7f482f2b4af47bef5bb9dba5e10449c</srcmd5>
+    <version>6.03</version>
+    <time>1491907309</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486137</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1835703bb564b8f927206700064f3492</srcmd5>
+    <version>6.04</version>
+    <time>1503308050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515867</requestid>
+  </revision>
+</revisionlist>

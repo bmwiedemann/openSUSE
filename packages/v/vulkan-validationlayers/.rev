@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69da98d6d3a44d3df7549bcce89920bc</srcmd5>
+    <version>1.1.91.g68</version>
+    <time>1544539632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653800</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f720776a02378f0090f2a8b1ae4eb087</srcmd5>
+    <version>1.1.96</version>
+    <time>1545376895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.1.96</comment>
+    <requestid>659322</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53db4773b856b66e29c405779ece8db0</srcmd5>
+    <version>1.1.97.0</version>
+    <time>1550220896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.1.97.0</comment>
+    <requestid>668286</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>946afbdf8ac8a6372aa5b1345232c288</srcmd5>
+    <version>1.1.102</version>
+    <time>1553809688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.1.102</comment>
+    <requestid>685802</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f52460cd16b2d925478589e4551b0d5</srcmd5>
+    <version>1.1.107.g31</version>
+    <time>1560971071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 1.1.107.g31</comment>
+    <requestid>707929</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e70b82813768d8f0b3edf2d86b041b75</srcmd5>
+    <version>1.1.112</version>
+    <time>1562073493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.1.112</comment>
+    <requestid>712364</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cd0553a78efb79c2df500041690895e8</srcmd5>
+    <version>1.1.120</version>
+    <time>1568025203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.1.120</comment>
+    <requestid>725035</requestid>
+  </revision>
+</revisionlist>

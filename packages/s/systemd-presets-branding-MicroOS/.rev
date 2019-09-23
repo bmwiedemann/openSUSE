@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b93b6f16c2eae70c72a5da80f7ca1149</srcmd5>
+    <version>20190219</version>
+    <time>1551024907</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677378</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b61b4dbc58ea182e2f426331df3f797</srcmd5>
+    <version>20190219</version>
+    <time>1552042789</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete old CaaSP version to fix migration</comment>
+    <requestid>681318</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ed2f8fa412c8525967a1830cb439663b</srcmd5>
+    <version>20190219</version>
+    <time>1560862422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709936</requestid>
+  </revision>
+</revisionlist>

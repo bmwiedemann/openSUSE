@@ -1,0 +1,570 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5ce3dab132c4a9a875f9f78427b6bfd</srcmd5>
+    <version>8.4.14</version>
+    <time>1166483877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>023a85358488dd7ac9c2263092c09085</srcmd5>
+    <version>8.4.15</version>
+    <time>1181214982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1716613971bdd42f6aa522d49aa605a8</srcmd5>
+    <version>8.5.2</version>
+    <time>1207447220</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5ec9c61cadda97911d1411b75127ad21</srcmd5>
+    <version>8.5.2</version>
+    <time>1207695219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0998301b99b7651430dad74968e43034</srcmd5>
+    <version>8.5.2</version>
+    <time>1208089820</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5ec9c61cadda97911d1411b75127ad21</srcmd5>
+    <version>8.5.2</version>
+    <time>1208142651</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>26508238a912353ffb569790f5d456c4</srcmd5>
+    <version>8.5.2</version>
+    <time>1208156916</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>5ec9c61cadda97911d1411b75127ad21</srcmd5>
+    <version>8.5.2</version>
+    <time>1208228540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>0c7faba12e4f1abc79d9d1fff0287774</srcmd5>
+    <version>8.5.2</version>
+    <time>1210190728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>192e173a4dc38a8716fab5f04115be2b</srcmd5>
+    <version>8.5.3</version>
+    <time>1215806696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>30b1190e32278d1f3f6ce76bc18a8c7e</srcmd5>
+    <version>8.5.4</version>
+    <time>1221301294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ea08f81c7a86c2c2b4c3b09b376247e</srcmd5>
+    <version>8.5.5</version>
+    <time>1224694349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>32d91e19b39375b11a995a1e27c89a72</srcmd5>
+    <version>8.5.5</version>
+    <time>1231463058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5b17fda22e6c5676b8a9b68a955c8dfe</srcmd5>
+    <version>8.5.7</version>
+    <time>1244816031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>24476b903328069bdb02a61faff83164</srcmd5>
+    <version>8.5.7</version>
+    <time>1245372733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0a868e4773a380b5cdd26a2d6d984f8c</srcmd5>
+    <version>8.5.7</version>
+    <time>1249570881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>0a868e4773a380b5cdd26a2d6d984f8c</srcmd5>
+    <version>8.5.7</version>
+    <time>1249570881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>13514fa5449250e64d78b2bc7fc9d3bb</srcmd5>
+    <version>8.5.8</version>
+    <time>1258969824</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tcl based on submit request 24806 from user rmax
+</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>88578683056691bc0f9088df6a4870b1</srcmd5>
+    <version>8.5.8</version>
+    <time>1264773280</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tcl based on submit request 30690 from user rmax
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>51970f4d98b2504713a124c6deb3f2bd</srcmd5>
+    <version>8.5.8</version>
+    <time>1268926297</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>cd2b327471a8f823e942ff70db31a6b4</srcmd5>
+    <version>8.5.8</version>
+    <time>1268948916</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tcl based on submit request 35163 from user coolo
+</comment>
+    <requestid>35163</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>f220cee2c573f04c77178dbc9fce788a</srcmd5>
+    <version>8.5.8</version>
+    <time>1275655602</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tcl based on submit request 41034 from user coolo
+</comment>
+    <requestid>41034</requestid>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>f220cee2c573f04c77178dbc9fce788a</srcmd5>
+    <version>8.5.8</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>f220cee2c573f04c77178dbc9fce788a</srcmd5>
+    <version>8.5.8</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>34a52e747376befe78975543cccd45c2</srcmd5>
+    <version>8.5.9</version>
+    <time>1285594535</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:tcl/tcl based on submit request 49178 from user rmax
+</comment>
+    <requestid>49178</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>34a52e747376befe78975543cccd45c2</srcmd5>
+    <version>8.5.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>14faf4177dc909a6c8afd930ecf59769</srcmd5>
+    <version>8.5.9</version>
+    <time>1304509370</time>
+    <user>saschpe</user>
+    <comment>blacklist known-failing test stack-3.1</comment>
+    <requestid>69530</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>4f96aedf6cc08a2291ecbab8f8521b2c</srcmd5>
+    <version>8.5.9</version>
+    <time>1304509380</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69530
+</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>c2157744e4a16a07b03e42b70a41c7cd</srcmd5>
+    <version>8.5.10</version>
+    <time>1309762246</time>
+    <user>saschpe</user>
+    <comment>Version 8.5.10</comment>
+    <requestid>75020</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>dd1d62ab9a92f35f4058d3a8b59e88db</srcmd5>
+    <version>8.5.10</version>
+    <time>1309762257</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75020
+</comment>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>97c801f4c04c6b919e90a1887c6cc2f6</srcmd5>
+    <version>8.5.10</version>
+    <time>1317912370</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86661 from uli_suse)</comment>
+    <requestid>86876</requestid>
+  </revision>
+  <revision rev="32" vrev="9">
+    <srcmd5>97c801f4c04c6b919e90a1887c6cc2f6</srcmd5>
+    <version>8.5.10</version>
+    <time>1319182507</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ff3a729bbb4d14427bae94531e2b8b87</srcmd5>
+    <version>8.5.11</version>
+    <time>1325846811</time>
+    <user>coolo</user>
+    <comment>Removed leftover 8.5.10 tarball</comment>
+    <requestid>97621</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a7c53ea431ab55618cb2d01fa3baeaca</srcmd5>
+    <version>8.5.11</version>
+    <time>1327093683</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-TCL
+Use this proprietary extension to SPDX until upstream SPDX accepts TCL into their license list (forwarded request 98704 from babelworx)</comment>
+    <requestid>100601</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>a7c53ea431ab55618cb2d01fa3baeaca</srcmd5>
+    <version>8.5.11</version>
+    <time>1340184259</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c66a3a6d290d689fecb9d6930fd9cb81</srcmd5>
+    <version>8.5.12</version>
+    <time>1344418834</time>
+    <user>coolo</user>
+    <comment>- Disable profiling on SPARC due to compiler bug [gcc #54121]
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Remove outdated PPC obsoletes (there is no tcl-devel-XXbit built) (forwarded request 129224 from jengelh)</comment>
+    <requestid>130356</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>d48f3c22dc023f16f136b061e70a3ff5</srcmd5>
+    <version>8.5.12</version>
+    <time>1354530892</time>
+    <user>coolo</user>
+    <comment>Fix build: Buildrequire timezone (forwarded request 142735 from a_jaeger)</comment>
+    <requestid>142880</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>d48f3c22dc023f16f136b061e70a3ff5</srcmd5>
+    <version>8.5.12</version>
+    <time>1359110465</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>2684be8e3094890b2733ad88da738fe8</srcmd5>
+    <version>8.5.12</version>
+    <time>1365937222</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162763 from namtrac)</comment>
+    <requestid>163129</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9d265a1cac2db66ce6b11aed6dd659f1</srcmd5>
+    <version>8.6.0</version>
+    <time>1376391572</time>
+    <user>scarabeus_factory</user>
+    <comment>- New version: 8.6.0.
+- Itcl is now part of the Tcl main package.
+- Disable profile feedback based optimization for now.</comment>
+    <requestid>186430</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>9d265a1cac2db66ce6b11aed6dd659f1</srcmd5>
+    <version>8.6.0</version>
+    <time>1379664771</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6b6f8e1521b774c4f0f0d96ec86fc275</srcmd5>
+    <version>8.6.1</version>
+    <time>1379927082</time>
+    <user>coolo</user>
+    <comment>- Final 8.6.1 release. Changes since rc0 include:
+  * Fix segfaults in [dict] compilers.
+  * Fix mem leak in [lreplace].
+
+- New patchlevel release 8.6.1rc0:
+- Many optimaizations, improvements and tightened stack management
+  in bytecode
+- Many enhancements and Bugfixes:
+  * Improve ensemble bytecode
+  * Selected script code improvements =&gt; tcltest 2.3.6
+  * Broaden glibc version detection =&gt; platform 1.0.12
+  * [array set] compile improvement
+  * [auto_mkindex] support Tcl00
+  * Tcl_Zlib*() routines tolerate NULL interps
+  * Improved [list {*}...] compile
+  * Restored lost performance appending to long strings
+  * Errors from execution traces become errors of the command</comment>
+    <requestid>199829</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>6b6f8e1521b774c4f0f0d96ec86fc275</srcmd5>
+    <version>8.6.1</version>
+    <time>1409303453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d85a68ff6f57f642a4f874818948bfea</srcmd5>
+    <version>8.6.2</version>
+    <time>1410081112</time>
+    <user>coolo</user>
+    <comment>- avoid %nil to pass download_files service
+
+- Update license tag to SPDX 1.2.
+
+- Update to 8.6.2:
+  * TIP 429: New command [string cat].
+  * [lsearch -integer], [lsort -integer] operate on wide ints.
+       *** POTENTIAL INCOMPATIBILITY ***
+  * [dict replace], [dict remove] return canonical dicts.
+       *** POTENTIAL INCOMPATIBILITY ***
+  * Improved ::env synchronization with environment.
+  * transchans converted blocked writes to errors.
+  * [info class subclasses ::oo::object] includes ::oo::class .
+  * Fix: [chan configure -error] breaks [socket -async] connection.
+  * Better handle NUL in filenames.
+  * Fix: failures in nested ensemble bytecode compiler.
+  * Fixed crashes in...
+      - [apply {{} {while 1 {a {*}
+      	[return -level 0 -code continue]}}}]
+      - [apply {{} {namespace upvar a b [x]}}]
+      - [coroutine X coroutine Y info frame]
+      - multi-interp font teardown
+      - oo chain deletion
+  * Plugged memory leaks in...
+      - execution traced coroutine deletion
+      - [close [zlib push ... -dictionary ...]]
+      - AtForkChild()
+      - managing oo instance lists
+  * Performance addressed in...
+      - [lappend l $multiple $arg] compile: quadratic -&gt; linear</comment>
+    <requestid>247812</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>66f17ebbb493845feddff299408da622</srcmd5>
+    <version>8.6.3</version>
+    <time>1416347598</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.3:
+  * (bug)[b9e1a3] Correct Method Search Order
+  * (bug)[ccc2c2] Regression [lreplace {} 1 1]
+  * &lt;oo-1.18.2&gt; Crash regression in [oo::class destroy]
+  * (bug)[84af11] Regress [regsub -all {\(.*} a(b) {}]
+  * (bug)[cee90e] [try {} on ok {} - on return {} {}] panic
+  * (feature) [tcl::unsupported::getbytecode] disassember
+  * (enhancement) [string cat] bytecode optimization
+  * (bug)[82521b] segfault in mangled bytecode
+  * (bug)[bc5b79] Hang in some [read]s of limited size
+  * (bug)[bc1a96] segfault in [array set] of traced array
+  * (bug)[59a2e7] MSVC14 compile support
+  * (bug)[ed29c4] [fcopy] treats [blocked] as error
+  * (bug)[bf7135] regression in Tcl_Write() interface
+  * (bug)[10dc6d] fix [gets] on non-blocking channels
+  * (bug)[214cc0] Restore [lappend v] return value
+  * (bug)[5adc35] Stop forcing EOF to be permanent
+- Add itcl-unbreak-iwidgets.patch to revert a recent change in
+  itcl that broke iwidgets.</comment>
+    <requestid>262061</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4d80d31a2e3d15ed52e5247becc2de89</srcmd5>
+    <version>8.6.4</version>
+    <time>1442638299</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>320785</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>80117bf33c58172152e0b71e94ebfb49</srcmd5>
+    <version>8.6.5</version>
+    <time>1457945772</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.5:
+  * (bug)[d87cb1] Proper tailcall from compiled ensembles
+  * (bug)[879a07] Incomplete chars @ buffer ends
+  * (bug)[894da1] Hang flushing blocking channels
+  * (enhance)[b9d043] Default use of gzip transfer encoding
+    =&gt; http 2.8.9
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[9dd1bd] destructor [self] after failed constructor
+  * (bug)[0f42ff] [tailcall] combined with [next]
+  * (bug)[c11a51] http: race condition in -accept option
+  * (enhance) More pure lists from compiled [list]
+  * (enhancement) Relax memdebug constraint on extensions
+  * (bug)[268b23] crash in traced [expr]
+  * (bug)[478c44] Memleak in zlib compresion errors
+  * (bug)[e770d9] Higher baud on serial channels
+  * (update) Update Unicode data to 8.0
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[a4cb3f] compiled [lreplace] handling of end
+  * (enhance) Use Unicode SendMessageTimeout()
+    =&gt; registry 1.3.1
+  * (TIP 412) msgcat dynamic locale change and package private
+    locale    =&gt; msgcat 1.6.0
+  * (bug)[a0ece9] crash in traced [expr]
+  * (TIP 436) [info object isa] favors 'false' over error
+    =&gt; TclOO 1.0.4
+  * (bug)[b1534b][9bad63] writes beyond buffer bounds
+  * (bug)[a3309d] Memleak in compiled [unset a($i)]
+  * (bug)[57945b] lock in forking/multi-threading
+  * (bug)[3e7eca] Allocation overflow in expr parsing
+  * (bug) Correct problems found in Coverity audit</comment>
+    <requestid>365277</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>563ff9c44849b219e09b4d1df104ca61</srcmd5>
+    <version>8.6.6</version>
+    <time>1481964333</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.6:
+  * (bug)[803042] mem leak due to reference cycle.
+  * (bug)[bbc304] reflected watch race condition.
+  * (bug)[fadc99] compile-5.3.
+  * (enhancement)[1a25fd] compile [variable ${ns}::v]
+  * (bug)[1af8de] crash in compiled [string replace]
+  * (bug)[d30718] segv in notifier finalize
+  * (enhancement)[7d0db7] parallel make
+  * [f12535] enable test bindings customization
+  * (bug)[47ac84] compiled [lreplace] fixes
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[866368] RE \w includes 'Punctuation Connector'
+  * [07d13d] Restore TclBlend support lost in 8.6.1
+  * (bug)[3154ea] Mem corruption in assembler exceptions
+  * (bug) registry package support any Unicode env
+    =&gt; registry 1.3.2
+  * (bug)[f7d4e] [namespace delete] performance
+  * (TIP 447) execution time verbosity option
+    =&gt; tcltest 2.4.0
+  * (bug)[16828b] crash due to [vwait] trace undo fail
+  * (enhancement)[4b61af] good [info frame] from more cases.
+  * (bug)[c383eb] crash in [glob -path a]
+  * (update) Update Unicode data to 9.0 (nijtmans)
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[16896d] Tcl_DString tolerate append to self.
+  * (bug)[d55322] crash in [dict update].
+  * (bug)[dd260a] crash in [chan configure -dictionary].
+  * (bug)[f961d7] usage message with parameters with spaces.
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (enhancement)[09fabc] Sort order of -relateddir.</comment>
+    <requestid>445414</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>214ba93b700bfdaf8ebf96c4d11ddd51</srcmd5>
+    <version>8.6.6</version>
+    <time>1488732651</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461796</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fd3a9bf1daeef6edd42b52a5813640ca</srcmd5>
+    <version>8.6.7</version>
+    <time>1505919911</time>
+    <user>dimstar_suse</user>
+    <comment>- New version: 8.6.7:
+  * (bug)[c09edf] Bad caching with  custom resolver
+  * (bug)[4dbdd9] Memleak in test var-8.3
+  * (bug)[2bf561] Allow empty command as alias target
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[4d5ae7] Crash in async connects host no address
+  * (bug)[838e99] treat application/xml as text =&gt; http 2.8.10
+  * (bug)[3cc1d9] Thread finalization crash in zippy
+  * (bug)[be003d] Fix [scan 0x1 %b], [scan 0x1 %o]
+  * (bug)[eb6b68] Fix stringComp-14.5
+  * (bug)[b26e38] Fix zlib-7.8
+  * (bug)[1ae129] Fix memleak in [history] destruction
+  * (feature) Provisional Tcl 9 support in msgcat and tcltest
+    =&gt; msgcat 1.6.1 =&gt; tcltest 2.4.1
+  * (bug)[824752] Crash in Tcl_ListObjReplace()
+  * (bug)[79614f] invalidate VFS mounts on sytem encoding change
+  * (bug) TclOO fix stops crash mixing Itcl and snit
+  * (update) Reconcile libtommath updates; purge unused files
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[b87ad7] Repair drifts in timer clock
+  * (bug)[39f630] Revise Tcl_LinkVar to tolerate some prefixes
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[d0f7ba] Improper NAN optimization. expr-22.1[01]
+  * (bug)[25842c] zlib stream finalization
+  * (enhancement) [clock] and [encoding] are now ensembles
+  * (enhancement) several [clock] subcommands bytecoded
+  * (bug)[900cb0] Fix OO unexport introspection
+  * (bug)[42202b] Nesting imbalance in coro injection
+  * (bug)[bc4322] http package support for safe interps
+  * (bug)[f34cf8] [file join a //b] =&gt; /b</comment>
+    <requestid>525915</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>dfda8aa459111faa0ddf1fdc8b580d71</srcmd5>
+    <version>8.6.7</version>
+    <time>1506955462</time>
+    <user>dimstar_suse</user>
+    <comment>- Whiltelist known-failing tests. Further investigation needed.</comment>
+    <requestid>528684</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>0dc99b2717c1796a411f1d63c1e000b9</srcmd5>
+    <version>8.6.7</version>
+    <time>1513676687</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more tests in Whitelist as bypass boo#1072657
+  identified following tests failed on PowerPC
+  interp-34.9 interp-34.13 http-3.25 timer-2.1 thread-20.9 (forwarded request 556865 from michel_mno)</comment>
+    <requestid>556889</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>08b5d44717b167c68dafe5429a584f9d</srcmd5>
+    <version>8.6.7</version>
+    <time>1513851690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558580</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a915462e37097bf152ef6ce41f026d49</srcmd5>
+    <version>8.6.9</version>
+    <time>1548769128</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a regression in the handling of denormalized empty lists
+  (tcl-expand-regression.patch, tcl#cc1e91552c).
+
+This will fix the sqlite3 build issues in staging together with the
+sqlite3 patch I will submit in a moment.</comment>
+    <requestid>666787</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>bb25376f3b2ca58c971bfa2495873930</srcmd5>
+    <version>8.6.9</version>
+    <time>1562591344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712747</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>8d19ed22f195be966304f69da10c8c28</srcmd5>
+    <version>8.6.9</version>
+    <time>1564413706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717532</requestid>
+  </revision>
+</revisionlist>

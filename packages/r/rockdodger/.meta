@@ -1,0 +1,8 @@
+<package name="rockdodger" project="openSUSE:Factory">
+  <title>Rock Dodger</title>
+  <description>Addictive rock-dodging greeblie-killing platform game.
+
+Dodge the rocks for as long as possible until you die. Kill greeblies to
+make the universe safe for non-greeblie life once again.</description>
+  <devel project="games" package="rockdodger"/>
+</package>

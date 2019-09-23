@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0193c4b79fff31800ec0c1f86c572731</srcmd5>
+    <version>0.5.0</version>
+    <time>1378748933</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>197412</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0193c4b79fff31800ec0c1f86c572731</srcmd5>
+    <version>0.5.0</version>
+    <time>1379664167</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b911e124b65e01a7a0b8065eb33378d4</srcmd5>
+    <version>0.5.1</version>
+    <time>1382378498</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 0.5.1:
+  * The :meth:`.CacheRegion.invalidate` method now supports an option
+  ``hard=True|False``.
+  * New dogpile-specific exception classes have been added, so that
+  issues like &quot;region already configured&quot;, &quot;region unconfigured&quot;,
+  raise dogpile-specific exceptions.  Other exception classes have</comment>
+    <requestid>204181</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1ce1786dfe07546edf98b571e4e2f68</srcmd5>
+    <version>0.5.2</version>
+    <time>1388480939</time>
+    <user>coolo</user>
+    <comment>- update to 0.5.2:
+  * Added a new argument ``lock_factory`` to the :class:`.DBMBackend`
+  * implementation.  This allows for drop-in replacement of the default
+  * :class:`.FileLock` backend, which builds on ``os.flock()`` and only
+  * supports Unix platforms. (forwarded request 212462 from dirkmueller)</comment>
+    <requestid>212464</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f92639cae7dfce0c6acb67625b83ba07</srcmd5>
+    <version>0.5.3</version>
+    <time>1389725578</time>
+    <user>coolo</user>
+    <comment>- update to 0.5.3:
+  * Fixed bug where the key_mangler would get in the way of usage of the
+  async_creation_runner feature within the :meth:` (forwarded request 213711 from dirkmueller)</comment>
+    <requestid>213734</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f92639cae7dfce0c6acb67625b83ba07</srcmd5>
+    <version>0.5.3</version>
+    <time>1409302860</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93eb80eb1004130d1ebdbb0431773e8b</srcmd5>
+    <version>0.5.4</version>
+    <time>1410967519</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249303</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d08c9f1efbe5e405d43fdde32f6aa2e2</srcmd5>
+    <version>0.5.6</version>
+    <time>1430983347</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305655</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f1e3ff716ba43da3e0b85c38e3ceab5a</srcmd5>
+    <version>0.5.7</version>
+    <time>1458333592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367839</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>214970ac6b43b0fe1223cce150a4b498</srcmd5>
+    <version>0.6.1</version>
+    <time>1468360270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406264</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e8586dd47064191af0392d16b75f59c7</srcmd5>
+    <version>0.6.2</version>
+    <time>1475055012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424261</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>991913e69108888c3fe023012213432a</srcmd5>
+    <version>0.6.2</version>
+    <time>1493363536</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484806</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c23993d7362d6438e53724d629cf0e9b</srcmd5>
+    <version>0.6.2</version>
+    <time>1495442790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493156</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7ff95a402bf08dc30f713905c3c0d230</srcmd5>
+    <version>0.6.4</version>
+    <time>1503482065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517971</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ea793d1215cc2ca53a4504aa36bcf5d9</srcmd5>
+    <version>0.6.4</version>
+    <time>1510232814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540004</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e1cfd9408e278572f44e51f7b70d0d46</srcmd5>
+    <version>0.6.4</version>
+    <time>1519041727</time>
+    <user>dimstar_suse</user>
+    <comment>- add  dogpile-threading.patch</comment>
+    <requestid>577786</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e15c21e150a29fce083eeffc48a0961b</srcmd5>
+    <version>0.6.5</version>
+    <time>1522232809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591544</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1c636705cddcc6a9288a74926243050a</srcmd5>
+    <version>0.6.5</version>
+    <time>1524576812</time>
+    <user>dimstar_suse</user>
+    <comment>- skip lock tests, they fail frequently (bsc#1086987)
+
+- for testing purposes drop dogpile.cache-tests_more_slow_waiters.patch
+
+- only run generic tests using pytest (bsc#1089564)</comment>
+    <requestid>600039</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>992c6eb862c9ff25a3d64a9de4ccfd6f</srcmd5>
+    <version>0.6.6</version>
+    <time>1540448411</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>642929</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b3bac8179e70c74a240d0ae22b2ae88d</srcmd5>
+    <version>0.6.8</version>
+    <time>1544726849</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.8:
+  * Project hosting has moved to GitHub, under the SQLAlchemy
+    organization at https://github.com/sqlalchemy/dogpile.cache
+  * Fixed issue in the :meth:`.CacheRegion.get_or_create_multi` method which
+    was erroneously considering the cached value as the timestamp field if the
+    :meth:`.CacheRegion.invalidate` method had ben used, usually causing a
+    ``TypeError`` to occur, or in less frequent cases an invalid result for
+    whether or not the cached value was invalid, leading to excessive caching
+    or regeneration. The issue was a regression caused by an implementation
+    issue in the pluggable invalidation feature added in :ticket:`38`.
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655471</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4730060313b1a7d8fb549fc1db8a4f69</srcmd5>
+    <version>0.7.1</version>
+    <time>1552207238</time>
+    <user>coolo</user>
+    <comment>- Update to 0.7.1:
+  * fix python3 deprecation warnings
+  * Restore the API for async_creation_runner in all cases
+
+- Fix fdupes call</comment>
+    <requestid>682880</requestid>
+  </revision>
+</revisionlist>

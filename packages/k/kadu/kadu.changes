@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Thu Mar  8 21:19:01 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove BuildRequires on xorg-x11-devel.
+- add explicit BuildRequires on libgcrypt-devel
+
+-------------------------------------------------------------------
+Wed Feb 28 20:04:29 UTC 2018 - fisiu@opensuse.org
+
+- Add pkgconfig(Qt5Sql) to BuildRequires to fix build issue.
+
+-------------------------------------------------------------------
+Tue Jun  6 21:52:15 UTC 2017 - fisiu@opensuse.org
+
+- Add fix-gcc7.patch: fix compilation with gcc7.
+
+-------------------------------------------------------------------
+Tue Jun  6 20:18:43 UTC 2017 - fisiu@opensuse.org
+
+- Update to 4.3:
+  * always use TLS connection
+  * do not allow other ports then 443
+  * update server list
+  * remove server configuration dialog
+
+-------------------------------------------------------------------
+Sat Dec 17 14:47:46 UTC 2016 - fisiu@opensuse.org
+
+- Update to 4.2:
+  * Fix crashes related to SMS and sound plugin
+  * Fixed typos in translation
+  * Disbale build of all external plugins due to kadu plugin api change.
+
+-------------------------------------------------------------------
+Mon Nov 28 19:50:36 UTC 2016 - fisiu@opensuse.org
+
+- Update to 4.1:
+  * Drop compatibility with 0.6.5 configuration file
+  * Remove many old plugins, including amarok1_mediaplayer, encryption_ng,
+    encryption_ng_simlite, growl_notify, history_migration, itunes_mediaplayer,
+    profiles_import, phonon_sound and falf_mediaplayer
+  * Synchronize multi-session statuses
+  * Many fixes and minor improvements
+
+-------------------------------------------------------------------
+Wed Aug 31 08:10:06 UTC 2016 - fisiu@opensuse.org
+
+- Build with xmpp-qt5 to avoid crashes.
+- Add: libqxmpp-qt5-fix.patch
+
+-------------------------------------------------------------------
+Thu Aug 18 08:45:04 UTC 2016 - fvogt@suse.com
+
+- Require Qt5Script instead of Qt5Declarative to fix build
+
+-------------------------------------------------------------------
+Mon Mar 14 22:38:38 UTC 2016 - fisiu@opensuse.org
+
+- Update to 3.0:
+  * Rewrite docking plugins
+  * File transport protocol comaptible with GG 11/12
+  * Support for server notification about avatar updates
+  * XMPP library was changed from Iris to QXmpp
+  * No more FB support, it has dropped xmpp support
+  * Minor bugfixes and optimizations
+- Drop qdatastream-qt55.patch: fixed upstream
+- Drop qt_dock_icon.patch: fixed upstream
+
+-------------------------------------------------------------------
+Wed Nov 18 22:00:40 UTC 2015 - fisiu@opensuse.org
+
+- Add qdatastream-qt55.patch: fix compilation with Qt >= 5.5.
+- Add qt_dock_icon.patch: fix tray icon in Plasma 5.
+
+-------------------------------------------------------------------
+Tue Aug 18 18:47:34 UTC 2015 - fisiu@opensuse.org
+
+- Update to 2.1:
+  * Esc closes chat windows
+  * Fix licence window on Linux
+  * Set status to offline after disconnected because of multilogin
+- Update to 2.0:
+  * Port to Qt 5.2
+  * Store content of input box in chat widgets
+  * Paste and send action added to chat widget
+  * Add option to open chat windows minimized on incoming message
+  * Hide description option also affects notifications
+  * Plugin categories are now translated
+  * Remove support for configuration files of Kadu 0.6.5
+  * Many bugfixes and minor changes
+
+-------------------------------------------------------------------
+Tue Feb 10 21:37:19 UTC 2015 - fisiu@opensuse.org
+
+- Update to 1.5, bugfixes only:
+  * new chat notification is now closed after opening chat widget
+  * receiving images works again
+  * uuids visible in info panel after adding new buddy
+  * random disconnections
+  * crash after clicking on hint
+  * clear history menu item dissappears after a second
+- Enable all translations.
+
+-------------------------------------------------------------------
+Fri Jan 30 20:17:12 UTC 2015 - sfalken@opensuse.org
+
+- Added 0001-fix_SDK_DIR.patch to fix buildfailure.
+  * Backport from https://gitorious.org/kadu/rakuco-kadu/commit/8185e79cbc6ce3e53006861c8edc0c7b26dc06d8
+
+-------------------------------------------------------------------
+Fri Nov  7 00:10:12 UTC 2014 - fisiu@opensuse.org
+
+- Upstream update to 1.2, bugfix only:
+  * users of old GG versions could not receive messages from Kadu
+  * after some imported configuration no contacts are displayed at all
+
+-------------------------------------------------------------------
+Sun Nov  2 18:03:27 UTC 2014 - fisiu@opensuse.org
+
+- Upstream update to 1.1 (changes since 0.12.3):
+  * new OTR encryption
+  * add faenza icon theme
+  * new tray tooltips
+  * image sending uses new protocol
+  * many bug fixes
+- All external plugins updated
+- New external plugin kadu-completion
+- Drop kadu-0.12.3-cmake-macro-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Dec  2 14:36:59 UTC 2013 - fisiu@opensuse.org
+
+- Add kadu-0.12.3-cmake-macro-fix.patch: Fix cmake macro usage in
+  openSUSE > 13.1.
+
+-------------------------------------------------------------------
+Fri Nov 22 12:32:40 UTC 2013 - fisiu@opensuse.org
+
+- Don't build against libntrack for openSUSE >= 13.1. Fix bnc#851159.
+
+-------------------------------------------------------------------
+Mon Nov  5 16:38:22 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.12.3, bugfix only:
+  + icons cleanup
+  + add French translation
+  + fix config file name created during crash application
+  + work around QTBUG-27122
+  + reconnect xmpp after waking up from suspend
+
+-------------------------------------------------------------------
+Thu Aug 30 18:07:20 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.12.2, bugfix only:
+  + fixed sent SMS history
+  + fixed xmpp status icons on GTK+-based platforms
+  + cleanup unused icons
+  + updated translations
+
+-------------------------------------------------------------------
+Thu Aug 30 17:03:47 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.12.1, bugfix only:
+  + reconnecting after suspend
+  + fixed avatar size in roster
+  + fixed handling of untrusted server certificates
+  + many minor bugs fixed
+
+-------------------------------------------------------------------
+Mon Jun 25 21:49:55 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.12.0:
+  + new history window
+  + history restore
+  + history file is now movable and can be used on other Kadu instances
+  + new status change window
+  + new plugins window
+  + basic MUC support
+  + per-buddy roster synchronization disabling
+- Update external plugins to get them working with kadu-0.12.0.
+
+-------------------------------------------------------------------
+Mon Apr 30 20:35:46 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.11.3, bugfix only:
+  + import history plugin fix
+  + setting proper description on shutdown
+
+-------------------------------------------------------------------
+Wed Apr 18 13:46:43 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.11.2, bugfix only.
+
+-------------------------------------------------------------------
+Wed Feb  4 14:15:41 UTC 2012 - fisiu@opensuse.org
+
+- Upstream update to 0.11.0:
+  + support for socks5, proxy for sms, better configuration interface
+  + faster and smaller history, asynchronous loading
+  + support for current avatar upload protocol (gadu-gadu)
+  + support for displaying conferences on roster (only for gadu-gadu)
+  + several GUI fixes and enchancements
+  + a lot of other bugfixes and API enchancements
+- Update external plugins to get them working with kadu-0.11.0.
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:40 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Nov 29 14:17:35 CET 2011 - ro@suse.de
+
+- use _lib macro to properly determine lib suffix
+
+-------------------------------------------------------------------
+Wed Oct 19 18:16:39 UTC 2011 - fisiu@opensuse.org
+
+- Update summary for main package
+
+-------------------------------------------------------------------
+Wed Oct 19 00:59:42 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.10.1, bugfix only.
+- Update external plugin: globalhotkeys and nextinfo
+
+-------------------------------------------------------------------
+Wed Oct 19 00:51:53 UTC 2011 - fisiu@opensuse.org
+
+- Set enchant as default spellchecker
+- Cleanup Requires and remove aspell-devel from Build Requires
+
+-------------------------------------------------------------------
+Tue Oct 18 19:05:57 UTC 2011 - coolo@suse.com
+
+- buildrequire enchant-devel to fix build on factory
+
+-------------------------------------------------------------------
+Mon Sep 26 19:51:12 UTC 2011 - fisiu@opensuse.org
+
+- Changed License to GPL-3.0+, fix bnc#718899
+
+-------------------------------------------------------------------
+Sun Sep 11 23:42:34 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.10.0:
+  * file transfers in Gadu-Gadu and Jabber/XMPP networks,
+  * chat window notifications,
+  * better integration with popular Linux desktop environments,
+  * support for Gadu-Gadu 10 contact list and its automatic synchronization,
+  * automatic recognition of lost Internet connection,
+  * greater stability and more enhancements,
+  * new translations.
+- Drop kadu-0.9.2-remove-Gaia-and-Pushpin-theme.diff:
+  fixed upstream.
+- External plugins updated.
+
+-------------------------------------------------------------------
+Fri May 20 14:36:25 UTC 2011 - fisiu@opensuse.org
+
+- spec cleanup, remove %{release} from Requires
+
+-------------------------------------------------------------------
+Thu May 19 16:51:52 UTC 2011 - fisiu@opensuse.org
+
+- kadu-0.9.2-remove-Gaia-and-Pushpin-theme.diff: bnc#694859
+
+-------------------------------------------------------------------
+Wed May 11 22:33:24 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.9.2, bugfix only.
+- Removed internal module: server_monitor
+
+-------------------------------------------------------------------
+Mon Apr 11 17:58:14 UTC 2011 - fisiu@opensuse.org
+
+- Upstream update to 0.9.1, bugfix only.
+- External modules update:
+  * globalhotkeys to 0.9.0-23
+  * lednotify to 0.9.0-28
+  * nextinfo to 0.9.0-5
+  * panelkadu to 0.9.0-7
+  * senthistory to 0.9.0-7
+
+-------------------------------------------------------------------
+Wed Mar 30 00:03:40 UTC 2011 - fisiu@opensuse.org
+
+- update to final 0.9.0 (it's like 0.6.6 but due to huge changelog,
+  developers released it as 0.9.0 :))
+
+-------------------------------------------------------------------
+Sun Mar  6 19:14:34 UTC 2011 - fisiu@opensuse.org
+
+- update to 0.6.6-rc2:
+  * this version supports XMPP protocol
+  * support for Facebook chat
+  * many other fixes and features, please look into ChangeLog file
+- some external modules were moved to core or they are unsupported:
+  * kadu-mx610_notify-0.4.1.tar.bz2: removed
+  * kadu-pajacyk-0.2.1.tar.bz2: removed
+  * kadu-tabs-1.2.7.tar.bz2: moved to core
+  * kadu-water_notify-0.2.1.tar.bz2: removed
+  * kde_notify-0.3.4.tar.gz: moved to core
+  * mail-0.3.6.tar.bz2 and mail_fix.patch: removed
+  * plus_pl_sms-plus_pl_sms-0.6.5.4-1.tar.bz2: removed
+- we don't need patches for dropped internal modules:
+  * drop kadu-0.6.5-voice-external-libgsm.patch: removed
+- some external modules were updated:
+  * anonymous_check to 0.6.6.1
+  * globalhotkeys to 0.6.6-22
+  * lednotify to 0.6.6-26
+  * senthistory to 0.6.6-6
+  * mime_tex to 0.6.6.6
+  * nextinfo to 0.6.6-4
+  * panelkadu to 0.6.6-6
+  * drop mime_tex-fix_lib_path.patch: fixed upstream
+- dropped extra icon themes and tango emoticons
+
+-------------------------------------------------------------------
+Thu Jul  8 17:50:34 UTC 2010 - fisiu@opensuse.org
+
+- changed .desktop file entries with sed instead
+  %suse_update_desktop_file macro due to removing
+  existing translations
+
+-------------------------------------------------------------------
+Wed Jun 30 14:30:57 UTC 2010 - fisiu@opensuse.org
+
+- drop external .desktop file, using shipped one now
+
+-------------------------------------------------------------------
+Thu May 20 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- bumped BuildRequires libgadu to >= 1.9.0
+
+-------------------------------------------------------------------
+Mon Feb  8 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- added 'libgadu >= 1.8.92' as required package
+
+-------------------------------------------------------------------
+Thu Feb  4 00:00:00 UTC 2010 - fisiu@opensuse.org
+
+- upstream update to 0.6.5.4
+  * needs libgadu >= 1.9.0rc2 to support gadu-gadu >= 8
+  * new modules: single_window, mpris_mediaplayer
+  * new option --safe-mode to start kadu without any modules
+  * many more features, all list in ChangeLog file
+
+-------------------------------------------------------------------
+Wed Dec  9 00:00:00 UTC 2009 - fisiu@opensuse.org
+
+- version 0.6.5.3
+  * fixed xss linking in idle module (in openSUSE 11.2 package)
+  * rebuild package for all rel/arch with stock libqt4
+
+-------------------------------------------------------------------
+Thu Nov  5 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- version 0.6.5.3
+  * updated kde_notify to 0.3.3
+  * dbus issue in mediaplayer module fixed
+  * xss issue in idle module fixed
+
+-------------------------------------------------------------------
+Wed Oct 21 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.6.5.3
+
+-------------------------------------------------------------------
+Wed Apr 15 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.6.5.2
+
+-------------------------------------------------------------------
+Sun Jan 25 00:00:00 UTC 2009 - fisiu82@gmail.com
+
+- upstream update to 0.6.5.1
+  * all internal modules are in kadu rpm
+  * all external are in separate rpms
+
+-------------------------------------------------------------------
+Sun Dec 14 00:00:00 UTC 2008 - fisiu82@gmail.com>
+
+- version 0.6.5
+  * added Sound Themes
+
+-------------------------------------------------------------------
+Sat Dec 13 00:00:00 UTC 2008 - fisiu82@gmail.com
+
+- version 0.6.5
+  * added Emoticon and Icon Themes
+
+-------------------------------------------------------------------
+Wed Dec 10 00:00:00 UTC 2008 - fisiu82@gmail.com
+
+- upstream update to 0.6.5
+
+-------------------------------------------------------------------
+Tue Dec  2 00:00:00 UTC 2008 - fisiu82@gmail.com
+
+- update to 0.6.5rc2

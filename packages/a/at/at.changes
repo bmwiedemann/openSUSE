@@ -1,0 +1,770 @@
+-------------------------------------------------------------------
+Tue Aug 27 15:51:24 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- atd.pamd: integrate pam_keyinit pam module [bsc#1144041]
+
+-------------------------------------------------------------------
+Tue Oct 23 12:36:49 UTC 2018 - kstreitova@suse.com
+
+- Version update to at 3.1.23 [bsc#1112660]
+  * 832368-Using_of_the_meaningless_fcntl: Fix call of fcntl by
+    replacing (long) 1 with FD_CLOEXEC
+  * 892819-at__improvements_to_atd.service: Improve atd.service,
+    see bug report 892819
+  * 885891-at__stale_batchjobs_after_reboot: Remove stale at jobs
+    after a boot.
+  * 897669-897670-Some_fixes_in_the_manuals: Fix some warnings in
+    manpages at.1 and atd.8
+  * 883730-Remove_invalid_email_from_man_page: Remove invalid email
+    from man pages.
+  * Draft of a release script
+  * Finalised script to release software.
+- refresh at-atq-timeformat.patch
+- refresh at-adjust_load_to_cpu_count.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:39:24 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sat Jul 22 07:21:45 UTC 2017 - tchvatal@suse.com
+
+- Drop patch at-3.1.8-eal3-manpages.patch merged upstream differently
+
+-------------------------------------------------------------------
+Sat Jul 22 07:07:28 UTC 2017 - tchvatal@suse.com
+
+- Version update to at 3.1.20 to match latest upstream:
+  * Pam and selinux implemented upstream
+  * various tiny fixes
+- Rebase patches:
+  * at-3.1.13-documentation-dir.patch
+  * at-3.1.13-massive_batch.patch
+  * at-3.1.14-joblist.patch
+  * at-3.1.14-parse-suse-sysconfig.patch
+  * at-3.1.14-usePOSIXtimers.patch
+  * at-3.1.14.patch
+- Drop no longer needed patches:
+  * at-3.1.13-formatbugs.patch
+  * at-3.1.13-pam-session-as-root.patch
+  * at-3.1.13-pam.patch
+  * at-3.1.13-queue-nice-level.patch
+  * at-3.1.14-selinux.patch
+
+-------------------------------------------------------------------
+Tue Oct 13 13:36:03 UTC 2015 - kstreitova@suse.com
+
+- add at-3.1.16-handle_malformed_jobs.patch to prevent creation of
+  the corrupted files and their looping [bnc#945124] 
+
+-------------------------------------------------------------------
+Tue Jun 23 16:48:56 UTC 2015 - vcizek@suse.com
+
+- loadavg on Linux is a sum over all CPUs, so multiply LOADAVG_MX
+  by the amount of CPUs when comparing to loadavg (bnc#889174)
+  * added at-adjust_load_to_cpu_count.patch
+
+-------------------------------------------------------------------
+Mon Jun 22 15:07:32 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 3.1.16 to match latest upstream:
+  * Fix regression for sec-fix in bash we applied in form of patch
+    till now - deleting at-3.1.15-sane-envkeys.patch
+- Sync/split features to be patch specific, modifying:
+  * at-3.1.13-pam.patch
+  * at-3.1.14-parse-suse-sysconfig.patch
+  * at-3.1.14-selinux.patch
+
+-------------------------------------------------------------------
+Mon Jun 22 15:02:30 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Remove systemd conditional (we do not work on sle11 anyway)
+
+-------------------------------------------------------------------
+Thu Jun  4 01:03:54 UTC 2015 - crrodriguez@opensuse.org
+
+- atd.service: run After=nss-user-lookup.target not after
+  systemd-user-sessions.service
+- atd.service: run After=time-sync.target 
+
+-------------------------------------------------------------------
+Mon Oct  6 20:32:38 UTC 2014 - lchiquitto@suse.com
+
+- Replace at-sane-envkeys.diff by at-3.1.15-sane-envkeys.patch,
+  a simpler fix from upstream [bsc#899160]
+
+-------------------------------------------------------------------
+Fri Oct  3 15:00:43 UTC 2014 - crrodriguez@opensuse.org
+
+- at-3.1.14-usePOSIXtimers.patch (from Fedora) 
+  Use Posix timers, this 
+  avoid the need of horrible suspend/resume hacks like at.sleep 
+  with pm-utils/systemd 
+
+-------------------------------------------------------------------
+Tue Sep 30 13:20:21 UTC 2014 - jengelh@inai.de
+
+- Add at-sane-envkeys.diff to skip exporting variables with
+  awkward keys [bsc#899160]
+
+-------------------------------------------------------------------
+Wed Sep 24 12:21:20 UTC 2014 - pgajdos@suse.com
+
+- updated to 3.1.15:
+  * pam.conf: require pam_loginuid.so
+  * atd.service.in: Add Documentation field.
+  * atd.service.in: Set IgnoreSIGPIPE=false
+
+-------------------------------------------------------------------
+Thu Jul 31 09:26:21 UTC 2014 - alarrosa@suse.com
+
+- Remove a relative path that is not needed in the service symlink
+
+-------------------------------------------------------------------
+Mon Jul 28 03:32:36 UTC 2014 - crrodriguez@opensuse.org
+
+- Remove extra remains of sysvinit compat. 
+- Restore needed call to fillup_only that went lost in the 
+  sysvinit change.
+
+-------------------------------------------------------------------
+Fri Jul 25 09:20:31 UTC 2014 - pgajdos@suse.com
+
+- introduced -o <timeformat> switch for atq [bnc#879402]
+  * added at-atq-timeformat.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 14:27:26 UTC 2014 - vdziewiecki@suse.com
+
+-Removed init script
+-fix bnc#880364 - at pam file is not calling pam_loginuid
+
+-------------------------------------------------------------------
+Mon Mar  3 10:21:36 UTC 2014 - aj@ajaissle.de
+
+- New upstream release 3.1.14
+  + Add systemd service file. (deb#639634)
+  + Initialize jobno before using it.
+  + No longer try to compile and run a trivial C program. (deb#632301)
+  + Add -M option to usage message.
+  + Use LDFLAGS when linking programs.
+
+- Rebased the following patches:
+  * at-3.1.13.patch as at-3.1.14.patch
+  * at-3.1.13-joblist.patch as at-3.1.14-joblist.patch
+  * at-3.1.13-selinux.patch as at-3.1.14-selinux.patch
+  * at-parse-suse-sysconfig.patch as at-3.1.14-parse-suse-sysconfig.patch
+  * at-makefile-deps.patch as at-3.1.14-makefile-deps.patch
+
+- Dropped at-3.1.13-pie.patch (obsolete, now using LDFLAGS)
+
+- Changed systemd service file [Unit] -> "Description" to match upstream
+
+- Spec: cleanup + use some macros
+
+-------------------------------------------------------------------
+Thu Jan 23 21:15:53 UTC 2014 - aj@ajaissle.de
+
+- Fixed leaking the exit code of systemctl in atd.sh. A change 
+  to at.sleep prevents leaking systemctl exit code as well as 
+  simplifies the script.
+
+-------------------------------------------------------------------
+Tue Nov 12 15:37:29 UTC 2013 - mvyskocil@suse.com
+
+- use old privs model (fixes bnc#849720)
+  * at-backport-old-privs.patch
+- do not install sysvinit script and service file together
+- add sticky bit to atjobs
+
+-------------------------------------------------------------------
+Tue Oct 22 06:38:25 UTC 2013 - meissner@suse.com
+
+- adding service hook was in %verifyscript section not in %post
+
+-------------------------------------------------------------------
+Sun Oct  6 23:02:00 UTC 2013 - crrodriguez@opensuse.org
+
+- at-secure_getenv.patch at must use secure_getenv. 
+
+-------------------------------------------------------------------
+Mon Jul 15 13:50:37 UTC 2013 - werner@suse.de
+
+- No http://0pointer.de/public/systemd-units/atd.service anymore
+
+-------------------------------------------------------------------
+Sat Jul 13 00:09:02 UTC 2013 - crrodriguez@opensuse.org
+
+- systemd: start as non-forking service 
+- systemd: start after systemd-user-sessions.service
+
+-------------------------------------------------------------------
+Sat Jul 13 00:05:41 UTC 2013 - crrodriguez@opensuse.org
+
+- Use /run not /var/run to store the pid file 
+
+-------------------------------------------------------------------
+Thu Jun 20 01:52:46 UTC 2013 - crrodriguez@opensuse.org
+
+- at.sleep move away from pm-utils to systemd-sleep 
+
+-------------------------------------------------------------------
+Tue Jun 18 15:09:18 UTC 2013 - schwab@suse.de
+
+- at-makefile-deps.patch: fix makefile dependencies
+
+-------------------------------------------------------------------
+Tue Jun 11 13:09:18 UTC 2013 - lang@b1-systems.de
+
+- updated to upstream 3.1.13
+- ported patches to new source code in session with Stefan Seyfried
+- removed unnecessary patches
+
+-------------------------------------------------------------------
+Sun Apr 14 06:45:53 UTC 2013 - crrodriguez@opensuse.org
+
+- Ordering after syslog.target is no longer recommended. 
+
+-------------------------------------------------------------------
+Wed Feb  6 14:17:35 UTC 2013 - opensuse@cboltz.de
+
+- fix author information in at-parse-suse-sysconfig.patch (bnc#780259#c25)
+
+-------------------------------------------------------------------
+Sun Jan  6 20:43:45 UTC 2013 - jengelh@inai.de
+
+- Use simpler HXmap_get in at-parse-suse-sysconfig.patch
+  (bnc#780259)
+
+-------------------------------------------------------------------
+Wed Nov 28 21:46:58 UTC 2012 - crrodriguez@opensuse.org
+
+- When sysconfig variables are empty, do not set stuff to zero
+  just use the defaults. 
+
+-------------------------------------------------------------------
+Wed Nov 28 20:51:49 UTC 2012 - crrodriguez@opensuse.org
+
+- Fix systemd unit and sysconfig parsing the right way. 
+
+-------------------------------------------------------------------
+Mon Nov 26 18:11:09 UTC 2012 - opensuse@cboltz.de
+
+- use /etc/sysconfig/atd variables in atd.service (bnc#780259#c4)
+
+-------------------------------------------------------------------
+Thu Sep 13 21:24:09 UTC 2012 - opensuse@cboltz.de
+
+- fix atd.service (bnc#780259)
+
+-------------------------------------------------------------------
+Tue Dec 20 19:56:52 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Dec 20 11:26:55 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Mon Dec  5 19:19:40 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix rpmlint warnings 
+
+-------------------------------------------------------------------
+Mon Dec  5 19:05:48 UTC 2011 - crrodriguez@opensuse.org
+
+- Support systemd. 
+
+-------------------------------------------------------------------
+Sat Sep 17 13:28:30 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri May 13 07:45:00 UTC 2011 - vcizek@novell.com
+
+- added missing license to distribution (bnc#693355)
+
+-------------------------------------------------------------------
+Tue Apr 19 07:40:28 UTC 2011 - vcizek@novell.com
+
+- wrong jobdir mtime handling fixed (bnc#680113) 
+  thanks to Ingo Schwarze
+
+-------------------------------------------------------------------
+Tue Apr  5 15:36:24 UTC 2011 - vcizek@novell.com
+
+- fixed atd-atrm race condition (bnc#679857)
+
+-------------------------------------------------------------------
+Tue Mar  1 15:33:34 UTC 2011 - vcizek@novell.com
+
+- fixed bug introduced with at-3.1.8-tomorrow.patch (bnc#672586)
+
+-------------------------------------------------------------------
+Mon Feb  7 16:10:28 CET 2011 - jslaby@suse.de
+
+- source pm-utils functions in suspend/resume script to avoid
+  errors
+
+-------------------------------------------------------------------
+Tue Feb  1 09:49:43 UTC 2011 - vcizek@novell.com
+
+- at now shifts jobs with passed time without a date to tomorrow
+  (bnc#668485)
+
+-------------------------------------------------------------------
+Wed Nov 10 12:51:25 UTC 2010 - coolo@novell.com
+
+- own parent directories
+
+-------------------------------------------------------------------
+Tue Sep 28 04:53:33 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- /etc/at.deny has wrong account name [bnc#632250] 
+
+-------------------------------------------------------------------
+Tue Jul 20 20:29:11 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- wake up atd after suspend [bnc#592349] 
+
+-------------------------------------------------------------------
+Sat Jul 17 02:24:46 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- improve spec file
+- Should Recommend smtp_daemon 
+
+-------------------------------------------------------------------
+Wed Nov 18 17:18:44 UTC 2009 - mseben@novell.com
+
+- added pam conversion function (reworked pam.patch) fate#306386
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:06 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Thu Aug 27 12:16:43 CEST 2009 - mseben@novell.com
+
+- closedir.patch renamed to leak-fix.patch and added others fixs 
+  of resource leaks (bnc#533454)
+
+-------------------------------------------------------------------
+Thu Aug 13 20:50:51 UTC 2009 - mseben@novell.com
+
+- added closedir.patch fix missing call of closedir() (bnc#523346)
+
+-------------------------------------------------------------------
+Thu May 14 15:59:43 CEST 2009 - puzel@suse.cz
+
+- added at-3.1.8-pam-session-as-root.patch (bnc#329210, bnc#408986)
+
+-------------------------------------------------------------------
+Mon Mar  2 16:52:17 CET 2009 - sebo@suse.de
+
+- added cleanup_perm.patch to fix permissions for unlink (bnc#478733)
+
+-------------------------------------------------------------------
+Thu Feb 12 14:52:56 CET 2009 - mseben@suse.cz
+
+- fixed nice level of queues : queue-nice-level.patch [bnc#225463]
+
+-------------------------------------------------------------------
+Thu Jan  8 10:38:35 CET 2009 - prusnak@suse.cz
+
+- corrected selinux.patch [bnc#463521]
+
+-------------------------------------------------------------------
+Wed Oct  8 18:34:53 CEST 2008 - bwalle@suse.de
+
+- Fix documentation directory in at(1).
+
+-------------------------------------------------------------------
+Mon Sep  1 13:52:04 CEST 2008 - puzel@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Tue Apr  8 17:32:59 CEST 2008 - mrueckert@suse.de
+
+- add at-3.1.8_massive_batch.patch: (bnc#347126)
+  properly handle sighup when multiple jobs are submitted at the
+  same time
+
+-------------------------------------------------------------------
+Fri May 11 15:09:08 CEST 2007 - mrueckert@suse.de
+
+- remove postfix from the build requires. (#225469)
+
+-------------------------------------------------------------------
+Thu Mar 29 10:37:51 CEST 2007 - meissner@suse.de
+
+- buildrequires flex,bison
+
+-------------------------------------------------------------------
+Mon Mar 19 17:07:09 CET 2007 - mrueckert@suse.de
+
+- readd at-3.1.8-pam.diff: (#222563)
+  The breaking part of the setreuid(daemon_uid,daemon_uid) in
+  perm.c. uid 25 can not write audit messages. As upstream removed
+  the pam code in perm.c aswell, we do the same here.
+
+-------------------------------------------------------------------
+Mon Dec 18 18:21:06 CET 2006 - ro@suse.de
+
+- added sysconfig variables ATD_BATCH_INTERVAL
+  and ATD_LOADAVG (fate#301318)
+
+-------------------------------------------------------------------
+Tue Nov 28 17:17:39 CET 2006 - mrueckert@suse.de
+
+- remove at-3.1.8-pam.diff it just breaks at.
+
+-------------------------------------------------------------------
+Tue Nov 21 11:36:25 CET 2006 - ro@suse.de
+
+- added PRIV_START/END calls around pam_start sections (#222412)
+
+-------------------------------------------------------------------
+Fri Sep  1 14:17:31 CEST 2006 - kukuk@suse.de
+
+- Add pam_loginuid.so to atd.pamd
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 13 00:09:32 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Dec  5 12:17:38 CET 2005 - kukuk@suse.de
+
+- Disable SELinux
+
+-------------------------------------------------------------------
+Mon Aug 29 11:01:42 CEST 2005 - kukuk@suse.de
+
+- Make pam config file non-executeable
+
+-------------------------------------------------------------------
+Thu Aug 25 13:48:55 CEST 2005 - kukuk@suse.de
+
+- Remove pam_loginuid.so  [may fix #112802]
+
+-------------------------------------------------------------------
+Mon Aug 15 17:27:16 CEST 2005 - kukuk@suse.de
+
+- Update to at-3.1.8-11 tarball (includes old patches)
+- Add PAM support
+
+-------------------------------------------------------------------
+Thu Jun  2 11:03:30 CEST 2005 - kukuk@suse.de
+
+- Compile with -fpie/-pie
+- Update SELinux patch
+
+-------------------------------------------------------------------
+Sat Feb  5 10:28:59 CET 2005 - meissner@suse.de
+
+- mark up for format string using functions.
+- fixed one error output
+
+-------------------------------------------------------------------
+Tue May 25 15:17:28 CEST 2004 - ro@suse.de
+
+- added "-t" docu to manpage
+
+-------------------------------------------------------------------
+Thu Mar 25 16:53:11 CET 2004 - mmj@suse.de
+
+- Add postfix to # neededforbuild
+
+-------------------------------------------------------------------
+Tue Mar 23 16:41:53 CET 2004 - thomas@suse.de
+
+- Added patch for EAL3 man-pages
+
+-------------------------------------------------------------------
+Tue Mar 23 09:19:22 CET 2004 - thomas@suse.de
+
+- Added patch for LAuS
+
+-------------------------------------------------------------------
+Wed Jan 28 09:38:31 CET 2004 - kukuk@suse.de
+
+- Add patch for SELinux
+
+-------------------------------------------------------------------
+Mon Oct 27 12:58:41 CET 2003 - ro@suse.de
+
+- package /usr/bin/at as 4750,root,trusted as in permissions.secure
+- add verify (not mode) for /usr/bin/at
+- add run_permissions macro to postinstall
+
+-------------------------------------------------------------------
+Mon Oct 20 01:38:35 CEST 2003 - ro@suse.de
+
+- don't build as root
+
+-------------------------------------------------------------------
+Tue Oct  7 17:11:27 CEST 2003 - ro@suse.de
+
+- support "at -l -q queue" and "-t timespec" (#31957)
+  (ported from FreeBSD)
+
+-------------------------------------------------------------------
+Fri Aug 29 11:18:58 CEST 2003 - kukuk@suse.de
+
+- Create at as system account [Bug #29611]
+
+-------------------------------------------------------------------
+Fri Aug 15 12:57:09 CEST 2003 - ro@suse.de
+
+- make "at -r" behave like "at -d" (#28753)
+- added restart_on_update/stop_on_removal macros
+
+-------------------------------------------------------------------
+Fri Jul 18 13:40:36 CEST 2003 - kukuk@suse.de
+
+- Fix spec file/Makefile to be able to build as normal user
+
+-------------------------------------------------------------------
+Wed Jun 18 13:00:58 CEST 2003 - ro@suse.de
+
+- added "X-UnitedLinux-Default-Enabled: no" to init-script
+
+-------------------------------------------------------------------
+Wed Jun 18 12:35:24 CEST 2003 - ro@suse.de
+
+- don't activate by default
+
+-------------------------------------------------------------------
+Mon May 19 12:08:18 CEST 2003 - ro@suse.de
+
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 13 00:28:45 CEST 2003 - ro@suse.de
+
+- use defattr
+
+-------------------------------------------------------------------
+Tue Mar 11 12:06:25 CET 2003 - ro@suse.de
+
+- fix postinstall for updates (appeared in #24653)
+
+-------------------------------------------------------------------
+Thu Nov 07 11:49:40 CET 2002 - tcrhak@suse.cz
+
+- fixed for bison 1.75: end rules with semicolon
+
+-------------------------------------------------------------------
+Fri Aug 23 18:35:48 CEST 2002 - bk@suse.de
+
+- mark /etc/at.deny as noreplace
+
+-------------------------------------------------------------------
+Mon Aug 19 17:34:31 CEST 2002 - kukuk@suse.de
+
+- Use $time instead of xntp in init script.
+
+-------------------------------------------------------------------
+Thu Aug  1 16:06:51 CEST 2002 - ro@suse.de
+
+- added prereqs
+
+-------------------------------------------------------------------
+Mon Jul  1 13:43:39 CEST 2002 - ro@suse.de
+
+- add ntp to Required-Start in init-script (#15833)
+
+-------------------------------------------------------------------
+Mon May 27 14:15:02 CEST 2002 - ro@suse.de
+
+- set SIGCHLD handler back to default when starting job
+
+-------------------------------------------------------------------
+Fri May 24 01:22:59 CEST 2002 - ro@suse.de
+
+- create user in install section
+
+-------------------------------------------------------------------
+Wed May 22 08:55:40 CEST 2002 - kukuk@suse.de
+
+- Create at user/group in preinstall script
+
+-------------------------------------------------------------------
+Tue Apr  2 14:52:23 CEST 2002 - ro@suse.de
+
+- don't try to copy config.guess and config.sub
+  (already done by suse_update_config)
+
+-------------------------------------------------------------------
+Wed Jan 16 09:04:59 CET 2002 - ro@suse.de
+
+- integrated two patches:
+  at-3.1.8-heapcorruption.dif and at-3.1.8-o_excl.dif
+  against heap corruption in time parser for commandline and for
+  safer opening of a file (O_EXCL).
+- removed all generated files from patch and copy config.{sub,guess}
+  from current automake
+
+-------------------------------------------------------------------
+Wed Jan  9 18:33:30 CET 2002 - kukuk@suse.de
+
+- Fix path to timespec in at.1 manual page [Bug #12784]
+
+-------------------------------------------------------------------
+Tue Jan  8 20:24:51 CET 2002 - egmont@suselinux.hu
+
+- removed colons from init script messages
+
+-------------------------------------------------------------------
+Wed Jan  2 11:24:09 CET 2002 - kukuk@suse.de
+
+- Remove warning about cron and at (never worked before and user
+  cannot see it)
+- Rename init script from at to atd
+- Don't source rc.config in init script (not needed any longer)
+- Remove $route from init script dependencies (does not exist)
+  [Bug #12689]
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Fri Dec 14 01:44:22 CET 2001 - ro@suse.de
+
+- removed START_ATD
+
+-------------------------------------------------------------------
+Mon Aug  6 12:25:13 CEST 2001 - ro@suse.de
+
+- updated rc script
+
+-------------------------------------------------------------------
+Fri Jun 15 17:39:46 CEST 2001 - schwab@suse.de
+
+- Add %suse_update_config.
+
+-------------------------------------------------------------------
+Tue Nov 28 01:25:30 CET 2000 - ro@suse.de
+
+- startscript to etc/init.d
+
+-------------------------------------------------------------------
+Mon Sep 25 15:17:50 CEST 2000 - ro@suse.de
+
+- sorted
+
+-------------------------------------------------------------------
+Wed Feb 16 13:36:10 CET 2000 - dipa@suse.de
+
+- apply debian patch at_3.1.8-8.diff full section of: at.c, at.1.in,
+  at.deny, at_allow.5, atd.8.in, at.8.in, batch config.guess,
+  config.sub, daemon.c, lex.yy.c, panic.c, parsetime.y, y.tab.c
+  (fix for bug #1766)
+
+-------------------------------------------------------------------
+Fri Feb  4 14:04:36 CET 2000 - ro@suse.de
+
+- fix missing getlock preload
+
+-------------------------------------------------------------------
+Fri Feb  4 12:02:43 CET 2000 - ro@suse.de
+
+- applied security fixes from thomas
+
+-------------------------------------------------------------------
+Mon Jan 17 16:20:17 CET 2000 - ro@suse.de
+
+- man -> usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Dec  8 15:58:09 MET 1998 - ro@suse.de
+
+- added reload to script (does a restart)
+
+-------------------------------------------------------------------
+Mon Dec  7 11:58:21 MET 1998 - ro@suse.de
+
+- added symlink /sbin/rcat -> init.d/at
+
+-------------------------------------------------------------------
+Mon Dec  7 11:24:33 MET 1998 - ro@suse.de
+
+- updated init-script
+
+-------------------------------------------------------------------
+Fri Feb 27 13:38:52 MET 1998 - ro@suse.de
+
+- installed timespec in docdir / fixed path in manpage
+
+-------------------------------------------------------------------
+Mon Oct 27 09:20:22 MET 1997 - ro@suse.de
+
+- update to version 3.1.8
+  ready for autobuild
+
+----------------------------------------------------------------------------
+Sun Jun 22 18:57:49 MEST 1997 - florian@suse.de
+
+
+- update to version 3.1.7
+
+----------------------------------------------------------------------
+Sun Jun  1 17:41:30 CEST 1997 - bs@suse.de
+
+- moved fillup stuff to var/adm/fillup-templates
+
+
+----------------------------------------------------------------------
+Wed Nov 13 02:46:13 MET 1996 - bs@suse.de
+
+
+boot script beautified.
+
+----------------------------------------------------------------------
+Mon Oct 14 13:49:28 MET DST 1996 - bs@suse.de
+
+
+recompiled and added README
+
+
+----------------------------------------------------------------------
+Wed Sep 25 00:22:19 MET DST 1996 - bs@suse.de
+
+- /var/spool/atspool/atspool fixed.
+
+----------------------------------------------------------------------
+Mon Sep 23 14:16:20 MET DST 1996 - bs@suse.de
+
+- new version 3.0
+- fillup etc/rc.config and sbin/init.d/at added.
+
+-------------------------------------------------------------------------
+Thu Sep 19 15:52:05 MET DST 1996 - bs@suse.de
+
+switched to version pre-3.0-960812.
+New: atd (daemon)
+fillup etc/rc.config and sbin/init.d-stuff added.
+
+
+----------------------------------------------------------------------
+Fri Aug 23 16:13:49 MET DST 1996 - florian@suse.de
+
+allow login names to be up to 16 characters long

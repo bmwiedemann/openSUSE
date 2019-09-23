@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8647f199d49dd09ed2ca6092ce76ee4a</srcmd5>
+    <version>3.0.1</version>
+    <time>1370925500</time>
+    <user>coolo</user>
+    <comment>needed by jquery-ui-rails</comment>
+    <requestid>178308</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0382b6d8025c526a1c5c5c84472624fb</srcmd5>
+    <version>3.0.4</version>
+    <time>1374758809</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183997</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0382b6d8025c526a1c5c5c84472624fb</srcmd5>
+    <version>3.0.4</version>
+    <time>1379664534</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7057801639c77a9685d52c4611b8a269</srcmd5>
+    <version>3.1.0</version>
+    <time>1392238274</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221432</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ba4b0dbbb71c200ef497a91d41a01275</srcmd5>
+    <version>3.1.1</version>
+    <time>1406556732</time>
+    <user>coolo</user>
+    <comment>- updated to version 3.1.1
+  - Updated to jQuery 1.11.1
+  - Updated to jquery-ujs 1.0.0</comment>
+    <requestid>242649</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ba4b0dbbb71c200ef497a91d41a01275</srcmd5>
+    <version>3.1.1</version>
+    <time>1409303242</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>12a8d5c1cb93a9f07fbfab9c11fbb0e2</srcmd5>
+    <version>3.1.1</version>
+    <time>1413263477</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255307</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>53ed722b8f8690eed6fee3cd0a1247da</srcmd5>
+    <version>3.1.1</version>
+    <time>1417438860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263397</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>604f3c247ae5ebe1220b8059e5308819</srcmd5>
+    <version>4.0.3</version>
+    <time>1424117586</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285641</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83fe4db861bc44adee6ecb67f5af3a3c</srcmd5>
+    <version>4.0.4</version>
+    <time>1435053366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312398</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>10006e660f296c5cf477737fb2216e00</srcmd5>
+    <version>4.0.5</version>
+    <time>1441296290</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328695</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>00fc09243c044c3d00e789f6908b7826</srcmd5>
+    <version>4.1.1</version>
+    <time>1461855177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370350</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>44075b0fb9de4c0cc6dce208165c18f4</srcmd5>
+    <version>4.2.1</version>
+    <time>1473679594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426165</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1956cd357862b9fd3168529c45f3f5a2</srcmd5>
+    <version>4.2.2</version>
+    <time>1484475539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450020</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c690f41bd8386462aa74351912e5af7d</srcmd5>
+    <version>4.3.1</version>
+    <time>1490965680</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482294</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aae2904f47adbf4f7d4c6a77fbf61733</srcmd5>
+    <version>4.3.3</version>
+    <time>1524144780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598288</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7aab3a222cb09caf182970e49ebf6443</srcmd5>
+    <version>4.3.5</version>
+    <time>1562843773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713992</requestid>
+  </revision>
+</revisionlist>

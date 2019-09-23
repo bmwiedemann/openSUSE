@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Sep  3 11:43:21 UTC 2012 - idonmez@suse.com
+
+- Depend on xcursorgen to fix build for Factory. 
+
+-------------------------------------------------------------------
+Tue Oct  7 00:59:37 CEST 2008 - jw@suse.de
+
+- added /usr/bin/tuxcursors
+  shell script with some helpful logic and info.
+  Needed, since I could not find a way to start 
+  KDE Control Center from the SUSE Menu at 11.0
+
+-------------------------------------------------------------------
+Tue Feb 12 23:43:24 CET 2008 - seife@suse.de
+
+- add libpng to buildrequires, since otherwise 10.2 build fails
+
+-------------------------------------------------------------------
+Tue Feb 12 21:08:32 CET 2008 - seife@suse.de
+
+- add stupid application cursor symlinks
+
+-------------------------------------------------------------------
+Tue Feb 12 18:47:16 CET 2008 - seife@suse.de
+
+- initial package submission
+

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7801adfb092de7ed22b9b2733b5a0a9</srcmd5>
+    <version>0.9.9</version>
+    <time>1513343138</time>
+    <user>dimstar_suse</user>
+    <comment>rename of pyrex</comment>
+    <requestid>556676</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57dbe42f95b564f8bfe693fa99845a6a</srcmd5>
+    <version>0.9.9</version>
+    <time>1544189651</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+- Add missing BR</comment>
+    <requestid>655580</requestid>
+  </revision>
+</revisionlist>

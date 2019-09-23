@@ -1,0 +1,309 @@
+-------------------------------------------------------------------
+Fri Aug  2 08:23:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Mon May 13 07:46:35 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace systemd-gtk BuildRequires with pkgconfig(systemd): make
+  the build cheaper by not having to wait for the 'real' systemd
+  package to have built, but allow to use systemd-mini. The change
+  in the stack causing this was polkit dropping its hard dep on
+  systemd.
+
+-------------------------------------------------------------------
+Sat May 11 20:12:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add systemd-gtk BuildRequires: Now needed due to changes
+  elsewhere in the stack.
+
+-------------------------------------------------------------------
+Wed Mar 13 08:33:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 22:24:12 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Handle cancellation during profiler startup more gracefully.
+
+-------------------------------------------------------------------
+Thu Feb 14 22:32:17 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.90:
+  + A new memory source for basic memory statistics. This is meant
+    for overview only, not precise details.
+  + Fix a small memory leak.
+  + Allow disabling memory/cpu sources from sysprof-cli.
+  + CSS styling updates.
+  + Updated icon for GNOME 3.32 icon initiative.
+  + The line visualizer can auto-discover Y axis range.
+  + Build system improvements.
+  + Updated translations.
+- Update URL to https://wiki.gnome.org/Apps/Sysprof.
+
+-------------------------------------------------------------------
+Thu Jan  3 22:00:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + Remove app-menu in favor of window-menu, following GNOME design
+    guidelines for 3.32.
+  + Fixes for i18n/l10n.
+  + Build fixes to avoid use of non-portable __WORDSIZE.
+  + Updated translations.
+- Add meson_test macro in check section, run tests.
+
+-------------------------------------------------------------------
+Fri Nov  2 18:24:25 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.2:
+  + The profiler menu button more properly handles changes to the
+    toplevel window.
+  + Fixes for i18n/l10n intialization.
+
+-------------------------------------------------------------------
+Wed Sep 26 12:03:56 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + Various compilation fixes for alternative platforms, compilers,
+    and toolchains.
+  + Backport model filter fixes from libdazzle.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 12 20:17:04 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + Fix incorrect free func for GPtrArray.
+  + Various build system improvements.
+  + ENABLE_POLKIT is now repsected in the kallsyms support.
+  + suggested-action fixes for CSS.
+  + Updated translations.
+- Drop sysprof-fix-incorrect-free-func.patch (fixed upstream).
+- Remove lang package from recommended packages as it already
+  supplements main package (same effect, it's redundant).
+
+-------------------------------------------------------------------
+Thu Jun 21 00:42:44 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.3:
+  + Experimental tracking of various drm events (vblank and
+    CRTC/MSC).
+  + Drawing code now uses double instead of float for additional
+    precision.
+  + CLOCK_MONOTONIC is now the preferred clock.
+  + A new capture type of "mark" has been added to the capture
+    format. It supports an event name with a duration >= 0.
+  + Various counters are automatically detected and displayed when
+    opening a capture file.
+  + A new in-tree tool "sysprof-cat" which can join multiple
+    capture files together gracefully.
+  + Fix a number of situations where cpu/pid were crossed.
+  + Updated translations.
+- Drop explicit gettext BuildRequires: meson doesn't look for it.
+
+-------------------------------------------------------------------
+Wed Apr 11 03:58:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.1:
+  + Updated translations.
+- Add hicolor-icon-theme BuildRequires for directory ownership
+  purposes.
+- Drop:
+  + binutils-devel, gobject-introspection-devel and libxml2-tools
+    BuildRequires packages: they are no longer required nor used
+    anymore.
+  + desktop_database_* and icon_theme_cache_* post/postun
+    scriptlets: their functionality has been moved to RPM file
+    triggers (version 4.13, suse_version 1330).
+
+-------------------------------------------------------------------
+Wed Mar 14 10:54:30 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + SpCaptureWriter now pre-initializes the scratch buffer to zero
+    to pacify valgrind.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:28:10 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Updated translations.
+- Drop sysprof-drop-debug-code.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:39:53 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 21 16:50:12 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Sysprof now exclusively uses the meson build system.
+  + Improvements to the process filtering model used in the
+    profiler popover.
+  + More tests for utility helpers.
+  + Some code was relicensed to LGPLv2.1+ to extend it's
+    reusability.
+  + A new libsysprof-capture-2.a static library is installed to
+    allow external tooling to read and write the capture format.
+    We expect tooling such as GJS to use this in the future.
+  + A new kallsyms tokenizer was added.
+  + If we fail to parse kallsyms as the effective user, we now
+    query the sysprofd daemon to access and parse those symbols for
+    us as root. This requires polkit authorization on the DBus
+    connection just like our elevated perf_event_open() helper.
+  + Now that we have to deal with overlapping kernel and user-space
+    memory, Sysprof tries harder to check the current perf context.
+    New API was added to symbol resolvers to facilitate this.
+- Split out new subpackage sysprof-capture-devel-static.
+- Use meson build system, following upstreams change:
+  + Add meson BuildRequires.
+  + Use meson/meson_build/meson_install instead of
+    configure/make/make_install.
+- Add sysprof-drop-debug-code.patch: Fix build on i586 by removing
+  lingering debug code.
+
+-------------------------------------------------------------------
+Thu Oct  5 13:17:45 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.1:
+  + Add missing FAQ to help documentation.
+
+-------------------------------------------------------------------
+Sat Sep 16 14:43:18 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Wed Sep  6 23:29:09 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Additional help topics.
+  + Fix for a potential divide-by-zero when generating callgraphs.
+  + Alignment attributes to allow building on armel/armhf/mipsel.
+  + About dialog is now modal.
+  + Each new Sysprof window gets its own window group.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 25 11:05:58 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.24.1:
+  + About dialog is now modal to it's direct parent only.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 09:17:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.24.0:
+  + Use gtk_show_uri_on_window() to improve help window placement
+    on Wayland.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 13:27:51 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.92:
+  + Compilation fix for 32-bit ARM.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  1 13:26:35 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.23.91:
+  + Various compilation checks based on results from ARM builders.
+  + Support for setting symbol directories to affect symbol
+    resolution.
+  + Translate paths from /newroot/ into the host filesystem when
+    possible. This should allow some degree of profiling
+    container-based applications and still resolve symbols on the
+    host. Builder does this now when profiling Flatpak-based
+    applications.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 18 17:53:31 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.23.90:
+  + Build system support for Meson.
+  + Appdata support has been added.
+  + Desktop file can be translated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 30 10:24:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.3:
+  + Fix expansion of function text in callgraph.
+  + Fix jump-to-function in callees list.
+  + Disable record button while generating callgraph profile.
+  + Ensure sysprof icons are available form libsysprof-ui-2.
+  + sysprof-cli requires --force to overwrite previous capture.
+  + Reduce code duplication in capture frame initialization.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov  2 18:18:28 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.2:
+  + ftruncate() when creating a capture in case we overwrite a
+    previous capture file. This ensures we don't leave junk at the
+    end of the capture.
+  + Handle EAGAIN when writing the opportunistic end-time header.
+  + Capture cursor should short circuit when no read delegate was
+    found.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct 15 11:27:09 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.1:
+  + A new data source called "hostinfo" has been added. It records
+    various CPU datapoints as "counters" in the sysprof capture.
+  + A new visualizers abstraction has been added so that we can
+    start providing new ways to look at profiler data.
+  + A CPU visualizer has been added which renders datapoints
+    recorded from the hostinfo data source.
+  + Selecting ranges of the visualizer will update the callgraph
+    limiting stacktrace samples, to the given time range.
+  + Missing headers are now installed which may be needed by
+    applications using libsysprof-ui.
+  + A keyboard shortcuts dialog has been added.
+  + A theme manager has been added to allow us to provide custom
+    CSS for various themes. Currently, we have additional styling
+    added for Adwaita and Adwaita-dark.
+  + Updated translations.
+- Pass --disable-Werror to configure, we do not need to handle
+  warnings as errors.
+
+-------------------------------------------------------------------
+Mon Sep 19 22:26:05 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  2 08:40:22 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.91:
+  + Allow collapsing the callgraph tree with Left arrow.
+  + Add a full barrier before writing data_tail as suggested by
+    Perf kernel documentation.
+  + Support for additional architectures has been enabled by the
+    use of C11 atomics.
+  + Require -std=gnu11 for stdatomic.h.
+  + Correct gettext domain for translation files.
+- Drop sysprof-correct-gettext-domain.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Aug 27 21:56:42 UTC 2016 - zaitor@opensuse.org
+
+- Initial package, version 3.21.90.
+

@@ -1,0 +1,7 @@
+<package name="gperf" project="openSUSE:Factory">
+  <title>A Compiler Tool for Generating Perfect Hash Functions</title>
+  <description>A perfect hash function is simply: a hash function and a data structure
+that allows recognition of a key word in a set of words using exactly
+one probe into the data structure.</description>
+  <devel project="devel:tools" package="gperf"/>
+</package>

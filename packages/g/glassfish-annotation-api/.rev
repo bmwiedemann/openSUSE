@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8555c52f2ac04186d6812da1cc19f4d6</srcmd5>
+    <version>1.3.2</version>
+    <time>1551024622</time>
+    <user>coolo</user>
+    <comment>Standalone javax.annotation-api</comment>
+    <requestid>669847</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b46a33ae274f1568a55930302d3e8d17</srcmd5>
+    <version>1.3.2</version>
+    <time>1554977953</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on the parent pom at all, since we don't build
+  with maven.
+</comment>
+    <requestid>693092</requestid>
+  </revision>
+</revisionlist>

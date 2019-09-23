@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Sun Apr 28 05:17:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.904
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+  
+  
+  1.904  Sat Apr 27 22:01:03 2019
+  
+      - Corrected 'cyclops', 'triceratops', etc.
+        (Thanks, Lady Aleena)
+
+-------------------------------------------------------------------
+Wed Nov  8 16:55:46 UTC 2017 - coolo@suse.com
+
+- updated to 1.903
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+  
+  
+  1.903  Mon Oct 30 11:44:44 2017
+  
+      - Various bugs in documentation code debugged
+        (Thanks, Kornel!)
+
+-------------------------------------------------------------------
+Sun May 28 05:57:44 UTC 2017 - coolo@suse.com
+
+- updated to 1.902
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+  
+  
+  1.902  Sat May 27 22:23:21 2017
+  
+      - Noted the new conversion documentation in Lingua::EN::Inflexion
+        (thanks Lady Aleena)
+
+-------------------------------------------------------------------
+Sun Jan  1 06:41:00 UTC 2017 - coolo@suse.com
+
+- updated to 1.901
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+  
+  
+  1.901  Sun Jan  1 06:16:25 2017
+  
+      - Removed Build.PL (thanks SKAJI)
+
+-------------------------------------------------------------------
+Thu Jul 28 05:30:29 UTC 2016 - coolo@suse.com
+
+- updated to 1.900
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+-------------------------------------------------------------------
+Fri May  8 08:23:43 UTC 2015 - coolo@suse.com
+
+- updated to 1.899
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+  
+  
+  
+  1.899  Wed May  6 06:34:22 2015
+  
+      - Fixed bug in ORD() where huge integers (in strings) were
+        downgraded to floating point before being (incorrectly) inflected
+        (thanks Dmytro!)
+
+-------------------------------------------------------------------
+Tue May  5 08:26:29 UTC 2015 - coolo@suse.com
+
+- updated to 1.897
+   see /usr/share/doc/packages/perl-Lingua-EN-Inflect/Changes
+
+  
+  
+  1.896  Mon Feb  4 13:10:48 2013
+  
+      - Fixed another POD nit (thanks Matthew)
+      - Removed second authorship attribution as requested.
+      - Vastly improved NUMWORDS (thanks Matthew, and Lady Aleena)
+  
+  
+  1.897  Tue May  5 16:10:54 2015
+  
+      - Noted "print NUMWORDS($num)" gotcha in documentation (thanks Lady Aleena)
+  
+      - Fixed undef var bug in t/no_commas.t
+        (thanks Matthew!)
+  
+      - Fixed words-below tests on things that aren't really numbers
+  
+      - Removed unneeded dependency on version
+  
+      - Doc nit knitted (thank-you Lady Aleena)
+  
+      - Added a pointer to Lingua::EN::Inflexion
+
+-------------------------------------------------------------------
+Wed Jun  5 09:20:17 UTC 2013 - coolo@suse.com
+
+- updated to 1.895
+    - Fixed several dozen obscure plurals (thanks Tom)
+
+    - Greatly improved the list of prepositions (thanks Tom)
+
+    - Several minor doc nits cleaned up
+
+    - Fixed 'miniseries', 'tv series' etc (thanks Lady Aleena)
+
+    - NON-BACKWARDS COMPATIBLE CHANGE:
+      WORDLIST now always add spaces around its final conjunction.
+      Please report any cases where this is an adverse change.
+
+    - Fixed a POD nit (thanks Gregor)
+
+    - Added 'words_below', 'comma', and 'comma_every' options to NO()
+      (Thanks Lady Aleena).
+
+-------------------------------------------------------------------
+Mon Jan 17 16:24:27 UTC 2011 - coolo@novell.com
+
+- initial package 1.893
+  * created by cpanspec 1.78.03
+

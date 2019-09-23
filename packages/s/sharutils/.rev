@@ -1,0 +1,202 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e43692dadf4982e58e3da150c31ab602</srcmd5>
+    <version>4.6.2</version>
+    <time>1166483871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7486a5175ffdc886c7d6cf470e44342b</srcmd5>
+    <version>4.6.3</version>
+    <time>1195172481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0501066c247aaed0940cd8ba77d2d558</srcmd5>
+    <version>4.6.3</version>
+    <time>1195476436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="86">
+    <srcmd5>0501066c247aaed0940cd8ba77d2d558</srcmd5>
+    <version>4.6.3</version>
+    <time>1195476436</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="87">
+    <srcmd5>d60cc9980e90d028a7844e51f475cd2a</srcmd5>
+    <version>4.6.3</version>
+    <time>1245340555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="89">
+    <srcmd5>d60cc9980e90d028a7844e51f475cd2a</srcmd5>
+    <version>4.6.3</version>
+    <time>1245340555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="90">
+    <srcmd5>9293c7cdf232eb8e63a19ddcaa2eda5b</srcmd5>
+    <version>4.6.3</version>
+    <time>1258377244</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/sharutils based on submit request 24443 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="91">
+    <srcmd5>917fd6ae0c906dbf8a803119bd6b60a5</srcmd5>
+    <version>4.6.3</version>
+    <time>1268926164</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="93">
+    <srcmd5>917fd6ae0c906dbf8a803119bd6b60a5</srcmd5>
+    <version>4.6.3</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="94">
+    <srcmd5>917fd6ae0c906dbf8a803119bd6b60a5</srcmd5>
+    <version>4.6.3</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="97">
+    <srcmd5>917fd6ae0c906dbf8a803119bd6b60a5</srcmd5>
+    <version>4.6.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e1bc9c0a906474c1da209d628ede4a87</srcmd5>
+    <version>4.11.1</version>
+    <time>1312442924</time>
+    <user>saschpe</user>
+    <comment>Recommends instead of require lang package. (forwarded request 77422 from a_jaeger)</comment>
+    <requestid>77423</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d9435a382dc5d56c7dffaf5b0d861f26</srcmd5>
+    <version>4.11.1</version>
+    <time>1312442936</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77423
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d9435a382dc5d56c7dffaf5b0d861f26</srcmd5>
+    <version>4.11.1</version>
+    <time>1319182467</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>89b9ea97c102f75107b39a84024bcf9e</srcmd5>
+    <version>4.11.1</version>
+    <time>1322828571</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94761 from coolo)</comment>
+    <requestid>94856</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>5367777e7264afbfe28363f1e17698a9</srcmd5>
+    <version>4.11.1</version>
+    <time>1323194642</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>5367777e7264afbfe28363f1e17698a9</srcmd5>
+    <version>4.11.1</version>
+    <time>1340184214</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>0c25600dfdeb4be59bb79e60eb7a2fef</srcmd5>
+    <version>4.11.1</version>
+    <time>1342772562</time>
+    <user>coolo</user>
+    <comment>Fix build with missing gets declaration (glibc 2.16) (forwarded request 128189 from a_jaeger)</comment>
+    <requestid>128246</requestid>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>0c25600dfdeb4be59bb79e60eb7a2fef</srcmd5>
+    <version>4.11.1</version>
+    <time>1359110402</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>e19f14aee9bb491a823568ef325568f2</srcmd5>
+    <version>4.11.1</version>
+    <time>1365337618</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162798 from namtrac)</comment>
+    <requestid>162943</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>e19f14aee9bb491a823568ef325568f2</srcmd5>
+    <version>4.11.1</version>
+    <time>1379664663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>e19f14aee9bb491a823568ef325568f2</srcmd5>
+    <version>4.11.1</version>
+    <time>1409303360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>33d8ce246cc35fc4f18d9226940893f3</srcmd5>
+    <version>4.15</version>
+    <time>1425377483</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288052</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b4f287b16e0667f97f5f5e215f3a30a2</srcmd5>
+    <version>4.15.1</version>
+    <time>1431248161</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305839</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7da2cddea746e405381753454a06b47e</srcmd5>
+    <version>4.15.2</version>
+    <time>1436111818</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312840</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>724df386b507746d522eaa7f4e4f9c86</srcmd5>
+    <version>4.15.2</version>
+    <time>1521498623</time>
+    <user>dimstar_suse</user>
+    <comment>Fix possible buffer overflow</comment>
+    <requestid>586335</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>79aeee39d648518230be48ffbacd65e0</srcmd5>
+    <version>4.15.2</version>
+    <time>1533887244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627963</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>b835e977ffa4086d481a8d4aaea9f68f</srcmd5>
+    <version>4.15.2</version>
+    <time>1567852445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727734</requestid>
+  </revision>
+</revisionlist>

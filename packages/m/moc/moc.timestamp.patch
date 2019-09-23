@@ -1,0 +1,18 @@
+--- a/main.c
++++ b/main.c
+@@ -249,15 +249,6 @@ static void show_version ()
+ 	printf ("         Revision : %s\n", PACKAGE_REVISION);
+ #endif
+ 
+-	/* Show build time */
+-#ifdef __DATE__
+-	printf ("            Built : %s", __DATE__);
+-# ifdef __TIME__
+-	printf (" %s", __TIME__);
+-# endif
+-	putchar ('\n');
+-#endif
+-
+ 	/* Show compiled-in components */
+ 	printf ("    Compiled with :");
+ #ifdef HAVE_OSS

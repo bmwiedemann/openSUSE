@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f087b01945967e73bd1f008531a749af</srcmd5>
+    <version>1.3.3</version>
+    <time>1388480946</time>
+    <user>coolo</user>
+    <comment>file parsing module in python.  Similar in function to exiftool, but only comes as a python module.</comment>
+    <requestid>212133</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f087b01945967e73bd1f008531a749af</srcmd5>
+    <version>1.3.3</version>
+    <time>1409302884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>004f5566f316113c6eb7fa6c57fec92f</srcmd5>
+    <version>1.3.3</version>
+    <time>1441726746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328771</requestid>
+  </revision>
+</revisionlist>

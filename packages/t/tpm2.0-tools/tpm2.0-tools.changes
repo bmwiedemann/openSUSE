@@ -1,0 +1,327 @@
+-------------------------------------------------------------------
+Mon Aug 26 07:42:52 UTC 2019 - matthias.gerstner@suse.com
+
+- update to minor version 3.1.4:
+  * Fix various man pages
+  * tpm2_getmanufec: fix OSSL build warnings
+  * Fix broken -T option
+  * Various build compatibility fixes
+  * Fix some unit tests
+  * Update build for recent autoconf-archive versions
+  * Install m4 files
+
+-------------------------------------------------------------------
+Wed Mar  6 10:44:52 UTC 2019 - matthias.gerstner@suse.com
+
+- update to minor version 3.1.3:
+  - Restore support for the TPM2TOOLS_* env vars for TCTI configuration, in
+    addition to supporting the new unified TPM2TOOLS_ENV_TCTI
+  - Fix tpm2_getcap to print properties with the TPM_PT prefix, rather than
+    TPM2_PT
+  - Make test_tpm2_activecredential Python 3 compatible
+  - Fix tpm2_takeownership to only attempt to change the specified hierarchies
+- use a _service file to sync with upstream tags
+
+-------------------------------------------------------------------
+Wed Sep 26 16:02:46 UTC 2018 - matthias.gerstner@suse.com
+
+- update to minor version 3.1.2 (FATE#326270):
+  - Revert the change to use user supplied object attributes exclusively. This
+    is an inappropriate behavioural change for a MINOR version number
+    increment.
+  - Fix inclusion of object attribute specifiers section in tpm2_create and
+    tpm2_createprimary man pages.
+  - Use better object attribute defaults for authentication, preventing an
+    empty password being used for authentication when a policy is set.
+
+-------------------------------------------------------------------
+Wed Aug 22 09:05:14 UTC 2018 - matthias.gerstner@suse.com
+
+- update to minor version 3.1.1:
+  - Allow man page installation without pandoc being available
+
+-------------------------------------------------------------------
+Fri Jun 29 12:03:48 UTC 2018 - matthias.gerstner@suse.com
+
+- update to major version 3.1.0:
+  - the tpm2 stack introduces an incompatible ABI to the previous version with
+    this update. There is no compatibility layer, libraries have new names
+  - install-man.patch: dropped, because we don't really need it
+  - tpm2.0-tools-fix-hardening.patch: contained in upstream tarball now
+s etc.
+  - upstream changelog:
+    * tpm2_unseal: -P becomes -p
+    * tpm2_sign: -P becomes -p
+    * tpm2_nvreadlock: long form for -P is now --auth-hierarchy
+    * tpm2_rsadecrypt: -P becomes -p
+    * tpm2_nvrelease: long-form of -P becomes --auth-hierarchy
+    * tpm2_nvdefine: -I becomes -p
+    * tpm2_encryptdecrypt: -P becomes -p
+    * tpm2_dictionarylockout: -P becomes -p
+    * tpm2_createprimary: -K becomes -p
+    * tpm2_createak: -E becomes -e
+    * tpm2_certify: -k becomes -p
+    * tpm2_hash: -g changes to -G
+    * tpm2_encryptdecrypt: Support IVs via -i and algorithm modes via -G.
+    * tpm2_hmac: drop -g, just use the algorithm associated with the object.
+    * tpm2_getmanufec: -g changes to -G
+    * tpm2_createek: -g changes to -G
+    * tpm2_createak: -g changes to -G
+    * tpm2_verifysignature: -g becomes -G
+    * tpm2_sign: -g becomes -G
+    * tpm2_import: support specifying parent key with a context file,
+      --parent-key-handle/-H becomes --parent-key/-C
+    * tpm2_nvwrite and tpm2_nvread: when -P is "index" -a is optional and defaults to
+      the NV_INDEX value passed to -x.
+    * Load TCTI's by SONAME, not raw .so file
+    * tpm2_activatecredential: -e becomes -E
+    * tpm2_activatecredential: -e becomes -E
+    * tpm2_certify: -c and -C are swapped, -k becomes -K
+    * tpm2_createprimary: -K becomes -k
+    * tpm2_encryptdecrypt: supports input and output to stdin and stdout respectively.
+    * tpm2_create: -g/-G become optional options.
+    * tpm2_createprimary: -g/-G become optional options.
+    * tpm2_verifysignature - Option `-r` changes to `-f` and supports signature format "rsa".
+    * tpm2_import - Parent public data option, `-K` is optional.
+    * tpm2_import - Supports importing external RSA 2048 keys via pem files.
+    * tpm2_pcrlist: Option `--algorithm` changes to `--halg`, which is in line with other tools.
+    * tpm2_verifysignature: Option `-r` and `--raw` have been removed. This were unused within the tool.
+    * tpm2_hmac: Option `--algorithm` changes to `--halg`, which is in line with the manpage.
+    * tpm2_makecredential: Option `--sec` changes to `--secret`.
+    * tpm2_activatecredential: Option `--Password` changes to `--auth-key`.
+    * system tests are now run with make check when --enable-unit is used in configure.
+    * tpm2_unseal: Option `--pwdk` changes to `--auth-key`.
+    * tpm2_sign: Option `--pwdk` changes to `--auth-key`.
+    * tpm2_rsadecrypt: Option `--pwdk` changes to `--auth-key`.
+    * tpm2_quote: Option `--ak-passwd` changes to `--auth-ak`
+    * tpm2_pcrevent: Option `--passwd` changes to `--auth-pcr`
+    * tpm2_nvwrite: Options `--authhandle` and `--handle-passwd`
+      changes to `--hierarchy` and `--auth-hierarchy` respectively.
+    * tpm2_nvread: Options `--authhandle` and `--handle-passwd`
+      changes to `--hierarchy` and `--auth-hierarchy` respectively.
+    * tpm2_nvdefine: Options `--authhandle`, `--handle-passwd` and `--index-passwd`
+      changes to `--hierarchy`, `--auth-hierarchy` and `--auth-index`
+      respectively.
+    * tpm2_loadexternal: `-H` changes to `-a` for specifying hierarchy.
+    * tpm2_load: Option `--pwdp` changes to `--auth-parent`.
+    * tpm2_hmac: Option `--pwdk` changes to `--auth-key`.
+    * tpm2_hash: `-H` changes to `-a` for specifying hierarchy.
+    * tpm2_getmanufec: Options `--owner-passwd`, `--endorse-passwd`
+    * and `--ek-passwd`change to `--auth-owner`, `--auth-endorse`
+      and `--auth-ek` respectively.
+    * tpm2_evictcontrol: Option group `-A` and `--auth` changes to `-a` and `--hierarchy`
+      Option `--pwda` changes to `--auth-hierarchy`
+    * tpm2_encryptdecrypt: Option `--pwdk` changes to `--auth-key`.
+    * tpm2_dictionarylockout: Option `--lockout-passwd` changes to `--auth-lockout`
+    * tpm2_createprimary: Options `--pwdp` and `--pwdk` change to
+      `--auth-hierarchy` and `--auth-object` respectively.
+    * tpm2_createek: Options `--owner-passwd`, `--endorse-passwd`
+    * and `--ek-passwd`change to `--auth-owner`, `--auth-endorse`
+      and `--auth-ek` respectively.
+    * tpm2_createak: Options `--owner-passwd`, `--endorse-passwd`
+    * and `--ak-passwd`change to `--auth-owner`, `--auth-endorse`
+      and `--auth-ak` respectively.
+    * tpm2_create: Options `--pwdo` and `--pwdk` change to `--auth-object` and
+      `--auth-key` respectively.
+    * tpm2_clearlock: Option `--lockout-passwd` changes to `--auth-lockout`
+    * tpm2_clear: Option `--lockout-passwd` changes to `--auth-lockout`
+    * tpm2_changeauth: Options, `--old-owner-passwd`, `--old-endorse-passwd`,
+      and `--old-lockout-passwd` go to `--old-auth-owner`, `--old-auth-endorse`,
+      and `--old-auth-lockout` respectively.
+    * tpm2_certify: Options `--pwdo` and `--pwdk` change to `--auth-object` and
+      `--auth-key` respectively.
+    * tpm2_createprimary: `-H` changes to `-a` for specifying hierarchy.
+    * tpm2_createak: support for non-persistent AK generation.
+    * tpm2_createek: support for non-persistent EK generation.
+    * tpm2_getpubak renamed to tpm2_createak, -f becomes -p and -f is used for format of public key
+      output.
+    * tpm2_getpubek renamed to tpm2_createek, -f becomes -p and -f is used for format of public key
+      output.
+    * Libre SSL builds fixed.
+    * Dynamic TCTIS. Support for pluggable TCTI modules via the -T or --tcti options.
+    * tpm2_sign: supports signing a pre-computed hash via -D
+    * tpm2_clearlock: tool added
+    * test: system testing scripts moved into subordinate test directory.
+    * fix a buffer overflow in nvread/write tools.
+    * configure: enable code coverage option.
+    * tpm2_takeownership: split into tpm2_clear and tpm2_changeauth
+    * env: add TPM2TOOLS_ENABLE_ERRATA to control the -Z or errata option.
+
+-------------------------------------------------------------------
+Tue Jun  5 09:55:43 UTC 2018 - matthias.gerstner@suse.com
+
+- fix build after adding install-man.patch: autoreconf is needed again (sigh!)
+
+-------------------------------------------------------------------
+Wed May  2 12:09:22 UTC 2018 - matthias.gerstner@suse.com
+
+- install-man.patch: even after update to 3.0.4 the man pages are not
+  installed correctly. This patch fixes it locally.
+
+-------------------------------------------------------------------
+Wed May  2 11:02:07 UTC 2018 - matthias.gerstner@suse.com
+
+- update to version 3.0.4:
+  - Fix save and load for TPM2B_PRIVATE object.
+  - Use a default buffer size for tpm2_nv{read,write} if the TPM reports a 0 size.
+  - Fix --verbose and --version options crossover.
+  - Generate man pages from markdown and include them in the distribution tarball.
+  - Print usage summary if tools are executed with no options or man page can't be displayed.
+- man pages will be shipped for SLE version now, too (pandoc dependency was removed)
+
+-------------------------------------------------------------------
+Wed Mar  7 15:44:14 UTC 2018 - matthias.gerstner@suse.com
+
+- disable pandoc for all but openSUSE, since pandoc never was on SLE
+
+-------------------------------------------------------------------
+Wed Mar  7 14:29:10 UTC 2018 - matthias.gerstner@suse.com
+
+- disable pandoc/man pages generation on SLE-15, because pandoc is not
+  available there (and adding it would require two dozen additional haskell
+  packages)
+
+-------------------------------------------------------------------
+Thu Feb 22 11:08:19 UTC 2018 - matthias.gerstner@suse.com
+
+- update to version 3.0.3:
+  - various changes in tool options
+  - man pages are now in section 1 (formerly in section 8)
+  - tools are now installed in /usr/bin (formerly /usr/sbin)
+
+-------------------------------------------------------------------
+Thu Nov  9 11:00:33 UTC 2017 - vcizek@suse.com
+
+- update to version 2.1.1
+  * Potential memory leak fix when tcti/sapi initialization fails.
+  * tpm2_listpcrs: use TPM2_GetCapability to determine PCRs to read
+  * listpcrs: remove one redundant call to tpm get cap
+  * listpcrs: fix for unsupported/disabled alg in -L
+  * build: use supported comment to suppress GCC7 fallthrough warning
+  * kdfa: allow to build with OpenSSL 1.1.x (bsc#1067392)
+- drop patches (upstream)
+  * 0001-tpm2_listpcrs-use-TPM2_GetCapability-to-determine-PC.patch
+  * tpm2.0-tools-fix-gcc7.patch
+
+-------------------------------------------------------------------
+Mon Aug 21 14:32:13 UTC 2017 - matthias.gerstner@suse.com
+
+- update to version 2.1.0:
+  - dropped 0002-kdfa-use-openssl-for-hmac-not-tpm.patch, was backported
+   upstream in commit 788a17abbe0000c560935ef9f31c9a6892d9ea33
+  - this version now can interact with the new resource manager tpm2.0-abrmd
+  - Upstream changes:
+    * Fix readx and writex on multiple EINTR returns.
+    * Add support for the tabrmd TCTI. This is the new default.
+    * Change default socket port from 2323 (the old resourcemgr) to 2321
+    (default simulator port).
+    * Cherry-pick fix for CVE-2017-7524.
+    * Fix tpm2_listpcr command line option handling.
+    * Fix tpm2_getmanufec memory issues.
+
+-------------------------------------------------------------------
+Thu Jul 20 13:50:28 UTC 2017 - matthias.gerstner@suse.com
+
+- added the new abrmd package to recommends, because the tools will otherwise
+  not function
+
+-------------------------------------------------------------------
+Thu Jun 29 09:45:45 UTC 2017 - matthias.gerstner@suse.com
+
+- 0002-kdfa-use-openssl-for-hmac-not-tpm.patch: fixed unexpected leak of
+  cleartext password into the tpm when generating an HMAC in the context of
+  tpm_kdfa() (key derivation function) (bnc#1046402, CVE-2017-7524)
+
+-------------------------------------------------------------------
+Tue Jun 20 08:35:29 UTC 2017 - matthias.gerstner@suse.com
+
+- 0001-tpm2_listpcrs-use-TPM2_GetCapability-to-determine-PC.patch: fixed
+  tpm2_listpcrs aborting saying "too much pcrs to get!" (bnc#1044419)
+
+-------------------------------------------------------------------
+Fri Jun  2 07:16:45 UTC 2017 - meissner@suse.com
+
+- tpm2.0-tools-fix-hardening.patch: do not disable fortify,
+  do not use -Wstack-protector as it warns also for non-utilized
+  functions and then -Werror fails.
+- tpm2.0-tools-fix-gcc7.patch: fixed gcc7 case fallthrough errors
+
+-------------------------------------------------------------------
+Wed May 10 11:52:40 UTC 2017 - matthias.gerstner@suse.com
+
+- Major update to 2.0.0
+  - dropped fixes.patch, now part of the upstream version
+  - a set of man pages have been added to the package
+  - Upstream changes:
+    * Tracked on the milestone: https://github.com/01org/tpm2.0-tools/milestone/2
+    * Reworked all the tools to support configurable TCTIs, based on build time
+      configuration, one can specify the tcti via the --tcti (-T) option to all
+      tools.
+    * tpm2_getrandom interface made -s a positional argument.
+    * Numerous bug fixes.
+
+-------------------------------------------------------------------
+Mon Mar  6 16:23:15 UTC 2017 - meissner@suse.com
+
+- buildrequire pkgconfig
+
+-------------------------------------------------------------------
+Wed Mar  1 15:33:46 UTC 2017 - meissner@suse.com
+
+- Updated to 1.1.0 / 016-11-04 (FATE#321509)
+  - Added
+  * travis ci support.
+  * Allow for unit tests to be enabled selectively.
+  * tpm2_rc_decode tool: Decode TPM_RC error codes.
+  * Android Make file
+  * tpm2_listpersistent: list all persistent objects
+  * test scripts for tpm2-tools
+  * tpm2_nvreadlock
+  * tpm2_getmanufec: retrieve EC from tpm manufacturer server.
+  * Copy 'common' and 'sample' code from the TPM2.0-TSS repo.
+
+  - Modified
+  * tpm2_takeownership: update option -c to use lockout password to clear.
+  * tpm2_listpcrs: add options -L and -s, rewrite to increase performance.
+  * tpm2_quote: added -L option to support selection of multiple banks.
+  * tpm2_quote: add -q option to get qualifying data.
+  * configure: Use pkg-config to get info about libcurl and libcrypto.
+  * configure: Use pkg-config to locate SAPI and TCTI headers / libraries.
+  * tpm2_x: Add -X option to enable password input in Hex format.
+  * tpm2_nvdefine: Change -X option to -I.
+  * tpm2-nvwrite: fix for unable to write 1024B+ data.
+  * tpm2_getmanufec: Fix base64 encoding.
+  * tpm2_x: fixed a lot of TPM2B failures caused by wrong initialization.
+  * tpm2_getmanufec: let configure handle libs.
+  * tpm2_getmanufec: Convert from dos to unix format.
+  * build: Check for TSS2 library @ configure time.
+  * build: Detect required TSS2 and TCTI headers.
+  * build: Use libtool to build the common library
+  * build: Install all binaries into sbin.
+  * build: Build common sources into library.
+  * build: Move all source files to 'src'.
+  * Makefile.am: Move all build rules into single Makefile.am.
+  * everything: Use new TCTI headers and fixup API calls.
+  * everything: Update source to cope with sapi header cleanup.
+  * tpm2_activatecredential: Updated to support TCG compatible EK
+  * tpm2_getpubak: Updated to use TCG compatible EK
+  * tpm2_getpubek: fix ek creation to follow TCG EK profile spec.
+
+  - Removed
+  * Windows related code
+  * depenedency on the TPM2.0-TSS repo source code
+
+- 1.0-alpha_0.zip: removed, use tpm2-0-tss directly.
+- tpm2-install-binaries.patch: not needed anymore.
+- fixes.patch: fixed random return build errors.
+
+-------------------------------------------------------------------
+Mon Aug 22 12:02:01 UTC 2016 - meissner@suse.com
+
+- update description
+
+-------------------------------------------------------------------
+Thu Mar 24 12:42:04 UTC 2016 - meissner@suse.com
+
+- initial import of tpm2.0-tools 
+

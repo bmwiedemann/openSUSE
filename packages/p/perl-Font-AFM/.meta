@@ -1,0 +1,7 @@
+<package name="perl-Font-AFM" project="openSUSE:Factory">
+  <title>Interface to Adobe Font Metrics Files</title>
+  <description>This module implements the Font::AFM class. Objects of this class are
+initialized from an AFM file and allow you to obtain information about
+the font and the metrics of the various glyphs in the font.</description>
+  <devel project="devel:languages:perl" package="perl-Font-AFM"/>
+</package>

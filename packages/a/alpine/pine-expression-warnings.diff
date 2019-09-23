@@ -1,0 +1,29 @@
+--- ./alpine.c	2007-06-28 17:39:01.000000000 +0000
++++ alpine-0.999/alpine/alpine.c	2007-08-02 01:48:23.000000000 +0000
+@@ -2161,7 +2162,7 @@ do_menu(int quick_draw, Pos *cursor_pos,
+ 	utf8_to_width(buf2, LEGAL_NOTICE, sizeof(buf2),
+ 		      ps->ttyo->screen_cols-3, NULL);
+ 	PutLine0(ps->ttyo->screen_rows - (FOOTER_ROWS(ps)+1),
+-		 MAX(0, ((ps->ttyo->screen_cols-utf8_width(buf2))/2)),
++		 MAX(0, ((ps->ttyo->screen_cols-(int)utf8_width(buf2))/2)),
+ 		 buf2);
+     }
+ 
+--- ./filter.c	2007-06-01 22:42:27.000000000 +0000
++++ alpine-0.999/pith/filter.c	2007-08-02 01:10:21.000000000 +0000
+@@ -178,12 +178,12 @@ static	jmp_buf   gf_error_state;
+ 
+ #define	GF_END(FI, FO)	(GF_OP_END(FI), GF_IP_END(FO))
+ 
+-#define	GF_FLUSH(F)	((GF_IP_END(F), (*(F)->f)((F), GF_DATA), \
+-			       GF_IP_INIT(F), GF_EIB_INIT(F)) ? 1 : 0)
++#define	GF_FLUSH(F)	(GF_IP_END(F), (*(F)->f)((F), GF_DATA), \
++			       GF_IP_INIT(F), GF_EIB_INIT(F))
+ #define	GF_FLUSH_GLO(F)	((GF_IP_END_GLO(F), (*(F)->f)((F), GF_DATA), \
+ 			       GF_IP_INIT_GLO(F), GF_EIB_INIT_GLO(F)) ? 1 : 0)
+ 
+-#define	GF_PUTC(F, C)	((int)(*ip++ = (C), (ip >= eib) ? GF_FLUSH(F) : 1))
++#define	GF_PUTC(F, C)	((int)(*ip++ = (C), (ip >= eib) ? (GF_FLUSH(F) ? 1 : 0) : 1))
+ #define	GF_PUTC_GLO(F, C) ((int)(*(*ipp)++ = (C), ((*ipp) >= (*eibp)) ? GF_FLUSH_GLO(F) : 1))
+ 
+ /*

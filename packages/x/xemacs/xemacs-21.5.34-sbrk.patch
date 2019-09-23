@@ -1,0 +1,21 @@
+--- src/gmalloc.c
++++ src/gmalloc.c	2017-03-20 15:02:35.000000000 +0000
+@@ -1199,18 +1199,6 @@ along with the GNU C Library.  If not, s
+ #include <malloc.h>
+ #endif
+ 
+-/* #ifndef	__GNU_LIBRARY__ */
+-#define	__sbrk	sbrk
+-/* #endif */
+-
+-#ifdef __GNU_LIBRARY__
+-/* It is best not to declare this and cast its result on foreign operating
+-   systems with potentially hostile include files.  */
+-#if !(defined(linux) && defined(sparc))
+-extern __ptr_t __sbrk __P ((int increment));
+-#endif
+-#endif
+-
+ #ifndef NULL
+ #define NULL 0
+ #endif

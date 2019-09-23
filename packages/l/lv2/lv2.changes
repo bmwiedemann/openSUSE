@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Mon Jul  9 19:36:47 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to make lv2 package build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Wed Mar 21 13:09:17 UTC 2018 - dimstar@opensuse.org
+
+- Don't require lv2-examples by the devel project: the examples can
+  be handy, but are not needed to build other stuff.
+
+-------------------------------------------------------------------
+Wed Mar 15 12:00:39 UTC 2017 - jengelh@inai.de
+
+- Trim irrelevant parts from description.
+
+-------------------------------------------------------------------
+Sun Mar 12 10:05:27 UTC 2017 - davejplater@gmail.com
+
+- Update 1.14.0 stable
+- Added lv2pkgconfig.patch to fix .pc files.
+- Upstream changes:
+  * eg-sampler: Support thread-safe state restoration.
+  * eg-sampler: Fix handling of state file paths.
+  * eg-scope: Don't feed back UI state updates.
+  * lv2core: Add lv2_util.h with lv2_features_data() and
+    lv2_features_query().
+  * lv2core: Add lv2:enabled designation.
+  * buf-size: Add bufsz:nominalBlockLength option.
+  * buf-size: Add bufsz:coarseBlockLength feature.
+  * log: Add lv2_log_logger_set_map() for changing the URI map of
+    an existing logger.
+  * state: Add LV2_STATE_ERR_NO_SPACE status flag.
+  * state: Add state:threadSafeRestore feature for dropout-free
+    state restoration.
+  * time: Define LV2_TIME_PREFIX.
+  * worker: Improve documentation.
+  * ui: Improve documentation.
+  * ui: Add missing property labels.
+
+-------------------------------------------------------------------
+Sun Dec 13 17:30:45 UTC 2015 - davejplater@gmail.com
+
+- Update to lv2 (1.12.0) stable.
+- Disable documentation build for less than Tumbleweed,
+- Upstream changes:
+  *Fix merging of version histories in specification documentation
+  *eg-sampler: Support patch:Get, and request initial state from UI
+  *Simplify property restrictions by removing redundancy.
+  *eg-sampler: Add gain parameter.
+  *Improve API documentation.
+  *lv2core: Add extern C and visibility attribute to LV2_SYMBOL_EXPORT
+  *lv2core: Add lv2:isSideChain port property.
+  *lv2core: Relax domain of lv2:minimum lv2:maximum and lv2:default
+    so they can be used to describe properties/parameters as well.
+  *parameters: Add range to parameters so hosts know how to control them.
+  *patch: Define patch:Get with no subject to implicitly apply to
+    reciever. This can be used by UIs to get an initial description
+    of a plugin.
+  *patch: Add patch:Copy method.
+  *units: Add lv2:Parameter to domain of units:unit.
+  *units: Fix non-existent port type in examples.
+
+-------------------------------------------------------------------
+Fri Jan  9 00:02:55 UTC 2015 - ecsos@opensuse.org
+
+- Update to 1.10.0
+  * Upgrade to waf 1.7.16.
+  * lv2specgen: Display deprecated warning on classes 
+    marked owl:deprecated.
+  * Fix -Wconversion warnings in headers.
+  * lv2core: Clarify lv2_descriptor() and lv2_lib_descriptor() 
+    documentation.
+  * atom: Add lv2_atom_sequence_clear() and 
+    lv2_atom_sequence_append_event() helper functions.
+  * atom: Add lv2_atom_forge_is_object_type() and 
+    lv2_atom_forge_is_blank() to ease backwards compatibility.
+  * atom: Deprecate Blank and Resource in favour of just Object.
+  * atom: Add lv2_atom_forge_key() for terser object writing.
+  * event: Minor documentation improvements.
+  * patch: Add patch:sequenceNumber for associating replies with 
+    requests.
+  * ui: Fix identifier typos in documentation.
+  * ui: Add show interface so UIs can gracefully degrade to 
+    separate windows if hosts can not use their widget directly.
+    
+-------------------------------------------------------------------
+Tue Nov 11 11:51:45 UTC 2014 - olaf@aepfle.de
+
+- Fix build in SLE_11
+  cairo is too old for scope files
+  doc macro behaves different
+
+-------------------------------------------------------------------
+Fri Jul 11 16:53:57 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 1.8.0
+  * Install lv2specgen for use by other projects.
+  * lv2specgen: Fix links to externally defined terms.
+  * Add scope example plugin from Robin Gareus.
+  * lv2core: Add lv2:prototype for property inheritance.
+  * atom: Make lv2_atom_*_is_end() arguments const.
+  * log: Add missing include <string.h> to logger.h for memset.
+  * ui: Fix LV2_UI_INVALID_PORT_INDEX identifier in documentation.
+
+-------------------------------------------------------------------
+Sat Aug 17 12:29:54 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.6.0
+  * Upgrade to waf 1.7.11.
+  * Fix lv2specgen usage from command line.
+  * atom: Fix crash in forge.h when pushing atoms to a full buffer.
+  * ui: Add idle interface so native UIs and foreign toolkits can drive their event
+    loops.
+  * ui: Add ui:updateRate property.
+  * Add metronome example plugin to demonstrate sample accurate tempo sync.
+  * Generate book-style HTML documentation from example plugins.
+  * lv2core: Make lv2:Parameter rdfs:subClassOf rdf:Property.
+  * lv2core: Set range of lv2:designation to lv2:Designation.
+  * lv2core: Add lv2:control for designating primary event-based control ports.
+  * lv2core: Add lv2:EnvelopePlugin class.
+  * lv2core: Reserve minor version 0 for unstable development plugins.
+  * atom: Fix lv2_atom_sequence_end().
+  * atom: Remove atom:stringType in favour of owl:onDatatype so generic tools can
+    understand and validate atom literals.
+  * atom: Improve atom documentation.
+  * buf-size: Fix typo in bufsz:sequenceSize label.
+  * event: Fix incorrect return type in lv2_event_get().
+  * log: Add logger convenience API.
+  * options: Set the range of opts:requiredOption and opts:supportedOption to opts:Option.
+  * patch: Add patch:readable and patch:writable for describing available properties.
+  * patch: Make patch:Set a compact message for setting one property.
+  * state: Add state:loadDefaultState feature so plugins can have their default state
+    loaded without hard-coding default state as a special case.
+  * ui: Fix incorrect linker flag in ui:makeSONameResident documentation.
+
+-------------------------------------------------------------------
+Tue Oct 23 22:24:06 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 1.2.0
+  * Use stricter datatype definitions conformant with the XSD and OWL
+    specifications for better validation.
+  * Move all project metadata for extensions (e.g. change log) to separate files to
+    spare hosts from loading them during discovery.
+  * lv2core: Use consistent label style.
+  * atom: Fix lv2_atom_object_next() on 32-bit platforms.
+  * atom: Fix outdated documentation in forge.h.
+  * atom: Add lv2_atom_object_body_get().
+  * atom: Add LV2_ATOM_CONTENTS_CONST and LV2_ATOM_BODY_CONST.
+  * atom: Fix implicit conversions in forge.h that are invalid in C++11.
+  * atom: Use consistent label style.
+  * buf-size: Initial release.
+  * dynmanifest: Use consistent label style.
+  * event: Use consistent label style.
+  * event: Use more precise domain and range for EventPort properties.
+  * event: Remove asserts from event-helper.h.
+  * event: Make event iterator gracefully handle optional ports.
+  * midi: Add C definitions for message types and standard controllers.
+  * midi: Remove non-standard midi:Tick message type.
+  * midi: Add midi:binding and midi:channel predicates.
+  * midi: Use consistent label style.
+  * midi: Add midi:HexByte datatype for status bytes and masks.
+  * midi: Fix definition of SystemExclusive status byte.
+  * morph: Initial release.
+  * options: Initial release.
+  * parameters: Add parameters.h of URI defines for convenience.
+  * parameters: Use consistent label style.
+  * parameters: Add param:sampleRate.
+  * port-groups: Use consistent label style.
+  * port-props: Use consistent label style.
+  * presets: Use consistent label style.
+  * resize-port: Initial release.
+  * state: Use consistent label style.
+  * time: Use consistent label style.
+  * urid: Fix typo in urid:unmap documentation.
+- Remove lv2-1.0.0-underlinking.patch and lv2-1.0.0-no_g++.patch. Applied upstream.
+
+-------------------------------------------------------------------
+Wed Aug  1 22:55:27 UTC 2012 - reddwarf@opensuse.org
+
+- The first unified LV2 release
+

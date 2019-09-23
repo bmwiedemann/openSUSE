@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a146cedb2909af24a5feef0a327ba205</srcmd5>
+    <version>1.1.2</version>
+    <time>1527583420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612179</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4085cab76b4a46df71566f4c2ae9cb00</srcmd5>
+    <version>1.2.0</version>
+    <time>1527675857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Add close method to grpc Channel (#5333)
+  * Fix tests after grpcio update (#5333)
+  * Add Test runs for Python 3.7 and remove 3.4 (#5295)
+- use %license</comment>
+    <requestid>612992</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e4051051ccb2cde4ba673d1cb68cef8</srcmd5>
+    <version>1.4.0</version>
+    <time>1536833537</time>
+    <user>maxlin_factory</user>
+    <comment>- update to version 1.4.0
+  * Add support for gRPC connection management (available when using
+    optional grpc_gcp dependency) (#5553) (#5904)
+  * Update classifiers to drop Python 3.4 and add Python 3.7 (#5702)
+  * Add protobuf_helpers.field_mask to calculate a field mask from
+    two messages (#5320)</comment>
+    <requestid>635277</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e03ef4120e996c3ffeb725c523fc3a83</srcmd5>
+    <version>1.4.0</version>
+    <time>1545224019</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659395</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>118245acc48bc115550e4539297fd12a</srcmd5>
+    <version>1.7.0</version>
+    <time>1551386460</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676923</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5526f6a0c51a3cef59fa681dfe6bc291</srcmd5>
+    <version>1.8.1</version>
+    <time>1552599781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * Protect the creation of a background thread in BackgroundConsumer and wait on it starting. (#7499)
+  * Add support to unwrap Anys into wrapped pb2 objects. (#7430)
+  * Add Operation.deserialize. (#7427)</comment>
+    <requestid>685062</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>caaf729c274fd7a457aed2566fe47c1f</srcmd5>
+    <version>1.8.2</version>
+    <time>1553809710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * Remove classifier for Python 3.4 for end-of-life. (#7535)</comment>
+    <requestid>688734</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b291f7a348252c9413f96546a9f1d76</srcmd5>
+    <version>1.11.0</version>
+    <time>1558037439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703515</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83fe6e46a9c35f777a3aa90258ba2afb</srcmd5>
+    <version>1.13.0</version>
+    <time>1562247782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.0:
+  * Various fixes for new updated dependencies</comment>
+    <requestid>713078</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6b278fd8ca8600912f21198aee4a9ca</srcmd5>
+    <version>1.14.2</version>
+    <time>1565695502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722805</requestid>
+  </revision>
+</revisionlist>

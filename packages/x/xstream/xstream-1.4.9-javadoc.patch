@@ -1,0 +1,34 @@
+--- xstream-1.4.9/pom.xml	2016-03-16 00:14:14.000000000 +0100
++++ xstream-1.4.9/pom.xml	2018-12-18 10:57:01.513292364 +0100
+@@ -37,9 +37,9 @@
+ 
+   <profiles>
+     <profile>
+-      <id>jdk19</id>
++      <id>jdk9</id>
+       <activation>
+-        <jdk>1.9</jdk>
++        <jdk>[9,)</jdk>
+       </activation>
+       <properties>
+         <version.java.source>1.6</version.java.source>
+@@ -53,6 +53,8 @@
+       </activation>
+       <properties>
+         <javadoc.xdoclint>-Xdoclint:-missing</javadoc.xdoclint>
++        <version.java.source>1.6</version.java.source>
++        <version.java.target>1.6</version.java.target>
+       </properties>
+     </profile>
+     <profile>
+@@ -61,6 +63,10 @@
+       <activation>
+         <jdk>[1.6,)</jdk>
+       </activation>
++      <properties>
++        <version.java.source>1.6</version.java.source>
++        <version.java.target>1.6</version.java.target>
++      </properties>
+       <modules>
+         <module>xstream-jmh</module>
+         <module>xstream-distribution</module>

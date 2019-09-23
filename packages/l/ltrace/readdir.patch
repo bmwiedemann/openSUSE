@@ -1,0 +1,38 @@
+Index: ltrace-0.7.91/sysdeps/linux-gnu/proc.c
+===================================================================
+--- ltrace-0.7.91.orig/sysdeps/linux-gnu/proc.c
++++ ltrace-0.7.91/sysdeps/linux-gnu/proc.c
+@@ -242,24 +242,20 @@ process_tasks(pid_t pid, pid_t **ret_tas
+ 	size_t alloc = 0;
+ 
+ 	while (1) {
+-		struct dirent entry;
+-		struct dirent *result;
+-		if (readdir_r(d, &entry, &result) != 0) {
+-		fail:
+-			free(tasks);
+-			closedir(d);
+-			return -1;
+-		}
+-		if (result == NULL)
++		struct dirent *entry = readdir(d);
++		if (entry == NULL)
+ 			break;
+-		if (result->d_type == DT_DIR && all_digits(result->d_name)) {
+-			pid_t npid = atoi(result->d_name);
++		if (entry->d_type == DT_DIR && all_digits(entry->d_name)) {
++			pid_t npid = atoi(entry->d_name);
+ 			if (n >= alloc) {
+ 				alloc = alloc > 0 ? (2 * alloc) : 8;
+ 				pid_t *ntasks = realloc(tasks,
+ 							sizeof(*tasks) * alloc);
+-				if (ntasks == NULL)
+-					goto fail;
++				if (ntasks == NULL) {
++					free(tasks);
++					closedir(d);
++					return -1;
++				}
+ 				tasks = ntasks;
+ 			}
+ 			assert(n < alloc);

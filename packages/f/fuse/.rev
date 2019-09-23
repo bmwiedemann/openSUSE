@@ -1,0 +1,546 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e4dbb1308f34ff20f2fa93af591470e</srcmd5>
+    <version>2.6.1</version>
+    <time>1166543965</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>bd9dfef32519ecaa8962b0d2b00f5d1b</srcmd5>
+    <version>2.6.1</version>
+    <time>1169134966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8012c2b6ef87f8e26150c694082711ea</srcmd5>
+    <version>2.6.3</version>
+    <time>1170714953</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>149f345052ec8afcb861a229cb51fb63</srcmd5>
+    <version>2.6.3</version>
+    <time>1170980565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12493ef9871e53374a496fbca84a2af2</srcmd5>
+    <version>2.6.5</version>
+    <time>1178231326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9ebb234f8523c3e8b1695cf85d79fc02</srcmd5>
+    <version>2.6.5</version>
+    <time>1178271347</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="14">
+    <srcmd5>474a63e76b10ad57ae1c70ec4b260474</srcmd5>
+    <version>2.6.5</version>
+    <time>1182179808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="16">
+    <srcmd5>a1a49199c0a3291194689d3712d300a0</srcmd5>
+    <version>2.6.5</version>
+    <time>1183583648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e752c5c0660ac73d2706f5c709221067</srcmd5>
+    <version>2.7.0</version>
+    <time>1183704058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c555dab69d3248228a61a3f9485d3cbc</srcmd5>
+    <version>2.7.0</version>
+    <time>1184351189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>33a9e301948905b6ac13e4a4d4585f01</srcmd5>
+    <version>2.7.0</version>
+    <time>1186758098</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>b34428b5da20c32243778f084dc43bc0</srcmd5>
+    <version>2.7.0</version>
+    <time>1188644001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>474d0667e9e0ec21240510e20399910e</srcmd5>
+    <version>2.7.0</version>
+    <time>1188719010</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>85063641aaa41c81820ed810cdcdaedf</srcmd5>
+    <version>2.7.1</version>
+    <time>1195835071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c6a8abf0eae44eff2280ebd8e26b18e0</srcmd5>
+    <version>2.7.2</version>
+    <time>1197925714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="61">
+    <srcmd5>c6a8abf0eae44eff2280ebd8e26b18e0</srcmd5>
+    <version>2.7.2</version>
+    <time>1197925714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="62">
+    <srcmd5>a7c02c2dd6f709b06b02b301f836f1b1</srcmd5>
+    <version>2.7.2</version>
+    <time>1228152472</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="63">
+    <srcmd5>06baed0c11219055f9582366cc32e047</srcmd5>
+    <version>2.7.2</version>
+    <time>1239101721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0ee07e656e0a8030a6b03c712e6e6063</srcmd5>
+    <version>2.7.4</version>
+    <time>1240523208</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>40a64a664bc0ffd61046c3757ac78f55</srcmd5>
+    <version>2.7.4</version>
+    <time>1249310670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>40a64a664bc0ffd61046c3757ac78f55</srcmd5>
+    <version>2.7.4</version>
+    <time>1249310670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8ea75582ed147c2f1c9b5bee1ad21b80</srcmd5>
+    <version>2.8.0</version>
+    <time>1260953247</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/fuse based on submit request 26664 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>13db2163aade014a1bd73bae2d20b265</srcmd5>
+    <version>2.8.1</version>
+    <time>1262865449</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/fuse based on submit request 28135 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6ce4637d309f56e4b2c5d2bc341d7738</srcmd5>
+    <version>2.8.1</version>
+    <time>1263483404</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/fuse based on submit request 28927 from user coolo
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>518695830dfa5790fad0e760817d9d4b</srcmd5>
+    <version>2.8.2</version>
+    <time>1264610632</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/fuse based on submit request 3953 from user mszeredi
+</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c8c16765e288e6e95b26639579cc1e7</srcmd5>
+    <version>2.8.3</version>
+    <time>1265269454</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/fuse based on submit request 4285 from user mszeredi
+</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b707b0d44d0cf56f03bb649d099d9520</srcmd5>
+    <version>2.8.3</version>
+    <time>1268923599</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4fd4d56b8dd48119ee1da8b5e8c63eb3</srcmd5>
+    <version>2.8.4</version>
+    <time>1272489482</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/fuse based on submit request 6139 from user mszeredi
+</comment>
+    <requestid>6139</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>3c4bafe168a398cd3fb51b16414230b3</srcmd5>
+    <version>2.8.4</version>
+    <time>1273239783</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/fuse based on submit request 39611 from user coolo
+</comment>
+    <requestid>39611</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>3c4bafe168a398cd3fb51b16414230b3</srcmd5>
+    <version>2.8.4</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>3c4bafe168a398cd3fb51b16414230b3</srcmd5>
+    <version>2.8.4</version>
+    <time>1278678576</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>679cabee9b367f2df1f103d3d9a89692</srcmd5>
+    <version>2.8.5</version>
+    <time>1285706324</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/fuse based on submit request 8436 from user mszeredi
+</comment>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>00aeeb77163c9c6127b85104224b9679</srcmd5>
+    <version>2.8.5</version>
+    <time>1288264591</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51523 from user mszeredi
+</comment>
+    <requestid>51523</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>5ed418b065f7a2b7fecf92d76230cea5</srcmd5>
+    <version>2.8.5</version>
+    <time>1288264596</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51523
+</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>1b7895461f03f91b9dcb09631f489532</srcmd5>
+    <version>2.8.5</version>
+    <time>1291586878</time>
+    <user>lrupp</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/fuse based on submit request 9385 from user mszeredi
+</comment>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>1b7895461f03f91b9dcb09631f489532</srcmd5>
+    <version>2.8.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>9a00cf9ba83543838e35e734d05fd153</srcmd5>
+    <version>2.8.5</version>
+    <time>1298380089</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62403 from user mszeredi
+</comment>
+    <requestid>62403</requestid>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>4b15925a4acc046d50ad16e7943453a1</srcmd5>
+    <version>2.8.5</version>
+    <time>1298380098</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62403
+</comment>
+  </revision>
+  <revision rev="39" vrev="10">
+    <srcmd5>27877f91dc40b0719491b24d92e54458</srcmd5>
+    <version>2.8.5</version>
+    <time>1300869670</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64936 from user licensedigger
+</comment>
+    <requestid>64936</requestid>
+  </revision>
+  <revision rev="40" vrev="11">
+    <srcmd5>eaefd48e1157f8119f2cd4ee8c25f515</srcmd5>
+    <version>2.8.5</version>
+    <time>1300869716</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64936
+</comment>
+  </revision>
+  <revision rev="41" vrev="12">
+    <srcmd5>6c8837bca757155b3313f205fddf9793</srcmd5>
+    <version>2.8.5</version>
+    <time>1314780174</time>
+    <user>saschpe</user>
+    <comment>- Must define _GNU_SOURCE to get clone()  system call. (forwarded request 80137 from elvigia)</comment>
+    <requestid>80168</requestid>
+  </revision>
+  <revision rev="42" vrev="13">
+    <srcmd5>aa42f3a17251cad64ee5f84c97412ca4</srcmd5>
+    <version>2.8.5</version>
+    <time>1314780186</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80168
+</comment>
+  </revision>
+  <revision rev="43" vrev="14">
+    <srcmd5>0fc8e14a3ac6f331cd3e62b9243430c5</srcmd5>
+    <version>2.8.5</version>
+    <time>1317626325</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86015 from coolo)</comment>
+    <requestid>86053</requestid>
+  </revision>
+  <revision rev="44" vrev="15">
+    <srcmd5>6b9b322ec98be9e2ea0a1d665588569f</srcmd5>
+    <version>2.8.5</version>
+    <time>1318939368</time>
+    <user>saschpe</user>
+    <comment>enabling libulockmgr (needed by libguestfs) (forwarded request 86258 from -miska-)</comment>
+    <requestid>88443</requestid>
+  </revision>
+  <revision rev="45" vrev="17">
+    <srcmd5>6b9b322ec98be9e2ea0a1d665588569f</srcmd5>
+    <version>2.8.5</version>
+    <time>1319181888</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="46" vrev="18">
+    <srcmd5>9e2c9ce4664c7143a1795d4040e33e81</srcmd5>
+    <version>2.8.5</version>
+    <time>1320486981</time>
+    <user>coolo</user>
+    <comment>handle case of failure to allocate request [bnc#723616] (forwarded request 90035 from mszeredi)</comment>
+    <requestid>90036</requestid>
+  </revision>
+  <revision rev="47" vrev="19">
+    <srcmd5>de907438881829fa4e13fdecfeeec799</srcmd5>
+    <version>2.8.5</version>
+    <time>1323191438</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="48" vrev="10">
+    <srcmd5>ad5cd1a118fad1683052c5ef5f33eba6</srcmd5>
+    <version>2.8.7</version>
+    <time>1327583905</time>
+    <user>coolo</user>
+    <comment>- update to 2.8.7
+- compile fusermount as PIE [bnc#743155]
+- use %set_permissions (forwarded request 101559 from mszeredi)</comment>
+    <requestid>101560</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b1c0913f359f5287a3d3cb230449965e</srcmd5>
+    <version>2.9.0</version>
+    <time>1335259374</time>
+    <user>coolo</user>
+    <comment>- update to 2.9.0 
+  - Add &quot;zero copy&quot; support for kernel 2.6.35 or newer
+  - Make maximum background requests tunable on kernel 2.6.32 or
+    newer
+  - Require --no-canonicalize in (u)mount (util-linux version 2.18
+    or newer) to fix security problems with fusermount
+  - Use dynamically sized hash tables in high level library
+  - Memory use of filesystem daemon can shrink more easily
+  - Add &quot;auto_unmount&quot; option
+  - Add &quot;remember&quot; option
+  - Add man pages for fusermount, mount.fuse and ulockmgr_server
+  - API changes:
+     - Introduce &quot;store&quot; and &quot;retrieve&quot; for accessing kernel
+       buffers on kernel 2.6.36 or newer
+     - Introduce abstract buffer for zero copy operations
+     - Allow path calculation to be omitted on certain operations
+     - Allow batching forget requests
+     - Add &quot;flock&quot; method
+     - Add support for ioctl on directories
+     - Add delete notification
+- drop fuse-pc-remove-libdir-from-Libs.diff (upstream) (forwarded request 114939 from puzel)</comment>
+    <requestid>115123</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>ac53330f41a20897111832ab19d57a2b</srcmd5>
+    <version>2.9.0</version>
+    <time>1337580166</time>
+    <user>coolo</user>
+    <comment>Fix -pthread in fuse.pc [bnc#761117] (forwarded request 121243 from mszeredi)</comment>
+    <requestid>121244</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>80f74cd31eb27eb4db0fc82a9a0b8e80</srcmd5>
+    <version>2.9.0</version>
+    <time>1338991598</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Trim list of FUSE fses from description (it's literally endless)
+  and text inappropraite for subpackages (forwarded request 122495 from jengelh)</comment>
+    <requestid>123688</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>80f74cd31eb27eb4db0fc82a9a0b8e80</srcmd5>
+    <version>2.9.0</version>
+    <time>1340183343</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>de052b3379a52c3de4724763ee12bd0c</srcmd5>
+    <version>2.9.0</version>
+    <time>1341316211</time>
+    <user>coolo</user>
+    <comment>- avoid autoreconf to avoid breaking on updates of auto* tools (forwarded request 126861 from coolo)</comment>
+    <requestid>126962</requestid>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>de052b3379a52c3de4724763ee12bd0c</srcmd5>
+    <version>2.9.0</version>
+    <time>1359108896</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="55" vrev="9">
+    <srcmd5>fdfee8f575f3b8dfdf61a280826eea29</srcmd5>
+    <version>2.9.0</version>
+    <time>1360228521</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150817 from coolo)</comment>
+    <requestid>151449</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4172ff157d23ff7c3ab5e3961e7e44eb</srcmd5>
+    <version>2.9.2</version>
+    <time>1362773043</time>
+    <user>coolo</user>
+    <comment>- Use autoreconf directly instead of makeconf.sh
+
+- Update to version 2.9.2
+  - Add support for fallocate() (kernel &gt;= 3.5)
+  - Bug fixes
+- Remove fix-pthread-in-fuse.pc.patch; now included in upstream
+- Don't patch generated files such as configure and Makefile.in;
+  instead, regenerate them using makeconf.sh from SVN repository</comment>
+    <requestid>158007</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>47beb9ead1a5bea55e83b4fd276a52b0</srcmd5>
+    <version>2.9.2</version>
+    <time>1364472679</time>
+    <user>coolo</user>
+    <comment>- fix build for SLE_11</comment>
+    <requestid>161250</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>8d52508c7df1ae493c01257e75209590</srcmd5>
+    <version>2.9.2</version>
+    <time>1364895627</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161308 from m_meister)</comment>
+    <requestid>161620</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>b6596303d8fa6740e6aed6df8f156c91</srcmd5>
+    <version>2.9.2</version>
+    <time>1372270653</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>180836</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>483a5616a40e8b6dcbdf7cfddbbc82e7</srcmd5>
+    <version>2.9.3</version>
+    <time>1374751158</time>
+    <user>coolo</user>
+    <comment>Update to version 2.9.3 (forwarded request 184292 from mszeredi)</comment>
+    <requestid>184293</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>483a5616a40e8b6dcbdf7cfddbbc82e7</srcmd5>
+    <version>2.9.3</version>
+    <time>1379662374</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>483a5616a40e8b6dcbdf7cfddbbc82e7</srcmd5>
+    <version>2.9.3</version>
+    <time>1409300911</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>04adb345fe067bdd23e4ea59a8cd97dc</srcmd5>
+    <version>2.9.3</version>
+    <time>1418737851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264778</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5414ab05014545ce88ef1eff3650b121</srcmd5>
+    <version>2.9.4</version>
+    <time>1432378199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308352</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>b37bb85289368fb481f53a864c3de7fd</srcmd5>
+    <version>2.9.5</version>
+    <time>1454150056</time>
+    <user>dimstar_suse</user>
+    <comment>- fuse 2.9.5:</comment>
+    <requestid>355393</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>2998e44ea618f5b1904ee222afb552ee</srcmd5>
+    <version>2.9.5</version>
+    <time>1503061008</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516838</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>a16797232660b002333206194831a983</srcmd5>
+    <version>2.9.7</version>
+    <time>1508769526</time>
+    <user>dimstar_suse</user>
+    <comment>Fix download link in fuse.spec (forwarded request 534301 from admorgan)</comment>
+    <requestid>534302</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>67561cf33be5198ee03c5ed66da1f512</srcmd5>
+    <version>2.9.8</version>
+    <time>1533732257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627620</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>9a58fa54c0dbdb779e9a8abaa66b2017</srcmd5>
+    <version>2.9.8</version>
+    <time>1553435773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686407</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>de8f214aaa098741f46c65b95eb7e5ed</srcmd5>
+    <version>2.9.8</version>
+    <time>1556311412</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697568</requestid>
+  </revision>
+</revisionlist>

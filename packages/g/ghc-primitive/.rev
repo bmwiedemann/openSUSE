@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd6940ecee790b6c4e701a49ee6278e2</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1357037977</time>
+    <user>namtrac</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html. Fixed source validator issue.</comment>
+    <requestid>146688</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>dd6940ecee790b6c4e701a49ee6278e2</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1359108929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>66fdb97fd37f320a435620c50a18f740</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1375363943</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185262 from ptrommler)</comment>
+    <requestid>185373</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>66fdb97fd37f320a435620c50a18f740</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1379662434</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9f713fde52910a22614e77677388d229</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1408957482</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246009</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>9f713fde52910a22614e77677388d229</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1409300969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0fa7a63a0ab54b55db5cef78816e302</srcmd5>
+    <version>0.5.2.1</version>
+    <time>1417031696</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260162</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1cb1a3ecb865a7f70df9334e63304c50</srcmd5>
+    <version>0.6</version>
+    <time>1431493987</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306289</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>579e5afd0355597b1dbe783b2a132b5e</srcmd5>
+    <version>0.6.1.0</version>
+    <time>1443585145</time>
+    <user>coolo</user>
+    <comment>- update to 0.6.1.0
+* Use more appropriate types in internal memset functions, which prevents 
+    overflows/segfaults on 64-bit systems.
+* Fixed a warning on GHC 7.10
+* Worked around a -dcore-lint bug in GHC 7.6/7.7</comment>
+    <requestid>333998</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4807673f3d77fb8bed638ccbfb8aeccc</srcmd5>
+    <version>0.6.1.0</version>
+    <time>1469628534</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411957</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b8bebf9479157f17bd322d77a14854f9</srcmd5>
+    <version>0.6.2.0</version>
+    <time>1504205322</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513453</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>dd8cf8b939cd6e274e2c26aa5e71f4df</srcmd5>
+    <version>0.6.2.0</version>
+    <time>1505506002</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525220</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac9db2a2a98bc3b4a9b9faee63b42a1d</srcmd5>
+    <version>0.6.3.0</version>
+    <time>1527675104</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-primitive to the latest version.</comment>
+    <requestid>607860</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a0e020e61c6948a38621b37c37d5086</srcmd5>
+    <version>0.6.4.0</version>
+    <time>1532445667</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update primitive to version 0.6.4.0.
+  ## Changes in version 0.6.4.0
+   * Introduce `Data.Primitive.PrimArray`, which offers types and function
+     for dealing with a `ByteArray` tagged with a phantom type variable for
+     tracking the element type.
+   * Implement `isByteArrayPinned` and `isMutableByteArrayPinned`.
+   * Add `Eq1`, `Ord1`, `Show1`, and `Read1` instances for `Array` and
+     `SmallArray`.
+   * Improve the test suite. This includes having property tests for
+     typeclasses from `base` such as `Eq`, `Ord`, `Functor`, `Applicative`,
+     `Monad`, `IsList`, `Monoid`, `Foldable`, and `Traversable`.
+   * Fix the broken `IsList` instance for `ByteArray`. The old definition
+     would allocate a byte array of the correct size and then leave the
+     memory unitialized instead of writing the list elements to it.
+   * Fix the broken `Functor` instance for `Array`. The old definition
+     would allocate an array of the correct size with thunks for erroring
+     installed at every index. It failed to replace these thunks with
+     the result of the function applied to the elements of the argument array.
+   * Fix the broken `Applicative` instances of `Array` and `SmallArray`.
+     The old implementation of `&lt;*&gt;` for `Array` failed to initialize
+     some elements but correctly initialized others in the resulting
+     `Array`. It is unclear what the old behavior of `&lt;*&gt;` was for
+     `SmallArray`, but it was incorrect.
+   * Fix the broken `Monad` instances for `Array` and `SmallArray`.
+   * Fix the implementation of `foldl1` in the `Foldable` instances for
+     `Array` and `SmallArray`. In both cases, the old implementation
+     simply returned the first element of the array and made no use of</comment>
+    <requestid>623833</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4d66e179b74aa5217944330d8a27e1ef</srcmd5>
+    <version>0.6.4.0</version>
+    <time>1540450959</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643440</requestid>
+  </revision>
+</revisionlist>

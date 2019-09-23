@@ -1,0 +1,17 @@
+diff -Naru hdjmod-1.28o/device.c hdjmod-1.28/device.c
+--- hdjmod-1.28o/device.c	2009-01-27 15:25:50.000000000 +0100
++++ hdjmod-1.28/device.c	2012-03-13 22:21:56.000000000 +0100
+@@ -79,10 +79,9 @@
+ /* table of devices that work with this driver- look for vendor specific interfaces with
+  *  our VID */
+ static struct usb_device_id hdj_table [] = {
+-	{ .match_flags = (USB_DEVICE_ID_MATCH_DEVICE),
+-		.idVendor = (USB_HDJ_VENDOR_ID)	},
+-	{ .match_flags = (USB_DEVICE_ID_MATCH_INT_CLASS),
+-	.bInterfaceClass = USB_CLASS_VENDOR_SPEC},
++	{ .match_flags = (USB_DEVICE_ID_MATCH_VENDOR | USB_DEVICE_ID_MATCH_INT_CLASS),
++		.idVendor = (USB_HDJ_VENDOR_ID),
++		.bInterfaceClass = USB_CLASS_VENDOR_SPEC },
+ 	{ }					/* Terminating entry */
+ };
+ MODULE_DEVICE_TABLE(usb, hdj_table);

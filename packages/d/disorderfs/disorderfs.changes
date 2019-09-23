@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Oct 25 07:57:26 UTC 2018 - bwiedemann@suse.com
+
+- Update to 0.5.5
+  * Allow tar and touch -m to update mtime of files
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=911281
+  * Drop upstream xattr.patch
+
+-------------------------------------------------------------------
+Sun Sep 16 04:26:04 UTC 2018 - Bernhard M. Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.5.3
+  * Ensure readdir(2) returns consistent (and unique) inode numbers.
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=898287
+- Add xattr.patch to fix build with attr-2.4.48
+
+-------------------------------------------------------------------
+Mon Jan  1 08:55:35 UTC 2018 - avindra@opensuse.org
+
+- update to 0.5.2
+  * Add -q, --quiet options to avoid printing to stdout.
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jul 10 06:23:18 UTC 2017 - bwiedemann@suse.com
+
+- Use nicer upstream tarball and verify signature
+
+-------------------------------------------------------------------
+Thu Jul  6 12:10:48 UTC 2017 - bwiedemann@suse.com
+
+- fix build for Leap 42.1
+
+-------------------------------------------------------------------
+Mon Jul  3 15:17:21 UTC 2017 - bwiedemann@suse.com
+
+- Initial package version 0.5.1

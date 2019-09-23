@@ -1,0 +1,424 @@
+-------------------------------------------------------------------
+Tue Sep 10 09:14:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5
+  * Make xt_DELUDE and xt_TARPIT work under Linux >= 5.0
+    when used in conjunction with bridges.
+
+-------------------------------------------------------------------
+Fri Sep  6 08:45:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4
+  * Support for Linux 5.3
+- Drop remove_flags.patch
+
+-------------------------------------------------------------------
+Sun Aug  4 10:29:06 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove unused variable 'flags' from 'struct shash_desc'
+  * Support for Linux 5.2 (add remove_flags.patch)
+
+-------------------------------------------------------------------
+Thu Mar  7 09:22:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.3
+  * Support for Linux 5.0 [boo#1127790]
+
+-------------------------------------------------------------------
+Fri Sep  7 13:05:24 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.2
+  * xt_geoip_build: change the way the source directory is scanned
+
+-------------------------------------------------------------------
+Wed Sep  5 07:21:40 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Add perl dependencies
+
+-------------------------------------------------------------------
+Tue Aug 14 12:46:24 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 3.1 [boo#1104749]
+  * Support for Linux 4.18
+
+-------------------------------------------------------------------
+Tue Jun 19 12:13:06 UTC 2018 - msuchanek@suse.com
+
+- Use %{?linux_make_arch} when building kernel modules (boo#1098050).
+
+-------------------------------------------------------------------
+Mon Feb 12 14:18:55 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 3.0
+  * Support for Linux 4.16
+  * Dropped support for Linux kernels older than 4.15
+- Remove init_timer.patch
+
+-------------------------------------------------------------------
+Mon Feb  5 17:55:51 UTC 2018 - suse+build@de-korte.org
+
+- Backport from upstream
+  * Support for Linux 4.15 (add init_timer.patch)
+
+-------------------------------------------------------------------
+Wed Nov 22 17:38:47 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.14
+  * Support for Linux 4.14 [boo#1068098]
+  * DNETMAP buffer overflow fix
+
+-------------------------------------------------------------------
+Thu Aug 24 22:55:33 UTC 2017 - jengelh@inai.de
+
+- Bundle LICENSE file in BRPM
+
+-------------------------------------------------------------------
+Thu Jun 29 12:49:11 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.13
+  * Support for Linux 4.12
+  * xt_condition: namespace support
+  * xt_geoip: check for allocation overflow
+  * xt_DNETMAP: fix a buffer overflow
+
+-------------------------------------------------------------------
+Wed Jan 11 00:45:43 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.12
+* Support for Linux 4.10
+
+-------------------------------------------------------------------
+Fri May 20 21:54:26 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.11
+* Support for Linux 4.5, 4.6
+
+-------------------------------------------------------------------
+Fri Nov 20 22:40:17 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.10
+* Support for Linux 4.4
+
+-------------------------------------------------------------------
+Mon Oct 12 14:42:51 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.9
+* Support for Linux 4.3
+
+-------------------------------------------------------------------
+Wed Aug 19 10:39:50 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.8
+* Support for Linux 4.2
+* Enable xt_ECHO
+
+-------------------------------------------------------------------
+Mon Jul  6 04:01:14 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.7
+* Support for Linux up to 4.1
+
+-------------------------------------------------------------------
+Mon Sep 29 08:38:22 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.6
+* Fixes to the UDP SPA mode
+* Support for Linux 3.17
+
+-------------------------------------------------------------------
+Fri Apr 18 17:17:14 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.5
+* Support for Linux 3.14, 3.15
+* xt_quota2: support distinct network namespaces
+
+-------------------------------------------------------------------
+Thu Jan  9 11:24:26 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.4
+* Support for Linux 3.13
+* Remove the unmaintained RAWSNAT/RAWDNAT modules
+
+-------------------------------------------------------------------
+Tue Jun 18 05:45:03 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 3.10
+* support for Linux 3.10 and CONFIG_UIDGID_STRICT_TYPE_CHECKS
+* xt_geoip: do not throw a warning when country database is size 0
+* xt_quota2: print "!" at the correct position during iptables-save
+
+-------------------------------------------------------------------
+Sun Mar 31 19:15:44 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 2.2
+* support for Linux 3.9
+* avoid iptaccount being optimized away (bnc#807155)
+
+-------------------------------------------------------------------
+Thu Feb 28 06:02:46 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Jan  4 16:08:33 UTC 2013 - jengelh@inai.de
+
+- Don't need linux-glibc 3.7, since we copy headers anyway
+
+-------------------------------------------------------------------
+Thu Dec 27 07:08:36 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.1
+* support for Linux 3.8
+- Remove 0001-xt_DNETMAP-fix-compile-error-with-Linux-3.7.patch
+
+-------------------------------------------------------------------
+Fri Dec 21 02:08:44 UTC 2012 - jengelh@inai.de
+
+- Always ship all source tarballs to make osc validator happy
+- Enable version 2.0 for openSUSE:Factory which now has kernel 3.7
+- Add 0001-xt_DNETMAP-fix-compile-error-with-Linux-3.7.patch
+
+-------------------------------------------------------------------
+Mon Dec  3 15:17:18 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Mon Nov 12 21:01:14 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.0
+  (enabled for Kernel:HEAD only at this time)
+* Support for Linux 3.7
+
+-------------------------------------------------------------------
+Mon Oct 15 18:08:54 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.47.1
+* Support for IPv6 in xt_psd
+
+-------------------------------------------------------------------
+Thu Aug 23 13:53:48 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.46
+* length2, SYSRQ, RAWNAT: preinitialize values for ipv6_find_hdr
+* TARPIT: fix memory leak when tarpit_generic() fails
+* Support for Linux 3.6
+
+-------------------------------------------------------------------
+Sun Jul 15 12:00:03 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.45
+* SYSRQ: fix double target initialization at module load
+* TARPIT: IPv6 support
+
+-------------------------------------------------------------------
+Sat Jun 30 17:45:42 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.43
+* xt_psd: avoid crash due to curr->next corruption
+* xt_psd: reject invalid match options
+* DNETMAP: new type: static binding
+* DNETMAP: new persistent flag option for prefix
+* DNETMAP: add write support to procfs interface
+
+-------------------------------------------------------------------
+Thu Apr  5 03:04:48 UTC 2012 - jengelh@medozas.de
+
+- update to new upstream release 1.42
+* Linux 3.3/3.4 support
+
+-------------------------------------------------------------------
+Mon Feb 13 10:58:00 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Jan  4 20:37:45 UTC 2012 - jengelh@medozas.de
+
+- update to new upstream release 1.41
+* support for Linux 3.2
+
+-------------------------------------------------------------------
+Fri Dec 30 23:35:33 UTC 2011 - jengelh@medozas.de
+
+- We have now a few of kernel versions that ipset can be compiled
+  against, so ipset has been separated out into a new RPM package,
+  and ipset-genl from xtables-addons is hereby subsequently
+  disabled.
+
+-------------------------------------------------------------------
+Wed Nov 30 10:43:07 UTC 2011 - jengelh@medozas.de
+
+- update to new upstream release 1.40
+* xt_ECHO: fix kernel warning about RTAX_HOPLIMIT being used
+* xt_ipv4options: fix an infinite loop
+* Provides ipset 6.10: ICMP/ICMPv6 type/code parser bug fixed;
+  fix lookup of tcp port names
+
+-------------------------------------------------------------------
+Wed Sep 21 18:01:56 UTC 2011 - jengelh@medozas.de
+
+- update to new upstream release 1.39
+* update to ipset 6.9.1
+* resolve compilation errors due to missing libxtables_CFLAGS
+
+-------------------------------------------------------------------
+Sat Aug 20 15:03:31 UTC 2011 - jengelh@medozas.de
+
+- update to new upstream release 1.38
+* Restore UDP functionality for xt_psd
+* UDPLITE support for xt_SYSRQ, xt_ipp2p, xt_pknock, xt_psd
+* Provides ipset 6.8
+
+-------------------------------------------------------------------
+Sat Jun 25 09:25:25 UTC 2011 - jengelh@medozas.de
+
+- update to new upstream release 1.37
+* xt_SYSRQ: make IPv6 trigger work again
+* xt_SYSRQ: improve security: include host address in digest
+* xt_TARPIT: fix a kernel oops in --reset mode
+
+-------------------------------------------------------------------
+Fri Jun  3 15:11:54 UTC 2011 - jengelh@medozas.de
+
+- update to new upstream release 1.36
+* update to ipset 6.7
+* xt_TARPIT has gained the "honeypot" and "reset" modes
+
+-------------------------------------------------------------------
+Mon Apr 11 21:59:02 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.35
+* update to ipset 6.3
+* ipset-genl: handle EAGAIN return value emitted from autoloader
+* ipset-genl: resolve nfgenmsg remains and fix spurious protocol abort
+
+-------------------------------------------------------------------
+Thu Apr  7 15:11:31 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.34
+* xt_pknock: avoid crash when hash TFM could not be allocated
+* xt_pknock: avoid inversion of rule lookup that led to warnings
+* xt_DNETMAP: add missing module alias
+* xt_DNETMAP: support for kernels below 2.6.34
+- Add kmp preamble file
+
+-------------------------------------------------------------------
+Wed Feb  2 04:28:55 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.33
+* IPv6 GeoIP support
+* New DNETMAP extension
+* Update to ipset 5.4-genl
+
+-------------------------------------------------------------------
+Fri Nov  5 18:50:05 UTC 2010 - jengelh@medozas.de
+
+- Update to new upstream release 1.31
+* LOGMARK: print remaining lifetime of ct entries
+* xt_iface: allow matching against incoming/outgoing interface
+* libxt_gradm: match packets based on status of grsecurity RBAC
+
+-------------------------------------------------------------------
+Sat Oct  9 06:59:07 UTC 2010 - jengelh@medozas.de
+
+- Do not build xt_TEE, xt_CHECKSUM; they are provided in newer
+  iptables and kernel versions already
+
+-------------------------------------------------------------------
+Sun Oct  3 08:17:43 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.30
+* support for Linux 2.6.36
+* update to ipset 4.4
+  - ipport{,ip,net}hash did not work with mixed "src" and "dst"
+    destination parameters
+* do ship ip_set_ipport{ip,net}hash
+
+-------------------------------------------------------------------
+Sat Jul 24 09:47:54 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.28
+  * RAWNAT: IPv6 variants erroneously rejected masks /33-/128
+  * new target xt_CHECKSUM
+  * xt_length2: add support for IPv6 jumbograms
+  * xt_geoip: fix possible out-of-bounds access
+  * import xt_geoip database scripts
+
+-------------------------------------------------------------------
+Tue Jun 29 11:51:47 UTC 2010 - lnussel@suse.de
+
+- don't require kernel module package (bnc#618244)
+
+-------------------------------------------------------------------
+Mon May 17 07:23:05 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.27
+  * support for upcoming Linux 2.6.35
+
+-------------------------------------------------------------------
+Sat May  1 09:15:48 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.26
+  * fix compile error with kernel 2.6.34
+
+-------------------------------------------------------------------
+Mon Apr 26 12:15:08 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.25
+  * incorporated changes from upstream review into xt_TEE:
+    (rechecksumming in PREROUTING, decrease TTL on cloned packet, set
+    dont-fragment on cloned packets, free skb when route lookup
+    failed, do not limit use to mangle table, do not retain iif and
+    mark on cloned packet, new loop detection logic, use less
+    expensive pskb_copy)
+
+-------------------------------------------------------------------
+Wed Mar 17 22:09:45 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.24
+  * ipp2p: updated bittorent command recognition
+
+-------------------------------------------------------------------
+Thu Feb 25 00:07:24 UTC 2010 - jengelh@medozas.de
+
+- new upstream release 1.23
+  * ipset updated to 4.2
+  * removal of obsoleted configure options;
+    compile fixes for IPV6=n and 2.6.32's skb_dst
+  * support for Linux 2.6.33 and the projected 2.6.34 net tree
+
+-------------------------------------------------------------------
+Fri Feb 12 00:46:09 CET 2010 - ro@suse.de
+
+- add KMP to specfile (to give description to kmp subpacks) 
+
+-------------------------------------------------------------------
+Sat Jan 23 02:32:52 CET 2010 - jengelh@medozas.de
+
+- new upstream release 1.22
+  * ipset: enable build of ip_set_setlist.ko
+  * quota2: add the --no-change mode
+- remove merged patch geoip-dir.diff (use
+  /usr/share/xt_geoip instead of /var/geoip)
+
+-------------------------------------------------------------------             
+Thu Dec 31 01:50:38 CET 2009 - jengelh@medozas.de
+
+- initial OBS package
+
+-------------------------------------------------------------------
+Wed Dec 09 2009 - jengelh@medozas.de
+
+- new upstream release: 1.21
+  * fix clashing setsockopt numbers between xt_ACCOUNT and arptables
+
+-------------------------------------------------------------------             
+Thu Nov 19 2009 - jengelh@medozas.de
+
+- new upstream release: 1.20
+
+-------------------------------------------------------------------             
+Mon Oct 12 2009 - jengelh@medozas.de
+
+- new upstream release: 1.19

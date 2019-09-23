@@ -1,0 +1,44 @@
+Subject: cpumf: correct counter name for z13 and z14
+From: Hendrik Brueckner <brueckner@linux.ibm.com>
+
+Summary:     cpumf: Add CPU-MF hardware counters for z14
+Description: Add hardware counter definitions for IBM z14.
+Upstream-ID: 9745e4678adf18869e661d13f2b666a929450fa1
+Problem-ID:  KRN1608
+
+Upstream-Description:
+
+             cpumf: correct counter name for z13 and z14
+
+             Signed-off-by: Hendrik Brueckner <brueckner@linux.vnet.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Hendrik Brueckner <brueckner@linux.ibm.com>
+---
+ cpumf/data/cpum-cf-extended-z13.ctr |    2 +-
+ cpumf/data/cpum-cf-extended-z14.ctr |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/cpumf/data/cpum-cf-extended-z13.ctr
++++ b/cpumf/data/cpum-cf-extended-z13.ctr
+@@ -16,7 +16,7 @@
+ #
+ # Extended Counter Set
+ # ---------------------------------------------------------------------
+-Counter:128	Name:L1D_WRITES_RO_EXCL
++Counter:128	Name:L1D_RO_EXCL_WRITES
+ Description:
+ A directory write to the Level-1 Data cache where the line was
+ originally in a Read-Only state in the cache but has been updated
+--- a/cpumf/data/cpum-cf-extended-z14.ctr
++++ b/cpumf/data/cpum-cf-extended-z14.ctr
+@@ -19,7 +19,7 @@
+ #
+ # Extended Counter Set
+ # ---------------------------------------------------------------------
+-Counter:128	Name:L1D_WRITES_RO_EXCL
++Counter:128	Name:L1D_RO_EXCL_WRITES
+ Description:
+ A directory write to the Level-1 Data cache where the line was
+ originally in a Read-Only state in the cache but has been updated

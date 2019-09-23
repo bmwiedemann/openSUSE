@@ -1,0 +1,885 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:36:42 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Mar  7 04:54:09 UTC 2012 - praful.johari@gmail.com
+
+- Update to version 2.31.0:
+  + Add wnck_pager_set_layout_policy() API.
+  + Add macros to determine libwnck version at build time.
+
+-------------------------------------------------------------------
+Mon Feb 20 14:07:46 UTC 2012 - vuntz@opensuse.org
+
+- Add explicit pkgconfig(x11) and pkgconfig(xres) BuildRequires, to
+  avoid issues after the big xorg-x11 packaging change.
+
+-------------------------------------------------------------------
+Fri Dec  9 08:42:03 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-Wnck-1_0 subpackage.
+- Add typelib-1_0-Wnck-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Mon Oct 17 14:07:47 UTC 2011 - vuntz@opensuse.org
+
+- Add libwnck2 Obsoletes to libwnck-1-22, since we dropped the
+  libwnck2 subpackage back in April, but forgot the Obsoletes (the
+  Provides is there already).
+
+-------------------------------------------------------------------
+Wed Aug 31 12:52:36 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.30.7:
+  + Misc:
+    - Link against libX11
+    - Link against libm
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  4 10:05:15 CEST 2011 - vuntz@opensuse.org
+
+- Fix License tag of devel subpackage to be LGPLv2.1+ instead of
+  GPLv2+. Fix bnc#691447.
+
+-------------------------------------------------------------------
+Thu Apr 21 10:52:25 CEST 2011 - vuntz@opensuse.org
+
+- Add missing startup-notification-devel BuildRequires.
+- Remove wnck-urgency-monitor and wnckprop binaries, as they will
+  now be provided by the GTK+ 3 version of libwnck. This means we
+  have no libwnck2 binary package anymore.
+- Add a libwnck2 Provides to libwnck-1-22 to make the lang package
+  installable.
+- Change libwnck2 Requires in devel package to libwnck-1-22.
+- Drop old Obsoletes/Provides for libwnck2-64bit,
+  libwnck2-devel-64bit and libwnck2-doc after the renaming, since
+  those packages never existed.
+- Remove explicit Requires for glib2-devel and gtk2-devel in devel
+  package: they will be added automatically the pkg-config way.
+
+-------------------------------------------------------------------
+Wed Apr  6 12:29:26 UTC 2011 - fcrozat@novell.com
+
+- Rename package to libwnck2 and adapt specfile accordingly.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:56:00 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Wed Nov 17 13:56:52 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.6:
+  + Adapt to GtkObject removal in GTK3
+  + Add a small test utility to make it easy to test urgency hints
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 29 02:18:46 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Mon Sep 27 13:48:40 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.5:
+  + Fix pager with multiple rows, regression from 2.30.4
+  + Associate .gir with pkg-config file
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:54:13 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Tue Sep 14 15:46:59 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.4:
+  + Stop using gdk_display
+  + Update information in README and other files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 04:14:05 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.3:
+  + Additional GSeal-related fix
+  + Fix failure to build outside source tree
+  + Add introspection annotations
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 16 13:19:05 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.2:
+  + Fixes:
+    - Many GSeal-related fixes
+    - Do not ship gir files in the tarball
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 30 06:10:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Fixes
+    - Many GSeal-related fixes
+    - Use a GtkMenuSeparator with a label instead of a hack for
+      workspace menu items in selector
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 22 15:34:07 CET 2010 - vuntz@opensuse.org
+
+- Remove manual check for the package name to follow the library
+  policy: rpmlint does this now.
+
+-------------------------------------------------------------------
+Sun Mar 21 17:47:43 UTC 2010 - dimstar@opensuse.org
+
+- Add BuildRequires gobject-introspection-devel.
+
+-------------------------------------------------------------------
+Tue Mar  9 08:22:31 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  +  Feature:
+     - Integrate gobject-introspection support
+  + Fixes:
+    - Build with latest GSeal'ed GTK+ (Vincent)
+    - Do not lose the pinned status when dragging a window in a
+      tasklist
+    - Use _NET_WM_WINDOW_TYPE_SPLASH instead of non-existing
+      _NET_WM_WINDOW_TYPE_SPLASHSCREEN (Vincent)
+  + Misc:
+    - Small documentation improvement for
+      wnck_window_move_to_workspace() to specify what happens to
+      pinned windows
+    - Fix build when building out of source tree
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 21:39:11 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.91:
+  + Use single-include for atk
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 27 17:18:49 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  + Fix generation of wnck-enum-types.c to not break bindings
+  + Modernize a bit the build system
+  + Updated translations.
+- Drop libwnck-fix-bindings.patch: fixed upstream.
+- Remove en@shaw translation on openSUSE 11.2 and earlier.
+
+-------------------------------------------------------------------
+Tue Jan  5 16:52:36 CET 2010 - jengelh@medozas.de
+
+- Package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Oct  6 19:28:48 CEST 2009 - vuntz@opensuse.org
+
+- Add libwnck-fix-bindings.patch to fix an issue that broke python
+  bindings for libwnck.
+
+-------------------------------------------------------------------
+Tue Sep 22 19:44:08 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 04:46:36 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.27.92:
+  + Always show icons in tasklist group menu
+  + Make startup-notification non-automagic
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 29 05:50:12 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + New wnck-urgency-monitor utility to monitor windows with urgent
+  hint
+
+-------------------------------------------------------------------
+Mon Jul 20 00:30:58 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + Fix wnck_application_get_icon_is_fallback() to actually work
+  + Fix gtk-doc warning
+  + Code cleanup
+  + Always show icons in selector menu
+  + Use shave to improve build log readability
+  + Build system tweaks
+  + Updates translations.
+
+-------------------------------------------------------------------
+Mon May 18 03:05:45 CEST 2009 - vuntz@novell.com
+
+- Do not make libwnck-1-22 depend on libwnck, but just on
+  libwnck-lang.
+
+-------------------------------------------------------------------
+Tue Apr 14 14:55:34 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 17 01:10:02 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Feb 18 03:12:33 CET 2009 - mboman@suse.de
+
+- Add back licenses to BuildRequires
+- Fix Obsoletes/Provides
+
+-------------------------------------------------------------------
+Tue Feb 17 07:26:59 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.91:
+  + Requires glib 2.16.0
+  + Translation updates
+- Merge -doc into -devel as it only contains gtk-doc
+- Remove gnome-common, perl-XML-Parser, update-desktop-files and
+  licenses from BuildRequires
+
+-------------------------------------------------------------------
+Sun Feb  1 18:05:45 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.5:
+  + Make libwnck compile with gnome-common DEPRECATED variables
+  + Use C_() instead of Q_()
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sat Dec 20 11:35:42 EST 2008 - mboman@suse.de
+
+- Update to version 2.25.3:
+  + Use single include for GTK+
+  + Fix compiler warning
+ 
+-------------------------------------------------------------------
+Sat Dec 13 13:21:56 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.2:
+  + Translation updates 
+
+-------------------------------------------------------------------
+Thu Oct 23 16:32:23 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 23 08:55:32 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Translation updates. 
+
+-------------------------------------------------------------------
+Wed Sep 10 17:13:28 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 02 00:06:37 CEST 2008 - mboman@novell.com
+
+- Update to version 2.23.91:
+  + Update the default window icon
+  + Update translations
+
+-------------------------------------------------------------------
+Fri Aug 29 00:06:37 CEST 2008 - maw@suse.de
+
+- Don't package static libraries or libtool archives.
+
+-------------------------------------------------------------------
+Wed Aug  6 09:23:35 CDT 2008 - maw@suse.de
+
+- Update to version 2.23.6:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 19 01:02:59 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.4:
+  + Fix a bug where, when the last window disappears, libwnck
+    internals aren't updated and you still have a window in the
+    window list
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 21 20:44:27 CEST 2008 - cthiel@suse.de
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Apr 10 01:19:41 CEST 2008 - maw@suse.de
+
+- Update to version 2.22.1:
+  + Bugs fixed: bgo#517750, bgo#520124, bgo#520704, bgo#520726
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 17 23:11:07 CET 2008 - vuntz@suse.de
+
+- After a discussion with David Raveman, we agree that the last
+  three patches (libwnck-2.12.2-window-move-1.patch,
+  libwnck-opacity-2.patch, libwnck-border_width-fix-2.patch) are
+  not needed for compiz any more, so killing them. 
+
+-------------------------------------------------------------------
+Mon Mar 17 12:06:03 CET 2008 - vuntz@suse.de
+
+- Remove libwnck-realistic-layout.patch.
+  Was fixed upstream in June 2007, see bgo#339861.
+
+-------------------------------------------------------------------
+Fri Mar 14 03:56:34 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Fix wnck_window_set_geometry() to work as intended, ie
+    including decorations (bgo#518606)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  4 19:06:37 CET 2008 - maw@suse.de
+
+- Update to version 2.21.92:
+  + Fix wnck_window_set_geometry() not working without a main loop
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 19 02:16:45 CET 2008 - maw@suse.de
+
+- Update to version 2.21.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 29 16:49:42 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.21.90:
+  * Fix pager to correctly work in multiscreen environment 
+- Added missing glib2-devel to -devel package Requires
+
+-------------------------------------------------------------------
+Thu Nov 15 01:11:50 CET 2007 - jpr@suse.de
+
+- Remove libwnck-viewport-2.patch, it was obsoleted by a different
+  upstream patch
+
+-------------------------------------------------------------------
+Tue Sep 18 18:01:05 CEST 2007 - sbrabec@suse.cz
+
+- Update to version 2.20.0:
+  * translations update
+
+-------------------------------------------------------------------
+Mon Sep 10 23:08:51 CEST 2007 - mauro@suse.de
+
+- Update to version 2.19.92: 
+  + Add translator comments for wnckprop (Andre Klapper) [#468320]
+
+-------------------------------------------------------------------
+Fri Aug 31 00:44:10 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.90:
+  + Remove weak pointers on fields in task structure before
+    freeing task block (bugzilla.gnome.org 139080)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  8 19:04:48 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Wed Aug  1 23:50:22 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.6:
+
+ Fixes
+
+  - Make the window action menu work with viewport (Vincent) [#352383]
+  - Correctly draw workspaces with viewport in the pager (Vincent)
+  - Fix typo in a string of wnckprop (Theppitak Karoonboonyanan)
+
+-------------------------------------------------------------------
+Fri Jul 27 10:25:30 CEST 2007 - sbrabec@suse.cz
+
+- Fixed typo in shared library name.
+
+-------------------------------------------------------------------
+Tue Jul 17 12:39:12 CEST 2007 - sbrabec@suse.cz
+
+- Fixed shared library packaging.
+- Added script to update library package names.
+
+-------------------------------------------------------------------
+Sat Jul 14 18:42:20 CEST 2007 - mrueckert@suse.de
+
+- fixed typo in previous change
+
+-------------------------------------------------------------------
+Sat Jul 14 18:22:49 CEST 2007 - mrueckert@suse.de
+
+- use libwnck-devel and libwnck-doc. the file content would conflict
+  anyway so there is no need to have them as versioned subpackages.
+
+-------------------------------------------------------------------
+Mon Jul  9 22:15:11 CEST 2007 - maw@suse.de
+
+- Following up on the package rename, add some new
+  Provides/Obsoletes.
+
+-------------------------------------------------------------------
+Fri Jul  6 17:26:28 CEST 2007 - maw@suse.de
+
+- Update to version 2.19.4, and rename to libwnck-1-22 to match
+  sonames.
+- Remove upstreamed libwnck-216129-tasklist-crash.patch
+
+-------------------------------------------------------------------
+Tue May 29 15:12:16 CEST 2007 - danw@suse.de
+
+- Add libwnck-216129-tasklist-crash.patch from upstream to fix a
+  panel crash. #216129
+
+-------------------------------------------------------------------
+Fri Mar 23 13:48:19 CST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Minor changes:
+  * libwnck/tasklist.c: (wnck_tasklist_scroll_cb): fix left/right
+    scroll for RTL
+  * libwnck/pager.c: (wnck_update_drag_icon): improve a bit, so
+    that the icon has a good width/height ratio, and is not always
+    huge
+  * libwnck/pager.c: (wnck_pager_set_n_rows): don't accept to set to
+    less than 1 row. Again. (My one-line patch was broken ;-))
+  * test-tasklist.c: add an option to always group windows, and default
+    to automatic grouping
+  * test-tasklist.c: (main):
+  * test-selector.c: (main): don't use gtk_window_set_policy(), but
+    gtk_window_set_resizable()
+  * libwnck/pager.c: (wnck_pager_set_n_rows): don't accept to set to
+    less than 1 row
+
+-------------------------------------------------------------------
+Mon Feb 19 14:51:59 CST 2007 - maw@suse.de
+
+- Update to version 2.17.91
+
+-------------------------------------------------------------------
+Wed Feb  7 12:27:30 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552).
+
+-------------------------------------------------------------------
+Wed Dec 13 13:27:58 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Nov  7 20:16:53 CET 2006 - dreveman@suse.de
+
+- Fix viewport patch so it doesn't crash when creating action menu
+  for windows that are visible on more than one workspace. #217262
+
+-------------------------------------------------------------------
+Wed Oct 18 19:34:40 CEST 2006 - sbrabec@suse.cz
+
+- Enabled creating of doc package (#193240).
+
+-------------------------------------------------------------------
+Mon Oct 16 20:55:43 CEST 2006 - dreveman@suse.de
+
+- Fix broken border width patch. 178222.
+- Remove ibwnck-2.12.2-virtual-aspect-1.patch, it's no longer
+  needed.
+
+-------------------------------------------------------------------
+Tue Oct  3 18:54:29 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.1
+- Fix critical warning and leak
+- Avoid sending spurious icon geometry updates
+- Require GTK+ 2.8.0
+- translation updates 
+
+-------------------------------------------------------------------
+Fri Sep 15 00:17:58 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.16.0
+- translation updates 
+
+-------------------------------------------------------------------
+Thu Aug 31 23:19:12 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.92
+- Fix crash when tasklist is destroyed
+- Update delete icon for the context menu
+- translation updates 
+
+-------------------------------------------------------------------
+Tue Aug 15 23:03:35 CEST 2006 - jhargadon@suse.de
+
+- update to version 2.15.91
+- Changed the glowing code to have less and saner style properties 
+
+-------------------------------------------------------------------
+Fri Aug  4 22:00:04 CEST 2006 - gekker@suse.de
+
+- Update to version 2.15.90
+- Remove upstreamed patches
+Features
+  - Add move/resize window API (Magnus Therning)
+  - Improve glowing effect in tasklist and make it themeable (Benjamin Berg)
+    [#325176]
+  - Use cairo in the pager (Benjamin Otte) [#339293]
+  - Improve drag and drop in the pager (Nickolay V. Shmyrev, Benjamin Otte)
+    [#96675, #339293]
+  - Improve look of the pager (Benjamin Otte) [#339293]
+  - Add dragging of windows from the tasklist (Nickolay V. Shmyrev) [#96675]
+  - Sort window in a group alphabetically (Xavier Claessens, Vincent)
+  - Change active window when scrolling on the selector (Nigel Tao)
+  - Add scrolling support to the tasklist (Xavier Claessens)
+
+ Fixes
+  - Correctly set relief for group buttons in the tasklist (Benjamin Otte)
+  - Make windows that go to the bottom occupy the last pixel of the pager
+    (Benjamin Otte)
+  - Fix crashes
+  - Don't change workspace when releasing the button on another workspace
+    (Vincent) [#110510]
+  - Fix leaks (Dan Winship) [#334137]
+  - Fix minimization of "always on visible desktop" windows with the tasklist
+    (Vincent) [#335316]
+  - Fix transient cycles causing infinite loops (Dan Winship, Elijah) [#332493]
+  - Immediately show notification for demands-attent/urgent windows on other
+    workspaces in the tasklist (Leszek Matok) [#336142]
+  - Don't minimize the window when it's on another desktop and it was the last
+    active window (Vincent) [#331661]
+  - Fix C89 compliance (Jens Granseuer) [#332866]
+  - Fix window disappearing in workspace switcher after drag and drop (Vincent)
+    [#317373]
+  - Fix corrupted drawing of windows (Vincent) [#155502]
+  - Include demands-attention/urgent windows unconditionally in
+    tasklist; this should help users not miss important windows on
+    other workspaces (Elijah) [#305979]
+  - Synchronize the right-click-menu with that of Metacity's (Srirama
+    Sharma, Leena Gunda, Christian Neumair) [#135710]
+  - Escape window titles used in pango markup, avoids some crashes too
+    (Vincent Noel, jylefort FreeBSD org) [#306289]
+  - Correctly catch and handle demands-attention/urgent state changes
+    for transients of windows in the tasklist (Elijah) [#317541]
+  - Make the pager Fitts's law compliant when shadow type is none
+    (Vincent) [#304248]
+  - Correctly specify the source indication (Elijah)
+  - Use virtual desktop size when computing size of pager (Loic Minier, Vincent)
+Update Translations
+
+-------------------------------------------------------------------
+Tue May 30 16:25:53 CEST 2006 - danw@suse.de
+
+- Patch in a new method from libwnck HEAD to allow compiz to know
+  when a window has a real name (as opposed to a fallback name like
+  "untitled window"). #173059
+
+-------------------------------------------------------------------
+Fri May 12 21:04:25 CEST 2006 - dreveman@suse.de
+
+- Fix so that correct geometry is returned when border width is
+  greater than 0. (bnc 178222)
+
+-------------------------------------------------------------------
+Thu May  4 23:46:55 CEST 2006 - dreveman@suse.de
+
+- Add opacity window action sub-menu patch.
+  (libwnck-opacity-2.patch)
+- Add patch for viewport options in window action menu.
+  (libwnck-2.12.2-viewport-1.patch) (bnc 160004)
+
+-------------------------------------------------------------------
+Thu Apr 27 00:25:05 CEST 2006 - joeshaw@suse.de
+
+- Add a patch to fix some layout and grouping bugs in the tasklist.
+  (bnc #148840)
+
+-------------------------------------------------------------------
+Tue Mar  7 17:58:04 CET 2006 - danw@suse.de
+
+- Fix a crash in libwnck-2.12.2-virtual-aspect-1.patch (144722).
+  Fix some memory leaks to hopefully fix 78329.
+
+-------------------------------------------------------------------
+Tue Feb 28 20:01:14 CET 2006 - danw@suse.de
+
+- Fix infinite loop when a window is marked TRANSIENT_FOR itself
+  (116722)
+
+-------------------------------------------------------------------
+Wed Feb 15 22:29:44 CET 2006 - gekker@suse.de
+
+- Fix crash on window switch (b.g.o#327435)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:32:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan  7 01:36:04 CET 2006 - dreveman@suse.de
+
+- Add window movement patch
+
+-------------------------------------------------------------------
+Wed Jan  4 14:36:48 CET 2006 - dreveman@suse.de
+
+- Add virtual desktop aspect ratio patch
+
+-------------------------------------------------------------------
+Wed Nov 30 23:32:20 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.2
+
+-------------------------------------------------------------------
+Thu Oct 13 22:04:26 CEST 2005 - gekker@suse.de
+
+- Update to version 2.12.1
+
+-------------------------------------------------------------------
+Mon Sep  5 12:22:02 CEST 2005 - mmj@suse.de
+
+- Update to version 2.12.0 (GNOME 2.12)
+
+-------------------------------------------------------------------
+Mon Aug 22 13:19:16 CEST 2005 - rodrigo@suse.de
+
+- Update to version 2.11.92
+
+-------------------------------------------------------------------
+Thu Aug 11 22:05:00 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.91 
+- Fix use of unitialized variable
+
+-------------------------------------------------------------------
+Fri Jul 22 23:13:09 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.4 
+
+-------------------------------------------------------------------
+Wed Jun 22 02:37:44 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.3 
+
+-------------------------------------------------------------------
+Wed Jun  1 19:05:39 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Thu Mar 10 00:51:39 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10). 
+
+-------------------------------------------------------------------
+Fri Mar  4 00:46:08 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.92.1 
+
+-------------------------------------------------------------------
+Fri Feb 11 05:41:25 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.91 
+
+-------------------------------------------------------------------
+Sun Feb  6 01:21:00 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.90 
+
+-------------------------------------------------------------------
+Tue Jan  4 16:53:50 CET 2005 - gekker@suse.de
+
+- Update to version 2.9.3 
+
+-------------------------------------------------------------------
+Tue Dec 21 00:11:55 CET 2004 - gekker@suse.de
+
+- Update to version 2.8.1.
+- Add gtk-doc to needed for build, release version now requires it
+- Add --disable-html-dir to keep html docs from being built 
+
+-------------------------------------------------------------------
+Tue Nov 23 01:30:26 CET 2004 - ro@suse.de
+
+- do not use libXRes on 9.0-x86_64
+
+-------------------------------------------------------------------
+Fri Nov 19 14:19:07 CET 2004 - ro@suse.de
+
+- removed extra aclocal include directive
+
+-------------------------------------------------------------------
+Mon Oct 25 12:40:46 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Thu Apr 15 18:07:21 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.0.1 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Sat Jan 10 16:30:55 CET 2004 - adrian@suse.de
+
+- add %defattr and %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Oct 07 15:25:37 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0.1 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Tue Jul 15 14:05:06 CEST 2003 - pthomas@suse.de
+
+- Clean up the code, specially where dereferencing type-punned
+  pointers would break alias analysis.
+
+-------------------------------------------------------------------
+Mon Jul 14 14:58:05 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jun 24 19:28:43 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.2.
+- Use %find_lang.
+
+-------------------------------------------------------------------
+Mon Jun  2 00:25:53 CEST 2003 - ro@suse.de
+
+- add translations to filelist 
+
+-------------------------------------------------------------------
+Wed Jan 29 14:28:53 CET 2003 - hhetter@suse.de
+
+- update to version 2.2.0 
+
+-------------------------------------------------------------------
+Thu Jan 16 10:38:25 CET 2003 - hhetter@suse.de
+
+- updated to version 2.1.90
+- use gtk2-devel-packages in #neededforbuild  
+
+-------------------------------------------------------------------
+Wed Jan 15 13:44:35 CET 2003 - sbrabec@suse.cz
+
+- Added expat to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Nov 28 12:28:46 CET 2002 - hhetter@suse.de
+
+- updated to version 0.18 [GNOME 2.0.3] 
+
+-------------------------------------------------------------------
+Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
+
+- changed neededforbuild <xf86 xdevel> to <x-devel-packages>
+
+-------------------------------------------------------------------
+Thu Oct 24 10:31:24 CEST 2002 - hhetter@suse.de
+
+- use "-c" with automake (Bug Id #21066) 
+
+-------------------------------------------------------------------
+Fri Aug  9 11:21:56 CEST 2002 - hhetter@suse.de
+
+- updated to version 0.16 
+
+-------------------------------------------------------------------
+Wed Jun 19 12:54:15 CEST 2002 - ro@suse.de
+
+- use "-a -f" for automake 
+
+-------------------------------------------------------------------
+Wed Jun 19 08:47:04 CEST 2002 - hhetter@suse.de
+
+- updated to version 0.14 
+
+-------------------------------------------------------------------
+Tue Jun  4 12:18:19 CEST 2002 - hhetter@suse.de
+
+- updated to version 0.13, sorce frozen 
+
+-------------------------------------------------------------------
+Wed May 15 01:00:33 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Wed Apr 10 13:44:42 CEST 2002 - hhetter@suse.de
+
+- updated to version 0.7 
+
+-------------------------------------------------------------------
+Thu Jan 17 12:01:14 CET 2002 - hhetter@suse.de
+
+- really prefixed to /opt/gnome2 
+
+-------------------------------------------------------------------
+Thu Jan 17 10:19:42 CET 2002 - hhetter@suse.de
+
+- prefixed to /opt/gnome2 
+
+-------------------------------------------------------------------
+Wed Jan 16 13:55:49 CET 2002 - hhetter@suse.de
+
+- updated to version 0.2 
+
+-------------------------------------------------------------------
+Tue Jan 15 09:09:39 CET 2002 - hhetter@suse.de
+
+- fixed prefix 
+
+-------------------------------------------------------------------
+Mon Jan 14 18:40:47 CET 2002 - hhetter@suse.de
+
+- initial SuSE package for GNOME 2.0 platform
+- build with automake 1.5 
+

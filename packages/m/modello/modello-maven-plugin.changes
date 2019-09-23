@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Mar 12 08:34:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of modello-maven-plugin separate package
+  * Allows building the rest of modello without needing maven

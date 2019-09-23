@@ -1,0 +1,2028 @@
+-------------------------------------------------------------------
+Tue Jun 25 08:55:44 UTC 2019 - g.santomaggio@gmail.com
+
+- Elixir 1.9.0
+  * Enhancements
+    EEx 
+    [EEx] Allow more complex mixed expressions when tokenizing
+
+    Elixir
+    [Access] Allow Access.at/1 to handle negative index
+    [CLI] Add support for --boot, --boot-var, --erl-config, --pipe-to, --rpc-eval, and --vm-args options
+    [Code] Add static_atom_encoder option to Code.string_to_quoted/2
+    [Code] Support :force_do_end_blocks on Code.format_string!/2 and Code.format_file!/2
+    [Code] Do not raise on deadlocks on Code.ensure_compiled/1
+    [Config] Add Config, Config.Reader, and Config.Provider modules for working with configuration
+    [File] Add File.rename!/2
+    [Inspect] Add :inspect_fun and :custom_options to Inspect.Opts
+    [Kernel] Add ~U sigil for UTC date times
+    [Kernel] Optimize &super/arity and &super(&1)
+    [Kernel] Optimize generated code for with with a catch-all clause
+    [Kernel] Validate __struct__ key in map returned by __struct__/0,1
+    [Module] Add Module.get_attribute/3
+    [Protocol] Improve Protocol.UndefinedError messages to also include the type that was attempted to dispatch on
+    [Protocol] Optimize performance of dynamic dispatching for non-consolidated protocols
+    [Record] Include field names in generated type for records
+    [Regex] Automatically recompile regexes
+    [Registry] Add Registry.select/2
+    [System] Add System.restart/0, System.pid/0 and System.no_halt/1
+    [System] Add System.get_env/2, System.fetch_env/1, and System.fetch_env!/1
+    [System] Support SOURCE_DATE_EPOCH for reproducible builds
+  
+    ExUnit
+    [ExUnit] Allow multiple :exclude on configuration/CLI
+    [ExUnit.DocTest] No longer wrap doctest errors in custom exceptions. They ended-up hiding more information than shing
+    [ExUnit.DocTest] Display the actual doctest code when doctest fails
+
+    IEx
+    [IEx.CLI] Copy ticktime from remote node on IEx --remsh
+    [IEx.CLI] Automatically add a host on node given to --remsh
+
+    Logger
+    [Logger] Use a decentralized mode computation for Logger which allows overloads to be detected more quickly
+    [Logger] Use persistent_term to store configuration whenever available for performance
+
+    Mix
+    [Mix] Follow XDG base dir specification in Mix for temporary and configuration files
+    [Mix.Generator] Add copy_file/3, copy_template/4, and overwite?/2
+    [Mix.Project] Add preferred_cli_target that works like preferred_cli_env
+    [mix archive.uninstall] Allow mix archive.uninstall APP to uninstall any installed version of APP
+    [mix new] No longer generate a config/ directory for mix new
+    [mix release] Add support for releases
+    [mix release.init] Add templates for release configuration
+    [mix test] Allow running tests for a given umbrella app from the umbrella root with mix test apps/APP/test. failures also include the apps/APP prefix in the test location
+
+  * Bug fixes
+    EEx
+    [EEx] Consistently trim newlines when you have a single EEx expression per line on multiple lines
+    Elixir
+    [Code] Quote :: in Code.format_string!/1 to avoid ambiguity
+    [Code] Do not crash formatter on false positive sigils
+    [Enum] Ensure the first equal entry is returned by Enum.min/2 and Enum.max/2
+    [Kernel] Improve error message when string interpolation is used in a guard
+    [Kernel] Properly merge and handle docs for callbacks with multiple clauses
+    [Kernel] Guarantee reproducible builds on modules with dozens of specs
+    [Kernel] Resolve __MODULE__ accordingly in nested defmodule to avoid double nesting
+    [Kernel] Type variables starting with an underscore (_foo) should not raise compile error
+    [Kernel] Keep order of elements when macro in/2 is expanded with a literal list on the right-hand side
+    [Kernel] Print proper location on undefined function error from dynamically generated functions
+    [System] Make sure :init.get_status/0 is set to {:started, :started} once the system starts
+    [Path] Do not expand ~ in Path.expand/2 when not followed by a path separator
+    [Protocol] Ensure debug_info is kept in protocols
+    [Regex] Ensure inspect returns valid ~r// expressions when they are manually compiled with backslashes
+    [Registry] Fix ETS leak in Registry.register/2 for already registered calls in unique registries while the procesis still alive
+    
+    ExUnit
+    [ExUnit] Raise error if attempting to run single line tests on multiple files
+    [ExUnit] Return proper error on duplicate child IDs on start_supervised
+  
+    IEx
+    [IEx] Automatically shut down IEx if we receive EOF
+   
+    Logger
+    [Logger] Don't discard Logger messages from other nodes as to leave a trail on both systems
+   
+    Mix
+    [mix compile] Ensure Erlang-based Mix compilers (erlang, leex, yecc) set valid position on diagnostics
+    [mix compile] Ensure compilation halts in an umbrella project if one of the siblings fail to compile
+    [mix deps] Raise an error if the umbrella app's dir name and mix.exs app name don't match
+    [mix deps.compile] Fix subcommand splitting bug in rebar3
+    [mix test] Do not consider modules that are no longer cover compiled when computing coverage report, which couldlead to flawed reports
+  * Soft-deprecations (no warnings emitted)
+    Mix
+    [Mix.Config] Mix.Config has been deprecated in favor of the Config module that now ships as part of Elixir itself.Reading 
+    configuration files should now be done by the Config.Reader module
+
+  * Hard-deprecations
+    Elixir
+    [CLI] Deprecate --detached option, use --erl "-detached" instead
+    [Map] Deprecate Enumerable keys in Map.drop/2, Map.split/2, and Map.take/2
+    [String] The :insert_replaced option in String.replace/4 has been deprecated. 
+    Instead you may pass a function as a replacement or use :binary.replace/4 if you need to support earlier Elixir versions
+    Mix
+    [Mix.Project] Deprecate Mix.Project.load_paths/1 in favor of Mix.Project.compile_path/1
+
+  * Full release notes: https://github.com/elixir-lang/elixir/releases/tag/v1.9.0
+  	
+-------------------------------------------------------------------
+Mon May 27 09:02:44 UTC 2019 - g.santomaggio@gmail.com
+
+- Elixir 1.8.2
+  * Bug fixes
+    [EEx] Raise readable error message on bad EEx state
+    Elixir
+    [Protocol] Ensure :debug_info is kept in protocols
+    Logger
+    [Logger] Make sure Logger v1.8 does not get stuck in discard mode
+    [Logger.Translator] Translate remote process crash in Logger
+
+-------------------------------------------------------------------
+Wed Mar 13 11:15:44 UTC 2019 - g.santomaggio@gmail.com
+
+- Add requires Erlang >= 20
+
+-------------------------------------------------------------------
+Tue Feb 19 15:38:20 UTC 2019 - g.santomaggio@gmail.com
+
+- Elixir 1.8.1
+  * Bug fixes
+    Elixir
+    [Float] Fix rounding for subnormal floats
+    IEx
+    [IEx] Fix IEx.pry crash when IEx isn't running
+    [IEx.CLI] Add IEx warning when using --remsh with "dumb" terminal
+    [IEx.Helpers] Sort results by arity on h helper
+    Mix
+    [mix compile] Do not include optional dependencies in extra applications as it is 
+    incompatible with shared deps in umbrellas
+
+-------------------------------------------------------------------
+Mon Jan 28 11:00:20 UTC 2019 - g.santomaggio@gmail.com
+
+- Elixir 1.8.0
+  * Elixir v1.8 comes with many improvements at the infrastructure level, improving compilation time, 
+    speeding up common patterns, and adding features around introspection of the system.
+    See full changelog at https://github.com/elixir-lang/elixir/releases/tag/v1.8.0
+  * Enhancements
+    EEx
+    [EEx] Optimize the default template engine to compile and execute more efficiently
+    Elixir
+    [Calendar] Add Calendar.TimeZoneDatabase and a Calendar.UTCOnlyTimeZoneDatabase implementation
+    [Calendar] Add callbacks day_of_year/3, quarter_of_year/3, year_of_era/1, and day_of_era/3
+    [Code.Formatter] Preserve user's choice of new line after most operators
+    [Date] Add Date.day_of_year/1, Date.quarter_of_year/1, Date.year_of_era/1, and Date.day_of_era/1
+    [DateTime] Add DateTime.from_naive/3, DateTime.now/1, and DateTime.shift_zone/3
+    [File] Allow :raw option in File.exists?/2, File.regular?/2, and File.dir?/2
+    [File] Allow POSIX time as an integer in File.touch/2 and File.touch!/2
+    [Inspect] Allow Inspect protocol to be derivable with the :only/:except options
+    [Kernel] Do not propagate counters to variables in quote inside another quote
+    [Kernel] Warn on ambiguous use of :: and | in typespecs
+    [Kernel] Add :delegate_to @doc metadata tag when using defdelegate
+    [Kernel] Improve compile-time building of ranges via the .. operator
+    [Kernel] Compile charlist interpolation more efficiently
+    [Kernel] Add floor/1 and ceil/1 guards
+    [Kernel.SpecialForms] Add :reduce option to for comprehensions
+    [List] Add List.myers_difference/3 and List.improper?/1
+    [Macro] Add Macro.struct!/2 for proper struct resolution during compile time
+    [Map] Optimize and merge nested maps put and merge operations
+    [Range] Add Range.disjoint?/2
+    [Record] Reduce memory allocation when updating multiple fields in a record
+    [Registry] Allow associating a value on :via tuple
+    [String] Add String.bag_distance/2
+    [Task] Add $callers tracking to Task - this makes it easier to find which process spawned a task and use it for tracking ownership and monitoring
+    ExUnit
+    [ExUnit] Add ExUnit.after_suite/1 callback
+    [ExUnit.Assertions] Show last N messages (instead of first N) from mailbox on assert_receive fail
+    IEx
+    [IEx.Helpers] Add port/1 and port/2
+    [IEx.Server] Expose IEx.Server.run/1 for custom IEx sessions with the ability to broker pry sessions
+    Mix
+    [Mix] Add Mix.target/0 and Mix.target/1 to control dependency management per target
+    [Mix.Project] Add :depth and :parents options to deps_paths/1
+    [mix archive.install] Add a timeout when installing archives
+    [mix compile] Include optional dependencies in :extra_applications
+    [mix escript.install] Add a timeout when installing escripts
+    [mix format] Warn when the same file may be formatted by multiple .formatter.exs
+    [mix test] Allow setting the maximum number of failures via --max-failures
+    [mix test] Print a message instead of raising on unmatched tests inside umbrella projects
+
+  * Bug fixes
+    Elixir
+    [Calendar] Allow printing dates with more than 9999 years
+    [Exception] Exclude deprecated functions in "did you mean?" hints
+    [Float] Handle subnormal floats in Float.ratio/1
+    [Kernel] Remove Guard test tuple_size(...) can never succeed Dialyzer warning on try
+    [Kernel] Expand operands in size*unit bitstring modifier instead of expecting size and unit to be literal integers
+    [Kernel] Do not deadlock on circular struct dependencies in typespecs
+    [Kernel] Raise proper error message when passing flags to the Erlang compiler that Elixir cannot handle
+    [Kernel] Do not leak variables in cond clauses with a single matching at compile-time clause
+    [NaiveDateTime] Do not accept leap seconds in builder and parsing functions
+    [String] Fix ZWJ handling in Unicode grapheme clusters
+    [StringIO] Handle non-printable args in StringIO gracefully
+    IEx
+    [IEx.Helpers] Use typespec info (instead of docs chunk) and properly format callbacks in b/1
+    Logger
+    [Logger] Allow Logger backends to be dynamically removed when an application is shutting down
+    Mix
+    [mix compile] Ensure changes in deps propagate to all umbrella children - this fix a long standing issue where updating a dependency would not recompile all projects accordingly, requiring a complete removal of _build
+    [mix compile] Avoid time drift when checking and updating compiler manifest files
+    [mix compile.app] Respect the :only option between umbrella siblings
+    [mix compile.protocols] Reconsolidate protocols if local dependencies are stale
+    [mix deps] Properly mark dependencies with different :system_env as diverged
+    [mix new] Use --module value when setting up filenames
+
+-------------------------------------------------------------------
+Sun Dec 30 11:18:35 UTC 2018 - matwey.kornilov@gmail.com
+
+- Use %{_rpmmacrodir} for macros.elixir
+
+-------------------------------------------------------------------
+Wed Dec 19 18:56:20 UTC 2018 - matwey.kornilov@gmail.com
+
+- Set License to Apache-2.0.
+  I have not found where did ErlPL come from.
+
+-------------------------------------------------------------------
+Tue Dec 11 13:46:13 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Improvements to description grammar.
+
+-------------------------------------------------------------------
+Mon Dec 10 11:17:25 UTC 2018 - matwey.kornilov@gmail.com
+
+- Use %license for LICENSE
+
+-----------------------  --------------------------------------------
+Thu Nov 08 22:01:20 UTC 2018 - g.santomaggio@gmail.com
+
+- Elixir 1.7.4
+  * Bug fixes
+    [Calendar] Fix for converting from negative iso days on New Year 
+    in a leap year
+    [Kernel] Ensure @spec, @callback, @type and friends can be read 
+    accordingly
+    [Module] Avoid warnings when using Module.eval_quoted in the middle of 
+    existing definitions
+    [mix archive.build] Unload previous archive versions before building
+    [mix format] Expand paths so mix format path\for\windows.ex works
+    [mix test] Ensure that --cover displays correct coverage in an umbrella app
+
+- Elixir 1.7.3
+  * Bug fixes
+    [ExUnit.Assertions] Do not attempt to expand try/1 as it is a special form
+    [mix compile.app] Do not include applications with runtime: false as a runtime 
+    dependency for applications coming from Hex    
+    [mix compile.app] Do not include applications with runtime: false as a 
+    runtime dependency for applications coming from Hex
+
+- Elixir 1.7.2
+  * Bug fixes
+    [Kernel] Do not emit warnings for repeated docs over different clauses 
+    due to false  positives
+    [mix compile] Properly mark top-level dependencies as optional and as 
+    runtime. 
+    This fixes a bug where Mix attempted to start optional dependencies of a 
+    package when those optional dependencies were not available
+    [mix compile] Avoid deadlock when a config has a timestamp later 
+    than current time
+    [mix test] Do not fail suite if there are no test files
+
+- Elixir 1.7.1
+  * Bug fixes
+    [Calendar] Work-around a Dialyzer bug that causes it to loop for a 
+    long time, potentially indefinitely	
+
+- Elixir 1.7
+  Elixir v1.7 is the last release to support Erlang/OTP 19. We recommend 
+  everyone to migrate to Erlang/OTP 20+.
+  Full release notes: https://github.com/elixir-lang/elixir/releases/tag/v1.7.0
+
+Sun Jul  1 08:02:34 UTC 2018 - develop7@develop7.info
+
+- Elixir 1.6.6
+  This release supports Erlang/OTP 21.0 by removing all warnings and by 
+  properly supporting the new Erlang logger module.
+
+  * Bug fixes
+    [Base] Do not raise when finding bad digits in Base.decode32! with 
+    `case: :mixed`
+    [Code] Preserve the user's choice when fn is followed by a newline and it 
+    has only a single clause
+    [DynamicSupervisor] Properly account for restarting children in the 
+    `:max_children` configuration
+    [String] Add performant impl for string upcase/downcase :ascii mode
+    [Task.Supervisor] Fix type spec for start_child/4
+    [Logger] Do not crash truncation when truncate is set to infinity
+    [mix format] Match files starting with dot
+
+- Elixir 1.6.5
+  This release supports Erlang/OTP 21.0-rc by removing all warnings and by 
+  properly redirecting logger output. Note it is not guaranteed it will support 
+  Erlang/OTP 21.0 final.
+
+  Bug fixes
+    [Code] Preserve the user's choice in the formatter on parens call with next 
+    break fits
+    [Code] Preserve the user's choice in the formatter on calls without parens 
+    when we have one argument per line
+    [Code] Fix formatting when there is a tilde in the first element of a 
+    bitstring
+    [Kernel] Support specsdiff flag on __info__ spec clauses
+    [Kernel] Do not exclude hygienic vars in defguard
+    [Kernel.SpecialForms] Mark for comprehensions as generated to avoid 
+    dialyzer warnings
+    [Macro] Make sure Macro.to_string/2 emits valid quoted expressions
+    [Task] Support :infinity timeout on Task.yield_many/2
+    [Task.Supervisor] Do not crash spawning supervised tasks when the parent 
+    process is dead
+    [URI] Fix parsing of URIs with trailing ?
+
+-------------------------------------------------------------------
+Thu Apr 12 15:39:08 UTC 2018 - develop7@develop7.info
+
+- Elixir 1.6.4
+
+  * [Code.Formatter] Do not double escape quoted keyword list identifiers
+  * [Kernel] Properly support into: binary in Erlang/OTP 20.3
+
+- Elixir 1.6.3
+  
+  * [Code.Formatter] Support comments in the middle of pipelines, `when` and 
+    `|` expressions
+  * [Code.Formatter] Consider commas when breaking groups
+  * [Code.Formatter] Ensure proper precedence between & and operators
+  * [Code.Formatter] Consider .formatter.exs when formatting stdin
+  * [Logger.Translator] Ensure logger doesn't crash when reporting named 
+    `DynamicSupervisor`
+
+- Elixir 1.6.2
+
+  See full changelog at https://github.com/elixir-lang/elixir/releases/tag/v1.6.2
+
+- Elixir 1.6.1
+
+  See full changelog at https://github.com/elixir-lang/elixir/releases/tag/v1.6.1
+
+- Elixir 1.6.0
+
+  See full changelog at https://github.com/elixir-lang/elixir/releases/tag/v1.6.0
+
+- Elixir 1.5.3
+
+  See full changelog at https://github.com/elixir-lang/elixir/releases/tag/v1.5.3
+
+-------------------------------------------------------------------
+Wed Nov  1 12:28:21 UTC 2017 - gutigen@protonmail.ch
+
+- updated to 1.5.2
+
+-------------------------------------------------------------------
+Sun Aug  6 10:39:47 UTC 2017 - develop7@develop7.info
+
+- Elixir 1.5.1
+  
+  Release notes: https://github.com/elixir-lang/elixir/releases/tag/v1.5.1
+
+- Elixir 1.5.0
+  
+  Elixir v1.5 includes new features, enhancements, and bug fixes. While Elixir 
+  v1.4 focused on tools for concurrency and scalability, Elixir v1.5 brings 
+  many improvements to the developer experience and quality of life. As we will 
+  see, many of those are powered by the latest Erlang/OTP 20. This is also the 
+  last Elixir release that supports Erlang/OTP 18.
+  
+  Release notes: https://github.com/elixir-lang/elixir/releases/tag/v1.5.0
+
+-------------------------------------------------------------------
+Wed Jul  5 19:59:58 UTC 2017 - develop7@develop7.info
+
+- Elixir v1.4.5
+  This version includes changes that make Elixir fully compatible with 
+  Erlang/OTP 20.
+
+  1. Enhancements
+    Logger
+      [Logger] Handle changes to crash reports in OTP 20
+  2. Bug fixes
+    Elixir
+      [DateTime] Fix DateTime.from_iso8601/2 when offset has no colon
+      [Registry] Do not leak EXIT messages on Registry.dispatch/3
+
+-------------------------------------------------------------------
+Thu May 18 18:39:39 UTC 2017 - develop7@develop7.info
+
+- Elixir v1.4.4
+  1. Bug fixes
+    Elixir
+      [Map] Fix regression on struct update syntax
+
+- Elixir v1.4.3
+  Note: This release had a regression that has been immediately fixed on 
+  version 1.4.4.
+  This version includes changes that make Elixir fully compatible with 
+  Erlang OTP 20-rc.1.
+
+  1. Enhancements
+    Elixir
+      [Kernel] Improve compilation time for modules with many clauses
+      [Map] Warn when attempting to override __struct__ key
+      [Regex] Add recompile/1 and recompile!/1 to ease transition to OTP 20 
+      for archives and stored regexes
+    Logger
+      [Logger.Translator] Handle OTP 20 GenServer log messages
+    Mix
+      [mix compile] Recompile projects if OTP version changes
+  2. Bug fixes
+    Elixir
+      [Kernel] Fix code generation when non-binary bitstrings are in AST
+      [Record] Properly escape fields passed to defrecord
+    ExUnit
+      [ExUnit.Diff] Do not fail when comparing maps with nil or boolean keys
+    IEx
+      [IEx.Helpers] Do not log exits on IEx.Helpers.c/2 failures
+    Mix
+      [mix archive.install] Detect proper path on URLs with query strings
+      [mix loadpaths] Do not assume all paths in loadpaths exist
+
+-------------------------------------------------------------------
+Mon Feb 27 09:13:15 UTC 2017 - develop7@develop7.info
+
+- Elixir v1.4.2
+  1. Bug fixes
+    EEx
+      [EEx] Support middle expressions on trim mode
+    Elixir
+      [Calendar] Correct typo on Calendar types
+      [Kernel] Ensure redefined functions point to the proper source
+      [OptionParser] Add `:allow_nonexistent_atoms` to support unsafe behaviour 
+      prior to v1.4
+      [Stream] Allow consuming multiple items from suspended enumerable in 
+      `Stream.transform/3`
+      [String] Incorporate new grapheme rules in Unicode 9
+    IEx
+      [IEx.Autocomplete] Do not crash on aliases which are not known at compile 
+      time
+    Mix
+      [Mix.Umbrella] Ensure umbrella projects can depend on other umbrella 
+      projects
+      [Mix.Archive] Ensure previous archives with .ez extension are deleted
+
+- Elixir v1.4.1
+    1. Bug fixes
+      Elixir
+        [Kernel] Remove warning when making private functions overridable
+        [Path] Ensure `Path.join/1` returns strings for lists of one element
+        [Regex] Ensure `Regex.escape/1` also escapes `-`
+      IEx
+        [IEx] Disable ANSI detection for powershell to avoid false positives
+      Mix
+        [Mix.Make] Run `make clean` for `erlang.mk`
+        [Mix.Rebar] Support all of rebar3 dependency package declaration
+        [Mix.Rebar] Only pass overrides from parent to child in Rebar dep
+
+-------------------------------------------------------------------
+Fri Jan  6 17:33:45 UTC 2017 - develop7@develop7.info
+
+- update to v1.4.0
+  1. Enhancements
+    Elixir
+      [Calendar] Add Date.compare/2, Time.compare/2, NaiveDateTime.compare/2 
+      and DateTime.compare/2
+      [Calendar] Support NaiveDateTime.add/3 and NaiveDateTime.diff/3 for 
+      adding seconds (up to microseconds) as well as the difference between 
+      two NaiveDateTimes in seconds (up to microseconds)
+      [Calendar] Add Date.leap_year?/1 and Date.day_of_week/1
+      [Calendar] Ensure Date, Time and NaiveDateTime APIs work with any struct 
+      that provides the same set of fields as their respective struct. For 
+      example, a NaiveDateTime can be given to Date since it contains a 
+      superset of the fields in the Date struct
+      [Enum] Add Enum.map_every/2 that invokes the given function with every 
+      nth item
+      [Enum] Add min/2, max/2, min_max/2, min_by/3, max_by/3, and min_max_by/3 
+      that allow a function specifying the default value when the enumerable 
+      is empty
+      [Enum] Introduce Enum.zip/1 to zip multiple entries at once
+      [Float] Introduce Float.ratio/1 that returns a tuple with the numerator 
+      and denominator as integers to retrieve the given float
+      [GenServer] Log warn on default handle_info/2 implementation
+      [Inspect] Support syntax coloring via the :syntax_color option
+      [Integer] Integer.digits/2 now accepts negative integers
+      [Integer] Add Integer.mod/2 and Integer.floor_div/2
+      [IO] Add :label option to IO.inspect/2 to help distinguish multiple 
+      IO.inspect/2 calls.
+      [Kernel] Recognize merge conflict markers in source and provide a 
+      readable error message
+      [Kernel] Warn on unused module attributes
+      [Kernel] Improve compiler message on unexpected end of line
+      [Kernel] Raise BadBooleanError when a non-boolean is given on the 
+      left-hand side of and/or
+      [List] Add List.pop_at/3
+      [List] Add List.myers_difference/2
+      [OptionParser] Expand multi-letter aliases in OptionParser
+      [Process] Add Process.send_after/4
+      [Process] Improve error messages on Process.register/2 errors
+      [Registry] Add a local, decentralized and scalable key-value process storage
+      [Stream] Add Stream.map_every/2 that invokes the given function with 
+      every nth item
+      [Stream] Introduce Stream.zip/1 to lazily zip multiple entries at once
+      [String] Update to Unicode 9.0.0
+      [Task] Add Task.async_stream/3 and Task.async_stream/5 as well as the 
+      supervised versions Task.Supervisor.async_stream/4 and 
+      Task.Supervisor.async_stream/6
+      [URI] Allow 0 as URI scheme default port
+    ExUnit
+      [ExUnit.Diff] Use red or green background for whitespace-only diffs
+      [ExUnit.Doctest] Allow inspected structures with multiples lines and 
+      unicode characters in the doctest result
+      [ExUnit.Formatter] Replace lhs/rhs with left/right in the formatter for 
+      clarity
+    IEx
+      [IEx.Autocomplete] Stop appending a trailing dot when autocompleting 
+      modules in IEx
+      [IEx.Autocomplete] Support autocompletion for structs
+      [IEx.Autocomplete] Improve IEx autocomplete to support navigating map 
+      atom keys
+      [IEx.Helpers] c/1 now compiles in memory by default to avoid common 
+      issue where .beam files remain at projects root directory
+      [IEx.Helpers] Add info about protocols in i/1
+      [IEx.Server] Support interrupting IEx evaluation through the Ctrl+G prompt
+    Mix
+      [mix archive] Compress archive files built by mix archive as they are 
+      now unzipped during installation
+      [mix archive] Install from SCM
+      [mix compile] Automatically infer the list of applications for Mix 
+      projects
+      [mix cmd] Add the ability to specify one or more apps in mix cmd
+      [mix deps] Warn if there are non-applications in the apps directory for 
+      umbrella projects
+      [mix deps] Add warning for invalid paths on mix deps.clean
+      [mix deps] Add Mix.Project.apps_paths that returns the paths to children 
+      applications in umbrella projects
+      [mix deps] Add MIX_REBAR environment variable for overriding local rebar
+      [mix escript] Install from SCM
+      [mix new] Check directory existence in mix new and ask how to proceed if 
+      one exists
+      [mix new] Applications built with the --sup flag now have an individual 
+      module to work as application callback
+      [mix test] Add --formatter option to mix test
+      [mix xref] Provide "did you mean?" suggestions for mix xref
+  2. Bug fixes
+    Elixir
+      [Access] Do not accept nils in Access.key/1 and Access.key/2 in favor of 
+      explicit default values (or Access.key!/1 if you expect the key to 
+      always be available)
+      [Float] Avoid multiple roundings in Float.ceil/2, Float.floor/2 and 
+      Float.round/2
+      [Kernel] Don't crash in macro_exported?/3 when dealing with Erlang 
+      modules
+      [Kernel] Ensure locals calls are rewritten when calling a local function 
+      or macro from inside a module
+      [Kernel] Annotate the context for variables as zero-arity funs in quotes
+      [Kernel.SpecialForms] Ensure comprehensions with guards and filters keep 
+      proper ordering,
+      [Kernel.SpecialForms] Produce meaningful warning when with's else 
+      clauses have no effect
+      [Macro] Wrap fn calls in parens in Macro.to_string/2
+      [Macro] Do not print aliases as keys inside keyword lists in 
+      Macro.to_string/2
+      [OptionParser] Support options in OptionParser.to_argv/2 to ensure 
+      :count switches are correctly encoded
+      [Stream] Ensure Stream.take/2 does not consume next element on :suspend
+      [String] Fix infinite recursion in String.replace_leading/3 and 
+      String.replace_trailing/3 when given an empty string
+      [Task] Fix Task.shutdown/1,2 infinite block when task has no monitor
+      [Task] Ensure task cannot link after parents unlinks
+    ExUnit
+      [ExUnit] Fix a race condition in assert_receive where we would assert a 
+      message was not received but show it in the list of messages when the 
+      message is delivered right after the timeout value
+    IEx
+      [IEx.Helpers] Purge consolidated protocols before and after recompile/0
+    Mix
+      [Mix.Dep] Use gmake on FreeBSD instead of make when compiling make 
+      dependencies
+      [Mix.Project] Only copy files from source when they're newer than 
+      destination (for Windows machines)
+      [Mix.Task] Ensure non-recursive tasks inside umbrella are reenabled
+  3. Soft deprecations (no warnings emitted)
+    Elixir
+      [Enum] Enum.partition/2 has been deprecated in favor of Enum.split_with/2
+      [System] Deprecate plural time units in favor of singular ones to align 
+      with future Erlang releases
+    ExUnit
+      [ExUnit] Using GenEvent to implement ExUnit formatters is deprecated. 
+      Please use the new GenServer based formatters instead
+  4. Deprecations
+    Elixir
+      [Access] Access.key/1 is deprecated due to erratic behaviour for missing 
+      keys, please use Access.key/2 instead with proper default values
+      [Behaviour] The Behaviour module is deprecated. Callbacks may now be 
+      defined directly via the @callback attribute
+      [Enum] Deprecate Enum.uniq/2 in favor of Enum.uniq_by/2
+      [Float] Float.to_char_list/2 and Float.to_string/2 are deprecated (use 
+      the :erlang functions if such conversions are desired)
+      [Kernel] Deprecate support for making private functions overridable. 
+      Overridable functions must always be public as they must be contracts
+      [Kernel] Warn if variable is used as a function call
+      [OptionParser] Deprecate aliases with multiple letters, such as -abc
+      [Set] Deprecate the Set module
+      [Stream] Deprecate Stream.uniq/2 in favor of Stream.uniq_by/2
+    IEx
+      [IEx.Helpers] import_file/2 is deprecated in favor of 
+      import_file_if_available/1
+    Mix
+      [Mix.Utils] underscore/1 and camelize/1 are deprecated
+
+-------------------------------------------------------------------
+Sun Oct  9 19:39:04 UTC 2016 - develop7@develop7.info
+
+- update to v1.3.4
+  1. Bug fixes
+    Elixir
+      [Kernel] Ensure the compiler does not generate unecessary variable 
+      bindings inside case statements. This improves the code emitted and make 
+      sure "unused variable warnings" are not mistakenly silenced
+      [Kernel] Move raise checks to runtime to avoid crashing cover on Erlang 19.1
+      [Protocol] Do not emit warnings when using protocols on opaque types
+    ExUnit
+      [ExUnit.CaptureLog] Flush Erlang's :error_logger before capturing to 
+      avoid mixed messages
+
+-------------------------------------------------------------------
+Fri Sep 23 10:40:28 UTC 2016 - develop7@develop7.info
+
+- update to v1.3.3
+  1. Enhancements
+    Elixir
+      [DateTime] Support negative integer in DateTime.from_unix/2
+      [Kernel.LexicalTracker] Do not consider remote typespecs as a compile-time dependency
+      [Kernel.ParallelCompiler] Do not emit deadlock messages when the process is waiting on itself
+      [Kernel.Typespec] Mark struct update syntax as generated to avoid false positives from dialyzer
+    ExUnit
+      [ExUnit] Make ExUnit server timeout configurable
+    Logger
+      [Logger] Use :ansi_color if one is available in metadata
+    Mix
+      [Mix] Add support for the :sparse option in Mix.SCM.Git
+      [Mix] Skip dependendency loading if MIX_NO_DEPS is set to 1
+  2. Bug fixes
+    Elixir
+      [System] Use NUL instead of /dev/null on Windows when building System.build_info
+    IEx
+      [IEx.Autocomplete] Resolves issue with autocompletion on structs not working
+    Mix
+      [Mix] Also store external resources that are not part of the current working directory in compilation manifest
+      [Mix] Always include the compiled file source in manifests
+
+-------------------------------------------------------------------
+Sat Jul 30 10:32:07 UTC 2016 - develop7@develop7.info
+
+- update to v1.3.2
+  1. Enhancements
+    Elixir
+      [Kernel] Support guards in else clauses in with
+    Mix
+      [Mix] Add MIX_NO_DEPS env var for disabling dep loading. Used for third-party scripts and tools like Nix package manager
+      [Mix] Add mix test --listen-on-stdin that automatically reruns tests on stdin
+      [Mix] Disable --warnings-as-errors when compiling dependencies
+      [Mix] Add --filter option to mix deps.unlock to unlock only matching dependencies
+  2. Bug fixes
+    Elixir
+      [Enum] Return nil if enumerable halts in Enum.find_index/3
+      [Kernel] Do not attempt to load modules that have not been required when invoking regular functions, otherwise this invalidates the @compile {:autoload, false} directive.
+    Mix
+      [Mix] Ensure missing protocol dependencies are discarded in umbrella projects with shared build
+    ExUnit
+      [ExUnit.Diff] Ensure no leading or trailing when diffing some maps
+
+-------------------------------------------------------------------
+Thu Jun 30 18:22:46 UTC 2016 - develop7@develop7.info
+
+- update to v1.3.1
+
+  1. Enhancements
+    IEx
+      [IEx.Helpers] Add import_file_if_available for importing files only if 
+      they are available
+      [IEx.Helpers] Add import_if_available for importing modules only if they 
+      are available
+
+  2. Bug fixes
+    Elixir
+      [Kernel] Ensure structs can be expanded in dynamic module names
+      [Kernel] Ensure aliases warnings are not accidentally discarded when the 
+      same module is imported
+      [Kernel.ParallelCompiler] Ensure two modules with cyclic struct 
+      dependencies cannot run into a deadlock when compiling
+      [Kernel.Typespec] Support module attributes in remote types
+      [Module] Do not expect stacktraces to be always present when dispatching 
+      to locals during the module compilation
+    IEx
+      [IEx.Helpers] Fix h helper for operators
+    Mix
+      [Mix] Do not load modules for xref purposes, instead use BEAM info
+      [Mix] Ensure deps.check does not check archives (that's done in loadpaths)
+      [Mix] Validate application properties before traversing them
+      [Mix] Check for proper Makefile when compiling on Windows
+      [Mix] Enforce space after comma in mix do
+
+-------------------------------------------------------------------
+Sat Jun 25 10:21:38 UTC 2016 - develop7@develop7.info
+
+- update to v1.3.0
+  Elixir v1.3 brings many improvements to the language, the compiler and its 
+  tooling, specially Mix (Elixir’s build tool) and ExUnit (Elixir’s test 
+  framework). The most notable additions are the new Calendar types, the new 
+  cross-reference checker in Mix, and the assertion diffing in ExUnit.
+  
+  See full release notes at https://github.com/elixir-lang/elixir/releases/tag/v1.3.0
+
+-------------------------------------------------------------------
+Sun May  1 09:43:58 UTC 2016 - pereira.alex@gmail.com
+
+- Update to v1.2.5
+	Bug fixes
+      [Logger] Stringify truncated function data in Logger
+      [Logger] Ensure poorly formatted char data can also be logged by using the replacement character "�" (diamond question mark)
+      [Mix] Do not assume @impl is always a list
+      [String] Fix bugs in String.replace_* functions where it would not include the accumulated value for certain replacements
+
+- Update to v1.2.4
+    Enhancements
+      [Mix] Add :archives configuration to def project that allows projects to list archive dependencies. --no-archives-check (as well as --no-deps-check) will disable the archive check. The :archives option is not checked for dependencies.
+      [Mix] Add deps.precompile task as hook
+      [Mix] Support --include-children in mix deps.compile option
+      [String] Update version of the Unicode database to 8.0.0
+
+	Bug fixes
+      [Application] Ensure spec/2 returns nil for unknown applications
+      [Integer] Fix a possible binary leak in parse/1
+      [Mix] Purge Erlang modules on recompilation
+      [String] Ensure split/1 does not break on non-breakable whitespace
+      [String] Ensure NFC and NFD normalization pass all of Unicode 8.0.0 tests
+      [Version] Allow dots in build info for versions in Version.parse/1
+
+-------------------------------------------------------------------
+Wed Feb 24 16:06:18 UTC 2016 - develop7@develop7.info
+
+- update to v1.2.3
+  + Enhancements
+    * [Base] Add :ignore and :padding option to encoding/decoding functions
+    * [Mix] Add Mix.Projects.deps_paths that returns the dependencies path as a map
+  + Bug fixes
+    * [ExUnit] Do not provide negative line numbers without generated annotation (for compatibility with Erlang 19)
+    * [Mix] Reject non fullfilled optional dependencies later on in the convergence resolution for proper dependency sorting
+    * [String] Fix incomplete data trimming on both String.replace_trailing and String.rstrip
+    * [String] Attach debug_info back into Unicode modules for Dialyzer support
+
+-------------------------------------------------------------------
+Thu Feb  4 09:10:38 UTC 2016 - pereira.alex@gmail.com
+
+- Update to v1.2.2
+  Enhancements
+    [Kernel] Support @compile {:autoload, false} to disable automatic loading after compilation
+  Bug fixes
+    [ExUnit] Raise if trying to override reserved tag in setup blocks
+    [Mix] Ensure retrieve compile manifests do fail if some compilers are not yet available
+    [Mix] Automatically merge managers according to the mix > rebar3 > rebar > make order
+    [Mix] Force recompilation if dependency was recently fetched
+
+- Update to v1.2.1
+  Enhancements
+    [IEx] Support remote pids/ports with IEx helper i/1
+    [Protocol] Warn when defimpl is called for a consolidated protocol
+  Bug fixes
+    [ExUnit] Ensure assert macros can be used from quoted code
+    [ExUnit] Do not warn in match assertion if variable is reused in pattern
+    [Macro] Fix a bug in Macro.to_string/1 where a remote function could be accidentally interpreted as a sigil
+    [Mix] Ensure dependencies are properly skipped when --only option is given to mix deps.get
+
+-------------------------------------------------------------------
+Fri Jan  1 15:48:20 UTC 2016 - idonmez@suse.com
+
+- Update to v1.2.0
+  + Erlang 18 support
+  + Many language improvements
+  + Please see https://github.com/elixir-lang/elixir/releases/tag/v1.2.0
+    for the complete changelog.
+- Use original source tarball
+- Add erlang-dialyzer dependency for the test suite
+
+-------------------------------------------------------------------
+Tue Nov 17 18:59:21 UTC 2015 - jiri.bati.novak@gmail.com
+
+- Update to version v1.1.1:
+  + Enum.sample using reservoir sampling
+  + guard for Enum.sample/2
+  + eliminate count>=n corner case in Enum.sample/2
+  + don't walk the collection on 0-sized Enum.sample
+  + test Enum.sample with different random seeds
+  + fix Enum.sample docs
+  + Enum.sample: use Tuple.duplicate for sample init
+  + Enum.sample/2: dedup code in reducer branches
+  + Start v1.1.0-dev
+  + Improve UndefinedFunctionError
+  + Fix my own typo in helpers.ex
+  + fix previous commit typo bug
+  + Fix a typo in IO.inspect’s doc
+  + Fix a typo in Code.eval_file's doc
+  + Fixed String doc link
+  + Ensure chunk/4 is haltable
+  + fix example sample.ex -> sample.eex
+  + Do not require {ref, :done}, instead allow sync removal
+  + Add U as ungreedy option, soft deprecate r
+  + Allow U (upper case u) as an option for sigil_r
+  + Fix a typo in Dict's docs
+  + Load dependencies before deps.check compiles
+  + Add tests for add_process_handler/2
+  + default ports for WebSocket
+  + Update CHANGELOG
+  + Include stracktrace on ExUnit timeouts
+  + Ensure Mix.Config is deep merged
+  + Add compatibilty with OTP 18 typespec changes
+  + Small fix for Application docs. Returning value is not a tuple
+  + Update release instructions
+  + Change version requirement to be MAJOR.MINOR
+  + Filter out :elixir_lexical from stacktraces
+  + Improve GenEvent docs
+  + Remove previously generated beams before installing new ones
+  + Documented File.stat options
+  + Improve stat docs
+  + Add MIX_ENV output to archive.build
+  + Report correct location if local.hex failed
+  + Bump Hex requirement
+  + Add copy_path! instead of read_path!(..., file: ...)
+  + Test the way System.cmd finds for executables
+  + Change implementation of System.cmd to match the docs
+  + :gen_event_EXIT can only be successful reasons for process handlers
+  + Remove :elixir module from stacktraces
+  + Also remove elixir_exp from stacktraces
+  + Fix compiler warning
+  + Do not pass false into port command
+  + Move printing out of copy_path, always create dir
+  + Introduce `StringIO.flush/1` function
+  + Define value before using it
+  + Fix spec for surround_many
+  + Fix :stderr_to_stdout option
+  + Send elixir version as parameter when installing hex
+  + Make some docs more gender neutral
+  + Give higher prio to powershell on windows
+  + Fix documentation of IO module
+  + Don't crash on malformed proxy env var
+  + Refactor and add new rewrite rules
+  + Purge and delete modules before compiling them
+  + Also purge and delete during tests
+  + Test that we do purge and delete artifacts
+  + downcase path comparison in application directory test
+  + Support mix help --search PATTERN
+  + Write to manifest when file is removed
+  + --elixirc-paths should be a subset of project paths
+  + Add task for pushing standalone mix
+  + Fix String.replace/4 typespec
+  + Build .beam location from scratch on mix compile.elixir
+  + Remove unecessary comment
+  +  Add OTP 17.3 to run on Travis CI
+  + Added :read_link option, doesn't break current tests, needs new tests
+  + Make the parameter more explicit
+  + Fix a couple of minor typos in docstrings
+  + Added File.lstat and File.lstat! functions and associated tests. These functions are elixir versions of the unix lstat function.
+  + Based on email from Paulo Almeida, I removed the apparently extranous calls to IO.char_data_to_string in the stat! and lstat! methods.
+  + Revert "Based on email from Paulo Almeida, I removed the apparently extranous calls"
+  + No longer inline binary expressions in EEx
+  + fix typo
+  + Fix missing concatenation operator.
+  + Fix test for mix deps.clean.
+  + set null prompt function in dumbterm mode
+  + Do not set not shell as we know have a custom prompt
+  + Update CHANGELOG
+  + Revised tests to use tmp_path for file paths.
+  + fix typos
+  + Fix typo
+  + Use unamed tables for module compilation
+  + correct is_nil @doc to have the same format as the other is_* functions. So it is consistent in the Kernel > Summary docs
+  + Use a not confusing example for String.grapheme
+  + List foldl, foldr @doc
+  + fix link to bug reports
+  + explaining #elixir-lang
+  + explaining #elixir-lang (better option)
+  + mix.ex: example "mix run hello" -> "mix hello"
+  + Properly handle eval_failure warnings, closes #2835
+  + Unify error reporting from EEx, closes #2833
+  + Improve token errors for aliases, closes #2818
+  + Fail to compile try without else/catch/after/rescue, closes #2797
+  + Update release instructions
+  + More updates to instructions
+  + spelling mistake in iex docs: dafailt -> default
+  + fix escaped terminatiors in sigil
+  + Highlight main logger level config
+  + Fix @doc of List.keyfind,keymember? and keydelete
+  + Replace `defstruct/2` with `defstruct/1`
+  + change some doc examples to iex style
+  + fix typo
+  + Use elixir tmp directory instead of /tmp, closes #2849
+  + Create directory before copying file
+  + fix typo
+  + should throw an exception when the second argument is negative
+  + complete test coverage for Stream.take_every/2
+  + Fix `String.ljust/2,3` and `String.rjust/2,3` functions
+  + Move string justification defaults to the function heads
+  + No need for `do_` prefix in `String.do_justify/4`
+  + improve important links
+  + link to docs.html
+  + Fix type of Inspect.Opts limit
+  + Correct Enum.take, Enum.take_every, Stream.take, Stream.take_every to accept proper nth/count values
+  + fix documentation of String module
+  + fix spec and add more test for String.duplicate/2
+  + Improve documentation of Dict module
+  + fix inline documentation because of broken ansi representation in iex
+  + fix typo
+  + fix floating point approximation error
+  + fix wrong String.split_at/2 output when second arg is not an integer
+  + fix wrong String.at/2 output when second arg is not an integer
+  + explains when to use Float.parse/1 and that String.to_float will not deal with integer fmt strings
+  + bypass warning
+  + fix mistake on test
+  + fix doc line's length and test one more time
+  + Fix SupervisorTest :push handle_cast method
+  + Move 0 index match to the function head in `String.split_at/2`
+  + Move same pos match to the function head in `Regex.apply_list/5`
+  + rename two identical variables to same name and remove guard
+  + Make IO.ANSI.Docs readable on white background
+  + correcting broken url in GenEvent docs
+  + fix wrong CRLF grapheme
+  + Don't show hex update message on mix local.hex
+  + fix broken link in GenServer module
+  + Add doctest to the test template
+  + Make map_reduce @spec stricter
+  + Fix command_to_module_name not converting snakecased names properly
+  + Drop unneeded functions and fix module_name_to_command conversions
+  + Fix GenServer.cast/2 docs
+  + Document --unlock flag in deps.clean
+  + Add number of skipped tests to ExUnit output
+  + Ensure compilation does not leave random spurious data on failure
+  + - adding example for float-32 - making it more clear that ther order of type options doesnt matter
+  + Clarify \x applies to unicode codepoints
+  + Add Enum.minmax and Enum.minmax_by
+  + Remove unnecessary binding
+  + Add @spec for `main` in escript
+  + Fix typo in module documentation
+  + Fix splitting of empty strings on regex with trim: true
+  + Fix string splitting on regex when both :trim and other options are present
+  + Raise on previous alias warning expansion
+  + Update CHANGELOG.md
+  + Delegate to :erlang.binary_to_float on Float.parse/1
+  + Introduce an implementation of Integer.digits/1
+  + Fix misspellings in docs, comments, and strings.
+  + More spelling and grammar fixes.
+  + Update documentation for Enum.join
+  + fix typo
+  + introduce Enum.reverse/3
+  + Add Integer.undigits/2
+  + Fix broken IO.ANSI.Docs parser
+  + Fix IO.ANSI.Docs for multiple stars/underscores/backticks
+  + Use the new build env on Travis
+  + add 17.3 to allow_failures section
+  + fix corner case for end detection
+  + add more test cases for in word symbols
+  + Execute tests with same name
+  + Add test cases for non-space delimiters
+  + Use IO.ANSI.format/1 for escaping mix shell messages
+  + Register test with duplicate names only once
+  + Clean up IO.ANSI.Docs handling of `
+  + Update CHANGELOG
+  + fix documentation for Record Types
+  + remove unnecessary prefix
+  + Improve archive error on Windows
+  + Improve IEx autocomplete implementation
+  + Enum.sample/1 should raise if the list is empty
+  + Fix incorrect boundary condition
+  + Add `\g{N}` for &Regex.replace/4
+  + Document `\g{N}`
+  + Remove empty/1 callback from Collectable implementations
+  + Fix doc build instructions
+  + Improve Mix doc intro section
+  + No need for default `code` arg in `IO.ANSI.Sequence.defsequence/3`
+  + Simplify color sequences definition in `IO.ANSI`
+  + Use same verb tense across Elixir documentation
+  + Remove dead @doc snippet
+  + Add support for --werl in Windows bash-like shells
+  + load modules from load path
+  + Always use the loaded application modules
+  + Optimize and also add completion for Erlang modules
+  + Add Enum.unzip/1
+  + Improve loadconfig docs
+  + Remove test duplication
+  + Use actual range in the `EnumTest.Range`
+  + Improve test coverage for `Enum.reverse_slice/3`
+  + Add `@spec` for `Enum.reverse_slice/3`
+  + require otp 17.3 to pass on travis
+  + warning about dumb terminal just irritates users
+  + Improve `Enum.reverse_slice/3` performance More than thrice for lists Around 35% for other collections
+  + Only shut down Logger if the application is being actually started
+  + improved performance of Integer.undigits/2
+  + this resolves #2952 compile error
+  + fix typos
+  + smart_engine: Rephrases doc
+  + Add cover directory from 'mix test --cover' to default .gitignore
+  + Optimize reduce for maps
+  + Keep .gitignore ordering
+  + Fix bootstrap issues
+  + Improve docs for URI
+  + Further improve URI parse docs
+  + Fix mix shell tests when ansi escapes are disabled
+  + Copyright requires just the starting year
+  + Do more strict matching on URI scheme
+  + Implement Integer.parse/2
+  + Use a guard to check if a valid base is given to Integer.parse/2
+  + Integer.parse/2 shouldn't parse when base is not an integer
+  + Remove unnecessary Integer.parse/1
+  + make doctest syntax consistent
+  + fix spec for Integer.digits/2
+  + Check Elixir version right after archive installation
+  + Document the implications of setting embed_elixir to false. Closes #2970
+  + Specify error from node/1 as an atom
+  + Compile docs to doc/
+  + Fix a few simple typo's, found while perusing the code.
+  + Keep original stacktrace on inspect errors
+  + Remove "private structs" from struct types
+  + Don't go through hex.pm API server to install Hex
+  + Update CHANGELOG
+  + Add column info in tokenizer, #2987
+  + Fix line extraction in elixir_parser
+  + Change location info format in tokenizer
+  + Store tests in a list to keep ordering
+  + Support safe: boolean option in inspect
+  + Count \\ as just one character in column info in tokenizer
+  + GenServer docs fix: missing {:ok, state, :hibernate} for init callback
+  + Fix column counting in elixir_interpolation.erl
+  + Improve IEx helpers docs
+  + Fix failing documentation assertion
+  + Remove broken and unfixable delegate_locals_to implementation
+  + Fix inconsistency of collection in Enum
+  + Failing test demonstrating ExUnit crash on inspect failure
+  + Ensure ExUnit survives inspect and exception message failures
+  + Fixed typos in Supervisor doc
+  + Ensure mix compiler is able to handle nested directories
+  + add missing assert call
+  + Set MIX_ARCHIVES in mix tasks archive tests
+  + Improve error message when using attributes inside match in module
+  + Fix error documentation for Kernel.hd/1
+  + Invert the order of non matching token messages (closes #2993)
+  + Fixes #3009
+  + Add missing :ok return
+  + Optimize common flat_map_reduce paths
+  + Do not repeat the module name
+  + Inline common map cases in into
+  + Add --color option description to mix moduledoc.
+  + Add examples to System.cmd/3
+  + Fix the logging with `metadata[:function]`
+  + Add test for metadata defaults
+  + Use actual message in the metadata assertion
+  + Remove unused umbrella flag
+  + Don't ignore escape characters in regex
+  + Do not show aliases and import warnings when code cannot compile
+  + Merge pull request #2801 from fishcakez/app_env
+  + Get rid of ets from Mix.State
+  + Add an example of Enum.find_value/3 to the docs
+  + Avoid escape characters in System.cmd/3 docs
+  + Corrected incorrect docstring.
+  + Change Record#extract to a function - Also adds docs for defining records that were extracted with anonymous functions
+  + Explicitly pass allowed attributes to __info__
+  + Do not choke when Exception.message/1 does not return a string
+  + Call Logger.flush in System.at_exit when running mix test.
+  + Ensure priv/include are copied on Windows even if source did not change
+  + Improve error message with invalid structures in maps
+  + Update CHANGELOG
+  + Add Dict.get_and_update/3
+  + Add Keyword.get_and_update/3
+  + Optimize the performance of Map.get_and_update/3 and Keyword.get_and_update/3
+  + Avoid export vars in destructure
+  + Ignore exported vars warning
+  + Improve docs for functions in File
+  + Simplify Logger checks
+  + Update CHANGELOG
+  + Use :application.info[:loaded] to avoid races
+  + Fix `Keyword.get_and_update/4` funtion name
+  + Suppress warning in `Mix.Tasks.Test`
+  + Make `Dict.get_and_update/3` overridable
+  + Always rebuild structures on Windows
+  + Ensure rebar is quoted when running escript on windows
+  + No need for `args` in `Mix.CLI.load_mixfile/1`
+  + Fix a minor typo in the docs for `Module`
+  + Add an example of defining a `__using__/1` macro
+  + Fix race condition in undef logger translator tests
+  + Bring change removed from v1.0 into CHANGELOG
+  + Tell user to run mix deps.get on lock mismatch, closes #3038
+  + Fix some grammar in the docs for Access, and add more docs
+  + Use which_applications instead of undocumented info
+  + Fix boundary in Enum.take/2, closes #3042
+  + Optimize more Enum and Stream functions
+  + Added man page for iex/elixir
+  + Polish the docs for the Kernel functions delegated to Erlang
+  + Add examples to some of the Kernel functions delegated to Erlang
+  + fix broken system path test
+  + Remove a Kernel doctest that issued a warning
+  + Add details to the docs of a bunch of Kernel functions/macros
+  + Expand attributes and macros in record extractor
+  + Ensure quoted expressions are properly shown in error messages
+  + Make it clear that Keyword does not preseve ordering
+  + Rebar dependencies can be compiled with mix if they have a mix.exs file
+  + Raise an appropriate error when raise/1 is called with an invalid arg
+  + Remove @moduledoc false from requirement
+  + Allow rebar dependencies to be specified via :path
+  + Remove 17.1 which has a bug in its filelib:wildcard check
+  + Add the timeout option for tests
+  + Add the timeout option for running the test
+  + update links to website
+  + Polish the docs of a bunch of Kernel functions
+  + Added to tuple.ex module doc a see also note reference the various Kernel functions dealing with tuples. The Rationale for this is that its confusing for a newcomer to the language that these are not members of tuple and it provides a hint as to where these are actually found
+  + singular plural issue fixed for tests
+  + Throw syntax error for `:foo.Bar`
+  + Add positive test case for punctuation in atoms
+  + Remove internals from IEx stacktrace
+  + Set the timeout to infinity when trace option is true
+  + Update CHANGELOG
+  + Refactor the runner configuration to make it testable
+  + Add a note for in memory reloading to r/1
+  + Logger: Format OTP 17.4 terminate reasons
+  + Fix Exception.stacktrace_entry/0 type spec
+  + Logger uses chardata, not iodata
+  + Add tests for IEx.Helpers.import_file/1 with missing file
+  + Add an :optional option to IEx.Helpers.import_file/1
+  + Update docs for `IEx.Helpers.import_file/1`
+  + Add Record.extract_all/1 returning all records information
+  + small corrections in docs
+  + Also ignore elixir_clauses in stacktraces
+  + Update new major.minor instructions
+  + Hack The Docs contribution
+  + Add import flag to Bitwise
+  + Replace os.cmd in git with System.cmd, done one to verify what is wanted.
+  + Correct the phrase "if there already exists"
+  + Fix httpc proxy option profile
+  + Replaced all uses of :os.cmd
+  + Use stderr_to_stdout option in run_cmd_or_raise
+  + Fix @spec for Path.wildcard + doc:return value
+  + create individual tasks for "make docs"
+  + Move test for `:foo.Bar` syntax error
+  + Add more documentation for ~> requirements
+  + Correct usage of `ExUnit.Assertions.flunk` and add guard for it
+  + Tweak the docs a bit.
+  + No need to pass cmd, include output in errors
+  + Use Behaviour in exception
+  + Update Task logs to OTP 17.4 behaviour format
+  + Update logger translator tests for OTP 17.4 format
+  + Polish the docs of some `Kernel` functions
+  + Polish the docs for the Kernel.def* set of macros
+  + Mix: add comma at the end of worker()
+  + Turn some examples in `Kernel` into doctests
+  + Support R18 standard error
+  + Do not erase stacktrace on bad configs
+  + Fallback to undocumented API only if necessary
+  + Polish the docs of the sigils in the `Kernel` module
+  + Fixed the formatting and some docs in the Tuple module
+  + Ensure mix CLI-wide that we print Logger messages
+  + Fix some docs in the `Atom` module
+  + Also run tests on 17.4
+  + Replaced all but one Mix.shell.cmd call with System.cmd. The remaining call is for windows systems using powershell and I don't know the appropriate token parsing for powershell command lines.
+  + Reuse `ArgumentError` creation in `elixir_quote` module
+  + Add test for error on struct field value
+  + Use `:lists.reverse/2` instead of `:lists.reverse/1` and `++`
+  + Emit deprecation warnings for Access protocol
+  + remove blank in README template
+  + Unify empty parens and map exprs handling
+  + Split containers and call args expressions
+  + Add documentation with examples how to assert return values and capture IO output at the same time
+  + Add String.levenshtein_distance/2 and "Did you mean?" suggestion to mix
+  + Add distinction between no_parens_one and no_parens_ambig to parser
+  + Throw syntax error on [f g :a, :b]
+  + Add comments explaining changes to parser
+  + Add assertion that `[f g a]` is ok
+  + Add line breaks to code comment
+  + Polish the docs for the functions in the `Float` module
+  + Replace `String.levenshtein_distance/2` with `String.jaro_distance/2`
+  + Remove crypto and syntax_tools dependencies
+  + Use best match in "Did you mean?" mix suggestion
+  + Store relative paths in erlang manifest
+  + Replace "in between" with "between" in comments and doc strings
+  + Replace "parenthesis" with "parentheses" in comments and doc strings
+  + Improve tokenization of identifiers and `k: v` keys
+  + Use identifier instead of name
+  + Fix typo
+  + Ensure changes in child deps forces the parent to recompile
+  + Update CHANGELOG
+  + Make ::/2 a special form
+  + Also check mix options for divergence
+  + Revert "Merge pull request #3109 from oneeman/refine_no_parens_parsing"
+  + Return value when matching with `_` on last line of block
+  + undefined attribute does not need to be set to nil
+  + Added test for markup ending in . and code to pass the test
+  + Improve docs for GenEvent.stream/1, closes #3138
+  + adds Dict.get_lazy/3
+  + adds Dict.pop_lazy/3
+  + adds Dict.put_new_lazy/3
+  + adds guards to dict lazy funs
+  + Clarify where truthy and falsey values suffice in the Enum docs
+  + Fix ExUnit.Assertions assertion fail doc example
+  + Produce clearer messages for syntax errors before a sigil
+  + Add example to Regex.replace with option "global: false"
+  + the example is correct but in the description have a small difference
+  + Mention default values in String.split/3
+  + remove duplicate words + add quotes to nil and false
+  + Convert quoted interpolation to strings
+  + Refactor compiler errors (elixir_errors:parse_error/4)
+  + Properly inline regex docs
+  + Add error_logger metadata when notifying Logger
+  + Reduce time complexity of Enum.uniq and Stream.uniq
+  + Add dedup(_by) and usort(_by) to Enum and Stream.
+  + Make Stream.dedup/1 use Stream.dedup_by/2.
+  + Depreciate Enum.uniq/2 in favor of Enum.uniq_by/2
+  + Update CHANGELOG
+  + Module.split accepts only module atoms or strings naming these (#3161)
+  + Rollback to use Mix.shell.cmd
+  + Add output and stderr_to_stdout options to Mix.shell.cmd
+  + Use exits instead of stop so we get stacktraces
+  + Add `Keyword.get_lazy/3` function
+  + Add `Keyword.pop_lazy/3` function
+  + Add `Keyword.put_new_lazy/3` function
+  + Add `@spec` for `Keyword.pop/3` and `Keyword.pop_first/3`
+  + Make Exception.exception/1 support binary argument in default impl.
+  + Increase elixir_counter timeout
+  + Make `on_definition` insertion more readable
+  + Refine parsing of no parens calls
+  + Rename output to quiet in Mix.shell.cmd
+  + Store behaviour docs in the byte code
+  + Replace is_win?/0 with windows?/0
+  + Fix doctest :only, so it accepts multiple functions
+  + Optimize `Keyword.pop(_lazy)/3` functions
+  + Optimize `Keyword.new/1` function
+  + Remove duplicated doctests in `Keyword`
+  + elixir.1 and iex.1 share the same options list
+  + Optimize `Keyword.pop_first/3` function
+  + Amend elixir and iex man pages
+  + Easier to understand Enum.member? in doctest filters
+  + Filter :moduledoc
+  + Add elixirc man page
+  + Move moduledoc fun_arity down to where test is extracted
+  + Update documentation for doctest
+  + Add space after comma: Format consistently
+  + remove double space
+  + Speed up URI.decode_query/1
+  + Speed up decode_www_form
+  + Add example to `ExUnit.CaseTemplate/using`
+  + Remove superfluous guards in `IEx.Introspection`
+  + Improve handling of multiple modules in the `h` iex helper
+  + Rename `print_doc_arg` to `format_doc_arg`
+  + Comments from the last review taken into account
+  + Add a test for submodules
+  + Add `IEx.Introspection.puts_error/1`
+  + Run all tests with +T 9 to get a better chance at finding races.
+  + Fix race discovered by +T 9 in GenEvent test.
+  + Simplify docs lookup in `IEx.Introspection`
+  + Add `IEx.Introspection.print_doc/2`
+  + Introduce `b` IEx helper to display behaviour docs
+  + Polish the docs for the functions in the `IEx.Introspection` module
+  + Don't emit deprecations for access
+  + Fix error in EEx docstring ("a macro" to "an expression")
+  + Alias `Kernel.Typespec` inside `IEx.Introspection`
+  + Move doc default to the `IEx.Introspection.print_doc/2`
+  + Make `defmacrocallback` to be shown via IEx `b` helper
+  + Add `IEx.Introspection.puts_info/1`
+  + EEx: fix interpolation inside quotations
+  + Make IEx `b` helper to accept single module argument
+  + EEx: convert tag type markers to char lists
+  + add backward compatibility with cmd/2
+  + Check the number of schedulers online in exunit suite, closes #3199
+  + EEx: Add trim option
+  + fix Kernel.=~/2 for "" =~ ""
+  + Document and test the behaviour of Process.exit(self(), :normal)
+  + Document that ExUnit.Case :async defaults to false
+  + Explicitely declare argument names for functions with unnamed arguments.
+  + correct @spec for `handle_expr`
+  + Improve error message for invalid struct fields definition
+  + Refactor trim mode
+  + add backticks to a massive amount of true, false and nil
+  + rename function arg. when "other" was used
+  + Only make tokenizer return char lists
+  + Update CHANGELOG
+  + fix failing test on erlang 18 release candidate
+  + fix typo in previous commit. bodyless defmacro added to show proper arg in b/1, t/1
+  + Make `import Foo, except: []` respect previous imports
+  + Optimize `Keyword.new/1` function
+  + Fix spec for `Keyword.new/2`
+  + Optimize `Keyword.new/2` function
+  + Support specs for unreachable private functions
+  + Added documentation and examples for List.to_existing_atom/1
+  + Update CHANGELOG.md
+  + Remove function deprecated < 1.0
+  + Support build_embedded and consolidate_protocols
+  + Support start_permanent
+  + Generate build_embedded and start_permanent in new apps
+  + Do not print app name as a filename
+  + Improve error message for IEx.pry/1
+  + Update rebar_test.exs
+  + rename :shell option to :system in mix
+  + Ensure we consolidate only when there was a change
+  + Update archive.install.ex
+  + Remove readd_paths
+  + Added documentation and doctest examples to many of the functions in code.ex
+  + Ensure we quote proper file on exceptions
+  + Do not propagate protocol consolidation to children
+  + Clean up ExUnit.Assertions docs
+  + Fix doc formatting in ExUnit.Formatter
+  + Keep IEx history in an agent instead of process dictionary
+  + Add message for failure due to `--warnings-as-errors`
+  + Avoid missing behaviour warnings when compiling erlang files
+  + Polish the docs for the `Set` module
+  + No longer translate arguments to `@on_definition`
+  + Tidy up `IEx.History` implementation
+  + Update TODOs
+  + Clean up spaces in code docs
+  + Fixes for Erlang 18.0-rc1
+  + Update translator.ex
+  + Keep IEx history state in the evaluator process
+  + Add some docs to `defstruct/1`
+  + Add some docs to `Kernel.defprotocol/2`
+  + Wait until test process is down in ExUnit runner
+  + Remove guards. Fixes #3248.
+  + remove repeated word
+  + Tag async tests as such
+  + Ensure protocols are also consolidated in umbrellas
+  + Update CHANGELOG
+  + Assert proper return type from app.start task
+  + Replace `:erlang.now/0` with `:os.timestamp/0`
+  + Rename `term` into `value` in `Tuple.insert_at`
+  + EEx: correct doc for handle_assign/1
+  + Refactor File.cd! in terms of File.cd
+  + Refactor File! methods to avoid going through IO.chardata_to_string twice
+  + Implement `Tuple.append/2`
+  + Cosmetic changes in the elixir, elixirc and iex man pages
+  + Added a preview version of the mix man page
+  + Add `Tuple.append` inlining
+  + Fix small defects
+  + EEx: allow `)` after `end` in end tokens
+  + Introduce `MapSet` data type
+  + Improve test coverage for `HashSet`
+  + Fix whitespace errors in Integer source file
+  + Add further docs for `Kernel.struct/2`
+  + Ensure we escape config before injecting into escript
+  + Simplify `Application.get_env/3`
+  + Add `Application.fetch_env!/2`
+  + Do not expand in/2 argument in module body
+  + Avoid "module currently being defined" races in tests
+  + Polish the docs for `Regex.split/2` and `Regex.scan/2`
+  + Fix default value on `which_applications` timeout
+  + Mix new: raise if mod name in use
+  + in use -> taken
+  + Fix Version.pre typespec
+  + Fix to_string for Version with numeric pre
+  + Rename Enum.sample to Enum.random. Fixes #3285.
+  + Join pre-release parts with "."
+  + Support maps in `Module.simplify_signature/2`
+  + Mix: fix import_config with non-matching wildcard
+  + Clean up defstruct/defdelegate implementations
+  + Support for structs in `Module.simplify_signature/2`
+  + Provide tab-completion for aliases
+  + No need for `started?/0` check in `start_iex/0`
+  + Refactor `IEx.Autocomplete`
+  + Improve message for compilation error writing .beam
+  + Refactor `Kernel.CLI.CompileTest` to be async-safe
+  + Fix inferred argument names in `Module.simplify_signature/2`
+  + Update CHANGELOG
+  + Document dedup uses ===, remove usort
+  + Optimize simplify_signature by traversing only atoms again
+  + Clean up cmd tests
+  + Do not trigger the code server on Any dispatch
+  + EEx doc: Prevent list from being rendered as code blocks
+  + Embed consolidation information as a function in the protocol
+  + Derived protocols should go through Any
+  + Revert d49fb06 now underlying issue has been resolved.
+  + Underscore does not need to handle paths
+  + Added documentation and examples for File.stream!
+  + Use agents to store Mix config
+  + Update gen_server.ex
+  + Revert "Update gen_server.ex"
+  + Clarify what deps.clean removes
+  + Makefile: allow passing REBAR and PREFIX via environment
+  + cli_test: skip test that relies on chmod() when under fakeroot
+  + make test: avoid writing to $HOME
+  + Clean up MIX_HOME setup
+  + Revert "make test: avoid writing to $HOME"
+  + use $REBAR on mix tests
+  + Ensure Access is derivable for now
+  + Improve error message and increase test timeout to 60 seconds
+  + Properly set remaining timeouts
+  + Ensure blocks do not clobber eex buffer
+  + Fix `Keyword.get_and_update/3` function
+  + Correct `Port.info/1,2` functions
+  + Fix `=` to `==` in a KeywordTest test
+  + Bugfix to syntax error before sigil
+  + update anchor portion of link to erlang docs
+  + Give a meaningful timeout value to ex unit runner stats handler
+  + Trace always win over timeout when set
+  + Fix runner test
+  + Add `Process.hibernate/3`
+  + Do not assert when find_executable is returning relative paths
+  + Refactor extraction of meta location
+  + Rename the first argument to the Logger macros
+  + Added another preview version of the mix man page
+  + Support printing pids and refs in Logger metadata.
+  + Consider subdirectories in `Mix.Project.config_files/0`
+  + Fix doc formatting for `Path.split/1` examples
+  + Improved docs for bitstring.
+  + Deleted the  note.
+  + Add String.splitter/3 and optimize String.split/3
+  + Ensure we return strings on String.split based on unfold
+  + Ensure String bool functions do not fail on empty lists
+  + Remove empty starts_with usage in IEx.Autocomplete
+  + Fix `File.cp/3` in case of a file coping to itself
+  + Correct doc and error message for `File.cp!/3`
+  + Completed mix man page
+  + Fix docs typos
+  + Read assert and refute receive timeouts from ex_unit config
+  + Optimize Dict.merge/2, make Dict use cae clearer
+  + The latest requests were taken into account
+  + Fix including .app file in archives
+  + Add test for .app file in archive
+  + Add tests for fenced code blocks in IO.ANSI.Docs.
+  + Initial support for fenced blocks in IO.ANSI.Docs.
+  + Fix an errant function arity in the docs
+  + `surround_many/5` handles empty documents
+  + Add unit test for IO.binread with :all option
+  + Read 4K blocks instead of lines in IO.binread
+  + Fixed several mistakes in the elixir and iex man pages
+  + profile.fprof mix task
+  + Update escript.build.ex
+  + properly layout the table
+  + minor styling fix
+  + IEx Autocomplete assumes module at each level #3361 Squashed commits: [f0bb5a0] move sublevel test module inside IEx.AutocompleteTest [5b70ad9] move sublevel test module inside IEx.Autocomplete [0130aa3] add test for iex autocomplete sublevels [f88b853] IEx Autocomplete assumes module at each level #3361
+  + Copy-edit the module documentation of Application
+  + Fix GenEvent detecting module that isn't loaded
+  + use # instead of nbsp
+  + Improve test coverage for implicit protocol deriving
+  + Remove duplicated assertion in `ProtocolTest`
+  + Suppress warnings in `Inspect.Algebra`
+  + Improve docs for Stream.interval
+  + Optimize rstrip
+  + Handle corner cases for small strings in rstrp
+  + Use reliable home directory source
+  + Add docs for simple one for one
+  + Also document exit reasons
+  + Improve wording
+  + docs(Mix.Tasks.App.Start): fix typo
+  + Ensure we properly underscore acronyms followed by paths
+  + Defining arg0 for System.cmd tests so it can work with busybox
+  + Ensure take/1 does not consume more than required
+  + Speed up upcase and downcase for large strings
+  + Only consider outer halts in flat_map when the op is not halt itself
+  + Remove duplicate test in `StringIOTest` and correct test names
+  + Fix `StringIO` processes leakage in the `ExUnit.CaptureIO`
+  + Handle :undefined in Exception.format_arity/1
+  + Remove leftover obsolete code
+  + Fix race condition in logger translator test
+  + Update CHANGELOG
+  + Really fix race condition in logger translator test
+  + Changes to "v" IEx helper
+  + Rely on loaded_applications instead of running ones
+  + Avoid non-fix table errors
+  + Skip test that depends on read-only file when running as root
+  + Fix typo
+  + Restructure and add to Kernel.<<>>/2 docs
+  + Clean up <<>> docs to avoid doctest failures
+  + spell backpressure consistently
+  + Allows underscores in binary, octal and hex literals.
+  + Ensure that a digit follows the underscore in binary, octal, hex notations.
+  + Mention the use of records in pattern matches
+  + Small manpage corrections
+  + Ignore man build artifacts
+  + Remove an erroneous comment from String.to_char_list's doc
+  + Elaborate on codepoints and the :binary module in String.to_char_list
+  + Support IEx.pry with --remsh
+  + Use https on github shortcut
+  + Use https in test fixtures too
+  + Convert last git reference to https
+  + Better documentation for Task.await
+  + Add support for Enum.reduce_while/3
+  + Move terminate reason to second line in logs
+  + Add example of Bitwise in guards
+  + Additional Enum.reduce_while/3 tests
+  + Update Application docs to make them more accurate.
+  + fix warning of unused variable in test
+  + Remove previous archive after download success
+  + Use file alias 'F' for consistency
+  + Corrected grammatical errors in string documentation
+  + Corrected grammatical errors
+  + Reduce length of first paragraph to improve summary readability.
+  + Move current_env to IEx.Server
+  + Move autocomplete server to IEx env
+  + handle completion of erlang module aliases
+  + Build embedded requires explicit compilation step
+  + Add explicit docs that Mix.Config sets Application env
+  + Fix race condition in gen_event tests
+  + Add more configuration examples to Logger
+  + Be clear where the config is set for logger
+  + Add example of Agent.get_and_update/2
+  + Typo in doc for custom logger backends
+  + raise 'Not yet implemented error' on such tests
+  + add :not_implemented tag
+  + Not implemented test sets tag
+  + Fix typespec test on OTP18
+  + Revert "Use https on github shortcut"
+  + Revert "Convert last git reference to https"
+  + Revert "Use https in test fixtures too"
+  + Fix reversed Line, Column in tokenizer
+  + Use the given length instead of calculating it
+  + Properly offset columns on dot
+  + Introduce `ProxyIO`
+  + Introduce `Logger.Backends.Capture`
+  + Introduce `Logger.CaptureLog`
+  + Add docs and custom io device support to capture_log
+  + Consider `:standard_io` as a valid device name
+  + Document ProxyIO and implement own :io.request
+  + Demonitor proxied device and consider unknown messages handling
+  + Introduce `Logger.CLIFormatter`
+  + Add tests for `Logger.Backends.Capture`
+  + Document Logger.CLIFormatter
+  + Rename `ProxyIO` to `ExUnit.ProxyIO`
+  + Rename `Logger.CaptureLog` to `ExUnit.CaptureLog`
+  + Add support for `:capture_log` ExUnit test tagging
+  + Handle map() typespec correctly
+  + Fix map typespec in helpers test
+  + Fix map typespec in helpers test
+  + Switch mix to using https:// instead of git:// in GitHub URLs
+  + Move tests to Erlang 18 which has proper logger behaviour
+  + Fix unused variable warning in logger test
+  + Translate emulator logged process crashes in 18.0+
+  + Revert "Merge pull request #3411 from doomspork/fix-hex-removal-bug"
+  + Give curl priority over wget
+  + fix for Erlang R18.0 changes in maps module
+  + Support dialyzer attribute
+  + Get rid of `ProxyIO` and merge `:console` and `:capture` backends
+  + Ensure we also normalize badmap and badkey in rescue
+  + Run badkey and badmap only on 18
+  + Improve Kernel.Def
+  + Make error messages in lowercase
+  + Add muting for the `:console` backend for the duration of capture
+  + Mix new: use only umbrella template for config.exs, not both
+  + Generate installation instructions with READMEs
+  + Improve opaque types section on doctests
+  + Add missing dot to docs
+  + fix typo in special_forms
+  + Fix the logger format in the Logger moduledoc to match the actual used one
+  + sync documentation with code
+  + Mention Enum.reduce/3 in Enum.reduce/2's documentation.
+  + Move add/remove logger backend to client
+  + Improve error message for bad raise
+  + Add test for log capture removal on exit
+  + Simplify `ExUnit.Server.log_capture_on/1` return
+  + Update special_forms.ex
+  + Fix warnings in doctests
+  + Use shell for fetching hex versions
+  + Set proxy options for the correct URI scheme
+  + Improve docs for mix run
+  + Clarify example in ExUnit.Callbacks docs
+  + Restrict support for binary message in the default impl of exception
+  + Do not rely on ansi escapes, closes #3456
+  + Only remove extra archives
+  + Support rebar3 style git refs in rebar.config files
+  + Do not allow nested ambig expressions
+  + Disallow more ambiguous expressions
+  + Ensure proper precedence of operators when mixing matched and unmatched
+  + Makefile: fix manpage installation in packages
+  + Introduce `List.keytake/3`
+  + Adjust code in `List` to style used in the codebase
+  + Simplify `List.do_zip/2`
+  + Fallback to known Elixir version if csv is not available
+  + Improve docs for Task supervisor
+  + Fix implementation of Stack module which doesn't fit to the Supervisor implementation
+  + Add warning on underscored variable access
+  + Reword Agent docs for readability
+  + make absolute path for gitignore rule for man
+  + .gitignore : sort alphabetically
+  + link to search issues
+  + Provide link to Elixir's GenServer tutorial page
+  + Split handle_call and handle_cast callbacks in GenServer docs
+  + Make `Logger.log/3` macro and introduce `Logger.bare_log/3` instead
+  + add proper credits to copyright holders
+  + update links to https. remove period adjacent to URLs.
+  + standardize erlang.org/doc links to use www
+  + Remove reference to dynamic operators in table
+  + Check for compile_path on build_embedded
+  + Enum & Stream, take/2 & take_every/2 variables renamed. +Improvements
+  + Enum.take_every/1: remove unnecesary Module reference
+  + Clarify which call sets up the Task monitor
+  + Load IEx env just once to avoid race conditions
+  + Update CONTRIBUTING.md to avoid code style pull requests
+  + Optimize struct building
+  + Add explicit sort of map to Mix.Dep.Lock.write/1
+  + Improve IO docs
+  + Make `Macro.interpolate/2` private
+  + rename Enum.minmax* due to inconsitencies
+  + rename Inspect.Algegra.folddoc due to inconsitencies
+  + Update CHANGELOG
+  + Provide detailed error message for nested parens calls
+  + Bitwise module: remove docs in __using__ and move it to @moduledoc
+  + Favor explicitness in Mix.Utils.read_path with rebar/archive installs
+  + Update regex.ex
+  + Correct docs for --
+  + Fix re-registering of device after exit signal in `ExUnit.CaptureIO`
+  + Enum.slice Check for integers in arguments
+  + Avoid race condition in tests
+  + Enum.slice/2: guard added was missing from previous commit
+  + Use `spawn_monitor/1` to avoid race condition
+  + Improve `capture_io/3` on exit test
+  + Allow Logger metadata removal from the pdict
+  + Ensure Logger metadata is merged on log call
+  + Preserve metadata order defined in the backend's configuration
+  + lock / git scm mismatch should be mismatch
+  + Improve error message for build_embedded true
+  + Update elixir compiler manifest to use file:consult/1
+  + Split compile and runtime in lexical tracker
+  + Only recompile compile time dependencies in mix projects
+  + Reduce noise in lexical tracker output
+  + Streamline aliases and imports in lexical tracker
+  + Polish the documentation for Mix.Task.alias?/1
+  + Add man pages to Precompiled file
+  + run `man/make clean` dir after `make install_man`
+  + Merge `man/Makefile` into `Makefile`
+  + Start logger if --no-start is passed
+  + Better documentation for the GenServer terminate callback
+  + Fixing typo in Task.Supervisor.async/4 distributed task docs
+  + Add an example for running Task.find
+  + Pass build path as ERL_LIBS for deps.compile commands
+  + Introduce Task.yield/2 and Task.shutdown/2
+  + Fix grammar in Macro.expand/2
+  + IO.inspect: @specs fixed, + see full options
+  + Tweak the docs for the Inspect protocol
+  + Mention restart: :transient in Task moduledoc to clarify Supervised Tasks example
+  + Avoid race condition in `capture_io` "device re-registering" test
+  + Make a distinction between strict containers and strict calls
+  + Match on proper error message prefix
+  + Speed up `Enum.take_random/2` for big inputs
+  + Optimize many functions in String
+  + Add a note to the docs for Enum.reduce/2
+  + Improve mix.exs code sample
+  + Improve error message in case of lockfile eval failure
+  + Indent code sample for __protocol__/1 & impl_for/1
+  + Mention expressions without results in doctests
+  + Raise if piping into binary operator with 2 args
+  + Fix Macro.pipe syntax when bootstraping
+  + doctests raising exceptions and assert_raise show original stacktrace
+  + Allow tests to be skipped with @tag :skip
+  + Update CHANGELOG
+  + Support translator_inspect_opts
+  + Be more strict on the supported deps formats
+  + Validate :only in mix deps, closes #2980
+  + Make sure we support multiple environments in only
+  + Access is no longer a protocol
+  + Inline map operations in put_in and update_in
+  + Remove +T 9 flag
+  + Do not compile project if deps contain the task
+  + Fix Docs: Kernel.++/2 is not allowed in guards
+  + Restrict ranges to work only with integers
+  + Improve coverage for dynamic in clauses
+  + Add @type struct and error when overriding builtins
+  + Set Agent initial call
+  + Stop with bad_return_value on bad return in Agent
+  + Rename release_zip to release_precompiled. Fixes #3543
+  + Add = to list of functions that handle returns
+  + Warn when numbers or binaries are not used within a block
+  + Handle optimizable returns explicitly
+  + Add useless building warnings for module attributes and variables
+  + Add quotes. Fixes #3536
+  + Introduce :capture_log ExUnit configuration.
+  + Raise an error if there are no files available to run test
+  + Move logger flush to kernel cli, closes #3100
+  + Fix var warnings
+  + Fix bootstrap issues in kernel/cli
+  + Check for PID result from Logger
+  + capture non-symbolic operators (&and/2, &not/1, &c.)
+  + Warn if app configured but not started when build_embedded
+  + Handle abnormal exit in System at_exit
+  + Update app.start.ex
+  + Use or in left in [a, b, c] as the compiler can opt it better
+  + Remove warnings from erlang suite
+  + Allow nil pid in task
+  + Always unlink when shutting down task
+  + Support custom tasks using monitor of registered process
+  + Add GenServer.whereis/1
+  + Clean up typespec docs to avoid current confusion
+  + Remove compiled protocols on mix clean. Fixes #3541
+  + Warn defaults not defined in function head with multiple clauses
+  + Clarify some type descriptions in typespecs
+  + Add test to verify compiled protocols are removed
+  + Further optimize in range
+  + Add application to logger metadata
+  + Ensure to always clearn up logger configuration
+  + Move test to compile task (compile.all is an impl detail)
+  + documentaion for module names, variable names and custom sigils
+  + Added a blub about underscore names to the `import` documentation
+  + Fix identention inside lists
+  + URI: add RFC links
+  + Mention sigil_R as valid option to create a regex
+  + Fix race condition in `CaptureLogTest`
+  + Dog food `Application.put_env/3`
+  + Tidy up `Mix.Tasks.Profile.Fprof`
+  + Remove dead code from mix tasks tests
+  + Alias `Fprof` mix task for readability in tests
+  + Warn on build embededd instead
+  + Fix doc comment for File.cp_r
+  + Improve async docs
+  + Stop/unload applications started/loaded in mix tests
+  + Always warn on mix config when application unavailable
+  + @callback can now be used directly (without Behaviour). Add @macrocallback.
+  + Update CHANGELOG
+  + Add a short description about ExUnit and Mix improvements too
+  + Soft-deprecate Behaviour
+  + Remove usage of use Behaviour
+  + Makefile: print a success message on `realease_precompiled`
+  + Clean up  makefile
+  + Improments in module,  function & variable  names syntax
+  + Make a distinction between Location, Token and Node in parser
+  + Convert test :atom into test string
+  + Fix test name related failure
+  + Fix warning in warning_test.exs
+  + Emit syntax error for invalid fn end, closes #3311
+  + Soft deprecate booleans in :as, closes #3190
+  + Deprecate ?\x in favor of simply 0x
+  + Deprecate as: true | false in require/alias
+  + Support \u in strings and char lists for unicode mapping
+  + Also fail on do after , and ;
+  + Allow operators to work still after comments
+  + Remove unnecessary code in Enum.uniq example
+  + Also perform new line checking with structs
+  + Do not add fetch to access
+  + Improve binary docs
+  + Assert key-value pairs in type structs
+  + Raise if heredic terminator in invalid location
+  + Do not change the code semantics in assert/receive
+  + Clean up map access code
+  + Match errors should have higher priority on assert =
+  + Keep proper line info in rewritten/inlined code
+  + Recompile projects if SCM changes, closes #3375
+  + Fix typo in mix man page
+  + Improve error message when no return value specified in func spec
+  + update error messages, handle non-call first arg to :::
+  + Line numbers for doctest errors. Fixes issue #3592
+  + fix a typo in bitwise documentation
+  + Warn when dependencies have conflicing :only
+  + Remove amount of fixture data in deps test, improve coverage
+  + Do not assert on local paths
+  + Improve GenServer docs
+  + (#3603) add more application functions
+  + Handle warns coming from erlang with line set to :none
+  + Improve error messages for `match?` assertions
+  + Erase app directories on full recompile
+  + Ensure only restriction is passed from parent to child
+  + Keep metadata when rewriting assertions
+  + Also store lines in typedoc and ensure @*doc return strings
+  + Update CHANGELOG
+  + fix(Kernel): check arguments on if and unless
+  + Do not inject `:application` key in metadata if it has `nil` value
+  + Cut off "Elixir." prefix for modules in Logger metadata
+  + Correct function argument name
+  + Correct formatting
+  + Update CHANGELOG.md
+  + Add URI.to_string/1
+  + Update elixir.bat
+  + Update documentation for IEx.configure
+  + ExUnit: Fix warning in test
+  + added docs for :keep option in OptionParser module
+  + implemented iex pid helper, using :c.pid
+  + Add missing character in delete_at code sample
+  + CHANGELOG.md: Add missing period in header
+  + Enum.chunk: correct types in specs
+  + Move Hex loading into its own module
+  + Provide sha512 checking on mix archive.install
+  + Use public key encryption for downloading Hex metadata
+  + Add task for managing public keys
+  + Also download signed rebar packages
+  + Forward all info values to get_module_info
+  + Improve unexpected token error messages
+  + Update CHANGELOG
+  + Raise nice error message if ExUnit.Case was not used
+  + Ensure we don't warn on missing imports if nothing was imported
+  + Fix typespecs for Stream.chunk
+  + Add Stream.transform/4
+  + Provide detailed description on how to change timeout
+  + Include docs zip in the publish process
+  + Remove reference to GenServer.Behaviour from LocalsTracker
+  + Add and document GenServer callbacks
+  + Improve docs on GenServer.init/1 returning :ignore
+  + Improve Supervisor.start_link/2 spec
+  + Add and document GenEvent callbacks
+  + Perform merging of only in non-shared paths
+  + Update b/1 helper for callback docs
+  + Properly convert captures in Macro.to_string/1
+  + Document and test :only behaviour, closes #3664
+  + Update public key
+  + Upgrade travis to check against Erlang 17.5 and 18.0
+  + Ensure we merge excluded values
+  + Prune more elixir internals in stacktraces
+  + Fix typo in File.cp_r for files (rename tmp to b.txt)
+  + Add support for File.rename (unix-like mv) based on elrang specs
+  + Convert remaining test :atom to strings
+  + Include link to Hex publish
+  + Raise nice error merge when setup returns bad data
+  + Release v1.1.0-beta
+  + Match on proper error on lock format mismatch
+  + made parse() support complete scientific notation
+  + Correct double words
+  + Regex.regex?/1: name unnamed argument and improve docs
+  + Correct indefinite article a/an
+  + Correct descriptions in @doc, @moduledoc, @shortdoc to use Present Continuous
+  + Avoid splitting words that use hyphen
+  + ensure_structure: rephrase wordings
+  + Mix.Hex: improve documentation and code
+  + Add backticks to true, false, nil
+  + correct wording
+  + Correct spaces in iex>
+  + Format raise message consistently
+  + Add arity or correct it for functions that are not being linked in the html docs
+  + spelling `miliseconds` -> `milliseconds`
+  + Allow list of spec in Process.info/2
+  + Provide a best practices section for use
+  + Do not choke on unknown manifest files
+  + Fix `does` → `do` verbal agreement in special_forms.ex
+  + Add text to all links
+  + Fix markdown files
+  + Correct descriptions in docs to use Present Continuous (2)
+  + Use Title Case and backticks for Erlang and Elixir applications
+  + Add a code of conduct
+  + Update CHANGELOG
+  + Use Mix.shell.error for fprof warning
+  + Fix `responsible to keep` → `responsible for keeping` in env.ex doc
+  + New test cases for exponent marker E and leading +
+  + String: strip functions : mention that ALL leading/trailing `char`s will be removed
+  + Enum: renamed the rarely used `ifnone` argument, in favour of `default`
+  + Mention the Pin Operator in its documentation
+  + Improve assert docs, closes #3709
+  + Set ex_unit stacktrace to 20 by default, closes #3705
+  + Only warn apps that come from the current project stack, closes #3710
+  + Ensure binding() doesn't warn on underscored vars, closes #3708
+  + Update CHANGELOG
+  + Only warn if no test pattern matches due to umbrella apps
+  + Display pinned vars in the receive assertions
+  + Improve assertion readability in test
+  + Indent pinned vars and received messages in the receive assertions
+  + Inspect.Algebra: Move numbered link off the first line
+  + Standardize use of backticks and quotes; including Error messages and Title Case commands
+  + Fix bugs involving Markdown code
+  + Rephrase @doc for Mix.raise/2
+  + IO.ANSI: move away link from Summary
+  + Raise right away for Mix tasks with slashes
+  + Replace all occurrences of em-dashes in favour of hyphens
+  + Replace en-dash when it should be hyphen
+  + Correct "truth value" with "truthy value"
+  + Rephrase @moduledoc for Mix
+  + Update CHANGELOG
+  + Ensure File.touch and File.touch! properly work with universal time
+  + Support logo when generating docs
+  + Make it clearer that unimplemented callbacks always stop
+  + Properly close GenServer heredoc
+  + Remove leftover callback docs from GenEvent
+  + Add GenServer.option type
+  + Mention how to write docs for public Mix tasks
+  + Provide reporting e-mail
+  + Use multiline failure message for asser_raise/3
+  + Add a couple of tests for assert_raise/3
+  + Prepare for upcoming release
+  + Mix.Dep: show instructions on :nolock and :lockoutdated
+  + Title case Hex
+  + "mix deps.clean": Reword docs to make it consitent with "mix clean"
+  + correct tenses in Agent, Mix.Dep, GenServer docs
+  + ANSI: standardize docs
+  + add links to code of conduct
+  + Improve wording in COC links
+  + Update CONTRIBUTING.md
+  + Default to universal times throughout File
+  + Polish docs for Mix.shell and Mix.Shell.Process
+  + Fix invalid String.to_atom calls
+  + Fetch archive/escript with version in filename
+  + Improve deps.compile error message
+  + Release v1.1.0-rc.0
+  + Make test that relies on shared dir sync
+  + Add examples using alternate capture/replace syntax
+  + Module.__info__ : correct links
+  + explain String.replace/4 :insert_replaced option
+  + Add Mix recompilation from IEx
+  + Make a distinction between touching and updating the lock manifest
+  + Update release instructions
+  + Stop apps in reverse load order
+  + String: Rename args "str" to "string"
+  + Code.get_docs/2: check for valid doc kind in public function, not in  private
+  + Added an example to the to_list function
+  + Add missing after callback in Stream.transform
+  + Add IO.ANSI.clear_line
+  + assert_raise: document that message can be regex
+  + Update doc for Kernel.hd/1 to indicate guard clause utility
+  + `compile_error/3,4` is already imported in `elixir_exp_clauses`
+  + Raise `CompileError` in case of duplicated clauses given for `try`
+  + Raise `CompileError` in case of duplicated clauses given for `receive`
+  + Raise `CompileError` in case of duplicated `do` clauses for `cond`
+  + Raise `CompileError` in case of duplicated `do` clauses for `case`
+  + Ensure suspending flat map does not consume items, closes #3751
+  + Raise if arity not in 0..255, closes #3754
+  + Link to the public keys page
+  + Update CHANGELOG
+  + Mention config/config.exs in warning
+  + Ensure we list structs and requires as compile time deps
+  + Make the Access API based on fetch
+  + Release v1.1.0
+  + Update docs directory
+  + Fix assertion errors with more than 1 pinned var
+  + removed obsolete type option from the GenEvent handler type
+  + Ensure stacktraces are shown on app_path failures
+  + Fix non integer checks in ranges
+  + Release v1.1.1
+
+-------------------------------------------------------------------
+Fri Jul 03 21:59:45 UTC 2015 - matwey.kornilov@gmail.com
+
+- Update to version v1.0.5:
+  + Ensure we escape config before injecting into escript
+  + Read 4K blocks instead of lines in IO.binread
+  + Add unit test for IO.binread with :all option
+  + Optimize rstrip
+  + Handle corner cases for small strings in rstrp
+  + Ensure we properly underscore acronyms followed by paths
+  + Speed up upcase and downcase for large strings
+  + Ensure blocks do not clobber eex buffer
+  + Only consider outer halts in flat_map when the op is not halt itself
+  + Expand attributes and macros in record extractor
+  + Fix GenEvent detecting module that isn't loaded
+  + Ensure take/1 does not consume more than required
+  + Handle :undefined arity in Logger.Translator
+  + Add more documentation for ~> requirements
+  + Fix Version.pre typespec
+  + Fix to_string for Version with numeric pre
+  + Join pre-release parts with "."
+  + Fix race condition in logger translator test
+  + Merge pull request #3382 from lexmag/string_io-fixes
+  + Update CHANGELOG
+  + Really fix race condition in logger translator test
+  + Rely on loaded_applications instead of running ones
+  + Avoid non-fixed table errors on autocomplete
+  + Delegate to :erlang.binary_to_float on Float.parse/1
+  + Update CHANGELOG
+  + Add docs for simple one for one
+  + Also document exit reasons
+  + Improve wording
+  + Backport improvements to <<>>' docs
+  + Update to Erlang 18
+  + Move tests to Erlang 18 which has proper logger behaviour
+  + Translate emulator logged process crashes in 18.0+
+  + Fix logger translating process exit
+  + fix for Erlang R18.0 changes in maps module
+  + Ensure we also normalize badmap and badkey in rescue
+  + Run badkey and badmap only on 18
+  + Release v1.0.5
+
+-------------------------------------------------------------------
+Mon May 11 15:57:55 UTC 2015 - matwey.kornilov@gmail.com
+
+- Fix a typo in elixir-doc.spec
+
+-------------------------------------------------------------------
+Sat May  9 09:49:10 UTC 2015 - matwey.kornilov@gmail.com
+
+- Drop docs into separate package
+
+-------------------------------------------------------------------
+Sat May 09 09:27:59 UTC 2015 - matwey.kornilov@gmail.com
+
+- Update to version v1.0.4:
+  + Do not propagate protocol consolidation to children
+  + Clean up ExUnit.Assertions docs
+  + Avoid missing behaviour warnings when compiling erlang files
+  + Add compatibilty with OTP 18 typespec changes
+  + Fixes for Erlang 18.0-rc1
+  + Update CHANGELOG
+  + Fix doc formatting in ExUnit.Formatter
+  + Wait until test process is down in ExUnit runner
+  + Tag async tests as such
+  + Release v1.0.4
+
+-------------------------------------------------------------------
+Fri Jun 20 14:31:10 UTC 2014 - matwey.kornilov@gmail.com
+
+- Update to 0.14.1
+
+-------------------------------------------------------------------
+Mon Feb 17 22:01:03 UTC 2014 - develop7@develop7.info
+
+- Update to 0.12.4
+  * see CHANGELOG.md for backward incompatibilities and
+    enhancements
+
+-------------------------------------------------------------------
+Thu Feb  6 17:38:37 UTC 2014 - matwey.kornilov@gmail.com
+
+- Add macros.elixir for packaging elixir-packages
+
+-------------------------------------------------------------------
+Thu Feb  6 07:51:55 UTC 2014 - matwey.kornilov@gmail.com
+
+- Update to 0.12.3
+  - number of bugfixes
+  - see CHANGELOG.md for backward incompatibilities
+
+-------------------------------------------------------------------
+Sun Dec 29 16:25:59 FET 2013 - gonzih@gmail.com
+
+- Update to 0.12.0
+
+-------------------------------------------------------------------
+Sun Aug 11 19:18:16 UTC 2013 - matwey.kornilov@gmail.com
+
+- Update to 0.10.1 with support for streams, sets and
+  many improvements to the Mix and ExUnit applications.
+
+-------------------------------------------------------------------
+Sun Jul  7 14:07:45 UTC 2013 - matwey.kornilov@gmail.com
+
+- Fix git >= 1.7 requirement
+
+-------------------------------------------------------------------
+Fri Jul  5 07:36:33 UTC 2013 - matwey.kornilov@gmail.com
+
+- Initial version

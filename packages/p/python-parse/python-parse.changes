@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Wed Sep 11 08:31:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.12.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Apr 25 11:47:55 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.12.0
+  * Do not assume closing brace when an opening one is found
+- added sources
+  https://github.com/r1chardj0n3s/parse/issues/82
+  + LICENSE
+
+-------------------------------------------------------------------
+Thu Feb 14 10:29:49 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.11.1:
+  * Implement __contains__ for Result instances.
+  * Introduce a "letters" matcher, since "w" matches numbers also.
+  * Fix deprecation warnings around backslashes in regex strings
+    (thanks Mickaël Schoentgen). Also fix some documentation
+    formatting issues.
+  * We now honor precision and width specifiers when parsing
+    numbers and strings, allowing parsing of concatenated
+    elements of fixed width (thanks Julia Signell)
+  * Add LICENSE file at request of packagers. Correct handling of
+    AM/PM to follow most common interpretation. Correct parsing
+    of hexadecimal that looks like a binary prefix. Add ability
+    to parse case sensitively. Add parsing of numbers to Decimal
+    with "F" (thanks John Vandenberg)
+  * Add regex_group_count to with_pattern() decorator to support
+    user-defined types that contain brackets/parenthesis (thanks
+    Jens Engel)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 13:36:35 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu May 24 17:36:59 UTC 2018 - toddrme2178@gmail.com
+
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Wed Oct 18 16:45:12 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 1.8.2
+  * No changelog
+
+-------------------------------------------------------------------
+Fri Jun  3 15:49:11 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

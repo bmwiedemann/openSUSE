@@ -1,0 +1,1390 @@
+-------------------------------------------------------------------
+Mon Jul 22 07:57:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Hardcode pytest 3.x series as upstream even in git does not work
+  with newer versions (they pinned the release)
+
+-------------------------------------------------------------------
+Sat May 25 08:41:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.22.0:
+  * Requests now supports urllib3 v1.25.2. (note: 1.25.0 and 1.25.1 are incompatible)
+- Rebase requests-no-hardcoded-version.patch
+
+-------------------------------------------------------------------
+Tue Apr 23 10:45:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not hardcode version requirements in setup.py allowing us to
+  update and verify functionality on our own:
+  * requests-no-hardcoded-version.patch
+
+-------------------------------------------------------------------
+Mon Feb 25 15:45:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one more test that is flaky 
+
+-------------------------------------------------------------------
+Fri Feb 15 11:41:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not depend on python-py
+- Update few of the requirements
+
+-------------------------------------------------------------------
+Tue Feb  5 13:17:10 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- update to version 2.21.0:
+  * Requests now supports idna v2.8.
+
+-------------------------------------------------------------------
+Wed Jan  9 22:42:33 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
+
+- Support older Red Hat platforms that don't offer "Recommends:"
+
+-------------------------------------------------------------------
+Mon Dec 31 12:24:10 CET 2018 - mcepl@suse.com
+
+- Move name ahead of version in spec file to resolve build issues
+  on older distributions
+- fdupe more thoroughly.
+
+-------------------------------------------------------------------
+Fri Nov 23 21:34:10 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.20.1:
+  * Bugfixes
+    + Fixed bug with unintended Authorization header stripping for
+      redirects using default ports (http/80, https/443).
+
+-------------------------------------------------------------------
+Tue Oct 30 09:20:26 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Sat Oct 20 15:39:32 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove devel for noarch
+  * remove restriction for urllib3 < 1.24
+  * HISTORY and README changed from .rst to .md
+
+- update to version 2.20.0:
+  * Bugfixes
+    + Content-Type header parsing is now case-insensitive
+      (e.g. charset=utf8 v Charset=utf8).
+    + Fixed exception leak where certain redirect urls would raise
+      uncaught urllib3 exceptions.
+    + Requests removes Authorization header from requests redirected
+      from https to http on the same hostname. (CVE-2018-18074)
+    + should_bypass_proxies now handles URIs without hostnames
+      (e.g. files).
+  * Dependencies
+    + Requests now supports urllib3 v1.24.
+  * Deprecations
+    + Requests has officially stopped support for Python 2.6.
+
+-------------------------------------------------------------------
+Thu Jul 19 10:27:24 UTC 2018 - mimi.vx@gmail.com
+
+- -test subpackage must be empty 
+
+-------------------------------------------------------------------
+Mon Jul 16 00:09:54 UTC 2018 - mimi.vx@gmail.com
+
+- make multibuild package to resolve circular deps on tests
+
+-------------------------------------------------------------------
+Mon Jul  2 00:43:03 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- update to version 2.19.1:
+  * Fixed issue where status_codes.py’s init function failed trying
+    to append to a __doc__ value of None.
+- update to version 2.19.0:
+  * Improvements
+    + Warn about possible slowdown with cryptography version < 1.3.4
+    + Check host in proxy URL, before forwarding request to adapter.
+    + Maintain fragments properly across redirects. (RFC7231 7.1.2)
+    + Removed use of cgi module to expedite library load time.
+    + Added support for SHA-256 and SHA-512 digest auth algorithms.
+    + Minor performance improvement to Request.content.
+    + Migrate to using collections.abc for 3.7 compatibility.
+  * Bugfixes
+    + Parsing empty Link headers with parse_header_links() no longer
+      return one bogus entry.
+    + Fixed issue where loading the default certificate bundle from
+      a zip archive would raise an IOError.
+    + Fixed issue with unexpected ImportError on windows system
+      which do not support winreg module.
+    + DNS resolution in proxy bypass no longer includes the username
+      and password in the request. This also fixes the issue of DNS
+      queries failing on macOS.
+    + Properly normalize adapter prefixes for url comparison.
+    + Passing None as a file pointer to the files param no longer
+      raises an exception.
+    + Calling copy on a RequestsCookieJar will now preserve the
+      cookie policy correctly.
+  * We now support idna v2.7 and urllib3 v1.23.
+- Properly set idna/urllib3 dependency versions, runtime and buildtime
+- Spec cleanup, remove conditionals for ancient distro versions
+- Remove duplicates with fdupes
+
+-------------------------------------------------------------------
+Wed Mar  7 14:37:27 UTC 2018 - aplanas@suse.com
+
+- Allows Recommends and Suggest in Fedora
+
+-------------------------------------------------------------------
+Tue Feb 27 18:08:32 UTC 2018 - aplanas@suse.com
+
+- Recommends only for SUSE
+- In no SUSE evironments some tests related with certificates can
+  fail. Skip the tests if this case.
+
+-------------------------------------------------------------------
+Sun Sep 24 21:48:31 UTC 2017 - arun@gmx.de
+
+- update to version 2.18.4:
+  * Improvements
+    + Error messages for invalid headers now include the header name
+      for easier debugging
+  * Dependencies
+    + We now support idna v2.6.
+
+- changes from version 2.18.3:
+  * Improvements
+    + Running $ python -m requests.help now includes the installed
+      version of idna.
+  * Bugfixes
+    + Fixed issue where Requests would raise ConnectionError instead
+      of SSLError when encountering SSL problems when using urllib3
+      v1.22.
+
+-------------------------------------------------------------------
+Tue Aug  8 06:51:52 UTC 2017 - tbechtold@suse.com
+
+- update to version v2.18.2
+  * Add requirements.txt to MANIFEST.in
+  * test ssl version check functions as expected in python 2.6
+  * no more stickers
+  * fix OPENSSL_VERSION_NUMBER check on Python2.6's ssl module
+  * Setup HISTORY for next release
+  * Use 'prefix' instead of 'key' in session docstring
+  * Allow urllib3 1.22
+  * v2.18.2
+  * stickers
+  * redundant comma
+
+-------------------------------------------------------------------
+Mon Jul  3 11:36:40 UTC 2017 - tbechtold@suse.com
+
+update to version v2.18.1
+  * 2.17.1
+  * Fix a typo: verison -> version
+  * fix
+  * Prepare v2.18.0
+  * Update requirements.txt
+  * cleanup models.py
+  * Preserve identity of unbundled deps
+  * ignore undefined names in flake8
+  * flake8 ignore lambda expressions
+  * Add the pytest .cache/ directory to .gitignore
+  * docutils
+  * try junit
+  * new installation location
+  * cleanup utils.py
+  * flake8report.txt
+  * empty commit
+  * no more pipenv
+  * Begin dev section of README
+  * Remove exec permission from files that shouldn't have it
+  * change development philosophy docs to reflect reality
+  * fix manifest file
+  * only flake8 the right directory
+  * update development documentation
+  * Remove session redirect cache
+  * no piping to a file
+  * Catch error if multiprocessing is not available or is unable to determine the number of CPUs
+  * todo
+  * cleanup sessions.py
+  * typo
+  * number of cores for travis
+  * ignore import statements for flake8
+  * Update README.rst
+  * better ci file
+  * bunk change
+  * that doesn't work on windows
+  * improve development instructions
+  * Fix a typo: paramters -> parameters
+  * Adds changelog entry for #4134
+  * ignore line continuations for flake8
+  * Allow Requests.Response to be used as a context manager
+  * Fix requests.packages not having package attributes
+  * remove note about cacerts.pem
+  * v2.17.3
+  * improve install documentation syntax
+  * improve installation instructions
+  * flake8: import statement improvements
+  * fix spaces in api.py
+  * v2.18.1
+  * skip for now
+  * v2.17.2
+  * fix flake8 for EOF in __init__.py
+  * improve flake8 help.py
+  * Prepare for next release cycle
+  * try this travis file
+  * remove "are you crazy?" section
+  * fix sidebars
+  * Update index.rst
+  * fix empty lines for flake8
+  * convert version compatibility checks to warning
+  * fix github stars
+  * v2.17.1
+  * improve line continuations for flake8
+  * attempt new ads
+  * speed up appveyor
+  * v2.17.0
+  * improve installation docs
+  * fix flake8 indent error
+  * Adds to AUTHORS
+  * Clearer makefile for building README
+  * flake8
+  * Fixes error swallowing in set_environ
+  * cleanup help.py (flake8)
+  * improve install docs
+  * new requests namespace
+
+-------------------------------------------------------------------
+Sat Jun 10 08:40:50 UTC 2017 - dmueller@suse.com
+
+- update to 2.16.5:
+  * unvendored bundled libraries
+  * for more changes, see https://pypi.python.org/pypi/requests
+
+- drop no-default-cacert.patch: this is now in python-certifi
+- drop requests-do-not-use-bundle.patch: obsolete
+
+-------------------------------------------------------------------
+Fri May  5 22:43:27 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue May  2 07:03:13 UTC 2017 - alarrosa@suse.com
+
+- The following two entries should have been added to the previous
+  changelog entry.
+- Drop urllib3-ssl-default-context.patch
+- Add requests-do-not-use-bundle.patch
+
+-------------------------------------------------------------------
+Tue Mar 14 14:37:56 UTC 2017 - jmatejek@suse.com
+
+- update for multipython build
+- synchronize with python 3 version
+  * drop urllib3-ssl-default-context.patch
+  * add requests-do-not-use-bundle.patch
+- debundle urllib3 and chardet
+- enable test suite
+
+-------------------------------------------------------------------
+Mon Mar  6 15:09:56 UTC 2017 - jweberhofer@weberhofer.at
+
+- fixed dependencies in spec
+
+- update to version 2.13.0
+  * Only load the idna library when we’ve determined we need it. 
+    This will save some memory for users.
+  * Updated bundled urllib3 to 1.20.
+  * Updated bundled idna to 2.2.
+
+- update to version 2.12.5
+  * Fixed an issue with JSON encoding detection, specifically detecting 
+    big-endian UTF-32 with BOM.
+
+-------------------------------------------------------------------
+Wed Dec 28 08:46:15 UTC 2016 - tbechtold@suse.com
+
+update to version v2.12.4
+  * Python 2 compatibility
+  * adding tests for super_len conditional flow
+  * Check in updated idna.
+  * Test case for requests getting stuck on post redirect with seekable stream
+  * v2.12.2
+  * added new test, original test restored
+  * Make Response.content return None if raw is None
+  * adding unicode_is_ascii utility function
+  * Update sidebarlogo.html
+  * Fixed another scheme proxy over "all" priority
+  * Add changelog for 1.19.1
+  * changed behavior of basic-http-auth test
+  * correct backtick formatting
+  * Note @jeremycline is now our contact.
+  * Order of type check
+  * Add prepared request pickling tests
+  * adding comment
+  * Add deprecation warnings for 3.0
+  * clarify that the `chunk_size` is optional when streaming to a file
+  * adding ISO-8859-1 fallback for reason decoding
+  * fixed some error
+  * pysocks 1.5.7 blacklisting, due to IPv6 problems
+  * Fix tests for new urllib3 exception text.
+  * make add_dict_to_cookiejar cookielib.CookieJar compatible
+  * correct module for cookiejar_from_dict in docs
+  * converting update call to merge_cookies call for cookielib compatibility
+  * streaming doc clarification
+  * removing redundant logic from prepare_content_length
+  * Update certifi certs to 2016.09.26
+  * Specify self.cert is used for SSL client certificates
+  * Fix how we test fallback to latin-1 reason encoding
+  * adding method to url tests
+  * Enable UTS46 mode.
+  * Adding 'import requests' to readme code snippet. (#3700)
+  * Add Documentation for custom methods
+  * adding passthrough in close() for non-urllib3-like Responses
+  * remove extra import
+  * Test chunked upload doesn't set content length
+  * Change setuptools extra for new secure extra.
+  * fix issue when the file-like object raises an IOError with tell
+  * Added myself to AUTHORS
+  * Changelog entry for better IDNA.
+  * updated tests with IDNA encoded and IPv6 urls
+  * documentation line added for consistency with the post method
+  * Fall back to streaming
+  * added unicode auth test
+  * updates authors
+  * spelling fix for release-process
+  * Revert "Adding 'import requests' to readme code snippet."
+  * Document that Response.json() may raise ValueError
+  * Amplifies the timeout warning in the docs.
+  * Revert "Restrict URL preparation to HTTP/HTTPS"
+  * Update README.rst
+  * Further complicate the makefile to rewrite imports
+  * Unable unicode in basic http auth
+  * Various packaging requirements for idna
+  * Fixed: httpbin doesn't support bytes
+  * reverting 3357 and comparing properly encoded strings
+  * Fixed issue #3696. Added a test for it as well.
+  * fixed: httpbin with unicode auth
+  * Remove error swallowing exception catching of AttributeError
+  * Update sidebarintro.html
+  * removing use of seek to set total_length
+  * Update urllib3 to 1.19
+  * Use IDNA2008 to encode hosts.
+  * Formatted the example to fix the color highlighting
+  * Add tests to verify that correct 'Content-Length' or 'Transfer-Encoding' headers are being set in PreparedRequest.
+  * [httpAdapter] allow empty password in proxy credentials
+  * Fixed bug to give scheme proxy priority over "all"
+  * adding decoding requirement for Python 3
+  * fixes broken link on documentation page
+  * Basic tests for internationalized domain names.
+  * Update Comments & Magic Strings
+  * Change module of internal references to to_native_str()
+  * Add pickle test with hooks
+  * update 307 tests to check body content
+  * requests.post checked data parameters for type like dict.
+  * test different CookieJar types for add_dict_to_cookiejar
+  * Restrict URL preparation to HTTP/HTTPS
+  * Indicate shell command in README is code-like.
+  * documentation on encoding fallback for streaming
+  * Fixed readme typo - 'site' should be 'domain'
+  * Rework Bytestring Host Test to use PyTest Httpbin
+  * Add makefile to get latest idna release.
+  * Tests for our URL handling.
+  * Add test for request when Host header is bytestring
+  * Move to_native_string to _internal_utils.py to avoid circular dependency
+  * Add workaround to avoid implicit import of encodings.idna.
+  * minor doc string cleanup
+  * little modification  in consume_socket_content
+  * links
+  * Update bundled urllib3 to 1.19.1
+  * Changes to documentation based on comments and correction of list of authors.
+  * Add license for idna package.
+  * Add line to AUTHORS
+  * Adjust patch to utilize requests utility functions
+  * test _body_position and rewind_body
+  * Seems like we're missing a backport here.
+  * new logo :D
+  * add socket tests for 401 redirect and 401 failure
+  * Adding notes about Request's timeout behavior.
+  * fixed usage unicode string
+  * unicode test for _basic_auth_str
+  * Let's use capitals.
+  * adding string casting for non-bytes values
+  * Add patch to avoid bytestring/str hodgepodge
+  * Vendor idna v2.1
+  * Clarify allow_redirects
+  * v2.12.3
+  * v2.12.0
+  * v2.12.1
+  * v2.12.4
+  * modifying IDNA encoding check to allow fallback
+  * Use seek from end rather than getvalue
+  * updating pickling tests for PreparedRequest
+  * We only ship tagged releases now.
+  * Make Response.content() return None if status_code is None
+  * Just lstrip instead of strip because trailing whitespace already works.
+  * adding rewind for re-POST bodies
+  * Add persistent examples
+- update urllib3 requirement to 1.19.1
+- add idna requirement, refresh unbundling patch
+
+-------------------------------------------------------------------
+Thu Sep  1 07:53:20 UTC 2016 - tbechtold@suse.com
+
+update to version v2.11.1
+  * Update urllib3 to 1.16
+  * Close and then release the connection
+  * Added tests for should_bypass_proxies function
+  * Update documentation of Session.max_redirects
+  * Document bunch of return types
+  * Update HISTORY.rst
+  * Cleaning up comment on JSON encoding to be more strictly relevant.
+  * Oh yeah, we updated urllib3 too.
+  * Fixing test; it was accomplishing the right thing, but doing it in the wrong way.
+  * compensate for lack of taste
+  * Use xfail marker for a test expected to fail without Internet connection
+  * in python3.x not have StringIO
+  * Spelling fixes
+  * adding in slice_length fix and test for chunk_size=None (#3370)
+  * Support responses like `HTTP/1.1 404 Unicode chars` (#3385)
+  * Document header ordering. (#3295)
+  * Add section on SOCKS proxies.
+  * Update list of supported Python versions in todo.rst
+  * removing Content-Type and Transfer-Encoding headers on redirect
+  * check and test for headers containing return characters or leading whitespace
+  * Clarify Python versions supported by requests
+  * Allow graceful interruption of testserver.Server
+  * reverting 3362
+  * fixed date formatting
+  * Make BaseAdapter describe the mandatory adapter interface (#3216)
+  * Note how HTTPErrors are raised
+  * Removing charset from JSON content type; tightening requirements on .encode()
+  * Add 'all' proxy selection to select_proxy
+  * Fix TypeError when get json-encoded content of a response
+  * wildly inaccurate button results in deletion
+  * v2.11.1
+  * v2.11.0
+  * Prepare changelog for 2.11.1.
+  * Allow None value for chunk_size again (#3368)
+  * updating documentation to reflect decision of #3386
+  * added in type check for chunk_size
+  * Update a note on AppEngine
+  * Remove duplicate import warnings
+  * adding asserted_encoding check on None type encoding to match text() behavior (#3362)
+  * Encoding JSON requests to bytes for urllib3 to handle; ensuring same with testing.
+  * docs updates
+  * Changelog for 2.11
+  * Update README.rst
+  * Use iter instead of noop list comprehension
+  * Test security warnings (#3289)
+  * Combined tests to one tests for should_bypass_proxies method
+  * Update index.rst
+  * Replace tab with appropriate spaces.
+  * Support ALL_PROXY environment variable
+  * Add a bit about RequestsCookieJar to Cookies section
+  * making module docstrings and coding comments consistent
+  * docs: Add a note about SSL c_rehash
+  * updating docstring to match functionality
+  * fix grammer mistakes in Quickstart
+  * consider plain ip notation of an ip in no_proxy if not in cidr notation
+  * Defining header value type requirements and tests
+  * removing redundant test
+  * updating HISTORY
+  * adding in pep8 fixes
+  * building Response manually
+  * making class and function docstrings consistent
+
+-------------------------------------------------------------------
+Wed May 18 08:04:41 UTC 2016 - dmueller@suse.com
+
+- update to 2.10.1:
+  * SOCKS Proxy Support! (requires PySocks; $ pip install requests[socks])
+  * Updated bundled urllib3 to 1.15.1.
+  * Change built-in CaseInsensitiveDict (used for headers) to use OrderedDict
+    as its underlying datastore.
+  * Don't use redirect_cache if allow_redirects=False
+  * When passed objects that throw exceptions from ``tell()``, send them via
+    chunked transfer encoding instead of failing.
+  * Raise a ProxyError for proxy related connection issues.
+
+-------------------------------------------------------------------
+Tue Mar  1 17:44:11 UTC 2016 - jmatejek@suse.com
+
+- update no-default-cacert.patch to simply pass empty CA path
+- urllib3-ssl-default-context.patch: patch bundled urllib3 to behave
+  correctly with regard to empty CA path passed
+- change urllib3 fallback requirements to Recommends
+- use ca-certificates in SLE as well
+- recommend ca-certificates-mozilla to have a basic certificate set
+
+-------------------------------------------------------------------
+Wed Feb 17 14:47:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 2.9.1 (changes since 2.8.1):
+  * The verify keyword argument now supports being passed a path to
+    a directory of CA certificates, not just a single-file bundle.
+  * Warnings are now emitted when sending files opened in text mode.
+  * Added the 511 Network Authentication Required status code to the
+    status code registry.
+  * For file-like objects that are not seeked to the very beginning,
+    we now send the content length for the number of bytes we will
+    actually read, rather than the total size of the file, allowing
+    partial file uploads.
+  * When uploading file-like objects, if they are empty or have no
+    obvious content length we set Transfer-Encoding: chunked rather
+    than Content-Length: 0.
+  * We correctly receive the response in buffered mode when
+    uploading chunked bodies.
+  * We now handle being passed a query string as a bytestring on
+    Python 3, by decoding it as UTF-8.
+  * Sessions are now closed in all cases (exceptional and not) when
+    using the functional API rather than leaking and waiting for
+    the garbage collector to clean them up.
+  * Correctly handle digest auth headers with a malformed qop
+    directive that contains no token, by treating it the same as if
+    no qop directive was provided at all.
+  * Minor performance improvements when removing specific cookies
+    by name.
+  * Fix errors when calculating cookie expiration dates in certain
+    locales.
+  * Update bundled urllib3 to 1.13.1.
+- Rebase no-default-cacert.patch.
+- Modify no-default-cacert.patch: output /etc/ssl/ca-bundle.pem
+  instead of neither NULL nor /etc/ssl/certs/ as a path to cacerts
+  bundle (boo#967128).
+- Don't apply no-default-cacert.patch on SLE.
+- Require ca-certificates package (but not on SLE).
+- Tests are being improperly started and actual ones require
+  network connection, so fix and comment out.
+
+-------------------------------------------------------------------
+Thu Dec 17 13:45:59 UTC 2015 - rjschwei@suse.com
+
+- Modify no-default-cacert
+  + The call to set_default_verify_paths() is not necessary. The openSUSE
+    and SLES Python has been patched to always use the system certs.
+    Additionally this call breaks the use of python-requests on older systems,
+    openSUSE_13.2 and original release of SLES 12 which fall back to
+    the built in implementation of ssl which doe not implement
+    this method
+
+-------------------------------------------------------------------
+Wed Oct 21 21:08:29 UTC 2015 - dmueller@suse.com
+
+- update to 2.8.1:
+  - Update certificate bundle to match ``certifi`` 2015.9.6.2's weak certificate
+    bundle.
+  - Fix a bug in 2.8.0 where requests would raise ``ConnectTimeout`` instead of
+    ``ConnectionError``
+  - When using the PreparedRequest flow, requests will now correctly respect the
+    ``json`` parameter. Broken in 2.8.0.
+  - When using the PreparedRequest flow, requests will now correctly handle a
+    Unicode-string method name on Python 2. Broken in 2.8.0.
+
+-------------------------------------------------------------------
+Wed Oct 21 20:49:30 UTC 2015 - dmueller@suse.com
+
+- remove requests-do-not-use-bundle.patch (bsc#947357)
+
+-------------------------------------------------------------------
+Wed Oct 21 08:00:52 UTC 2015 - dmueller@suse.com
+
+- fix requires
+
+-------------------------------------------------------------------
+Wed Oct 14 19:24:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Add python3-chardet to build requirements for tests.
+- Remove no-default-cacert-sles.patch as no-default-cacert.patch
+  does basically the same.
+
+-------------------------------------------------------------------
+Fri Oct  9 19:11:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.8.0:
+  * Requests now supports per-host proxies. This allows the proxies
+    dictionary to have entries of the form {'<scheme>://<hostname>':
+    '<proxy>'}. Host-specific proxies will be used in preference to
+    the previously-supported scheme-specific ones, but the previous
+    syntax will continue to work.
+  * Response.raise_for_status now prints the URL that failed as
+    part of the exception message.
+  * requests.utils.get_netrc_auth now takes an raise_errors kwarg,
+    defaulting to False. When True, errors parsing .netrc files
+    cause exceptions to be thrown.
+  * Change to bundled projects import logic to make it easier to
+    unbundle requests downstream.
+  * Change the default User-Agent string to avoid leaking data on
+    Linux: now contains only the requests version.
+  * The json parameter to post() and friends will now only be used
+    if neither data nor files are present, consistent with the
+    documentation.
+  * We now ignore empty fields in the NO_PROXY enviroment variable.
+  * Fix problem where httplib.BadStatusLine would get raised if
+    combining stream=True with contextlib.closing.
+  * Prevent bugs where we would attempt to return the same connection
+    back to the connection pool twice when sending a Chunked body.
+  * Miscellaneous minor internal changes.
+  * Digest Auth support is now thread safe.
+- Apply no-default-cacert-sles.patch on SLE 12.
+- Apply Arun Persaud's changes to requests-do-not-use-bundle.patch
+  (update to 2.8.0).
+- Enable tests.
+- Small spec cleanup.
+
+-------------------------------------------------------------------
+Tue Oct  6 17:48:20 UTC 2015 - aloisio@gmx.com
+
+- Fixed requests-do-not-use-bundle.patch 
+
+-------------------------------------------------------------------
+Mon Oct  5 17:18:43 UTC 2015 - p.drouand@gmail.com
+
+- Unbundle python-chardet and python-urllib3 (boo#947357)
+  requests-do-not-use-bundle.patch 
+
+-------------------------------------------------------------------
+Mon Sep 14 07:48:30 UTC 2015 - tbechtold@suse.com
+
+- Disable testsuite. Tests were never executed (bsc#945455) but
+  enabling the testsuite doesn't work because the suite needs
+  network access.
+
+-------------------------------------------------------------------
+Fri Jul 24 14:45:44 UTC 2015 - seife+obs@b1-systems.com
+
+- fix version condition to allow RHEL/CentOS 7 builds
+
+-------------------------------------------------------------------
+Fri Jul 24 08:52:50 UTC 2015 - hvogel@suse.com
+
+- Update to 2.7.0
+  - resolving several bugs involving chunked transfer
+    encoding and response framing.
+  - Remove VendorAlias import
+  - Simplify the PreparedRequest.prepare API
+  - Handle UnicodeDecodeErrors
+  - Copy a PreparedRequest's CookieJar more reliably
+
+-------------------------------------------------------------------
+Tue Jun 30 08:39:24 UTC 2015 - lnussel@suse.de
+
+- update no-default-cacert.patch to not hardcode a ca cert location
+
+-------------------------------------------------------------------
+Mon Apr 20 12:25:21 UTC 2015 - mcihar@suse.cz
+
+- Update to 2.6.0 (bsc#922448, CVE-2015-2296):
+  - Fix handling of cookies on redirect. Previously a cookie without a host
+    value set would use the hostname for the redirected URL exposing requests
+    users to session fixation attacks and potentially cookie stealing. This was
+    disclosed privately by Matthew Daley of `BugFuzz <https://bugfuzz.com>`_.
+    An CVE identifier has not yet been assigned for this. This affects all
+    versions of requests from v2.1.0 to v2.5.3 (inclusive on both ends).
+  - Fix error when requests is an ``install_requires`` dependency and ``python
+    setup.py test`` is run. (#2462)
+  - Fix error when urllib3 is unbundled and requests continues to use the
+    vendored import location.
+  - Include fixes to ``urllib3``'s header handling.
+  - Requests' handling of unvendored dependencies is now more restrictive.
+  - Support bytearrays when passed as parameters in the ``files`` argument.
+    (#2468)
+  - Avoid data duplication when creating a request with ``str``, ``bytes``, or
+    ``bytearray`` input to the ``files`` argument.
+  - Revert changes to our vendored certificate bundle. For more context see
+    (#2455, #2456, and http://bugs.python.org/issue23476)
+
+-------------------------------------------------------------------
+Tue Feb 24 13:04:17 UTC 2015 - tbechtold@suse.com
+
+- update to 2.5.2 (bsc#929736):
+  * Update HISTORY and version for v2.5.2
+  * Update urllib3 to 29aa09bde9c42cc9a8d79aac47ee3d362b438cca
+  * document combination of repeated response headers
+  * Update README to use Shields badges
+  * Upgrade urllib3 to 490d3a227fadb626cd54a240b9d0922f849914b4
+  * Update certificate bundle.
+  * Update to use readthedocs.org instead of rtfd.org
+  * add a timeout value to connection_error_invalid_port test to accelerate
+    failure
+  * split test_connection_error into two distinct tests, and changed
+    "unknown url" test URL since fooobarbangbazbing.httpbin.org currently gives
+    a valid response.
+  * quickstart: using a list as a value in query params
+  * HISTORY: replace n-dash to workaround pip bug
+  * Check that a filename is a basestring instance
+  * Move noncebit to the only place it is used
+  * Remove entirely unnecessary and unused bits from requests.compat
+  * Attempt to quote anyway if unquoting fails
+  * Update urllib3 to a27758625e4169330fcf965652b1093faf5aaaa2
+  * drawn towards it rather than pushed away
+  * certifi
+  * simpler button
+  * cleanups
+  * Requests Pro
+  * javascripts
+  * Changing year in all copyright information
+  * Enhance documentation for clarity.
+  * Clean up cookie docs and display them.
+  * Bump version to 2.5.1
+  * Add release notes for 2.5.1
+  * Fix bug in renegotiating a nonce with the server
+  * Fix error handling on Python 3
+  * catch exception more specifically in Response.ok
+  * Uncommented test in test_requests.py
+  * Fix a typo in a comment
+  * Give proper attribution to pip
+  * utils.guess_filename fails if the given parameter looks like a file object
+    but has a non-string name attribute
+  * Copy pip's import machinery wholesale
+  * Updated the broken link to twitter streaming API documentation
+  * Enable GitHub syntax highlighting on README
+  * Bump version to 2.5.0
+  * Add updates for 2.5.0
+  * Update tests to work offline
+  * updatee chardet, urllib3
+  * url was already parsed, don't urlparse twice
+  * Properly serialize RecentlyUsedContainers for cache
+  * Changed ConnectionError to InvalidURL
+  * Docs: Add more section labels for referencing
+  * Partially addresses Issue #1572
+  * Update HTTPAdapter docstring
+  * Add last few changes and add a quick test
+  * Update urllib3 to df4ec5cce1
+  * Update how we handle retries to be consistent with documentation
+  * Fix HTTPDigestAuth not to treat non-file as a file
+  * Fixed.
+  * Added test for overriding Content-Length.
+  * Close sessions created in the functional API
+  * Pass strict to urllib3.
+  * Use to_native_string instead of builtin_str
+  * Update documentation about max_retries to reflect code
+  * Cap the redirect_cache size to prevent memory abuse
+  * Add DeprecationWarnings to inform users of plans
+  * Note about read timeout errors and max_retries
+  * fix failing test "test_prepare_unicode_url" \(take 3\)
+  * Revert "fix failing test "test_prepare_unicode_url""
+  * fix failing test "test_prepare_unicode_url"
+  * Revert "fix failing test "test_prepare_unicode_url""
+  * update AUTHORS
+  * fix failing test "test_prepare_unicode_url"
+  * Changing parameter name `newline` ==> `delimiter`.
+  * Clean up handle_redirect.
+  * Adding a custom line delimiter to iter_lines()
+  * Fix #2279. Update layout css
+  * Fix #2288. Change urllib3 and chardet workflow
+  * Update sidebarintro.html
+  * Made more better
+  * Add Release History to the sidebar
+  * Fixed #2250
+  * Update utils.py
+  * Clean up, support all redirects, fix potential endless 401 loop.
+  * v2.4.3
+  * Re-order params for backwards compat
+  * allow unicode URLs on Python 2
+  * requests v2.4.2
+  * fix documentation for utils.get_unicode_from_response() :)
+  * v2.4.2 changelog
+  * Remove timeout from __attrs__
+  * Fix a couple of issues I noticed
+  * Support bytestring URLs on Python 3.x
+  * A fix for #1979 repeat HTTP digest authentication after redirect.
+  * remove unused import
+  * fix #2247
+  * docs: Clarify how to pass a custom set of CAs
+  * Correct redirection introduction
+  * Avoid getting stuck in a loop
+  * make StreamConsumedError doubly inherit
+  * using the `StreamConsumedError`
+  * add-in StreamConsumedError
+  * rm `else` after `if` then `raise` block
+  * raise RuntimeError when a single streamed request calls *iter methods
+    than once
+  * Remove invoke from requirements.txt, docs
+  * Fixup the remaining references to timeline.json.
+  * Moved multiple files upload example to advanced section.
+  * Added example of how to send multiple files in one request.
+  * Document skipping in PreparedRequest; followup to #2222
+  * Add more tests to `test_invalid_url`
+  * lawl
+  * mils
+  * Fixes typo in test
+  * Changes check on base and json. Fails on tests.
+  * Adds review changes
+  * Adds json parameter for POST requests
+
+-------------------------------------------------------------------
+Mon Dec  1 12:05:19 UTC 2014 - dmueller@suse.com
+
+- fix license (Apache-2.0 only) 
+
+-------------------------------------------------------------------
+Thu Sep 11 12:34:42 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 2.4.1 (2014-09-09)
+  - Now has a "security" package extras set, 
+    ``$ pip install requests[security]``
+  - Requests will now use Certifi if it is available.
+  - Capture and re-raise urllib3 ProtocolError
+  - Bugfix for responses that attempt to redirect to themselves 
+    forever (wtf?).
+- Update to 2.4.0 (2014-08-29)
+  * Behavioral Changes
+    - ``Connection: keep-alive`` header is now sent automatically.
+  * Improvements
+    - Support for connect timeouts! Timeout now accepts a tuple 
+      (connect, read) which is used to set individual connect and 
+      read timeouts.
+    - Allow copying of PreparedRequests without headers/cookies.
+    - Updated bundled urllib3 version.
+    - Refactored settings loading from environment
+      new `Session.merge_environment_settings`.
+    - Handle socket errors in iter_content.
+
+-------------------------------------------------------------------
+Sat Jun 14 10:56:52 UTC 2014 - tchvatal@suse.com
+
+- Update tarball to the one upstream is publishing.
+
+-------------------------------------------------------------------
+Thu Jun  5 19:40:21 UTC 2014 - rschweikert@suse.com
+
+- Update to version 2.3.0
+  + New ``Response`` property ``is_redirect``, which is true when the
+    library could have processed this response as a redirection (whether
+    or not it actually did).
+  + The ``timeout`` parameter now affects requests with both ``stream=True``
+    and ``stream=False`` equally.
+  + The change in v2.0.0 to mandate explicit proxy schemes has been reverted.
+    Proxy schemes now default to ``http://``.
+  + The ``CaseInsensitiveDict`` used for HTTP headers now behaves like a normal
+    dictionary when references as string or viewd in the interpreter.
+  + No longer expose Authorization or Proxy-Authorization headers on redirect.
+    Fix CVE-2014-1829 and CVE-2014-1830 respectively.
+  + Authorization is re-evaluated each redirect.
+  + On redirect, pass url as native strings.
+  + Fall-back to autodetected encoding for JSON when Unicode detection fails.
+  + Headers set to ``None`` on the ``Session`` are now correctly not sent.
+  + Correctly honor ``decode_unicode`` even if it wasn't used earlier in the
+    same response.
+  + Stop advertising ``compress`` as a supported Content-Encoding.
+  + The ``Response.history`` parameter is now always a list.
+  + Many, many ``urllib3`` bugfixes.- Fixes incorrect parsing of proxy
+    credentials that contain a literal or encoded '#' character.
+  + Assorted urllib3 fixes.
+  + New exception: ``ContentDecodingError``. Raised instead of ``urllib3``
+    ``DecodeError`` exceptions.
+  + Avoid many many exceptions from the buggy implementation of
+    ``proxy_bypass`` on OS X in Python 2.6.
+  + Avoid crashing when attempting to get authentication credentials
+    from ~/.netrc when running as a user without a home directory.
+  + Use the correct pool size for pools of connections to proxies.
+  + Fix iteration of ``CookieJar`` objects.
+  + Ensure that cookies are persisted over redirect.
+  + Switch back to using chardet, since it has merged with charade.
+  + Cookies set on individual Requests through a ``Session``
+    (e.g. via ``Session.get()``) are no longer persisted to the ``Session``.
+  + Clean up connections when we hit problems during chunked upload,
+    rather than leaking them.
+  + Return connections to the pool when a chunked upload is successful,
+    rather than leaking it.
+  + Match the HTTPbis recommendation for HTTP 301 redirects.
+  + Prevent hanging when using streaming uploads and Digest Auth when a
+    401 is received.
+  + Values of headers set by Requests are now always the native string type.
+  + Fix previously broken SNI support.
+  + Fix accessing HTTP proxies using proxy authentication.
+  + Unencode HTTP Basic usernames and passwords extracted from URLs.
+  + Support for IP address ranges for no_proxy environment variable
+  + Parse headers correctly when users override the default ``Host:`` header.
+  + Avoid munging the URL in case of case-sensitive servers.
+  + Looser URL handling for non-HTTP/HTTPS urls.
+  + Accept unicode methods in Python 2.6 and 2.7.
+  + More resilient cookie handling.
+  + Make ``Response`` objects pickleable.
+  + Actually added MD5-sess to Digest Auth instead of pretending to like
+    last time.
+  + Updated internal urllib3.
+  + Fixed @Lukasa's lack of taste.
+
+-------------------------------------------------------------------
+Mon Dec  9 15:27:58 UTC 2013 - vuntz@suse.com
+
+- Add no-default-cacert-sles.patch: use this patch when building
+  for SLES, since python in SLES and openSUSE behave differently
+  when it comes to SSL, and no-default-cacert.patch is wrong for
+  SLES.
+
+-------------------------------------------------------------------
+Thu Nov  7 10:07:58 UTC 2013 - mcihar@suse.cz
+
+- update to 2.0.1
+- changes in 2.0.1:
+ - Updated included CA Bundle with new mistrusts and automated process for the future
+ - Added MD5-sess to Digest Auth
+ - Accept per-file headers in multipart file POST messages.
+ - Fixed: Don't send the full URL on CONNECT messages.
+ - Fixed: Correctly lowercase a redirect scheme.
+ - Fixed: Cookies not persisted when set via functional API.
+ - Fixed: Translate urllib3 ProxyError into a requests ProxyError derived from ConnectionError.
+ - Updated internal urllib3 and chardet.
+- changes in 2.0.0:
+ - Keys in the Headers dictionary are now native strings on all Python versions,
+   i.e. bytestrings on Python 2, unicode on Python 3.
+ - Proxy URLs now *must* have an explicit scheme. A ``MissingSchema`` exception
+   will be raised if they don't.
+ - Timeouts now apply to read time if ``Stream=False``.
+ - ``RequestException`` is now a subclass of ``IOError``, not ``RuntimeError``.
+ - Added new method to ``PreparedRequest`` objects: ``PreparedRequest.copy()``.
+ - Added new method to ``Session`` objects: ``Session.update_request()``. This
+   method updates a ``Request`` object with the data (e.g. cookies) stored on
+   the ``Session``.
+ - Added new method to ``Session`` objects: ``Session.prepare_request()``. This
+   method updates and prepares a ``Request`` object, and returns the
+   corresponding ``PreparedRequest`` object.
+ - Added new method to ``HTTPAdapter`` objects: ``HTTPAdapter.proxy_headers()``.
+   This should not be called directly, but improves the subclass interface.
+ - ``httplib.IncompleteRead`` exceptions caused by incorrect chunked encoding
+   will now raise a Requests ``ChunkedEncodingError`` instead.
+ - Invalid percent-escape sequences now cause a Requests ``InvalidURL``
+   exception to be raised.
+ - HTTP 208 no longer uses reason phrase ``"im_used"``. Correctly uses
+   ``"already_reported"``.
+ - HTTP 226 reason added (``"im_used"``).
+ - Vastly improved proxy support, including the CONNECT verb. Special thanks to
+   the many contributors who worked towards this improvement.
+ - Cookies are now properly managed when 401 authentication responses are
+   received.
+ - Chunked encoding fixes.
+ - Support for mixed case schemes.
+ - Better handling of streaming downloads.
+ - Retrieve environment proxies from more locations.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:13:26 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu Jul 25 11:40:02 UTC 2013 - vuntz@suse.com
+
+- Add no-default-cacert.patch: completely ignore the internal CA
+  bundle and point to /etc/ssl/certs/. This works because we
+  patched python to do the right thing when a directory is used
+  there instead of a file.
+- Manually remove requests/cacert.pem (better than doing that in
+  the patch, since it's big) too.
+
+-------------------------------------------------------------------
+Mon May 27 10:36:36 UTC 2013 - dmueller@suse.com
+
+- update to 1.2.3:
+ * Python 3.3.2 compatibility
+ * Always percent-encode location headers
+ * Fix connection adapter matching to be most-specific first
+ * new argument to the default connection adapter for passing a block argument
+ * prevent a KeyError when there's no link headers
+
+-------------------------------------------------------------------
+Mon May 13 08:57:09 UTC 2013 - dmueller@suse.com
+
+- update to 1.2.0: 
+ * Fixed cookies on sessions and on requests
+ * Significantly change how hooks are dispatched - hooks now receive all the
+  arguments specified by the user when making a request so hooks can make a
+  secondary request with the same parameters. This is especially necessary for
+  authentication handler authors
+ * certifi support was removed
+ * Fixed bug where using OAuth 1 with body ``signature_type`` sent no data
+ * Major proxy work thanks to @Lukasa including parsing of proxy authentication
+  from the proxy url
+ * Fix DigestAuth handling too many 401s
+ * Update vendored urllib3 to include SSL bug fixes
+ * Allow keyword arguments to be passed to ``json.loads()`` via the
+  ``Response.json()`` method
+ * Don't send ``Content-Length`` header by default on ``GET`` or ``HEAD``
+   requests
+ * Add ``elapsed`` attribute to ``Response`` objects to time how long a request
+   took.
+ * Fix ``RequestsCookieJar``
+ * Sessions and Adapters are now picklable, i.e., can be used with the
+  mutiprocessing library
+  Update charade to version 1.0.3
+
+-------------------------------------------------------------------
+Fri Jan 18 08:31:22 UTC 2013 - saschpe@suse.de
+
+- Set license to "Apache-2.0 and LGPL-2.1+ and MIT", according to
+  https://github.com/kennethreitz/requests/issues/1111, the base
+  license is Apache-2.0 but requests ships two libraries (bnc#799119):
+  + charade: LGPL-2.1+ 
+  + urllib3: MIT
+
+-------------------------------------------------------------------
+Tue Jan 15 19:37:18 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Tue Jan 15 19:34:53 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.1.0:
+  * CHUNKED REQUESTS
+  * Support for iterable response bodies
+  * Assume servers persist redirect params
+  * Allow explicit content types to be specified for file data
+  * Make merge_kwargs case-insensitive when looking up keys
+
+-------------------------------------------------------------------
+Tue Nov 13 22:04:33 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.14.2:
+  * Improved mime-compatible JSON handling
+  * Proxy fixes
+  * Path hack fixes
+  * Case-Insensistive Content-Encoding headers
+  * Support for CJK parameters in form posts
+
+-------------------------------------------------------------------
+Tue Oct 16 18:55:20 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.14.1:
+  * Python 3.3 Compatibility
+  * Simply default accept-encoding
+  * Bugfixes
+- 0.14.0 (2012-09-02)
+  * No more iter_content errors if already downloaded.
+- 0.13.9 (2012-08-25)
+  * Fix for OAuth + POSTs
+  * Remove exception eating from dispatch_hook
+  * General bugfixes
+- 0.13.8 (2012-08-21)
+  * Incredible Link header support :)
+- 0.13.7 (2012-08-19)
+  * Support for (key, value) lists everywhere.
+  * Digest Authentication improvements.
+  * Ensure proxy exclusions work properly.
+  * Clearer UnicodeError exceptions.
+  * Automatic casting of URLs to tsrings (fURL and such)
+  * Bugfixes.
+- 0.13.6 (2012-08-06)
+  * Long awaited fix for hanging connections!
+- 0.13.5 (2012-07-27)
+  * Packaging fix
+- 0.13.4 (2012-07-27)
+  * GSSAPI/Kerberos authentication!
+  * App Engine 2.7 Fixes!
+  * Fix leaking connections (from urllib3 update)
+  * OAuthlib path hack fix
+  * OAuthlib URL parameters fix.
+- 0.13.3 (2012-07-12)
+  * Use simplejson if available.
+  * Do not hide SSLErrors behind Timeouts.
+  * Fixed param handling with urls containing fragments.
+  * Significantly improved information in User Agent.
+  * client certificates are ignored when verify=False
+- 0.13.2 (2012-06-28)
+  * Zero dependencies (once again)!
+  * New: Response.reason
+  * Sign querystring parameters in OAuth 1.0
+  * Client certificates no longer ignored when verify=False
+  * Add openSUSE certificate support
+- Removed certificate patch since it's now upstream
+- Removed dependencies that are no longer needed
+
+-------------------------------------------------------------------
+Wed May 30 09:11:50 UTC 2012 - saschpe@suse.de
+
+- Update to 0.13.1:
+  + Removal of Requests.async in favor of grequests
+  + Allow disabling of cookie persistiance.
+  + New implimentation of safe_mode
+  + cookies.get now supports default argument
+  + Session cookies not saved when Session.request is called with return_response=False
+  + Env: no_proxy support.
+  + RequestsCookieJar improvements.
+  + Various bug fixes.
+- Rebased patches
+
+-------------------------------------------------------------------
+Wed May 23 12:09:35 UTC 2012 - saschpe@suse.de
+
+- Use a slightly different approach for bnc#761500, try to use /etc/ssl/certs
+  but use /etc/ssl/ca-bundle.pem as a fallback. The previous fix didn't work
+  for me as (my) Python ssl module doesn't support cert directories...
+- No need to check SUSE versions for python-certifi, it only is/was
+  part of openSUSE:Factory for a brief period of time
+
+-------------------------------------------------------------------
+Sun May 20 17:44:57 UTC 2012 - jfunk@funktronics.ca
+
+- Load directory-based cert store in openSUSE >= 12.2
+
+-------------------------------------------------------------------
+Fri May 18 00:41:52 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.12.1
+  * New Response.json property
+  * Ability to add string file uploads
+  * Fix out-of-range issue with iter_lines
+  * Fix iter_content default size
+  * Fix POST redirects containing files
+- 0.12.0 (2012-05-02)
+  * EXPERIMENTAL OAUTH SUPPORT!
+  * Proper CookieJar-backed cookies interface with awesome dict-like interface.
+  * Speed fix for non-iterated content chunks.
+  * Move pre_request to a more usable place.
+  * New pre_send hook.
+  * Lazily encode data, params, files
+  * Load system Certificate Bundle if certify isn't available.
+  * Cleanups, fixes.
+- Add python-chardet and python-oauthlib requirements
+- Run test suite (added python-distribute build requirement to enable)
+
+-------------------------------------------------------------------
+Fri Apr 27 22:57:43 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.11.2
+  * Attempt to use the OS's certificate bundle if certifi isn't available.
+  * Infinite digest auth redirect fix
+  * Multi-part file upload improvements
+  * Fix decoding of invalid %encodings in URLs
+  * If there is no content in a response don't throw an error the second time
+    that content is attempted to be read.
+  * Upload data on redirects.
+
+-------------------------------------------------------------------
+Fri Apr  6 19:08:40 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.11.1:
+  * POST redirects now break RFC to do what browsers do: Follow up with a GET.
+  * New strict_mode configuration to disable new redirect behavior.
+- 0.11.0 (2012-03-14)
+  * Private SSL Certificate support
+  * Remove select.poll from Gevent monkeypatching
+  * Remove redundant generator for chunked transfer encoding
+  * Fix: Response.ok raises Timeout Exception in safe_mode
+
+-------------------------------------------------------------------
+Sat Mar 10 14:11:23 UTC 2012 - saschpe@gmx.de
+
+- Update to version 0.10.8:
+  * Generate chunked ValueError fix
+  * Proxy configuration by environment variables
+  * Simplification of iter_lines.
+  * New trust_env configuration for disabling system/environment hints.
+  * Suppress cookie errors.
+- Changes from version 0.10.7:
+  * encode_uri = False
+
+-------------------------------------------------------------------
+Tue Feb 28 18:06:45 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.10.6
+  * Allow '=' in cookies.
+- 0.10.5 (2012-02-25)
+  * Response body with 0 content-length fix.
+  * New async.imap.
+  * Don't fail on netrc.
+
+-------------------------------------------------------------------
+Tue Feb 21 19:52:04 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.10.4
+  * Honor netrc.
+- 0.10.3 (2012-02-20)
+  * HEAD requests don't follow redirects anymore.
+  * raise_for_status() doesn't raise for 3xx anymore.
+  * Make Session objects picklable.
+  * ValueError for invalid schema URLs.
+- 0.10.2 (2012-01-15)
+  * Vastly improved URL quoting.
+  * Additional allowed cookie key values.
+  * Attempted fix for "Too many open files" Error
+  * Replace unicode errors on first pass, no need for second pass.
+  * Append '/' to bare-domain urls before query insertion.
+  * Exceptions now inherit from RuntimeError.
+  * Binary uploads + auth fix.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Mon Feb  6 13:41:55 UTC 2012 - saschpe@suse.de
+
+- Add dependency on python-certifi
+
+-------------------------------------------------------------------
+Tue Jan 24 21:31:14 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.10.1:
+  * PYTHON 3 SUPPORT!
+  * Dropped 2.5 Support. (Backwards Incompatible)
+- 0.10.0 (2012-01-21)
+  * Response.content is now bytes-only. (Backwards Incompatible)
+  * New Response.text is unicode-only.
+  * If no Response.encoding is specified and chardet is available,
+    Respoonse.text will guess an encoding.
+  * Default to ISO-8859-1 (Western) encoding for "text" subtypes.
+  * Removal of decode_unicode. (Backwards Incompatible)
+  * New multiple-hooks system.
+  * New Response.register_hook for registering hooks within the pipeline.
+  * Response.url is now Unicode.
+
+-------------------------------------------------------------------
+Thu Jan 19 19:33:21 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.9.3:
+  * SSL verify=False bugfix (apparent on windows machines).
+- 0.9.2 (2012-01-18)
+  * Asyncronous async.send method.
+  * Support for proper chunk streams with boundaries.
+  * session argument for Session classes.
+  * Print entire hook tracebacks, not just exception instance.
+  * Fix response.iter_lines from pending next line.
+  * Fix but in HTTP-digest auth w/ URI having query strings.
+  * Fix in Event Hooks section.
+  * Urllib3 update.
+
+-------------------------------------------------------------------
+Thu Jan 12 22:05:35 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 0.9.1:
+  * danger_mode for automatic Response.raise_for_status()
+  * Response.iter_lines refator
+- 0.9.0 (2011-12-28)
+  * verify ssl is default.
+- 0.8.9 (2011-12-28)
+  * Packaging fix.
+- 0.8.8 (2011-12-28)
+  * SSL CERT VERIFICATION!
+  * Release of Cerifi: Mozilla's cert list.
+  * New 'verify' argument for SSL requests.
+  * Urllib3 update.
+- 0.8.7 (2011-12-24)
+  * iter_lines last-line truncation fix
+  * Force safe_mode for async requests
+  * Handle safe_mode exceptions more consistently
+  * Fix iteration on null responses in safe_mode
+- 0.8.6 (2011-12-18)
+  * Socket timeout fixes.
+  * Proxy Authorization support.
+- 0.8.5 (2011-12-14)
+  * Response.iter_lines!
+
+-------------------------------------------------------------------
+Sun Dec 11 20:45:14 UTC 2011 - jfunk@funktronics.ca
+
+- Update to 0.8.4:
+  * Prefetch bugfix.
+  * Added license to installed version.
+
+-------------------------------------------------------------------
+Sun Nov 27 20:38:47 UTC 2011 - jfunk@funktronics.ca
+
+- Update to 0.8.3
+  * Converted auth system to use simpler callable objects.
+  * New session parameter to API methods.
+  * Display full URL while logging.
+
+-------------------------------------------------------------------
+Sun Nov 27 08:54:32 UTC 2011 - jfunk@funktronics.ca
+
+- Update to 0.8.2
+  * New unicode decoding system, based on overridable Response.encoding.
+  * Proper URL slash-quote handling.
+  * Cookies with [, ], and _ allowed.
+- 0.8.1 (2011-11-15)
+  * URL Request path fix
+  * Proxy fix.
+  * Timeouts fix.
+- 0.8.0 (2011-11-13)
+  * Keep-alive support!
+  * Complete removal of Urllib2
+  * Complete removal of Poster
+  * Complete removal of CookieJars
+  * New ConnectionError raising
+  * Safe_mode for error catching
+  * prefetch parameter for request methods
+  * OPTION method
+  * Async pool size throttling
+  * File uploads send real names
+- 0.7.6 (2011-11-07)
+  * Digest authentication bugfix (attach query data to path)
+- 0.7.5 (2011-11-04)
+  * Response.content = None if there was an invalid repsonse.
+  * Redirection auth handling.
+- 0.7.4 (2011-10-26)
+  * Sesion Hooks fix.
+- 0.7.3 (2011-10-23)
+  * Digest Auth fix.
+- 0.7.2 (2011-10-23)
+  * PATCH Fix.
+- 0.7.1 (2011-10-23)
+  * Move away from urllib2 authentication handling.
+  * Fully Remove AuthManager, AuthObject, &c.
+  * New tuple-based auth system with handler callbacks.
+- 0.7.0 (2011-10-22)
+  * Sessions are now the primary interface.
+  * Deprecated InvalidMethodException.
+  * PATCH fix.
+  * New config system (no more global settings).
+- 0.6.6 (2011-10-19)
+  * Session parameter bugfix (params merging).
+- 0.6.5 (2011-10-18)
+  * Offline (fast) test suite.
+  * Session dictionary argument merging.
+- 0.6.4 (2011-10-13)
+  * Automatic decoding of unicode, based on HTTP Headers.
+  * New decode_unicode setting.
+  * Removal of r.read/close methods.
+  * New r.faw interface for advanced response usage.*
+  * Automatic expansion of parameterized headers.
+- 0.6.3 (2011-10-13)
+  * Beautiful requests.async module, for making async requests w/ gevent.
+- 0.6.2 (2011-10-09)
+  * GET/HEAD obeys allow_redirects=False.
+
+-------------------------------------------------------------------
+Fri Sep 23 12:08:32 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.6.1:
+  * Enhanced status codes experience ``\o/``
+  * Set a maximum number of redirects (``settings.max_redirects``)
+  * Full Unicode URL support
+  * Support for protocol-less redirects.
+  * Allow for arbitrary request types.
+  * Bugfixes
+- Changes from version 0.6.0:
+  * New callback hook system
+  * New persistient sessions object and context manager
+  * Transparent Dict-cookie handling
+  * Status code reference object
+  * Removed Response.cached
+  * Added Response.request
+  * All args are kwargs
+  * Relative redirect support
+  * HTTPError handling improvements
+  * Improved https testing
+  * Bugfixes
+
+-------------------------------------------------------------------
+Wed Jun 22 17:18:17 UTC 2011 - jfunk@funktronics.ca
+
+- Update to 0.5.0
+  - PATCH Support
+  - Support for Proxies
+  - HTTPBin Test Suite
+  - Redirect Fixes
+  - settings.verbose stream writing
+  - Querystrings for all methods
+  - URLErrors (Connection Refused, Timeout, Invalid URLs) are treated as
+    explicity raised r.requests.get('hwe://blah'); r.raise_for_status()
+- 0.4.1 (2011-05-22)
+  - Improved Redirection Handling
+  - New 'allow_redirects' param for following non-GET/HEAD Redirects
+  - Settings module refactoring
+
+-------------------------------------------------------------------
+Fri May 20 19:11:29 UTC 2011 - jfunk@funktronics.ca
+
+- Initial release
+

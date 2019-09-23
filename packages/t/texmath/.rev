@@ -1,0 +1,321 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed7ccece39421ddbc33581e1ca5262cf</srcmd5>
+    <version>0.6.6</version>
+    <time>1396451965</time>
+    <user>coolo</user>
+    <comment>fixed license tag</comment>
+    <requestid>227801</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e178ed9bfa093d6d8d5975d2066c0047</srcmd5>
+    <version>0.6.6</version>
+    <time>1406869690</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243315</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e178ed9bfa093d6d8d5975d2066c0047</srcmd5>
+    <version>0.6.6</version>
+    <time>1409303487</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a8f2dac29087ec85224a1297230722e2</srcmd5>
+    <version>0.8.2</version>
+    <time>1432188832</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306440</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bcc2e76ff62b6c3349a04f727fc7a502</srcmd5>
+    <version>0.8.2.2</version>
+    <time>1436331593</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.2.2
+* Handle . after number with no following digits.
+* Handle bare hyphen in \text{...}. Closes jgm/pandoc#2274.
+* Support \ltimes and \rtimes in the TeX reader (Arata Mizuki).
+* Slightly more efficient number parser.</comment>
+    <requestid>315224</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef077bd1bf60b4a21594fd29dd364de0</srcmd5>
+    <version>0.8.3</version>
+    <time>1440743189</time>
+    <user>coolo</user>
+    <comment>- update to 0.8.3
+* Parse uppercase Greek letters as EIdentifier, not ESymbol Op.
+   This fixes handling of things like `$Lambda^1$`, particularly in omml.</comment>
+    <requestid>325734</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b2ac68acbcd5ae224383cfe2892d40f</srcmd5>
+    <version>0.8.4</version>
+    <time>1445288000</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.4</comment>
+    <requestid>339617</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fd79f79815deb44f9fda7c2ba1933411</srcmd5>
+    <version>0.8.4.1</version>
+    <time>1450856964</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.4.1
+* Fixed bold-italic in OMML.  Previously `\mathbfit` didn't work
+    properly in OMML output.
+* Ignore `\nonumber`.
+* Allow styling in `\operatorname` e.g. `\operatorname{\mathcal{L}}`.
+* Fixed bug in `supHide` and `subHide` for OMML.  This  led to little
+    empty boxes being displayed in integrals with subscripts but no
+    superscripts.
+* Implemented `\mod` as a math operator.  This doesn't capture all the
+    spacing subtleties of the amsmath version, but should be good enough
+    for most purposes.
+* Allow pandoc-types &lt; 1.17.
+* Improved symbol spacing in Pandoc output.
+    This change avoids putting space around binary symbols that
+    come at the beginning or end of a group, or appear on their
+    own.  It also avoids spacing on a binary symbol that follows
+    a Bin, Op, Rel, Open, or Punct atom, in accord with
+    TeXBook Appendix G.  We could go farther towards exactly
+    matching the TeXBook rules, but this simple change goes some of
+    the way.</comment>
+    <requestid>348706</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>18bce72372d8d8bde3a022abfa0e278c</srcmd5>
+    <version>0.8.4.2</version>
+    <time>1455701156</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.4.2
+* Fixed overbrace, underbrace.  Previously we were using the wrong
+    character: U+FE37 instead of U+23DE.  This didn't work in Word.
+* Support \mathop, \mathrel, \mathbin, \mathord
+* MathML - render Symbol Ord as mi, not mo.
+* Handle align environments with &amp;gt; 2 cells per row. (forwarded request 359356 from mimi_vx)</comment>
+    <requestid>359357</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dbb2e2854b81abee7c9f589f1f2e48fd</srcmd5>
+    <version>0.8.5</version>
+    <time>1459002368</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.5 
+* TeX parser: Support limited styling inside \DeclareMathOperator.
+* TeX reader: Correctly parse \mbox.  Its argument is text mode.
+* Updated mathml tests to use mo for operators.
+* TeX reader: support mathopen, mathclose, mathpunct.
+* MathML writer: render EMathOperator as mo, not mi.
+* MathML: handle leading space in EText.
+* Take --version in executable from cabal metadata.
+* Added Paths_texmath to other-modules. (forwarded request 377127 from mimi_vx)</comment>
+    <requestid>377130</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5b81704344c856233e4b1faad1d2ba3d</srcmd5>
+    <version>0.8.5.1</version>
+    <time>1459422168</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.5.1
+* OMML writer: Fixed order of elements in nary formulas to conform
+    to OMML spec (#88, Niko Weh).  `&amp;lt;e&amp;gt;` must follow the `&amp;lt;sup&amp;gt;` and `&amp;lt;sub&amp;gt;`
+    parts of `&amp;lt;nary&amp;gt;`. This fixes rendering issues in LibreOffice
+    (though Word copes with the incorrect order).
+* Added Paths_texmath to Other-Modules for texmath executable. (forwarded request 380955 from mimi_vx)</comment>
+    <requestid>380958</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d12fdcafb40108d824d77e1dac2bb415</srcmd5>
+    <version>0.8.6.1</version>
+    <time>1459717644</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.6.1
+* OMML writer:  Fixed rendering of roots, so that the degree appears
+    in the right place.
+* OMML writer:  Don't include empty rPr elements.
+
+- update to 0.8.6
+* TeX reader: Support hundreds more math symbols (all of those defined in 
+    Text.TeXMath.Unicode.ToTeX), including `\nwarrow`, `\swarrow`, `\nearrow`,
+    `\searrow`. (forwarded request 383475 from mimi_vx)</comment>
+    <requestid>383478</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0eabfdd248f56dd309984b237cc6734c</srcmd5>
+    <version>0.8.6.2</version>
+    <time>1462051839</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.6.2
+* Fixed array alignment issues
+* Use 1 and 0 for _Hide attributes, rather than on and off.
+* Fixed EUnderOver for omml output.  Previously both the under and
+    the over part were being placed under (forwarded request 391640 from mimi_vx)</comment>
+    <requestid>391641</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75d0f9795e563a9a209d954acf4da4aa</srcmd5>
+    <version>0.8.6.3</version>
+    <time>1464690305</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.6.3
+* Use POST instead of GET for texmath-cgi. (forwarded request 398891 from mimi_vx)</comment>
+    <requestid>398892</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f2aa9737c8a7bad76278b657fc0643eb</srcmd5>
+    <version>0.8.6.4</version>
+    <time>1467359990</time>
+    <user>dimstar_suse</user>
+    <comment>- remove texmath-rpmlintrc (forwarded request 405318 from mimi_vx)</comment>
+    <requestid>405319</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c67d56adca5d03ec8fec8a25d5258fe4</srcmd5>
+    <version>0.8.6.4</version>
+    <time>1469080893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411169</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ed4446af49f856865547c14cc4b3c8c3</srcmd5>
+    <version>0.8.6.5</version>
+    <time>1473103271</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421702 from psimons)</comment>
+    <requestid>421763</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95f28d647c6494aeae4385ba6b6f22a4</srcmd5>
+    <version>0.8.6.6</version>
+    <time>1477135403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.6.6 with cabal2obs. (forwarded request 436631 from mimi_vx)</comment>
+    <requestid>436637</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6fffe09ad11797594dec5bf49a463e82</srcmd5>
+    <version>0.8.6.7</version>
+    <time>1478377609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.6.7 with cabal2obs.</comment>
+    <requestid>438548</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>40b427a502ac67b61ee1df3731a50bbe</srcmd5>
+    <version>0.9.1</version>
+    <time>1488559992</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461709</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>09c5e0bb796a94850fc49a45043ca21b</srcmd5>
+    <version>0.9.4</version>
+    <time>1491896659</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485184</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fcb01223d96194904f6427d0dc977593</srcmd5>
+    <version>0.9.4.1</version>
+    <time>1501146749</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511524</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>7fa419d4e9898f6cb747fae8ef5f1f81</srcmd5>
+    <version>0.9.4.1</version>
+    <time>1505507422</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525806</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dfd7793b7a3db62c0ebb1f3341b35f51</srcmd5>
+    <version>0.11</version>
+    <time>1527674106</time>
+    <user>dimstar_suse</user>
+    <comment>Update texmath to the latest version.</comment>
+    <requestid>607965</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2854eee2b9937fc53e5e12561894b781</srcmd5>
+    <version>0.11.0.1</version>
+    <time>1532445827</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update texmath to version 0.11.0.1.
+  texmath (0.11.0.1)
+    * OMML writer: use zero-width space to avoid dashed box (#118).
+      In Word, a dashed box shows up for empty text runs in
+      exponents and bases, or empty exponents and bases.  So
+      we use a zero-width space in these contexts.
+
+- regenerate spec-file, fix ghc-texmath-devel requires
+* TeX reader: Support hundreds more math symbols (all of those defined in
+- update to 0.8.5
+- update to 0.8.4
+- Correct package License
+texmath changes:
+- needed for pandoc 1.12.2.1
+* drop dependency on ghc-utf8-string-devel
+- merge d:l:haskell changes
+- update to 0.6.4
+* fixed \overset, \underset, and \stackrel commands
+* added \Upsilon
+* fixes in various output formats (OMML, MML3, ...)
+- cabal2spec 0.25.5 spec file template
+- upgrade to 0.6.0.3 from upstream (for pandoc 1.9.1.2)</comment>
+    <requestid>623908</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d87b7d79d5c25f027312379d03564a89</srcmd5>
+    <version>0.11.1.1</version>
+    <time>1540448398</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642916</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4028c395fc1ec5726b74897de3a68fa</srcmd5>
+    <version>0.11.1.2</version>
+    <time>1541746417</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646372</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0c2c948b8f8dd7a95361fe85868fb749</srcmd5>
+    <version>0.11.2</version>
+    <time>1550402448</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674315</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>31a2cc178480101dc0844c5d5d88beca</srcmd5>
+    <version>0.11.2.1</version>
+    <time>1551883656</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>681691</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ec2ed3a0f3d89265b9f08addf7cef7f0</srcmd5>
+    <version>0.11.2.2</version>
+    <time>1552985990</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>686012</requestid>
+  </revision>
+</revisionlist>

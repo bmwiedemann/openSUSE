@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a517e6790930e515c779a1327401bbdc</srcmd5>
+    <version>1.01</version>
+    <time>1300455159</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64410 from user vitezslav_cizek
+</comment>
+    <requestid>64410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85301e5d79cd94ed4aaa23c2df4905cb</srcmd5>
+    <version>1.01</version>
+    <time>1300455172</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64410
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce4429b1c1297c3adef5fefedb4870b3</srcmd5>
+    <version>1.02</version>
+    <time>1301574044</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65643 from user coolo
+</comment>
+    <requestid>65643</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>542442ae1103e2a05743a52677f585cf</srcmd5>
+    <version>1.02</version>
+    <time>1301574056</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65643
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9b2add0b4964c83ce92e6daeffb33da1</srcmd5>
+    <version>1.02</version>
+    <time>1311607351</time>
+    <user>saschpe</user>
+    <comment>Fixed typos in description of perl-encode-locale.spec (forwarded request 76891 from aturrini)</comment>
+    <requestid>76978</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c65dde0715d6a6e8179625e210aa455b</srcmd5>
+    <version>1.02</version>
+    <time>1311607360</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76978
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>c65dde0715d6a6e8179625e210aa455b</srcmd5>
+    <version>1.02</version>
+    <time>1319182263</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>6fb1efe17f9aea3a00d5397fa1b785e2</srcmd5>
+    <version>1.02</version>
+    <time>1323193257</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7057df39c2f68d454781d51571142eb3</srcmd5>
+    <version>1.03</version>
+    <time>1329405707</time>
+    <user>coolo</user>
+    <comment>- updated to 1.03
+ Documentation spelling fixes and tweaks to improve testing on Windows.</comment>
+    <requestid>105201</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7057df39c2f68d454781d51571142eb3</srcmd5>
+    <version>1.03</version>
+    <time>1340183835</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7057df39c2f68d454781d51571142eb3</srcmd5>
+    <version>1.03</version>
+    <time>1359109656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>7057df39c2f68d454781d51571142eb3</srcmd5>
+    <version>1.03</version>
+    <time>1379663660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>7057df39c2f68d454781d51571142eb3</srcmd5>
+    <version>1.03</version>
+    <time>1409302271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>337b3f7307f4142d7299432c4efc6b79</srcmd5>
+    <version>1.04</version>
+    <time>1429657634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296628</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c337eb5e18f7b0c3590918e6b83298cc</srcmd5>
+    <version>1.05</version>
+    <time>1434383233</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312026</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d31da559dabc7c4034ea50f719f2bd82</srcmd5>
+    <version>1.2.0</version>
+    <time>1462342735</time>
+    <user>dimstar_suse</user>
+    <comment>Somehow usefull package (for licence informations see provided manpage)</comment>
+    <requestid>361994</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>154675ca357d578da67f675bc7054d9f</srcmd5>
+    <version>1.2.1</version>
+    <time>1490026179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1:
+  * Unit tests are available</comment>
+    <requestid>480677</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,37 @@
+# Commit 77a994f3f8eb0d3cb0f2bf314b0ebf6a1d37f623
+# Date 2019-08-20 14:24:05 +0100
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/p2m: fix non-translated handling of iommu mappings
+
+The current usage of need_iommu_pt_sync in p2m for non-translated
+guests is wrong because it doesn't correctly handle a relaxed PV
+hardware domain, that has need_sync set to false, but still need
+entries to be added from calls to {set/clear}_identity_p2m_entry.
+
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Paul Durrant <paul.durrant@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: George Dunlap <george.dunlap@citrix.com>
+Tested-by: Roman Shaposhnik <roman@zededa.com>
+
+--- a/xen/arch/x86/mm/p2m.c
++++ b/xen/arch/x86/mm/p2m.c
+@@ -1331,7 +1331,7 @@ int set_identity_p2m_entry(struct domain
+ 
+     if ( !paging_mode_translate(p2m->domain) )
+     {
+-        if ( !need_iommu_pt_sync(d) )
++        if ( !has_iommu_pt(d) )
+             return 0;
+         return iommu_legacy_map(d, _dfn(gfn_l), _mfn(gfn_l), PAGE_ORDER_4K,
+                                 IOMMUF_readable | IOMMUF_writable);
+@@ -1422,7 +1422,7 @@ int clear_identity_p2m_entry(struct doma
+ 
+     if ( !paging_mode_translate(d) )
+     {
+-        if ( !need_iommu_pt_sync(d) )
++        if ( !has_iommu_pt(d) )
+             return 0;
+         return iommu_legacy_unmap(d, _dfn(gfn_l), PAGE_ORDER_4K);
+     }

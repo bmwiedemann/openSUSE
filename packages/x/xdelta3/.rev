@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b07b569272a5b2b201067cdd1ca358b</srcmd5>
+    <version>3.0.0</version>
+    <time>1320771655</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>90531</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0fa4ebd8f675cbcd9722c90a3e73bd8e</srcmd5>
+    <version>3.0.0</version>
+    <time>1323195254</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0fa4ebd8f675cbcd9722c90a3e73bd8e</srcmd5>
+    <version>3.0.0</version>
+    <time>1340184339</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0fa4ebd8f675cbcd9722c90a3e73bd8e</srcmd5>
+    <version>3.0.0</version>
+    <time>1359110599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>0fa4ebd8f675cbcd9722c90a3e73bd8e</srcmd5>
+    <version>3.0.0</version>
+    <time>1379665005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a8862e228c24311cbe84d38a59b9fd74</srcmd5>
+    <version>3.0.8</version>
+    <time>1403642773</time>
+    <user>coolo</user>
+    <comment>- fix 32-bit build (testsuite helper)
+- added patches:
+  * xdelta3-regtest.patch
+
+- updated to 3.0.8:
+  * bugfixes, see http://xdelta.org/ for details</comment>
+    <requestid>238510</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a8862e228c24311cbe84d38a59b9fd74</srcmd5>
+    <version>3.0.8</version>
+    <time>1409303688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ac341a9be2bdc2a83d2d5a94052bd9a6</srcmd5>
+    <version>3.0.10</version>
+    <time>1443068075</time>
+    <user>coolo</user>
+    <comment>- Update to 3.0.10
+  * see https://github.com/jmacd/xdelta-devel/releases for details
+- Update download url
+- Cleanup spec file with spec-cleaner
+- Drop xdelta3-regtest.patch as it is no longer necessary</comment>
+    <requestid>332100</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e9f0699afcb66ff0fbf5debf5e56dc4d</srcmd5>
+    <version>3.0.10</version>
+    <time>1452377624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>352618</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2dc07f0bdf0bacc0c3f82a9add9f0851</srcmd5>
+    <version>3.0.11</version>
+    <time>1455190675</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.0.11
+  * bug-fix release addressing a performance bug and several 
+    crashes in the decoder</comment>
+    <requestid>358567</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ec97238db51ea5b76ed70aed97ae8d1</srcmd5>
+    <version>3.1.0</version>
+    <time>1499161997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update licensing information 
+
+- Update to version 3.1:
+  * Adds support for -B values greater than 2GB, enabled by
+    -DXD3_USE_LARGESIZET=1 variable
+  * Adds new performance and speed regression test
+- Obsolete xdelta
+- Install manpage as well
+- Use profiling when building</comment>
+    <requestid>507021</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>96049fb7ddd25ee1c1ca35f3194a48ce</srcmd5>
+    <version>3.1.0</version>
+    <time>1549630045</time>
+    <user>coolo</user>
+    <comment>- do not require ancient ncompress for build in SLES 
+  (externally_compressed_io subtest will not run for ncompress)
+  * why: ncompress is not part of SLES
+- package also README.md
+  * why: contains useful info</comment>
+    <requestid>671930</requestid>
+  </revision>
+</revisionlist>

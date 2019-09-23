@@ -1,0 +1,46 @@
+From 70604bfced9a9cd6b7982320d9602298d4ad1c80 Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Fri, 23 Feb 2018 18:35:25 +0100
+Subject: [PATCH] Fix some python2 exclusive code to work also with python3
+
+This allows the skill to run under python2 and python3
+---
+ __init__.py | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git mycroft-music-skill/__init__.py mycroft-music-skill.new/__init__.py
+index 18da17d..9299309 100644
+--- mycroft-music-skill/__init__.py
++++ mycroft-music-skill.new/__init__.py
+@@ -1,11 +1,17 @@
+ # NO LICENSE
+ # These bits are free to do as they please, ones and zeros dont need licence or copyright
+ 
+-import urllib
+-import urllib2
++import sys
+ from bs4 import BeautifulSoup
+ from mycroft.audio import wait_while_speaking
+ from mycroft.skills.core import MycroftSkill
++if sys.version_info[0] < 3:
++    from urllib import quote
++    from urllib2 import urlopen
++else:
++    from urllib.request import urlopen
++    from urllib.parse import quote
++
+ try:
+     from mycroft.skills.audioservice import AudioService
+ except ImportError:
+@@ -69,9 +75,9 @@ def handle_play_song_intent(self, message):
+             (out, err) = self.p.communicate()
+ 
+     def search(self, text):
+-        query = urllib.quote(text)
++        query = quote(text)
+         url = "https://www.youtube.com/results?search_query=" + query
+-        response = urllib2.urlopen(url)
++        response = urlopen(url)
+         html = response.read()
+         soup = BeautifulSoup(html)
+         vid = soup.findAll(attrs={'class': 'yt-uix-tile-link'})

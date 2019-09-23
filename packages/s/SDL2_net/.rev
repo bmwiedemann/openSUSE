@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20a7462817dfd966fab80976f0171408</srcmd5>
+    <version>2.0.0</version>
+    <time>1379926930</time>
+    <user>coolo</user>
+    <comment>The rest of SDL2</comment>
+    <requestid>196700</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>20a7462817dfd966fab80976f0171408</srcmd5>
+    <version>2.0.0</version>
+    <time>1409300446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>46aef918224b8d318a8b8c3da414235e</srcmd5>
+    <version>2.0.0</version>
+    <time>1420754611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280343</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1bccce4dcf77011d799d73293abe7c2f</srcmd5>
+    <version>2.0.1</version>
+    <time>1534099949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1</comment>
+    <requestid>628555</requestid>
+  </revision>
+</revisionlist>

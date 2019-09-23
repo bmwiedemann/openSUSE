@@ -1,0 +1,5 @@
+<package name="python-backports.test.support" project="openSUSE:Factory">
+  <title></title>
+  <description>Backport of Python 3's test.support package</description>
+  <devel project="devel:languages:python" package="python-backports.test.support"/>
+</package>

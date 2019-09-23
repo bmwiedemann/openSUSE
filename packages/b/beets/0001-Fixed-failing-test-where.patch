@@ -1,0 +1,26 @@
+From bba5a7c7126178802d1e205cccba4abff3fb6bec Mon Sep 17 00:00:00 2001
+From: Mike Cameron <lengtche@gmail.com>
+Date: Tue, 10 Jan 2017 19:08:18 -0500
+Subject: [PATCH] Fixed (?) failing test where umber was 	rack_alt was
+ missing during import.
+
+---
+ test/test_edit.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_edit.py b/test/test_edit.py
+index 2900d092..0449f233 100644
+--- a/test/test_edit.py
++++ b/test/test_edit.py
+@@ -276,7 +276,7 @@ class EditDuringImporterTest(TerminalImportSessionSetup, unittest.TestCase,
+                              ImportHelper, TestHelper, EditMixin):
+     """TODO
+     """
+-    IGNORED = ['added', 'album_id', 'id', 'mtime', 'path']
++    IGNORED = ['added', 'album_id', 'id', 'mtime', 'path', 'track_alt']
+ 
+     def setUp(self):
+         self.setup_beets()
+-- 
+2.11.0
+

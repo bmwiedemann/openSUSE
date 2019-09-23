@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7076f306df92e4d2af27a9ec3e9a13a8</srcmd5>
+    <version>3.8.1</version>
+    <time>1474623118</time>
+    <user>dimstar_suse</user>
+    <comment>part of GNU Health</comment>
+    <requestid>425114</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>507c758d4684824d60671ef058ef8680</srcmd5>
+    <version>4.2.0</version>
+    <time>1499291755</time>
+    <user>dimstar_suse</user>
+    <comment>Release 3.2 of GNU Health</comment>
+    <requestid>505311</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c91654158657f81bd33c0fbaee651f9</srcmd5>
+    <version>4.2.1</version>
+    <time>1505680740</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1054032 bugfix release for GNU Health</comment>
+    <requestid>526512</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>055864539f34078350e775cddaf43659</srcmd5>
+    <version>4.2.2</version>
+    <time>1510837425</time>
+    <user>dimstar_suse</user>
+    <comment>bnc1068325</comment>
+    <requestid>542151</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa933e53d90d0ea52b4471630439728b</srcmd5>
+    <version>4.6.0</version>
+    <time>1548064156</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.6.0 
+</comment>
+    <requestid>664366</requestid>
+  </revision>
+</revisionlist>

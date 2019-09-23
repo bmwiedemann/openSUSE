@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b2236ed6c22e0292b1983c3a67f9982</srcmd5>
+    <version>0.01.27</version>
+    <time>1474476398</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain cpustat in Factory</comment>
+    <requestid>416344</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f21da27118de36ae162b56c926471bb</srcmd5>
+    <version>0.02.03</version>
+    <time>1495133419</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495696</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e35a43a407e687c457809505dbb79df9</srcmd5>
+    <version>0.02.04</version>
+    <time>1517932279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573311</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e108eb18dc4bcd491705dcc2a775e6e1</srcmd5>
+    <version>0.02.05</version>
+    <time>1536148199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633277</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b0645666b1aa72ba6108520e20d258c</srcmd5>
+    <version>0.02.07</version>
+    <time>1548064674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666477</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab80174f4f4b801e93fd6bbba936377e</srcmd5>
+    <version>0.02.09</version>
+    <time>1565362496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721969</requestid>
+  </revision>
+</revisionlist>

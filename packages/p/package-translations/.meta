@@ -1,0 +1,6 @@
+<package name="package-translations" project="openSUSE:Factory">
+  <title>Summary and Descriptions Translations</title>
+  <description>This package provides translations for our packages. You don't want to install this
+package on your system, it's only useful when you create openSUSE media.</description>
+  <devel project="system:install:head" package="package-translations"/>
+</package>

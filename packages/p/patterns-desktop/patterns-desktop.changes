@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Sep  4 07:15:23 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- merge _opt patterns into main patterns
+
+-------------------------------------------------------------------
+Fri Dec  7 13:12:02 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Adjust icons to state of yast2-theme package
+
+-------------------------------------------------------------------
+Sun Sep 30 01:56:07 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Use much more fitting pattern-laptop icon for laptop pattern.
+
+-------------------------------------------------------------------
+Thu Apr  5 14:25:46 UTC 2018 - dimstar@opensuse.org
+
+- Do not recommend (non-free) AdobeICCProfiles for standard
+  installations (boo#1088291).
+
+-------------------------------------------------------------------
+Tue Jun 20 07:45:37 UTC 2017 - mlin@suse.com
+
+- Do not require basesystem but base.
+
+-------------------------------------------------------------------
+Tue May 23 11:25:07 UTC 2017 - dimstar@opensuse.org
+
+- Fix description of -books (boo#1040006).
+
+-------------------------------------------------------------------
+Tue May 23 11:15:15 UTC 2017 - dimstar@opensuse.org
+
+- Fix spacing in description of multimedia pattern (boo#1040006).
+
+-------------------------------------------------------------------
+Fri Apr 28 16:02:36 UTC 2017 - jengelh@inai.de
+
+- Compact %install routine; replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

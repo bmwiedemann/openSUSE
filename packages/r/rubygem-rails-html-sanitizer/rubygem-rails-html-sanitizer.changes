@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Aug 15 18:01:28 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.2.0
+
+  * Remove needless `white_list_sanitizer` deprecation.
+
+    By deprecating this, we were forcing Rails 5.2 to be updated or spew
+    deprecations that users could do nothing about.
+
+    That's pointless and I'm sorry for adding that!
+
+    Now there's no deprecation warning and Rails 5.2 works out of the box, while
+    Rails 6 can use the updated naming.
+
+    *Kasper Timm Hansen*
+
+-------------------------------------------------------------------
+Fri Mar 23 09:55:41 UTC 2018 - dkang@suse.com
+
+- updated to version 1.0.4
+  * CVE-2018-3741: XSS vulnerability
+  see installed CHANGELOG.md
+  fix bsc#1086598
+
+-------------------------------------------------------------------
+Tue Jan 26 05:35:48 UTC 2016 - coolo@suse.com
+
+- updated to version 1.0.3:
+  * boo#963326: CVE-2015-7578: XSS vulnerability via attributes 
+  * boo#963327: CVE-2015-7579: XSS vulnerability
+  * boo#963328: CVE-2015-7580: XSS via whitelist sanitizer 
+
+-------------------------------------------------------------------
+Mon Mar 16 06:51:40 UTC 2015 - coolo@suse.com
+
+- updated to version 1.0.2, no changelog
+
+-------------------------------------------------------------------
+Mon Feb  9 08:20:28 UTC 2015 - coolo@suse.com
+
+- initial package (version 1.0.1)
+

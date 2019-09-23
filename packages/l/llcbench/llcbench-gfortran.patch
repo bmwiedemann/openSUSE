@@ -1,0 +1,31 @@
+Index: llcbench/blasbench/bb.c
+===================================================================
+--- llcbench.orig/blasbench/bb.c
++++ llcbench/blasbench/bb.c
+@@ -106,26 +106,6 @@ static double *t, *bws, *percents, *opss
+ static _fcd foofn;
+ #endif
+ 
+-#if defined(ia64)
+-#else
+-/* Entry points to fool fortran linkers...*/
+-#ifdef __linux__
+-int MAIN__()
+-#endif
+-#if defined(__hppa) || defined(_HPUX_SOURCE)
+-int __main()
+-#endif
+-#if defined(__linux__) || defined(__hppa)
+-{
+-#if defined(__linux__) && defined(__GNUC__)
+-    /* Subroutine */ int s_stop();
+-    s_stop("", 0L);
+-#endif
+-    return(0);
+-}
+-#endif
+-#endif
+-
+ void compute_stats(int i, int j, double refcnt, double datum_size, double opcnt,
+ 		   double tmicrosec, int iterations, int size, int maxsize, int dim, int maxdim)
+ {

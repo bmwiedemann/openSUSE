@@ -1,0 +1,10 @@
+<package name="vala-panel" project="openSUSE:Factory">
+  <title>A Gtk3 desktop panel based on Vala</title>
+  <description>Vala Panel is a desktop panel written in Vala and Gtk3.
+Initially it was a fork of LXPanel but 0.2.0 is completely rewritten in Vala.
+It offers same functionality as LXPanel but:
+ * It has a slightly bigger memory usage.
+ * X11 dependency is stripped from panel core (but it is not tested on another display servers, such as Wayland and Mir, right now).
+ * Some of former LXPanel plugins are separate binaries now and live in another packages (volume applet for example).</description>
+  <devel project="X11:Utilities" package="vala-panel"/>
+</package>

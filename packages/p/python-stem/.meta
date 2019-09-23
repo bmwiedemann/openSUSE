@@ -1,0 +1,6 @@
+<package name="python-stem" project="openSUSE:Factory">
+  <title>Python controller library for Tor</title>
+  <description>Stem is a Python controller library that allows applications
+to interact with Tor (https://www.torproject.org/).</description>
+  <devel project="devel:languages:python" package="python-stem"/>
+</package>

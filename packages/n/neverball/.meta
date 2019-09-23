@@ -1,0 +1,10 @@
+<package name="neverball" project="openSUSE:Factory">
+  <title>Deftly Guide a Rolling Ball through Many Slick 3D Levels</title>
+  <description>Guide a rolling ball through dangerous territory that you control by
+tilting the floor. Balance on narrow bridges, navigate mazes, ride
+moving platforms, and dodge pushers and shovers to get to the goal.
+Race against the clock to collect coins to earn extra balls. With nice
+physics and very clean and appealing 3D graphics, this is definitely a
+must play.</description>
+  <devel project="games" package="neverball"/>
+</package>

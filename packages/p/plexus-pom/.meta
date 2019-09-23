@@ -1,0 +1,10 @@
+<package name="plexus-pom" project="openSUSE:Factory">
+  <title>Root Plexus Projects POM</title>
+  <description>The Plexus project provides a full software stack for creating and
+executing software projects.  This package provides parent POM for
+Plexus packages.
+
+</description>
+  <devel project="Java:packages" package="plexus-pom"/>
+  <url>https://github.com/codehaus-plexus/plexus-pom</url>
+</package>

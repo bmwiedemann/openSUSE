@@ -1,0 +1,343 @@
+-------------------------------------------------------------------
+Fri Mar 29 19:22:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.0:
+  + Port to GUPnP 1.2.
+  + Various Meson fixes.
+  + Updated translations.
+- Drop gupnp-tools-port-new-gupnp-api.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jan  5 21:52:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.8.15:
+  + All: Improve desktop files.
+  + Build: Port to meson.
+  + AV Controlpoint:
+    - Fix building against GtkSourceVIew 4.
+    - Make it possible to change the UserAgent.
+    - Remove g_type_class_add_private.
+    - Fix closing the about dialog.
+  + Universal Controlpoint: Fix closing the about dialog.
+  + Updated translations.
+- Drop post(un) handling of desktop_database_post(un), no longer
+  needed.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Replace pkgconfig(gtksourceview-3.0) with
+  pkgconfig(gtksourceview-4), pkgconfig(gssdp-1.0) with
+  pkgconfig(gssdp-1.2), pkgconfig(gupnp-1.0) with
+  pkgconfig(gupnp-1.2) BuildRequires.
+- Add pkgconfig(glib-2.0) and pkgconfig(gobject-2.0) BuildRequires:
+  align with what meson checks for.
+- Drop intltool BuildRequires: No longer needed.
+- Add gupnp-tools-port-new-gupnp-api.patch: Fix build with new
+  gupnp.
+- Add fdupes BuildRequires and macro, remove duplicates.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:15 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Sep  9 16:08:19 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 0.8.14:
+  + AV Controlpoint:
+    - Add possibility to run searches on the server.
+    - Fix issue with browsing servers that do not have an icon.
+  + Universal Controlpoint: Fix issue with sub-devices that don't
+    have an icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 22 10:36:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 0.8.13:
+  + Build: Fix desktop file generation.
+  + All: Remove deprecated calls from GSSDP and GUPnP.
+  + AV Controlpoint:
+    - Move some code into GtkBuilder files.
+    - Some clean-ups.
+    - Do not allow "Pause" when renderer is "Stopped".
+    - Fix icon for "Next" button.
+    - Enable menu key on playlist.
+    - Fix compiling with recent GUPnP-AV.
+  + Bugs fixed: bgo#770655.
+  + Updated translations.
+- Drop gupnp-tools-fix-build-with-new-gupnp.patch and
+  gupnp-tools-fixup-desktop-files.patch: Fixed upstream.
+- Following the above: Drop libtool buildrequires and autoreconf
+  call, as we no longer carry any patches.
+
+-------------------------------------------------------------------
+Sun Oct 23 13:17:39 UTC 2016 - zaitor@opensuse.org
+
+- Add gupnp-tools-fix-build-with-new-gupnp.patch: Fix compiling
+  when using recent GUPnP-AV.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:20:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.8.12:
+  + Build:
+    - Update and add missing m4 macros from autoconf archive.
+    - Use upstream gettext.
+  + Common:
+    - Remove use of deprecated libsoup API.
+    - Do not leak the pixbuf loader.
+  + Upload:
+    - Use help text from option context.
+    - Make UDN a parameter.
+  + Network light:
+    - Add commandline argument for friendly name.
+    - Add commandline argument for exclusive change.
+    - use "newTargetValue" instead of "NewTargetValue".
+  + Universal Control Point: Fix some memory leaks.
+  + AV-CP:
+    - Fix some memory leaks.
+    - Do some refactoring to use nice sort order from server.
+  + Bugs fixed: bgo#730747, bgo#758779, bgo#761967, bgo#761968,
+    bgo#764050.
+  + Updated translations.
+- Add gupnp-tools-fixup-desktop-files.patch: Fix desktop files to
+  look in the right location for icons (bgo#769984).
+- Add libtool BuildRequires and call to autoreconf: above patch
+  touches the buildsystem.
+
+-------------------------------------------------------------------
+Sun Nov 29 09:36:05 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.8.11:
+  + Remove gnome-common.
+  + Network light:
+    - Fix re-creation of about dialog.
+    - Use UUID functions from GUPnP.
+    - Fix a critical on shutdown after showing the about dialog.
+  + AV-CP:
+    - Fix default resolution on weird screens.
+    - Avoid a possible crash when clicking on rescan after contexts
+      have been changed.
+  + Discoverer: Free some strings.
+  + Bugs fixed: bgo#697315, bgo#697954.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 11 07:13:53 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.8.10:
+  + Remove checks for gnome-icon-theme.
+  + Change icon loader behavior to not fail if there's no fall-back
+    icons.
+  + AV-CP:
+    - Remove deprecated GTK+ things.
+    - Fix warning about transient dialogs.
+    - Make it possible to call Play on folders if they expose
+      resources.
+  + Universal-CP: Remove deprecated GTK+ things.
+  + Discover: Add --message-type commandline option.
+  + Upload:
+    - Fix critical on shut-down.
+    - Print interface and IP used for uploading.
+  + Bugs fixed: bgo#733592, bgo#733594, bgo#734162, bgo#735275.
+  + Updated translations.
+- Drop gupnp-tools-no-g_i_t.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jul 13 20:54:57 UTC 2014 - dimstar@opensuse.org
+
+- Remove dependency on gnome-icon-theme:
+  + Add gupnp-tools-no-g_i_t.patch: Do not depend on
+    gnome-icon-theme. Gnome-icon-theme variants have been merged
+    into adwaita-icon-theme.  Ensuring the presence of the same is
+    responsibility of GTK+ 3.0.
+  + Drop pkgconfig(gnome-icon-theme) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Feb  3 20:54:05 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.8.9:
+  + Make DIDL-Lite dialog work when closed with "X".
+  + Make UniversalCP behave nicer in busy networks where a lot of
+    devices appear/disappear/reappear.
+  + Bugs fixed: bgo#722245, bgo#723172.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 11 22:28:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.8 (bnc#849913):
+  + Add --interface/--port options to all GUI tools.
+  + Universal CP:
+    - Don't crash on variable-only services.
+    - Select first combo box value by default for restricted value
+      lists.
+  + Bugs fixed: bgo#672863, bgo#708370.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 15:49:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.7:
+  + Fix argument order in UPnP calls.
+  + Bugs fixed: bgo#697325, deb#519464.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  4 14:03:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.6.1:
+  + Fix configure.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 20 14:13:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.6:
+  + Support i18n.
+  + Upgrade GtkBuilder files.
+  + Use license links provided by GtkAbout.
+  + gupnp-av-cp:
+    - Fix GtkSourceView include.
+    - Fix memory leak in TreeView.
+    - Add a rescan button.
+    - Fix a typo in About dialog.
+    - Make network port configurable.
+  + Updated translations.
+- Add intltool BuildRequires: newly dependency.
+- Drop gupnp-tools-includes.patch: fixed upstream.
+- Create -lang subpackage.
+
+-------------------------------------------------------------------
+Sat Jan 12 17:12:21 UTC 2013 - dimstar@opensuse.org
+
+- Add gupnp-tools-includes.patch: Fix missing includes coming from
+  changes in gtksourceview 3.7.x.
+
+-------------------------------------------------------------------
+Wed Dec 26 11:41:35 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.8.5:
+  + Fix linking against newer versions of GUPnP.
+  + Drop deprecated g_thread_init.
+  + Disable g_type_init on newer GLib.
+  + gupnp-av-cp:
+    . Be a bit more precise on what exactly failed.
+    . Fix an endless loop while browsing.
+    . Ignore initial notify for ContainerUpdateID event.
+  + network-light: Fix a typo.
+  + Bugs fixed: bgo#668090, bgo#690309.
+- Add explicit pkgconfig(libsoup-2.4) and pkgconfig(libxml-2.0)
+  BuildRequires: configures now checks for them.
+
+-------------------------------------------------------------------
+Mon Feb 20 09:28:33 UTC 2012 - vuntz@opensuse.org
+
+- Change BuildRequires to pkgconfig() BuildRequires:
+  + Old ones: gnome-icon-theme, libgupnp-av-devel, libgupnp-devel.
+  + New ones: gnome-icon-theme, gupnp-1.0, gupnp-av-1.0.
+- Add explicit pkgconfig(gio-2.0) and pkgconfig(gssdp-1.0)
+  BuildRequires: they were missing before.
+
+-------------------------------------------------------------------
+Sun Feb 19 16:35:13 UTC 2012 - dimstar@opensuse.org
+
+- Add pkgconfig(uuid) BuildRequires: this used to be pulled in by
+  something else.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Wed Dec 21 09:08:37 UTC 2011 - vuntz@opensuse.org
+
+- Add pkgconfig(gtksourceview-3.0) BuildRequires: new optional
+  dependency since version 0.8.4, for the DIDL dialog.
+
+-------------------------------------------------------------------
+Tue Dec 13 20:25:11 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.4:
+  + gupnp-av-cp:
+    - Fix issue where DIDL dialog was empty on next usage when user
+      pressed ESC to close it.
+    - Add XML pretty-printing to DIDL dialog.
+    - Use GtkSourceView for DIDL dialog when available during
+      build-time.
+  + gssdp-discover:
+    - A new simple SSDP discovery tool.
+  + gupnp-upload:
+    - Fix compiling with -Wall.
+    - Set empty item id as mandated by UPnP.
+  + Bugs fixed: bgo#655562, bgo#655563, bgo#655579, bgo#659315,
+    bgo#659316.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that...
+  See bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Thu Jul  7 22:41:13 CEST 2011 - vuntz@opensuse.org
+
+- Stop using source service to download the tarball, as Factory
+  will move away from this.
+
+-------------------------------------------------------------------
+Fri Apr 29 15:24:54 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.3:
+  + Fix the UI issues introduce in the last release due to port to
+    newer gtk+/glade
+- Changes from version 0.8.2:
+  + Fix icon name in a warning message.
+  + Require and adapt to gtk+ >= 3.0.0
+- Replace gtk2-devel BuildRequires with pkgconfig(gtk+-3.0)
+
+-------------------------------------------------------------------
+Sun Feb 13 16:24:05 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+
+-------------------------------------------------------------------
+Fri Sep 17 09:33:40 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.8.1:
+  + Make sure everything builds and runs on windows.
+  + Add popup menu to playlist treeview.
+  + Add UI for user to fetch and view the DIDL-Lite XML for media
+    objects.
+  + Make it possible for user to select containers.
+  + Get rid of redundant newline in warning messages.
+  + Obey the ACLOCAL_FLAGS environment variable.
+  + Other non-functional improvements.
+
+-------------------------------------------------------------------
+Thu Oct  1 14:57:39 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 0.8:
+  + Add lenient mode: Just pick-up the first resource available.
+  + Specify filter in Browse actions to reduce network usage.
+  + Don't browse containers with no children.
+  + Always re-browse containers on updates.
+  + Update childCount after browsing is done.
+  + Support for multiple networks.
+  + Leave selection of resource to gupnp-av.
+  + No need to search for all UPnP resources anymore.
+  + Fix infinite loop in icon cancelation code.
+  + No need to care about hosting of description document anymore.
+  + Adapt to new gupnp-av API.
+  + Add cmdline option to gupnp-upload to specify network interface
+  + Many other minor/internal fixes.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Fri Jul 31 18:22:42 CEST 2009 - vuntz@novell.com
+
+- Fix RPM group to Productivity/Networking/Other since this is not
+  a library.
+
+-------------------------------------------------------------------
+Sat Jun 13 23:51:52 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+

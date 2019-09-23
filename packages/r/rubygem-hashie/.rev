@@ -1,0 +1,197 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da98f17dc0bbeae0421b8a07edb10ec4</srcmd5>
+    <version>1.2.0</version>
+    <time>1352357955</time>
+    <user>coolo</user>
+    <comment>needed for tinder</comment>
+    <requestid>140084</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>da98f17dc0bbeae0421b8a07edb10ec4</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110321</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>daffed1b5827227105bb47e02952fd5e</srcmd5>
+    <version>2.0.2</version>
+    <time>1362994620</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158220</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9025589c8a3cd21acf4809da67d5becf</srcmd5>
+    <version>2.0.3</version>
+    <time>1363900490</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>160194</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5612991f44c86db8a84a4f8b6d627434</srcmd5>
+    <version>2.0.4</version>
+    <time>1367488040</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174104</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f034aecc5a94023f13a4d704baa89629</srcmd5>
+    <version>2.0.5</version>
+    <time>1369641605</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176159</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f034aecc5a94023f13a4d704baa89629</srcmd5>
+    <version>2.0.5</version>
+    <time>1379664529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3cdfa93ab488f9b07a3fde613f507b9</srcmd5>
+    <version>2.1.1</version>
+    <time>1400682490</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234901</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f3cdfa93ab488f9b07a3fde613f507b9</srcmd5>
+    <version>2.1.1</version>
+    <time>1409303237</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>17ac89c58709d8af3b5820fb3514a2e1</srcmd5>
+    <version>2.1.1</version>
+    <time>1413263456</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255238</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>3f8cfe072a54535f272b6110b24f2543</srcmd5>
+    <version>2.1.1</version>
+    <time>1414140499</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258196</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a41cac4b6d66f02c8f30135d60cc9e35</srcmd5>
+    <version>3.3.1</version>
+    <time>1416347086</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>261530</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e11d513f9e981e998936cda90a385c9c</srcmd5>
+    <version>3.4.0</version>
+    <time>1423669577</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 3.4.0
+ * [#271](https://github.com/intridea/hashie/pull/271): Added ability to define defaults based on current hash - [@gregory](https://github.com/gregory).
+ * [#247](https://github.com/intridea/hashie/pull/247): Fixed #stringify_keys and #symbolize_keys collision with ActiveSupport - [@bartoszkopinski](https://github.com/bartoszkopinski).
+ * [#249](https://github.com/intridea/hashie/pull/249): SafeAssignment will now also protect hash-style assignments - [@jrochkind](https://github.com/jrochkind).
+ * [#251](https://github.com/intridea/hashie/pull/251): Added block support to indifferent access #fetch - [@jgraichen](https://github.com/jgraichen).
+ * [#252](https://github.com/intridia/hashie/pull/252): Added support for conditionally required Hashie::Dash attributes - [@ccashwell](https://github.com/ccashwell).
+ * [#256](https://github.com/intridia/hashie/pull/256): Inherit key coercions - [@Erol](https://github.com/Erol).
+ * [#259](https://github.com/intridia/hashie/pull/259): Fixed handling of default proc values in Mash - [@Erol](https://github.com/Erol).
+ * [#260](https://github.com/intridia/hashie/pull/260): Added block support to Extensions::DeepMerge - [@galathius](https://github.com/galathius).
+ * [#254](https://github.com/intridea/hashie/pull/254): Added public utility methods for stringify and symbolize keys - [@maxlinc](https://github.com/maxlinc).
+ * [#261](https://github.com/intridea/hashie/pull/261): Fixed bug where Dash.property modifies argument object - [@d_tw](https://github.com/d_tw).
+ * [#264](https://github.com/intridea/hashie/pull/264): Methods such as abc? return true/false with Hashie::Extensions::MethodReader - [@Zloy](https://github.com/Zloy).
+ * [#269](https://github.com/intridea/hashie/pull/269): Add #extractable_options? so ActiveSupport Array#extract_options! can extract it - [@ridiculous](https://github.com/ridiculous).
+ * Your contribution here.
+ 
+ ## 3.3.2 (11/26/2014)
+ 
+ * [#233](https://github.com/intridea/hashie/pull/233): Custom error messages for required properties in Hashie::Dash subclasses - [@joss](https://github.com/joss).
+ * [#231](https://github.com/intridea/hashie/pull/231): Added support for coercion on class type that inherit from Hash - [@gregory](https://github.com/gregory).
+ * [#228](https://github.com/intridea/hashie/pull/228): Made Hashie::Extensions::Parsers::YamlErbParser pass template filename to ERB - [@jperville](https://github.com/jperville).
+ * [#224](https://github.com/intridea/hashie/pull/224): Merging Hashie::Mash now correctly only calls the block on duplicate values - [@amysutedja](https://github.com/amysutedja).
+ * [#221](https://github.com/intridea/hashie/pull/221): Reduce amount of allocated objects on calls with suffixes in Hashie::Mash - [@kubum](https://github.com/kubum).
+ * [#245](https://github.com/intridea/hashie/pull/245): Added Hashie::Extensions::MethodAccessWithOverride to autoloads - [@Fritzinger](https://github.com/Fritzinger).</comment>
+    <requestid>285585</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b419afc0076102ea961e7387ccd34b5c</srcmd5>
+    <version>3.4.1</version>
+    <time>1428652436</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>295079</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e860b425b7192aa3a9da1a786be34ba5</srcmd5>
+    <version>3.4.2</version>
+    <time>1434133844</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311531</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3116156f69744bb2877f576602225dc2</srcmd5>
+    <version>3.4.3</version>
+    <time>1446238383</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>341679</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>12fd0ca00d2675a392ef83db90e67603</srcmd5>
+    <version>3.4.4</version>
+    <time>1464484293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396933</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>567f4d67abdc80567c4554af96a72e65</srcmd5>
+    <version>3.4.6</version>
+    <time>1476109408</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433711</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>def1d698c2a6656d16fac89f54851e40</srcmd5>
+    <version>3.5.5</version>
+    <time>1491895952</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>479941</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>535b723ce52e443f590588711fc5ca10</srcmd5>
+    <version>3.5.6</version>
+    <time>1506453205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514943</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4dfe26a961eaf821288673bde41cce55</srcmd5>
+    <version>3.5.7</version>
+    <time>1518596899</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574086</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>050ed06a7b27151ae520699bb84858f5</srcmd5>
+    <version>3.6.0</version>
+    <time>1540448423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643118</requestid>
+  </revision>
+</revisionlist>

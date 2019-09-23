@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Tue Sep 10 11:49:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.0:
+  * deduplicate dependencylist
+  * QueryBuilder.py: Use native data structures for internal representation
+  * Add support for the Command API
+
+-------------------------------------------------------------------
+Tue Aug 27 15:12:27 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.0.0
+  * QueryBuilder: Added support for FromOperator, arrays and FromOperator
+  * New endpoint: status
+  * POST query in request body
+
+-------------------------------------------------------------------
+Thu Feb 14 00:57:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:10:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop not-needed devel dependency
+
+-------------------------------------------------------------------
+Tue Feb  5 16:02:45 UTC 2019 - joop.boonen@opensuse.org
+
+- Build version 0.3.3
+
+  * Add support for authentication with tokens
+  * Fix bug with parsing results from inventory endpoint
+
+- Build version 0.3.2
+
+  * Fixed noop puppet runs reporting unchanged instead of noop.
+  * Fixed unreported nodes shown as 'noop' in puppetdb > 4.1.0.
+  * Add Inventory API endpoint for PuppetDB 4.2.0.
+  * Support for producer field on catalogs, facts and report types.
+
+- Build version 0.3.1
+
+  * Fixed a datetime related bug in :func:`pypuppetdb.api.nodes()` that caused
+    all returned nodes to be an unreported status
+
+- Build version 0.3.0
+
+  * New QueryBuilder module allows users to build PuppetDB queries in an
+    Object-Oriented fashion.
+  * Adding support for new fields provided in PuppetDB 4.1.0.
+
+- Build version 0.2.3
+
+  * Removed deprecation of :func:`pypuppetdb.types.Report.events()`. Expanded
+    resource events data timestamps are not parseable.
+  * Escaping additional path parameters passed to _url() with urllib.quote
+
+- Build version 0.2.2
+
+  * Fixed URL Encoding found when querying the specific value of a macaddress
+    fact.
+  * Adding support for PuppetDB 4.0.0 information. Namely Adding a catalog_uuid
+    attribute to the Catalog type object. Adding code_id, catalog_uuid and
+    cached_catalog_status attributes to the Report type object.
+  * Removing unneeded sudo option from .travis.yml, this gave unnecessary
+    warning in the test environment.
+  * Updating the files under docs/ so https://pypuppetdb.readthedocs.org/en/latest/
+    can be updated
+  * Deprecating :func:`pypuppetdb.types.Report.events()` in favour of the new
+    events list variable.
+  * Renaming test-requirements.txt to requirements.txt
+
+- Build version 0.2.1
+
+  * Adding a version comparison utility function using examples provided in
+    http://stackoverflow.com/questions/1714027/version-number-comparison
+  * Adding a new variable latest_report_hash to the Node object. Default
+    None but is given a real value from the field of the same name in the
+    Nodes endpoint available in PuppetDB 3.2 or higher.
+  * Allowing support for 'GET' AND 'POST' requests in the api _query()
+    function. This will allow clients to send requests to the PuppetDB that
+    are too long for a GEt request query string
+  * Adding a node field, code_id, to the Catalog object using the field of
+    the same name from the Catalogs endpoint (currently unused as of
+    PuppetDB 3.2.2)
+  * Adding test cases for new features EXCEPT the GET and POST update.
+
+- Build version 0.2.0
+
+  * Version bump to 0.2.0
+  * Adding support for v4 of the Query API
+  * Removing v2 and v3 api functions as per changelog
+  * pypuppetdb will no longer support multiple API versions, removing the
+    api_version attribute from pypuppetdb.connect()
+  * All clients must remove the api_version attribute from the connect function,
+    or the starting number, since it is no longer supported
+  * Removing all NotImplemented errors in the function of BaseAPI and filled
+    them with the real code
+
+-------------------------------------------------------------------
+Thu Feb 13 22:19:56 UTC 2014 - aboe76@gmail.com
+
+- Initial release

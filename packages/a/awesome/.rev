@@ -1,0 +1,222 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>069cbf40084d64e867489b839c22ef10</srcmd5>
+    <version>3.4.13</version>
+    <time>1352358141</time>
+    <user>coolo</user>
+    <comment>Thanks for sorting the license issue</comment>
+    <requestid>140532</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a3bd9fe39b8fc525703603847dff0d34</srcmd5>
+    <version>3.4.13</version>
+    <time>1357228090</time>
+    <user>namtrac</user>
+    <comment>- Created subpackage awesome-branding-upstream which includes the
+  the default themes of the awesome package (forwarded request 145008 from toganm)</comment>
+    <requestid>145011</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a3bd9fe39b8fc525703603847dff0d34</srcmd5>
+    <version>3.4.13</version>
+    <time>1359108687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d684bc2de2062c60ca1d94648c26c183</srcmd5>
+    <version>3.4.15</version>
+    <time>1372427898</time>
+    <user>coolo</user>
+    <comment>- Update to 3.4.15
+  * Fix keyboard layouts
+- Changes between 3.4.13 and 3.4.14
+  * Add NoDisplay to .desktop file (FS#1031)
+  * Remove incorrect comment.
+  * Have only FreeBSD require dynamic linking (FS#743)
+  * Add x11-xcb to the pkg-config checks
+  * naughty: Correctly handle rowstride on icons
+  * Fix client screen in awful.client.setslave
+  * Added initial support for Xlib cursor themes
+- Use xz format for the source files
+- Added xcursor to BuildRequires
+
+  the default themes of the awesome package
+- switch back to lua51-devel instead of pkgconfig
+- correct missing man locale dirs
+- Use vi as the default editor
+- Update to 3.4.13
+- use pkgconfig for available buildrequires
+- update to 3.4.11
+  * fix Factory builds with glib-single-include.patch (forwarded request 181241 from toganm)</comment>
+    <requestid>181243</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d684bc2de2062c60ca1d94648c26c183</srcmd5>
+    <version>3.4.15</version>
+    <time>1379662017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>80b549bbc4f66136ab41b5d3a4ddd4fb</srcmd5>
+    <version>3.4.15</version>
+    <time>1390411179</time>
+    <user>coolo</user>
+    <comment>- extend awesome-remove_build_timestamp.patch to avoid
+  needless package republish due to AWESOME_COMPILE_HOSTNAME
+  changing all the time. replace it by the string &quot;OBS&quot;. (forwarded request 212688 from toganm)</comment>
+    <requestid>214538</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>19623e20f0126660a5334b3e0e8b7051</srcmd5>
+    <version>3.4.15</version>
+    <time>1408021095</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244634</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>19623e20f0126660a5334b3e0e8b7051</srcmd5>
+    <version>3.4.15</version>
+    <time>1409300543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>76281bfa935f51930f21beaee4972907</srcmd5>
+    <version>3.5.6</version>
+    <time>1434133886</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311664</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4d70df870ffe5b3302828418d8e6d7c5</srcmd5>
+    <version>3.5.6</version>
+    <time>1444833908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338012</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2002f908c2334fc94b1b9062c49009a3</srcmd5>
+    <version>3.5.7</version>
+    <time>1453019009</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353979</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4ffee0cf91450d98b2ffc0738a361344</srcmd5>
+    <version>3.5.8</version>
+    <time>1454353004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356885</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e6988f56d17eb999827b962224f2f488</srcmd5>
+    <version>3.5.9</version>
+    <time>1459422223</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381891</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1db16eb09c60d354d9f68529bcd6b12d</srcmd5>
+    <version>3.5.9</version>
+    <time>1479503028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440764</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f38745f77f7eea3ea993072c68c5f0d</srcmd5>
+    <version>4.0</version>
+    <time>1484132689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449566</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b4f62f0759ae029a009f302c677e6fdd</srcmd5>
+    <version>4.0</version>
+    <time>1485250411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450997</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>fc9f2e75de218e535cbd4f1ff7cd2e0e</srcmd5>
+    <version>4.0</version>
+    <time>1489345508</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478503</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4590d92a8f980b1beebd041961086816</srcmd5>
+    <version>4.1</version>
+    <time>1490965707</time>
+    <user>maxlin_factory</user>
+    <comment>version 4.1</comment>
+    <requestid>482437</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5cd9245e3dbce47ab8cff09917c67a00</srcmd5>
+    <version>4.1</version>
+    <time>1501406830</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513005</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>76a11955889daa3b0d9a538b53257e02</srcmd5>
+    <version>4.2</version>
+    <time>1503593227</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514721</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c26f86d7ad49c46a0e0337d844d1353c</srcmd5>
+    <version>4.2</version>
+    <time>1507391459</time>
+    <user>dimstar_suse</user>
+    <comment>- relax lua requires for openSUSE:Leap</comment>
+    <requestid>532139</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>f32e3ec41757a22df21bee3f644a1fa3</srcmd5>
+    <version>4.2</version>
+    <time>1523875709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596295</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>1368c482bcfa84c89a82a3e70d1fac3b</srcmd5>
+    <version>4.2</version>
+    <time>1524144657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597490</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a923aeecf0d75d03324d329cd9654c00</srcmd5>
+    <version>4.3</version>
+    <time>1549017909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669490</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e5f32658c9ec2d44063973a7a1de18be</srcmd5>
+    <version>4.3</version>
+    <time>1549916743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673038</requestid>
+  </revision>
+</revisionlist>

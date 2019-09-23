@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# copy this script to /etc/cron.d/leafnode-fetch and make it executable
+# with "chmod 0755 /etc/cron.d/leafnode-fetch" to fetch news every hour
+#
+# suggested by Ritesh Sarraf <rrs@researchut.com>
+# https://bugzilla.novell.com/show_bug.cgi?id=382542
+#
+# Fetch news every hour
+
+@hourly news    test -x /usr/sbin/fetchnews && /usr/sbin/fetchnews -q

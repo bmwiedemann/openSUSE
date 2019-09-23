@@ -1,0 +1,14 @@
+--- jython-svn-Release_2_2_1/Lib/test/javatests/AnonInner.java	2006-04-09 18:14:16.000000000 +0200
++++ jython-svn-Release_2_2_1/Lib/test/javatests/AnonInner.java	2017-09-08 11:14:45.116655838 +0200
+@@ -9,11 +9,6 @@
+                 public int hashCode() {
+                     return 2000;
+                 }
+-		//XXX: stuck compareTo to make the compiler happier.
+-		//     hopefully this doesn't mess up the test.
+-		public int compareTo(Object x) {
+-		    return 0;
+-		}
+             };
+         return d.hashCode();
+     }

@@ -1,0 +1,20 @@
+<package name="google-alegreya-fonts" project="openSUSE:Factory">
+  <title>Serif Font for Literature</title>
+  <description>Alegreya was chosen as one of 53 &quot;Fonts of the Decade&quot; at
+the ATypI Letter2 competition in September 2011, and one
+of the top 14 text type systems. It was also selected in
+the 2nd Bienal Iberoamericana de Diseño, competition
+held in Madrid in 2010.
+
+Alegreya is a typeface originally intended for literature.
+Among its crowning characteristics, it conveys a dynamic
+and varied rhythm which facilitates the reading of long
+texts. Also, it provides freshness to the page while
+referring to the calligraphic letter, not as a literal 
+interpretation, but rather in a contemporary typographic language.
+  
+
+</description>
+  <devel project="M17N:fonts" package="google-alegreya-fonts"/>
+  <url>http://code.google.com/webfonts/family?family=Alegreya</url>
+</package>

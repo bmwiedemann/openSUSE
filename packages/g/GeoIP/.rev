@@ -1,0 +1,289 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac8a470ff559b803e41052f9445ffbc4</srcmd5>
+    <version>1.4.4</version>
+    <time>1227756317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4b8b882eae90181fe10cd347061e2b61</srcmd5>
+    <version>1.4.5</version>
+    <time>1227880880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>36f7657cb5950ee4922f1aa6b6f86c10</srcmd5>
+    <version>1.4.5</version>
+    <time>1228487189</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52b9b6fea76e5fc61564c7fd858bae7f</srcmd5>
+    <version>1.4.6</version>
+    <time>1243550823</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6b0ae61e001ada992b153e02a838083c</srcmd5>
+    <version>1.4.6</version>
+    <time>1245260071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3c8108ffce434173c3171bb3d0106334</srcmd5>
+    <version>1.4.6</version>
+    <time>1245461972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3c8108ffce434173c3171bb3d0106334</srcmd5>
+    <version>1.4.6</version>
+    <time>1245461972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>4904a9f6bacf59585b40e10a78e24eea</srcmd5>
+    <version>1.4.6</version>
+    <time>1268922724</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>4904a9f6bacf59585b40e10a78e24eea</srcmd5>
+    <version>1.4.6</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>4904a9f6bacf59585b40e10a78e24eea</srcmd5>
+    <version>1.4.6</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>4904a9f6bacf59585b40e10a78e24eea</srcmd5>
+    <version>1.4.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>473f776348648b69d3b04e9b2b1a95c7</srcmd5>
+    <version>1.4.7</version>
+    <time>1306157867</time>
+    <user>saschpe</user>
+    <comment>- new version 1.4.7
+  * better IPv6 support
+  * various bug fixes
+- add baselibs.conf</comment>
+    <requestid>70997</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>385e7a0f63b433d278fd88dca8e837bf</srcmd5>
+    <version>1.4.7</version>
+    <time>1306157880</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70997
+</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>385e7a0f63b433d278fd88dca8e837bf</srcmd5>
+    <version>1.4.7</version>
+    <time>1319181750</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>262d9fb3de2ccf5e90455e8858f85263</srcmd5>
+    <version>1.4.7</version>
+    <time>1324458007</time>
+    <user>coolo</user>
+    <comment>- remove nonexistant libGeoIP requirement from libGeoIP-devel-32bit
+
+- Add libGeoIP-devel to baselibs
+- Remove redundant tags/sections</comment>
+    <requestid>96860</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>1b1b76f2d6f9a2762b51bb7b216bc4f1</srcmd5>
+    <version>1.4.7</version>
+    <time>1327403829</time>
+    <user>coolo</user>
+    <comment>patching license field to be in spdx.org format, for legal team to review before forward (forwarded request 99932 from dec16180)</comment>
+    <requestid>100724</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e82ca42c0b451611f65491ee5cbf61cd</srcmd5>
+    <version>1.4.8</version>
+    <time>1334641496</time>
+    <user>coolo</user>
+    <comment>- add build requirement libtool to fix Factory build  (forwarded request 113276 from AndreasStieger) (forwarded request 113279 from namtrac)</comment>
+    <requestid>113332</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7bed88059839b027fcceacae6ea84501</srcmd5>
+    <version>1.4.8</version>
+    <time>1338476672</time>
+    <user>coolo</user>
+    <comment>automake - http://lists.opensuse.org/opensuse-factory/2012-05/msg00752.html (forwarded request 122780 from jengelh)</comment>
+    <requestid>122785</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>7bed88059839b027fcceacae6ea84501</srcmd5>
+    <version>1.4.8</version>
+    <time>1340183150</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>7bed88059839b027fcceacae6ea84501</srcmd5>
+    <version>1.4.8</version>
+    <time>1359108616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>eb348225f2e1f3d081c1988df89f9689</srcmd5>
+    <version>1.4.8</version>
+    <time>1360228778</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and LGPL-2.1+
+Clean up (forwarded request 151443 from babelworx)</comment>
+    <requestid>151458</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f766766affe87d2f59fec78c9fdd8ef1</srcmd5>
+    <version>1.5.1</version>
+    <time>1375370082</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.5.1:
+  + Update time_zone for Ontario, Canada.
+  + geoiplookup and geoiplookup6 exit code is 0 when user asked for
+    help.
+  + Added -h option to geoiplookup6.
+  + Do not load the database file if nodes and file size do not
+    make sense.
+  + Keep README and man pages in pure ascii.
+  + It doesn't make sense to use GEOIP_INDEX_MODE with small
+    databases like GEOIP_COUNTRY_EDITION. Instead of undefined
+    behaviour we handle it silently as GEOIP_MEMORY_MODE.
+  + Update FIPS codes for Greece.
+- Changes from version 1.5.0:
+  + Rename custom_directory to GeoIP_custom_directory.
+  + Make sure the database match the requested type. This is
+    helpful for Databases with the same default name and the
+    general geoiplookup form (geoiplookup without a specific
+    database).
+  + apps/geoiplookup6.c use the ipnum instead of the hostname
+    for lookups.
+  + Use configure.ac instead of configure.in.
+  + Region lookup is a bit faster.
+  + Add pkg-config file.
+  + Updates required to build a Windows DLL under MinGW.
+  + Make API thread safe.
+  + geoiplookup's default charset is UTF8 -l change the charset
+    back to iso8859-1.
+  + geoipupdate skips \r otherwise it might be part of the last
+    product_id.
+  + Update time zones.</comment>
+    <requestid>185462</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f766766affe87d2f59fec78c9fdd8ef1</srcmd5>
+    <version>1.5.1</version>
+    <time>1379661907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f766766affe87d2f59fec78c9fdd8ef1</srcmd5>
+    <version>1.5.1</version>
+    <time>1409300429</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8e0df1a63106312960da98d0e7b02050</srcmd5>
+    <version>1.6.4</version>
+    <time>1424779328</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287123</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a21143bd76c372aeed8f850f029fca75</srcmd5>
+    <version>1.6.5</version>
+    <time>1425892198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289725</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a77497e6ed6662e803bb1a0f47281eaf</srcmd5>
+    <version>1.6.5</version>
+    <time>1427736747</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290501</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c9bbc1425c3483d63fe07e58ee39ea92</srcmd5>
+    <version>1.6.6</version>
+    <time>1443585196</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334585</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e7268eeb1e73078b477e770e1931322c</srcmd5>
+    <version>1.6.7</version>
+    <time>1448260210</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344770</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>81cba41753e0c25de5069814ad62bcf0</srcmd5>
+    <version>1.6.9</version>
+    <time>1454921268</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357787</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>1234a3bbb797583ef3e38721abc90ffd</srcmd5>
+    <version>1.6.9</version>
+    <time>1466326176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402691</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db135af6ca92b6edce8647eaf97caa4e</srcmd5>
+    <version>1.6.11</version>
+    <time>1511086274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542228</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7dbeef4a42b5f4df5f442ba543b0a317</srcmd5>
+    <version>1.6.12</version>
+    <time>1521192905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.12:
+  * Populate metro and area code when performing lookups in IPv6
+    City databases. Previously this was only done when using IPv4
+    City databases.
+- Modernise spec file with spec-cleaner</comment>
+    <requestid>587503</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8a9eed2d980c524c5471d9714735beed</srcmd5>
+    <version>1.6.12</version>
+    <time>1535440943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630724</requestid>
+  </revision>
+</revisionlist>

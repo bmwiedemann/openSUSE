@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9782cda0ca77023a7560224af7fa4325</srcmd5>
+    <version>0.7.0</version>
+    <time>1517424782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571245</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68ec166e0d4705d3789d62b2d9c0f295</srcmd5>
+    <version>1.0.0</version>
+    <time>1530304480</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests during packaging.
+- Changed to source taken directly from Git instead of PyPI.
+  (PyPI tarballs don't carry tests)
+
+- Update to version 1.0.0
+  * Fixed asyncio support in Python 3.5+.
+  * Fixed handling of missing data.
+  * Fixed device comparison.
+  * Deprecated the InputDevice.fn attribute in favour of
+    InputDevice.path
+  * Add a context manager for grabbing access to a device -
+    InputDevice.grab_context.
+  * Add the InputDevice.uniq attribute, which contains the unique
+    identifier of the device.</comment>
+    <requestid>619208</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>320162440c6eb68ade0c3b5fb9fb61f2</srcmd5>
+    <version>1.1.0</version>
+    <time>1535538384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631923</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e752b966dcd903be503a8c56cd6a2ee</srcmd5>
+    <version>1.1.2</version>
+    <time>1551455401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.2:
+  * Fix handling of absinfo capabilities
+  * Fix invalid example
+  * Check if FF_MAX_EFFECTS is defined</comment>
+    <requestid>680458</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7060944f032257f70eb32cd97cdfa14</srcmd5>
+    <version>1.2.0</version>
+    <time>1557834227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0
+  * Add UInput support for the resolution parameter in AbsInfo
+  * Vendor and product identifiers can be greater or equal to 0x8000</comment>
+    <requestid>702767</requestid>
+  </revision>
+</revisionlist>

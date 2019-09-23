@@ -1,0 +1,5 @@
+<package name="systemd-presets-common-SUSE" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="systemd-presets-common-SUSE"/>
+</package>

@@ -1,0 +1,300 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2458ab6fd6ab604b0151eaea8451fadc</srcmd5>
+    <version>1.2.9</version>
+    <time>1313750905</time>
+    <user>saschpe</user>
+    <comment>System/Monitoring is a possible Group: http://en.opensuse.org/openSUSE:Package_group_guidelines#System</comment>
+    <requestid>79127</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66dce198549e09be9da949d821105083</srcmd5>
+    <version>1.2.9</version>
+    <time>1313750919</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79127
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>66dce198549e09be9da949d821105083</srcmd5>
+    <version>1.2.9</version>
+    <time>1319182166</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>175afcc62d3539188fa1f6672fd2342a</srcmd5>
+    <version>1.2.9</version>
+    <time>1323192457</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ad0ace968973c408b26de4d878eb14a7</srcmd5>
+    <version>1.3.0</version>
+    <time>1330520907</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104067</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ad0ace968973c408b26de4d878eb14a7</srcmd5>
+    <version>1.3.0</version>
+    <time>1340183683</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ab9f367093d695f0148b88d207e67a11</srcmd5>
+    <version>1.3.0</version>
+    <time>1358152990</time>
+    <user>coolo</user>
+    <comment>- cleaned up spec file
+- fixed test_homedirs 
+- some bugfixing for pathnames, didn't work with sudo
+- improved default.prf by adding more sysctl vars
+- fixed test_storage
+- generated fileperm.db and dbus-whitelist for 12.2 (forwarded request 148358 from thomasbiege)</comment>
+    <requestid>148359</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>359157bf0ddc11b7ef709dda61bf8701</srcmd5>
+    <version>1.3.0</version>
+    <time>1358198588</time>
+    <user>coolo</user>
+    <comment>- fixed tests_network_allowed_ports to increment index vars
+  and not loop forever (forwarded request 148451 from thomasbiege)</comment>
+    <requestid>148452</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>359157bf0ddc11b7ef709dda61bf8701</srcmd5>
+    <version>1.3.0</version>
+    <time>1359109422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>1aff13c2dbd45282cf2177a84eb9b859</srcmd5>
+    <version>1.3.0</version>
+    <time>1359465719</time>
+    <user>coolo</user>
+    <comment>- fixed log message for dbus test
+- fixed bash variable incrementation that sneaked in the code (forwarded request 149899 from thomasbiege)</comment>
+    <requestid>149986</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>f167bbe838437296bf714f593d9bb23e</srcmd5>
+    <version>1.3.0</version>
+    <time>1372059286</time>
+    <user>coolo</user>
+    <comment>- fixed typo in prepare_for_suse.sh (forwarded request 180420 from thomasbiege)</comment>
+    <requestid>180616</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>f167bbe838437296bf714f593d9bb23e</srcmd5>
+    <version>1.3.0</version>
+    <time>1379663235</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e709dfcfcc795a5502160defdcca4810</srcmd5>
+    <version>1.3.7</version>
+    <time>1386932318</time>
+    <user>coolo</user>
+    <comment>update to 1.3.7 (forwarded request 210607 from saigkill)</comment>
+    <requestid>210674</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28783551a194debc29a0d254caa0e5ff</srcmd5>
+    <version>1.3.9</version>
+    <time>1389953065</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>214125</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>28783551a194debc29a0d254caa0e5ff</srcmd5>
+    <version>1.3.9</version>
+    <time>1409301840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e472689458bb9e02032e6bf63806a4da</srcmd5>
+    <version>1.6.2</version>
+    <time>1411721528</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252171</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ff9a50c14863835dc33d2e0866d5b7d5</srcmd5>
+    <version>1.6.2</version>
+    <time>1419159887</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265799</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dba622c2d7c44f72198c4e40aa804a3b</srcmd5>
+    <version>1.6.4</version>
+    <time>1424255985</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286509</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b86d75b21d92b42909a0ceca7d13471b</srcmd5>
+    <version>2.1.0</version>
+    <time>1431668618</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306579</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>eeae9e69fde652e48fffeea0f4eb1f36</srcmd5>
+    <version>2.1.1</version>
+    <time>1439556399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322393</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>46da366b6f52a8674d2f9779b3bfa13c</srcmd5>
+    <version>2.2.0</version>
+    <time>1463393036</time>
+    <user>dimstar_suse</user>
+    <comment>lynis 2.2.0</comment>
+    <requestid>395000</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>95b103b8065f0ca5e844335bfd1ebdd3</srcmd5>
+    <version>2.3.3</version>
+    <time>1474723702</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>429489</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d29cbe5715b4b30c52dafb5b4948d033</srcmd5>
+    <version>2.3.4</version>
+    <time>1475242412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430885</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1098f81da7c5e59bb872edf3514de97e</srcmd5>
+    <version>2.4.0</version>
+    <time>1478377679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438712</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a103ac811e7de23e09d036a0289c2df9</srcmd5>
+    <version>2.4.8</version>
+    <time>1491896499</time>
+    <user>maxlin_factory</user>
+    <comment>lynis 2.4.8</comment>
+    <requestid>485081</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>14f68e19fa904b4bbc4d63453aba52b0</srcmd5>
+    <version>2.5.1</version>
+    <time>1497016658</time>
+    <user>dimstar_suse</user>
+    <comment>Lynis 2.5.1
+  * CVE-2017-8108: symlink attack may have allowed arbitrary file
+    overwrite or privilege escalation (bsc#1043463) (forwarded request 502423 from AndreasStieger)</comment>
+    <requestid>502424</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>758f2196ee7a44b09bd1e5d4e3168c0e</srcmd5>
+    <version>2.6.1</version>
+    <time>1517096396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569995</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>28f5f43968f73f53e088ea9bfb2a146b</srcmd5>
+    <version>2.6.5</version>
+    <time>1530191573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619349</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>be20ed70c9f3003062537f054f9e8a90</srcmd5>
+    <version>2.6.8</version>
+    <time>1537787542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636894</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dfd78f59f1dacac893c65232eb0428a0</srcmd5>
+    <version>2.6.9</version>
+    <time>1539251712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640827</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5114a2fc6c5954bd323efcc1df7ec55a</srcmd5>
+    <version>2.7.0</version>
+    <time>1541454822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646071</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>983ee73a7f4d2fa25e32f4609ed39d90</srcmd5>
+    <version>2.7.1</version>
+    <time>1549140608</time>
+    <user>coolo</user>
+    <comment>- update lynis to 2.7.1 (forwarded request 670554 from rfrohl)</comment>
+    <requestid>670591</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b65b75de73edc27ca850c18f2f3f6fce</srcmd5>
+    <version>2.7.2</version>
+    <time>1552206877</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682444</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>606a1f5660919cf25bebf7b06f667e06</srcmd5>
+    <version>2.7.4</version>
+    <time>1556107023</time>
+    <user>maxlin_factory</user>
+    <comment>lynis update to version 2.7.4 (forwarded request 697105 from rfrohl)</comment>
+    <requestid>697112</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>0b887cdc45fbe203b3d2aa209aa1ff8b</srcmd5>
+    <version>2.7.4</version>
+    <time>1559837815</time>
+    <user>dimstar_suse</user>
+    <comment>- Add these common packages to Dbus database whitelist: FirewallD, SystemD and Wicked to prevent these false-positives:
+  * Warning: Package firewalld-0.5.5-lp151.5.1.noarch installs an unknown D-BUS autostart/system service: FirewallD.conf  [ WARNING ]
+  * Warning: Package systemd-234-lp151.25.7.x86_64 installs an unknown D-BUS autostart/system service: org.freedesktop.network1.conf  [ WARNING ]
+  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.AUTO4.conf [ WARNING ]
+  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.DHCP4.conf [ WARNING ]
+  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.DHCP6.conf [ WARNING ]
+  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.Nanny.conf [ WARNING ]
+  * Warning: Package wicked-0.6.54-lp151.1.1.x86_64 installs an unknown D-BUS autostart/system service: org.opensuse.Network.conf  [ WARNING ]
+  * Warning: Package systemd-234-lp151.25.7.x86_64 installs an unknown D-BUS autostart/system service: org.freedesktop.network1.service [ WARNING ] (forwarded request 706287 from illuusio)</comment>
+    <requestid>707790</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b937476aa345783f32a80faa498b308e</srcmd5>
+    <version>2.7.5</version>
+    <time>1561494126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711811</requestid>
+  </revision>
+</revisionlist>

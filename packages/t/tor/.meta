@@ -1,0 +1,31 @@
+<package name="tor" project="openSUSE:Factory">
+  <title>Anonymizing overlay network for TCP (The Onion Router)</title>
+  <description>Tor is a connection-based low-latency anonymous communication system.
+
+This package provides the &quot;tor&quot; program, which serves as both a client and
+a relay node. Scripts will automatically create a &quot;%{toruser}&quot; user and
+a &quot;%{torgroup}&quot; group, and set tor up to run as a daemon when the system
+is rebooted.
+
+Applications connect to the local Tor proxy using the SOCKS
+protocol. The local proxy chooses a path through a set of relays, in
+which each relay knows its predecessor and successor, but no
+others. Traffic flowing down the circuit is unwrapped by a symmetric
+key at each relay, which reveals the downstream relay.
+
+Warnings: Tor does no protocol cleaning.  That means there is a danger
+that application protocols and associated programs can be induced to
+reveal information about the initiator. Tor depends on Privoxy and
+similar protocol cleaners to solve this problem. This is alpha code,
+and is even more likely than released code to have anonymity-spoiling
+bugs. The present network is very small -- this further reduces the
+strength of the anonymity provided. Tor is not presently suitable
+for high-stakes anonymity.
+
+Authors:
+--------
+  - R. Dingledine &lt;arma@seul.org&gt;
+</description>
+  <devel project="network" package="tor"/>
+  <url>http://tor.eff.org/</url>
+</package>

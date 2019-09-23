@@ -1,0 +1,12 @@
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -5,7 +5,6 @@ bin_PROGRAMS = watchman
+ DESTDIR ?= /
+ 
+ doc_DATA = README.markdown
+-docdir = ${prefix}/share/doc/watchman-$(VERSION)
+ 
+ THIRDPARTY_CPPFLAGS = -I$(top_srcdir)/thirdparty/jansson -I$(top_builddir)/thirdparty/jansson
+ JSON_LIB = -L. libwmanjson.a

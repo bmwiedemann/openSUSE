@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8af696183af6bc2a673c71b3e443931d</srcmd5>
+    <version>0.30.4</version>
+    <time>1387366345</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>211022</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4edabe865124db86d44e99ec1232b5ae</srcmd5>
+    <version>0.30.4</version>
+    <time>1399755469</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>233317</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4edabe865124db86d44e99ec1232b5ae</srcmd5>
+    <version>0.30.4</version>
+    <time>1409301270</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b97cfab92cb21d1041ccb6b44d8c6225</srcmd5>
+    <version>0.30.5</version>
+    <time>1413739688</time>
+    <user>coolo</user>
+    <comment>Upgrade to 0.30.5</comment>
+    <requestid>257558</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>552ac6021e88bdec333ddc0cefd4815e</srcmd5>
+    <version>0.33.2</version>
+    <time>1506195288</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.33.2 and fix build</comment>
+    <requestid>528153</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>00e4fb9e6f30a6aaa8c589a2fd40d7f4</srcmd5>
+    <version>0.33.2</version>
+    <time>1507755742</time>
+    <user>dimstar_suse</user>
+    <comment>Don't use libtool symlinks for the native library</comment>
+    <requestid>533073</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f05dacc50b80d7716ca898bf69f7f678</srcmd5>
+    <version>0.33.2</version>
+    <time>1509036360</time>
+    <user>dimstar_suse</user>
+    <comment>Remove the generated file before build so that it regenerates with the right path to xprops</comment>
+    <requestid>536735</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>af7f26193f5cf2763b8e869510a5ace9</srcmd5>
+    <version>0.33.2</version>
+    <time>1510150305</time>
+    <user>dimstar_suse</user>
+    <comment>Fix some warnings/errors</comment>
+    <requestid>539794</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d5ff2350023b5086f6d3e47644482452</srcmd5>
+    <version>0.33.2</version>
+    <time>1514983179</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>561159</requestid>
+  </revision>
+</revisionlist>

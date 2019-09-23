@@ -1,0 +1,11 @@
+<package name="python-shutilwhich" project="openSUSE:Factory">
+  <title></title>
+  <description>Backport of Python 3.3’s shutil.which function.
+
+This library monkey patches the standard library
+shutil.which on versions prior to Python 3.3.
+
+Use backports.shutil_which if monkey patching of
+the standard library function is not desirable.</description>
+  <devel project="devel:languages:python" package="python-shutilwhich"/>
+</package>

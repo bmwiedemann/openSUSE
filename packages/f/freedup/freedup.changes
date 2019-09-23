@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Oct 19 08:15:48 UTC 2015 - schwab@suse.de
+
+- Clean junk before building
+- nostrip.patch: Don't strip binaries
+
+-------------------------------------------------------------------
+Wed Jun 24 10:33:25 UTC 2015 - mpluskal@suse.com
+
+- Update license information
+
+-------------------------------------------------------------------
+Thu Jun  4 09:46:26 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6.3-3
+  * for list of changes see Changelog
+- Cleanup spec file with spec-cleaner
+- Use url for source
+
+-------------------------------------------------------------------
+Tue Jan 29 10:07:42 CET 2008 - mskibbe@suse.de
+
+- create package 
+

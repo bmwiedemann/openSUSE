@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12ec63259bf9c4fa943be4947cad7f45</srcmd5>
+    <version>0.8.0</version>
+    <time>1332241909</time>
+    <user>coolo</user>
+    <comment>Contains an update to 0.8.0, let's hope it doesn't break anything ;-)</comment>
+    <requestid>109264</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>12ec63259bf9c4fa943be4947cad7f45</srcmd5>
+    <version>0.8.0</version>
+    <time>1340184161</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>12ec63259bf9c4fa943be4947cad7f45</srcmd5>
+    <version>0.8.0</version>
+    <time>1359110317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>12ec63259bf9c4fa943be4947cad7f45</srcmd5>
+    <version>0.8.0</version>
+    <time>1379664522</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>c33d0a17759405b1a2fe875884c0bcad</srcmd5>
+    <version>0.8.0</version>
+    <time>1392300250</time>
+    <user>coolo</user>
+    <comment>- use new macros</comment>
+    <requestid>222111</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>c33d0a17759405b1a2fe875884c0bcad</srcmd5>
+    <version>0.8.0</version>
+    <time>1409303232</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>819b8856964adf23fbc3ed999fdac829</srcmd5>
+    <version>0.8.0</version>
+    <time>1413263530</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255728</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>f9a2e8e2944685a18de16e97f5801396</srcmd5>
+    <version>0.8.0</version>
+    <time>1499167827</time>
+    <user>dimstar_suse</user>
+    <comment>- add rpmlintrc as we run into rpmlint score limits because of the
+  C source files we ship.</comment>
+    <requestid>507884</requestid>
+  </revision>
+</revisionlist>

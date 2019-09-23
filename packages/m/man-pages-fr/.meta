@@ -1,0 +1,7 @@
+<package name="man-pages-fr" project="openSUSE:Factory">
+  <title>man-pages-fr</title>
+  <description>These are the French man pages of the Linux Documentation Project. Note
+that they are normally older than the English versions. For reference,
+you should use the English versions.</description>
+  <devel project="Documentation" package="man-pages-fr"/>
+</package>

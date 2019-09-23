@@ -1,0 +1,31 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2018-11-17
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1101107 packages do not build reproducibly from including kernel version
+
+Index: ptlib-2.10.11/configure.ac
+===================================================================
+--- ptlib-2.10.11.orig/configure.ac
++++ ptlib-2.10.11/configure.ac
+@@ -179,7 +179,7 @@ NEEDS_PTHREADS=yes
+ 
+ case "$target_os" in
+   linux*)          OSTYPE=linux ;
+-                   OSRELEASE="\"`uname -r`\"";
++                   OSRELEASE="\"2.6\"";
+ 		   OS_TAG="P_LINUX" ;
+                    need_pragma=yes ;
+ 		   AC_DEFINE(P_PTHREADS, 1, "PThreads found")
+Index: ptlib-2.10.11/configure
+===================================================================
+--- ptlib-2.10.11.orig/configure
++++ ptlib-2.10.11/configure
+@@ -4379,7 +4379,7 @@ NEEDS_PTHREADS=yes
+ 
+ case "$target_os" in
+   linux*)          OSTYPE=linux ;
+-                   OSRELEASE="\"`uname -r`\"";
++                   OSRELEASE="\"2.6\"";
+ 		   OS_TAG="P_LINUX" ;
+                    need_pragma=yes ;
+ 

@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Sep 10 12:35:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.8.18:
+  * Various country fixes
+- Remove merged patch pycountry-19.7.15-fix-reading-description.patch
+
+-------------------------------------------------------------------
+Fri Aug 16 06:52:52 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- add pycountry-19.7.15-fix-reading-description.patch to fix wrong
+  encoding when opening description files in setup.py 
+
+-------------------------------------------------------------------
+Tue Jul 23 10:31:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.7.15:
+  * Updates for more countries and various fixes
+
+-------------------------------------------------------------------
+Fri Mar 29 09:32:07 UTC 2019 - pgajdos@suse.com
+
+- version update to 18.12.8
+  - Switch API from "get + KeyError" to " get + default=None". This is
+    a subtle API-breaking change. Please update carefully. (#13416)
+  - Update to iso-codes 4.1.
+  - Fix #13394: incorrect KeyError shadowing in Subdivisions.get()
+  - Fix #13398: make lazy loading thread-safe.
+- run unit tests
+
+-------------------------------------------------------------------
+Sat Sep 16 01:29:15 UTC 2017 - smurf.anon@gmail.com
+
+- Update to version 17.5.14
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Wed Oct  5 03:25:59 UTC 2016 - mailaender@opensuse.org
+
+- update to version 1.20
+
+-------------------------------------------------------------------
+Wed Oct 08 2008 - Ciaran Farrell <cfarrell1980@googlemail.com>
+
+- Initial import and build of version 0.10

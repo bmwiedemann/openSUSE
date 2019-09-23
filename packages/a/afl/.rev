@@ -1,0 +1,401 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c35c9fb0cbd1855c6f3683d1814f113</srcmd5>
+    <version>1.57b</version>
+    <time>1427313922</time>
+    <user>dimstar_suse</user>
+    <comment>add the american fuzzing language</comment>
+    <requestid>292839</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc784d240d219222f391be78b7df434f</srcmd5>
+    <version>1.58b</version>
+    <time>1427736796</time>
+    <user>dimstar_suse</user>
+    <comment>afl 1.58b and libexedir improvement</comment>
+    <requestid>293476</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bbfe60a91b9383dd661e691b638da8ce</srcmd5>
+    <version>1.60b</version>
+    <time>1428652486</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295181</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7d61228e9dff4dcf0eee4f320306618d</srcmd5>
+    <version>1.62b</version>
+    <time>1428790273</time>
+    <user>dimstar_suse</user>
+    <comment>afl 1.62b (forwarded request 295378 from AndreasStieger)</comment>
+    <requestid>295379</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bbad7d1d768914bdc1c77abdcc26832d</srcmd5>
+    <version>1.69b</version>
+    <time>1429186454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297081</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f30177a8de7bfd170ad865b243940096</srcmd5>
+    <version>1.71b</version>
+    <time>1429658324</time>
+    <user>dimstar_suse</user>
+    <comment>afl 1.71b (forwarded request 298226 from AndreasStieger)</comment>
+    <requestid>298227</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e49df504cf7a56177611519f1baee18</srcmd5>
+    <version>1.73b</version>
+    <time>1430891339</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305275</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>97c4bf2651a0bd0acefcebe8bbf5a8e8</srcmd5>
+    <version>1.77b</version>
+    <time>1431247640</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305943</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>db4b525688240242ddc7674270a3a96b</srcmd5>
+    <version>1.78b</version>
+    <time>1431987680</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307842</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>db4b525688240242ddc7674270a3a96b</srcmd5>
+    <version>1.78b</version>
+    <time>1431987681</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307842</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e87531019b5c79509f8d1ba6a5f0cee</srcmd5>
+    <version>1.80b</version>
+    <time>1433232709</time>
+    <user>dimstar_suse</user>
+    <comment>afl 1.80b</comment>
+    <requestid>309667</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f6523b0efa0bd29c2c8d66aabac8ec1</srcmd5>
+    <version>1.83b</version>
+    <time>1434456316</time>
+    <user>coolo</user>
+    <comment>afl 1.83b</comment>
+    <requestid>312108</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eaf83f5522eff95579d23c547a36a42a</srcmd5>
+    <version>1.85b</version>
+    <time>1438899844</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320742</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c6d482bd88021fd927cb140f3d78337</srcmd5>
+    <version>1.86b</version>
+    <time>1439385178</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321770</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1628482f22422f979becc6274aa619ee</srcmd5>
+    <version>1.92b</version>
+    <time>1441727103</time>
+    <user>dimstar_suse</user>
+    <comment>afl 1.92b</comment>
+    <requestid>329519</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6a4aa3a40023cd11a728f59a8aaafd86</srcmd5>
+    <version>1.94b</version>
+    <time>1444130757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335943</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>007ecf44597a2d4da46d281a9fc4236a</srcmd5>
+    <version>1.95b</version>
+    <time>1447454174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344165</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c0f6c65ac1165980f113f74e02d4a930</srcmd5>
+    <version>1.96b</version>
+    <time>1450856989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349658</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e5e3e0df73b9ed0d4bd56fbdeedb7db6</srcmd5>
+    <version>2.01b</version>
+    <time>1455790027</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.01</comment>
+    <requestid>359642</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>767913d5ac695a2272b88d536cace58b</srcmd5>
+    <version>2.04b</version>
+    <time>1456434656</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361310</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>85572331ca9d924c6a5ae3b37d17f557</srcmd5>
+    <version>2.05b</version>
+    <time>1456821914</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.05b</comment>
+    <requestid>362828</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e1c08ff2bd624521d36db15bdd5b3168</srcmd5>
+    <version>2.09b</version>
+    <time>1459422193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381246</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0fd16dce5ebed81c2047edbcc9ac0b0e</srcmd5>
+    <version>2.10b</version>
+    <time>1461855261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390313</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cead3c2a1dc5319382c0a683cfa462e9</srcmd5>
+    <version>2.11b</version>
+    <time>1462428765</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393279</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cabb5e16f91716ecdf2060b80be7fc8c</srcmd5>
+    <version>2.13b</version>
+    <time>1464853130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399108</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>49349cb50a98f813061dc619c6a698a0</srcmd5>
+    <version>2.14b</version>
+    <time>1466326173</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.14b (forwarded request 402522 from AndreasStieger)</comment>
+    <requestid>402531</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aa85b19b1f41c48196100d8cf8abcde2</srcmd5>
+    <version>2.17b</version>
+    <time>1467359969</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.17b</comment>
+    <requestid>405155</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9a4dbdaa762893c4c8fceb98c64e9d93</srcmd5>
+    <version>2.21b</version>
+    <time>1469742399</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.21b</comment>
+    <requestid>414716</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8e48ec90552b9472e2317d6363b60382</srcmd5>
+    <version>2.32b</version>
+    <time>1472477748</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.32b:
+  - Added a check for AFL_HARDEN combined with AFL_USE_*SAN. Suggested by Hanno Boeck.
+  - Made several other cosmetic adjustments to cycle timing in the wake of the big tweak made in 2.31b.
+- Version 2.31b:
+  - Changed havoc cycle counts for a marked performance boost, especially
+    with -S / -d. See the discussion of FidgetyAFL in:
+    https://groups.google.com/forum/#!topic/afl-users/fOPeb62FZUg
+    While this does not implement the approach proposed by the authors of
+    the CCS paper, the solution is a result of digging into that research;
+    more improvements may follow as I do more experiments and get more
+    definitive data.
+- Version 2.30b:
+  - Made minor improvements to persistent mode to avoid the remote
+    possibility of &quot;no instrumentation detected&quot; issues with very low
+    instrumentation densities.
+  - Fixed a minor glitch with a leftover process in persistent mode.
+    Reported by Jakub Wilk and Daniel Stender.
+  - Made persistent mode bitmaps a bit more consistent and adjusted the way
+    this is shown in the UI, especially in persistent mode.
+- Version 2.29b:
+  - Made a minor #include fix to llvm_mode. Suggested by Jonathan Metzman.
+  - Made cosmetic updates to the docs.
+- Version 2.28b:
+  - Added &quot;life pro tips&quot; to docs/.
+  - Moved testcases/_extras/ to dictionaries/ for visibility.
+  - Made minor improvements to install scripts.
+  - Added an important safety tip.
+- Version 2.27b:
+  - Added libtokencap, a simple feature to intercept strcmp / memcmp and
+    generate dictionary entries that can help extend coverage. (forwarded request 422107 from msmeissn)</comment>
+    <requestid>422108</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ca74e618a16398028a9ce8ecc6d24626</srcmd5>
+    <version>2.35b</version>
+    <time>1477219906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436567</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d545fbda19625ba14aa6969b2f2ea031</srcmd5>
+    <version>2.39b</version>
+    <time>1486968575</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.39b:
+  - Improved error reporting in afl-cmin. Suggested by floyd.
+  - Made a minor tweak to trace-pc-guard support. Suggested by kcc.
+  - Added a mention of afl-monitor.
+
+- update to  2.38b:
+  * Added -mllvm -sanitizer-coverage-block-threshold=0 to
+    trace-pc-guard mode
+  * Fixed a cosmetic bad free() bug when aborting -S sessions
+  * Made a small change to afl-whatsup to sort fuzzers by name.
+  * Fixed a minor issue with malloc(0) in libdislocator
+  * Changed the clobber pattern in libdislocator to a slightly more
+    reliable one
+  * Added a note about THP performance
+  * Added a somewhat unofficial support for running afl-tmin with a
+    baseline &quot;mask&quot; that causes it to minimize only for edges that
+    are unique to the input file, but not to the &quot;boring&quot; baseline.
+  * &quot;Fixed&quot; a getPassName() problem with never versions of clang.</comment>
+    <requestid>455996</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>ec4b501d4c50da1313978bd08678ba18</srcmd5>
+    <version>2.39b</version>
+    <time>1489345471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477897</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>57752c02c42137ca7e6edf4480793ebc</srcmd5>
+    <version>2.41b</version>
+    <time>1492011470</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 2.41b:
+  - Addressed a major user complaint related to timeout detection. Timing out
+    inputs are now binned as &quot;hangs&quot; only if they exceed a far more generous
+    time limit than the one used to reject slow paths.
+- update to 2.40b:
+  - Fixed a minor oversight in the insertion strategy for dictionary words.
+    Spotted by Andrzej Jackowski.
+  - Made a small improvement to the havoc block insertion strategy.
+  - Adjusted color rules for &quot;is it done yet?&quot; indicators.</comment>
+    <requestid>487488</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7fbfd8fecf54971d0c2b26aea9ec8610</srcmd5>
+    <version>2.44b</version>
+    <time>1499152240</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.44b</comment>
+    <requestid>507727</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f2cd2248f217c48d48674fa270aca0a4</srcmd5>
+    <version>2.45b</version>
+    <time>1499598256</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.45b:
+  - Added strstr, strcasestr support to libtokencap. Contributed by
+    Daniel Hodson.
+  - Fixed a resumption offset glitch spotted by Jakub Wilk.
+  - There are definitely no bugs in afl-showmap -c now.</comment>
+    <requestid>508930</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c8763e4829d04296667284a307c42eff</srcmd5>
+    <version>2.49b</version>
+    <time>1501067186</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.49b
+  - Added AFL_TMIN_EXACT to allow path constraint for crash minimization.
+  - Added dates for releases (retroactively for all of 2017).
+- Version 2.48b
+  - Added AFL_ALLOW_TMP to permit some scripts to run in /tmp.
+  - Fixed cwd handling in afl-analyze (similar to the quirk in afl-tmin).
+  - Made it possible to point -o and -f to the same file in afl-tmin.
+- Version 2.47b
+  - Fixed cwd handling in afl-tmin. Spotted by Jakub Wilk.
+- Version 2.46b
+  - libdislocator now supports AFL_LD_NO_CALLOC_OVER for folks who do not
+    want to abort on calloc() overflows.
+  - Made a minor fix to libtokencap. Reported by Daniel Stender.
+  - Added a small JSON dictionary, inspired on a dictionary done by Jakub Wilk. (forwarded request 512610 from msmeissn)</comment>
+    <requestid>512611</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>b30044222b6c770b2a993257c0652100</srcmd5>
+    <version>2.49b</version>
+    <time>1501572313</time>
+    <user>maxlin_factory</user>
+    <comment>- include docs/README</comment>
+    <requestid>513056</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e81fb0fea818447a41a6c11bab29df50</srcmd5>
+    <version>2.51b</version>
+    <time>1504521546</time>
+    <user>dimstar_suse</user>
+    <comment>afl 2.51b</comment>
+    <requestid>520490</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ffd3bd2daa7929b375a62c97d54be750</srcmd5>
+    <version>2.52b</version>
+    <time>1510045241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539104</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>1871a0125bbbbb6474e1a968f1c1b524</srcmd5>
+    <version>2.52b</version>
+    <time>1535705281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632354</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0de895c49b90ed5dc6037cc2ea2af3a0</srcmd5>
+    <version>2.52c</version>
+    <time>1561405994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711649</requestid>
+  </revision>
+</revisionlist>

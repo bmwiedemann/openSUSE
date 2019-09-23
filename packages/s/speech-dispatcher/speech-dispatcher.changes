@@ -1,0 +1,367 @@
+-------------------------------------------------------------------
+Wed Jun 12 14:51:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Thu Mar 28 14:33:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce scriptlets' hard dependency by switching to
+  %systemd_ordering.
+- Modernize specfile a bit: make use of %make_install, and drop
+  redundant "--sysconfdir=%_sysconfdir" from the %configure call.
+
+-------------------------------------------------------------------
+Wed Mar 27 14:24:59 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert setting includedir explicitly: upstream had this fixed in
+  2015 in the build system directly (bsc#1129586 is thus no longer
+  applicable since speech-dispatcher 0.8.4).
+
+-------------------------------------------------------------------
+Tue Mar 19 11:52:44 CET 2019 - ro@suse.de
+
+- set includedir to fix the entries in the pkg-config file
+  (bsc#1129586).
+
+-------------------------------------------------------------------
+Thu Feb 28 21:39:28 UTC 2019 - mgorse@suse.com
+
+- Update to version 0.9.0:
+  * Add modules for non-free Baratinoo (VoxyGen) and Kali speech
+    syntheses.
+  * Add configuration file for the Mary-TTS system.
+  * Add configuration file for espeak-ng + mbrola.
+  * Set the pulse client name when using the generic module with
+      paplay.
+  * espeak-*-mbrola-generic: Update voice list.
+  * Auto-detect module availability.
+  * Make generic module provide voice list.
+  * Add systemd service file.
+- Update docs
+- Mark COPYING.LGPL with %license
+- Update source URL.
+
+-------------------------------------------------------------------
+Fri Aug  3 14:12:32 UTC 2018 - mgorse@suse.com
+
+- Fix enabling of espeak-ng  in speechd.conf to use
+  espeak-ng.conf, rather than espeak.conf.
+
+-------------------------------------------------------------------
+Mon Mar  5 14:38:33 UTC 2018 - aloisio@gmx.com
+
+- Use espeak-ng when available
+
+-------------------------------------------------------------------
+Wed Feb  7 18:18:23 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.8.8
+  * Add German translation, thanks to Chris Leick for the patch
+  * Fix some spelling mistakes, thanks to Paul Gevers for the patch
+  * Some slight code improvements
+
+-------------------------------------------------------------------
+Wed Jan  3 12:06:23 UTC 2018 - dimstar@opensuse.org
+
+- Add baselibs.conf: create libspeechd2-32bit, required by
+  libQt5TextToSpeech5-32bit.
+
+-------------------------------------------------------------------
+Thu Nov 30 16:40:45 UTC 2017 - dimstar@opensuse.org
+
+- Drop py_requires: this is a static python2-dependency on a
+  python3 package.
+
+-------------------------------------------------------------------
+Fri Sep 15 17:10:55 UTC 2017 - mgorse@suse.com
+
+- Update to version 0.8.7:
+  + Further fixes to spd-conf, which should now work properly.
+  + Split the espeak-ng driver code into its own source file.
+  + Add a work-around to the espeak-ng driver to account for spaces
+    in voice names which recently appeared in espeak-ng git master.
+    This will properly be fixed in 0.9.
+  + Voice names are not forced to lower case, due to espeak-ng
+    git master now having multi-case voice names.
+  + Fix stripped audio output from the flite module.
+  + Further code and build improvements.
+- Changes from version 0.8.6:
+  + Various internal code improvements.
+  + Fix more compiler warnings.
+  + Python bug fixes with thanks to Sebastian Humenda.
+- Changes from version 0.8.5:
+  + Use GLib main loop for the main server thread
+  + Implement a shutdown timer in the server
+  + Add support for espeak-ng.
+  + Document an ibmtts configuration option
+  + Removal of configuration options in the code that were not
+    actually being used.
+  + Added a command-line argument to allow for custom modules
+    location.
+- Add ANNOUNCE; remove ChangeLog (no longer shipped)
+
+-------------------------------------------------------------------
+Sat Jul  1 07:38:39 UTC 2017 - dimstar@opensuse.org
+
+- Drop %py_requires from python3-speechd: this is a python2
+  dependency on a python3 package.
+
+-------------------------------------------------------------------
+Tue Oct  4 14:05:39 CEST 2016 - ro@suse.de
+
+- speech-dispatcher.logrotate: move options to local scope
+  to not affect logrotate configuration for other services
+  (bsc#1001618)
+
+-------------------------------------------------------------------
+Mon May 16 19:09:53 UTC 2016 - mgorse@suse.com
+
+- Update to version 0.8.4:
+  + Updated documentation for required dependencies and where to
+    find them.
+  + Removed unused code.
+  + Fixed compiler and GLib warnings.
+  + Cleanup header definitions and inclusions.
+  + Enabled silent rules by default
+  + Fix language identification references.
+
+-------------------------------------------------------------------
+Sun Jul 19 08:50:46 UTC 2015 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to version 0.8.3:
+* Add API methods to get language, rate, pitch, and volume.
+* A lot of code cleanup, and compatibility improvements.
+* Removed all references to GNOME Speech, since it has long since been
+  deprecated.
+* Fix some inconsistancy in the SSIP API for voice type.
+* The SET VOICE SSIP command is now deprecated, and will be removed in 0.9.
+* The C library API now provides macro definitions for major, minor, and micro
+  versions in libspeechd_versions.h.
+* The libsndfile library is now a mandetory dependency to improve the user
+  experience around sound icons.
+* Fix a possible crash in the festival driver (drop bnc-831609-festival-crash.patch).
+* Add a configuration option to the espeak driver to show voice variants in the
+  voice list. This will remain until a proper variants retrieval API is added
+  for compatible synthesizers.
+
+-------------------------------------------------------------------
+Fri Mar 27 20:03:32 UTC 2015 - benoit.monin@gmx.fr
+
+- cleanup spec file with spec-cleaner
+- update to version 0.8.2:
+  * Add convenience methods to the libspeech API to free module
+    list and voice data structures.
+  * Add method to the libspeechd API to get the current output
+    module, and update the documentation accordingly.
+  * The API is now licensed under the GNU Lesser General Public
+    License v2.1 or later.
+  * The spdconf configuration utility is now translatable.
+  * Fixed a bug where speech-dispatcher would fail to start if the
+    user configuration directory existed but did not contain a
+    config file.
+  * Install the spdconf desktop file.
+- add rcspeech-dispatcherd symlink for service
+
+-------------------------------------------------------------------
+Sat Dec 20 09:58:09 UTC 2014 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 0.8.1
+  + User dictionaries support added to the IBMTTS driver
+  + Added a pico configuration file for use with the generic driver
+  + Better support for multi-arch enabled distros to facilitate the use of the
+    i386 only IBMTTS driver being easily installable on an amd64 system
+  + Bug fixes, and documentation cleanup
+- Don't remove configuration in /usr/share/speech-dispatcher/config,
+  because it is used by its configuration program to create user
+  specific settings, while duplicate of it in /etc is system-wide
+
+-------------------------------------------------------------------
+Fri May 23 11:45:01 UTC 2014 - jsegitz@novell.com
+
+- added necessary macros for systemd files
+
+-------------------------------------------------------------------
+Fri Sep 27 16:23:22 UTC 2013 - mgorse@suse.com
+
+- Add bnc-831609-festival-crash.patch -- fix crash when unable to init
+  festival module.
+
+-------------------------------------------------------------------
+Mon Jun 17 11:20:12 UTC 2013 - p.drouand@gmail.com
+
+- Use systemd instead of sysvinit
+- Remove %clean section
+
+-------------------------------------------------------------------
+Sun May  5 12:51:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8:
+  + No changes since 0.8beta1.
+
+-------------------------------------------------------------------
+Fri Apr 19 19:55:42 UTC 2013 - dimstar@opensuse.org
+
+- Update to 0.8beta1:
+  + Python 3 compatibility of the Python bindings.
+  + User configuration, logs and runtime files are now stored in
+    directories according to the XDG specification.
+  + Internationalization of spd-say and translations into
+    Hungarian and Czech languages.
+  + Espeak output can now use libsonic for faster speech.
+  + Pico output module.
+  + Lots of bugfixes, cleanups and fine-tunnings.
+- Drop speech-dispatcher_paths+files.patch: fixed upstream.
+- Replace python-setuptools with python3-setuptools.
+- Add intltool and libtool BuildRequires: new dependencies.
+- Rename python-speechd to python3-speechd, as the bindings are
+  for python 3.
+
+-------------------------------------------------------------------
+Mon Jul 18 09:13:52 CEST 2011 - vuntz@opensuse.org
+
+- Add a gnome-speech Obsoletes: in GNOME 3, gnome-speech is
+  deprecated and obsoleted by the use of speech-dispatcher.
+
+-------------------------------------------------------------------
+Sun Sep 19 13:08:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.7.1:
+  + Easy configuration of the client communication method using a
+    single environment variable SPEECHD_ADDRESS.
+  + Advanced autospawn -- server is autostarted only when its
+    communication channel matches the communication channels
+    requested by the client. Local server is not started when
+    client attempts to connect to a remote server.
+  + Both libspeechd and python library now report a detailed error
+    information in case of connection failure (why has connect
+    failed, why was it not possible to autostart the server, what
+    has the server reported etc.) Clients can directly show this
+    information to the user and the user doesn't have to search
+    them in logfiles.
+  + Improvements in memory usage
+  + Cleanup of priorities of messages in logging output
+  + Various bugfixes, cleanups and fine-tunnings
+- Changes from version 0.7:
+  + Speech Dispatcher uses UNIX style sockets as default means of
+    communication, thus avoiding the necessity to choose a numeric
+    port and greatly easying session integration
+  + Autospawn -- server is started automatically when a client
+    requests it. It can be forbidden in the appropriate server
+    configuration file
+  + Pulse Audio output reworked and fixed
+  + Dispatcher runs as user service (not system service) by default
+    and doesn't require the previous presence of
+    ~/.speech-dispatcher directory
+  + All logging is now managed centrally, not by separate options
+  + Graceful audio fallback (e.g. if pulse is not working, use
+    Alsa...)
+  + Audio output to different soundsystems through the libao
+    library
+  + Various bugfixes and fine-tunnings
+  + Updated documentation
+- Drop speech-dispatcher_python-makefile.patch,
+  speech-dispatcher_extlink.patch, speech-dispatcher_getline.patch,
+  speech-dispatcher_libspeechd.patch: fixed upstream.
+- Update speech-dispatcher_paths+files.patch from Debian.
+- Add libao-devel BuildRequires, and pass --with-libao to
+  configure.
+
+-------------------------------------------------------------------
+Wed Apr  7 16:14:39 CEST 2010 - vuntz@opensuse.org
+
+- Completely rework the package, based on the Fedora and Debian
+  packages.
+- Rename the source package to speech-dispatcher, to follow
+  upstream name.
+
+-------------------------------------------------------------------
+Sun Jan 31 10:24:11 CET 2010 - lnussel@suse.de
+
+- don't enable daemon by default
+
+-------------------------------------------------------------------
+Tue Sep  1 09:30:16 CEST 2009 - coolo@novell.com
+
+- again: use new python macros
+
+--------------------------------------------------------------------
+Wed Aug 19 20:30:03 CEST 2009 - marco@suse.de
+
+- speechd.spec: using py_sitedir instead of python_sitelib
+
+--------------------------------------------------------------------
+Tue Aug 18 23:49:17 CEST 2009 - marco@suse.de
+
+- added build options for espeak support
+- --with-pulse --with-espeak
+- buildrequirements espeak-devel and pulseaudio-devel
+
+-------------------------------------------------------------------
+Sun Aug  9 08:40:43 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Mon Jun  8 00:10:50 CEST 2009 - ro@suse.de
+
+- adapt getline definition to glibc
+
+-------------------------------------------------------------------
+Thu Mar 26 13:11:21 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Mon Sep 29 12:19:52 CEST 2008 - marco@suse.de
+
+- fixed start-script (bug#430563) 
+
+-------------------------------------------------------------------
+Tue Sep 16 23:40:08 CEST 2008 - dmueller@suse.de
+
+- move python requires to python subpackage
+- fix requires
+
+-------------------------------------------------------------------
+Mon Sep 15 16:08:29 CEST 2008 - dmueller@suse.de
+
+- fix filelist
+
+--------------------------------------------------------------------
+Sun Sep 14 03:39:23 CEST 2008 - marco@suse.de
+
+- added devel section to spec-file
+- added suse_python patch to insert start-script
+  and to use DESTDIR in the python-bindings makefile
+
+--------------------------------------------------------------------
+Thu Sep 11 02:50:06 CEST 2008 - marco@suse.de
+
+- updated to 0.6.7
+--------------------------------------------------------------------
+Fri Feb 22 13:28:38 CET 2008 - marco@suse.de
+
+- modified the default config to work with espeak by default
+
+--------------------------------------------------------------------
+Fri Feb 22 13:27:04 CET 2008 - marco@suse.de
+
+- added section in spec file for speechd-python
+- modified makefile for python-bindings (added DESTDIR)
+
+--------------------------------------------------------------------
+Fri Feb 15 15:27:58 CET 2008 - marco@suse.de
+
+- updated to version 0.6.6
+- added a suse init-script /etc/init.d/speechd
+- added the link /usr/sbin/rcspeechd
+
+-------------------------------------------------------------------
+Wed Oct 31 01:54:38 CET 2007 - ro@suse.de
+
+- include assert for alsa source
+
+
+

@@ -1,0 +1,36 @@
+--- systester-1.5.1.orig/systester.pro
++++ systester-1.5.1/systester.pro
+@@ -1,9 +1,9 @@
+ include (conf.pri)
+ TEMPLATE = app
+ LANGUAGE = C++
+-
++DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
+ CONFIG += qt warn_on release -static
+-QT += network 
++QT += gui network widgets 
+ 
+ FORMS = MainWindow.ui \
+  SplashWindow.ui \
+--- systester-1.5.1.orig/SplashForm.cpp
++++ systester-1.5.1/SplashForm.cpp
+@@ -43,8 +43,8 @@ SplashWindow::hideButtons ()
+   ui->closeButton->hide ();
+   ui->waitEdit->show ();
+   ui->copyrightEdit->clearHistory ();
+-  ui->copyrightEdit->setOpenExternalLinks (TRUE);
+-  ui->copyrightEdit->setOpenLinks (TRUE);
++  ui->copyrightEdit->setOpenExternalLinks (true);
++  ui->copyrightEdit->setOpenLinks (true);
+ }
+ 
+ void
+@@ -53,7 +53,7 @@ SplashWindow::showButtons ()
+   ui->licenseButton->show ();
+   ui->closeButton->show ();
+   ui->waitEdit->hide ();
+-  ui->copyrightEdit->setVisible (TRUE);
++  ui->copyrightEdit->setVisible (true);
+ }
+ 
+ void

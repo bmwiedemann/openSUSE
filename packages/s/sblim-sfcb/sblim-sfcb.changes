@@ -1,0 +1,1293 @@
+-------------------------------------------------------------------
+Fri Feb 22 07:15:56 UTC 2019 - Franck Bui <fbui@suse.com>
+
+- Drop use of $FIRST_ARG in .spec
+
+  The use of $FIRST_ARG was probably required because of the
+  %service_* rpm macros were playing tricks with the shell positional
+  parameters. This is bad practice and error prones so let's assume
+  that no macros should do that anymore and hence it's safe to assume
+  that positional parameters remains unchanged after any rpm macro
+  call.
+
+-------------------------------------------------------------------
+Tue May 15 13:19:28 UTC 2018 - adam.majer@suse.de
+
+- service_init_certs.patch: Certificates should be generated at
+  runtime, not during installation. The script should also take
+  config file values for certification locations, in case it was
+  adjusted by the user. (bsc#1092281)
+- missing_makefile_dependencies.patch: fix Makefile.am dependencies
+
+-------------------------------------------------------------------
+Fri Feb  9 10:02:14 UTC 2018 - adam.majer@suse.de
+
+- Fix misapplied 0022-Fix-crash-caused-by-NULL-content_type.patch
+  (bnc#1079937, CVE-2018-6644)
+
+-------------------------------------------------------------------
+Thu Feb  8 14:25:07 UTC 2018 - adam.majer@suse.de
+
+- 0023-Alias-sblim-sfcb-service-to-sfcb-and-sfcbd.patch: use correct
+  alias names for services. (bsc#1072448)
+
+-------------------------------------------------------------------
+Mon Dec  4 12:19:22 UTC 2017 - mvetter@suse.com
+
+- Deleted patches:
+  * sblim-sfcb-1.4.8-fix-bashisms.patch
+  * sblim-sfcb-1.4.9-fix-null-deref.patch
+  * sfcbd-alias.patch
+  All of them got renamed in the change from Nov 28 2018
+
+-------------------------------------------------------------------
+Mon Dec  4 09:42:11 UTC 2017 - adam.majer@suse.de
+
+- Drop version dependency on cmpi-provider-register so we can
+  install sblim-sfcb on SLE11SP4
+- Merge a few more missing changes from SLE to OpenSUSE
+  * retain compatibility service link for migration purposes
+  * do not clobber config paths
+  * reference correct systemd service name
+
+-------------------------------------------------------------------
+Tue Nov 28 15:13:55 UTC 2017 - kkaempf@suse.com
+
+- Merge SLE and openSUSE versions
+
+- Added patches
+  * 0011-Return-value-from-non-void-function.patch
+  * 0012-Configurable-local-socket-group-permission-for-daemo.patch
+  * 0013-Fix-bashisms-in-scripts.patch
+  * 0015-Define-UINT16_MAX.patch
+  * 0016-Externalize-strncpy_kind.patch
+  * 0017-Add-braces-around-else.patch
+  * 0018-Adapt-to-bison-3.x-replace-YYPARSE_PARAM.patch
+  * 0021-revert-upstream-mistake.patch
+  * 0024-CURLOPT_POSTREDIR-might-not-be-defined.patch
+
+- Renamed patches
+  * sblim-sfcb-1.4.9-fix-null-deref.patch to
+      0014-Fix-lookupProviders-null-pointer-dereference.patch
+  * fix_uninitialized_value.patch to
+      0019-Fix-uninitialized-value-reported-by-valgrind.patch
+  * link_certificate_if_missing.patch to
+      0020-link-certificate-if-missing.patch
+  * set_default_content_type.patch to
+      0022-Fix-crash-caused-by-NULL-content_type.patch
+  * sfcbd-alias.patch to
+      0023-Alias-sblim-sfcb-service-to-sfcb-and-sfcbd.patch
+
+- Dropped patches (included in 1.4.9)
+  * 3340426.patch
+  * a9dda19.patch
+  * decd3c6b9.patch
+
+-------------------------------------------------------------------
+Tue Jun  6 12:50:02 UTC 2017 - adam.majer@suse.de
+
+- link_certificate_if_missing.patch: create clist.pem as a symlink
+  to already existing server.pem if it does not exist. This is
+  needed for upgrades from SLE11SP4 versions that did not use this
+  certificate (bnc#1041885)
+- reintroduce symlink for legacy cmpi-provider-register for
+  upgrades from SLE11 (bnc#1041885)
+
+-------------------------------------------------------------------
+Mon Mar  6 10:10:28 UTC 2017 - adam.majer@suse.de
+
+- revert mistaken change that disabled basic authentication
+  on default install (bnc#1023820)
+
+-------------------------------------------------------------------
+Thu Jan  5 13:16:00 UTC 2017 - adam.majer@suse.de
+
+- reference correct service name for service restarts on upgrades
+  (bsc#1018324)
+- avoid use wildcards to reference single config files
+
+-------------------------------------------------------------------
+
+Tue Dec 13 16:52:52 UTC 2016 - adam.majer@suse.de
+
+- fix_uninitialized_value.patch: Initialize structure value(s)
+  before using it (bsc#1015155)
+- set_default_content_type.patch: default content type was not
+  set leading to a crash if Content-Type was not set in the
+  HTTP request. (bsc#1015155)
+- remove sed-generated source file distributed in the tarball
+- add support for text/xml mimetype
+- no longer overwrite config file on upgrades
+- upstream bug fixes:
+  3340426.patch - Some associatorname CIM operations hang
+  a9dda19.patch - CMPIRole not passed to provider context
+
+-------------------------------------------------------------------
+Wed Nov 16 12:15:24 UTC 2016 - adam.majer@suse.de
+
+- add sslNoSSLv3 and sslNoTLSv1 configuration options
+  (decd3c6b9.patch, bsc#923349, bsc#1008130)
+
+-------------------------------------------------------------------
+Thu Sep 17 11:32:42 UTC 2015 - mvetter@suse.com
+
+- Remove sfcb/sfcbd symlinks. bsc#906070
+- sfcbd-alias.patch: Add alias for those names instead
+
+-------------------------------------------------------------------
+Tue Sep  1 13:44:19 UTC 2015 - mvetter@suse.com
+
+- Fix bsc#942628 lookupProviders() null pointer dereference:
+  sblim-sfcb-1.4.9-fix-null-deref.patch
+
+-------------------------------------------------------------------
+Mon Jun 22 11:24:44 UTC 2015 - kkaempf@suse.com
+
+- force GNU inline semantics for GCC5.
+
+-------------------------------------------------------------------
+Fri Nov 28 08:53:06 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.9
+  New features:
+  - [sfcb-tix:#97] Add a select timeout for req handlers
+    see httpReqHandlerTimeout in sfcb.cfg
+
+  Bugs fixed:
+  - [sfcb-tix:#106] CMPIRole not passed to provider context
+  - [sfcb-tix:#107] Quietly unpack schema at make postinstall
+  - [sfcb-tix:#108] Some associatorname CIM operations hang
+
+- new patches
+  * 0002-providerMgr-add-prototypes.patch
+  * 0004-Check-for-existance-of-autoconfiscate.sh-before-call.patch
+  * 0009-Improvide-error-message-if-ClassProvider-for-root-in.patch
+  * 0010-Enable-authentication-by-default.patch
+
+- obsolete/rebased patches
+  * 0002-Enable-broker.LogMessage-and-broker.trace.patch renamed to
+    0003-Enable-broker.LogMessage-and-broker.trace.patch
+  * 0002-Enable-broker.LogMessage-and-broker.trace.patch renamed to
+    0003-Enable-broker.LogMessage-and-broker.trace.patch
+  * 0006-Define-YYPARSE_PARAM-early-for-cimXmlOps-and-cimXmlP.patch
+    renamed to 0005-Define-YYPARSE_PARAM-early-for-cimXmlOps-and-cimXmlP.patch
+  * 0007-Don-t-crash-if-class-repo-is-not-initialized.patch renamed
+    to 0006-Don-t-crash-if-class-repo-is-not-initialized.patch
+  * 0008-Increase-max-trace-msg-len-to-4096.patch renamed to
+    0007-Increase-max-trace-msg-len-to-4096.patch
+  * 0010-Properly-shut-down-if-provider-crashed.patch renamed to
+    0008-Properly-shut-down-if-provider-crashed.patch
+
+-------------------------------------------------------------------
+Wed Nov 19 23:37:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in scripts
+- add patches:
+  * sblim-sfcb-1.4.8-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Sep 17 09:25:37 UTC 2014 - kkaempf@suse.com
+
+- call service_add_pre unconditionally
+
+-------------------------------------------------------------------
+Thu May  8 14:25:24 UTC 2014 - kkaempf@suse.com
+
+- Pre-require aaa_base for /usr/sbin/service (bnc#874811)
+
+-------------------------------------------------------------------
+Tue May  6 09:25:54 UTC 2014 - kkaempf@suse.com
+
+- create /usr/sbin/rcsfcb, cmpi-provider-register depends on it
+  bnc#874811
+
+-------------------------------------------------------------------
+Fri Apr 25 10:02:31 UTC 2014 - kkaempf@suse.com
+
+- Ensure cmpi-provider-register is present (bnc#874811)
+
+-------------------------------------------------------------------
+Fri Mar 28 11:28:45 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.8
+  New features:
+  - [sfcb-tix:#99] Add config property enableSslCipherServerPref
+  - [sfcb-tix:#101] Add config property indicationCurlUseExpect100
+  - [sfcb-tix:#102] Add config property indicationCurlHonorRedirect
+  - [sfcb-tix:#105] Add config property embeddedObjectEncoding
+
+  See README.conf for details about the new config properties
+
+  Bugs fixed:
+  - [sfcb-tix:#94] Increase sigChldWaitTime
+  - [sfcb-tix:#95] Do not release pthread lock prior to stopBroker() exit
+  - [sfcb-tix:#89] Gracefully handle providers doing abort()
+  - [sfcb-tix:#96] Provider should close req handler on shutdown
+  - [sfcb-tix:#98] sfcbmofpp segfaults if mof file ends with block comment without newline
+  - [sfcb-tix:#100] Fix some compiler warnings & errors on newer distros
+  - [sfcb-tix:#103] Unsafe usage of strncpy in providerRegister.c
+
+- Patches dropped
+  0009-Catch-SIGABRT.patch - upstream
+  0011-Can-t-use-srcdir-in-TESTS.patch - upstream
+
+-------------------------------------------------------------------
+Tue Jan  7 15:11:12 UTC 2014 - kkaempf@suse.com
+
+- Fix SLE10 build
+
+-------------------------------------------------------------------
+Thu Jan  2 10:10:24 UTC 2014 - kkaempf@suse.com
+
+- Update to 1.4.7
+  New features: (see README.conf)
+  - [sfcb-tix:#86] Support configurable SSL Diffie Hellman parameters file
+  - [sfcb-tix:#87] Support configurable SSL ECDH elliptic curve name
+  - [sfcb-tix:#76] Identify running SFCB processes in ps output
+
+  Bugs fixed:
+  - [sfcb-tix:#81] Bad CMPIType assignment in cimXmlOps
+  - [sfcb-tix:#82] ClientEnvFT for SfcbLocal doesn't match SFCC
+  - [sfcb-tix:#83] Add Alternate getObjectPath() for SfcbLocal Connections
+  - [sfcb-tix:#84] Upcall mutex not freed on shutdown
+  - [sfcb-tix:#85] SFCB: SfcbLocal interface should expose markHeap() and releaseHeap()
+  - [sfcb-tix:#88] Ensure unique semaphore keys across multiple http adapters
+  - [sfcb-tix:#92] indicationDeliveryThreadLimit not properly enforced
+  - [sfcb-tix:#93] ProfileProvider segfault while stopping slpUpdate thread
+  - [sfcb-tix:#90] Problems with enableInteroOp=false
+
+- rebased and cleaned up patch list
+  Patches dropped (upstreamed):
+   0001-Makefile.am-add-autoconfiscate.sh-to-dist.patch
+   0003-providerMgr-add-prototypes.patch
+   0005-Return-value-from-non-void-function.patch
+   0006-Configurable-local-socket-group-permission-for-daemo.patch
+   0007-Check-for-existance-of-autoconfiscate.sh-before-call.patch
+   0015-Fix-startup-without-interop-namespace.patch
+
+  Patches rebased:
+   0001-Makefile.am-Honor-build-environment.patch
+   0002-Enable-broker.LogMessage-and-broker.trace.patch
+   0006-Define-YYPARSE_PARAM-early-for-cimXmlOps-and-cimXmlP.patch
+   0007-Don-t-crash-if-class-repo-is-not-initialized.patch
+   0008-Increase-max-trace-msg-len-to-4096.patch
+   0009-Catch-SIGABRT.patch
+   0010-Properly-shut-down-if-provider-crashed.patch
+   0011-Can-t-use-srcdir-in-TESTS.patch
+
+-------------------------------------------------------------------
+Thu Dec 19 10:55:15 UTC 2013 - kkaempf@suse.com
+
+- BuildRequires sblim-sfcCommon-devel
+
+-------------------------------------------------------------------
+Thu Nov 28 10:05:31 UTC 2013 - kkaempf@suse.com
+
+- Added patches (pending upstream)
+  - 0001-Define-YYPARSE_PARAM-early-for-cimXmlOps-and-cimXmlP.patch
+  - 0001-sfcb-tix-61-classProviderSf.c-SIGSEGV-if-repo-is-not.patch
+  - 0004-Makefile.am-Honor-build-environment.patch
+  - 0005-providerMgr-add-prototypes.patch
+  - 0006-Enable-broker.LogMessage-and-broker.trace.patch
+  - 0008-fileRepository-show-which-directory-could-not-be-ope.patch
+  - 0011-Configurable-local-socket-group-permission-for-daemo.patch
+  - 0014-Ignore-sblim-sfcb.service.pre.patch
+  - 0015-Reflect-provider-information-in-ps-via-argv.patch
+  - 0019-Fix-segfault-in-classProviderSf.c-sfcb-tix-61.patch
+  - 0021-Increase-max-trace-msg-len-to-4096.patch
+  - cant-use-srcdir-in-tests.patch
+  - interop-debug.patch
+  - strip-postinstall.patch
+
+-------------------------------------------------------------------
+Thu Nov 28 10:04:46 UTC 2013 - kkaempf@suse.com
+
+- Dropped patches (included upstream)
+  - 0004-Don-t-call-tool_mm_flush-during-OPS_LoadProvider.patch
+  - 0006-Reflect-provider-information-in-ps-via-argv.patch
+  - 26000-tix69-bnc830525-No-logger-pipe-for-sfcblocal.patch
+  - fix-mofc-include-patch.patch
+  - pending-upstream.patch
+  - sblim-resource.patch
+
+-------------------------------------------------------------------
+Thu Nov 28 10:00:48 UTC 2013 - kkaempf@suse.com
+
+- Changes in 1.4.6
+  ================
+
+  New features:
+  - [sfcb-tix:#64] Support maxObjCount for HTTP chunking
+  - [sfcb-tix:#70] Reload SSL context-without restarting httpd
+
+  Bugs fixed:
+  - [sfcb-tix:#61] classProviderSf.c SIGSEGV if repo is not initialized
+  - [sfcb-tix:#63] Improve NamespaceProvider and ClassProvider Consistency
+  - [sfcb-tix:#66] SFCB_TRACE_VAR should be more restrictive
+  - [sfcb-tix:#60] fix providerMgr trace for localconnect
+  - [sfcb-tix:#68] reinitialize select timeout in SSL handshake
+  - [sfcb-tix:#79] sfcc cannot reconnect with sfcb if sfcb restarts
+                   [bugs:#2663]
+  - [sfcb-tix:#69] Fix logger for long-lived clients, was: "#2347 Don't
+    spawn logger for clients"
+  - [sfcb-tix:#72] Make systemddir configurable
+  - [sfcb-tix:#74] providerRegister: check for and prevent buffer
+    overflows
+  - [sfcb-tix:#75] fileRepository: show which directory could not be
+    opened
+  - [sfcb-tix:#78] Missing null check in ift_getObjectPath, transposed
+    debug stmts in memAlloc
+  - [sfcb-tix:#78] Simplify mutex handling in instance.c
+  - [sfcb-tix:#77] Fix prototype for stopBroker
+  - [sfcb-tix:#80] sfcc cannot reconnect with sfcb
+
+
+- Changes in 1.4.5
+  ================
+
+  New features:
+  - [sfcb-tix:#44] Escape XML for Embedded Instances Instead of Using CDATA
+  - [sfcb-tix:#48] mofc: Allow absoltute paths in #pragma include
+  - [sfcb-tix:#52] ABT core check
+  - [sfcb-tix:#55] make install should not overwrite sfcb.cfg
+  - [sfcb-tix:#59] Improve httpAdapter error handling
+
+  Bugs fixed:
+  - [sfcb-tix:#31] TestAssociationProvider can cause some queries to fail
+  - [sfcb-tix:#32] Provider Mgr trace should id the provider being called
+  - [sfcb-tix:#36] Add Pulled Enums test provider
+  - [sfcb-tix:#38] providerRegister:locateProvider() is unused
+  - [sfcb-tix:#40] Add valgrind test (implemented only for the "none"
+    init script at this time)
+  - [sfcb-tix:#41] Global IndicationService
+  - [sfcb-tix:#46] Error parsing CDATA with no whitespace
+  - [sfcb-tix:#47] Pulled Enumeration support - CIMXML parser
+  - [sfcb-tix:#37] indCIMXmlHandler coredumps in IndCIMXMLHandlerInvokeMethod
+  - [sfbb-tix:#51] Malformed OP causes segfault
+  - [sfcb-tix:#49] Cannot return EmbeddedInstance property from provider
+  - [sfcb-tix:#53] SFCB may not start if runtime does not support IPv6
+  - [sfcb-tix:#54] Fix for sfcbproc.c
+  - [sfcb-tix:#18] disable default properties breaks test. Modified
+    failing tests, also made test case insensitive and fixed result
+    file naming.
+  - [sfcb-tix:#56] Intermittent segfault at shutdown Relocate trace_stop
+    due to timing issue on shmdt() call
+  - [sfcb-tix:#12] Support HTTP Expect: 100-continue header
+  - [sfcb-tix:#11] Remove unnecessary casts for allocs
+  - [sfcb-tix:#58] sfcbdump test fails. Remove local test classSchemas
+    file and use installed one instead.
+
+
+- Update package license to EPL 1.0
+
+- Changes in 1.4.4
+  ================
+
+  New features:
+  - 3597805 Restart HTTP daemon without restarting SFCB
+  - 3597806 Bind to arbitrary list of IP addresses in SFCB
+  - 3601386 Add test for EmbeddedObject output
+  - 3599160 Add sfcbproc utility
+  - 3601943 ObjectImpl unit test
+  - 2766931 Property filters for interop and interopserver providers
+  - [sfcb-tix:#16] getClass does not expose method information for localconnect
+
+  Bugs fixed:
+  - 3599526 segfault during ecn with classProviderSf
+  - 3599329 dlopen failed for sfcbCustomLib
+  - 3600125 Share client tracing shm segment
+  - 3600283 Fixup compiler warnings from gcc 4.7
+  - 3600159 TestProviders should have their own Makefile
+  - 3601026 Fixup compiler warnings from -Wextra
+  - 3599437 missing include of <sys/resource.h>
+  - 3601301 Add stubs for empty CMPI functions for internal providers
+  - 2878328 sfcb and mofc won't compile with --disable-qualifierrep
+  - 3601661 Reenable no-fork http adapter mode
+  - 2990304 Enhancements for sfcb
+  - 2778345 There is no response at GetClass after CreateClass
+  - 3603454 control should do type conversions on startup
+  - [Bugs:#2612] Don't persist indications
+  - [Bugs:#2613] Check sfcCommon version
+  - [sfcb-tix:#21] datetime conversions do not handle timezone
+  - [Bugs:#2490] wbemcat should use URI perl module
+  - [sfcb-tix:#1] Streamline SLP
+  - [sfcb-tix:#7] autoconfiscate.sh needs --force for all tools
+  - [sfcb-tix:#24] GetClass Operation does not filter the class
+  - [sfcb-tix:#25] classProviderSf drops Association qualifier on child classes
+  - [sfcb-tix:#6] SFCB XML Parser Error with Instance as Parameter
+  - [sfcb-tix:#26] ClassProviderSf should read standard repositories
+  - [sfcb-tix:#13] Optimize Handler Sequence numbers
+  - [sfcb-tix:#27] Bump schema to 2.35
+  - [sfcb-tix:#28] Further shm trace id leak
+  - [sfcb-tix:#19] Update q and Q options for sfcbmof
+  - [sfcb-tix:#2] Problem with PropertyList on association classes
+  - [sfcb-tix:#30] Make maxBindAttempts a configurable option
+  - [sfcb-tix:#29] Add -t std option to sfcbrepos
+
+
+- Changes in 1.4.3
+  ================
+
+  Everything in 1.3.13, 1.3.14, 1.3.15, and 1.3.16 (see below), plus: 
+
+  New features:
+  - 3441679 Add a feature to validate CMPI types
+  - 3497831 Updates to sfcb-ps test script
+  - 3506453 Support peer cert verification for SSL indications
+  - 3531210 Allow indication delivery timeout tuning
+  - 3562538 Enable curl debug via env variable
+  - 3590203 Remove pg_interop checking in SFCB 1.4
+  - 3590202 Enable IPv6 by default for SFCB 1.4
+  - 3592822 Bump schema to 2.34
+
+  Bugs fixed: 
+  - 3495804 Cleanup: httpProcId still defined, wrong define in cimXmlGen
+  - 3516167 Force kill sfcbd on stop if needed
+  - 2966659 Cleanup https daemon remnants
+  - 3527674 Faster Startup
+  - 3529879 Fixes for sfcb-ps test script
+  - 3527714 Every other EnumerateClasses fails
+  - 3541554 insecure LD_LIBRARY_PATH usage
+  - 3546279 Core dump in providerDrv on Qualifier not found
+  - 3564757 stageschema.sh should detect errors in sfcbrepos
+  - 3567083 configure should fail if sfcUtil.so not found
+  - 3573507 CreateInstance for IndicationFilter doesn't accept DMTF:CQL
+  - 3579637 SFCB should check ftok return code
+  - 3562530 TestMiscProvider poorly tests CMGetPropertyAt
+  - 3585929 Additional ClassProviderSf prep work
+  - 3588775 Startup will hang if indication support is disabled
+  - 3590827 Exit if classprovider fails
+  - 3591112 NEEDS_CLEANUP ifdef
+  - 3591102 sfcbrepos and -t
+
+
+- Changes in 1.4.2
+  ================
+
+  New features:
+  - 3280992 Add systemd file to SFCB sources
+  - 3177587 create sfcCommon (SFCB 1.4 now requires sfcCommon lib to be installed)
+  - 3309374 Implement CIM_CIMXMLCommunicationMechanism
+  - 3259627 provide a list acceptable CAs to client
+  - 3310364 Implement CIM_NamespaceInManager
+  - 3274893 For SFCB 1.4, set SequenceIdentifier as described in DSP1054 1.2.
+
+  Bugs fixed: 
+  - 3199899 sfcb uninstall process should remove test mof's 
+  - 3300167 Memory leaks caused by cimRequest changes
+
+
+- Changes in 1.4.1
+  ================
+
+  New features:
+  - 3152523 Changes for footprinting in ABT 
+  - 1596336 Add config option for network interface binding
+
+  Bugs fixed: 
+
+  Everything in 1.3.11, plus:
+
+  - 3022940 Remove dead SLP code dealing with proc management
+  - 3175888 Remove JDBC support from SFCB 1.4.x
+  - 3082573 Typo in interopProvider
+  - 3177707 ExecQuery 1 to 4 tests segfault on power LPAR
+  - 3185034 exec query test failures on power - char16 mismatch
+  - 2990315 cmciRelease not called in case of error
+  - 3206663 Enum CQL filter on NULL cause segfault and incorrect rsp
+
+
+- Changes in 1.4.0
+  ================
+
+  New features:
+  - 3014530 configure option for request
+  - 3030289 Update wbemcat to make REST requests
+  - 3031827 Parser does not create BinRequestContext
+  - 3056234 Allow multiple parsers
+  - 3095225 Implement Simple REST Requests
+
+  Bugs fixed:
+
+  Everything in 1.3.10, plus:
+
+  - 3130727 CMPIPropertyMIFT.setProperty() missing objectpath keys
+  - 3054618 mofpp is overaggressive when detecting comments
+  - 2955916 Pretty print
+  - 3003508 slpTests.sh uses bash-isms
+  - 3011256 Add macro to set inBuf value
+  - 3018141 Code Cleanup Friday #1
+  - 3019898 Remove cmpi headers
+  - 3023072 Remove extra getStrBufPtr call in replaceClString
+  - 1765781 sfcb: intrinsic ClassMI prototypes omit const qualifier
+  - 3004385 Improve performance for association upcall
+  - 2859885 New XML Test Case, removed genericlist.c
+  - 3005429 indCIMXMLHandler provider should cleanup nicely
+  - 3042731 git master doesn't build with --enable-ssl
+  - 3043324 xml tests don't test xml comments
+  - 3053830 Indication rc lost
+  - 3058803 objectImpl externs unneeded func
+  - 3058806 unused variable in getHdrs
+  - 3062122 Bad merge reverted some data types
+  - 3086146 use SFCB_ElementConformsToProfile instead of CIM_ElementConf
+  - 3095225 Implement Simple REST Requests
+  - 3104761 cimRsRequest.h missing from make-dist tarball
+  - 3107553 Remove Large Volume Support
+
+-------------------------------------------------------------------
+Mon Aug 26 09:30:17 UTC 2013 - kkaempf@suse.com
+
+- Update to 1.3.17
+
+  New features:
+  - 3597805 Restart HTTP daemon without restarting SFCB
+  - 3599160 Add sfcbproc utility
+  - [sfcb-tix:#55] make install should not overwrite sfcb.cfg
+
+  Bugs fixed:
+  - 3599329 dlopen failed for sfcbCustomLib
+  - [sfcb-tix:#28] Further shm trace id leak
+  - [sfcb-tix:#30] Make maxBindAttempts a configurable option
+  - [sfcb-tix:#42] Run setupControl prior to getControl
+  - [sfcb-tix:#45] HTTP verb check may fail producing 501 error
+  - [sfcb-tix:#46] Error parsing CDATA with no whitespace
+  - [sfcb-tix:#51] Malformed OP causes segfault
+  - [sfcb-tix:#54] Fix for sfcbproc.c
+  - [sfcb-tix:#68] reinitialize select timeout in SSL handshake
+  - 3600125 Share client tracing shm segment
+
+- drop 25000-tix45-bnc820035-HTTP-verb-check-may-fail-producing-501-error.patch
+  (applied upstream)
+
+- add fix-mofc-include-patch.patch
+
+-------------------------------------------------------------------
+Wed Aug 14 09:16:36 UTC 2013 - kkaempf@suse.com
+
+- add symlinks for sfcb.service and sblim-sfcb.service
+
+-------------------------------------------------------------------
+Sun Aug 11 08:14:17 UTC 2013 - kkaempf@suse.com
+
+- Build with --enable-relax-mofsyntax for openlmi-network
+  (brc#995561)
+
+-------------------------------------------------------------------
+Thu Aug  8 09:56:04 UTC 2013 - kkaempf@suse.com
+
+- Fix logger for long-lived clients using the sfcblocal interface
+  (bnc#830525, upstream tix#69)
+  Patch: 26000-tix69-bnc830525-No-logger-pipe-for-sfcblocal.patch
+
+-------------------------------------------------------------------
+Mon Jun 10 07:35:47 UTC 2013 - kkaempf@suse.com
+
+- HTTP verb check may fail producing 501 error (bnc#820035,
+  upstream tix#45)
+  Dropping 0008-Check_SSL_before_select.patch, use upstream fix.
+
+-------------------------------------------------------------------
+Fri May  3 07:48:39 UTC 2013 - kkaempf@suse.com
+
+- check SSL buffer before select()
+  (like upstream 3441028, bnc#716299; but when reading https header)
+  Adding 0008-Check_SSL_before_select.patch
+
+-------------------------------------------------------------------
+Sat Dec 22 15:08:08 UTC 2012 - kkaempf@suse.com
+
+- Changes in 1.3.16
+  New features: 
+  - 3538858 custom routine to log indInst objinfo
+  - 3555395 Additional auth lib return codes
+  - 3562538 Enable curl debug via env variable
+  - 3567450 Clients shouldn't cause log messages
+
+  Bugs fixed:
+  - 3539569 Leaks in interopProvider
+  - 3539563 Memory leak in indCIMXMLHandler when Reliable Inds Enabled
+  - 3539557 Memory leak in providerDrv with property list
+  - 3539555 Memory leak in TestInstanceProvider
+  - 1901737 Memory leak in internalProvider.c
+  - 3539006 Possible indication deadlock
+  - 3527714 Every other EnumerateClasses fails
+  - 3541554 insecure LD_LIBRARY_PATH usage
+  - 3546279 Core dump in providerDrv on Qualifier not found
+  - 3574169 revert interop2 stageschema
+  - 3573507 CreateInstance for IndicationFilter doesn't accept DMTF:CQL
+  - 3574936 --disable-debug still allocates trace variables
+  - 3579637 SFCB should check ftok return code
+  - 3582062 Various additional error checking
+  - 3580137 Classname needed in *ActivateFilter
+  - 3585274 Local connect kills tracing
+  - 3528056 sfcbd --version doesn't always work
+  - 3381209 Memory leak inside getClass() used by invokeMethod()
+  - 3588557 Object path in deliverIndication can remain resident
+  - 3452703 Default http uid used causes unexpected behavior
+  - 3593006 trace shared mem leak
+  - 3582039 SFCB should reject empty <VALUE> in most instances
+
+-------------------------------------------------------------------
+Thu Nov 29 13:20:00 UTC 2012 - kkaempf@suse.com
+
+- rename the systemd service to "sfcbd.service"
+
+-------------------------------------------------------------------
+Sat Nov 24 14:17:53 UTC 2012 - kkaempf@suse.com
+
+- add support for systemd (openSUSE > 12, Fedora > 15)
+
+-------------------------------------------------------------------
+Tue Oct  9 14:51:48 UTC 2012 - coolo@suse.com
+
+- require sysvinit-tools for killproc called from init script
+
+-------------------------------------------------------------------
+Fri Jul 27 20:01:01 UTC 2012 - aj@suse.de
+
+- Add missing sys/resource.h include (glibc 2.16)
+
+-------------------------------------------------------------------
+Sun Jun 17 12:51:26 UTC 2012 - kkaempf@suse.com
+
+- Changes in 1.3.15
+
+  New Features: 
+  - 3501314 Add dynamic logging and syslog output to sfcb trace
+  - 3517530 Implement mark, release routines in CMPIBrokerMemFT
+  - 3513390 Enforce LD and subscription limits
+  - 3527920 RI and http responsecodes
+  - 3534659 Match SfcbLocal to sfcc update
+
+  Bugs Fixed:
+  - 3514627 unsupported sfcb.cfg param - use exit call
+  - 3516184 commClose close socket when file hndl is null
+  - 3517573 Problem with SequenceContext migration
+  - 3525651 CMSetPropertyFilter not CMPI 2.0 compliant
+  - 3527693 Property filters don't work for enum upcalls
+  - 3524819 sfcb may hang on ac call to indication subscription
+  - 3528074 Improve CMPIInstance Error Codes
+  - 3528096 Error status codes sometimes not propigated for
+            instances
+  - 3529856 httpProcs limit can be broken
+  - 3527620 EnumerateClasses does not include qualifiers by default
+  - 3532951 Filter creation fails with disable default properties
+  - 3533179 Double definition for union semun  in FreeBSD
+  - 3535313 xmlUnescape may access memory beyond its buffer    
+
+-------------------------------------------------------------------
+Tue Apr  3 07:45:47 UTC 2012 - kkaempf@suse.com
+
+- Changes in 1.3.14
+
+  New features:
+  - 3367333 New entry point for authentication library
+  - 3367332 RHOST Support for PAM
+  - 3435778 Preserve leading/trailing whitespace in values
+  - 3433733 CreationClassNames should be supplied
+  - 3446179 Add a feature to validate CMPI types
+  - 3484025 Disable indication sequencing
+  - 3462309 Do not allow multiple instances of sfcb
+  - 3488688 Don't spawn logger for clients
+  - 3493493 Add sfcbsem
+  - 3495060 Verify filter and handler information during subscription
+  - 3498932 Implement ModifyInstance for CIM_ListenerDestination
+  - 3367361 Allow for releasing auth handle after CIM request completes
+  - 3367363 Add CMPIRole Support
+  - 3512575 Add indication delivery thread limit and timeout
+
+  Bugs fixed: 
+
+  - 3414700 assocClass ignored for assoc upcalls
+  - 3416055 SIGSEGV sometimes does not print provider name
+  - 3416167 CIM_InstDeletion not in class repo by default
+  - 3422650 Associators calls to IndicationService depends on cmpi-base
+  - 3428806 type=null in authorizeFilter call
+  - 3419721 reset CMPIValue buffer in str2CMPIValue
+  - 3478930 Handle SIGPIPE in providerMgr
+  - 3478933 Sequence Number reset issues
+  - 3483294 InternalProvider Should Handle SFCB_RegisteredProfile
+  - 3485438 segfault while retrying to deliver an indication
+  - 3486814 sfcb crashes while freeing the cimxml response
+  - 3485830 SFCB Makes Redundant ActivateFilter Calls
+  - 3487419 TestIndication Provider Does Enable Correctly
+  - 3487675 Log messages can be concatenated
+  - 3492362 Problem with whitespace trimming if local connect only
+  - 3457460 PAM_RHOST set wrong
+  - 3495343 Bad pointer references in trace statements
+  - 3416164 Don't write CIM_IndicationService to disk
+  - 3495801 Correction to 3495343
+  - 3495789 Makefile improvements for test suite
+  - 3495806 isChild() can cause a provider mismatch
+  - 3483200 duplicate indication deliveries
+  - 3496061 IndicationSubscription May Be Undeletable
+  - 3484083 Exclude SFCBIndicationID
+  - 3496383 Faster Return from CBDeliverIndication
+  - 3416060 sigsegv in tool_mm_flush()
+  - 3497096 double free during stopProc
+  - 3497765 Better Error Handling in sfcb Provider Manager and Driver
+  - 3497950 SFCB Semaphore Handling Improvements
+  - 3498275 Remove __Namespace
+  - 3498044 RIEnabled conflicts with settable retries
+  - 3426027 cimAccountPassThrough does not set return code
+  - 3498719 Better SSL error reporting for sfcb
+  - 3471814 segfault in objectImpl.c:131,ClObjectGetClString
+  - 3499930 Check file repository writes
+  - 3497209 oom panic: out of memory using fsp indprovider
+  - 3504607 CMPIRole Support in brokerUpc
+  - 3506306 Fix count for InvokeMethod requests
+  - 3498496 sfcb hangs and fails to respond to CIM requests
+  - 3512425 SequenceContext needs to be set at startup
+  - 3510458 Malformed XML response to GetProperty
+  - 3510456 GetProperty calls not passing keys to providers
+  - 3505407 Client openlog changes settings
+  - 3408288 Safer Signal Handlers
+  - 3441028 sblim-sfcb fails on large https requests
+  - 3416054 Provider continues despite SIGSEGV
+  - 3512094 SFCB can leak PAM handles under error conditions
+
+-------------------------------------------------------------------
+Fri Mar 16 08:11:15 UTC 2012 - kkaempf@suse.com
+
+- Make License tag spdx.org compliant
+
+-------------------------------------------------------------------
+Thu Mar  8 14:04:08 UTC 2012 - kkaempf@suse.com
+
+- Provide a way to pass provider information via argv to 'ps'
+  for debug purposes. Set "argvDebug: true" in sfcb.cfg
+
+-------------------------------------------------------------------
+Tue Nov 22 09:40:40 UTC 2011 - kkaempf@suse.com
+
+- Fix large https requests. Check SSL buffer before doing
+  a select() on the socket. bnc#716299, upstream 3441028
+
+-------------------------------------------------------------------
+Sat Oct  1 11:56:00 UTC 2011 - kkaempf@suse.com
+
+- Fixes (upstream Ids)
+  - 3416054: Provider continues despite SIGSEGV
+  - 3416055: SIGSEGV sometimes does not print provider name
+  - 3416060: SIGSEGV in tool_mm_flush()
+
+-------------------------------------------------------------------
+Fri Sep 30 07:03:12 UTC 2011 - kkaempf@suse.com
+
+- Update to 1.3.13
+  New features:
+  - 3406823 Make select timeout a config option
+  - 3406825 Make ssl cipher list configurable
+
+  Bugs fixed: 
+  - 3386391 HOST_NAME_MAX undefined
+  - 3393324 sfcb process abort in IndCIMXMLHandlerInvokeMethod
+  - 3398337 Namespaces of filter and handler for IndSub not checked
+  - 3400114 sfcb fails to start with ipv6 disabled
+  - 3412033 New files from 3313833 missed release tarball
+  - 3413031 fixes to perform check before calling free
+  - 3414236 updateMethodParamTypes uses incorrect qualifier count
+  - 3414482 Compiler warning in cimcClientSfcbLocal
+  - 2727918 blob has leak in EnumQualifiers
+
+-------------------------------------------------------------------
+Thu Sep 22 13:19:46 UTC 2011 - kkaempf@suse.com
+
+- Fix provides of openwbem (and build deps on openwbem)
+  openwbem-3.2.3 still exist, provide/obsolete openwbem-3.2.2
+
+-------------------------------------------------------------------
+Fri Sep  2 08:43:45 UTC 2011 - kkaempf@suse.com
+
+- Fix the build - run autotools with --force
+
+-------------------------------------------------------------------
+Mon Aug 29 10:55:05 UTC 2011 - kkaempf@suse.com
+
+- Properly fallback to ipv4 if ipv6 is disabled
+  (bnc#713687, upstream 3400114)
+
+-------------------------------------------------------------------
+Sun Jul 17 08:58:36 UTC 2011 - kkaempf@novell.com
+
+- fix build for RHEL < 6 (outdated libtool)
+
+-------------------------------------------------------------------
+Mon Jul  4 10:44:46 UTC 2011 - kkaempf@novell.com
+
+- update to 1.3.12
+  New features:
+  - 3190623 Set *IsSettable properties to false for IndicationService
+  - 3313833 Allow for passthrough for expired user to update password
+  - 3274893 For SFCB 1.4, set SequenceIdentifier as described in DSP1054 1.2.
+
+  Bugs fixed:
+  - 3261868 Enum CQL filter on NULL cause incorrect rsp
+  - 3213591 Local intf client abort abnormally on enum filter syntax err
+  - 3291646 Unused var in __NullEvaluate
+  - 3202466 Single item on method param of array type rejected via Local
+  - 3287789 interopServerProvider not conservative when answering reqs
+  - 3296541 CIM_IndicationSubscription corrupts after delilvery fails
+  - 3314383 Memory leak in CimResource_Enumerate_EP
+  - 3047562 [patch] Create bzip2 tarballs on "make dist"
+  - 3314762 Memory leak in method invoke using SFCB local interface
+  - 3165732 Add ability for client library to specify configuration file
+  - 3323422 Unnecessary NULL check in control.c
+  - 3323427 Unnecessary NULL check in httpAdapter
+  - 3324214 Remove dead code from providerDrv:loadProvider()
+  - 3324131 indCIMXMLHandler may return uninitialized CMPIStatus
+  - 3324168 gatherNameSpacesData() may closedir() a NULL pointer
+  - 3324192 Erroneous condition in loop in objectImpl:locateParameter()
+  - 3324198 getObjectPath() may deref a NULL pointer
+  - 3324247 Unnecessary NULL check in providerDrv
+  - 3324255 Unnecessary NULL check in __cleanup_mt()
+  - 3324265 _sfcb_trace may deref NULL pointers
+  - 3324578 getInstance() up call does not close provider context
+  - 3323419 sfcb local interface causes zombie/defunct client processes
+  - 3328763 deactivateFilter() doesn't release CMPI object
+
+-------------------------------------------------------------------
+Wed Apr 20 09:27:29 UTC 2011 - kkaempf@novell.com
+
+- Provide/Obsolete Openwbem from SLE10. (bnc#680142)
+
+-------------------------------------------------------------------
+Mon Apr  4 07:03:31 UTC 2011 - kkaempf@novell.com
+
+- update to 1.3.11
+  Bugs fixed:
+  - 3130727 CMPIPropertyMIFT.setProperty() missing objectpath keys
+  - 3054618 mofpp is overaggressive when detecting comments
+  - 3162016 sfcbd Segmentation fault in cleanupCimXmlRequest
+  - 3172080 deliverIndication does not check for matching FROM classes
+  - 3185178 Wrong classname for returned instances from execQuery
+  - 3175770 execQuery returns multiple instances of same object
+  - 3203290 Basic Auth Should Consider Expired Passwords
+  - 3202420 CDATA value in a string property is improperly XML escaped
+  - 3038078 Can create indication filters and destinations w/o key props
+  - 3206663 Enum CQL filter on NULL cause segfault and incorrect rsp
+  - 3265502 CMPIContext not released in elementCapabilitiesProvider
+  - 2967257 Drop CMPI_classNameString as it conflicts with CMPI_chars
+
+-------------------------------------------------------------------
+Tue Nov 30 08:49:17 UTC 2010 - kkaempf@novell.com
+
+- update to 1.3.10
+  Bugs fixed:
+  - 3086143 set cmpi status in getPropQualifier
+  - 3086145 check datetime format in chars2bin
+  - 3095884 Indication classes missing SystemName
+  - 3101155 Failed to load provider libraries due to symbol conflicts
+  - 3101148 SfcbLocal method parameter type conversion and validation
+  - 3101154 Daemon clients failed SfcbLocal connect due to permission
+  - 3097310 localConnect in cimcClientSfcbLocal.c accesses free'd memory
+  - 3087577 Provider MI accessed before finished initializing
+  - 3109469 Potential Buffer Overflow in msgqueue.c:localConnectServer()
+  - 3122725 Cleanup warnings in queryLexer and test provider
+
+-------------------------------------------------------------------
+Fri Aug 27 10:15:27 UTC 2010 - kkaempf@novell.com
+
+- update to 1.3.9
+  Bugs fixed:
+  - 2994737 cimslp fails to get sslCertificateFilePath config value
+  - 2984485 Possible access to freed memory in cimslpSLP.c
+  - 3016295 Initialise refcount in CMPIInstance clone
+  - 2950521 Provider operations are wrongly traced
+  - 3016863 Data corruption when replacing array properties
+  - 3022941 Remove HAVE_SLP_ALONE sections
+  - 3022934 SLP code calls setupControl more than once
+  - 3023079 slpUpdate does not release ctx on exit
+  - 2920363 make test fails if sfcb is running under valgrind
+  - 2950545 indCIMXMLHandler destination schema correction wrong
+  - 2968599 Wrong trace msg for invokeMethod (local interface)
+  - 3023502 Memory leak on CreateClass
+  - 3022919 profileProvider (SLP) has increasing memory usage over time
+  - 2952628 Handler is not removed from interop-Hashtable when CI fails
+  - 3017845 disableIndications not called on provider shutdown
+  - 3010272 Indication providers always unloaded when idle
+  - 3003509 sfcb must configure IndicationFilterName
+  - 3012365 enableIndications() only called once per provider group
+  - 3026606 Prov idle unload may not call all cleanup functions
+  - 3048944 Bump downloaded CIM schema to 2.26
+  - 3048960 method array types not filled in
+  - 3049645 SLP hostname lib won't build
+  - 3035165 objectSize in objectImpl.c is not used thread safe
+  - 3053240 Leak on indication delivery
+
+
+-------------------------------------------------------------------
+Mon Aug  2 19:03:44 UTC 2010 - kkaempf@novell.com
+
+- Update to 1.3.8 (final)
+  New features:
+  - 2963601 pywbem tests
+  - 2961422 Single HTTP Adapter
+  - 2980820 Indication Profile 1.1: New attr values.
+  - 2990091 Implement getPropertyQualifier in CMPIObjectPath
+  - 2990169 Bump downloaded CIM schema to 2.25
+  - 2980524 providerRegister should collate namespaces
+  - 2994969 Persist failing indications
+  - 2964568 Indication stress test
+  - 2987170 Handle SLP in a provider
+  plus various bugfixes
+
+- Merge uds_auth.patch, check-prevent-various-buffer-overflows.patch,
+  buffer-size-check-in-localConnectServer.patch,
+  minimal-postinstall.patch, fileRepository-opendir-error.patch,
+  2984436-bnc591060-Match-startLogging-and-closeLogging-calls.patch
+  into pending-upstream.patch
+
+-------------------------------------------------------------------
+Fri May 21 10:10:29 UTC 2010 - kkaempf@novell.com
+
+- upgrade to 1.3.8-preview
+  remove included patches, fix fuzz of remaining ones
+
+-------------------------------------------------------------------
+Thu Apr 29 11:34:04 UTC 2010 - kkaempf@novell.com
+
+- remove conflicting directory tree from 3rd party package, will
+  be replaced by cim-schema package (bnc#590196)
+
+-------------------------------------------------------------------
+Wed Apr 21 10:13:35 UTC 2010 - kkaempf@novell.com
+
+- Match startLogging and closeLogging calls
+  (bnc#591060, upstream #2984436)
+
+-------------------------------------------------------------------
+Fri Apr  9 14:08:08 UTC 2010 - kkaempf@novell.com
+
+- Plug memory leak in SLP operation, use "http" interface.
+  (bnc#593168, upstream #2978930)
+
+-------------------------------------------------------------------
+Fri Apr  9 09:08:03 UTC 2010 - kkaempf@novell.com
+
+- Prevent double free error in associator handling
+  (bnc#595258, upstream #2984214)
+
+-------------------------------------------------------------------
+Fri Apr  2 11:23:32 UTC 2010 - kkaempf@novell.com
+
+- Check for conflicting registrations when collating namespaces
+  (bnc#591396, upstream #2980524)
+
+-------------------------------------------------------------------
+Thu Apr  1 12:46:17 UTC 2010 - kkaempf@novell.com
+
+- Collate namespaces in providerRegister correctly
+  (bnc#591396, upstream #2980524)
+
+-------------------------------------------------------------------
+Thu Mar 11 14:20:00 UTC 2010 - kkaempf@novell.com
+
+- clone CMPI_chars return value from invokeMethod called via
+  local interface (bnc#578189, upstream #2968656)
+
+-------------------------------------------------------------------
+Wed Mar 10 20:14:07 UTC 2010 - kkaempf@novell.com
+
+- prefer CMPI_chars over CMPI_classNameString
+  (bnc#578189, upstream #2968198)
+
+-------------------------------------------------------------------
+Tue Mar  9 13:16:49 UTC 2010 - kkaempf@novell.com
+
+- Backport patches from 1.3.8
+
+   * args.c, array.c, constClass.c, instance.c, internalProvider.c,
+     objectpath.c:
+     [ 2948647 ] getObjectPath may dereference NULL pointer
+   * internalProvider.c:
+     [ 2952616 ] internalProvider is not Threadsafe
+     (bnc#580804)
+   * providerMgr.c:
+     [ 2952912 ] resultSockets variable is not used threadsafe
+     (bnc#580802)
+   * indCIMXMLHandler.c:
+     [ 2950773 ] Leak in indCIMXMLHandler.c
+   * interopServerProvider.c:
+     [ 2949454 ] Memory leak in ServerProviderInitInstances()
+
+-------------------------------------------------------------------
+Mon Feb 22 19:29:16 UTC 2010 - kkaempf@novell.com
+
+- Update to 1.3.7
+  (numbers are from the sourceforge.net bug tracker)
+  New features:
+  - 2920773 Tests for reliable indications
+ 
+  Bugs fixed:
+
+  - 2891367 Error processing content-length
+  - 2933087 Small leak in cimXmlRequest:getProperty()
+  - 2932809 sfcb 1.3.6 crashes when provider user is set to sfcb
+  - 2934540 sfcb may respond with incorrect association provider
+  - 2935931 Indications to file:// urls never fail.
+  - 2937577 Some SLP-specific code not ifdef'd
+  - 2939874 Serious provider id mismatch after provider reload
+  - 2655854 Common Provider invokes Init and CleanUp more than once
+  - 2875050 default MOFs should allow for multiple files
+  - 2945277 SFCB crashes on subscription without filter or handler prop
+  - 2946106 possible race condition initializing providers
+  - 2931327 sblim-sfcb-1.3.6 tarball is incomplete
+  - 2946885 BEAM errors found in cimXmlGen
+  - 2946890 classProvider may try to closedir(NULL)
+  - 2948812 footprint.pl missing from release tarball
+
+-------------------------------------------------------------------
+Fri Jan 15 13:26:05 UTC 2010 - kkaempf@novell.com
+
+- 0420-minimal-postinstall.patch: ensure providerRegister
+  is installed
+- 0430-fileRepository-opendir-error: print the directory path
+  if opendir() fails
+
+-------------------------------------------------------------------
+Fri Jan 15 12:37:17 UTC 2010 - kkaempf@novell.com
+
+- check provuser before strdup (bnc#570943, sblim#2932809)
+
+-------------------------------------------------------------------
+Thu Jan 14 10:11:55 UTC 2010 - kkaempf@novell.com
+
+- Adapt 0007-automake.patch to apply without fuzz
+
+-------------------------------------------------------------------
+Thu Jan 14 07:51:45 UTC 2010 - kkaempf@novell.com
+
+- Upgrade to 1.3.6
+  - regular quarterly release, and includes the usual
+    bugfixes related to function, stability, and memory usage
+  - Compliance for Indication Profile 1.0.0 (DSP1054).
+  - [Experimental] Reduced class repositories (~90% reduction
+    in disk footprint of classSchema file]
+  - move all libraries to /usr/lib(64)/sfcb/*
+
+-------------------------------------------------------------------
+Thu Dec 17 10:27:48 CET 2009 - kukuk@suse.de
+
+- Don't start by default, will be handled by YaST2 module
+
+-------------------------------------------------------------------
+Thu Dec  3 13:22:05 UTC 2009 - kkaempf@novell.com
+
+- Added configuration for SUSEfirewall (fate#305583)
+
+-------------------------------------------------------------------
+Wed Nov  4 16:10:04 MST 2009 - bwhiteley@suse.de
+
+- Upgrade to 1.3.5 (fate#307413)
+- Reduce PAM messages in syslog (fate#306380, bnc#497043, 
+  sblim bug#2762848)
+- Start sfcbd by default (fate#305583)
+- Enable SLP (fate#307088)
+- Fix objectImplc.c:dataValueToString() (bnc#483396)
+
+-------------------------------------------------------------------
+Tue Jun 23 09:47:25 CEST 2009 - kkaempf@suse.de
+
+- Fix memory corruption in CMSetProperty. (bnc#483526)
+
+-------------------------------------------------------------------
+Thu Jun 18 16:25:15 CEST 2009 - kkaempf@suse.de
+
+- 'cimcli' sends 'Content-length:' header attribute with leading
+  zeroes which got interpreted as octal. (bnc#507249)
+
+-------------------------------------------------------------------
+Tue Feb  3 14:17:39 CET 2009 - meissner@suse.de
+
+- enhanced tmprace patch a bit (bnc#470203)
+
+-------------------------------------------------------------------
+Wed Jan 28 17:43:16 CET 2009 - kkaempf@suse.de
+
+- Fix tmp race during ssl cert gen (bnc#470203)
+
+-------------------------------------------------------------------  
+Wed Jan 28 09:30:52 MST 2009 - bwhiteley@suse.de  
+  
+- Fix missing qualifiers on REF params. (bnc#466666)  
+
+-------------------------------------------------------------------
+Fri Jan 16 17:28:19 CET 2009 - kkaempf@suse.de
+
+- Fix memory corruption (bnc#458641):
+  - check limit when parsing valueList, valueRefList and
+    keyBindings
+  - increase max valueList/valueRefList size to 512
+  - increase max keyBindings to 32
+
+-------------------------------------------------------------------
+Wed Jan  7 13:56:58 MST 2009 - bwhiteley@suse.de
+
+- Restart sfcbd when package is upgraded (bnc#463993)
+
+-------------------------------------------------------------------
+Tue Jan  6 11:14:19 MST 2009 - bwhiteley@suse.de
+
+- Fix output of /etc/init.d/sfcb status (bnc#463799)
+
+-------------------------------------------------------------------
+Mon Dec 22 15:00:35 MST 2008 - bwhiteley@suse.de
+
+- Disabled sfcbd daemon by default (bnc#460650)
+
+-------------------------------------------------------------------
+Fri Dec 19 15:11:31 MST 2008 - npaxton@novell.com
+
+- Preserve static instances during repository creation. 
+  (bnc#457366, sblim tracker #2140807)
+
+-------------------------------------------------------------------
+Wed Dec 17 23:32:43 CET 2008 - bwhiteley@suse.de
+
+- Improved patch for configurable access control. (bnc#444403)
+
+-------------------------------------------------------------------
+Tue Dec 16 15:56:42 CET 2008 - kkaempf@suse.de
+
+- Adjust padding to siezof(void *) on ia64 (bnc#457768)
+
+-------------------------------------------------------------------
+Mon Dec  8 11:03:54 MST 2008 - bwhiteley@suse.de
+
+- Fix location of docs (bnc#457195)
+
+-------------------------------------------------------------------
+Mon Dec  8 10:22:07 MST 2008 - bwhiteley@suse.de
+
+- Adjust pam configuration to SUSE standard (bnc#457266)
+
+-------------------------------------------------------------------
+Fri Dec  5 22:36:43 MST 2008 - bwhiteley@suse.de
+
+- Fix startup deadlock (bnc#445795, sblim tracker #2095972).
+- Limit message size (bnc#425457, sblim tracker #2169514)
+- Better fix for content length check (bnc#425457, 
+  sblim tracker #2172888)
+
+-------------------------------------------------------------------
+Thu Dec  4 09:19:47 MST 2008 - bwhiteley@suse.de
+
+- Configurable access control. (bnc#444403)
+- Fix some calls to mlogf (sblim tracker #2390100, bnc#425457)
+- Check for empty string in decode64 (sblim tracker #2391132, 
+  bnc#425457)
+
+-------------------------------------------------------------------
+Wed Nov 19 17:21:48 MST 2008 - bwhiteley@suse.de
+
+- Fix unix socket bind problem. (bnc#445334)
+
+-------------------------------------------------------------------
+Fri Nov  7 14:39:22 MST 2008 - bwhiteley@suse.de
+
+- Better patch for HTTP connection close -- sblim tracker #2193250
+- Handle more escaped chars in XML (bnc#435882, sblim#2169807)
+
+-------------------------------------------------------------------
+Wed Oct 29 14:15:17 MDT 2008 - bwhiteley@suse.de
+
+- Better patch for shutdown deadlock -- sblim tracker #2185304
+
+-------------------------------------------------------------------
+Wed Oct 22 14:57:46 MDT 2008 - bwhiteley@suse.de
+
+- The following bugs from the sblim tracker address bnc#425457
+ - [ 2164750 ] sfcb does not handle some malformed HTTP requests correctly
+ - [ 2172888 ] http content-length is not constrained
+ - [ 2169514 ] spRcvMsg doesn't check malloc return
+ - [ 2169527 ] Some XML parsing error strings do not have sufficient space
+ - [ 2169607 ] sqlLexer assumes line lengths under MAXBUF
+ - [ 2175426 ] possible int overflow
+ - [ 2158198 ] syslog call incorrect
+ - [ 2172023 ] mlogf call cleanups
+ - [ 2175507 ] sockaddr_un not allocated for localconnect server
+- Some code cleanup. 
+- SBLIM tracker #2189391 fork() race condition in providerDrv.c:getProcess()
+- SBLIM tracker #2192023 sfcb deadlocks on nsHt initialization
+- SBLIM tracker #2185304 SFCB doesn't shut down properly a good portion 
+                         of the time. 
+- bnc:438758, SBLIM tracker #2189234 wrong minimal provider check
+
+-------------------------------------------------------------------
+Wed Oct 15 11:08:52 CEST 2008 - kkaempf@suse.de
+
+- help Buildservice executing shell scripts.
+
+-------------------------------------------------------------------
+Tue Oct 14 15:35:31 CEST 2008 - kkaempf@suse.de
+
+- Fix compiler warnings (on 64bit systems) (bnc#435043)
+- Adapt for latest autotools
+- Fix rpmlint warnings in .spec (%preun/%postun)
+
+-------------------------------------------------------------------
+Tue Oct  7 10:51:16 CEST 2008 - schwab@suse.de
+
+- Fix alignment.
+- Rebuild configure to get fixed AC_FUNC_MKTIME.
+- Don't run configure twice.
+
+-------------------------------------------------------------------
+Mon Oct  6 21:57:50 CEST 2008 - bwhiteley@suse.de
+
+- Update to official 1.3.2 release. 
+
+-------------------------------------------------------------------
+Wed Aug 27 10:11:54 MDT 2008 - bwhiteley@suse.de
+
+- update to 1.3.2preview
+- Added RTLD_GLOBAL to ldflags when loading providers. 
+
+-------------------------------------------------------------------
+Mon Aug 18 11:16:01 MDT 2008 - bwhiteley@suse.de
+
+- don't remove buildroot in %install
+
+-------------------------------------------------------------------
+Mon Aug 11 16:47:52 MDT 2008 - bwhiteley@suse.de
+
+- Added RequiredStart and RequiredStop to init script. 
+
+-------------------------------------------------------------------
+Tue Jul 22 15:14:57 MDT 2008 - bwhiteley@suse.de
+
+- Fix SSL options to disable SSLv2 and weak ciphers. 
+- Fix XML parser to unescape newlines. 
+
+-------------------------------------------------------------------
+Mon Jul 21 16:37:50 MDT 2008 - bwhiteley@suse.de
+
+- Fixed limited length error strings in XML.
+
+-------------------------------------------------------------------
+Thu May 29 15:10:06 MDT 2008 - bwhiteley@suse.de
+
+- Enhanced to support HTTP connections over unix domain sockets, 
+  including unix socket peer credential authentication without
+  passwords. 
+- Changed authentication module to only allow users with uid 0
+  to log in. 
+
+-------------------------------------------------------------------
+Fri May 16 16:42:30 MDT 2008 - bwhiteley@suse.de
+
+- Moved back to 1.3.0.  1.3.1 has problems.  Removed schema 
+  package, and placed a dependency on cim-schema package
+  instead. 
+
+-------------------------------------------------------------------
+Tue May 13 14:07:12 MDT 2008 - bwhiteley@suse.de
+
+- Updated to 1.3.1.  Other packaging changes. 
+
+-------------------------------------------------------------------
+Fri May  2 15:02:25 MDT 2008 - bwhiteley@suse.de
+
+- Initial checkin
+

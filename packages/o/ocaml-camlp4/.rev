@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60ac985181aa329fe23b977acb05b841</srcmd5>
+    <version>4.02.1</version>
+    <time>1414744775</time>
+    <user>coolo</user>
+    <comment>New package, split after update to ocaml-4.02</comment>
+    <requestid>258135</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4df27355d2bd81c1908d6ca6531ce16e</srcmd5>
+    <version>4.02.1</version>
+    <time>1448553675</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345110</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a27772cbed6969e1fb0a7169e3d401c</srcmd5>
+    <version>4.03</version>
+    <time>1468579567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.03 (fate#320836)
+  remove camlp4.DESTDIR.patch</comment>
+    <requestid>404352</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ff337110e6709353d0c85004f57a386</srcmd5>
+    <version>4.05</version>
+    <time>1503061372</time>
+    <user>dimstar_suse</user>
+    <comment>- Require ocaml(ocaml_base_version)
+
+- Use Group: Development/Languages/OCaml
+
+- Update to match ocaml 4.05
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>515939</requestid>
+  </revision>
+</revisionlist>

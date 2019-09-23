@@ -1,0 +1,576 @@
+-------------------------------------------------------------------
+Tue Sep 10 09:24:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Build boinc-client using -ffat-lto-objects
+
+-------------------------------------------------------------------
+Sat Dec 15 17:37:27 UTC 2018 - aaronpuchert@alice-dsl.net
+
+- Update to version 7.14.2.
+  * Fix GPU detection when run with --detach_console or using $PATH
+  * Update NVIDIA GPU detection for recent models
+  * Change simple prefs dialog behavior to match advanced
+  * If using a dynamic account manager, show AM user name in
+    Manager rather than randomly-generated project account names
+  * Move new-version URLs from cc_config.xml to nvc_config.xml
+    (so that WCG can customize)
+
+-------------------------------------------------------------------
+Mon Aug  6 13:32:35 UTC 2018 - jengelh@inai.de
+
+- Remove unnecessary ldconfig from devel subpackage
+
+-------------------------------------------------------------------
+Tue Jul 24 20:06:29 UTC 2018 - aaronpuchert@alice-dsl.net
+
+- Update to version 7.12.1.
+- Remove doc package, since the files have been removed from the
+  source. Actually it wasn't even the documentation, but the
+  server code.
+- Disable idle detection via the XSS API and remove dependency to
+  libXScrnSaver-devel. This feature requires access to a running
+  X server, which the BOINC client does not have in OpenSUSE.
+- Rename the devel package and provide the correct dependency.
+  The devel package provides the headers for libboinc, and has
+  nothing to do with the BOINC client.
+- Add conflict to original devel package.
+- Remove unnecessary dependency to libxslt.
+- Update systemd service file with changes from upstream: start
+  after network-online.target, and use "ProtectHome=true".
+- Move bash completion file to /usr/share tree to fix rpmlint.
+- Declare license files as %license.
+- Don't install `notes` and `todo` - these are internal notes of
+  the developers and not helpful to users.
+- Drop 0001-MGR-support-wxWidgets-without-webview.patch, which has
+  landed upstream (commit 27bb3c9e).
+- libboinc-shared.patch: Build shared libraries for client and
+  static libraries for science apps. Science apps are distributed
+  as binaries over the BOINC network, so dynamic linking doesn't
+  make sense. But we can use dynamic linking for the client.
+- build-client-scripts.patch: Add some targets to fix build.
+- Fix default path for boincscr.
+
+-------------------------------------------------------------------
+Wed Jul 11 15:36:12 UTC 2018 - chris@computersalat.de
+
+- Update to 7.8.6
+  * can't find any useful ChangeLog :(
+
+-------------------------------------------------------------------
+Thu Nov 23 13:38:12 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Oct 26 22:39:03 UTC 2017 - chris@computersalat.de
+
+- Update to version 7.8.3. (aaronpuchert)
+- Removed the deprecated "Encoding" line from the .desktop file.
+- Updated the cleanup code:
+  * Permissions seem to be correct now.
+  * Line endings seem to be correct.
+  * Applied the UTF-8 conversion to the 2011 notes as well.
+- Removed the entire coprocs/NVIDIA directory, since all files in
+  there have a doubtful license.
+- Removed components that are not required for a Linux build. 
+
+-------------------------------------------------------------------
+Sun Sep 10 00:49:25 UTC 2017 - chris@computersalat.de
+
+- update to 7.8.2
+  * no changelog available
+- add {minor_version}
+- rm wrong sim_web link
+- fix files for SLES 11
+- remove obsolete patch
+  * 0001-Fix-1530-null-pointer-dereference.patch
+
+-------------------------------------------------------------------
+Fri Sep  8 09:38:10 UTC 2017 - jengelh@inai.de
+
+- Add 0001-MGR-support-wxWidgets-without-webview.patch
+
+-------------------------------------------------------------------
+Sat Sep  2 22:12:09 UTC 2017 - jengelh@inai.de
+
+- Remove unnecessary %if..%endif markers that do not affect the
+  rpmbuild output files.
+- Move patch metadata into patch so it stays with the patch.
+  Add more authorship info.
+- Add xlocale.patch to fix build error with glibc-2.26.
+- Refresh boinc-guirpcauth.patch, boinc-docbook2x.patch,
+  0001-Fix-1530-null-pointer-dereference.patch to quilt's default
+  p1 level.
+
+--------------------------------------------------------------------
+Mon Mar 27 10:59:02 UTC 2017 - chris@computersalat.de
+
+- fix deps
+  * add missing ca-certificates-mozilla
+    needed in minimal install, e.g. JeOS images,
+    without - boinc-client will fail to load config from
+    e.g. www.worldcommunitygrid.org/get_project_config.php
+
+-------------------------------------------------------------------
+Sat Feb 25 17:53:03 UTC 2017 - chris@computersalat.de
+
+- fix for boo#1026965
+  * no remote connect, no sysconfig file (--allow_remote_gui_rpc)
+  * install and fillup sysconfig file
+  * rework service file
+- fix wrong bashism fix by ledest
+  * grep should NOT match
+- do not build boinc-manager on SLES 11/12
+  * bcond_with manager
+- revert conditionals remove for SLES 11
+  * add SysVinit file
+- mv boincscr to manager pkg, built with manager
+
+-------------------------------------------------------------------
+Mon Jan  2 10:31:59 UTC 2017 - jengelh@inai.de
+
+- Add argument passing from boinc-manager to boinc-gui [boo#1017705]
+
+-------------------------------------------------------------------
+Tue Dec 27 21:18:12 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 7.6.33
+* Fix a crash near readdir (add
+  0001-Fix-1530-null-pointer-dereference.patch)
+
+-------------------------------------------------------------------
+Sun Apr 24 07:31:13 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 7.6.32
+- Remove boinc-client-AM_CONDITIONAL.patch, boinc-configure.patch
+  (no longer needed)
+
+-------------------------------------------------------------------
+Fri Apr 22 21:48:48 UTC 2016 - aaronpuchert@alice-dsl.net
+
+- Replaced quick fix for compiler errors by a proper solution,
+  which is already upstreamed.
+- Removed dependency to mysql, because that is only needed for the
+  BOINC server, which we don't build anyway.
+- Removed dependency to libboinc, because it's meant to be
+  statically linked to science apps and not necessary for end user.
+
+-------------------------------------------------------------------
+Sun Mar 27 22:13:10 UTC 2016 - aaronpuchert@alice-dsl.net
+
+- Update to version 7.6.22. The main advantage: GPUs running on
+  the open source stack (Mesa) are now recognized and can be used
+  for BOINC. Additional packages are needed though:
+  * libOpenCL1,
+  * libMesaOpenCL,
+  * libclc.
+  Further, the GPU device in /dev/dri needs to have r+w rights for
+  the BOINC user, since it doesn't have access to the X session.
+- Fetch from GitHub instead of SVN, removed the fetch script
+- Rebased all patches, removed obsolete boinc-LC_MESSAGES.patch
+- Fixed compiler errors because openSUSEs wxWidgets is configured
+  with wxUSE_STL=1, which is incompatible with BOINC. There is an
+  open issue on GitHub: https://github.com/BOINC/boinc/issues/1515.
+- Building the manager and locales separately is no longer
+  necessary.
+- The icons seem to have disappeared.
+- The BOINC manager should be called with the data directory
+  instead of the binary directory. Otherwise it can't connect.
+
+-------------------------------------------------------------------
+Wed Jun 24 10:53:06 UTC 2015 - jengelh@inai.de
+
+- boinc-client.service: replace ControlGroup= by Slice=, since
+  ControlGroup is gone since systemd-205 already. We now use the
+  "background.slice". Configuration of the background.slice is
+  left to the administrator since it may be shared by other
+  packages, and is subject to preferences. If you need some default
+  to begin with for the first time,  use
+  `systemctl set-property background.slice CPUShares=2`.
+
+-------------------------------------------------------------------
+Wed Mar 18 13:09:19 UTC 2015 - jengelh@inai.de
+
+- Reduce logrotate from Requires to Recommends.
+- Remove Requires: cron. This seems only for the server parts
+  (not in this package).
+- Remove systemd requires to allow for a minimal container setup.
+
+-------------------------------------------------------------------
+Sun Nov 09 01:44:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Tue Jun 17 13:39:32 UTC 2014 - tchvatal@suse.com
+
+- Remove needless rpmlintrc lines to ease error spotting when there
+  really are some.
+
+-------------------------------------------------------------------
+Tue Jun 17 13:30:10 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner for better readability
+- Move lang packages from Requires to Recommends
+
+-------------------------------------------------------------------
+Tue Jun 17 13:13:14 UTC 2014 - tchvatal@suse.com
+
+- Remove unused patch:
+  * boinc-completion.patch
+- Remove comments with unused patches
+- Remove conditionals with inits as we don't build for such release
+  anyway
+- Provide rcboinc symlink for easier usage.
+
+-------------------------------------------------------------------
+Wed Mar 26 22:34:18 UTC 2014 - chris@computersalat.de
+
+- some RPMLINT fixes
+  * fix License: remove ','
+  * non-standard-gid /var/lib/boinc boinc
+    * SR #227671 to rpmlint
+- fix deps for libxcb
+
+-------------------------------------------------------------------
+Tue Mar 18 15:21:19 UTC 2014 - chris@computersalat.de
+
+- fix README.SUSE
+
+-------------------------------------------------------------------
+Sun Mar 16 22:23:48 UTC 2014 - chris@computersalat.de
+
+# fix for bnc#779335
+  * disabled boinc-completion.patch
+- update to 7.2.42
+  * Fix problem that was causing scheduler RPCs to fail on Yoyo@home
+    (HTTP status code 400) 
+  * for mor info have a look at
+    http://boinc.berkeley.edu/wiki/Release_Notes
+- removed obsolete patches:
+  * boinc-client-dynamic_buffers.patch
+  * boinc-init.patch
+  * boinc-client-7.0.36-AM_CONDITIONAL.patch
+  * boinc-client-7.0.36-dynamic_buffers.patch
+- rebased patches:
+  * boinc-LC_MESSAGES.patch
+  * boinc-client-AM_CONDITIONAL.patch
+  * boinc-configure.patch
+  * boinc-docbook2x.patch
+  * boinc-guirpcauth.patch
+
+-------------------------------------------------------------------
+Sat Oct 26 09:45:58 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 7.0.36
+  + No changelog available
+- Add systemd support
+- Adapt patchs to upstream changes
+  * boinc-client-dynamic_buffers.patch
+  * boinc-client-AM_CONDITIONAL.patch 
+- Remove boinc-client-glib_h.patch; fixed on upstream
+- Do not copy INSTALL in documentation
+
+-------------------------------------------------------------------
+Wed May  1 20:53:41 UTC 2013 - chris@computersalat.de
+
+- update to 7.0.28
+  * sorry but there is no ChangeLog :(
+- rebase patches
+  * dynamic_buffers, guirpcauth, AM_CONDITIONAL
+- add configure patch
+- remove obsolete glib_h patch
+
+-------------------------------------------------------------------
+Wed Apr  3 11:12:16 UTC 2013 - coolo@suse.com
+
+- do not own bash directories
+
+-------------------------------------------------------------------
+Tue Jul 10 13:50:30 UTC 2012 - chris@computersalat.de
+
+- rename patch
+  * fix-automake-conditional to boinc-client-AM_CONDITIONAL patch
+- fix build for SLE_11
+  * AM_CONDITIONAL patch >= 12.2
+
+-------------------------------------------------------------------
+Tue Jul 10 12:24:13 UTC 2012 - coolo@suse.com
+
+- fix compilation for factory and 12.2
+
+-------------------------------------------------------------------
+Sun Jul  1 19:51:54 UTC 2012 - chris@computersalat.de
+
+- add BOINC_DIR to sysconfig
+  * make BOINC_DIR configurable (a proposal of Carsten Neumann)
+
+-------------------------------------------------------------------
+Sat Feb 11 00:56:07 UTC 2012 - chris@computersalat.de
+
+- add glib_h patch
+
+-------------------------------------------------------------------
+Fri Feb 10 23:40:19 UTC 2012 - chris@computersalat.de
+
+- update tp 6.12.43
+  * sorry but there is no ChangeLog :(
+- rework patches
+- remove obsolete patches
+  * boinc-server.patch
+  * boinc-client-str_util.patch
+- add boinc-client-lang subpkg
+- fix DSOLinkChange for suse >= 1210
+  * see https://fedoraproject.org/wiki/UnderstandingDSOLinkChange
+    for more info, special thanks to Stefan Dirsch :)
+
+-------------------------------------------------------------------
+Fri Feb 10 23:07:01 UTC 2012 - chris@computersalat.de
+
+- fix sed for boinc-manager
+
+-------------------------------------------------------------------
+Wed Feb  8 22:51:55 UTC 2012 - chris@computersalat.de
+
+- fix for bnc#745887 ( Confirm licensing of boinc-client 6.10.60 )
+- fix for bnc#744612 ( File /usr/bin/boinc_gui incorrectly named )
+- fix for bnc#744389 ( boinc-client will not run )
+- fix for bnc#732118 ( BOINC installs but will not run )
+
+-------------------------------------------------------------------
+Mon Feb  6 15:05:05 UTC 2012 - chris@computersalat.de
+
+- fix License (http://www.spdx.org/licenses/)
+  * LGPL-3.0
+
+-------------------------------------------------------------------
+Sun Feb  5 23:11:38 UTC 2012 - chris@computersalat.de
+
+- remove client dep of manager
+  * manager does not really need a local boinc-client ;)
+- fix desktop file
+
+-------------------------------------------------------------------
+Sat Feb  4 00:37:37 UTC 2012 - chris@computersalat.de
+
+- fix deps for boinc-client
+  * Requires libboinc6
+
+-------------------------------------------------------------------
+Thu Feb  2 20:32:57 UTC 2012 - chris@computersalat.de
+
+- rework patches
+- rework sysconfig file
+- rework logrotate file
+- add SuSElike init script
+- fix user add
+  * boinc needs a shell
+- fix wrapper
+  * replace boincmanager with boinc-manager and add symlink for
+    backward compatibility
+  * fix boinc_gui -> boinc-gui
+- fix License
+  * LGPLv3
+- fix for bnc#689499
+  * a blocked boinc client, the manager works
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:45 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Aug 30 18:18:14 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed Bug bnc#714623 (/var/lock/subsys unsupported) 
+
+-------------------------------------------------------------------
+Mon May 16 18:49:58 CEST 2011 - pth@suse.de
+
+- Avoid buffer overflow in filesys.cpp(dir_size).
+
+-------------------------------------------------------------------
+Sun May  1 23:27:45 UTC 2011 - chris@computersalat.de
+
+- update to 6.10.60
+  * Fix: Project list issue in the attach wizard that lead to a crash
+- fix deps
+  o wxGTK-devel
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Apr 29 06:11:10 UTC 2011 - saigkill@opensuse.org
+
+- filed shared-lib-calls-exit in boinc as
+  http://boinc.berkeley.edu/trac/ticket/1098
+- filed binary-or-shlib-calls-gethostbyname as
+  http://boinc.berkeley.edu/trac/ticket/1099 
+
+-------------------------------------------------------------------
+Thu Apr 28 13:28:25 UTC 2011 - saigkill@opensuse.org
+
+- Rewritten the Spec based on Malcolm Lewis Improvements (THX) 
+
+-------------------------------------------------------------------
+Wed Apr 27 17:37:08 UTC 2011 - saigkill@opensuse.org
+
+- Removed boinc-bnc_465676.patch (Fixed Upstream)
+- Removed boinc-bnc_465676.patch (Fixed Upstream)
+- Removed boinc-client-NotebookWxPanel.patch (Fixed Upstream)
+- Removed boinc-client-wxWindowListNode.patch (Fixed Upstream)
+
+-------------------------------------------------------------------
+Tue Dec 28 18:21:51 CET 2010 - sbrabec@suse.cz
+
+- Compile with wxWidgets (STL variant).
+
+-------------------------------------------------------------------
+Tue Oct  5 04:24:40 UTC 2010 - malcolmlewis@opensuse.org
+ 
+- Fix boinc-manager-lang requires
+ 
+-------------------------------------------------------------------
+Tue Oct  5 03:41:39 UTC 2010 - malcolmlewis@opensuse.org
+ 
+- Major spec file makeover
+- Updated version
+- Cleaned up patches
+- Fixed most deprecated conversion from string constant to 'char*' 
+
+-------------------------------------------------------------------
+Mon Mar 15 16:06:23 UTC 2010 - coolo@novell.com
+
+- disable use of %jobs
+
+-------------------------------------------------------------------
+Sun May 31 23:27:04 CEST 2009 - saigkill@opensuse.org
+
+- fixed str_util.h while using newer gcc (THX to Jan) 
+
+-------------------------------------------------------------------
+Fri May 22 14:06:32 CEST 2009 - saigkill@opensuse.org
+
+- fixed Errors while using newer wx Version 
+
+-------------------------------------------------------------------
+Fri Mar 27 11:57:43 CET 2009 - saigkill@opensuse.org
+
+- removed boinctray depency
+
+-------------------------------------------------------------------
+Sat Mar 14 18:41:07 CET 2009 - saigkill@opensuse.org
+
+- added rpmlintrc
+
+-------------------------------------------------------------------
+Wed Feb 25 15:06:27 CET 2009 - pth@suse.de
+
+- Use wxWindowList::compatibility_iterator instead of wxWindowListNode*
+  as the latter is not defined when wxWindows is compiled to use
+  the STL.
+- Include standard compiler flags.
+- Reformat description
+- Correct spelling boinc-client-README.SuSE
+
+------------------------------------------------------------------
+Thu Feb 12 11:10:00 CET 2009 - saigkill@opensuse.org
+
+- added wxstring_conversion.patch (fix Bug #774 Berkeley Bug)
+
+------------------------------------------------------------------
+Wed Feb 11 17:41:00 CET 2009 - saigkill@opensuse.org
+
+- first stable Version
+- fixed boincmgr to copy gui_rpc_auth.cfg to every /home
+
+------------------------------------------------------------------
+Wed Feb 11 11:48:44 CET 2009 - saigkill@opensuse.org
+
+- Export %%changelog to boinc-client.changes
+
+------------------------------------------------------------------
+Tue Feb 10 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- changed $BOINCEXE from boinc_client to boinc
+
+------------------------------------------------------------------
+Wed Feb 04 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- Fixed OpenSUSE Bugzilla Bug #468414
+
+------------------------------------------------------------------
+Tue Feb 03 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- updated to Version 6.4
+- deleted bnc_465676 (was fixed in sourcecode by boinc-team)
+
+------------------------------------------------------------------
+Mon Feb 02 12:00:00 CET 2009 - dl9pf@gmx.de
+
+- tweaked -doc package
+
+------------------------------------------------------------------
+Mon Feb 02 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- added README.SuSE to %%doc
+- added own Patches:
+  + boinc-docbook2x (fix using docbook2x)
+  + boinc-LC_MESSAGES (fix handling .mo LC Messages)
+  + boinc-rcscript (fix using init.d instead of rc.d)
+		   (fix BOINC User root)
+  + boinc-sysconfig (fix installing conf in /etc/boinc-client.conf)
+		    (fix init File as boinc)
+  + ca_cert_deactivate (fix deactivate using of ca_cert)
+  + fs_start_included (fix add $fs_network to init.d Script)
+
+------------------------------------------------------------------
+Sun Feb 01 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- added fillup Macro to use sysconfig
+- use sysconfig.boinc as source from fillup macro
+
+------------------------------------------------------------------
+Sat Jan 31 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- deleted bnc_431510 not relevant (for Mac).
+- deleted bnc_439037 not relevant 
+- deleted bnc_442904 for Win. In my Package no Win/Mac Source
+- added bnc_465676.patch fix CVE-ID: CVE-2009-0126
+- branched for Factory:Contrib
+
+------------------------------------------------------------------
+Fri Jan 23 12:00:00 CET 2009 - saigkill@opensuse.org
+
+- deleted mac/mac_build/win Folders from the Sourcecode
+
+------------------------------------------------------------------
+Wed Jan 14 12:00:00 CET 2009 - mauro@suse.de
+
+- Added bnc_465676.patch to fix bnc#465676.
+  + Fixes CVE-2008-5077
+  + check return values of RSA_*() functions.
+  + fix a memory leak, missing RSA_free().
+
+------------------------------------------------------------------
+Tue Dec 23 12:00:00 CET 2008 - mauro@suse.de
+
+- Added bnc_442904.patch to fix bnc#442904.
+  + Use the proper delete.
+
+------------------------------------------------------------------
+Mon Nov 03 12:00:00 CET 2008 - mauro@suse.de
+
+- Add bnc_439037.patch to fix bnc#439037. We now use strcmp
+  instead of the original ==.
+
+------------------------------------------------------------------
+Fri Oct 03 12:00:00 CET 2008 - mauro@suse.de
+
+- Add bnc-431510.patch to fix bnc#431510.
+
+------------------------------------------------------------------
+Mon Sep 08 12:00:00 CET 2008 - mauro@suse.de
+
+- initial package for SuSE. boinc 6.2.18 (based on the enzokiel's
+  (opensuse version).

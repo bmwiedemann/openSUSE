@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d9a32511dc85cf6e1a80d8a90379ca6</srcmd5>
+    <version>1.4.0</version>
+    <time>1440658482</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>318876</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7157e47178a9f9958d358391edf240a8</srcmd5>
+    <version>1.4.1</version>
+    <time>1488216608</time>
+    <user>dimstar_suse</user>
+    <comment>first batch of singlespec packages</comment>
+    <requestid>460250</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f164ed42f797410777813e9f27071da0</srcmd5>
+    <version>1.4.3</version>
+    <time>1502706997</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  - [PR #76] Python 3.6 invalid escape sequence deprecation fixes
+  - Fix for Python 3.6 support
+  - [PR #84] Allow installing without setuptools
+  - [PR #86] Fix string delimiters in setup.py description
+  - Add Python 3.6 support
+- drop desetuptoolize.patch . no longer needed.</comment>
+    <requestid>515117</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d707c777a3874d7fffed03822c8933fb</srcmd5>
+    <version>1.4.3</version>
+    <time>1536327265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633233</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fb452577e48a29bf5547f18b7f912ae3</srcmd5>
+    <version>1.4.3</version>
+    <time>1536575940</time>
+    <user>maxlin_factory</user>
+    <comment>reverting, bsc#1107798</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>dc3f2f807c144eec1e14267874f609f6</srcmd5>
+    <version>1.4.3</version>
+    <time>1537436401</time>
+    <user>maxlin_factory</user>
+    <comment>- Revert removal of the code fixing egginfo (boo#1107798)
+- Actually we don't need remove-setuptools-dependency.patch,
+  when we don't run python setup.py test anymore. So, remove it.
+
+- Clean SPEC and remove circular dependency on python-setuptools
+  (Add remove-setuptools-dependency.patch patch to do this)</comment>
+    <requestid>634722</requestid>
+  </revision>
+</revisionlist>

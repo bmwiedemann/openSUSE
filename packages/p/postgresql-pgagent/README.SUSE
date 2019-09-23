@@ -1,0 +1,20 @@
+Run pgAdmin 4, open the server connection and select the database where you want to use pgagent.
+
+Then open the Tools menu and choose the Query Tool.
+
+Write:
+
+CREATE EXTENSION pgagent;
+CREATE LANGUAGE plpgsql;
+
+and press F5 or click on the execute button (the one with the ray icon)
+
+Note: If you get an error saying 'language "plpgsql" already exists' then remove
+the CREATE LANGUAGE line and execute the code again with just CREATE EXTENSION pgagent;
+
+Once it's executed successfully, select the server connection again, right click on it and select "Refresh...".
+
+You should see a new "pgAgent Jobs" entry in the database tree in pgAdmin.
+
+
+

@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>4fe2c6d485319e223b6013b3f4d22da7</srcmd5>
+    <version>20070512</version>
+    <time>1221705589</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e05cbbd7c292c577a58bf72bd6792e48</srcmd5>
+    <version>20070512</version>
+    <time>1226022359</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e05cbbd7c292c577a58bf72bd6792e48</srcmd5>
+    <version>20070512</version>
+    <time>1226022359</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>3679f6932d4da687d65f99a203685c79</srcmd5>
+    <version>20070512</version>
+    <time>1268924864</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>c5b4c12311c47053a474a231f7a6d69b</srcmd5>
+    <version>20070512</version>
+    <time>1273876720</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/luvcview based on submit request 40019 from user prusnak
+</comment>
+    <requestid>40019</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>1962fc166ed0661463d1418031fc9bdc</srcmd5>
+    <version>20070512</version>
+    <time>1274209871</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/luvcview based on submit request 40248 from user prusnak
+</comment>
+    <requestid>40248</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>1962fc166ed0661463d1418031fc9bdc</srcmd5>
+    <version>20070512</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>1962fc166ed0661463d1418031fc9bdc</srcmd5>
+    <version>20070512</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>1962fc166ed0661463d1418031fc9bdc</srcmd5>
+    <version>20070512</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>30a319053568d0baa22102c545049082</srcmd5>
+    <version>20070512</version>
+    <time>1310042274</time>
+    <user>saschpe</user>
+    <comment>- Add luvcview-v4l-2.6.38.patch: use new v4l interface</comment>
+    <requestid>75641</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>81deff250069d5d968f5ea5e01f60be5</srcmd5>
+    <version>20070512</version>
+    <time>1310042292</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75641
+</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>81deff250069d5d968f5ea5e01f60be5</srcmd5>
+    <version>20070512</version>
+    <time>1319182161</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>39fa4b5a271187fa55d4bb9b19b4b55d</srcmd5>
+    <version>20070512</version>
+    <time>1323192442</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>39fa4b5a271187fa55d4bb9b19b4b55d</srcmd5>
+    <version>20070512</version>
+    <time>1340183678</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>39fa4b5a271187fa55d4bb9b19b4b55d</srcmd5>
+    <version>20070512</version>
+    <time>1359109414</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="25">
+    <srcmd5>39fa4b5a271187fa55d4bb9b19b4b55d</srcmd5>
+    <version>20070512</version>
+    <time>1379663210</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>39fa4b5a271187fa55d4bb9b19b4b55d</srcmd5>
+    <version>20070512</version>
+    <time>1409301829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Tue Jul  4 09:03:41 UTC 2017 - jengelh@inai.de
+
+- Trim description, don't sell standard speeds as "fast".
+
+-------------------------------------------------------------------
+Mon Dec 19 10:17:53 UTC 2016 - tboerger@suse.com
+
+- Update to version 0.0.0+git20161123.5070dac:
+  * package_bin: backport compiler exporter fix for golang/go#15514
+  * Optionally import unimported packages before autocompletion.
+  * package_bin: update to match latest changes to std lib gcimporter
+  * package_bin: update to recognize export format version 2
+  * added pre go.17 hack
+  * Rewrite package resolving code. Fixes #373.
+  * emacs-company: make additional gocode arguments customisable
+  * Fixes autocomplete paths for vendored packages
+  * package_bin: read v3 export data not containing type aliases
+  * Fixed a typing mistake
+
+-------------------------------------------------------------------
+Mon Dec 19 10:04:43 UTC 2016 - tboerger@suse.com
+
+- Refactoring based on new packaging proposal
+
+-------------------------------------------------------------------
+Sun Apr  3 19:18:06 UTC 2016 - i@marguerite.su
+
+- add xz dependency for SLE
+- get rid of -source subpackage, no one use it
+
+-------------------------------------------------------------------
+Wed Jul 22 05:17:48 UTC 2015 - i@marguerite.su
+
+- rename to golang-github-nsf-gocode
+- update version 20150303+git20150718.adab99b
+- use golang-packaging for packaging
+- add new subpackages:
+  * emacs-completion-golang
+  * emacs-completion-golang-company
+  * vim-completion-golang (former go-gocode-vim)
+
+-------------------------------------------------------------------
+Sat Sep 20 04:58:26 UTC 2014 - i@marguerite.su
+
+- update version weekly2012.03.13+git20140903.8037a27
+
+-------------------------------------------------------------------
+Sun Dec  8 15:59:34 UTC 2013 - graham@andtech.eu
+
+- Update to latest git 08/10/2013
+
+-------------------------------------------------------------------
+Tue Aug 13 08:19:59 UTC 2013 - speilicke@suse.com
+
+- Use %{go_exclusivearch} macro
+
+-------------------------------------------------------------------
+Wed May 15 00:29:05 UTC 2013 - graham@andtech.eu
+
+- Update to latest git @ 15.05.2013
+- Fix infinite recursion bug in certain situations
+- Improvements for emacs
+- Remove bashism's in favour of POSIX shell syntax
+- Support multibyte charsets
+
+-------------------------------------------------------------------
+Wed Mar 20 20:02:27 UTC 2013 - graham@andtech.eu
+
+- update to git 2013.03.18
+
+-------------------------------------------------------------------
+Mon Mar  5 09:12:53 UTC 2012 - graham@andtech.eu
+
+- update for weekly.2012-03-04
+
+-------------------------------------------------------------------
+Sat Feb  4 10:45:43 UTC 2012 - graham@andtech.eu
+
+- tweak spec for new go tool layout 
+
+-------------------------------------------------------------------
+Fri Feb  3 06:34:29 UTC 2012 - graham@andtech.eu
+
+- gofixes to build with new macros and tool
+
+-------------------------------------------------------------------
+Tue Oct 18 17:49:46 UTC 2011 - saschpe@suse.de
+
+- Initial version
+

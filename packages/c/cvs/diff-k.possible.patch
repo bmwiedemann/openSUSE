@@ -1,0 +1,11 @@
+--- src/diff.c
++++ src/diff.c
+@@ -474,7 +474,7 @@
+     char *rev1_cache = NULL;
+ 
+     user_file_rev = 0;
+-    vers = Version_TS (finfo, NULL, NULL, NULL, 1, 0);
++    vers = Version_TS (finfo, options, NULL, NULL, 1, 0);
+ 
+     if (diff_rev2 || diff_date2)
+     {

@@ -1,0 +1,188 @@
+Subject: zkey: Add build dependency for libcryptsetup and json-c
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Summary: zkey: Support CCA master key change with LUKS2 volumes using paes     
+Description: Support the usage of protected key crypto for dm-crypt disks in
+             LUKS2 format by providing a tool allowing to re-encipher a 
+             secure LUKS2 volume key when the CCA master key is changed
+Upstream-ID: 818ffbc4b05783851cc12682d3d8ad6b99312d63
+Problem-ID:  SEC1424.1
+
+Upstream-Description:
+
+             zkey: Add build dependency for libcryptsetup and json-c
+
+             The zkey-cryptsetup tool has a build dependency to
+             libcryptsetup version 2.0.3 or later, and json-c.
+
+             Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+             Reviewed-by: Hendrik Brueckner <brueckner@linux.ibm.com>
+             Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ README.md     |    9 ++++--
+ common.mak    |    3 +-
+ zkey/Makefile |   84 +++++++++++++++++++++++++++++++++++++++++++---------------
+ 3 files changed, 72 insertions(+), 24 deletions(-)
+
+--- a/README.md
++++ b/README.md
+@@ -264,6 +264,8 @@ build options:
+ | pfm        | `HAVE_PFM`     | cpacfstats                            |
+ | net-snmp   | `HAVE_SNMP`    | osasnmpd                              |
+ | openssl    | `HAVE_OPENSSL` | zkey                                  |
++| cryptsetup | `HAVE_CRYPTSETUP2` | zkey-cryptsetup                   |
++| json-c     | `HAVE_JSONC`   | zkey-cryptsetup                       |
+ 
+ This table lists additional build or install options:
+ 
+@@ -369,8 +371,11 @@ the different tools are provided:
+ 
+ * zkey:
+   For building the zkey tools you need openssl version 0.9.7 or newer installed
+-  (openssl-devel.rpm). Tip: you may skip the zkey build by adding
+-  `HAVE_OPENSSL=0` to the make invocation.
++  (openssl-devel.rpm). Also required are cryptsetup version 2.0.3 or newer
++  (cryptsetup-devel.rpm), and json-c version 0.12 or newer (json-c-devel.rpm).
++  Tip: you may skip the zkey build by adding `HAVE_OPENSSL=0`, and you may
++  may skip the zkey-cryptsetup build by adding `HAVE_CRYPTSETUP2=0`, or
++  `HAVE_JSONC=0` to the make invocation.
+   A new group 'zkeyadm' needs to be created and all users intending to use the
+   tool must be added to this group. The owner of the default key repository
+   '/etc/zkey/repository' must be set to group 'zkeyadm' with write permission
+--- a/common.mak
++++ b/common.mak
+@@ -113,9 +113,10 @@ DEFAULT_LDFLAGS = -rdynamic
+ # $2: Name of include file to check
+ # $3: Name of required devel package
+ # $4: Option to skip build (e.g. HAVE_FUSE=0)
++# $5: Additional compiler & linker options (optional)
+ #
+ check_dep=\
+-printf "\#include <%s>" $2 | ( $(CC) $(filter-out --coverage, $(ALL_CFLAGS)) $(ALL_CPPFLAGS) -c -o /dev/null -xc - ) > /dev/null 2>&1; \
++printf "\#include <%s>\n int main(void) {return 0;}" $2 | ( $(CC) $(filter-out --coverage, $(ALL_CFLAGS)) $(ALL_CPPFLAGS) $5 -o /dev/null -xc - ) > /dev/null 2>&1; \
+ if [ $$? != 0 ]; \
+ then \
+ 	printf "  REQCHK  %s (%s)\n" $1 $2; \
+--- a/zkey/Makefile
++++ b/zkey/Makefile
+@@ -1,54 +1,96 @@
+ include ../common.mak
+ 
+-ifeq (${HAVE_OPENSSL},0)
++ifneq (${HAVE_OPENSSL},0)
++	BUILD_TARGETS += zkey
++	INSTALL_TARGETS += install-zkey
++else
++	BUILD_TARGETS += zkey-skip
++	INSTALL_TARGETS += zkey-skip
++endif
+ 
+-all:
+-	$(SKIP) HAVE_OPENSSL=0
++ifneq (${HAVE_CRYPTSETUP2},0)
++	ifneq (${HAVE_JSONC},0)
++		BUILD_TARGETS += zkey-cryptsetup
++		INSTALL_TARGETS += install-zkey-cryptsetup
++	else
++		BUILD_TARGETS += zkey-cryptsetup-skip-jsonc
++		INSTALL_TARGETS += zkey-cryptsetup-skip-jsonc
++	endif
++else
++	BUILD_TARGETS += zkey-cryptsetup-skip-cryptsetup2
++	INSTALL_TARGETS += zkey-cryptsetup-skip-cryptsetup2
++endif
+ 
+-install:
+-	$(SKIP) HAVE_OPENSSL=0
++CPPFLAGS += -I../include
++LIBS = $(rootdir)/libutil/libutil.a
+ 
+-else
++detect-libcryptsetup.h:
++	echo "#include <libcryptsetup.h>" > detect-libcryptsetup.h
++	echo "#ifndef CRYPT_LUKS2" >> detect-libcryptsetup.h
++	echo "  #error libcryptsetup version 2.0.3 is required" >> detect-libcryptsetup.h
++	echo "#endif" >> detect-libcryptsetup.h
++	echo "int i = CRYPT_SLOT_UNBOUND;" >> detect-libcryptsetup.h
+ 
+-check_dep:
++check-dep-zkey:
+ 	$(call check_dep, \
+ 		"zkey", \
+ 		"openssl/evp.h", \
+ 		"openssl-devel", \
+ 		"HAVE_OPENSSL=0")
+ 
+-CPPFLAGS += -I../include
++check-dep-zkey-cryptsetup: detect-libcryptsetup.h
++	$(call check_dep, \
++		"zkey-cryptsetup", \
++		"detect-libcryptsetup.h", \
++		"cryptsetup-devel version 2.0.3", \
++		"HAVE_CRYPTSETUP2=0", \
++		"-I.")
++	$(call check_dep, \
++		"zkey-cryptsetup", \
++		"json-c/json.h", \
++		"json-c-devel", \
++		"HAVE_JSONC=0")
++
++zkey-skip:
++	echo "  SKIP    zkey due to HAVE_OPENSSL=0"
++
++zkey-cryptsetup-skip-cryptsetup2:
++	echo "  SKIP    zkey-cryptsetup due to HAVE_CRYPTSETUP2=0"
+ 
+-all: check_dep zkey zkey-cryptsetup
++zkey-cryptsetup-skip-jsonc:
++	echo "  SKIP    zkey-cryptsetup due to HAVE_JSONC=0"
+ 
+-libs = $(rootdir)/libutil/libutil.a
++all: $(BUILD_TARGETS)
+ 
+ zkey.o: zkey.c pkey.h misc.h
+ pkey.o: pkey.c pkey.h
+-properties.o: properties.c properties.h
++properties.o: check-dep-zkey properties.c properties.h
+ keystore.o: keystore.c keystore.h properties.h
+-zkey-cryptsetup.o: zkey-cryptsetup.c pkey.h misc.h
++zkey-cryptsetup.o: check-dep-zkey-cryptsetup zkey-cryptsetup.c pkey.h misc.h
+ 
+ zkey: LDLIBS = -ldl -lcrypto
+-zkey: zkey.o pkey.o properties.o keystore.o $(libs)
++zkey: zkey.o pkey.o properties.o keystore.o $(LIBS)
+ 
+ zkey-cryptsetup: LDLIBS = -ldl -lcryptsetup -ljson-c
+-zkey-cryptsetup: zkey-cryptsetup.o pkey.o $(libs)
++zkey-cryptsetup: zkey-cryptsetup.o pkey.o $(LIBS)
+ 
+-
+-install: all
++install-common:
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(USRBINDIR)
+-	$(INSTALL) -g $(GROUP) -o $(OWNER) -m 755 zkey $(DESTDIR)$(USRBINDIR)
+-	$(INSTALL) -g $(GROUP) -o $(OWNER) -m 755 zkey-cryptsetup $(DESTDIR)$(USRBINDIR)
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(MANDIR)/man1
++
++install-zkey:
++	$(INSTALL) -g $(GROUP) -o $(OWNER) -m 755 zkey $(DESTDIR)$(USRBINDIR)
+ 	$(INSTALL) -m 644 -c zkey.1 $(DESTDIR)$(MANDIR)/man1
+-	$(INSTALL) -m 644 -c zkey-cryptsetup.1 $(DESTDIR)$(MANDIR)/man1
+ 	$(INSTALL) -d -m 770 $(DESTDIR)$(SYSCONFDIR)/zkey
+ 	$(INSTALL) -d -m 770 $(DESTDIR)$(SYSCONFDIR)/zkey/repository
+ 
+-endif
++install-zkey-cryptsetup:
++	$(INSTALL) -g $(GROUP) -o $(OWNER) -m 755 zkey-cryptsetup $(DESTDIR)$(USRBINDIR)
++	$(INSTALL) -m 644 -c zkey-cryptsetup.1 $(DESTDIR)$(MANDIR)/man1
++
++install: all install-common $(INSTALL_TARGETS)
+ 
+ clean:
+-	rm -f *.o zkey zkey-cryptsetup
++	rm -f *.o zkey zkey-cryptsetup detect-libcryptsetup.h
+ 
+ .PHONY: all install clean

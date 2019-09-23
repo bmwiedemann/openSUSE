@@ -1,0 +1,5 @@
+<package name="pam_script" project="openSUSE:Factory">
+  <title>PAM module which allows executing a script</title>
+  <description>This module will allow you to execute scripts during authorization, password changes and sessions. This is very handy if your current security application has no PAM support but is accessible with perl or other scripts.</description>
+  <devel project="Linux-PAM" package="pam_script"/>
+</package>

@@ -1,0 +1,786 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ebb108d9de88730721c2cbd51f0e89c</srcmd5>
+    <version>4.98.0</version>
+    <time>1396452161</time>
+    <user>coolo</user>
+    <comment>Update to 4.98.0</comment>
+    <requestid>228735</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a6747d83877abfd8cdce2086c32edbf</srcmd5>
+    <version>4.99.0</version>
+    <time>1400092047</time>
+    <user>coolo</user>
+    <comment>Update to 4.99.0</comment>
+    <requestid>233192</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dc0ac22f3d3fd095ede25af5e4ba9dcd</srcmd5>
+    <version>4.100.0</version>
+    <time>1402403842</time>
+    <user>coolo</user>
+    <comment>Update to 4.100.0</comment>
+    <requestid>236535</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>65ae496eada05472bce83f29c76ab3a6</srcmd5>
+    <version>5.0.0</version>
+    <time>1405404041</time>
+    <user>coolo</user>
+    <comment>Define kf5_version within package</comment>
+    <requestid>240412</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c1524fb083afb6b304587d286ab4d852</srcmd5>
+    <version>5.1.0</version>
+    <time>1408196543</time>
+    <user>lnussel</user>
+    <comment>Update to 5.1.0</comment>
+    <requestid>244440</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c1524fb083afb6b304587d286ab4d852</srcmd5>
+    <version>5.1.0</version>
+    <time>1409302711</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc1808846b05801f7fa3d7ad4eb93bbc</srcmd5>
+    <version>5.2.0</version>
+    <time>1410534234</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>248926</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7757dd4ccc2752a942817c4ba5b2275d</srcmd5>
+    <version>5.2.0</version>
+    <time>1412155339</time>
+    <user>coolo</user>
+    <comment>- Added 18b57ff.patch: improved Plasma Dialog, and removed duplicated
+  code present with Plasma 5.1 release</comment>
+    <requestid>252200</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>76d4249db05215ae2a9f6ffd52517fca</srcmd5>
+    <version>5.3.0</version>
+    <time>1412690409</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0</comment>
+    <requestid>254447</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b2f1b88a1d69f2f69047ca11b6bdfe6d</srcmd5>
+    <version>5.3.0</version>
+    <time>1413048406</time>
+    <user>coolo</user>
+    <comment>Split out the private and components parts of plasma-framework as upstream doesn't manage to keep backwards compability. This allows updating API/ABI safe libplasma library at the cost of hardcoding versions of those private parts in their consumers.</comment>
+    <requestid>255020</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>557725d8ea26da745ce70c687629e26d</srcmd5>
+    <version>5.3.0</version>
+    <time>1413616141</time>
+    <user>coolo</user>
+    <comment>Fix typo in baselibs.conf</comment>
+    <requestid>257275</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>498c899406ad01933e56d98a8f7790b6</srcmd5>
+    <version>5.4.0</version>
+    <time>1415664614</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>259979</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>602c61d8c2c0c76591f80858f631e881</srcmd5>
+    <version>5.5.0</version>
+    <time>1419159554</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0, please merge with Qt 5.4 submit, thanks.</comment>
+    <requestid>264932</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c3b1fc6a5f6c8d0fc071fcbc9b1418bb</srcmd5>
+    <version>5.6.0</version>
+    <time>1422024432</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0</comment>
+    <requestid>282429</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f9745a8e791c3e4480e108ec14cf8434</srcmd5>
+    <version>5.6.0</version>
+    <time>1422626870</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches from upstream:
+  0001-collapse-tooltips-that-only-have-text.patch (kde#343390),
+  0002-restore-hint-apply-color-scheme-support.patch (kde#343389),
+  0003-restore-hint-apply-color-scheme-support.patch (kde#343389),
+  0001-make-sure-animation-is-disabled-the-first-time.patch (kde#341933),
+  0004-fix-tooltip-positioning.patch and
+  0005-Fix-fallback-from-invalid-L-F-packages.patch (kde#343510)</comment>
+    <requestid>283381</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ddb49c6cd21df23d5bb955eeebb7db6a</srcmd5>
+    <version>5.7.0</version>
+    <time>1424095656</time>
+    <user>coolo</user>
+    <comment>Update to 5.7.0.</comment>
+    <requestid>286107</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c5d61b6515a7d88258f14aa26b4c9ef8</srcmd5>
+    <version>5.8.0</version>
+    <time>1426494939</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.0.</comment>
+    <requestid>290600</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c39e78b3267e3a9c9a78be380149a4a3</srcmd5>
+    <version>5.9.0</version>
+    <time>1428949696</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.9.0.</comment>
+    <requestid>295548</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>444fbc5188f45555edd0065838ad84a3</srcmd5>
+    <version>5.10.0</version>
+    <time>1431365869</time>
+    <user>coolo</user>
+    <comment>Update to 5.10.0.</comment>
+    <requestid>306035</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e370395fcf13e48c6020a904318bd47e</srcmd5>
+    <version>5.11.0</version>
+    <time>1435054380</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.11</comment>
+    <requestid>311911</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4cc97670480cf8d4526c5f7d0582e42f</srcmd5>
+    <version>5.12.0</version>
+    <time>1436887808</time>
+    <user>coolo</user>
+    <comment>Update to 5.12.0</comment>
+    <requestid>315971</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>db0684151a589c6fa0befe6e418c7778</srcmd5>
+    <version>5.12.0</version>
+    <time>1439190842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319632</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6adc275dec91c1bf8b3bfd0bab75c204</srcmd5>
+    <version>5.13.0</version>
+    <time>1441172956</time>
+    <user>coolo</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>322218</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>408b1dd6675955df253a1318cec15ebd</srcmd5>
+    <version>5.14.0</version>
+    <time>1443071689</time>
+    <user>coolo</user>
+    <comment>Update to 5.14.0</comment>
+    <requestid>330703</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e98160c8afe45a0e3106cc810c40f8be</srcmd5>
+    <version>5.15.0</version>
+    <time>1445286557</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.15.0</comment>
+    <requestid>337679</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>777ef640126d1f244a6eb6cb73b5ea06</srcmd5>
+    <version>5.16.0</version>
+    <time>1448400348</time>
+    <user>coolo</user>
+    <comment>Update to 5.16.0</comment>
+    <requestid>344556</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ef2279aaf649ddc756646b2a3008ef26</srcmd5>
+    <version>5.17.0</version>
+    <time>1451390306</time>
+    <user>dimstar_suse</user>
+    <comment>- Make plasma-framework-devel conflict with kapptemplate
+
+- Update to 5.17.0
+  * Add basic plasmoid as example for developerguide
+  * Add a couple of plasmoid templates for kapptemplate/kdevelop
+  * [calendar] Delay the model reset until the view is ready
+    (kde#355943)
+  * Don't reposition while hiding. (kde#354352)
+  * [IconItem] Don't crash on null KIconLoader theme (kde#355577)
+  * Dropping image files onto a panel will no longer offer to set
+    them as wallpaper for the panel
+  * Dropping a .plasmoid file onto a panel or the desktop will
+    install and add it
+  * Remove the now unused platformstatus kded module
+    (kde#348840)
+  * Allow paste on password fields
+  * Fix positioning of edit menu, add a button to select
+  * [calendar] Use ui language for getting the month name
+    (kde#353715)
+  * [calendar] Sort the events by their type too
+  * [calendar] Move the plugin library to KDeclarative
+  * [calendar] qmlRegisterUncreatableType needs a bit
+    more arguments
+  * Allow adding config categories dynamically
+  * [calendar] Move the plugins handling to a separate class
+  * Allow plugins to supply event data to Calendar applet
+    (kde#349676)
+  * Check for slot existence before connecting or disconnecting
+    (kde#354751)
+  * [plasmaquick] Don't link OpenGL explicitly</comment>
+    <requestid>350213</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d395cb94151f331f7a24bae00b477717</srcmd5>
+    <version>5.18.0</version>
+    <time>1453279995</time>
+    <user>dimstar_suse</user>
+    <comment>- Unbreak initial layout of the folderview applet:
+  added compactreprecheck.diff (kde#358039)
+
+- Update to 5.18.0
+  * [ToolButtonStyle] Always indicate activeFocus
+  * Use the SkipGrouping flag for the &quot;widget deleted&quot; notification
+    (kde#356653)
+  * Deal properly with symlinks in path to packages
+  * Add HiddenStatus for plasmoid self-hiding
+  * Stop redirecting windows when item is disabled or hidden.
+    (kde#356938)
+  * Don't emit statusChanged if it hasn't changed
+  * Fix element ids for east orientation
+  * Containment: Don't emit appletCreated with null applet
+    (kde#356428)
+  * [Containment Interface] Fix erratic high precision scrolling
+  * Read KPluginMetada's property X-Plasma-ComponentTypes
+    as a stringlist
+  * [Window Thumbnails] Don't crash if Composite is disabled
+  * Let containments override CompactApplet.qml
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php</comment>
+    <requestid>354401</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e920b3bdef99cb6dd43a73dfb6f54a4</srcmd5>
+    <version>5.19.0</version>
+    <time>1456336674</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.19.0</comment>
+    <requestid>360999</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>cce10cb5287c99376fab16ad8ec6f185</srcmd5>
+    <version>5.19.0</version>
+    <time>1457354217</time>
+    <user>dimstar_suse</user>
+    <comment>- Added 0001-Theme-Discard-pixmap-cache-when-changing-theme.patch
+  (kde#359924)
+
+- Add 0001-if-path-is-passed-pick-the-tail.patch -- fix loading
+  of c++ based applets</comment>
+    <requestid>364874</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>602d229a41d8268c1c6c05f5ea774b8e</srcmd5>
+    <version>5.20.0</version>
+    <time>1458120783</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.20.0</comment>
+    <requestid>372894</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6c385063deddbbaa04dbd542ec54af86</srcmd5>
+    <version>5.21.0</version>
+    <time>1460482191</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.21.0</comment>
+    <requestid>387093</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f8ce60c6253d5b34694914e132b53f19</srcmd5>
+    <version>5.22.0</version>
+    <time>1463652633</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.22.0</comment>
+    <requestid>395686</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d1827fe9701df62b62612eab196e8cea</srcmd5>
+    <version>5.23.0</version>
+    <time>1467541630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.23.0</comment>
+    <requestid>405093</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f422e8f7350325be8d9f63a03e9f5740</srcmd5>
+    <version>5.24.0</version>
+    <time>1468579306</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.24.0</comment>
+    <requestid>407534</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7ddf60ff8a43aed324b40c7c15e225a2</srcmd5>
+    <version>5.25.0</version>
+    <time>1472476428</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>420917</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e1561862e03230faff2dfb5934913364</srcmd5>
+    <version>5.26.0</version>
+    <time>1473888618</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.26.0</comment>
+    <requestid>426604</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e97f8e1a7c2938cb0b8a0203eb7e2537</srcmd5>
+    <version>5.27.0~20160928~b115ea1.git</version>
+    <time>1475588818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.27.0~20160928~b115ea1.git
+  * Pick up plasma theme to be used with Plasma 5.8
+- Cherry pick 0001-Commit-translations-from-l10n-kf5.patch so the
+  translations from 5.26.0 are kept (they are only part of tar and
+  tag, not in git master)</comment>
+    <requestid>431163</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7683cc897eefcef358a169b3c30ca945</srcmd5>
+    <version>5.27.0</version>
+    <time>1477650444</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SLE build: Fixes-for-building-plasma-framework-with-Qt-55.patch
+
+- Add new-bool-to-use-activated-signal-as-toggle.patch to support
+  change in plasma5-desktop to enable closing launchers with Meta
+  (kde#367685)
+
+- Update network.svgz to the latest git version to also add the
+  &quot;flightmode-on/off&quot; icons to the Air/Oxygen desktop themes
+  (boo#999967, kde#368660)
+
+- Add network.svgz from latest upstream git Air desktop theme, this
+  includes a lot of network icons that were missing before
+  (boo#999967, kde#368660)
+
+- Update to 5.27.0
+  * Improve timetracker output
+  * [ToolButtonStyle] Fix menu arrow
+  * i18n: handle strings in kdevtemplate files
+  * i18n: review strings in kdevtemplate files
+  * Add removeMenuItem to PlasmaComponents.ContextMenu
+  * Update ktorrent icon (kde#369302)
+  * [WindowThumbnail] Discard pixmap on map events
+  * Don't include kdeglobals when dealing with a cache config
+  * Fix Plasma::knownLanguages
+  * Resize the view just after setting the containment
+  * Avoid creating a KPluginInfo from a KPluginMetaData instance
+  * Running tasks must have some indicator
+  * Task bar lines according to RR 128802
+  * [AppletQuickItem] Break from loop when we found a layout
+  * For more details please see:</comment>
+    <requestid>437577</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>82b2b7f72aebc30e4773c486b62cbf30</srcmd5>
+    <version>5.27.0</version>
+    <time>1478289072</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438295</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ef4b3d0d1086df9a228e5465491be400</srcmd5>
+    <version>5.28.0</version>
+    <time>1479382818</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.28.0</comment>
+    <requestid>440542</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5e6ab319af8920f449f14ac725eab2ea</srcmd5>
+    <version>5.29.0</version>
+    <time>1481969742</time>
+    <user>dimstar_suse</user>
+    <comment>5.29.0</comment>
+    <requestid>446313</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9d27987a145e3b9dd4c952363b8221f3</srcmd5>
+    <version>5.30.0</version>
+    <time>1485861138</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.30 for Plasma 5.9 Beta testing</comment>
+    <requestid>451155</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0f3b0aa2ab606173dd2cf3d6e21e0bdc</srcmd5>
+    <version>5.31.0</version>
+    <time>1488558471</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Frameworks 5.31 and KDE Plasma 5.9.3</comment>
+    <requestid>461492</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7e1a6736098e1bf4bf0578d4329a9953</srcmd5>
+    <version>5.32.0</version>
+    <time>1490706804</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.32.0</comment>
+    <requestid>481549</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>aafb4016add75e17a8b7902131645b14</srcmd5>
+    <version>5.33.0</version>
+    <time>1493580131</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Frameworks 5.33.0</comment>
+    <requestid>492100</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8448c5e0ae43baf602c2998780597b29</srcmd5>
+    <version>5.34.0</version>
+    <time>1496326936</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 494976 from Vogtinator)</comment>
+    <requestid>495080</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>fdf57e170438bbf314aa8b80ffd78e8d</srcmd5>
+    <version>5.35.0</version>
+    <time>1499291651</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.35</comment>
+    <requestid>502982</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f81afde838528fbc8ae1906763c72cd8</srcmd5>
+    <version>5.36.0</version>
+    <time>1500280042</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to revert upstream commit to workaround notifications
+  appearing at the wrong location (kde#381130):
+  * 0001-Revert-recreate-plasmashellsurf-on-exposed-destoy-on.patch
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Use #if instead of #ifdef
+  * Fix the build without wayland/kwayland
+  * Make sure size is final after showEvent
+  * Fix vlc tray icon margins
+  * Fix vlc tray icon color scheme
+  * Revert &quot;Make every applet its own focus scope&quot;
+  * Set Containments to have focus within the view (kde#381124)
+  * generate the old key before updating enabledborders (kde#378508)
+  * show show password button also if empty text (kde#378277)
+  * Make every applet its own focus scope
+  * Emit usedPrefixChanged when prefix is empty
+  * don't switch colors on new themes
+  * tests: run i18ndcheck only when bash is found
+  * Port a bunch of classes away from Plasma::Package
+  * cmake: use ecm_add_test more
+  * src/plasmaquick/dialog.cpp - fix build without kwayland
+  * [FEATURE] Option to build &amp; install QCH file with the public API dox</comment>
+    <requestid>510482</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4ca61eaba7439ffb906b68cd06257af9</srcmd5>
+    <version>5.37.0</version>
+    <time>1503590384</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.37.0</comment>
+    <requestid>516710</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9c79644e96b03fa2a80345a1c0905a99</srcmd5>
+    <version>5.38.0</version>
+    <time>1505831364</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix Plasma Dialogs (kde#384776):
+  * 0001-Pass-item-to-rootObject-since-it-s-now-a-singleton.patch
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * [ConfigModel] Guard against adding a null ConfigCategory
+  * [ConfigModel] Allow programmatically adding and removing ConfigCategory
+  * [EventPluginsManager] Expose pluginPath in model
+  * [Icon Item] Don't needlessly unset imagePath
+  * [FrameSvg] Use QPixmap::mask() instead of deprecated convoluted way via alphaChannel()
+  * [FrameSvgItem] Create margins/fixedMargins object on demand
+  * HTML-escape applet name in undo notification
+  * fix check state for menu items
+  * Force Plasma style for QQC2 in applets
+  * Install the PlasmaComponents.3/private folder
+  * Guard failed testItem creation
+  * [Service] Restore /dev/null usage
+  * [Service] Use KConfig::SimpleConfig
+  * Drop remains of &quot;locolor&quot; themes
+  * Get rid of QSignalMapper
+  * [Theme] Use KConfig SimpleConfig
+  * Avoid some unnecessary theme content lookups
+  * fix check
+  * ignore spurious resize events to empty sizes (kde#382340)
+- Dropped patches, now upstream:
+  * 0001-ignore-spurious-resize-events-to-empty-sizes.patch</comment>
+    <requestid>527069</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2c2884323be5826ed690087796d7735c</srcmd5>
+    <version>5.39.0</version>
+    <time>1509105561</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.39.0</comment>
+    <requestid>536362</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1d4817d45c8035ed5baa1769abfbaff2</srcmd5>
+    <version>5.40.0</version>
+    <time>1510839723</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.40.0</comment>
+    <requestid>541697</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>433c333f1590986cfa03011df6949633</srcmd5>
+    <version>5.41.0</version>
+    <time>1515505552</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.41 (forwarded request 559020 from luca_b)</comment>
+    <requestid>559479</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>0b80fdcd0843a73db7197c362f645ae3</srcmd5>
+    <version>5.42.0</version>
+    <time>1516633465</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.42 (forwarded request 566643 from luca_b)</comment>
+    <requestid>566718</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a300ed7ac63f3ff81d0b6547bfa00467</srcmd5>
+    <version>5.43.0</version>
+    <time>1518813350</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.43.0</comment>
+    <requestid>576571</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1cf35912bf7ab472a1b232bb9fa5da0f</srcmd5>
+    <version>5.44.0</version>
+    <time>1521578919</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.44</comment>
+    <requestid>586868</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>14bee8bbc08cd3c9fa3c43b3a9c77763</srcmd5>
+    <version>5.45.0</version>
+    <time>1524143986</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.45</comment>
+    <requestid>596912</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>f0cbaf4259092c9588b668c41fc08e10</srcmd5>
+    <version>5.45.0</version>
+    <time>1525611650</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove outdated calendar.svgz from the Air and Oxygen themes to
+  fix showing event markers in the calendar (boo#1091832)
+- Add Air-Oxygen-themes-Bump-version.patch to raise the version of
+  these 2 themes, otherwise Plasma would reuse existing caches
+  rendering the above fix ineffective (forwarded request 603978 from wolfi323)</comment>
+    <requestid>603979</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>0c5140640029b1554dce791034c15203</srcmd5>
+    <version>5.46.0</version>
+    <time>1526646301</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.46.0</comment>
+    <requestid>607599</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>2109a12e860d0bed991a61b1df11b4d8</srcmd5>
+    <version>5.46.0</version>
+    <time>1528195881</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch use-qdatetime-with-qml.patch:
+  * Fixes wrong dates being shown in Plasma calendar (kde#394423)</comment>
+    <requestid>613907</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a45ef573172b236fd3d020009cee1cf7</srcmd5>
+    <version>5.47.0</version>
+    <time>1529666717</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.47.0</comment>
+    <requestid>616800</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d524304d27c5f34378b3662e614a3662</srcmd5>
+    <version>5.48.0</version>
+    <time>1532161027</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.48.0 (forwarded request 623248 from luca_b)</comment>
+    <requestid>623327</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>78ff86ed61b10298e7d29dff0701d4d8</srcmd5>
+    <version>5.49.0</version>
+    <time>1535122662</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.49.0</comment>
+    <requestid>630648</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0bef0891f6b27086ce55c80fa3252e13</srcmd5>
+    <version>5.50.0</version>
+    <time>1538374228</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.50</comment>
+    <requestid>636036</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>fc560630d5f78bf218539efa0dc3f588</srcmd5>
+    <version>5.50.0</version>
+    <time>1539587828</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to workaround use of Frameworks 5.51 features in Plasma 5.14:
+  * 0001-Support-button-icons-when-present.patch (kde#398626)</comment>
+    <requestid>641278</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>784341d5c3520da627df262e64518210</srcmd5>
+    <version>5.51.0</version>
+    <time>1540199820</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.51</comment>
+    <requestid>642357</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>61563b666b42ec1d5b289aa0654cc391</srcmd5>
+    <version>5.52.0</version>
+    <time>1542202745</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.52.0</comment>
+    <requestid>648554</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>21f402cccbc0b43b82022344e444d27d</srcmd5>
+    <version>5.53.0</version>
+    <time>1545223476</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.53</comment>
+    <requestid>658603</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>3b1b2e1640f9e4017cfe2e6708e9e080</srcmd5>
+    <version>5.54.0</version>
+    <time>1548062597</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.54.0 (forwarded request 665730 from luca_b)</comment>
+    <requestid>665869</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b033bf93297cdb6092d042bdc6ed0f07</srcmd5>
+    <version>5.55.0</version>
+    <time>1550150953</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.55.0</comment>
+    <requestid>674279</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>016fc507e851d30d5e56acd0f5de24e0</srcmd5>
+    <version>5.55.0</version>
+    <time>1551385992</time>
+    <user>coolo</user>
+    <comment> (forwarded request 677631 from alarrosa)</comment>
+    <requestid>678727</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>2c04a605dba7955a0dbd5a99362d0847</srcmd5>
+    <version>5.56.1</version>
+    <time>1553158178</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.56.0</comment>
+    <requestid>686779</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>170b383b863e892bc4ea653f217a17c7</srcmd5>
+    <version>5.57.0</version>
+    <time>1555701917</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Frameworks 5.57.0</comment>
+    <requestid>695262</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2216699fa9ab39d05afeabc62665ee7f</srcmd5>
+    <version>5.58.0</version>
+    <time>1558427637</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.58 (forwarded request 703255 from luca_b)</comment>
+    <requestid>703390</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>a7fbf3716b2aabbbba5730dc64a9911b</srcmd5>
+    <version>5.59.0</version>
+    <time>1561194951</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.59.0</comment>
+    <requestid>710780</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>30371d258805281f28369466b90d17db</srcmd5>
+    <version>5.60.0</version>
+    <time>1564136543</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.60.0</comment>
+    <requestid>715918</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5d3cecdc0c1a9fbfd465b093648c886a</srcmd5>
+    <version>5.61.0</version>
+    <time>1566242621</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.61</comment>
+    <requestid>722505</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>2493b9d1dbcd2cf28d603047e23de6c8</srcmd5>
+    <version>5.62.0</version>
+    <time>1569234449</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.62</comment>
+    <requestid>730968</requestid>
+  </revision>
+</revisionlist>

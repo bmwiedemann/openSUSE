@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Thu Mar 16 21:48:51 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Version update to 3.0.1 which includes:
+  - Corrected a bug with multiple instance naming.
+  - Some code and logging improvements.
+  - Removed obsolete code.
+  - Updated the README file.
+
+-------------------------------------------------------------------
+Sat Jan 14 14:19:33 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Version update to 3.0.0 which includes:
+  - Disabled support for multiple PS-files in one file.
+  - Improved PS-structure handling.
+  - Reordered compiler call to avoid errors.
+
+-------------------------------------------------------------------
+Wed Nov  9 13:42:56 UTC 2016 - aloisio@gmx.com
+
+- Fixes (boo#984600)
+
+-------------------------------------------------------------------
+Wed Apr 27 12:49:03 UTC 2016 - aloisio@gmx.com
+
+- Spec cleanup 
+
+-------------------------------------------------------------------
+Thu Nov  6 19:17:06 UTC 2014 - aloisio@gmx.com
+
+- Version update to 3.0beta2 which includes:
+  code simplifications and optimizations
+  improved file name handling
+  removed contrib/ directory from tarball (now on WWW)
+  new contact data
+
+-------------------------------------------------------------------
+Fri Jan  3 16:09:11 UTC 2014 - kieltux@gmail.com
+
+- Version upgrade to 3.0beta1 which includes:
+  support for multiple configurations with one backend
+  support for option setting via lpoptions or PPD
+  new option for selecting output file extension
+  improved logging system with better error handling
+  various code optimizations
+  additional PPD for option setting
+  new script in contrib/ for creating user defaults
+  updated documentation
+
+-------------------------------------------------------------------
+Tue May 15 15:27:23 CEST 2012 - jsmeix@suse.de
+
+- Version upgrade to 2.6.1 which includes:
+  Fixed a non-freed pointer,
+  Fixed an invalid line in the config due to a typo.
+  Added detailed copyright information to contrib/.
+- Version upgrade to 2.6.0 which includes:
+  New experimental option for various line delimiters.
+  Supplementary groups are set in addition to primary.
+
+-------------------------------------------------------------------
+Thu Apr 14 15:47:50 CEST 2011 - jsmeix@suse.de
+
+- Version upgrade to 2.5.1 which fixes a crash
+  due to an uninitialized pointer.
+- Added a symbolic link if /usr/lib64/cups/backend/ exists
+  to be backward compatible (e.g. for SLE11 systems).
+- Use directories like "/etc/" and "/var/" which are fixed
+  values in cups-pdf.h also literally in the RPM spec file.
+- Install its license in COPYING to be on the safe side.
+- Moved the RPM changelog entries to cups-pdf.changes
+
+-------------------------------------------------------------------
+Tue Jun 29 12:34:56 CEST 2010 - jsmeix@suse.de
+
+- Work with upstream compliant CUPS 1.4 on all platforms
+  which means to have a fixed "/usr/lib/cups/" directory
+  on all platforms (see Novell/Suse Bugzilla bnc#575544).
+- Make sure lpadmin talks only to the cupsd on localhost
+  via the '-h localhost' command line option.
+- Removed the test if /var/run/cups/cups.sock is a socket
+  because the local cupsd may run just as well without it
+  (only "Listen localhost:631" in cupsd.conf is mandatory).
+
+-------------------------------------------------------------------
+Mon Feb 02 12:34:56 CEST 2009 - suse@irc.freenode.org
+
+- Updated to 2.5.0
+
+-------------------------------------------------------------------
+Wed Jan 07 12:34:56 CEST 2009 - suse@irc.freenode.org
+
+- Initial RPM
+

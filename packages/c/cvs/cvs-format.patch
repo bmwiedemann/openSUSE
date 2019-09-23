@@ -1,0 +1,13 @@
+Index: cvs-1.12.13/src/cvs.h
+===================================================================
+--- cvs-1.12.13.orig/src/cvs.h
++++ cvs-1.12.13/src/cvs.h
+@@ -585,7 +585,7 @@ void cat_module (int status);
+ void check_entries (char *dir);
+ void close_module (DBM * db);
+ void copy_file (const char *from, const char *to);
+-void fperrmsg (FILE * fp, int status, int errnum, char *message,...);
++void fperrmsg (FILE * fp, int status, int errnum, char *message,...) __attribute__((__format__(printf,4,5)));
+ 
+ int ign_name (char *name);
+ void ign_add (char *ign, int hold);

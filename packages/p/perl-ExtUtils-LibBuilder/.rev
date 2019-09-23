@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a7d3f3ceccec867b5a1415e4bb807a1</srcmd5>
+    <version>0.04</version>
+    <time>1338028720</time>
+    <user>coolo</user>
+    <comment>TeXLive build depends on this one</comment>
+    <requestid>122397</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9a7d3f3ceccec867b5a1415e4bb807a1</srcmd5>
+    <version>0.04</version>
+    <time>1340183837</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9a7d3f3ceccec867b5a1415e4bb807a1</srcmd5>
+    <version>0.04</version>
+    <time>1359109660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>9a7d3f3ceccec867b5a1415e4bb807a1</srcmd5>
+    <version>0.04</version>
+    <time>1379663668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>9a7d3f3ceccec867b5a1415e4bb807a1</srcmd5>
+    <version>0.04</version>
+    <time>1409302281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a447eb6aae3dd15e0d2197f37794172</srcmd5>
+    <version>0.06</version>
+    <time>1411220948</time>
+    <user>coolo</user>
+    <comment>- updated to 0.06
+     - Fixed metadata for metacpan (thanks to Gabor Szabo).
+     - Added metadata for metacpan.</comment>
+    <requestid>250224</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>468df7b88756154f753e71bdfafbe235</srcmd5>
+    <version>0.07</version>
+    <time>1444833654</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335900</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>21ee2d73d8418ded203725fa5b8db7c6</srcmd5>
+    <version>0.08</version>
+    <time>1446049076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340341</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,255 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>923774faac013723c7c624728877f1e5</srcmd5>
+    <version>0.1</version>
+    <time>1261064564</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/attica based on submit request 26541 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ba86116eb09ac966d8f801ce9317755</srcmd5>
+    <version>0.1.1</version>
+    <time>1261400850</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/attica based on submit request 27163 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0b504b2557ce0207b5e06f398843650d</srcmd5>
+    <version>0.1.1</version>
+    <time>1262518077</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/attica based on submit request 27919 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7d49495af34fa56f0b2236404d0db533</srcmd5>
+    <version>0.1.2</version>
+    <time>1264069369</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/attica based on submit request 30015 from user llunak
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f4c44291fd1d6d3d64ee0baa299435d0</srcmd5>
+    <version>0.1.2</version>
+    <time>1268922950</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e4ec841a2959395b5a6b8ace5ab43fdb</srcmd5>
+    <version>0.1.2</version>
+    <time>1272486891</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/attica based on submit request 38903 from user coolo
+</comment>
+    <requestid>38903</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dc0dec3747e16de16c41e2e833788cbe</srcmd5>
+    <version>0.1.3</version>
+    <time>1273239542</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/attica based on submit request 39608 from user dirkmueller
+</comment>
+    <requestid>39608</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dc0dec3747e16de16c41e2e833788cbe</srcmd5>
+    <version>0.1.3</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dc0dec3747e16de16c41e2e833788cbe</srcmd5>
+    <version>0.1.3</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>df3cc4923c89beb72c6fa844a0e02c32</srcmd5>
+    <version>0.1.4</version>
+    <time>1279622920</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/attica based on submit request 43468 from user dirkmueller
+</comment>
+    <requestid>43468</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8606437827190f440d1e42346981d4e5</srcmd5>
+    <version>unknown</version>
+    <time>1284197177</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/attica based on submit request 47856 from user llunak
+</comment>
+    <requestid>47856</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>e6578d1f93089cc1c566263fdc8df711</srcmd5>
+    <version>0.2.0</version>
+    <time>1290252661</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53568 from user dirkmueller
+</comment>
+    <requestid>53568</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>67479bad187835e7a5442db2044e2709</srcmd5>
+    <version>0.2.0</version>
+    <time>1290252665</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53568
+</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>67479bad187835e7a5442db2044e2709</srcmd5>
+    <version>0.2.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>60c19c1bc38bc8c981383541b07cf644</srcmd5>
+    <version>0.2.2</version>
+    <time>1311323027</time>
+    <user>saschpe</user>
+    <comment>- update to 0.2.2
+  * add support for openSUSE OBS
+
+- Update to 0.2.0 
+  * final release
+
+- update to released 0.1.91 tarball
+  - makes gluon compile against K:D:F
+
+- update to 0.1.91 (0.2.0-rc1)
+  - Update voting function (add overload) to take uint 0..100 
+  - Add comments interface to request comments, add new comments 
+  - Add distribution interface to request distributions available 
+  - Add homepagetype interface to request home page types from 
+  - Add fields to download item for package name, package repository, 
+
+- update to a new svn snapshot of the upcoming 0.2.0
+  * beginning of the attributes API
+  * Added comments interface to request comments, add new 
+  * Added distribution interface to request distributions 
+  * Added homepagetype interface to request home page types 
+    from the server
+  * Added fields to download item for package name, package</comment>
+    <requestid>76640</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>20c285038492d78f90bfc341477e37ac</srcmd5>
+    <version>0.2.2</version>
+    <time>1311323037</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76640
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c23c5faf9bab7975f1c99a7a98731b68</srcmd5>
+    <version>0.2.2</version>
+    <time>1314189644</time>
+    <user>saschpe</user>
+    <comment>Fixed sentence in attica.spec file. (forwarded request 79636 from aturrini)</comment>
+    <requestid>79637</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>8f106057fd4e1d22e9f3c33e9bbbf8b3</srcmd5>
+    <version>0.2.2</version>
+    <time>1314189654</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79637
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>54fcc634a095d0285f3400044130d986</srcmd5>
+    <version>0.2.2</version>
+    <time>1316439592</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Add libattica-devel to baselibs (forwarded request 82779 from jengelh)</comment>
+    <requestid>82797</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>54fcc634a095d0285f3400044130d986</srcmd5>
+    <version>0.2.2</version>
+    <time>1319181779</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0a69973289a0e6c216f86ca71b9794fb</srcmd5>
+    <version>0.3.0</version>
+    <time>1327589874</time>
+    <user>coolo</user>
+    <comment>- fix baselibs.conf after library name change
+
+- Build with -fvisibility-inlines-hidden (around 50 symbols less)
+- libattica-devel Requires: libqt4-devel
+
+- Fix library name 
+
+- update to 0.3.0:
+  - Bump soname from .0 to .0.3 since we have a BIC change.
+  - Fix upload errors resulting from content-id not being set.
+  - Add Forum, Achievement, services and related dependencies.
+  - Make it build against Qt 4.8.
+  - Add static build option</comment>
+    <requestid>101516</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0a69973289a0e6c216f86ca71b9794fb</srcmd5>
+    <version>0.3.0</version>
+    <time>1340183186</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f045a446454f9c7f50c7c145e0d5b654</srcmd5>
+    <version>0.4.1</version>
+    <time>1345809237</time>
+    <user>namtrac</user>
+    <comment>fix baselibs.conf after library name change (forwarded request 131409 from mlin7442)</comment>
+    <requestid>131410</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b79d0bd86f9d1578b18423f24f7c63e3</srcmd5>
+    <version>0.4.1</version>
+    <time>1353438758</time>
+    <user>coolo</user>
+    <comment>Fix the SLES build (%make_install is not expanded) (forwarded request 142051 from cgiboudeaux)</comment>
+    <requestid>142052</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>b79d0bd86f9d1578b18423f24f7c63e3</srcmd5>
+    <version>0.4.1</version>
+    <time>1359108674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f8c813421afcc6d790b3285e0eceb45c</srcmd5>
+    <version>0.4.2</version>
+    <time>1371217380</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.2 (needed for KDE 4.11) (forwarded request 178828 from sumski)</comment>
+    <requestid>178859</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>f8c813421afcc6d790b3285e0eceb45c</srcmd5>
+    <version>0.4.2</version>
+    <time>1379662001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>f8c813421afcc6d790b3285e0eceb45c</srcmd5>
+    <version>0.4.2</version>
+    <time>1409300526</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,424 @@
+-------------------------------------------------------------------
+Fri Jun 28 01:45:50 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.2.6, which is required for Docker v18.09.7-ce.
+  bsc#1139649
+- Remove containerd-test (it's not useful for actual testing).
+
+-------------------------------------------------------------------
+Fri May  3 13:32:05 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.2.5, which is required for v18.09.5-ce.
+  bsc#1128376 boo#1134068
+  https://github.com/containerd/containerd/releases/tag/v1.2.5
+
+-------------------------------------------------------------------
+Thu Mar 21 14:30:03 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update containerd to v1.2.4
+  * cri: Set /etc/hostname
+  * cri: Fix env performance issue
+  * runc updated to 6635b4f0c6af3810594d2770f662f34ddc15b40d to solve
+    bsc#1121967 CVE-2019-5736
+  * cri updated to da0c016c830b2ea97fd1d737c49a568a816bf964
+  * Windows: NewDirectIOFromFIFOSet
+  * Changelogs from previous versions also included in this update:
+      https://github.com/containerd/containerd/releases/tag/v1.2.3
+
+-------------------------------------------------------------------
+Tue Feb  5 11:16:46 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.2.2, which is required for Docker v18.09.1-ce.
+  bsc#1124308
+  * Fix rare deadlock on FIFO creation with timeout
+  * Fix a bug that a container can't be stopped or inspected when its
+    corresponding image is deleted
+  * Fix a bug that the cri plugin handles containerd events outside of
+    k8s.io namespace
+  more changes at:
+  https://github.com/containerd/containerd/releases/tag/v1.2.2
+  Changelogs from previous versions also included in this update:
+    https://github.com/containerd/containerd/releases/tag/v1.2.1
+    https://github.com/containerd/containerd/releases/tag/v1.2.0
+    https://github.com/containerd/containerd/releases/tag/v1.1.4
+    https://github.com/containerd/containerd/releases/tag/v1.1.3
+- Remove required_dockerrunc commit pinning, as it just lead to issues.
+- Remove upstreamed patches.
+  - 0001-docs-man-rename-config.toml-5-to-be-more-descriptive.patch
+
+-------------------------------------------------------------------
+Fri Jan 11 09:57:32 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Disable leap based builds for kubic flavor. bsc#1121412
+
+-------------------------------------------------------------------
+Thu Dec 20 18:05:24 UTC 2018 - clee@suse.com
+
+- Update go requirements to >= go1.10 to fix
+  * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
+    go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
+  * bsc#1118899 CVE-2018-16875
+    go#29233 crypto/x509: CPU denial of service
+-------------------------------------------------------------------
+Mon Nov  5 10:28:13 UTC 2018 - Aleksa Sarai <asarai@suse.com>
+
+- Add backport of https://github.com/containerd/containerd/pull/2764, which is
+  required for us to build containerd on i586 SLE-12 (where /bin/sh doesn't
+  like emoji in shell scripts). bsc#1102522 bsc#1113313
+  + 0001-makefile-remove-emoji.patch
+
+-------------------------------------------------------------------
+Wed Aug 22 10:10:09 UTC 2018 - asarai@suse.com
+
+- Upgrade to containerd v1.1.2, which is required for Docker v18.06.1-ce.
+  bsc#1102522
+
+-------------------------------------------------------------------
+Thu Aug 16 02:00:31 UTC 2018 - asarai@suse.com
+
+- Merge -kubic packages back into the main Virtualization:containers packages.
+  This is done using _multibuild to add a "kubic" flavour, which is then used
+  to conditionally compile patches and other kubic-specific features.
+  bsc#1105000
+
+-------------------------------------------------------------------
+Wed Aug  1 09:40:59 UTC 2018 - asarai@suse.com
+
+- Enable seccomp support on SLE12, since libseccomp is now a new enough vintage
+  to work with Docker and containerd. fate#325877
+
+-------------------------------------------------------------------
+Wed Jul 25 08:54:33 UTC 2018 - asarai@suse.com
+
+- Update to containerd v1.1.1, which is the required version for the Docker
+  v18.06.0-ce upgrade. bsc#1102522
+- Add backport of https://github.com/containerd/containerd/pull/2534 to make
+  the man page no longer pollute the global namespace.
+  + 0001-docs-man-rename-config.toml-5-to-be-more-descriptive.patch
+- Remove the following patch since it has already been merged upstream.
+  - bsc1065109-0001-makefile-add-support-for-build_flags.patch
+- Remove systemd-related files and add docker-containerd-* symlinks; this
+  aligns with the upstream defaults where dockerd will execute
+  docker-containerd. Version upgrades of docker are expected to work more
+  smoothly as much of the upgrade logic is implemented in dockerd.
+- Add containerd-rpmlintrc (or containerd-kubic-rpmlintrc) to deal with
+  /usr/src/containerd/* rpmlint errors (which don't affect normal users of this
+  package).
+
+-------------------------------------------------------------------
+Wed Jun 13 10:15:51 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Tue Jun  5 06:38:40 UTC 2018 - asarai@suse.com
+
+- Remove 'go test' from %check section, as it has only ever caused us problems
+  and hasn't (as far as I remember) ever caught a release-blocking issue. Smoke
+  testing has been far more useful. boo#1095817
+
+-------------------------------------------------------------------
+Wed May 16 10:10:10 UTC 2018 - jmassaguerpla@suse.com
+
+- Review obsoletes tag to fix bsc#1080978
+
+-------------------------------------------------------------------
+Thu Apr 12 12:48:16 UTC 2018 - fcastelli@suse.com
+
+- Put containerd under the podruntime slice. This the recommended
+  deployment to allow fine resource control on Kubernetes.
+  bsc#1086185
+
+-------------------------------------------------------------------
+Mon Feb 12 10:52:49 UTC 2018 - rbrown@suse.com
+
+- Add ${version} to equivalent non-kubic package provides
+
+-------------------------------------------------------------------
+Thu Feb  8 12:34:13 UTC 2018 - rbrown@suse.com
+
+- Add Provides for equivalent non-kubic packages
+
+-------------------------------------------------------------------
+Thu Feb  1 16:57:14 CET 2018 - ro@suse.de
+
+- do not build on s390, only on s390x (no go on s390)
+
+-------------------------------------------------------------------
+Wed Dec 27 11:15:36 UTC 2017 - dimstar@opensuse.org
+
+- Fix build with RPM 4.14: exclude is not meant for files to NOT be
+  packaged, but should only be used if the files are to be excluded
+  from a glob when they end up in a different package. Rather
+  remove the unwanted files in the install section.
+
+-------------------------------------------------------------------
+Mon Dec 11 12:30:31 UTC 2017 - asarai@suse.com
+
+- Update to containerd@06b9cb35161009dcb7123345749fef02f7cea8e0, which is
+  requried by Docker 17.09.1_ce.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:48:04 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Oct 26 19:27:48 UTC 2017 - asarai@suse.com
+
+- Set --start-timeout=2m by default to match upstream. bsc#1064926
+
+-------------------------------------------------------------------
+Thu Oct 26 17:31:18 UTC 2017 - asarai@suse.com
+
+- Use the upstream makefile so that Docker can get the commit ID in `docker
+  info`. This also will avoid possible future warnings being spit out like
+  bsc#1065109 and boo#1053532.
+- Backport https://github.com/containerd/containerd/pull/1686, which is
+  required for the above fix. bsc#1065109 boo#1053532
+  + bsc1065109-0001-makefile-add-support-for-build_flags.patch
+
+-------------------------------------------------------------------
+Wed Oct 18 04:40:53 UTC 2017 - asarai@suse.com
+
+- Update to containerd@3addd840653146c90a254301d6c3a663c7fd6429, which is
+  required by Docker 17.07.0_ce (this commit is effectively v0.2.9 with a few
+  bugfixes missing).
+
+-------------------------------------------------------------------
+Thu Aug  3 14:50:09 UTC 2017 - asarai@suse.com
+
+- Use -buildmode=pie for tests and binary build. bsc#1048046 bsc#1051429
+
+-------------------------------------------------------------------
+Thu Jul  6 14:22:16 UTC 2017 - thipp@suse.de
+
+- change dependency to docker-runc
+
+-------------------------------------------------------------------
+Thu May  4 19:02:18 UTC 2017 - jmassaguerpla@suse.com
+
+- fix golang requirement to 1.7 for the subpackages
+
+-------------------------------------------------------------------
+Tue May  2 15:48:53 UTC 2017 - jmassaguerpla@suse.com
+
+- fix golang requirement to 1.7
+
+-------------------------------------------------------------------
+Fri Apr 28 16:18:44 UTC 2017 - jengelh@inai.de
+
+- Replace %__-type macro indirections
+
+-------------------------------------------------------------------
+Thu Apr 13 16:17:55 UTC 2017 - jmassaguerpla@suse.com
+
+- update containerd to the commit version needed for
+  docker-v17.04.0-ce (bsc#1034053)
+
+  fix bsc#1032769: containerd spurious messages filling journal
+
+-------------------------------------------------------------------
+Wed Apr 12 09:56:54 UTC 2017 - jmassaguerpla@suse.com
+
+- make sure this package is being built with go 1.7
+
+-------------------------------------------------------------------
+Wed Apr 12 09:13:44 UTC 2017 - jmassaguerpla@suse.com
+
+- remove the go_arches macro because we are using go1.7 which
+  is available in all archs
+
+-------------------------------------------------------------------
+Wed Apr 12 08:02:59 UTC 2017 - asarai@suse.com
+
+- Set TasksMax=infinity to make sure runC doesn't start failing randomly.
+
+-------------------------------------------------------------------
+Fri Feb 24 18:08:41 UTC 2017 - jmassaguerpla@suse.com
+
+- update to docker 1.13.0 requirement
+
+-------------------------------------------------------------------
+Sat Jan 14 06:38:29 UTC 2017 - asarai@suse.com
+
+- Update docker to the version used in Docker 1.12.6. This is necessary to fix
+  CVE-2016-9962 (bsc#1012568).
+
+-------------------------------------------------------------------
+Mon Dec 19 12:46:14 UTC 2016 - jmassaguerpla@suse.com
+
+- update containerd to the version used in docker 1.12.5 (bsc#1016307).
+  This fixes bsc#1015661
+
+-------------------------------------------------------------------
+Thu Nov 24 16:10:41 UTC 2016 - jmassaguerpla@suse.com
+
+- fix runc version
+  fix bsc#1009961
+
+-------------------------------------------------------------------
+Thu Nov 24 12:09:48 UTC 2016 - jmassaguerpla@suse.com
+
+- fix version so that it contains a sequence number and zypper does
+  not think is a downgrade
+
+-------------------------------------------------------------------
+Tue Oct 25 11:15:13 UTC 2016 - jmassaguerpla@suse.com
+
+- fix bsc#1006368: docker/containerd is broken when installed by
+  SuSE Studio in an appliance: We were missing the
+    Requires(post): %fillup_prereq
+
+-------------------------------------------------------------------
+Tue Oct 25 08:32:22 UTC 2016 - jmassaguerpla@suse.com
+
+- update runc requirement to 02f8fa7863dd3f82909a73e2061897828460d52f
+  (see RUNC_COMMIT in Dockerfile)
+
+-------------------------------------------------------------------
+Thu Oct 13 11:14:39 UTC 2016 - jmassaguerpla@suse.com
+
+- update to commit 0366d7e which is the one required for docker-1.12.2
+  (bsc#1004490)
+
+-------------------------------------------------------------------
+Mon Sep 19 11:58:44 UTC 2016 - jmassaguerpla@suse.com
+
+- fix go_arches definition: use global instead of define, otherwise
+  it fails to build
+
+-------------------------------------------------------------------
+Thu Aug 25 15:54:38 UTC 2016 - jmassaguerpla@suse.com
+
+- Remove GOPATH at the end of the GOPATH assignment
+  cause GOPATH is empty and if we do that, we get the path ""
+  appended, which causes gcc6-go to complain
+
+-------------------------------------------------------------------
+Wed Aug 24 12:25:46 UTC 2016 - jmassaguerpla@suse.com
+
+- add go_arches in project configuration: this way, we can use the
+  same spec file but decide in the project configuration if to
+  use gc-go or gcc-go for some archs.
+
+-------------------------------------------------------------------
+Mon Aug 22 18:14:40 UTC 2016 - jmassaguerpla@suse.com
+
+- update to v2.3.0 (bsc#995058)
+- Remove patches which were already merged upstream:
+  * socket-activation-01-vendor.patch
+  * socket-activation-02-daemon.patch
+  * socket-activation-03-ctr.patch
+
+-------------------------------------------------------------------
+Thu Aug 18 10:34:29 UTC 2016 - jmassaguerpla@suse.com
+
+- use gcc6-go instead of gcc5-go (bsc#988408)
+- build ppc64le with gc-go because this version builds with gc-go 1.6
+
+-------------------------------------------------------------------
+Thu Aug 18 10:33:29 UTC 2016 - cbrauner@suse.com
+
+- bump git commit id to the one required by docker v1.12.0
+- run test during build
+- only run tests on architectures that provide the go list and got test tools
+- add aarch64 to go arches
+
+-------------------------------------------------------------------
+Thu Aug 18 09:44:56 UTC 2016 - cbrauner@suse.de
+
+- Add containerd-test package which contains the source code and the test. This
+  package will be used to run the integration tests.
+- Simplify package build and check sections: Instead of symlinking we default to
+  cp -avr. go list gets confused by symlinks hence, we need to copy the source
+  code anyway if we want to run unit tests during package build at some point.
+
+-------------------------------------------------------------------
+Tue Aug 16 09:51:37 UTC 2016 - asarai@suse.com
+
+* Explicitly state the version dependency for runC, to avoid potential
+  issues with incompatible component versions. These must be updated
+  *each time we do a release*. Unfortunately we cannot create a hard
+  dependency because that would conflict with Docker, and was a mistake
+  on upstream's part. bsc#993847
+
+-------------------------------------------------------------------
+Wed Jul 20 10:32:45 UTC 2016 - asarai@suse.com
+
+* Set --runtime option specifically to runC. bsc#978260
+
+-------------------------------------------------------------------
+Fri Jun 17 14:42:43 UTC 2016 - asarai@suse.de
+
+* Update to containerd v0.2.2. (bsc#989566 FATE#320763)
+* Includes updates to the out-of-tree patches.
+
+-------------------------------------------------------------------
+Mon May  2 07:34:53 UTC 2016 - asarai@suse.de
+
+* Remove MountFlags=slave from containerd.service. This causes many issues with
+  interactions with Docker.
+
+-------------------------------------------------------------------
+Fri Apr 29 09:54:28 UTC 2016 - asarai@suse.de
+
+* Added /usr/sbin/rccontainerd symlink as per suse-missing-rclink.
+* Updated socket activation patches to use the same patchset that was merged
+  upstream (https://github.com/docker/containerd/pull/178):
+  * socket-activation-01-vendor.patch
+  * socket-activation-02-daemon.patch
+  * socket-activation-03-ctr.patch
+* Removed aarch64 that was patched upstream:
+  - fix-aarch64-epoll.patch
+* Update containerd to 0.2.1. Upstream changelog:
+  * Fixes for cgroup memory updates and process labeling.
+  * Truncate the event log on disk and in memory so that it does not
+    grow forever.  This is mainly used for higher levels to receive past
+    events if they miss any.
+
+-------------------------------------------------------------------
+Tue Apr 19 10:23:09 UTC 2016 - asarai@suse.de
+
+* Use the gc compiler for aarch64 builds.
+* Add a patch to fix the new aarch64 build support, which has not yet been
+  merged upstream (https://github.com/docker/containerd/pull/195):
+  + fix-aarch64-epoll.patch
+* Rebase the socket activation patchset which has yet to be merged
+  (https://github.com/docker/containerd/pull/178):
+  * socket-activation-01-vendor.patch
+  * socket-activation-02-daemon.patch
+  * socket-activation-03-ctr.patch
+* Update to containerd 0.2.0. Changelog:
+  + Add Limit to PidsStats
+  + Add timeout flag for container start times.
+  + Add timeout option for GRPC connection.
+  + Add no_pivot_root support.
+  + Add runtimeArgs to pass to shim
+  * Move epoll syscall to a separate package so we can build on aarch64.
+  * Fix ctr termios restoration isssues.
+  * Several bug fixes.
+  - Remove dependencies on larger packages.
+
+-------------------------------------------------------------------
+Thu Mar 31 03:42:39 UTC 2016 - asarai@suse.de
+
+* Use socket activation with the containerd-daemon. This requires a
+  not-yet-upstream patchset (https://github.com/docker/containerd/pull/178):
+  + socket-activation-01-vendor.patch
+  + socket-activation-02-daemon.patch
+  + socket-activation-03-ctr.patch
+* Remove MountFlags=slave since it's not relevant to containerd and might cause
+  issues in the future.
+* Update to containerd 0.1.0. This required quite a few fixes.
+
+-------------------------------------------------------------------
+Sun Mar 27 10:19:02 UTC 2016 - asarai@suse.de
+
+* Add initial packaging of containerd 0.0.5.
+* Add service and sysconfig files.
+* Separately package the client from the server.
+* Install to /usr/sbin.

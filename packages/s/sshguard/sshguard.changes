@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Tue Jun 11 09:27:06 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build version 2.4.0
+  * Match "Failed authentication attempt" for Gitea
+  * Log human-readable service names instead of service code
+  * Correctly terminate child processes when sshguard is killed
+  * No longer accept logs given via standard input
+
+-------------------------------------------------------------------
+Wed Feb  6 11:39:18 UTC 2019 - joop.boonen@opensuse.org
+
+- Removed not needed files and service files
+  as sshguard can now parse journal files 
+- /etc/sysconfig/sshguard is not used any more
+  as sshguard uses it's own config file
+
+-------------------------------------------------------------------
+Mon Feb  4 22:47:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+- Join %service_* to reduce generated boilerplate.
+
+-------------------------------------------------------------------
+Thu Jan 24 08:19:29 UTC 2019 - liedke@rz.uni-mannheim.de
+
+- Build version 2.3.1
+  * Fix OpenSSH "Did not receive identification string"
+  * Fix syslog banner detection on macOS
+
+- Build version 2.3.0
+  * Add signatures for Courier IMAP/POP and OpenVPN
+  * Add signatures for TLS failures against Cyrus IMAP
+  * Match more attacks against SSHD, Cockpit, and Dovecot
+  * Update SSH invalid user signature for macOS
+  * Add to and remove from ipfw table quietly
+  * Reduce "Connection closed... [preauth]" score to 2
+  * Switch ipsets to hash:net
+  * Don't recreate existing ipsets
+  * Match more log banners (Fix greedy SYSLOG_BANNER)
+
+- Build version 2.2.0
+  * Add '--disable-maintainer-mode' in configure for package maintainers
+  * BusyBox log banner detection
+  * Match Exim "auth mechanism not supported"
+  * Match Exim "auth when not advertised"
+  * Match Postfix greylist early retry
+  * OpenSMTPD monitoring support
+  * Recognize IPv6 addresses with interface name
+  * Ignore CR in addition to LF
+  * Only log attacks if not already blocked or whitelisted
+  * Use correct signal names in driver shell script
+
+- Build version 2.1.0
+  * Add nftables backend
+  * Add monitoring support for new service: Cockpit, Linux server dashboard
+  * Match "maximum authentication attempts" for SSH
+  * Match Debian-style "Failed password for invalid user" for SSH
+  * Add monitoring support for new service: Common webserver probes, in
+    Common Log Format
+  * Match 'Disconnecting invalid user' for SSH
+  * Add monitoring support for new service: WordPress, in Common Log Format
+  * Add monitoring support for new service: SSHGuard
+  * Firewall backends now support blocking subnets.
+  * Add new IPV6_SUBNET and IPV4_SUBNET configuration options. Defaults
+    to traditional single-address blocking.
+  * Add monitoring support for new service: OpenSMTPD
+  * Log whitelist matches with higher priority
+  * Match port number in "invalid user" attack
+  * FirewallD backend reloads firewall configuration less often.
+
+- Build version 2.0.0
+  * Add firewalld backend
+  * Add ipset backend
+  * Annotate logs using -a flag to sshg-parser
+  * Match "no matching cipher" for SSH
+  * Preliminary support for Capsicum and pledge()
+  * Resurrect ipfilter backend
+  * Support reading from os_log on macOS 10.12 and systemd journal
+  * Add warning when reading from standard input
+  * Build and install all backends by default
+  * Improve log messages and tweak logging priorities
+  * Runtime flags now configurable in the configuration file
+  * SSHGuard requires a configuration file to start
+  * Remove process validation (-f option)
+  * Fix ipfw backend on FreeBSD 11
+  * Fix initial block time
+  * Update Dovecot pattern for macOS
+  * Use standard score for Sendmail auth attack
+ 
+-------------------------------------------------------------------
+Thu Nov  8 18:28:49 UTC 2018 - joop.boonen@opensuse.org
+
+-  Corrected the service scripts, start after network.target
+
+-------------------------------------------------------------------
+Thu Nov 23 13:44:30 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Mar  1 08:15:47 UTC 2017 - joop.boonen@opensuse.org
+
+- Add a systemd journal tail so sshguard can parse this file
+
+-------------------------------------------------------------------
+Thu Dec 29 12:27:02 UTC 2016 - joop.boonen@opensuse.org
+
+- Build version 1.7.1
+    - Add sample Mac OS X 10.12 style launchd.plist
+    - Allow multiple forward slashes in process name
+    - Log released addresses only when debugging
+    - Process validation (``-f`` option) is deprecated
+    - Adjust TIMESTAMP_ISO8601 for Mac OS X 10.12
+    - Fix build error in hosts backend
+    - Fix empty functions in firewall scripts causing errors with Bash
+    - Flush stdout after every line in sshg-parser
+    - Add *sshg-logtail*
+    - Add *sshg-parser*
+    - Control firewall using *sshg-fw*
+    - Match "no matching key exchange method" for SSH
+    - Hosts backend is deprecated
+    - Logsuck (``-l`` option) is deprecated, use *sshg-logtail* instead
+    - Process validation (``-f`` option) is deprecated
+    - Remove external hooks (``-e`` option)
+    - Remove support for genfilt and ipfilter backends
+    - Accept socklog messages without a timestamp
+    - Fix excessive logging causing endless looping in logsuck
+    - Fix undefined assignment of initial inode number
+    - Match Postfix pre-authentication disconnects
+    - Fix bashisms in iptables backend
+    - Fix size argument in inet_ntop() call
+    - Remove excessive logging when polling from files
+    - Keep looking for unreadable files while polling
+    - Update Dovecot signature for POP3
+    - Match "Connection reset" message for SSH
+    - Resurrect PID file option by popular demand
+    - Adjust default abuse threshold
+    
+-------------------------------------------------------------------
+Fri Feb 19 13:18:55 UTC 2016 - joop.boonen@opensuse.org
+
+- Added a corrected attack treshold value (40 default) 
+
+-------------------------------------------------------------------
+Thu Feb 18 10:07:08 UTC 2016 - eshmarnev@suse.com
+
+- Build version 1.6.3 
+    - Disable blacklisting by default
+    - Implement logging as wrappers around syslog(2)
+    - Improve log and error messages
+    - Match sendmail authentication failures
+    - Remove PID file option
+    - Remove SIGTSTP and SIGCONT handler
+    - Remove reverse mapping attack signature
+    - Remove safe_fgets() and exit on interrupt
+    - Terminate state entries for hosts blocked with pf
+    - Update and shorten command-line usage
+    - Use 'configure' to set feature-test macros
+- Updated patch file for new version of sshguard
+
+-------------------------------------------------------------------
+Mon Jan 11 15:14:38 UTC 2016 - joop.boonen@opensuse.org
+
+- Added ip6tables support handles via init and service files 
+
+-------------------------------------------------------------------
+Fri Oct 16 12:15:24 UTC 2015 - joop.boonen@opensuse.org
+
+- Corrected a iptables error, that prevented sshguard 
+  from functioning correctly
+
+-------------------------------------------------------------------
+Thu Oct 15 13:51:15 UTC 2015 - joop.boonen@opensuse.org
+
+- Moved blacklist.db to /var/lib/sshguard/db/blacklist.db analog
+  most SUSE packages 
+
+-------------------------------------------------------------------
+Thu Oct 15 07:52:48 UTC 2015 - joop.boonen@opensuse.org
+
+- Corrected the blacklist as it's auto generated
+- Improved sysconfig
+
+-------------------------------------------------------------------
+Wed Oct 14 11:56:49 UTC 2015 - joop.boonen@opensuse.org
+
+- Build version 1.6.2
+  + Make '-w' option backwards-compatible for iptables (James Harris)
+  + Remove support for ip6fw and 'ipfw-range' option
+  + Rewrite ipfw backend using command framework 
+- The white and black list now initially reside in files 
+  /etc/sshguard/whitelist|blacklist
+
+-------------------------------------------------------------------
+Mon Sep 28 13:48:45 UTC 2015 - joop.boonen@opensuse.org
+
+- Build version 1.6.1 
+- Added sshguard-gcc5.patch so it also builds via gcc5
+- Created a sshguard.service file so it'll run on systemd
+  systems
+
+-------------------------------------------------------------------
+Wed Mar 27 13:45:46 UTC 2013 - joop.boonen@opensuse.org
+
+- Reformated the spec file to the openSUSE standard
+  so it can be submitted to Factory
+
+-------------------------------------------------------------------
+Sat Feb 19 11:42:03 UTC 2011 - lars@linux-schulserver.de
+
+- update to 1.5:
+  + logsucker: sshguard polls multiple log files at once
+  + recognize syslog's "last message repeated N times" contextually 
+    and per-source
+  + attackers now gauged with attack *dangerousness* instead of 
+    count (adjust your -a !)
+  + improve IPv6 support
+  + add detection for: Exim, vsftpd, Sendmail, Cucipop
+  + improve logging granularity and descriptiveness
+  + add -i command line option for saving PID file as an aid for 
+    startup scripts
+  + update some attack signatures
+- cleanup specfile via spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec  1 06:53:29 UTC 2010 - wr@rosenauer.org
+
+- fix typo in macro
+- revert a bit of cleanup to make it backwards compatible
+  (%_initddir)
+
+-------------------------------------------------------------------
+Tue Nov  2 12:30:46 UTC 2010 - prusnak@opensuse.org
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Wed Sep 29 13:13:03 CEST 2010 - wr@rosenauer.org
+
+- update to version 1.5rc4
+
+-------------------------------------------------------------------
+Sun Apr  4 20:43:08 CEST 2010 - wr@rosenauer.org
+
+- update to version 1.5rc1
+
+-------------------------------------------------------------------
+Thu Feb 11 14:54:46 CET 2010 - wr@rosenauer.org
+
+- added init script and sysconfig
+
+-------------------------------------------------------------------
+Wed Feb 10 10:33:49 CET 2010 - wr@rosenauer.org
+
+- initial openSUSE package
+

@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Sep 19 03:46:05 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LANG to %check to fix build on Leap
+
+-------------------------------------------------------------------
+Thu Mar  7 10:26:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable tests
+- Update to 0.4.4:
+  * no upstream changelog provided
+- Add missing deps
+
+-------------------------------------------------------------------
+Fri Jun 30 17:26:59 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.4.3
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Sun Jul 17 17:30:19 UTC 2016 - arun@gmx.de
+
+- update to version 0.4.0:
+  * Rewrite using Future from the stdlib
+
+- changes from version 0.3.0:
+  * Directly execute if on main thread
+
+- changes from version 0.2.0:
+  * Put UI worker onto click context
+
+-------------------------------------------------------------------
+Sun May  8 07:15:51 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Tue Jan 19 23:04:49 UTC 2016 - sleep_walker@opensuse.org
+
+- added comment about test not being present
+
+-------------------------------------------------------------------
+Tue Jan 19 10:56:06 UTC 2016 - sleep_walker@opensuse.org
+
+- polish spec file (not only) with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jan 19 00:03:15 UTC 2016 - sleep_walker@opensuse.org
+
+- let there be python3-click-threading!
+

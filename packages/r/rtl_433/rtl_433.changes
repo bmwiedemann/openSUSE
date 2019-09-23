@@ -1,0 +1,913 @@
+-------------------------------------------------------------------
+Tue Sep 10 08:25:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Fri Aug 30 00:50:20 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use new macro for cmake building
+
+-------------------------------------------------------------------
+Thu Aug 29 20:27:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 19.08+git.20190829:
+  Highlights:
+  * Added MQTT output (#1016)
+  * Added stats reporting (#733)
+  * Added SoapySDR general keyword settings option, e.g. antenna
+  * Added new model keys option
+  * Changed Normalize odd general keys on devices (#1010)
+  * Changed Use battery_ok instead of battery for newmodel
+  * Added report model description option (#987)
+  * Added pulse data text file support (#967)
+  * Added color to console help output
+  * Fixed CF32 loader; addeded CS8, CF32 dumper
+  Changes:
+  * Added CurrentCost EnviR support (#1115)
+  * Added ESIC-EMT7170 power meter (#1132)
+  * Added LaCrosse-TX141Bv3 support (#1134)
+  * Added channel to inFactory-TH (#1133)
+  * Added man page rtl_433.1 (#1121)
+  * Added color to console help output
+  * Added support for Philips AJ7010 (#1047)
+  * Added frequency hopping signal support for win32 (#1128)
+  * Added Holman WS5029 decoder
+  * Added Acurite Rain 899 support
+  * Added support for Oregon scientific THGR328N and RTGR328N (#1107) (#1109)
+  * Added frequency hop on USR1 signal
+  * Added '-E hop' option
+  * Added option for multiple hop times
+  * Added sensor similar to GT-WT-02 (#1080)
+  * Added Rubicson 48659 Cooking Thermometer
+  * Added TFA Dostmann 30.3196 decoder (#983)
+  * Added support for HCS200 KeeLoq encoder (#1081)
+  * Added channel output to lacrosse_TX141TH_Bv2 (#1097)
+  * Added IKEA Sparsnäs decoder.
+  * Added support for Eurochron weather station sensor (#1090)
+  * Added MQTT topic format strings (#1079)
+  * Added two EV1527 based sample configurations (#1087)
+  * Added DirecTV RC66RX Remote Control
+  * Added support for Ecowitt temperature sensor
+  * Added Companion WTR001 decoder (#1055)
+  * Changed Thermopro TP12 also supports TP20 (#1061)
+  * Added configuration for PIR-EF4 sensor (#1049)
+  * Added Alecto WS-1200 v1/v2/DCF decoders to Fineoffset (#975)
+  * Added TS-FT002 decoder (#1015)
+  * Added Fine Offset WH32B support (#1040)
+  * Added LaCrosse-WS3600 support, change LaCrosse-WS to LaCrosse-WS2310
+  * Added LaCrosse WS7000 support (#1029) (#1030)
+  * Changed Omit humidity on Prologue if invalid
+  * Added MQTT output (#1016)
+  * Added stats reporting (#733)
+  * Added Interface Specification for data output (#827)
+  * Added checksum to Ambient Weather TX-8300
+  * Added Interlogix glassbreak subtype
+  * Added Jansite TPMS support (#1020)
+  * Added Oregon Scientific RTHN129 support (#941)
+  * Changed Use battery_ok instead of battery for newmodel
+  * Changed Update battery_low, temperatureN keys
+  * Changed Normalize odd general keys on devices (#1010)
+  * Fixed Efergy-e2 current reading exponent
+  * Added FS20 remote decoder (#999)
+  * Added SoapySDR general keyword settings option
+  * Added option to select antenna on SoapySDR devices (#968)
+  * Fixed CF32 loader; added CS8, CF32 dumper
+  * Added ASAN to Debug builds
+  * Changed tfa_twin_plus_30.3049: Add mic to output
+  * Added new model keys option
+  * Enhanced Kedsum, S3318, Esperanza with MIC (#985)
+  * Added support for XT300/XH300 soil moisture sensor (#946)
+  * Changed Schrader unit from bar to kPa
+  * Added report model description option (#987)
+  * Added native scale for SDRplay
+  * Added Chungear BCF-0019x2 example conf
+  * Changed GT-WT-02 to support newer timings; changed model name
+  * Added pulse data text file support (#967)
+  * Added Digitech XC0346 support to Fine Offset WH1050 (#922)
+  * Added bitbuffer NRZI(NRZS/NRZM) decodes
+  * Added Rosenborg/WH5 quirk to Fineoffset
+  * Added support for Silverline doorbells (#942)
+  * Changed TPMS Toyota to match shorter preamble
+  * Changed TPMS Citroen data readings
+  * Changed TPMS Renault data readings
+  * Added Digitech XC-0324 temperature sensor decoder (#849)
+  * Added sample rate switching
+  * Added Mongoose
+- Remove patch:
+  * rtl_433-disable-test.diff
+
+-------------------------------------------------------------------
+Sat Aug 18 19:15:50 UTC 2018 - mardnh@gmx.de
+
+- Update to version 18.05+git.20180806:
+  * Clean up copyright notes
+  * Change flex to more robust opt arg parse
+  * Fix bitbuffer_parse to be sane about empty row specs
+  * Tweak timings for Kerui
+  * Fill id string for Bresser device.
+  * Add battery event for Kerui
+  * Update style for chuango
+  * Update style for akhan
+  * Update style and add cmds to Kerui
+  * Update code style for wssensor
+  * Add Hyundai WS SENZOR (#779)
+  * Add fix for TEK377E, issue #776
+  * Fix Makefile devices to match CMakeLists
+  * Add CS16 input and output (#773)
+  *  Add device: M-Bus (EN 13757-4) - Data Link layer (#768)
+  * Fix for Autotools
+  * Rewrite debug_mode to load_mode and dump_mode
+  * Fix typo
+  * Fix indents
+  * Clean up baseband, optimize FM, add baseband-test (#770)
+  * Rewrite ambient_weather for robustness and style
+  * Remove some unwanted BITBUF_COLS uses
+  * Change radiohead to unify the applications
+  * Fix Sensible Living merge
+  * Sensible Living protocol added. (#742)
+  * Fix SOCKET(_TYPE) for syslog
+  * Win32 syslog client patches (#762)
+  * Make printout aligned (#761)
+  * Make the frequency setting clearer. (#760)
+  * Add real protocol number to startup output (#744)
+  * Convert intertechno to data_make (#726)
+  * see #755
+  * FineOffset WH0530: Add battery low detection, correct rain factor (#765)
+  * Add prototype for 'nice_freq()' (#759)
+  * Add a "pretty-printer" of a frequency (#758)
+  * No "Variable Length Arrays" for MSVC (#755)
+  * Remove <strings.h> (#756)
+  * More MSVC fixes (#754)
+  * [MSVC] patch include/data.h (#753)
+  * Include <stdlib.h> (#752)
+  * Add support for Oregon Scientific UVR128 UV sensor (#738)
+  * Update code style for RadioHead
+  * DSC Sensors break out status bits
+  * acurite_986: fix temperature type to enable conversion feature to work
+
+-------------------------------------------------------------------
+Fri Jun 01 20:06:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 18.05+git.20180525:
+  * New devices: Euroster 3000TX, Elro DB270 (#683)
+  * Add flex spec for Byron BY doorbells (#686)
+  * change array separator in csv to ";" otherwise RadioHead ASK output will break csv parsers (#687)
+  * create flex dev adhoc and enable csv output (#688)
+  * calc stop_time late; better exit messages (#689)
+  * add proper reset and gap limit to Quhwa; use repeated rows; add csv output; style update (#691)
+  * fix short char buffer
+  * Adding interlogix devices driver (#649)
+  * fix bitbuffer_extract_bytes clipping unaligned bits
+  * fix Interlogix; style
+  * Added decoder for Dish Network UHF Remote 6.3 (#700)
+  * use actual max protocols
+  * Update acurite.c (#704)
+  * Acurite 06045M structured data (data_make) cleanup, decoding improvements. (#707)
+  * Adjust alarm from 1 second to 3 second
+  * Acurite 986 convert to JSON/data_make * Add hack from my branch to work around missing bit
+  * Fix typos/misspellings
+  * Add conversion hPA/inHG, kPa/PSI (#711)
+  * Fix acurite raw_str termination
+  * Touch up waveman code style, add missing time field
+  * Add PiWM decoding (#724)
+  * SimpliSafe Sensor (#721)
+  * SimpliSafe style updates
+  * Add Pacific PMV-C210 TMPS support (#717)
+  * Add preamble option to flex decoder
+  * Make intertechno decoder work with ITT-1500 (#694)
+  * Convert DSC to structured data (#725)
+  * Regularize and extend Acurite 6045M comments (#728)
+  * DSC data_make additions. (#730)
+  * Indents
+  * Acurite TXR/6045 fixes
+  * Acurite cosmetics fixes
+
+-------------------------------------------------------------------
+Mon Feb 26 21:15:42 UTC 2018 - mardnh@gmx.de
+
+- Create subpackge for header files
+
+-------------------------------------------------------------------
+Thu Feb 15 19:25:35 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.1+git.20180213:
+  * fix flex options, add gap_limit for PWM
+  * README.md: Add another Debian dependency (#680)
+  * README.md: Fix typo (#679)
+  * README.md: Add build tools to Debian command (#678)
+  * revert localtime_r to localtime for win32
+  * disable syslog output on win32
+  * remove left over xc0348 device
+  * Fix on_connect signature and topic subscriptions in MQTT examples. (#674)
+  * refactor hostport_param
+  * refactor abuf
+  * allow ipv6 for syslog
+  * add flex device to Makefile
+  * refactor print_array_value
+  * use prettier C99 bool macro
+  * shuffle functions
+  * change aux pattern to composition
+  * remove output_hander_t, printer_ctx indirection
+  * change indent; consistent style
+  * adds a remote syslog output
+  * update readme usage info
+  * default enable x10_sec, timing doc, style
+  * Adds x10_sec device for decoding X10 Security RF signals (#671)
+  * Spelling fix: gague -> gauge (#672)
+  * fix new_template
+  * use localtime_r instead of localtime
+  * reduce false positves with Bresser on LaCrosse TX141TH
+  * add MIC to bresser
+  * freshen up template with more examples
+  * add a flexible general purpose decoder (#647)
+  * remove PWM_TERNARY, use PWM_PRECISE for sync bits
+  * change pulse_detect to use pwm_precise for sync bits
+  * rename CLOCK_BITS to DMC
+  * change fordremore to proper DMC, the output is vastly different
+  * change DMC (clock_bits) demod to add rows on symbol errors
+  * convert Acurite 592TXR from TERNARY to PRECISE
+  * reduce false positives in Thermopro TP12
+  * code style for LaCrosse TX141
+  * convert LaCrosse TX141 from TERNARY to PRECISE
+  * convert Bresser 3CH from RAW to PRECISE
+  * convert LaCrosse TX from RAW to PRECISE
+  * convert Philips Sensor from TERNARY to PRECISE
+  * convert Calibeur from TERNARY to PRECISE
+  * convert Acurite 00275rm from TERNARY to PRECISE
+  * enhance pwm_precise to cover raw and ternary cases
+  * add sync pulse count to bitbuffer
+  * fix Lacrosse TX141TH sync rows
+  * Added device LaCrosse TX141 support to lacrosse_TX141TH_Bv2.c (#670)
+  * add back C99 with ADD_DEFINITIONS
+  * C99 compatibility (#667)
+  * add git version info to usage output if available
+  * let cmake set C99; CMP0025
+  * additional build deps (#668)
+  * wh1080: Fix warning about uninitialized use (#666)
+  * adding asepc, getkwargs helper
+  * fold PWM_precise_parameters into r_device
+  * output pulse_demod_pwm_precise at end of pulses as well
+  * adapt precise param sync width to us
+  * use _XOPEN_SOURCE on string.h for strdup
+  * fix -R 0 fault
+  * use bitbuffer_clear for bitbuffer_parse
+  * refactor bitbuffer_parse
+  * minor
+  * Doxygen EXTRACT_ALL to show all docs, there isn't any notable exported API yet
+  * update 1.7 Doxyfile to 1.8
+  * add Doxygen building to CMake
+  * cleanup
+  * parse number suffixes on e.g. frequency, samplerate, duration, hoptime
+  * relax false positive logic prologue/alecto to allow a single leading pulse
+  * Fix unit conversions for Acurite 5n1 (#651)
+  * fix `-d n` parsing
+  * Add missing brand to OSv1 (#650)
+  * adding FindGperftools cmake module
+  * add Profile build type using GPerfTools
+  * use CMake defaults for optimizations (-O3)
+  * RTGN129 author name (#646)
+  * change grab file name to gNNN_FFFM_RRRk.cu8 (#642)
+  * replace -i <serial> with -d :<serial> (#648)
+  * Clean up WIN32 include/ifdef (#643)
+  * fix read-mode buffer size and allocation, s. #641 (#644)
+  * reduce Alecto/Auriol-v2 false positives in Prologue
+  * enable pedantic warnings; also on Clang
+  * pedantic fix: -Wextra-semi
+  * pedantic fix: replace arithmetic on void* (gnu extension) with sane char* arithmetic; fix function pointer for qsort, bsearch
+  * adding mic to OS SL109h
+  * remove false positives with wg-pb12v1, please report samples if WH2, WH5, Telldus are missing messages
+  * remove debug from wg-pb12v2; add mic to fineoffset
+  * fix GE Color Effects Remote indent and MAX_PROTOCOLS
+  * chmod 644 on source files
+  * add model switch to WH2/WH5/Telldus in fineoffset
+  * Add support for Telldus variants of fineoffset (#639)
+  * merge formatting from PR #615
+  * disable mebus: lacks docs, tests and has false positives
+  * Esperanza, Kedsum, S3318p: relax reset timing, check sync pulses to remove dups
+  * fix OOK_PULSE_CLOCK_BITS pulse_tolerance to µs
+  * fix: require 24 bits data for rain gauge sensors
+  * Update chuango.c
+  * Stop after outputting successful event(s)
+  * Added support to Oregon Scientific RTGN129
+  * Add device NEXA LMST-606 magnetic sensor
+  * added unit (Fahrenheit) to output of Ambient Weather Temperature Sensor
+  * Update rtl_433.h
+  * fixed compile time warnings (formatting related)
+  * change PWM_Precise_Parameters pulse_tolerance to use us instead of samples
+  * fixing schraeder data types
+  * Remove unintended spurious white spaces
+  * Add another schrader TPMS support (corrections)
+  * Add another schrader TPMS support
+  * remove spurious if-statement
+  * Specify device to use via serial number
+  * automatically use first available dongle
+  * define _GNU_SOURCE for strdup
+  * Add support for the Thermopro TP-12.  This is based heavily on the code for the Thermopro TP-11, and the modulation is compatible, but the bit layout is fairly different and there are more sensors, so I've made this a separate device.
+  * Addressed code review by @zuckschwerdt
+  * Device handler for GE Color Effects remote control Fixes #569
+
+-------------------------------------------------------------------
+Wed Nov 01 19:58:05 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1+git.20171101:
+  * Add support for Philips outdoor temperature sensor
+  * move fprintf call when timer expires
+  * remove check for DEFAULT_HOP_EVENTS
+  * fix edge-case where bytes_to_read is equal to length of bytes read
+  * Fix output formatting
+  * Added support for Ford car remote.
+  * Removed unused code and variables.
+  * Added a ford car remote decoder for the Fiesta and CMAX. device id is a rolling id number that seems to have approx 64 variations. The meaning of the code fields has not been determined.
+  * Fixed output formatting for JSON and csv
+  * Added decoding of X10 CR12A ON/OFF remote commands
+  * Add support for FT-004-B
+  * Make LaCrosse TX141TH sensors return temperature_C so that they are more consistent with other temperature sensors (#606)
+  * Acurite Rain Gague emit structured data
+  * shortend model string to Inovalley kw9015b
+  * added json-support and description for TFA 30.3161 rain sensor
+  * Fixed do_build.sh: forgot to do 'cd ..' before cloning rtl_433_tests.git
+  * Fixed do_build.sh, .travis.yml trying to run 'make test'
+  * Added tests from rtl_433_tests.git repo
+  * Fixed do_build.sh: don't 'make installe'
+  * Fixed .travis.yml: 'sudo: required', 'dist: trusty'
+  * Fixed .travis.yml: added sudo, added apt.sources
+  * Fixed permissions on do_build.sh
+  * Added draft of .travis.yml, do_build.sh
+  * Use default number of buffers to fix crash of two rtl_433 instances
+  * don't restart the timer if we are aborting anyway; cancel timer on rtlsdr_cancel_async
+  * fix unknown `uint` type; whitespace fixes
+  * add merbanan changes
+  * add suggested optimisation
+  * suggested changes
+  * remove test
+  * add infactory sensor
+  * bitbuffer: Handle row overflow a bit more gracefully
+  * pulse_analyzer: Add detection of PWM with multiple packages
+  * explaining dipswitch 2 meaning
+  * message validation fix
+  * shortening output
+  * changes after pull request
+  * Switched to new data API
+  * adding Renault TPMS sensor
+  * adding Ford TPMS sensor
+  * Add option to verify simulated decoding of raw data
+  * reduce false positives by rejecting 0x000000 / 0xffffff
+  * adding Toyota TPMS sensor
+  * reduce false positives, require at least 5 repeats
+
+-------------------------------------------------------------------
+Sat Jul 08 09:02:24 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1+git.20170708:
+  * prevent bad messages of all 1 that falsely check ok with crc.
+  * adding IBIS beacon
+  * fix Company name, output flags and tire pressure/temperature
+  * proper units for pressure, units for power, fix OS output fields
+  * adding Oil Ultrasonic Standard protocol
+  * hop interval param added (multiple frequencies)
+  * updated README.md
+  * typo fix
+  * pipe symbol with HTML code
+  * Update README.md
+  * Added data struct for efergye2 (#540)
+  * fix fabsf() in integer context (#551)
+  * adding Citroen TPMS device
+  * bugfix, bitbuffer needs to be initialized
+  * adding Oil Ultrasonic STANDARD using ASK on 915MHz
+  * Honda remote: fix an out of bounds array access
+  * Removed use of pow() (#557)
+  * Possible bugfix for issue #136
+  * Update .gitignore
+  * Fix hex output padding for unit ID field for lightwaverf.
+  * Thermopro TP-11.
+  * Move TP-11 to the end.
+  * Thermopro TP-11 changes:   - exit early if not enough matching rows are found   - simplify bits_per_row check   - local_time_str happens after decoding data
+  * Fix sign error.
+  * Variable declarations are at the top of the function.
+  * Solight TE44 wireless thermometer
+  * Fix spelling in documentation
+  * adding Wireless Smoke and Heat Detector GS 558
+  * adding Generic off-brand wireless motion sensor and alarm system
+  * remove false positives from Esperanza/Kedsum
+  * replace binary literals with hex
+  * fix misc typos and reduce efergy false positives
+  * allow WH2 to miss the first sync bit for WH5 support
+  * reject false positive and fix wrong field index and minimum bit count
+  * fix compiler warnings; possible undef bug; signed/unsigned
+
+
+-------------------------------------------------------------------
+Mon May 15 20:26:05 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1+git.20170515:
+  * Add files via upload
+  * Add support for Fine Offset WH3080 weather station
+  * Updated "quadrant" code for WGR968
+  * Restored 'static' variables
+  * Bump MAX_PROTOCOLS to 78
+  * cleanup: replacing broken sprintf, removing debug code
+  * fix short buffer: sprintf's output is always null-terminated
+  * adding output redirection to files
+  * Sensor GT-WT-02 Change REDME.md
+  * fix sample_file_pos to actually count seconds, each sample is 16 bits (I+Q uint8's)
+  * change data output fields to usual order
+  * add missing "model" data output
+  * add time to data output
+  * Add support for Vaillant calorMatic 340f (VRT 340f) wireless central ceating control (868MHz)
+  * adds a watchdog timer to async callback, abort if async events stop arriving
+  * improving compatibility for Renkforce DM-7511
+  * Vaillant_vrt340f.c: Fix indentation, only whitespace changes
+  * remove synthetic fahrenheit output. use `-C customary` to convert.
+  * harmonize device data output to model instead of device or make, and crc instead of checksum
+  * changing "crc", "checksum" to "mic"
+  * delete stray trailing whitespace
+  * normalize indentation to 4 spaces or one tab, depending on prevalence in each file
+  * Update rtl_433.h
+
+-------------------------------------------------------------------
+Sat Apr 15 22:31:43 UTC 2017 - mardnh@gmx.de
+
+- Reenable parallel build
+
+-------------------------------------------------------------------
+Thu Apr 13 19:22:51 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1+git.20170409:
+  * Include humidity field in CSV format for TX29DHT temperature and humidity sensor. (#486)
+  * Fix parse error on ARM compiling with GCC due to lack of parens. (#490)
+  * Don't convert channel 4 to 3 for the sensor Oregon THGR810 (#489)
+  * Fine Offset W25 Temperature/Humidity/Pressure sensor (#492)
+  * Device for cheap probes where the PCB is marked WG-PB12V1.
+  * Revert "Update pulse_detect.c" (#493)
+  * MQTT: Add example to README and Python test client (#495)
+  * Pulse Analyzer: Add 'Include only' mode (#497)
+  * Fine Offset WH0530: Add new device
+  * DSC: Make less noisy
+  * pulse_demod: Make pwm_precise resilient to short spurious pulses
+  * Acurite 6045, correct temperature decoding * Reduce Msg Type (status bits) to 2 remaining bits. * Remove possible lightning stats/flag bits from distance * output lightning status/flag bits separately for now * Understanding of status/message type bits still a WIP.
+  * Acurite 06045 add docs, refactor decode out of txr_callback
+  * acurite 6045, remove unnecessary variable
+  * Added code for differing impules to KWH values
+  * LaCrosse TX6/7 cleanup
+  * LaCrosse TX6/7 reindent with consistent 4 column spacing
+  * Fix #503
+  * Update util.c
+  * Pull Request Changes ---
+  * FineOffset_WH25: Add debug printout
+  * FineOffset_WH25: Correct decoding of Temperature and ID
+  * FineOffset_WH0530: Fix bug in ID decode
+  * FineOffset_WH25: Additional bitsum check + minor fixes
+  * ELV WS2000: Make it somewhat work...
+  * Corrected conflict in MAX_PROTOCOLS.
+  * erroneous entry in src/Makefile.am
+
+-------------------------------------------------------------------
+Thu Feb 02 10:42:51 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1486029687.074cc2f:
+  * Reverse some more stray changes
+  * Ensure analyzer works with auto level as default
+  * Various documentation fixes for auto level
+  * Acurite 6045 lightning prelim. and 609 cleanup.
+  * WH1050 weather station based on WH1080 module.
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * Honeywell/Ademco Door/Window Security Sensor driver
+  * added json/kv capbilities to Acurite tower sensor
+  * added battery status as OK or LOW
+  * fixes for upstream
+  * fix indent
+  * Update README.md
+  * Added more installation step detail and troubleshooting section.
+  * Correct negative temperatures
+  * Danfoss CFR: Initial decoding attempt
+  * Danfoss: Output data correctly
+  * Danfoss: Enable driver by default
+  * Danfoss: Add proper header search and make decoding byte based
+  * Danfoss: Add CRC check. Remove raw printout.
+  * Danfoss: Reverse engineered unknown nibble :-)
+  * Danfoss: Minor cleanup and fix debug print
+  * add maverick et73x BBQ sensor
+  * Add crc json tag and cvs output
+  * Add crc json tag
+  * Update brennstuhl_rcs_2044.c
+  * Spelling correction (protcols -> protocols)
+  * Improved hideki.c to detect data from the wind/temperature and the rain sensor. Changed pulse_demod_clock_bits to allow a missing short gap at the end of the message which is needed for the new sensor types.
+  * Increase number of protocols to 70
+  * Update pulse_detect.c
+  * Update acurite.c
+  * Segfault on Owl CM160
+  * Added support for RF-tech 433 remote temperature sensor.
+  * Add rftech.c to Makefile.am to support configure/automake.
+  * Added support for LaCrosse temperature/humidity sensor TX141TH-Bv2
+  * Minor cosmetic changes
+  * Implemented recent changes suggested by @merbanan.
+  * move to new internal data format on acurite5n1
+  * remove old acurite5n1 decoder, now uses acurite_txr
+  * normalize temperature key
+  * acurite5n1 battery status
+  * correct acurite5n1 wind speed formula
+  * add raw msg debug output for acurite5n1
+  * acurite5n1: fix battery status
+  * Stop akhan-100F14 catching things that don't belong to it
+  * Add missing return 1.
+  * don't mess up device ordering
+  * remove old, incorrect wind direction mapping
+  * output raw rain counter values, use define for msg type
+  * move all units to native customary/US
+  * remove another unused function
+  * Removed signal quality output
+  * acurite 5n1: output message sequence number
+  * Add protocol definition for oregon scientific THN129 temp only sensor. (#469)
+  * Support for Acurite 00275rm and 00276rm sensors (#467)
+  * Fixed bug in CM160 (#474)
+  * devices: mebus: Use data API for results (#475)
+  * identify F007TH with both 0000000000010100 and 1111111111010100 (#481)
+  * Add support for BTHGN129 (#483)
+  * LaCrosse TX29-IT / TX35DTH-IT weather sensor (#479)
+  * fix typo error (#484)
+  * WH1050 weather station - remove unused fields from csv format. (#485)
+
+-------------------------------------------------------------------
+Mon Sep 19 18:13:46 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1474227546.2d7072a:
+  * Adding support for the Bresser 3CH type sensor
+  * Disable acurite rain gauge due to false positive with oregon scientific v1
+  * add -T option to set run duration
+  * Fixed generic_remote to utilized data_acquired_handler to support json output. Not perfectly indented, but works.
+  * use binary mode to open file - fixes decoding on windows
+  * Improved datetime/weather signal type detection.
+  * Fix incorrect handling of negative temperatures in ambient_weather.c (#376)
+  * missing backtick in readme.md, now in LF (#361)
+  * New Springfield Temperature and Soil Moisture decoding (#378)
+  * introduce functionality to decode the Oregon Scientific SL109H Remote Thermal Hygro Sensor (#368)
+  * Added data output (for json/csv/etc.) (#380)
+  * Acurite 606TX Sensor Support (#382)
+  * Cleanup of Acurite 606TX code that should have been done before (#383)
+  * add TFA pool thermometer support (#386)
+  * Enabled low battery detection on FineOffset WH1080 (#387)
+  * Add support for Kedsum Temperature/Humidity sensor (#389)
+  * added support for blyss dc5-uk-wh (#391)
+  * Add FSK_PULSE_MANCHESTER_ZEROBIT
+  * Add initial Schrader TPMS decoder
+  * Better Schraeder TPMS payload meaning
+  * Add Schreader TPMS crc calculation
+  * Add LightwaveRF initial driver (#394)
+  * Added Steelmate TPMS support (#396)
+  * Fix json output and minor rearrangement of code
+  * Add template decoder skeleton
+  * Add initial Elro DB286A support (#398)
+  * Elro DB286A: Correct id_string array length (#399)
+  * Updated README for new efergy_optical sensor and missing recent devices.
+  * Add CRC16-CCITT function
+  * Change to new output system
+  * Add brand parameter to data output format
+  * Add sensor WGR968 parser support
+  * Add Handling of error packet format
+  * Smell and Fix some bad code
+  * Changed CRC calculation to use new function in util.h no longer using lib_crc
+  * added file output support and changed energy to power. only output crc values when using -D argument.
+  * Only output crc when using -D argument
+  * I have kept the crc calculation to be the first 10 bytes. Bytes 11 and 12 are the CRC16_CCITT. The only puzzle left is why does the last byte does as it sometimes change to 80.
+  * Efergy Optical device added. Multiple changes to combine several files into one commit.
+  * Removing lib_crc files
+  * efergy_optical with CRC checks (#400)
+  * Honda Key Remote
+  * formatting changes
+  * Fix review errors,using Kdiff3 to compare the code
+  * Fix build
+  * Honda remote key fob, decodes which button has been pressed.
+  * Honda Keyfob changes
+  * Added Honda Remote decoder.
+  * Added Honda Remote
+  * Fixed to include Honda remote any my deletion of the README.md when trying to fix git conflicts.
+  * Changed author name at the top of the file, removed fprintf that was not behind if debug statement. Added a validater to check that number of bits are 386.
+  * Changed and fixed validation code to suit varying bits per row. Lock command has 394 bits whereas other commands only has 386 bits per row. (#405)
+  * Add THN802 and PCR800a to oregonscientific.c (#410)
+  * unbreak the build (#411)
+  * add battery status (low or ok) to F007TH ambient weather devices (#414)
+  * Add support for another Fine Offset sensor
+  * Convert Acurite "TH" (609TXC) to use data_make * Existing Acurite "TH" sensor now labeled as 609TXC * Use data_make() for JSON, CSV, KV output * minor code cleanup/reorg
+  * Add RadioHead ASK device
+  * Add option to register all devices
+  * Fix MAX_PROTOCOLS when enabling all devices
+  * acurite: disable all old api devices by default
+  * ambient_weather: fprintf cleanup
+  * brennstuhl_rcs_2044: disable all old api devices by default
+  * cardin: disable all old api devices by default
+  * danfoss: disable all old api devices by default
+  * dsc: disable all old api devices by default
+  * ec3k: disable all old api devices by default
+  * efergy_e2_classic: disable all old api devices by default
+  * elv: disable all old api devices by default
+  * gt_wt_02: disable all old api devices by default
+  * inovalley-kw9015b: disable all old api devices by default
+  * intertechno: disable all old api devices by default
+  * lacrosse: fprintf cleanup
+  * lacrossews: fprintf cleanup
+  * lightwave_rf: disable all old api devices by default
+  * mebus: disable all old api devices by default
+  * new_template: fprintf cleanup
+  * silvercrest: disable all old api devices by default
+  * steffen: disable all old api devices by default
+  * valeo: disable all old api devices by default
+  * x10_rf: disable all old api devices by default
+  * Use built in CRC functions
+  * Fix indent (RH ASK)
+  * Declare variables at the begining (RH ASK)
+  * Add CRC=OK (see #416) & fix syntax error (RH ASK)
+  * Fix debug output (RH ASK)
+  * fprintf fixup
+  * Add device debug output
+  * Added support for Kerui PIR sensor
+  * Fixes
+  * Cleanup related to devices disabled by default.
+  * new_template rework
+  * Make auto level limit the default
+
+-------------------------------------------------------------------
+Sun Mar 27 19:58:00 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1459106482.900fca7:
+  + use uintptr_t instead of unsigned long - fixes build error on win64
+  + fix: change doc comments from "samples" to "us"
+  + clean up casts regarding C Integer Promotions
+  + Oregon Scientific V1 Decoding
+  + add -U option to print timestamps in UTC
+  + Support for Proove
+  + Adjust pulse_tolerance to get all sensors to work
+  + Update calibeur rf104 to new data api
+  + add missing usage documentation for -n parameter: number of samples to read before quitting
+  + add -T option to set run duration
+  + Prevent crash when no output file is given with `-S`
+  + Fineoffset: Fix key/value printout
+  + pulse_analyzer: Add PCM detection
+  + Revert "add -T option to set run duration"
+  + Calibeur: Fix key/value printout
+  + pulse_demod_osv1: Only print preamble info when debugging
+  + Fix https://github.com/merbanan/rtl_433/issues/347
+  + use uintptr_t instead of unsigned long for the remaining devices
+  + mingw32 does not have setenv
+  + Remove spurious execute permission from README.md
+
+-------------------------------------------------------------------
+Fri Mar 11 11:52:30 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.1.git1457694384.7ab14a4:
+  + Added support for Fine Offset WH1080 weather station. Merging with Digitech XC0348 (it's a rebranded WH1080).
+  + Adding support for Fine Offset WH1080.
+  + Update fineoffset_wh1080.c
+  + Added support for Fine Offset WH1080
+  + Add remote control on chip HT680
+  + Rethinking algorithm
+  + fix decoders for WGR800 & THGR810 add decoder for PCR800
+  + adding a bitbuffer_find_repeated_row() with examples how it simplifies device code
+  + code cleanup
+  + starting to migrate to data_make
+  + only try the crc if the packet would match
+  + adding battery indicator for Nexus
+  + add labels for ambient_weather.c to match oregon_scientific.c printout
+  + Update README.md
+  + Added tristate coding.
+  + Correction data types in bitbuffer_find_repeated_row()
+  + new feature: allow multiple outputs (WIP)
+  + Decode device id from current_cost, and support more devices
+  + Add support for Conrad S3318P
+  + s3318p: use native temperature format
+  + Add support for Conrad S3318P
+  + also switch the labels on output conversion
+  + Spurious output for debug mode
+  + Remove some compiler warnings
+  + fix wind direction nibble extract for WGR800
+  + Remove some compiler warnings
+  + Remove some compiler warnings
+  + fix off-by-one and make the null explicit
+  + LaCrosse WS-2310 json output
+  + Fixed WS-2310 json gust_speed to gust_speed_ms
+  + Fix some memory leaks
+  + TFA Twin Plus 30.3049 json support
+  + Output less decimal places to get rid of bogus digits
+  + Update fineoffset_wh1080.c
+  + Switched to new data API
+  + Update generic_temperature_sensor.c
+  + KlikAanKlikUit json support
+  + Added data labels for KlikAanKlikUit output
+  + Added Akhan 100F14 RKE system
+  + Updated akhan_100F14 message passing
+  + Update CM180 Energy Sensor code - Add Checksum and new output system format
+  + Many sensor required a larger pulse tolerance
+  + Add Quhwa doorbell support
+  + Clearer code
+  + Add support for Quhwa doorbell
+  + Support for Quhwa doorbell
+  + data_make output for chuango
+  + Update device support
+  + add missing quhwa.c reference
+
+-------------------------------------------------------------------
+Thu Feb 04 11:09:38 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1454367220.e7bc33d:
+  + Auto level: Increase sensitivity to low signals
+  + FSK: Change FM demodulation to use integer atan2()
+  + Pulse_detect: Increase maximum number of pulses
+  + FSK: refactor FSK into own function for sanity
+  + Auto level: Make OOK level estimators a bit slower
+  + add a converter for cf32 (gnuradio output format)
+  + Convert Alecto to Pulse decoder
+  + Convert Inovalley to Pulse decoder
+  + Convert Nexus to Pulse decoder
+  + Convert Generic temperature sensor to Pulse decoder
+  + Convert Steffen to Pulse decoder
+  + Convert Mebus to Pulse decoder
+  + Convert Intertechno to Pulse Decoder
+  + Convert Newkaku / KlikAanKlikUit to Pulse decoder
+  + Convert Acurite to Pulse decoder
+  + Convert ELV to Pulse decoder
+  + Remove last sample based decoder OOK_PWM_D
+  + Remove OOK_PWM_D: Clean-up header
+  + Fix: Segmentation Fault in cf32 file support
+  + Update Wiki with new options
+  + only treat samples as cf32 when mode==3
+  + minor changes to support (cross-)compilation with MinGW
+  + newkaku: support APA3-1500R
+  + remove superfluous prototype
+  + fix loop syntax
+  + ignore buffers of all zeros.
+  + rewrite LaCrosse TX output to data fields
+  + adding data_make for humidity
+  + typo
+  + fix: broken bit operation
+  + Make quiet mode output at least test file name
+  + FSK: Change to F1/F2 estimation instead of F1/Fdelta
+  + emonTx: Add stub driver
+  + FSK: Increase initial frequency threshold
+  + Change pulse data from unsigned to int to avoid undefined behaviour
+  + fix limits for decoder
+  + [xc0348] Add CRC validation
+  + [xc0348] Don't filter on device id
+  + [xc0348] Fix temperature (top nibble doesn't belong)
+  + Include stdio for FILE
+  + [xc0348] Add json output
+  + [xc0348] Add csv fields
+  + FSK: Fix data is not cleared at End Of Package
+  + FSK: Fix for handling pulse overflow correctly
+  + new command line option `-C native|si|customary` that hooks into `data_acquired_handler` and if `si` and type is DATA_DOUBLE and key is temperature_C then celsius2fahrenheit, if `customary` and type is DATA_DOUBLE and key is temperature_F then fahrenheit2celsius. Also if there is a FORMAT the last character "C" / "F" will be switched accordingly.
+  + Emontx: Correct for sample frequency of 2.5 MHz
+  + FSK: Rework to make pulse polarity absolute (pulse = high frequency)
+  + bitbuffer: Add function to invert bits
+  + current_cost: Invert bits to compensate for absolute FSK
+  + FSK: correct comment
+  + FSK: Fix slow estimation at initial frequency
+  + Convert decoder limits to float instead of int, to allow more precision
+  + elv: Fix precision of bit limits
+  + rubicson: Fix precision of bit limits
+  + Switch protocol decoder limits to µs instead of "samples at 250000Hz"
+  + ec3k: Fix precision of bit limits
+  + valeo: Fix precision of bit limits
+  + dsc: Fix precision of bit limits
+  + current_cost: Fix precision of bit limits
+  + Add bitbuffer_extract_bytes() function for accessing unaligned data
+  + Add crc16() function
+  + Finish implementing emontx driver
+  + Change bit limits in r_device structure to float too
+  + Pulse detect: Make low level (noise) estimator even slower
+  + Pulse detect: supress spurious short gaps
+  + Pulse detect: Minor renaming for consistency
+  + Pulse analyzer: Print absolute timing
+  + Pulse analyzer: Print FSK frequencies
+  + Pulse analyzer: Print OOK carrier frequency
+  + Migrate fineoffset to new data format and add support for TFA 30.3157 Temperature sensor
+  + Fix building with autotools
+  + Migrate nexus to new data format and add support for Technoline TX 9116 Temperature sensor
+  + fineoffset: fix typo (unbreak humidity sensor)
+  + fix: missing NULL terminator
+  + fix: use fabsf() instead of abs()
+  + emontx: Increase size of words[] array for endianness conversion
+  + alecto: only accept 36 bit packets
+  + rubicson: only accept 36 bit packets
+  + oil_watchman: Return events count
+  + emontx: Return events count
+  + rubicson: switch to new data api
+  + change output of -F kv to resemble the custom fprintf output of the decoders
+- add patch rtl_433-disable-test.diff to disable build-time-tests for now
+
+-------------------------------------------------------------------
+Sun Jan 03 22:29:55 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1450346637.879b467:
+  + Add support for new demodulation
+  + Add support for WT450 devices
+  + Fix automake builds Update source file list and set compiler in C99 mode
+  + rubicson: implement crc and other parameters
+  + nexus: clean up the nexus protocol
+  + WT450: Better packet detection, battery indicator
+  + WT450: Add missing the supported device label in README file.
+  + New Lacrosse Weather Station Decoding
+  + Added Esperanza EWS
+  + LaCrosse Weather Station WS-2310TWC changes
+  + Updated decoding of Lacrosse Weather Station
+  + DSC Security Contact added CRC-8 calc/check * Added "little-endian" CRC-8 calculation * Moved reverse8() to util.c * Quieted WT450 callback false positive messages
+  + Updated crc8 to take initial CRC value as a parameter
+  + Read data from stdin with '-'
+  + Added quiet mode (-q) to suppress non-data related messages
+  + Lacrosse Weather Station Decoding cleanup
+  + Added missing wt450.c for autoconf compile
+  + Minor documentation update
+  + Include the last sample when saving samples between filter runs
+  + Share memory between fm buffer and temporary buffer
+  + Add support for Efergy e2 classic
+  + Remove unused command line argument 'c' (used to be decimation level)
+  + Only allocate synchronous read buffer if synchronous reads are used
+  + WT450: Fix parity computation, error messages only in debug mode
+  + add Inovalley kw9015b rain and temperature weather station
+  + add new noname wireless wheather station
+  + fix makefile.am
+  + change r_device->name from ""KW9015B Transmitter" to "Inovalley kw9015b rain and Temperature weather station"
+  + rename source / callback generic_temperature_sensor
+  + rename r_device->name from "RF Wireless Temp Transmitter" to "Generic temperature sensor 1"
+  + Acurite 592TXR Temperature/Humidity Sensor
+  + Acurite 592TXR Temperature/Humidity Sensor
+  + Updated README.md with new device numbers
+  + Acurite 986 Refrig/Freezer Temp initial support
+  + Acurite 986, add CRC check, fix negative values
+  + Acurite 986 low battery detection
+  + Inovalley kw9015b : fix negative temperature
+  + General structural data support for generating (ie.) JSON
+  + Generic temperature sensor 1 : fix negative temperature
+  + Add support for RTGN318
+  + Correct indentation
+  + data: provide a key-value-printer
+  + data: added formatting support
+  + rtl_433: added JSON support
+  + wt450: use JSON output instead of fprintf
+  + data: introduce auxiliary data as an argument
+  + data: only format key-value-format, not JSON
+  + data: added CSV support
+  + rtl_433: added CSV support. Requires driver support.
+  + wt450: added CSV support (provide .fields)
+  + waveman: added structured data support
+  + Fix compilation with autotools
+  + util: Make comment consistent
+  + util: Fix mismatched comment
+  + ambient: Migrate to using common method for output
+  + Updated README.md
+  + Migrate "prologue" to new output handler
+  + Prevent data files from being overwritten
+  + README.md documentation updates
+  + README.md space to fab fix for consitency * fix table markdown typo
+  + waveman: added missing comma to fix CSV output
+  + data: fixed the filtering of CSV fields
+  + Convert Waveman to pulse decoder
+  + Changed acurite 5n1 to use pulse demodulator
+  + Convert Silvercrest to use pulse demodulator
+  + Remove pwm_p_decode() and OOK_PWM_P
+  + Convert from GNU to C99 syntax
+  + Update alecto driver to new "data" format
+  + Update oregon_scientific driver to new "data"
+  + Fix indentation
+  + Fix missing comma
+  + Add Hideki TS04 sensors
+  + Support framed FSK Manchester decoding compatible with Si4320/RFM01
+  + Add Watchman Sonic ultrasonic oil tank monitor
+  + Add heuristic for detecting RFM01-framed FSK
+  + hideki: Remove overzealous warning about invalid parity
+  + Add bitbuffer_search() and bitbuffer_manchester_decode() functions
+  + Convert oil_watchman to bitbuffer_search() + bitbuffer_manchester_decode()
+  + Revert "Support framed FSK Manchester decoding compatible with Si4320/RFM01"
+  + Add Watchman to readme
+  + Add CurrentCost TX device
+  + Fix indent + TODO (minor for CurrentCost sensor)
+  + Fix negatif temp value for Hideki TS04
+  + Use constant to define and check OS (v2) sensor_id
+  + Fix channel error with some OS devices
+  + Do not require first byte of Watchman packets to be 0x28
+  + Update Readme.md
+  + Sync usage messages and README.md
+  + README improvements, added typical command line * rtl_433: better description of ppm error option
+  + Added -W to overwrite files
+  + Added -W to README.md
+  + Auto level - initial implementation
+  + Auto level - suppress spurious initial pulses
+  + FSK spurious short pulse suppression
+  + Auto level - print level in analyzer
+  + Fix to read complete file
+  + Pass 0 into local_time_str() for current time instead of using time()
+  + When reading sample files, make local_time_str() show offset not time of day
+  + Add temperature output in °C to Watchman decode
+  + Auto level - minor fixes
+  + Improve comment about level estimates
+  + Fix automake build
+  + Sort source file lists in CMakeLists.txt and Makefile.am
+
+-------------------------------------------------------------------
+Sun Sep 27 18:08:03 UTC 2015 - mardnh@gmx.de
+
+- initial package

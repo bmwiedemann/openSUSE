@@ -1,0 +1,1114 @@
+-------------------------------------------------------------------
+Thu Apr 25 22:11:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 8.6.5
+ * A build system issue where use of GCC with -flto broke configure was fixed
+
+-------------------------------------------------------------------
+Wed Mar 13 14:35:13 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- really bump llvm5 to llvm6 requires for ghc-compiler
+
+-------------------------------------------------------------------
+Tue Mar 12 09:20:14 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- bump llvm req to llvm6 
+
+-------------------------------------------------------------------
+Wed Mar  6 08:49:44 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 8.6.4
+ * A bug wherein changes in default method definitions would fail
+    to trigger recompilation has been fixed
+ * A bug wherein plugins would fail to lookup names not in scope
+    in the module being compiled has been fixed
+ * A bug where some programs involving StaticData would be rejected
+    with either a typechecking error or internal compiler error has been fixed
+ * A bug where compilation on Windows can fail with linker errors
+    referring to __chkstk_ms has been fixed
+
+-------------------------------------------------------------------
+Mon Dec 17 13:26:47 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- use python3-Sphinx instead deprecated python-sphinx [boo#1119686]
+
+-------------------------------------------------------------------
+Sat Dec  8 10:28:03 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 8.6.3
+ * A code generation bug resulting in segmentations faults in some programs
+ * bug leading to programs with deep stacks crashing when run with retainer profiling enabled
+ * A bug resulting in potential heap corruption during stable name allocation
+ * Plugins are now loaded during GHCi sessions
+
+-------------------------------------------------------------------
+Wed Nov  7 10:00:46 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- dont require memory-constraints on older distros
+- dropped reproducible-tmp-names.patch
+
+-------------------------------------------------------------------
+Tue Nov  6 13:56:27 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 8.6.2
+ * Several compiler panics observed in GHC 8.6.1 have been fixed
+ * An integer overflow, resulting in some encodeFloat uses returning
+    incorrect results, has been fixed
+ * A long-standing bug in the LLVM code generator, resulting in incorrect
+    floating point evaluation, has been fixed.
+ * A long-standing bug exposed in GHC 8.6.1, has been fixed. This issue
+    resulted in undefined runtime behavior with some uses of the dataToTag#
+    primop. Note that this issue, while less likely to manifest, has existed
+    in some form in all GHC releases prior to this release and may result
+    in silent, incorrect evaluation.
+
+-------------------------------------------------------------------
+Mon Oct 29 08:25:23 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of memory-constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Fri Oct 26 08:01:13 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove forced 'make -j2' for aarch64 and %arm
+
+-------------------------------------------------------------------
+Tue Oct  9 15:50:06 UTC 2018 - ptrommler@icloud.com
+
+- add Disable-unboxed-arrays.patch
+  * apply on ppc64 only
+  * fixes ppc64 build
+- add D5212.patch
+  * fix GHCi on big endian platforms
+
+-------------------------------------------------------------------
+Tue Oct  2 11:28:19 UTC 2018 - ptrommler@icloud.com
+
+- cleanup
+  * remove unused conditional in configure command
+
+-------------------------------------------------------------------
+Tue Oct  2 10:10:24 UTC 2018 - ptrommler@icloud.com
+
+- update to 8.6.1
+- add 0001-Fix-check-whether-GCC-supports-__atomic_-builtins.patch
+  * fix __atomic_builtin detection
+  * upstream commit ce3897ff
+- drop add_armv6l_and_armv7l_target.patch
+  * fixed upstream
+- drop fix-ppc64le-recognition.patch
+  * fixed upstream
+- drop fix-build-using-unregisterized-v8.2.patch
+  * bootstrap with 8.4.3 works w/o this patch
+- refresh ghc-pie.patch
+- refresh ghc-8.0.2-Cabal-dyndir.patch
+- refresh buildpath-abi-stability.patch
+
+-------------------------------------------------------------------
+Sun Sep 30 11:21:59 UTC 2018 - ptrommler@icloud.com
+
+- Add fix-build-using-unregisterized-v8.2.patch
+  * Fix build on s390x
+
+-------------------------------------------------------------------
+Thu Sep  6 15:19:54 UTC 2018 - mmanu84@outlook.de
+
+- Fix armv6 build by adding armv6l to llvm-targets:
+  * change add_armv7l_target.patch to add_armv6l_and_armv7l_target.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:09 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Jul  1 11:18:37 UTC 2018 - ptrommler@icloud.com
+
+- Fix dependencies on arm and s390x
+
+-------------------------------------------------------------------
+Sun Jun 17 10:15:27 UTC 2018 - ptrommler@icloud.com
+
+- add fix-ppc64le-recognition.patch
+* recognize powerpc64le as PPC64 in cabal files
+
+-------------------------------------------------------------------
+Fri Jun  1 13:13:27 UTC 2018 - ptrommler@icloud.com
+
+- update to 8.4.3
+* code generation for UnboxedSum fixed
+* compatibility withe newer binutils (as)
+* Cabal issue with abi-depends fixed
+
+-------------------------------------------------------------------
+Sun May 27 17:17:36 UTC 2018 - ptrommler@icloud.com
+
+- Fix build for older openSUSE
+- Don't do selfbootstrapping
+* Cuts down build time roughly in half
+
+-------------------------------------------------------------------
+Fri May 18 06:37:11 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Fix armv7 build by adding armv7l to llvm-targets:
+  * add_armv7l_target.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 19:51:11 UTC 2018 - ptrommler@icloud.com
+
+- update to 8.4.2
+- drop 0001-PPC-CodeGen-fix-lwa-instruction-generation.patch
+* fixed upstream
+- drop 0001-PPC-Implement-Atomic-operations.patch
+* fixed upstream
+- drop 0001-Use-__atomic-intrinsics-for-atomicread-write.patch
+* fixed upstream
+- drop D4089.patch
+* fixed upstream
+
+-------------------------------------------------------------------
+Thu Apr 26 12:21:57 UTC 2018 - mimi.vx@gmail.com
+
+- fix BuildRequires for llvm
+
+-------------------------------------------------------------------
+Wed Apr 18 07:42:06 UTC 2018 - mimi.vx@gmail.com
+
+- use %license macro as used by new ghc-rpm-macros
+
+-------------------------------------------------------------------
+Mon Dec 18 18:16:10 UTC 2017 - ptrommler@icloud.com
+
+- refresh ghc-pie.patch so it applies cleanly
+
+-------------------------------------------------------------------
+Sat Dec 16 20:53:37 UTC 2017 - mimi.vx@gmail.com
+
+- reintroduce ghc-pie.patch (pure upstreams don't work)
+
+-------------------------------------------------------------------
+Sat Dec  9 16:27:31 UTC 2017 - ptrommler@icloud.com
+
+- update to 8.2.2
+- Several important correctness issues fixing potential runtime crashes
+- A correctness issue leading to undefined behavior in some programs
+  making use of STMa fixed
+- A runtime system bug which may have manifested as a segmentation fault
+  under low-memory conditions fixed
+- ghc-pkg now works correctly ihn environments with misconfigured NFS mounts
+- GHC can now produce position-independent executables
+- Significantly improved type errors
+- refresh reproducible-tmp-names.patch
+- drop ghc-pie.patch fixed upstream
+
+-------------------------------------------------------------------
+Tue Oct 31 18:41:52 UTC 2017 - ptrommler@icloud.com
+
+- update to 8.2.1
+- improved compiler performance
+- reliable DWARF debugging information on x86_64 and i386
+- aarch64: registerised through LLVM backend (experimental)
+- optimized build for platforms with LLVM backend (arm, aarch64)
+- improved performance on NUMA systems
+- interface file determinism
+- various language improvements
+- update _constraints
+  * ppc64le builds need less memory since 8.2.1
+- drop support for ppc and s390
+- drop ghc-no-madv-free.patch fixed upstream
+- drop 0001-StgCmmPrim-Add-missing-write-barrier.patch
+- refresh buildpath-abi-stability.patch
+- refresh ghc-8.0.2-Cabal-dynlibdir.patch
+- refresh ghc-pie.patch
+- refresh reproducible-tmp-names.patch
+- refresh 0001-PPC-Implement-Atomic-operations.patch
+- refresh D4089.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 09:54:11 UTC 2017 - ptrommler@icloud.com
+
+- add D4089.patch
+  * fix GHCi issue on ppc64
+  * see Haskell Trac #11262
+
+-------------------------------------------------------------------
+Fri Sep 22 07:57:10 UTC 2017 - ptrommler@icloud.com
+
+- add 0001-Use-__atomic-intrinsics-for-atomicread-write.patch
+  * add missing memory barriers on atomic read/write ops
+  * fixes upstream ticket #14244
+- adjust comment for patch 32
+  * the situation with upstream #12537 is improved but not
+    solved. Patch 32, however, is correct. There are even more
+    memory barriers missing elsewhere in the compiler.
+
+-------------------------------------------------------------------
+Sat Sep 16 12:16:30 UTC 2017 - ptrommler@icloud.com
+
+- add 0001-PPC-Implement-Atomic-operations.patch
+  * fixes parallel programs on all PowerPC platforms
+  * uptream ticket #12537
+- refresh buildpath-abi-stability.patch
+
+-------------------------------------------------------------------
+Sun May 28 12:52:06 UTC 2017 - mimi.vx@gmail.com
+
+- make compatible with new upstream macros
+- added patches for more stable abi:
+* buildpath-abi-stability.patch
+* reproducible-tmp-names.patch
+
+-------------------------------------------------------------------
+Sat May  6 09:02:02 UTC 2017 - meissner@suse.com
+
+- enable for global PIE support:
+  - the compiler is built without PIE support due to the bootstrap
+    libraries being non-PIE using BuildIgnore: gcc-PIE
+  - the compiler itself builds -fPIC objects all the time,
+    which should make all ghc compiled binaries be PIE.
+- ghc-pie.patch: enable default -fPIC on Linux/x86_64
+
+-------------------------------------------------------------------
+Sun Jan 22 11:31:49 UTC 2017 - peter.trommler@ohm-hochschule.de
+
+- comment for patch 100
+- refresh ghc-no-madv-free.patch with upstream patch
+* upstream fix for Haskell Trac #12865
+* Haskell Trac #12495 is a duplicate
+
+-------------------------------------------------------------------
+Sat Jan 21 21:50:56 UTC 2017 - mimi.vx@gmail.com
+
+- update to 8.0.2
+- drop patches merged by upstream:
+* D2495.patch
+- refreshed patches:
+* 0001-PPC-CodeGen-fix-lwa-instruction-generation.patch
+* 0001-StgCmmPrim-Add-missing-write-barrier.patch
+* ghc-no-madv-free.patch
+- added ghc-8.0.2-Cabal-dynlibdir.patch by Jens Petersen simplifing
+    haskell packaging
++ Interface files produced by GHC should now be deterministic ( boo#998972 )
++ A bug has been fixed that caused standalone derived Ix instances
+    to fail for GADTs with exactly one constructor
++ Compatibility fixes recent Linux distributions.
+
+-------------------------------------------------------------------
+Fri Jan 20 08:39:45 UTC 2017 - peter.trommler@ohm-hochschule.de
+
+- drop D2844.patch
+  * the patch causes more issues with parallel builds
+- fixes boo#1020909
+
+-------------------------------------------------------------------
+Fri Dec 16 08:45:26 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- add D2844.patch
+  * fix issues with parallel builds
+
+-------------------------------------------------------------------
+Fri Oct 14 20:34:46 UTC 2016 - mimi.vx@gmail.com
+
+- make compatible with new ghc-rpm-macros
+
+-------------------------------------------------------------------
+Wed Sep 28 14:16:09 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- update to 8.0.1
+- drop patches fixed upstream:
+* drop atomic-cast.patch
+* drop cabal-show-detail-direct.patch
+* drop 0001-link-command-line-libs-to-temp-so.patch
+* drop 0001-implement-native-code-generator-for-ppc64.patch
+* drop ghc.git-b29f20.patch
+* drop u_terminfo_0402.patch
+* drop u_Cabal_update.patch
+* drop u_haskeline_update.patch
+* drop 0001-Fix-misspelled-WORDS_BIGENDIAN-macro.patch
+* drop D2214.patch
+* drop D2225.patch
+- refresh 0001-StgCmmPrim-Add-missing-write-barrier.patch
+- refresh 0001-PPC-CodeGen-fix-lwa-instruction-generation.patch
+- add ghc-no-madv-free.patch to fix "unable to decommit memory:
+  Invalid argument" errors GHC reports due to a misdetected
+  MADV_FREE capability. The configure script sees the symbol define
+  by glibc, but unfortunately this doesn't mean that the running
+  kernel actually supports the feature, too. The upstream ticket
+  https://ghc.haskell.org/trac/ghc/ticket/12495 has more details.
+  Thanks to @psimons
+- GHC produces debug information on x86 and x86_64
+- aarch64 has LLVM backend (requires llvm-3.7)
+- native code generator for powerpc64[le] (openSUSE contribution!)
+- disable html doc on SLE, we don't have python-sphinx
+* Thanks @mimi_vx
+
+-------------------------------------------------------------------
+Tue Sep 27 11:53:54 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- add D2495.patch
+* missing memory barrier on PowerPC, ARM
+- add 0001-StgCmmPrim-Add-missing-write-barrier.patch
+* another issing memory barrier on PowerPC, ARM
+- add 0001-PPC-CodeGen-fix-lwa-instruction-generation.patch
+* fix bug in code generator
+* fixes build of ghc-zeromq4-haskell on powerpc64[le]
+
+-------------------------------------------------------------------
+Thu Aug 18 17:39:47 UTC 2016 - mimi.vx@gmail.com
+
+- fix boo#994268
+
+-------------------------------------------------------------------
+Tue May 17 19:01:13 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- add D2225.patch
+* backport of upstream patch accepted for ghc 8.0.1
+* fix SMP primitives on all powerpc archs
+
+-------------------------------------------------------------------
+Sat May 14 09:13:07 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- add D2214.patch
+* backport of upstream patch slated for ghc 8.0.2
+* fix issue in code PowerPC code generator (32 bit and 64 bit)
+- add 0001-Fix-misspelled-WORDS_BIGENDIAN-macro.patch
+* backport of upstream fix slated for ghc 8.0.2
+* fix bytestring library on big-endian archs
+* fix wrong results in ghc-pureMD5 and others on big-endian
+
+-------------------------------------------------------------------
+Tue Apr 19 12:50:38 UTC 2016 - mimi.vx@gmail.com
+
+- update haskeline to 0.7.2.3
+- refresh u_haskeline_update.patch
+* Fix hsc2hs-related warning on ghc-8
+* Fix the behavior of ctrl-W in the emacs bindings
+* Point to github instead of trac
+
+-------------------------------------------------------------------
+Tue Mar  8 08:56:42 UTC 2016 - mimi.vx@gmail.com
+
+- update Cabal to 1.22.8.0
+- refresh u_Cabal_update.patch
+* Distribution.Simple.Setup: remove job cap
+* Check all object file suffixes for recompilation
+* Move source files under 'src/'.
+
+-------------------------------------------------------------------
+Wed Feb 17 09:09:17 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- limit parallel jobs to two on aarch64
+* aarch64 runs out of memory with too many parallel compiles
+
+-------------------------------------------------------------------
+Sun Feb 14 13:55:46 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- add missing C library dependency to terminfo devel package
+
+-------------------------------------------------------------------
+Sun Feb  7 00:33:26 UTC 2016 - mimi.vx@gmail.com
+
+- update haskeline to 0.7.2.2
+- add u_haskeline_update.patch
+* canonicalize AMP instances to make the code more future proof
+* Generalize constraints for InputT instances
+* Bump upper bounds on base and transformers
+* Make Haskeline `-Wtabs` clean
+
+-------------------------------------------------------------------
+Tue Jan 26 08:22:59 UTC 2016 - mimi.vx@gmail.com
+
+- update Cabal to 1.22.7.0
+- refresh u_Cabal_update.patch
+* Backport #3012 to the 1.22 branch
+* Add foldl' import
+* The Cabal part for fully gcc-like response files
+
+-------------------------------------------------------------------
+Tue Jan  5 18:54:25 UTC 2016 - peter.trommler@ohm-hochschule.de
+
+- update tarball to 7.10.3b
+* some documentation files were missing in the original
+  7.10.3 tarball
+- add 0001-link-command-line-libs-to-temp-so.patch
+* fix panic in GHCi when linking against C library specified
+  as command line argument (-l<lib>)
+* currently under upstream review
+* fix Haskell trac #10458
+
+-------------------------------------------------------------------
+Mon Dec 28 08:52:20 UTC 2015 - mimi.vx@gmail.com
+
+- update Cabal to 1.22.6.0
+- add u_Cabal_update.patch --  update of Cabal
+* Relax upper bound to allow upcoming binary-0.8
+
+-------------------------------------------------------------------
+Mon Dec 21 08:45:50 UTC 2015 - mimi.vx@gmail.com
+
+- update terminfo to 0.4.0.2
+- drop remove-cur_term-usage.patch - merged by upstream
+- add u_terminfo_0402.patch -- update of terminfo
+
+-------------------------------------------------------------------
+Mon Dec  7 14:18:50 UTC 2015 - mimi.vx@gmail.com
+
+- update Cabal to 1.22.5.0
+* Don't recompile C sources unless needed
+* Support Haddock response files.
+* Add frameworks when linking a dynamic library.
+
+-------------------------------------------------------------------
+Tue Dec  1 08:26:43 UTC 2015 - mimi.vx@gmail.com
+
+- use upstream variant of remove-cur_term-usage.patch
+
+-------------------------------------------------------------------
+Tue Oct  6 19:18:08 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- update to 7.10.3
+- add cabal-show-detail-direct.patch -- Fix testsuites with large output.
+    Debian patch. Thanks Joachim for suggesting it in Haskell #10870!
+- add ghc.git-b29f20.patch
+* fixes upstream #7830
+* fix ghc 7.10.2 failing to bootstrap ghc head on ppc
+and perhaps ppc64 with some optimizations enabled
+* backport of my patch for upcoming ghc 8.0.1
+
+-------------------------------------------------------------------
+Mon Oct  5 07:47:58 UTC 2015 - schwab@suse.de
+
+- atomic-cast.patch: fix signature of atomic bultins
+- ghc-7.8-arm-use-ld-gold.patch: remove obsolete patch
+
+-------------------------------------------------------------------
+Sat Oct  3 18:50:28 UTC 2015 - sbahling@suse.com
+
+- Remove ncurses6.patch - it's not so easy ;)
+- Add remove-cur_term-usage.patch to remove the need to access the
+  cur_term global which isn't available in the openSUSE ncurses6
+  build.
+
+-------------------------------------------------------------------
+Sat Oct  3 15:59:19 UTC 2015 - mimi.vx@gmail.com
+
+- Add choice for libffi in openSUSE:Leap:42.1
+
+-------------------------------------------------------------------
+Sun Sep 20 16:30:09 UTC 2015 - mimi.vx@gmail.com
+
+- remove llvm from requires
+- add ncurses6.patch to fix build with ncurses6, all thanks goes to
+  Tomas Cech sleep_walker@opensuse.org
+
+-------------------------------------------------------------------
+Mon Aug 10 17:38:34 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- update to 7.10.2
+* type checker fixes
+* fixes for Aarch64 support
+* fix deadlock in runtime system when scheduling garbage collection
+- 7.10.1 highlights
+* implement Applicative Monad Proposal
+* implement Burning Bridges Proposal
+* support for partial type signatures
+* reimplement integer-gmp
+* support plugins in type checker (experimental!)
+- drop llvm-powerpc64-datalayout.patch
+* this patch was incomplete all along and now we have our native
+  code generator
+- drop ghc-cabal-unversion-docdir.patch
+* ghc-rpm-macros is following ghc's doc layout so no need to patch
+- drop D349.patch
+* fixed upstream
+- drop integer-gmp.patch
+* we do not support SLE11 anymore
+- drop ghc-7.8.2-cgen-constify.patch
+* fixed upstream
+- drop D560.patch
+* fixed upstream
+- drop ghc-glibc-2.20_BSD_SOURCE.patch
+* fixed upstream
+- drop ghc-arm64.patch
+* fixed upstream
+- drop ghc-config.mk.in-Enable-SMP-and-GHCi-support-for-Aarch64.patch
+* fixed upstream
+- refresh 0001-implement-native-code-generator-for-ppc64.patch
+- disable ghc-7.8-arm-use-ld-gold.patch
+* not sure we need this, must be rebased if we do
+
+-------------------------------------------------------------------
+Fri Jul 17 14:58:44 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- add ghc-config.mk.in-Enable-SMP-and-GHCi-support-for-Aarch64.patch
+* enable SMP and GHCi on Aarch64
+- add ghc-7.8-arm-use-ld-gold.patch
+* Aarch64 needs gold linker
+
+-------------------------------------------------------------------
+Fri May 29 05:47:07 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- refresh ghc-arm64.patch
+- unconditionally apply ghc-arm64.patch
+
+-------------------------------------------------------------------
+Thu May 28 15:14:31 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- add backport of powerpc64le native code generator to
+  0001-implement-native-code-generator-for-ppc64.patch
+- refresh D349.patch
+
+-------------------------------------------------------------------
+Thu May 28 13:15:52 CEST 2015 - ro@suse.de
+
+- on s390/s390x use "make -j2" to stabilize abi hashes
+  (see also redhat bug 1212374)
+
+-------------------------------------------------------------------
+Tue May 26 09:19:09 UTC 2015 - mimi.vx@gmail.com
+
+- disable llvm on arm64
+
+-------------------------------------------------------------------
+Thu May 21 23:32:56 CEST 2015 - ro@suse.de
+
+- re-diffed ghc-arm64.patch
+
+-------------------------------------------------------------------
+Thu May 21 18:56:26 CEST 2015 - ro@suse.de
+
+- add ghc-arm64.patch for aarch64
+- add aarch64, s390, s390x to ExclusiveArch
+
+-------------------------------------------------------------------
+Tue Apr 14 11:26:18 UTC 2015 - mimi.vx@gmail.com
+
+- remove unneeded conditions
+
+-------------------------------------------------------------------
+Mon Apr 13 14:57:55 UTC 2015 - mimi.vx@gmail.com
+
+- chnage constraints to 12G for disk and 4G for ram
+
+-------------------------------------------------------------------
+Sun Mar 15 13:25:32 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- add ghc-glibc-2.20_BSD_SOURCE.patch
+* fixes build on unregisterised architectures (openSUSE: ppc64le)
+
+-------------------------------------------------------------------
+Mon Feb 23 16:48:10 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- drop ghc-cabal-unversion-docdir.patch
+  * ghc-rpm-macros follows upstream ghc again
+
+-------------------------------------------------------------------
+Wed Feb  4 11:57:35 UTC 2015 - mimi.vx@gmail.com
+
++ add ghc-glibc-2.20_BSD_SOURCE.patch from fedora
+- updated to 7.8.4
++ removed D177.patch (in upstream)
++ removed D173.patch (in upstream)
++ removed ghc.git-e18525f.patch (in upstream)
++ refresh 0001-implement-native-code-generator-for-ppc64.patch
+* A critical bug in the LLVM backend which would cause the compiler to generate incorrect code has been fixed (issue #9439).
+* Several bugs in the code generator have been fixed for unregisterised platforms, such as 64bit PowerPC (issue #8819 and #8849).
+* A bug that could cause GHC's constructor specialization pass (enabled by default at -O2, or via -fspec-constr) to loop forever and consume large amounts of memory has been fixed (issue #8960).
+* A bug that would cause GHC to fail when attempting to determine GCC's version information in non-english locales has been fixed (issue #8825).
+* A minor bug that allowed GHC to seemingly import (but not use) private data constructors has been fixed (issue #9006).
+* A bug in the register allocator which would cause GHC to crash during compilation has been fixed (issue #9303).
+* A bug that caused the compiler to panic on some input C-- code has been fixed (issue #9329).
+* A few various minor deadlocks in the runtime system when using forkProcess have been fixed.
+* A bug which made blocked STM transactions non-interruptible has been fixed (issue #9379).
+* A bug in the compiler which broke pattern synonym imports across modules in Haddock has been fixed (issue #9417).
+* A minor bug in the code generator in which the popCnt16# did not zero-extend its result has been fixed (issue #9435).
+* A bug which caused the compiler to panic on pattern synonyms inside a class declaration has been fixed (issue #9705).
+* A bug in the typechecker revolving around un-saturated type family applications has been fixed (issue #9433).
+* Several bugs have been fixed causing problems with building GHC on ARM (issues #8951, #9620, #9336, and #9552).
+* A bug in the typechecker that could cause an infinite loop when using superclasses in a cycle has been fixed (issue #9415).
+* A bug causing corruption in signal handling with the single-threaded runtime system has been fixed (issue #9817).
+* A bug that could cause compiled programs to crash due to use of overlapping type families has been fixed (issue #9371).
+* A bug in the inliner that caused certain expressions within unboxed tuples to not be properly evaluated has been fixed (issue #9390).
+* A bug that caused the compiler to not always properly detect LLVM tools (particularly on Windows) has been fixed (issue #7143).
+* A bug that prevented GHC from deriving Generic1 instances for data families has been fixed (#9563).
+* A bug that caused type inference to infer the incorrect type in the presence of certain type families and constraints has been fixed (issue #9316).
+
+-------------------------------------------------------------------
+Tue Feb  3 13:35:25 UTC 2015 - mimi.vx@gmail.com
+
+- add constraints file
+
+-------------------------------------------------------------------
+Tue Feb  3 12:05:21 UTC 2015 - mimi.vx@gmail.com
+
+- remove dblatex dependency
+
+-------------------------------------------------------------------
+Mon Jan 12 14:20:32 UTC 2015 - peter.trommler@ohm-hochschule.de
+
+- add patch 0001-implement-native-code-generator-for-ppc64.patch
+* native code generation improved compilation speed
+* fewer errors in testsuite than with C back end
+
+-------------------------------------------------------------------
+Sat Dec 13 09:36:11 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- add patch D560.patch
+* fixes dynamic linking on ppc
+* see https://phabricator.haskell.org/D560
+* this is a back port of the upstream patch
+
+-------------------------------------------------------------------
+Wed Nov  5 17:10:14 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- add patch D349.patch
+* fix a crash with dynamic linking in GHCi when accessing the
+  process environment
+* our patch has been submitted upstream
+* see https://phabricator.haskell.org/D349
+
+-------------------------------------------------------------------
+Sun Sep 28 07:56:51 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- ghc-rpm-macros use internal dependency generator now
+* simplifies spec file
+
+-------------------------------------------------------------------
+Sat Sep 20 13:09:30 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- fix alternatives handling
+
+-------------------------------------------------------------------
+Fri Sep 19 09:17:53 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 7.8.3
+* needed for Haskell Platfoerm 2014.2.0.0
+* fixes bnc #726744
+* way smaller source tarball (windows binaries removed)
+* dynamic libraries, GHCi, and Template Haskell for ppc64 and ppc64le
+- drop ghc-ppc64le.patch (fixed upstream)
+- add integer-gmp.patch
+* build bundled libgmp on SLE 11 (system version is too old)
+* fixes build on x86_64
+* see upstream trac #8156
+- add ghc-7.8.2-cgen-constify.patch
+* C backend (ppc64, ppc64le): generate 'const' strings
+* reduce size of table of contents (TOC)
+- add D173.patch
+* fix C backend: generate literals of correct size
+* fixes lots of arithmetic failures and trac #8849
+* asked upstream to merge fix into 7.8.4
+- add D177.patch
+* pass PIC flags to assembler
+* shared libraries on ppc still broken (trac #8024)
+- add ghc.git-e18525f.patch
+* fix C backend: generate functions for cmm primitives
+- drop ghc-use-system-libffi.patch (included upstream)
+- drop ghc-suse-as-needed.patch (fixed upstream)
+- drop Cabal-fix-dynamic-exec-for-TH.patch (fixed upstream)
+- drop ghc-7.6.3-LlvmCodeGen-no-3.3-warning.patch (fixed upstream)
+- drop ghc-avoid-empty-llvm-used-definitions.patch (fixed upstream)
+- drop 0001-Fix-detection-of-library-for-shm-on-openSUSE.patch
+* our patch was included upstream
+- drop 0001-Delete-spurious-comma-in-configure.ac.patch
+* our patch was included upstream
+-drop ghc-fix-infinite-loop-big-endian.patch (fixed upstream
+- refresh llvm-powerpc64-datalayout.patch
+* port to new LLVM backend
+- refresh ghc-cabal-unversion-docdir.patch
+* include original Fedora patch for 7.8.2
+
+-------------------------------------------------------------------
+Tue Sep 16 19:17:05 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- bootstrap from ghc-bootstrap not ghc
+* remove BR loop ghc->ghc
+
+-------------------------------------------------------------------
+Thu Jul 31 14:09:44 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Sat May 10 19:30:44 UTC 2014 - dvaleev@suse.com
+
+- Enable ppc64le (ghc-ppc64le.patch)
+
+-------------------------------------------------------------------
+Mon Dec 16 15:03:42 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- use correct setting for unregisterised builds (ppc64)
+- simplify build setup (generation of mk/build.mk)
+
+-------------------------------------------------------------------
+Mon Dec 16 10:56:21 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- don't BR llvm for now
+- dblatex broken on older openSUSE
+
+-------------------------------------------------------------------
+Sun Dec 15 10:55:50 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- revert LLVM for ppc64 (segfaults during package install)
+- fix setting up build.mk
+- build perf for all archs
+
+-------------------------------------------------------------------
+Sat Dec 14 08:38:43 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- Add llvm-powerpc64-datalayout.patch
+* fix LLVM backend for powerpc64
+- build and test LLVM backend on powerpc64
+
+-------------------------------------------------------------------
+Fri Dec 13 21:59:10 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- Add cabal-unversion-docdir.patch
+* ghc-rpm-macros don't include versions in package docdirs
+  starting with version 1.0
+- use standard docdir for ghc
+- package pdf and ps manuals
+
+-------------------------------------------------------------------
+Mon Oct 28 18:24:46 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- Add ghc-fix-infinite-loop-big-endian.patch: Fix Haskell trac
+  #8134 on ppc64.
+- Enable threaded runtime on ppc64
+
+-------------------------------------------------------------------
+Tue Sep 24 20:56:45 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- Add 0001-Fix-detection-of-library-for-shm-on-openSUSE.patch:
+  Fix broken autoconf test for shm_* and librt. Haskell trac #8350
+- Add 0001-Delete-spurious-comma-in-configure.ac.patch:
+  Fix test for setitimer. Haskell trac #8352
+
+-------------------------------------------------------------------
+Tue Sep 24 07:02:11 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- set up build.mk with configuration for ppc64
+* explicitly disable features that are not supported on ppc64
+
+-------------------------------------------------------------------
+Mon Sep 23 17:32:52 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- add BR binutils-devel for bfd.h and libiberty
+
+-------------------------------------------------------------------
+Mon Sep 23 14:27:19 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- add BR libelf-devel for nlist.h
+
+-------------------------------------------------------------------
+Tue Sep 10 16:21:19 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- Patches for llvm 3.3.
+* Add ghc-7.6.3-LlvmCodeGen-no-3.3-warning.patch: Silence warning
+  about llvm too new
+* Add ghc-avoid-empty-llvm-used-definitions.patch: Fix llvm code
+  generator. Backported patch for ghc 7.7 (cf Haskell trac #7996)
+- explicitly configure gcc location in bootstrap builds too
+- allow ppc builds (ppc64 build gets stuck)
+
+-------------------------------------------------------------------
+Fri Sep  6 17:19:26 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- include BuildFlavour definitions in build.mk
+
+-------------------------------------------------------------------
+Tue Sep  3 20:46:48 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- build optimized compiler (BuildFlavour = perf)
+- bring back Fedora's Template Haskell patch
+- add Haskell trac ticket number to glibc-locale comment
+
+-------------------------------------------------------------------
+Tue Jul 16 15:01:54 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- add comment to explain why glibc-locale is required by
+  ghc-compiler
+
+-------------------------------------------------------------------
+Fri May 17 15:53:07 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- glibc-locale required by ghc-pkg
+
+-------------------------------------------------------------------
+Fri May  3 07:38:55 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 7.6.3 from upstream
+- part of Haskell Platform 2013.2
+- new languages features (polymorphic kinds, ...)
+- do compiler upgrade in one submit request by bootstrapping
+  ghc if necessary and use that ghc to selfbootstrap new
+  ghc
+- replaced ghc-use-system-libffi.patch with new patch for
+  Haskell trac #5743 (add configure option to use system libffi)
+- drop Cabal-fix-dynamic-exec-for-TH.patch: Fixed upstream
+- drop ghc-6.12.1-gen_contents_index-haddock-path.patch which used
+  system provided haddock and that causes trouble when bootstrapping
+- drop ghc-gen_contents_index-type-level.patch: fixed upstream
+- drop patch ghc-fix-undefined-openpty.patch: Fixed upstream
+- drop patch 0001-Add-missing-flag-for-respecting-EXTRA_LIBDIR.patch:
+  Fixed upstream
+- port to new ghc-rpm-macros
+
+-------------------------------------------------------------------
+Fri Jan 11 16:52:35 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- enable color and links in documentation
+
+-------------------------------------------------------------------
+Mon Dec  3 09:33:59 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- try to work around factory-auto still thinking we need
+  to wait for BRs even when those are in a comment
+
+-------------------------------------------------------------------
+Wed Nov 28 08:30:30 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- help factory-auto by commenting out currently unneeded BRs
+
+-------------------------------------------------------------------
+Tue Nov 13 10:20:38 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- selfbootstrap ghc 7.4.2
+
+-------------------------------------------------------------------
+Mon Nov 12 12:53:10 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- remove binary distributions after bootstrap in Factory
+
+-------------------------------------------------------------------
+Thu Nov  8 22:24:25 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Update to version 7.4.2 from upstream
+* Required by Haskell Platform 2012.4.0.0
+* Fixes for ghc and ghci
+
+-------------------------------------------------------------------
+Thu Nov  8 19:58:08 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add ExclusiveArch tag
+
+-------------------------------------------------------------------
+Tue Nov  6 14:41:06 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- generate debug packages for Factory
+
+-------------------------------------------------------------------
+Sun Oct 14 07:41:59 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- do not warn about metapackage ghc containing no binary
+
+-------------------------------------------------------------------
+Sat Oct 13 12:14:42 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- fix cyclic dependency to ghc (libraries reqire ghc-compiler)
+
+-------------------------------------------------------------------
+Fri Oct 12 18:33:57 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- do not override automatic dependency generation
+* needs ghc-pkg which we won't have in Factory yet
+
+-------------------------------------------------------------------
+Fri Oct 12 11:16:56 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- prepare for bootstrap in Factory
+* add binary distribution to spec file
+* change build to use ghc provided by binary distribution
+
+-------------------------------------------------------------------
+Tue Jul 31 20:02:45 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- back ported two patches for Haskell trac #7062
+* fix openpty undefined symbol
+* fix extra libraries not on linker path
+
+-------------------------------------------------------------------
+Sat Jul 28 07:15:30 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- fix ghc-suse-as-needed.patch
+* add --disable-new-dtags to linker flags. Adding RUNPATH to shared
+  libraries breaks linking. To fix that ghc's libraries need to set
+  their own RUNPATHs which they currently don't.
+* fixes Haskell #7062
+
+-------------------------------------------------------------------
+Mon Jun 25 10:11:48 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- use ghc_lib_subpackage instead of ghc_binlib_package (ghc-rpm-macros 0.95.5.1)
+- add simple checks to %check section
+- sort BuildRequires somewhat
+
+-------------------------------------------------------------------
+Sun Jun 24 08:19:33 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- remove perl boot comment
+- rebuild after project conf fix for hscolour (keep deepseq)
+
+-------------------------------------------------------------------
+Wed Jun 20 16:47:16 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- enable hscolour after bootstrap
+
+-------------------------------------------------------------------
+Wed Jun  6 14:51:43 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- disable bootstrapping for devel:languagaes:haskell
+
+-------------------------------------------------------------------
+Wed Jun  6 08:30:33 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- set bootstrapping for bootstrap in devel:languages:haskell
+
+-------------------------------------------------------------------
+Mon Jun  4 17:49:19 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add autoreconf required by suse as-needed patch
+
+-------------------------------------------------------------------
+Mon Jun  4 15:23:52 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- selfbootstraping
+- disable perl boot, might undo libffi patch
+
+-------------------------------------------------------------------
+Mon Jun  4 11:23:19 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- upgrade to 7.4.1 from upstream for Haskell Platform 2012.2.0.0
+- drop Cabal-option-executable-dynamic.patch (fixed in upstream)
+- add ghc-suse-as-needed.patch
+- add Cabal-fix-dynamic-exec-for-TH.patch
+- add ghc-gen_contents_index-type-level.patch
+- bootstrapping
+
+-------------------------------------------------------------------
+Sun Jun  3 11:44:09 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- apply patch 2
+- use perl boot to autoreconf all subdirectories
+
+-------------------------------------------------------------------
+Mon May 28 11:11:43 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- added LICENSE to library and base package
+- should probably be ignored in rpmlintrc
+
+-------------------------------------------------------------------
+Mon May 28 07:25:35 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- follow Fedora packaging:
+- package compiler in ghc-compiler
+- meta package for all libraries
+- ghc became meta package for everything
+
+-------------------------------------------------------------------
+Sat May 26 06:56:22 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- deleted extra BR after project configuration fix
+
+-------------------------------------------------------------------
+Fri May 25 12:56:11 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- remove minimum version requirement for gmp-devel
+
+-------------------------------------------------------------------
+Sat May 19 16:00:19 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- don't pack manual page when without_manual is set
+
+-------------------------------------------------------------------
+Sat May 19 11:29:31 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- temporarily disable manual to work around broken texlive
+
+-------------------------------------------------------------------
+Thu May 17 07:27:48 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- clean up BuildRequires (one per line)
+- force gmp-devel >= 5 to get rid of libgmp.so.3 in Factory
+
+-------------------------------------------------------------------
+Mon Mar 12 13:34:35 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- enabled hscolour
+
+-------------------------------------------------------------------
+Fri Feb  3 18:03:31 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- selfbootstrapping
+
+-------------------------------------------------------------------
+Fri Feb  3 07:39:58 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- disable dependecy generator during bootstrap
+
+-------------------------------------------------------------------
+Thu Feb  2 15:46:24 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- bootstrap SLE11-SP1
+
+-------------------------------------------------------------------
+Mon Jan 23 15:28:47 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- provide ghc-compiler = %{version}
+
+-------------------------------------------------------------------
+Mon Jan 23 14:36:52 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- package HSffi.o on 11.3
+
+-------------------------------------------------------------------
+Sun Jan 22 19:01:17 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- done bootstrapping
+
+-------------------------------------------------------------------
+Sun Jan 22 17:31:48 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Move documentation to new place
+- Fix douple packaging
+
+-------------------------------------------------------------------
+Mon Jan 16 18:05:58 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Added haddock patch
+- Fixed many file packaged twice issues
+
+-------------------------------------------------------------------
+Wed Jan  4 17:31:04 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Enabled hscolour
+- Prepared for libffi patch (needs fix fo bnc#711489)
+
+-------------------------------------------------------------------
+Thu Dec 29 13:35:07 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Lowered ghc BR to 6.10
+
+-------------------------------------------------------------------
+Wed Dec 28 21:09:31 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Added Cabal patch (required for ghc-rpm-macros)
+
+-------------------------------------------------------------------
+Wed Dec 28 19:00:09 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- unset bootstrapping
+- additional BR that should not be required
+
+-------------------------------------------------------------------
+Tue Dec 27 15:05:20 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fixed versions and names in libraries
+- Fixed files section
+
+-------------------------------------------------------------------
+Thu Dec 22 18:22:32 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Start version 7.0.4

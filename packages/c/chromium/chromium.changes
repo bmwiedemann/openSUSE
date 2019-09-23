@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 12:55:15 UTC 2019 - Jan Ritzerfeld <suse@bugs.jan.ritzerfeld.org>
+
+- Added patch chromium-vaapi-fix.patch again to fix boo#1146219
+
+-------------------------------------------------------------------
 Wed Sep 18 19:45:29 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to chromium 77.0.3865.90 boo#1151229:

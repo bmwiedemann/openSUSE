@@ -1,0 +1,1201 @@
+-------------------------------------------------------------------
+Tue Sep 10 16:06:41 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- Add ComputerScience, sort Science and Education alphabetically
+  (boo#1074711)
+
+-------------------------------------------------------------------
+Thu Jun  6 17:53:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move rpm macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Wed Jun 20 12:21:36 UTC 2018 - fvogt@suse.com
+
+- Update map-desktop-category.sh to include updated Education, Science
+  and Graphics categories (boo#1074711)
+
+-------------------------------------------------------------------
+Thu Mar 15 10:53:08 UTC 2018 - lnussel@suse.de
+
+- create separate subpackage that extracts translations from desktop
+  files but does not actually strip them. Needed for SLE.
+
+-------------------------------------------------------------------
+Fri Jul 14 13:15:57 UTC 2017 - fvogt@suse.com
+
+- Remove translations for Name,GenericName and Comment only in the
+  [Desktop Entry] section to avoid breaking desktop action translations
+
+-------------------------------------------------------------------
+Tue Mar 14 16:13:15 UTC 2017 - fvogt@suse.com
+
+- Replace brp-trim-desktopfiles with brp-trim-translations:
+  * Supports various kinds of source files, not only desktop files
+  * Generates various tar archives instead of monolithic .desktopfiles file
+- Currently trims desktop file translations only, as polkit/mime/appstream
+    do not support gettext translations yet
+
+-------------------------------------------------------------------
+Sat Oct 24 05:03:02 UTC 2015 - coolo@suse.com
+
+- go back to a specific directory list instead of all in /usr/share
+  (boo#904524)
+
+-------------------------------------------------------------------
+Sat Nov 22 16:46:15 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- Fix bad variable access for --genericname
+- replace ^M pattern with \r in sed pattern
+
+-------------------------------------------------------------------
+Sat Nov 15 21:09:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix shebang in suse_update_desktop_file.sh and
+  map-desktop-category.sh scripts that contains bash-specific
+  constructions
+
+-------------------------------------------------------------------
+Tue Sep 23 08:29:33 UTC 2014 - coolo@suse.com
+
+- fix find call, type expects one char
+
+-------------------------------------------------------------------
+Thu Jul 24 11:59:42 UTC 2014 - gber@opensuse.org
+
+- handle symlinks, fix quoting problems and unnecessary use of grep
+
+-------------------------------------------------------------------
+Tue Jul  1 09:49:21 UTC 2014 - coolo@suse.com
+
+- just take all *.desktop files in /usr/share (trying to fix autoyast
+  translations)
+
+-------------------------------------------------------------------
+Mon Jun  2 10:17:18 UTC 2014 - coolo@suse.com
+
+- also allow X-SuSE-YaST-High_Availability
+
+-------------------------------------------------------------------
+Fri Sep 27 09:57:45 UTC 2013 - coolo@suse.com
+
+- make sure the files can be split correctly (bnc#841090)
+
+-------------------------------------------------------------------
+Tue Jun 18 20:04:08 CEST 2013 - sbrabec@suse.cz
+
+- Add Categories introduced in the new Desktop Menu Specification
+  (map-desktop-category.sh, bnc#443364), map removed PuzzleGame.
+
+-------------------------------------------------------------------
+Fri Apr 13 13:24:04 UTC 2012 - gber@opensuse.org
+
+- accept new XFCE category
+
+-------------------------------------------------------------------
+Fri Dec 16 10:20:44 UTC 2011 - coolo@suse.com
+
+- give warning for old options instead of error
+
+-------------------------------------------------------------------
+Fri Dec 16 09:49:24 UTC 2011 - coolo@suse.com
+
+- use sed with inline option to avoid leaving temporary files behind
+
+-------------------------------------------------------------------
+Thu Dec 15 12:44:49 UTC 2011 - coolo@suse.com
+
+- desktop.attr should be reenabled in rpm again
+
+-------------------------------------------------------------------
+Fri Dec  9 14:26:41 UTC 2011 - coolo@suse.com
+
+- split brp-trim-desktopfiles that installs a brp script to trim all 
+  .desktop files without need of an extra macro
+
+-------------------------------------------------------------------
+Thu Sep 29 14:58:16 UTC 2011 - vuntz@opensuse.org
+
+- Update suse_update_desktop_file.sh: when -u is used, do not add
+  the non-standard X-SuSE-Unimportant=true anymore, but
+  NoDisplay=true.
+
+-------------------------------------------------------------------
+Mon Jun  6 14:13:56 UTC 2011 - coolo@novell.com
+
+- ship desktop.attr together with the .prov script for rpm
+  automatic mimehandler provides
+
+-------------------------------------------------------------------
+Wed Jan 26 00:18:33 UTC 2011 - gber@opensuse.org
+
+- also accept X-XFCE* spelling as used by xfce4-settings
+
+-------------------------------------------------------------------
+Thu Dec 23 20:21:47 UTC 2010 - gber@opensuse.org
+
+- do not strip X-Xfce* categories, xfce4-panel and xfce4-settings
+  rely on them
+
+-------------------------------------------------------------------
+Fri Oct  8 18:33:29 CEST 2010 - vuntz@opensuse.org
+
+- Add a desktop-file-utils Requires: this will make it easy for
+  everyone to use the RPM macros defined there, that are useful
+  when there is a .desktop file. After some thoughts, it is more
+  logical to add the macros in desktop-file-utils and to have a
+  Requires here (since all packages with .desktop files already
+  have a update-desktop-files BuildRequires), in my opinion.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:02:36 CEST 2010 - vuntz@opensuse.org
+
+- Re-introduce the X-GNOME-* categories change, post-11.3.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:00:45 CEST 2010 - vuntz@opensuse.org
+
+- Revert my June 7th change about X-GNOME-* categories: it actually
+  harms more than we'd like right now, since some items appear
+  twice with it. Since we have no time to fix it for 11.3, it's
+  simpler to revert.
+
+-------------------------------------------------------------------
+Tue Jun  8 11:42:58 CEST 2010 - dmueller@suse.de
+
+- bump version to 11.3
+
+-------------------------------------------------------------------
+Mon Jun  7 13:45:23 CEST 2010 - vuntz@opensuse.org
+
+- Accept X-GNOME-* categories in map-desktop-category.sh, so we
+  don't filter out those categories when updating a .desktop file.
+
+-------------------------------------------------------------------
+Thu Apr  8 15:21:18 CEST 2010 - mls@suse.de
+
+- mimetypes.prov: filter bad desktop files, use mimehandler instead
+  of mimetype
+
+-------------------------------------------------------------------
+Tue Nov  3 12:19:58 UTC 2009 - coolo@novell.com
+
+- map X-SuSE-YaST-Support too (bnc#545323)
+
+-------------------------------------------------------------------
+Thu Jul 16 12:44:55 CEST 2009 - beineri@opensuse.org
+
+- add 'Geography' as accepted category
+
+-------------------------------------------------------------------
+Mon Jun  8 16:35:32 CEST 2009 - lrupp@suse.de
+
+- added first usage()
+- fix email
+- print errors to stderr
+
+-------------------------------------------------------------------
+Wed May 20 19:55:00 CEST 2009 - cmorve69o@yahoo.es
+                                                  
+- fix error message when an unknown category is found
+
+-------------------------------------------------------------------
+Sun Nov  2 17:43:33 CET 2008 - coolo@suse.de
+
+- mark files as translated even if not trimmed
+
+-------------------------------------------------------------------
+Fri Oct 24 14:04:22 CEST 2008 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Fri Oct 24 09:41:58 CEST 2008 - coolo@suse.de
+
+- make trim more complex and leave out the old way
+
+-------------------------------------------------------------------
+Sun Oct 12 12:05:49 CEST 2008 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Thu Oct  2 18:16:16 CEST 2008 - vuntz@suse.de
+
+- Add a -t/--trim option to suse_update_desktop_file.sh in order
+  to trim all translations from a desktop file. The goal is to
+  have the desktops use gettext to translate data from those files
+  and to make it easy to update translations by just shipping an
+  updated mo file. This is for fate#301344.
+- This change requires a change in /usr/lib/rpm/suse_macros (rpm
+  package).
+
+-------------------------------------------------------------------
+Thu Oct  2 17:02:32 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Tue Sep 30 10:02:59 CEST 2008 - dmueller@suse.de
+
+- fix mimetype.prov to not break for most KDE packages
+
+-------------------------------------------------------------------
+Thu Sep 25 16:56:23 CEST 2008 - sreeves@suse.de
+
+- add mimetype.prov to generate mime type rpm provides at build time
+
+-------------------------------------------------------------------
+Fri Sep 19 16:40:27 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Mon Sep  1 11:36:24 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Mon Aug 25 12:56:58 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 16:32:56 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Fri Jul 18 16:32:46 CEST 2008 - ke@suse.de
+
+- update translations. 
+
+-------------------------------------------------------------------
+Fri Jun  6 18:00:57 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Tue May 27 09:13:59 CEST 2008 - ke@suse.de
+
+- Remove test directory.
+- update translations.
+
+-------------------------------------------------------------------
+Mon May 26 23:16:09 CEST 2008 - ro@suse.de
+
+- added directories to filelist to fix build 
+
+-------------------------------------------------------------------
+Mon May 26 16:25:50 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Thu May 22 08:37:03 CEST 2008 - coolo@suse.de
+
+- reupdate to fix build
+
+-------------------------------------------------------------------
+Mon May 19 18:46:58 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Fri May 16 18:05:44 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Fri May  9 12:50:13 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Mon May  5 14:00:03 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Sat Apr 26 09:59:09 CEST 2008 - coolo@suse.de
+
+- reupdate to fix build
+
+-------------------------------------------------------------------
+Fri Apr 25 13:58:44 CEST 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Tue Apr  1 23:15:37 CEST 2008 - coolo@suse.de
+
+- work with split po files - update from SVN
+
+-------------------------------------------------------------------
+Tue Mar 25 17:01:04 CET 2008 - ke@suse.de
+
+- Add /etc/xdg/autostart/ for autostarted applications.  Provided by
+  Vincent Untz; bnc#370483.
+- Update translations.
+
+-------------------------------------------------------------------
+Sun Mar 23 07:26:46 CET 2008 - coolo@suse.de
+
+- adding check against additional newlines and updating
+  from (fixed) SVN
+
+-------------------------------------------------------------------
+Thu Mar 20 14:11:35 CET 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Tue Feb 12 16:16:46 CET 2008 - coolo@suse.de
+
+- don't rely on perl and command line tools, but on fast C++ 
+
+-------------------------------------------------------------------
+Mon Feb 11 10:40:23 CET 2008 - ke@suse.de
+
+- update translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 17:25:49 CET 2008 - coolo@suse.de
+
+- do not install it by default (23MB saved)
+
+-------------------------------------------------------------------
+Fri Jan 18 10:44:29 CET 2008 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Fri Jan 11 11:28:17 CET 2008 - sbrabec@suse.cz
+
+- Removed broken support for CheckHardware (#255716).
+
+-------------------------------------------------------------------
+Thu Jan 10 13:30:43 CET 2008 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Mon Dec 17 14:34:12 CET 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Tue Nov 27 13:43:09 CET 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 18:04:37 CEST 2007 - ke@suse.de
+
+- Provide locale info; reported by Stephan Binner [#326424].
+
+-------------------------------------------------------------------
+Thu Sep 13 11:13:39 CEST 2007 - ke@suse.de
+
+- Update sk entries file; reported by Ladislav Michnovic [#309868].
+
+-------------------------------------------------------------------
+Mon Sep 10 17:40:55 CEST 2007 - ke@suse.de
+
+- Fix German translation (Audacious); reported by Andreas Schwab
+  [#308965].
+
+-------------------------------------------------------------------
+Wed Aug 29 14:17:46 CEST 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Mon Aug 27 15:04:31 CEST 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Mon Aug 20 14:35:35 CEST 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Fri Aug 17 15:22:54 CEST 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Wed Aug 15 15:38:23 CEST 2007 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Tue Aug 14 13:22:09 CEST 2007 - ke@suse.de
+
+- Adjust PREPARE_PACKAGE to create the old inline format; debugged by
+  Stephan Kulow [#299607]
+- Update translations.
+
+-------------------------------------------------------------------
+Fri Aug 10 12:08:17 CEST 2007 - ke@suse.de
+
+- Update for 10.3 beta2.
+
+-------------------------------------------------------------------
+Mon Aug  6 15:35:49 CEST 2007 - ke@suse.de
+
+- Update for 10.3 beta1.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:01:58 CEST 2007 - ke@suse.de
+
+- update from desktop translations by running PREPARE_PACKAGE.
+
+-------------------------------------------------------------------
+Thu Jul  5 17:18:18 CEST 2007 - coolo@suse.de
+
+- don't package kappfinder files anymore and let packages provide their
+  own files
+
+-------------------------------------------------------------------
+Tue Jul  3 11:11:21 CEST 2007 - coolo@suse.de
+
+- adding some debug output to indicate copying templates
+
+-------------------------------------------------------------------
+Thu Jun 21 12:03:06 CEST 2007 - stbinner@suse.de
+
+- fix invalid .desktop files
+
+-------------------------------------------------------------------
+Tue May 29 12:18:07 CEST 2007 - coolo@suse.de
+
+- fix rpmlint problems
+
+-------------------------------------------------------------------
+Mon May 28 12:29:30 CEST 2007 - coolo@suse.de
+
+- remove the requires for desktop-file-validate too
+
+-------------------------------------------------------------------
+Mon May 21 17:48:09 CEST 2007 - coolo@suse.de
+
+- update from SVN to fix a lot of bugs ;(
+
+-------------------------------------------------------------------
+Tue May 15 10:57:30 CEST 2007 - coolo@suse.de
+
+- remove windows line feeds from desktop files
+
+-------------------------------------------------------------------
+Mon May 14 11:41:57 CEST 2007 - coolo@suse.de
+
+- remove the desktop-file-validate call again to avoid loops in
+  dependency chains
+- make sure X-SuSE-Translate isn't already part of the file
+
+-------------------------------------------------------------------
+Fri May 11 12:06:29 CEST 2007 - coolo@suse.de
+
+- add X-SuSE-YaST2-Virtualization (#258600)
+
+-------------------------------------------------------------------
+Mon May  7 14:00:51 CEST 2007 - coolo@suse.de
+
+- add Encoding=UTF-8 to generated .desktop files to keep (older)
+  desktop-file-validate happy
+- fix script error
+
+-------------------------------------------------------------------
+Wed May  2 19:18:34 CEST 2007 - coolo@suse.de
+
+- add support for untranslate (so we can grab upstream translations
+  reliable)
+
+-------------------------------------------------------------------
+Sun Apr 29 00:47:21 CEST 2007 - ro@suse.de
+
+- ignore return code of validation for now, it causes too much
+  breakage 
+
+-------------------------------------------------------------------
+Wed Apr 25 14:45:06 CEST 2007 - coolo@suse.de
+
+- following suggestion on IRC and call desktop-file-validate
+   as part of the build check
+
+-------------------------------------------------------------------
+Tue Apr 24 16:23:40 CEST 2007 - coolo@suse.de
+
+- don't look at /usr/share twice
+
+-------------------------------------------------------------------
+Tue Apr 24 13:46:03 CEST 2007 - coolo@suse.de
+
+- flush translations for another translation round
+
+-------------------------------------------------------------------
+Tue Apr 24 13:40:08 CEST 2007 - coolo@suse.de
+
+- move /opt/gnome to /usr 
+- deprecate GNOME1 support
+
+-------------------------------------------------------------------
+Thu Mar 15 00:04:27 CET 2007 - dmueller@suse.de
+
+- bump version
+
+-------------------------------------------------------------------
+Thu Dec  7 16:13:30 CET 2006 - coolo@suse.de
+
+- update from translators
+
+-------------------------------------------------------------------
+Mon Nov 20 14:18:50 CET 2006 - coolo@suse.de
+
+- update from translators
+
+-------------------------------------------------------------------
+Tue Nov  7 12:02:48 CET 2006 - coolo@suse.de
+
+- update from desktop translations
+
+-------------------------------------------------------------------
+Thu Nov  2 11:46:44 CET 2006 - coolo@suse.de
+
+- update from new SVN
+
+-------------------------------------------------------------------
+Wed Sep 20 14:00:07 CEST 2006 - stbinner@suse.de
+
+- add HardwareSettings category to map-desktop-category.sh (#206753)
+
+-------------------------------------------------------------------
+Tue Jun 13 09:53:57 CEST 2006 - coolo@suse.de
+
+- don't ignore NoDisplay .desktop files (#165187 and #180627)
+
+-------------------------------------------------------------------
+Mon Jun 12 11:50:19 CEST 2006 - coolo@suse.de
+
+- bugfixes from vendor
+
+-------------------------------------------------------------------
+Fri Jun  9 14:56:46 CEST 2006 - coolo@suse.de
+
+- another update for desktop translations
+
+-------------------------------------------------------------------
+Fri Jun  2 14:42:09 CEST 2006 - dmueller@suse.de
+
+- updated desktop translations (#175645) 
+
+-------------------------------------------------------------------
+Wed Apr 26 09:49:22 CEST 2006 - stbinner@suse.de
+
+- update from SVN, more Italian & Japanese translation format fixes
+
+-------------------------------------------------------------------
+Sat Apr 22 06:07:56 CEST 2006 - stbinner@suse.de
+
+- update (rebuild 107) to fix Italian mess (#168551)
+
+-------------------------------------------------------------------
+Mon Apr 18 11:30:53 CEST 2006 - coolo@suse.de
+
+- another update (rebuild 105)
+
+-------------------------------------------------------------------
+Tue Apr 11 17:11:16 CEST 2006 - sbrabec@suse.cz
+
+- Updated cs translation from LCN SVN.
+
+-------------------------------------------------------------------
+Fri Apr  7 13:12:16 CEST 2006 - stbinner@suse.de
+
+- update translations from SVN
+
+-------------------------------------------------------------------
+Wed Apr  5 10:46:16 CEST 2006 - stbinner@suse.de
+
+- update translations
+
+-------------------------------------------------------------------
+Fri Mar 31 16:51:37 CEST 2006 - stbinner@suse.de
+
+- update translations and remove not-to-be-translated strings parts
+
+-------------------------------------------------------------------
+Fri Mar 31 13:58:12 CEST 2006 - stbinner@suse.de
+
+- own some more locale dirs on PLUS to fix build
+
+-------------------------------------------------------------------
+Wed Mar 29 18:54:42 CEST 2006 - sreeves@suse.de
+
+- Add new X-SuSE-ControlCenter-* categories
+
+-------------------------------------------------------------------
+Fri Mar 24 18:54:20 CET 2006 - dmueller@suse.de
+
+- update translations from SVN (de,es,fr,it,ja,pt_BR,zh_CN,zh_TW)
+
+-------------------------------------------------------------------
+Fri Mar 24 14:55:44 CET 2006 - coolo@suse.de
+
+- update translations from SVN
+
+-------------------------------------------------------------------
+Fri Mar 17 13:55:36 CET 2006 - coolo@suse.de
+
+- update translations from SVN
+
+-------------------------------------------------------------------
+Mon Mar  6 18:37:07 CET 2006 - coolo@suse.de
+
+- fix sed call (#152224)
+
+-------------------------------------------------------------------
+Mon Feb 27 15:14:54 CET 2006 - coolo@suse.de
+
+- update translations from SVN
+
+-------------------------------------------------------------------
+Mon Feb 27 13:01:25 CET 2006 - stbinner@suse.de
+
+- patch map-desktop-category.sh for PLUS distributions
+
+-------------------------------------------------------------------
+Wed Feb 22 10:11:22 CET 2006 - stbinner@suse.de
+
+- add "km" locale dirs to fix build on PLUS
+
+-------------------------------------------------------------------
+Thu Feb 16 17:17:22 CET 2006 - sbrabec@suse.cz
+
+- Fix of DocPath warning check (149699#c12).
+
+-------------------------------------------------------------------
+Wed Feb 15 10:10:05 CET 2006 - coolo@suse.de
+
+- fixed the addition of new tags
+
+-------------------------------------------------------------------
+Tue Feb 14 16:17:12 CET 2006 - coolo@suse.de
+
+- fixed PREPARE_PACKAGE and used it one more time
+
+-------------------------------------------------------------------
+Tue Feb 14 14:33:14 CET 2006 - coolo@suse.de
+
+- enhance the script/macro:
+  * the docpath is guessed now
+  * allow -D to overwrite guessing of docpaths
+  * allow -N/-G/-C to overwrite Name/GenericName/Comment
+
+-------------------------------------------------------------------
+Mon Feb 13 11:19:07 CET 2006 - coolo@suse.de
+
+- update translations from lcn SVN
+
+-------------------------------------------------------------------
+Tue Feb  7 16:28:56 CET 2006 - coolo@suse.de
+
+- fix the escaping of to translated text
+
+-------------------------------------------------------------------
+Mon Feb  6 16:49:50 CET 2006 - dmueller@suse.de
+
+- remove duplicate desktop files and add a check
+  to avoid the same happening in the future 
+
+-------------------------------------------------------------------
+Mon Feb  6 14:32:52 CET 2006 - coolo@suse.de
+
+- let the translations work again (workaround #147685)
+
+-------------------------------------------------------------------
+Fri Feb  3 11:58:09 CET 2006 - coolo@suse.de
+
+- updated translations received so far
+
+-------------------------------------------------------------------
+Fri Jan 27 01:35:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 19:17:15 CET 2006 - dmueller@suse.de
+
+- split off desktop-translations package. install translations there. 
+
+-------------------------------------------------------------------
+Wed Jan 18 12:09:49 CET 2006 - dmueller@suse.de
+
+- sync kappfinder desktop files/icons with upstream 
+  (fixes lyx failure) 
+
+-------------------------------------------------------------------
+Mon Jan  9 15:27:54 CET 2006 - coolo@suse.de
+
+- print the error to STDERR, so Rudi sees them
+
+-------------------------------------------------------------------
+Mon Jan  9 10:25:15 CET 2006 - coolo@suse.de
+
+- brp-desktop is a bit picky: fixing format
+
+-------------------------------------------------------------------
+Sat Jan  7 20:07:35 CET 2006 - coolo@suse.de
+
+- fixing obvious perl knowledge lack
+
+-------------------------------------------------------------------
+Thu Jan  5 12:57:09 CET 2006 - coolo@suse.de
+
+- fix bug related to groups
+
+-------------------------------------------------------------------
+Fri Dec 16 16:00:08 CET 2005 - coolo@suse.de
+
+- rework translation applying script
+- readding translations
+
+-------------------------------------------------------------------
+Thu Nov  3 13:20:41 CET 2005 - coolo@suse.de
+
+- reset the translations to prepare a new way of handling them
+
+-------------------------------------------------------------------
+Thu Sep 29 18:39:08 CEST 2005 - stbinner@suse.de
+
+- add "Photograph" -> "Photography" category mapping
+
+-------------------------------------------------------------------
+Mon Sep 12 21:28:41 CEST 2005 - coolo@suse.de
+
+- update translations (mainly hu)
+
+-------------------------------------------------------------------
+Mon Sep  5 10:26:03 CEST 2005 - adrian@suse.de
+
+- add finish translations 
+
+-------------------------------------------------------------------
+Fri Sep  2 08:59:31 CEST 2005 - aj@suse.de
+
+- Revert changes to extra-files, kappfinder-* since they cause
+  build problems.
+
+-------------------------------------------------------------------
+Thu Sep  1 17:05:21 CEST 2005 - adrian@suse.de
+
+- final translation update
+
+-------------------------------------------------------------------
+Wed Aug 31 09:54:49 CEST 2005 - adrian@suse.de
+
+- update translations
+
+-------------------------------------------------------------------
+Wed Aug 17 16:03:01 CEST 2005 - coolo@suse.de
+
+- update translations
+
+-------------------------------------------------------------------
+Thu Aug 11 09:06:02 CEST 2005 - adrian@suse.de
+
+- add X-SuSE-YaST-AppArmor
+
+-------------------------------------------------------------------
+Mon May 23 10:24:49 CEST 2005 - adrian@suse.de
+
+- do only warn about not existing DocPath
+
+-------------------------------------------------------------------
+Thu May 19 10:19:22 CEST 2005 - adrian@suse.de
+
+- validate DocPath target
+
+-------------------------------------------------------------------
+Wed Mar 16 16:02:21 CET 2005 - adrian@suse.de
+
+- translation updates
+
+-------------------------------------------------------------------
+Mon Mar 14 10:56:54 CET 2005 - adrian@suse.de
+
+- fixed hu desktop entries by Karl
+
+-------------------------------------------------------------------
+Wed Mar  9 15:20:31 CET 2005 - adrian@suse.de
+
+- allow RSS-News tag
+
+-------------------------------------------------------------------
+Thu Feb 17 09:31:05 CET 2005 - adrian@suse.de
+
+- do not move screensaver entries
+- prefer .png icons during install
+
+-------------------------------------------------------------------
+Wed Feb 16 15:11:26 CET 2005 - adrian@suse.de
+
+- auto move desktop files from legacy applnk path to XDG path
+
+-------------------------------------------------------------------
+Tue Feb 15 00:45:18 CET 2005 - schwab@suse.de
+
+- Use the first icon found.
+
+-------------------------------------------------------------------
+Thu Feb 10 10:15:46 CET 2005 - adrian@suse.de
+
+- fix german Planner menu entry
+- new hungarian translations
+
+-------------------------------------------------------------------
+Fri Jan 14 16:38:59 CET 2005 - adrian@suse.de
+
+- accept Feedback as Category (#41682)
+
+-------------------------------------------------------------------
+Thu Jan 13 09:39:35 CET 2005 - adrian@suse.de
+
+- update to current translation state from cvs.
+
+-------------------------------------------------------------------
+Wed Nov 17 10:57:03 CET 2004 - adrian@suse.de
+
+- honor only [Desktop Entry] section
+- allow "Clock" Category
+
+-------------------------------------------------------------------
+Tue Nov 16 14:03:23 CET 2004 - adrian@suse.de
+
+- package also some icon templates, which can get installed via -i
+
+-------------------------------------------------------------------
+Mon Nov 15 18:06:38 CET 2004 - adrian@suse.de
+
+- install also icon files with -i
+
+-------------------------------------------------------------------
+Thu Oct 28 10:32:27 CEST 2004 - adrian@suse.de
+
+- add -d/--docid switch to add identifier for documentation team
+
+-------------------------------------------------------------------
+Tue Oct 19 17:02:22 CEST 2004 - adrian@suse.de
+
+- update french and chinese translations
+
+-------------------------------------------------------------------
+Tue Oct  5 15:38:23 CEST 2004 - adrian@suse.de
+
+- add translation for Office Suite to czech (#46833)
+
+-------------------------------------------------------------------
+Mon Oct  4 13:45:44 CEST 2004 - adrian@suse.de
+
+- new translations for el
+
+-------------------------------------------------------------------
+Fri Oct  1 18:09:37 CEST 2004 - adrian@suse.de
+
+- update translations
+- do not add Categories line, if empty
+
+-------------------------------------------------------------------
+Sun Sep 26 15:52:08 CEST 2004 - adrian@suse.de
+
+- use current translations from cvs
+
+-------------------------------------------------------------------
+Tue Aug 17 20:32:40 CEST 2004 - coolo@suse.de
+
+- handle packaged CVS dirs for convenience
+
+-------------------------------------------------------------------
+Tue Aug 17 16:08:12 CEST 2004 - coolo@suse.de
+
+- new translation round
+
+-------------------------------------------------------------------
+Tue Aug  3 13:35:41 CEST 2004 - adrian@suse.de
+
+- fix encoding of impress.desktop
+- update kappfinder templates to KDE 3.3 state
+
+-------------------------------------------------------------------
+Fri Jul 30 12:09:59 CEST 2004 - coolo@suse.de
+
+- make the warning an error - no one cares for WARNINGS in %install
+  sections ;(
+
+-------------------------------------------------------------------
+Mon May 17 11:08:12 CEST 2004 - adrian@suse.de
+
+- update chinese translations
+
+-------------------------------------------------------------------
+Sun Apr  4 12:35:24 CEST 2004 - adrian@suse.de
+
+- mark desktop files to translate with X-SuSE-translate=true
+- update translations
+
+-------------------------------------------------------------------
+Fri Apr  2 15:52:12 CEST 2004 - adrian@suse.de
+
+- adding sk and it files
+- export direct from cvs
+
+-------------------------------------------------------------------
+Wed Mar 31 16:00:34 CEST 2004 - coolo@suse.de
+
+- adding some more german files
+
+-------------------------------------------------------------------
+Tue Mar 30 12:10:27 CEST 2004 - adrian@suse.de
+
+- add functionality to update explicit given files
+  (needed for directory files)
+- update hungarian translations
+
+-------------------------------------------------------------------
+Mon Mar 29 11:47:06 CEST 2004 - coolo@suse.de
+
+- adding bulgarian 
+- adding japanish
+- adding slowenian
+
+-------------------------------------------------------------------
+Wed Mar 24 17:49:42 CET 2004 - adrian@suse.de
+
+- auto convert Gnome 1 desktop files to Utf8
+  (script by Stanislav, #36835)
+
+-------------------------------------------------------------------
+Mon Mar 22 12:13:03 CET 2004 - coolo@suse.de
+
+- adding dutch
+- adding hungarian
+
+-------------------------------------------------------------------
+Wed Mar 17 13:39:15 CET 2004 - adrian@suse.de
+
+- add spanish translations 
+- add norwegian translations
+
+-------------------------------------------------------------------
+Tue Mar 16 15:58:28 CET 2004 - coolo@suse.de
+
+- adding czech translations
+
+-------------------------------------------------------------------
+Tue Mar 16 15:01:21 CET 2004 - coolo@suse.de
+
+- updating german translations
+
+-------------------------------------------------------------------
+Sun Mar 14 12:49:54 CET 2004 - coolo@suse.de
+
+- adding translations (#34304)
+
+-------------------------------------------------------------------
+Wed Mar 10 09:14:43 CET 2004 - adrian@suse.de
+
+- update kappfinder data (from KDE 3.2.1)
+
+-------------------------------------------------------------------
+Wed Mar  3 10:04:07 CET 2004 - adrian@suse.de
+
+- fix typo in map-desktop-files
+
+-------------------------------------------------------------------
+Sun Feb 29 13:41:50 CET 2004 - adrian@suse.de
+
+- add WebUtility Category
+
+-------------------------------------------------------------------
+Tue Feb 17 09:52:28 CET 2004 - adrian@suse.de
+
+- remove Mixer -> AudioMixer mapping
+  (the other way arround exists and is valid)
+- check for double Category entries
+- add ContactManagement Category
+
+-------------------------------------------------------------------
+Mon Feb 16 22:17:22 CET 2004 - adrian@suse.de
+
+- fix build as user
+
+-------------------------------------------------------------------
+Mon Feb 16 15:55:13 CET 2004 - adrian@suse.de
+
+- Viewer is also an official tag now
+- temp. fail on outdated Categories
+- introduce "Jukebox"
+
+-------------------------------------------------------------------
+Mon Nov 10 17:45:11 CET 2003 - adrian@suse.de
+
+- adjust Categories to match the Menu Standard Version 0.8
+
+-------------------------------------------------------------------
+Thu Oct 30 15:23:27 CET 2003 - adrian@suse.de
+
+- add slovak translations
+
+-------------------------------------------------------------------
+Mon Oct  6 09:22:06 CEST 2003 - adrian@suse.de
+
+- fix tail usage
+
+-------------------------------------------------------------------
+Fri Sep 26 19:54:56 CEST 2003 - adrian@suse.de
+
+- add KDE 3.2 applications path
+
+-------------------------------------------------------------------
+Wed Sep 17 16:06:51 CEST 2003 - adrian@suse.de
+
+- add more transalations
+
+-------------------------------------------------------------------
+Wed Sep 17 13:08:16 CEST 2003 - adrian@suse.de
+
+- fix OO template call (#31130)
+
+-------------------------------------------------------------------
+Sat Sep 13 18:34:08 CEST 2003 - adrian@suse.de
+
+- higher MimeType priorities for OO
+- remove version number from OO desktop file templates
+
+-------------------------------------------------------------------
+Thu Sep 11 20:49:34 CEST 2003 - adrian@suse.de
+
+- fix a very stupid bug, we don't have the rpm yet, during the 
+  build .... CheckHardware stuff is working now (#30469)
+
+-------------------------------------------------------------------
+Sun Sep  7 15:08:21 CEST 2003 - adrian@suse.de
+
+- fix: ProjectManagement is an official group
+
+-------------------------------------------------------------------
+Fri Sep  5 17:41:23 CEST 2003 - adrian@suse.de
+
+- implement support for CheckHardware
+
+-------------------------------------------------------------------
+Fri Sep  5 08:36:58 CEST 2003 - adrian@suse.de
+
+- introduce Video group
+
+-------------------------------------------------------------------
+Thu Sep  4 13:19:37 CEST 2003 - adrian@suse.de
+
+- define icons and remove Categories from OO desktop files
+- add new possible Categories
+
+-------------------------------------------------------------------
+Tue Sep  2 10:57:14 CEST 2003 - adrian@suse.de
+
+- list all X-SuSE-Core- groups explicit
+
+-------------------------------------------------------------------
+Mon Sep  1 21:22:03 CEST 2003 - adrian@suse.de
+
+- fix conflict between "X-SuSE-Core" and  "Core" Category
+
+-------------------------------------------------------------------
+Mon Sep  1 17:15:38 CEST 2003 - adrian@suse.de
+
+- fix usage of multiple switches
+
+-------------------------------------------------------------------
+Mon Sep  1 10:50:04 CEST 2003 - adrian@suse.de
+
+- several mapping fixes
+- add -u option to hide entries unimportant entries by default
+
+-------------------------------------------------------------------
+Thu Aug 28 10:55:31 CEST 2003 - adrian@suse.de
+
+- change desktop search path order to install the right files
+  for OpenOffice.org
+
+-------------------------------------------------------------------
+Mon Aug 25 18:07:46 CEST 2003 - adrian@suse.de
+
+- mapping fixes
+
+-------------------------------------------------------------------
+Mon Aug 18 11:30:25 CEST 2003 - adrian@suse.de
+
+- add template files for OpenOffice
+
+-------------------------------------------------------------------
+Sun Aug 17 13:07:01 CEST 2003 - adrian@suse.de
+
+- fix: map Categories always
+- some more mappings
+
+-------------------------------------------------------------------
+Sat Aug 16 10:43:39 CEST 2003 - adrian@suse.de
+
+- add .desktop file templates from kappfinder
+
+-------------------------------------------------------------------
+Fri Aug 15 10:51:55 CEST 2003 - adrian@suse.de
+
+- add /opt/gnome/share/gnome/apps/ path
+
+-------------------------------------------------------------------
+Thu Aug 14 18:04:06 CEST 2003 - adrian@suse.de
+
+- ignore also NoDisplay=true files
+
+-------------------------------------------------------------------
+Tue Aug 12 13:34:55 CEST 2003 - adrian@suse.de
+
+- add DialUp Category
+- map Internet -> Network
+
+-------------------------------------------------------------------
+Tue Aug 12 12:49:32 CEST 2003 - adrian@suse.de
+
+- add -r|--reset option
+
+-------------------------------------------------------------------
+Mon Aug 11 20:58:23 CEST 2003 - adrian@suse.de
+
+- add /usr/lib/rpm/map-desktop-category.sh to check Categories
+  and to set X-SuSE- prefix automagically
+
+-------------------------------------------------------------------
+Wed Jul 30 17:16:22 CEST 2003 - adrian@suse.de
+
+- use $RPM_SOURCE_DIR
+
+-------------------------------------------------------------------
+Mon Jul 28 22:10:28 CEST 2003 - adrian@suse.de
+
+- add --create and --install switches for %suse_update_desktop_file
+
+-------------------------------------------------------------------
+Thu Jul 24 16:07:31 CEST 2003 - adrian@suse.de
+
+- ignore desktop files with Hidden flag
+
+-------------------------------------------------------------------
+Thu Jul 24 13:08:34 CEST 2003 - adrian@suse.de
+
+- initial package
+  * provide suse_update_desktop_file.sh script for the
+    %suse_update_desktop_file rpm macro
+  * a first po-file with translations
+

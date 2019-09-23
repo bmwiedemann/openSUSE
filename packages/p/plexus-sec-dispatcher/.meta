@@ -1,0 +1,5 @@
+<package name="plexus-sec-dispatcher" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="plexus-sec-dispatcher"/>
+</package>

@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/numactl/numactl</param>
+    <param name="subdir"></param>
+    <param name="filename">numactl</param>
+    <param name="versionformat">2.0.12</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">841253d1313b01a968c380cae4f498f20c46e5aa</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">numactl*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

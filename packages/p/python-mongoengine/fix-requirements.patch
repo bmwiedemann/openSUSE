@@ -1,0 +1,13 @@
+Index: mongoengine-0.15.3/setup.py
+===================================================================
+--- mongoengine-0.15.3.orig/setup.py
++++ mongoengine-0.15.3/setup.py
+@@ -55,7 +55,7 @@ CLASSIFIERS = [
+ 
+ extra_opts = {
+     'packages': find_packages(exclude=['tests', 'tests.*']),
+-    'tests_require': ['nose', 'coverage==4.2', 'blinker', 'Pillow>=2.0.0']
++    'tests_require': ['nose', 'coverage>=4.2', 'blinker', 'Pillow>=2.0.0']
+ }
+ if sys.version_info[0] == 3:
+     extra_opts['use_2to3'] = True

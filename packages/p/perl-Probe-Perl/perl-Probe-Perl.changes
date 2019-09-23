@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Oct  4 09:13:23 UTC 2013 - coolo@suse.com
+
+- updated to 0.03
+ - Improved the backticks/quoting situation on Windows, which
+   unfortunately didn't fare well with the fixes in 0.02.
+
+-------------------------------------------------------------------
+Mon Jun 10 10:45:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.02
+  - Switched to Git and Dist::Zilla
+ 
+  - Fixed an issue with perls installed in directories containing
+    spaces or other special shell characters. [Spotted by Samuel
+    Ferencik - RT #84643]
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:40 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Mar  4 21:45:27 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+- fixed deps
+
+-------------------------------------------------------------------
+Mon Jan 25 15:05:03 CET 2010 - anicka@suse.cz
+
+- cleaned Requires 
+

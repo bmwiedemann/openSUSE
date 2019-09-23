@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>2835f036aced73f364821f425f93848e</srcmd5>
+    <version>1.6.0</version>
+    <time>1222268133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>2835f036aced73f364821f425f93848e</srcmd5>
+    <version>1.6.0</version>
+    <time>1222268133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>a56ef16352599148fa4f9f80b9640013</srcmd5>
+    <version>1.6.0</version>
+    <time>1268924124</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>a56ef16352599148fa4f9f80b9640013</srcmd5>
+    <version>1.6.0</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>a56ef16352599148fa4f9f80b9640013</srcmd5>
+    <version>1.6.0</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>a56ef16352599148fa4f9f80b9640013</srcmd5>
+    <version>1.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>a56ef16352599148fa4f9f80b9640013</srcmd5>
+    <version>1.6.0</version>
+    <time>1319182007</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>f2c506eeab425552645a8532fea351d1</srcmd5>
+    <version>1.6.0</version>
+    <time>1336541109</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0-with-classpath-exception
+SPDX syntax (forwarded request 116692 from babelworx)</comment>
+    <requestid>116767</requestid>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>f2c506eeab425552645a8532fea351d1</srcmd5>
+    <version>1.6.0</version>
+    <time>1340183483</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>f2c506eeab425552645a8532fea351d1</srcmd5>
+    <version>1.6.0</version>
+    <time>1359109115</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>f2c506eeab425552645a8532fea351d1</srcmd5>
+    <version>1.6.0</version>
+    <time>1379662707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="22">
+    <srcmd5>f2c506eeab425552645a8532fea351d1</srcmd5>
+    <version>1.6.0</version>
+    <time>1409301274</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>b4237bc73a300ed40da1c4465ee2a333</srcmd5>
+    <version>1.6.0</version>
+    <time>1507280085</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with java &gt; 1.7</comment>
+    <requestid>530676</requestid>
+  </revision>
+</revisionlist>

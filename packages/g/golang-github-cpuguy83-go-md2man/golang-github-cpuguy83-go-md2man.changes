@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Wed Jun 13 15:17:54 UTC 2018 - jmassaguerpla@suse.com
+
+- since commit https://github.com/cpuguy83/go-md2man/commit/648eed146d3f3beacb64063cd0daae908015eebd#diff-a447edf0cfc23146457ff83dce52d372 there is a vendor directory and thus we don't need to
+  require any external golang package. 
+
+-------------------------------------------------------------------
+Thu Feb  1 16:57:17 CET 2018 - ro@suse.de
+
+- do not build on s390, only on s390x (no go on s390)
+
+-------------------------------------------------------------------
+Fri Mar  3 10:44:26 UTC 2017 - jmassaguerpla@suse.com
+
+- add provides go-go-md2man
+  this provides was there in previous versions and we can not remove
+  it or otherwise it breaks dependent packages (i.e. docker, k8s) 
+
+-------------------------------------------------------------------
+Wed Dec 07 15:16:49 UTC 2016 - tboerger@suse.com
+
+- Update to version 1.0.6+git20160904.a65d4d2:
+  * Render raw html as is
+  * Add html entity output support
+  * fix escaping for curly braces
+  * fix wrong type for Entity func
+  * md2man usable as a library (again)
+  * Improve man page rendering
+  * use stdio for default input and output
+  * improve link
+  * add vendor
+
+-------------------------------------------------------------------
+Fri Dec  2 09:13:23 UTC 2016 - tboerger@suse.com
+
+- Recursively test all packages
+
+-------------------------------------------------------------------
+Fri Dec  2 09:13:23 UTC 2016 - tboerger@suse.com
+
+- Added rpmlintrc for common golang linting
+
+-------------------------------------------------------------------
+Fri Dec  2 09:13:23 UTC 2016 - tboerger@suse.com
+
+- Requires and BuildRequires for dependencies
+
+-------------------------------------------------------------------
+Fri Dec  2 09:13:23 UTC 2016 - tboerger@suse.com
+
+- Using the new golang-packaging now
+
+-------------------------------------------------------------------
+Fri Dec  2 09:13:23 UTC 2016 - tboerger@suse.com
+
+- Refactoed spec with a new unified layout
+
+-------------------------------------------------------------------
+Thu Dec  1 16:15:35 UTC 2016 - jmassaguerpla@suse.com
+
+- add golang-github-shurcool-sanitized_anchor_name-source dependency
+
+-------------------------------------------------------------------
+Thu Dec  1 16:08:40 UTC 2016 - jmassaguerpla@suse.com
+
+- add the generation of the source package. With go1.7 we need
+  the source in order to build other golang-* which depend on this
+  one.
+
+-------------------------------------------------------------------
+Sun Jan 17 09:56:53 UTC 2016 - i@marguerite.su
+
+- Update to version 1.0.5+git20160104.2724a9c:
+  + md2man usable as a library (again)
+  + Improve man page rendering
+
+-------------------------------------------------------------------
+Tue Jul 28 12:30:43 UTC 2015 - i@marguerite.su
+
+- rename to golang-github-cpuguy83-md2man
+- update version 1.0.2+git20150617.e69ac41
+- use golang-packaging for packaging
+
+-------------------------------------------------------------------
+Wed May 27 09:06:10 UTC 2015 - dmacvicar@suse.de
+
+- initial package for version 1.0.2
+
+

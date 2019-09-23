@@ -1,0 +1,6 @@
+<package name="xfce4-screensaver" project="openSUSE:Factory">
+  <title>xfce4-screensaver</title>
+  <description>A screen saver and locker that integrates with the Xfce desktop.
+</description>
+  <devel project="X11:xfce" package="xfce4-screensaver"/>
+</package>

@@ -1,0 +1,257 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c089fcce283c8196f467025dcb3f50b</srcmd5>
+    <version>3.3.2</version>
+    <time>1321524274</time>
+    <user>coolo</user>
+    <comment>New package: split from gnome-utils upstream</comment>
+    <requestid>91630</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>939e7c77c799ccba6dc31004ff8507d9</srcmd5>
+    <version>3.3.2</version>
+    <time>1323191629</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>74790a3cc34b47d791fdd7fb5bea5832</srcmd5>
+    <version>3.4.0</version>
+    <time>1333021996</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111714</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>74790a3cc34b47d791fdd7fb5bea5832</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183378</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6a5c4afac3d5479d9dbb5b75f5a3fc03</srcmd5>
+    <version>3.6.0</version>
+    <time>1349252810</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136687</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6a5c4afac3d5479d9dbb5b75f5a3fc03</srcmd5>
+    <version>3.6.0</version>
+    <time>1359108954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0554360421aba1cfc353aa2f8095333</srcmd5>
+    <version>3.8.0</version>
+    <time>1374490819</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.8.0:
+  + Re-written help in Mallard.
+  + Updated translations.
+- No longer pass --disable-scrollkeeper to configure: after the
+  rewrite of the help in Mallard it is no longer used/known.
+- Add fdupes BuildRequires and call fdupes in install section to
+  link equal files, saving some space. (forwarded request 183940 from Zaitor)</comment>
+    <requestid>183953</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>166f4fb761f8394928faccdb73ccae77</srcmd5>
+    <version>3.9.0</version>
+    <time>1377872621</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196230</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>166f4fb761f8394928faccdb73ccae77</srcmd5>
+    <version>3.9.0</version>
+    <time>1379662482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>66f93744ab1f2fa8dba02d511ad30fe1</srcmd5>
+    <version>3.10.0</version>
+    <time>1381474447</time>
+    <user>scarabeus_factory</user>
+    <comment>Late bloomer of GNOME 3.10 release - please add to 13.1 (forwarded request 202766 from RBrownCCB)</comment>
+    <requestid>202795</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>66f93744ab1f2fa8dba02d511ad30fe1</srcmd5>
+    <version>3.10.0</version>
+    <time>1409301017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7913ab023864ad0664ad84ac8b6e3dd</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098728</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251888 from Zaitor)</comment>
+    <requestid>252110</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>19e32424ea17103770404331acec2f18</srcmd5>
+    <version>3.14.1</version>
+    <time>1413285884</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255278</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1cd6170f1d4ffde8bf45c0231f28c6af</srcmd5>
+    <version>3.14.2</version>
+    <time>1416347187</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261788</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d20589a9c0288c50f75959174324e35c</srcmd5>
+    <version>3.14.2</version>
+    <time>1425031763</time>
+    <user>dimstar_suse</user>
+    <comment>New package in the GNOME Stack</comment>
+    <requestid>287493</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e978adce2f5601aadb3912901222ac24</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736512</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.16.0 - fixed conflict with 3.14.0 for clean update (forwarded request 292871 from dimstar)</comment>
+    <requestid>293042</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ab455e811878f89185c77c0805c81bae</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768676</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298428</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2945924d4fa431eb17be3fdcb755310d</srcmd5>
+    <version>3.16.2</version>
+    <time>1431977537</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 306519 from Zaitor)</comment>
+    <requestid>306544</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5b89f3132fa14b375d6e1efdecab3604</srcmd5>
+    <version>3.16.2</version>
+    <time>1436112055</time>
+    <user>coolo</user>
+    <comment>- Own %{_datadir}/appdata for openSUSE:42.</comment>
+    <requestid>313036</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>556b3b01c826f6e18f960ff9ddd6f139</srcmd5>
+    <version>3.18.0</version>
+    <time>1444140943</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332607 from dimstar)</comment>
+    <requestid>332615</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dc3b196dcdabac959123186d2a8818d1</srcmd5>
+    <version>3.18.1</version>
+    <time>1453507439</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354712</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dddcc4b6b6ae5e5ddb5ad78c81db11cd</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255465</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377364 from dimstar)</comment>
+    <requestid>377454</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>181c3077ed4d450b9a7c7d41c02ba1e3</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220396</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481292 from dimstar)</comment>
+    <requestid>481372</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9af9b3037ecf5ded4931dfcf83ef2911</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332492</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.26.0 (forwarded request 523620 from dimstar)</comment>
+    <requestid>523663</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f3dba3d9a5df5ac7b816b32489d87377</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280295</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531077 from dimstar)</comment>
+    <requestid>531192</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d49f8b7319836d920db96885331182c7</srcmd5>
+    <version>3.26.1</version>
+    <time>1520502228</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581076 from dimstar)</comment>
+    <requestid>582724</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>b5c10416ccfc75f4595e2434d8b08f03</srcmd5>
+    <version>3.26.1</version>
+    <time>1522061248</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589327 from dimstar)</comment>
+    <requestid>590014</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cccbca36e1f1d946bb3eb7bd4a1d8488</srcmd5>
+    <version>3.26.1+20180313.ac6d4c0</version>
+    <time>1522403787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.1+20180313.ac6d4c0:
+  + Remove po/Makevars.
+  + Flatpak: use meson from flatpak build definition.
+  + Fix translations of the Name key.
+  + Drop build-api wrapper for Continuous.
+  + Updated translations.
+- Switch to git-checkout via source services.
+- Drop obsolete gnome-utils Conflicts and update-desktop-files
+  BuildRequires and stop passing glib2_gsettings_schema_requires
+  and suse_update_desktop_file macros.
+- Use autosetup macro and pass explicit use_ipv6=true and
+  build_man=true to meson, ensure we build the features we want.
+- Update URL to correct home. (forwarded request 590329 from dimstar)</comment>
+    <requestid>592260</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c5ed15c2073f770b3b8b3d0fc0b4835f</srcmd5>
+    <version>3.26.1+20180313.ac6d4c0</version>
+    <time>1533045239</time>
+    <user>dimstar_suse</user>
+    <comment>- Help translation-update-upstream finding the right gettext domain
+  name: pass po %{name} to the call. (forwarded request 624699 from dimstar)</comment>
+    <requestid>624751</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>859b81a4037475e6bbf35c18d12c7d58</srcmd5>
+    <version>3.26.1+20180313.ac6d4c0</version>
+    <time>1556914117</time>
+    <user>dimstar_suse</user>
+    <comment>- Conflict with libgdict-1_0-6 because this pkg contained files which
+  are now in the main pkg, namely $_datadir/gdict-1.0 (bsc#1132758) (forwarded request 695146 from olh)</comment>
+    <requestid>695187</requestid>
+  </revision>
+</revisionlist>

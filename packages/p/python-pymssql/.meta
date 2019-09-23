@@ -1,0 +1,5 @@
+<package name="python-pymssql" project="openSUSE:Factory">
+  <title>python-pymssql</title>
+  <description>Interface to MS SQL database</description>
+  <devel project="devel:languages:python" package="python-pymssql"/>
+</package>

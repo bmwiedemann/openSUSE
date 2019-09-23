@@ -1,0 +1,11 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -76,7 +76,7 @@ libayatana_appindicator_la_LDFLAGS = \
+ libayatana_appindicator_la_CFLAGS = \
+ 	$(LIBRARY_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN=\"libayatana-appindicator\"
+ 
+ libayatana_appindicator_la_LIBADD = \

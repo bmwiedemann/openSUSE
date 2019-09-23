@@ -1,0 +1,863 @@
+-------------------------------------------------------------------
+Fri Sep  6 13:09:13 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- makedumpfile-Increase-SECTION_MAP_LAST_BIT-to-4.patch: Increase
+  SECTION_MAP_LAST_BIT to 4 (bsc#1144708).
+
+-------------------------------------------------------------------
+Thu Sep  5 18:36:13 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 1.6.6
+  * Support for AMD Secure Memory Encryption
+  * Exclude pages that are logically offline
+  * Support kernels up to 5.1.9
+- Drop makedumpfile-coptflags.diff.
+
+-------------------------------------------------------------------
+Fri Jul  5 09:27:33 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Also support extended address space with SLE 12 SP5 (bsc#1138451)
+  * refresh makedumpfile-ppc64-VA-range-SUSE.patch
+
+-------------------------------------------------------------------
+Thu Feb 14 17:41:26 UTC 2019 - ptesarik@suse.com
+
+- makedumpfile-ppc64-VA-range-SUSE.patch: Use correct l3 index size
+  with SLE15-SP1 ppc64le kernels (bsc#1123015).
+
+-------------------------------------------------------------------
+Thu Feb 14 12:24:55 UTC 2019 - ptesarik@suse.com
+
+- Update to 1.6.5
+  * Improve support for arm64 system with KASLR
+  * Support kernels up to 4.19.4
+
+-------------------------------------------------------------------
+Thu Jan 24 12:27:37 UTC 2019 - ptesarik@suse.com
+
+- Update to 1.6.4
+  * 5-level paging support on x86_64
+  * --mem-usage support for arm64
+  * Support larger VA size with newer ppc64 kernels (bsc#1118445).
+  * Support kernels up to 4.17.0
+- Drop upstreamed patches:
+  * makedumpfile-always-use-bigger-SECTION_MAP_MASK.patch
+  * makedumpfile-sadump-fix-PTI-enabled-kernels.patch
+  * makedumpfile-do-not-print-ETA-if-progress-is-0.patch
+  * makedumpfile-is_cache_page-helper.patch
+  * makedumpfile-check-PG_swapbacked.patch
+
+-------------------------------------------------------------------
+Fri Aug 24 13:06:51 UTC 2018 - ptesarik@suse.com
+
+- Fix %license destination for older distributions.
+
+-------------------------------------------------------------------
+Fri Aug 24 09:01:03 UTC 2018 - ptesarik@suse.com
+
+- Merge SLE12 changelog.
+- Patches that were never actually applied to Factory:
+  * makedumpfile-x86_64-xen-vtop.patch (included in 1.6.2)
+  * makedumpfile-Fix-elf_info-file_size-if-segment-excluded.patch
+    (included in 1.6.2)
+
+-------------------------------------------------------------------
+Fri Jun 29 07:46:05 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-Fix-elf_info-file_size-if-segment-excluded.patch:
+  elf_info: Fix file_size if segment is excluded (bsc#1068925).
+
+-------------------------------------------------------------------
+Thu Jun 28 13:12:23 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-x86_64-xen-vtop.patch: Fix the use of Xen physical
+  and machine addresses (bsc#1014136, bsc#1068694).
+
+-------------------------------------------------------------------
+Mon Apr 30 09:39:40 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-is_cache_page-helper.patch: Add is_cache_page()
+  helper to check if a page belongs to the cache (bsc#1088354).
+- makedumpfile-check-PG_swapbacked.patch: Check PG_swapbacked for
+  swap cache pages (bsc#1088354).
+
+-------------------------------------------------------------------
+Mon Apr  9 09:53:05 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-do-not-print-ETA-if-progress-is-0.patch: Do not
+  print ETA value if current progress is 0 (bsc#1084936).
+
+-------------------------------------------------------------------
+Mon Mar 26 16:46:43 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Mar 19 13:16:58 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-sadump-fix-PTI-enabled-kernels.patch: sadump: Fix a
+  problem of PTI enabled kernel (bsc#1085826).
+
+-------------------------------------------------------------------
+Mon Jan 29 14:01:03 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-always-use-bigger-SECTION_MAP_MASK.patch: Always use
+  bigger SECTION_MAP_MASK (bsc#1066811, bsc#1067703).
+
+-------------------------------------------------------------------
+Mon Jan 29 13:49:43 UTC 2018 - ptesarik@suse.com
+
+- Update to 1.6.3
+  * Support kernels up to 4.14.8 (bsc#1068864).
+  * 86_64: handle renamed init_level4_pgt -> init_top_pgt
+  * Fix SECTION_MAP_MASK for kernel >= v.13
+  * book3s/ppc64: Lower the max real address to 53 bits for
+    kernels >= v4.11
+  * Support symbol __cpu_online_mask
+  * ppc64: update hash page table geometry
+- Drop upstreamed patches:
+  * makedumpfile-Fix-SECTION_MAP_MASK-for-kernel-v.13.patch
+  * makedumpfile-handle-renamed-init_level4_pgt-init_top_pgt.patch
+  * makedumpfile-ppc64-update-hash-page-table-geometry.patch
+  * makedumpfile-book3s-ppc64-Lower-the-max-real-address-to-53-bits.patch
+  * makedumpfile-__cpu_online_mask-symbol.patch
+  * makedumpfile-vtop4_x86_64_pagetable.patch
+  * makedumpfile-fix-KASLR-for-sadump.patch
+  * makedumpfile-fix-KASLR-for-sadump-while-kdump.patch
+  * makedumpfile-support-4.12.patch
+- Drop SLE12-specific patches:
+  * makedumpfile-ppc64-update-hash-page-table-geometry.patch
+  * makedumpfile-Revert-Clean-up-unused-KERNEL_IMAGE_SIZE.patch
+  * makedumpfile-Revert-x86_64-kill-some-unused-init.patch
+  * makedumpfile-Revert-kill-is_vmalloc_addr_x86_64.patch
+  * makedumpfile-Revert-x86_64-translate-all-VA-to-PA-using-pgt.patch
+  * makedumpfile-Revert-Calculate-page_offset-from-pt_load.patch
+
+-------------------------------------------------------------------
+Tue Jan  9 09:56:06 UTC 2018 - ptesarik@suse.com
+
+- makedumpfile-__cpu_online_mask-symbol.patch: Support symbol
+  __cpu_online_mask (FATE#323473, bsc#1070291).
+- makedumpfile-vtop4_x86_64_pagetable.patch: Introduce
+  vtop4_x86_64_pagetable (FATE#323473, bsc#1070291).
+- makedumpfile-fix-KASLR-for-sadump.patch: Fix a KASLR problem of
+  sadump (FATE#323473, bsc#1070291).
+- makedumpfile-fix-KASLR-for-sadump-while-kdump.patch: sadump: Fix
+  a KASLR problem of sadump while kdump is working (FATE#323473,
+  bsc#1070291).
+
+-------------------------------------------------------------------
+Thu Dec 21 13:16:43 UTC 2017 - ptesarik@suse.com
+
+- makedumpfile-Revert-Clean-up-unused-KERNEL_IMAGE_SIZE.patch:
+  Revert "Clean up unused KERNEL_IMAGE_SIZE" (bsc#1068925,
+  bsc#1099121).
+- makedumpfile-Revert-x86_64-kill-some-unused-init.patch: Revert
+  "x86_64: kill some unused initialization" (bsc#1068925,
+  bsc#1099121).
+- makedumpfile-Revert-kill-is_vmalloc_addr_x86_64.patch: Revert
+  "x86_64: kill is_vmalloc_addr_x86_64()" (bsc#1068925,
+  bsc#1099121).
+- makedumpfile-Revert-x86_64-translate-all-VA-to-PA-using-pgt.patch:
+  Revert "x86_64: translate all VA to PA using page table values"
+  (bsc#1068925, bsc#1099121).
+- makedumpfile-Revert-Calculate-page_offset-from-pt_load.patch:
+  Revert "x86_64: Calculate page_offset from pt_load"
+  (bsc#1068925, bsc#1040469, bsc#1099121).
+
+-------------------------------------------------------------------
+Mon Dec  4 17:19:48 UTC 2017 - msuchanek@suse.com
+
+- makedumpfile-ppc64-update-hash-page-table-geometry.patch:
+  Kernel commit f6eedbba7a26 ("powerpc/mm/hash: Increase VA range to 128TB")
+  updated hash page table geometry. A modified version of this commit is
+  included in SLES12 SP3. Make the corresponding changes in makedumpfile tool
+  for filtering dump appropriately (bsc#1068485)
+
+-------------------------------------------------------------------
+Wed Nov 15 18:05:58 UTC 2017 - msuchanek@suse.com
+
+- ppc64 Can't convert a virtual address (bsc#1067703)
+  * Added patches: makedumpfile-ppc64-update-hash-page-table-geometry.patch
+                   makedumpfile-book3s-ppc64-Lower-the-max-real-address-to-53-bits.patch
+  * Refresh makedumpfile-Fix-SECTION_MAP_MASK-for-kernel-v.13.patch to also
+    apply to SLE15 (4.12 kernel) due to backport of 2d070eab2e82 (bsc#1067703)
+
+-------------------------------------------------------------------
+Fri Nov 10 17:01:33 HKT 2017 - lzwang@suse.com
+
+- Handled renaming of init_level4_pgt to init_top_pgt (bsc#1066770).
+  * Added patch: makedumpfile-handle-renamed-init_level4_pgt-init_top_pgt.patch
+
+-------------------------------------------------------------------
+Thu Nov  9 12:16:29 UTC 2017 - jslaby@suse.com
+
+- add makedumpfile-Fix-SECTION_MAP_MASK-for-kernel-v.13.patch (bnc#1066811)
+
+-------------------------------------------------------------------
+Wed Nov  8 17:00:15 HKT 2017 - lzwang@suse.com
+
+- Update to 1.6.2
+  * Fix the use of Xen physical and machine addresses (bsc#1014136)
+  * Fix memory leak in get_kcore_dump_loads()
+  * Support kernels up to 4.11.7
+  * Consider not page-size aligned phys_end for paddr_to_pfn()
+  * Add runtime kaslr offset if it exists
+
+-------------------------------------------------------------------
+Thu May 11 15:32:13 UTC 2017 - ptesarik@suse.com
+
+- Update to 1.6.1 (FATE#322011).
+  * Enhance support for aarch64
+  * Enhance support for ppc64
+  * Support kernels up to 4.8
+- Drop upstreamed patch
+  * makedumpfile-_count-_refcount-rename.patch 
+- Merge with updates on SLE12 SP2 (FATE#318012, bsc#992885,
+  bsc#999869).
+
+-------------------------------------------------------------------
+Tue Jul 12 15:56:04 UTC 2016 - ptesarik@suse.com
+
+- Rename Support-_count-_refcount-rename-in-struct-p.patch to
+  makedumpfile-_count-_refcount-rename.patch.
+
+-------------------------------------------------------------------
+Tue Jul 12 12:16:40 UTC 2016 - ptesarik@suse.com
+
+- Silence rpmlint errors about devel files in non-devel package;
+  despite their .c suffix, the provided eppic scripts are intended
+  for production, not development.
+
+-------------------------------------------------------------------
+Tue Jul 12 10:08:41 UTC 2016 - ptesarik@suse.com
+
+- Build and install the eppic extension.
+- makedumpfile-override-libtinfo.patch: Allow to override the tinfo
+  library used for eppic.
+
+-------------------------------------------------------------------
+Tue Jul 12 09:13:25 UTC 2016 - ptesarik@suse.com
+
+- Update to 1.6.0 (FATE#320955).
+  * Exclude page structures of non-dumped pages.
+- Drop upstreamed patch
+  * Looking-for-page.compound_order-compound_dtor-.patch
+  * Skip-examining-compound-tail-pages.patch
+
+-------------------------------------------------------------------
+Fri Jul  8 08:50:40 UTC 2016 - mkubecek@suse.cz
+
+- Looking-for-page.compound_order-compound_dtor-.patch:
+  fix excluding hugepages (kernel 4.4 compatibility)
+- Skip-examining-compound-tail-pages.patch
+  fix excluding compound tail pages (kernel 4.5 compatibility)
+
+-------------------------------------------------------------------
+Fri Jul  8 05:57:04 UTC 2016 - mkubecek@suse.cz
+
+- Support-_count-_refcount-rename-in-struct-p.patch:
+  support 4.7 kernel (page._count renamed to page._refcount)
+
+-------------------------------------------------------------------
+Sun Feb 14 08:11:59 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.5.9
+  * support for aarch64 (FATE#318444)
+  * Support kernels up to 4.1
+  * Enable compressed dump formats for Xen (FATE#316467).
+- Drop upstreamed patch
+  * makedumpfile-add-aarch64.diff
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Adjust usage of install (-c is ignored)
+
+-------------------------------------------------------------------
+Thu Jul 10 10:47:12 UTC 2015 - mbrugger@suse.com
+
+- makedumpfile-add-aarch64.diff: Add support for aarch64
+	This patch should be oboslet when switching to 1.5.9
+
+-------------------------------------------------------------------
+Wed Mar 25 08:00:03 UTC 2015 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.8
+  o Fair I/O workload assignment for --split
+  o Make incomplete dumpfile readable
+  o Support kernels up to 3.19
+
+-------------------------------------------------------------------
+Tue Sep 23 16:54:05 UTC 2014 - ptesarik@suse.cz
+
+- Switch to dynamic linking: Since most libraries are no longer
+  available for static link, the remaining space savings are
+  no longer worth the effort.
+
+-------------------------------------------------------------------
+Tue Sep 23 16:40:58 UTC 2014 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.7
+  o Show memory usage of the running kernel
+  o Hugepage filtering
+  o Support kernels up to 3.16
+
+- Drop following patches, which are now upstream:
+  o makedumpfile-generic-multi-page-excl.patch
+  o makedumpfile-remove-overrun-adj.patch
+  o makedumpfile-fix-free-bitmap_buffer_cyclic.patch
+  o makedumpfile-isCompoundHead.patch
+  o makedumpfile-exclude-compound-pages.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 07:49:20 UTC 2014 - ptesarik@suse.cz
+
+- makedumpfile-fix-free-bitmap_buffer_cyclic.patch: Fix free
+  bitmap_buffer_cyclic error.
+
+-------------------------------------------------------------------
+Fri Jun 13 10:00:24 UTC 2014 - ptesarik@suse.cz
+
+- makedumpfile-generic-multi-page-excl.patch: Generic handling of
+  multi-page exclusions (bnc#873232).
+- makedumpfile-remove-overrun-adj.patch: Get rid of overrun
+  adjustments (bnc#873232).
+- makedumpfile-isCompoundHead.patch: Add isCompoundHead() macro to
+  check for compound pages (bnc#873232).
+- makedumpfile-exclude-compound-pages.patch: Treat compound pages
+  as a single entity (bnc#873232).
+
+-------------------------------------------------------------------
+Wed May  7 14:00:57 UTC 2014 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.6
+  o support for Linux 3.13
+  o include sample eppic scripts
+  o eppic: Add support for module data structures
+  o ability to filter Xen Dom0 dumps (bnc#864910, bnc#829646).
+
+- makedumpfile-fix-sprintf-append.patch: now upstream
+- makedumpfile-kernel-3.12-supported.patch: now upstream
+
+-------------------------------------------------------------------
+Fri Mar 21 09:50:53 UTC 2014 - ptesarik@suse.cz
+
+- enable snappy compression (FATE#315726).
+
+-------------------------------------------------------------------
+Tue Feb 25 11:53:37 UTC 2014 - ptesarik@suse.cz
+
+- makedumpfile-fix-sprintf-append.patch: Fix string append in
+  dump_log_entry() (bnc#865596).
+- makedumpfile-kernel-3.12-supported.patch: Mark kernel 3.12 as
+  supported.
+
+-------------------------------------------------------------------
+Mon Feb 17 17:29:07 UTC 2014 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.5
+  o Add eppic support for module data structures
+  o makedumpfile header to show LZO/snappy/zlib
+  o Add --non-mmap option to disable mmap() manually
+  o many bugfixes
+
+- Drop makedumpfile-powerpc.patch: now upstream
+- Drop makedumpfile-raise-44bit-physaddr-limit.patch: now upstream
+
+-------------------------------------------------------------------
+Tue Dec 10 19:05:06 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Wed Dec  4 14:45:41 UTC 2013 - ptesarik@suse.cz
+
+- makedumpfile-raise-44bit-physaddr-limit.patch: Fix max_mapnr
+  issue on system has over 44-bit addressing (bnc#841145).
+
+-------------------------------------------------------------------
+Wed Sep 11 12:36:24 UTC 2013 - dvaleev@suse.com
+
+- makedumpfile-powerpc.patch: fix builf on powerpc
+- makedumpfile.spec: enable powerpc32
+
+-------------------------------------------------------------------
+Mon Sep  9 21:55:55 UTC 2013 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.4
+  o support kernels up to 3.9
+  o speed improvements with mmap(2)
+  o bugfixes
+- makedumpfile-handle-structured-log_buf: upstream.
+
+-------------------------------------------------------------------
+Mon Jan 28 22:46:29 UTC 2013 - jeffm@suse.com
+
+- Added support for structured logging added in Linux v3.5. (bnc#801063)
+
+-------------------------------------------------------------------
+Fri Dec  7 15:58:28 UTC 2012 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.1
+  o Support for Xen4 Dom0 dumps
+  o Introduce mem_map array logic
+- makedumpfile-x86-return-in-nonvoid-function.patch: dropped. 
+
+-------------------------------------------------------------------
+Tue Nov 20 23:37:22 UTC 2012 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.5.0
+  o implement cyclic mode 
+  o update necessary elfutils version
+  o tested for kernels up to 3.4.8
+
+-------------------------------------------------------------------
+Wed Sep 26 21:08:36 UTC 2012 - lchiquitto@suse.com
+
+- include makedumpfile.conf(5) man page in the package.
+
+-------------------------------------------------------------------
+Tue Jun 19 12:10:40 UTC 2012 - ptesarik@suse.cz
+
+- makedumpfile-x86-return-in-nonvoid-function.patch: add a missing
+  return statement.
+
+-------------------------------------------------------------------
+Mon Jun 18 16:12:40 UTC 2012 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.4.4. 
+- activate LZO support
+- makedumpfile-supports-3.0.patch: dropped (upstreams).
+
+-------------------------------------------------------------------
+Wed Nov  9 17:31:50 UTC 2011 - ptesarik@suse.cz
+
+- README.static: Explain why static linking of some libraries is
+  preferred.
+
+-------------------------------------------------------------------
+Thu Nov  3 07:48:12 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Wed Nov  2 22:03:33 UTC 2011 - ptesarik@suse.cz
+
+- Fix build on older distros. 
+
+-------------------------------------------------------------------
+Mon Oct 31 07:28:59 UTC 2011 - ptesarik@suse.cz
+
+- fix the specfile License tag: since ppc64.c and s390x.c are
+  licensed under GPL-2.0 only, the whole package cannot be GPL-2.0
+  or later (bnc#727022).
+
+-------------------------------------------------------------------
+Thu Oct 27 05:15:53 UTC 2011 - ptesarik@suse.cz
+
+- upgrade to makedumpfile-1.4.0.
+- makedumpfile-supports-3.0.patch: Mark all kernel 3.0 releases
+  as supported.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:13:48 UTC 2010 - ptesarik@novell.com
+
+- Update to 1.3.6 
+  * Features
+    o Use TMPDIR environment variable for temporary files
+    o Add linux-2.6.32 - 2.6.34 support
+  * Bugfixes
+    o Fix buffer overflow when writing dh->signature
+    o handle !SPARSEMEM_EX properly
+  * Code Cleanup
+    o Fix 'struct kdump_sub_header' member in IMPLEMENTATION
+    o fix typo in IMPLEMENTATION
+    o add maintainers
+    o add TMPDIR description
+    o add .gitignore file
+    o makedumpfile: works on 2.6.32
+    o the initialization method is operated if it is possible
+- makedumpfile-fix-buffer-overflow.diff: dropped (upstream). 
+
+-------------------------------------------------------------------
+Sun Feb 28 11:02:33 UTC 2010 - jengelh@medozas.de
+
+- SPARC porting: use ExclusiveArch instead of ExcludeArch
+
+-------------------------------------------------------------------
+Sun Feb 21 08:47:56 UTC 2010 - bernhard@bwalle.de
+
+- Fix buffer overflow that prevents build in Factory.
+- Update to 1.3.5
+  * Features
+    o Store vmcoreinfo data into a dumpfile in the kdump-
+      compressed format.
+    o Read vmcoreinfo data from a kdump-compressed dumpfile.
+    o Support kdump-compressed format for input file.
+    o Add dump filtering on an x86_64 xen domain-0.
+    o Save utsname data into disk_dump_header.
+    o Add linux-2.6.30 - 2.6.31 support.
+  * Bugfix
+    o Fix some lacks of free(). (by Minoru Usui)
+  * Code Cleanup
+    o Set the calculated value to dh->sub_hdr_size.
+    o Fix some indents in write_kdump_header().
+    o Unify the name of kdump_sub_header.
+    o Fix the typo of DISKDUMP_HEADER_BLOCKS.
+    o Add the description about re-filtering into manpage.
+    o Fix the description in manpage and README.
+    o Add some comments to code for the readability.
+    o Remove VERSION_LINUX_2_6_XX.
+    o Add paddr_to_pfn() and pfn_to_paddr() macros.
+    o Merge the version information of makedumpfile.
+    o Merge the PT_NOTE methods of both elf64 and elf32.
+    o Reduce some indents in exclude_unnecessary_pages().
+    o Remove unnecessary spaces.
+    o read_disk_dump_header() and read_kdump_sub_header().
+    o Use DISKDUMP_HDADER_BLOCKS for the readability.
+
+-------------------------------------------------------------------
+Mon Apr 27 15:10:26 CEST 2009 - ptesarik@suse.cz
+
+- Update to 1.3.3 
+  o Add --split option
+  o Add --reassemble option
+  o Allow specifying multiple dump levels with "-d"
+  o Code cleanups
+  o Bugfixes
+
+-------------------------------------------------------------------
+Sat Mar 21 22:49:14 CET 2009 - crrodriguez@suse.de
+
+- do not use static zlib 
+
+-------------------------------------------------------------------
+Fri Feb 20 09:59:02 CET 2009 - bwalle@suse.de
+
+- Update to 1.3.2
+  o Add --dump-dmesg option (Dumping dmesg buffer from /proc/vmcore
+    to a file)
+  o Fix a typo in README file.
+  o Code Cleanup
+
+-------------------------------------------------------------------
+Wed Dec 03 19:59:35 CET 2008 - bwalle@suse.de
+
+- Exclude 's390' and 's390x' from being built, too.
+
+-------------------------------------------------------------------
+Mon Dec 01 11:07:19 CET 2008 - bwalle@suse.de
+
+- Exclude 'ppc' from being built.
+
+-------------------------------------------------------------------
+Mon Dec 01 10:49:24 CET 2008 - bwalle@suse.de
+
+- Drop makedumpfile-64bit-kernel-on-32bit-userland.diff: Rejected
+  upstream. We need to use a 64 bit makedumpfile for 64 bit
+  kernels on PPC64 (bnc#447432).
+
+-------------------------------------------------------------------
+Fri Nov 28 10:30:49 CET 2008 - bwalle@suse.de
+
+- makedumpfile-64bit-kernel-on-32bit-userland.diff: Change return
+  type of read_vmcoreinfo_symbol() to 'unsigned long long'.
+
+-------------------------------------------------------------------
+Thu Nov 27 15:43:30 CET 2008 - bwalle@suse.de
+
+- Fix parsing of 64 bit VMCOREINFO on 32 bit platforms. For SUSE,
+  this only affects openSUSE on PPC because SLES PPC has a 64 bit
+  userland now. (bnc#447432).
+
+-------------------------------------------------------------------
+Thu Nov 27 10:12:43 CET 2008 - bwalle@suse.de
+
+- Update to 1.3.1
+  o Support linux-2.6.26 sparsemem on i386.
+  o Support linux-2.6.27 and linux-2.6.28.
+- Remove makedumpfile-2.6.27.diff: Mainline.
+
+-------------------------------------------------------------------
+Thu Nov 20 18:06:55 CET 2008 - bwalle@suse.de
+
+- Don't require a C++ compiler. That was from the time where the
+  library was built within that package and statically linked in.
+
+-------------------------------------------------------------------
+Wed Nov 12 10:38:45 CET 2008 - bwalle@suse.de
+
+- Don't print the "The kernel version is not supported" message
+  for 2.6.27 (bnc#440225).
+
+-------------------------------------------------------------------
+Sat Oct 11 19:11:56 CEST 2008 - bwalle@suse.de
+
+- Update to 1.3.0
+  * features
+    o Support i386 CONFIG_VMSPLIT_1G kernel.
+    o Add compiling options for calling lseek64() surely.
+    o Use gzip for manpage compression.
+  * bug fixes
+    o Fix the buffer handling problem for reading struct page.
+    o Fix readmem to read each page.
+    o Don't write undefined values to disk.
+    o Fix memory leaks.
+    o Fix/Add error messages for debugging.
+    o Fix the type of file_offset.
+    o Fix the error handling of kvtop_xen().
+    o Fix the comment for some values in page.flags.
+  * Code Cleanup
+    o Cleanup: Separate xen's paddr_to_offset from linux's one.
+    o Cleanup: Use the existing macros in kvtop_xen_x86().
+    o Cleanup: Delete unnecessary description.
+    o Update copyright date.
+
+-------------------------------------------------------------------
+Tue Sep 09 10:29:53 CEST 2008 - bwalle@suse.de
+
+- update to 1.2.9
+   * features
+     o Support ia64 discontigmem kernels of linux-2.6.20+.
+     o Support x86_64 linux-2.6.27 kernel.
+     o Add makedumpfile's spec file.
+     o Add "--vtop" option for debugging.
+     o Add the debugging message for ia64 pgtable.
+     o Get information from vmcoreinfo of /proc/vmcore even if
+       -x/-i option.
+   * bug fixes           
+     o Add free() for error handling.
+     o Fix NOT_FOUND value of SIZE(nodemask_t).
+   * code cleanup
+     o Use the terminal sizes of 80 for the IMPLEMENTATION file.
+     o Use static allocation instead of malloc().
+     o Add get_num_dumpable() function.
+     o Remove the unused pointer.
+     o Remove the unused code.
+     o Make the ELF methods simple.
+     o Merge the same code in write_elf_pages().
+     o Add "void" to some arguments.
+     o Separate the dependency code to machine and linux version.
+     o Cleanup vaddr_to_paddr() function.
+- Remove new compression command for the manual page in the
+  Makefile because we use gzip, not zip, and Autobuild does the
+  compression automatically.
+
+-------------------------------------------------------------------
+Tue Aug 12 09:55:20 CEST 2008 - bwalle@suse.de
+
+- update to 1.2.8
+  * Add the IMPLEMENTATION file for the kdump-compressed format.
+
+-------------------------------------------------------------------
+Fri Jul 18 11:48:48 CEST 2008 - bwalle@suse.de
+
+- update to 1.2.7
+  * features
+    o Add xen-3.1.2 support
+    o handle x86_64 xen code/data relocation
+    o Add linux-2.6.26 support
+    o Add the progress bar for creating dump bitmap
+    o Shrink the time for creating dump bitmap
+  * bug fixes
+    o Fix vmcoreinfo generation on 32bit hosts for 64bit kernels
+    o Fix compile warning
+    o Fix illegal buffer access
+    o Improve error handing when SIZE(nodemask_t) is undefined
+  * code cleanup
+    o Remove trailing whitespace
+    o Remove unnecessary description in manpage
+    o Cleanup machine dependent method
+    o Cleanup open_dump_file() method
+- drop makedumpfile-fix-64bit-on-32bit: merged mainline
+
+-------------------------------------------------------------------
+Fri Jun 06 16:36:48 CEST 2008 - bwalle@suse.de
+
+- update to 1.2.6
+  o Extract vmcoreinfo from /proc/vmcore for Xen (by Itsuro ODA)
+  o Add linux-2.6.25 support
+  o Add '--help' option
+  o Fix the error code of Xen extracting feature (by Akio Takebe)
+  o Fix the ia64 problem that invalid data is copied around
+    overlapping segments.
+  o make create_dump_bitmap() simple
+
+-------------------------------------------------------------------
+Fri Mar 28 11:15:07 CET 2008 - bwalle@suse.de
+
+- update to 1.2.5
+   o follow the changes of page flags.
+     To follow the changes of page flags in linux kernel, a new
+     makedumpfile can get these values from the vmcoreinfo data.
+   o Code Cleanup
+   o fix error return values of vtop().
+
+-------------------------------------------------------------------
+Thu Feb  7 10:02:09 CET 2008 - bwalle@suse.de
+
+- update to 1.2.4
+  o Add linux-2.6.24 support.
+  o Add xen kernel support to the STDOUT feature (-F option).
+  o Fix the method looking for .debug_info section in
+    get_debug_info().
+  o Fix the problem that -d1 option cannot be specified without
+    -x/-i option.
+
+-------------------------------------------------------------------
+Mon Dec 10 18:23:53 CET 2007 - bwalle@suse.de
+
+- Fix generation of vmcoreinfo for ELF64 kernels on 32bit machines
+
+-------------------------------------------------------------------
+Thu Nov 29 13:41:09 CET 2007 - bwalle@suse.de
+
+- updated to 1.2.3
+  o Add the filtering feature for free_pages of linux-2.6.24.
+
+-------------------------------------------------------------------
+Fri Nov  2 11:44:28 CET 2007 - bwalle@suse.de
+
+- updated to 1.2.2
+  o Fix the problem that vmcoreinfo cannot be extracted from ELF32
+    /proc/vmcore.
+
+-------------------------------------------------------------------
+Thu Oct 11 10:11:53 CEST 2007 - bwalle@suse.de
+
+- adding libelf0 libelf1 to BuildRequires to make the resolver
+  of the BuildService happy for <= 10.2
+
+-------------------------------------------------------------------
+Wed Oct 10 09:43:22 CEST 2007 - bwalle@suse.de
+
+- updated to 1.2.1
+  o Add virtual memmap support for x86_64 sparsemem kernel.
+  o Add the message_level (16) for printing the report message.
+  o Add linux-2.6.23 support because makedumpfile was tested on
+    linux-2.6.23.
+  o Change the common/debug message output to STDOUT from
+    STDERR if not specifying '-F' option
+  o Some cleanups
+
+-------------------------------------------------------------------
+Fri Sep  7 11:00:08 CEST 2007 - bwalle@suse.de
+
+- updated to 1.2.0
+  o extract vmcoreinfo from /proc/vmcore.
+  o linux-2.6.23-rc4-mm1 support.
+  o Add the "-d 1" option (skip zero-filled pages) for Xen.
+  o Add the feature which gets enum number.
+  o Some Cleanups
+
+-------------------------------------------------------------------
+Mon Aug 13 18:18:16 CEST 2007 - bwalle@suse.de
+
+- updated to 1.1.6
+  o linux-2.6.22 support.
+  o Change the check method of free_pages for linux-2.6.21 or
+    later.
+  o Some cleanups
+
+-------------------------------------------------------------------
+Fri Jul 27 11:25:53 CEST 2007 - bwalle@suse.de
+
+- updated to 1.1.5
+  o new feature that allows extracting the part of xen hypervisor
+    and domain-0 from /proc/vmcore.
+  o new option '-f' to overwrite existing dumpfile
+  o new option '--message-level "message-level"'
+  o fix the problem that makedumpfile complains about overlapping
+    memory segments.
+  o Rename makedumpfile's config file to "vmcoreinfo file"
+  o Change the method for getting the kernel's OSRELEASE if
+    generating a vmcoreinfo file.
+  o Some cleanups
+
+-------------------------------------------------------------------
+Mon Jun 11 10:25:05 CEST 2007 - bwalle@suse.de
+
+- updated to 1.1.4
+  o Add ia64 DISCONTIGMEM support.
+  o Add ia64_vtop.
+  o Add __FUNCTION__ to ERRMSG.
+  o Cleanup README.
+  o Fix DISCONTIGMEM bitmap.
+  o Fix ELF output with overlapping sections.
+
+-------------------------------------------------------------------
+Tue Jun  5 17:22:05 CEST 2007 - bwalle@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Jun  5 16:01:34 CEST 2007 - bwalle@suse.de
+
+- link dynamically against libc to decrease binary size (initrd
+  has already libc included) but leave the other libraries linked
+  statically
+
+-------------------------------------------------------------------
+Mon May 21 12:25:28 CEST 2007 - tiwai@suse.de
+
+- use external elfutils packages.
+
+-------------------------------------------------------------------
+Fri Apr 13 19:00:54 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.1.3:
+  * 2.6.21 kernel support
+  * fix handling of excluded zero-filled pages for crash
+  * crash can display dump_level
+
+-------------------------------------------------------------------
+Thu Mar 29 17:29:43 CEST 2007 - rguenther@suse.de
+
+- add zlib-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Mar  9 11:55:49 CET 2007 - tiwai@suse.de
+
+- updated to version 1.1.2:
+  * don't exit even for the unsupported kernel version
+  * minor fixes
+  * documents, man page
+
+-------------------------------------------------------------------
+Thu Feb  8 12:49:58 CET 2007 - tiwai@suse.de
+
+- updated to version 1.1.1:
+  * x86-64 DISCONTIGMEM support
+
+-------------------------------------------------------------------
+Mon Feb  5 13:37:36 CET 2007 - tiwai@suse.de
+
+- updated to version 1.1.0:
+  * support SSH transfer
+
+-------------------------------------------------------------------
+Thu Jan 18 15:35:17 CET 2007 - tiwai@suse.de
+
+- updated to version 1.0.9:
+  * fix the calculation of page size.
+
+-------------------------------------------------------------------
+Tue Jan  9 19:17:53 CET 2007 - tiwai@suse.de
+
+- remove codes with problematic license from elfutils-0.124
+  (#232894)
+
+-------------------------------------------------------------------
+Tue Jan  9 13:00:11 CET 2007 - tiwai@suse.de
+
+- added COPYING file (from elfutils)
+- fixed optimization flags to use $RPM_OPT_FLAGS
+- fix a minor compile error with C99 standard.
+
+-------------------------------------------------------------------
+Mon Jan  8 16:45:29 CET 2007 - tiwai@suse.de
+
+- initial version: 1.0.8
+- build statically with elfutils-1.2.4 since elfutils conflicts
+  with the existing libelf.
+

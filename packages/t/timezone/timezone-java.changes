@@ -1,0 +1,5599 @@
+-------------------------------------------------------------------
+Thu Sep 12 07:01:00 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2019c (bsc#1150451)
+  * Fiji observes DST from 2019-11-10 to 2020-01-12.
+  * Norfolk Island starts observing Australian-style DST.
+
+-------------------------------------------------------------------
+Tue Jul  2 07:53:08 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2019b (bsc#1140016):
+  * Brazil no longer observes DST.
+  * 'zic -b slim' outputs smaller TZif files.
+  * Palestine's 2019 spring-forward transition was on 03-29, not 03-30.
+  * Add info about the Crimea situation in zone1970.tab and zone.tab.
+
+-------------------------------------------------------------------
+Tue Mar 26 11:32:44 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2019a:
+  * Palestine "springs forward" on 2019-03-30 instead of 2019-03-23
+  * Metlakatla "fell back" to rejoin Alaska Time on 2019-01-20 at
+    02:00
+  * Israel observed DST in 1980 (08-02/09-13) and 1984 (05-05/08-25)
+  * zic now has an -r option to limit the time range of output data
+
+-------------------------------------------------------------------
+Mon Dec 31 09:43:30 UTC 2018 - astieger@suse.com
+
+- timezone update 2018i:
+  * São Tomé and Príncipe switches from +01 to +00 on 2019-01-01
+
+-------------------------------------------------------------------
+Sun Dec 30 15:40:31 UTC 2018 - astieger@suse.com
+
+- timezone update 2018h (bsc#1120402):
+  * Qyzylorda, Kazakhstan moved from +06 to +05 on 2018-12-21
+  * New zone Asia/Qostanay because Qostanay, Kazakhstan didn't move
+  * Metlakatla, Alaska observes PST this winter only
+  * Guess Morocco will continue to adjust clocks around Ramadan
+  * Add predictions for Iran from 2038 through 2090
+
+-------------------------------------------------------------------
+Sat Oct 27 12:20:44 UTC 2018 - astieger@suse.com
+
+- timezone update 2018g:
+  * Morocco switches to permanent +01 on 2018-10-27 (bsc#1113554)
+  * code fixes for zic on 32 bit
+
+-------------------------------------------------------------------
+Thu Oct 18 13:28:04 UTC 2018 - astieger@suse.com
+
+- Avoid build failures of timezone-java with javazic SLE/Leap 15
+  by using an alternative notation for a 1948-1951 DST transition
+  in Japan. add timezone-2018f-bsc1112310.patch, fixes boo#1112310
+
+-------------------------------------------------------------------
+Thu Oct 18 07:56:09 UTC 2018 - astieger@suse.com
+
+- timezone update 2018f:
+  * Volgograd moves from +03 to +04 on 2018-10-28.
+  * Fiji ends DST 2019-01-13, not 2019-01-20.
+  * Most of Chile changes DST dates, effective 2019-04-06
+    (bsc#1104700)
+  * Corrections to past timestamps of DST transitions
+  * Use "PST" and "PDT" for Philippine time
+  * minor code changes to zic handling of the TZif format
+  * documentation updates
+
+-------------------------------------------------------------------
+Tue May 22 15:45:39 UTC 2018 - astieger@suse.com
+
+- in SLE 15 / Leap 15.0 yast2-country stopped setting TIMEZONE in
+  /etc/sysconfig/clock and called systemd timedatectl instead.
+  No longer set /etc/localtime on timezone package updates to
+  avoid setting an incorrect timezone. bsc#1093392
+
+-------------------------------------------------------------------
+Fri May  4 05:57:53 UTC 2018 - astieger@suse.com
+
+- timezone update 2018e:
+  * North Korea switches back from +0830 to +09 on 2018-05-05.
+  * Ireland's standard time is in the summer, with negative DST
+    offset to standard time used in Winter (bsc#1073299)
+
+-------------------------------------------------------------------
+Sat Mar 24 07:58:38 UTC 2018 - astieger@suse.com
+
+- timezone update 2018d (bsc#1086729):
+  * In 2018, Palestine starts DST on March 24, not March 31
+  * Casey Station in Antarctica changed from +11 to +08 on
+    2018-03-11 at 04:00
+  * corrections for historical transitions
+
+-------------------------------------------------------------------
+Fri Jan 19 08:56:37 UTC 2018 - astieger@suse.com
+
+- timezone update 2018c:
+  * São Tomé and Príncipe switched from +00 to +01 on 2018-01-01
+  * Southern Brazil's DST will now start on November's first Sunday
+    (bsc#1073275)
+  * New zic option -t to specify the time zone file if TZ is unset
+
+-------------------------------------------------------------------
+Mon Oct 23 15:26:15 UTC 2017 - astieger@suse.com
+
+- timezone update 2017c (bsc#1064571):
+  * Northern Cyprus switches from +03 to +02/+03 on 2017-10-29
+  * Fiji ends DST 2018-01-14, not 2018-01-21
+  * Namibia switches from +01/+02 to +02 on 2018-04-01
+  * Sudan switches from +03 to +02 on 2017-11-01
+  * Tonga likely switches from +13/+14 to +13 on 2017-11-05
+  * Turks & Caicos switches from -04 to -05/-04 on 2018-11-04
+  * corrections to past DST transitions
+  * Move oversized Canada/East-Saskatchewan to 'backward' file
+  * zic and the reference runtime now reject multiple leap seconds
+    within 28 days of each other, or leap seconds before the Epoch
+
+-------------------------------------------------------------------
+Sat Oct  7 23:38:39 UTC 2017 - jengelh@inai.de
+
+- Replace old RPM constructs by new equivalents.
+  Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Fri Oct  6 12:20:02 UTC 2017 - fstrba@suse.com
+
+- Require simply java, since with the new version of javazic, it
+  is possible to generate the timezone information using any java
+  version
+
+-------------------------------------------------------------------
+Sat Sep 16 07:11:55 UTC 2017 - fstrba@suse.com
+
+- Do not require java-bootstrap, since it does not exist any more;
+  use java < 1.8 instead
+
+-------------------------------------------------------------------
+Wed Mar 22 08:17:32 UTC 2017 - astieger@suse.com
+
+- timezone update 2017b:
+  * Haiti resumed observance of DST in 2017 (bsc#1030417)
+  * Liberia changed from -004430 to +00 on 1972-01-07, not 1972-05-01.
+  * Use "MMT" to abbreviate Liberia's time zone before 1972, as
+    "-004430" is one byte over the POSIX limit
+
+-------------------------------------------------------------------
+Wed Mar  1 08:16:26 UTC 2017 - astieger@suse.com
+
+- timezone update 2017a:
+  * Mongolia no longer observes DST bsc#1024676
+  * Chile's Region of Magallanes moves from -04/-03 to -03 
+    year-round starting 2017-05-13 23:00, split from
+    America/Santiago creating a new zone America/Punta_Arenas
+    Also affects Antarctica/Palmer. bsc#1024677
+  * Fixes to historical time stamps: Spain, Ecuador, Atyrau, Oral
+  * Switch to numeric, or commonly used time zone abbreviations
+  * zic no longer mishandles some transitions in January 2038
+  * date and strftime now cause %z to generate "-0000" instead of
+    "+0000" when the UT offset is zero and the time zone
+    abbreviation begins with "-". 
+
+-------------------------------------------------------------------
+Thu Nov 24 09:20:48 UTC 2016 - astieger@suse.com
+
+- timezone update 2016j [bsc#1011797]:
+  * Saratov, Russia switches from +03 to +04 on 2016-12-04 at 02:00.
+    (new zone Europe/Saratov split from Europe/Volgograd)
+  * 1994-1999 corrections for Kazakhstan, with new zone Asia/Atyrau
+  * Asia/Gaza and Asia/Hebron now use "EEST", not "EET", to denote
+    summer time before 1948.  The old use of "EET" was a typo.
+
+-------------------------------------------------------------------
+Thu Nov  3 08:21:00 UTC 2016 - astieger@suse.com
+
+- timezone update 2016i:
+  * Pacific/Tongatapu begins DST on 2016-11-06 at 02:00, ending on
+    2017-01-15 at 03:00. [bsc#1007725]
+  * Northern Cyprus is now +03 year round, causing a split in Cyprus
+    time zones starting 2016-10-30 at 04:00.  This creates a zone
+    Asia/Famagusta [bsc#1007726]
+  * Antarctica/Casey switched from +08 to +11 on 2016-10-22
+  * Corrections to pre-1975 timestamps in Italy
+
+-------------------------------------------------------------------
+Fri Oct 21 09:54:37 UTC 2016 - astieger@suse.com
+
+- timezone update 2016h:
+  * Asia/Gaza and Asia/Hebron end DST on 2016-10-29 at 01:00, not
+    2016-10-21 at 00:00.
+  * Adjust 1986-1990, 1994 Turkey DST transistions
+  * Asia/Colombo now uses numeric time zone abbreviations
+  * drop timezone-2016g-absolute-TZDEFAULT.patch, upstream
+
+-------------------------------------------------------------------
+Thu Oct  6 19:14:45 UTC 2016 - astieger@suse.com
+
+- timezone update 2016g:
+  * Turkey will remain on UTC+03 after 2016-10-30 bsc#997830
+  * New leap second 2016-12-31 23:59:60 UTC 
+    Remove 0001-Positive-leap-second-on-2016-12-31.patch
+  * Corrections for past DST transitions
+  * Antarcica and nautical time zones now use numeric time zone
+    abbreviations instead of obsolete alphanumeric ones
+  * Renamed Asia/Rangoon to Asia/Yangon
+  * The following change was previously patched in the package
+    and is now upstream:
+    + If the installed localtime and/or posixrules files are
+      symbolic links, zic now keeps them symbolic links when
+      updating them, for compatibility with platforms like
+      openSUSE where other programs configure these files as
+      symlinks.
+    + zic now avoids hard linking to symbolic links, avoids
+      some unnecessary mkdir and stat system calls, and uses
+      shorter file names internally.
+    + Drop the patches:
+      tzcode-link.diff
+      tzcode-revert-01-8c9cb9580.patch
+      tzcode-revert-02-301f794f3.patch
+      tzcode-revert-03-39fd078a6.patch
+      tzcode-symlink.patch
+      tzcode-zic.diff
+      tzcode-fromname.patch
+    + Upstream changes did not account for TZDEFAULT being an
+      absolute path. Prevent broken symlinks (bsc#1003324),
+      add timezone-2016g-absolute-TZDEFAULT.patch
+  * zdump has a new -i option to generate transitions in a
+    more-compact but still human-readable format. (experimental)
+
+-------------------------------------------------------------------
+Mon Aug  8 17:29:14 UTC 2016 - astieger@suse.com
+
+- A positive leap second will be added at the end of 2016-12-31
+  (bsc#988184) 0001-Positive-leap-second-on-2016-12-31.patch
+
+-------------------------------------------------------------------
+Tue Aug  2 08:28:03 UTC 2016 - astieger@suse.com
+
+- add new signing key which is now available. Next release will
+  revert to previous key.
+
+-------------------------------------------------------------------
+Tue Jul  5 19:56:01 UTC 2016 - astieger@suse.com
+
+- timezone update 2016f:
+  * Egypt (Africa/Cairo) DST change 2016-07-07 cancelled boo#987720
+  * Asia/Novosibirsk switches from +06 to +07 on 2016-07-24 02:00
+  * Asia/Novokuznetsk and Asia/Novosibirsk now use numeric time
+    zone abbreviations instead of invented ones.
+  * Europe/Minsk's 1992-03-29 spring-forward transition was at
+    02:00 not 00:00.
+- new upstream signing key not available, dropping
+
+-------------------------------------------------------------------
+Tue Jun 14 21:04:16 UTC 2016 - astieger@suse.com
+
+- timezone update 2016e:
+  * Africa/Cairo observes DST in 2016 from July 7 to the end of
+    October (boo#982833)
+  * Changes affecting past timestamps in arctic and antarctic
+    locations while uninhabited
+  * Adjust Asia/Baku's 1992 DST transition
+  * zic now outputs a dummy transition at time 2**31 - 1 in zones
+    whose POSIX-style TZ strings contain a '<', working around Qt
+    bug 53071
+
+-------------------------------------------------------------------
+Mon Apr 18 18:05:46 UTC 2016 - astieger@suse.com
+
+- timezone update 2016d
+  * Venezuela (America/Caracas) switches from -0430 to -04 on 
+    2016-05-01 at 02:30 [boo#975875]
+  * Asia/Magadan switches from +10 to +11 on 2016-04-24 at 02:00.
+  * New zone Asia/Tomsk, split off from Asia/Novosibirsk. It covers
+    Tomsk Oblast, Russia, which switches from +06 to +07 on
+    2016-05-29 at 02:00
+  * Changes for past time zones (corrections and new Europe/Kirov)
+  * Corrections to historical time in Kazakhstan from 1991
+    through 2005.
+
+-------------------------------------------------------------------
+Wed Mar 23 23:05:32 UTC 2016 - astieger@suse.com
+
+- timezone update 2016c [boo#972433]
+  * Azerbaijan no longer observes DST (Asia/Baku)
+  * Chile reverts from permanent to seasonal DST.
+  * Correct past timestamps for Europe/Kaliningrad, Europe/Vilnius,
+    Europe/Volgograd 1989-1991
+
+-------------------------------------------------------------------
+Thu Mar 17 06:52:00 UTC 2016 - lchiquitto@suse.com
+
+- timezone update 2016b [boo#971377]
+  * New zones Europe/Astrakhan and Europe/Ulyanovsk for Astrakhan
+    and Ulyanovsk Oblasts, Russia, both of which will switch from
+    +03 to +04 on 2016-03-27 at 02:00 local time.
+  * New zone Asia/Barnaul for Altai Krai and Altai Republic, Russia,
+    which will switch from +06 to +07 on the same date and local time.
+  * Asia/Sakhalin moves from +10 to +11 on 2016-03-27 at 02:00.
+  * As a trial of a new system that needs less information to be made
+    up, the new zones use numeric time zone abbreviations like "+04"
+    instead of invented abbreviations like "ASTT".
+  * Haiti will not observe DST in 2016.
+  * Palestine's spring-forward transition on 2016-03-26 is at 01:00,
+    not 00:00.
+  * tzselect's diagnostics and checking, and checktab.awk's checking,
+    have been improved.
+  * tzselect now tests Julian-date TZ settings more accurately.
+    (Thanks to J William Piggott.)
+- tzcode-revert-01-8c9cb9580.patch, tzcode-revert-02-301f794f3.patch,
+  tzcode-revert-03-39fd078a6.patch: Revert some porting fixes specific
+  to MS-Windows that rewrites parts of zic touched by our patches.
+
+-------------------------------------------------------------------
+Thu Jan 28 07:37:16 UTC 2016 - astieger@suse.com
+
+- timezone update 2016a [boo#963921]
+  * America/Cayman will not observe DTS this year
+  * Asia/Chita switches from +0800 to +0900 on 2016-03-27 at 02:00.
+  * Asia/Tehran now has DST predictions for the year 2038 and later
+  * America/Metlakatla switched from PST all year to AKST/AKDT on
+    2015-11-01 at 02:00.
+  * America/Santa_Isabel has been removed, and replaced with a
+    backward compatibility link to America/Tijuana.
+  * Asia/Karachi's two transition times in 2002 were off by a minute.
+
+-------------------------------------------------------------------
+Fri Oct  2 06:34:00 UTC 2015 - astieger@suse.com
+
+- timezone update 2015g
+   * Turkey's 2015 fall-back transition is scheduled for Nov. 8,
+     not Oct. 25 [boo#948227]
+   * Adjustments for upcoming changes in Norfolk, Fiji, Fort Nelson
+   * New zone America/Fort_Nelson.
+   * localtime no longer mishandles America/Anchorage after 2037.
+   * On hosts with signed 32-bit time_t, localtime no longer
+     mishandles Pacific/Fiji after 2038-01-16 14:00 UTC.
+
+-------------------------------------------------------------------
+Fri Aug 14 13:06:18 UTC 2015 - astieger@suse.com
+
+- timezone update 2015f [boo#941249]
+  * North Korea switches to +0830 on 2015-08-15, abbreviation
+    remains "KST".
+  * Uruguay no longer observes DST.
+  * Moldova starts and ends DST at 00:00 UTC, not at 01:00 UTC.
+- unfuzz tzcode-symlink.patch and tzcode-link.diff
+
+-------------------------------------------------------------------
+Sun Jun 14 15:32:39 UTC 2015 - astieger@suse.com
+
+- timezone update 2015e [boo#934654]
+  *  Morocco will suspend DST from 2015-06-14 03:00 through 
+     2015-07-19 02:00, not 06-13 and 07-18 as guessed.
+   * Assume Cayman Islands will observe DST starting next year,
+     using US rules.
+   * The file 'iso3166.tab' now uses UTF-8
+   * When displaying data, tzselect converts it to the current
+     locale's encoding if the iconv command works.
+   * tzselect no longer mishandles Dominica, fixing a bug introduced
+     in Release 2014f.
+   * zic -l no longer fails when compiled with
+     -DTZDEFAULT=\"/etc/localtime\", regression from 2014f.
+     Dropping upstreamed tzcode-zic-empty-comp.diff
+
+-------------------------------------------------------------------
+Tue May 19 11:02:27 UTC 2015 - lchiquitto@suse.com
+
+- tzcode-zic-empty-comp.diff: Replaced by more sophisticated fix
+  from upstream
+
+-------------------------------------------------------------------
+Mon May 18 13:57:44 UTC 2015 - lchiquitto@suse.com
+
+- tzcode-zic-empty-comp.diff: Fix check for empty components in
+  absolute path
+
+-------------------------------------------------------------------
+Thu May 14 12:16:44 UTC 2015 - lchiquitto@suse.com
+
+- Fix post-install script to overwrite the temporary file when
+  attempting to create /etc/localtime as a hard link [bsc#928841]
+
+-------------------------------------------------------------------
+Thu May 14 12:08:51 UTC 2015 - lchiquitto@suse.com
+
+- timezone update 2015d [bsc#928584, bsc#928246]
+  * Egypt announced it is off DST indefinitely
+  * zic has some minor performance improvements
+- tzcode-fromname.patch, tzcode-link.diff, tzcode-symlink.patch,
+  tzcode-zic.diff, tzdata-china.diff: Rebase
+
+-------------------------------------------------------------------
+Tue Apr 21 23:38:49 UTC 2015 - crrodriguez@opensuse.org
+
+- Revert initrd generation updates, they add a new build cycle. 
+
+-------------------------------------------------------------------
+Tue Apr 14 06:59:29 UTC 2015 - astieger@suse.com
+
+- timezone update 2015c [boo#927029]
+  * correct Egypt 2015 DST transition from April 24 to April 30
+  * Changes affecting past time stamps and historic DST changes
+  * time zones turned into links where this affects UTC offsets
+    in pre-1970 time stamps only: America/Montreal
+
+-------------------------------------------------------------------
+Thu Apr  2 18:21:23 UTC 2015 - crrodriguez@opensuse.org
+
+- BuildRequire suse-module-tools otherwise initrd macros 
+  are never defined.
+
+-------------------------------------------------------------------
+Sat Mar 28 21:00:31 UTC 2015 - crrodriguez@opensuse.org
+
+- we should regenerate the initrd when the timezone
+ package is updated, as the timezone selected by the user
+ plus UTC is nowadays required by SUSE-specific "warpclock"
+ dracut module.
+
+-------------------------------------------------------------------
+Sat Mar 21 08:42:15 UTC 2015 - astieger@suse.com
+
+- timezone update 2015b [boo#923493]
+- Changes to time zones:
+  * Mongolia DST observance 2015
+  * Palestine DST dates 2015 and 2015
+  * correct 1982 zone shift in Pacific/Easter, regression in 2015a
+  * More pre-1970 zones have been turned into links, when they
+    differed from existing zones only for older time stamps:
+    America/Antigua, America/Cayman, Pacific/Midway,
+    Pacific/Saipan.
+  * Correct the 1992-2010 DST abbreviation in Volgograd from "MSK"
+    to "MSD".
+- Changes to code:
+  * Fix integer overflow bug in reference 'mktime' implementation.
+  * Allow -Dtime_tz=time_t compilations, and allow -Dtime_tz=...
+    libraries to be used in the same executable as standard-library
+    time_t functions.
+
+-------------------------------------------------------------------
+Fri Jan 30 21:43:29 UTC 2015 - andreas.stieger@gmx.de
+
+- timezone update 2015a
+  * New positive leap second 2015-06-30 23:59:60 UTC as per IERS
+    Bulletin C 49 [boo#914676]
+  * Mexico state Quintana Roo (America/Cancun) shift from Central
+    Time with DST to Eastern Time without DST on 2015-02-01 02:00.
+  * Chile (America/Santiago) will retain old DST as standard time
+    from April, also Pacific/Easter, and Antarctica/Palmer
+  * Changes affecting past timestamps (Iceland 1837 through 1939)
+  * Some more zones have been turned into links (pre-1970)
+- remove leap-second-2015.patch
+
+-------------------------------------------------------------------
+Mon Jan 26 12:13:01 UTC 2015 - dmueller@suse.com
+
+- add leap-second-2015.patch (bnc#914676)
+
+-------------------------------------------------------------------
+Thu Nov 20 16:19:01 UTC 2014 - fstrba@suse.com
+
+- make timezone-java compatible with Java8
+  * Add generation of tzdb.dat used by Java8 and Java9
+  * Require tzdb package to be able to generate this database
+  * Build using java-bootstrap 1.7 used in openSUSE:Factory to
+    bootstrap java-1_7_0-openjdk
+  * Add virtual provider tzdata-java8 in order to be able to
+    require it for java-1_8_0-openjdk
+
+-------------------------------------------------------------------
+Tue Nov 11 18:36:37 UTC 2014 - andreas.stieger@gmx.de
+
+- timezone update 2014j [boo#904824]
+  + Turks & Caicos' switch from US eastern time to UTC-4 year-round
+    moved from 2014-11-02 at 02:00 to 2015-11-01 at 02:00.
+  + Corrects pre-1989 time stamps for Asia/Seoul and Asia/Pyongyang
+  + Time zones turned into links when they differed from existing
+    zones only for pre-1970 time stamps:
+    Africa/Addis_Ababa, Africa/Asmara, Africa/Dar_es_Salaam,
+    Africa/Djibouti, Africa/Kampala, Africa/Mogadishu, 
+    Indian/Antananarivo, Indian/Comoro, and Indian/Mayotte.
+
+-------------------------------------------------------------------
+Wed Oct 22 19:41:06 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014i [bsc#902276]:
+  * Pacific/Fiji will observe DST from 2014-11-02 02:00 to
+    2015-01-18 03:00.
+  * A new Zone Pacific/Bougainville, for the part of Papua New
+    Guinea that plans to switch from UTC+10 to UTC+11 on
+    2014-12-28 at 02:00.
+  * Some changes in time zone abbreviations and affecting past
+    time stamps.
+  * Some fixes for minor bugs.
+
+-------------------------------------------------------------------
+Fri Sep 26 20:12:48 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 2014h [bnc#898747]:
+  * Changes to past time stamps corrections
+  * Some more zones have been turned into links
+  * zdump -V and -v now output gmtoff= values on all platforms
+  * The tz library's localtime and mktime functions now set tzname
+    to a value appropriate for the requested time stamp, and zdump
+    now uses this on platforms not defining TM_ZONE, fixing a 2014g
+    regression.
+  * The tz library no longer sets tzname if localtime or mktime
+    fails.
+  * zdump -c no longer mishandles transitions near year boundaries.
+  * An access to uninitalized data has been fixed.
+  * When THREAD_SAFE is defined, the code ports to the C11 memory
+    model.
+  * A memory leak has been fixed if ALL_STATE and THREAD_SAFE are
+    defined and two threads race to initialize data used by
+    gmtime-like functions
+  * Documentation improvements zdump's gmtoff=N, isdst=D, -c's
+- verify source signatures
+
+-------------------------------------------------------------------
+Wed Sep  3 13:03:39 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014g (bnc#894862):
+  * Turks & Caicos are switching from US eastern time to UTC-4
+    year-round, modeled as a switch from EST/EDT to AST on
+    2014-11-02 at 02:00.
+  * Many past time stamps were changed for correctness.
+  * Many performance enhancements and fixes in the time zone
+    manipulation utilities.
+- iso3166-uk.diff, tzcode-fromname.patch, tzcode-zic.diff,
+  tzdata-china.diff: refresh.
+- tzcode-symlink.patch: rebase.
+
+-------------------------------------------------------------------
+Wed Sep  3 12:43:19 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014f (bnc#890921, bnc#892843):
+  * Russia will subtract an hour from most of its time zones on
+    2014-10-26 at 02:00 local time.
+  * Many time zone abbreviations were adjusted or fixed.
+  * Many past time stamps were changed for correctness.
+  * A new file 'zone1970.tab' was added. The new file's extended
+    format allows multiple country codes per zone. New applications
+    should use the new file.
+  * Some fixes in 'localtime', 'zic', 'mktime' and 'yearistype'.
+
+-------------------------------------------------------------------
+Fri Jun 13 19:23:34 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014e (bnc#882684):
+  * Egypt's 2014 Ramadan-based transitions are June 26 and July 31
+    at 24:00. Similarly, Morocco's are June 28 at 03:00 and August
+    2 at 02:00.
+
+-------------------------------------------------------------------
+Fri Jun 13 19:19:02 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014d:
+  * zic no longer generates files containing time stamps before
+    the Big Bang. This works around GNOME bug 730332.
+- tzcode-revert-low-valued.patch: remove, no longer needed.
+
+-------------------------------------------------------------------
+Fri May 23 19:02:56 CEST 2014 - lchiquitto@suse.de
+
+- tzcode-revert-low-valued.patch: revert 'zic' patch to improve
+  handling of low-valued time stamps as it breaks applications that
+  read the binary files directly (bnc#879680, bnc#879512, bnc#879073)
+
+-------------------------------------------------------------------
+Tue May 13 18:05:31 CEST 2014 - lchiquitto@suse.com
+
+- update to 2014c (bnc#877535):
+  * Egypt observes DST starting 2014-05-15 at 24:00
+
+-------------------------------------------------------------------
+Wed Mar 26 13:02:00 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014b (bnc#870375):
+  * Crimea switches to Moscow time on 2014-03-30 at 02:00 local time
+  * New entry for Troll station, Antarctica
+
+-------------------------------------------------------------------
+Thu Mar 20 07:59:57 UTC 2014 - meissner@suse.com
+
+- solar87,solar88,solar89 were removed, remove them from
+  java build.
+
+-------------------------------------------------------------------
+Mon Mar 10 02:54:46 UTC 2014 - lchiquitto@suse.com
+
+- update to 2014a:
+  * Turkey begins DST on 2014-03-31, not 03-30
+  * Misc changes affecting past time stamps
+  * An uninitialized-storage bug in 'localtime' has been fixed
+
+-------------------------------------------------------------------
+Mon Feb 10 21:10:49 UTC 2014 - dmueller@suse.com
+
+- install /etc/localtime as symlink to UTC by default
+
+-------------------------------------------------------------------
+Mon Oct 28 09:32:47 UTC 2013 - dmueller@suse.com
+
+- update to 2013h:
+  * Lybia has switched back to UTC+2
+  * Western Sahara uses Morocco's DST rules
+  * Acre sitches from UTC-4 to UTC-5 on Nov. 10th
+
+-------------------------------------------------------------------
+Mon Oct 14 13:56:20 UTC 2013 - werner@suse.de
+
+- Add patch tzcode-fromname.patch to correct path expansion for
+  local time link (bnc#845530)
+- Modify tzcode-link.diff to fit with tzcode-fromname.patch
+- Modify tzcode-symlink.patch to fit with tzcode-fromname.patch
+  and to avoid broken posixrules if /etc/localtime is a symlink
+
+-------------------------------------------------------------------
+Wed Oct  2 23:35:00 UTC 2013 - lchiquitto@suse.com
+
+- tzcode-link.diff: refresh patch to apply correctly on older
+  versions of the distribution.
+
+-------------------------------------------------------------------
+Tue Oct  1 22:27:14 UTC 2013 - crrodriguez@opensuse.org
+
+- v2013g 
+- changes for Morocco, Asia/Tehran
+
+-------------------------------------------------------------------
+Thu Sep 26 01:07:52 UTC 2013 - crrodriguez@opensuse.org
+
+- v2013f
+- Tocantins will very likely not observe DST starting this spring. 
+- Jordan will likely stay at UTC+3 indefinitely
+- Palestine will fall back at 00:00, not 01:00
+- see NEWS for extra detail.
+
+-------------------------------------------------------------------
+Sat Sep 21 17:45:59 UTC 2013 - crrodriguez@opensuse.org
+
+- Update to 2013e:
+    This year Fiji will start DST on October 27, not October 20.
+
+    Use WIB/WITA/WIT rather than WIT/CIT/EIT for alphabetic Indonesian
+    time zone abbreviations since 1932
+
+    Use ART (UTC-3, standard time), rather than WARST (also UTC-3, but
+    daylight saving time) for San Luis, Argentina since 2009.
+
+  * Changes affecting Godthab time stamps after 2037 if version mismatch
+  * Changes affecting time stamps before 1970
+  * Changes affecting time zone abbreviations before 1970
+  * The 'leapseconds' file is now generated automatically from a
+    new file 'leap-seconds.list', which is a copy of
+    <ftp://time.nist.gov/pub/leap-seconds.list>.
+    A new source file 'leapseconds.awk' implements this.
+    The goal is simplification of the future maintenance of 'leapseconds'.
+
+-------------------------------------------------------------------
+Mon Jul  8 17:28:01 UTC 2013 - dmueller@suse.com
+
+- restrict symlink change to systemd distros 
+
+-------------------------------------------------------------------
+Mon Jul  8 16:53:30 UTC 2013 - dmueller@suse.com
+
+- update to 2013d:
+  *  Morocco's midsummer transitions this year are July 7 and August 10,
+    not July 9 and August 8.  (Thanks to Andrew Paprocki.)
+  *  Israel now falls back on the last Sunday of October.
+
+-------------------------------------------------------------------
+Mon Apr 29 20:47:33 UTC 2013 - crrodriguez@opensuse.org
+
+- /etc/localtime must be a symlink to /usr/share/zoneinfo/$TIMEZONE 
+  so systemd-timedated and its command line tool timedatectl 
+  can work correctly. Yast already does the right thing.
+
+-------------------------------------------------------------------
+Sat Apr 20 16:41:02 UTC 2013 - crrodriguez@opensuse.org
+
+- tzcode & tzdata 2013c, updates for Australia, Palestine,
+  Paraguay.
+
+-------------------------------------------------------------------
+Sun Mar 10 16:06:46 UTC 2013 - crrodriguez@opensuse.org
+
+- tzcode and tzdata 2013a 
+ - Change affecting binary data format:
+* The zone offset at the end of version-2-format zone files is now
+allowed to be 24:00, as per POSIX.1-2008.  (Thanks to Arthor David Olson.)
+- Changes affecting current and future time stamps:
+*  Chile's 2013 rules, and we guess rules for 2014 and later, will be
+    the same as 2012, namely Apr Sun>=23 03:00 UTC to Sep Sun>=2 04:00 UTC.
+*New Zones Asia/Khandyga, Asia/Ust-Nera, Europe/Busingen. 
+
+-------------------------------------------------------------------
+Fri Feb  1 20:22:12 UTC 2013 - schwab@linux-m68k.org
+
+- Define TM_GMTOFF and TM_ZONE like glibc did (bnc#807624)
+
+-------------------------------------------------------------------
+Tue Nov 13 17:55:55 UTC 2012 - dmueller@suse.com
+
+- update to 2012j:
+  * Libya moved to CET this weekend, but with DST planned next year
+
+-------------------------------------------------------------------
+Mon Nov  5 12:06:12 UTC 2012 - dmueller@suse.com
+
+- update to 2012i:
+  * Cuba switches DST on November 4th
+- tzcode-ksh.diff: Obsolete, upstream uses bash now by default
+
+-------------------------------------------------------------------
+Sat Oct 27 10:38:41 UTC 2012 - dmueller@suse.com
+
+- update to 2012h (bnc#787005):
+  * Samoa fall 2012 and later
+  * Palestine fall 2012
+  * Bahia no longer has DST
+  * Tocantins has DST
+  * Israel has new DST rules next year
+  * Jordan stays on DST this winter
+
+-------------------------------------------------------------------
+Sat Sep 15 08:38:34 UTC 2012 - frank.lichtenheld@sophos.com
+
+- Update Url from the glibc page (which doesn't talk
+  about timezone data at all (anymore?)) to the IANA
+  page which is much more informative.
+
+-------------------------------------------------------------------
+Thu Sep 13 15:06:27 UTC 2012 - dmueller@suse.com
+
+- cleanup stale rpmnew / symlink of posixrules to /etc/localtime (bnc#762210)
+- remove %config part on posixrules symlink, it is not a config file
+
+- update to 2012f (bnc#780276):
+  * Fiji DST is October 21st 2012 -> January 20th, 2013
+
+-------------------------------------------------------------------
+Mon Aug 20 15:47:57 UTC 2012 - fcrozat@suse.com
+
+- Add tzcode-symlink.patch: use a symlink to create /etc/localtime
+  (bnc#773491)
+- Do not apply tzcode-link.diff on openSUSE >= 12.2 (bnc#773491).
+
+-------------------------------------------------------------------
+Mon Aug  6 10:52:34 UTC 2012 - dmueller@suse.com
+
+- update to 2012e:
+  * Pacific/Fakaofo: Tokelau is UTC+13, not UTC+14
+
+-------------------------------------------------------------------
+Tue Jul 24 18:57:28 UTC 2012 - dmueller@suse.com
+
+- update to 2012d (bnc#771369):
+  * Morocco DST is interrupted during Ramadan 2012
+  (July 20th- August 19th)
+
+-------------------------------------------------------------------
+Mon Apr  2 16:19:16 CEST 2012 - dmueller@suse.de
+
+- update to 2012c:
+  * Morocco DST starts late April 2012
+  * Changes for Gaza, Hebron and Syria (for 2012)
+  * Haiti now follows US/Canada rules regarding DST
+
+-------------------------------------------------------------------
+Thu Mar 29 14:56:30 CEST 2012 - dmueller@suse.de
+
+- adjust license to spdx.org format (bnc#752642)
+
+-------------------------------------------------------------------
+Sat Mar  3 11:33:38 CET 2012 - dmueller@suse.de
+
+- update to 2012b (bnc#748550):
+  * Cuba has delayed start of DST by 3 weeks
+  (now starts April 1 rather than March 11
+  * Chile 2011/2012 and 2012/2013 summer time date adjustments.
+  * Falkland Islands onto permanent summer time (we're assuming for the
+    foreseeable future, though 2012 is all we're fairly certain of.)
+  * Armenia has abolished Summer Time.
+  * Tokelau jumped the International Date Line back last December
+    (just the same as their near neighbour, Samoa).
+  * America/Creston is a new zone for a small area of British Columbia
+  * There will be a leapsecod 2012-06-30 23:59:60 UTC.
+
+-------------------------------------------------------------------
+Sat Nov  5 13:58:36 CET 2011 - dmueller@suse.de
+
+- update to 2011n:
+  * Cuba (America/Havana) has extended summer time to end on Nov 13
+  * Europe/Tiraspol decided not to split from the rest of Moldova, hence
+  that zone has been removed
+  * Fiji end of summer time was moved fromrward from Feb 26 to Jan 22
+
+-------------------------------------------------------------------
+Tue Oct 25 17:49:32 CEST 2011 - dmueller@suse.de
+
+- fix build failure of timezone-java
+
+-------------------------------------------------------------------
+Tue Oct 25 14:48:15 CEST 2011 - dmueller@suse.de
+
+- apply patches also for timezone-java
+- add patch to fix Tiraspol split
+
+-------------------------------------------------------------------
+Mon Oct 24 19:19:45 CEST 2011 - dmueller@suse.de
+
+- update to 2011m (bnc#726162):
+  * All Ukrainian timezones are going back to winter time
+    on Oct 30th, 2011
+  * Adding Tiraspol to the zone.tab
+  * America/Bahia switched to DST on Oct 16th, 2011
+
+-------------------------------------------------------------------
+Fri Oct 14 10:41:30 CEST 2011 - dmueller@suse.de
+
+- update to 2011l:
+  * West Bank ended DST 2011-09-30 already
+  * Fiji enters DST on October 23th 2011
+
+-------------------------------------------------------------------
+Sun Oct  2 16:52:08 CEST 2011 - dmueller@suse.de
+
+- update to 2011k:
+  * Palestine suspends DST during Ramadan in 2011;
+    Gaza and Hebron split in 2011, leading to a new
+    Asia/Hebron zone (thanks to Steffen Thorsen and
+    Alexander Krivenshev).
+  * Belarus adopts permanent DST in 2011
+    (thanks to Yauhen Kharuzhy, Alexander Bokovoy,
+    Alexander Krivenyshev, and Kirill A. Shutemov).
+  * Ukraine adopts permanent DST in 2011
+  * "Russia" rules changed to reflect end of use in 2010.
+  * "FET" used as abbreviation for Belarus, Ukraine,
+    and western Russia (thanks to Paul Eggert).
+
+-------------------------------------------------------------------
+Tue Sep 13 12:02:42 CEST 2011 - dmueller@suse.de
+
+- update to 2011j:
+  * Fix past timezones for Kenya, Uganda, and Tanzani
+  * Samoa uses DST in 2011-2012 starting on September 24th 3am
+
+-------------------------------------------------------------------
+Sun Sep  4 20:58:22 UTC 2011 - dmueller@suse.de
+
+- update to 2011i:
+  * Add Africa/Juba (South Sudan) zone
+  * Samoa skips over 2011-12-30
+  * Use KALT as abbreviation for Europe/Kalinigrad from spring
+    2011 forward
+  * Newfoundland changes time of day for DST start and end
+    to 2:00 a.m. starting fall 2011 and forward
+  * Change America/Resolute use of EST to 2006-2007 only
+  * iso3166.tab Add SS (South Sudan) entry.
+  * zone.tab Change America/Resolute entry to Central Standard Time.
+
+-------------------------------------------------------------------
+Mon Jun 27 14:18:10 CEST 2011 - dmueller@suse.de
+
+- update to 2011h (bnc#684181):
+  * Russia is abolishing daylight saving time.
+  * iso3166 code for America/Curacao changed from AN to CW
+
+-------------------------------------------------------------------
+Tue May  3 13:38:42 CEST 2011 - dmueller@suse.de
+
+- update to 2011g (bnc#691414):
+  * Egypt on longer has daylight saving time
+  * Falkland islands on a trial basis do not observe DST anymore
+
+-------------------------------------------------------------------
+Fri Apr  1 20:39:00 CEST 2011 - dmueller@suse.de
+
+- update to 2011e:
+  * Southamerica/Chile: Delay DST until May 7th
+  * Southafrica/Morocco: Updates
+
+-------------------------------------------------------------------
+Mon Mar 14 21:40:14 CET 2011 - dmueller@suse.de
+
+- update to 2011d:
+  * Pacific/Apia: Move DST from April 3rd to April 2nd
+  * Europe/Istanbul: Move DST from March 27th to 28th
+  * America/Cuba: DST starts on March 20th
+
+-------------------------------------------------------------------
+Sat Mar 12 11:09:35 CET 2011 - dmueller@suse.de
+
+- update to 2011c:
+  * northamerica  Replace Juneau with Juneau, Sitka, and Metlakatla.
+  * southamerica  Delay end of DST in 2011 until first Sunday in April.
+
+-------------------------------------------------------------------
+Wed Feb 16 00:48:03 CET 2011 - dmueller@suse.de
+
+- update to 2011b:
+  * updates for australasia and northamerica
+
+-------------------------------------------------------------------
+Tue Nov  2 11:57:20 CET 2010 - dmueller@suse.de
+
+- update to 2010o:
+  * fix Pacific/Apia and Austalasia/Fiji
+
+-------------------------------------------------------------------
+Tue Oct  5 15:42:21 CEST 2010 - dmueller@suse.de
+
+- update to 2010m:
+  * fix historic data of Antarctica/Vostok
+
+-------------------------------------------------------------------
+Tue Sep 21 16:18:24 CEST 2010 - dmueller@suse.de
+
+- change execlp into execl 
+
+-------------------------------------------------------------------
+Wed Aug 25 11:59:01 CEST 2010 - ro@suse.de
+
+- add missing sentinel to tzcode-link.diff 
+
+-------------------------------------------------------------------
+Tue Aug 24 12:11:51 CEST 2010 - pbaudis@suse.cz
+
+- Make zic -l do a copy when hardlinking fails (e.g. because /usr
+  being on a separate partition) [bnc#607532]
+
+-------------------------------------------------------------------
+Thu Aug 19 18:12:03 CEST 2010 - ro@suse.de
+
+- un-fuzz patches to fix build 
+
+-------------------------------------------------------------------
+Thu Aug 19 01:18:14 CEST 2010 - pbaudis@suse.cz
+
+- update tzdata to 2010l
+
+  * DST changes: Africa/Cairo, Africa/Casablanca, Asia/Gaza,
+                 America/Argentina/San_Luis
+  * New zones: America/Bahia_Banderas
+  * Historical changes: Asia/Taipei, Europe/Helsinki
+  * Spelling changes: Pacific/Chuuk, Pacific/Pohnpei
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Apr  6 15:55:48 CEST 2010 - pbaudis@suse.cz
+
+- update tzdata to 2010h:
+  
+  * DST changes: Asia/Dhaka (again...), Asia/Karachi, Asia/Gaza,
+    Asia/Damascus, Pacific/Apia, Africa/Tunis
+  * GMT offset changes: Europe/Samara, Asia/Kamchatka, Asia/Anadyr
+  * Various Antarctica timezone changes
+
+-------------------------------------------------------------------
+Thu Mar 18 17:07:37 CET 2010 - pbaudis@suse.cz
+
+- cleanup; changes since 2009u are:
+  * DST changes: Asia/Dhaka (yet again), Pacific/Fiji, Pacific/Apia,
+    America/Santiago, Pacific/Easter, America/Asuncion
+  * New zones: America/Matamoros, America/Ojinaga, America/Santa_Isabel
+
+-------------------------------------------------------------------
+Sun Mar 14 13:04:16 UTC 2010 - crrodriguez@opensuse.org
+
+- Update to 2010e, including Chile's emergency DST changes
+- Update code to 2010c - mostly just cleanups
+
+-------------------------------------------------------------------
+Tue Jan  5 14:27:27 CET 2010 - pbaudis@suse.cz
+
+- update tzdata to 2009u:
+  * DST changes: Asia/Damascus, Asia/Dhaka, Pacific/Fiji
+  * GMT offset changes: some bases in Antartica
+  * New zones: Asia/Novokuznetsk
+  * Historical changes: Asia/Hong_Kong
+- typo fix in Asia/Dhaka Jun 2009 transition rule
+
+-------------------------------------------------------------------
+Tue Dec  8 22:53:36 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Tue Nov  3 19:14:45 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Oct 26 17:20:13 CET 2009 - pbaudis@suse.cz
+
+- update data to 2009p - Argentina switch to DST
+
+-------------------------------------------------------------------
+Fri Oct 23 19:21:09 CEST 2009 - pbaudis@suse.cz
+
+- update data to 2009o:
+  * DST changes: Asia/Karachi, Asia/Dhaka
+- Apply a patch for changes in Argentina DST: Argentina is not
+  switching to DST, except America/Argentina/SanLuis; version number
+  modified to 2009oa to reflect the extra patch.
+
+-------------------------------------------------------------------
+Tue Sep 15 00:35:41 CEST 2009 - pbaudis@suse.cz
+
+- The abbreviation definition of GB should be United Kingdom instead
+  of Britain (UK) [bnc#519410]
+
+-------------------------------------------------------------------
+Tue Sep  8 16:43:50 CEST 2009 - pbaudis@suse.cz
+
+- update data to 2009m:
+  * DST changes: Africa/Cairo, Indian/Mauritius, Asia/Dhaka,
+    Asia/Karachi, Asia/Gaza, Pacific/Apia
+  * Fix bad DST information since 2002: Asia/Amman
+- update code to 2009k:
+  * zic tried to generate wrong POSIX tz string in a pathological case
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Tue Apr 21 14:41:08 CEST 2009 - werner@suse.de
+
+- Use Unversial time zone for posixrules
+- Use mktemp from coreutiles for temporary file
+
+-------------------------------------------------------------------
+Thu Mar 26 01:40:08 CET 2009 - pbaudis@suse.cz
+
+- update to 2009d:
+  * DST changes: Africa/Casablanca, Africa/Tunis, Asia/Damascus,
+      America/Argentina/San_Luis
+
+-------------------------------------------------------------------
+Tue Feb 24 13:51:01 CET 2009 - schwab@suse.de
+
+- Don't copy directory into itself.
+
+-------------------------------------------------------------------
+Mon Feb 23 13:30:01 CET 2009 - dmueller@suse.de
+
+- update to 2009b:
+  * leapseconds: updated to reflect no mid-2009 leap second
+  * zic.c: fix fence-post error (fixes corrupt timezone
+  database)
+
+-------------------------------------------------------------------
+Tue Feb  3 14:14:30 CET 2009 - dmueller@suse.de
+
+- update to 2009a:
+  * asia
+    change Katmandu to Kathmandu
+  * backward
+    provide Katmandu link
+  * europe
+    correct Swiss rules
+  * northamerica
+    clearer definition of Cuban transitions (no binary change)
+    Resolute changes abbreviation (but not time) twice a year
+
+-------------------------------------------------------------------
+Wed Dec  3 10:40:37 CET 2008 - dmueller@suse.de
+
+- update to 2008i:
+  * South America Updates (corrections to Argentina DST rules)
+  * US zone reordering and recommenting
+
+-------------------------------------------------------------------
+Wed Oct 15 03:29:11 CEST 2008 - pbaudis@suse.cz
+
+- Add coreutils to the prerequisites [bnc#420365]
+
+-------------------------------------------------------------------
+Mon Oct 13 18:06:44 CEST 2008 - pbaudis@suse.cz
+
+- update to 2008h: Fix DST for Indian/Mauritius and Asia/Damascus
+
+-------------------------------------------------------------------
+Thu Oct  9 12:50:14 CEST 2008 - dmueller@suse.de
+
+- update to 2008g:
+  * Pakistan, Mauritius, Gaza, Argentina, Brazil, Mongolia,
+    Morocco, Cuba, Chile
+
+-------------------------------------------------------------------
+Mon Sep 29 10:26:03 CEST 2008 - mvyskocil@suse.cz
+
+- Moved the timezone-java to separate specfile (adrian's request for better
+  bootstrapping of SUSE)
+
+-------------------------------------------------------------------
+Wed Sep 10 09:35:18 CEST 2008 - mvyskocil@suse.cz
+
+- Remove a rht renaming hack, because is not necessary in SUSE's build system
+  and move the javazic to a new package
+- Use a gcc-gij as a default java implementation
+- Use a %setup macro instead of tar -xf
+- Use javazi as a destination directory for java zone info files.
+
+-------------------------------------------------------------------
+Fri Sep  5 10:18:38 CEST 2008 - mvyskocil@suse.cz
+
+- Add new java subpackage (necessary for openjdk) 
+
+-------------------------------------------------------------------
+Tue Jun  3 15:04:02 CEST 2008 - pbaudis@suse.cz
+
+- Update to version 2008c (Marocco, Mongolia, Pakistan DST changes)
+  [bnc#396308]
+
+-------------------------------------------------------------------
+Wed Apr  2 18:53:35 CEST 2008 - pbaudis@suse.cz
+
+- Update to version 2008b (esp. Chile, Cuba, Iraq, Syria DST changes)
+  [bnc#368760]
+
+-------------------------------------------------------------------
+Fri Jan 25 04:28:55 CET 2008 - pbaudis@suse.cz
+
+- Update to version 2007k (esp. Argentina DST change) [#350489]
+
+-------------------------------------------------------------------
+Wed Jan 16 14:44:45 CET 2008 - schwab@suse.de
+
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Thu Dec  6 02:12:24 CET 2007 - pbaudis@suse.cz
+
+- Update to version 2007j (esp. Venezuela time shift)
+
+-------------------------------------------------------------------
+Mon Oct  8 00:22:17 CEST 2007 - pbaudis@suse.cz
+
+- Update to version 2007h
+
+-------------------------------------------------------------------
+Sat Sep  8 16:12:14 CEST 2007 - pbaudis@suse.cz
+
+- Fix %post script to work in patch RPMs as well
+
+-------------------------------------------------------------------
+Tue Aug 21 19:19:55 CEST 2007 - pbaudis@suse.cz
+
+- Update to version 2007g
+
+-------------------------------------------------------------------
+Wed Aug  8 02:40:13 CEST 2007 - pbaudis@suse.cz
+
+- Fix %post if /etc/localtime doesn't exist yet
+
+-------------------------------------------------------------------
+Fri Aug  3 11:36:39 CEST 2007 - pbaudis@suse.cz
+
+- Split timezone package to a separate physical package
+
+-------------------------------------------------------------------
+Fri Jul 27 11:32:54 CEST 2007 - aj@suse.de
+
+- Use fdupes to reduce timezone data size.
+
+-------------------------------------------------------------------
+Fri Jul 13 18:27:49 CEST 2007 - schwab@suse.de
+
+- Update to head of glibc-2.6 branch.
+- Fix update on ppc.
+
+-------------------------------------------------------------------
+Thu Jun 28 14:59:55 CEST 2007 - matz@suse.de
+
+- Add a provide for "rtld(GNU_HASH)".
+
+-------------------------------------------------------------------
+Sun Jun 17 12:30:26 CEST 2007 - schwab@suse.de
+
+- Fix section selection in crt objects.
+
+-------------------------------------------------------------------
+Thu Jun  7 02:43:29 CEST 2007 - pbaudis@suse.cz
+
+- Backport fix for crashing printf() of some invalid ldouble values
+
+-------------------------------------------------------------------
+Wed May 30 04:40:25 CEST 2007 - pbaudis@suse.cz
+
+- Added few fixes from 2.6 CVS before 2.6.1 gets released
+
+-------------------------------------------------------------------
+Fri May 18 23:14:42 CEST 2007 - pbaudis@suse.cz
+
+- Update glibc to version 2.6
+- Update tzdata to version 2007f
+
+-------------------------------------------------------------------
+Fri May  4 11:24:53 CEST 2007 - schwab@suse.de
+
+- Update build checks.
+
+-------------------------------------------------------------------
+Fri Apr 20 13:13:52 CEST 2007 - dmueller@suse.de
+
+- only keep symtab for libpthread*
+
+-------------------------------------------------------------------
+Thu Apr 19 23:22:35 CEST 2007 - pbaudis@suse.cz
+
+- Fix strtod() exponent limit calculations [#230909]
+- Fix random nscd crashes under very heavy passwd/group queries
+  load [#192391]
+- Add some enums from CVS to sys/personality.h [#253710]
+- Fix pthread_atfork()-induced hangs in threaded programs [#256237]
+- Fix llrintl() on ppc64 [#241183]
+- Fix makecontext() segfault [#249780]
+- Fix potential dladdr() breakage [#241464]
+- Fix some races in client programs with nscd garbage collection [#252138]
+
+-------------------------------------------------------------------
+Fri Mar 30 02:54:06 CEST 2007 - pbaudis@suse.cz
+
+- Update localtime during timezone update [#239888]
+
+-------------------------------------------------------------------
+Sun Mar 25 10:00:59 CEST 2007 - olh@suse.de
+
+- temporary disable powerpc cputuned libs to reduce turnaround time
+
+-------------------------------------------------------------------
+Fri Feb  9 15:03:50 CET 2007 - pbaudis@suse.cz
+
+- Update to the latest upstream timezone data [#231833]
+
+-------------------------------------------------------------------
+Fri Feb  2 11:42:51 CET 2007 - schwab@suse.de
+
+- Remove -ffortify.
+
+-------------------------------------------------------------------
+Thu Feb  1 13:43:54 CET 2007 - schwab@suse.de
+
+- Remove -fstack-protector.
+
+-------------------------------------------------------------------
+Mon Jan 29 16:13:09 CET 2007 - sbrabec@suse.cz
+
+- Removed references to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jan 25 21:14:58 CET 2007 - olh@suse.de
+
+- link power4 to ppc970, link power6 to power6x
+- Update the powerpc cpu-tuned environment to v0.05
+
+-------------------------------------------------------------------
+Mon Jan 22 14:43:40 CET 2007 - schwab@suse.de
+
+- Update ppc build check.
+
+-------------------------------------------------------------------
+Fri Nov 24 12:45:26 CET 2006 - pbaudis@suse.cz
+
+- Fix for Brazilian and Wester Australia timezone DSTs [#213375,#223196]
+
+-------------------------------------------------------------------
+Thu Nov 16 21:59:06 CET 2006 - pbaudis@suse.cz
+
+- Disable power6 optimization for 10.2, not all pieces are there
+  [#219962]
+
+-------------------------------------------------------------------
+Wed Oct 25 22:23:48 CEST 2006 - pbaudis@suse.cz
+
+- Change ld.so madvise() call to posix_fadvise()
+- Fix mallopt(M_MXFAST,0) behaviour [#198760]
+- Update the powerpc cpu-tuned environment to v0.04 [#215117]
+
+-------------------------------------------------------------------
+Sun Oct 22 21:59:49 CEST 2006 - pbaudis@suse.cz
+
+- Update the powerpc cpu-tuned environment to v0.03 [#212549]
+- Improve glibc powerpc optimization [#212548,#212580,#214282]
+
+-------------------------------------------------------------------
+Tue Oct 17 21:03:54 CEST 2006 - mls@suse.de
+
+- add ldconfig-old-cache patch to speed up ldconfig
+
+-------------------------------------------------------------------
+Sat Oct 14 12:23:53 CEST 2006 - olh@suse.de
+
+- dont use uninitialized (and wrong) variable in glibc-2.4.90-bdirect.diff
+  [#212470]
+
+-------------------------------------------------------------------
+Thu Oct 12 02:33:58 CEST 2006 - pbaudis@suse.cz
+
+- Update to the latest 2.5 CVS
+- More friendly -Bdirect behaviour in case of missing libraries
+- Fix 2.4.90-nscd patch wrt. new gcc
+
+-------------------------------------------------------------------
+Mon Oct  2 13:37:26 CEST 2006 - aj@suse.de
+
+- Fix warnings in testsuite (patch from CVS).
+
+-------------------------------------------------------------------
+Fri Sep 29 22:06:43 CEST 2006 - pbaudis@suse.cz
+
+- Update to 2.5 CVS - official release (only minimal changes in CVS
+  since the last update)
+- Fix a thinko in the -Bdirect patch
+
+-------------------------------------------------------------------
+Fri Sep 29 19:51:24 CEST 2006 - dmueller@suse.de
+
+- fix devel requires
+
+-------------------------------------------------------------------
+Fri Sep 29 04:27:40 CEST 2006 - pbaudis@suse.cz
+
+- Make the dynamic linker support direct bindings (Michael Meeks'
+  Solaris-like -Bdirect with minor changes by me)
+- Split the kernel headers to a new package (linux-kernel-headers)
+
+-------------------------------------------------------------------
+Wed Sep 27 14:59:32 CEST 2006 - schwab@suse.de
+
+- Fix broken assertion [#208189].
+
+-------------------------------------------------------------------
+Tue Sep 26 18:10:38 CEST 2006 - pbaudis@suse.cz
+
+- Fix mistake when removing some patches
+
+-------------------------------------------------------------------
+Mon Sep 25 21:15:15 CEST 2006 - pbaudis@suse.cz
+
+- Update to current CVS
+
+-------------------------------------------------------------------
+Sat Sep 23 04:36:58 CEST 2006 - pbaudis@suse.cz
+
+- Fix 64bit-cleanliness gcc warnings
+
+-------------------------------------------------------------------
+Thu Sep 21 23:52:13 CEST 2006 - pbaudis@suse.cz
+
+- Add /usr/lib{,64}/Xaw3d to /etc/ld.so.conf (by schwab@suse.de,
+  from original STABLE) [#205169]
+- Fix chown() instead of lchown() called in fchownat() emulation
+  [#201751]
+- Fix glob() overflowing stack when producing massive number of
+  matches [#190458]
+- Update to current CVS
+
+-------------------------------------------------------------------
+Wed Sep 20 23:48:20 CEST 2006 - pbaudis@suse.cz
+
+- Fix cut'n'paste error in a last-minute change
+
+-------------------------------------------------------------------
+Wed Sep 20 22:07:59 CEST 2006 - pbaudis@suse.cz
+
+- Update to current CVS
+- Fix powerpc-cpu tarball extension
+- Move crypt-blowfish to a patch so that quilt works on the tree
+
+-------------------------------------------------------------------
+Sat Sep  2 19:01:21 CEST 2006 - schwab@suse.de
+
+- Use asm-powerpc for ppc and ppc64.
+- Fix chroot check in glibc_post_upgrade.
+
+-------------------------------------------------------------------
+Mon Aug 28 01:24:24 CEST 2006 - pbaudis@suse.cz
+
+- Update to current CVS, should fix false positive heap overflow
+  trigger from malloc() causing gcc to hang [#201724]
+
+-------------------------------------------------------------------
+Wed Aug 23 23:56:35 CEST 2006 - pbaudis@suse.cz
+
+- Update the powerpc cpu-tuned environment to v0.02 [#199274]
+- Update to current CVS
+- Drop pthread_mutexattr_getprioceiling() out of range fix
+
+-------------------------------------------------------------------
+Thu Aug 10 20:10:04 CEST 2006 - pbaudis@suse.cz
+
+Ported from STABLE:
+- Remove libc5 reference from /etc/ld.so.conf, shlibs5 is no longer
+  supported [#181947]
+- Fix name of a dummy ia64 header from offsets.h to asm-offsets.h
+  [#191394]
+
+-------------------------------------------------------------------
+Sun Jul 30 23:33:04 CEST 2006 - pbaudis@suse.cz
+
+- Update to current CVS snapshot (highlight: support for .gnu.hash
+  fast linking support)
+
+-------------------------------------------------------------------
+Wed Jul 12 03:15:08 CEST 2006 - pbaudis@suse.cz
+
+- pthread_mutexattr_getprioceiling() was returning prioceiling out
+  of range [#182782]
+
+-------------------------------------------------------------------
+Wed Jul 12 02:39:22 CEST 2006 - pbaudis@suse.cz
+
+- Fix the HTML documentation missing an index [#190585]
+
+-------------------------------------------------------------------
+Sat Jun 24 18:32:42 CEST 2006 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Update to kernel-headers 2.6.17
+- Remove HZ define (sysconf(_SC_CLK_TCK) instead)
+
+-------------------------------------------------------------------
+Tue Jun 13 11:49:43 CEST 2006 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Tue May  2 14:10:41 CEST 2006 - pbaudis@suse.cz
+
+- Fix bad memset() size in NTPL code [#159184]
+
+-------------------------------------------------------------------
+Tue May  2 10:42:55 CEST 2006 - kukuk@suse.de
+
+- asm-powerpc/page.h: Don't move #ifdef __KERNEL__ [#171010]
+- bits/mman.h: Fix value of MADV_REMOVE [#170734]
+
+-------------------------------------------------------------------
+Mon Apr 24 12:04:12 CEST 2006 - kukuk@suse.de
+
+- Fix china timezone mess [#163674]
+- Don't include linux/stddef.h [#167964]
+
+-------------------------------------------------------------------
+Tue Apr 18 14:38:57 CEST 2006 - schwab@suse.de
+
+- Sanitize <asm-powerpc/sigcontext.h>.
+
+-------------------------------------------------------------------
+Thu Apr 13 13:34:07 CEST 2006 - kukuk@suse.de
+
+- Add /usr/include/linux/taskstats.h [#141936]
+
+-------------------------------------------------------------------
+Tue Apr 11 12:20:57 CEST 2006 - kukuk@suse.de
+
+- nptl/init.c (sigcancel_handler): Compare with correct PID even 
+  if the thread is in the middle of a fork call.
+  (sighandler_setxid): Likewise.
+
+-------------------------------------------------------------------
+Sun Apr  9 16:27:20 CEST 2006 - ihno@suse.de
+
+- S390 fix for startupcode. Part of it was not PIC.
+
+-------------------------------------------------------------------
+Fri Apr  7 13:42:20 CEST 2006 - kukuk@suse.de
+
+- Don't hardcode syscall numbers at our own
+
+-------------------------------------------------------------------
+Tue Apr  4 22:10:47 CEST 2006 - schwab@suse.de
+
+- Fix readlink declaration.
+
+-------------------------------------------------------------------
+Mon Apr  3 13:40:54 CEST 2006 - kukuk@suse.de
+
+- Update from CVS:
+  - nscd bug fixes
+  - Match return value of readlink to what POSIX says
+  - Fix NIS+ checks for NULL pointer
+
+-------------------------------------------------------------------
+Sun Apr  2 20:53:17 CEST 2006 - dmueller@suse.de
+
+- Fix clients crash if nscd is unresponsive (glibc-#2501)
+- Fix fd leak in nscd daemon (glibc-#2498)
+
+-------------------------------------------------------------------
+Sat Apr  1 21:48:54 CEST 2006 - schwab@suse.de
+
+- Fix <sys/procfs.h> on ppc64.
+
+-------------------------------------------------------------------
+Fri Mar 31 15:50:25 CEST 2006 - schwab@suse.de
+
+- Extend last change also to ppc64.
+
+-------------------------------------------------------------------
+Sun Mar 26 21:08:58 CEST 2006 - schwab@suse.de
+
+- Terminate FDE before clone syscall.
+
+-------------------------------------------------------------------
+Fri Mar 24 14:58:29 CET 2006 - ro@suse.de
+
+- kernel-headers: asm-powerpc: define PAGE_MASK in page.h
+
+-------------------------------------------------------------------
+Mon Mar 20 13:57:27 CET 2006 - kukuk@suse.de
+
+- Update to final 2.6.16 kernel headers
+- Update to current CVS:
+  - Don't use TLS before setting it up.
+  - Fix rounding of long doubles on ppc64.
+  - Correct usage of cfi_offset on ppc/ppc64.
+  - Fix memory leak in dlopen.
+
+-------------------------------------------------------------------
+Tue Mar 14 17:08:27 CET 2006 - schwab@suse.de
+
+- Update fnmatch patch.
+
+-------------------------------------------------------------------
+Fri Mar 10 13:36:38 CET 2006 - kukuk@suse.de
+
+- Disable unshare() syscall (request of kernel developer)
+
+-------------------------------------------------------------------
+Fri Mar 10 08:30:53 CET 2006 - kukuk@suse.de
+
+- Don't include linux/interrupt.h from linux/rtc.h
+- Revert last change to linux/input.h, disable struct
+- Update to current CVS (nptl/ia64 fix)
+
+-------------------------------------------------------------------
+Thu Mar  9 07:58:20 CET 2006 - kukuk@suse.de
+
+- Fix linux/input.h for userspace inclusion
+
+-------------------------------------------------------------------
+Wed Mar  8 22:06:11 CET 2006 - kukuk@suse.de
+
+- Update kernel headers to 2.6.16-rc5
+
+-------------------------------------------------------------------
+Mon Mar  6 13:41:08 CET 2006 - kukuk@suse.de
+
+- Update to 2.4 CVS
+  - official release
+  - Fix free on ppc [#155374]
+  - Various sysconf() fixes
+
+-------------------------------------------------------------------
+Sat Mar  4 18:12:36 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+  - ldconfig/prelink fixes
+
+-------------------------------------------------------------------
+Fri Mar  3 17:32:56 CET 2006 - aj@suse.de
+
+- Do not leave hyphens in defines in create_biarch_asm.sh (Bug 154998).
+
+-------------------------------------------------------------------
+Fri Mar  3 10:58:02 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+  - Fix ftw test suite failures
+  - Fix alignment of malloc for long double
+
+-------------------------------------------------------------------
+Thu Mar  2 09:56:59 CET 2006 - kukuk@suse.de
+
+- Update to 2.3.91 CVS
+  - Fix 6arg syscall on s390x
+  - memccpy fix on IA64
+
+-------------------------------------------------------------------
+Wed Mar  1 08:54:53 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+  - New linkat interface
+  - Update from tzdata2006b
+  - Define MADV_DONTFORK and MADV_DOFORK.
+  - Add robust mutex to NPTL
+
+-------------------------------------------------------------------
+Thu Feb 23 15:26:29 CET 2006 - kukuk@suse.de
+
+- Reenable power optimized code again [#142839]
+
+-------------------------------------------------------------------
+Sun Feb 12 09:45:39 CET 2006 - kukuk@suse.de
+
+- Disable power optimized code
+
+-------------------------------------------------------------------
+Thu Feb  9 10:50:12 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+  - Add unshare prototype
+  - Add memory barrier on i386/NPTL
+
+-------------------------------------------------------------------
+Wed Feb  8 10:50:07 CET 2006 - kukuk@suse.de
+
+- Remove glibc-2.4-ppc-dl-procinfo-20060111.diff [#142839]
+
+-------------------------------------------------------------------
+Mon Feb  6 16:58:50 CET 2006 - kukuk@suse.de
+
+- Update to current CVS
+- Fix alternate locale search path patch [#147685]
+
+-------------------------------------------------------------------
+Thu Feb  2 12:13:19 CET 2006 - kukuk@suse.de
+
+- Update to current CVS
+
+-------------------------------------------------------------------
+Mon Jan 30 16:10:35 CET 2006 - schwab@suse.de
+
+- Fix the fix.
+
+-------------------------------------------------------------------
+Sat Jan 28 18:42:08 CET 2006 - kukuk@suse.de
+
+- Fix seg.fault in __atfct_seterrno if called from futimesat()
+- Apply patches for CPU-Tuned Environment on Power [#142839]
+
+-------------------------------------------------------------------
+Fri Jan 27 12:10:55 CET 2006 - kukuk@suse.de
+
+- Cleanup ld.so.conf
+
+-------------------------------------------------------------------
+Thu Jan 26 08:53:33 CET 2006 - kukuk@suse.de
+
+- Add alternate directory for translations [#144073]
+
+-------------------------------------------------------------------
+Thu Jan 26 00:41:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 17:44:50 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+- Fix build_locales
+
+-------------------------------------------------------------------
+Sat Jan 21 10:24:02 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+- Fix inclusion of sys/poll.h with _GNU_SOURCE defined
+
+-------------------------------------------------------------------
+Fri Jan 20 15:02:35 CET 2006 - kukuk@suse.de
+
+- Update to CVS
+
+-------------------------------------------------------------------
+Sun Jan 15 08:28:26 CET 2006 - kukuk@suse.de
+
+- Update to CVS (fix long double configure check)
+
+-------------------------------------------------------------------
+Sun Jan 15 01:59:54 CET 2006 - schwab@suse.de
+
+- Readd <fmtmsg.h>, <ucontext.h>, <sys/ucontext.h>.
+
+-------------------------------------------------------------------
+Sun Jan 15 01:08:22 CET 2006 - schwab@suse.de
+
+- Readd <alloca.h>.
+
+-------------------------------------------------------------------
+Sat Jan 14 22:33:32 CET 2006 - kukuk@suse.de
+
+- Update to current CVS (long double support)
+
+-------------------------------------------------------------------
+Fri Jan 13 09:17:17 CET 2006 - aj@suse.de
+
+- Fix x86-64 w_exp to not use extra plt.
+
+-------------------------------------------------------------------
+Thu Jan 12 22:39:01 CET 2006 - kukuk@suse.de
+
+- Fix asm-s390/setup.h for userspace inclusion
+- nsswitch.conf: Add nis to netgroup and automount entry
+- Fix sys/procfs.h for ppc64
+
+-------------------------------------------------------------------
+Mon Jan  9 23:20:14 CET 2006 - kukuk@suse.de
+
+- Update to current CVS (fix for pthread.h with -std=c99)
+- Define PAGE_SIZE on POWER
+- Don't include linux/sched.h in asm-power/elf.h
+
+-------------------------------------------------------------------
+Sun Jan  8 17:58:11 CET 2006 - kukuk@suse.de
+
+- Fix linux/acct.h for userland inclusion
+
+-------------------------------------------------------------------
+Sun Jan  8 11:48:58 CET 2006 - kukuk@suse.de
+
+- Update to current CVS
+- Remove CHILD_MAX from kernel-headers
+- Copy subdirectories of asm-power, too.
+- Remove da_DK@euro (does not exist)
+
+-------------------------------------------------------------------
+Sat Jan  7 10:02:43 CET 2006 - kukuk@suse.de
+
+- Fix ext2 kernel headers
+- Update to current CVS
+
+-------------------------------------------------------------------
+Fri Jan  6 12:28:10 CET 2006 - kukuk@suse.de
+
+- Update to kernel headers 2.6.15
+
+-------------------------------------------------------------------
+Fri Jan  6 00:58:28 CET 2006 - kukuk@suse.de
+
+- Update crypt_blowfish to version 1.0
+- Update to current CVS
+- Adjust nscd patches
+
+-------------------------------------------------------------------
+Tue Jan  3 17:19:36 CET 2006 - aj@suse.de
+
+- Update to current CVS to fix pthread.h on 64-bit systems for C++.
+
+-------------------------------------------------------------------
+Tue Jan  3 06:04:26 CET 2006 - aj@suse.de
+
+- Enable string patch again.
+- Update to current CVS.
+
+-------------------------------------------------------------------
+Wed Dec 21 15:11:14 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Fix ldconfig
+
+-------------------------------------------------------------------
+Sat Dec 17 09:49:18 CET 2005 - kukuk@suse.de
+
+- Remove /usr/lib/zoneinfo
+- Add /etc/localtime to filelist
+- Update to current CVS
+- Fix glibc #1978: statvfs does not know about current filesystems
+- Fix wrong error return code of time() on x86
+- Remove nscd_nischeck
+- Remove audit from nfb
+- Remove LinuxThreads
+
+-------------------------------------------------------------------
+Wed Dec 14 18:00:59 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Remove nscd_nischeck
+- Remove audit from nfb
+
+-------------------------------------------------------------------
+Mon Dec  5 12:07:05 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Disable SELinux
+
+-------------------------------------------------------------------
+Thu Nov 24 15:54:27 CET 2005 - kukuk@suse.de
+
+- Remove obsolete patches:
+  - glibc-2.3.asprintf-error_handling.diff
+  - glibc-2.3.90-missing-string_h.diff
+
+-------------------------------------------------------------------
+Wed Nov 23 17:20:10 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Don't install in parallel
+
+-------------------------------------------------------------------
+Fri Nov 18 13:42:43 CET 2005 - kukuk@suse.de
+
+- Update to current CVS to fix compiling with new binutils
+
+-------------------------------------------------------------------
+Wed Nov 16 18:33:57 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+
+-------------------------------------------------------------------
+Sat Nov  5 14:44:07 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Disable linuxthreads on POWER and Itanium
+- Fix kernel-headers for userland inclusion
+
+-------------------------------------------------------------------
+Wed Nov  2 17:12:36 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Update to kernel-headers 2.6.14
+
+-------------------------------------------------------------------
+Tue Oct 18 17:37:08 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+
+-------------------------------------------------------------------
+Sat Oct  1 23:00:04 CEST 2005 - schwab@suse.de
+
+- Update libm ULPs.
+- Fix limit in getcwd.
+
+-------------------------------------------------------------------
+Thu Sep 15 16:13:50 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Update to final 2.6.13 kernel headers
+- Adjust bindresvport.blacklist patch to check already ports >= 512
+
+-------------------------------------------------------------------
+Fri Aug 26 16:41:56 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+- init.d/nscd: Remove -S support (was removed from nscd)
+
+-------------------------------------------------------------------
+Fri Aug 19 18:28:24 CEST 2005 - schwab@suse.de
+
+- Fix comment.
+
+-------------------------------------------------------------------
+Fri Aug 19 16:36:24 CEST 2005 - matz@suse.de
+
+- Change .note.SuSE format [#105825].
+
+-------------------------------------------------------------------
+Fri Aug 19 16:13:21 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Move all obsolete libraries into own subpackage and document
+  them as obsolete
+
+-------------------------------------------------------------------
+Fri Aug  5 10:32:38 CEST 2005 - schwab@suse.de
+
+- -mno-tls-direct-seg-refs is x86-only
+
+-------------------------------------------------------------------
+Tue Aug  2 14:54:01 CEST 2005 - kukuk@suse.de
+
+- Update to 2.3.x CVS branch
+- Compile with -mno-tls-direct-seg-refs
+
+-------------------------------------------------------------------
+Fri Jul 29 11:12:02 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS head
+
+-------------------------------------------------------------------
+Wed Jul 27 23:13:04 CEST 2005 - schwab@suse.de
+
+- Update libm ULPs for ia64.
+- Add linuxthreads stack guard support for ia64.
+
+-------------------------------------------------------------------
+Sat Jul 23 10:05:16 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS head (adds bits/wchar2.h)
+- Move LinuxThreads version to obsolete/linuxthreads
+
+-------------------------------------------------------------------
+Thu Jul 21 15:04:31 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS head
+
+-------------------------------------------------------------------
+Fri Jul 15 15:45:35 CEST 2005 - schwab@suse.de
+
+- Fix file list.
+
+-------------------------------------------------------------------
+Fri Jul 15 12:09:08 CEST 2005 - aj@suse.de
+
+- Fix amd64 string routines and math routines.
+
+-------------------------------------------------------------------
+Fri Jul 15 08:45:27 CEST 2005 - kukuk@suse.de
+
+- Use old LinuxThreads only for runtime and remove static version
+  and headers
+- Update to current CVS head
+- Remove own texi2html
+
+-------------------------------------------------------------------
+Mon Jul 11 11:00:47 CEST 2005 - kukuk@suse.de
+
+- Install generic stdio-lock.h header file
+
+-------------------------------------------------------------------
+Sat Jul  9 18:46:46 CEST 2005 - kukuk@suse.de
+
+- Temporary disable AMD64 string optimization
+
+-------------------------------------------------------------------
+Wed Jul  6 09:58:39 CEST 2005 - kukuk@suse.de
+
+- Build and install ja_JP.SHIFT_JISX0213 locale [Bug #84030]
+
+-------------------------------------------------------------------
+Mon Jul  4 20:41:47 CEST 2005 - kukuk@suse.de
+
+- nss_compat: Preserve original return value [Bug #95033]
+- Cleanup old Obsoletes/Requires
+
+-------------------------------------------------------------------
+Mon Jun 27 13:49:38 CEST 2005 - kukuk@suse.de
+
+- Update to current gilbc CVS snapshot
+
+-------------------------------------------------------------------
+Thu Jun 23 23:25:42 CEST 2005 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Adjust nscd patch
+- Enable SELinux/audit support for nscd
+- Update .note.SuSE version
+
+-------------------------------------------------------------------
+Mon Jun 20 12:35:20 CEST 2005 - kukuk@suse.de
+
+- Update to final 2.6.12 kernel headers
+- Update to current glibc CVS snapshot
+
+-------------------------------------------------------------------
+Thu Jun 16 17:03:43 CEST 2005 - kukuk@suse.de
+
+- Update linux/audit.h header
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Mon Jun 13 14:48:53 CEST 2005 - kukuk@suse.de
+
+- Don't terminate strings twice in nis/netgroup code.   
+- netinet/if_tr.h: don't include kernel headers.
+
+-------------------------------------------------------------------
+Wed Jun  8 16:26:21 CEST 2005 - kukuk@suse.de
+
+- Update to kernel-headers 2.6.12-rc6
+- Fix build on s390 and s390x
+
+-------------------------------------------------------------------
+Wed Jun  8 12:08:49 CEST 2005 - matz@suse.de
+
+- Don't strip .symtab from libpthread.so.0 (and other libs).
+  Fixes debugging of threaded programs (#81253).
+
+-------------------------------------------------------------------
+Mon Jun  6 18:47:22 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS head
+- Update to kernel-headers 2.6.12-rc5
+
+-------------------------------------------------------------------
+Thu May 26 20:07:11 CEST 2005 - schwab@suse.de
+
+- No longer build loadlocale.c with -fno-unit-at-a-time.
+
+-------------------------------------------------------------------
+Tue May 24 11:09:00 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS head, obsoletes:
+  - glibc-2.3.90-libm.diff
+  - glibc-2.3.90-i386-sysdep.diff
+  - warn.diff
+  - dl-osinfo.diff
+  Adjusted:
+  - glibc-2.3.90-bindresvport.blacklist.diff
+
+-------------------------------------------------------------------
+Sun May 22 01:53:44 CEST 2005 - schwab@suse.de
+
+- Fix missing include.
+
+-------------------------------------------------------------------
+Tue May 17 23:46:19 CEST 2005 - schwab@suse.de
+
+- Fix warning.
+
+-------------------------------------------------------------------
+Fri Apr 29 15:11:22 CEST 2005 - kukuk@suse.de
+
+- Update to latest CVS snapshost
+
+-------------------------------------------------------------------
+Sat Apr 23 17:05:58 CEST 2005 - kukuk@suse.de
+
+- Fix all the archs using wrong FLAGS
+
+-------------------------------------------------------------------
+Sat Apr 23 08:02:31 CEST 2005 - kukuk@suse.de
+
+- Remove -D_FORTIFY_SOURCE from RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Fri Apr 22 13:05:40 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS
+
+-------------------------------------------------------------------
+Fri Apr 22 12:45:26 CEST 2005 - kukuk@suse.de
+
+- Check if nice value does not conflict with test suite
+
+-------------------------------------------------------------------
+Tue Apr 19 13:54:03 CEST 2005 - mls@suse.de
+
+- resolv: trigger re-read of /etc/resolv.conf for all threads if
+  a change is detected
+- nscd: support a negative timeout of zero, used by hosts cache
+
+-------------------------------------------------------------------
+Mon Apr 18 17:31:23 CEST 2005 - meissner@suse.de
+
+- Enable fortify possibility even for GCC 4.0, we apply
+  the necessary patch to the SUSE GCC 4.0.
+
+-------------------------------------------------------------------
+Sat Apr 16 12:16:13 CEST 2005 - aj@suse.de
+
+- Apply amd64 string diff again.
+
+-------------------------------------------------------------------
+Tue Apr 12 11:35:46 CEST 2005 - kukuk@suse.de
+
+- Update kernel-headers to 2.6.10
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Wed Apr  6 18:33:32 CEST 2005 - schwab@suse.de
+
+- Cleanup neededforbuild.
+
+-------------------------------------------------------------------
+Tue Apr  5 22:02:25 CEST 2005 - aj@suse.de
+
+- Add gettext-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:45:06 CEST 2005 - aj@suse.de
+
+- Do not build on xen machines.
+- Adjust libm ULPs for PowerPC.
+
+-------------------------------------------------------------------
+Fri Apr  1 14:20:45 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Tue Mar 29 10:57:40 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Fix compiler warnings on ix86
+
+-------------------------------------------------------------------
+Mon Mar 28 17:27:44 CEST 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Disable Noversion Patch on i386 temporary
+
+-------------------------------------------------------------------
+Fri Mar 18 14:33:22 CET 2005 - ro@suse.de
+
+- check-build.sh: require 2.6.11 on x86,x86_64 for build
+
+-------------------------------------------------------------------
+Thu Mar 17 13:57:22 CET 2005 - mls@suse.de
+
+- nscd: enable hosts cache
+- nscd: also watch /etc/resolv.conf
+- nscd: check files every 3 seconds
+- nscd: deal correctly with missing files
+
+-------------------------------------------------------------------
+Tue Mar 15 15:50:12 CET 2005 - kukuk@suse.de
+
+- Update to current CVS snapshot.
+
+-------------------------------------------------------------------
+Sat Feb 12 02:49:56 CET 2005 - schwab@suse.de
+
+- Remove const from __pthread_internal_tsd_address.
+
+-------------------------------------------------------------------
+Fri Feb 11 15:44:31 CET 2005 - schwab@suse.de
+
+- Update to current CVS.
+- Link glibc_post_upgrade against new libc.
+- Fix build error with gcc4.
+
+-------------------------------------------------------------------
+Wed Feb  9 10:40:29 CET 2005 - kukuk@suse.de
+
+- Update to current CVS
+- Fix bindresvport blacklist handling.
+- Increase buffer in tst-cancel17 to match new kernel buffer size
+  [#50277]
+- Enable LinuxThreads again
+- Remove ia64-audit patch (is upstream)
+
+-------------------------------------------------------------------
+Mon Feb  7 13:15:58 CET 2005 - aj@suse.de
+
+- Add patch to allow compilation with gcc4.
+
+-------------------------------------------------------------------
+Mon Jan 31 16:33:47 CET 2005 - schwab@suse.de
+
+- Readd support for LD_AUDIT on ia64.
+
+-------------------------------------------------------------------
+Mon Jan 31 14:32:01 CET 2005 - kukuk@suse.de
+
+- Add memory clobber to string inline assemblies on s390 [#50284].
+
+-------------------------------------------------------------------
+Mon Jan 31 12:55:59 CET 2005 - kukuk@suse.de
+
+- Fix filelist on i686 if we build NPTL only version
+
+-------------------------------------------------------------------
+Mon Jan 31 09:17:33 CET 2005 - aj@suse.de
+
+- Generate new ULPs file for i386 needed by GCC 4.
+
+-------------------------------------------------------------------
+Sun Jan 30 12:43:56 CET 2005 - kukuk@suse.de
+
+- Include own copy of texi2html
+- Add glibc_pst_upgrade program (based on version from FC3)
+- Update to current CVS
+
+-------------------------------------------------------------------
+Thu Jan 27 23:28:57 CET 2005 - kukuk@suse.de
+
+- Re-add patch for timezone/zic.c (got lost with last merge)
+
+-------------------------------------------------------------------
+Wed Jan 26 11:34:36 CET 2005 - kukuk@suse.de
+
+- Update timezone data to 2005c release (fixes zdump crash on
+  64bit architectures)
+
+-------------------------------------------------------------------
+Sat Jan 22 15:45:25 CET 2005 - schwab@suse.de
+
+- Add basic (incomplete) support for LD_AUDIT on ia64.
+
+-------------------------------------------------------------------
+Fri Jan 21 11:00:08 CET 2005 - kukuk@suse.de
+
+- Enable patch for [Bug #49833]
+- Allow to build NPTL only glibc
+- Update to CVS from Jan 16, 2005, containing:
+- Fix execlp argument in SunRPC code [glibc #681]
+- Fix errno return values for futimes [glibc #633]
+- Update FPU function on PPC/PPC64 [Bug #49764]
+
+-------------------------------------------------------------------
+Mon Jan 17 10:40:24 CET 2005 - aj@suse.de
+
+- Enable amd64 string patch again after fixing failing hunks.
+- Handle missing cpuid better for amd64 string functions. [#49803]
+
+-------------------------------------------------------------------
+Sat Jan 15 16:05:36 CET 2005 - aj@suse.de
+
+- Fix amd64 string patch to use correct datatype.
+
+-------------------------------------------------------------------
+Fri Jan 14 14:06:43 CET 2005 - kukuk@suse.de
+
+- Fix memory corruption in getgrouplist function [Bug #49833]
+
+-------------------------------------------------------------------
+Tue Jan 11 11:01:26 CET 2005 - kukuk@suse.de
+
+- Enable all LinuxThreads tests again
+- Finalize getconf -a patch (make it compatible with Solaris)
+- Rewrite getconf manual page and mention new option
+- Merge GB18030 patches into one.
+
+-------------------------------------------------------------------
+Thu Dec 30 10:57:40 CET 2004 - kukuk@suse.de
+
+- Merge kernel-headers.remove-SO_BSDCOMPAT.diff with
+  kernel-headers.SuSE.diff
+- Revert nscd paths on old SuSE Linux distributions
+
+-------------------------------------------------------------------
+Wed Dec 29 22:33:00 CET 2004 - kukuk@suse.de
+
+- Update to glibc 2.3.90 CVS branch
+- Remove alarm-round.patch (merged upstream)
+
+-------------------------------------------------------------------
+Thu Dec  9 14:19:05 CET 2004 - kukuk@suse.de
+
+- Update to current CVS
+- Move nscd persistent database files back to /var/run/nscd
+
+-------------------------------------------------------------------
+Mon Dec  6 15:43:08 CET 2004 - kukuk@suse.de
+
+- Update to current CVS
+- Fix more kernel headers for userland inclusion
+
+-------------------------------------------------------------------
+Fri Nov 26 14:33:20 CET 2004 - ro@suse.de
+
+- kernel-headers.diff: define __force in compiler.h
+
+-------------------------------------------------------------------
+Thu Nov 25 17:52:39 CET 2004 - schwab@suse.de
+
+- Add Intel libm update.
+
+-------------------------------------------------------------------
+Thu Nov 25 12:08:17 CET 2004 - kukuk@suse.de
+
+- Update to current glibc CVS
+- Update kernel headers to 2.6.9
+
+-------------------------------------------------------------------
+Thu Nov 18 15:11:32 CET 2004 - kukuk@suse.de
+
+- Update to current glibc CVS
+
+-------------------------------------------------------------------
+Mon Nov 15 14:11:27 CET 2004 - kukuk@suse.de
+
+- Update to current glibc CVS
+
+-------------------------------------------------------------------
+Mon Nov  8 10:50:27 CET 2004 - kukuk@suse.de
+
+- Blacklist port 921 (lwresd) for usage by bindresvport()
+- Update to current glibc CVS
+- Add /var/run/nscd/* files as ghost entries
+
+-------------------------------------------------------------------
+Mon Oct 18 13:54:04 CEST 2004 - aj@suse.de
+
+- Don't use special fdim functions for x86-64 since those give
+  wrong results for fdim (inf,inf).
+- Fix ppc64 rebuild issue with ppc32 system [#47325].
+
+-------------------------------------------------------------------
+Wed Oct 13 14:06:55 CEST 2004 - kukuk@suse.de
+
+- Fix symlink librt.so -> tls/librt.so.1
+- Backout last glob changes
+- Disable nptl as default for linking
+
+-------------------------------------------------------------------
+Tue Oct 12 21:12:15 CEST 2004 - kukuk@suse.de
+
+- Install kernel-headers after merging linuxthreads/NPTL headers
+
+-------------------------------------------------------------------
+Tue Oct 12 09:36:48 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Mon Oct 11 15:11:03 CEST 2004 - kukuk@suse.de
+
+- Make NPTL default for linking
+
+-------------------------------------------------------------------
+Fri Oct  1 13:34:49 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Add workaround for linuxthreads/without-__threads bug
+- Remove KDE/ldconfig workaround
+- Set SuSE ABI note to 9.3
+
+-------------------------------------------------------------------
+Sun Sep 26 16:56:19 CEST 2004 - kukuk@suse.de
+
+- Add lib/nptl/librt.so symlink to tls/librt.so.1
+- Update to current CVS
+
+-------------------------------------------------------------------
+Sat Sep 25 13:43:09 CEST 2004 - kukuk@suse.de
+
+- Implement mq support for rtkaio and enable it again
+
+-------------------------------------------------------------------
+Fri Sep 24 15:37:08 CEST 2004 - kukuk@suse.de
+
+- Add zh_SG.UTF-8 [Bug #46024]
+
+-------------------------------------------------------------------
+Thu Sep 23 16:22:33 CEST 2004 - kukuk@suse.de
+
+- Sync sys/mount.h and linux/fs.h
+
+-------------------------------------------------------------------
+Wed Sep 22 15:33:10 CEST 2004 - kukuk@suse.de
+
+- Make mdns support configurable in /etc/host.conf
+
+-------------------------------------------------------------------
+Mon Sep 20 17:58:13 CEST 2004 - kukuk@suse.de
+
+- Fix invalidating of nscd caches and getaddrinfo() 
+
+-------------------------------------------------------------------
+Fri Sep 17 07:13:01 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS (nscd and glob.h fixes)
+
+-------------------------------------------------------------------
+Thu Sep 16 16:37:45 CEST 2004 - kukuk@suse.de
+
+- Fix getaddrinfo/nscd support
+
+-------------------------------------------------------------------
+Wed Sep 15 14:11:29 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS, remove merged patches
+
+-------------------------------------------------------------------
+Sun Sep 12 09:06:31 CEST 2004 - kukuk@suse.de
+
+- Update to CVS: Fix nscd crash if one service is disabled
+- glob.h: Add workaround for invalid prototypes
+- nss_compat: Check that buffer is larger than 0 bytes
+
+-------------------------------------------------------------------
+Sat Sep 11 00:50:47 CEST 2004 - kukuk@suse.de
+
+- Update to CVS: Fix cdefs.h for C++ usage
+
+-------------------------------------------------------------------
+Fri Sep 10 14:31:47 CEST 2004 - kukuk@suse.de
+
+- Add lwres to hosts search order in nsswitch.conf
+- Update to current CVS
+- Use new nscd paths for socket/pid file
+- Enable NPTL on i586
+- Add --print-all option to getconf
+
+-------------------------------------------------------------------
+Thu Sep  2 11:13:48 CEST 2004 - kukuk@suse.de
+
+- Fix NPTL header files on x86-64 for 32bit compilation
+- Apply various fixes from CVS
+- Remove pre-Install for -devel package (no longer necessary)
+
+-------------------------------------------------------------------
+Wed Aug 25 16:16:32 CEST 2004 - kukuk@suse.de
+
+- Don't compile in eval.c
+
+-------------------------------------------------------------------
+Mon Aug 23 10:20:09 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS: 
+  - Use CVS version for last fix.
+  - Add malloc sanity checks for double free.
+
+-------------------------------------------------------------------
+Sat Aug 21 00:06:58 CEST 2004 - schwab@suse.de
+
+- Fix cancellable syscalls in librt w/ linuxthreads.
+
+-------------------------------------------------------------------
+Fri Aug 20 20:40:38 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS [#43993]
+
+-------------------------------------------------------------------
+Thu Aug 19 13:56:15 CEST 2004 - schwab@suse.de
+
+- Better fix for asm-ia64/gcc_intrin.h.
+
+-------------------------------------------------------------------
+Wed Aug 18 14:53:47 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS
+- Workaround linux/ixjuser.h problem not including compiler.h
+- Workaround linux/capi.h problem not including compiler.h
+
+-------------------------------------------------------------------
+Tue Aug 17 18:32:29 CEST 2004 - schwab@suse.de
+
+- Fix asm-ia64/gcc_intrin.h.
+
+-------------------------------------------------------------------
+Tue Aug 17 12:13:41 CEST 2004 - kukuk@suse.de
+
+- Workaround broken linux/crc-ccitt.h for usage from glibc [#43884]
+
+-------------------------------------------------------------------
+Mon Aug 16 11:51:37 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS version and update to 
+  kernel-headers 2.6.8.1 to fix NPTL deadlock problems
+- Disable linuxthreads/tst-clock1, does not work on i586 and lower
+
+-------------------------------------------------------------------
+Fri Aug 13 14:45:31 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS version
+- Cleanup/adjust all patches
+
+-------------------------------------------------------------------
+Thu Jun 17 12:12:31 CEST 2004 - kukuk@suse.de
+
+- Fix sched_setaffinity return/errno code in error case [#42124]
+
+-------------------------------------------------------------------
+Wed Jun 16 07:45:07 CEST 2004 - meissner@suse.de
+
+- Updated altivec set/get/swapcontext patch to fix
+  more problems on altivec capable machines [#42039].
+- glibc is also able to build on -pmac64 kernels.
+
+-------------------------------------------------------------------
+Mon Jun 14 20:12:00 CEST 2004 - kukuk@suse.de
+
+- Add fixes from CVS: 
+  - sysconf return value fixes
+  - nscd host caching deadlock
+  - backtrace for s390/s390x/ia64 static linked binaries
+
+-------------------------------------------------------------------
+Mon Jun 14 18:54:05 CEST 2004 - kukuk@suse.de
+
+- Increase listen backlog in RPC code [#41955]
+
+-------------------------------------------------------------------
+Wed Jun  9 16:21:30 CEST 2004 - meissner@suse.de
+
+- Fixed typos in powerpc* *context functions to not destroy the r19
+  register and save the v19 register correctly. [#41790]
+
+-------------------------------------------------------------------
+Sat Jun  5 08:40:29 CEST 2004 - aj@suse.de
+
+- Fix makecontext with more than 6 arguments on x86-64 [#40546].
+
+-------------------------------------------------------------------
+Mon May 24 18:04:38 CEST 2004 - kukuk@suse.de
+
+- Update to kernel-headers 2.6.6
+- Update to current glibc CVS
+- Disable rtkaio temporary
+
+-------------------------------------------------------------------
+Sun May 23 21:44:19 CEST 2004 - kukuk@suse.de
+
+- Fix pthread_cond_wait on not ix86 and x86-64 architectures
+
+-------------------------------------------------------------------
+Thu May 20 14:11:47 CEST 2004 - kukuk@suse.de
+
+- Add PPC64 kernel header file fixes [#40831,#40870]
+
+-------------------------------------------------------------------
+Wed May 19 16:18:37 CEST 2004 - kukuk@suse.de
+
+- Add additional NPTL fixes from CVS
+
+-------------------------------------------------------------------
+Tue May 18 10:52:27 CEST 2004 - schwab@suse.de
+
+- Fix mapping of DSOs with holes.
+
+-------------------------------------------------------------------
+Fri May 14 13:50:37 CEST 2004 - schwab@suse.de
+
+- Fix rounding in alarm [#40552].
+
+-------------------------------------------------------------------
+Wed May 12 11:43:38 CEST 2004 - schwab@suse.de
+
+- Fix uninitialized array in regexp compiler [#40009].
+
+-------------------------------------------------------------------
+Tue May 11 11:45:08 CEST 2004 - kukuk@suse.de
+
+- Apply lot of fixes from current CVS
+- Fix alignment of stack for makecontext on x86-64 [Bug #39413]
+- Make XTABS identical to TABDLY on PPC
+
+-------------------------------------------------------------------
+Wed May  5 13:50:51 CEST 2004 - kukuk@suse.de
+
+- Add some header fixes to match POSIX
+
+-------------------------------------------------------------------
+Tue May  4 11:27:15 CEST 2004 - meissner@suse.de
+
+- Fix INLINE_SYSCALL on ppc and ppc64 (see #38399)
+
+-------------------------------------------------------------------
+Mon May  3 13:42:12 CEST 2004 - kukuk@suse.de
+
+- Port --mlock option for ld.so from UL1 [Bug #39569]
+
+-------------------------------------------------------------------
+Tue Apr 20 11:23:55 CEST 2004 - kukuk@suse.de
+
+- Add execstack fix for s390
+
+-------------------------------------------------------------------
+Mon Apr 19 13:11:27 CEST 2004 - kukuk@suse.de
+
+- Update to current CVS version (fix problems with new binutils
+  and gcc)
+
+-------------------------------------------------------------------
+Mon Apr 19 08:29:42 CEST 2004 - kukuk@suse.de
+
+- Add pthread_getattr_np and syslog fixes from CVS
+- Update gb18030 and big5hkscs gconv modules [Bug #39080]
+
+-------------------------------------------------------------------
+Sat Apr 17 17:42:48 CEST 2004 - schwab@suse.de
+
+- Pacify autobuild.
+
+-------------------------------------------------------------------
+Thu Apr 15 10:07:19 CEST 2004 - kukuk@suse.de
+
+- Add /etc/ld.so.conf.d/*.conf to /etc/ld.so.conf
+- Disable FUTEX_REQUEUE support in NPTL library [Bug #38882]
+
+-------------------------------------------------------------------
+Thu Apr 15 00:37:28 CEST 2004 - schwab@suse.de
+
+- Remove /usr/i386-linux from ld.so.conf,
+
+-------------------------------------------------------------------
+Wed Apr 14 11:49:05 CEST 2004 - kukuk@suse.de
+
+- Fix linux/compiler.h for glibc inclusion
+- Really fix ffsl on s390x
+
+-------------------------------------------------------------------
+Sat Apr 10 00:42:04 CEST 2004 - schwab@suse.de
+
+- Fix syntax error in memcmp.
+
+-------------------------------------------------------------------
+Fri Apr  9 16:22:31 CEST 2004 - kukuk@suse.de
+
+- Update from CVS: linuxthread debug fixes
+- Fix INLINE_SYSCALL on x86-64 and ia64 (fixes #38399)
+- Fix ffsl weak alias on s390x
+- Update to 2.6.5 kernel headers
+
+-------------------------------------------------------------------
+Thu Apr  8 00:24:46 CEST 2004 - meissner@suse.de
+
+- forward umount to umount2 on ppc64 because umount syscall 
+  does not exist
+
+-------------------------------------------------------------------
+Mon Apr  5 14:40:18 CEST 2004 - kukuk@suse.de
+
+- Sync with current CVS (which is nearly identical with most of
+  our latest patches)
+
+-------------------------------------------------------------------
+Fri Apr  2 14:18:11 CEST 2004 - kukuk@suse.de
+
+- Make fstatvfs64 working on 32bit architectures
+- Add fwrite LFS fix from aj
+- Add powerpc fixes from CVS
+- Fix wrong errno code for shm_unlink [Bug #38013]
+
+-------------------------------------------------------------------
+Wed Mar 31 09:31:56 CEST 2004 - kukuk@suse.de
+
+- Add three fixes from CVS:
+  - Call __nptl_deallocate_tsd for main thread, too
+  - setgroups: optimizations for huge number of groups
+  - initgroups: Limit the initial allocation to 64 entries
+
+-------------------------------------------------------------------
+Tue Mar 30 17:36:18 CEST 2004 - kukuk@suse.de
+
+- Add IUTF8 to bits/termios.h [Bug #34725]
+- *affinitiy.c: Prepend GLIBC_ to version names
+
+-------------------------------------------------------------------
+Sat Mar 27 09:52:53 CET 2004 - kukuk@suse.de
+
+- Fix wrong return value of getXXbyYY_r in case key was not
+  found [Bug #37181]
+- Fix typo in dl-open
+- Don't set errno in NSS NIS module if group was not found
+
+-------------------------------------------------------------------
+Fri Mar 26 12:39:27 CET 2004 - aj@suse.de
+
+- Add pow10/pow10f aliases for AMD64.
+
+-------------------------------------------------------------------
+Thu Mar 25 16:42:57 CET 2004 - kukuk@suse.de
+
+- Update to latest CVS snapshot
+
+-------------------------------------------------------------------
+Sat Mar 20 07:49:49 CET 2004 - aj@suse.de
+
+- Fix further problems with sched_[sg]etaffinity calls.
+
+-------------------------------------------------------------------
+Fri Mar 19 19:57:35 CET 2004 - aj@suse.de
+
+- Fix sched_setaffinity compile problem.
+
+-------------------------------------------------------------------
+Fri Mar 19 19:44:32 CET 2004 - kukuk@suse.de
+
+- Remove conflict with special aaa_base version (rpm will handle
+  this with file conflict)
+
+-------------------------------------------------------------------
+Fri Mar 19 15:43:19 CET 2004 - kukuk@suse.de
+
+- Add SuSE abi note
+- Add madvise patch
+- Update to current CVS
+
+-------------------------------------------------------------------
+Wed Mar 17 13:59:14 CET 2004 - kukuk@suse.de
+
+- Use official NPTL version fix
+- Add LD_DEBUG=statistic for x86-64
+- Fix two JB_SIZE redefinitions on PPC
+- Add two fixes for execstack
+
+-------------------------------------------------------------------
+Mon Mar 15 08:11:33 CET 2004 - kukuk@suse.de
+
+- Require kernel 2.6.4 for glibc/NPTL
+- Remove siginfo_t/si_band patch (needs to be fixed in kernel)
+- Update linuxthreads_db and nptl_db
+- Add libidn fixes from CVS
+
+-------------------------------------------------------------------
+Sat Mar 13 19:53:58 CET 2004 - kukuk@suse.de
+
+- Adjust filelist (remove libcidn.a and libcidn_p.a)
+
+-------------------------------------------------------------------
+Sat Mar 13 16:01:42 CET 2004 - kukuk@suse.de
+
+- Update to current CVS (merge of patches)
+- Fix siginfo_t/si_band [Bug #34330]
+
+-------------------------------------------------------------------
+Thu Mar 11 18:35:05 CET 2004 - mls@suse.de
+
+- Add mdns support to resolver library
+
+-------------------------------------------------------------------
+Thu Mar 11 16:01:43 CET 2004 - kukuk@suse.de
+
+- Update kernel headers to 2.6.4
+- Update to current glibc CVS
+
+-------------------------------------------------------------------
+Wed Mar 10 15:44:25 CET 2004 - bg@suse.de
+
+- Update hppa patches.
+
+-------------------------------------------------------------------
+Mon Mar  8 15:19:01 CET 2004 - kukuk@suse.de
+
+- Fix vDSO on IA64
+
+-------------------------------------------------------------------
+Mon Mar  8 13:25:48 CET 2004 - kukuk@suse.de
+
+- Update from glibc CVS:
+  - Add libidn
+  - Lot of dynamic loader changes
+
+-------------------------------------------------------------------
+Thu Mar  4 10:50:09 CET 2004 - kukuk@suse.de
+
+- Update from glibc CVS:
+  - Fix posix_fadvise vs. posix_fadvise64
+
+-------------------------------------------------------------------
+Tue Mar  2 16:51:44 CET 2004 - kukuk@suse.de
+
+- Fix PPC kernel header files
+- Update from glibc CVS
+  - NPTL fixes
+  - nscd fixes
+
+-------------------------------------------------------------------
+Tue Mar  2 12:11:38 CET 2004 - schwab@suse.de
+
+- Fix ppc32 to always use stat64 syscall.
+
+-------------------------------------------------------------------
+Sat Feb 28 17:30:17 CET 2004 - kukuk@suse.de
+
+- Update from glibc CVS:
+  - Fix compiler warnings
+  - NPTL: Don't use CLONE_STOPPED
+  - Revert vDSO changes
+
+-------------------------------------------------------------------
+Fri Feb 27 10:05:48 CET 2004 - kukuk@suse.de
+
+- Update from glibc CVS:
+  - Real NGROUP_MAX fix
+  - Lot of NPTL fixes
+  - clock_settime fix
+- Add no_NO back (required by OpenI18N spec and [Bug #34745])
+
+-------------------------------------------------------------------
+Thu Feb 26 14:52:07 CET 2004 - kukuk@suse.de
+
+- Workaround broken NGROUP_MAX function
+
+-------------------------------------------------------------------
+Thu Feb 26 12:10:37 CET 2004 - kukuk@suse.de
+
+- Add insserv PreRequires for nscd
+- Update from CVS: NPTL and getaddrinfo memory leak fixes,
+  Get NGROUP_MAX from /proc filesystem
+
+-------------------------------------------------------------------
+Sat Feb 21 06:22:23 CET 2004 - kukuk@suse.de
+
+- Update from CVS: IA64 relo fix, lot of PPC fixes
+- Fix linux/mod_devicetable.h for userland inclusion
+- Enable NPTL on Alpha
+
+-------------------------------------------------------------------
+Fri Feb 20 01:08:26 CET 2004 - schwab@suse.de
+
+- Fix pthread_barrier_wait.
+
+-------------------------------------------------------------------
+Thu Feb 19 09:46:46 CET 2004 - kukuk@suse.de
+
+- Update from CVS: More NPTL fixes
+- nscd.init: Cleanups
+
+-------------------------------------------------------------------
+Wed Feb 18 15:49:09 CET 2004 - kukuk@suse.de
+
+- Kernel Headers: Fix asm-ppc/unaliged.h, asm-ppc/types.h and
+  asm-ppc/bitops.h for userland inclusion.
+
+-------------------------------------------------------------------
+Wed Feb 18 11:24:35 CET 2004 - bg@suse.de
+
+- Update hppa patches for current glibc
+- Add workaround for ICE in hppa
+
+-------------------------------------------------------------------
+Tue Feb 17 13:54:28 CET 2004 - kukuk@suse.de
+
+- Update from CVS:
+  - PPC nptl compatiblity fix
+  - NSCD patches merged
+  - ld.so.preload: Igreno missing files
+  - getaddrinfo: Fix problem with IPv6 addresses
+
+-------------------------------------------------------------------
+Tue Feb 17 11:42:59 CET 2004 - aj@suse.de
+
+- Fix string optimizations init code on AMD64.
+
+-------------------------------------------------------------------
+Sat Feb 14 07:10:42 CET 2004 - kukuk@suse.de
+
+- Update from CVS (for NPTL fixes and new PPC longjmp)
+- Fix nscd deadlock with kernel 2.6 [Bug #34507]
+
+-------------------------------------------------------------------
+Fri Feb 13 14:19:25 CET 2004 - aj@suse.de
+
+- Add more string/memory optimizations for AMD64.
+
+-------------------------------------------------------------------
+Thu Feb 12 17:07:08 CET 2004 - kukuk@suse.de
+
+- Fix regex bug with invalid UTF-8 strings
+
+-------------------------------------------------------------------
+Thu Feb 12 16:31:51 CET 2004 - aj@suse.de
+
+- Add more string optimizations for AMD64.
+
+-------------------------------------------------------------------
+Wed Feb 11 16:14:53 CET 2004 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Fix _IOC_TYPECHECK on s390/s390x/parisc
+- Compile rtkaio only with NPTL
+- Remove glibcbug (was dropped since glibc uses bugzilla now)
+- Disable parallel build on s390x
+
+-------------------------------------------------------------------
+Tue Feb 10 15:38:37 CET 2004 - schwab@suse.de
+
+- Work around invalid use of kernel headers in some packages.
+
+-------------------------------------------------------------------
+Fri Feb  6 19:57:04 CET 2004 - kukuk@suse.de
+
+- Add kernel stat fix for PPC
+- Add fix for off-by-one error in regex code
+
+-------------------------------------------------------------------
+Thu Feb  5 18:04:45 CET 2004 - kukuk@suse.de
+
+- Update kernel header files to 2.6.2
+
+-------------------------------------------------------------------
+Tue Feb  3 17:14:38 CET 2004 - bg@suse.de
+
+- Update hppa patch
+
+-------------------------------------------------------------------
+Tue Feb  3 16:24:47 CET 2004 - kukuk@suse.de
+
+- Fix ypclnt speedup patch
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Mon Jan 26 13:44:39 CET 2004 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Wed Jan 21 10:23:42 CET 2004 - aj@suse.de
+
+- Do not run in parallel on s390.
+
+-------------------------------------------------------------------
+Mon Jan 19 15:49:51 CET 2004 - ro@suse.de
+
+- really fix linux/percpu.h to compile in userland 
+
+-------------------------------------------------------------------
+Fri Jan 16 11:14:49 CET 2004 - kukuk@suse.de
+
+- Update version.h to 2.6.1
+- Fix linux/percpu.h to compile in userland
+- Update to current CVS snapshot
+- Revert nscd path changes
+
+-------------------------------------------------------------------
+Wed Jan 14 12:06:13 CET 2004 - kukuk@suse.de
+
+- Update to Kernel Headers 2.6.1
+- Update to current CVS snapshot
+- Don't ignore make check on IA64 any longer
+
+-------------------------------------------------------------------
+Sat Jan 10 01:56:48 CET 2004 - schwab@suse.de
+
+- Locale no_NO has been renamed to nb_NO.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:09:01 CET 2004 - kukuk@suse.de
+
+- Temporary ignore make check on IA64 and PPC
+  (known kernel/compiler bugs)
+
+-------------------------------------------------------------------
+Fri Jan  9 00:36:51 CET 2004 - stepan@suse.de
+
+- fix v4l2 headers
+
+-------------------------------------------------------------------
+Wed Jan  7 13:09:26 CET 2004 - kukuk@suse.de
+
+- Update to glibc CVS from 20040107
+- Remove manual pages which are now part of man-pages
+
+-------------------------------------------------------------------
+Thu Dec 18 13:41:37 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031218
+- Update ot final 2.6.0 kernel headers
+- Fix syntax error in spec file
+- Update HPPA patch
+
+-------------------------------------------------------------------
+Mon Dec 15 19:19:08 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031215
+
+-------------------------------------------------------------------
+Fri Dec 12 10:19:52 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031212
+- disable rtkaio (does not work with kernel 2.6 yet)
+
+-------------------------------------------------------------------
+Fri Dec  5 10:00:28 CET 2003 - kukuk@suse.de
+
+- Update to glibc 2.3.3 CVS
+- Make an extra sub package for nscd
+
+-------------------------------------------------------------------
+Thu Nov 27 13:08:32 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031127
+- Add nsswitch.conf (moved from aaa_base)
+- Add ld.so.conf (moved from aaa_base) [Bug #33277]
+- Fix ceil on AMD64
+
+-------------------------------------------------------------------
+Fri Nov 21 14:40:29 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031121
+- Obsolete epoll (glibc-devel contains now this header files)
+
+-------------------------------------------------------------------
+Wed Nov 19 15:54:58 CET 2003 - kukuk@suse.de
+
+- Add patch so that ld.so supports linuxthreads and nptl
+- PPC64 requires kernel 2.4.21
+- Update to glibc CVS from 20031119
+
+-------------------------------------------------------------------
+Fri Nov 14 14:05:38 CET 2003 - bg@suse.de
+
+- Add hppa patches for current glibc.
+
+-------------------------------------------------------------------
+Fri Nov 14 13:32:06 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031114
+- Remove PPC64 symbol version patch
+
+-------------------------------------------------------------------
+Thu Nov 13 12:10:15 CET 2003 - schwab@suse.de
+
+- Fix last change covering libNoVersion.
+
+-------------------------------------------------------------------
+Mon Nov 10 16:52:09 CET 2003 - schwab@suse.de
+
+- Specfile cleanup.
+
+-------------------------------------------------------------------
+Thu Nov  6 14:10:17 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031106
+
+-------------------------------------------------------------------
+Wed Nov  5 15:26:06 CET 2003 - uli@suse.de
+
+- added a number of ARM fixes (glibc-2.3.2-armformat.patch,
+  glibc-armisa.patch, glibc-sjlj.patch)
+
+-------------------------------------------------------------------
+Mon Oct 27 21:13:09 CET 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031027
+- kernel headers: update to 2.6.0-test9
+- nptl: Use -fno-unit-at-a-time on AMD64, too
+
+-------------------------------------------------------------------
+Thu Oct 23 13:34:25 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS version
+
+-------------------------------------------------------------------
+Wed Oct 22 19:01:37 CEST 2003 - kukuk@suse.de
+
+- nptl: Fix prototype in configure script
+- nptl: Use -fno-unit-at-a-time
+- locale: Add nb_NO
+
+-------------------------------------------------------------------
+Fri Oct 17 16:56:58 CEST 2003 - kukuk@suse.de
+
+- Increase timeout for make check on overloaded architectures
+
+-------------------------------------------------------------------
+Thu Oct 16 18:19:13 CEST 2003 - kukuk@suse.de
+
+- Fix building as normal user
+
+-------------------------------------------------------------------
+Wed Oct 15 16:31:32 CEST 2003 - kukuk@suse.de
+
+- Fix putpwent/putgrent
+- Make build as normal user
+
+-------------------------------------------------------------------
+Tue Oct 14 21:13:25 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031014
+
+-------------------------------------------------------------------
+Tue Oct 14 13:26:06 CEST 2003 - aj@suse.de
+
+- Fix w_acosf for AMD64.
+
+-------------------------------------------------------------------
+Tue Oct 14 10:49:36 CEST 2003 - kukuk@suse.de
+
+- Fix asm-sparc/kbio.h to compile kbdrate/X11
+
+-------------------------------------------------------------------
+Mon Oct 13 12:11:53 CEST 2003 - kukuk@suse.de
+
+- Update to kernel header files from 2.6.0-test7 
+
+-------------------------------------------------------------------
+Fri Oct 10 17:11:01 CEST 2003 - schwab@suse.de
+
+- Fix misnamed syscalls.
+
+-------------------------------------------------------------------
+Tue Oct  7 21:13:09 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031007
+
+-------------------------------------------------------------------
+Fri Oct  3 09:12:38 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20031003
+- Fix kernel ioctl header files for PPC/PPC64
+- Removed dl-reloc.c fix, merged upstream
+
+-------------------------------------------------------------------
+Wed Oct  1 16:49:19 CEST 2003 - kukuk@suse.de
+
+- Update to glibc cvs from 20031001
+- Remove sysmacros.h fix, merged upstream
+- Add dl-reloc.c fix for compiler warnings
+
+-------------------------------------------------------------------
+Mon Sep 29 11:49:19 CEST 2003 - kukuk@suse.de
+
+- Update kernel-headers to 2.6.0-test6
+- Fix sysmacros.h to compile with -ansi
+
+-------------------------------------------------------------------
+Sat Sep 27 20:58:07 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20030927
+- Remove SO_BSDCOMPAT (obsoleted by kernel)
+- Make _IOC_TYPECHECK useable for userland programs
+
+-------------------------------------------------------------------
+Fri Sep 26 10:01:15 CEST 2003 - kukuk@suse.de
+
+- Remove obsolete patches
+- Update to crypt_blowfish 0.4.5
+
+-------------------------------------------------------------------
+Fri Sep 26 08:51:10 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20030926
+- Update to nptl 0.60
+
+-------------------------------------------------------------------
+Sat Sep 20 21:13:04 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20030920
+- Update to nptl 0.59
+
+-------------------------------------------------------------------
+Wed Sep 17 12:13:35 CEST 2003 - kukuk@suse.de
+
+- Disable TLS for i586 glibc [Bug #31034]
+
+-------------------------------------------------------------------
+Tue Sep 16 15:38:19 CEST 2003 - kukuk@suse.de
+
+- Remove db1.85
+
+-------------------------------------------------------------------
+Mon Sep 15 21:30:51 CEST 2003 - kukuk@suse.de
+
+- Update to glibc CVS from 20030915
+
+-------------------------------------------------------------------
+Mon Sep 15 18:43:19 CEST 2003 - kukuk@suse.de
+
+- Update to kernel 2.6.0-test5 header files
+
+-------------------------------------------------------------------
+Sat Sep 13 07:01:40 CEST 2003 - kukuk@suse.de
+
+- Add librtkaio, a librt using kernel aio
+
+-------------------------------------------------------------------
+Thu Sep 11 16:59:49 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS
+- Remove patches which are merged in CVS
+- Update to nptl-0.58
+- Remove _POSIX_VERSION hack
+
+-------------------------------------------------------------------
+Thu Sep 11 16:59:49 CEST 2003 - kukuk@suse.de
+
+- version.h: Fix comment how to compile kernel modules
+
+-------------------------------------------------------------------
+Wed Sep 10 19:27:05 CEST 2003 - aj@suse.de
+
+- Install en_US.ISO-8859-15 under this name [#30373].
+
+-------------------------------------------------------------------
+Tue Sep  9 14:22:02 CEST 2003 - aj@suse.de
+
+- Fix last patch.
+
+-------------------------------------------------------------------
+Mon Sep  8 18:20:56 CEST 2003 - aj@suse.de
+
+- Fix setting up of user signal handler in linuxthreads on x86_64.
+
+-------------------------------------------------------------------
+Fri Sep  5 13:44:13 CEST 2003 - kukuk@suse.de
+
+- Add dl-tls.c to fix out of memory with static TLS errors
+
+-------------------------------------------------------------------
+Wed Sep  3 21:03:13 CEST 2003 - kukuk@suse.de
+
+- Update glibc-linuxthreads
+- Set _POSIX_VERSION back to 199209
+
+-------------------------------------------------------------------
+Mon Sep  1 18:23:49 CEST 2003 - kukuk@suse.de
+
+- Fix typo in nss_compat patch
+
+-------------------------------------------------------------------
+Mon Sep  1 09:13:14 CEST 2003 - kukuk@suse.de
+
+- Add opendir fix for usage with NPTL
+- Fix getspnam/getspent in nss_compat [Bug #29689]
+- Set _POSIX2_VERSION back to 199209
+
+-------------------------------------------------------------------
+Wed Aug 27 15:22:40 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS version
+
+-------------------------------------------------------------------
+Mon Aug 25 09:35:41 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS version
+
+-------------------------------------------------------------------
+Mon Aug 18 21:17:25 CEST 2003 - aj@suse.de
+
+- increase stack size for linuxthreads/set-context.
+
+------------------------------------------------------------------
+Mon Aug 18 13:23:00 CEST 2003 - aj@suse.de
+
+- Fix mathinline.h for i386 to compile under C++ without warnings.
+
+-------------------------------------------------------------------
+Sun Aug 17 09:59:25 CEST 2003 - ro@suse.de
+
+- kernel-headers.dif: don't include device.h from videodev.h
+
+-------------------------------------------------------------------
+Fri Aug 15 10:39:49 CEST 2003 - kukuk@suse.de
+
+- Update to current cvs (fixes assert usage in C++ source code)
+
+-------------------------------------------------------------------
+Thu Aug 14 10:34:27 CEST 2003 - kukuk@suse.de
+
+- Initialize fp->_mode for glibc 2.0 compatibility [Bug #28386]
+- On i686, include glibc with and without floating stack enabled
+- Update to current cvs
+- Update to nptl 0.56
+
+-------------------------------------------------------------------
+Thu Jul 31 16:57:36 CEST 2003 - kukuk@suse.de
+
+- Reenable new quota.h
+
+-------------------------------------------------------------------
+Wed Jul 30 09:59:21 CEST 2003 - kukuk@suse.de
+
+- Update to current cvs
+- Update kernel headers to 2.6.0-test2
+- Disable sys/quota.h update
+- Enable TLS on AMD64 again
+
+-------------------------------------------------------------------
+Mon Jul 28 17:18:33 CEST 2003 - kukuk@suse.de
+
+- Update to current cvs
+- Disable TLS on AMD64 temporary
+- Update sys/quota.h to match new kernel implementation
+
+-------------------------------------------------------------------
+Fri Jul 25 10:14:44 CEST 2003 - kukuk@suse.de
+
+- Update to current cvs
+- Update kernel headers to 2.6.0-test1
+- Update to nptl 0.55
+- Change minimal symbol version on PPC64 back to 2.2.5
+
+-------------------------------------------------------------------
+Wed Jul 23 18:13:40 CEST 2003 - meissner@suse.de
+
+- Fixed systemcall clobber lists for asm-ppc/unistd.h (by just
+  merging over the asm-ppc64 things).
+
+-------------------------------------------------------------------
+Wed Jul 23 12:59:04 CEST 2003 - aj@suse.de
+
+- Handle in ldconfig konqueror.so and other similar KDE hacks that fail without
+  rpath.
+- Fix bugs exposed by unit-at-a-time option.
+
+-------------------------------------------------------------------
+Fri Jul 18 07:27:47 CEST 2003 - aj@suse.de
+
+- Fix compilation with unit-at-a-time enabled compiler.
+- Enlarge stack for tst-setcontext test.
+
+-------------------------------------------------------------------
+Mon Jun 30 13:09:25 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS (includes if_arp.h and nss_compat changes)
+- Update to nptl 0.50
+- Kernel header fixes for userland inclusion
+
+-------------------------------------------------------------------
+Wed Jun 25 09:34:17 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS
+- Add target host and CVS checkout to glibc version printout
+- Adjust fnmatch fix
+- Update kernel headers to 2.5.73
+
+-------------------------------------------------------------------
+Tue Jun 24 23:09:11 CEST 2003 - kukuk@suse.de
+
+- Fix typos in syscalls.list on Alpha
+
+-------------------------------------------------------------------
+Mon Jun 23 10:53:41 CEST 2003 - kukuk@suse.de
+
+- fix typo in linuxthreads on SPARC
+- Update to current CVS
+- Update to nptl 0.48
+
+-------------------------------------------------------------------
+Thu Jun 19 11:10:55 CEST 2003 - kukuk@suse.de
+
+- Disable nss_compat patch again
+
+-------------------------------------------------------------------
+Wed Jun 18 10:51:07 CEST 2003 - kukuk@suse.de
+
+- Fix reading of locale.alias file
+- Update to current CVS snapshot
+- Update to nptl 0.47
+- Some kernel header file fixes for PPC64/IA64
+- Update nss_compat patch
+
+-------------------------------------------------------------------
+Thu Jun 12 23:42:09 CEST 2003 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Finish patch for printing linker warning
+
+-------------------------------------------------------------------
+Wed Jun 11 11:45:42 CEST 2003 - kukuk@suse.de
+
+- Update to nptl 0.45
+- Update to current CVS snapshot
+- Add patch to print linker warning, if a static binary calls
+  functions using NSS
+
+-------------------------------------------------------------------
+Tue Jun 10 16:46:47 CEST 2003 - kukuk@suse.de
+
+- Use %find_lang macro and cleanup glibc-locale filelist
+
+-------------------------------------------------------------------
+Thu Jun  5 17:28:36 CEST 2003 - kukuk@suse.de
+
+- Complete mathinline.h fixes
+
+-------------------------------------------------------------------
+Thu Jun  5 10:10:02 CEST 2003 - kukuk@suse.de
+
+- linux/compiler.h: Define all inline variants to __inline__
+
+-------------------------------------------------------------------
+Wed Jun  4 14:29:07 CEST 2003 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Update to nptl 0.43
+- More kernel header fixes
+- Make --no-archive default for localedef
+
+-------------------------------------------------------------------
+Tue May 27 14:09:31 CEST 2003 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Update to nptl 0.40
+- Disable nss_compat patch
+- Update to kernel headers from 2.5.70
+
+-------------------------------------------------------------------
+Fri May 23 10:50:37 CEST 2003 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Add patches to make nss_compat work with every service
+
+-------------------------------------------------------------------
+Mon May 19 10:57:13 CEST 2003 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Add patch for better binary compatibility (errno, h_errno)
+
+-------------------------------------------------------------------
+Fri May 16 09:32:39 CEST 2003 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Update to nptl 0.39
+- Add URL tag
+- asm-i386/byteorder.h: fix asm vs. __asm__
+
+-------------------------------------------------------------------
+Wed May 14 22:31:52 CEST 2003 - schwab@suse.de
+
+- Fix missing syscall numbers on ia64.
+
+-------------------------------------------------------------------
+Wed May 14 08:59:09 CEST 2003 - kukuk@suse.de
+
+- More kernel headers fixes for i386, ia64, ppc and s390
+
+-------------------------------------------------------------------
+Mon May 12 16:49:51 CEST 2003 - kukuk@suse.de
+
+- Update to current glibc CVS snapshot
+- Fix lot of more kernel headers
+- Adjust netinet/igmp.h patch
+- Copy linux/version.h in place before compiling glibc
+
+-------------------------------------------------------------------
+Fri May  9 13:25:08 CEST 2003 - kukuk@suse.de
+
+- Fix bits/stdio.h
+- Fix lot of kernel headers to work in userspace
+- Fix netinet/igmp.h
+- Enable TLS on PPC
+
+-------------------------------------------------------------------
+Wed May  7 10:58:25 CEST 2003 - kukuk@suse.de
+
+- Update CVS snapshot
+- Enable TLS on IA64
+- Update to nptl 0.37
+- Update kernel-headers to 2.5.69
+
+-------------------------------------------------------------------
+Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
+
+- fix install_info --delete call and move from preun to postun
+
+-------------------------------------------------------------------
+Fri Apr 11 06:32:25 CEST 2003 - aj@suse.de
+
+- Do not build locales in parallel.
+
+-------------------------------------------------------------------
+Tue Apr  8 16:12:36 CEST 2003 - kukuk@suse.de
+
+- Disable TLS for PPC
+
+-------------------------------------------------------------------
+Mon Apr  7 14:16:03 CEST 2003 - kukuk@suse.de
+
+- Update CVS snapshot
+
+-------------------------------------------------------------------
+Sat Apr  5 09:55:15 CEST 2003 - kukuk@suse.de
+
+- Disable TLS for ia64
+- Update to nptl 0.34
+- Update to CVS snapshot
+
+-------------------------------------------------------------------
+Fri Apr  4 16:23:39 CEST 2003 - kukuk@suse.de
+
+- Remove libNoVersion from filelist on alpha
+- Add nptl docu
+
+-------------------------------------------------------------------
+Fri Apr  4 10:23:35 CEST 2003 - kukuk@suse.de
+
+- Update to nptl 0.33
+- Run ldconfig after installation
+- Update to CVS snapshot
+
+-------------------------------------------------------------------
+Sat Mar 29 17:47:56 CET 2003 - kukuk@suse.de
+
+- Update to CVS snapshot
+- Add USAGI patches for kernel-headers
+- Add nptl on i686
+- Enable --with-tls
+- Implement NI_NUMSERICSCOPE for getnameinfo
+- Implement AI_V4MAPPED/AI_ALL for getaddrinfo
+- Implement AI_ADDRCONFIG for getaddrinfo
+- Add USAGI patch for kernel headers
+
+-------------------------------------------------------------------
+Mon Mar 24 21:46:45 CET 2003 - schwab@suse.de
+
+- Sanitize <asm-ia64/pal.h>.
+
+-------------------------------------------------------------------
+Mon Mar 17 08:45:27 CET 2003 - aj@suse.de
+
+- Fix tst-aio7 testcase and enable it again.
+- Enable %fs for x86-64.
+- Install en_US.ISO-8859-15 for libstdc++.
+- Fix bits/syscalls.h for x86-64.
+
+-------------------------------------------------------------------
+Thu Mar 13 10:36:24 CET 2003 - kukuk@suse.de
+
+- Revert tcgetattr change [Bug #25173/#25174]
+
+-------------------------------------------------------------------
+Tue Mar  4 15:15:33 CET 2003 - aj@suse.de
+
+- Fix <tgmath.h> lround/lrint functions.
+
+-------------------------------------------------------------------
+Sat Mar  1 07:24:22 CET 2003 - aj@suse.de
+
+- Update to 2.3.2 release.
+
+-------------------------------------------------------------------
+Wed Feb 26 21:45:36 CET 2003 - kukuk@suse.de
+
+- Update to current cvs snapshot (fixes OOo and mysql problems)
+
+-------------------------------------------------------------------
+Mon Feb 24 17:52:02 CET 2003 - kukuk@suse.de
+
+- Disable aio7 test on s390(x), too.
+
+-------------------------------------------------------------------
+Mon Feb 24 14:19:20 CET 2003 - kukuk@suse.de
+
+- Update to current cvs snapshot (post 2.3.2-pre1)
+- Remove glibc-2.3-ppc32-textrel.patch, is included in CVS
+- Remove libc23-ppc64-cvshead20021210.patch
+
+-------------------------------------------------------------------
+Thu Feb 20 16:19:21 CET 2003 - kukuk@suse.de
+
+- Update to current cvs snapshot
+- Remove glibc-2.3-ppc64-vfork-20030214.patch, seems to be
+  included already.
+
+-------------------------------------------------------------------
+Wed Feb 19 11:45:35 CET 2003 - olh@suse.de
+
+- add glibc-2.3-ppc32-textrel.patch
+      glibc-2.3-ppc64-vfork-20030214.patch
+
+-------------------------------------------------------------------
+Fri Feb 14 14:51:11 CET 2003 - kukuk@suse.de
+
+- Extend getent to print all IP addresses of one host
+
+-------------------------------------------------------------------
+Thu Feb 13 18:34:50 CET 2003 - kukuk@suse.de
+
+- Update to current snapshot 
+
+-------------------------------------------------------------------
+Wed Feb 12 11:50:54 CET 2003 - kukuk@suse.de
+
+- Update to current snapshot (contains official fix for #23513)
+
+-------------------------------------------------------------------
+Tue Feb 11 15:28:16 CET 2003 - kukuk@suse.de
+
+- Update to current snapshot
+- Fix corruption of internal data in gethostbyname2 [Bug #23513]
+
+-------------------------------------------------------------------
+Sun Feb  9 12:20:55 CET 2003 - aj@suse.de
+
+- Fix cancellation of system calls on x86-64.
+
+-------------------------------------------------------------------
+Sat Feb  8 10:43:02 CET 2003 - kukuk@suse.de
+
+- Fix wrong logic in dynamic resolv.conf patch
+
+-------------------------------------------------------------------
+Fri Feb  7 17:35:12 CET 2003 - kukuk@suse.de
+
+- Fix access of _res symbol in multithreaded programs
+- Add "dynamic resolv.conf" patch to libnss_dns, too.
+- Remove obsolete db2 manual pages
+- Update to current snapshot (fixes [Bug #23363])
+
+-------------------------------------------------------------------
+Thu Feb  6 18:06:36 CET 2003 - kukuk@suse.de
+
+- Update to current snapshot
+- Use install-info for info pages
+
+-------------------------------------------------------------------
+Tue Feb  4 20:12:51 CET 2003 - schwab@suse.de
+
+- Fix regexp parsing.
+
+-------------------------------------------------------------------
+Mon Feb  3 14:44:21 CET 2003 - meissner@suse.de
+
+- Merged a unistd.h gcc3.3 compliance patch from Franz Sirl for
+  ppc and ppc64 kernel headers.
+
+-------------------------------------------------------------------
+Fri Jan 31 22:12:03 CET 2003 - schwab@suse.de
+
+- Fix building on s390[x].
+
+-------------------------------------------------------------------
+Fri Jan 31 15:20:00 CET 2003 - kukuk@suse.de
+
+- Update to current glibc cvs
+
+-------------------------------------------------------------------
+Thu Jan 30 16:05:32 CET 2003 - aj@suse.de
+
+- Fix one build problem on sparc.
+- Fix asm-x86_64/mtrr.h.
+
+-------------------------------------------------------------------
+Wed Jan 29 12:57:23 CET 2003 - kukuk@suse.de
+
+- Update to current glibc cvs
+- Fix libm-ulps for x86-64 and ia64 
+
+-------------------------------------------------------------------
+Thu Jan 23 16:47:33 CET 2003 - schwab@suse.de
+
+- Fix use of DT_FINI_ARRAY.
+- Temporarily disable tst-aio7 test on ia64.
+
+-------------------------------------------------------------------
+Tue Jan 14 22:41:33 CET 2003 - schwab@suse.de
+
+- Fix ia64 for non-tls build.
+
+-------------------------------------------------------------------
+Tue Jan 14 21:51:24 CET 2003 - aj@suse.de
+
+- Package libpthread_nonshared.a.
+
+-------------------------------------------------------------------
+Mon Jan 13 10:29:36 CET 2003 - kukuk@suse.de
+
+- Add fixed version of x86-64-linuxthreads-disable-fs.diff
+- Readd parts of libm-x86-64.diff
+- Update to current cvs snapshot
+- Add fix for errno compatibility
+- Add s390(x) vfork fixes
+
+-------------------------------------------------------------------
+Sun Jan 12 19:16:13 CET 2003 - kukuk@suse.de
+
+- Update to current cvs snapshot
+
+-------------------------------------------------------------------
+Fri Jan  3 19:09:36 CET 2003 - bg@suse.de
+
+- removed obsolete patch for hppa 
+
+-------------------------------------------------------------------
+Fri Dec 20 23:15:48 CET 2002 - kukuk@suse.de
+
+- Update to current cvs snapshot
+- Obsoletes glibc-2.3-setjmp-ppc64.diff
+- Obsoletes build-alpha.diff
+- Obsoletes libm-x86-64.diff
+- Disable activate-spinlocks.diff temporary
+- Disable x86-64-linuxthreads-disable-fs.diff (breaks compilation)
+
+-------------------------------------------------------------------
+Tue Dec 17 16:01:13 CET 2002 - olh@suse.de
+
+- remove glibc-2.2.5-ppc64-bits-socket_h.diff 
+  add glibc-2.3-setjmp-ppc64.diff 
+  add libc23-ppc64-cvshead20021210.patch
+  dont run configure in subshell, it can fail and rpm cant catch it
+
+-------------------------------------------------------------------
+Fri Dec 13 20:01:30 CET 2002 - schwab@suse.de
+
+- Add more ia64 syscalls.
+
+-------------------------------------------------------------------
+Fri Dec  6 22:06:41 CET 2002 - olh@suse.de
+
+- build also the locals parallel
+  do not fail with parallel calculation on lowmem systems
+
+-------------------------------------------------------------------
+Tue Dec  3 11:16:30 CET 2002 - aj@suse.de
+
+- Build parallel on x86-64.
+- Activate fast spinlocks in malloc for x86 and x86-64.
+- Integrate new math library from AMD for x86-64.
+
+-------------------------------------------------------------------
+Fri Nov 29 11:08:03 CET 2002 - bg@suse.de
+
+- Fix build on hppa. 
+
+-------------------------------------------------------------------
+Thu Nov 28 21:31:09 CET 2002 - aj@suse.de
+
+- Fix build on alpha.
+
+-------------------------------------------------------------------
+Thu Nov 28 15:45:09 CET 2002 - aj@suse.de
+
+- Update to CVS version from 2002-11-28.
+- Do not use %fs for threads for now on x86-64.
+- Fix fnmatch bug with multibyte strings.
+
+-------------------------------------------------------------------
+Tue Nov 12 12:41:17 CET 2002 - bg@suse.de
+
+- Updated hppa patches 
+
+-------------------------------------------------------------------
+Thu Nov  7 14:00:04 CET 2002 - kukuk@suse.de
+
+- getaddrinfo(): get host information for AF_INET and AF_INET6 only
+  from the same service [Bug #21237]
+
+-------------------------------------------------------------------
+Thu Nov  7 12:11:29 CET 2002 - bg@suse.de
+
+- Fix build of linuxthreads for hppa 
+
+-------------------------------------------------------------------
+Tue Nov  5 16:31:11 CET 2002 - bg@suse.de
+
+- Use current kernel-headers for parisc
+- Add support for hppa 
+ 
+-------------------------------------------------------------------
+Tue Nov  5 15:29:32 CET 2002 - kukuk@suse.de
+
+- Update to current CVS snapshot
+
+-------------------------------------------------------------------
+Tue Oct 22 16:21:34 CEST 2002 - schwab@suse.de
+
+- Fix ia64 syscall numbers.
+
+-------------------------------------------------------------------
+Mon Oct 21 17:20:04 CEST 2002 - schwab@suse.de
+
+- Fix alignment in locale-archive.
+
+-------------------------------------------------------------------
+Mon Oct 21 17:16:51 CEST 2002 - kukuk@suse.de
+
+- Update to glibc 2.3.1 cvs 20021021
+- Remove nss_dns6 patch
+
+-------------------------------------------------------------------
+Tue Oct 15 14:58:34 CEST 2002 - kukuk@suse.de
+
+- Update to glibc 2.3.1 cvs 20021015
+
+-------------------------------------------------------------------
+Wed Oct  2 14:06:31 CEST 2002 - kukuk@suse.de
+
+- Update to glibc 2.3 cvs 20021002
+- Update crypt_blowfish to 0.4.4 (manual page fix, hppa fix)
+
+-------------------------------------------------------------------
+Wed Sep 25 11:43:08 CEST 2002 - mls@suse.de
+
+- build with -finline-limit=2000 on mips/armv4l
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:26 CEST 2002 - schwab@suse.de
+
+- Add new ia64 syscall numbers.
+
+-------------------------------------------------------------------
+Mon Sep 16 17:24:01 CEST 2002 - meissner@suse.de
+
+- Added AIO syscall numbers for ppc/ppc64, so libaio does not need them.
+- Aligned powerpc bits/sem.h to be the same as the other 64bit
+  archs, keeping the 32bit layout.
+- Added the faster ppc32 memset.S from glibc HEAD on request of IBM.
+
+-------------------------------------------------------------------
+Thu Sep 12 15:56:07 CEST 2002 - meissner@suse.de
+
+- ppc/ppc64: added more biarch things to the SystemV IPC headers
+  which are needed to get 64bit ipc / IPC_STAT to work. 
+
+-------------------------------------------------------------------
+Mon Sep  9 18:52:53 CEST 2002 - bk@suse.de
+
+- s390x-biarch: use correct wordsize.h(move to main 32/64 directory)
+- s390x: requires 64-bit kernel
+
+-------------------------------------------------------------------
+Mon Sep  9 15:40:23 CEST 2002 - kukuk@suse.de
+
+- Increase minimum value of MAXPACKET in libnss_dns, too
+
+-------------------------------------------------------------------
+Mon Sep  9 14:31:04 CEST 2002 - uli@suse.de
+
+- all architectures are created equal, but some are more equal
+  than others; increased DB_FILE_ID_LEN in DB2 to 24 on x86-64,
+  ia64, s390x and ppc64 to fit 64 bit __ino_t type
+
+-------------------------------------------------------------------
+Fri Sep  6 17:26:53 MEST 2002 - mls@suse.de
+
+- fix squeeze bug in db-1.85: set dirty flag after page modification
+
+-------------------------------------------------------------------
+Fri Sep  6 15:44:17 CEST 2002 - kukuk@suse.de
+
+- Increase minimum value of MAXPACKET
+
+-------------------------------------------------------------------
+Mon Sep  2 10:38:40 CEST 2002 - kukuk@suse.de
+
+- Fix asm header files for sparc/sparc64
+
+-------------------------------------------------------------------
+Fri Aug 30 13:18:51 CEST 2002 - aj@suse.de
+
+- Revert linuxthreads for x86-64 for now.
+
+-------------------------------------------------------------------
+Wed Aug 28 16:15:18 CEST 2002 - aj@suse.de
+
+- Add optimized math routines for x86-64.
+
+-------------------------------------------------------------------
+Tue Aug 27 15:52:49 CEST 2002 - olh@suse.de
+
+- BuildFlags="$(echo $RPM_OPT_FLAGS | sed 's#-mminimal-toc##')"
+
+-------------------------------------------------------------------
+Mon Aug 26 21:56:22 CEST 2002 - olh@suse.de
+
+- add ppc64_glibc_2.2.5_sunrpc-fix.patch
+  * sysdeps/unix/sysv/linux/powerpc/bits/socket.h: New file that adds 
+  __powerpc64__ specific fields and adjust size/alignment for 64-bit.
+
+-------------------------------------------------------------------
+Fri Aug 23 17:04:38 CEST 2002 - aj@suse.de
+
+- Use floating stacks for x86-64.
+- Add LICENSE file.
+- Fix profiling code on x86-64.
+- Add strcspn, strpbrk and strspn optimizations for x86-64.
+- Fix makecontext for x86-64.
+
+-------------------------------------------------------------------
+Thu Aug 15 08:59:16 CEST 2002 - aj@suse.de
+
+- Use biarch headers already for building so that bits/syscalls.h is
+  build correctly.
+- Fix bits/syscalls.h for x86-64.
+- Remove *xattr patches.
+
+-------------------------------------------------------------------
+Thu Aug  8 16:59:27 CEST 2002 - kukuk@suse.de
+
+- Update to current cvs (calloc variable overflow fixed)
+- Apply fix for calloc fix
+- Add *xattr system calls and error number
+
+-------------------------------------------------------------------
+Tue Aug  6 12:45:06 CEST 2002 - kukuk@suse.de
+
+- Update to current cvs (IPv6 fixes)
+
+-------------------------------------------------------------------
+Mon Aug  5 12:29:59 CEST 2002 - aj@suse.de
+
+- Implement *context functions for x86-64.
+
+-------------------------------------------------------------------
+Sat Aug  3 16:01:07 CEST 2002 - kukuk@suse.de
+
+- Update kernel-headers to version 2.4.19
+- Add PreRequires "filesystem".
+
+-------------------------------------------------------------------
+Thu Aug  1 18:23:37 CEST 2002 - bk@suse.de
+
+- added s390-may2002.diff with some chunks from may2002 drop
+- give make check a second chance on s390(x), but fail if not(race)
+
+-------------------------------------------------------------------
+Tue Jul 30 11:40:41 CEST 2002 - kukuk@suse.de
+
+- sunrpc/xdr_array.c: Check for variable overflow
+- Ignore failed make check on s390(x)
+
+-------------------------------------------------------------------
+Tue Jul 30 08:31:24 CEST 2002 - aj@suse.de
+
+- Add optimisations for x86-64.
+
+-------------------------------------------------------------------
+Mon Jul 29 09:38:04 CEST 2002 - kukuk@suse.de
+
+- Don't allocate/free category name in setlocale() unnecessarily
+  (for IBM Java [Bug #17065]).
+
+-------------------------------------------------------------------
+Tue Jul 23 13:36:31 CEST 2002 - kukuk@suse.de
+
+- Update to current glibc cvs (pread/pwrite fixes)
+- Remove extra de.po, is in official tarball now.
+
+-------------------------------------------------------------------
+Sat Jul 20 07:14:26 CEST 2002 - aj@suse.de
+
+- Fix profiling for x86-64.
+
+-------------------------------------------------------------------
+Fri Jul 19 16:26:26 CEST 2002 - meissner@suse.de
+
+- Fixed the PPC64 patch, several superflous files removed.
+- Reenabled make check for ppc64.
+
+-------------------------------------------------------------------
+Wed Jul 17 14:13:58 CEST 2002 - kukuk@suse.de
+
+- Update to current glibc cvs
+- Fix kernel headers for s390/s390x
+- Move some binaries/shell scripts and manual pages to the
+  correct subpackage
+
+-------------------------------------------------------------------
+Tue Jul 16 14:51:48 CEST 2002 - meissner@suse.de
+
+- Merged latest PowerPC patch from IBM.
+  * Lots of ppc64 related fixes.
+  * Start of biarch support.
+  * Changed struct stat in 64bit ABI.
+
+-------------------------------------------------------------------
+Fri Jul 12 18:29:17 CEST 2002 - aj@suse.de
+
+- Add biarch patch for s390 and s390x.
+
+-------------------------------------------------------------------
+Mon Jul  8 10:45:49 CEST 2002 - aj@suse.de
+
+- Add some optimized x86-64 math routines and a fixed lgammal 
+  implementation.
+- Testsuite on x86-64 should pass now.
+- Run ldconfig in postinstall.
+- Fix memleak in catgets.
+
+-------------------------------------------------------------------
+Sat Jul  6 13:38:48 CEST 2002 - kukuk@suse.de
+
+- Fix typo in create_biarch_asm.sh (asm-sparc path)
+
+-------------------------------------------------------------------
+Thu Jul  4 21:59:43 CEST 2002 - kukuk@suse.de
+
+- Fix typo in manpages/Makefile
+- Fix filelist (on some archs ld-linux.so.2 was missing)
+
+-------------------------------------------------------------------
+Thu Jul  4 10:02:46 CEST 2002 - kukuk@suse.de
+
+- Revert mktime patch (check for year < 70)
+- Replace ifarch i386 with ix86
+- Add patch for arm
+- Include pt_chown again
+
+-------------------------------------------------------------------
+Wed Jul  3 16:05:05 CEST 2002 - kukuk@suse.de
+
+- Add more new manual pages
+- Fix spec file (renaming of ld-*, creating of include/asm header
+  files)
+- Update to current CVS version
+- Fix kernel-headers for x86-64 (don't overwrite patched version)
+- Rename Equador -> Ecuador [Bug #16648]
+- Add hint about security problem of host caching with nscd to
+  config file.
+
+-------------------------------------------------------------------
+Tue Jun 25 14:29:14 CEST 2002 - aj@suse.de
+
+- Fix dl-machine.h for x86-64 to compile with new binutils.
+- Fix mtrr.h header for x86-64.
+- Do not package pt_chown.
+
+-------------------------------------------------------------------
+Tue Jun 18 14:28:40 CEST 2002 - sf@suse.de
+
+- reverted changes from Tue Jun 11 10:04:55 CEST 2002
+  (took the kernel-headers from before, readded patch9)
+- add new archive with kernel-headers for x86_64
+- add autofs patch
+
+-------------------------------------------------------------------
+Mon Jun 17 17:12:39 CEST 2002 - bk@suse.de
+
+- remove s390* from the list of archs that ignore check fail
+
+-------------------------------------------------------------------
+Thu Jun 13 20:38:00 CEST 2002 - uli@suse.de
+
+- fixed typos in spec
+
+-------------------------------------------------------------------
+Thu Jun 13 13:35:43 CEST 2002 - schwab@suse.de
+
+- Fix ssize_t and __ipc_pid_t for ppc64.
+
+-------------------------------------------------------------------
+Wed Jun 12 09:47:12 CEST 2002 - uli@suse.de
+
+- fix errlist.c for ARM as well
+
+-------------------------------------------------------------------
+Tue Jun 11 10:04:55 CEST 2002 - sf@suse.de
+
+- made new kernel-header archive from kernel-source
+- added asm-ppc64 to kernel-headers
+- removed patch9 as it is obsoleted by the new kernel-headers 
+
+-------------------------------------------------------------------
+Fri Jun  7 14:29:30 CEST 2002 - olh@suse.de
+
+- update asm-ppc64/ioctls.h, missing TIOCGDEV
+
+-------------------------------------------------------------------
+Thu Jun  6 17:57:41 CEST 2002 - olh@suse.de
+
+- fix glibc-ppc64 patch
+
+-------------------------------------------------------------------
+Thu Jun  6 15:09:16 CEST 2002 - olh@suse.de
+
+- update ppc64_glibc_ldconfig.diff
+
+-------------------------------------------------------------------
+Thu Jun  6 10:09:24 CEST 2002 - ke@suse.de
+
+- Update de.po from
+  http://www.iro.umontreal.ca/contrib/po/teams/PO/de/libc-2.2.5.de.po.
+- Use only translated entries to make the testsuite happy; call
+  msgattrib on de.po and hu.po [# 16438].
+
+-------------------------------------------------------------------
+Mon Jun  3 09:58:54 CEST 2002 - aj@suse.de
+
+- Clean up generation of asm includes for bi-arch systems.
+- Enable profiling for x86-64.
+
+-------------------------------------------------------------------
+Mon Jun  3 08:52:38 CEST 2002 - kukuk@suse.de
+
+- Add fix for weak declaration "_old_sys_nerr"
+- Remove already disabled alpha patch
+- Update to current CVS
+
+-------------------------------------------------------------------
+Sat Jun  1 10:54:41 CEST 2002 - olh@suse.de
+
+- fix stat for real, wrong size for st_nlink
+
+-------------------------------------------------------------------
+Wed May 29 18:24:57 CEST 2002 - olh@suse.de
+
+- add ppc64_glibc_2.2.5-types.diff, fixes stat()
+
+-------------------------------------------------------------------
+Wed May 29 10:38:34 CEST 2002 - olh@suse.de
+
+- add ppc64_glibc_ldconfig.diff for elf32/elf64 coexistance
+
+-------------------------------------------------------------------
+Thu May 23 08:32:00 MEST 2002 - aj@suse.de
+
+- Rename __thread to fix problems with GCC 3.2.
+
+-------------------------------------------------------------------
+Mon May 20 11:37:42 CEST 2002 - olh@suse.de
+
+- add ppc64 kernel headers
+  add create_ppc_asm.sh
+  update ppc64 patch, use /lib64/ld64.so.1
+  move generic syscalls.list to ppc64/32
+	set/getrlimit GLIBC2.0 is ppc32 only
+  use parallel make on ppc and ppc64
+  do not chroot as user
+  cleanup nested ifarch for dynamic linker
+
+-------------------------------------------------------------------
+Wed May 15 10:25:45 CEST 2002 - aj@suse.de
+
+- Fix building of linuxthreads with current GCC.
+
+-------------------------------------------------------------------
+Mon May 13 10:04:37 CEST 2002 - olh@suse.de
+
+- fix ppc64 RTLDLIST ld64.so rewrite
+
+-------------------------------------------------------------------
+Sat May 11 02:09:06 CEST 2002 - schwab@suse.de
+
+- Add div/mod compatibility functions for ia64.
+
+-------------------------------------------------------------------
+Fri May 10 13:56:59 CEST 2002 - olh@suse.de
+
+- add ppc64 support
+
+-------------------------------------------------------------------
+Thu May  9 10:06:19 CEST 2002 - aj@suse.de
+
+- Add sys/io.h for x86-64.
+
+-------------------------------------------------------------------
+Mon May  6 18:12:51 CEST 2002 - ihno@suse.de
+
+- corrected memory calculation for parallel build
+
+-------------------------------------------------------------------
+Fri May  3 16:28:23 CEST 2002 - kukuk@suse.de
+
+- Add fix to compile math.h on SPARC with g++
+
+-------------------------------------------------------------------
+Thu May  2 11:29:29 CEST 2002 - kukuk@suse.de
+
+- Update to current CVS 2.2 branch
+- Add x86-64 fix for crti.o and /usr/lib64 with libpthread
+
+-------------------------------------------------------------------
+Fri Apr 26 16:51:48 CEST 2002 - kukuk@suse.de
+
+- define sqrtl alias for PowerPC
+
+-------------------------------------------------------------------
+Mon Apr 22 07:56:00 CEST 2002 - aj@suse.de
+
+- Fix vfork for x86-64.
+- Fix handling of ld.so.cache for x86-64.
+
+-------------------------------------------------------------------
+Thu Apr 18 09:16:58 CEST 2002 - aj@suse.de
+
+- Allow testsuite to fail for x86-64.
+- Add ULPs for x86-64.
+
+-------------------------------------------------------------------
+Wed Apr 17 16:36:51 CEST 2002 - kukuk@suse.de
+
+- Update to current snapshot (mktime and dl fixes)
+- Update hu.po
+- Do not build a profiled glibc for x86-64
+
+-------------------------------------------------------------------
+Fri Apr 12 10:33:31 CEST 2002 - kukuk@suse.de
+
+- Update to current snapshot (fix SPARC compile)
+- Revert do-lookup.h patch on Alpha (does not work here)
+
+-------------------------------------------------------------------
+Wed Apr 10 15:09:33 CEST 2002 - aj@suse.de
+
+- Fix linuxthreads for x86-64.
+
+-------------------------------------------------------------------
+Wed Apr 10 13:02:48 CEST 2002 - aj@suse.de
+
+- Add x86-64.diff to fix glob64.
+
+-------------------------------------------------------------------
+Wed Apr 10 10:26:22 CEST 2002 - kukuk@suse.de
+
+- Update kernel-headers to 2.4.19pre4 (with x86-64 support)
+- Update glibc to current cvs snapshot
+- Allow old currencies (before EUR)
+
+-------------------------------------------------------------------
+Tue Apr  2 15:58:49 CEST 2002 - aj@suse.de
+
+- Update ULPs.
+
+-------------------------------------------------------------------
+Thu Mar 21 16:18:58 CET 2002 - kukuk@suse.de
+
+- Create html pages after installation of info pages [Bug #15283]
+
+-------------------------------------------------------------------
+Tue Mar 12 16:09:51 CET 2002 - kukuk@suse.de
+
+- Add db1 fix if blocksize is not ^2
+
+-------------------------------------------------------------------
+Sat Mar  2 18:18:15 CET 2002 - kukuk@suse.de
+
+- Add fix for format string bug
+
+-------------------------------------------------------------------
+Sat Mar  2 10:44:31 CET 2002 - kukuk@suse.de
+
+- Fix return value of nice wrapper
+
+-------------------------------------------------------------------
+Fri Mar  1 14:33:09 CET 2002 - kukuk@suse.de
+
+- Add fix for corrupt ut_line
+- Add fix for current gcc 3.1
+- Add patch for nice return values
+
+-------------------------------------------------------------------
+Thu Feb 28 14:53:42 CET 2002 - kukuk@suse.de
+
+- Add fix for rtime, swscanf and ia64
+
+-------------------------------------------------------------------
+Mon Feb 18 13:22:05 CET 2002 - kukuk@suse.de
+
+- When a dlopened module references a weak symbol from another 
+  dlopened module (loaded with RTLD_GLOBAL) no dependency was 
+  generated for this fact, so the second module was unloaded even
+  if the first one was still around.
+
+-------------------------------------------------------------------
+Sun Feb 17 10:51:53 CET 2002 - kukuk@suse.de
+
+- Add pthread/signal bugfix [Bug #13280]
+- Fix directory file list (don't include /usr/include)
+
+-------------------------------------------------------------------
+Thu Feb 14 19:46:04 CET 2002 - kukuk@suse.de
+
+- Use defattr in spec file to avoid problems with not existing
+  UIDs and rpm.
+
+-------------------------------------------------------------------
+Thu Feb 14 13:22:13 CET 2002 - aj@suse.de
+
+- Update ULPs for GCC 3.1.
+
+-------------------------------------------------------------------
+Wed Feb 13 16:03:20 CET 2002 - kukuk@suse.de
+
+- Apply db1 patch from mls@suse.de to fix rpm problems
+
+-------------------------------------------------------------------
+Tue Feb 12 02:01:42 CET 2002 - ro@suse.de
+
+- fix owner/group for kernel headers 
+
+-------------------------------------------------------------------
+Mon Feb 11 15:17:18 CET 2002 - kukuk@suse.de
+
+- Add another solution for the glob problem
+
+-------------------------------------------------------------------
+Thu Feb  7 16:20:49 CET 2002 - kukuk@suse.de
+
+- Add fix for glob (glob should not call globfree)
+- Add fix for innetgr
+
+-------------------------------------------------------------------
+Wed Feb  6 22:01:29 CET 2002 - kukuk@suse.de
+
+- Use correct BuildRoot
+
+-------------------------------------------------------------------
+Wed Feb  6 16:40:49 CET 2002 - kukuk@suse.de
+
+- Update hu.po
+
+-------------------------------------------------------------------
+Wed Feb  6 15:36:56 CET 2002 - kukuk@suse.de
+
+- Set LC_CTYPE for error messages in localedef [Bug #12878]
+
+-------------------------------------------------------------------
+Mon Feb  4 14:26:48 CET 2002 - kukuk@suse.de
+
+- Add fixes from CVS: dynamic loader, readv and writev seg.fault
+  and various architecture fixes for alpha and mips
+- Don't compile with -g on Alpha
+- Add fix for possible endless loop fix
+
+-------------------------------------------------------------------
+Fri Feb  1 15:58:41 CET 2002 - bk@suse.de
+
+- merged s390x lib64 patch and spec file changes
+
+-------------------------------------------------------------------
+Wed Jan 23 15:39:02 CET 2002 - kukuk@suse.de
+
+- Split glibc into glibc and glibc-locale
+- Create more UTF8 locale
+
+-------------------------------------------------------------------
+Mon Jan 21 10:45:19 CET 2002 - kukuk@suse.de
+
+- Update to official glibc 2.2.5
+
+-------------------------------------------------------------------
+Wed Jan 16 18:29:33 CET 2002 - kukuk@suse.de
+
+- Remove /var/adm/setup/setup.timeconfig
+
+-------------------------------------------------------------------
+Wed Jan 16 17:22:52 CET 2002 - kukuk@suse.de
+
+- Apply S390 fix
+
+-------------------------------------------------------------------
+Wed Jan  9 15:33:49 CET 2002 - kukuk@suse.de
+
+- Update to glibc 2.2.5pre1
+
+-------------------------------------------------------------------
+Tue Jan  8 18:41:29 CET 2002 - egmont@suselinux.hu
+
+- Added partial Hungarian translation
+
+-------------------------------------------------------------------
+Tue Jan  8 13:52:51 CET 2002 - kukuk@suse.de
+
+- Add patch to pass math tests with gcc 3.x
+- Update to current CVS version
+
+-------------------------------------------------------------------
+Thu Jan  3 18:05:48 CET 2002 - kukuk@suse.de
+
+- Update kernel header files to 2.4.17
+
+-------------------------------------------------------------------
+Tue Jan  1 10:55:34 CET 2002 - kukuk@suse.de
+
+- Update current CVS version, add final fixes for LSB test suite
+
+-------------------------------------------------------------------
+Tue Dec 18 15:27:42 CET 2001 - poeml@suse.de
+
+- Install ja_JP.SJIS locale.
+
+-------------------------------------------------------------------
+Sat Dec 15 15:27:12 CET 2001 - schwab@suse.de
+
+- Fix missing declaration of md5_uintptr.
+
+-------------------------------------------------------------------
+Fri Dec 14 10:11:17 CET 2001 - kukuk@suse.de
+
+- Update to correct CVS branch
+
+-------------------------------------------------------------------
+Thu Dec 13 14:50:25 CET 2001 - kukuk@suse.de
+
+- Update to current CVS
+- Increase PATH_MAX to 4096 (including the leading zero)
+- Clear pointer if asprintf fails
+- pthread_key_delete should not contact thread manager before it
+  is created.
+
+-------------------------------------------------------------------
+Tue Dec 11 22:35:07 CET 2001 - kukuk@suse.de
+
+- Fix prelink patch
+
+-------------------------------------------------------------------
+Tue Dec 11 18:53:12 CET 2001 - kukuk@suse.de
+
+- Add fixes for LSB.os test suite (ftw, grantpt and ftok)
+- Update to current CVS
+- Add prelink patch
+
+-------------------------------------------------------------------
+Fri Dec  7 19:16:30 CET 2001 - kukuk@suse.de
+
+- Merge with current CVS
+- Add blowfish crypt
+
+-------------------------------------------------------------------
+Fri Nov 23 11:55:14 CET 2001 - uli@suse.de
+
+- added armv4l arch to spec
+- added arm kernel headers
+- added trivial fix for dl-machine.h from CVS (see arm.dif)
+
+-------------------------------------------------------------------
+Thu Nov 15 10:29:33 CET 2001 - adrian@suse.de
+
+- add mips architecture to spec file
+- apply further mips fixes for ld
+- activate %clean again
+
+-------------------------------------------------------------------
+Sun Nov 11 12:12:03 CET 2001 - kukuk@suse.de
+
+- Fix lost permissions of shell script on SPARC
+
+-------------------------------------------------------------------
+Thu Nov  8 18:40:33 CET 2001 - kukuk@suse.de
+
+- Add 32bit UID fixes
+
+-------------------------------------------------------------------
+Thu Nov  8 11:47:21 CET 2001 - kukuk@suse.de
+
+- More fixes for asm-ia64 header files
+
+-------------------------------------------------------------------
+Thu Nov  8 10:50:13 CET 2001 - kukuk@suse.de
+
+- Fix asm-i386/processor.h (don't align struct)
+- Fix asm-ia64/bitops.h (define CMPXCHG_BUGCHECK)
+- Correct version number in version.h
+
+-------------------------------------------------------------------
+Wed Nov  7 14:07:21 CET 2001 - uli@suse.de
+
+- fixed sys/io.h, sysmacros.h for icc
+
+-------------------------------------------------------------------
+Tue Nov  6 16:53:04 CET 2001 - kukuk@suse.de
+
+- Update kernel-headers to 2.4.14
+
+-------------------------------------------------------------------
+Thu Nov  1 11:34:56 CET 2001 - kukuk@suse.de
+
+- Use again old rules to generate html files
+
+-------------------------------------------------------------------
+Sun Oct 21 22:55:24 CEST 2001 - schwab@suse.de
+
+- Fix inttypes.h for C++.
+
+-------------------------------------------------------------------
+Fri Oct 19 13:31:53 CEST 2001 - aj@suse.de
+
+- Fix typo in inttypes.h that presents compilation by non-GCC compilers.
+
+-------------------------------------------------------------------
+Tue Oct 16 10:56:52 CEST 2001 - aj@suse.de
+
+- Update elf.h to include x86-64 defines since those are needed
+  by some other tools.
+
+-------------------------------------------------------------------
+Fri Sep 28 15:59:19 CEST 2001 - schwab@suse.de
+
+- Readd patch from 2001-09-10 with corrections.
+- Add compatibility patch for GCC 3.  This allows to build glibc
+  with GCC 3.
+- Require that make check succeeds on ia64.
+
+-------------------------------------------------------------------
+Thu Sep 13 15:58:31 CEST 2001 - aj@suse.de
+
+- Add a better version of the threads-fork patch that fixes some
+  more places where interrupts can occur and does this a bit cleaner.
+
+-------------------------------------------------------------------
+Tue Sep 11 13:50:37 CEST 2001 - aj@suse.de
+
+- Remove patch from 2001-09-10 since it breaks the dynamic linker.
+
+-------------------------------------------------------------------
+Tue Sep 11 10:51:11 CEST 2001 - aj@suse.de
+
+- Fix bug in linuxthreads where manager and threads could
+  get out of synch due to an interrupted read call.
+
+-------------------------------------------------------------------
+Mon Sep 10 18:20:32 CEST 2001 - schwab@suse.de
+
+- Fix handling of dependent dynamic objects for dlopen/dlclose.
+
+-------------------------------------------------------------------
+Sat Sep  8 21:02:38 CEST 2001 - kukuk@suse.de
+
+- Don't create gconv cache (else iconv --list seg.faults)
+
+-------------------------------------------------------------------
+Tue Aug 28 13:39:37 MEST 2001 - aj@suse.de
+
+- Improve dynamic linker to relocate dynamic objects faster.  This
+  implies a small cache for symbol lookups and handling the ld -z combreloc
+  feature if binaries are linked this way.
+
+-------------------------------------------------------------------
+Fri Aug 24 14:26:33 CEST 2001 - kukuk@suse.de
+
+- Add fix for handling of %l[] in vfscanf
+- ldconfig removes stale links now
+- Remove susehelp config files, now in susehelp itself
+
+-------------------------------------------------------------------
+Wed Aug 22 15:26:06 CEST 2001 - aj@suse.de
+
+- Update s390 patch from IBM.
+
+-------------------------------------------------------------------
+Fri Aug 17 14:11:16 CEST 2001 - kukuk@suse.de
+
+- Adjust dns6 patch for 2.2.4
+- Fix spec file (include lost libnss_dns6.so)
+- Fix versionnumber in version.h [Bug #9759]
+- Update kernel-header to 2.4.9
+
+-------------------------------------------------------------------
+Thu Aug 16 09:32:39 MEST 2001 - aj@suse.de
+
+- Update to 2.2.4 final.  Add s390-ucontext patch.
+
+-------------------------------------------------------------------
+Fri Aug 10 12:04:14 CEST 2001 - aj@suse.de
+
+- Update to current glibc version.  Do not use the hardlink program
+  for compatification since localedef will do this itself now.
+  Create gconv cache.
+
+-------------------------------------------------------------------
+Wed Aug  1 15:31:50 CEST 2001 - aj@suse.de
+
+- Add patch for zic to create copy of the timezone instead
+  of a symbolic link so that the file exists even if /usr is not
+  mounted.
+  Use i486 instead of i386 as default architecture for i386.
+
+-------------------------------------------------------------------
+Sat Jul 28 08:36:27 CEST 2001 - kukuk@suse.de
+
+- Fix problem with linux/spinlock.h
+
+-------------------------------------------------------------------
+Fri Jul 27 09:30:01 CEST 2001 - kukuk@suse.de
+
+- Update kernel-header files to 2.4.7
+
+-------------------------------------------------------------------
+Thu Jul 26 14:04:15 CEST 2001 - froh@suse.de
+
+- add fix for failing tst-setcontext on s390
+
+-------------------------------------------------------------------
+Wed Jul 25 09:29:38 CEST 2001 - aj@suse.de
+
+- Add patch to fix loading of dynamic libs in static programs for PPC.
+
+-------------------------------------------------------------------
+Fri Jul 20 13:44:30 CEST 2001 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Disable tst-regex and test-lfs
+
+-------------------------------------------------------------------
+Fri Jul  6 15:26:54 CEST 2001 - kukuk@suse.de
+
+- Add da_DK@euro and da_DK.UTF-8
+
+-------------------------------------------------------------------
+Thu Jul  5 14:34:02 CEST 2001 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Remove obsolete cvs patch
+- Fix DNS/IPv6 patch
+- Hardlink equal locale files
+
+-------------------------------------------------------------------
+Fri Jun 22 15:59:21 CEST 2001 - olh@suse.de
+
+- add glibc-2.2.3-ppc_dlmachine.diff to fix binutils make check
+
+-------------------------------------------------------------------
+Tue Jun 19 10:27:38 CEST 2001 - aj@suse.de
+
+- Fix profiling on PowerPC.
+
+-------------------------------------------------------------------
+Tue Jun 19 06:41:03 CEST 2001 - bk@suse.de
+
+- added s390x support to spec file
+
+-------------------------------------------------------------------
+Fri Jun 15 17:58:22 CEST 2001 - schwab@suse.de
+
+- Fixup asm-ia64/atomic.h for user-space inclusion.
+
+-------------------------------------------------------------------
+Tue Jun 12 11:14:08 CEST 2001 - aj@suse.de
+
+- Fix testsuite for sparc.
+
+-------------------------------------------------------------------
+Mon Jun 11 13:56:16 CEST 2001 - aj@suse.de
+
+- Fix testsuite for powerpc and S390, build again on alpha.
+
+-------------------------------------------------------------------
+Tue May 22 15:43:24 CEST 2001 - kukuk@suse.de
+
+- Update to current CVS snapshot
+- Rmove support for PF_LOCAL from getaddrinfo [Bug #8469]
+
+-------------------------------------------------------------------
+Sun May 13 15:19:42 CEST 2001 - kukuk@suse.de
+
+- Don't use absolute paths in pre-install-section
+
+-------------------------------------------------------------------
+Fri May  4 19:20:10 CEST 2001 - kukuk@suse.de
+
+- Add special version.h which fails on compiling kernel modules
+
+-------------------------------------------------------------------
+Sat Apr 28 18:32:51 CEST 2001 - kukuk@suse.de
+
+- Update to glibc 2.2.3, kernel-headers-2.4.4
+
+-------------------------------------------------------------------
+Tue Apr 24 16:04:32 CEST 2001 - schwab@suse.de
+
+- Fix feenableexcept on ia64.
+
+-------------------------------------------------------------------
+Tue Apr 24 15:48:34 CEST 2001 - aj@suse.de
+
+- Install some more UTF-8 locales, fix tr_TR locale.
+
+-------------------------------------------------------------------
+Thu Apr 12 17:42:08 CEST 2001 - kukuk@suse.de
+
+- Include our own texi2html
+
+-------------------------------------------------------------------
+Wed Apr 11 18:50:12 CEST 2001 - kukuk@suse.de
+
+- Add fixes from SuSE kernel header files
+- Add patch to reload /etc/resolv.conf if there was changes
+- Add glibc.conf for susehelp (glibc-html pages)
+
+-------------------------------------------------------------------
+Mon Apr  9 17:39:18 CEST 2001 - schwab@suse.de
+
+- Fix ld.so for kernel 2.4.3 on ia64.
+
+-------------------------------------------------------------------
+Thu Apr  5 17:39:44 CEST 2001 - kukuk@suse.de
+
+- Add more fixes from CVS
+
+-------------------------------------------------------------------
+Tue Apr  3 15:40:58 CEST 2001 - kukuk@suse.de
+
+- Fix isdn header files from kernel-headers
+
+-------------------------------------------------------------------
+Fri Mar 30 18:40:09 CEST 2001 - kukuk@suse.de
+
+- Update kernel header files to 2.4.3
+
+-------------------------------------------------------------------
+Fri Mar 30 17:22:54 CEST 2001 - kukuk@suse.de
+
+- Merge s390 patches
+- Fix rcmd_af() (allow PF_UNSPEC)
+
+-------------------------------------------------------------------
+Fri Mar 30 08:52:32 CEST 2001 - aj@suse.de
+
+- Add some small fixes, fix spec file for removal of man-pages.
+
+-------------------------------------------------------------------
+Thu Mar 29 18:16:09 CEST 2001 - kukuk@suse.de
+
+- Don't provide kernel_headers any longer
+- Remove some man-pages which are now official in the man-pages
+  package
+
+-------------------------------------------------------------------
+Thu Mar 29 08:33:19 CEST 2001 - aj@suse.de
+
+- Fix shmfs recognition.
+
+-------------------------------------------------------------------
+Thu Mar 29 01:18:52 CEST 2001 - ro@suse.de
+
+- added db-splitmask fix from mls (hopefully work around bug in db1) 
+
+-------------------------------------------------------------------
+Wed Mar 28 09:02:54 CEST 2001 - aj@suse.de
+
+- Fix s390 to not generate wrong relocations, work around compiler 
+  error.
+
+-------------------------------------------------------------------
+Wed Mar 21 14:46:25 CET 2001 - kukuk@suse.de
+
+- glibc-devel obsoletes and provides linclude
+
+-------------------------------------------------------------------
+Tue Mar 20 12:38:28 CET 2001 - kukuk@suse.de
+
+- Add strtok and other fixes from CVS
+- Add yp_all fix
+
+-------------------------------------------------------------------
+Tue Mar 13 13:57:16 CET 2001 - kukuk@suse.de
+
+- Add more s390 string.h fixes
+
+-------------------------------------------------------------------
+Mon Mar 12 10:05:30 CET 2001 - aj@suse.de
+
+- Add fixes for s390, don't run testsuite on s390 for now.
+
+-------------------------------------------------------------------
+Fri Mar  9 17:05:27 CET 2001 - kukuk@suse.de
+
+- Fix linux/init.h header file
+
+-------------------------------------------------------------------
+Fri Mar  9 16:01:15 CET 2001 - aj@suse.de
+
+- Handle new EM_S390 value.
+
+-------------------------------------------------------------------
+Fri Mar  9 15:33:55 CET 2001 - kukuk@suse.de
+
+- kernel-heaer fixes to build on Alpha
+
+-------------------------------------------------------------------
+Thu Mar  8 16:02:45 CET 2001 - ro@suse.de
+
+- update kernel-headers to 2.4.2 
+
+-------------------------------------------------------------------
+Thu Mar  8 12:53:56 CET 2001 - ro@suse.de
+
+- kernel-header fixes to build on s390 
+
+-------------------------------------------------------------------
+Thu Feb 22 11:22:08 CET 2001 - schwab@suse.de
+
+- More kernel header fixes for IA64.
+
+-------------------------------------------------------------------
+Tue Feb 20 11:18:53 CET 2001 - kukuk@suse.de
+
+- Remove optimisation not supported on all plattforms
+
+-------------------------------------------------------------------
+Mon Feb 19 09:48:02 CET 2001 - kukuk@suse.de
+
+- Fix Optimization of glibc build
+- Add Optimization for alphaev6 and sparcv9
+
+-------------------------------------------------------------------
+Sat Feb 17 17:19:40 CET 2001 - kukuk@suse.de
+
+- Update to glibc 2.2.2 from CVS
+
+-------------------------------------------------------------------
+Thu Feb 15 16:51:12 CET 2001 - kukuk@suse.de
+
+- kernel header fixes for SPARC and IA64
+
+-------------------------------------------------------------------
+Tue Feb 13 14:19:43 CET 2001 - kukuk@suse.de
+
+- Make optimization for i686 work
+- Add manual page for ldd
+
+-------------------------------------------------------------------
+Mon Feb 12 16:05:23 CET 2001 - kukuk@suse.de
+
+- Fix more kernel headers
+
+-------------------------------------------------------------------
+Thu Feb  8 16:34:27 CET 2001 - kukuk@suse.de
+
+- Fix more kernel-headers
+
+-------------------------------------------------------------------
+Wed Feb  7 17:17:03 CET 2001 - kukuk@suse.de
+
+- Delete links in pre install section for glibc-devel
+
+-------------------------------------------------------------------
+Wed Feb  7 01:08:26 CET 2001 - kukuk@suse.de
+
+- Fix kernel-header includes
+
+-------------------------------------------------------------------
+Tue Feb  6 09:29:04 CET 2001 - kukuk@suse.de
+
+- Fix creating of /usr/include/asm on SPARC
+- Add more CVS patches
+
+-------------------------------------------------------------------
+Mon Feb  5 18:58:08 CET 2001 - kukuk@suse.de
+
+- Add some patches from CVS
+- Include our own kernel header files
+
+-------------------------------------------------------------------
+Mon Jan 22 18:47:24 CET 2001 - aj@suse.de
+
+- Add elf patch to fix problems on ia64 and ppc with _dl_pagesize.
+
+-------------------------------------------------------------------
+Mon Jan 22 10:26:42 CET 2001 - aj@suse.de
+
+- Fix mmap64 on powerpc.
+
+-------------------------------------------------------------------
+Tue Jan 16 08:42:33 CET 2001 - aj@suse.de
+
+- Fix sunrpc-udp.diff, add mman.h fix for powerpc.
+
+-------------------------------------------------------------------
+Wed Jan 10 14:49:30 CET 2001 - aj@suse.de
+
+- Add sunrpc-udp.diff to fix UDP timeouts with Linux 2.4 kernel.
+
+-------------------------------------------------------------------
+Tue Jan  9 09:01:41 CET 2001 - aj@suse.de
+
+- Add glibc-2.2.secure.diff to close some security holes.
+
+-------------------------------------------------------------------
+Wed Jan  3 15:26:45 CET 2001 - schwab@suse.de
+
+- Fix strtol and friends on 64 bit platforms.
+- Use 8192 as default pagesize on ia64.
+- Scan AUX vector also in statically linked programs.
+
+-------------------------------------------------------------------
+Wed Jan  3 15:20:45 CET 2001 - aj@suse.de
+
+- Build some UTF-8 locales using a patch from Markus Kuhn.
+
+-------------------------------------------------------------------
+Wed Dec 13 15:52:13 CET 2000 - aj@suse.de
+
+- Add compatibility patch for IPv6 and Linux 2.2.
+
+-------------------------------------------------------------------
+Wed Dec 13 15:48:56 CET 2000 - schwab@suse.de
+
+- Update ia64 patch.
+
+-------------------------------------------------------------------
+Sat Dec  9 13:30:23 CET 2000 - kukuk@suse.de
+
+- Fix resolver bug
+
+-------------------------------------------------------------------
+Fri Dec  1 13:16:07 CET 2000 - kukuk@suse.de
+
+- Add bug fixes for setlocale and strncat
+- strip gconv modules
+
+-------------------------------------------------------------------
+Fri Nov 24 07:43:08 CET 2000 - kukuk@suse.de
+
+- Fix typo in spec file
+
+-------------------------------------------------------------------
+Thu Nov 23 23:22:36 CET 2000 - kukuk@suse.de
+
+- Add hack for POWER3
+
+-------------------------------------------------------------------
+Wed Nov 22 13:03:19 CET 2000 - kukuk@suse.de
+
+- Add strncat bugfix for S/390
+
+-------------------------------------------------------------------
+Tue Nov 21 10:53:31 CET 2000 - kukuk@suse.de
+
+- Don't bulid 32bit compat packages
+
+-------------------------------------------------------------------
+Mon Nov 20 15:46:44 CET 2000 - schwab@suse.de
+
+- Remove use of getpagesize syscall on ia64.
+- Follow DT_INIT/DT_FINI change in compiler.
+
+-------------------------------------------------------------------
+Sun Nov 19 22:43:40 CET 2000 - kukuk@suse.de
+
+- Minor specfile fixes
+
+-------------------------------------------------------------------
+Thu Nov 16 17:38:47 CET 2000 - kukuk@suse.de
+
+- Add lot of more bug fixes
+
+-------------------------------------------------------------------
+Tue Nov 14 16:52:59 CET 2000 - kukuk@suse.de
+
+- Add bugfix for static linked binaries/ld.so.cache from aj@suse.de
+
+-------------------------------------------------------------------
+Mon Nov 13 14:52:05 CET 2000 - aj@suse.de
+
+- Fix noversion.diff and spec file.
+
+-------------------------------------------------------------------
+Sat Nov 11 08:40:42 CET 2000 - kukuk@suse.de
+
+- Fix nssv1 on PowerPC
+- no libNoVersion on SPARC
+
+-------------------------------------------------------------------
+Fri Nov 10 21:47:16 CET 2000 - kukuk@suse.de
+
+- Disable make check on PowerPC and Alpha
+
+-------------------------------------------------------------------
+Fri Nov 10 17:09:57 CET 2000 - kukuk@suse.de
+
+- Update to final glibc 2.2
+
+-------------------------------------------------------------------
+Fri Nov  3 10:44:46 CET 2000 - kukuk@suse.de
+
+- Update to glibc-2.2-20001103 (glibc-2.1.97)
+- Don't install libNoVersion on PowerPC
+- Rename nssv1 -> glibc-nssv1
+- Rename libd -> glibc-profile, move libg.a to libc
+- Rename libcinfo -> glibc-info
+- Rename libchtml -> glibc-html
+- Rename localedb -> glibc-i18ndata
+- Rename libc -> glibc-devel
+- Rename shlibs -> glibc
+
+-------------------------------------------------------------------
+Sat Oct 28 09:10:07 CEST 2000 - kukuk@suse.de
+
+- Update to glibc-2.2-20001028
+- Enable more checks
+
+-------------------------------------------------------------------
+Fri Oct 27 15:39:17 CEST 2000 - aj@suse.de
+
+- Fix NoVersion patch
+
+-------------------------------------------------------------------
+Wed Oct 25 16:47:22 CEST 2000 - kukuk@suse.de
+
+- Update to glibc-2.2-20001025 
+
+-------------------------------------------------------------------
+Sun Oct 22 16:31:32 CEST 2000 - kukuk@suse.de
+
+- Update to glibc 2.2-20001021
+- Update glibc-db to 2.1.95
+- Update ia64 patch
+
+-------------------------------------------------------------------
+Fri Oct 20 15:54:24 CEST 2000 - kukuk@suse.de
+
+- Update to glibc 2.2-20001020
+- Add s390 spec file changes
+
+-------------------------------------------------------------------
+Tue Oct 10 13:46:03 CEST 2000 - schwab@suse.de
+
+- Update to glibc 2.2-20001009.
+- Fix TRAMPOLINE_TEMPLATE for ia64.
+
+-------------------------------------------------------------------
+Sun Oct  1 17:08:32 CEST 2000 - schwab@suse.de
+
+- Export more ia64 specific symbols.
+
+-------------------------------------------------------------------
+Tue Sep 26 12:14:37 CEST 2000 - kukuk@suse.de
+
+- Update to glibc 2.2-20000926
+
+-------------------------------------------------------------------
+Mon Sep 25 14:02:07 CEST 2000 - kukuk@suse.de
+
+- Update to glibc 2.2-20000925 snapshot
+
+-------------------------------------------------------------------
+Thu Sep 14 11:43:51 CEST 2000 - schwab@suse.de
+
+- Update ia64 patch.
+
+-------------------------------------------------------------------
+Fri Sep  8 19:44:17 CEST 2000 - bk@suse.de
+
+- added glibc-2.1.3-db2-s390.tar.gz from developerworks (db2 fix)
+
+-------------------------------------------------------------------
+Wed Sep  6 09:44:36 CEST 2000 - fober@suse.de
+
+- merge s390-7.0 with STABLE:
+  - upgraded to glibc-linuxthreads-2.1.3.1-s390.diff from 2.1.3
+  - added new changes from IBM s390 codedrop
+  - removed glibc-dlopen-2.1.3-s390.diff which is
+    incorporated in glibc-linuxthreads-2.1.3.1-s390.diff now
+
+-------------------------------------------------------------------
+Tue Sep  5 18:19:46 CEST 2000 - kukuk@suse.de
+
+- Add glibc-2.1.security.dif
+
+-------------------------------------------------------------------
+Fri Sep  1 11:14:25 CEST 2000 - olh@suse.de
+
+- add glibc-2.1-ppc_lfs.dif, enables (hopefully) lfs on ppc
+
+-------------------------------------------------------------------
+Wed Aug 30 16:16:04 CEST 2000 - olh@suse.de
+
+- remove sysdeps/powerpc/memset.S on ppc for POWER3
+
+-------------------------------------------------------------------
+Mon Aug 28 17:12:41 CEST 2000 - olh@suse.de
+
+- add glibc-2.1.sgi_fam.dif
+- remove sysdeps/rs6000/memcopy.h on ppc for POWER3
+
+-------------------------------------------------------------------
+Mon Aug 21 19:56:06 CEST 2000 - garloff@suse.de
+
+- Fix race on cond_wait WRT owner of mutex (from olh@suse.de)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:41:48 CEST 2000 - kukuk@suse.de
+
+- Add mmap fix for PowerPC
+ 
+-------------------------------------------------------------------
+Tue Jul 11 10:02:41 CEST 2000 - kukuk@suse.de
+
+- Remove "mutex is owned by current thread" bugfix for IBMs jdk
+
+-------------------------------------------------------------------
+Mon Jun 26 16:47:54 CEST 2000 - schwab@suse.de
+
+- Update ia64 patch.
+
+-------------------------------------------------------------------
+Tue Jun 20 15:33:43 CEST 2000 - kukuk@suse.de
+
+- Move html docu in extra package
+- Update ia64 patch
+
+-------------------------------------------------------------------
+Wed May 31 14:35:00 CEST 2000 - kukuk@suse.de
+
+- Remove LICENSE file, it's the same as COPYING.LIB
+- Add libc docu as html
+
+-------------------------------------------------------------------
+Sun May 28 14:44:42 CEST 2000 - kukuk@suse.de
+
+- Fix ldconfig on PPC and IA64
+
+-------------------------------------------------------------------
+Sat May 27 15:25:13 CEST 2000 - kukuk@suse.de
+
+- Merge new ldconfig fixes
+
+-------------------------------------------------------------------
+Fri May 26 18:16:52 CEST 2000 - kukuk@suse.de
+
+- Update ia64 patch
+
+-------------------------------------------------------------------
+Fri May 26 11:07:39 CEST 2000 - kukuk@suse.de
+
+- Fix (f)truncate64 and xdr_uint8_t
+
+-------------------------------------------------------------------
+Wed May 24 22:23:12 CEST 2000 - kukuk@suse.de
+
+- Fix ldconfig.8 manual page 
+
+-------------------------------------------------------------------
+Thu May 18 17:53:09 CEST 2000 - bk@suse.de
+
+- added s390 dlopen fix
+
+-------------------------------------------------------------------
+Tue May 16 16:48:13 CEST 2000 - bk@suse.de
+
+- updated s390 patches to match IBM_codedrop_2000_05_15
+
+-------------------------------------------------------------------
+Fri May 12 15:47:08 CEST 2000 - kukuk@suse.de
+
+- Fix netinet/in.h IPv6 compare
+
+-------------------------------------------------------------------
+Fri May 12 14:47:15 CEST 2000 - schwab@suse.de
+
+- Update ia64 patches.
+
+-------------------------------------------------------------------
+Fri May 12 14:22:11 CEST 2000 - kukuk@suse.de
+
+- Don't apply LFS patch
+
+-------------------------------------------------------------------
+Tue May  9 22:21:23 CEST 2000 - kukuk@suse.de
+
+- Add LFS patches
+
+-------------------------------------------------------------------
+Mon May  8 11:59:48 CEST 2000 - kukuk@suse.de
+
+- Add lot of bug fixes from CVS 
+
+-------------------------------------------------------------------
+Tue Apr 25 14:20:43 CEST 2000 - kukuk@suse.de
+
+- Fix nscd/getgrnam bug
+
+-------------------------------------------------------------------
+Thu Apr 20 16:38:26 CEST 2000 - kukuk@suse.de
+
+- Remove /var/mail -> /var/spool/mail patch
+- Update nscd.conf.5 manual page
+
+-------------------------------------------------------------------
+Wed Apr 12 16:18:55 CEST 2000 - kukuk@suse.de
+
+- Add nscd patch from Chris Wing
+
+-------------------------------------------------------------------
+Wed Apr 12 15:52:55 CEST 2000 - kukuk@suse.de
+
+- Add ldconfig fix from aj@suse.de
+
+-------------------------------------------------------------------
+Wed Apr 12 11:33:02 CEST 2000 - schwab@suse.de
+
+- More ia64 patches.
+- Use libc.so.0, libm.so.0, ld-linux-ia64.so.1 on ia64.
+
+-------------------------------------------------------------------
+Mon Apr 10 17:55:46 CEST 2000 - kukuk@suse.de
+
+- Support asm-sparc64 and asm-sparc on SPARC
+
+-------------------------------------------------------------------
+Mon Apr 10 15:46:35 CEST 2000 - kukuk@suse.de
+
+- Create /etc/ld.so.cache always with permissions 0644
+- Update ia64 patches
+
+-------------------------------------------------------------------
+Thu Apr  6 11:27:20 CEST 2000 - schwab@suse.de
+
+- Fix dynamic linker bug in ia64.
+- Add ia64 spinlocks for db2.
+
+-------------------------------------------------------------------
+Tue Apr  4 16:16:21 CEST 2000 - schwab@suse.de
+
+- New IA64 patches.
+- Fix ldconfig -p.
+
+-------------------------------------------------------------------
+Mon Apr  3 14:42:03 MEST 2000 - bk@suse.de
+
+- s390 team added s390 patches
+
+-------------------------------------------------------------------
+Wed Mar 22 12:10:02 CET 2000 - kukuk@suse.de
+
+- Fix last SPARC patch 
+
+-------------------------------------------------------------------
+Tue Mar 21 17:48:01 CET 2000 - kukuk@suse.de
+
+- Add SPARC patches
+- Add IA64 patches 
+
+-------------------------------------------------------------------
+Wed Mar 15 14:35:47 CET 2000 - kukuk@suse.de
+
+- Remove personality call (problematic on Alpha)
+- Fix typo in localeconv
+- alpha/ioperm.c> Add entry for "Nautilus".
+
+-------------------------------------------------------------------
+Tue Mar  7 18:17:07 CET 2000 - kukuk@suse.de
+
+- Add locale SIGSEGV fix
+- Fix getdate bug
+
+-------------------------------------------------------------------
+Fri Feb 25 10:53:47 CET 2000 - kukuk@suse.de
+
+- Update to final glibc 2.1.3 + fix for bigendian machines
+
+-------------------------------------------------------------------
+Thu Feb 24 16:12:39 CET 2000 - kukuk@suse.de
+
+- Update to current glibc cvs snapshot
+- Add libnss_dns6.so.2, which makes IPv4 and IPv6 lookups.
+  Old libnss_dns.so.2 will only make IPv4 lookups.
+
+-------------------------------------------------------------------
+Tue Feb 22 16:40:35 CET 2000 - kukuk@suse.de
+
+- Update to current glibc cvs snapshot (2.1.3pre4) 
+
+-------------------------------------------------------------------
+Sat Feb  5 14:40:33 CET 2000 - kukuk@suse.de
+
+- Add missing defines for SPARC bits/termios.h
+
+-------------------------------------------------------------------
+Thu Feb  3 18:25:12 CET 2000 - kukuk@suse.de
+
+- Add regex patch from Andreas Schwab
+
+-------------------------------------------------------------------
+Wed Feb  2 11:37:52 CET 2000 - kukuk@suse.de
+
+- Add ldconfig fix
+- Update to current glibc cvs snapshot
+- Fix sys/io.h on Intel (C++)
+
+-------------------------------------------------------------------
+Mon Jan 24 17:01:13 CET 2000 - kukuk@suse.de
+
+- Fix duplicate setrlimit
+
+-------------------------------------------------------------------
+Mon Jan 24 12:01:27 CET 2000 - kukuk@suse.de
+
+- Update to current glibc cvs snapshot
+
+-------------------------------------------------------------------
+Wed Jan 19 15:53:18 CET 2000 - kukuk@suse.de
+
+- Update to current glibc cvs snapshot
+
+-------------------------------------------------------------------
+Sat Jan 15 01:31:16 CET 2000 - ro@suse.de
+
+-fixed ppc db2-patch 
+
+-------------------------------------------------------------------
+Fri Jan 14 16:54:26 CET 2000 - kukuk@suse.de
+
+- Add patches for Intel and PPC
+
+-------------------------------------------------------------------
+Fri Jan 14 00:27:03 CET 2000 - kukuk@suse.de
+
+- Add patch for SPARC 
+
+-------------------------------------------------------------------
+Thu Jan 13 15:23:54 CET 2000 - kukuk@suse.de
+
+- Move info pages to /usr/share/info 
+
+-------------------------------------------------------------------
+Mon Jan 10 14:49:14 CET 2000 - kukuk@suse.de
+
+- Add ipv6 patches for getent 
+
+-------------------------------------------------------------------
+Mon Jan 10 11:23:57 CET 2000 - kukuk@suse.de
+
+- Move manual pages for applications and config files into 
+  shlibs package
+- Update to current glibc 2.1.3 snapshot
+
+-------------------------------------------------------------------
+Fri Dec 17 17:06:45 MET 1999 - kukuk@suse.de
+
+- Add new ldconfig patches
+- Add aio patch
+- Add fix for bits/string2.h
+
+-------------------------------------------------------------------
+Wed Dec 15 16:37:02 MET 1999 - kukuk@suse.de
+
+- add ldconfig.8
+
+-------------------------------------------------------------------
+Wed Dec 15 10:00:53 MET 1999 - kukuk@suse.de
+
+- Update to current glibc 2.1.3 snapshot
+- Fix get/setrlimit problems
+
+-------------------------------------------------------------------
+Thu Dec  9 20:00:16 MET 1999 - kukuk@suse.de
+
+- Update to current glibc 2.1.3 snapshot
+- Add new ldconfig
+
+-------------------------------------------------------------------
+Sun Dec  5 11:50:42 MET 1999 - kukuk@suse.de
+
+- Disable make check for SPARC (kernel bug)
+- Add setrlimit patches
+- Update to current glibc 2.1.3 snapshot
+
+-------------------------------------------------------------------
+Fri Nov 26 12:09:07 MET 1999 - kukuk@suse.de
+
+- Update to current glibc 2.1.3 snapshot.
+
+-------------------------------------------------------------------
+Tue Oct 26 13:54:55 MEST 1999 - kukuk@suse.de
+
+- Add fix for correct accounting of needed bytes (gethnamaddr.c)
+- Remove not exported, public names from internal md5 functions
+
+-------------------------------------------------------------------
+Mon Oct 25 19:03:56 MEST 1999 - kukuk@suse.de
+
+- Add fix for missing nexttowardl aliase
+
+-------------------------------------------------------------------
+Tue Oct 19 09:56:47 MEST 1999 - kukuk@suse.de
+
+- Add security fix for iruserok
+
+-------------------------------------------------------------------
+Sat Oct 16 16:29:44 MEST 1999 - kukuk@suse.de
+
+- Build libNoVersion.so.1 on every platform
+
+-------------------------------------------------------------------
+Mon Oct 11 19:19:00 MEST 1999 - kukuk@suse.de
+
+- Add linuxthreads/signals.c fix from Andreas Schwab
+- Remove dangling symlink (Bug #544) 
+- Add more bug fixes
+
+-------------------------------------------------------------------
+Fri Oct  8 22:07:24 MEST 1999 - kukuk@suse.de
+
+- Add timezone update
+
+-------------------------------------------------------------------
+Fri Oct  8 17:42:22 MEST 1999 - kukuk@suse.de
+
+- Add NIS+ shadow parser fix
+
+-------------------------------------------------------------------
+Thu Oct  7 11:46:27 MEST 1999 - kukuk@suse.de
+
+- Update to official glibc 2.1.2, add important fixes
+- Update nscd, add manual pages for it
+
+-------------------------------------------------------------------
+Mon Sep 20 18:14:13 CEST 1999 - ro@suse.de
+
+- libc: added requires kernel_headers
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Sep  6 10:25:03 MEST 1999 - kukuk@suse.de
+
+- Update to current glibc 2.1.2 cvs snapshot
+- Remove use auf automake in spec file 
+
+-------------------------------------------------------------------
+Fri Sep  3 14:35:42 MEST 1999 - kukuk@suse.de
+
+- Update to current glibc 2.1.2 cvs snapshot
+- Use RPM macros for configure
+
+-------------------------------------------------------------------
+Wed Aug 25 17:07:09 MEST 1999 - kukuk@suse.de
+
+- Update to current glibc 2.1.2 cvs snapshot 
+
+-------------------------------------------------------------------
+Thu Aug 19 15:20:26 MEST 1999 - kukuk@suse.de
+
+- Add PowerPC patches from Uli Hecht
+- Cleanup of SPEC file
+- Create a profiling version
+
+-------------------------------------------------------------------
+Sat Aug 14 19:58:45 MEST 1999 - kukuk@suse.de
+
+- disable nscd hosts caching by default
+- Apply patch from HJL for broken gethostbyname_r in libnss_dns 
+
+-------------------------------------------------------------------
+Fri Jul 16 17:01:51 MEST 1999 - kukuk@suse.de
+
+- Add header fix for autoconf/g++
+- Move pt_chown and gconv modules from libc to shlibs
+
+-------------------------------------------------------------------
+Wed Jul 14 16:05:14 MEST 1999 - kukuk@suse.de
+
+- Remove /etc/localtime from filelist 
+
+-------------------------------------------------------------------
+Mon Jul 12 09:54:43 MEST 1999 - kukuk@suse.de
+
+- Add more bug fixes from cvs
+- Add ld.so bug fix from Andreas Schwab
+
+-------------------------------------------------------------------
+Thu Jul  8 17:25:43 MEST 1999 - kukuk@suse.de
+
+- configure for i386-unknown-linux 
+
+-------------------------------------------------------------------
+Wed Jul  7 12:28:43 MEST 1999 - kukuk@suse.de
+
+- Remove alpha patch, it's now in glibc 2.1.2 cvs
+- Add more bug fixes from cvs
+- Remove malloc patch (breaks StarOffice)
+
+-------------------------------------------------------------------
+Tue Jul  6 18:08:26 MEST 1999 - kukuk@suse.de
+
+- Add openpty patch from Andreas Schwab
+  (openpty now works if /dev/pts is not mounted)
+
+-------------------------------------------------------------------
+Fri Jul  2 12:04:47 MEST 1999 - kukuk@suse.de
+
+- Remove warning von zic about symlinks.
+
+-------------------------------------------------------------------
+Mon Jun 28 19:49:44 MEST 1999 - kukuk@suse.de
+
+- Remove ndbm links, now in gdbm
+
+-------------------------------------------------------------------
+Fri Jun 25 16:16:20 MEST 1999 - kukuk@suse.de
+
+- Add a lot of more fixes
+- Add nscd fixes and enable nscd on alpha
+
+-------------------------------------------------------------------
+Mon Jun 14 09:17:26 MEST 1999 - kukuk@suse.de
+
+- Add nss_dns and fget* fixes.
+- Add nscd patches for NIS+
+
+-------------------------------------------------------------------
+Thu Jun 10 10:04:11 MEST 1999 - kukuk@suse.de
+
+- Fix daemon() for MT programs 
+- Add libio fixes
+
+-------------------------------------------------------------------
+Fri May 28 08:53:20 MEST 1999 - kukuk@suse.de
+
+- Add fix for docu
+- Disable nscd for alpha again
+
+-------------------------------------------------------------------
+Wed May 26 09:42:54 MEST 1999 - kukuk@suse.de
+
+- Update to version 2.1.1
+
+-------------------------------------------------------------------
+Mon May 17 16:49:35 MEST 1999 - kukuk@suse.de
+
+- Update to snapshot from 16.5.1999
+- Add manpages
+- Add __setfpucw to libNoVersion (intel)
+- Add COPYING and COPYING.LIB
+
+-------------------------------------------------------------------
+Fri May  7 18:57:20 MEST 1999 - kukuk@suse.de
+
+- Update to snapshot from 6.5.1999
+- Add NoVersion patches from RedHat for miscompiled glibc 2.0 apps
+- Add patch for Alpha RX164
+- Add workaround for nscd on Alpha
+
+-------------------------------------------------------------------
+Wed Apr 28 17:48:51 MEST 1999 - kukuk@suse.de
+
+- Remove latest fnmatch patches from Uli Drepper
+
+-------------------------------------------------------------------
+Tue Apr 27 11:48:46 MEST 1999 - kukuk@suse.de
+
+- update to cvs version of Apr 26 1999 
+- fix pmap_set/pmap_unset for DHCP clients
+- Rename libdb1.so.2[.1] to libdb.so.2[.1] since we don't create
+  the symbolic links.
+
+-------------------------------------------------------------------
+Tue Apr 20 13:57:07 MEST 1999 - kukuk@suse.de
+
+- update to cvs version of Apr 20 1999
+- remove sunrpc.diff
+- fix nssv1 package
+- only include nscd on intel
+- install /etc/nscd.conf
+
+-------------------------------------------------------------------
+Mon Apr 12 09:52:58 MEST 1999 - kukuk@suse.de
+
+- update to cvs version of Apr 11 1999
+- Fix paths in paths.h
+- install linuxthreads man pages and documentation
+- Add sunrpc patch for Alpha and security fixes
+- added links for el_GR and ru_RU.KOI8-R in usr/share/locale
+
+-------------------------------------------------------------------
+Wed Mar 31 13:21:02 MEST 1999 - bs@suse.de
+
+- don't use lx_hack for build
+
+-------------------------------------------------------------------
+Tue Mar 16 08:33:57 MET 1999 - ro@suse.de
+
+- libc.texinfo: changed to build with stable texinfo version
+
+-------------------------------------------------------------------
+Mon Mar 15 23:49:51 MET 1999 - ro@suse.de
+
+- update to 2.1.1 (cvs of Mar 15 1999)
+- update nssv1 to 2.0.2
+
+-------------------------------------------------------------------
+Sat Feb 20 19:29:32 MET 1999 - ro@suse.de
+
+- fixed specfile (lddlibc4 not built on alpha)
+
+-------------------------------------------------------------------
+Sat Feb 20 18:41:22 MET 1999 - ro@suse.de
+
+- fixed specfile ... 
+
+-------------------------------------------------------------------
+Sat Feb 20 18:31:30 MET 1999 - ro@suse.de
+
+- added automake to neededforbuild
+
+-------------------------------------------------------------------
+Sat Feb 20 18:15:44 MET 1999 - ro@suse.de
+
+- added nss-v1 modules (to keep old rpm happy with file owners)
+
+-------------------------------------------------------------------
+Fri Feb 19 14:35:38 MET 1999 - ro@suse.de
+
+- update to cvs-version of 1999/02/18
+
+-------------------------------------------------------------------
+Fri Sep 25 18:58:28 MEST 1998 - ro@suse.de
+
+- fixed specfile
+
+-------------------------------------------------------------------
+Fri Sep 25 12:15:13 MEST 1998 - ro@suse.de
+
+- update: use cvs-version of 980925
+  edited db/Makefile to ignore messed up target-dependency
+
+-------------------------------------------------------------------
+Mon Sep 21 19:43:16 MEST 1998 - ro@suse.de
+
+- update: use cvs-version of 980921
+
+-------------------------------------------------------------------
+Mon Sep 14 14:28:21 MEST 1998 - ro@suse.de
+
+- update: use today's cvs-version 
+
+-------------------------------------------------------------------
+Wed Sep  2 16:56:04 MEST 1998 - ro@suse.de
+
+- build for 586 since egcs generates code for 686 that does NOT run
+  on 586 !!! (eg strtok)
+
+-------------------------------------------------------------------
+Sat Aug 22 00:43:48 MEST 1998 - ro@suse.de
+
+- updated to cvs-version 20.8.98
+  added gettext as neededforbuild (so configure shuts up)
+  glibc-linuxthreads is contained in main archive now
+
+-------------------------------------------------------------------
+Tue Jun 16 18:41:51 MEST 1998 - ro@suse.de
+
+- added symlink usr/include/X11
+
+-------------------------------------------------------------------
+Thu May 28 11:36:49 MEST 1998 - ro@suse.de
+
+- added symlinks to linux include files
+
+-------------------------------------------------------------------
+Thu May 28 10:58:09 MEST 1998 - bs@suse.de
+
+- moved ".so" Links to package libc.
+
+-------------------------------------------------------------------
+Wed May 27 16:26:15 MEST 1998 - bs@suse.de
+
+- changed version do `date`
+
+-------------------------------------------------------------------
+Wed May 27 12:16:14 MEST 1998 - ro@suse.de
+
+- created specfile to build libc, shlibs, libd, libcinfo
+                            localedb, timezone,
+
+- former libc renamed to libc5.

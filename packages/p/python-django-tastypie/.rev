@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>724d78afa37ebe1164d8682fa3a81dd7</srcmd5>
+    <version>0.9.11</version>
+    <time>1332752704</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>110512</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>724d78afa37ebe1164d8682fa3a81dd7</srcmd5>
+    <version>0.9.11</version>
+    <time>1340184049</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>724d78afa37ebe1164d8682fa3a81dd7</srcmd5>
+    <version>0.9.11</version>
+    <time>1359110022</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52a05fed332767ba62db47516bc0c7bc</srcmd5>
+    <version>0.9.12</version>
+    <time>1360872811</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 155424 from posophe)</comment>
+    <requestid>155425</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39be1ca42742fb8411624e6031f11be0</srcmd5>
+    <version>0.9.15</version>
+    <time>1374046252</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.15:
+  * No changelog available (forwarded request 183125 from Nijel)</comment>
+    <requestid>183449</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>39be1ca42742fb8411624e6031f11be0</srcmd5>
+    <version>0.9.15</version>
+    <time>1379664164</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf7c224e857f38630ba1826f7e14e4f6</srcmd5>
+    <version>0.10.0</version>
+    <time>1380608973</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201310 from posophe)</comment>
+    <requestid>201424</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>931f54df3c33e61d45fd898f80f1c793</srcmd5>
+    <version>0.11.1</version>
+    <time>1404996962</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240148</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>931f54df3c33e61d45fd898f80f1c793</srcmd5>
+    <version>0.11.1</version>
+    <time>1409302855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b401e2d1aaa1eb9f4aaff4f6e928074f</srcmd5>
+    <version>0.12.1</version>
+    <time>1429769080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298541</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5111029656159ff3610291697de820b2</srcmd5>
+    <version>0.12.1</version>
+    <time>1457353394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361838</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>027db3aeaeabcbc2cb87305e436e047d</srcmd5>
+    <version>0.14.1</version>
+    <time>1535123459</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace useless description.
+
+- Version update to 0.14.1:
+  * Fixes to support latest django
+- Run tests
+- Add patch for django 2.1:
+  * django-tastypie-django21.patch</comment>
+    <requestid>631083</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8dfc5514565b2902a033855810678d2e</srcmd5>
+    <version>0.14.2</version>
+    <time>1551455215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678837</requestid>
+  </revision>
+</revisionlist>

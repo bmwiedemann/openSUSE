@@ -1,0 +1,18 @@
+<package name="matthewlib-java" project="openSUSE:Factory">
+  <title>A few useful Java libraries</title>
+  <description>A collection of Java libraries: - Unix Sockets Library This is a
+   collection of classes and native code to allow you to read and
+   write Unix sockets in Java.
+
+- Debug Library This is a comprehensive logging and debugging
+   solution.
+
+- CGI Library This is a collection of classes and native code to
+   allow you to write CGI applications in Java.
+
+- I/O Library This provides a few much needed extensions to the Java
+   I/O subsystem.
+
+- Hexdump This class formats byte-arrays in hex and ascii for display.</description>
+  <devel project="Java:packages" package="matthewlib-java"/>
+</package>

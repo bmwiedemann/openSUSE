@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Mar 21 16:59:48 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependency python-devel
+- Activate test suite
+- Add %doc and %license
+- Remove test module from runtime package
+- Tidy update-alternatives
+
+-------------------------------------------------------------------
+Wed Jan 23 13:37:38 UTC 2019 - lars@linux-schulserver.de
+
+- initial version 0.4

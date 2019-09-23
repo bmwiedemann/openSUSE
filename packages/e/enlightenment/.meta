@@ -1,0 +1,6 @@
+<package name="enlightenment" project="openSUSE:Factory">
+  <title>enlightenment</title>
+  <description>Enlightenment window manager and desktop environment is really fast, configurable and beautiful. Provides the latest version of Enlightenment, and is the successor to e17.
+</description>
+  <devel project="X11:Enlightenment:Factory" package="enlightenment"/>
+</package>

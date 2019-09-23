@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9435be9748acb2699f0edbe433d2b96</srcmd5>
+    <version>0.3.11</version>
+    <time>1271629753</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/libepc based on submit request 36701 from user vuntz
+</comment>
+    <requestid>36701</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b9435be9748acb2699f0edbe433d2b96</srcmd5>
+    <version>0.3.11</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b9435be9748acb2699f0edbe433d2b96</srcmd5>
+    <version>0.3.11</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>05f48cbbfc98bfd7e322ee669c0d3d9d</srcmd5>
+    <version>0.3.11</version>
+    <time>1287154436</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/libepc based on submit request 50627 from user vuntz
+</comment>
+    <requestid>50627</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>05f48cbbfc98bfd7e322ee669c0d3d9d</srcmd5>
+    <version>0.3.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>744e5493c9cdf5f45ae56235f70b59ee</srcmd5>
+    <version>0.3.11</version>
+    <time>1298030002</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61477 from user vuntz
+</comment>
+    <requestid>61477</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>ddab17630d2517745a8aef96c0affc36</srcmd5>
+    <version>0.3.11</version>
+    <time>1298030010</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61477
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1ab9b56f3f7cdab6a989157d6c07c15a</srcmd5>
+    <version>0.4.0</version>
+    <time>1306849006</time>
+    <user>saschpe</user>
+    <comment>Pushing G:A changes</comment>
+    <requestid>71959</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>228314de48114b3e1603266a189f2b9a</srcmd5>
+    <version>0.4.0</version>
+    <time>1316460197</time>
+    <user>lrupp</user>
+    <comment>Add patches from git (forwarded request 82585 from vuntz)</comment>
+    <requestid>82956</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c11ab3650ba43293c20513a7ebc78653</srcmd5>
+    <version>0.4.1</version>
+    <time>1317664819</time>
+    <user>lrupp</user>
+    <comment>Update to 0.4.1 (forwarded request 85785 from dimstar)</comment>
+    <requestid>86152</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8b2e5e0cdbb97d3e98fae27cf1560158</srcmd5>
+    <version>0.4.2</version>
+    <time>1318527787</time>
+    <user>lrupp</user>
+    <comment>Update to 0.4.2 -- only build fixes (forwarded request 87737 from vuntz)</comment>
+    <requestid>87738</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8b2e5e0cdbb97d3e98fae27cf1560158</srcmd5>
+    <version>0.4.2</version>
+    <time>1319182087</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c72777f5bb5c479dc9e0b6a827b3ff84</srcmd5>
+    <version>0.4.3</version>
+    <time>1322215928</time>
+    <user>coolo</user>
+    <comment>Update to 0.4.3 (forwarded request 93014 from vuntz)</comment>
+    <requestid>93542</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>45af2c1555efe76427665333f34cb0d7</srcmd5>
+    <version>0.4.3</version>
+    <time>1323192199</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6e952f402bdac864220929664332fbf7</srcmd5>
+    <version>0.4.4</version>
+    <time>1329391394</time>
+    <user>coolo</user>
+    <comment>Pushing some G:A bits</comment>
+    <requestid>104901</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>6e952f402bdac864220929664332fbf7</srcmd5>
+    <version>0.4.4</version>
+    <time>1340183579</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>6e952f402bdac864220929664332fbf7</srcmd5>
+    <version>0.4.4</version>
+    <time>1359109263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>6e952f402bdac864220929664332fbf7</srcmd5>
+    <version>0.4.4</version>
+    <time>1379662936</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>6e952f402bdac864220929664332fbf7</srcmd5>
+    <version>0.4.4</version>
+    <time>1409301546</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e6446448819f06c97d1b907b09125e9d</srcmd5>
+    <version>0.4.6</version>
+    <time>1500669353</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel, not buildtested (forwarded request 508732 from Zaitor)</comment>
+    <requestid>509990</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7fcf69e42807395a3677d438ad55f416</srcmd5>
+    <version>0.4.6</version>
+    <time>1565962368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723297</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>3f2e8e67e2bdb9eab0de3eb8fadb230f</srcmd5>
+    <version>0.4.6</version>
+    <time>1567848271</time>
+    <user>dimstar_suse</user>
+    <comment>- Compact descriptions. Hard trim descriptions in secondary
+  subpackages. (forwarded request 726370 from jengelh)</comment>
+    <requestid>726447</requestid>
+  </revision>
+</revisionlist>

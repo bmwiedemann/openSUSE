@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4dfdf0e2a50765ece978fb812e8b0bf</srcmd5>
+    <version>2.4.1</version>
+    <time>1535705207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632171</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>226b241ee4cfeee5479dbb9c22704235</srcmd5>
+    <version>2.4.2</version>
+    <time>1536575525</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.4.2:
+  * Install license file out of the box</comment>
+    <requestid>634658</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>44eaa74b02ee36290fd3638165675de1</srcmd5>
+    <version>2.4.2</version>
+    <time>1536876182</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not distribute generic examples folder</comment>
+    <requestid>635538</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c64ff42910017bec7e9b7ca5935ce14f</srcmd5>
+    <version>2.6.2</version>
+    <time>1549458480</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671972</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4ffbda123a745af8a12ec92fa911c7a3</srcmd5>
+    <version>2.6.2</version>
+    <time>1557263993</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch of randomly failing test:
+  * test_heartbeat_basic_raise_on_missed_heartbeats</comment>
+    <requestid>701283</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4415fca5938a4cc464e4782bf721373a</srcmd5>
+    <version>2.7.0</version>
+    <time>1560338143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708980</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b4b3b96f178390ee3e4304f9504914ea</srcmd5>
+    <version>2.7.0</version>
+    <time>1563701673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717016</requestid>
+  </revision>
+</revisionlist>

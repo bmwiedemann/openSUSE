@@ -1,0 +1,739 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d80db534f5deb5620fe2d95b2768e61</srcmd5>
+    <version>6.5.0</version>
+    <time>1518814007</time>
+    <user>dimstar_suse</user>
+    <comment>- Added condition for runtime requirements
+- Removed xorg-x11-devel build requirement
+- Added peazip-help_path.patch to use the correct path for the 
+  pdf guide
+- Added peazip-build_PIE.patch to produce position independent
+  executables
+- Trim redundant wording from description.
+- Run fdupes just over /usr.
+- Update to version 6.5.0
+  FILE MANAGER
+  * Updated GUI and themes
+  * Can now move and rename objects inside existing archives
+    (7z/p7zip supported formats)
+  EXTRACTION and ARCHIVING
+  * Added option to force browsing of archives containing errors
+    (default off)
+  * Added option to show which options are volatile (context
+    dependent) rather than persistent
+  * Improved archive conversion
+    + &quot;Change password&quot; switch (default off) asks to provide a new
+       password to be applied to converted archive(s), otherwise
+       current password (if any) will be applied - decompression
+       stage test current password for each input archive, asking
+       new password in case of error
+  * Improved support for WIM format
+    + in archiving and extraction interfaces, Advanced tab, were
+      added options to operate including NT security information and
+      NTFS Alternate Data Stream
+    + file manager shows SHA-1 hash value for items in WIM archives
+  * Scheduled deletion after archiving/extraction will not be
+    performed if errors are detected
+  CODE
+  * Privacy directive is available as GUI option
+    + 0 default, no password request
+    + 1 application asks for password when starts, skippable
+    + 2 application asks for password when starts, not skippable
+      (password or keyfile must be provided)
+  * Updated Wolfgang Ehrhardt's crypto library units
+    + crc_hash_2017-06-04
+    + fca_2016-05-01
+    + util_2017-06-04
+  * Various fixes and improvements
+  version 6.4.1
+  CODE
+  * Added experimental privacy_mode directive (at current state
+    can be changed only from configuration file, or hardcoded at
+    compile time) meant to help users not forgetting to provide a
+    password when working on sensitive data
+    + 0 default, no password request
+    + 1 application asks for password when stars, skippable
+    + 2 application asks for password when starts, not skippable
+      (password or keyfile must be provided)
+  FILE MANAGER
+  * Rightclicking on file manager's column header shows context
+    menu for
+    + customizing columns
+    + applying on the fly checksum/hash, search for duplicates,
+      and set algorithm for those two functions
+    + save GUI content as tab-separated TXT file
+  * Clicking the style icon on the right of the status bar shows
+    menu of presets for file manager
+    + Style icon now changes reflecting the style applied to the
+      file manager
+  * New &quot;Navigation bar&quot; entry in status bar menu show/hide side
+    navigation bar
+  * Some keyboard shortcuts were updated
+    + Shift+Ctrl+N create new folder
+    + Ctrl+N extract to new folder
+    + Shift+Del quick delete (do not sent to recycle bin)
+    + Ctrl+Del secure delete
+    + Alt+Enter properties
+  * Various improvements in archive browsing
+  * Various improvements of UI usability with custom system colors
+  EXTRACTION and ARCHIVING
+  * During archive update only relevant options are shown,
+    allowing to set password and to change action (add, update,
+    freshen, sync)
+  version 6.4.0
+  BACKEND
+  * pea 0.61
+    + crc/hash marks duplicate files
+    + shows number of copies found
+    + to find duplicates, value of best checksum or hash algorithm
+      is checked
+  * (PeaUtils GUI) secure delete removes items from list if
+    successfully erased
+  CODE
+  * Various fixes, visual updates and code cleanup
+  FILE MANAGER
+  * Added tabbed browsing
+    + Tab bar is toggled from &quot;Tab bar&quot; entry available in from
+      main menu &gt; Organize, and in address bar and tab bar context
+      menus
+    + Tab bar is also shown clicking on &quot;Open in a new tab&quot; in
+      context menu
+    + Tabs can be added, deleted, moved, and resized
+  * Added rename options (context menu, File manager &gt; Rename) :
+    prepend and append parent directory name
+  * Improved rename dialog (F2)
+  EXTRACTION and ARCHIVING
+  * Added option to archive and extract using relative, full, or
+    absolute paths (non-persistent value, in advanced options) for
+    7z / p7zip supported archive formats
+  * Improved archive conversion
+    + If &quot;Add each object to a separate archive&quot; is checked
+      (default), no extra root foder is added to the converted
+      archive (supported for conversion toward all 7z/p7zip formats)
+    + If the option is unchecked (consolidate multiple archives
+      into one), it is added an extra folder with archive name to
+      keep content separated
+  version 6.3.1
+  CODE
+  * Various fixes
+  FILE MANAGER
+  * Minor visual updates
+  version 6.3.0
+  CODE
+  * Improved DPI awareness
+  * New command line directive &quot;-peaziplanguage&quot; to
+    programmatically change application's localization
+    + second parameter is the name of the localization file,
+      proper localization directory &quot;lang&quot; is resolved by the program
+        example: peazip.exe -peaziplanguage it.txt
+    + please note if other instances of PeaZip are open, they will
+      overwrite language in configuration when they close
+  EXTRACTION and ARCHIVING
+  * Added hamburger menu button in tabs bar to provide alternative
+    access to archiving/extraction context menu
+  * Improved archive creation screen
+    + Added installer-mode sfx modules for 7z (advanced options
+      tab)
+        Replicated archiving action options in main options page
+        (7z/p7zip supported types)
+        Provided new update options: update only items already in
+        archive (ignore extra items on disk), and synchronize archive
+        with content on disk (remove items from archive if removed
+        from disk)
+  version 6.2.0
+  BACKEND
+  * Pea 0.58
+  FILE MANAGER
+  * Can now save list of items being browsed to TXT file,
+    Navigation &gt; Save as TXT
+  * Reorganized keyboad shortcuts
+    + Ctrl+O open selected item as archive
+    + Ctrl+D toggle bookmarks panel
+    + Ctrl+H toggle history panel
+    + Ctrl+Alt+H toggle session history panel
+  * Separated Add and Convert dropdown menus
+  * Single &quot;Extract&quot; button for simplicity - quick extraction
+    action/options are now all featured in Extract button dropdown
+    menu
+  * Browser, and archive/extraction screens, shows &quot;filter&quot; icon
+    when advanced filters are set
+  * Updated Ten teme
+  EXTRACTION and ARCHIVING
+  * Archiving and extraction screens shows cumulative progress bar
+    when executing multiple operations
+  * Improved command line options
+    + added -ext2simple and -ext2simplefolder as &quot;blanket&quot;
+      extraction command for all backend, first parameter specify
+      output path;
+    + password is asked interactively (GUI); &quot;folder&quot; variant
+      extracts to new folder
+  * Various fixes
+- Dropped kde4 subpackage
+- Added peazip-lazarus_1.8.0.patch
+- Spec cleanup
+- update to version 6.1.1
+  * BACKEND
+    - (Linux) p7zip updated to 16.02.
+    - Pea 0.56.
+  * FILE MANAGER
+    - Settings, archiving, and extraction screens made scrollable
+      for better readability.
+    - Various minor improvements and fixes.
+    - File tools:
+        CRC64 now is included in set of default algorithms.
+        Default algorithm for the browser can now be set from
+        context menu File manager &gt; File Tools.
+  * EXTRACTION and ARCHIVING
+    - Password button moved on the right of output dialog for
+      better visibility.
+    - Some options were moved to Advanced options panels for
+      archiving and extraction:
+        &quot;Use advanced filters&quot; moved to Advanced options panel
+        (archiving and extraction).
+        &quot;Enumerate folder content&quot; and &quot;Add timestamp to archive
+        name&quot;, plus timestamp format option, moved to Advanced
+        options panel (archiving).
+    - Some options, previously volatile, are now saved to
+      configuration:
+        &quot;Delete after archiving / extraction&quot; option is now
+        remembered, but user will always be warned by confirmation
+        prompt before proceeding, in order to avoid accidental
+        deletion.
+        &quot;Add timestamp to archive name&quot; (archiving) is now
+        remembered.
+- update to version 6.1.0
+  * FILE MANAGER
+    - Archive directory tree is shown in navigation sidebar while
+      browsing an archive (above Bookmarks) and can be used for
+      navigation or quick exploration of archive directory structure.
+    - Added Expand/collapse archive tree toggle in quick history
+      menu, allowing quick inspection of directory structure inside
+      the archive.
+    - In-archive breadcrumb improved, now showing list of
+      directories from nodes dropdown menu, consistently with
+      filesystem breadcrumb section.
+    - File browser now shows .exe icons on Windows.
+    - Can now set starting directory in Options &gt; Settings &gt;
+      Advanced: last visited (default), computer's root, desktop,
+      home, custom (user selected directory).
+    - Fixed showing directories even if omitted in archive TOC.
+    - Fixed sorting files without extensions.
+    - Various fixes and improvements.
+- version 6.0.3
+  * BACKEND
+    - Updated pea to 0.55 version fixing issues in reading header
+      of PEA revision 1.0 files.
+    - (Windows) Updated 7z backend to 16.02 version.
+- version 6.0.2
+  * BACKEND
+    - (Windows) Updated 7z backend from 15.14 to 16.00 after Cisco
+      Talos vulnerability disclosure
+      http://blog.talosintel.com/2016/05/multiple-7-zip-vulnerabilities.html
+  * FILE MANAGER
+    - Can now correctly handle WinZip spanned files (.z01).
+    - Fixed sorting for packed size.
+    - Updated embedded translations.
+- update to version 6.0.1
+  * BACKEND
+    - Pea 0.54, implementing new PEA file format specifications
+      1.1 version.
+      Added support to SHA-3 256 and 512 bit hash.
+      Added support to Twofish and Serpent (128 and 256 bit) based
+      authenticated encryption in EAX mode.
+      New pea binary can read PEA 1.0 file format.
+      Previous pea binaries should be updated in order to read PEA
+      1.1 files, and to support all new algorithms.
+    - (Linux) Updated p7zip from 15.09 beta to 15.14
+  * CODE
+    - Updated following units from Wolfgang Ehrhardt's crypto and
+      utilities library: aes_2015-09-14.zip, crc_hash_2015-09-14.zip,
+      fca_2015-09-14.zip, util_2015-09-14.zip.
+    - Created new EAX units using 128 and 256 bit Twofish (fcryptt,
+      fctf256) and Serpent (fcrypts, fcsp256).
+  * FILE MANAGER
+    - Introduced support for SHA-3 256 and SHA-3 512 hash
+      verification.
+      SHA-3 hash is available both in file tools &quot;Checksum/hash
+      file(s)&quot; and in browser (set in Options &gt; File Tools).
+    - Various fixes and improvements.
+  * EXTRACTION and ARCHIVING
+    - New &quot;File&quot; group in archiving/extraction context menu shows
+      bookmarked and recent archive files, for quick adding to
+      archiving/extraction layout.
+- update to version 6.0.0
+  * BACKEND
+    - Pea 0.53
+      File management functions now accepts as input Unicode
+      file/dir names.
+      Report can now be displayed as table and as non tabbed
+      clipboard text.
+      PEA format now can handle Unicode file/dir names.
+    - (Windows) 7z updated to 15.14
+  * CODE
+    - Recompiled with Lazarus 1.6.0/FPC3
+      Native full support for Unicode filenames superseding
+      PeaZip 5.8/5.9 internationalization mechanism based on
+      internal UTF-8 encoding.
+    - Major code cleanup
+      Remove all now-unnecessary codepage-handling code.
+      Removed all Windows 9x related code.
+      Removed legacy code for pre-XP NT family systems, all
+      features compatible with XP/2003 API will still work on
+      those platforms.
+      Transparence does no longer rely on Windows-only method and
+      is available on any target OS.
+    - Various fixes and improvements
+  * FILE MANAGER
+    - Improved navigation bar and menus
+    - New themes &quot;Ten&quot;, Win9x/2K inspired &quot;Classic&quot;, and XP
+      inspired &quot;Experience&quot;
+      &quot;Ten&quot; theme is now default.
+      All previous themes &quot;Seven&quot; and &quot;Firecrystal&quot; are still
+      featured (select theme from Options &gt; Setting &gt; Themes).
+  * EXTRACTION and ARCHIVING
+    - Can now delete (recycle, quick, zero, secure) the open
+      archive
+    - Can now add directory to extraction; the path is recursively
+      expanded to find archives to queue to extraction procedure
+      Action is available from:
+        Extract (button and app's context menu).
+        Extract... entry in system context menu and SendTo menu.
+        -ext2main from command line.
+    - Can now test archive files inside directories
+    - Support sorting by extension for solid 7z compression
+      (default on)
+  * WINDOWS INSTALLER
+    - Convert existing archives now optionally available in context
+      menu and SendTo menu
+- Create subpackage peazip-kf5 for openSUSE &gt; 13.2 and Leap 42.1.
+- update to version 5.9.0
+  * BACKEND
+    - (Windows) 7z 15.12.
+    - (Linux) p7zip 15.09:
+      + PeaZip can now extract RAR5 files on Linux without resorting
+        on separate UNRAR5 Plugin (still available as optional
+        alternative extraction engine).
+    - Pea 0.52.
+  * CODE
+    - Improved UTF-8 support in Windows.
+    - Improved application startup and configuration process to make
+      it more robust in case of random / system errors last good
+      configuration is saved and automatically used as first restore
+      attempt if configuration fails to load if configuration errors
+      are detected anyway, volatile mode (using embedded configuration)
+      is automatically activated.
+  * FILE MANAGER
+    - Improved secure delete, free space delete, and hashing / analysis
+      functions:
+      + Operations can be stopped by users.
+      + More information and is shown while running the task and
+        progress is more accurate, based on input size.
+      + More information is provided by hashing / analysis tool:
+        - For each subdirectory it is reported the content in files,
+          folders and bytes (hinting possible duplicate directories).
+        - First / last 32 bytes of files are shown for a quick preview
+          (for hashing and content preview modes).
+      + Report can be sorted for any column and can be exported to
+        tabbed txt or to csv.
+    - File hashing / analysis tools added in Test dropdown group
+      in application tool bar.
+  * EXTRACTION and ARCHIVING
+    - Automatically removes redundant intermediate directory when
+      extracting to new folder:
+      + For better visibility option is also shown in main extraction
+        form and in Extract dropdown group (in application tool bar).
+  * LINUX INSTALLERS
+    - Moved various backend (arc, lpaq, paq, zpaq, quad, and upx)
+      into Optional Formats plugin, in order to reduce dependencies
+      the main software package needs to satisfy to install (not
+      needed by Portable versions).
+- update to version 5.8.1
+  * (Windows) Updated to 7z 15.09.
+  * Improved file rename.
+    - Added option to mass-rename adding timestamp.
+    - Easy rename clicking already selected item.
+    - Rename dialog shows quick editing options: lowercase, uppercase,
+      add timestamp.
+  * Various aspect improvements.
+    - More elements follows the system color scheme.
+    - Improved aspect of Address and Search bar.
+    - Added reset search button in Search Bar.
+  * Improved UTF-8 support in Windows.
+    - Can now correctly browse 7z-backend supported archives with
+      UTF-8 characters in path/file name.
+    - Can now drag and drop (from filesystem and from archives) to
+      target with UTF-8 characters in path name.
+    - Can now perform all delete operations (send to recycle bin,
+      fast delete, zeroing, secure delete) on files/folders with
+      UTF-8 characters in path/file name.
+    - Can now copy and move files with UTF-8 characters in
+      path/file name.
+      - Cannot yet copy directories, or copy file over itself if
+        UTF-8 characters are involved in the command.
+- version 5.8.0
+  * (Windows) Updated to 7z 15.07, adding support to QUEMU, VirtualBox,
+    and VMWare virtual machine's disk image formats.
+  * &quot;Free Software compliance&quot; directive (Options &gt; Advanced,
+     previosly named LIBRE_DIRECTIVE) can be either set in
+     configuration or hardcoded at compile time (HLIBRE_DIR const).
+    - 1 allow only use of Free Software components 2 allow only use
+      of Free Software components and open archive formats (not
+      encumbered by patents for read nor for write).
+  * Various fixes.
+  * (Windows) Improved UTF-8 support.
+    - PeaZip can now create and extract archives with UTF-8 filenames,
+      both from application and from system context menu.
+      - Browsing archives with UTF-8 filenames is possible but it
+        is still under development (warning icon is displayed).
+      - Console tab shows if action can be exported as script
+        ANSI-safe (can run on legacy systems regardless the encoding),
+        codepage-safe (can run on legacy systems with same codepage
+        of original device), or if requires full UTF-8 environment
+        (system, command/script interpreter).
+    - Some file management functions now supports UTF-8 filenames.
+  * Improved password management.
+    - If password is set to not being kept for the entire session,
+      it is cleared after every operation (archiving, extraction,
+      browsing the filesystem) except while browsing archive file,
+      as password may be needed for listing the archive content.
+  * Number of files/folders selected for cut/copy is displayed in
+    Clipboard panel and in status bar's hint.
+- update to version 5.7.2
+  * Updated to 7z 15.06 (Windows).
+    - Users can chose to extract RAR5 files alternatively using
+      7z (default) or RarLab's unrar plugin, setting &quot;7z/p7zip UNRAR5&quot;
+      switch in Options &gt; General.
+  * Improved file/archive browser sorting.
+  * Fixed bug not removing PeaZip group entry on uninstall
+    (affected 32 bit version, W7+ only).
+- version 5.7.1
+  * Breadcrumb can display in-archive paths for quick browsing.
+  * Added option to customize timestamp style (Options &gt; Settings &gt;
+    Archive Manager).
+  * Added option to split self extracting archives in 7z format
+    - Split sfx archives will result in a small extraction executable,
+      and n volumes of desired size.
+    - Spanning sfx archive allows to prevent the resulting archive
+      being larger of the maximum executable size allowed for the
+      target OS.
+    - To extract a split sfx archive, place extraction executable
+      and all volumes in the same directory.
+        + Extraction executable will start pre-set extraction
+          procedure without need of external software.
+        + Alternatively, volume with .001 extension can be opened
+          with an external archiver to browse/extract the entire
+          archive.
+  * Updated file split pre-sets.
+    - Added 25 GB Blu-Ray pre-set size.
+  * Custom pre-set size modified in 100 MB.
+  * Assumed lower, more fail-safe pre-set maximum size values for
+    disk formats, to improve compatibility with most supports.
+  - Updated to Innosetup 5.5.6, switched to unicode installer,
+    improved Windows 10 / 8.1 support.
+- update to version 5.7.0
+  * (Linux) Added read only support (list, test, extract) to RAR5
+    format through RarLab-based unrar-nonfree; due the non-OSI
+    compatible unrar restriction the software is available as
+    separate plugin on Add-Ons page of PeaZip website.
+  * (Linux) Updated p7zip backend to 9.38.1 beta.
+  * (Windows) Updated 7z backend to 15.05 beta.
+  * Updated IDE to Lazarus 1.4.0.
+  * Updated libraries: crc_hash_2014-08-25, util_2015-05-04.
+  * Various fixes and updates.
+  * Improved management of plug-ins:
+    - In About screen, missing and installed plugin are repported,
+      and it is shown a link for checking plugin and addon online.
+    - When opening an archive format (ACE, RARv5) requiring a plugin,
+      user is informed if the plugin is missing, and how to download it.
+    - Information popup is limited to one per plugin type per session.
+- update to version 5.6.1
+  * Added read only support (list, test, extract) to RAR5 format
+    through RarLab's unrar.
+    Currently the plugin is available only for Windows or Wine/ReactOS,
+    Linux version will be analyzed and tested for future updates.
+  * Due the non-OSI compatible unrar restriction (even if the software
+    provides sources and is royalty-free) the software is available as
+    separate plugin on Add-Ons page.
+  * Due the different syntax between RarLab's unrar and 7z/p7zip's unrar,
+    following differences apply when handling RAR5 format:
+    - Recursivity with advanced filters is always enabled.
+    - Renaming options always rename the file being extracted.
+  * Added LIBRE_DIRECTIVE option to disallow any call to software
+    which is non-free under OSI definition:
+    - If set to 0 (permissive) PeaZip will use all available backend,
+      both free-as-in-freedom and royalty-free.
+    - If set to 1 (flexible) PeaZip will disallow any call to
+      royalty-free but non free-as-in-freedom backend,
+      currently: unace and unrar binaries.
+    - If set to 2 (strict) PeaZip will disallow calls even in case
+      of dubious status, currently apply to unrar functions in
+      7z/p7zip due to non-reversibility clause.
+  * Various minor fixes.
+- update to version 5.6.0
+  * Added full read/write support to BCM file compressor.
+  * Updated to ZPAQ 7.05.
+  * Improved support, now it is possible to add content to existing
+    zpaq archive.
+  * Archive selection dialogs improved with custom filters for
+    common archive types.
+  * File submenu improved with direct links to update, convert and
+    extract archives.
+  * New hotkeys: Shift+F5 add selected to archive, Ctrl+F5 extract
+    selected, Alt+F5 extract archive (opens archive selection dialog).
+  * Tray icon menu improved with direct links to update, convert
+    and extract archives.
+  * Improved dialog for setting custom applications and scripts,
+    moved in Options.
+  * Fixed custom applications not found in some cases on Win64 systems.
+  * Both 32 and 64 bit program paths are scanned, 64 bit version
+    have the priority.
+  * Improved Help and About screens.
+  * F4 now shows navigation menu, jump to archive/computer root
+    moved to Ctrl+Shift+F4.
+  * Alt+0 toggle application's tool bar.
+  * Various improvements and fixes.
+  * PeaExtractor 1.1 code merged in pealauncher component.
+  * Created default location to save archive layout files.
+  * Non-verbose mode for archive conversion (default option).
+  * 182 file extensions supported.
+  * Added full read/write support to BCM compression format.
+- update to version 5.5.3
+  * Updated to 7z 9.38 beta back-end, with LZMA2 replacing LZMA
+    as default compression algorithm for .7z format.
+  * Improved file browser's address breadcrumb with clickable icons
+    for each node, showing directory list for each level.
+  * Improved application's menus.
+  * 181 file extensions are now supported.
+  * Added peazip_help.pdf to doc.
+  
+- update to version 5.5.2
+  * Updated to 7z 9.35 beta back-end for handling mainstream archive
+    formats, with LZMA2 replacing LZMA as default compression
+    algorithm for .7z format.
+  * Added support for more anti-virus / anti-malware for on demand
+    scanning of files inside archives: Avast Pro / Internet Security,
+    ClamWin, Comodo Cleaning Essentials, ESET NOD32 / Smart Security.
+  * 181 file extensions are now supported
+  
+- update to version 5.5.1
+  * File formats that can be handled by PeaZip are highlighted by
+    a character in Information column:
+      '+' known archive type, open with double click
+          (i.e. RAR, TAR, ZIP, ZIPX...)
+      '.' known file type usually not handled as archive, open
+          with &quot;Open as archive&quot; (i.e. EXE, DLL, MS Office files)
+  * New &quot;Update only&quot; mode for Windows installer, update
+    application's files and keeps unchanged the system settings
+    (file associations, context menu, send to menu)
+  * 181 file extensions are now supported
+- update to version 5.5.0
+  * PeaZip 5.5.0 introduces option to halt system after task completion,
+    and to remove single intermediate root directories on &quot;Extract to new folder&quot;.
+  * File manager features new batch file rename functions, and advanced selection filters.
+  * Image manager now convert graphic files also to TIFF, PPM, and XPM format,
+    fit images to 4K/8K screen resolutions, and features compression to
+    50/75/90 JPEG quality pre-sets.
+- Corrected a German string appearing in every locale
+- Added Italian strings for the KDE actions menu
+- update to version 5.4.1
+  * Release 5.4.1 brings a major refresh in GUI design, in order to
+  speed up user's work flow, and make easier to discover useful functions
+  (as new quick archiving/compression pre-sets) and most relevant information.
+  It is now possible to automatically remove original files after archival,
+  and to remove original archives after extraction, with customizable deletion
+  procedure (recycle, quick / zero / secure delete), that can also be added to
+  exported scripts / scheduled tasks.
+  In extraction and compression screens it was made simpler to re-use last
+  output path, and to navigate recent folders to drag and drop files from
+  system to application.
+  Alongside many other improvements and updates, ZPAQ backend was updated to 6.54.
+- update to version 5.4.0
+  * Release 5.4.0 brings a major refresh in GUI design, in order to
+    speed up user's work flow, and make easier to discover useful functions
+    (as new quick archiving/compression pre-sets) and most relevant information.
+    It is now possible to automatically remove original files after archival,
+    and to remove original archives after extraction, with customizable deletion
+    procedure (recycle, quick / zero / secure delete), that can also be added to
+    exported scripts / scheduled tasks.
+    Alongside many other improvements and updates, ZPAQ backend was updated to 6.54.
+- update to version 5.3.1
+  * PeaZip 5.3.1 is a maintenance update with various fixes, and updated
+    translations of application and system's context menu text.
+    Release 5 brings a major code and design cleanup: UAC integration is improved,
+    file and archive browsing is easier and more customizable, and relevant information
+    is more visible.
+    Most important file and archive management functions are more accessible,
+    adding files to archive is faster, inclusion/exclusion filters are more efficient,
+    and pre-set compression profiles allows single click switching between most common
+    compression tasks (i.e. best/fast compression, protect with password, span archive...).
+    New features includes Schedule tab in Archive/Convert and Extract interfaces
+    (integrated with Windows Vista/7/8/8.1 Task Scheduler); secure deletion of free space,
+    and zero deletion mode (overwriting files/free space with all 0);
+    localized Windows context menu; new standalone GUI for basic archive extraction
+    and file management tasks.
+- update to version 5.3.0
+  * PeaZip 5.3.0 introduces improved navigation bar, localized Windows context menu,
+    improves inclusion/exclusion filters, adds a synthetic archive information function,
+    and introduces pre-set compression profiles for single-click switching between most
+    common compression task, i.e. best compression, fast compression, protect with password,
+    create self extracting archive, keep output under a specified size for mail attachment, etc.
+    Release 5 brings a major code and design cleanup: adding files to archive is faster,
+    UAC integration is improved, file and archive browsing is easier and more customizable,
+    most important file and archive management functions are more accessible,
+    and relevant information is more visible.
+    New features includes: Schedule tab in Archive/Convert and Extract interfaces
+    (integrated with Windows Vista/7/8/8.1 Task Scheduler), new secure deletion of free space,
+    and zero deletion mode (overwriting files/free space with all 0), new standalone GUI for
+    basic archive extraction (Tools &gt; PeaExtractor) and for basic file management tasks (Tools &gt; PeaUtils).
+- update to version 5.2.2
+  * PeaZip 5.2.2 improves help system, and introduces standalone minimal GUI (Tools &gt; PeaExtractor and Pea Utils)
+    to be used when a narrower-focused interface is desired for simple archive/file management tasks.
+    Release 5 brought a major code and design cleanup: adding files to archive is faster, file
+    and archive browsing is easier and more customizable, most important file and archive management functions
+    are more accessible, and relevant information is more visible.
+    Schedule tab in Archive/Convert and Extract interfaces, integrated with system's Task Scheduler (Windows Vista/7/8/8.1),
+    helps users creating scheduled backup/restore scripts.
+    Secure deletion of free space completes program's features to securely manage data life cycle.
+    Zero deletion mode overwriting files / free space content with all 0 optimize compressibility of backup
+    and virtual machine's disk images.
+    178 file extensions are now supported.
+- update to version 5.2.1
+  * PeaZip 5.2.1 improves secure files / free space deletion, updates translations
+    and links to online resources.
+    Release 5 brought a major code and design cleanup: adding files to archive is faster,
+    file and archive browsing is easier and more customizable, most important file and
+    archive management functions are more accessible, and relevant information is more visible.
+    Schedule tab in Archive/Convert and Extract interfaces, integrated with system's
+    Task Scheduler (Windows Vista/7/8/8.1), helps users creating scheduled backup/restore scripts.
+    Secure deletion of free space completes program's features to securely manage data life cycle.
+    Zero deletion mode overwriting files / free space content with all 0 optimize compressibility
+    of backup and virtual machine's disk images.
+- fixed wrong BuildRequires from qt4Pas-devel to qt4pas-devel
+- update to version 5.2.0
+  * PeaZip 5.2.0 introduces secure deletion of free space, and zero deletion mode overwriting file
+    or free space content with all 0 in order to optimize compressibility of backup disk images
+    and virtual machine disks. This release also brings improvements in UAC integration,
+    makes help file available locally, and adds capability to archive/extract at once multiple files
+    from different paths each to original location.
+- update to version 5.1.1
+  * 5.1.1 update brings various fixes to improve user experience, and updates translations.
+    175 file extensions are supported.
+- update to version 5.1.0
+  * 5.1.0 update brings various fixes, improves Windows installer,
+    and adds a Schedule tab to Archive/Convert and Extract interfaces,
+    integrated with system's Task Scheduler (Windows Vista/7/8/8.1),
+    for help users creating scheduled backup/restore scripts from a single place.
+    175 file extensions are supported, PeaZip now handles .ipsw iOS devices firmware packages.
+- update to version 5.0.1
+  * 5.0.1 update brings various fixes, updates embedded translations,
+    improves Windows installer, and is compiled with new Lazarus 1.0.10.
+- Initial package, version 5.0
+</comment>
+    <requestid>577313</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>602199f62ba2abfa809fd7ae324c7b8c</srcmd5>
+    <version>6.5.1</version>
+    <time>1519041705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577767</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa32f064027ec54a98a9420784ab2331</srcmd5>
+    <version>6.6.0</version>
+    <time>1525960131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605305</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>34ca7adc540981c722c47e5d2812a0a2</srcmd5>
+    <version>6.6.0</version>
+    <time>1528897179</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616034</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5497d4fbc3ec2331864471544c4b5e7b</srcmd5>
+    <version>6.6.1</version>
+    <time>1540819386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645199</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fc9450d8b52facd6c5f3334435fd2dd5</srcmd5>
+    <version>6.6.1</version>
+    <time>1543400112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652209</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afb2938499665b73d7c49315e51af9da</srcmd5>
+    <version>6.7.0</version>
+    <time>1551386341</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673144</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>134707de276b62b12dbf1b72f6129956</srcmd5>
+    <version>6.7.1</version>
+    <time>1552902172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685764</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f44119eec0a638472733e7bfce0b6b67</srcmd5>
+    <version>6.7.2</version>
+    <time>1555321954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694021</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>29e5bbe7bacf7d63cd1204501d2a7132</srcmd5>
+    <version>6.8.0</version>
+    <time>1557084140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700706</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ddb97969658e8ab1292b15a0d9ef564b</srcmd5>
+    <version>6.8.1</version>
+    <time>1560537789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709999</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b40291128b513351126fbfb29b49d5bf</srcmd5>
+    <version>6.9.0</version>
+    <time>1566291564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724401</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7324e0c657a4058bde9f33ac8ab47d2f</srcmd5>
+    <version>6.9.1</version>
+    <time>1566894215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726061</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6cb6997fa37c9d59882219dadbec9cfe</srcmd5>
+    <version>6.9.2</version>
+    <time>1567423607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727617</requestid>
+  </revision>
+</revisionlist>

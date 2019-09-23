@@ -1,0 +1,28 @@
+<package name="oyranos" project="openSUSE:Factory">
+  <title>Colour Management System</title>
+  <description>Oyranos is a colour management system.
+Features:
+o configuration for cross application colour agreement 
+o plugable and selectable modules (known as CMM's)
+o pixel conversions
+o profile handling
+o named colours
+o device profile assignment
+
+
+Authors:
+--------
+    Oyranos     Kai-Uwe Behrmann &lt;www.behrmann.name&gt;
+    CUPS        Joe Simon &lt;jsimon184@yahoo.com&gt;
+
+used components and libraries with divergine FOSS licenses:
+    md5         L. Peter Deutsch
+    libXNVCtrl  Nvidia
+    FLMM        Matthias Melcher
+    lookup3     Bob Jenkins
+
+
+</description>
+  <devel project="multimedia:color_management" package="oyranos"/>
+  <url>http://www.oyranos.org</url>
+</package>

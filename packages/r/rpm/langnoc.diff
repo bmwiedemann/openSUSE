@@ -1,0 +1,125 @@
+--- ./macros.in.orig	2018-01-31 13:35:52.735593230 +0000
++++ ./macros.in	2018-01-31 13:35:55.528585772 +0000
+@@ -1351,6 +1351,7 @@ EOF
+ # %files -f %{name}.lang
+ #
+ %find_lang	%{_rpmconfigdir}/find-lang.sh %{buildroot}
++%no_lang_C	--without-C
+ 
+ # Commands + opts to use for retrieving remote files
+ # Proxy opts can be set through --httpproxy/--httpport popt aliases,
+--- ./scripts/find-lang.sh.orig	2018-01-31 13:35:52.726593254 +0000
++++ ./scripts/find-lang.sh	2018-01-31 13:36:35.806478195 +0000
+@@ -60,6 +60,8 @@ MO=
+ MO_NAME=${NAMES[0]}.lang
+ ALL_NAME=#
+ NO_ALL_NAME=
++ONLY_C=#
++NO_C=#
+ while test $# -gt 0 ; do
+     case "${1}" in
+ 	--with-gnome )
+@@ -103,6 +105,14 @@ while test $# -gt 0 ; do
+ 		NO_ALL_NAME=#
+ 		shift
+ 		;;
++	--with-only-C )
++		ONLY_C=
++		shift
++		;;
++	--without-C )
++		NO_C=
++		shift
++		;;
+ 	* )
+ 		if [ $MO_NAME != ${NAMES[$#]}.lang ]; then
+ 		    NAMES[${#NAMES[@]}]=$MO_NAME
+@@ -143,6 +153,8 @@ s:'"$TOP_DIR"'::
+ '"$ALL_NAME$MO"'s:\(.*/locale/\)\([^/_]\+\)\(.*\.mo$\):%lang(\2) \1\2\3:
+ '"$NO_ALL_NAME$MO"'s:\(.*/locale/\)\([^/_]\+\)\(.*/'"$NAME"'\.mo$\):%lang(\2) \1\2\3:
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 
+@@ -151,19 +163,23 @@ s:'"$TOP_DIR"'::
+ '"$NO_ALL_NAME$GNOME"'s:\(.*/share/help/\)\([^/_]\+\)\([^/]*\)\(/'"$NAME"'\)$:%lang(\2) %doc \1\2\3\4/:
+ '"$ALL_NAME$GNOME"'s:\(.*/share/help/\)\([^/_]\+\)\([^/]*\)\(/[a-zA-Z0-9.\_\-]\+\)$:%lang(\2) %doc \1\2\3\4/:
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 
+ find "$TOP_DIR" -type d|sed '
+ s:'"$TOP_DIR"'::
+-'"$NO_ALL_NAME$GNOME"'s:\(.*/gnome/help/'"$NAME"'$\):%dir %doc \1:
++'"$NO_ALL_NAME$GNOME"'s:\(.*/gnome/help/'"$NAME"'$\):%lang(C) %dir %doc \1:
+ '"$NO_ALL_NAME$GNOME"'s:\(.*/gnome/help/'"$NAME"'/[a-zA-Z0-9.\_\-]/.\+\)::
+ '"$NO_ALL_NAME$GNOME"'s:\(.*/gnome/help/'"$NAME"'\/\)\([^/_]\+\):%lang(\2) %doc \1\2:
+-'"$ALL_NAME$GNOME"'s:\(.*/gnome/help/[a-zA-Z0-9.\_\-]\+$\):%dir %doc \1:
++'"$ALL_NAME$GNOME"'s:\(.*/gnome/help/[a-zA-Z0-9.\_\-]\+$\):%lang(C) %dir %doc \1:
+ '"$ALL_NAME$GNOME"'s:\(.*/gnome/help/[a-zA-Z0-9.\_\-]\+/[a-zA-Z0-9.\_\-]/.\+\)::
+ '"$ALL_NAME$GNOME"'s:\(.*/gnome/help/[a-zA-Z0-9.\_\-]\+\/\)\([^/_]\+\):%lang(\2) %doc \1\2:
+ s:%lang(.*) .*/gnome/help/[a-zA-Z0-9.\_\-]\+/[a-zA-Z0-9.\_\-]\+/.*::
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 
+@@ -179,6 +195,8 @@ s:'"$TOP_DIR"'::
+ '"$NO_ALL_NAME$GNOME"'s:\(.*/omf/'"$NAME"'/'"$NAME"'-\([^/.]\+\)\.omf\):%lang(\2) \1:
+ '"$ALL_NAME$GNOME"'s:\(.*/omf/[a-zA-Z0-9.\_\-]\+/[a-zA-Z0-9.\_\-]\+-\([^/.]\+\)\.omf\):%lang(\2) \1:
+ s:^[^%].*::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 
+@@ -219,6 +237,8 @@ s:'"$TOP_DIR"'::
+ '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+/\)::
+ '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ fi
+@@ -232,6 +252,8 @@ s:'"$TOP_DIR"'::
+ '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+/\)::
+ '"$ALL_NAME$KDE"'s:\(.*/HTML/\)\([^/_]\+\)\(.*/[a-zA-Z0-9.\_\-]\+$\):%lang(\2) \1\2\3:
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ fi
+@@ -269,6 +291,8 @@ s:'"$TOP_DIR"'::
+ '"$ALL_NAME$QT"'s:^\([^%].*/[^/]\+_\([a-zA-Z]\{2\}[_@].*\)\.qm$\):%lang(\2) \1:
+ '"$ALL_NAME$QT"'s:^\([^%].*/[^/]\+_\([a-zA-Z]\{2\}\)\.qm$\):%lang(\2) \1:
+ s:^[^%].*::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 
+@@ -277,6 +301,8 @@ s:'"$TOP_DIR"'::
+ '"$ALL_NAME$MAN"'s:\(.*/man/\([^/_]\+\).*/man[a-z0-9]\+/\)::
+ '"$ALL_NAME$MAN"'s:\(.*/man/\([^/_]\+\).*/man[a-z0-9]\+$\):%lang(\2) \1*:
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 
+@@ -284,6 +310,8 @@ find "$TOP_DIR" -type f -o -type l|sed -
+ s:'"$TOP_DIR"'::
+ '"$NO_ALL_NAME$MAN"'s:\(.*/man/\([^/_]\+\).*/man[a-z0-9]\+/'"$NAME"'\.[a-z0-9].*\):%lang(\2) \1*:
+ s:^\([^%].*\)::
++'"$ONLY_C"'/%lang(C)/!d
++'"$NO_C"'/%lang(C)/d
+ s:%lang(C) ::
+ /^$/d' >> $MO_NAME_NEW
+ 

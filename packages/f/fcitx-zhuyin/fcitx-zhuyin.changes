@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sun Oct  8 14:23:46 UTC 2017 - jengelh@inai.de
+
+- Avoid running fdupes across partition boundaries.
+- Drop ldconfig call: not needed for plugins.
+
+-------------------------------------------------------------------
+Thu Sep 28 07:34:30 UTC 2017 - hillwood@opensuse.org
+
+- Change the install libdir for libzhuyin. 
+
+-------------------------------------------------------------------
+Sun Aug 23 04:38:52 UTC 2015 - i@marguerite.su
+
+- Update to version 0.1.0+git20150626.36064e1:
+  + Do not search for libzhuyin tools
+- drop fix-compatibility-with-libzhuyin-0.9.99.20140929.patch
+  * upstreamed
+- add libzhuyin-1.0.91-zhuyin_guess_candidates.patch
+  * in 1.0.91, zhuyin_guess_candidates was replaced by
+    zhuyin_guess_candidates_after_cursor
+
+-------------------------------------------------------------------
+Mon Nov 17 13:47:06 UTC 2014 - hillwood@linuxfans.org
+
+- Fix build under libpinyin-0.9.99.20140929,
+  add fix-compatibility-with-libzhuyin-0.9.99.20140929.patch
+
+-------------------------------------------------------------------
+Sun Jul 13 14:22:14 UTC 2014 - i@marguerite.su
+
+- initial version 0.1.0
+

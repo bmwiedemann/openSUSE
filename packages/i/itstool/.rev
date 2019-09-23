@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d90852ce4f926e9685802f05edbd4827</srcmd5>
+    <version>1.0.1</version>
+    <time>1306489963</time>
+    <user>saschpe</user>
+    <comment>New package: new tool that will be used for help translation starting with GNOME 3.1/3.2</comment>
+    <requestid>71558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>268599166d50fc72e95e77fd6c2a2941</srcmd5>
+    <version>1.0.1</version>
+    <time>1306489973</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71558
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>856643224eb8196368c2ce873f193462</srcmd5>
+    <version>1.1.0</version>
+    <time>1311664973</time>
+    <user>saschpe</user>
+    <comment>Update to 1.1.0</comment>
+    <requestid>75300</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8f06a8bdd0f7675d477c2dcde928890b</srcmd5>
+    <version>1.1.0</version>
+    <time>1311664981</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75300
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c4823e51ce3997f8b94caf2b33ab8f3c</srcmd5>
+    <version>1.1.1</version>
+    <time>1317543174</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85689</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c4823e51ce3997f8b94caf2b33ab8f3c</srcmd5>
+    <version>1.1.1</version>
+    <time>1319181997</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e8e8be3e12f8a9ff1fbc44753e67bfa2</srcmd5>
+    <version>1.1.1</version>
+    <time>1323191997</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72b7e40487af886b9141aa6871584356</srcmd5>
+    <version>1.1.2</version>
+    <time>1329405416</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105132</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5debcf05e6e6fcd8b640dbeeb2cfc787</srcmd5>
+    <version>1.1.2</version>
+    <time>1332147473</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109434</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>15d9b52e3e027ea027afea0f2c4e31b0</srcmd5>
+    <version>1.1.3</version>
+    <time>1337580256</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121349</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>15d9b52e3e027ea027afea0f2c4e31b0</srcmd5>
+    <version>1.1.3</version>
+    <time>1340183473</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d9655a4ef2db6aaea9c3e448b5168377</srcmd5>
+    <version>1.2.0</version>
+    <time>1341219237</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.0 (forwarded request 126376 from Zaitor)</comment>
+    <requestid>126771</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d9655a4ef2db6aaea9c3e448b5168377</srcmd5>
+    <version>1.2.0</version>
+    <time>1359109096</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>d9655a4ef2db6aaea9c3e448b5168377</srcmd5>
+    <version>1.2.0</version>
+    <time>1379662690</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>76e2bdddf4c498c6a40f49bd6b1e0878</srcmd5>
+    <version>2.0.0</version>
+    <time>1385386389</time>
+    <user>coolo</user>
+    <comment>Update to 2.0.0 (forwarded request 206231 from Zaitor)</comment>
+    <requestid>208139</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7d494e222f6cfa38fb803f55a355c8c4</srcmd5>
+    <version>2.0.1</version>
+    <time>1385442616</time>
+    <user>coolo</user>
+    <comment>- Add itstool-fix-crash.patch: Fixed crash in locale filter and
+  drop rule (bgo#71511).
+
+- Update to version 2.0.1:
+  + Reworked default ITS rules for better performance.
+
+  + Fixed handling of namespace prefixes on elements. (forwarded request 208252 from dimstar)</comment>
+    <requestid>208280</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4bd33a25fad29f7148f158aaa6660368</srcmd5>
+    <version>2.0.2</version>
+    <time>1388394129</time>
+    <user>coolo</user>
+    <comment>Update to 2.0.2 (forwarded request 212223 from Zaitor)</comment>
+    <requestid>212277</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4bd33a25fad29f7148f158aaa6660368</srcmd5>
+    <version>2.0.2</version>
+    <time>1409301255</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e1039d28c39425dce12823b4545accfb</srcmd5>
+    <version>2.0.5</version>
+    <time>1545866531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660479</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4bf821b5147c78ed2ec07bf29e117d7e</srcmd5>
+    <version>2.0.5</version>
+    <time>1546695560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662635</requestid>
+  </revision>
+</revisionlist>

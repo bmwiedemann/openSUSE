@@ -1,0 +1,63 @@
+From a48aa2342d0ed9911ae36e0ad8751676bc2f4dc5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+Date: Tue, 4 Oct 2016 06:25:57 +0200
+Subject: [PATCH] Add an appdata.xml file.
+
+---
+ data/hamster-time-tracker.appdata.xml | 34 ++++++++++++++++++++++++++++++++++
+ data/wscript_build                    |  1 +
+ 2 files changed, 35 insertions(+)
+ create mode 100644 data/hamster-time-tracker.appdata.xml
+
+diff --git a/data/hamster-time-tracker.appdata.xml b/data/hamster-time-tracker.appdata.xml
+new file mode 100644
+index 0000000..a98d083
+--- /dev/null
++++ b/data/hamster-time-tracker.appdata.xml
+@@ -0,0 +1,34 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<application>
++    <id type="desktop">hamster-time-tracker.desktop</id>
++    <license>CC0-1.0</license>
++    <project_license>GPL-3.0+ and CC-BY-SA-3.0</project_license>
++    <name>Project Hamster</name>
++    <summary>A time tracker for GNOME</summary>
++    <description>
++        <p>
++            Project Hamster is time tracking for individuals. It helps you to keep track on
++            how much time you have spent during the day on activities you choose to track. 
++        </p>
++        <p>
++            Whenever you change from doing one task to other, you change your current
++            activity in Hamster. After a while you can see how many hours you have spent on
++            what. Maybe print it out, or export to some suitable format, if time reporting
++            is a request of your employee. 
++        </p>
++    </description>
++    <url type="homepage">http://projecthamster.org/</url>
++    <screenshots>
++        <screenshot>
++            <image>https://i1.wp.com/farm5.static.flickr.com/4046/5160499613_576efc8441.jpg</image>
++        </screenshot>
++        <screenshot>
++            <image>https://i2.wp.com/farm5.static.flickr.com/4043/5160499617_6ef85fdeb8.jpg</image>
++        </screenshot>
++        <screenshot>
++            <image>https://i1.wp.com/farm5.static.flickr.com/4005/5160499621_1282ff8c7b.jpg</image>
++        </screenshot>
++    </screenshots>
++    <updatecontact>toms.baugis@gmail.com</updatecontact>
++</application>
++
+diff --git a/data/wscript_build b/data/wscript_build
+index ec4ab1c..6e4611c 100644
+--- a/data/wscript_build
++++ b/data/wscript_build
+@@ -12,6 +12,7 @@ bld.install_files('${DATADIR}/icons/hicolor/32x32/apps',   'art/32x32/hamster-ti
+ bld.install_files('${DATADIR}/icons/hicolor/48x48/apps',   'art/scalable/hamster-time-tracker.png')
+ bld.install_files('${DATADIR}/icons/hicolor/scalable/apps','art/scalable/hamster-time-tracker.svg')
+ 
++bld.install_files('${DATADIR}/appdata', 'hamster-time-tracker.appdata.xml')
+ 
+ for filename in ["hamster-time-tracker.desktop",
+                  "hamster-time-tracker-overview.desktop",

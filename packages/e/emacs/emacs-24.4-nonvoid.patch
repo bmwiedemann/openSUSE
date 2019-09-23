@@ -1,0 +1,17 @@
+---
+ src/xmenu.c        |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- src/xmenu.c
++++ src/xmenu.c	2016-09-19 09:01:56.930605125 +0000
+@@ -1982,8 +1982,8 @@ Lisp_Object
+ xw_popup_dialog (struct frame *f, Lisp_Object header, Lisp_Object contents)
+ {
+   Lisp_Object title;
+-  const char *error_name;
+-  Lisp_Object selection;
++  const char *error_name = NULL;
++  Lisp_Object selection = Qnil;
+   ptrdiff_t specpdl_count = SPECPDL_INDEX ();
+ 
+   check_window_system (f);

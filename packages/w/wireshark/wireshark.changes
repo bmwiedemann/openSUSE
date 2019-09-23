@@ -1,0 +1,3785 @@
+-------------------------------------------------------------------
+Tue Jul 23 08:52:31 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Added BuildRequires for spandsp-devel to enable decoding of various
+  VoIP codecs
+
+-------------------------------------------------------------------
+Thu Jul 18 07:58:22 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.0.3
+  * CVE-2019-13619: ASN.1 BER and related dissectors crash. (bsc#1141980)
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.0.3.html
+
+-------------------------------------------------------------------
+Wed Jun 12 14:33:19 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+
+-------------------------------------------------------------------
+Thu May 23 07:34:38 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.0.2 (bsc#1136021)
+  * Wireshark dissection engine crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.0.2.html
+
+-------------------------------------------------------------------
+Wed Apr 17 15:47:01 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Added config.h again, which got lost during the wireshark 3 update.
+
+-------------------------------------------------------------------
+Tue Apr  9 07:38:06 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.0.1 (bsc#1131941)
+  * CVE-2019-10895: NetScaler file parser crash.
+  * CVE-2019-10899: SRVLOC dissector crash.
+  * CVE-2019-10897: IEEE 802.11 dissector infinite loop.
+  * CVE-2019-10898: GSUP dissector infinite loop.
+  * CVE-2019-10900: Rbm dissector infinite loop.
+  * CVE-2019-10894: GSS-API dissector crash.
+  * CVE-2019-10896: DOF dissector crash.
+  * CVE-2019-10902: TSDNS dissector crash.
+  * CVE-2019-10901: LDSS dissector crash.
+  * CVE-2019-10903: DCERPC SPOOLSS dissector crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.0.1.html
+
+-------------------------------------------------------------------
+Thu Mar 21 14:09:53 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.0.0 
+  * The IP map feature (the "Map" button in the "Endpoints" dialog) has been
+    added back in a modernized form.
+  * Initial support for using PKCS #11 tokens for RSA decryption in TLS. This
+    can be configured at Preferences, RSA Keys.
+  * Conversation timestamps are supported for UDP/UDP-Lite protocols.
+  * TShark now supports the -G elastic-mapping option which generates an
+    ElasticSearch mapping file.
+  * The Ethernet and IEEE 802.11 dissectors no longer validate the frame check
+    sequence (checksum) by default.
+  * The TCP dissector gained a new "Reassemble out-of-order segments"
+    preference to fix dissection and decryption issues in case TCP segments are
+    received out-of-order.
+  * Decryption support for the new WireGuard dissector.
+  * The BOOTP dissector has been renamed to DHCP. With the exception of
+    "bootp.dhcp", the old "bootp.*" display filter fields are still supported
+    but may be removed in a future release.
+  * The SSL dissector has been renamed to TLS. As with BOOTP the old "ssl.*"
+    display filter fields are supported but may be removed in a future release.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.0.0.html
+- removed wireshark-1.10.0-enable_lua.patch, because LUA is enabled by default.
+
+-------------------------------------------------------------------
+Thu Feb 28 13:21:47 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 2.6.7
+  * CVE-2019-9214: RPCAP dissector could crash (bnc#1127367)
+  * CVE-2019-9209: ASN.1 BER and related dissectors could crash (bnc#1127369)
+  * CVE-2019-9208: TCAP dissector could crash (bnc#1127370)
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.7.html
+
+-------------------------------------------------------------------
+Wed Jan  9 15:04:35 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 2.6.6
+  * CVE-2019-5716: The 6LoWPAN dissector could crash (bsc#1121231)
+  * CVE-2019-5717: The P_MUL dissector could crash (bsc#1121232)
+  * CVE-2019-5718: The RTSE dissector and other dissectors could crash (bsc#1121233)
+  * CVE-2019-5719: The ISAKMP dissector could crash (bsc#1121234)
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.6.html
+
+-------------------------------------------------------------------
+Thu Nov 29 08:58:27 UTC 2018 - astieger@suse.com
+
+- Wireshark 2.6.5 (bsc#1117740):
+  * CVE-2018-19625: The Wireshark dissection engine could crash (wnpa-sec-2018-51)
+  * CVE-2018-19626: The DCOM dissector could crash (wnpa-sec-2018-52)
+  * CVE-2018-19623: The LBMPDM dissector could crash (wnpa-sec-2018-53) 
+  * CVE-2018-19622: The MMSE dissector could go into an infinite loop (wnpa-sec-2018-54)
+  * CVE-2018-19627: The IxVeriWave file parser could crash (wnpa-sec-2018-55) 
+  * CVE-2018-19624: The PVFS dissector could crash (wnpa-sec-2018-56)
+  * CVE-2018-19628: The ZigBee ZCL dissector could crash (wnpa-sec-2018-57)
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.5.html
+
+-------------------------------------------------------------------
+Fri Oct 12 12:54:01 UTC 2018 - astieger@suse.com
+
+- Wireshark 2.6.4 (bsc#1111647):
+  * CVE-2018-18227: MS-WSP dissector crash (wnpa-sec-2018-47)
+  * CVE-2018-18226: Steam IHS Discovery dissector memory leak (wnpa-sec-2018-48)
+  * CVE-2018-18225: CoAP dissector crash (wnpa-sec-2018-49)
+  * CVE-2018-12086: OpcUA dissector crash (wnpa-sec-2018-50)
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.4.html
+
+-------------------------------------------------------------------
+Wed Aug 29 20:29:12 UTC 2018 - astieger@suse.com
+
+- Update to 2.6.3 (boo#1106514):
+  * CVE-2018-16058: Bluetooth AVDTP dissector crash (wnpa-sec-2018-44)
+  * CVE-2018-16056: Bluetooth Attribute Protocol dissector crash (wnpa-sec-2018-45)
+  * CVE-2018-16057: Radiotap dissector crash (wnpa-sec-2018-46)
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.3.html
+
+-------------------------------------------------------------------
+Fri Jul 20 09:32:42 UTC 2018 - astieger@suse.com
+
+- update to 2.6.2:
+  * CVE-2018-14342: BGP dissector large loop (wnpa-sec-2018-34, boo#1101777)
+  * CVE-2018-14344: ISMP dissector crash (wnpa-sec-2018-35, boo#1101788)
+  * CVE-2018-14340: Multiple dissectors could crash (wnpa-sec-2018-36, boo#1101804)
+  * CVE-2018-14343: ASN.1 BER dissector crash (wnpa-sec-2018-37, boo#1101786)
+  * CVE-2018-14339: MMSE dissector infinite loop (wnpa-sec-2018-38, boo#1101810)
+  * CVE-2018-14341: DICOM dissector crash (wnpa-sec-2018-39, boo#1101776)
+  * CVE-2018-14368: Bazaar dissector infinite loop (wnpa-sec-2018-40, boo#1101794)
+  * CVE-2018-14369: HTTP2 dissector crash (wnpa-sec-2018-41, boo#1101800)
+  * CVE-2018-14367: CoAP dissector crash (wnpa-sec-2018-42, boo#1101791)
+  * CVE-2018-14370: IEEE 802.11 dissector crash (wnpa-sec-2018-43, boo#1101802)
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.2.html
+- drop wireshark-2.6.1-fix-Qt-5.11.patch, upstream
+
+-------------------------------------------------------------------
+Wed May 23 12:25:05 UTC 2018 - astieger@suse.com
+
+- Fix build with Qt 5.11 (boo#1093733)
+  add wireshark-2.6.1-fix-Qt-5.11.patch
+
+-------------------------------------------------------------------
+Wed May 23 12:13:00 UTC 2018 - astieger@suse.com
+
+- update to 2.6.1:
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes or cause dissectors to go into large
+  infinite loops by making Wireshark read specially crafted
+  packages from the network or capture files (bsc#1094301):
+  * CVE-2018-11354: IEEE 1905.1a dissector crash 
+  * CVE-2018-11355: RTCP dissector crash 
+  * CVE-2018-11356: DNS dissector crash 
+  * CVE-2018-11357: Multiple dissectors could consume excessive memory 
+  * CVE-2018-11358: Q.931 dissector crash
+  * CVE-2018-11359: The RRC dissector and other dissectors could crash
+  * CVE-2018-11360: GSM A DTAP dissector crash 
+  * CVE-2018-11361: IEEE 802.11 dissector crash
+  * CVE-2018-11362: LDSS dissector crash 
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.6.1.html
+
+-------------------------------------------------------------------
+Mon May  7 20:43:35 UTC 2018 - astieger@suse.com
+
+- Turn on ssh, maxminddb, c-ares, snappy, lz4, HTTP2 support
+- Use capabilities to be able to run capture as a non-root user.
+  In easy system permissions mode all users can capture traffic.
+  In secure system permissions mode, must be added to the wireshark
+  group to capture. bsc#957624
+  Drop wireshark-1.2.0-disable-warning-dialog.patch
+
+-------------------------------------------------------------------
+Tue May  1 17:19:49 UTC 2018 - ecsos@opensuse.org
+
+- update to 2.6.0
+  * Bug Fixes
+    - The following bugs have been fixed:
+    - Dumpcap might not quit if Wireshark or TShark crashes. 
+      (Bug 1419)
+  * New and Updated Features
+    The following features are new (or have been significantly 
+    updated) since version 2.5.0:
+    - HTTP Request sequences are now supported.
+    - Wireshark now supports MaxMind DB files. Support for GeoIP
+      and GeoLite Legacy databases has been removed.
+    - The Windows packages are now built using Microsoft Visual 
+      Studio 2017.
+    - The IP map feature (the “Map” button in the “Endpoints” 
+      dialog) has been removed.
+    The following features are new (or have been 
+    significantly updated) since version 2.4.0:
+    - Display filter buttons can now be edited, disabled, and 
+      removed via a context menu directly from the toolbar
+    - Drag & Drop filter fields to the display filter toolbar or
+      edit to create a button on the fly or apply the filter as 
+      a display filter.
+    - Application startup time has been reduced.
+    - Some keyboard shortcut mix-ups have been resolved by 
+      assigning new shortcuts to Edit → Copy methods.
+    - TShark now supports color using the --color option.
+    - The "matches" display filter operator is now case-insensitive.
+    - Display expression (button) preferences have been converted 
+      to a UAT. This puts the display expressions in their own file.
+      Wireshark still supports preference files that contain the
+      old preferences, but new preference files will be written
+      without the old fields.
+    - SMI private enterprise numbers are now read from the 
+      “enterprises.tsv” configuration file.
+    - The QUIC dissector has been renamed to Google QUIC 
+      (quic → gquic).
+    - The selected packet number can now be shown in the Status Bar 
+      by enabling Preferences → Appearance → Layout → Show selected
+      packet number.
+    - File load time in the Status Bar is now disabled by default
+      and can be enabled in 
+      Preferences → Appearance → Layout → Show file load time.
+    - Support for the G.729A codec in the RTP Player is now added 
+      via the bcg729 library.
+    - Support for hardware-timestamping of packets has been added.
+    - Improved NetMon .cap support with comments, event tracing,
+      network filter, network info types and some Message Analyzer
+      exported types.
+    - The personal plugins folder on Linux/Unix is now 
+      ~/.local/lib/wireshark/plugins.
+    - TShark can print flow graphs using -z flow…
+    - Capinfos now prints SHA256 hashes in addition to RIPEMD160
+      and SHA1. MD5 output has been removed.
+    - The packet editor has been removed. (This was a GTK+ only 
+      experimental feature.)
+    - Support BBC micro:bit Bluetooth profile
+    - The Linux and UNIX installation step for Wireshark will now 
+      install headers required to build plugins. A pkg-config file
+      is provided to help with this (see “doc/plugins.example” for 
+      details). Note you must still rebuild all plugins between 
+      minor releases (X.Y).
+    - The Windows installers and packages now ship with Qt 5.9.4.
+    - The generic data dissector can now uncompress zlib compressed 
+      data.
+    - DNS Stats now supports service level statistics.
+    - DNS filters for retransmissions and unsolicited responses 
+      have been added.
+    - The “tcptrace” TCP Stream graph now shows duplicate ACKS and
+      zero window advertisements.
+    - The membership operator now supports ranges, allowing display
+      filters such as tcp.port in {4430..4434} to be expressed. 
+      See the User’s Guide, chapter Building display filter 
+      expressions for details.
+  * New Protocol Support    
+  * Updated Protocol Support
+    - Too many protocols have been updated to list here.
+  * New and Updated Capture File Support
+    - Microsoft Network Monitor
+  * New and Updated Capture Interfaces support
+    - LoRaTap
+
+- drop patch wireshark-1.2.0-geoip.patch, because file to patch
+  no more exists
+
+-------------------------------------------------------------------
+Wed Apr  4 20:20:16 UTC 2018 - astieger@suse.com
+
+- Wireshark 2.4.6:
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes or cause dissectors to go into large
+  infinite loops by making Wireshark read specially crafted
+  packages from the network or capture files (bsc#1088200):
+  * CVE-2018-9264: ADB dissector crash 
+  * CVE-2018-9260: IEEE 802.15.4 dissector crash 
+  * CVE-2018-9261: NBAP dissector crash 
+  * CVE-2018-9262: VLAN dissector crash
+  * CVE-2018-9256: LWAPP dissector crash
+  * CVE-2018-9263: Kerberos dissector crash
+  * CVE-2018-9258: TCP dissector crash
+  * CVE-2018-9257: CQL infinite loop 
+  * Memory leaks in multiple dissectors:
+    CVE-2018-9265, CVE-2018-9266, CVE-2018-9267, CVE-2018-9268, 
+    CVE-2018-9269, CVE-2018-9270, CVE-2018-9271, CVE-2018-9272,
+    CVE-2018-9273, CVE-2018-9274
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.4.6.html
+
+-------------------------------------------------------------------
+Sat Feb 24 10:04:01 UTC 2018 - astieger@suse.com
+
+- Wireshark 2.4.5:
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes or cause dissectors to go into large
+  infinite loops by making Wireshark read specially crafted
+  packages from the network or capture files (bsc#1082692):
+  * CVE-2018-7335: The IEEE 802.11 dissector could crash
+  * CVE-2018-7321, CVE-2018-7322, CVE-2018-7323, CVE-2018-7324, 
+    CVE-2018-7325, CVE-2018-7326, CVE-2018-7327, CVE-2018-7328, 
+    CVE-2018-7329, CVE-2018-7330, CVE-2018-7331, CVE-2018-7332, 
+    CVE-2018-7333, CVE-2018-7421: Multiple dissectors could go
+    into large infinite loops
+  * CVE-2018-7334: The UMTS MAC dissector could crash
+  * CVE-2018-7337: The DOCSIS dissector could crash
+  * CVE-2018-7336: The FCP dissector could crash
+  * CVE-2018-7320: The SIGCOMP dissector could crash
+  * CVE-2018-7420: The pcapng file parser could crash
+  * CVE-2018-7417: The IPMI dissector could crash
+  * CVE-2018-7418: The SIGCOMP dissector could crash
+  * CVE-2018-7419: The NBAP disssector could crash
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.4.5.html
+
+-------------------------------------------------------------------
+Fri Jan 12 19:38:34 UTC 2018 - astieger@suse.com
+
+- Wireshark 2.4.4:
+  * fixes for dissector crashes:
+    + CVE-2018-5334: IxVeriWave file could crash (bsc#1075737)
+    + CVE-2018-5335: WCP dissector could crash (bsc#1075738)
+    + CVE-2018-5336: Multiple dissector crashes (bsc#1075739)
+  * No longer enable the Linux kernel BPF JIT compiler via the
+    net.core.bpf_jit_enable sysctl, as this would make systems
+    more vulnerable to Spectre variant 1 (bsc#1075748, CVE-2017-5753) 
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.4.4.html
+
+-------------------------------------------------------------------
+Fri Dec  1 13:02:14 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.4.3:
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes by making Wireshark read specially
+  crafted packages from the network or capture files (bsc#1070727):
+  * CVE-2017-17084: IWARP_MPA dissector crash (wnpa-sec-2017-47)
+  * CVE-2017-17083: NetBIOS dissector crash (wnpa-sec-2017-48)
+  * CVE-2017-17085: CIP Safety dissector crash (wnpa-sec-2017-49)
+  * Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-2.4.3.html
+
+-------------------------------------------------------------------
+Wed Oct 11 09:54:25 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.4.2:
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes or infinite loops by making Wireshark
+  read specially crafted packages from the network or a capture
+  file (boo#1062645):
+  * CVE-2017-15192: BT ATT dissector crash (wnpa-sec-2017-42)
+  * CVE-2017-15193: MBIM dissector crash (wnpa-sec-2017-43)
+  * CVE-2017-15191: DMP dissector crash (wnpa-sec-2017-44)
+  * CVE-2017-15190: RTSP dissector crash (wnpa-sec-2017-45)
+  * CVE-2017-15189: DOCSIS infinite loop (wnpa-sec-2017-46)  
+
+-------------------------------------------------------------------
+Thu Sep  7 17:06:44 UTC 2017 - jmatejek@suse.com
+
+- downgrade to lua51-devel in order to drop Lua 5.2 from Factory
+  (can't upgrade to 5.3 because that is still not supported)
+
+-------------------------------------------------------------------
+Tue Aug 29 21:38:52 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.4.1:
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes, infinite loops, or cause excessive use
+  of memory resources by making Wireshark read specially crafted
+  packages from the network or a capture file:
+  * CVE-2017-13767: MSDP dissector infinite loop (bsc#1056248)
+  * CVE-2017-13766: Profinet I/O buffer overrun (bsc#1056249)
+  * CVE-2017-13764: Modbus dissector crash (bsc#1056250)
+  * CVE-2017-13765: IrCOMM dissector buffer overrun (bsc#1056251)
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.4.1.html
+
+-------------------------------------------------------------------
+Sat Aug 26 15:11:56 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Mon Aug 21 12:48:39 UTC 2017 - tchvatal@suse.com
+
+- Gcrypt is now default
+- gtk switch was redone to accept value at the end instead of 2
+  options
+
+-------------------------------------------------------------------
+Thu Jul 27 08:21:59 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.4.0:
+  * SS7 Point Codes can now be resolved into names with a hosts-
+    like file.
+  * Wireshark can now go fullscreen to have more room for packets
+  * TShark can now export objects like the other GUI interfaces.
+  * Support for G.722 and G.726 codecs in the RTP Player (via the
+    SpanDSP library)
+  * You can now choose the output device when playing RTP streams
+  * Added support for dissectors to include a unit name natively
+    in their hf field. A field can now automatically append
+    "seconds" or "ms" to its value without additional printf-style
+    APIs
+  * The Default profile can now be reset to default values.
+  * You can move back and forth in the selection history in the
+    Qt UI.
+  * IEEE 802.15.4 dissector now uses an UAT for decryption keys.
+    The original decryption key preference has been obsoleted.
+  * Extcap utilities can now provide configuration for a GUI
+    interface toolbar to control the extcap utility while capturing.
+  * Extcap utilities can now validate the capture filter.
+  * Display filter function len() can now be used on all string and
+    byte fields.
+  * Added an experimental timeline view for 802.11 wireless packet
+    data which can be enabled via the "802.11 radio information
+    preferences.
+  * Added TLS 1.3 (draft 21) dissection and decryption support
+  * The (D)TLS Application Layer protocol (e.g. HTTP or CoAP) can
+    now be changed via the Decode As dialog.
+  * The RSA keys dialog for SSL keys has improved feedback for
+    invalid settings and no longer requires the IP address, Port or
+    Protocol fields to be set in addition to the Key File.
+  * TCP Analysis will detect and flag more spurious retransmissions. 
+  * Many new and updated protocol support
+  * New and updated Capture File Support:
+    ERF, IxVeriWave, Libpcap, and Pcap-ng
+  * API changes: IEEE802.11: wlan_mgt display filter element got
+    renamed to wlan.
+    
+-------------------------------------------------------------------
+Tue Jul 18 21:29:37 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.2.8 (bsc#1049255):
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes, infinite loops, or cause excessive use
+  of memory resources by making Wireshark read specially crafted
+  packages from the network or a capture file:
+  * CVE-2017-7702 CVE-2017-11410: WBMXL dissector infinite loop
+    (wnpa-sec-2017-13)
+  * CVE-2017-9350 CVE-2017-11411: openSAFETY dissector memory
+    exhaustion (wnpa-sec-2017-28)
+  * CVE-2017-11408: AMQP dissector crash (wnpa-sec-2017-34)
+  * CVE-2017-11407: MQ dissector crash (wnpa-sec-2017-35)
+  * CVE-2017-11406: DOCSIS infinite loop (wnpa-sec-2017-36)
+
+-------------------------------------------------------------------
+Fri Jun  2 09:21:15 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.2.7 (bsc#1042330):
+  This release fixes minor vulnerabilities that could be used to
+  trigger dissector crashes, infinite loops, or cause excessive use
+  of CPU resources by making Wireshark read specially crafted
+  packages from the network or a capture file:
+  * CVE-2017-9352: Bazaar dissector infinite loop (bsc#1042304)
+  * CVE-2017-9348: DOF dissector read overflow (bsc#1042303)
+  * CVE-2017-9351: DHCP dissector read overflow (bsc#1042302)
+  * CVE-2017-9346: SoulSeek dissector infinite loop (bsc#1042301)
+  * CVE-2017-9345: DNS dissector infinite loop (bsc#1042300)
+  * CVE-2017-9349: DICOM dissector infinite loop (bsc#1042305)
+  * CVE-2017-9350: openSAFETY dissector memory exhaustion (bsc#1042299)
+  * CVE-2017-9344: BT L2CAP dissector divide by zero (bsc#1042298)
+  * CVE-2017-9343: MSNIP dissector crash (bsc#1042309)
+  * CVE-2017-9347: ROS dissector crash (bsc#1042308)
+  * CVE-2017-9354: RGMP dissector crash (bsc#1042307)
+  * CVE-2017-9353: IPv6 dissector crash (bsc#1042306)
+
+-------------------------------------------------------------------
+Wed May 17 09:51:33 UTC 2017 - astieger@suse.com
+
+- Allow opening capture files from desktop without asking for
+  privileged credentials. bsc#1025714
+
+-------------------------------------------------------------------
+Fri Apr 14 08:46:58 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.2.6:
+  This release fixes minor vulnerabilities that could be used to
+  trigger a dissector crash or infinite loops by sending specially
+  crafted packages over the network or into a capture file:
+  * CVE-2017-7700: NetScaler file parser infinite loop (bsc#1033936)
+  * CVE-2017-7701: BGP dissector infinite loop (bsc#1033937)
+  * CVE-2017-7702: WBMXL dissector infinite loop (bsc#1033938)
+  * CVE-2017-7703: IMAP dissector crash (bsc#1033939)
+  * CVE-2017-7704: DOF dissector infinite loop (bsc#1033940)
+  * CVE-2017-7705: RPCoRDMA dissector infinite loop (bsc#1033941)
+  * CVE-2017-7745: SIGCOMP dissector infinite loop (bsc#1033942)
+  * CVE-2017-7746: SLSK dissector long loop (bsc#1033943)
+  * CVE-2017-7747: PacketBB dissector crash (bsc#1033944)
+  * CVE-2017-7748: WSP dissector infinite loop (bsc#1033945)
+  - Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.2.6.html
+
+-------------------------------------------------------------------
+Sat Mar  4 12:13:43 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.2.5: boo#1027998
+  This release fixes minor vulnerabilities that could be used to
+  trigger a dissector crash or infinite loops by sending specially
+  crafted packages over the network or into a capture file:
+  * CVE-2017-6467: NetScaler file parser infinite loop (wnpa-sec-2017-11)
+  * CVE-2017-6468: NetScaler file parser crash (wnpa-sec-2017-08)
+  * CVE-2017-6469: LDSS dissector crash (wnpa-sec-2017-03)
+  * CVE-2017-6470: IAX2 dissector infinite loop (wnpa-sec-2017-10)
+  * CVE-2017-6471: WSP dissector infinite loop (wnpa-sec-2017-05)
+  * CVE-2017-6472: RTMTP dissector infinite loop (wnpa-sec-2017-04)
+  * CVE-2017-6473: K12 file parser crash (wnpa-sec-2017-09)
+  * CVE-2017-6474: NetScaler file parser infinite loop (wnpa-sec-2017-07)
+  * wnpa-sec-2017-06: STANAG 4607 file parser infinite loop
+- restore license in about dialog boo#1026507  
+
+-------------------------------------------------------------------
+Tue Feb 14 15:31:44 UTC 2017 - tchvatal@suse.com
+
+- Disable gnutls on SLE11 as we are unable to meet the gnutls
+  requirements there
+
+-------------------------------------------------------------------
+Tue Jan 24 21:21:42 UTC 2017 - astieger@suse.com
+
+- Wireshark 2.2.4:
+  This release fixes two minor vulnerabilities that could be use to
+  cause Wireshark to go into a large or infinite loop by sending
+  specially crafted packages over the network or into a capture file
+  (bsc#1021739)
+  * The ASTERIX dissector could go into an infinite loop
+    CVE-2017-5596 wnpa-sec-2017-01
+  * The DHCPv6 dissector could go into a large loop.
+    CVE-2017-5597 wnpa-sec-2017-02
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.2.4.html
+
+-------------------------------------------------------------------
+Wed Jan  4 10:32:57 UTC 2017 - tchvatal@suse.com
+
+- Obsolete the ui-gtk in the ui-qt to ensure clean non-conflicted install
+
+-------------------------------------------------------------------
+Tue Dec 27 11:33:33 UTC 2016 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+- Properly set ethereal symlink based on UI and set it to proper subpkg
+- Update conditionals on wireshark to only build Qt or GTK depending
+  on the interface, because upstream now only supports Qt5
+- Update the caps code in spec but keep it disabled
+- Enable geoip only on platforms that support it
+- Enable libnl only on newer releases
+- Update desktop file and icon caches
+- Drop not really needed patch wireshark-1.10.0-authors-pod2man.patch
+- Use full commands for icon/desktop cache for gtk mode as on sle11 it
+  was not present yet as a macro
+- Split shared libraries properly to subpackages
+
+-------------------------------------------------------------------
+Wed Dec 14 21:01:01 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.2.3:
+  * fix export related bugs
+  * fix UI bugs
+  * bugfix and corrections updates for dissectors
+  * updated protocol support for BGP, BOOTP/DHCP, BTLE, DICOM,
+    DOF, Echo, GTP, ICMP, Radiotap, RLC, RPC over RDMA, RTCP, SMB,
+    TCP, UFTP4, and VXLAN
+
+-------------------------------------------------------------------
+Thu Nov 17 19:18:40 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.2.2:
+  * CVE-2016-9372: Profinet I/O long loop (boo#1010807)
+  * CVE-2016-9374: AllJoyn crash (boo#1010752)
+  * CVE-2016-9376: OpenFlow crash (boo#1010735)
+  * CVE-2016-9373: DCERPC crash (boo#1010754)
+  * CVE-2016-9375: DTN infinite loop (boo#1010740)
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.2.2.html
+
+-------------------------------------------------------------------
+Wed Oct  5 08:08:19 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.2.1:
+  This release fixes a number of issues that made it possible to
+  make Wireshark crash by injecting a malformed packet onto the
+  wire or by convincing someone to read a malformed packet trace
+  file. (bsc#1002981)
+  * wnpa-sec-2016-56: The Bluetooth L2CAP dissector could crash
+  * wnpa-sec-2016-57: The NCP dissector could crash
+  * Further bug fixes and updated protocol support as listed in:
+  * Bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.2.1.html
+
+-------------------------------------------------------------------
+Fri Sep  9 17:40:09 UTC 2016 - ecsos@opensuse.org
+
+- Wireshark 2.2.0:
+  * Bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.2.0.html
+  * Drop wireshark-pkg-config.patch because code is now in upstream
+  * Drop wireshark-1.12.6-fix-QT-PIC-PIE.patch because no more need
+    for build. And create errors at build Tumbleweed.
+  * Rebase wireshark-1.10.0-authors-pod2man.patch
+
+-------------------------------------------------------------------
+Fri Sep  9 08:00:26 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.0.6:
+  This release fixes a number of issues that made it possible to
+  make Wireshark crash by injecting a malformed packet onto the
+  wire or by convincing someone to read a malformed packet trace
+  file. (bsc#998099)
+  * The QNX6 QNET dissector could crash
+    wnpa-sec-2016-50 CVE-2016-7175
+  * The H.225 dissector could crash
+    wnpa-sec-2016-51 CVE-2016-7176
+  * The Catapult DCT2000 dissector could crash
+    wnpa-sec-2016-52 CVE-2016-7177
+  * The UMTS FP dissector could crash
+    wnpa-sec-2016-53 CVE-2016-7178
+  * The Catapult DCT2000 dissector could crash
+    wnpa-sec-2016-54 CVE-2016-7179
+  * The IPMI Trace dissector could crash
+    wnpa-sec-2016-55 CVE-2016-7180
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.0.6.html
+
+-------------------------------------------------------------------
+Mon Sep  5 14:49:45 UTC 2016 - astieger@suse.com
+
+- fix permissions warning on appdata, does not need +x
+
+-------------------------------------------------------------------
+Thu Jul 28 17:23:15 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.0.5:
+  This release fixes a number issues in protocol dissectors that
+  could have allowed a remote attacker to crash Wireshark or cause
+  excessive CPU usage through specially crafted packages inserted
+  into the network or a capture file.
+  * PacketBB crash
+    wnpa-sec-2016-41 bsc#991013 CVE-2016-6505
+  * WSP infinite loop
+    wnpa-sec-2016-42 bsc#991015 CVE-2016-6505
+  * RLC long loop
+    wnpa-sec-2016-44 bsc#991017 CVE-2016-6508
+  * LDSS dissector crash
+    wnpa-sec-2016-45 bsc#991018 CVE-2016-6509
+  * RLC dissector crash
+    wnpa-sec-2016-46 bsc#991019 CVE-2016-6510
+  * OpenFlow long loop
+    wnpa-sec-2016-47 bsc#991020 CVE-2016-6511
+  * MMSE, WAP, WBXML, and WSP infinite loop
+    wnpa-sec-2016-48 bsc#991021 CVE-2016-6512
+  * WBXML crash
+    wnpa-sec-2016-49 bsc#991022 CVE-2016-6513
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.0.5.html
+
+-------------------------------------------------------------------
+Fri Jul 15 22:56:50 UTC 2016 - badshah400@gmail.com
+
+- Drop external wireshark.appdata.xml file, use the upstream
+  bundled one instead.
+- Use the bundled appdata file as a template to generate the
+  proper appdata files for both the GTK and QT GUI applications;
+  install separate appdata for both apps.
+
+-------------------------------------------------------------------
+Wed Jun  8 07:44:26 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.0.4 (boo#983671)
+  This release fixes a number issues in protocol dissectors that
+  could have allowed a remote attacker to crash Wireshark or cause
+  excessive CPU usage through specially crafted packages inserted
+  into the network or a capture file.
+  * The SPOOLS dissector could go into an infinite loop
+    wnpa-sec-2016-29 CVE-2016-5350
+  * The IEEE 802.11 dissector could crash
+    wnpa-sec-2016-30 CVE-2016-5351
+  * The IEEE 802.11 dissector could crash
+    wnpa-sec-2016-31 CVE-2016-5352
+  * The UMTS FP dissector could crash
+    wnpa-sec-2016-32 CVE-2016-5353
+  * Some USB dissectors could crash
+    wnpa-sec-2016-33 CVE-2016-5354
+  * The Toshiba file parser could crash
+    wnpa-sec-2016-34 CVE-2016-5355
+  * The CoSine file parser could crash
+    wnpa-sec-2016-35 CVE-2016-5356
+  * The NetScreen file parser could crash
+    wnpa-sec-2016-36 CVE-2016-5357
+  * The Ethernet dissector could crash
+    wnpa-sec-2016-37 CVE-2016-5358
+
+-------------------------------------------------------------------
+Sat Apr 23 16:47:19 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.0.3 (boo#976944)
+  This release fixes a number issues in protocol dissectors that
+  could have allowed a remote attacker to crash Wireshark or cause
+  excessive CPU usage through specially crafted packages inserted
+  into the network or a capture file.
+  * The NCP dissector could crash (wnpa-sec-2016-19)
+  * TShark could crash due to a packet reassembly bug (wnpa-sec-2016-20)
+  * The IEEE 802.11 dissector could crash (wnpa-sec-2016-21)
+  * The PKTC dissector could crash (wnpa-sec-2016-22)
+  * The PKTC dissector could crash (wnpa-sec-2016-23)
+  * The IAX2 dissector could go into an infinite loop (wnpa-sec-2016-24)
+  * Wireshark and TShark could exhaust the stack (wnpa-sec-2016-25)
+  * The GSM CBCH dissector could crash (wnpa-sec-2016-26)
+  * MS-WSP dissector crash (wnpa-sec-2016-27)
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.0.3.html
+  
+-------------------------------------------------------------------
+Sat Feb 27 12:45:12 UTC 2016 - astieger@suse.com
+
+- Wireshark 2.0.2 (boo#968565)
+  This release fixes a number issues in protocol dissectors that
+  could have allowed a remote attacker to crash Wireshark or cause
+  excessive CPU usage through specially crafted packages inserted
+  into the network or a capture file.
+  * CVE-2016-2522: ASN.1 BER dissector crash (wnpa-sec-2016-02)
+  * CVE-2016-2523: DNP dissector infinite loop (wnpa-sec-2016-03)
+  * CVE-2016-2524: X.509AF dissector crash (wnpa-sec-2016-04)
+  * CVE-2016-2525: HTTP/2 dissector crash (wnpa-sec-2016-05)
+  * CVE-2016-2526: HiQnet dissector crash (wnpa-sec-2016-06)
+  * CVE-2016-2527: 3GPP TS 32.423 Trace file parser crash (wnpa-sec-2016-07)
+  * CVE-2016-2528: LBMC dissector crash (wnpa-sec-2016-08)
+  * CVE-2016-2529: iSeries file parser crash (wnpa-sec-2016-09)
+  * CVE-2016-2530: RSL dissector crash (wnpa-sec-2016-10)
+  * CVE-2016-2531: RSL dissector crash (wnpa-sec-2016-10)
+  * CVE-2016-2532: LLRP dissector crash (wnpa-sec-2016-11)
+  * Ixia IxVeriWave file parser crash (wnpa-sec-2016-12)
+  * IEEE 802.11 dissector crash (wnpa-sec-2016-13)
+  * GSM A-bis OML dissector crash (wnpa-sec-2016-14)
+  * ASN.1 BER dissector crash (wnpa-sec-2016-15)
+  * SPICE dissector large loop  (wnpa-sec-2016-16)
+  * NFS dissector crash (wnpa-sec-2016-17)
+  * ASN.1 BER dissector crash (wnpa-sec-2016-18)
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.0.2.html
+
+-------------------------------------------------------------------
+Sat Feb 13 21:03:47 UTC 2016 - astieger@suse.com
+
+- Recommend wireshark-ui instead of requiring it (boo#961170)
+  to support text-only use 
+
+-------------------------------------------------------------------
+Mon Jan  4 12:37:32 UTC 2016 - astieger@suse.com
+
+- Add CVEs for boo#960382
+
+-------------------------------------------------------------------
+Wed Dec 30 08:24:29 UTC 2015 - astieger@suse.com
+
+- Wireshark 2.0.1
+  fixing the following dissector crashes boo#960382:
+  * NBAP dissector crashes.
+    wnpa-sec-2015-31 CVE-2015-8711
+  * NLM dissector crash.
+    wnpa-sec-2015-37 CVE-2015-8718
+  * BER dissector crash.
+    wnpa-sec-2015-39 CVE-2015-8720
+  * Zlib decompression crash.
+    wnpa-sec-2015-40 CVE-2015-8721
+  * SCTP dissector crash.
+    wnpa-sec-2015-41 CVE-2015-8722
+  * 802.11 decryption crash.
+    wnpa-sec-2015-42 CVE-2015-8723 CVE-2015-8724
+  * DIAMETER dissector crash.
+    wnpa-sec-2015-43 CVE-2015-8725
+  * VeriWave file parser crashes.
+    wnpa-sec-2015-44 CVE-2015-8726
+  * RSVP dissector crash.
+    wnpa-sec-2015-45 CVE-2015-8727
+  * ANSI A & GSM A dissector crashes.
+    wnpa-sec-2015-46 CVE-2015-8728
+  * Ascend file parser crash.
+    wnpa-sec-2015-47 CVE-2015-8729
+  * NBAP dissector crash.
+    npa-sec-2015-48 CVE-2015-8730
+  * RSL dissector crash.
+    wnpa-sec-2015-49 CVE-2015-8731
+  * ZigBee ZCL dissector crash.
+    wnpa-sec-2015-50 CVE-2015-8732
+  * Sniffer file parser crash
+    wnpa-sec-2015-51 CVE-2015-8733
+  * NWP dissector crash. 
+    wnpa-sec-2015-52 CVE-2015-8734
+  * BT ATT dissector crash.
+    wnpa-sec-2015-53 CVE-2015-8735
+  * MP2T file parser crash. 
+    wnpa-sec-2015-54 CVE-2015-8736
+  * MP2T file parser crash.
+    wnpa-sec-2015-55 CVE-2015-8737
+  * S7COMM dissector crash.
+    wnpa-sec-2015-56 CVE-2015-8738
+  * IPMI dissector crash.
+    wnpa-sec-2015-57 CVE-2015-8739
+  * TDS dissector crash.
+    wnpa-sec-2015-58 CVE-2015-8740
+  * PPI dissector crash.
+    wnpa-sec-2015-59 CVE-2015-8741
+  * MS-WSP dissector crash. 
+    wnpa-sec-2015-60 CVE-2015-8742
+- adjust wireshark-1.12.6-fix-QT-PIC-PIE.patch for upstream changes
+  
+-------------------------------------------------------------------
+Sat Dec 12 20:30:27 UTC 2015 - crrodriguez@opensuse.org
+
+- BuildRequire pkgconfig(Qt5Multimedia) too.
+
+-------------------------------------------------------------------
+Thu Dec 10 16:10:04 UTC 2015 - crrodriguez@opensuse.org
+
+- Enable netlink support, requires libnl3.
+
+-------------------------------------------------------------------
+Thu Nov 19 07:37:08 UTC 2015 - astieger@suse.com
+
+- Wireshark 2.0.0:
+  * Completely new user interface (QT)
+  * ~/.config/wireshark now used over ~/.wireshark
+  * File format debugging support for BTSNOOP, PCAP, and PCAPNG
+  * New and updates support for 3GPP TS 32.423 Trace, Android
+    Logcat text files, Colasoft Capsa files, Netscaler 3.5, and
+    Symbian OS BTSNOOP File Format
+  * Support nanosecond timestamp resolution in PCAP-NG
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-2.0.0.html
+- adjust wireshark-pkg-config.patch for upstream changes
+
+-------------------------------------------------------------------
+Fri Oct 16 14:36:16 UTC 2015 - astieger@suse.com
+
+- Wireshark 1.12.8 [boo#950437]
+  The following vulnerabilities have been fixed:
+  * pcapng file parser could crash while copying an interface filter.
+    wnpa-sec-2015-30 CVE-2015-7830
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.12.8.html
+- drop upstream wireshark-1.12.x-allow-gdk-pixbuf-deprecation.patch 
+
+-------------------------------------------------------------------
+Wed Aug 12 19:40:25 UTC 2015 - astieger@suse.com
+
+- Wireshark 1.12.7 [boo#941500]
+  The following vulnerabilities have been fixed:
+  * Wireshark could crash when adding an item to the protocol tree.
+    wnpa-sec-2015-21 CVE-2015-6241
+  * Wireshark could attempt to free invalid memory.
+    wnpa-sec-2015-22 CVE-2015-6242
+  * Wireshark could crash when searching for a protocol dissector.
+    wnpa-sec-2015-23 CVE-2015-6243
+  * The ZigBee dissector could crash.
+    wnpa-sec-2015-24 CVE-2015-6244
+  * The GSM RLC/MAC dissector could go into an infinite loop.
+    wnpa-sec-2015-25 CVE-2015-6245
+  * The WaveAgent dissector could crash.
+    wnpa-sec-2015-26 CVE-2015-6246
+  * The OpenFlow dissector could go into an infinite loop.
+    wnpa-sec-2015-27 CVE-2015-6247
+  * Wireshark could crash due to invalid ptvcursor length checking.
+    wnpa-sec-2015-28 CVE-2015-6248
+  * The WCCP dissector could crash.
+    wnpa-sec-2015-29 CVE-2015-6249
+  * Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.12.7.html
+
+-------------------------------------------------------------------
+Thu Jul 30 11:00:55 UTC 2015 - zaitor@opensuse.org
+
+- Conditionally set lua52-devel BuildRequires for openSUSE versions
+  newer than 13.2. Wireshark does not compile with lua 5.3.
+
+-------------------------------------------------------------------
+Mon Jul 13 09:35:18 UTC 2015 - astieger@suse.com
+
+- Fix Factory with QT (PIE/PIC)
+  adding wireshark-1.12.6-fix-QT-PIC-PIE.patch
+
+-------------------------------------------------------------------
+Thu Jun 18 17:43:18 UTC 2015 - astieger@suse.com
+
+- Wireshark 1.12.6
+- The following vulnerabilities have been fixed:
+  * WCCP dissector crash
+    CVE-2015-4651 wnpa-sec-2015-19 boo#935157
+  * GSM DTAP dissector crash
+    CVE-2015-4652 wnpa-sec-2015-20 boo#935158
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.6.html
+
+-------------------------------------------------------------------
+Sat May 23 05:18:26 UTC 2015 - crrodriguez@opensuse.org
+
+- force -fPIC build to make QT5 happy. 
+
+-------------------------------------------------------------------
+Wed May 13 10:44:58 UTC 2015 - astieger@suse.com
+
+- Wireshark 1.12.5 [boo#930689]
+- The following vulnerabilities have been fixed:
+  * The LBMR dissector could go into an infinite loop. 
+    CVE-2015-3808 CVE-2015-3809 wnpa-sec-2015-12
+  * The WebSocket dissector could recurse excessively.
+    CVE-2015-3810 wnpa-sec-2015-13
+  * The WCP dissector could crash while decompressing data.
+    CVE-2015-3811 wnpa-sec-2015-14
+  * The X11 dissector could leak memory.
+    CVE-2015-3812 wnpa-sec-2015-15
+  * The packet reassembly code could leak memory.
+    CVE-2015-3813 wnpa-sec-2015-16
+  * The IEEE 802.11 dissector could go into an infinite loop.
+    CVE-2015-3814 wnpa-sec-2015-17
+  * The Android Logcat file parser could crash.
+    CVE-2015-3815 wnpa-sec-2015-18
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.5.html
+
+-------------------------------------------------------------------
+Tue Apr 28 02:13:25 UTC 2015 - crrodriguez@opensuse.org
+
+- Build the qt frontend against QT5 in Factory (only). 
+
+-------------------------------------------------------------------
+Thu Apr  9 10:23:11 UTC 2015 - dimstar@opensuse.org
+
+- Add wireshark-pkg-config.patch: actually install wireshark.pc,
+  which is part of the tarball. Seems only cmake based setup
+  handles this for upstream.
+- Add wireshark.appdata.xml in order to show up in AppStream based
+  appstores.
+
+-------------------------------------------------------------------
+Wed Mar  4 19:31:18 UTC 2015 - astieger@suse.com
+
+- Wireshark 1.12.4:
+- The following security issues were fixed:
+  * The ATN-CPDLC dissector could crash.
+    wnpa-sec-2015-06 CVE-2015-2187 [bnc#920695]
+  * The WCP dissector could crash.
+    wnpa-sec-2015-07 CVE-2015-2188 [bnc#920696]
+  * The pcapng file parser could crash.
+    wnpa-sec-2015-08 CVE-2015-2189 [bnc#920697]
+  * The LLDP dissector could crash.
+    wnpa-sec-2015-09 CVE-2015-2190 [bnc#920698]
+  * The TNEF dissector could go into an infinite loop.
+    wnpa-sec-2015-10 CVE-2015-2191 [bnc#920699]
+  * The SCSI OSD dissector could go into an infinite loop. 
+    wnpa-sec-2015-11 CVE-2015-2192 [bnc#920700]
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.4.html
+
+-------------------------------------------------------------------
+Thu Jan  8 22:43:03 UTC 2015 - andreas.stieger@gmx.de
+
+- Wireshark 1.12.3
+- The following vulnerabilities allowed Wireshark to be crashed by
+  injecting a malformed packet onto the wire or by convincing someone
+  to read a malformed packet trace file.
+  + The WCCP dissector could crash
+    wnpa-sec-2015-01 CVE-2015-0559 CVE-2015-0560 [boo#912365]
+  + The LPP dissector could crash.
+    wnpa-sec-2015-02 CVE-2015-0561 [boo#912368]
+  + The DEC DNA Routing Protocol dissector could crash.
+    wnpa-sec-2015-03 CVE-2015-0562 [boo#912369]
+  + The SMTP dissector could crash. 
+    wnpa-sec-2015-04 CVE-2015-0563 [boo#912370]
+  + Wireshark could crash while decypting TLS/SSL sessions.
+    wnpa-sec-2015-05 CVE-2015-0564 [boo#912372]
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.3.html
+
+-------------------------------------------------------------------
+Sat Jan  3 15:55:35 UTC 2015 - meissner@suse.com
+
+- build with PIE
+
+-------------------------------------------------------------------
+Wed Dec  3 20:37:44 UTC 2014 - andreas.stieger@gmx.de
+
+- Allow build with functions deprecated in gdk-pixbuf 2.31.2,
+  fixing build for openSUSE Factory,
+  add wireshark-1.12.x-allow-gdk-pixbuf-deprecation.patch
+
+-------------------------------------------------------------------
+Thu Nov 13 18:38:56 UTC 2014 - andreas.stieger@gmx.de
+
+- Wireshark 1.12.2
+- The following vulnerabilities have been fixed.
+  + SigComp UDVM buffer overflow
+    wnpa-sec-2014-20 CVE-2014-8710 boo#905246
+  + AMQP crash
+    wnpa-sec-2014-21 CVE-2014-8711 boo#905245
+  + NCP crashes
+    wnpa-sec-2014-22 CVE-2014-8712 CVE-2014-8713 boo#905248
+  + TN5250 infinite loops
+    wnpa-sec-2014-23 CVE-2014-8714 boo#905247
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.2.html
+
+-------------------------------------------------------------------
+Thu Nov 13 16:31:16 UTC 2014 - andreas.stieger@gmx.de
+
+- remove gpg-offline, now part of source-validator, also fixing 
+  SLE 12
+
+-------------------------------------------------------------------
+Wed Sep 17 23:27:49 UTC 2014 - andreas.stieger@gmx.de
+
+- install epan/wmem/*.h
+
+-------------------------------------------------------------------
+Wed Sep 17 22:22:18 UTC 2014 - andreas.stieger@gmx.de
+
+- Wireshark 1.12.1 [bnc#897055]
+- The following vulnerabilities have been fixed.
+  * MEGACO dissector infinite loop
+    wnpa-sec-2014-13 CVE-2014-6423
+  * Netflow dissector crash
+    wnpa-sec-2014-14 CVE-2014-6424
+  * CUPS dissector crash
+    wnpa-sec-2014-15 CVE-2014-6425
+  * HIP dissector infinite loop
+    wnpa-sec-2014-16 CVE-2014-6426
+  * RTSP dissector crash
+    wnpa-sec-2014-17 CVE-2014-6427
+  * SES dissector crash
+    wnpa-sec-2014-18 CVE-2014-6428
+  * Sniffer file parser crash
+    wnpa-sec-2014-19 CVE-2014-6429 CVE-2014-6430 CVE-2014-6431
+    CVE-2014-6432
+- drop wireshark-1.12.0-qt-QFont-stylename.patch, upstream
+- only build with --enable-gnutls where it has a compatible licence
+  as configure check was changed from a warning to an error
+  openSUSE 13.1 and up and SLE 11
+- add a desktop file for the QT user interface
+- Further bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.1.html
+
+-------------------------------------------------------------------
+Mon Sep 15 02:24:53 UTC 2014 - crrodriguez@opensuse.org
+
+- Current versions support lua 5.2, so just use "lua-devel"
+  in BuildRequires.
+- Enable verbose build, rpmlint counts on that.
+
+-------------------------------------------------------------------
+Sun Aug 17 16:08:46 UTC 2014 - andreas.stieger@gmx.de
+
+- Build experimental UI wireshark-qt:
+  * add wireshark-1.12.0-qt-QFont-stylename.patch
+    to support building with Qt 4.6 on SLE 11
+  * split UI into wireshark-ui-gtk and wireshark-ui-qt to reduce
+    dependencies, one of which is required by the main package
+- remove unknown configure option --with-python
+
+-------------------------------------------------------------------
+Wed Aug 13 22:03:39 UTC 2014 - andreas.stieger@gmx.de
+
+- Wireshark 1.12.0
+- new and updated features since 1.10:
+  * When manipulating packets with editcap using the -C
+    <choplen> and/or -s <snaplen> options, it is now possible
+    to also adjust the original frame length using the -L
+    option.
+  * You can now pass the -C <choplen> option to editcap
+    multiple times, which allows you to chop bytes from the
+    beginning of a packet as well as at the end of a packet in
+    a single step.
+  * You can now specify an optional offset to the -C option for
+    editcap, which allows you to start chopping from that
+    offset instead of from the absolute packet beginning or
+    end.
+  * "malformed" display filter has been renamed to
+    "_ws.malformed". A handful of other filters have been given
+    the "_ws." prefix to note they are Wireshark application
+    specific filters and not dissector filters.
+  * The Kerberos dissector has been replaced with an auto
+    generated one from ASN1 protocol description, changing a
+    lot of filter names.
+  * Transport name resolution is now disabled by default.
+  * Dissector output may be encoded as UTF-8. This includes
+    TShark output.
+- New and updated protocol and capture file support as listed in
+  https://www.wireshark.org/docs/relnotes/wireshark-1.12.0.html
+- major API changes
+- packaging changes:
+  * build with GTK+ 3 for openSUSE, GTK+ 2 on SLE 11
+  * disable building wireshark-qt
+  * refreshed patches:
+    wireshark-1.2.0-geoip.patch for context changes
+    wireshark-1.2.0-disable-warning-dialog.patch, same
+    wireshark-1.10.0-authors-pod2man.patch, same
+
+-------------------------------------------------------------------
+Thu Jul 31 23:28:38 UTC 2014 - andreas.stieger@gmx.de
+
+- Wireshark 1.10.9 [bnc#889854]
+  fixes several crashes triggered by malformed protocol packages
+- vulnerabilities fixed:
+  * The Catapult DCT2000 and IrDA dissectors could underrun a buffer
+    wnpa-sec-2014-08 CVE-2014-5161 CVE-2014-5162
+  * The GSM Management dissector could crash
+    wnpa-sec-2014-09 CVE-2014-5163
+  * The RLC dissector could crash
+    wnpa-sec-2014-10 CVE-2014-5164
+  * The ASN.1 BER dissector could crash
+    wnpa-sec-2014-11 CVE-2014-5165
+- Further bug fixes as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.10.9.html
+
+-------------------------------------------------------------------
+Fri Jun 13 21:32:43 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.10.8 [bnc#882602]
+  + vulnerabilities fixed:
+    * The frame metadissector could crash.
+      wnpa-sec-2014-07 CVE-2014-4020
+  + bug fixed:
+    * VoIP flow graph crash upon opening.
+    * Tshark with "-F pcap" still generates a pcapng file.
+    * IPv6 Next Header 0x3d recognized as SHIM6.
+    * Failed to export pdml on large pcap.
+    * TCAP: set a fence on info column after calling sub
+      dissector
+    * Dissector bug in JSON protocol.
+    * GSM RLC MAC: do not skip too many lines of the CSN_DESCR
+      when the field is missing
+    * Wireshark PEEKREMOTE incorrectly decoding QoS data packets
+      from Cisco Sniffer APs.
+    * IEEE 802.11: fix dissection of HT Capabilities
+  + Further updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.8.html
+
+-------------------------------------------------------------------
+Wed Apr 23 17:57:54 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.10.7 [bnc#874760] 
+  + vulnerabilities fixed:
+    * The RTP dissector could crash
+      wnpa-sec-2014-06 CVE-2014-2907
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.7.html
+
+-------------------------------------------------------------------
+Sat Mar  8 10:10:14 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 1.10.6 [bnc#867485] 
+  + vulnerabilities fixed:
+    * The NFS dissector could crash
+      wnpa-sec-2014-01 CVE-2014-2281
+    * The M3UA dissector could crash
+      wnpa-sec-2014-02 CVE-2014-2282
+    * The RLC dissector could crash
+      wnpa-sec-2014-03 CVE-2014-2283
+    * The MPEG file parser could overflow a buffer
+      wnpa-sec-2014-04 CVE-2014-2299
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.6.html
+
+-------------------------------------------------------------------
+Thu Dec 19 23:25:37 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.10.5
+  + bugs fixed:
+    * Wireshark stops showing new packets but dumpcap keeps writing
+      them to the temp file.
+    * Wireshark 1.10.4 shuts down when promiscuous mode is
+      unchecked.
+    * Homeplug dissector bug: STATUS_ACCESS_VIOLATION: dissector
+      accessed an invalid memory address.
+
+-------------------------------------------------------------------
+Tue Dec 17 22:16:16 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.10.4 [bnc#855980]
+  + vulnerabilities fixed:
+    * The SIP dissector could go into an infinite loop.
+      wnpa-sec-2013-66 CVE-2013-7112
+    * The BSSGP dissector could crash.
+     wnpa-sec-2013-67 CVE-2013-7113
+    * The NTLMSSP v2 dissector could crash. Discovered by Garming Sam.
+      wnpa-sec-2013-68 CVE-2013-7114
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.4.html
+
+-------------------------------------------------------------------
+Fri Nov  1 21:44:02 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.10.3 [bnc#848738]
+  + vulnerabilities fixed:
+    * The IEEE 802.15.4 dissector could crash
+      wnpa-sec-2013-61 CVE-2013-6336
+    * The NBAP dissector could crash
+      wnpa-sec-2013-62 CVE-2013-6337
+    * The SIP dissector could crash
+      wnpa-sec-2013-63 CVE-2013-6338
+    * The OpenWire dissector could go into a large loop
+      wnpa-sec-2013-64 CVE-2013-6339
+    * The TCP dissector could crash
+      wnpa-sec-2013-65 CVE-2013-6340
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.3.html
+- drop wireshark-1.10.x-fix-packet-gluster-duplicate_enums.patch
+  merged upstream
+
+-------------------------------------------------------------------
+Mon Sep 30 18:50:37 UTC 2013 - andreas.stieger@gmx.de
+
+- fix duplicate enum definition to fix build in 13.1 and Factory,
+  adding wireshark-1.10.x-fix-packet-gluster-duplicate_enums.patch
+  from upstream commits [bnc#843304]
+
+-------------------------------------------------------------------
+Thu Sep 19 00:46:02 UTC 2013 - opensuse@sukimashita.com
+
+- add missing ws_symbol_export.h and frame_data_sequence.h includes
+  to -devel package to allow building of external plugins again
+
+-------------------------------------------------------------------
+Wed Sep 11 20:34:17 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.10.2 [bnc#839607]
+  + vulnerabilities fixed:
+    * The Bluetooth HCI ACL dissector could crash.
+      wnpa-sec-2013-54 CVE-2013-5717
+    * The NBAP dissector could crash.
+      wnpa-sec-2013-55 CVE-2013-5718
+    * The ASSA R3 dissector could go into an infinite loop.
+      wnpa-sec-2013-56 CVE-2013-5719
+    * The RTPS dissector could overflow a buffer.
+      wnpa-sec-2013-57 CVE-2013-5720
+    * The MQ dissector could crash.
+      wnpa-sec-2013-58 CVE-2013-5721
+    * The LDAP dissector could crash.
+      wnpa-sec-2013-59 CVE-2013-5722
+    * The Netmon file parser could crash.
+      wnpa-sec-2013-60 
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.2.html
+- drop wireshark-1.10.x-reordercap-r49436.patch, merged upstream
+
+-------------------------------------------------------------------
+Sun Aug 18 16:18:30 UTC 2013 - andreas.stieger@gmx.de
+
+- gtk3 version in openSUSE Factory (13.1) deprecates elements used
+  in wireshark 1.10.1. Revert back to gtk2 UI.
+
+-------------------------------------------------------------------
+Sat Jul 27 00:02:02 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.10.1 [bnc#831718]
+  + vulnerabilities fixed:
+    The DCP ETSI dissector could crash
+    CVE-2013-4083 wnpa-sec-2013-41
+  + The P1 dissector could crash
+    CVE-2013-4920 wnpa-sec-2013-42
+  + The Radiotap dissector could crash
+    CVE-2013-4921 wnpa-sec-2013-43
+  + The DCOM ISystemActivator dissector could crash
+    CVE-2013-4922 CVE-2013-4923 CVE-2013-4924 CVE-2013-4925 
+    CVE-2013-4926 wnpa-sec-2013-44
+  + The Bluetooth SDP dissector could go into a large loop
+    CVE-2013-4927 wnpa-sec-2013-45
+  + The Bluetooth OBEX dissector could go into an infinite loop
+    CVE-2013-4928 wnpa-sec-2013-46
+  + The DIS dissector could go into a large loop
+    CVE-2013-4929 wnpa-sec-2013-47
+  + The DVB-CI dissector could crash
+    CVE-2013-4930 wnpa-sec-2013-48
+  + The GSM RR dissector (and possibly others) could go into a large loop
+    CVE-2013-4931 wnpa-sec-2013-49
+  + The GSM A Common dissector could crash
+    CVE-2013-4932 wnpa-sec-2013-50
+  + The Netmon file parser could crash
+    CVE-2013-4933 CVE-2013-4934 wnpa-sec-2013-51 
+  + The ASN.1 PER dissector could crash
+    CVE-2013-4935 wnpa-sec-2013-52
+  + The PROFINET Real-Time dissector could crash
+    CVE-2013-4936 wnpa-sec-2013-53
+    This is still configurable via the GTK settings (add 
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.10.1.html
+- drop wireshark-1.10.0-pod-characters.patch, fixed upstream
+- add wireshark-1.10.x-reordercap-r49436.patch from trunk to
+  fix factory build
+
+-------------------------------------------------------------------
+Thu Jun 27 20:26:33 UTC 2013 - andreas.stieger@gmx.de
+
+- fix factory builds, prevent build failures with pod2man:
+  wireshark-1.10.0-authors-pod2man.patch
+  wireshark-1.10.0-pod-characters.patch
+
+-------------------------------------------------------------------
+Wed Jun  5 21:08:57 UTC 2013 - andreas.stieger@gmx.de
+
+- 1.10.0
+- new or significantly updated features since version 1.8:
+  * You can now display a list of resolved host names in "hosts" 
+    format within Wireshark.
+  * The wireless toolbar has been updated.
+  * Wireshark on Linux does a better job of detecting interface 
+    addition and removal.
+  * It is now possible to compare two fields in a display filter 
+    (for example: udp.srcport != udp.dstport). The two fields must
+    be of the same type for this to work.
+  * USB type and product name support has been improved.
+  * All Bluetooth profiles and protocols are now supported.
+  * Wireshark now calculates HTTP response times and presents the 
+    result in a new field in the HTTP response. Links from the 
+    request’s frame to the response’s frame and vice-versa are 
+    also added.
+  * The main welcome screen and status bar now display file sizes 
+    using strict SI prefixes instead of old-style binary prefixes.
+  * Capinfos now prints human-readable statistics with SI suffixes 
+    by default.
+  * It is now possible to open a referenced packet (such as the 
+    matched request or response packet) in a new window.
+  * Tshark can now display only the hex/ascii packet data without 
+    requiring that the packet summary and/or packet details are also
+    displayed. If you want the old behavior, use -Px instead of 
+    just -x.
+  * Wireshark can be compiled using GTK+ 3.
+  * The Wireshark application icon, capture toolbar icons, and other 
+    icons have been updated.
+  * Tshark’s filtering and multi-pass analysis have been reworked 
+    for consistency and in order to support dependent frame 
+    calculations during reassembly. See the man page descriptions 
+    for -2, -R, and -Y.
+  * Tshark’s -G fields2 and -G fields3 options have been eliminated. 
+    The -G fields option now includes the 2 extra fields that
+    -G fields3 previously provided, and the blurb information has been
+    relegated to the last column since in many cases it is blank 
+    anyway.
+  * Wireshark dropped the left-handed settings from the preferences.
+    This is still configurable via the GTK settings (add 
+    "gtk-scrolled-window-placement = top-right" in the config file, 
+    which might be called /.gtkrc-2.0 or /.config/gtk-3.0/settings.ini).
+  * Wireshark now ships with two global configuration files: Bluetooth, 
+    which contains coloring rules for Bluetooth and Classic, which
+    contains the old-style coloring rules. 
+  * The LOAD() metric in the IO-graph now shows the load in IO
+    units instead of thousands of IO units.
+- packaging changes
+  * drop wireshark-suidflags.patch
+    -fPIE and -pie now set on SUID binaries by upstream
+     no longer require or call call autoreconf
+  * wireshark-1.2.4-enable_lua.patch refreshed with upstream changes
+    to wireshark-1.10.0-enable_lua.patch
+  * drop include.filelist, instead find files for -devel package
+    during build
+
+-------------------------------------------------------------------
+Thu May 23 19:37:57 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.8.7 [bnc#820566]
+  + vulnerabilities fixed:
+    * The RELOAD dissector could go into an infinite loop.
+      wnpa-sec-2013-23 CVE-2013-2486 CVE-2013-2487
+    * The GTPv2 dissector could crash.
+      wnpa-sec-2013-24 CVE-2013-3555
+    * The ASN.1 BER dissector could crash.
+      wnpa-sec-2013-25 CVE-2013-3556 CVE-2013-3557
+    * The PPP CCP dissector could crash.
+      wnpa-sec-2013-26 CVE-2013-3558
+    * The DCP ETSI dissector could crash.
+      wnpa-sec-2013-27 CVE-2013-3559
+    * The MPEG DSM-CC dissector could crash.
+      wnpa-sec-2013-28 CVE-2013-3560
+    * The Websocket dissector could crash.
+      wnpa-sec-2013-29 CVE-2013-3561 CVE-2013-3562
+    * The MySQL dissector could go into an infinite loop.
+      wnpa-sec-2013-30 CVE-2013-3561
+    * The ETCH dissector could go into a large loop.
+      wnpa-sec-2013-31 CVE-2013-3561
+  + Further bug fixes and updated protocol support as listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-1.8.7.html
+
+-------------------------------------------------------------------
+Sat Mar  9 11:24:29 UTC 2013 - andreas.stieger@gmx.de
+
+- add verfication of source signatures
+
+-------------------------------------------------------------------
+Thu Mar  7 00:01:15 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.8.6 [bnc#807942]
+ + vulnerabilities fixed: 
+   * The TCP dissector could crash.
+     wnpa-sec-2013-10 CVE-2013-2475
+   * The HART/IP dissectory could go into an infinite loop.
+     wnpa-sec-2013-11 CVE-2013-2476
+   * The CSN.1 dissector could crash.
+     wnpa-sec-2013-12 CVE-2013-2477
+   * The MS-MMS dissector could crash.
+     wnpa-sec-2013-13 CVE-2013-2478
+   * The MPLS Echo dissector could go into an infinite loop. 
+     wnpa-sec-2013-14 CVE-2013-2479
+   * The RTPS and RTPS2 dissectors could crash.
+     wnpa-sec-2013-15 CVE-2013-2480
+   * The Mount dissector could crash.
+     wnpa-sec-2013-16 CVE-2013-2481
+   * The AMPQ dissector could go into an infinite loop.
+     wnpa-sec-2013-17 CVE-2013-2482
+   * The ACN dissector could attempt to divide by zero.
+     wnpa-sec-2013-18 CVE-2013-2483
+   * The CIMD dissector could crash.
+     wnpa-sec-2013-19 CVE-2013-2484
+   * The FCSP dissector could go into an infinite loop.
+     wnpa-sec-2013-20 CVE-2013-2485
+   * The RELOAD dissector could go into an infinite loop.
+     wnpa-sec-2013-21 CVE-2013-2486 CVE-2013-2487
+   * The DTLS dissector could crash.
+     wnpa-sec-2013-22 CVE-2013-2488 
+  + Further bug fixes and updated protocol support as listed in:
+    http://www.wireshark.org/docs/relnotes/wireshark-1.8.6.html
+     
+-------------------------------------------------------------------
+Thu Jan 31 06:01:17 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 1.8.5 [bnc#801131]
+  + vulnerabilities fixed:
+    * Infinite and large loops in the Bluetooth HCI, CSN.1, DCP-ETSI
+      DOCSIS CM-STAUS, IEEE 802.3 Slow Protocols, MPLS, R3, RTPS,
+      SDP, and SIP dissectors
+      wnpa-sec-2013-01 CVE-2013-1572 CVE-2013-1573 CVE-2013-1574
+      CVE-2013-1575 CVE-2013-1576 CVE-2013-1577 CVE-2013-1578
+      CVE-2013-1579 CVE-2013-1580 CVE-2013-1581
+    * The CLNP dissector could crash
+      wnpa-sec-2013-02 CVE-2013-1582
+    * The DTN dissector could crash
+      wnpa-sec-2013-03 CVE-2013-1583 CVE-2013-1584
+    * The MS-MMC dissector (and possibly others) could crash
+      wnpa-sec-2013-04 CVE-2013-1585
+    * The DTLS dissector could crash
+      wnpa-sec-2013-05 CVE-2013-1586
+    * The ROHC dissector could crash
+      wnpa-sec-2013-06 CVE-2013-1587
+    * The DCP-ETSI dissector could corrupt memory
+      wnpa-sec-2013-07 CVE-2013-1588
+    * The Wireshark dissection engine could crash
+      wnpa-sec-2013-08 CVE-2013-1589
+    * The NTLMSSP dissector could overflow a buffer
+      wnpa-sec-2013-09 CVE-2013-1590
+  + Further bug fixes and updated protocol support as listed in:
+    http://www.wireshark.org/docs/relnotes/wireshark-1.8.5.html
+
+-------------------------------------------------------------------
+Tue Dec 18 09:45:25 UTC 2012 - mvyskocil@suse.com
+
+- build with gtk3 on 11.4+
+- disable zlib makes a sense for 1.2.5 only
+- turn some features on (python, gcrypt, gnutls, plugins dir)
+
+-------------------------------------------------------------------
+Mon Dec 10 09:29:02 UTC 2012 - dimstar@opensuse.org
+
+- Add wireshark-suidflags.patch: Allow to pass SUID_{C,LD}FLAGS to
+  introduce -fPIE -pie as needed for suid binaries
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+- Export SUID_{C,LD}FLAGS with appropriate flags.
+
+-------------------------------------------------------------------
+Thu Nov 29 20:15:03 UTC 2012 - andreas.stieger@gmx.de
+
+- update to 1.8.4 [bnc#792005]
+  + vulnerabilities fixed:
+    * Wireshark could leak potentially sensitive host name
+      resolution information when working with multiple pcap-ng
+      files.
+      wnpa-sec-2012-30 CVE-2012-5592 
+    * The USB dissector could go into an infinite loop.
+      wnpa-sec-2012-31 CVE-2012-5593
+    * The sFlow dissector could go into an infinite loop.
+      wnpa-sec-2012-32 CVE-2012-5594
+    * The SCTP dissector could go into an infinite loop.
+      wnpa-sec-2012-33 CVE-2012-5595
+    * The EIGRP dissector could go into an infinite loop.
+      wnpa-sec-2012-34 CVE-2012-5596
+    * The ISAKMP dissector could crash.
+      wnpa-sec-2012-35 CVE-2012-5597
+    * The iSCSI dissector could go into an infinite loop.
+      wnpa-sec-2012-36 CVE-2012-5598
+    * The WTP dissector could go into an infinite loop.
+      wnpa-sec-2012-37 CVE-2012-5599
+    * The RTCP dissector could go into an infinite loop.
+      wnpa-sec-2012-38 CVE-2012-5600
+    * The 3GPP2 A11 dissector could go into an infinite loop.
+      wnpa-sec-2012-39 CVE-2012-5601
+    * The ICMPv6 dissector could go into an infinite loop.
+      wnpa-sec-2012-40 CVE-2012-5602
+  + Further bug fixes and updated protocol support as listed in:
+    http://www.wireshark.org/docs/relnotes/wireshark-1.8.4.html
+
+-------------------------------------------------------------------
+Wed Nov 14 00:01:02 UTC 2012 - andreas.stieger@gmx.de
+
+- for openSUSE 12.2 and later, build against lua51-devel instead
+  of lua-devel for Lua support (bnc#780669)
+
+-------------------------------------------------------------------
+Tue Oct  2 20:20:43 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.8.3 (bnc#783275)
+  + vulnerabilities fixed:
+    * The HSRP dissector could go into an infinite loop.
+      (wnpa-sec-2012-26 CVE-2012-5237)
+    * The PPP dissector could abort.
+      (wnpa-sec-2012-27 CVE-2012-5238)
+    * Martin Wilck discovered an infinite loop in the DRDA dissector.
+      (wnpa-sec-2012-28 CVE-2012-5239 CVE-2012-3548 bnc#778000)
+    * Laurent Butti discovered a buffer overflow in the LDP dissector.
+      (wnpa-sec-2012-29 CVE-2012-5240)
+  + Further bug fixes and updated protocol support as listed in:
+    http://www.wireshark.org/docs/relnotes/wireshark-1.8.3.html
+
+-------------------------------------------------------------------
+Fri Aug 31 10:22:00 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and GPL-3.0+
+  According to the COPYING file the PIDL utility (standalone tool) is
+  GPL-3.0+ licensed
+
+-------------------------------------------------------------------
+Wed Aug 15 21:13:20 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.8.2 (bnc#776083)
+  + vulnerabilities fixed:
+    * The DCP ETSI dissector could trigger a zero division.
+      (wnpa-sec-2012-13 CVE-2012-4285)
+    * The MongoDB dissector could go into a large loop.
+      (wnpa-sec-2012-14 CVE-2012-4287)
+    * The XTP dissector could go into an infinite loop.
+      (wnpa-sec-2012-15 CVE-2012-4288)
+    * The ERF dissector could overflow a buffer.
+      (wnpa-sec-2012-16 CVE-2012-4294 CVE-2012-4295)
+    * The AFP dissector could go into a large loop.
+      (wnpa-sec-2012-17 CVE-2012-4289)
+    * The RTPS2 dissector could overflow a buffer.
+      (wnpa-sec-2012-18 CVE-2012-4296)
+    * The GSM RLC MAC dissector could overflow a buffer.
+      (wnpa-sec-2012-19 CVE-2012-4297)
+    * The CIP dissector could exhaust system memory.
+      (wnpa-sec-2012-20 CVE-2012-4291)
+    * The STUN dissector could crash.
+      (wnpa-sec-2012-21 CVE-2012-4292)
+    * The EtherCAT Mailbox dissector could abort.
+      (wnpa-sec-2012-22 CVE-2012-4293)
+    * The CTDB dissector could go into a large loop.
+      (wnpa-sec-2012-23 CVE-2012-4290)
+    * The pcap-ng file parser could trigger a zero division.
+      (wnpa-sec-2012-24 CVE-2012-4286)
+    * The Ixia IxVeriWave file parser could overflow a buffer.
+      (wnpa-sec-2012-25 CVE-2012-4298)
+  + Further bug fixes and updated protocol support as listed in:
+    http://www.wireshark.org/docs/relnotes/wireshark-1.8.2.html
+- adjust wireshark-1.2.0-disable-warning-dialog.patch for moved lines
+
+-------------------------------------------------------------------
+Tue Jul 24 05:00:53 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.8.1 (bnc#772738)
+  + vulnerabilities fixed:
+    * The PPP dissector could crash
+      (wnpa-sec-2012-11 CVE-2012-4048)
+    * The NFS dissector could use excessive amounts of CPU
+      (wnpa-sec-2012-12 CVE-2012-4049)
+  + bug fixes:
+    * Wireshark crashes on bootp filter
+    * Wireshark > 1.4 does not correctly read Association ID for PS
+      Poll packets
+    * Radius-EAP broken since 1.8.0 release
+    * SNMP incorrectly marks SNMPv3 "discovery" packet as malformed
+    * Widgets are not properly expanded in GTK3
+    * Find Next Mark duplicated on Edit Menu
+    * DVB-CI/CI+: fix offset error in operator_info apdu
+    * Unable to correctly identify IEC 61850 MMS packets
+    * WinPcap doesn't install if vcredist_x64 requires reboot
+- remove wireshark-1.8.0-gmodule.patch, fixed upstream
+
+-------------------------------------------------------------------
+Fri Jun 22 21:13:23 UTC 2012 - andreas.stieger@gmx.de
+
+- update to upstream 1.8.0:
+  * supports capturing from multiple interfaces at once.
+  * add, edit, and save packet and capture file annotations.
+  * pcap-ng file format is default
+  * Decryption key management for IEEE 802.11, IPsec, and ISAKMP
+    is easier.
+  * GeoIP IPv6 databases are now supported.
+  * large number of protocol dissectors added and updated
+  * support for many capture file formats added and updated
+
+  For a full list refer to the release notes:
+  https://www.wireshark.org/docs/relnotes/wireshark-1.8.0.html
+
+- drop wireshark-corosync-packet-dissector.patch, no longer compiles
+  even after updating
+- drop wireshark-1.6.5-netlogon-aes.patch, applied upstream
+- drop idl2wrs command from -devel package
+- update header files in include.filelist
+- refresh wireshark-1.2.0-disable-warning-dialog.patch
+- refresh wireshark-1.2.0-geoip.patch
+- add wireshark-1.8.0-gmodule.patch to fix linking in factory
+
+-------------------------------------------------------------------
+Sun Jun 03 19:29:50 UTC 2012 - opensuse@sukimashita.com
+
+- Add all known headers to devel package in order to make it
+  actually useable and allow building dissectors externally
+
+-------------------------------------------------------------------
+Tue May 22 19:02:42 UTC 2012 - andreas.stieger@gmx.de
+
+- adjust wireshark-corosync-packet-dissector.patch for source changes
+- update to upstream 1.6.8
+  + security fixes
+    * wnpa-sec-2012-08 / CVE-2012-2392
+       Infinite and large loops in the ANSI MAP, ASF, BACapp,
+       Bluetooth HCI, IEEE 802.11, IEEE 802.3, LTP, and R3 dissectors
+       have been fixed. Discovered by Laurent Butti. (Bugs 6805,
+       7118, 7119, 7120, 7121, 7122, 7124, 7125)
+    * wnpa-sec-2012-09 / CVE-2012-2393
+       The DIAMETER dissector could try to allocate memory improperly
+       and crash. (Bug 7138)
+    * wnpa-sec-2012-10 / CVE-2012-2394
+       Wireshark could crash on SPARC processors due to misaligned
+       memory. Discovered by Klaus Heckelmann. (Bug 7221)
+  + bug fixes
+    * User-Password - PAP decoding passwords longer than 16 bytes.
+      (Bug 6779)
+    * The MSISDN is not seen correctly in GTP packet. (Bug 7042)
+    * Wireshark doesn't calculate the right IPv4 destination using
+      source routing options when bad options precede them. (Bug
+      7043)
+    * BOOTP dissector issue with DHCP option 82 - suboption 9. (Bug
+      7047)
+
+    * MPLS dissector in 1.6.7 and 1.7.1 misdecodes some MPLS CW
+      packets. (Bug 7089)
+
+    * ANSI MAP infinite loop. (Bug 7119)
+    * HCIEVT infinite loop. (Bug 7122)
+    * Wireshark doesn't decode NFSv4.1 operations. (Bug 7127)
+    * LTP infinite loop. (Bug 7124)
+    * Wrong values in DNS CERT RR. (Bug 7130)
+    * Megaco parser problem with LF in header. (Bug 7198)
+    * OPC UA bytestring node id decoding is wrong. (Bug 7226)
+  + Updated Protocol Support
+    ANSI MAP, ASF, BACapp, Bluetooth HCI, DHCP, DIAMETER, DNS, GTP,
+    IEEE 802.11, IEEE 802.3, IPv4, LTP, Megaco, MPLS, NFS, OPC UA,
+    RADIUS
+  + New and Updated Capture File Support
+    5View, CSIDS, pcap, pcap-ng
+
+-------------------------------------------------------------------
+Sat Apr 14 12:37:37 UTC 2012 - reddwarf@opensuse.org
+
+- Update to version 1.6.7:
+  + Bugs fixed:
+    - Malformed Packets H263-1996 (RFC2190). (Bug 6996)
+    - Wireshark could crash while trying to open an rpcap: URL.
+     (Bug 6922)
+  + Updated H.263 Protocol Support
+
+-------------------------------------------------------------------
+Sun Apr  1 11:58:31 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.6.6:
+  + wnpa-sec-2012-04: The ANSI A dissector could dereference a NULL
+    pointer and crash. (Bug 6823)
+  + wnpa-sec-2012-05: The IEEE 802.11 dissector could go into an
+    infinite loop. (Bug 6809)
+  + wnpa-sec-2012-06: The pcap and pcap-ng file parsers could crash
+    trying to read ERF data. (Bug 6804)
+  + wnpa-sec-2012-07: The MP2T dissector could try to allocate too
+    much memory and crash. (Bug 6804)
+  + The Windows installers now include GnuTLS 1.12.18, which fixes
+    several vulnerabilities.
+  + Bugs fixed:
+    - ISO SSAP: ActivityStart: Invalid decoding the activity
+      parameter as a BER Integer. (Bug 2873)
+    - Forward slashes in URI need to be converted to backslashes if
+      WIN32. (Bug 5237)
+    - Character echo pauses in Capture Filter field in Capture
+      Options. (Bug 5356)
+    - Some PGM options are not parsed correctly. (Bug 5687)
+    - dumpcap crashes when capturing from pipe to a pcap-ng file
+      (e.g., when passing data from CACE Pilot to Wireshark). (Bug
+      5939)
+    - Unable to rearrange columns in preferences on Windows. (Bug
+      6077) (Note: this bug still affects the 64-bit package)
+    - No error for UDP/IPv6 packet with zero checksum. (Bug 6232)
+    - Wireshark installer doesn't add access_bpf in 10.5.8. (Bug
+      6526)
+    - Corrupted Diameter dictionary file that crashes Wireshark.
+      (Bug 6664)
+    - packetBB dissector bug: More than 1000000 items in the tree 
+      possible infinite loop. (Bug 6687)
+    - ZEP dissector: Timestamp not always displayed correctly.
+      Fractional seconds never displayed. (Bug 6703)
+    - GOOSE Messages don't use the length field to perform the
+      dissection. (Bug 6734)
+    - Ethernet traces in K12 text format sometimes give bogus
+      "malformed frame" errors and other problems. (Bug 6735)
+    - max_ul_ext isn't printed/decoded to the packet details log in
+      GTP protocol packet. (Bug 6761)
+    - non-IPP packets to or from port 631 are dissected as IPP. 
+      (Bug 6765)
+    - lua proto registration fails for uppercase proto /
+      g_ascii_strdown problem. (Bug 6766)
+    - no menu item Fle->Export->SSL Session Keys in GTK. (Bug 6813)
+    - IAX2 dissector reads past end of packet for unknown IEs. (Bug
+      6815)
+    - TShark 1.6.5 immediately crashes on SSL decryption (every
+      time). (Bug 6817)
+    - USB: unknown GET DESCRIPTOR response triggers assert failure.
+      (Bug 6826)
+    - IEEE1588 PTPv2 over IPv6. (Bug 6836)
+    - Patch to fix DTLS decryption. (Bug 6847)
+    - Expression... dialog crash. (Bug 6891)
+    - display filter "gtp.msisdn" not working. (Bug 6947)
+    - Multiprotocol Label Switching Echo - Return Code: Reserved(5)
+      (Bug 6951)
+    - ISAKMP : VendorID CheckPoint : Malformed Packet. (Bug 6972)
+    - Adding a Custom HTTP Header Field with a trailing colon
+      causes wireshark to immediately crash (and crash upon
+      restart). (Bug 6982)
+    - Radiotap dissector lists a bogus "DBM TX Attenuation" bit.
+      (Bug 7000)
+    - MySQL dissector assertion. (Ask 8649)
+    - Radiotap header format data rate alignment issues. (Ask 8649)
+
+-------------------------------------------------------------------
+Thu Mar  1 15:29:52 UTC 2012 - asn@cryptomilk.org
+
+- Add known bit for Netlogon ServerAutheticate2 flags.
+
+-------------------------------------------------------------------
+Tue Jan 17 06:13:35 UTC 2012 - cyliu@suse.com
+
+- update to 1.6.5
+  - Security fixes:
+    - wnpa-sec-2012-01 Laurent Butti discovered that Wireshark failed to
+      properly check record sizes for many packet capture file formats. 
+      (Bug 6663, bug 6666, bug 6667, bug 6668, bug 6669, bug 6670)
+    - wnpa-sec-2012-02  Wireshark could dereference a NULL pointer and 
+      crash. (Bug 6634)
+    - wnpa-sec-2012-03  The RLC dissector could overflow a buffer. (Bug 6391)
+  - Bug fixes:
+    - "Closing File!" Dialog Hangs. (Bug 3046)
+    - Sub-fields of data field should appear in exported PDML as children
+      of the data field instead of as siblings to it. (Bug 3809)
+    - Incorrect time differences displayed with time reference set. (Bug 5580)
+    - Wrong packet type association of SNMP trap after TFTP transfer. (Bug 5727)
+    - SSL/TLS decryption needs wireshark to be rebooted. (Bug 6032)
+    - Export HTTP Objects -> save all crashes Wireshark. (Bug 6250)
+    - Wireshark Netflow dissector complains there is no template found though 
+      the template is exported. (Bug 6325)
+    - DCERPC EPM tower UUID must be interpreted always as little endian.
+      (Bug 6368)
+    - Crash if no recent files. (Bug 6549)
+    - IPv6 frame containing routing header with 0 segments left calculates wrong
+      UDP checksum. (Bug 6560)
+    - IPv4 UDP/TCP Checksum incorrect if routing header present. (Bug 6561)
+    - Incorrect Parsing of SCPS Capabilities Option introduced in response 
+      to bug 6194. (Bug 6562)
+    - Various crashes after loading NetMon2.x capture file. (Bug 6578)
+    - Fixed compilation of dumpcap on some systems (when MUST_DO_SELECT is 
+      defined). (Bug 6614)
+    - SIGSEGV in SVN 40046. (Bug 6634)
+    - Wireshark dissects TCP option 25 as an "April 1" option. (Bug 6643)
+    - ZigBee ZCL Dissector reports invalid status. (Bug 6649)
+    - ICMPv6 DNSSL option malformed on padding. (Bug 6660)
+    - Wrong tvb_get_bits function call in packet-csn1.c. (Bug 6708)
+    - [UDP] - Length Field of Pseudo Header while computing CheckSum is not
+      correct. (Bug 6711)
+    - pcapio.c: bug in libpcap_write_interface_description_block. (Bug 6719)
+    - Memory leaks in various dissectors.
+    - Bytes highlighted in wrong Byte pane when field selected in Details pane. 
+  - Updated Protocol Support
+    - BGP, BMC CSN1, DCERPC EPM, DCP(ETSI) DMP DTLS GSM Management, 
+      H245 HPTEAM, ICMPv6, IEEE 802.15.4 IPSEC IPv4, IPv6,
+      ISAKMP KERBEROS LDSS NFS RLC, RPC-NETLOGON RRC RTMPT SIGCOMP
+      SSL SYSLOG TCP, UDP, XML ZigBee ZCL 
+  - New and Updated Capture File Support
+    - Accellent 5Views, AIX iptrace, HP-UX nettl, I4B, Microsoft Network 
+      Monitor, Novell LANalyzer, PacketLogger, Pcap-ng, Sniffer, Tektronix
+      K12, WildPackets {Airo,Ether}Peek. 
+
+- update to 1.6.4
+  - Bug fixes:
+    - Patch to fix memory leaks/errors in Lua plugin. (Bug 5575)
+    - Wireshark crashes if a field of type BASE_CUSTOM is applied as a 
+      column. (Bug 6503)
+    - Filter Expression dialog can only be opened once. (Bug 6537)
+    - Wireshark crashes if compiled without GLib thread support. (Bug 6540)
+    - 80211 QoS Control: Add Raw TID. (Bug 6548)
+    - SNMP length check error. (Bug 6564)
+    - UCP dissector bug of operation 61. (Bug 6570) 
+
+- fix bnc#741187, #741188, #741190 
+
+-------------------------------------------------------------------
+Wed Nov  2 15:07:21 UTC 2011 - tabraham@novell.com
+
+- update to 1.6.3
+  - Security fixes:
+    - wnpa-sec-2011-17 The CSN.1 dissector could crash. (Bug 6351) 
+  - Bug fixes:
+    - Wireshark window takes very long time to show up if invalid 
+      network file path is at recent file list (Bug 3810) 
+    - ISUP party number dissection. (Bug 5221)
+    - Ethernet packets with both VLAN tag and LLC header no longer 
+      displayed correctly. (Bug 5645) 
+    - SLL encapsuled 802.1Q VLAN is not dissected. (Bug 5680) 
+    - Dissection fails for frames with Gigamon Header and VLAN. (Bug 6305) 
+    - RTP Stream Analysis does not work for TURN-encapsulated RTP. (Bug 6322) 
+    - packet-csn1.c doesn't process CSN_CHOICE entries properly. (Bug 6328) 
+    - GUI crash on invalid IEEE 802.11 GAS frame. (Bug 6345) 
+    - ICMPv6 router advertisement Prefix Information Flag R "Router 
+      Address" missing. (Bug 6350) 
+    - Inner tag of 802.1ad frames not parsed properly. (Bug 6366)
+    - Added cursor type decoding to MySQL dissector. (Bug 6396)
+    - WPA IE pairwise cipher suite dissector uses incorrect value_string 
+      list. (Bug 6420)
+    - text_import_scanner.l missing. (Bug 6531) 
+  - Updated protocol support:
+    - AJP13, ASN.1 PER, BACnet, CSN.1, DTN, Ethernet, ICMPv6, IEEE 802.11, 
+      IEEE 802.1q, Infiniband, IPsec, MySQL, PCEP, PN-RT, RTP, S1AP, SSL 
+  - New and Updated capture file suppport:
+    - Endace ERF. 
+
+- update to 1.6.2
+  - Security fixes:
+    - wnpa-sec-2011-12 A large loop in the OpenSafety dissector could 
+      cause a crash. (Bug 6138) 
+    - wnpa-sec-2011-16 The CSN.1 dissector could crash. (Bug 6139) 
+  - Bug fixes:
+    - configure ignores (partially) LDFLAGS. (Bug 5607) 
+    - Build fails when it tries to #include <getopt.h>, not present in 
+      Solaris 9. (Bug 5608) 
+    - Unable to configure zero length SNMP Engine ID. (Bug 5731)
+    - BACnet who-is request device range values are not decoded correctly 
+      in the packet details window. (Bug 5769) 
+    - Wireshark crashes if sercosiii module isn't installed. (Bug 6006) 
+    - Editcap could create invalid pcap files when converting from JPEG. 
+      (Bug 6010) 
+    - Timestamp is incorrectly decoded for ICMP Timestamp Response packets 
+      from MS Windows. (Bug 6114) 
+    - Wrong display of CSN_BIT in CSN.1. (Bug 6151) 
+    - Fix CSN_RECURSIVE_TARRAY last bit error in packet-csn1.c. (Bug 6166) 
+    - Wireshark cannot display Reachable time & Retrans timer in IPv6 RA 
+      messages. (Bug 6168) 
+    - ReadPropertyMultiple-ACK not correctly dissected. (Bug 6178) 
+    - GTPv2 dissectors should treat gtpv2_ccrsi as optional. (Bug 6183) 
+    - tshark run with -Tpdml makes a seg fault. (Bug 6245) 
+    - TShark/dumpcap skips capture duration flag occasionally. (Bug 6280) 
+    - Wireshark improperly parsing 802.11 Beacon Country Information 
+      tag. (Bug 6264) 
+    - Wrong display of CSN_BIT under CSN_UNION. (Bug 6287) 
+  - Updated protocol support:
+    - BACapp, Bluetooth L2CAP, CSN.1, DCERPC, GSM A RR, GTPv2, ICMP, 
+      ICMPv6, IKE, MEGACO, MSISDN, NDMP, OpenSafety, RTPS2, sFlow, SNMP, TCP  
+  - New and Updated capture file suppport:
+    - CommView, pcap-ng, JPEG. 
+
+- update to 1.6.1
+  - Security fixes:
+  - Bug fixes:
+    - TCP dissector doesn't decode TCP segments of length 1. (Bug 4716) 
+    - wireshark 1.4.0rc1 and python - spurious message. (Bug 4878) 
+    - Missing LUA function. (Bug 5006) 
+    - Lua API description about creating a new Tvb from a bytearray is 
+      not correct in wireshark's user guide. (Bug 5199) 
+    - Character echo pauses in Capture Filter field in Capture Options. 
+      (Bug 5356) 
+    - White space in protocol field abbreviation causes runtime failure 
+      while registering Lua dissector. (Bug 5569)
+    - "File not found" box uses wrong filename encoding. (Bug 5715) 
+    - capinfos: #ifdef HAVE_LIBGCRYPT block includes a line too many . 
+      (Bug 5803) 
+    - Wireshark crashes if Lua contains "Pref.range()" with missing arguments. 
+      (Bug 5895)
+    - The "range" field in Lua's "Pref.range()" serves as default while the 
+      "default" field does nothing . (Bug 5896) 
+    - Wireshark crashes when calling TreeItem:set_len() on TreeItem without 
+      tvb. (Bug 5941) 
+    - TvbRange_string(lua_State* L) call a wrong function. (Bug 5960) 
+    - VoIP call flow graph displays BICC APM as a BICC ANM. (Bug 5966) 
+    - Cannot Live-capture VirtualBox network packets with Wireshark; pipe 
+      problem. (Bug 6002) 
+    - Interface list in Capture Options isn't cleared when selecting other 
+      host. (Bug 6008) 
+    - H323 rate multiplier wrong. (Bug 6009) 
+    - Inclusion of config.h is too late in lex-files resulting in wrong 
+      definition of _FILE_OFFSET_BITS. (Bug 6012) 
+    - tshark crashes when loading Lua script that contains GUI function. 
+      (Bug 6018) 
+    - 802.11 Disassociation Packet's "Reason Code" field is imprecisely 
+      decoded/described. (Bug 6022) 
+    - Wireshark crashes when setting custom column's field name with 
+      conditional. (Bug 6028) 
+    - Crash after applying "expert.severity" field as column. (Bug 6035) 
+    - GTS Descriptor count limited to 3 instead of 7. (Bug 6055)
+    - The SSL dissector can not resemble correctly the frames after TCP 
+      zero window probe packet. (Bug 6059)
+    - Packet parser takes too long for this trace. (Bug 6073)
+    - Wireshark crashes after repeating "File -> Import -> Cancel". (Bug 6080) 
+    - Decoding of MQ ASCII and EBCDIC Traffic Flow - ASCII shows fine, 
+      EBCDIC does not. (Bug 6084) 
+    - 802.11 Association Response Packet's "Status Code" field is imprecisely 
+      decoded/described. (Bug 6093) 
+    - Abis interface not correctly handled in gsmtap dissector. (Bug 6097) 
+    - Wrong decoding of RLC/MAC EGPRS Packet Downlink Ack/Nack (3GPP TS 
+      44.060). (Bug 6098) 
+    - CSN Ack/Nack Description wrongly handled in gsm_rlcmac_dl dissector 
+      (3GPP TS 44.060). (Bug 6101) 
+    - wireshark 1.6.0 and python support: installer fails to create the 
+      wspy_dissectors subdirectory and . (Bug 6110)
+    - Wireshark crash during RTP stream analysis. (Bug 6120) 
+    - Tshark custom columns: Why don't I get an error message? (Bug 6131) 
+  - New and Updated capture file suppport:
+    -  Network Monitor. 
+
+- update to 1.6.0
+  - Security fixes:
+  - Bug fixes:
+    - Wireshark is unresponsive when capturing from named pipes on Windows. 
+      (Bug 1759) 
+    - Crash when sorting column while capturing. (Bug 4273)
+    - Ring buffers are no longer turned on by default when using multiple 
+      capture files. 
+   - New and updated features:
+     - Large file (greater than 2 GB) support has been improved. 
+     - Wireshark and TShark can import text dumps, similar to text2pcap
+     - You can now view Wireshark's dissector tables (for example the TCP 
+       port to dissector mappings) from the main window. 
+     - Wireshark can export SSL session keys via File->Export->SSL Session 
+       Keys...
+     - You can hide columns in the packet list.
+     - Wireshark can now export SMB objects.
+     - dftest and randpkt now have manual pages. 
+     - TShark can now display iSCSI, ICMP and ICMPv6 service response times. 
+     - Dumpcap can now save files with a user-specified group id. 
+     - Syntax checking is done for capture filters. 
+     - You can display the compiled BPF code for capture filters in the 
+       Capture Options dialog. 
+     - You can now navigate backwards and forwards through TCP and UDP 
+       sessions using Ctrl+, and Ctrl+. . 
+     - Packet length is (finally) a default column.
+     - TCP window size is now avaiable both scaled and unscaled. A TCP window 
+       scaling graph is available in the GUI.
+     - 802.1q VLAN tags are now shown in the Ethernet II protocol tree 
+       instead of a separate tree
+     - Various dissectors now display some UTF-16 strings as proper Unicode 
+       including the DCE/RPC and SMB dissectors. 
+     - The RTP player now has an option to show the time of day in the graph 
+       in addition to the seconds since beginning of capture. 
+     - The RTP player now shows why media interruptions occur. 
+     - Graphs now save as PNG images by default. 
+     - TShark can read and write host name information from and to pcapng
+       formatted files. Wireshark can read it. TShark can dump host name 
+       information via [-z hosts]
+     - TShark's -z option now uses the [-z <proto>,srt] syntax instead of
+       [-z <proto>,rtt] for all protocols that support service response 
+       time statistics. This matches Wireshark's syntax for this option. 
+     - Wireshark and TShark can now read compressed Windows Sniffer files. 
+  - New protocol support:
+    - ADwin, ADwin-Config, Apache Etch, Aruba PAPI, Babel Routing Protocol, 
+      Broadcast/Multicast Control, Constrained Application Protocol (COAP),
+      Digium TDMoE, Erlang Distribution Protocol, Ether-S-I/O, FastCGI, Fibre 
+      Channel over InfiniBand (FCoIB), Gopher, Gigamon GMHDR, IDMP, Infiniband 
+      Socket Direct Protocol (SDP), JSON, LISP Control, LISP Data, LISP, 
+      MikroTik MAC-Telnet, MRP Multiple Mac Registration Protocol (MMRP) Mongo 
+      Wire Protocol, MUX27010, Network Monitor 802.11 radio header, OPC UA 
+      ExtensionObjects, openSAFETY, PPI-GEOLOCATION-GPS, ReLOAD, ReLOAD 
+      Framing, RObust Header Compression (ROHC), RSIP, SAMETIME, SCoP, SGSAP, 
+      Tektronix Teklink, USB/AT Commands, uTorrent Transport Protocol, WAI 
+      authentication, Wi-Fi P2P (Wi-Fi Direct) 
+  - New and Updated capture file suppport:
+    - Apple PacketLogger, Catapult DCT2000, Daintree SNA, Endace ERF, HP 
+      OpenVMS TCPTrace, IPFIX (the file format, not the protocol), 
+      Lucent/Ascend debug, Microsoft Network Monitor, Network Instruments, 
+      TamoSoft CommView
+
+- update to 1.5.1
+  - Security fixes:
+  - Bug fixes:
+    - Wireshark is unresponsive when capturing from named pipes on Windows. 
+      (Bug 1759) 
+    - Ring buffers are no longer turned on by default when using multiple 
+      capture files. 
+   - New and updated features:
+     - Wireshark and TShark can import text dumps, similar to text2pcap
+     - You can now view Wireshark's dissector tables (for example the TCP 
+       port to dissector mappings) from the main window. 
+     - TShark can show a specific occurrence of a field when using '-T fields'.      
+     - Custom columns can show a specific occurrence of a field.
+     - You can hide columns in the packet list.
+     - Wireshark can now export SMB objects.
+     - dftest and randpkt now have manual pages. 
+     - TShark can now display iSCSI service response times. 
+     - Dumpcap can now save files with a user-specified group id. 
+     - Syntax checking is done for capture filters
+     - You can display the compiled BPF code for capture filters in the 
+       Capture Options dialog.
+     - You can now navigate backwards and forwards through TCP and UDP 
+       sessions using Ctrl+, and Ctrl+. . 
+     - Packet length is (finally) a default column.
+     - TCP window size is now avaiable both scaled and unscaled. A TCP window 
+       scaling graph is available in the GUI.
+     - 802.1q VLAN tags are now shown in the Ethernet II protocol tree 
+     - Various dissectors now display some UTF-16 strings as proper Unicode 
+       including the DCE/RPC and SMB dissectors
+     - The RTP player now has an option to show the time of day in the graph 
+       in addition to the seconds since beginning of capture.
+     - The RTP player now shows why media interruptions occur. 
+     - Graphs now save as PNG images by default
+     - TShark can read and write host name information from and to pcapng
+       formatted files. Wireshark can read it. TShark can dump host name 
+       information via [-z hosts]
+     - TShark's -z option now uses the [-z <proto>,srt] syntax instead of
+       [-z <proto>,rtt] for all protocols that support service response 
+       time statistics. This matches Wireshark's syntax for this option. 
+  - New protocol support:
+    - ADwin, ADwin-Config, Apache Etch, Aruba PAPI, Babel Routing Protocol, 
+      Constrained Application Protocol (COAP), Digium TDMoE, Erlang 
+      Distribution Protocol, Ether-S-I/O, FastCGI, Fibre Channel over 
+      InfiniBand (FCoIB), Gopher, Gigamon GMHDR, IDMP, Infiniband Socket 
+      Direct Protocol (SDP), JSON, LISP Data, MikroTik MAC-Telnet, Mongo Wire 
+      Protocol, Network Monitor 802.11 radio header, OPC UA ExtensionObjects, 
+      PPI-GEOLOCATION-GPS, ReLOAD, ReLOAD Framing, RSIP, SAMETIME, SCoP, SGSAP,
+      Tektronix Teklink, WAI authentication, Wi-Fi P2P (Wi-Fi Direct)
+  - New and Updated capture file suppport:
+    - Apple PacketLogger, Catapult DCT2000, Daintree SNA, Endace ERF, HP 
+      OpenVMS TCPTrace, IPFIX (the file format, not the protocol), 
+      Lucent/Ascend debug, Microsoft Network Monitor, Network Instruments, 
+      TamoSoft CommView
+
+- update to 1.4.10
+  - Security fixes:
+    - wnpa-sec-2011-18 Huzaifa Sidhpurwala of Red Hat Security 
+      Response Team discovered that the Infiniband dissector could 
+      dereference a NULL pointer. (Bug 6476) 
+    - wnpa-sec-2011-19 Huzaifa Sidhpurwala of Red Hat Security 
+      Response Team discovered a buffer overflow in the ERF file 
+      reader. (Bug 6479) 
+  - Bug fixes:
+    - Assertion failed when doing File->Quit->Save during live 
+      capture. (Bug 1710) 
+    - Wrong PCEP XRO sub-object decoding. (Bug 3778)
+    - Decoding [Status Records] Timestamp Sequence Field in Bundle 
+      Protocol fails if over 32 bits. (Bug 4109) 
+    - wireshark-1.4.2 crashes when testing the example python 
+      dissector because of a dissector count assertion. (Bug 5431) 
+    - Wireshark crashes when attempting to open a file via drag & drop
+      when there's already a file open. (Bug 5987) 
+    - Add the ability to save filters from the Filter Toolbar into buttons 
+      on the Filter Toolbar. (Bug 6207) 
+    - Adding and removing custom HTTP headers requires a restart. (Bug 6241)
+    - Can't read full 64-bit SNMP values. (Bug 6295) 
+    - BACnet property time-synchronization-interval (204) name shown 
+      incorrectly as time-synchronization-recipients. (Bug 6336) 
+    - [ASN.1 PER] Incorrect decoding of BIT STRING type. (Bug 6347) 
+    - Export->Object->HTTP-> save all: Error on saving files. (Bug 6362) 
+    - Incorrect identification of UDP-encapsulated NAT-keepalive 
+      packets. (Bug 6414) 
+    - S1AP protocol can't decode IPv6 transportLayerAddress. (Bug 6435)
+    - RTPS2 dissector doesn't handle 0 in the octestToNextHeader field. 
+      (Bug 6449) 
+    - packet-ajp13 fix, cleanup, and enhancement. (Bug 6452) 
+    - Network Instruments Observer file format bugs. (Bug 6453) 
+    - Wireshark crashes when using "Open Recent" 2 times in a row. (Bug 6457)
+    - Wireshark packet_gsm-sms, display bug: Filler bits in TP-User Data
+      Header. (Bug 6469) 
+    - wireshark unable to decode NetFlow options which have system scope 
+      size != 4 bytes. (Bug 6471) 
+    - Display filter Expression Dialog Box Error. (Bug 6472) 
+  - Updated protocol support:
+    - AJP13, ASN.1 PER, BACapp, DTN, GSM SMS, Infiniband, IPsec, NetFlow, 
+      PCEP, RTPS2
+
+- update to 1.4.9
+  - Security fixes:
+    - wnpa-sec-2011-13 A malformed IKE packet could consume excessive 
+      resources.  
+    - wnpa-sec-2011-14 A malformed capture file could result in an invalid 
+      root tvbuff and cause a crash. (Bug 6135) CVE-2011-3266
+    - wnpa-sec-2011-15 Wireshark could run arbitrary Lua scripts. (Bug 6136)
+  - Bug fixes:
+    - Unable to configure zero length SNMP Engine ID. (Bug 5731)
+    - H.323 RAS packets missing from packet counts in "Telephony->VoIP 
+      Calls" and the "Flow Graph" for the call. (Bug 5848)
+    - Malformed Packet in decode for BGP-AD update. (Bug 6122) 
+    - BGP : AS_PATH attribute was decode wrong. (Bug 6188)
+    - Fixes for SCPS TCP option. (Bug 6194) 
+    - Offset calculated incorrectly for sFlow extended data. (Bug 6219) 
+    - [Enter] key behavior varies when manually typing display filters. 
+      (Bug 6228) 
+    - Contents of pcapng EnhancedPacketBlocks with comments aren't 
+      displayed. (Bug 6229) 
+    - Misdecoding 3G Neighbour Cell Information Element in SI2quater 
+      message due to a coding typo. (Bug 6237) 
+    - Mis-spelled word "unknown" in assorted files. (Bug 6244)
+    - btl2cap extended window shows wrong bit. (Bug 6257) 
+    - NDMP dissector incorrectly represents "ndmp.bytes_left_to_read"
+      as signed. (Bug 6262) 
+    - ERF records with extension headers not written out correctly to 
+      pcap or pcap-ng files. (Bug 6265) 
+    - RTPS2: MAX_BITMAP_SIZE is defined incorrectly. (Bug 6276) 
+    - Copying from RTP stream analysis copies 1st line many times. (Bug 6279)
+    - File types with no snaplen written out with a zero snaplen in pcap-ng 
+      files. (Bug 6289)
+    - MEGACO context tracking fix - context id reuse. (Bug 6311)
+  - Updated protocol support:
+    - BGP, Bluetooth L2CAP, GSM A RR, H.225, IKE, MEGACO, NDMP, RTPS2, SCPS, 
+      sFlow, SNMP
+  - New and Updated capture file suppport:
+    - CommView, pcap-ng. 
+
+  - update to 1.4.8
+  - Security fixes:
+    - CVE-2011-2597 The Lucent/Ascend file parser was susceptible to an 
+      infinite loop. 
+    - The ANSI MAP dissector was susceptible to an infinite loop. (Bug 6044) 
+  - Bug fixes:
+    - TCP dissector doesn't decode TCP segments of length 1. (Bug 4716) 
+    - Wireshark 1.4.0rc1 and python - spurious message. (Bug 4878) 
+    - Missing LUA function. (Bug 5006) 
+    - Lua API description about creating a new Tvb from a bytearray is not 
+      correct in wireshark's user guide. (Bug 5199)  
+    - sflow decode error for some extended formats. (Bug 5379)
+    - White space in protocol field abbreviation causes runtime failure 
+      while registering Lua dissector. (Bug 5569) 
+    - "File not found" box uses wrong filename encoding. (Bug 5715) 
+    - capinfos: #ifdef HAVE_LIBGCRYPT block includes a line too many. 
+      (Bug 5803) 
+    - Wireshark crashes if Lua contains "Pref.range()" with missing
+      arguments. (Bug 5895)
+    - The "range" field in Lua's "Pref.range()" serves as default while 
+      the "default" field does nothing. (Bug 5896) 
+    - Wireshark crashes when calling TreeItem:set_len() on TreeItem 
+      without tvb. (Bug 5941) 
+    - TvbRange_string(lua_State* L) call a wrong function. (Bug 5960)
+    - VoIP call flow graph displays BICC APM as a BICC ANM. (Bug 5966) 
+    - H323 rate multiplier wrong. (Bug 6009)
+    - tshark crashes when loading Lua script that contains GUI function. 
+      (Bug 6018) 
+    - 802.11 Disassociation Packet's "Reason Code" field is imprecisely
+      decoded/described. (Bug 6022) 
+    - Wireshark crashes when setting custom column's field name with 
+      conditional. (Bug 6028) 
+    - GTS Descriptor count limited to 3 instead of 7. (Bug 6055)
+    - The SSL dissector can not resemble correctly the frames after TCP 
+      zero window probe packet. (Bug 6059) 
+    - Packet parser takes too long for this trace. (Bug 6073)
+    - 802.11 Association Response Packet's "Status Code" field is 
+      imprecisely decoded/described. (Bug 6093) 
+    - Wireshark 1.6.0 and Python support: installer fails to create the 
+      wspy_dissectors subdirectory and . (Bug 6110)
+    - Wireshark crash during RTP stream analysis. (Bug 6120)
+    - Tshark custom columns: Why don't I get an error message? (Bug 6131) 
+  - Updated protocol support:
+    - ANSI MAP, GIOP, H.323, IEEE 802.11, MSRP, RPCAP, sFlow, TCP
+  - New and Updated capture file suppport:
+    - Lucent/Ascend
+
+  - update to 1.4.7
+  - Security fixes:
+    - Large/infinite loop in the DICOM dissector. (Bug 5876)
+    - Huzaifa Sidhpurwala of the Red Hat Security Response Team discovered 
+      that a corrupted Diameter dictionary file could crash Wireshark. 
+    - Huzaifa Sidhpurwala of the Red Hat Security Response Team discovered 
+      that a corrupted snoop file could crash Wireshark. (Bug 5912)
+    - David Maciejak of Fortinet's FortiGuard Labs discovered that malformed 
+      compressed capture data could crash Wireshark. (Bug 5908)
+    - Huzaifa Sidhpurwala of the Red Hat Security Response Team discovered 
+      that a corrupted Visual Networks file could crash Wireshark. (Bug 5934) 
+  - Bug fixes:
+    - AIM dissector has some endian issues. (Bug 5464)
+    - Telephony->MTP3->MSUS doesn't display window. (Bug 5605)
+    - Support for MS NetMon 3.x traces containing raw IPv6 ("Type 7")
+      packets. (Bug 5817) 
+    - Service Indicator in M3UA protocol data. (Bug 5834) 
+    - IEC60870-5-104 protocol, incorrect decoding of timestamp type 
+      CP56Time2a. (Bug 5889) 
+    - DNP3 dissector incorrect constants AL_OBJ_FCTR_16NF _FDCTR_32NF 
+      _FDCTR_16NF. (Bug 5920)
+    - 3GPP QoS: Traffic class is not decoded properly. (Bug 5928)
+    - Wireshark crashes when creating ProtoField.framenum in Lua. (Bug 5930)
+    - Fix a wrong mask to extract FMID from DECT packets dissector. (Bug 5947) 
+    - Incorrect DHCPv6 remote identifier option parsing. (Bug 5962) 
+  - Updated protocol support:
+    - DICOM, IEC104, M3UA, TCP
+  - New and Updated capture file suppport:
+    - Network Monitor
+
+- Drop patches (fixed upstream):
+  + wireshark-1.6.2-CVE-2011-3483.patch
+  + wireshark-1.6.2-CVE-2011-3360.patch
+  + wireshark-1.6.2-CVE-2011-3266.patch
+  + wireshark-1.4.8-CVE-2011-2698.patch
+  + wireshark-1.4.8-CVE-2011-2597.patch
+  + wireshark-1.2.17-CVE-2011-2175.patch
+  + wireshark-1.2.17-CVE-2011-2174.patch
+  + wireshark-1.2.17-CVE-2011-1959.patch
+  + wireshark-1.2.17-CVE-2011-1958.patch
+  + wireshark-1.2.17-CVE-2011-1957.patch
+  + wireshark-nfsv4-opts.patch
+
+- changed spec to resolve rpmlint warning regarding devel package in
+  non-devel group
+- changed spec to resolve rpmlint warnings regarding macro-in-comment
+
+-------------------------------------------------------------------
+Mon Sep 26 14:07:31 CST 2011 - cyliu@novell.com
+
+- security fixes (#bnc 718032)
+  * CVE-2011-3266: Wireshark IKE dissector vulnerability
+  * CVE-2011-3360: Wireshark Lua script execution vulnerability
+  * CVE-2011-3483: Wireshark buffer exception handling vulnerability     
+
+-------------------------------------------------------------------
+Wed Aug 10 06:25:28 UTC 2011 - cyliu@novell.com
+
+- security fixes (#bnc 706728)
+  * CVE-2011-2597: Lucent/Ascend file parser susceptible to infinite loop
+  * CVE-2011-2698: ANSI MAP dissector susceptible to infinite loop
+
+-------------------------------------------------------------------
+Mon Jul 18 07:43:08 UTC 2011 - cyliu@novell.com
+
+- security fixes [#bnc 697516] 
+  * CVE-2011-1957: Large/infinite loop in the DICOM dissector
+  * CVE-2011-1959: A corrupted snoop file could crash Wireshark
+  * CVE-2011-2174: Malformed compressed capture data could crash Wireshark
+  * CVE-2011-2175: A corrupted Visual Networks file could crash Wireshark
+  * CVE-2011-1958: dereferene a NULL pointer if we had a corrupted Diameter
+  dictionary
+
+-------------------------------------------------------------------
+Tue May 24 16:40:30 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.4.6:
+  + Wireshark and TShark can crash while analyzing TCP packets.
+  + Updated protocol support: TCP
+- Changes from version 1.4.5:
+  + Security Fixes:
+    - The NFS dissector could crash on Windows.
+    - The X.509if dissector could crash
+  + bugs fixed:
+    - Cygwin make fails after updating to bash v 4.1.9.2
+    - Export HTTP > All - System Appears Hung (but isn't).
+    - Some HTTP responses don't decode with TCP reassembly on.
+    - Wireshark crashes when cancelling a large sort operation.
+    - Wireshark crashes if SSL preferences RSA key is actually a
+      DSA key.
+    - tshark incorrectly calculates TCP stream for some syn packets
+    - Wireshark not able to decode the PPP frame in a sflow
+      (RFC3176) flow sample packet because Wireshark incorrectly
+      read the protocol in PPP frame header. (Bug 5746)
+    - Mysql protocol dissector: all fields should be little endian.
+    - Error when opening snoop from Juniper SSG-140.
+    - svnversion: command not found.
+    - Value of TCP segment data cannot be copied.
+    - proto_field_is_referenced() is not exported in
+      libwireshark.dll
+    - Wireshark ver. 1.4.4 not displayed "Granted QoS" field in a
+      A11 packet.
+  + Updated protocol support:
+    HTTP, LDAP, MySQL, NFS, sFlow, SSL, TCP
+- Drop patches (fixed upstream):
+  + wireshark-1.4.4-CVE-2011-1590.patch
+  + wireshark-1.4.4-CVE-2011-1591.patch
+  + wireshark-1.4.4-CVE-2011-1592.patch  
+
+-------------------------------------------------------------------
+Tue Apr 26 09:11:54 UTC 2011 - cyliu@novell.com
+
+- security fixes [#bnc 688109]
+  * CVE-2011-1590: Use of un-initialised variables
+  * CVE-2011-1592: Crash in NFS dissector on Windows 
+  * CVE-2011-1591: Buffer overflow in DECT dissector
+
+-------------------------------------------------------------------
+Tue Mar  8 10:59:35 CST 2011 - cyliu@novell.com
+
+- updated to 1.4.4
+  * security fixes
+    o The DOCSIS dissector could crash (CVE-2010-1455, bnc#603251)
+    o Crash when receiving a malformed SNMP packet 
+      (CVE-2010-3445, bnc#643078)
+    o Multiple buffer overflow and dereference vulnerabilities 
+      (bnc#655121)
+    o LDSS dissector overflow (CVE-2010-4300, bnc#655448)
+    o ZCL dissector infinite loop (CVE-2010-4301, bnc#655448)
+    o Buffer overflows in ENTTEC DMX Data RLE and others 
+      (CVE-2010-4538, bnc#662029)
+    o Freeing uninitialized pointer (CVE-2011-0538, bnc#669908)
+    o dct3trace buffer overflow (CVE-2011-0713, bnc#672916)
+    o Off-by-one in dissect_6lowpan_iphc (CVE-2011-1138, bnc#678567)
+    o Crash via corrupted pcap file (CVE-2011-1139, bnc#678568)
+    o Crash via SMB or CLDAP packet (CVE-2011-1140, bnc#678569)
+    o Crash in NTLMSSP via crafted pcap file (CVE-2011-1143, bnc#678571)
+    o Wireshark pcap buffer overflow (CVE-2011-0024, bnc#683335)
+  * Updated Protocol Support
+    ANSI MAP, BitTorrent, DCM, DHCPv6, DTAP, DTPT, E.212, GSM 
+    Management, GTP, HIP, IEEE 802.15.4, IPP, LDAP, LLDP, Netflow, 
+    NTLMSSP, P_Mul, Quake, Skinny, SMB, SNMP, ULP
+  * New and Updated Capture File Support
+    LANalyzer, Nokia DCT3, Pcap-ng
+ 
+-------------------------------------------------------------------
+Tue Feb 15 12:52:45 UTC 2011 - prusnak@opensuse.org
+
+- updated to 1.4.3
+  - security fixes:
+     o MAC-LTE dissector could overflow a buffer
+     o ENTTEC dissector could overflow a buffer
+     o ASN.1 BER dissector could assert and make Wireshark exit prematurely
+  - bug fixes:
+     o AMQP failed assertion
+     o Reassemble.c leaks memory for GLIB > 2.8
+     o Fuzz testing reports possible dissector bug: TCP
+     o Wrong length calculation in new_octet_aligned_subset_bits()
+     o Function dissect_per_bit_string_display might read more bytes
+       than available
+     o Wireshark crashes with Copy -> Description on date/time fields
+     o DHCPv6 OPTION_CLIENT_FQDN parse error
+     o Information element Error for supported channels
+     o Assert when using ASN.1 dissector with loading a 'type table'
+     o Bug with RWH parsing in Infiniband dissector
+     o Help->About Wireshark mis-reports OS
+     o Delegated-IPv6-Prefix(123) is shown incorrect as
+       X-Ascend-Call-Attempt-Limit(123)
+     o "tshark -r file -T fields" is truncating exported data
+     o gsm_a_dtap: incorrect "Extraneous Data" when decoding Packet
+       Flow Identifier
+     o Improper decode of TLS 1.2 packet containing both
+       CertificateRequest and ServerHelloDone messages
+     o LTE-PDCP UL and DL problem
+     o CIGI 3.2/3.3 support broken
+     o Prepare Filter in RTP Streams dialog does not work correctly.
+     o Wrong decode at ethernet OAM Y.1731 ETH-CC
+     o WPS: RF bands decryption
+     o Incorrect LTP SDNV value handling
+     o LTP bug found by randpkt
+     o Buffer overflow in SNMP EngineID preferences
+  - updated protocol support:
+       AMQP, ASN.1 BER, ASN.1 PER, CFM, CIGI, DHCPv6, Diameter, ENTTEC,
+       GSM A GM, IEEE 802.11, InfiniBand, LTE-PDCP, LTP, MAC-LTE, MP2T,
+       RADIUS, SAMR, SCCP, SIP, SNMP, TCP, TLS, TN3270, UNISTIM, WPS
+  - new and updated capture file support:
+      Endace ERF, Microsoft Network Monitor, VMS TCPtrace
+
+-------------------------------------------------------------------
+Wed Dec  8 16:15:13 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.4.2
+  - security fixes:
+    * Nephi Johnson of BreakingPoint discovered that the LDSS
+      dissector could overflow a buffer. (Bug 5318)
+    * The ZigBee ZCL dissector could go into an infinite loop. (Bug 5303)
+  - bug fixes:
+    * File-Open Display Filter is overwritten by Save-As Filename. (Bug 3894)
+    * Wireshark crashes with "Gtk-ERROR **: Byte index 6 is off
+      the end of the line" if click on last PDU. (Bug 5285)
+    * GTK-ERROR can occur in packets when there are multiple
+      Netbios/SMB headers in a single frame. (Bug 5289)
+    * "Tshark -G values" crashes on Windows. (Bug 5296)
+    * PROFINET I&M0FilterData packet not fully decoded. (Bug 5299)
+    * PROFINET MRP linkup/linkdown decoding incorrect. (Bug 5300)
+    * [lua] Dumper:close() will cause a segfault due later GC of
+      the Dumper. (Bug 5320)
+    * Network Instruments' trace files sometimes cannot be read with
+      an error message of "Observer: bad record: Invalid magic number". (Bug 5330)
+    * IO Graph Time of Day times incorrect for filtered data. (Bug 5340)
+    * Wireshark tools do not detect and read some ERF files correctly. (Bug 5344)
+    * "editcap -h" sends some lines to stderr and others to stdout. (Bug 5353)
+    * IP Timestamp Option: "flag=3" variant (prespecified) not displayed
+      correctly. (Bug 5357)
+    * AgentX PDU Header 'hex field highlighting' incorrectly spans
+      extra bytes. (Bug 5364)
+    * AgentX dissector cannot handle null OID in Open-PDU. (Bug 5368)
+    * Crash with "Gtk-ERROR **: Byte index 6 is off the end of the line". (Bug 5374)
+    * ANCP Portmanagment TLV wrong decoded. (Bug 5388)
+    * Crash during startup because of Python SyntaxError in wspy_libws.py. (Bug 5389)
+  - Updated Protocol Support
+    * AgentX, ANCP, DIAMETER, HTTP, IP, LDSS, MIME, NBNS, PROFINET,
+      SIP, TCP, Telnet, ZigBee
+  - New and Updated Capture File Support
+    * Endace ERF, Network Instruments Observer
+- fix lua error at startup (enable_lua.patch) [bnc#650434]
+- apply nfsv4 patch from Fedora (nfsv4-opts.patch)
+
+-------------------------------------------------------------------
+Wed Nov 10 15:36:51 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.4.1
+  * security fixes:
+    o stack overflow in ASN.1 BER dissector
+  * bug fixes:
+    o Incorrect behavior using sorting in the packet list
+    o Cooked-capture dissector should omit the source address field if empty
+    o MySQL dissector doesn't dissect MySQL stream
+    o Wireshark crashes if active display filter macro is renamed
+    o Incorrect dissection of MAP V2 PRN_ACK
+    o TCP bytes_in_flight becomes inflated with lost packets
+    o GTP header is exported in PDML with an incorrect size
+    o Packet list hidden columns will not be parsed correctly from preferences file
+    o Wireshark does not display the t.38 graph
+    o Wireshark don't show mgcp calls in "Telephony → VoIP calls"
+    o Wireshark 1.4.0 & VoIP calls "Prepare Filter" problem
+    o GTPv2: IMSI is decoded improperly
+    o EPS Quality of Service IE decoding is wrong
+    o Wireshark mistakenly writes "not all data available" for IPv4 checksum
+    o GSM: Cell Channel Description, range 1024 format
+    o Wrong SDP interpretation on VoIP call flow chart
+    o The CLDAP attribute value on a CLDAP reply is no longer being decoded
+    o [NAS EPS] Traffic Flow Template IE dissection bugs
+    o [NAS EPS] Use Request Type IE defined in 3GPP 24.008
+    o NTLMSSP_AUTH domain and username truncated to first letter with IE8/Windows7
+    o IPv6 RH0: dest addr is to be used i.s.o. last RH address when 0 segments remain
+    o EIGRP dissection error in Flags field in external route TLVs.
+    o MRP packet is not correctly parsed in PROFINET multiple write record request
+    o MySQL Enhancement: support of Show Fields and bug fix
+    o [NAS EPS] Fix TFT decoding when having several Packet Filters defined
+    o Crash if using ssl.debug.file with no password for ssl.keys_list
+  * updated protocol support
+      ASN.1 BER, ASN.1 PER, EIGRP, GSM A RR, GSM Management, GSM MAP,
+      GTP, GTPv2, ICMPv6, Interlink, IPv4, IPv6, IPX, LDAP, LLC, MySQL,
+      NAS EPS, NTLMSSP, PN-IO, PPP, RPC, SDP, SLL, SSL, TCP
+
+-------------------------------------------------------------------
+Thu Sep  9 18:34:09 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + The packet list internals have been rewritten and are now more
+    efficient.
+  + Columns are easier to use. You can add a protocol field as a
+    column by right-clicking on its packet detail item, and you
+    can adjust some column preferences by right-clicking the
+    column header.
+  + Preliminary Python scripting support has been added.
+  + Many memory leaks have been fixed.
+  + Packets can now be ignored (excluded from dissection), similar
+    to the way they can be marked.
+  + Manual IP address resolution is now supported.
+  + Columns with seconds can now be displayed as hours, minutes
+    and seconds.
+  + You can now set the capture buffer size on UNIX and Linux if
+    you have libpcap 1.0.0 or greater.
+  + TShark no longer needs elevated privileges on UNIX or Linux to
+    list interfaces. Only dumpcap requires privileges now.
+  + Wireshark and TShark can enable 802.11 monitor mode directly
+    if you have libpcap 1.0.0 or greater.
+  + You can play RTP streams directly from the RTP Analysis
+    window.
+  + Capinfos and editcap now respectively support time order
+    checking and forcing.
+  + Wireshark now has a "jump to timestamp" command-line option.
+  + You can open JPEG files directly in Wireshark.
+  + Many new and updated protocols.
+  + See NEWS for a full list of changes.
+- Drop wireshark-1.2.0-asneeded.patch, fixed upstream.
+- Rebase wireshark-corosync-packet-dissector.patch.
+
+-------------------------------------------------------------------
+Wed Aug 25 16:53:31 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.2.10 [bnc#630599]
+  * Security fixes:
+    o The SigComp Universal Decompressor Virtual Machine could overrun a buffer. (Bug 4867)
+    o The GSM A RR dissector could crash. (Bug 4897)
+    o Due to a regression the ASN.1 BER dissector could overrun the stack.
+    o The IPMI dissector could go into an infinite loop.
+    o CVE-2010-2993
+  * Bug fixes:
+    o Wireshark crashes after configuring new Information column. (Bug 4854)
+    o Crash triggered when changing display filter from right-mouse pop-up menu via packet-list. (Bug 4860)
+    o Wireshark crash selecting Inter-Asterisk exchange v2 packet data. (Bug 4868)
+    o zlib-1.2.5 cause tshark to stop live capture. (Bug 4916)
+    o Crash when adding SNMP users. (Bug 4926)
+    o Wireshark via ssh -X on ipv6 link-local address fails to allow capture. (Bug 4945)
+    o OMAPI dissector fails to parse combined initialization messages. (Bug 4982)
+    o QUERY_FS_INFO for Macintosh level 0x301 - MacSupportFlags decodes wrong. (Bug 4993)
+    o SCSI dissector misidentifies ATA PASSTHROUGH command as ACCESS CONTROL IN. (Bug 5037)
+    o Wrong decoding of GTP Prime (GTP') packets. (Bug 5055)
+  * Updated Protocol Support
+    ASN.1 BER, GSM A RR, GTP, IAX2, IPMI, OMAPI, PRES, SCSI, SMB, UNISTIM
+
+-------------------------------------------------------------------
+Wed Aug 25 16:53:31 UTC 2010 - prusnak@opensuse.org
+
+- updated to 1.2.9 [bnc#613487]
+  * Security fixes:
+    o The SMB dissector could dereference a NULL pointer. (Bug 4734)
+    o J. Oquendo discovered that the ASN.1 BER dissector could overrun the stack.
+    o The SMB PIPE dissector could dereference a NULL pointer on some platforms.
+    o The SigComp Universal Decompressor Virtual Machine could go into an infinite loop. (Bug 4826)
+    o The SigComp Universal Decompressor Virtual Machine could overrun a buffer. (Bug 4837)
+  * Bug fixes:
+    o Cannot open file with File -> Open. (Bug 1791)
+    o Application crash when changing real-time option. (Bug 4035)
+    o Crash in filter autocompletion. (Bug 4306)
+    o The XML dissector doesn't allow dots (".") in tags. (Bug 4405)
+    o Live capture stops when using zlib 1.2.5. (Bug 4708)
+    o Want to be able to apply decode as to Data Portion of Lan Trace. (Bug 4721)
+    o SABP short pdu (packet_per.c). (Bug 4743)
+    o Kerberos pre-auth type constants - MS extensions are wrong. (Bug 4752)
+    o Check HTTP Content-Length parsing for overflow. (Bug 4758)
+    o Wrong variable used for proto_tree_add_text() in ptp dissector. (Bug 4773)
+    o Crash when close window frame of gtk file chooser. (Bug 4778)
+    o text2pcap expects \n delimited text (instead of \r\n) on win32. (Bug 4780)
+    o Wrong decoding for BGP ORF. (Bug 4782)
+    o Crash when Ctrl-Backspacing the display filter. (Bug 4797)
+    o Acker AFI field incorrect size in PGM dissector. (Bug 4798)
+    o Fedora 13: wireshark fails to build (linking problem). (Bug 4815)
+    o The NFS FH hash (nfs.fh.hash) incorrectly matches multiple filehandles. (Bug 4839)
+    o AES-CTR decoding not working, (dissectors/packet_ipsec.c using gcrypt). (Bug 4838)
+  * Updated Protocol Support
+    ASN.1 BER, BGP, HTTP, IGMP, IPsec, Kerberos, NFS, PGM, PTP, SABP, SigComp, SMB, TCAP, XML,
+  * Updated Capture File Support
+    ERF, PacketLogger.
+
+-------------------------------------------------------------------
+Thu Jun  3 06:41:23 UTC 2010 - tserong@novell.com
+
+- Added corosync packet dissector (patch 4724 from
+  https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=3232,
+  minus "private key" setting, which doesn't work with
+  nice random binary keys in /etc/corosync/authkey)
+
+-------------------------------------------------------------------
+Fri May 14 12:48:53 CEST 2010 - prusnak@suse.cz
+
+- updated to 1.2.8
+  * Security Fixes:
+    o The DOCSIS dissector could crash. (Bug 4644), (bug 4646)
+  * Bug Fixes:
+    o HTTP parser limits with Content-Length. (Bug 1958)
+    o MATE dissector bug with GOGs. (Bug 3010)
+    o Changing fonts and deleting system time from preferences,
+      results in wireshark crash. (Bug 3387)
+    o ERF file starting with record with timestamp=0,1 or 2 not
+      recognized as ERF file. (Bug 4503)
+    o The SSL dissector can not correctly resemple SSL records when
+      the record header is spit between packets. (Bug 4535)
+    o TCP reassembly can call subdissector with incorrect TCP
+      sequence number. (Bug 4624)
+    o PTP dissector displays big correction field values wrong. (Bug
+      4635)
+    o MSF is at Anthorn, not Rugby. (Bug 4678)
+    o ProtoField __tostring() description is missing in Wireshark's
+      Lua API Reference Manual. (Bug 4695)
+    o EVRC packet bundling not handled correctly. (Bug 4718)
+    o Completely unresponsive when run very first time by root user.
+      (Bug 4308)
+  * Updated Protocol Support
+    DOCSIS, HTTP, SSL
+  * Updated Capture File Support
+    ERF, PacketLogger.
+
+-------------------------------------------------------------------
+Wed May  5 16:29:26 EST 2010 - sharms@ubuntu.com
+
+- updated to new stable upstream version 1.2.7
+  * Bug Fixes:
+    o SNMPv3 Engine ID registration. (Bug 2426)
+    o Open file dialog always displayed when clicking anywhere on Wireshark. (Bug 2478)
+    o tshark reports wrong number of bytes on big dumpfiles with -z io,stat. (Bug 3205)
+    o Negative INTEGER number displayed as positive number in SNMP dissector. (Bug 3230)
+    o Add support for FT_BOOLEAN fields to wslua FieldInfo. (Bug 4049)
+    o Wireshark crashes w/ GLib error when trying to play RTP stream. (Bug 4119)
+    o Windows 2000 support has been restored. (Bug 4176)
+    o Wrong dissection on be_cell_id_list for bssmap. (Bug 4437)
+    o I/O Graph dropdown boxes not working correctly. (Bug 4487)
+    o Runtime Error when right-clicking field and selecting "Filter Field Reference". (Bug 4522)
+    o In GSM SMS PDU TPVPF showing wrong. (Bug 4524)
+    o Profinet: May be wrong defined byte meaning. (Bug 4525)
+    o GLib-CRITICAL ** Message. (Bug 4547)
+    o Certain EDP display filters trigger Wireshark/tshark runtime error. (Bug 4563)
+    o Some NCP frames trigger "Dissector bug, protocol NCP". (Bug 4565)
+    o The encapsulation abbreviation "bluetooth-h4" is ambiguous. (Bug 4613) 
+  * Updated Protocol Support:
+    o BSSMAP, DMP, GSM SMS, LDSS, NCP, PN/IO, PPP, SIP, SNMP 
+
+-------------------------------------------------------------------
+Mon Feb  1 14:29:26 CET 2010 - prusnak@suse.cz
+
+- update desktop file to use xdg-su [bnc#540627]
+
+-------------------------------------------------------------------
+Mon Feb  1 14:26:27 CET 2010 - prusnak@suse.cz
+
+- updated to 1.2.6
+  * Security Fixes:
+    o Babi discovered several buffer overflows in the LWRES
+  * Bug Fixes:
+    o Wireshark could crash while decrypting Kerberos data.
+    o Address display filters hang Wireshark. (Bug 658)
+    o PSML - structure context node missing. (Bug 1564)
+    o Wireshark doesn't dynamically update the packet list. (Bug 1605)
+     o LUA: There's no tvb_get_stringz() equivalent. (Bug 2244)
+     o tvb_new_real_data is prone to memory leak. (Bug 3917)
+     o Malformed OPC UA traffic makes Wireshark "freeze". (Bug 3986)
+     o Analyze->Expert... doesn't show IP "Bad Checksum" errors. (Bug 4177)
+     o Wireshark can't decrypt WPA(2)-PSK when passphrase is 63 bytes. (Bug 4183)
+     o RTP stream analysis: Wrong jitter values after clicking the refresh button. (Bug 4340)
+     o Wireshark decodes bootp option 2 incorrectly. (Bug 4342)
+     o Deleting SMI modules causes Wireshark to crash. (Bug 4354)
+     o Wireshark decodes kerberos AS-REQ PADATA incorrect. (Bug 4363)
+     o PDML output from TShark includes invalid characters. (Bug 4402)
+     o Empty GPRS LLC S frames cause truncated data exception. (Bug 4417)
+  * Updated Protocol Support
+      BJNP, BOOTP/DHCP, DHCPv6, FIP, GPRS LLC, IEEE 802.11, IP,
+      Kerberos, OPCUA, SCTP, SSL, ZRTP
+
+-------------------------------------------------------------------
+Mon Feb  1 13:36:40 CET 2010 - prusnak@suse.cz
+
+- updated to 1.2.5
+  * Security Fixes:
+    o The Daintree SNA file parser could overflow a buffer. (Bug 4294)
+    o The SMB and SMB2 dissectors could crash. (Bug 4301)
+  * Bug Fixes:
+    o Wireshark does not graph rtp streams. (Bug 3801)
+    o Wireshark showing extraneous data in a TCP stream. (Bug 3955)
+    o Wrong decoding of gtp.target identification. (Bug 3974)
+    o TTE dissector bug. (Bug 4247)
+    o Upper case in Lua pref symbol causes Wireshark to crash. (Bug 4255)
+    o Incorrect display of stream data using "Follow tcp stream" option. (Bug 4288)
+    o Custom RADIUS dictionary can cause a crash. (Bug 4316)
+  * Updated Protocol Support
+      DAP, eDonkey, GTP, IPMI, MIP, RADIUS, RANAP, SMB, SMB2, TCP,
+      TTE, VNC, X.509sat
+  * Updated Capture File Support
+      Daintree SNA
+
+-------------------------------------------------------------------
+Mon Nov 23 16:02:25 UTC 2009 - prusnak@suse.cz
+
+- updated to 1.2.4
+  * Bug Fixes
+    - Can't save RTP stream in both directions. (Bug 4120)
+  * Updated Protocol Support
+    - DCERPC, IPFIX/Netflow, IPv4, NAS EPS, RTCP, TIPC
+
+-------------------------------------------------------------------
+Fri Oct 30 15:47:50 CET 2009 - prusnak@suse.cz
+
+- updated to 1.2.3
+  * Security fixes:
+    - The Paltalk dissector could crash on alignment-sensitive processors.
+    - The DCERPC/NT dissector could crash.
+    - The SMB dissector could crash.
+  * Bug fixes:
+    - Wireshark memory leak with each file open and/or display filter change.
+    - DHCP Dissector displays negative lease time.
+    - Invalid advertised window line on tcptrace style graph.
+    - SMB get_dfs_referral referral entry is not dissected correctly.
+    - Error dissecting eMule sourceOBFU message.
+    - Typos in Diameter XML files.
+    - RSL dissector for MS Power IE is broken.
+    - FIP dissector throws assertion.
+    - TCAP problem with indefinite length 'components' SEQ OF.
+    - GSM MAP: an-APDU not decoded.
+    - Add "Drag and Drop entries..." message on Columns preferences page.
+    - Editcap -t and -w option parses fractional digits incorrectly.
+  * Updated Protocol Support
+    - DCERPC NT, DHCP, Diameter, E.212, eDonkey, FIP, IPsec, MGCP, NCP,
+      Paltalk, RADIUS, RSL, SBus, SMB, SNMP, SSL, TCP, Teamspeak2, WPS
+
+- updated to 1.2.2
+  * Security fixes:
+    - The GSM A RR dissector could crash. (Bug 3893)
+    - The OpcUa dissector could use excessive CPU and memory. (Bug 3986)
+    - The TLS dissector could crash on some platforms. (Bug 4008)
+  * Bug fixes:
+    - The "Capture->Interfaces" window can't be closed.
+    - tshark-1.0.2 (dumpcap) signal abort core saved.
+    - Memory leak fixes.
+    - Display filter autocompletion doesn't work for some RADIUS and WiMAX ASNCP fields.
+    - Wireshark Portable includes wrong WinPcap installer.
+    - Crash when loading a profile.
+    - The proto,colinfo tap doesn't work if the INFO column isn't being printed.
+    - Flow Graph adds too much unnecessary garbage.
+    - The EAP Diameter dictionary file was missing in the distribution.
+    - Graph analysis window is behind other window.
+    - IKEv2 Cert Request payload dissection error.
+    - DNS NAPTR RR (RFC 3403) replacement MUST be a fully qualified domain-name.
+    - Malformed RTCP Packet error while sending Payload specific RTCP feedback packet (as per RFC 4585).
+    - 802.11n Block Ack packet Bitmap field missing.
+    - Wireshark doesn't decode WBXML/ActiveSync information correctly.
+    - Malformed packet when IPv6 packet has Next Header == 59.
+    - Wireshark could crash while reading an ERF file.
+    - Minor errors in gsm rr dissectors.
+    - WPA Decryption Issues.
+    - GSM A RR sys info dissection problem.
+    - GSM A RR inverts MEAS-VALID values.
+    - PDML output leaks ~300 bytes / packet.
+    - Incorrect station identifier parsing in Kingfisher dissector.
+    - DHCPv6, Vendor-Specific Informantion, SubOption"Option Request" parser incorrect.
+    - Wireshark could leak memory while analyzing SSL.
+    - Wireshark could crash while updating menu items after reading a file in some cases.
+  * Updated Protocol Support
+    - DCERPC, DHCPv6, DNS, E.212, GSM A RR, GTPv2, H.248, IEEE 802.11,
+      IPMI, ISAKMP/IKE, ISUP, Kingfisher, LDAP, OpcUA, RTCP, SCTP, SIP,
+      SSL, TCP, WBXML, ZRTP
+  * Updated Capture File Support
+    - ERF
+
+- dropped obsoleted 3 CVE patches (see previous entry)
+
+-------------------------------------------------------------------
+Fri Oct  2 18:19:09 CEST 2009 - prusnak@suse.cz
+
+- fix CVE-2009-3241 (CVE-2009-3241.patch) [bnc#541654]
+- fix CVE-2009-3242 (CVE-2009-3242.patch) [bnc#541659]
+- fix CVE-2009-3243 (CVE-2009-3243.patch) [bnc#541655]
+
+-------------------------------------------------------------------
+Wed Aug  5 12:45:38 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.2.1
+  * Bug Fixes
+    - The IPMI dissector could overrun a buffer.
+    - The AFS dissector could crash.
+    - The Infiniband dissector could crash on some platforms.
+    - The Bluetooth L2CAP dissector could crash.
+    - The RADIUS dissector could crash.
+    - The MIOP dissector could crash.
+    - The sFlow dissector could use excessive CPU and memory.
+    - Wireshark could crash while reading a pcap-ng file.
+    - Wireshark could crash while reading a PacketLogger file.
+    - CFLOW decoding is wrong for IPv6 fields (Bug 3328)
+    - Buildbot crash output: fuzz-2009-04-24-2891.pcap (Bug 3438)
+    - packet-dcm, corrupt DICOM export files (Bug 3493)
+    - GeoIP map should use random temporary file name (Bug 3530)
+    - Wireshark crashes when range_string is the data type (Bug 3536)
+    - Pcap-ng breaks VoIP call data (Bug 3539)
+    - ANSI MAP legInformation BER Error (Bug 3541)
+    - Starting Wireshark Portable 1.2.0 gives error message. (Bug 3547)
+    - The title in the TCP sequence graphs is too short. (Bug 3556)
+    - USB Packets in pcap-ng Files Not Dissected Properly (Bug 3560)
+    - 802.11 decryption is broken (Bug 3590)
+    - SMB2 Error Response doesn't decode properly (Bug 3609)
+    - configure.in uses deprecated autoconf test for gnutls detection (Bug 3627)
+    - Radius Malformed Packet error message (Bug 3635)
+    - Wireshark could crash when loading a profile. (Bug 3640)
+    - Analyze->Decode as... menu item becomes unavailable (Bug 3642)
+    - btsnoop: Incorrect error message for not supported datalink type (Bug 3645)
+    - Decode error for network-id in BICC BCU-ID (Bug 3648)
+    - IEC 60870-5-104 dissector decodes nothing (Bug 3650)
+    - radius_register_avp_dissector() can stop RADIUS dissector from working correctly (Bug 3651)
+    - ANSI ISUP Cause indicators with coding standard=ANSI fail to dissect. (Bug 3654)
+    - Wrong field position in PacketCable Multimedia Extended Classifier (Bug 3656)
+    - FF Protocol "FMS Initiate - Version OD Calling" field packet data not unpacked properly (Bug 3694)
+    - hci_h4: Optimize column/field handling (Bug 3703)
+    - BSSLAP Protocol Not Decoded In BSSMAP-LE Messages (Bug 3711)
+    - Description of tshark -t dd missing from tshark.pod (Bug 3723)
+    - Problem in packet-per.c for ASN.1 PER Encoding (Bug 3733)
+    - [SNMP] Crash when dissecting packet (custom MIB) (Bug 3746)
+  * Updated Protocol Support
+    - AFS, ANSI ISUP, ANSI MAP, ASN.1 PER, Bluetooth HCI H4, Bluetooth L2CAP,
+      BSS CFLOW, COPS, Diameter, DICOM, FF-HSE, ICMPv6, IEC-60870-5-104,
+      IEEE 802.11, Infiniband, IPMI, MIOP, RADIUS, RSVP, sFlow, SNMP, SMB2, ZIOP
+  * New Capture File Support
+    - Btsnoop, DCT3, Packetlogger, pcap-ng
+
+-------------------------------------------------------------------
+Wed Jul 15 14:06:19 CEST 2009 - prusnak@suse.cz
+
+- fix asneeded.patch (patch Makefile.in files also)
+
+-------------------------------------------------------------------
+Wed Jun 17 17:13:53 CEST 2009 - prusnak@suse.cz
+
+- search in /var/lib/GeoIP if user hasn't set any GeoIP folders
+  (geoip.patch)
+
+-------------------------------------------------------------------
+Wed Jun 17 12:36:52 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.2.0
+  Bug Fixes
+   Too many bugs have been fixed since the 1.0 release to list here.
+   Some notable fixes are:
+     o Type-ahead search now works properly.
+     o Several bugs that affected capture from pipes have been fixed.
+     o Many Lua-related bugs have been fixed.
+     o Several memory leaks have been found and fixed.
+     o The "Follow TCP Stream" feature could show two streams at the
+       same time The hex dump view has been narrowed.
+     o WPA and SSL decryption bugs have been fixed.
+     o Readability problems on 256-color displays on Windows have
+       been fixed.
+  New and Updated Features
+   The following features are new (or have been significantly
+   updated) since version 1.0:
+     o Wireshark has a spiffy new start page.
+     o Display filters now autocomplete.
+     o A 64-bit Windows (x64) installer is now provided.
+     o Support for the c-ares resolver library has been added. It has
+       many advantages over ADNS.
+     o Many new protocol dissectors and capture file formats have
+       been added (see below for a complete list).
+     o Macintosh OS X support has been improved.
+     o GeoIP database lookups.
+     o OpenStreetMap + GeoIP integration.
+     o Improved Postscript(R) print output.
+     o The preference handling code is now much smarter about
+       changes.
+     o Support for Pcap-ng, the next-generation capture file format.
+     o Support for process information correlation via IPFIX.
+     o Column widths are now saved.
+     o The last used configuration profile is now saved.
+     o Protocol preferences are changeable from the packet details
+       context menu.
+     o Support for IP packet comparison.
+     o Capinfos now shows the average packet rate.
+     o GTK1 is no longer supported. (Yes, this is a feature.)
+     o Official Windows packages are now built using Microsoft Visual
+       C++ 2008 SP1.
+  New Protocol Support
+   Anything in Anything Protocol, ATM PW, N-to-one Cell Mode,
+   B.A.T.M.A.N. Layer 3 Protocol, BACnet MS/TP, BSS LCS Assistance
+   Protocol, Canon BJNP, CESoPSN basic NxDS0 mode (no RTP support),
+   Charging ASE, Cimetrics MS/TP, DECT Protocol, Digital Private
+   Signalling System No 1 Link Layer, DOCSIS Mac Domain Description,
+   DOCSIS Registration Request Multipart, DOCSIS Registration
+   Response Multipart, DOCSIS Synchronisation Message, E100
+   Encapsulation, EHS, Enhanced Variable Rate Codec, Ethernet Global
+   Data, Ethernet PW, Exchange 2003 Directory Request For Response,
+   Far End Failure Detection, FCoE Initialization Protocol, GOOSE,
+   GPEF, GPRS Tunneling Protocol V2, GSM A-I/F COMMON, GSM A-I/F GPRS
+   Mobility and Session Management, GSM SACCH, GSM Um Interface, HDLC
+   PW, FR port mode (no CW), HDLC-like framing for PPP, IEC
+   60870-5-104,Apci, IEC 60870-5-104,Asdu, IEEE 802.15.4 Low-Rate
+   Wireless PAN non-ASK PHY, IEEE C37.118 Synchrophasor Protocol,
+   Intelligent Platform Management Interface (Session Wrapper),
+   Inter-Integrated Circuit, Internal TDM, IPSICTL, ISMACryp
+   Protocol, iWARP Direct Data Placement and Remote Direct Memory
+   Access Protocol, iWARP Marker Protocol data unit Aligned framing,
+   Kontiki Delivery Protocol, LANforge Traffic Generator, Layer 1
+   Event Messages, Lb-I/F BSSMAP LE, LeCroy VICP, Link Access
+   Procedure, Channel Dm (LAPDm), Local Download Sharing Service, LTE
+   Radio Resource Control (RRC) protocol, MAC-LTE, Memcache Protocol,
+   Mesh Header, MP4V-ES, Nasdaq TotalView-ITCH, Nasdaq-SoupTCP
+   version 2.0, NAT Port Mapping Protocol, Netdump Protocol,
+   Non-Access-Stratum (NAS)PDU, PacketLogger, Paltalk Messenger
+   Protocol, PDCP-LTE, PW Associated Channel Header, PW Ethernet
+   Control Word, PW Frame Relay DLCI Control Word, PW MPLS Control
+   Word (generic/preferred), Real-Time Publish-Subscribe Wire
+   Protocol 2.x, Remote Packet Capture, RLC-LTE, SAToP (no RTP
+   support), SERCOS III V1.1, SIMULCRYPT Protocol, Subnetwork
+   Dependent Convergence Protocol XID, Teamspeak2 Protocol,
+   TTEthernet, TTEthernet Protocol Control Frame, Turbocell Aggregate
+   Data, Turbocell Header, TURN Channel, Unreliable Multicast
+   Inter-ORB Protocol, VCDU, Wave Short Message Protocol(IEEE
+   P1609.3), Wireless Access Station Session Protocol, Wireshark
+   Expert Info, World of Warcraft, Xpress Transport Protocol, ZigBee
+   Application Framework, ZigBee Application Support Layer, ZigBee
+   Device Profile, ZigBee Encapsulation Protocol, ZigBee Network
+   Layer, Zipped Inter-ORB Protocol, ZRTP
+  Updated Protocol Support
+   There are too many updates to list here.
+  New Capture File Support
+   Apple Bluetooth PacketLogger, Daintree's Sensor Network Analyzer,
+   dct3trace, Pcap-NG, TNEF (yes, those silly winmail.dat
+   attachments)
+
+- removed obsoleted patches:
+  * help.patch (not needed anymore)
+  * sigpipe-block.patch (not needed anymore)
+
+-------------------------------------------------------------------
+Tue May 26 15:49:43 CEST 2009 - cmorve69@yahoo.es
+
+- made it compile with --as-needed
+
+-------------------------------------------------------------------
+Fri May 22 13:36:43 CEST 2009 - prusnak@suse.cz
+
+- updated to 1.0.8
+  * bug fixes
+    o The PCNFSD dissector could crash.
+  * the following bugs have been fixed:
+    o Lua integration could crash (Bug 2453)
+    o The SCCP dissector could crash when loading more than one file
+      in a single session. (Bug 3409)
+    o The NDMP dissector could crash if reassembly was enabled. (Bug 3470)
+  * updated protocol support
+    o All ASN.1 protocols, DICOM, NDMP, PCNFSD, RTCP, SCCP, SSL, STANAG 5066
+
+-------------------------------------------------------------------
+Fri Apr 17 21:27:27 CEST 2009 - cseader@novell.com
+
+- removing --with-ssl and adding --with-gnutls
+  * per Wireshark documentation "The SSL dissector is fully functional and even supports
+    advanced features such as decryption of SSL if the encryption key can be provided and
+    WireShark is compiled against Gnu-TLS (rather than openssl or bsafe)."
+
+-------------------------------------------------------------------
+Wed Apr 15 23:43:32 CEST 2009 - cseader@novell.com
+
+- updated to 1.0.7
+  o security fixes
+    * The PROFINET dissector was vulnerable to a format string overflow. (Bug 3382)
+      Versions affected: 0.99.6 to 1.0.6
+      CVE-2009-1210
+    * The LDAP dissector could crash on Windows. (Bug 3262)
+      Versions affected: 0.99.2 to 1.0.6
+      CVE-2009-1267
+    * The Check Point High-Availability Protocol (CPHAP) dissector could crash. (Bug 3269)
+      Versions affected: 0.9.6 to 1.0.6
+      CVE-2009-1268
+    * Wireshark could crash while loading a Tektronix .rf5 file. (Bug 3366)
+      Versions affected: 0.99.6 to 1.0.6
+      CVE-2009-1269
+  o bug fixes
+    * Correct use of proto_tree_add_int_format() (Bug 3048)
+    * RTP dynamic payload clock rates incorrectly determined (Bug 3067)
+    * TShark fails to properly close capture files when opening new ones (Bug 3172)
+    * ANSI MAP digits type decode and bitmask corrections (Bug 3233)
+    * Two small patches for ipvs-syncd dissector (Bug 3236)
+    * BGP capability dissection failure (Bug 3247)
+    * ANSI MAP fix for missing MEID/MSC ID number in RegNot (Bug 3255)
+    * BACnet PrivateTransferError shows malformed packet (Bug 3257)
+    * Windows silent installer is not that silent (Bug 3260)
+    * Crash in ASN.1 dissector when using 'type table' (Bug 3271)
+    * 802.11n SM Power save mode value 0x3 label is incorrect (Bug 3276)
+    * 802.11 WME ie displayed incorrectly (Bug 3284)
+    * "Copy as filter" from the packet list has been fixed.
+  o updated protocol support
+    * ACN, ANSI MAP, ASN.1 BACnet, BGP, CPHAP, GSM MAP, IEEE 802.11, IPVS, LDAP, NetFlow/IPFIX, PROFINET, RTP, SNMP, WSP
+
+-------------------------------------------------------------------
+Mon Feb 16 15:11:00 CET 2009 - prusnak@suse.cz
+
+- updated to 1.0.6
+  o security fixes
+    * possible crash if the HOME environment variable contained
+      sprintf-style string formatting characters
+    * possible crash while reading a malformed NetScreen snoop file
+    * possible crash while reading a Tektronix K12 text capture file
+  o bug fixes
+    * Crash when loading capture file and Preferences: NO Info column
+    * Some Lua scripts may lead to corruption via out of bounds stack
+    * Build with GLib 1.2 fails with error: 'G_MININT32' undeclared
+    * Wrong decoding IMSI with GSM MAP protocol
+    * Segmentation fault for "Follow TCP stream"
+    * SMPP optional parameter 'network_error_code' incorrectly decoded
+    * DHCPv6 dissector doesn't handle malformed FQDN
+    * WCCP overrides CFLOW as decoded protocol
+    * Improper decoding of MPLS echo reply IPv4 Interface and Label Stack Object
+    * ANSI MAP fix for TRN digits/SMS and OTA subdissection
+  o updated protocol support
+    * AFS, ATM, DHCPv6, DIS, E.212, RTP, UDP, USB, WCCP, WPS
+  o New and Updated Capture File Support
+    * NetScreen snoop
+
+-------------------------------------------------------------------
+Wed Dec 17 15:22:40 CET 2008 - prusnak@suse.cz
+
+- updated to 1.0.5
+  * security fixes
+    o The SMTP dissector could consume excessive amounts of CPU
+      and memory
+    o The WLCCP dissector could go into an infinite loop
+  * bug fixes
+    o Missing CRLF during HTTP POST in the "packet details" window
+      (Bug 2534)
+    o Memory assertion in time_secs_to_str_buf() when compiled
+      with GCC 4.2.3 (Bug 2777)
+    o Diameter dissector fails RFC 4005 compliance (Bug 2828)
+    o LDP vendor private TLV type is not correctly shown (Bug 2832)
+    o Wireshark on MacOS does not run when there are spaces in
+      its path (Bug 2844)
+    o OS X Intel package incorrectly claims to be Universal (Bug 2979)
+    o Compilation broke when compiling without zlib (Bug 2993)
+    o Memory leaks (Bugs 3017 ... 3022, 3079)
+    o Incorrect address structure assigned for find_conversation()
+      in WSP (Bug 3071)
+    o Error parsing the BSSGP protocol (Bug 3085)
+    o Assertion thrown in fvalue_get_uinteger when decoding TIPC
+      (Bug 3086)
+    o LUA script : Wireshark crashes after closing and opening again
+      a window used by a listener.draw() function. (Bug 3090)
+  * Updated Protocol Support
+    ANSI MAP, BSSGP, CIP, Diameter, ENIP, GIOP, H.263, H.264, HTTP,
+    MPEG PES, PostgreSQL, PPI, PTP, Rsync, RTP, SMTP, SNMP, STANAG 5066,
+    TACACS, TIPC, WLCCP, WSP
+
+-------------------------------------------------------------------
+Mon Nov 24 16:13:47 CET 2008 - prusnak@suse.cz
+
+- fix wireshark freeze when closing capture window [bnc#417850]
+  (sigpipe-block.patch)
+- don't show warning when running as root [bnc#349782]
+- altered .desktop file to run wireshark gui as root automatically
+
+-------------------------------------------------------------------
+Tue Nov  4 14:04:16 CET 2008 - prusnak@suse.cz
+
+- updated to 1.0.4
+  * security fixes
+     o Florent Drouin and David Maciejak found that the Bluetooth ACL
+       dissector could crash or abort. (Bug 1513)
+     o The Q.931 dissector could crash or abort. (Bug 2870)
+     o Wireshark could abort while reading Tamos CommView capture
+       files. (Bug 2926)
+     o David Maciejak found that the USB dissector could crash or
+       abort. This led to the disovery of a similar problem in the
+       Bluetooth RFCOMM dissector. (Bug 2922)
+     o Vivek Gupta and David Maciejak found that the PRP and MATE
+       dissectors could make Wireshark crash. (Neither PRP nor MATE
+       are enabled by default.) (Bug 2549)
+  * bug fixes
+     o Let MP2T call its subdissectors, even without tree (Bug 2627)
+     o Wireless Toolbar not enabled (using AirPcap) if PCAP_REMOTE=1
+       (Bug 2685)
+     o Failure to dissect long SASL wrapped LDAP response (Bug 2687)
+     o Fix compiler warnings (Bug 2823)
+     o Homeplug dissection bugs (Bug 2859)
+     o Malformed Packet DCP ETSI error (Bug 2860)
+     o Wrong size of selected_registrar in WPS dissector (Bug 2865)
+     o Dissector assertion displaying cookies in DTLS frames (Bug
+       2876)
+     o Missing field type in documentation (Bug 2889)
+     o Wireshark -p switch seems to have no effect to PROMISCUOUS
+       mode (Bug 2891)
+     o Misspelled PPI error vector magnitude filter (Bug 2903)
+     o Modbus Function 43 Encapsulated Interface Transport decoding
+       (Bug 2917)
+     o Crash when printing or exporting some protocol data (Bug 2934)
+     o Crash when selecting "Export Selected Packet Bytes" (Bug 2964)
+  * updated protocol support
+      AFP, Bluetooth ACL, Bluetooth RFCOMM, DCP ETSI, DTLS, Homeplug,
+      IEEE 802.11, IP, Modbus TCP, MP2T, NSIP, NCP, PPI, Q.931, SASL,
+      SNMP, USB, WPS
+  * new and updated capture file support
+      AiroPeek, CommView
+
+-------------------------------------------------------------------
+Thu Sep  4 17:58:51 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.0.3 - bug fixes:
+  o The NCP dissector was susceptible to a number of problems,
+    including buffer overflows and an infinite loop.
+  o Wireshark could crash while uncompressing zlib-compressed
+    packet data.
+  o Wireshark could crash while reading a Tektronix .rf5 file.
+  o 802.11 WPA/WPA2-PSK Unable to decode Group Keys. (Bug 1420)
+  o Packets could wrongly be dissected as "Redback Lawful
+    Intercept" (Bug 2376)
+  o MIKEY dissector improvements (Bug 2400)
+  o tvb_get_bits{16|32} could read past the end of a tvbuff (Bug
+    2439)
+  o Incorrect wslua function names. (Bug 2448)
+  o Memory corruption in wslua. (Bug 2453)
+  o Unknown PPPoE TAGs which are present in a PPPoE discovery
+    packet are not displayed under "PPPoE Tags" subtree/section.
+    (Bug 2458)
+  o Following a TCP stream could incorrectly reassemble packets.
+    (Bug 2606)
+  o SIP decode shows fully expanded "Content-Length" header
+    instead of compact form. (Bug 2635)
+  o Segmentation fault loading trace containing NCP packets. (Bug
+    2675)
+  o SIP packets might incorrectly be displayed as malformed. (Bug
+    2729)
+  o RTCP BYE padding interpreted incorrectly. (Bug 2778)
+  o Reversed RTP stream is saved as silent .au file, forward
+    stream saves correctly. (Bug 2780)
+  o Fix some lint warnings. (Bug 2822)
+  o Setting a duration on a capture file would capture for an
+    extra second.
+
+-------------------------------------------------------------------
+Wed Apr  2 11:30:51 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.0.0 \o/
+  * setcurity fixes:
+    o the X.509sat dissector could crash
+    o the Roofnet dissector could crash
+    o the LDAP dissector could crash
+    o the SCCP dissector could crash while using the "decode as" feature
+  * buf fixes:
+    o several SNMP-related bugs have been fixed
+    o several memory-related bugs have been fixed
+  * new protocol support:
+      IEEE 802.15.4, Infiniband, Parallel Redundancy Protocol, RedBack
+      Lawful Intercept, Xcsl
+  * updated protocol support:
+      AFS, ALCAP, ATM, BACapp, CIGI, DCC (renamed from DCCP), DCCP
+      (renamed from DCP), DCERPC SPOOLSS, DCERPC NT, DHCP, DirectPlay,
+      EtherCAT, FIX, GIOP, GTP, H.248, HTTP, ICMPv6, ICQ, IPv6, ISIS,
+      JXTA, NCP, P_Mul, PCAP, PKIX1Explicit, PTP, RADIUS, Roofnet, RTCP,
+      RTMPT, RTP, RX, SABP, SCSI OSD, sFlow, SMPP, SNMP, SSCOP, TAPA,
+      TIPC, TPNCP, UNISTIM, X.25, X.509sat, XML
+  *  new and updated capture file support:
+     Hilscher Analyzer
+- dropped patches:
+  * strncat.patch (obsoleted by update)
+
+-------------------------------------------------------------------
+Thu Feb 28 11:38:06 CET 2008 - prusnak@suse.cz
+
+- updated to 0.99.8
+  * security fixes
+     o fixed crash in SCTP, SNMP and TFTP dissectors
+   The following bugs have been fixed:
+     o Wireshark could crash when:
+       - saving I/O graphs
+       - editing table-based preferences
+       - trying to play RTP streams.
+       - trying to apply a display filter macro
+       - using Turkish and other locales.
+  * new features:
+     o multiple configuration profiles
+     o temporary coloring rules (let you color or filter on a conversation)
+     o I/O graphs have been improved
+     o Wireshark now has WLAN traffic statistics
+     o the Wireshark GUI now supports RPCAP
+     o conversations and endopoints can now be limited to the current display filter
+     o experimental support for the NTAR/PcapNG file format
+  * new protocol support:
+      AiroPeek Remote Capture, China Mobile Point to Point, Distributed
+      Lock Manager 3, EUTRAN X2 Application Protocol, Fieldbus
+      Foundation, International Passenger Airline Reservation
+      System/Airline Link Control, Microsoft DirectPlay, Path
+      Computation Element communication Protocol, Real Time Messaging
+      Protocol, S1 Application Protocol, Scripting Service Protocol,
+      Societe Internationale de Telecommunications Aeronautiques, Unisys
+      Transmittal System, Wi-fi Protected Setup,
+  * updated protocol support:
+      3G A11, 3GPP, ACN, ACP133, ALCAP, AMR, ANSI A, ANSI IS-637-A, ANSI
+      MAP, ARP, ASAP, AVS WLAN, BACapp, BER, BOOTP, Bluetooth (HCI ACL,
+      HCI CMD, HCI EVT, HCI SCO, L2CAP, SDP), CDP, CFM, CMS, COPS,
+      Camel, Cisco ERSPAN, DAP, DCERPC SPOOLSS, DCERPC, DHCP, DHCPv6,
+      DIAMETER, DMP, DTLS, E.164, EAP, ENIP, ENRP, EtherCAT, Ethernet,
+      FMP, FTAM, GMRP, GRE, GSM MAP, GSM SMS, GSS-API, GTP, Gryphon,
+      H.223, H.225, H.245, H.263, H.264, H.460, HCI H1, HTTP, ICMP, IEEE
+      802.11, IGMP, IPP, ISAKMP, ISUP, JFIF, JPEG, JXTA, Kerberos, LDAP,
+      MP2T, MS MMS, MTP3MG, NBAP, NFS, NHRP, NetFlow, P7, PER, PIM,
+      PKCS12, PPPoE, PTP, P_Mul, Q.932, Quakeworld, RANAP, RMT ALC, RMT
+      LCT, ROS, RPC, RPL, RRC, RTCP, RTP, SCCP, SCTP, SDP, SLL, SMB,
+      SMB2, SMPP, SMTP, SNMP, SRVLOC, SSL, STUN2, T.38, TCAP, TCP, TFTP,
+      TiVoConnect, UCP, UDP-Lite, USB, VLAN, WBXML, X.411, X.420,
+      X.509if, X.509sat
+  * new and updated capture file support:
+      Catapult DCT2000, DBS Etherwatch, NTAR/PcapNG, TamoSoft CommView,
+      Visual Networks
+- removed obsolete patch:
+  * strptime.patch (included in update)
+- added bison and flex to BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb 21 04:51:57 CET 2008 - crrodriguez@suse.de
+
+- fix -devel package dependencies
+
+-------------------------------------------------------------------
+Wed Jan  9 13:20:10 CET 2008 - prusnak@suse.cz
+
+- fix strptime function inclusion (strptime.patch)
+- do not package non linux READMEs
+
+-------------------------------------------------------------------
+Wed Dec 19 13:34:17 CET 2007 - prusnak@suse.cz
+
+- updated to 0.99.7
+  * security fixes
+    o Wireshark could crash when reading an MP3 file.
+    o Beyond Security discovered that Wireshark could loop
+      excessively while reading a malformed DNP packet.
+    o Stefan Esser discovered a buffer overflow in the SSL
+      dissector.
+    o The ANSI MAP dissector could be susceptible to a buffer
+      overflow on some platforms.
+    o The Firebird/Interbase dissector could go into an infinite
+      loop or crash.
+    o The NCP dissector could cause a crash.
+    o The HTTP dissector could crash on some systems while decoding
+      chunked messages.
+    o The MEGACO dissector could enter a large loop and consume
+      system resources.
+    o The DCP ETSI dissector could enter a large loop and consume
+      system resources.
+    o Fabiodds discovered a buffer overflow in the iSeries (OS/400)
+      Communication trace file parser.
+    o The PPP dissector could overflow a buffer.
+    o The Bluetooth SDP dissector could go into an infinite loop.
+    o A malformed RPC Portmap packet could cause a crash.
+    o The IPv6 dissector could loop excessively.
+    o The USB dissector could loop excessively or crash.
+    o The SMB dissector could crash.
+    o The RPL dissector could go into an infinite loop.
+    o The WiMAX dissector could crash due to unaligned access on
+      some platforms.
+    o The CIP dissector could attempt to allocate a huge amount of
+      memory and crash.
+  * bug fixes
+    o Handling of non-ASCII file names and paths has been improved.
+    o Wireshark could crash while editing a coloring rule or a UAT
+      table.
+    o The display filter code could crash while bitwise ANDing an
+      IPv4 address.
+  * news and updates
+    o Most of the capture code has been moved out of the GUI, which
+      means that Wireshark no longer needs to be run as root.
+    o Many display filter names have been cleaned up. If your
+      favorite display filter just went missing, please consult the
+      display filter reference to find out where it ended up.
+    o You can now filter directly on SNMP OIDs.
+    o IO graphs have more display options, and you can now export
+      graphs.
+    o You can now follow UDP streams in addition to TCP and SSL
+      streams.
+    o You can now disable coloring rules without deleting them.
+    o Main window toolbar buttons are now available even when the
+      window is small.
+    o Optimizations have been applied in some places to make
+      Wireshark start up and run faster.
+  * new protocol support
+      ANSI TCAP, application/xcap-error (MIME type), CFM, DPNSS,
+      EtherCAT, ETSI e2/e4, H.282, H.460, H.501, IEEE 802.1ad and
+      802.1ah, IMF (RFC 2822), RSL, SABP, T.125, TNEF, TPNCP, UNISTIM,
+      Wake on LAN, WiMAX ASN Control Plane, X.224,
+  * updated protocol support
+      3Com XNS, 3G A11, ACN, ACP123, ACSE, AIM, ANSI IS-637-A, ANSI MAP,
+      Armagetronad, BACapp, BACnet, BER, BFD, BGP, Bluetooth, CAMEL,
+      CDT, CFM, CIP, Cisco ERSPAN, CLNP, CMIP, CMS, COPS, CTDB, DCCP,
+      DCERPC ATSVC, DCERPC PNIO, DCERPC SAMR, DCERPC, DCOM CBA-ACCO, DCP
+      ETSI, DEC DNA, DFS, DHCP/BOOTP, DHCPv6, DIAMETER, DISP, DMP, DNP,
+      DNS, DOP, DTLS, DUA, eDonkey, ELSM, ESL, Ethernet, FC ELS, FC,
+      FCOE, FTAM, FTP, GDSDB, GIOP, GPRS-LLC, GSM A, GSM MAP, GTP, HSRP,
+      HTTP, IAX2, ICMPv6, IEEE 802.11, INAP, IP, IPMI, IPv6, ISAKMP,
+      ISIS, iSNS, ISUP, IUUP, JXTA, K12, Kerberos, L2TP, LAPD, LDAP,
+      LINX, LPD, LWAPP, MEGACO, MIKEY, MIME Multipart, MMS, MP2T, MPEG
+      PES, MPEG, MTP2, MySQL, NBAP, NetFlow, nettl, NFS, NSIP, OSPF,
+      P_MUL, PANA, PER, PKCS#12, PMIPv6, PN-PTCP, PN-RT, PPI, PPPoE,
+      PRES, PROFINET, PTP, Q.932 ROS, Q.932, QSIG, Radiotap, RADIUS,
+      RANAP, RNSAP, ROS, RTCP, RTP, RTSE, RTSP, SCCP, SCTP, SDP,
+      SIGCOMP, SIP, Slow Protocols, SMB, SMPP, SMTP, SNDCP, SNMP, SRP,
+      SSL, STANAG 4406, STUN2, TCAP, TCP, text/media, TIPC, ULP, UMA,
+      UMTS FP, V5UA, VNC, WiMAX M2M, WiMAX, WLCCP, X.411, X.420, X.509
+      SAT, XML
+  * new and updated capture file support
+      Catapult DCT 2000, Endace ERF, Juniper NetScreen snoop, Visual
+      Networks, Windows Sniffer (NetXRay)
+- removed fwrite_unused_result.patch
+
+-------------------------------------------------------------------
+Tue Sep  4 00:24:50 CEST 2007 - ro@suse.de
+
+- disable -Werror for now
+
+-------------------------------------------------------------------
+Thu Jul 26 16:58:58 CEST 2007 - prusnak@suse.cz
+
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Tue Jul 10 11:22:31 CEST 2007 - prusnak@suse.cz
+
+- updated to 0.99.6
+  * security fixes:
+    * crash when dissecting an HTTP chunked response
+    * crash while reading iSeries capture files
+    * exhaust system memory while reading a malformed DCP ETSI packet
+    * loop excessively while reading a malformed SSL packet
+    * DHCP/BOOTP dissector susceptible to an off-by-one error
+    * loop excessively while reading a malformed MMS packet
+  * bug fixes:
+    * WEP decryption would only work for the first key specified
+    * WEP and WPA decryption didn't work for QoS frames
+    * WPA decryption failed if EAPOL handshake packets contained extra data
+    * Wireshark failed to parse colon-separated WEP keys
+    * merging files in Wireshark now appends files properly
+    * hang while saving an RTP stream with bad timestamp data
+    * frame.time_delta display filter now works as expected
+  * for full information see:
+    * http://www.wireshark.org/docs/relnotes/wireshark-0.99.6.html
+- added fwrite_unused_result.patch (fixes warn_unused_result warnings in fwrite calls)
+- dropped obsolete patches:
+  * dissectors.patch (included in update)
+
+-------------------------------------------------------------------
+Wed Mar  7 13:48:57 CET 2007 - prusnak@suse.cz
+
+- added [t]ethereal symlinks [#252117]
+- cleaned spec file
+
+-------------------------------------------------------------------
+Wed Feb  7 10:56:50 CET 2007 - prusnak@suse.cz
+
+- fix SSL support [#242738]
+- fix build warnings in dissector's code (dissectors.patch)
+
+-------------------------------------------------------------------
+Tue Feb  6 09:38:41 CET 2007 - prusnak@suse.cz
+
+- update to 0.99.5
+  * security fixes [#237246]
+    - CVE-2007-0459 The TCP dissector could hang or crash
+    - CVE-2007-0458 The HTTP dissector could crash
+    - CVE-2007-0457 The IEEE 802.11 dissector could crash
+    - CVE-2007-0456 The LLT dissector could crash
+  * various bug fixes, added new protocols, see
+    http://www.wireshark.org/docs/relnotes/wireshark-0.99.5.html
+    for full information
+- dropped obsoleted patches:
+  * wireshark-0.99.4-printf.diff (included in update)
+
+-------------------------------------------------------------------
+Thu Dec  7 10:30:28 CET 2006 - prusnak@suse.cz
+
+- fixed libdir path in spec file
+
+-------------------------------------------------------------------
+Mon Nov 13 16:29:07 CET 2006 - mjancar@suse.cz
+
+- update to 0.99.4
+  * final 0.99.4 release
+
+-------------------------------------------------------------------
+Tue Nov  7 14:33:33 CET 2006 - ro@suse.de
+
+- fix manpage permissions
+
+-------------------------------------------------------------------
+Mon Oct 30 11:19:14 CET 2006 - mjancar@suse.cz
+
+- update to 0.99.4pre1
+  * security fixes (#213226)
+    CVE-2006-4574
+    CVE-2006-4805
+    CVE-2006-5468
+    CVE-2006-5469
+    CVE-2006-5740
+
+-------------------------------------------------------------------
+Thu Aug 24 13:31:08 CEST 2006 - postadal@suse.cz
+
+- updated to version 0.99.2 [#201437]
+  * security bugfixes
+  * the packet list context menu now includes a conversation filter
+  * now generate ACL rules for several popular firewall products
+  * new protocols: Daytime, JPEG (RTP payload), Pegasus Lightweight
+    Stream Control, Pro-MPEG FEC, UMTS RRC, Veritas Low Latency Transport
+- removed oblsoleted patch buffer_overflow_fix.patch
+
+-------------------------------------------------------------------
+Tue Jul 25 15:34:04 CEST 2006 - postadal@suse.cz
+
+- project Ethereal moved to Wireshark project (renamed)
+- updated to version 0.99.2
+  * security bugfixes
+  * multicast stream analysis
+  * you can now find next/previous marked frames
+  * the SMB dissector tracks filenames and share names
+  * added reading support of BER-encoded files
+  * new protocols: Bluetooth HCI (ACL, Command, Event, L2CAP, H4,
+    RFCOMM, SCO, SDP), Cisco WIDS, DTLS, Ether-S-Bus, OMA ULP,
+    PN-MRP, PN-MRRT, REXEC (yes, that REXEC), RRLP, RSerPool
+    (CalcAppProtocol, ComponentStatusProtocol, FractalGeneratorProtocol,
+    PingPongProtocol), Telkonet, TiVoConnect Discovery Protocol
+- fixed buffer overflow in nettl.c [wireshark#1015] (buffer_overflow_fix.patch)
+- removed obsoleted patches (CVE-2006-1932-40.patch, hash_returnval.patch,
+  infinite-loop.patch)
+
+-------------------------------------------------------------------
+Mon Jun 12 16:19:16 CEST 2006 - lmichnovic@suse.cz
+
+- fixed forgoten return value (hash_retval.patch) [#183696]
+
+-------------------------------------------------------------------
+Wed May  3 09:01:49 CEST 2006 - postadal@suse.cz
+
+- fixed security bugs [#167928] (CVE-2006-1932 - CVE-2006-1940)
+  (CVE-2006-1932-40.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:45 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan  7 18:27:16 CET 2006 - postadal@suse.cz
+
+- updated to version 0.10.14
+
+-------------------------------------------------------------------
+Wed Dec 21 13:02:50 CET 2005 - meissner@suse.de
+
+- added -fstack-protector
+- add pcre/pcre-devel to get regexp support.
+
+-------------------------------------------------------------------
+Tue Nov  1 16:26:26 CET 2005 - postadal@suse.cz
+
+- fixed infinite loop [#128637] (infinite-loop.patch)
+
+-------------------------------------------------------------------
+Fri Oct 21 11:07:07 CEST 2005 - postadal@suse.cz
+
+- updated to version 0.10.13 (a lot of security fixes enpa-sa-00021)
+  [#128637]
+
+-------------------------------------------------------------------
+Tue Sep  6 21:39:28 CEST 2005 - lmuelle@suse.de
+
+- Add kerberos-devel-packages to neededforbuild and --with-krb5=/usr to the
+  configure arguments; [#115457].
+
+-------------------------------------------------------------------
+Wed Aug 31 09:23:51 CEST 2005 - postadal@suse.cz
+
+- changed category of desktop file from Monitor to System [#114060]
+
+-------------------------------------------------------------------
+Mon Aug 29 22:33:59 CEST 2005 - postadal@suse.cz
+
+- all data moved from /usr/X11R6 to /usr [#112816]
+- branched devel package and packed includes [#112815]
+
+-------------------------------------------------------------------
+Wed Jul 27 14:43:03 CEST 2005 - postadal@suse.cz
+
+- updated to version 0.10.12 (a lot of security fixes enpa-sa-00020)
+- removed obsoleted gcc4 patch
+- removed unneeded .la files
+- moved /etc/{manuf,diameter} to /usr/X11R6/share/ethereal
+  (changed loading data files)
+-------------------------------------------------------------------
+Fri May  6 10:22:44 CEST 2005 - postadal@suse.cz
+
+- updated to version 0.10.11 (a lot of security fixes enpa-sa-00019)
+
+-------------------------------------------------------------------
+Wed May  4 12:01:42 CEST 2005 - postadal@suse.cz
+
+- fixed segfaults when trying to access help [#81523]
+
+-------------------------------------------------------------------
+Thu Mar 17 18:04:14 CET 2005 - postadal@suse.cz
+
+- fixed security bugs in Etheric, GPRS-LLC, 3GPP2 A11, IAPP dissectors.
+  [#71777] (enpa-sa-00018: CAN-2005-0704, CAN-2005-0705, CAN-2005-0699,
+   CAN-2005-0739)
+- fixed bugs in JXTA, sFlow
+
+-------------------------------------------------------------------
+Fri Jan 21 14:08:05 CET 2005 - postadal@suse.cz
+
+- updated to version 0.10.9
+
+-------------------------------------------------------------------
+Wed Jan 12 18:52:23 CET 2005 - postadal@suse.cz
+
+- updated to version 0.10.8
+
+-------------------------------------------------------------------
+Wed Dec 08 14:15:58 CET 2004 - postadal@suse.cz
+
+- added new icon
+
+-------------------------------------------------------------------
+Tue Nov 30 13:46:48 CET 2004 - postadal@suse.cz
+
+- updated to version 0.10.7
+- packaged missed pixmap file
+
+-------------------------------------------------------------------
+Wed Oct 27 11:46:20 CEST 2004 - mmj@suse.de
+
+- Add rpm-devel, popt-devel and tcpd-devel to #nfb to fix build
+- Don't remove buildroot in install
+
+-------------------------------------------------------------------
+Wed Aug 25 13:57:21 CEST 2004 - lmuelle@suse.de
+
+- Add libadns and libadns-devel to BuildRequires, [#43590].
+
+-------------------------------------------------------------------
+Mon Aug 16 19:00:10 CEST 2004 - postadal@suse.cz
+
+- updated to version 0.10.6
+- removed obsoleted patches (ipv6-filter-fix, secfix1)
+- merged help-fix patch in config patch
+
+-------------------------------------------------------------------
+Wed Jul 14 12:33:34 CEST 2004 - postadal@suse.cz
+
+- updated to version 0.10.5 (security update) [#42820]
+  * several security fixes; enpa-sa-00015 (CAN-2004-0633, CAN-2004-0634,
+    CAN-2004-0635)
+
+-------------------------------------------------------------------
+Thu Apr 29 13:31:26 CEST 2004 - postadal@suse.cz
+
+- added missing online help [#39518]
+
+-------------------------------------------------------------------
+Fri Apr 02 13:31:08 CEST 2004 - postadal@suse.cz
+
+- added check for resolved address in default filter
+  (modified  previous patch ipv6-filter-fix.diff)
+
+-------------------------------------------------------------------
+Mon Mar 29 11:59:10 CEST 2004 - postadal@suse.cz
+
+- updated to version 0.10.3 (security update) [#35449]
+  * several security fixes; enpa-sa-00013; CAN-2004-0176 CAN-2004-0367,
+    CAN-2004-0365
+- fixed lib64 paths
+- fixed default filter (ipv6 problem)
+
+-------------------------------------------------------------------
+Tue Mar 23 16:09:11 CET 2004 - postadal@suse.cz
+
+- fixed locating manuf file in /etc [#34386]
+
+-------------------------------------------------------------------
+Tue Mar 02 17:07:34 CET 2004 - postadal@suse.cz
+
+- added desktop file with "X-KDE-SubstituteUID=true" (asks for root passwd)
+  [#35118]
+
+-------------------------------------------------------------------
+Wed Feb 25 13:16:01 CET 2004 - postadal@suse.cz
+
+- updated to version 0.10.2
+
+-------------------------------------------------------------------
+Thu Jan 22 23:23:07 CET 2004 - mmj@suse.de
+
+- Update to 0.10.0a
+- Use -fno-strict-aliasing
+- Use gtk2
+
+-------------------------------------------------------------------
+Sat Jan 10 11:02:01 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Dec 18 15:35:19 CET 2003 - postadal@suse.cz
+
+- fixed security bug (in SMB dissectors);[#33650] enpa-sa-00012
+
+-------------------------------------------------------------------
+Mon Nov 10 13:48:12 CET 2003 - ro@suse.de
+
+- use net-snmp instead of ucdsnmp
+
+-------------------------------------------------------------------
+Thu Nov 06 15:47:43 CET 2003 - postadal@suse.cz
+
+- fixed security bugs (in GTP,ISAKMP,MEGACO,SOCKS dissectors); enpa-sa-00011
+
+-------------------------------------------------------------------
+Sat Aug 16 16:50:01 CEST 2003 - adrian@suse.de
+
+- install desktop file
+
+-------------------------------------------------------------------
+Fri Jul 25 15:19:33 CEST 2003 - postadal@suse.cz
+
+- updated to version 0.9.14
+  * support for searching for arbitrary text and binary data in frames
+  * new protocols: Echo, eDonkey, Jabber, MS Messenger, sFlow
+
+-------------------------------------------------------------------
+Thu Jul  3 16:58:59 CEST 2003 - lmuelle@suse.de
+
+- update to version 0.9.13
+  * support for GNU ADNS library
+  * "Decode As..." functionality has been added to Tethereal via the "-d" flag
+  * support for a system-wide color filter file
+  * several security fixes; enpa-sa-00010; CAN-2003-0428 CAN-2003-0429
+    CAN-2003-0431 CAN-2003-0432
+- removed gcc patch as included in upstream
+
+-------------------------------------------------------------------
+Mon Mar 10 16:55:32 CET 2003 - postadal@suse.cz
+
+- update to version 0.9.10 (security fix)
+- removed obsoleted unused plugin patch
+
+-------------------------------------------------------------------
+Fri Mar  7 01:48:07 CET 2003 - ro@suse.de
+
+- removed mminimal-toc from CFLAGS (ppc64)
+
+-------------------------------------------------------------------
+Wed Jan 29 14:08:44 CET 2003 - postadal@suse.cz
+
+- updated to version 0.9.9
+  * more statistics have been added
+  * the RADIUS dissector can now decrypt user passwords
+  * new protocols:  MDSHDR, MEGACO, MySQL, SDLC, X.29
+
+-------------------------------------------------------------------
+Mon Jan 27 01:56:56 CET 2003 - ro@suse.de
+
+- fix build with gcc-3.3
+
+-------------------------------------------------------------------
+Wed Jan 22 23:10:47 CET 2003 - postadal@suse.cz
+
+- updated to version 0.9.8
+  * new protocols:  ARCNET, ClearCase NFS, DCERPC LSA_DS, Fibre Channel,
+    HyperSCSI, MDNS, PCLI, RPL,  802.1s MSTP, FIX, GSS-API, Interbase, NDPS,
+    Netflow (Cisco and Juniper), SCCP-Management, SPNEGO
+- plugin fix (added header file with macros)
+
+-------------------------------------------------------------------
+Wed Aug 28 14:24:40 CEST 2002 - postadal@suse.cz
+
+- added %config to file list
+
+-------------------------------------------------------------------
+Fri Aug 23 11:41:00 CEST 2002 - postadal@suse.cz
+
+- update to version 0.9.6 (security fix)
+
+-------------------------------------------------------------------
+Thu Aug 15 12:52:38 CEST 2002 - postadal@suse.cz
+
+- update to version 0.9.5 (security fix)
+
+-------------------------------------------------------------------
+Sat Jun 29 21:22:08 CEST 2002 - olh@suse.de
+
+- build with -mminimal-toc on ppc64
+
+-------------------------------------------------------------------
+Wed Jan 16 10:08:21 CET 2002 - cihlar@suse.cz
+
+- update to version 0.9.0
+
+-------------------------------------------------------------------
+Mon Nov 26 10:36:42 CET 2001 - cihlar@suse.cz
+
+- update to version 0.8.20
+
+-------------------------------------------------------------------
+Wed Jul 25 13:40:31 CEST 2001 - cihlar@suse.cz
+
+- update to version 0.8.19
+
+-------------------------------------------------------------------
+Fri Jun 15 10:06:50 CEST 2001 - cihlar@suse.cz
+
+- added openssl, openssl-devel to neededforbuild
+- run confugure with --with-ssl=/usr
+- link against libcrypto (libsnmp needs it)
+- fixed to compile with ipv6 support
+
+-------------------------------------------------------------------
+Fri Jun  8 13:43:21 CEST 2001 - cihlar@suse.cz
+
+- fixed to compile with new autoconf
+
+-------------------------------------------------------------------
+Tue Apr 24 15:15:51 CEST 2001 - cihlar@suse.cz
+
+- fixed warnings on ia64
+
+-------------------------------------------------------------------
+Tue Mar 20 15:27:20 CET 2001 - cihlar@suse.cz
+
+- upgrade to version 0.8.16
+
+-------------------------------------------------------------------
+Tue Mar  6 13:30:03 CET 2001 - cihlar@suse.cz
+
+- upgrade to version 0.8.15
+
+-------------------------------------------------------------------
+Mon Nov  6 02:20:12 CET 2000 - ro@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Tue Oct 31 13:57:12 CET 2000 - cihlar@suse.cz
+
+- upgrade to version 0.8.13
+- bzipped sources
+
+-------------------------------------------------------------------
+Thu Aug  3 09:18:12 CEST 2000 - cihlar@suse.cz
+
+- upgrade to version 0.8.11
+
+-------------------------------------------------------------------
+Mon Jun 12 10:46:58 CEST 2000 - cihlar@suse.cz
+
+- upgrade to version 0.8.9
+
+-------------------------------------------------------------------
+Wed May 10 15:05:25 CEST 2000 - cihlar@suse.cz
+
+- upgrade to version 0.8.8
+
+-------------------------------------------------------------------
+Thu Apr 13 14:29:50 CEST 2000 - cihlar@suse.cz
+
+- upgrade to version 0.8.6
+- added BuildRoot
+
+-------------------------------------------------------------------
+Mon Apr 10 22:06:38 CEST 2000 - bk@suse.de
+
+- added suse update config macro
+
+-------------------------------------------------------------------
+Wed Mar  1 14:20:59 MET 2000 - choeger@suse.de
+
+- new version, 0.8.3
+
+-------------------------------------------------------------------
+Wed Jan 19 09:58:05 MET 2000 - choeger@suse.de
+
+- new version, 0.8.1
+
+-------------------------------------------------------------------
+Thu Nov 25 12:34:15 CET 1999 - choeger@suse.de
+
+- new version, 0.7.8
+
+-------------------------------------------------------------------
+Thu Oct 28 16:55:41 CEST 1999 - choeger@suse.de
+
+-  new version, 0.7.7
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Sep  1 18:04:36 CEST 1999 - choeger@suse.de
+
+- new version
+
+-------------------------------------------------------------------
+Tue Jul 13 12:42:22 MEST 1999 - bs@suse.de
+
+- use gtk and glib instead of gtkn and glibn
+
+-------------------------------------------------------------------
+Mon Jul 12 01:48:43 MEST 1999 - ro@suse.de
+
+- libpcap is an extra package now
+
+-------------------------------------------------------------------
+Thu Jul  8 10:43:00 MEST 1999 - choeger@suse.de
+
+- new version, v0.6.3
+
+-------------------------------------------------------------------
+Tue Jun  1 16:58:22 MEST 1999 - ro@suse.de
+
+- fixed: X11 -> X11R6
+
+-------------------------------------------------------------------
+Wed May 26 09:39:50 MEST 1999 - choeger@suse.de
+
+- new package v0.6.2
+

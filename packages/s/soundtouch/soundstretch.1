@@ -1,0 +1,89 @@
+.TH "soundstretch" 1
+.SH NAME
+soundstretch \- audio processing utility
+.SH SYNOPSIS
+.B soundstretch 
+infile.wav outfile.wav [options]
+.SH DESCRIPTION
+SoundStretch is a simple command-line application that can change tempo, pitch and playback rates of WAV sound files. This program is intended primarily to demonstrate how the "SoundTouch" library can be used to process sound in your own program, but it can as well be used for processing sound files.
+
+.SH USAGE
+
+SoundStretch Usage syntax:
+
+"infile.wav"    Name of the input sound data file (in .WAV audio file format). Give "stdin" as filename to use standard input pipe.
+
+"outfile.wav"   Name of the output sound file where the resulting sound is saved (in .WAV audio file format). This parameter may be omitted if you don't want to save the output (e.g. when only calculating BPM rate with '\-bpm' switch). Give "stdout" as filename to use standard output pipe.
+
+[options]       Are one or more control options.
+
+.SH OPTIONS
+
+Available control options are:
+
+.B \-tempo=n 
+Change the sound tempo by n percents (n = \-95.0 .. +5000.0 %)
+
+.B \-pitch=n 
+Change the sound pitch by n semitones (n = \-60.0 .. + 60.0 semitones) 
+
+.B \-rate=n  
+Change the sound playback rate by n percents (n = \-95.0 .. +5000.0 %)
+
+.B \-bpm=n   
+Detect the Beats-Per-Minute (BPM) rate of the sound and adjust the tempo to meet 'n' BPMs. When this switch is applied, the " \-tempo" switch is ignored. If "=n" is omitted, i.e. switch " \-bpm" is used alone, then the BPM rate is estimated and displayed, but tempo not adjusted according to the BPM value.
+
+.B \-quick   
+Use quicker tempo change algorithm. Gains speed but loses sound quality.
+
+.B \-naa     
+Don't use anti-alias filtering in sample rate transposing. Gains speed but loses sound quality. 
+
+.B \-license 
+Displays the program license text (LGPL)
+
+.SH NOTES
+
+* To use standard input/output pipes for processing, give "stdin" and "stdout" as input/output filenames correspondingly. The standard input/output pipes will still carry the audio data in .wav audio file format.
+
+* The numerical switches allow both integer (e.g. " \-tempo=123") and decimal (e.g. " \-tempo=123.45") numbers.
+
+* The " \-naa" and/or " \-quick" switches can be used to reduce CPU usage while compromising some sound quality 
+
+* The BPM detection algorithm works by detecting repeating bass or drum patterns at low frequencies of <250Hz. A lower-than-expected BPM figure may be reported for music with uneven or complex bass patterns. 
+
+.SH EXAMPLES
+
+Example 1
+
+The following command increases tempo of the sound file "originalfile.wav" by 12.5% and stores result to file "destinationfile.wav":
+
+	soundstretch originalfile.wav destinationfile.wav \-tempo=12.5
+
+Example 2
+
+The following command decreases the sound pitch (key) of the sound file "orig.wav" by two semitones and stores the result to file "dest.wav":
+
+	soundstretch orig.wav dest.wav \-pitch= \-2
+
+Example 3
+
+The following command processes the file "orig.wav" by decreasing the sound tempo by 25.3% and increasing the sound pitch (key) by 1.5 semitones. Resulting .wav audio data is directed to standard output pipe:
+
+	soundstretch orig.wav stdout \-tempo= \-25.3 \-pitch=1.5
+
+Example 4
+
+The following command detects the BPM rate of the file "orig.wav" and adjusts the tempo to match 100 beats per minute. Result is stored to file "dest.wav":
+
+	soundstretch orig.wav dest.wav \-bpm=100
+
+Example 5
+
+The following command reads .wav sound data from standard input pipe and estimates the BPM rate:
+
+	soundstretch stdin \-bpm
+
+.SH NOTES
+
+Converted from the README.html that comes with SoundTouch.

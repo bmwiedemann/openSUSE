@@ -1,0 +1,5 @@
+<package name="mt-st" project="openSUSE:Factory">
+  <title>mt_st</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="Base:System" package="mt-st"/>
+</package>

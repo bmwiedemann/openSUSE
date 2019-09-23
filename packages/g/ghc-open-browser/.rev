@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed3052c9bb7a039aab9511759f092f43</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1462977447</time>
+    <user>dimstar_suse</user>
+    <comment>open-browser -- future dep of stack</comment>
+    <requestid>393794</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5898550cc3e0c6b7ee4250866d4e3299</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1469081259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411506</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2cb06b0d764d2b935ecf5ae5f94bc285</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1505505732</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525103</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>54e3d523194023f1c79905231defdf68</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1527675589</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609798</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>330b3970bfb1edacdebc0c58047e6f71</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1532445654</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623821</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fd0a1e9f368afd59da9e7ca3274f240c</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1540448901</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643430</requestid>
+  </revision>
+</revisionlist>

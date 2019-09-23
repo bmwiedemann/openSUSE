@@ -1,0 +1,9 @@
+<package name="zeal" project="openSUSE:Factory">
+  <title></title>
+  <description>Zeal is a simple offline API documentation browser inspired by Dash (OS X app), available for Linux and Windows.
+ * Quickly search documentation using Alt+Space (or customised) hotkey to display Zeal from any place in your workspace.
+ * Search in multiple sets of documentation at once.
+ * Don't be dependent on your internet connection.
+ * Integrate Zeal with Emacs, Sublime Text, or Vim. See Usage » Editor plugins for details.</description>
+  <devel project="devel:tools" package="zeal"/>
+</package>

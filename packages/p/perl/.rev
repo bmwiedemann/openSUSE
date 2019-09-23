@@ -1,0 +1,940 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>a66698c1d2ee3e0c3fca291ba02b0621</srcmd5>
+    <version>5.8.8</version>
+    <time>1166483846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>4ad8c19e1eadced81b2e2877f999395f</srcmd5>
+    <version>5.8.8</version>
+    <time>1166648707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="36">
+    <srcmd5>cecf29bdeb65a0a2f0ac9e378694db13</srcmd5>
+    <version>5.8.8</version>
+    <time>1168448055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="44">
+    <srcmd5>c02aadcdd38796ac5e238a6f02a9ee39</srcmd5>
+    <version>5.8.8</version>
+    <time>1175122663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="51">
+    <srcmd5>fdd84c247e9ad35d1e2b53f1c6620ffa</srcmd5>
+    <version>5.8.8</version>
+    <time>1179354692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="54">
+    <srcmd5>e8bff9c22a9b491224207b5760031ffd</srcmd5>
+    <version>5.8.8</version>
+    <time>1180106459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="55">
+    <srcmd5>b73ff08354c7e3fe0510a6f7660e8694</srcmd5>
+    <version>5.8.8</version>
+    <time>1180130409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="79">
+    <srcmd5>c664d438e9b67921dd28cff19b9f4d38</srcmd5>
+    <version>5.8.8</version>
+    <time>1193864046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="82">
+    <srcmd5>ce42c8b53c494266004243a708ffb910</srcmd5>
+    <version>5.8.8</version>
+    <time>1194889285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd2b1db6dfd6d78a2d7268c3af57c909</srcmd5>
+    <version>5.10.0</version>
+    <time>1200099713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>6e210e2fc1cb0b0c28b26d18aa3284b0</srcmd5>
+    <version>5.10.0</version>
+    <time>1200603110</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>3dca376966ad612d93368631802e7342</srcmd5>
+    <version>5.10.0</version>
+    <time>1200680816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>6ad71484d762842250f7632b3ad2b4bd</srcmd5>
+    <version>5.10.0</version>
+    <time>1203957330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>8eaf2ca5e6a620af2aa9bdfe560488d9</srcmd5>
+    <version>5.10.0</version>
+    <time>1205255146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>3bba423d88df3d621926202c59b4528a</srcmd5>
+    <version>5.10.0</version>
+    <time>1205513708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>944a1d5403fce1b443ac22168acb628c</srcmd5>
+    <version>5.10.0</version>
+    <time>1205578914</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>ecf3e5dd8cd3850388dccc82ba42ea95</srcmd5>
+    <version>5.10.0</version>
+    <time>1206062415</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="26">
+    <srcmd5>e846ecb798da23121d98c09eaa97d43d</srcmd5>
+    <version>5.10.0</version>
+    <time>1207826123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>7fa23d8b83f505470c64d912f2fb5d91</srcmd5>
+    <version>5.10.0</version>
+    <time>1208023919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="32">
+    <srcmd5>e4f3bd2cb4356548fd0b9785120ceefe</srcmd5>
+    <version>5.10.0</version>
+    <time>1210189983</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="50">
+    <srcmd5>3b26046c8f4364fdadb42b21bb35fd24</srcmd5>
+    <version>5.10.0</version>
+    <time>1219337191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="53">
+    <srcmd5>91ad583cd2d914231024a71ca76dd561</srcmd5>
+    <version>5.10.0</version>
+    <time>1220045742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="61">
+    <srcmd5>91868eae296ef45d0c29a6bdd593062b</srcmd5>
+    <version>5.10.0</version>
+    <time>1227276528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="62">
+    <srcmd5>7ee937531181a6d046ede01a699afff5</srcmd5>
+    <version>5.10.0</version>
+    <time>1227883646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="63">
+    <srcmd5>1bcf1985bcedccabf9157c855e6d8517</srcmd5>
+    <version>5.10.0</version>
+    <time>1231421708</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="64">
+    <srcmd5>254973a0e15285225a5cc6c56ec7358b</srcmd5>
+    <version>5.10.0</version>
+    <time>1231951496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="67">
+    <srcmd5>76bf86c4fbc7b6c33bfbfd60c9aa3128</srcmd5>
+    <version>5.10.0</version>
+    <time>1244816803</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="68">
+    <srcmd5>4bfa3d6916663102ae37821411066da4</srcmd5>
+    <version>5.10.0</version>
+    <time>1246630048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="69">
+    <srcmd5>cdd126476c980a2c57a811a6d82c3b42</srcmd5>
+    <version>5.10.0</version>
+    <time>1247068474</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>add7d24b342faf8510db5170dce035b4</srcmd5>
+    <version>5.10.1</version>
+    <time>1252102929</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 19865 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="31" vrev="70">
+    <srcmd5>13429720a2263d5f97282be144851ccb</srcmd5>
+    <version>5.10.0</version>
+    <time>1252231542</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 19992 from user coolo
+</comment>
+  </revision>
+  <revision rev="32" vrev="71">
+    <srcmd5>7197081fcb454b6c64341500a5db3fda</srcmd5>
+    <version>5.10.0</version>
+    <time>1252579096</time>
+    <user>autobuild</user>
+    <comment>Copy from home:mlschroe:branches:openSUSE:Factory/perl based on submit request 20123 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="33" vrev="73">
+    <srcmd5>7197081fcb454b6c64341500a5db3fda</srcmd5>
+    <version>5.10.0</version>
+    <time>1252579096</time>
+    <user>autobuild</user>
+    <comment>Copy from home:mlschroe:branches:openSUSE:Factory/perl based on submit request 20123 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>02c47fbfc8a8c4575390edeea7c2cac9</srcmd5>
+    <version>5.10.1</version>
+    <time>1256573091</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 23098 from user coolo
+</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>6400918251dc48b9acd1db76accb4efd</srcmd5>
+    <version>5.10.1</version>
+    <time>1263478453</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 28377 from user coolo
+</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>5d8a5c22688e973a9e06da084660b5cb</srcmd5>
+    <version>5.10.1</version>
+    <time>1265374485</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 31309 from user coolo
+</comment>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>872dfab4a847f7fb82d230ae17f90501</srcmd5>
+    <version>5.10.1</version>
+    <time>1267715102</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 33674 from user coolo
+</comment>
+    <requestid>33674</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>1cf643ae925b32441eca31591f252844</srcmd5>
+    <version>5.10.1</version>
+    <time>1268925353</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>37fa796cb6b8affa078267b78376214f</srcmd5>
+    <version>5.11.99.RC1</version>
+    <time>1270138593</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 36640 from user oertel
+</comment>
+    <requestid>36640</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>e414ac2dacc38c79a98dec8e0bc5eb9f</srcmd5>
+    <version>5.11.99.RC1</version>
+    <time>1270374960</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 36872 from user oertel
+</comment>
+    <requestid>36872</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2f8dfff18abd919d56da908cd94f6383</srcmd5>
+    <version>5.12.0</version>
+    <time>1271185655</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 37871 from user mlschroe
+</comment>
+    <requestid>37871</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>ecbb79ecda905d36aa4f1569fd79018f</srcmd5>
+    <version>5.12.0</version>
+    <time>1274775382</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 40468 from user mlschroe
+</comment>
+    <requestid>40468</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>8a6ae0edb7f2e1687dbf95d8afcde3c8</srcmd5>
+    <version>5.12.0</version>
+    <time>1275494804</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 40945 from user lrupp
+</comment>
+    <requestid>40945</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>08dd3bdd53b23c8eb3912b9192f07b8c</srcmd5>
+    <version>5.12.1</version>
+    <time>1277134609</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 41744 from user mlschroe
+</comment>
+    <requestid>41744</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>08dd3bdd53b23c8eb3912b9192f07b8c</srcmd5>
+    <version>5.12.1</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>08dd3bdd53b23c8eb3912b9192f07b8c</srcmd5>
+    <version>5.12.1</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>7f5b79f2fa5bcc6ee402896228006847</srcmd5>
+    <version>5.12.1</version>
+    <time>1280485865</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 44156 from user mlschroe
+</comment>
+    <requestid>44156</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f6c37f8ffe010c98bd1d415850b24cba</srcmd5>
+    <version>5.12.2</version>
+    <time>1286790237</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl based on submit request 50185 from user coolo
+</comment>
+    <requestid>50185</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>e67dbaa8ca1957125d6f2c7f6bf30ab4</srcmd5>
+    <version>5.12.2</version>
+    <time>1290247958</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53402 from user coolo
+</comment>
+    <requestid>53402</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>bcff032cf3d97d84be607777153fec31</srcmd5>
+    <version>5.12.2</version>
+    <time>1290247968</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53402
+</comment>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>88ffad2651d3c0ee7f76e30c44951c1d</srcmd5>
+    <version>5.12.2</version>
+    <time>1290788053</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53871 from user coolo
+</comment>
+    <requestid>53871</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>6a0a3b273c7fc891783802ec93322d1b</srcmd5>
+    <version>5.12.2</version>
+    <time>1290788061</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53871
+</comment>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>a32b62b6984796ac58e123c3e5ff5ec4</srcmd5>
+    <version>5.12.2</version>
+    <time>1291127790</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54168 from user coolo
+</comment>
+    <requestid>54168</requestid>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>a140d093ba19011b1b155c0a377620d7</srcmd5>
+    <version>5.12.2</version>
+    <time>1291127798</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54168
+</comment>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>1c00e69732a12601b3dc7eef9ad4f7aa</srcmd5>
+    <version>5.12.3</version>
+    <time>1295054660</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58280 from user mlschroe
+</comment>
+    <requestid>58280</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>8330104c2ad6dc5af2b58c38588c2536</srcmd5>
+    <version>5.12.3</version>
+    <time>1295054669</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58280
+</comment>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>2f503f39503e6146dfba0d79196906b7</srcmd5>
+    <version>5.12.3</version>
+    <time>1296569139</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 59320 from user computersalat
+</comment>
+    <requestid>59320</requestid>
+  </revision>
+  <revision rev="58" vrev="7">
+    <srcmd5>f2db2e2ab9272dedb266cfff41794523</srcmd5>
+    <version>5.12.3</version>
+    <time>1296569151</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 59320
+</comment>
+  </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>13341e6a5709c58c2d47168d6a0a930c</srcmd5>
+    <version>5.12.3</version>
+    <time>1297782766</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61185 from user mlschroe
+</comment>
+    <requestid>61185</requestid>
+  </revision>
+  <revision rev="60" vrev="9">
+    <srcmd5>05c4be627c444df5d470ae7add6441be</srcmd5>
+    <version>5.12.3</version>
+    <time>1297782775</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61185
+</comment>
+  </revision>
+  <revision rev="61" vrev="12">
+    <srcmd5>05c4be627c444df5d470ae7add6441be</srcmd5>
+    <version>5.12.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="62" vrev="13">
+    <srcmd5>e74beea02b0ec380721db45935e09c77</srcmd5>
+    <version>5.12.3</version>
+    <time>1298533714</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 62624 from user mlschroe
+</comment>
+    <requestid>62624</requestid>
+  </revision>
+  <revision rev="63" vrev="14">
+    <srcmd5>39b8991b80748e607d01b20901650394</srcmd5>
+    <version>5.12.3</version>
+    <time>1298533720</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 62624
+</comment>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0d76988be43e55a0d2f2f49a990204c4</srcmd5>
+    <version>5.14.0</version>
+    <time>1305638952</time>
+    <user>saschpe</user>
+    <comment>- update to 5.14.0
+  * unicode version 6.0 is now supported (mostly)
+  * any unsigned value can be encoded as a character
+  * some regexp enhancements, e.g. s///r option
+  * array and hash container functions accept references
+  * package block syntax
+  * overridable tie functions
+  * assignment to $0 works again
+  * improved IPv6 support in the Socket module
+- fix regexp crash in reg_numbered_buff_fetch [bnc#676086]
+  [CVE-2010-4777]
+- move unicode files from perl-doc to perl again [bnc#678877]
+- remove feedback@suse.de mail address, it no longer exists
+  [bnc#657625]
+- support unversioned site_perl include directory</comment>
+    <requestid>70461</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>e5b3faf40046baf938c1be01120e92c8</srcmd5>
+    <version>5.14.0</version>
+    <time>1306416557</time>
+    <user>saschpe</user>
+    <comment>-&gt;</comment>
+    <requestid>71384</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>caf381cc1fa9defdc5c891694888b5da</srcmd5>
+    <version>5.14.0</version>
+    <time>1306416568</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71384
+</comment>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>eac2b0b1d5955697a9a8dac19a293ebd</srcmd5>
+    <version>5.14.1</version>
+    <time>1308309824</time>
+    <user>saschpe</user>
+    <comment>- update to 5.14.1</comment>
+    <requestid>74019</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>e5c913f1fd93b6ac110b2e544d49e8d7</srcmd5>
+    <version>5.14.1</version>
+    <time>1308309836</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74019
+</comment>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>e5c913f1fd93b6ac110b2e544d49e8d7</srcmd5>
+    <version>5.14.1</version>
+    <time>1319182237</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>192a1434955e925f7f6ad2bb435611e4</srcmd5>
+    <version>5.14.2</version>
+    <time>1319555106</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>89289</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>74b08302a9abbf51ac328e737bd13f10</srcmd5>
+    <version>5.14.2</version>
+    <time>1323193022</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>689d893fffeb2b151dfef1a11b452c1d</srcmd5>
+    <version>5.14.2</version>
+    <time>1328261130</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>102486</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>3bf402f8e394420f1b0d902338f3a018</srcmd5>
+    <version>5.14.2</version>
+    <time>1334216714</time>
+    <user>coolo</user>
+    <comment>- correct license statement</comment>
+    <requestid>112175</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ee06426149d2540ba923fc1c4a632d27</srcmd5>
+    <version>5.16.0</version>
+    <time>1338528139</time>
+    <user>coolo</user>
+    <comment>- provide a higher version for Module::Build to calm down rpm
+
+- update to 5.16.0
+  * new __SUB__ token to reference current sub
+  * more consistent eval
+  * ties can now be weakended
+  * supports (almost) unicode 6.1
+  * proper supports for unicode in symbol names
+  * new foldcase function fc()
+  * continue no longer requires the switch feature
+  * removed LinuxThreads hack for $$ and getppid
+  * performance optimizations</comment>
+    <requestid>123096</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>c7a5bd12487400138417a85aad63f748</srcmd5>
+    <version>5.16.0</version>
+    <time>1339767780</time>
+    <user>coolo</user>
+    <comment>update perl-base file list (forwarded request 124809 from adrianSuSE)</comment>
+    <requestid>125017</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>c7a5bd12487400138417a85aad63f748</srcmd5>
+    <version>5.16.0</version>
+    <time>1340183788</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bf2c4ce3632409b802e2dbf3eadb863f</srcmd5>
+    <version>5.16.1</version>
+    <time>1347283225</time>
+    <user>coolo</user>
+    <comment>- update to 5.16.1
+ * an off-by-two error in Scalar-List-Util has been fixed
+ * many perl modules updated</comment>
+    <requestid>132990</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>f5d22cc52758cfc2177c81ab049b461f</srcmd5>
+    <version>5.16.2</version>
+    <time>1353404549</time>
+    <user>coolo</user>
+    <comment>- update to 5.16.2
+ * &lt;Module::CoreList&gt; has been upgraded from version 2.70 to version 2.76
+ 
+  Perl 5.16.2 represents approximately 2 months of development since Perl
+  5.16.1 and contains approximately 740 lines of changes across 20 files
+  from 9 authors.
+
+- fix version for Module::Build obsoletes, so installing newer version is possible</comment>
+    <requestid>141539</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>f5d22cc52758cfc2177c81ab049b461f</srcmd5>
+    <version>5.16.2</version>
+    <time>1359109591</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>1552467af388c805602ed7cdbe64f213</srcmd5>
+    <version>5.16.2</version>
+    <time>1371459469</time>
+    <user>coolo</user>
+    <comment>cherry-pick</comment>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>0ba9d10e1a4365f7102d549c636d3bea</srcmd5>
+    <version>5.16.2</version>
+    <time>1371469613</time>
+    <user>coolo</user>
+    <comment>fix obsoletes - this is not 5.18</comment>
+  </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>448fdf6f3917488c3a0c312af01fb29b</srcmd5>
+    <version>5.16.2</version>
+    <time>1371477946</time>
+    <user>coolo</user>
+    <comment>grr</comment>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>be994d4a5f0e9f1ce880f7e52ec6af08</srcmd5>
+    <version>5.18.0</version>
+    <time>1372173469</time>
+    <user>coolo</user>
+    <comment>- Add perl-db6.diff to bring the DB_File module up to version 1.828
+  where it supports building with libdb-6.0.
+
+- update to 5.18.0
+  * new handling of experimental features
+  * new hash functions to improve security
+  * better hash randomization
+  * upgrade to Unicode 6.2
+  * support for computed labels
+  * vertical tabs are now whitespace
+  * smartmatch is experimental again
+  * lots of bug fixes
+- change perl_requires macro to use MODULE_COMPAT form
+
+- Disable testsuite only on qemu user space build</comment>
+    <requestid>180381</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>30391b80dc8182341eaf7a7a32754068</srcmd5>
+    <version>5.18.0</version>
+    <time>1376381899</time>
+    <user>scarabeus_factory</user>
+    <comment>- skip itimer test from Timer-HiRes for powerpc. Build hosts
+  are overloaded, building locally shows tests are passed
+  (skip_time_hires.patch) (forwarded request 186417 from k0da)</comment>
+    <requestid>186429</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>b3718c02129281baaf17c95a05f8cb62</srcmd5>
+    <version>5.18.1</version>
+    <time>1378416180</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>197406</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>b3718c02129281baaf17c95a05f8cb62</srcmd5>
+    <version>5.18.1</version>
+    <time>1379663541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>7f9387031d3fab6f6179faac71e55494</srcmd5>
+    <version>5.18.2</version>
+    <time>1389628389</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213506</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>c350cba8dc38734b28535f273675156b</srcmd5>
+    <version>5.18.2</version>
+    <time>1391540223</time>
+    <user>coolo</user>
+    <comment>- perl-threads.t-timeout.diff: increase timeout in t/op/threads.t
+
+This helps slower architectures since the timeout cannot be canceled and
+remains active for the rest of the subtests even though only needed for this
+single subtest (forwarded request 220662 from Andreas_Schwab)</comment>
+    <requestid>220695</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>9683dbc837e182ffa4ffc01bcb166b38</srcmd5>
+    <version>5.18.2</version>
+    <time>1395908911</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>227454</requestid>
+  </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>7639f2db1be732484370c6b15f47dc94</srcmd5>
+    <version>5.18.2</version>
+    <time>1397330955</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>229750</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>35a2dd71a0612579ba53645a8fe640f6</srcmd5>
+    <version>5.20.0</version>
+    <time>1405760655</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>241112</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>35a2dd71a0612579ba53645a8fe640f6</srcmd5>
+    <version>5.20.0</version>
+    <time>1409302148</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>3e3b2a7819d27294abc2ed93aa206221</srcmd5>
+    <version>5.20.1</version>
+    <time>1411926815</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>250240</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>26caaa018e9f399cfb24425f6bb432c1</srcmd5>
+    <version>5.20.1</version>
+    <time>1424430020</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>285967</requestid>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>020b4dea894018282315dad4c4ee1045</srcmd5>
+    <version>5.20.1</version>
+    <time>1425571453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287607</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>e080a36e71cfa8c5ac776757c792cfcc</srcmd5>
+    <version>5.22.0</version>
+    <time>1440480180</time>
+    <user>coolo</user>
+    <comment>- Reformat baselibs.conf.
+
+- update to perl-5.22.0
+  * several new experimental features
+  * new &lt;&lt;&gt;&gt; (double-diamond) operator
+  * new &quot;\b&quot; boundaries in REs, w.r.t. Unicode
+  * non-capturing RE flag &quot;/n&quot;
+  * Unicode 7.0
+  * &quot;defined(@array)&quot;, &quot;defined(%hash)&quot; are now fatal
+  * unescaped literal &quot;{&quot; in a pattern results in deprecation warning
+  * several modules updated
+  * modules CGI, Module::Build no longer included
+  * for a complete list of changes see perldelta.pod
+- perl-5.20.0.dif changed to fit 5.22.0, and renamed to perl-5.22.0.dif
+- changed patches to fit 5.22.0: perl-5.18.2-overflow.diff,
+  perl-netcmdutf8.diff, perl-regexp-refoverflow.diff,
+  perl-saverecontext.diff
+- dropped patches (now upstream): DataDumper-no-infinite-recursion.diff,
+  perl-5.20.2-Fix-Errno.pm-generation-for-gcc-5.0.patch,
+  perl-5.21.8-h2ph-correct-handling-of-hex-constants-for-the-pream.patch,
+  perl-5.21.8-lib-h2ph.t-to-test-generated-t-_h2ph_pre.ph-instead-.patch</comment>
+    <requestid>314473</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>6d21c4c8518447060fe04e03f6b3d1ec</srcmd5>
+    <version>5.22.0</version>
+    <time>1449995682</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348064</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>9e7bcb16a47170072e1a8903a4b68595</srcmd5>
+    <version>5.22.0</version>
+    <time>1452611444</time>
+    <user>dimstar_suse</user>
+    <comment>- fix perl_gen_filelist macro to not fail on foo.1 man page
+
+e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parser failed builds from this and is tested to be fixed (forwarded request 352472 from bmwiedemann)</comment>
+    <requestid>352540</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>6db0434a70c40f8b0b84bb0809c24dfd</srcmd5>
+    <version>5.22.1</version>
+    <time>1455701612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359223</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>7589b0d2788a93fb7cf8016101473f7e</srcmd5>
+    <version>5.24.0</version>
+    <time>1464689301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to perl-5.24.0</comment>
+    <requestid>395034</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>5d40a6aad1a922bdfcfb1399e2ad9494</srcmd5>
+    <version>5.24.0</version>
+    <time>1465335768</time>
+    <user>dimstar_suse</user>
+    <comment>- Add perl-avoid-warnings.patch to fix a warning in cop.h, which
+  breaks perf build due to -Werror. Already upstream. (forwarded request 399629 from namtrac)</comment>
+    <requestid>399640</requestid>
+  </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>438568456f416d23d2116e8f2de8c4d9</srcmd5>
+    <version>5.24.0</version>
+    <time>1468048764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404881</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>a52621cea5d33cba976ae8959422558d</srcmd5>
+    <version>5.24.1</version>
+    <time>1495637150</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch from previous commit, does not work:
+  * Compress-Raw-Zlib-2.071-Adapt-tests-to-zlib-1.2.11.patch
+- Add patch taken from upstream release instead:
+  * Compress-Raw-Zlib-2.071-zlib-1.2.11.patch (forwarded request 496340 from scarabeus_iv)</comment>
+    <requestid>496777</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>636fa256a9e4cd17978fa7d08559abe9</srcmd5>
+    <version>5.26.1</version>
+    <time>1506955381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to perl-5.26.1
+ * [CVE-2017-12837] Heap buffer overflow in regular expression compiler
+ * [CVE-2017-12883] Buffer over-read in regular expression parser
+ * tons of bug fixes
+- update list of obsoletes
+
+- update to perl-5.26.0
+  * &quot;.&quot; no longer in @INC
+  * &quot;do&quot; may now warn
+  * regexp: a literal left brace &quot;{&quot; should be escaped
+  * lexical subroutines are no longer experimental
+  * indented Here-documents
+  * new regular expression modifier /xx
+  * declaring a reference to a variable
+  * unicode 9.0 is now supported
+  * new Hash Function For 64-bit Builds
+- rename perl-5.24.0.dif to perl-5.26.0.dif
+- remove obsolete perl-avoid-warnings.patch
+- remove obsolete Compress-Raw-Zlib-2.071-zlib-1.2.11.patch</comment>
+    <requestid>528515</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>66eef276de04bd2a5ac316d9e748cab7</srcmd5>
+    <version>5.26.1</version>
+    <time>1513245059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555269</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>dd40c19840aa6dddf6539d71f42e1929</srcmd5>
+    <version>5.26.1</version>
+    <time>1516221923</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>563623</requestid>
+  </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>944b1ee5385239b0ce2767c589728cba</srcmd5>
+    <version>5.26.1</version>
+    <time>1517234067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568390</requestid>
+  </revision>
+  <revision rev="108" vrev="5">
+    <srcmd5>397553f367a8ee271b4ef9a0381fa40f</srcmd5>
+    <version>5.26.1</version>
+    <time>1520852626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583678</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>cba28403db236db6843e1e06c7ad8d8c</srcmd5>
+    <version>5.26.2</version>
+    <time>1527276852</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>611550</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>53804511def4cd22cb2fcac8d0f3f365</srcmd5>
+    <version>5.28.1</version>
+    <time>1545222548</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>653081</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>0d5aae50694e7cb3625ee53baedc670a</srcmd5>
+    <version>5.28.1</version>
+    <time>1549624090</time>
+    <user>coolo</user>
+    <comment>- Add perl-fix2020.patch to fix timelocal calls in 2020 (boo#1102840)
+- Add perl-reproducible2.patch to make build reproducible in spite of ASLR (forwarded request 668211 from bmwiedemann)</comment>
+    <requestid>670560</requestid>
+  </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>fd0fbaacfc244e688455d083c2fff978</srcmd5>
+    <version>5.28.1</version>
+    <time>1562591300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712343</requestid>
+  </revision>
+</revisionlist>

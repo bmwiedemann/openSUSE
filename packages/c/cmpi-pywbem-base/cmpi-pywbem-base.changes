@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sat Jun 18 17:26:42 UTC 2016 - kkaempf@suse.com
+
+- buildrequire python-six and -ply
+
+-------------------------------------------------------------------
+Mon Feb 15 14:37:58 UTC 2016 - eshmarnev@suse.com
+
+- delete mkdir %{buildroot} from spec file
+- add fdupes to spec file 
+- delete commented lines of code
+- add '#!BuildIgnore: pywebm' instead of '+BuildRequires: -pywbem'
+
+-------------------------------------------------------------------
+Wed Jun 24 07:49:02 UTC 2015 - kkaempf@suse.com
+
+- fix SLE10 build
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:03 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 23:15:27 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Sat Sep 27 12:05:10 MDT 2008 - bwhiteley@suse.de
+
+- moved providers to root/suse namespace
+- make use of cmpi-provider-register
+
+-------------------------------------------------------------------
+Tue Sep 23 14:27:18 MDT 2008 - bwhiteley@suse.de
+
+- Initial package
+

@@ -1,0 +1,5 @@
+<package name="libmateweather" project="openSUSE:Factory">
+  <title>MATE Desktop library and utilities</title>
+  <description>libmateweather is a library to access weather information from online services for numerous locations.</description>
+  <devel project="X11:MATE:Factory" package="libmateweather"/>
+</package>

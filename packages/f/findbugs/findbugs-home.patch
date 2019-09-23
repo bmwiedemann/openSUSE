@@ -1,0 +1,135 @@
+diff --git a/etc/MANIFEST-findbugs.MF b/etc/MANIFEST-findbugs.MF
+index b29d6f8..9d885be 100644
+--- a/etc/MANIFEST-findbugs.MF
++++ b/etc/MANIFEST-findbugs.MF
+@@ -1,3 +1 @@
+ Manifest-Version: 1.0
+-Main-Class: edu.umd.cs.findbugs.LaunchAppropriateUI
+-Class-Path: bcel-6.0-SNAPSHOT.jar dom4j-1.6.1.jar jaxen-1.1.6.jar asm-debug-all-5.0.2.jar jsr305.jar jFormatString.jar commons-lang-2.6.jar
+diff --git a/etc/script.properties b/etc/script.properties
+index f595a9a..b94eb5c 100644
+--- a/etc/script.properties
++++ b/etc/script.properties
+@@ -3,48 +3,8 @@
+ # variable.  Also sets the fb_osname shell variable,
+ # as the output of uname.
+ script.get.fbhome=\
+-    program="$0"\n\
+-    \n\
+-    # Follow symlinks until we get to the actual file.\n\
+-    while [ -h "$program" ]; do\n\
+-    \tlink=`ls -ld "$program"`\n\
+-    \tlink=`expr "$link" : '.*-> \\(.*\\)'`\n\
+-    \tif [ "`expr "$link" : '/.*'`" = 0 ]; then\n\
+-    \t\t# Relative\n\
+-    \t\tdir=`dirname "$program"`\n\
+-    \t\tprogram="$dir/$link"\n\
+-    \telse\n\
+-    \t\t# Absolute\n\
+-    \t\tprogram="$link"\n\
+-    \tfi\n\
+-    done\n\
+-    \n\
+-    # Assume findbugs home directory is the parent\n\
+-    # of the directory containing the script (which should\n\
+-    # normally be "$findbugs_home/bin").\n\
+-    dir=`dirname "$program"`\n\
+-    findbugs_home="$dir/.."\n\
+-    \n\
+-    # Handle FHS-compliant installations (e.g., Fink)\n\
+-    if [ -d "$findbugs_home/share/findbugs" ]; then\n\
+-    \tfindbugs_home="$findbugs_home/share/findbugs"\n\
+-    fi\n\
+-    \n\
+-    # Make absolute\n\
+-    findbugs_home=`cd "$findbugs_home" && pwd`\n\
+-    \n\
+-    fb_pathsep=':'\n\
+-    \n\
+-    # Handle cygwin, courtesy of Peter D. Stout\n\
++    findbugs_home=/usr/share/findbugs\n\
+     fb_osname=`uname`\n\
+-    if [ `expr "$fb_osname" : CYGWIN` -ne 0 ]; then\n\
+-    \tfindbugs_home=`cygpath --mixed "$findbugs_home"`\n\
+-    \tfb_pathsep=';'\n\
+-    fi\n\
+-    # Handle MKS, courtesy of Kelly O'Hair\n\
+-    if [ "${fb_osname}" = "Windows_NT" ]; then\n\
+-    \tfb_pathsep=';'\n\
+-    fi\n\
+     \n\
+     if [ ! -d "$findbugs_home" ]; then\n\
+     \techo "The path $findbugs_home,"\n\
+@@ -88,16 +48,17 @@ script.set.default.java=\
+ 
+ # Fragment to execute java, using the arguments stored
+ # in the shell's $@ variable (and/or in the $fb_appargs variable).
+-# Unless fb_appjar is specified, assumes the class to be executed
+-# is in $findbugs_home/lib/findbugs.jar.
+ script.wrap.java=\
+     fb_javacmd=\${fb_javacmd:-"java"}\n\
+     fb_maxheap=\${fb_maxheap:-"-Xmx768m"}\n\
+-    fb_appjar=\${fb_appjar:-"$findbugs_home/lib/findbugs.jar"}\n\
++    \n\
++    fb_classpath=\$(build-classpath findbugs findbugs-bcel dom4j jaxen \\\n\
++    \tobjectweb-asm/asm-all jsr-305 jFormatString apache-commons-lang)\n\
++    \n\
+     set -f\n\
+     #echo command: \\\n\
+     exec "$fb_javacmd" \\\n\
+-    \t-classpath "$fb_appjar$fb_pathsep$CLASSPATH" \\\n\
++    \t-classpath "$fb_classpath" \\\n\
+     \t-Dfindbugs.home="$findbugs_home"\\\n\
+     \t$fb_maxheap $fb_jvmargs $fb_mainclass \${@:+"$@"} $fb_appargs
+ 
+diff --git a/src/scripts/standard/fb b/src/scripts/standard/fb
+index 1f42652..d8fa084 100644
+--- a/src/scripts/standard/fb
++++ b/src/scripts/standard/fb
+@@ -9,8 +9,6 @@
+ @SET_DEFAULT_JAVA@
+ 
+ 
+-fb_appjar="$findbugs_home/lib/findbugs.jar"
+-
+ ShowHelpAndExit() {
+ 	fb_mainclass="edu.umd.cs.findbugs.ShowHelp"
+ 	@WRAP_JAVA@
+diff --git a/src/scripts/standard/findbugs b/src/scripts/standard/findbugs
+index d5bd992..779a61a 100755
+--- a/src/scripts/standard/findbugs
++++ b/src/scripts/standard/findbugs
+@@ -8,8 +8,6 @@
+ 
+ @SET_DEFAULT_JAVA@
+ 
+-fb_appjar="$findbugs_home/lib/findbugs.jar"
+-
+ ShowHelpAndExit() {
+ 	fb_mainclass="edu.umd.cs.findbugs.ShowHelp"
+ 	@WRAP_JAVA@
+diff --git a/src/scripts/standard/findbugs2 b/src/scripts/standard/findbugs2
+index 36c054b..d250e79 100644
+--- a/src/scripts/standard/findbugs2
++++ b/src/scripts/standard/findbugs2
+@@ -109,13 +109,18 @@ if [ $fb_osname = "Darwin" ]; then
+ 		-Dapple.laf.useScreenMenuBar=true"
+ fi
+ 
++fb_classpath=$(build-classpath findbugs findbugs-bcel dom4j jaxen \
++	objectweb-asm/asm-all jsr-305 jFormatString apache-commons-lang)
++
++fb_mainclass=edu.umd.cs.findbugs.LaunchAppropriateUI
++
+ #
+ # Launch JVM
+ #
+ exec "$fb_javacmd" \
+-	-classpath "$fb_appjar$fb_pathsep$CLASSPATH" \
++	-classpath "$fb_classpath" \
+ 	-Dfindbugs.home="$findbugs_home" \
+ 	$jvm_debug $jvm_maxheap $jvm_ea $jvm_conservespace $jvm_user_props \
+ 	-Dfindbugs.launchUI=$fb_launchui \
+-	-jar $findbugs_home/lib/findbugs.jar \
++	$fb_mainclass \
+ 	${@:+"$@"}

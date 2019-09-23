@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>27dde95572c306fbc5d904bd43c0459d</srcmd5>
+    <version>0.13</version>
+    <time>1247020942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc8f621a43a6916bee0c67f9a89e911f</srcmd5>
+    <version>0.14</version>
+    <time>1252580104</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libatasmart based on submit request 20245 from user vuntz
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>012049ab20e854a19d90c79fce08f3ee</srcmd5>
+    <version>0.14</version>
+    <time>1254523242</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libatasmart based on submit request 21605 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>012049ab20e854a19d90c79fce08f3ee</srcmd5>
+    <version>0.14</version>
+    <time>1254523242</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libatasmart based on submit request 21605 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d0b11f114a70f0a9ffaaa7aefc714797</srcmd5>
+    <version>0.17</version>
+    <time>1258373851</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libatasmart based on submit request 24324 from user vuntz
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>71c945c1b89707cbc4999c6484ed0ca6</srcmd5>
+    <version>0.17</version>
+    <time>1268831112</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libatasmart based on submit request 34952 from user coolo
+</comment>
+    <requestid>34952</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d907abd559cd5348d195ae03c3be2068</srcmd5>
+    <version>0.17</version>
+    <time>1268924501</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d907abd559cd5348d195ae03c3be2068</srcmd5>
+    <version>0.17</version>
+    <time>1278667357</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>d907abd559cd5348d195ae03c3be2068</srcmd5>
+    <version>0.17</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>cb51d50d9cd7aada500f998bc2bb6a3a</srcmd5>
+    <version>0.17</version>
+    <time>1288700304</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51732 from user elvigia
+</comment>
+    <requestid>51732</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>9ae72b8d3a71a020f05c50ce62fd5d77</srcmd5>
+    <version>0.17</version>
+    <time>1288700309</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51732
+</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>9ae72b8d3a71a020f05c50ce62fd5d77</srcmd5>
+    <version>0.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>9ae72b8d3a71a020f05c50ce62fd5d77</srcmd5>
+    <version>0.17</version>
+    <time>1319182072</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dc2c94d8079f6365ab207f3ae28cd177</srcmd5>
+    <version>0.18</version>
+    <time>1321460310</time>
+    <user>coolo</user>
+    <comment>Update to 0.18 (forwarded request 91748 from vuntz)</comment>
+    <requestid>91812</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>564b804ef8fed9aae1f07a8edef8cd40</srcmd5>
+    <version>0.18</version>
+    <time>1323192157</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>564b804ef8fed9aae1f07a8edef8cd40</srcmd5>
+    <version>0.18</version>
+    <time>1340183564</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c5af4194c0647b7ad6c517783577194e</srcmd5>
+    <version>0.19</version>
+    <time>1347883053</time>
+    <user>coolo</user>
+    <comment>Update to 0.19 (forwarded request 134356 from vuntz)</comment>
+    <requestid>134393</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>c5af4194c0647b7ad6c517783577194e</srcmd5>
+    <version>0.19</version>
+    <time>1359109241</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>c5af4194c0647b7ad6c517783577194e</srcmd5>
+    <version>0.19</version>
+    <time>1379662898</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>c5af4194c0647b7ad6c517783577194e</srcmd5>
+    <version>0.19</version>
+    <time>1409301501</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>6afd9036db5dcced7532b945e4938e85</srcmd5>
+    <version>0.19</version>
+    <time>1462447081</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding &quot;xz&quot; as BuildRequires since it's not default on SLES11 and
+  using a bigger description.</comment>
+    <requestid>392479</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>85604805ae35d1b1a680a5cd34676106</srcmd5>
+    <version>0.19</version>
+    <time>1506678853</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529156</requestid>
+  </revision>
+</revisionlist>

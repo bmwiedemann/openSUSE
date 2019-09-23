@@ -1,0 +1,509 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e478d0c8c8340b94d0e7fb55a2e4ccfc</srcmd5>
+    <version>2.1.3</version>
+    <time>1168903730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>184e58b3d02826e3e283a4bc8ddf8cba</srcmd5>
+    <version>2.1.3</version>
+    <time>1176160088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a0555a4d0eae1605ba534888d6f1ff9</srcmd5>
+    <version>2.1.7</version>
+    <time>1178798326</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>44d4bf2d75bbdea0020e3237dcabef12</srcmd5>
+    <version>2.1.7</version>
+    <time>1181514264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>35b26d91ebabf0f9b3bc29c03bc42c17</srcmd5>
+    <version>2.2.5</version>
+    <time>1202146317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b6dcecb791c39d4188ceb63786d9f9a0</srcmd5>
+    <version>2.2.6</version>
+    <time>1207047387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="36">
+    <srcmd5>d50b2307f50af43b530efaf935b33d29</srcmd5>
+    <version>2.2.6</version>
+    <time>1219971587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="45">
+    <srcmd5>1b40b5734c2e742e7d1beb405066f086</srcmd5>
+    <version>2.2.6</version>
+    <time>1224160207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="47">
+    <srcmd5>1b40b5734c2e742e7d1beb405066f086</srcmd5>
+    <version>2.2.6</version>
+    <time>1224160207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="48">
+    <srcmd5>b7c90650ae332364a46d6eafee7961ac</srcmd5>
+    <version>2.2.6</version>
+    <time>1268925257</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>97f3c1313a9137793c48b63d64ccffe5</srcmd5>
+    <version>2.3.4</version>
+    <time>1268989797</time>
+    <user>autobuild</user>
+    <comment>Copy from network:otrs/otrs based on submit request 35144 from user coolo
+</comment>
+    <requestid>35144</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>311ef8ade82c3a806c0f159256f522af</srcmd5>
+    <version>2.4.6</version>
+    <time>1270599701</time>
+    <user>autobuild</user>
+    <comment>Copy from network:otrs/otrs based on submit request 37145 from user computersalat
+</comment>
+    <requestid>37145</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>142b4ce23ebd67602271a2b8a2ba186d</srcmd5>
+    <version>2.4.6</version>
+    <time>1276245179</time>
+    <user>autobuild</user>
+    <comment>Copy from network:otrs/otrs based on submit request 41302 from user computersalat
+</comment>
+    <requestid>41302</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>142b4ce23ebd67602271a2b8a2ba186d</srcmd5>
+    <version>2.4.6</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>142b4ce23ebd67602271a2b8a2ba186d</srcmd5>
+    <version>2.4.6</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>208dab4b08edf72556e550349fd002ba</srcmd5>
+    <version>2.4.7</version>
+    <time>1279917764</time>
+    <user>autobuild</user>
+    <comment>Copy from network:otrs/otrs based on submit request 43594 from user computersalat
+</comment>
+    <requestid>43594</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>83865caeb0dd82bbc9e6c319bd470068</srcmd5>
+    <version>unknown</version>
+    <time>1292322226</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55894 from user computersalat
+</comment>
+    <requestid>55894</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>83865caeb0dd82bbc9e6c319bd470068</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>1eda4bf9ff7b576f225bc51e4a584a5c</srcmd5>
+    <version>unknown</version>
+    <time>1299240032</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63425 from user computersalat
+</comment>
+    <requestid>63425</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>a5f05b3ff244b8c1116b0ce3653c3122</srcmd5>
+    <version>unknown</version>
+    <time>1299240047</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63425
+</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>f0aa4875ba5094c751c790d096fdac5b</srcmd5>
+    <version>unknown</version>
+    <time>1299246450</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63443 from user computersalat
+</comment>
+    <requestid>63443</requestid>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>49dae472b70c97a5e361a22731894762</srcmd5>
+    <version>unknown</version>
+    <time>1299246459</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63443
+</comment>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>f1768903d5a27fa914511b13f548414e</srcmd5>
+    <version>unknown</version>
+    <time>1304928232</time>
+    <user>saschpe</user>
+    <comment>update to 2.4.10, itsm 2.1.3</comment>
+    <requestid>69835</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>65fba43cf62e7b9086ca464f235770d7</srcmd5>
+    <version>unknown</version>
+    <time>1304928244</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69835
+</comment>
+  </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>e405c28b2782713900f22cc9eef9e4fd</srcmd5>
+    <version>unknown</version>
+    <time>1306413544</time>
+    <user>saschpe</user>
+    <comment>update to 3.0.7, ITSM to 3.0.3</comment>
+    <requestid>70953</requestid>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>2acb6f2fbd471bb5f704622da10862fa</srcmd5>
+    <version>unknown</version>
+    <time>1310975075</time>
+    <user>saschpe</user>
+    <comment>update to 3.0.9, ITSM 3.0.4</comment>
+    <requestid>76360</requestid>
+  </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>31dcf54d0c594ec293a60fb17fb9e5e0</srcmd5>
+    <version>unknown</version>
+    <time>1315233806</time>
+    <user>lrupp</user>
+    <comment>update to 3.0.10, update OTRS::ITSM to 3.0.5</comment>
+    <requestid>80700</requestid>
+  </revision>
+  <revision rev="28" vrev="16">
+    <srcmd5>31dcf54d0c594ec293a60fb17fb9e5e0</srcmd5>
+    <version>unknown</version>
+    <time>1319182223</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="17">
+    <srcmd5>da914cb54dc7dd76115e8f47056758a4</srcmd5>
+    <version>unknown</version>
+    <time>1323185009</time>
+    <user>coolo</user>
+    <comment>update to 3.0.11, several fixes</comment>
+    <requestid>95266</requestid>
+  </revision>
+  <revision rev="30" vrev="18">
+    <srcmd5>48c44f0b1a45b38e482c92835388f465</srcmd5>
+    <version>unknown</version>
+    <time>1323192916</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="19">
+    <srcmd5>818ba61daac96b883c33a799a9fefc2d</srcmd5>
+    <version>unknown</version>
+    <time>1339587137</time>
+    <user>coolo</user>
+    <comment>update OTRS to 3.1.6
+update OTRS:ITSM to 3.1.4</comment>
+    <requestid>124419</requestid>
+  </revision>
+  <revision rev="32" vrev="21">
+    <srcmd5>818ba61daac96b883c33a799a9fefc2d</srcmd5>
+    <version>unknown</version>
+    <time>1340183770</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="22">
+    <srcmd5>67e976de420f2c4345d118ce8945a5bd</srcmd5>
+    <version>unknown</version>
+    <time>1342093715</time>
+    <user>namtrac</user>
+    <comment>update to 3.1.7 (forwarded request 127443 from computersalat)</comment>
+    <requestid>127445</requestid>
+  </revision>
+  <revision rev="34" vrev="23">
+    <srcmd5>e50395f49ba05ac2e9983442be0ce968</srcmd5>
+    <version>unknown</version>
+    <time>1347618781</time>
+    <user>namtrac</user>
+    <comment>fix for bnc#778655 (CVE-2012-4600) (forwarded request 133524 from computersalat)</comment>
+    <requestid>133525</requestid>
+  </revision>
+  <revision rev="35" vrev="24">
+    <srcmd5>ec59be6e71b0bbce0f4325a4280423b4</srcmd5>
+    <version>unknown</version>
+    <time>1353602420</time>
+    <user>coolo</user>
+    <comment>update to 3.1.11, fix for bnc#790729 (forwarded request 142382 from computersalat)</comment>
+    <requestid>142383</requestid>
+  </revision>
+  <revision rev="36" vrev="25">
+    <srcmd5>a3c4b0bda6399e03c2e3d77bf73d7c8b</srcmd5>
+    <version>unknown</version>
+    <time>1355912611</time>
+    <user>coolo</user>
+    <comment>update to 3.1.12, ITSM to 3.1.7 (forwarded request 145229 from computersalat)</comment>
+    <requestid>145230</requestid>
+  </revision>
+  <revision rev="37" vrev="27">
+    <srcmd5>a3c4b0bda6399e03c2e3d77bf73d7c8b</srcmd5>
+    <version>unknown</version>
+    <time>1359109559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="28">
+    <srcmd5>0ee1ec86c010f3744f34e770280fb084</srcmd5>
+    <version>unknown</version>
+    <time>1362731403</time>
+    <user>coolo</user>
+    <comment>update to 3.1.13 (forwarded request 157946 from computersalat)</comment>
+    <requestid>157954</requestid>
+  </revision>
+  <revision rev="39" vrev="29">
+    <srcmd5>f5a9d75c15f9a0c1501c1b8350259758</srcmd5>
+    <version>unknown</version>
+    <time>1363856022</time>
+    <user>coolo</user>
+    <comment>Update to 3.2.3. (forwarded request 159605 from aledr) (forwarded request 159616 from computersalat)</comment>
+    <requestid>159635</requestid>
+  </revision>
+  <revision rev="40" vrev="30">
+    <srcmd5>fb6b00394db2b399ee67f3a8ffcf5e2e</srcmd5>
+    <version>unknown</version>
+    <time>1375420066</time>
+    <user>coolo</user>
+    <comment>fix for bnc#828850 (CVE-2013-4717, CVE-2013-4718), update to 3.2.9, ITSM update to 3.2.7 (forwarded request 184466 from computersalat)</comment>
+    <requestid>184467</requestid>
+  </revision>
+  <revision rev="41" vrev="32">
+    <srcmd5>fb6b00394db2b399ee67f3a8ffcf5e2e</srcmd5>
+    <version>unknown</version>
+    <time>1379663460</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="33">
+    <srcmd5>ec964d7fd2888e6eca3783222d45248b</srcmd5>
+    <version>unknown</version>
+    <time>1379925612</time>
+    <user>coolo</user>
+    <comment>update to 3.2.10, OTRS::ITSM to 3.2.9 (forwarded request 199624 from computersalat)</comment>
+    <requestid>199626</requestid>
+  </revision>
+  <revision rev="43" vrev="34">
+    <srcmd5>f315a7b1887ef89efd67ec0bcf141e7a</srcmd5>
+    <version>unknown</version>
+    <time>1386843460</time>
+    <user>coolo</user>
+    <comment>update to 3.2.13 (forwarded request 210523 from computersalat)</comment>
+    <requestid>210524</requestid>
+  </revision>
+  <revision rev="44" vrev="35">
+    <srcmd5>9019ca7adf9bcabfbafe42c9831ff830</srcmd5>
+    <version>unknown</version>
+    <time>1393455690</time>
+    <user>coolo</user>
+    <comment>fix for OSA-2014-03, update to 3.2.15 (forwarded request 224007 from computersalat)</comment>
+    <requestid>224008</requestid>
+  </revision>
+  <revision rev="45" vrev="36">
+    <srcmd5>c096d17983889850e5ee372497972e7a</srcmd5>
+    <version>unknown</version>
+    <time>1395151958</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226574</requestid>
+  </revision>
+  <revision rev="46" vrev="37">
+    <srcmd5>511c6c2fceda2b7114ad70c479215400</srcmd5>
+    <version>3.3.5</version>
+    <time>1396020310</time>
+    <user>coolo</user>
+    <comment>fix changelog (forwarded request 227781 from computersalat)</comment>
+    <requestid>227782</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e21e4273ea27a5c3f5709736913ff4c1</srcmd5>
+    <version>3.3.6</version>
+    <time>1396709277</time>
+    <user>coolo</user>
+    <comment>fix for bnc#871758, OSA-2014-04 (CVE-2014-2553), OSA-2014-05 (CVE-2014-2554), update to 3.3.6 (forwarded request 228959 from computersalat)</comment>
+    <requestid>228960</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3cf341143d04a19e7bccae971656c0dc</srcmd5>
+    <version>3.3.8</version>
+    <time>1406785296</time>
+    <user>coolo</user>
+    <comment>update to 3.3.8, ITSM to 3.3.8</comment>
+    <requestid>242899</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>3cf341143d04a19e7bccae971656c0dc</srcmd5>
+    <version>3.3.8</version>
+    <time>1409302086</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b77cb266bd5c78cf04c6f9e4c56208ed</srcmd5>
+    <version>3.3.9</version>
+    <time>1412155405</time>
+    <user>coolo</user>
+    <comment>update to 3.3.9, ITSM to 3.3.9</comment>
+    <requestid>253240</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1812a18793fe296df0b1b5b9e8c15d9a</srcmd5>
+    <version>3.3.11</version>
+    <time>1419897022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266784</requestid>
+  </revision>
+  <revision rev="52" vrev="37">
+    <srcmd5>e6481e15673d702e9d0f7087c3f6e550</srcmd5>
+    <version>unknown</version>
+    <time>1478871238</time>
+    <user>dimstar_suse</user>
+    <comment>fix for boo#1008017 (OSA-2016-02, CVE-2016-9139), fix ZZZAuto.pm (forwarded request 438420 from computersalat)</comment>
+    <requestid>438421</requestid>
+  </revision>
+  <revision rev="53" vrev="38">
+    <srcmd5>4d0d73ba1fdf79e479fa4396d30aceb0</srcmd5>
+    <version>4.0.24</version>
+    <time>1503592467</time>
+    <user>dimstar_suse</user>
+    <comment>update to OTRS 4 (forwarded request 507951 from computersalat)</comment>
+    <requestid>507953</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0ee9c1bbdb19715ce921fbc246ff5763</srcmd5>
+    <version>4.0.25</version>
+    <time>1506956058</time>
+    <user>dimstar_suse</user>
+    <comment>improve itsm-update.sh (forwarded request 530203 from computersalat)</comment>
+    <requestid>530204</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>41a719455d388d13162df803950949e6</srcmd5>
+    <version>4.0.26</version>
+    <time>1511426670</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.0.26, fix for boo#1069391, CVE-2017-16664, OSA-2017-07 (forwarded request 544411 from computersalat)</comment>
+    <requestid>544413</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c0f9e668f32425129fcdd1e39b48722c</srcmd5>
+    <version>4.0.27</version>
+    <time>1512734538</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.0.27, fix for boo#1071799 (CVE-2017-16854, OSA-2017-08), fix for boo#1071797 (CVE-2017-16921, OSA-2017-09)</comment>
+    <requestid>555150</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>1374379e58c99ed25e0cafdae70b808a</srcmd5>
+    <version>4.0.27</version>
+    <time>1513343143</time>
+    <user>dimstar_suse</user>
+    <comment>fix for _fillupdir macro (boo#1069468)</comment>
+    <requestid>556891</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>5a463aaae10f8e0cb3e1e3bc23fada5a</srcmd5>
+    <version>4.0.28</version>
+    <time>1515260885</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>561505</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>06d23572c3afd88286eff4f8b6536c05</srcmd5>
+    <version>4.0.28</version>
+    <time>1516880413</time>
+    <user>dimstar_suse</user>
+    <comment>- fix wrong fillup_only call
+</comment>
+    <requestid>569254</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>87df935552521b13d9526ee43ce7b487</srcmd5>
+    <version>5.0.28</version>
+    <time>1531947238</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.0.28 (forwarded request 622089 from computersalat)</comment>
+    <requestid>622090</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>502d43f0ca44b0f2ae3e7e67683f661d</srcmd5>
+    <version>5.0.30</version>
+    <time>1538374636</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.0.30, fix for boo#1103800 (CVE-2018-14593, OSA-2018-03), boo#1109823 (CVE-2018-16587, OSA-2018-04), boo#1109822 (CVE-2018-16586, OSA-2018-05) (forwarded request 638523 from computersalat)</comment>
+    <requestid>638524</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e124bcc9dcde46fd976d82a28efee9fe</srcmd5>
+    <version>5.0.32</version>
+    <time>1543828241</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.0.32, fix for boo#1116004 (CVE-2018-19143, OSA-2018-07, CVE-2018-19141, OSA-2018-09, OSA-2018-10) (forwarded request 653198 from computersalat)</comment>
+    <requestid>653199</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4847ee2182d0392c7cfb03401833ba39</srcmd5>
+    <version>6.0.16</version>
+    <time>1553611187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682270</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>477b15e654682817a1ac36e5f4140291</srcmd5>
+    <version>6.0.19</version>
+    <time>1562073497</time>
+    <user>dimstar_suse</user>
+    <comment>update to 6.0.19, fix for boo#1129755 (CVE-2019-9751, OSA-2019-02), boo#1139406 (CVE-2019-9892, OSA-2019-04), (CVE-2019-10067, OSA-2019-05), (CVE-2019-10066, OSA-2019-06), boo#1137615 (CVE-2019-12248, OSA-2019-08), boo#1137614 (CVE-2019-12497, OSA-2019-09) (forwarded request 712522 from computersalat)</comment>
+    <requestid>712523</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c85e5d9fa1c580730c48f7e519d2eb9b</srcmd5>
+    <version>6.0.20</version>
+    <time>1563914168</time>
+    <user>dimstar_suse</user>
+    <comment>update to 6.0.20, fix for boo#1141430 (CVE-2019-12746, OSA-2019-10), boo#1141431 (CVE-2019-13457, OSA-2019-11), boo#1141432 (CVE-2019-13458, OSA-2019-12)</comment>
+    <requestid>717673</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>688074f3800f56c69feb30da22587b33</srcmd5>
+    <version>6.0.22</version>
+    <time>1567680211</time>
+    <user>dimstar_suse</user>
+    <comment>update to 6.0.22</comment>
+    <requestid>728241</requestid>
+  </revision>
+</revisionlist>

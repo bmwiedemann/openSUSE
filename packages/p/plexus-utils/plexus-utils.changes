@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Apr  9 16:52:48 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to the parent pom since we are not building
+  using Maven.
+
+-------------------------------------------------------------------
+Sun Mar  3 18:20:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Describe package, not project.
+
+-------------------------------------------------------------------
+Sat Mar  2 13:21:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial package for plexus-utils 3.1.1
+- Generate and customize ant build file

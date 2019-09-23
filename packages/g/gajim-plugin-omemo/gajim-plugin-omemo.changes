@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Wed Jun 31 18:51:58 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Downgrade to version 2.6.29:
+  * Target Gajim 1.1.x instead of 1.2.x, again.
+
+-------------------------------------------------------------------
+Tue Jun 18 12:23:27 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
+
+- Update to version 2.6.59
+  * Bug fixes
+  * Better handle key exchange messages
+  * Fix carbon messages not working
+  * Adapt to Gajim and nbxmpp changes
+  * Add new devicelist module
+  * Fix deprecation warnings
+  * Fix an error in non-anonymous MUCs
+  * Add fallback body
+  * Fix label color
+  * Refactor
+  * Fix error while loading keys from database
+  * Fix a bug where the KeyDialog could not be opened
+  * Set device inactive after 300 unacknowledged messages
+  * GUI Improvements for Key Dialog
+  * Add support for key transport messages
+  * Dont allow sending message while having undecided fingerprints
+  * Improve logging
+  * Build sessions immediately
+  * Fix endless devicelist update loop
+  * Fix database bug with old values
+  * Pass trust to Gajim
+  * Fix database version
+  * Fix group chat messages
+  * Adapt to link handler changes
+ 
+-------------------------------------------------------------------
+Sun Jan 13 17:44:45 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 2.6.26 (changes since 2.6.23):
+  * Use "current" as pubsub node id.
+  * Better handle key exchange messages.
+  * Fix label colour.
+  * Don't add additional thread node.
+  * Add fallback body.
+
+-------------------------------------------------------------------
+Tue Nov 20 19:17:25 UTC 2018 - sor.alexei@meowr.ru
+
+- Downgrade to version 2.6.23 (changes since 2.6.33):
+  * Target Gajim 1.1.x instead of 1.2.x.
+
+-------------------------------------------------------------------
+Wed Nov  7 15:10:33 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.6.33 (changes since 2.6.0):
+  * Save encryption details to the database.
+  * GUI adjustments.
+  * Use new fingerprints dialogue.
+  * Refactor some UI code.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Fri Aug 17 17:47:25 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.6.0:
+  * Fingerprint Window: Show all fingerprints in one list.
+- Use the official archive source.
+- Add the missing dependencies python3-cryptography,
+  python3-protobuf and python3-qrcode.
+- Use words from the official description to elaborate.
+- Some clean-up.
+
+-------------------------------------------------------------------
+Tue Aug 14 20:06:34 CEST 2018 - vinz@vinzv.de
+
+- update to 2.5.14
+  * Make preparations for future Gajim versions
+  * Allow writing encrypted messages in groupchats if there are no
+    other participants
+
+-------------------------------------------------------------------
+Sun Jun 17 22:42:34 CEST 2018 - vinz@vinzv.de
+
+- update to 2.5.13
+
+-------------------------------------------------------------------
+Fri May 18 22:55:10 CEST 2018 - vinz@vinzv.de
+
+- update to 2.5.10
+
+-------------------------------------------------------------------
+Sun Sep 24 15:22:56 UTC 2017 - vinz@vinzv.de
+
+- update to 1.2.7
+- renamed to more appropriate scheme gajim-plugin-omemo
+
+-------------------------------------------------------------------
+Wed Apr 12 05:44:38 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- update to 1.2.0
+
+-------------------------------------------------------------------
+Wed Apr  6 02:48:01 UTC 2016 - mrueckert@suse.de
+
+- update to 0.4
+
+-------------------------------------------------------------------
+Wed Feb 10 01:40:14 UTC 2016 - mrueckert@suse.de
+
+- update to 0.3
+
+-------------------------------------------------------------------
+Tue Jan  5 21:43:14 UTC 2016 - mrueckert@suse.de
+
+- initial package

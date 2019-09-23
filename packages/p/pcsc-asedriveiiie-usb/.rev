@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d1d2cecae7f3a895e1eeb591ef847de</srcmd5>
+    <version>3.5</version>
+    <time>1186972746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="121">
+    <srcmd5>8d1d2cecae7f3a895e1eeb591ef847de</srcmd5>
+    <version>3.5</version>
+    <time>1186972746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="122">
+    <srcmd5>c101d82a0b73bcf5f4b3efb8fd609d35</srcmd5>
+    <version>3.5</version>
+    <time>1239747302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="124">
+    <srcmd5>c101d82a0b73bcf5f4b3efb8fd609d35</srcmd5>
+    <version>3.5</version>
+    <time>1239747302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="125">
+    <srcmd5>6e25f364f8d302a0a23149fc5074b987</srcmd5>
+    <version>3.5</version>
+    <time>1268925333</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="127">
+    <srcmd5>6e25f364f8d302a0a23149fc5074b987</srcmd5>
+    <version>3.5</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="128">
+    <srcmd5>6e25f364f8d302a0a23149fc5074b987</srcmd5>
+    <version>3.5</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="131">
+    <srcmd5>6e25f364f8d302a0a23149fc5074b987</srcmd5>
+    <version>3.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="133">
+    <srcmd5>6e25f364f8d302a0a23149fc5074b987</srcmd5>
+    <version>3.5</version>
+    <time>1319182234</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="134">
+    <srcmd5>b8d54468a81cecdc848c0204c06cf280</srcmd5>
+    <version>3.5</version>
+    <time>1323192998</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="136">
+    <srcmd5>b8d54468a81cecdc848c0204c06cf280</srcmd5>
+    <version>3.5</version>
+    <time>1340183783</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d4607588b65e929fcda4bf77de681aad</srcmd5>
+    <version>3.7</version>
+    <time>1342172003</time>
+    <user>namtrac</user>
+    <comment>- Update to version 3.7:
+  * IFDHSetProtocolParameters does nothing when the protocol need
+    not be changed.</comment>
+    <requestid>127768</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4472847c82911f308dc56c42d2d0f124</srcmd5>
+    <version>3.7</version>
+    <time>1350629426</time>
+    <user>coolo</user>
+    <comment>- Fix build with new udev rules directory location (forwarded request 138682 from fcrozat)</comment>
+    <requestid>138688</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2866966f0088154bbc4573d0dbb6691b</srcmd5>
+    <version>3.7</version>
+    <time>1358016418</time>
+    <user>namtrac</user>
+    <comment>It was an easy fix.
+
+The package has been failing to build in Factory for 67 days.
+There has been multiple reports in the &quot;Factory Status&quot; emails in
+the opensuse-packaging ML. And bnc#793542 has been there for more
+than one month.
+
+If the package is unmantained it should be offered to someone
+interested on it in the opensuse-packaging ML. And if nobody
+responds perhaps dropped.
+
+
+- Fix udev rules moving from /etc to (/usr)/lib (forwarded request 148168 from RedDwarf)</comment>
+    <requestid>148176</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>2866966f0088154bbc4573d0dbb6691b</srcmd5>
+    <version>3.7</version>
+    <time>1359109585</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>2866966f0088154bbc4573d0dbb6691b</srcmd5>
+    <version>3.7</version>
+    <time>1379663527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>2866966f0088154bbc4573d0dbb6691b</srcmd5>
+    <version>3.7</version>
+    <time>1409302134</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>694bc3adef9c9222005ab43cfada7bfd</srcmd5>
+    <version>3.7</version>
+    <time>1482785159</time>
+    <user>lnussel_factory</user>
+    <comment>- Fix: pcscd is started as root (boo#942847,
+  pcscd-group-no-longer-exist.patch)</comment>
+    <requestid>445653</requestid>
+  </revision>
+</revisionlist>

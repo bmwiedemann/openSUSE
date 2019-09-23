@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Tue Jul 10 06:00:40 UTC 2018 - coolo@suse.com
+
+- updated to 1.86
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  1.86 - 2018-07-09
+      - Remove obsolete documentation about arrayrefref as the $source
+        argument for ->select (removed in version 1.74)
+      - Factor out the field list part of SELECT for subclassability (GH#13)
+      - Do not replace literal '0' with empty string in WHERE clauses (GH#14)
+
+-------------------------------------------------------------------
+Wed Jan 31 12:46:25 UTC 2018 - coolo@suse.com
+
+- updated to 1.85
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  1.85 - 2018-01-27
+      - Restore perl version requirement missed in the Distar port
+      - Factor out the SET ... part of UPDATE for subclassability (GH#12)
+
+-------------------------------------------------------------------
+Tue Apr  4 06:42:58 UTC 2017 - coolo@suse.com
+
+- updated to 1.84
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  1.84 - 2017-04-03
+      - Restore 'dynamic_config => 0' missed in the Distar port
+  
+  1.83 - 2017-04-03
+      - Support for DELETE ... RETURNING (GH#9)
+      - Port to Distar
+
+-------------------------------------------------------------------
+Tue Mar 21 07:45:31 UTC 2017 - coolo@suse.com
+
+- updated to 1.82
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  revision 1.82  2017-03-20
+  -------------------------
+      - Add explicit dependency on Sub::Quote (GH#8)
+      - Fix syntax errors in ORDER BY docs (GH#7)
+  
+  revision 1.81_01  2017-02-28
+  ----------------------------
+      - Fix order clauses with bind parameters in ->where
+      - Fix ->insert($table, \@values) with >26 values (RT#112684)
+      - Teach ::Tree that ILIKE (PostgreSQL) and REGEXP (MySQL) are binary ops
+      - Support for UPDATE ... RETURNING
+      - Documentation improvements for ORDER BY
+
+-------------------------------------------------------------------
+Wed Nov 12 09:41:09 UTC 2014 - coolo@suse.com
+
+- updated to 1.81
+     - Fix overly-enthusiastic parenthesis unroller (RT#99503)
+ 
+ revision 1.80  2014-10-05
+ ----------------------------
+     - Fix erroneous behavior of is_literal_value($) wrt { -ident => ... }
+     - Explicitly croak on top-level special ops (they didn't work anyway)
+ 
+ revision 1.79  2014-09-25
+ ----------------------------
+     - New exportable functions: is_literal_value($) and is_plain_value($)
+     - New attribute 'escape_char' allowing for proper escape of quote_chars
+       present in an identifier
+     - Deprecate { "" => \... } constructs
+     - Treat { -value => undef } as plain undef in all cases
+     - Explicitly throw on { -ident => undef }
+
+-------------------------------------------------------------------
+Mon Sep 15 15:44:40 UTC 2014 - coolo@suse.com
+
+- updated to 1.78
+     - Fix parsing of binary ops to correctly take up only a single LHS
+       element, instead of gobbling up the entire parse-to-date
+     - Explicitly handle ROW_NUMBER() OVER as the snowflake-operator it is
+     - Improve signatures/documentation of is_same_sql_bind / eq_sql_bind
+     - Retire script/format-sql - the utility needs more work to be truly
+       end-user convenient
+
+-------------------------------------------------------------------
+Mon Feb 24 06:12:15 UTC 2014 - coolo@suse.com
+
+- updated to 1.77
+    - Reintroduce { -not => undef } column operator (regression from 1.75)
+    - *UPCOMING INCOMPATIBLE BUGFIX*: SQLA used to generate incorrect SQL
+      on undef-containing lists fed to -in and -not_in. An exception will
+      be raised for a while before properly fixing this, to avoid quiet
+      but subtle changes to query results in production
+    - Deprecate and warn when supplying an empty arrayref to like/not_like
+      operators (likely to be removed before 2.0)
+
+    - Warn when using an inequality operator with a multi-value array to
+      arrive at what amounts to a 1=1 condition (no pre-2.0 plans to fix
+      this behavior due to backwards comp concerns)
+    - Fix false negative comparison of ORDER BY <function> ASC
+    - More improvements of incorrect parsing (placeholder at end of list
+      element)
+    - Fix typos in POD and comments (RT#87776)
+    - Augment -not_bool example with nesting (RT#89601)
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:57 UTC 2013 - coolo@suse.com
+
+- updated to 1.74
+    - Fix insufficient parenthesis unroll during operator comparison
+    - 'ORDER BY foo' and 'ORDER BY foo ASC' are now considered equal
+      by default (with a switch to reenable old behavior when necessary)
+    - Change parser to not eagerly slurp RHS expressions it doesn't recognize
+
+-------------------------------------------------------------------
+Tue Jun  4 17:21:42 UTC 2013 - coolo@suse.com
+
+- updated to 1.73
+    - Fix parsing of ORDER BY foo + ?
+    - Stop filling in placeholders in `format-sql` since it does not support
+      passing values for them anyway
+    - Fix parsing of NOT EXISTS
+    - Fix over-eager parenthesis unrolling
+    - Fix deep recursion warnings while parsing obnoxiously long sql statements
+    - Fix incorrect comparison of malformed lists
+    - Fix incorrect reporting of mismatch-members in SQLA::Test
+    - Migrate the -ident operator from DBIC into SQLA
+    - Migrate the -value operator from DBIC into SQLA
+
+-------------------------------------------------------------------
+Thu Mar 31 08:30:28 UTC 2011 - coolo@novell.com
+
+- update to 1.72
+  * lots of changes, see Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 10:23:00 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 11 14:47:44 UTC 2009 - chris@computersalat.de
+
+- update to version 1.60
+  * lot of changes, see Changes
+- cleanup spec
+  * added header
+  * sorted Tags
+  * fixed build-/deps
+  * added author
+  * moved changelog to .changes
+- added perl-macros
+  * perl_gen_filelist
+
+-------------------------------------------------------------------
+Sun Oct 26 08:12:19 CET 2008 - gerrit.beine@gmx.de
+
+- first release 1.24
+

@@ -1,0 +1,5 @@
+<package name="holodev" project="openSUSE:Factory">
+  <title>Holodev</title>
+  <description>Holodeck for software developers</description>
+  <devel project="devel:tools" package="holodev"/>
+</package>

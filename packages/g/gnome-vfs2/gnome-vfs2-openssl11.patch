@@ -1,0 +1,31 @@
+Index: gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-ssl.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/libgnomevfs/gnome-vfs-ssl.c
++++ gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-ssl.c
+@@ -375,6 +375,8 @@ gnome_vfs_ssl_create_from_fd (GnomeVFSSS
+         /* FIXME: SSL_CTX_set_verify (ssl_ctx, SSL_VERIFY_PEER, &ssl_verify);*/
+         ssl->private->ssl = SSL_new (ssl_ctx);
+ 
++	SSL_CTX_free (ssl_ctx); /* actually drops the reference count only, SSL_new will have incremented the ctx refcount. */
++
+ 	if (ssl->private->ssl == NULL) {
+ 		return GNOME_VFS_ERROR_IO;
+ 	}
+@@ -407,9 +409,6 @@ gnome_vfs_ssl_create_from_fd (GnomeVFSSS
+ 			}
+ 		}
+ 
+-                if (ssl->private->ssl->ctx)
+-                        SSL_CTX_free (ssl->private->ssl->ctx);
+-
+                 SSL_free (ssl->private->ssl);
+ 		g_free (ssl->private);
+ 		g_free (ssl);
+@@ -712,7 +711,6 @@ gnome_vfs_ssl_destroy (GnomeVFSSSL *ssl,
+ 		}
+ 	}
+ 	
+-	SSL_CTX_free (ssl->private->ssl->ctx);
+ 	SSL_free (ssl->private->ssl);
+ 	close (ssl->private->sockfd);
+ 	if (ssl->private->timeout)

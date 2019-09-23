@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Tue Mar 19 11:48:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix a typo detected by Leap 15.1
+- Update to 3.6.4. See DOCS/CHANGES.364 for more information
+- Rebase dcmtk-fix-DCMTKTargets.cmake.patch
+- Drop dcmtk-fix-CONFIGURE_PACKAGE_CONFIG_FILE.patch, merged upstream
+
+-------------------------------------------------------------------
+Tue Jul 10 08:13:48 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add patch to fix path in DCMTKConfig.cmake:
+  * dcmtk-fix-CONFIGURE_PACKAGE_CONFIG_FILE.patch
+
+-------------------------------------------------------------------
+Fri May 25 18:13:19 UTC 2018 - christophe@krop.fr
+
+- Update to 3.6.3. See DOCS/CHANGES.363 for more information
+  * Fix some buildsystem issues
+  * Enabled new TLS versions when using OpenSSL < 1.1.0
+- Drop dcmtk-3.6.0-0002-Install-libs-in-the-correct-arch-dir.patch.
+
+-------------------------------------------------------------------
+Sat Nov 18 21:53:17 UTC 2017 - christophe@krop.fr
+
+- Fix dcmtk-fix-DCMTKTargets.cmake.patch
+
+-------------------------------------------------------------------
+Fri Nov 17 07:42:55 UTC 2017 - guillaume@opensuse.org
+
+- Add dcmtk-fix-DCMTKTargets.cmake.patch to fix usage of 'dcmtk-devel'
+  without 'dcmtk' package
+
+-------------------------------------------------------------------
+Tue Jul 25 16:04:25 UTC 2017 - tittiatcoke@gmail.com
+
+- Update to version 3.6.2
+  * See DOCS/CHANGES.362 for more information
+- Build against the internal CharLS library. Only version 1.0 is 
+  supported and Factory offers version 2.0
+  * Drop patches:
+    - dcmtk-3.6.0-0004-Use-system-charls.patch
+    - dcmtk-3.6.0-0003-Removed-bundled-libcharl-reference-in-dcmjpls.patch
+    - dcmtk-3.6.0-0005-Fixed-includes-for-CharLS-1.0.patch
+- Drop patches due to updated build system and upstream integration:
+  * dcmtk-3.6.0-0001-Added-soname-information-for-all-targets.patch
+  * dcmtk-3.6.0-0006-Added-optional-support-for-building-shared-libraries.patch
+  * dcmtk-3.6.0-0007-Add-soname-generation-for-modules-which-are-not-in-D.patch
+  * dcmtk-3.6.0.diff
+  * gcc-4.7_fix.patch
+
+-------------------------------------------------------------------
+Thu Aug 30 07:04:25 UTC 2012 - pgajdos@suse.com
+
+- require libpng-devel instead of libpng14-compat-devel; 
+  libpng14-compat-devel is now default libpng-devel provider for 
+  factory; moreover dcmtk builds correctly with libpng15-devel too
+
+-------------------------------------------------------------------
+Sun Mar 18 14:42:01 UTC 2012 - asterios.dramis@gmail.com
+
+- Added a patch (gcc-4.7_fix.patch) to fix compilation with gcc-4.7.
+- Remove zero-length file /usr/share/dcmtk/wlistdb/OFFIS/lockfile (fix rpmlint
+  warning).
+
+-------------------------------------------------------------------
+Tue Dec 13 09:06:48 UTC 2011 - coolo@suse.com
+
+- fix last change
+
+-------------------------------------------------------------------
+Mon Dec 12 20:24:52 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changed libdcmtk3 subpackage name to libdcmtk3_6 which is the correct one
+    according to openSUSE shared library packaging policy.
+
+-------------------------------------------------------------------
+Sun Dec 11 17:38:17 UTC 2011 - asterios.dramis@gmail.com
+
+- Added seven patches (taken from Fedora) to make the package build shared
+  libraries (using cmake) and link to the system "CharLS" library instead of
+  the internal copy:
+  + dcmtk-3.6.0-0001-Added-soname-information-for-all-targets.patch
+  + dcmtk-3.6.0-0002-Install-libs-in-the-correct-arch-dir.patch
+  + dcmtk-3.6.0-0003-Removed-bundled-libcharl-reference-in-dcmjpls.patch
+  + dcmtk-3.6.0-0004-Use-system-charls.patch
+  + dcmtk-3.6.0-0005-Fixed-includes-for-CharLS-1.0.patch
+  + dcmtk-3.6.0-0006-Added-optional-support-for-building-shared-libraries.patch
+  + dcmtk-3.6.0-0007-Add-soname-generation-for-modules-which-are-not-in-D.patch
+- Added a patch "dcmtk-3.6.0.diff" to fix libraries linking.
+- Spec file updates:
+  * Changed License: entry to SPDX style. Removed "AS IS" to fix rpmlint
+    warning "invalid-license".
+  * Adapted spec file to the cmake usage and building of shared libraries.
+    Added a libdcmtk3 subpackage.
+  * Added CharLS-devel in BuildRequires:.
+
+-------------------------------------------------------------------
+Thu Sep 22 18:17:07 UTC 2011 - toddrme2178@gmail.com
+
+- Added build of development files.  Without these other software
+   can't make use of this.
+
+-------------------------------------------------------------------
+Mon Aug 29 10:51:37 UTC 2011 - toddrme2178@gmail.com
+
+- Added ASL-2.0 to the spec file license tag (see bnc #711187)
+
+-------------------------------------------------------------------
+Thu Aug  4 14:57:02 UTC 2011 - toddrme2178@gmail.com
+
+- Created proper spec file with macors and a real %files section
+- Moved changes to a .changes file
+- Removed tests for other distributions
+- Switched Url to the source of the tarball rather than the source
+  of the original rpm
+
+-------------------------------------------------------------------
+Sat Aug  23 00:00:00 UTC 2008 - stkaopen@gmx.at
+
+- packaged dcmtk version 3.5.4 using the buildservice spec file wizard

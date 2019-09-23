@@ -1,0 +1,30 @@
+[Unit]
+Description=LXD Container Hypervisor
+After=network-online.target lxcfs.service
+Requires=network-online.target lxcfs.service
+Documentation=man:lxd(1)
+
+[Service]
+ExecStart=/usr/bin/lxd --group=lxd --logfile=/var/log/lxd/lxd.log
+ExecStartPost=/usr/bin/lxd waitready --timeout=600
+TimeoutStartSec=600s
+TimeoutStopSec=30s
+Restart=on-failure
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# No need to add a task limit.
+TasksMax=infinity
+
+# Set delegate yes so that systemd does not mess with LXD cgroups.
+Delegate=yes
+
+# Kill only the LXD process, not all processes in the cgroup.
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

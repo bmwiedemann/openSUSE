@@ -1,0 +1,65 @@
+From 93ed62a6cb58b4c90872e28b1306e122ad7668b7 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Thu, 24 Nov 2016 14:38:32 +0100
+Subject: [PATCH] handle EXDEV during history file rename
+
+port of: w3m-history-crossdev.patch
+---
+ history.c | 29 +++++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/history.c b/history.c
+index 471059e..209385b 100644
+--- a/history.c
++++ b/history.c
+@@ -68,12 +68,14 @@ loadHistory(Hist *hist)
+ void
+ saveHistory(Hist *hist, size_t size)
+ {
+-    FILE *f;
++    FILE *f, *h = NULL;
+     HistItem *item;
+     char *tmpf;
+     int rename_ret;
+ #define FNAMELEN 255
+     char fname[FNAMELEN+1] = HISTORY_FILE;
++    char buf[4096];
++    size_t rs, ws, remaining;
+ 
+     if (hist == NULL || hist->list == NULL)
+ 	return;
+@@ -99,7 +101,30 @@ saveHistory(Hist *hist, size_t size)
+        strncat(fname, Session, FNAMELEN -6 - strlen(fname));
+     }
+     rename_ret = rename(tmpf, rcFile(fname));
+-    if (rename_ret != 0) {
++
++    if (rename_ret == -1 && errno == EXDEV) {
++       if ((f = fopen(tmpf, "r")) && (h = fopen(rcFile(fname), "w"))) {
++           while (1) {
++               rs = fread(buf, 1, sizeof(buf), f);
++               if (rs == 0 || rs > sizeof(buf))
++                       break;
++               ws = fwrite(buf, 1, rs, h);
++               if (ws == rs)
++                       continue;
++               if (ws == 0 || ws > rs)
++                       break;
++               remaining = rs - ws;
++               while (remaining > 0) {
++                       ws = fwrite(buf + (rs - remaining), 1, remaining, h);
++                       if (ws == 0 || ws > remaining)
++                               break;
++                       remaining -= ws;
++               }
++           }
++       }
++       if (f) fclose(f);
++       if (h) fclose(h);
++    } else if (rename_ret != 0) {
+ 	disp_err_message("Can't save history", FALSE);
+ 	return;
+     }
+-- 
+2.6.6
+

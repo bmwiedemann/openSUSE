@@ -1,0 +1,549 @@
+-------------------------------------------------------------------
+Thu Sep 12 18:23:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream snapshot 8.7.83
+  * libserver: fix "withholding" of properties from clients [KC-1547]
+  * dagent, spooler: threaded more is enabled by default now [KC-1475]
+  * ldapplugin: 22% speedup in retriving the entire user list [KC-1399]
+  * client: enable write-caching for properties on stores and folders;
+    improves e.g. store creation time by 17% [KC-1585]
+  * Dropped Python2 and PHP5 support
+
+-------------------------------------------------------------------
+Tue May 28 12:00:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 8.7.3
+  * Fixes:
+  * dagent: standard casing for RFC 5322 headers [KF-2100]
+  * daemons: do not fail startup on IPv4-only systems [KC-1400]
+  * Feed HTML through libtidy before using it for the to-plaintext
+    conversion stage [KS-40722]
+  * server: fix crash on shutdown [KF-2179]
+  * server: address a potential crash due to type mismatch [KF-2151]
+  * server: use utf8mb3 with mysql 5.1 [KC-1423]
+  * server: avoid entering truncated tproperties data into the
+    cache [KC-1417]
+  * server: avoid using OpenLDAP-specific filters that 389-ds
+    does not know about [KC-1402]
+  * server: fixed TLS negotiation errors with openSSL 1.1.1 [KC-1439]
+  * spooler: avoid unnecessary QP encoding in header fields [KC-1430]
+  * spooler: fix hang on process termination [KC-1449]
+  * srvadm: do not complain about default_store_locale [KC-1416]
+  * dbadm: some long-running statements can now be run in parallel
+    with the new -j option [KS-42617]
+  * pyko: expand stubbed messages when dumping [KC-1159,KC-1168]
+  * pyko: don't mix str/int busy statuses [KC-1433]
+  * oof: fix erroneous -u parsing [KC-1425]
+  * oof: make --message option set the right property [KC-1435]
+  * server: complete utf8mb4->utf8 fallback for RHEL6 [KC-1423]
+  * inetmapi: modified appointments need to produce a new
+    Message-ID [KC-1458]
+  * dagent: set Bcc/RecipMe flags appropriately [KC-319]
+  * inetmapi: restore FQDN in Message-IDs [KC-1393]
+  * inetmapi: parse fake "From:" header better to hinder
+    proliferation of impersonations [KC-1350]
+  * stats: print "PR_..." instead of proptag numbers [KC-1495]
+  * server: no more unbounded thread number increase [KC-1446]
+  * php: fix crash in zif_mapi_getprops [KC-1507]
+  * Enhancements:
+  * backup: do record outofoffice settings
+  * php-ext: performance measurement log now contains a
+    timestamp, thread identifier, and global monotonic counter.
+    This can be used for estimating the achieved command rate.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:58:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 8.7.0 stable git HEAD
+  * dagent: standard casing for RFC 5322 headers [KF-2100]
+  * daemons: do not fail startup on IPv4-only systems [KC-1400]
+  * Feed HTML through libtidy before using it for the to-plaintext
+    conversion stage [KS-40722]
+  * server: fix crash on shutdown [KF-2179]
+  * server: address a potential crash due to type
+    mismatch [KF-2151]
+  * server: use utf8mb3 with mysql 5.1 [KC-1423]
+  * srvadm: do not complain about default_store_locale [KC-1416]
+  * dbadm: some long-running statements can now be run in parallel
+    with the new -j option [KS-42617]
+  * pyko: expand stubbed messages when dumping [KC-1159,KC-1168]
+
+-------------------------------------------------------------------
+Mon Feb  4 09:21:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 8.7.0 stable
+  * server: fix disappearing inbox rules [KC-1359]
+  * kopano-dbadm: new action "usmp" and "usmp-charset"
+  * server: no more automatic upgrade to utf8mb4,
+    use `kopano-dbadm usmp` instead [KF-1394]
+  * dagent: the spam_header_name was not matched
+    correctly [KF-1961]
+  * dagent/client/libserver: fix inadvertent AF_LOCAL->SSL
+    redirect [KC-1368]
+  * client: ABEIDs were parsed wrong (and it broke with
+    gcc8) [KC-1386]
+  * php7-ext: cease modifying potentially-immutable
+    PHP variables [KC-1355]
+
+-------------------------------------------------------------------
+Sun Oct 21 19:45:01 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 8.7~beta release (8.6.90)
+  * dagent, gateway, ical: modern socket specification in .cfg
+    with lmtp_listen=, pop3_listen=, imap_listen=, ical_listen=,
+    etc.
+  * dagent: PF_LOCAL socket support for communicating with postfix
+  * dagent: limited support for RFC 6531 (SMTPUTF8)
+  * server: LDAP STARTTLS support for user backend
+  * spooler: new config value log_raw_message=error
+  * daemons: coredumps no longer rely on fs.suid_dumpable
+  * server: support for Unicode supplemental plane (Emojis)
+  * spooler: add copy_delegate_mails=move-to-rep config directive
+  * kopano-ibrule: new utility for MAPI rules
+  * server: experimental "files_v2" attachment storage
+  * kopano-statsd: new daemon that records dagent/server/spooler
+    statistics
+  * This is an abridged list; there are more changes to
+    configuration and behavior; see RELNOTES.txt in the
+    "kopano-common" package for more details.
+
+-------------------------------------------------------------------
+Sun Aug 26 11:18:40 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 8.6.7.2
+  * Fixes:
+  * gateway, spooler: (re-)activate RFC 2047 header generation
+    (Outlook is still unable to read the RFC 2231 headers that
+    are generated normally) [KC-1226]
+  * srvadm: make --purge-softdelete=0 work
+  * Enhancements:
+  * dagent: advertise 8BITMIME/RFC6152 support [KS-41452]
+  * dagent/client: fixed broken umlauts in PR_EC_BODY_FILTERED
+    when input was not UTF-8 [KC-1225]
+
+
+-------------------------------------------------------------------
+Mon Aug  6 13:33:37 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 8.6.6
+  * ical: handle double quotes in Content-Type header
+  * server: repair broken timing log messages for ldapplugin
+  * php7-ext: cure stack corruption in mapi_vcftomapi
+  * gateway: avoid uncaught exception when client disconnects midway
+  * dagent: avoid always running into K-2383
+  * server: avoid SSL crash near ERR_clear_error on shutdown
+
+-------------------------------------------------------------------
+Tue Jul  3 11:52:45 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream snapshot 8.6.2.25
+  * Fixes:
+  * ical: handle double quotes in Content-Type header
+  * Enhancements:
+  * client: now emits warnings about own incomplete PR_RULES_DATA
+    processing
+  * inetmapi: now emits a warning when runtime vmime is too old
+  * server: fewer stat calls to the attachment backend
+  * Changes:
+  * dagent: default for log_timestamp changed to "yes"
+
+-------------------------------------------------------------------
+Mon May 28 22:38:07 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream snapshot 8.6.1.99
+  * Fixes:
+  * Fix crash due to ODR violation
+  * libserver: drop all remains of clientupdatestatus table
+  * gateway: fix crash when new client immediately disconnects
+  * mapi: avoid garbage at end of malformed RTF
+  * Enhancements:
+  * kopano-dbadm: new diagnostics program for offline database
+    modification
+  * kopano-server: allow use of --ignore-da to skip schema update
+    that won't complete
+  * build: support ICU 61
+  * propmap: expose kopanoHidden LDAP attribute as PR_EC_AB_HIDDEN
+  * Changes:
+  * daemons: disable SSL renegotiation for OpenSSL 1.1+
+  * server: invalid port strings are now rejected
+  * client: quiesce verbose logon failure messages
+  * boot: set default and UTF-8 locale for services
+ 
+-------------------------------------------------------------------
+Fri Apr  6 10:11:29 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 8.6.1
+  * Fixes:
+  * backup: ignore error when server cannot find attachments
+  * server: search folders were not loaded on startup
+  * monitor: handle absence of config file
+  * dagent: do not treat -d option like -c was given
+  * server: fix a case where an old kopano-server would refuse to
+    start with a newer database even if --ignore-da was used
+  * server: fix server/client getting slower when named properties
+    are created multiple times [KC-1108]
+  * client: fix data corruption when server returns high named
+    property IDs [KC-1107]
+  * Changes (generally requires admin action):
+  * inetmapi: stop treating empty indexed_headers as "X-*"
+  * dagent: cease indexing X-Headers by default
+  * dagent: turn indexed_headers from a prefix list into an
+    exact-match set
+  * If you need certain e-mail headers copied into named
+    properties, they MUST be explicitly listed _one by one_ in
+    dagent.cfg:indexed_headers now.
+  * Enhancements:
+  * server: reorder SQL log messages so the error is shown first,
+    and do say when the message was truncated
+
+-------------------------------------------------------------------
+Fri Mar  9 19:13:09 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 8.6.0
+  * Enhancements:
+  * spooler: rules support testing for out-of-office flag
+  * kopano-spamd: new daemon for spam learning in Kopano/SpamAssasin
+  * kopano-oof: new utility for Out Of Office
+  * kopano-storeadm: new utility replacing the store functions
+    of kopano-admin
+  * daemons: added the --dump-config option
+  * inetmapi: ensure all generated messages has a Message-ID
+  * gateway: handle a zero-length PR_TRANSPORT_MESSAGE_HEADERS property
+    as if it was absent
+  * Changes:
+  * gateway: generate Internet headers if missing
+  * inetmapi: ensure all messages have a Message-Id
+
+-------------------------------------------------------------------
+Sat Mar  3 17:05:55 UTC 2018 - jengelh@inai.de
+
+- Update to new bugfix release 8.5.4
+  * server: emit log entry when LDAP is missing server info objects
+  * spooler: avoid deadlock due to double mutex acquisition
+    within one thread
+  * php: mapi_icaltomapi did not copy the iCal recipients to the
+    MAPI object
+  * archiver had forgotten to create its SQL tables on first use
+  * php: make ParseICal able to deduce organizer addresses
+  * admin: --user-count failed to print user counts
+  * server: fix broken cache handling for ICS bulk restriction
+    matching
+  * icalmapi: handle BDAY VCF and REV VCF property
+  * libserver: restore PR_EMS_AB_HOME_MDB
+
+-------------------------------------------------------------------
+Mon Feb  5 23:10:07 UTC 2018 - jengelh@inai.de
+
+- Update to final tag 8.5.0
+  * libserver: store size for orphaned stores was reported
+    incorrectly
+  * client: have OpenEntry check for NULL entryids and entryids
+    too short
+  * dagent, client: fix nonfunctional HTML filter
+  * common: switch logging to stderr when pipe dies
+  * spooler: avoid printing garbage when non-worker child exits
+
+-------------------------------------------------------------------
+Sat Jan  6 00:06:11 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream tag 8.4.91 (RC)
+  * Enhancements:
+  * server: new "server_listen" directive replacing "server_bind"
+  * server: stronger keep-alive
+  * server: further general performance improvements
+  * server: update PR_LOCAL_COMMIT_MAX on hard-deletes
+  * server: speed up contact and search folder querying
+  * server: skip some unnecessary attachment accesses
+  * spooler: introduce indexed_headers config directive
+  * search: pass "limit_results" to xapian to improve performance
+  * search: optionally index draft folders
+  * unixplugin: support multiple non_login_shells
+  * unixplugin: add /sbin/nologin as a non_login_shell (new
+    installs only)
+  * gateway: RFC 6154 support
+  * kopano-spamd: new program
+  * icalmapi: support URL, NICKNAME, PRODID in vcards
+  * Fixes:
+  * gateway: generate envelope using inetmapi if not present yet
+  * spooler: only evaluate rules that are explicitly enabled
+    using PR_RULE_STATE
+  * Changes:
+  * /etc/kopano is no longer prepopulated, create .cfg manually
+    if you need to override anything
+  * server: remove support for upgrading databases older than ZCP
+    7.2
+  * gateway: use threaded mode for reduced memory usage on
+    many-user systems (new installs only)
+  * gateway: the "imap_store_rfc822" config directive is removed
+  * server: the "counter_reset" config directive is removed
+  * spooler: the "always_send_utf8" config directive is removed
+
+-------------------------------------------------------------------
+Sun Dec  3 23:09:31 UTC 2017 - jengelh@inai.de
+
+- Add 0001-build-fix-build-error-w.r.t.-gettimeofday.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:52:58 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Nov 15 10:57:23 UTC 2017 - jengelh@inai.de
+
+- Update to bugfix snapshot 8.4.4
+  * common: fix detection of local connections that need not use
+    zlib compression
+  * libserver: improve ECICS error reporting
+  * dagent: reenable automated backtraces when invoked with -f
+  * php5-ext: fix positive retval setting in error case
+  * dagent: redirect rule led to crash
+  * inetmapi: overwrite recipients instead of appending
+
+-------------------------------------------------------------------
+Thu Nov  2 15:39:04 UTC 2017 - jengelh@inai.de
+
+- Update to bugfix release 8.4.2
+  * server: revert NO_UNSIGNED_SUBTRACTIONS edit
+
+-------------------------------------------------------------------
+Wed Nov  1 16:12:18 UTC 2017 - jengelh@inai.de
+
+- Update to bugfix release 8.4.1
+  * inetmapi: handle empty/invalid Sender in RFC2822 mails
+  * spooler: for send-later mails, check trash, not outbox
+
+
+-------------------------------------------------------------------
+Tue Oct 31 10:53:04 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 8.4.0
+  * dagent, gateway: whitelist-based HTML filter
+  * provider: speed up getIDsFromNames by reducing SQL queries
+  * client: speedup from-scratch MAPI session creation by
+    avoiding extraneous logon-logoff cycles during provider
+    initialization
+  * client: add API for dump+restore of MAPI session profile data
+    so libmapi users can skip provider reinitialization at
+    program startup
+  * mapi: disable very slow RTF compression
+  * server: add entry cache for S3 backend
+  * icalmapi: handle up to three email addresses in a vcard
+  * icalmapi: support ADR, ORG, TITLE tags in VCF files
+  * backup: save and restore store-level ACLs
+  * backup: merge store-level metadata
+
+-------------------------------------------------------------------
+Tue Aug 29 09:20:35 UTC 2017 - jengelh@inai.de
+
+- Add Requires for kopano-migration-imap [boo#1055939]
+
+-------------------------------------------------------------------
+Tue Aug 15 14:58:26 UTC 2017 - jengelh@inai.de
+
+- Update to new bugfix snapshot 8.3.3~24
+  * server: fix disabling of shared reminders [KC-728]
+
+-------------------------------------------------------------------
+Tue Aug  8 09:32:06 UTC 2017 - jengelh@inai.de
+
+- Update to new bugfix snapshot 8.3.3~22
+  * gateway: trim CRLF from PR_EC_IMAP_BODY{,STRUCTURE} and
+    make Apple Mail client work again [KC-668, KC-720]
+  * server: disallow empty value for embedded_attachment_limit
+    and depth counting error [KC-745]
+  * common: fix incorrect timeout check in scheduler which had
+    disabled softdeletes [KC-638]
+  * server: disable reminders from shared stores [KC-758]
+  * catch pointer underflows / NULL pointers [KC-694, KC-60,
+    KC-177, KC-355, KC-378, KC-379, KC-669, KC-754]
+  * libserver: avoid creating multi-stream gzip files
+    [KC-104, KC-304, KC-597]
+
+-------------------------------------------------------------------
+Thu Jul  6 16:06:09 UTC 2017 - jengelh@inai.de
+
+- Update to new bugfix release 8.3.1
+  * inetmapi: do not force HTML when use_tnef is set
+    to minimal [KC-664]
+  * spooler: avoid a use-after-free, and a deadlock after
+    this failure [KC-588]
+  * server: avoid unchecked return value and unsigned
+    underflow [KC-656]
+  * php: rework pointer value storing
+  * daemons: call initgroups when switching user and
+    don't fall over [KC-684,KC-690]
+- Update to new bugfix release 8.3.2
+  * gateway: fix an IMAP protocol error [KC-668]
+    Apple Mail/Alpine did not show mails with long encoded subjects
+  * common: restore ability to output crashdump [KC-630]
+  * inetmapi: avoid short allocation on group
+    expansion [KC-388,KC-727]
+
+-------------------------------------------------------------------
+Thu Apr 27 21:03:57 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 8.3
+  * Enhancements:
+  * migration-pst: call SaveChanges only once [KC-534]
+  * Fixes:
+  * caldav: avoid a nullptr dereference [KC-236]
+  * cachestat: avoid exception and unpack tuple [KC-402]
+  * ldapplugin: revert "catch empty ldap_search_base" [KC-602]
+  * spooler: fix crash on forwarding rules [KC-608]
+
+-------------------------------------------------------------------
+Wed Mar  8 13:12:28 UTC 2017 - jengelh@inai.de
+
+- Update to snapshot 8.3.0~1007
+* Enhancements:
+* gateway: optimize LIST, SELECT, STATUS [KC-490]
+* icalmapi: VCF conversion [KC-420]
+* Fixes:
+* migration-pst: skip root folder more intelligently [KC-487]
+* migration-pst: MV properties are handled better [KC-457]
+* client: add extra checks for EID sizes [KC-500]
+* gateway: enforce user and password checking on local socket [KC-396,KC-490]
+* Changes:
+* migration-pst: ignore decode errors [KC-521]
+* common: fix empty text bodies when converting U+0000 from HTML [KC-557]
+* icalmapi: reworked copying description into mail body [KC-568]
+
+-------------------------------------------------------------------
+Thu Mar  2 12:02:14 UTC 2017 - m.kromer@kopano.com
+
+- Build-fix include of kopano-migration-imap
+
+-------------------------------------------------------------------
+Wed Feb  1 10:25:14 UTC 2017 - jengelh@inai.de
+
+- Update to snapshot 8.3.0~694
+  * migration-pst: skip root folder without hard-coded name check
+  * client: add extra checks for EID sizes to CompareEntryIDs
+  * php-ext: use /usr/share/kopano/php for mapi classes
+
+-------------------------------------------------------------------
+Sun Jan 29 22:57:32 UTC 2017 - jengelh@inai.de
+
+- Update to snapshot 8.3.0~667
+  * Changes:
+  * server: make softdelete_lifetime config setting a reloadable
+    property [KC-472]
+  * icalmapi: handle missing timezone for RRULE [KC-414]
+  * migration-pst: filter metadata at start of subject [KC-424]
+
+-------------------------------------------------------------------
+Tue Dec 20 12:26:11 UTC 2016 - jengelh@inai.de
+
+- Update to snapshot 8.3.0~334
+  * Enhancements:
+  * gateway, server: reload SSL certificates on SIGHUP [KC-301]
+  * dagent: log_raw_message option can now be used selectively on
+    users [KC-370]
+  * Fixes:
+  * gateway: report missing attachments over IMAP better [KC-436]
+  * inetmapi: avoid overzealously generating winmail.dat [KC-348]
+  * common: fix spurious crash in sk_SSL_COMP_free on shutdown
+    [KC-443]
+  * backup: improved logging when ACL does not resolve to
+    user/group [KC-431]
+  * migration-pst: show usage, not traceback, for invalid options
+    [KC-372]
+  * inetmapi: avoid buffer overread on rejected recipients
+    (showed garbage in logs) [KC-398]
+  * Changes:
+  * server: compressed attachments now get the same permissions
+    as uncompressed ones [KC-380]
+  * backup: maintain deleted folders and add --purge N option
+    [KC-376]
+
+-------------------------------------------------------------------
+Wed Dec  7 22:56:27 UTC 2016 - jengelh@inai.de
+
+- Update to 8.3 snapshot 223
+* Enhancements:
+* mapi: drop global lock and replace singleton allocmore table by
+  per-object vectors [KC-328]
+* swig: expose group and company properties in Python [KC-320]
+* xapian-compact.py: new -c option to specify config file [KC-205]
+* utils: support setting out-of-office without an until-date [KC-275]
+* Fixes:
+* pyko: do not throw backtraces on log messages [KC-340]
+* server: S3 object sizes were shown wrongly [KC-351]
+* inetmapi: do not always generate winmail.dat [KC-348]
+* icalmapi: timezone search was broken [KC-313]
+* The RTF encoder incorrectly produced paragraphs where
+  it should have created linefeeds [KC-338]
+* The RTF decoder failed to see that \uXXXX could start a paragraph [KC-338]
+* The RTF decoder erroneously created a new paragraph on \pard [KC-338]
+* server: Ctrl-C now works in gdb [KC-171]
+* inetmapi: avoid an infinite recursion on SMIME handling [KC-366]
+* ics: make creation of new syncids work incrementally [KC-208]
+* libserver: change incorrect compare operator for EID_V0 [KC-365]
+* Of special mention:
+* search: python3 support (but requires new python-xapian and,
+  as a result, a db migration or full reindexing)
+* Developer/packager notes:
+* KC variables and functions now live in the KC:: C++ namespace [KC-369]
+
+-------------------------------------------------------------------
+Wed Nov 23 09:16:49 UTC 2016 - jengelh@inai.de
+
+- Update to 8.2 snapshot 451
+* == Fixes ==
+* dagent: iCal descriptions caused wrong body parts to be displayed [KC-138]
+* dagent: mr-process failed to copy attachments to the calendar item [KC-202]
+* dagent: restore/rework forced ASCII charset upgrade [KC-294]
+* == Enhancements ==
+* kopano-stats: bind 'q' key to exit as well [KC-105]
+* presence: log authentication errors
+* Improved PHP7 support [*,KC-330]
+* == Changes ==
+* search: log to file (if set) instead of stdout [KC-204]
+* search: treat '_' as a word break [KC-290]
+* swig: resolve crash when python programs end [KC-269]
+* config: change ldap_object_search_filter for WebApp to be able to
+  search by mail address [KC-337]
+* gateway/client: avoid resynchronizing RTF body content [KC-338]
+
+-------------------------------------------------------------------
+Wed Nov  9 14:57:34 UTC 2016 - jengelh@inai.de
+
+- Update to 8.2 snapshot 397
+* == Fixes ==
+* backup: avoid exceptions on problematic rules/ACLs/delegates [KC-213,KC-266]
+* The comment for server.cfg's "disabled_features" was wrong [KC-262]
+* php: fix crash by adding missing pointer type conversions [KC-274]
+* dagent: the "Received" debugging header had the wrong target address
+* gateway: do not emit an X-Mailer field when retrieving mail [KC-277]
+* server/ldap: report empty ldap_search_base setting
+* client: verify peer's SSL certificate name [KC-156]
+* admin: support unwrapping "default:" type URLs [KC-289]
+* backup: fix tracebacks when used with ZCP [KC-306,KC-307,KC-308]
+* server: implement missing readback of compressed attachments [KC-285]
+* search: add script for findroot upgrade [KC-300]
+* php: ICS import/export functions [KC-302]
+* server: AWS4-HMAC-SHA256 support for S3 [KC-170]
+* pyko: permit "public@company" syntax to specify stores [KC-317]
+* dagent: new AUTORESPOND_BCC option for use with OOF [KC-319]
+* == Enhancements ==
+* PST importer [KC-59]
+* Python 3 support [KC-48,KC-267]
+* search: files are now compacted, and their uid/gid checked [KC-188]
+* server: allow search folder creation outside of own store [KC-271]
+* dagent: forwarding by rule can be restricted with a whitelist [KC-109]
+* == Changes ==
+* Non-Delivery Reports now originate from "Mail Delivery System"
+  (like postfix) instead of yourself [KC-309]
+* Support for building with a no-SSLv2 OpenSSL 1.1. [KC-230]
+  If you run such a setup, be aware that a config setting like
+  "ssl_protocol = !SSLv2" in one or more of kopano-{server,gateway,ical}.cfg
+  can inhibit the process from starting.
+* Cleanup of the example LDAP configuration files. [KC-229]
+  /usr/share/doc/kopano/example-configs/ now has just a ldap.cfg,
+  and no more ldap{,ms}.{active-directory,ldap}.cfg.
+* The example LDAP config file now has a different proposed value for
+  ldap_object_search_filter for OpenLDAP. [KC-218]
+* spooler: messages with reminder will be sent with a TNEF copy [KC-152]
+* admin: group features will no longer be shown [KC-239]

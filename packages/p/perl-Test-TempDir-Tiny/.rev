@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b23543e577d11c517c5c9b2ab72ba826</srcmd5>
+    <version>0.016</version>
+    <time>1467359907</time>
+    <user>dimstar_suse</user>
+    <comment>needed by dbix now</comment>
+    <requestid>404499</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d8f5610f5632c9fe376392e4eea509a</srcmd5>
+    <version>0.017</version>
+    <time>1527933523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610495</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab9e928b9d946e768386554fb979d9ac</srcmd5>
+    <version>0.018</version>
+    <time>1537787522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636835</requestid>
+  </revision>
+</revisionlist>

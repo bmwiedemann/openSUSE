@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Wed Jun 12 11:58:09 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.1
+  * enhancment:ProcessPool: Adds user agent suffix.
+
+-------------------------------------------------------------------
+Wed Feb 13 12:53:52 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.0
+  * feature:``ProcessPoolDownloader``: Add ``ProcessPoolDownloader`` class
+    to speed up download throughput by using processes instead of threads.
+- Drop obsolete patch
+  + system-requests.patch
+- Refresh patches for new version
+  + hide_py_pckgmgmt.patch
+  + no-bundled-packages.patch
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
+Wed May  9 09:05:34 UTC 2018 - tchvatal@suse.com
+
+- Avoid running tests on 32bit as they fail there on oom
+
+-------------------------------------------------------------------
+Tue May  8 15:38:20 UTC 2018 - tchvatal@suse.com
+
+- Make sure to really not use any damn bundles:
+  * no-bundled-packages.patch
+  * Never rely on some bundled package version just use system libs
+- Enable testsuite and make it pass thanks to above patch
+
+-------------------------------------------------------------------
+Thu Apr 19 10:37:34 UTC 2018 - mimi.vx@gmail.com
+
+- update to 0.1.13
+- add system-requests.patch - use system python-requests
+ * Plumb ``RequestPayer` argument to the ``CompleteMultipartUpload` operation 
+ * enhancement:max_bandwidth: Add ability to set maximum bandwidth consumption
+   for streaming of S3 uploads and downloads
+
+-------------------------------------------------------------------
+Thu Nov  9 23:03:07 UTC 2017 - rjschwei@suse.com
+
+- Update to version 0.1.11:
+  + Properly handle unicode exceptions in the context manager
+
+-------------------------------------------------------------------
+Thu May 11 01:37:16 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Update source URL.
+
+-------------------------------------------------------------------
+Thu Jan 19 09:52:30 UTC 2017 - dmueller@suse.com
+
+- use pypi.io
+
+-------------------------------------------------------------------
+Wed Jan 18 13:55:06 UTC 2017 - astieger@suse.com
+
+- update to 0.1.10:
+  * feature: TransferManager: Expose ability to use own executor
+    class for TransferManager
+  * fix factory submission (validate source)
+
+-------------------------------------------------------------------
+Wed Oct 26 17:39:11 UTC 2016 - rjschwei@suse.com
+
+- Update to version 0.1.9 (bsc#1007084)
+  + Forward port hide_py_pckgmgmt.patch
+  + No changelog entry for 0.1.9
+- From 0.1.8
+  + feature:download: Support downloading to FIFOs.
+- From 0.1.7
+  + bugfix:TransferManager: Fix memory leak when using same client to create
+    multiple TransferManagers
+- From 0.1.6
+  + bugfix:download: Fix issue where S3 Object was not downloaded to disk
+    when empty
+- From 0.1.5
+  + bugfix:Cntrl-C: Fix issue of hangs when Cntrl-C happens for many queued
+    transfers
+  + feature:cancel: Expose messages for cancels
+- from 0.1.4
+  + feature:chunksize: Automatically adjust the chunksize if it doesn't meet
+    S3s requirements.
+  + bugfix:Download: Add support for downloading to special UNIX file by name
+- From 0.1.3
+  + feature:delete: Add a .delete() method to the transfer manager.
+  + bugfix:seekable upload: Fix issue where seeked position of seekable
+    file for a nonmultipart upload was not being taken into account.
+- From 0.1.2
+  + bugfix:download: Patch memory leak related to unnecessarily holding
+    onto futures for downloads.
+- From 0.1.1
+  + bugfix:deadlock: Fix deadlock issue described here:
+    https://bugs.python.org/issue20319 with using concurrent.futures.wait
+- From 0.1.0
+  + feature:copy: Add support for managed copies.
+  + feature:download: Add support for downloading to a filename, seekable
+    file-like object, and nonseekable file-like object.
+  + feature:general: Add TransferManager class. All public functionality
+    for s3transfer is exposed through this class.
+  + feature:subscribers: Add subscriber interface. Currently supports
+    on_queued, on_progress, and on_done status changes.
+  + feature:upload: Add support for uploading a filename, seekable file-like
+    object, and nonseekable file-like object.
+
+-------------------------------------------------------------------
+Mon Apr 18 17:47:19 UTC 2016 - rjschwei@suse.com
+
+- Include in SLE 12 (FATE#320748, bsc#974993, bsc#975949)
+
+-------------------------------------------------------------------
+Tue Apr 12 11:46:04 UTC 2016 - rjschwei@suse.com
+
+- Set the proper target directory for copying the license file
+  + Fixes build issue on SLE 11
+
+-------------------------------------------------------------------
+Mon Apr 11 21:30:05 UTC 2016 - rjschwei@suse.com
+
+- Initial build
+  + Version 0.0.1
+

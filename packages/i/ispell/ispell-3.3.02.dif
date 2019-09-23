@@ -1,0 +1,223 @@
+---
+ .pkgextract              |    9 +++++++++
+ buildhash.c              |    4 ++++
+ defmt.c                  |    8 ++++++++
+ fields.c                 |    8 ++++++++
+ icombine.c               |    4 ++++
+ ijoin.c                  |    4 ++++
+ ispell.c                 |    4 ++++
+ languages/english/msgs.h |    8 ++++----
+ munchlist.X              |   34 ++++++++++++++++++----------------
+ 9 files changed, 63 insertions(+), 20 deletions(-)
+
+--- .pkgextract
++++ .pkgextract	2016-02-12 10:00:43.934930433 +0000
+@@ -0,0 +1,9 @@
++patch -p0 -s --backup --suffix=.config      < ../ispell-3.3.02-config.patch
++patch -p0 -s --backup --suffix=.suse        < ../ispell-3.2.06-suse.patch
++patch -p0 -s --backup --suffix=.languages   < ../ispell-3.3.02-languages.patch
++patch -p0 -s --backup --suffix=.types       < ../ispell-3.3.02-types.patch
++patch -p0 -s --backup --suffix=.terminal    < ../ispell-3.3.02-terminal.patch
++patch -p0 -s --backup --suffix=.sq          < ../ispell-3.3.02-sq.patch
++patch -p0 -s --backup --suffix=.brkgcc      < ../ispell-3.3.02-brkgcc.patch
++patch -p0 -s --backup --suffix=.mkdir       < ../ispell-3.3.02-mkdir.patch
++patch -p0 -s --backup --suffix=.strip       < ../ispell-3.3.02-strip.patch
+--- buildhash.c
++++ buildhash.c	2016-02-12 10:00:43.934930433 +0000
+@@ -116,6 +116,7 @@ static char Rcs_Id[] =
+ #include "version.h"
+ #include <ctype.h>
+ #include <sys/stat.h>
++#include <locale.h>
+ 
+ int		main P ((int argc, char * argv[]));
+ static void	output P ((void));
+@@ -149,6 +150,9 @@ int main (argc, argv)
+     unsigned int i;
+     int		j;
+ 
++    (void)setlocale(LC_CTYPE, "POSIX");
++    (void)setlocale(LC_COLLATE, "POSIX");
++
+     while (argc > 1  &&  *argv[1] == '-')
+ 	{
+ 	argc--;
+--- defmt.c
++++ defmt.c	2016-02-12 10:00:43.934930433 +0000
+@@ -704,6 +704,14 @@ void checkline (ofile)
+ 
+ 	p = ctoken;
+ 	endp = skipoverword (currentchar);
++
++	/* Within copyout() the ``compensate for short copy strategy''
++	 * will cause that (*currentchar == 0) is always false.
++	 * Therefore compare endp position to be able to break this
++	 * otherwise endless loop for HUGE lines */
++	if (currentchar >= endp)
++	    break;
++
+ 	while (currentchar < endp  &&  p < ctoken + sizeof ctoken - 1)
+ 	    *p++ = *currentchar++;
+ 	*p = 0;
+--- fields.c
++++ fields.c	2016-02-12 10:00:43.934930433 +0000
+@@ -112,6 +112,7 @@ field_t * fieldread (file, delims, flags
+     if (linesize == 0)
+ 	{
+ 	free (linebuf);
++	linebuf = NULL;
+ 	return NULL;
+ 	}
+     return fieldmake (linebuf, 1, delims, flags, maxf);
+@@ -433,8 +434,15 @@ void fieldfree (fieldp)
+     if (fieldp == NULL)
+ 	return;
+     if (fieldp->linebuf != NULL)
++	{
+ 	free ((char *) fieldp->linebuf);
++	fieldp->linebuf = NULL;
++	}
+     if (fieldp->fields != NULL)
++	{
+ 	free ((char *) fieldp->fields);
++	fieldp->fields = NULL;
++	}
+     free ((char *) fieldp);
++    fieldp = NULL;
+     }
+--- icombine.c
++++ icombine.c	2016-02-12 10:00:43.934930433 +0000
+@@ -89,6 +89,7 @@ static char Rcs_Id[] =
+ #include "ispell.h"
+ #include "proto.h"
+ #include "msgs.h"
++#include <locale.h>
+ 
+ char *		Lfile;			/* Language-description file */
+ 
+@@ -109,6 +110,9 @@ int main (argc, argv)
+     char *	preftype = NULL;
+     char *	wchars = NULL;
+ 
++    (void)setlocale(LC_CTYPE, "POSIX");
++    (void)setlocale(LC_COLLATE, "POSIX");
++
+     while (argc > 1  &&  argv[1][0] == '-')
+ 	{
+ 	argc--;
+--- ijoin.c
++++ ijoin.c	2016-02-12 10:00:43.934930433 +0000
+@@ -119,6 +119,7 @@ static char Rcs_Id[] =
+ #include "ispell.h"
+ #include "proto.h"
+ #include "fields.h"
++#include <locale.h>
+ 
+ #ifdef __STDC__
+ #define SIGNED	signed
+@@ -176,6 +177,9 @@ int main (argc, argv)			/* Join files */
+     char *		argv[];		/* Argument vector */
+     {
+     
++    (void)setlocale(LC_CTYPE, "POSIX");
++    (void)setlocale(LC_COLLATE, "POSIX");
++
+     while (argc > 3  &&  argv[1][0] == '-')
+ 	{
+ 	argc--;
+--- ispell.c
++++ ispell.c	2016-02-12 10:00:43.934930433 +0000
+@@ -235,6 +235,7 @@ static char Rcs_Id[] =
+ #include <fcntl.h>
+ #endif /* NO_FCNTL_H */
+ #include <sys/stat.h>
++#include <locale.h>
+ 
+ static void	usage P ((void));
+ int		main P ((int argc, char * argv[]));
+@@ -282,6 +283,9 @@ int main (argc, argv)
+ 
+     Trynum = 0;
+ 
++    (void)setlocale(LC_CTYPE, "POSIX");
++    (void)setlocale(LC_COLLATE, "POSIX");
++
+     p = getenv (LIBRARYVAR);
+     if (p == NULL)
+ 	(void) strcpy (libdir, LIBDIR);
+--- languages/english/msgs.h
++++ languages/english/msgs.h	2016-02-12 10:00:43.934930433 +0000
+@@ -185,10 +185,10 @@
+ #define CORR_C_HELP_4		"next to each one.  You have the option of replacing the word%s\n"
+ #define CORR_C_HELP_5		"completely, or choosing one of the suggested words.%s\n"
+     /* You may add HELP_6 through HELP_9 if your language needs more lines */
+-#define CORR_C_HELP_6		""
+-#define CORR_C_HELP_7		""
+-#define CORR_C_HELP_8		""
+-#define CORR_C_HELP_9		""
++#define CORR_C_HELP_6		"%s"
++#define CORR_C_HELP_7		"%s"
++#define CORR_C_HELP_8		"%s"
++#define CORR_C_HELP_9		"%s"
+ #define CORR_C_HELP_COMMANDS	"%s\nCommands are:%s\n%s\n"
+ #define CORR_C_HELP_R_CMD	"R       Replace the misspelled word completely.%s\n"
+ #define CORR_C_HELP_BLANK	"Space   Accept the word this time only.%s\n"
+--- munchlist.X
++++ munchlist.X	2016-02-12 10:04:10.134904775 +0000
+@@ -191,7 +191,7 @@ then
+     echo "munchlist $*" 1>&2
+     set -vx
+ fi
+-SORTTMP="-T ${TDIR}"			# !!SORTTMP!!
++SORTTMP="-T ${MUNCHDIR}"		# !!SORTTMP!!
+ 
+ DBDIR=${MUNCHDEBUGDIR-$MAILDEBUGDIR}
+ 
+@@ -267,31 +267,32 @@ fi
+ # But that doesn't excuse breaking compatibility.)
+ #
+ # Detect whether sort accepts old-style switches.
+-if sort +0 /dev/null >/dev/null 2>&1
+-then
+-    CRETIN_SORT=false
+-else
+-    CRETIN_SORT=true
+-fi
++##if sort +0 /dev/null >/dev/null 2>&1
++##then
++##    CRETIN_SORT=false
++##else
++##    CRETIN_SORT=true
++##fi
++CRETIN_SORT=true
+ 
+ #
+ # The following is necessary so that some internationalized versions of
+ # sort(1) don't confuse things by sorting into a nonstandard order.
+ #
+-LANG=C
+-LOCALE=C
+-LC_ALL=C
+-LC_COLLATE=C
+-LC_CTYPE=C
++LANG=POSIX
++LOCALE=POSIX
++LC_ALL=POSIX
++LC_COLLATE=POSIX
++LC_CTYPE=POSIX
+ export LANG LOCALE LC_COLLATE LC_CTYPE
+ #
+ # The following aren't strictly necessary, but I've been made paranoid
+ # by problems with the stuff above.  It can't hurt to set them to a
+ # sensible value.
+-LC_MESSAGES=C
+-LC_MONETARY=C
+-LC_NUMERIC=C
+-LC_TIME=C
++LC_MESSAGES=POSIX
++LC_MONETARY=POSIX
++LC_NUMERIC=POSIX
++LC_TIME=POSIX
+ export LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
+ 
+ debug=no

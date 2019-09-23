@@ -1,0 +1,15 @@
+Index: distribution/ini/povray.ini
+===================================================================
+--- distribution/ini/povray.ini.orig
++++ distribution/ini/povray.ini
+@@ -31,8 +31,8 @@ Height = 600
+ Bounding_Threshold = 3
+ ;
+ ;
+-; Turn display on
+-Display=On
++; Turn display off
++Display=Off
+ ;
+ ; Turn verbose mode on
+ Verbose=On

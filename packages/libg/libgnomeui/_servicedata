@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.gnome.org/libgnomeui</param>
+              <param name="changesrevision">30334c28794ef85d8973f4ed0779b5ceed6594f2</param></service></servicedata>

@@ -1,0 +1,240 @@
+-------------------------------------------------------------------
+Wed Jul 31 11:10:18 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 19.6.0:
+  * Fix for YouTube, so that it works again with changed Youtube code
+
+-------------------------------------------------------------------
+Sat Nov 17 06:09:04 UTC 2018 - sean@suspend.net
+
+- Update to version 18.11.0:
+  * New option in the browser context menu to play the video
+
+-------------------------------------------------------------------
+Mon Sep 17 15:13:06 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 18.9.0:
+  * Fix YouTube.
+
+-------------------------------------------------------------------
+Sun May 13 18:39:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 18.3.0 (changes since 17.5.0):
+  * Fix YouTube.
+  * Fix the option "open audio with".
+  * Add the Catalan translation.
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.5.0:
+  * Fix YouTube.
+
+-------------------------------------------------------------------
+Thu Feb  2 22:14:16 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 17.1.0:
+  * Fix YouTube.
+
+-------------------------------------------------------------------
+Sun Jul 10 16:25:29 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 16.7.2:
+  * No changelog available.
+- Recommend smtube-lang.
+- Use Qt4 on SLE 12 and openSUSE 13.1.
+- Replace a regexp with proper "make" arguments.
+- Add smtube-makeflags.patch: propagate %_smp_mflags.
+- Remove smtube-src_smtube.pro.patch and
+  smtube-no-download-option.diff: append desired options with cat.
+- Generate icon cache.
+
+-------------------------------------------------------------------
+Thu Jun 30 15:21:12 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.7.0:
+ * Fix youtube.
+ * Load the hdpi config from the smplayer config dir.
+ * Change the palette only on Windows.
+- Automatic man page archiving.
+
+-------------------------------------------------------------------
+Sun Jun  5 11:04:11 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.6.0:
+  * Enable high DPI scaling.
+  * Replace ' with \' in the translation texts
+    for the javascript code.
+- Added man page.
+
+-------------------------------------------------------------------
+Tue Mar  8 16:08:31 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.3.0:
+ * Options to zoom in and out.
+ * New options in the settings dialog to change the font and
+   style of the application.
+- Update to 16.1.0:
+  * Fix for VEVO videos.
+- Added smtube-no-download-option.diff because video downloading
+  from Youtube seems to be illegal.
+- openSUSE 13.1 build.
+- Tips from packman build.
+
+-------------------------------------------------------------------
+Sun Dec 27 12:44:41 UTC 2015 - cornelis@solcon.nl
+
+- Update to 15.11.0:
+  * Fix for VEVO videos.
+  * Add support for YouTube live streams.
+
+-------------------------------------------------------------------
+Mon Sep 28 15:59:44 UTC 2015 - dap.darkness@gmail.com
+
+- update to 15.9.0:
+ * Check if the window is outside of the screen.
+   In that case move it to 0x0.
+ * Fix the 'can't find URL' error when using Qt 5.
+ * Apply patch smtube-gmake.diff
+   (https://sourceforge.net/p/smplayer/bugs/701/)
+ * Don't use cache with PORTABLE_APP
+
+-------------------------------------------------------------------
+Mon Aug 24 16:23:59 UTC 2015 - dap.darkness@gmail.com
+
+- Source0 was fixed and majver macro became useless.
+- License was corrected to GPL-2.0+.
+
+-------------------------------------------------------------------
+Sun Aug 23 11:42:34 UTC 2015 - dap.darkness@gmail.com
+
+- update to 15.8.0:
+  * Improve support for VEVO videos.
+  * Possibility to play the audio only.
+- Commented out "Fix zero-length docs":
+  Changelog seems not to be blank any more.
+- _service → tarball.
+- Qt4 → Qt5.
+- Packman → OBS.
+
+-------------------------------------------------------------------
+Tue May 26 08:33:41 UTC 2015 - nemysis@gmx.ch
+
+- Update to 15.5.17, announce message:
+
+  * Fixed some bugs.
+
+- Change URL
+- Change Source0 Web URL
+- Fix zero-length docs
+
+-------------------------------------------------------------------
+Mon May 11 03:56:42 UTC 2015 - dap.darkness@gmail.com
+
+- update to 15.5.10:
+  * no upstream changelog.
+- Updated smtube-src_smtube.pro.patch.
+
+-------------------------------------------------------------------
+Tue Jan 20 19:28:34 UTC 2015 - dap.darkness@gmail.com
+
+- update to 15.1.0:
+  * Fix for VEVO videos.
+
+-------------------------------------------------------------------
+Wed Dec 31 12:03:46 UTC 2014 - dap.darkness@gmail.com
+
+- update to 14.12.0:
+  * New options to set a proxy.
+
+-------------------------------------------------------------------
+Thu Nov 20 21:34:57 UTC 2014 - nemysis@gmx.ch
+
+- Remove sed for smtube_nqo.ts
+- Use %{_datadir}/icons/hicolor/*/apps/%{name}.png
+  instead of %{_datadir}/icons/hicolor/
+
+-------------------------------------------------------------------
+Tue Nov 18 21:35:35 UTC 2014 - nemysis@gmx.ch
+
+- Change URL
+- Use for Release 0
+- Change Source0 Web URL
+- Use smtube-src_smtube.pro.patch instead of
+  smtube-optflags.patch and add description
+- Use check for openSUSE %if 0%{?suse_version}
+- Add BuildRequires for dos2unix and fdupes
+- Remove BuildRequires for make
+- Change description
+- Fix paths
+- Remove not working Translation to not get
+  error: Installed (but unpackaged) file(s) found:
+  smtube_nqo.qm
+- Simplify installation handling, use normal build
+- Use default make %{?_smp_mflags} and %make_install
+- Use simple %find_lang %name --with-qt
+
+-------------------------------------------------------------------
+Thu Aug 28 16:06:18 UTC 2014 - dap.darkness@gmail.com
+
+- update to 14.8.0:
+  * Fix playback (for players other than smplayer).
+
+-------------------------------------------------------------------
+Sat Jul 12 16:22:46 UTC 2014 - dap.darkness@gmail.com
+
+- update to 14.7.0:
+  * Fix the option Record audio.
+  * New translations: Albanian, Slovak and English UK.
+- Mplayer, smplayer or vlc can be used.
+- smtube-optflags.patch was updated.
+
+-------------------------------------------------------------------
+Mon Apr  7 19:20:14 UTC 2014 - dap.darkness@gmail.com
+
+- update to 2.1:
+  * Add the Italian, French, Czech, Malay, Swedish,
+    Turkish, Finnish, Georgian, Portuguese (Brazil),
+    Ukrainian, Norwegian, Hebrew, Croatian, Bulgarian,
+    Vietnamese and Indonesian translation.
+  * When saving DASH 1080, be sure the video and audio files
+    have the same name.
+  * Increase speed when downloading DASH streams.
+  * If there's no 1080p video in the normal format, try
+    to download the 1080p video in the DASH format. That
+    actually downloads two files, a mp4 with the video only
+    and a m4a with the audio.
+  * Add an option to record audio.
+  * Use the user's country for default region.
+  * Add two actions to increase or reduce the font size
+    (shortcuts Ctrl+Plus and Ctrl+Minus).
+  * Add mpv to the list of players.
+  * Add an option to add URL to the SMPlayer playlist.
+  * Keys work now in the video list.
+  * Ask the user to update the youtube code
+    when an unknown signature is found.
+  * The quality for recording has now more options and allows
+    to save the video in webm format as well.
+  * Possibility to select the playback quality
+    (for players other than smplayer).
+  * Add support for the new signatures of Youtube.
+  * Add options in the configuration dialog to select the
+    preferred region and period of time for the standard feeds.
+  * Save the recording list.
+  * Add a button to open the recording dialog.
+- Updated smtube-optflags.patch.
+- Removed clean section.
+- Let lang subpackage become recommended.
+
+-------------------------------------------------------------------
+Fri Oct 19 08:17:08 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.2:
+  * Update for Youtube changes
+  * Usability improvements
+
+-------------------------------------------------------------------
+Sun Apr 15 12:01:13 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (1.1)
+

@@ -1,0 +1,964 @@
+<revisionlist>
+  <revision rev="1" vrev="25">
+    <srcmd5>ce6405a1f209a6edd5226b238d0ed7bd</srcmd5>
+    <version>4.5.14</version>
+    <time>1166483872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6a2fdabbd3fff88dc3a347bde5a82ab1</srcmd5>
+    <version>4.5.15</version>
+    <time>1169081236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>41d2cd04ed2c6b1b1509557bff57465a</srcmd5>
+    <version>4.5.15</version>
+    <time>1174052643</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>e689d91063815b21b36cbffb389f0a3d</srcmd5>
+    <version>4.5.15</version>
+    <time>1176937401</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ac72300706fd48fc3b5874070927f9a3</srcmd5>
+    <version>4.5.16</version>
+    <time>1186174125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="22">
+    <srcmd5>4b98004fd332c32322392b9612242a5b</srcmd5>
+    <version>4.5.16</version>
+    <time>1196721580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="44">
+    <srcmd5>e9b5aeb9734381cc712af0bc4d078961</srcmd5>
+    <version>4.5.16</version>
+    <time>1207834409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="56">
+    <srcmd5>eb2f1e58346931b736c85a8af558e401</srcmd5>
+    <version>4.5.16</version>
+    <time>1214847419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4886c2acb29707e5ee845eb72270024f</srcmd5>
+    <version>4.5.17</version>
+    <time>1216720853</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>57d4d9d12296840ac6d4666af352000e</srcmd5>
+    <version>4.5.17</version>
+    <time>1217980694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>d65f99982f8944e54f3f9ec23a6ff440</srcmd5>
+    <version>4.5.17</version>
+    <time>1218847935</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2d394ddf7c0461045ea0a46db27114af</srcmd5>
+    <version>4.5.18</version>
+    <time>1220350543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>1a1c90d383c4d26f702dfbf667ded7e7</srcmd5>
+    <version>4.5.18</version>
+    <time>1225637104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>4cab0376a0213ff2f1551497ade21c20</srcmd5>
+    <version>4.5.18</version>
+    <time>1226416320</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>e6b45ca5fea3b2350195a4bec5ef4285</srcmd5>
+    <version>4.5.18</version>
+    <time>1229343267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>c981f3f9bd5bf1eb4e4a4a9157abe329</srcmd5>
+    <version>4.5.18</version>
+    <time>1231462984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>c981f3f9bd5bf1eb4e4a4a9157abe329</srcmd5>
+    <version>4.5.18</version>
+    <time>1231462984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>7d26dfc3e1683d7635b80a4b29458387</srcmd5>
+    <version>4.5.18</version>
+    <time>1265750888</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/strace based on submit request 31803 from user coolo
+</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>984f65746621df0ff064c4c9ba2b823c</srcmd5>
+    <version>4.5.19</version>
+    <time>1266183550</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/strace based on submit request 32493 from user rguenther
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>cf0340540cf9548eaa43537aad1d1da4</srcmd5>
+    <version>4.5.19</version>
+    <time>1268926236</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2821f31e2cf72854329b1bc3bf1e190e</srcmd5>
+    <version>4.5.20</version>
+    <time>1271374804</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/strace based on submit request 37996 from user prusnak
+</comment>
+    <requestid>37996</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2821f31e2cf72854329b1bc3bf1e190e</srcmd5>
+    <version>4.5.20</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>2821f31e2cf72854329b1bc3bf1e190e</srcmd5>
+    <version>4.5.20</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>becdbccb7ffee312bd6d087eae92feef</srcmd5>
+    <version>4.5.20</version>
+    <time>1285596244</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/strace based on submit request 49169 from user coolo
+</comment>
+    <requestid>49169</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>50916b575c7305b33fa49e6ac86025e6</srcmd5>
+    <version>4.5.20</version>
+    <time>1294656094</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57584 from user msmeissn
+</comment>
+    <requestid>57584</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>eee8a877c120d56dc3e5b7c2227156e7</srcmd5>
+    <version>4.5.20</version>
+    <time>1294656099</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57584
+</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>eee8a877c120d56dc3e5b7c2227156e7</srcmd5>
+    <version>4.5.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>4889b4fe95b4e473cfd44f2f18a13802</srcmd5>
+    <version>4.6</version>
+    <time>1302603951</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66845 from user coolo
+</comment>
+    <requestid>66845</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>6c7de81744eae779fcb97f8cc262d292</srcmd5>
+    <version>4.6</version>
+    <time>1302603960</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66845
+</comment>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>a2f18096d62898363429320583174977</srcmd5>
+    <version>4.6</version>
+    <time>1317756855</time>
+    <user>lrupp</user>
+    <comment>Skip &quot;make check&quot; when building under qemu (PTRACE not supported) (forwarded request 86549 from tserong)</comment>
+    <requestid>86573</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>a2f18096d62898363429320583174977</srcmd5>
+    <version>4.6</version>
+    <time>1319182492</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>1a42bc83876be933ff45840768720ffa</srcmd5>
+    <version>4.6</version>
+    <time>1323194767</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4517359e4210547bc7cc9a6a31f7d567</srcmd5>
+    <version>4.7</version>
+    <time>1337587301</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121281</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>0f01c823522adde7e2cf813fed34c739</srcmd5>
+    <version>4.7</version>
+    <time>1337960018</time>
+    <user>coolo</user>
+    <comment>Make package build on SLE_11_SP2 (forwarded request 121810 from flichtenheld)</comment>
+    <requestid>121838</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>0f01c823522adde7e2cf813fed34c739</srcmd5>
+    <version>4.7</version>
+    <time>1340184242</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>0f01c823522adde7e2cf813fed34c739</srcmd5>
+    <version>4.7</version>
+    <time>1359110444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>c6b7b2d3c6d75ac3b6d073050ca7526b</srcmd5>
+    <version>4.7</version>
+    <time>1362638093</time>
+    <user>coolo</user>
+    <comment>- strace-aarch64.diff
+  Support for AArch64 from upstream (forwarded request 157423 from Andreas_Schwab)</comment>
+    <requestid>157538</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>698f7a2534f709eeab7cf38ee887cdb9</srcmd5>
+    <version>4.8</version>
+    <time>1371562520</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.8 (forwarded request 178891 from jengelh)</comment>
+    <requestid>178963</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>fcd2dcfc883feb4177e9407f4294ff23</srcmd5>
+    <version>4.8</version>
+    <time>1376551001</time>
+    <user>scarabeus_factory</user>
+    <comment>- strace-linux-ptrace-h.patch: handle conflict with struct
+  ptrace_peeksiginfo_args between &lt;sys/ptrace.h&gt; and &lt;linux/ptrace.h&gt; (forwarded request 187005 from Andreas_Schwab)</comment>
+    <requestid>187081</requestid>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>fcd2dcfc883feb4177e9407f4294ff23</srcmd5>
+    <version>4.8</version>
+    <time>1379664738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>b94b2b6344fec975818aa403800ccfb5</srcmd5>
+    <version>4.8</version>
+    <time>1386334334</time>
+    <user>coolo</user>
+    <comment>- Make ppc64le architecture known 
+/usr/bin/osc
+- added patches:
+  * strace-ppc64le.patch (forwarded request 209428 from k0da)</comment>
+    <requestid>209444</requestid>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>0cd5a1ac531467d318ddb0ef1674d733</srcmd5>
+    <version>4.8</version>
+    <time>1393605987</time>
+    <user>coolo</user>
+    <comment>- strace -p 99999 segfault for ppc64le archi disapear if
+  upstream patch 03ef0b2 is applied to this strace 4.8 version
+- added patches:
+  * strace_cid_03ef0b2.patch (forwarded request 223856 from michel_mno)</comment>
+    <requestid>223880</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>6b0362bc996b6ed37a0e68e9e995ed5d</srcmd5>
+    <version>4.8</version>
+    <time>1408089501</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244512</requestid>
+  </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>6b0362bc996b6ed37a0e68e9e995ed5d</srcmd5>
+    <version>4.8</version>
+    <time>1409303422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="10">
+    <srcmd5>3a79ee687c7c4ed2dd59365a0e4222cb</srcmd5>
+    <version>4.8</version>
+    <time>1416824268</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262173</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6ee7dbb22b0e900513aff0a5070ec6bc</srcmd5>
+    <version>4.9</version>
+    <time>1417160665</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263178</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a1688be10631334c7b7f801a6bbb9bf9</srcmd5>
+    <version>4.10</version>
+    <time>1427313872</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292866</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>f4b69ffed7da4752cc02cc86c333ee83</srcmd5>
+    <version>4.10</version>
+    <time>1427983307</time>
+    <user>dimstar_suse</user>
+    <comment>proposal [bnc#924827] /
+http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded request 293638 from jengelh)</comment>
+    <requestid>293646</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>f2f19533ecf4bc9258e4eb92f165a985</srcmd5>
+    <version>4.10</version>
+    <time>1432304958</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308117</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>ebd5db228db8c5cb655bd458d1d0d500</srcmd5>
+    <version>4.10</version>
+    <time>1444833496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334578</requestid>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>ed27b20580de4f565f9d115b559c822f</srcmd5>
+    <version>4.10</version>
+    <time>1445860048</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340392</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>b7157d954e75657d71c6cbb420076e48</srcmd5>
+    <version>4.10</version>
+    <time>1448400752</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344705</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8d761330174f8e62070ef19607090ff8</srcmd5>
+    <version>4.11</version>
+    <time>1451895614</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350892</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>f6ae9d79710709ec30179092ff84b3a1</srcmd5>
+    <version>4.11</version>
+    <time>1461334627</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Drop alpha/sparc conditionals, neither is supported
+- Drop ppc/ppc64 provides/obsolete as no longer needed
+- Do not export OPTFLAGS as they are used anyways (forwarded request 390307 from pluskalm)</comment>
+    <requestid>390374</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>79c3f03d20db059c4fbd5ce4d0b6e2d5</srcmd5>
+    <version>4.12</version>
+    <time>1465335891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.12.
+  * Improvements
+    * Implemented simultaneous use of -p option and tracing of a command.
+    * Implemented caching of netlink conversations to reduce amount of time
+      spent in decoding socket details in -yy mode.
+    * Implemented -yy mode decoding of protocol:portid pairs associated with
+      netlink socket descriptors.
+    * Implemented decoding of copy_file_range, preadv2, and pwritev2 syscalls.
+    * Implemented dumping of preadv, preadv2, pwritev, pwritev2, and vmsplice
+      syscalls.
+    * Implemented decoding of BTRFS_* and UFFDIO_* ioctl commands.
+    * Enhanced decoding of BLK*, EVIOC*, RTC_*, and VIDIOC_* ioctl commands.
+    * Enhanced decoding of fstatfs, fstatfs64, get_mempolicy, getdents,
+      getdents64, getgroups, getpriority, kill, mbind, migrate_pages, mknod,
+      mknodat, personality, poll, ppoll, quotactl, rt_sigpending,
+      rt_sigqueueinfo, rt_sigtimedwait, rt_tgsigqueueinfo, sched_getaffinity,
+      sched_setaffinity, seccomp, set_mempolicy, setgroups, setpriority, statfs,
+      statfs64, tgkill, waitid, and xattr family syscalls.
+    * Enhanced decoding of getxpid, getxuid, and getxgid syscalls on alpha.
+    * Enhanced decoding of pipe syscall on alpha, ia64, mips, sh, and sparc.
+    * Added decoding of bind, listen, and setsockopt direct syscalls on sparc.
+    * Added decoding of osf_statfs64 and osf_fstatfs64 syscalls on alpha.
+    * Added decoding of fadvise64 and fadvise64_64 on s390.
+    * Updated lists of AF_*, BPF_MAP_TYPE_*, CLONE_*, EPOLL*, IPV6_*, MADV_*,
+      MSG_*, PTRACE_*, SEGV_*, SO_*, SOL_*, *_MAGIC, and quotactl constants.
+    * Updated lists of ioctl commands from Linux 4.6.
+  * Bug fixes
+    * Fixed build on arc, metag, nios2, or1k, and tile architectures.
+    * Fixed decoding of 32-bit times syscall return value on 64-bit architectures.
+    * Fixed decoding of mlock2 syscall on sparc. (forwarded request 399945 from AndreasSchwab)</comment>
+    <requestid>399948</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>74fec9d650d682b4a5ecd6230098df66</srcmd5>
+    <version>4.13</version>
+    <time>1470508649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.13.
+  * Improvements
+    * Implemented a general netlink socket parser.
+    * Enhanced decoding of socket addresses.
+    * Enhanced decoding of cmsghdr, msghdr, and mmsghdr structures.
+    * Enhanced decoding of accept, accept4, bind, getpeername, getsockname,
+      ipc, recvfrom, recvmsg, recvmmsg, sendto, sendmmsg, and socketcall
+      syscalls.
+    * Updated lists of AF_*, BPF_MAP_TYPE_*, KEY_*, KEYCTL_*, RWF_*, SS_*,
+      and *_MAGIC constants.
+    * Updated lists of ioctl commands from Linux 4.7.
+  * Bug fixes
+    * Fixed decoding of pid_t argument of prlimit64 syscall.
+    * Fixed sign extension issues in the parser of struct rusage.
+    * Fixed race condition in decoding of timeout argument of recvmmsg and
+      rt_sigtimedwait syscalls.
+    * Fixed build with fresh linux kernel headers. (forwarded request 415843 from AndreasSchwab)</comment>
+    <requestid>415844</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2e03f8ee9f8b84f509119063e7a6e1f0</srcmd5>
+    <version>4.14</version>
+    <time>1475749715</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433335</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>61867d7ef794796d2b28985bc3245dfe</srcmd5>
+    <version>4.15</version>
+    <time>1482784760</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446341</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f301a16e90ce036a83aada8800755127</srcmd5>
+    <version>4.16</version>
+    <time>1487597235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.16
+  * Improvements
+    * Implemented syscall return value injection (-e inject=SET:retval= option).
+    * Implemented signal injection (-e inject=SET:signal= option).
+    * Implemented decoding of SUID_DUMP_* constants in PR_[GS]ET_DUMPABLE.
+    * Implemented decoding of all SG_* ioctl commands.
+    * Implemented decoding of ustat syscall.
+    * Implemented decoding of BPF_OBJ_PIN, BPF_OBJ_GET, BPF_PROG_ATTACH,
+      and BPF_PROG_DETACH commands of bpf syscall.
+    * Enhanced decoding of sg_io_hdr and sg_io_v4 structures.
+    * Enhanced decoding of get_robust_list, getrandom, io_submit, set_robust_list
+      syscalls.
+    * Enhanced decoding of entities of kernel long type on x32 and mips n32 ABIs.
+    * Updated lists of IP_*, IPV6_*, and LOOP_* constants.
+    * Updated lists of ioctl commands from Linux 4.10.
+    * Added decoding of recently added syscalls on avr32, microblaze, ppc,
+      and ppc64.
+  * Bug fixes
+    * Fixed pathmatch of oldselect syscall on 64-bit architectures.
+    * Fixed decoding of mmap2 syscall on s390 when arguments are not available.
+    * Fixed decoding of kexec_file_load, mprotect, pkey_mprotect, prctl, preadv*,
+      and pwritev* syscalls on x32.
+    * Fixed printing of string arguments of getxattr and setxattr syscalls
+      when -s option is used to limit the printed string size.
+    * Fixed decoding of ifconf, ifreq, and loop_info structures on non-native
+      personalities.
+    * Fixed decoding of SG_* and LOOP_* ioctl commands.
+    * Fixed build on mips with musl libc.
+    * Fixed cross-building of ioctlsort.
+    * Applied minor formatting fixes to the manual page. (forwarded request 457370 from AndreasSchwab)</comment>
+    <requestid>457371</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d4b5d1ddfa6b98097ad6dbccc3ef0233</srcmd5>
+    <version>4.17</version>
+    <time>1496392242</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.17
+  * Changes in command line syntax
+    * Syscall classes specified in -e trace= option now have % prefix (like
+      -e trace=%process).  Old style class names without leading % are still
+      supported, but considered deprecated now.
+  * Improvements
+    * Optimized syscall filtering.
+    * Improved representation of timestamps.
+    * Enhanced decoding of sched_setattr syscall.
+    * Added -e trace=%stat option for tracing variants of stat syscall.
+    * Added -e trace=%lstat option for tracing variants of lstat syscall.
+    * Added -e trace=%fstat option for tracing variants of fstat and fstatat
+      syscalls.
+    * Added -e trace=%%stat option for tracing syscalls used for querying file
+      status information (stat, lstat, fstat, fstatat, statx, and their
+      variations).
+    * Added -e trace=%statfs option for tracing statfs, statfs64 and statvfs
+      syscalls.
+    * Added -e trace=%fstatfs option for tracing fstatfs, fstatfs64 and fstatvfs
+      syscalls.
+    * Added -e trace=%%statfs option for tracing syscalls used for querying file
+      system statistics information (statfs-like, fstatfs-like and ustat).
+    * Added -e trace=/regex option for filtering syscalls using regular
+      expressions.
+    * Added support for prepending of question mark before syscall qualification
+      in -e trace expressions in order to suppress error in case no syscalls
+      matched the provided qualification.
+    * Implemented decoding of signal mask in rt_sigreturn syscall on alpha, arc,
+      arm, avr32, bfin, cris, hppa, m68k, metag, microblaze, mips, nios2, or1k,
+      powerpc, powerpc64, riscv, sh, sh64, sparc, sparc64, tile, x86, and xtensa (forwarded request 498329 from AndreasSchwab)</comment>
+    <requestid>498330</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>23e8dd32970a9ea754d6d0b601dd0ead</srcmd5>
+    <version>4.18</version>
+    <time>1499509611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.18
+  * Improvements
+    * Implemented decoding of SCM_TIMESTAMP* control messages.
+    * Implemented decoding of netlink NLMSG_DONE messages.
+    * Implemented decoding of netlink generic nlmsg_type and nlmsg_flags.
+    * Implemented decoding of NETLINK_AUDIT, NETLINK_NETFILTER, NETLINK_ROUTE,
+      NETLINK_SELINUX, NETLINK_SOCK_DIAG, and NETLINK_XFRM message types.
+    * Implemented decoding of NETLINK_GENERIC protocol families.
+    * Implemented basic protocol specific decoding of AF_INET, AF_INET6,
+      AF_NETLINK, AF_PACKET, AF_SMC, and AF_UNIX messages of NETLINK_SOCK_DIAG.
+    * Implemented basic decoding of netlink attributes.
+    * Implemented basic protocol specific decoding of AF_INET, AF_NETLINK,
+      AF_PACKET, AF_SMC, and AF_UNIX netlink attributes of NETLINK_SOCK_DIAG.
+    * Implemented decoding of inet_diag_msg, netlink_diag_msg, and unix_diag_msg
+      netlink attributes of NETLINK_SOCK_DIAG.
+    * Updated lists of ARPHRD_*, KEYCTL_*, NDIAG_SHOW_*, RTM_*, SCM_*, SCTP_*,
+      SO_*, V4L2_*, and prctl ARCH_* constants.
+    * Updated lists of ioctl commands from Linux 4.12.
+  * Bug fixes
+    * In interactive mode (-I2), those signals that were blocked at startup
+      will remain blocked for the whole period of strace execution.
+    * strace no longer resets SIGCHLD handler in tracees to the default action.
+    * When traced command is terminated by a blocked signal, strace unblocks
+      that signal to ensure its own termination with the same signal.
+    * Fixed corner cases in decoding of old sigaction syscall.
+    * Fixed build with old kernel headers on mips.
+    * Fixed build on aarch64 and tile with glibc &amp;gt;= 2.26.
+    * Fixed build on arc and nios2. (forwarded request 508376 from AndreasSchwab)</comment>
+    <requestid>508377</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>5de8f6f7e718da4e802e7eb497b405cf</srcmd5>
+    <version>4.19</version>
+    <time>1504895989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.19
+  * Changes in behaviour
+    * Changed formatting of personality names on tile architecture in order
+      to make it in line with other multi-personality architectures.
+    * Changed field output order in struct v4l2_requestbuffers to improve in/out
+      field formatting.
+    * Changed handling of multiple signal= specifications in an injection
+      expression: multiple specification now leads to error instead of implicit
+      usage the last specification.
+  * Improvements
+    * Enhanced decoding of optlen argument of getsockopt syscall.
+    * Enhanced decoding of SO_LINGER option of getsockopt and setsockopt syscalls.
+    * Enhanced decoding of SO_PEERCRED option of getsockopt syscall.
+    * Enhanced decoding of IP_ADD_MEMBERSHIP, IP_DROP_MEMBERSHIP,
+      IPV6_ADD_MEMBERSHIP, IPV6_DROP_MEMBERSHIP, IPV6_JOIN_ANYCAST,
+      IPV6_LEAVE_ANYCAST, MCAST_JOIN_GROUP, and MCAST_LEAVE_GROUP options
+      of setsockopt syscall.
+    * Enhanced decoding of KEYCTL_DH_COMPUTE operation of keyctl syscall
+      (KDF parameters decoding).
+    * Implemented decoding of KEYCTL_RESTRICT_KEYRING operation of keyctl syscall.
+    * Enhanced decoding of UFFDIO_API ioctl command.
+    * Enhanced decoding of BPF_PROG_LOAD, BPF_MAP_CREATE, BPF_MAP_LOOKUP_ELEM,
+      and BPF_MAP_GET_NEXT_KEY commands of bpf syscall.
+    * Implemented decoding of linux socket filter programs specified
+      for SO_ATTACH_FILTER and SO_ATTACH_REUSEPORT_CBPF socket options.
+    * Implemented decoding of inet_diag_req_v2, inet_diag_req_compat,
+      packet_diag_msg, and smc_diag_msg netlink attributes of NETLINK_SOCK_DIAG.
+    * Implemented NETLINK_SELINUX protocol specific decoding.
+    * Implemented decoding of netlink message ack flags.
+    * Implemented decoding of nlmsgerr netlink attributes. (forwarded request 521514 from AndreasSchwab)</comment>
+    <requestid>521515</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4a7a50c86a0944578509f83cec1cf588</srcmd5>
+    <version>4.20</version>
+    <time>1510960744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.20
+  * Improvements
+    * Implemented decoding of NETLINK_NETFILTER netlink message types and flags.
+    * Implemented decoding of SECCOMP_GET_ACTION_AVAIL operation of seccomp
+      syscall.
+    * Updated lists of ARPHRD_*, BPF_*, ETH_P_*, LOOP_*, MADV_*,
+      MEMBARRIER_CMD_*, MFD_*, SECCOMP_*, SO_*, SOL_*, TCP_*, and UFFD_FEATURE_*
+      constants.
+    * Added decoding of statx syscall on hppa.
+    * Updated lists of ioctl commands from Linux 4.14.
+  * Bug fixes
+    * Fixed powerpc personality support on powerpc64. (forwarded request 541888 from AndreasSchwab)</comment>
+    <requestid>541889</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>0453953463c4119518a4fe4fa404f036</srcmd5>
+    <version>4.20</version>
+    <time>1517234182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570361</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>23852334ece3ef537b741afdb456d83f</srcmd5>
+    <version>4.21</version>
+    <time>1518813496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.21
+  * Changes in behaviour
+    * Warning is now issued when -F option is used.
+    * Warning is now issued when a tracee with unsupported personality
+      is attached.
+    * Unknown syscall numbers are now printed in hexadecimal form.
+  * Improvements
+    * Implemented decoding of netlink descriptor attributes as file descriptors.
+    * Implemented decoding of hugetlb page size selection flags.
+    * Implemented decoding of BPF_PROG_TEST_RUN, BPF_PROG_GET_NEXT_ID,
+      BPF_MAP_GET_NEXT_ID, BPF_PROG_GET_FD_BY_ID, BPF_MAP_GET_FD_BY_ID,
+      and BPF_OBJ_GET_INFO_BY_FD commands of bpf syscall.
+    * Enhanced decoding of get_thread_area, memfd_create, modify_ldt,
+      perf_event_open, reboot, s390_guarded_storage, s390_pcio_mmio_read,
+      s390_pci_mmio_write, s390_runtime_instr, s390_sthyi, set_thread_area,
+      and shmget syscalls.
+    * Implemented decoding of KVM_* and DM_LIST_DEVICES ioctl commands.
+    * Implemented decoding of riscv_flush_icache syscall.
+    * Enhanced decoding of getsockopt and setsockopt syscalls for SOL_NETLINK
+      level.
+    * Enhanced decoding of BPF_MAP_CREATE command of bpf syscall.
+    * Print values returned by mq_open syscall and first arguments
+      of mq_getsetattr, mq_notify, mq_timedreceive, and mq_timedsend syscalls
+      as file descriptors.
+    * Added decoding of get_tls syscall on arm.
+    * Added -e trace=%pure option for tracing system calls with no arguments that
+      never fail.
+    * Updated lists of IPV6_*, MAP_*, MEMBARRIER_CMD_*, MSG_*, NT_*, PKEY_*,
+      SHM_*, and TCP_* constants.
+    * Added manual page for the strace-log-merge command.</comment>
+    <requestid>576868</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a3b640baae210d0904eafd1ccf351d29</srcmd5>
+    <version>4.22</version>
+    <time>1523126926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.22
+  * Changes in behaviour
+    * When printing string data, '8' and '9' following an octal escape sequence
+      no longer lead to unabbreviated octal escape sequence output, as they used
+      to do.
+    * Angle brackets are now printed as octal number escape sequences
+      in the output of paths associated with file descriptors.
+    * Data dump for write syscalls (-e write) is performed regardless
+      of successfulness of these syscall (addresses Debian bug #436284).
+    * -r and -t options are now affect output independently.  Previously,
+      -r option led to ignoring of the -t option (addresses Debian bug #466195).
+  * Improvements
+    * Implemented delay injection (-e inject=SET:delay_enter= and
+      -e inject=SET:delay_exit= options).
+    * Added -A option for opening output files in append mode
+      (addresses Debian bug #528488).
+    * IPv6 addresses shown in socket information in -yy mode are now printed
+      in brackets.
+    * Enhanced decoding of bpf, prctl and ptrace syscalls.
+    * Enhanced decoding of BTRFS_IOC_INO_PATHS, BTRFS_IOC_LOGICAL_INO, and PTP_*
+      ioctl commands.
+    * Enhanced NETLINK_ROUTE protocol decoding.
+    * Updated lists of signal codes.
+    * Updated lists of BPF_*, BTN_*, ETH_P_*, INET_DIAG_BC_*, KEY_*, POLL*, RWF_*,
+      SCHED_FLAG_*, SCTP_* and error constants.
+    * Implemented block/character device number printing in -yy mode.
+    * Known pixel/SDR format names are printed as comments for pixelformat fields
+      in v4l2 structures.
+    * Enhanced decoding of kern_features syscall.
+    * Enhanced NETLINK_NETFILTER netlink protocol decoder. (forwarded request 593798 from Andreas_Schwab)</comment>
+    <requestid>593842</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e543fdfbf471132c0b6d424097014d9b</srcmd5>
+    <version>4.23</version>
+    <time>1530087268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.23
+  * Changes in behaviour
+    * On x32 personality, 64-bit syscalls (such as readv) are now shown with &quot;#64&quot;
+      suffix instead of &quot;64:&quot; prefix.
+    * Changed error number output format: error numbers are consistently
+      printed as &quot;-1 ECONST (Error description)&quot;
+      for known errors and as &quot;-1 (errno 123)&quot; for unknown errors,
+      regardless of -e raw qualification settings.
+    * Unfetchable addresses inside arrays are now printed as comments.
+    * Obsolete IA-32 mode syscall names are no longer printed on ia64.
+  * Improvements
+    * Implemented libdw backend for -k option, configured at build time
+      using --with-libdw option.
+    * Added -X option for configuring xlat output formatting (addresses
+      Debian bug #692915).
+    * Added support for personality designation (&quot;64&quot;, &quot;32&quot;, or &quot;x32&quot;) to syscall
+      qualifications in -e trace expressions.
+    * Implemented injection of syscalls with no side effects as an alternative
+      to injection of an invalid syscall (-e inject=SET:syscall= expression).
+    * Improved support for reproducible builds (addresses Debian bug #896016).
+    * Implemented decoding of BPF_PROG_QUERY and BPF_RAW_TRACEPOINT_OPEN bpf
+      syscall commands.
+    * Implemented decoding of INOTIFY_IOC_SETNEXTWD and PERF_EVENT_IOC_* ioctl
+      commands.
+    * Implemented decoding of PR_GET_SPECULATION_CTRL and PR_SET_SPECULATION_CTRL
+      prctl syscall options.
+    * Enhanced decoding of bpf, getsockopt, setsockopt, and socket syscalls.
+    * Enhanced decoding of NETLINK_KOBJECT_UEVENT and NETLINK_ROUTE protocols.
+    * Enhanced decoding of *_DIAG_MEMINFO netlink attributes.
+    * Enhanced decoding of BTRFS_*, FS_IOC_*, SIOCGIFHWADDR, and SIOCSIFHWADDR (forwarded request 617219 from AndreasSchwab)</comment>
+    <requestid>617220</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>d8fc5b2136f8464a37d1e80ac47f2034</srcmd5>
+    <version>4.23</version>
+    <time>1533627622</time>
+    <user>dimstar_suse</user>
+    <comment>- statx-redefinition.patch: Workaround incompatibility between
+  &amp;lt;sys/stat.h&amp;gt; and &amp;lt;asm/stat.h&amp;gt; (forwarded request 626904 from Andreas_Schwab)</comment>
+    <requestid>626905</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f3dd4e8bd84f3ea28c24401f61406c99</srcmd5>
+    <version>4.24</version>
+    <time>1534542970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.24
+  * Contains a fix for occasionally failing aio.gen.test
+  * Improvements
+    * Implemented decoding of kvm vcpu exit reason (-e kvm=vcpu option),
+      requires Linux kernel version 4.16.0 or higher.
+    * Implemented decoding of KVM_SET_CPUID2 and KVM_GET_*_CPUID ioctl commands.
+- Remove statx-redefinition.patch (in upstream now) (forwarded request 629175 from jirislaby)</comment>
+    <requestid>629270</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>75374539a249cf6eebca0cbdbc078fb3</srcmd5>
+    <version>4.25</version>
+    <time>1541514189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.25
+  * Improvements
+    * Implemented decoding of KVM_CHECK_EXTENSION and NBD_* ioctl commands.
+    * Implemented decoding of SOL_XDP socket option names.
+    * Implemented decoding of AF_PACKET protocols in socket syscall.
+    * Implemented decoding of AF_AX25 and AF_X25 addresses, protocols,
+      and options.
+    * Implemented stack trace printing on receiving signals.
+    * Enhanced xlat styles support configured by -X option.
+    * Enhanced decoding of IFLA_*, NETCONFA_*, and SMC_DIAG_* netlink attributes.
+    * Wired up io_pgetevents syscall on arm, sparc, and sparc64.
+    * Updated lists of AF_*, AUDIT_*, BPF_*, IFLA_*, IN_*, IPSTATS_*,
+      IPV4_DEVCONF_*, NT_*, SCTP_*, SO_*, SOCK_*, SOL_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 4.19.
+  * Bug fixes
+    * Fixed decoding of bit sets in evdev ioctl commands.
+    * Fixed decoding of EVIOCGBIT(0, ...) ioctl commands.
+    * Fixed test suite for the case when mlockall and unimplemented syscalls
+      are explicitly disabled by a seccomp filter. (forwarded request 645591 from AndreasSchwab)</comment>
+    <requestid>645592</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>086021f0b1dc65bbcb18d916de7b82df</srcmd5>
+    <version>4.26</version>
+    <time>1546535026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 4.26
+  * Changes in behavior
+    * If strace is interrupted by a signal it handles (currently
+      one of HUP, INT, QUIT, PIPE, or TERM), strace terminates
+      itself with this signal.
+  * Improvements
+    * Implemented obtainment of system call information using
+      PTRACE_GET_SYSCALL_INFO ptrace API.
+    * Implemented decoding of PTRACE_GET_SYSCALL_INFO ptrace request.
+    * Implemented decoding of BLKGETZONESZ, BLKGETNRZONES, and RND* ioctl
+      commands.
+    * Enhanced xlat styles support configured by -X option.
+    * Enhanced internet address formatting in structureless contexts.
+    * Enhanced decoding of getsockopt SO_ERROR option.
+    * Enhanced error diagnostics when the first exec fails.
+    * Added %net as a short form of %network in syscall specifications.
+    * Updated lists of ABS_*, BPF_*, FAN_*, IFA_*, IFLA_*, KVM_CAP_*, NETLINK_*,
+      NTF_*, PR_SPEC_*, REL_*, SOL_*, TCA_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 4.20.
+    * Enhanced manual page.
+  * Bug fixes
+    * Fixed &quot;xlat_idx: Unexpected xlat value 0&quot; warnings.
+    * Fixed sthyi output format on s390.
+    * Documented -X option in strace -h output. (forwarded request 661648 from AndreasSchwab)</comment>
+    <requestid>661649</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>35d1c9a80180d1cba3b076cf5e6da9f8</srcmd5>
+    <version>4.26</version>
+    <time>1552491676</time>
+    <user>coolo</user>
+    <comment>- disable test failing with kernel 5.0 (forwarded request 684301 from jirislaby)</comment>
+    <requestid>684333</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>bc8a725dba6759302d032841b6cad33f</srcmd5>
+    <version>5.0</version>
+    <time>1553435759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.0
+  * Changes in behavior
+    * -D option now implies -I4
+    * Diagnostic message is no longer printed if an attempt to restart a process
+      has failed with ESRCH.
+    * ASCII dump no longer tries to read the whole buffer at once.
+  * Improvements
+    * Changed the way tracees are handled: all pending tracees are now waited for
+      before further processing, this improves fairness of tracee processing.
+    * Enhanced xlat styles support configured by -X option.
+    * Enhanced decoding of bpf syscall.
+    * Enhanced pid formatting in strace-log-merge output.
+    * Wired up kexec_file_load and rseq syscalls on aarch64, arc, metag, nios2,
+      or1k, riscv, and tile architectures.
+    * Updated lists of BPF_*, BTRFS_*, FAN_*, IFLA_*, KERN_*, KVM_CAP_*, NDA_*,
+      NETNSA_*, NT_*, PR_*, REL_*, SECCOMP_*, SCTP_*, UDP_*, V4L2_*, and *_MAGIC
+      constants.
+    * Updated lists of ioctl commands from Linux 5.0.
+  * Bug fixes
+    * Fixed ordering of sockaddr_in6 fields.
+    * Fixed strace-k test on alpha.
+    * Fixed build on mips o32.
+    * Fixed build on NOMMU architectures.
+    * Fixed build in --with-libiberty=yes mode.
+    * Fixed potential NULL dereference during printing of line continuation
+      for syscalls that haven't been decoded.
+    * Fixed strace-log-merge error diagnostics. (forwarded request 686391 from Andreas_Schwab)</comment>
+    <requestid>686392</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>b1b23b7e2f01b6e627110e79fac1e8f2</srcmd5>
+    <version>5.0</version>
+    <time>1558129124</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore testsuite failures
+</comment>
+    <requestid>702867</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>97ed57b310b1f0adb80ea419de6091f1</srcmd5>
+    <version>5.1</version>
+    <time>1559580293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.1
+  * Bug fixes
+    * Fixed decoding of last two arguments of clone syscall on riscv.
+  * Improvements
+    * Added C-SKY architecture support.
+    * Implemented decoding of SO_TIMESTAMP*_NEW control messages.
+    * Implemented decoding of clock_gettime64, clock_settime64, clock_adjtime64,
+      clock_getres_time64, clock_nanosleep_time64, timer_gettime64,
+      timer_settime64, timerfd_gettime64, timerfd_settime64, utimensat_time64,
+      pselect6_time64, ppoll_time64, io_pgetevents_time64, recvmmsg_time64,
+      mq_timedsend_time64, mq_timedreceive_time64, semtimedop_time64,
+      rt_sigtimedwait_time64, futex_time64, sched_rr_get_interval_time64,
+      pidfd_send_signal, io_uring_setup, io_uring_enter, and io_uring_register
+      syscalls.
+    * Enhanced decoding of bpf syscall.
+    * Wired up getegid, geteuid, getppid, io_pgetevents, statfs64, and fstatfs64
+      syscalls on alpha.
+    * Wired up kexec_file_load and migrate_pages syscalls on arm.
+    * Wired up io_pgetevents, perf_event_open, seccomp, and statx syscalls
+      on ia64.
+    * Wired up seccomp syscall on m68k.
+    * Wired up statx syscall on sh.
+    * Wired up pkey_mprotect, pkey_alloc, and pkey_free syscalls on alpha, hppa,
+      ia64, m68k, s390, s390x, sh, sparc, and sparc64.
+    * Wired up rseq syscall on alpha, hppa, ia64, m68k, sh, sparc, sparc64,
+      and xtensa.
+    * Wired up direct ipc syscalls on m68k, mips o32, powerpc, powerpc64,
+      s390, s390x, sh, sparc, sparc64, and x86.
+    * Updated lists of BPF_*, FAN_*, F_SEAL_*, IPV6_*, NT_*, PR_SPEC_*, SO_*,
+      and V4L2_* constants. (forwarded request 704785 from Andreas_Schwab)</comment>
+    <requestid>704786</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>85053101b8e220831099326f96ea3e3f</srcmd5>
+    <version>5.2</version>
+    <time>1563258530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.2
+  * Improvements
+    * Implemented syscall return status filtering with -e status=set option
+      and its aliases: -z (limit syscall printing to successful syscalls only)
+      and -Z (limit syscall printing to failed syscalls only).
+    * Implemented decoding of open_tree, move_mount, fsopen, fsconfig, fsmount,
+      and fspick syscalls.
+    * Enhanced decoding of bpf, clone, inotify_init, mbind, and set_mempolicy
+      syscalls.
+    * Updated lists of AT_*, AUDIT_*, BPF_*, CLONE_*, ETH_*, KEY_*, KVM_*, MPOL_*,
+      TIPC_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.2.
+  * Bug fixes
+    * Fixed syscall tampering on powerpc, powerpc64, sparc, and sparc64 when
+      PTRACE_GET_SYSCALL_INFO is in use.
+    * Fixed build with cutting-edge toolchain. (forwarded request 714932 from AndreasSchwab)</comment>
+    <requestid>714933</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>7a30b7e9866d5d25db05f905b2d73378</srcmd5>
+    <version>5.2</version>
+    <time>1569079808</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>732181</requestid>
+  </revision>
+</revisionlist>

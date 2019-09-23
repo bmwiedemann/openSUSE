@@ -1,0 +1,13 @@
+<package name="cglib" project="openSUSE:Factory">
+  <title>Code Generation Library</title>
+  <description>cglib is a powerful, high performance and quality Code Generation
+Library, It is used to extend JAVA classes and implements interfaces at
+runtime.
+
+NOTE: To use the Aspectwerks hook (net.sf.cglib.transform.hook.*), make
+sure aspectwerks.jar is in the Classpath (from the 'aspectwerks' RPM)
+NOTE: If you use the cglib.jar you may need to add asm.jar to your
+ClassPath (from the 'asm' RPM).  The cglib-nodep.jar includes the ASM
+classes already.</description>
+  <devel project="Java:packages" package="cglib"/>
+</package>

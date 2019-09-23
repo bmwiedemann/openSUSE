@@ -1,0 +1,17 @@
+<package name="perl-Monitoring-Plugin" project="openSUSE:Factory">
+  <title>Family of Perl modules to streamline writing Nagios compatible plugins</title>
+  <description>Monitoring::Plugin and its associated Monitoring::Plugin::* modules are a
+family of perl modules to streamline writing Monitoring plugins. The main
+end user modules are Monitoring::Plugin, providing an object-oriented
+interface to the entire Monitoring::Plugin::* collection, and
+Monitoring::Plugin::Functions, providing a simpler functional interface to
+a useful subset of the available functionality.
+
+The purpose of the collection is to make it as simple as possible for
+developers to create plugins that conform the Monitoring Plugin guidelines
+(https://www.monitoring-plugins.org/doc/guidelines.html).
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Monitoring-Plugin"/>
+  <url>http://search.cpan.org/dist/Monitoring-Plugin/</url>
+</package>

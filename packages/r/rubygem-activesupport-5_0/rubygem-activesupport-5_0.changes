@@ -1,0 +1,466 @@
+-------------------------------------------------------------------
+Thu Mar 14 10:48:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.0.7.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.7.2 (March 11, 2019) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Sat Dec  8 16:17:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 5.0.7.1
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.7.1 (November 27, 2018) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Fri Mar 30 04:31:17 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 5.0.7
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.7 (March 29, 2018) ##
+  
+  *   Return all mappings for a timezone identifier in `country_zones`
+  
+      Some timezones like `Europe/London` have multiple mappings in
+      `ActiveSupport::TimeZone::MAPPING` so return all of them instead
+      of the first one found by using `Hash#value`. e.g:
+  
+          # Before
+          ActiveSupport::TimeZone.country_zones("GB") # => ["Edinburgh"]
+  
+          # After
+          ActiveSupport::TimeZone.country_zones("GB") # => ["Edinburgh", "London"]
+  
+      Fixes #31668.
+  
+      *Andrew White*
+
+-------------------------------------------------------------------
+Mon Sep 11 12:33:27 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.6
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.6 (September 07, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.6.rc1 (August 24, 2017) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Thu Aug  3 19:02:03 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.5
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.5 (July 31, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.5.rc2 (July 25, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.5.rc1 (July 19, 2017) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Tue Jun 20 06:44:11 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.4 (June 19, 2017) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.3 (May 12, 2017) ##
+
+-------------------------------------------------------------------
+Tue May 23 09:38:25 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.3
+ see installed CHANGELOG.md
+
+  *   `ActiveSupport::EventedFileUpdateChecker` no longer listens to
+      directories outside of the application directory.
+  
+      *radiospiel*
+  
+  *   Return unmapped timezones from `country_zones`
+  
+      If a country doesn't exist in the MAPPINGS hash then create a new
+      `ActiveSupport::Timezone` instance using the supplied timezone id.
+  
+      Fixes #28431.
+  
+      *Andrew White*
+  
+  *   Fixed bug in `DateAndTime::Compatibility#to_time` that caused it to
+      raise `RuntimeError: can't modify frozen Time` when called on any frozen `Time`.
+      Properly pass through the frozen `Time` or `ActiveSupport::TimeWithZone` object
+      when calling `#to_time`.
+  
+      *Kevin McPhillips* & *Andrew White*
+  
+  *   Fix inconsistent results when parsing large durations and constructing durations from code
+  
+          ActiveSupport::Duration.parse('P3Y') == 3.years # It should be true
+  
+      Duration parsing made independent from any moment of time:
+      Fixed length in seconds is assigned to each duration part during parsing.
+  
+      Methods on `Numeric` like `2.days` now use these predefined durations
+      to avoid duplicating of duration constants through the codebase and
+      eliminate creation of intermediate durations.
+  
+      *Andrey Novikov, Andrew White*
+
+-------------------------------------------------------------------
+Thu Mar  2 05:33:58 UTC 2017 - coolo@suse.com
+
+- updated to version 5.0.2
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.2 (March 01, 2017) ##
+  
+  *   In Core Extensions, make `MarshalWithAutoloading#load` pass through the second, optional
+      argument for `Marshal#load( source [, proc] )`. This way we don't have to do 
+      `Marshal.method(:load).super_method.call(sourse, proc)` just to be able to pass a proc.
+  
+      *Jeff Latz*
+  
+  *   `ActiveSupport::Gzip.decompress` now checks checksum and length in footer.
+  
+      *Dylan Thacker-Smith*
+  
+  *   Cache `ActiveSupport::TimeWithZone#to_datetime` before freezing.
+  
+      *Adam Rice*
+
+-------------------------------------------------------------------
+Wed Dec 21 05:30:50 UTC 2016 - coolo@suse.com
+
+- updated to version 5.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 5.0.1 (December 21, 2016) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.1.rc2 (December 10, 2016) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 5.0.1.rc1 (December 01, 2016) ##
+  
+  *   Ensure duration parsing is consistent across DST changes
+  
+      Previously `ActiveSupport::Duration.parse` used `Time.current` and
+      `Time#advance` to calculate the number of seconds in the duration
+      from an arbitrary collection of parts. However as `advance` tries to
+      be consistent across DST boundaries this meant that either the
+      duration was shorter or longer depending on the time of year.
+  
+      This was fixed by using an absolute reference point in UTC which
+      isn't subject to DST transitions. An arbitrary date of Jan 1st, 2000
+      was chosen for no other reason that it seemed appropriate.
+  
+      Additionally, duration parsing should now be marginally faster as we
+      are no longer creating instances of `ActiveSupport::TimeWithZone`
+      every time we parse a duration string.
+  
+      Fixes #26941.
+  
+      *Andrew White*
+  
+  *   Fix `DateAndTime::Calculations#copy_time_to`. Copy `nsec` instead of `usec`.
+  
+      Jumping forward or backward between weeks now preserves nanosecond digits.
+  
+      *Josua Schmid*
+  
+  *   Avoid bumping the class serial when invoking executor.
+  
+      *Matthew Draper*
+  
+  *   Fix `ActiveSupport::TimeWithZone#in` across DST boundaries.
+  
+      Previously calls to `in` were being sent to the non-DST aware
+      method `Time#since` via `method_missing`. It is now aliased to
+      the DST aware `ActiveSupport::TimeWithZone#+` which handles
+      transitions across DST boundaries, e.g:
+  
+          Time.zone = "US/Eastern"
+  
+          t = Time.zone.local(2016,11,6,1)
+          # => Sun, 06 Nov 2016 01:00:00 EDT -05:00
+  
+          t.in(1.hour)
+          # => Sun, 06 Nov 2016 01:00:00 EST -05:00
+  
+      Fixes #26580.
+  
+      *Thomas Balthazar*
+  
+  *   Fix `thread_mattr_accessor` subclass no longer overwrites parent.
+  
+      Assigning a value to a subclass using `thread_mattr_accessor` no
+      longer changes the value of the parent class. This brings the
+      behavior inline with the documentation.
+  
+      Given:
+  
+          class Account
+            thread_mattr_accessor :user
+          end
+  
+          class Customer < Account
+          end
+  
+          Account.user = "DHH"
+          Customer.user = "Rafael"
+  
+      Before:
+  
+          Account.user  # => "Rafael"
+  
+      After:
+  
+          Account.user  # => "DHH"
+  
+      *Shinichi Maeshima*
+  
+  *   Since weeks are no longer converted to days, add `:weeks` to the list of
+      parts that `ActiveSupport::TimeWithZone` will recognize as possibly being
+      of variable duration to take account of DST transitions.
+  
+      Fixes #26039.
+  
+      *Andrew White*
+  
+  *   Fix `ActiveSupport::TimeZone#strptime`. Now raises `ArgumentError` when the
+      given time doesn't match the format. The error is the same as the one given
+      by Ruby's `Date.strptime`. Previously it raised
+      `NoMethodError: undefined method empty? for nil:NilClass.` due to a bug.
+  
+      Fixes #25701.
+  
+      *John Gesimondo*
+
+-------------------------------------------------------------------
+Fri Aug 12 04:35:03 UTC 2016 - coolo@suse.com
+
+- updated to version 5.0.0.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Jul  4 09:01:55 UTC 2016 - coolo@suse.com
+
+- updated to rails 5.0 - see http://weblog.rubyonrails.org/2016/6/30/Rails-5-0-final/
+
+-------------------------------------------------------------------
+Tue Mar  8 05:32:13 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.6
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.6 (March 07, 2016) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Tue Mar  1 05:35:06 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.5.2
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.5.2 (February 26, 2016) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 4.2.5.1 (January 25, 2015) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
+Tue Jan 26 05:32:47 UTC 2016 - coolo@suse.com
+
+- updated to version 4.2.5.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Nov 13 05:32:01 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.5
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.5 (November 12, 2015) ##
+  
+  *   Fix `TimeWithZone#eql?` to properly handle `TimeWithZone` created from `DateTime`:
+          twz = DateTime.now.in_time_zone
+          twz.eql?(twz.dup) => true
+  
+      Fixes #14178.
+  
+      *Roque Pinel*
+  
+  *   Handle invalid UTF-8 characters in `MessageVerifier.verify`.
+  
+      *Roque Pinel*, *Grey Baker*
+
+-------------------------------------------------------------------
+Tue Aug 25 04:31:44 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.4 (August 24, 2015) ##
+  
+  *   Fix a `SystemStackError` when encoding an `Enumerable` with `json` gem and
+      with the Active Support JSON encoder loaded.
+  
+      Fixes #20775.
+  
+      *Sammy Larbi*, *Prathamesh Sonpatki*
+  
+  *   Fix not calling `#default` on `HashWithIndifferentAcess#to_hash` when only
+      `default_proc` is set, which could raise.
+  
+      *Simon Eskildsen*
+  
+  *   Fix setting `default_proc` on `HashWithIndifferentAccess#dup`
+  
+      *Simon Eskildsen*
+
+-------------------------------------------------------------------
+Fri Jun 26 04:32:28 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.3
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.3 (June 25, 2015) ##
+  
+  *   Fix a range of values for parameters of the Time#change
+  
+      *Nikolay Kondratyev*
+  
+  *   Add some missing `require 'active_support/deprecation'`
+  
+      *Akira Matsuda*
+
+-------------------------------------------------------------------
+Wed Jun 17 04:33:49 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 4.2.2 (June 16, 2015) ##
+  
+  *   Fix XSS vulnerability in `ActiveSupport::JSON.encode` method.
+  
+      CVE-2015-3226.
+  
+      *Rafael Mendonça França*
+  
+  *   Fix denial of service vulnerability in the XML processing.
+  
+      CVE-2015-3227.
+  
+      *Aaron Patterson*
+
+-------------------------------------------------------------------
+Mon Mar 23 11:12:09 UTC 2015 - coolo@suse.com
+
+- updated to version 4.2.1
+ *   Fixed a problem where String#truncate_words would get stuck with a complex                                                                                                                                                              
+     string.                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                             
+     *Henrik Nygren*                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                             
+ *   Fixed a roundtrip problem with AS::SafeBuffer where primitive-like strings                                                                                                                                                              
+     will be dumped as primitives:                                                                                                                                                                                                           
+                                                                                                                                                                                                                                             
+     Before:                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                             
+         YAML.load ActiveSupport::SafeBuffer.new("Hello").to_yaml  # => "Hello"                                                                                                                                                              
+         YAML.load ActiveSupport::SafeBuffer.new("true").to_yaml   # => true                                                                                                                                                                 
+         YAML.load ActiveSupport::SafeBuffer.new("false").to_yaml  # => false                                                                                                                                                                
+         YAML.load ActiveSupport::SafeBuffer.new("1").to_yaml      # => 1                                                                                                                                                                    
+         YAML.load ActiveSupport::SafeBuffer.new("1.1").to_yaml    # => 1.1                                                                                                                                                                  
+                                                                                                                                                                                                                                             
+      After:                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                             
+         YAML.load ActiveSupport::SafeBuffer.new("Hello").to_yaml  # => "Hello"
+         YAML.load ActiveSupport::SafeBuffer.new("true").to_yaml   # => "true"
+         YAML.load ActiveSupport::SafeBuffer.new("false").to_yaml  # => "false"
+         YAML.load ActiveSupport::SafeBuffer.new("1").to_yaml      # => "1"
+         YAML.load ActiveSupport::SafeBuffer.new("1.1").to_yaml    # => "1.1"
+ 
+     *Godfrey Chan*
+ 
+ *   Replace fixed `:en` with `I18n.default_locale` in `Duration#inspect`.
+ 
+     *Dominik Masur*
+ 
+ *   Add missing time zone definitions for Russian Federation and sync them
+     with `zone.tab` file from tzdata version 2014j (latest).
+ 
+     *Andrey Novikov*
+
+-------------------------------------------------------------------
+Mon Jan 19 21:13:16 UTC 2015 - dmueller@suse.com
+
+- update to 4.1.9:
+  * `Method` objects now report themselves as not `duplicable?`. This allows
+  hashes and arrays containing `Method` objects to be `deep_dup`ed.
+
+-------------------------------------------------------------------
+Mon Nov 10 14:00:03 UTC 2014 - tboerger@suse.com
+
+- To get rails 4 running on SLE 11 i have switched the
+  rb_build_versions definition to rub21 as it is activated within
+  devel:languages:ruby. That way we can get running rails 4 on
+  SLE 11 too.
+
+-------------------------------------------------------------------
+Tue Oct 14 10:00:19 UTC 2014 - coolo@suse.com
+
+- updated to version 4.1.6
+ *   Fix DateTime comparison with DateTime::Infinity object.
+ *   Fixed a compatibility issue with the `Oj` gem when cherry-picking the file
+     `active_support/core_ext/object/json` without requiring `active_support/json`.
+     Fixes #16131.
+ *   Make Dependencies pass a name to NameError error.
+ *   Fixed precision error in NumberHelper when using Rationals.
+
+     before:
+         ActiveSupport::NumberHelper.number_to_rounded Rational(1000, 3), precision: 2
+         #=> "330.00"
+     after:
+         ActiveSupport::NumberHelper.number_to_rounded Rational(1000, 3), precision: 2
+         #=> "333.33"
+     See #15379.
+
+-------------------------------------------------------------------
+Wed Jul 23 13:30:47 UTC 2014 - mrueckert@suse.com
+
+- - initial package
+

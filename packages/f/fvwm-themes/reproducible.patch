@@ -1,0 +1,30 @@
+Index: fvwm-themes-0.7.0/bin/fvwm-themes-config.in
+===================================================================
+--- fvwm-themes-0.7.0.orig/bin/fvwm-themes-config.in
++++ fvwm-themes-0.7.0/bin/fvwm-themes-config.in
+@@ -2142,7 +2142,8 @@ sub generateThemesRc ($) {
+ 	my $self = shift;
+ 
+ 	my $verStr = sprintf("%-7s", $fvwmVersion);
+-	my $curDateStr = `date +%d-%b-%Y`; chomp($curDateStr);
++	my $d = $ENV{SOURCE_DATE_EPOCH}?"-d@$ENV{SOURCE_DATE_EPOCH}":"";
++	my $curDateStr = `date -u $d +%d-%b-%Y`; chomp($curDateStr);
+ 	my $userIdent = ($ENV{'USER'} || 'unknown') . '@' .
+ 		($ENV{'HOST'} || $ENV{'HOSTNAME'} || 'somewhere');
+ 
+Index: fvwm-themes-0.7.0/configure.in
+===================================================================
+--- fvwm-themes-0.7.0.orig/configure.in
++++ fvwm-themes-0.7.0/configure.in
+@@ -231,9 +231,9 @@ AC_SUBST(FT_FVWMFORM_DIR)dnl
+ AC_SUBST(FT_LOCALE_DIR)dnl
+ 
+ # migo: to match the one in FVWM...
+-FT_VERSION_INFO="fvwm-themes $VERSION built on `date +'%b %d %Y at %T'`"
++FT_VERSION_INFO="fvwm-themes $VERSION built on `date -u -d@${SOURCE_DATE_EPOCH:-$(date +%s)} +'%b %d %Y at %T'`"
+ AC_SUBST(FT_VERSION_INFO)dnl
+-FT_BUILD_ID=`date '+build %d-%b-%Y %T'`
++FT_BUILD_ID=`date -u -d@${SOURCE_DATE_EPOCH:-$(date +%s)} '+build %d-%b-%Y %T'`
+ AC_SUBST(FT_BUILD_ID)dnl
+ 
+ SETTINGS_FILE='${FT_DATADIR}/themes/default/settings.cfg'

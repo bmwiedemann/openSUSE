@@ -1,0 +1,7 @@
+<package name="tomboy" project="openSUSE:Factory">
+  <title>GNOME Note Taking Application</title>
+  <description>Tomboy is a desktop note taking application for Linux and Unix. Simple
+and easy to use, but with potential to help you organize the ideas and
+information you deal with every day.</description>
+  <devel project="GNOME:Factory" package="tomboy"/>
+</package>

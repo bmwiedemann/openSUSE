@@ -1,0 +1,271 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>234aa91de09bca4e969c26dd7f410576</srcmd5>
+    <version>2.0.10</version>
+    <time>1337005314</time>
+    <user>coolo</user>
+    <comment>This provides a matlab-like user interface for python, allowing easier transition from the expensive and proprietary matlab suite and providing advanced editing, interactive testing, debugging and introspection features.</comment>
+    <requestid>115731</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e53d3d4deeba44ca1c23bcfa63043364</srcmd5>
+    <version>2.1.10</version>
+    <time>1338971342</time>
+    <user>coolo</user>
+    <comment>- Update to Version 2.1.10
+  * Bug fixes (forwarded request 122659 from TheBlackCat)</comment>
+    <requestid>122660</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>02e33b205dcf1b4f559bad05d7862d96</srcmd5>
+    <version>2.1.10</version>
+    <time>1339531188</time>
+    <user>coolo</user>
+    <comment>This puts spyder in application launcher menus (i.e. adds a .desktop file), as well as some other smaller cleanups</comment>
+    <requestid>124682</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>02e33b205dcf1b4f559bad05d7862d96</srcmd5>
+    <version>2.1.10</version>
+    <time>1340184234</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>739bc2d180ebeaf9ed95a66c24c3e515</srcmd5>
+    <version>2.1.11</version>
+    <time>1354712949</time>
+    <user>namtrac</user>
+    <comment>- Update to Version 2.1.11
+  * Bug fixes
+- Split documentation package
+- Split spyderlib package and binary package, since spyderlib is used independently of the spyder gui
+- Spec file cleanups</comment>
+    <requestid>143598</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>739bc2d180ebeaf9ed95a66c24c3e515</srcmd5>
+    <version>2.1.11</version>
+    <time>1359110430</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>18805d73acfcb42ae25e884d966eb86c</srcmd5>
+    <version>2.1.13</version>
+    <time>1362638052</time>
+    <user>coolo</user>
+    <comment> (forwarded request 157137 from Fisiu)</comment>
+    <requestid>157550</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c92d5f02dc2d4dce5b3d968510961063</srcmd5>
+    <version>2.1.13</version>
+    <time>1366789721</time>
+    <user>coolo</user>
+    <comment>- Added version_check.patch, fixes detection of pyqt version (forwarded request 172938 from sumski)</comment>
+    <requestid>173019</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>520bf1f7795ffa80505adec497c5be84</srcmd5>
+    <version>2.2.1</version>
+    <time>1376513927</time>
+    <user>scarabeus_factory</user>
+    <comment>- Updato to version 2.2.1 (bnc#833564):
+  + Upstream provides no changelog
+- Install documentation into correct location</comment>
+    <requestid>186959</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>520bf1f7795ffa80505adec497c5be84</srcmd5>
+    <version>2.2.1</version>
+    <time>1379664723</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c7145b3098c70b3e973d55b1a20bbd90</srcmd5>
+    <version>2.2.4</version>
+    <time>1381748779</time>
+    <user>scarabeus_factory</user>
+    <comment>Update (forwarded request 203039 from posophe)</comment>
+    <requestid>203040</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c310c2039648b5ea6fdddb0634b9e451</srcmd5>
+    <version>2.2.5</version>
+    <time>1382012900</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 2.2.5 (forwarded request 203438 from TheBlackCat)</comment>
+    <requestid>203439</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4ea55da18d88446917f1d7db5da2a3bc</srcmd5>
+    <version>2.2.5</version>
+    <time>1384415039</time>
+    <user>coolo</user>
+    <comment>Fix build with SLE11 (forwarded request 206744 from posophe)</comment>
+    <requestid>206745</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b550b07f3855c8aa95e89b6d0d9a103e</srcmd5>
+    <version>2.2.5</version>
+    <time>1387349581</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210815</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>7632a8ac639240e784e72200dd15b439</srcmd5>
+    <version>2.2.5</version>
+    <time>1392448031</time>
+    <user>coolo</user>
+    <comment>- remove python-pylint buildrequires, doesn't seem  to be used (forwarded request 222308 from dirkmueller)</comment>
+    <requestid>222311</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>170a1c2f4723066cf542c3bd16d735bd</srcmd5>
+    <version>2.3.0</version>
+    <time>1405404073</time>
+    <user>coolo</user>
+    <comment>- Add spyder-rpmlintrc as source file
+- Remove not-applied patch version_check.patch
+- Update to 2.3.0</comment>
+    <requestid>240965</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>170a1c2f4723066cf542c3bd16d735bd</srcmd5>
+    <version>2.3.0</version>
+    <time>1409303404</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a6edaba8e1c0c52fe150042f608d894</srcmd5>
+    <version>2.3.1</version>
+    <time>1411127774</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250069</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>850b15c2c9466ed17f54ca76e55103a1</srcmd5>
+    <version>2.3.1</version>
+    <time>1413263553</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255852</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b7673dcd09f7320c70676282ad71ffca</srcmd5>
+    <version>2.3.2</version>
+    <time>1418054197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264235</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>210a04a712903f3c89d02983f00b3f7e</srcmd5>
+    <version>2.3.4</version>
+    <time>1427274102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292862</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b5971bba380d57155f0162afa0835d1f</srcmd5>
+    <version>2.3.5.2</version>
+    <time>1435652364</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314352</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0e23a73a1ec13d6218986a7ef1c63cfb</srcmd5>
+    <version>2.3.6</version>
+    <time>1443585009</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327661</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>31f7abc7a1b5ce74ec3166d386237186</srcmd5>
+    <version>2.3.7</version>
+    <time>1444285508</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336737</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>64bdeb1237e8d52faf56702488c96c09</srcmd5>
+    <version>2.3.8</version>
+    <time>1458120884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369288</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9923285452feb4052e025336cb8aedfb</srcmd5>
+    <version>2.3.8</version>
+    <time>1501406807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512960</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>66b23d8b288a7223755a08aa30355102</srcmd5>
+    <version>3.2.1</version>
+    <time>1504981483</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519552</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b965a780895b9215d6d40a4a708dc158</srcmd5>
+    <version>3.2.8</version>
+    <time>1525121811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602312</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>8e6143fd4d0dc1cb6c57059de9e9f865</srcmd5>
+    <version>3.2.8</version>
+    <time>1530191667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619433</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c9e0ae7544925b57ab910a9a198d04fa</srcmd5>
+    <version>3.3.1</version>
+    <time>1534543464</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description and trim filler words. (forwarded request 629500 from jengelh)</comment>
+    <requestid>629545</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c9fad19bfae78b49a1cf7d70b11dbf89</srcmd5>
+    <version>3.3.2</version>
+    <time>1548063977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662881</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>33315713308771ca5ef2df2bf8693528</srcmd5>
+    <version>3.3.4</version>
+    <time>1558515510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695342</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>8b0d6f5ae2737aa6c6f5617aa2cbe500</srcmd5>
+    <version>3.3.4</version>
+    <time>1559643127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707265</requestid>
+  </revision>
+</revisionlist>

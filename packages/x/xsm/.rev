@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cac1e9b1926e716bf73b3847743f593d</srcmd5>
+    <version>1.0.2</version>
+    <time>1336471673</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115505</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cac1e9b1926e716bf73b3847743f593d</srcmd5>
+    <version>1.0.2</version>
+    <time>1340184386</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>cac1e9b1926e716bf73b3847743f593d</srcmd5>
+    <version>1.0.2</version>
+    <time>1359110696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80a077cde5d859fe86e8be1a33758323</srcmd5>
+    <version>1.0.3</version>
+    <time>1362032099</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.3 (forwarded request 156466 from Zaitor)</comment>
+    <requestid>156535</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>80a077cde5d859fe86e8be1a33758323</srcmd5>
+    <version>1.0.3</version>
+    <time>1379665121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>80a077cde5d859fe86e8be1a33758323</srcmd5>
+    <version>1.0.3</version>
+    <time>1409303808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c606f985b10e0ca353e60826e937ca5b</srcmd5>
+    <version>1.0.4</version>
+    <time>1524144429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4
+  * autogen.sh changes
+  * configure: Drop AM_MAINTAINER_MODE
+  * Print which option was in error along with usage message
+  * Remove obsolete Imake SIGNALRETURNSINT
+  * Drop CRAY support
+  * Improve help messages &amp; man page
+  * Close file descriptors on exec.</comment>
+    <requestid>593753</requestid>
+  </revision>
+</revisionlist>

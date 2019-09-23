@@ -1,0 +1,266 @@
+-------------------------------------------------------------------
+Sat Aug 17 11:22:37 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190817
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Optimize app icons for Luakit, qBrowser, Apache Directory Studio
+    * Optimize Mullvad VPN panel icons
+
+-------------------------------------------------------------------
+Wed Aug 14 14:03:25 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190802
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Fixed icon name for PomoDoneApp
+
+-------------------------------------------------------------------
+Tue Jul 16 20:33:54 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190708
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Fixed Gmail & Gmail Offline icons
+    * Fixed align in Preferences Desktop Default Applications icon
+
+
+-------------------------------------------------------------------
+Mon Jun 17 19:02:48 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190615
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added a lot of icons for KDE Plasma 5.16
+	* Added distro icons in gnome-control-center for Ubuntu and Fedora
+	* Changed icon name for Drill
+	* Fixed icon name for dhcpcd-gtk
+	* Fixed margins for network-error network-offline icons
+	* Added Papirus themes for Thunderbird as Extras
+
+-------------------------------------------------------------------
+Wed May  1 14:13:08 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190501
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added a hack for Thunar 1.8.0 that fixed the size of icons in toolbar
+    * Added deeporange folder color that suitable to Yaru GTK theme
+    * Changed icon names for LibreOffice hosted on Flathub
+    * Fixed amazone-store icon
+
+-------------------------------------------------------------------
+Tue Apr  2 19:02:59 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190331
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added missing icons for apps in GNOME 3.32
+	* Fixed alignment of 16px apps icons for a better experience in vertical docks and panels
+	* Removed useless transforms on a lot of apps icons
+
+-------------------------------------------------------------------
+Sat Mar  2 16:12:36 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Updated to version 20190302 
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added indigo folder color (gh#PapirusDevelopmentTeam/papirus-icon-theme#1632)
+    * Added white folder color (gh#PapirusDevelopmentTeam/papirus-icon-theme#1641)
+    * Changed color of screens for devices (gh#PapirusDevelopmentTeam/papirus-icon-theme#1626)
+    * Changed highlight color for monochrome icons
+    * Increased height of 22/24px gnome-mpv icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1638)
+    * Fixed pixel align for Inkscape icon
+    * Removed purple folder color (gh#PapirusDevelopmentTeam/papirus-icon-theme#1590)
+  - Others
+    * Optimized a lot of SVG icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1656)
+
+-------------------------------------------------------------------
+Sun Feb  3 12:35:40 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 20190203
+  - Highlights
+    * Deepin Cloud Print
+    * Deepin Cloud Scan
+    * Deepin Desktop Environment Introduction
+    * Deepin Draw
+    * Deepin Feedback
+    * Deepin Launcher
+    * Deepin Manual
+    * Deepin Movie
+    * Deepin Remote Assistance
+    * Deepin Repair Tools
+    * Deepin Toggle Desktop
+    * Mime icon for Deepin Clone
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added attention icons for indicator-kdeconnect
+    * Differentiate the MessagingMenu tray icon from the xfce4-notifyd tray icon (gh#PapirusDevelopmentTeam/papirus-icon-theme#1567)
+    * Fixed the pixelated sound volume icon on Papirus-Light (gh#PapirusDevelopmentTeam/papirus-icon-theme#1602)
+    * Removed app icon for Qt Designer to fix toolbar icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1600)
+
+-------------------------------------------------------------------
+Sun Jan  6 07:37:08 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 20190106
+  - Highlights
+	* Added a lot of icons and symlinks for Flatpak packages hosted on Flathub
+	* Added pink and purple folder color
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added missing Dropbox emblem icon
+    * Added Syncthing emblem icons
+    * Rename Mullvad icon to mullvad-vpn
+
+-------------------------------------------------------------------
+Sun Nov 25 22:04:43 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 20181120
+  - Highlights
+    * Papirus-Adapta and Papirus-Adapta-Nokto icon themes removed (gh#PapirusDevelopmentTeam/papirus-icon-theme#1499)
+    * Papirus, Papirus-Dark, and Papirus-Light detached from GTK theme colors (gh#PapirusDevelopmentTeam/papirus-icon-theme#1500)
+  - Added Icons
+  - Updated Icons
+  - Changes and fixes
+    * Added audio-volume-* icons to actions as workaround (gh#PapirusDevelopmentTeam/papirus-icon-theme#1526)
+	* Added icons of opened folders for elementaryOS Juno (gh#PapirusDevelopmentTeam/papirus-icon-theme#1521)
+	* Added mimetype icons that are specific to Google Drive API
+	* Added workaround for folder-saved-search icon in toolbars (gh#PapirusDevelopmentTeam/papirus-icon-theme#1510)
+	* Changed application-xslt+xml symlink to application-xml (gh#PapirusDevelopmentTeam/papirus-icon-theme#1508)
+	* Removed extra icons for Unity Launcher and Unity Tweak Tool
+
+-------------------------------------------------------------------
+Tue Oct  9 20:39:10 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 20181007
+  * Added 23 emoji icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1460)
+  * added a lot icons for Fcitx Input Method Framework (gh#PapirusDevelopmentTeam/papirus-icon-theme#1271)
+  * Added new icons
+  * Updated icons
+  * Added a few symbolic icons for GNOME apps
+  * Added icons for CPU Monitor and Network Monitor Docky docklets
+  * Added missing icons for GNOME panel applets
+
+-------------------------------------------------------------------
+Sun Aug 19 22:04:51 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180816
+  * Added new icons
+  * Updated icons
+  * channel-secure-symbolic (gh#PapirusDevelopmentTeam/papirus-icon-theme#1424)
+  * Delete ubuntu-mono-dark icon theme from Inherits (gh#PapirusDevelopmentTeam/papirus-icon-theme#1429)
+  * Fixed some 16px actions
+  * Fixed some Libre Office icons
+  * Moved extra/clementine icons to actions & devices
+
+-------------------------------------------------------------------
+Sat Jul 21 14:45:06 UTC 2018 - mimi.vx@gmail.com
+
+- update to 20180720
+ * Added new icons
+ * Updated icons
+ * Support Indicator KDE Connect old version
+ * resize network-wireless symbolic & panel
+
+-------------------------------------------------------------------
+Fri Jun  8 19:06:39 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180601
+  * New uniform for several icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1252)
+  * Added new icons
+  * Updated icons
+  * Added mime icons for various location data formats
+  * Fixed 16x16/panel/bumblebee-indicator.svg icon (gh#PapirusDevelopmentTeam/papirus-icon-theme#1278)
+  * Added bluegrey folder color to match Adapta-BlueGrey(-Nokto) theme from adapta-gtk-theme-colorpack
+  * Add symbolic suffix to Lock Keys icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1302)
+
+-------------------------------------------------------------------
+Tue May  1 17:54:49 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180501
+  * Added icons
+  * Updated icons
+  * full changelog: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/releases/tag/20180501
+
+-------------------------------------------------------------------
+Tue Apr  3 18:58:30 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180401
+  * Added new icons
+  * Updated a few icons
+  * Colorize some mimes
+  * Fix icon sizes on index.theme's (gh#PapirusDevelopmentTeam/papirus-icon-theme#1197)
+
+-------------------------------------------------------------------
+Wed Mar 14 20:46:07 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180311
+  * Added new icons
+  * Updated a few icons
+  * Fix some icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1151)
+- Update License to follow SPDX-3.0 standard
+
+-------------------------------------------------------------------
+Sun Feb 18 19:05:56 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180114
+  * Added new icons
+  * Updaded a few icons 
+
+-------------------------------------------------------------------
+Thu Feb  1 19:52:11 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180201
+  * Added symlinks for Flatpak apps (gh#PapirusDevelopmentTeam/papirus-icon-theme#1062)
+    * GIMP
+	* Glade
+	* gitg
+	* dconf-editor
+	* Android Studio
+  * Added some mime symlinks for archives
+  * Added microphone-sensitivity-none-symbolic symlink for Cinnamon
+    (gh#PapirusDevelopmentTeam/papirus-icon-theme#1095)
+  * Changed symbolic mail icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1076)
+  * Fixed Ibus Pinyin (gh#PapirusDevelopmentTeam/papirus-icon-theme#1093)
+  * Fixed animation of VPN connection
+  * Redesign stars icons (bookmarks, bookmarks-missing, plasmagik, COH2)
+
+-------------------------------------------------------------------
+Sun Jan 21 18:30:24 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180116
+  * License changed from LGPL-3.0 to GPL-3.0
+  * Added new icons
+  * Updated a few icons
+  * Added missing folder-torrent symlink
+  * Fixed icon names for kdeconnect-indicator
+  * Changed the white color to more lighter
+- Update copyright year to 2018 of spec
+- Remove duplicate LICENSE files in package
+
+-------------------------------------------------------------------
+Sun Dec 31 01:57:31 UTC 2017 - jengelh@inai.de
+
+- Trim redundant filler words and notes for other operating systems.
+
+-------------------------------------------------------------------
+Sat Dec 30 16:18:28 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 20171223
+  * Added several icons for Deepin DE
+  * Rename icons for apps by @artemanufrij (gh#PapirusDevelopmentTeam/papirus-icon-theme#925,#931)
+  * Removed help-about icon from apps (gh#PapirusDevelopmentTeam/papirus-icon-theme#926)
+
+-------------------------------------------------------------------
+Sun Dec 10 00:06:14 UTC 2017 - matthias.eliasson@gmail.com
+
+- Initial commit 

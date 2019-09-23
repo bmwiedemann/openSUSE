@@ -1,0 +1,713 @@
+-------------------------------------------------------------------
+Mon Sep  9 17:42:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop faulty requires from documentation subpackage.
+
+-------------------------------------------------------------------
+Fri Aug  9 20:36:41 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.5.5:
+  * Development version using Qt5.
+  * Large code refactoring
+  * Many bugs fixed
+- Check https://wiki.scribus.net/canvas/1.5.5_Release for more information
+- Drop hunspell.patch
+- Add 0001-Make-sure-information-displayed-on-the-about-window-.patch
+
+-------------------------------------------------------------------
+Sat Nov 24 16:26:56 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Rewrite hunspell-1.6.patch into hunspell.patch to cover all hunspell
+  versions
+
+-------------------------------------------------------------------
+Sat Nov 24 10:55:44 UTC 2018 - wbauer@tmo.at
+
+- Update hunspell-1.6.patch to also accept hunspell 1.7 that's in
+  Factory now
+
+-------------------------------------------------------------------
+Wed May 30 08:03:23 UTC 2018 - jengelh@inai.de
+
+- Trim marketing filler wording from description.
+- Replace duplicate -fno-strict-aliasing.
+- Run fdupes over more files. (Do it with hardlinks;
+  symlinks upset the documentation system.)
+
+-------------------------------------------------------------------
+Tue May  1 21:29:52 UTC 2018 - wbauer@tmo.at
+
+- Add back hunspell-1.6.patch, it's still needed as the current
+  version still only supports hunspell up to 1.4 but Tumbleweed and
+  Leap 15.0 have 1.6
+
+-------------------------------------------------------------------
+Sun Apr 29 03:29:26 UTC 2018 - plinnell@opensuse.org
+
+- drop hunspell-1.6.patch fixed uptream
+- lots of spec file cleanups
+-------------------------------------------------------------------
+Sat Apr 28 00:50:34 UTC 2018 - plinnell@opensuse.org
+
+- Update to 1.4.7 - likely last release from 1.4.x stable branch
+- Stability and bugfix release
+- Updated UI translations
+- See: https://bugs.scribus.net/changelog_page.php?version_id=96
+  for complete list.
+
+-------------------------------------------------------------------
+Tue Mar 27 14:53:05 UTC 2018 - wbauer@tmo.at
+
+- Add hunspell-1.6.patch to fix spellchecking support in Tumbleweed
+  and Leap 15.0
+
+-------------------------------------------------------------------
+Thu Jan  4 17:18:39 UTC 2018 - wbauer@tmo.at
+
+- remove libQtWebKit-devel build requirement, it seems not to be
+  used/needed at all
+
+-------------------------------------------------------------------
+Fri Aug 11 08:34:10 UTC 2017 - pgajdos@suse.com
+
+- remove dependency on aspell, scribus seem to use hunspell
+  [bsc#1052965]
+
+-------------------------------------------------------------------
+Thu Feb  2 12:29:29 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Nov 15 15:06:30 UTC 2016 - wbauer@tmo.at
+
+- Use shared-mime-info macros (boo#979301)
+- Remove version check for > 11.3, earlier versions are not
+  supported any more
+
+-------------------------------------------------------------------
+Wed Aug 10 07:03:48 UTC 2016 - badshah400@gmail.com
+
+- Fixup scribus.appdata.xml file
+  + Shorten name to just "scribus".
+  + Use images from github repository as appstream fails to load
+    images from https://wki.scribus.net.
+  + Improve a caption.
+  + Fix height of screenshot 2.
+
+-------------------------------------------------------------------
+Thu Jul 28 16:16:26 UTC 2016 - badshah400@gmail.com
+
+- Add scribus.appdata.xml file and install it to the appdata dir;
+  this makes scribus appear in appstores like GNOME Software and
+  KDE Discover.
+
+-------------------------------------------------------------------
+Fri Mar 18 10:38:55 UTC 2016 - alarrosa@suse.com
+
+- Added an fdupes call to symlink duplicate files installed
+  under /usr/share/. This reduces the installed size in around 20 Mb.
+
+-------------------------------------------------------------------
+Mon Jan 11 17:26:06 UTC 2016 - plinnell@opensuse.org
+
+- Update to 1.4.6
+  + See http://bugs.scribus.net/changelog_page.php?version_id=92
+
+-------------------------------------------------------------------
+Thu May 29 04:23:31 UTC 2014 - plinnell@opensuse.org
+
+- Update to 1.4.4
+- Drop python-version.diff it is upstream.
+ + PDF/X-1a export.
+
++ The Barcode plug-in has been updated to reflect
+  the latest changes in the underlying Barcode Writer
+  in Pure PostScript (BWIPP).
+
++ The Autoquote script has been rewritten and enhanced.
+  It now provides more options and adds thin spaces to French texts
+  where appropriate.
+
++ A script to align images in frames has been added.
+
++ Full support of the OpenICC Directory Proposal
+  (http://www.oyranos.org/wiki/index.php?title=OpenIccDirectoryProposal).
+
++ The handling of transparencies in Photoshop-generated TIFF files
+  has been improved.
+
++ Page borders can now act as guides (and thus be used for
+  snapping of items).
+
++ The CMYK color palette created by the Newspaper Association
+  of America  (NAA) for newspaper advertisements has been
+  integrated into Scribus.
+
++ A new color palette for professional geographers has been added.
+
++ Export to various bitmap formats has been re-enabled on Mac OS X.
+
++ Several issues related to the user interface and canvas display
+  have been resolved.
+
++ Adjustments for Windows 8.x.
+
++ An issue with the spellchecker, resulting in a crash,
+  has been resolved.
+
++ Documentation and translation updates and improvements.
+
+ +For a complete list of changes see:
+  http://bugs.scribus.net/view_all_bug_page.php?filter=99610
+  and http://lists.scribus.net/pipermail/scribus-commit.
+
+-------------------------------------------------------------------
+Thu Apr 17 19:17:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added python_version.diff: fixes build with cmake 3.0
+
+-------------------------------------------------------------------
+Thu Aug 22 03:30:39 UTC 2013 - mrdocs@opensuse.org
+
+- Update to version 1.4.2
+   + The Barcode Writer has been updated and supports many more
+     barcodes, including QR.
+   + The Galaxy Gauge™ color matching system and color tools have
+     been included.
+   + New color palettes from government agencies (Canada,
+     Germany, The Netherlands, United Kingdom) have been included.
+   + More Open Source color palettes have been included.
+   + Improvements to the build system.
+   + Improvements to the Preflight Verifier.
+   + The A4 page size limit of TeX-rendered graphics in Render
+     Frames has been removed.
+   + The Short Words plug-in now supports Danish.
+   +  Many updates to the Online Manual.
+
+-  Most important bugfixes:
+- Disabled hyphenation on some Linux distributions is working again.
+- Some unit conversion issues have been fixed.
+- Display issues related to Ubuntu's Unity interface have been fixed.
+- Some fixes to wrong or irritating UI behavior.
+- Memory management in connection with the new Hyphenator has
+  been optimized.
+- Issues with the Clang compiler have been fixed.
+- Scribus now supports Pillow as an alternative to the Python Imaging Library.
+- Many translation updates.
+
+-------------------------------------------------------------------
+Mon Jan 14 04:22:20 UTC 2013 - mrdocs@opensuse.org
+
+- Update to version 1.4.2:
+  - New feature - hunspell based spell checker
+  - UI and Document Updates and translation updates
+  - Scribus will look for existing dictionaries on the system
+    it is installed already installed by hunspell packages or
+    LibreOffice. New dictionaries are downloadable directly from
+    within Scribus Preferences via freedesktop.org.
+    The spellchecker now also works within the Story Editor.
+  - Stability and other minor fixes
+  - Complete versioned changelog:
+    http://bugs.scribus.net/changelog_page.php?version_id=84
+
+-------------------------------------------------------------------
+Fri Jul  6 15:16:37 UTC 2012 - dmueller@suse.com
+
+- fix build for older distros
+
+-------------------------------------------------------------------
+Mon Jun 25 00:03:47 UTC 2012 - badshah400@gmail.com
+
+- Install hi-res icons in the hicolor icon directory for better
+  appearance on desktop menu, specifically on the gnome-shell; add
+  BuildRequires: hicolor-icon-theme for this purpose.
+
+-------------------------------------------------------------------
+Wed May 23 08:42:03 UTC 2012 - badshah400@gmail.com
+
+- Delete non-free colour swatches (givelife and dtp-studio) from
+  the package (bnc#763586)
+
+-------------------------------------------------------------------
+Wed May 23 01:57:45 UTC 2012 - mrdocs@opensuse.org
+
+- drop fdupes in %datashare it breaks the help browser
+- shorten the -devel description
+
+-------------------------------------------------------------------
+Mon May 21 19:42:32 UTC 2012 - badshah400@gmail.com
+
+- Add back aspell and liblcms2-devel BuildRequires: these got
+  removed during the previous change by mistake.
+
+-------------------------------------------------------------------
+Sat May  5 22:36:28 UTC 2012 - badshah400@gmail.com
+
+- Update to version 1.4.1:
+  + Many bugs fixed since 1.4.0 (see ChangeLog file installed in
+    /usr/share/doc/scribus/)
+  + Addition of the GiveLife Color System(R) swatch palettes
+    (www.givelifecolorsystem.com), license in the swatches
+    directory.
+  + Updates to resolve small canvas interaction issues
+  + Corrections to both bitmap and SVG image import issues
+  + Addition of undo steps for path operations and page moving
+  + Corrections to some master page behaviour
+  + Fixes for text editing issues
+  + Enhancements to scripter
+  + Translation updates
+  + The Italian version of the help documents has been updated
+    significantly
+  + Relocation of profiles and swatches to the share directory of
+    Unix-like systems (linux, OS X, etc) to fit in with the file
+    system recommendations
+- Added build requirement on fdupes to link duplicate files
+- Install desktop menu for application
+- Changes from version 1.4.0:
+  + Many bugs fixed since 1.4.0rc6 (see ChangeLog file installed
+    in /usr/share/doc/scribus/).
+
+-------------------------------------------------------------------
+Fri Jan 20 14:27:08 UTC 2012 - toddrme2178@gmail.com
+
+- Fixed aspell detection
+- Added lcms2 buildrequires
+
+-------------------------------------------------------------------
+Mon Jan  2 19:33:19 UTC 2012 - adrian@suse.de
+
+- update to final 1.4.0 release
+- use xz compressed tar ball
+
+-------------------------------------------------------------------
+Tue Dec  6 21:18:23 UTC 2011 - coolo@suse.com
+
+- scribus is GPL-2.0+
+
+-------------------------------------------------------------------
+Wed Oct 26 08:11:42 UTC 2011 - coolo@suse.com
+
+- merged KDF again
+
+-------------------------------------------------------------------
+Wed Oct 19 04:57:23 UTC 2011 - mrdocs@opensuse.org
+
+-updated to 1.4.0.rc6
+-last RC before 1.4.0 final
+ +documentation updates, bug fixes and translation updates
+ +http://scribus.net/svn/Scribus/branches/Version135/Scribus/ChangeLog
+  for versioned changelog
+
+-------------------------------------------------------------------
+Mon Aug 15 13:49:58 UTC 2011 - idonmez@novell.com
+
+- Fix build and use %{_smp_mflags}
+
+-------------------------------------------------------------------
+Wed Aug 10 09:33:53 UTC 2011 - toddrme2178@gmail.com
+
+ - Fixed language file identification
+ - Removed redundant buildrequires
+ - Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Sat Jun 18 19:13:42 UTC 2011 - mrdocs@opensuse.org
+
+-update to 1.4.0.rc5
+ + more bug fixes and translation updates
+  see http://bugs.scribus.net/changelog_page.php?version_id=68
+  for versioned changelog
+
+
+-------------------------------------------------------------------
+Sun Apr 10 16:16:16 UTC 2011 - mrdocs@opensuse.org
+
+-update to 1.4.0.rc3
+ + more bug fixes and translation updates
+  see http://bugs.scribus.net/changelog_page.php?version_id=68
+  for versioned changelog
+
+-------------------------------------------------------------------
+Tue Mar  8 01:49:59 UTC 2011 - mrdocs@opensuse.org
+
+-update to 1.4.0.rc2
+ + more bug fixes and translation updates
+  see http://bugs.scribus.net/changelog_page.php?version_id=68
+  for versioned changelog
+
+-------------------------------------------------------------------
+Fri Feb 18 15:16:13 UTC 2011 - mrdocs@opensuse.org
+
+-remove some old versioning cruft from spec file
+
+-------------------------------------------------------------------
+Fri Feb 18 14:30:37 UTC 2011 - mrdocs@opensuse.org
+
+- update to 1.4.0.rc1 1.4.0 is new stable branch
+  +40+ bugs fixed see:
+   http://bugs.scribus.net/changelog_page.php?version_id=68 for
+   versioned change log details
+- Add Obsoletes/Provides for scribus-templates for those upgrading
+  from 1.3.3.14, former stable.  1.4.0 has new
+  and many additional templates included by default
+
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 CET 2011 - mrdocs@opensuse.org
+
+- disable parallel build by removing %jobs macro, it caused OOMs
+  during build.
+
+-------------------------------------------------------------------
+Mon Dec 27 17:20:00 CET 2010 - dmueller@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Dec 14 10:08:30 UTC 2010 - mrdocs@opensuse.org
+
+- spec file clean-ups from darix and remove all non-Suse related bits
+
+-------------------------------------------------------------------
+Thu Dec  9 20:22:40 UTC 2010 - mrdocs@opensuse.org
+- 1.3.9 release
+ + 60+ bug fixes
+ + addtional templates
+
+-------------------------------------------------------------------
+Thu Mar 25 23:12:01 UTC 2010 - mrdocs@opensuse.org
+
+- update to 1.3.3.14
+- drop the implicit patch as its now upstream
+
+-------------------------------------------------------------------
+Fri Jul 31 10:25:33 CEST 2009 - coolo@novell.com
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Apr 28 16:18 CET 2009 - mrdocs@opensuse.org
+
+- drop fdupes it breaks the help browser
+- update to 1.3.3.13
+- make %jobs can break builds just use make
+
+-------------------------------------------------------------------
+Mon Dec  8 11:36:05 CET 2008 - dmueller@suse.de
+
+- update to 1.3.3.12 (released tarball):
+  * Several fixes and improvements to text frames and the Story Editor.
+  * Some additional scripts have been added to enhance functionality.
+  * More translation and documentation updates.
+  * Several fixes to protect against possible crashes.
+  * Improvements to the Scripter to enable more features.
+
+-------------------------------------------------------------------
+Thu Oct  9 11:28:54 CEST 2008 - meissner@suse.de
+
+- added stdlib.h, string.h
+- run %fdupes
+
+-------------------------------------------------------------------
+Tue Jun  3 00:54:07 CEST 2008 - crrodriguez@suse.de
+
+- needs fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Apr 16 15:18:04 CEST 2008 - dmueller@suse.de
+
+- update to 1.3.3.12svn:
+  * http://bugs.scribus.net/changelog_page.php
+- add help files back (bnc#379906)
+
+-------------------------------------------------------------------
+Mon Apr 14 20:02:25 CEST 2008 - dmueller@suse.de
+
+- fix build against cmake 2.6
+- sync buildrequires with the community package
+
+-------------------------------------------------------------------
+Sun Jan 13 22:34:08 CET 2008 - dmueller@suse.de
+
+- update to 1.3.3.11:
+  * Special characters in plain text files aren't imported
+  correctly
+  * Change text string in PDF export dialog
+
+-------------------------------------------------------------------
+Tue Jan  8 21:15:04 CET 2008 - stbinner@suse.de
+
+- update to 1.3.3.10, many bugfixes - for details see ChangeLog
+
+-------------------------------------------------------------------
+Wed Jun 27 19:25:56 CEST 2007 - dmueller@suse.de
+
+- build against cmake to fix various issues
+
+-------------------------------------------------------------------
+Wed Jun 13 15:26:52 CEST 2007 - ltinkl@suse.cz
+
+- update to 1.3.3.9 bugfix release
+  - many bugfixes
+  - more translation updates
+  - improvements to the SVG importer
+  - improvements to PDF forms
+- update to 1.3.3.8
+  - many bugfixes
+  - more translation updates
+  - improvements to the SVG importer
+  - improvements to the Open Document Draw importer
+  - improvements to PDF forms
+
+-------------------------------------------------------------------
+Mon Apr 23 10:37:37 CEST 2007 - pgajdos@suse.cz
+
+- fixed doc paths in spec file
+
+-------------------------------------------------------------------
+Mon Mar 12 09:54:04 CET 2007 - pgajdos@suse.cz
+
+- fixed gcc warnings in beta version:
+    * program uses possibly exploitable format strings
+      (format-not-literal.patch)
+    * program compares a char* pointer with string literal
+      (string-literal-comparsion.patch)
+    * added CFLAG -fno-strict-aliasing inside scribus.spec
+
+-------------------------------------------------------------------
+Thu Mar  8 15:02:42 CET 2007 - pgajdos@suse.cz
+
+- fixed 'warning: comparsion with string literal' (#233016, #228963)
+- string-literal-comparsion.patch
+
+-------------------------------------------------------------------
+Sun Jan 28 18:52:37 CET 2007 - stbinner@suse.de
+
+- Updated to bugfix release 1.3.3.7
+
+-------------------------------------------------------------------
+Thu Nov  9 13:27:38 CET 2006 - sbrabec@suse.cz
+
+- Fixed python detection (#213668).
+
+-------------------------------------------------------------------
+Sat Nov  4 18:59:50 CET 2006 - stbinner@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Wed Oct 18 19:00:16 CEST 2006 - sbrabec@suse.cz
+
+- Updated to version 1.3.3.4:
+  * Purely a bug fix release.
+  * Translations updated.
+
+-------------------------------------------------------------------
+Tue Aug  8 09:53:49 CEST 2006 - stbinner@suse.de
+
+- update to version 1.3.3.3 "stable usable development version"
+  * Fix borked color names and wrong Bitstream Vera rendering
+  * Many crash und other minor bug fixes
+  * Several translation updates
+
+-------------------------------------------------------------------
+Thu Jul 13 11:45:16 CEST 2006 - stbinner@suse.de
+
+- fix build for <10.1
+
+-------------------------------------------------------------------
+Wed May 31 09:16:15 CEST 2006 - adrian@suse.de
+
+- update to version 1.3.3.2 "stable usable development version"
+  * more than 200 bugs and feature requests got implemented
+  * fix for pdf export using Adobe Reader 7.x
+  * new language translations
+
+-------------------------------------------------------------------
+Mon May 29 15:52:24 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Mon Feb 20 17:39:00 CET 2006 - sbrabec@suse.cz
+
+- Export dynamic symbols from scribus binary (#148279).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 20 23:09:38 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Jan 10 18:53:21 CET 2006 - sbrabec@suse.cz
+
+- Re-enabled desktop file translation.
+
+-------------------------------------------------------------------
+Fri Jan  6 12:37:01 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 1.2.4.1.
+
+-------------------------------------------------------------------
+Thu Jan  5 17:05:48 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 1.2.4.
+
+-------------------------------------------------------------------
+Tue Jan  3 16:01:11 CET 2006 - sbrabec@suse.cz
+
+- Suggest AdobeICCProfiles.
+
+-------------------------------------------------------------------
+Wed Dec  7 16:16:54 CET 2005 - sbrabec@suse.cz
+
+- Search for ICC profiles in subdirectories.
+  http://bugs.scribus.net/view.php?id=2882
+
+-------------------------------------------------------------------
+Fri Nov 25 11:44:02 CET 2005 - sbrabec@suse.cz
+
+- Fixed devel splitting (#117811).
+- Resource /usr/local/share/color/icc.
+  http://bugs.scribus.net/view.php?id=2864
+- Enabled parallel build.
+
+-------------------------------------------------------------------
+Tue Oct 25 17:17:22 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.2.3.
+- Install MIME info files.
+
+-------------------------------------------------------------------
+Wed Jul 27 15:39:06 CEST 2005 - sbrabec@suse.cz
+
+- Provide and obsolete scribus-short-words.
+
+-------------------------------------------------------------------
+Wed Jul 13 17:45:47 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.2.2.1.
+- Removed unneeded static modules and .la files for modules.
+
+-------------------------------------------------------------------
+Wed Jan 26 15:38:22 CET 2005 - sbrabec@suse.cz
+
+- Obsoleted old documentation packages.
+
+-------------------------------------------------------------------
+Tue Jan 11 16:25:48 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 1.2.1.
+
+-------------------------------------------------------------------
+Thu Dec 16 15:25:22 CET 2004 - coolo@suse.de
+
+- fix unsermake install
+
+-------------------------------------------------------------------
+Wed Sep 15 14:04:39 CEST 2004 - sbrabec@suse.cz
+
+- Worked-around bi-arch bugs by forcing /usr/lib (#44961).
+  http://bugs.scribus.net/bug_view_advanced_page.php?bug_id=0001057
+
+-------------------------------------------------------------------
+Sun Sep  5 09:40:49 CEST 2004 - coolo@suse.de
+
+- fixing build requires
+
+-------------------------------------------------------------------
+Tue Aug 31 10:41:38 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.2.
+
+-------------------------------------------------------------------
+Fri Aug 27 16:35:51 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.2RC1.
+
+-------------------------------------------------------------------
+Thu Apr  1 01:05:56 CEST 2004 - ro@suse.de
+
+- run update_admin to get current libtool macros
+- some more configure hackery to adapt to updated kde-macros
+  to finally find python on lib64 platforms
+
+-------------------------------------------------------------------
+Wed Mar 31 17:48:32 CEST 2004 - sf@suse.de
+
+- add scribus-1.1.5-c++.diff (#37208)
+
+-------------------------------------------------------------------
+Tue Mar 30 15:04:24 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.1.6.
+
+-------------------------------------------------------------------
+Thu Mar 04 11:48:45 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.1.5.
+
+-------------------------------------------------------------------
+Mon Feb 23 15:41:52 CET 2004 - sbrabec@suse.cz
+
+- Fixed and turned on CUPS support.
+
+-------------------------------------------------------------------
+Sat Jan 10 14:05:41 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 13:21:54 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.0.1.
+
+-------------------------------------------------------------------
+Fri Aug 15 20:39:39 CEST 2003 - adrian@suse.de
+
+- install desktop file
+
+-------------------------------------------------------------------
+Thu Aug 14 01:04:56 CEST 2003 - ro@suse.de
+
+- run update_admin (autoreconf in kde-style)
+- change prefix/lib to libdir in all Makefile.am
+
+-------------------------------------------------------------------
+Tue Aug 12 16:35:40 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.0.
+
+-------------------------------------------------------------------
+Thu Jun 12 01:29:09 CEST 2003 - ro@suse.de
+
+- add doc-dir to filelist
+
+-------------------------------------------------------------------
+Mon Mar 31 02:14:03 CEST 2003 - ro@suse.de
+
+- fix build on lib64
+
+-------------------------------------------------------------------
+Mon Feb 10 19:15:30 CET 2003 - sbrabec@suse.cz
+
+- Fix Qt path for biarch.
+
+-------------------------------------------------------------------
+Mon Feb 10 13:02:43 CET 2003 - sbrabec@suse.cz
+
+- Updated to version 0.9.7.
+
+-------------------------------------------------------------------
+Wed Nov 20 16:29:48 CET 2002 - sbrabec@suse.cz
+
+- Added new package.
+- FHS fixes.
+- Aufoconf fixes.
+- KDE autoconf fixes.

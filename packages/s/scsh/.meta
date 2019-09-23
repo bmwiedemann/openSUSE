@@ -1,0 +1,9 @@
+<package name="scsh" project="openSUSE:Factory">
+  <title>An open-source Unix SHell embedded within Scheme</title>
+  <description>Scsh is an open-source Unix SHell embedded in Scheme. What does that mean? Well, unix shells are powerful tools. They allow a user to concisely specify her commands and the communications between them (piping, redirecting, &amp;c.). When she needs to do something more complex than running a set of commands with known inputs, however, things become complicated. General programming with sh can be unpleasant and error prone, to say the least.
+
+Scheme is a simple, expressive general programming language. A user with some taste may want to use it to wield her computing machine. For simple commands, however, it is not the most concise. At the scale of the command line, even the overhead of parentheses matters. It would be nice to use each of these languages where their strengths lie.
+
+Scsh is the solution. It allows the user to write commands in a language within Scheme that follows the unix way, but also allows her to specify more complex commands with the elegance of Scheme.</description>
+  <devel project="shells" package="scsh"/>
+</package>

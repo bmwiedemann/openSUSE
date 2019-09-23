@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>576dbd7518c234d7c3fab83383326461</srcmd5>
+    <version>2.3.7</version>
+    <time>1330434926</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107139</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b6456ba2314843c0c3cb882d4c973a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1334641712</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113765</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0b6456ba2314843c0c3cb882d4c973a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1340184046</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19a72dea1011c216c616886ca673b5f9</srcmd5>
+    <version>2.4.0</version>
+    <time>1342866673</time>
+    <user>namtrac</user>
+    <comment>Update to 2.4.0, which is required for Django 1.4 (forwarded request 128505 from jimfunk)</comment>
+    <requestid>128512</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6fa4b99540f0dd8cc90b6f3d4d1efba1</srcmd5>
+    <version>2.4.2</version>
+    <time>1349632532</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137360</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3ea8f079834e061245b69175017d2f9</srcmd5>
+    <version>2.4.3</version>
+    <time>1353133641</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>141560</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b3ea8f079834e061245b69175017d2f9</srcmd5>
+    <version>2.4.3</version>
+    <time>1359110017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b9faf71440c4bf2573058347c5cfc63</srcmd5>
+    <version>2.4.4</version>
+    <time>1362745588</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157722</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8b9faf71440c4bf2573058347c5cfc63</srcmd5>
+    <version>2.4.4</version>
+    <time>1379664159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e8513abaf05817c9af925cd964c5892b</srcmd5>
+    <version>2.4.6</version>
+    <time>1380608858</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201199 from posophe)</comment>
+    <requestid>201421</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e8513abaf05817c9af925cd964c5892b</srcmd5>
+    <version>2.4.6</version>
+    <time>1409302850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>558ecd8af41ec33c23f0ffcf7d470e93</srcmd5>
+    <version>2.6.4</version>
+    <time>1430983339</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305651</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d0f1aea27484c7d826ae5b060e96a943</srcmd5>
+    <version>2.12.1</version>
+    <time>1544726923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.1:
+  * Many changes to enumerate
+  * Support for new djangos
+- Switch to singlespec
+- Run tests</comment>
+    <requestid>657114</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b3d97a28d6713838f5c533426e6a7dd0</srcmd5>
+    <version>2.12.2</version>
+    <time>1551455224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.2:
+  * New: edit and delete links with related objects.
+  * New: Templates in order to allow integration with django-import-export.
+  * Improved: Use admin site_header as title (if given and not default).
+  * Improved: compass/sass setup.
+  * Fixed: view permissions.
+  * Fixed: last inline form with non-editable inlines.</comment>
+    <requestid>679818</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b42fcb22e7cbe2791a24923d43c2d6f8</srcmd5>
+    <version>2.12.3</version>
+    <time>1557170243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.3:
+  * Improved: use get_username with object history.
+  * Improved: trigger change event in dismissChangeRelatedObjectPopup.
+  * Improved: honor cl.show_full_result_count with pagination.
+  * Fixed: using a div.grp-related-widget to wrap all possible widgets.</comment>
+    <requestid>701062</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f70fd52e8029ef9b6ccac79144e15560</srcmd5>
+    <version>2.13.1</version>
+    <time>1568720255</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.13.1:
+  * First release of Grappelli which is compatible with Django 2.2.</comment>
+    <requestid>731219</requestid>
+  </revision>
+</revisionlist>

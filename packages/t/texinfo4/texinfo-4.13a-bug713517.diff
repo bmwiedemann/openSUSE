@@ -1,0 +1,20 @@
+--- util/texi2dvi
++++ util/texi2dvi	2011-09-02 10:25:04.616426245 +0000
+@@ -78,7 +78,7 @@ newline='
+ IFS="$space$tab$newline"
+ 
+ # In case someone pedantic insists on using grep -E.
+-: ${EGREP=egrep}
++: ${EGREP=grep -E}
+ 
+ # Systems which define $COMSPEC or $ComSpec use semicolons to separate
+ # directories in TEXINPUTS -- except for Cygwin et al., where COMSPEC
+@@ -1683,7 +1683,7 @@ input_file_name_decode ()
+ 
+   # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
+   # prepend `./' in order to avoid that the tools take it as an option.
+-  echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >&6 \
++  echo "$command_line_filename" | $EGREP '^(/|[A-Za-z]:/)' >&6 \
+   || command_line_filename="./$command_line_filename"
+ 
+   # See if the file exists.  If it doesn't we're in trouble since, even

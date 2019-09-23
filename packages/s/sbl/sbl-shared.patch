@@ -1,0 +1,13 @@
+Index: sbl/Makefile
+===================================================================
+--- sbl/Makefile.orig
++++ sbl/Makefile
+@@ -126,7 +126,7 @@ inskey_lnx.o: inskey_lnx.c inskey.h
+ 	$(CC) $(CFLAGS) -c inskey_lnx.c
+ 
+ misc.o: misc.c misc.h
+-	$(CC) $(CFLAGS) -c misc.c
++	$(CC) -fPIC $(CFLAGS) -c misc.c
+ 
+ sbl.o: sbl.c kbdsniff.c system.c selkey.c
+ 	$(CC) $(CFLAGS) '-DPROGPATH="$(SBLPATH)"' '-DCONFDIR="$(CONFDIR)"' -c $?

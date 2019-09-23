@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Thu Aug  8 08:09:37 UTC 2019 - ohering@suse.de
+
+- disable lto
+- Update to version 1.3.18
+  * ocaml: Link the C bindings with LDFLAGS (RHBZ#1548536)
+  * perl: fix format of croak for RLenValue
+  * Update gnulib to latest.
+  * lib: Reset errno to zero to avoid erroneously returning E2BIG
+
+-------------------------------------------------------------------
+Mon Mar  5 09:14:16 UTC 2018 - cbosdonnat@suse.com
+
+- Update to version 1.3.15
+  * Improved performance by using a cache of iconv handles, especially
+    when dumping out large hives.
+  * Add the ‘hivexregedit --max-depth’ option for exports, so you can
+    dump out only the top N-level keys.
+  * ‘hivexsh -u’ flag allows you to open some broken hives.
+  * Fixes to broken POD documentation in some places.
+  * Fixes for OCaml 4.06 safe strings.
+
+-------------------------------------------------------------------
+Thu Sep 28 08:59:02 UTC 2017 - olaf@aepfle.de
+
+- Rename Group Ocaml to OCaml
+
+-------------------------------------------------------------------
+Thu Sep 21 13:31:19 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups.
+
+-------------------------------------------------------------------
+Tue Sep 19 07:23:09 UTC 2017 - cbosdonnat@suse.com
+
+- Add ocaml-hivex and hivex-devel as dependencies for ocaml-hivex-devel
+
+-------------------------------------------------------------------
+Mon Jul 31 09:42:50 UTC 2017 - cbosdonnat@suse.com
+
+- Update to version 3.14
+- Build OCAML binding
+
+-------------------------------------------------------------------
+Tue Oct 27 19:33:51 UTC 2015 - olaf@aepfle.de
+
+- Update to version 3.12
+
+-------------------------------------------------------------------
+Mon Mar 16 19:03:14 UTC 2015 - jengelh@inai.de
+
+- Retrieve and verify GPG signature. Resolve some orthographic and
+  typographic errors in descriptions. Make descriptions more
+  similar.
+- Run spec-beautifier
+
+-------------------------------------------------------------------
+Sun Jan 18 18:27:30 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.11
+  * extra-tests: Add trivial fuzz tester
+  * handle: Check that pages do not extend beyond the end of the file.
+- Use download Url as source
+- Split out translation files into lang subpackage
+- Recommend hivex-lang
+
+-------------------------------------------------------------------
+Tue May 13 16:01:04 CEST 2014 - ohering@suse.de
+
+- update to version 1.3.10
+  many bugfixes, see included changelog for details
+
+-------------------------------------------------------------------
+Mon Aug  5 07:48:06 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1 and GPL-2.0
+  README states license is LGPL-2.1 (only) and LICENSE confirms. There is a
+  significant number of GPL-2.0 files in test and examples
+
+-------------------------------------------------------------------
+Wed Jul 31 14:51:56 CEST 2013 - ohering@suse.de
+
+- update to version 1.3.8
+
+-------------------------------------------------------------------
+Sun Feb 24 18:11:07 CET 2013 - ohering@suse.de
+
+- BuildRequire: perl-macros only in sles11 builds to fix build in 11.4
+
+-------------------------------------------------------------------
+Wed Nov  7 19:02:54 CET 2012 - ohering@suse.de
+
+- update to version 1.3.7
+
+-------------------------------------------------------------------
+Sat Sep  1 21:20:44 CEST 2012 - ohering@suse.de
+
+- move python bindings to python-hivex
+
+-------------------------------------------------------------------
+Sat Sep  1 21:11:32 CEST 2012 - ohering@suse.de
+
+- enable perl bindings, package them in perl-Win-Hivex
+
+-------------------------------------------------------------------
+Tue Jul  3 10:30:08 CEST 2012 - ohering@suse.de
+
+- update to version 1.3.6
+
+-------------------------------------------------------------------
+Mon Jul  2 19:41:08 CEST 2012 - ohering@suse.de
+
+- workaround buggy python detection by adding python to BuildRequires
+- fix filelist to build on sles11
+
+-------------------------------------------------------------------
+Tue Sep 27 13:04:30 CEST 2011 - mhrusecky@suse.cz
+
+- initial hivex package (version 1.3.1)
+

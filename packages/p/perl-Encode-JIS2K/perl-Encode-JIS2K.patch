@@ -1,0 +1,11 @@
+diff -ru Encode-JIS2K-0.01.orig/Makefile.PL Encode-JIS2K-0.01/Makefile.PL
+--- Encode-JIS2K-0.01.orig/Makefile.PL	2002-04-30 11:07:23.000000000 +0200
++++ Encode-JIS2K-0.01/Makefile.PL	2003-05-09 19:01:17.000000000 +0200
+@@ -48,7 +48,6 @@
+ 		  SUFFIX	=> 'gz',
+ 		  DIST_DEFAULT => 'all tardist',
+ 	      },
+-	      MAN3PODS	=> {},
+ 	      PREREQ_PM => {
+ 			    'Encode'     => "1.41",
+                            },

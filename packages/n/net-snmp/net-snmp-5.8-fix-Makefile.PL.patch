@@ -1,0 +1,22 @@
+diff -Nurp net-snmp-5.8-orig/perl/ASN/Makefile.PL net-snmp-5.8/perl/ASN/Makefile.PL
+--- net-snmp-5.8-orig/perl/ASN/Makefile.PL	2018-10-10 09:45:14.875074783 +0000
++++ net-snmp-5.8/perl/ASN/Makefile.PL	2018-10-10 15:02:06.342732928 +0000
+@@ -8,6 +8,7 @@ use Config;
+ use MakefileSubs;
+ 
+ my $lib_version;
++my %MakeParams = ();
+ 
+ # See lib/ExtUtils/MakeMaker.pm for details of how to influence
+ # the contents of the Makefile that is written.
+diff -Nurp net-snmp-5.8-orig/perl/Makefile.PL net-snmp-5.8/perl/Makefile.PL
+--- net-snmp-5.8-orig/perl/Makefile.PL	2018-10-10 09:45:14.875074783 +0000
++++ net-snmp-5.8/perl/Makefile.PL	2018-10-10 15:02:25.810916073 +0000
+@@ -4,6 +4,7 @@ use ExtUtils::MakeMaker;
+ use Config;
+ require 5;
+ use MakefileSubs;
++my %MakeParams = ();
+ 
+ WriteMakefile(TopLevelInitMakeParams());
+ 

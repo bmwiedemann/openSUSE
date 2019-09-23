@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d7b4ff10f81c7a1cab1e9319a00a5983</srcmd5>
+    <version>0.0.17</version>
+    <time>1268648717</time>
+    <user>autobuild</user>
+    <comment>Copy from security:netfilter/libnetfilter_queue based on submit request 33706 from user jengelh
+</comment>
+    <requestid>33706</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>547a331899b82333bcc00d3e081fd367</srcmd5>
+    <version>0.0.17</version>
+    <time>1268924645</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>547a331899b82333bcc00d3e081fd367</srcmd5>
+    <version>0.0.17</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>547a331899b82333bcc00d3e081fd367</srcmd5>
+    <version>0.0.17</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>149219d8d166308867a4db7f9d2b7188</srcmd5>
+    <version>1.0.0</version>
+    <time>1288710985</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51973 from user jengelh
+</comment>
+    <requestid>51973</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f6a97275d05b91a32ec37ee1acfe1987</srcmd5>
+    <version>1.0.0</version>
+    <time>1288711001</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51973
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>f6a97275d05b91a32ec37ee1acfe1987</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>f6a97275d05b91a32ec37ee1acfe1987</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182114</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a785e1e4840d1d2b793c5bcc88eda459</srcmd5>
+    <version>1.0.1</version>
+    <time>1325658292</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.1
+* build and compile fixes
+* add NFQNL_MSG_VERDICT_BATCH support
+* add notes on NF_STOLEN and NF_REPEAT to documentation
+* utils: document ENOBUFS in nfqnl_test.c
+* nfq: add missing documentation on nfq_snprintf_xml
+* doc: document some performance tweaks for libnetfilter_queue
+* doc: fix wrong documentation on NFQNL_COPY_NONE
+
+- Use SPDX format for License: tag
+- Use separate include directory to detect compilation errors</comment>
+    <requestid>98569</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a785e1e4840d1d2b793c5bcc88eda459</srcmd5>
+    <version>1.0.1</version>
+    <time>1340183610</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9eff1e405ccc14a9ac579e77647dbbe8</srcmd5>
+    <version>1.0.2</version>
+    <time>1351013957</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.0.2
+* This release provides new interfaces to interact with libmnl.</comment>
+    <requestid>138752</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8b32d7a16630fc2bfd4621de7c4a458c</srcmd5>
+    <version>1.0.2</version>
+    <time>1355474294</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature</comment>
+    <requestid>144975</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>8b32d7a16630fc2bfd4621de7c4a458c</srcmd5>
+    <version>1.0.2</version>
+    <time>1359109311</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>8b32d7a16630fc2bfd4621de7c4a458c</srcmd5>
+    <version>1.0.2</version>
+    <time>1379663018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>8b32d7a16630fc2bfd4621de7c4a458c</srcmd5>
+    <version>1.0.2</version>
+    <time>1409301637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>120de3119377b2c26fe89f120c11a36b</srcmd5>
+    <version>1.0.2</version>
+    <time>1411721545</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline</comment>
+    <requestid>252274</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>f5927eac31567e79934ceaae97aa5b87</srcmd5>
+    <version>1.0.2</version>
+    <time>1418251481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>264530</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>06e58b6bdc6ff5cc4b84536c6050532a</srcmd5>
+    <version>1.0.3</version>
+    <time>1510660816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.3</comment>
+    <requestid>541526</requestid>
+  </revision>
+</revisionlist>

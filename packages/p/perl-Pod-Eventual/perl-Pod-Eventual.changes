@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Nov 25 07:38:18 UTC 2013 - coolo@suse.com
+
+- updated to 0.094001
+      require Mixin-Linewise 0.102 to avoid busted 0.101
+      tiny documentation tweak
+      update repo and bugtracker
+
+-------------------------------------------------------------------
+Mon Jan 17 16:22:42 UTC 2011 - coolo@novell.com
+
+- initial package 0.093330
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,64 @@
+--- compile-gtk2im.sh
++++ compile-gtk2im.sh
+@@ -2,51 +2,51 @@
+ 
+ /bin/sh libtool --mode=link gcc  -g -O2 -Wall -D_GNU_SOURCE \
+ 	-D_REENTRANT -DDEBUG   \
+-	-o tamil99-tsc.la -rpath /opt/gnome/lib/gtk-2.0/immodules \
+-	-rpath /opt/gnome/lib/gtk-2.0/immodules -avoid-version -module \
++	-o tamil99-tsc.la -rpath /opt/gnome/lib64/gtk-2.0/immodules \
++	-rpath /opt/gnome/lib64/gtk-2.0/immodules -avoid-version -module \
+ 	tamil99-tsc.lo `pkg-config --libs gtk+-2.0`
+ 
+ /bin/sh libtool --mode=compile gcc -DHAVE_CONFIG_H \
+ 	`pkg-config --cflags gtk+-2.0` \
+ 	-g -O2 -Wall -D_GNU_SOURCE -D_REENTRANT -DDEBUG -c \
+ 	-o tamil99-uni.lo tamil99-uni.c
+ 
+ /bin/sh libtool --mode=link gcc  -g -O2 -Wall -D_GNU_SOURCE \
+ 	-D_REENTRANT -DDEBUG   \
+-	-o tamil99-uni.la -rpath /opt/gnome/lib/gtk-2.0/immodules \
+-	-rpath /opt/gnome/lib/gtk-2.0/immodules -avoid-version -module \
++	-o tamil99-uni.la -rpath /opt/gnome/lib64/gtk-2.0/immodules \
++	-rpath /opt/gnome/lib64/gtk-2.0/immodules -avoid-version -module \
+ 	tamil99-uni.lo `pkg-config --libs gtk+-2.0`
+ 
+ /bin/sh libtool --mode=compile gcc -DHAVE_CONFIG_H \
+ 	`pkg-config --cflags gtk+-2.0` \
+ 	-g -O2 -Wall -D_GNU_SOURCE -D_REENTRANT -DDEBUG -c \
+ 	-o tavpim-tsc.lo tavpim-tsc.c
+ 
+ /bin/sh libtool --mode=link gcc  -g -O2 -Wall -D_GNU_SOURCE \
+ 	-D_REENTRANT -DDEBUG   \
+-	-o tavpim-tsc.la -rpath /opt/gnome/lib/gtk-2.0/immodules \
+-	-rpath /opt/gnome/lib/gtk-2.0/immodules -avoid-version -module \
++	-o tavpim-tsc.la -rpath /opt/gnome/lib64/gtk-2.0/immodules \
++	-rpath /opt/gnome/lib64/gtk-2.0/immodules -avoid-version -module \
+ 	tavpim-tsc.lo `pkg-config --libs gtk+-2.0`
+ 
+ /bin/sh libtool --mode=compile gcc -DHAVE_CONFIG_H \
+ 	`pkg-config --cflags gtk+-2.0` \
+ 	-g -O2 -Wall -D_GNU_SOURCE -D_REENTRANT -DDEBUG -c \
+ 	-o tavpim-uni.lo tavpim-uni.c
+ 
+ /bin/sh libtool --mode=link gcc  -g -O2 -Wall -D_GNU_SOURCE \
+ 	-D_REENTRANT -DDEBUG   \
+-	-o tavpim-uni.la -rpath /opt/gnome/lib/gtk-2.0/immodules \
+-	-rpath /opt/gnome/lib/gtk-2.0/immodules -avoid-version -module \
++	-o tavpim-uni.la -rpath /opt/gnome/lib64/gtk-2.0/immodules \
++	-rpath /opt/gnome/lib64/gtk-2.0/immodules -avoid-version -module \
+ 	tavpim-uni.lo `pkg-config --libs gtk+-2.0`	
+ 
+ /bin/sh libtool --mode=compile gcc -DHAVE_CONFIG_H \
+ 	`pkg-config --cflags gtk+-2.0` \
+ 	-g -O2 -Wall -D_GNU_SOURCE -D_REENTRANT -DDEBUG -c \
+ 	-o anjal-uni.lo anjal-uni.c
+ 
+ /bin/sh libtool --mode=link gcc  -g -O2 -Wall -D_GNU_SOURCE \
+ 	-D_REENTRANT -DDEBUG   \
+-	-o anjal-uni.la -rpath /opt/gnome/lib/gtk-2.0/immodules \
+-	-rpath /opt/gnome/lib/gtk-2.0/immodules -avoid-version -module \
++	-o anjal-uni.la -rpath /opt/gnome/lib64/gtk-2.0/immodules \
++	-rpath /opt/gnome/lib64/gtk-2.0/immodules -avoid-version -module \
+ 	anjal-uni.lo `pkg-config --libs gtk+-2.0`	
+ 

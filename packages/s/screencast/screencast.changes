@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon Jul 22 17:24:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.0:
+  * Add the debian rules back
+  * Remove debian rules (makes the build falling)
+  * Add validation tests
+  * Remove CMake files
+  * Update packaging for meson
+  * Update install section in README.md
+  * Switch to eson build
+  * Update ru.po
+  * Merge pull request #46 from eurruby/contrib
+  * Add Brazilian Portuguese to Desktop File
+  * fixed warnings for appdata
+  * make stack_switcher.homogeneous = true;
+  * fixed black window in juno
+  * Update com.github.artemanufrij.screencast.appdata.xml
+- Add HiDPI icons
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Aug 16 09:45:29 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description, and adjust grammar.
+
+-------------------------------------------------------------------
+Wed Aug  1 21:33:23 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.0:
+  * Update appdata
+- Switch to metainfo from appdata
+- Remove obsolete macros
+
+-------------------------------------------------------------------
+Sat Apr  7 18:46:57 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.4:
+  * don't hide control window
+  * removed douplicate line
+  * Update README.md
+  * Update lt.po
+  * Serbian localization
+
+-------------------------------------------------------------------
+Sat Mar 17 16:06:10 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.3:
+  * fixed top margin for record controls
+  * move indicator function
+  * Merge pull request #31 from GitHaarek/patch-1
+  * http to https and url fixes
+  * pot + German
+
+-------------------------------------------------------------------
+Fri Mar  9 15:05:15 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.2:
+  * Update com.github.artemanufrij.screencast.appdata.xml
+  * Update com.github.artemanufrij.screencast.desktop
+  * Tweak the capitalisation of some sentences
+  * Improve .desktop comment and generic name slightly
+  * Update lt.po
+  * fixed es.po
+  * fix instand recording from plank
+  * fixed area recording
+  * Update README.md
+  * new pot file
+  * code style
+  * removed unused this.hide ();
+  * application behavior
+  * small improvements
+  * pause on focus
+- Add appindicator dependency
+
+-------------------------------------------------------------------
+Wed Nov  8 10:16:42 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.9:
+  * [FIX] Don't create a subfolder on every launch
+  * Recording microphone and desktop sounds at the same time
+  * Updated German Translation
+  * Added gschema.xml-file
+- Switch from bzr to git
+- Rename the package: eidete -> screencast
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 18:47:32 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging (version 0.2+r201) for build.opensuse.org

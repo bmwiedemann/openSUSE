@@ -1,0 +1,16 @@
+[Unit]
+Description=tgt admin
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/tgt
+Type=forking
+User=root
+ExecStart=/usr/sbin/tgtd $TGTD_OPTS
+ExecStartPost=/bin/bash -c "sleep 0.5 ; /usr/sbin/tgtadm --op update --mode sys --name State -v offline ; /usr/sbin/tgt-admin -e -c /etc/tgt/targets.conf ; /usr/sbin/tgtadm --op update --mode sys --name State -v ready"
+# only valid in .socket: ExecStopPre=/usr/sbin/tgt-admin --update ALL -c /dev/null
+ExecStop=-/usr/sbin/tgtadm --op delete --mode system 
+
+
+[Install]
+WantedBy=multi-user.target

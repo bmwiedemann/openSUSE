@@ -1,0 +1,6 @@
+<package name="bluez-tools" project="openSUSE:Factory">
+  <title>A set of tools to manage bluetooth devices</title>
+  <description>bluez-tools is a project to implement the better command line tools for BlueZ.
+The project implemented in C and uses the D-Bus interface of BlueZ.</description>
+  <devel project="Base:System" package="bluez-tools"/>
+</package>

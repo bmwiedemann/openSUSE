@@ -1,0 +1,264 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37cb40ac011725c3a6aa7e6397305985</srcmd5>
+    <version>0.1.7</version>
+    <time>1364986898</time>
+    <user>coolo</user>
+    <comment>Library required by libreoffice-4.1 (current master branch).</comment>
+    <requestid>161925</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>842647ef8482453e9922c46d0e452eb2</srcmd5>
+    <version>0.1.8</version>
+    <time>1367237088</time>
+    <user>coolo</user>
+    <comment>- Upgrade to upstream 0.1.8
+  - Several improvements in different parsers (forwarded request 173640 from fridrich_strba)</comment>
+    <requestid>173662</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8656fa21856d8a283cc538cf2ead21a9</srcmd5>
+    <version>0.1.9</version>
+    <time>1370426053</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.1.9 providing following fixes:
+ - improve a little the Microsoft Word filter to better manage
+   character and paragraph properties
+ - check that the remaining parsers (excepted Microsoft Word) use the
+   new properties' classes,
+ - add table generation in FullWrite parser,
+ - rewrite from scratch zip.cpp (to avoid using different license),
+ - + many code corrections done by David Tardon.
+ - check that the WriterPlus parsers use the new properties' classes,
+ - simplify a little the code of MWAWDocument
+ - add a parser for Acta v2 and Acta Classic v1,
+ - check that the DOCMaker, eDOC, SimpleText, Tex-Edit, Z-Write parsers
+   use the new properties' classes,
+ - rewrite MWAWPageSpan,
+ - add classes MWAWField, MWAWNote, MWAWSection to store/manage
+   field, note, section properties,
+ - check that the ClarisWorks/AppleWorks, MacWrite, MindWrite,
+   WriteNow parsers use the new properties' classes,
+ - improve a little the ClarisWorks/AppleWorks frame position by
+   placing &lt;&lt;correctly&gt;&gt; all page's frames,
+ - MWAWContentListener : add a sanity check to insure that at most
+   200 very small pictures are generated.</comment>
+    <requestid>176736</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8656fa21856d8a283cc538cf2ead21a9</srcmd5>
+    <version>0.1.9</version>
+    <time>1379663014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>32d803f96ea62bdb222e705d0a65b95a</srcmd5>
+    <version>0.1.9</version>
+    <time>1383574186</time>
+    <user>coolo</user>
+    <comment>- Drop doc conditional and use verbose build.</comment>
+    <requestid>205510</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d9bbb3d30948dc88b55854e5a10a13a1</srcmd5>
+    <version>0.1.9</version>
+    <time>1386774913</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210371</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f7e52bc7c3b6a211ba4fafda58512e8</srcmd5>
+    <version>0.2.0</version>
+    <time>1387382052</time>
+    <user>coolo</user>
+    <comment>- Upgrade to upstream 0.2.0
+  - ABI change
+  - Several improvements in handling of embedded graphics (forwarded request 211183 from fstrba)</comment>
+    <requestid>211185</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7fb9618f59ba875e83f9d6581e147e09</srcmd5>
+    <version>0.2.0</version>
+    <time>1390299106</time>
+    <user>coolo</user>
+    <comment>- build with -fvisibility-inlines-hidden, around 2800 
+  less in the export symbol table. (forwarded request 214358 from elvigia)</comment>
+    <requestid>214369</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>eff96c5419730cd2c89029a6f2267d71</srcmd5>
+    <version>0.2.0</version>
+    <time>1391077818</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and noarch documenation.</comment>
+    <requestid>215150</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff8bead59ab04835f8ffc9de523e9e14</srcmd5>
+    <version>0.3.1</version>
+    <time>1406479613</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242306</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ff8bead59ab04835f8ffc9de523e9e14</srcmd5>
+    <version>0.3.1</version>
+    <time>1409301632</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0660d694dba00027253193fd9503418d</srcmd5>
+    <version>0.3.4</version>
+    <time>1420429371</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.3.4:
+  * Various tweaks&amp;fixes on the 0.3 series found by fuzzy testing/etc
+- Removed patch libmwaw-0.3.1-stream.patch as we should not bother
+  with old autotools</comment>
+    <requestid>267030</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3538d349a1aafb846796262c47bc9606</srcmd5>
+    <version>0.3.5</version>
+    <time>1434550541</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.3.5
+  * Various small fixes on 0.3 series, nothing big woth mention</comment>
+    <requestid>311930</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>650c45120ef112780cb79ad6778d7a22</srcmd5>
+    <version>0.3.6</version>
+    <time>1440871363</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.3.6:
+  - Added a minimal parser for ApplePict v1.v2, ie. no clipping, does not
+    take in account the copy mode: srcCopy, srcOr, ...
+  - Extended the --with-docs configure option to allow to build doc only
+    for the API classes: --with-docs=no|api|full .
+  - Added a parser for MacDraft v4-v5 documents.
+  - RagTime v5-v6 parser: try to retrieve the main layouts and the
+    picture/shape/textbox, ie. now, it generates result but it is
+    still very imcomplete... 
+  - MWAW{Graphic,Presentation,Text}Listener: corrected a problem in openGroup
+    which may create to incorrect document.
+  - Created an MWAWEmbeddedObject class to store a picture with various
+    representations.
+  - MWAW*Listener: renamed insertPicture to insertShape, added a function to
+    insert a texbox in a MWAWGraphicShape (which only insert a basic textbox).
+  - Fixed many crashes and hangs when importing broken files, found with the
+    help of american-fuzzy-lop.
+  - And several other minor fixes and improvements.</comment>
+    <requestid>327651</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7bb2b274b57c11a40acbc7ee538fcd57</srcmd5>
+    <version>0.3.7</version>
+    <time>1450860974</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.3.7:
+  - RagTime v5-v6 parser: try to retrieve the embedded spreadsheets
+    + begin to understand the hierarchical structures which store
+      a chart (but not the meaning of each field),
+  - ClarisWorks/AppleWorks: find a new structure in the file's header
+    (which could prevent to convert some database's file),
+  - BeagleWorks/GreatWorks/Word Perfect Works: retrieve the picture's
+    field in a database
+  - all: improve a little the methods which create spreadsheets,
+  - all: make some constructors explicit.
+  - add a parser for Style documents(at least v1.6 and v1.9)
+  - add file signatures for FullPaint documents which have the same format as
+    MacPaint..
+  - add a parser for Pixel Paint documents</comment>
+    <requestid>350181</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b199b573839dfc9bb23f7b3ecac62680</srcmd5>
+    <version>0.3.8</version>
+    <time>1469629769</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.3.8:
+  * Various clang and -W* fixes all around
+  * Bunch of bugfixes</comment>
+    <requestid>408484</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ffedcac5390ce3ba20b9a16d07cc34ea</srcmd5>
+    <version>0.3.9</version>
+    <time>1481153295</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.3.9:
+  * Various warning and clang fixes all around</comment>
+    <requestid>443552</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>476de1769a8c9ec8c1c3acdbc39eeeed</srcmd5>
+    <version>0.3.10</version>
+    <time>1487461460</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.3.10:
+  * Various fixes for importing Mac powerpoint v4
+
+- use individual libboost-*-devel packages instead of boost-devel</comment>
+    <requestid>455741</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9c5386096ce4efb2f228cb5cd9ed475d</srcmd5>
+    <version>0.3.11</version>
+    <time>1496327324</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>497313</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3aec28b695806a4415c81335c2716dcb</srcmd5>
+    <version>0.3.11</version>
+    <time>1499161964</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch CVE-2017-9433.patch fixing bsc#1042828 CVE-2017-9433</comment>
+    <requestid>506938</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a1ffb5632b651105cd03085b8a76d5f7</srcmd5>
+    <version>0.3.13</version>
+    <time>1512292304</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.3.13:
+  * Remove merged CVE-2017-9433.patch
+  * Many fuzzing fixes</comment>
+    <requestid>547252</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4bfecf89d97c4459bbb906ffdf375b10</srcmd5>
+    <version>0.3.13</version>
+    <time>1512546796</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with old gcc:
+  * libmwaw-0.3.13-buildfix.patch</comment>
+    <requestid>548574</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>61793ef63827594e385fa30d7d742280</srcmd5>
+    <version>0.3.14</version>
+    <time>1528021770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.14:
+  * Support MS Multiplan 1.1 files
+- Remove merged patch libmwaw-0.3.13-buildfix.patch</comment>
+    <requestid>613029</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1cb2221facdf18f1c626f9629566955d</srcmd5>
+    <version>0.3.15</version>
+    <time>1556915366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.15:
+  * Use zlib more
+  * Fuzzing fixes</comment>
+    <requestid>697021</requestid>
+  </revision>
+</revisionlist>

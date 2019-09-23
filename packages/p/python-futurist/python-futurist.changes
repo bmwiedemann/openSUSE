@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Mon Apr  8 14:00:23 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.8.1
+  - fix tox python3 overrides
+  - Add blueprints notes link to README
+  - Use template for lower-constraints
+  - Trivial: Update pypi url to new url
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - Update reno for stable/rocky
+  - Only install monotonic on python2
+  - Don't quote {posargs} in tox.ini
+  - Follow the new PTI for document build
+  - Remove the duplicated word
+  - add lib-forward-testing-python3 test job
+  - add python 3.6 unit test job
+  - Switch to stestr
+
+-------------------------------------------------------------------
+Mon Sep  3 18:04:31 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.7.0
+  - set default python to python3
+  - clean up test job configuration
+  - Update reno for stable/queens
+  - Update links in README
+  - fix lower constraints and uncap eventlet
+  - Updated from global requirements
+  - add lower-constraints job
+
+-------------------------------------------------------------------
+Fri Feb 23 12:57:30 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Tue Jan 23 11:07:46 UTC 2018 - tbechtold@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Mon Jan 15 12:15:03 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.6.0
+  - Improving cover and docs testenv
+  - Fix jitter strategies
+  - Begin adding our own thread pool executor
+  - Remove 'smart' idleness check
+  - Avoid tox_install.sh for constraints support
+  - Improve get optimal count of max_worker for pool
+  - Update reno for stable/ocata
+  - Fix time related check in rejection test
+  - Eliminate unneccessary patching in GreenFuture
+  - Add what the watcher watches to the watcher as a property
+  - Remove discover from test-requirements
+  - Typo fix: arbitary => arbitrary
+  - Add Constraints support
+  - Add reno for release notes management
+  - Show team and repo badges on README
+  - Don't include openstack/common in flake8 exclude list
+  - Introducing NeverAgain functionality for periodics
+  - Add re-raising SystemExit exception
+  - Add Python 3.5 classifier and venv
+  - turn on warning-is-error in doc build
+  - Switch from oslosphinx to openstackdocstheme
+  - Update .gitignore
+  - Do not check spacing if periodic disabled
+  - Fix 'on_failure' param not be used
+  - replace _callables by _works
+  - The python 3.4 support is removed
+  - rearrange existing documentation to fit the new standard layout
+  - Use prettytable to show pretty schedule/active/planned time table
+  - Removes unnecessary utf-8 coding
+  - Improve doctest and doc8 test
+  - Update homepage with developer documentation page
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Reduce/remove duplication in run functions
+  - Remove link to modindex
+  - Update URLs in documents according to document migration
+  - Updated from global requirements
+  - Expose underlying timeout error
+
+-------------------------------------------------------------------
+Sun Feb 28 20:19:32 UTC 2016 - dmueller@suse.com
+
+- update to 0.13.0:
+  * Single quote the callables name (when submission errors
+  * Updated from global requirements
+  * Reschedule failed periodic tasks after a short delay
+  * Fix wrong comparison in reject_when_reached
+  * Updated from global requirements
+  * Ensure all futures have completed before run returns
+  * Allow PeriodicWorker to skip executor shutdown in case of a preexisting executor
+  * Expose underlying futures.CancelledError
+  * Updated from global requirements
+  * Modification of the example code
+  * PeriodicWorker.create to accept arguments for periodic tasks
+  * Handle exceptions from executor.submit in PeriodicWorker
+  * Add periodics.is_periodic to check if object is a periodic task
+  * py26/py33 are no longer supported by Infra's CI
+
+-------------------------------------------------------------------
+Mon Jan 11 09:03:28 UTC 2016 - bwiedemann@suse.com
+
+- Update to version 0.9.0
+  * Allow for providing different run work sync functions
+  * Have the executor stats object repr look like the watcher repr
+  * Add useful watcher '__repr__' function
+  * Some minor refactoring and comment/note addition
+  * No need for Oslo Incubator Sync
+  * Move most of green helper classes -> '_green.py'
+  * Add 'enabled' parameter to @periodic decorator
+  * Remove green worker reference to its executor
+  * Change ignore-errors to ignore_errors
+  * Activate pep8 check that _ is imported
+  * Handle the case where 0.199 is provided as runtime
+  * Just use a deque vs reverse pushing/popping
+  * Ensure new entry in immediates gets processed during wait(s)
+
+-------------------------------------------------------------------
+Wed Sep  9 07:01:25 UTC 2015 - tbechtold@suse.com
+
+- update to 0.5.0:
+  * Updated from global requirements
+  * Provide a thread differentiation attribute on executors
+- Adjust Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Tue Aug  4 06:10:28 UTC 2015 - tbechtold@suse.com
+
+- update to 0.3.0:
+  * Updated from global requirements
+  * Allow providing a callback to certain executors to reject new work
+  * Disallow running 'start' twice
+  * Allow for providing custom 'on_failure' callbacks
+  * Delegate failure capturing to a object that is returned on run
+  * Move doc8 to being a normal test requirement in test-requirements.txt
+  * Ensure doctesting and doc8 testing done in py27 env
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Tue Jul 21 05:54:19 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

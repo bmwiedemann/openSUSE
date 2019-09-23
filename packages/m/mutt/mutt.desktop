@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=ConsoleOnly;Network;Email
+Encoding=UTF-8
+Exec=mutt %u
+Icon=mutt
+Type=Application
+Name=Mutt
+GenericName=Mail Client
+Terminal=true
+MimeType=x-scheme-handler/mailto;

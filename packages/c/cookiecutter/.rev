@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7fff4e6ba98b31ef523320811e61287</srcmd5>
+    <version>1.6.0</version>
+    <time>1520415184</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to version 1.6.0:
+ * Include template path or template URL in cookiecutter context under _template
+ * Add a URL abbreviation for GitLab template projects
+ * Add option to use templates from Zip files or Zip URLs
+ * bugfixes
+- update to version 1.5.1:
+ * bugfixes
+- remove fix-caplog-tests.diff, it broke the tests
+- remove separate specfile for docs, use one combined
+- version 1.5.0: initial build
+</comment>
+    <requestid>580905</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>852577e0e6d3f9e5ee7c4aa54576d9f3</srcmd5>
+    <version>1.6.0</version>
+    <time>1548062936</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with new click cookiecutter-click7.patch</comment>
+    <requestid>662403</requestid>
+  </revision>
+</revisionlist>

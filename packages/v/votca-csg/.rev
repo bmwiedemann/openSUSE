@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d64597eb7daa66c25b0782ae224efb8</srcmd5>
+    <version>1.2.3</version>
+    <time>1393089461</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>223069</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2d64597eb7daa66c25b0782ae224efb8</srcmd5>
+    <version>1.2.3</version>
+    <time>1409303618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7374dbe265f46594f110458b478ff247</srcmd5>
+    <version>1.2.4</version>
+    <time>1410081008</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247790</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>41002a3b49bc9185858b0d8549b41213</srcmd5>
+    <version>1.2.4</version>
+    <time>1410236488</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>248042</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>268fb55545d34b1f61c3cae28e9b6786</srcmd5>
+    <version>1.3~rc1</version>
+    <time>1445287858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>338393</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ccaa14672417695e07244297f950b34</srcmd5>
+    <version>1.3</version>
+    <time>1453416247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354800</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cee152aef1aac98497b95bde125ff465</srcmd5>
+    <version>1.3.1</version>
+    <time>1472111781</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420934</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c28349041123d8fb60b2279f7d57980</srcmd5>
+    <version>1.4</version>
+    <time>1485769805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>453177</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3d962a310760215c2f730330295c4caa</srcmd5>
+    <version>1.4</version>
+    <time>1486135772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454243</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae019d8da185fff513b3d4f618552ad9</srcmd5>
+    <version>1.4.1</version>
+    <time>1504521555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520513</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>634e2f9414e432b3bf4cd1465589ded5</srcmd5>
+    <version>1.5</version>
+    <time>1551386303</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670459</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>489d4ae28750844d9364ebe9bac3d1e0</srcmd5>
+    <version>1.5</version>
+    <time>1554276525</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with boost-1.69
+- Upgrade to 1.5
+  * cmake: only run csg_dump test if bash was found
+  * added REGRESSIONTEST_TOLERANCE cmake option
+  * added bug fix for memory leak in bead class
+  * added topology unit test
+  * added support for 3 body distribution
+  * allow usage of _ in gmx options
+  * support espresso-4.0
+  * added LAMMPS data topology reader
+  * added LAMMPS dump writer
+  * added support for gmx-2019
+  * move from gsl to Eigen3
+  * added support for running gmx in multidir mode
+  * extended pdb reader to read CONECT section
+  * reworked perl interface to fix #179
+  * make most install locations configureable
+  * allow to change pot extrapolation fct for LAMMPS
+  * dropped support for gmx-5.1
+  * added unit and regression tests
+  * details: https://github.com/votca/csg/blob/master/CHANGELOG.md
+- Upgrade to 1.4.1
+  * fix pkg-config files
+  * fix build with gmx-2017
+  * added CSG_MDRUN_OPTS to run_gromacs.sh
+  * table_to_tab.pl: fix forces for LAMMPS
+  * csg_inverse: warn users of bug #179
+  * run_gromacs.sh: check nstxout-compressed
+  * details: https://github.com/votca/csg/blob/master/CHANGELOG.md
+- use individual libboost-*-devel packages instead of boost-devel
+- Update descriptions.
+- Upgrade to 1.4
+  * added cibi tutorial and manual section
+  * xmltopologyparser: tokenize on \n and \t as well (#195)
+  * details: https://github.com/votca/csg/blob/master/CHANGELOG.md
+- Upgrade to 1.4_rc1
+  * switch to c++-11
+  * dihedral support in csg_fmatch
+  * support for tabulated bond in &gt;=gmx-5
+  * added full featured XMLTopologyReader
+  * added regularization for IMC
+  * changed neighborlist from std::list to std::vector
+  * added cibi method
+  * lots of reader bug fixes
+  * dropped support for gromacs-4 and clean up
+  * dropped multi_g_rdf script
+  * dropped thermforce iteration method
+  * moved h5md reader to hdf5 without c++ api
+  * details: https://github.com/votca/csg/blob/master/CHANGELOG.md
+- RPM group update
+- Upgrade to 1.3.1
+  * fixed build with &gt;=cmake-3.4
+  * details: https://github.com/votca/csg/blob/master/CHANGELOG.md
+- Upgrade to 1.3
+  * re-implemented csg_boltzmann --excl
+  * added support for upcoming gromacs 2016
+  * details see 1.3 section of:
+    https://github.com/votca/csg/blob/master/CHANGELOG.md
+    or included CHANGELOG.md file
+- Upgrade to 1.3_rc1
+  * details: https://github.com/votca/csg/blob/master/CHANGELOG.md
+- depend on gromacs-devel instead for pkgconfig(libgmx) as
+  gromacs-5.0 comes with libgromacs instead of libgmx
+- Update to 1.2.4
+  - support for Gromacs 5.0
+- clean up for inclusion in OpenSuse:Factory
+- Upgrade to 1.2.3
+- Upgrade to 1.2.1
+  - fixed lib soname, adapt BuildRequires
+  - csg_inverse: improve initial guess of the potential
+  - csg_inverse: fixes for min!=0
+  - table_extrapolate.pl: fixed flags and first point
+  - fixed tf iteration for multiple components
+  - fixed round-off error in grid search and csg_calc
+  - csg_inverse: typo fixed and additional checks
+- Version 1.2 (SuperDoris)
+  - changed buildsystem to cmake
+  - added thermforce iteration method
+  - added csg_density
+  - a lot of framework clean up
+  - added type selector name:*
+  - allow long and restart of simulations
+- Version 1.1.2
+  - fixed head of votca-csg manpage
+  - csg_fmatch: added support for known forces (--trj-force option)
+- Upgrade to 1.1.1
+  - parallel analysis using threads, some tools have a '--nt'
+    option (e.g. fast parallel rdf calculation using grid search)
+  - new spline types in csg_resample (akima, linear)
+  - csg_inverse has about 25 new xml options (post-processing,
+    run control, ...)
+  - the manual is included as pdf
+  - boundary treatment is done internally, no need to run trjconv
+    anymore
+- Initial version 1.0.1
+- Add tutorials as documentation to votca-csg
+- Minor clean up
+- First release
+</comment>
+    <requestid>690797</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>706d353045c738777777ab2510f56e6e</srcmd5>
+    <version>1.5</version>
+    <time>1568379753</time>
+    <user>lnussel_factory</user>
+    <comment>Fix build failure on i586.</comment>
+    <requestid>730484</requestid>
+  </revision>
+</revisionlist>

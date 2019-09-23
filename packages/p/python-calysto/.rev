@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a00592f618a991d6522171d29cd97f7</srcmd5>
+    <version>1.0.6</version>
+    <time>1558516333</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable python2 since some dependencies are python3-only
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.</comment>
+    <requestid>703189</requestid>
+  </revision>
+</revisionlist>

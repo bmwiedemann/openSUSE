@@ -1,0 +1,12 @@
+diff -Nru azure-cognitiveservices-vision-contentmoderator-1.0.0.orig/setup.py azure-cognitiveservices-vision-contentmoderator-1.0.0/setup.py
+--- azure-cognitiveservices-vision-contentmoderator-1.0.0.orig/setup.py	2019-01-11 23:29:28.000000000 +0100
++++ azure-cognitiveservices-vision-contentmoderator-1.0.0/setup.py	2019-03-22 14:23:50.786787925 +0100
+@@ -79,7 +79,7 @@
+     ]),
+     install_requires=[
+         'msrest>=0.5.0',
+-        'azure-common~=1.1',
++        'azure-common>=1.1',
+     ],
+     extras_require={
+         ":python_version<'3.0'": ['azure-cognitiveservices-vision-nspkg'],

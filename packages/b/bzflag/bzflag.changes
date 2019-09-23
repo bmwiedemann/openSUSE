@@ -1,0 +1,779 @@
+-------------------------------------------------------------------
+Sat May 18 19:55:27 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.16
+  * Send MsgFlagGrab before API event is called
+  * Correctly unmuted when paused and killed by server
+  * Format codebase to allman style
+  * Use GLEW for obtaining OpenGL entry points and checking for
+    extensions
+  * Revert a80ab87 (truncation warning fix) as that generated broken
+    replay file headers. Detect and work around that bad header.
+  * Use pkg-config, if available, to detect ncurses
+
+- Update to version 2.4.14
+  * Add new bz_eAllowServerShotFiredEvent to the API
+  * Fix antialiasing when starting the client windowed
+  * Update the Windows icon file to include larger icons
+  * Treat the number pad keys uniquely for key mapping with SDL2
+  * Better cpu selection for x86_64
+  * Fix build with enable-profile
+  * Add safety check when getting flags (bzfs)
+  * Add min/../max to drawTime - Alfredo Tupone
+  * Fix the -configdir option for the client
+  * Improve support for custom BZDB vars in plug-ins
+  * Fix truncation warnings
+  * Add new bz_ePermissionModificationEvent to the API
+  * Introduce new 'showMotto' permission
+  * Fix gcc warnings and code formatting
+  * Remove old BitmapFont renderer
+  * Add new bz_eServerShotFiredEvent to the API
+  * Revamp the world weapon API entirely
+  * Add PLAYER-MOTTO output to logDetail plugin
+  * Display remaining ban time when a banned player connects
+  * Punitive messages no longer display admin callsigns
+  * Slash commands in the API now know destination channel
+  * Fix ability to bind a key with a modifier through menu
+  * Disallow -helpmsg from world files
+
+-------------------------------------------------------------------
+Mon Mar 25 23:53:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add %systemd_ordering for %service_*.
+
+-------------------------------------------------------------------
+Tue Feb 26 15:02:29 UTC 2019 - josef.moellers@suse.com
+
+- Replaced the sysv init script by a systemd unit file
+  Due to the complexity of the init script, the script is still
+  used to start/stop the server. Note that the init script
+  and the systemd unit file are not part of upstream!
+  [bsc#1115940, bzflagserver.service]
+
+-------------------------------------------------------------------
+Thu Dec 21 15:38:17 UTC 2017 - bwiedemann@suse.com
+
+- Update to version 2.4.12
+  * See /usr/share/doc/packages/bzflag/ChangeLog for full details
+  * Added many new functions to API
+  * Added plugins:
+    * superUser
+    * bzfscron
+    * serverSidePlayerSample
+    * CustomZoneSample
+  * make build fully reproducible (boo#1047218)
+- Drop upstream bzflag-char-signedness.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:46:50 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Apr 17 07:49:03 UTC 2013 - joop.boonen@opensuse.org
+
+- Update to version 2.4.2
+  * Added UPnP option to configure server networking - Alfredo Tupone
+  * Added an option to have both leading and lagging radar shot lines - David Anderson
+  * Prevent prohibited solo bots from joining, rather than kick afterward - Scott Wichser, Jeff Makey
+  * Add thiefControl plugin which prevents stealing flags from teammates - Bernt Hansen, Scott Wichser
+  * Preserve shot-limited flag behavior on final shot - David Anderson
+  * Remove the -zoom command line option from bzflag - Jeff Makey
+  * Provide observer team chat in OpenFFA mode - David Anderson
+  * Add fairCTF plugin - Chris Wible
+  * Allow plugins to specify a color when firing world weapons - Chris Wible
+  * Add option for chat on the left and radar on the right - Kyle Mills
+  * Add autoFlagReset plugin - Chris Wible
+  * Allow joystick hats as input on Evdev and SDL platforms - Kyle Mills
+  * Added Fastmap Plugin - Jeffery Myers
+
+-------------------------------------------------------------------
+Mon Apr 30 11:53:25 UTC 2012 - reddwarf@opensuse.org
+
+- Use system c-ares and glew
+- Stop using autoreconf
+
+-------------------------------------------------------------------
+Fri Mar 23 00:55:11 UTC 2012 - jengelh@medozas.de
+
+- Strip redundant sections/tags from specfile
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:45 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Wed Jul  6 10:18:23 UTC 2011 - jmcdonough@suse.de
+
+- Update to version 2.4.0 
+  * Shot messages are synchronized with position
+  * Added /playerlist for everyone
+  * Added message type for properly handling /me actions
+  * Added BZDB option to hide flags on radar server side
+  * Removed /setpass /register /identify
+  * Handicap is computed on the server
+  * Allow plugins to register custom flag types
+  * Forced *image.bzflag.org for image downloads until user sets
+    otherwise
+  * Accepted patch from McSpider, added OpenFFA
+  * Removed -requireUDP, now it is always required
+  * Accepted patch from McSpider, removed client option to turn off fog
+  * Accepted patch from McSpider, added -noTeamKills option
+  * Removed -3Dfx, -no3Dfx. Moved -geometry ->  -window <geometry-spec>
+  * Add ricochet on a per object basis for .bzw files
+  * serverControl plugin- Add option to ignore observers for server shutdowns
+  * serverControl plugin- Only report ban file access errors once
+  * serverControl plugin- Limit filesystem checks to once every 3 seconds
+  * LogDetail plugin-Add SERVER-MAPNAME with the public server description
+  * The bzfs -time command line option allows end time
+  * screenshots now compressed asynchronously
+  * Add /serverdebug command and plugin API
+  * Add bzfs -utc command line option to log timestamps using universal time
+  * Fix buffer overrun when using -ts micros on Linux
+  * Only players with POLL permission are eligible to vote
+  * Only allow a single end shot credit for holding the shield flag
+  * Do not inform hunters of stealthy prey
+  * All scores are controlled completely by the server
+  * Relabel player "email" string as "motto"
+  * Require TALK privilege for player motto to be broadcast
+  * Always require valid authentication for registered names
+  * Move flag identification server side
+  * GM sanity checks
+  * Added the -publickey requirement for publicly listed servers (and renamed
+    the bzfs -public option to -publictitle)
+- Remove forward declaration patch
+
+-------------------------------------------------------------------
+Sat Jul  2 16:40:20 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Tue Apr  6 13:37:02 UTC 2010 - hvogel@novell.com
+
+- Update to version 2.0.16
+  * Fix regression in protocol handling by server
+  * Add bullet tails as seen out the viewport
+  * Remove unused dependency on Xi library
+  * Allow only one Enter message per player instance
+  * Add TimeLimit plugin
+  * Remove broken vocaliser and obsolete torBlock plugins 
+  * Add Options -> Display -> AntiFlicker option 
+  * Add Options -> Input -> Confine Mouse (MotionBox)
+  * Adjust advanced ground rendering for texture flicker
+  * Backport fix for /idbanlist and /hostbanlist crashes
+  * Fix player ghosting failure
+  * Provide API support for using bz_moveFlag on team flags
+  * Add pushstats plugin for future statistics gathering system
+  * Increase restrictions on incompletely joined players
+  * Announce saved file name in recordmatch plugin
+  * Fix buffer overflow in menu subsystem
+  * Fully support glob-style wildcards in hostbans and make name comparisons
+    case insensitive 
+  * Properly limit maximum message size in /showgroup command
+  * Reset team scores in case of a capture during a countdown
+  * Block spoofed /me messages
+  * Keep flags within the world boundary
+  * Add the "roamView" BZDB variable
+  * Change fonts to DejaVu
+  * Source cleanup
+  * use fdupes
+
+-------------------------------------------------------------------
+Thu Mar 18 12:13:15 UTC 2010 - prusnak@novell.com
+
+- cleanup spec file
+
+-------------------------------------------------------------------
+Mon Sep  8 13:53:30 CEST 2008 - hvogel@suse.de
+
+- Update to 2.0.12
+  * Fix for memory leaks
+  * Remove extra dir separator from cache entries
+  * Configurable "defaultFOV" (60 deg) for widescreen users
+  * Queue spawns after flag captures
+  * Fix kill callback when is coming from server
+  * Various permission fixes
+  * gcc-4.3 fixes
+
+-------------------------------------------------------------------
+Mon Apr 21 15:44:48 CEST 2008 - hvogel@suse.de
+
+- update to latest 2.0 branch svn to fix various c-ares bugs
+  [bnc#378717]
+- add short description to init script
+- build against ncurses for bzadmin
+
+-------------------------------------------------------------------
+Mon Apr  7 02:57:28 CEST 2008 - crrodriguez@suse.de
+
+- bzflag no longer uses adns but a bundled copy of libcares,
+  update the spec file to use system c-ares instead. 
+
+-------------------------------------------------------------------
+Wed Jan 16 12:36:11 CET 2008 - hvogel@suse.de
+
+- Update to bzflag-2.0.10:
+  * Add /modcount command
+  * Add -adminlagannounce and -lagannounce
+  * First map no longer ignored in Start Server menu
+  * Add packet loss kick and related admin commands
+  * Plugins get flag resets/spawns/grab/drop/transfer
+  * Added more info for observers
+  * Optionally use mesh position and height for radar
+  * Add various new plugins (rabidRabbit, rabbitTimer torBlock regFlag, etc.) 
+  * Add favorite server
+  * Some API changes
+  * Adding jitter kick and related admin commands
+  * Ability to change the killer in a PlayerDieEvent
+  * Backport the record stop function from 2.1
+  * Backported WW GMs from 2.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:57:31 CEST 2007 - pgajdos@suse.cz
+
+- added missing includes according to new gcc
+  * missing-includes.patch 
+
+-------------------------------------------------------------------
+Mon Apr 16 14:30:35 CEST 2007 - pgajdos@suse.cz
+
+- fixed 'warning: array subscript is below array bounds' [#229908]
+- array_subscript2.patch 
+
+-------------------------------------------------------------------
+Tue Mar 13 11:55:18 CET 2007 - pgajdos@suse.cz
+
+- fixed 'warning: array subscript is below array bounds'
+- array_subscript.patch 
+
+-------------------------------------------------------------------
+Wed Jan 10 21:25:11 CET 2007 - hvogel@suse.de
+
+- fix make install issue with mkdir
+
+-------------------------------------------------------------------
+Fri Jun 30 14:24:09 CEST 2006 - duwe@suse.de
+
+- update to upstream version 2.0.8:
+ * Add a plugin to record matches
+ * Add an option to send out a UDP heartbeat message for observers behind flakey
+   routers
+ * Replaced admin message sound
+ * Client and server now close http connections correctly
+ * Fixed crash when rogue autopilot picks up a team flag
+ * Fixed spawnpoint selection regression
+
+-------------------------------------------------------------------
+Fri May  5 21:53:51 CEST 2006 - mmj@suse.de
+
+- Devel package is gone
+- Update to bzflag-2.0.6:
+  o game variables no longer accept invalid values.
+  o Special Effects use tank (was team) color
+  o /reset uses the values from the config and the map as default
+  o Sreenshots now remember where they left off
+  o Have windows dump std::error out to a file
+  o Various API enhancmentes
+  o Not applauding when capturing his own flag
+  o Fixing crash on invalid captured flag
+  o Fixed bots on a public server
+  o Don't send admin the server password when wrong
+  o Client config file can be saved on request
+  o Allow for longer help files (50 lines)
+  o Allow selective /reload of databases
+  o Fix wrong kick if pausing having V and moving
+  o Prevent long distance tank warping through walls
+  o Display paused state when screen capturing while playing
+  o Added new logDetail plugin
+  o Fixed issue with denial-of-service message attacks
+  o Support for -window on Mac command line executions
+  o Show slot numbers in lagstats (if admin)
+  o FPS limit energy saver option for laptops
+  o Send admin channel warning if /password fails
+  o Known players not authenticated are detected
+  o Added /checkip command
+  o "Enable Local Shot/Spawn Effects" affects "Driving with"
+  o Show shot reload indicators when driving with a tank
+  o Fix misc/bzfquery.pl to handle MsgGameTime
+  o Simple server list searching
+  o Added GUI option for email display length
+
+-------------------------------------------------------------------
+Wed Feb  1 19:04:43 CET 2006 - hvogel@suse.de
+
+- fix BZFlag NULL Byte callsign DOS bug [#141121]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 14:04:09 CET 2006 - mmj@suse.de
+
+- Build without SDL support for now, since it's broken [#143932]
+
+-------------------------------------------------------------------
+Tue Nov  8 11:28:23 CET 2005 - mmj@suse.de
+
+- Split -devel package off for plugin stuff
+- Update to 2.0.4 including:
+  o Automatic team icon
+  o Fixed server join bug when cached worlds disappear
+  o Prevent phantom zoned players from pausing
+  o Implemented multiple player hunt
+  o Directional keys pressing works, even in joy/mouse mode
+  o Jitter compensation removed. Too bad behaviour on ME players
+  o Put spawn params in BZDB to let server owners mod them as needed
+  o Fixed ban admin bug
+  o Added /sendhelp command
+  o /ban /hostban take time keywords (short ...) too
+  o Inertia style indicatio no more used
+  o No more restriction on M (Momentum) flag
+  o Fixing authentication when changing callsign/password
+  o Fixing authentication when joining from command-line
+  o Executing abbreviated server command '*' terminated
+  o Getting one-line-help on server command '?' terminated
+  o Fixing bzflag use of system-wide regex (--without-regex)
+  o Adding destination info to chat message log
+  o Adding syntax check to duration parameter of ban cmds
+  o Hud outlines go transparent with the hud panel
+  o Better progress info when downloading textures
+  o Add Quake3 BSP import to modeltool
+  o Exit BZFS if -g is used with -mts or -mps
+  o Experimental server colorizing in server list
+  o Added sort options to "/replay list" and "/record list"
+  o Map mismatch fixed
+  o Quick server command key works better
+  o Default server side plugins added to windows build
+  o Include web token verification script
+  o Fix texture cache on windows.
+  o Disallow + or @ as first char of callsign (bzfs)
+  o Wait for reverse DNS and authentication to enter game
+  o Antiban works even on IP number
+  o Sort lagstat to have non-observer at the bottom
+  o Authentication credential are requested asap
+  o Allow the use of game device sliders as axes on Windows
+  o Directional force feedback support
+  o New icon and menu arrow
+  o Special effects for many events
+  o Server-side plugin API and plugins
+  o Join menu displays team icon
+  o Implemented "-advertise" option for bzfs
+  o The url now does not contain the password (sent with POST)
+  o Fixing Tiny tank shooting from the world edge
+  o Fixing client requesting lan server on some systems
+  o Observer are no more hunted
+  o Added 'Always Show Team Scores' option (GUI Options Menu)
+  o Added beautify scores
+  o Added scoreboard sort option
+  o Shots fired over the boundary wall end at the wall
+  o Increase range of radar size setting in GUI Option menu
+  o Fixed Menu rendering when radar size is great
+  o Fixed Linux name resolution (server list) problem
+  o Fixed Jitter problem on Windows, clock was wrong
+  o Windows platform can switch from SDL to native
+  o Instruction for X-build from linux to windows
+  o bzflag is much less blocking with libcurl
+  o Using c-ares instead of adns for DNS resolving
+  o Added CTF capture event trigger for world weapons
+  o FlipZ on meshpyrs behaves as expected (like pyramids)
+  o Fixed /set and /reset command case bug
+  o Fixed crash on /ban without -banfile
+  o Shot reload timer on the HUD
+  o Added timestamp to bzfs DEBUG output, and new CL option (-ts)
+  o Players without TALK can send to the Admin group
+  o Fixed bzfs crash because poll kick/ban
+  o Allow additional group modify permission lines
+  o bzfs creates default groups before parsing groupdb file
+  o +ALL and -ALL adds/removes all perms from a group in groupdb
+  o Support for +,- and ! operators in bzfs' groupdb file
+
+-------------------------------------------------------------------
+Tue Oct  4 12:07:23 CEST 2005 - schwab@suse.de
+
+- Add SDL-devel-packages to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Sep 30 15:42:10 CEST 2005 - stbinner@suse.de
+
+- fixed .desktop file
+
+-------------------------------------------------------------------
+Mon Aug 22 12:40:36 CEST 2005 - hvogel@suse.de
+
+- fix data type comparison [Bug #104607]
+
+-------------------------------------------------------------------
+Fri Jul 15 12:24:57 CEST 2005 - hvogel@suse.de
+
+- Don't compile with -f-signed-char [#93873]
+- add curl for MOTD, global bans, etc. (needs bc for the configure
+  check *shrug*)
+- add libadns for hostmask based bans (needs ssl)
+
+-------------------------------------------------------------------
+Thu Jun 23 14:53:04 CEST 2005 - schwab@suse.de
+
+- Build with -fno-strict-aliasing [#85848].
+
+-------------------------------------------------------------------
+Tue Jun  7 22:55:40 CEST 2005 - mmj@suse.de
+
+- Add sysconfig variable for newbies
+
+-------------------------------------------------------------------
+Mon May 23 15:52:29 CEST 2005 - schwab@suse.de
+
+- Fix missing declaration.
+
+-------------------------------------------------------------------
+Wed Mar 30 21:37:44 CEST 2005 - mmj@suse.de
+
+- Update to 2.0.2 which is a bugfix release
+
+-------------------------------------------------------------------
+Tue Jan 18 15:04:28 CET 2005 - mmj@suse.de
+
+- Update to 2.0.0 which introduces a slew of major new features
+  making this probably the "biggest" release in BZFlag's history
+  in terms of development time put into it and features being
+  added since the last publicly released version. Major new
+  features include support for vastly more complex worlds,
+  physics drivers, graphics improvements, weather (rain, snow,
+  frogs), tank treads and tracks, animations, record and
+  playback, new flags, new commands, optimizations and much more.
+  There is a new central registration system, global ban list
+  support, network, new cheat preventions, and network
+  optimizations in place as well.
+
+-------------------------------------------------------------------
+Tue Nov  2 12:50:36 CET 2004 - mmj@suse.de
+
+- Update urbancombat map to fit newer BZFlag versions
+
+-------------------------------------------------------------------
+Mon Oct 11 21:49:13 CEST 2004 - mmj@suse.de
+
+- Update to 1.10.8 which is a maintenance release:
+  o New list server URL
+  o Added admin message sounds
+  o Throw away bad or early links in world files
+
+-------------------------------------------------------------------
+Sat May 22 20:23:15 CEST 2004 - mmj@suse.de
+
+- Update to 1.10.6 including:
+  o Fixed the little hop on spawn at some sites
+  o Fixed issue of players add/removing others from groups
+  o Fixed false positive filter matches involving apostrophes
+  o Curing ghost/duplicated/ungetable flag
+  o Fixed 0 height flag, no more flags inside buildings
+  o Observers see Masquerade tank with their true color
+  o Password file now supports callsigns with non alphanumerics
+  o Correctly read PNG textures with multiple IDAT chunks
+  o bans based on hostmask (/hostban, ...) when adns is available
+  o Fixed bug that allowed empty callsigns
+  o server option to disallow autopilot
+  o Bots drive around corners faster
+  o Bots aim better, try to evade shots
+
+-------------------------------------------------------------------
+Thu Apr 29 21:36:48 CEST 2004 - mmj@suse.de
+
+- Add missing sample bzflagserver configuration file to the docu-
+  mentation
+
+-------------------------------------------------------------------
+Tue Jan 27 10:29:29 CET 2004 - mmj@suse.de
+
+- Update to 1.10.4
+- Undefine bool after ncurses include
+
+-------------------------------------------------------------------
+Tue Jan 20 13:46:08 CET 2004 - mmj@suse.de
+
+- Add std::streamoff() wrapper (gcc 3.4)
+- It's CPPFLAGS and CFLAGS now
+
+-------------------------------------------------------------------
+Tue Dec 30 12:27:58 CET 2003 - mmj@suse.de
+
+- Run the bzflagserver as nobody:nobody
+
+-------------------------------------------------------------------
+Sun Dec 28 19:55:12 CET 2003 - mmj@suse.de
+
+- Update to 1.10.2 with a number of bugfixes including the one
+  where Guided Missile was not capable of hitting ring 0 players.
+
+-------------------------------------------------------------------
+Fri Dec 12 12:50:42 CET 2003 - mmj@suse.de
+
+- Adjust the sysconfig file settings
+
+-------------------------------------------------------------------
+Thu Dec 11 12:19:05 CET 2003 - mmj@suse.de
+
+- Update to 1.10.0 which is incompatible with older versions of
+  BZFlag, and brings a tremendous amount of new stuff, including
+  new flags.
+
+-------------------------------------------------------------------
+Wed Oct 15 12:25:25 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+
+-------------------------------------------------------------------
+Sat Sep 13 16:26:37 CEST 2003 - sndirsch@suse.de
+
+- fixed icon name in desktop file
+
+-------------------------------------------------------------------
+Thu Sep 11 20:22:39 CEST 2003 - adrian@suse.de
+
+- make the menu texts a bit nicer
+- remove unneeded X-SuSE before Categories
+
+-------------------------------------------------------------------
+Thu Aug 14 14:21:47 CEST 2003 - mmj@suse.de
+
+- Add sysconfig activation metadata
+
+-------------------------------------------------------------------
+Mon Aug 11 11:47:17 CEST 2003 - mmj@suse.de
+
+- Add a desktop file and an icon
+
+-------------------------------------------------------------------
+Wed Jul 30 20:23:01 CEST 2003 - mmj@suse.de
+
+- Use new macros for stop/restart of services on rpm update/removal
+
+-------------------------------------------------------------------
+Wed Jun 18 22:00:51 CEST 2003 - mmj@suse.de
+
+- Don't package the stuff in /usr/share/games/bzflag/bzflag
+
+-------------------------------------------------------------------
+Wed Jun 18 11:06:13 CEST 2003 - mmj@suse.de
+
+- Update to 1.7g2
+
+-------------------------------------------------------------------
+Mon Jun  2 14:41:30 CEST 2003 - mmj@suse.de
+
+- Fix typo
+
+-------------------------------------------------------------------
+Fri Feb  7 08:51:20 CET 2003 - mmj@suse.de
+
+- Add /etc/sysconfig/bzflagserver with parameters for the bzflag
+  server.
+- Tiny specfile cleanup
+
+-------------------------------------------------------------------
+Mon Dec  9 09:50:49 CET 2002 - mmj@suse.de
+
+- Update to 1.7g0 which include world file caching, team killers
+  die, tank labels on roaming, new GUI options including a
+  smaller display for slow systems (set opacity all the way up),
+  and much more!
+
+-------------------------------------------------------------------
+Thu Nov 14 14:41:34 CET 2002 - mmj@suse.de
+
+- Added some maps
+
+-------------------------------------------------------------------
+Thu Nov 14 11:08:55 CET 2002 - mmj@suse.de
+
+- Make neededforbuild more current
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Aug 15 15:58:49 CEST 2002 - mmj@suse.de
+
+- Add PreReq for insserv.
+
+-------------------------------------------------------------------
+Thu Aug  1 00:20:34 CEST 2002 - mmj@suse.de
+
+- Remove insserv call
+
+-------------------------------------------------------------------
+Sun Jul 28 00:51:36 CEST 2002 - mmj@suse.de
+
+- Fix specfile for ppc64
+
+-------------------------------------------------------------------
+Tue Jul 16 14:02:50 CEST 2002 - mmj@suse.de
+
+- Update to 1.7e6 which includes:
+  o udp request fix for later clients
+  o MsgEnter should not be patched for ID
+  o Removed superfluous buffer copies in bzfs buffer sends
+  o Better pack/unpack code for vectors [3]
+  o Fix Teamflag drop over building when building at 0,0,0
+  o Fix flags spawning in pyramids
+  o Fix client crashes with UNKNOWNS
+  o fix patchMessage for MsgAlive
+  o fix find closest flag (ID) with flags on buildings
+  o scale flags bases on elevation
+  o don't scale radar based on screen res
+  o flag radar updated
+  o new admin commands
+  o -pr for reconnect port (two port tcp)
+
+-------------------------------------------------------------------
+Sat May 18 23:46:45 CEST 2002 - schwab@suse.de
+
+- Fix typo in spec file.
+
+-------------------------------------------------------------------
+Sat May 18 13:37:51 CEST 2002 - mmj@suse.de
+
+- Fixed the startup script.
+
+-------------------------------------------------------------------
+Fri May 17 15:03:08 CEST 2002 - mmj@suse.de
+
+- Added a startup script for the BZFlag server, also changed
+  Bzflag to BZFlag in all descriptions
+
+-------------------------------------------------------------------
+Fri May 10 13:14:21 CEST 2002 - mmj@suse.de
+
+- Introduce lib64 configure option for the platforms using 64 bit
+  libraries.
+
+-------------------------------------------------------------------
+Wed Apr 24 16:59:27 CEST 2002 - schwab@suse.de
+
+- Fix for gcc 3.1.
+
+-------------------------------------------------------------------
+Thu Jan 10 23:53:12 CET 2002 - ro@suse.de
+
+- no subdirs in /usr/games 
+
+-------------------------------------------------------------------
+Wed Jan  2 04:25:49 UTC 2002 - adrian@suse.de
+
+- fix build for mips and arm
+
+-------------------------------------------------------------------
+Fri Dec  7 12:59:05 CET 2001 - grimmer@suse.de
+
+- update to 1.7e4
+
+-------------------------------------------------------------------
+Thu Nov  8 18:38:49 CET 2001 - ro@suse.de
+
+- use mesa-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Wed Jul 11 17:34:14 CEST 2001 - grimmer@suse.de
+
+- update to 1.7e2
+
+-------------------------------------------------------------------
+Mon Jul  9 18:13:07 CEST 2001 - sndirsch@suse.de
+
+- xdevel3 for #neededforbuild not required any more
+
+-------------------------------------------------------------------
+Tue May  8 18:51:08 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Mar 19 17:59:35 CET 2001 - grimmer@suse.de
+
+- Update to version 1.7e1
+- created new patch, added wrapper script as separate source
+  file
+- spec file fixes / cleanups
+- removed hard coded requirement on mesa (RPM can take care of that)
+
+-------------------------------------------------------------------
+Thu Mar 15 18:23:12 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesaglu> to <xf86glu>
+- changed neededforbuild <mesaglu-devel> to <xf86glu-devel>
+
+-------------------------------------------------------------------
+Wed Mar  7 16:58:41 CET 2001 - ro@suse.de
+
+- changed neededforbuild <mesadev> to <mesa-devel>
+
+-------------------------------------------------------------------
+Mon Nov 13 10:53:35 CET 2000 - ro@suse.de
+
+- don't redeclare inet_aton 
+
+-------------------------------------------------------------------
+Tue Aug  1 16:30:56 CEST 2000 - grimmer@suse.de
+
+- replaced #neededforbuild xdevel with xdevel3
+
+-------------------------------------------------------------------
+Mon Jun  5 14:49:45 CEST 2000 - ro@suse.de
+
+- added mesadev to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Apr 14 15:24:56 CEST 2000 - schwab@suse.de
+
+- Use generic linux configuration for ia64.
+
+-------------------------------------------------------------------
+Thu Mar 16 15:49:44 CET 2000 - grimmer@suse.de
+
+- Update to 1.7d.9
+- Added BuildRoot
+- added bzfrelay and bzfls (incl. manpages)
+
+-------------------------------------------------------------------
+Mon Jan 24 17:54:08 CET 2000 - uli@suse.de
+
+- added -D__linux to PC*FLAGS (needed for gcc 2.95)
+
+-------------------------------------------------------------------
+Fri Jan 21 16:33:34 MET 2000 - grimmer@suse.de
+
+- spec file cleanups (added URL, Group and version macro)
+
+-------------------------------------------------------------------
+Fri Jan 21 14:25:44 CET 2000 - ro@suse.de
+
+- use _GNU_SOURCE 
+
+-------------------------------------------------------------------
+Mon Dec 20 20:48:01 CET 1999 - kukuk@suse.de
+
+- fixed for SPARC 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Aug 31 19:47:01 CEST 1999 - uli@suse.de
+
+- fixed for PPC
+
+-------------------------------------------------------------------
+Tue Jun 22 17:28:54 MEST 1999 - grimmer@suse.de
+
+- initial package (Version 1.7c)
+

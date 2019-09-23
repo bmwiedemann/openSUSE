@@ -1,0 +1,10 @@
+<package name="sluice" project="openSUSE:Factory">
+  <title>Rate limiting data piping tool</title>
+  <description>Sluice reads from standard input and write to standard output at a specified
+data rate. This can be useful for benchmarking and exercising I/O streaming at
+desired throughput rates. 
+
+</description>
+  <devel project="server:monitoring" package="sluice"/>
+  <url>http://kernel.ubuntu.com/~cking/sluice/</url>
+</package>

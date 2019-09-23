@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu May 29 04:59:29 UTC 2014 - crrodriguez@opensuse.org
+
+- nfs-acl-tools-xattr.patch For over 10 years the *xattr*
+  functions have been in glibc instead of libattr, use them instead.
+
+-------------------------------------------------------------------
+Mon Mar 24 23:44:01 UTC 2014 - nfbrown@suse.com
+
+- allow-spaces-in-principal-names.patch
+  upstream patch to allow spaces in principal names.
+  (bnc#772896)
+
+-------------------------------------------------------------------
+Sun Jun 16 14:05:31 UTC 2013 - coolo@suse.com
+
+- aclocal 1.13 doesn't have a --acdir option
+
+-------------------------------------------------------------------
+Wed Mar  6 10:58:23 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  GPL matches are for e.g. Makefile. Consolidate to BSD (as per Fedora)
+
+-------------------------------------------------------------------
+Wed Mar  6 06:12:53 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Aug 24 11:53:10 CEST 2011 - dmueller@suse.de
+
+- remove strip to generate debuginfo
+- remove generic INSTALL file
+
+-------------------------------------------------------------------
+Wed Aug 17 06:12:10 UTC 2011 - nfbrown@novell.com
+
+- Initial check-in of nfs4-acl-tools: FATE:312654
+

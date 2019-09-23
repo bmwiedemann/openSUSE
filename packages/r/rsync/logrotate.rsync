@@ -1,0 +1,11 @@
+/var/log/rsyncd.log {
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+1024k
+    notifempty
+    missingok
+    copytruncate
+}
+

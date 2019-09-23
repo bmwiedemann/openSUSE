@@ -1,0 +1,515 @@
+diff --git a/extensions/window-list/classic.css b/extensions/window-list/classic.css
+index f3c44a3..8096d27 100644
+--- a/extensions/window-list/classic.css
++++ b/extensions/window-list/classic.css
+@@ -6,7 +6,7 @@
+     height: 2.25em ;
+   }
+ 
+-  .bottom-panel .window-button > StWidget {
++ .window-button > StWidget {
+     background-gradient-drection: vertical;
+     background-color: #fff;
+     background-gradient-start: #fff;
+@@ -22,25 +22,25 @@
+     text-shadow: 0 0 transparent;
+   }
+ 
+-  .bottom-panel .window-button:hover > StWidget {
++  .window-button:hover > StWidget {
+     background-color: #f9f9f9;
+   }
+ 
+-  .bottom-panel .window-button:active > StWidget,
+-  .bottom-panel .window-button:focus > StWidget {
++  .window-button:active > StWidget,
++  .window-button:focus > StWidget {
+     box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
+   }
+ 
+-  .bottom-panel .window-button.focused > StWidget {
++  .window-button.focused > StWidget {
+     background-color: #ddd;
+     box-shadow: inset 1px 1px 1px rgba(0,0,0,0.5);
+   }
+ 
+-  .bottom-panel .window-button.focused:hover > StWidget {
++  .window-button.focused:hover > StWidget {
+     background-color: #e9e9e9;
+   }
+ 
+-  .bottom-panel .window-button.minimized > StWidget {
++  .window-button.minimized > StWidget {
+     color: #888;
+     box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5);
+   }
+diff --git a/extensions/window-list/extension.js b/extensions/window-list/extension.js
+index e1ea742..9764745 100644
+--- a/extensions/window-list/extension.js
++++ b/extensions/window-list/extension.js
+@@ -21,6 +21,398 @@ const GroupingMode = {
+     ALWAYS: 2
+ };
+ 
++function isSLEClassicMode() {
++    return Main.sessionMode.currentMode == "sle-classic" ? true : false;
++}
++
++// NOTE: call `initializeWindowList` explicitly to finish initialization.
++class PureWinList {
++    constructor(perMonitor, monitor, maxWidthFunc) {
++        // NOTE: in SLE Classic `PureWinList` will NOT use any multiple monitor
++        // support, the following is kept for use in GNOME Classic as we try to
++        // unify code for two sides.
++        this._perMonitor = perMonitor;
++        this._monitor = monitor;
++        // NOTE: callback function given by the employer of this PureWinList.
++        // Since PureWinList can be used various widgets hierarchy, we have to
++        // leave the calculation of max available width to the employer.
++        this._getMaxWindowListWidth = maxWidthFunc;
++
++        let layout = new Clutter.BoxLayout({ homogeneous: true });
++        this.actor = new St.Widget({ style_class: 'window-list',
++                                     reactive: true,
++                                     layout_manager: layout,
++                                     x_align: Clutter.ActorAlign.START,
++                                     x_expand: true,
++                                     y_expand: true });
++
++        this.actor.connect('style-changed', () => {
++            let node = this.actor.get_theme_node();
++            let spacing = node.get_length('spacing');
++            this.actor.layout_manager.spacing = spacing;
++        });
++        this.actor.connect('scroll-event', this._onScrollEvent.bind(this));
++        this.actor.connect('destroy', this._onDestroy.bind(this));
++
++        this._appSystem = Shell.AppSystem.get_default();
++        this._appStateChangedId =
++            this._appSystem.connect('app-state-changed',
++                                    this._onAppStateChanged.bind(this));
++
++        this._settings = ExtensionUtils.getSettings();
++
++        // Grouping
++        this._groupingModeChangedId =
++            this._settings.connect('changed::grouping-mode',
++                                   this._groupingModeChanged.bind(this));
++        this._grouped = undefined;
++        // NOTE: do NOT `_checkGrouping` here
++
++        let workspaceManager = global.workspace_manager;
++
++        // workspace related
++        this._workspaceSignals = new Map();
++        this._nWorkspacesChangedId =
++            workspaceManager.connect('notify::n-workspaces',
++                                     this._onWorkspacesChanged.bind(this));
++        this._onWorkspacesChanged();
++
++        this._switchWorkspaceId =
++            global.window_manager.connect('switch-workspace',
++                                          this._checkGrouping.bind(this));
++
++        // Hide and Show with Overview
++        this._overviewShowingId =
++            Main.overview.connect('showing', () => {
++                this.actor.hide();
++            });
++
++        this._overviewHidingId =
++            Main.overview.connect('hiding', () => {
++                this.actor.show();
++            });
++
++        this._groupingMode = this._settings.get_enum('grouping-mode');
++    }
++
++    _getDynamicWorkspacesSettings() {
++        if (this._workspaceSettings.list_keys().indexOf('dynamic-workspaces') > -1)
++            return this._workspaceSettings;
++        return this._mutterSettings;
++    }
++
++    // NOTE: an API for parent panel to refresh the window list. This is
++    // necessary as window/app buttons require its parents having allocation and
++    // positioning *completed* before being properly allocated and positioned
++    initializeWindowList() {
++        this._groupingModeChanged();
++    }
++
++    // NOTE: support scrolling in window list s.t. scrolling activate window
++    // buttons sequentially.
++    //
++    // *Code is rewritten*.
++    _onScrollEvent(actor, event) {
++        let direction = event.get_scroll_direction();
++        let diff = 0;
++        if (direction === Clutter.ScrollDirection.DOWN)
++            diff = 1;
++        else if (direction === Clutter.ScrollDirection.UP)
++            diff = -1;
++        else
++            return;
++
++        let buttons = this.actor.get_children().map(function(actor) {
++            return actor._delegate;
++        });
++        let totalBtnNum = buttons.length;
++
++        let activeBtnIdx = 0
++        for (let i = 0; i < totalBtnNum; i++) {
++            if (buttons[i].active) {
++                activeBtnIdx = i
++                break;
++            }
++        }
++
++        // NOTE: bound by `0` and `totalBtnNum - 1`, no wrapping for
++        // scrolling.
++        activeBtnIdx = activeBtnIdx + diff;
++        let noScrollActionNeeded = ( (activeBtnIdx < 0) || (activeBtnIdx >= totalBtnNum) );
++        if (noScrollActionNeeded)
++            return;
++
++        // TODO: no need to call `deactivate` for old `active button` ?
++        buttons[activeBtnIdx].activate();
++    }
++
++    _onAppStateChanged(appSys, app) {
++        if (!this._grouped)
++            return;
++
++        if (app.state == Shell.AppState.RUNNING)
++            this._addApp(app);
++        else if (app.state == Shell.AppState.STOPPED)
++            this._removeApp(app);
++    }
++
++    _addApp(app) {
++        let button = new AppButton(app, this._perMonitor, this._monitor.index);
++        this.actor.layout_manager.pack(button.actor,
++                                       true, true, true,
++                                       Clutter.BoxAlignment.START,
++                                       Clutter.BoxAlignment.START)
++    }
++
++    _removeApp(app) {
++        let children = this.actor.get_children();
++        for (let i = 0; i < children.length; i++) {
++            if (children[i]._delegate.app === app) {
++                children[i].destroy();
++                return;
++            }
++        }
++    }
++
++    _groupingModeChanged() {
++        this._groupingMode = this._settings.get_enum('grouping-mode');
++
++        if (this._groupingMode == GroupingMode.AUTO) {
++            this._checkGrouping();
++        } else {
++            this._grouped = ( this._groupingMode === GroupingMode.ALWAYS );
++            this._populateWindowList();
++        }
++    }
++
++    _checkGrouping() {
++        if (this._groupingMode != GroupingMode.AUTO)
++            return;
++
++        // TODO `_getMaxWindowListWidth` is known to depend on parent
++        // conditions. However the following call seems to get the right parent
++        // value. So an option to avoid timing issue is to use the following
++        // callback.
++        //
++        // this.actor.connect('allocation-changed', () => {
++        //     log('parent width: ' + this.actor.get_parent().width);
++        // });
++        //
++        // The legitimacy can be explained in the (guessed) algorithm of
++        // allocation: Bubble up then propagate down (like DOM Events?). In
++        // details: changes that would alter the geometric properties of a
++        // widget would trigger a re-allocation to its parent AFTER some initial
++        // allocation calculation of its own (for queries like
++        // `_get_preferred_width` work for its parents). The `re-allocation`
++        // would bubble up the widget hierarchy till one widget stops it (e.g. a
++        // widget that has fixed size and absolute positioning and thus it does
++        // not need to send re-allocation request up.). Then the re-allocation
++        // signal is sent down to its origin. (downward propagation is necessary
++        // as much of the positioning and allocation depends on one's parent)
++        let maxWidth = this._getMaxWindowListWidth();
++        let natWidth = this._getPreferredUngroupedWindowListWidth();
++
++        let grouped = (maxWidth < natWidth);
++        if (this._grouped !== grouped) {
++            this._grouped = grouped;
++            this._populateWindowList();
++        }
++    }
++
++    _populateWindowList() {
++        this.actor.destroy_all_children();
++
++        if (!this._grouped) {
++            let windows = global.get_window_actors().sort(
++                function(w1, w2) {
++                    return w1.metaWindow.get_stable_sequence() -
++                           w2.metaWindow.get_stable_sequence();
++                });
++            for (let i = 0; i < windows.length; i++)
++                this._onWindowAdded(null, windows[i].metaWindow);
++        } else {
++            let apps = this._appSystem.get_running().sort(
++                function(a1, a2) {
++                    return _getAppStableSequence(a1) -
++                           _getAppStableSequence(a2);
++                });
++            for (let i = 0; i < apps.length; i++)
++                this._addApp(apps[i]);
++        }
++    }
++
++    // NOTE the `ws` params in the following two are not used (necessarily be
++    // here as the event handler Interface dictates).
++    _onWindowAdded(ws, win) {
++        if (win.skip_taskbar)
++            return;
++
++        if (!this._grouped)
++            this._checkGrouping();
++
++        if (this._grouped)
++            return;
++
++        let children = this.actor.get_children();
++        for (let i = 0; i < children.length; i++) {
++            if (children[i]._delegate.metaWindow == win)
++                return;
++        }
++
++        let button = new WindowButton(win, this._perMonitor, this._monitor.index);
++        this.actor.layout_manager.pack(button.actor,
++                                       true, true, true,
++                                       Clutter.BoxAlignment.START,
++                                       Clutter.BoxAlignment.START);
++    }
++
++    _onWindowRemoved(ws, win) {
++        if (this._grouped)
++            this._checkGrouping();
++
++        // NOTE: if it's still grouped after `checking`, do nothing, window
++        // removal is managed by `AppButton` anyway.
++        if (this._grouped)
++            return;
++
++        if (win.get_compositor_private())
++            return; // not actually removed, just moved to another workspace
++
++        let children = this.actor.get_children();
++        for (let i = 0; i < children.length; i++) {
++            if (children[i]._delegate.metaWindow == win) {
++                children[i].destroy();
++                return;
++            }
++        }
++    }
++
++    _getPreferredUngroupedWindowListWidth() {
++        if (this.actor.get_n_children() == 0)
++            return this.actor.get_preferred_width(-1)[1];
++
++        let children = this.actor.get_children();
++        let [, childWidth] = children[0].get_preferred_width(-1);
++        let spacing = this.actor.layout_manager.spacing;
++
++        let workspace = global.workspace_manager.get_active_workspace();
++        let windows = global.display.get_tab_list(Meta.TabList.NORMAL, workspace);
++        if (this._perMonitor)
++            windows = windows.filter(w => w.get_monitor() == this._monitor.index);
++        let nWindows = windows.length;
++        if (nWindows == 0)
++            return this.actor.get_preferred_width(-1)[1];
++
++        return nWindows * childWidth + (nWindows - 1) * spacing;
++    }
++
++    _onWorkspacesChanged() {
++        let workspaceManager = global.workspace_manager;
++        let numWorkspaces = workspaceManager.n_workspaces;
++        for (let i = 0; i < numWorkspaces; i++) {
++            let workspace = workspaceManager.get_workspace_by_index(i);
++            if (this._workspaceSignals.has(workspace))
++                continue;
++
++            let signals = { windowAddedId: 0, windowRemovedId: 0 };
++            signals._windowAddedId =
++                workspace.connect_after('window-added',
++                                        this._onWindowAdded.bind(this));
++            signals._windowRemovedId =
++                workspace.connect('window-removed',
++                                  this._onWindowRemoved.bind(this));
++            this._workspaceSignals.set(workspace, signals);
++        }
++    }
++
++    _disconnectWorkspaceSignals() {
++        let numWorkspaces = global.workspace_manager.n_workspaces;
++        for (let i = 0; i < numWorkspaces; i++) {
++            let workspace = global.workspace_manager.get_workspace_by_index(i);
++            let signals = this._workspaceSignals.get(workspace);
++            this._workspaceSignals.delete(workspace);
++            workspace.disconnect(signals._windowAddedId);
++            workspace.disconnect(signals._windowRemovedId);
++        }
++    }
++
++    _onDestroy() {
++        Main.overview.disconnect(this._overviewHidingId);
++        this._overviewHidingId = 0;
++        Main.overview.disconnect(this._overviewShowingId);
++        this._overviewShowingId = 0;
++
++        global.workspace_manager.disconnect(this._nWorkspacesChangedId);
++        this._nWorkspacesChangedId = 0;
++        global.window_manager.disconnect(this._switchWorkspaceId);
++        this._switchWorkspaceId = 0;
++        this._disconnectWorkspaceSignals();
++
++        this._settings.disconnect(this._groupingModeChangedId);
++        this._groupingModeChangedId = 0;
++
++        this._appSystem.disconnect(this._appStateChangedId);
++        this._appStateChangedId = 0;
++
++        let windows = global.get_window_actors();
++        for (let i = 0; i < windows.length; i++)
++            windows[i].metaWindow.set_icon_geometry(null);
++    }
++};
++
++class SCExtension {
++    constructor() {
++        this._pureWinList = null;
++    }
++
++    enable() {
++        // NOTE For SLE Classic, a window list is shown on Main panel ONLY
++        let showOnAllMonitors = false;
++        // NOTE Use a guessed value passed to `PureWinList` as `checkGrouping`
++        // is run at a time the allocation of the panel boxes might not complete
++        // yet (and thus we get almost random width value). The other options
++        // are to duplicate the centerbox width calculation or change the order
++        // of grouping check code (way more complicated).
++        //
++        // This value is guessed *conservatively*. Further this value is used by
++        // AUTO grouping only.
++        //
++        // NOTE: no Promise is available
++        let panelCenterBoxWidth = Main.panel.actor.width * 0.8;
++
++        this._pureWinList = new PureWinList(showOnAllMonitors,
++                                            Main.layoutManager.primaryMonitor,
++                                            () => panelCenterBoxWidth );
++        Main.panel._centerBox.add(this._pureWinList.actor, {expand: true});
++        let _winListRefreshId = Main.panel._centerBox.connect(
++            'allocation-changed',
++            () => {
++                if (this._pureWinList == null)
++                    return;
++
++                this._pureWinList.initializeWindowList();
++                Main.panel._centerBox.disconnect(_winListRefreshId);
++            });
++        // NOTE: IMO, no need to rebuild `_pureWinList` when monitors changed.
++        // No need for `showOnAllMonitors` change either even this option
++        // changes.
++    }
++
++    disable() {
++        if (!this._pureWinList)
++            return;
++
++        this._pureWinList.actor.hide();
++        this._pureWinList.actor.destroy();
++
++        this._pureWinList = null;
++    }
++
++    // NOTE: this function is used for multiple window list situations, invalid for SCExtension case, let's return false.
++    someWindowListContains(actor) {
++        return false;
++    }
++};
+ 
+ function _minimizeOrActivateWindow(window) {
+     let focusWindow = global.display.focus_window;
+@@ -644,8 +1036,8 @@ class AppButton extends BaseButton {
+ }
+ 
+ 
+-let WorkspaceIndicator = GObject.registerClass(
+-class WorkspaceIndicator extends PanelMenu.Button {
++let WorkspaceIndicatorWList = GObject.registerClass(
++class WorkspaceIndicatorWList extends PanelMenu.Button {
+     _init() {
+         super._init(0.0, _('Workspace Indicator'), true);
+         this.setMenu(new PopupMenu.PopupMenu(this, 0.0, St.Side.BOTTOM));
+@@ -808,7 +1200,7 @@ class WindowList {
+         let indicatorsBox = new St.BoxLayout({ x_align: Clutter.ActorAlign.END });
+         box.add(indicatorsBox);
+ 
+-        this._workspaceIndicator = new WorkspaceIndicator();
++        this._workspaceIndicator = new WorkspaceIndicatorWList();
+         indicatorsBox.add(this._workspaceIndicator.container, { expand: false, y_fill: true });
+ 
+         this._mutterSettings = new Gio.Settings({ schema_id: 'org.gnome.mutter' });
+@@ -1259,5 +1651,10 @@ class Extension {
+ }
+ 
+ function init() {
+-    return new Extension();
++    if ( isSLEClassicMode() ){
++        return new SCExtension();
++    }
++    else {
++        return new Extension();
++    }
+ }
+diff --git a/extensions/window-list/stylesheet.css b/extensions/window-list/stylesheet.css
+index f5285cb..c207078 100644
+--- a/extensions/window-list/stylesheet.css
++++ b/extensions/window-list/stylesheet.css
+@@ -79,6 +79,10 @@
+   border: 1px solid #cccccc;
+ }
+ 
++.bottom-panel-menu {
++  -boxpointer-gap: 4px;
++}
++
+ .notification {
+   font-weight: normal;
+ }
+diff --git a/data/gnome-classic.scss b/data/gnome-classic.scss
+index 9e23506..be56527 100644
+--- a/data/gnome-classic.scss
++++ b/data/gnome-classic.scss
+@@ -103,3 +103,15 @@ $variant: 'light';
+     &:hover, &focus { background-color: darken($bg_color,2%); }
+   }
+ }
++
++.popup-menu {
++  &.panel-menu {
++    -boxpointer-gap: 4px;
++    /* TODO was 1.75em, no idea of its use  */
++    /* NOTE: the following creates an ugly gap between menu and its source actor
++       when the PanelMenu's source actor is at the bottom. Preferrably for
++       bottom menu, `margin-top` might be a better choice. However, since we
++       have no idea about its use so reset to 0 for now. */
++    margin-bottom: 0em;
++  }
++}

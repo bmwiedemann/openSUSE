@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Mon Aug 26 04:44:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream release 4.1.1
+  * Implemented IRCv3.2 enhanced capability negotiation
+    ("CAP LS 302").
+  * Implemented support for receiving and sending IRCv3 message
+    tags.
+  * Implemented IRCv3.2 capabilities: account-tag, echo-message,
+    invite-notify, sasl, server-time.
+  * Feature from ircd-seven: Implement a channel mode that
+    disallows kicking IRC operators (+M).
+  * DNS, ident, and blacklist lookups have been moved to a
+    dedicated daemon known as authd. Some cosmetic changes to
+    blacklist statistics and rejection notices have resulted.
+  * Support for WebSocket has been added.
+  * Added the ability to strip color codes from topics
+    unconditionally.
+  * SCTP is now supported for server and user connections.
+- Remove charybdis-ratbox.diff, charybdis-werror.diff (no longer
+  needed), charybdis-repro.diff (solved differently upstream).
+
+-------------------------------------------------------------------
+Tue Jan 10 12:49:32 UTC 2017 - jengelh@inai.de
+
+- Add charybdis-repro.diff, throw out buildtime-dependent
+  constructs
+
+-------------------------------------------------------------------
+Sun Nov 20 21:09:30 UTC 2016 - jengelh@inai.de
+
+- Update description
+- Abort installation if user/group cannot be created
+
+-------------------------------------------------------------------
+Wed Sep 21 07:38:22 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.5.3
+* Bug fix for CVE-2016-7143. This bug allows users to spoof CertFP
+  authentication using the SASL EXTERNAL mechanism.
+
+-------------------------------------------------------------------
+Sun Jun 19 18:51:42 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.5.2
+* Allow IRCv3.1 STARTTLS to work with other SSL backends besides
+  OpenSSL.
+* Fix an edge case regression involving channel ban cache that was
+  introduced in 3.5.0.
+* Ensure ssld does not crash when DH parameters are not provided.
+* mbedtls TLS backend improvements from charybdis 4 development
+  branch:
+* add support for CertFP
+* provide personalization data for the PRNG
+* openssl TLS backend improvements from charybdis 4:
+* do not manually initialise openssl when running with OpenSSL
+  1.1.0 or later
+* support ECDHE on more than one curve on OpenSSL 1.0.2 and above
+* fix DH parameters memory leak
+* free the old TLS context before constructing a new one
+
+-------------------------------------------------------------------
+Sat May  7 22:45:18 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.5.1
+* Fix propagation of ip_cloaking hostname changes (only when
+  setting or unsetting the umode after connection).
+* Fix a remote-triggerable crash triggered by the CAPAB parsing
+  code.
+* As per the TS6 spec, require QS and ENCAP capabilities.
+* Require EX and IE capabilities (+e and +I cmodes).
+* Check that UIDs start with the server's SID.
+* Allow mode queries on mlocked modes. In particular, allow
+  `/mode #channel f` to query the forward channel even if
+  +f is mlocked.
+* Add starttls as per ircv3.
+* Reject nicks with '~' in them, rather than truncating at the '~'.
+* Do not allow SASL authentication when the configured SASL agent
+  is unavailable.
+* Implement IRCv3.2 capabilities: cap-notify, chghost,
+  userhost-in-names
+* Implement the $&, $| and $m extban types:
+  * $& combines 1 or more child extbans as an AND expression
+  * $| combines 1 or more child extbans as an OR expression
+  * $m provides normal hostmask matching as an extban for the above
+* Display an operator's privilege set in WHOIS.
+* The $o extban now matches against privilege set names as well as
+  individual privileges. Privilege set names are preferred over
+  individual privileges.
+
+-------------------------------------------------------------------
+Mon Oct  6 09:19:19 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.4.2
+* A new extban, $z, has been added for ssl users (extb_ssl)
+* Remove TS5 support
+* Replace oper flags by privilege sets (privsets)
+* Add cmode +C (no CTCP) from ircd-seven.
+* Add bandb from ircd-ratbox, which stores permanent
+  [DKX]lines/resvs in an sqlite database instead of a flatfile
+- Add charybdis-ratbox.diff, charybdis-werror.diff
+
+-------------------------------------------------------------------
+Sun Oct 28 10:49:20 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Feed through format_spec_file service
+- Add systemd service file
+
+-------------------------------------------------------------------
+Mon Oct  1 01:14:01 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.2.0
+- also build the unsupported modules
+
+-------------------------------------------------------------------
+Sat Apr 14 21:48:45 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.1.3
+
+-------------------------------------------------------------------
+Sat Apr 14 21:42:45 CEST 2007 - mrueckert@suse.de
+
+- fix build requires for factory
+- add missing %dir entry
+
+-------------------------------------------------------------------
+Mon Nov 27 06:16:11 CET 2006 - mrueckert@suse.de
+
+- use assembler stuff only on ix86
+
+-------------------------------------------------------------------
+Mon Nov 27 05:49:28 CET 2006 - mrueckert@suse.de
+
+- initial package.
+

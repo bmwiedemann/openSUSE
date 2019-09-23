@@ -1,0 +1,41 @@
+Subject: [PATCH] [BZ 164881] hmcdrvfs: fix parsing of link count >= 1000
+From: Gerald Schaefer <gerald.schaefer@de.ibm.com>
+
+Description:  hmcdrvfs: fix parsing of link count >= 1000
+Symptom:      hmcdrvfs will ignore files with a link count >= 1000
+Problem:      The parsing code relies on having spaces between the different
+              fields in its input data. When a file has a link count >= 1000,
+              there will be no space, and the "link count" field will be
+              placed directly after the previous "mode" field. This will
+              confuse the parser, and all such files will not be accesible.
+Solution:     The "mode" field will never contain digits, so the parser can
+              recognize the "link count" field by the presence of a digit.
+Reproduction: Use a medium containing files with link count >= 1000 in
+              hmcdrvfs, and try to access/list them.
+Upstream-ID:  -
+Problem-ID:   164881
+
+Signed-off-by: Gerald Schaefer <gerald.schaefer@de.ibm.com>
+---
+ hmcdrvfs/hmcdrvfs.c |    9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+--- a/hmcdrvfs/hmcdrvfs.c
++++ b/hmcdrvfs/hmcdrvfs.c
+@@ -821,10 +821,13 @@ static char *hmcdrv_parse_line(char *lin
+ 		if ((*line != '\0') && (*line != '\n')) {
+ 			field = hmcdrv_parse_ntoken(field, line, &attr);
+ 
+-			while ((*line != '\0') &&
+-			       (*line != '\n') &&
+-			       !isspace(*line))
++			while ((*line != '\0') && (*line != '\n')) {
++				if (isspace(*line))
++					break;
++				if (field == 1 && isdigit(*line))
++					break;
+ 				++line; /* search end of field */
++			}
+ 		}
+ 	} /* while */
+ 

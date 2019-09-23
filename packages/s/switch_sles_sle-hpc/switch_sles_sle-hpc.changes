@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Fri Apr  5 20:46:40 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Change title in README.SUSE.
+
+-------------------------------------------------------------------
+Fri Mar  8 09:37:19 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix case where base product is not found because zypper cache hasn't
+  been updated: Remove zypper cookie instead of touching /etc/products.d
+  (bsc#1128494).
+
+-------------------------------------------------------------------
+Thu Mar  7 19:49:58 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix script name switch_to_sle-hpc -> switch_sles_sle_hpc keep old name
+  as link (bsc#1128381).
+
+-------------------------------------------------------------------
+Thu Sep 13 10:40:07 UTC 2018 - eich@suse.com
+
+- Make script work on non-x86_64 platforms: remove hard-coded
+  arch left over from testing.
+
+-------------------------------------------------------------------
+Tue Aug 28 15:01:06 UTC 2018 - eich@suse.com
+
+- Make script work with SLES-12-SP2 as well.
+
+-------------------------------------------------------------------
+Thu Aug 23 07:54:58 UTC 2018 - eich@suse.com
+
+- Improve Error handling - make sure modules & extensions are restored.
+- Improve messaging.
+
+-------------------------------------------------------------------
+Thu Aug 16 10:47:57 UTC 2018 - eich@suse.com
+
+- Fix name of script file
+- Add test for /etc/products.d before 'touching'
+- Fix formatting of 'read' line adding a '-'.
+
+-------------------------------------------------------------------
+Fri Aug 10 10:46:32 UTC 2018 - eich@suse.com
+
+- Create switch_sles-sle-hpc:
+  A tool to convert a SLES 12 product to the SLE-HPC 12 product
+  of the same service pack level (FATE#326567).
+

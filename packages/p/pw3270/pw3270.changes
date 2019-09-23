@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Thu Sep 14 00:28:23 UTC 2017 - jengelh@inai.de
+
+- Put libpw3270 into its own package (shared library guideline).
+- Drop require on /usr/bin/openssl, this is unusual for a library
+  to request.
+- %configure already sets CFLAGS,CXXFLAGS, do not set it again.
+  Replace old RPM variables. Remove redundant %clean section.
+  Do not run fdupes across hardlink boundaries.
+- Fix one RPM category. Trim redundant words from description.
+
+-------------------------------------------------------------------
+Wed Sep 13 13:51:34 UTC 2017 - erico.mendonca@suse.com
+
+- fix_actions.patch: patch is no longer necessary.
+- keypad_update.patch: patch is no longer necessary.
+- mutex_include.patch: patch is no longer necessary.
+- gtk2-fixes.patch: patch is no longer necessary.
+- file_chooser.patch: patch is no longer necessary.
+- fix_oorexx_charset.patch: patch is no longer necessary.
+
+-------------------------------------------------------------------
+Wed Sep 13 12:25:12 UTC 2017 - perry.werneck@gmail.com
+
+- Updating to the latest git level, closing package for distribution.
+- Java, Rexx, PHP, Mono and other extensions for scripting are now separated packages.
+
+-------------------------------------------------------------------
+Thu Jan 26 12:37:48 UTC 2017 - perry.werneck@gmail.com
+
+- Fixing .deb builds. 
+
+-------------------------------------------------------------------
+Thu Jan 19 16:36:08 UTC 2017 - perry.werneck@gmail.com
+
+- Removing unused sources, refactoring Makefiles, build & installation
+
+-------------------------------------------------------------------
+Tue Dec 27 16:00:33 UTC 2016 - perry.werneck@gmail.com
+
+- Updating deb dependencies.
+
+-------------------------------------------------------------------
+Fri Nov  4 17:36:54 UTC 2016 - perry.werneck@gmail.com
+
+- Fixing PHP5 requires. 
+
+-------------------------------------------------------------------
+Fri Oct 21 19:34:11 UTC 2016 - perry.werneck@gmail.com
+
+- Fixing script file chooser 
+- added patches:    fix_oorexx_charset.patch
+                    mutex_include.patch
+                    keypad_update.patch
+                    file_chooser.patch
+                    fix_actions.patch
+                    gtk2-fixes.patch
+
+-------------------------------------------------------------------
+Fri Oct 21 19:05:20 UTC 2016 - perry.werneck@gmail.com
+
+- Fixing charset problem on ooRexx plugin
+
+-------------------------------------------------------------------
+Fri Oct 21 18:38:28 UTC 2016 - perry.werneck@gmail.com
+
+- Fixing backport for bug 998842 (https://bugzilla.suse.com/show_bug.cgi?id=998842)
+    on OpenSUSE 13.2
+
+-------------------------------------------------------------------
+Thu Oct 20 11:13:41 UTC 2016 - perry.werneck@gmail.com
+
+- Adding PHP5 support on Debian builds 
+
+-------------------------------------------------------------------
+Wed Oct 19 17:21:01 UTC 2016 - perry.werneck@gmail.com
+
+- Fixing gtk2 builds.
+
+-------------------------------------------------------------------
+Wed Oct 19 11:01:27 UTC 2016 - perry.werneck@gmail.com
+
+- Fixing mutex include on latest GCC
+- Backporting fix for bug 998842 (https://bugzilla.suse.com/show_bug.cgi?id=998842)
+- ppc64_javaarch.patch was applyed to upstream, removing
+
+-------------------------------------------------------------------
+Mon Mar 21 12:20:12 UTC 2016 - dvaleev@suse.com
+
+- Fix javaarch dir for POWER platform
+  ppc64_javaarch.patch 
+
+-------------------------------------------------------------------
+Thu Oct  9 20:02:30 UTC 2014 - perry.werneck@gmail.com
+
+- Updating to latest svn release
+- Fixing ooRexx plugin bugs introduced by the latest ooRexx version.
+
+-------------------------------------------------------------------
+Fri Dec 14 10:02:30 UTC 2012 - perry.werneck@gmail.com
+
+- Updating to latest svn release for fixes on file transfer dialogs. 
+
+-------------------------------------------------------------------
+Sun Jun 17 21:25:44 UTC 2012 - emendonca@suse.com
+
+- Fixing up warnings to comply to build service's guidelines.
+
+

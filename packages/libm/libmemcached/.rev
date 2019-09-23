@@ -1,0 +1,276 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdf21c744d378bfe75a3444f832e82eb</srcmd5>
+    <version>0.30</version>
+    <time>1296846391</time>
+    <user>darix</user>
+    <comment>Accepted submit request 59857 from user schubi2
+</comment>
+    <requestid>59857</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ffa8adb52e37e4be3923e011c9b23b14</srcmd5>
+    <version>0.30</version>
+    <time>1296846397</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 59857
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ffa8adb52e37e4be3923e011c9b23b14</srcmd5>
+    <version>0.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>d5f9ca09c17c3ad9b7ec7b4de5171e8f</srcmd5>
+    <version>0.30</version>
+    <time>1318940394</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/unwanted tags/sections (cf. specfile guidelines)
+- Add missing Requires:libmemcachedutil0 to -devel subpackage
+- Do parallel build with %_smp_mflags (forwarded request 87586 from jengelh)</comment>
+    <requestid>88107</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>d5f9ca09c17c3ad9b7ec7b4de5171e8f</srcmd5>
+    <version>0.30</version>
+    <time>1319182110</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7dc903057de2f518eede8ca3d7f6fd9b</srcmd5>
+    <version>0.30</version>
+    <time>1323792702</time>
+    <user>coolo</user>
+    <comment>- &quot;BSD&quot; is not a valid spdx.org license (forwarded request 95964 from coolo)</comment>
+    <requestid>95971</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>317dae3bdba65f84187bf1229864a685</srcmd5>
+    <version>0.30</version>
+    <time>1327674113</time>
+    <user>coolo</user>
+    <comment>add missing Group to subpkg (forwarded request 101568 from computersalat)</comment>
+    <requestid>101618</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>139a46670145d5464a44c89c2405ac0e</srcmd5>
+    <version>0.30</version>
+    <time>1329242552</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103986</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9ce14378b594548c85008f47894f951</srcmd5>
+    <version>1.0.4</version>
+    <time>1329750866</time>
+    <user>coolo</user>
+    <comment>update to 1.0.4 (forwarded request 105765 from termim)</comment>
+    <requestid>105782</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c8101c4efc2aaf3efd182068631420ef</srcmd5>
+    <version>1.0.7</version>
+    <time>1336423666</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.7
+  * Add API call for exist calls. 
+  * Update all license files to be BSD bnc#757326
+
+- update to 1.0.6
+  * Fixes for gcc 4.7, lp:961812
+  * Fix for restart issue that happens under testing.
+  * Fix for lp:962815.
+  * Support for transparent AES encryption.
+- changes from 1.0.5
+  * Fixes for OSX.
+  * Version is now parsed directly in the parser, which makes buffered 
+    operations now work with it..
+  * memstat has been extended so that it can be used to find the version 
+    of the server.
+  * Update documentation.
+  * Fixes for compile issues on Debian and Ubuntu</comment>
+    <requestid>116001</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c8101c4efc2aaf3efd182068631420ef</srcmd5>
+    <version>1.0.7</version>
+    <time>1340183604</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a6d71c58fe027f9f09978404c72e1fd0</srcmd5>
+    <version>1.0.10</version>
+    <time>1345118878</time>
+    <user>namtrac</user>
+    <comment>- update to 1.0.10
+  * --disable-assert has been removed from configure, and
+    --enable-assert has been added in its place.
+  * Compiling fixes for Clang on OSX Mountain Lion.
+ - 1.0.9 Wed Jul  4 22:46:19 EDT 2012
+  * Faster close on socket.
+  * Instance allocation is now seperated from server interface. This
+    should allow for a better preservation of ABI compliance from now
+    on.
+  * Fix close on exec bug.
+  * Numerous other bug fixes.
+ - 1.0.8 Tue May 22 15:06:04 EDT 2012
+  * Added support for setting options via ENV variable LIBMEMCACHED
+  * Fix corner case on last used result.</comment>
+    <requestid>130843</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f9ec15d1eb594a122ba24e169e0e4504</srcmd5>
+    <version>1.0.11</version>
+    <time>1349591263</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.11
+ * Removed custom version of memcached.
+ * Updated hardening rules.
+ * Fixed a case where the return error from a socket connection differred from that of a TCP/IP socket. (forwarded request 137209 from coolo)</comment>
+    <requestid>137217</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a683d15b0c742bad3998f18dc55663ab</srcmd5>
+    <version>1.0.11</version>
+    <time>1353413289</time>
+    <user>coolo</user>
+    <comment>- fix defined but not used variable error on bigendian machines
+  (libmemcached-bigendian.patch) (forwarded request 141938 from k0da)</comment>
+    <requestid>141944</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e10d2d822c53d31ab8eb3eeff669cf95</srcmd5>
+    <version>1.0.11</version>
+    <time>1355911654</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143920 from sbrabec)</comment>
+    <requestid>145733</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>e10d2d822c53d31ab8eb3eeff669cf95</srcmd5>
+    <version>1.0.11</version>
+    <time>1359109302</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>61329e79c4db5200d0c0718f4250fd01</srcmd5>
+    <version>1.0.16</version>
+    <time>1360059364</time>
+    <user>coolo</user>
+    <comment>update to 1.0.16 (forwarded request 151193 from computersalat)</comment>
+    <requestid>151200</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>6a235a8fc9f0ff1aa5f352cb6b95b34f</srcmd5>
+    <version>1.0.16</version>
+    <time>1366358308</time>
+    <user>coolo</user>
+    <comment>More fixes for sasl linking... with this, collectd finally builds (forwarded request 172385 from dimstar)</comment>
+    <requestid>172388</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>6a235a8fc9f0ff1aa5f352cb6b95b34f</srcmd5>
+    <version>1.0.16</version>
+    <time>1379663003</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>57bacbf160ce37327542c8959f0b960f</srcmd5>
+    <version>1.0.17</version>
+    <time>1389606810</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213614</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>39d8451f651da7190e6b6bc826c4f6bb</srcmd5>
+    <version>1.0.18</version>
+    <time>1396452245</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.18:
+  + MEMCACHED_BEHAVIOR_RETRY_TIMEOUT can now be set to zero.
+  + Numerous bug fixes.
+- remove upstreamed patch libmemcached-with-memcached.patch
+- remove outdated dist version dependencies, (build)require the 
+  needed automake &gt;= 1.13 instead (forwarded request 228318 from lrupp)</comment>
+    <requestid>228397</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>39d8451f651da7190e6b6bc826c4f6bb</srcmd5>
+    <version>1.0.18</version>
+    <time>1409301618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>786469e4fa88874c54c6422b5c0a07ea</srcmd5>
+    <version>1.0.18</version>
+    <time>1419249257</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265781</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>c6ea566ad6591c2e845ab57b12d52a7d</srcmd5>
+    <version>1.0.18</version>
+    <time>1424779374</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287384</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>ecc781ccc7ef8b0b474cb64d0073b2f9</srcmd5>
+    <version>1.0.18</version>
+    <time>1463498104</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395014</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>9a46c2ee0e57527941af133a2a9478b2</srcmd5>
+    <version>1.0.18</version>
+    <time>1498485180</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505860</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>5dbf0cad0f9f8986c0c69521b827d084</srcmd5>
+    <version>1.0.18</version>
+    <time>1561405656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709061</requestid>
+  </revision>
+</revisionlist>

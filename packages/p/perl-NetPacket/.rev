@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92f4d50390226e0abcf4f4f2a3b455ca</srcmd5>
+    <version>1.1.1</version>
+    <time>1308140267</time>
+    <user>saschpe</user>
+    <comment>Perl Module from cpan used encode/decode network packets.  Useful for sniffers etc.
+
+Provides the below perl sub-modules
+perl(NetPacket) = 1.1.1 perl(NetPacket::ARP) = 1.1.1 perl(NetPacket::Ethernet) = 1.1.1 perl(NetPacket::ICMP) = 1.1.1 perl(NetPacket::IGMP) = 1.1.1 perl(NetPacket::IP) = 1.1.1 perl(NetPacket::TCP) = 1.1.1 perl(NetPacket::UDP) </comment>
+    <requestid>73382</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2cf11a853b87f78b1c0afcf847575540</srcmd5>
+    <version>1.1.1</version>
+    <time>1308140280</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73382
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>057a5d799f47578e45894ebb8260d5c5</srcmd5>
+    <version>1.2.0</version>
+    <time>1316447845</time>
+    <user>lrupp</user>
+    <comment>Update license in specfile to Artistic 2.0 as per LICENSE file (forwarded request 82581 from gregfreemyer)</comment>
+    <requestid>82582</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>057a5d799f47578e45894ebb8260d5c5</srcmd5>
+    <version>1.2.0</version>
+    <time>1319182294</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>571a3a29262a5fbfc90f024b5dca074c</srcmd5>
+    <version>1.2.0</version>
+    <time>1323193518</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>571a3a29262a5fbfc90f024b5dca074c</srcmd5>
+    <version>1.2.0</version>
+    <time>1340183895</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>571a3a29262a5fbfc90f024b5dca074c</srcmd5>
+    <version>1.2.0</version>
+    <time>1359109767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e21e76e1cf4ca8228ea4c652da0a3ebd</srcmd5>
+    <version>1.4.0</version>
+    <time>1377630256</time>
+    <user>coolo</user>
+    <comment>update to v1.4.0, no exciting new features/bug fixes. (forwarded request 196491 from gregfreemyer)</comment>
+    <requestid>196534</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5e4397bbf954d232ddb3c4fc8b9784da</srcmd5>
+    <version>1.4.1</version>
+    <time>1378633258</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to v1.4.1
+One potential bugfix (forwarded request 197795 from gregfreemyer)</comment>
+    <requestid>197796</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5e4397bbf954d232ddb3c4fc8b9784da</srcmd5>
+    <version>1.4.1</version>
+    <time>1379663798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>7d7226fbdce8f979dc0927b8fdb1f36b</srcmd5>
+    <version>1.4.1</version>
+    <time>1380895230</time>
+    <user>scarabeus_factory</user>
+    <comment>- USB is little endian, so we need to convert it on BigEndian
+  platforms (perl-NetPacket-bigendian.patch)
+  upstream commit fc0563f746c44387d77e70792628fe2a03628751 (forwarded request 202119 from k0da)</comment>
+    <requestid>202123</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f2536e9eed74e6d9d09c0e46670a71a6</srcmd5>
+    <version>1.4.1</version>
+    <time>1382351528</time>
+    <user>scarabeus_factory</user>
+    <comment>- Extend last change for 32-bit big endian (forwarded request 203766 from Andreas_Schwab)</comment>
+    <requestid>204042</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>f2536e9eed74e6d9d09c0e46670a71a6</srcmd5>
+    <version>1.4.1</version>
+    <time>1409302435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b573078b4d66dd22f112f7d1da3b871</srcmd5>
+    <version>1.6.0</version>
+    <time>1429346351</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297181</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f04a9a21af8a191a7ebcec48df4100bb</srcmd5>
+    <version>1.7.0</version>
+    <time>1546535343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662486</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>820088c0388af307e4e5cf3c542563da</srcmd5>
+    <version>1.7.1</version>
+    <time>1560338260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709123</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ba4459e3d9e4aa779944d7f2ea61be4f</srcmd5>
+    <version>1.7.2</version>
+    <time>1563808730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717518</requestid>
+  </revision>
+</revisionlist>

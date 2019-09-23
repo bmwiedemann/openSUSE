@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# /etc/cron.daily/leafnode
+#
+# Copyright (c) 2001-2002, SuSE Linux AG, Nuernberg. Germany
+#
+# remove old news threads from the leafnode cache according to
+# the value of the "expire" variable in /etc/leafnode/config 
+#
+# Remove the "-v" parameter, if you want texpire to run quietly in
+# the background
+
+if [ -f /var/spool/news/leaf.node/groupinfo ] ; then
+	test -x /usr/sbin/texpire && su - news -c "/usr/sbin/texpire -v"
+else
+	exit 0
+fi

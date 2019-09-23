@@ -1,0 +1,5 @@
+<package name="emacs-apel" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N" package="emacs-apel"/>
+</package>

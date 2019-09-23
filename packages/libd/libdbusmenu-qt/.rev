@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3066d971316cc27ef78587c828cbf8f5</srcmd5>
+    <version>0.3.3</version>
+    <time>1275322295</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libdbusmenu-qt based on submit request 40897 from user dirkmueller
+</comment>
+    <requestid>40897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3066d971316cc27ef78587c828cbf8f5</srcmd5>
+    <version>0.3.3</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3066d971316cc27ef78587c828cbf8f5</srcmd5>
+    <version>0.3.3</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e5757534211b4d754112d91be99f6f8c</srcmd5>
+    <version>0.3.3</version>
+    <time>1279563809</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libdbusmenu-qt based on submit request 42694 from user dirkmueller
+</comment>
+    <requestid>42694</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eae87275e6184be9a6a9c62d50acb5ae</srcmd5>
+    <version>0.5.2</version>
+    <time>1282664840</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libdbusmenu-qt based on submit request 45883 from user dirkmueller
+</comment>
+    <requestid>45883</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a6e494919ce919dd3e4c64e93cc0fa18</srcmd5>
+    <version>0.5.2</version>
+    <time>1285576362</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Qt/libdbusmenu-qt based on submit request 49157 from user coolo
+</comment>
+    <requestid>49157</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c419e8495853df552019eba85d819990</srcmd5>
+    <version>0.6.6</version>
+    <time>1293578063</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56611 from user dirkmueller
+</comment>
+    <requestid>56611</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bdb93ae14b7a616aeca9eee9aff8c448</srcmd5>
+    <version>0.6.6</version>
+    <time>1293578078</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56611
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>bdb93ae14b7a616aeca9eee9aff8c448</srcmd5>
+    <version>0.6.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>56e7dfb43d91e378ed62803b6cdd7579</srcmd5>
+    <version>0.8.2</version>
+    <time>1307348979</time>
+    <user>saschpe</user>
+    <comment>- Update to 0.8.2:
+  * Shortcut handling: Translate &quot;+&quot; into &quot;plus&quot; and &quot;-&quot; into &quot;minus&quot; (LP BUG
+    712565)
+  From 0.8.1:
+  * Added target to build documentation with Doxygen
+  From 0.8.0:
+  * Implements version 2 of the dbusmenu protocol
+  * Merged support for KMenu titles
+  From 0.7.0:
+  * Switched DBus domain from org.ayatana to com.canonical
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to LGPLv2+.
+  * Removed dbus-1-devel from BuildRequires:.
+  * Added doxygen and libqjson-devel in BuildRequires:.
+  * Updates in Summary, %description and Group entries.
+  * Removed /sbin/ldconfig from devel package %post* scripts (not needed).
+  * Minor other updates.</comment>
+    <requestid>70532</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ea510decfb8ecc6ba5b880673fbcea8</srcmd5>
+    <version>0.8.3</version>
+    <time>1309175425</time>
+    <user>saschpe</user>
+    <comment>Update to 0.8.3 (forwarded request 74514 from adra)</comment>
+    <requestid>74620</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ee79862f5d4e84714779597392ce797</srcmd5>
+    <version>0.9.0</version>
+    <time>1314949989</time>
+    <user>saschpe</user>
+    <comment>Update to 0.9.0, Spec file updates (forwarded request 80552 from adra)</comment>
+    <requestid>80554</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6ee79862f5d4e84714779597392ce797</srcmd5>
+    <version>0.9.0</version>
+    <time>1319182083</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>2eb89ffd3594e5c3c086f1c183f84b94</srcmd5>
+    <version>0.9.0</version>
+    <time>1323192187</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>06112016a0f5f40a3bae0f5f1150f34e</srcmd5>
+    <version>0.9.2</version>
+    <time>1334692737</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.2, Install also the development documentation (forwarded request 113286 from adra)</comment>
+    <requestid>113372</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>06112016a0f5f40a3bae0f5f1150f34e</srcmd5>
+    <version>0.9.2</version>
+    <time>1340183574</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>06112016a0f5f40a3bae0f5f1150f34e</srcmd5>
+    <version>0.9.2</version>
+    <time>1359109257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>311495b0d5384391a83adbeec1ebed78</srcmd5>
+    <version>0.9.2</version>
+    <time>1378894708</time>
+    <user>coolo</user>
+    <comment>Be less verbose (forwarded request 197110 from sumski)</comment>
+    <requestid>198173</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>311495b0d5384391a83adbeec1ebed78</srcmd5>
+    <version>0.9.2</version>
+    <time>1379662927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8eb754d7c08394134c65513269b14c03</srcmd5>
+    <version>0.9.2+14.04.20131209</version>
+    <time>1387737296</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.9.2+14.04.20131209 (forwarded request 211449 from sumski)</comment>
+    <requestid>211816</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>8eb754d7c08394134c65513269b14c03</srcmd5>
+    <version>0.9.2+14.04.20131209</version>
+    <time>1409301535</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

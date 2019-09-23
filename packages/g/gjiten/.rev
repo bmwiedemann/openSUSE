@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a99fd27eff7985ab80c787f4070c9d2</srcmd5>
+    <version>2.6</version>
+    <time>1485250317</time>
+    <user>dimstar_suse</user>
+    <comment>restore gjiten</comment>
+    <requestid>444823</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>151a9ce7088b7adf553ca397fce65dda</srcmd5>
+    <version>2.6</version>
+    <time>1543311725</time>
+    <user>dimstar_suse</user>
+    <comment>- Unbundle radkfile and symlink to edict instead.
+- Replace old $RPM_* shell vars. Remove redundant %clean section.
+- Drop spec code for openSUSE &lt; 10.2.</comment>
+    <requestid>651897</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ea1e881042ee9dd09b8b46d8ff171ac0</srcmd5>
+    <version>2.6</version>
+    <time>1565362476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721962</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ad23150a837993c8c6befe7412c207f4</srcmd5>
+    <version>2.6</version>
+    <time>1566464083</time>
+    <user>dimstar_suse</user>
+    <comment>- As a result of port-to-GSettings.patch(?), gjiten no longer found
+  its dictionaries. Add more symlinks from /usr/share/gjiten to
+  /usr/share/edict and drop the GJITEN_DICDIR change from
+  gjiten-dirs.patch.</comment>
+    <requestid>725073</requestid>
+  </revision>
+</revisionlist>

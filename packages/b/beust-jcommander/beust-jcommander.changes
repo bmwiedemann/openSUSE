@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Apr  8 18:11:28 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove reference to pom parent from pom.xml file, since we are
+  not building with maven.
+
+-------------------------------------------------------------------
+Thu Feb  7 16:28:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid double shipping of documentation.
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Thu Dec  6 12:25:36 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Fix javadoc build with older JDK versions
+
+-------------------------------------------------------------------
+Thu Oct 25 20:55:17 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source/target levels 8 since the code uses
+  String.join() which does not exist before java 8
+
+-------------------------------------------------------------------
+Wed Oct 24 06:47:17 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging built without maven, adapted from Fedora rpm

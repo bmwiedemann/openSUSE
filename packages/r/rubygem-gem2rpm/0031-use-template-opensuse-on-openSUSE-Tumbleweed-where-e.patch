@@ -1,0 +1,28 @@
+From 7fa4f56a2a55278e95510d1663c495fa733d7780 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Sat, 21 Jul 2018 23:13:35 +0200
+Subject: [PATCH 31/32] use template opensuse on openSUSE Tumbleweed, where
+ /etc/os-release contains ID="opensuse-tumbleweed"
+
+---
+ bin/gem2rpm | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/bin/gem2rpm b/bin/gem2rpm
+index 45ed21c..1298798 100755
+--- a/bin/gem2rpm
++++ b/bin/gem2rpm
+@@ -82,6 +82,10 @@ if template_file.nil?
+     f.close
+     f = nil
+   end
++  if template_file.eql? '"opensuse-tumbleweed"'
++    $stderr.puts 'Using template opensuse on Tumbleweed'
++    template_file = 'opensuse'
++  end
+ end
+ if template_file.nil?
+   template = Gem2Rpm::TEMPLATE
+-- 
+2.20.1
+

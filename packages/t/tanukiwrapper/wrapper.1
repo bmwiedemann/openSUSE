@@ -1,0 +1,37 @@
+.TH javawrapper 1 "12/24/2012"
+.SH NAME
+wrapper \- Jar daemon wrapper
+.SH USAGE
+\fBwrapper\fP [\f[I]<command>\f[]] [\f[I]<configuration file>\f[]] [\f[I]<configuration properties>]\f[]
+
+where <command> can be one of:
+
+.TP
+.B -c  --console
+run as a Console application
+
+.TP
+.B  -v  --version
+print the wrapper's version information.
+
+.TP
+.B  -?  --help
+print this help message
+
+.TP
+.B  -- <args>
+ mark the end of Wrapper arguments.  All arguments after the '--' will be passed through unmodified to the java application.
+
+.TP
+<configuration file> is the wrapper.conf to use.  The filename must either be absolute or relative to the location of \fBwrapper\fP
+
+.TP
+\f[I]<configuration properties>\f[] are configuration name-value pairs which override values  in wrapper.conf.  For example:
+  wrapper.debug=true
+
+.TP
+Please note that any file references must be either absolute or relative to the location of the wrapper executable.
+
+.PP
+This manual page was written by Rémi Debay <debay.remi@gmail.com>
+and Kill Your TV <killyourtv@i2pmail.org>.

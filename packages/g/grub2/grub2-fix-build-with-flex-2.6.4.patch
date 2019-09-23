@@ -1,0 +1,24 @@
+From: Andrei Borzenkov <arvidjaar@gmail.com>
+
+Fix build with flex 2.6.4+. It no more casts fprintf() call to void, resulting in
+
+[  108s] grub_script.yy.c: In function 'yy_fatal_error':
+[  108s] grub_script.yy.c:18:22: error: statement with no effect [-Werror=unused-value]
+[  108s]  
+
+as grub2 defines fprintf as 0. Change it to explicitly define fprintf as (void)0.
+
+flex commit: https://github.com/westes/flex/commit/a58086a269d3d7367530c1a178644a8e5f1a374f
+Index: grub-2.02/grub-core/script/yylex.l
+===================================================================
+--- grub-2.02.orig/grub-core/script/yylex.l
++++ grub-2.02/grub-core/script/yylex.l
+@@ -91,7 +91,7 @@ typedef size_t yy_size_t;
+ #define stdin  0
+ #define stdout 0
+ 
+-#define fprintf(...) 0
++#define fprintf(...) (void)0
+ #define exit(...) grub_fatal("fatal error in lexer")
+ #endif
+ 

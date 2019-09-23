@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Fri Jan 18 10:47:38 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise specfile using spec-cleaner
+  * Mark license as such
+
+-------------------------------------------------------------------
+Fri Oct  6 10:08:46 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.43:
+  * No changelog provided by upstream
+- Update project url 
+
+-------------------------------------------------------------------
+Thu Jan 26 17:29:30 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.42:
+	* Support window focus / blur events
+	* Add example for Awesome window manager
+	* Updated French, Italian and Swedish translations
+- Split lang subpackage
+
+-------------------------------------------------------------------
+Wed Sep  7 00:49:47 UTC 2016 - yfjiang@suse.com
+
+- Change license to GPL-3.0+
+
+-------------------------------------------------------------------
+Fri May 20 08:48:03 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.41:
+  * Set a correct version number
+
+-------------------------------------------------------------------
+Fri May  6 10:29:24 UTC 2016 - mpluskal@suse.com
+
+- Set group for main package
+
+-------------------------------------------------------------------
+Thu Mar 31 22:00:47 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.40
+  * Add callback for geometry change
+  * Add error string for one or two indata expected
+  * Make devilspie2_get_viewport_start return both x and y 
+    coordinates
+  * Add alternative functionality to set_viewport Now you can set 
+    the coordinates to the window if you use two integers as indata
+  * New Italian translation, updated Dutch, Japanese and Swedish
+    translations
+  * Build flags hardening fixes
+  * Allow reading of XA_WINDOW properties
+
+-------------------------------------------------------------------
+Fri Feb 19 07:31:04 UTC 2016 - mpluskal@suse.com
+
+- Drop _service and use url instead
+- Build with optflags
+- Cleanup spec file with spec-cleaner
+- Add gpg signature
+
+-------------------------------------------------------------------
+Mon Nov  9 14:47:22 GMT 2015 - aspiers@suse.com
+- Update to 0.39
+
+-------------------------------------------------------------------
+Thu Dec 26 2013 larchunix <larchunix at gmail dot com> - 0.31-1
+- Upstream update.
+
+-------------------------------------------------------------------
+Sun Aug 25 2013 larchunix <larchunix at gmail dot com> - 0.30-1
+- Upstream update.
+
+-------------------------------------------------------------------
+Sun May 19 2013 larchunix <larchunix at gmail dot com> - 0.29-1
+- Upstream update.
+
+-------------------------------------------------------------------
+Wed Mar 13 2013 larchunix <larchunix at gmail dot com> - 0.28-1
+- Initial RPM release.

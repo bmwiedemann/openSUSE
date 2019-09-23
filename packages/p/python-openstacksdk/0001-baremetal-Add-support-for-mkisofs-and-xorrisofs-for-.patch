@@ -1,0 +1,85 @@
+From 8fed470b09ac7db887ebdca38b369557b0b25f10 Mon Sep 17 00:00:00 2001
+From: Thomas Bechtold <tbechtold@suse.com>
+Date: Tue, 9 Apr 2019 13:01:22 +0200
+Subject: [PATCH] baremetal: Add support for mkisofs and xorrisofs for
+ configdrive
+
+Currently, only "genisoimage" is supported. But "genisoimage" might
+not be available on all distros (like openSUSE or Debian).
+So add support for "mkisofs" and "xorrisofs" which luckily support
+the same command line parameters as "genisoimage".
+
+Change-Id: I720f25921f8e52f20a631f238a528dedf65a91c6
+---
+ openstack/baremetal/configdrive.py            | 37 ++++++++++++-------
+ ...ve-mkisofs-xorrisofs-075db4d7d80e5a13.yaml |  8 ++++
+ 2 files changed, 32 insertions(+), 13 deletions(-)
+ create mode 100644 releasenotes/notes/baremetal-configdrive-mkisofs-xorrisofs-075db4d7d80e5a13.yaml
+
+diff --git a/openstack/baremetal/configdrive.py b/openstack/baremetal/configdrive.py
+index abbebf5a..b43d19b3 100644
+--- a/openstack/baremetal/configdrive.py
++++ b/openstack/baremetal/configdrive.py
+@@ -84,21 +84,32 @@ def pack(path):
+     :return: configdrive contents as a base64-encoded string.
+     """
+     with tempfile.NamedTemporaryFile() as tmpfile:
+-        try:
+-            p = subprocess.Popen(['genisoimage',
+-                                  '-o', tmpfile.name,
+-                                  '-ldots', '-allow-lowercase',
+-                                  '-allow-multidot', '-l',
+-                                  '-publisher', 'metalsmith',
+-                                  '-quiet', '-J',
+-                                  '-r', '-V', 'config-2',
+-                                  path],
+-                                 stdout=subprocess.PIPE,
+-                                 stderr=subprocess.PIPE)
+-        except OSError as e:
++        # NOTE(toabctl): Luckily, genisoimage, mkisofs and xorrisofs understand
++        # the same parameters which are currently used.
++        cmds = ['genisoimage', 'mkisofs', 'xorrisofs']
++        for c in cmds:
++            try:
++                p = subprocess.Popen([c,
++                                      '-o', tmpfile.name,
++                                      '-ldots', '-allow-lowercase',
++                                      '-allow-multidot', '-l',
++                                      '-publisher', 'metalsmith',
++                                      '-quiet', '-J',
++                                      '-r', '-V', 'config-2',
++                                      path],
++                                     stdout=subprocess.PIPE,
++                                     stderr=subprocess.PIPE)
++            except OSError as e:
++                error = e
++            else:
++                error = None
++                break
++
++        if error:
+             raise RuntimeError(
+                 'Error generating the configdrive. Make sure the '
+-                '"genisoimage" tool is installed. Error: %s' % e)
++                '"genisoimage", "mkisofs" or "xorrisofs" tool is installed. '
++                'Error: %s' % error)
+ 
+         stdout, stderr = p.communicate()
+         if p.returncode != 0:
+diff --git a/releasenotes/notes/baremetal-configdrive-mkisofs-xorrisofs-075db4d7d80e5a13.yaml b/releasenotes/notes/baremetal-configdrive-mkisofs-xorrisofs-075db4d7d80e5a13.yaml
+new file mode 100644
+index 00000000..008459e8
+--- /dev/null
++++ b/releasenotes/notes/baremetal-configdrive-mkisofs-xorrisofs-075db4d7d80e5a13.yaml
+@@ -0,0 +1,8 @@
++---
++features:
++  - |
++    When generating a config drive for baremetal, "mkisofs" and "xorrisofs"
++    are now supported beside the already available "genisoimage" binary.
++    This is useful on environment where the "genisoimage" binary is not
++    available but "mkisofs" and/or "xorrisofs" are available.
++
+-- 
+2.21.0
+

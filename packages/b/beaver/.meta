@@ -1,0 +1,8 @@
+<package name="beaver" project="openSUSE:Factory">
+  <title>Beaver is an Early AdVanced EditoR</title>
+  <description>Beaver starts up fast and doesn't use a lot of memory.
+Beaver's only dependency is GTK+2, so no need to install
+other libraries eating your disk space. These things make
+Beaver very suitable for old computers and use in small Linux distributions.</description>
+  <devel project="X11:lxde" package="beaver"/>
+</package>

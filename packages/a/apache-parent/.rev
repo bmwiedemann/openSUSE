@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45be2499c2433a820718da503b2f96a1</srcmd5>
+    <version>21</version>
+    <time>1544189689</time>
+    <user>dimstar_suse</user>
+    <comment>Add apache-parent to Factory</comment>
+    <requestid>655626</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>45be2499c2433a820718da503b2f96a1</srcmd5>
+    <version>21</version>
+    <time>1556866514</time>
+    <user>dimstar_suse</user>
+    <comment>Drop from ring</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45be2499c2433a820718da503b2f96a1</srcmd5>
+    <version>21</version>
+    <time>1556868540</time>
+    <user>dimstar_suse</user>
+    <comment>That was too early in the morning</comment>
+  </revision>
+</revisionlist>

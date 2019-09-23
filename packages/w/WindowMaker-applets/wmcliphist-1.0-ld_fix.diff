@@ -1,0 +1,12 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -13,6 +13,7 @@ DEBUG =
+ #DEBUG = debug.o
+ 
+ LIBS = `pkg-config --libs gtk+-2.0`
++LIBS += `pkg-config --libs x11`
+ 
+ OBJECTS = wmcliphist.o clipboard.o gui.o rcconfig.o history.o hotkeys.o utils.o $(DEBUG)
+ TARGET = wmcliphist

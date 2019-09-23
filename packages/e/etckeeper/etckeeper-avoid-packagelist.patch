@@ -1,0 +1,90 @@
+From: Mitsutoshi NAKANO <bkbin005@rinku.zaq.ne.jp>
+Date: 2014-07-20 04:15:00 +0900
+Subject: add: AVOID_PACKAGELIST & ETCKEEPER_AVOID_PACKAGELIST
+References: gh#joeyh/etckeeper#17
+Upstream: sent (but not accept yet)
+
+Because it is slow that some package manager make the packagelist
+(eg, rpm -qa), high-level package manager might time out
+(eg. zypper in/remove).
+If you think that the packagelist is unnecessary, set AVOID_PACKAGELIST=1
+in etckeeper.conf.
+Or if you want to avoid it temporarily,
+you can use environment variable ETCKEEPER_AVOID_PACKAGELIST=1 .
+(eg, ETCKEEPER_AVOID_PACKAGELIST=1 zypper update).
+
+
+Index: etckeeper-1.18.5/etckeeper
+===================================================================
+--- etckeeper-1.18.5.orig/etckeeper
++++ etckeeper-1.18.5/etckeeper
+@@ -126,6 +126,13 @@
+ export VCS
+ 
+ if [ "$(which perl 2>/dev/null)" != "" ]; then
++	#If environment variable ETCKEEPER_AVOID_PACKAGELIST is not null,
++	# AVOID_PACKAGELIST in etckeeper.conf is overridden here.
++	if [ -n "$ETCKEEPER_AVOID_PACKAGELIST" ]; then
++		AVOID_PACKAGELIST="$ETCKEEPER_AVOID_PACKAGELIST"
++	fi
++	export AVOID_PACKAGELIST
++
+ 	lsscripts() {
+ 		LANG=C perl -e '
+ 			$dir=shift;
+Index: etckeeper-1.18.5/etckeeper.8
+===================================================================
+--- etckeeper-1.18.5.orig/etckeeper.8
++++ etckeeper-1.18.5/etckeeper.8
+@@ -65,7 +65,19 @@ prompting.)
+ /etc/etckeeper also contains directories containing the programs that are
+ run for each of the above commands.
+ .SH ENVIRONMENT VARIABLES
+-ETCKEEPER_CONF_DIR path to configuration directory instead of default /etc/etckeeper.
++ETCKEEPER_CONF_DIR path to configuration directory instead of default
++/etc/etckeeper.
++.PP
++ETCKEEPER_AVOID_PACKAGELIST:
++Because it is slow that some package manager make the packagelist
++(eg, rpm -qa), high-level package manager might time out.
++If you think that the packagelist is unnecessary,
++set AVOID_PACKAGELIST=1. in etckeeper.conf
++Or if you want to avoid it temporarily,
++you can use environment variable ETCKEEPER_AVOID_PACKAGELIST=1 .
++(eg, ETCKEEPER_AVOID_PACKAGELIST=1 zypper update)
++AVOID_PACKAGELIST=1
++
+ .SH SEE ALSO
+ /usr/share/doc/etckeeper/README.md.gz
+ .SH AUTHOR 
+Index: etckeeper-1.18.5/etckeeper.conf
+===================================================================
+--- etckeeper-1.18.5.orig/etckeeper.conf
++++ etckeeper-1.18.5/etckeeper.conf
+@@ -43,3 +43,12 @@ LOWLEVEL_PACKAGE_MANAGER=dpkg
+ # (eg, "origin" for git). Space-separated lists of multiple remotes
+ # also work (eg, "origin gitlab github" for git).
+ PUSH_REMOTE=""
++
++# Because it is slow that some package manager make the packagelist
++# (eg, rpm -qa), high-level package manager might time out.
++# If you think that the packagelist is unnecessary,
++# set AVOID_PACKAGELIST=1.
++# Or if you want to avoid it temporarily,
++# you can use environment variable ETCKEEPER_AVOID_PACKAGELIST=1 .
++# (eg, ETCKEEPER_AVOID_PACKAGELIST=1 zypper update)
++#AVOID_PACKAGELIST=1
+Index: etckeeper-1.18.5/pre-install.d/10packagelist
+===================================================================
+--- etckeeper-1.18.5.orig/pre-install.d/10packagelist
++++ etckeeper-1.18.5/pre-install.d/10packagelist
+@@ -1,4 +1,9 @@
+ #!/bin/sh
++
++if [ "$AVOID_PACKAGELIST" = "1" ]; then
++	exit 0
++fi
++
+ # This list will be later used when committing.
+ mkdir -p /var/cache/etckeeper/
+ etckeeper list-installed > /var/cache/etckeeper/packagelist.pre-install

@@ -1,0 +1,5 @@
+<package name="google-droid-fonts" project="openSUSE:Factory">
+  <title>droid-fonts</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="M17N:fonts" package="google-droid-fonts"/>
+</package>

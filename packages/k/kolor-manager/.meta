@@ -1,0 +1,5 @@
+<package name="kolor-manager" project="openSUSE:Factory">
+  <title></title>
+  <description>KDE systemsettings front end to Oyranos.</description>
+  <devel project="multimedia:color_management" package="kolor-manager"/>
+</package>

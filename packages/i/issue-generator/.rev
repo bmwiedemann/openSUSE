@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38296779c0850ac9bff441363816e451</srcmd5>
+    <version>1.2</version>
+    <time>1481885770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>445562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f8686162c8afbe0fe0970fde03e2c89</srcmd5>
+    <version>1.3</version>
+    <time>1492011813</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.3
+  - make list of network interfaces configureable</comment>
+    <requestid>483011</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0d8ce2a88c3fe747816334d7dfef76c4</srcmd5>
+    <version>1.3</version>
+    <time>1496822015</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ghost entry for /etc/issue [bsc#1038526]</comment>
+    <requestid>500165</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7214fd41a7d57649bb597e481c76f6e6</srcmd5>
+    <version>1.3</version>
+    <time>1512041911</time>
+    <user>dimstar_suse</user>
+    <comment>- Use official systemd macros in %post install
+
+- Don't require systemd: if it's there, we will use it, if it is
+  not there like in a base container image, there is nothing to do
+  for us.
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)</comment>
+    <requestid>546216</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>dc33a1f3d593a4f657a7e3586a964f34</srcmd5>
+    <version>1.3</version>
+    <time>1512847505</time>
+    <user>dimstar_suse</user>
+    <comment>- Readd require for systemd, else package will be installed too
+  early and services will never be enabled [bsc#1071776]
+</comment>
+    <requestid>555169</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>39a692c4183e57dff6afbba64a05e974</srcmd5>
+    <version>1.3</version>
+    <time>1513453561</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable more network devices to be shown on s390x [bsc#1071776]
+- Remove systemd require again, systemd-preset-branding is fixed.</comment>
+    <requestid>556644</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>731972aaf458db1f00227fc70c066933</srcmd5>
+    <version>1.4</version>
+    <time>1518095414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4
+  - check if agetty is available
+  - adjust to changed ssh-keygen output</comment>
+    <requestid>573737</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2a7ff7a0319f8f4952e3b7bb70be1c67</srcmd5>
+    <version>1.4</version>
+    <time>1519554793</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318]</comment>
+    <requestid>579498</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f42878b89617b97f483152210122707</srcmd5>
+    <version>1.5</version>
+    <time>1527001096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  - don't replace issue file or reload agetty if there were no
+    changes (found due to [bsc#1085196]).</comment>
+    <requestid>610247</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e0fd7760164aa3e1afec381040b151c</srcmd5>
+    <version>1.6</version>
+    <time>1528195930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6
+  - Fix permission of /run/issue [bsc#1095697]</comment>
+    <requestid>613988</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4353d7c2895626b5a87a67e16610f870</srcmd5>
+    <version>1.7</version>
+    <time>1548769446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7
+  - automatically generate issue file [bsc#1116825]</comment>
+    <requestid>664664</requestid>
+  </revision>
+</revisionlist>

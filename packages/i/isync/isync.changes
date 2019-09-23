@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Fri Dec 29 15:39:41 UTC 2017 - crrodriguez@opensuse.org
+
+- Update to version 1.3.0, fixes build against openSSL 
+  1.1.0, see https://sourceforge.net/projects/isync/files/isync/1.3.0
+  for the full list of changes
+
+-------------------------------------------------------------------
+Thu Jun  2 09:53:37 UTC 2016 - sleep_walker@opensuse.org
+
+- add COPYING README AUTHORS ChangeLog to the package
+
+-------------------------------------------------------------------
+Fri May  6 22:15:06 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use pkgconfig() style dependencies
+- Update dependencies
+  * Enable sasl
+
+-------------------------------------------------------------------
+Mon Nov 16 18:03:54 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 1.2.1
+  - fixed IPv6-enabled builds crashing upon host name resolution failure
+  - fixed updating Maildir flags crashing on OpenBSD
+  - fixed deadlocks with NFS home directories
+  - fixed SASL authentication with GSS-API
+  - fixed messages being uploaded again and again with some servers
+  - fixed duplicate mailboxes with IMAP NAMESPACE "INBOX."
+  - fixed some problems in the IMAP command submission code
+  - fixed build with static libdb, libnsl, and libsocket
+  - the dependencies on Berkeley DB and zlib (and the features they enable) can be explicitly disabled now
+  - it is now possible to nest a Maildir Store's Path into its Inbox
+  - fixed -DN not implying -Dn
+
+- clean the spec with spec-cleaner
+- add isync.keyring
+
+-------------------------------------------------------------------
+Mon Jul 27 07:02:17 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 1.2.0
+  Changes:
+   The 'isync' compatibility wrapper is now deprecated.
+
+   An IMAP Path/NAMESPACE rooted in INBOX won't be handled specially
+   any more. This means that some Patterns may need adjustment.
+
+   The default output is a lot less verbose now.
+
+   The meanings of the -V and -D options changed significantly.
+
+   The SSL/TLS configuration has been re-designed. SSL is now
+   explicitly enabled or disabled - "use SSL if available" is gone.
+   Notice: Tunnels are assumed to be secure and thus default to no SSL.
+
+   Support for SASL (flexible authentication) has been added.
+
+   Support for Windows file systems has been added.
+
+   Support for compressed data transfer has been added.
+
+   Folder deletions can be propagated now.
+
+-------------------------------------------------------------------
+Thu Jan 23 11:56:13 UTC 2014 - sleep_walker@suse.cz
+
+- examples are installed automaticaly - remove manual copying from
+  spec file
+
+-------------------------------------------------------------------
+Thu Jan 23 11:14:48 UTC 2014 - sleep_walker@suse.cz
+
+- license fix
+
+-------------------------------------------------------------------
+Thu Jan 23 11:04:33 UTC 2014 - sleep_walker@suse.cz
+
+- bump to 1.1.0
+- drop isync-1.0.1_imaphierarchy.patch
+
+-------------------------------------------------------------------
+Fri Aug 24 09:29:54 UTC 2012 - sleep_walker@suse.cz
+
+- update to 1.0.5
+
+-------------------------------------------------------------------
+Thu Dec 16 13:01:08 UTC 2010 - puzel@novell.com
+
+- update to version 1.0.4
+- fix some rpmlint warnings
+- drop isync-1.0.1_missing_sentinel.patch (in upstream)
+
+-------------------------------------------------------------------
+Sun Jan 21 22:54:15 CET 2007 - mrueckert@suse.de
+
+- update to version 1.0.3:
+  - new option UseIMAPS to allow use of Tunnel-ed IMAPS servers
+    without providing a dummy Host.
+  - make config parsing more robust.
+  - work around glibc printf bug.
+  - fix crash with AltMap UID scheme.
+  - compat wrapper: put INBOX under Maildir.
+
+-------------------------------------------------------------------
+Fri May 19 12:00:00 CET 2006 - mrueckert@suse.de
+
+- update to 1.0.2
+
+-------------------------------------------------------------------
+Mon Mar 20 12:00:00 CET 2006 - mrueckert@suse.de
+
+- build debuginfo package
+- added patch for missing sentinel
+
+-------------------------------------------------------------------
+Sun Feb 19 12:00:00 CET 2006 - mrueckert@suse.de
+
+- added isync-1.0.1_imaphierarchy.patch
+  * without the patch you cant mirror imap hierarchies
+    when using "Patterns"
+
+-------------------------------------------------------------------
+Sun Feb 19 12:00:00 CET 2006 - mrueckert@suse.de
+- Initial package of version 1.0.1
+

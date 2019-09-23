@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d6f8f7cb6749c23398da32fad618c29</srcmd5>
+    <version>5.1.0</version>
+    <time>1474476467</time>
+    <user>dimstar_suse</user>
+    <comment>optional dep for rubygem-puppet</comment>
+    <requestid>421782</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eda28e0cb4a1821fad5b7fa9c5939ebe</srcmd5>
+    <version>5.2.0</version>
+    <time>1478509679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438397</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb78f4b6f75ecd2fdcbbe9744e63b648</srcmd5>
+    <version>5.3.0</version>
+    <time>1492417618</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487591</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ead99aa01498d27f897cbf85e06aadf</srcmd5>
+    <version>5.3.1</version>
+    <time>1512651053</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 533315 from coolo)</comment>
+    <requestid>533346</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>33137c643581563ec1b1700675e4041c</srcmd5>
+    <version>5.4.0</version>
+    <time>1520329587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>581513</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5dc98d525d94ffa4d7919823a675bc37</srcmd5>
+    <version>5.4.1</version>
+    <time>1537436511</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635256</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c0621e521c7762e963d7f227d655a99</srcmd5>
+    <version>5.5.0</version>
+    <time>1553699849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685119</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c07680f70cd3ce242f18efd52a34751c</srcmd5>
+    <version>5.5.0</version>
+    <time>1560970889</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706033</requestid>
+  </revision>
+</revisionlist>

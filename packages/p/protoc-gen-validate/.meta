@@ -1,0 +1,6 @@
+<package name="protoc-gen-validate" project="openSUSE:Factory">
+  <title>protoc-gen-validate</title>
+  <description>protoc plugin to generate polyglot message validators</description>
+  <devel project="devel:languages:go" package="protoc-gen-validate"/>
+  <url>https://github.com/lyft/protoc-gen-validate</url>
+</package>

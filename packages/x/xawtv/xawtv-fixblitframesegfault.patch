@@ -1,0 +1,14 @@
+Index: xawtv-3.103/x11/blit.c
+===================================================================
+--- xawtv-3.103.orig/x11/blit.c
++++ xawtv-3.103/x11/blit.c
+@@ -937,7 +937,8 @@ void blit_putframe(struct blit_state *st
+ 
+ #ifdef HAVE_LIBXV
+     case STATUS_XVIDEO:
+-	memcpy(st->xvimage->data,buf->data,buf->size);
++	memcpy(st->xvimage->data,buf->data,
++	    buf->size < st->xvimage->data_size ? buf->size : st->xvimage->data_size);
+ 	ng_release_video_buf(buf);
+ 	xv_blit(XtDisplay(st->widget), XtWindow(st->widget),
+ 		st->gc, st->xvimage,

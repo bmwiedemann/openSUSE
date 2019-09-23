@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Aug 15 04:58:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.2.1
+  * Build descriptions for other platforms were updated;
+    no user-visible changes
+
+-------------------------------------------------------------------
+Tue Dec 11 00:42:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.2.0
+  * Fix CTRL_ATTR_FAMILY_ID attribute size
+
+-------------------------------------------------------------------
+Thu Dec 28 00:37:51 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.1.0
+  * gtp: fix missing initialization of netns file descriptor
+  * tools,gtp-genl: gtp-tunnel: fix wrong MS address
+  * tools: gtp-tunnel: restore option parsing
+  * tools: gtp-link: allow to delete links
+  * tools: gtp-link: bind to GTP UDP sockets
+  * Fix look-up of GTP tunnel by TEI
+  * Add support for SGSN role via IFLA_GTP_ROLE
+  * Add support for SGSN role via IFLA_GTP_ROLE
+
+-------------------------------------------------------------------
+Sat Apr 29 00:26:35 UTC 2017 - jengelh@inai.de
+
+- Initial package (version 1.0.1.7) for build.opensuse.org

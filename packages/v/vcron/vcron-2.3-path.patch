@@ -1,0 +1,26 @@
+--- usr/local/bin/vcron	2002-06-08 15:46:32.000000000 +0200
++++ usr/local/bin/vcron	2002-11-08 16:00:28.000000000 +0100
+@@ -19,7 +19,7 @@
+     exit
+ }
+ 
+-set vcronlib [ file join / usr local lib vcron]
++set vcronlib [ file join / usr X11R6 lib vcron]
+ if ![ file isdirectory $vcronlib ] {
+  set vcronlib [ file join / usr lib vcron ]
+  if ![ file isdirectory $vcronlib ] {
+@@ -615,8 +615,12 @@
+  frame .pgm.f1.f6.fw -relief flat -borderwidth 0
+  entry .pgm.f1.f6.fw.epg -highlightthickness 0 -background $Settings(EntryColor)
+  button .pgm.f1.f6.fw.bpg -text $Messages(parc) \
+-	 -command {.pgm.f1.f6.fw.epg insert insert \
+-	 [tk_getOpenFile -title $Messages(exec) ] }
++ 	-command {set program [tk_getOpenFile -title $Messages(exec) ]
++		if {$program != ""} { 
++			.pgm.f1.f6.fw.epg delete 0 end
++			.pgm.f1.f6.fw.epg insert insert $program
++		}
++	}
+  pack .pgm.f1.f6.hpg -side top -fill both -anchor nw
+  pack .pgm.f1.f6.fw -side top -fill both -expand 1
+  pack .pgm.f1.f6.fw.epg -side left -expand 1 -fill both

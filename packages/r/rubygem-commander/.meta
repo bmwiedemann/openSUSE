@@ -1,0 +1,5 @@
+<package name="rubygem-commander" project="openSUSE:Factory">
+  <title></title>
+  <description>The complete solution for Ruby command-line executables. Commander bridges the gap between other terminal related libraries you know and love (OptionParser, HighLine), while providing many new features, and an elegant API.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-commander"/>
+</package>

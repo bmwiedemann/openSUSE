@@ -1,0 +1,5 @@
+<package name="libmygpo-qt5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt5" package="libmygpo-qt5"/>
+</package>

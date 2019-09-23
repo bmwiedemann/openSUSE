@@ -1,0 +1,2419 @@
+-------------------------------------------------------------------
+Tue Apr  9 12:46:27 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.04:
+  * Various last minute bug fixes
+  * we've hit the deadline for DM_MMC conversion
+  * Release info:
+    - https://lists.denx.de/pipermail/u-boot/2019-April/364431.html
+- Rename Sinovoip BPI M2 Plus to Bananapi M2 Plus H3, to follow upstream:
+  * http://git.denx.de/?p=u-boot.git;a=commitdiff;h=268ae6548779ccd8ba38ce39d43f41be7e0bc133
+-------------------------------------------------------------------
+Tue Mar 19 10:03:02 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.04-rc4:
+  * DPAA2 fixes and DDR errata workaround for LS1021A
+  * UEFI fixes
+  * Small fixes in several i.MX boards
+  * SunXi fixes:  axp818 fix, fix warnings for ethernet clock code
+  * x86 fixes: ACPI changes and fixes to Intel Tangier/Edison, i8254 beeper fixes
+  * SoC-FPGA: Arria10 DRAM fixes and Gen5 cache fixes
+  * sh: More gen2/gen3 fixes
+  * I2C fixes
+  * SPI fixes
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.04
+* Patches dropped:
+  0009-efi_loader-Fix-serial-console-size-.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 11:17:54 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.04
+* Fix bsc#1124137 by:
+* Patches dropped:
+  0008-Revert-efi_loader-query-serial-cons.patch
+  0009-zynqmp-generic-fix-compilation.patch
+* Patches added:
+  0008-zynqmp-generic-fix-compilation.patch
+  0009-efi_loader-Fix-serial-console-size-.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 12:38:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop am335x_boneblack and use am335x_evm instead, to follow 
+  upstream:
+  * http://git.denx.de/?p=u-boot.git;a=commit;h=8fa7f65dd02c176ee6021eaf40114560b8954ba2
+
+-------------------------------------------------------------------
+Wed Mar  6 11:30:44 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.04
+* Patches added to fix bsc#1128099:
+  0009-zynqmp-generic-fix-compilation.patch
+
+-------------------------------------------------------------------
+Tue Mar  5 14:58:04 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Add sifive_fu540
+
+-------------------------------------------------------------------
+Tue Mar  5 08:31:52 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.04-rc3:
+  * Partial changelog: more DM enablement and Kconfig conversions, 
+    bananapi fixes, defconfig resync, Make FAT use less memory, 
+    drivers fixes, SPI-NOR support, Fixes for CVE-2018-18440 and 
+    CVE-2018-18439
+  * v2019.04-rc3 changelog info:
+    - https://lists.denx.de/pipermail/u-boot/2019-March/360728.html
+  * v2019.04-rc2 changelog info:
+    - https://lists.denx.de/pipermail/u-boot/2019-February/359463.html
+  * v2019.04-rc1 changelog info:
+    - https://lists.denx.de/pipermail/u-boot/2019-February/357902.html
+
+-------------------------------------------------------------------
+Thu Feb 14 15:28:00 UTC 2019 - schwab@suse.de
+
+- Add qemu-riscv64
+
+-------------------------------------------------------------------
+Thu Feb 14 12:13:57 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.01
+* Patches added to fix bsc#1124137:
+  0008-Revert-efi_loader-query-serial-cons.patch
+
+-------------------------------------------------------------------
+Tue Jan 29 10:50:32 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.01
+* Patch added to fix boo#1123170:
+  0007-boo-1123170-Remove-ubifs-support-fr.patch
+
+-------------------------------------------------------------------
+Tue Jan 15 10:04:39 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.01:
+  * regression fixes
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2019-January/354598.html
+
+-------------------------------------------------------------------
+Tue Jan  8 06:19:51 UTC 2019 - afaerber@suse.de
+
+- Update to v2019.01-rc3:
+  * Samsung, Rockchip, i.MX, video, SPI, x86, EFI, UniPhier, TI, MediaTek,
+    Marvell, SoCFPGA, amlogic, MIPS and RISC-V updates.
+  * This includes among other things, pulling in the Ci20 platform
+    support, fixing at least one regression in EFI support,
+    synchronizing some i.MX8 related locations and files and other
+    important bugfixes.
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2019-January/353882.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.01
+* Patches dropped:
+  0007-exynos-imply-SYS_THUMB_BUILD.patch
+
+-------------------------------------------------------------------
+Sat Dec 22 23:16:01 UTC 2018 - afaerber@suse.de
+
+- Add rock960-rk3399
+
+-------------------------------------------------------------------
+Fri Dec 21 13:20:00 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.01-rc2:
+  * Various important DT syncs with Linux
+  * Risc-V S-Mode
+  * Important NAND/MTD fixups
+  * TPM, sound updates
+  * FAT fixes
+    amlogic, sunxi, marvel, rockchip, x86, mips, layerscape and other updates
+  * USB Gadget DM work, and some other related USB fixes.
+  * DM_I2C_COMPAT code removal for TI platforms.
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-December/352385.html
+
+-------------------------------------------------------------------
+Tue Dec 11 13:52:21 UTC 2018 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- add pinebook
+
+-------------------------------------------------------------------
+Tue Dec  4 08:08:53 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2019.01-rc1:
+  * ftgmac100 improvements
+  * TI: CPSW improvements
+  * VSC8584 PHY support
+  * Add MT7628 ethernet driver
+  * Various sunxi, socfpga, riscv improvements
+  * virtio implementation and supporting patches
+  * DM_FLAG_PRE_RELOC fixes
+  * regmap improvements
+  * Various improvements in sandbox and buildman
+  * Initial bcm968580xref, am65x_evm_r5 support
+  * lpc32xx, omap3_logic/am3517_evm updates
+  * pinctrl command
+  * fs_loader available for SPL
+  * MIPS: fix long-standing issue with linking of standalone programs
+  * MIPS: MT76xx: add GPIO and WDT drivers
+  * MIPS: MT76xx: various fixes and updates to gardena-smart-gateway board
+  * MIPS: MT76xx: various fixes and updates to linkit-smart-7688 board
+  * adc enhancements
+  * Clearfog GT-8K support added by Baruch / Raheeb
+  * Minor cleanup to db-88f6820 from Chris
+  * Bring in the series from Simon for SPL logging support and bloblist
+  * chiliboard updates
+  * misc TI platform updates
+  * chiliboard updates
+  * Introduce CONFIG_SPL_DM_USB
+  * Add MediaTek support
+  * mmc: meson-gx: Add AXG compatible
+  * net: designware: add meson meson compatibles
+  * Amlogic Meson cleanup for AXG SoC support
+  * meson: Add regmap support for clock driver and sync DT with 4.19
+  * Some Kirkwood boards converted to DM_SPI by Chris
+  * New Armada-385 SoC revision printed by Chris
+  * Ethernet enable on mcbin by Baruch
+  * Support 2 DRAM banks on Armada-8k boards by Baruch
+  * Convert TPM fully to DM
+  * Add a 'make qcheck' target for faster testing 
+  * Rockchip improvements:
+      * RK3188 USB-UART functionality
+      * errors triggering a hard-stop in SPL on the RK3399 are reported
+      * Rockchip RV1108 (SoC) support
+      * MicroCrystal RV3029 (RTC) DM driver
+  * Rockchip fixes:
+      * RK3188 early UART setup
+      * limit SD-card frequency to 40MHz on the RK3399-Q7
+      * MIPI fixes
+      * RK3399 CPUB clock initialisation
+  * ARC:
+      * Try to match found HW features to known ARC core templates
+      * Print CPU frequency for all ARC boards
+      * Add more board-specific info
+  * microblaze:
+      * Use default functions for memory decoding
+      * Showing model from DT
+  * zynq:
+      * Fix spi flash DTs
+      * Fix zynq_help_text with CONFIG_SYS_LONGHELP
+      * Tune cse/mini configurations
+      * Enabling cse/mini testing with current targets
+  * zynqmp:
+      * Enable gzip SPL support
+      * Fix chip detection logic
+      * Tune mini configurations
+      * DT fixes(spi-flash, models, clocks, etc)
+      * Add support for OF_SEPARATE configurations
+      * Enabling mini testing with current targets
+      * Add mini mtest configuration
+      * Some minor config setting
+  * Raspberry Pi: 3A+, Allow 2nd MMC device, Allow UUID to find filesystem
+  * UEFI:
+      * Make PE images more standards compliant
+      * Improve sandbox support
+      * Improve correctness
+      * Fix RISC-V execution on virt model
+      * Honor board defined top of ram (fixes a few boards)
+      * Imply DM USB access when distro boot is available
+      * Code cleanups
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-December/350498.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2019.01
+* Patches dropped:
+  0007-Revert-efi_loader-remove-efi_exit_c.patch
+  0008-exynos5-allow-bigger-BL2-u-boot.bin.patch
+* Patches added:
+  0007-exynos-imply-SYS_THUMB_BUILD.patch
+
+-------------------------------------------------------------------
+Sat Nov 24 16:43:11 UTC 2018 - afaerber@suse.de
+
+- Add khadas-vim, khadas-vim2
+
+-------------------------------------------------------------------
+Mon Nov 19 16:49:26 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.11
+* Patches added:
+  0008-exynos5-allow-bigger-BL2-u-boot.bin.patch
+
+-------------------------------------------------------------------
+Sun Nov 18 18:56:52 UTC 2018 - afaerber@suse.de
+
+- pine64plus, nanopia64, bananapim64, orangepipc2, pineh64: Fix BL31
+
+-------------------------------------------------------------------
+Thu Nov 15 14:30:22 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2018.11:
+  * Fixes for i.MX, Xilinx, EFI Loader, R-Mobile, x86, sunxi, and Marvell platforms
+  * Added i.MX8 support
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-November/347424.html
+
+-------------------------------------------------------------------
+Sun Nov 11 16:35:35 UTC 2018 - afaerber@suse.de
+
+- Update from arm-trusted-firmware-pine64 to arm-trusted-firmware-sun50ia64
+- pineh64: Use new arm-trusted-firmware-sun50ih6
+- Add bananapim64
+- u-boot.spec.in, u-boot-board.spec.in: Update to use https
+
+-------------------------------------------------------------------
+Mon Nov  5 10:06:08 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.11
+* Patches added:
+  0007-Revert-efi_loader-remove-efi_exit_c.patch
+
+-------------------------------------------------------------------
+Wed Oct 31 08:16:02 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2018.11-rc3:
+  * Fixes for i.MX, Xilinx, EFI Loader, R-Mobile, x86, sunxi, and Marvell platforms
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-October/344567.html
+
+-------------------------------------------------------------------
+Wed Oct 17 07:01:52 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2018.11-rc2:
+  * The SPI-NAND changes have fully been integrated now.
+  * ARM Versatile Express updates
+  * QEMU support in RiscV
+  * Rockchip updates
+    * fixes to rkimage for SPL boot via USB
+    * fixes to make_fit_atf.py, incl. entry-point calculation and python3
+      compatibility
+    * OP-TEE support for ARMv7-based SoCs
+    * fixes to RGMII/GMII selection on the RK3328
+  * ARC updates
+    * CPU and board info prints
+    * Synopsys IoT development kit support
+    * Take care of global uninitialized variables.
+    * Add support for SD-card detection on all ARC boards
+  * R-Mobile, SoCFPGA updates
+  * Sandbox SPL/TPL support
+  * Various DM, Test updates.
+  * Various general ARM, Meson, TI K2/K3 updates
+  * OP-TEE AVB support
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-October/344567.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.11
+* Patches dropped:
+  0007-rockchip-make_fit_atf-use-elf-entry.patch
+  0008-rockchip-make_fit_atf-make-python3-.patch
+  0009-rockchip-make_fit_atf.py-depends-on.patch
+
+-------------------------------------------------------------------
+Tue Oct  9 06:46:02 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2018.11-rc1:
+  * FPGA improvements:
+  * Tests for fpga commands
+    * Kconfig cleanup, code cleanup MAINTAINERS updating
+  * DM/DT:
+    * MPC83xx device tree additions (CPU and RAM)
+    * Various ofnode/DT improvements
+  * Marvell SoC improvements:
+    * Multiple updates to the turris boards / platform
+  * i.MX SoC improvements
+    * Pico board updates, imx6ull pinmux fixes
+  * EFI improvements:
+    * Now very close to being able to run UEFI Shell and SCT.
+      * This brought in a number of FAT improvements
+    * Sandbox support
+    * Lots of general EFI improvements and cleanups
+  * Xilinx platform updates:
+    * Zynq/ZynqMP cleanups
+    * In SPL we now handle (read: uncompress) in FIT images for entries
+      other than the kernel.
+  * Freescale QorIQ:
+    * Switching to driver model on a number of platforms for eSDHC and
+    SATA.
+  * PowerPC:
+    * Use device tree for mpc85xx, enable on T2080QDS.
+  * SoCFPGA, sunxi and uniphier SoC improvements.
+  * UBI, i2c, SuperH, MIPS, USB, M68K, x86, video and DM improvements.
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-October/342659.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.11
+* Patches dropped:
+  0010-ARM-tegra-reserve-unmapped-RAM-so-E.patch
+
+-------------------------------------------------------------------
+Tue Sep 11 22:51:39 UTC 2018 - afaerber@suse.de
+
+- nanopia64, orangepipc2: Conditionally enable ATF
+- Add pineh64 (ATF TBD)
+
+-------------------------------------------------------------------
+Tue Sep 11 08:02:15 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2018.09:
+  * Xilinx platforms (zynq, zynqmp, microblaze) have cleaned up and
+    improved a number of areas with better DT and sysreset functionality.
+    A number of drivers have been converted to DM.
+  * EFI support has had a number of corrections made due to running SCT.
+  * ARC has updated some of their drivers and now supports gcc-8.1.x
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-September/340614.html
+
+-------------------------------------------------------------------
+Wed Sep  5 09:27:11 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2018.09-rc3:
+  * Fixes and Kconfig change and similar
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-September/340064.html
+
+-------------------------------------------------------------------
+Wed Sep  5 09:26:11 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.09
+* Patches added:
+  0010-ARM-tegra-reserve-unmapped-RAM-so-E.patch
+
+-------------------------------------------------------------------
+Thu Aug 16 07:16:49 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to v2018.09-rc2:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-August/338284.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.09
+* Patches dropped:
+  0010-snow-set-fdtfile.patch
+
+-------------------------------------------------------------------
+Mon Aug 13 15:19:37 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to v2018.09-rc1:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-July/336605.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.09
+* Patches dropped:
+  0011-omap3-beagle-re-enable-EFI-support-.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 19:42:03 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.07
+* Patches added:
+  0011-omap3-beagle-re-enable-EFI-support-.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 13:29:34 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.07
+* Patches dropped:
+  0001-XXX-openSUSE-XXX-Load-dtb-from-part.patch
+* Patches added:
+  0001-XXX-openSUSE-XXX-Prepend-partition-.patch
+  0010-snow-set-fdtfile.patch
+
+-------------------------------------------------------------------
+Tue Jul 10 09:12:26 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to v2018.07:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-July/334014.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.07
+* Patches dropped:
+  0010-arm-timer-factor-out-FSL-arch-timer.patch
+  0011-arm-timer-sunxi-add-Allwinner-timer.patch
+
+-------------------------------------------------------------------
+Tue Jul  3 07:07:44 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to v2018.07-rc3:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-July/333540.html
+
+-------------------------------------------------------------------
+Wed Jun 27 12:05:47 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.07
+* Patches added:
+  0010-arm-timer-factor-out-FSL-arch-timer.patch
+  0011-arm-timer-sunxi-add-Allwinner-timer.patch
+
+-------------------------------------------------------------------
+Wed Jun 20 09:20:24 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to v2018.07-rc2
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-June/332354.html
+
+-------------------------------------------------------------------
+Mon Jun 11 09:49:41 UTC 2018 - guillaume.gardet@opensuse.org
+
+- update to v2018.07-rc1:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-June/330609.html
+- Add bison and flex deps needed since Kconfig update
+- Use 'make syncconfig' instead of deprecated 'make silentoldconfig'
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.07
+* Patches dropped:
+  0006-tools-zynqmpimage-Add-partition-rea.patch
+  0007-tools-zynqmpimage-Move-defines-to-h.patch
+  0008-MAINTAINERS-Declare-tools-zynq-.-c-.patch
+  0009-tools-zynqmpimage-Add-bif-support.patch
+  0010-tools-zynqmpbif-Add-support-for-loa.patch
+  0011-rockchip-make_fit_atf-use-elf-entry.patch
+  0012-rockchip-make_fit_atf-make-python3-.patch
+  0013-rockchip-make_fit_atf.py-depends-on.patch
+* Patches added:
+  0006-tools-zynqmpbif-Add-support-for-loa.patch
+  0007-rockchip-make_fit_atf-use-elf-entry.patch
+  0008-rockchip-make_fit_atf-make-python3-.patch
+  0009-rockchip-make_fit_atf.py-depends-on.patch
+
+-------------------------------------------------------------------
+Sat Jun  2 16:45:39 UTC 2018 - afaerber@suse.de
+
+- Adopt %license
+- Drop unused USE_PRIVATE_LIBGG=yes consistently
+- Tidy RK3399 u-boot.itb handling
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches added:
+  0013-rockchip-make_fit_atf.py-depends-on.patch
+
+-------------------------------------------------------------------
+Mon May 28 12:24:51 UTC 2018 - yousaf.kaukab@suse.com
+
+- Build u-boot.itb for {evb,firefly}-rk3399
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches added:
+  0011-rockchip-make_fit_atf-use-elf-entry.patch
+  0012-rockchip-make_fit_atf-make-python3-.patch
+
+-------------------------------------------------------------------
+Sat May 26 15:01:30 UTC 2018 - afaerber@suse.de
+
+- Add dragonboard820c
+
+-------------------------------------------------------------------
+Thu May 24 11:21:48 UTC 2018 - fvogt@suse.com
+
+- For RPi3 (AArch64) add a ubootconfig.txt file to set arm_control
+- Remove rpi332b flavor, rpi2 works on rpi3 meanwhile
+
+-------------------------------------------------------------------
+Mon May 21 13:39:06 UTC 2018 - afaerber@suse.de
+
+- Add p2771-0000-500 (Jetson TX2)
+
+-------------------------------------------------------------------
+Thu May 10 17:32:58 UTC 2018 - afaerber@suse.de
+
+- Conditionalize pine64plus ATF support on uboot_atf_pine64
+- u-boot-board.spec.in: Update license
+
+-------------------------------------------------------------------
+Thu May 10 16:17:39 UTC 2018 - afaerber@suse.de
+
+- Add poplar
+
+-------------------------------------------------------------------
+Wed May  9 07:24:31 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 2018.05:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-May/327640.html
+
+-------------------------------------------------------------------
+Wed May  2 09:43:24 UTC 2018 - agraf@suse.com
+
+- Update to 2018.05-rc3:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-May/327163.html
+
+-------------------------------------------------------------------
+Thu Apr 26 12:38:31 UTC 2018 - agraf@suse.com
+
+- Include u-boot.spec in autogeneration logic
+
+-------------------------------------------------------------------
+Thu Apr 26 11:40:19 UTC 2018 - agraf@suse.com
+
+- Add support for .bif generation in mkimage
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches added:
+  0006-tools-zynqmpimage-Add-partition-rea.patch
+  0007-tools-zynqmpimage-Move-defines-to-h.patch
+  0008-MAINTAINERS-Declare-tools-zynq-.-c-.patch
+  0009-tools-zynqmpimage-Add-bif-support.patch
+  0010-tools-zynqmpbif-Add-support-for-loa.patch
+
+-------------------------------------------------------------------
+Tue Apr 24 19:32:04 UTC 2018 - agraf@suse.com
+
+- Add generic ZynqMP support
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches added:
+  0005-zynqmp-Add-generic-target.patch
+
+-------------------------------------------------------------------
+Tue Apr 17 08:57:21 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 2018.05-rc2:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-April/325721.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches dropped:
+  0004-rpi3-Enable-lan78xx-driver.patch
+  0005-rpi-Add-identifier-for-the-new-RPi3.patch
+  0006-efi_loader-Fix-network-DP-with-DM_E.patch
+  0007-mkimage-do-not-fail-if-there-is-no-.patch
+  0008-rpi-Allow-to-boot-without-serial.patch
+  0009-mmc-use-core-clock-frequency-in-bcm.patch
+  0010-Temp-workaround-for-Chromebook-snow.patch
+* Patches added:
+  0004-Temp-workaround-for-Chromebook-snow.patch
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches added:
+  0010-Temp-workaround-for-Chromebook-snow.patch
+  
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches dropped:
+  0009-rpi-Allow-to-boot-without-serial.patch
+  0010-mmc-use-core-clock-frequency-in-bcm.patch
+* Patches added:
+  0008-rpi-Allow-to-boot-without-serial.patch
+  0009-mmc-use-core-clock-frequency-in-bcm.patch
+    
+- Update to 2018.05-rc1:
+  * No real upstream changelog
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-April/324525.html
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.05
+* Patches dropped:
+  0003-Revert-rockchip-mkimage-remove-plac.patch
+  0004-rpi-Use-firmware-provided-device-tr.patch
+  0005-rpi3-Enable-lan78xx-driver.patch
+  0006-net-Only-access-network-devices-aft.patch
+  0007-rpi-Add-identifier-for-the-new-RPi3.patch
+  0008-efi_loader-Fix-network-DP-with-DM_E.patch
+* Patches added:
+  0003-rpi-Use-firmware-provided-device-tr.patch
+  0004-rpi3-Enable-lan78xx-driver.patch
+  0005-rpi-Add-identifier-for-the-new-RPi3.patch
+  0006-efi_loader-Fix-network-DP-with-DM_E.patch
+  0007-mkimage-do-not-fail-if-there-is-no-.patch
+
+-------------------------------------------------------------------
+Thu Apr 12 15:19:29 UTC 2018 - agraf@suse.com
+
+- Package u-boot.elf on Xilinx systems
+
+-------------------------------------------------------------------
+Mon Apr  9 09:09:00 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Workaround to boot on Chromebook (snow)
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.03
+* Patches added:
+  0011-Temp-workaround-for-Chromebook-snow.patch
+
+-------------------------------------------------------------------
+Thu Apr  5 11:25:47 UTC 2018 - agraf@suse.com
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.03
+* Patches added:
+  0010-mmc-use-core-clock-frequency-in-bcm.patch
+
+-------------------------------------------------------------------
+Thu Apr  5 09:54:56 UTC 2018 - agraf@suse.com
+
+- Fix rainbow screen on 32bit RPis (boo#1086757)
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.03
+* Patches added:
+  0009-rpi-Allow-to-boot-without-serial.patch
+
+-------------------------------------------------------------------
+Thu Mar 15 23:44:18 UTC 2018 - agraf@suse.com
+
+- Add Xilinx ZynqMP ZCU 102 target
+
+-------------------------------------------------------------------
+Thu Mar 15 16:34:22 UTC 2018 - agraf@suse.com
+
+- Enable new RPi3 B+ (bsc#1085262)
+- Fix network boot (bsc#1070775)
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.03
+* Patches added:
+  0005-rpi3-Enable-lan78xx-driver.patch
+  0006-net-Only-access-network-devices-aft.patch
+  0007-rpi-Add-identifier-for-the-new-RPi3.patch
+  0008-efi_loader-Fix-network-DP-with-DM_E.patch
+
+-------------------------------------------------------------------
+Wed Mar 14 15:13:44 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Updated to 2018.03:
+  * limited support for determining at run-time where the environment 
+    should be read from and stored. The biggest user of this is for 
+    Allwinner SoCs where you're expected to migrate to having the 
+    environment stored as a file in FAT instead of directly in the 
+    MMC device.
+  * Changelog: https://lists.denx.de/pipermail/u-boot/2018-March/322558.html
+
+-------------------------------------------------------------------
+Tue Mar  6 13:26:21 UTC 2018 - guillaume@opensuse.org
+
+- Updated to 2018.03-rc4
+
+-------------------------------------------------------------------
+Thu Feb 22 08:43:30 UTC 2018 - guillaume@opensuse.org
+
+- Updated to 2018.03-rc3
+
+-------------------------------------------------------------------
+Wed Feb 21 16:48:20 UTC 2018 - agraf@suse.com
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.03
+* Patches added:
+  0004-rpi-Use-firmware-provided-device-tr.patch
+
+-------------------------------------------------------------------
+Tue Feb 13 12:26:59 UTC 2018 - guillaume@opensuse.org
+
+- Updated to 2018.03-rc2
+
+-------------------------------------------------------------------
+Tue Jan 30 07:48:10 UTC 2018 - guillaume@opensuse.org
+
+- Updated to 2018.03-rc1
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2018.03
+* Patches dropped:
+  0004-Fix-MMC1-external-SD-slot-on-Samsun.patch (Fixed upstream)
+
+-------------------------------------------------------------------
+Wed Jan 17 17:11:04 UTC 2018 - afaerber@suse.de
+
+- Add turrisomnia
+
+-------------------------------------------------------------------
+Wed Jan 17 09:51:41 UTC 2018 - guillaume@opensuse.org
+
+- Updated to 2018.01
+
+-------------------------------------------------------------------
+Mon Jan  8 09:02:47 UTC 2018 - guillaume@opensuse.org
+
+- Updated to 2018.01-rc3
+
+-------------------------------------------------------------------
+Tue Dec 19 13:59:57 UTC 2017 - guillaume@opensuse.org
+
+- Updated to 2018.01-rc2
+
+-------------------------------------------------------------------
+Fri Dec  8 07:50:19 UTC 2017 - guillaume@opensuse.org
+
+- Updated to 2018.01-rc1
+- Remove am57xx_evm_nodt since it has been removed upstream
+
+-------------------------------------------------------------------
+Sat Nov 25 23:00:31 UTC 2017 - afaerber@suse.de
+
+- Add nanopi_a64
+- Update orangepi_pc2 packaging
+
+-------------------------------------------------------------------
+Thu Nov 16 12:27:27 UTC 2017 - guillaume@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.11
+* Patches added:
+  0004-Fix-MMC1-external-SD-slot-on-Samsun.patch
+
+-------------------------------------------------------------------
+Tue Nov 14 10:10:21 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.11
+
+-------------------------------------------------------------------
+Tue Nov  7 09:59:19 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.11-rc4
+
+-------------------------------------------------------------------
+Tue Oct 31 10:28:07 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.11-rc3
+
+-------------------------------------------------------------------
+Tue Oct 17 07:58:25 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.11-rc2
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.11
+* Patches dropped:
+  0004-Fix-boot-on-Beagleboard-xM-by-disab.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 18:53:36 UTC 2017 - xxxxxmichl@googlemail.com
+
+- Added Banana Pi M2+ support (u-boot-sinovoipbpim2plus)
+
+-------------------------------------------------------------------
+Sun Oct  8 13:17:01 UTC 2017 - afaerber@suse.de
+
+- Add firefly-rk3399 and geekbox
+
+-------------------------------------------------------------------
+Sat Oct  7 00:52:52 UTC 2017 - afaerber@suse.de
+
+- Drop obsolete CuBox-i i.MX6 SPL packaging, too
+
+-------------------------------------------------------------------
+Fri Oct  6 23:26:14 UTC 2017 - afaerber@suse.de
+
+- Update packaging for Jetson TX1
+- Cleanups
+* Drop executable bit from SPL
+* Consistently use %uboot_dir
+* u-boot[-tegra]-dtb.bin is obsolete
+* Drop obsolete UDOO-specific i.MX6 SPL packaging
+- Package sunxi64 SPL for Pine64
+
+-------------------------------------------------------------------
+Mon Oct  2 13:33:40 UTC 2017 - guillaume@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.09
+* Patches added:
+  0004-Fix-boot-on-Beagleboard-xM-by-disab.patch
+
+-------------------------------------------------------------------
+Wed Sep 13 15:14:30 UTC 2017 - guillaume@opensuse.org
+
+- Merge and rename packages to follow upstream:
+  old configs:
+	mvebu_db-88f7040-nand_defconfig
+        mvebu_db-88f7040_defconfig
+        mvebu_db-88f8040_defconfig
+  merged to new config:
+        mvebu_db_armada8k_defconfig
+
+-------------------------------------------------------------------
+Tue Sep 12 08:26:24 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.09
+
+-------------------------------------------------------------------
+Tue Sep  5 09:22:47 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.09-rc4
+
+-------------------------------------------------------------------
+Mon Aug 21 14:46:36 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.07
+
+-------------------------------------------------------------------
+Mon Jul 10 12:54:03 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.07-rc3
+
+-------------------------------------------------------------------
+Thu Jun 22 08:19:18 UTC 2017 - guillaume@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.07
+* Patches added:
+  0003-Revert-rockchip-mkimage-remove-plac.patch
+
+-------------------------------------------------------------------
+Wed Jun 21 14:18:06 UTC 2017 - guillaume.gardet@opensuse.org
+
+- Updated to v2017.07-rc2
+
+-------------------------------------------------------------------
+Fri Jun  9 14:21:41 UTC 2017 - afaerber@suse.de
+
+- Updated to v2017.07-rc1
+
+-------------------------------------------------------------------
+Mon May  8 15:27:50 UTC 2017 - afaerber@suse.de
+
+- Updated to v2017.05
+
+-------------------------------------------------------------------
+Tue May  2 16:22:39 UTC 2017 - afaerber@suse.de
+
+- Updated to v2017.05-rc3
+* Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.05
+* Patches dropped (upstreamed):
+  0003-meson-gxbb-enable-MMC-as-boot-targe.patch
+
+-------------------------------------------------------------------
+Fri Apr 21 03:45:10 UTC 2017 - afaerber@suse.de
+
+- Switch firefly-rk3288 and tinker-rk3288 to u-boot.bin
+
+-------------------------------------------------------------------
+Thu Apr 20 14:33:20 UTC 2017 - afaerber@suse.de
+
+- Use %_smp_mflags, suggested by jengelh
+
+-------------------------------------------------------------------
+Thu Apr 20 01:00:43 UTC 2017 - afaerber@suse.de
+
+- Drop rkimage for tinker-rk3288, it only has Micro SD storage
+
+-------------------------------------------------------------------
+Wed Apr 19 20:04:46 UTC 2017 - afaerber@suse.de
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.05
+* Enable distro boot from MMC for odroid-c2:
+  0003-meson-gxbb-enable-MMC-as-boot-targe.patch
+
+-------------------------------------------------------------------
+Tue Apr 18 16:12:49 UTC 2017 - afaerber@suse.de
+
+- Updated to v2017.05-rc2
+* Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.05
+* Patches dropped (accepted upstream):
+  0003-Makefile-Fix-linking-with-modern-bi.patch
+- Add orangepipc2, nanopineoair
+
+-------------------------------------------------------------------
+Thu Apr 13 02:38:36 UTC 2017 - afaerber@suse.de
+
+- Enable overlay support unconditionally
+
+-------------------------------------------------------------------
+Tue Apr 11 03:28:45 UTC 2017 - afaerber@suse.de
+
+- Add ls1012afrdmqspi
+
+-------------------------------------------------------------------
+Tue Apr 11 01:47:01 UTC 2017 - afaerber@suse.de
+
+- Updated to v2017.05-rc1
+* Add .sig file as source
+- Add mvebuespressobin-88f3720, mvebumcbin-88f8040 and evb-rk3399
+- Prepare orangepipc2 and nanopineoair for -rc2
+
+-------------------------------------------------------------------
+Sun Apr  9 18:24:30 UTC 2017 - afaerber@suse.de
+
+- Add tinker-rk3288
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.03
+* Fix firefly-rk3288 and tinker-rk3288 build with binutils 2.28.
+  0003-Makefile-Fix-linking-with-modern-bi.patch
+- U-Boot has no CFLAGS, so apply $RPM_OPT_FLAGS to HOSTCFLAGS instead
+
+-------------------------------------------------------------------
+Mon Mar 20 11:10:57 UTC 2017 - afaerber@suse.de
+
+- Tidy Raspberry Pi conditionals
+- Enable CONFIG_OF_LIBFDT_OVERLAY for Raspberry Pi only for now
+
+-------------------------------------------------------------------
+Mon Mar 20 09:43:14 UTC 2017 - afaerber@suse.de
+
+- Add mvebudb-88f{3720,7040,8040}
+
+-------------------------------------------------------------------
+Tue Mar 14 08:47:33 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.03
+
+-------------------------------------------------------------------
+Wed Mar  1 09:36:39 UTC 2017 - guillaume@opensuse.org
+
+- Add libopenssl-devel as BuildRequires (needed by some configs)
+
+-------------------------------------------------------------------
+Tue Feb 28 08:37:55 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.03-rc3
+
+-------------------------------------------------------------------
+Wed Feb 22 13:38:25 UTC 2017 - hsehic@suse.com
+
+- Add Lamobo_R1
+
+-------------------------------------------------------------------
+Wed Jan 11 09:16:16 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.01 (bsc#989513)
+
+-------------------------------------------------------------------
+Mon Jan  9 12:06:53 UTC 2017 - afaerber@suse.de
+
+- Add udooneo
+- Introduce IMX6_SPL, superseding per-board CUBOXI_SPL and UDOO_SPL
+
+-------------------------------------------------------------------
+Fri Jan  6 14:29:12 UTC 2017 - afaerber@suse.de
+
+- Add nanopineo
+- Inline CHANGE_DATE into u-boot.spec.in to keep future diffs small
+
+-------------------------------------------------------------------
+Thu Jan  5 10:16:20 UTC 2017 - guillaume@opensuse.org
+
+- Updated to v2017.01-rc3
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2017.01
+* Patches dropped:
+  0002-XXX-openSUSE-XXX-omap3-Move-to-dist.patch
+  0003-Revert-Revert-omap3-Use-raw-SPL-by-.patch
+  0004-ARM-bcm283x-Implement-EFI-RTS-reset.patch
+  0005-bcm2835-video-Map-frame-buffer-as-3.patch
+  0006-bcm2835-Reserve-the-spin-table-in-e.patch
+  0007-efi_loader-fix-depends-on-line-of-E.patch
+  0008-efi-Use-device-device-path-type-Mes.patch
+* Patches added:
+  0002-Revert-Revert-omap3-Use-raw-SPL-by-.patch
+
+-------------------------------------------------------------------
+Mon Dec 19 20:50:30 UTC 2016 - xxxxxmichl@googlemail.com
+
+- Added support for DE0-Nanos-SoC board
+
+-------------------------------------------------------------------
+Tue Nov 15 10:30:59 UTC 2016 - guillaume@opensuse.org
+
+- Updated to v2016.11 (bsc#1037636)
+
+-------------------------------------------------------------------
+Wed Nov  2 13:36:32 UTC 2016 - guillaume@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2016.11
+  to fix build of Raspberry Pi 1, 2 and 3
+
+-------------------------------------------------------------------
+Tue Nov  1 13:10:28 UTC 2016 - guillaume@opensuse.org
+
+- Updated to v2016.11-rc3
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2016.11
+* Patches dropped:
+  0004-efi_loader-Allow-boards-to-implemen.patch
+  0005-ARM-bcm283x-Implement-EFI-RTS-reset.patch
+  0006-efi_loader-gop-Expose-fb-when-32bpp.patch
+  0007-bcm2835-video-Map-frame-buffer-as-3.patch
+  0008-bcm2835-Reserve-the-spin-table-in-e.patch
+  0009-x86-Move-table-csum-into-separate-h.patch
+  0010-x86-Move-smbios-generation-into-arc.patch
+  0011-efi_loader-Expose-efi_install_confi.patch
+  0012-smbios-Allow-compilation-on-64bit-s.patch
+  0013-smbios-Expose-in-efi_loader-as-tabl.patch
+  0014-efi_loader-Fix-efi_install_configur.patch
+  0015-smbios-Provide-serial-number.patch
+  0016-efi_loader-Update-description-of-in.patch
+  0017-efi_loader-Fix-memory-map-size-chec.patch
+  0018-efi_loader-Fix-crash-on-32-bit-syst.patch
+  0019-efi_loader-Move-efi_allocate_pool-i.patch
+  0020-efi_loader-Track-size-of-pool-alloc.patch
+  0021-efi_loader-Readd-freed-pages-to-mem.patch
+  0022-efi_loader-Keep-memory-mapping-sort.patch
+  0023-efi_loader-Do-not-leak-memory-when-.patch
+* Patches added:
+  0004-ARM-bcm283x-Implement-EFI-RTS-reset.patch
+  0005-bcm2835-video-Map-frame-buffer-as-3.patch
+  0006-bcm2835-Reserve-the-spin-table-in-e.patch
+  0007-efi_loader-fix-depends-on-line-of-E.patch
+  0008-efi-Use-device-device-path-type-Mes.patch
+
+-------------------------------------------------------------------
+Sun Oct 16 16:20:25 UTC 2016 - afaerber@suse.de
+
+- Updated to v2016.11-rc1
+
+-------------------------------------------------------------------
+Sat Oct 15 11:25:48 UTC 2016 - agraf@suse.com
+
+- Backport patches to allow 4.8 kernels to boot
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2016.09
+* Patches added:
+  0016-efi_loader-Update-description-of-in.patch
+  0017-efi_loader-Fix-memory-map-size-chec.patch
+  0018-efi_loader-Fix-crash-on-32-bit-syst.patch
+  0019-efi_loader-Move-efi_allocate_pool-i.patch
+  0020-efi_loader-Track-size-of-pool-alloc.patch
+  0021-efi_loader-Readd-freed-pages-to-mem.patch
+  0022-efi_loader-Keep-memory-mapping-sort.patch
+  0023-efi_loader-Do-not-leak-memory-when-.patch
+
+-------------------------------------------------------------------
+Thu Oct 13 13:21:36 UTC 2016 - afaerber@suse.de
+
+- update_git.sh: Handle SUBLEVEL for %archive_version (x.y.Z)
+- Switch to branch tumbleweed-2016.09
+
+-------------------------------------------------------------------
+Fri Sep 30 20:01:33 UTC 2016 - guillaume@opensuse.org
+
+- Updated to v2016.09
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-staging
+* Patches dropped:
+  0009-Revert-armv8-Enable-CPUECTLR.SMPEN-.patch
+  0010-bcm2835_gpio-Implement-GPIOF_FUNC.patch
+  0011-serial-bcm283x_mu-Detect-disabled-s.patch
+  0012-x86-Move-table-csum-into-separate-h.patch
+  0013-x86-Move-smbios-generation-into-arc.patch
+  0014-efi_loader-Expose-efi_install_confi.patch
+  0015-smbios-Allow-compilation-on-64bit-s.patch
+  0016-smbios-Expose-in-efi_loader-as-tabl.patch
+  0017-efi_loader-Fix-efi_install_configur.patch
+  0018-smbios-Provide-serial-number.patch
+  0019-common-env_nand-Ensure-that-we-have.patch
+* Patches added:
+  0009-x86-Move-table-csum-into-separate-h.patch
+  0010-x86-Move-smbios-generation-into-arc.patch
+  0011-efi_loader-Expose-efi_install_confi.patch
+  0012-smbios-Allow-compilation-on-64bit-s.patch
+  0013-smbios-Expose-in-efi_loader-as-tabl.patch
+  0014-efi_loader-Fix-efi_install_configur.patch
+  0015-smbios-Provide-serial-number.patch
+- Add python as BuildRequires (needed by some boards using DTOC 
+  such as firefly-rk3288)
+- Fix firefly-rk3288 by replacing u-boot-spl-dtb.bin 
+  by u-boot-spl.bin
+- Updated to v2016.09.01
+
+-------------------------------------------------------------------
+Wed Sep 28 15:18:17 UTC 2016 - afaerber@suse.de
+
+- Fix rpi332b installation path and enable %post scriplet
+
+-------------------------------------------------------------------
+Sun Sep 11 03:44:15 UTC 2016 - afaerber@suse.de
+
+- Add hikey and rpi332b
+
+-------------------------------------------------------------------
+Wed Sep  7 09:02:59 UTC 2016 - guillaume@opensuse.org
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches added:
+  0019-common-env_nand-Ensure-that-we-have.patch
+
+-------------------------------------------------------------------
+Fri Sep  2 23:25:44 UTC 2016 - afaerber@suse.de
+
+- Add post-install script for Raspberry Pi to install to /boot/efi
+  where needed. (bsc#996064)
+
+-------------------------------------------------------------------
+Fri Aug 12 14:07:49 UTC 2016 - agraf@suse.com
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+- Update to v3 of the serial detect code (bsc#989511)
+* Patches added:
+  0010-bcm2835_gpio-Implement-GPIOF_FUNC.patch
+* Patches rebased:
+  0010-serial-bcm283x_mu-Detect-disabled-s.patch -> 0011-serial-bcm283x_mu-Detect-disabled-s.patch
+- Add SMBIOS table on ARM (bsc#989509)
+* Patches added:
+  0012-x86-Move-table-csum-into-separate-h.patch
+  0013-x86-Move-smbios-generation-into-arc.patch
+  0014-efi_loader-Expose-efi_install_confi.patch
+  0015-smbios-Allow-compilation-on-64bit-s.patch
+  0016-smbios-Expose-in-efi_loader-as-tabl.patch
+  0017-efi_loader-Fix-efi_install_configur.patch
+  0018-smbios-Provide-serial-number.patch
+
+-------------------------------------------------------------------
+Mon Aug  1 18:42:36 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Use deterministic build date by setting DATE_SOURCE_EPOCH
+
+-------------------------------------------------------------------
+Fri Jul 29 21:52:37 UTC 2016 - agraf@suse.com
+
+- Add dynamic detection of rpi3 uart (bsc#989511)
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches added:
+  0010-serial-bcm283x_mu-Detect-disabled-s.patch
+
+-------------------------------------------------------------------
+Sat Jul 16 18:49:35 UTC 2016 - afaerber@suse.de
+
+- Updated to v2016.07
+* Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches dropped (upstreamed):
+  0004-video-ipu-Fix-build-with-hard-float.patch
+  0005-efi_loader-Clean-up-system-table-on.patch
+  0006-efi_loader-gop-Don-t-expose-fb-addr.patch
+  0009-arm-Introduce-setjmp-longjmp.patch
+  0010-efi_loader-Add-exit-support.patch
+  0011-efi_loader-Add-DM_VIDEO-support.patch
+  0015-arm-Fix-setjmp.patch
+* Patches rebased:
+  0007-efi_loader-Allow-boards-to-implemen.patch -> 0004-efi_loader-Allow-boards-to-implemen.patch
+  0008-ARM-bcm283x-Implement-EFI-RTS-reset.patch -> 0005-ARM-bcm283x-Implement-EFI-RTS-reset.patch
+  0012-efi_loader-gop-Expose-fb-when-32bpp.patch -> 0006-efi_loader-gop-Expose-fb-when-32bpp.patch
+  0013-bcm2835-video-Map-frame-buffer-as-3.patch -> 0007-bcm2835-video-Map-frame-buffer-as-3.patch
+  0014-bcm2835-Reserve-the-spin-table-in-e.patch -> 0008-bcm2835-Reserve-the-spin-table-in-e.patch
+- Revert an ARMv8 breakage from v2016.07 (backport from master)
+  0009-Revert-armv8-Enable-CPUECTLR.SMPEN-.patch
+- Add dragonboard410c, odroid-c2, pine64_plus
+
+-------------------------------------------------------------------
+Mon Jun 27 11:00:33 UTC 2016 - nadvornik@suse.com
+
+- Enable SUNXI_SPL for orangepi_pc
+
+-------------------------------------------------------------------
+Mon Jun 27 06:14:09 UTC 2016 - agraf@suse.com
+
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches added:
+  0015-arm-Fix-setjmp.patch
+- Add update_git.sh to source file list
+
+-------------------------------------------------------------------
+Mon Jun  6 22:07:59 UTC 2016 - agraf@suse.com
+
+- Add efifb support for RPi
+- Fix spin table spill on Rpi
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches added:
+  0011-efi_loader-Add-DM_VIDEO-support.patch
+  0012-efi_loader-gop-Expose-fb-when-32bpp.patch
+  0013-bcm2835-video-Map-frame-buffer-as-3.patch
+  0014-bcm2835-Reserve-the-spin-table-in-e.patch
+
+-------------------------------------------------------------------
+Mon Jun  6 06:56:34 UTC 2016 - agraf@suse.com
+
+- Add RTS reboot for RPi
+- Add EFI exit support
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches added:
+  0007-efi_loader-Allow-boards-to-implemen.patch
+  0008-ARM-bcm283x-Implement-EFI-RTS-reset.patch
+  0009-arm-Introduce-setjmp-longjmp.patch
+  0010-efi_loader-Add-exit-support.patch
+
+-------------------------------------------------------------------
+Fri Jun  3 11:18:13 UTC 2016 - agraf@suse.com
+
+- Disable EFI GOP fb_addr, so Linux doesn't use it
+- Move to git based patch queue workflow
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed
+* Patches dropped:
+  0001-video-ipu-Fix-build-with-hard-float-ARM-toolchain.-I.patch
+  0001-XXX-openSUSE-XXX-Load-dtb-from-partition-2.patch
+  0002-XXX-openSUSE-XXX-omap3-Move-to-distro-bootcmd.patch
+* Patches added:
+  0001-XXX-openSUSE-XXX-Load-dtb-from-part.patch
+  0002-XXX-openSUSE-XXX-omap3-Move-to-dist.patch
+  0003-Revert-Revert-omap3-Use-raw-SPL-by-.patch
+  0004-video-ipu-Fix-build-with-hard-float.patch
+  0005-efi_loader-Clean-up-system-table-on.patch
+  0006-efi_loader-gop-Don-t-expose-fb-addr.patch
+
+-------------------------------------------------------------------
+Wed May 18 13:07:24 UTC 2016 - afaerber@suse.de
+
+- Fix rpi3 installation location
+
+-------------------------------------------------------------------
+Wed May 18 12:22:31 UTC 2016 - guillaume@opensuse.org
+
+- Add 0001-video-ipu-Fix-build-with-hard-float-ARM-toolchain.-I.patch
+  to fix build on iMX boards (with hard-float toolchains)
+
+-------------------------------------------------------------------
+Tue May 17 12:53:24 UTC 2016 - guillaume@opensuse.org
+
+- Update to 2016.05
+- Remove upstreamed patch:
+  * 0003-exynos-Set-CNTFRQ.patch
+
+-------------------------------------------------------------------
+Wed May  4 20:22:57 UTC 2016 - afaerber@suse.de
+
+- Package Marvell SPL for ClearFog
+- Tidy package summaries and descriptions
+* Fix spelling of U-Boot
+* Don't assume ARM
+
+-------------------------------------------------------------------
+Thu Apr 28 15:46:09 UTC 2016 - agraf@suse.com
+
+- Update to 2016.05-rc3
+  - Removed patches:
+    * 0004-iso-Make-little-endian-and-64bit-safe.patch
+    * 0005-iso-Start-with-partition-1.patch
+    * 0006-iso-Allow-512-byte-sector-size.patch
+    * 0007-efi_loader-Split-drive-add-into-function.patch
+    * 0008-efi_loader-Add-el-torito-support.patch
+    * 0009-efi_loader-Pass-file-path-to-payload.patch
+    * 0010-efi_loader-Increase-path-string-to-32-characters.patch
+    * 0011-distro-Enable-iso-partition-code.patch
+    * 0012-efi_loader-Use-system-fdt-as-fallback.patch
+    * 0013-efi_loader-Put-fdt-into-convenient-location.patch
+    * 0014-efi_loader-Expose-ascending-efi-memory-map.patch
+    * 0015-efi_loader-Always-flush-in-cache-line-size-granulari.patch
+    * 0016-efi_loader-Handle-memory-overflows.patch
+    * 0017-ARM-rpi-fix-64-bit-CONFIG_SYS_TEXT_BASE.patch
+
+-------------------------------------------------------------------
+Fri Apr 15 21:50:37 UTC 2016 - agraf@suse.com
+
+- Add patch to fix RPi3 aarch64 mode with recent firmware
+  * 0017-ARM-rpi-fix-64-bit-CONFIG_SYS_TEXT_BASE.patch
+
+-------------------------------------------------------------------
+Wed Apr 13 13:55:13 UTC 2016 - agraf@suse.com
+
+- Move patch queue to https://github.com/openSUSE/u-boot.git tumbleweed
+  - Removed old patches:
+    * 0001-iso-Make-little-endian-and-64bit-safe.patch
+    * 0002-iso-Start-with-partition-1.patch
+    * 0003-iso-Allow-512-byte-sector-size.patch
+    * 0004-efi_loader-Split-drive-add-into-function.patch
+    * 0005-efi_loader-Add-el-torito-support.patch
+    * 0006-efi_loader-Pass-file-path-to-payload.patch
+    * 0007-efi_loader-Increase-path-string-to-32-characters.patch
+    * 0008-distro-Enable-iso-partition-code.patch
+    * 0009-efi_loader-Use-system-fdt-as-fallback.patch
+    * 0010-efi_loader-Put-fdt-into-convenient-location.patch
+    * 0011-efi_loader-Expose-ascending-efi-memory-map.patch
+    * 0012-efi_loader-Always-flush-in-cache-line-size-granulari.patch
+    * u-boot-exynos.patch
+    * efi-default-env.patch
+    * omap3-Move-to-distro-bootcmd.patch
+  - Added new patches:
+    * 0001-XXX-openSUSE-XXX-Load-dtb-from-partition-2.patch
+    * 0002-XXX-openSUSE-XXX-omap3-Move-to-distro-bootcmd.patch
+    * 0003-exynos-Set-CNTFRQ.patch
+    * 0004-iso-Make-little-endian-and-64bit-safe.patch
+    * 0005-iso-Start-with-partition-1.patch
+    * 0006-iso-Allow-512-byte-sector-size.patch
+    * 0007-efi_loader-Split-drive-add-into-function.patch
+    * 0008-efi_loader-Add-el-torito-support.patch
+    * 0009-efi_loader-Pass-file-path-to-payload.patch
+    * 0010-efi_loader-Increase-path-string-to-32-characters.patch
+    * 0011-distro-Enable-iso-partition-code.patch
+    * 0012-efi_loader-Use-system-fdt-as-fallback.patch
+    * 0013-efi_loader-Put-fdt-into-convenient-location.patch
+    * 0014-efi_loader-Expose-ascending-efi-memory-map.patch
+    * 0015-efi_loader-Always-flush-in-cache-line-size-granulari.patch
+- Add patch to fix Jetson TK1
+  * 0016-efi_loader-Handle-memory-overflows.patch
+
+-------------------------------------------------------------------
+Wed Apr 13 13:16:42 UTC 2016 - guillaume@opensuse.org
+
+- Use released source archive instead of manually built archive
+
+-------------------------------------------------------------------
+Tue Apr 12 08:38:49 UTC 2016 - agraf@suse.com
+
+- Update to 2016.05-rc1
+- Remove upstreamed patches:
+  * efi.patch
+  * efi2.patch
+  * efi_loader-Call-fdt-preparation-functions.patch
+  * efi_loader-Pass-proper-device-path-in-on-boot.patch
+  * efi_loader-Provide-icache-flush-stub.patch
+  * efi-map-fdt-as-reserved.patch
+  * rpi3.patch
+- Add EFI fixes and iso boot backports:
+  * 0001-iso-Make-little-endian-and-64bit-safe.patch
+  * 0002-iso-Start-with-partition-1.patch
+  * 0003-iso-Allow-512-byte-sector-size.patch
+  * 0004-efi_loader-Split-drive-add-into-function.patch
+  * 0005-efi_loader-Add-el-torito-support.patch
+  * 0006-efi_loader-Pass-file-path-to-payload.patch
+  * 0007-efi_loader-Increase-path-string-to-32-characters.patch
+  * 0008-distro-Enable-iso-partition-code.patch
+  * 0009-efi_loader-Use-system-fdt-as-fallback.patch
+  * 0010-efi_loader-Put-fdt-into-convenient-location.patch
+  * 0011-efi_loader-Expose-ascending-efi-memory-map.patch
+  * 0012-efi_loader-Always-flush-in-cache-line-size-granulari.patch
+
+-------------------------------------------------------------------
+Sun Apr  3 04:40:53 UTC 2016 - afaerber@suse.de
+
+- Package .img for firefly-rk3288
+- Package firefly-rk3288 SPL images. Generate them here so that we
+  notice early if the size constraints are ever again not met.
+
+-------------------------------------------------------------------
+Sat Apr  2 23:08:53 UTC 2016 - afaerber@suse.de
+
+- Package spl/u-boot-spl for new tegra-uboot-flasher-scripts
+
+-------------------------------------------------------------------
+Fri Apr  1 17:07:55 UTC 2016 - afaerber@suse.de
+
+- Add clearfog
+
+-------------------------------------------------------------------
+Tue Mar 15 08:47:35 UTC 2016 - guillaume@opensuse.org
+
+- Update to 2016.03
+- Remove upstreamed patch:
+  * omap3-Use-raw-SPL-by-default-for-mmc1.patch
+
+-------------------------------------------------------------------
+Sun Mar 13 21:48:46 UTC 2016 - dmueller@suse.com
+
+- add support for Raspberry Pi 3 (rpi3.patch)
+
+-------------------------------------------------------------------
+Wed Mar  9 22:50:22 UTC 2016 - agraf@suse.com
+
+- Fix missing 0-terminator in efi patch, breaking boot.scr boot
+
+-------------------------------------------------------------------
+Sat Mar  5 22:02:18 UTC 2016 - afaerber@suse.de
+
+- Non-free licensed Marvell code has long been removed.
+  Drop obsolete drop-marvell.patch (bsc#773824)
+- Fix indentation of Patch6 in u-boot.spec.in
+
+-------------------------------------------------------------------
+Thu Mar  3 15:02:37 UTC 2016 - agraf@suse.com
+
+- EFI: Map fdt as reserved
+  * efi-map-fdt-as-reserved.patch
+
+-------------------------------------------------------------------
+Thu Mar  3 12:52:17 UTC 2016 - agraf@suse.com
+
+- Fix OMAP3 boards to load u-boot from raw sector offset
+  * omap3-Use-raw-SPL-by-default-for-mmc1.patch
+
+-------------------------------------------------------------------
+Wed Mar  2 23:46:44 UTC 2016 - agraf@suse.com
+
+- Allow grub2 to find its config
+  * efi_loader-Pass-proper-device-path-in-on-boot.patch
+- Fix Raspberry Pi 1 build
+  * efi_loader-Provide-icache-flush-stub.patch
+
+-------------------------------------------------------------------
+Wed Mar  2 10:03:56 UTC 2016 - guillaume@opensuse.org
+
+- Update to 2016.03-rc3
+- Remove upstreamed patches:
+  * 0001-spl-if-MMCSD_MODE_RAW-fails-try-MMCSD_MODE_FS-if-ava.patch
+
+-------------------------------------------------------------------
+Tue Mar  1 23:06:57 UTC 2016 - agraf@suse.com
+
+- Move omap3 to distro bootcmd (to enable efi boot on beagle-xm)
+  * omap3-Move-to-distro-bootcmd.patch
+- Add EFI patch to support FDT fixups (patches in RAM size)
+  * efi_loader-Call-fdt-preparation-functions.patch
+
+-------------------------------------------------------------------
+Mon Feb 29 23:28:15 UTC 2016 - agraf@suse.com
+
+- Patch the default u-boot env to search for dtb in /boot at part 2
+  * efi-default-env.patch
+
+-------------------------------------------------------------------
+Sun Feb 28 11:02:04 UTC 2016 - agraf@suse.com
+
+- Use $fdtfile rather than $fdt_name everywhere:
+  * efi2.patch
+
+-------------------------------------------------------------------
+Sat Feb 27 13:20:29 UTC 2016 - agraf@suse.com
+
+- Add EFI support about to move upstream:
+  * efi.patch
+
+-------------------------------------------------------------------
+Mon Feb 22 13:32:31 UTC 2016 - guillaume@opensuse.org
+
+- Update to 2016.03-rc2
+- Remove upstreamed patches:
+  * U-Boot-am335x_evm-Don-t-undef-CONFIG_BOOTDELAY.patch
+  * 0001-udoo-use-load-instead-of-fatload.patch
+- Refresh drop-marvell.patch
+- Remove dropped doc from file list: doc/README.Modem
+
+-------------------------------------------------------------------
+Wed Feb 17 08:16:15 UTC 2016 - guillaume@opensuse.org
+
+- Add a patch to fix boot on partition when raw boot mode is also 
+  available:
+  * 0001-spl-if-MMCSD_MODE_RAW-fails-try-MMCSD_MODE_FS-if-ava.patch
+
+-------------------------------------------------------------------
+Wed Feb 17 08:15:52 UTC 2016 - guillaume@opensuse.org
+
+- Add am335x_boneblack 
+
+-------------------------------------------------------------------
+Sat Feb 13 14:56:43 UTC 2016 - afaerber@suse.de
+
+- Enable Hyundai_A7HD, superseding :Contrib:sunxi package
+
+-------------------------------------------------------------------
+Thu Feb  9 13:02:26 UTC 2016 - afaerber@suse.de
+
+- Adjust installation path for qemu-ppce500 to replace qemu-ppc's
+* Pull in qemu (not qemu-ppc) for directory ownership
+
+-------------------------------------------------------------------
+Tue Feb  9 00:03:18 UTC 2016 - afaerber@suse.de
+
+- Add Jetson TX1 board (p2371-2180)
+- Fix indentation of last Patch line in .spec.in to match .spec
+
+-------------------------------------------------------------------
+Mon Feb  1 19:35:45 UTC 2016 - agraf@suse.com
+
+- Add patch to fix exynos armv7 kvm support
+  * adds u-boot-exynos.patch
+
+-------------------------------------------------------------------
+Tue Jan 19 14:15:58 UTC 2016 - afaerber@suse.de
+
+- Prepare for non-/boot installation directories
+* For /boot/vc pull in raspberrypi-firmware package
+
+-------------------------------------------------------------------
+Fri Jan 15 21:19:43 UTC 2016 - oscar@naiandei.net
+
+- Add udoo (dual and quad) boards
+  * adds 0001-udoo-use-load-instead-of-fatload.patch
+
+-------------------------------------------------------------------
+Thu Jan 14 15:43:36 UTC 2016 - afaerber@suse.de
+
+- Add qemu-ppce500, to replace u-boot.e500 blob in qemu package
+* Override CROSS_COMPILE variable to use native gcc
+
+-------------------------------------------------------------------
+Wed Jan 13 14:07:32 UTC 2016 - guillaume@opensuse.org
+
+- Update to 2016.01
+
+-------------------------------------------------------------------
+Mon Jan 11 11:08:50 UTC 2016 - guillaume@opensuse.org
+
+- Update to 2016.01-rc4
+
+-------------------------------------------------------------------
+Mon Dec 28 13:50:10 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2016.01-rc3
+
+-------------------------------------------------------------------
+Sun Dec 20 20:56:54 UTC 2015 - afaerber@suse.de
+
+- Suppress stripping debug info - it affects u-boot-jetson-tk1
+- Install rpi and rpi2 binaries to /boot/vc
+
+-------------------------------------------------------------------
+Tue Dec 15 09:27:03 UTC 2015 - guillaume@opensuse.org
+
+- Backport U-Boot-am335x_evm-Don-t-undef-CONFIG_BOOTDELAY.patch
+  to fix bootdelay on Beaglebone board
+
+-------------------------------------------------------------------
+Tue Dec 15 09:15:30 UTC 2015 - guillaume@opensuse.org
+
+- Add orangepi_pc board
+
+-------------------------------------------------------------------
+Fri Dec 11 09:23:17 UTC 2015 - guillaume@opensuse.org
+
+- Add support to am57xx_evm (beagle_x15 with u-boot DT)
+
+-------------------------------------------------------------------
+Fri Dec 11 09:08:25 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2016.01-rc2:
+- Rename 'beagle_x15' to 'am57xx_evm_nodt' to follow upstream
+- Remove upstreamed patch:
+  * U-Boot-1-2-usb-host-xhci-omap-fix-build-break.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 09:38:56 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2016.01-rc1
+- Remove upstreamed patches:
+  * 0001-configs-Use-config_distro_defaults.h-in-ti_armv7_com.patch
+  * 0001-mx6cuboxi-use-load-instead-of-fatload.patch (no more needed)
+  * U-Boot-image.c-Fix-non-Android-booting-with-ramdisk-and-or-device-tree.patch
+- Update drop-marvell.patch
+
+-------------------------------------------------------------------
+Sun Nov 15 13:11:56 UTC 2015 - matwey.kornilov@gmail.com
+
+- Backport 0001-configs-Use-config_distro_defaults.h-in-ti_armv7_com.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 15:03:05 UTC 2015 - tbechtold@suse.com
+
+- 0001-mx6cuboxi-use-load-instead-of-fatload.patch
+  for cubox-i use load instead of fatload
+
+-------------------------------------------------------------------
+Tue Nov  3 08:14:57 UTC 2015 - matwey.kornilov@gmail.com
+
+- Fix am335x booting
+  * U-Boot-image.c-Fix-non-Android-booting-with-ramdisk-and-or-device-tree.patch
+
+-------------------------------------------------------------------
+Wed Oct 21 08:16:32 UTC 2015 - guillaume@opensuse.org
+
+- Add Beagle x15 support
+- Fix build for Beagle x15: 
+  * U-Boot-1-2-usb-host-xhci-omap-fix-build-break.patch 
+
+-------------------------------------------------------------------
+Tue Oct 20 11:32:30 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.10
+- Remove upstreamed patches:
+  * 0001-odroid-replace-fatload-with-load-to-be-able-to-use-E.patch
+  * 0002-odroid-Add-boot-script-boot.scr-support.patch
+
+-------------------------------------------------------------------
+Tue Oct 13 06:58:38 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.10-rc5
+- Remove upstreamed patch:
+  * arndale-apply-cortex-a15-erratas.patch 
+
+-------------------------------------------------------------------
+Thu Oct  8 09:27:15 UTC 2015 - guillaume@opensuse.org
+
+- Add boot script support to odroid board:
+  * 0001-odroid-replace-fatload-with-load-to-be-able-to-use-E.patch
+  * 0002-odroid-Add-boot-script-boot.scr-support.patch
+
+-------------------------------------------------------------------
+Mon Oct  5 18:04:28 UTC 2015 - afaerber@suse.de
+
+- Add spring and firefly-rk3288 for armv7hl
+  * Break overly long armv7_boards line in pre_checkin.sh
+  * Clean up case'ing of defconfigs to avoid excessive wildcards
+- Prepare for adding qemu-ppce500 for ppc
+  * Allow for more than two exclusive architectures (cleanup)
+
+-------------------------------------------------------------------
+Mon Oct  5 11:42:08 UTC 2015 - dmueller@suse.com
+
+- add arndale-apply-cortex-a15-erratas.patch
+
+-------------------------------------------------------------------
+Thu Oct  1 16:41:38 UTC 2015 - guillaume.gardet@opensuse.org
+
+- Update to 2015.10-rc4
+- Update drop-marvell.patch
+
+-------------------------------------------------------------------
+Sat Sep 12 12:22:53 UTC 2015 - guillaume@opensuse.org
+
+- Use u-boot-2015.10-rc3.tar.bz2 package provided on FTP instead of
+  packaging it manually.
+
+-------------------------------------------------------------------
+Tue Sep  8 08:52:56 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.10-rc3
+
+-------------------------------------------------------------------
+Wed Sep  2 16:28:02 UTC 2015 - guillaume@opensuse.org
+
+- Add odroid and odroid-xu3
+
+-------------------------------------------------------------------
+Tue Aug 18 08:31:48 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.10-rc2 
+- Remove upstreamed patch:
+  * jetson-tk1-gpu-1.patch
+  * jetson-tk1-gpu-2.patch
+
+-------------------------------------------------------------------
+Thu Aug  6 12:40:58 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.10-rc1
+- Remove upstreamed patch:
+  * mx53loco-bootscr.patch
+- Update patches:
+  * jetson-tk1-gpu-1.patch
+  * jetson-tk1-gpu-2.patch
+
+-------------------------------------------------------------------
+Wed Aug  5 13:36:45 UTC 2015 - dmueller@suse.com
+
+- add mx6cuboxi
+
+-------------------------------------------------------------------
+Wed Jul 22 22:38:23 UTC 2015 - afaerber@suse.de
+
+- jetson-tk1-gpu-1.patch,
+  jetson-tk1-gpu-2.patch: Enable the Tegra124 GPU device tree node
+
+-------------------------------------------------------------------
+Mon Jul 20 10:45:39 UTC 2015 - afaerber@suse.de
+
+- Add u-boot-jetson-tk1
+
+-------------------------------------------------------------------
+Fri Jul 17 06:42:37 UTC 2015 - afaerber@suse.de
+
+- Add u-boot-merriia80optimus
+
+-------------------------------------------------------------------
+Wed Jul 15 13:05:24 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.07
+
+-------------------------------------------------------------------
+Tue Jun 30 07:34:49 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.07-rc3
+- Remove upstreamed patches:
+  * enable_spl_ext_support_for_ti_armv7.patch
+  * fix_slow_mmc_on_rpi.patch
+
+-------------------------------------------------------------------
+Thu Jun 18 12:07:10 UTC 2015 - guillaume@opensuse.org
+
+- Add fix_slow_mmc_on_rpi.patch to speed up MMC load on RPi
+- Rework patches (to be upstreamable):
+  * enable_spl_ext_support_for_ti_armv7.patch
+  * mx53loco-bootscr.patch
+- Remove fix_beagle_spl_build.patch
+
+-------------------------------------------------------------------
+Wed Jun 10 10:07:23 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.07-rc2
+- Update drop-marvell.patch
+
+-------------------------------------------------------------------
+Wed May 27 10:07:49 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.07-rc1:
+- Update drop-marvell.patch
+- Remove no more needed add_snow_usb_boot.patch
+
+-------------------------------------------------------------------
+Wed Apr 29 07:51:25 UTC 2015 - dmueller@suse.com
+
+- adjust copyright headers
+
+-------------------------------------------------------------------
+Thu Apr 16 08:34:11 UTC 2015 - guillaume@opensuse.org
+
+- update to 2015.04
+- Remove upstreamed patch: 
+  0001-Exynos-Clock-Fix-exynos5_get_periph_rate-for-I2C.patch
+- Follow upstream board rename colibri_t20_iris => colibri_t20
+
+-------------------------------------------------------------------
+Sun Apr 12 19:49:41 UTC 2015 - xxxxxmichl@googlemail.com
+
+- Added support for A13-OLinuXino, A13-OLinuXino-MICRO,
+  A20-OLinuXino-MICRO and A20-OLinuXino-LIME from
+  www.olimex.com
+
+-------------------------------------------------------------------
+Thu Apr  9 07:56:40 UTC 2015 - guillaume@opensuse.org
+
+- Remove u-boot-vexpressaemv8a (dropped upstream and we now use EFI)
+
+-------------------------------------------------------------------
+Thu Apr  2 09:13:49 UTC 2015 - guillaume@opensuse.org
+
+- update to 2015.04-rc5
+
+-------------------------------------------------------------------
+Mon Mar 23 08:39:40 UTC 2015 - guillaume@opensuse.org
+
+- update to 2015.04-rc4 
+
+-------------------------------------------------------------------
+Wed Mar  4 15:51:55 UTC 2015 - guillaume@opensuse.org
+
+- Add 0001-Exynos-Clock-Fix-exynos5_get_periph_rate-for-I2C.patch
+  to fix keyboard on Chromebook
+
+-------------------------------------------------------------------
+Wed Mar  4 15:46:52 UTC 2015 - guillaume@opensuse.org
+
+- update to 2015.04-rc3
+- update patch: drop-marvell.patch
+
+-------------------------------------------------------------------
+Thu Feb 26 16:48:35 UTC 2015 - guillaume@opensuse.org
+
+- Update add_snow_usb_boot.patch to boot on USB2 instead of USB3
+
+-------------------------------------------------------------------
+Wed Feb 25 15:47:07 UTC 2015 - guillaume@opensuse.org
+
+- Remove unneeded fix_snow_config.patch
+
+-------------------------------------------------------------------
+Tue Feb 24 09:48:50 UTC 2015 - guillaume@opensuse.org
+
+- Add rpi2 armv7 board
+
+-------------------------------------------------------------------
+Fri Feb 20 12:31:38 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.04-rc2
+
+-------------------------------------------------------------------
+Fri Feb 20 10:04:14 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.04-rc1
+  * Remove upstreamed patch pcm051-bootscr.patch
+  * Remove no more used patch fix_bootpart_snow_only.patch (now u-boot 
+  scan all known partitions, so no need to set a different boot partition)
+
+-------------------------------------------------------------------
+Sun Jan 25 20:20:46 UTC 2015 - matwey.kornilov@gmail.com
+
+- Enable pcm051rev3 for Phytec Wega board
+  * Add pcm051-bootscr.patch: add bootscript support (upstreamed in 2015.04-rc1)
+
+-------------------------------------------------------------------
+Tue Jan 13 14:32:17 UTC 2015 - guillaume@opensuse.org
+
+- Update to 2015.01:
+  * Drop upstreamed patches:
+    - 0001-spl-mmc-Fix-raw-boot-mode-related-to-commit.patch
+    - fix_sata.patch
+  * Update partially upstreamed mx53loco-bootscr.patch
+
+-------------------------------------------------------------------
+Tue Dec 16 11:10:23 UTC 2014 - guillaume@opensuse.org
+
+- Backport SPL MMC raw boot mode fix:
+  * 0001-spl-mmc-Fix-raw-boot-mode-related-to-commit.patch
+
+-------------------------------------------------------------------
+Sat Dec 13 12:12:41 UTC 2014 - xxxxxmichl@googlemail.com
+
+- Added support for A20-OLinuXIno-LIME2 and A10-OLinuXino-LIME from
+  www.olimex.com
+
+-------------------------------------------------------------------
+Tue Dec  9 11:23:41 UTC 2014 - guillaume@opensuse.org
+
+- Rename XLOADER to OMAP_SPL in pre_checkin.sh and u-boot.spec.in
+
+-------------------------------------------------------------------
+Tue Dec  9 09:15:27 UTC 2014 - guillaume@opensuse.org
+
+- Update to 2015.01-rc3 
+  * Drop upstreamed/unneeded patches:
+    - 0001-exynos-Enable-config_distro_defaults.h.patch
+    - 0002-exynos5-Use-config_distro_bootcmd.h.patch
+    - boot_mode_fallback.patch
+    - fix_snow_usb_support
+    - fix_spl_ext.patch
+    - fix_arm_hf_toolchain.patch
+    - origen-ext2.patch
+  * Update patch: 
+    - fix_snow_config.patch
+  * Follow upstream: rpi_b config renamed to rpi
+
+-------------------------------------------------------------------
+Tue Dec  2 12:41:55 UTC 2014 - guillaume@opensuse.org
+
+- Update snow (chromebook)
+  * Update patch: 
+    - fix_snow_config.patch patch
+  * Add patches:
+    - add_snow_usb_boot.patch to be able to boot from USB0
+    - fix_bootpart_snow_only.patch to boot on partition #2 (snow only!)
+  * Backport patches:
+    - fix_snow_usb_support.patch to fix USB on snow
+    - 0001-exynos-Enable-config_distro_defaults.h.patch
+    - 0002-exynos5-Use-config_distro_bootcmd.h.patch
+  * Drop unneeded/obsolete patches: 
+    - fix_exynos5_text_base.patch
+    - fix_snow_extra_env_settings.patch
+
+-------------------------------------------------------------------
+Sun Nov 30 13:17:33 UTC 2014 - guillaume@opensuse.org
+
+- Add Bananapi initial support
+
+-------------------------------------------------------------------
+Tue Nov 25 08:29:14 UTC 2014 - guillaume@opensuse.org
+
+- Update to 2015.01-rc2
+- Update patch fix_omap_boot_mode.patch to be upstreamable and 
+rename it to boot_mode_fallback.patch
+- Drop obsolete patch: arndale.patch
+- Add patches:
+  * fix_arm_hf_toolchain.patch: fix build with hard float toolchain
+  * fix_spl_ext.patch: fix SPL EXT error checks
+  * fix_sata.patch: fix sata support and fix also mx53loco build
+
+-------------------------------------------------------------------
+Wed Nov 19 21:44:17 CET 2014 - guillaume.gardet@opensuse.org
+
+- Fix mx53loco-bootscr.patch
+
+-------------------------------------------------------------------
+Mon Nov 17 21:15:50 UTC 2014 - oscar@naiandei.net
+
+- Add u-boot-with-sunxi-spl.bin for sunxi boards 
+
+-------------------------------------------------------------------
+Mon Nov 17 15:17:56 UTC 2014 - guillaume@opensuse.org
+
+- Make use of RPM_OPT_FLAGS during make 
+
+-------------------------------------------------------------------
+Sat Nov 15 14:55:06 UTC 2014 - guillaume@opensuse.org
+
+- Fix sunxi boards (use u-boot.img instead of u-boot.bin)
+- Remove duplicated default install line
+
+-------------------------------------------------------------------
+Tue Nov 11 13:32:36 UTC 2014 - guillaume@opensuse.org
+
+- Update to 2015.01-rc1
+-  Drop upstreamed patches:
+  * add_spl_extfs_support.patch
+  * ti_common_initrd_support.patch
+- Refresh patch:
+  * drop-marvell.patch
+- Drop CREDITS file from DOC (dropped upstream)
+
+-------------------------------------------------------------------
+Mon Nov  3 10:19:42 UTC 2014 - guillaume@opensuse.org
+
+- Apply fix_omap_boot_mode.patch only for omap3/omap4 boards
+
+-------------------------------------------------------------------
+Tue Oct 14 13:22:44 UTC 2014 - guillaume@opensuse.org
+
+- Update to version 2014.10
+- Drop upstreamed patch:
+  * fix_sabrelite_boot.scr.patch
+- Refresh patches:
+  * arndale.patch
+  * fix_snow_config.patch
+  * fix_exynos5_text_base.patch
+  * exynos5-dt.h.patch (renamed fix_snow_extra_env_settings.patch)
+
+-------------------------------------------------------------------
+Wed Oct  8 07:52:48 UTC 2014 - guillaume@opensuse.org
+
+- Update to version 2014.10-rc3 
+- Drop upstreamed patches:
+  * beagle-bootscr.patch
+  * panda-bootscr.patch
+  * am335x_evm-bootscr.patch
+- Refresh patches:
+  * fix_sabrelite_boot.scr.patch
+  * drop-marvell.patch
+  * add_spl_extfs_support.patch
+- Add a new patch to fix omap3beagle spl build:
+  * fix_beagle_spl_build.patch
+
+-------------------------------------------------------------------
+Mon Sep  8 13:06:52 UTC 2014 - guillaume@opensuse.org
+
+- Drop Hyundai_a7hd and cubox-i boards (now handle in Contrib repos
+since it is not upstreamed), so drop related patches:
+  * v2014.04-sunxi.patch
+  * cubox-i-v2014.04-port.patch
+  * cubox-i-enable_raw_rd.patch
+
+-------------------------------------------------------------------
+Wed Sep  3 12:02:22 UTC 2014 - guillaume@opensuse.org
+
+- Update to version 2014.10-rc2
+- drop upstreamed patch rpi_b-bootscr.patch
+- drop fix_spl_build_for_am335x.patch (does build without it)
+- Refresh patches:
+  * drop-marvell.patch
+  * fix_snow_config.patch
+
+-------------------------------------------------------------------
+Thu Aug 21 08:50:10 UTC 2014 - guillaume@opensuse.org
+
+- Update SPL EXT fs support:
+  * For omap boards (beagle and panda), SPL now looks for u-boot.img 
+  as upstream instead of u-boot.bin
+  * Remove mlo-ext2.patch to make proper patches in 
+order to ease upstreaming our EXT fs SPL functions
+  * Add panda-bootscr.patch to fix panda boot (was included in 
+  mlo-ext2.patch)
+  * Add fix_omap_boot_mode.patch to fix beagle and panda boot mode 
+  (was included in mlo-ext2.patch)
+  * Add add_spl_extfs_support.patch to get proper SPL EXT fs functions
+  * Add enable_spl_ext_support_for_ti_armv7.patch to enable SPL EXT fs
+  support for TI ARMv7 boards
+
+
+-------------------------------------------------------------------
+Tue Aug 19 17:35:22 UTC 2014 - matwey.kornilov@gmail.com
+
+- Update to version 2014.10-rc1 and update patches
+
+-------------------------------------------------------------------
+Thu Jul 31 13:59:00 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Sat Jun 14 11:58:43 UTC 2014 - afaerber@suse.de
+
+- add u-boot-cubietruck for Cubietruck (Cubieboard 3)
+
+-------------------------------------------------------------------
+Thu Jun 12 18:52:26 UTC 2014 - josua.m@t-online.de
+
+- add u-boot-mx6cubox-i for Cubox-i and Hummingboard
+  * currently conflicts with mlo-ext2 patch for omap4
+    so only for cubox-i target mlo-ext2.patch is skipped
+    and cubox-i patches are applied
+  * patch source: https://github.com/vorlonofportland/u-boot/
+    cubox-i-v2014.04-port.patch
+    cubox-i-enable_raw_rd.patch
+
+-------------------------------------------------------------------
+Tue Apr 29 13:41:18 UTC 2014 - guillaume@opensuse.org
+
+- Enhance pre_checkin.sh script to handle arch restrictions
+
+-------------------------------------------------------------------
+Tue Apr 29 13:18:48 UTC 2014 - guillaume@opensuse.org
+
+- Fix builds :
+  * 'tools' target is now 'tools-only'
+  * kermit scripts moved from 'tools/scripts' to 'tools/kermit/'
+  * Enhanced pre_checkin.sh script to handle uppercases in config name
+  * Renamed config from cubieboard to Cubieboard
+  * Renamed config from cubieboard2 to Cubieboard2
+  * Renamed config from hyundai_a7hd to Hyundai_A7HD
+  * Renamed config from mele_a1000 to Mele_A1000
+
+-------------------------------------------------------------------
+Tue Apr 29 13:06:57 UTC 2014 - guillaume@opensuse.org
+
+- Add vexpress_aemv8a board
+
+-------------------------------------------------------------------
+Tue Apr 29 08:33:48 UTC 2014 - guillaume@opensuse.org
+
+- Update to v2014.04
+  * Update mlo-ext2.patch
+  * Update mx53loco-bootscr.patch
+  * Update origen-ext2.patch
+  * Dropped v2014.01-sunxi.patch and created
+  v2014.04-sunxi.patch by diffing u-boot-2014.04 with 
+  u-boot-sunxi.git d9fe0a1e061e2bde6c24a0f7cef4f5023f3bd579
+  * Update rpi_b-bootscr.patch
+  * Drop gnuhash.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Mar 27 14:22:23 UTC 2014 - guillaume@opensuse.org
+
+- add u-boot-mx6qsabrelite (for iMX6 Sabre Lite board)
+
+-------------------------------------------------------------------
+Wed Feb  5 15:07:30 UTC 2014 - guillaume@opensuse.org
+
+- add u-boot-snow (for Chromebook ARM)
+
+-------------------------------------------------------------------
+Wed Feb  5 14:59:29 UTC 2014 - guillaume@opensuse.org
+
+- Fix boot.scr location for beagle and origen
+
+-------------------------------------------------------------------
+Thu Jan 30 14:28:34 UTC 2014 - dmueller@suse.com
+
+- add u-boot-cubieboard2 
+
+-------------------------------------------------------------------
+Thu Jan 30 06:46:45 UTC 2014 - afaerber@suse.de
+
+- Drop 0006-ARMV7-hardfp-build-fix.patch:
+  v2014.01 checks if -msoft-float compiles okay, and
+  U-Boot is soft-float according to Tom Rini
+
+-------------------------------------------------------------------
+Tue Jan 28 15:29:14 UTC 2014 - guillaume@opensuse.org
+
+- Disable CONFIG_SPL_OS_BOOT for ti armv7 configs with 
+fix_spl_build_for_am335x.patch to reduce size of am335x SPL
+
+-------------------------------------------------------------------
+Sat Jan 26 22:46:44 UTC 2014 - afaerber@suse.de
+
+- Update to v2014.01
+* Manually updated 0006-ARMV7-hardfp-build-fix.patch
+* Dropped v2013.10-sunxi.patch and created
+  v2014.01-sunxi.patch by merging u-boot.git v2014.01 onto
+  u-boot-sunxi.git e4a0232e173577893604b94fc3af7c047570970b
+* Added gnuhash.patch to fix .gnu.hash section handling in ldscripts
+* Rebased mlo-ext2.patch:
+  omap4_common.h CONFIG_SUPPORT_RAW_INITRD hunk is now covered by
+  ti_common_initrd_support.patch.
+  am335xevm build is known breaking due to size constraints not
+  trivially solvable without dropping our patch.
+
+-------------------------------------------------------------------
+Sun Jan 26 12:14:10 UTC 2014 - afaerber@suse.de
+
+- Fix regression in packaging u-boot-dtb-tegra.bin:
+  There is in fact a u-boot-spl.bin SPL being built,
+  but it is 0xff-padded as u-boot-spl-pad.bin and then
+  prepended to u-boot.bin and the .dtb.
+  u-boot-dtb.bin exists independently as just u-boot.bin and .dtb,
+  so give preference to u-boot-dtb-tegra.bin over u-boot-dtb.bin.
+
+-------------------------------------------------------------------
+Mon Jan 20 14:05:13 UTC 2014 - agraf@suse.com
+
+- The "Tegra SPL" is not an SPL but a differently named u-boot.bin
+  file. Fix up the generation scripts.
+
+-------------------------------------------------------------------
+Sun Jan 19 00:09:41 UTC 2014 - afaerber@suse.de
+
+- Include Tegra SPL for Colibri T20
+
+-------------------------------------------------------------------
+Wed Jan  8 17:26:10 UTC 2014 - agraf@suse.com
+
+- switch raspberry to ext2
+
+-------------------------------------------------------------------
+Wed Jan  8 13:41:32 UTC 2014 - matwey.kornilov@gmail.com
+
+- am335x_evm-bootscr.patch: Search for files in /boot, not in /boot/boot
+
+-------------------------------------------------------------------
+Wed Jan  8 02:07:44 UTC 2014 - afaerber@suse.de
+
+- rpi_b-bootscr.patch: Change rpi_b to use boot.scr
+
+-------------------------------------------------------------------
+Tue Jan  7 16:01:13 UTC 2014 - dmueller@suse.com
+
+- remove origin flavor 
+
+-------------------------------------------------------------------
+Mon Jan  6 22:57:05 UTC 2014 - afaerber@suse.de
+
+- Enable paz00 config (Toshiba AC100)
+
+-------------------------------------------------------------------
+Mon Jan  6 21:34:03 UTC 2014 - afaerber@suse.de
+
+- Enable colibri_t20_iris config (Toradex Colibri-T20 on Iris)
+- Update u-boot.spec.in copyright and fix typo in comment
+
+-------------------------------------------------------------------
+Sat Jan  4 01:47:50 UTC 2014 - agraf@suse.com
+
+- prefer u-boot-dtb.bin over u-boot.bin
+- simplify files section
+
+-------------------------------------------------------------------
+Fri Jan  3 16:54:30 UTC 2014 - dmueller@suse.com
+
+- mlo-ext2.patch: Search for files in /boot, not in /boot/boot 
+
+-------------------------------------------------------------------
+Mon Dec 30 18:37:50 UTC 2013 - matwey.kornilov@gmail.com
+
+- Add am335x_evm-bootscr.patch: Add bootscr to AM335x
+  platform based devices
+
+-------------------------------------------------------------------
+Tue Dec 17 14:33:52 UTC 2013 - guillaume@opensuse.org
+
+- Remove old unused patches:
+  * v2013.04-sunxi.patch
+  * loadaddr-defaults.patch
+
+-------------------------------------------------------------------
+Tue Dec 17 14:10:51 UTC 2013 - guillaume@opensuse.org
+
+- Add ti_common_initrd_support.patch to enable initrd support for 
+  AM335x boards
+
+-------------------------------------------------------------------
+Tue Dec 17 14:03:50 UTC 2013 - guillaume@opensuse.org
+
+- Add am335x_evm support which includes: Beagle Bone, 
+  Beagle Bone Black, TI AM335x EVM, TI AM335x EVM-SK
+
+-------------------------------------------------------------------
+Tue Nov 26 13:46:22 UTC 2013 - guillaume@opensuse.org
+
+- Add Arndale support
+
+-------------------------------------------------------------------
+Tue Nov 26 13:05:10 UTC 2013 - guillaume@opensuse.org
+
+- Update v2013.04-sunxi.patch to v2013.10-sunxi.patch
+
+-------------------------------------------------------------------
+Mon Nov 25 10:05:48 UTC 2013 - guillaume@opensuse.org
+
+- Remove kerneladdr and ramdiskaddr definition in u-boot patches 
+   (now done in JeOS image with u-boot hooks)
+- Update patches to current version:
+ * 0006-ARMV7-hardfp-build-fix.patch
+ * beagle-bootscr.patch
+ * mx53loco-bootscr.patch
+ * mlo-ext2.patch
+- Merge fix_omap4_ext2_boot.patch in mlo-ext2.patch 
+- Rename exynos-ext2.patch in origen-ext2.patch
+
+-------------------------------------------------------------------
+Mon Nov 25 09:57:12 UTC 2013 - guillaume@opensuse.org
+
+- Update to 2013.10
+
+-------------------------------------------------------------------
+Fri Nov 22 16:25:36 UTC 2013 - guillaume@opensuse.org
+
+- Fix OMAP4 pandaboard EXT2 boot
+
+-------------------------------------------------------------------
+Fri Sep 13 11:31:14 UTC 2013 - guillaume@opensuse.org
+
+- Fix u-boot.bin and boot.scr place since they are now in boot/ folder.
+
+-------------------------------------------------------------------
+Wed May  1 20:48:30 UTC 2013 - dmueller@suse.com
+
+- add support for cubieboard, hyundaia7hd, melea1000
+
+-------------------------------------------------------------------
+Wed May  1 08:18:26 UTC 2013 - dmueller@suse.com
+
+- update to 2013.04
+  * no upstream changelog available
+- remove dead u-boot-raspberrypi* (actually called rpib now)
+- add rpib variant
+
+-------------------------------------------------------------------
+Thu Apr 11 17:05:58 UTC 2013 - guillaume.gardet@opensuse.org
+
+- add omap3_beagle to targets 
+
+-------------------------------------------------------------------
+Thu Apr 11 16:05:41 UTC 2013 - dmueller@suse.com
+
+- remove u8500href subpackage, kernel got dropped
+
+-------------------------------------------------------------------
+Sun Apr  7 14:32:20 UTC 2013 - agraf@suse.com
+
+- update to 2013.04rc2
+- enable bootz support on all boards
+
+-------------------------------------------------------------------
+Wed Mar 20 07:21:06 UTC 2013 - agraf@suse.com
+
+- fix mlo-ext2.patch to actually use the ext4 infrastructure
+
+-------------------------------------------------------------------
+Sat Jan 26 10:38:07 UTC 2013 - dmueller@suse.com
+
+- update mlo-ext2.patch:
+  * use the ext4 driver now since ext2 got removed
+
+-------------------------------------------------------------------
+Wed Oct 24 22:33:13 UTC 2012 - agraf@suse.com
+
+- add sdhc-1.patch, sdhc-2.patch, sdhc-3.patch:
+  * backport upstream sdhc fixes
+
+-------------------------------------------------------------------
+Wed Oct 24 01:37:36 CEST 2012 - agraf@suse.de
+
+- update to 2012.10:
+  - refresh patches 0006-ARMV7-hardfp-build-fix.patch, mlo-ext2.patch,
+    loadaddr-defaults.patch, mx53loco-bootscr.patch
+
+-------------------------------------------------------------------
+Mon Oct 22 12:00:22 UTC 2012 - agraf@suse.com
+
+- fix origen by putting the ramdisk higher
+
+-------------------------------------------------------------------
+Mon Aug  6 09:39:54 UTC 2012 - dmueller@suse.com
+
+- remove Marvell sources as they are non-free licensed (bnc#773824)
+
+-------------------------------------------------------------------
+Thu Jul 26 18:21:44 UTC 2012 - agraf@suse.com
+
+- fix ext2 support for origen
+- add origen-spl.bin for origen
+
+-------------------------------------------------------------------
+Thu Jul 26 09:47:31 UTC 2012 - dmueller@suse.com
+
+- merge u-boot-tools
+
+-------------------------------------------------------------------
+Wed Jul 25 21:05:08 UTC 2012 - agraf@suse.com
+
+- add ext2 support by default in mx53loco
+
+-------------------------------------------------------------------
+Tue Jul 24 21:28:59 UTC 2012 - agraf@suse.com
+
+- add support for mx53loco
+
+-------------------------------------------------------------------
+Tue Jul 24 11:25:42 UTC 2012 - dmueller@suse.com
+
+- remove u-boot-omap3beagle 
+
+-------------------------------------------------------------------
+Mon Jul 23 22:34:04 UTC 2012 - agraf@suse.com
+
+- bump to 2012.04.01
+  - fixes bug in cmdline parsing
+
+-------------------------------------------------------------------
+Mon Jul 23 22:26:47 UTC 2012 - agraf@suse.com
+
+- add calxeda highbank support
+
+-------------------------------------------------------------------
+Thu Jul 12 12:51:56 UTC 2012 - agraf@suse.com
+
+- autoload boot.scr on beagle, so we can boot again
+
+-------------------------------------------------------------------
+Thu Jul 12 08:12:15 UTC 2012 - agraf@suse.com
+
+- update to upstream u-boot 2012.04
+  -> gets rid of linaro fork, only mainline now
+  -> gets us omap3 MLO support, no more need for x-loader
+  -> potentially fixes voltage issues on omap4
+
+-------------------------------------------------------------------
+Thu Jun 14 09:04:53 UTC 2012 - adrian@suse.de
+
+- add SUSE style conflicts to avoid installation of multiple
+  boot loaders
+
+-------------------------------------------------------------------
+Tue Apr 17 11:59:55 UTC 2012 - joop.boonen@opensuse.org
+
+- Included u-boot.spec.in and gen_spec.sh in the spec file
+
+-------------------------------------------------------------------
+Mon Feb  6 13:25:09 UTC 2012 - agraf@suse.com
+
+- use ext2 on panda
+
+-------------------------------------------------------------------
+Tue Dec 20 02:36:05 UTC 2011 - agraf@suse.com
+
+- use ttyO2 as default console= on OMAP boards
+
+-------------------------------------------------------------------
+Mon Dec 19 20:21:21 UTC 2011 - agraf@suse.com
+
+- add u8500_href and origen configs
+
+-------------------------------------------------------------------
+Fri Dec 16 16:03:01 UTC 2011 - agraf@suse.com
+
+- fix lint failures
+
+-------------------------------------------------------------------
+Fri Dec 16 14:46:53 CET 2011 - agraf@suse.com
+
+- don't install map
+
+-------------------------------------------------------------------
+Fri Dec 16 02:16:19 UTC 2011 - agraf@suse.com
+
+- generalize spec file to be able to build for more boards
+- add beagle board spec file
+- remove boot.scr
+
+-------------------------------------------------------------------
+Fri Dec 16 01:15:47 UTC 2011 - agraf@suse.com
+
+- rename to u-boot-omap4panda
+
+-------------------------------------------------------------------
+Tue Dec 13 17:24:45 UTC 2011 - dkukawka@suse.de
+
+- new package based on u-boot-omap4panda but use linaro u-boot git 
+  repo (http://git.linaro.org/git/boot/u-boot-linaro-stable.git)
+  instead of mainline u-boot. This package also contains the MLO 
+  (this package obsoletes the x-loader package)
+
+-------------------------------------------------------------------
+Tue Nov 29 22:53:44 UTC 2011 - joop.boonen@opensuse.org
+
+- COPYING CREDITS README are now in the standard package 
+
+-------------------------------------------------------------------
+Thu Nov 24 21:08:58 UTC 2011 - joop.boonen@opensuse.org
+
+- Corrected the links 
+
+-------------------------------------------------------------------
+Tue Nov 22 17:47:17 UTC 2011 - joop.boonen@opensuse.org
+
+- Build without u-boot tools as we have a u-boot-tools packages
+
+-------------------------------------------------------------------
+Sun Nov 20 17:00:43 UTC 2011 - joop.boonen@opensuse.org
+
+- Cleaned the spec file up the spec file
+- The name is the same as the package name 
+
+-------------------------------------------------------------------
+Sun Nov 13 13:13:39 UTC 2011 - joop.boonen@opensuse.org
+
+- Build u-boot according to http://elinux.org/Panda_How_to_MLO_&_u-boot
+- Using .txt config file instead of .scr it's gerated via mkimage
+
+-------------------------------------------------------------------
+Wed Nov 09 22:55:09 UTC 2011 - joop.boonen@opensuse.org
+
+- Used scr file based on http://elinux.org definition
+- Build u-boot 20111109
+- Used the Meego panda u-boot as a base
+
+-------------------------------------------------------------------
+Fri Feb 18 00:00:00 UTC 2011 - raghuveer.murthy@ti.com> 
+- 2010.09-MeeGo  
+- Fix for u-boot fails to compile on armv7hl, BMC#13140  
+  
+-------------------------------------------------------------------
+Thu Nov 18 00:00:00 UTC 2010 - peter.j.zhu@intel.com> 
+- 2010.09-MeeGo  
+- Don't build against i586, BMC#10159  
+  
+-------------------------------------------------------------------
+Tue Oct 10 00:00:00 UTC 2010 - nm@ti.com> 
+- 2010.09.rc1-MeeGo  
+- Added option to enable boot.scr generation and copy  
+  
+-------------------------------------------------------------------
+Mon Oct 04 00:00:00 UTC 2010 - nm@ti.com> 
+- 2010.09.rc1-MeeGo  
+- Update to 2010.09  
+  
+-------------------------------------------------------------------
+Wed Sep 14 00:00:00 UTC 2010 - nm@ti.com> 
+- 2010.09.rc1-MeeGo  
+- Update to 2010.09.rc1  
+- MeeGo customization  
+- Enabled PandaBoard, Beagleboard build  
+  
+-------------------------------------------------------------------
+Wed Mar 31 00:00:00 UTC 2010 - silvan.calarco@mambasoft.it> 
+- 2009.11.1-1mamba  
+- update to 2009.11.1
+  
+-------------------------------------------------------------------
+Wed Mar 31 00:00:00 UTC 2010 - 

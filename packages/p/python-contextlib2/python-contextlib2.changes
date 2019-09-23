@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Tue May 22 11:05:09 UTC 2018 - tchvatal@suse.com
+
+- Do not run the tests twice for no reason
+
+-------------------------------------------------------------------
+Tue May 22 10:56:10 UTC 2018 - mcepl@suse.com
+
+- Clean the SPEC, enable tests
+
+-------------------------------------------------------------------
+Thu Aug 24 13:34:54 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu May 25 10:47:29 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source URL.
+- Provide python2- package for compatibility with singlespec macros.
+- Run unit tests
+- Update to version 0.5.5
+  * Issue `#13 <https://github.com/jazzband/contextlib2/issues/13>`__:
+    ``setup.py`` now falls back to plain ``distutils`` if ``setuptools`` is not
+    available (patch by Allan Harwood)
+  * Updates to the default compatibility testing matrix:
+    * Added: PyPy3, CPython 3.6 (maintenance), CPython 3.7 (development)
+    * Dropped: CPython 3.3
+- Update to version 0.5.4
+  * Thanks to the welcome efforts of Jannis Leidel, contextlib2 is now a
+    [Jazzband](https://jazzband.co/) project! This means that I (Nick Coghlan)
+    am no longer a single point of failure for backports of future contextlib
+    updates to earlier Python versions.
+  * Issue `#7 <https://github.com/jazzband/contextlib2/issues/7>`__: Backported
+    fix for CPython issue `#27122 <http://bugs.python.org/issue27122>`__,
+    preventing a potential infinite loop on Python 3.5 when handling
+    ``RuntimeError`` (CPython updates by Gregory P. Smith & Serhiy Storchaka)
+- Update to version 0.5.3
+  * ``ExitStack`` now correctly handles context managers implemented as old-style
+    classes in Python 2.x (such as ``codecs.StreamReader`` and
+    ``codecs.StreamWriter``)
+  * ``setup.py`` has been migrated to setuptools and configured to emit a
+    universal wheel file by default
+- Update to version 0.5.2
+  * development migrated from BitBucket to GitHub
+  * ``redirect_stream``, ``redirect_stdout``, ``redirect_stderr`` and ``suppress``
+    now explicitly inherit from ``object``, ensuring compatibility with
+    ``ExitStack`` when run under Python 2.x (patch contributed by Devin
+    Jeanpierre).
+  * ``MANIFEST.in`` is now included in the published sdist, ensuring the archive
+    can be precisely recreated even without access to the original source repo
+    (patch contributed by Guy Rozendorn)
+- Update to version 0.5.1
+  * Python 2.6 compatilibity restored (patch contributed by Armin Ronacher)
+  * README converted back to reStructured Text formatting
+- Update to version 0.5.0
+  * Updated to include all features from the Python 3.4 and 3.5 releases of
+    contextlib (also includes some ``ExitStack`` enhancements made following
+    the integration into the standard library for Python 3.3)
+  * The legacy ``ContextStack`` and ``ContextDecorator.refresh_cm`` APIs are
+    no longer documented and emit ``DeprecationWarning`` when used
+  * Python 2.6, 3.2 and 3.3 have been dropped from compatibility testing
+  * tox is now supported for local version compatibility testing (patch by
+    Marc Abramowitz)
+
+-------------------------------------------------------------------
+Tue Nov  4 15:55:27 UTC 2014 - hpj@urpla.net
+
+- version 0.4.0: initial build
+
+

@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f909365df859445b9091294fffea9da</srcmd5>
+    <version>0.21</version>
+    <time>1295946640</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 57274 from user pbleser
+</comment>
+    <requestid>57274</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>489fe80c565cefcd4cf943fcac9c8af6</srcmd5>
+    <version>0.21</version>
+    <time>1295946647</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 57274
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>489fe80c565cefcd4cf943fcac9c8af6</srcmd5>
+    <version>0.21</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>489fe80c565cefcd4cf943fcac9c8af6</srcmd5>
+    <version>0.21</version>
+    <time>1319182139</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>ae3d16713242b86b1cb10f81e0efb21a</srcmd5>
+    <version>0.21</version>
+    <time>1331037521</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-3.0+
+No indication of LGPL-3.0 (only) files. See README also (forwarded request 107779 from babelworx)</comment>
+    <requestid>107781</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>ae3d16713242b86b1cb10f81e0efb21a</srcmd5>
+    <version>0.21</version>
+    <time>1340183641</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>ae3d16713242b86b1cb10f81e0efb21a</srcmd5>
+    <version>0.21</version>
+    <time>1359109360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>ae3d16713242b86b1cb10f81e0efb21a</srcmd5>
+    <version>0.21</version>
+    <time>1379663101</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>ae3d16713242b86b1cb10f81e0efb21a</srcmd5>
+    <version>0.21</version>
+    <time>1409301728</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9de6b11ccbeb3c21170cf239cf9098e1</srcmd5>
+    <version>0.23</version>
+    <time>1431668654</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307035</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aaf2a97e5056bd1e749a4eac0461d659</srcmd5>
+    <version>0.24</version>
+    <time>1519145831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578319</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>dc81a0553154d7016dc28f61ea548a53</srcmd5>
+    <version>0.24</version>
+    <time>1519218822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578597</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>953c0fb03ed45c764e1e239fc1408f7e</srcmd5>
+    <version>0.24</version>
+    <time>1568623995</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731052</requestid>
+  </revision>
+</revisionlist>

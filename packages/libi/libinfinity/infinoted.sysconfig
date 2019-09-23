@@ -1,0 +1,7 @@
+## Path:        Network/Infinoted
+## Description: Basic configuration for infinoted
+
+## Type:        string
+## Default      ""
+#
+INFINOTED_OPTIONS="-r /srv/infinoted --autosave-interval=600"

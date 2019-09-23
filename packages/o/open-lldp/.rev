@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e18f0b73e69bb5330baabc0686298b87</srcmd5>
+    <version>0.9.46</version>
+    <time>1382446381</time>
+    <user>scarabeus_factory</user>
+    <comment>needed for fcoe-utils</comment>
+    <requestid>203622</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d620745c995eeaa0aae76ca272088d1a</srcmd5>
+    <version>0.9.46</version>
+    <time>1386569626</time>
+    <user>coolo</user>
+    <comment>- Update to latest git version:
+  * VPD22 support
+  * Netlink fixes</comment>
+    <requestid>209600</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dc11921ea0721ca6c12c61ab6666b929</srcmd5>
+    <version>0.9.46</version>
+    <time>1396701762</time>
+    <user>coolo</user>
+    <comment>- Fix VEPA migration issue (bnc#866282)
+- Remove mkinitrd support
+- Use bzip2 for open-lldp-git-update.patch
+  * Add open-lldp-git-update.patch.bz2
+  * Delete open-lldp-git-update.patch (forwarded request 227010 from hreinecke)</comment>
+    <requestid>227705</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>664f8c07c104c10815e6b4030d7f6e7d</srcmd5>
+    <version>0.9.46</version>
+    <time>1400742258</time>
+    <user>coolo</user>
+    <comment>- Update to latest git version:
+  * Include upstream version of VEPA migration issue (bnc#866282)
+  * evb 22 test cases
+  * vdp22 fixes
+  * error message fixes
+  * Fix interop issues with Juniper switches
+- Fixup error messages in lldpad
+  * Add 0001-lldpad-print-verbose-error-messages.patch
+- Move to libnl3
+  * Add 0002-Move-to-libnl3.patch (forwarded request 233838 from hreinecke)</comment>
+    <requestid>234765</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>14b2538d3e7dc7fbc9ffdcce2eb8cfd8</srcmd5>
+    <version>0.9.46</version>
+    <time>1403176802</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237295</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>14b2538d3e7dc7fbc9ffdcce2eb8cfd8</srcmd5>
+    <version>0.9.46</version>
+    <time>1409302024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>29314dac5722c2cb6c2b926b86bedd1a</srcmd5>
+    <version>0.9.46</version>
+    <time>1428790113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294940</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8ae41e5ce912f4a852b01c990d3a818</srcmd5>
+    <version>1.0.1</version>
+    <time>1488407993</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use full URL as source, as the tarball does not exist at
+  that location. (forwarded request 460836 from dimstar)</comment>
+    <requestid>460918</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c3aa96a6f9020d1237b5e7187ec90790</srcmd5>
+    <version>1.0.1</version>
+    <time>1513851698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558599</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>139c81e07a4c154241f65ee7cba9f991</srcmd5>
+    <version>1.0.1+56.cb81e95</version>
+    <time>1551023897</time>
+    <user>coolo</user>
+    <comment>- Update to git commit cb81e9541b5 (FATE#326034,bug#1104011)
+  * 8021qaz: Remove unused variable
+  * 8021qaz: Honor willing value from config file
+  * lldpad: Support DSCP selectors in APP TLV's
+  * Fix application tlv display
+  * basman_clif: print the OID properly
+  * ecp22: deinit l2_packet_data before freeing ecp22
+  * DCB set state operation return value check
+  * memleak on received TLVs from modules
+  * Use interface index instead of name in libconfig
+  * Fix 'is_valid_mac' to include mcast mac address
+  * lldpad: Fix segfault in lldptool
+  * Fixup disabling PG
+  + open-lldp-v1.0.1+56.cb81e95.tar.xz
+- Remove superseded files
+  - open-lldp-1.0.1.tar.gz
+  - open-lldp-git-update.patch.bz2
+  - open-lldp-gcc5.patch
+  - 0001-l2_linux_packet-correctly-process-return-value-of-ge.patch
+  - 0002-lldpad-Only-set-Tx-adminStatus-if-interface-is-not-m.patch</comment>
+    <requestid>673290</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>155f3e36ee43675ff272ac354bfcb067</srcmd5>
+    <version>1.0.1+56.cb81e95</version>
+    <time>1553435790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686420</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>696ff9c7e3c6b6e68f0cc4becd99fa34</srcmd5>
+    <version>1.0.1+56.cb81e95</version>
+    <time>1558782913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704116</requestid>
+  </revision>
+</revisionlist>

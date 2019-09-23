@@ -1,0 +1,5 @@
+<package name="opa-ff" project="openSUSE:Factory">
+  <title>Intel Omi-Path Architecture FastFabric </title>
+  <description>The Intel Omi-Path Architecture FastFabric (FF) Toolset is designed to both simplify and expedite common cluster management tasks. FastFabric can assist in generic management tasks as well as OPA Fabric Suite Software installation, upgrade, configuration and verification tasks.</description>
+  <devel project="science:HPC" package="opa-ff"/>
+</package>

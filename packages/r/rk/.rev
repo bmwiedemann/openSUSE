@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b8912913660367e87e1731d88c98b05</srcmd5>
+    <version>1.5</version>
+    <time>1398923519</time>
+    <user>coolo</user>
+    <comment>New package: rk - a relativistic kinematics toolkit in C++</comment>
+    <requestid>231006</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7b8912913660367e87e1731d88c98b05</srcmd5>
+    <version>1.5</version>
+    <time>1409303190</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc6b31215b15a1c01e20397c4d172e6b</srcmd5>
+    <version>1.6</version>
+    <time>1426485684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290916</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e4103b3dd36da68a3965a2c464a0369a</srcmd5>
+    <version>1.7</version>
+    <time>1503593048</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514121</requestid>
+  </revision>
+</revisionlist>

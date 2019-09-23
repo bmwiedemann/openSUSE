@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">ovmf</param>
+    <param name="versionformat">2017+git%at.%h</param>
+    <param name="revision">UDK2017</param>
+    <param name="url">https://github.com/tianocore/edk2.git</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

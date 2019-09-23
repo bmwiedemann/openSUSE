@@ -1,0 +1,11 @@
+[Unit]
+Description=RFC 1413 identification server
+Documentation=man:oidentd(8) man:oidentd.conf(5) man:oidentd_masq.conf(5)
+
+[Service]
+Type=simple
+PrivateDevices=true
+EnvironmentFile=/etc/sysconfig/oidentd
+ExecStart=/usr/sbin/oidentd -I -u nobody -g nobody --foreground --nosyslog $OIDENTD_OPTIONS
+StandardInput=socket
+StandardError=syslog

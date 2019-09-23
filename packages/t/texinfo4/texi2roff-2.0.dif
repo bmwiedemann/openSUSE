@@ -1,0 +1,58 @@
+--- .pkgextract
++++ .pkgextract
+@@ -0,0 +1 @@
++bzcat ../texi2roff.patch.bz2 | patch -p0 -s -b --suffix=.Bader
+--- Makefile
++++ Makefile
+@@ -1,14 +1,14 @@
+ 
+ # Makefile for Texinfo to nroff/troff translator (texi2roff)
+ 
+-CC = cc
++CC = gcc
+ 
+ # Flags:
+ # -DBSD controls use of string(s).h and strchr/index only (not needed for Sun)
+ # use -Dvoid=int for System III and V7
+ 
+ # problems have been reported for -O with Sun4's, SunOS 4.0.1
+-CFLAGS = -O -s
++CFLAGS = $(RPM_OPT_FLAGS) -pipe
+ # CFLAGS = -g
+ # CFLAGS = -p
+ # CFLAGS = -ql
+@@ -16,7 +16,7 @@
+ OBJECTS = texi2roff.o table.o translate.o items.o
+ 
+ texi2roff: $(OBJECTS)
+-	$(CC) -o $@ $(CFLAGS) $(OBJECTS) -lc_s -link -z
++	$(CC) -o $@ $(CFLAGS) $(OBJECTS)
+ 
+ texi2roff.o : texi2roff.h
+ 
+--- texi2index
++++ texi2index
+@@ -14,7 +14,13 @@
+ # characters that make troff drop lines and preserves sort order
+ # for index entries containing typesetting commands.
+ 
+-FILE="$*"
++FILE="$@"
++
++if test -z "$FILE" ; then
++	echo "${0##*/}: No index files of texi2roff call given," 1>&2
++	echo "            please read manual page of texi2roff." 1>&2
++	exit 1
++fi
+ 
+ sed -n "s/^../&\\\\\\&/p" $FILE \
+ | sed "
+--- texi2roff.1
++++ texi2roff.1
+@@ -1,4 +1,5 @@
+-.TH TEXI2ROFF 1
++.TH Texi2roff 1 "1 Jan 90" "2.0"
++.UC 1
+ .DA 1 Jan 90
+ .SH NAME
+ texi2roff, texi2index \- convert Texinfo documents for formatting by troff.

@@ -1,0 +1,7 @@
+<package name="manchu-fonts" project="openSUSE:Factory">
+  <title>Manchu fonts</title>
+  <description>Manchu 2005 is a Unicode font for the Manchu language.
+
+</description>
+  <devel project="M17N:fonts" package="manchu-fonts"/>
+</package>

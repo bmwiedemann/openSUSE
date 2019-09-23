@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Fri Jul  3 06:43:14 UTC 2015 - sleep_walker@opensuse.org
+
+- Update to 0.3.4
+  * Some fixes for filterdiff and rediff.
+  * The splitdiff utility now has an option to write output to a
+    subdirectory.
+  * Ranges can now be prefixed by a modifier ('x') to exclude spans
+    instead of include them.
+  * Extended headers produced by git are now handled by filterdiff
+    and interdiff.
+- remove overrun.diff (upstream has the fix already)
+- remove autoconf part from spec file as tarball is generated with
+  new enough versions
+- install man pages manually
+- add signature file
+
+-------------------------------------------------------------------
+Fri Aug 29 18:27:42 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to 0.3.3:
+  * Context output format for "no newline" lines has been fixed.
+  * The splitdiff utility now has an option to disable ".patch"
+    filename extensions.
+  * Some fixes for bugs spotted by Coverity.
+  * Interdiff can now use "-" (stdin) for one of the inputs.
+- Run "make check" in %check section.
+
+-------------------------------------------------------------------
+Sat Mar  9 17:37:27 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with autmake-1.13, convert changes to utf-8
+
+-------------------------------------------------------------------
+Fri Dec  2 16:30:33 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Apr  4 14:50:41 UTC 2011 - sndirsch@novell.com
+
+- added patch and diffutils to requires (bnc #662957)
+
+-------------------------------------------------------------------
+Thu Feb 10 23:36:05 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.3.2:
+  * interdiff had previously been putting absolute filenames in the input to
+    the patch program; it now avoids doing this
+  * editdiff no longer runs rediff when no changes were made in the editor
+  * the correct exit status is now set when the decompress option fails
+  * a temporary file leak has been fixed
+
+-------------------------------------------------------------------
+Mon Apr 19 17:35:26 CEST 2010 - sndirsch@suse.de
+
+- rediff-hunk-init-fix.diff (Takashi Iwai)
+  * hunk structure wasn't correctly initialized; fixes 
+    tests/addhunk2 testcase, which broke the build
+
+-------------------------------------------------------------------
+Wed Jan  6 03:04:34 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jan 24 10:25:43 CET 2009 - sndirsch@suse.de
+
+- patchutils 0.3.1
+  * new release
+
+-------------------------------------------------------------------
+Fri Jul  4 15:33:33 CEST 2008 - sndirsch@suse.de
+
+- patchutils 0.3.0
+  * new release  
+
+-------------------------------------------------------------------
+Fri Mar 16 18:05:26 CET 2007 - dmueller@suse.de
+
+- fix rediff to actually work
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 11:11:21 CEST 2005 - mmj@suse.de
+
+- Update to 0.2.31 which fixes severeal small bugs
+
+-------------------------------------------------------------------
+Wed Aug 11 15:11:16 CEST 2004 - mmj@suse.de
+
+- Update to 0.2.30 where some minor parsing bugs were fixed,
+  the documentation was clarified, and a new option was added to
+  lsdiff/filterdiff for selecting patches based on the order in
+  which they appear.
+
+-------------------------------------------------------------------
+Tue Jul  6 17:18:42 CEST 2004 - mmj@suse.de
+
+- Update to 0.2.29 including since 0.2.27:
+ o Some format conversion bugs were fixed.
+ o Fix no-newline handling
+ o Generate context format that GNU patch actually understands.
+
+-------------------------------------------------------------------
+Tue Mar  2 13:41:12 CET 2004 - mmj@suse.de
+
+- Update to 0.2.27 including since 0.2.22:
+ o An option was added to lsdiff to treating empty files as
+   absent.
+ o The filterdiff and interdiff utilities now handle patches
+   containing embedded null characters.
+ o The dehtmldiff utility was improved slightly.
+ o A new filterdiff option for displaying patch filenames.
+ o A new splitdiff option to make it behave more like diffsplit.
+ o A new filterdiff option for removing timestamps.
+ o New grepdiff options -E and -f.
+ o Minor bugfixes
+
+-------------------------------------------------------------------
+Sat Jan 10 20:36:13 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Apr  8 01:43:10 CEST 2003 - ro@suse.de
+
+- fix tail calling syntax in testsuite 
+
+-------------------------------------------------------------------
+Wed Mar 26 14:29:29 CET 2003 - mmj@suse.de
+
+- Update to 0.2.22:, including the following since 0.2.17:
+  · New splitdiff option to split out every file-level patch, and
+    a new option was added to grepdiff to display matching hunks
+  · A new tool was added for exchanging the order of two patches
+  · Support for ISO 8601 timezones
+  · Several bug fixes
+  · Our patches are in mainline
+
+-------------------------------------------------------------------
+Mon Mar  3 17:04:33 CET 2003 - pthomas@suse.de
+
+- Use execvp in rediff, fixes #22428.
+- Fix configure.in for automake 1.6.
+
+-------------------------------------------------------------------
+Tue Sep 17 13:57:26 CEST 2002 - uli@suse.de
+
+- update -> 0.2.17 (support for conversion between unified and
+  context formats, new option (--annotate) added to filterdiff,
+  interdiff can now strip context lines from patches, recountdiff
+  and unwrapdiff tools added)
+
+-------------------------------------------------------------------
+Thu Jun 13 12:09:40 CEST 2002 - uli@suse.de
+
+- update -> 0.2.14 (hunk-level filtering was added to filterdiff)
+
+-------------------------------------------------------------------
+Fri May 10 14:23:09 CEST 2002 - uli@suse.de
+
+- update -> 0.2.13
+
+-------------------------------------------------------------------
+Fri Apr 19 16:07:00 CEST 2002 - uli@suse.de
+
+- fixed the fix
+
+-------------------------------------------------------------------
+Fri Apr 19 15:41:55 CEST 2002 - uli@suse.de
+
+- update -> 0.2.12pre1
+- added support for different date formats
+
+-------------------------------------------------------------------
+Fri Feb  1 14:31:54 CET 2002 - uli@suse.de
+
+- update -> 0.2.8 (adds grepdiff, bugfixes)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:16:57 CET 2001 - uli@suse.de
+
+- update -> 0.2.5 (bugs in lsdiff and combinediff fixed)
+
+-------------------------------------------------------------------
+Wed Nov 28 14:45:07 CET 2001 - uli@suse.de
+
+- initial package
+

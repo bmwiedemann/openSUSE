@@ -1,0 +1,20 @@
+--- pcmciautils-017/Makefile
++++ pcmciautils-017/Makefile
+@@ -126,7 +126,7 @@ WARNINGS += $(call cc-supports,-Wno-poin
+ WARNINGS += $(call cc-supports,-Wdeclaration-after-statement)
+ WARNINGS += -Wshadow
+ 
+-CFLAGS += -pipe -DPCMCIAUTILS_VERSION=\"$(VERSION)\"
++CFLAGS += -fpie -pipe -DPCMCIAUTILS_VERSION=\"$(VERSION)\"
+ YFLAGS := -d
+ 
+ HEADERS = \
+@@ -226,7 +226,7 @@ build/ccdv: build/ccdv.c
+ 	mv y.tab.h $*.h
+ 
+ $(PCCARDCTL): $(LIBC) src/$(PCCARDCTL).o src/$(PCCARDCTL).c $(OBJS) $(HEADERS)
+-	$(QUIET) $(LD) $(LDFLAGS) -o $@ $(CRT0) src/$(PCCARDCTL).o $(LIB_OBJS) $(ARCH_LIB_OBJS)
++	$(QUIET) $(LD) $(LDFLAGS) -pie -o $@ $(CRT0) src/$(PCCARDCTL).o $(LIB_OBJS) $(ARCH_LIB_OBJS)
+ 	$(QUIET) $(STRIPCMD) $@
+ 
+ $(PCMCIA_CHECK_BROKEN_CIS): $(LIBC) src/$(PCMCIA_CHECK_BROKEN_CIS).o src/read-cis.o $(OBJS) $(HEADERS)

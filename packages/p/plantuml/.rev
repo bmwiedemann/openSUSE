@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55f0f5dd5dbe265731030087adda667c</srcmd5>
+    <version>1.2019.6</version>
+    <time>1562843295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2019.6
+  See http://plantuml.com/de/changes for all changes
+- Update to new upstream version 1.2019.4
+- Restore original changelog entries
+- Fixed package internal issues
+- First commit for version 1.2018.14
+- Update to new upstream version 1.2018.10
+- Run spec-cleander
+- Improve the man page
+- Update to PlantUML 8029
+- Update to PlantUML 8025
+- Initial version 7177
+</comment>
+    <requestid>711867</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca6d45fa3a11a462f354774b70d6f687</srcmd5>
+    <version>1.2019.10</version>
+    <time>1568720386</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731407</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c317316ce55f516803f5a172e14bce0</srcmd5>
+    <version>1.2019.11</version>
+    <time>1569235609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732615</requestid>
+  </revision>
+</revisionlist>

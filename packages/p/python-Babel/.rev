@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7865f21e2e2a7e4cb9a13c9d235c89c6</srcmd5>
+    <version>0.9.6</version>
+    <time>1314892074</time>
+    <user>darix</user>
+    <comment>Please add, replaces python-babel</comment>
+    <requestid>80525</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2fbf41544e2d218814dcba57aca487b0</srcmd5>
+    <version>0.9.6</version>
+    <time>1314892084</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80525
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2fbf41544e2d218814dcba57aca487b0</srcmd5>
+    <version>0.9.6</version>
+    <time>1319182377</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>83e5988404cf0502140bc6b3795281e2</srcmd5>
+    <version>0.9.6</version>
+    <time>1323194078</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>83e5988404cf0502140bc6b3795281e2</srcmd5>
+    <version>0.9.6</version>
+    <time>1340184027</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>83e5988404cf0502140bc6b3795281e2</srcmd5>
+    <version>0.9.6</version>
+    <time>1359109971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>83e5988404cf0502140bc6b3795281e2</srcmd5>
+    <version>0.9.6</version>
+    <time>1379664094</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6b1542adb5388109b60b78c5af3bac7</srcmd5>
+    <version>1.3</version>
+    <time>1380608738</time>
+    <user>coolo</user>
+    <comment>- make tests happy on openSUSE_12.2 (too old pytests)
+------------------------------------------------------------------ (forwarded request 201460 from dirkmueller)</comment>
+    <requestid>201469</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>100ab0534682dd890e101735d64c923b</srcmd5>
+    <version>1.3</version>
+    <time>1382692293</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204524</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>00faee631d83c86c3e7e4970235f6d85</srcmd5>
+    <version>1.3</version>
+    <time>1389799603</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213898</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>31636bfa178479c2a001654bd4808463</srcmd5>
+    <version>1.3</version>
+    <time>1408196274</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244825</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>31636bfa178479c2a001654bd4808463</srcmd5>
+    <version>1.3</version>
+    <time>1409302779</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>620395c5f35d1a4614d2e6f654cacf03</srcmd5>
+    <version>1.3</version>
+    <time>1416048056</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261622</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>fed2a0680f2c259338f66d83a21c5b96</srcmd5>
+    <version>1.3</version>
+    <time>1432982003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309071</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>43c7e849b05cd17a8ecceabda7162448</srcmd5>
+    <version>1.3</version>
+    <time>1436111748</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314747</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>b3233ca1c13c6031c1db20d21cd0b28e</srcmd5>
+    <version>1.3</version>
+    <time>1438076551</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318745</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e1a3a9822992f6763bfd6169bde67663</srcmd5>
+    <version>2.2.0</version>
+    <time>1455611228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357120</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>56b7506359419119b9dca72b58caae77</srcmd5>
+    <version>2.3.4</version>
+    <time>1463392979</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.4:
+  * CLDR: The lxml library is no longer used for CLDR importing, so it should not cause strange failures e
+  * CLI: Every last single CLI usage regression should now be gone, and both distutils and stand-alone CLI
+  * CLI: Usage regressions that had snuck in between 2.2 and 2.3 should be no more. (https://github.com/py
+  * Dates: Period (am/pm) formatting was broken in certain locales (namely zh_TW). Thanks to @jun66j5 for 
+  * CLDR: Add an API for territory language data (https://github.com/python-babel/babel/pull/315)
+  * Core: Character order and measurement system data is imported and exposed (https://github.com/python-b
+  * Dates: Add an API for time interval formatting (https://github.com/python-babel/babel/pull/316)
+  * Dates: More pattern formats and lengths are supported (https://github.com/python-babel/babel/pull/347)
+  * Dates: Period IDs are imported and exposed (https://github.com/python-babel/babel/pull/349)
+  * Dates: Support for date-time skeleton formats has been added (https://github.com/python-babel/babel/pu
+  * Dates: Timezone formatting has been improved (https://github.com/python-babel/babel/pull/338)
+  * Messages: JavaScript extraction now supports dotted names, ES6 template strings and JSX tags (https://
+- drop fix-timezone-test.patch skip-dst-tests.patch, no longer necessary</comment>
+    <requestid>394950</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>db7d22201c3cac45e68d65e721388e23</srcmd5>
+    <version>2.4.0</version>
+    <time>1492618013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>485023</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9a2065ccf3c5a62e59b1e3ff043c5617</srcmd5>
+    <version>2.4.0</version>
+    <time>1494345562</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493146</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26f713174e0f51585a4b2243871612f5</srcmd5>
+    <version>2.5.0</version>
+    <time>1503591594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518417</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ebfce15df6b9a8821c1d4d029c067fc6</srcmd5>
+    <version>2.5.1</version>
+    <time>1507896358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532071</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>86595ffcab49624a1a41e54395bf1299</srcmd5>
+    <version>2.5.1</version>
+    <time>1519902103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580584</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>831d9ea38edf3db500a4db3a524e100b</srcmd5>
+    <version>2.5.3</version>
+    <time>1526030786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605126</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7642d8d3891fd0c91b2d40d17d9bd5b2</srcmd5>
+    <version>2.6.0</version>
+    <time>1530087444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618932</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>cf5e70379700978bfeac399e7664a5db</srcmd5>
+    <version>2.6.0</version>
+    <time>1544094836</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653932</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>36cfb6245824446c72994869433c04c0</srcmd5>
+    <version>2.7.0</version>
+    <time>1560861945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707406</requestid>
+  </revision>
+</revisionlist>

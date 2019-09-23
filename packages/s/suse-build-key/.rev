@@ -1,0 +1,286 @@
+<revisionlist>
+  <revision rev="1" vrev="686">
+    <srcmd5>0847e36edd149fb77e81eeaee97c1cc9</srcmd5>
+    <version>1.0</version>
+    <time>1168904298</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="717">
+    <srcmd5>00e030bb0edd0b31f73482657da908d4</srcmd5>
+    <version>1.0</version>
+    <time>1174433783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="843">
+    <srcmd5>96d6d6d944e85a25924260ab7a46d6d9</srcmd5>
+    <version>1.0</version>
+    <time>1210005444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="852">
+    <srcmd5>a860ac4c3e10bac74bdb5b398d5bff9c</srcmd5>
+    <version>1.0</version>
+    <time>1212447787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c7f21a86fd3a30c4dd5f706dd0a982b</srcmd5>
+    <version>unknown</version>
+    <time>1221727505</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="853">
+    <srcmd5>7b831141bd94e806f10879d4b903d9e1</srcmd5>
+    <version>1.0</version>
+    <time>1221727828</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="854">
+    <srcmd5>24b4aa9902a0942f55f0b09199604376</srcmd5>
+    <version>1.0</version>
+    <time>1221732808</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="855">
+    <srcmd5>a860ac4c3e10bac74bdb5b398d5bff9c</srcmd5>
+    <version>1.0</version>
+    <time>1221792459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="856">
+    <srcmd5>24b4aa9902a0942f55f0b09199604376</srcmd5>
+    <version>1.0</version>
+    <time>1221809836</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="857">
+    <srcmd5>1904747dee755b98e7e5c55ec2cce3b1</srcmd5>
+    <version>1.0</version>
+    <time>1221809858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="858">
+    <srcmd5>24b4aa9902a0942f55f0b09199604376</srcmd5>
+    <version>1.0</version>
+    <time>1221810086</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="859">
+    <srcmd5>a860ac4c3e10bac74bdb5b398d5bff9c</srcmd5>
+    <version>1.0</version>
+    <time>1221879009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="860">
+    <srcmd5>8554bd66d9a0caf0a88847891145e72e</srcmd5>
+    <version>1.0</version>
+    <time>1222069099</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="861">
+    <srcmd5>a860ac4c3e10bac74bdb5b398d5bff9c</srcmd5>
+    <version>1.0</version>
+    <time>1222093943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="907">
+    <srcmd5>a860ac4c3e10bac74bdb5b398d5bff9c</srcmd5>
+    <version>1.0</version>
+    <time>1222093943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="908">
+    <srcmd5>8f9cd905b850fbdc081eef44c947e642</srcmd5>
+    <version>1.0</version>
+    <time>1225718756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="910">
+    <srcmd5>8f9cd905b850fbdc081eef44c947e642</srcmd5>
+    <version>1.0</version>
+    <time>1225718756</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="911">
+    <srcmd5>930d954160ef7c2d77ec004edee48136</srcmd5>
+    <version>1.0</version>
+    <time>1268926250</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="19" vrev="912">
+    <srcmd5>2ab1e81f9b1fd2b9cd39d6f35bf292ba</srcmd5>
+    <version>1.0</version>
+    <time>1272990743</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="913">
+    <srcmd5>e4fef142c426cc4217bcb28ffc14da34</srcmd5>
+    <version>1.0</version>
+    <time>1272994435</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="21" vrev="915">
+    <srcmd5>e4fef142c426cc4217bcb28ffc14da34</srcmd5>
+    <version>1.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="916">
+    <srcmd5>e4fef142c426cc4217bcb28ffc14da34</srcmd5>
+    <version>1.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="23" vrev="919">
+    <srcmd5>e4fef142c426cc4217bcb28ffc14da34</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="921">
+    <srcmd5>e4fef142c426cc4217bcb28ffc14da34</srcmd5>
+    <version>1.0</version>
+    <time>1319182496</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="922">
+    <srcmd5>36d9a1e49d3bdeed7d478cb1c99f8814</srcmd5>
+    <version>1.0</version>
+    <time>1323194780</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="924">
+    <srcmd5>36d9a1e49d3bdeed7d478cb1c99f8814</srcmd5>
+    <version>1.0</version>
+    <time>1340184245</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="925">
+    <srcmd5>b1f75142bb35006bc3137aad55050ae2</srcmd5>
+    <version>1.0</version>
+    <time>1350936631</time>
+    <user>coolo</user>
+    <comment>- export keys to single files in /usr/lib/rpm/gnupg/keys (forwarded request 138949 from oertel)</comment>
+    <requestid>138962</requestid>
+  </revision>
+  <revision rev="28" vrev="927">
+    <srcmd5>b1f75142bb35006bc3137aad55050ae2</srcmd5>
+    <version>1.0</version>
+    <time>1359110449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="929">
+    <srcmd5>b1f75142bb35006bc3137aad55050ae2</srcmd5>
+    <version>1.0</version>
+    <time>1379664744</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="930">
+    <srcmd5>fbcd7dd96f8509c79b356643b92d07aa</srcmd5>
+    <version>1.0</version>
+    <time>1380475739</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>201136</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1dd74f8c5af799429731e972214ff8ad</srcmd5>
+    <version>12.0</version>
+    <time>1389334586</time>
+    <user>coolo</user>
+    <comment>- Merged over logic from openSUSE-build-key.
+- Got rid of default importing into roots keyring.
+- Removed some old keys.
+- Clarify that security@suse.de is a email only key
+- PTF key is supplied also as %doc, to not be default
+  imported.
+- Keys currently inside:
+  - pub  2048R/39DB7C82 SuSE Package Signing Key &amp;lt;build@suse.de&amp;gt;
+  - pub  2048R/50A3DD1C SuSE Package Signing Key (reserve key) &amp;lt;build@suse.de&amp;gt;
+  - pub  1024D/B37B98A9 SUSE PTF Signing Key &amp;lt;support@suse.com&amp;gt;
+  - pub  2048R/3D25D3D9 SuSE Security Team &amp;lt;security@suse.de&amp;gt; (forwarded request 213302 from msmeissn)</comment>
+    <requestid>213303</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>5feae77c5f60f9c3fade338a1be266b4</srcmd5>
+    <version>12.0</version>
+    <time>1389704119</time>
+    <user>coolo</user>
+    <comment>- reverted to contain the fullkeyring build SLE12 Alpha.
+- also list the old sle11 build@suse.de key temporary</comment>
+    <requestid>213750</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>5feae77c5f60f9c3fade338a1be266b4</srcmd5>
+    <version>12.0</version>
+    <time>1409303428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>b3e6311509f316f9dfc2e3f20b036d0f</srcmd5>
+    <version>12.0</version>
+    <time>1409761390</time>
+    <user>coolo</user>
+    <comment>- Went to new method again.
+  - suse-build-key.gpg blob dropped
+  - ship seperate files</comment>
+    <requestid>247206</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>9ac6ca67e147d49c31466ead85d3e5ec</srcmd5>
+    <version>12.0</version>
+    <time>1503593804</time>
+    <user>dimstar_suse</user>
+    <comment>- extend the build@suse.de product key. (bsc#1014151)
+  pub  2048R/39DB7C82 2013-01-31 [expires: 2020-12-06]
+  uid                            SuSE Package Signing Key &amp;lt;build@suse.de&amp;gt;
+
+- use dumpsigs script from openSUSE to merge code 
+
+- renamed security_at_suse_de.asc to security_at_suse_de_old.asc
+- security_at_suse_de.asc: new 4096 bit RSA key.
+  pub  4096R/317CD502 2014-10-02 SUSE Security Team &amp;lt;security@suse.de&amp;gt;
+  bnc#899509
+
+- create suse-build-key.gpg during build.
+- Remove old keys from keyring. (fate#314767)
+  Keys currently inside the RPM trusted keyring:
+  - pub  2048R/39DB7C82 SuSE Package Signing Key &amp;lt;build@suse.de&amp;gt;
+  - pub  2048R/50A3DD1C SuSE Package Signing Key (reserve key) &amp;lt;build@suse.de&amp;gt;
+- Various keys are moved to the documentation area
+  (/usr/share/doc/packages/suse-build-key)
+  - build-at-suse-sle11.asc: the old SUSE Linux Enterprise 11 key.
+    if SUSE Linux Enterprise 11 packages need to be verified on
+    a SUSE Linux Enterprise 12 system.
+  - suse_ptf_key.asc: The suse ptf key. For verification of provided PTFs.
+  - security_at_suse_de.asc: Use only for email encryption and
+    verification purposes when contacting our security contact address
+    security@suse.de (forwarded request 518537 from msmeissn)</comment>
+    <requestid>518538</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>85a023d44b8a0b95041366a53f6bab4b</srcmd5>
+    <version>12.0</version>
+    <time>1531232205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621749</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>c1e81d32c00e3eeb512a33ee08d5eafb</srcmd5>
+    <version>12.0</version>
+    <time>1548704982</time>
+    <user>dimstar_suse</user>
+    <comment>- add PTF key to the key directory, so it does not get stripped 
+  out when using --exclude-docs (bsc#1044232)</comment>
+    <requestid>669010</requestid>
+  </revision>
+</revisionlist>

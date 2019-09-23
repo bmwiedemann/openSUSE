@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a38c823a01a7ad93ec07e4de0f9fef68</srcmd5>
+    <version>1.15</version>
+    <time>1393742577</time>
+    <user>coolo</user>
+    <comment>New package, just split from ladspa
+Resubmission after the license correction</comment>
+    <requestid>223909</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e654d04666e74b7ea11fac33f323f68e</srcmd5>
+    <version>1.15</version>
+    <time>1393936601</time>
+    <user>coolo</user>
+    <comment>- Remove obsoleted autoreq/autoprov tags
+- Patch carried from the original ladspa package:
+  cmt_src_1.15.diff
+
+- add source URL, see https://en.opensuse.org/SourceUrls
+- change to verbatim upstream tarball
+- add project URL</comment>
+    <requestid>224426</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e654d04666e74b7ea11fac33f323f68e</srcmd5>
+    <version>1.15</version>
+    <time>1409301453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

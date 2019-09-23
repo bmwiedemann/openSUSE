@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Sep 27 19:07:30 UTC 2018 - sndirsch@suse.com
+
+- no longer use $RPM_OPT_FLAGS in order to make it a real noarch
+  package (boo#1110020)
+
+-------------------------------------------------------------------
+Tue Feb 27 13:11:08 UTC 2018 - schwab@suse.de
+
+- u_riscv.patch: Add support for riscv64
+
+-------------------------------------------------------------------
+Tue Dec 22 17:40:26 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.6:
+  + configure: Drop AM_MAINTAINER_MODE
+  + autogen.sh: Honor NOCONFIGURE=1
+  + Remove very out of date OS2 DLL mappings for no-longer-shipped makedef.cmd
+  + sun.cf: limit SysV man page sections to Solaris 2.0-11
+  + sun.cf: Sun Studio 12.0 & later compilers prefer -m32/-m64
+  + README: reword status section
+  + Remove os2def.db from EXTRA_DIST
+
+-------------------------------------------------------------------
+Wed Aug 14 11:11:40 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.5:
+  + sun.cf: stop linking libraries merged into libc in later
+    Solaris releases.
+  + Remove xprint_host.def.
+  + Trim trailing whitespace.
+  + Add Aarch64 support.
+  + Update xorgversion.def from 7.6 to 7.7.
+  + On Solaris 11 & later, use /usr/gnu/bin/install for InstallCmd.
+- Drop aarch64-support.diff, fixed upstream.
+
+-------------------------------------------------------------------
+Sun Mar  3 09:32:26 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
+
+-------------------------------------------------------------------
+Fri Mar  1 10:58:34 UTC 2013 - dmueller@suse.com
+
+- add aarch64-support.diff:
+  Add support for aarch64 
+
+-------------------------------------------------------------------
+Tue Jun 26 10:03:03 UTC 2012 - sndirsch@suse.com
+
+- finally changed BuildRequires to font-util (see change before)
+
+-------------------------------------------------------------------
+Thu Apr 19 09:56:43 UTC 2012 - vuntz@opensuse.org
+
+- Change font-util BuildRequires to xorg-x11-fonts-devel:
+  xorg-x11-fonts-devel hasn't been renamed yet.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split xorg-cf-files from xorg-x11-util-devel.
+  Initial version: 1.0.4.
+

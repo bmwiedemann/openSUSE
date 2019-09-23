@@ -1,0 +1,589 @@
+-------------------------------------------------------------------
+Thu Aug 23 05:38:59 UTC 2018 - coolo@suse.com
+
+- updated to 2.68
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.68     2018-08-21
+  
+  - Speedups to the internals to avoid re-validating the same sets of parameters
+    repeatedly. Based on a PR #54 from Sergey Leschenko.
+
+-------------------------------------------------------------------
+Sun Oct  1 05:40:30 UTC 2017 - coolo@suse.com
+
+- updated to 2.67
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.67     2017-09-24
+  
+  - Added a lazy_open option to the File output. This delays opening the file
+    until the first time a log message is written to it. Implemented by Slaven
+    Rezić. GH #50.
+
+-------------------------------------------------------------------
+Wed Aug 16 05:43:04 UTC 2017 - coolo@suse.com
+
+- updated to 2.66
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.66     2017-08-14
+  
+  - Fixed the ApacheLog output, which was broken in 2.60. Fixed by Michael
+    Schout. GitHub #48 and #49.
+
+-------------------------------------------------------------------
+Wed Jun 14 05:47:36 UTC 2017 - coolo@suse.com
+
+- updated to 2.65
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.65     2017-06-11
+  
+  - When Log::Dispatch::File is asked to chmod a file and that fails, show the
+    requested permissions in octal. Patch by Carsten Grohmann. GitHub #46.
+  
+  
+  2.64     2017-02-25 (TRIAL RELEASE)
+  
+  - Improve level validation and canonicalization logic. Patch by Kerin Millar,
+    minor changes and tests by Kivanc Yazan. Github #42.
+  
+  - The log_and_die and log_and_croak methods are now identical, as we set
+    @CARP_NOT for Log::Dispatch to exclude the Log::Dispatch package. You can
+    still explicitly pass carp_level to log_and_croak.
+
+-------------------------------------------------------------------
+Thu May 25 08:26:25 UTC 2017 - coolo@suse.com
+
+- updated to 2.63
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.63     2017-02-19
+  
+   - Updated the conflicting version for Log::Dispatch::File::Stamped in
+     metadata (due to changes in handling of close_after_write). Patch by Karen
+     Etheridge. GitHub #41.
+  
+  
+  2.62     2017-02-13
+  
+  - Devel::Confess was accidentally being loaded in Log::Dispatch. Fixed by
+    Karen Etheridge. GitHub #39.
+  
+  
+  2.61     2017-02-13
+  
+  - The 2.60 release would throw an exception if the logged message was
+    empty. While this makes sense, it also breaks backwards compatibility, so it
+    has been reverted. Reported by Greg Oschwald. GitHub #38.
+  
+  - The 2.60 release would throw an exception if you tried to create a Syslog
+    output where the ident was an empty string. Reported by Greg
+    Oschwald. GitHub #38.
+  
+  
+  2.60     2017-02-12
+  
+  - Same as 2.59 ... Switched from Params::Validate to
+    Params::ValidationCompiler. This should speed up constructors and logging a
+    little bit. This also allows Log::Dispatch::File to accept things like
+    Path::Tiny objects for filenames. Reported by Joel Berger. GitHub #36.
+  
+  
+  2.59     2017-02-05 (TRIAL RELEASE)
+  
+  - Switched from Params::Validate to Params::ValidationCompiler. This should
+    speed up constructors and logging a little bit. This also allows
+    Log::Dispatch::File to accept things like Path::Tiny objects for
+    filenames. Reported by Joel Berger. GitHub #36.
+
+-------------------------------------------------------------------
+Tue Nov 15 06:37:42 UTC 2016 - coolo@suse.com
+
+- updated to 2.58
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.58     2016-11-13
+  
+  - Switched from RT to the GitHub issue tracker.
+
+-------------------------------------------------------------------
+Mon Aug 15 05:28:10 UTC 2016 - coolo@suse.com
+
+- updated to 2.57
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.57     2016-08-13
+  
+  - Added a remove_callback method to the main Log::Dispatch object as well as
+    all outputs.
+
+-------------------------------------------------------------------
+Mon May 23 12:04:59 UTC 2016 - coolo@suse.com
+
+- updated to 2.56
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.56     2016-05-06
+  
+  - Cleaned up some cruft in Pod. Some sections ended up in there twice.
+  
+  
+  2.55     2016-05-06
+  
+  - The values of $@, $!, and $? are protected in various cases where they could
+    end up being changed by logging code. Patch by Salvador Fandiño. GitHub #18.
+  
+  - Treat MSYS2 like Cygwin in tests. Fix by Graham Ollis. GitHub #19.
+
+-------------------------------------------------------------------
+Tue Jan 19 10:02:29 UTC 2016 - coolo@suse.com
+
+- updated to 2.54
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.54     2016-01-18
+  
+  - Fixed File::Locked even more. While some deadlocks were eliminated, there
+    was still an issue when a Log::Dispatch object was created in a parent
+    process and then recreated in the children. If the close_after_write
+    parameter was false, then there would be a deadlock.
+  
+  - Made Syslog work on a threaded Perl when the threads module was not
+    explicitly loaded. Fixed by Konrad Bucheli. GitHub #13.
+  
+  - The log() method now accepts a level parameter as an integer. Fixed by Steve
+    Bertrand. GitHub #15.
+  
+  
+  2.53     2016-01-14
+  
+  - Actually fix File::Locked, this time with some actual tests.
+  
+  
+  2.52     2016-01-13
+  
+  - Make File::Locked output do an explicit unlock if the close_after_write
+    option is not set. Without this it would open the file once in each process,
+    attempting to get a lock at open time, pretty much guaranteeing a deadlock
+    in a multiprocess environment. Now it should work sanely whether
+    close_after_write is true or not.
+
+-------------------------------------------------------------------
+Sun Sep 20 08:58:55 UTC 2015 - coolo@suse.com
+
+- updated to 2.51
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.51     2015-09-19
+  
+  - Fixed t/08-screen.t on Windows platforms.
+
+-------------------------------------------------------------------
+Thu Sep  3 08:48:01 UTC 2015 - coolo@suse.com
+
+- updated to 2.50
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.50     2015-09-02
+  
+  - Changed how the Screen output handles UTF-8 data once more. The Screen
+    module has gone back to printing output directly to the global STDOUT and
+    STDERR handles. The previous changes broke the tests for several modules,
+    including Log::Dispatch::Config. This change should fix them.
+
+-------------------------------------------------------------------
+Sun Aug 23 08:57:34 UTC 2015 - coolo@suse.com
+
+- updated to 2.49
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.49     2015-08-21
+  
+  - The Screen output now enables autoflush on the handle it uses to send output
+    to STDOUT or STDERR every time it sends a message. This does not affect the
+    global STDOUT or STDERR, as the Screen module makes its own handle for
+    output. This fixes a bug reported by Karen Etheridge that caused this module
+    to not play nicely with Capture::Tiny in some cases. RT #106605.
+
+-------------------------------------------------------------------
+Sat Aug  8 08:45:21 UTC 2015 - coolo@suse.com
+
+- updated to 2.48
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.48     2015-08-07
+  
+  - Fixed (I hope) tests that were added in the last release that fail on
+    Windows.
+  
+  
+  2.47     2015-08-06
+  
+  - Really, really make per-thread locking work. Depending on when threads and
+    threads::shared were loaded, you might get an error like 'Type of arg 1 to
+    threads::shared::share must be one of $@% at .../Log/Dispatch/Syslog.pm line
+    67, near "$thread_lock)"'. Reported by David Schweikert.
+  
+  - Added support for auth-related parameters and replyto to
+    Log::Dispatch::Email::MailSender. Implemented by Rohan Carly. Based on
+    GitHub #10.
+  
+  - Added a utf8 flag for Log::Dispatch::Screen. If this is true, then it sets
+    the ":encoding(UTF-8)" flag on the handle it uses for output (without
+    affecting STDOUT or STDERR elsewhere). Suggested by Ivan Baidakou.
+  
+  
+  2.46     2015-08-05
+  
+  - Really make the per-thread locking in the Syslog output work. Based on a
+    patch by David Schweikert. GitHub #9.
+
+-------------------------------------------------------------------
+Mon Jun 15 08:50:03 UTC 2015 - coolo@suse.com
+
+- updated to 2.45
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.45     2015-06-14
+  
+  - Don't include threads and threads::shared in list of dependencies. This is
+    only needed for Log::Dispatch::Syslog and is loaded at runtime as needed
+    (which has its own issues but ...). Reported by Kent Fredric. RT #103392.
+
+-------------------------------------------------------------------
+Sat Mar 21 21:16:26 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.44
+  * The fix for a buffered email output in the last release 
+    introduced a bug with _non-buffered_ email outputs. This would 
+    cause a fatal error during global destruction when the DESTROY 
+    method was called. Reported by Chrison Hutchinson. RT #99474.
+- Changes for 2.43
+  * Fixed the thread locking in Log::Dispatch::Syslog (I hope). 
+    The previous version caused Perl to crash when per-thread 
+    locking was enabled. Note that I don't use threads so I haven't 
+    tested this. Patch by Sergio Fernández Muñoz. RT # 99208.
+  * If a buffered email output is being destroyed during global 
+    destruction and still has messages in the buffer, we warn and 
+    do not attempt to send the messages. During global destruction, 
+    the package we use to send email may already be destroyed, 
+    leading to weird errors when we try to use it. Reported by 
+    Mark Overmeer. RT #97733.
+  * In 2.42 I added the ability to pass a hashref for the socket 
+    parameter given to Log::Dispatch::Syslog, but I forgot to 
+    mention this here. This is necessary to support remote logging. 
+    Patch by David Coppit. RT #93045.
+
+-------------------------------------------------------------------
+Mon Sep 22 10:16:56 UTC 2014 - coolo@suse.com
+
+- really remove Log-Dispatch-old_Test-More.patch
+
+-------------------------------------------------------------------
+Fri Sep 19 12:15:47 UTC 2014 - coolo@suse.com
+
+- updated to 2.42
+ - Added a Log::Dispatch->clone() method. This returns shallow clone. The
+   outputs and callbacks are shared, but changes to outputs and callbacks in
+   the clone do not affect the original, or vice versa.
+ 
+ - Added Log::Dispatch->outputs() method. This returns all the output objects
+   in a dispatch object.
+ 
+ - Added Log::Dispatch->callbacks() method. This returns all the callback subs
+   in a dispatch object.
+ 
+ - The Syslog output now calls Sys::Syslog::setlogsock() every time a message
+   is logged, since something else could have called it in between logging two
+   messages.
+ 
+ - Added a lock parameter to the Syslog output. If this is true, then logging
+   is done in the scope of a per-thread lock. Reported by Cedric Carree and
+   Franck Youssef. RT #67988 and #85013.
+ 
+ - Replaced Class::Load with Module::Runtime.
+
+-------------------------------------------------------------------
+Fri Jul 26 10:01:24 UTC 2013 - coolo@suse.com
+
+- updated to 2.41
+ - An error is now thrown if you call Log::Dispatch->log without a
+   level. Previously you'd just get a warning and then execution would continue
+   (without logging anything). Patch by Ross Attrill. RT #87133.
+ 
+ - Added a conflict entry for older Log::Dispatch::File::Stamped to the
+   metadata. Patch by Karen Etheridge. RT #86215.
+- remove outdated Log-Dispatch-old_Test-More.patch
+
+-------------------------------------------------------------------
+Wed Jun  5 11:46:40 UTC 2013 - coolo@suse.com
+
+- updated to 2.39
+ - You can now pass a port option to the MailSender output. Patch by Whitney
+   Jackson.
+ - Fix test that used undeclared prereqs so it does not do that.
+ - Moved Log::Dispatch::File constructor parameter validation moved to
+   _basic_init() to facilitate proper subclassing. Patch by ether. RT #84545.
+ - Added a very simple Log::Dispatch::Code output. This lets you log to a
+   subroutine reference.
+ - Added Sys::Syslog 0.25 as a prereq. This is a temporary fix to the problem
+   of Log::Dispatch shipping lots of output modules with undeclared prereqs (so
+   as not to require mod_perl, four email sending modules, etc.). In the future
+   Log::Dispatch will be split into a core distro and a set of distros, one for
+   each output that has prereqs. Reported by Michael Schwern. RT #84481.
+ - Added a big warning about the potential for deadlocks in the documentation
+   for Log::Dispatch::File::Locked. Patch by ether.
+ - Fix a test bug that caused the tests to fail on all Perls before 5.16.0.
+ - Added a 'syswrite' option to Log::Dispatch::File which causes all writes to
+   use syswrite (so they're atomic). Patched by ether. RT #81669.
+ - The File output's DESTROY method now checks to see if it's associated handle
+   is open before trying to close it. Patch by Jeffrey Thalhammer.
+
+-------------------------------------------------------------------
+Mon Aug 22 09:10:29 UTC 2011 - lars@linux-schulserver.de
+
+- fix build on distributions with old Test::More module
+  ( Log-Dispatch-old_Test-More.patch ) 
+
+-------------------------------------------------------------------
+Sat Apr  2 19:36:48 UTC 2011 - coolo@novell.com
+
+- update to 2.29
+  - Add is_$level methods for compatibility with Log::Contextual
+
+-------------------------------------------------------------------
+Tue Feb  1 16:45:57 UTC 2011 - chris@computersalat.de
+
+- update to 2.28
+  - The Log::Dispatch module still had version 2.26 in the last
+    release. Reported by Ã˜yvind Skaar. RT #63876.
+- 2.27   2010-10-16
+  - Fix docs on handling of arrays passed to ->debug, ->error,
+    etc. Requested by Andrew Hanenkamp. RT #61400.
+  - Allow an arrayref for the Syslog socket option. Requested by Paul
+    Bennett. RT #57631.
+  - License is now Artistic 2.0.
+- split pkg to 2_26 for Sys::Syslog >= 0.16
+- disable build for suse_version <= 1120
+- remove Author
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:26 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Mar 10 21:02:46 UTC 2010 - chris@computersalat.de
+
+- clenaup spec
+  o deps perl-macros
+- fix deps
+  o perl(Sys::Syslog) >= 0.16 
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Dec 12 18:51:57 UTC 2009 - chris@computersalat.de
+
+- update to 2.26
+  - Doc updates. The 2.23 constructor API was still shown in all the output
+    subclasses. Fixed by Jon Swartz.
+- 2.25 Sep 15, 2009
+  - Added a workaround for a weird tainting issue with Params::Validate. This
+    caused a taint exception when a Log::Dispatch::Syslog was created under
+    taint mode. Note that there is still a problem in Params::Validate itself,
+    this is just a hack.
+- 2.24 Sep 13, 2009
+  - Simplified new constructor API (the 2.23 API is still silently supported but
+    not documented):
+      Log::Dispatch->new( outputs => [ [ 'File', ... ],
+                                       [ 'Screen', ... ],
+                                     ]
+                        );
+    Implemented by Jon Swartz.
+  - All of the mail sending modules now warn unconditionally if sending mail
+    fails. This removes the incorrect use of warnings::enabled() in some
+    modules. RT #43516.
+- 2.23 Sep 12, 2009
+  - New constructor API that simplifies creating your Log::Dispatch object.
+    Implemented by Jon Swartz.
+  - Made name parameter optional. We now auto-generate a unique name if one is
+    not given. Implemented by Jon Swartz.
+  - Added a newline parameter that causes a newline to be added to each message,
+    and updated the documentation regarding newlines. Implemented by Jon Swartz.
+  - Removed repetitive boilerplate documentation from each output
+    class. Implemented by Jon Swartz.
+  - The level_names and level_numbers used internally are now computed once and
+    shared between output objects. Implemented by Jon Swartz.
+  - Updated repo url - now at http://hg.urth.org/hg/Log-Dispatch
+  - Explicitly depend on Sys::Syslog 0.16.
+  - Added warn as a synonym for warning. RT #44821. Requested by Dylan Martin.
+  - Added an add_callback method to Log::Dispatch and
+    Log::Dispatch::Output. This lets you add a new formatting callback after an
+    object is created. Based on a patch from Ricardo Signes. RT #48283.
+  - The Log::Dispatch docs mistakenly told you to provide a log() method when
+    creating a new output class. RT #40561.
+  - Made all modules have the same version as Log::Dispatch itself.
+- 2.22 Nov 11, 2008
+  - Fixed a bug where Log::Dispatch::Email would die when it tried to
+    log under taint mode. Patch by Neil Hemingway. RT #40042.
+  - Fixed a misuse of warnings::enabled(). Reported by Darian
+    Patrick. RT #39784.
+  - Syslog logging now requires Sys::Syslog 0.16+.
+  - If you don't pass a socket argument to Log::Dispatch::Syslog, it
+    does not call Sys::Syslog::setlogsock(), which is the preferred
+    option for portability.
+  * If any of the syslog calls die, this is trapped and the error is
+    output as a warning if warnings are on. This is mostly a workaround
+    for Sys::Sylog not handling utf-8. RT #35270 & #37397.
+
+    This isn't backwards-compatible, but it's probably wrong for the
+    logging code to die because it can't log (even though some other
+    output modules still do).
+- cleanup spec
+  * define cpan_name
+  * sorted tags
+  * fix build-/deps
+  * update desc
+  * added Changes LICENSE SIGNATURE to doc
+  * moved changelog to .changes
+- added perl-macros
+  * perl_gen_filelist
+
+-------------------------------------------------------------------
+Fri Sep 12 13:55:27 CEST 2008 - cwh@suse.de
+
+- Removed BuildRequires for perl-Module-Build since this package
+  provides a traditional Makefile.PL again.
+
+- 2.21 Feb 6, 2008
+
+ - Added log_and_die() and log_and_croak() methods. Patch by Yuval
+   Kogman.
+
+
+- 2.20 Nov 2, 2007
+
+ - One of the tests failed on Perl 5.6.x. Thanks to Slaven Rezic for
+   the report.
+
+
+- 2.19 Nov 1, 2007
+
+ - Switched to providing a traditional Makefile.PL as well as a
+   Build.PL file. RT #27208.
+
+ - When permissions are specified for a Log::Dispatch::File object,
+   don't try to chmod the file unless the permissions of the file
+   differ from what the file already has. Based on a patch by Kevin. RT
+   #28151.
+
+ - Require at least Perl 5.6.0.
+
+ - Remove the tests for the email sending and exit codes, since the
+   test had a heisenbug I could not understand. I _think_ the code in
+   the email modules is correct, but the test isn't proving anything.
+
+ - Added a binmode parameter for Log::Dispatch::File. Based on a patch
+   by Angelo. RT #26063.
+
+-------------------------------------------------------------------
+Sat Aug  4 13:44:31 CEST 2007 - aj@suse.de
+
+- Fix filelist.
+
+-------------------------------------------------------------------
+Wed Jul 25 11:57:41 CEST 2007 - cwh@suse.de
+
+- update to v2.18: Log::Dispatch::ApacheLog should really now work
+  under mod_perl 2 , as well as mod_perl 1
+
+-------------------------------------------------------------------
+Wed Oct 25 15:05:33 CEST 2006 - cwh@suse.de
+
+2.13 Sep 25, 2006
+
+- No code changes, just added a SUPPORT section to the docs referring
+  folks to RT for bug reports & patches.
+
+
+2.12 Aug 9, 2006
+
+- The various email sending modules could overwrite if they were in
+  buffered mode and they sent mail as a script exited. Reported by
+  Dean Kopesky.
+
+- Doc tweaks. Make reference to "Log Levels" section in output module
+  docs more explicit. RT #11224.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:48 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 23:11:46 CEST 2005 - dmueller@suse.de
+
+- add norootforbuild 
+
+-------------------------------------------------------------------
+Mon Aug  1 10:59:44 CEST 2005 - cthiel@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Sun Jul 31 16:33:33 CEST 2005 - cthiel@suse.de
+
+- update to version 2.11
+
+-------------------------------------------------------------------
+Thu Feb 12 11:44:10 CET 2004 - cwh@suse.de
+
+- updated to version 2.10
+
+-------------------------------------------------------------------
+Thu Dec  4 16:45:40 CET 2003 - cwh@suse.de
+
+- updated to version 2.07 
+
+-------------------------------------------------------------------
+Fri Aug 22 15:07:47 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 10:21:02 CEST 2003 - cwh@suse.de
+
+- changed from perl_site* to perl_vendor*
+
+-------------------------------------------------------------------
+Tue Jul  1 12:28:29 CEST 2003 - ro@suse.de
+
+- use perl_process_packlist macro 
+
+-------------------------------------------------------------------
+Wed Jun 18 10:53:47 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Mon May 26 00:12:56 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot
+- add .packlist files to filelist 
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Mon Oct 29 11:29:57 CET 2001 - cwh@suse.de
+
+- new package with initial version 1.80, required by pdb
+

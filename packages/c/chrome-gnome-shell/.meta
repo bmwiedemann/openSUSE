@@ -1,0 +1,5 @@
+<package name="chrome-gnome-shell" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="chrome-gnome-shell"/>
+</package>

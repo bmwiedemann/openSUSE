@@ -1,0 +1,48 @@
+## Path:        Kernel/XPRAM
+## Description: configure XPRAM device
+
+## Type:        list(yes,no)
+## Default:     no
+#
+# Create an XPRAM device on this machine
+#
+XPRAM_START="no"
+
+## Type:        list(yes,no)
+## Default:     no
+#
+# Create the new device even if there is valid data on the device.
+#
+XPRAM_FORCE="no"
+
+## Type:        string
+## Default:     "xpram"
+#
+# Kernel module to load for the xpram device
+#
+XPRAM_MODULE="xpram"
+
+## Type:        string
+## Default:     "/dev/slram0"
+#
+# Device node for the xpram device
+#
+XPRAM_DEVNODE="/dev/slram0"
+
+## Type:        string
+## Default:     ""
+#
+# Mount point for the xpram device
+#
+XPRAM_MNTPATH="/abuild"
+
+## Type:        string
+## Default:     "ext2"
+#
+# Filesystem type for the xpram device
+#
+XPRAM_FSTYPE="ext2"
+
+# Fix for SWAP priority setting
+XPRAM_SWAP_PRI="42"
+
