@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 12 09:44:38 UTC 2019 - David Cassany <dcassany@suse.com>
+
+- Drop netboot descriptions for openSUSE Leap 15.2
+
+  This commit drops support for netboot descriptions for openSUSE Leap 15.2
+  or higher.
+
+  More specific, this commit removes the tool chain requirements of
+  kiwi-boot-requires for Leap 15.2 or higher. This results on
+  kiwi-boot-descriptions being present and installable but not containing
+  any Leap 15.2 description, just SLE descriptions and older Leap ones.
+  
+  Additionally this commit also removes the Leap 42.2 and Leap 42.3
+  descriptions those distros are no longer supported.
+
+  Fixes bsc#1145724 
+
+-------------------------------------------------------------------
 Tue Aug 20 15:27:35 UTC 2019 - Marcus Schaefer <ms@suse.com>
 
 - Make application ID check in searchImageISODevice() case-insensitive

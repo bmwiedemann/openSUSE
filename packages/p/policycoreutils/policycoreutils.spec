@@ -39,6 +39,7 @@ Source6:        selinux-polgengui.desktop
 Source7:        selinux-polgengui.console
 Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{tstamp}/semodule-utils-%{version}.tar.gz
 Patch0:         make_targets.patch
+Patch1:         run_init_use_pam_keyinit.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -157,6 +158,7 @@ system-config-selinux is a utility for managing the SELinux environment.
 setools_python_pwd="$PWD/selinux-python-%{version}"
 semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch0 -p1
+%patch1 -p1
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 

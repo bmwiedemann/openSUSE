@@ -1,0 +1,9 @@
+Index: policycoreutils-2.9/run_init/run_init.pamd
+===================================================================
+--- policycoreutils-2.9.orig/run_init/run_init.pamd	2019-03-15 10:32:30.000000000 +0000
++++ policycoreutils-2.9/run_init/run_init.pamd	2019-09-18 11:18:44.590723544 +0000
+@@ -6,3 +6,4 @@ account    include	system-auth
+ password   include	system-auth
+ session    include	system-auth
+ session    optional	pam_xauth.so
++session    optional     pam_keyinit.so revoke [force]
