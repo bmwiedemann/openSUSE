@@ -268,8 +268,8 @@
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfuse3-3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime -->
-    <package name="libgdbm6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libgdbm_compat4" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libgdbm6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_loadbalancer -->
+    <package name="libgdbm_compat4" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_loadbalancer -->
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgmodule-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -292,8 +292,7 @@
     <package name="liblmdb-0_9_23" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="liblttng-ust0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="liblvm2app2_2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="liblvm2cmd2_02" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="liblvm2cmd2_03" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="liblzo2-2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libmlx4-1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -416,9 +415,7 @@
     <package name="patterns-microos-selinux" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="patterns-microos-sssd_ldap" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="perl" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="perl-HTML-Parser" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="perl-HTML-Tagset" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="perl" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_loadbalancer -->
     <package name="perl-apparmor" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="pinentry" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="podman" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime -->

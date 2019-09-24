@@ -951,6 +951,7 @@ unsorted:
   - bazel-rules-proto-source 
   - bazel-skylib-source 
   - bazel-toolchains-source 
+  - bazel-workspaces 
   - bazel0.19: [x86_64] 
   - bazel0.24: [x86_64] 
   - bazel0.25: [x86_64] 
@@ -1958,6 +1959,7 @@ unsorted:
   - cross-sparcv9-gcc9-icecream-backend: [x86_64] 
   - cross-spu-binutils 
   - cross-x86_64-binutils: [i586] 
+  - cross-xtensa-binutils 
   - crossc-devel 
   - crossguid-devel 
   - crosstool-ng 
@@ -4380,8 +4382,6 @@ unsorted:
   - gnuradio-devel 
   - gnuradio-doc 
   - gnuradio-examples 
-  - gnuradio-examples-wxgui 
-  - gnuradio-wxgui 
   - gnuserv 
   - gnusocialshell 
   - gnustep-base 
@@ -5726,6 +5726,8 @@ unsorted:
   - jupyter-imatlab 
   - jupyter-ipydatawidgets 
   - jupyter-ipydatawidgets-jupyterlab 
+  - jupyter-ipyevents 
+  - jupyter-ipyevents-jupyterlab 
   - jupyter-ipykernel 
   - jupyter-ipykernel-python2 
   - jupyter-ipyleaflet 
@@ -6118,8 +6120,6 @@ unsorted:
   - kidentitymanagement-devel 
   - kidletime-devel 
   - kidletime-devel-32bit: [x86_64] 
-  - kig 
-  - kig-lang 
   - kigo 
   - kigo-lang 
   - kile 
@@ -6245,9 +6245,11 @@ unsorted:
   - kopano-common 
   - kopano-contacts 
   - kopano-dagent 
+  - kopano-dagent-pytils 
   - kopano-devel 
   - kopano-gateway 
   - kopano-ical 
+  - kopano-indexer 
   - kopano-lang 
   - kopano-migration-imap 
   - kopano-migration-pst 
@@ -6256,7 +6258,6 @@ unsorted:
   - kopano-python-utils 
   - kopano-search 
   - kopano-server 
-  - kopano-server-packages 
   - kopano-spamd 
   - kopano-spooler 
   - kopano-statsd 
@@ -7693,7 +7694,6 @@ unsorted:
   - libboost_program_options1_71_0-32bit: [x86_64] 
   - libboost_program_options1_71_0-devel 
   - libboost_python-devel 
-  - libboost_python-py2_7-1_71_0 
   - libboost_python-py2_7-1_71_0-32bit: [x86_64] 
   - libboost_python-py2_7-1_71_0-devel 
   - libboost_python-py3-1_71_0 
@@ -7865,7 +7865,7 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -8753,7 +8753,7 @@ unsorted:
   - libgnomeui-doc 
   - libgnomeui-lang 
   - libgnuastro6 
-  - libgnuradio-3_7_12-0_0_0 
+  - libgnuradio-3_8_0 
   - libgnuradio-fcdproplus-3_7_2_0-0_0_0 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-iqbalance 
@@ -9324,6 +9324,7 @@ unsorted:
   - libkcddb-devel 
   - libkcfreebusy0 
   - libkcicalmapi0 
+  - libkcindex0 
   - libkcinetmapi0 
   - libkcompactdisc-devel 
   - libkcpyplug0 
@@ -10744,9 +10745,9 @@ unsorted:
   - libqxp-tools 
   - libqxtglobalshortcut0 
   - libradcli4 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradosstriper-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - libradosstriper-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -10769,7 +10770,7 @@ unsorted:
   - librawstudio-2_1 
   - librawstudio-devel 
   - libraylib2 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -10952,7 +10953,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -11699,7 +11700,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk1_4 
+  - libvolk2_0 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -12461,8 +12462,6 @@ unsorted:
   - lv2-examples 
   - lv2-guitarix 
   - lv2-swh-plugins 
-  - lvm2-clvm 
-  - lvm2-cmirrord 
   - lvm2-devel 
   - lvm2-lockd 
   - lvm2-testsuite 
@@ -14885,6 +14884,8 @@ unsorted:
   - otter-browser 
   - ovirt-guest-agent-common 
   - ovmf-tools 
+  - ovnkube 
+  - ovnkube-cni 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-base_rules 
   - owasp-modsecurity-crs-experimental_rules 
@@ -16330,6 +16331,7 @@ unsorted:
   - php7-ice 
   - php7-imagick 
   - php7-intl 
+  - php7-libphutil 
   - php7-maxminddb 
   - php7-memcached 
   - php7-opcache 
@@ -17027,8 +17029,6 @@ unsorted:
   - python-jrnl 
   - python-k8sclient 
   - python-k8sclient-doc 
-  - python-kaa-base 
-  - python-kaa-metadata 
   - python-katedj 
   - python-keybinder 
   - python-keystoneauth1-doc 
@@ -17171,7 +17171,6 @@ unsorted:
   - python-qtwebengine-qt5-sip 
   - python-rcssmin-docs 
   - python-rdflib-doc 
-  - python-renderspec 
   - python-renderspec-doc 
   - python-requestbuilder 
   - python-restkit 
@@ -17372,7 +17371,6 @@ unsorted:
   - python2-Qt.py 
   - python2-QtAwesome 
   - python2-QtPy 
-  - python2-Quandl 
   - python2-Routes 
   - python2-SPARQLWrapper 
   - python2-SQLAlchemy 
@@ -17816,6 +17814,7 @@ unsorted:
   - python2-contexter 
   - python2-contextlib2 
   - python2-control: [x86_64] 
+  - python2-convertdate 
   - python2-cookies 
   - python2-cooldict 
   - python2-coreapi 
@@ -17861,6 +17860,7 @@ unsorted:
   - python2-dask-distributed 
   - python2-dask-dot 
   - python2-dask-multiprocessing 
+  - python2-dateparser 
   - python2-datrie 
   - python2-dbf 
   - python2-dbfread 
@@ -17926,7 +17926,6 @@ unsorted:
   - python2-django-registration 
   - python2-django-rest-framework-client 
   - python2-django-rest-framework-social-oauth2 
-  - python2-django-rest-invitations 
   - python2-django-rest-knox 
   - python2-django-reversion 
   - python2-django-seed 
@@ -17989,6 +17988,7 @@ unsorted:
   - python2-entrypoint2 
   - python2-environmental-override 
   - python2-enzyme 
+  - python2-ephem 
   - python2-epubmerge 
   - python2-eradicate 
   - python2-espeak 
@@ -18228,6 +18228,7 @@ unsorted:
   - python2-jaraco.packaging 
   - python2-jaraco.stream 
   - python2-jaraco.text 
+  - python2-jdatetime 
   - python2-jdcal 
   - python2-jedi 
   - python2-jedihttp 
@@ -18400,6 +18401,7 @@ unsorted:
   - python2-mistune 
   - python2-moban 
   - python2-mock 
+  - python2-mocket 
   - python2-mockito 
   - python2-mockldap 
   - python2-modernize 
@@ -18622,7 +18624,6 @@ unsorted:
   - python2-pipdeptree 
   - python2-pipenv 
   - python2-pipreqs 
-  - python2-piston-mini-client 
   - python2-pivy 
   - python2-pkgconfig 
   - python2-pkginfo 
@@ -18641,6 +18642,7 @@ unsorted:
   - python2-podcastparser 
   - python2-polib 
   - python2-pony 
+  - python2-pook 
   - python2-port-for 
   - python2-portalocker 
   - python2-portend 
@@ -18998,6 +19000,7 @@ unsorted:
   - python2-releases-test 
   - python2-remoto 
   - python2-rencode 
+  - python2-renderspec 
   - python2-reno 
   - python2-repex 
   - python2-repoze.lru 
@@ -19076,7 +19079,6 @@ unsorted:
   - python2-scikit-learn 
   - python2-scikit-sparse: [x86_64] 
   - python2-scikit-umfpack 
-  - python2-scikits.example 
   - python2-scipy 
   - python2-scipy-gnu-hpc: [x86_64] 
   - python2-scipy_1_2_1-gnu-hpc: [x86_64] 
@@ -19604,7 +19606,6 @@ unsorted:
   - python3-Qt.py 
   - python3-QtAwesome 
   - python3-QtPy 
-  - python3-Quandl 
   - python3-RegexOrder 
   - python3-Routes 
   - python3-SPARQLWrapper 
@@ -20063,6 +20064,7 @@ unsorted:
   - python3-compizconfig 
   - python3-concurrentloghandler 
   - python3-configargparse 
+  - python3-configparser 
   - python3-configshell-fb 
   - python3-confluent-kafka 
   - python3-confusable-homoglyphs 
@@ -20071,6 +20073,7 @@ unsorted:
   - python3-contextlib2 
   - python3-contextvars 
   - python3-control: [x86_64] 
+  - python3-convertdate 
   - python3-cookies 
   - python3-cooldict 
   - python3-coreapi 
@@ -20119,6 +20122,7 @@ unsorted:
   - python3-dask-dot 
   - python3-dask-multiprocessing 
   - python3-datashader 
+  - python3-dateparser 
   - python3-datrie 
   - python3-dbf 
   - python3-dbfread 
@@ -20202,7 +20206,6 @@ unsorted:
   - python3-django-registration 
   - python3-django-rest-framework-client 
   - python3-django-rest-framework-social-oauth2 
-  - python3-django-rest-invitations 
   - python3-django-rest-knox 
   - python3-django-reversion 
   - python3-django-seed 
@@ -20284,6 +20287,7 @@ unsorted:
   - python3-environmental-override 
   - python3-envisage 
   - python3-enzyme 
+  - python3-ephem 
   - python3-eradicate 
   - python3-espeak 
   - python3-espressomd 
@@ -20531,6 +20535,7 @@ unsorted:
   - python3-iptables 
   - python3-ipy: [i586] 
   - python3-ipydatawidgets 
+  - python3-ipyevents 
   - python3-ipykernel 
   - python3-ipyleaflet 
   - python3-ipympl 
@@ -20561,6 +20566,7 @@ unsorted:
   - python3-jaraco.stream 
   - python3-jaraco.text 
   - python3-javapackages 
+  - python3-jdatetime 
   - python3-jdcal 
   - python3-jedihttp 
   - python3-jeepney 
@@ -20775,6 +20781,7 @@ unsorted:
   - python3-mistune 
   - python3-moban 
   - python3-mock 
+  - python3-mocket 
   - python3-mockldap 
   - python3-modernize 
   - python3-mohawk 
@@ -21012,7 +21019,6 @@ unsorted:
   - python3-pipdeptree 
   - python3-pipenv 
   - python3-pipreqs 
-  - python3-piston-mini-client 
   - python3-pivy 
   - python3-pkgconfig 
   - python3-pkginfo 
@@ -21031,6 +21037,7 @@ unsorted:
   - python3-polib 
   - python3-policycoreutils: [i586] 
   - python3-pony 
+  - python3-pook 
   - python3-poppler-qt5 
   - python3-port-for 
   - python3-portalocker 
@@ -21110,6 +21117,7 @@ unsorted:
   - python3-pyct 
   - python3-pycxx 
   - python3-pycxx-devel 
+  - python3-pydantic 
   - python3-pydata-google-auth 
   - python3-pydbus 
   - python3-pydenticon 
@@ -21410,6 +21418,7 @@ unsorted:
   - python3-releases-test 
   - python3-remoto 
   - python3-rencode 
+  - python3-renderspec 
   - python3-reno 
   - python3-repex 
   - python3-reportlab 
@@ -21492,7 +21501,6 @@ unsorted:
   - python3-scikit-sound 
   - python3-scikit-sparse: [x86_64] 
   - python3-scikit-umfpack 
-  - python3-scikits.example 
   - python3-scipy: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
   - python3-scipy_1_3_1-gnu-hpc: [x86_64] 
@@ -21871,7 +21879,6 @@ unsorted:
   - python3-yt 
   - python3-z3 
   - python3-zake 
-  - python3-zarafa 
   - python3-zc.buildout 
   - python3-zc.customdoctests 
   - python3-zc.lockfile 
@@ -22081,7 +22088,7 @@ unsorted:
   - radeontop-lang 
   - radiotray 
   - radiotray-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -22217,6 +22224,7 @@ unsorted:
   - rlwrap 
   - rmail 
   - rmedigicontrol 
+  - rmit-sansforgetica-fonts 
   - rmt-server: [x86_64] 
   - rmt-server-config: [x86_64] 
   - rmt-server-pubcloud: [x86_64] 
@@ -23360,6 +23368,7 @@ unsorted:
   - serd-devel 
   - serdi 
   - serialdv-devel 
+  - sersniff 
   - servletapi4 
   - servletapi4-javadoc 
   - servletapi5 
@@ -32302,6 +32311,9 @@ unsorted:
   - vodovod 
   - voikkospell 
   - vokoscreen 
+  - volk 
+  - volk-devel 
+  - volk_modtool 
   - vollkorn-fonts 
   - vorbisgain 
   - voro++ 

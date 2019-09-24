@@ -1247,6 +1247,8 @@
     <package name="khotkeys5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="khotkeys5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kidentitymanagement-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="kig-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kimageformats" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kimageformats-eps" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kimagemapeditor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1806,6 +1808,7 @@
     <package name="libboost_iostreams1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libboost_locale1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libboost_program_options1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libboost_python-py2_7-1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libboost_regex1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libboost_thread1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrasero-burn3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1818,7 +1821,7 @@
     <package name="libbrotlienc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_web -->
     <package name="libbs2b0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbsd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libburn4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbytesize-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbytesize1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2359,8 +2362,7 @@
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblua5_1-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="liblvm2app2_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="liblvm2cmd2_02" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="liblvm2cmd2_03" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="liblwres160" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblxpanel0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="liblz4-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2739,7 +2741,7 @@
     <package name="libsmi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsmi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsmputils1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libsnapper4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libsnapper4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsndfile1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsnmp30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4209,7 +4211,7 @@
     <package name="python3-urwid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python3-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="python3-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pyzy-db-android" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pyzy-db-open-phrase" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4829,8 +4831,8 @@
     <package name="slrn-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="smartmontools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="smp_utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="snapper-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="snapper-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="snmp-mibs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="solarwolf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="solid-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5481,7 +5483,7 @@
     <package name="yast2-security" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-services-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-slp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="yast2-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="yast2-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-sound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-squid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2-storage-ng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

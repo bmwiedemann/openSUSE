@@ -17,7 +17,7 @@
 
 
 Name:           openSUSE-MicroOS-release
-Version:        20190921
+Version:        20190923
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -43,9 +43,9 @@ Provides:       system-installation() = openSUSE-MicroOS
 ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64
 Provides:       %name-%version
 Provides:       product() = openSUSE-MicroOS
-Provides:       product(openSUSE-MicroOS) = 20190921-0
+Provides:       product(openSUSE-MicroOS) = 20190923-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20190921
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20190923
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(openSUSE-MicroOS)
@@ -61,7 +61,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20190921-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20190923-0
 Summary:        openSUSE MicroOS
 
 %description dvd
@@ -77,7 +77,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(kubic-dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20190921-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20190923-0
 Summary:        openSUSE MicroOS
 
 %description kubic-dvd
@@ -93,7 +93,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(openSUSE-MicroOS) = 20190921-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20190923-0
 Summary:        openSUSE MicroOS
 
 %description appliance
@@ -109,7 +109,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kubic)
-Provides:       product_flavor(openSUSE-MicroOS) = 20190921-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20190923-0
 Summary:        openSUSE MicroOS
 
 %description appliance-kubic
@@ -167,11 +167,11 @@ cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE-MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE-MicroOS</name>
-  <version>20190921</version>
+  <version>20190923</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse-microos:20190921</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse-microos:20190923</cpeid>
   <productline>openSUSE-MicroOS</productline>
   <register>
     <pool>
