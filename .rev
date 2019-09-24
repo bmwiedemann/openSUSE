@@ -1231,4 +1231,12 @@
     <comment>Sync with latest version Upstream</comment>
     <requestid>723264</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>e227ec8a4f9f8965a8c3b724f206972e</srcmd5>
+    <version>4.3.0+git161.00cb192d</version>
+    <time>1569367591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731705</requestid>
+  </revision>
 </revisionlist>

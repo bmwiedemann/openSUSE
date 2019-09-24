@@ -42,15 +42,15 @@ diff --git a/resource-agents.spec.in b/resource-agents.spec.in
 index 78021f1d..cde87b15 100644
 --- a/resource-agents.spec.in
 +++ b/resource-agents.spec.in
-@@ -284,7 +284,7 @@ rm -rf %{buildroot}
+@@ -289,7 +289,7 @@
  %dir %{_sysconfdir}/ha.d
  %{_sysconfdir}/ha.d/shellfuncs
- 
+
 -%{_libexecdir}/heartbeat
 +%{_libdir}/heartbeat
- 
+
+ %if %{with rgmanager}
  %post -n resource-agents
- if [ $1 = 2 ]; then
 diff --git a/tools/Makefile.am b/tools/Makefile.am
 index 1186967c..71292bf3 100644
 --- a/tools/Makefile.am
