@@ -1,11 +1,9 @@
 Add AMD-specific defines and helpers
 
 Signed-off-by: Borislav Petkov <bp@suse.de>
-Index: mcelog/amd.h
-===================================================================
---- mcelog.orig/amd.h	2014-05-08 01:10:26.000000000 +0200
-+++ mcelog/amd.h	2014-05-08 01:18:50.000000000 +0200
-@@ -10,5 +10,65 @@ int mce_filter_k8(struct mce *m);
+--- mcelog-1.64+git20190805.e53631f.orig/amd.h	2019-09-06 14:09:39.245237130 +0200
++++ mcelog-1.64+git20190805.e53631f/amd.h	2019-09-06 14:09:40.217237182 +0200
+@@ -10,5 +10,65 @@
  #define K8_MCELOG_THRESHOLD_L3_CACHE (4 * 9 + 2)
  #define K8_MCELOG_THRESHOLD_FBDIMM   (4 * 9 + 3)
  

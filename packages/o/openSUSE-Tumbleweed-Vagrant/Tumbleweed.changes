@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 11 09:38:39 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Drop root.obscpio, add ifcfg-eth0 in config.sh
+
+-------------------------------------------------------------------
 Thu Aug  8 06:35:10 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require virtualbox-kmp-default instead of

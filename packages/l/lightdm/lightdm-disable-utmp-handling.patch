@@ -2,8 +2,10 @@
 # Parent e4be60aa2d0234c4c8714033287e482e5673b18c
 disable utmp handling since this is handled in the Xstartup/Xreset scripts
 
---- a/src/session-child.c
-+++ b/src/session-child.c
+Index: lightdm-1.30.0/src/session-child.c
+===================================================================
+--- lightdm-1.30.0.orig/src/session-child.c
++++ lightdm-1.30.0/src/session-child.c
 @@ -13,8 +13,10 @@
  #include <grp.h>
  #include <glib.h>

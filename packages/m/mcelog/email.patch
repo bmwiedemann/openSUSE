@@ -7,16 +7,14 @@
  msg.c    |    8 ++
  6 files changed, 343 insertions(+), 2 deletions(-)
 
-Index: mcelog-1.60/Makefile
-===================================================================
---- mcelog-1.60.orig/Makefile	2018-09-24 15:06:48.757117766 +0200
-+++ mcelog-1.60/Makefile	2018-09-24 15:07:38.900100531 +0200
+--- mcelog-1.64+git20190805.e53631f.orig/Makefile	2019-09-06 14:06:51.841228190 +0200
++++ mcelog-1.64+git20190805.e53631f/Makefile	2019-09-06 14:06:56.229228424 +0200
 @@ -1,3 +1,4 @@
 +CONFIG_EMAIL := 1
  CFLAGS := -g -Os
  prefix := /usr
  etcprefix :=
-@@ -37,15 +38,23 @@ OBJ := p4.o k8.o mcelog.o dmi.o tsc.o co
+@@ -37,15 +38,23 @@
         broadwell_de.o broadwell_epex.o skylake_xeon.o		 \
         denverton.o						 \
         msr.o bus.o unknown.o
@@ -41,7 +39,7 @@ Index: mcelog-1.60/Makefile
  
  # dbquery intentionally not installed by default
  install: mcelog mcelog.conf mcelog.conf.5 mcelog.triggers.5
-@@ -80,7 +89,7 @@ dbquery: db.o dbquery.o memutil.o
+@@ -80,7 +89,7 @@
  depend: .depend
  
  %.o: %.c
@@ -50,10 +48,8 @@ Index: mcelog-1.60/Makefile
  
  version.tmp: FORCE
  	( printf "char version[] = \"" ; 			\
-Index: mcelog-1.60/email.c
-===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ mcelog-1.60/email.c	2018-09-24 15:07:38.904100771 +0200
++++ mcelog-1.64+git20190805.e53631f/email.c	2019-09-06 14:06:56.229228424 +0200
 @@ -0,0 +1,200 @@
 +#include <unistd.h>
 +#include <signal.h>
@@ -255,10 +251,8 @@ Index: mcelog-1.60/email.c
 +	smtp_destroy_session (session);
 +	return 0;
 +}
-Index: mcelog-1.60/email.h
-===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ mcelog-1.60/email.h	2018-09-24 15:07:38.904100771 +0200
++++ mcelog-1.64+git20190805.e53631f/email.h	2019-09-06 14:06:56.229228424 +0200
 @@ -0,0 +1,34 @@
 +#ifndef _MCELOG_EMAIL_H_
 +#define _MCELOG_EMAIL_H_
@@ -294,10 +288,8 @@ Index: mcelog-1.60/email.h
 +#endif
 +
 +#endif
-Index: mcelog-1.60/mcelog.c
-===================================================================
---- mcelog-1.60.orig/mcelog.c	2018-09-24 15:06:48.765118243 +0200
-+++ mcelog-1.60/mcelog.c	2018-09-24 15:12:49.910600461 +0200
+--- mcelog-1.64+git20190805.e53631f.orig/mcelog.c	2019-09-06 14:06:51.841228190 +0200
++++ mcelog-1.64+git20190805.e53631f/mcelog.c	2019-09-06 14:06:56.229228424 +0200
 @@ -37,6 +37,7 @@
  #include <assert.h>
  #include <signal.h>
@@ -316,7 +308,7 @@ Index: mcelog-1.60/mcelog.c
  enum cputype cputype = CPU_GENERIC;	
  
  char *logfn = LOG_DEV_FILENAME; 
-@@ -71,7 +75,7 @@ static double cpumhz;
+@@ -71,7 +75,7 @@
  static int cpumhz_forced;
  int ascii_mode;
  int dump_raw_ascii;
@@ -325,7 +317,7 @@ Index: mcelog-1.60/mcelog.c
  static char *inputfile;
  char *processor_flags;
  static int foreground;
-@@ -990,6 +994,7 @@ void usage(void)
+@@ -994,6 +998,7 @@
  "--is-cpu-supported  Exit with return code indicating whether the CPU is supported\n"
  "--help	             Display this message.\n"
  		);
@@ -333,7 +325,7 @@ Index: mcelog-1.60/mcelog.c
  	printf("\n");
  	print_cputypes();
  }
-@@ -1059,6 +1064,7 @@ static struct option options[] = {
+@@ -1063,6 +1068,7 @@
  	{ "no-imc-log", 0, NULL, O_NO_IMC_LOG },
  	{ "help", 0, NULL, O_HELP },
  	{ "is-cpu-supported", 0, NULL, O_IS_CPU_SUPPORTED },
@@ -341,7 +333,7 @@ Index: mcelog-1.60/mcelog.c
  	{}
  };
  
-@@ -1250,11 +1256,86 @@ static void drop_cred(void)
+@@ -1254,11 +1260,86 @@
  	}
  }
  
@@ -428,7 +420,7 @@ Index: mcelog-1.60/mcelog.c
  
  	if (recordlen == 0) {
  		Wprintf("no data in mce record\n");
-@@ -1281,12 +1362,16 @@ static void process(int fd, unsigned rec
+@@ -1285,12 +1366,16 @@
  			finish = 1;
  		if (!mce_filter(mce, recordlen)) 
  			continue;
@@ -445,7 +437,7 @@ Index: mcelog-1.60/mcelog.c
  		flushlog();
  	}
  
-@@ -1400,6 +1485,8 @@ int main(int ac, char **av)
+@@ -1404,6 +1489,8 @@
  			noargs(ac, av);
  			fprintf(stderr, "mcelog %s\n", MCELOG_VERSION);
  			exit(0);
@@ -454,7 +446,7 @@ Index: mcelog-1.60/mcelog.c
  		} else if (opt == 0)
  			break;		    
  	} 
-@@ -1434,6 +1521,10 @@ int main(int ac, char **av)
+@@ -1438,6 +1525,10 @@
  		usage();
  		exit(1);
  	}
@@ -465,11 +457,9 @@ Index: mcelog-1.60/mcelog.c
  	checkdmi();
  	general_setup();
  		
-Index: mcelog-1.60/mcelog.h
-===================================================================
---- mcelog-1.60.orig/mcelog.h	2018-09-24 15:06:48.769118480 +0200
-+++ mcelog-1.60/mcelog.h	2018-09-24 15:07:38.908101010 +0200
-@@ -144,6 +144,7 @@ enum cputype {
+--- mcelog-1.64+git20190805.e53631f.orig/mcelog.h	2019-09-06 14:06:51.841228190 +0200
++++ mcelog-1.64+git20190805.e53631f/mcelog.h	2019-09-06 14:06:56.229228424 +0200
+@@ -145,6 +145,7 @@
  enum option_ranges {
  	O_COMMON = 500,
  	O_DISKDB = 1000,
@@ -477,10 +467,8 @@ Index: mcelog-1.60/mcelog.h
  };
  
  enum syslog_opt { 
-Index: mcelog-1.60/msg.c
-===================================================================
---- mcelog-1.60.orig/msg.c	2018-09-24 15:06:48.769118480 +0200
-+++ mcelog-1.60/msg.c	2018-09-24 15:07:38.908101010 +0200
+--- mcelog-1.64+git20190805.e53631f.orig/msg.c	2019-09-06 14:06:51.841228190 +0200
++++ mcelog-1.64+git20190805.e53631f/msg.c	2019-09-06 14:06:56.229228424 +0200
 @@ -8,10 +8,13 @@
  #include "mcelog.h"
  #include "msg.h"
@@ -495,7 +483,7 @@ Index: mcelog-1.60/msg.c
  static char *output_fn;
  
  int need_stdout(void)
-@@ -135,6 +138,11 @@ int Wprintf(char *fmt, ...)
+@@ -135,6 +138,11 @@
  		n = vfprintf(output_fh ? output_fh : stdout, fmt, ap);
  		va_end(ap);
  	}

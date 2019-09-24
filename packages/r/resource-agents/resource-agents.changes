@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 09 13:12:47 UTC 2019 - varkoly@suse.com
+
+- Update to version 4.3.0+git161.00cb192d:
+  * apache: correctly detect mod_status.so when statusurl is set
+    (bsc#1138281)
+  * Restore users/perms/policies even if starting in a single node mode
+  * spec: use %{?centos} as _version doesnt work on newer CentOS versions
+  * exportfs: doc clarification for clientspec format
+  * Fixup docker_stop condition on error
+  * Make the check for the docker daemon being up more robust
+  * Low: oracle-common: Delete the ORACLE_HOME check that is no longer needed because it is checked first.
+  * Low: ora-common: Properly output message when sid parameter is invalid.
+  * spec: updates from Fedora
+  * spec: update to BR to libnet-devel for opensuse
+  * CI: "make rpm" fixes
+  * Route: dont fence node when parameters arent set
+  * requested changes applied.
+  * Added support for SSL replication
+  * [build] drop now unnecessary make distcheck options
+  * [build] allow systemd files to be installed in non-standard location
+  * [build] fix make distcheck by adding fallback OS dir to find docbook.xsl
+  * Don't call readlink on path if it does not exist
+
+-------------------------------------------------------------------
 Wed Aug 14 09:13:48 UTC 2019 - dakechi@suse.com
 
 - Update to version 4.3.0+git131.7af8c368:

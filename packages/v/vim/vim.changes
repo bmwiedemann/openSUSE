@@ -1,4 +1,316 @@
 -------------------------------------------------------------------
+Wed Sep 18 09:36:58 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.1.2052, fixes the following problems
+- refreshed patches:
+   disable-unreliable-tests.patch
+   vim-8.0-ttytype-test.patch
+  * Cleared/added match highlighting not updated in other window. (Andi
+  Massimino)
+  * Still some match functions in evalfunc.c.
+  * 'hlsearch' and match highlighting in the wrong place.
+  * Build error without the conceal feature.
+  * Compiler warning for unused argument.
+  * ":dl" is seen as ":dlist" instead of ":delete".
+  * Compiler warning for unused variables. (Tony Mechelynck)
+  * :args output is not aligned.
+  * Coverity warns for using negative index.
+  * Depending on the terminal width :version may miss a line break.
+  * When redrawing popups plines_win() may be called often.
+  * Resizing hashtable is inefficient.
+  * Use of popup window mask is inefficient.
+  * Build failure.
+  * Leaking memory when using a popup window mask.
+  * Autocommand that splits window messes up window layout.
+  * Text added with appendbufline() to another buffer isn't displayed.
+  * Count of g$ not used correctly when text is not wrapped.
+  * No mode char for terminal mapping from maparg().
+  * Extra line break for wrapping output of :args.
+  * Filetype "vuejs" causes problems for some users.
+  * Some filetype rules are in the wrong place.
+  * Evalfunc.c is still too big.
+  * ":browse oldfiles" is not tested.
+  * get(func, dict, def) does not work properly.
+  * Code for writing session file is spread out.
+  * FEAT_SESSION defined separately.
+  * Man plugin changes setting in current window.
+  * 'shellslash' is also used for completion.
+  * Cannot get the window ID of the popup preview window.
+  * The preview popup window may be too far to the right.
+  * Test is silently skipped.
+  * Error message may be empty in filetype test.
+  * Text added with a job to another buffer isn't displayed.
+  * Useless checks for job feature in channel test.
+  * Not showing the popup window right border is confusing.
+  * Not showing the popup window right border is confusing.
+  * Warning for file no longer available is repeated every time Vim is
+  focused. (Brian Armstrong)
+  * Amiga: no builtin OS readable version info.
+  * Map functionality mixed with character input.
+  * Double click in popup scrollbar starts selection.
+  * Cannot resize a popup window.
+  * missing changes in proto file
+  * Cannot see file name of preview popup window.
+  * :mkvimrc is not tested.
+  * 'completeslash' also applies to globpath().
+  * The vgetorpeek() function is too long.
+  * Mixed comment style in globals.
+  * Tests are flaky.
+  * No syntax HL after splitting windows with :bufdo. (Yasuhiro Matsumoto)
+  * :argdo is not tested
+  * The vgetorpeek() function is too long.
+  * Warning for unused variable in tiny version. (Tony Mechelynck)
+  * Cannot avoid mapping for a popup window.
+  * Function call functions have too many arguments.
+  * Cannot build without the +eval feature.
+  * Missing change to call_callback().
+  * All builtin functions are global.
+  * No test for display updating without a scroll region.
+  * Au_did_filetype is declared twice.
+  * Test for display updating doesn't check without statusline.
+  * More functions can be used as a method.
+  * Build failure for tiny version.
+  * More functions can be used as a method.
+  * Popup_getoptions() is missing an entry for "mapping".
+  * Popup window color cannot be set to "Normal".
+  * Reading a truncted undo file hangs Vim.
+  * ATTENTION prompt for a preview popup window.
+  * A long title in a popup window overflows.
+  * Duplicating info for internal functions.
+  * Cannot use a user defined function as a method.
+  * Github contribution text is incomplete.
+  * Unused variable.
+  * :pedit does not work with a popup preview window.
+  * Using expr->FuncRef() does not work.
+  * No test for wrong number of method arguments.
+  * Confusing error message when range is not allowed.
+  * Command line history code is spread out.
+  * Crash when correctly spelled word is very long. (Ben Kraft)
+  * Allocating more memory than needed for extended structs.
+  * Tests use hand coded feature and option checks.
+  * Allocating more memory than needed for extended structs.
+  * Not strict enough checking syntax of method invocation.
+  * Difference in screenshots.
+  * Confusing skipped message.
+  * Win_execute() does not work in other tab. (Rick Howe)
+  * Allocating a bit too much when spellbadword() does not find a bad word.
+  * Cannot use a lambda as a method.
+  * Cannot use printf() as a method.
+  * Inaccurate memory estimate for Amiga-like OS.
+  * Popup test fails if clipboard is supported but not working.
+  * There is :spellwrong and :spellgood but not :spellrare.
+  * Insufficient info when test fails because of screen size.
+  * Testing: WorkingClipboard() is not accurate.
+  * No test for Ex shift commands.
+  * Test listed as flaky should no longer be flaky.
+  * Might be freeing memory that was not allocated.
+  * Buffer no longer unloaded when adding text properties to it.
+  * May use NULL pointer when running out of memory.
+  * Inconsistently using GetVimCommand() and v:progpath. (Daniel Hahler)
+  * Suspend test is failing.
+  * 'langmap' is not used for CTRL-W command in terminal.
+  * Focus may remain in popup window.
+  * Crash when sound_playfile() callback plays sound.
+  * Timers test is flaky.
+  * Timers test is still flaky.
+  * Now another timer test is flaky.
+  * Another failing timer test.
+  * popup preview test fails sometimes. (Christian Brabandt)
+  * Cannot use modifier with multi-byte character.
+  * Test for multi-byte mapping fails on some systems.
+  * Timer test sometimes fails on Mac.
+  * Map timeout test is flaky.
+  * Only some assert functions can be used as a method.
+  * Coverity warns for not using return value.
+  * Confusing error when using a builtin function as method while it does
+  not support that.
+  * Still a timer test that is flaky on Mac.
+  * Spellrare and spellrepall in the wrong order.
+  * Modeless selection in GUI does not work properly.
+  * Still a timer test that is flaky on Mac.
+  * Multibyte characters in 'listchars' don't work correctly if 'linebreak'
+  is also enabled. (Martin Tournoij)
+  * Code for the argument list is spread out.
+  * Using :pedit from a help file sets the preview window to help
+  filetype. (Wang Shidong)
+  * Modeless selection in GUI still not correct.
+  * When Vim exits because of a signal, VimLeave is not triggered. (Daniel
+  Hahler)
+  * Cannot build tiny version.
+  * Modeless selection in popup window overlaps scrollbar.
+  * Cannot get size and position of the popup menu.
+  * proto file missing from distribution
+  * Graduated features scattered.
+  * Negative float before method not parsed correctly.
+  * More functions can be used as methods.
+  * Cannot show extra info for completion in a popup window.
+  * Popup window test fails in some configurations.
+  * Cannot specify properties of the info popup window.
+  * Options test fails.
+  * Cannot use mouse scroll wheel in popup in Insert mode.  Mouse clicks in
+  popup close the popup menu.
+  * Comments in libvterm are inconsistent.
+  * Command line expansion code is spread out.
+  * The +cmdline_compl feature is not in the tiny version.
+  * More functions can be used as methods.
+  * Coverity warns for using a NULL pointer.
+  * Ml_get error when deleting fold marker.
+  * Functions used in one file are global.
+  * Missing index entry and option menu for 'completepopup'.
+  * Script to summarize test results can be improved.
+  * Not checking for out-of-memory of autoload_name().
+  * Using NULL pointer when out of memory.
+  * Compiler warning for unused variable.
+  * May free memory twice when out of memory.
+  * Crash when out of memory during startup.
+  * sign_place() does not work as documented.
+  * Sign test fails in the GUI.
+  * The +insert_expand feature is not always available.
+  * Cannot have an info popup without a border.
+  * Cannot build without the +eval feature.
+  * Cannot have an info popup align with the popup menu.
+  * Cannot set all properties of the info popup.
+  * Info popup size is sometimes incorrect.
+  * Wrong position for info popup with scrollbar on the left.
+  * Every popup window consumes a buffer number.
+  * More functions can be used as methods.
+  * Redrawing too much when toggling 'relativenumber'.
+  * More functions can be used as methods.
+  * More functions can be used as methods.
+  * Not easy to compute the space on the command line.
+  * Command line expansion code is spread out.
+  * More functions can be used as methods.
+  * Trying to allocate negative amount of memory when closing a popup.
+  * Non-current window is not redrawn when moving popup. (Ben Jackson)
+  * Redrawing popups is inefficient.
+  * Using current window option values when passing a buffer to popup_create().
+  * Cannot close a popup by the X when a filter consumes all events.
+  * More functions can be used as methods.
+  * In diff mode global operations can be very slow.
+  * Some source files are not in a normal encoding.
+  * Using empty string for current buffer is unexpected.
+  * More functions can be used as methods.
+  * Cursorline not redrawn when putting a line above the cursor.
+  * Code for dealing with script files is spread out.
+  * Popup windows don't move with the text when making changes.
+  * No tests for text property popup window.
+  * Cannot recognize .jsx and .tsx files.
+  * Syntax test fails.
+  * Ml_get errors after using append(). (Alex Genco)
+  * The eval.c file is too big.
+  * Not enough tests for text property popup window.
+  * Test for text property popup window is flaky.
+  * Not enough tests for text property popup window.
+  * Errors when using javascriptreact.
+  * May crash when out of memory.
+  * Code for handling v: variables in generic eval file.
+  * Script tests fail.
+  * getftype() test fails on Mac.
+  * Shadow directory gets outdated when files are added.
+  * More code can be moved to evalvars.c.
+  * Leaking memory when using sound callback.
+  * Popup window "firstline" cannot be reset.
+  * Memory error when profiling a function without a script ID.
+  * When executing one test the report doesn't show it.
+  * Mouse doesn't work in Linux console and causes 100% CPU. (James P. Harvey)
+  * Cannot scroll a popup window to the very bottom.
+  * Using NULL pointer after an out-of-memory.
+  * Mouse double click test is a bit flaky.
+  * More functions can be used as a method.
+  * Tests contain typos.
+  * Screenshot tests may use a different encoding. (Dominique Pelle)
+  * More code can be moved to evalvars.c.
+  * Old style comments taking up space.
+  * When using "firstline" in popup window text may jump when redrawing
+  it. (Nick Jensen)
+  * Fold code is spread out.
+  * More functions can be used as a method.
+  * Leaking memory when using tagfunc().
+  * Popup window filter may be called recursively when using a Normal mode
+  command. (Nick Jensen)
+  * Crash when using nested map() and filter().
+  * The search count message is not displayed when using a mapping. (Gary
+  Johnson)
+  * Some code in options.c fits better elsewhere.
+  * Line() only works for the current window.
+  * Crash when using nested map().
+  * Popup window filter is used in all modes.
+  * Search stat space wrong, no test for 8.1.1965.
+  * Manually enabling features causes build errors. (John Marriott)
+  * No proper test for getchar().
+  * Cannot build without the quickfix feature.
+  * Travis log always shows test output.
+  * Terminal debugger plugin may hang.
+  * The eval.c file is too big.
+  * Code for handling file names is spread out.
+  * Fix for search stat not tested.
+  * The evalfunc.c file is too big.
+  * More functions can be used as methods.
+  * Compiler nags for uninitialized variable and unused function.
+  * More functions can be used as methods.
+  * Code for dealing with paths is spread out.
+  * More functions can be used as methods.
+  * :startinsert! does not work the same way as "A".
+  * The evalfunc.c file is still too big.
+  * Cannot build with eval but without cscope.
+  * Still cannot build with eval but without cscope.
+  * The search stat moves when wrapping at the end of the buffer.
+  * More functions can be used as methods.
+  * No redraw after a popup window filter is invoked.
+  * Redraw even when no popup window filter was invoked.
+  * Calling both PlaySoundW() and PlaySoundA().
+  * Plugin cannot get the current IME status.
+  * Some source files are too big.
+  * Version number 2000 missing.
+  * More functions can be used as methods.
+  * The regexp.c file is too big.
+  * Build failure with huge features but without channel feature.
+  * No test for what 8.1.1926 fixes.
+  * Error for invalid range when using listener and undo. (Paul Jolly)
+  * Cursorline highlighting not updated in popup window. (Marko Mahnič)
+  * New file uses old style comments.
+  * More functions can be used as methods.
+  * More functions can be used as methods.
+  * More functions can be used as methods.
+  * Terminal altscreen test fails sometimes.
+  * Terminal altscreen test still fails sometimes.
+  * Terminal altscreen test now fails on MS-Windows.
+  * Cannot execute commands after closing the cmdline window.
+  * Using freed memory when out of memory and displaying message.
+  * 'cursorline' always highlights the whole line.
+  * It is not easy to change the window layout.
+  * Some global functions can be local to the file.
+  * The option.c file is too big.
+  * No test for synIDattr() returning "strikethrough".
+  * Delete call commented out for debugging.
+  * Possibly using uninitialized memory.
+  * Options test script does not work.
+  * Cannot control 'cursorline' highlighting well.
+  * Tests fail when build with normal features and terminal. (Dominique Pelle)
+  * Cursor position wrong when resizing and using conceal.
+  * Scrollbar thumb wrong in popup window.
+  * Cannot build with tiny features.
+  * Dark theme of GTK 3 not supported.
+  * Recognizing octal numbers is confusing.
+  * The str2nr() tests fail.
+  * Can call win_gotoid() in cmdline window.
+  * has('vimscript-4') is always 0.
+  * Character from 'showbreak' does not use 'wincolor'. (Nick Jensen)
+  * No highlighting of current line in quickfix window.
+  * No test for diff mode with syntax highlighting.
+  * The evalfunc.c file is too big.
+  * Not sufficient testing for quoted numbers.
+  * No easy way to process postponed work. (Paul Jolly)
+  * The option.c file is too big.
+  * SafeState may be triggered at the wrong moment.
+  * Cannot check the current state.
+  * Not clear why SafeState and SafeStateAgain are not triggered.
+  * Cannot build tiny version.
+  * Popup window test fails in some configurations. (James McCoy)
+  * Double-click test is a bit flaky.
+  * Using "x" before a closed fold may delete that fold.
+
+-------------------------------------------------------------------
 Wed Aug 28 01:19:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - By default do not put group in specfile as it is optional

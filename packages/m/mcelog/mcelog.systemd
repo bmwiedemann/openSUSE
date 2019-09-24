@@ -6,6 +6,7 @@ ConditionPathExists=/dev/mcelog
 [Service]
 EnvironmentFile=-/etc/sysconfig/mcelog
 ExecStartPre=/sbin/modprobe msr
+ExecStartPre=/sbin/modprobe dmi-sysfs
 ExecStart=/usr/sbin/mcelog --ignorenodev --daemon --foreground
 StandardOutput=syslog
 
