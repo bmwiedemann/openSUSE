@@ -472,4 +472,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
 This fixes the missing pkgconfig(Qt5WebKit*) Provides and the rpmlint error. (forwarded request 713424 from wolfi323)</comment>
     <requestid>713438</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>3768358e7a915d81b6d34c5a6cad9eae</srcmd5>
+    <version>5.212~alpha3</version>
+    <time>1569364919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730783</requestid>
+  </revision>
 </revisionlist>

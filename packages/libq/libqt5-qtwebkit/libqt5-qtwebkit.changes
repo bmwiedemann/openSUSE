@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:06:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on armv6:
+  * webkit-bwo141288.patch
+
+-------------------------------------------------------------------
 Thu Jul  4 13:46:33 UTC 2019 - wbauer@tmo.at
 
 - Don't modify the pkgconfig files, they have been fixed upstream
