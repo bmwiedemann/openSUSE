@@ -50,6 +50,9 @@ Patch2:         0002-Let-systemd-know-when-rpc.statd-is-needed.patch
 Patch3:         0003-systemd-run-statd-notify-even-when-nfs-client-isn-t-.patch
 Patch4:         0004-nfsidmap-honour-with-pluginpath-for-instalation.patch
 Patch5:         0005-nfs.conf-fail-to-disable-major-NFS-version-4-using-v.patch
+Patch6:         0006-conffile-allow-optional-include-files.patch
+Patch7:         0007-statd-user-from-sm
+Patch8:         0008-mountd-Initialize-logging-early.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel
@@ -152,6 +155,9 @@ This package contains additional NFS documentation.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 cp %{SOURCE6} .
 
@@ -218,9 +224,9 @@ chmod 644 %{buildroot}%{_sbindir}/{mountstats,nfsiostat}
 %service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client
-chown statd:nogroup %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
-for i in state sm sm.bak; do
-	chown -R statd %{_localstatedir}/lib/nfs/$i > /dev/null 2>&1 || :
+chown root:root %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
+for i in sm sm.bak; do
+	chown -R statd:nogroup %{_localstatedir}/lib/nfs/$i > /dev/null 2>&1 || :
 done
 ### migrate from /var/lock/subsys
 [ -d /run/nfs ] || mkdir /run/nfs
@@ -342,12 +348,12 @@ fi
 %{_mandir}/man8/blkmapd.8%{ext_man}
 %{_mandir}/man8/rpc.svcgssd.8%{ext_man}
 %{_fillupdir}/sysconfig.nfs
-%attr(0711,statd,nogroup) %dir %{_localstatedir}/lib/nfs
+%dir %{_localstatedir}/lib/nfs
 %dir %{_localstatedir}/lib/nfs/rpc_pipefs
 %dir %{_localstatedir}/lib/nfs/v4recovery
 %attr(0700,statd,nogroup) %dir %{_localstatedir}/lib/nfs/sm
 %attr(0700,statd,nogroup) %dir %{_localstatedir}/lib/nfs/sm.bak
-%attr(0700,statd,nogroup) %ghost %{_localstatedir}/lib/nfs/state
+%ghost %{_localstatedir}/lib/nfs/state
 
 %files -n nfs-kernel-server
 %defattr(-,root,root)

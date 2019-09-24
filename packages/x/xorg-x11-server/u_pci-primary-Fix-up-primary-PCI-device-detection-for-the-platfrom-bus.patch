@@ -25,11 +25,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/common/xf86platformBus.c | 29 +++++++++++++++++++++++++++++
  1 file changed, 29 insertions(+)
 
-diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
-index 8b3a862..efa6d1a 100644
---- a/hw/xfree86/common/xf86platformBus.c
-+++ b/hw/xfree86/common/xf86platformBus.c
-@@ -622,6 +622,35 @@ void xf86platformPrimary(void)
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
+===================================================================
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86platformBus.c
++++ xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
+@@ -744,6 +744,35 @@ void xf86platformPrimary(void)
  
              xf86Msg(X_NONE, "\tfalling back to %s\n", primaryBus.id.plat->attribs->syspath);
          }

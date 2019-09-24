@@ -11,11 +11,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/drivers/modesetting/driver.c | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
-diff --git a/hw/xfree86/drivers/modesetting/driver.c b/hw/xfree86/drivers/modesetting/driver.c
-index 8f60eae..a81efaf 100644
---- a/hw/xfree86/drivers/modesetting/driver.c
-+++ b/hw/xfree86/drivers/modesetting/driver.c
-@@ -858,6 +858,17 @@ PreInit(ScrnInfoPtr pScrn, int flags)
+Index: xorg-server-1.20.5/hw/xfree86/drivers/modesetting/driver.c
+===================================================================
+--- xorg-server-1.20.5.orig/hw/xfree86/drivers/modesetting/driver.c
++++ xorg-server-1.20.5/hw/xfree86/drivers/modesetting/driver.c
+@@ -980,6 +980,17 @@ PreInit(ScrnInfoPtr pScrn, int flags)
  
      if (xf86ReturnOptValBool(ms->drmmode.Options, OPTION_SW_CURSOR, FALSE)) {
          ms->drmmode.sw_cursor = TRUE;

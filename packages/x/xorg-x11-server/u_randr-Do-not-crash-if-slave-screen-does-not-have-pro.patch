@@ -21,11 +21,11 @@ provider is there.
  randr/randr.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/randr/randr.c b/randr/randr.c
-index feb54bcc8..661f66da2 100644
---- a/randr/randr.c
-+++ b/randr/randr.c
-@@ -643,7 +643,9 @@ RRTellChanged(ScreenPtr pScreen)
+Index: xorg-server-1.20.5/randr/randr.c
+===================================================================
+--- xorg-server-1.20.5.orig/randr/randr.c
++++ xorg-server-1.20.5/randr/randr.c
+@@ -647,7 +647,9 @@ RRTellChanged(ScreenPtr pScreen)
  
          xorg_list_for_each_entry(iter, &master->slave_list, slave_head) {
              pSlaveScrPriv = rrGetScrPriv(iter);
@@ -36,6 +36,3 @@ index feb54bcc8..661f66da2 100644
              if (iter->is_output_slave) {
                  for (i = 0; i < pSlaveScrPriv->numOutputs; i++)
                      pSlaveScrPriv->outputs[i]->changed = FALSE;
--- 
-2.13.6
-

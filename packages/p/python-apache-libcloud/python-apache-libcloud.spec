@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
 Group:          System/Monitoring
-Url:            https://libcloud.apache.org
+URL:            https://libcloud.apache.org
 Source0:        https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-%{version}.tar.gz
 Patch2:         ec2_create_node.patch
 BuildRequires:  %{python_module libvirt-python}
@@ -42,9 +42,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python2
 Requires:       python-lxml
 Requires:       python-requests
-Suggests:       python-paramiko
 Suggests:       python-libvirt-python
 Suggests:       python-lockfile
+Suggests:       python-paramiko
 Suggests:       python-pysphere
 BuildArch:      noarch
 %python_subpackages
@@ -69,7 +69,8 @@ cp libcloud/test/secrets.py-dist libcloud/test/secrets.py
 find %{buildroot} -name '*.DS_Store' -delete
 find %{buildroot} -name '*.json' -size 0 -delete
 find %{buildroot} -name '*.pem' -size 0 -delete
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/libcloud/test
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Skip ShellOutSSHClientTests tests which attempt to ssh to localhost

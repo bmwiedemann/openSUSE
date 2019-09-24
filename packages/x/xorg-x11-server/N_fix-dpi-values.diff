@@ -6,7 +6,7 @@ Index: hw/xfree86/common/xf86Helper.c
 ===================================================================
 --- hw/xfree86/common/xf86Helper.c.orig
 +++ hw/xfree86/common/xf86Helper.c
-@@ -922,12 +922,22 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int
+@@ -875,12 +875,22 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int
      else if (pScrn->widthmm > 0 || pScrn->heightmm > 0) {
          from = X_CONFIG;
          if (pScrn->widthmm > 0) {
@@ -33,7 +33,7 @@ Index: hw/xfree86/common/xf86Helper.c
          }
          if (pScrn->xDpi > 0 && pScrn->yDpi <= 0)
              pScrn->yDpi = pScrn->xDpi;
-@@ -966,12 +976,22 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int
+@@ -919,12 +929,22 @@ xf86SetDpi(ScrnInfoPtr pScrn, int x, int
          pScrn->widthmm = ddcWidthmm;
          pScrn->heightmm = ddcHeightmm;
          if (pScrn->widthmm > 0) {

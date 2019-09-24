@@ -9,7 +9,7 @@ Index: hw/xfree86/common/xf86AutoConfig.c
 ===================================================================
 --- hw/xfree86/common/xf86AutoConfig.c.orig
 +++ hw/xfree86/common/xf86AutoConfig.c
-@@ -75,6 +75,13 @@
+@@ -77,6 +77,13 @@
  	"\tDevice\t" BUILTIN_DEVICE_NAME "\n" \
  	"EndSection\n\n"
  
@@ -23,7 +23,7 @@ Index: hw/xfree86/common/xf86AutoConfig.c
  #define BUILTIN_LAYOUT_SECTION_PRE \
  	"Section \"ServerLayout\"\n" \
  	"\tIdentifier\t\"Builtin Default Layout\"\n"
-@@ -187,8 +187,12 @@ xf86AutoConfig(void)
+@@ -187,8 +194,12 @@ xf86AutoConfig(void)
          snprintf(buf, sizeof(buf), BUILTIN_DEVICE_SECTION,
                  md.matches[i], 0, md.matches[i]);
          AppendToConfig(buf);
@@ -37,4 +37,4 @@ Index: hw/xfree86/common/xf86AutoConfig.c
 +                     md.matches[i], 0, md.matches[i], 0);
          AppendToConfig(buf);
      }
-
+ 

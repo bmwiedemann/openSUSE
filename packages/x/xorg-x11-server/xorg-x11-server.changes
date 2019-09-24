@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 21 10:23:06 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- reintroduce Xvfb subpackage (boo#1151457)
+
+-------------------------------------------------------------------
+Mon Sep 16 15:00:32 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add U_xwayland-Separate-DamagePtr-into-separate-window-data.patch
+  and U_xwayland-Allow-passing-a-fd.patch: Needed for gnome 3.34
+  new and experimental xwayland on demand feature.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Fri Aug 30 09:38:25 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - added patches required for NVIDIA's PRIME render offload support,

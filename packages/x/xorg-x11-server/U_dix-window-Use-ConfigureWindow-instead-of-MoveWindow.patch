@@ -14,11 +14,11 @@ Reviewed-by: Adam Jackson <ajax@redhat.com>
  dix/window.c | 14 ++++++--------
  1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/dix/window.c b/dix/window.c
-index 2b599e788..f4ace76c7 100644
---- a/dix/window.c
-+++ b/dix/window.c
-@@ -3094,6 +3094,7 @@ int
+Index: xorg-server-1.20.5/dix/window.c
+===================================================================
+--- xorg-server-1.20.5.orig/dix/window.c
++++ xorg-server-1.20.5/dix/window.c
+@@ -3110,6 +3110,7 @@ int
  dixSaveScreens(ClientPtr client, int on, int mode)
  {
      int rc, i, what, type;
@@ -26,7 +26,7 @@ index 2b599e788..f4ace76c7 100644
  
      if (on == SCREEN_SAVER_FORCER) {
          if (mode == ScreenSaverReset)
-@@ -3146,14 +3147,11 @@ dixSaveScreens(ClientPtr client, int on, int mode)
+@@ -3162,14 +3163,11 @@ dixSaveScreens(ClientPtr client, int on,
                   * for the root window, so PaintWindow works
                   */
                  screenIsSaved = SCREEN_SAVER_OFF;
@@ -46,6 +46,3 @@ index 2b599e788..f4ace76c7 100644
                  screenIsSaved = SCREEN_SAVER_ON;
              }
              /*
--- 
-2.16.4
-

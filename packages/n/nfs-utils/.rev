@@ -1337,4 +1337,32 @@
   (bsc#1116221)</comment>
     <requestid>727642</requestid>
   </revision>
+  <revision rev="149" vrev="10">
+    <srcmd5>26c66220aa38582c42d68aad48dc4db9</srcmd5>
+    <version>unknown</version>
+    <time>1569368124</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete  0006-nfs.conf-silence-include-error.patch
+  replaced with better version
+- 0006-conffile-allow-optional-include-files.patch
+   Avoid error if /etc/nfs.conf.local doesn't exist
+  (bsc#1151044 bsc#1150807)
+- 0008-mountd-Initialize-logging-early.patch
+ Don't close the loging socket - it causes problems.
+  (bsc#1151044 bsc#1150807)
+
+- Don't make /var/lib/nfs owned by statd.
+  Only sm and sm.bak need to be accessible by
+  statd or sm-notify after they drop privs.
+  Providing they get created, the parent
+  directory can be root-owned.
+- 0007-statd-user-from-sm
+  Change rpc.statd and sm-notify to take uid from the sm
+  directory.
+  (bsc#1150733 CVE-2019-3689)
+
+- 0006-nfs.conf-silence-include-error.patch
+ Avoid an unhelpful warning (bsc#1150807)</comment>
+    <requestid>732555</requestid>
+  </revision>
 </revisionlist>

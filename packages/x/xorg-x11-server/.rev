@@ -3294,4 +3294,17 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   0005-GLX-Set-GlxServerExports-major-minor-Version.patch</comment>
     <requestid>727185</requestid>
   </revision>
+  <revision rev="373" vrev="4">
+    <srcmd5>d5b69d58aafa6aef89ac5cf3ae6fb4cc</srcmd5>
+    <version>1.20.5</version>
+    <time>1569368378</time>
+    <user>dimstar_suse</user>
+    <comment>- reintroduce Xvfb subpackage (boo#1151457)
+
+- Add U_xwayland-Separate-DamagePtr-into-separate-window-data.patch
+  and U_xwayland-Allow-passing-a-fd.patch: Needed for gnome 3.34
+  new and experimental xwayland on demand feature.
+- Rebase patches with quilt.</comment>
+    <requestid>732654</requestid>
+  </revision>
 </revisionlist>

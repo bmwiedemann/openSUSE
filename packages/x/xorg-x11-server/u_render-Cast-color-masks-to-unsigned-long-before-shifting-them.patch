@@ -16,11 +16,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  render/picture.c | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/render/picture.c b/render/picture.c
-index 2908b76..74369de 100644
---- a/render/picture.c
-+++ b/render/picture.c
-@@ -548,12 +548,12 @@ PictureMatchVisual(ScreenPtr pScreen, int depth, VisualPtr pVisual)
+Index: xorg-server-1.20.5/render/picture.c
+===================================================================
+--- xorg-server-1.20.5.orig/render/picture.c
++++ xorg-server-1.20.5/render/picture.c
+@@ -527,12 +527,12 @@ PictureMatchVisual(ScreenPtr pScreen, in
                      return format;
              }
              else {

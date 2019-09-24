@@ -1,0 +1,45 @@
+statd: take user-id from /var/lib/nfs/sm
+
+Having /var/lib/nfs writeable by statd is not ideal
+as there are files in there that statd doesn't need
+to access.
+Aftger dropping privs, statd and sm-notify only need to
+access files in the directories sm and sm.bak.
+So take the uid for these deamons from 'sm'.
+
+Signed-off-by: NeilBrown <neilb@suse.com>
+---
+ support/nsm/file.c |   16 +++++-----------
+ 1 file changed, 5 insertions(+), 11 deletions(-)
+
+--- a/support/nsm/file.c
++++ b/support/nsm/file.c
+@@ -388,23 +388,17 @@ nsm_drop_privileges(const int pidfd)
+ 
+ 	(void)umask(S_IRWXO);
+ 
+-	/*
+-	 * XXX: If we can't stat dirname, or if dirname is owned by
+-	 *      root, we should use "statduser" instead, which is set up
+-	 *      by configure.ac.  Nothing in nfs-utils seems to use
+-	 *      "statduser," though.
+-	 */
+-	if (lstat(nsm_base_dirname, &st) == -1) {
+-		xlog(L_ERROR, "Failed to stat %s: %m", nsm_base_dirname);
+-		return false;
+-	}
+-
+ 	if (chdir(nsm_base_dirname) == -1) {
+ 		xlog(L_ERROR, "Failed to change working directory to %s: %m",
+ 				nsm_base_dirname);
+ 		return false;
+ 	}
+ 
++	if (lstat(NSM_MONITOR_DIR, &st) == -1) {
++		xlog(L_ERROR, "Failed to stat %s/%s: %m", nsm_base_dirname, NSM_MONITOR_DIR);
++		return false;
++	}
++
+ 	if (!prune_bounding_set())
+ 		return false;
+ 

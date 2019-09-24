@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:42:03 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- wireshark 3.0.5:
+  * Fix Qt interface crashes on a profile with packet list only
+  * NET-SNMP EngineID Length handling Warning
+  * fix Crash SIGSEGV when decrypting IEEE 802.11 EAP re-authentications
+ 
+-------------------------------------------------------------------
+Mon Sep 16 08:52:40 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.0.4
+  * CVE-2019-16319: Fixed an infinite loop in the Gryphon dissector (boo#1150690).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.0.4.html
+
+-------------------------------------------------------------------
 Tue Jul 23 08:52:31 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
 
 - Added BuildRequires for spandsp-devel to enable decoding of various

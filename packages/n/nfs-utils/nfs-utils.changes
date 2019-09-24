@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 23 01:52:29 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- Delete  0006-nfs.conf-silence-include-error.patch
+  replaced with better version
+- 0006-conffile-allow-optional-include-files.patch
+   Avoid error if /etc/nfs.conf.local doesn't exist
+  (bsc#1151044 bsc#1150807)
+- 0008-mountd-Initialize-logging-early.patch
+ Don't close the loging socket - it causes problems.
+  (bsc#1151044 bsc#1150807)
+
+-------------------------------------------------------------------
+Mon Sep 16 23:43:37 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- Don't make /var/lib/nfs owned by statd.
+  Only sm and sm.bak need to be accessible by
+  statd or sm-notify after they drop privs.
+  Providing they get created, the parent
+  directory can be root-owned.
+- 0007-statd-user-from-sm
+  Change rpc.statd and sm-notify to take uid from the sm
+  directory.
+  (bsc#1150733 CVE-2019-3689)
+
+-------------------------------------------------------------------
+Mon Sep 16 05:56:12 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- 0006-nfs.conf-silence-include-error.patch
+ Avoid an unhelpful warning (bsc#1150807)
+
+-------------------------------------------------------------------
 Mon Sep  2 05:25:07 UTC 2019 - Neil Brown <nfbrown@suse.com>
 
 - 0005-nfs.conf-fail-to-disable-major-NFS-version-4-using-v.patch

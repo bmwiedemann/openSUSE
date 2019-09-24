@@ -164,9 +164,7 @@ Requires:       Mesa
 Requires(post):   update-alternatives
 Requires(postun): update-alternatives
 %endif
-Provides:       xorg-x11-Xvfb
 Provides:       xorg-x11-server-glx
-Obsoletes:      xorg-x11-Xvfb
 Obsoletes:      xorg-x11-server-glx
 
 Provides:       glamor = %{version}
@@ -201,8 +199,13 @@ Obsoletes:      xorg-x11-driver-video < 7.6_1
  # Remove (also from depending driver(s)) when updating X11_ABI_VIDEODRV by updating the server package - NOTE: also remove from xorg-x11-server.macros.in !
 Provides:       X11_ABI_HAS_DPMS_GET_CAPABILITIES
 
-# Xvfb requires keyboard files as well (bnc#797124)
 Requires:       xkeyboard-config
+
+# Install it by default; otherwise we run into too much package build failures
+# when Xvfb is being used for testing ...
+# Unfortunately we need a requires here due to OBS not installing 'recommended'
+# packages :-(
+Requires:       xorg-x11-server-Xvfb
 
 # PATCH-FEATURE-OPENSUSE n_xorg-x11-server-rpmmacros.patch dimstar@opensuse.org -- Provide RPM macros to require correct ABI Versions.
 Patch1:         N_default-module-path.diff
@@ -246,6 +249,10 @@ Patch1502:      U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
 
 Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 
+Patch1504:      U_xwayland-Separate-DamagePtr-into-separate-window-data.patch
+
+Patch1505:      U_xwayland-Allow-passing-a-fd.patch
+
 # required for NVIDIA's PRIME render offload support
 Patch1601:      0001-xsync-Add-resource-inside-of-SyncCreate-export-SyncC.patch
 Patch1602:      0002-GLX-Add-a-per-client-vendor-mapping.patch
@@ -268,6 +275,21 @@ Obsoletes:      xorg-x11-Xnest
 
 %description extra
 This package contains additional Xservers (Xdmx, Xephyr, Xnest).
+
+%package Xvfb
+Summary:        Virtual Xserver Xvfb
+Group:          System/X11/Servers/XF86_4
+Requires:       Mesa
+Requires:       xkbcomp
+# Xvfb requires keyboard files as well (bnc#797124)
+Requires:       xkeyboard-config
+Recommends:     xorg-x11-fonts-core
+Provides:       xorg-x11-Xvfb
+Provides:       xorg-x11-server:/usr/bin/Xvfb
+Obsoletes:      xorg-x11-Xvfb
+
+%description Xvfb
+This package contains the virtual Xserver Xvfb.
 
 %if 0%{?have_wayland} == 1
 %package wayland
@@ -397,6 +419,10 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1502 -p1
 
 %patch1503 -p1
+
+%patch1504 -p1
+
+%patch1505 -p1
 
 # required for NVIDIA's PRIME render offload support
 %patch1601 -p1
@@ -627,7 +653,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/libglx.so
 %endif
 %endif
-%{_bindir}/Xvfb
 %{_bindir}/xorg-backtrace
 
 %if 0%{?have_wayland} == 1
@@ -660,6 +685,10 @@ fi
 %{_mandir}/man1/Xdmx.1*
 %{_mandir}/man1/Xephyr.1*
 %{_mandir}/man1/Xnest.1*
+
+%files Xvfb
+%defattr(-,root,root)
+%{_bindir}/Xvfb
 
 %files sdk
 %defattr(-,root,root)
