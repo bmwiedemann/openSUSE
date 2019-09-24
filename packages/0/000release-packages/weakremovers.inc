@@ -4537,6 +4537,8 @@ Provides: weakremover(pam_ldap)
 Provides: weakremover(systemd-mini-bash-completion)
 %ifarch x86_64
 Provides: weakremover(ffmpeg-3)
+Provides: weakremover(fish3)
+Provides: weakremover(fish3-devel)
 Provides: weakremover(libdpdk-17_11)
 Provides: weakremover(python2-selinux)
 Provides: weakremover(python2-setools)
