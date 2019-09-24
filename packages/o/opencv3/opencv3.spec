@@ -16,6 +16,11 @@
 #
 
 
+# Build failure with LTO enabled on ppc64le boo#1146096
+%ifarch ppc64le
+%define _lto_cflags %{nil}
+%endif
+
 %define srcname opencv
 %define libname lib%{srcname}
 %define soname 3_4

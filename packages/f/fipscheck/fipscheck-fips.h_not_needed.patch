@@ -1,0 +1,12 @@
+Index: fipscheck-1.5.0/src/filehmac.c
+===================================================================
+--- fipscheck-1.5.0.orig/src/filehmac.c	2019-09-16 12:47:15.843827233 +0200
++++ fipscheck-1.5.0/src/filehmac.c	2019-09-16 12:47:20.847857908 +0200
+@@ -41,7 +41,6 @@
+ #include <sys/wait.h>
+ 
+ #if defined(WITH_OPENSSL)
+-#include <openssl/fips.h>
+ #include <openssl/evp.h>
+ #include <openssl/hmac.h>
+ #elif defined(WITH_NSS)

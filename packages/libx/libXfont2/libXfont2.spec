@@ -1,7 +1,7 @@
 #
 # spec file for package libXfont2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXfont2
 %define lname   libXfont2-2
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        X font handling library for server and utilities
 License:        MIT
@@ -97,7 +97,7 @@ rm -f "%buildroot/%_libdir"/*.la
 
 %files -n %lname
 %defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_libdir/libXfont2.so.2*
 
 %files devel

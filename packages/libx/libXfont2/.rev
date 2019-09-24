@@ -32,4 +32,16 @@
     <comment>  * Open files with O_NOFOLLOW. (CVE-2017-16611, bsc#1050459)</comment>
     <requestid>548190</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f8fbaf136ba156241e13955d91b1861d</srcmd5>
+    <version>2.0.4</version>
+    <time>1569365549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4
+  * This minor maintenance release cleans up issues found by
+    Coverity and gcc, as well as additional hardening through
+    the use of APIs with stronger bounds checking.
+- tag COPYING as license</comment>
+    <requestid>731350</requestid>
+  </revision>
 </revisionlist>

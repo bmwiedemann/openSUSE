@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:48:51 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Remove #include of unused fips.h to fix build with OpenSSL 1.1.1
+  (bsc#1149792)
+  * add fipscheck-fips.h_not_needed.patch
+- Drop obsolete openssl-1_1-port.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jan  3 11:08:27 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Use the shipped manpages instead of building them with xmlto
