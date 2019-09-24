@@ -19,10 +19,10 @@
 Name:           fakeroot
 Version:        1.23
 Release:        0
-Summary:        Gives a fake root environment
+Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
-Url:            http://fakeroot.alioth.debian.org/
+URL:            http://fakeroot.alioth.debian.org/
 Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.xz#/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         %{name}-1.20-lib32.patch
@@ -33,14 +33,14 @@ Patch3:         %{name}-1.21-hide-dlsym-error.patch
 Patch4:         %{name}-1.21-fix-shell-in-fakeroot
 BuildRequires:  automake
 BuildRequires:  fdupes
+# user(daemon)/group(sys) is required for t.tar testsuite
+BuildRequires:  group(sys)
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  libtool
 BuildRequires:  po4a
 BuildRequires:  sharutils
-# user(daemon)/group(sys) is required for t.tar testsuite
-BuildRequires:  group(sys)
 BuildRequires:  user(daemon)
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -53,11 +53,7 @@ that simulate the effect the real library functions would have had,
 had the user really been root.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -83,7 +79,7 @@ EOF
     --disable-static \
     --with-ipc=$type \
     --program-suffix=-$type
-  make %{?_smp_mflags}
+  %make_build
   cd ..
 done
 
@@ -112,7 +108,7 @@ touch %{buildroot}%{_sysconfdir}/alternatives/{faked,fakeroot}{,.1%{ext_man}}
 
 %check
 for type in sysv tcp; do
-  make -C obj-$type check
+  make %{?_smp_mflags} -C obj-$type check
 done
 
 %post
@@ -157,7 +153,8 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files
-%doc AUTHORS BUGS COPYING DEBUG README doc/README.saving
+%license COPYING
+%doc AUTHORS BUGS DEBUG README doc/README.saving
 %ghost %{_bindir}/faked
 %ghost %{_sysconfdir}/alternatives/faked
 %ghost %{_bindir}/fakeroot
@@ -171,8 +168,8 @@ fi
 %ghost %{_sysconfdir}/alternatives/faked.1%{ext_man}
 %ghost %{_mandir}/man1/fakeroot.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/fakeroot.1%{ext_man}
-%{_mandir}/man1/faked-*.1%{ext_man}
-%{_mandir}/man1/fakeroot-*.1%{ext_man}
+%{_mandir}/man1/faked-*.1%{?ext_man}
+%{_mandir}/man1/fakeroot-*.1%{?ext_man}
 %dir %{_mandir}/nl/
 %dir %{_mandir}/nl/man1/
 %dir %{_mandir}/pt/

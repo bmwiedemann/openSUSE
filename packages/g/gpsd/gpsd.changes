@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 17 17:09:20 UTC 2019 - suse+build@de-korte.org
+
+- Update to version 3.19
+  * Rearrange rawdata_t.  Bump the API because gps_data_t changed.
+  * Report sequence-ID fields in type 7 and 13 AIS messages.
+  * Preliminary support for SiRFstar V
+  * Improve error modeling.
+  * Update pseudo NMEA to v3.0, with fractional time.
+  * Improve cycle detection, mostly for NMEA.
+  * Move epe from gps_data_t to be near its friends in gps_fix_t.
+  * Preliminary u-blox 9 support.
+  * Add qErr in gps_data_t to store PPS quantization error.
+  * Add Android (AOSP) support
+  * Improved multi gnss and multi signal support.
+  * NMEA 4.10 multi gnss multi signal support.
+  * The arguments to "ubxtool -p P" have been expanded and changed.
+  * New options, -g, -x, -z, added to ubxtool for u-blox 9 support.
+- Drop gpsd-declaration-in-for-loop.patch
+
+-------------------------------------------------------------------
 Mon Dec 10 19:12:14 UTC 2018 - Arjen de Korte <suse+build@de-korte.org>
 
 - Correct flag to disable stripping (nostrip=True)

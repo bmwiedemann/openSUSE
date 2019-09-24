@@ -17,28 +17,12 @@
 
 
 Name:           ltrace
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  binutils-devel
-BuildRequires:  dejagnu
-BuildRequires:  gcc-c++
-BuildRequires:  libdw-devel
-BuildRequires:  libelf-devel
-BuildRequires:  libtool
-Url:            http://ltrace.org/
-# bug437293
-%ifarch ppc64
-Obsoletes:      ltrace-64bit
-%endif
-#
-Summary:        Trace the Library and System Calls a Program Makes
+Summary:        Library and system call tracer for programs
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 Version:        0.7.91
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 s390 s390x ppc ppc64 ppc64le %arm x86_64 alpha ia64 m68k aarch64
-Prefix:         /usr
+URL:            http://ltrace.org/
 %define git_id g6c6bcc3
 Source:         ltrace-%{version}-%{git_id}.tar.bz2
 Source2:        baselibs.conf
@@ -49,6 +33,20 @@ Patch4:         arm-trace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
 Patch6:         lens-double-free.patch
 Patch7:         gcc9-Wlto-type-mismatch.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  binutils-devel
+BuildRequires:  dejagnu
+BuildRequires:  gcc-c++
+BuildRequires:  libdw-devel
+BuildRequires:  libelf-devel
+BuildRequires:  libtool
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExclusiveArch:  %ix86 s390 s390x ppc ppc64 ppc64le %arm x86_64 alpha ia64 m68k aarch64
+# bug437293
+%ifarch ppc64
+Obsoletes:      ltrace-64bit
+%endif
 
 %description
 Ltrace is a program that runs the specified command until it exits. It
@@ -56,8 +54,8 @@ intercepts and records the dynamic library calls that are called by the
 executed process and the signals that are received by that process. It
 can also intercept and print the system calls executed by the program.
 
-The program to trace need not be recompiled for this, so you can use
-ltrace on binaries for which you do not have access to the source.
+The program to trace need not be recompiled for this, so ltrace can be
+used on binaries for which no source is available.
 
 This is still a work in progress, so, for example, the tracking to
 child processes may fail or some things may not work as expected.
@@ -99,7 +97,7 @@ echo no make check > testsuite/%{_target_cpu}-testrun.sum
 %endif
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 rm -rf %{buildroot}/usr/share/doc/ltrace
 
 %files

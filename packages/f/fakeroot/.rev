@@ -39,4 +39,12 @@
     <comment>Resubmit rev 15 - This is staged and green in :J</comment>
     <requestid>729895</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1a519ecee22bff58e2510ea1e35b60ab</srcmd5>
+    <version>1.23</version>
+    <time>1569366461</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731546</requestid>
+  </revision>
 </revisionlist>

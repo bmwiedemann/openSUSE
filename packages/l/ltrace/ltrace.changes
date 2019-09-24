@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 17 14:49:50 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Fix last change
+
+-------------------------------------------------------------------
+Fri Sep 13 12:55:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
 Tue Apr 30 10:35:37 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc9-Wlto-type-mismatch.patch in order to address LTO warnings

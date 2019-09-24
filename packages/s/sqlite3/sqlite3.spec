@@ -28,6 +28,7 @@ URL:            http://www.sqlite.org/
 Source0:        http://www.sqlite.org/2019/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        http://www.sqlite.org/2019/sqlite-doc-%{tarversion}.zip
+Patch0:         sqlite3-CVE-2019-16168.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -103,6 +104,7 @@ other documentation found on sqlite.org. The files can be found in
 
 %prep
 %setup -q -n sqlite-src-%{tarversion} -a2
+%patch0
 rm -v sqlite-doc-%{tarversion}/releaselog/current.html
 ln -sv `echo %{version} | sed "s/\./_/g"`.html sqlite-doc-%{tarversion}/releaselog/current.html
 find -type f -name sqlite.css~ -delete
