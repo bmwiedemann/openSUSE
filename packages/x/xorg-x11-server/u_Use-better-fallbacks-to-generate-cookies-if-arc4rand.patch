@@ -24,10 +24,10 @@ Reviewed-by: Stefan Dirsch <sndirsch@suse.de>
  os/auth.c               | 138 ++++++++++++++++++++++++++++++++++++++++++++++--
  3 files changed, 141 insertions(+), 7 deletions(-)
 
-Index: xorg-server-1.19.3/configure.ac
+Index: xorg-server-1.20.5/configure.ac
 ===================================================================
---- xorg-server-1.19.3.orig/configure.ac
-+++ xorg-server-1.19.3/configure.ac
+--- xorg-server-1.20.5.orig/configure.ac
++++ xorg-server-1.20.5/configure.ac
 @@ -134,7 +134,7 @@ AM_CONDITIONAL(SPECIAL_DTRACE_OBJECTS, [
  AC_HEADER_DIRENT
  AC_HEADER_STDC
@@ -37,7 +37,7 @@ Index: xorg-server-1.19.3/configure.ac
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
-@@ -226,7 +226,7 @@ AC_REPLACE_FUNCS([reallocarray strcasecm
+@@ -166,7 +166,7 @@ AC_REPLACE_FUNCS([reallocarray strcasecm
  AM_CONDITIONAL(POLL, [test "x$ac_cv_func_poll" = "xyes"])
  
  AC_CHECK_LIB([bsd], [arc4random_buf])
@@ -46,11 +46,11 @@ Index: xorg-server-1.19.3/configure.ac
  
  AC_CHECK_DECLS([program_invocation_short_name], [], [], [[#include <errno.h>]])
  
-Index: xorg-server-1.19.3/include/dix-config.h.in
+Index: xorg-server-1.20.5/include/dix-config.h.in
 ===================================================================
---- xorg-server-1.19.3.orig/include/dix-config.h.in
-+++ xorg-server-1.19.3/include/dix-config.h.in
-@@ -167,6 +167,9 @@
+--- xorg-server-1.20.5.orig/include/dix-config.h.in
++++ xorg-server-1.20.5/include/dix-config.h.in
+@@ -155,6 +155,9 @@
  /* Define to 1 if you have the `arc4random_buf' function. */
  #undef HAVE_ARC4RANDOM_BUF
  
@@ -60,7 +60,7 @@ Index: xorg-server-1.19.3/include/dix-config.h.in
  /* Define to use libc SHA1 functions */
  #undef HAVE_SHA1_IN_LIBC
  
-@@ -244,6 +247,9 @@
+@@ -232,6 +235,9 @@
  /* Define to 1 if you have the <sys/utsname.h> header file. */
  #undef HAVE_SYS_UTSNAME_H
  
@@ -70,11 +70,11 @@ Index: xorg-server-1.19.3/include/dix-config.h.in
  /* Define to 1 if you have the `timingsafe_memcmp' function. */
  #undef HAVE_TIMINGSAFE_MEMCMP
  
-Index: xorg-server-1.19.3/os/auth.c
+Index: xorg-server-1.20.5/os/auth.c
 ===================================================================
---- xorg-server-1.19.3.orig/os/auth.c
-+++ xorg-server-1.19.3/os/auth.c
-@@ -48,6 +48,10 @@ from The Open Group.
+--- xorg-server-1.20.5.orig/os/auth.c
++++ xorg-server-1.20.5/os/auth.c
+@@ -49,6 +49,10 @@ from The Open Group.
  #ifdef HAVE_LIBBSD
  #include   <bsd/stdlib.h>       /* for arc4random_buf() */
  #endif
@@ -85,7 +85,7 @@ Index: xorg-server-1.19.3/os/auth.c
  
  struct protocol {
      unsigned short name_length;
-@@ -304,16 +308,140 @@ GenerateAuthorization(unsigned name_length,
+@@ -310,16 +314,140 @@ GenerateAuthorization(unsigned name_leng
  
  #endif                          /* XCSECURITY */
  

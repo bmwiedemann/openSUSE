@@ -16,11 +16,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/modes/xf86RandR12.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/hw/xfree86/modes/xf86RandR12.c b/hw/xfree86/modes/xf86RandR12.c
-index eae7016..9f444dd 100644
---- a/hw/xfree86/modes/xf86RandR12.c
-+++ b/hw/xfree86/modes/xf86RandR12.c
-@@ -681,6 +681,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScreen,
+Index: xorg-server-1.20.5/hw/xfree86/modes/xf86RandR12.c
+===================================================================
+--- xorg-server-1.20.5.orig/hw/xfree86/modes/xf86RandR12.c
++++ xorg-server-1.20.5/hw/xfree86/modes/xf86RandR12.c
+@@ -685,6 +685,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScre
      WindowPtr pRoot = pScreen->root;
      PixmapPtr pScrnPix;
      Bool ret = FALSE;
@@ -28,7 +28,7 @@ index eae7016..9f444dd 100644
      int c;
  
      if (randrp->virtualX == -1 || randrp->virtualY == -1) {
-@@ -709,6 +710,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScreen,
+@@ -713,6 +714,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScre
              if (crtc->panningTrackingArea.y2 > crtc->panningTrackingArea.y1)
                  crtc->panningTrackingArea.y2 += height - pScreen->height;
              xf86RandR13VerifyPanningArea(crtc, width, height);
@@ -36,7 +36,7 @@ index eae7016..9f444dd 100644
              xf86RandR13Pan(crtc, randrp->pointerX, randrp->pointerY);
          }
      }
-@@ -718,6 +720,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScreen,
+@@ -722,6 +724,7 @@ xf86RandR12ScreenSetSize(ScreenPtr pScre
      pScreen->height = pScrnPix->drawable.height = height;
      randrp->mmWidth = pScreen->mmWidth = mmWidth;
      randrp->mmHeight = pScreen->mmHeight = mmHeight;

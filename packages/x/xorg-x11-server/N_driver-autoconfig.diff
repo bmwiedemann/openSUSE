@@ -8,7 +8,7 @@ Index: hw/xfree86/common/xf86pciBus.c
 ===================================================================
 --- hw/xfree86/common/xf86pciBus.c.orig
 +++ hw/xfree86/common/xf86pciBus.c
-@@ -1185,6 +1185,13 @@ xf86VideoPtrToDriverList(struct pci_devi
+@@ -1186,6 +1186,13 @@ xf86VideoPtrToDriverList(struct pci_devi
          driverList[0] = "neomagic";
          break;
      case 0x10de:
@@ -22,7 +22,7 @@ Index: hw/xfree86/common/xf86pciBus.c
      case 0x12d2:
      {
          int idx = 0;
-@@ -1196,7 +1203,8 @@ xf86VideoPtrToDriverList(struct pci_devi
+@@ -1197,7 +1204,8 @@ xf86VideoPtrToDriverList(struct pci_devi
          break;
      }
      case 0x1106:

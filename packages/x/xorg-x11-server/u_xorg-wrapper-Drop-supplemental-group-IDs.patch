@@ -10,11 +10,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/xorg-wrapper.c | 48 +++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 48 insertions(+)
 
-diff --git a/hw/xfree86/xorg-wrapper.c b/hw/xfree86/xorg-wrapper.c
-index d930962..64a43c4 100644
---- a/hw/xfree86/xorg-wrapper.c
-+++ b/hw/xfree86/xorg-wrapper.c
-@@ -36,6 +36,8 @@
+Index: xorg-server-1.20.5/hw/xfree86/xorg-wrapper.c
+===================================================================
+--- xorg-server-1.20.5.orig/hw/xfree86/xorg-wrapper.c
++++ xorg-server-1.20.5/hw/xfree86/xorg-wrapper.c
+@@ -35,6 +35,8 @@
  #include <string.h>
  #include <sys/ioctl.h>
  #include <sys/stat.h>
@@ -23,7 +23,7 @@ index d930962..64a43c4 100644
  #ifdef HAVE_SYS_SYSMACROS_H
  #include <sys/sysmacros.h>
  #endif
-@@ -252,6 +254,52 @@ int main(int argc, char *argv[])
+@@ -255,6 +257,52 @@ int main(int argc, char *argv[])
      if (needs_root_rights == 0 || (total_cards && kms_cards == total_cards)) {
          gid_t realgid = getgid();
          uid_t realuid = getuid();

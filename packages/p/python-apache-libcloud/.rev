@@ -244,4 +244,14 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>703589</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>06661cfc10fbd33b2514c3c579a26b88</srcmd5>
+    <version>2.6.0</version>
+    <time>1569367873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0:
+  * Many various cloud fixes and tweaks for future python releases
+  * See CHANGES.rst</comment>
+    <requestid>731718</requestid>
+  </revision>
 </revisionlist>

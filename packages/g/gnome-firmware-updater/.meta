@@ -2,4 +2,7 @@
   <title>gnome-firmware-updater</title>
   <description>This application can update, reinstall and downgrade firmware on devices supported by fwupd.</description>
   <devel project="GNOME:Apps" package="gnome-firmware-updater"/>
+  <build>
+    <disable/>
+  </build>
 </package>

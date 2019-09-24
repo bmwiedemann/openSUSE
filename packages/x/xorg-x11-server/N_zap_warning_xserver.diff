@@ -8,11 +8,11 @@ Zap the server if a second ctrl-alt-backspace is sent
 within 2 seconds.
 This can be enabled with a new option flag "ZapWarning"
 
-Index: xorg-server-1.12.1/hw/xfree86/common/xf86Config.c
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86Config.c
 ===================================================================
---- xorg-server-1.12.1.orig/hw/xfree86/common/xf86Config.c
-+++ xorg-server-1.12.1/hw/xfree86/common/xf86Config.c
-@@ -680,6 +680,7 @@ typedef enum {
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86Config.c
++++ xorg-server-1.20.5/hw/xfree86/common/xf86Config.c
+@@ -622,6 +622,7 @@ typedef enum {
      FLAG_NOTRAPSIGNALS,
      FLAG_DONTVTSWITCH,
      FLAG_DONTZAP,
@@ -20,7 +20,7 @@ Index: xorg-server-1.12.1/hw/xfree86/common/xf86Config.c
      FLAG_DONTZOOM,
      FLAG_DISABLEVIDMODE,
      FLAG_ALLOWNONLOCAL,
-@@ -717,6 +718,8 @@ static OptionInfoRec FlagOptions[] = {
+@@ -659,6 +660,8 @@ static OptionInfoRec FlagOptions[] = {
       {0}, FALSE},
      {FLAG_DONTZAP, "DontZap", OPTV_BOOLEAN,
       {0}, FALSE},
@@ -29,7 +29,7 @@ Index: xorg-server-1.12.1/hw/xfree86/common/xf86Config.c
      {FLAG_DONTZOOM, "DontZoom", OPTV_BOOLEAN,
       {0}, FALSE},
      {FLAG_DISABLEVIDMODE, "DisableVidModeExtension", OPTV_BOOLEAN,
-@@ -805,6 +805,7 @@ configServerFlags(XF86ConfFlagsPtr flags
+@@ -740,6 +743,7 @@ configServerFlags(XF86ConfFlagsPtr flags
      xf86GetOptValBool(FlagOptions, FLAG_NOTRAPSIGNALS, &xf86Info.notrapSignals);
      xf86GetOptValBool(FlagOptions, FLAG_DONTVTSWITCH, &xf86Info.dontVTSwitch);
      xf86GetOptValBool(FlagOptions, FLAG_DONTZAP, &xf86Info.dontZap);
@@ -37,11 +37,11 @@ Index: xorg-server-1.12.1/hw/xfree86/common/xf86Config.c
      xf86GetOptValBool(FlagOptions, FLAG_DONTZOOM, &xf86Info.dontZoom);
  
      xf86GetOptValBool(FlagOptions, FLAG_IGNORE_ABI, &xf86Info.ignoreABI);
-Index: xorg-server-1.12.1/hw/xfree86/common/xf86Events.c
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86Events.c
 ===================================================================
---- xorg-server-1.12.1.orig/hw/xfree86/common/xf86Events.c
-+++ xorg-server-1.12.1/hw/xfree86/common/xf86Events.c
-@@ -182,13 +182,25 @@ xf86ProcessActionEvent(ActionEvent actio
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86Events.c
++++ xorg-server-1.20.5/hw/xfree86/common/xf86Events.c
+@@ -166,13 +166,25 @@ xf86ProcessActionEvent(ActionEvent actio
      DebugF("ProcessActionEvent(%d,%p)\n", (int) action, arg);
      switch (action) {
      case ACTION_TERMINATE:
@@ -72,11 +72,11 @@ Index: xorg-server-1.12.1/hw/xfree86/common/xf86Events.c
          break;
      case ACTION_NEXT_MODE:
          if (!xf86Info.dontZoom)
-Index: xorg-server-1.12.1/hw/xfree86/common/xf86Globals.c
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86Globals.c
 ===================================================================
---- xorg-server-1.12.1.orig/hw/xfree86/common/xf86Globals.c
-+++ xorg-server-1.12.1/hw/xfree86/common/xf86Globals.c
-@@ -108,6 +108,7 @@ xf86InfoRec xf86Info = {
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86Globals.c
++++ xorg-server-1.20.5/hw/xfree86/common/xf86Globals.c
+@@ -107,6 +107,7 @@ xf86InfoRec xf86Info = {
      .autoVTSwitch = TRUE,
      .ShareVTs = FALSE,
      .dontZap = FALSE,
@@ -84,11 +84,11 @@ Index: xorg-server-1.12.1/hw/xfree86/common/xf86Globals.c
      .dontZoom = FALSE,
      .notrapSignals = FALSE,
      .currentScreen = NULL,
-Index: xorg-server-1.12.1/hw/xfree86/common/xf86Privstr.h
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86Privstr.h
 ===================================================================
---- xorg-server-1.12.1.orig/hw/xfree86/common/xf86Privstr.h
-+++ xorg-server-1.12.1/hw/xfree86/common/xf86Privstr.h
-@@ -70,6 +70,7 @@ typedef struct {
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86Privstr.h
++++ xorg-server-1.20.5/hw/xfree86/common/xf86Privstr.h
+@@ -62,6 +62,7 @@ typedef struct {
      Bool autoVTSwitch;
      Bool ShareVTs;
      Bool dontZap;

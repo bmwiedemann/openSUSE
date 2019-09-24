@@ -1,0 +1,61 @@
+From 30961f1bf9be6117aa825e7bfc8b327c93d3aacd Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 23 Sep 2019 11:10:31 +1000
+Subject: [PATCH] mountd: Initialize logging early.
+
+Reading the config file can generate log messages,
+so we should initialize logging before reading the
+config file.
+
+If any log message are generated, syslog will leave
+a file descriptor open (a socket), so calling
+closeall(3) after this can cause problem.
+Before this we initialize login we don't know if
+Foreground (-F) has been selected, so closeall()
+cannot be conditional on that.
+
+closeall() isn't needed - daemon are almost always run
+from a management daemon like systemd, and they are given
+a clean environment.  It is really best if they just take
+what they are given.
+
+So remove the closeall() call.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ utils/mountd/mountd.c |    9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+--- a/utils/mountd/mountd.c
++++ b/utils/mountd/mountd.c
+@@ -679,6 +679,9 @@ main(int argc, char **argv)
+ 	else
+ 		progname = argv[0];
+ 
++	/* Initialize logging. */
++	xlog_open(progname);
++
+ 	conf_init_file(NFS_CONFFILE);
+ 	xlog_from_conffile("mountd");
+ 	manage_gids = conf_get_bool("mountd", "manage-gids", manage_gids);
+@@ -818,9 +821,7 @@ main(int argc, char **argv)
+ 			}
+ 		}
+ 	}
+-	/* Initialize logging. */
+ 	if (!foreground) xlog_stderr(0);
+-	xlog_open(progname);
+ 
+ 	sa.sa_handler = SIG_IGN;
+ 	sa.sa_flags = 0;
+@@ -832,10 +833,6 @@ main(int argc, char **argv)
+ 	/* WARNING: the following works on Linux and SysV, but not BSD! */
+ 	sigaction(SIGCHLD, &sa, NULL);
+ 
+-	/* Daemons should close all extra filehandles ... *before* RPC init. */
+-	if (!foreground)
+-		closeall(3);
+-
+ 	cache_open();
+ 
+ 	unregister_services();

@@ -1,0 +1,61 @@
+From f608217f6136c0e9fedc7bc728e4ba13ed295c4c Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 23 Sep 2019 11:20:39 +1000
+Subject: [PATCH] conffile: allow optional include files.
+
+If nfs.conf contains, for example
+  include = /etc/nfs.conf.local
+and /etc/nfs.conf.local doesn't exist, then a warning is given.
+Sometimes it is useful to have an optional include file which is
+included if present, but for which an absence doesn't give a
+warning.
+
+Systemd has a convention that a hyphen at the start of
+an include file name marks it as optional, so add this convention
+to nfs-utils.
+So
+  include = -/etc/nfs.conf.local
+will not give a warning if the file doesn't exist.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ support/nfs/conffile.c |   13 ++++++++++---
+ systemd/nfs.conf.man   |    3 +++
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+--- a/support/nfs/conffile.c
++++ b/support/nfs/conffile.c
+@@ -413,11 +413,18 @@ conf_parse_line(int trans, char *line, c
+ 
+ 	if (strcasecmp(line, "include")==0) {
+ 		/* load and parse subordinate config files */
++		_Bool optional = false;
++
++		if (val && *val == '-') {
++			optional = true;
++			val++;
++		}
++
+ 		relpath = relative_path(filename, val);
+ 		if (relpath == NULL) {
+-			xlog_warn("config error at %s:%d: "
+-				"error loading included config",
+-				  filename, lineno);
++			if (!optional)
++				xlog_warn("config error at %s:%d: error loading included config",
++					  filename, lineno);
+ 			return;
+ 		}
+ 
+--- a/systemd/nfs.conf.man
++++ b/systemd/nfs.conf.man
+@@ -65,6 +65,9 @@ section headers, then new sections will
+ included file appeared in place of the
+ .B include
+ line.
++If the file name starts with a hyphen then that is stripped off
++before the file is opened, and if file doesn't exist no warning is
++given.  Normally a non-existent include file generates a warning.
+ .PP
+ Lookup of section and value names is case-insensitive.
+ 

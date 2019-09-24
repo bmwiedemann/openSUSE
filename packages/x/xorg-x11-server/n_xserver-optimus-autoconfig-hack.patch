@@ -28,10 +28,10 @@ Signed-off-by: Dave Airlie <airlied@gmail.com>
  hw/xfree86/modes/xf86Crtc.c         | 32 ++++++++++++++++++++++++++++++++
  3 files changed, 47 insertions(+)
 
-diff --git a/dix/main.c b/dix/main.c
-index 273f30330..b85c81034 100644
---- a/dix/main.c
-+++ b/dix/main.c
+Index: xorg-server-1.20.5/dix/main.c
+===================================================================
+--- xorg-server-1.20.5.orig/dix/main.c
++++ xorg-server-1.20.5/dix/main.c
 @@ -122,6 +122,8 @@ extern void Dispatch(void);
  
  CallbackListPtr RootWindowFinalizeCallback = NULL;
@@ -41,7 +41,7 @@ index 273f30330..b85c81034 100644
  int
  dix_main(int argc, char *argv[], char *envp[])
  {
-@@ -244,6 +246,8 @@ dix_main(int argc, char *argv[], char *envp[])
+@@ -246,6 +248,8 @@ dix_main(int argc, char *argv[], char *e
          for (i = 0; i < screenInfo.numScreens; i++)
              InitRootWindow(screenInfo.screens[i]->root);
  
@@ -50,11 +50,11 @@ index 273f30330..b85c81034 100644
          InitCoreDevices();
          InitInput(argc, argv);
          InitAndStartDevices();
-diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
-index cc34a1952..766888b3e 100644
---- a/hw/xfree86/common/xf86Init.c
-+++ b/hw/xfree86/common/xf86Init.c
-@@ -73,6 +73,7 @@
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86Init.c
+===================================================================
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86Init.c
++++ xorg-server-1.20.5/hw/xfree86/common/xf86Init.c
+@@ -76,6 +76,7 @@
  #include "xf86DDC.h"
  #include "xf86Xinput.h"
  #include "xf86InPriv.h"
@@ -62,7 +62,7 @@ index cc34a1952..766888b3e 100644
  #include "picturestr.h"
  #include "randrstr.h"
  #include "glxvndabi.h"
-@@ -264,6 +265,231 @@ AddVTAtoms(CallbackListPtr *pcbl, void *data, void *screen)
+@@ -294,6 +295,231 @@ AddVTAtoms(CallbackListPtr *pcbl, void *
                     "Failed to register VT properties\n");
  }
  
@@ -294,7 +294,7 @@ index cc34a1952..766888b3e 100644
  static Bool
  xf86ScreenInit(ScreenPtr pScreen, int argc, char **argv)
  {
-@@ -703,6 +929,8 @@ InitOutput(ScreenInfo * pScreenInfo, int argc, char **argv)
+@@ -770,6 +996,8 @@ InitOutput(ScreenInfo * pScreenInfo, int
      for (i = 0; i < xf86NumGPUScreens; i++)
          AttachUnboundGPU(xf86Screens[0]->pScreen, xf86GPUScreens[i]->pScreen);
  
@@ -303,11 +303,11 @@ index cc34a1952..766888b3e 100644
      xf86VGAarbiterWrapFunctions();
      if (sigio_blocked)
          input_unlock();
-diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
-index cef47da03..395ce9400 100644
---- a/hw/xfree86/common/xf86platformBus.c
-+++ b/hw/xfree86/common/xf86platformBus.c
-@@ -594,6 +594,8 @@ xf86platformAddGPUDevices(DriverPtr drvp)
+Index: xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
+===================================================================
+--- xorg-server-1.20.5.orig/hw/xfree86/common/xf86platformBus.c
++++ xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
+@@ -594,6 +594,8 @@ xf86platformAddGPUDevices(DriverPtr drvp
      return foundScreen;
  }
  
@@ -324,11 +324,11 @@ index cef47da03..395ce9400 100644
  
     RRResourcesChanged(xf86Screens[0]->pScreen);
     RRTellChanged(xf86Screens[0]->pScreen);
-diff --git a/include/dix.h b/include/dix.h
-index 476559842..7372ba0d5 100644
---- a/include/dix.h
-+++ b/include/dix.h
-@@ -597,6 +597,8 @@ typedef struct {
+Index: xorg-server-1.20.5/include/dix.h
+===================================================================
+--- xorg-server-1.20.5.orig/include/dix.h
++++ xorg-server-1.20.5/include/dix.h
+@@ -599,6 +599,8 @@ typedef struct {
  
  extern _X_EXPORT CallbackListPtr RootWindowFinalizeCallback;
  

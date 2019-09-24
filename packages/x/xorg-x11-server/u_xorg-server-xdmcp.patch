@@ -12,11 +12,11 @@ the first address and then give up.
 Even if this seems to be the wrong place to fix this it seems to be
 easier than fixing all display servers.
 
-Index: xorg-server-1.12.1/os/access.c
+Index: xorg-server-1.20.5/os/access.c
 ===================================================================
---- xorg-server-1.12.1.orig/os/access.c
-+++ xorg-server-1.12.1/os/access.c
-@@ -714,7 +714,9 @@ DefineSelf(int fd)
+--- xorg-server-1.20.5.orig/os/access.c
++++ xorg-server-1.20.5/os/access.c
+@@ -827,7 +827,9 @@ DefineSelf(int fd)
  
              /*
               * ignore 'localhost' entries as they're not useful
@@ -27,7 +27,7 @@ Index: xorg-server-1.12.1/os/access.c
               */
              if (ifr->ifa_flags & IFF_LOOPBACK)
                  continue;
-@@ -735,6 +737,14 @@ DefineSelf(int fd)
+@@ -848,6 +850,14 @@ DefineSelf(int fd)
              else if (family == FamilyInternet6 &&
                       IN6_IS_ADDR_LOOPBACK((struct in6_addr *) addr))
                  continue;

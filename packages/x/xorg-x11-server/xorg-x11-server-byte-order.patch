@@ -11,11 +11,11 @@ Signed-off-by: Adam Jackson <ajax@redhat.com>
  include/xorg-server.h.in |    1 +
  2 files changed, 2 insertions(+)
 
-Index: a/include/dix-config.h.in
+Index: xorg-server-1.20.5/include/dix-config.h.in
 ===================================================================
---- a.orig/include/dix-config.h.in
-+++ a/include/dix-config.h.in
-@@ -499,6 +499,7 @@
+--- xorg-server-1.20.5.orig/include/dix-config.h.in
++++ xorg-server-1.20.5/include/dix-config.h.in
+@@ -487,6 +487,7 @@
  
  /* byte order */
  #undef X_BYTE_ORDER
@@ -23,11 +23,11 @@ Index: a/include/dix-config.h.in
  
  /* Listen on TCP socket */
  #undef LISTEN_TCP
-Index: a/include/xorg-server.h.in
+Index: xorg-server-1.20.5/include/xorg-server.h.in
 ===================================================================
---- a.orig/include/xorg-server.h.in
-+++ a/include/xorg-server.h.in
-@@ -233,5 +233,6 @@
+--- xorg-server-1.20.5.orig/include/xorg-server.h.in
++++ xorg-server-1.20.5/include/xorg-server.h.in
+@@ -218,5 +218,6 @@
  
  /* byte order */
  #undef X_BYTE_ORDER
