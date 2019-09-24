@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:00:14 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add -ffat-lto-objects in spec to avoid build error
+
+-------------------------------------------------------------------
 Mon May 27 06:27:54 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Enable openmpi2 on ppc64

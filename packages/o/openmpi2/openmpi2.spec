@@ -389,6 +389,7 @@ sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{versio
 #############################################################################
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export USER=OBS
 export HOSTNAME=OBS
 %{?with_hpc:%hpc_debug}
