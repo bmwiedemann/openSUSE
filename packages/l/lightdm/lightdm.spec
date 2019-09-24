@@ -27,7 +27,7 @@
 %define typelibname     typelib-1_0-LightDM-1
 %define rundir          /run
 Name:           lightdm
-Version:        1.28.0
+Version:        1.30.0
 Release:        0
 Summary:        Lightweight, Cross-desktop Display Manager
 License:        GPL-3.0-or-later
@@ -184,13 +184,7 @@ This package contains development files needed for developing
 Qt5-based LightDM clients.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 
 %build
 export MOC4='%{_bindir}/moc'
@@ -202,7 +196,7 @@ NOCONFIGURE=1 ./autogen.sh
   --with-user-session=default \
   --with-greeter-session=lightdm-default-greeter \
   --with-greeter-user=lightdm
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

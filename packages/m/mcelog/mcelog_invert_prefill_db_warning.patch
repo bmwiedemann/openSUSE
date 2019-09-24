@@ -2,11 +2,9 @@
  memdb.c |   10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
-Index: mcelog-1.29/memdb.c
-===================================================================
---- mcelog-1.29.orig/memdb.c	2016-01-20 18:33:20.000000000 +0100
-+++ mcelog-1.29/memdb.c	2016-01-28 15:33:46.958564233 +0100
-@@ -430,11 +430,11 @@ void prefill_memdb(int do_dmi)
+--- mcelog-1.64+git20190805.e53631f.orig/memdb.c	2019-09-06 14:06:51.757228185 +0200
++++ mcelog-1.64+git20190805.e53631f/memdb.c	2019-09-06 14:09:38.197237074 +0200
+@@ -430,11 +430,11 @@
  		md->location = xstrdup(bl);
  		md->name = xstrdup(dmi_getstring(&d->header, d->device_locator));
  	}

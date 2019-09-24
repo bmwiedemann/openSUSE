@@ -4026,4 +4026,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>726617</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>3dacaa0ce2c1463d0ea1d142d1d434be</srcmd5>
+    <version>8.1.2052</version>
+    <time>1569367341</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.1.2052, fixes the following problems
+- refreshed patches:
+   disable-unreliable-tests.patch
+   vim-8.0-ttytype-test.patch
+  * Cleared/added match highlighting not updated in other window. (Andi
+  Massimino)
+  * Still some match functions in evalfunc.c.
+  * 'hlsearch' and match highlighting in the wrong place.
+  * Build error without the conceal feature.
+  * Compiler warning for unused argument.
+  * &quot;:dl&quot; is seen as &quot;:dlist&quot; instead of &quot;:delete&quot;.
+  * Compiler warning for unused variables. (Tony Mechelynck)
+  * :args output is not aligned.
+  * Coverity warns for using negative index.
+  * Depending on the terminal width :version may miss a line break.
+  * When redrawing popups plines_win() may be called often.
+  * Resizing hashtable is inefficient.
+  * Use of popup window mask is inefficient.
+  * Build failure.
+  * Leaking memory when using a popup window mask.
+  * Autocommand that splits window messes up window layout.
+  * Text added with appendbufline() to another buffer isn't displayed.
+  * Count of g$ not used correctly when text is not wrapped.
+  * No mode char for terminal mapping from maparg().
+  * Extra line break for wrapping output of :args.
+  * Filetype &quot;vuejs&quot; causes problems for some users.
+  * Some filetype rules are in the wrong place.
+  * Evalfunc.c is still too big.
+  * &quot;:browse oldfiles&quot; is not tested.
+  * get(func, dict, def) does not work properly.</comment>
+    <requestid>731703</requestid>
+  </revision>
 </revisionlist>

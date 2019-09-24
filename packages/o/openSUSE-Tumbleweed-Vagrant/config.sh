@@ -128,6 +128,12 @@ function vagrantSetup {
     if [ "${kiwi_profiles}" != "virtualbox" ]; then
         rm -f /etc/udev/rules.d/*-net.rules
     fi
+
+    # setup DHCP on eth0 properly
+    cat << EOF > /etc/sysconfig/network/ifcfg-eth0
+STARTMODE=auto
+BOOTPROTO=dhcp
+EOF
 }
 
 vagrantSetup

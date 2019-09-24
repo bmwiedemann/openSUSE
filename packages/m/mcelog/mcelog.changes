@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:04:20 UTC 2019 - Jean Delvare <jdelvare@suse.com>
+
+- mcelog.systemd: Preload the dmi-sysfs kernel module.
+  When /dev/mem can't be read (which is the case when booting in
+  Secure Mode), mcelog can use the dmi-sysfs interface instead,
+  however for that the kernel module needs to be loaded first
+  (bsc#1149186).
+
+-------------------------------------------------------------------
+Fri Sep 06 11:25:34 UTC 2019 - MMuschner@suse.com
+
+- Update to version 1.64:
+  * mcelog: Add Icelake client model numbers.
+  * add Hygon Dhyana support to not use mcelog, as Hygon Dhyana(0x18h) share similiar arch with AMD Family 17h
+
+-------------------------------------------------------------------
 Mon Mar 25 11:31:24 UTC 2019 - christian.voegl@suse.com
 
 - Update to version 1.62:

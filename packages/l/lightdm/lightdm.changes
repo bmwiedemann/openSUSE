@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 17 20:09:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.30.0:
+  * Add lightdm_user_get_is_locked ().
+  * Hide users with shell /bin/false.
+  * Remove unity-system-compositor support (dead upstream).
+  * Fix dm-tool crash.
+  * Update documentation.
+- Refresh patches with quilt.
+- Use modern macros.
+
+-------------------------------------------------------------------
 Thu Jul 18 07:46:46 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Fix Provides/Obsoletes of the lightdm-qt5-devel subpackage
