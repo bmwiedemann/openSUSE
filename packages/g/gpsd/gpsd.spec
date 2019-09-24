@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define         sover 24
+%define         sover 25
 %define		libgps libgps%{sover}
 %define		libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 Name:           gpsd
-Version:        3.18.1
+Version:        3.19
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -33,7 +33,6 @@ Source2:        udev.gpsd
 Source3:        sysconfig.gpsd
 Source98:       http://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
-Source100:      gpsd-declaration-in-for-loop.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -161,12 +160,6 @@ mkdir -p %{name}-%{version}/python2
 mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python2
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
-pushd %{name}-%{version}/python2/%{name}-%{version}
-patch -p1 < %{SOURCE100}
-popd
-pushd %{name}-%{version}/python3/%{name}-%{version}
-patch -p1 < %{SOURCE100}
-popd
 cd %{name}-%{version}
 
 # fix systemd path
@@ -355,6 +348,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_mandir}/man?/gpxlogger.*
 %{_mandir}/man?/ubxtool.*
 %{_mandir}/man?/zerk.*
+%{_mandir}/man?/gpsrinex.*
 %{_bindir}/gegps
 %{_bindir}/xgps
 %{_bindir}/xgpsspeed
@@ -368,6 +362,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_bindir}/ppscheck
 %{_bindir}/ubxtool
 %{_bindir}/zerk
+%{_bindir}/gpsrinex
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 

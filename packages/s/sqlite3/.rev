@@ -1229,4 +1229,12 @@
     + Added the &quot;.dbconfig&quot; command</comment>
     <requestid>714604</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>b3632c2cb4741d61ca69031a4ce1be48</srcmd5>
+    <version>3.29.0</version>
+    <time>1569366837</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731563</requestid>
+  </revision>
 </revisionlist>

@@ -352,4 +352,14 @@
   (boo#1133256). (forwarded request 699610 from marxin)</comment>
     <requestid>699688</requestid>
   </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>54575476aaf32f95fa79998f4bee1179</srcmd5>
+    <version>0.7.91</version>
+    <time>1569366586</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix last change
+
+- Use noun phrase in summary.</comment>
+    <requestid>731549</requestid>
+  </revision>
 </revisionlist>
