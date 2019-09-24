@@ -1,7 +1,7 @@
 Index: fipscheck-1.5.0/man/Makefile.in
 ===================================================================
 --- fipscheck-1.5.0.orig/man/Makefile.in	2017-02-23 15:49:16.000000000 +0100
-+++ fipscheck-1.5.0/man/Makefile.in	2019-01-03 12:03:26.003429620 +0100
++++ fipscheck-1.5.0/man/Makefile.in	2019-09-16 12:46:20.335487000 +0200
 @@ -567,7 +567,7 @@ uninstall-man: uninstall-man3 uninstall-
  
  

@@ -17,10 +17,10 @@
 
 
 Name:           perl-Text-CSV_XS
-Version:        1.39
+Version:        1.40
 Release:        0
 %define cpan_name Text-CSV_XS
-Summary:        Comma-Separated Values Manipulation Routines
+Summary:        Comma-separated values manipulation routines
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
@@ -29,7 +29,7 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Recommends:     perl(Encode) >= 2.98
+Recommends:     perl(Encode) >= 3.01
 %{perl_requires}
 
 %description
@@ -48,11 +48,11 @@ sed -i -e 's,/pro/bin/perl,/usr/bin/perl,' examples/*
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

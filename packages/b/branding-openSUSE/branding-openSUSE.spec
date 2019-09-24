@@ -12,9 +12,10 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define theme_name openSUSE
 %define theme_version tumbleweed
@@ -29,29 +30,29 @@
 %define grub2 1
 %endif
 
-Name:               branding-%{theme_name}
-Version:            84.87.%{date}
-Release:            0
-Summary:            %{theme_name} %{theme_version_clean} Brand File
-License:            BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
-Group:              System/Fhs
-URL:                https://github.com/openSUSE/branding
-Source0:            branding-%{theme_version}.zip
+Name:           branding-%{theme_name}
+Version:        84.87.%{date}
+Release:        0
+Summary:        %{theme_name} %{theme_version_clean} Brand File
+License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
+Group:          System/Fhs
+URL:            https://github.com/openSUSE/branding
+Source0:        branding-%{theme_version}.zip
 # PATCH-FIX-UPSTREAM
-Patch1:             fix-parallel-build.patch
-BuildRequires:      fdupes
-BuildRequires:      fribidi
-BuildRequires:      suse-module-tools
-BuildRequires:      update-desktop-files
-BuildRequires:      rsvg-view
-BuildRequires:      GraphicsMagick
-BuildRequires:      unzip
-BuildRequires:      optipng
-Conflicts:          branding
-Provides:           branding
-BuildArch:          noarch
+Patch1:         fix-parallel-build.patch
+BuildRequires:  GraphicsMagick
+BuildRequires:  fdupes
+BuildRequires:  fribidi
+BuildRequires:  optipng
+BuildRequires:  rsvg-view
+BuildRequires:  suse-module-tools
+BuildRequires:  unzip
+BuildRequires:  update-desktop-files
+Conflicts:      branding
+Provides:       branding
+BuildArch:      noarch
 %if 0%{?suse_version} > 1320
-BuildRequires:      update-bootloader-rpm-macros
+BuildRequires:  update-bootloader-rpm-macros
 %endif
 
 %description
@@ -59,76 +60,76 @@ This package contains the file %{_sysconfdir}/SUSE-brand, and its name is used a
 a trigger for installation of correct vendor brand packages.
 
 %package -n wallpaper-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} default wallpapers
-License:            BSD-3-Clause
-Group:              System/Fhs
+Summary:        %{theme_name} %{theme_version_clean} default wallpapers
+License:        BSD-3-Clause
+Group:          System/Fhs
 Requires(post):     update-alternatives
 Requires(postun):   update-alternatives
-Conflicts:          wallpaper-branding
-Provides:           wallpaper-branding = %{version}
-BuildArch:          noarch
+Conflicts:      wallpaper-branding
+Provides:       wallpaper-branding = %{version}
+BuildArch:      noarch
 
 %description -n wallpaper-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} defaults wallpapers
 
 %package -n libreoffice-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} branding for LibreOffice
-License:            BSD-3-Clause
-Group:              Productivity/Office/Suite
-Supplements:        (libreoffice and branding-%{theme_name})
-Conflicts:          libreoffice-branding
-Provides:           libreoffice-branding = %{version}
-BuildArch:          noarch
+Summary:        %{theme_name} %{theme_version_clean} branding for LibreOffice
+License:        BSD-3-Clause
+Group:          Productivity/Office/Suite
+Supplements:    (libreoffice and branding-%{theme_name})
+Conflicts:      libreoffice-branding
+Provides:       libreoffice-branding = %{version}
+BuildArch:      noarch
 
 %description -n libreoffice-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} branding for LibreOffice
 
 %package -n yast2-qt-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} branding for YaST2 Qt
-License:            BSD-3-Clause
-Group:              System/Fhs
-Requires:           adobe-sourcesanspro-fonts
-Requires:           google-opensans-fonts
-Supplements:        (libyui-qt and branding-%{theme_name})
-Conflicts:          yast2-qt-branding
-Provides:           yast2-qt-branding = %{version}
-BuildArch:          noarch
+Summary:        %{theme_name} %{theme_version_clean} branding for YaST2 Qt
+License:        BSD-3-Clause
+Group:          System/Fhs
+Requires:       adobe-sourcesanspro-fonts
+Requires:       google-opensans-fonts
+Supplements:    (libyui-qt and branding-%{theme_name})
+Conflicts:      yast2-qt-branding
+Provides:       yast2-qt-branding = %{version}
+BuildArch:      noarch
 
 %description -n yast2-qt-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} branding for YaST2 Qt, mainly used for installation
 
 %package -n icewm-theme-yast-installation
-Summary:            %{theme_name} %{theme_version_clean} branding for IceWM during the installation
-License:            BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
-Supplements:        ((yast-installation and icewm) and branding-%{theme_name})
-Group:              System/Fhs
-Conflicts:          icewm-theme-branding
-BuildArch:          noarch
+Summary:        %{theme_name} %{theme_version_clean} branding for IceWM during the installation
+License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later
+Group:          System/Fhs
+Supplements:    ((yast-installation and icewm) and branding-%{theme_name})
+Conflicts:      icewm-theme-branding
+BuildArch:      noarch
 
 %description -n icewm-theme-yast-installation
 This IceWM theme is specifically tailored to the %{theme_name} installation
 process using YaST2
 
 %package -n xfce4-splash-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} branding for XFCE splash
-License:            CC-BY-SA-3.0
-Group:              System/Fhs
-Supplements:        (xfce4-session and branding-%{theme_name})
-Conflicts:          xfce4-splash-branding
-Provides:           xfce4-splash-branding = %{version}
-BuildArch:          noarch
+Summary:        %{theme_name} %{theme_version_clean} branding for XFCE splash
+License:        CC-BY-SA-3.0
+Group:          System/Fhs
+Supplements:    (xfce4-session and branding-%{theme_name})
+Conflicts:      xfce4-splash-branding
+Provides:       xfce4-splash-branding = %{version}
+BuildArch:      noarch
 
 %description -n xfce4-splash-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} branding for the XFCE splash
 
 %package -n systemd-icon-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} icons for systemd
-License:            CC-BY-SA-3.0
-Supplements:        (systemd and branding-%{theme_name})
-Provides:           systemd-icon-branding = %{version}
-Group:              System/Fhs
-Conflicts:          systemd-icon-branding
-BuildArch:          noarch
+Summary:        %{theme_name} %{theme_version_clean} icons for systemd
+License:        CC-BY-SA-3.0
+Group:          System/Fhs
+Supplements:    (systemd and branding-%{theme_name})
+Provides:       systemd-icon-branding = %{version}
+Conflicts:      systemd-icon-branding
+BuildArch:      noarch
 
 %description -n systemd-icon-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} icons for systemd os-release
@@ -136,15 +137,15 @@ LOGO variable
 
 %if 0%{?grub2} > 0
 %package -n grub2-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} branding for GRUB2
-License:            CC-BY-SA-3.0
-Group:              System/Fhs
-Requires:           grub2
-BuildRequires:      grub2
-Supplements:        (grub2 and branding-%{theme_name})
-Conflicts:          grub2-branding
-Provides:           grub2-branding = %{version}
-BuildArch:          noarch
+Summary:        %{theme_name} %{theme_version_clean} branding for GRUB2
+License:        CC-BY-SA-3.0
+Group:          System/Fhs
+Requires:       grub2
+BuildRequires:  grub2
+Supplements:    (grub2 and branding-%{theme_name})
+Conflicts:      grub2-branding
+Provides:       grub2-branding = %{version}
+BuildArch:      noarch
 %if 0%{?update_bootloader_requires:1}
 %{update_bootloader_requires}
 %endif
@@ -155,37 +156,37 @@ BuildArch:          noarch
 
 %if 0%{?gfxboot} > 0
 %package -n gfxboot-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} branding for gfxboot
-License:            BSD-3-Clause
-Group:              System/Boot
-BuildRequires:      gfxboot-devel
-PreReq:             gfxboot >= 4
+Summary:        %{theme_name} %{theme_version_clean} branding for gfxboot
+License:        BSD-3-Clause
+Group:          System/Boot
+BuildRequires:  gfxboot-devel
+PreReq:         gfxboot >= 4
 Requires(post):     gfxboot >= 4
-Supplements:        (gfxboot and branding-openSUSE)
-Conflicts:          gfxboot-branding
-Provides:           gfxboot-branding = %{version}
-Provides:           gfxboot-theme = %{version}
-BuildArch:          noarch
+Supplements:    (gfxboot and branding-openSUSE)
+Conflicts:      gfxboot-branding
+Provides:       gfxboot-branding = %{version}
+Provides:       gfxboot-theme = %{version}
+BuildArch:      noarch
 
 %description -n gfxboot-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} branding for gfxboot (graphical bootloader for grub).
 %endif
 
 %package -n plymouth-branding-%{theme_name}
-Summary:            %{theme_name} %{theme_version_clean} branding for Plymouth bootsplash
-License:            GPL-2.0-or-later
-Group:              System/Fhs
-BuildRequires:      plymouth-theme-bgrt
-Requires:           plymouth-theme-bgrt
-PreReq:             plymouth-theme-bgrt
-PreReq:             plymouth-scripts
+Summary:        %{theme_name} %{theme_version_clean} branding for Plymouth bootsplash
+License:        GPL-2.0-or-later
+Group:          System/Fhs
+BuildRequires:  plymouth-theme-bgrt
+Requires:       plymouth-theme-bgrt
+PreReq:         plymouth-theme-bgrt
+PreReq:         plymouth-scripts
 Requires(post):     plymouth-scripts
 Requires(postun):   plymouth-scripts
 Requires(post):     plymouth-theme-bgrt
-Supplements:        (plymouth and branding-%{theme_name})
-Conflicts:          plymouth-branding
-Provides:           plymouth-branding = %{version}
-BuildArch:          noarch
+Supplements:    (plymouth and branding-%{theme_name})
+Conflicts:      plymouth-branding
+Provides:       plymouth-branding = %{version}
+BuildArch:      noarch
 
 %description -n plymouth-branding-%{theme_name}
 %{theme_name} %{theme_version_clean} branding for the plymouth bootsplash
@@ -280,7 +281,7 @@ gfxboot --update-theme %{theme_name}
 
 %post -n plymouth-branding-%{theme_name}
 OTHEME="$(%{_sbindir}/plymouth-set-default-theme)"
-if [ "$OTHEME" == "text" -o "$OTHEME" == "bgrt" ]; then
+if [ "$OTHEME" = "text" -o "$OTHEME" = "bgrt" ]; then
    if [ ! -e /.buildenv ]; then
      %{_sbindir}/plymouth-set-default-theme bgrt
      %{?regenerate_initrd_post}
@@ -291,7 +292,7 @@ fi
 
 %postun -n plymouth-branding-%{theme_name}
 if [ $1 -eq 0 ]; then
-    if [ "$(%{_sbindir}/plymouth-set-default-theme)" == "bgrt" ]; then
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "bgrt" ]; then
         %{_sbindir}/plymouth-set-default-theme --reset
         %{?regenerate_initrd_post}
     fi

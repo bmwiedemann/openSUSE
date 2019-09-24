@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:19:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bashisms in scriptlets.
+
+-------------------------------------------------------------------
 Thu Aug  8 09:15:58 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix parallel build:

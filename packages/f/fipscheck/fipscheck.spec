@@ -26,20 +26,14 @@ Summary:        A library for integrity verification of FIPS validated modules
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://releases.pagure.org/%{name}/
-# Source0 is a local file because current version is 1.5.0,
-# but the latest in the official release folder is 1.4.1
 Source0:        https://releases.pagure.org/fipscheck/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-Patch0:         openssl-1_1-port.patch
 Patch1:         fipscheck-dont_generate_manpages.patch
+Patch2:         fipscheck-fips.h_not_needed.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libopenssl-1_0_0-devel
-%else
-BuildRequires:  libopenssl-devel
-%endif
 BuildRequires:  libtool
+BuildRequires:  pkgconfig(openssl)
 Requires:       %{lname} = %{version}
 
 %description
@@ -65,10 +59,8 @@ This package contains development files for %{name}.
 
 %prep
 %setup -q
-if pkg-config --atleast-version=1.1 openssl; then
-%patch0 -p1
-fi
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure --disable-static --libdir=/%{_lib}
