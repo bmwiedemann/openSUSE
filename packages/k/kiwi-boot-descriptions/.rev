@@ -116,4 +116,22 @@ solution</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>726546</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d30c13bd301d5b1ba38c0d7b4831aaca</srcmd5>
+    <version>1.2.0</version>
+    <time>1569368897</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop netboot descriptions for openSUSE Leap 15.2
+  This commit drops support for netboot descriptions for openSUSE Leap 15.2
+  or higher.
+  More specific, this commit removes the tool chain requirements of
+  kiwi-boot-requires for Leap 15.2 or higher. This results on
+  kiwi-boot-descriptions being present and installable but not containing
+  any Leap 15.2 description, just SLE descriptions and older Leap ones.
+  
+  Additionally this commit also removes the Leap 42.2 and Leap 42.3
+  descriptions those distros are no longer supported.
+  Fixes bsc#1145724</comment>
+    <requestid>731904</requestid>
+  </revision>
 </revisionlist>

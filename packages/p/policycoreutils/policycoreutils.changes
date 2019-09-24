@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:19:12 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Added run_init_use_pam_keyinit.patch
+  Added pam_keyinit to the run_init pam config (bsc#1144052)
+
+-------------------------------------------------------------------
 Wed Mar 20 15:16:54 UTC 2019 - jsegitz@suse.com
 
 - Update to version 2.9
