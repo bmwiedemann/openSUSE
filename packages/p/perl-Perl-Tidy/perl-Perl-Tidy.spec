@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Tidy
-Version:        20190601
+Version:        20190915
 Release:        0
 #Upstream: GPL-1.0-or-later
 %define cpan_name Perl-Tidy
