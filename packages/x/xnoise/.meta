@@ -11,4 +11,7 @@ Single or multiple tracks, streams, albums or artists can be dragged onto the tr
 
 Xnoise can play every kind of audio/video data that GStreamer can handle.</description>
   <devel project="multimedia:apps" package="xnoise"/>
+  <build>
+    <disable/>
+  </build>
 </package>

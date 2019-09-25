@@ -1184,4 +1184,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
   remove_boost_serialization_depends, cmake.patch</comment>
     <requestid>730121</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>982c433fdd2e0eb9c278ccd8fee8a0d4</srcmd5>
+    <version>1.71.0</version>
+    <time>1569370142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732128</requestid>
+  </revision>
 </revisionlist>

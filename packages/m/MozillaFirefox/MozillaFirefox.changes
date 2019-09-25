@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 19 13:31:16 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 69.0.1
+  * Fixed external programs launching in the background when clicking
+    a link from inside Firefox to launch them (bmo#1570845)
+  * Usability improvements to the Add-ons Manager for users with
+    screen readers (bmo#1567600)
+  * Fixed the Captive Portal notification bar not being dismissable
+    in some situations after login is complete (bmo#1578633)
+  * Fixed the maximum size of fonts in Reader Mode when zoomed (bmo#1578454)
+  * Fixed missing stacks in the Developer Tools Performance section
+    (bmo#1578354)
+  MFSA 2019-31
+  * CVE-2019-11754 (bmo#1580506)
+    Pointer Lock is enabled with no user notification
+- disable DOH by default
+
+-------------------------------------------------------------------
 Thu Sep  5 13:02:39 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 69.0
