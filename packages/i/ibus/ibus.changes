@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 20 05:31:52 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update hide-setup-menu.patch: make it can be compile in SLE
+  (openSUSE-Leap 15).
+
+-------------------------------------------------------------------
+Tue Sep 17 21:51:08 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ibus-CVE-2019-14822-GDBusServer-peer-authorization.patch:
+  bus: Implement GDBusAuthObserver callback, fix CVE-2019-14822.
+
+-------------------------------------------------------------------
 Thu Sep  5 13:17:58 UTC 2019 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Apply the change on Jun. 22 again, reverted by the previous
