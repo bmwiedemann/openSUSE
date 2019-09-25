@@ -39,4 +39,15 @@
     <comment>- introduce obsolete_legacy_pattern macro (forwarded request 727003 from lnussel)</comment>
     <requestid>727240</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>80ce419528249c5c6014a1758ea01e05</srcmd5>
+    <version>1.0</version>
+    <time>1569369148</time>
+    <user>dimstar_suse</user>
+    <comment>- don't generate pattern category translations anymore. The feature is now
+  handled via regular package translation mechanism ie Weblate
+  (fate#323785, jsc#SLE-3047,
+  https://github.com/openSUSE/libsolv/commit/fa1a35c8d4cc9d1aa8199b3e2f0133a06be186a6)</comment>
+    <requestid>731969</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 18 20:08:06 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.2.1:
+  * Stable bug fix release, mainly codecs and format fixes.
+- Drop upstream fixed patch:
+  0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 08:30:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch

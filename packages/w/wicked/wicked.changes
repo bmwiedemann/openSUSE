@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 19 16:36:26 UTC 2019 - mt@suse.com
+
+- version 0.6.57
+- dhcp6: omit noprefixroute with address-length (bsc#1150972)
+  Permit to assume that the address prefix-length override specified
+  in the config is a valid on-link prefix length, to let the kernel
+  create a route for this prefix.
+- dhcp6: differentiated mode=auto resolving from RA (bsc#1150183)
+  Fixed to not trigger to report an error when ipv6 RA is not
+  available or the received RA disables dhcp while mode is set to
+  auto, but to deliver a 'deferred' results.
+
+-------------------------------------------------------------------
+Fri Sep  6 18:41:46 UTC 2019 - mt@suse.com
+
+- version 0.6.56
+- dhcp6: initial support to request prefix for delegations (jsc#SLE-5936)
+- dhcp6: set the noprefixroute address option (bsc#1132280)
+
+-------------------------------------------------------------------
 Wed Aug 14 17:23:36 UTC 2019 - rtorreromarijnissen@suse.com
 
 - version 0.6.55

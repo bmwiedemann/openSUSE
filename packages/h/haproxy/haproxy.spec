@@ -1,7 +1,7 @@
 #
 # spec file for package haproxy
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.0.5+git0.d905f49a
+Version:        2.0.6+git0.58706ab4
 Release:        0
 #
 #
@@ -55,10 +55,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{with apparmor}
 %if 0%{?suse_version} <= 1315
 BuildRequires:  apparmor-profiles
-Requires:       apparmor-profiles
+Recommends:     apparmor-profiles
 %else
 BuildRequires:  apparmor-abstractions
-Requires:       apparmor-abstractions
+Recommends:     apparmor-abstractions
 %endif
 %if %{with apparmor_reload}
 BuildRequires:  apparmor-rpm-macros
@@ -230,7 +230,8 @@ getent passwd %{pkg_name} >/dev/null || \
 
 %files
 %defattr(-,root,root,-)
-%doc CHANGELOG README LICENSE
+%license LICENSE
+%doc CHANGELOG README
 %doc ROADMAP doc/* examples/
 %doc contrib/netsnmp-perl/ contrib/selinux/
 %dir               %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}

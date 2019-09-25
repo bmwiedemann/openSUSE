@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Sep 17 15:41:39 UTC 2019 - kgronlund@suse.com
+
+- Update to version 2.0.6+git0.58706ab4:
+  * [RELEASE] Released version 2.0.6
+  * MINOR: sample: Add UUID-fetch
+  * BUG/MINOR: Missing stat_field_names (since f21d17bb)
+  * BUG/MINOR: backend: Fix a possible null pointer dereference
+  * BUG/MINOR: acl: Fix memory leaks when an ACL expression is parsed
+  * BUG/MINOR: filters: Properly set the HTTP status code on analysis error
+  * BUG/MEDIUM: http: also reject messages where "chunked" is missing from transfer-enoding
+  * BUG/MINOR: ssl: always check for ssl connection before getting its XPRT context
+  * BUG/MINOR: listener: Fix a possible null pointer dereference
+  * MINOR: stats: report the number of idle connections for each server
+  * BUG/MEDIUM: connection: don't keep more idle connections than ever needed
+  * BUG/MAJOR: ssl: ssl_sock was not fully initialized.
+  * BUG/MINOR: lb/leastconn: ignore the server weights for empty servers
+  * MINOR: contrib/prometheus-exporter: Report DRAIN/MAINT/NOLB status for servers
+  * BUG/MINOR: checks: do not uselessly poll for reads before the connection is up
+  * BUG/MINOR: checks: make __event_chk_srv_r() report success before closing
+  * BUG/MINOR: checks: start sending the request right after connect()
+  * BUG/MINOR: checks: stop polling for write when we have nothing left to send
+  * BUG/MEDIUM: cache: Don't cache objects if the size of headers is too big
+  * BUG/MEDIUM: cache: Properly copy headers splitted on several shctx blocks
+  * BUG/MINOR: mux-h1: Be sure to update the count before adding EOM after trailers
+  * BUG/MINOR: mux-h1: Don't stop anymore input processing when the max is reached
+  * BUG/MINOR: mux-h1: Fix size evaluation of HTX messages after headers parsing
+  * BUG/MINOR: h1: Properly reset h1m when parsing is restarted
+  * BUG/MINOR: http-ana: Reset response flags when 1xx messages are handled
+  * BUG/MEDIUM: peers: local peer socket not bound.
+  * BUG/MEDIUM: proto-http: Always start the parsing if there is no outgoing data
+  * BUG/MEDIUM: url32 does not take the path part into account in the returned hash.
+  * BUG/MEDIUM: listener/threads: fix an AB/BA locking issue in delete_listener()
+  * BUG/MINOR: mworker: disable SIGPROF on re-exec
+  * DOC: fixed typo in management.txt
+  * BUG/MEDIUM: mux-h1: do not report errors on transfers ending on buffer full
+  * BUG/MEDIUM: mux-h1: do not truncate trailing 0CRLF on buffer boundary
+  * MEDIUM: debug: make the thread dump code show Lua backtraces
+  * MINOR: lua: export applet and task handlers
+  * MINOR: tools: add append_prefixed_str()
+  * MINOR: debug: indicate the applet name when the task is task_run_applet()
+
+-------------------------------------------------------------------
+Thu Aug 22 11:23:04 CEST 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+- Recommend apparmor, it's not required to work (make haproxy
+  useable in a container)
+
+-------------------------------------------------------------------
 Tue Aug 20 15:05:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable prometheus exporter
