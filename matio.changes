@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 20 07:00:05 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.17
+  * Fixed bug reading struct array with packed field names from v5
+    MAT file
+  * Fixed bug reading past EOF from (crafted) uncompressed v5 MAT
+    file
+- Drop 0001-Write-backwards-compatible-Mat7.3-files.patch:
+  incorporated upstream.
+- Update so number to 9 in keeping with upstream.
+
+-------------------------------------------------------------------
 Thu Oct  4 16:24:29 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix preprocessor check for availability of H5F_LIBVER_V18
