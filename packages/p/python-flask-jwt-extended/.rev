@@ -45,4 +45,13 @@
     headers</comment>
     <requestid>729500</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22084ca57b0554bd0f9720877ab81dd1</srcmd5>
+    <version>3.23.0</version>
+    <time>1569393849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.23.0:
+  * Make header reading compliant with RFC7230, section 3.2.2</comment>
+    <requestid>732917</requestid>
+  </revision>
 </revisionlist>

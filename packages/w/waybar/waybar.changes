@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 17:47:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pkgconfigy spec, ensure the correct BuildRequires are pulled in.
+
+-------------------------------------------------------------------
 Tue Sep  3 10:50:04 UTC 2019 - Michael Aquilina <michaelaquilina@gmail.com>
 
 - Add scdoc build dependency for generating waybar man pages

@@ -23,28 +23,33 @@ Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
-Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
-BuildRequires:  cmake
-BuildRequires:  fmt-devel
+Source:         %{url}/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  gtkmm3-devel
-BuildRequires:  jsoncpp-devel
-BuildRequires:  libinput-devel
-BuildRequires:  libsigc++3-devel
 BuildRequires:  libudev-devel
 BuildRequires:  meson
 BuildRequires:  ninja
-BuildRequires:  spdlog-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(jsoncpp)
+BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(sigc++-2.0)
+BuildRequires:  pkgconfig(spdlog)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-protocols)
 # optional: man pages
 BuildRequires:  scdoc
 # optional: tray module
-BuildRequires:  libdbusmenu-gtk3-devel
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 # optional: network
-BuildRequires:  libnl3-devel
+BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(libnl-genl-3.0)
 # optional: audio
-BuildRequires:  libpulse-devel
+BuildRequires:  pkgconfig(libpulse)
 # optional: mpd module
-BuildRequires:  libmpdclient-devel
+BuildRequires:  pkgconfig(libmpdclient)
 # optional: sway integration
 Recommends:     sway
 

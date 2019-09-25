@@ -17,7 +17,7 @@
 
 
 Name:           tea
-Version:        47.1.0
+Version:        48.0.0
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
@@ -49,6 +49,7 @@ Midnight-Commander-style file manager, integrates spell checking
 
 %prep
 %setup -q
+
 cp -a %{SOURCE1} org.semiletov.tea.desktop
 cp -a %{SOURCE2} org.semiletov.tea.appdata.xml
 sed -i '/DESTINATION share\/applications/d' CMakeLists.txt

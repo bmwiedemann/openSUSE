@@ -189,4 +189,15 @@
     <comment>- Build both mini and standard with OMEMO enabled</comment>
     <requestid>720052</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f9395ee37fd604b6dbb78301b26fd81e</srcmd5>
+    <version>0.7.1</version>
+    <time>1569393298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * Fix copyright/info displayed email
+  * Fix typos in OMEMO logs
+  * Fix crash when jid has no not part (#1153, #1193)</comment>
+    <requestid>732851</requestid>
+  </revision>
 </revisionlist>

@@ -23,4 +23,19 @@
 - Remove superfluous devel dependency for noarch package</comment>
     <requestid>682065</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b55ecd031711da4aed1c6693fb4fc97</srcmd5>
+    <version>0.9.14</version>
+    <time>1569393760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.14:
+  * Include tests dir in release pack
+  * Fix responed data type error
+  * Fix exception when trying to list directory over WebDAV
+  * Don't send Content-Type header twice
+  * Fix python2 support
+  * Don't decode binary data on put 
+- Drop merged patch python2.patch</comment>
+    <requestid>732898</requestid>
+  </revision>
 </revisionlist>

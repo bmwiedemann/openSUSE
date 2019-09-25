@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyChromecast
-Version:        3.2.2
+Version:        4.0.1
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
@@ -29,7 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyChromecast/Py
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-casttube >= 0.1.0
+Requires:       python-casttube >= 0.2.0
 Requires:       python-protobuf >= 3.0.0
 Requires:       python-requests >= 2.0
 Requires:       python-zeroconf >= 0.17.7

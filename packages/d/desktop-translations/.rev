@@ -1061,4 +1061,41 @@
     <comment></comment>
     <requestid>702603</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c9c5269a22b74ae3bab899f81f414437</srcmd5>
+    <version>84.87.20190924.7050555c</version>
+    <time>1569393804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20190924.7050555c:
+  * Unfuzzy YaST groups translations
+  * fix typo
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (German)
+- The following bug was referenced in SLE 15:
+  * boo#1037823
+
+- Update to version 84.87.20190923.8ea56c56:
+  * Regenerate .po files after some more search-replace for YaST
+  * Run update-po-files.sh after Leap 15.2 update
+  * Update for Leap 15.2 (boo#1145197, bsc#1146886)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (German)</comment>
+    <requestid>732916</requestid>
+  </revision>
 </revisionlist>
