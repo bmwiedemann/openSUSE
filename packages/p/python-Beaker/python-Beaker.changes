@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 23 14:43:25 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.11.0
+  * Fixed cookie path option not being properly set (`self._path`
+    was removed, only `self.path` exists)
+  * Documented `SameSite` option
+  * Fixed cookie expiration being localised when it shouldn't.
+
+-------------------------------------------------------------------
 Thu Apr 18 14:26:01 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Actually for working around gh#bbangert/beaker#172 it is enough

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 12:18:26 UTC 2019 - FSchreiner@suse.com
+
+- fixed control characters in changelog file
+
+-------------------------------------------------------------------
 Sat Aug 31 12:22:16 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.067
@@ -298,9 +303,9 @@ Mon Feb 13 12:45:15 UTC 2017 - coolo@suse.com
       After '.', Unicode classes, and bracketed classes (including extended)
       they are still legal.
   
-    Make /{/ an error
-      Perl fails to parse the above, because once it sees the '{' it wants
-      to find one of the extended boundary assertions (like {wb}), and
+    Make /\b{/ an error
+      Perl fails to parse the above, because once it sees the '\b{' it wants
+      to find one of the extended boundary assertions (like \b{wb}), and
       declares an error when it does not. So we check for this and rebless the
       curly into an unknown token, not a literal.
 
@@ -355,7 +360,7 @@ Sun Feb  7 10:26:54 UTC 2016 - coolo@suse.com
     No changes since 0.046_01.
   
   0.046_01	2016-01-22	T. R. Wyant
-    Recognize {lb}, introduced in 5.23.7. If this is retracted before
+    Recognize \b{lb}, introduced in 5.23.7. If this is retracted before
       5.24, it will be removed outright.
 
 -------------------------------------------------------------------

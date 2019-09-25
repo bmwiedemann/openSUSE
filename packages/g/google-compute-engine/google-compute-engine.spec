@@ -37,6 +37,7 @@ Patch3:         gcei-set-run_dir.patch
 Patch4:         gcei-link-boost_regex.patch
 # see: https://github.com/GoogleCloudPlatform/compute-image-packages/issues/831
 Patch5:         gcei-normalize-python-version.patch
+Patch6:         gcei_disableipv6.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -73,7 +74,7 @@ Initialization code for Google Compute Engine instances.
 
 %package oslogin
 Summary:        OS Login Functionality for Google Compute Engine
-Group:          Hardware
+Group:          System/Daemons
 
 Requires:       pam
 Requires(post): openssh
@@ -101,6 +102,7 @@ Google Compute Engine. Modifies sshd, nsswitch, and sshd_pam configurations.
 %patch4 -p1
 %endif
 %patch5 -p1
+%patch6 -p1
 find -name "*.py" | xargs sed -i 'sm#!/usr/bin/pythonmm'
 cp %{SOURCE9} google-optimize-local-ssd.service
 cp %{SOURCE10} google-set-multiqueue.service
@@ -149,7 +151,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}/rsyslog.d
 cp google-compute-engine/src/etc/rsyslog.d/* %{buildroot}/%{_sysconfdir}/rsyslog.d
 # oslogin
 pushd google-compute-engine-oslogin
-make install DESTDIR=%{buildroot} NSS_INSTALL_PATH=%{_lib} PAM_INSTALL_PATH=%{_lib}/security
+make install DESTDIR=%{buildroot} LIBDIR=/%{_libdir} PAMDIR=/%{_lib}/security
 popd
 # kernel module blacklist
 mkdir -p %{buildroot}/%{_sysconfdir}/modprobe.d
@@ -233,9 +235,8 @@ cp google-compute-engine/src/etc/modprobe.d/gce-blacklist.conf  %{buildroot}/%{_
 %attr(0755,root,root) %{_bindir}/google_oslogin_control
 %attr(0755,root,root) %{_bindir}/google_authorized_keys
 %attr(0755,root,root) %{_bindir}/google_oslogin_nss_cache
-%dir /usr/lib/security
 /%{_mandir}/man8/*
-/usr/lib/*.so*
-/usr/lib/security/*.so*
+/%{_lib}/security/*
+/%{_libdir}/libnss*
 
 %changelog

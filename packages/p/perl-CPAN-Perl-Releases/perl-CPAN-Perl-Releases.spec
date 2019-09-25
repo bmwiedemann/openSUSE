@@ -17,7 +17,7 @@
 
 
 Name:           perl-CPAN-Perl-Releases
-Version:        4.12
+Version:        4.14
 Release:        0
 %define cpan_name CPAN-Perl-Releases
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs

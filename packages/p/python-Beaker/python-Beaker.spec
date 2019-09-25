@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Beaker
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        A Session and Caching library with WSGI Middleware
 License:        BSD-3-Clause
@@ -44,6 +44,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-dbm
 Requires:       python-pylibmc
 Requires:       python-python-memcached
+Requires:       python-setuptools
 Recommends:     python-SQLAlchemy
 Recommends:     python-cryptography
 Recommends:     python-pycrypto

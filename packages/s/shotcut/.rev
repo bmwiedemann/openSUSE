@@ -292,4 +292,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>725222</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>545faff05c71b05e63a44e3b5ac50dfb</srcmd5>
+    <version>19.09.14</version>
+    <time>1569393083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732843</requestid>
+  </revision>
 </revisionlist>

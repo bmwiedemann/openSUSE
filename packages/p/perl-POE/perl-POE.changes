@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 12:21:15 UTC 2019 - FSchreiner@suse.com
+
+- fixed control characters in changelog file 
+
+-------------------------------------------------------------------
 Sun Jun  7 08:53:59 UTC 2015 - coolo@suse.com
 
 - updated to 1.367
@@ -97,9 +102,9 @@ Sun Jun  7 08:53:59 UTC 2015 - coolo@suse.com
   
       C:\...\POE-1.366> nmake test
   
-      "C:\opt\perl-5.20.1in\perl.exe" mylib/gen-tests.perl lib/POE.pm
+      "C:\opt\perl-5.20.1\bin\perl.exe" mylib/gen-tests.perl lib/POE.pm
       Can't open perl script "mylib": Permission denied NMAKE : fatal error
-      U1077: 'C:\opt\perl-5.20.1in\perl.exe' : return code '0xd' Stop.
+      U1077: 'C:\opt\perl-5.20.1\bin\perl.exe' : return code '0xd' Stop.
   
       This happens because perl ends up seeing mylib and /gen-tests.perl as
       two separate thingies. It seemed to me that the most straightforward

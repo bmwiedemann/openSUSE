@@ -1,0 +1,51 @@
+From 028fcda7d0d5b62770d24985dec464b1fea48ee6 Mon Sep 17 00:00:00 2001
+From: Zach Marano <zmarano@google.com>
+Date: Tue, 10 Sep 2019 14:59:38 -0700
+Subject: [PATCH] Add missing DisableIpv6 function for SLES 12 and default
+ case.
+
+---
+ .../google_compute_engine/distro_lib/sles_12/utils.py    | 9 +++++++++
+ .../google_compute_engine/distro_lib/utils.py            | 9 +++++++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/packages/python-google-compute-engine/google_compute_engine/distro_lib/sles_12/utils.py b/packages/python-google-compute-engine/google_compute_engine/distro_lib/sles_12/utils.py
+index a8bd4864..aacfc471 100644
+--- a/packages/python-google-compute-engine/google_compute_engine/distro_lib/sles_12/utils.py
++++ b/packages/python-google-compute-engine/google_compute_engine/distro_lib/sles_12/utils.py
+@@ -39,6 +39,15 @@ def EnableIpv6(self, interfaces, logger, dhclient_script=None):
+     """
+     pass
+ 
++  def DisableIpv6(self, interfaces, logger):
++    """Disable Ipv6.
++
++    Args:
++      interface: string, the output device names for enabling IPv6.
++      logger: logger object, used to write to SysLog and serial port.
++    """
++    pass
++
+   def EnableNetworkInterfaces(self, interfaces, logger, dhclient_script=None):
+     """Enable the list of network interfaces.
+ 
+diff --git a/packages/python-google-compute-engine/google_compute_engine/distro_lib/utils.py b/packages/python-google-compute-engine/google_compute_engine/distro_lib/utils.py
+index df1d45cd..50f4f986 100644
+--- a/packages/python-google-compute-engine/google_compute_engine/distro_lib/utils.py
++++ b/packages/python-google-compute-engine/google_compute_engine/distro_lib/utils.py
+@@ -37,6 +37,15 @@ def EnableIpv6(self, interfaces, logger, dhclient_script=None):
+     """
+     pass
+ 
++  def DisableIpv6(self, interfaces, logger):
++    """Disable Ipv6.
++
++    Args:
++      interface: string, the output device names for enabling IPv6.
++      logger: logger object, used to write to SysLog and serial port.
++    """
++    pass
++
+   def EnableNetworkInterfaces(self, interfaces, logger, dhclient_script=None):
+     """Enable the list of network interfaces.
+ 

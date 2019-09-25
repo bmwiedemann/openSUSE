@@ -72,7 +72,7 @@ BuildRequires:  python3-numpy
 BuildRequires:  python3-pyaml >= 3.11
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-six
-BuildRequires:  qwt6-devel
+BuildRequires:  qwt6-qt5-devel
 BuildRequires:  swig >= 3.0.8
 BuildRequires:  uhd-devel
 BuildRequires:  update-desktop-files
@@ -166,6 +166,9 @@ This package contains some examples of using GNU Radio.
 sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.in
 sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.swig_doc.in
 
+# protect the template files from %%cmake macro magic / mangling
+find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt -exec mv '{}' '{}.tmpl' \;
+
 %build
 %limit_build -m 2000
 %cmake \
@@ -177,6 +180,9 @@ sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxyg
 %cmake_build
 
 %install
+# move the template files back
+find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt.tmpl -execdir mv '{}' 'CMakeLists.txt' \;
+
 %cmake_install
 
 install -d %{buildroot}%{_docdir}/%{name}
@@ -185,6 +191,10 @@ mv %{buildroot}/%{_datadir}/doc/%{name}-*/* %{buildroot}%{_docdir}/%{name}/
 %suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/gnuradio-grc.desktop Network HamRadio
 
 install -Dpm 0755 %{SOURCE4} %{buildroot}/%{_bindir}
+
+# Compiled examples are installed as "data", but are arch dependent
+install -dm 0755 %{buildroot}%{_libdir}/gnuradio
+mv %{buildroot}%{_datadir}/gnuradio/examples %{buildroot}%{_libdir}/gnuradio/
 
 # remove duplicate icons (just keep hicolor)
 rm -rf %{buildroot}%{_datadir}/%{name}/grc/freedesktop
@@ -239,6 +249,7 @@ rm -rf %{buildroot}%{_datadir}/icons/gnome
 %{_docdir}/%{name}/*.grc
 
 %files examples
-%{_datadir}/gnuradio/examples/
+%dir %{_libdir}/gnuradio
+%{_libdir}/gnuradio/examples/
 
 %changelog

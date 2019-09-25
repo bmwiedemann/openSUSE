@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 17:17:52 UTC 2019 - dmulder@suse.com
+
+- Failure to authenticate on first try and throws a MemoryError
+  on Ubuntu; (bsc#1151713);
+- 1.6
+
+-------------------------------------------------------------------
 Wed Sep 18 15:58:06 UTC 2019 - dmulder@suse.com
 
 - Kerberos authentication always fails, disable for now
