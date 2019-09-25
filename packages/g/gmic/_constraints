@@ -1,0 +1,9 @@
+<!-- We build well with 2 CPUs/1.5GB, 3CPUs/2GB, 4CPUs/2.5GB-->
+<constraints>
+ <hardware>
+  <physicalmemory>
+   <size unit="M">2200</size>
+  </physicalmemory>
+  <processors>3</processors>
+ </hardware>
+</constraints>

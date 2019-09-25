@@ -116,6 +116,7 @@
     <package name="hwinfo"/>
     <package name="kexec-tools"/>
     <package name="lsof"/>
+    <package name="lvm2"/>
     <package name="mdadm"/>
     <package name="snapper"/>
     <package name="syslinux" arch="x86_64"/>

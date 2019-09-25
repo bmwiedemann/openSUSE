@@ -32,7 +32,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Jalali datetime binding for python
+jdatetime is the Jalali implementation of Python's datetime module.
 
 %prep
 %setup -q -n python-jalali-%{version}

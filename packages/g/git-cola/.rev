@@ -333,4 +333,16 @@ https://bugzilla.suse.com/show_bug.cgi?id=1151540
 </comment>
     <requestid>732609</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>92859af34370c5bd1d95e85479efdd89</srcmd5>
+    <version>3.5</version>
+    <time>1569392621</time>
+    <user>dimstar_suse</user>
+    <comment>- Force to use python3 
+Because https://bugzilla.suse.com/show_bug.cgi?id=1151540 still exists
+More info
+https://github.com/git-cola/git-cola/issues/991
+</comment>
+    <requestid>732755</requestid>
+  </revision>
 </revisionlist>

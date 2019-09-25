@@ -917,4 +917,12 @@ Enable cycles-osl in build</comment>
     <comment>Update to 2.80 (forwarded request 725039 from plater)</comment>
     <requestid>725041</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>effdd182f96d8b89cae12f25ee9b9426</srcmd5>
+    <version>2.80</version>
+    <time>1569392020</time>
+    <user>dimstar_suse</user>
+    <comment>Build at all costs</comment>
+    <requestid>732655</requestid>
+  </revision>
 </revisionlist>

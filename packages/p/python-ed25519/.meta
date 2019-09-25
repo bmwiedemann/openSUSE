@@ -1,0 +1,5 @@
+<package name="python-ed25519" project="openSUSE:Factory">
+  <title>python-ed25519</title>
+  <description>Python bindings to the Ed25519 public-key signature system</description>
+  <devel project="devel:languages:python" package="python-ed25519"/>
+</package>

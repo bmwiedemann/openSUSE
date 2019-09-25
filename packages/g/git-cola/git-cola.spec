@@ -25,25 +25,24 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 Url:            https://git-cola.github.io/
 
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python_sitelib: %global python_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dos2unix
 BuildRequires:  git-core
-BuildRequires:  python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-devel
-BuildRequires:  python-pyinotify
-BuildRequires:  python-qt5
+BuildRequires:  python3
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  python3-pyinotify
+BuildRequires:  python3-qt5
 BuildRequires:  update-desktop-files
 Requires:       git-core
-Requires:       (python-qt5 or python3-qt5)
-Recommends:     (python-pyinotify or python3-pyinotify)
+Requires:       python3-qt5
+Recommends:     python3-pyinotify
 Recommends:     gitk
-Recommends:     (python-Send2Trash or python3-Send2Trash)
+Recommends:     python3-Send2Trash
 
-%py_requires
 %if 0%{?suse_version} > 1110
 BuildArch:      noarch
 %endif
@@ -59,9 +58,9 @@ interact with Git repositories.
 dos2unix qtpy/py3compat.py
 
 %install
-%makeinstall prefix=%{_prefix} DESTDIR=%{buildroot}
+%makeinstall prefix=%{_prefix} DESTDIR=%{buildroot} PYLINT=pylint3 PYTHON=python3 PIP=pip3
 
-make install-man prefix=%{_prefix} DESTDIR=%{buildroot}
+make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip3
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-dag.desktop

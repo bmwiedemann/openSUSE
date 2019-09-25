@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 23 10:28:26 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.11: 
+  - ch-run: /etc/resolv.conf on the host is now optional  
+  - ch-grow: support ARG instruction
+  - build now does not infinite loop if no Python installed
+  - miscellaneous bug fixes, and documentation and test suite 
+    improvements
+
+-------------------------------------------------------------------
 Fri Aug  2 12:45:33 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.10: 

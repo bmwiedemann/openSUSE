@@ -1,0 +1,736 @@
+-------------------------------------------------------------------
+Mon Sep 23 11:41:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.7.2. No changelog available
+- Enable the digikam plugin
+
+-------------------------------------------------------------------
+Sun Sep  8 19:29:39 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.7.1, no changelog available
+- Use cmake() and pkgconfig() for build requirements when possible
+- Run spec-cleaner
+- Prepare the spec file for the future gmic-digikam plugin
+- Drop cmake-fixes.patch, no longer needed
+- Drop gmic_reference.pdf
+- Use %cmake_build, remove the ninja dependency
+- Trim the package description
+
+-------------------------------------------------------------------
+Wed May 22 16:05:55 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.6.3
+  https://discuss.pixls.us/t/release-of-gmic-2-6/12240
+
+-------------------------------------------------------------------
+Fri Mar 22 12:48:29 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.4
+  optimizations of the FFT transform, as well as the convolution
+  with small kernel (up to 5x5 and 3x3x3).
+
+-------------------------------------------------------------------
+Mon Mar 18 16:41:50 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- move desktop file category to Qt
+
+-------------------------------------------------------------------
+Mon Mar 18 12:59:39 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.3
+  * no changelog from upstream
+- add desktop file
+
+-------------------------------------------------------------------
+Fri Mar 15 23:51:08 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.2:
+  fix for filters broken by using eigen3
+- update gmic_reference.pdf
+
+-------------------------------------------------------------------
+Thu Mar 14 17:17:41 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.1
+  https://discuss.pixls.us/t/release-of-gmic-2-5/9413
+- refresh cmake-fixes.patch:
+  only lowering of cmake version remains, all other changes are
+  upstream
+
+-------------------------------------------------------------------
+Wed Nov  7 12:30:34 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- added cmake-fixes.patch:
+  - allow older cmake versions again to allow building on distros
+    older than TW
+  - install cmake modules into the proper path
+
+-------------------------------------------------------------------
+Wed Nov  7 00:33:15 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.4.1
+  https://discuss.pixls.us/t/release-of-gmic-2-4-0/8093
+  https://discuss.pixls.us/t/on-the-road-to-2-5-0/9413
+
+-------------------------------------------------------------------
+Thu Aug 30 08:28:35 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to gmic-2.3.6
+  * New/improved filters (poissondisk, colorful blobs, pointcloud, ...).
+  * Better interactivity with points on preview window.
+  * A bunch of other bugfixes and small improvements.
+- Removed gmic-2.3.0-add-cmake-for-qt.patch
+
+-------------------------------------------------------------------
+Fri Aug 24 09:27:55 UTC 2018 - asn@cryptomilk.org
+
+- Update to gmic-2.3.5
+
+-------------------------------------------------------------------
+Thu Jul  5 17:09:54 UTC 2018 - mrueckert@suse.de
+
+- Update to gmic-2.3.3
+  - fixes small bugs discovered these last days (+ provides updated
+    filters).
+- drop patches included in update
+  - gmic-2.3.0-zart-qbuttongroup.patch
+- updated the gmic-2.3.0-add-cmake-for-qt.patch to remove the
+  chunks missing when upstream applied the patch
+
+-------------------------------------------------------------------
+Thu Jun 21 12:47:34 UTC 2018 - asn@cryptomilk.org
+
+- Update to gmic-2.3.0
+  * https://discuss.pixls.us/t/release-of-gmic-2-3-0/
+- Remove gmic-qt-2.2.2-Use-HiDPI-icons.patch
+- Added gmic-2.3.0-add-cmake-for-qt.patch
+
+-------------------------------------------------------------------
+Thu May  3 17:33:29 UTC 2018 - asn@cryptomilk.org
+
+- Update to gmic-2.2.2
+  * https://discuss.pixls.us/t/release-of-gmic-2-2-0/
+- Add patch gmic-qt-2.2.2-Use-HiDPI-icons.patch
+- Remove patch gmic-cflags.diff
+- Remove patch gmic-docdir.diff
+- Remove patch gmic-make-zart.diff
+- Remove patch gmic-oldgimp.diff
+- Remove patch gmic-openmp.diff
+- Remove patch gmic-overflow.diff
+- Remove patch gmic-unstrip.diff
+- Remove patch gmic-x11opts.diff
+- Remove patch gmic-zart-qmake.diff
+
+-------------------------------------------------------------------
+Mon Dec 21 11:48:48 UTC 2015 - msvec@suse.com
+
+- Update to gmic-1.6.8
+  * https://discuss.pixls.us/t/release-of-gmic-1-6-8/470
+
+-------------------------------------------------------------------
+Mon Jul  6 18:04:16 CEST 2015 - kurt@garloff.de
+
+- Fix build of gmic with older 2.6 GIMP (SLE11).
+
+-------------------------------------------------------------------
+Wed Jul  1 23:23:18 CEST 2015 - kurt@garloff.de
+
+- Update to gmic-1.6.5.0: 
+  * https://www.flickr.com/groups/gmic/discuss/72157653514140862/
+  * New commands: -label3d, -head, -files
+  * Improvements -repeat, -axes, -warn, -displacement, -files2video, 
+    -apply_files
+  * Math parser now supports sqr()
+  * Bugfixes: Iain Fergusson denoising with selections and new layers,
+    video stream, -display garbage, -graph, -display_graph, -plot with
+    plot_type=3, 3d rendering, -camera with specified resolution.
+- Update to gmic-1.6.3.1:
+  * https://www.flickr.com/groups/gmic/discuss/72157652079823575/
+  * New commands: -pack, -x_landscape
+  * Improvements for 3d object rendering with z-buffer
+  * Shared gmicrc resource directory
+  * Math parser supporrts isfile(path), isdir(path) and fdate() now.
+  * libgmic now uses libpng, libtiff, libjpeg, libcurl, libfftw.
+  * Added some tooltips (gimp plugin)
+  * Bugfixes: Possible buffer overflows in plugins
+
+-------------------------------------------------------------------
+Thu Apr 30 17:58:26 CEST 2015 - kurt@garloff.de
+
+- Update to gmic-1.6.2.0:
+  * https://www.flickr.com/groups/gmic/discuss/72157651409869115/
+  * New commands -apply_timeout, -boxfilter, -serialize, -unserialize,
+    -fps, -transition.
+  * New filters Sequences / Spatial transition, Colors / Transfer colors 
+    [advanced] 
+  * Improved error message line numbers in -if .. -endif block.
+  * Improved -blur, -displacement, - input, -warp
+  * Compressed storage of custom commands
+  * Automatic filter updates on startup (gimp).
+  * Better progress bar (gimp)
+  * Bugfixes -command, .cimgz enidanness, -noarg, -error.
+- Update to gmic-1.6.1.0:
+  * https://www.flickr.com/groups/gmic/discuss/72157650442201289/
+  * Cleanups, restulting in faster code and less memory usage
+  * Download network files with cURL
+  * New command -split_colors
+  * New filters B&W/Engrave, improved preview
+  * Improvements with string substitution
+  * valgrind, gprof and other code analyzer improvments
+  * -solve can also solve with a matrix on the RHS
+  * Various bugfixes.
+- Udpate to gmic-1.6.0.4:
+  * https://www.flickr.com/groups/gmic/discuss/72157649713920459/
+  * New commands -array3d, -size3d, -imagegrid_hexagonal
+  * New filters Arrays & tiles / Grid [hexagonal], Arrays & Tiles / 
+    Ministeck, Patterns / Crystal
+  * New command -delaunay3d, filter Artistic / Polygonize [delaunay]
+  * Improved -rgb2lab , -frame, -remove_pixels, -hostigram,
+    -equalize.
+  * Bugfixes for bbox with very very large images in -select and 
+    -display.
+-------------------------------------------------------------------
+Thu Jan  8 14:57:41 CET 2015 - kurt@garloff.de
+
+- Update to gmic-1.6.0.3:
+  * New GIMP filters Degradation/Dirty, Rendering/Lightning,
+    Layers/Colors to Layers
+  * New commands rgb2int and int2rgb
+  * New preferred .gmz image list file format
+  * New -nlmeans denoising algorithm
+  * Improvements to -bilateral, -peronamalik_flow, -apply_parallel,
+    (= -ap), -split, -discard, -colormap, -displacement, vanvliet,
+    -belnd_median
+  * Bugfixes around -output codec, -eigen, -center3d, -normalize3d,
+    -split3d, -label
+- Update to gmic-1.6.0.2:
+  * New -peronamalik_flow (diffusion smoothing)
+  * New -x_select_function1d and -x_color_curves
+  * New --guided, -cumulate
+  * New -apply_video, -video2files, -files2video, -average_video
+  * New -dct and -idct
+  * Improvements to -parallel 
+  * Improving -fitscreen and tiff -output
+  * Improvements for -snapshot3d, -text, -fft, -ifft, -blur
+  * Major ZArt update
+  * Bugfixes for -deconvolve_fft, -bilateral, -gaussian, -srand
+- Update to gmic-1.6.0.1:
+  * New: const(value) and button() typedefs to describe filters.
+  * Filter return status can be a list now.
+  * GIMP plug-in now has default capability to open display windows.
+  * New -x_segment (Contours/Extract Foreground).
+  * Double underscore vars are thread shared globals.
+  * New -x_select_color, -x_select_palette, -input_gpl, -x_colorize
+  * C++11 support in CImg, avoiding uneeded image copies
+  * Removed bool option for -endian
+  * Command --reverse now only reverses the selected images
+  * Bug fixes around -pass, -parallel, -quit, -equalize and
+    buffer overflow avoidance for plug-in code.
+
+-------------------------------------------------------------------
+Sun Sep  7 12:08:18 CEST 2014 - kurt@garloff.de
+
+- Add more workarounds for limited openMP support in gcc-4.3.
+- Disable openMP for gcc-4.8.1 (openSUSE-13.1, FC19/20); it produces
+  ICEs (see https://bugzilla.redhat.com/show_bug.cgi?id=1107972).
+
+-------------------------------------------------------------------
+Sat Sep  6 23:59:57 CEST 2014 - kurt@garloff.de
+
+- Update to gmic-1.6.0.0:
+  * New commands -pass, -noargs, -is_image_arg, -gimp_error_preview,
+    -outputx (-ox), -names (-nms), -mul_channels. -oneminus.
+  * Source ~/.gmic on startup.
+  * Colors for gmic -h (with bash).
+  * New filters Film emulation / Various (color presets) and
+    Details / Mighty details.
+  * New filters for zart.
+  * Only support image datatypes with floats (thus remove -type),
+    but optionally do conversion in -input and -output.
+  * Supply boundary values in -map derived with 
+    neumann/dirichlet/periodic.
+  * More -blend paramaters.
+  * -apply_pose3d renamed to -pose3d.
+  * Remove -background3d (use enahnced -display3d and -snapshot3d 
+    to replace).
+  * Better exception handling (-onfail).
+  * gmic -h command suggests corrections for misspelled cmds.
+  * -median support thresholds.
+  * -threshold2 (-t2) renames to -inrange (-ir).
+  * Bugfixes for merging very large 3d objects, spurious EOF on
+    stdout with -output, maintaining shared state with -keep,
+    -erode and -dilate, line number of errors.
+- Update to gmic-1.5.9.3:
+  * Official support for parallelization with OpenMP.
+  * New commands -variance_patch and -skeleton3d.
+  * New filter Artistic / Circle abstraction.
+  * Shortcuts for -and (-&) and -or (-|).
+  * Bugfix loading .tiff with 3 channels signed char.
+- Update to gmic-1.5.9.2:
+  * New filter Artistic / Cutout.
+  * Speedup of complex math evaluations.
+  * Improvements on -circles3d and -primitives3d.
+  * Default window sizes (3d) now based on screen size.
+  * Adjust down GIMP preview size.
+- Update to gmic-1.5.9.1:
+  * New command -seamcarve (Deformation / Seamcarve).
+  * New command -montage (Arrays & tiles / Montage).
+  * New command -inpaint_holes (Repair / Inpaint [holes]).
+  * -window now normalizes images individually.
+  * multipage TIFF output with is_multipage.
+  * remove slow image pointer check.
+  * -discard optimization.
+  * bug fix with -structuretensors (2d, scheme=1).
+- Update to gmic-1.5.9.0:
+  * New command -blend_seamless (Layers / Blend [seamless]).
+  * New commands -sub_alpha and -montage.
+  * New filter Details / Split details [layers].
+  * Larger default preview in GIMP plugin.
+  * Fixes for -split, -histogram, -equalize, -graph, -display
+- Update to gmic-1.5.8.6:
+  * New plugins Film emulation / Add grain.
+  * New command -syntexturize (Patterns / Resynthesize texture).
+  * New command -fractalize (Artistic / Fractalize).
+  * New command -img2ascii (Arrays & tiles / Ascii art).
+  * New command -periodize_poisson (Patterns / Make seamless).
+  * New command -x_2048 -- launches famour 2048 game.
+  * Bug fixes for -minimal_path and -test
+  * @{-1,t} now always returns a string
+  * Disable sharing global vars between threads
+  * -uncommand and -command improvements
+- Update to gmic-1.5.8.5  	
+  * Support for PANDORE-5 (.pan) output files.
+  * Improve and optmize -replace-seq.
+  * Support for is_binary_data and maximum_sequence_length in 
+    -compress-rle.
+  * Recoded and improved -text.
+  * Bugfixes for -output and math expressions starting with < or >.
+
+-------------------------------------------------------------------
+Sat Mar  8 19:47:38 CET 2014 - kurt@garloff.de
+
+- Update to gmic-1.5.8.4:
+  * New command -imageblocks3d (and corresponding gimp plugin).
+  * New filter Degradations / Blur [depth-of-field].
+  * Improved -endian command (accepts optional datatype).
+  * Tiff output type can be specified.
+  * -apply_files can now force filename extensions.
+  * ability to wait for threads run with -parallel.
+  * Math parser now understands med() and kth().
+  * Reduce stack footprint of main parser.
+  * Request higher minimal stack size when possible.
+  * New output modes for Arrays & tiles / Extract objects.
+  * More imporvements to -inpaint.
+  * Fix line number displayed when error in .gmic file found.
+  * Fix thread destruction with non-wait mode and sub-commands. 
+
+-------------------------------------------------------------------
+Fri Feb 14 12:10:02 CET 2014 - kurt@garloff.de
+
+- Add logic to avoid excessive compilation time:
+  * Limit parallel make to available memory
+  * Set OBS _constraint to provide enough memory
+  * Reorder build targets to improve parallelism
+
+-------------------------------------------------------------------
+Thu Feb 13 15:42:00 CET 2014 - kurt@garloff.de
+
+- Update to 1.5.8.3:
+  * New plug-in filter Frames / Frame[blur]
+  * Improvements: Less warnings on TIFFs, valgrind found bugfixes,
+    OS name in plug-in titlebar, slightly better -inpaint_patch, 
+    more options for -taquin, significantly better -inpaint
+  * Fixed invalid mem access when reading command files
+  * Update reference manual.
+
+-------------------------------------------------------------------
+Fri Jan 10 10:04:17 CET 2014 - kurt@garloff.de
+
+- Update to 1.5.8.2:
+  * New commands -puzzle, -map_sprites, -detect_skin
+  * Improvements to -bilateral amd debugging custom commands
+  * Fix bug with -display for images with NaNs
+- Update to 1.5.8.1:
+  * New command -split_details
+  * New (GIMP plugin) filters Details/Details equalizer and
+    Repair/Smooth [skin].
+  * -repair is merged with -inpaint
+  * Improve UI of -display and -select
+  * Fix crash of -bilateral on blank image
+  * Fixes for Ctrl+F in GIMP plugin
+  * 3D object display light source follows object zoom now
+- Update to 1.5.8.0:
+  * Bugfixes, Optimizations, and Improvements
+  * Small API changes
+- Update to 1.5.7.2:
+  * New commands -output_ggr, -at_line, -x_metaballs, -cubes3d, 
+    -color_med, -x_bouncing, -mutex
+  * Fast marching algo available in -distance
+  * New substituion $"*" which does quoting to protect whitespace
+  * GIMP plugin filters Rendering/Gradient [custom shape] and 
+    [from line]
+  * Improvements for -display, -ball and documentation
+  * Fix CPU eating of gmic display
+  * Compilation improvements (for clang++)
+- Update to 1.5.7.1:
+  * Improve parallelization (-fft, -apply_parallel, 
+    -apply_parallel_overlap)
+
+
+-------------------------------------------------------------------
+Fri Sep 13 17:09:48 CEST 2013 - kurt@garloff.de
+
+- Update to 1.5.7.0:
+  * Parallelization: Multiple threads can be used now, commands
+    -parallel, -apply_parallel, -apply_parallel{2,4,8} to use
+    it. Smoothing and sharpening filters use it already ...
+  * New: -image_integral, -autocrop_components, -bilateral
+  * Bugfixes: Added more randomness to the PRNG (gimp plugin), bug 
+    in -polygon, in -output (% symbol), valgrind warings (false
+    positives actually)
+- Update to 1.5.6.1:
+  * New filters 'Lights & Shadows / Drop shadow 3d', 'Colors /
+    Colorize comics'
+  * New commands '-pack_sprites', '-rprogress'
+  * Converted native commands '-haar' and '-ihaar' as custom 
+    commands, re-organized filter tree sections (gimp), volumetric
+    images zoom in viewer keeps displaying z-coords.
+  * Bugfixes: raw files now correctly use unsigned int when requested
+    so (instead of unsigned short), -polygon, gimp non-interactive
+    mode.
+- Update to 1.5.6.0:
+  * New command (and filter) -bokeh 
+  * Math parser accepts 'j(dx,_dy,_dz,_dc,_interpolation,_boundary)'
+  * Commands '-deblur_richardsonlucy' and '-deblur_goldmeinel' 
+    integrated into trunk.
+  * gimp plug-in external filter source management, optimiztion of
+    math parser, replace native -resize2x and 3x with custom 
+    -scale2x and 3x, -blend_median recoded
+  * Integrate external filters in gimp plugin
+  * Bugfix: 3d rendering with parallel projection
+
+-------------------------------------------------------------------
+Tue May 14 06:37:54 CEST 2013 - kurt@garloff.de
+
+- Disable GraphicsMagick features again (dependency hell). 
+
+-------------------------------------------------------------------
+Tue May 14 06:02:43 CEST 2013 - kurt@garloff.de
+
+- Include reference documentation (PDF) in -doc subpackage.
+
+-------------------------------------------------------------------
+Tue May 14 05:39:29 CEST 2013 - kurt@garloff.de
+
+- Require same lib version from -devel package.
+- Enable openmp, xshm, xrandr, opencv and magick features. 
+
+-------------------------------------------------------------------
+Sun May 12 00:55:20 CEST 2013 - kurt@garloff.de
+
+- Split off -zart and -gimp sub packages.
+
+-------------------------------------------------------------------
+Fri May 10 01:16:53 CEST 2013 - kurt@garloff.de
+
+- Update to 1.5.5.2
+- Update to 1.5.5.1:
+  * Inpainting (-repair) to reconstruct image areas
+- Update to 1.5.5.0:
+  * New logo (GREYC's Magic for Image Computing)
+  * New blending modes for -blend
+  * opencv allows requesting specific resolution for camera capture
+  * -alert box display
+  * improve image resolution for pdf files
+  * -richardson_lucy was a misnomer and is now called -deblur  
+  * Various bugfixes
+- Update to 1.5.4.0:
+  * Spanish translations
+  * Colors/Recolorize added
+  * -weave 
+  * -compose_* deprecated, use -blend instead
+  * bugfixes
+- Update to 1.5.3.0:
+  * _sort_str sorts in lexicographic order
+  * -echo_stdout and -echo_file
+  * -gimp_list_filters
+  * -symmetrice
+  * bug fixes
+- Update to 1.5.2.2:
+  * multiple frames of animated GIF files supported
+  * interactive demo -x_quantize_rgb
+  * -uniform_distribution
+  * bugfixes
+- Update to 1.5.2.0:
+  * Web interface G'MIC online http://gmicol.greyc.fr/
+  * -text_pointcloud3d
+  * -vignette
+  * -ssd_patch
+  * -circle and -rectangle
+  * -x_pacman game
+  * -region_feature
+  * -average_color
+  * -histogram_pointwise
+  * -img2str
+  * -sprites3d
+  * -star3d
+  * -stars
+  * Bugfixes and Optimizations
+- Update to 1.5.1.9:
+  * -med, -mad, -variance_noise, -resize_pow2, -denoise_haar
+  * Enhancement/Smooth [wavelets]
+  * -autocrop_seq
+  * -x_tetris
+  * Bugfixes
+
+-------------------------------------------------------------------
+Wed Oct 19 15:37:32 CEST 2011 - garloff@suse.de
+
+- Split out libgmic1 and libgmic-devel subpackages.
+- Update to 1.5.0.4:
+  * New features: -replace_nan, -min_patch/-max_patch, -rodilius.
+  * Bugfixes: -compose_alpha.
+  * Improvements: -gaussian.
+- Update to 1.5.0.3:
+  * Improvements: P7 pink file format, image list name duplication limit,
+    -paper renamed to -texturize_paper.
+  * New features: -x_rubber3d, -texturize_canvas, Lylejk's painting
+    plug-in filter, -compose_alpha.
+  * Bug fixes: -select with feature_type=3.
+- Update to 1.5.0.2:
+  * New features: -tensro2eigen, -eigen2tensor, space pauses -animate,
+    Solve Labyrith filter, managing empty images (-input 0), -maze
+  * Improvements: -split can split an image along several axes now
+  * Bug fixes: -ripple, -minimal_distance, @{x,-y} substitutions.
+- Update to 1.5.0.1:
+  * New features: -output_pink3d, -ripple.
+  * Improvements: Remove 'beta' marker from man pages, reading BMP.
+  * Bug fixes: -convolve, -autocrop, modulo corrected for negative 
+    numbers, -label (high connectivity mode).
+- Update to 1.5.0.0:
+  * New features: -x_shadebobs, multi-line text parameter widget (plug-in),
+    paned GUI, faves copying in plug-in, allow specifying filename format
+    without filename extension, -uncase, compression of built-in commands,
+    gmic reference page documents convenient functions, -fire_edges.
+  * Improvements: Image copies have ~ appended, -mirror can now mirror
+    along several axes, outlined labels for -plot, -display_graph, labels
+    in command calls may reference several images, support for extended
+    ASCII chars, enlarge the size of preview window, chose RGBA channels
+    for plug-in filters.
+  * Bug fixes: -apply_channels, expand now displays last folder, -split,
+    faves.
+- Update to 1.4.9.5:
+  * New features: -update, counter for documented commands, -x_blobs.
+  * Improvements: Kuwahara filter, more robust faves, GPT filter,
+    prefix for saved files in visualization module is now gmic_.
+- Update to 1.4.9.4:
+  * New features: -distance (new mode), -gmicky, -minimal_path, 
+    -x_minimal_path, -kuwahara, 
+  * Improvements: -pointcloud3d, diplay start and end of shortened messages,
+    -input and -command now accept URLs, -select.
+  * Bug fixes: -ffast-math now safer, -pointcloud precision, remove update
+    files from temp dir.
+- Update to 1.4.9.3:
+  * New features: -rgb2srgb, -srgb2rgb, -mdic, -discard, Plaid filter,
+    3d colored object filter, -otsu, -hough, -x_hough, -houghsketchbw.
+  * Improvements: g++-4.6 compatibility, -quotify renamed to -quote,
+    -pointcloud, decrease verbosity in substitutions, -hardsketchbw,
+    -pointcloud3d. 
+- Update to 1.4.9.2:
+  * Improvments: package libgmic and header in .deb package, -flood, -label.
+  * Bug fixes: -round, 'Mirrored array' filter.
+- Update to 1.4.9.1:
+  * New features: -svd, -diagonal matrix functions.
+  * Improvements: Progress bar disabling in plug-in.
+  * Bug fixes: -split, -dijkstra ... allow rounding values.
+- Update to 1.4.9.0:
+  * New features: Stained glass, plasma filters, input_network command,
+    poker tournament score board, external filter sources, -quotify.
+  * Improvements: multi-page TIFF support, -displacement w/ negative
+    smoothness (anisotropic), raw pixel types, fave management, -return.
+  * A number of smaller bug fixes.
+- Update to 1.4.8.3:
+  * New features: -onfail, -srand, -reset, -replace.
+  * Improvements: More restrictive syntax for -do, -while, -if, ...,
+    -r3d shortcut, code examples with gmic -h command and on reference
+    page, removed HTML documentation from tar balls, -streamline3d,
+    -trisolve, -sharpen, real global vars, better reference doc (at
+    http://gmic.sourceforge.net/reference.shtml).
+  * Bug fixes: -break, -sort, -resize3x, -display, -equalize, -histogram,
+    -solve, -normalize.
+- Update to 1.4.8.2:
+  * Bug corrections: -isosurface3d, -isoline3d, -extrude3d.
+  * New features: PINK extensions (.pgm), P1+P4 .pnm files, new filter
+    Light&Shadows/Light glow.
+  * Improvements: Avoid using xshm X11 extension, -gpt command.
+- Update to 1.4.8.1:
+  * New features: (Partial) support of MINC2 files.
+  * Bug fixes: -append, image rations, -split, -text, '\r' handling.
+- Update to 1.4.8.0:
+  * Improvements: -break, -continue, -return control flow, maintain some
+    special chars in variable names.
+  * Bug fixes: segfault reading filter zoon factor, display bugs in -shell
+    mode, DICOM format (3d), diplay of image lists and visualization windows
+    for very small images.
+- Update to 1.4.7.4:
+  * New features: -distance with custom metric, -label threshold, interactive
+    navigation through image lists, HSV equalizer. 
+  * Improvements: Auto-completion, class name for windows, -display_array,
+    -append.
+  * Bug fixes: Manage mouse wheel again in -animate.
+- Update to 1.4.7.3:
+  * Bug corrections: -graph, plug-in with gimp 2.7.x
+  * New features: -display_array, Grain merge and Grain extract layer mode,
+    -distance metrics, -label, 3d view for 3d volumetric images (Ctrl-V).
+  * Improvements: Image display, -split.
+- Update to 1.4.7.2:
+  * G'MIC interpreter: Substitution expressions '${>}' and '${' and '$<',
+    '@*', command line with spaces in filenames handling, large 3d object
+    handling.
+  * G'MIC commands: -split improvement, .off 3D file handling, new 
+    -pointcloud3d, -colorcube3d, updated -histogram3d, -primitive3d,
+    -primitives3d. Bugfix for -primitive3d, -resize, -graph. New -gpt.
+- Update to 1.4.7.1:
+  * Significant optimization in managing named variables, introduction of
+    global variables (start with _). Improved image selection.
+- Update to 1.4.7.0:
+  * Significant cleanups.
+
+-------------------------------------------------------------------
+Fri Dec 10 10:32:44 CET 2010 - garloff@suse.de
+
+- Update to 1.4.5.2:
+  * Raised precision for the sliders in the G'MIC for GIMP
+- Update to 1.4.5.0:
+  * New command '-display_graph' that renders a graph plot
+  * New in GIMP plug-in : 'Rendering/Equation plot'
+  * Bugfixes: '-convolve', '-correlate', '-erode', '-dilate'. 
+    Added boolean parameter for the computation of normalized versions.
+  * Bugifixes: small bugs in '-grid', '-graph' and '-plot'.
+  * New in GIMP plug-in: 'Various/Do nothing', 'Polka dots'
+- Update to 1.4.4.2:
+  * Layers are now named after the G'MIC command generating them
+- Update to 1.4.4.0:
+  * New filters 'Rendering/3d lathing', 'Contours/Skeleton'
+  * Improvement of 3d rendering capabilities in the G'MIC plug-in.
+  * Improvement of the 'Sequence' folder.
+  * Bugfixes in the internal G'MIC engine, in particula '-break'.
+- Update to 1.4.3.0:
+  * Small improvements over 1.4.2.0
+- Update to 1.4.2.0:
+  * Many bug fixes, and some speed improvements.
+  * Some new options in the 3d objects filters.
+- Update to 1.4.1.0:
+  * Bugfixes: Display of 3d objects containing point primitives,
+    bad memory access in command '-input', typos in various 
+    error/warning messages.
+  * Features: '-gyroid3d', '-texturize3d', new default colormaps 
+    for '-map' and '-index' (8 in total) : hot, jet, cube, ...,
+    '-label_points3d'
+  * New in the GIMP plug-in : sphere and gyroid.
+- Update to 1.4.0.0:
+  - New native commands '-trisolve', '-camera', '-rotation3d'
+  - New custom commands ('-tunnel','-apply_camera','-function1d',
+    'chessboard',...). New internal timer with a ms precision.
+  - New in the GIMP plug-in: RGB/YCbCr/Lab curves, Tunnel effect, 
+    Tone Mapping and Chessboard filters.
+  - The command line version of G'MIC can now manage the webcam,
+    through the use of the OpenCV library.
+  - Small bugfixes and optimization.
+* Update to 1.3.9.0:
+  - Small bugfixes and optimizations
+* Update to 1.3.8.0:
+  - Various bugfixes
+* Update to 1.3.7.2:
+  - Simplify the variable management in the G'MIC language
+  - Some small bugfixes
+  - Slightly reduced memory footprint of the interpreter
+  - Updates to The technical reference documentation
+* Update to 1.3.7.1:
+  - Minor bugfixes
+* Update to 1.3.7.0:
+  - Bugfixes
+* Update to 1.3.6.0:
+  - Small improvements and optimizations: Better substitution mechanism
+    (with labels, making filter writing more comfortable), new ('-grid') 
+    and improved commands
+  - Demo for new label mechanism: gmic -x_jawbreaker
+
+-------------------------------------------------------------------
+Fri Jun 25 10:59:01 CEST 2010 - garloff@suse.de
+
+- Update to 1.3.5.7:
+  * Final stable version
+- Update to 1.3.5.6:
+  * Maximize preview button (plugin dialog)
+  * New filters in plugin
+  * Small optimizations
+- Update to 1.3.5.5:
+  * Processing engine now allows custom functions w/ return values
+  * Scrollbar in plugin parameters dialog
+- Update to 1.3.5.3:
+  * deriche command
+  * Improved stability
+- Update to 1.3.5.1:
+  * Optimize memory usage
+- Update to 1.3.5.0:
+  * Quick preview toggling
+  * Median filtering
+  * Layers/Shape average
+  * Internal changes and optimizations
+- Update to 1.3.4.1:
+  * Minor bug fixes 
+
+-------------------------------------------------------------------
+Sun Mar 21 15:40:07 CET 2010 - garloff@suse.de
+
+- Fix GraphicsMagick++ vs. (Image)Magick++ mess; work with either,
+  not both.
+
+-------------------------------------------------------------------
+Fri Mar 19 01:20:57 CET 2010 - garloff@suse.de
+
+- Update do gmic-1.3.4.0:
+  * gmic lang interpreter stabilized
+  * Minor fixes and improvements
+  * Major performance gains
+  * Smarter preview
+  * gimp plugin more in line with the rest
+- Drop parallel make patch (is upstream).
+- Compile flag -fno-tree-pre now determined by detected compiled
+  version (4.3*).
+
+-------------------------------------------------------------------
+Mon Nov 23 08:48:32 CET 2009 - garloff@suse.de
+
+- Parallel make. 
+
+-------------------------------------------------------------------
+Sun Nov 22 22:02:20 CET 2009 - garloff@suse.de
+
+- Update to 1.3.2.9:
+  * Non-interactive mode possible 
+  * Bug fixes and new modes
+
+-------------------------------------------------------------------
+Mon Jul  6 19:56:03 CEST 2009 - garloff@suse.de
+
+- Update to 1.3.2.0:
+  * Documentation improvements.
+  * Better image transfer with gimp.
+
+-------------------------------------------------------------------
+Tue Mar 31 10:41:35 CEST 2009 - garloff@suse.de
+
+- Update to 1.3.1.1.
+
+-------------------------------------------------------------------
+Mon Mar  2 12:02:43 CET 2009 - garloff@suse.de
+
+- Fix compiler overflow warning.
+
+-------------------------------------------------------------------
+Fri Feb 27 11:19:09 CET 2009 - garloff@suse.de
+
+- Initial creation of package. (1.3.0.3)
+

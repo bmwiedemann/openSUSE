@@ -21,7 +21,7 @@
 
 %define _waf_ver 2.0.9
 %define _mbc_ver 3.3.17
-%define _mpv_ver 0.30.0+git.1568566852.0abe34ed21
+%define _mpv_ver 0.30.0+git.1569184750.b6def652a4
 %define lname   libmpv1
 Name:           mpv
 Version:        %{_mpv_ver}

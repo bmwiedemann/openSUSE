@@ -20,7 +20,7 @@
 Name:           python-convertdate
 Version:        2.1.3
 Release:        0
-Summary:        Converts between Gregorian dates and other calendar systems
+Summary:        Module for date conversions from and to Gregorian calendar
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/fitnr/convertdate
@@ -38,7 +38,9 @@ BuildRequires:  %{python_module pytz >= 2014.10}
 %python_subpackages
 
 %description
-Converts between Gregorian dates and other calendar systems.Calendars included: Baha'i, French Republican, Hebrew, Indian Civil, Islamic, ISO, Julian, Mayan and Persian.
+A Python module for converting between Gregorian dates and other
+calendar systems. Calendars included: Baha'i, French Republican,
+Hebrew, Indian Civil, Islamic, ISO, Julian, Mayan and Persian.
 
 %prep
 %setup -q -n convertdate-%{version}
