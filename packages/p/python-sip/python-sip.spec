@@ -16,10 +16,10 @@
 #
 
 
-%define python_sip_api 12.6
+%define python_sip_api 12.7
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sip
-Version:        4.19.18
+Version:        4.19.19
 Release:        0
 Summary:        SIP tool to use python sip bindings
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP

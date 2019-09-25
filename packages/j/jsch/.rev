@@ -161,4 +161,12 @@
     <comment>Fix build with java 9</comment>
     <requestid>522254</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>8e3d6ccb243ccdbc3904bf4a9d4d4505</srcmd5>
+    <version>0.1.54</version>
+    <time>1569390421</time>
+    <user>dimstar_suse</user>
+    <comment>Make actually work with maven</comment>
+    <requestid>732197</requestid>
+  </revision>
 </revisionlist>

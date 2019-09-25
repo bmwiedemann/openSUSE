@@ -1,7 +1,7 @@
 #
 # spec file for package jsch
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,6 @@ Patch0:         jsch-0.1.54-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  jzlib
 BuildRequires:  unzip
 BuildRequires:  zip
@@ -65,6 +64,8 @@ functionality into your own Java programs.
 %prep
 %setup -q
 %patch0 -p1
+cp %{SOURCE3} pom.xml
+%pom_remove_parent 
 
 %build
 export CLASSPATH=$(build-classpath jzlib)
@@ -93,7 +94,7 @@ cp -pr examples/* %{buildroot}%{_datadir}/%{name}
 
 # POM and depmap
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+install -p -m 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 
 %files
