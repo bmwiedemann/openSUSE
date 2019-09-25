@@ -43,6 +43,7 @@ buildignore gnome-control-center-color
 buildignore libgweather-lang
 buildignore gnome-user-docs
 buildignore gnome-user-docs-lang
+buildignore eog-lang
 buildignore evolution-lang
 buildignore evolution-data-server-lang
 buildignore zenity-lang
