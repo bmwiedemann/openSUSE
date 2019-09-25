@@ -39,6 +39,9 @@ buildignore orca
 # Pulls in color management tools
 buildignore gnome-control-center-color
 
+# We need space - more space
+buildignore vim-data
+
 # 17 MiB, really?
 buildignore libgweather-lang
 buildignore gnome-user-docs

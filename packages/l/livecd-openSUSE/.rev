@@ -612,4 +612,11 @@
     <user>dimstar_suse</user>
     <comment>- list-gnome: ignore eog-lang</comment>
   </revision>
+  <revision rev="72" vrev="72">
+    <srcmd5>325fd21719a20881a305f3f78ffb17c3</srcmd5>
+    <version>unknown</version>
+    <time>1569412007</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome: ignore eog-lang and vim-data</comment>
+  </revision>
 </revisionlist>
