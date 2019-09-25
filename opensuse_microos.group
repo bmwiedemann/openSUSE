@@ -370,6 +370,7 @@
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="python3-appdirs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python3-asn1crypto" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="python3-attrs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python3-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="python3-blinker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
@@ -394,6 +395,7 @@
     <package name="python3-pyasn1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-pycparser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-pyparsing" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="python3-pyrsistent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-pyserial" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-pytz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-requests" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->

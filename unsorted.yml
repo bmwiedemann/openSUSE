@@ -596,6 +596,7 @@ unsorted:
   - argon2-doc 
   - args4j 
   - args4j-javadoc 
+  - args4j-tools 
   - argus 
   - argus-client 
   - argus-server 
@@ -2205,6 +2206,7 @@ unsorted:
   - digikam 
   - digikam-devel 
   - digikam-lang 
+  - digikam-plugin-gmic 
   - digikam-plugins 
   - dina-bitmap-fonts 
   - dippi 
@@ -4078,6 +4080,7 @@ unsorted:
   - gimp-help-zh 
   - gimp-plugin-dds 
   - gimp-plugin-dds-doc 
+  - gimp-plugin-gmic 
   - gimp-plugin-lqr 
   - gimp-plugin-lqr-lang 
   - gimp-save-for-web 
@@ -4184,6 +4187,8 @@ unsorted:
   - glusterfs-devel 
   - glyr-devel 
   - glyrc 
+  - gmic 
+  - gmic-zart 
   - gmime-devel 
   - gmime2_6-devel 
   - gmime2_6-sharp 
@@ -6315,6 +6320,7 @@ unsorted:
   - krfb 
   - krfb-lang 
   - krita-devel 
+  - krita-plugin-gmic 
   - kronometer 
   - kross-32bit: [x86_64] 
   - kross-devel 
@@ -8719,6 +8725,8 @@ unsorted:
   - libglyr1-32bit: [x86_64] 
   - libgme-devel 
   - libgme0-32bit: [x86_64] 
+  - libgmic-devel 
+  - libgmic1 
   - libgmime-2_6-0 
   - libgmime-2_6-0-32bit: [x86_64] 
   - libgmime-3_0-0-32bit: [x86_64] 
@@ -8750,8 +8758,8 @@ unsorted:
   - libgnomeui-lang 
   - libgnuastro6 
   - libgnuradio-3_8_0 
-  - libgnuradio-fcdproplus-3_7_2_0-0_0_0 
   - libgnuradio-fcdproplus-devel 
+  - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-osmosdr-0_1_5git0_0_0 
@@ -9635,7 +9643,7 @@ unsorted:
   - libmateweather1 
   - libmateweather1-32bit: [x86_64] 
   - libmatio-devel 
-  - libmatio4 
+  - libmatio9 
   - libmatroska-devel 
   - libmatroska6-32bit: [x86_64] 
   - libmaxminddb-devel 
@@ -17963,6 +17971,7 @@ unsorted:
   - python2-easypysmb 
   - python2-easywatch 
   - python2-ebcdic 
+  - python2-ed25519 
   - python2-ed25519ll 
   - python2-editdistance 
   - python2-editdistance-devel 
@@ -20259,6 +20268,7 @@ unsorted:
   - python3-easywatch 
   - python3-ebcdic 
   - python3-ec2imgutils 
+  - python3-ed25519 
   - python3-editdistance 
   - python3-editdistance-devel 
   - python3-efl 
@@ -21199,7 +21209,7 @@ unsorted:
   - python3-pyreadstat 
   - python3-pyroma 
   - python3-pyroute2 
-  - python3-pyrsistent 
+  - python3-pyrsistent: [i586] 
   - python3-pysaml2 
   - python3-pyscard 
   - python3-pysendfile 
@@ -32135,6 +32145,9 @@ unsorted:
   - vagrant-emacs 
   - vagrant-libvirt 
   - vagrant-libvirt-doc 
+  - vagrant-sshfs 
+  - vagrant-sshfs-doc 
+  - vagrant-sshfs-testsuite 
   - vagrant-vim 
   - vala-panel 
   - vala-panel-appmenu-lang 
