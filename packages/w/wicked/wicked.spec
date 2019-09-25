@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.55
+Version:        0.6.57
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0

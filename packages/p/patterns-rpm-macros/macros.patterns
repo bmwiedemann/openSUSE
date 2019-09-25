@@ -8,3 +8,58 @@ Obsoletes:      patterns-sled-%1 < %{version} \
 Provides:       patterns-sles-%1 = %{version} \
 Obsoletes:      patterns-sles-%1 < %{version} \
 %endif
+
+%pattern_additionalsoftware \
+Provides: pattern-category() = Additional%20Software
+
+%pattern_advsysmgmt \
+Provides: pattern-category() = Advanced%20Systems%20Management
+
+%pattern_basetechnologies \
+Provides: pattern-category() = Base%20Technologies
+
+%pattern_desktopfunctions \
+Provides: pattern-category() = Desktop%20Functions
+
+%pattern_desktops \
+Provides: pattern-category() = Desktops
+
+%pattern_development \
+Provides: pattern-category() = Development
+
+%pattern_documentation \
+Provides: pattern-category() = Documentation
+
+%pattern_gnomedesktop \
+Provides: pattern-category() = GNOME%20Desktop
+
+%pattern_graphicalenvironments \
+Provides: pattern-category() = Graphical%20Environments
+
+%pattern_kdedesktop \
+Provides: pattern-category() = KDE%20Desktop
+
+%pattern_lxdedesktop \
+Provides: pattern-category() = LXDE%20Desktop
+
+%pattern_matedesktop \
+Provides: pattern-category() = MATE%20Desktop
+
+%pattern_pantheondesktop \
+Provides: pattern-category() = Pantheon%20Desktop
+
+%pattern_primaryfunctions \
+Provides: pattern-category() = Primary%20Functions
+
+%pattern_proprietarysoftware \
+Provides: pattern-category() = Proprietary%20Software
+
+%pattern_publicclouds \
+Provides: pattern-category() = Public%20Clouds
+
+%pattern_serverfunctions \
+Provides: pattern-category() = Server%20Functions
+
+%pattern_xfcedesktop \
+Provides: pattern-category() = XFCE%20Desktop
+

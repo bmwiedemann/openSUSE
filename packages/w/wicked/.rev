@@ -1450,4 +1450,24 @@
 - testing: add ifbind.sh helper script allowing to test hotplugging</comment>
     <requestid>723357</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>04a47324a9ca06944f961c106e3029c2</srcmd5>
+    <version>0.6.57</version>
+    <time>1569369273</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.57
+- dhcp6: omit noprefixroute with address-length (bsc#1150972)
+  Permit to assume that the address prefix-length override specified
+  in the config is a valid on-link prefix length, to let the kernel
+  create a route for this prefix.
+- dhcp6: differentiated mode=auto resolving from RA (bsc#1150183)
+  Fixed to not trigger to report an error when ipv6 RA is not
+  available or the received RA disables dhcp while mode is set to
+  auto, but to deliver a 'deferred' results.
+
+- version 0.6.56
+- dhcp6: initial support to request prefix for delegations (jsc#SLE-5936)
+- dhcp6: set the noprefixroute address option (bsc#1132280)</comment>
+    <requestid>731992</requestid>
+  </revision>
 </revisionlist>

@@ -26,17 +26,17 @@
 %define comparator %{-c:%{-c*}}%{!-c:%{error:Comparator not defined}} \
 %define conflicts_version %{-v:%{-v*}}%{!-v:%{error:Version not defined}} \
 \
-%{preamble_string} libavcodec-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libavdevice-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libavfilter-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libavformat-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libavresample-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libavutil-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libpostproc-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libswresample-devel %{comparator} %{conflicts_version} \
-%{preamble_string} libswscale-devel %{comparator} %{conflicts_version} \
-%{preamble_string} ffmpeg-private-devel %{comparator} %{conflicts_version} \
-%{nil}
+%preamble_string libavcodec-devel %comparator %conflicts_version \
+%preamble_string libavdevice-devel %comparator %conflicts_version \
+%preamble_string libavfilter-devel %comparator %conflicts_version \
+%preamble_string libavformat-devel %comparator %conflicts_version \
+%preamble_string libavresample-devel %comparator %conflicts_version \
+%preamble_string libavutil-devel %comparator %conflicts_version \
+%preamble_string libpostproc-devel %comparator %conflicts_version \
+%preamble_string libswresample-devel %comparator %conflicts_version \
+%preamble_string libswscale-devel %comparator %conflicts_version \
+%preamble_string ffmpeg-private-devel %comparator %conflicts_version \
+%nil
 
 # nvcodec headers only present after leap15
 %bcond_with nvcodec
@@ -97,7 +97,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        Library for working with various multimedia formats
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -122,7 +122,6 @@ Patch6:         ffmpeg-4.2-dlopen-fdk_aac.patch
 # https://trac.ffmpeg.org/ticket/7861
 Patch7:         ffmpeg4_swscale_replace_illegal_vector_keyword.patch
 Patch8:         ffmpeg4_swscale_fix_altivec_vsx_recent_gcc.patch
-Patch9:         0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -242,8 +241,8 @@ BuildRequires:  pkgconfig(x264)
 %if %{with x265}
 BuildRequires:  pkgconfig(x265)
 %endif
-Provides:       ffmpeg-tools = %{version}
-Obsoletes:      ffmpeg-tools < %{version}
+Provides:       ffmpeg-tools = %version
+Obsoletes:      ffmpeg-tools < %version
 Provides:       ffmpeg = %version
 Obsoletes:      ffmpeg < %version
 Requires:       libavcodec58 = %version-%release
@@ -292,11 +291,11 @@ Summary:        Development files for FFmpeg's codec library
 Group:          Development/Libraries/C and C++
 Provides:       libavcodec-devel = %version-%release
 Obsoletes:      libavcodec-devel < %version-%release
-Requires:       %{name}-libavresample-devel = %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
+Requires:       %name-libavresample-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
 Requires:       libavcodec58 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libavcodec-devel
 The libavcodec library provides a generic encoding/decoding framework
@@ -326,17 +325,17 @@ Provides:       ffmpeg-devel = %version-%release
 Conflicts:      ffmpeg-devel
 Provides:       libavdevice-devel = %version-%release
 Obsoletes:      libavdevice-devel < %version-%release
-Requires:       %{name}-libavcodec-devel = %version-%release
-Requires:       %{name}-libavfilter-devel = %version-%release
-Requires:       %{name}-libavformat-devel = %version-%release
-Requires:       %{name}-libavresample-devel = %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
-Requires:       %{name}-libpostproc-devel = %version-%release
-Requires:       %{name}-libswresample-devel = %version-%release
-Requires:       %{name}-libswscale-devel = %version-%release
+Requires:       %name-libavcodec-devel = %version-%release
+Requires:       %name-libavfilter-devel = %version-%release
+Requires:       %name-libavformat-devel = %version-%release
+Requires:       %name-libavresample-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
+Requires:       %name-libpostproc-devel = %version-%release
+Requires:       %name-libswresample-devel = %version-%release
+Requires:       %name-libswscale-devel = %version-%release
 Requires:       libavdevice58 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libavdevice-devel
 The libavdevice library provides a generic framework for grabbing from
@@ -366,16 +365,16 @@ Summary:        Development files for FFmpeg's audio/video filter library
 Group:          Development/Libraries/C and C++
 Provides:       libavfilter-devel = %version-%release
 Obsoletes:      libavfilter-devel < %version-%release
-Requires:       %{name}-libavcodec-devel = %version-%release
-Requires:       %{name}-libavformat-devel = %version-%release
-Requires:       %{name}-libavresample-devel = %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
-Requires:       %{name}-libpostproc-devel = %version-%release
-Requires:       %{name}-libswresample-devel = %version-%release
-Requires:       %{name}-libswscale-devel = %version-%release
+Requires:       %name-libavcodec-devel = %version-%release
+Requires:       %name-libavformat-devel = %version-%release
+Requires:       %name-libavresample-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
+Requires:       %name-libpostproc-devel = %version-%release
+Requires:       %name-libswresample-devel = %version-%release
+Requires:       %name-libswscale-devel = %version-%release
 Requires:       libavfilter7 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libavfilter-devel
 The libavfilter library provides a generic audio/video filtering
@@ -404,12 +403,12 @@ Summary:        Development files for FFmpeg's stream format library
 Group:          Development/Libraries/C and C++
 Provides:       libavformat-devel = %version-%release
 Obsoletes:      libavformat-devel < %version-%release
-Requires:       %{name}-libavcodec-devel = %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
-Requires:       %{name}-libswresample-devel = %version-%release
+Requires:       %name-libavcodec-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
+Requires:       %name-libswresample-devel = %version-%release
 Requires:       libavformat58 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libavformat-devel
 The libavformat library provides a generic framework for multiplexing
@@ -435,10 +434,10 @@ Summary:        Development files for libavresample as present in FFmpeg
 Group:          Development/Libraries/C and C++
 Provides:       libavresample-devel = %version-%release
 Obsoletes:      libavresample-devel < %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
 Requires:       libavresample4 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libavresample-devel
 An audio resampling library that is being provided for drop-in
@@ -465,8 +464,8 @@ Group:          Development/Libraries/C and C++
 Provides:       libavutil-devel = %version-%release
 Obsoletes:      libavutil-devel < %version-%release
 Requires:       libavutil56 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libavutil-devel
 The libavutil library is a utility library to aid portable multimedia
@@ -492,10 +491,10 @@ Summary:        Development files for the FFmpeg post-processing library
 Group:          Development/Libraries/C and C++
 Provides:       libpostproc-devel = %version-%release
 Obsoletes:      libpostproc-devel < %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
 Requires:       libpostproc55 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libpostproc-devel
 A library with video postprocessing filters, such as deblocking and
@@ -518,10 +517,10 @@ Summary:        Development files for the FFmpeg software resampling library
 Group:          Development/Libraries/C and C++
 Provides:       libswresample-devel = %version-%release
 Obsoletes:      libswresample-devel < %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
 Requires:       libswresample3 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libswresample-devel
 The libswresample library performs audio conversion between different
@@ -543,10 +542,10 @@ Summary:        Development files for FFmpeg's image scaling and colorspace libr
 Group:          Development/Libraries/C and C++
 Provides:       libswscale-devel = %version-%release
 Conflicts:      libswscale-devel
-Requires:       %{name}-libavutil-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
 Requires:       libswscale5 = %version-%release
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description libswscale-devel
 The libswscale library performs image scaling and colorspace and
@@ -557,13 +556,13 @@ This subpackage contains the headers for FFmpeg libswscale.
 %package private-devel
 Summary:        Some FFmpeg private headers
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-libavcodec-devel = %version-%release
-Requires:       %{name}-libavformat-devel = %version-%release
-Requires:       %{name}-libavutil-devel = %version-%release
+Requires:       %name-libavcodec-devel = %version-%release
+Requires:       %name-libavformat-devel = %version-%release
+Requires:       %name-libavutil-devel = %version-%release
 Provides:       ffmpeg-private-devel = %version
 Obsoletes:      ffmpeg-private-devel < %version
-%devel_conflicts -c < -v %{_major_version}
-%devel_conflicts -c >= -v %{_major_expected}
+%devel_conflicts -c < -v %_major_version
+%devel_conflicts -c >= -v %_major_expected
 
 %description private-devel
 FFmpeg is a multimedia framework, able to decode, encode,
@@ -581,10 +580,10 @@ break compatibility without any notice.
 
 %build
 %ifarch %ix86 %arm
-%define _lto_cflags %{nil}
+%define _lto_cflags %nil
 %endif
 CFLAGS="%optflags" \
-%if %{suse_version} > 1500
+%if %suse_version > 1500
 %ifarch %ix86
 %else
 LDFLAGS="%_lto_cflags" \
