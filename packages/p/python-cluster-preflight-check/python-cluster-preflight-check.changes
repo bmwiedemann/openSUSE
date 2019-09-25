@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:13:55 UTC 2019 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- version 0.0.33
+  - Use setup.py to create ha-cluster-preflight-check automatically (#10)
+  - Use underscores in source tarball as provided by GitHub
+
+-------------------------------------------------------------------
 Tue Aug 27 05:27:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Language fixes to the description.

@@ -273,4 +273,12 @@
 - Run testsuite using the new %pytest macro</comment>
     <requestid>693161</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5b60e1b64c480d8675ea5470adf563d5</srcmd5>
+    <version>2.5.0</version>
+    <time>1569391729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731953</requestid>
+  </revision>
 </revisionlist>

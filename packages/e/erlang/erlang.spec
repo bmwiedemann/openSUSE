@@ -25,8 +25,10 @@
 %undefine _missing_build_ids_terminate_build
 %endif
 
+%{!?make_build:%{expand: %%global make_build %%{__make} %%{?_smp_mflags}}}
+
 Name:           erlang
-Version:        22.0.7
+Version:        22.1
 Release:        0
 # not set up to be built with position independend executable support
 #!BuildIgnore:	gcc-PIE
@@ -46,8 +48,6 @@ Source9:        README.SUSE
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
-# PATCH-FIX-UPSTREAM 0001-erts-Do-not-use-named-no_cpuid-label-in-asm.patch - matwey.kornilov@gmail.com boo#1142913
-Patch5:         0001-erts-Do-not-use-named-no_cpuid-label-in-asm.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
@@ -302,7 +302,6 @@ A Graphics System used to write platform independent user interfaces.
 %setup -q -n otp-OTP-%{version}
 %patch0 -p1 -b .rpath
 %patch4 -p1
-%patch5 -p1
 cp %{S:9} .
 
 ./otp_build autoconf
@@ -438,8 +437,8 @@ getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port
 %{insserv_cleanup}
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS LICENSE.txt README
+%license LICENSE.txt
+%doc AUTHORS README
 %if 0%{?have_systemd}
 %doc README.SUSE
 %endif

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 23 08:12:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.3.3 bsc#1151594:
+  * small fixes, such as fixing the build on some non-Linux systems
+  * Fixes a regression where ssh mode did not work in most circumstances. Bug #291
+- Rebase patch distcc-3.2_rc1-freedesktop.patch
+
+-------------------------------------------------------------------
 Tue Jul 23 13:09:00 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 19 01:03:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 3.8~git.20190817:
+  * Adopting Versioning to gnuradio 3.8 versioning scheme
+  * Fixing typo
+  * Fixing path error when bundled hidapi is used
+  * Updating README
+  * Adopt to modern cmake used in gnuradio
+  * Intial setup for modern cmake
+  * Add FindUSB.cmake as removed in gnuradio
+  * Updating fcdpp and adding fcd modules
+  * Create MANIFEST.md
+  * Find only 3.7 installations
+  * Fixing some typos
+  * Setting correct block path
+  * Handling messages to set frequency
+  * Preparing for dealing with messages
+  * Initial commit, preparing for 3.8
+  * Preparation for gnuradio 3.8
+  * Removing unnecessary dependency for gnuradio
+
+-------------------------------------------------------------------
 Sun Jun  2 08:30:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Fix Requires for python-gr-fcdproplus

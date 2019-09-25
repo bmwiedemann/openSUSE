@@ -1,7 +1,7 @@
 #
 # spec file for package gr-fcdproplus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,44 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libgnuradio-fcdproplus
-%define sover -3_7_2_0-0_0_0
+%define sover 3_8_0
 Name:           gr-fcdproplus
-Version:        3.7.12
+Version:        3.8~git.20190817
 Release:        0
 Summary:        Fcdproplus Linux addon for gnuradio
 License:        GPL-3.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/dl1ksv/gr-fcdproplus
 #Git-Clone:     https://github.com/dl1ksv/gr-fcdproplus.git
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        gr-fcdproplus.rules
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnuradio-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python-wxWidgets
-BuildRequires:  swig
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(python2)
-%if 0%{?suse_version} > 1325
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
+BuildRequires:  libmpir-devel
+BuildRequires:  orc
+BuildRequires:  pkgconfig
+BuildRequires:  swig
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(python3)
 
 %description
 gr-fcdproplus is a Linux addon for gnuradio to implement a FUNcube Dongle
@@ -57,7 +60,7 @@ To control the device, the hidraw code of the HID API is used.
 %package -n %{libname}%{sover}
 Summary:        Fcdproplus Linux addon for gnuradio
 Group:          System/Libraries
-Requires:       fcdproplus-udev
+Recommends:     fcdproplus-udev
 
 %description -n %{libname}%{sover}
 gr-fcdproplus is a Linux addon for gnuradio to implement a FUNcube Dongle
@@ -108,15 +111,11 @@ Documentation for gr-fcdproplus module for GNU Radio.
 %prep
 %setup -q
 
-# remove buildtime from documentation
-sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.in
-
 %build
 %cmake \
     -DENABLE_DOXYGEN=1 \
     -DCMAKE_SHARED_LINKER_FLAGS=""
 make %{?_smp_mflags}
-
 
 %install
 %cmake_install
@@ -138,22 +137,22 @@ install -Dm 0644 "%{SOURCE1}" %{buildroot}%{_udevrulesdir}/10-gr-fcdproplus.rule
 
 %files
 %license COPYING
-%doc README
-%{_datadir}/gnuradio/grc/blocks/*.xml
+%doc README.md
+%{_datadir}/gnuradio/grc/blocks/*.yml
 %exclude %{_docdir}/%{name}/html
 %exclude %{_docdir}/%{name}/xml
 
 %files -n %{libname}%{sover}
-%{_libdir}/libgnuradio-fcdproplus-3.7.2.0.so.*
+%{_libdir}/libgnuradio-fcdproplus.so.*
 
 %files -n %{libname}-devel
 %{_includedir}/fcdproplus
 %{_libdir}/libgnuradio-fcdproplus.so
-%{_libdir}/libgnuradio-fcdproplus-3.7.2.0.so
+%{_libdir}/cmake/gr-fcdproplus
 %{_libdir}/pkgconfig/gnuradio-fcdproplus.pc
 
 %files -n python-gr-fcdproplus
-%{python_sitearch}/fcdproplus
+%{python3_sitearch}/fcdproplus
 
 %files -n fcdproplus-udev
 %{_udevrulesdir}/10-gr-fcdproplus.rules
