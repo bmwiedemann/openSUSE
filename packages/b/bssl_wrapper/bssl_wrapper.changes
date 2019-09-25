@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:12:49 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add ppc64le
+
+-------------------------------------------------------------------
 Thu Aug  1 13:44:38 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Move the header file into %{_includedir}/bssl_wrapper directory.

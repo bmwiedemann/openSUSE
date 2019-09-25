@@ -37,7 +37,7 @@ BuildRequires:  bazel
 BuildRequires:  bssl_wrapper-devel
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
-ExclusiveArch:  aarch64 x86_64
+ExclusiveArch:  aarch64 x86_64 ppc64le
 
 %description
 OpenSSL-CBS is a library providing Crypto ByteString (CBS)

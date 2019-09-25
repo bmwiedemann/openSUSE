@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 16:39:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.33
+  * generate and customize the ant build files
+- Add option to build with tests on (disabled by default)
+- Package the tools in a subpackage
+
+-------------------------------------------------------------------
 Fri Sep 20 11:56:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove reference to the parent pom since we are not building

@@ -97,12 +97,12 @@ simple text.
 # copy necessary files from kernel-source
 (tar -C /usr/src/linux -c COPYING tools scripts) | tar -x
 
-%define SLE15_SP1   (0%{?sle_version} == 150100 && 0%{?is_opensuse} != 1)
+%define SLE15_SP1_OR_LEAP15_1 0%{?sle_version} == 150100
 %define FACTORY     (0%{?is_opensuse} && 0%{?suse_version} > 1500)
 %define SLE_LEAP_15 (0%{?sle_version} <= 150000 && 0%{?suse_version} <= 1500)
 %define SLE_LEAP_15_2 (0%{?sle_version} == 150200 && 0%{?suse_version} <= 1500)
-# Only apply the first few patches to SLES15-SP1
-%if %{SLE15_SP1}
+# Only apply the first few patches to SLES15-SP1 and Leap 15.1
+%if %{SLE15_SP1_OR_LEAP15_1}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1

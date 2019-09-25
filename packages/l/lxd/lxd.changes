@@ -1,8 +1,52 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:31:21 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Completely drop all stripping -- it appears to cause all sorts of problems
+  with unresolved symbol errors.
+- Update to LXD 3.17. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-17-has-been-released/5679
+  boo#1151874
+  + Storage pool backed image tarballs and backups
+  + Container configuration as YAML on lxc init and lxc launch
+  * Ported to final Dqlite 1.0
+  * Database rework
+  * Container devices rework
+  * Storage rework
+
+-------------------------------------------------------------------
+Mon Jul 15 06:40:30 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.15. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-15-has-been-released/5218
+  + Switch to dqlite 1.0.
+  * Reworked DHCP lease handling
+  * Reworked cluster heartbeat handling
+  * Better syscall interception framework
+  * More reliable unix socket proxying
+  + Hardware VLAN and MAC filtering on SR-IOV
+  + New storage-size option for lxd-p2c
+  + IPv4 and IPv6 filtering (spoof protection)
+  * Reworked resources API (host hardware)
+  + Control over uid, gid and cwd during command execution
+  + Quota support for custom storage volumes on dir backend
+  * Lots of bug fixes...
+
+-------------------------------------------------------------------
+Wed Jun 19 07:21:29 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.14. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-14-has-been-released/5045
+  boo#1138770
+  + Cluster: Re-worked DNS forwarding
+  + Script to factory reset LXD
+  + Improvements to syscall interception
+  * Lots of bug fixes...
+
+-------------------------------------------------------------------
 Wed Jun 19 03:16:40 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update build to use go_nostrip, in order to attempt to fix the broken
-  binaries on Leap 15.1.
+  binaries on Leap 15.1. boo#1138769
 
 -------------------------------------------------------------------
 Sun Jun  9 08:21:19 UTC 2019 - Aleksa Sarai <asarai@suse.com>

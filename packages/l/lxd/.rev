@@ -26,4 +26,22 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>710701</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52b723632811a4ec0546eaf3c1c1b5c6</srcmd5>
+    <version>3.17</version>
+    <time>1569393933</time>
+    <user>dimstar_suse</user>
+    <comment>- Completely drop all stripping -- it appears to cause all sorts of problems
+  with unresolved symbol errors.
+- Update to LXD 3.17. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-17-has-been-released/5679
+  boo#1151874
+  + Storage pool backed image tarballs and backups
+  + Container configuration as YAML on lxc init and lxc launch
+  * Ported to final Dqlite 1.0
+  * Database rework
+  * Container devices rework
+  * Storage rework</comment>
+    <requestid>732962</requestid>
+  </revision>
 </revisionlist>
