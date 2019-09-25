@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 17 05:31:26 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate more of the test suite
+- Remove tests and benchmarking from the runtime package
+- Update to v3.0.2
+  * Fixed a bug where 0 and False were considered equal by
+    const and enum
+- from v3.0.1
+  * Fixed a bug where extending validators did not preserve their 
+    notion of which validator property contains $id information.
+- from v3.0.0
+  * Support for Draft 6 and Draft 7
+  * Draft 7 is now the default
+  * New TypeChecker object for more complex type definitions
+    (and overrides)
+  * Falling back to isodate for the date-time format checker is
+    no longer attempted, in accordance with the specification
+
+-------------------------------------------------------------------
 Tue Apr 16 16:17:12 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add non-updating note to the SPEC file
