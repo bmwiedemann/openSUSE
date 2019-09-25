@@ -2142,7 +2142,7 @@
     <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgpod4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgps24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgps25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgraphite2-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgraphviz6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5394,6 +5394,7 @@
     <package name="xorg-x11-fonts-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-x11-libX11-ccache" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-x11-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xorg-x11-server-Xvfb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-x11-server-extra" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-x11-server-sdk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xorg-x11-server-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5735,8 +5736,6 @@
     <package name="libnsl2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnss_nis2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libogg0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libopenssl1_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
-    <package name="libopenssl1_0_0-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libopenssl1_1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libp11-kit0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libpango-1_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
