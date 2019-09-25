@@ -130,7 +130,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %bcond_with python_numpy
 %endif
 # context hasn't been ported to most architectures yet
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips ppc ppc64 ppc64le
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips ppc ppc64 ppc64le riscv64
 %bcond_without build_context
 %else
 %bcond_with build_context
@@ -197,6 +197,7 @@ Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch23:        3ecbf83f.patch
+Patch24:        riscv-support.patch
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
@@ -1230,6 +1231,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch18 -p1
 %patch20 -p1
 %patch23 -p1
+%patch24 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1928,6 +1930,7 @@ EOF
 %{package_libdir}/libboost_mpi.so.%{version}
 
 %files -n libboost_mpi%{library_version}-devel
+%dir %{package_libdir}/cmake
 %dir %{package_libdir}/cmake/boost_mpi-%{version}
 %{package_libdir}/cmake/boost_mpi-%{version}/*
 %{package_libdir}/libboost_mpi.so
@@ -1936,6 +1939,7 @@ EOF
 %{package_libdir}/libboost_graph_parallel.so.%{version}
 
 %files -n libboost_graph_parallel%{library_version}-devel
+%dir %{package_libdir}/cmake
 %dir %{package_libdir}/cmake/boost_graph_parallel-%{version}
 %{package_libdir}/cmake/boost_graph_parallel-%{version}/*
 %{package_libdir}/libboost_graph_parallel.so
@@ -1945,6 +1949,7 @@ EOF
 %{package_libdir}/libboost_mpi_python-py2_7.so.%{version}
 
 %files -n libboost_mpi_python-py2_7-%{library_version}-devel
+%dir %{package_libdir}/cmake
 %dir %{package_libdir}/cmake/boost_mpi_python-%{version}
 %{package_libdir}/cmake/boost_mpi_python-%{version}/*
 %{package_libdir}/libboost_mpi_python-py2_7.so
@@ -2008,6 +2013,7 @@ EOF
 %{package_libdir}/libboost_python-py3.so.%{version}
 
 %files -n libboost_python-py3-%{library_version}-devel
+%dir %{package_libdir}/cmake
 %dir %{package_libdir}/cmake/boost_python-%{version}
 %{package_libdir}/cmake/boost_python-%{version}/*
 %{package_libdir}/libboost_python3.so
@@ -2018,6 +2024,7 @@ EOF
 %{package_libdir}/libboost_numpy-py3.so.%{version}
 
 %files -n libboost_numpy-py3-%{library_version}-devel
+%dir %{package_libdir}/cmake
 %dir %{package_libdir}/cmake/boost_numpy-%{version}
 %{package_libdir}/cmake/boost_numpy-%{version}/*
 %{package_libdir}/libboost_numpy-py3.so

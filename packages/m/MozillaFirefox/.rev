@@ -4051,4 +4051,25 @@
 - rebased patches</comment>
     <requestid>730473</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>6ff9f6da65ba8694abdaf3d63d97074a</srcmd5>
+    <version>69.0.1</version>
+    <time>1569369997</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 69.0.1
+  * Fixed external programs launching in the background when clicking
+    a link from inside Firefox to launch them (bmo#1570845)
+  * Usability improvements to the Add-ons Manager for users with
+    screen readers (bmo#1567600)
+  * Fixed the Captive Portal notification bar not being dismissable
+    in some situations after login is complete (bmo#1578633)
+  * Fixed the maximum size of fonts in Reader Mode when zoomed (bmo#1578454)
+  * Fixed missing stacks in the Developer Tools Performance section
+    (bmo#1578354)
+  MFSA 2019-31
+  * CVE-2019-11754 (bmo#1580506)
+    Pointer Lock is enabled with no user notification
+- disable DOH by default</comment>
+    <requestid>732086</requestid>
+  </revision>
 </revisionlist>
