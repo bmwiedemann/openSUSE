@@ -39,7 +39,7 @@ BuildRequires:  python3-CherryPy
 BuildRequires:  python3-lockfile >= 0.9
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack
-BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest < 4
 BuildRequires:  python3-redis >= 2.10.5
 BuildRequires:  python3-requests
 # /SECTION

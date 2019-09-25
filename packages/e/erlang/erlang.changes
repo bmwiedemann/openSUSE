@@ -1,4 +1,383 @@
 -------------------------------------------------------------------
+Sun Sep 22 08:21:20 UTC 2019 - matwey.kornilov@gmail.com
+
+- Changes for 22.1:
+  * kernel: The type specification for gen_sctp:connect/4,5 has
+    been corrected.
+  * kernel: Extra -mode flags given to erl are ignored with a
+    warning.
+  * kernel: Fix type spec for seq_trace:set_token/2.
+  * kernel: logger:compare_levels/2 would fail with a badarg
+    exception if given the values all or none as any of the
+    parameters. This is now corrected.
+  * kernel: Fix bug where the log file in logger_std_h would not be
+    closed when the inode of the file changed. This would in turn
+    cause a file descriptor leak when tools like logrotate are
+    used.
+  * kernel: Fix a race condition in the debugging function
+    net_kernel:nodes_info/0.
+  * kernel: Fix race condition when closing a file opened in
+    compressed or delayed_write mode.
+  * kernel: The possibility to send ancillary data, in particular
+    the TOS field, has been added to gen_udp:send/4,5.
+  * kernel: If the log file was given with relative path, the
+    standard logger handler (logger_std_h) would store the file
+    name with relative path. If the current directory of the node
+    was later changed, a new file would be created relative the new
+    current directory, potentially failing with an enoent if the
+    new directory did not exist. This is now corrected and
+    logger_std_h always stores the log file name as an absolute
+    path, calculated from the current directory at the time of the
+    handler startup.
+  * kernel: Support local sockets with inet:i/0.
+  * observer: Fix bug after a user followed link on a pid from an
+    expanded term window.
+  * observer: Improved dark mode colors on Linux.
+  * mnesia: mnesia:add_table_copy/3 could cause a deadlock if
+    called when a new node was starting.
+  * mnesia: Transactions with sticky locks could with async_asym
+    transactions be committed in the wrong order, since asym
+    transaction are spawned on the remote nodes. To fix this bug
+    the communication protocol between mnesia nodes had to be
+    updated, thus mnesia will no longer be able to connect to nodes
+    earlier than mnesia-4.14 , OTP-19.0. *** POTENTIAL
+    INCOMPATIBILITY ***
+  * stdlib: re:run() now yields when validating utf8 in a large
+    subject.
+  * stdlib: Upgraded the ERTS internal PCRE library from version
+    8.42 to version 8.43. See
+    http://pcre.org/original/changelog.txt for information about
+    changes made to PCRE. This library implements major parts of
+    the re regular expressions module.
+  * stdlib: The bug with ID ERL-717 has been fixed. The functions
+    io:columns() and io:rows() only worked correctly inside
+    interactive erlang shells before this fix. These functions
+    returned {error,enotsup} before this fix even if stdout and
+    stdin were connected to a terminal when they were invoked from
+    an escript or a program started with e.g., erl -noshell.
+  * stdlib: Fixed handling of ".." and "@" in wildcards. ".." would
+    only work when preceded by a literal pattern such as in "a/..",
+    not when preceded by wildcard characters such as in "*/..". The
+    combination "@/.." was also broken, and in addition "@" in a
+    pattern could degrade performance of the wildcard matching.
+  * stdlib: Make sure ets:fun2ms() can handle ++/2 in the head of
+    functions when called from the shell.
+  * stdlib: Debugging of time-outs in gen_statem has been improved.
+    Starting a time-out is now logged in sys:log and sys:trace.
+    Running time-outs are visible in server crash logs, and with
+    sys:get_status. Due to this system events {start_timer, Action,
+    State} and {insert_timout, Event, State} have been added, which
+    may surprise tools that rely on the format of these events. New
+    features: The EventContent of a running time-out can be updated
+    with {TimeoutType, update, NewEventContent}. Running time-outs
+    can be cancelled with {TimeoutType, cancel} which is more
+    readable than using Time = infinity. *** POTENTIAL
+    INCOMPATIBILITY ***
+  * stdlib: re:run() now avoids validating utf8 in the subject more
+    than once in the same call. This validation could previously be
+    performed multiple times when the global option was passed.
+  * stdlib: ETS ordered_set tables with write_concurrency enabled
+    has got a performance issue fixed. There were no limits for the
+    values of internal statistics counters before this fix. This
+    could result in that the data structure sometimes reacted
+    slowly to a change in how many parallel processes were using
+    it.
+  * stdlib: The ordsets:union/1 is now faster when passed a long
+    list of ordsets.
+  * stdlib: unicode:characters_to_binary() could return very small
+    binaries as reference counted off heap binaries. This could
+    cause an unnecessary large memory usage and an unnecessary load
+    on the binary allocator. Small binaries are now always returned
+    as heap binaries.
+  * stdlib: Display a more meaningful error message when a bad I/O
+    server is used in a script written in Erlang (escript).
+  * stdlib: New feature ets:info(_, binary) to get information
+    about all reference counted binaries kept by a table. This is
+    the same kind of debug information that process_info(_, binary)
+    returns for a process.
+  * stdlib: Corrected ETS documentation about the behavior of
+    compiled match specifications when serialized through external
+    format.
+  * tools: cover would fail to start if two processes tried to
+    start it at the exact same time.
+  * common_test: If a ct hook is installed in the suite/0 function
+    in a test suite, then the hook's terminate/1 function would be
+    called several times without it's init/2 function being called
+    first. This is now corrected.
+  * common_test: If init_per_testcase fails, the test itself is
+    skipped. According to the documentation, it should be possible
+    to change the result to failed in a hook function. The only
+    available hook function in this case is post_init_per_testcase,
+    but changing the return value there did not affect the test
+    case result. This is now corrected.
+  * common_test: Add ct_netconfc support for NETCONF 1.1 (RFC
+    6241). The 1.1 base capability can be sent in hello, and RFC
+    6242 chunk framing is applied when both client and server
+    advertise 1.1 support.
+  * common_test: Correct lib_dir paths in common_tests opaque data
+    structure that is passed to ct_release_test callback modules in
+    functions upgrade_init/2, upgrade_upgraded/2 and
+    upgrade_downgraded/2. The incorrect paths may cause confusion
+    when debugging although it will not cause any incorrect
+    behavior on the part of common_test as it is currently not
+    used.
+  * erts: If you set {linger,{true,0}} on a gen_tcp listen socket,
+    accept a connection on that socket, and then close the accepted
+    socket, now the linger zero setting is transferred to the
+    accepted socket. Before this correction that information was
+    lost and the close behaviour on the accepted socket incorrect.
+  * erts: Sending ancillary data implemented in OTP-15747
+    accidentally left behind test code that caused all UDP sends to
+    fail on Windows. This has now been fixed.
+  * erts: In the socket nif, used invalid flags when if-def'ing for
+    supported TCP flags: TCP_MAXSEG and TCP_NODELAY (the support
+    function).
+  * erts: Fixed memory leaks in experimental socket module.
+  * erts: re:run() now yields when validating utf8 in a large
+    subject.
+  * erts: Fixed bug in seq_trace:set_token(label,Term) which could
+    cause VM crash if Term was heap allocated (not an atom, small
+    integer, local pid or port). Bug exists since OTP 21.0 when
+    terms other than small integers were first allowed as labels.
+  * erts: Extra -mode flags given to erl are ignored with a
+    warning.
+  * erts: Don't loop indefinitely when --enable-pgo is given to
+    configure, but compiler does not support pgo.
+  * erts: Fix seq_trace:print/2 not to raise badarg exception if
+    label is not a small integer. Bug exists since OTP 21.0.
+  * erts: Fixed hipe_flush_icache_range for non-Linux OS on ARM.
+  * erts: The fix in OTP-15871 was too conservative and disabled
+    the offending load-time optimization in some cases where it was
+    safe.
+  * erts: Upgraded the ERTS internal PCRE library from version 8.42
+    to version 8.43. See http://pcre.org/original/changelog.txt for
+    information about changes made to PCRE. This library implements
+    major parts of the re regular expressions module.
+  * erts: Fix race condition when closing a socket while using
+    {active,N} on Windows.
+  * erts: Allow more than one -config command line option to erl on
+    Windows to conform with other OS.
+  * erts: Fix so that ERL_FLAGS environment variable does not
+    interfere with command line arguments. Before this fix you
+    could write: ERL_FLAGS="10" erl +S and erlang would start as if
+    +S had been given the argument 10.
+  * erts: The bug with ID ERL-717 has been fixed. The functions
+    io:columns() and io:rows() only worked correctly inside
+    interactive erlang shells before this fix. These functions
+    returned {error,enotsup} before this fix even if stdout and
+    stdin were connected to a terminal when they were invoked from
+    an escript or a program started with e.g., erl -noshell.
+  * erts: Do not use named label in ethread.c inline assemble. This
+    allows erts to be compiled using gcc 9.1.0 with LTO enabled.
+  * erts: erlang:fun_to_list/1 will now escape the module and
+    function name when necessary.
+  * erts: process_info(P,binary) would neglect to look through heap
+    fragments, potentially missing a few binaries associated with
+    the process.
+  * erts: HiPE is now automatically disabled on systems with non-
+    glibc implementation (for instance musl). This is because musl
+    does not provide the API's for guaranteeing that signals are
+    delivered on the correct native stack.
+  * erts: Fixed bug triggered if a process is killed during call to
+    persistent_term:put or persistent_term:erase.
+  * erts: Add units to all memory slogans in the crash dump
+    documentation.
+  * erts: Fix a bug in binary_to_term that would crash the emulator
+    if a term larger than 16GB was to be decoded.
+  * erts: Fixed bug related to an exiting process sending EXIT and
+    DOWN signals to remote linked/monitored processes. Bugs exists
+    since OTP 22.0.
+  * erts: erlc can now automatically use a compile server to avoid
+    starting an Erlang system for each file to be compiled in a
+    multi-file project. See the documentation for how to enable it.
+  * erts: The possibility to send ancillary data, in particular the
+    TOS field, has been added to gen_udp:send/4,5.
+  * erts: The net module has been split into 'net' (kernel) and
+    prim_net (preloaded).
+  * erts: Socket counters now works as expected and can also be
+    extracted with the (new) info function.
+  * erts: re:run() now avoids validating utf8 in the subject more
+    than once in the same call. This validation could previously be
+    performed multiple times when the global option was passed.
+  * erts: The un-documented function erlang:dist_get_stat/1 now
+    returns the real value of what the distribution queue contains
+    instead of a boolean.
+  * erts: ETS ordered_set tables with write_concurrency enabled has
+    got a performance issue fixed. There were no limits for the
+    values of internal statistics counters before this fix. This
+    could result in that the data structure sometimes reacted
+    slowly to a change in how many parallel processes were using
+    it.
+  * erts: Optimize the reception of large distribution messages.
+  * erts: Binary matching and functions like split_binary/2 will
+    now create heap binaries when the results are small enough,
+    reducing the chances of small sub-binaries keeping large
+    binaries alive.
+  * erts: Fixed rare emulator crash in instrument:allocations/0-1.
+  * erts: Ports could pass very small binaries as reference counted
+    off heap binaries to processes. This could cause an unnecessary
+    large memory usage and an unnecessary load on the binary
+    allocator. Small binaries are now always passed as heap
+    binaries to processes.
+  * erts: unicode:characters_to_binary() could return very small
+    binaries as reference counted off heap binaries. This could
+    cause an unnecessary large memory usage and an unnecessary load
+    on the binary allocator. Small binaries are now always returned
+    as heap binaries.
+  * erts: Improved erl_nif documentation regarding on_load and
+    Erlang stub/fallback functions.
+  * erts: New feature ets:info(_, binary) to get information about
+    all reference counted binaries kept by a table. This is the
+    same kind of debug information that process_info(_, binary)
+    returns for a process.
+  * erl_docgen: Update the documentation build support to handle
+    FOP 2.1 .
+  * ftp: A possibly infinite loop when receiving messages divided
+    in parts is removed.
+  * dialyzer: Allow native compilation when using Dialyzer from
+    Erlang. The options native (defaults to false) and native_cache
+    have been added.
+  * eunit: Handle get_until request with explicit encoding in the
+    implementation of the I/O protocol.
+  * snmp: Fix various minor issues related to Dialyzer. Mostly
+    these are dialyzer warnings, but there was also some minor bugs
+    detected by Dialyzer.
+  * snmp: Fixed a dets usage problem detected by dialyzer.
+  * snmp: The function snmp:print_version_info() prints various
+    version info. For each module a number of items are printed,
+    such as app vsn and md5 digest. And an attempt was also made to
+    print "compile time". This used to be available in the
+    module_info for each module, but has now been removed.
+  * snmp: The use of the deprecated random module has been replaced
+    the with rand module.
+  * snmp: Removed use of the deprecated function
+    erlang:get_stacktrace(). Instead make use of the 'catch
+    Class:Error:Stacktrace' feature.
+  * syntax_tools: Add missing calls to erl_syntax:unwrap/1. The
+    nodes concerned represent names and values of maps and map
+    types.
+  * wx: Fix a driver bug that could crashes when allocating memory.
+  * erl_interface: Fix bugs in ei_print_term for binaries and bit
+    strings causing incorrect output.
+  * erl_interface: Fixed bug in ei_decode_fun for very old fun
+    encoding format. Bug exist since OTP 22.0.
+  * erl_interface: ei_print_term() now supports printing of maps
+    and funs.
+  * xmerl: xmerl_sax_parser crashed during charset detection when
+    the xml declarations attribute values was missing the closing
+    quotation (' or ").
+  * ssl: Handling of zero size fragments in TLS could cause an
+    infinite loop. This has now been corrected.
+  * ssl: DTLS record check needs to consider that a resent hello
+    message can have a different version than the negotiated.
+  * ssl: Basic support for TLS 1.3 Client for experimental use. For
+    more information see the Standards Compliance chapter of the
+    User's Guide.
+  * ssl: Correct solution for retaining tcp flow control OTP-15802
+    (ERL-934) as to not break ssl:recv as reported in (ERL-938)
+  * ssl: Enhance dialyzer specs to reflect implementation better
+    and avoid dialyzer warnings for the user that wants to use TLS
+    with unix domain sockets.
+  * ssl: Add support for ECDSA signature algorithms in TLS 1.3.
+  * ssl: Correct error handling of TLS downgrade, possible return
+    values form ssl:close/2 when downgrading is {ok, Port} or
+    {error, Reason}, it could happen that only ok was returned
+    instead of {error, closed} when downgrade failed due to that
+    the peer closed the TCP connection.
+  * os_mon: Fix disk_sup to ignore squashfs on Linux when
+    determining if a mounted filesystem is full or not.
+  * os_mon: Fix bug where cpu_sup:util() always returned 100% on
+    systems not using gnu libc, for example Alpine OS.
+  * ssh: Fixed wrong type definition for the daemon option
+    subsystems.
+  * ssh: Fixed a possible SSH logging crash if there was a problem
+    in an early stage of session setup.
+  * ssh: The documentation for the modules ssh_connection, ssh_sftp
+    and ssh_sftpd are now generated from the -spec:s.
+  * ssh: Internal cleanup including removal of the internal file
+    ssh_userauth.hrl.
+  * ssh: Removed unused definitions in ssh.hrl.
+  * ssh: Removed unused fields in the internal #connection{}
+    record.
+  * ssh: To get information of a connection_ref() from for example
+    ssh:connect/3, there was previously one function available
+    namely ssh:connection_info/2. This ticket adds
+    ssh:connection_info/1 which returns all information. For
+    daemons (servers) started with for example ssh:daemon/2 the
+    function ssh:daemon_info/1 returning all information was
+    available. This ticket adds ssh:daemon_info/2 which returns
+    only the information specified in the second argument. The info
+    of connections and of daemons now also includes the item
+    'options'. Only those options that does not have their default
+    values are returned. For a connection also the items
+    'algorithms' and 'channels' are added.
+  * inets: httpd - Accept singel LF as line terminator
+  * inets: mod_esi will now always propagate the actual HTTP status
+    code that it answered with, to later mod-modules, and not in
+    some cases hardcode 200.
+  * compiler: Code such as the following would crash the compiler
+    in OTP 22: [some_atom = fun some_function/1]
+  * compiler: Compilation could get really slow (in the order of
+    minutes instead of seconds) when compiling huge functions.
+    (Thanks to Kostis Sagonas for reporting this bug.)
+  * compiler: Fixed a bug in the validator that could reject valid
+    code.
+  * compiler: In rare circumstances, when two clauses had identical
+    bodies and guard tests that tested a single boolean variable,
+    the guard test for the second clause could be discarded,
+    executing the second clause unconditionally if the first clause
+    was not executed.
+  * compiler: Fixed extremely slow compilation for huge functions
+    doing predominantly pattern matching.
+  * compiler: The compiler could generate unsafe code (that would
+    crash the runtime system) for map pattern matching. The code
+    could be unsafe if the matched key was not present in the map
+    at runtime.
+  * compiler: Correct code using try/after could fail to compile
+    when using the option 'no_type_opt'.
+  * compiler: The compiler could crash when compiling code that
+    called 'length/1' on a binary extracted using the binary
+    syntax.
+  * compiler: Fixed a bug where the compiler could fail with an
+    internal consistency failure error when compiling receive
+    statements.
+  * compiler: Fixed a problem where the compiler would crash when
+    compiling binary matching in a function head.
+  * public_key: Support Password based encryption with AES
+  * public_key: Change dialyzer spec to avoid confusion
+  * runtime_tools: Fix dbg:stop_clear/0 to also clear trace events
+    (send and 'receive').
+  * megaco: Fix various minor issues related to Dialyzer. Mostly
+    these are dialyzer warnings, but there was also some minor bugs
+    detected by Dialyzer.
+  * crypto: The implementation of crypto_one_time/4 is adjusted to
+    match the type specification. The spec and the black-box
+    behaviour of the function are unchanged. Some details: Both the
+    spec and the implementation were correct seen separately. But
+    with both of them combined simultaneously with
+    crypto_one_time/5 which was called by the implementation of
+    crypto_one_time/4, an (obvious) error was detected by a
+    Dialyzer with more thorough checking than usual.
+  * crypto: When using crypto with FIPS mode enabled, the digests
+    were not correctly handled.
+  * crypto: A memory leak in error handling code in
+    ng_crypto_init_nif is fixed.
+  * crypto: Fixed the broken static build of the crypto nifs
+  * crypto: The Message Authentication Codes (MAC) CMAC, HMAC and
+    Poly1305 are unified into common functions in the New Crypto
+    API. See the manual for CRYPTO.
+  * sasl: The net module has been split into 'net' (kernel) and
+    prim_net (preloaded).
+  * jinterface: Replaced deprecated <tt> with <code> in
+    documentation.
+
+-------------------------------------------------------------------
+Sun Sep 22 08:16:38 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Rebased patches:
+  + 0001-erts-Do-not-use-named-no_cpuid-label-in-asm.patch dropped (merged upstream)
+
+-------------------------------------------------------------------
 Tue Aug 27 10:51:47 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Udate -ffat-lto-objects in order to properly build static libraries

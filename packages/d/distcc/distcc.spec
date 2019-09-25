@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           distcc
-Version:        3.3
+Version:        3.3.3
 Release:        0
 Summary:        A distributed C/C++ compiler
 License:        GPL-2.0-or-later
@@ -142,12 +142,6 @@ rm -rf %{buildroot}%{_docdir}/%{name}/{INSTALL,COPYING}
 %postun server
 %service_del_postun distccd.service
 
-%post gui
-%desktop_database_post
-
-%postun gui
-%desktop_database_postun
-
 %files
 %license COPYING
 %doc AUTHORS doc/* NEWS README.pump TODO README survey.txt
@@ -179,8 +173,8 @@ rm -rf %{buildroot}%{_docdir}/%{name}/{INSTALL,COPYING}
 %{_bindir}/distccd
 %{_unitdir}/distccd.service
 %{_sbindir}/rcdistccd
-%{_sysconfdir}/default/distcc
-%{_sysconfdir}/distcc/*allow*
+%config(noreplace) %{_sysconfdir}/default/distcc
+%config(noreplace) %{_sysconfdir}/distcc/*allow*
 %{_mandir}/man1/distccd*
 %{_mandir}/man1/include_server*
 %{_fillupdir}/*

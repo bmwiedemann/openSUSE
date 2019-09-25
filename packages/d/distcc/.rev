@@ -57,4 +57,15 @@
     <comment></comment>
     <requestid>718086</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f0fc4e2d7a05f00272cfe33dc3788e5f</srcmd5>
+    <version>3.3.3</version>
+    <time>1569391938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3 bsc#1151594:
+  * small fixes, such as fixing the build on some non-Linux systems
+  * Fixes a regression where ssh mode did not work in most circumstances. Bug #291
+- Rebase patch distcc-3.2_rc1-freedesktop.patch</comment>
+    <requestid>732630</requestid>
+  </revision>
 </revisionlist>

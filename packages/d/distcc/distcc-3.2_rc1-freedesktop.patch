@@ -1,6 +1,8 @@
---- a/Makefile.in	2011-10-26 11:07:15.000000000 +0900
-+++ b/Makefile.in	2011-10-27 16:57:46.815272689 +0900
-@@ -50,13 +50,14 @@
+Index: distcc-3.3.3/Makefile.in
+===================================================================
+--- distcc-3.3.3.orig/Makefile.in
++++ distcc-3.3.3/Makefile.in
+@@ -52,13 +52,14 @@ mandir = @mandir@
  includedir = @includedir@
  oldincludedir = /usr/include
  docdir = @docdir@
@@ -12,12 +14,12 @@
  
  # These must be done from here, not from autoconf, because they can 
  # contain variable expansions written in Make syntax.  Ew.
--DIR_DEFS = -DSYSCONFDIR="\"${sysconfdir}\"" -DPKGDATADIR="\"${pkgdatadir}\""
-+DIR_DEFS = -DSYSCONFDIR="\"${sysconfdir}\"" -DICONDIR="\"${icondir}\""
+-DIR_DEFS = -DLIBDIR="\"${libdir}\"" -DSYSCONFDIR="\"${sysconfdir}\"" -DPKGDATADIR="\"${pkgdatadir}\""
++DIR_DEFS = -DLIBDIR="\"${libdir}\"" -DSYSCONFDIR="\"${sysconfdir}\"" -DICONDIR="\"${icondir}\""
  
  # arguments to pkgconfig
  GNOME_PACKAGES = @GNOME_PACKAGES@
-@@ -1108,10 +1110,10 @@
+@@ -1126,10 +1127,10 @@ install-example: $(example_DOCS)
  	done
  
  install-gnome-data: $(gnome_data)
@@ -32,8 +34,10 @@
  
  install-conf: $(conf_files) $(default_files)
  	$(mkinstalldirs) "$(DESTDIR)$(sysconfdir)/distcc"
---- a/gnome/distccmon-gnome.desktop	2011-04-06 03:58:58.000000000 +0900
-+++ b/gnome/distccmon-gnome.desktop	2011-10-27 17:01:50.792242592 +0900
+Index: distcc-3.3.3/gnome/distccmon-gnome.desktop
+===================================================================
+--- distcc-3.3.3.orig/gnome/distccmon-gnome.desktop
++++ distcc-3.3.3/gnome/distccmon-gnome.desktop
 @@ -1,6 +1,4 @@
  [Desktop Entry]
 -Version=0.9.4
@@ -41,7 +45,7 @@
  Exec=distccmon-gnome
  Name=distcc monitor
  Name[sv]=distcc övervakare
-@@ -8,9 +6,9 @@
+@@ -8,9 +6,9 @@ GenericName=Distributed Compile Monitor
  GenericName[sv]=Distribuerad kompilerings-övervakare
  Comment=Graphical view of distributed compile tasks
  Comment[sv]=Grafisk vy av distribuerade kompileringsuppgifter
@@ -53,9 +57,11 @@
 -Categories=GNOME;Application;Development;
 +Categories=GNOME;Development;
  StartupNotify=true
---- a/src/mon-gnome.c	2008-12-03 06:50:25.000000000 +0900
-+++ b/src/mon-gnome.c	2011-10-27 16:54:50.220566026 +0900
-@@ -599,7 +599,7 @@
+Index: distcc-3.3.3/src/mon-gnome.c
+===================================================================
+--- distcc-3.3.3.orig/src/mon-gnome.c
++++ distcc-3.3.3/src/mon-gnome.c
+@@ -599,7 +599,7 @@ static GtkWidget * dcc_gnome_make_mainwi
  
  #if GTK_CHECK_VERSION(2,2,0)
    gtk_window_set_icon_from_file (GTK_WINDOW (mainwin),

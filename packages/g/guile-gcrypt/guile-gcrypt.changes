@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 16 08:03:47 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.com>
+
+- Update to version 0.2.0:
+  * (gcrypt hash) now exposes all the algorithms supported by Libgcrypt
+  * (guix mac) now exposes all the MAC algorithms, not just HMAC
+  * (guix hmac) is deprecated in favor of (guix mac)
+  * Guile-Gcrypt can now be compiled with Guile 2.9 (future 3.0)
+  * Guile-Gcrypt can now be cross-compiled 
+
+-------------------------------------------------------------------
 Mon Jul 22 11:43:42 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - require guile >= 2.0.10 because it implements (ice-9 hash-table) 

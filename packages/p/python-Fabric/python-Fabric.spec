@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Fabric
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        A Pythonic tool for remote execution and deployment
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ URL:            http://fabfile.org
 Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 1.1}
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module invoke >= 1.1}
+BuildRequires:  %{python_module invoke >= 1.3}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module paramiko >= 2.4}
 BuildRequires:  %{python_module pytest >= 3.2.5}
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 1.1
 Requires:       python-decorator
-Requires:       python-invoke >= 1.1
+Requires:       python-invoke >= 1.3
 Requires:       python-paramiko >= 2.4
 Requires:       python-setuptools
 Requires:       python-six
