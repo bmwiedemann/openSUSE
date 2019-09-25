@@ -598,4 +598,11 @@
     <user>maxlin_factory</user>
     <comment>update changelog</comment>
   </revision>
+  <revision rev="70" vrev="70">
+    <srcmd5>af2dff58ee532cd5064b860560cb50e1</srcmd5>
+    <version>unknown</version>
+    <time>1569403590</time>
+    <user>dimstar_suse</user>
+    <comment>No more gimp-help on the live (7 largest package)</comment>
+  </revision>
 </revisionlist>

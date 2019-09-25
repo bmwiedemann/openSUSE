@@ -65,6 +65,8 @@
     <ignore name="desktop-translations"/>
     <package name="aaa_base" replaces="ft2demos"/>
     <ignore name="ft2demos"/>
+    <package name="aaa_base" replaces="gimp-help"/>
+    <ignore name="gimp-help"/>
     <package name="aaa_base" replaces="libreoffice-base"/>
     <ignore name="libreoffice-base"/>
     <package name="aaa_base" replaces="libreoffice-mailmerge"/>
