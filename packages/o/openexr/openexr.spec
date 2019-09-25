@@ -171,7 +171,7 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-%if %__isa_bits == 64
+%ifarch x86_64
 make %{?_smp_mflags} check
 %endif
 

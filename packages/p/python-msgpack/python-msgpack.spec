@@ -16,20 +16,19 @@
 #
 
 
-%bcond_without test
-
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msgpack
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://msgpack.org/
+URL:            https://github.com/msgpack/msgpack-python
 Source:         https://files.pythonhosted.org/packages/source/m/msgpack/msgpack-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,11 +40,6 @@ Obsoletes:      python-msgpack-python < 0.5.0
 Provides:       %{oldpython}-msgpack-python = %{version}
 Obsoletes:      %{oldpython}-msgpack-python < 0.5.0
 %endif
-%if %{with test}
-# Test requirements:
-BuildRequires:  %{python_module pytest}
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %python_subpackages
 
 %description
@@ -65,15 +59,10 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-py.test-%{$python_bin_suffix}
-}
-%endif
+%pytest_arch
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license COPYING
 %{python_sitearch}/msgpack

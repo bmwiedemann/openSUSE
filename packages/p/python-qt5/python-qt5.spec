@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qt5
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
@@ -33,7 +33,7 @@ Patch2:         update-timeline.patch
 # PATCH-FIX-UPSTREAM - add-qkeysequenceedit-to-uic.patch
 Patch3:         add-qkeysequenceedit-to-uic.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module sip-devel >= 4.19.14}
+BuildRequires:  %{python_module sip-devel >= 4.19.19}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dbus-1-python-devel
 BuildRequires:  dbus-1-python3-devel

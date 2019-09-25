@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:28:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.19.19
+  * Correction to the docs.
+  * Added sipIsOwnedByPython(), sipRegisterExitNotifier() and
+    sipVisitWrappers() to the public API.
+  * Deprecated the -B option to sip.
+
+-------------------------------------------------------------------
 Fri Jul 12 10:06:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.19.18

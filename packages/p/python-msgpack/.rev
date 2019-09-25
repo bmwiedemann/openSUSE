@@ -58,4 +58,15 @@
  * unpacker: msgpack.FormatError is raised when input data is not valid msgpack format.</comment>
     <requestid>682645</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac9e55ddcda15dc6cc7edec81e46fe7a</srcmd5>
+    <version>0.6.2</version>
+    <time>1569390172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2:
+  * Support Python 3.8.
+  * Update Cython to 0.29.13 for support Python 3.8.
+  * Some small optimizations.</comment>
+    <requestid>732174</requestid>
+  </revision>
 </revisionlist>

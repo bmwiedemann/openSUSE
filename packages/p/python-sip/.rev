@@ -883,4 +883,12 @@ I need to make a separate request for the py2 version.
     <comment>Update to 4.19.18</comment>
     <requestid>714845</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>33e5902b9976aa0e2d2fa82ad4c03e9d</srcmd5>
+    <version>4.19.19</version>
+    <time>1569390545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732208</requestid>
+  </revision>
 </revisionlist>

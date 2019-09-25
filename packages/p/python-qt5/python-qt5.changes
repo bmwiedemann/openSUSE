@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:32:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.13.1. Check the ChangeLog file for the list of changes
+
+-------------------------------------------------------------------
 Fri Sep 13 09:28:36 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add %dir plugindir/designer for %{python_files devel} in spec
@@ -15,7 +20,8 @@ Fri Jul 12 09:58:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.13.0
   * Code updated to support Qt 5.13
-  * Fixed the conversion of the result of QNetworkCacheMetaData.attributes()
+  * Fixed the conversion of the result of
+ QNetworkCacheMetaData.attributes()
 - Drop reproducible.patch, merged upstream.
 
 -------------------------------------------------------------------
