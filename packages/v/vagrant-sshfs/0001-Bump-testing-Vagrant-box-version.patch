@@ -1,0 +1,25 @@
+From a8cd1953c53a4edcda2023083392752a5efa187d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Tue, 17 Sep 2019 23:15:11 +0200
+Subject: [PATCH] Bump testing Vagrant box version
+
+---
+ test/misc/Vagrantfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/misc/Vagrantfile b/test/misc/Vagrantfile
+index 5723b68..1ce31fb 100644
+--- a/test/misc/Vagrantfile
++++ b/test/misc/Vagrantfile
+@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
+     config.vm.synced_folder "/tmp/reverse_mount_etc/", "/etc", type: "sshfs", reverse: true
+ 
+     host = 'vagrant-sshfs-tests'
+-    box  = 'fedora/25-cloud-base'
++    box  = 'fedora/30-cloud-base'
+ 
+     config.vm.define host do | tmp |
+         tmp.vm.hostname = host
+-- 
+2.23.0
+

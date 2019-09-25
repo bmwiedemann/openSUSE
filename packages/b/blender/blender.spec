@@ -2,6 +2,7 @@
 # spec file for package blender
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 LISA GMbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +17,17 @@
 #
 
 
-%bcond_without system_audaspace
+%bcond_without alembic
 %bcond_without collada
-%bcond_with opensubdiv
-%bcond_with openvdb
-%bcond_with alembic
+%ifarch x86_64
+%bcond_without embree
+%else
 %bcond_with embree
+%endif
+%bcond_without opensubdiv
+%bcond_without openvdb
 %bcond_without osl
+%bcond_without system_audaspace
 %bcond_with wplayer
 
 # Set this to 1 for fixing bugs.
@@ -49,7 +54,9 @@ Source3:        geeko.README
 Source4:        blender-sample
 Source8:        %{name}.appdata.xml
 #!BuildIgnore:  libGLwM1
+BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
+BuildRequires:  OpenImageIO-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  binutils-gold
 BuildRequires:  cmake
@@ -76,51 +83,35 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_wave-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  llvm-devel
-%if %{with openvdb}
-BuildRequires:  openvdb-devel
-BuildRequires:  cmake(TBB)
-BuildRequires:  pkgconfig(blosc)
-%endif
-%if %{with alembic}
-BuildRequires:  alembic-devel
-%endif
-%if %{with embree}
-BuildRequires:  embree-devel-static
-%endif
 BuildRequires:  libpng-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
+BuildRequires:  llvm-devel
 BuildRequires:  lzo-devel
 BuildRequires:  memory-constraints
 BuildRequires:  openal-soft-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libopenjp2)
-%if 0%{?debugbuild} == 1
-BuildRequires:  pkgconfig(valgrind)
-%endif
-%if 0%{?is_opensuse} == 1
-BuildRequires:  pkgconfig(jemalloc)
-%endif
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-requests
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
+BuildRequires:  cmake(pugixml)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glw)
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python3) >= 3.7
@@ -131,22 +122,37 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
+# conditional requirements
+%if 0%{?debugbuild} == 1
+BuildRequires:  pkgconfig(valgrind)
+%endif
+%if 0%{?is_opensuse} == 1
+BuildRequires:  pkgconfig(jemalloc)
+%endif
+%if %{with alembic}
+BuildRequires:  alembic-devel
+%endif
 %if %{with collada}
 BuildRequires:  openCOLLADA-devel
+%endif
+%if %{with embree}
+BuildRequires:  embree-devel-static
+%endif
+%if %{with opensubdiv}
+BuildRequires:  OpenSubdiv-devel
+%endif
+%if %{with openvdb}
+BuildRequires:  openvdb-devel
+BuildRequires:  cmake(TBB)
+BuildRequires:  pkgconfig(blosc)
+%endif
+%if %{with osl}
+BuildRequires:  OpenShadingLanguage-devel
 %endif
 %if %{with system_audaspace}
 BuildRequires:  pkgconfig(audaspace) >= 1.3
 Requires:       audaspace-plugins
 %endif
-BuildRequires:  OpenColorIO-devel
-BuildRequires:  OpenImageIO-devel
-%if %{with osl}
-BuildRequires:  OpenShadingLanguage-devel
-%endif
-%if %{with opensubdiv}
-BuildRequires:  OpenSubdiv-devel
-%endif
-BuildRequires:  cmake(pugixml)
 %ifarch x86_64
 Requires:       %{name}-cycles-devel = %{version}
 %endif
@@ -204,7 +210,12 @@ rm -rf extern/libopenjpeg
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-%limit_build -m 600
+%limit_build -m 1500
+#The limit_build macro fails to give the same value to -flto= as it gives to -j
+#resulting in link time crashes
+echo $_threads
+%define _lto_cflags -flto=$_threads
+echo %{optflags}
 # sse options only on supported archs
 %ifarch %{ix86} x86_64
 sseflags='-msse -msse2'
@@ -332,7 +343,8 @@ cmake ../ \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
 
-make %{?_smp_mflags}
+#Build at all costs
+make %{?_smp_mflags} || make
 popd
 
 %install

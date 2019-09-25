@@ -307,4 +307,13 @@
   * Updated translations</comment>
     <requestid>709726</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>acbeed43f392913a60eb6828a1297840</srcmd5>
+    <version>0.2.2+20190613.e6c2668</version>
+    <time>1569392274</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug ref for SLE/Leap 15 submission
+  * Fix bug where sbin packages would print as bytes strings (boo#1135598)</comment>
+    <requestid>732682</requestid>
+  </revision>
 </revisionlist>

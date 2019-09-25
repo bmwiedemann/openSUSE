@@ -67,7 +67,7 @@ available on the network, what services (application name and
 version) those hosts are offering, what operating systems (and OS
 versions) they are running, what type of packet filters/firewalls are
 in use, and dozens of other characteristics. It scans large networks,
-nad works fine against single hosts.
+and works fine against single hosts.
 
 %package -n zenmap
 Summary:        A graphical front-end for Nmap

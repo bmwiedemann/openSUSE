@@ -1,0 +1,5 @@
+<package name="vagrant-sshfs" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:vagrant" package="vagrant-sshfs"/>
+</package>

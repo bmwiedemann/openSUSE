@@ -1,0 +1,26 @@
+diff -up ./vagrant-sshfs-1.3.1.gemspec.orig ./vagrant-sshfs-1.3.1.gemspec
+--- ./vagrant-sshfs-1.3.1.gemspec.orig  2018-03-12 15:39:18.039461861 +0000
++++ ./vagrant-sshfs-1.3.1.gemspec       2018-03-12 15:39:37.750061569 +0000
+@@ -22,14 +22,12 @@
+     s.specification_version = 4
+ 
+     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+-      s.add_runtime_dependency(%q<win32-process>.freeze, [">= 0"])
+       s.add_development_dependency(%q<bundler>.freeze, [">= 0"])
+       s.add_development_dependency(%q<rake>.freeze, [">= 0"])
+       s.add_development_dependency(%q<cucumber>.freeze, [">= 0"])
+       s.add_development_dependency(%q<aruba>.freeze, [">= 0"])
+       s.add_development_dependency(%q<komenda>.freeze, [">= 0"])
+     else
+-      s.add_dependency(%q<win32-process>.freeze, [">= 0"])
+       s.add_dependency(%q<bundler>.freeze, [">= 0"])
+       s.add_dependency(%q<rake>.freeze, [">= 0"])
+       s.add_dependency(%q<cucumber>.freeze, [">= 0"])
+@@ -37,7 +35,6 @@
+       s.add_dependency(%q<komenda>.freeze, [">= 0"])
+     end
+   else
+-    s.add_dependency(%q<win32-process>.freeze, [">= 0"])
+     s.add_dependency(%q<bundler>.freeze, [">= 0"])
+     s.add_dependency(%q<rake>.freeze, [">= 0"])
+     s.add_dependency(%q<cucumber>.freeze, [">= 0"])

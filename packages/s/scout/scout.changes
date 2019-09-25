@@ -3,7 +3,7 @@ Thu Jun 13 11:38:57 UTC 2019 - bwiedemann@suse.com
 
 - Update to version 0.2.2+20190613.e6c2668:
   * Bump version to 0.2.2
-  * Fix bug where sbin packages would print as bytes strings
+  * Fix bug where sbin packages would print as bytes strings (boo#1135598)
   * Newly generated po files (new line numbers).
   * The make_trans script did not work, because strings were not marked because of eval
   * Fix bash i18n support. The translations are expanded during definition of the function, when LANG is not yet set. Use eval to postpone it.

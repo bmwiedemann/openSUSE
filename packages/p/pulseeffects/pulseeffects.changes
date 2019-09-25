@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 23 12:02:15 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 4.6.8 (see CHANGELOG.md) 
+  * It is now possible to set different buffer and latency values 
+    for the pulsesrc 
+    and the pulsesink plugins. 
+    This means that there is more room to reduce the overall latency. 
+    Pulsesrc is at the start of the effects pipeline and 
+    pulsesink at its end.
+
+-------------------------------------------------------------------
 Sun Aug 18 11:44:39 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 4.6.6 (see CHANGELOG.md)

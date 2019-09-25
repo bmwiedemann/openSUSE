@@ -28,7 +28,7 @@ Thu May  5 10:08:43 UTC 2016 - coolo@suse.com
   0.103012  2016-04-23 14:57:59+01:00 Europe/London
           - consider license names without parentheses when scanning text for
             license (thanks, charsbar!)
-          - when scanning text for license, put known substrings inside ..
+          - when scanning text for license, put known substrings inside \b..\b
             (thanks, charsbar!)
 
 -------------------------------------------------------------------
