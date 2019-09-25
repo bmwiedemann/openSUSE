@@ -45,10 +45,14 @@ Group:          Development/Libraries/Other
 Requires:       lib%{name}1 = %{version}
 
 %description
-SampleICC provides an open source platform independent C++ library for reading, writing, manipulating, and applying ICC profiles along with applications that make use of this library.
+SampleICC is a C++ library for reading, writing, manipulating, and
+applying ICC profiles along with applications that make use of this
+library.
 
 %description -n lib%{name}1
-SampleICC provides an open source platform independent C++ library for reading, writing, manipulating, and applying ICC profiles along with applications that make use of this library.
+SampleICC is a C++ library for reading, writing, manipulating, and
+applying ICC profiles along with applications that make use of this
+library.
 
 %description -n lib%{name}-devel
 Header files, libraries and documentation for development of Color Management

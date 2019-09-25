@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        3.13
+Version:        3.17
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -86,12 +86,23 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
-# Move dist/src (which is LXD's variant of vendoring) to vendor/.
-mv -v dist/src vendor
+
+# If there is a vendor/ move it to _dist/src/.
+if [ -d vendor ]
+then
+	cp -at _dist/src vendor/*
+	rm -rf vendor/
+fi
+# Move _dist/src (which is LXD's variant of vendoring) to vendor/.
+mv -v _dist/src vendor
 
 %build
 # Make sure any leftover go build caches are gone.
 go clean -cache
+
+# Keep track of the current set of paths needed to generate the include-related
+# variables for later stages.
+declare -a CURRENT_DEPLIST
 
 # Set up GOPATH.
 export GOPATH="$PWD/.gopath"
@@ -99,39 +110,68 @@ export PKGDIR="$GOPATH/src/%{import_path}"
 mkdir -p "$PKGDIR"
 cp -a * "$PKGDIR"
 
-# First we need to build the sqlite fork and dqlite. We build them as static
-# libs because they are only ever going to be used for LXD, and so it makes no
-# sense to go through the pain of packaging them properly (hopefully the code
-# will one day be merged into upstream sqlite).
+# First we need to build the sqlite fork and dqlite. We need to build them
+# dynamically (to avoid binary bloat), but we also then need to mess with
+# patchelf to stop us from breaking openSUSE packaging.
 export CFLAGS="%{optflags} -fPIC -DPIC"
 
+# We have a temporary-install directory which contains our pkg-configs.
+export PKG_CONFIG_SYSROOT_DIR="$PKGDIR/.install"
+export PKG_CONFIG_PATH="$PKG_CONFIG_SYSROOT_DIR/%{_libdir}/%{name}/pkgconfig:$PKG_CONFIG_SYSROOT_DIR/%{_datadir}/pkgconfig"
+
 # SQLite
-pushd "$PKGDIR/dist/sqlite"
+pushd "$PKGDIR/_dist/deps/sqlite"
 autoreconf -fiv
 %configure \
 	--libdir="%{_libdir}/%{name}" \
 	--disable-static \
 	--enable-replication \
-	--disable-tcl \
+	--disable-tcl
 make clean
 make %{?_smp_mflags}
+make DESTDIR="$PKGDIR/.install" install
+# Add sqlite to dependency list.
+CURRENT_DEPLIST+=("$PWD")
+popd
+
+# libco
+pushd "$PKGDIR/_dist/deps/libco"
+make \
+	CFLAGS="$CFLAGS" \
+	PREFIX="" \
+	INCLUDEDIR="%{_includedir}" \
+	LIBDIR="%{_libdir}/%{name}" \
+	DESTDIR="$PKGDIR/.install" \
+	all install
+# Add libco to dependency list.
+CURRENT_DEPLIST+=("$PWD")
+popd
+
+# raft
+pushd "$PKGDIR/_dist/deps/raft"
+autoreconf -fiv
+%configure \
+	--libdir="%{_libdir}/%{name}" \
+	--disable-static
+make %{?_smp_mflags}
+make DESTDIR="$PKGDIR/.install" install
+# Add raft to dependency list.
+CURRENT_DEPLIST+=("$PWD")
 popd
 
 # dqlite
-pushd "$PKGDIR/dist/dqlite"
+pushd "$PKGDIR/_dist/deps/dqlite"
 (
-# We need to make sure *our* sqlite build is used.
-export PKG_CONFIG_PATH="$PWD/../sqlite/"
-export CPPFLAGS="-I$PWD/../sqlite/"
-export LDFLAGS="-L$PWD/../sqlite/.libs/"
-
 autoreconf -fiv
 %configure \
 	--libdir="%{_libdir}/%{name}" \
 	--disable-static
 make clean
 make %{?_smp_mflags}
+make DESTDIR="$PKGDIR/.install" install
 )
+# Add raft to dependency list.
+CURRENT_DEPLIST+=("$PWD")
 popd
 
 # Find all of the main packages using go-list.
@@ -149,17 +189,16 @@ do
 		# We need to link against sqlite and dqlite only when dealing with lxd proper.
 		[ "$binary" == "lxd" ] && export \
 			BUILDTAGS="libsqlite3" \
-			CGO_CFLAGS="%{optflags} -I$PKGDIR/dist/sqlite/ -I$PKGDIR/dist/dqlite/include/" \
-			CGO_LDFLAGS="-L$PKGDIR/dist/sqlite/.libs/ -L$PKGDIR/dist/dqlite/.libs/" \
-			PKG_CONFIG_PATH="$PKGDIR/dist/sqlite:$PKGDIR/dist/dqlite" ||:
+			CGO_CFLAGS="-I $PKGDIR/.install/%{_includedir}" \
+			CGO_LDFLAGS="-L $PKGDIR/.install/%{_libdir}/%{name}" ||:
 		go build -buildmode=pie -tags "$BUILDTAGS" -o "bin/$binary" "$mainpkg"
 	)
 done
 
 # This part is quite ugly, so I apologise upfront.
 #
-# We want to have our dist/* libraries be dylibs so that we don't bloat our lxd
-# binary. Unfortunately, we are presented with a few challenges:
+# We want to have our _dist/deps/* libraries be dylibs so that we don't bloat
+# our lxd binary. Unfortunately, we are presented with a few challenges:
 #
 #  * Doing this naively (put it in {_libdir}) results in sqlite3 package
 #    conflicts -- and we aren't going to maintain sqlite3 for all of openSUSE
@@ -173,29 +212,57 @@ done
 #
 # So, the only reasonable choice left is to use absolute paths as DT_NEEDED
 # entries -- which bypasses the need for RUNPATH and allows us to set garbage
-# sonames for our dist/* libraries. Absolute paths for DT_NEEDED is *slightly*
-# undefined behaviour, but glibc has had this behaviour for a very long time --
-# and others have considered using it in a similar manner[1].
+# sonames for our _dist/deps/* libraries. Absolute paths for DT_NEEDED is
+# *slightly* undefined behaviour, but glibc has had this behaviour for a very
+# long time -- and others have considered using it in a similar manner[1].
 #
 # What F U N.
 #
 # [1]: https://github.com/NixOS/nixpkgs/issues/24844
 
-# Give our libraries unrecognisable DT_SONAME entries.
-patchelf --set-soname '._LXD_INTERNAL-libsqlite3.so.0' "$PKGDIR/dist/sqlite/.libs/libsqlite3.so.0"
-patchelf --set-soname '._LXD_INTERNAL-libdqlite.so.0' "$PKGDIR/dist/dqlite/.libs/libdqlite.so.0"
+(
+	# A simple check that lxd isn't broken. We can't do this after patchelf
+	# because we'd need to chroot(2) into {buildroot} which isn't permitted due
+	# to user namespaces being blocked inside rpmbuild. boo#1138769
+	export LD_LIBRARY_PATH="$PKGDIR/.install/%{_libdir}/%{name}"
+	./bin/lxd help >/dev/null
+)
 
-# Switch to absolute DT_NEEDED for the lxd binary.
-patchelf --remove-rpath bin/lxd
-patchelf --replace-needed {,%{_libdir}/%{name}/}'libsqlite3.so.0' bin/lxd
-patchelf --replace-needed {,%{_libdir}/%{name}/}'libdqlite.so.0'  bin/lxd
-# Just to be sure, fix libdqlite.so as well.
-patchelf --remove-rpath "$PKGDIR/dist/dqlite/.libs/libdqlite.so"
-patchelf --replace-needed {,%{_libdir}/%{name}/}'libsqlite3.so.0' "$PKGDIR/dist/dqlite/.libs/libdqlite.so"
+for lib in $PKGDIR/.install/%{_libdir}/%{name}/lib*.so
+do
+	# Strip off last two version digits.
+	name="$(basename "$(readlink "$lib")" | sed -E 's/\.[0-9]+\.[0-9]+$//')"
+	# Give our libraries unrecognisable DT_SONAME entries.
+	patchelf --set-soname "._LXD_INTERNAL-$name" "$lib"
+done
+
+# Switch to absolute DT_NEEDED for all dylibs we have as well as the main LXD
+# binary. We do this for all dylibs to make sure we don't end up with weird
+# chain-loading problems.
+for target in bin/lxd $PKGDIR/.install/%{_libdir}/%{name}/lib*.so
+do
+	# Drop RPATH in case it got included during builds.
+	patchelf --remove-rpath "$target"
+	# And now replace all the possible DT_NEEDEDs to absolute paths.
+	for lib in $PKGDIR/.install/%{_libdir}/%{name}/lib*.so
+	do
+		# Strip off last two version digits.
+		name="$(basename "$(readlink "$lib")" | sed -E 's/\.[0-9]+\.[0-9]+$//')"
+		patchelf --replace-needed {,%{_libdir}/%{name}/}"$name" "$target"
+	done
+done
 
 # Generate man pages.
 mkdir man
 ./bin/lxc manpage man/
+
+pushd bin/
+for bin in *
+do
+	# Ensure that all our binaries are dynamic. boo#1138769
+	file "$bin" | grep 'dynamically linked'
+done
+popd
 
 %install
 export GOPATH="$PWD/.gopath"
@@ -204,8 +271,7 @@ export PKGDIR="$GOPATH/src/%{import_path}"
 install -d -m 0755 %{buildroot}%{_libdir}/%{name}
 pushd "$PKGDIR"
 # We can't use install because *.so.$n are symlinks.
-cp -avt %{buildroot}%{_libdir}/%{name}/ dist/sqlite/.libs/libsqlite3.so.*
-cp -avt %{buildroot}%{_libdir}/%{name}/ dist/dqlite/.libs/libdqlite.so.*
+cp -avt %{buildroot}%{_libdir}/%{name}/ $PKGDIR/.install/%{_libdir}/%{name}/lib*.so.*
 popd
 
 # Install all the binaries.

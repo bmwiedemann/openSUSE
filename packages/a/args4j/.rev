@@ -54,4 +54,12 @@
     <comment>Make actually work with maven</comment>
     <requestid>732189</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dac7509f1b3f8b5d48f69d6d272531c4</srcmd5>
+    <version>2.33</version>
+    <time>1569394192</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 2.33</comment>
+    <requestid>733004</requestid>
+  </revision>
 </revisionlist>

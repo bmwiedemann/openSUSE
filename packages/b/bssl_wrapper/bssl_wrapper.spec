@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,7 +30,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bazel
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
-ExclusiveArch:  aarch64 x86_64
+ExclusiveArch:  aarch64 x86_64 ppc64le
 
 %description
 bssl_wrapper is a library which translates BoringSSL calls to OpenSSL calls.
@@ -90,4 +90,3 @@ ln -sf libbssl_wrapper_lib.so.%{sover} %{buildroot}%{_libdir}/libbssl_wrapper_li
 %{_libdir}/lib%{name}_lib.so
 
 %changelog
-
