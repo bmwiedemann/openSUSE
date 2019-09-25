@@ -17,30 +17,20 @@
 
 
 Name:           libgda
-Version:        5.2.8
+Version:        5.2.9
 Release:        0
 # FIXME: add bdb sql BuildRequires when available
 Summary:        GNU Data Access (GDA) Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Databases/Clients
-URL:            http://www.gnome-db.org/
-Source:         http://download.gnome.org/sources/libgda/5.2/%{name}-%{version}.tar.xz
+URL:            https://www.gnome-db.org/
+Source:         https://download.gnome.org/sources/libgda/5.2/%{name}-%{version}.tar.xz
+
 # PATCH-FIX-UPSTREAM libgda-javadetection-biarch.patch bgo#673560 -- Prepare getsp to be sed'ed for biarch
 Patch1:         libgda-javadetection-biarch.patch
-# PATCH-FIX-UPSTREAM libgda-jre18.patch zaitor@opensuse.org -- Fix build with JRE 1.8. Patch from fedora.
-Patch2:         libgda-jre18.patch
-# PATCH-FIX-OPENSUSE libgda-jre9.patch dimstar@opensuse.org -- Fix build with JRE 9 (not sent upstream, as it's way too hackish)
-Patch3:         libgda-jre9.patch
-# PATCH-FIX-OPENSUSE libgda-jre10.patch fstrba@suse.com -- Fix build with JRE 10 (not sent upstream, as it's way too hackish)
-Patch4:         libgda-jre10.patch
-# PATCH-FIX-OPENSUSE libgda-5.2.4-nojavah.patch fstrba@suse.com -- Fix build with JRE 10 (not sent upstream, as it's way too hackish)
-Patch5:         libgda-5.2.4-nojavah.patch
-# PATCH-FIx-UPSTREAM libgda-no-libgee.patch dimstar@opensuse.org -- Drop obsolete libgee dependency, taken from git
-Patch6:         libgda-no-libgee.patch
 # PATCH-FIX-UPSTREAM libgda-no-pg_config.patch dimstar@opensuse.org -- Don't use pg_config to find postgresql. Patch not directly applicable as-is upstream, but fixed in master
 Patch7:         libgda-no-pg_config.patch
-# PATCH-FIx-UPSTREAM libgda-enable-gdaui-gi.patch dimstar@opensuse.org -- Fix --enable-gdaui-gi configure parameter, taken from git
-Patch8:         libgda-enable-gdaui-gi.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -375,15 +365,7 @@ everything needed to access data.
 %lang_package -n %{name}-5_0-4
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -414,7 +396,7 @@ sed -i "s:--ARCH--:$getspARCH:g" getsp.java
 # Find the current version of vapigen
 VAPIGEN=$(realpath %{_bindir}/vapigen)
 VAPIGENVER=${VAPIGEN: -4}
-# Due to patch0 and patch1, getsp.java needs to be rebuilt
+# Due to patch1, getsp.java needs to be rebuilt
 javac getsp.java
 %configure --with-pic\
     --disable-static \
@@ -425,7 +407,7 @@ javac getsp.java
     --enable-gda-gi \
     --enable-gdaui-gi \
     --enable-vala VALA_API_VERSION=${VAPIGENVER}
-make %{?_smp_mflags}
+%make_build
 
 %install
 # remove error about java bytecode being for something later than java 1.15 -- see http://en.opensuse.org/Java/Packaging/Cookbook

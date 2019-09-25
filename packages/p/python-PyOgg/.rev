@@ -34,4 +34,13 @@
   * no upstream changelog</comment>
     <requestid>691780</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>255e1e49cc5318706cbcdd06f75b045b</srcmd5>
+    <version>0.6.11a1</version>
+    <time>1569393677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.11a1:
+  * no upstream changelog</comment>
+    <requestid>732895</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 23 19:36:57 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.06
+  * stress-mcontend: ensure mmap'd file is sync'd with zero
+    data
+  * stress-rmap: don't make fallocate failures a rmap test
+    failure
+  * stress-shm: fork and exit a child to exercise shm dup and
+    removal
+  * stress-ng: fix jobfile with classes
+  * stress-procfs: don't randomly read pci proc info on ARM64
+  * stress-procfs: remove bad buffer test, it's not portable
+  * stress-sysfs: remove bad address reads, these fault on ARM64
+  * stress-inode-flags: move open/close to controlling process
+
+-------------------------------------------------------------------
 Wed Sep 18 19:47:08 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.05

@@ -55,4 +55,12 @@
     <comment>- Update to version 47.1.0.</comment>
     <requestid>700867</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39f8911197e1d95d3932ad694c19ab9f</srcmd5>
+    <version>48.0.0</version>
+    <time>1569393890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.0.0.</comment>
+    <requestid>732918</requestid>
+  </revision>
 </revisionlist>

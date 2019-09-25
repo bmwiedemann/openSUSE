@@ -20,16 +20,15 @@
 %define         oldpython python
 %define ltmsver 0.13
 Name:           python-PyWebDAV3
-Version:        0.9.12
+Version:        0.9.14
 Release:        0
 Summary:        WebDAV library including a standalone server for python2 and python3
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/andrewleech/PyWebDAV3
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWebDAV3/PyWebDAV3-%{version}.tar.gz
-# Only used in %check for testing purposes
+# Only used in %%check for testing purposes
 Source1:        http://www.webdav.org/neon/litmus/litmus-%{ltmsver}.tar.gz
-Patch0:         python2.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -55,7 +54,6 @@ This package does not provide client functionality.
 
 %prep
 %setup -q -n PyWebDAV3-%{version}
-%patch0 -p1
 cp %{SOURCE1} test/
 
 %build
@@ -75,8 +73,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 %python_clone -a %{buildroot}%{_bindir}/davserver
 
 %check
-%python_expand py.test-%{$python_bin_suffix} -v
-rm test/litmus-%{ltmsver}.tar.gz
+%pytest
 
 %post
 %python_install_alternative davserver

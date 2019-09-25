@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyOgg
-Version:        0.6.9a1
+Version:        0.6.11a1
 Release:        0
 Summary:        Python bindings for Xiphorg's Ogg Vorbis, Opus and FLAC
 License:        BSD-3-Clause

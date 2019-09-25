@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyScreeze
-Version:        0.1.21
+Version:        0.1.22
 Release:        0
 Summary:        A screenshot Python module
 License:        BSD-3-Clause

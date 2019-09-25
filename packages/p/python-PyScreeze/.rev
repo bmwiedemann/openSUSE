@@ -56,4 +56,13 @@
   * Fix memory leak at pixel().</comment>
     <requestid>710520</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f743dc9218b9e4a8f10df78915fc6874</srcmd5>
+    <version>0.1.22</version>
+    <time>1569393719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.22:
+  * Added -z to scrot to silence the beep.</comment>
+    <requestid>732896</requestid>
+  </revision>
 </revisionlist>

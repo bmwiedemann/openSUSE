@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:09:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.23.0:
+  * Make header reading compliant with RFC7230, section 3.2.2
+
+-------------------------------------------------------------------
 Mon Sep  9 15:00:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.22.0:

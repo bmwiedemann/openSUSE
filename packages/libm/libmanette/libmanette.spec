@@ -20,13 +20,13 @@
 %define package_version 0_2-0
 
 Name:           libmanette
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        A simple GObject game controller library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gitlab.gnome.org/aplazas/libmanette/
-Source:         http://download.gnome.org/sources/libmanette/0.2/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/libmanette/0.2/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  gobject-introspection-devel >= 0.6.7

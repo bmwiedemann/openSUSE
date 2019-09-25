@@ -52,4 +52,14 @@
     <comment></comment>
     <requestid>710551</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c7e2f84fd67f51b4e11d08d468eeee6</srcmd5>
+    <version>4.0.1</version>
+    <time>1569393551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  * various small fixes
+  * support for home assistant cast</comment>
+    <requestid>732890</requestid>
+  </revision>
 </revisionlist>
