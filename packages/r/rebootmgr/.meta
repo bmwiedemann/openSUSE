@@ -1,5 +1,5 @@
 <package name="rebootmgr" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:CaaSP" package="rebootmgr"/>
+  <devel project="devel:kubic" package="rebootmgr"/>
 </package>
