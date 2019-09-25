@@ -1949,7 +1949,7 @@
       <repopackage name="libgpod-lang"/>
       <repopackage name="libgpod-tools"/>
       <repopackage name="libgpod4"/>
-      <repopackage name="libgps24"/>
+      <repopackage name="libgps25"/>
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libgraphite2-3"/>
       <repopackage name="libgraphite2-3-32bit" arch="x86_64"/>
@@ -2514,8 +2514,6 @@
       <repopackage name="libopenraw1"/>
       <repopackage name="libopenssl-1_1-devel"/>
       <repopackage name="libopenssl-devel"/>
-      <repopackage name="libopenssl1_0_0" arch="x86_64"/>
-      <repopackage name="libopenssl1_0_0-hmac" arch="x86_64"/>
       <repopackage name="libopenssl1_1"/>
       <repopackage name="libopenssl1_1-32bit" arch="x86_64"/>
       <repopackage name="libopts25"/>
@@ -5692,6 +5690,7 @@
       <repopackage name="xorg-x11-server-extra"/>
       <repopackage name="xorg-x11-server-sdk"/>
       <repopackage name="xorg-x11-server-wayland"/>
+      <repopackage name="xorg-x11-server-Xvfb"/>
       <repopackage name="xorg-x11-Xvnc"/>
       <repopackage name="xorg-x11-Xvnc-module"/>
       <repopackage name="xorgproto-devel"/>

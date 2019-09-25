@@ -1021,8 +1021,6 @@ unsorted:
   - bird-common 
   - bird-doc 
   - bird6 
-  - birdie 
-  - birdie-lang 
   - bison-32bit: [x86_64] 
   - bitcoin-qt5 
   - bitcoin-test 
@@ -4240,8 +4238,6 @@ unsorted:
   - gnome-epub-thumbnailer 
   - gnome-firmware 
   - gnome-firmware-lang 
-  - gnome-firmware-updater 
-  - gnome-firmware-updater-lang 
   - gnome-font-viewer 
   - gnome-font-viewer-lang 
   - gnome-games 
@@ -6927,7 +6923,7 @@ unsorted:
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
   - libQMatrixClient0_5_1 
-  - libQgpsmm24 
+  - libQgpsmm25 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
   - libQt53DAnimation5-32bit: [x86_64] 
@@ -8847,7 +8843,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_91 
+  - libgsoap-2_8_92 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -10118,9 +10114,9 @@ unsorted:
   - libopenssl-1_0_0-devel 
   - libopenssl-1_0_0-devel-32bit: [x86_64] 
   - libopenssl-1_1-devel-32bit: [x86_64] 
-  - libopenssl1_0_0: [i586] 
+  - libopenssl1_0_0 
   - libopenssl1_0_0-32bit: [x86_64] 
-  - libopenssl1_0_0-hmac: [i586] # suggested by dvd:suggested:patterns-devel-base-devel_kernel 
+  - libopenssl1_0_0-hmac 
   - libopenssl1_0_0-hmac-32bit: [x86_64] 
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
@@ -12012,8 +12008,6 @@ unsorted:
   - libxmmsclient++4 
   - libxmp-devel 
   - libxmp4 
-  - libxnoise-devel 
-  - libxnoise0 
   - libxosd2 
   - libxplayer-plparser-mini18 
   - libxplayer-plparser-mini18-32bit: [x86_64] 
@@ -17097,7 +17091,6 @@ unsorted:
   - python-opensync 
   - python-optcomplete 
   - python-os-testr-doc 
-  - python-os-win-doc 
   - python-osc-lib-doc 
   - python-oslo-middleware-doc 
   - python-oslo.cache-doc 
@@ -18527,7 +18520,6 @@ unsorted:
   - python2-os-client-config 
   - python2-os-service-types 
   - python2-os-testr 
-  - python2-os-win 
   - python2-osc-lib 
   - python2-oscrypto 
   - python2-oslo.cache 
@@ -20917,7 +20909,6 @@ unsorted:
   - python3-os-client-config 
   - python3-os-service-types 
   - python3-os-testr 
-  - python3-os-win 
   - python3-osc-lib 
   - python3-oscrypto 
   - python3-osdlyrics 
@@ -32836,8 +32827,6 @@ unsorted:
   - xmvn-parent 
   - xmvn-resolve 
   - xmvn-subst 
-  - xnoise 
-  - xnoise-lang 
   - xom 
   - xonotic 
   - xonotic-data 
@@ -33104,18 +33093,6 @@ unsorted:
   - z 
   - z3 
   - z3-devel 
-  - zabbix-agent 
-  - zabbix-bash-completion 
-  - zabbix-java-gateway 
-  - zabbix-phpfrontend 
-  - zabbix-proxy 
-  - zabbix-proxy-mysql 
-  - zabbix-proxy-postgresql 
-  - zabbix-proxy-sqlite 
-  - zabbix-server 
-  - zabbix-server-mysql 
-  - zabbix-server-postgresql 
-  - zabbix-server-sqlite 
   - zam-plugins 
   - zanshin 
   - zanshin-lang 
