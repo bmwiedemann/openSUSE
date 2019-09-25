@@ -18,7 +18,7 @@
 
 %define so_version 26
 Name:           qpdf
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -75,7 +75,7 @@ package.
 %setup -q
 
 %build
-export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden -fsigned-char"
+export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure --disable-static --disable-test-compare-images \
            --docdir='${datarootdir}'/doc/packages/%{name} \
            --enable-show-failed-test-output

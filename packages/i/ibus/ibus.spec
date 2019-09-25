@@ -60,6 +60,9 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
+
+Patch13:        ibus-CVE-2019-14822-GDBusServer-peer-authorization.patch
+
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dconf-devel >= 0.7.5
 BuildRequires:  fdupes
@@ -189,6 +192,8 @@ cp -r %{SOURCE11} .
 %patch11 -p1
 %patch12 -p1
 %endif
+
+%patch13 -p1
 
 %build
 autoreconf -fi

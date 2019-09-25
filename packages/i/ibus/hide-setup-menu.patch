@@ -1,6 +1,6 @@
-diff -Nura ibus-1.5.8_old/setup/ibus-setup.desktop.in ibus-1.5.8_new/setup/ibus-setup.desktop.in
---- ibus-1.5.8_old/setup/ibus-setup.desktop.in	2014-07-24 12:24:25.000000000 +0800
-+++ ibus-1.5.8_new/setup/ibus-setup.desktop.in	2015-10-15 19:12:16.476328652 +0800
+diff -Nura ibus-1.5.21/setup/ibus-setup.desktop ibus-1.5.21_new/setup/ibus-setup.desktop
+--- ibus-1.5.21/setup/ibus-setup.desktop	2019-08-23 13:08:34.000000000 +0200
++++ ibus-1.5.21_new/setup/ibus-setup.desktop	2019-09-20 07:21:33.505022653 +0200
 @@ -4,6 +4,7 @@
  Exec=ibus-setup
  Icon=ibus-setup

@@ -1,7 +1,7 @@
 #
 # spec file for package libpwquality
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,20 +20,18 @@
 %define _secconfdir %{_sysconfdir}/security
 %define libname libpwquality1
 %bcond_without python2
+
 Name:           libpwquality
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Library for password quality checking and generating random passwords
-License:        BSD-3-Clause OR GPL-2.0+
+License:        BSD-3-Clause OR GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libpwquality/libpwquality
-Source:         https://github.com/%{name}/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Patch0:         libpwquality-pythons.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         %{url}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+
 BuildRequires:  cracklib-devel
 BuildRequires:  gettext-devel
-BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(python3)
@@ -50,7 +48,6 @@ of random passwords that pass the checks.
 Summary:        Library for password quality checking and generating random passwords
 Group:          System/Libraries
 Requires:       cracklib-dict >= 2.8
-Recommends:     %{name}-lang
 Recommends:     cracklib-dict-full >= 2.8
 # To make lang package installable
 Provides:       %{name}
@@ -116,18 +113,16 @@ of random passwords that pass the checks.
 This package provides Python 3 bindings for the libpwquality library.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-# needed for patch0
-autoreconf -fvi
 %configure \
-  --disable-static \
-  --with-securedir=%{_pammoduledir} \
-  --with-python-binary=%{_bindir}/python3 \
-  --with-pythonsitedir=%{python3_sitearch}
-make %{?_smp_mflags}
+	--disable-static \
+	--with-securedir=%{_pammoduledir} \
+	--with-python-binary=%{_bindir}/python3 \
+	--with-pythonsitedir=%{python3_sitearch} \
+	%{nil}
+%make_build
 %if %{with python2}
 pushd python
 %python_build
