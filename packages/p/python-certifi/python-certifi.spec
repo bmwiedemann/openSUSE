@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certifi
-Version:        2019.6.16
+Version:        2019.9.11
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
 Group:          Development/Languages/Python
-Url:            https://pypi.python.org/pypi/certifi
+URL:            https://github.com/certifi/python-certifi
 Source:         https://files.pythonhosted.org/packages/source/c/certifi/certifi-%{version}.tar.gz
 # PATCH-FIX-SUSE -- prefer SUSE certificates (only for use on SUSE platforms)
 Patch0:         python-certifi-shipped-requests-cabundle.patch
@@ -62,25 +62,8 @@ derived from Mozilla Firefox's canonical set.
  %endif
 }
 
-%if 0%{?rhel} || 0%{?fedora}
-%if 0%{?have_python2}
-%python_exec -m compileall %{buildroot}%{python2_sitelib}/certifi/
-%python_exec -O -m compileall %{buildroot}%{python2_sitelib}/certifi/
-%endif
-%if 0%{?have_python3}
-%python_exec -m compileall %{buildroot}%{python3_sitelib}/certifi/
-%python_exec -O -m compileall %{buildroot}%{python3_sitelib}/certifi/
-%endif
-%else
-%if 0%{?have_python2}
-%py_compile %{buildroot}%{python2_sitelib}/certifi/
-%py_compile -O %{buildroot}%{python2_sitelib}/certifi/
-%endif
-%if 0%{?have_python3}
-%py3_compile %{buildroot}%{python3_sitelib}/certifi/
-%py3_compile -O %{buildroot}%{python3_sitelib}/certifi/
-%endif
-%endif
+%python_expand $python -m compileall %{buildroot}%{$python_sitelib}/certifi/
+%python_expand $python -O -m compileall %{buildroot}%{$python_sitelib}/certifi/
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

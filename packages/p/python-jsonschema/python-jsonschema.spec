@@ -19,26 +19,38 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-jsonschema
-# Please, do not update to the current version, it breaks numerous other
-# packages, because of unstable API.
-Version:        2.6.0
+# v3 incompatibility with OpenStack raised upstream at
+# https://github.com/Julian/jsonschema/issues/604
+Version:        3.0.2
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/Julian/jsonschema
+URL:            https://github.com/Julian/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
+BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module attrs >= 17.4.0}
+BuildRequires:  %{python_module idna}
+BuildRequires:  %{python_module jsonpointer > 1.13}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pyrsistent >= 0.14.0}
+BuildRequires:  %{python_module rfc3987}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module vcversioner >= 2.16.0.0}
+BuildRequires:  %{python_module six >= 1.11.0}
+BuildRequires:  %{python_module strict-rfc3339}
+BuildRequires:  %{python_module webcolors}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-functools32
-%endif
+Requires:       python-attrs >= 17.4.0
+Requires:       python-pyrsistent >= 0.14.0
+Requires:       python-six >= 1.11.0
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-functools32
+%endif
 %ifpython2
 Requires:       python-functools32
 %endif
@@ -56,13 +68,16 @@ for Python (supporting 2.6+ including Python 3).
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+# Remove benchmark tests
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/jsonschema/benchmarks %{buildroot}%{$python_sitelib}/jsonschema/tests
+%fdupes -s %{buildroot}%{$python_sitelib}
+}
 
 # Prepare for update-alternatives usage
 %python_clone -a %{buildroot}%{_bindir}/jsonschema
 
 %check
-%python_exec -m unittest jsonschema.tests.test_jsonschema_test_suite
+%python_exec setup.py test --test-suite=jsonschema.tests
 
 %post
 %python_install_alternative jsonschema
