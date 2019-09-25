@@ -1,7 +1,7 @@
 #
 # spec file for package xsynth-dssi
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xsynth-dssi
 BuildRequires:  alsa-devel
-BuildRequires:  cairomm-devel
+BuildRequires:  cairo-devel
 BuildRequires:  dssi-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  libjack-devel
@@ -26,7 +26,7 @@ BuildRequires:  liblo-devel
 BuildRequires:  update-desktop-files
 Requires:       dssi
 Summary:        Xsynth an analog-style (VCAs-VCF-VCO) synth plugin
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 Version:        0.9.4
 Release:        0
@@ -66,8 +66,9 @@ make
 
 %files
 %defattr(-,root,root)
+%license COPYING
 %{_libdir}/dssi
-%doc COPYING README ChangeLog TODO
+%doc README ChangeLog TODO
 %{_datadir}/%{name}/
 
 %changelog

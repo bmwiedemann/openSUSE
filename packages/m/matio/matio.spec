@@ -1,7 +1,7 @@
 #
 # spec file for package matio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 %define libname lib%{name}
-%define major   4
+%define major   9
 Name:           matio
-Version:        1.5.12
+Version:        1.5.17
 Release:        0
 Summary:        Library for reading and writing MATLAB MAT files
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Other
 URL:            http://sourceforge.net/projects/matio
 Source0:        http://downloads.sourceforge.net/matio/%{name}-%{version}.7z
-# PATCH-FIX-OPENSUSE gh#tbeu/matio#93 0001-Write-backwards-compatible-Mat7.3-files.patch
-Patch0:         0001-Write-backwards-compatible-Mat7.3-files.patch
 # We need hdf5 1.10.2 to allow creation of files backwards compatible with hdf5 1.8
 BuildRequires:  hdf5-devel >= 1.10.2
 BuildRequires:  pkgconfig
@@ -45,8 +43,8 @@ access or do not want to rely on MATLAB's shared library.
 
 %package     -n %{libname}%{major}
 Summary:        Library for reading and writing MATLAB MAT files
-Group:          System/Libraries
 # Avoid unresolvable errors from multiple providers
+Group:          System/Libraries
 Requires:       libhdf5
 
 %description -n %{libname}%{major}
@@ -81,7 +79,6 @@ access or do not want to rely on MATLAB's shared library.
 
 %prep
 %setup -q
-%patch0 -p1
 chmod +x configure
 
 %build

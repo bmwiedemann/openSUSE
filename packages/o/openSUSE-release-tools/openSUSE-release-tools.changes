@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 23:48:00 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190923.83f1d51c:
+  * osclib/cache: utilize rmtree_nfs_safe().
+  * osclib/util: provide rmtree_nfs_safe().
+
+-------------------------------------------------------------------
 Fri Sep 20 11:05:25 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190920.155606e3:

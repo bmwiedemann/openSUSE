@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 23 20:35:24 UTC 2019 - dmulder@suse.com
+
+- Fix copy/paste typo in fix for bug 1151733; (bsc#1151738);
+- 1.4.8
+
+-------------------------------------------------------------------
+Mon Sep 23 19:23:09 UTC 2019 - dmulder@suse.com
+
+- Use the domain name stored in the samba Credentials object; (bsc#1151733);
+- 1.4.7
+
+-------------------------------------------------------------------
 Thu Sep 12 14:47:41 MDT 2019 - dmulder@suse.com
 
 - Remove ldap module use of MOD_DELETE and MOD_ADD; (bsc#1150616);

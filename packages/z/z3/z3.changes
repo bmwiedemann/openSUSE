@@ -399,7 +399,6 @@ Tue Oct 10 12:14:38 UTC 2017 - jslaby@suse.com
   * change typename to class in optional to deal with compilation
   * fix compilation of tests
   * fix #1217
-  * :q
   * add sequences to ML API #1214
   * improve error message in theory_str when an invalid term in str.to.re is encountered
   * ensure that timeouts are distinguished from other cancel events #848
