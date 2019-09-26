@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 24 18:28:52 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.1.2:
+  * Fix pelican.settings.load_source to avoid caching issues
+    PR #2621
+
+-------------------------------------------------------------------
 Sat Aug 24 20:22:20 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.1.1:
