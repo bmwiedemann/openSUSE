@@ -16,10 +16,19 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ara
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
@@ -29,6 +38,17 @@ Source:         https://files.pythonhosted.org/packages/source/a/ara/ara-%{versi
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
+%if %{with test}
+BuildRequires:  %{python_module Django >= 2.1.5}
+BuildRequires:  %{python_module ara >= %{version}}
+BuildRequires:  %{python_module django-cors-headers}
+BuildRequires:  %{python_module django-filter}
+BuildRequires:  %{python_module djangorestframework >= 3.9.1}
+BuildRequires:  %{python_module dynaconf}
+BuildRequires:  %{python_module factory_boy}
+BuildRequires:  %{python_module pyaml}
+BuildRequires:  %{python_module whitenoise}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pbr >= 2.0.0
@@ -55,13 +75,22 @@ tools and interfaces.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%check
+%if %{with test}
+ara-manage test ara
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python3_only %{_bindir}/ara-manage
 %{python_sitelib}/*
+%endif
 
 %changelog

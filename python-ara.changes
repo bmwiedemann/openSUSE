@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 24 07:42:45 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * Added support for dynamically serving multiple sqlite databases
+    dynamically from a single API server instance [1]
+  * ara_record no longer instanciates it's own API client and will
+    instead retrieve the client instance used by the callback.
+  * Django's CONN_MAX_AGE database setting for configuring the
+    duration of a database connection is now exposed [2]
+  * The ARA API client timeout as configured by Ansible through the
+    callback plugin is now always an integer.
+  * The offline API client now has an argument to prevent SQL
+    migrations from running automatically [3]
+- test package (multibuild)
+
+-------------------------------------------------------------------
 Wed Jul  3 14:57:08 UTC 2019 - Itxaka serrano <igarcia@suse.com>
 
 - Move some requirements into recommends.
