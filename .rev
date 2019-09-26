@@ -18,4 +18,13 @@
   keep testsuite working.</comment>
     <requestid>655923</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>859e46dde3596c5fea7d987e170d1037</srcmd5>
+    <version>1.0.1</version>
+    <time>1569523203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * no upstream changelog</comment>
+    <requestid>732884</requestid>
+  </revision>
 </revisionlist>

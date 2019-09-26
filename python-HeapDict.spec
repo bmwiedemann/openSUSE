@@ -1,7 +1,7 @@
 #
 # spec file for package python-HeapDict
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# required test package not available on SLE
-%if 0%{?is_opensuse}
-%bcond_without  test
-%else
-%bcond_with  test
-%endif
 Name:           python-HeapDict
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A heap with decrease-key and increase-key operations
 License:        BSD-3-Clause
@@ -34,13 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/H/HeapDict/HeapDi
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
-%if %{with test}
 # These packages contain module test from stdlib,
 # it has nothing to do with this package being noarch
 BuildRequires:  python2-devel
 BuildRequires:  python3-testsuite
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -63,10 +55,8 @@ important for many algorithms such as Dijkstra's Algorithm and A*.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %python_exec test_heap.py
-%endif
 
 %files %{python_files}
 %license LICENSE
