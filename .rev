@@ -413,4 +413,12 @@
     <comment>Upstream v14.2.4 release (forwarded request 731651 from smithfarm)</comment>
     <requestid>731652</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>211122a774d553228759c87fe9ebb04a</srcmd5>
+    <version>14.2.4.352+g2060e25d1c</version>
+    <time>1569523249</time>
+    <user>dimstar_suse</user>
+    <comment>changes file entries for 14.2.2, 14.2.3, 14.2.4 notable changes (forwarded request 733159 from smithfarm)</comment>
+    <requestid>733160</requestid>
+  </revision>
 </revisionlist>

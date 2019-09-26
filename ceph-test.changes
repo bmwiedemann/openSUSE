@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep 25 13:05:13 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Addendum:
+  + upstream Nautilus 14.2.4 brings the following notable changes:
+    * fixed a ceph-volume regression introduced by 14.2.3 (NOTE: SES customers
+      were never exposed to this regression) (bsc#1132767)
+
+-------------------------------------------------------------------
+Wed Sep 25 12:55:13 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Addendum:
+  + upstream Nautilus 14.2.3 brings the following notable changes:
+    * Fixed a denial of service vulnerability where an unauthenticated client
+      of Ceph Object Gateway could trigger a crash from an uncaught exception
+      (CVE-2019-10222/bsc#1145093)
+    * Fixed bsc#1151994 - Nautilus-based librbd clients can not open images on
+      Jewel clusters 
+    * The RGW num_rados_handles has been removed in Ceph 14.2.3 (bsc#1151995)
+    * "osd_deep_scrub_large_omap_object_key_threshold" has been lowered in
+      Nautilus 14.2.3 (bsc#1152002)
+    * The ceph dashboard now supports silencing Prometheus notifications (bsc#1141174)
+
+-------------------------------------------------------------------
+Wed Sep 25 12:43:54 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Addendum:
+  + upstream Nautilus 14.2.2 brought the following notable changes:
+    * The no{up,down,in,out} related commands have been revamped (bsc#1151990)
+    * radosgw-admin gets two new subcommands for managing expire-stale objects (bsc#1151991)
+    * Deploying a single new BlueStore OSD on a cluster upgraded to SES6 from
+      SES5 breaks pool utilization stats reported by ceph df (bsc#1151992)
+    * As of 14.2.2, Ceph cluster will issue a health warning if CRUSH tunables
+      are older than "hammer" (bsc#1151993)
+
+-------------------------------------------------------------------
 Tue Sep 17 09:56:09 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 14.2.4-352-g2060e25d1c:
