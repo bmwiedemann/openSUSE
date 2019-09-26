@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        16.0.4
+Version:        16.0.5
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -107,26 +107,29 @@ Requires:       php-openssl
 Requires:       php-pear
 Requires:       php-xmlreader
 Requires:       php-xmlwriter
+Requires:       php-zip
 Requires:       php-zlib
 Recommends:     sqlite3
 %endif
 # Database connectors:
 Recommends:     php-sqlite
 #Recommends:     php-pgsql
-# For preview generation: 
-Recommends:     php-imagick 
-Recommends:     php-ffmpeg
-#Recommends:     libreoffice
 # Require for specific apps:
-Recommends:     php-ldap
-Recommends:     php-ftp
-#Recommends:     php-smbclient
-#Recommends:     php-imap
+Requires:       php-ftp
+Requires:       php-ldap
+#Requires:       php-imap
+#Requires:       php-smbclient
 # Recommend for specific apps:
 Recommends:     php-exif
 Recommends:     php-gmp
 # For enhanced server performance:
 Recommends:     php-APCu
+# For preview generation: 
+Recommends:     php-imagick 
+Recommends:     php-ffmpeg
+#Recommends:     libreoffice
+# For command line processing:
+Recommends:     php-pcntl
 
 %description
 Nextcloud is a suite of client-server software for creating file

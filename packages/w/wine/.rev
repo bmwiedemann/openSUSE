@@ -3263,4 +3263,19 @@
 - updated staging to 4.15</comment>
     <requestid>727479</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>c6a997a37d37957a0f381c6b523afc14</srcmd5>
+    <version>4.16</version>
+    <time>1569523422</time>
+    <user>dimstar_suse</user>
+    <comment>- filter out LTO warnings about our data-only .a files.
+
+- updated to 4.16 development release
+  - More reliable mouse grabbing in games.
+  - Better cross-compilation support in WineGCC.
+  - Improved compatibility with Windows debuggers.
+  - Various bug fixes.
+- updated staging to 4.16</comment>
+    <requestid>733433</requestid>
+  </revision>
 </revisionlist>

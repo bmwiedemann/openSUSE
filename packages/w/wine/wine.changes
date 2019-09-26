@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 26 07:24:09 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- filter out LTO warnings about our data-only .a files.
+
+-------------------------------------------------------------------
+Sat Sep 14 07:04:58 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.16 development release
+  - More reliable mouse grabbing in games.
+  - Better cross-compilation support in WineGCC.
+  - Improved compatibility with Windows debuggers.
+  - Various bug fixes.
+- updated staging to 4.16
+
+-------------------------------------------------------------------
 Sat Aug 31 08:07:08 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.15 development release

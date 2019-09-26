@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        Dependency resolution for Python
 License:        MIT

@@ -665,4 +665,12 @@ expose the tor-related ports.</comment>
   [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html</comment>
     <requestid>725000</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fbd1eb0c90e97e2e2c32151709732ca1</srcmd5>
+    <version>0.4.1.6</version>
+    <time>1569523609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>733468</requestid>
+  </revision>
 </revisionlist>

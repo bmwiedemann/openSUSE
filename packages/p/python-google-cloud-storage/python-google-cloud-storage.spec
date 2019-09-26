@@ -18,28 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-storage
-Version:        1.15.1
+Version:        1.19.1
 Release:        0
 Summary:        Google Cloud Storage API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/GoogleCloudPlatform/google-cloud-python
+URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-storage/google-cloud-storage-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.6.1}
-BuildRequires:  %{python_module google-cloud-core >= 0.29.0}
-BuildRequires:  %{python_module google-cloud-kms >= 1.0.0}
-BuildRequires:  %{python_module google-resumable-media >= 0.3.1}
+BuildRequires:  %{python_module google-auth >= 1.2.0}
+BuildRequires:  %{python_module google-cloud-core >= 1.0.2}
+BuildRequires:  %{python_module google-resumable-media >= 0.4.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.6.1
-Requires:       python-google-cloud-core >= 0.29.0
-Recommends:     python-google-cloud-kms >= 1.0.0
-Requires:       python-google-resumable-media >= 0.3.1
+Requires:       python-google-auth >= 1.2.0
+Requires:       python-google-cloud-core >= 1.0.2
+Requires:       python-google-resumable-media >= 0.4.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -58,7 +55,6 @@ Python Client for Google Cloud Storage
 %check
 # Disable system tests which do not work without additional tokens
 rm tests/system.py
-#%%python_exec setup.py test
 %pytest -k "not test_extra_headers"
 
 %files %{python_files}

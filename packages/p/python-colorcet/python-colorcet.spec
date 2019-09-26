@@ -12,31 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colorcet
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Collection of perceptually uniform colormaps
 License:        CC-BY-4.0
 Group:          Development/Languages/Python
-Url:            http://github.com/bokeh/colorcet
+URL:            https://github.com/bokeh/colorcet
 Source:         https://files.pythonhosted.org/packages/source/c/colorcet/colorcet-%{version}.tar.gz
 BuildRequires:  %{python_module param >= 1.7.0}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 Requires:       python-param >= 1.7.0
 Requires:       python-pyct >= 0.4.4
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description

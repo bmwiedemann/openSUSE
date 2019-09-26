@@ -20,7 +20,7 @@
 %define _phonon4qt5_version 4.10.60
 %bcond_without lang
 Name:           phonon4qt5-backend-vlc
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Phonon VLC Backend
 License:        LGPL-2.1-or-later

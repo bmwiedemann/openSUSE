@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:52:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.7:
+  * Lazy dependencies overwriting (#232, #229).
+  * Removed Snyk support (#245).
+  * Added custom User-Agent to all requests (#242, #243, #231)
+  * Updated documentation interface (#241).
+
+-------------------------------------------------------------------
 Thu Aug 22 09:31:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.6:

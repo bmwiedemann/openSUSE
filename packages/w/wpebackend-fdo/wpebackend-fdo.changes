@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Sep 19 09:48:01 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.0:
+  + New macros in the API to check the version at compilation
+    time.
+  + New API for exported images which allows querying their
+    dimension their backing EGLImageKHR.
+  + Support DMA-BUF resource exports through a new callback in the
+    API.
+  + Added support for detaching and attaching new targets to a view
+    backend.
+  + Improved management and cleanup of Wayland resources.
+  + Improved handling of Wayland events.
+  + Build system improvements.
+
+-------------------------------------------------------------------
+Tue Sep 17 02:03:51 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.3.91: 
+  + Support DMA-BUF resource exports through a new callback in the
+    API.
+  + Improve management and cleanup of Wayland resources.
+  + Make the build more reliable using CMake imported library
+    targets.
+  + Enable compiler warnings.
+- Drop wpebackend-fdo-fix-include-dirs.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 25 00:05:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial package for openSUSE, version 1.3.1.

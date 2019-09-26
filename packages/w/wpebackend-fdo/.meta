@@ -1,0 +1,8 @@
+<package name="wpebackend-fdo" project="openSUSE:Factory">
+  <title>A WPE backend designed for Linux desktop systems</title>
+  <description>A WPE backend designed for Linux desktop systems.
+
+</description>
+  <devel project="GNOME:Factory" package="wpebackend-fdo"/>
+  <url>https://github.com/Igalia/WPEBackend-fdo</url>
+</package>

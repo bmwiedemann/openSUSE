@@ -18,33 +18,33 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-numba
-Version:        0.43.1
+Version:        0.45.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://numba.github.com
+URL:            https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 Patch0:         skip-failing-tests.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module llvmlite >= 0.24}
+BuildRequires:  %{python_module llvmlite >= 0.29}
 BuildRequires:  %{python_module numpy-devel >= 1.10}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.16}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-funcsigs
-BuildRequires:  python2-singledispatch
-Requires:       python-llvmlite >= 0.24
+BuildRequires:  python-singledispatch
+Requires:       python-llvmlite >= 0.29
 Requires:       python-numpy >= 1.10
 Requires:       python-scipy >= 0.16
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 %ifpython2
-Requires:       python2-funcsigs
-Requires:       python2-singledispatch
+Requires:       python-funcsigs
+Requires:       python-singledispatch
 %endif
 %python_subpackages
 
@@ -94,7 +94,7 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' numba/appdirs.py
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python setup.py build_ext --inplace
 %{buildroot}%{_bindir}/numba-%{$python_bin_suffix} -s
-$python ./runtests.py -v -m
+$python -m numba.runtests -v -b --exclude-tags='long_running' -m %{_smp_build_ncpus} -- numba.tests
 }
 
 %post

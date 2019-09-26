@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:59:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.1:
+  * Revert "Always use raw response data. (#87)" (#103)
+
+-------------------------------------------------------------------
 Thu Sep 12 10:14:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.0:

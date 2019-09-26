@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:42:06 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update package version to 1.9.0~alpha2:
+  agent 1.9.0~alpha2:
+    *mount: ensure local directory storage types have the correct permissions
+    *device: fix the issue of failed waiting on device appeared in /dev
+    *network: While updating routes, do not delete routes with proto "kernel"
+    *agent: add support for loading kernel modules
+    *revert: agent: sandbox_pause should get arguments from proc
+    *agent: sandbox_pause should get arguments from proc
+    *s390x: add virtio-blk-ccw support
+    *agent: make NoPivotRoot config depend on / fs type
+    *make: install depends on $(TARGET)
+    *device: Allow uevent handler to be stopped
+    *mount: Improve error message
+    *memory: Add extra check for memory file
+
+-------------------------------------------------------------------
 Tue Sep  3 17:05:15 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Add support for non x86_64 archs, by using the default kernel flavor instead

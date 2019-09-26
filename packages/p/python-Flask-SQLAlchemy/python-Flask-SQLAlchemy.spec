@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-SQLAlchemy
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mitsuhiko/flask-sqlalchemy
+URL:            https://github.com/mitsuhiko/flask-sqlalchemy
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-SQLAlchemy/Flask-SQLAlchemy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

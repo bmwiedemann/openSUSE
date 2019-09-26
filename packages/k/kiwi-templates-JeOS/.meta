@@ -1,0 +1,5 @@
+<package name="kiwi-templates-JeOS" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed JeOS Images</title>
+  <description>This provides &quot;Just enough Operating System&quot; images based on Tumbleweed for several platforms.</description>
+  <devel project="Virtualization:Appliances:Images:openSUSE-Tumbleweed" package="kiwi-templates-JeOS"/>
+</package>

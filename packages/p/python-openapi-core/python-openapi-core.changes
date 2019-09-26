@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 14:02:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.0:
+  * OAS validation with JSONSchema (#157)
+
+-------------------------------------------------------------------
 Wed Sep 11 08:40:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.11.1:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 26 12:47:05 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.1.5 bsc#1099674:
+  * Use https in URL in spec-cleaner.spec test
+  * Remove duplicated backslash in regexp
+  * Parallelize test run
+  * Add jupyter_move_config to excludes from bracketing
+  * Do not fail if URL is ftp:// or other protocol
+  * Make xdist enabled by default on all test runs and add xdist to deps
+  * By default remove groups from packages
+- remove spec-cleaner-1.1.4_test_https.patch that is no longer needed
+
+-------------------------------------------------------------------
 Wed Jul 17 08:17:52 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.1.4 bsc#1099674:

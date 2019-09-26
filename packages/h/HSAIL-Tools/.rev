@@ -35,4 +35,12 @@
     <comment></comment>
     <requestid>714408</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>24b770e6cdb640615000853ae0218e6f</srcmd5>
+    <version>0+git20180830.6514deb</version>
+    <time>1569523349</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package modernisation</comment>
+    <requestid>733366</requestid>
+  </revision>
 </revisionlist>

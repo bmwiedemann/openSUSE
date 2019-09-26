@@ -1,5 +1,7 @@
---- a/numba/tests/test_runtests.py
-+++ b/numba/tests/test_runtests.py
+Index: numba-0.45.1/numba/tests/test_runtests.py
+===================================================================
+--- numba-0.45.1.orig/numba/tests/test_runtests.py
++++ numba-0.45.1/numba/tests/test_runtests.py
 @@ -76,8 +76,7 @@ class TestCase(unittest.TestCase):
      def test_subpackage(self):
          self.check_testsuite_size(['numba.tests.npyufunc'], 50)
@@ -10,3 +12,28 @@
      def test_random(self):
          self.check_testsuite_size(
              ['--random', '0.1', 'numba.tests.npyufunc'], 5)
+Index: numba-0.45.1/numba/tests/test_jitclasses.py
+===================================================================
+--- numba-0.45.1.orig/numba/tests/test_jitclasses.py
++++ numba-0.45.1/numba/tests/test_jitclasses.py
+@@ -869,6 +869,7 @@ class TestJitClass(TestCase, MemoryLeakM
+         self.assertEqual(t[2:2:1], 2)
+         self.assertEqual(t[6:6:1], 3)
+ 
++    @unittest.skip("This will fail with system llvm and LTO")
+     def test_jitclass_longlabel_not_truncated(self):
+         # See issue #3872, llvm 7 introduced a max label length of 1024 chars
+         # Numba ships patched llvm 7.1 (ppc64le) and patched llvm 8 to undo this
+Index: numba-0.45.1/numba/tests/test_parfors.py
+===================================================================
+--- numba-0.45.1.orig/numba/tests/test_parfors.py
++++ numba-0.45.1/numba/tests/test_parfors.py
+@@ -520,7 +520,7 @@ class TestParfors(TestParforsBase):
+         self.check(test_impl)
+         self.assertTrue(countParfors(test_impl, ()) == 1)
+ 
+-    @skip_unsupported
++    @unittest.skip("This will fail with system llvm and LTO")
+     @tag('important')
+     def test_pi(self):
+         def test_impl(n):

@@ -44,14 +44,14 @@
 %endif
 
 Name:           katacontainers-image-initrd
-Version:        1.9.0~alpha0
+Version:        1.9.0~alpha2
 Release:        0
 Summary:        Kata Containers image (initrd) and kernel
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/kata-containers/osbuilder
-Source0:        osbuilder-%{version}.tar.gz
-Source1:        agent-%{version}.tar.gz
+Source0:        osbuilder-%{version}.tar.xz
+Source1:        agent-%{version}.tar.xz
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 BuildRequires:  dracut
 BuildRequires:  fdupes

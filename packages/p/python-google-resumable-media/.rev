@@ -40,4 +40,13 @@
   * Always use raw response data. (#87)</comment>
     <requestid>730356</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>834394fae7d4bb081aff3676c85be97e</srcmd5>
+    <version>0.4.1</version>
+    <time>1569523599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Revert &quot;Always use raw response data. (#87)&quot; (#103)</comment>
+    <requestid>733460</requestid>
+  </revision>
 </revisionlist>

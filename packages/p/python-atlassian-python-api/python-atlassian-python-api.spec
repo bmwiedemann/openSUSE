@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atlassian-python-api
-Version:        1.13.29
+Version:        1.13.31
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/atlassian-api/atlassian-python-api
 Source:         https://files.pythonhosted.org/packages/source/a/atlassian-python-api/atlassian-python-api-%{version}.tar.gz
+BuildRequires:  %{python_module kerberos}
 BuildRequires:  %{python_module oauthlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib}
@@ -33,6 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-kerberos
 Requires:       python-oauthlib
 Requires:       python-requests
 Requires:       python-requests-oauthlib

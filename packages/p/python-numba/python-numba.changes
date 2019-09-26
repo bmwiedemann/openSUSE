@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 26 08:06:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.45.1:
+  * Many fixes and changes for llvm/cuda updates
+    See CHANGE_LOG file for details
+- Update skip-failing-tests.patch to skip one more failing test
+
+-------------------------------------------------------------------
 Thu Apr 11 21:52:30 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.43.1, which is a bugfix release.

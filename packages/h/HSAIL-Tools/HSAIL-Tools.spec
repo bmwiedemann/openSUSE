@@ -1,7 +1,7 @@
 #
 # spec file for package HSAIL-Tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Parse and (dis)assemble HSA Intermediate Language
 License:        NCSA
 Group:          Development/Tools/Building
-Url:            https://github.com/HSAFoundation/HSAIL-Tools
+URL:            https://github.com/HSAFoundation/HSAIL-Tools
 Source:         %{name}-%{version}.tar.xz
 Patch1:         warning.patch
 # PATCH-FIX-UPSTREAM https://github.com/HSAFoundation/HSAIL-Tools/pull/54
@@ -43,14 +43,11 @@ virtual instruction set for parallel programs). This version of
 libHSAIL supports the HSA PRM 1.02 (Final) specification.
 
 %prep
-%setup -q
-
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

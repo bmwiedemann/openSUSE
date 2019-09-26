@@ -32,4 +32,20 @@
   * @hashicorp #Vault &amp; @RedisLabs supports multiple envs</comment>
     <requestid>730632</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ed933a767290c0fab7db9830cdd81e4</srcmd5>
+    <version>2.1.1</version>
+    <time>1569523399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * When both enabled, Vault has the priority over Redis for overriding (#234) [Bruno Rocha]
+  * Dynaconf init will not write all possible envs, only [default] (#233) [Bruno Rocha]
+  * Fixing self._root_path to fall back to os.getcwd() only when settings.load_file is called directly or from includes (#232) [Kedar Kulkarni]
+  * Improvement to close #230 - do not throw error for base envs. (#231) [Bruno Rocha]
+  * Fix #228 add ignore argument to Django explicit mode. (#229) [Bruno Rocha]
+  * Fix typo in CLI init (#227) [Dave Barnow]
+  * Add info about dunder envvars on django.md docs guide (#226) [Bruno Rocha]
+  * Improve validators to use from_env method (#225) [Bruno Rocha]</comment>
+    <requestid>733405</requestid>
+  </revision>
 </revisionlist>

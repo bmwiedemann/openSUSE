@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 4.15
-Version:        4.15
+%define realver 4.16
+Version:        4.16
 Release:        0
 
 %if "%{flavor}" != ""
@@ -127,6 +127,7 @@ Source4:        wine.desktop
 Source6:        wine-msi.desktop
 Source5:        ubuntuwine.tar.bz2
 Source7:        baselibs.conf
+Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
 #Patch0:         susepatches.patch
@@ -146,7 +147,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 4.15
+%define staging_version 4.16
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

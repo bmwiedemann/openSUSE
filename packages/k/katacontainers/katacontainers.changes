@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:46:31 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update katacontainers to version 1.9.0~alpha2: 
+  runtime 1.9.0~alpha2:
+   * virtcontainers: Set sandbox dns in sandbox request
+   * vc: Remove bind destination when unmounting
+   * virtio-fs: add virtio_fs_extra_args for virtiofsd
+   * sandbox: combine sandbox cgroup functions
+   * sandbox: Join cgroup sandbox on create.
+   * cgroups: container: check cgroup path before use it
+   * sandbox: cgroup: prefix cgroup related methods
+   * sandbox: cgroups: move methods to sandbox file
+   * hypervisor: Fix MacVTap internetworking support in ACRN
+   * CompatOCISpec: limit usage of CompatOCISpec
+   * s390x: add virtio-blk-ccw
+   * virtcontainers: create generic function
+   * vsock: set VHOST_VSOCK_SET_GUEST_CID based based on arch
+   * vc: Delete store when new/create container is failed
+   * virtcontainers: fix kernel modules annotations
+   * kata-check: require kvm/vhost modules for amd64
+   * kata-check: reduce default output verbosity
+   * v2: Prevent killing all container processes when exec is failed
+   * shim-v2: add network stat in metric
+   * qemu: fix error message miss
+   * monitor: enlarge watch buffer
+   * hypervisor: allow to return a slice of pids
+   * virtcontainers: Fix the issue of watching console for firecracker
+   * qemu: add logfile when debug is on
+   * qemu: fix memory prealloc option handling
+   * qemu: check guest status with qmp query-status
+   * shimv2: cancel monitor before stopping sandbox
+   * qemu: do not try to stop qemu multiple times
+   * network: always cold unplug network devices
+   * Revert: "sandbox: remove network before stopping vm"
+   * agent: add default timeout for grpc requests
+   * container: do not pause a StateReady container
+   * sandbox: remove network before stopping vm
+   * virtcontainers: fix hotplug pci devices execeed max capacity bug
+   * vsock: Propogate error for vsock ioctl
+   * network: Ignore routes with proto as "kernel"
+   * acrn: Change the default network model for ACRN to macvtap
+   * network: Deprecate bridged networking mode.
+   * network: fix failed to remove network
+   * virtcontainers: add support for loading kernel modules
+   * shim-v2: fix shim leak when hypervisor exit unexpectly
+   * virtiofs: wait for virtiofsd process to release its resources
+   * pkg/katautils: Do not set init in the kernel command line
+   * virtiofs: fix virtiofs crash when cache=none
+   * virtcontainers: support SMP die
+   * qemu: support vfio pass x-pci-vendor-id and x-pci-device-id pass
+   * ut: skip TestBindUnmountContainerRootfsENOENTNotError for non-root
+   * ut: skip TestStartNetworkMonitor for non-root
+   * vc: move container mount cleanup to container.go
+   * shimv2: monitor sandbox liveness
+   * monitor: watch hypervisor
+   * agent: use hypervisor pid as backup proxy pid for non-kata proxy cases
+   * sandbox: do not fail SIGKILL
+   * sandbox: support force stop
+   * agent: mark agent dead when failing to connect
+   * container: allow to stop a paused container
+
+-------------------------------------------------------------------
 Wed Sep  4 14:40:50 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Add config file in /etc/kata-containers

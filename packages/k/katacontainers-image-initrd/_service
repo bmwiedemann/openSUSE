@@ -6,8 +6,8 @@
     <param name="url">https://github.com/kata-containers/osbuilder.git</param>
     <param name="filename">osbuilder</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.9.0~alpha0</param>
-    <param name="revision">master</param>
+    <param name="versionformat">1.9.0~alpha2</param>
+    <param name="revision">1.9.0-alpha2</param>
   </service>
 
   <service name="tar_scm" mode="disabled">
@@ -15,16 +15,16 @@
     <param name="url">https://github.com/kata-containers/agent.git</param>
     <param name="filename">agent</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.9.0~alpha0</param>
-    <param name="revision">master</param>
+    <param name="versionformat">1.9.0~alpha2</param>
+    <param name="revision">1.9.0-alpha2</param>
   </service>
 
   <service name="recompress" mode="disabled">
     <param name="file">*.tar*</param>
-    <param name="compression">gz</param>
+    <param name="compression">xz</param>
   </service>
 
   <service name="set_version" mode="disabled">
-    <param name="basename">katacontainers-osbuilder</param>
+    <param name="basename">katacontainers-image-initrd</param>
   </service>
 </services>

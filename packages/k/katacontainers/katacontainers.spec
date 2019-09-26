@@ -19,11 +19,6 @@
 #
 %define  kata_project          github.com/kata-containers
 
-%define  runtime_commit         37c2872f29eb783a7d14119572acf949cd128ac6
-%define  proxy_commit           bba9b0ea7f9aafe21e2446e6fd39779c7544f175
-%define  shim_commit            638b83a8225ae278ee81db7e27318fd97e249c6d
-%define  ksm_throttler_commit   8968863efe4a3bf65b87d0ad247b5cd8826479c6
-
 %ifarch x86_64
 %define QEMUCMD qemu-system-x86_64
 %else
@@ -47,16 +42,16 @@
 %endif
 
 Name:           katacontainers
-Version:        1.9.0~alpha0
+Version:        1.9.0~alpha2
 Release:        <CI_CNT>.<B_CNT>
 Summary:        Kata Containers OCI container runtime
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/kata-containers
-Source0:        runtime-%{version}.tar.gz
-Source1:        proxy-%{version}.tar.gz
-Source2:        shim-%{version}.tar.gz
-Source3:        ksm-throttler-%{version}.tar.gz
+Source0:        runtime-%{version}.tar.xz
+Source1:        proxy-%{version}.tar.xz
+Source2:        shim-%{version}.tar.xz
+Source3:        ksm-throttler-%{version}.tar.xz
 Source4:        kata-fc
 Source5:        kata-qemu
 Source6:        katacontainers.rpmlintrc
@@ -102,16 +97,16 @@ done
 
 cd $HOME/go/src/%{kata_project}/runtime
 make %{?_smp_mflags} \
-    SKIP_GO_VERSION_CHECK=1 COMMIT=%{runtime_commit} QEMUCMD=%{QEMUCMD}
+    SKIP_GO_VERSION_CHECK=1 QEMUCMD=%{QEMUCMD}
 
 cd $HOME/go/src/%{kata_project}/proxy
-make %{?_smp_mflags} COMMIT=%{proxy_commit}
+make %{?_smp_mflags}
 
 cd $HOME/go/src/%{kata_project}/shim
-make %{?_smp_mflags} COMMIT=%{shim_commit}
+make %{?_smp_mflags}
 
 cd $HOME/go/src/%{kata_project}/ksm-throttler
-make %{?_smp_mflags} COMMIT=%{ksm_throttler_commit} HAVE_SYSTEMD=yes all-installable
+make %{?_smp_mflags} HAVE_SYSTEMD=yes all-installable
 
 %check
 # No tests
@@ -125,7 +120,6 @@ make \
     DESTDIR=%{buildroot} \
     PREFIX=%{_prefix} \
     LIBEXECDIR=%{_libexecdir} \
-    COMMIT=%{runtime_commit} \
     QEMUCMD=%{QEMUCMD} \
     install
 
@@ -148,7 +142,6 @@ make \
     DESTDIR=%{buildroot} \
     PREFIX=%{_prefix} \
     LIBEXECDIR=%{_libexecdir} \
-    COMMIT=%{proxy_commit} \
     install
 
 cd $HOME/go/src/%{kata_project}/shim
@@ -156,7 +149,6 @@ make \
     DESTDIR=%{buildroot} \
     PREFIX=%{_prefix} \
     LIBEXECDIR=%{_libexecdir} \
-    COMMIT=%{shim_commit} \
     install
 
 cd $HOME/go/src/%{kata_project}/ksm-throttler
@@ -164,7 +156,6 @@ make \
     DESTDIR=%{buildroot} \
     PREFIX=%{_prefix} \
     LIBEXECDIR=%{_libexecdir} \
-    COMMIT=%{ksm_throttler_commit} \
     HAVE_SYSTEMD=yes \
     UNIT_DIR=%{_unitdir} \
     V=1 \

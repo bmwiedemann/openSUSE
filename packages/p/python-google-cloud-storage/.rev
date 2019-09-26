@@ -32,4 +32,16 @@
     <comment></comment>
     <requestid>703587</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4239058ba111d91c68a6b8b457b51260</srcmd5>
+    <version>1.19.1</version>
+    <time>1569523604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.19.1:
+  * Minor bugfix over previous release
+
+- Update to 1.19.0:
+  * Huge range of updates and tweaks, mostly bugfixing</comment>
+    <requestid>733461</requestid>
+  </revision>
 </revisionlist>

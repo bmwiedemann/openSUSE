@@ -1,7 +1,7 @@
 #
 # spec file for package xxhash
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xxhash
-Version:        0.6.5
+Version:        0.7.1
 Release:        0
 Summary:        Non-cryptographic hash algorithm
-License:        GPL-2.0 and BSD-2-Clause
+License:        GPL-2.0-only AND BSD-2-Clause
 Group:          Productivity/Security
 URL:            https://github.com/Cyan4973/xxHash
-Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz
+Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
 
 %description
 xxHash is a hash algorithm. It completes the SMHasher test suite which
@@ -61,7 +61,6 @@ make %{?_smp_mflags} prefix=%{_prefix} libdir=%{_libdir}
 %install
 %make_install prefix=%{_prefix} libdir=%{_libdir}
 rm -rf %{buildroot}%{_libdir}/libxxhash.a
-
 
 %post -n libxxhash0 -p /sbin/ldconfig
 %postun -n libxxhash0 -p /sbin/ldconfig

@@ -44,4 +44,13 @@
   * Separate cast and unmarshal (#156)</comment>
     <requestid>730065</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa6c7eadfcbafb5a03c3360ca1e2738d</srcmd5>
+    <version>0.12.0</version>
+    <time>1569523607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * OAS validation with JSONSchema (#157)</comment>
+    <requestid>733464</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openapi-core
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Adds client-side and server-side support for the oas3
 License:        BSD-3-Clause
@@ -27,10 +27,11 @@ URL:            https://github.com/p1c2u/openapi-core
 Source:         https://github.com/p1c2u/openapi-core/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module lazy-object-proxy}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module openapi-spec-validator}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module strict-rfc3339}
@@ -40,6 +41,7 @@ BuildRequires:  python-backports.functools_partialmethod
 BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
+Requires:       python-isodate
 Requires:       python-lazy-object-proxy
 Requires:       python-openapi-spec-validator
 Requires:       python-six

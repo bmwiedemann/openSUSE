@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>730664</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>464eb255b21d3c8d6ae4781d8c0b40f2</srcmd5>
+    <version>0.7.7</version>
+    <time>1569523395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.7:
+  * Lazy dependencies overwriting (#232, #229).
+  * Removed Snyk support (#245).
+  * Added custom User-Agent to all requests (#242, #243, #231)
+  * Updated documentation interface (#241).</comment>
+    <requestid>733401</requestid>
+  </revision>
 </revisionlist>
