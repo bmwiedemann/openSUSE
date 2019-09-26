@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  2 14:23:29 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Add /usr/libexec and /usr/local/libexec
+
+-------------------------------------------------------------------
 Tue Aug 20 11:39:51 CEST 2019 - kukuk@suse.de
 
 - Move /etc.cron.* directories to cron package

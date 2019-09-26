@@ -119,7 +119,7 @@ Sun Aug 23 08:59:22 UTC 2015 - coolo@suse.com
   	- rt.cpan.org#105456: fetch_hash fails if sequence number contains '*'
   	  + *no longer removing unrequested data (except UID) in returned hashes
   	  [Gilles Lamiral]
-  	- rt.cpan.org#91912: selectable broke in 3.29 due to  around \NoSelect
+  	- rt.cpan.org#91912: selectable broke in 3.29 due to BS/^H around \NoSelect
   	  [Justin Vallon, Gilles Lamiral]
   	- some documentation, test cleanup and new tests
 

@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define mainver 1.0.5
-%define labver  0.6.1
+%define mainver 1.1.0
+%define labver  1.0.0
 Name:           python-nbdime
 Version:        %{mainver}
 Release:        0
@@ -37,12 +37,17 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyterlab
+BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  zip
 BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-backports.shutil_which
+# SECTION test requirements
+BuildRequires:  %{python_module jsonschema > 3}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 Requires:       jupyter-nbdime = %{mainver}
 Requires:       python-GitPython >= 2.1.6
 Requires:       python-Jinja2 >= 2.9
@@ -133,7 +138,8 @@ This package provides mercurial integration.
 %prep
 %setup -q -c -T
 unzip %{SOURCE0} 'nbdime/*'
-find nbdime/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
+find . -type f -name "*.py" -exec sed -i 's/\r$//' {} +
+find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
 find nbdime/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
 zip -r %{SOURCE0} nbdime
 rm -rf nbdime
@@ -149,6 +155,12 @@ rm -rf nbdime
 cp %{buildroot}%{python3_sitelib}/nbdime-%{mainver}.dist-info/LICENSE.md .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
+
+%check
+export PATH=$PATH:%{buildroot}%{_bindir}
+git config --global user.email "test@test.com"
+git config --global user.name "tester"
+%pytest %{buildroot}%{python3_sitelib}/nbdime/
 
 %files %{python_files}
 %license %{python_sitelib}/nbdime-%{mainver}.dist-info/LICENSE.md

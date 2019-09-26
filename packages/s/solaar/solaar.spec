@@ -100,6 +100,11 @@ install -m 0644 rules.d/42-logitech-unify-permissions.rules %{buildroot}%{_udevr
 rm %{buildroot}%{_bindir}/solaar-cli
 ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 
+%posttrans udev
+# This is needed to apply permissions to existing devices when the package is
+# installed.
+/usr/bin/udevadm trigger --subsystem-match=hidraw --action=add
+
 %files
 %doc ChangeLog COPYRIGHT README.md
 %license COPYING

@@ -4,11 +4,11 @@ Date:   Thu Jan 3 17:15:04 2019 +0000
 
     Inline np.allclose to remove dependency on numpy
 
-diff --git a/pytest_doctestplus/output_checker.py b/pytest_doctestplus/output_checker.py
-index e77e2ec..b889b1c 100644
---- a/pytest_doctestplus/output_checker.py
-+++ b/pytest_doctestplus/output_checker.py
-@@ -6,8 +6,7 @@ normalizations of Python expression output.  See the docstring on
+Index: pytest-doctestplus-0.4.0/pytest_doctestplus/output_checker.py
+===================================================================
+--- pytest-doctestplus-0.4.0.orig/pytest_doctestplus/output_checker.py
++++ pytest-doctestplus-0.4.0/pytest_doctestplus/output_checker.py
+@@ -6,8 +6,7 @@ normalizations of Python expression outp
  
  import doctest
  import re
@@ -18,7 +18,7 @@ index e77e2ec..b889b1c 100644
  
  import six
  from six.moves import zip
-@@ -125,8 +124,10 @@ class OutputChecker(doctest.OutputChecker):
+@@ -125,8 +124,10 @@ class OutputChecker(doctest.OutputChecke
                  else:
                      nw_.append(nw)
  
@@ -31,16 +31,16 @@ index e77e2ec..b889b1c 100644
                      return False
  
              # replace all floats in the "got" string by those from "wanted".
-diff --git a/setup.py b/setup.py
-index 6513c57..463f382 100755
---- a/setup.py
-+++ b/setup.py
-@@ -48,7 +48,7 @@ setup(
+Index: pytest-doctestplus-0.4.0/setup.py
+===================================================================
+--- pytest-doctestplus-0.4.0.orig/setup.py
++++ pytest-doctestplus-0.4.0/setup.py
+@@ -40,7 +40,7 @@ setup(
          'Topic :: Utilities',
      ],
-     keywords=[ 'doctest', 'rst', 'pytest', 'py.test' ],
--    install_requires=[ 'six', 'pytest>=3.0', 'numpy>=1.10' ],
-+    install_requires=[ 'six', 'pytest>=3.0'],
+     keywords=['doctest', 'rst', 'pytest', 'py.test'],
+-    install_requires=['six', 'pytest>=3.0', 'numpy>=1.10'],
++    install_requires=['six', 'pytest>=3.0'],
      python_requires='>=2.7',
      entry_points={
          'pytest11': [

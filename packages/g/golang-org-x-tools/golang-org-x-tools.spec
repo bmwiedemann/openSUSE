@@ -24,7 +24,7 @@
 %global import_path     golang.org/x/tools
 
 Name:           golang-org-x-%{repo}
-Version:        1.11+git20190225.e9f45831
+Version:        1.12+git20190313.aa829657
 Release:        0
 Summary:        Additional toolsgraphy libraries
 License:        BSD-3-Clause
@@ -125,26 +125,34 @@ mv %{buildroot}%{_bindir}/bundle %{buildroot}%{_bindir}/go-bundle
 %{_bindir}/compilebench
 %{_bindir}/digraph
 %{_bindir}/eg
+%{_bindir}/findcall
 %{_bindir}/fiximports
+%{_bindir}/forward
 %{_bindir}/getgo
 %{_bindir}/go-contrib-init
 %{_bindir}/godex
 %{_bindir}/godoc
 %{_bindir}/goimports
+%{_bindir}/golsp
 %{_bindir}/gomvpkg
 %{_bindir}/gopackages
+%{_bindir}/gopls
 %{_bindir}/gorename
 %{_bindir}/gotype
 %{_bindir}/goyacc
 %{_bindir}/guru
-%{_bindir}/heapview
 %{_bindir}/html2article
+%{_bindir}/lostcancel
+%{_bindir}/nilness
 %{_bindir}/present
+%{_bindir}/shadow
+%{_bindir}/splitdwarf
 %{_bindir}/ssadump
 %{_bindir}/stress
 %{_bindir}/stringer
-%{_bindir}/tip
 %{_bindir}/toolstash
+%{_bindir}/unmarshal
+%{_bindir}/vet
 
 %{_unitdir}/godoc.service
 %{_sbindir}/rcgodoc

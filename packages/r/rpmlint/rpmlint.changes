@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Sep 20 16:04:10 UTC 2019 - Malte Kraus <malte.kraus@suse.com>
+
+- whitelist pam_envoy (bsc#1150525)
+
+-------------------------------------------------------------------
+Fri Sep 20 13:06:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
+  * dont check empty .text section on GHC libraries
+
+-------------------------------------------------------------------
+Tue Sep 17 12:35:25 UTC 2019 - dmueller@suse.com
+
+- Update rpmlint-checks to version master:
+  * CheckFilelist: Add /usr/libexec to set of good prefixes
+
+-------------------------------------------------------------------
+Wed Aug 28 06:32:18 UTC 2019 - tchvatal@suse.com
+
+- Update to version 84.87+git20190828.2c92180:
+  * Revert "added LTO errors as expected for debug tests"
+
+-------------------------------------------------------------------
+Wed Aug 28 01:08:27 UTC 2019 - tchvatal@suse.com
+
+- Update to version 84.87+git20190828.8fa8ac5:
+  * Do not use -flto for debug tests.
+
+-------------------------------------------------------------------
+Wed Aug 28 00:56:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not validate rpm groups to avoid rpmlint warning as the group
+  is not really mandatory (fate#326485)
+
+-------------------------------------------------------------------
 Thu Aug 22 08:56:44 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - whitelist systemd-portabled dbus files (boo#1145639)

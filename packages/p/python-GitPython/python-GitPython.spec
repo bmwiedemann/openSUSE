@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-GitPython
-Version:        2.1.11.1531661757.92a4819
+Version:        3.0.2.1566444429.0765792
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
@@ -26,9 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/gitpython-developers/GitPython
 Source:         GitPython-%{version}.tar.xz
 Patch0:         test-skips.patch
-# Subset and rebase of merged https://github.com/gitpython-developers/GitPython/pull/793
-Patch1:         merged_pr_793.patch
-Patch2:         test_blocking_lock_file-extra-time.patch
+Patch1:         test_blocking_lock_file-extra-time.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
 BuildRequires:  %{python_module gitdb2 >= 2.0.0}
 BuildRequires:  %{python_module nose}
@@ -58,6 +57,8 @@ are 'cgit' and pure python, which is the default.
 %setup -q -n GitPython-%{version}
 echo y | ./init-tests-after-clone.sh
 %autopatch -p1
+# do not pull in extra deps
+sed -i -e '/tox/d' -e '/flake8/d' -e '/coverage/d' test-requirements.txt
 
 %build
 %python_build

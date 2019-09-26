@@ -1,7 +1,7 @@
 #
 # spec file for package unshield
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover   0
 %define libname lib%{name}%{sover}
 Name:           unshield
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        A Program to Extract InstallShield Cabinet Files
 License:        MIT
 Group:          Productivity/Archiving/Compression
-Url:            https://github.com/twogood/unshield
+URL:            https://github.com/twogood/unshield
 Source0:        https://github.com/twogood/unshield/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM armv7l-fpic.patch matwey.kornilov@gmail.com -- fix armv7l build
 Patch1:         armv7l-fpic.patch
@@ -62,11 +62,11 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q
-%patch1 
+%patch1
 
 %build
 %cmake
-make %{?_smp_mflags}
+cmake_build
 
 %install
 %cmake_install
@@ -76,7 +76,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
 

@@ -1,7 +1,7 @@
 #
 # spec file for package klavaro
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,33 +21,32 @@
 %else
 %define espeak    espeak
 %endif
-
 Name:           klavaro
-Version:        3.03
+Version:        3.09
 Release:        0
 Summary:        Typing tutor
 License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
-Url:            http://klavaro.sourceforge.net/
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE klavaro-3.00-paragraph-ru-fix.patch kkirill@opensuse.org -- replace special typographic chars
-Patch0:         klavaro-3.00-paragraph-ru-fix.patch
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
+URL:            https://klavaro.sourceforge.net/
+Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  cairo-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  libcurl-devel
+BuildRequires:  libgnutls-devel
 BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 Recommends:     %{espeak}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version}
+BuildRequires:  update-desktop-files
+%endif
 
 %description
 Klavaro  is a touch typing tutor that is very
@@ -58,9 +57,18 @@ the program was designed to not depend on specific
 layouts.
 
 %lang_package
+
+%package devel
+Summary:        Development files for klavaro
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+
+%description devel
+This package contains the header files needed to develop other
+software based on klavaro.
+
 %prep
 %setup -q
-%patch0
 
 %build
 export CFLAGS="%{optflags}"
@@ -75,28 +83,29 @@ make %{?_smp_mflags}
 
 %find_lang %{name}
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} >= 1500
+%suse_update_desktop_file -r klavaro Education X-KDE-Edu-Teaching
+%else
 %suse_update_desktop_file -r klavaro Education Teaching
 %endif
 
-%post
 %if 0%{?suse_version} > 1130
+%post
 %icon_theme_cache_post
 %desktop_database_post
 %endif
 
-%postun
 %if 0%{?suse_version} > 1130
+%postun
 %icon_theme_cache_postun
 %desktop_database_postun
 %endif
 
 %files -f %{name}.lang
-%defattr(0755, root, root, 0755)
 %{_bindir}/klavaro
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
-%{_mandir}/man1/klavaro.1*
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
+%{_mandir}/man1/klavaro.1%{?ext_man}
 %{_datadir}/klavaro/
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/klavaro.appdata.xml
@@ -104,5 +113,8 @@ make %{?_smp_mflags}
 %{_datadir}/icons/hicolor/*/apps/klavaro.png
 # Remove static lib processing when libgtkdatabox gtk3 apppears
 %exclude %{_libdir}/libgtkdataboks.*
+
+%files devel
+%{_includedir}/*.h
 
 %changelog

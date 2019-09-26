@@ -86,4 +86,12 @@
     <comment>- Fix build with boost-1.69</comment>
     <requestid>686798</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>91e10c2c397fa0ad35478363648bef2f</srcmd5>
+    <version>1.5</version>
+    <time>1569523298</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on i586</comment>
+    <requestid>733260</requestid>
+  </revision>
 </revisionlist>

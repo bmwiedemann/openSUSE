@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 20 12:09:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.0:
+  * Fix ZstdDecompressor.__init__ on 64-bit big-endian systems (#91).
+  * Fix memory leak in ZstdDecompressionReader.seek() (#82).
+  * CI transitioned to Azure Pipelines (from AppVeyor and Travis CI).
+  * Switched to pytest for running tests (from nose).
+
+-------------------------------------------------------------------
 Fri May 24 13:39:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.11.1:

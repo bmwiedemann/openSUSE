@@ -51,4 +51,13 @@
     <comment></comment>
     <requestid>731175</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1c0f121ab42086cd128660679997d84</srcmd5>
+    <version>2.0.0</version>
+    <time>1569523072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Drop support for python 2.7</comment>
+    <requestid>732115</requestid>
+  </revision>
 </revisionlist>

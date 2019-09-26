@@ -160,4 +160,24 @@
 - Set build dependency ddt minimum version 1.1.1</comment>
     <requestid>685385</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9e33dc9e4929cd4083b11153d3674c9b</srcmd5>
+    <version>3.0.2.1566444429.0765792</version>
+    <time>1569523193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.2.1566444429.0765792:
+  * prepare next release
+  * BF: remove ddt from requirements.txt since no ddt required at run time.
+  * Bump version to 3.0.1
+  * Remove dependency on 'gitdb'; fixes #908
+  * Changelog information
+  * Adding test
+  * Returning commit object instead of hash value
+  * Snack case as requested in #903
+  * Method stating which commit is being played during an halted rebase
+  * Fix performance regression, see #906
+- Drop merged patch merged_pr_793.patch
+- Rebase patch test-skips.patch</comment>
+    <requestid>732882</requestid>
+  </revision>
 </revisionlist>

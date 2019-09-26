@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 25 03:19:44 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.2.1:
+  * bugs
+    + Reverted the name change of the “revisions” argument to
+      command.stamp() to “revision” as apparently applications are
+      calling upon this argument as a keyword name. Pull request
+      courtesy Thomas Bechtold. Special translations are also added
+      to the command line interface so that it is still known
+      as “revisions” in the CLI.
+      References: #601
+    + Removed the “test requirements” from “setup.py test”, as
+      this command now only emits a removal error in any case
+      and these requirements are unused.
+
+-------------------------------------------------------------------
 Sat Sep 21 19:10:16 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.2.0:

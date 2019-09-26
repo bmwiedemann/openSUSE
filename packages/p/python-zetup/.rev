@@ -53,4 +53,14 @@
   * Various fixes all around</comment>
     <requestid>724502</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e92a98a968c47753b8ffd9f770a5198</srcmd5>
+    <version>0.2.64</version>
+    <time>1569523123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.64:
+  * entry_point: Add missing import
+  * process: Convert sys.path items explicitly to str</comment>
+    <requestid>732156</requestid>
+  </revision>
 </revisionlist>

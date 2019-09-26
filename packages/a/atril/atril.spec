@@ -30,7 +30,7 @@ URL:            https://mate-desktop.org/
 Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libxml2-python
+BuildRequires:  python3-libxml2
 # set to _version when mate-common has an equal release
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig

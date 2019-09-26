@@ -24,7 +24,7 @@ BuildRequires:  rpmlint-Factory-strict
 BuildRequires:  rpmlint-mini
 
 Name:           rpmlint-tests
-Version:        84.87+git20190717.48212cf
+Version:        84.87+git20190920.e27d431
 Release:        0
 Summary:        rpmlint regression tests
 License:        SUSE-Public-Domain

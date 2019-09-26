@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Sep 17 06:01:08 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.4
+
+  Release 6.0.4
+  -------------
+
+   * Adds Debian 10 "Buster" packages.
+
+
+  Release 6.0.3
+  -------------
+
+   * Add and option to specify the spawn dir during startup, which is specifically useful for CageFS users. Contributed by @plmnikulin. Closes GH-2145.
+
+      - Apache: `PassengerSpawnDir`
+      - Nginx: `passenger_spawn_dir`
+
+   * [Nginx] Bumps the preferred Nginx version to 1.17.3 (previously 1.15.8).
+   * [Nginx] The preferred PCRE version is now 8.43 (previously 8.42).
+   * Adds Ubuntu 19.04 "Disco" packages, and removes Ubuntu 18.10 "Cosmic" and Ubuntu 14.04 "Trusty" packages.
+   * Changes minimum supported macOS version to 10.12 Sierra.
+   * Improves container detection and fixes a compilation warning in GCC 8+. Closes GH-2186.
+   * Allowed externally specifying an app instance to send a request to. Contributed by Mark R. James (@mrj).
+   * Fixed an incompatibility with sending requests to specific app instances, when using the rails web-console gem. Contributed by Mark R. James (@mrj).
+   * Fixed a regression (introduced in 5.1.9) where some hooks were not called. Closes GH-2103. Contributed by Mark R. James (@mrj).
+   * Fixes compilation with clang 8 (latest macOS update) by updating vendored boost library from 1.67 to 1.69.
+   * Reverts a regression intruduced in 6.0.2 where Passenger would crash if it had to use the disk backed response cache. Closes GH-2189.
+   * [Nginx] Adds an option `passenger_buffer_upload` to allow buffering uploaded data in Passenger before forwarding it to the app. As a workaround for apps that cannot handle chunked data.
+   * [Enterprise] When using deferred port binding, no longer binds port if all apps do not start up.
+   * Updated various library versions used in precompiled binaries (used for e.g. gem installs):
+
+      - PCRE 8.43 (was 8.42)
+      - Curl 7.65.1 (was 7.64.0)
+      - ccache 3.7.3 (was 3.6)
+      - Git 2.22.0 (was 2.20.1)
+      - OpenSSL 1.0.2s (was 1.0.2q)
+      - RubyGems 3.0.6 (was 3.0.2)
+      - GnuPG 2.2.16 (was 2.2.13)
+      - libgcrypt 1.8.5 (was 1.8.4)
+      - libgpg_error 1.36 (was 1.35)
+      - libiconv 1.16 (was 1.15)
+      - Ruby:
+        - 2.4.5 -> 2.4.6
+        - 2.5.3 -> 2.5.5
+        - 2.6.1 -> 2.6.3  
+
+-------------------------------------------------------------------
 Sat Mar  2 15:30:14 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 6.0.2

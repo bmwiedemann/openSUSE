@@ -1,0 +1,5 @@
+<package name="python-pytest-pyramid-server" project="openSUSE:Factory">
+  <title>python-pytest-pyramid-server</title>
+  <description>Pyramid server fixture for py.test</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-pyramid-server"/>
+</package>

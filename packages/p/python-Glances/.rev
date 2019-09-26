@@ -15,4 +15,38 @@
     <comment></comment>
     <requestid>707044</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03dd633b07aab3cc4bc68bd4cdce7e11</srcmd5>
+    <version>3.1.2</version>
+    <time>1569523200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.2:
+  * Make CSV export append instead of replace #1525
+  * HDDTEMP config IP and Port #1508
+  * Option in config to change character used to display percentage in Quicklook #1508
+  * Cannot restart glances with --export influxdb after update to 3.1.1 bug #1530
+  * ip plugin empty interface bug #1509
+  * Glances Snap doesn't run on Orange Pi Zero running Ubuntu Core 16 bug #1517
+  * Error with IP Plugin : object has no attribute bug #1528
+  * repair the problem that when running 'glances --stdout-csv amps' #1520
+  * Possible typo in glances_influxdb.py #1514
+
+- update to version 3.1.1
+  Enhancements and new features:
+  * Add authprovider for cassandra export (thanks to @EmilienMottet) #1395
+  * Curses's browser server list sorting added (thanks to @limfreee) #1396
+  * Performance issue with large folder #1491
+  * Can't connect to influxdb with https enabled #1497
+  Bugs corrected:
+  * Fix Cassandra table name export #1402
+  * 500 Internal Server Error /api/3/network/interface_name #1401
+  * l keypress (hide alert log) not working after some time #1449
+  * IP plugin displays incorrect subnet mask #1417
+  Others:
+  * Allow comma separated commands in AMP
+  * See upstream changelog for more info
+- Added patch skip-online-tests.patch
+  * self-explaining</comment>
+    <requestid>732883</requestid>
+  </revision>
 </revisionlist>

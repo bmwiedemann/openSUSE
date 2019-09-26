@@ -48,4 +48,16 @@
   be removed as a package). (forwarded request 709995 from mrostecki)</comment>
     <requestid>710028</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>723916bad8f2a50fd69f06e19282d32e</srcmd5>
+    <version>1.12+git20190313.aa829657</version>
+    <time>1569523047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12+git20190313.aa829657:
+  * [release-branch.go1.12] switch branch
+  * cmd/tip: delete
+  * cmd/heapview: delete
+- Commit _servicedata for consistent generation across contributors (forwarded request 730467 from jfkw)</comment>
+    <requestid>730483</requestid>
+  </revision>
 </revisionlist>

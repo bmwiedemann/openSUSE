@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>706368</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f7c1867f4022ad2cd68a7a7ae426fb8e</srcmd5>
+    <version>1.0.1</version>
+    <time>1569523027</time>
+    <user>dimstar_suse</user>
+    <comment>- Add R-base-devel as dependency of R-Rcpp-devel
+- Remove unnecessary build dependency on fortran
+- Add %check
+- Refine filters in rpmlintrc
+- Tidy spec (forwarded request 727411 from jayvdb)</comment>
+    <requestid>727603</requestid>
+  </revision>
 </revisionlist>

@@ -23,18 +23,18 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define julia_ver            1.1.0
+%define julia_ver            1.2.0
 %define libjulia_sover_major 1
-%define libjulia_sover_minor 1
+%define libjulia_sover_minor 2
 %define libuv_ver    2348256acf5759a544e5ca7935f638d2bc091d60
 %define libwhich_ver 81e9723c0273d78493dc8c8ed570f68d9ce7e89e
-%define pkg_ver      853b3f1fd9895db32b402d89e9dee153b66b2316
-%define utf8proc_ver 97ef668b312b96382714dbb8eaac4affce0816e6
+%define pkg_ver      394e7c5d55d3722f5b2ab660ca0a694ea0041974
+%define utf8proc_ver 454f60150c7f023526d353e1e6b386f93ee0b116
 %define llvm_ver     6.0.1
 %define compat_mode  1
 %define src_name     julia-tarball
 %define libgit2_ver  %(rpm -qa | grep -E "^libgit2-[0-9]" | head -n1 | cut -d'-' -f2)
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{julia_ver}/julia-%{julia_ver}.tar.gz
@@ -42,7 +42,7 @@ Source0:        https://github.com/JuliaLang/julia/releases/download/v%{julia_ve
 Source10:       https://api.github.com/repos/JuliaLang/libuv/tarball/%{libuv_ver}#/libuv-%{libuv_ver}.tar.gz
 Source11:       https://api.github.com/repos/vtjnash/libwhich/tarball/%{libwhich_ver}#/libwhich-%{libwhich_ver}.tar.gz
 Source12:       https://api.github.com/repos/JuliaLang/utf8proc/tarball/%{utf8proc_ver}#/utf8proc-%{utf8proc_ver}.tar.gz
-Source13:       http://llvm.org/releases/%{llvm_ver}/llvm-%{llvm_ver}.src.tar.xz
+Source13:       https://llvm.org/releases/%{llvm_ver}/llvm-%{llvm_ver}.src.tar.xz
 Source14:       https://api.github.com/repos/JuliaLang/Pkg.jl/tarball/%{pkg_ver}#/Pkg-%{pkg_ver}.tar.gz
 Source99:       juliabuildopts
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
@@ -327,7 +327,6 @@ rm %{buildroot}%{_datadir}/appdata/julia.appdata.xml
 
 %files devel
 %{_datadir}/julia/test/
-%{_datadir}/julia/build_sysimg.jl
 %{_datadir}/julia/julia-config.jl
 %{_includedir}/julia/
 %{_libdir}/libjulia.so.%{libjulia_sover_major}

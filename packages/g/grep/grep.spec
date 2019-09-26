@@ -32,7 +32,6 @@ BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
 Requires(pre):  %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang
 Provides:       base:%{_bindir}/grep
 
 %description

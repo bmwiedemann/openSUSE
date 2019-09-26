@@ -1,0 +1,428 @@
+-------------------------------------------------------------------
+Thu Aug  8 09:50:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch in order to make builds reproducable:
+  * 0001-q3rcc-Allow-to-override-build-date.patch
+- Disable LTO for now (segfaults)
+
+-------------------------------------------------------------------
+Sun Aug 05 18:39:52 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.36+git.20180802
+- Drop not longer needed patches:
+  * fix-for-opensuse-x86-ioq3demo_sh.diff
+  * fix-for-opensuse-x86-ioquake3_sh.diff  
+
+-------------------------------------------------------------------
+Sun Jan 17 09:35:05 UTC 2016 - kieltux@gmail.com
+
+- Added packaging in spec of missing renderer:
+  renderer_opengl1_$arch.so
+  renderer_opengl2_$arch.so
+- Added PATCH-FIX-OPENSUSE fix-for-opensuse-x86-ioq3demo_sh.diff
+  for x86 (i386 -> x86)
+- Added PATCH-FIX-OPENSUSE fix-for-opensuse-x86-ioquake3_sh.diff
+  for x86 (i386 -> x86)
+-------------------------------------------------------------------
+Sun May 10 19:23:38 UTC 2015 - dap.darkness@gmail.com
+
+- Updated from git#2292bf5bb2e3178674492d4dfd46b63515d0abe1
+  to resolve *64 build issue.
+- Removed merged ioquake3-1.36-strcpy.diff.
+
+-------------------------------------------------------------------
+Wed Dec 26 11:42:04 UTC 2012 - joop.boonen@opensuse.org
+
+- openal-devel is now called openal-soft-devel 
+
+-------------------------------------------------------------------
+Sat Jul  2 16:24:54 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+- Remove duplicate changelog
+
+-------------------------------------------------------------------
+Sun Jul  4 14:42:18 UTC 2010 - lnussel@suse.de
+
+- fix wrong use of strcpy (bio#4331)
+
+-------------------------------------------------------------------
+Sun Apr 12 11:06:25 CEST 2009 - lnussel@suse.de
+
+- new version 1.36
+
+-------------------------------------------------------------------
+Mon Mar  2 19:17:24 CET 2009 - lnussel@suse.de
+
+- update to SVN1507 in trunk
+
+-------------------------------------------------------------------
+Sun Jan 18 11:08:48 CET 2009 - lnussel@suse.de
+
+- update to SVN1493 in trunk, includes security fix
+
+-------------------------------------------------------------------
+Fri Jan 16 11:35:21 CET 2009 - lnussel@suse.de
+
+- update to SVN1492 in trunk
+
+-------------------------------------------------------------------
+Mon Jan 12 17:11:37 CET 2009 - lnussel@suse.de
+
+- optionally only build the installer
+
+-------------------------------------------------------------------
+Fri Jan  9 14:22:46 CET 2009 - lnussel@suse.de
+
+- update to SVN1489 in trunk
+
+-------------------------------------------------------------------
+Mon Nov 10 10:49:03 CET 2008 - lnussel@suse.de
+
+- update to SVN1486 in trunk
+
+-------------------------------------------------------------------
+Wed Nov  5 17:06:17 CET 2008 - lnussel@suse.de
+
+- update to SVN1481 in trunk
+
+-------------------------------------------------------------------
+Fri Sep 12 11:59:59 CEST 2008 - lnussel@suse.de
+
+- update to SVN1470 in trunk
+
+-------------------------------------------------------------------
+Wed Sep  3 09:41:38 CEST 2008 - lnussel@suse.de
+
+- update to SVN1469 in trunk
+
+-------------------------------------------------------------------
+Wed Aug 20 10:21:38 CEST 2008 - lnussel@suse.de
+
+- update to SVN1450 in trunk
+
+-------------------------------------------------------------------
+Sat Aug  9 17:39:45 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1443 in trunk
+
+-------------------------------------------------------------------
+Thu Jul 17 10:11:10 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1429 in trunk
+
+-------------------------------------------------------------------
+Wed Jul 16 09:16:31 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1427 in trunk
+
+-------------------------------------------------------------------
+Sun Jul  6 22:26:27 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1419 in trunk
+
+-------------------------------------------------------------------
+Sun Jul  6 12:10:16 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1413 in trunk
+
+-------------------------------------------------------------------
+Sat Jul  5 13:39:47 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1403 in trunk
+
+-------------------------------------------------------------------
+Wed Jun 25 09:59:31 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1398 in trunk
+
+-------------------------------------------------------------------
+Wed Jun 25 08:43:09 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1394 in trunk
+
+-------------------------------------------------------------------
+Sun Jun  8 12:08:20 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1382 in trunk
+  * now support voice activation for voip
+
+-------------------------------------------------------------------
+Sat Jun  7 15:59:03 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1371 in trunk
+- use upstream desktop file
+
+-------------------------------------------------------------------
+Thu Jun  5 11:58:50 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1369 in trunk
+
+-------------------------------------------------------------------
+Tue Jun  3 09:10:02 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1363 in trunk
+- includes voip support
+
+-------------------------------------------------------------------
+Sat May 31 14:08:05 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1347 in trunk
+- use dlopen for libopenal in installer build
+
+-------------------------------------------------------------------
+Wed May  7 09:00:37 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1341 in trunk
+
+-------------------------------------------------------------------
+Sat May  3 17:00:53 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1337 in trunk
+
+-------------------------------------------------------------------
+Mon Apr 28 09:05:54 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1332 in trunk
+  * supports stereoscopic view
+
+-------------------------------------------------------------------
+Tue Apr 22 10:01:19 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1324 in trunk
+
+-------------------------------------------------------------------
+Tue Apr 15 16:20:59 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1321 in trunk
+
+-------------------------------------------------------------------
+Sat Apr 12 23:55:32 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1318 in trunk
+
+-------------------------------------------------------------------
+Thu Apr 10 09:51:36 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1307 in trunk
+
+-------------------------------------------------------------------
+Mon Apr  7 11:16:56 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1303 in trunk
+
+-------------------------------------------------------------------
+Sun Apr  6 15:32:38 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1300 in trunk
+
+-------------------------------------------------------------------
+Sat Apr  5 18:03:31 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1294 in trunk
+
+-------------------------------------------------------------------
+Sat Apr  5 11:58:29 CEST 2008 - lnussel@suse.de
+
+- update to SVN 1290 in trunk
+  * initial ipv6 support
+
+-------------------------------------------------------------------
+Fri Mar 28 15:03:56 CET 2008 - lnussel@suse.de
+
+- update to SVN 1287 in trunk
+
+-------------------------------------------------------------------
+Thu Mar 27 09:32:16 CET 2008 - lnussel@suse.de
+
+- update to SVN 1286 in trunk
+
+-------------------------------------------------------------------
+Fri Mar 21 13:04:12 CET 2008 - lnussel@suse.de
+
+- update to SVN 1272 in trunk
+
+-------------------------------------------------------------------
+Sun Mar  9 17:58:21 CET 2008 - lnussel@suse.de
+
+- update to SVN 1270 in trunk
+
+-------------------------------------------------------------------
+Wed Jan 23 09:27:01 CET 2008 - lnussel@suse.de
+
+- update to SVN 1250 in trunk
+  * fixes several format string bugs
+
+-------------------------------------------------------------------
+Wed Jan  9 08:56:50 CET 2008 - lnussel@suse.de
+
+- update to SVN 1248 in trunk
+
+-------------------------------------------------------------------
+Sat Dec  8 11:34:06 CET 2007 - lnussel@suse.de
+
+- update to SVN 1231 in trunk
+
+-------------------------------------------------------------------
+Fri Nov 16 13:08:05 CET 2007 - lnussel@suse.de
+
+- update to SVN 1212 in trunk
+
+-------------------------------------------------------------------
+Tue Oct 23 14:56:24 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1201 in trunk
+
+-------------------------------------------------------------------
+Fri Oct  5 16:18:08 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1189 in trunk
+
+-------------------------------------------------------------------
+Tue Sep 11 08:56:49 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1176 in trunk
+
+-------------------------------------------------------------------
+Thu Sep  6 08:50:33 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1166 in trunk
+
+-------------------------------------------------------------------
+Mon Aug 27 09:07:18 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1138 in trunk
+
+-------------------------------------------------------------------
+Sun Aug 19 14:12:33 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1126 in trunk
+
+-------------------------------------------------------------------
+Wed Jul  4 08:51:45 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1106 in trunk
+- update vm_x86_64 assembler patch
+
+-------------------------------------------------------------------
+Fri Jun 29 16:13:00 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1103 in trunk
+- add experimental vm_x86_64 assembler patch
+
+-------------------------------------------------------------------
+Fri May 11 13:42:22 CEST 2007 - lnussel@suse.de
+
+- update to SVN 1083 in trunk
+
+-------------------------------------------------------------------
+Tue Jan 23 11:55:54 CET 2007 - lnussel@suse.de
+
+- update to SVN 1036 in trunk
+- rename to ioquake3
+
+-------------------------------------------------------------------
+Fri Dec  1 12:44:33 CET 2006 - lnussel@suse.de
+
+- update to SVN 996 in 1.34 branch (1.34RC3)
+
+-------------------------------------------------------------------
+Thu Oct 26 17:29:42 CEST 2006 - lnussel@suse.de
+
+- update to SVN 955 in 1.34 branch
+  * fixes wrong use of strncat
+- disable installer
+
+-------------------------------------------------------------------
+Tue Sep  5 09:13:23 CEST 2006 - lnussel@suse.de
+
+- update to SVN 892 (1.34RC2)
+
+-------------------------------------------------------------------
+Mon Jun  5 13:23:07 CEST 2006 - lnussel@suse.de
+
+- update to SVN 797
+  * fixes buffer overflow in CL_ParseDownload
+  * fixes ppc vm
+
+-------------------------------------------------------------------
+Mon May  8 22:01:32 CEST 2006 - lnussel@suse.de
+
+- update to SVN 777
+  * fixes directory traversal bug (CVE-2006-2082)
+
+-------------------------------------------------------------------
+Sat May  6 10:30:13 CEST 2006 - lnussel@suse.de
+
+- update to SVN 772
+  * fixes exploitable buffer overflow (CVE-2006-2236)
+
+-------------------------------------------------------------------
+Thu Mar  9 10:05:07 CET 2006 - lnussel@suse.de
+
+- update to current SVN
+  * fixes among other things SEGV on i386 without READ_IMPLIES_EXEC
+
+-------------------------------------------------------------------
+Tue Feb 21 23:39:18 CET 2006 - lnussel@suse.de
+
+- update to current SVN
+- add desktop file and start script
+
+-------------------------------------------------------------------
+Mon Jan 30 12:37:32 CET 2006 - ro@suse.de
+
+- added Mesa-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 20:28:38 CET 2006 - lnussel@suse.de
+
+- update to current SVN
+  * offending EULA removed (#136922)
+
+-------------------------------------------------------------------
+Thu Dec  1 10:54:43 CET 2005 - lnussel@suse.de
+
+- update to current SVN
+  * quake3-setup subpackage builds installer for upstream
+
+-------------------------------------------------------------------
+Mon Nov 14 22:05:59 CET 2005 - lnussel@suse.de
+
+- update to current SVN
+  * with openal support
+
+-------------------------------------------------------------------
+Thu Nov  3 21:56:55 CET 2005 - lnussel@suse.de
+
+- update to current SVN
+
+-------------------------------------------------------------------
+Sun Oct  9 15:31:12 CEST 2005 - lnussel@suse.de
+
+- update to current SVN
+- add devel subpackage that contains qvm compiler and assembler
+
+-------------------------------------------------------------------
+Fri Sep  9 09:41:37 CEST 2005 - lnussel@suse.de
+
+- update to current SVN
+  * supposed to fix soundlag
+  * works on 16bit displays
+
+-------------------------------------------------------------------
+Thu Sep  1 17:34:47 CEST 2005 - lnussel@suse.de
+
+- update to current SVN, now with SDL sound
+
+-------------------------------------------------------------------
+Wed Aug 31 11:18:32 CEST 2005 - lnussel@suse.de
+
+- new package
+

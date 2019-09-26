@@ -1,7 +1,8 @@
-diff -u GitPython-2.1.11-orig/git/test/test_base.py GitPython-2.1.11/git/test/test_base.py
---- GitPython-2.1.11-orig/git/test/test_base.py	2019-03-13 15:54:50.126688903 +0700
-+++ GitPython-2.1.11/git/test/test_base.py	2019-03-13 16:11:54.287675238 +0700
-@@ -112,7 +112,7 @@
+Index: GitPython-3.0.2.1566444429.0765792/git/test/test_base.py
+===================================================================
+--- GitPython-3.0.2.1566444429.0765792.orig/git/test/test_base.py
++++ GitPython-3.0.2.1566444429.0765792/git/test/test_base.py
+@@ -112,7 +112,7 @@ class TestBase(TestBase):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
          assert osp.isdir(osp.join(rw_repo.working_tree_dir, 'lib'))
  
@@ -10,9 +11,10 @@ diff -u GitPython-2.1.11-orig/git/test/test_base.py GitPython-2.1.11/git/test/te
      @with_rw_and_rw_remote_repo('0.1.6')
      def test_with_rw_remote_and_rw_repo(self, rw_repo, rw_remote_repo):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
-diff -u GitPython-2.1.11-orig/git/test/test_remote.py GitPython-2.1.11/git/test/test_remote.py
---- GitPython-2.1.11-orig/git/test/test_remote.py	2019-03-13 15:54:50.242689909 +0700
-+++ GitPython-2.1.11/git/test/test_remote.py	2019-03-13 16:23:59.918147844 +0700
+Index: GitPython-3.0.2.1566444429.0765792/git/test/test_remote.py
+===================================================================
+--- GitPython-3.0.2.1566444429.0765792.orig/git/test/test_remote.py
++++ GitPython-3.0.2.1566444429.0765792/git/test/test_remote.py
 @@ -4,6 +4,7 @@
  # This module is part of GitPython and is released under
  # the BSD License: http://www.opensource.org/licenses/bsd-license.php
@@ -21,7 +23,7 @@ diff -u GitPython-2.1.11-orig/git/test/test_remote.py GitPython-2.1.11/git/test/
  import random
  import tempfile
  from unittest import skipIf
-@@ -397,7 +398,7 @@
+@@ -403,7 +404,7 @@ class TestRemote(TestBase):
          TagReference.delete(rw_repo, new_tag, other_tag)
          remote.push(":%s" % other_tag.path)
  
@@ -30,11 +32,11 @@ diff -u GitPython-2.1.11-orig/git/test/test_remote.py GitPython-2.1.11/git/test/
      @with_rw_and_rw_remote_repo('0.1.6')
      def test_base(self, rw_repo, remote_repo):
          num_remotes = 0
-@@ -630,6 +631,7 @@
+@@ -636,6 +637,7 @@ class TestRemote(TestBase):
          # will raise fatal: Will not delete all non-push URLs
          assert_raises(GitCommandError, remote.delete_url, test3)
  
 +    @skipIf(os.environ.get('SKIP_GITHUB', 'false') == 'true', 'GitHub connection error')
      def test_fetch_error(self):
          rem = self.rorepo.remote('origin')
-         with self.assertRaisesRegex(GitCommandError, "Couldn't find remote ref __BAD_REF__"):
+         with self.assertRaisesRegex(GitCommandError, "[Cc]ouldn't find remote ref __BAD_REF__"):

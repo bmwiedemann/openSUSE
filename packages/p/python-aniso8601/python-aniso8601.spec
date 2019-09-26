@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname aniso8601
 Name:           python-%{modname}
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        A library for parsing ISO 8601 strings
 License:        BSD-3-Clause
@@ -50,7 +50,7 @@ in ISO 8601 format into datetime format.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} python -m unittest discover aniso8601/tests/
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover aniso8601/tests/
 
 %files %{python_files}
 %license LICENSE

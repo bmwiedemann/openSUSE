@@ -1,5 +1,5 @@
 #
-# spec file for package R-Rcpp
+# spec file for package R
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -22,22 +22,34 @@ Name:           R-%{packname}
 Version:        1.0.1
 Release:        0
 Summary:        Seamless R and C++ Integration
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://cran.r-project.org/package=%{packname}
 Source:         https://cran.r-project.org/src/contrib/%{packname}_%{version}.tar.gz
 Source1:        R-Rcpp-rpmlintrc
 BuildRequires:  R-base-devel >= 3.0.0
+BuildRequires:  R-inline
+BuildRequires:  R-knitr
 BuildRequires:  R-methods
+BuildRequires:  R-rbenchmark
+BuildRequires:  R-rmarkdown
+BuildRequires:  R-RUnit
 BuildRequires:  R-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
 BuildRequires:  texinfo
-BuildRequires:  texlive
 Requires:       R-base >= 3.0.0
 Requires:       R-methods
 Requires:       R-utils
+%if 0%{?sle_version} > 120400 || 0%{?is_opensuse}
+BuildRequires:  tex(ae.sty)
+BuildRequires:  tex(fancyvrb.sty)
+BuildRequires:  tex(inconsolata.sty)
+BuildRequires:  tex(natbib.sty)
+BuildRequires:  tex(thumbpdf.sty)
+%else
+BuildRequires:  texlive
+%endif
 
 %description
 The 'Rcpp' package provides R functions as well as C++ classes which offer
@@ -56,6 +68,7 @@ Balamuta (2017, <doi:10.7287/peerj.preprints.3188v1>); see
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
+Requires:       R-base-devel
 
 %description    devel
 Development files and headers needed to build software using %{name}.
@@ -89,8 +102,12 @@ test -d %{packname}/src && (cd %{packname}/src; rm -f *.o *.so)
 rm -f %{buildroot}%{rlibdir}/R.css
 %fdupes %{buildroot}%{rlibdir}/%{packname}
 
+%check
+export LANG=en_US.UTF-8
+export _R_CHECK_FORCE_SUGGESTS_=false
+%{_bindir}/R CMD check %{packname}
+
 %files
-%defattr(-, root, root, -)
 %dir %{rlibdir}/%{packname}
 %doc %{rlibdir}/%{packname}/DESCRIPTION
 %doc %{rlibdir}/%{packname}/CITATION
@@ -108,11 +125,9 @@ rm -f %{buildroot}%{rlibdir}/R.css
 %{rlibdir}/%{packname}/prompt/
 
 %files devel
-%defattr(-, root, root, -)
 %{rlibdir}/%{packname}/include/
 
 %files doc
-%defattr(-, root, root, -)
 %doc %{rlibdir}/%{packname}/announce/
 %doc %{rlibdir}/%{packname}/doc/
 %doc %{rlibdir}/%{packname}/examples

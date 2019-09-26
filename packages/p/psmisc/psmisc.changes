@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 11:57:44 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- Do not recommend lang package. The lang package already has a
+  supplements.
+
+-------------------------------------------------------------------
 Fri Nov 30 13:21:44 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zetup
-Version:        0.2.63
+Version:        0.2.64
 Release:        0
 Summary:        Project setups tools
 License:        LGPL-3.0-only

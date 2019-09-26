@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 21 20:19:07 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.10:
+  * Catch and warn for invalid Content-Types
+  * Add a manually extracted list of config options to r2e.1
+  * Add a redirect post-process module
+  * Follow symlinks of datafiles
+  * Add zsh completion
+  * Add support for maildir
+  * Fix `r2e new` overwriting an existing config
+  * Add new `feed-name` and `feed-url` attributes for the
+    `name-format` setting
+  * Change logging format
+  * Allow multiple SMTP recipients
+  * Fix SMTP security issues
+  * Fix test suite
+  * Drop support for Python 3.2 and 3.3
+  * Remove `__contributors__` from the `rss2email` module
+  * Stop using deprecated `html2text.unescape`
+  * Fix locking issues when data file is on NFS
+  * Add `same-server-fetch-interval` setting for rate-limiting fetches
+    to a server
+  * Update setup.py to setuptools
+
+-------------------------------------------------------------------
 Wed Apr  5 15:26:23 UTC 2017 - jmatejek@suse.com
 
 - switch requires from outdated python3-distribute to setuptools

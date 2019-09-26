@@ -1534,4 +1534,12 @@ for 12.3</comment>
   * systemd-portabled (boo#1145639)</comment>
     <requestid>728566</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>aaac1aa93f1765e382ff472a0d97ad83</srcmd5>
+    <version>13.2+20190919.a656be4</version>
+    <time>1569522907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731886</requestid>
+  </revision>
 </revisionlist>

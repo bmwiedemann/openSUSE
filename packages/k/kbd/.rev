@@ -745,4 +745,12 @@ Fix version typo:
     <comment></comment>
     <requestid>627150</requestid>
   </revision>
+  <revision rev="92" vrev="10">
+    <srcmd5>915c88237663d36bcbe08a4cf935b8ef</srcmd5>
+    <version>2.0.4</version>
+    <time>1569522942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731996</requestid>
+  </revision>
 </revisionlist>

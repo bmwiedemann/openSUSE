@@ -109,4 +109,12 @@
 - Re-copy fix-FHS.dpatch.diff, help-option.dpatch.diff from Debian.</comment>
     <requestid>535046</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bf2b927a24c0966e83b84c2a575acd61</srcmd5>
+    <version>2.5.1</version>
+    <time>1569523327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733329</requestid>
+  </revision>
 </revisionlist>

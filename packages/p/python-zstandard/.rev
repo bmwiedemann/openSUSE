@@ -16,4 +16,16 @@
   * Fix memory leak in ``ZstdDecompressionReader.seek()`` (#82).</comment>
     <requestid>705256</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f3daa9afec081773046b0abc1ad5705</srcmd5>
+    <version>0.12.0</version>
+    <time>1569523117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Fix ZstdDecompressor.__init__ on 64-bit big-endian systems (#91).
+  * Fix memory leak in ZstdDecompressionReader.seek() (#82).
+  * CI transitioned to Azure Pipelines (from AppVeyor and Travis CI).
+  * Switched to pytest for running tests (from nose).</comment>
+    <requestid>732155</requestid>
+  </revision>
 </revisionlist>

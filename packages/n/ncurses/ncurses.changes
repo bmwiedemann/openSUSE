@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep  9 11:25:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190907
+  + add --with-ada-libname option and modify Ada95 configuration to 
+    allow renaming the "AdaCurses" library (prompted by proposed changes
+    by Pascal Pignard).
+  + modify configure script to distinguish gcc from icc and clang when
+    the --enable-warnings option is not used, to avoid unnecessary
+    warnings about unrecognized inline options (report by Sven Joachim).
+- Add ncurses patch 20190831
+  + build-fixes for configuration using --program-suffix with Ada95,
+    noticed with MacOS but applicable to other platforms without
+    libpanelw, etc.
+
+-------------------------------------------------------------------
+Mon Aug 26 09:31:15 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190824
+  + fix some cppcheck warnings, mostly style, in ncurses test-programs.
+
+-------------------------------------------------------------------
+Mon Aug 19 09:32:14 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20190817
+  + amend 20181208 changes for wbkgd() and wbkgrnd(), fixing a few
+    details where it still differed from SVr4.
+  + fix some cppcheck warnings, mostly style, in ncurses test-programs.
+
+-------------------------------------------------------------------
 Mon Aug 12 08:05:06 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20190810

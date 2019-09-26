@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ppc64-diag
-Version:        2.7.5
+Version:        2.7.6
 Release:        0
 Summary:        Linux for Power Platform Diagnostics
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ Patch1:         ppc64-diag.varunused.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  cron
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel >= 1.4.0

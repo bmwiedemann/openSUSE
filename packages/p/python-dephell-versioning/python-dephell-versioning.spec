@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell-versioning
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Dephell plugin to manage version updates
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell_versioning
 Source:         https://files.pythonhosted.org/packages/source/d/dephell_versioning/dephell_versioning-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/dephell/dephell_versioning/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +42,6 @@ Dephell plugin to manage version bumping project version.
 
 %prep
 %setup -q -n dephell_versioning-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build

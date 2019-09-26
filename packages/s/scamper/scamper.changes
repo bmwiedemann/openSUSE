@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Sep 18 19:37:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove SIOCGSTAMP.patch
+- update to version 20190916:
+ * scamper
+  * add a host implementation for looking up DNS records.  it uses
+  the first nameserver it finds in /etc/resolv.conf by default.
+  * add an -O ptr option to tracelb.
+  * bugfix json output for tracelb.
+  * integrate patricia trie implementation into scamper hotspot
+  * use HAVE_SYSCTL macro to solve a compile issue on android
+  * include <linux/sockios.h> to get SIOCGSTAMP in Linux kernel > 5.2
+  * add -A option to ping code to set the ack number to use in tcp
+  probes (or sequence number in SYN packets).  do not randomly
+  generate sequence and ack values for each TCP ping.
+  * rework options handling to allow for long long values.
+  * set the window size in TCP probes to 65535, instead of advertising a
+  zero receive window.
+  * update configure scripts around the use of --with-privsep-dir-owner
+ * sc_ally:
+  * when outputting alias sets, conduct a canonical sort to allow for
+  easy diffs
+  * update man page because sc_ally can take more than two addresses per
+  line
+ * sc_erosprober:
+  * new driver to periodically probe addresses and rotate output files.
+ * sc_hoiho:
+  * new utility for holistic orthography of Internet hostname
+  observations.  this utility is only built if --with-sc_hoiho is
+  passed to configure.  sc_hoiho requires pcre or pcre2, which can be
+  controlled by passing --with-pcre or --with-pcre2 to configure.
+ * sc_uptime:
+  * add a last_tx column to state_dsts to allow for simple monitoring of
+  when each destination address was last probed.
+ * various drivers:
+  * handle scamper disconnections gracefully in sc_ally,
+  sc_filterpolicy, sc_prefixscan, sc_radargun, sc_speedtrap,
+  sc_tbitblind, sc_tbitpmtud, and sc_uptime
+
+-------------------------------------------------------------------
 Tue Aug 20 19:34:08 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add SIOCGSTAMP.patch for recent changes in socket.h/socketios.h

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 08:38:50 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  Replace BuildRequires: libxml2-python by python3-libxml2
+   as libxml2 updated.
+
+-------------------------------------------------------------------
 Thu Jul 18 09:54:07 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

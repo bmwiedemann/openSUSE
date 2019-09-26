@@ -1,8 +1,0 @@
-<package name="python-piston-mini-client" project="openSUSE:Factory">
-  <title></title>
-  <description>A small generic library for writing clients for Django's Piston REST APIs.</description>
-  <devel project="devel:languages:python" package="python-piston-mini-client"/>
-  <build>
-    <disable/>
-  </build>
-</package>

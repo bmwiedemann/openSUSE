@@ -1056,4 +1056,13 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment></comment>
     <requestid>683716</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>a6208b97cbf333329e5170d10a56c217</srcmd5>
+    <version>8.31</version>
+    <time>1569522954</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend lang package. The lang package already has a
+  supplements. (forwarded request 731937 from lnussel)</comment>
+    <requestid>732000</requestid>
+  </revision>
 </revisionlist>

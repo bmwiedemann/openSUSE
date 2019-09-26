@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 12:14:12 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- Do not recommend lang package. The lang package already has a
+  supplements.
+
+-------------------------------------------------------------------
 Tue Jul  9 09:26:58 UTC 2019 - Thomas Blume <thomas.blume@suse.com>
 
 - don't call systemd uninstall macro for clean-mount-point@.service 

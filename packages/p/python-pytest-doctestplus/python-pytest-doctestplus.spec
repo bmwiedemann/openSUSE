@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ URL:            https://github.com/astropy/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
 # Backport of https://github.com/astropy/pytest-doctestplus/pull/37
 Patch0:         pr_37.patch
-Patch1:         https://github.com/astropy/pytest-doctestplus/commit/0a7176531d8395a381bf76ce8ae2e59eef1a60ea.patch#/merged_pr_63.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,7 +55,7 @@ advanced doctest support and enables the testing of reStructuredText
 
 %prep
 %setup -q -n pytest-doctestplus-%{version}
-%autopatch -p1
+%patch0 -p1
 # do not change the pytest behaviour for us
 rm -f setup.cfg
 

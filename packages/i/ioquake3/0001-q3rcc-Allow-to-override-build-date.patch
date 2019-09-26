@@ -1,0 +1,48 @@
+From a96f32eba2ed01f0a7ad8a321d1863e8ef43da3d Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 10 Jul 2019 17:17:37 +0200
+Subject: [PATCH] q3rcc: Allow to override build date
+
+Allow to override __DATE__ and __TIME__ with SOURCE_DATE_EPOCH
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+This behavior is what gcc already does.
+---
+ code/tools/lcc/cpp/cpp.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/code/tools/lcc/cpp/cpp.c b/code/tools/lcc/cpp/cpp.c
+index 5c0cfd7b..13e04850 100644
+--- a/code/tools/lcc/cpp/cpp.c
++++ b/code/tools/lcc/cpp/cpp.c
+@@ -19,6 +19,15 @@ int	ifdepth;
+ int	ifsatisfied[NIF];
+ int	skipping;
+ 
++time_t reproducible_time()
++{
++	char *source_date_epoch;
++	time_t t;
++	if ((source_date_epoch = getenv("SOURCE_DATE_EPOCH")) == NULL ||
++		(t = (time_t)strtol(source_date_epoch, NULL, 10)) <= 0)
++		return time(NULL);
++	return t;
++}
+ 
+ int
+ main(int argc, char **argv)
+@@ -28,7 +37,7 @@ main(int argc, char **argv)
+ 	char ebuf[BUFSIZ];
+ 
+ 	setbuf(stderr, ebuf);
+-	t = time(NULL);
++	t = reproducible_time();
+ 	curtime = ctime(&t);
+ 	maketokenrow(3, &tr);
+ 	expandlex();
+-- 
+2.22.0
+

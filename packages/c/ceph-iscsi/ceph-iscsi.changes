@@ -4,8 +4,8 @@ Tue Sep 10 06:54:56 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 - Update to 3.2+1568098374.g09c5205:
   + upstream 3.2 release
     * Always use host FQDN instead of shortname
-    * Validate target controls min/max value
-    * Validate rbd:user/tcmu-runner image controls min/max value
+    * Validate min/max value for target controls and rbd:user/tcmu-runner image
+      controls (bsc#1140491)
   + checkin.sh:
     * add "sed" statements to reproduce Dominique Leuenberger's
       downstream-only mod from July 29, 2019 (see previous entry), so it

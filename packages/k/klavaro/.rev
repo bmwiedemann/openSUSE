@@ -187,4 +187,43 @@
     <comment></comment>
     <requestid>589406</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fc1e1b25b932ea5c061ae7cd2643bda0</srcmd5>
+    <version>3.09</version>
+    <time>1569523212</time>
+    <user>dimstar_suse</user>
+    <comment>This should fix the current build failures in Factory - and introduces a new version...
+
+- update to 3.09
+  * Fixed:
+	- Internet ranking server now is https://klavaro.sourceforge.io/top10/
+	- Top10 window showing always external scores when changing language
+	  combobox.
+	- Portugal Portuguese code (pt) defined as pt_PT.
+	- Man page updated.
+	- Disabling beeps internally too.
+	- qwertz_sk_2.kbd is a qwerty one: --&gt; qwerty_sk.kbd (Slovakia)
+	- qwertz_sk.kbd is for Slovenia:  --&gt;  qwertz_si.kbd
+	- Contry code for Slovenia is sk, not sl.
+	- Using $(rootdatadir) for Gnome metadata.
+  * Added:
+	- Validation limits before putting scorings on Top 10.
+	- Logging touch timings from last session for all modules: 
+	  $HOME/.local/share/klavaro/deviation_MODULE.txt
+	- Portuguese translation, from Portugal (pt).
+	- Hotkey Ctrl+F: font configuration.
+	- Hotkey Ctrl+KP_plus: increase spin buttons.
+	- Hotkey Ctrl+KP_minus: decrease spin buttons.
+	- Hotkeys Ctrl+R or Escape: cancel current practice, start a new one.
+	- Alternative colors toggle button in tutor window. At first time run,
+	  a default &quot;dark mode&quot; is copied to the file: $HOME/.config/klavaro/altcolor.ini
+	  Hotkey: Ctrl+A for alternative colors.
+	- qwertz_sk_2.kbd keyboard layout for Slovenia.
+	- /usr/.../share/klavaro/preferences_darkmode.ini as dark colors example.
+  * Removed:
+	- Beeps, as they were not reliable.
+  * Updated translations:
+	- Dutch.</comment>
+    <requestid>732919</requestid>
+  </revision>
 </revisionlist>

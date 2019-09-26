@@ -547,4 +547,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>Applications 19.08.0 (forwarded request 723532 from cgiboudeaux)</comment>
     <requestid>723571</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3e0ae2bb99020f47902aa24c87fd62da</srcmd5>
+    <version>19.08.1</version>
+    <time>1569523040</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
+    <requestid>728746</requestid>
+  </revision>
 </revisionlist>

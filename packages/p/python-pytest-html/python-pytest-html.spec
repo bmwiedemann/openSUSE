@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-html
-Version:        1.22.0
+Version:        2.0.0
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0

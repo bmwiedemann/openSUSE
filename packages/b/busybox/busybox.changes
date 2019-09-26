@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:27:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing from description.
+
+-------------------------------------------------------------------
 Thu Aug 22 15:27:18 CEST 2019 - kukuk@suse.de
 
 - Drop busybox-rpm-E.patch, not needed anymore

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 20 14:38:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Tests require jsonschema 3.
+
+-------------------------------------------------------------------
+Sun Aug 11 03:39:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.1.0
+  * Add rest API for server extension for handling pure git diffs
+    of notebooks. This allows for a cleaner call without prefixing
+    the filename etc. This is currently only available on the
+    server extension, but can be moved to the main server if there
+    is demand.
+- Update to 1.0.7
+  * Fixes an issue using config files (PR #476).
+  * Upgrades to using lab 1.0 components, which also allows lab
+    extension to support lab 1.0.
+- Update to 1.0.6
+  * Fixed a styling regression from 1.0.5, where the web text panes
+    had incorrect styling (most notably incorrect widths).
+
+-------------------------------------------------------------------
 Thu May 16 19:08:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Specify which version number is being used to avoid conflicts.

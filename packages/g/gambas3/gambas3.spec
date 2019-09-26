@@ -37,7 +37,7 @@
 %endif
 %endif
 Name:           gambas3
-Version:        3.13.0
+Version:        3.14.0
 Release:        0
 Summary:        BASIC interpreter under Linux
 License:        GPL-2.0-or-later
@@ -175,6 +175,7 @@ Requires:       %{name}-gb-form = %{version}
 Requires:       %{name}-gb-form-dialog = %{version}
 Requires:       %{name}-gb-form-editor = %{version}
 Requires:       %{name}-gb-form-mdi = %{version}
+Requires:       %{name}-gb-form-print = %{version}
 Requires:       %{name}-gb-form-stock = %{version}
 Requires:       %{name}-gb-image = %{version}
 Requires:       %{name}-gb-image-effect = %{version}
@@ -551,6 +552,16 @@ Requires:       %{name}-runtime = %{version}
 
 %description gb-form-mdi
 This component implements the new Workspace control.
+
+%package gb-form-print
+Summary:        Printer class for Gambas
+Group:          Development/Tools/IDE
+Requires:       %{name}-gb-form = %{version}
+Requires:       %{name}-runtime = %{version}
+
+%description gb-form-print
+This component extends the Printer class with a generic preview and print
+dialog.
 
 %package gb-form-stock
 Summary:        Stock icon support for Gambas
@@ -1469,6 +1480,11 @@ cp -fv ./app/src/gambas-wiki/.public/style.css %{buildroot}%{_datadir}/%{name}/h
 %{_datadir}/%{name}/info/gb.form.mdi.info
 %{_datadir}/%{name}/control/gb.form.mdi/
 %{_datadir}/%{name}/info/gb.form.mdi.list
+
+%files gb-form-print
+%defattr(-,root,root)
+%{_libdir}/%{name}/gb.form.print.*
+%{_datadir}/%{name}/info/gb.form.print.*
 
 %files gb-form-stock
 %defattr(-,root,root)

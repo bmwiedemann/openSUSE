@@ -17,13 +17,13 @@
 
 
 Name:           strawberry
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
-Summary:        A audio player and music collection organizer
+Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            http://www.strawbs.org/
-Source:         http://files.jkvinge.net/packages/strawberry/%{name}-%{version}.tar.xz
+URL:            https://www.strawberrymusicplayer.org/
+Source:         https://files.jkvinge.net/packages/strawberry/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
@@ -82,12 +82,13 @@ Requires(postun): gtk3-tools
 Requires:       libQt5Sql5-sqlite
 
 %description
-Strawberry is a audio player and music collection organizer.
+Strawberry is a music player and music collection organizer.
 It is a fork of Clementine. The name is inspired by the band Strawbs.
 
 Features:
   - Play and organize music
-  - Supports WAV, FLAC, WavPack, DSF, DSDIFF, Ogg Vorbis, Speex, MPC, TrueAudio, AIFF, MP4, MP3 and ASF
+  - Supports WAV, FLAC, WavPack, DSF, DSDIFF, Ogg FLAC, Ogg Vorbis, Ogg Opus, Ogg Speex, MPC, TrueAudio,
+    AIFF, MP4, MP3, ASF and Monkey's Audio.
   - Audio CD playback
   - Native desktop notifications
   - Playlists in multiple formats
@@ -95,7 +96,7 @@ Features:
   - Edit tags on music files
   - Fetch tags from MusicBrainz
   - Album cover art from Last.fm, Musicbrainz, Discogs, Deezer and Tidal
-  - Song lyrics from AudD
+  - Song lyrics from AudD, lyrics.ovh and lololyrics.com
   - Support for multiple backends
   - Audio analyzer
   - Equalizer
@@ -116,10 +117,10 @@ make %{?_smp_mflags}
 %cmake_install
 
 %if 0%{?suse_version} < 1500
-rm -f %{buildroot}%{_datadir}/metainfo/org.strawbs.strawberry.appdata.xml
+rm -f %{buildroot}%{_datadir}/metainfo/org.strawberrymusicplayer.strawberry.appdata.xml
 %endif
 
-%suse_update_desktop_file org.strawbs.strawberry Qt AudioVideo Audio Player
+%suse_update_desktop_file org.strawberrymusicplayer.strawberry Qt AudioVideo Audio Player
 
 %if 0%{?suse_version} < 1500
 %post
@@ -132,9 +133,9 @@ rm -f %{buildroot}%{_datadir}/metainfo/org.strawbs.strawberry.appdata.xml
 %endif
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.strawbs.strawberry.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.strawberrymusicplayer.strawberry.desktop
 %if 0%{?suse_version} >= 1500
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.strawbs.strawberry.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.strawberrymusicplayer.strawberry.appdata.xml
 %endif
 
 %files

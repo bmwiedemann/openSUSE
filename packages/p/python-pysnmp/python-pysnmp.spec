@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysnmp
-Version:        4.4.11
+Version:        4.4.12
 Release:        0
 Summary:        A pure-Python SNMPv1/v2c/v3 library
 License:        BSD-2-Clause

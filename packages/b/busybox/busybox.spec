@@ -19,7 +19,7 @@
 Name:           busybox
 Version:        1.30.1
 Release:        0
-Summary:        The Swiss Army Knife of Embedded Linux
+Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
 Group:          System/Base
 Url:            http://www.busybox.net/
@@ -33,61 +33,40 @@ Patch:          busybox.install.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
 BuildRequires:  libtirpc-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
-small single executable. It provides minimalist replacements for most
-of the utilities usually found in fileutils, shellutils, findutils,
-textutils, grep, gzip, tar, and more. BusyBox provides a fairly
-complete POSIX environment for any small or embedded system. The
-utilities in BusyBox generally have fewer options than their
-full-featured GNU cousins. The options that are included provide the
-expected functionality and behave very much like their GNU
-counterparts.
+single executable. It provides minimalist replacements for utilities
+usually found in fileutils, shellutils, findutils, textutils, grep,
+gzip, tar, and more. BusyBox provides a fairly complete POSIX
+environment for small or embedded systems. The utilities in BusyBox
+generally have fewer options than their GNU cousins. The options that
+are included provide the expected functionality and behave much like
+their GNU counterparts.
 
 %package static
-Summary:        Static linked Swiss Army Knife of Embedded Linux
+Summary:        Static linked version of Busybox, a compact UNIX utility collection
 Group:          System/Base
 
 %description static
-The static linked BusyBox combines tiny versions of many common UNIX utilities into a
-small single executable. It provides minimalist replacements for most
-of the utilities usually found in fileutils, shellutils, findutils,
-textutils, grep, gzip, tar, and more. BusyBox provides a fairly
-complete POSIX environment for any small or embedded system. The
-utilities in BusyBox generally have fewer options than their
-full-featured GNU cousins. The options that are included provide the
-expected functionality and behave very much like their GNU
-counterparts.
+BusyBox combines tiny versions of many common UNIX utilities into a
+single executable.
 
 %package container
-Summary:        Swiss Army Knife of Embedded Linux configured for container
+Summary:        A version of Busybox configured for containers
 Group:          System/Base
 Provides:       useradd_or_adduser_dep
 
 %description container
-This is a very small BusyBox version which contains only the tools which
+This is a small BusyBox version which contains only the tools which
 makes sense in a container.
-BusyBox combines tiny versions of many common UNIX utilities into a
-small single executable. It provides minimalist replacements for most
-of the utilities usually found in fileutils, shellutils, findutils,
-textutils, grep, gzip, tar, and more. BusyBox provides a fairly
-complete POSIX environment for any small or embedded system. The
-utilities in BusyBox generally have fewer options than their
-full-featured GNU cousins. The options that are included provide the
-expected functionality and behave very much like their GNU
-counterparts.
-
 
 %prep
 %setup -q
 %patch -p0
 cp -a %{SOURCE1} docs/
-find -name CVS | xargs rm -rf
-find -name .cvsignore | xargs rm -rf
-find -name .svn | xargs rm -rf
-find -name .gitignore | xargs rm -rf
+find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
+	-exec rm -Rf {} +
 
 %build
 export KCONFIG_NOTIMESTAMP=KCONFIG_NOTIMESTAMP
@@ -127,7 +106,6 @@ install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc docs/mdev.txt
 %doc %{_mandir}/man1/BusyBox.1.gz
@@ -137,12 +115,10 @@ install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 %{_datadir}/busybox/busybox.links
 
 %files static
-%defattr(-,root,root)
 %license LICENSE
 %{_bindir}/busybox-static
 
 %files container
-%defattr(-,root,root)
 %license LICENSE
 %{_bindir}/busybox-container
 %{_bindir}/busybox-container.install

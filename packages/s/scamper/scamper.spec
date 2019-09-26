@@ -18,14 +18,13 @@
 
 
 Name:           scamper
-Version:        20181219
+Version:        20190916
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 Url:            https://www.caida.org/tools/measurement/scamper/
 Source:         https://www.caida.org/tools/measurement/%{name}/code/%{name}-cvs-%{version}.tar.gz
-Patch0:         SIOCGSTAMP.patch
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 
@@ -74,7 +73,6 @@ libscamperfile library.
 
 %prep
 %setup -q -n %{name}-cvs-%{version}
-%patch0 -p0
 
 %build
 %configure --disable-static

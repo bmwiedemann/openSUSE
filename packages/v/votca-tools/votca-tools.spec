@@ -96,7 +96,11 @@ make -C build install DESTDIR=%{buildroot}
 sed -i '1s@env @@' %{buildroot}/%{_bindir}/votca_compare
 
 %check
-make -C build test CTEST_OUTPUT_ON_FAILURE=1
+# https://github.com/votca/tools/issues/166
+%ifarch i586
+%global testargs ARGS='-E unit_test_elements'
+%endif
+make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
 
 %files
 %defattr(-,root,root,-)

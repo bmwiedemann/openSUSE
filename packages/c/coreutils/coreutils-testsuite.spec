@@ -68,10 +68,6 @@ Provides:       stat = %{version}
 Provides:       textutils = %{version}
 %endif
 
-%if "%{name}" == "coreutils"
-Recommends:     %{name}-lang = %version
-%endif
-
 # this will create a cycle, broken up randomly - coreutils is just
 # too core to have other prerequisites.
 #PreReq:         permissions

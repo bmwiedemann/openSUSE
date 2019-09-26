@@ -90,7 +90,6 @@ Requires:       util-linux
 # For mkfs.xfs, xfs_admin
 Requires:       xfsprogs
 Recommends:     %{libudisks}_btrfs
-Recommends:     %{name}-lang
 %{?systemd_requires}
 # Upstream First - Policy:
 # Never add any patches to this package without the upstream commit id

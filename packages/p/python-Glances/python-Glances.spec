@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Glances
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -27,22 +27,30 @@ URL:            https://github.com/nicolargo/glances
 Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Patch0:         adjust-data-files.patch
 Patch1:         remove-shebang.patch
+Patch2:         skip-online-tests.patch
 BuildRequires:  %{python_module bottle}
+BuildRequires:  %{python_module curses}
+BuildRequires:  %{python_module netifaces}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module psutil >= 5.3.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python2-future
 Requires:       python-bottle
 Requires:       python-curses
-Requires:       python-psutil >= 5.3.0
+Requires:       python-psutil >= 5.6.3
 Requires:       python-requests
 Provides:       python-glances = %{version}
-Obsoletes:      python-glances
+Obsoletes:      python-glances < %{version}
+BuildArch:      noarch
+%ifpython2
+Requires:       python-future
+%endif
 %ifpython3
 Provides:       glances
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -58,6 +66,7 @@ size of the user interface.
 %build
 %python_build
 
+# tests are failing on upstream, they apparently don't mind
 %check
 export LANG=en_US.UTF-8
 %python_exec unitest.py
@@ -70,7 +79,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %license COPYING
-%doc NEWS README.rst
+%doc NEWS.rst README.rst
 %python3_only %{_bindir}/glances
 %python3_only %{_mandir}/man1/glances.1.gz
 %{python_sitelib}/*

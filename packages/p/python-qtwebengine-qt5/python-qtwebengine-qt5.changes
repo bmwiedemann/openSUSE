@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:44:26 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.13.1
+  * Added the missing QWebEnginePage.Feature.Notifications enum member.
+  * Fix building against Qt v5.12 and earlier.
+  * Fixed building when Qt doesn't support QtWebChannel.
+  * Added support for sip v5.
+- Add update-timeline.patch
+
+-------------------------------------------------------------------
 Fri Jul 12 10:27:56 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.13.0

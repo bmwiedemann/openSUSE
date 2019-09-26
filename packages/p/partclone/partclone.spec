@@ -18,13 +18,13 @@
 
 
 Name:           partclone
-Version:        0.3.12
+Version:        0.3.13
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            http://partclone.org/
-Source:         https://github.com/Thomas-Tsai/partclone/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://partclone.org/
+Source:         https://sourceforge.net/projects/partclone/files/unstable/partclone-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
@@ -46,7 +46,7 @@ ext2/3, reiserfs, reiser4, xfs, hfs+ file systems
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
@@ -58,6 +58,7 @@ autoreconf -fiv
   --enable-extfs \
   --enable-fat \
   --enable-hfsp \
+  --enable-apfs \
   --enable-ntfs \
   --enable-xfs \
   --enable-f2fs \
@@ -75,6 +76,7 @@ make %{?_smp_mflags} LIBS="-lncursesw -lpthread -lfuse"
 %files
 %license COPYING
 %doc ChangeLog README.md
+%{_sbindir}/partclone.apfs
 %{_sbindir}/partclone.btrfs
 %{_sbindir}/partclone.chkimg
 %{_sbindir}/partclone.dd

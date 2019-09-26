@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 09:05:55 UTC 2019 - Martin Vidner <mvidner@suse.com>
+
+- Allow YaST to select Iranian (Persian, Farsi) keyboard layout
+  (bsc#1092920)
+
+-------------------------------------------------------------------
 Thu Aug  2 08:06:01 UTC 2018 - schwab@suse.de
 
 - fbtest.c: include <sys/sysmacros.h> for major/minor

@@ -89,4 +89,14 @@
     <comment></comment>
     <requestid>692926</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a4c72260127715d2f87776020d5ff1be</srcmd5>
+    <version>0.3.13</version>
+    <time>1569523314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.13&quot;
+  * Add support for apfs
+- Update download url</comment>
+    <requestid>733325</requestid>
+  </revision>
 </revisionlist>

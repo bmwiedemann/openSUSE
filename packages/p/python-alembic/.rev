@@ -1187,4 +1187,23 @@
     <comment></comment>
     <requestid>732612</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f2ed329533b6ff12ddf27b589091c4a3</srcmd5>
+    <version>1.2.1</version>
+    <time>1569523339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * bugs
+    + Reverted the name change of the “revisions” argument to
+      command.stamp() to “revision” as apparently applications are
+      calling upon this argument as a keyword name. Pull request
+      courtesy Thomas Bechtold. Special translations are also added
+      to the command line interface so that it is still known
+      as “revisions” in the CLI.
+      References: #601
+    + Removed the “test requirements” from “setup.py test”, as
+      this command now only emits a removal error in any case
+      and these requirements are unused.</comment>
+    <requestid>733336</requestid>
+  </revision>
 </revisionlist>

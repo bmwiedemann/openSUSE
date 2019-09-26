@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:03:41 UTC 2019 - tchvatal@suse.com
+
+- Update to version 3.0.2.1566444429.0765792:
+  * prepare next release
+  * BF: remove ddt from requirements.txt since no ddt required at run time.
+  * Bump version to 3.0.1
+  * Remove dependency on 'gitdb'; fixes #908
+  * Changelog information
+  * Adding test
+  * Returning commit object instead of hash value
+  * Snack case as requested in #903
+  * Method stating which commit is being played during an halted rebase
+  * Fix performance regression, see #906
+- Drop merged patch merged_pr_793.patch
+- Rebase patch test-skips.patch
+
+-------------------------------------------------------------------
 Fri Mar 15 13:52:47 UTC 2019 - tchvatal@suse.com
 
 - Update to version 2.1.11.1531661757.92a4819:

@@ -36,9 +36,6 @@ BuildRequires:  pkgconfig
 Provides:       lzma = %{version}
 Obsoletes:      lzma < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?lang_package:1}
-Recommends:     %{name}-lang
-%endif
 
 %description
 The xz command is a program for compressing files.

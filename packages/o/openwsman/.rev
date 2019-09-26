@@ -679,4 +679,12 @@
   * Many potential NULL dereferences fixed (Alexander Usyskin)</comment>
     <requestid>731472</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>fd5fc88883d4d12cb4c5b2660eec3f46</srcmd5>
+    <version>2.6.12</version>
+    <time>1569523359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>733369</requestid>
+  </revision>
 </revisionlist>

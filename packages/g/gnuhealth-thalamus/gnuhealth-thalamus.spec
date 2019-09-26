@@ -21,7 +21,7 @@
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        The GNU Health Federation Message and Authentication Server
 License:        GPL-3.0-or-later

@@ -142,4 +142,24 @@
     <comment></comment>
     <requestid>728714</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ddc23aade121efdc41deacd9352d5ab1</srcmd5>
+    <version>3.4.1</version>
+    <time>1569523215</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 3.4.1
+    - This point release addresses the following issues:
+    - Fixes an issue where a PID namespace was always being used
+    - Fixes compilation on non 64-bit architectures
+    - Allows fakeroot builds for zypper, pacstrap, and debootstrap
+    - Correctly detects seccomp on OpenSUSE
+    - Honors GO_MODFLAGS properly in the mconfig generated makefile
+    - Passes the Mac hostname to the VM in MacOS Singularity builds
+    - Handles temporary EAGAIN failures when setting up loop devices on
+      recent kernels.
+  * Removed obsoleted patches:
+    - fix_build_in_32_bits.patch
+    - fix_flags_order.patch (forwarded request 733022 from eeich)</comment>
+    <requestid>733023</requestid>
+  </revision>
 </revisionlist>

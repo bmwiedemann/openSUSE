@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 26 07:52:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.0.0:
+  * Handle ',' character as a fractional separator, as required by 4.2.2.4, see PR 12
+  * Fix semver usage for prelease version, as required by clause 9
+
+-------------------------------------------------------------------
 Wed Jun 12 10:33:54 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 7.0.0

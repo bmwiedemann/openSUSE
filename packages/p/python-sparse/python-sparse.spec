@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define         skip_python2 1
 Name:           python-sparse
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause

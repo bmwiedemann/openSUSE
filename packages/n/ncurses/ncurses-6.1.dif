@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5197,12 +5197,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5199,12 +5199,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5212,7 +5215,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5214,7 +5217,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5252,7 +5255,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5254,7 +5257,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5261,23 +5264,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5263,23 +5266,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5286,7 +5289,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5288,7 +5291,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5296,18 +5299,18 @@ CF_EOF
+@@ -5298,18 +5301,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5327,9 +5330,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5329,9 +5332,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5349,6 +5352,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5351,6 +5354,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -151,7 +151,7 @@
  done
 --- configure
 +++ configure	2019-08-12 08:07:59.759015287 +0000
-@@ -5487,7 +5487,7 @@ echo $ECHO_N "checking for an rpath opti
+@@ -5590,7 +5590,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -160,7 +160,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -13973,12 +13973,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14076,12 +14076,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -178,7 +178,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -13988,7 +13991,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14091,7 +14094,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -187,7 +187,7 @@
  CF_EOF
  fi
  
-@@ -14028,7 +14031,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14131,7 +14134,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -196,7 +196,7 @@
  CF_EOF
  fi
  
-@@ -14037,23 +14040,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14140,23 +14143,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -226,7 +226,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -14062,7 +14065,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14165,7 +14168,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -235,7 +235,7 @@
  							then
  								continue
  							fi
-@@ -14072,18 +14075,18 @@ CF_EOF
+@@ -14175,18 +14178,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -257,7 +257,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14103,9 +14106,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14206,9 +14209,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -270,7 +270,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -14125,6 +14128,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14228,6 +14231,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -278,7 +278,7 @@
  	;;
  esac
  done
-@@ -25334,6 +25338,7 @@ if test "$with_termlib" != no ; then
+@@ -25356,6 +25360,7 @@ if test "$with_termlib" != no ; then
  		TINFO_LDFLAGS="-L${LIB_DIR}"
  		SHLIB_LIST="$SHLIB_LIST -l${TINFO_LIB_SUFFIX}"
  	fi

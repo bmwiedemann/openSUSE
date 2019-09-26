@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 19 07:13:00 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to v2.7.6
+  - opal_errd: Enhance the purging logic of rotate_logs
+  - diags/cronjob: Include disk diagnostics
+  - CVE fixes
+  [jsc#SLE-8324, CVE-2014-4039, CVE-2014-4038]
+
+-------------------------------------------------------------------
 Tue Apr 30 12:31:54 UTC 2019 - josef.moellers@suse.com
 
 - Upgrade to upstream version 2.7.5

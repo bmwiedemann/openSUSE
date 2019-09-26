@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>729677</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8a546739d0d6ec9d8633e6b052309f94</srcmd5>
+    <version>3.2+1568099844.g09c5205</version>
+    <time>1569523208</time>
+    <user>dimstar_suse</user>
+    <comment>tweak changelog entry for Maintenance (forwarded request 732903 from smithfarm)</comment>
+    <requestid>732904</requestid>
+  </revision>
 </revisionlist>

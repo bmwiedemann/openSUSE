@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 24 16:51:53 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- New version 3.4.1
+    - This point release addresses the following issues:
+    - Fixes an issue where a PID namespace was always being used
+    - Fixes compilation on non 64-bit architectures
+    - Allows fakeroot builds for zypper, pacstrap, and debootstrap
+    - Correctly detects seccomp on OpenSUSE
+    - Honors GO_MODFLAGS properly in the mconfig generated makefile
+    - Passes the Mac hostname to the VM in MacOS Singularity builds
+    - Handles temporary EAGAIN failures when setting up loop devices on
+      recent kernels.
+  * Removed obsoleted patches:
+    - fix_build_in_32_bits.patch
+    - fix_flags_order.patch
+
+-------------------------------------------------------------------
+Mon Sep 23 09:15:14 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Fix build failure in i586. The patch is taken from upstream and should
+  be removed with the next release update.
+  * fix_build_in_32_bits.patch
+-------------------------------------------------------------------
 Tue Sep  3 14:39:35 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.4.0. Many changes since 3.2.1, for the full changelog 

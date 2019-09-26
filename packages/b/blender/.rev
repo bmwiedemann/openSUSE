@@ -925,4 +925,12 @@ Enable cycles-osl in build</comment>
     <comment>Build at all costs</comment>
     <requestid>732655</requestid>
   </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>a8d90da2ce3e77d6df589c157aa4f5bf</srcmd5>
+    <version>2.80</version>
+    <time>1569523260</time>
+    <user>dimstar_suse</user>
+    <comment>Try to prevent build failure</comment>
+    <requestid>733169</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+Index: glances-3.1.1/unitest.py
+===================================================================
+--- glances-3.1.1.orig/unitest.py
++++ glances-3.1.1/unitest.py
+@@ -191,6 +191,7 @@ class TestGlances(unittest.TestCase):
+         self.assertTrue(type(stats_grab) is list, msg='Folders stats is not a list')
+         print('INFO: Folders stats: %s' % stats_grab)
+ 
++    @unittest.skip("online")
+     def test_012_ip(self):
+         """Check IP plugin."""
+         print('INFO: [TEST_012] Check IP stats')

@@ -29,12 +29,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mock >= 2.0.0
-Requires:       python-pytest >= 3.0.0
+Requires:       python-pytest >= 4.0.0
 Requires:       python-pytest-runner
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module pytest >= 3.0.0}
+BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module virtualenv}

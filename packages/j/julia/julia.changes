@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 23 16:48:44 UTC 2019 - Ronan Chagas <ronisbr@gmail.com>
+
+- Add option `USE_LLVM_SHLIB=1` to fix boo#1114692.
+
+-------------------------------------------------------------------
+Mon Sep 23 16:17:55 UTC 2019 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.2.0, see NEWS.md for details.
+- Bump bundled dependencies as required by the new v1.2.0.
+    * Pkg.jl: 853b3f1fd9895db32b402d89e9dee153b66b2316
+    * utf8proc: 454f60150c7f023526d353e1e6b386f93ee0b116
+
+-------------------------------------------------------------------
 Mon Apr  1 17:57:30 UTC 2019 - Ronan Chagas <ronisbr@gmail.com>
 
 - Version bump to 1.1.0, see NEWS.md for details.

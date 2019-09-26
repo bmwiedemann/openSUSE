@@ -2848,4 +2848,12 @@ bugzilla.opensuse.org/show_bug.cgi?id=939831 (forwarded request 330560 from aboe
   https://github.com/rpm-software-management/rpmlint/commit/2c809f34354d6ea690986541b268d47a3ca59092</comment>
     <requestid>725256</requestid>
   </revision>
+  <revision rev="322" vrev="11">
+    <srcmd5>986e2f1dfa7e8746992a8ec4a06af8dd</srcmd5>
+    <version>1.11</version>
+    <time>1569522982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732220</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 25 09:20:52 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Ensure that _lto_cflags are defined as nil if multi threaded make
+  fails.
+
+-------------------------------------------------------------------
 Sun Sep 22 09:36:28 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Worked around %limit_build macro's failure to provide -flto= with

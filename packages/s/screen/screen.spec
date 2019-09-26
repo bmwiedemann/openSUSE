@@ -1,7 +1,7 @@
 #
 # spec file for package screen
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,10 +39,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{install_info_prereq}
-PreReq:         coreutils
-PreReq:         permissions
+Requires(post): permissions
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

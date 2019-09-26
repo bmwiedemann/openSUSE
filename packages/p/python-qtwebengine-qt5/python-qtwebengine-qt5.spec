@@ -18,16 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qtwebengine-qt5
-Version:        5.13.0
+Version:        5.13.1
 Release:        0
 Summary:        Python bindings for the Qt5 WebEngine framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtwebengine/intro
 Source:         https://www.riverbankcomputing.com/static/Downloads/PyQtWebEngine/%{version}/PyQtWebEngine_gpl-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         update-timeline.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
-BuildRequires:  %{python_module sip-devel >= 4.19.1}
+BuildRequires:  %{python_module sip-devel >= 4.19.19}
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5WebEngine)
 Requires:       python-qt5
@@ -65,7 +67,7 @@ This package contains sip files used to generate
 bindings to the Qt5 WebEngine framework.
 
 %prep
-%setup -q -n PyQtWebEngine_gpl-%{version}
+%autosetup -p1 -n PyQtWebEngine_gpl-%{version}
 %{python_expand mkdir build_%{$python_bin_suffix}
 cp *.py build_%{$python_bin_suffix}
 cp -r sip build_%{$python_bin_suffix}

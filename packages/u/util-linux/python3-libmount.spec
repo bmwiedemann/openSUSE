@@ -151,7 +151,6 @@ Provides:       fsck-with-dev-lock = %{version}
 # bnc#651598:
 Provides:       util-linux(fake+no-canonicalize)
 PreReq:         %install_info_prereq permissions
-Recommends:     %{name}-lang = %{version}
 Provides:       eject = 2.1.0
 Provides:       login = 4.0
 Provides:       rfkill = 0.5

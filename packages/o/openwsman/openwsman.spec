@@ -142,7 +142,7 @@ BuildRequires:  firewall-macros
 %endif
 
 Requires(pre):  sed coreutils grep /bin/hostname
-Version:        2.6.11
+Version:        2.6.12
 Release:        0
 # Mandriva:
 # Release %%mkrel 1

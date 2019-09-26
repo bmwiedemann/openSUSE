@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 00:52:50 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Fix build on i586
+
+-------------------------------------------------------------------
 Tue Mar 19 23:25:42 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Fix build with boost-1.69

@@ -1,7 +1,7 @@
-diff --git a/BinariesCheck.py b/BinariesCheck.py
-index 36d73f8..0fb91db 100644
---- a/BinariesCheck.py
-+++ b/BinariesCheck.py
+Index: rpmlint-rpmlint-1.11/BinariesCheck.py
+===================================================================
+--- rpmlint-rpmlint-1.11.orig/BinariesCheck.py
++++ rpmlint-rpmlint-1.11/BinariesCheck.py
 @@ -73,6 +73,10 @@ class BinaryInfo(object):
      mktemp_call_regex = create_regexp_call('mktemp')
      lto_section_name_prefix = '.gnu.lto_.'
@@ -35,7 +35,7 @@ index 36d73f8..0fb91db 100644
              lines = res[1].splitlines()
 +
 +            # For an archive, test if all .text sections are empty
-+            if is_archive:
++            if is_archive and not (path.startswith('/usr/lib64/ghc') or path.startswith('/usr/lib/ghc')):
 +                has_text_segment = False
 +                non_zero_text_segment = False
 +
@@ -54,7 +54,7 @@ index 36d73f8..0fb91db 100644
              for line in lines:
                  if BinaryInfo.lto_section_name_prefix in line:
                      self.lto_sections = True
-@@ -522,6 +546,9 @@ class BinariesCheck(AbstractCheck.AbstractCheck):
+@@ -522,6 +546,9 @@ class BinariesCheck(AbstractCheck.Abstra
              if bin_info.lto_sections:
                  printError(pkg, 'lto-bytecode', fname)
  
@@ -64,7 +64,7 @@ index 36d73f8..0fb91db 100644
              for ec in bin_info.forbidden_calls:
                  printWarning(pkg, ec, fname,
                               BinaryInfo.forbidden_functions[ec]['f_name'])
-@@ -846,6 +873,10 @@ implementations only strip if the permission is 0755).''',
+@@ -846,6 +873,10 @@ implementations only strip if the permis
  'lto-bytecode',
  '''This executable contains a LTO section.  LTO bytecode is not portable
  and should not be distributed in static libraries or e.g. Python modules.''',

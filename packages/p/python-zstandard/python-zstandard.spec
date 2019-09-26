@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zstandard
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Zstandard bindings for Python
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ Requires:       zstd
 Conflicts:      python-zstd
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.11}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -55,15 +55,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mkdir tester
-cp -r tests tester/
-pushd tester
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
-rm -rf build _build*
-nosetests-%{$python_bin_suffix} -v
-}
-popd
+%pytest_arch
 
 %files %{python_files}
 %doc NEWS.rst README.rst

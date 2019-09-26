@@ -1,7 +1,7 @@
 #
 # spec file for package psmisc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Url:            https://gitlab.com/psmisc/psmisc/
 Version:        23.2
 Release:        0
 Provides:       ps:/usr/bin/killall
-Recommends:     %{name}-lang
 Summary:        Utilities for managing processes on your system
 License:        GPL-2.0-or-later
 Group:          System/Monitoring

@@ -589,4 +589,13 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>- test-pcre-jitstack.diff: avoid false positive upon stack overflow (forwarded request 676970 from Andreas_Schwab)</comment>
     <requestid>676971</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>b66789a8e5541fcd024960ead9ffdd1f</srcmd5>
+    <version>3.3</version>
+    <time>1569522917</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend lang package. The lang package already has a
+  supplements. (forwarded request 731935 from lnussel)</comment>
+    <requestid>731945</requestid>
+  </revision>
 </revisionlist>

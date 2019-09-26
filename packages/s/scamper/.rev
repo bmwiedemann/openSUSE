@@ -82,4 +82,12 @@
     <comment>fixes build errors</comment>
     <requestid>724879</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0183785fba637e5daf0ea56a9926fc3</srcmd5>
+    <version>20190916</version>
+    <time>1569523278</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>733235</requestid>
+  </revision>
 </revisionlist>

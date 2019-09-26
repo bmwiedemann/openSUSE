@@ -299,7 +299,7 @@ Thu Nov 24 06:14:29 UTC 2016 - coolo@suse.com
             added extra detection code for overflows and non-continuations.
             This broke one 5.6 test with an overlong multi-byte character,
             which previously worked accidently.
-            i.e. decode "Ì†ÅÌ∞Ç\x{10204}"
+            i.e. decode "√≠ √≠¬∞\x{10204}"
           - Added tests for ill-formed utf8 sequences from Encode.
 
 -------------------------------------------------------------------

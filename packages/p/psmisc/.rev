@@ -680,4 +680,13 @@
   * stat(2) on binary does not see subvol dev</comment>
     <requestid>653088</requestid>
   </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>8ad958465394b26a684e2472b9a2c856</srcmd5>
+    <version>23.2</version>
+    <time>1569522925</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend lang package. The lang package already has a
+  supplements. (forwarded request 731940 from lnussel)</comment>
+    <requestid>731946</requestid>
+  </revision>
 </revisionlist>

@@ -43,4 +43,14 @@
     eliminating rounding issues</comment>
     <requestid>709370</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>580d350593c4bdc74041a1bcd66c7ffb</srcmd5>
+    <version>8.0.0</version>
+    <time>1569523344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.0:
+  * Handle ',' character as a fractional separator, as required by 4.2.2.4, see PR 12
+  * Fix semver usage for prelease version, as required by clause 9</comment>
+    <requestid>733338</requestid>
+  </revision>
 </revisionlist>

@@ -186,4 +186,14 @@
     <comment>- Update to version 1.4.2:</comment>
     <requestid>494538</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f6e57c4699bbb72bb815d50bff295551</srcmd5>
+    <version>1.4.3</version>
+    <time>1569523019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.3:
+  * This release should also improve portability for Microsoft
+    Windows.</comment>
+    <requestid>725990</requestid>
+  </revision>
 </revisionlist>

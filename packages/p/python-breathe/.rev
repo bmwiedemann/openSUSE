@@ -31,4 +31,12 @@
   * sphinx18.patch</comment>
     <requestid>686451</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee5319219fe00259f41278cc01e8fbfd</srcmd5>
+    <version>4.13.1</version>
+    <time>1569523113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732151</requestid>
+  </revision>
 </revisionlist>

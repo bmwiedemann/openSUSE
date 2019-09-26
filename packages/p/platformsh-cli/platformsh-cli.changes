@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 25 16:34:21 UTC 2019 - jimmy@boombatower.com
+
+- Update to version 3.48.1:
+  * Release v3.48.1
+  * Fix default message for HttpException
+  * Fix push --activate for new environments
+  * Unused imports
+  * Fix flickering activity state
+  * Don't prompt to run the original command if it is empty
+  * Pass along the previous exception in the event subscriber
+  * Make `activity:get --property description` return HTML
+  * Assume activity state is 'in progress' while reading the log
+
+-------------------------------------------------------------------
 Sun Sep 22 21:09:49 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 3.48.0:

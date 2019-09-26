@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Apr  3 07:24:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.0047
+   see /usr/share/doc/packages/perl-Plack/Changes
+
+  1.0047  2018-02-10 01:23:37 PST
+      [BUG FIXES]
+          - Disable FCGI/lighttpd test that was supposed to be releng only #611
+  
+  1.0046  2018-02-09 23:51:10 PST
+      [NEW FEATURES]
+          - Support psgix.cleanup and psgix.harakiri in FCGI handler (afresh1) #610
+  
+      [IMPROVEMENTS]
+          - Do not set TCP_NODELAY when it's unavailable in embedded systems (dex4er) #579
+  
+  1.0045  2017-12-31 12:40:52 PST
+      [BUG FIXES]
+          - Protect WrapCGI against SIGCHLD handlers #596
+  
+      [IMPROVEMENTS]
+          - Set Content-Length to 0 in XSendfile middleware #602
+          - Document options for XSendfile middleware
+          - Remove #foo file for testing that was causing issues on Win32 systems #599
+          - Add 103 Early Hints to Plack::Handler::CGI
+  
+  1.0044  2017-04-26 22:30:27 PDT
+      [IMPROVEMENTS]
+          - Allow passing an already-open listen socket to HTTP::Server::PSGI
+            and add an option to do so in Plack::Test::Server.
+  
+  1.0043  2017-02-21 19:00:31 PST
+      [IMPROVEMENTS]
+          - Fixed typo in docs #578 #584
+          - Remove test that expects cookie to be delimited by comma #573
+          - Stop upper-casing all header keys in Plack::Request->headers #585
+          
+  1.0042  2016-09-28 22:37:33 PDT
+      [BUG FIXES]
+          - Revert: Allow passing an already-open listen socket to HTTP::Server::PSGI #550
+  
+  1.0041  2016-09-25 14:24:07 PDT
+      [BUG FIXES]
+          - Fix ConditionalGET middleware in case both Last-Modified and ETag exist. #569
+          - Handle Cookie values with quotes correctly (alh, kazeburo) #564, #567
+  
+      [IMPROVEMENTS]
+          - Several documentation fixes and error message improvements #556, #557, #558, #559
+  
+  1.0040  2016-04-01 09:57:06 PDT
+      [INCOMPATIBLE CHANGES]
+          - Fixes a mistake in the value of %D and %T in Accesslog::Timed middleware.
+            This is due to a bug in Apache::LogFormat::Compiler that sets a wrong value
+            for these fields. This bug has been fixed and now it emits what the documentation
+            has always said, in the same way as how Apache's log format works.
+  
+            However, this is a BREAKING CHANGE if you are using '%D' or '%T' in your log
+            formats, and you'll likely need to swap them if you need the same values as
+            previously. Read https://github.com/plack/Plack/issues/549 for more details.
+            (astj) #549, #551
+  
+      [IMPROVEMENTS]
+          - Remove the use of HTTP::Body in favor of HTTP::Entity::Parser (kazeburo) #538
+          - Increase the buffer size to 1MB for requests already buffered by the PSGI server
+          - Allow passing an already-open listen socket to HTTP::Server::PSGI (ilmari) #550
+  
+      [BUG FIXES]
+          - Lint middleware now allows blessed code refs as a PSGI app (smcmurray) #542
+          - Fix log4perl tests to pass when running in parallel (rsimoes) #545
+
+-------------------------------------------------------------------
 Thu Jun  2 05:24:36 UTC 2016 - coolo@suse.com
 
 - update to 1.0039

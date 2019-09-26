@@ -40,4 +40,18 @@
     <comment></comment>
     <requestid>729081</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8cf32437c26b1bb0db883d7a2cc24502</srcmd5>
+    <version>0.4.0</version>
+    <time>1569523075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Avoid SyntaxWarning regarding invalid escape sequence in Python 3.9. [#62]
+  * Compatibility with pytest 5.1 to avoid AttributeError caused by FixtureRequest. [#63]
+- Drop merged patch:
+  * merged_pr_63.patch
+- Rebase patch:
+  * pr_37.patch</comment>
+    <requestid>732116</requestid>
+  </revision>
 </revisionlist>

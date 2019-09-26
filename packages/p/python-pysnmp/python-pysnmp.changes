@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 18:28:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4.12
+  * Fixed broken SNMPv3 `msgFlag` initialization on authoritative
+    SNMP engine ID discovery. This bug causes secure communication
+    with peer SNMP engines to stall at SNMP engine ID discovery
+    procedure.
+
+-------------------------------------------------------------------
 Tue Sep 10 11:39:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.4.11:

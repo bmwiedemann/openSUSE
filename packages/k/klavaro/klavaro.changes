@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:00:46 UTC 2019 - lars@linux-schulserver.de - 3.09
+
+- update to 3.09
+  * Fixed:
+	- Internet ranking server now is https://klavaro.sourceforge.io/top10/
+	- Top10 window showing always external scores when changing language
+	  combobox.
+	- Portugal Portuguese code (pt) defined as pt_PT.
+	- Man page updated.
+	- Disabling beeps internally too.
+	- qwertz_sk_2.kbd is a qwerty one: --> qwerty_sk.kbd (Slovakia)
+	- qwertz_sk.kbd is for Slovenia:  -->  qwertz_si.kbd
+	- Contry code for Slovenia is sk, not sl.
+	- Using $(rootdatadir) for Gnome metadata.
+  * Added:
+	- Validation limits before putting scorings on Top 10.
+	- Logging touch timings from last session for all modules: 
+	  $HOME/.local/share/klavaro/deviation_MODULE.txt
+	- Portuguese translation, from Portugal (pt).
+	- Hotkey Ctrl+F: font configuration.
+	- Hotkey Ctrl+KP_plus: increase spin buttons.
+	- Hotkey Ctrl+KP_minus: decrease spin buttons.
+	- Hotkeys Ctrl+R or Escape: cancel current practice, start a new one.
+	- Alternative colors toggle button in tutor window. At first time run,
+	  a default "dark mode" is copied to the file: $HOME/.config/klavaro/altcolor.ini
+	  Hotkey: Ctrl+A for alternative colors.
+	- qwertz_sk_2.kbd keyboard layout for Slovenia.
+	- /usr/.../share/klavaro/preferences_darkmode.ini as dark colors example.
+  * Removed:
+	- Beeps, as they were not reliable.
+  * Updated translations:
+	- Dutch.
+	- French.
+	- Swedish.
+- splitted out -devel package for header files
+- removed klavaro-3.00-paragraph-ru-fix.patch : fixed upstream
+- needs now cairo-devel and libgnutls-devel as build requires
+- use SSL for Url and Source
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Mon Mar 18 13:28:01 UTC 2019 - lars@linux-schulserver.de - 3.05
+
+- update to 3.05
+  * Fixed:
+    - Crashing when not recognized option from command-line.
+  * Added:
+    - Instructions for typing with the shift keys (in the introduction).
+    - Explanation about the blank lessons after 43, in basic module.
+    - Possible to reset progress log of each module individually, as well
+      as character error charts or touch times charts in adaptability.
+    - Possible to use paragraphs complete texts in Speed module (klavaro -x).
+  * Updated translations:
+    - Croatian.
+    - Danish.
+    - Esperanto.
+    - Polish.
+    - Portuguese (BR).
+    - Russian.
+    - Ukrainian.
+  From Release 3.04
+  * Fixed:
+    - Tutor window was not allowing to shrink horizontaly, only growing.
+      Now its horizontal scroll is allowed to appear, liberating it to shrink.
+    - Colors again on keyboard buttons, they had disappeared.
+    - Proficiency log file shown as touch time per key in adaptability
+      charts  was being corrupted eventually.
+    - Statistics after practice were being colorized.
+    - Crashing? when no <libintl.h> installed on the system and? using
+      ./configure --disable-nls
+    - bg.paragraphs and bg.words chars fixed.
+    - da.paragraphs and da.words chars fixed. (ét -> et)
+    - fi.paragraphs char fixed.
+    - hr.paragraphs chars fixed.
+    - kk.paragraphs chars fixed?
+    - nl.paragraphs chars fixed? (wéér -> weer)
+    - pa.paragraphs chars fixed. (removed English word quadrant)
+    - ru.paragraphs chars fixed.
+    - sr.paragraphs chars fixed. (ascii quotes: " ")
+    - uk.paragraphs chars fixed.
+    - qwertz_de.kbd chars fixed. (Ä Ö -> ä ö)
+    - Substituted deprecated stuff on Glade file, for GTK+-3.8
+    * Changed:
+    - Inserting a little indentation on tutor texts paragraphs.
+    - Using 2 copies of character pool for the basic lessons generator,
+      for a little bit more double sequences of same char.
+    - More difficult to get a special proficiency training session on
+      adaptability, but easier to get an special error training.
+    - Using new GtkDataBox update, from GIT repository, changes may appear
+      in the progress charts.
+    - Some deprecated GTK+-3 functions were updated to version 3.8.
+  * Added:
+    - Merge all the basic lessons in the progress chart: Lesson '0'.
+    - In fluidity, manages Ctrl+h to work as Backspace (delete -1 char)
+      and Ctrl+w as Ctrl+Backspace (clean up all errors).
+    - dvorak_de_adnw.kbd    "Aus der Neue Welt" german keyboard layout.
+    - dvorak_us_left.kbd    Dvorak left hand layout.
+    - dvorak_us_rigth.kbd   Dvorak rigth hand layout.
+
+-------------------------------------------------------------------
 Tue Mar 13 15:55:08 UTC 2018 - aloisio@gmx.com
 
 - Use espeak-ng when available

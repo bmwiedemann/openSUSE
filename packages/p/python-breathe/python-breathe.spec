@@ -17,16 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
+%define skip_python2 1
 Name:           python-breathe
-Version:        4.12.0
+Version:        4.13.1
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/michaeljones/breathe
 Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx >= 1.8}
+BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
@@ -34,17 +34,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.8
+Requires:       python-Sphinx >= 2.0
 Requires:       python-docutils >= 0.12
 Requires:       python-setuptools
 Requires:       python-six >= 1.9
 Provides:       python-sphinxcontrib-breathe = %{version}
 Obsoletes:      python-sphinxcontrib-breathe < %{version}
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-sphinxcontrib-breathe < %{version}
-Provides:       %{oldpython}-sphinxcontrib-breathe = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -60,21 +56,14 @@ able to read and  render Doxygen xml output.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/breathe-apidoc
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v tests/
 
-%post
-%{python_install_alternative breathe-apidoc}
-
-%postun
-%{python_uninstall_alternative breathe-apidoc}
-
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python_alternative %{_bindir}/breathe-apidoc
+%python3_only %{_bindir}/breathe-apidoc
 %{python_sitelib}/breathe
 %{python_sitelib}/breathe-%{version}-py*.egg-info
 

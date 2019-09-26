@@ -303,4 +303,12 @@ It now only builds for &gt;12.2, not sure if there is a simple fix to get it to 
     <comment></comment>
     <requestid>647237</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c1864f466506039fb47aa1ea015c9e99</srcmd5>
+    <version>2.6.13</version>
+    <time>1569523296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733259</requestid>
+  </revision>
 </revisionlist>

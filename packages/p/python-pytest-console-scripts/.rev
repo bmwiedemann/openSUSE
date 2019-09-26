@@ -16,4 +16,12 @@
   * Print out return code, stdout and stderr output</comment>
     <requestid>730736</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2dd75e88364cecfa7dc582474d89d106</srcmd5>
+    <version>0.1.10</version>
+    <time>1569523236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the pytest requirement to &gt; 4 as per setup.py</comment>
+    <requestid>733104</requestid>
+  </revision>
 </revisionlist>

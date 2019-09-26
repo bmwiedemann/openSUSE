@@ -1,4 +1,435 @@
 -------------------------------------------------------------------
+Thu Sep 12 17:30:16 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 1.12+git20190313.aa829657:
+  * [release-branch.go1.12] go/analysis: disable embedded struct tag check
+  * [release-branch.go1.12] go/analysis/passes/printf: fix big.Int false positive
+  * [release-branch.go1.12] cmd/godoc: fix -url flag, add tests
+  * internal/lsp: fix crash caused by lack of TypeSizes from go/packages.Load
+  * internal/lsp: type-check packages from source
+  * internal/lsp: add support for analyzers with dependencies on other analyzers
+  * go/packages: fix broken tests to handle changes to packagestest
+  * internal/lsp: connect basic analysis functionality
+  * go/packages: use strings.EqualFold in sameFile to handle case-insensitive file systems
+  * internal/lsp/cmd: fix a nil pointer and some minor clean-up
+  * internal/lsp, go/packages/packagestest: support testing test files
+  * internal/lsp: add additional logging for go/packages failures
+  * internal/lsp: handle escaping URIs for files in the module cache
+  * internal/lsp: use interface for diagnostics code
+  * godoc: remove leading tabs while formatting text
+  * cmd/stringer: type check using export data
+  * cmd/guru: remove Go 1.9 handling, since we no longer support 1.8
+  * internal/lsp: do not return nil identifiers without errors
+  * internal/lsp/diff: fix sources listed for diff implementation
+  * internal/lsp: rank types higher when completing in return of a function
+  * Revert "go/analysis/passes/atomicalign: handle pointers to struct"
+  * internal/lsp: implement diff for computing text edits
+  * cmd/tip: delete
+  * internal/lsp/cmd: add the definition mode
+  * go/analysis/passes/atomicalign: handle pointers to struct
+  * godoc/static: update static.go
+  * go/internal/gcimporter: write export data for go/types
+  * godoc/static: inherit textarea color to avoid illegible text
+  * imports: drop anything after a non identifier rune in package names
+  * godoc/short: point to new tracking issue for shortlink creation
+  * imports: update zstdlib to Go 1.12
+  * go/packages: rename name= query and "disable" it
+  * go/vcs: remove go.googlesource.com vcsPath entry
+  * cmd/heapview: delete
+  * cmd/godoc: add x/xerrors redirect
+  * internal/lsp: refactor definition and hover to share functionality
+  * go/packages: stop parsing files if the context is canceled
+  * go/analysis/passes/composite: add an example to the doc
+  * cmd/gopls/integration: git ignore temporary vscode files
+  * godoc/dl: add julieqiu to validUser
+  * cmd/present: fix CSS when printing slides
+  * cmd/tip: also fetch x/net repository before building cmd/godoc
+  * imports: stop using go/packages for modules
+  * internal/lsp: do not complete inside comments in functions
+  * go/analysis/internal/checker: correct comment grammar
+  * go/analysis/passes/atomicalign: add atomicalign ckecker
+  * imports: remove globals, stop using build.Default
+  * imports: don't eagerly guess package names
+  * go/{analysis,packages}: add TypesSizes
+  * cmd/gopls: rename "golsp" to "gopls", as in "Go Please"
+  * go/packages: make tests pass with custom GOCACHE
+  * internal/lsp: do not complete inside comments
+  * internal/lsp: add a test for completion of builtin types and functions
+  * internal/lsp: fix a few nil pointer exceptions in definition
+  * go/packages: rename Illtyped to IllTyped in docs
+  * cmd/golsp: add a debugging tool to connect with golsp on a port
+  * godoc/dl: don't display unstable releases under archive
+  * go/analysis: fix typos and update documentation
+  * go/packages: Load with no patterns should load "."
+  * internal/lsp/cache: return error when no packages found
+  * go/packages: update comment on when golist fallback triggers
+  * go/ast/inspector: fix a small typo
+  * godoc/redirect: display Gerrit/Rietveld CL disambiguation page when needed
+  * splitdwarf: initial working commit
+  * cmd/splitdwarf: copy debug/macho
+  * tools/internal/lsp/protocol: add LocationLink type
+  * Revert "go/packages: make tests pass with custom GOCACHE"
+  * Remove warning stability warning
+  * go/analysis/internal/checker: don't clobber error when packages.Load fails
+  * go/packages: make tests pass with custom GOCACHE
+  * go/packages: update doc for name= queries
+  * go/package/gopackages: update gopackages to use the new tool library for its main function
+  * go/analysis: fix package doc copy-paste typo
+  * internal/lsp: fix typo
+  * go/analysis: fix ambiguous paths in structtag pass
+  * go/packages/packagestest: make temp directory writeable
+  * cmd/godoc: add x/website redirect
+  * imports: don't look for, or find, empty packages
+  * cmd/guru: fix incorrect case order in describe.go
+  * go/analysis/internal/checker: fix debug flag docs
+  * godoc/static: update copyright year in static.go
+  * go/internal/packagesdriver: fix crash when GOARCH and Go compiler can't be determined
+  * internal/lsp: remove unnecessary packagestest.RangePosition type
+  * go/packages/packagestest: fix Expect doc
+  * internal/lsp: fix diagnostics range computation
+  * internal/lsp: set file contents through the source.View, not File
+  * internal/lsp/server: fix typo in name of method foldingRange
+  * cmd/golsp: log elapsed times in milliseconds rather than microseconds.
+  * imports: use LoadFiles everywhere
+  * go/packages: use -find, add GOPACKAGESDEBUG env var
+  * internal/lsp: add ranges to some diagnostics messages
+  * go/packages: deduplicate roots
+  * godoc: choose a smaller-output example as help when there are unexpected arguments
+  * internal/lsp: add additional tests for completion
+  * go/packages: use packagesdriver to fetch sizes for "go list"
+  * cmd/godoc: print a helpful error if used for command-line docs
+  * imports: don't remove imports that conflict with globals
+  * go/analysis/passes/asmdecl: fix array offsets
+  * go/vcs: use Bitbucket v2 REST API
+  * internal/lsp: refactor the command line handling
+  * internal/tool: add a small package to unify the flag handling across all our tools
+  * go/packages: suppress go list errors when ad-hoc package doesn't exist
+  * internal/lsp: add support for running goimports as a code action
+  * internal/lsp/source: avoid having build tagged files for uri
+  * cmd/golsp: make each log message result from a single call to fmt.Fprintf
+  * tip: fix, update tip.golang.org
+  * go/internal/gccgoimporter: test fix for older gccgo versions
+  * imports: use go/packages, support modules
+  * go/ssa: convert the objlookup tests to the new marker syntax
+  * go/internal/gccgoimporter: update package to match std lib version
+  * internal/lsp/source: Use file:///C:/ on Windows file system
+  * internal/lsp: use rootURI as config.Dir in packages.Load
+  * godoc/dl: serve "go get" meta for golang.org/dl/gotip
+  * imports: fix renamed sibling imports more
+  * godoc/proxy: remove use of httputil.ReverseProxy for /share
+  * go/packages: add doc for the current state of overlays
+  * internal/lsp/protocol: use correct JSON name for RootURI
+  * imports: fix renamed sibling imports
+  * cmd/golsp/integration/vscode: add language server client for testing
+  * imports: clean up customization seam
+  * imports: ignore globals in different packages
+  * cmd/golsp: enable logging to a default location
+  * go/internal/packagesdriver: expose function to return sizes
+  * go/packages/packagestest: allow tests to also specify overlay contents
+  * internal/lsp: improve handling of code completion snippets
+  * go/packages: an empty overlay does not force source mode
+  * go/packages: check for containing files after overlay is processed
+  * internal/lsp: refactor source package to use an interface
+  * internal/lsp: add basic support for hover
+  * go/...: use recommended issue tracker URLs
+  * go/internal/gccgoimporter: update package to match std lib version
+  * internal/lsp: implement type definitions
+  * go/analysis: remove "experimental" warning
+  * go/analysis/unitchecker: use importer.ForCompiler under go1.12
+  * go/analysis: fix more printf pointer bugs
+  * go/analysis/unitchecker: improve error message for go tool vet
+  * imports: create named imports for name/path mismatches (again)
+  * imports: redesign fixImports
+  * cmd/bundle: change the behavior of the -underscore flag
+  * go/internal/gccgoimporter: update package to match std lib version
+  * go/packages: add support to overlays for unwritten files to existing packages
+  * go/expect: rewrite the expectation parser
+  * cmd/goimports: update Emacs install instructions
+  * go/expect: allow multi-line expectations
+  * go/packages: fix build breakage caused by math/bits to unsafe dep
+  * go/packages/packagestest: allow expectations to have *regexp.Regexp and interface{} parameters
+  * cmd/stress: prefix logs with start date/time
+  * internal/lsp: sort completions according to rank
+  * cmd/gorename: move gorename TODOs to a comment in the code
+  * go/packages: use absolute path of dir in call to go list for file= query
+  * go/packages/packagestest: adds a benchmark version of TestAll
+  * go/packages: change driver communication mechanism
+  * internal/lsp: fix a bug stopped package names from being printed
+  * internal/lsp: add InsertText to completions
+  * cmd/guru: add type position to describe command
+  * internal/lsp: fix formatting bug that keeps adding extra newlines
+  * internal/lsp: add more testdata for completion and diagnostics
+  * go/ssa: convert tests to new annotation system
+  * internal/lsp: add definition tests from godef
+  * internal/lsp: fix for limitations of export data
+  * go/analysis/cmd/vet-lite: remove
+  * internal/lsp: use subtests for all lsp categories
+  * internal/lsp: make all the tests work on 1.10
+  * go/packages/packagestest: change the Export method to take a testing.TB
+  * go/analysis: use TypeString when matching types
+  * go/analysis: unindent some pieces of code
+  * go/analysis: two trivial doc tweaks
+  * godoc/redirect: improve Rietveld CL heuristic
+  * go/analysis: harmonize flags across all checkers
+  * go/analysis/cmd/vet-lite: remove pkgfact
+  * go/analysis/cmd/vet: remove pkgfact, findcall analyzers
+  * internal/lsp: add formatting functions to some common lsp protocol types
+  * internal/lsp: fix and add tests for formatting
+  * internal/lsp: make Definition handle embedded fields
+  * go/analysis/internal/unitchecker: reenable integration test
+  * internal/lsp: better handling of .in files
+  * go/analysis/passes/printf: fix regression in "recursive stringer" logic
+  * go/analysis/unitchecker: a main function for vet-lite tools
+  * go/analysis/internal/unitchecker: three fixes
+  * go/analysis: doc updates
+  * go/analysis/passes/printf: actually use doc constant
+  * internal/lsp: handle $GOROOT in file paths
+  * internal/lsp: use the new marker support
+  * make the packagestest marker system more flexible
+  * internal/jsonrpc2: change to a more synchronous dispatch model
+  * go/analysis: exit nonzero upon diagnostics
+  * go/analysis/passes/stdmethods: show p.T not dir/p.T in diagnostic
+  * go/analysis/passes/asmdecl: turn two diagnostics into log messages
+  * go/analysis/passes/stdmethods: rewrite check to use go/types
+  * internal/lsp: implement signature help
+  * go/analysis/passes/printf: fix false negative with nested pointers
+  * go/analysis/internal/analysisflags: add flag aliases for renames
+  * go/analysis/passes/printf: fix some pointer false positives
+  * go/analysis/cmd/vet-lite: remove deprecation warnings
+  * internal/lsp: use bytes.Buffer instead of strings.Builder
+  * go/packages: remove .s files from go list's CompiledGoFiles
+  * cmd/godoc: start RunIndexer synchronously when index is present
+  * internal/fastwalk: avoid slice bounds out of range for long file names
+  * internal/lsp: move diagnostics logic to source directory
+  * internal/lsp: make format work on the ast not the source
+  * internal/lsp: add a preliminary test for completion
+  * go/packages: fix flaky TestJSON and reenable it on Go 1.10
+  * go/internal/gcimporter: ensure tests pass even if GOROOT is read-only
+  * go/analysis/passes/printf: preload with facts for std lib
+  * go/analysis/cmd/vet-lite: make CLI closer to cmd/vet
+  * cmd/vet: lostcancel: suppress the check in the main.main function
+  * go/packages: fix minor godoc typo
+  * go/callgraph/rta: fix comment
+  * go/ssa: updated inconsistent docs after Program.Method rename
+  * cmd/bundle: permit empty -prefix
+  * go/analysis/passes/unmarshal: port vet's unmarshal checker
+  * go/analysis/passes/shadow: add shadow command
+  * go/packages: pass TestConfigDefaultEnv on Plan 9
+  * go/analysis/printf: delete
+  * go/analysis/passes/cgocall: fix typo in comment
+  * go/analysis/passes/cgocall: analyze raw cgo files (again)
+  * go/packages, go/analysis/internal/unitchecker: skip broken tests for now
+  * internal/lsp: refactor completion and move into source directory
+  * revert "imports: create named imports for name/path mismatches"
+  * go/ast/astutil: allow AddNamedImport to add imports with different names
+  * go/packages: change the driverResponse.Sizes to have type StdSizes
+  * internal/gopathwalk: ignore $GOROOT/.../vendor/ in module mode
+  * imports: create named imports for name/path mismatches
+  * internal/lsp: implement go to definition
+  * internal/lsp: make source independent of protocol
+  * go/packages: remove contains: query. it's been superceeded by file=
+  * go/packages: remove unnecessary TODO
+  * internal/lsp: add implementation of completion to LSP
+  * go/packages: determine sizes by calling go list
+  * internal/lsp: make file a first class concept
+  * internal/lsp: extract view to its own package
+  * go/ssa: fix vet issues
+  * go/packages: fix crash
+  * internal/lsp: add copyright notices to files that were missing them
+  * internal/lsp: fix LSP tests to be compatible with Go 1.10
+  * cmd/golsp: format logging for the lsp inspector
+  * go/packages: small fixes
+  * internal/lsp: use packagestest markers to test diagnostics
+  * go/packages: disable network, improve debug logging
+  * go/analysis/passes/cgocall: disable test in go1.12
+  * go/analysis/.../unitchecker: suppress test unless go1.12
+  * go/packages/packagestest: add marker support
+  * go/analysis/internal/unitchecker: a 'go vet'-compatible driver
+  * cmd/tip: enable playground on tip.golang.org
+  * go/packages: make visit order stable
+  * cmd/stringer: accept simple type conversion expressions in constant ValueSpec
+  * go/packages: change so no results are sorted
+  * go/packages/packagestest: make versioned modules
+  * cmd/stringer: move away from using os.Args[0]
+  * go/packages: make packagestest.Export call t.Helper
+  * imports: make tests compatible with modules
+  * go/packages: find mismatched top level packages in name=
+  * go/packages: sort root list in Load
+  * go/analysis/internal/facts: fact serialization support
+  * go/packages/packagestest: use a module proxy
+  * imports: port tests to packagestest
+  * Revert "imports: support repairing import grouping/ordering"
+  * godoc: replace x/net/context with context
+  * internal/lsp: add support for publishing diagnostics
+  * present: remove mention of non-existing emphasis toggle
+  * go/packages: Fixes for bad wd handling
+  * godoc: generate TOC from server-side for search page
+  * go/*: fix pre-1.11 tests
+  * go/analysis/cmd/vet: new name for cmd/analyze
+  * go/internal/gcimporter: update gcimporter.go to incorporate std lib changes
+  * go/internal/gcimporter: remove support for Go versions < Go 1.10
+  * go/analysis/internal/analysisflags: common flag handling
+  * go/analysis/passes/shadow: adapt for analysis API
+  * go/analysis: doc: explain how to report diagnostics in raw text files
+  * go/analysis/cmd/analyze: install all analyzers
+  * go/analysis/passes/vet: delete
+  * go/analysis/passes/asmdecl: fix nil deref panic
+  * go/analysis/passes/tests: add testcase from vet
+  * go/analysis/passes/nilness: degenerate nil condition checker
+  * cmd/godoc: cleanup documentation for CLI mode
+  * go/packages/packagestest: Testing with multiple drivers
+  * go/internal/gccgoimporter: update package to match std lib version
+  * go/internal/gccgoimporter: add missing copyright notice
+  * go/packages: don't spam stderr
+  * go/internal/gccgoimporter: add missing copyright notice
+  * cmd/tip: make tip.golang.org also serve & redirect beta.golang.org to tip
+  * gopathwalk: don't log for nonexistant root dirs
+  * go/analysis/passes/composite: add testing.Internal* to whitelist
+  * go/packages: fix tests on 1.10
+  * go/analysis/passes: add doc and copyright comments
+  * go/packages: add name= query
+  * go/analysis/passes/httpresponse: split out from vet
+  * go/analysis/passes/printf: changes for analysis API
+  * imports: make tests use a helper, read from disk more
+  * playground.js: make output of "Run" clearer
+  * godoc: fix inline playground width for mobile devices
+  * go/packages: don't use os.LookupEnv
+  * go/packages: fix TestRejectInvalidQueries test case
+  * go/analysis/passes/shadow: split out of vet
+  * go/analysis/passes/structtag: split out from vet
+  * go/analysis/passes/copylock: add workaround for go1.10
+  * go/analysis/passes/printf: add types.go too
+  * go/analysis/passes/printf: move printf to correct subdirectory
+  * go/analysis/passes/printf: create printf pass
+  * go/ssa/ssautil: add AllPackages method
+  * go/packages: remove scary warning on documentation
+  * go/packages: use "=" instead of ":" for special queries
+  * internal/fastwalk: don't cross Dirent.Reclen boundry while looking for NULL in parseDirEnt
+  * cmd/present: address minor comments not applied in a previous change
+  * go/analysis/passes/asmdecl: fix a panic under go1.10
+  * imports: refactor tests
+  * internal/gopathwalk: create
+  * imports: refactor directory walking
+  * imports: support repairing import grouping/ordering
+  * go/packages: use effective GOARCH to determine type size function
+  * cmd/godoc: synchronously init corpus for index mode
+  * go/analysis/passes/ctrlflow: add test of modularity
+  * go/analysis: validate: report duplicates among analyzers (roots)
+  * cmd/guru: fix several functions godoc comment prefix
+  * go/analysis/passes/shift: split out of vet
+  * go/analysis/passes/cgocall: split out of vet
+  * cmd/godoc: do not use httptest
+  * godoc: inject treeview content only when needed
+  * godoc/static: get rid of ::-webkit-search-decoration of #search
+  * godoc, cmd/godoc: remove CLI support
+  * godoc/static: prevent menu "bouncing" when showing Play button
+  * go/analysis/passes/tests: split out from vet
+  * cmd/present: merge appengine and non-appengine files
+  * go/analysis/passes/composite: split out of vet
+  * go/analysis/passes/unsafeptr: split out from vet
+  * go/analysis/passes/nilfunc: split out of vet
+  * go/analysis/passes/bools: split out of vet
+  * go/analysis/passes/atomic: split out of vet
+  * cmd/godoc: add missing Dockerfile ARG
+  * playground: use play.golang.org instead of golang.org
+  * playground: set content-type header on non-appengine builds
+  * go/analysis/passes/unreachable: split out of vet
+  * go/analysis/passes/unusedresult: split out of vet
+  * go/analysis/passes/stdmethods: split check out of vet
+  * go/analysis/passes/copylock: split out of vet
+  * go/analysis/passes/assign: split out from vet
+  * cmd/gorename: set GO111MODULE=off in gorename_test
+  * go/packages: add basic support for overlays
+  * go/analysis/passes/loopclosure: split out of vet
+  * go/analysis/passes/asmdecl: split out of vet
+  * go/analysis/passes/buildtag: split out of vet
+  * go/analysis/passes/lostcancel: split out from vet
+  * go/analysis: write package documentation
+  * cmd/godoc: add version info for golang.org
+  * go/analysis/passes/ctrlflow: an Analyzer that builds CFGs
+  * go/packages: skip TestLoadImportsC when Go has been built without cgo
+  * go/analysis: several little fixes
+  * go/analysis/analysistest: unset GO111MODULE and GOPROXY
+  * cmd/godoc: add cloud build config
+  * cmd/godoc: add `make publish` to migrate traffic
+  * go/analysis/analysistest: set GO111MODULE=off in TestTheTest
+  * go/packages: change ParserError to ParseError
+  * go/analysis/analysistest: support testing of facts
+  * all: set GO111MODULE=off for tests that use GOPATHs in testdata.
+  * go/packages: add ErrorKind field to differentiate error sources
+  * go/packages: remove code that skips two tests for Go 1.10
+  * gopackages: don't make .go files relative to search path
+  * go/packages: pass through packages with error in the fallback
+  * cmd/godoc: move regression tests to a go test
+  * cmd/godoc: re-enable host checking, allow test versions
+  * cmd/godoc: improve deployment scripts, add buildinfo
+  * godoc: move third-party godoc deps behind build tag
+  * godoc/static: regenerate
+  * godoc: migrate to App Engine flexible
+  * godoc/dl: add dmitshur, katiehockman to binary upload whitelist
+  * internal/lsp: support range formatting
+  * go/types/objectpath: fix tests for pre-go1.11
+  * go/ast/inspector: faster (amortized) AST traversals
+  * go/packages: allow absolute paths when using the fallback
+  * go/analysis: add command-line help
+  * go/analysis/analysistest: refuse to analyze zero packages
+  * godoc/vfs/zipfs: join paths to get correct RootType
+  * go/types/objectpath: a stable naming scheme for types.Object
+  * go/packages: do not error out for patterns that match no packages
+  * cmd/godoc: simplify dev and prod environment for App Engine
+  * go/analysis/passes/vet: fork cmd/vet@31d19c0
+  * go/analysis: add Pass.OtherFiles field
+  * cmd/golsp: support formatting in golsp
+  * go/analysis: revert UsesFacts to FactTypes
+  * cmd/golsp: An empty shell of an lsp server for the go language
+  * go/internal/gccgoimporter: remove special case for Go1.9
+  * go/internal/gccgoimporter: port recent changes from stdlib version
+  * go/analysis/analysistest: fix tests on MS Windows
+  * go/analysis/analysistest/analysistest: fix test on non-Linux
+  * go/analysis/internal/checker: fix go1.10 build
+  * cmd/goyacc: put //line annotations on the first column.
+  * go/analysis/internal/checker: analysis driver based on go/packages
+  * go/cfg: a syntactic control-flow graph (CFG)
+  * go/analysis: more API renamings:
+  * go/packages: add missing test variants to fallback loader
+  * go/analysis: several API renamings
+  * go/ssa/interp: skip failing test
+  * internal/lsp: the core lsp protocol
+  * internal/jsonrpc2: a basic json rpc library to build an lsp on top of
+  * go/packages: generate test main files from the golist fallback
+  * go/analysis: a new API for analysis tools
+  * go/types/typeutil: add StaticCallee helper function
+  * go/ssa: use correct type for variadic parameter in wrapper methods
+  * go/packages: remove unnecessary newline on import section
+  * imports: update zstdlib to Go 1.11
+  * imports: rerun "go generate" with new gofmt
+  * go/packages: remove the Config.Error hook
+  * go/packages: fix incorrect x_test graph in fallback
+  * go/packages: coerce all errors to a single type
+  * go/packages: fix docs
+  * godoc: fix indenting on Firefox
+  * cmd/godoc: remove workaround for 1.8 behavior
+  * go/ssa/interp: disable regularly broken tests in short mode
+  * godoc/dl: update Mac & Windows minimum versions
+  * godoc/vfs: improve comment on GOROOT
+  * godoc/vfs: reorder comment paras to display the correct one
+  * go/packages: initialize config.Env with os.Environ when unset
+  * go/ssa/interp: disable failing part of a test
+  * godoc: update to use new goroot finding logic
+  * go/packages: fix flaky TestJSON
+  * cmd/godoc: redirect to https instead of http for blog.golang.org
+  * go/packages: rename config.Flags to BuildFlags
+  * go/packages: fix test failing on go1.10
+  * cmd/digraph: print usage on -h
+  * go/packages: disable failing test on plan9
+  * go/packages: smooth API documentation for release
+  * go/packages: reduce the number of export data files loaded
+  * go/packages: disable modules in all tests that set GOPATH
+  * go/packages: opt: ignore function bodies in non-initial packages
+  * playground: increase urlfetch timeout on GAE classic
+- Commit _servicedata for consistent generation across contributors
+
+-------------------------------------------------------------------
 Fri Jun 14 14:23:01 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
 
 - Remove man files and dependency on mango-doc (which is going to
@@ -33,7 +464,7 @@ Thu Feb 21 14:08:36 UTC 2019 - Dan Čermák <dcermak@suse.com>
 Thu Jun 28 15:53:09 UTC 2018 - jmassaguerpla@suse.com
 
 - Require go >= 1.9 instead of go = 1.9 cause otherwise this package
-  does not build with go1.10 while its dependencies do 
+  does not build with go1.10 while its dependencies do
 
 -------------------------------------------------------------------
 Mon Feb  5 13:56:47 UTC 2018 - fcastelli@suse.com
@@ -48,7 +479,7 @@ Fri Jan 26 10:52:54 UTC 2018 - fcastelli@suse.com
 -------------------------------------------------------------------
 Tue Feb 28 15:50:05 UTC 2017 - thipp@suse.de
 
-- Fix requirements 
+- Fix requirements
 - Remove duplicate files
 
 -------------------------------------------------------------------
@@ -120,7 +551,7 @@ Sat Jul 11 16:57:05 UTC 2015 - i@marguerite.su
 
 - rename to golang-org-x-tools
 - update version 1.4.2+git20150710.4cd43f3
-- use golang-packaging for packaging 
+- use golang-packaging for packaging
 
 -------------------------------------------------------------------
 Sat May 30 05:58:08 UTC 2015 - i@marguerite.su
@@ -164,4 +595,3 @@ Thu Sep 18 18:53:42 UTC 2014 - cbosdonnat@suse.com
 Fri Oct 18 14:20:35 UTC 2013 - speilicke@suse.com
 
 - Initial version
-

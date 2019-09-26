@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep 23 16:33:02 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.14.0:
+  * Add dark theme versions of component chooser icons (checked,
+    partially checked, locked).
+  * Fix XmlExplorer constructor declaration.
+  * Handle the new error hook.
+  * Don't leak control reference when raising an error from a
+    click event handler.
+  * Uncatched errors raised from an event handler can be ignored
+    now.
+  * Update Gambas 16 fonts.
+  * Always specify the direction of input method arguments in
+    introspection, otherwise the 'qdbusviewer' tool does not work.
+  * Add a bookmark on the current project in all directory and
+    file choosers.
+  * Bookmarks is a new static class that allows to define global
+    bookmarks for all FileChooser and DirChooser controls.
+  * Fix again the management of the new new PROPERTY...
+  * Take column in compiler warning messages into account.
+  * Fix again some crash when using the new PROPERTY
+  * Fix crash when using the new PROPERTY ...
+  * Error.Clear() now clears the error flag returned by the ERROR
+    function.
+  * Remove a debugging message.
+  * Take newlines, tabs, and backticks into account when
+    analyzing a table schema.
+  * Fix the declaration of static properties using USE.
+  * Automatic completion: Don't crash when displaying the
+    signature of '_new'.
+  * Fix menu proxy management that could crash combo-box popups.
+  * Add a bold version of the 16 pt Gambas font.
+  * Fix some memory leaks in font management.
+  * [GB.DB] NEW: Add a driver API that handles debugging
+    messages. NEW: Print the current date/time before any debugging
+    message.
+  * Add a 16 point size version of the medium Gambas font.
+  * Menu editor: Double-clicking on a menu entry now
+    automatically closes the menu editor to open the Click event
+    handler of that menu.
+  * Update component version.
+  * Component version is now taken from the VERSION file.
+  * Some minus signs reformatting.
+  * Project tree: 'Open in folder' menu entry is now visible on
+    file items, not just directories.
+  * ...
+
+-------------------------------------------------------------------
 Thu Apr 11 16:36:23 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.13.0:
