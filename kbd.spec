@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ Name:           kbd
 Version:        2.0.4
 Release:        0
 Summary:        Keyboard and Font Utilities
+# git: git://git.altlinux.org/people/legion/packages/kbd.git
 License:        GPL-2.0-or-later
 Group:          System/Console
-# git: git://git.altlinux.org/people/legion/packages/kbd.git
 Url:            ftp://ftp.altlinux.org/pub/people/legion/kbd/
 # ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%{version}.tar.xz repack_kbd.sh
 Source:         %{name}-%{version}-repack.tar.xz
@@ -203,6 +203,7 @@ fi
 ln -sf us.map.gz $K/keymaps/i386/qwerty/khmer.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/korean.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/arabic.map.gz
+ln -sf us.map.gz $K/keymaps/i386/qwerty/ir.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/chinese.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/taiwanese.map.gz
 ln -sf sr-cy.map.gz $K/keymaps/i386/qwerty/sr-latin.map.gz
