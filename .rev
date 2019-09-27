@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>717233</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6037ce991294b5c54ca60f4e36448cd8</srcmd5>
+    <version>1.5.2</version>
+    <time>1569588790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update appdata. (forwarded request 733571 from hillwood)</comment>
+    <requestid>733572</requestid>
+  </revision>
 </revisionlist>
