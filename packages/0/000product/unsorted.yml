@@ -3125,6 +3125,96 @@ unsorted:
   - gajim-plugin-omemo 
   - galaxis 
   - gama 
+  - gambas3 
+  - gambas3-devel 
+  - gambas3-gb-args 
+  - gambas3-gb-cairo 
+  - gambas3-gb-chart 
+  - gambas3-gb-clipper 
+  - gambas3-gb-complex 
+  - gambas3-gb-compress 
+  - gambas3-gb-compress-bzlib2 
+  - gambas3-gb-compress-zlib 
+  - gambas3-gb-crypt 
+  - gambas3-gb-data 
+  - gambas3-gb-db 
+  - gambas3-gb-db-form 
+  - gambas3-gb-db-mysql 
+  - gambas3-gb-db-odbc 
+  - gambas3-gb-db-postgresql 
+  - gambas3-gb-db-sqlite3 
+  - gambas3-gb-dbus 
+  - gambas3-gb-desktop 
+  - gambas3-gb-eval-highlight 
+  - gambas3-gb-form 
+  - gambas3-gb-form-dialog 
+  - gambas3-gb-form-editor 
+  - gambas3-gb-form-mdi 
+  - gambas3-gb-form-print 
+  - gambas3-gb-form-stock 
+  - gambas3-gb-form-terminal 
+  - gambas3-gb-geom 
+  - gambas3-gb-gmp 
+  - gambas3-gb-gsl 
+  - gambas3-gb-gtk 
+  - gambas3-gb-gtk-opengl 
+  - gambas3-gb-gtk3 
+  - gambas3-gb-gui 
+  - gambas3-gb-httpd 
+  - gambas3-gb-image 
+  - gambas3-gb-image-effect 
+  - gambas3-gb-image-imlib 
+  - gambas3-gb-image-io 
+  - gambas3-gb-inotify 
+  - gambas3-gb-jit 
+  - gambas3-gb-libxml 
+  - gambas3-gb-logging 
+  - gambas3-gb-maps 
+  - gambas3-gb-markdown 
+  - gambas3-gb-media 
+  - gambas3-gb-memcached 
+  - gambas3-gb-mime 
+  - gambas3-gb-mysql 
+  - gambas3-gb-ncurses 
+  - gambas3-gb-net 
+  - gambas3-gb-net-curl 
+  - gambas3-gb-net-pop3 
+  - gambas3-gb-net-smtp 
+  - gambas3-gb-openal 
+  - gambas3-gb-opengl 
+  - gambas3-gb-opengl-glsl 
+  - gambas3-gb-opengl-glu 
+  - gambas3-gb-opengl-sge 
+  - gambas3-gb-openssl 
+  - gambas3-gb-option 
+  - gambas3-gb-pcre 
+  - gambas3-gb-pdf 
+  - gambas3-gb-qt5 
+  - gambas3-gb-qt5-ext 
+  - gambas3-gb-qt5-opengl 
+  - gambas3-gb-qt5-webkit 
+  - gambas3-gb-report 
+  - gambas3-gb-report2 
+  - gambas3-gb-scanner 
+  - gambas3-gb-sdl 
+  - gambas3-gb-sdl-sound 
+  - gambas3-gb-settings 
+  - gambas3-gb-signal 
+  - gambas3-gb-term 
+  - gambas3-gb-term-form 
+  - gambas3-gb-util 
+  - gambas3-gb-util-web 
+  - gambas3-gb-v4l 
+  - gambas3-gb-vb 
+  - gambas3-gb-web 
+  - gambas3-gb-web-feed 
+  - gambas3-gb-web-form 
+  - gambas3-gb-xml 
+  - gambas3-gb-xml-rpc 
+  - gambas3-gb-xml-xslt 
+  - gambas3-ide 
+  - gambas3-runtime 
+  - gambas3-script 
   - gamemoded 
   - gamin-devel 
   - gammaray 
@@ -5387,6 +5477,8 @@ unsorted:
   - iometer 
   - ioping 
   - iops 
+  - ioquake3 
+  - ioquake3-devel 
   - ior 
   - iotop 
   - iouyap 
@@ -6172,6 +6264,7 @@ unsorted:
   - kiwi-image-vmx-requires 
   - kiwi-man-pages 
   - kiwi-pxeboot 
+  - kiwi-templates-JeOS 
   - kiwi-tools 
   - kjobwidgets-devel 
   - kjobwidgets-devel-32bit: [x86_64] 
@@ -7168,6 +7261,7 @@ unsorted:
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
   - libWN3 
+  - libWPEBackend-fdo-1_0-1 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
@@ -11801,6 +11895,8 @@ unsorted:
   - libwpd-devel 
   - libwpd-devel-doc 
   - libwpd-tools 
+  - libwpe-1_0-1 
+  - libwpe-devel 
   - libwpg-devel 
   - libwpg-devel-doc 
   - libwpg-tools 
@@ -17283,7 +17379,6 @@ unsorted:
   - python2-GDAL 
   - python2-Genshi 
   - python2-GeoIP 
-  - python2-GitPython 
   - python2-Glances 
   - python2-Gloo 
   - python2-GooCalendar 
@@ -17338,6 +17433,7 @@ unsorted:
   - python2-PyGithub 
   - python2-PyHamcrest 
   - python2-PyICU 
+  - python2-PyInstaller 
   - python2-PyJWT 
   - python2-PyKMIP 
   - python2-PyMeta3 
@@ -18850,7 +18946,6 @@ unsorted:
   - python2-pytest-forked 
   - python2-pytest-git 
   - python2-pytest-helpers-namespace 
-  - python2-pytest-html 
   - python2-pytest-httpbin 
   - python2-pytest-instafail 
   - python2-pytest-isort 
@@ -19575,6 +19670,7 @@ unsorted:
   - python3-PyFxA 
   - python3-PyGithub 
   - python3-PyICU 
+  - python3-PyInstaller 
   - python3-PyJWT: [i586] 
   - python3-PyKMIP 
   - python3-PyMeta3 
@@ -32506,6 +32602,7 @@ unsorted:
   - workrave 
   - workrave-devel 
   - wpan-tools 
+  - wpebackend-fdo-devel 
   - wqy-bitmap-fonts 
   - wqy-microhei-fonts 
   - wrapsix 
