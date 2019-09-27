@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:02:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.1.0:
+  * TorControlProtocol.on_disconnect is deprecated in favour of
+    TorControlProtocol.when_disconnected
+  * introduce non_anonymous_mode= kwarg in txtorcon.launch()
+    enabling Tor options making Onion Services non-anonymous for the
+    server (but they use a single hop instead of three to the
+    Introduction Point so they're slightly faster).
+  * add an API to listen to individual circuit and stream events
+    (without subclassing anything). Can be used as decorators too.
+    See e.g. TorState.on_circuit_new()
+- Drop merged patch:
+  * python-txtorcon-methods-are-bytes.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 08:21:53 UTC 2019 - pgajdos@suse.com
 
 - fix build

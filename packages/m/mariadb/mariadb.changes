@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:08:33 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 10.3.18
+  * notable changes
+    * Connect updated to Connect 1.06.0010
+    * MDEV-20066: This bug could cause a table to become corrupt if
+      a column was added instantly
+    * MDEV-15326: A race condition in InnoDB transaction commit that
+      affects record locking was fixed
+    * MDEV-17187: Table doesn't exist in engine after ALTER of
+      FOREIGN KEY
+    * MDEV-20301: InnoDB's MVCC has O(N^2) behaviors
+    * MDEV-18128: Simplify .ibd file creation
+    * MDEV-20060: Failing assertion: srv_log_file_size <= 512ULL
+      << 30 while preparing backup
+    * MDEV-20247: Replication hangs with "preparing" and never starts
+    * MDEV-17614: Remove unnecessary locking for INSERT...ON
+      DUPLICATE KEY UPDATE
+    * MDEV-20311: row_ins_step accesses uninitialized memory
+    * MDEV-19947: Repositories for RHEL 8 ppc64le added
+  * fixes for the following security vulnerabilities: none
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10318-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10318-changelog
+
+-------------------------------------------------------------------
 Thu Sep  5 21:43:14 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use <memory> instead of <physicalmemory> for _constraints, increasing

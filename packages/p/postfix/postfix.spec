@@ -73,6 +73,8 @@ Patch6:         %{name}-linux45.patch
 Patch7:         %{name}-ssl-release-buffers.patch
 Patch8:         %{name}-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
+Patch10:        %{name}-avoid-infinit-loop-if-no-permission.patch
+Patch11:        deprecated-RES_INSECURE1.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
@@ -173,6 +175,8 @@ PostgreSQL.
 %patch7
 %patch8
 %patch9
+%patch10
+%patch11 -p2
 
 # ---------------------------------------------------------------------------
 

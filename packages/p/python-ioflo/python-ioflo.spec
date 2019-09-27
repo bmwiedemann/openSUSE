@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ioflo/ioflo
 Source0:        https://files.pythonhosted.org/packages/source/i/ioflo/ioflo-%{version}.tar.gz
+Patch0:         python-ioflo-renew-certs.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git >= 1.1}
 BuildRequires:  %{python_module setuptools}
@@ -45,6 +46,7 @@ programming autonomous/autonomic systems easier.
 
 %prep
 %setup -q -n ioflo-%{version}
+%patch0 -p1
 # invalid syntax
 rm -r ioflo/aio/http/test
 rm -r ioflo/aid/test

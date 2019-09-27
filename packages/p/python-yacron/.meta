@@ -1,0 +1,5 @@
+<package name="python-yacron" project="openSUSE:Factory">
+  <title>python-yacron</title>
+  <description>Docker-friendly Cron replacement</description>
+  <devel project="devel:languages:python" package="python-yacron"/>
+</package>

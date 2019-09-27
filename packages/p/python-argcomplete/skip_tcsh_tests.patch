@@ -1,7 +1,8 @@
-diff -ur argcomplete-1.9.4.orig/test/test.py argcomplete-1.9.4/test/test.py
---- argcomplete-1.9.4.orig/test/test.py	2018-02-13 22:40:04.000000000 +0700
-+++ argcomplete-1.9.4/test/test.py	2019-02-10 21:45:44.370237665 +0700
-@@ -1170,34 +1170,6 @@
+Index: argcomplete-1.10.0/test/test.py
+===================================================================
+--- argcomplete-1.10.0.orig/test/test.py
++++ argcomplete-1.10.0/test/test.py
+@@ -1179,34 +1179,6 @@ class TestBashGlobal(TestBash):
              self.assertEqual(self.sh.run_command('python -m package.prog basic f\t'), 'foo\r\n')
  
  
@@ -33,6 +34,6 @@ diff -ur argcomplete-1.9.4.orig/test/test.py argcomplete-1.9.4/test/test.py
 -            self.sh.run_command('')
 -
 -
- class Shell(object):
-     def __init__(self, shell):
-         self.child = pexpect.spawn(shell, encoding='utf-8')
+ class TestFish(_TestSh, unittest.TestCase):
+     expected_failures = [
+         'test_parse_special_characters',

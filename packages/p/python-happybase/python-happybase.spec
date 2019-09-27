@@ -1,7 +1,7 @@
 #
 # spec file for package python-happybase
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-happybase
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        A Python library to interact with Apache HBase
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wbolster/happybase
-Source:         https://files.pythonhosted.org/packages/source/h/happybase/happybase-%{version}.tar.gz
+Source:         https://github.com/wbolster/happybase/archive/%{version}.tar.gz
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module thriftpy}
+BuildRequires:  %{python_module thriftpy2}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 Requires:       python-six
-Requires:       python-thriftpy >= 0.3.8
+Requires:       python-thriftpy2 >= 0.4
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,10 +58,12 @@ sphinx-build -b html doc docs/build/html
 
 %install
 %python_install
-rm docs/build/html/.doctrees/environment.pickle
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+rm -r docs/build/html/.[a-z]*
 
 %check
-%python_exec setup.py test
+# the api tests need running thrift server
+%python_expand nosetests-%{$python_bin_suffix} -v tests/test_util.py
 
 %files %{python_files}
 %license LICENSE.rst

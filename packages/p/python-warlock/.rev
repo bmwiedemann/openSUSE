@@ -131,4 +131,15 @@
   * Upstream no longer ships tests on pypi</comment>
     <requestid>705263</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9f452b4ab245a71557c6ecbc59f1e110</srcmd5>
+    <version>1.3.3</version>
+    <time>1569588559</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-activate test suite using GitHub tarball which includes
+  a setup.py
+
+- Update to 1.3.3:</comment>
+    <requestid>731437</requestid>
+  </revision>
 </revisionlist>

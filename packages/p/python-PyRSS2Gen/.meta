@@ -1,0 +1,5 @@
+<package name="python-PyRSS2Gen" project="openSUSE:Factory">
+  <title>A Python library for generating RSS 2.0 feeds</title>
+  <description>A Python library for generating RSS 2.0 feeds</description>
+  <devel project="devel:languages:python" package="python-PyRSS2Gen"/>
+</package>

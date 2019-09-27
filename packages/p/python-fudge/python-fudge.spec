@@ -57,13 +57,17 @@ with a traceback that points to the culprit.
 %check
 mkdir testdir
 pushd testdir
+%if 0%{?have_python2} && ! 0%{?skip_python2}
 cp -r ../fudge/tests tests2
 export PYTHONPATH=%{buildroot}%{python2_sitelib}
 nosetests-%{python2_bin_suffix} -w tests2
+%endif
+%if 0%{?have_python3} && ! 0%{?skip_python3}
 cp -r ../fudge/tests tests3
 2to3 -w tests3
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
 nosetests-%{python3_bin_suffix} -w tests3
+%endif
 popd
 
 %files %{python_files}

@@ -223,4 +223,19 @@ system runtime fixed with the fix for bnc#1087550
   * Includes GCC 8.3 release.  [bsc#1127260]</comment>
     <requestid>706664</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c5cf7d3aadd4f56b7a78ca9f759ae619</srcmd5>
+    <version>8.3.1+r273794</version>
+    <time>1569588115</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove bogus fixed include bits/statx.h from glibc 2.30.  [gcc#91085]
+
+- Update to gcc-8-branch head (r273794).
+  * Includes fix for LTO linker plugin heap overflow.
+  (bsc#1142649, CVE-2019-14250)
+
+- Update to gcc-8-branch head (r273560).
+  * Includes fix for vector shift miscompilation on s390.  [bsc#1141897]</comment>
+    <requestid>726181</requestid>
+  </revision>
 </revisionlist>

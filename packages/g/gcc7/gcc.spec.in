@@ -235,16 +235,16 @@ BuildRequires: gdb
 %define build_primary_64bit 0
 %endif
 
-# COMMON-BEGIN
+# SRC-COMMON-BEGIN
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:          https://gcc.gnu.org/
-Version: 7.4.1+r273795
+Version: 7.4.1+r275405
 Release:      1
 %define gcc_dir_version %(echo %version | sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
 %define binsuffix -@base_ver@
-# COMMON-END
+# SRC-COMMON-END
 
 %if !0%{?building_testsuite:1}
 Requires: binutils glibc-devel
@@ -286,7 +286,8 @@ Requires: libmpxwrappers%{libmpxwrappers_sover} >= %{version}-%{release}
 Suggests: gcc@base_ver@-info gcc@base_ver@-locale
 %endif
 
-# COMMON-BEGIN
+# SRC-COMMON-BEGIN
+Group:		Development/Languages/C and C++
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 Source:		gcc-%{version}.tar.xz
 Source1:	change_spec
@@ -303,7 +304,6 @@ Patch11:	gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch12:        gcc7-stack-probe.diff
 Patch14:	gcc7-pr82248.diff
 Patch15:	gcc7-avoid-fixinc-error.diff
-Patch16:	gcc8-pr89752.patch
 Patch17:  gcc7-flive-patching.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
@@ -313,9 +313,9 @@ Patch61:	gcc44-rename-info-files.patch
 
 
 # GCC-TESTSUITE-DELETE-BEGIN
-Group:		Development/Languages/C and C++
-Summary:	The GNU C Compiler and Support Files
 License:        GPL-3.0+
+# SRC-COMMON-END
+Summary:	The GNU C Compiler and Support Files
 
 %description
 Core package for the GNU Compiler Collection, including the C language
@@ -326,7 +326,6 @@ namely gcc-ada, gcc-c++, gcc-fortran, gcc-obj, gcc-obj-c++ and gcc-go.
 
 
 
-# COMMON-END
 %package -n gcc@base_ver@-32bit
 Summary:      The GNU C Compiler 32bit support
 Group:        Development/Languages/C and C++
@@ -940,7 +939,7 @@ Results from running the gcc and target library testsuites.
 
 
 
-# COMMON-BEGIN
+# SRC-COMMON-BEGIN
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -976,7 +975,7 @@ Results from running the gcc and target library testsuites.
 %define libsubdir %{_libdir}/gcc/%{GCCDIST}/%{gcc_dir_version}
 %define gxxinclude %{_prefix}/include/c++/%{gcc_dir_version}
 
-# COMMON-END
+# SRC-COMMON-END
 
 # Versionspecific directories
 %define versmainlibdir %{libsubdir}
@@ -1036,7 +1035,7 @@ Results from running the gcc and target library testsuites.
 %endif
 
 
-# COMMON-BEGIN
+# BUILD-COMMON-BEGIN
 
 %prep
 %if 0%{?nvptx_newlib:1}
@@ -1060,7 +1059,6 @@ ln -s nvptx-newlib/newlib .
 %patch12
 %patch14
 %patch15
-%patch16
 %patch17 -p1
 %patch51
 %patch60
@@ -1358,7 +1356,7 @@ nvptx-none=%{_prefix}/nvptx-none, \
 	--build=%{GCCDIST} \
 	--host=%{GCCDIST}
 
-# COMMON-END
+# BUILD-COMMON-END
 
 STAGE1_FLAGS="-g -O2"
 %if 0%{?do_profiling}
@@ -1636,6 +1634,7 @@ rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/linux/vt.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/asm-generic/socket.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/mathdef.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/ucontext.h
+rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/statx.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf $RPM_BUILD_ROOT%{libsubdir}/plugin

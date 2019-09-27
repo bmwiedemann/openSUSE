@@ -253,7 +253,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        7.4.1+r273795
+Version:        7.4.1+r275405
 Release:        0
 %define gcc_dir_version %(echo %version | sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -316,7 +316,6 @@ Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch12:        gcc7-stack-probe.diff
 Patch14:        gcc7-pr82248.diff
 Patch15:        gcc7-avoid-fixinc-error.diff
-Patch16:        gcc8-pr89752.patch
 Patch17:        gcc7-flive-patching.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
@@ -446,7 +445,6 @@ ln -s nvptx-newlib/newlib .
 %patch12
 %patch14
 %patch15
-%patch16
 %patch17 -p1
 %patch51
 %patch60

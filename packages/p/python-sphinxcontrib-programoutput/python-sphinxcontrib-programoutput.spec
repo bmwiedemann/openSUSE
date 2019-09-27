@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without     test
 Name:           python-sphinxcontrib-programoutput
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Sphinx extension to include program output
 License:        BSD-2-Clause
@@ -51,10 +51,13 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/sphinxcontrib/programoutput/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %if %{with test}
 %check
+# https://github.com/NextThought/sphinxcontrib-programoutput/issues/38
 export LANG=en_US.UTF-8
 %python_exec setup.py test
 %endif

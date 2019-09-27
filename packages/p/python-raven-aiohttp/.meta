@@ -1,0 +1,5 @@
+<package name="python-raven-aiohttp" project="openSUSE:Factory">
+  <title>python-raven-aiohttp</title>
+  <description>Asyncio transport for raven-python</description>
+  <devel project="devel:languages:python" package="python-raven-aiohttp"/>
+</package>

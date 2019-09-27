@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Sep 13 14:55:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Conflict with python2-cx_Freeze as we are no longer update-alternatives
+  set up package but provide only py3 variant
+
+-------------------------------------------------------------------
+Fri Sep 13 13:27:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase.
+
+-------------------------------------------------------------------
+Fri Sep 13 10:13:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.0:
+  * Corrected support for Python 3.7 (PR #395).
+  * Use importlib and other Python 3 improvements (PR #484, PR #485, PR #486, PR #490).
+  * Fixed issue with @rpath causing file copy errors on macOS (PR #307).
+  * Replaced file() with open() and use context manager to ensure the file handle is closed and deleted (PR #348).
+  * Corrected invalid version handling in bdist_msi (PR #349, Issue #340).
+  * Corrected hook for clr module (PR #397, PR #444).
+  * Corrected documentation for compress option (PR #358).
+  * Ensure that the pythoncom and pywintypes DLLs are found in the lib directory and not in the base directory (Issue #332).
+  * Always copy dependent files to root directory on macOS (PR #365).
+  * Skip self referencing archive on macOS (PR #364, Issue #304).
+  * Include doc directory in source distribution (PR #394, Issue #376).
+  * Force msilib module to be reloaded in order to allow for the generation of multiple MSI packages in a single session (PR #419).
+  * Added hook for PyQt5.QtPrintSupport module (PR #401).
+  * Added ability to include an icon on the add/remove program window that pops up during installation (PR #387).
+  * Prevent spurious errors from being printed during building on macOS by checking to see that a file is a Mach-O binary before adding it to the list of files it is checking the reference of (PR #342, Issue #268).
+  * Avoid otool bug on macOS Yosemite (PR #297, Issue #292).
+  * Added ability to specify environment variables that should be created when an MSI package is installed (PR #266).
+  * Added support for including resources in an app bundle for macOS (PR #423).
+  * Added absolute reference path option for macOS packages (PR #424).
+  * Added CFBundle identifier for macOS packages (PR #427, Issue #426).
+  * Added hook for copying SSL DLLs for Python 3.7+ on Windows (PR #470).
+  * Added -municode flag when building on Windows with mingw32 (PR #468).
+  * Added hook for pycparser (PR #446).
+  * Fixed hook for zmq so it doesn’t fail when there is no bundled libzmq library in the installed pyzmq package (PR #442).
+  * Print error when fetching dependent files fails (PR #435).
+  * Make executable writable before adding the icon (PR #430, Issue #368).
+  * Dropped support for RPM and MSI packages for cx_Freeze itself since these are no longer supported by PyPI.
+  * Fix building console app with mingw32 (PR #475).
+  * Force inclusion of the unicodedata module which is used by the socket module, and possibly others (PR #476).
+  * Added hook for asyncio package (PR #477).
+  * Added hook for idna package (PR #478).
+  * Added hook for pkg_resources package (PR #481).
+  * Added hook for gevent (PR #495).
+  * Force .exe extension to be included on Windows, so that the same setup code can be used on both Linux and Windows (PR #489).
+  * Added hook for Pillow (PR #491).
+  * Improved hook for tkinter (PR #493).
+  * Avoid attempting to check for dependent files on Windows when the file is not an executable or DLL (PR #492).
+  * Ensure that only executable files are checked for dependencies in order to avoid spurious errors when checking for dependent files.
+  * Improved hook for matplotlib.
+  * Dropped support for Python 2.x. Use cx_Freeze 5 for Python 2.x support.
+  * Instead of depending on the built-in functionality of searching for a zip file that looks like pythonxx.zip (which is disabled on some platforms like Ubuntu), set the Python path to include a subdirectory called “lib” and a zip file “lib/library.zip” on all platforms.
+  * Do not create version resource when version is omitted (PR #279).
+  * Ensure the sqlite3 DLL is loaded in the same directory as the module which depends on it (Issue #296).
+
+-------------------------------------------------------------------
 Fri May 18 21:12:54 UTC 2018 - jengelh@inai.de
 
 - Add limitations of CX_Freeze to the descriptions.

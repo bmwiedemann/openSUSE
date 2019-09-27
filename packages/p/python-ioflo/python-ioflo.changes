@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 18 14:36:09 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add python-ioflo-renew-certs.patch to fix tests
+- revert skipping TLS tests
+
+-------------------------------------------------------------------
+Tue Sep 17 09:21:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip TLS tests that are using certificates that are not valid for
+  our openssl/ca store
+
+-------------------------------------------------------------------
 Wed Sep 11 14:42:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.6:

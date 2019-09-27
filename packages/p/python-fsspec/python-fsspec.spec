@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fsspec
-Version:        0.4.0
+Version:        0.5.1
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/intake/filesystem_spec
-Source:         https://codeload.github.com/intake/filesystem_spec/tar.gz/%{version}#/filesystem_spec-%{version}.tar.gz
+Source:         https://github.com/intake/filesystem_spec/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

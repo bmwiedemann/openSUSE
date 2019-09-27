@@ -54,7 +54,7 @@
 %define python_path /usr/bin/python2            
 %endif
 Name:           mariadb
-Version:        10.3.17
+Version:        10.3.18
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception

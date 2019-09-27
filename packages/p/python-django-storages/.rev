@@ -17,4 +17,15 @@
 </comment>
     <requestid>695091</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>419d0178a5403f0a14de7991e4db0f7d</srcmd5>
+    <version>1.7.2</version>
+    <time>1569588511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.2:
+  * Various cloud fixes
+  * Support for newer django releases
+- Drop merged e9bb4bcb8a1b7720468add08bc8343ffbaa0165c.patch</comment>
+    <requestid>731206</requestid>
+  </revision>
 </revisionlist>

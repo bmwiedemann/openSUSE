@@ -17,14 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-html5-parser
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        C based HTML 5 parsing for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/kovidgoyal/html5-parser
+URL:            https://github.com/kovidgoyal/html5-parser
 Source:         https://github.com/kovidgoyal/html5-parser/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module devel}
@@ -34,8 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %python_subpackages
 
 %description
@@ -52,8 +49,8 @@ about thirty times faster than the "html5lib" pure Python based parser.
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root,-) 
-%doc LICENSE README.rst
+%license LICENSE
+%doc README.rst
 %{python_sitearch}/html5_parser/
 %{python_sitearch}/html5_parser-%{version}-py%{python_version}.egg-info
 

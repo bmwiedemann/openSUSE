@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argcomplete
-Version:        1.9.5
+Version:        1.10.0
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -31,6 +31,7 @@ Patch1:         trim-test-deps.patch
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  fish
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages

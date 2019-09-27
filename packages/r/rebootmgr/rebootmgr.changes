@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep  9 10:40:46 CEST 2019 - kukuk@suse.de
+
+- Fix %config for backward compatibility
+
+-------------------------------------------------------------------
+Fri Sep  6 13:03:15 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.20
+  - add support to write changes back to /etc/rebootmgr.conf
+
+-------------------------------------------------------------------
+Wed Aug 28 12:56:07 CEST 2019 - kukuk@suse.de
+
+- Preserve /etc/rebootmgr.conf if modified
+
+-------------------------------------------------------------------
+Tue Aug 27 15:17:28 CEST 2019 - kukuk@suse.de
+
+- Update to version 0.19
+  - use libeconf for /usr/etc move
+
+-------------------------------------------------------------------
 Thu Jan 17 16:52:42 CET 2019 - kukuk@suse.de
 
 - Update to version 0.18

@@ -19,7 +19,7 @@
 %define mod_name argparse-manpage
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argparse-manpage
-Version:        1.1
+Version:        1.2.2
 Release:        0
 Summary:        Tool for automatic manual page building from a Python ArgumentParser object
 License:        Apache-2.0

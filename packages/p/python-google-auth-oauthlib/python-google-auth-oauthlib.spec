@@ -12,21 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth-oauthlib
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
-License:        Apache-2.0
 Summary:        Google authentication library
-Url:            https://github.com/GoogleCloudPlatform/google-auth-library-python-oauthlib
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/GoogleCloudPlatform/google-auth-library-python-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth-oauthlib/google-auth-oauthlib-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-google-auth
+Requires:       python-requests-oauthlib >= 0.7.0
+Requires:       python-six
+Recommends:     python-click
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module google-auth}
@@ -36,15 +42,9 @@ BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}
 BuildRequires:  %{python_module six}
 BuildRequires:  python-futures
 # /SECTION
-Requires:       python-google-auth
-Requires:       python-requests-oauthlib >= 0.7.0
-Requires:       python-six
-Recommends:     python-click
 %ifpython2
 Requires:       python-futures
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,7 +63,7 @@ rm -rf tests/*.pyc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand pytest-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.rst

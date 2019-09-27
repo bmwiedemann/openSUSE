@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hankel
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
@@ -59,7 +59,7 @@ transformations using the method of Ogata 2005.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst

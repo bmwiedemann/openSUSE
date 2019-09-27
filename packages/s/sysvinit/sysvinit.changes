@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 18 07:45:38 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 2.96
+  * Added -z command line paramter to pidof which tells pidof to
+    try to find processes in uninterruptable (D) or zombie (Z) states.
+    This can cause pidof to hang, but produces a more complete process
+    list.
+  * Reformatted init code to make if/while logic more clear.
+  * Make sure src/Makefile cleans up all executable files
+    when parent Makefile calls "make clean".
+
+-------------------------------------------------------------------
+Thu Aug 29 13:25:34 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to killproc 2.23
+  * killproc has its upstream at https://github.com/bitstreamout/killproc
+  * Use new system call statx(2) to replace old stat(2)/lstat(2)
+- Remove patches now upstream:
+  * killproc-2.18-open_flags.dif
+  * killproc-2.21.dif
+  * killproc-sysmacros.patch
+  * killproc-mntinf-optional.patch
+
+-------------------------------------------------------------------
 Fri Jun 21 07:20:38 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Remove logsave as well as the manual page as those as part of

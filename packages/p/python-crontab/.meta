@@ -1,0 +1,5 @@
+<package name="python-crontab" project="openSUSE:Factory">
+  <title>python-crontab</title>
+  <description>Parse and use crontab schedules in Python</description>
+  <devel project="devel:languages:python" package="python-crontab"/>
+</package>

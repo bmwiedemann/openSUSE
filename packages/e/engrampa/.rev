@@ -150,4 +150,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>719947</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>02729f14c751f3580eaec7046643571f</srcmd5>
+    <version>1.23.0</version>
+    <time>1569588664</time>
+    <user>dimstar_suse</user>
+    <comment>I have really no idea, why libxml2-python ended up here at all.</comment>
+    <requestid>733386</requestid>
+  </revision>
 </revisionlist>

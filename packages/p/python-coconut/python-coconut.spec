@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-coconut
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A functional programming language that compiles to Python
 License:        MIT
@@ -33,34 +33,33 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Pygments >= 2.2
+Requires:       python-prompt_toolkit >= 2
+Requires:       python-pyparsing >= 2.2
+Requires:       python-six
+Recommends:     python-cPyparsing >= 2.2.0.1.1
+Recommends:     python-ipykernel >= 4.6
+Recommends:     python-ipython >= 5.4
+Recommends:     python-jupyter >= 1
+Recommends:     python-jupyter_console >= 5.2
+Recommends:     python-mypy >= 0.540
+Recommends:     python-psutil >= 5
+Recommends:     python-requests >= 2
+Recommends:     python-watchdog >= 0.8
+Conflicts:      python2-coconut <= 1.4.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cPyparsing >= 2.2.0.1.1}
-BuildRequires:  %{python_module jupyter >= 1}
-BuildRequires:  %{python_module jupyter_console >= 5.2}
 BuildRequires:  %{python_module ipykernel >= 4.6}
 BuildRequires:  %{python_module ipython >= 5.4}
+BuildRequires:  %{python_module jupyter >= 1}
+BuildRequires:  %{python_module jupyter_console >= 5.2}
 BuildRequires:  %{python_module mypy >= 0.540}
 BuildRequires:  %{python_module psutil >= 5}
 BuildRequires:  %{python_module pytest >= 3}
 BuildRequires:  %{python_module requests >= 2}
 BuildRequires:  %{python_module watchdog >= 0.8}
 # /SECTION
-Requires:       python-Pygments >= 2.2
-Requires:       python-pyparsing >= 2.2
-Requires:       python-six
-Recommends:     python-cPyparsing >= 2.2.0.1.1
-Recommends:     python-jupyter >= 1
-Recommends:     python-jupyter_console >= 5.2
-Recommends:     python-ipykernel >= 4.6
-Recommends:     python-ipython >= 5.4
-Recommends:     python-mypy >= 0.540
-Requires:       python-prompt_toolkit >= 2
-Recommends:     python-psutil >= 5
-Recommends:     python-requests >= 2
-Recommends:     python-watchdog >= 0.8
-Conflicts:      python2-coconut <= 1.4.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

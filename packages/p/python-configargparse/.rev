@@ -28,4 +28,12 @@
   in our test enviroment</comment>
     <requestid>680493</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8a68cd19ce891b101a0dbcdbe47ce098</srcmd5>
+    <version>0.14.0</version>
+    <time>1569588564</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests that were reported upstream with no reaction</comment>
+    <requestid>731447</requestid>
+  </revision>
 </revisionlist>

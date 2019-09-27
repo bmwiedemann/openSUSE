@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 26 17:43:54 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.3.2+git20190926.fea4a03:
+  * Release version 0.3.2
+  * Fix merging an empty file (#105)
+  * Add test cases for merge function
+
+-------------------------------------------------------------------
+Tue Sep 24 12:52:52 UTC 2019 - rbrown@suse.com
+
+- Update to version 0.3.1+git20190924.822cf5b:
+  * release version 0.3.1
+  * Set delimiter in readFile
+  * Change parser interface to store file name and line numbers per key
+  * Update ccpp.yml
+
+-------------------------------------------------------------------
 Fri Sep 06 10:53:32 UTC 2019 - kukuk@suse.de
 
 - Update to version 0.3.0+git20190906.0e60a88:

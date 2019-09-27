@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 16 08:49:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7.2:
+  * Various cloud fixes
+  * Support for newer django releases
+- Drop merged e9bb4bcb8a1b7720468add08bc8343ffbaa0165c.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 09:25:45 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add e9bb4bcb8a1b7720468add08bc8343ffbaa0165c.patch for django-2.2 

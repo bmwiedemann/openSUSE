@@ -1377,4 +1377,28 @@
   * sysvinit-2.90.dif</comment>
     <requestid>711279</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>8fa8aeae7ba36e1ca5970b24b3e2cb31</srcmd5>
+    <version>2.96</version>
+    <time>1569588182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to sysvinit 2.96
+  * Added -z command line paramter to pidof which tells pidof to
+    try to find processes in uninterruptable (D) or zombie (Z) states.
+    This can cause pidof to hang, but produces a more complete process
+    list.
+  * Reformatted init code to make if/while logic more clear.
+  * Make sure src/Makefile cleans up all executable files
+    when parent Makefile calls &quot;make clean&quot;.
+
+- Update to killproc 2.23
+  * killproc has its upstream at https://github.com/bitstreamout/killproc
+  * Use new system call statx(2) to replace old stat(2)/lstat(2)
+- Remove patches now upstream:
+  * killproc-2.18-open_flags.dif
+  * killproc-2.21.dif
+  * killproc-sysmacros.patch
+  * killproc-mntinf-optional.patch</comment>
+    <requestid>731661</requestid>
+  </revision>
 </revisionlist>

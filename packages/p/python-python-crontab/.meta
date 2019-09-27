@@ -1,0 +1,5 @@
+<package name="python-python-crontab" project="openSUSE:Factory">
+  <title>python-python-crontab</title>
+  <description>Python Crontab API</description>
+  <devel project="devel:languages:python" package="python-python-crontab"/>
+</package>

@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define skip_python2 1
 Name:           python-djangorestframework%{psuffix}
-Version:        3.9.3
+Version:        3.10.3
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
@@ -58,10 +58,6 @@ BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pytest-django >= 3.3.2}
 BuildRequires:  python3-django-filter >= 1.1.0
 %endif
-%ifpython2
-Provides:       %{oldpython}-django-rest-framework = %{version}
-Obsoletes:      %{oldpython}-django-rest-framework < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -87,7 +83,7 @@ authentication and permission policies out of the box.
 
 %check
 %if %{with test}
-%python_exec -m pytest
+%pytest
 %endif
 
 %if !%{with test}

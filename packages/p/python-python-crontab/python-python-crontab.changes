@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Sep 18 08:27:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable flaky test test_04_schedule_ten
+
+-------------------------------------------------------------------
+Tue Sep 17 09:59:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Expand description.
+
+-------------------------------------------------------------------
+Tue Sep 17 08:39:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 16 12:39:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to single spec and activate test suite
+- Update to v2.3.8
+
+-------------------------------------------------------------------
+Mon Aug 23 10:05:00 UTC 2015 - Sergey Ivanov <isn77@list.ru>
+
+- Initial spec for v1.7.2

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-api-python-client
-Version:        1.7.8
+Version:        1.7.11
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0

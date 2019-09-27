@@ -28,4 +28,15 @@ https://build.opensuse.org/request/show/606019</comment>
     <comment>- Move the Name definition above lua code to work on 42.3</comment>
     <requestid>632101</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0d12831c9f687b52200827a115f4ec22</srcmd5>
+    <version>1.6.1</version>
+    <time>1569588580</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not generate test subpackage
+
+- Add patch to fix build with new semantic versioning:
+  * semanticversioning.patch</comment>
+    <requestid>731479</requestid>
+  </revision>
 </revisionlist>

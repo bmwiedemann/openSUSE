@@ -16,8 +16,15 @@
 #
 
 
+%if ! %{defined _distconfdir}
+  %define _distconfdir %{_sysconfdir}
+  %define with_config 1
+%else
+  %define with_config 0
+%endif
+
 Name:           rebootmgr
-Version:        0.18
+Version:        0.20
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -30,7 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(json-c)
-%{?systemd_requires}
+BuildRequires:  pkgconfig(libeconf)
 
 %description
 RebootManager is a dbus service to execute a controlled reboot after updates in a defined maintenance window.
@@ -47,10 +54,15 @@ make %{?_smp_mflags}
 %install
 %make_install
 ln -sf service %{buildroot}%{_sbindir}/rcrebootmgr
+if [ ! -d %{buildroot}%{_distconfdir} ]; then
+    mkdir -p %{buildroot}%{_distconfdir}
+    mv %{buildroot}%{_sysconfdir}/rebootmgr.conf %{buildroot}%{_distconfdir}
+fi
 %fdupes %{buildroot}%{_mandir}
 
 %pre
 %service_add_pre rebootmgr.service
+test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/rebootmgr.conf.rpmsave.old ||:
 
 %post
 %service_add_post rebootmgr.service
@@ -61,11 +73,18 @@ ln -sf service %{buildroot}%{_sbindir}/rcrebootmgr
 %postun
 %service_del_postun rebootmgr.service
 
+%posttrans
+test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/rebootmgr.conf
+
 %files
 %license COPYING COPYING.LIB
 %doc NEWS
 %dir %{_sysconfdir}/dbus-1/system.d
+%if %{with_config}
 %config %{_sysconfdir}/rebootmgr.conf
+%else
+%{_distconfdir}/rebootmgr.conf
+%endif
 %config %{_sysconfdir}/dbus-1/system.d/org.opensuse.RebootMgr.conf
 %{_prefix}/lib/systemd/system/rebootmgr.service
 %{_sbindir}/rebootmgrctl

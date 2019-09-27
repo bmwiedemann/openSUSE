@@ -104,4 +104,13 @@ eplacement for google-api-python-client, follow our naming convention</comment>
 - Add back unittest2 dep, upstream hardcoded it</comment>
     <requestid>685321</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>80152635dc0cfdd775a2475e05c3094b</srcmd5>
+    <version>1.7.11</version>
+    <time>1569588407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.11:
+  * Various small bugfixes only</comment>
+    <requestid>730379</requestid>
+  </revision>
 </revisionlist>

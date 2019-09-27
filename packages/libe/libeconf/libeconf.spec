@@ -18,17 +18,17 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.3.0+git20190906.0e60a88
+Version:        0.3.2+git20190926.fea4a03
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
-Url:            https://github.com/openSUSE/libeconf
 Group:          Development/Libraries/C and C++
+Url:            https://github.com/openSUSE/libeconf
 Source:         libeconf-%{version}.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  autoconf
-BuildRequires:  libtool
 BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -37,6 +37,7 @@ in several locations into one.
 
 %package -n %{lname}
 Summary:        Enhanced config file parser ala systemd
+Group:          Development/Libraries/C and C++
 
 %description -n %{lname}
 Enhanced config file parser, which merges config files placed

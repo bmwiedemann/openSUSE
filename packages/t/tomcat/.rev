@@ -561,4 +561,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>709512</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>bd682279613b309f07a480286bab78e6</srcmd5>
+    <version>9.0.20</version>
+    <time>1569588319</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with the new ecj</comment>
+    <requestid>733223</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-feature-classification
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Sphinx extension to generate a matrix of pluggable drivers
 License:        Apache-2.0

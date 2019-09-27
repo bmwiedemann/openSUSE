@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Sep 23 14:00:09 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Package gconv-modules.cache as %ghost
+- Regenerate it also in the %post of glibc-local-base-<targettype> 
+
+-------------------------------------------------------------------
+Mon Sep 23 13:01:24 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- move mo files to glibc-locale as that's where all the other
+  informations for those locales are. glibc-locale-base only has English
+  anyways.
+
+-------------------------------------------------------------------
+Wed Sep 18 13:57:25 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- riscv-vfork.patch: Fix RISC-V vfork build with Linux 5.3 kernel headers
+
+-------------------------------------------------------------------
+Mon Aug 19 13:47:26 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Remove NoSource tags (bsc#994835)
+
+-------------------------------------------------------------------
+Mon Aug 19 15:40:19 CEST 2019 - kukuk@suse.de
+
+- pwdutils is long gone and replaced by shadow
+
+-------------------------------------------------------------------
+Fri Aug  2 08:59:46 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.30
+  * Unicode 12.1.0 Support
+  * The dynamic linker accepts the --preload argument to preload shared
+    objects
+  * The twalk_r function has been added
+  * On Linux, the getdents64, gettid, and tgkill functions have been added
+  * Minguo (Republic of China) calendar support has been added
+  * The entry for the new Japanese era has been added
+  * Memory allocation functions malloc, calloc, realloc, reallocarray, valloc,
+    pvalloc, memalign, and posix_memalign fail now with total object size
+    larger than PTRDIFF_MAX
+  * The dynamic linker no longer refuses to load objects which reference
+    versioned symbols whose implementation has moved to a different soname
+    since the object has been linked
+  * Add new POSIX-proposed pthread_cond_clockwait, pthread_mutex_clocklock,
+    pthread_rwlock_clockrdlock, pthread_rwlock_clockwrlock and sem_clockwait
+    functions
+  * On AArch64 the GNU IFUNC resolver call ABI changed
+  * The copy_file_range function fails with ENOSYS if the kernel does not
+    support the system call of the same name
+  * The functions clock_gettime, clock_getres, clock_settime,
+    clock_getcpuclockid, clock_nanosleep were removed from the librt library
+    for new applications (on architectures which had them)
+  * The obsolete and never-implemented XSI STREAMS header files <stropts.h>
+    and <sys/stropts.h> have been removed
+  * Support for the "inet6" option in /etc/resolv.conf and the RES_USE_INET6
+    resolver flag (deprecated in glibc 2.25) have been removed
+  * The obsolete RES_INSECURE1 and RES_INSECURE2 option flags for the DNS stub
+    resolver have been removed from <resolv.h>
+  * With --enable-bind-now, installed programs are now linked with the
+    BIND_NOW flag.
+  * On 32-bit Arm, support for the port-based I/O emulation and the <sys/io.h>
+    header have been removed
+  * The Linux-specific <sys/sysctl.h> header and the sysctl function have been
+    deprecated and will be removed from a future version of glibc
+  * CVE-2019-7309: x86-64 memcmp used signed Jcc instructions to check
+    size
+  * CVE-2019-9169: Attempted case-insensitive regular-expression match
+    via proceed_next_node in posix/regexec.c leads to heap-based buffer
+    over-read
+- pthread-rwlock-trylock-stalls.patch,
+  arm-systemtap-probe-constraint.patch, pthread-mutex-barrier.patch,
+  fork-handler-lock.patch, pthread-join-probe.patch,
+  riscv-clone-unwind.patch, add-new-Fortran-vector-math-header-file.patch,
+  regex-read-overrun.patch, japanese-era-name-may-2019.patch,
+  dl-show-auxv.patch, s390-vx-vxe-hwcap.patch, taisho-era-string.patch,
+  malloc-tracing-hooks.patch, pldd-inf-loop.patch,
+  malloc-large-bin-corruption-check.patch, wfile-sync-crash.patch,
+  malloc-tests-warnings.patch, fnmatch-collating-elements.patch,
+  iconv-reset-input-buffer.patch: Removed
+- malloc-info-whitespace.patch: Remove unwanted leading whitespace in
+  malloc_info (BZ #24867)
+
+-------------------------------------------------------------------
+Wed Jul 17 09:47:02 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Move /var/lib/misc/Makefile to /usr/share/misc/Makefile.makedb (bsc#1138726)
+
+-------------------------------------------------------------------
 Wed Jun 26 07:41:20 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - malloc-tests-warnings.patch: Fix warnings in malloc tests with GCC 9

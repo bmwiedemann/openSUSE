@@ -24,7 +24,7 @@ Summary:        Python object model built on top of JSON schema
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://github.com/bcwaldon/warlock
-Source:         https://files.pythonhosted.org/packages/source/w/warlock/warlock-%{version}.tar.gz
+Source:         https://github.com/bcwaldon/warlock/archive/%{version}.tar.gz#/warlock-%{version}.tar.gz
 BuildRequires:  %{python_module jsonpatch >= 0.7}
 BuildRequires:  %{python_module jsonschema >= 0.10}
 BuildRequires:  %{python_module pytest}
@@ -39,10 +39,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Build self-validating python objects using JSON schemas
+Build self-validating python objects using JSON schemas.
 
 %prep
 %setup -q -n warlock-%{version}
+rm pytest.ini
 
 %build
 %python_build
@@ -52,8 +53,7 @@ Build self-validating python objects using JSON schemas
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests are not distributed by upstream and github does not
-# use setuptools anymore
+%pytest
 
 %files %{python_files}
 %doc README.md

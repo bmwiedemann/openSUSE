@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-storages
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Support for many storage backends in Django
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jschneier/django-storages
 Source:         https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-%{version}.tar.gz
-Patch0:         e9bb4bcb8a1b7720468add08bc8343ffbaa0165c.patch
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,12 +40,13 @@ Suggests:       python-paramiko
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module azure-storage-blob}
-BuildRequires:  %{python_module boto3}
-BuildRequires:  %{python_module boto}
-BuildRequires:  %{python_module dropbox}
-BuildRequires:  %{python_module google-cloud-storage}
+BuildRequires:  %{python_module azure-storage-blob >= 1.3.1}
+BuildRequires:  %{python_module boto >= 2.32.0}
+BuildRequires:  %{python_module boto3 >= 1.4.4}
+BuildRequires:  %{python_module dropbox >= 7.2.1}
+BuildRequires:  %{python_module google-cloud-storage >= 0.22.0}
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  python2-mock
 # /SECTION
 %python_subpackages
@@ -57,7 +56,6 @@ Support for many storage backends in Django
 
 %prep
 %setup -q -n django-storages-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -71,8 +69,8 @@ export PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings
 # Integration tests, which is only azure, fail systematically
 rm -r tests/integration
-# Skip two tests in test_s3boto3.py
-%python_exec -m nose -e 'test_deprecated_(acl|bucket)'
+# Skip failing test in test_s3boto3.py
+%pytest -k 'not test_deprecated_default_acl'
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.rst

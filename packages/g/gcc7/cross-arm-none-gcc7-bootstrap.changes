@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep  9 07:33:54 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Rework shared spec file parts to allow custom Summary and
+  Description for cross compilers.  Clarify their Summary
+  and Description.  [bsc#1148517]
+- Reorder things in cross.spec.in so the Version define comes before
+  the first use of %version.
+
+-------------------------------------------------------------------
+Thu Sep  5 13:29:56 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-7-branch head (r275405).
+  * Pulls fix for POWER9 DARN miscompilation.
+    (bsc#1149145, CVE-2019-15847)
+  * Includes gcc8-pr89752.patch
+
+-------------------------------------------------------------------
+Fri Aug 16 09:51:33 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Remove bogus fixed include bits/statx.h from glibc 2.30.  [gcc#91085]
+
+-------------------------------------------------------------------
 Thu Jul 25 10:51:53 UTC 2019 - rguenther@suse.com
 
 - Update to gcc-7-branch head (r273795).

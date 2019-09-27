@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>712627</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4885d996c661d149e7e9f3f809566e97</srcmd5>
+    <version>30.3.0</version>
+    <time>1569588513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 30.3.0:
+  * no upstream changelog</comment>
+    <requestid>731284</requestid>
+  </revision>
 </revisionlist>

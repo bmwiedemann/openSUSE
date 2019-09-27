@@ -1,0 +1,5 @@
+<package name="python-devpi-server" project="openSUSE:Factory">
+  <title>python-devpi-server</title>
+  <description>Reliable private and pypi.org caching server</description>
+  <devel project="devel:languages:python" package="python-devpi-server"/>
+</package>

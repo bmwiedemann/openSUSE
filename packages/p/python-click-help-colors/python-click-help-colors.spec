@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-help-colors
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Colorization of help messages in Click
 License:        MIT

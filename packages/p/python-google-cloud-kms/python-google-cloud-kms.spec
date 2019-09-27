@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-kms
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0
@@ -29,17 +29,17 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
-Requires:       python-google-api-core >= 1.6.0
-Requires:       python-grpc-google-iam-v1 >= 0.11.4
+Requires:       python-google-api-core >= 1.14.0
+Requires:       python-grpc-google-iam-v1 >= 0.12.3
 BuildArch:      noarch
 %ifpython2
 Requires:       python-enum34
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 1.6.0}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.11.4}
+BuildRequires:  %{python_module google-api-core >= 1.14.0}
+BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.3}
 # /SECTION
 %python_subpackages
 

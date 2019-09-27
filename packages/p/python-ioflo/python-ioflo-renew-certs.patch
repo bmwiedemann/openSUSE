@@ -1,0 +1,199 @@
+https://github.com/ioflo/ioflo/pull/41
+
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed Sep 18 16:10:02 2019 +0200
+
+    Fix tests until 2049
+    
+    ioflo/aio/test/tls/certs/client_cert.pem had
+                Not After : Sep 15 17:08:16 2019 GMT
+    and thus 8 tests were failing.
+    
+    The certs were updated using gnutls'
+    certtool -u \
+     --load-ca-privkey ioflo/aio/test/tls/certs/client_key.pem \
+     --load-ca-certificate ./ioflo/aio/test/tls/certs/client_cert.pem \
+     --load-certificate ./ioflo/aio/test/tls/certs/client_cert.pem > x
+    
+    with an expiry of 11000 days.
+
+Index: ioflo-1.7.6/ioflo/aio/test/tls/certs/client_cert.pem
+===================================================================
+--- ioflo-1.7.6.orig/ioflo/aio/test/tls/certs/client_cert.pem
++++ ioflo-1.7.6/ioflo/aio/test/tls/certs/client_cert.pem
+@@ -2,7 +2,7 @@
+ MIIDdjCCAl4CCQCDn16h/SCOYDANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJV
+ UzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEOMAwGA1UECgwFSW9mbG8x
+ DjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhvc3QxHDAaBgkqhkiG9w0B
+-CQEWDXNhbUBpb2Zsby5jb20wHhcNMTgwOTE1MTcwODE2WhcNMTkwOTE1MTcwODE2
++CQEWDXNhbUBpb2Zsby5jb20wHhcNMTkwOTE4MTM1MjU0WhcNNDkxMDMwMTM1MjU2
+ WjB9MQswCQYDVQQGEwJVUzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEO
+ MAwGA1UECgwFSW9mbG8xDjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhv
+ c3QxHDAaBgkqhkiG9w0BCQEWDXNhbUBpb2Zsby5jb20wggEiMA0GCSqGSIb3DQEB
+@@ -12,10 +12,10 @@ nlOy7JX/6CpQayBUgVgKx8LBoM10aCQeNNkbUWx4
+ az9VprJRWCpw+o3nK/ipba+QgfPY2/28uPDrTqLVbX+TcwUK3qjOmgTLJ3nDcvCm
+ 6dnLQm6jAmRR9lZ1KodP1G+H/IhBJAGmVAQOLPpSLrJ9BlvaGADX5kxqyWnY9I8O
+ gd7u9zPeMFxT2kl41fEgXA+4aL2mLNeO+qUdusgwl9HnAgMBAAEwDQYJKoZIhvcN
+-AQELBQADggEBAK0/6CcIV2Y9ZoKKNTNMvW1z4aSzisW46b9VeOhABpf2IsMh9Sh3
+-Ww9SFd7ynQiuKxnZhhoRQszUzijqX8bxBcjxGwk3EAh2kOGKoDAJeEBr1+RP5ymP
+-zz0qUiiTD9YzPMCqwHiFs2zxh7lqDwaa9IfYqSKyinfAXyF6pPtepXd0KBk2jTzf
+-3R3P6su46BfrsnpKtm3u5RxEpTKY/D51lxy1ocsMNPma/aDRZmSUEI9GLjFt006t
+-5rbQmJg0ixC/J7GCXN9YcQlgtNhz44qjk7TLRZRJTtsxHnHOLjWqyWz1SM8B245o
+-6f+Xo0MfGQkoUxhFTsfNS5ZT7odIJ4Sg+aY=
++AQELBQADggEBAJVr3p1MM0wVjx6gC7v4ve7ecYiy6bSKqoZdtMk2WAVI+0+laXac
++t0dWtiDdFwRFJNjLC+hKjAPxy28mNDfUUbYR/r0Hk23Up7P2zdpCiMm30b9HQjIx
++HpQKV1D409EJLhw7TXjwGBrLDOLc8TrCvyZGA6unHt7kSO/hJ1s+6KPlYFD61zfU
++IrlKKaRMoQ00I9Ika3Jiq0UMiZ0Vsd0J9p6L96nCAX3B/EbhxIrIJiw47dLozJh9
++Q+J9J+JhdbtayuocVX42V6bocDIscK0C9bu2U5CDoKFLoQUg93Ar6z9pDVUBqEao
++ea7OAEOnWb72ZSZoKt19wYZ4XmTdQdE4yYE=
+ -----END CERTIFICATE-----
+Index: ioflo-1.7.6/ioflo/aio/test/tls/certs/client.pem
+===================================================================
+--- ioflo-1.7.6.orig/ioflo/aio/test/tls/certs/client.pem
++++ ioflo-1.7.6/ioflo/aio/test/tls/certs/client.pem
+@@ -29,7 +29,7 @@ j3uRhpZh9WUIuMEPIQxnIB8yjQT7OlvCcEqmgJy9
+ MIIDdjCCAl4CCQCDn16h/SCOYDANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJV
+ UzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEOMAwGA1UECgwFSW9mbG8x
+ DjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhvc3QxHDAaBgkqhkiG9w0B
+-CQEWDXNhbUBpb2Zsby5jb20wHhcNMTgwOTE1MTcwODE2WhcNMTkwOTE1MTcwODE2
++CQEWDXNhbUBpb2Zsby5jb20wHhcNMTkwOTE4MTM1MjU0WhcNNDkxMDMwMTM1MjU2
+ WjB9MQswCQYDVQQGEwJVUzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEO
+ MAwGA1UECgwFSW9mbG8xDjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhv
+ c3QxHDAaBgkqhkiG9w0BCQEWDXNhbUBpb2Zsby5jb20wggEiMA0GCSqGSIb3DQEB
+@@ -39,10 +39,10 @@ nlOy7JX/6CpQayBUgVgKx8LBoM10aCQeNNkbUWx4
+ az9VprJRWCpw+o3nK/ipba+QgfPY2/28uPDrTqLVbX+TcwUK3qjOmgTLJ3nDcvCm
+ 6dnLQm6jAmRR9lZ1KodP1G+H/IhBJAGmVAQOLPpSLrJ9BlvaGADX5kxqyWnY9I8O
+ gd7u9zPeMFxT2kl41fEgXA+4aL2mLNeO+qUdusgwl9HnAgMBAAEwDQYJKoZIhvcN
+-AQELBQADggEBAK0/6CcIV2Y9ZoKKNTNMvW1z4aSzisW46b9VeOhABpf2IsMh9Sh3
+-Ww9SFd7ynQiuKxnZhhoRQszUzijqX8bxBcjxGwk3EAh2kOGKoDAJeEBr1+RP5ymP
+-zz0qUiiTD9YzPMCqwHiFs2zxh7lqDwaa9IfYqSKyinfAXyF6pPtepXd0KBk2jTzf
+-3R3P6su46BfrsnpKtm3u5RxEpTKY/D51lxy1ocsMNPma/aDRZmSUEI9GLjFt006t
+-5rbQmJg0ixC/J7GCXN9YcQlgtNhz44qjk7TLRZRJTtsxHnHOLjWqyWz1SM8B245o
+-6f+Xo0MfGQkoUxhFTsfNS5ZT7odIJ4Sg+aY=
++AQELBQADggEBAJVr3p1MM0wVjx6gC7v4ve7ecYiy6bSKqoZdtMk2WAVI+0+laXac
++t0dWtiDdFwRFJNjLC+hKjAPxy28mNDfUUbYR/r0Hk23Up7P2zdpCiMm30b9HQjIx
++HpQKV1D409EJLhw7TXjwGBrLDOLc8TrCvyZGA6unHt7kSO/hJ1s+6KPlYFD61zfU
++IrlKKaRMoQ00I9Ika3Jiq0UMiZ0Vsd0J9p6L96nCAX3B/EbhxIrIJiw47dLozJh9
++Q+J9J+JhdbtayuocVX42V6bocDIscK0C9bu2U5CDoKFLoQUg93Ar6z9pDVUBqEao
++ea7OAEOnWb72ZSZoKt19wYZ4XmTdQdE4yYE=
+ -----END CERTIFICATE-----
+Index: ioflo-1.7.6/ioflo/aio/test/tls/certs/server_cert.pem
+===================================================================
+--- ioflo-1.7.6.orig/ioflo/aio/test/tls/certs/server_cert.pem
++++ ioflo-1.7.6/ioflo/aio/test/tls/certs/server_cert.pem
+@@ -2,7 +2,7 @@
+ MIIDdjCCAl4CCQCmzhf2vHRcoDANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJV
+ UzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEOMAwGA1UECgwFSW9mbG8x
+ DjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhvc3QxHDAaBgkqhkiG9w0B
+-CQEWDXNhbUBpb2Zsby5jb20wHhcNMTgwOTE1MTcwOTEzWhcNMTkwOTE1MTcwOTEz
++CQEWDXNhbUBpb2Zsby5jb20wHhcNMTkwOTE4MTM1NzIzWhcNNDkxMDMwMTM1NzI2
+ WjB9MQswCQYDVQQGEwJVUzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEO
+ MAwGA1UECgwFSW9mbG8xDjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhv
+ c3QxHDAaBgkqhkiG9w0BCQEWDXNhbUBpb2Zsby5jb20wggEiMA0GCSqGSIb3DQEB
+@@ -12,10 +12,10 @@ dhg2yx8TMlRo26bQ6RQg7zTA6Y7XjqEzYjLVdezu
+ U/P0ysiHiIy4qY9qOkMSzJ3ct8w1mLTqnUbzY46HAMyoMUgT0hFs4Aq1qyorGSKS
+ 3lEm+gc1yPtXRyCmsXdtsr7tjFVmMnqprqxIRx6qBeyfcZIwdn3W7fP82beMp3ln
+ AyxEbBHYczHUgYolNM/tdDnaiQutZvEoc7MfAci200SRAgMBAAEwDQYJKoZIhvcN
+-AQELBQADggEBADC9l2fg0ye6cZQeYFfediGYeWRUkz4cMaVrh2bhVyV4KeRXjrag
+-ipdYCAKtoaMoVls14h49Wc/OLk09k2fjQre/uCs3ln3GjLiMMuHVY+5Mn7d2wsiG
+-/5Df464qQkiIhQzQrQDj0o7Bsyb6gzej+Q8KK+Kpqjb+PJyjvTMnN8RMu46SN34H
+-R24Q/HS5ayR25A7RlTFKTfnnKB3OZnVu3T8uKpgPzBMkh3xG+1TzRaGmC2+tv4b8
+-UVvwMyicmX83B0FjROMCJvZt4glDilQh9xXKTw5ECPg6NdYGbodM3mll8AGwMJum
+-NefH0Zf5KXJ0RuZNrYiZTYEegDxMsNJeAL0=
++AQELBQADggEBAKw/v+OS0hiXhM5VjTnnh0syXRNnZUp0RvVLfxZI2gLrp9b/dIq1
++23qd6xkbp0oHEqv3ULzeUOr0MVUyde+4RIbKmc2IzWa1xiIDs3KtNUJrAu/liLi6
++Kr0byplaRu7EXNf61AjxP1252qi/7CxoAUI3Dd/KrBZnd/RtnBQk5SDIQpw/v/Zk
++xJzTdze1kgmuT1LUMKc4SI0ukxeFxujq81OPxuBx3DNbquDE7Yk252tzYh4rgMCv
++bKqoJG4addtvt2Va471GV6x/IEGeqUA04esJmk2lXdQQ318h8K4QF73+FIkQWhPE
++WtXRyA2dXyiq7+VK0RaQoEWrQ7zO98GesNE=
+ -----END CERTIFICATE-----
+Index: ioflo-1.7.6/ioflo/aio/test/tls/certs/localhost.crt
+===================================================================
+--- ioflo-1.7.6.orig/ioflo/aio/test/tls/certs/localhost.crt
++++ ioflo-1.7.6/ioflo/aio/test/tls/certs/localhost.crt
+@@ -2,7 +2,7 @@
+ MIIDdjCCAl4CCQCmzhf2vHRcoDANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJV
+ UzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEOMAwGA1UECgwFSW9mbG8x
+ DjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhvc3QxHDAaBgkqhkiG9w0B
+-CQEWDXNhbUBpb2Zsby5jb20wHhcNMTgwOTE1MTcwOTEzWhcNMTkwOTE1MTcwOTEz
++CQEWDXNhbUBpb2Zsby5jb20wHhcNMTkwOTE4MTM1NzIzWhcNNDkxMDMwMTM1NzI2
+ WjB9MQswCQYDVQQGEwJVUzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEO
+ MAwGA1UECgwFSW9mbG8xDjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhv
+ c3QxHDAaBgkqhkiG9w0BCQEWDXNhbUBpb2Zsby5jb20wggEiMA0GCSqGSIb3DQEB
+@@ -12,10 +12,10 @@ dhg2yx8TMlRo26bQ6RQg7zTA6Y7XjqEzYjLVdezu
+ U/P0ysiHiIy4qY9qOkMSzJ3ct8w1mLTqnUbzY46HAMyoMUgT0hFs4Aq1qyorGSKS
+ 3lEm+gc1yPtXRyCmsXdtsr7tjFVmMnqprqxIRx6qBeyfcZIwdn3W7fP82beMp3ln
+ AyxEbBHYczHUgYolNM/tdDnaiQutZvEoc7MfAci200SRAgMBAAEwDQYJKoZIhvcN
+-AQELBQADggEBADC9l2fg0ye6cZQeYFfediGYeWRUkz4cMaVrh2bhVyV4KeRXjrag
+-ipdYCAKtoaMoVls14h49Wc/OLk09k2fjQre/uCs3ln3GjLiMMuHVY+5Mn7d2wsiG
+-/5Df464qQkiIhQzQrQDj0o7Bsyb6gzej+Q8KK+Kpqjb+PJyjvTMnN8RMu46SN34H
+-R24Q/HS5ayR25A7RlTFKTfnnKB3OZnVu3T8uKpgPzBMkh3xG+1TzRaGmC2+tv4b8
+-UVvwMyicmX83B0FjROMCJvZt4glDilQh9xXKTw5ECPg6NdYGbodM3mll8AGwMJum
+-NefH0Zf5KXJ0RuZNrYiZTYEegDxMsNJeAL0=
++AQELBQADggEBAKw/v+OS0hiXhM5VjTnnh0syXRNnZUp0RvVLfxZI2gLrp9b/dIq1
++23qd6xkbp0oHEqv3ULzeUOr0MVUyde+4RIbKmc2IzWa1xiIDs3KtNUJrAu/liLi6
++Kr0byplaRu7EXNf61AjxP1252qi/7CxoAUI3Dd/KrBZnd/RtnBQk5SDIQpw/v/Zk
++xJzTdze1kgmuT1LUMKc4SI0ukxeFxujq81OPxuBx3DNbquDE7Yk252tzYh4rgMCv
++bKqoJG4addtvt2Va471GV6x/IEGeqUA04esJmk2lXdQQ318h8K4QF73+FIkQWhPE
++WtXRyA2dXyiq7+VK0RaQoEWrQ7zO98GesNE=
+ -----END CERTIFICATE-----
+Index: ioflo-1.7.6/ioflo/aio/test/tls/certs/localhost.pem
+===================================================================
+--- ioflo-1.7.6.orig/ioflo/aio/test/tls/certs/localhost.pem
++++ ioflo-1.7.6/ioflo/aio/test/tls/certs/localhost.pem
+@@ -29,7 +29,7 @@ fgI05fjqjPrEnB13rCM+3UWgYuTyBf70B2eZv1zQ
+ MIIDdjCCAl4CCQCmzhf2vHRcoDANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJV
+ UzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEOMAwGA1UECgwFSW9mbG8x
+ DjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhvc3QxHDAaBgkqhkiG9w0B
+-CQEWDXNhbUBpb2Zsby5jb20wHhcNMTgwOTE1MTcwOTEzWhcNMTkwOTE1MTcwOTEz
++CQEWDXNhbUBpb2Zsby5jb20wHhcNMTkwOTE4MTM1NzIzWhcNNDkxMDMwMTM1NzI2
+ WjB9MQswCQYDVQQGEwJVUzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEO
+ MAwGA1UECgwFSW9mbG8xDjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhv
+ c3QxHDAaBgkqhkiG9w0BCQEWDXNhbUBpb2Zsby5jb20wggEiMA0GCSqGSIb3DQEB
+@@ -39,10 +39,10 @@ dhg2yx8TMlRo26bQ6RQg7zTA6Y7XjqEzYjLVdezu
+ U/P0ysiHiIy4qY9qOkMSzJ3ct8w1mLTqnUbzY46HAMyoMUgT0hFs4Aq1qyorGSKS
+ 3lEm+gc1yPtXRyCmsXdtsr7tjFVmMnqprqxIRx6qBeyfcZIwdn3W7fP82beMp3ln
+ AyxEbBHYczHUgYolNM/tdDnaiQutZvEoc7MfAci200SRAgMBAAEwDQYJKoZIhvcN
+-AQELBQADggEBADC9l2fg0ye6cZQeYFfediGYeWRUkz4cMaVrh2bhVyV4KeRXjrag
+-ipdYCAKtoaMoVls14h49Wc/OLk09k2fjQre/uCs3ln3GjLiMMuHVY+5Mn7d2wsiG
+-/5Df464qQkiIhQzQrQDj0o7Bsyb6gzej+Q8KK+Kpqjb+PJyjvTMnN8RMu46SN34H
+-R24Q/HS5ayR25A7RlTFKTfnnKB3OZnVu3T8uKpgPzBMkh3xG+1TzRaGmC2+tv4b8
+-UVvwMyicmX83B0FjROMCJvZt4glDilQh9xXKTw5ECPg6NdYGbodM3mll8AGwMJum
+-NefH0Zf5KXJ0RuZNrYiZTYEegDxMsNJeAL0=
++AQELBQADggEBAKw/v+OS0hiXhM5VjTnnh0syXRNnZUp0RvVLfxZI2gLrp9b/dIq1
++23qd6xkbp0oHEqv3ULzeUOr0MVUyde+4RIbKmc2IzWa1xiIDs3KtNUJrAu/liLi6
++Kr0byplaRu7EXNf61AjxP1252qi/7CxoAUI3Dd/KrBZnd/RtnBQk5SDIQpw/v/Zk
++xJzTdze1kgmuT1LUMKc4SI0ukxeFxujq81OPxuBx3DNbquDE7Yk252tzYh4rgMCv
++bKqoJG4addtvt2Va471GV6x/IEGeqUA04esJmk2lXdQQ318h8K4QF73+FIkQWhPE
++WtXRyA2dXyiq7+VK0RaQoEWrQ7zO98GesNE=
+ -----END CERTIFICATE-----
+Index: ioflo-1.7.6/ioflo/aio/test/tls/certs/server.pem
+===================================================================
+--- ioflo-1.7.6.orig/ioflo/aio/test/tls/certs/server.pem
++++ ioflo-1.7.6/ioflo/aio/test/tls/certs/server.pem
+@@ -29,7 +29,7 @@ fgI05fjqjPrEnB13rCM+3UWgYuTyBf70B2eZv1zQ
+ MIIDdjCCAl4CCQCmzhf2vHRcoDANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJV
+ UzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEOMAwGA1UECgwFSW9mbG8x
+ DjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhvc3QxHDAaBgkqhkiG9w0B
+-CQEWDXNhbUBpb2Zsby5jb20wHhcNMTgwOTE1MTcwOTEzWhcNMTkwOTE1MTcwOTEz
++CQEWDXNhbUBpb2Zsby5jb20wHhcNMTkwOTE4MTM1NzIzWhcNNDkxMDMwMTM1NzI2
+ WjB9MQswCQYDVQQGEwJVUzELMAkGA1UECAwCVVQxDzANBgNVBAcMBkxpbmRvbjEO
+ MAwGA1UECgwFSW9mbG8xDjAMBgNVBAsMBUlvZmxvMRIwEAYDVQQDDAlsb2NhbGhv
+ c3QxHDAaBgkqhkiG9w0BCQEWDXNhbUBpb2Zsby5jb20wggEiMA0GCSqGSIb3DQEB
+@@ -39,10 +39,10 @@ dhg2yx8TMlRo26bQ6RQg7zTA6Y7XjqEzYjLVdezu
+ U/P0ysiHiIy4qY9qOkMSzJ3ct8w1mLTqnUbzY46HAMyoMUgT0hFs4Aq1qyorGSKS
+ 3lEm+gc1yPtXRyCmsXdtsr7tjFVmMnqprqxIRx6qBeyfcZIwdn3W7fP82beMp3ln
+ AyxEbBHYczHUgYolNM/tdDnaiQutZvEoc7MfAci200SRAgMBAAEwDQYJKoZIhvcN
+-AQELBQADggEBADC9l2fg0ye6cZQeYFfediGYeWRUkz4cMaVrh2bhVyV4KeRXjrag
+-ipdYCAKtoaMoVls14h49Wc/OLk09k2fjQre/uCs3ln3GjLiMMuHVY+5Mn7d2wsiG
+-/5Df464qQkiIhQzQrQDj0o7Bsyb6gzej+Q8KK+Kpqjb+PJyjvTMnN8RMu46SN34H
+-R24Q/HS5ayR25A7RlTFKTfnnKB3OZnVu3T8uKpgPzBMkh3xG+1TzRaGmC2+tv4b8
+-UVvwMyicmX83B0FjROMCJvZt4glDilQh9xXKTw5ECPg6NdYGbodM3mll8AGwMJum
+-NefH0Zf5KXJ0RuZNrYiZTYEegDxMsNJeAL0=
++AQELBQADggEBAKw/v+OS0hiXhM5VjTnnh0syXRNnZUp0RvVLfxZI2gLrp9b/dIq1
++23qd6xkbp0oHEqv3ULzeUOr0MVUyde+4RIbKmc2IzWa1xiIDs3KtNUJrAu/liLi6
++Kr0byplaRu7EXNf61AjxP1252qi/7CxoAUI3Dd/KrBZnd/RtnBQk5SDIQpw/v/Zk
++xJzTdze1kgmuT1LUMKc4SI0ukxeFxujq81OPxuBx3DNbquDE7Yk252tzYh4rgMCv
++bKqoJG4addtvt2Va471GV6x/IEGeqUA04esJmk2lXdQQ318h8K4QF73+FIkQWhPE
++WtXRyA2dXyiq7+VK0RaQoEWrQ7zO98GesNE=
+ -----END CERTIFICATE-----

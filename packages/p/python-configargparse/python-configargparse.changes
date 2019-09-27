@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 17 09:14:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip failing tests that were reported upstream with no reaction
+
+-------------------------------------------------------------------
 Fri Mar  1 13:20:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.14.0:

@@ -18,19 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-varlink
-Version:        30.1.2
+Version:        30.3.0
 Release:        0
 Summary:        Python implementation of the Varlink protocol
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/varlink/python
+URL:            https://github.com/varlink/python
 Source:         https://files.pythonhosted.org/packages/source/v/varlink/varlink-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-future
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -41,6 +43,8 @@ makes services accessible to both humans and machines.
 
 %prep
 %setup -q -n varlink-%{version}
+# py3 only syntax
+rm varlink/tests/test_mocks.py
 
 %build
 %python_build
@@ -48,6 +52,10 @@ makes services accessible to both humans and machines.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export LANG="en_US.UTF8"
+%pytest
 
 %files %{python_files}
 %doc README.md

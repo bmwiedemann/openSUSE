@@ -24,4 +24,14 @@
     <comment></comment>
     <requestid>711313</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0fc3f42a2d947ff2baa04b12e52d0c4f</srcmd5>
+    <version>0.7.0+git88.18b629b</version>
+    <time>1569588570</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix http20 behaviour:
+  * http20.patch
+- Skip error reporting tests as they do not match httplib update</comment>
+    <requestid>731465</requestid>
+  </revision>
 </revisionlist>

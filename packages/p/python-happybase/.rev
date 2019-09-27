@@ -136,4 +136,13 @@
 </comment>
     <requestid>659410</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e0947fb3b30159e8656bda23229dcc0a</srcmd5>
+    <version>1.2.0</version>
+    <time>1569588354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Switch from thriftpy to its successor thriftpy2, which supports Python 3.7.</comment>
+    <requestid>730343</requestid>
+  </revision>
 </revisionlist>

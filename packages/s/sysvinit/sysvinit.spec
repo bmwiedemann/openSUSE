@@ -17,9 +17,9 @@
 
 
 Name:           sysvinit
-%define KPVER  2.21
+%define KPVER  2.23
 %define SCVER  1.20
-%define SIVER  2.95
+%define SIVER  2.96
 %define START  0.63
 Version:        %{SIVER}
 Release:        0
@@ -31,15 +31,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  sysvinit-tools
 Url:            https://savannah.nongnu.org/projects/sysvinit/
 Source:         sysvinit-%{SIVER}.tar.xz
-Source1:        killproc-%{KPVER}.tar.bz2
+Source1:        https://github.com/bitstreamout/killproc/archive/v%{KPVER}.tar.gz#/killproc-%{KPVER}.tar.gz
 Source2:        startpar-%{START}.tar.xz
 Patch:          %{name}-2.90.dif
 Patch2:         %{name}-2.88dsf-suse.patch
 Patch9:         %{name}-2.90-no-kill.patch
-Patch30:        killproc-%{KPVER}.dif
-Patch31:        killproc-2.18-open_flags.dif
-Patch32:        killproc-sysmacros.patch
-Patch33:        killproc-mntinf-optional.patch
 Patch50:        startpar-0.58.dif
 Patch51:        startpar-sysmacros.patch
 
@@ -76,11 +72,7 @@ pushd doc
   mkdir killproc
 popd
 pushd ../killproc-%{KPVER}
-%patch30
-%patch31 -p0 -b .dialog
-%patch32 -p1
-%patch33 -p0
-ln -t../%{name}-%{SIVER}/doc/killproc README
+ln -t../%{name}-%{SIVER}/doc/killproc README.md
 popd
 pushd ../startpar-%{START}
 %patch50

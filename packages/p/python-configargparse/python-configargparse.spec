@@ -23,11 +23,12 @@ Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/zorro3/ConfigArgParse
+URL:            https://github.com/bw2/ConfigArgParse
 Source:         https://files.pythonhosted.org/packages/source/C/ConfigArgParse/ConfigArgParse-%{version}.tar.gz
 Patch0:         skip-test.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,10 +60,11 @@ add these features
 
 %install
 %python_install
-%fdupes %{buildroot}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover
+# https://github.com/bw2/ConfigArgParse/issues/146
+%pytest -k 'not (test_main or test_help_with_metavar or testGlobalInstances or testGlobalInstances_WithName or testConfigOrEnvValueErrors)'
 
 %files %{python_files}
 %doc README.rst

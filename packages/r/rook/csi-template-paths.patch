@@ -1,0 +1,29 @@
+diff --git a/pkg/operator/ceph/csi/spec.go b/pkg/operator/ceph/csi/spec.go
+index 44f07f7e..9bad585d 100644
+--- a/pkg/operator/ceph/csi/spec.go
++++ b/pkg/operator/ceph/csi/spec.go
+@@ -82,15 +82,15 @@ const (
+ 	DefaultKubeletDirPath = "/var/lib/kubelet"
+ 
+ 	// template
+-	DefaultRBDPluginTemplatePath         = "/etc/ceph-csi/rbd/csi-rbdplugin.yaml"
+-	DefaultRBDProvisionerSTSTemplatePath = "/etc/ceph-csi/rbd/csi-rbdplugin-provisioner-sts.yaml"
+-	DefaultRBDProvisionerDepTemplatePath = "/etc/ceph-csi/rbd/csi-rbdplugin-provisioner-dep.yaml"
+-	DefaultRBDPluginServiceTemplatePath  = "/etc/ceph-csi/rbd/csi-rbdplugin-svc.yaml"
+-
+-	DefaultCephFSPluginTemplatePath         = "/etc/ceph-csi/cephfs/csi-cephfsplugin.yaml"
+-	DefaultCephFSProvisionerSTSTemplatePath = "/etc/ceph-csi/cephfs/csi-cephfsplugin-provisioner-sts.yaml"
+-	DefaultCephFSProvisionerDepTemplatePath = "/etc/ceph-csi/cephfs/csi-cephfsplugin-provisioner-dep.yaml"
+-	DefaultCephFSPluginServiceTemplatePath  = "/etc/ceph-csi/cephfs/csi-cephfsplugin-svc.yaml"
++	DefaultRBDPluginTemplatePath         = "/usr/share/k8s-yaml/rook/ceph/csi/template/rbd/csi-rbdplugin.yaml"
++	DefaultRBDProvisionerSTSTemplatePath = "/usr/share/k8s-yaml/rook/ceph/csi/template/rbd/csi-rbdplugin-provisioner-sts.yaml"
++	DefaultRBDProvisionerDepTemplatePath = "/usr/share/k8s-yaml/rook/ceph/csi/template/rbd/csi-rbdplugin-provisioner-dep.yaml"
++	DefaultRBDPluginServiceTemplatePath  = "/usr/share/k8s-yaml/rook/ceph/csi/template/rbd/csi-rbdplugin-svc.yaml"
++
++	DefaultCephFSPluginTemplatePath         = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin.yaml"
++	DefaultCephFSProvisionerSTSTemplatePath = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-sts.yaml"
++	DefaultCephFSProvisionerDepTemplatePath = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin-provisioner-dep.yaml"
++	DefaultCephFSPluginServiceTemplatePath  = "/usr/share/k8s-yaml/rook/ceph/csi/template/cephfs/csi-cephfsplugin-svc.yaml"
+ )
+ 
+ func CSIEnabled() bool {

@@ -1,0 +1,5 @@
+<package name="python-cron-descriptor" project="openSUSE:Factory">
+  <title>python-cron-descriptor</title>
+  <description>Python library that converts cron expressions into human readable strings</description>
+  <devel project="devel:languages:python" package="python-cron-descriptor"/>
+</package>

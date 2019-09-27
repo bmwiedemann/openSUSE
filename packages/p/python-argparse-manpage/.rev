@@ -22,4 +22,17 @@ tools.</comment>
 </comment>
     <requestid>704089</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b5b6885b6f8f7dc65785fe73baf3927</srcmd5>
+    <version>1.2.2</version>
+    <time>1569588446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.2:
+  * More complete release tarball, including tests.
+  * Fixed shebang in /bin/argparse-manpage script so it works on
+    Debian/Ubuntu as well as on Fedora.
+  * LICENSE file included in release tarball.
+  * Command-line executable now takes an optional '--output' argument.</comment>
+    <requestid>730710</requestid>
+  </revision>
 </revisionlist>

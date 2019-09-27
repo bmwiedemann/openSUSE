@@ -18,21 +18,30 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gTTS
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Python module to create MP3 files from spoken text via the Google TTS API
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/pndurette/gTTS
+URL:            https://github.com/pndurette/gTTS
 Source:         https://files.pythonhosted.org/packages/source/g/gTTS/gTTS-%{version}.tar.gz
 Patch0:         remove-pip-requirement.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module gTTS-token >= 1.1.3}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest >= 3.9}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools >= 38.6}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module testfixtures}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-click
-Requires:       python-gTTS-token
+Requires:       python-gTTS-token >= 1.1.3
 Requires:       python-requests
+Requires:       python-setuptools
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -54,8 +63,11 @@ sentences where the speech would naturally pause.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# tests are sadly mostly online
+#%%pytest
+
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGELOG.rst README.md
 %license LICENSE
 %python3_only %{_bindir}/gtts-cli

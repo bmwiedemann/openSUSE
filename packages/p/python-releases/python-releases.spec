@@ -1,7 +1,7 @@
 #
-# spec file for package python-releases
+# spec file for package python
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if "%{flavor}" == "test"
+%define psuffix -%{flavor}
 %bcond_without test
 %else
+%define psuffix %{nil}
 %bcond_with test
 %endif
-%if %{with test}
-Name:           python-releases-%{flavor}
-%else
-Name:           python-releases
-%endif
+Name:           python-releases%{psuffix}
 Version:        1.6.1
 Release:        0
 Summary:        A Sphinx extension for changelog manipulation
@@ -35,6 +33,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/bitprophet/releases
 Source:         https://files.pythonhosted.org/packages/source/r/releases/releases-%{version}.tar.gz
+Patch0:         semanticversioning.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,6 +71,7 @@ Specifically:
 
 %prep
 %setup -q -n releases-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -87,10 +87,10 @@ Specifically:
 %python_expand invoke-%{$python_bin_suffix} test
 %endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%if !%{with test}
 %{python_sitelib}/*
 %endif
 

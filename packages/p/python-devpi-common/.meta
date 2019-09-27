@@ -1,0 +1,5 @@
+<package name="python-devpi-common" project="openSUSE:Factory">
+  <title>python-devpi-common</title>
+  <description>Utilities jointly used by devpi-server and devpi-client</description>
+  <devel project="devel:languages:python" package="python-devpi-common"/>
+</package>

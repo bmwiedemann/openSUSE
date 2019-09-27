@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-grpc-google-iam-v1
-Version:        0.11.4
+Version:        0.12.3
 Release:        0
 Summary:        GRPC library for the google-iam-v1 service
 License:        Apache-2.0

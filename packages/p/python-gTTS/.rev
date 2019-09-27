@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>673172</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9c119ddc8699efaa0d3c3145cbf1c4d</srcmd5>
+    <version>2.0.4</version>
+    <time>1569588423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.4:
+  * gTTS is now built as a wheel package (Python 2 &amp; 3) (#181)
+- Rebase patch remove-pip-requirement.patch</comment>
+    <requestid>730386</requestid>
+  </revision>
 </revisionlist>

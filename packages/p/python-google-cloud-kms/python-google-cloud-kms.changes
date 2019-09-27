@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 12 11:37:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.1:
+  * Remove send/recv msg size limit (via synth). (#8959)
+  * Accomodate new location of 'IAMPolicyStub' (via synth). (#8679)
+  * Add 'options_' argument to client's 'get_iam_policy'; pin black version (via synth). (#8656)
+  * Add 'client_options' support, update list method docstrings (via synth). (#8514)
+
+-------------------------------------------------------------------
 Tue Jul  2 14:53:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.0:

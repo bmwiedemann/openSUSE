@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>654394</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fbc514ac09d9a0f4d087cebbe4f41ff</srcmd5>
+    <version>3.1.6</version>
+    <time>1569588442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.6:
+  * Fixed immutability bug. Bug 176. 
+  * Fixed failure of `__contains__` in some circumstances. Bug 180.
+  * Better handling of open files. Bug 186.
+  * Better Python 2/3 check.
+  * Making unit tests easier to run.
+  * Allowing length of 1 to be specified for bools. (Thanks to LemonPi)</comment>
+    <requestid>730685</requestid>
+  </revision>
 </revisionlist>

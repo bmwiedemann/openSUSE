@@ -3,8 +3,8 @@
  1 file changed, 52 insertions(+)
 
 --- src/killall5.c
-+++ src/killall5.c	2018-08-06 12:45:03.832836347 +0000
-@@ -470,6 +470,38 @@ int readarg(FILE *fp, char *buf, int sz)
++++ src/killall5.c	2019-09-18 07:41:29.094181373 +0000
+@@ -478,6 +478,38 @@ int readarg(FILE *fp, char *buf, int sz)
  }
  
  /*
@@ -43,7 +43,7 @@
   *	Read the proc filesystem.
   *	CWD must be /proc to avoid problems if / is affected by the killing (ie depend on fuse).
   */
-@@ -674,6 +706,26 @@ int readproc(int do_stat)
+@@ -683,6 +715,26 @@ int readproc(int do_stat)
  		p->nfs = 0;
  
  		switch (do_stat) {

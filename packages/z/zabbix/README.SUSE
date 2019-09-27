@@ -1,9 +1,0 @@
-zabbix-phpfrontend:
-	To enable zabbix frontend in apache
-	type in console:
-		# a2enflag ZABBIX
-	or if you want to remove it from apache configuration
-	type in console:
-		# a2enflag -d ZABBIX
-		# service apache2 restart
-	or reload if apache restart is too disrupting

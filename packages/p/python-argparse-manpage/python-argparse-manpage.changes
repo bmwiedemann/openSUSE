@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:41:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.2:
+  * More complete release tarball, including tests.
+  * Fixed shebang in /bin/argparse-manpage script so it works on
+    Debian/Ubuntu as well as on Fedora.
+  * LICENSE file included in release tarball.
+  * Command-line executable now takes an optional '--output' argument.
+
+-------------------------------------------------------------------
 Tue May  7 06:59:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github tarball

@@ -26,4 +26,16 @@ Required by the latest version of python-gcsfs</comment>
   * No upstream changelog</comment>
     <requestid>720167</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f43f940d8213379317821a206205d266</srcmd5>
+    <version>0.5.1</version>
+    <time>1569588659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * no upstream changelog
+
+- Update to 0.4.4:
+  * no upstream changelog</comment>
+    <requestid>732921</requestid>
+  </revision>
 </revisionlist>

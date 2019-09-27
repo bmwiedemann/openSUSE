@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:01:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.9:
+  * Fixed SymmetricFourierTransform default N to be dynamic, like HankelTransform.
+
+-------------------------------------------------------------------
 Mon Mar  4 13:40:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.8:

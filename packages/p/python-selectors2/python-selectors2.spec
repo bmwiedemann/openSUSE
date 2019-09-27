@@ -41,7 +41,7 @@ Back-ported, durable, and portable selectors
 %prep
 %setup -q -n selectors2-%{version}
 # bump the tolerance
-sed -i -e 's:TOLERANCE = 1:TOLERANCE = 2:g' tests/support.py
+sed -i -e 's:TOLERANCE = 0.5:TOLERANCE = 2:g' tests/support.py
 
 %build
 %python_build

@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tld
-Version:        0.9.3
+Version:        0.9.6
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
 Group:          Development/Languages/Python
 Url:            https://github.com/barseghyanartur/tld
 Source:         https://files.pythonhosted.org/packages/source/t/tld/tld-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE remove-download-test.patch
-Patch0:         remove-download-test.patch
+# PATCH-FIX-OPENSUSE skip_internet_tests.patch
+Patch0:         skip_internet_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -49,7 +49,7 @@ A list of TLD names is taken from Mozillas public suffix list:
 
 %prep
 %setup -q -n tld-%{version}
-sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' src/tld/bin/update-tld-names
+#sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' src/tld/bin/update-tld-names
 %patch0 -p1
 
 %build

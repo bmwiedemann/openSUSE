@@ -69,9 +69,11 @@ add_cross() {
   echo "%define cross_arch $rpmtarget" >> $pkgname.spec
   echo "%define gcc_target_arch $triplet" >> $pkgname.spec
   echo "$@" >> $pkgname.spec
-  { sed -n -e '1,/COMMON-BEGIN/p' cross.spec.in
-    sed -n -e '/COMMON-BEGIN/,/COMMON-END/p' $outfile
-    sed -n -e '/COMMON-END/,$p' cross.spec.in; } |
+  { sed -n -e '1,/SRC-COMMON-BEGIN/p' cross.spec.in
+    sed -n -e '/SRC-COMMON-BEGIN/,/SRC-COMMON-END/p' $outfile
+    sed -n -e '/SRC-COMMON-END/,/BUILD-COMMON-BEGIN/p' cross.spec.in
+    sed -n -e '/BUILD-COMMON-BEGIN/,/BUILD-COMMON-END/p' $outfile
+    sed -n -e '/BUILD-COMMON-END/,$p' cross.spec.in; } |
     sed -e "s#@base_ver@#$base_ver#" \
 	-e "s/^\(ExclusiveArch.*\) $rpmtarget[^ \r]*/\1 /" \
       >> $pkgname.spec

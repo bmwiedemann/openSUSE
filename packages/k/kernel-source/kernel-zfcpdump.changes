@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Sep 21 15:21:27 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.3.1 (bnc#1012628).
+- media: technisat-usb2: break out of loop at end of buffer
+  (bnc#1012628).
+- floppy: fix usercopy direction (bnc#1012628).
+- phy: qcom-qmp: Correct ready status, again (bnc#1012628).
+- ovl: fix regression caused by overlapping layers detection
+  (bnc#1012628).
+- Revert "arm64: Remove unnecessary ISBs from set_{pte,pmd,pud}"
+  (bnc#1012628).
+- nl80211: Fix possible Spectre-v1 for CQM RSSI thresholds
+  (bnc#1012628).
+- tty/serial: atmel: reschedule TX after RX was started
+  (bnc#1012628).
+- serial: sprd: correct the wrong sequence of arguments
+  (bnc#1012628).
+- firmware: google: check if size is valid when decoding VPD data
+  (bnc#1012628).
+- Documentation: sphinx: Add missing comma to list of strings
+  (bnc#1012628).
+- KVM: coalesced_mmio: add bounds checking (bnc#1012628).
+- net: stmmac: Hold rtnl lock in suspend/resume callbacks
+  (bnc#1012628).
+- net: dsa: Fix load order between DSA drivers and taggers
+  (bnc#1012628).
+- xen-netfront: do not assume sk_buff_head list is empty in
+  error handling (bnc#1012628).
+- udp: correct reuseport selection with connected sockets
+  (bnc#1012628).
+- net_sched: let qdisc_put() accept NULL pointer (bnc#1012628).
+- net/sched: fix race between deactivation and dequeue for NOLOCK
+  qdisc (bnc#1012628).
+- ip6_gre: fix a dst leak in ip6erspan_tunnel_xmit (bnc#1012628).
+- phy: renesas: rcar-gen3-usb2: Disable clearing VBUS in
+  over-current (bnc#1012628).
+- media: tm6000: double free if usb disconnect while streaming
+  (bnc#1012628).
+- USB: usbcore: Fix slab-out-of-bounds bug during device reset
+  (bnc#1012628).
+- commit f187578
+
+-------------------------------------------------------------------
+Wed Sep 18 15:17:44 CEST 2019 - jroedel@suse.de
+
+- Update config files.
+  Disable CONFIG_ARM_SMMU_DISABLE_BYPASS_BY_DEFAULT. Not all drivers are
+  ready for this yet, so enabling this config option causes regressions.
+  See bsc#1150577 for an example.
+- commit f759adc
+
+-------------------------------------------------------------------
+Mon Sep 16 05:32:56 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3 final
+- Eliminated 3 patches
+- Refresh configs
+  - NF_CONNTRACK_SLP is gone
+- commit 6baef36
+
+-------------------------------------------------------------------
+Fri Sep 13 13:31:46 CEST 2019 - jslaby@suse.cz
+
+- Btrfs: fix unwritten extent buffers and hangs on future
+  writeback attempts (btrfs hangup).
+- commit 7f85414
+
+-------------------------------------------------------------------
+Tue Sep 10 14:15:38 CEST 2019 - mkubecek@suse.cz
+
+- Delete patches.suse/netfilter-ip_conntrack_slp.patch (FATE#324143 jsc#SLE-8944 bsc#1127886).
+  This veteran out of tree patch is no longer needed since the userspace
+  conntrack helper (in conntrack-tools / conntrackd) has reached Factory.
+- commit d6f0b71
+
+-------------------------------------------------------------------
+Tue Sep 10 14:14:05 CEST 2019 - mkubecek@suse.cz
+
+- Update and reenable
+  patches.suse/Revert-netfilter-conntrack-remove-helper-hook-again.patch
+  (FATE#324143 jsc#SLE-8944 bsc#1127886).
+- commit 029452e
+
+-------------------------------------------------------------------
 Tue Sep 10 12:23:11 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.2.14 (bnc#1012628).
@@ -178,6 +262,13 @@ Mon Sep  9 09:39:52 CEST 2019 - guillaume.gardet@arm.com
   Current aarch64 build requires 27G and armv6/7 requires 14G.
   Set requirements respectively to 30GB and 20GB.
 - commit f84c163
+
+-------------------------------------------------------------------
+Mon Sep  9 06:52:32 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc8
+- refresh armv6hl configs (IXP4xx drivers no longer visible)
+- commit 3dea797
 
 -------------------------------------------------------------------
 Mon Sep  9 06:49:29 CEST 2019 - mkubecek@suse.cz
@@ -474,6 +565,36 @@ Tue Sep  3 12:47:56 CEST 2019 - mkubecek@suse.cz
 - commit d6e8aab
 
 -------------------------------------------------------------------
+Mon Sep  2 22:41:27 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc7
+- Refresh configs
+  - IXP4xx SoC drivers not visible
+  - gcc 9.2.1
+- commit 9bff5f9
+
+-------------------------------------------------------------------
+Sun Sep  1 21:36:39 CEST 2019 - mkubecek@suse.cz
+
+- config: armv7hl: Enable cadence watchdog
+  CONFIG_CADENCE_WATCHDOG is required for Zynq-7000 based MIYR Zturn board.
+- commit c4cbe5e
+
+-------------------------------------------------------------------
+Fri Aug 30 11:35:20 CEST 2019 - dmueller@suse.com
+
+- config.conf: Update ARMv6 config files
+- commit c17167d
+
+-------------------------------------------------------------------
+Fri Aug 30 11:27:22 CEST 2019 - dmueller@suse.com
+
+- config.conf: Reenable ARMv7 config for Kernel 5.3
+  All modules plus errata's enabled. Reused other
+  values from x86_64 update.
+- commit b1c627e
+
+-------------------------------------------------------------------
 Thu Aug 29 08:41:19 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.2.11 (bnc#1012628).
@@ -757,12 +878,45 @@ Thu Aug 29 08:41:19 CEST 2019 - jslaby@suse.cz
 - commit 6385110
 
 -------------------------------------------------------------------
+Wed Aug 28 15:36:42 CEST 2019 - tiwai@suse.de
+
+- mwifiex: Fix three heap overflow at
+  parsing element in cfg80211_ap_settings
+  (CVE-2019-14814,bsc#1146512,CVE-2019-14815,bsc#1146514,CVE-2019-14816,bsc#1146516).
+- commit 528fd68
+
+-------------------------------------------------------------------
 Wed Aug 28 15:34:11 CEST 2019 - tiwai@suse.de
 
 - mwifiex: Fix three heap overflow at
   parsing element in cfg80211_ap_settings
   (CVE-2019-14814,bsc#1146512,CVE-2019-14815,bsc#1146514,CVE-2019-14816,bsc#1146516).
 - commit 05e68fe
+
+-------------------------------------------------------------------
+Wed Aug 28 13:30:32 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: mark more core networking modules supported
+  Two more netfilter modules and one more *_diag should be supported too.
+- commit bee2dd8
+
+-------------------------------------------------------------------
+Wed Aug 28 12:42:47 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: update status of some networking core modules
+  This marks new networking modules which should be supported as such; it is
+  mostly netfilter and traffic control modules which have been following the
+  "support all of them" policy for some time.
+- commit 65e1131
+
+-------------------------------------------------------------------
+Wed Aug 28 10:23:01 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: obsolete paths cleanup
+  Update paths for existing modules which were moved, clean up duplicate
+  entries and drop entries for modules which no longer exist (either not
+  built any more or built into the image now).
+- commit 3bb142a
 
 -------------------------------------------------------------------
 Tue Aug 27 14:20:52 CEST 2019 - mkubecek@suse.cz
@@ -783,10 +937,33 @@ Tue Aug 27 10:09:41 CEST 2019 - jslaby@suse.cz
 - commit bb236c2
 
 -------------------------------------------------------------------
+Mon Aug 26 16:12:29 CEST 2019 - jgross@suse.com
+
+- usb: Introduce Xen pvUSB frontend (xen hcd) (fate#315712).
+- Update config files.
+- usb: Add Xen pvUSB protocol description (fate#315712).
+- commit b32b2bd
+
+-------------------------------------------------------------------
+Mon Aug 26 11:48:01 CEST 2019 - tiwai@suse.de
+
+- Update reference for ath6kl fix (CVE-2019-15290,bsc#1146543).
+- commit b08d3d5
+
+-------------------------------------------------------------------
 Mon Aug 26 11:47:18 CEST 2019 - tiwai@suse.de
 
 - Update reference for ath6kl fix (CVE-2019-15290,bsc#1146543).
 - commit 6f03484
+
+-------------------------------------------------------------------
+Mon Aug 26 11:32:51 CEST 2019 - tiwai@suse.de
+
+- Fix a NULL-ptr-deref bug in ath6kl_usb_alloc_urb_from_pipe
+  (CVE-2019-15098,bsc#1146378).
+- Fix a NULL-ptr-deref bug in ath10k_usb_alloc_urb_from_pipe
+  (CVE-2019-15099,bsc#1146368).
+- commit 758e216
 
 -------------------------------------------------------------------
 Mon Aug 26 11:31:19 CEST 2019 - tiwai@suse.de
@@ -803,6 +980,19 @@ Mon Aug 26 09:39:32 CEST 2019 - bpoirier@suse.com
 - Fix a double free bug in rsi_91x_deinit (bnc#1147116
   CVE-2019-15504).
 - commit 5009555
+
+-------------------------------------------------------------------
+Mon Aug 26 09:24:08 CEST 2019 - bpoirier@suse.com
+
+- Fix a double free bug in rsi_91x_deinit (bnc#1147116
+  CVE-2019-15504).
+- commit 8ae43d1
+
+-------------------------------------------------------------------
+Sun Aug 25 21:49:44 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc6
+- commit 2831011
 
 -------------------------------------------------------------------
 Sun Aug 25 19:33:34 CEST 2019 - jslaby@suse.cz
@@ -1046,6 +1236,49 @@ Thu Aug 22 23:37:43 CEST 2019 - msuchanek@suse.de
 - commit 16f6816
 
 -------------------------------------------------------------------
+Thu Aug 22 23:04:50 CEST 2019 - msuchanek@suse.de
+
+- rpm/config.sh: Enable livepatch.
+- commit e001776
+
+-------------------------------------------------------------------
+Thu Aug 22 14:03:04 CEST 2019 - mkubecek@suse.cz
+
+- config: update from SLE15-SP2
+  In general, we want features and drivers from SLE also in openSUSE unless
+  we have a good reason not to. Enable most config options which were
+  disabled in master but enabled in SLE15-SP2 (inherited from SLE15-SP1).
+- commit 769684a
+
+-------------------------------------------------------------------
+Wed Aug 21 15:00:01 CEST 2019 - mkubecek@suse.cz
+
+- series.conf: reorganize sections
+  With ~40 patches in master branch, we have accumulated way too many
+  sections in series.conf, some of them being very specific. While new SLE
+  and Leap branches are going to have more patches, vast majority of them is
+  going to end up in the sorted section (e.g. less than 1% of SLE15-SP1
+  patches are neither sorted nor stable baskports right now - and that
+  includes quite a few which would actually belong into the sorted section
+  but are left outside for historical reasons).
+  After the reorganization, series.conf is ordered like this:
+  - stable backports (patches.kernel.org/*)
+  - tweaks applied to vanilla (patches.rpmify/*)
+  - sorted section (not in master)
+  - unsorted patches expected to get into mainline soon
+  - permanent and longterm non-upstream patches
+  - kabi hacks (not in master)
+  This commit has no effect on expanded tree.
+- commit 8ac1895
+
+-------------------------------------------------------------------
+Wed Aug 21 14:13:15 CEST 2019 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Only whitespace and comments, no efect on expanded tree.
+- commit bf21808
+
+-------------------------------------------------------------------
 Wed Aug 21 09:09:00 CEST 2019 - tiwai@suse.de
 
 - iwlwifi: Add support for SAR South Korea limitation
@@ -1059,6 +1292,15 @@ Mon Aug 19 17:46:30 CEST 2019 - bp@suse.de
   As per https://jira.suse.com/browse/SLE-7041
   Factory first!
 - commit fc98fd1
+
+-------------------------------------------------------------------
+Mon Aug 19 05:32:32 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc5
+- Refresh configs
+  - RDMA_SIW available on i386 (=m)
+  - clean up unavailable options
+- commit cadbe00
 
 -------------------------------------------------------------------
 Sun Aug 18 18:10:36 CEST 2019 - afaerber@suse.de
@@ -1320,6 +1562,14 @@ Fri Aug 16 22:01:45 CEST 2019 - jslaby@suse.cz
 - commit 80c0ffe
 
 -------------------------------------------------------------------
+Thu Aug 15 21:55:55 CEST 2019 - msuchanek@suse.de
+
+- Revert "Workaround gcc regression on ppc64 (bko#204125)."
+  This reverts commit 8b84d1d46ff90146bb6ba5b760a54ddd87a1a680.
+  Works for me 5.3-rc4-65-g329120423947
+- commit d8f9e6c
+
+-------------------------------------------------------------------
 Mon Aug 12 23:29:16 CEST 2019 - msuchanek@suse.de
 
 - config.conf: syms should not depend on kernel-zfcpdump
@@ -1339,6 +1589,14 @@ Mon Aug 12 09:11:56 CEST 2019 - jslaby@suse.cz
 - x86/apic: Handle missing global clockevent gracefully
   (bnc#1142926).
 - commit a44175e
+
+-------------------------------------------------------------------
+Sun Aug 11 22:47:14 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc4
+- Refresh
+  - patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+- commit 5402233
 
 -------------------------------------------------------------------
 Fri Aug  9 19:51:51 CEST 2019 - jslaby@suse.cz
@@ -1444,10 +1702,35 @@ Fri Aug  9 18:14:50 CEST 2019 - msuchanek@suse.de
 - commit 7c057c8
 
 -------------------------------------------------------------------
+Fri Aug  9 17:39:36 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: fix supported modules depending on unsupported on non-x86_64 architectures
+  Some more "unsupported module needed by supported one" errors were reported
+  on aarch64 and ppc64le.
+- commit 6b609de
+
+-------------------------------------------------------------------
+Fri Aug  9 14:44:04 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: drop obsolete entry for hyperv_fb
+  The module moved to a different directory, the obsolete entry causes
+  file conflict betwen kernel-default and kernel-default-extra.
+- commit 6b112e5
+
+-------------------------------------------------------------------
 Fri Aug  9 13:42:51 CEST 2019 - msuchanek@suse.de
 
 - rpm/modflist: Simplify compression support.
 - commit fd135a6
+
+-------------------------------------------------------------------
+Fri Aug  9 13:36:21 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: close with respect to dependencies
+  Modules which some supported module depends on must be supported as well.
+  Also drop obsolete entries for rtsx_pci and rtsx_usb which were moved
+  between 4.12 and 5.3.
+- commit b781c36
 
 -------------------------------------------------------------------
 Fri Aug  9 13:33:49 CEST 2019 - mkubecek@suse.cz
@@ -1459,6 +1742,46 @@ Fri Aug  9 13:33:49 CEST 2019 - mkubecek@suse.cz
   Let those which could be run on compressed module files recognize ".ko.xz"
   in addition to ".ko".
 - commit 18fcdff
+
+-------------------------------------------------------------------
+Fri Aug  9 12:08:16 CEST 2019 - msuchanek@suse.de
+
+- Bring back MODVERDIR to Makefile.modpost (bsc#1066369).
+- commit 6cc69f5
+
+-------------------------------------------------------------------
+Fri Aug  9 10:38:13 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: sort again
+  Make the order compatible with scripts/supported-conf-fixup (LC_ALL=C).
+- commit 4a4b5dd
+
+-------------------------------------------------------------------
+Fri Aug  9 08:28:37 CEST 2019 - msuchanek@suse.de
+
+- supported.conf: Sort alphabetically, align comments.
+- commit 5189766
+
+-------------------------------------------------------------------
+Fri Aug  9 07:32:49 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: drop extensions
+  To make things more consistent, drop all ".ko" extensions.
+- commit 398461b
+
+-------------------------------------------------------------------
+Fri Aug  9 07:00:48 CEST 2019 - mkubecek@suse.cz
+
+- Update patches.suse/supported-flag.
+  Fix ReST table.
+- commit 0692bf4
+
+-------------------------------------------------------------------
+Thu Aug  8 21:39:50 CEST 2019 - msuchanek@suse.de
+
+- Use upstream TAINT_AUX for TAINT_EXTERNAL_SUPPORT.
+  Refresh patches.suse/supported-flag.
+- commit a4999e0
 
 -------------------------------------------------------------------
 Thu Aug  8 20:01:30 CEST 2019 - jslaby@suse.cz
@@ -1475,6 +1798,56 @@ Thu Aug  8 15:31:02 CEST 2019 - jslaby@suse.cz
 - commit 8434c05
 
 -------------------------------------------------------------------
+Thu Aug  8 14:35:08 CEST 2019 - dmueller@suse.com
+
+- rpm/kernel-obs-build.spec.in: add dm-crypt for building with cryptsetup
+  Co-Authored-By: Adam Spiers <aspiers@suse.com>
+- commit 1756301
+
+-------------------------------------------------------------------
+Thu Aug  8 10:34:56 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: add missing entries for all architectures
+  As list of built modules depends on architecture, we must also add entries
+  for modules which are not built (or do not even exist) on x86_64 but are
+  built on other architectures (aarch64, ppc64le, s390x).
+- commit 8f74082
+
+-------------------------------------------------------------------
+Thu Aug  8 08:16:02 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: add missing entries
+  Add all modules currently built but not listed in supported.conf.
+  Another update will be necessary once we replace configs inherited from
+  master with true SLE15-SP2 configs. This is also why entries for modules
+  not built are left in the file for now.
+- commit 0f5033c
+
+-------------------------------------------------------------------
+Thu Aug  8 08:01:05 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: sort
+  Also remove one commented out line.
+- commit b539157
+
+-------------------------------------------------------------------
+Thu Aug  8 07:36:22 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: cleanup
+  Remove duplicate and shadowed entries.
+- commit 25e91ec
+
+-------------------------------------------------------------------
+Thu Aug  8 07:21:05 CEST 2019 - mkubecek@suse.cz
+
+- supported.conf: update from SLE15-SP1
+  Differences from current SLE15-SP1 supported.conf:
+  - f71808e_wdt and it87_wdt supported (jdelvare)
+  - bpfilter marked +base (tiwai, bsc#1106751)
+  - unified indentation
+- commit 02162e4
+
+-------------------------------------------------------------------
 Wed Aug  7 21:34:48 CEST 2019 - tiwai@suse.de
 
 - drm/i915/vbt: Fix VBT parsing for the PSR section (bsc#1143139).
@@ -1487,12 +1860,21 @@ Wed Aug  7 21:14:19 CEST 2019 - msuchanek@suse.de
 - commit af37821
 
 -------------------------------------------------------------------
+Wed Aug  7 18:49:38 CEST 2019 - afaerber@suse.de
+
+- config: arm64: Update to 5.3-rc3
+- commit f1f49f3
+
+-------------------------------------------------------------------
 Wed Aug  7 17:55:06 CEST 2019 - afaerber@suse.de
 
 - config: Enable SENSORS_GPIO_FAN for all of Arm (boo#1144723)
   We already had it for armv6hl but were lacking it on arm64.
   Add it on armv7hl for consistency while at it.
   (cherry picked from commit 607ebebd5af841d77de8908dbc8abb1fd7cdda4f)
+- config: Enable SENSORS_GPIO_FAN for all of Arm (boo#1144723)
+  We already had it for armv6hl but were lacking it on arm64.
+  Add it on armv7hl for consistency while at it.
 - commit 71d4424
 
 -------------------------------------------------------------------
@@ -1730,6 +2112,17 @@ Tue Aug  6 21:39:08 CEST 2019 - jslaby@suse.cz
 - commit a3e04b1
 
 -------------------------------------------------------------------
+Mon Aug  5 07:15:46 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc3
+- Eliminated 1 patch
+- Refresh
+  - patches.suse/supported-flag
+  - patches.suse/supported-flag-external
+- Refresh configs
+- commit 571863b
+
+-------------------------------------------------------------------
 Sun Aug  4 17:14:38 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.2.6 (bnc#1012628).
@@ -1762,6 +2155,13 @@ Sun Aug  4 17:14:38 CEST 2019 - jslaby@suse.cz
 - ceph: hold i_ceph_lock when removing caps for freeing inode
   (bnc#1012628).
 - commit 187170c
+
+-------------------------------------------------------------------
+Thu Aug  1 07:07:43 CEST 2019 - mkubecek@suse.cz
+
+- config: refresh x86_64/default
+  With HBMC_AM654 disabled, nothing selects MULTIPLEXER any more.
+- commit 07a1a73
 
 -------------------------------------------------------------------
 Wed Jul 31 12:41:34 CEST 2019 - acho@suse.com
@@ -2143,10 +2543,30 @@ Wed Jul 31 11:06:04 CEST 2019 - jslaby@suse.cz
 - commit b607c27
 
 -------------------------------------------------------------------
+Wed Jul 31 10:52:34 CEST 2019 - jdelvare@suse.de
+
+- Update config files: CONFIG_HBMC_AM654=n
+  The TI AM654 is an ARM64 SoC, so disable the driver on all other
+  architectures.
+- commit 042f63f
+
+-------------------------------------------------------------------
 Tue Jul 30 18:10:55 CEST 2019 - schwab@suse.de
 
 - packaging: add support for riscv64
 - commit c2885ea
+
+-------------------------------------------------------------------
+Sun Jul 28 22:20:13 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc2
+- Eliminated 1 patch
+  - patches.suse/dma-mapping-use-dma_get_mask-in-dma_addressing_limit.patch
+- Refresh
+  - patches.suse/netfilter-ip_conntrack_slp.patch
+- Config changes
+  - NF_TABLES_BRIDGE=m (was =y)
+- commit fc5ebf3
 
 -------------------------------------------------------------------
 Sun Jul 28 09:25:17 CEST 2019 - jslaby@suse.cz
@@ -2952,10 +3372,23 @@ Fri Jul 26 10:47:45 CEST 2019 - jslaby@suse.cz
 - commit f5296b5
 
 -------------------------------------------------------------------
+Wed Jul 24 14:42:00 CEST 2019 - msuchanek@suse.de
+
+- dma-mapping: use dma_get_mask in dma_addressing_limited
+  (https://lore.kernel.org/lkml/cda1952f-0265-e055-a3ce-237c59069a3f@suse.com/T/#u).
+- commit c584343
+
+-------------------------------------------------------------------
 Wed Jul 24 13:00:28 CEST 2019 - msuchanek@suse.de
 
 - scripts/arch-symbols: add missing link.
 - commit ee7c635
+
+-------------------------------------------------------------------
+Tue Jul 23 18:12:09 CEST 2019 - tiwai@suse.de
+
+- rpm/config.sh: enable kernel module compression (bsc#1135854)
+- commit b333e24
 
 -------------------------------------------------------------------
 Tue Jul 23 17:48:41 CEST 2019 - tiwai@suse.de
@@ -2966,10 +3399,44 @@ Tue Jul 23 17:48:41 CEST 2019 - tiwai@suse.de
 - commit cdf5806
 
 -------------------------------------------------------------------
+Tue Jul 23 15:19:30 CEST 2019 - msuchanek@suse.de
+
+- Workaround gcc regression on ppc64 (bko#204125).
+- commit 8b84d1d
+
+-------------------------------------------------------------------
+Tue Jul 23 12:03:57 CEST 2019 - msuchanek@suse.de
+
+- config.conf: Add ppc64 kvmsmall config (bsc#1137361).
+- Remove superfluous i2c drivers from ppc64 config
+  -CONFIG_I2C_ALGOPCA=m
+  -CONFIG_I2C_AMD8111=m
+  -CONFIG_I2C_CBUS_GPIO=m
+  -CONFIG_I2C_DESIGNWARE_CORE=y
+  -CONFIG_I2C_DESIGNWARE_PLATFORM=y
+  -CONFIG_I2C_DESIGNWARE_PCI=m
+  -CONFIG_I2C_OCORES=m
+  -CONFIG_I2C_PCA_PLATFORM=m
+  Can't get rid of i2c in kvmsmall anyway but at least the DW i2c is gone.
+- commit 3d0102c
+
+-------------------------------------------------------------------
 Tue Jul 23 00:11:24 CEST 2019 - jeffm@suse.com
 
 - config: enable PPPoE for kvmsmall (bsc#1133945).
 - commit 72c928d
+
+-------------------------------------------------------------------
+Mon Jul 22 23:44:25 CEST 2019 - jeffm@suse.com
+
+- config: remove unnecessary drivers from kvmsmall
+  The initial merge was incomplete and needed revisiting, which didn't really
+  happen.  Since then, new options have been added and not removed from
+  kvmsmall, leading to grow in size.
+  This commit uses the following blacklist:
+  _(BT|CHARGER|CHROMEOS|CROS|DVB|DW|EDAC|FPGA|GPIO|GNSS|HID|INFINIBAND|IR|JOYSTICK|LEDS|MFD|PINCTRL|REGULATOR|RTC|SENSORS|SND_SOC|STAGING|TOUCHSCREEN|VIDEO|XEN|XILINX)[_=]
+  ... along with some manual removal of NET_VENDORs with no relevant drivers.
+- commit e850d85
 
 -------------------------------------------------------------------
 Mon Jul 22 16:43:10 CEST 2019 - mkubecek@suse.cz
@@ -2985,6 +3452,230 @@ Mon Jul 22 16:43:10 CEST 2019 - mkubecek@suse.cz
   Note: this is a quick band-aid to fix master branch build without risk of
   breaking any other branch. A more proper cleanup will follow.
 - commit c32f8e7
+
+-------------------------------------------------------------------
+Mon Jul 22 12:18:06 CEST 2019 - mkubecek@suse.cz
+
+- Update to 5.3-rc1
+- Eliminated 89 patches (83 stable, 6 other)
+- ARM configs need update
+- Refresh
+  patches.suse/btrfs-8447-serialize-subvolume-mounts-with-potentially-mi.patch
+  patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  patches.suse/netfilter-ip_conntrack_slp.patch
+  patches.suse/rpm-kernel-config
+  patches.suse/supported-flag
+  patches.suse/vfs-add-super_operations-get_inode_dev
+- replace patches.rpmify/BPF-UMH-do-not-detect-if-compiler-can-link-userspace.patch
+  with patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch
+- New config options:
+  - General setup
+    - HEADER_TEST=y
+    - KERNEL_HEADER_TEST=y
+    - PREEMPT_LL=n
+    - UCLAMP_TASK=y
+    - UCLAMP_BUCKETS_COUNT=5
+  - Processor type and features
+    - ACRN_GUEST=y
+    - LEGACY_VSYSCALL_XONLY=y
+  - IO Schedulers
+    - BFQ_CGROUP_DEBUG=n (=y in */debug)
+  - Networking
+    - NFT_SYNPROXY=m
+    - NFT_BRIDGE_META=m
+    - NF_CONNTRACK_BRIDGE=m
+    - NET_ACT_MPLS=m
+    - NET_ACT_CTINFO=m
+    - NET_ACT_CT=m
+    - BT_HCIBTUSB_MTK=y
+    - GVE=m
+    - MLX5_FPGA_IPSEC=y
+    - MLX5_FPGA_TLS=y
+    - MLX5_TLS=y
+    - STMMAC_SELFTESTS=n
+    - XILINX_AXI_EMAC=m
+    - SFP=m
+    - NXP_TJA11XX_PHY=m
+    - PHY_MIXEL_MIPI_DPHY=m
+  - File systems
+    - UBIFS_FS_ZSTD=y
+    - SUNRPC_DISABLE_INSECURE_ENCTYPES=n
+    - CEPH_FS_SECURITY_LABEL=y
+  - Generic driver options
+    - FW_LOADER_COMPRESS=y
+  - Storage
+    - SCSI_FDOMAIN_PCI=m
+    - SCSI_FDOMAIN_ISA=n
+    - PCMCIA_FDOMAIN=n
+  - Input
+    - KEYBOARD_APPLESPI=m
+  - Power supply and hardware monitoring
+    - POWER_SUPPLY_HWMON=y
+    - CHARGER_WILCO=m
+    - SENSORS_IRPS5401=m
+    - SENSORS_PXE1610=m
+    - REGULATOR_ARIZONA_LDO1=m
+    - REGULATOR_ARIZONA_MICSUPP=m
+    - REGULATOR_SLG51000=m
+  - Multimedia
+    - DVB_USB_CXUSB_ANALOG=y
+    - VIDEO_TDA1997X=m
+    - VIDEO_TLV320AIC23B=m
+    - VIDEO_ADV7180=m
+    - VIDEO_ADV7183=m
+    - VIDEO_ADV7604=m
+    - VIDEO_ADV7604_CEC=y
+    - VIDEO_ADV7842=m
+    - VIDEO_ADV7842_CEC=y
+    - VIDEO_BT819=m
+    - VIDEO_BT856=m
+    - VIDEO_BT866=m
+    - VIDEO_KS0127=m
+    - VIDEO_ML86V7667=m
+    - VIDEO_SAA7110=m
+    - VIDEO_TC358743=m
+    - VIDEO_TC358743_CEC=y
+    - VIDEO_TVP514X=m
+    - VIDEO_TVP7002=m
+    - VIDEO_TW9910=m
+    - VIDEO_VPX3220=m
+    - VIDEO_SAA7185=m
+    - VIDEO_ADV7170=m
+    - VIDEO_ADV7175=m
+    - VIDEO_ADV7343=m
+    - VIDEO_ADV7393=m
+    - VIDEO_ADV7511=m
+    - VIDEO_ADV7511_CEC=y
+    - VIDEO_AD9389B=m
+    - VIDEO_AK881X=m
+    - VIDEO_THS8200=m
+    - VIDEO_IMX214=m
+    - VIDEO_IMX258=m
+    - VIDEO_IMX274=m
+    - VIDEO_IMX319=m
+    - VIDEO_IMX355=m
+    - VIDEO_OV2659=m
+    - VIDEO_OV2680=m
+    - VIDEO_OV2685=m
+    - VIDEO_OV5647=m
+    - VIDEO_OV6650=m
+    - VIDEO_OV5670=m
+    - VIDEO_OV5695=m
+    - VIDEO_OV7251=m
+    - VIDEO_OV772X=m
+    - VIDEO_OV7740=m
+    - VIDEO_OV8856=m
+    - VIDEO_OV9640=m
+    - VIDEO_OV9650=m
+    - VIDEO_OV13858=m
+    - VIDEO_VS6624=m
+    - VIDEO_MT9M001=m
+    - VIDEO_MT9M032=m
+    - VIDEO_MT9M111=m
+    - VIDEO_MT9P031=m
+    - VIDEO_MT9T001=m
+    - VIDEO_MT9T112=m
+    - VIDEO_MT9V032=m
+    - VIDEO_MT9V111=m
+    - VIDEO_SR030PC30=m
+    - VIDEO_NOON010PC30=m
+    - VIDEO_M5MOLS=m
+    - VIDEO_RJ54N1=m
+    - VIDEO_S5K6AA=m
+    - VIDEO_S5K6A3=m
+    - VIDEO_S5K4ECGX=m
+    - VIDEO_S5K5BAF=m
+    - VIDEO_SMIAPP=m
+    - VIDEO_ET8EK8=m
+    - VIDEO_S5C73M3=m
+    - VIDEO_AD5820=m
+    - VIDEO_AK7375=m
+    - VIDEO_DW9714=m
+    - VIDEO_DW9807_VCM=m
+    - VIDEO_ADP1653=m
+    - VIDEO_LM3560=m
+    - VIDEO_LM3646=m
+    - SDR_MAX2175=m
+    - VIDEO_THS7303=m
+    - VIDEO_I2C=m
+    - VIDEO_ST_MIPID02=n
+    - VIDEO_GS1662=m
+    - DVB_S5H1432=m
+    - DVB_DIB9000=m
+    - DVB_CXD2880=m
+    - DVB_MN88443X=m
+    - DVB_LNBH29=m
+    - DVB_LGS8GL5=m
+  - Graphics
+    - DRM_AMD_DC_DCN2_0=y
+    - DRM_AMD_DC_DSC_SUPPORT=y
+    - DRM_I915_FORCE_PROBE=""
+    - DRM_I915_DEBUG_MMIO=n
+    - DRM_I915_USERFAULT_AUTOSUSPEND=250
+    - DRM_I915_SPIN_REQUEST=5
+    - DRM_PANEL_OSD_OSD101T2587_53TS=m
+    - DRM_PANEL_SAMSUNG_S6E63M0=m
+  - Sound
+    - SND_SOC_INTEL_CML_H=m
+    - SND_SOC_INTEL_CML_LP=m
+    - SND_SOC_INTEL_BYT_CHT_CX2072X_MACH=m
+    - SND_SOC_SOF_COMETLAKE_LP_SUPPORT=y
+    - SND_SOC_SOF_COMETLAKE_H_SUPPORT=y
+    - SND_SOC_CX2072X=m
+  - InfiniBand
+    - RDMA_SIW=m
+  - Platform specific drivers
+    - XIAOMI_WMI=m
+    - ACPI_CMPC=m
+    - SAMSUNG_Q10=m
+    - INTEL_SPEED_SELECT_INTERFACE=m
+    - CROS_EC_ISHTP=m
+    - WILCO_EC_EVENTS=m
+    - WILCO_EC_TELEMETRY=m
+  - Industrial I/O
+    - XILINX_XADC=n
+    - ADF4371=n
+    - DPS310=n
+  - LEDs
+    - LEDS_SPI_BYTE=m
+    - LEDS_TI_LMU_COMMON=m
+    - LEDS_LM3697=m
+    - LEDS_LM36274=m
+  - Other drivers
+    - MTD_HYPERBUS=m
+    - HBMC_AM654=m
+    - XILINX_SDFEC=n
+    - GPIO_XILINX=m
+    - WATCHDOG_OPEN_TIMEOUT=0
+    - MFD_CS47L15=y
+    - MFD_CS47L92=y
+    - MFD_ROHM_BD70528=n
+    - RTC_DRV_BD70528=m
+    - DW_EDMA=m
+    - DW_EDMA_PCIE=m
+    - COMMON_CLK_SI5341=m
+    - EXTCON_FSA9480=m
+    - NTB_MSI=y
+    - NTB_MSI_TEST=n
+    - RAS_CEC_DEBUG=n
+    - AL_FIC=n
+  - Virtualization
+    - VIRTIO_PMEM=m
+  - Security options
+    - KEYS_REQUEST_CACHE=y
+  - Kernel hardening options
+    - INIT_ON_ALLOC_DEFAULT_ON=n
+    - INIT_ON_FREE_DEFAULT_ON=n
+  - Cryptographic API
+    - CRYPTO_XXHASH=n
+    - CRYPTO_DEV_ATMEL_ECC=m
+    - CRYPTO_DEV_ATMEL_SHA204A=m
+  - Kernel hacking
+    - HEADERS_INSTALL=n
+    - REED_SOLOMON_TEST=n
+    - TEST_BLACKHOLE_DEV=n
+    - TEST_MEMINIT=n
+- commit 0a6d0d9
 
 -------------------------------------------------------------------
 Sun Jul 21 19:42:03 CEST 2019 - mkubecek@suse.cz
@@ -11485,6 +12176,12 @@ Sat Jan 26 11:04:18 CET 2019 - jslaby@suse.cz
 - ipv6: Consider sk_bound_dev_if when binding a socket to a v4
   mapped address (bnc#1012628).
 - commit 34ae151
+
+-------------------------------------------------------------------
+Thu Jan 24 13:06:05 CET 2019 - ptesarik@suse.cz
+
+- Add product identifying information to VMCOREINFO (bsc#1123015).
+- commit 68ca35e
 
 -------------------------------------------------------------------
 Thu Jan 24 11:12:41 CET 2019 - msuchanek@suse.de

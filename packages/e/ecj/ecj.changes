@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 25 12:22:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to eclipse 4.12 ecj
+- Removed patches:
+  * ecj-include-props.patch,
+  * eclipse-gcj-compat4.2.1.patch
+  * eclipse-gcj-nodummysymbol.patch
+    + Unneeded for this version
+- Added patches:
+  * ecj-encoding.patch
+    + Fix build with java >= 9
+  * javaAPI.patch
+    + When building with java < 9, add the java10api.jar and the
+      JRE's rt.jar to bootclasspath
+  * jdk10u-jdk8compat.patch
+    + Patch out deprecation annotation not understood by the JDK
+      when building with java < 9
+- Build the java.compiler module's javax.* packages as non-modular
+  java10api.jar, so that ecj can be compiled even with java < 9
+- Distribute the java10api artifact for packages that might need
+  it
+
+-------------------------------------------------------------------
 Thu Nov 22 21:49:42 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Add one more maven artifact alias:

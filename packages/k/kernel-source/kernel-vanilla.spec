@@ -17,12 +17,12 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.2
-%define patchversion 5.2.14
+%define srcversion 5.3
+%define patchversion 5.3.1
 %define variant %{nil}
 %define vanilla_only 0
-%define compress_modules none
-%define livepatch %{nil}
+%define compress_modules xz
+%define livepatch livepatch%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
@@ -64,9 +64,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.2.14
+Version:        5.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g374b0ae
+Release:        <RELEASE>.g27a0123
 %else
 Release:        0
 %endif
@@ -171,10 +171,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-374b0aeb68b51de45c003859d7c4534017a89038
-Provides:       kernel-srchash-374b0aeb68b51de45c003859d7c4534017a89038
+Provides:       kernel-%build_flavor-base-srchash-27a012314159e18b16581b0f90e3fe84d723eeea
+Provides:       kernel-srchash-27a012314159e18b16581b0f90e3fe84d723eeea
 # END COMMON DEPS
-Provides:       %name-srchash-374b0aeb68b51de45c003859d7c4534017a89038
+Provides:       %name-srchash-27a012314159e18b16581b0f90e3fe84d723eeea
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -435,7 +435,7 @@ awk '
 subpackages=(
 	base
 %if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
-	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp
+	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp reiserfs-kmp
 %endif
 )
 for package in "${subpackages[@]}"; do
@@ -1475,6 +1475,47 @@ fi
 rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
+%defattr(-, root, root)
+
+%package -n reiserfs-kmp-%build_flavor
+Summary:        Reiserfs kernel module
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       reiserfs-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+
+%description -n reiserfs-kmp-%build_flavor
+The reiserfs file system is no longer supported in SLE15.  This package
+provides the reiserfs module for the installation system.
+
+%post -n reiserfs-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=reiserfs-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
+
+%posttrans -n reiserfs-kmp-%build_flavor
+%{?regenerate_initrd_posttrans}
+
+%preun -n reiserfs-kmp-%build_flavor
+nvr=reiserfs-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+
+%postun -n reiserfs-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=reiserfs-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
+rm -f "/var/run/rpm-$nvr-modules"
+
+%files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
 %defattr(-, root, root)
 
 %endif # %CONFIG_SUSE_KERNEL_SUPPORTED

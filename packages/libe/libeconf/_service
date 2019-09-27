@@ -1,11 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">0.3.0</param>
-    <param name="versionformat">0.3.0+git%cd.%h</param>
+    <param name="version">0.3.2</param>
+    <param name="versionformat">0.3.2+git%cd.%h</param>
     <param name="url">git://github.com/openSUSE/libeconf.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">kukuk@suse.de</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>

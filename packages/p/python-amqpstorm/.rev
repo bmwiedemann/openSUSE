@@ -57,4 +57,14 @@
     <comment></comment>
     <requestid>717016</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>988d9a8b6a8e118d149b028eb7e45cad</srcmd5>
+    <version>2.7.1</version>
+    <time>1569588453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.1:
+  * Fixed Connection close taking longer than intended when using SSL [#75]- Thanks troglas.
+  * Fixed an issue with closing Channels taking too long after the server initiated it.</comment>
+    <requestid>730723</requestid>
+  </revision>
 </revisionlist>

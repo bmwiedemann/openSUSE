@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>722811</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3cb5992886732e1bb29101f4c0642add</srcmd5>
+    <version>0.6</version>
+    <time>1569588439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6:
+  * Added feature to set unique colors for each option.</comment>
+    <requestid>730678</requestid>
+  </revision>
 </revisionlist>

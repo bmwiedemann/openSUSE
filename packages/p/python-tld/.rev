@@ -56,4 +56,22 @@
 </comment>
     <requestid>695330</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d7eeb3c6e7afa5a470500d53183fecf8</srcmd5>
+    <version>0.9.6</version>
+    <time>1569588524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.6:
+  * Fix for update-tld-names returns a non-zero exit code on success
+  * Minor tests improvements.
+
+- update to version 0.9.5:
+  - Tests improvements.
+- update to version 0.9.4:
+  - Optimisations in setup.py, tests and console scripts.
+  - Skip testing the update-tld-names functionality if no internet is available.
+- add skip_internet_tests.patch
+- remove remove-download-test.patch</comment>
+    <requestid>731290</requestid>
+  </revision>
 </revisionlist>

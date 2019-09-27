@@ -47,4 +47,16 @@
   * Copy proto files alongside protoc versions. Remove unneeded utf-8 header.</comment>
     <requestid>688735</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e343065e6bc673d41c7bd593965b6220</srcmd5>
+    <version>1.2.0</version>
+    <time>1569588417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Add 'client_options' support (via synth). (#8534)
+  * Increase speech max received msg size to 256 MiB (#8338)
+  * Add MP3 to Audio Encoding and add boost to Speech Context (via synth). (#8109)
+  * Add Recognition Metadata (via synth). (#7961)</comment>
+    <requestid>730383</requestid>
+  </revision>
 </revisionlist>

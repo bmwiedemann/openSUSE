@@ -1,7 +1,7 @@
 #
 # spec file for package ecj
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,43 +16,39 @@
 #
 
 
-%global qualifier R-4.4-201406061215
+%global qualifier R-4.12-201906051800
+%global jdk10_revision 45b1d041a4ef
 Name:           ecj
-Version:        4.4.0
+Version:        4.12
 Release:        0
 Summary:        Eclipse Compiler for Java
-License:        EPL-1.0
-Group:          Development/Languages/Java
-Url:            http://www.eclipse.org
-Source0:        http://download.eclipse.org/eclipse/downloads/drops4/%{qualifier}/%{name}src-4.4.jar
-Source1:        ecj.sh.in
-# Use ECJ for GCJ
-# cvs -d:pserver:anonymous@sourceware.org:/cvs/rhug \
-# export -D 2009-09-28 eclipse-gcj
-# tar cjf ecj-gcj.tar.bz2 eclipse-gcj
-Source2:        %{name}-gcj.tar.bz2
-#Patched from http://central.maven.org/maven2/org/eclipse/jdt/core/compiler/ecj/4.4/ecj-4.4.pom
-# No dependencies are needed for ecj, dependencies are for using of jdt.core which makes no sense outside of eclipse
-Source3:        ecj-4.4.pom
-Source4:        ecj.1
-# http://git.eclipse.org/c/jdt/eclipse.jdt.core.git/plain/org.eclipse.jdt.core/scripts/binary/META-INF/MANIFEST.MF
-Source5:        META-INF/MANIFEST.MF
-# Always generate debug info when building RPMs (Andrew Haley)
+License:        EPL-2.0 AND GPL-2.0 WITH Classpath-exception-2.0
+Group:          Development/Libraries/Java
+URL:            https://www.eclipse.org
+Source0:        http://download.eclipse.org/eclipse/downloads/drops4/%{qualifier}/ecjsrc-%{version}.jar
+# Jdk10 sources to build Java API stubs for newer JDKs
+# wget http://hg.openjdk.java.net/jdk-updates/jdk10u/archive/45b1d041a4ef.tar.bz2 -O jdk10u.tar.bz2
+# tar xf jdk10u.tar.bz2 && rm jdk10u.tar.bz2
+# mv jdk10u-45b1d041a4ef/src/java.compiler/share/classes java10api-src && rm -rf jdk10u-45b1d041a4ef
+# tar cJf java10api-src.tar.xz java10api-src && rm -rf java10api-src
+Source1:        java10api-src.tar.xz
+Source2:        https://repo1.maven.org/maven2/org/eclipse/jdt/ecj/3.18.0/ecj-3.18.0.pom
+# Simple pom file to declare org.eclipse:java10api artifact
+Source3:        java10api.pom
+# Extracted from https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/%%{qualifier}/ecj-%%{version}.jar
+Source4:        MANIFEST.MF
+# Always generate debug info when building RPMs
 Patch0:         %{name}-rpmdebuginfo.patch
-# build.xml fails to include a necessary .props file in the built ecj.jar
-Patch1:         %{name}-include-props.patch
-# Patches Source2 for compatibility with newer ecj
-Patch2:         eclipse-gcj-compat4.2.1.patch
-Patch3:         eclipse-gcj-nodummysymbol.patch
+# Include java API stubs in build with java < 9
+Patch1:         javaAPI.patch
+# Fix build with java >= 9
+Patch2:         ecj-encoding.patch
+# Patch out deprecation annotation not understood by java 8
+Patch3:         jdk10u-jdk8compat.patch
 BuildRequires:  ant
-BuildRequires:  gzip
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  unzip
-Conflicts:      ecj-bootstrap
-Provides:       eclipse-ecj = %{version}-%{release}
-Obsoletes:      eclipse-ecj < 3.4.2-4
 BuildArch:      noarch
 
 %description
@@ -60,75 +56,66 @@ ECJ is the Java bytecode compiler of the Eclipse Platform.  It is also known as
 the JDT Core batch compiler.
 
 %prep
-%setup -q -c
+%setup -q -c -a 1
 %patch0 -p1
-%patch1 -b .sav
+%if %{?pkg_vcmp:%pkg_vcmp java-devel < 9}%{!?pkg_vcmp:1}
+%patch1
+%else
+%patch2 -p1
+%endif
+%patch3
 
 sed -i -e 's|debuglevel=\"lines,source\"|debug=\"yes\"|g' build.xml
-sed -i -e "s/Xlint:none/Xlint:none -encoding cp1252/g" build.xml
 
-%if 0%{?suse_version} < 1200
-sed -i -e 's|source=\"1.6\"|source=\"1.5\"|g' build.xml
-sed -i -e 's|target=\"1.6\"|target=\"1.5\"|g' build.xml
-%endif
-
-cp %{SOURCE3} pom.xml
 mkdir -p scripts/binary/META-INF/
-cp %{SOURCE5} scripts/binary/META-INF/MANIFEST.MF
-
-# Use ECJ for GCJ's bytecode compiler
-tar jxf %{SOURCE2}
-mv eclipse-gcj/org/eclipse/jdt/internal/compiler/batch/GCCMain.java \
-  org/eclipse/jdt/internal/compiler/batch/
-%patch2 -p1
-%patch3 -p1
-cat eclipse-gcj/gcc.properties >> \
-  org/eclipse/jdt/internal/compiler/batch/messages.properties
-rm -rf eclipse-gcj
-
-# Remove bits of JDT Core we don't want to build
-rm -r org/eclipse/jdt/internal/compiler/tool
-rm -r org/eclipse/jdt/internal/compiler/apt
-rm -f org/eclipse/jdt/core/BuildJarIndex.java
+cp %{SOURCE4} scripts/binary/META-INF/MANIFEST.MF
 
 # JDTCompilerAdapter isn't used by the batch compiler
 rm -f org/eclipse/jdt/core/JDTCompilerAdapter.java
-cp %{SOURCE4} ecj.1
+
+# Not compatible with non-modular Java
+%if %{?pkg_vcmp:%pkg_vcmp java-devel < 9}%{!?pkg_vcmp:1}
+rm -f java10api-src/javax/tools/ToolProvider.java
+%endif
 
 %build
-ant
-gzip ecj.1
+
+mkdir -p build/classes
+javac -d build/classes -source 8 -target 8 \
+  $(find java10api-src/javax -name \*.java | xargs)
+jar -cf java10api.jar -C build/classes .
+# Remove everything except the jar, since ant looks for java files in "."
+rm -rf java10api-src build/classes
+
+ant \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel < 9}%{!?pkg_vcmp:1}
+	-Djavaapi=java10api.jar -Drtjar=%{_jvmdir}/jre/lib/rt.jar \
+%endif
+	build
 
 %install
-mkdir -p %{buildroot}%{_javadir}
-install -m0644 ecj.jar %{buildroot}%{_javadir}/%{name}.jar
-pushd %{buildroot}%{_javadir}
-ln -s %{name}.jar eclipse-%{name}.jar
-ln -s %{name}.jar jdtcore.jar
-popd
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 ecj.jar %{buildroot}%{_javadir}/%{name}/ecj.jar
+install -pm 0644 java10api.jar %{buildroot}%{_javadir}/%{name}/java10api.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 0644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}/ecj.pom
+%add_maven_depmap %{name}/ecj.pom %{name}/ecj.jar -a "org.eclipse.jdt:core,org.eclipse.jdt.core.compiler:ecj,org.eclipse.tycho:org.eclipse.jdt.core,org.eclipse.tycho:org.eclipse.jdt.compiler.apt"
+install -pm 0644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}/java10api.pom
+%add_maven_depmap %{name}/java10api.pom %{name}/java10api.jar -a "org.eclipse:java9api"
 
 # Install the ecj wrapper script
-install -p -D -m0755 %{SOURCE1} %{buildroot}%{_bindir}/ecj
-sed --in-place "s:@JAVADIR@:%{_javadir}:" %{buildroot}%{_bindir}/ecj
+%jpackage_script org.eclipse.jdt.internal.compiler.batch.Main '' '' ecj ecj true
 
 # Install manpage
 mkdir -p %{buildroot}%{_mandir}/man1
-install -m 644 -p ecj.1.gz %{buildroot}%{_mandir}/man1/ecj.1.gz
-
-# poms
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml \
-    %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-
-%add_maven_depmap -a "org.eclipse.tycho:org.eclipse.jdt.core,org.eclipse.tycho:org.eclipse.jdt.compiler.apt,org.eclipse.jdt:core,org.eclipse.jdt:org.eclipse.jdt.core,org.eclipse.jdt.core.compiler:ecj,org.eclipse.jdt:ecj" JPP-%{name}.pom %{name}.jar
+install -m 644 -p ecj.1 %{buildroot}%{_mandir}/man1/ecj.1
 
 %files -f .mfiles
-%doc about.html
-%{_mavenpomdir}/JPP-%{name}.pom
-%{_bindir}/%{name}
-%{_javadir}/%{name}.jar
-%{_javadir}/eclipse-%{name}.jar
-%{_javadir}/jdtcore.jar
-%{_mandir}/man1/ecj.1%{ext_man}
+%license about.html
+%{_bindir}/ecj
+%{_mandir}/man1/ecj*
 
 %changelog

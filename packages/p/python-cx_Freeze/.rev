@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>614548</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>82a0c6fa516b39a08bbaef86d12fed6e</srcmd5>
+    <version>6.0</version>
+    <time>1569588460</time>
+    <user>dimstar_suse</user>
+    <comment>- Conflict with python2-cx_Freeze as we are no longer update-alternatives
+  set up package but provide only py3 variant
+
+- Use noun phrase.
+
+- Update to 6.0:
+  * Corrected support for Python 3.7 (PR #395).
+  * Use importlib and other Python 3 improvements (PR #484, PR #485, PR #486, PR #490).
+  * Fixed issue with @rpath causing file copy errors on macOS (PR #307).
+  * Replaced file() with open() and use context manager to ensure the file handle is closed and deleted (PR #348).
+  * Corrected invalid version handling in bdist_msi (PR #349, Issue #340).
+  * Corrected hook for clr module (PR #397, PR #444).
+  * Corrected documentation for compress option (PR #358).
+  * Ensure that the pythoncom and pywintypes DLLs are found in the lib directory and not in the base directory (Issue #332).
+  * Always copy dependent files to root directory on macOS (PR #365).
+  * Skip self referencing archive on macOS (PR #364, Issue #304).
+  * Include doc directory in source distribution (PR #394, Issue #376).
+  * Force msilib module to be reloaded in order to allow for the generation of multiple MSI packages in a single session (PR #419).
+  * Added hook for PyQt5.QtPrintSupport module (PR #401).
+  * Added ability to include an icon on the add/remove program window that pops up during installation (PR #387).
+  * Prevent spurious errors from being printed during building on macOS by checking to see that a file is a Mach-O binary before adding it to the list of files it is checking the reference of (PR #342, Issue #268).
+  * Avoid otool bug on macOS Yosemite (PR #297, Issue #292).
+  * Added ability to specify environment variables that should be created when an MSI package is installed (PR #266).
+  * Added support for including resources in an app bundle for macOS (PR #423).
+  * Added absolute reference path option for macOS packages (PR #424).
+  * Added CFBundle identifier for macOS packages (PR #427, Issue #426).
+  * Added hook for copying SSL DLLs for Python 3.7+ on Windows (PR #470).
+  * Added -municode flag when building on Windows with mingw32 (PR #468).
+  * Added hook for pycparser (PR #446).
+  * Fixed hook for zmq so it doesn’t fail when there is no bundled libzmq library in the installed pyzmq package (PR #442).</comment>
+    <requestid>730768</requestid>
+  </revision>
 </revisionlist>

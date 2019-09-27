@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
@@ -61,7 +61,7 @@ and processes can be seen.  Child processes can also be tracked.
 
 %build
 %configure \
-%ifarch aarch64 riscv64
+%ifarch aarch64
   --disable-mpers \
 %endif
   %{nil}

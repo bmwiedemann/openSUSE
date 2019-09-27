@@ -23,4 +23,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>730681</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d61ddd6ca02d6a4b0f7f062467ed7e91</srcmd5>
+    <version>0.3.2+git20190926.fea4a03</version>
+    <time>1569588239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.2+git20190926.fea4a03:
+  * Release version 0.3.2
+  * Fix merging an empty file (#105)
+  * Add test cases for merge function
+
+- Update to version 0.3.1+git20190924.822cf5b:
+  * release version 0.3.1
+  * Set delimiter in readFile
+  * Change parser interface to store file name and line numbers per key
+  * Update ccpp.yml</comment>
+    <requestid>733498</requestid>
+  </revision>
 </revisionlist>

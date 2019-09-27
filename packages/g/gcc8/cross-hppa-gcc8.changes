@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 16 09:51:50 UTC 2019 - Richard Biener <rguenther@suse.com>
+
+- Remove bogus fixed include bits/statx.h from glibc 2.30.  [gcc#91085]
+
+-------------------------------------------------------------------
+Thu Jul 25 10:58:03 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r273794).
+  * Includes fix for LTO linker plugin heap overflow.
+  (bsc#1142649, CVE-2019-14250)
+
+-------------------------------------------------------------------
+Thu Jul 18 07:26:14 UTC 2019 - rguenther@suse.com
+
+- Update to gcc-8-branch head (r273560).
+  * Includes fix for vector shift miscompilation on s390.  [bsc#1141897]
+
+-------------------------------------------------------------------
 Fri May 31 08:12:20 UTC 2019 - rguenther@suse.com
 
 - Update to gcc-8-branch head (r271793).

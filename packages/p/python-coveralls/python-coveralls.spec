@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coveralls
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Module for showing coverage stats online via coverallsio
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/coveralls-clients/coveralls-python
+URL:            https://github.com/coveralls-clients/coveralls-python
 Source:         https://github.com/coveralls-clients/coveralls-python/archive/%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module coverage >= 3.6}

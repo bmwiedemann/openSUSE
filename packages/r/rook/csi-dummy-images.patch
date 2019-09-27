@@ -1,0 +1,13 @@
+diff --git a/pkg/operator/ceph/csi/spec.go b/pkg/operator/ceph/csi/spec.go
+index 44f07f7e..bfdcd409 100644
+--- a/pkg/operator/ceph/csi/spec.go
++++ b/pkg/operator/ceph/csi/spec.go
+@@ -72,7 +72,7 @@ const (
+ 	provDeploymentSuppVersion = "14"
+ 
+ 	// image names
+-	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v1.2.0"
++	DefaultCSIPluginImage   = "dummy-value-that-should-be-replaced-at-link-time"
+ 	DefaultRegistrarImage   = "quay.io/k8scsi/csi-node-driver-registrar:v1.1.0"
+ 	DefaultProvisionerImage = "quay.io/k8scsi/csi-provisioner:v1.3.0"
+ 	DefaultAttacherImage    = "quay.io/k8scsi/csi-attacher:v1.2.0"

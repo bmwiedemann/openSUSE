@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 17:54:04 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix http20 behaviour:
+  * http20.patch
+- Skip error reporting tests as they do not match httplib update
+
+-------------------------------------------------------------------
 Fri Jun 21 09:26:00 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix-j1-tests.patch to make build work on 1-core-VM

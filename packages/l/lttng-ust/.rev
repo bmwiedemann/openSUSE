@@ -39,4 +39,18 @@
     <comment>- Update to version 2.10.2.</comment>
     <requestid>649121</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>417b8560d9d51f09c07068664308c99d</srcmd5>
+    <version>2.10.5</version>
+    <time>1569588217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.5:
+  * New tracef() instrumentation facility. Excerpt from
+    the lttng-ust(3) man page.
+  * Perf PMU counters support from user-space on x86.
+  * Library base address dump is now stable
+    (thanks to Mentor for their contribution).
+  * fixes boo#1149704. (forwarded request 732859 from marxin)</comment>
+    <requestid>732911</requestid>
+  </revision>
 </revisionlist>

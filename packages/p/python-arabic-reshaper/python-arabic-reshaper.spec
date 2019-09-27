@@ -1,7 +1,7 @@
 #
 # spec file for package python-arabic-reshaper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-arabic-reshaper
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        Python module for formatting Arabic sentences
-License:        GPL-3.0-only
+License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/mpcabd/python-arabic-reshaper/
-Source:         https://files.pythonhosted.org/packages/source/a/arabic-reshaper/arabic_reshaper-%{version}.tar.gz
+URL:            https://github.com/mpcabd/python-arabic-reshaper/
+Source:         https://github.com/mpcabd/python-arabic-reshaper/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module future}
 BuildRequires:  python-configparser
-# /SECTION
+BuildRequires:  python-rpm-macros
 Requires:       python-future
+BuildArch:      noarch
 %ifpython2
 Requires:       python-configparser
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,7 +42,7 @@ A module for reconstructing Arabic sentences that are to be used in
 applications that do not support Arabic.
 
 %prep
-%setup -q -n arabic_reshaper-%{version}
+%setup -q
 
 %build
 %python_build
@@ -54,7 +51,11 @@ applications that do not support Arabic.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%python_exec setup.py test
+
 %files %{python_files}
+%license LICENSE
 %doc README.md
 %{python_sitelib}/*
 

@@ -1,0 +1,5 @@
+<package name="python-aiosmtplib" project="openSUSE:Factory">
+  <title>python-aiosmtplib</title>
+  <description>Python asyncio SMTP client</description>
+  <devel project="devel:languages:python" package="python-aiosmtplib"/>
+</package>

@@ -1,0 +1,13 @@
+diff --git a/pkg/operator/ceph/agent/agent.go b/pkg/operator/ceph/agent/agent.go
+index 7f7c9e14..4278b951 100644
+--- a/pkg/operator/ceph/agent/agent.go
++++ b/pkg/operator/ceph/agent/agent.go
+@@ -38,7 +38,7 @@ const (
+ 	flexvolumePathDirEnv           = "FLEXVOLUME_DIR_PATH"
+ 	libModulesPathDirEnv           = "LIB_MODULES_DIR_PATH"
+ 	agentMountsEnv                 = "AGENT_MOUNTS"
+-	flexvolumeDefaultDirPath       = "/usr/libexec/kubernetes/kubelet-plugins/volume/exec/"
++	flexvolumeDefaultDirPath       = "/var/lib/kubelet/volumeplugins"
+ 	agentDaemonsetTolerationEnv    = "AGENT_TOLERATION"
+ 	agentDaemonsetTolerationKeyEnv = "AGENT_TOLERATION_KEY"
+ 	agentDaemonsetTolerationsEnv   = "AGENT_TOLERATIONS"

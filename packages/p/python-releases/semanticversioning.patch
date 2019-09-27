@@ -1,0 +1,143 @@
+From 8787236dffb7383427b3e1448ece9a5b3eaf5257 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Barrois?= <raphael.barrois@polytechnique.org>
+Date: Sun, 8 Sep 2019 00:18:00 +0200
+Subject: [PATCH] Fix usage of semanticversion to intended API.
+
+The recent versions of python-semanticversion made changes to private
+APIs, removing the interaction between `Version(x, partial=True)` and
+`Spec()` (`partial=True` was designed for implementing the `Spec` class
+only)
+
+The code used these classes to exclude ranges of version whose major
+component didn't match a bugfix/issue range; the code went akin to:
+
+    Version('1', partial=True) in Spec('>=1.0')
+
+This no longer works; this patch changes that behaviour to exclude
+families where no actual release matches the bugfix/issue range - this
+should be more accurate.
+
+The patch also uses `Version.coerce`, the intended API to manage
+non semver-compliant version strings.
+
+The patch has been tested with both python-semanticversion==2.6.0 and
+python-semanticversion==2.8.1; it can be included to an upgraded version
+of `releases` even if users haven't yet upgraded python-semanticversion.
+---
+ releases/__init__.py |  2 +-
+ releases/models.py   | 54 ++++++++++++++++++++++++--------------------
+ 2 files changed, 30 insertions(+), 26 deletions(-)
+
+diff --git a/releases/__init__.py b/releases/__init__.py
+index 3c73f0b..48fc5f5 100644
+--- a/releases/__init__.py
++++ b/releases/__init__.py
+@@ -426,7 +426,7 @@ def handle_upcoming_major_release(entries, manager):
+     # to the line manager!
+     for obj in next_releases:
+         # TODO: update when Release gets tied closer w/ Version
+-        version = Version(obj.number)
++        version = Version.coerce(obj.number)
+         if version.minor == 0 and version.patch == 0:
+             manager.add_family(obj.family)
+ 
+diff --git a/releases/models.py b/releases/models.py
+index d980e9c..0517174 100644
+--- a/releases/models.py
++++ b/releases/models.py
+@@ -2,18 +2,10 @@
+ from operator import xor
+ 
+ from docutils import nodes
+-from semantic_version import Version as StrictVersion, Spec
++from semantic_version import Version, Spec
+ import six
+ 
+ 
+-class Version(StrictVersion):
+-    """
+-    Version subclass toggling ``partial=True`` by default.
+-    """
+-    def __init__(self, version_string, partial=True):
+-        super(Version, self).__init__(version_string, partial)
+-
+-
+ # Issue type list (keys) + color values
+ ISSUE_TYPES = {
+     'bug': 'A04040',
+@@ -122,7 +114,7 @@ def default_spec(self, manager):
+             buckets = self.minor_releases(manager)
+             if buckets:
+                 specstr = ">={}".format(max(buckets))
+-        return Spec(specstr) if specstr else Spec()
++        return Spec(specstr) if specstr else Spec('*')
+ 
+     def add_to_manager(self, manager):
+         """
+@@ -130,32 +122,43 @@ def add_to_manager(self, manager):
+         """
+         # Derive version spec allowing us to filter against major/minor buckets
+         spec = self.spec or self.default_spec(manager)
+-        # Only look in appropriate major version/family; if self is an issue
+-        # declared as living in e.g. >=2, this means we don't even bother
+-        # looking in the 1.x family.
+-        families = [Version(str(x)) for x in manager]
+-        versions = list(spec.filter(families))
+-        for version in versions:
+-            family = version.major
+-            # Within each family, we further limit which bugfix lines match up
+-            # to what self cares about (ignoring 'unreleased' until later)
+-            candidates = [
+-                Version(x)
++
++        # Browse through families, adding us to every line we match.
++        for family in manager:
++            # Map changelog keys to Version objects, keeping a link
++            # to the original text
++            versions = {
++                Version.coerce(x): x
+                 for x in manager[family]
+                 if not x.startswith('unreleased')
+-            ]
+-            # Select matching release lines (& stringify)
++            }
++
++            # Bail out if no listed version (included pending feature/bugfix)
++            # match self.spec: if self is an issue for >=2, don't look
++            # at the 1.x family. If self is an issue for >=1.0, include it
++            # in the 1.x family even if no 1.0 release exists yet.
++            candidates = list(spec.filter(versions))
++            # Also compare the first release in the family, for cases
++            # where no release has been performed yet.
++            if not candidates and Version.coerce(str(family)) not in spec:
++                continue
++
++            # `buckets` has the list of line families
+             buckets = []
+-            bugfix_buckets = [str(x) for x in spec.filter(candidates)]
++            bugfix_buckets = candidates
+             # Add back in unreleased_* as appropriate
+             # TODO: probably leverage Issue subclasses for this eventually?
+             if self.is_buglike:
+-                buckets.extend(bugfix_buckets)
++                # Convert back Version() to line
++                buckets.extend([
++                    versions[bucket] for bucket in bugfix_buckets
++                ])
+                 # Don't put into JUST unreleased_bugfix; it implies that this
+                 # major release/family hasn't actually seen any releases yet
+                 # and only exists for features to go into.
+                 if bugfix_buckets:
+                     buckets.append('unreleased_bugfix')
++
+             # Obtain list of minor releases to check for "haven't had ANY
+             # releases yet" corner case, in which case ALL issues get thrown in
+             # unreleased_feature for the first release to consume.
+@@ -164,6 +167,7 @@ def add_to_manager(self, manager):
+             no_releases = not self.minor_releases(manager)
+             if self.is_featurelike or self.backported or no_releases:
+                 buckets.append('unreleased_feature')
++
+             # Now that we know which buckets are appropriate, add ourself to
+             # all of them. TODO: or just...do it above...instead...
+             for bucket in buckets:

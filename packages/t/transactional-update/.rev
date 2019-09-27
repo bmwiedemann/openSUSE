@@ -414,4 +414,16 @@
     <comment></comment>
     <requestid>730426</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6cf5fb4676ad78090537b2b96f99ab68</srcmd5>
+    <version>2.17</version>
+    <time>1569588300</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.17
+  - Provide network in shell on systems where resolv.conf is pointing to /run directly [boo#1151081]
+  - Print new snapshot number at the end
+  - Always mount /root subvolume when using shell ommand to preserve history
+</comment>
+    <requestid>733187</requestid>
+  </revision>
 </revisionlist>

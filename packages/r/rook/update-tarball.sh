@@ -40,7 +40,7 @@ function on_err {
 trap on_err ERR
 
 ROOK_REPO="github.com/SUSE/rook"
-ROOK_REV="v1.1.0"
+ROOK_REV="v1.1.1"
 cat <<EOF
 
 tar-ing Rook $ROOK_REPO at revision '$ROOK_REV'
@@ -60,15 +60,16 @@ git fetch && git fetch --tags
 git checkout "$ROOK_REV"
 
 # e.g, DESCRIBE=v1.1.0-0-g56789def  OR  DESCRIBE=v1.1.0-beta.1-0-g12345abc
-describe="$(git describe --long)"
+describe="$(git describe --long --tags)"
 GIT_COMMIT=${describe##*-}       # git commit hash is last hyphen-delimited field
 remainder=${describe%-*}         # strip off the git commit field & continue
 GIT_COMMIT_NUM=${remainder##*-}  # num of commits after tag is second-to-last hyphen-delimited field
 RELEASE=${remainder%-*}          # all content before git commit num is the release version tag
 RELEASE=${RELEASE//-/'~'}        # support upstream beta tags: replace hyphen with tilde
+RELEASE=${RELEASE:1}             # remove preceding 'v' from beginning of release
 
 # strip off preceding 'v' from RELEASE
-VERSION="${RELEASE:1}+git$GIT_COMMIT_NUM.$GIT_COMMIT"
+VERSION="${RELEASE}+git$GIT_COMMIT_NUM.$GIT_COMMIT"
 
 # make primary source tarball before changing anything in the repo
 cd $PKG_DIR
@@ -86,6 +87,6 @@ tar -C "$GOPATH_ROOK/.." -cJf rook-$VERSION-vendor.tar.xz rook/vendor
 
 # update spec file versions
 sed -i "s/^Version:.*/Version:        $VERSION/" rook.spec
-sed -i "s/^rook_container_version=.*/rook_container_version='${RELEASE:1}.$GIT_COMMIT_NUM'  # this is udpated by update-tarball.sh/" rook.spec
+sed -i "s/^%global rook_container_version .*/%global rook_container_version ${RELEASE}.$GIT_COMMIT_NUM  # this is updated by update-tarball.sh/" rook.spec
 
 echo "Finished successfully!"

@@ -1,7 +1,0 @@
-<package name="zabbix" project="openSUSE:Factory">
-  <title>ZABBIX is an enterprise-class open source distributed monitoring solution.</title>
-  <description>ZABBIX is an enterprise-class open source distributed monitoring solution.</description>
-  <build>
-    <disable/>
-  </build>
-</package>

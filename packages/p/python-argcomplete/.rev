@@ -90,4 +90,14 @@
   * Register completion for multiple commands (#246)</comment>
     <requestid>691783</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a9e57575cf362d00cb5a6af00f39f3f6</srcmd5>
+    <version>1.10.0</version>
+    <time>1569588448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.0:
+  * fish support
+- Refresh patch skip_tcsh_tests.patch</comment>
+    <requestid>730714</requestid>
+  </revision>
 </revisionlist>

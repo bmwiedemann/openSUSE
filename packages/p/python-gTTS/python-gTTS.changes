@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 11:46:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.4:
+  * gTTS is now built as a wheel package (Python 2 & 3) (#181)
+- Rebase patch remove-pip-requirement.patch
+
+-------------------------------------------------------------------
 Sun Feb 10 17:51:09 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Change the egg requirement to use the right name, beautifulsoup4,

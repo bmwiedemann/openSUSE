@@ -30,6 +30,7 @@ Patch1:         fix-test.patch
 Patch2:         pr-402-h2-settings-fix.patch
 Patch3:         tests-mark-rpmfail_getaddrinfo.patch
 Patch4:         fix-j1-tests.patch
+Patch5:         http20.patch
 BuildRequires:  %{python_module brotlipy >= 0.7.0}
 BuildRequires:  %{python_module h2 > 2.5.0}
 BuildRequires:  %{python_module hyperframe >= 3.2}
@@ -78,7 +79,8 @@ wanted http.client.
 
 %check
 # test_HTTPConnection_with_custom_context - TLS 1.3 does not support h2
-%python_exec setup.py pytest --addopts="test/ -k 'not rpmfail_getaddrinfo and not test_HTTPConnection_with_custom_context'"
+# test_useful_error_with_no_protocol test_goaway_frame_PROTOCOL_ERROR test_goaway_frame_HTTP_1_1_REQUIRED test_goaway_frame_invalid_error_code - httplib update changed error messages reported
+%python_exec setup.py pytest --addopts="test/ -k 'not (rpmfail_getaddrinfo or test_HTTPConnection_with_custom_context or test_useful_error_with_no_protocol or test_goaway_frame_PROTOCOL_ERROR or test_goaway_frame_HTTP_1_1_REQUIRED or test_goaway_frame_invalid_error_code)'"
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:21:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.6:
+  * Fix for update-tld-names returns a non-zero exit code on success
+  * Minor tests improvements.
+
+-------------------------------------------------------------------
+Sat Sep 14 20:05:33 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.9.5:
+  - Tests improvements.
+- update to version 0.9.4:
+  - Optimisations in setup.py, tests and console scripts.
+  - Skip testing the update-tld-names functionality if no internet is available.
+- add skip_internet_tests.patch
+- remove remove-download-test.patch
+
+-------------------------------------------------------------------
 Sun Apr  7 11:31:45 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.9.3:

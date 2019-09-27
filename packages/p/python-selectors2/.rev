@@ -35,4 +35,12 @@
   * selectors-skip-tests.patch</comment>
     <requestid>707751</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e10e99cf6f5308a4f6cbd7248bdb69e8</srcmd5>
+    <version>2.0.1</version>
+    <time>1569588567</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump the tolerance even more for the flaky OBS runtime</comment>
+    <requestid>731460</requestid>
+  </revision>
 </revisionlist>

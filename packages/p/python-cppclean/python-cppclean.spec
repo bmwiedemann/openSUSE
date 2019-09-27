@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cppclean
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Program to find problems in C++ source code
 License:        Apache-2.0
@@ -42,8 +42,6 @@ considerable extra compiles increasing the edit-compile-run cycle.
 
 %prep
 %setup -q -n cppclean-%{version}
-# https://github.com/myint/cppclean/commit/998e80d02eb27fa7a59ac23db41ae3854f3c2d19
-rm test/unicode.h
 
 %build
 %python_build

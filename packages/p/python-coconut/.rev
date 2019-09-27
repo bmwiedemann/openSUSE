@@ -41,4 +41,13 @@
 - Use new jupyter package names.</comment>
     <requestid>705105</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e370dd47684efe24c619525885f14e4</srcmd5>
+    <version>1.4.1</version>
+    <time>1569588437</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * add support for python 3.8</comment>
+    <requestid>730676</requestid>
+  </revision>
 </revisionlist>

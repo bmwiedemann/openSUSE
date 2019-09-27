@@ -62,8 +62,8 @@ BuildRequires:  fdupes
 BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  makeinfo
-BuildRequires:  pwdutils
 BuildRequires:  python3-base
+BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  systemtap-headers
 BuildRequires:  xz
@@ -148,10 +148,10 @@ BuildArch:      i686
 %define enablekernel 4.15
 %endif
 
-Version:        2.29
+Version:        2.30
 Release:        0
 %if !%{build_snapshot}
-%define git_id 56c86f5dd516
+%define git_id 0a8262a1b2
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -202,14 +202,6 @@ Provides:       rtld(GNU_HASH)
 Requires:       glibc = %{version}
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%ifarch i686
-# We need to avoid to have only the src rpm from i686 on the media,
-# since it does not work on other architectures.
-NoSource:       0
-%endif
-%if !%{build_main}
-NoSource:       0
-%endif
 #
 
 ###
@@ -267,52 +259,18 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM nptl: Fix pthread_rwlock_try*lock stalls (BZ #23844)
-Patch1000:      pthread-rwlock-trylock-stalls.patch
-# PATCH-FIX-UPSTREAM arm: Use "nr" constraint for Systemtap probes (BZ #24164)
-Patch1001:      arm-systemtap-probe-constraint.patch
-# PATCH-FIX-UPSTREAM Add compiler barriers around modifications of the robust mutex list for pthread_mutex_trylock (BZ #24180)
-Patch1002:      pthread-mutex-barrier.patch
-# PATCH-FIX-UPSTREAM nptl: Avoid fork handler lock for async-signal-safe fork (BZ #24161)
-Patch1003:      fork-handler-lock.patch
-# PATCH-FIX-UPSTREAM nptl: Fix invalid Systemtap probe in pthread_join (BZ #24211)
-Patch1004:      pthread-join-probe.patch
-# PATCH-FIX-UPSTREAM RISC-V: Fix elfutils testsuite unwind failures (BZ #24040)
-Patch1005:      riscv-clone-unwind.patch
-# PATCH-FIX-UPSTREAM Add new Fortran vector math header file.
-Patch1006:      add-new-Fortran-vector-math-header-file.patch
-# PATCH-FIX-UPSTREAM regex: fix read overrun (CVE-2019-9169, BZ #24114)
-Patch1007:      regex-read-overrun.patch
-# PATCH-FIX-UPSTREAM ja_JP locale: Add entry for the new Japanese era (BZ #22964)
-Patch1008:      japanese-era-name-may-2019.patch
-# PATCH-FIX-UPSTREAM Fix output of LD_SHOW_AUXV=1
-Patch1009:      dl-show-auxv.patch
-# PATCH-FIX-UPSTREAM S390: Mark vx and vxe as important hwcap
-Patch1010:      s390-vx-vxe-hwcap.patch
-# PATCH-FIX-UPSTREAM ja_JP: Change the offset for Taisho gan-nen from 2 to 1 (BZ #24162)
-Patch1011:      taisho-era-string.patch
-# PATCH-FIX-UPSTREAM malloc: Set and reset all hooks for tracing (BZ #16573)
-Patch1012:      malloc-tracing-hooks.patch
-# PATCH-FIX-UPSTREAM elf: Fix pldd (BZ#18035)
-Patch1013:      pldd-inf-loop.patch
-# PATCH-FIX-UPSTREAM malloc: Check for large bin list corruption when inserting unsorted chunk (BZ #24216)
-Patch1014:      malloc-large-bin-corruption-check.patch
-# PATCH-FIX-UPSTREAM Fix crash in _IO_wfile_sync (BZ #20568)
-Patch1015:      wfile-sync-crash.patch
-# PATCH-FIX-UPSTREAM malloc: Fix warnings in tests with GCC 9
-Patch1016:      malloc-tests-warnings.patch
+# PATCH-FIX-UPSTREAM malloc: Remove unwanted leading whitespace in malloc_info (BZ #24867)
+Patch1000:      malloc-info-whitespace.patch
+# PATCH-FIX-UPSTREAM Fix RISC-V vfork build with Linux 5.3 kernel headers
+Patch1001:      riscv-vfork.patch
 
 ### 
 # Patches awaiting upstream approval
 ###
 # PATCH-FIX-UPSTREAM Always to locking when accessing streams (BZ #15142)
 Patch2000:      fix-locking-in-_IO_cleanup.patch
-# PATCH-FIX-UPSTREAM Fix fnmatch handling of collating elements (BZ #17396, BZ #16976)
-Patch2004:      fnmatch-collating-elements.patch
-# PATCH-FIX-UPSTREAM Fix iconv buffer handling with IGNORE error handler (BZ #18830)
-Patch2006:      iconv-reset-input-buffer.patch
 # PATCH-FIX-UPSTREAM Avoid concurrency problem in ldconfig (BZ #23973)
-Patch2007:      ldconfig-concurrency.patch
+Patch2001:      ldconfig-concurrency.patch
 
 # Non-glibc patches
 # PATCH-FIX-OPENSUSE Remove debianisms from manpages
@@ -416,7 +374,7 @@ Group:          System/Daemons
 Provides:       glibc:/usr/sbin/nscd
 Requires:       glibc = %{version}
 Obsoletes:      unscd <= 0.48
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 %{?systemd_requires}
 
 %description -n nscd
@@ -512,26 +470,9 @@ makedb: A program to create a database for nss
 
 %patch1000 -p1
 %patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch1010 -p1
-%patch1011 -p1
-%patch1012 -p1
-%patch1013 -p1
-%patch1014 -p1
-%patch1015 -p1
-%patch1016 -p1
 
 %patch2000 -p1
-%patch2004 -p1
-%patch2006 -p1
-%patch2007 -p1
+%patch2001 -p1
 
 %patch3000
 
@@ -804,10 +745,6 @@ ln -s . %{buildroot}/%{_lib}/lp64d
 # files - specifically valgrind and PurifyPlus.
 export STRIP_KEEP_SYMTAB=*.so*
 
-# Make sure we will create the gconv-modules.cache
-mkdir -p %{buildroot}%{_libdir}/gconv
-touch %{buildroot}%{_libdir}/gconv/gconv-modules.cache
-
 # Install base glibc
 make %{?_smp_mflags} install_root=%{buildroot} install -C cc-base
 
@@ -897,6 +834,8 @@ mkdir -p %{buildroot}%{_includedir}/resolv
 install -m 0644 resolv/mapv4v6addr.h %{buildroot}%{_includedir}/resolv/
 install -m 0644 resolv/mapv4v6hostent.h %{buildroot}%{_includedir}/resolv/
 
+touch %{buildroot}%{_libdir}/gconv/gconv-modules.cache
+
 %if %{build_html}
 mkdir -p %{buildroot}%{_datadir}/doc/glibc
 cp -p cc-base/manual/libc/*.html %{buildroot}%{_datadir}/doc/glibc
@@ -980,6 +919,14 @@ rm -rf %{buildroot}%{_infodir} %{buildroot}%{_prefix}/share/i18n
 rm -f %{buildroot}%{_bindir}/makedb %{buildroot}/var/lib/misc/Makefile
 rm -f %{buildroot}%{_sbindir}/nscd
 %endif # i686
+
+%ifnarch i686
+# /var/lib/misc is incompatible with transactional updates (bsc#1138726)
+mkdir %{buildroot}%{_prefix}/share/misc
+mv %{buildroot}/var/lib/misc/Makefile %{buildroot}%{_prefix}/share/misc/Makefile.makedb
+ln -s %{_prefix}/share/misc/Makefile.makedb %{buildroot}/var/lib/misc/Makefile
+%endif
+
 %endif # !utils
 
 # LSB
@@ -1269,7 +1216,7 @@ exit 0
 %{_libexecdir}/getconf/*
 %{_sbindir}/iconvconfig
 
-%files locale-base -f libc.lang
+%files locale-base
 %defattr(-,root,root)
 %{_datadir}/locale/locale.alias
 %if %{build_locales}
@@ -1277,9 +1224,12 @@ exit 0
 %{_prefix}/lib/locale/C.utf8
 %{_prefix}/lib/locale/en_US.utf8
 %endif
-%{_libdir}/gconv
+%dir %{_libdir}/gconv
+%{_libdir}/gconv/*.so
+%{_libdir}/gconv/gconv-modules
+%attr(0644,root,root) %verify(not md5 size mtime) %ghost %{_libdir}/gconv/gconv-modules.cache
 
-%files locale
+%files locale -f libc.lang
 %defattr(-,root,root)
 %if %{build_locales}
 %{_prefix}/lib/locale
@@ -1383,6 +1333,7 @@ exit 0
 %files extra
 %defattr(-,root,root)
 %{_bindir}/makedb
+%{_prefix}/share/misc/Makefile.makedb
 /var/lib/misc/Makefile
 %endif # !i686
 

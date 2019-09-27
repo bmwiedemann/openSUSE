@@ -1,0 +1,22 @@
+2019-08-01  Florian Weimer  <fweimer@redhat.com>
+
+	[BZ #24867]
+	* malloc/malloc.c (__malloc_info): Remove unwanted leading
+	whitespace.
+
+diff --git a/malloc/malloc.c b/malloc/malloc.c
+index 00ce48cf58..343d89f489 100644
+--- a/malloc/malloc.c
++++ b/malloc/malloc.c
+@@ -5491,7 +5491,7 @@ __malloc_info (int options, FILE *fp)
+ 
+       for (size_t i = 0; i < nsizes; ++i)
+ 	if (sizes[i].count != 0 && i != NFASTBINS)
+-	  fprintf (fp, "							      \
++	  fprintf (fp, "\
+   <size from=\"%zu\" to=\"%zu\" total=\"%zu\" count=\"%zu\"/>\n",
+ 		   sizes[i].from, sizes[i].to, sizes[i].total, sizes[i].count);
+ 
+-- 
+2.22.0
+

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 12 11:30:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * Add get_user_credentials function to get your user credentials (#40)
+  * Add noxfile (#43)
+  * Implement code verifier (PKCE) (#42)
+  * Use actual server port in redirect_uri to allow automatic assignment (#33)
+  * Fix links after repo move to googleapis (#41)
+
+-------------------------------------------------------------------
 Thu May  2 17:31:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version

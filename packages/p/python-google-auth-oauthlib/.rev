@@ -7,4 +7,17 @@
     <comment>Google authentication library</comment>
     <requestid>700458</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef75196734d636eb2aa1423c01b3d51d</srcmd5>
+    <version>0.4.0</version>
+    <time>1569588393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Add get_user_credentials function to get your user credentials (#40)
+  * Add noxfile (#43)
+  * Implement code verifier (PKCE) (#42)
+  * Use actual server port in redirect_uri to allow automatic assignment (#33)
+  * Fix links after repo move to googleapis (#41)</comment>
+    <requestid>730378</requestid>
+  </revision>
 </revisionlist>

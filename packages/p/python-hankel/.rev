@@ -32,4 +32,13 @@
   * Added support for transforms with nu=-0.5 (thanks @MuellerSeb)</comment>
     <requestid>681681</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b17b36c47a1e8edffdd8e9eba2506054</srcmd5>
+    <version>0.3.9</version>
+    <time>1569588358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.9:
+  * Fixed SymmetricFourierTransform default N to be dynamic, like HankelTransform.</comment>
+    <requestid>730346</requestid>
+  </revision>
 </revisionlist>

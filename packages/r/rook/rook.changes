@@ -1,14 +1,75 @@
+-------------------------------------------------------------------------------
+Thu Sep 26 22:33:02 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Fix 2 improper RPM spec variable references in specfile
+
+-------------------------------------------------------------------------------
+Wed Sep 25 21:27:40 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Use lightweight git tags when determining Rook version from source in tarball script (bsc#1151909)
+  + Build should now be tagged appropriately as version 1.1.1.0 instead of 1.1.0.x
+- Override some Rook defaults with linker flags at build time:
+  + CSI image -> SUSE image
+  + FlexVolume dir (for Kubic)
+- Add patches for:
+  + updating CSI image to a dummy value later changed at linker time
+  + updating CSI template paths to the ones installed by rook-k8s-manifests
+  + update the FlexVolume dir path to be compatible with Kubic
+- Remove previously applied SUSE-specific changes that are now taken care of by the above patches
+
+- Add patch: csi-dummy-images.patch
+- Add patch: csi-template-paths.patch
+- Add patch: flexvolume-dir.patch
+
+-------------------------------------------------------------------
+Wed Sep 25 15:30:40 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- rook-k8s-yaml: Fix YAML indentation of cephcsi image value (bsc#1152008)
+
+-------------------------------------------------------------------------------
+Wed Sep 25 00:27:20 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Update Rook to match upstream version v1.1.1 (bsc#1151909)
+  + Disable the flex driver by default in new clusters
+  + MDB controller to use namespace for checking ceph status
+  + CSI liveness container socket file
+  + Add list of unusable directories paths
+  + Remove helm incompatible chars from values.yaml
+  + Fail NFS-ganesha if CephFS is not configured
+  + Make lifecycle hook chown less verbose for OSDs
+  + Configure LVM settings for rhel8 base image
+  + Make kubelet path configurable in operator for csi (#392
+  + OSD pods should always use hostname for node selector
+  + Deactivate device from lvm when OSD pods are shutting down
+  + Add CephNFS to OLM's CSV
+  + Tolerations for drain detection canaries
+  + Enable ceph-volume debug logs
+  + Add documentation for CSI upgrades from v1.0 (#386
+  + Add a new skipUpgradeChecks property to allow forcing upgrades
+  + Include CSI image in helm chart values (#385
+  + Use HTTP port if SSL is disabled
+  + Enable SSL for dashboard by default
+  + Enable msgr2 properly during upgrades
+  + Nautilus v14.2.4 is the default Ceph image
+  + Ensure the ceph-csi secret exists on upgrade
+  + Disable the min PG warning if the pg_autoscaler is enabled
+  + Disable the warning for bluestore warn on legacy statfs
+- add SUSE-specific changes to manifests:
+  + uncomment ROOK_CSI_CEPH_IMAGE var
+  + set FlexVolume dir path for Kubic
+  + add ROOK_CSI_*_TEMPLATE_PATH configs
+
 -------------------------------------------------------------------
 Mon Sep 16 14:37:05 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
-- rook-k8s-yaml: Revert to buildrequire for ceph
+- rook-k8s-yaml: Revert to buildrequire for ceph (bsc#1151479)
 
 -------------------------------------------------------------------------------
 Fri Sep 13 16:31:44 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
 
 - Update tar creation script
   + build rook tag 'v1.1.0' from 'suse-release-1.1' branch
-- Update Rook to tag 'v1.1.0'
+- Update Rook to tag 'v1.1.0' (bsc#1151479)
   + fix HighMonLeaderChanges alert
   + add leases rules to CSI rules
   + only schedule node drain canaries on nodes with OSDs

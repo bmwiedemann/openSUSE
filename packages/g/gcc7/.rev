@@ -369,4 +369,23 @@
 - Add gcc7-flive-patching.patch patch.  [bsc#1071995, fate#323487]</comment>
     <requestid>718517</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>62b718e10c26994f583d2d6a718a49f3</srcmd5>
+    <version>7.4.1+r275405</version>
+    <time>1569588160</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework shared spec file parts to allow custom Summary and
+  Description for cross compilers.  Clarify their Summary
+  and Description.  [bsc#1148517]
+- Reorder things in cross.spec.in so the Version define comes before
+  the first use of %version.
+
+- Update to gcc-7-branch head (r275405).
+  * Pulls fix for POWER9 DARN miscompilation.
+    (bsc#1149145, CVE-2019-15847)
+  * Includes gcc8-pr89752.patch
+
+- Remove bogus fixed include bits/statx.h from glibc 2.30.  [gcc#91085]</comment>
+    <requestid>730117</requestid>
+  </revision>
 </revisionlist>

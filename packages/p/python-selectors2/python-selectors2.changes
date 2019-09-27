@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 17 09:45:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Bump the tolerance even more for the flaky OBS runtime
+
+-------------------------------------------------------------------
 Wed Jun  5 07:27:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Bump the timeout tolerance and do not skip tests, removing:

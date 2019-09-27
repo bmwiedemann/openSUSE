@@ -38,4 +38,13 @@
   * releasenotes: Switch to openstackdocstheme</comment>
     <requestid>705301</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a144d6d662c736e2824cf477d632180</srcmd5>
+    <version>0.4.1</version>
+    <time>1569588472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Minor fixes</comment>
+    <requestid>731188</requestid>
+  </revision>
 </revisionlist>

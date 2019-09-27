@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.2.14
+%define patchversion 5.3.1
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-374b0aeb68b51de45c003859d7c4534017a89038
+BuildRequires:  kernel%kernel_flavor-srchash-27a012314159e18b16581b0f90e3fe84d723eeea
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -54,7 +54,7 @@ BuildRequires:  kernel
 
 ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le s390x x86_64
 %if 0%{?suse_version} < 1315
-# For SLE 11 
+# For SLE 11
 BuildRequires:  mkinitrd
 BuildRequires:  perl-Bootloader
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0
 Group:          SLES
-Version:        5.2.14
+Version:        5.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g374b0ae
+Release:        <RELEASE>.g27a0123
 %else
 Release:        0
 %endif
@@ -74,7 +74,7 @@ Release:        0
 %description
 This package is repackaging already compiled kernels to make them usable
 inside of Open Build Service (OBS) VM builds. An initrd with some basic
-kernel modules is generated as well, but further kernel modules can be 
+kernel modules is generated as well, but further kernel modules can be
 loaded during build when installing the kernel package.
 
 %prep
@@ -116,7 +116,7 @@ echo "DefaultTasksAccounting=no" >> /etc/systemd/system.conf
 
 # a longer list to have them also available for qemu cross builds where x86_64 kernel runs in eg. arm env.
 # this list of modules where available on build workers of build.opensuse.org, so we stay compatible.
-export KERNEL_MODULES="loop dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 reiserfs btrfs xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth"
+export KERNEL_MODULES="loop dm-crypt dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 reiserfs btrfs xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth"
 
 # manually load all modules to make sure they're available
 for i in $KERNEL_MODULES; do
@@ -141,7 +141,7 @@ ROOT=""
 %endif
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1315
-# For SLE 11 
+# For SLE 11
 /sbin/mkinitrd $ROOT \
                -m "$KERNEL_MODULES" \
                -k /boot/%{kernel_name}-*-default -M /boot/System.map-*-default -i /tmp/initrd.kvm -B

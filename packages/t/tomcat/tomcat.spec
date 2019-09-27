@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -109,11 +109,11 @@ BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  log4j
 BuildRequires:  sed
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  wsdl4j
 BuildRequires:  zip
+BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-lib = %{version}-%{release}
 Requires:       apache-commons-daemon
 Requires:       apache-commons-dbcp
@@ -289,8 +289,8 @@ ant -Dbase.path="." \
     -Dcommons-collections.jar="$(build-classpath commons-collections)" \
     -Dcommons-daemon.jar="$(build-classpath commons-daemon)" \
     -Dcommons-daemon.native.src.tgz="HACK" \
-    -Djasper-jdt.jar="$(build-classpath ecj)" \
-    -Djdt.jar="$(build-classpath ecj)" \
+    -Djasper-jdt.jar="$(build-classpath ecj/ecj)" \
+    -Djdt.jar="$(build-classpath ecj/ecj)" \
     -Dtomcat-native.tar.gz="HACK" \
     -Dtomcat-native.home="." \
     -Dcommons-daemon.native.win.mgr.exe="HACK" \
@@ -428,7 +428,7 @@ popd
 
 pushd output/build
     %{_bindir}/build-jar-repository lib commons-collections \
-                                        commons-dbcp2 commons-pool2 ecj 2>&1
+                                        commons-dbcp2 commons-pool2 ecj/ecj 2>&1
     # need to use -p here with b-j-r otherwise the examples webapp fails to
     # load with a java.io.IOException
     %{_bindir}/build-jar-repository -p webapps/examples/WEB-INF/lib \
@@ -445,7 +445,7 @@ pushd %{buildroot}%{libdir}
     ln -s $(build-classpath commons-dbcp2) commons-dbcp2.jar
     ln -s $(build-classpath commons-pool2) commons-pool2.jar
     ln -s $(build-classpath log4j) log4j.jar
-    ln -s $(build-classpath ecj) jasper-jdt.jar
+    ln -s $(build-classpath ecj/ecj) jasper-jdt.jar
 
     # Temporary copy the juli jar here from %%{_datadir}/java/tomcat (for maven depmap)
     cp -a %{buildroot}%{bindir}/tomcat-juli.jar ./

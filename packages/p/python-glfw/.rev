@@ -46,4 +46,13 @@
     <comment></comment>
     <requestid>718900</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>970b6efd7f68a81e980610acc6218584</srcmd5>
+    <version>1.8.3</version>
+    <time>1569588421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.3:
+  * Updated the GLFW version in the wheels to 3.3</comment>
+    <requestid>730384</requestid>
+  </revision>
 </revisionlist>

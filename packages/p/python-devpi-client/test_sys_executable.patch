@@ -1,0 +1,14 @@
+--- devpi-client-5.0.0/testing/test_upload.py.orig	2019-09-13 09:09:28.701349155 +0700
++++ devpi-client-5.0.0/testing/test_upload.py	2019-09-13 09:09:49.097574807 +0700
+@@ -45,11 +45,6 @@
+ 
+ @pytest.mark.skipif("config.option.fast")
+ class TestCheckout:
+-    @pytest.fixture(autouse=True)
+-    def no_sys_executable(self, monkeypatch):
+-        """ make sure sys.executable is not used accidentally. """
+-        monkeypatch.setattr(sys, "executable", None)
+-
+     @pytest.fixture(scope="class", params=[".", "setupdir"])
+     def setupdir_rel(self, request):
+         return request.param

@@ -1640,4 +1640,17 @@
     <comment></comment>
     <requestid>722019</requestid>
   </revision>
+  <revision rev="177" vrev="5">
+    <srcmd5>9f2b8d7e6bf08a4612147af14f40cc8d</srcmd5>
+    <version>3.4.6</version>
+    <time>1569588232</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport deprecated-RES_INSECURE1.patch in order to fix
+  boo#1149705.
+
+- bsc#1120757 L3: File Permissions-&gt;Paranoid can cause a system hang
+  Break loop if postfix has no permission in spool directory.
+  - add postfix-avoid-infinit-loop-if-no-permission.patch</comment>
+    <requestid>733151</requestid>
+  </revision>
 </revisionlist>

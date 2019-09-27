@@ -48,4 +48,13 @@
  * git: fix support for case where git binary is missing</comment>
     <requestid>709416</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1127c68a5e57d841cbb8e0c053ce50fd</srcmd5>
+    <version>1.8.2</version>
+    <time>1569588431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * metadata changes</comment>
+    <requestid>730673</requestid>
+  </revision>
 </revisionlist>
