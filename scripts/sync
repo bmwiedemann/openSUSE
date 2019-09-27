@@ -16,6 +16,7 @@ rsync -a "./${p}_meta/"* in/_project/
 mkdir -p ~/.cache
 rm -rf packages
 scripts/mappkgs.pl in packages
+[[ $(find packages/ |wc -l) -gt 100000 ]] || exit 5
 git add -f packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
 scripts/tagrelease
