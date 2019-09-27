@@ -1,0 +1,470 @@
+diff -urEbwB lucene-7.1.0/analysis/common/build.xml lucene-7.1.0.new/analysis/common/build.xml
+--- lucene-7.1.0/analysis/common/build.xml	2019-09-26 10:59:46.324505233 +0200
++++ lucene-7.1.0.new/analysis/common/build.xml	2019-09-26 13:11:06.747970634 +0200
+@@ -136,4 +136,24 @@
+       </replaceregexp>
+       <fixcrlf srcdir="${snowball.programs.dir}" includes="*Stemmer.java" tab="remove" tablength="2" encoding="UTF-8" javafiles="yes" fixlast="yes"/>
+   </target>
++
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Additional Analyzers"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Common Analyzers"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.analysis.standard;version=&quot;${version}&quot;;analysis=split;mandatory:=analysis,org.apache.lucene.analysis.ar;version=&quot;${version}&quot;,org.apache.lucene.analysis.bg;version=&quot;${version}&quot;,org.apache.lucene.analysis.bn;version=&quot;${version}&quot;,org.apache.lucene.analysis.br;version=&quot;${version}&quot;,org.apache.lucene.analysis.ca;version=&quot;${version}&quot;,org.apache.lucene.analysis.charfilter;version=&quot;${version}&quot;,org.apache.lucene.analysis.cjk;version=&quot;${version}&quot;,org.apache.lucene.analysis.ckb;version=&quot;${version}&quot;,org.apache.lucene.analysis.commongrams;version=&quot;${version}&quot;,org.apache.lucene.analysis.compound;version=&quot;${version}&quot;,org.apache.lucene.analysis.compound.hyphenation;version=&quot;${version}&quot;,org.apache.lucene.analysis.core;version=&quot;${version}&quot;,org.apache.lucene.analysis.custom;version=&quot;${version}&quot;,org.apache.lucene.analysis.cz;version=&quot;${version}&quot;,org.apache.lucene.analysis.da;version=&quot;${version}&quot;,org.apache.lucene.analysis.de;version=&quot;${version}&quot;,org.apache.lucene.analysis.el;version=&quot;${version}&quot;,org.apache.lucene.analysis.en;version=&quot;${version}&quot;,org.apache.lucene.analysis.es;version=&quot;${version}&quot;,org.apache.lucene.analysis.eu;version=&quot;${version}&quot;,org.apache.lucene.analysis.fa;version=&quot;${version}&quot;,org.apache.lucene.analysis.fi;version=&quot;${version}&quot;,org.apache.lucene.analysis.fr;version=&quot;${version}&quot;,org.apache.lucene.analysis.ga;version=&quot;${version}&quot;,org.apache.lucene.analysis.gl;version=&quot;${version}&quot;,org.apache.lucene.analysis.hi;version=&quot;${version}&quot;,org.apache.lucene.analysis.hu;version=&quot;${version}&quot;,org.apache.lucene.analysis.hunspell;version=&quot;${version}&quot;,org.apache.lucene.analysis.hy;version=&quot;${version}&quot;,org.apache.lucene.analysis.id;version=&quot;${version}&quot;,org.apache.lucene.analysis.in;version=&quot;${version}&quot;,org.apache.lucene.analysis.it;version=&quot;${version}&quot;,org.apache.lucene.analysis.lt;version=&quot;${version}&quot;,org.apache.lucene.analysis.lv;version=&quot;${version}&quot;,org.apache.lucene.analysis.minhash;version=&quot;${version}&quot;,org.apache.lucene.analysis.miscellaneous;version=&quot;${version}&quot;,org.apache.lucene.analysis.ngram;version=&quot;${version}&quot;,org.apache.lucene.analysis.nl;version=&quot;${version}&quot;,org.apache.lucene.analysis.no;version=&quot;${version}&quot;,org.apache.lucene.analysis.path;version=&quot;${version}&quot;,org.apache.lucene.analysis.pattern;version=&quot;${version}&quot;,org.apache.lucene.analysis.payloads;version=&quot;${version}&quot;,org.apache.lucene.analysis.pt;version=&quot;${version}&quot;,org.apache.lucene.analysis.query;version=&quot;${version}&quot;,org.apache.lucene.analysis.reverse;version=&quot;${version}&quot;,org.apache.lucene.analysis.ro;version=&quot;${version}&quot;,org.apache.lucene.analysis.ru;version=&quot;${version}&quot;,org.apache.lucene.analysis.shingle;version=&quot;${version}&quot;,org.apache.lucene.analysis.sinks;version=&quot;${version}&quot;,org.apache.lucene.analysis.snowball;version=&quot;${version}&quot;,org.apache.lucene.analysis.sr;version=&quot;${version}&quot;,org.apache.lucene.analysis.sv;version=&quot;${version}&quot;,org.apache.lucene.analysis.synonym;version=&quot;${version}&quot;,org.apache.lucene.analysis.th;version=&quot;${version}&quot;,org.apache.lucene.analysis.tr;version=&quot;${version}&quot;,org.apache.lucene.analysis.util;version=&quot;${version}&quot;,org.apache.lucene.analysis.wikipedia;version=&quot;${version}&quot;,org.apache.lucene.collation;version=&quot;${version}&quot;,org.apache.lucene.collation.tokenattributes;version=&quot;${version}&quot;,org.tartarus.snowball;version=&quot;${version}&quot;,org.tartarus.snowball.ext;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="javax.xml.parsers,org.apache.lucene.analysis,org.apache.lucene.analysis.ar,org.apache.lucene.analysis.charfilter,org.apache.lucene.analysis.compound.hyphenation,org.apache.lucene.analysis.core,org.apache.lucene.analysis.fr,org.apache.lucene.analysis.in,org.apache.lucene.analysis.miscellaneous,org.apache.lucene.analysis.pt,org.apache.lucene.analysis.snowball,org.apache.lucene.analysis.standard;analysis=split,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.analysis.util,org.apache.lucene.codecs,org.apache.lucene.collation.tokenattributes,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.automaton,org.apache.lucene.util.fst,org.tartarus.snowball,org.tartarus.snowball.ext,org.xml.sax,org.xml.sax.helpers"/>
++		<attribute name="Require-Bundle" value="org.apache.lucene.core;bundle-version=&quot;${version}&quot;"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/analysis/smartcn/build.xml lucene-7.1.0.new/analysis/smartcn/build.xml
+--- lucene-7.1.0/analysis/smartcn/build.xml	2019-09-26 10:59:46.344505354 +0200
++++ lucene-7.1.0.new/analysis/smartcn/build.xml	2019-09-26 13:11:06.767970753 +0200
+@@ -31,4 +31,23 @@
+   </path>
+ 
+   <target name="compile-core" depends="jar-analyzers-common, common.compile-core" />
++
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Smart Chinese Analyzer"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Smart Chinese Analyzer"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.analysis.cn.smart;version=&quot;${version}&quot;,org.apache.lucene.analysis.cn.smart.hhmm;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.cn.smart,org.apache.lucene.analysis.cn.smart.hhmm,org.apache.lucene.analysis.en,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.analysis.util,org.apache.lucene.util"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/analysis/stempel/build.xml lucene-7.1.0.new/analysis/stempel/build.xml
+--- lucene-7.1.0/analysis/stempel/build.xml	2019-09-26 10:59:46.348505378 +0200
++++ lucene-7.1.0.new/analysis/stempel/build.xml	2019-09-26 13:39:12.641247294 +0200
+@@ -30,5 +30,23 @@
+     <path refid="base.classpath"/>
+   </path>
+   
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Stempel Analyzer"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Stempel Analyzer"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.analysis.pl;version=&quot;${version}&quot;,org.apache.lucene.analysis.stempel;version=&quot;${version}&quot;,org.egothor.stemmer;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.miscellaneous,org.apache.lucene.analysis.pl,org.apache.lucene.analysis.standard;analysis=split,org.apache.lucene.analysis.stempel,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.analysis.util,org.apache.lucene.util,org.egothor.stemmer"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+   <target name="compile-core" depends="jar-analyzers-common, common.compile-core"/>
+ </project>
+diff -urEbwB lucene-7.1.0/backward-codecs/build.xml lucene-7.1.0.new/backward-codecs/build.xml
+--- lucene-7.1.0/backward-codecs/build.xml	2019-09-26 10:59:46.348505378 +0200
++++ lucene-7.1.0.new/backward-codecs/build.xml	2019-09-26 13:41:52.297963836 +0200
+@@ -23,4 +23,22 @@
+ 
+   <import file="../module-build.xml"/>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Codecs for older versions of Lucene."/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Memory"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.codecs;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene50;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene53;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene54;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene60;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene62;version=&quot;${version}&quot;,org.apache.lucene.index;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.codecs,org.apache.lucene.codecs.lucene50,org.apache.lucene.codecs.lucene53,org.apache.lucene.codecs.lucene60,org.apache.lucene.codecs.perfield,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.packed"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+Binary files lucene-7.1.0/build/analysis/common/lucene-analyzers-common-7.1.0.jar and lucene-7.1.0.new/build/analysis/common/lucene-analyzers-common-7.1.0.jar differ
+Binary files lucene-7.1.0/build/analysis/smartcn/lucene-analyzers-smartcn-7.1.0.jar and lucene-7.1.0.new/build/analysis/smartcn/lucene-analyzers-smartcn-7.1.0.jar differ
+Binary files lucene-7.1.0/build/analysis/stempel/lucene-analyzers-stempel-7.1.0.jar and lucene-7.1.0.new/build/analysis/stempel/lucene-analyzers-stempel-7.1.0.jar differ
+Binary files lucene-7.1.0/build/backward-codecs/lucene-backward-codecs-7.1.0.jar and lucene-7.1.0.new/build/backward-codecs/lucene-backward-codecs-7.1.0.jar differ
+Binary files lucene-7.1.0/build/classification/lucene-classification-7.1.0.jar and lucene-7.1.0.new/build/classification/lucene-classification-7.1.0.jar differ
+Binary files lucene-7.1.0/build/codecs/lucene-codecs-7.1.0.jar and lucene-7.1.0.new/build/codecs/lucene-codecs-7.1.0.jar differ
+Binary files lucene-7.1.0/build/core/lucene-core-7.1.0.jar and lucene-7.1.0.new/build/core/lucene-core-7.1.0.jar differ
+Binary files lucene-7.1.0/build/facet/lucene-facet-7.1.0.jar and lucene-7.1.0.new/build/facet/lucene-facet-7.1.0.jar differ
+Binary files lucene-7.1.0/build/grouping/lucene-grouping-7.1.0.jar and lucene-7.1.0.new/build/grouping/lucene-grouping-7.1.0.jar differ
+Binary files lucene-7.1.0/build/highlighter/lucene-highlighter-7.1.0.jar and lucene-7.1.0.new/build/highlighter/lucene-highlighter-7.1.0.jar differ
+Binary files lucene-7.1.0/build/join/lucene-join-7.1.0.jar and lucene-7.1.0.new/build/join/lucene-join-7.1.0.jar differ
+Binary files lucene-7.1.0/build/memory/lucene-memory-7.1.0.jar and lucene-7.1.0.new/build/memory/lucene-memory-7.1.0.jar differ
+Binary files lucene-7.1.0/build/misc/lucene-misc-7.1.0.jar and lucene-7.1.0.new/build/misc/lucene-misc-7.1.0.jar differ
+Binary files lucene-7.1.0/build/queries/lucene-queries-7.1.0.jar and lucene-7.1.0.new/build/queries/lucene-queries-7.1.0.jar differ
+Binary files lucene-7.1.0/build/queryparser/lucene-queryparser-7.1.0.jar and lucene-7.1.0.new/build/queryparser/lucene-queryparser-7.1.0.jar differ
+Binary files lucene-7.1.0/build/sandbox/lucene-sandbox-7.1.0.jar and lucene-7.1.0.new/build/sandbox/lucene-sandbox-7.1.0.jar differ
+Binary files lucene-7.1.0/build/spatial/lucene-spatial-7.1.0.jar and lucene-7.1.0.new/build/spatial/lucene-spatial-7.1.0.jar differ
+Binary files lucene-7.1.0/build/spatial3d/lucene-spatial3d-7.1.0.jar and lucene-7.1.0.new/build/spatial3d/lucene-spatial3d-7.1.0.jar differ
+diff -urEbwB lucene-7.1.0/classification/build.xml lucene-7.1.0.new/classification/build.xml
+--- lucene-7.1.0/classification/build.xml	2019-09-26 10:59:46.468506103 +0200
++++ lucene-7.1.0.new/classification/build.xml	2019-09-26 13:46:31.667620957 +0200
+@@ -39,7 +39,23 @@
+ 
+   <target name="compile-core" depends="jar-grouping,jar-queries,jar-analyzers-common,common.compile-core" />
+ 
+-  <target name="jar-core" depends="common.jar-core" />
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene Classification"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Classification"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.classification;version=&quot;${version}&quot;,org.apache.lucene.classification.document;version=&quot;${version}&quot;,org.apache.lucene.classification.utils;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.classification,org.apache.lucene.classification.utils,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.queries.mlt,org.apache.lucene.search,org.apache.lucene.search.grouping,org.apache.lucene.search.similarities,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.fst"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
+ 
+   <target name="javadocs" depends="javadocs-grouping,compile-core,check-javadocs-uptodate"
+           unless="javadocs-uptodate-${name}">
+diff -urEbwB lucene-7.1.0/common-build.xml lucene-7.1.0.new/common-build.xml
+--- lucene-7.1.0/common-build.xml	2019-09-26 10:59:46.468506103 +0200
++++ lucene-7.1.0.new/common-build.xml	2019-09-26 13:11:06.787970873 +0200
+@@ -162,6 +162,7 @@
+   <property name="javac.deprecation" value="off"/>
+   <property name="javac.debug" value="on"/>
+   <property name="javac.release" value="8"/>
++  <property name="javac.target.version" value="1.${javac.release}"/>
+   <property name="javac.args" value="-Xlint -Xlint:-deprecation -Xlint:-serial"/>
+   <property name="javac.profile.args" value="-profile compact2"/>
+   <property name="javadoc.link" value="https://docs.oracle.com/javase/8/docs/api/"/>
+@@ -694,7 +695,7 @@
+         <attribute name="Implementation-Title" value="@{implementation.title}"/>
+         <!-- impl version can be any string -->
+         <attribute name="Implementation-Version"
+-                   value="${version} ${checkoutid} - ${user.name} - ${DSTAMP} ${TSTAMP}"/>
++                   value="${version}"/>
+         <attribute name="Implementation-Vendor"
+                    value="The Apache Software Foundation"/>
+         <attribute name="X-Compile-Source-JDK" value="${javac.release}"/>
+diff -urEbwB lucene-7.1.0/core/build.xml lucene-7.1.0.new/core/build.xml
+--- lucene-7.1.0/core/build.xml	2019-09-26 10:59:46.524506441 +0200
++++ lucene-7.1.0.new/core/build.xml	2019-09-26 13:11:06.927971710 +0200
+@@ -186,6 +186,24 @@
+     </sequential>
+   </macrodef>
+   
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Apache Lucene Java Core"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Core"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene;version=&quot;${version}&quot;,org.apache.lucene.analysis;version=&quot;${version}&quot;,org.apache.lucene.analysis.standard;version=&quot;${version}&quot;,org.apache.lucene.analysis.tokenattributes;version=&quot;${version}&quot;,org.apache.lucene.codecs;version=&quot;${version}&quot;,org.apache.lucene.codecs.blocktree;version=&quot;${version}&quot;,org.apache.lucene.codecs.compressing;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene50;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene60;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene62;version=&quot;${version}&quot;,org.apache.lucene.codecs.lucene70;version=&quot;${version}&quot;,org.apache.lucene.codecs.perfield;version=&quot;${version}&quot;,org.apache.lucene.document;version=&quot;${version}&quot;,org.apache.lucene.geo;version=&quot;${version}&quot;,org.apache.lucene.index;version=&quot;${version}&quot;,org.apache.lucene.search;version=&quot;${version}&quot;,org.apache.lucene.search.similarities;version=&quot;${version}&quot;,org.apache.lucene.search.spans;version=&quot;${version}&quot;,org.apache.lucene.store;version=&quot;${version}&quot;,org.apache.lucene.util;version=&quot;${version}&quot;,org.apache.lucene.util.automaton;version=&quot;${version}&quot;,org.apache.lucene.util.bkd;version=&quot;${version}&quot;,org.apache.lucene.util.fst;version=&quot;${version}&quot;,org.apache.lucene.util.graph;version=&quot;${version}&quot;,org.apache.lucene.util.mutable;version=&quot;${version}&quot;,org.apache.lucene.util.packed;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.standard,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.codecs,org.apache.lucene.codecs.blocktree,org.apache.lucene.codecs.compressing,org.apache.lucene.codecs.lucene50,org.apache.lucene.codecs.lucene60,org.apache.lucene.codecs.perfield,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.search.similarities,org.apache.lucene.search.spans,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.automaton,org.apache.lucene.util.bkd,org.apache.lucene.util.fst,org.apache.lucene.util.graph,org.apache.lucene.util.packed"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+   <condition property="-ignore-test-lock-factory">
+     <or>
+       <!-- We ignore our ant-based lock factory test, if user applies test filtering: -->
+diff -urEbwB lucene-7.1.0/facet/build.xml lucene-7.1.0.new/facet/build.xml
+--- lucene-7.1.0/facet/build.xml	2019-09-26 10:59:46.532506490 +0200
++++ lucene-7.1.0.new/facet/build.xml	2019-09-26 13:55:52.878962570 +0200
+@@ -48,4 +48,22 @@
+     </java>
+   </target>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Package for Faceted Indexing and Search"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Facets"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.facet;version=&quot;${version}&quot;,org.apache.lucene.facet.range;version=&quot;${version}&quot;,org.apache.lucene.facet.sortedset;version=&quot;${version}&quot;,org.apache.lucene.facet.taxonomy;version=&quot;${version}&quot;,org.apache.lucene.facet.taxonomy.directory;version=&quot;7.1.0&quot;,org.apache.lucene.facet.taxonomy.writercache;version=&quot;7.1.0&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.document,org.apache.lucene.facet,org.apache.lucene.facet.sortedset,org.apache.lucene.facet.taxonomy,org.apache.lucene.facet.taxonomy.directory,org.apache.lucene.facet.taxonomy.writercache,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.store,org.apache.lucene.util"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/grouping/build.xml lucene-7.1.0.new/grouping/build.xml
+--- lucene-7.1.0/grouping/build.xml	2019-09-26 10:59:46.532506490 +0200
++++ lucene-7.1.0.new/grouping/build.xml	2019-09-26 13:11:06.935971759 +0200
+@@ -46,4 +46,22 @@
+       </invoke-module-javadoc>
+     </target>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene Grouping Module"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Grouping"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.search.grouping;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.index,org.apache.lucene.queries.function,org.apache.lucene.search,org.apache.lucene.util,org.apache.lucene.util.mutable"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/highlighter/build.xml lucene-7.1.0.new/highlighter/build.xml
+--- lucene-7.1.0/highlighter/build.xml	2019-09-26 10:59:46.536506514 +0200
++++ lucene-7.1.0.new/highlighter/build.xml	2019-09-26 13:11:06.939971783 +0200
+@@ -38,6 +38,24 @@
+ 
+   <target name="compile-core" depends="jar-memory,jar-queries,jar-join,jar-analyzers-common,common.compile-core" />
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="This is the highlighter for apache lucene java"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Highlighter"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.search.highlight;version=&quot;${version}&quot;,org.apache.lucene.search.uhighlight;version=&quot;${version}&quot;,org.apache.lucene.search.vectorhighlight;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.miscellaneous,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.index.memory,org.apache.lucene.queries,org.apache.lucene.search,org.apache.lucene.search.highlight,org.apache.lucene.search.join,org.apache.lucene.search.spans,org.apache.lucene.util,org.apache.lucene.util.automaton"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+   <target name="javadocs" depends="javadocs-memory,compile-core,check-javadocs-uptodate"
+           unless="javadocs-uptodate-${name}">
+     <invoke-module-javadoc>
+Binary files lucene-7.1.0/.javapackages_cache/metadata.cache and lucene-7.1.0.new/.javapackages_cache/metadata.cache differ
+Binary files lucene-7.1.0/.javapackages_cache/osgi.cache and lucene-7.1.0.new/.javapackages_cache/osgi.cache differ
+diff -urEbwB lucene-7.1.0/join/build.xml lucene-7.1.0.new/join/build.xml
+--- lucene-7.1.0/join/build.xml	2019-09-26 10:59:46.536506514 +0200
++++ lucene-7.1.0.new/join/build.xml	2019-09-26 13:11:06.943971806 +0200
+@@ -24,4 +24,22 @@
+ 
+   <import file="../module-build.xml"/>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene Join Module"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Join"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.search.join;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.util"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/memory/build.xml lucene-7.1.0.new/memory/build.xml
+--- lucene-7.1.0/memory/build.xml	2019-09-26 10:59:46.540506538 +0200
++++ lucene-7.1.0.new/memory/build.xml	2019-09-26 13:11:06.943971806 +0200
+@@ -31,4 +31,23 @@
+   </path>
+ 
+   <target name="compile-core" depends="jar-queryparser,common.compile-core" />
++
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="High-performance single-document index to compare against Query"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Memory"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.index.memory;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.search.similarities,org.apache.lucene.util"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/misc/build.xml lucene-7.1.0.new/misc/build.xml
+--- lucene-7.1.0/misc/build.xml	2019-09-26 10:59:46.540506538 +0200
++++ lucene-7.1.0.new/misc/build.xml	2019-09-26 13:11:06.947971830 +0200
+@@ -49,4 +49,23 @@
+     </cc>
+   </target>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Miscellaneous Lucene extensions"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Miscellaneous"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.document;version=&quot;${version}&quot;;misc=split;mandatory:=misc,org.apache.lucene.index;version=&quot;${version}&quot;;misc=split;mandatory:=misc,org.apache.lucene.search;version=&quot;${version}&quot;;misc=split;mandatory:=misc,org.apache.lucene.store;version=&quot;${version}&quot;;misc=split;mandatory:=misc,org.apache.lucene.util.fst;version=&quot;${version}&quot;;misc=split;mandatory:=misc,org.apache.lucene.misc;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.codecs,org.apache.lucene.index;misc=split,org.apache.lucene.search;misc=split,org.apache.lucene.search.similarities,org.apache.lucene.store;misc=split,org.apache.lucene.util"/>
++		<attribute name="Require-Bundle" value="org.apache.lucene.core;bundle-version=&quot;${version}&quot;"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/queries/build.xml lucene-7.1.0.new/queries/build.xml
+--- lucene-7.1.0/queries/build.xml	2019-09-26 10:59:46.544506562 +0200
++++ lucene-7.1.0.new/queries/build.xml	2019-09-26 13:11:06.947971830 +0200
+@@ -21,4 +21,23 @@
+   </description>
+ 
+   <import file="../module-build.xml"/>
++
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene Queries Module"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Queries"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.queries;version=&quot;${version}&quot;,org.apache.lucene.queries.function;version=&quot;${version}&quot;,org.apache.lucene.queries.function.docvalues;version=&quot;${version}&quot;,org.apache.lucene.queries.function.valuesource;version=&quot;${version}&quot;,org.apache.lucene.queries.mlt;version=&quot;${version}&quot;,org.apache.lucene.queries.payloads;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.queries.function,org.apache.lucene.queries.function.docvalues,org.apache.lucene.search,org.apache.lucene.search.similarities,org.apache.lucene.search.spans,org.apache.lucene.util,org.apache.lucene.util.mutable"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/sandbox/build.xml lucene-7.1.0.new/sandbox/build.xml
+--- lucene-7.1.0/sandbox/build.xml	2019-09-26 10:59:46.560506659 +0200
++++ lucene-7.1.0.new/sandbox/build.xml	2019-09-26 13:11:06.963971926 +0200
+@@ -23,4 +23,22 @@
+ 
+   <import file="../module-build.xml"/>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene Sandbox"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Sandbox"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.codecs.idversion;version=&quot;${version}&quot;,org.apache.lucene.document;version=&quot;${version}&quot;,org.apache.lucene.payloads;version=&quot;${version}&quot;,org.apache.lucene.sandbox.queries;version=&quot;${version}&quot;,org.apache.lucene.search;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.codecs,org.apache.lucene.codecs.blocktree,org.apache.lucene.geo,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.search.similarities,org.apache.lucene.search.spans,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.automaton,org.apache.lucene.util.bkd,org.apache.lucene.util.fst,org.apache.lucene.util.packed"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/spatial/build.xml lucene-7.1.0.new/spatial/build.xml
+--- lucene-7.1.0/spatial/build.xml	2019-09-26 10:59:46.560506659 +0200
++++ lucene-7.1.0.new/spatial/build.xml	2019-09-26 14:18:48.351188471 +0200
+@@ -24,4 +24,22 @@
+ 
+   <import file="../module-build.xml"/>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Geospatial Indexing and Query for Apache Lucene"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Spatial"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.spatial.util;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.geo,org.apache.lucene.util"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+diff -urEbwB lucene-7.1.0/spatial3d/build.xml lucene-7.1.0.new/spatial3d/build.xml
+--- lucene-7.1.0/spatial3d/build.xml	2019-09-26 10:59:46.576506756 +0200
++++ lucene-7.1.0.new/spatial3d/build.xml	2019-09-26 14:01:53.345118237 +0200
+@@ -27,4 +27,23 @@
+   <path id="classpath">
+     <path refid="base.classpath"/>
+   </path>
++
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene Spatial shapes implemented using 3D planar geometry"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene Spatial 3D"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.${name}"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.spatial3d;version=&quot;${version}&quot;,org.apache.lucene.spatial3d.geom;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="org.apache.lucene.document,org.apache.lucene.geo,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.spatial3d.geom,org.apache.lucene.util"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>

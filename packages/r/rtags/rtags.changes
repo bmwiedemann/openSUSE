@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:22:06 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update dependencies
+- Use more modern macros
+
+-------------------------------------------------------------------
+Thu Sep 26 21:56:07 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 2.34
+  * see packaged CHANGELOG file or
+    https://github.com/Andersbakken/rtags/blob/v2.34/CHANGELOG
+- use release tarball instead of checking out git
+
+-------------------------------------------------------------------
 Fri Mar 08 11:50:52 UTC 2019 - mliska@suse.cz
 
 - Update to version 2.22+git.20190304.c4dea899:

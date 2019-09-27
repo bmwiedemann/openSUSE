@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 19 19:28:22 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.2.0: No upstream changelog available, extracted from the commits:
+ * Fix Ellipsis bug (#78)
+ * Fix collection of methods in old-style classes (#80)
+ * Correctly fix files in subdirectories without __init__.py files (#83)
+ * Fix current module calculation in fixer (#81)
+ * Support handling nested classes (#85)
+ * docs: note that py3 annotations are available (#86)
+ * Add a flag to use the 'signature' format for type annotations (#88)
+
+-------------------------------------------------------------------
 Sat May 25 09:48:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.7:

@@ -692,4 +692,12 @@
     <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
     <requestid>728831</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>b21693c5b2806ebd695037ded74c5a6c</srcmd5>
+    <version>19.08.1</version>
+    <time>1569588782</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend gnugo to have a functional computer player</comment>
+    <requestid>733540</requestid>
+  </revision>
 </revisionlist>

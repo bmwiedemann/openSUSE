@@ -15,4 +15,33 @@
     <comment></comment>
     <requestid>651037</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c4f19893f081f058814879141d6fa8b7</srcmd5>
+    <version>2.4.2</version>
+    <time>1569588870</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package modernization
+
+- Fix sed call to fixup bear's shebang
+
+- Packaging changes:
+  - Drop unnecessary BuildRequires libconfig-devel and pkgconfig
+  - Drop Bear-rpmlintrc: it contains a no longer required filter
+  - Run the testsuite in %check
+  - Add bash completion files
+  - Use python3 as the interpreter for /usr/bin/bear
+- Update to 2.4.2
+  Features:
+  - Support output field in the output. (#254, @bofeng17)
+  - Support Fortran compiler (#201, #241, #253, @rubyzhou2014, @chunhualiao)
+  - Support filter options (#261, #252, @liugang)
+  Bugfixes:
+  - Fix Cpack problem to create RPM. (#191, @antmak, @reverendhomer)
+- Update to 2.4.1
+  - Minor bug fixes.
+- Update to 2.4.0
+  - Improve reliability by replacing flaky character conversion code in critical
+    execution path.</comment>
+    <requestid>733664</requestid>
+  </revision>
 </revisionlist>

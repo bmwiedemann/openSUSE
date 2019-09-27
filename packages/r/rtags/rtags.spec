@@ -16,22 +16,23 @@
 #
 
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           rtags
-Version:        2.22+git.20190304.c4dea899
+Version:        2.34
 Release:        0
 Summary:        Clang based source code indexer
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Navigators
-Url:            https://github.com/Andersbakken/rtags
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://github.com/Andersbakken/rtags
+Source0:        https://github.com/Andersbakken/rtags/releases/download/v%{version}/rtags-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  emacs-nox
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
 BuildRequires:  llvm-clang-devel
 BuildRequires:  llvm-devel
-BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
@@ -40,15 +41,12 @@ Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
 %define _scriptdir %{_datadir}/rtags/
 
 %prep
-%setup -q
+%autosetup
 
 %build
-export CFLAGS="%{optflags} -Wno-unused-parameter"
-export CXXFLAGS="%{optflags} -Wno-unused-parameter"
 %cmake \
-       -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so"
-
-make %{?_smp_mflags}
+  -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so"
+%cmake_build
 
 %install
 %cmake_install
@@ -57,12 +55,15 @@ install -m 0755 -t %{buildroot}%{_scriptdir} bin/*.sh
 chmod 0755 %{buildroot}%{_bindir}/gcc-rtags-wrapper.sh
 
 %files
-%defattr(-,root,root)
-%{_bindir}/*
-%{_mandir}/man7/rc.7.gz
-%{_mandir}/man7/rdm.7.gz
+%doc README.org CHANGELOG
+%license LICENSE.txt
+%{_bindir}/rdm
+%{_bindir}/rc
+%{_bindir}/rp
+%{_bindir}/gcc-rtags-wrapper.sh
+%{_mandir}/man7/rc.7%{?ext_man}
+%{_mandir}/man7/rdm.7%{?ext_man}
 %{_sitedir}/rtags
 %{_scriptdir}
-%doc LICENSE.txt README.org
 
 %changelog

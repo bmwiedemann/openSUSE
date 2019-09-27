@@ -16,7 +16,7 @@
 #
 
 
-%define extra_version %{nil}
+%define extra_version -0.8
 
 Name:           perftest
 Summary:        IB Performance tests
@@ -25,9 +25,6 @@ Group:          Productivity/Networking/Diagnostic
 Version:        4.4
 Release:        0
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
-Patch1:         Add-Intel-devices-to-the-perftest-device-list.patch
-Patch2:         perftest-add-Broadcom-s-netxtreme-pci-ids.patch
-Patch3:         Fixed-ToS-Type-of-Service-variable-size-issue.patch
 Patch4:         perftest-armv6.patch
 Url:            https://github.com/linux-rdma/perftest
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,10 +42,7 @@ gen2 uverbs microbenchmarks
 
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1
-%patch2
-%patch3
+%setup -q -n %{name}-%{version}%{extra_version}
 %patch4 -p1
 
 %build

@@ -74,4 +74,17 @@
     <comment></comment>
     <requestid>720165</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>63b04d99046a52ba6dece8d64d889b00</srcmd5>
+    <version>1.4.7</version>
+    <time>1569588720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.7:
+  * various small fixes
+
+- Update to 1.4.5:
+  * distribute tests
+  * various fixes</comment>
+    <requestid>733395</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,23 @@
+From f80ad58a1f6d253b5dab2f78ad49881c6b0aa25d Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Thu, 25 Feb 2016 12:26:12 +0100
+Subject: [PATCH 1/2] Disable ivy-settings
+
+---
+ lucene/common-build.xml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/lucene/common-build.xml b/lucene/common-build.xml
+index 9e259e9..5416e1e 100644
+--- a/lucene/common-build.xml
++++ b/lucene/common-build.xml
+@@ -394,7 +394,6 @@
+           you have an idea, fix it.
+           unless="ivy.settings.uptodate" -->
+     <!-- override: just for safety, should be unnecessary -->
+-    <ivy:configure file="${common.dir}/top-level-ivy-settings.xml" override="true"/>
+     <!-- <property name="ivy.settings.uptodate" value="true"/> -->
+   </target>
+ 
+-- 
+2.5.0

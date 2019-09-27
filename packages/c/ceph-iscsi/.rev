@@ -143,4 +143,12 @@
     <comment>tweak changelog entry for Maintenance (forwarded request 732903 from smithfarm)</comment>
     <requestid>732904</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>345d927c8f46d886c719ac5fd16f0290</srcmd5>
+    <version>3.3+1569575733.g93940a4</version>
+    <time>1569588864</time>
+    <user>dimstar_suse</user>
+    <comment>upstream 3.3 (forwarded request 733643 from smithfarm)</comment>
+    <requestid>733644</requestid>
+  </revision>
 </revisionlist>

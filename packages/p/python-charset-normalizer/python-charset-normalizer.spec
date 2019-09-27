@@ -20,7 +20,7 @@
 # https://github.com/Ousret/charset_normalizer/issues/1
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        0.1.8
+Version:        1.1.1
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT

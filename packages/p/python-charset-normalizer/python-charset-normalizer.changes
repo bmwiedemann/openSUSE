@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:35:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.1:
+  * from_bytes parameters steps and chunk_size were not adapted to sequence len if provided values were not fitted to content
+  * Sequence having lenght bellow 10 chars was not checked
+  * Legacy detect method inspired by chardet was not returning
+  * Various more test updates
+
+-------------------------------------------------------------------
+Fri Sep 13 11:05:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3:
+  * Improvement on detection
+  * Performance loss to expect
+  * Added --threshold option to CLI
+  * Bugfix on UTF 7 support
+  * Legacy detect(byte_str) method
+  * BOM support (Unicode mostly)
+  * Chaos prober improved on small text
+  * Language detection has been reviewed to give better result
+  * Bugfix on jp detection, every jp text was considered chaotic
+
+-------------------------------------------------------------------
 Fri Aug 30 00:46:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the tarball to really be the one published by upstream

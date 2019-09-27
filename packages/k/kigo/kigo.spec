@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Obsoletes:      kigo5 < %{version}
 Provides:       kigo5 = %{version}
+Recommends:     gnugo
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif

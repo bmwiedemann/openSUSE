@@ -1,0 +1,257 @@
+--- lucene-7.1.0/analysis/kuromoji/src/tools/java/org/apache/lucene/analysis/ja/util/BinaryDictionaryWriter.java	2017-10-13 18:14:40.000000000 +0200
++++ lucene-7.1.0.new/analysis/kuromoji/src/tools/java/org/apache/lucene/analysis/ja/util/BinaryDictionaryWriter.java	2019-09-26 09:19:44.404112874 +0200
+@@ -22,6 +22,7 @@
+ import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.OutputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.Channels;
+ import java.nio.channels.WritableByteChannel;
+@@ -94,7 +95,7 @@
+     int worstCase = 4 + 3 + 2*(baseForm.length() + reading.length() + pronunciation.length());
+     if (worstCase > left) {
+       ByteBuffer newBuffer = ByteBuffer.allocate(ArrayUtil.oversize(buffer.limit() + worstCase - left, 1));
+-      buffer.flip();
++      ((Buffer)buffer).flip();
+       newBuffer.put(buffer);
+       buffer = newBuffer;
+     }
+@@ -306,7 +307,7 @@
+       out.writeVInt(buffer.position());
+       final WritableByteChannel channel = Channels.newChannel(os);
+       // Write Buffer
+-      buffer.flip();  // set position to 0, set limit to current position
++      ((Buffer)buffer).flip();  // set position to 0, set limit to current position
+       channel.write(buffer);
+       assert buffer.remaining() == 0L;
+     } finally {
+--- lucene-7.1.0/core/src/java/org/apache/lucene/store/ByteBufferIndexInput.java	2017-10-13 18:14:40.000000000 +0200
++++ lucene-7.1.0.new/core/src/java/org/apache/lucene/store/ByteBufferIndexInput.java	2019-09-26 09:19:44.404112874 +0200
+@@ -19,6 +19,7 @@
+ 
+ import java.io.EOFException;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.BufferUnderflowException;
+ import java.nio.ByteBuffer;
+ 
+@@ -75,7 +76,7 @@
+           throw new EOFException("read past EOF: " + this);
+         }
+         curBuf = buffers[curBufIndex];
+-        curBuf.position(0);
++        ((Buffer)curBuf).position(0);
+       } while (!curBuf.hasRemaining());
+       return guard.getByte(curBuf);
+     } catch (NullPointerException npe) {
+@@ -98,7 +99,7 @@
+           throw new EOFException("read past EOF: " + this);
+         }
+         curBuf = buffers[curBufIndex];
+-        curBuf.position(0);
++        ((Buffer)curBuf).position(0);
+         curAvail = curBuf.remaining();
+       }
+       guard.getBytes(curBuf, b, offset, len);
+@@ -156,10 +157,10 @@
+     final int bi = (int) (pos >> chunkSizePower);
+     try {
+       if (bi == curBufIndex) {
+-        curBuf.position((int) (pos & chunkSizeMask));
++        ((Buffer)curBuf).position((int) (pos & chunkSizeMask));
+       } else {
+         final ByteBuffer b = buffers[bi];
+-        b.position((int) (pos & chunkSizeMask));
++        ((Buffer)b).position((int) (pos & chunkSizeMask));
+         // write values, on exception all is unchanged
+         this.curBufIndex = bi;
+         this.curBuf = b;
+@@ -187,7 +188,7 @@
+   private void setPos(long pos, int bi) throws IOException {
+     try {
+       final ByteBuffer b = buffers[bi];
+-      b.position((int) (pos & chunkSizeMask));
++      ((Buffer)b).position((int) (pos & chunkSizeMask));
+       this.curBufIndex = bi;
+       this.curBuf = b;
+     } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException aioobe) {
+@@ -287,7 +288,7 @@
+   @SuppressWarnings("resource")
+   protected ByteBufferIndexInput newCloneInstance(String newResourceDescription, ByteBuffer[] newBuffers, int offset, long length) {
+     if (newBuffers.length == 1) {
+-      newBuffers[0].position(offset);
++      ((Buffer)newBuffers[0]).position(offset);
+       return new SingleBufferImpl(newResourceDescription, newBuffers[0].slice(), length, chunkSizePower, this.guard);
+     } else {
+       return new MultiBufferImpl(newResourceDescription, newBuffers, offset, length, chunkSizePower, guard);
+@@ -311,7 +312,7 @@
+     }
+ 
+     // set the last buffer's limit for the sliced view.
+-    slices[slices.length - 1].limit((int) (sliceEnd & chunkSizeMask));
++    ((Buffer)slices[slices.length - 1]).limit((int) (sliceEnd & chunkSizeMask));
+     
+     return slices;
+   }
+@@ -350,7 +351,7 @@
+       super(resourceDescription, new ByteBuffer[] { buffer }, length, chunkSizePower, guard);
+       this.curBufIndex = 0;
+       this.curBuf = buffer;
+-      buffer.position(0);
++      ((Buffer)buffer).position(0);
+     }
+     
+     // TODO: investigate optimizing readByte() & Co?
+@@ -358,7 +359,7 @@
+     @Override
+     public void seek(long pos) throws IOException {
+       try {
+-        curBuf.position((int) pos);
++        ((Buffer)curBuf).position((int) pos);
+       } catch (IllegalArgumentException e) {
+         if (pos < 0) {
+           throw new IllegalArgumentException("Seeking to negative position: " + this, e);
+--- lucene-7.1.0/core/src/java/org/apache/lucene/store/NIOFSDirectory.java	2017-10-13 18:14:40.000000000 +0200
++++ lucene-7.1.0.new/core/src/java/org/apache/lucene/store/NIOFSDirectory.java	2019-09-26 09:19:44.404112874 +0200
+@@ -18,6 +18,7 @@
+ 
+ import java.io.EOFException;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.ClosedChannelException; // javadoc @link
+ import java.nio.channels.FileChannel;
+@@ -159,7 +160,7 @@
+         // Use our own pre-wrapped byteBuf:
+         assert byteBuf != null;
+         bb = byteBuf;
+-        byteBuf.clear().position(offset);
++        ((Buffer)byteBuf).clear().position(offset);
+       } else {
+         bb = ByteBuffer.wrap(b, offset, len);
+       }
+@@ -174,7 +175,7 @@
+         int readLength = len;
+         while (readLength > 0) {
+           final int toRead = Math.min(CHUNK_SIZE, readLength);
+-          bb.limit(bb.position() + toRead);
++          ((Buffer)bb).limit(bb.position() + toRead);
+           assert bb.remaining() == toRead;
+           final int i = channel.read(bb, pos);
+           if (i < 0) { // be defensive here, even though we checked before hand, something could have changed
+--- lucene-7.1.0/core/src/java/org/apache/lucene/store/SimpleFSDirectory.java	2017-10-13 18:14:40.000000000 +0200
++++ lucene-7.1.0.new/core/src/java/org/apache/lucene/store/SimpleFSDirectory.java	2019-09-26 09:19:44.404112874 +0200
+@@ -19,6 +19,7 @@
+ 
+ import java.io.EOFException;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.SeekableByteChannel;
+ import java.nio.channels.ClosedChannelException; // javadoc @link
+@@ -155,7 +156,7 @@
+         // Use our own pre-wrapped byteBuf:
+         assert byteBuf != null;
+         bb = byteBuf;
+-        byteBuf.clear().position(offset);
++        ((Buffer)byteBuf).clear().position(offset);
+       } else {
+         bb = ByteBuffer.wrap(b, offset, len);
+       }
+--- lucene-7.1.0/misc/src/java/org/apache/lucene/store/NativeUnixDirectory.java	2017-10-13 18:14:41.000000000 +0200
++++ lucene-7.1.0.new/misc/src/java/org/apache/lucene/store/NativeUnixDirectory.java	2019-09-26 09:19:44.408112899 +0200
+@@ -21,6 +21,7 @@
+ import java.io.FileInputStream;
+ import java.io.FileOutputStream;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.FileChannel;
+ import java.nio.file.Path;
+@@ -212,7 +213,7 @@
+     //}
+ 
+     private void dump() throws IOException {
+-      buffer.flip();
++      ((Buffer)buffer).flip();
+       final long limit = filePos + buffer.limit();
+       if (limit > fileLength) {
+         // this dump extends the file
+@@ -222,7 +223,7 @@
+       }
+ 
+       // must always round to next block
+-      buffer.limit((int) ((buffer.limit() + ALIGN - 1) & ALIGN_NOT_MASK));
++      ((Buffer)buffer).limit((int) ((buffer.limit() + ALIGN - 1) & ALIGN_NOT_MASK));
+ 
+       assert (buffer.limit() & ALIGN_NOT_MASK) == buffer.limit() : "limit=" + buffer.limit() + " vs " + (buffer.limit() & ALIGN_NOT_MASK);
+       assert (filePos & ALIGN_NOT_MASK) == filePos;
+@@ -230,7 +231,7 @@
+       channel.write(buffer, filePos);
+       filePos += bufferPos;
+       bufferPos = 0;
+-      buffer.clear();
++      ((Buffer)buffer).clear();
+       //System.out.println("dump: done");
+ 
+       // TODO: the case where we'd seek'd back, wrote an
+@@ -341,7 +342,7 @@
+         final int delta = (int) (pos - alignedPos);
+         if (delta != 0) {
+           refill();
+-          buffer.position(delta);
++          ((Buffer)buffer).position(delta);
+           bufferPos = delta;
+         } else {
+           // force refill on next read
+@@ -373,7 +374,7 @@
+     }
+ 
+     private void refill() throws IOException {
+-      buffer.clear();
++      ((Buffer)buffer).clear();
+       filePos += bufferSize;
+       bufferPos = 0;
+       assert (filePos & ALIGN_NOT_MASK) == filePos : "filePos=" + filePos + " anded=" + (filePos & ALIGN_NOT_MASK);
+@@ -387,7 +388,7 @@
+       if (n < 0) {
+         throw new EOFException("read past EOF: " + this);
+       }
+-      buffer.rewind();
++      ((Buffer)buffer).rewind();
+     }
+ 
+     @Override
+--- lucene-7.1.0/replicator/src/test/org/apache/lucene/replicator/nrt/SimpleTransLog.java	2017-10-13 18:14:41.000000000 +0200
++++ lucene-7.1.0.new/replicator/src/test/org/apache/lucene/replicator/nrt/SimpleTransLog.java	2019-09-26 09:19:44.408112899 +0200
+@@ -20,6 +20,7 @@
+ import java.io.Closeable;
+ import java.io.EOFException;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.FileChannel;
+ import java.nio.file.Path;
+@@ -93,8 +94,8 @@
+     intBuffer[1] = (byte) (len >> 16);
+     intBuffer[2] = (byte) (len >> 8);
+     intBuffer[3] = (byte) len;
+-    intByteBuffer.limit(4);
+-    intByteBuffer.position(0);
++    ((Buffer)intByteBuffer).limit(4);
++    ((Buffer)intByteBuffer).position(0);
+ 
+     writeBytesToChannel(intByteBuffer);
+     writeBytesToChannel(ByteBuffer.wrap(bytes));
+@@ -131,8 +132,8 @@
+ 
+       long pos = start;
+       while (pos < end) {
+-        intByteBuffer.position(0);
+-        intByteBuffer.limit(4);
++        ((Buffer)intByteBuffer).position(0);
++        ((Buffer)intByteBuffer).limit(4);
+         readBytesFromChannel(pos, intByteBuffer);
+         pos += 4;
+         int len = ((intBuffer[0] & 0xff) << 24) |

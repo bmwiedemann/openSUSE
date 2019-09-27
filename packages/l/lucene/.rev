@@ -187,4 +187,12 @@
     <comment>packaging overhaul</comment>
     <requestid>711715</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>db28e472d9f581dcaab28cb199f6fb0b</srcmd5>
+    <version>7.1.0</version>
+    <time>1569588750</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 7.1.0</comment>
+    <requestid>733515</requestid>
+  </revision>
 </revisionlist>

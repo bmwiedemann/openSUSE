@@ -16,15 +16,14 @@
 #
 
 
-%define jarname lucene-core
 Name:           lucene
-Version:        6.6.0
+Version:        7.1.0
 Release:        0
 Summary:        Text search engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://lucene.apache.org/
-Source0:        http://www.apache.org/dist/lucene/java/%{version}/%{name}-%{version}-src.tgz
+Source0:        http://archive.apache.org/dist/lucene/java/%{version}/%{name}-%{version}-src.tgz
 Source1:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/%{version}/lucene-queryparser-%{version}.pom
 Source2:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-join/%{version}/lucene-join-%{version}.pom
 Source3:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/%{version}/lucene-queries-%{version}.pom
@@ -43,6 +42,10 @@ Source15:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers
 Source16:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-smartcn/%{version}/lucene-analyzers-smartcn-%{version}.pom
 Source17:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-stempel/%{version}/lucene-analyzers-stempel-%{version}.pom
 Source18:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/%{version}/lucene-core-%{version}.pom
+Patch0:         0001-Disable-ivy-settings.patch
+Patch1:         0002-Dependency-generation.patch
+Patch2:         lucene-java8compat.patch
+Patch3:         lucene-osgi-manifests.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit >= 1.6
 BuildRequires:  antlr-java
@@ -62,7 +65,6 @@ BuildRequires:  junit
 BuildRequires:  log4j
 BuildRequires:  regexp
 BuildRequires:  zip
-BuildArch:      noarch
 
 %description
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -70,7 +72,20 @@ It offers fuzzy search based on edit (Levenshtein) distance,
 incremental indexing, ranked searching, field-based searches and
 multi-index searches.
 
-%files -f .mfiles
+%package core
+Summary:        Text search engine
+Group:          Development/Libraries/Java
+Provides:       %{name} = %{version}-%{release}
+Obsoletes:      %{name} < %{version}-%{release}
+BuildArch:      noarch
+
+%description core
+Apache Lucene is a full-text search engine written entirely in Java.
+It offers fuzzy search based on edit (Levenshtein) distance,
+incremental indexing, ranked searching, field-based searches and
+multi-index searches.
+
+%files core -f .mfiles-core
 %license LICENSE.txt
 %doc CHANGES.txt README.txt
 
@@ -80,6 +95,7 @@ Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-queries)
 Requires:       mvn(org.apache.lucene:lucene-sandbox)
+BuildArch:      noarch
 
 %description queryparser
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -91,6 +107,7 @@ This package provides the "queryparser" module for lucene.
 Summary:        Join module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description join
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -102,6 +119,7 @@ This package provides the "join" module for lucene.
 Summary:        Queries module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description queries
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -115,6 +133,7 @@ Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-grouping)
 Requires:       mvn(org.apache.lucene:lucene-queries)
+BuildArch:      noarch
 
 %description classification
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -127,6 +146,7 @@ Summary:        Facet module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-queries)
+BuildArch:      noarch
 
 %description facet
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -138,6 +158,7 @@ This package provides the "facet" module for Lucene.
 Summary:        Codecs module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description codecs
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -149,6 +170,7 @@ This package provides the "codecs" module for Lucene.
 Summary:        Backward-codecs module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description backward-codecs
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -161,6 +183,7 @@ Summary:        Grouping module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-queries)
+BuildArch:      noarch
 
 %description grouping
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -176,6 +199,7 @@ Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-join)
 Requires:       mvn(org.apache.lucene:lucene-memory)
 Requires:       mvn(org.apache.lucene:lucene-queries)
+BuildArch:      noarch
 
 %description highlighter
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -187,6 +211,7 @@ This package provides the "highlighter" module for Lucene.
 Summary:        Memory module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description memory
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -209,6 +234,7 @@ This package provides the "misc" module for Lucene.
 Summary:        Sandbox module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description sandbox
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -220,6 +246,7 @@ This package provides the "sandbox" module for Lucene.
 Summary:        Spatial3d module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description spatial3d
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -231,6 +258,7 @@ This package provides the "spatial3d" module for Lucene.
 Summary:        Spatial module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description spatial
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -242,6 +270,9 @@ This package provides the "spatial" module for Lucene.
 Summary:        Analyzers-common module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-core)
+Provides:       %{name}-analysis = %{version}-%{release}
+Obsoletes:      %{name}-analysis < %{version}-%{release}
+BuildArch:      noarch
 
 %description analyzers-common
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -254,6 +285,7 @@ Summary:        Analyzers-smartcn module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description analyzers-smartcn
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -266,6 +298,7 @@ Summary:        Analyzers-stempel module for lucene
 Group:          Development/Libraries/Java
 Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
 Requires:       mvn(org.apache.lucene:lucene-core)
+BuildArch:      noarch
 
 %description analyzers-stempel
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -276,76 +309,92 @@ This package provides the "analyzers-stempel" module for Lucene.
 %prep
 %setup -q
 
+%patch0 -p2
+%patch1 -p2
+%patch2 -p1
+%patch3 -p1
+
 %build
 export CLASSPATH=$(build-classpath commons-digester jtidy junit regexp)
 export OPT_JAR_LIST=:
-ant \
+%ant \
   -Djavacc.home=%{_bindir}/javacc \
   -Djavacc.jar=%{_javadir}/javacc.jar \
   -Djavacc.jar.dir=%{_javadir} \
   -Djavadoc.link=%{_javadocdir}/java \
   -Dversion=%{version} \
-  -Divy.mode=local
+  -Divy.mode=local -Divy.available=true
 
 # DOESN'T BUILD BECAUSE OF MISSING DEPS: replicator expressions spatial-extras analyzers-kuromoji analyzers-morfologik analyzers-phonetic
 export modules="queryparser join queries classification facet codecs backward-codecs grouping highlighter memory misc sandbox spatial3d spatial"
 
 for mod in $modules
 do
-  ant -f module-build.xml \
+  %ant -f module-build.xml \
     -Djavacc.home=%{_bindir}/javacc \
     -Djavacc.jar=%{_javadir}/javacc.jar \
     -Djavacc.jar.dir=%{_javadir} \
     -Djavadoc.link=%{_javadocdir}/java \
     -Dversion=%{version} \
-    -Divy.mode=local \
+    -Divy.mode=local -Divy.available=true \
   jar-$mod
 done
 
 export modanalyzers="common smartcn stempel"
 pushd analysis
-ant \
+%ant \
   -Djavacc.home=%{_bindir}/javacc \
   -Djavacc.jar=%{_javadir}/javacc.jar \
   -Djavacc.jar.dir=%{_javadir} \
   -Djavadoc.link=%{_javadocdir}/java \
   -Dversion=%{version} \
-  -Divy.mode=local \
+  -Divy.mode=local -Divy.available=true \
 $modanalyzers
 
 %install
-install -d -m 0755 %{buildroot}%{_javadir}
+install -d -m 0755 %{buildroot}%{_javadir}/%{name}
+install -d -m 0755 %{buildroot}%{_jnidir}/%{name}
 
 # maven pom dir
-install -d -m 0755 %{buildroot}%{_mavenpomdir}/
+install -d -m 0755 %{buildroot}%{_mavenpomdir}/%{name}
 
-install -p -m 0644 build/core/%{jarname}-%{version}.jar %{buildroot}%{_javadir}/%{jarname}.jar
-cp %{_sourcedir}/lucene-core-%{version}.pom build/core/pom.xml
-%pom_remove_parent build/core
-%pom_xpath_inject "pom:project" "<version>%{version}</version>" build/core
-install -p -m 0644 build/core/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-core.pom
-%add_maven_depmap %{name}-core.pom lucene-core.jar
-
-export modules="queryparser join queries classification facet codecs backward-codecs grouping highlighter memory misc sandbox spatial3d spatial"
-for mod in $modules
+export noarch_modules="core queryparser join queries classification facet codecs backward-codecs grouping highlighter memory sandbox spatial3d spatial"
+for mod in $noarch_modules
 do
-  install -p -m 0644 build/${mod}/lucene-$mod-%{version}.jar %{buildroot}%{_javadir}/lucene-$mod.jar
-  cp %{_sourcedir}/lucene-${mod}-%{version}.pom build/${mod}/pom.xml
+  install -p -m 0644 build/${mod}/%{name}-$mod-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-$mod.jar
+  ln -sf %{name}/%{name}-$mod.jar %{buildroot}%{_javadir}/%{name}-$mod.jar
+  cp %{_sourcedir}/%{name}-${mod}-%{version}.pom build/${mod}/pom.xml
   %pom_remove_parent build/${mod}
   %pom_xpath_inject "pom:project" "<version>%{version}</version>" build/${mod}
-  install -p -m 0644 build/${mod}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-${mod}.pom
-  %add_maven_depmap %{name}-${mod}.pom lucene-${mod}.jar -f ${mod}
+  install -p -m 0644 build/${mod}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${mod}.pom
+  %add_maven_depmap %{name}/%{name}-${mod}.pom %{name}/%{name}-${mod}.jar -f ${mod}
+  echo %{_javadir}/%{name}-$mod.jar >> .mfiles-${mod}
+done
+
+export arch_modules="misc"
+for mod in $arch_modules
+do
+  install -p -m 0644 build/${mod}/%{name}-$mod-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{name}-$mod.jar
+  ln -sf %{name}/%{name}-$mod.jar %{buildroot}%{_jnidir}/%{name}-$mod.jar
+  cp %{_sourcedir}/%{name}-${mod}-%{version}.pom build/${mod}/pom.xml
+  %pom_remove_parent build/${mod}
+  %pom_xpath_inject "pom:project" "<version>%{version}</version>" build/${mod}
+  install -p -m 0644 build/${mod}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${mod}.pom
+  %add_maven_depmap %{name}/%{name}-${mod}.pom %{name}/%{name}-${mod}.jar -f ${mod}
+  echo %{_jnidir}/%{name}-$mod.jar >> .mfiles-${mod}
 done
 
 export modanalyzers="common smartcn stempel"
 for mod in $modanalyzers
 do
-  install -p -m 0644 build/analysis/$mod/lucene-analyzers-$mod-%{version}.jar %{buildroot}%{_javadir}/lucene-analyzers-${mod}.jar
+  install -p -m 0644 build/analysis/$mod/%{name}-analyzers-$mod-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-analyzers-${mod}.jar
+  ln -sf %{name}/%{name}-analyzers-$mod.jar %{buildroot}%{_javadir}/%{name}-analyzers-$mod.jar
   cp %{_sourcedir}/lucene-analyzers-${mod}-%{version}.pom build/analysis/$mod/pom.xml
   %pom_remove_parent build/analysis/$mod
   %pom_xpath_inject "pom:project" "<version>%{version}</version>" build/analysis/$mod
-  install -p -m 0644 build/analysis/$mod/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-analyzers-${mod}.pom
-  %add_maven_depmap %{name}-analyzers-${mod}.pom lucene-analyzers-${mod}.jar -f analyzers-${mod}
+  install -p -m 0644 build/analysis/$mod/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-analyzers-${mod}.pom
+  %add_maven_depmap %{name}/%{name}-analyzers-${mod}.pom %{name}/%{name}-analyzers-${mod}.jar -f analyzers-${mod}
+  echo %{_javadir}/%{name}-analyzers-$mod.jar >> .mfiles-analyzers-${mod}
 done
 
 # javadoc DOES NOT BUILD BECAUSE OF MISSING MVN DEPS

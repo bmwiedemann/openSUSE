@@ -19,7 +19,7 @@
 %endif
 
 Name:           ceph-iscsi
-Version:        3.2+1568099844.g09c5205
+Version:        3.3+1569575733.g93940a4
 Release:        1%{?dist}
 Group:          System/Filesystems
 Summary:        Python modules for Ceph iSCSI gateway configuration management
@@ -52,8 +52,10 @@ Requires:       python-flask >= 0.10.1
 Requires:       python-configshell
 %if 0%{?rhel} == 7
 Requires:       pyOpenSSL
+Requires:       python-requests
 %else
 Requires:       python-pyOpenSSL
+Requires:       python2-requests
 %endif
 %else
 BuildRequires:  python3-devel
@@ -64,6 +66,7 @@ Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-rtslib >= 2.1.fb68
 Requires:       python3-cryptography
 Requires:       python3-pyOpenSSL
+Requires:       python3-requests
 %if 0%{?suse_version}
 BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes

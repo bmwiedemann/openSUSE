@@ -206,4 +206,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>719957</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>09053e936fd1d30a0ebf68e3732350db</srcmd5>
+    <version>1.23.1</version>
+    <time>1569588735</time>
+    <user>dimstar_suse</user>
+    <comment>We don't need python-libxml2 at all and it broke the package, as it was renamed in Factory</comment>
+    <requestid>733407</requestid>
+  </revision>
 </revisionlist>

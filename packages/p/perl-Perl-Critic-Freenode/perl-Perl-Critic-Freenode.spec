@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Critic-Freenode
-Version:        0.030
+Version:        0.031
 Release:        0
 %define cpan_name Perl-Critic-Freenode
 Summary:        Perl::Critic policies inspired by #perl on

@@ -27,7 +27,6 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libxml2-python
 # set to _version when mate-common has an equal release
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig

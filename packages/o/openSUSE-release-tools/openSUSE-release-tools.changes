@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Sep 26 16:57:06 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190926.456b203a:
+  * Kill review bots if they didn't output anything for 30 minutes
+
+-------------------------------------------------------------------
+Thu Sep 26 14:44:35 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190926.40a88ace:
+  * rebuildpacs: Ignore order of problems
+
+-------------------------------------------------------------------
+Thu Sep 26 14:38:29 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190926.6ed04ab7:
+  * osclib/origin_listener: change from package.update to package.commit event.
+
+-------------------------------------------------------------------
+Thu Sep 26 13:59:35 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190926.1942065b:
+  * osclib/origin: origin_annotation_load(): only return dict annotation.
+  * osclib/origin: origin_annotation_load(): only consider accepted reviews.
+  * osclib/core: review_find_last(): provide states filter.
+
+-------------------------------------------------------------------
+Thu Sep 26 13:44:39 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190926.b8ec607f:
+  * origin-manager: utilize ReviewBot.request_age_wait().
+  * ReviewBot: provide request_age_wait().
+
+-------------------------------------------------------------------
+Thu Sep 26 12:57:57 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190926.0acfbc28:
+  * osclib/core: rename request_action_single_list() to request_action_simple_list().
+  * osclib/core: switch request_action_single_list() users to request_action_list().
+  * osclib/core: request_action_single_list(): handle miltiple actions.
+  * osclib/core: request_action_single_list(): exclude sourced requests.
+
+-------------------------------------------------------------------
+Wed Sep 25 18:19:38 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190925.438b38fc:
+  * gocd/checkers: revert Origin.Manager.Update frequency back to daily.
+
+-------------------------------------------------------------------
+Wed Sep 25 12:01:50 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190925.8a0e6ed3:
+  * check_source: when kind is None then it can be a new package
+
+-------------------------------------------------------------------
+Wed Sep 25 09:19:24 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190925.9af682c9:
+  * check_source: don't enforce name for kiwi images
+
+-------------------------------------------------------------------
 Tue Sep 24 21:19:13 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190924.e9a2774a:

@@ -51,4 +51,18 @@
     <comment></comment>
     <requestid>682831</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06cbe040b793fef417f3e47d089e9676</srcmd5>
+    <version>2.34</version>
+    <time>1569588809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies
+- Use more modern macros
+
+- update to 2.34
+  * see packaged CHANGELOG file or
+    https://github.com/Andersbakken/rtags/blob/v2.34/CHANGELOG
+- use release tarball instead of checking out git</comment>
+    <requestid>733617</requestid>
+  </revision>
 </revisionlist>

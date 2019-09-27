@@ -30,7 +30,6 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        user-dirs-update-mate.desktop
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libxml2-python
 # set to %{version} when mate-common has an equal release to mate-desktop
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig

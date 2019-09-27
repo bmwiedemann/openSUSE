@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyannotate
-Version:        1.0.7
+Version:        1.2.0
 Release:        0
 Summary:        PyAnnotate: Auto-generate PEP-484 annotations
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/dropbox/pyannotate
-Source:         https://github.com/dropbox/pyannotate/archive/v%{version}.tar.gz
+Source:         https://github.com/dropbox/pyannotate/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 28.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

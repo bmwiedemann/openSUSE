@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 26 18:45:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix property Provides and Obsoletes in order to make upgrade
+  smooth
+- Added patch:
+  * lucene-osgi-manifests.patch
+    + Patch the build to produce OSGi manifests needed by eclipse
+- Install the artifacts to "lucene" subdirectory and create
+  compatibility symlinks
+- Install lucene-misc as archful artifact, since it contains
+  JNI code
+
+-------------------------------------------------------------------
+Thu Sep 26 07:26:14 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 7.1.0
+- Added patches:
+  * 0001-Disable-ivy-settings.patch
+  * 0002-Dependency-generation.patch
+    + Sync with Fedora's 7.1.0
+  * lucene-java8compat.patch
+    + Avoid using java9+ only functions
+
+-------------------------------------------------------------------
 Mon Jun 24 12:26:21 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the parent references from the pom files, since we are not

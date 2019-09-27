@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Directory
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-Directory
-Version:        0.041
+Version:        0.051
 Release:        0
 %define cpan_name Test-Directory
 Summary:        Perl extension for maintaining test directories
@@ -25,6 +25,7 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SA/SANBEG/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -33,11 +34,18 @@ BuildRequires:  perl(Test::Exception)
 %{perl_requires}
 
 %description
-Sometimes, testing code involves making sure that files are created and
-deleted as expected. This module simplifies maintaining test directories by
-tracking their status as they are modified or tested with this API, making
-it simple to test both individual files, as well as to verify that there
-are no missing or unknown files.
+Testing code can involve making sure that files are created and deleted as
+expected. Doing this manually can be error prone, as it's easy to forget a
+file, or miss that some unexpected file was added. This module simplifies
+maintaining test directories by tracking their status as they are modified
+or tested with this API, making it simple to test both individual files, as
+well as to verify that there are no missing or unknown files.
+
+The idea is to use this API to create a temporary directory and populate an
+initial set of files. Then, whenever something in the directory is changes,
+use the test methods to verify that the change happened as expected. At any
+time, it is simple to verify that the contents of the directory are exactly
+as expected.
 
 Test::Directory implements an object-oriented interface for managing test
 directories. It tracks which files it knows about (by creating or testing

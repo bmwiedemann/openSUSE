@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 26 06:36:31 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 4.4.0-8
+  - No release notes available
+- Drop patches merged upstream:
+  - Fixed-ToS-Type-of-Service-variable-size-issue.patch
+  - perftest-add-Broadcom-s-netxtreme-pci-ids.patch
+  - Add-Intel-devices-to-the-perftest-device-list.patch
+
+-------------------------------------------------------------------
 Fri Jul 12 17:22:49 UTC 2019 - Kasimir _ <kasimir_@outlook.de>
 
 - Add patch to support for armv6

@@ -17,7 +17,7 @@
 
 
 Name:           perl-DBIx-Class-DeploymentHandler
-Version:        0.002232
+Version:        0.002233
 Release:        0
 %define cpan_name DBIx-Class-DeploymentHandler
 Summary:        Extensible DBIx::Class deployment
@@ -39,6 +39,7 @@ BuildRequires:  perl(Module::Runtime) >= 0.001
 BuildRequires:  perl(Moose) >= 1
 BuildRequires:  perl(MooseX::Role::Parameterized) >= 0.18
 BuildRequires:  perl(Path::Class) >= 0.26
+BuildRequires:  perl(SQL::SplitStatement) >= 1.00020
 BuildRequires:  perl(SQL::Translator) >= 0.11005
 BuildRequires:  perl(Sub::Exporter::Progressive)
 BuildRequires:  perl(Test::Fatal) >= 0.006
@@ -59,6 +60,7 @@ Requires:       perl(Module::Runtime) >= 0.001
 Requires:       perl(Moose) >= 1
 Requires:       perl(MooseX::Role::Parameterized) >= 0.18
 Requires:       perl(Path::Class) >= 0.26
+Requires:       perl(SQL::SplitStatement) >= 1.00020
 Requires:       perl(SQL::Translator) >= 0.11005
 Requires:       perl(Sub::Exporter::Progressive)
 Requires:       perl(Text::Brew) >= 0.02

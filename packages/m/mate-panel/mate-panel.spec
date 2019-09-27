@@ -34,7 +34,6 @@ Source2:        baselibs.conf
 Patch0:         mate-panel-layouts-suse.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libxml2-python
 # set to _version when mate-common has an equal release
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig
