@@ -1,3 +1,4 @@
 #!/bin/sh
-git blame packages/_/_project/_attribute |
-  perl -ne "if(m/^(\w+) .* publishing: '(\d+)'\$/)"'{system(qw(git tag), $2, $1) || system(qw(git push --tags))}'
+date=$(date -u -d @$(($(date +%s) - 60*60*23)) +%Y%m%d)
+git tag $date
+git push --tags
