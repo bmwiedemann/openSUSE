@@ -2323,6 +2323,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -6395,6 +6396,7 @@ unsorted:
   - krandr 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8369,7 +8371,6 @@ unsorted:
   - libechonest5-2_3-32bit: [x86_64] 
   - libecm1 
   - libeconf-devel 
-  - libeconf0 
   - libeconf0-32bit: [x86_64] 
   - libecore1 
   - libecpg6-32bit: [x86_64] 
@@ -12530,7 +12531,6 @@ unsorted:
   - lua53-zlib 
   - luabind-devel 
   - luaposix-doc 
-  - lucene 
   - lucene++-devel 
   - lucene-analyzers-common 
   - lucene-analyzers-smartcn 
@@ -12538,6 +12538,7 @@ unsorted:
   - lucene-backward-codecs 
   - lucene-classification 
   - lucene-codecs 
+  - lucene-core 
   - lucene-facet 
   - lucene-grouping 
   - lucene-highlighter 
@@ -14653,11 +14654,14 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -17381,6 +17385,7 @@ unsorted:
   - python2-GeoIP 
   - python2-Glances 
   - python2-Gloo 
+  - python2-Glymur 
   - python2-GooCalendar 
   - python2-GridDataFormats 
   - python2-HeapDict 
@@ -17447,6 +17452,7 @@ unsorted:
   - python2-PyPrind 
   - python2-PyQRCode 
   - python2-PyRIC 
+  - python2-PyRSS2Gen 
   - python2-PySDL2 
   - python2-PyScreeze 
   - python2-PySocks 
@@ -17811,6 +17817,7 @@ unsorted:
   - python2-cached-property 
   - python2-cachetools 
   - python2-cachey 
+  - python2-cachy 
   - python2-cairocffi 
   - python2-cairocffi-pixbuf 
   - python2-caja 
@@ -17861,6 +17868,7 @@ unsorted:
   - python2-cinderclient 
   - python2-ciscoconfparse 
   - python2-cl 
+  - python2-cleo 
   - python2-cli-helpers 
   - python2-click 
   - python2-click-aliases 
@@ -17873,6 +17881,7 @@ unsorted:
   - python2-click-threading 
   - python2-cliff 
   - python2-cligj 
+  - python2-clikit 
   - python2-clinkgrammar 
   - python2-clint 
   - python2-cloudflare 
@@ -17930,7 +17939,9 @@ unsorted:
   - python2-cram 
   - python2-crayons 
   - python2-crcmod 
+  - python2-cron-descriptor 
   - python2-croniter 
+  - python2-crontab 
   - python2-crumbs 
   - python2-cryptography-vectors 
   - python2-css-parser 
@@ -17941,7 +17952,6 @@ unsorted:
   - python2-cufflinks 
   - python2-cursive 
   - python2-curtsies 
-  - python2-cx_Freeze 
   - python2-cymruwhois 
   - python2-cyordereddict 
   - python2-cytoolz 
@@ -17973,6 +17983,9 @@ unsorted:
   - python2-dennis 
   - python2-deprecation 
   - python2-derpconf 
+  - python2-devpi-client 
+  - python2-devpi-common 
+  - python2-devpi-server 
   - python2-dfdatetime 
   - python2-dialite 
   - python2-dicttoxml 
@@ -18036,7 +18049,6 @@ unsorted:
   - python2-django-webtest 
   - python2-django_compressor 
   - python2-django_coverage_plugin 
-  - python2-djangorestframework 
   - python2-djet 
   - python2-djvulibre 
   - python2-dns-lexicon 
@@ -18115,6 +18127,7 @@ unsorted:
   - python2-fasteners 
   - python2-fastimport 
   - python2-fastparquet 
+  - python2-fastremap 
   - python2-fb-re2 
   - python2-fedmsg 
   - python2-feedgenerator 
@@ -18679,6 +18692,7 @@ unsorted:
   - python2-passa 
   - python2-passivetotal 
   - python2-passlib 
+  - python2-pastel 
   - python2-pastream 
   - python2-path.py 
   - python2-pathlib 
@@ -18718,6 +18732,7 @@ unsorted:
   - python2-pip-api 
   - python2-pip-run 
   - python2-pip-shims 
+  - python2-pip-tools 
   - python2-pipdeptree 
   - python2-pipenv 
   - python2-pipreqs 
@@ -18881,6 +18896,7 @@ unsorted:
   - python2-pymongo 
   - python2-pymssql 
   - python2-pynamodb 
+  - python2-pynetbox 
   - python2-pyngus 
   - python2-pyodbc 
   - python2-pyosf 
@@ -18950,6 +18966,7 @@ unsorted:
   - python2-pytest-instafail 
   - python2-pytest-isort 
   - python2-pytest-lazy-fixture 
+  - python2-pytest-listener 
   - python2-pytest-localserver 
   - python2-pytest-metadata 
   - python2-pytest-mock 
@@ -18965,6 +18982,7 @@ unsorted:
   - python2-pytest-reqs 
   - python2-pytest-rerunfailures 
   - python2-pytest-runner 
+  - python2-pytest-server-fixtures 
   - python2-pytest-services 
   - python2-pytest-shutil 
   - python2-pytest-socket 
@@ -18994,6 +19012,7 @@ unsorted:
   - python2-python-cjson 
   - python2-python-coveralls 
   - python2-python-crfsuite 
+  - python2-python-crontab 
   - python2-python-daemon 
   - python2-python-datamatrix 
   - python2-python-dbusmock 
@@ -19008,6 +19027,7 @@ unsorted:
   - python2-python-jenkins 
   - python2-python-jose 
   - python2-python-json-logger 
+  - python2-python-jsonschema-objects 
   - python2-python-louvain 
   - python2-python-lzo 
   - python2-python-magic 
@@ -19059,6 +19079,7 @@ unsorted:
   - python2-pyxdg 
   - python2-pyzmq 
   - python2-pyzmq-devel 
+  - python2-q 
   - python2-qgrid 
   - python2-qrcode 
   - python2-qscintilla-qt5 
@@ -19093,7 +19114,6 @@ unsorted:
   - python2-regex 
   - python2-relatorio 
   - python2-releases 
-  - python2-releases-test 
   - python2-remoto 
   - python2-rencode 
   - python2-renderspec 
@@ -19126,6 +19146,7 @@ unsorted:
   - python2-restructuredtext_lint 
   - python2-restview 
   - python2-resultsdb_api 
+  - python2-rethinkdb 
   - python2-retry 
   - python2-retry_decorator 
   - python2-retrying 
@@ -19297,6 +19318,7 @@ unsorted:
   - python2-storm-twisted 
   - python2-straight-plugin 
   - python2-strict-rfc3339 
+  - python2-strictyaml 
   - python2-structlog 
   - python2-subgrab 
   - python2-subliminal 
@@ -19344,6 +19366,7 @@ unsorted:
   - python2-thLib 
   - python2-thrift 
   - python2-thriftpy 
+  - python2-thriftpy2 
   - python2-tinydb 
   - python2-tinyrecord 
   - python2-tinyrpc 
@@ -19359,6 +19382,7 @@ unsorted:
   - python2-topy 
   - python2-tornado 
   - python2-tornado4 
+  - python2-toro 
   - python2-tox 
   - python2-tox-no-internet 
   - python2-tox-travis 
@@ -19619,6 +19643,7 @@ unsorted:
   - python3-GitgExt 
   - python3-Glances 
   - python3-Gloo 
+  - python3-Glymur 
   - python3-GooCalendar 
   - python3-GridDataFormats 
   - python3-HTTPolice 
@@ -19685,6 +19710,7 @@ unsorted:
   - python3-PyPrint 
   - python3-PyQRCode 
   - python3-PyRIC 
+  - python3-PyRSS2Gen 
   - python3-PySDL2 
   - python3-PyScreeze 
   - python3-PyTrie 
@@ -19783,6 +19809,8 @@ unsorted:
   - python3-aiohttp-theme 
   - python3-aioresponses 
   - python3-aiorpcX 
+  - python3-aiosmtpd 
+  - python3-aiosmtplib 
   - python3-akismet 
   - python3-alabaster 
   - python3-alembic 
@@ -20066,6 +20094,7 @@ unsorted:
   - python3-cached-property 
   - python3-cachetools 
   - python3-cachey 
+  - python3-cachy 
   - python3-caffe 
   - python3-caffe-gnu-hpc 
   - python3-caffe_1_0-gnu-hpc 
@@ -20119,6 +20148,7 @@ unsorted:
   - python3-ciscoconfparse 
   - python3-cl 
   - python3-clang 
+  - python3-cleo 
   - python3-cli-helpers 
   - python3-click 
   - python3-click-aliases 
@@ -20131,6 +20161,7 @@ unsorted:
   - python3-click-threading 
   - python3-cliff 
   - python3-cligj 
+  - python3-clikit 
   - python3-clinkgrammar 
   - python3-clint 
   - python3-cloud-init-seed 
@@ -20189,7 +20220,9 @@ unsorted:
   - python3-cram 
   - python3-crayons 
   - python3-crcmod 
+  - python3-cron-descriptor 
   - python3-croniter 
+  - python3-crontab 
   - python3-crumbs 
   - python3-cryptography-vectors 
   - python3-css-parser 
@@ -20248,6 +20281,9 @@ unsorted:
   - python3-deprecation 
   - python3-derpconf 
   - python3-devel 
+  - python3-devpi-client 
+  - python3-devpi-common 
+  - python3-devpi-server 
   - python3-dfdatetime 
   - python3-dfwinreg 
   - python3-dialite 
@@ -20419,6 +20455,7 @@ unsorted:
   - python3-fastimport 
   - python3-fastnumbers 
   - python3-fastparquet 
+  - python3-fastremap 
   - python3-fb-re2 
   - python3-featureflow 
   - python3-fedmsg 
@@ -20654,6 +20691,7 @@ unsorted:
   - python3-itsdangerous 
   - python3-itypes 
   - python3-iwlib 
+  - python3-j2gen 
   - python3-jaraco.base 
   - python3-jaraco.classes 
   - python3-jaraco.collections 
@@ -21072,6 +21110,7 @@ unsorted:
   - python3-passa 
   - python3-passivetotal 
   - python3-passlib: [i586] 
+  - python3-pastel 
   - python3-pastream 
   - python3-path.py 
   - python3-pathlib 
@@ -21113,6 +21152,7 @@ unsorted:
   - python3-pip-api 
   - python3-pip-run 
   - python3-pip-shims 
+  - python3-pip-tools 
   - python3-pipdeptree 
   - python3-pipenv 
   - python3-pipreqs 
@@ -21280,6 +21320,7 @@ unsorted:
   - python3-pymongo 
   - python3-pymssql 
   - python3-pynamodb 
+  - python3-pynetbox 
   - python3-pyngus 
   - python3-pyo 
   - python3-pyocr 
@@ -21361,6 +21402,7 @@ unsorted:
   - python3-pytest-instafail 
   - python3-pytest-isort 
   - python3-pytest-lazy-fixture 
+  - python3-pytest-listener 
   - python3-pytest-localserver 
   - python3-pytest-metadata 
   - python3-pytest-mock 
@@ -21379,6 +21421,7 @@ unsorted:
   - python3-pytest-reqs 
   - python3-pytest-rerunfailures 
   - python3-pytest-runner 
+  - python3-pytest-server-fixtures 
   - python3-pytest-services 
   - python3-pytest-shutil 
   - python3-pytest-socket 
@@ -21411,6 +21454,7 @@ unsorted:
   - python3-python-cjson 
   - python3-python-coveralls 
   - python3-python-crfsuite 
+  - python3-python-crontab 
   - python3-python-daemon 
   - python3-python-datamatrix 
   - python3-python-dbusmock 
@@ -21425,6 +21469,7 @@ unsorted:
   - python3-python-jenkins 
   - python3-python-jose 
   - python3-python-json-logger 
+  - python3-python-jsonschema-objects 
   - python3-python-louvain 
   - python3-python-lzo 
   - python3-python-magic 
@@ -21478,6 +21523,7 @@ unsorted:
   - python3-pyxattr 
   - python3-pyxb 
   - python3-pyzmq-devel 
+  - python3-q 
   - python3-qet_tb_generator 
   - python3-qgrid 
   - python3-qrcode 
@@ -21499,6 +21545,7 @@ unsorted:
   - python3-rarfile-doc 
   - python3-ravello-sdk 
   - python3-raven 
+  - python3-raven-aiohttp 
   - python3-rawkit 
   - python3-rcssmin 
   - python3-rdflib 
@@ -21512,7 +21559,6 @@ unsorted:
   - python3-regex 
   - python3-relatorio 
   - python3-releases 
-  - python3-releases-test 
   - python3-remoto 
   - python3-rencode 
   - python3-renderspec 
@@ -21546,6 +21592,7 @@ unsorted:
   - python3-restructuredtext_lint 
   - python3-restview 
   - python3-resultsdb_api 
+  - python3-rethinkdb 
   - python3-retry 
   - python3-retry_decorator 
   - python3-retrying 
@@ -21727,6 +21774,7 @@ unsorted:
   - python3-straight-plugin 
   - python3-streamz 
   - python3-strict-rfc3339 
+  - python3-strictyaml 
   - python3-structlog 
   - python3-subgrab 
   - python3-subliminal 
@@ -21784,6 +21832,7 @@ unsorted:
   - python3-threevis 
   - python3-thrift 
   - python3-thriftpy 
+  - python3-thriftpy2 
   - python3-tinycss2 
   - python3-tinydb 
   - python3-tinyrecord 
@@ -21802,6 +21851,7 @@ unsorted:
   - python3-tooz 
   - python3-topy 
   - python3-tornado 
+  - python3-toro 
   - python3-tox 
   - python3-tox-no-internet 
   - python3-tox-travis 
@@ -21961,6 +22011,7 @@ unsorted:
   - python3-xsge_tmx 
   - python3-xvfbwrapper 
   - python3-xxhash 
+  - python3-yacron 
   - python3-yamldoc 
   - python3-yamllint 
   - python3-yang 
